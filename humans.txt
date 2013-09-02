@@ -1,0 +1,16 @@
+/* TEAM */
+	WEBFIRE
+	Gareth Evans - Accounts & Design
+	Matt Gould - Design
+	Ashish Mehra - Web Development
+	Kirk Brampton - Design
+	Martin Warner - Web Development
+	Barney Morrison-Lyons - iOS Development
+
+/* THANKS */
+	Foundation 4 by ZURB
+		
+/* SITE */
+	Last update: 2013/09/02
+	Language: English
+	Doctype: HTML5
