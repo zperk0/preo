@@ -1,0 +1,54 @@
+ErrorDocument 400 /404
+ErrorDocument 401 /404
+ErrorDocument 403 /404
+ErrorDocument 404 /404
+
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,NC,L]
+
+RewriteCond %{REQUEST_URI} ^/signin$ [NC]
+RewriteRule ^.*$ signin.php [L]
+
+RewriteCond %{REQUEST_URI} ^/login$ [NC]
+RewriteRule ^.*$ signin.php [L]
+
+RewriteCond %{REQUEST_URI} ^/register$ [NC]
+RewriteRule ^.*$ signup.php [L]
+
+RewriteCond %{REQUEST_URI} ^/signup$ [NC]
+RewriteRule ^.*$ signup.php [L]
+
+RewriteCond %{REQUEST_URI} ^/join$ [NC]
+RewriteRule ^.*$ signup.php [L]
+
+RewriteCond %{REQUEST_URI} ^/privacy$ [NC]
+RewriteRule ^.*$ privacy.php [L]
+
+RewriteCond %{REQUEST_URI} ^/terms$ [NC]
+RewriteRule ^.*$ terms.php [L]
+
+RewriteCond %{REQUEST_URI} ^/contact$ [NC]
+RewriteRule ^.*$ contact.php [L]
+
+RewriteCond %{REQUEST_URI} ^/about$ [NC]
+RewriteRule ^.*$ about.php [L]
+
+RewriteCond %{REQUEST_URI} ^/faq$ [NC]
+RewriteRule ^.*$ faqs.php [L]
+
+RewriteCond %{REQUEST_URI} ^/faqs$ [NC]
+RewriteRule ^.*$ faqs.php [L]
+
+RewriteCond %{REQUEST_URI} ^/about$ [NC]
+RewriteRule ^.*$ about_us.php [L]
+
+RewriteCond %{REQUEST_URI} ^/aboutus$ [NC]
+RewriteRule ^.*$ about_us.php [L]
+
+RewriteCond %{REQUEST_URI} ^/logout$ [NC]
+RewriteRule ^.*$ /code/shared/logout.php [L]
+
+RewriteCond %{REQUEST_URI} ^/404$ [NC]
+RewriteRule ^.*$ 404.php [L]

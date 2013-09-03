@@ -1,4 +1,4 @@
-<div class="contain-to-grid sticky">
+<div class="contain-to-grid">
 	<nav class="top-bar hide-for-small">
 		<ul class="title-area">
 			<li class="name">
