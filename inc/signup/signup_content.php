@@ -27,7 +27,15 @@
 					<div class="large-12 columns">
 						<label>Password</label>
 						<input type="password" name="password" placeholder="" required tabindex=4>
-						<small class="error">A password address is required. Atleast 8chars and must contain a number.</small>
+						<small class="error">A password address is required. Atleast 8chars and must contain atleast 1 number and 1 uppercase letter.</small>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="large-12 columns">
+						<label>Business Name</label>
+						<input type="text" name="businessName" placeholder="" required pattern="[a-zA-Z]+" tabindex=5>
+						<small class="error">A business name is required.</small>
 					</div>
 				</div>
 				
