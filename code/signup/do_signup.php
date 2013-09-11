@@ -21,8 +21,8 @@
 	$businessName = $_POST['businessName'];
 	protect($businessName);
 	
-	$notificationFlag = $_POST['notification-switch']; //0=off, 1=on
-	protect($notificationFlag);  //currently we dont store this!
+	//$notificationFlag = $_POST['notification-switch']; //0=off, 1=on
+	//protect($notificationFlag);  //currently we dont store this!
 	
 	$data['name']				= $businessName;
 	$data['owner']['name']		= $name;
@@ -34,11 +34,12 @@
 	
 	$curlResult = callAPI('POST', $apiURL."accounts", $jsonData, $apiAuth);
 	
-	//DEBUG
-	if($curlResult) echo "Success!"; 
-	else echo "Fail :(";
-
-	echo "<br/><br/><pre>".json_encode(json_decode($curlResult), JSON_PRETTY_PRINT)."</pre><br/>";
+	echo $curlResult; //sending a JSON via ajax
 	
-	echo "<br/>Need to check if data is being recorded by PreoDay systems and then proceed to dashboard<br/>";
+	//DEBUG
+	//$decodedCurl = json_decode($curlResult,true);
+	//if($curlResult) echo "Success!"; 
+	//else echo "Fail :(";
+	//echo "<br/><br/><pre>".json_encode(json_decode($curlResult), JSON_PRETTY_PRINT)."</pre><br/>";
+	//echo "<br/>Need to check if data is being recorded by PreoDay systems and then proceed to dashboard<br/>";
 ?>

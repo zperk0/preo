@@ -1,3 +1,5 @@
+@import 'foundation-icons.css';
+
 .orbit-prev, .orbit-next { display: none; }
 .orbit-container:hover .orbit-prev, .orbit-container:hover .orbit-next { display: inline; }
 

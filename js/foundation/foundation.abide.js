@@ -107,7 +107,8 @@
 
       form.removeAttr('data-invalid');
 
-      return true;
+      //return true;
+      return false;
     },
 
     parse_patterns : function (els) {

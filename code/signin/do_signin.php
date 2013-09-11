@@ -17,12 +17,11 @@
 	
 	$curlResult = callAPI('POST', $apiURL."users/auth", $jsonData, $apiAuth);
 	
+	echo $curlResult; //sending a JSON via ajax
+	
 	// 	DEBUG
-	if($curlResult) echo "Success!"; 
-	else echo "Fail :(";
-
-	echo "<br/><br/><pre>".json_encode(json_decode($curlResult), JSON_PRETTY_PRINT)."</pre><br/>";
-	
-	echo "<br/>Need to check if data is sent by PreoDay systems and then proceed to dashboard<br/>";
-	
+	//if($curlResult) echo "Success!"; 
+	//else echo "Fail :(";
+	//echo "<br/><br/><pre>".json_encode(json_decode($curlResult), JSON_PRETTY_PRINT)."</pre><br/>";
+	//echo "<br/>Need to check if data is sent by PreoDay systems and then proceed to dashboard<br/>";
 ?>

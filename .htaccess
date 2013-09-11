@@ -11,6 +11,9 @@ RewriteRule ^(.*)$ http://%1/$1 [R=301,NC,L]
 RewriteCond %{REQUEST_URI} ^/signin$ [NC]
 RewriteRule ^.*$ signin.php [L]
 
+RewriteCond %{REQUEST_URI} ^/dashboard$ [NC]
+RewriteRule ^.*$ dashboard.php [L]
+
 RewriteCond %{REQUEST_URI} ^/login$ [NC]
 RewriteRule ^.*$ signin.php [L]
 
@@ -22,6 +25,18 @@ RewriteRule ^.*$ signup.php [L]
 
 RewriteCond %{REQUEST_URI} ^/join$ [NC]
 RewriteRule ^.*$ signup.php [L]
+
+RewriteCond %{REQUEST_URI} ^/logout$ [NC]
+RewriteRule ^.*$ /code/shared/logout.php [L]
+
+RewriteCond %{REQUEST_URI} ^/signout$ [NC]
+RewriteRule ^.*$ /code/shared/logout.php [L]
+
+RewriteCond %{REQUEST_URI} ^/doSignUp$ [NC]
+RewriteRule ^.*$ /code/signup/do_signup.php [L]
+
+RewriteCond %{REQUEST_URI} ^/doSignIn$ [NC]
+RewriteRule ^.*$ /code/signin/do_signin.php [L]
 
 RewriteCond %{REQUEST_URI} ^/privacy$ [NC]
 RewriteRule ^.*$ privacy.php [L]

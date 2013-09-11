@@ -1,0 +1,83 @@
+# Tralala
+# Copyright (C) 122 Tralala
+# This file is distributed under the same license as the Tralala package.
+# Tralala <Tralala@Tralala.com>, 1244.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: <Tralala@Tralala.com>\n"
+"POT-Creation-Date: 2013-09-10 18:24+0100\n"
+"PO-Revision-Date: 2013-09-10 19:20-0000\n"
+"Last-Translator: Ashish Mehra <ashish@webfire.co.uk>\n"
+"Language-Team: Ashish Mehra <ashish@webfire.co.uk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: signup_content.php:5
+msgid "Sign Up to PreoDay"
+msgstr ""
+
+#: signup_content.php:8
+msgid "First Name"
+msgstr ""
+
+#: signup_content.php:10
+msgid "First Name is required and must be only letters."
+msgstr ""
+
+#: signup_content.php:13
+msgid "Last Name"
+msgstr ""
+
+#: signup_content.php:15
+msgid "Last Name is required and must be only letters."
+msgstr ""
+
+#: signup_content.php:20
+msgid "Email"
+msgstr ""
+
+#: signup_content.php:22
+msgid "An email address is required."
+msgstr ""
+
+#: signup_content.php:28
+msgid "Password"
+msgstr ""
+
+#: signup_content.php:30
+msgid ""
+"A password address is required. Atleast 8chars and must contain atleast 1 "
+"number and 1 uppercase letter."
+msgstr ""
+
+#: signup_content.php:36
+msgid "Business Name"
+msgstr ""
+
+#: signup_content.php:38
+msgid "A business name is required."
+msgstr ""
+
+#: signup_content.php:59
+msgid "By clicking 'Sign Up' you agree to our"
+msgstr ""
+
+#: signup_content.php:59
+msgid "Terms"
+msgstr ""
+
+#: signup_content.php:59
+msgid "and"
+msgstr ""
+
+#: signup_content.php:59
+msgid "Privacy Policy"
+msgstr ""
+
+#: signup_content.php:67
+msgid "Sign Up"
+msgstr ""

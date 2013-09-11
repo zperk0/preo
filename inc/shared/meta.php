@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<title>PreoDay</title>
+		<title><? echo _("PreoDay");?></title>
 
 		<!-- Main CSS files. -->
 		<link rel="stylesheet" href="/css/normalize.css" />

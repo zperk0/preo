@@ -1,0 +1,219 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PreoDay\n"
+"POT-Creation-Date: 2013-09-11 18:08-0000\n"
+"PO-Revision-Date: 2013-09-11 18:08-0000\n"
+"Last-Translator: Ashish Mehra <ashish@webfire.co.uk>\n"
+"Language-Team: Webfire <ashish@webfire.co.uk>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: C:\\Users\\Auero\\Documents\\Domains\\PreoDay.com\n"
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/404/404_content.php:4
+msgid "Oops!"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/404/404_content.php:5
+msgid "You're trying to find something that doesn't exist!"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/dashboard/dashboard_content.php:3
+msgid "Dashboard"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/dashboard/dashboard_content.php:4
+msgid "ID"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/dashboard/dashboard_content.php:5
+msgid "Name"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/dashboard/dashboard_content.php:6
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signin/signin_content.php:8
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:20
+msgid "Email"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/dashboard/dashboard_content.php:7
+msgid "Business"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/dashboard/dashboard_content.php:8
+msgid "Token"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/dashboard/dashboard_content.php:19
+msgid "Venue Configuration"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/dashboard/dashboard_content.php:25
+msgid "Menu Configuration"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/dashboard/dashboard_content.php:30
+msgid "App Configuration"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:32
+msgid "Change Language"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:34
+msgid "English"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:35
+msgid "German"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:39
+msgid "Like us on Facebook"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:39
+msgid "Facebook"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:40
+msgid "Follow us on Twitter"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:40
+msgid "Twitter"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:41
+msgid "Click here to contact us"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:41
+msgid "Contact"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:42
+msgid "Click here for our Terms &amp; Conditions"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:42
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:59
+msgid "Terms"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:43
+msgid "Click here for our Privacy Policy"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:43
+msgid "Privacy"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:46
+msgid "PreoDay &copy; 2013. All Rights Reserved."
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:52
+msgid "PreoDay Terms &amp; Conditions"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:59
+msgid "PreoDay Privacy Policy"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/h.php:6
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/meta.php:8
+msgid "PreoDay"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/h.php:18
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:67
+msgid "Sign Up"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/h.php:19
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signin/signin_content.php:32
+msgid "Sign In"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/h.php:21
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/h.php:29
+msgid "Settings"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/h.php:22
+msgid "Sign Out"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signin/signin_content.php:5
+msgid "Sign In to PreoDay"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signin/signin_content.php:10
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:22
+msgid "An email address is required."
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signin/signin_content.php:16
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:28
+msgid "Password"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signin/signin_content.php:18
+msgid "A password address is required."
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signin/signin_content.php:24
+msgid "Forgot your password"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:5
+msgid "Sign Up to PreoDay"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:8
+msgid "First Name"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:10
+msgid "First Name is required and must be only letters."
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:13
+msgid "Last Name"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:15
+msgid "Last Name is required and must be only letters."
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:30
+msgid ""
+"A password address is required. Atleast 8chars and must contain atleast 1 "
+"number and 1 uppercase letter."
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:36
+msgid "Business Name"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:38
+msgid "A business name is required."
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:59
+msgid "By clicking 'Sign Up' you agree to our"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:59
+msgid "and"
+msgstr ""
+
+#: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/signup/signup_content.php:59
+msgid "Privacy Policy"
+msgstr ""
