@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PreoDay\n"
 "POT-Creation-Date: 2013-09-11 18:25-0000\n"
-"PO-Revision-Date: 2013-09-11 18:26-0000\n"
+"PO-Revision-Date: 2013-09-11 19:07-0000\n"
 "Last-Translator: Ashish Mehra <ashish@webfire.co.uk>\n"
 "Language-Team: Webfire <ashish@webfire.co.uk>\n"
 "MIME-Version: 1.0\n"
@@ -119,7 +119,7 @@ msgstr "Datenschutz"
 
 #: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:46
 msgid "PreoDay &copy; 2013. All Rights Reserved."
-msgstr "PreoDay &copy; 2013 beginnen. Alle Rechte vorbehalten."
+msgstr "PreoDay &copy; 2013. Alle Rechte vorbehalten."
 
 #: C:\Users\Auero\Documents\Domains\PreoDay.com/inc/shared/f.php:52
 msgid "PreoDay Terms &amp; Conditions"

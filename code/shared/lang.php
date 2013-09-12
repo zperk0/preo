@@ -64,6 +64,8 @@ textdomain($domain);
 //locale structure
 // ./locale/en_US/LC_MESSAGES/messages.po,./locale/en_US/LC_MESSAGES/messages.mo | ./locale/en_DE/LC_MESSAGES/messages.po,./locale/en_DE/LC_MESSAGES/messages.mo, ...
 
+//Link the locale to $_SESSION but remember that on logout the value is saved to the new session
+
 $lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
 
 //$lang="de"; //debug or force german
