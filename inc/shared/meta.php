@@ -19,5 +19,8 @@
 		
 		<!-- Mordernizr -->
 		<script src="/js/vendor/custom.modernizr.js"></script>
+		
+		<!-- jQuery -->
+		<script src="/js/jquery-1.8.0.js"></script>
 	</head>
 	<body>

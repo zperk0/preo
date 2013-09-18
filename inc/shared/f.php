@@ -1,4 +1,3 @@
-		<script src="/js/jquery-1.8.0.js"></script>
 		<script>
 			document.write('<script src=' + ('__proto__' in {} ? '/js/vendor/zepto' : '/js/vendor/jquery') + '.js><\/script>')
 		</script>

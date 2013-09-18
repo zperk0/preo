@@ -190,6 +190,30 @@ $(document).ready(function() {
 			infobox.open(map,marker);
 		});	
 	});
+	
+	//inline onClick replacements
+	$('#venueTop').on('click', function() { resizeGMap(); });
+	
+	$("[id^=delItem]").live('click', function() {
+		var cID = $(this).attr('id');
+		var cNum = cID.replace("delItem","");
+		
+		$("#optNameDiv"+cNum).remove();
+		$("#optPriceDiv"+cNum).remove();
+		$("#optDelDiv"+cNum).remove();
+	});
+	
+	$("[id^=thumb]").live('click', function() {
+		var tID = $(this).attr('id');
+		var wall = tID.replace("thumb","wall");
+		var newImgSrc = "/img/wallpapers/" + wall + ".jpg";
+		$("#phoneWallpaper").attr("src", newImgSrc);
+	});
+	
+	$("#aHeading").bind('propertychange keyup input paste',function() {
+		var content = $(this).val();
+		$("#appHeading").html(content);
+	});
 });
 
 //map resizing with window

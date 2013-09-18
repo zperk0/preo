@@ -68,3 +68,54 @@ footer { margin-bottom: 20px; }
 /*Google Maps fix for Foundation 4 conflict*/
 #map img{max-width: inherit;} /*IMP*/
 #map {width:100%;height:250px;} /* giving the map section some width/height */
+
+/* phone area*/
+#phonePreview {
+	margin: 0 auto; 
+	text-align: center;
+} 
+#iphone5 {
+	background-image: url("/img/iphone5.png");
+	width: 301px; 
+	height: 636px;
+	margin-right: 20px;
+}
+#frame_iphone5 {
+	height: 451px; 
+	width: 252px; 
+}
+#frame_iphone5  img#phoneWallpaper{
+	height: 451px; 
+	width: 252px; 
+	margin: 94px 0 0 11px;
+	z-index:1;
+}
+#frame_iphone5  img#carrierIMG{
+	height: 17px; 
+	width: 252px; 
+	float: left;
+	z-index: 2;
+	position: relative;
+	margin: -452px 0 0 11px;
+}
+#frame_iphone5  img#poweredIMG{
+	height: 12px; 
+	width: 120px; 
+	float: left;
+	z-index: 3;
+	position: relative;
+	margin: -25px 0 0 133px;
+}
+p#appHeading {
+	color: #FFF;
+	font-weight: bold;
+	margin: -412px 0 0 26px;
+	float: left;
+	position: relative;
+	z-index: 4;
+	font-size: 19px;
+	width: 222px;
+	max-height: 200px;
+	word-break:break-all;
+	overflow: hidden;
+}
