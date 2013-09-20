@@ -206,15 +206,36 @@ $(document).ready(function() {
 	$("[id^=thumb]").live('click', function() {
 		var tID = $(this).attr('id');
 		var wall = tID.replace("thumb","wall");
+		var plainID = tID.replace("thumb","");
 		var newImgSrc = "/img/wallpapers/" + wall + ".jpg";
 		$("#phoneWallpaper").attr("src", newImgSrc);
+		$("#wallPaperID").val(plainID);
 	});
 	
 	$("#aHeading").bind('propertychange keyup input paste',function() {
 		var content = $(this).val();
 		$("#appHeading").html(content);
 	});
+	
+	$("#aSubheading").bind('propertychange keyup input paste',function() {
+		var content = $(this).val();
+		$("#subHeading").html(content);
+	});
 });
+
+function updateTextColour(color)
+{
+	$("#appHeading").css('color', '#'+color);
+	$("#subHeading").css('color', '#'+color);
+}
+function updateButtonColour(color)
+{
+	$("#buttonIMG").css('background', '#'+color);
+}
+function updateButtonTextColour(color)
+{
+	$("#buttonIMG").css('color', '#'+color);
+}
 
 //map resizing with window
 $(window).resize(function(){

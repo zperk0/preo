@@ -1,0 +1,15 @@
+@font-face {
+	font-family: 'HelveticaNeueLTComMd';
+    
+    	src: url('http://fontsforweb.com/public/fonts/1894/HelveticaNeueLTComMd.eot');
+	src: local('HelveticaNeueLTComMd'), url('http://fontsforweb.com/public/fonts/1894/HelveticaNeueLTComMd.ttf') format('truetype');
+    }
+body.cke_show_borders p {
+	font-family: 'HelveticaNeueLTComMd';
+    font-size: 30px;
+}
+.fontsforweb_fontid_1894 {
+	font-family: 'HelveticaNeueLTComMd' !important;
+}
+
+/* Font downloaded from FontsForWeb.com */

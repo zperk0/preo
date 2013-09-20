@@ -166,6 +166,13 @@
 												<small class="error"><?echo _("A header is required.");?></small>
 											</div>
 										</div>
+										<div class="row">
+											<div class="large-12 columns left">
+												<label><?echo _("Subheading");?></label>
+												<input type="text" name="aSubheading" id="aSubheading" placeholder="<?echo _("Subheading goes here");?>" required tabindex=2>
+												<small class="error"><?echo _("A subheading is required.");?></small>
+											</div>
+										</div>
 										<br/>
 										<div class="row">
 											<div class="large-4 columns left">
@@ -208,16 +215,39 @@
 												</a>
 											</div>
 										</div>
+										<br/>
+										<br/>
+										<div class="row">
+											<div class="large-4 columns left">
+												<label><?echo _("Text Colour");?></label>
+												<input type="text" class="color {pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateTextColour(this);'}" id="colour1" name="colour1"/>
+											</div>
+											<div class="large-4 columns left">
+												<label><?echo _("Button Colour");?></label>
+												<input type="text" class="color {pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButtonColour(this);'}" id="colour2" name="colour2"/>
+											</div>
+											<div class="large-4 columns left">
+												<label><?echo _("Button Text Colour");?></label>
+												<input type="text" class="color {pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButtonTextColour(this);'}" id="colour3" name="colour3"/>
+											</div>
+										</div>
+										
+										<input type="hidden" id="wallPaperID" name="wallPaperID" value="1"/>
+										
+										<br/>
 									</div>
 									<div id="iphone5" class="large-6 columns right">
 										<div id="frame_iphone5">
 											<img id="phoneWallpaper" src="/img/wallpapers/wall1.jpg" />
 											<img id="carrierIMG" src="/img/wallpapers/carrier.png" />
 											<img id="poweredIMG" src="/img/wallpapers/powered.png" />
+											<button type="button" class="tiny expand" id="buttonIMG"><?echo _('ORDER NOW');?></button>
 											<p id="appHeading"><?echo _("Your heading goes here");?></p>
+											<p id="subHeading"><?echo _("Subheading goes here");?></p>
 										</div>
 									</div>
 								</div>
+								<br/>
 								<br/>
 								<div class="row">
 									<div class="small-12 large-4 columns small-centered large-centered">

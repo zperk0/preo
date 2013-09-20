@@ -1,4 +1,5 @@
 @import 'foundation-icons.css';
+@import '/fonts/helveticaneue.css';
 
 .orbit-prev, .orbit-next { display: none; }
 .orbit-container:hover .orbit-prev, .orbit-container:hover .orbit-next { display: inline; }
@@ -83,6 +84,7 @@ footer { margin-bottom: 20px; }
 #frame_iphone5 {
 	height: 451px; 
 	width: 252px; 
+	font-family: HelveticaNeueLTComMd;
 }
 #frame_iphone5  img#phoneWallpaper{
 	height: 451px; 
@@ -106,16 +108,60 @@ footer { margin-bottom: 20px; }
 	position: relative;
 	margin: -25px 0 0 133px;
 }
-p#appHeading {
+#appHeading, #subHeading  {
 	color: #FFF;
-	font-weight: bold;
-	margin: -412px 0 0 26px;
+	margin: -388px 0 0 26px;
 	float: left;
 	position: relative;
 	z-index: 4;
-	font-size: 19px;
 	width: 222px;
-	max-height: 200px;
-	word-break:break-all;
+	height: 186px;
+	word-break:normal;
 	overflow: hidden;
+	text-align: left;
+	font-size: 31px;
+	line-height: 36px;
+	font-weight: 100 !important;
+	letter-spacing: -1px;
+	text-align: left !important;
 }
+#subHeading {
+	font-size: 14px;
+	margin: -204px 0 0 26px;
+	height: 35px;
+	line-height: 16px;
+	letter-spacing: 0px;
+}
+#buttonIMG {
+	float: left;
+	width: 100px;
+	height: 22px;
+	margin: -134px 0px 0 28px;
+	position: relative;
+	z-index: 5;
+	font-weight: 100 !important;
+	background-color: #2ba6cb;
+	border: 0 !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	-o-box-shadow: none !important;
+	box-shadow: none !important;
+	cursor: default !important;
+}
+
+.circle, .circle:nth-child(1), .circle img { border-radius: 50%;}
+
+a[id^='colour'] { 
+	height: 50px;
+	width: 50px;
+	
+	background: #000;
+}
+
+#colour8 { background: #FFF; }
+#colour5 { background: #FF0000; }
+#colour7 { background: #FFFF00; }
+#colour6 { background: #00FF00; }
+#colour2 { background: #C0C0C0; }
+#colour4 { background: #0000FF; }
+#colour3 { background: #E8E8E8; }
