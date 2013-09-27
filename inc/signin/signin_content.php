@@ -21,7 +21,7 @@
 					
 				<div class="row">
 					<div class="large-12 columns small-centered large-centered text-center">
-						<small><a href="#"><?echo _("Forgot your password");?></a>?</label></small>
+						<small><a href="#" data-reveal-id="forgotPassM"><?echo _("Forgot your password");?></a>?</label></small>
 					</div>
 				</div>
 				
@@ -35,4 +35,8 @@
 			</fieldset>
 		</form>
 	</div>
+</div>
+<div id="forgotPassM" class="reveal-modal">
+	<? require($_SERVER['DOCUMENT_ROOT'].'/inc/shared/forgotpass.php'); ?>
+	<a class="close-reveal-modal">&#215;</a>
 </div>

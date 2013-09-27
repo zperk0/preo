@@ -34,6 +34,10 @@
 	
 	$curlResult = callAPI('POST', $apiURL."accounts", $jsonData, $apiAuth);
 	
+	$dataJSON = json_decode($curlResult,true);
+	
+	if(isset($dataJSON['owner']['token'])) $_SESSION['token']=$dataJSON['owner']['token']; //otherwise its an error! 
+	
 	echo $curlResult; //sending a JSON via ajax
 	
 	//DEBUG

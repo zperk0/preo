@@ -8,11 +8,11 @@
 	{
 		$curl = curl_init($url);                                                                      
 		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);      
-		curl_setopt($curl, CURLOPT_POSTFIELDS, $data);                                                                  
+		if($data) curl_setopt($curl, CURLOPT_POSTFIELDS, $data);                                                                  
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);                                                                      
 		curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
 			'Content-Type: application/json',                                                                                
-			'Authorization: ' . $auth) //app-token outside dashboard / user token inside                                                                      
+			'Authorization: ' . $auth)                                                                      
 		);   
 		if(preg_match('/https/', $url))
 			curl_setopt($curl, CURLOPT_CAINFO, $_SERVER['DOCUMENT_ROOT'].'/code/shared/cert.pem'); //required for SSL verfication 

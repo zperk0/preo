@@ -1,9 +1,6 @@
 <?php session_start(); //start the session so this file can access $_SESSION vars.
 
 	require($_SERVER['DOCUMENT_ROOT'].'/code/shared/protect_input.php'); //input protection functions to keep malicious input at bay
-
-	$token = $_POST['token'];
-	protect($token);
 	
 	$email = $_POST['email'];
 	protect($email);
@@ -17,10 +14,15 @@
 	$bName = $_POST['bName'];
 	protect($bName);
 	
-	$_SESSION['token']=$token;
+	$bID = $_POST['bID'];
+	protect($bID);
+	
 	$_SESSION['id']=$id;
 	$_SESSION['email']=$email;
 	$_SESSION['name']=$name;
+	$_SESSION['lName']=substr($name, strrpos($name, ' ')+1);
+	$_SESSION['fName']=str_replace(" ".$_SESSION['lName'],"",$name);
 	$_SESSION['bName']=$bName;
+	$_SESSION['bID']=$bID;
 	$_SESSION['logged']=1;
 ?>

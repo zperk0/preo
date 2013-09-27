@@ -4,18 +4,14 @@
 	require($_SERVER['DOCUMENT_ROOT'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].'/code/shared/callAPI.php');   //API calling function
 	
-	$email = $_POST['email'];
+	$email = strtolower($_POST['email']);
 	protect($email);
 	
-	$password = $_POST['password'];
-	protect($password);
-	
-	$data['username']	= $email;
-	$data['password']	= $password;
+	$data['email']	= $email;
 	
 	$jsonData = json_encode($data);
 	
-	$curlResult = callAPI('POST', $apiURL."users/auth", $jsonData, $apiAuth);
+	$curlResult = callAPI('POST', $apiURL."users/auth/forgot", $jsonData, $apiAuth);
 	
 	$dataJSON = json_decode($curlResult,true);
 	

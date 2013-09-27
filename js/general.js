@@ -11,6 +11,19 @@
 	}); 
 //////////////////////////////////////////////////////////////////////
 
+//search for key in array
+function searchArray(string,array){
+    var match = false;
+    arrLength = array.length;
+	while(arrLength--) 
+	{
+	   if (string.indexOf(array[arrLength])!=-1)
+	   match = true;
+	}
+	return match;
+}
+////////////////////////////////////////////////////////////////////////
+
 $("#signupForm").on('valid', function (e) {
     var url = "/doSignUp";
 
@@ -20,7 +33,6 @@ $("#signupForm").on('valid', function (e) {
            data: $(this).serialize(), // serializes the form's elements.
            success: function(data)
            {
-				//alert(data); //debug
 				try
 				{
 					var dataArray = jQuery.parseJSON(data); //parsing JSON
@@ -32,6 +44,8 @@ $("#signupForm").on('valid', function (e) {
 					  type: 'error',
 					  text: 'Connection Error! Check API endpoint.'
 					});
+					
+					return false;
 				}
 				
 				if(typeof dataArray['status'] !='undefined') //error
@@ -40,12 +54,20 @@ $("#signupForm").on('valid', function (e) {
 					  type: 'error',
 					  text: dataArray['message']
 					});
-			   
 				}
 				else
 				{	
-					$.post("/code/signup/save_session.php", 'token='+dataArray['owner']['token']+'&bName='+dataArray['name']+'&email='+dataArray['owner']['email']+'&name='+dataArray['owner']['name']+'&id='+dataArray['owner']['id']);
-					setTimeout(function(){window.location.replace("/dashboard")},1000); //give time for post request to fulfil
+					$.post("/code/signup/save_session.php", 
+					'bName='+dataArray['name']+'&bID='+dataArray['id']+'&email='+dataArray['owner']['email']+'&name='+dataArray['owner']['name']+'&id='+dataArray['owner']['id'],
+					function(response){
+						window.location.replace("/dashboard");
+					})
+					.fail(function(jqxhr) { 
+						noty({
+							type: 'error',
+							text: 'Error: '+jqxhr.responseText	
+						});
+					});
 				}
 			}
          });
@@ -62,11 +84,9 @@ $("#signinForm").on('valid', function (e) {
            data: $(this).serialize(), // serializes the form's elements.
            success: function(data)
            {
-				//alert(data); //debug
 				try
 				{
 					var dataArray = jQuery.parseJSON(data); //parsing JSON
-				
 				}
 				catch(e)
 				{
@@ -74,6 +94,8 @@ $("#signinForm").on('valid', function (e) {
 					  type: 'error',
 					  text: 'Connection Error! Check API endpoint.'
 					});
+					
+					return false;
 				}
 				
 				if(typeof dataArray['status'] !='undefined') //error
@@ -86,14 +108,78 @@ $("#signinForm").on('valid', function (e) {
 				}
 				else
 				{	
-					$.post("/code/signin/save_session.php", 'token='+dataArray['token']+'&email='+dataArray['email']+'&name='+dataArray['name']+'&id='+dataArray['id']);
-					setTimeout(function(){window.location.replace("/dashboard")},1000); //give time for post request to fulfil
+					$.post("/code/signin/save_session.php", 
+					'email='+dataArray['email']+'&name='+dataArray['name']+'&id='+dataArray['id'], 
+					function(response){
+						window.location.replace("/dashboard");
+					})
+					.fail(function(jqxhr) { 
+						noty({
+							type: 'error',
+							text: 'Error: '+jqxhr.responseText	
+						});
+					});
 				}
 			}
          });
 
     return false; // avoid to execute the actual submit of the form.
 });
+
+$("#forgotPassForm").on('valid', function (e) {
+    var url = "/code/shared/doForgot.php";
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $(this).serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+				try
+				{
+					var dataArray = jQuery.parseJSON(data); //parsing JSON
+				}
+				catch(e)
+				{
+					noty({
+					  type: 'error',
+					  text: 'Connection Error! Check API endpoint.'
+					});
+					
+					return false;
+				}
+				
+				if(typeof dataArray['status'] !='undefined') //error
+				{
+					noty({
+					  type: 'error',
+					  text: dataArray['message']
+					});
+			   
+				}
+				else
+				{	
+					alert(dataArray);
+					
+					/*$.post("/code/signin/save_session.php", 
+					'email='+dataArray['email']+'&name='+dataArray['name']+'&id='+dataArray['id'], 
+					function(response){
+						window.location.replace("/dashboard");
+					})
+					.fail(function(jqxhr) { 
+						noty({
+							type: 'error',
+							text: 'Error: '+jqxhr.responseText	
+						});
+					});*/
+				}
+			}
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+});
+
+
 map = null; // make google maps var global
 mapDefaultCenterLat = 54.370559; // make google maps var global = set center as center of UK
 mapDefaultCenterLong = -2.510376; // make google maps var global = set center as center of UK
@@ -191,6 +277,45 @@ $(document).ready(function() {
 		});	
 	});
 	
+	//ajax form upload
+	var options = { 
+		url: '/code/dashboard/doUploadLogo.php',
+		success: function(responseText) { 
+			noty({
+			  type: 'success',
+			  text: 'Uploaded!'
+			});
+			
+			//alert(responseText);
+			content="<img src='/img/logoUploads/"+responseText+"'/>";
+			$('#appHeading').html(content);
+			
+			$('#picFileName').val(responseText);
+		},
+		error: function() { 
+			noty({
+			  type: 'error',
+			  text: 'Error uploading file'
+			});
+		},
+		beforeSubmit: function(arr, $form, options) { 
+			var acceptedExts = new Array(".jpg",".jpeg",".png");
+			var filename = $('#picFile').val();
+			filename = filename.toLowerCase();
+			if(searchArray(filename,acceptedExts))
+				return true;
+			else
+			{
+				noty({
+				  type: 'error',
+				  text: 'Incorrect Image File'
+				});
+				return false;
+			}
+		}
+	};
+	$('#logoUpForm').ajaxForm(options);
+	
 	//inline onClick replacements
 	$('#venueTop').on('click', function() { resizeGMap(); });
 	
@@ -220,6 +345,38 @@ $(document).ready(function() {
 	$("#aSubheading").bind('propertychange keyup input paste',function() {
 		var content = $(this).val();
 		$("#subHeading").html(content);
+	});
+	
+	$('#appConfigButton').live('click', function() { $('#appConfigForm').submit(); });
+	
+	$("#doLogoUp").live('click', function() {
+		if($('#picFile').val()) $('#logoUpForm').submit();
+		else noty({ type: 'error', text: 'Please choose a file' });
+	});
+	
+	$("#venueSave").live('click', function() {
+		noty({ type: 'success', text: 'Saved!' });
+	});
+	
+	$("#venueConfigForm").on('valid', function (e) {
+		noty({ type: 'success', text: 'Saved!' });
+	});
+	
+	$("#menuConfigForm").on('valid', function (e) {
+		noty({ type: 'success', text: 'Saved!' });
+	});
+	
+	$("#appConfigTop, #menuConfigTop, #venueTop").live('click', function() {
+		$('html, body').animate({
+        scrollTop: $(this).offset().top
+		}, 250);
+	});
+	
+	$("#changePassTrigger").live('click', function(e) {
+		$('#passDiv').show();
+		$('#changePassTrigger').hide();
+		e.preventDefault();
+		
 	});
 });
 
