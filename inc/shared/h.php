@@ -5,6 +5,7 @@
 				<h1>
 					<a href="/"><img src="/img/logo.png" alt="<? echo _("PreoDay");?>"/></a>
 				</h1>
+				<div class="progressIndicator has-tip tip-right" data-tooltip></div>
 			</li>
 			<li class="toggle-topbar">
 				<a href="#"><i class="fi-list large"></i> <? echo _("Menu");?></a>

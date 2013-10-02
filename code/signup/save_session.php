@@ -17,12 +17,13 @@
 	$bID = $_POST['bID'];
 	protect($bID);
 	
-	$_SESSION['id']=$id;
-	$_SESSION['email']=$email;
-	$_SESSION['name']=$name;
-	$_SESSION['lName']=substr($name, strrpos($name, ' ')+1);
-	$_SESSION['fName']=str_replace(" ".$_SESSION['lName'],"",$name);
-	$_SESSION['bName']=$bName;
-	$_SESSION['bID']=$bID;
-	$_SESSION['logged']=1;
+	$_SESSION['account_name']=$bName;
+	$_SESSION['account_id']=$bID;
+	
+	$_SESSION['user_id']	= $id;
+	$_SESSION['user_email']	= $email;
+	$_SESSION['user_name']	= $name;
+	$_SESSION['user_lName']	= substr($name, strrpos($name, ' ')+1);
+	$_SESSION['user_fName']	= str_replace(" ".$_SESSION['user_lName'],"",$_SESSION['user_name']);
+	$_SESSION['logged']		= 1;
 ?>

@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<label><?echo _("Email");?></label>
-				<input type="email" name="email" required tabindex=3>
+				<input type="email" name="emailF" id="emailF" required tabindex=3>
 				<small class="error"><?echo _("An email address is required.");?></small>
 			</div>
 		</div>

@@ -2,34 +2,148 @@
 @import '/fonts/helvetica-neue/style.css';
 @import '/fonts/Maven/maven.css';
 
+/*basic colours and fonts*/
 html { 
 	-webkit-font-smoothing: subpixel-antialiased;
+	/*-webkit-font-smoothing:antialiased;*/
+	/*-webkit-text-stroke:.3px;*/
 }
-
-.orbit-prev, .orbit-next { display: none; }
-.orbit-container:hover .orbit-prev, .orbit-container:hover .orbit-next { display: inline; }
 
 body {
 	background:#E9E9E9 !important;
 	font-family: HelveticaNeueW01-45Ligh;
 }
 
-h1{
+h1, .top-bar{
 	font-family: MavenProRegular;
 	font-weight: normal;
 }
 
+form label {
+	color: #2E70B7 !important;
+	font-size: 100%;
+}
+
+.secondary{
+	color: #FFF !important;
+	border: 0 !important;
+}
+
+/* Chrome autofill colour replacement */
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+/*spacing elements - both*/
+.row--space0-5 {padding: 0.5em 0;}
+.row--space1 {padding: 1em 0;}
+.row--space2 {padding: 2em 0;}
+.row--space3 {padding: 3em 0;}
+.row--space4 {padding: 4em 0;}
+.row--space5 {padding: 5em 0;}
+.row--space6 {padding: 6em 0;}
+
+/*spacing elements - up*/
+.row--space0-5u {padding-top: 0.5em;}
+.row--space1u {padding-top: 1em;}
+.row--space2u {padding-top: 2em;}
+.row--space3u {padding-top: 3em;}
+.row--space4u {padding-top: 4em;}
+.row--space5u {padding-top: 5em;}
+.row--space6u {padding-top: 6em;}
+
+/*spacing elements - down*/
+.row--space0-5d {padding-bottom: 0.5em;}
+.row--space1d {padding-bottom: 1em;}
+.row--space2d {padding-bottom: 2em;}
+.row--space3d {padding-bottom: 3em;}
+.row--space4d {padding-bottom: 4em;}
+.row--space5d {padding-bottom: 5em;}
+.row--space6d {padding-bottom: 6em;}
+
+/*top bar customization*/
 .contain-to-grid, .top-bar, .top-bar-section ul li a, .toggle-topbar, .expanded li{
 	background: #F7F7F7 !important;
 }
 
 .top-bar-section a, .toggle-topbar a {
 	color: #48535D !important;
+	font-size: 1em !important;
+	font-weight: bold !important; 
 }
 
 .top-bar-section a:hover{
 	color: #2E70B7 !important;
 }
+.top-bar{
+	padding: 12px 0px 54px 0px !important;
+}
+
+/* spacing on top of pages as per design */
+.topSpacer{ 
+	margin-top: 4em;
+}
+
+/* inputs */
+input, textarea {
+	font-size: 110% !important;
+	border: 0 !important;
+	font-weight: bold;
+}
+
+input[type='file']{
+	font-weight: normal;
+}
+
+textarea {
+	resize: none !important;
+	height: 10em !important;
+}
+
+.squareInput{
+	width: 40px !important;
+	cursor: pointer;
+	border: 1px solid #8F9094 !important;
+	color: transparent !important; /* so you can't see the cursor/text */
+}
+
+/* form buttons */
+form .button, form button, .preodayButton {
+	padding: 0.4em 0.85em;
+	font-size: 115%;
+	border: 1px solid #3AA2DC;
+	box-shadow: 0 0 0 !important;
+	-webkit-box-shadow: 0 0 0  !important;
+}
+
+/* Custom progress indicator */
+.progressIndicator{
+	border-top: 5px solid #2E70B7;
+	width: 0%;
+	margin: 10px 0px 0px 14px;
+	transition:width 1s;
+	-webkit-transition:width 1s; /* Safari */
+}
+
+/* Custom progress indicator tool-tip */
+.tooltip.tip-right {
+	margin: 1em 0 0 -2em;
+	border-radius: 0px;
+	background: #48535D;
+	font-weight: normal;
+}
+
+.tooltip.tip-right > .nub { /*we've basically taken tip-right and made it work look like tip-bottomm because the right one follows the progress bar's right end while bottom says in the same place*/
+	border-color: transparent transparent #48535D transparent;
+	right: 0;
+    left: 12px;
+    top: -10px;
+    margin-top: 0;
+}
+
+/* override for orbit pre-loading image*/
+.orbit-prev, .orbit-next { display: none; }
+.orbit-container:hover .orbit-prev, .orbit-container:hover .orbit-next { display: inline; }
 
 /* Default custom-inline-list */
 ul.custom-inline-list {
@@ -73,6 +187,16 @@ ul.custom-inline-list {
 
 footer { margin-bottom: 20px; }
 
+/*Google Maps, infobox fix/overrides for Foundation 4 conflict*/
+#map img{ /*IMP*/
+	max-width: inherit;
+} 
+#map { /* giving the map section some width/height */
+	width:100%;
+	height:410px;
+	border: 2px solid #2288C1;
+} 
+
 .infobox-wrapper {
     display:none;
 }
@@ -93,40 +217,66 @@ footer { margin-bottom: 20px; }
     box-shadow: 0 0 8px #000;
 }
 
-/*Google Maps fix for Foundation 4 conflict*/
-#map img{max-width: inherit;} /*IMP*/
-#map {width:100%;height:250px;} /* giving the map section some width/height */
+/* app config area*/
+.colorLabel{
+	color: #48535D !important;
+}
+
+#logoUpForm .thumb img {
+	border: 3px solid transparent;
+}
+
+#logoUpForm .selected img{
+	border: 3px solid #3AA2DC;
+}
+
+.thumbRow {
+	/*width: 130% !important;*/
+}	
+
+.hiddenUpload{
+	display: none;
+}
 
 /* phone area*/
 #phonePreview {
 	margin: 0 auto; 
-	text-align: center;
 } 
+
 #iphone5 {
 	background-image: url("/img/iphone5.png");
 	width: 301px; 
 	height: 636px;
-	margin-right: 20px;
+	margin: 0 0.1em;
 }
+
 #frame_iphone5 {
 	height: 451px; 
 	width: 252px; 
 	font-family: HelveticaNeueW01-45Ligh;
+	position: relative;
 }
+
 #frame_iphone5  img#phoneWallpaper{
 	height: 451px; 
 	width: 252px; 
 	margin: 94px 0 0 11px;
 	z-index:1;
 }
+
 #frame_iphone5  img#carrierIMG{
-	height: 17px; 
+	height: 54px; 
 	width: 252px; 
 	float: left;
 	z-index: 2;
 	position: relative;
 	margin: -452px 0 0 11px;
 }
+
+#aHeading {
+	height: 60px !important;
+}
+
 #frame_iphone5  img#poweredIMG{
 	height: 12px; 
 	width: 120px; 
@@ -135,31 +285,40 @@ footer { margin-bottom: 20px; }
 	position: relative;
 	margin: -25px 0 0 133px;
 }
-#appHeading, #subHeading  {
-	color: #E5E6E7;
-	margin: -388px 0 0 26px;
-	float: left;
+
+#appHeading, #subHeading, #venSubHeading  {
+	color: #FFF;
+	margin: -376px 0 0 26px;
 	position: relative;
 	z-index: 4;
 	width: 222px;
-	height: 186px;
+	max-height: 164px;
+	min-height: 70px;
 	word-break:normal;
 	overflow: hidden;
 	text-align: left;
 	font-size: 31px;
-	line-height: 36px;
+	line-height: 32px;
 	font-weight: bold !important;
 	letter-spacing: -1px;
 	text-align: left !important;
 }
-#subHeading {
+
+#subHeading, #venSubHeading {
 	font-size: 14px;
-	margin: -204px 0 0 26px;
-	height: 35px;
+	margin: 15px 0 0 26px;
+	height: 18px;
+	max-height: 18px;
+	min-height: 18px;
 	line-height: 16px;
 	letter-spacing: 0px;
 	font-weight: normal !important;
 }
+
+#subHeading {
+	margin: 0px 0 0 26px;
+}
+
 #buttonIMG {
 	float: left;
 	width: 100px;
@@ -168,7 +327,7 @@ footer { margin-bottom: 20px; }
 	position: relative;
 	z-index: 5;
 	font-weight: 100 !important;
-	background-color: #2ba6cb;
+	background-color: #3AA2DC;
 	border: 0 !important;
 	-webkit-box-shadow: none !important;
 	-moz-box-shadow: none !important;
@@ -176,20 +335,3 @@ footer { margin-bottom: 20px; }
 	box-shadow: none !important;
 	cursor: default !important;
 }
-
-.circle, .circle:nth-child(1), .circle img { border-radius: 50%;}
-
-a[id^='colour'] { 
-	height: 50px;
-	width: 50px;
-	
-	background: #000;
-}
-
-#colour8 { background: #FFF; }
-#colour5 { background: #FF0000; }
-#colour7 { background: #FFFF00; }
-#colour6 { background: #00FF00; }
-#colour2 { background: #C0C0C0; }
-#colour4 { background: #0000FF; }
-#colour3 { background: #E8E8E8; }

@@ -39,14 +39,14 @@
 	}
 	else
 	{	
-		$_SESSION['bName']	= $dataArray[0]['name'];
-		$_SESSION['bID']	= $dataArray[0]['id'];
+		$_SESSION['account_name']	= $dataArray[0]['name'];
+		$_SESSION['account_id']		= $dataArray[0]['id'];
 	}
 	
-	$_SESSION['id']=$id;
-	$_SESSION['email']=$email;
-	$_SESSION['name']=$name;
-	$_SESSION['lName']=substr($name, strrpos($name, ' ')+1);
-	$_SESSION['fName']=str_replace(" ".$_SESSION['lName'],"",$name);
-	$_SESSION['logged']=1;
+	$_SESSION['user_id']	= $id;
+	$_SESSION['user_email']	= $email;
+	$_SESSION['user_name']	= $name;
+	$_SESSION['user_lName']	= substr($name, strrpos($name, ' ')+1);
+	$_SESSION['user_fName']	= str_replace(" ".$_SESSION['user_lName'],"",$_SESSION['user_name']);
+	$_SESSION['logged']		= 1;
 ?>
