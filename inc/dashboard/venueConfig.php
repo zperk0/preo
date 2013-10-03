@@ -18,7 +18,7 @@
 				<div class="large-12 columns">
 					<label><?echo _("Venue name");?></label>
 					<input type="text" name="vName" id="vName" required tabindex=2>
-					<small class="error"><?echo _("A venue name is required.");?></small>
+					<small class="error"><?echo _("Please type a venue name");?></small>
 				</div>
 			</div>
 			
@@ -27,7 +27,7 @@
 					<label><?echo _("Venue address");?></label>
 					<input type="text" name="vAdd" id="vAdd" required tabindex=3>
 					<input type="hidden" required name="vCode" id="vCode">
-					<small class="error"><?echo _("A venue address is required.");?></small>
+					<small class="error"><?echo _("Please type a venue address");?></small>
 				</div>
 			</div>
 			
@@ -35,7 +35,7 @@
 				<div class="large-12 columns">
 					<label><?echo _("Venue description");?></label>
 					<textarea name="vDesc" required tabindex=4></textarea>
-					<small class="error"><?echo _("A venue description address is required.");?></small>
+					<small class="error"><?echo _("Please type a venue description");?></small>
 				</div>
 			</div>
 			

@@ -1,12 +1,14 @@
 @import 'foundation-icons.css';
+@import 'font-awesome.css';
 @import '/fonts/helvetica-neue/style.css';
 @import '/fonts/Maven/maven.css';
+@import './jsMiniColors/jsminicolors.css';
 
 /*basic colours and fonts*/
 html { 
-	-webkit-font-smoothing: subpixel-antialiased;
-	/*-webkit-font-smoothing:antialiased;*/
-	/*-webkit-text-stroke:.3px;*/
+	/* -webkit-font-smoothing: subpixel-antialiased; */
+	/* -webkit-font-smoothing:antialiased; */
+	/* -webkit-text-stroke:.3px; */
 }
 
 body {
@@ -19,6 +21,10 @@ h1, .top-bar{
 	font-weight: normal;
 }
 
+h6 {
+	color: #48535D;
+}
+
 form label {
 	color: #2E70B7 !important;
 	font-size: 100%;
@@ -27,6 +33,18 @@ form label {
 .secondary{
 	color: #FFF !important;
 	border: 0 !important;
+}
+
+.has-tip, .has-tip:hover{
+	border-bottom: 0;
+}
+
+small.error{
+	font-weight: normal !important;
+}
+
+.error input {
+	background: #FFF !important;
 }
 
 /* Chrome autofill colour replacement */
@@ -44,6 +62,7 @@ input:-webkit-autofill {
 .row--space6 {padding: 6em 0;}
 
 /*spacing elements - up*/
+.row--space0u {padding-top: 0 !important;margin-top: 0 !important;}
 .row--space0-5u {padding-top: 0.5em;}
 .row--space1u {padding-top: 1em;}
 .row--space2u {padding-top: 2em;}
@@ -53,6 +72,7 @@ input:-webkit-autofill {
 .row--space6u {padding-top: 6em;}
 
 /*spacing elements - down*/
+.row--space0d {padding-bottom: 0 !important;margin-bottom: 0 !important;}
 .row--space0-5d {padding-bottom: 0.5em;}
 .row--space1d {padding-bottom: 1em;}
 .row--space2d {padding-bottom: 2em;}
@@ -60,6 +80,29 @@ input:-webkit-autofill {
 .row--space4d {padding-bottom: 4em;}
 .row--space5d {padding-bottom: 5em;}
 .row--space6d {padding-bottom: 6em;}
+
+/* tips */
+.preoTips{
+	color: #B3B7BB;
+	font-size: 1.25em !important;
+}
+
+.preoTips:hover{
+	color: #58626C;
+}
+
+.tooltip.tip-bottom {
+	background: #48535D;
+	background: rgba(72,83,93,0.85);
+	font-weight: normal;
+	width: 10em !important;
+	border-radius: 0;
+}
+
+.tooltip.tip-bottom > .nub { 
+	border-color: transparent transparent #48535D transparent;
+	border-color: transparent transparent rgba(72,83,93,0.85) transparent;
+}
 
 /*top bar customization*/
 .contain-to-grid, .top-bar, .top-bar-section ul li a, .toggle-topbar, .expanded li{
@@ -100,7 +143,7 @@ textarea {
 	height: 10em !important;
 }
 
-.squareInput{
+.squareInput {
 	width: 40px !important;
 	cursor: pointer;
 	border: 1px solid #8F9094 !important;
@@ -130,11 +173,13 @@ form .button, form button, .preodayButton {
 	margin: 1em 0 0 -2em;
 	border-radius: 0px;
 	background: #48535D;
+	background: rgba(72,83,93,0.85);
 	font-weight: normal;
 }
 
-.tooltip.tip-right > .nub { /*we've basically taken tip-right and made it work look like tip-bottomm because the right one follows the progress bar's right end while bottom says in the same place*/
+.tooltip.tip-right > .nub { /*we've basically taken tip-right and made it work look like tip-bottom because the right one follows the progress bar's right end while bottom says in the same place*/
 	border-color: transparent transparent #48535D transparent;
+	border-color: transparent transparent rgba(72,83,93,0.85) transparent;
 	right: 0;
     left: 12px;
     top: -10px;
@@ -265,7 +310,7 @@ footer { margin-bottom: 20px; }
 }
 
 #frame_iphone5  img#carrierIMG{
-	height: 54px; 
+	height: 44px; 
 	width: 252px; 
 	float: left;
 	z-index: 2;
@@ -273,8 +318,22 @@ footer { margin-bottom: 20px; }
 	margin: -452px 0 0 11px;
 }
 
+.sugDropButton{
+	color: #48535D !important;
+	width: 100%;
+}
+
+#sugDrop, #sugDrop2 {
+	margin-top: 1em;
+}
+
 #aHeading {
-	height: 60px !important;
+	margin-top: -15px;
+	height: 72px !important;
+}
+
+#aSubheading {
+	margin-top: -15px;
 }
 
 #frame_iphone5  img#poweredIMG{
@@ -286,7 +345,7 @@ footer { margin-bottom: 20px; }
 	margin: -25px 0 0 133px;
 }
 
-#appHeading, #subHeading, #venSubHeading  {
+#appHeading, #subHeading, #venSubHeading , #venTitle {
 	color: #FFF;
 	margin: -376px 0 0 26px;
 	position: relative;
@@ -319,7 +378,7 @@ footer { margin-bottom: 20px; }
 	margin: 0px 0 0 26px;
 }
 
-#buttonIMG {
+#buttonIMG, #buttonIMG2, .menuMultiButton {
 	float: left;
 	width: 100px;
 	height: 22px;
@@ -335,3 +394,53 @@ footer { margin-bottom: 20px; }
 	box-shadow: none !important;
 	cursor: default !important;
 }
+
+#buttonIMG2 {
+	margin: -57px 0px 0 173px;
+	width: 77px;
+}
+
+#venTitle{
+	color: #48535D;
+	font-size: 16px;
+	font-weight: bold !important;
+	margin: -432px 0 0 67px;
+	width: 138px;
+	text-align: center !important;
+	overflow:hidden;
+	height: 30px !important;
+	min-height: 30px !important;
+	max-height: 30px !important;
+}
+
+.menuMultiButton i{
+	font-weight: normal !important;
+	font-size: 10px !important;
+}
+
+.menuMultiButton {
+	margin: -90px 0px 0 228px;
+	width: 22px !important;
+	background: #2E70B7;
+}
+
+.mmb2{
+	margin-top: -130px;
+}
+
+.mmb3{
+	margin-top: -201px;
+}
+
+.mmb4{
+	margin-top: -240px;
+}
+
+.mmb5{
+	margin-top: -280px;
+}
+
+.mmb6{
+	margin-top: -321px;
+}
+

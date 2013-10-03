@@ -68,8 +68,9 @@
 			$_SESSION['app_buttonColour']		= $dataJSON['buttonColour'];
 			$_SESSION['app_buttonTextColour']	= $dataJSON['buttonTextColour'];
 			$_SESSION['app_wallpaperId']		= $dataJSON['wallpaperId'];
+			$_SESSION['app_logo']				= $dataJSON['logo'];
 			
-			if(!isset($dataJSON['button2Colour']) || !isset($dataJSON['button2TextColour']) || !isset($dataJSON['button3Colour']) || !isset($dataJSON['button3TextColour']))
+			if(!isset($dataJSON['button2Colour']) || !isset($dataJSON['button2TextColour']) || !isset($dataJSON['button3Colour']) || !isset($dataJSON['button3TextColour']) || !isset($dataJSON['title']))
 				$_SESSION['noAppFlag-2']=1;
 			else
 			{
@@ -78,17 +79,18 @@
 				$_SESSION['app_button2TextColour']	= $dataJSON['button2TextColour'];
 				$_SESSION['app_button3Colour']		= $dataJSON['button3Colour'];
 				$_SESSION['app_button3TextColour']	= $dataJSON['button3TextColour'];
+				$_SESSION['app_title']				= $dataJSON['title'];
 			}
 		}
 		
 		//////MENU////////////////////////////////////////////////////////////////////////////
 		
 		//query to find menus for this venue  
-		$curlResult = callAPI('GET', $apiURL."menus?accountId=$accountID", false, $apiAuth);
+		$curlResult = callAPI('GET', $apiURL."menus?venueId=$venueID", false, $apiAuth);
 		
 		$dataJSON = json_decode($curlResult,true);
 		
-		if(empty($dataJSON)) 
+		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
 			$_SESSION['noMenuFlag']=1; 
 		else
 		{	

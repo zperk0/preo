@@ -18,6 +18,7 @@
 		<script src="/js/foundation/foundation.interchange.js"></script>
 		<script src="/js/foundation/foundation.abide.js"></script>
 		<script src="/js/jquery.noty-full-min.js"></script>
+		<!--<script src="/js/jsMiniColors/jsminicolors.js"></script>-->
 		<script src="/js/jsColor/jscolor.js"></script>
 		<script src="/js/form.js"></script>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>

@@ -9,15 +9,28 @@
 						<div class="row">
 							<div class="large-11 columns">
 								<label class="left"><?echo _("Create a main heading");?></label>
-								<textarea name="aHeading" id="aHeading" placeholder="<?echo _("Your heading goes here");?>" required tabindex=1></textarea>
-								<small class="error"><?echo _("A header is required.");?></small>
+								<a href="#" data-dropdown="sugDrop" class="button dropdown secondary sugDropButton"><?echo _("Choose one here");?></a>
+								<ul id="sugDrop" class="f-dropdown" data-dropdown-content>
+								  <li><a href="#">Leave the 4 deep queue to everyone else and pre-order.</a></li>
+								  <li><a href="#">Don't miss the game, jump the long queue and pre-order.</a></li>
+								  <li><a href="#">Intermission pre-order.</a></li>
+								  <li><a href="#">A sparkling fruity alternative to queuing.</a></li>
+								  <li><a href="#">Go on, jump the crazy queue and pre-order.</a></li>
+								</ul>
+								<textarea name="aHeading" id="aHeading" placeholder="<?echo _("or create your own...");?>" required tabindex=1></textarea>
+								<small class="error"><?echo _("Please create a headline message");?></small>
 							</div>
 						</div>
 						<div class="row">
 							<div class="large-11 columns">
 								<label class="left"><?echo _("Create a subheading");?></label>
-								<input type="text" name="aSubheading" id="aSubheading" placeholder="<?echo _("Subheading goes here");?>" required tabindex=2>
-								<small class="error"><?echo _("A subheading is required.");?></small>
+								<a href="#" data-dropdown="sugDrop2" class="button dropdown secondary sugDropButton"><?echo _("Choose one here");?></a>
+								<ul id="sugDrop2" class="f-dropdown" data-dropdown-content>
+								  <li><a href="#">Pre-order food and drinks</a></li>
+								  <li><a href="#">Pre-order drinks+food</a></li>
+								</ul>
+								<input type="text" name="aSubheading" id="aSubheading" placeholder="<?echo _("or create your own...");?>" required tabindex=2>
+								<small class="error"><?echo _("Please create a sub-heading");?></small>
 							</div>
 						</div>
 						
@@ -25,7 +38,7 @@
 							<div class="large-11 columns">
 								<div class="row">
 									<div class="large-1 small-1 columns">
-										<input value="FFFFFF" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateTextColour(this);'}" id="textColour" name="textColour" readonly/>
+										<input value="FFFFFF" type="text" id="textColour" name="textColour" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateTextColour(this);'}" readonly/>
 									</div>
 									<div class="large-10 small-10 columns">
 										<label for="textColour" class="left inline colorLabel"><?echo _("Choose text colour");?></label>
@@ -67,7 +80,7 @@
 							<button type="button" class="tiny expand" id="buttonIMG"><?echo _('ORDER NOW');?></button>
 							<p id="appHeading"><?echo _("Your heading goes here");?></p>
 							<p id="venSubHeading"><?echo $_SESSION['venue_name'];?></p>
-							<p id="subHeading"><?echo _("Subheading goes here");?></p>
+							<p id="subHeading"><?echo _("Your subheading goes here");?></p>
 						</div>
 					</div>
 				</form>
@@ -106,10 +119,9 @@
 						<div class="hiddenUpload">
 							<div class="row row--space2u row--space1d">
 								<div class="large-12 small-12 columns">
-									<label class="left"><?echo _("Logo Upload");?></label>
+									<label class="left row--space0-5d"><?echo _("Logo Upload");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="Note: This will replace your main heading."></i>
 									<input type="file" id="picFile" name="picFile" accept="image/png,image/jpeg" class="" />
-									<small class="left"><?echo _("Supported types: JPG, PNG. Max filesize: 10MB.");?></small>
-									<small class="left"><?echo _("Note: This will replace your main heading.");?></small>
+									<p><?echo _("Supported types: JPG or PNG");?><br/><?echo _("Max file size: 10MB");?></p>
 								</div>
 							</div>
 							<div class="row row--space1">

@@ -35,7 +35,7 @@
 	$data['buttonColour']		= $buttonColour;
 	$data['buttonTextColour']	= $buttonTextColour;
 	$data['wallpaperId']		= $wallPaperID;
-	//$data['logofile']			= $picFileName;
+	$data['logo']			= $picFileName;
 	
 	$jsonData = json_encode($data);
 	

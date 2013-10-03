@@ -7,7 +7,7 @@
 				<div class="large-12 columns">
 					<label><?echo _("Email");?></label>
 					<input type="email" name="email" placeholder="" required tabindex=1>
-					<small class="error"><?echo _("An email address is required.");?></small>
+					<small class="error"><?echo _("Please type your email address");?></small>
 				</div>
 			</div>
 			
@@ -15,7 +15,7 @@
 				<div class="large-12 columns">
 					<label><?echo _("Password");?></label>
 					<input type="password" name="password" placeholder="" required tabindex=2>
-					<small class="error"><?echo _("A password address is required.");?></small>
+					<small class="error"><?echo _("Please type your password");?></small>
 				</div>
 			</div>
 				

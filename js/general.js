@@ -365,15 +365,33 @@ $(document).ready(function() {
 		$("#wallPaperID").val(plainID);
 	});
 	
+	$('#sugDrop li a').on('click', function() {
+		var content = $(this).html();
+		$('#aHeading').val(content);
+		$("#appHeading").html(content);
+	});
+	
 	$("#aHeading").bind('propertychange keyup input paste',function() {
 		var content = $(this).val();
 		$("#appHeading").html(content);
+	});
+	
+	$('#sugDrop2 li a').on('click', function() {
+		var content = $(this).html();
+		$('#aSubheading').val(content);
+		$("#subHeading").html(content);
 	});
 	
 	$("#aSubheading").bind('propertychange keyup input paste',function() {
 		var content = $(this).val();
 		$("#subHeading").html(content);
 	});
+	
+	/* $('#textColour').minicolors({
+		change: function(hex, opacity) {
+			alert(hex);
+		}
+	}); */
 	
 	$('.visibleUpload, #logoReset').live('click', function() {
 		$('.visibleUpload').toggle();
@@ -388,6 +406,7 @@ $(document).ready(function() {
 	$("#logoReset").live('click', function() {
 		var content = $("#aHeading").attr('placeholder')
 		$("#appHeading").html(content);
+		$("#picFileName").val('');
 	});
 	
 	$('#appConfig1Sub').live('click', function() { $('#appConfigForm').submit(); });
@@ -425,7 +444,54 @@ $(document).ready(function() {
 					}
 					else
 					{	
-						noty({ type: 'success', text: 'Venue changes have been saved!' });
+						noty({ type: 'success', text: 'App changes have been saved!' });
+						setTimeout(function(){window.location.replace("/dashboard");},1000);
+					}
+				}
+			 });
+
+		return false; // avoid to execute the actual submit of the form.
+	});
+	
+	$("#vTitle").bind('propertychange keyup input paste',function() {
+		var content = $(this).val();
+		$("#venTitle").html(content);
+	});
+	
+	$("#appConfig2Form").on('valid', function (event) {
+		var url = "/code/dashboard/do_appConfig2.php";
+
+		$.ajax({
+			   type: "POST",
+			   url: url,
+			   data: $(this).serialize(), // serializes the form's elements.
+			   success: function(data)
+			   {
+					try
+					{
+						var dataArray = jQuery.parseJSON(data); //parsing JSON
+					}
+					catch(e)
+					{
+						noty({
+						  type: 'error',
+						  text: 'Connection Error! Check API endpoint.'
+						});
+						
+						return false;
+					}
+					
+					if(typeof dataArray['status'] !='undefined') //error
+					{
+						noty({
+						  type: 'error',
+						  text: dataArray['message']
+						});
+				   
+					}
+					else
+					{	
+						noty({ type: 'success', text: 'App changes have been saved!' });
 						setTimeout(function(){window.location.replace("/dashboard");},1000);
 					}
 				}
@@ -469,6 +535,22 @@ function updateButtonColour(color)
 function updateButtonTextColour(color)
 {
 	$("#buttonIMG").css('color', '#'+color);
+}
+function updateButton2Colour(color)
+{
+	$("#buttonIMG2").css('background', '#'+color);
+}
+function updateButton2TextColour(color)
+{
+	$("#buttonIMG2").css('color', '#'+color);
+}
+function updateButton3Colour(color)
+{
+	$(".menuMultiButton").css('background', '#'+color);
+}
+function updateButton3TextColour(color)
+{
+	$(".menuMultiButton").css('color', '#'+color);
 }
 
 //reset button in venueconfig form
