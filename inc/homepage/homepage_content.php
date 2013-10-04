@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="large-12 columns">
-		<?php require($_SERVER['DOCUMENT_ROOT'].'/inc/homepage/slider.php'); ?>
+		<?php require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/homepage/slider.php'); ?>
 	</div>
 </div>
 <div class="row">

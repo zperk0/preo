@@ -1,6 +1,7 @@
 <?php session_start();
 	
 	$tempLang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
+	$tempPath = $_SESSION['path'];
 	
 	$_SESSION['logged']= 0; //change logged state
 	$_SESSION['token']= 0; //reset token
@@ -12,7 +13,7 @@
 	session_start();
 	$_SESSION['lang'] = $tempLang; //we need to remember the lang even after logout
 	
-	header('location:/'); //redirect to homepage
+	header('location:'.$tempPath.'/'); //redirect to homepage
 	
 	exit;
 ?>

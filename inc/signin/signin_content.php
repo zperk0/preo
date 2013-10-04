@@ -34,6 +34,6 @@
 	</div>
 </div>
 <div id="forgotPassM" class="reveal-modal">
-	<? require($_SERVER['DOCUMENT_ROOT'].'/inc/shared/forgotpass.php'); ?>
+	<? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/forgotpass.php'); ?>
 	<a class="close-reveal-modal">&#215;</a>
 </div>

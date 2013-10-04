@@ -15,7 +15,7 @@ $(document).ready(function() {
 	//////////////////////////////////////////////////////////////////////
 
 	$("#signupForm").on('valid', function (event) {
-		var url = "/doSignUp";
+		var url = "../code/signup/do_signup.php";
 
 		$.ajax({
 			   type: "POST",
@@ -67,7 +67,7 @@ $(document).ready(function() {
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	$("#signinForm").on('valid', function (event) {
-		var url = "/doSignIn";
+		var url = "../code/signin/do_signin.php";
 
 		$.ajax({
 			   type: "POST",
@@ -192,11 +192,11 @@ $(document).ready(function() {
 		map = new google.maps.Map(document.getElementById("map"), myOptions);
 		
 		//create cool pins
-		var pinColor = "2288C1";
-		var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-			new google.maps.Size(21, 34),
-			new google.maps.Point(0,0),
-			new google.maps.Point(10, 34));
+		pinColor = "2288C1";
+		pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+		new google.maps.Size(21, 34),
+		new google.maps.Point(0,0),
+		new google.maps.Point(10, 34));
 		
 		//Google Places autocomplete
 		var input = document.getElementById('vSug');
@@ -325,7 +325,7 @@ $(document).ready(function() {
 			});
 			
 			//alert(responseText);
-			content="<img src='/img/logoUploads/"+responseText+"'/>";
+			content="<img src='../img/logoUploads/"+responseText+"'/>";
 			$('#appHeading').html(content);
 			
 			$('#picFileName').val(responseText);
@@ -374,6 +374,7 @@ $(document).ready(function() {
 	$("#aHeading").bind('propertychange keyup input paste',function() {
 		var content = $(this).val();
 		$("#appHeading").html(content);
+		$("#picFileName").val('');
 	});
 	
 	$('#sugDrop2 li a').on('click', function() {
@@ -404,7 +405,7 @@ $(document).ready(function() {
 	});
 	
 	$("#logoReset").live('click', function() {
-		var content = $("#aHeading").attr('placeholder')
+		var content = $("#aHeading").val()
 		$("#appHeading").html(content);
 		$("#picFileName").val('');
 	});
@@ -499,6 +500,14 @@ $(document).ready(function() {
 
 		return false; // avoid to execute the actual submit of the form.
 	});
+	
+	$('#menuConfigForm input').on('click', function(){
+		$(this).val('');
+	});
+	
+	//$('#menuConfigForm input').on('focusout', function(){
+	//	if($(this).val()=='') $(this).val($(this).prop( 'defaultValue' ));
+	//});
 	
 	$("#menuConfigForm").on('valid', function (e) {
 		noty({ type: 'success', text: 'Saved!' });

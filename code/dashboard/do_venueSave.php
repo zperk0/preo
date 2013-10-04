@@ -1,8 +1,8 @@
 <?php session_start(); //start the session so this file can access $_SESSION vars.
 
-	require($_SERVER['DOCUMENT_ROOT'].'/code/shared/protect_input.php'); //input protection functions to keep malicious input at bay
-	require($_SERVER['DOCUMENT_ROOT'].'/code/shared/api_vars.php');  //API config file
-	require($_SERVER['DOCUMENT_ROOT'].'/code/shared/callAPI.php');   //API calling function
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/protect_input.php'); //input protection functions to keep malicious input at bay
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	
 	$vName = $_POST['vName'];
 	protect($vName);
@@ -34,7 +34,13 @@
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	
-	$curlResult = callAPI('POST', $apiURL."venues", $jsonData, $apiAuth);
+	if(isset($_SESSION['venue_edit_on']) && $_SESSION['venue_edit_on'])
+	{
+		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id'], $jsonData, $apiAuth);
+		$_SESSION['venue_edit_on'] = 0;
+	}
+	else
+		$curlResult = callAPI('POST', $apiURL."venues", $jsonData, $apiAuth);
 	
 	echo $curlResult; //sending a JSON via ajax
 ?>

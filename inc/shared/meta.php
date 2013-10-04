@@ -8,19 +8,20 @@
 		<title><? echo _("PreoDay");?></title>
 
 		<!-- Main CSS files. -->
-		<link rel="stylesheet" href="/css/normalize.css" />
-		<link rel="stylesheet" href="/css/foundation.css" />
+		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize.css" />
+		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/foundation.css" />
 		<!-- you may add app.css to use for your overrides if you like -->
-		<link rel="stylesheet" href="/css/app.css" /> 
+		<link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/1be1c789-cf25-4498-aafa-a9790f357158.css"/>
+		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/app.css" /> 
 		
 		<!-- Favicons -->
-		<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
-		<link rel="shortcut icon" type="image/ico" 	href="/img/favicon.ico">
+		<link rel="apple-touch-icon" 	href="<?echo $_SESSION['path']?>/img/apple-touch-icon.png"	type="image/x-icon" >
+		<link rel="shortcut icon" 		href="<?echo $_SESSION['path']?>/img/fav.png">
 		
 		<!-- Mordernizr -->
-		<script src="/js/vendor/custom.modernizr.js"></script>
+		<script src="<?echo $_SESSION['path']?>/js/vendor/custom.modernizr.js"></script>
 		
 		<!-- jQuery -->
-		<script src="/js/jquery-1.8.0.js"></script>
+		<script src="<?echo $_SESSION['path']?>/js/jquery-1.8.0.js"></script>
 	</head>
 	<body>

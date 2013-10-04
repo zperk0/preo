@@ -1,5 +1,12 @@
 <div class="row">
 	<div class="topSpacer"></div>
+	<nav class="breadcrumbs row--space1d">
+		<a class="current"	   href="#">Venue Information</a>
+		<a class="unavailable" href="#">App Styling 1/2</a>
+		<a class="unavailable" href="#">App Styling 2/2</a>
+		<a class="unavailable" href="#">Menu Creation</a>
+	</nav>
+	
 	<form id="venueConfigForm" method="POST" data-abide>
 		<h1><?echo _("Tell us about your venue");?></h1>
 		<div class="large-6 columns">
@@ -17,7 +24,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue name");?></label>
-					<input type="text" name="vName" id="vName" required tabindex=2>
+					<input type="text" name="vName" id="vName" required tabindex=2 value="<?if(isset($_SESSION['venue_name'])) echo $_SESSION['venue_name'];?>">
 					<small class="error"><?echo _("Please type a venue name");?></small>
 				</div>
 			</div>
@@ -25,8 +32,8 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue address");?></label>
-					<input type="text" name="vAdd" id="vAdd" required tabindex=3>
-					<input type="hidden" required name="vCode" id="vCode">
+					<input type="text" name="vAdd" id="vAdd" required tabindex=3 value="<?if(isset($_SESSION['venue_address'])) echo $_SESSION['venue_address'];?>">
+					<input type="hidden" required name="vCode" id="vCode" value="<?if(isset($_SESSION['venue_latitude']) && isset($_SESSION['venue_longitude']))  echo "(".$_SESSION['venue_latitude'].", ".$_SESSION['venue_longitude'].")";?>">
 					<small class="error"><?echo _("Please type a venue address");?></small>
 				</div>
 			</div>
@@ -34,7 +41,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue description");?></label>
-					<textarea name="vDesc" required tabindex=4></textarea>
+					<textarea name="vDesc" required tabindex=4><?if(isset($_SESSION['venue_desc'])) echo $_SESSION['venue_desc'];?></textarea>
 					<small class="error"><?echo _("Please type a venue description");?></small>
 				</div>
 			</div>
@@ -54,10 +61,11 @@
 </div>
 
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
-<script>
+<script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','100%');
 	$('.progressIndicator').attr('title', "11% done, keep going!");
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
+	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });
 </script>

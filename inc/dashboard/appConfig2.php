@@ -1,5 +1,11 @@
 <div class="row">
 	<div class="topSpacer"></div>
+	<nav class="breadcrumbs row--space1d">
+		<a href="<?echo $_SESSION['path']?>/venueSettings.php">Venue Information</a>
+		<a href="<?echo $_SESSION['path']?>/appSettings1.php">App Styling 1/2</a>
+		<a class="current" href="#">App Styling 2/2</a>
+		<a class="unavailable" href="#">Menu Creation</a>
+	</nav>
 	<div class="large-12 columns">
 		<div class="row">
 			<h1><?echo _("Style your app");?></h1>
@@ -9,7 +15,7 @@
 						<div class="row">
 							<div class="large-11 columns">
 								<label class="left"><?echo _("Add your venue title");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="This is a shorter version of your venue name that will be visible over your menu."></i>
-								<input type="text" name="vTitle" id="vTitle" placeholder="Type a name..." required tabindex=1>
+								<input type="text" name="vTitle" id="vTitle" placeholder="Type a name..." required tabindex=1 value="<?if(isset($_SESSION['app_title'])) echo $_SESSION['app_title'];?>">
 								<small class="error"><?echo _("Please type a venue title");?></small>
 							</div>
 						</div>
@@ -41,7 +47,7 @@
 								</div>
 								<div class="row">
 									<div class="large-1 small-1 columns">
-										<input value="3AA2DC" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButton2Colour(this);'}" id="button2Colour" name="button2Colour" readonly/>
+										<input value="<?if(isset($_SESSION['app_button2Colour'])) echo $_SESSION['app_button2Colour'];else echo "3AA2DC";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButton2Colour(this);'}" id="button2Colour" name="button2Colour" readonly/>
 									</div>
 									<div class="large-10 small-10 columns">
 										<label for="buttonColour" class="left inline colorLabel"><?echo _("Choose colour one");?></label>
@@ -49,7 +55,7 @@
 								</div>
 								<div class="row">
 									<div class="large-1 small-1 columns">
-										<input value="FFFFFF" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButton2TextColour(this);'}" id="button2TextColour" name="button2TextColour" readonly/>
+										<input value="<?if(isset($_SESSION['app_button2TextColour'])) echo $_SESSION['app_button2TextColour'];else echo "FFFFFF";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButton2TextColour(this);'}" id="button2TextColour" name="button2TextColour" readonly/>
 									</div>
 									<div class="large-10 small-10 columns">
 										<label for="buttonTextColour" class="left inline colorLabel"><?echo _("Choose text colour");?></label>
@@ -67,7 +73,7 @@
 								</div>
 								<div class="row">
 									<div class="large-1 small-1 columns">
-										<input value="2E70B7" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButton3Colour(this);'}" id="button3Colour" name="button3Colour" readonly/>
+										<input value="<?if(isset($_SESSION['app_button3Colour'])) echo $_SESSION['app_button3Colour'];else echo "2E70B7";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButton3Colour(this);'}" id="button3Colour" name="button3Colour" readonly/>
 									</div>
 									<div class="large-10 small-10 columns">
 										<label for="buttonColour" class="left inline colorLabel"><?echo _("Choose colour two");?></label>
@@ -75,7 +81,7 @@
 								</div>
 								<div class="row">
 									<div class="large-1 small-1 columns">
-										<input value="FFFFFF" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButton3TextColour(this);'}" id="button3TextColour" name="button3TextColour" readonly/>
+										<input value="<?if(isset($_SESSION['app_button3TextColour'])) echo $_SESSION['app_button3TextColour'];else echo "FFFFFF";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButton3TextColour(this);'}" id="button3TextColour" name="button3TextColour" readonly/>
 									</div>
 									<div class="large-10 small-10 columns">
 										<label for="buttonTextColour" class="left inline colorLabel"><?echo _("Choose text colour");?></label>
@@ -96,10 +102,11 @@
 </div>	
 
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
-<script>
+<script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','180%');
 	$('.progressIndicator').attr('title', "35% done, even more artistic stuff...");
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
+	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });
 </script>

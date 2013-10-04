@@ -43,7 +43,7 @@ setlocale(LC_ALL, $locale);
 //echo setlocale(LC_ALL, 0); //debug
 
 $domain = 'messages';
-bindtextdomain($domain, $_SERVER['DOCUMENT_ROOT']."/locale");
+bindtextdomain($domain, $_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/locale");
 bind_textdomain_codeset($domain, "UTF-8");
 textdomain($domain);
 
@@ -109,7 +109,7 @@ setlocale(LC_ALL, $locale);
 //echo setlocale(LC_ALL, 0); //debug
 
 $domain = 'messages';
-bindtextdomain($domain, $_SERVER['DOCUMENT_ROOT']."/locale");
+bindtextdomain($domain, $_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/locale");
 bind_textdomain_codeset($domain, "UTF-8");
 textdomain($domain);
 

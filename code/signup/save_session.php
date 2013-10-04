@@ -1,6 +1,6 @@
 <?php session_start(); //start the session so this file can access $_SESSION vars.
 
-	require($_SERVER['DOCUMENT_ROOT'].'/code/shared/protect_input.php'); //input protection functions to keep malicious input at bay
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/protect_input.php'); //input protection functions to keep malicious input at bay
 	
 	$email = $_POST['email'];
 	protect($email);

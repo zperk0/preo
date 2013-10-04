@@ -1,5 +1,11 @@
 <div class="row">
 	<div class="topSpacer"></div>
+	<nav class="breadcrumbs row--space1d">
+		<a href="<?echo $_SESSION['path']?>/venueSettings.php">Venue Information</a>
+		<a class="current" href="#">App Styling 1/2</a>
+		<a class="unavailable" href="#">App Styling 2/2</a>
+		<a class="unavailable" href="#">Menu Creation</a>
+	</nav>
 	<div class="large-12 columns">
 		<div class="row">
 			<h1><?echo _("Style your app");?></h1>
@@ -17,7 +23,7 @@
 								  <li><a href="#">A sparkling fruity alternative to queuing.</a></li>
 								  <li><a href="#">Go on, jump the crazy queue and pre-order.</a></li>
 								</ul>
-								<textarea name="aHeading" id="aHeading" placeholder="<?echo _("or create your own...");?>" required tabindex=1></textarea>
+								<textarea name="aHeading" id="aHeading" placeholder="<?echo _("or create your own...");?>" required tabindex=1><?if(isset($_SESSION['app_heading'])) echo $_SESSION['app_heading'];?></textarea>
 								<small class="error"><?echo _("Please create a headline message");?></small>
 							</div>
 						</div>
@@ -29,7 +35,7 @@
 								  <li><a href="#">Pre-order food and drinks</a></li>
 								  <li><a href="#">Pre-order drinks+food</a></li>
 								</ul>
-								<input type="text" name="aSubheading" id="aSubheading" placeholder="<?echo _("or create your own...");?>" required tabindex=2>
+								<input type="text" name="aSubheading" id="aSubheading" placeholder="<?echo _("or create your own...");?>" required tabindex=2 value="<?if(isset($_SESSION['app_subHeading'])) echo $_SESSION['app_subHeading'];?>">
 								<small class="error"><?echo _("Please create a sub-heading");?></small>
 							</div>
 						</div>
@@ -38,7 +44,7 @@
 							<div class="large-11 columns">
 								<div class="row">
 									<div class="large-1 small-1 columns">
-										<input value="FFFFFF" type="text" id="textColour" name="textColour" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateTextColour(this);'}" readonly/>
+										<input value="<?if(isset($_SESSION['app_textColour'])) echo $_SESSION['app_textColour'];else echo "FFFFFF";?>" type="text" id="textColour" name="textColour" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateTextColour(this);'}" readonly/>
 									</div>
 									<div class="large-10 small-10 columns">
 										<label for="textColour" class="left inline colorLabel"><?echo _("Choose text colour");?></label>
@@ -52,7 +58,7 @@
 								<label class="row--space0-5"><?echo _("ORDER NOW button");?></label>
 								<div class="row">
 									<div class="large-1 small-1 columns">
-										<input value="3AA2DC" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButtonColour(this);'}" id="buttonColour" name="buttonColour" readonly/>
+										<input value="<?if(isset($_SESSION['app_buttonColour'])) echo $_SESSION['app_buttonColour'];else echo "3AA2DC";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButtonColour(this);'}" id="buttonColour" name="buttonColour" readonly/>
 									</div>
 									<div class="large-10 small-10 columns">
 										<label for="buttonColour" class="left inline colorLabel"><?echo _("Choose button colour");?></label>
@@ -60,7 +66,7 @@
 								</div>
 								<div class="row">
 									<div class="large-1 small-1 columns">
-										<input value="FFFFFF" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButtonTextColour(this);'}" id="buttonTextColour" name="buttonTextColour" readonly/>
+										<input value="<?if(isset($_SESSION['app_buttonTextColour'])) echo $_SESSION['app_buttonTextColour'];else echo "FFFFFF";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButtonTextColour(this);'}" id="buttonTextColour" name="buttonTextColour" readonly/>
 									</div>
 									<div class="large-10 small-10 columns">
 										<label for="buttonTextColour" class="left inline colorLabel"><?echo _("Choose text colour");?></label>
@@ -69,12 +75,12 @@
 							</div>
 						</div>
 				
-						<input type="hidden" id="wallPaperID" name="wallPaperID" value="1"/>
-						<input type="hidden" id="picFileName" name="picFileName" value=""/>
+						<input type="hidden" id="wallPaperID" name="wallPaperID" value="<?if(isset($_SESSION['app_wallpaperId'])) echo $_SESSION['app_wallpaperId'];else echo "1";?>"/>
+						<input type="hidden" id="picFileName" name="picFileName" value="<?if(isset($_SESSION['app_logo'])) echo $_SESSION['app_logo'];else echo "";?>"/>
 					</div>
 					<div id="iphone5" class="large-4 columns left">
 						<div id="frame_iphone5">
-							<img id="phoneWallpaper" src="/img/wallpapers/wall1.jpg" />
+							<img id="phoneWallpaper" src="/img/wallpapers/wall<?if(isset($_SESSION['app_wallpaperId'])) echo $_SESSION['app_wallpaperId'];else echo "1";?>.jpg" />
 							<img id="carrierIMG" src="/img/wallpapers/carrier.png" />
 							<img id="poweredIMG" src="/img/wallpapers/powered.png" />
 							<button type="button" class="tiny expand" id="buttonIMG"><?echo _('ORDER NOW');?></button>
@@ -144,10 +150,11 @@
 </div>	
 
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
-<script>
+<script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','130%');
 	$('.progressIndicator').attr('title', "26% done, time for the artistic bit...");
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
+	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });
 </script>
