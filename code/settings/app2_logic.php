@@ -78,8 +78,8 @@
 			}
 		}
 		
-		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/appConfig2.php');
 		$_SESSION['app2_edit_on']=1;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/appConfig2.php');
 	}
 	else
 		header('location:/');

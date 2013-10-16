@@ -3,6 +3,8 @@ ErrorDocument 401 /404
 ErrorDocument 403 /404
 ErrorDocument 404 /404
 
+php_value post_max_size 20M
+
 RewriteEngine on
 
 RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]

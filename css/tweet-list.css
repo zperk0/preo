@@ -1,0 +1,37 @@
+.tweet_list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow-y: hidden;
+}
+
+.tweet_list li {
+	overflow-y: auto;
+	overflow-x: hidden;
+	list-style-type: none;
+	margin: 0 0 10px 0;
+}
+
+.tweet_list li a {
+	color: #00C1F3;
+}
+
+.tweet_list .tweet_even {
+
+}
+
+.tweet_list .tweet_avatar {
+	padding-right: .5em; float: left;
+}
+
+.tweet_list .tweet_avatar img {
+	vertical-align: middle;
+}
+
+.tweet_avatar{
+	display:none;
+}
+
+.twitterfeed{
+	margin-top: 0px !important;
+}

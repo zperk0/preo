@@ -1,3 +1,5 @@
+<?if(!isset($_SESSION['menu_edit_on'])) $_SESSION['menu_edit_on']=0;?>
+
 <div class="row">
 	<div class="topSpacer"></div>
 	<nav class="breadcrumbs row--space1d">
@@ -9,159 +11,275 @@
 	<div class="large-12 columns">
 		<form id="menuConfigForm" method="POST" data-abide>
 			<h1><?echo _("Build your menu");?></h1>
+
+			<!-- Hidden inputs here keep count of menu items and options -->
+			<input type="hidden" id="sectionCount" 			name="sectionCount"			value="<?if($_SESSION['menu_edit_on']) echo $sectionCount; else echo "0";?>"/>
+			<input type="hidden" id="sectionCountAct" 		name="sectionCountAct"		value="<?if($_SESSION['menu_edit_on']) echo $sectionCount; else echo "0";?>"/>
+			
+			<input type="hidden" id="itemCount"				name="itemCount" 			value="<?if($_SESSION['menu_edit_on']) echo $itemCount; else echo "0";?>"/>
+			<input type="hidden" id="itemCountAct" 			name="itemCountAct"			value="<?if($_SESSION['menu_edit_on']) echo $itemCount; else echo "0";?>"/>
+			
+			<input type="hidden" id="item0_optionCount" 	name="item0_optionCount"	value="0"/>
+			<input type="hidden" id="item0_optionCountAct" 	name="item0_optionCountAct" value="0"/>
+			
+			<?if($_SESSION['menu_edit_on']) :
+				foreach($itemOptionArray as $key=>$itemOption)
+				{
+					//we have to keep this 1-indexed for consistency
+					?>
+					<input type="hidden" id="item<?echo ($key+1)?>_optionCount" 	name="item<?echo ($key+1)?>_optionCount"	value="<?echo $itemOption['count'];?>"/>
+					<input type="hidden" id="item<?echo ($key+1)?>_optionCountAct" 	name="item<?echo ($key+1)?>_optionCountAct" value="<?echo $itemOption['count'];?>"/>
+					<?
+				}
+			endif; ?>
+
 			<div class="row">
-				<input type="text" name="mName" id="mName" class="menuField noEnterSubmit" value="<?echo _("Click here to add your menu name");?>" required tabindex=1/>
+				<input type="text" name="mName" id="mName" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on']) echo $menu['name']; else echo _("Click to add your menu name");?>" required tabindex=1/>
 				<small class="error"><?echo _("Please type a menu name");?></small>
 			</div>
-			<div class="row">
-				<div class="large-12 columns menuSectionDiv">
-					<input type="text" name="mSectionName[]" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click here to add a section name");?>" required tabindex=2/>
-					<small class="error"><?echo _("Please type a section name");?></small>
+
+			<div class="hide" id="menuSectionRow"> <!-- DUMMY -->
+				<div class="row">
+					<div class="large-12 columns menuSectionDiv">
+						<input type="text" name="mSectionName[]" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required/>
+						<small class="error"><?echo _("Please type a section name");?></small>
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-12 columns">
+						<button id="add_section0" 		type="button" class="newItem" 				title="<?echo _("Add an item to this section");?>"><i class="fi-plus"></i></button> <?echo _("Add an item to this section");?>
+						<button id="delete_section0" 	type="button" class="deleteSection alert" 	title="<?echo _("Delete this section");?>"><i class="fi-x"></i></button> <?echo _("Delete this section");?>
+					</div>
 				</div>
 			</div>
 			
-			<div class="row">
+			<div class="hide firstItemDiv"></div> <!-- Dummy hook -->
+
+			<div class="row"> <!-- DUMMY -->
 				<div class="large-12 columns">
-					<table class="menuTable">
+					<table class="menuTable hide" id="item0">
 						<tbody>
-							<tr class="menuEdit">
+							<tr class="menuEdit itemTR">
 								<td class="menuTDName">
-									<input type="text" name="iName[]" class="menuField noEnterSubmit" value="<?echo _("Click here to add an item name");?>" required/>
+									<input type="text" name="iName[section0][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an item name");?>" required/>
 									<small class="error"><?echo _("Please type an item name");?></small>
 								</td>
 								<td class="menuTDDesc">
-									<input type="text" name="iDesc[]" class="menuField noEnterSubmit" value="<?echo _("Click here to add a description");?>" required/>
+									<input type="text" name="iDesc[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Click to add a description");?>"/>
 									<small class="error"><?echo _("Please type a description");?></small>
 								</td>
 								<td class="menuTDPrice">
-									<input type="text" name="iDesc[]" class="menuField inline noEnterSubmit" value="<?echo _("0.00");?>"required/>
+									<input type="text" name="iPrice[section0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required/>
 									<small class="error"><?echo _("Amount?");?></small>
 									</td>
 								<td class="menuTDQuant">
-									<input type="text" name="iQuan[]" class="menuField noEnterSubmit" placeholder="<?echo _("Unlimited");?>"/>
+									<input type="text" name="iQuan[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Unlimited");?>"/>
 								</td>
 								<td class="menuTDVisi">
 									<div class="switch tiny"> 
-										<input id="z" name="iVisi[]" value="0" type="radio">
-										<label for="z"><?echo _("No");?></label>
+										<input name="iVisi[section0][0]" value="0" type="radio">
+										<label><?echo _("No");?></label>
 
-										<input id="z1" name="iVisi[]" value="1" type="radio" checked>
-										<label for="z1"><?echo _("Yes");?></label>
+										<input name="iVisi[section0][0]" value="1" type="radio" checked>
+										<label><?echo _("Yes");?></label>
 
 										<span></span>
 									</div>
 								</td>
 								<td class="menuTDTools">
-									<button class="menuTableButtons" 		title="<?echo _("Edit");?>"><i class="fi-pencil"></i></button>
-									<button class="menuTableButtons" 		title="<?echo _("Duplicate");?>"><i class="icon-copy"></i></button>
-									<button class="menuTableButtons alert" 	title="<?echo _("Delete");?>"><i class="fi-x"></i></button>
+									<button type="button" class="menuTableButtons itemSave success"		title="<?echo _("Save");?>"							><i class="icon-save"></i></button>
+									<button type="button" class="menuTableButtons itemEdit hide" 		title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
+									<button type="button" class="menuTableButtons itemDuplicate" 		title="<?echo _("Duplicate");?>" id="dup_section0"	><i class="icon-copy"></i></button>
+									<button type="button" class="menuTableButtons alert itemDelete" 	title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
+								</td>
+							</tr>
+							<tr class="menuEdit">
+								<td class="itemSubheader optionTR"><h6><?echo _("Item options (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h3></td>
+							</tr>
+							<tr class="menuEdit optionTR hide">
+								<td class="menuTDName">
+									<input type="text" name="oName[item0][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an option name");?>" required/>
+									<small class="error"><?echo _("Please type an option name");?></small>
+								</td>
+								<td class="menuTDDesc">
+								</td>
+								<td class="menuTDPrice">
+									<input type="text" name="oPrice[item0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required/>
+									<small class="error"><?echo _("Amount?");?></small>
+									</td>
+								<td class="menuTDQuant">
+								</td>
+								<td class="menuTDVisi">
+									<div class="switch tiny"> 
+										<input name="oVisi[item0][0]" value="0" type="radio">
+										<label><?echo _("No");?></label>
+
+										<input name="oVisi[item0][0]" value="1" type="radio" checked>
+										<label><?echo _("Yes");?></label>
+
+										<span></span>
+									</div>
+								</td>
+								<td class="menuTDTools">
+									<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="icon-copy"></i></button>
+									<button type="button" class="menuTableButtons alert optionRowDelete" 	title="<?echo _("Delete");?>"><i class="fi-x"></i></button>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
-			
-			<!--
-				<div class="small-4 large-2 columns">
-					<label><?echo _("Visible?");?></label>
-					<div class="switch small round"> 
-						<input id="z" name="notification-switch" value="0" type="radio">
-						<label for="z"><?echo _("No");?></label>
 
-						<input id="z1" name="notification-switch" value="1" type="radio" checked>
-						<label for="z1"><?echo _("Yes");?></label>
+			<div class="row"> 
+				<div class="large-12 columns"> <!-- This is where the dynamic data goes into -->
+				
+				<?if($_SESSION['menu_edit_on']){
+					$iKey=0; //item number are continuous across sections so we can't use $key in foreach($array as $key=>$var)
+					foreach($menu['sections'] as $sKey=>$section){ 
+					//again remember its all 1-indexed thats why we add +1 to the key
+					?>
+						<div id="menuSectionRow">
+							<div class="row">
+								<div class="large-12 columns menuSectionDiv">
+									<input type="text" name="mSectionName[]" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" required/>
+									<small class="error"><?echo _("Please type a section name");?></small>
+								</div>
+							</div>
+							<div class="row">
+								<div class="large-12 columns">
+									<button id="add_section<?echo ($sKey+1);?>" 	type="button" class="newItem" 				title="<?echo _("Add an item to this section");?>"><i class="fi-plus"></i></button> <?echo _("Add an item to this section");?>
+									<button id="delete_section<?echo ($sKey+1);?>" 	type="button" class="deleteSection alert" 	title="<?echo _("Delete this section");?>"><i class="fi-x"></i></button> <?echo _("Delete this section");?>
+								</div>
+							</div>
+						</div>
+						<?foreach($section['items'] as $item){ 
+						//again remember its all 1-indexed thats why we add +1 to the key
+						?>
+							<table class="menuTable tablesection<?echo ($sKey+1);?>" id="item<?echo ($iKey+1)?>">
+								<tbody>
+									<tr class="menuEdit itemTR">
+										<td class="menuTDName">
+											<input type="text" name="iName[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo $item['name'];?>" required/>
+											<small class="error"><?echo _("Please type an item name");?></small>
+										</td>
+										<td class="menuTDDesc">
+											<input type="text" name="iDesc[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" <?if(!empty($item['description'])){?>value="<?echo $item['description'];?>"<?}?> placeholder="<?echo _("Click to add a description");?>"/>
+											<small class="error"><?echo _("Please type a description");?></small>
+										</td>
+										<td class="menuTDPrice">
+											<input type="text" name="iPrice[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo $item['price'];?>" required/>
+											<small class="error"><?echo _("Amount?");?></small>
+											</td>
+										<td class="menuTDQuant">
+											<input type="text" name="iQuan[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Unlimited");?>"/>
+										</td>
+										<td class="menuTDVisi">
+											<div class="switch tiny"> 
+												<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="0" type="radio">
+												<label><?echo _("No");?></label>
 
-						<span></span>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="large-3 small-4 columns">
-					<label><?echo _("Category");?></label>
-					<a href="#" data-dropdown="catDrop" class="button dropdown small" tabindex=2><? echo _("Select");?></a>
-					<ul id="catDrop" class="f-dropdown">
-						<li><a href="#" class="changeLang" data-new-lang="en"><? echo _("Hot Food");?></a></li>
-						<li><a href="#" class="changeLang" data-new-lang="de"><? echo _("Cold Food");?></a></li>
-						<li><a href="#" class="changeLang" data-new-lang="de"><? echo _("Soft Drinks");?></a></li>
-						<li><a href="#" class="changeLang" data-new-lang="de"><? echo _("Alcoholic Beverages");?></a></li>
-						<li><a href="#" class="changeLang" data-new-lang="de"><? echo _("add new category");?></a></li>
-					</ul>
-				</div>
+												<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="1" type="radio" checked>
+												<label><?echo _("Yes");?></label>
 
-				<div class="large-4 small-4 columns">
-					<label><?echo _("Price");?></label>
-					<input type="text" name="iPrice" value="" required tabindex=3>
-					<small class="error"><?echo _("An item price is required.");?></small>
-				</div>
+												<span></span>
+											</div>
+										</td>
+										<td class="menuTDTools">
+											<button type="button" class="menuTableButtons itemSave success" 	title="<?echo _("Save");?>"							><i class="icon-save"></i></button>
+											<button type="button" class="menuTableButtons itemEdit hide" 		title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
+											<button type="button" class="menuTableButtons itemDuplicate" 		title="<?echo _("Duplicate");?>" id="dup<?echo ($iKey+1);?>_section<?echo ($sKey+1);?>"	><i class="icon-copy"></i></button>
+											<button type="button" class="menuTableButtons alert itemDelete" 	title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
+										</td>
+									</tr>
+									<tr class="menuEdit">
+										<td class="itemSubheader optionTR"><h6><?echo _("Item options (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h3></td>
+									</tr>
+									<tr class="menuEdit optionTR hide"> <!-- This dummy is required! -->
+										<td class="menuTDName">
+											<input type="text" name="oName[item<?echo ($iKey+1);?>][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an option name");?>" required/>
+											<small class="error"><?echo _("Please type an option name");?></small>
+										</td>
+										<td class="menuTDDesc">
+										</td>
+										<td class="menuTDPrice">
+											<input type="text" name="oPrice[item<?echo ($iKey+1);?>][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required/>
+											<small class="error"><?echo _("Amount?");?></small>
+											</td>
+										<td class="menuTDQuant">
+										</td>
+										<td class="menuTDVisi">
+											<div class="switch tiny"> 
+												<input name="oVisi[item<?echo ($iKey+1);?>][0]" value="0" type="radio">
+												<label><?echo _("No");?></label>
 
-				<div class="large-5 small-4 columns">
-					<label><?echo _("Quantity");?></label>
-					<input type="number" name="iQuantity" value="Leave blank for unlimited" tabindex=5>
+												<input name="oVisi[item<?echo ($iKey+1);?>][0]" value="1" type="radio" checked>
+												<label><?echo _("Yes");?></label>
+
+												<span></span>
+											</div>
+										</td>
+										<td class="menuTDTools">
+											<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="icon-copy"></i></button>
+											<button type="button" class="menuTableButtons alert optionRowDelete" 	title="<?echo _("Delete");?>"><i class="fi-x"></i></button>
+										</td>
+									</tr>
+									<?foreach($item['modifiers'][0]['items'] as $oKey=>$option){ 
+									//again remember its all 1-indexed thats why we add +1 to the key
+									?>
+										<tr class="menuEdit optionTR">
+											<td class="menuTDName">
+												<input type="text" name="oName[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo $option['name'];?>" required/>
+												<small class="error"><?echo _("Please type an option name");?></small>
+											</td>
+											<td class="menuTDDesc">
+											</td>
+											<td class="menuTDPrice">
+												<input type="text" name="oPrice[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo $option['price'];?>" required/>
+												<small class="error"><?echo _("Amount?");?></small>
+												</td>
+											<td class="menuTDQuant">
+											</td>
+											<td class="menuTDVisi">
+												<div class="switch tiny"> 
+													<input name="oVisi[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" value="0" type="radio">
+													<label><?echo _("No");?></label>
+
+													<input name="oVisi[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" value="1" type="radio" checked>
+													<label><?echo _("Yes");?></label>
+
+													<span></span>
+												</div>
+											</td>
+											<td class="menuTDTools">
+												<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="icon-copy"></i></button>
+												<button type="button" class="menuTableButtons alert optionRowDelete" 	title="<?echo _("Delete");?>"><i class="fi-x"></i></button>
+											</td>
+										</tr>
+									<?
+									}?>
+								</tbody>
+							</table>
+						<?
+							$iKey++;
+						}
+						?>
+						<div class="hide firstItemDivsection<?echo ($sKey+1);?>"></div>
+					<?
+					}
+				}?>
+					<button type="button" class="newSection" title="<?echo _("Add a new section");?>"><i class="fi-plus"></i></button> <?echo _("Add a new section");?>
 				</div>
 			</div>
 			
-			<div class="row">
-				<div class="large-12 columns">
-					<label><?echo _("Description");?></label>
-					<textarea name="iDesc" required tabindex=4></textarea>
-					<small class="error"><?echo _("An item description address is required.");?></small>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="large-6 columns">
-					<label><?echo _("Add a size/option");?></label>
-						<button type="button" class="round" id="addOpt"><i class='fi-plus'></i></button>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div id="optDiv" class="large-12 small-12 columns">
-				</div>
-			</div>
-											
-			<br/> 
-			-->
 			<div class="row">
 				<div class="small-12 large-4 columns">
-					<button  id="itemSave" type="submit" tabindex=3><?echo _("SAVE");?></button>
+					<button type="submit"><?echo _("SAVE MENU");?></button>
 				</div>
 			</div>
 		</form>
 	</div>
 </div>
-
-<script type="text/javascript"> 
-//This needs to be here so we can use PHP to provide translated copy until we move these out to a separate file
-$(document).ready(function() {
-	i = 1;
-	$('#addOpt').click(function() { 
-		
-		$("<div />", { "class":"large-5 small-5 columns", "id":"optNameDiv"+i })
-		.append($("<label />", { "html":"<?echo _('Name');?>" }))
-		.append($("<input />", { "type": "text", "id":"optName"+i, "required": "required" }))
-		.append($("<small />", { "class":"error", "html":"<?echo _('A name is required');?>" }))
-		.appendTo("#optDiv");
-		
-		$("<div />", { "class":"large-5 small-5 columns", "id":"optPriceDiv"+i })
-		.append($("<label />", { "html":"<?echo _('Price');?>" }))
-		.append($("<input />", { "type": "text", "id":"optPrice"+i,"required": "required" }))
-		.append($("<small />", { "class":"error", "html":"<?echo _('A price is required');?>" }))
-		.appendTo("#optDiv");
-		
-		$("<div />", { "class":"large-2 small-2 columns", "id":"optDelDiv"+i })
-		.append($("<label />", { "html":"<?echo _('Delete');?>" }))
-		.append($("<button />", { "class":"button tiny alert round", "type":"button","html":"<i class='fi-x'></i>", "id":"delItem"+i, "title":"<?echo _('Click to remove option');?>" }))
-		.appendTo("#optDiv");
-		
-		i++; 
-
-	});
-});
-</script>
-
+<?if(!isset($_SESSION['menu_edit_on']) || !$_SESSION['menu_edit_on']){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
 $(document).ready(function() {
@@ -171,3 +289,4 @@ $(document).ready(function() {
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });
 </script>
+<?}?>

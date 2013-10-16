@@ -2,6 +2,7 @@
 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 
 	//debug
 	//echo "<br/><br/>";
@@ -78,8 +79,8 @@
 			}
 		}
 		
-		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/appConfig1.php');
 		$_SESSION['app1_edit_on']=1;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/appConfig1.php');
 	}
 	else
 		header('location:/');

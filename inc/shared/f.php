@@ -21,9 +21,13 @@
 		<!--<script src="/js/jsMiniColors/jsminicolors.js"></script>-->
 		<script src="<?echo $_SESSION['path']?>/js/jsColor/jscolor.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/form.js"></script>
+		<script src="<?echo $_SESSION['path']?>/js/tweet.js"></script>
+		
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 		<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
+		
 		<script src="<?echo $_SESSION['path']?>/js/general.js"></script>
+		
 		<script>
 			$(document).foundation();
 			$('.preloader').hide();
@@ -82,28 +86,13 @@
 			</script>
 		<?}?>
 		
-		<div class="row">
-			<div class="large-10 columns small-centered large-centered text-center">
-				<footer>
-					<hr/>
-					<a href="#" data-dropdown="langDrop" class="button dropdown tiny"><? echo _("Change Language");?></a>
-					<ul id="langDrop" class="f-dropdown">
-						<li><a href="#" class="changeLang" data-new-lang="en"><? echo _("English");?></a></li>
-						<li><a href="#" class="changeLang" data-new-lang="de"><? echo _("German");?></a></li>
-					</ul>
-					<div class="custom-inline-list-centered">
-						<ul class="custom-inline-list">
-							<li><a href="///facebook.com/PreoDay" 	target="_blank" title="<?echo _('Like us on Facebook');?> - facebook.com/PreoDay"><?echo _("Facebook");?></a></li>
-							<li><a href="//twitter.com/PreoDayUK" 	target="_blank" title="<?echo _('Follow us on Twitter');?> - @PreoDayUK"><?echo _("Twitter");?></a></li>
-							<li><a href="mailto:hello@preoday.com" 	target="_blank" title="<?echo _('Click here to contact us');?>"><?echo _("Contact");?></a></li>
-							<li><a href="#" data-reveal-id="termsM"					title="<?echo _('Click here for our Terms &amp; Conditions');?>"><?echo _("Terms");?></a></li>
-							<li><a href="#" data-reveal-id="privM" 					title="<?echo _('Click here for our Privacy Policy');?>"><?echo _("Privacy");?></a></li>
-						</ul>
-					</div>
-					<?echo _("PreoDay &copy; 2013. All Rights Reserved.");?> 
-				</footer>
-			</div>
-		</div>
+		<?if(isset($_SESSION['dashboardFlag']) && $_SESSION['dashboardFlag'])
+		{
+			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/dashboard_footer.php');
+			$_SESSION['dashboardFlag']=0;
+		}
+		else
+			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/regular_footer.php');?>
 	
 		<div id="termsM" class="reveal-modal">
 			<?require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/terms.php');?>

@@ -8,7 +8,8 @@
 	{
 		$curl = curl_init($url);                                                                      
 		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);      
-		if($data) curl_setopt($curl, CURLOPT_POSTFIELDS, $data);                                                                  
+		if($data) curl_setopt($curl, CURLOPT_POSTFIELDS, $data);  
+		curl_setopt($curl,CURLOPT_USERAGENT,'Mozilla/5.0 (cURL)');
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);                                                                      
 		curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
 			'Content-Type: application/json',                                                                                

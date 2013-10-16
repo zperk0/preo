@@ -2,6 +2,7 @@
 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 
 	//debug
 	//echo "<br/><br/>";
@@ -95,11 +96,19 @@
 		$dataJSON = json_decode($curlResult,true);
 		
 		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
+		{	
 			$_SESSION['noMenuFlag']=1; 
+			
+			//Let's get the outlet ID now
+			$curlResult = callAPI('GET', $apiURL."outlets?venueId=$venueID", false, $apiAuth);
+			$result = json_decode($curlResult, true);
+			
+			$_SESSION['outlet_id'] = $result[0]['id'];
+		}
 		else
 		{	
-			//echo var_dump($dataJSON);
 			$_SESSION['menu_id']	= $dataJSON[0]['id'];
+			$_SESSION['outlet_id'] 	= $dataJSON[0]['outletId'];
 		}
 		///////////////////////////////////////////////////////////////////////////////////////// 
 	}
@@ -113,7 +122,10 @@
 	//echo var_dump($_SESSION);
 	
 	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag']) /*User has given data for all 4 already*/
+	{	
+		$_SESSION['dashboardFlag']=1;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/dashboard_content.php"); 
+	}
 	else if($_SESSION['noVenueFlag']) /* User has not given all 4 so first check Venue */
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/venueConfig.php"); 
 	else if($_SESSION['noAppFlag-1']) /* User has not given all 4 so second check App-1 */

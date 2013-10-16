@@ -4,24 +4,24 @@
 		<div class="row">
 			<div class="large-6 columns">
 				<label><?echo _("First Name");?></label>
-				<input type="text" name="fName" value="<?echo $_SESSION['fName'];?>" required pattern="[a-zA-Z]+" tabindex=1>
+				<input type="text" name="fName" value="<?echo $_SESSION['user_fName'];?>" required pattern="[a-zA-Z]+" tabindex=1>
 				<small class="error"><?echo _("First Name is required and must be only letters.");?></small>
 			</div>
 			<div class="large-6 columns">
 				<label><?echo _("Last Name");?></label>
-				<input type="text" name="lName" value="<?echo $_SESSION['lName'];?>" required pattern="[a-zA-Z]+" tabindex=2>
+				<input type="text" name="lName" value="<?echo $_SESSION['user_lName'];?>" required pattern="[a-zA-Z]+" tabindex=2>
 				<small class="error"><?echo _("Last Name is required and must be only letters.");?></small>
 			</div>
 		</div>
 		<div class="row">
 			<div class="large-6 columns">
 				<label><?echo _("Email");?></label>
-				<input type="email" name="email" value="<?echo $_SESSION['email'];?>" required tabindex=3>
+				<input type="email" name="email" value="<?echo $_SESSION['user_email'];?>" required tabindex=3>
 				<small class="error"><?echo _("An email address is required.");?></small>
 			</div>
 			<div class="large-6 columns">
 				<label><?echo _("Business Name");?></label>
-				<input type="text" name="businessName" value="<?/*echo $_SESSION['bName'];*/?>" required pattern="[a-zA-Z]+" tabindex=4>
+				<input type="text" name="businessName" value="<?echo $_SESSION['account_name'];?>" required pattern="[a-zA-Z]+" tabindex=4>
 				<small class="error"><?echo _("A business name is required.");?></small>
 			</div>
 		</div>

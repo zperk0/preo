@@ -4,7 +4,11 @@
 		<a href="<?echo $_SESSION['path']?>/venueSettings.php">Venue Information</a>
 		<a href="<?echo $_SESSION['path']?>/appSettings1.php">App Styling 1/2</a>
 		<a class="current" href="#">App Styling 2/2</a>
-		<a class="unavailable" href="#">Menu Creation</a>
+		<?if(!$_SESSION['noMenuFlag']){?>
+			<a href="<?echo $_SESSION['path']?>/menuSettings.php">Menu Creation</a>
+		<?}else{?>
+			<a class="unavailable" href="#">Menu Creation</a>
+		<?}?>
 	</nav>
 	<div class="large-12 columns">
 		<div class="row">
@@ -23,7 +27,7 @@
 					
 					<div id="iphone5" class="large-4 columns left">
 						<div id="frame_iphone5">
-							<img id="phoneWallpaper" src="/img/wallpapers/menuWall.jpg" />
+							<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/menuWall.jpg" />
 							<button type="button" class="tiny expand" id="buttonIMG2"><?echo _('BASKET');?></button>
 							<button type="button" class="tiny expand menuMultiButton"><i class="fi-plus"></i></button>
 							<button type="button" class="tiny expand menuMultiButton mmb2"><i class="icon-plus"></i></button>
@@ -100,7 +104,7 @@
 		</div>
 	</div>
 </div>	
-
+<?if(!isset($_SESSION['app2_edit_on']) || !$_SESSION['app2_edit_on']){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
 $(document).ready(function() {
@@ -110,3 +114,4 @@ $(document).ready(function() {
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });
 </script>
+<?}?>

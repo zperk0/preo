@@ -2,9 +2,21 @@
 	<div class="topSpacer"></div>
 	<nav class="breadcrumbs row--space1d">
 		<a class="current"	   href="#">Venue Information</a>
-		<a class="unavailable" href="#">App Styling 1/2</a>
-		<a class="unavailable" href="#">App Styling 2/2</a>
-		<a class="unavailable" href="#">Menu Creation</a>
+		<?if(!$_SESSION['noAppFlag-1']){?>
+			<a href="<?echo $_SESSION['path']?>/appSettings1.php">App Styling 1/2</a>
+		<?}else{?>
+			<a class="unavailable" href="#">App Styling 1/2</a>
+		<?}?>
+		<?if(!$_SESSION['noAppFlag-2']){?>
+			<a href="<?echo $_SESSION['path']?>/appSettings2.php">App Styling 2/2</a>
+		<?}else{?>
+			<a class="unavailable" href="#">App Styling 2/2</a>
+		<?}?>
+		<?if(!$_SESSION['noMenuFlag']){?>
+			<a href="<?echo $_SESSION['path']?>/menuSettings.php">Menu Creation</a>
+		<?}else{?>
+			<a class="unavailable" href="#">Menu Creation</a>
+		<?}?>
 	</nav>
 	
 	<form id="venueConfigForm" method="POST" data-abide>
@@ -59,7 +71,7 @@
 		</div>
 	</form>
 </div>
-
+<?if(!isset($_SESSION['venu_edit_on']) || !$_SESSION['venu_edit_on']){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
 $(document).ready(function() {
@@ -69,3 +81,4 @@ $(document).ready(function() {
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });
 </script>
+<?}?>

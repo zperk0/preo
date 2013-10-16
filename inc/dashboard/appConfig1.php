@@ -3,8 +3,16 @@
 	<nav class="breadcrumbs row--space1d">
 		<a href="<?echo $_SESSION['path']?>/venueSettings.php">Venue Information</a>
 		<a class="current" href="#">App Styling 1/2</a>
-		<a class="unavailable" href="#">App Styling 2/2</a>
-		<a class="unavailable" href="#">Menu Creation</a>
+		<?if(!$_SESSION['noAppFlag-2']){?>
+			<a href="<?echo $_SESSION['path']?>/appSettings2.php">App Styling 2/2</a>
+		<?}else{?>
+			<a class="unavailable" href="#">App Styling 2/2</a>
+		<?}?>
+		<?if(!$_SESSION['noMenuFlag']){?>
+			<a href="<?echo $_SESSION['path']?>/menuSettings.php">Menu Creation</a>
+		<?}else{?>
+			<a class="unavailable" href="#">Menu Creation</a>
+		<?}?>
 	</nav>
 	<div class="large-12 columns">
 		<div class="row">
@@ -80,9 +88,9 @@
 					</div>
 					<div id="iphone5" class="large-4 columns left">
 						<div id="frame_iphone5">
-							<img id="phoneWallpaper" src="/img/wallpapers/wall<?if(isset($_SESSION['app_wallpaperId'])) echo $_SESSION['app_wallpaperId'];else echo "1";?>.jpg" />
-							<img id="carrierIMG" src="/img/wallpapers/carrier.png" />
-							<img id="poweredIMG" src="/img/wallpapers/powered.png" />
+							<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/wall<?if(isset($_SESSION['app_wallpaperId'])) echo $_SESSION['app_wallpaperId'];else echo "1";?>.jpg" />
+							<img id="carrierIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/carrier.png" />
+							<img id="poweredIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/powered.png" />
 							<button type="button" class="tiny expand" id="buttonIMG"><?echo _('ORDER NOW');?></button>
 							<p id="appHeading"><?echo _("Your heading goes here");?></p>
 							<p id="venSubHeading"><?echo $_SESSION['venue_name'];?></p>
@@ -101,17 +109,17 @@
 						<div class="row thumbRow">
 							<div class="large-4 small-4 columns">
 								<a class="thumb selected" id="thumb1">
-									<img src="/img/wallpapers/thumb1.jpg">
+									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb1.jpg">
 								</a>
 							</div>
 							<div class="large-4 small-4 columns">
 								<a class="thumb" id="thumb2">
-									<img src="/img/wallpapers/thumb2.jpg">
+									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb2.jpg">
 								</a>
 							</div>
 							<div class="large-4 small-4 columns">
 								<a class="thumb" id="thumb3">
-									<img src="/img/wallpapers/thumb3.jpg">
+									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb3.jpg">
 								</a>
 							</div>
 						</div>
@@ -148,7 +156,7 @@
 		</div>
 	</div>
 </div>	
-
+<?if(!isset($_SESSION['app1_edit_on']) || !$_SESSION['app1_edit_on']){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
 $(document).ready(function() {
@@ -158,3 +166,4 @@ $(document).ready(function() {
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });
 </script>
+<?}?>

@@ -3,6 +3,7 @@
 @import '../fonts/helvetica-neue/style.css';
 @import '../fonts/Maven/maven.css';
 @import './jsMiniColors/jsminicolors.css';
+@import 'tweet-list.css';
 
 /*basic colours and fonts*/
 h1,h2,h3 { 
@@ -169,6 +170,12 @@ form .button, form button, .preodayButton {
 	-webkit-box-shadow: 0 0 0  !important;
 }
 
+button.success{
+	box-shadow: 0 0 0 !important;
+	-webkit-box-shadow: 0 0 0  !important;
+	padding: 0.4em 0.85em;
+}
+
 /* Custom progress indicator */
 .progressIndicator{
 	border-top: 5px solid #2E70B7;
@@ -240,8 +247,6 @@ ul.custom-inline-list {
     float: none;
     display: inline-block; }
 
-footer { margin-bottom: 20px; }
-
 /*Google Maps, infobox fix/overrides for Foundation 4 conflict*/
 #map img{ /*IMP*/
 	max-width: inherit;
@@ -299,7 +304,7 @@ footer { margin-bottom: 20px; }
 } 
 
 #iphone5 {
-	background-image: url("/img/iphone5.png");
+	background-image: url("../img/iphone5.png");
 	width: 301px; 
 	height: 636px;
 	margin: 0 0.1em;
@@ -473,6 +478,10 @@ footer { margin-bottom: 20px; }
 	background: white !important;
 }
 
+.menuTable .menuField:focus{
+	background: #F1F0F2 !important;
+}
+
 .menuSectionField{
 	color: #48535D !important;
 	font-size: 26px !important;
@@ -494,7 +503,12 @@ table.menuTable {
 
 .menuTable td{
 	width: 20%;
-	/*border: 1px solid;*/
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.itemSubheader{
+	padding-top: 8px !important;
 }
 
 .menuTable input{
@@ -511,45 +525,63 @@ tr.menuEdit{
 	color: #48535D !important;
 }
 
+.menuTable .menuField {
+	font-family: HelveticaNeueW01-45Ligh !important;
+	color: #48535D !important;
+	font-size: inherit !important;
+	display: inline!important;
+}
+
 .menuTable .menuTDName{
 	font-weight: bold !important;
 	width: 30%;
 }
+
+.menuTable .menuTDName input{
+	font-weight: bold !important;
+}
+
 .menuTable .menuTDDesc{
 	width: 32%;
 }
+
 .menuTable .menuTDPrice{
 	width: 9%;
 }
+
+.menuTable .menuTDPrice input{
+	text-align: center;
+}
+
 .menuTable .menuTDQuant{
 	width: 9%;
 }
+
 .menuTable .menuTDQuant input{
 	font-size: 80% !important;
 	height: 42px;
 }
+
 .menuTable .menuTDVisi{
 	width: 8%;
 }
+
 .menuTable .menuTDTools{
 	width: 12%;
 }
 
 .menuTableButtons{
 	font-size: 15px !important;
-	padding: 2px 6px;
+	padding: 2px 6px !important;
 	margin-top: 8px;
 }
 
-.menuTDTools .alert {
-	border-color: #E30F4D;
+.menuTableButtons .success{
+	background: #88c542 !important;
 }
 
-.menuTable .menuField {
-	font-family: HelveticaNeueW01-45Ligh !important;
-	color: #48535D !important;
-	font-size: inherit !important;
-	display: inline!important;
+.menuTDTools .alert, .deleteSection {
+	border-color: #E30F4D !important;
 }
 
 .menuTDPrice input{
@@ -562,4 +594,105 @@ tr.menuEdit{
 	margin-top: 14px;
 	padding-right: 4px;
 	padding-left: 4px;
+}
+
+.menuTable h6{
+	color: #2D7EC5;
+	font-weight: normal;
+}
+
+.menuTable .savedInput input:focus{
+	background: #E9E9E9 !important;
+}
+
+.itemSubheader button{
+	width: 20px;
+	height: 20px;
+	font-size: 10px;
+	padding: 0px;
+}
+
+.itemSubheader h6{
+	margin-bottom:-12px;
+}
+
+.newItem, .newSection, .deleteSection{
+	padding: 0 6px;
+}
+
+.newItem{
+	background: #2E70B7;
+	border: #2E70B7;
+}
+
+.dashContent p, .dashContentTop h1, .dashContent a, .dashboardFooter, .dashboardFooter a, .premiumDiv p {
+	color: #D7D9DA;
+}
+
+.dashContent a:hover, .dashboardFooter a:hover {
+	color: #FFF;
+}
+
+.dashContent, .dashContent h1, .dashContent h3 {
+	color: #00C1F3;
+}
+
+.dashContent p, .dashboardFooter p{
+	margin-bottom: 0;
+}
+
+footer.dashboardFooter {
+	background: rgba(0,0,0,0.15);
+	margin-top: 50px;
+	overflow: hidden; /* to force height */
+}
+
+footer.dashboardFooter div{
+	margin-top: 20px;
+}
+
+.TWFoot img, .FBFoot img{
+	margin-right: 5px;
+}
+
+.LIFoot img, .FBFoot img{
+	margin-left: 5px;
+}
+
+.TWFoot img, .FBFoot img, .LIFoot img {
+	margin-bottom: 20px;
+}
+
+.premiumDiv h3{
+	color: #A8DC3E;
+}
+
+.dashContent .pagerRow{
+	margin-top: 20px;
+	text-align: center;
+}
+
+.dashContent .pagerRow i{
+	margin-right: 2px;
+	margin-left: 2px;
+}
+
+.dashContent .phoneContainer{
+	overflow: hidden;
+	height: 100%;
+}
+
+.phone1, .phone2{
+	z-index: -1;
+	overflow: visible;
+}
+
+@media screen and (min-width: 915px){
+	.dashContent #iphone5{
+		margin-top: -86px;
+	}
+
+	.premiumDiv{
+		margin-top: -250px;
+	}
 }

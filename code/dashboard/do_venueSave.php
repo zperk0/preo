@@ -40,7 +40,21 @@
 		$_SESSION['venue_edit_on'] = 0;
 	}
 	else
+	{
 		$curlResult = callAPI('POST', $apiURL."venues", $jsonData, $apiAuth);
+		
+		$result = json_decode($curlResult, true);
+	
+		//Finally add outlet
+		$data = array();
+		$data['venueId'] 	= $result['id'];
+		$data['name'] 		= $vName;
+		$data['latitude'] 	= $vLat;
+		$data['longitude'] 	= $vLong;
+		
+		$jsonData = json_encode($data);
+		$curlResult = callAPI('POST', $apiURL."outlets", $jsonData, $apiAuth); 
+	}
 	
 	echo $curlResult; //sending a JSON via ajax
 ?>

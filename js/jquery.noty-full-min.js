@@ -583,6 +583,97 @@ window.noty = function noty(options) {
 
 ;(function($) {
 
+	$.noty.layouts.inline = {
+		name: 'inline',
+		options: {},
+		container: {
+			object: '<ul id="noty_inline_layout_container" />',
+			selector: 'ul#noty_inline_layout_container',
+			style: function() {
+				$(this).css({
+					width: '100%',
+					height: 'auto',
+					margin: 0,
+					padding: 0,
+					listStyleType: 'none',
+					zIndex: 9999999
+				});
+			}
+		},
+		parent: {
+			object: '<li />',
+			selector: 'li',
+			css: {}
+		},
+		css: {
+			display: 'none'
+		},
+		addClass: ''
+	};
+
+})(jQuery);
+
+;(function($) {
+
+	$.noty.layouts.center = {
+		name: 'center',
+		options: { // overrides options
+			
+		},
+		container: {
+			object: '<ul id="noty_center_layout_container" />',
+			selector: 'ul#noty_center_layout_container',
+			style: function() {
+				$(this).css({
+					position: 'fixed',
+					width: '310px',
+					height: 'auto',
+					margin: 0,
+					padding: 0,
+					listStyleType: 'none',
+					zIndex: 10000000
+				});
+
+				// getting hidden height
+				var dupe = $(this).clone().css({visibility:"hidden", display:"block", position:"absolute", top: 0, left: 0}).attr('id', 'dupe');
+				$("body").append(dupe);
+				dupe.find('.i-am-closing-now').remove();
+				dupe.find('li').css('display', 'block');
+				var actual_height = dupe.height();
+				dupe.remove();
+
+				if ($(this).hasClass('i-am-new')) {
+					$(this).css({
+						left: ($(window).width() - $(this).outerWidth(false)) / 2 + 'px',
+						top: ($(window).height() - actual_height) / 2 + 'px'
+					});
+				} else {
+					$(this).animate({
+						left: ($(window).width() - $(this).outerWidth(false)) / 2 + 'px',
+						top: ($(window).height() - actual_height) / 2 + 'px'
+					}, 500);
+				}
+				
+			}
+		},
+		parent: {
+			object: '<li />',
+			selector: 'li',
+			css: {}
+		},
+		css: {
+			display: 'none',
+			width: '310px'
+		},
+		addClass: ''
+	};
+
+})(jQuery);
+
+
+
+;(function($) {
+
 	$.noty.themes.defaultTheme = {
 		name: 'defaultTheme',
 		helpers: {
@@ -726,6 +817,9 @@ window.noty = function noty(options) {
 				case 'success':
 					this.$bar.css({backgroundColor: 'lightgreen', borderColor: '#50C24E', color: 'darkgreen'});
 					this.$buttons.css({borderTop: '1px solid #50C24E'});break;
+				case 'confirm':
+					this.$bar.css({backgroundColor: '#E9E9E9', borderColor: '#000', color: '#000'});
+					this.$buttons.css({backgroundColor: '#F7F7F7'});break;
 				default:
 					this.$bar.css({backgroundColor: '#FFF', borderColor: '#CCC', color: '#444'}); break;
 			}
