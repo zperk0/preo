@@ -11,5 +11,5 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/authentication.php'); 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
-	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/settings/venue_logic.php'); 
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/settings/event_logic.php'); 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>

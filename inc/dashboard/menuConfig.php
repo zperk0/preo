@@ -3,14 +3,14 @@
 <div class="row">
 	<div class="topSpacer"></div>
 	<nav class="breadcrumbs row--space1d">
-		<a href="<?echo $_SESSION['path']?>/venueSettings.php">Venue Information</a>
-		<a href="<?echo $_SESSION['path']?>/appSettings1.php">App Styling 1/2</a>
-		<a href="<?echo $_SESSION['path']?>/appSettings2.php">App Styling 2/2</a>
-		<a class="current" href="#">Menu Creation</a>
+		<a href="<?echo $_SESSION['path']?>/venueSettings.php"><? echo _("Venue Information");?></a>
+		<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling 1/2");?></a>
+		<a href="<?echo $_SESSION['path']?>/appSettings2.php"><? echo _("App Styling 2/2");?></a>
+		<a class="current" href="#"><? echo _("Menu Creation");?></a>
 	</nav>
 	<div class="large-12 columns">
 		<form id="menuConfigForm" method="POST" data-abide>
-			<h1><?echo _("Build your menu");?></h1>
+			<h1><?if(!isset($_SESSION['menu_edit_on'])) echo _("Build your menu"); else echo _("Your menu");?></h1>
 
 			<!-- Hidden inputs here keep count of menu items and options -->
 			<input type="hidden" id="sectionCount" 			name="sectionCount"			value="<?if($_SESSION['menu_edit_on']) echo $sectionCount; else echo "0";?>"/>
@@ -171,14 +171,14 @@
 											<small class="error"><?echo _("Amount?");?></small>
 											</td>
 										<td class="menuTDQuant">
-											<input type="text" name="iQuan[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Unlimited");?>"/>
+											<input type="text" name="iQuan[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" <?if($item['quantity']){?>value="<?echo $item['quantity']?>"<?}else{?>placeholder="<?echo _("Unlimited");}?>"/>
 										</td>
 										<td class="menuTDVisi">
 											<div class="switch tiny"> 
-												<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="0" type="radio">
+												<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="0" type="radio" <?if(!$item['visible']){?>checked<?}?>>
 												<label><?echo _("No");?></label>
 
-												<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="1" type="radio" checked>
+												<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="1" type="radio" <?if($item['visible']){?>checked<?}?>>
 												<label><?echo _("Yes");?></label>
 
 												<span></span>
@@ -241,10 +241,10 @@
 											</td>
 											<td class="menuTDVisi">
 												<div class="switch tiny"> 
-													<input name="oVisi[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" value="0" type="radio">
+													<input name="oVisi[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" value="0" type="radio" <?if(!$option['visible']){?>checked<?}?>>
 													<label><?echo _("No");?></label>
 
-													<input name="oVisi[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" value="1" type="radio" checked>
+													<input name="oVisi[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" value="1" type="radio" <?if($option['visible']){?>checked<?}?>>
 													<label><?echo _("Yes");?></label>
 
 													<span></span>

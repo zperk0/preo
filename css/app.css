@@ -4,6 +4,7 @@
 @import '../fonts/Maven/maven.css';
 @import './jsMiniColors/jsminicolors.css';
 @import 'tweet-list.css';
+@import 'date-time.css';
 
 /*basic colours and fonts*/
 h1,h2,h3 { 
@@ -155,10 +156,12 @@ textarea {
 }
 
 .squareInput {
-	width: 40px !important;
+	width: 100px !important;
 	cursor: pointer;
 	border: 1px solid #8F9094 !important;
-	color: transparent !important; /* so you can't see the cursor/text */
+	color: #222 !important;
+	text-align: center;
+	/*color: transparent !important;  so you can't see the cursor/text */
 }
 
 /* form buttons */
@@ -428,6 +431,17 @@ ul.custom-inline-list {
 	max-height: 30px !important;
 }
 
+#venTitle, #vTitle{
+	width: 140px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#vTitle{
+	width: 190px;
+}
+
 .menuMultiButton i{
 	font-weight: normal !important;
 	font-size: 10px !important;
@@ -459,7 +473,7 @@ ul.custom-inline-list {
 	margin-top: -321px;
 }
 
-.menuField{
+.menuField, .eventField{
 	background: transparent !important;
 	border: 0 !important;
 	box-shadow: 0 0 0 !important;
@@ -474,11 +488,11 @@ ul.custom-inline-list {
 	margin-bottom: 0 !important;
 }
 
-.menuField:focus{
+.menuField:focus, .eventField:focus{
 	background: white !important;
 }
 
-.menuTable .menuField:focus{
+.menuTable .menuField:focus, .eventTable .eventField:focus{
 	background: #F1F0F2 !important;
 }
 
@@ -488,20 +502,20 @@ ul.custom-inline-list {
 	font-weight: bold !important;
 }
 
-table.menuTable {
+table.menuTable, table.eventTable {
 	border:0px !important;
 	table-layout: fixed !important;
 	margin-left: 20px;
 }
 
-.menuTable tr{
+.menuTable tr, .eventTable tr{
 	background: #E9E9E9 !important;
 	font-size: 1.3em !important;
 	border-top: 1px solid #B8B9BC;
 	border-bottom: 1px solid #B8B9BC;
 }
 
-.menuTable td{
+.menuTable td, .eventTable td{
 	width: 20%;
 	padding-top: 0;
 	padding-bottom: 0;
@@ -511,33 +525,33 @@ table.menuTable {
 	padding-top: 8px !important;
 }
 
-.menuTable input{
+.menuTable input, .eventTable input{
 	padding:1px !important;
 	margin-bottom: 0px !important;
 }
 
-tr.menuEdit{
+tr.menuEdit, tr.eventEdit{
 	background: #FFF !important;
 }
 
-.menuEdit input{
+.menuEdit input, .eventEdit input{
 	background: #F1F0F2 !important;
 	color: #48535D !important;
 }
 
-.menuTable .menuField {
+.menuTable .menuField, .eventTable .eventField {
 	font-family: HelveticaNeueW01-45Ligh !important;
 	color: #48535D !important;
 	font-size: inherit !important;
 	display: inline!important;
 }
 
-.menuTable .menuTDName{
+.menuTable .menuTDName, .eventTable .eventTDName{
 	font-weight: bold !important;
 	width: 30%;
 }
 
-.menuTable .menuTDName input{
+.menuTable .menuTDName input, .eventTable .eventTDName input{
 	font-weight: bold !important;
 }
 
@@ -545,12 +559,22 @@ tr.menuEdit{
 	width: 32%;
 }
 
-.menuTable .menuTDPrice{
+.eventTable .eventTDDesc{
+	width: 28%;
+}
+
+.menuTable .menuTDPrice, .eventTable .eventTDTime{
 	width: 9%;
 }
 
 .menuTable .menuTDPrice input{
 	text-align: center;
+}
+
+.eventTable .eventTDTime input {
+	text-align: center;
+	font-size: 80% !important;
+	height: 42px;
 }
 
 .menuTable .menuTDQuant{
@@ -561,47 +585,56 @@ tr.menuEdit{
 	font-size: 80% !important;
 	height: 42px;
 }
+.eventTable .eventTDDate{
+	width: 13%;
+}
 
-.menuTable .menuTDVisi{
+.eventTable .eventTDDate input{
+	font-size: 90% !important;
+	height: 42px;
+	text-align: center !important;
+}
+
+.menuTable .menuTDVisi, .eventTable .eventTDVisi{
 	width: 8%;
 }
 
-.menuTable .menuTDTools{
+.menuTable .menuTDTools, .eventTable .eventTDTools{
 	width: 12%;
 }
 
-.menuTableButtons{
+.menuTableButtons, .eventTableButtons{
 	font-size: 15px !important;
 	padding: 2px 6px !important;
 	margin-top: 8px;
 }
 
-.menuTableButtons .success{
+.menuTableButtons .success, .eventTableButtons .success{
 	background: #88c542 !important;
 }
 
-.menuTDTools .alert, .deleteSection {
+.menuTDTools .alert, .deleteSection, .eventTDTools .alert {
 	border-color: #E30F4D !important;
 }
 
-.menuTDPrice input{
+.menuTDPrice input, .eventTDTime input{
 	display: inline!important;
 	padding: 0;
 	width: 64px;
 }
 
-.menuTDVisi .switch{
+.menuTDVisi .switch, .eventTDVisi .switch{
 	margin-top: 14px;
 	padding-right: 4px;
 	padding-left: 4px;
 }
 
-.menuTable h6{
+.menuTable h6, .eventTable h6{
 	color: #2D7EC5;
 	font-weight: normal;
 }
 
-.menuTable .savedInput input:focus{
+.menuTable .savedInput input:focus, .eventTable .savedInput input:focus{
 	background: #E9E9E9 !important;
 }
 
@@ -616,11 +649,11 @@ tr.menuEdit{
 	margin-bottom:-12px;
 }
 
-.newItem, .newSection, .deleteSection{
+.newItem, .newSection, .deleteSection, .newEvent{
 	padding: 0 6px;
 }
 
-.newItem{
+.newItem, .newEvent{
 	background: #2E70B7;
 	border: #2E70B7;
 }

@@ -82,7 +82,9 @@
 					$menu[$i]['items'][$a]['desc'] = /*protect(*/$_POST['iDesc']['section'.$j][$b];//);
 					$menu[$i]['items'][$a]['price'] = /*protect(*/$_POST['iPrice']['section'.$j][$b];//);
 					$menu[$i]['items'][$a]['quantity'] = /*protect(*/$_POST['iQuan']['section'.$j][$b];//);
+						if(!isset($menu[$i]['items'][$a]['quantity']) || !$menu[$i]['items'][$a]['quantity']){ $menu[$i]['items'][$a]['quantity'] = 0; }
 					$menu[$i]['items'][$a]['visible'] = /*protect(*/$_POST['iVisi']['section'.$j][$b];//);
+						if(!isset($menu[$i]['items'][$a]['visible']) || !$menu[$i]['items'][$a]['visible']){ $menu[$i]['items'][$a]['visible'] = 0; }
 					
 					//now we get all the options
 					$x = $y = 1;
@@ -93,6 +95,7 @@
 							$menu[$i]['items'][$a]['options'][$x]['name'] = /*protect(*/$_POST['oName']['item'.$j][$y];//);
 							$menu[$i]['items'][$a]['options'][$x]['price'] = /*protect(*/$_POST['oPrice']['item'.$j][$y];//);
 							$menu[$i]['items'][$a]['options'][$x]['visible'] = /*protect(*/$_POST['oVisi']['item'.$j][$y];//);
+								if(!isset($menu[$i]['items'][$a]['options'][$x]['visible']) || !$menu[$i]['items'][$a]['options'][$x]['visible']){ $menu[$i]['items'][$a]['options'][$x]['visible'] = 0; }
 							
 							$x++;
 						}
@@ -159,63 +162,65 @@
 		
 		$section_id = $result['id'];
 		
-		foreach($section['items'] as $iKey=>$item)
-		{
-			//create item along with put an entry in sectionxitems
-			$data 					= array();
-			$data['name'] 			= $item['name'];
-			$data['venueId'] 		= $_SESSION['venue_id'];
-			$data['description'] 	= $item['desc'];
-			$data['price'] 			= $item['price'];
-			//$data['quantity'] 	= $item['quantity'];
-			//$data['visible'] 		= $item['visible'];
-			
-			$data['menuId'] 		= $_SESSION['menu_id']; //sectionxitems
-			$data['sectionId'] 		= $section_id; //sectionxitems
-			$data['position'] 		= $iKey; //sectionxitems
-			
-			$jsonData = json_encode($data);
-			$curlResult = callAPI('POST', $apiURL."items", $jsonData, $apiAuth); //item created
-			
-			$result = json_decode($curlResult,true);
-			
-			//+d($curlResult);
-			
-			$item_id = $result['id'];
-						
-			//create modifier
-			$data = array();
-			$data['itemId'] = $item_id;
-			$data['name'] = "options"; //we can make this dynamic (and others below) and get front end to allow creation of "sizes", "choice of", etc
-			$data['minChoices'] = "0";
-			$data['maxChoices'] = "100";
-			$data['position'] = $iKey;
-			
-			$jsonData = json_encode($data);
-			$curlResult = callAPI('POST', $apiURL."modifiers", $jsonData, $apiAuth); //modifier created
-			
-			$result = json_decode($curlResult,true);
-			
-			//+d($curlResult);
-			
-			$modifier_id = $result['id'];
-			
-			if(isset($item['options']))
+		if(isset($section['items']) && !empty($section['items'])){
+			foreach($section['items'] as $iKey=>$item)
 			{
-				foreach($item['options'] as $oKey=>$option)
-				{
-					//create modifier item
-					$data = array();
-					$data['modifierId'] = $modifier_id;
-					$data['name'] = $option['name'];
-					$data['price'] = $option['price'];
-					$data['position'] = $oKey;
-					//$data['visible'] = $option['visible'];
+				//create item along with put an entry in sectionxitems
+				$data 					= array();
+				$data['name'] 			= $item['name'];
+				$data['venueId'] 		= $_SESSION['venue_id'];
+				$data['description'] 	= $item['desc'];
+				$data['price'] 			= $item['price'];
+				$data['quantity'] 		= $item['quantity'];
+				$data['visible'] 		= $item['visible'];
 				
-					$jsonData = json_encode($data);
-					$curlResult = callAPI('POST', $apiURL."modifieritems", $jsonData, $apiAuth); //modifier created
+				$data['menuId'] 		= $_SESSION['menu_id']; //sectionxitems
+				$data['sectionId'] 		= $section_id; //sectionxitems
+				$data['position'] 		= $iKey; //sectionxitems
+				
+				$jsonData = json_encode($data);
+				$curlResult = callAPI('POST', $apiURL."items", $jsonData, $apiAuth); //item created
+				
+				$result = json_decode($curlResult,true);
+				
+				//+d($curlResult);
+				
+				$item_id = $result['id'];
+							
+				//create modifier
+				$data = array();
+				$data['itemId'] = $item_id;
+				$data['name'] = "options"; //we can make this dynamic (and others below) and get front end to allow creation of "sizes", "choice of", etc
+				$data['minChoices'] = "0";
+				$data['maxChoices'] = "100";
+				$data['position'] = $iKey;
+				
+				$jsonData = json_encode($data);
+				$curlResult = callAPI('POST', $apiURL."modifiers", $jsonData, $apiAuth); //modifier created
+				
+				$result = json_decode($curlResult,true);
+				
+				//+d($curlResult);
+				
+				$modifier_id = $result['id'];
+				
+				if(isset($item['options']))
+				{
+					foreach($item['options'] as $oKey=>$option)
+					{
+						//create modifier item
+						$data = array();
+						$data['modifierId'] = $modifier_id;
+						$data['name'] = $option['name'];
+						$data['price'] = $option['price'];
+						$data['position'] = $oKey;
+						$data['visible'] = $option['visible'];
 					
-					//+d($curlResult);
+						$jsonData = json_encode($data);
+						$curlResult = callAPI('POST', $apiURL."modifieritems", $jsonData, $apiAuth); //modifier created
+						
+						//+d($curlResult);
+					}
 				}
 			}
 		}

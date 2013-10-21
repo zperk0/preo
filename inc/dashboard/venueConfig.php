@@ -1,21 +1,21 @@
 <div class="row">
 	<div class="topSpacer"></div>
 	<nav class="breadcrumbs row--space1d">
-		<a class="current"	   href="#">Venue Information</a>
+		<a class="current"	   href="#"><? echo _("Venue Information");?></a>
 		<?if(!$_SESSION['noAppFlag-1']){?>
-			<a href="<?echo $_SESSION['path']?>/appSettings1.php">App Styling 1/2</a>
+			<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling 1/2");?></a>
 		<?}else{?>
-			<a class="unavailable" href="#">App Styling 1/2</a>
+			<a class="unavailable" href="#"><? echo _("App Styling 1/2");?></a>
 		<?}?>
 		<?if(!$_SESSION['noAppFlag-2']){?>
-			<a href="<?echo $_SESSION['path']?>/appSettings2.php">App Styling 2/2</a>
+			<a href="<?echo $_SESSION['path']?>/appSettings2.php"><? echo _("App Styling 2/2");?></a>
 		<?}else{?>
-			<a class="unavailable" href="#">App Styling 2/2</a>
+			<a class="unavailable" href="#"><? echo _("App Styling 2/2");?></a>
 		<?}?>
 		<?if(!$_SESSION['noMenuFlag']){?>
-			<a href="<?echo $_SESSION['path']?>/menuSettings.php">Menu Creation</a>
+			<a href="<?echo $_SESSION['path']?>/menuSettings.php"><? echo _("Menu Creation");?></a>
 		<?}else{?>
-			<a class="unavailable" href="#">Menu Creation</a>
+			<a class="unavailable" href="#"><? echo _("Menu Creation");?></a>
 		<?}?>
 	</nav>
 	

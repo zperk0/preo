@@ -19,7 +19,7 @@
 	<div class="large-2 columns">
 		<img src="<?echo $_SESSION['path']?>/img/dashboard/events.png"/>
 		<h3><?echo _("Events");?></h3>
-		<p><a href=""><?echo _("Update events");?></a></p>
+		<p><a href="<?echo $_SESSION['path']?>/eventSettings.php"><?echo _("Update events");?></a></p>
 	</div>
 	<div class="large-2 columns">
 		<img src="<?echo $_SESSION['path']?>/img/dashboard/settings.png"/>

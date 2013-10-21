@@ -1,17 +1,17 @@
 <div class="row">
 	<div class="topSpacer"></div>
 	<nav class="breadcrumbs row--space1d">
-		<a href="<?echo $_SESSION['path']?>/venueSettings.php">Venue Information</a>
-		<a class="current" href="#">App Styling 1/2</a>
+		<a href="<?echo $_SESSION['path']?>/venueSettings.php"><? echo _("Venue Information");?></a>
+		<a class="current" href="#"><? echo _("App Styling 1/2");?></a>
 		<?if(!$_SESSION['noAppFlag-2']){?>
-			<a href="<?echo $_SESSION['path']?>/appSettings2.php">App Styling 2/2</a>
+			<a href="<?echo $_SESSION['path']?>/appSettings2.php"><? echo _("App Styling 2/2");?></a>
 		<?}else{?>
-			<a class="unavailable" href="#">App Styling 2/2</a>
+			<a class="unavailable" href="#"><? echo _("App Styling 2/2");?></a>
 		<?}?>
 		<?if(!$_SESSION['noMenuFlag']){?>
-			<a href="<?echo $_SESSION['path']?>/menuSettings.php">Menu Creation</a>
+			<a href="<?echo $_SESSION['path']?>/menuSettings.php"><? echo _("Menu Creation");?></a>
 		<?}else{?>
-			<a class="unavailable" href="#">Menu Creation</a>
+			<a class="unavailable" href="#"><? echo _("Menu Creation");?></a>
 		<?}?>
 	</nav>
 	<div class="large-12 columns">
@@ -25,11 +25,11 @@
 								<label class="left"><?echo _("Create a main heading");?></label>
 								<a href="#" data-dropdown="sugDrop" class="button dropdown secondary sugDropButton"><?echo _("Choose one here");?></a>
 								<ul id="sugDrop" class="f-dropdown" data-dropdown-content>
-								  <li><a href="#">Leave the 4 deep queue to everyone else and pre-order.</a></li>
-								  <li><a href="#">Don't miss the game, jump the long queue and pre-order.</a></li>
-								  <li><a href="#">Intermission pre-order.</a></li>
-								  <li><a href="#">A sparkling fruity alternative to queuing.</a></li>
-								  <li><a href="#">Go on, jump the crazy queue and pre-order.</a></li>
+								  <li><a href="#"><? echo _("Leave the 4 deep queue to everyone else and pre-order.");?></a></li>
+								  <li><a href="#"><? echo _("Don't miss the game, jump the long queue and pre-order.");?></a></li>
+								  <li><a href="#"><? echo _("Intermission pre-order.");?></a></li>
+								  <li><a href="#"><? echo _("A sparkling fruity alternative to queuing.");?></a></li>
+								  <li><a href="#"><? echo _("Go on, jump the crazy queue and pre-order.");?></a></li>
 								</ul>
 								<textarea name="aHeading" id="aHeading" placeholder="<?echo _("or create your own...");?>" required tabindex=1><?if(isset($_SESSION['app_heading'])) echo $_SESSION['app_heading'];?></textarea>
 								<small class="error"><?echo _("Please create a headline message");?></small>
@@ -40,8 +40,8 @@
 								<label class="left"><?echo _("Create a subheading");?></label>
 								<a href="#" data-dropdown="sugDrop2" class="button dropdown secondary sugDropButton"><?echo _("Choose one here");?></a>
 								<ul id="sugDrop2" class="f-dropdown" data-dropdown-content>
-								  <li><a href="#">Pre-order food and drinks</a></li>
-								  <li><a href="#">Pre-order drinks+food</a></li>
+								  <li><a href="#"><? echo _("Pre-order food and drinks");?></a></li>
+								  <li><a href="#"><? echo _("Pre-order drinks+food");?></a></li>
 								</ul>
 								<input type="text" name="aSubheading" id="aSubheading" placeholder="<?echo _("or create your own...");?>" required tabindex=2 value="<?if(isset($_SESSION['app_subHeading'])) echo $_SESSION['app_subHeading'];?>">
 								<small class="error"><?echo _("Please create a sub-heading");?></small>
@@ -51,10 +51,10 @@
 						<div class="row">
 							<div class="large-11 columns">
 								<div class="row">
-									<div class="large-1 small-1 columns">
-										<input value="<?if(isset($_SESSION['app_textColour'])) echo $_SESSION['app_textColour'];else echo "FFFFFF";?>" type="text" id="textColour" name="textColour" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateTextColour(this);'}" readonly/>
+									<div class="large-4 small-4 columns">
+										<input value="<?if(isset($_SESSION['app_textColour'])) echo $_SESSION['app_textColour'];else echo "FFFFFF";?>" type="text" id="textColour" name="textColour" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateTextColour(this);'}"/>
 									</div>
-									<div class="large-10 small-10 columns">
+									<div class="large-7 small-7 columns">
 										<label for="textColour" class="left inline colorLabel"><?echo _("Choose text colour");?></label>
 									</div>
 								</div>
@@ -65,18 +65,18 @@
 							<div class="large-11 columns">
 								<label class="row--space0-5"><?echo _("ORDER NOW button");?></label>
 								<div class="row">
-									<div class="large-1 small-1 columns">
-										<input value="<?if(isset($_SESSION['app_buttonColour'])) echo $_SESSION['app_buttonColour'];else echo "3AA2DC";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButtonColour(this);'}" id="buttonColour" name="buttonColour" readonly/>
+									<div class="large-4 small-4 columns">
+										<input value="<?if(isset($_SESSION['app_buttonColour'])) echo $_SESSION['app_buttonColour'];else echo "3AA2DC";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButtonColour(this);'}" id="buttonColour" name="buttonColour" />
 									</div>
-									<div class="large-10 small-10 columns">
+									<div class="large-7 small-7 columns">
 										<label for="buttonColour" class="left inline colorLabel"><?echo _("Choose button colour");?></label>
 									</div>
 								</div>
 								<div class="row">
-									<div class="large-1 small-1 columns">
-										<input value="<?if(isset($_SESSION['app_buttonTextColour'])) echo $_SESSION['app_buttonTextColour'];else echo "FFFFFF";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButtonTextColour(this);'}" id="buttonTextColour" name="buttonTextColour" readonly/>
+									<div class="large-4 small-4 columns">
+										<input value="<?if(isset($_SESSION['app_buttonTextColour'])) echo $_SESSION['app_buttonTextColour'];else echo "FFFFFF";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButtonTextColour(this);'}" id="buttonTextColour" name="buttonTextColour" />
 									</div>
-									<div class="large-10 small-10 columns">
+									<div class="large-7 small-7 columns">
 										<label for="buttonTextColour" class="left inline colorLabel"><?echo _("Choose text colour");?></label>
 									</div>
 								</div>
@@ -108,17 +108,17 @@
 						</div>
 						<div class="row thumbRow">
 							<div class="large-4 small-4 columns">
-								<a class="thumb selected" id="thumb1">
+								<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="1") echo "selected";} else echo "selected";?>" id="thumb1">
 									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb1.jpg">
 								</a>
 							</div>
 							<div class="large-4 small-4 columns">
-								<a class="thumb" id="thumb2">
+								<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="2") echo "selected";}?>" id="thumb2">
 									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb2.jpg">
 								</a>
 							</div>
 							<div class="large-4 small-4 columns">
-								<a class="thumb" id="thumb3">
+								<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="3") echo "selected";}?>" id="thumb3">
 									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb3.jpg">
 								</a>
 							</div>

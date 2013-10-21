@@ -5,7 +5,7 @@
 	$_SESSION['app1_edit_on'] = 0;
 	$_SESSION['app2_edit_on'] = 0;
 	$_SESSION['menu_edit_on'] = 0;
-
+	$_SESSION['event_edit_on'] = 0;
 
 	require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'); //need this for multi-language support
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/authentication.php'); 

@@ -787,7 +787,140 @@ $(document).ready(function() {
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						
-						alert(data);
+						//alert(data);
+						
+						return false;
+					}
+					
+					if(typeof dataArray['status'] !='undefined') //error
+					{
+						noty({
+						  type: 'error',
+						  text: dataArray['message']
+						});
+				   
+					}
+					else
+					{	
+						noty({ type: 'success', text: 'Menu configuration has been saved!' });
+						setTimeout(function(){window.location.replace("./dashboard.php");},1000);
+					}
+				}
+			 });
+
+		return false; // avoid to execute the actual submit of the form.
+	});
+	
+	$(".newEvent, .eventDuplicate").live('click', function() {
+		//new item or duplicate?
+		var dup = 0;
+		if($(this).hasClass("eventDuplicate")) dup = 1;
+		
+		//get table event number
+		$curTable = $(this).closest('table');
+		var eventID = $curTable.attr('id');
+		
+		//get and update current count
+		var eventCount = $('#eventCount').val();
+		var newCount = parseInt(parseInt(eventCount) + 1);
+		$('#eventCount').val(newCount);
+		$('#eventCountAct').val(parseInt($('#eventCountAct').val())+1);
+		
+		if(dup) //clone an existing row
+		{
+			//clone specific table
+			$newTab = $('#'+eventID).clone(false);
+			$newTab.attr('id','event'+newCount);
+		}
+		else //clone a dummy row
+		{
+			//clone dummy table
+			$newTab = $('#event0').clone(true);
+			$newTab.attr('id','event'+newCount);
+		}
+		
+		//bind onClick function and replace ids with incremented value and make value = default value
+		$newTab.find(".eventTR input").each(function() {
+			$(this).bind("click",function(){if($(this).val()==$(this).prop('defaultValue')) $(this).val('');});
+			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+		});
+				
+		//now we give the item id to the duplicate button
+		$newTab.find(".eventDuplicate").attr('id',"dup"+newCount);
+		
+		//now we add datepicker
+		$newTab.find('.eventTDDate input').fdatepicker({format:'dd/mm/yyyy'}); 
+		
+		//now we add timepicker
+		$newTab.find('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+		
+		//hide it so we can animate it!
+		$newTab.css('display','none');
+		
+		//insert before section header/before hidden div
+		$('.firstEventDiv').before($newTab); 
+		$newTab.slideDown('slow');
+		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+	});
+	
+	$(".eventSave").live('click', function() {
+		$(this).hide();
+		$curItem = $(this).closest('table');
+		$curItem.find("tr").removeClass('eventEdit');
+		$curItem.find("tr").addClass('savedInput');
+		$curItem.find("input").attr("readonly", "readonly").unbind( "click" );
+		$curItem.find(".eventTDEdit").removeClass('hide');
+		$curItem.find(".eventTDEdit").show();
+		$curItem.css('background', '#E9E9E9');
+	});
+	
+	$(".eventTDEdit").live('click', function() {
+		$(this).hide();
+		$curItem = $(this).closest('table');
+		$curItem.find("tr").addClass('eventEdit');
+		$curItem.find("tr").removeClass('savedInput');
+		$curItem.find("input").removeAttr("readonly").bind("click",function(){if($(this).val()==$(this).prop('defaultValue')) $(this).val('');});
+		$curItem.find(".eventSave").removeClass('hide');
+		$curItem.find(".eventSave").show();
+		$curItem.css('background', '#FFFFFF');
+	});
+	
+	$(".eventDelete").live('click', function() {
+		//get event number
+		$curTable = $(this).closest('table');
+		var eventID = $curTable.attr('id');
+		
+		//get and update current count
+		var eventCount = $('#eventCountAct').val();
+		var newCount = parseInt(parseInt(eventCount) - 1);
+		$('#eventCountAct').val(newCount);
+		
+		//bye-bye
+		$('#'+eventID).remove();
+	});
+	
+		$("#eventConfigForm").on('valid', function (event) {
+		var url = "code/dashboard/do_eventConfig.php";
+
+		$.ajax({
+			   type: "POST",
+			   url: url,
+			   data: $(this).serialize(), // serializes the form's elements.
+			   success: function(data)
+			   {
+					try
+					{
+						var dataArray = jQuery.parseJSON(data); //parsing JSON
+					}
+					catch(e)
+					{
+						noty({
+						  type: 'error',
+						  text: 'Connection Error! Check API endpoint.'
+						});
 						
 						return false;
 					}
