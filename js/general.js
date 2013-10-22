@@ -2,6 +2,7 @@
 map = null; // make google maps var global
 mapDefaultCenterLat = 54.370559; // make google maps var global = set center as center of UK
 mapDefaultCenterLong = -2.510376; // make google maps var global = set center as center of UK
+globalPH = '';
 
 //on page load fire these things!
 $(document).ready(function() { 
@@ -573,6 +574,7 @@ $(document).ready(function() {
 		}
 		
         $newRow = $curRow.clone(true);
+		$newRow.addClass('optionTR');
 		
 		//bind onClick function and replace ids with incremented value and make value = default value (for !dups)
 		$newRow.find("input").each(function() {
@@ -711,7 +713,13 @@ $(document).ready(function() {
 		$curItem.find("input").attr("readonly", "readonly").unbind( "click" );
 		$curItem.find(".itemEdit").removeClass('hide');
 		$curItem.find(".itemEdit").show();
-		$curItem.find(".newOpt").addClass('hide');
+		$curItem.find(".optionTR").hide();
+		
+		if($curItem.find("input[name^='iDesc']").val() == '')
+		{	
+			globalPH = $curItem.find("input[name^='iDesc']").attr('placeholder');
+			$curItem.find("input[name^='iDesc']").attr('placeholder', '');
+		}
 		$curItem.css('background', '#E9E9E9');
 	});
 	
@@ -723,7 +731,10 @@ $(document).ready(function() {
 		$curItem.find("input").removeAttr("readonly").bind("click",function(){if($(this).val()==$(this).prop('defaultValue')) $(this).val('');});
 		$curItem.find(".itemSave").removeClass('hide');
 		$curItem.find(".itemSave").show();
-		$curItem.find(".newOpt").removeClass('hide');
+		$curItem.find(".optionTR").show();
+		
+		if($curItem.find("input[name^='iDesc']").val() == '')
+			$curItem.find("input[name^='iDesc']").attr('placeholder', globalPH);
 		$curItem.css('background', '#FFFFFF');
 	});
 	
@@ -769,6 +780,8 @@ $(document).ready(function() {
 	
 	$("#menuConfigForm").on('valid', function (event) {
 		var url = "code/dashboard/do_menuConfig.php";
+		
+		$('.itemSave').click();
 
 		$.ajax({
 			   type: "POST",
@@ -1113,7 +1126,7 @@ $(window).resize(function(){
 	if (typeof place != 'undefined') map.setCenter(place.geometry.location);
 		else map.setCenter( new google.maps.LatLng(mapDefaultCenterLat,mapDefaultCenterLong) );
 		
-		//make footer take all of the bottom
-		elemHeight = $(window).height() - $('footer').offset().top - 40;
-		$('footer.dashboardFooter div.columns').height(elemHeight);
+	//make footer take all of the bottom
+	elemHeight = $(window).height() - $('footer').offset().top - 40;
+	$('footer.dashboardFooter div.columns').height(elemHeight);
 });

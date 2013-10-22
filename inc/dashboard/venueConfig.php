@@ -1,5 +1,6 @@
 <div class="row">
 	<div class="topSpacer"></div>
+	<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
 	<nav class="breadcrumbs row--space1d">
 		<a class="current"	   href="#"><? echo _("Venue Information");?></a>
 		<?if(!$_SESSION['noAppFlag-1']){?>
@@ -18,7 +19,7 @@
 			<a class="unavailable" href="#"><? echo _("Menu Creation");?></a>
 		<?}?>
 	</nav>
-	
+	<?}?>
 	<form id="venueConfigForm" method="POST" data-abide>
 		<h1><?echo _("Tell us about your venue");?></h1>
 		<div class="large-6 columns">

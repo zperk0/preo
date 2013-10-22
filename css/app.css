@@ -59,6 +59,11 @@ small.error{
 	border: 0;
 }
 
+.fullWidth{
+	width: 100%;
+}
+
+
 /* Chrome autofill colour replacement */
 input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0px 1000px white inset !important;
@@ -132,6 +137,17 @@ input:-webkit-autofill {
 }
 .top-bar{
 	padding: 12px 0px 54px 0px !important;
+}
+
+.top-bar-section ul li a{
+	padding-right: 0 !important;
+}
+
+.top-bar-section a.activated{
+	color: #2E70B7 !important;
+}
+.top-bar-section a.activated:hover{
+	color: #504089 !important;
 }
 
 /* spacing on top of pages as per design */
@@ -511,7 +527,6 @@ table.menuTable, table.eventTable {
 .menuTable tr, .eventTable tr{
 	background: #E9E9E9 !important;
 	font-size: 1.3em !important;
-	border-top: 1px solid #B8B9BC;
 	border-bottom: 1px solid #B8B9BC;
 }
 
@@ -519,10 +534,6 @@ table.menuTable, table.eventTable {
 	width: 20%;
 	padding-top: 0;
 	padding-bottom: 0;
-}
-
-.itemSubheader{
-	padding-top: 8px !important;
 }
 
 .menuTable input, .eventTable input{
@@ -595,6 +606,10 @@ tr.menuEdit, tr.eventEdit{
 	text-align: center !important;
 }
 
+#menuSectionRow{
+	padding-top: 20px;
+}
+
 .menuTable .menuTDVisi, .eventTable .eventTDVisi{
 	width: 8%;
 }
@@ -638,6 +653,38 @@ tr.menuEdit, tr.eventEdit{
 	background: #E9E9E9 !important;
 }
 
+table.menuTable, table.eventTable {
+	display: table;
+	margin-right: 0px !important;
+	width: 101.8% !important;
+	margin-left: -1% !important;
+	margin-bottom: 0px !important;
+}
+
+.dynamicDataTable tr:first-of-type{
+	border-top: 1px solid #B9BBBD !important;
+}
+
+.dynamicDataTable{
+	padding-bottom: 20px;
+}
+
+.menuTable tr, .eventTable tr {
+	display: table;
+	max-width: 50%;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	min-width: 950px;
+}
+
+.subHeaderTR{
+	border-bottom:0 !important;
+}
+
+.itemSubheader{
+	padding-top: 8px !important;
+}
+
 .itemSubheader button{
 	width: 20px;
 	height: 20px;
@@ -658,6 +705,10 @@ tr.menuEdit, tr.eventEdit{
 	border: #2E70B7;
 }
 
+.newSection{
+	margin-top: 20px;
+}
+
 .dashContent p, .dashContentTop h1, .dashContent a, .dashboardFooter, .dashboardFooter a, .premiumDiv p {
 	color: #D7D9DA;
 }
@@ -672,6 +723,110 @@ tr.menuEdit, tr.eventEdit{
 
 .dashContent p, .dashboardFooter p{
 	margin-bottom: 0;
+}
+
+.dashContent h3, .dashStats h3{
+	font-weight:normal !important;
+}
+
+.dashContent h3 {
+	display: inline-block;
+	width:80% !important;
+}
+
+.dashContent .accordion section:first-child{
+	border-top: 1px solid;
+}
+
+.dashContent .accordion section{
+	border-bottom: 1px solid;
+	margin-top: 10px;
+}
+
+.dashContent .accordion section h3{
+	cursor: pointer;
+	height: 50px;
+}
+
+.dashContent .accordion section img{
+	margin-top: -24px;
+}
+
+.dashContent .accordion section.active img{
+	filter: brightness(750%);
+	-webkit-filter: brightness(750%);
+	-moz-filter: brightness(750%);
+	-o-filter: brightness(750%);
+	-ms-filter: brightness(750%);
+}
+
+.dashContent .accordion section.active i {
+	color: #FCD984 !important;
+}
+
+.dashContent .accordion i{
+	font-size: 28px;
+	padding-left: 23px;
+}
+
+.dashContent .accordion .topFix{
+	margin-top: -12px;
+}
+
+.dashContent .accordion .content{
+	margin-bottom: 18px;
+}
+
+.dashContent .premiumSection {
+	border-bottom: 1px solid #F9B30A !important;
+}
+.dashContent .premiumSection i, .dashContent .premiumSection h3{
+	color: #F9B30A !important;
+}
+
+.dashContent .pagerRow{
+	margin-top: 20px;
+	text-align: center;
+}
+
+.dashContent .pagerRow i{
+	margin-right: 2px;
+	margin-left: 2px;
+}
+
+.dashContent .phoneContainer{
+	overflow: hidden;
+	height: 100%;
+}
+
+.phone1, .phone2{
+	z-index: -1;
+	overflow: visible;
+}
+
+.dashStats h1, .dashStats h3{
+	color: #8AC33F;
+}
+
+.dashStats h1, .dashStats h6 {
+	margin-bottom:0;
+}
+
+.dashStats h1{
+	margin-top:0;
+	font-size: 3.2em;
+	letter-spacing: -5px;
+}
+
+.dashStats h6{
+	color: #D7D9DA;
+	font-weight: normal;
+}
+
+@media screen and (min-width: 915px){
+	.dashContent #iphone5{
+		margin-top: -50px;
+	}
 }
 
 footer.dashboardFooter {
@@ -697,35 +852,11 @@ footer.dashboardFooter div{
 }
 
 .premiumDiv h3{
-	color: #A8DC3E;
+	color: #F9B30A;
+	margin-top: -10px;
 }
 
-.dashContent .pagerRow{
-	margin-top: 20px;
-	text-align: center;
-}
-
-.dashContent .pagerRow i{
-	margin-right: 2px;
-	margin-left: 2px;
-}
-
-.dashContent .phoneContainer{
-	overflow: hidden;
-	height: 100%;
-}
-
-.phone1, .phone2{
-	z-index: -1;
-	overflow: visible;
-}
-
-@media screen and (min-width: 915px){
-	.dashContent #iphone5{
-		margin-top: -86px;
-	}
-
-	.premiumDiv{
-		margin-top: -250px;
-	}
+.premiumButton{
+	background: #F9B30A !important;
+	margin-top: 10px;
 }

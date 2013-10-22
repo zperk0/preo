@@ -1,5 +1,6 @@
 <div class="row">
 	<div class="topSpacer"></div>
+	<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
 	<nav class="breadcrumbs row--space1d">
 		<a href="<?echo $_SESSION['path']?>/venueSettings.php"><? echo _("Venue Information");?></a>
 		<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling 1/2");?></a>
@@ -10,6 +11,7 @@
 			<a class="unavailable" href="#"><? echo _("Menu Creation");?></a>
 		<?}?>
 	</nav>
+	<?}?>
 	<div class="large-12 columns">
 		<div class="row">
 			<h1><?echo _("Style your app");?></h1>

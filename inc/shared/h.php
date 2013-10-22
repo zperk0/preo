@@ -16,11 +16,18 @@
 			<!-- Right Nav Section -->
 			<ul class="right">
 				<?php if(!isset($_SESSION['logged'])) : ?>
-					<li class=""><a href="<?echo $_SESSION['path']?>/signup.php"><? echo _("Sign Up");?></a></li>
-					<li class=""><a href="<?echo $_SESSION['path']?>/signin.php"><? echo _("Sign In");?></a></li>
-				<?php else : ?>
-					<!--<li class=""><a href="#" data-reveal-id="settingsM"><i class="fi-wrench large"></i> <? echo _("Settings");?></a></li>-->
-					<li class=""><a href="<?echo $_SESSION['path']?>/code/shared/logout.php"><i class="icon-signout large"></i> <? echo _("Sign Out");?></a></li>
+					<li><a href="<?echo $_SESSION['path']?>/signup.php"									><? echo _("Sign Up");?></a></li>
+					<li><a href="<?echo $_SESSION['path']?>/signin.php"	class="activated"				><? echo _("Login");?></a></li>
+				<?php else : 
+						if(!isset($_SESSION['signupWizFlag']) || !$_SESSION['signupWizFlag']){ ?>					
+					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Home");?></a></li>
+					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Orders");?></a></li>
+					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Stats");?></a></li>
+					<li><a href="<?echo $_SESSION['path']?>/eventSettings.php"							><? echo _("Events");?></a></li>
+					<li><a href="<?echo $_SESSION['path']?>/menuSettings.php"							><? echo _("Menu");?></a></li>
+					<li><a href="#" data-reveal-id="settingsM"											><? echo _("Settings");?></a></li>
+						<?}?>
+					<li><a href="<?echo $_SESSION['path']?>/code/shared/logout.php" class="activated"	><? echo _("Logout");?></a></li>
 				<?php endif; ?>
 			</ul>
 		</section>

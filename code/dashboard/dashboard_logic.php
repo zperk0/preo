@@ -18,6 +18,8 @@
 	$_SESSION['noAppFlag-1'] = 0;
 	$_SESSION['noAppFlag-2'] = 0;
 	$_SESSION['noMenuFlag'] = 0;
+	$_SESSION['signupWizFlag']=0;
+	$_SESSION['dashboardFlag']=0;
 	
 	//we use the user's token
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
@@ -124,14 +126,31 @@
 	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag']) /*User has given data for all 4 already*/
 	{	
 		$_SESSION['dashboardFlag']=1;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/dashboard_content.php"); 
 	}
 	else if($_SESSION['noVenueFlag']) /* User has not given all 4 so first check Venue */
+	{	
+		$_SESSION['signupWizFlag']=1;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/venueConfig.php"); 
+	}
 	else if($_SESSION['noAppFlag-1']) /* User has not given all 4 so second check App-1 */
+	{	
+		$_SESSION['signupWizFlag']=1;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig1.php");
+	}
 	else if($_SESSION['noAppFlag-2']) /* User has not given all 4 so third check App-2 */
+	{	
+		$_SESSION['signupWizFlag']=1;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig2.php"); 
+	}
 	else if($_SESSION['noMenuFlag']) /* User has not given all 4 so fourth check Menu */
+	{	
+		$_SESSION['signupWizFlag']=1;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/menuConfig.php"); 
+	}
 ?>

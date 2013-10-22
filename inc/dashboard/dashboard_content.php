@@ -6,35 +6,90 @@
 	<div class="topSpacer"></div>
 	<div class="large-12 columns">
 		<h1><? echo _("Dashboard");?></h1>
-		<!--<p>Now we can give accordion-style links to Add Events, Add Payments, Edit settings. Once everything required is done (and account activated) then the link to publish appears.</p>-->
 	</div>
 </div>
 
 <div class="row row--space1u dashContent">
-	<div class="large-2 columns">
-		<img src="<?echo $_SESSION['path']?>/img/dashboard/menu.png"/>
-		<h3><?echo _("Menu");?></h3>
-		<p><a href="<?echo $_SESSION['path']?>/menuSettings.php"><?echo _("Update menu");?></a></p>
+	<div class="large-8 columns">	
+		<div class="large-6 columns dashStats">	
+			<div class="row">
+				<div class="large-12 columns">
+					<h3><?echo _("This month");?></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<h6><?echo _("Total revenue");?></h6>
+					<h1>&pound; <?echo number_format('10078.46',2);?></h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<h6><?echo _("Total orders");?></h6>
+					<h1><?echo number_format('2024',0);?></h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<h6><?echo _("New users");?></h6>
+					<h1><?echo number_format('75',0);?></h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<h6><?echo _("Returning users");?></h6>
+					<h1><?echo number_format('309',0);?></h1>
+				</div>
+			</div>
+		</div>	
+		<div class="large-6 columns">
+			<div class="row">
+				<div class="large-12 columns">
+					<h3><?echo _("Edit");?></h3>
+				</div>
+			</div>		
+			<div class="row">
+				<div class="large-12 columns">
+					<div class="accordion" data-options="one_up: false;" data-section="accordion">
+						<section>
+							<h3 data-section-title><?echo _("Menu");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/>
+							<div class="content" data-section-content>
+								<p><a href="<?echo $_SESSION['path']?>/menuSettings.php"><?echo _("Update menu");?></a></p>
+							</div>
+						</section>
+						<section>
+							<h3 data-section-title><?echo _("Events");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/events_small.png"/>
+							<div class="content" data-section-content>
+								<p><a href="<?echo $_SESSION['path']?>/eventSettings.php"><?echo _("Update events");?></a></p>
+							</div>
+						</section>
+						<section>
+							<h3 data-section-title><?echo _("Styling");?></h3><img class="topFix" src="<?echo $_SESSION['path']?>/img/dashboard/styling_small.png"/>
+							<div class="content" data-section-content>
+								<p><a href="<?echo $_SESSION['path']?>/appSettings1.php"><?echo _("Home screen");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/appSettings2.php"><?echo _("Inner screen");?></a></p>
+							</div>
+						</section>
+						<section>
+							<h3 data-section-title><?echo _("Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
+							<div class="content" data-section-content>
+								<p><a href="<?echo $_SESSION['path']?>/venueSettings.php"><?echo _("Venue settings");?></a></p>
+								<p><a href="#" data-reveal-id="settingsM"><?echo _("Account settings");?></a></p>
+								<p><a href=""><?echo _("Manage users");?></a></p>
+							</div>
+						</section>
+						<section class="premiumSection">
+							<h3 data-section-title><?echo _("Premium");?></h3><i class="icon-plus-sign"></i>
+							<div class="content" data-section-content>
+								<p><a href="#"><?echo _("Find out more");?></a></p>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="large-2 columns">
-		<img src="<?echo $_SESSION['path']?>/img/dashboard/events.png"/>
-		<h3><?echo _("Events");?></h3>
-		<p><a href="<?echo $_SESSION['path']?>/eventSettings.php"><?echo _("Update events");?></a></p>
-	</div>
-	<div class="large-2 columns">
-		<img src="<?echo $_SESSION['path']?>/img/dashboard/settings.png"/>
-		<h3><?echo _("Settings");?></h3>
-		<p><a href="<?echo $_SESSION['path']?>/venueSettings.php"><?echo _("Venue settings");?></a></p>
-		<p><a href="#" data-reveal-id="settingsM"><?echo _("Account settings");?></a></p>
-		<p><a href=""><?echo _("Manage users");?></a></p>
-	</div>
-	<div class="large-2 columns">
-		<img src="<?echo $_SESSION['path']?>/img/dashboard/styling.png"/>
-		<h3><?echo _("Styling");?></h3>
-		<p><a href="<?echo $_SESSION['path']?>/appSettings1.php"><?echo _("Home screen");?></a></p>
-		<p><a href="<?echo $_SESSION['path']?>/appSettings2.php"><?echo _("Inner screen");?></a></p>
-	</div>
-	<div id="iphone5" class="large-4 columns right">
+	<div id="iphone5" class="large-4 columns">
 		<div class="phoneContainer">
 			<div id="frame_iphone5" class="phone1">
 				<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/wall<?if(isset($_SESSION['app_wallpaperId'])) echo $_SESSION['app_wallpaperId'];else echo "1";?>.jpg" />
@@ -58,22 +113,13 @@
 			</div>
 		</div>
 		<div class="pagerRow phone1pager">
-			<i class="icon-circle"></i><a href="#" class="showNextPhone"><i class="icon-circle-blank"></i></a>
+			<i class="icon-circle"></i><a class="showNextPhone"><i class="icon-circle-blank"></i></a>
 		</div>
 		<div class="pagerRow phone2pager hide">
-			<a href="#" class="showNextPhone"><i class="icon-circle-blank"></i></a><i class="icon-circle"></i>
+			<a class="showNextPhone"><i class="icon-circle-blank"></i></a><i class="icon-circle"></i>
 		</div>
 	</div>
 </div>
-
-<div class="row">
-	<div class="large-4 columns premiumDiv">
-		<h3><?echo _("Premium features");?></h3>
-		<p>Add premium features to your app, from bespoke home screen backgrounds to multiple menus...</p>
-		<button type="button" class="success small"><?echo _("FIND OUT MORE");?></button>
-	</div>
-</div>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		<?if(isset($_SESSION['app_textColour'])){?>updateTextColour('<?echo $_SESSION['app_textColour']?>');<?}?>
