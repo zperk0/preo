@@ -75,7 +75,7 @@
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/venueSettings.php"><?echo _("Venue settings");?></a></p>
 								<p><a href="#" data-reveal-id="settingsM"><?echo _("Account settings");?></a></p>
-								<p><a href=""><?echo _("Manage users");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/userSettings.php"><?echo _("Manage users");?></a></p>
 							</div>
 						</section>
 						<section class="premiumSection">

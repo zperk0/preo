@@ -489,7 +489,7 @@ ul.custom-inline-list {
 	margin-top: -321px;
 }
 
-.menuField, .eventField{
+.menuField, .eventField, .userField{
 	background: transparent !important;
 	border: 0 !important;
 	box-shadow: 0 0 0 !important;
@@ -504,11 +504,11 @@ ul.custom-inline-list {
 	margin-bottom: 0 !important;
 }
 
-.menuField:focus, .eventField:focus{
+.menuField:focus, .eventField:focus, .userField:focus{
 	background: white !important;
 }
 
-.menuTable .menuField:focus, .eventTable .eventField:focus{
+.menuTable .menuField:focus, .eventTable .eventField:focus, .userTable .userField:focus{
 	background: #F1F0F2 !important;
 }
 
@@ -518,51 +518,51 @@ ul.custom-inline-list {
 	font-weight: bold !important;
 }
 
-table.menuTable, table.eventTable {
+table.menuTable, table.eventTable, table.userTable {
 	border:0px !important;
 	table-layout: fixed !important;
 	margin-left: 20px;
 }
 
-.menuTable tr, .eventTable tr{
+.menuTable tr, .eventTable tr, .userTable tr{
 	background: #E9E9E9 !important;
 	font-size: 1.3em !important;
 	border-bottom: 1px solid #B8B9BC;
 }
 
-.menuTable td, .eventTable td{
+.menuTable td, .eventTable td, .userTable td{
 	width: 20%;
 	padding-top: 0;
 	padding-bottom: 0;
 }
 
-.menuTable input, .eventTable input{
+.menuTable input, .eventTable input, .userTable input{
 	padding:1px !important;
 	margin-bottom: 0px !important;
 }
 
-tr.menuEdit, tr.eventEdit{
+tr.menuEdit, tr.eventEdit, tr.userEdit{
 	background: #FFF !important;
 }
 
-.menuEdit input, .eventEdit input{
+.menuEdit input, .eventEdit input, .userEdit input{
 	background: #F1F0F2 !important;
 	color: #48535D !important;
 }
 
-.menuTable .menuField, .eventTable .eventField {
+.menuTable .menuField, .eventTable .eventField, .userTable .userField {
 	font-family: HelveticaNeueW01-45Ligh !important;
 	color: #48535D !important;
 	font-size: inherit !important;
 	display: inline!important;
 }
 
-.menuTable .menuTDName, .eventTable .eventTDName{
+.menuTable .menuTDName, .eventTable .eventTDName, .userTable .userTDName{
 	font-weight: bold !important;
 	width: 30%;
 }
 
-.menuTable .menuTDName input, .eventTable .eventTDName input{
+.menuTable .menuTDName input, .eventTable .eventTDName input, .userTable .userTDName input{
 	font-weight: bold !important;
 }
 
@@ -574,18 +574,30 @@ tr.menuEdit, tr.eventEdit{
 	width: 28%;
 }
 
+.userTable .userTDEmail{
+	width: 28%;
+}
+
 .menuTable .menuTDPrice, .eventTable .eventTDTime{
 	width: 9%;
+}
+
+.userTable .userTDPassword{
+	width: 21%;
 }
 
 .menuTable .menuTDPrice input{
 	text-align: center;
 }
 
-.eventTable .eventTDTime input {
+.eventTable .eventTDTime input, .userTable .userTDPassword input {
 	text-align: center;
 	font-size: 80% !important;
 	height: 42px;
+}
+
+.userTable .userTDPassword input {
+	width: 100% !important;
 }
 
 .menuTable .menuTDQuant{
@@ -598,6 +610,15 @@ tr.menuEdit, tr.eventEdit{
 }
 .eventTable .eventTDDate{
 	width: 13%;
+}
+
+.userTable .userTDRole{
+	width: 9%;
+	font-size: 14px;
+}
+
+.userTable .userTDRole{
+	padding-top: 8px;
 }
 
 .eventTable .eventTDDate input{
@@ -614,25 +635,17 @@ tr.menuEdit, tr.eventEdit{
 	width: 8%;
 }
 
-.menuTable .menuTDTools, .eventTable .eventTDTools{
+.menuTable .menuTDTools, .eventTable .eventTDTools, .userTable .userTDTools{
 	width: 12%;
 }
 
-.menuTableButtons, .eventTableButtons{
+.menuTableButtons, .eventTableButtons, .userTableButtons{
 	font-size: 15px !important;
 	padding: 2px 6px !important;
 	margin-top: 8px;
 }
 
-.menuTableButtons .success, .eventTableButtons .success{
-	background: #88c542 !important;
-}
-
-.menuTDTools .alert, .deleteSection, .eventTDTools .alert {
-	border-color: #E30F4D !important;
-}
-
-.menuTDPrice input, .eventTDTime input{
+.menuTDPrice input, .eventTDTime input, .userTDPassword input{
 	display: inline!important;
 	padding: 0;
 	width: 64px;
@@ -644,16 +657,16 @@ tr.menuEdit, tr.eventEdit{
 	padding-left: 4px;
 }
 
-.menuTable h6, .eventTable h6{
+.menuTable h6, .eventTable h6, .userTable h6{
 	color: #2D7EC5;
 	font-weight: normal;
 }
 
-.menuTable .savedInput input:focus, .eventTable .savedInput input:focus{
+.menuTable .savedInput input:focus, .eventTable .savedInput input:focus, .userTable .savedInput input:focus{
 	background: #E9E9E9 !important;
 }
 
-table.menuTable, table.eventTable {
+table.menuTable, table.eventTable, table.userTable {
 	display: table;
 	margin-right: 0px !important;
 	width: 101.8% !important;
@@ -669,7 +682,7 @@ table.menuTable, table.eventTable {
 	padding-bottom: 20px;
 }
 
-.menuTable tr, .eventTable tr {
+.menuTable tr, .eventTable tr, .userTable tr {
 	display: table;
 	max-width: 50%;
 	margin-left: auto !important;
@@ -696,11 +709,11 @@ table.menuTable, table.eventTable {
 	margin-bottom:-12px;
 }
 
-.newItem, .newSection, .deleteSection, .newEvent{
+.newItem, .newSection, .deleteSection, .newEvent, .newUser{
 	padding: 0 6px;
 }
 
-.newItem, .newEvent{
+.newItem, .newEvent, .newUser{
 	background: #2E70B7;
 	border: #2E70B7;
 }

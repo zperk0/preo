@@ -5,6 +5,7 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 		
+	/*
 	if(isset($_SESSION['event_edit_on']) && $_SESSION['event_edit_on']) //We delete the old events and create a new ones!
 	{		
 		$venueID = $_SESSION['venue_id'];
@@ -22,7 +23,9 @@
 			$curlResult = callAPI('DELETE', $apiURL."events/$eventID", false, $apiAuth); //event deleted
 		}
 	} //at this stage all current data is deleted and now we will proceed to putting in new data	
-		
+	
+	*/
+	
 	$eventCount = $_POST['eventCount']; //linear count -event
 	protect($eventCount);
 	
@@ -37,6 +40,7 @@
 	{
 		if(isset($_POST['eName'][$j]) && $_POST['eName'][$j])
 		{
+			try { $events[$i]['id']	= /*protect(*/$_POST['eID'][$j];/*);*/ } catch(Exception $e){ /*nothing*/ } 
 			$events[$i]['name'] 	= /*protect(*/$_POST['eName'][$j];//);
 			$events[$i]['desc'] 	= /*protect(*/$_POST['eDesc'][$j];//);
 			$events[$i]['time'] 	= /*protect(*/$_POST['eTime'][$j];//);
@@ -66,8 +70,14 @@
 		$data['visible'] 		= $event['visible'];
 		
 		$jsonData = json_encode($data);
-	
-		$curlResult = callAPI('POST', $apiURL."events", $jsonData, $apiAuth); //event created
+		
+		if(isset($event['id']) && $event['id']) //edit old
+		{
+			$eventID = $event['id'];
+			$curlResult = callAPI('PUT', $apiURL."events/$eventID", $jsonData, $apiAuth); //event created
+		}
+		else //create new
+			$curlResult = callAPI('POST', $apiURL."events", $jsonData, $apiAuth); //event created
 	}
 	
 	echo $curlResult; //sending a JSON via ajax 

@@ -353,6 +353,7 @@ $(document).ready(function() {
 			$('#appHeading').html(content);
 			
 			$('#picFileName').val(responseText);
+			$('#aHeading').val('');
 		},
 		error: function() { 
 			noty({
@@ -393,6 +394,7 @@ $(document).ready(function() {
 		var content = $(this).html();
 		$('#aHeading').val(content);
 		$("#appHeading").html(content);
+		$("#picFileName").val('');
 	});
 	
 	$("#aHeading").bind('propertychange keyup input paste',function() {
@@ -525,14 +527,6 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
-	$('#menuConfigForm .menuEdit input, #menuConfigForm #mName, #menuConfigForm .menuSectionDiv input').on('click', function(){
-		if($(this).val()==$(this).prop('defaultValue')) $(this).val('');
-	});
-	
-	//$('#menuConfigForm input').on('focusout', function(){
-	//	if($(this).val()=='') $(this).val($(this).prop( 'defaultValue' ));
-	//});
-	
 	$(".optionRowDelete").live('click', function() {
 		//get item number
 		$curTable = $(this).closest('table');
@@ -576,15 +570,30 @@ $(document).ready(function() {
         $newRow = $curRow.clone(true);
 		$newRow.addClass('optionTR');
 		
-		//bind onClick function and replace ids with incremented value and make value = default value (for !dups)
+		//replace ids with incremented value and make value = default value (for !dups)
 		$newRow.find("input").each(function() {
-			$(this).bind("click",function(){if($(this).val()==$(this).prop('defaultValue')) $(this).val('');});
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/item\d+/gi, itemID);
 			var newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
 		});
+		
+		if(!dup){
+			//now we fix placeholder
+			$newRow.find("input[name^='oName'").each(function() {
+				var temp = $(this).val();
+				$(this).val("");
+				$(this).attr('placeholder', temp);
+			});
+			
+			//now we fix placeholder
+			$newRow.find("input[name^='oPrice'").each(function() {
+				var temp = $(this).val();
+				$(this).val("");
+				$(this).attr('placeholder', temp);
+			});
+		}
 		
 		//fix the yes/no slider so the label appears correctly
 		$newRow.find(".menuTDVisi input").each(function() {
@@ -660,9 +669,8 @@ $(document).ready(function() {
 		
 			$newTab.addClass('table'+section);
 		
-		//bind onClick function and replace ids with incremented value and make value = default value
+		//replace ids with incremented value and make value = default value
 		$newTab.find(".itemTR input").each(function() {
-			$(this).bind("click",function(){if($(this).val()==$(this).prop('defaultValue')) $(this).val('');});
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/section\d+/gi, section);
@@ -670,14 +678,29 @@ $(document).ready(function() {
 			$(this).attr('name', newName);
 		});
 		
-		//bind onClick function and replace ids with incremented value
+		//replace ids with incremented value
 		$newTab.find(".optionTR input").each(function() {
-			$(this).bind("click",function(){if($(this).val()==$(this).prop('defaultValue')) $(this).val('');});
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/item\d+/gi, 'item'+newCount);
 			$(this).attr('name', newName);
 		});
+		
+		if(!dup){
+			//now we fix placeholder
+			$newTab.find("input[name^='iName'").each(function() {
+				var temp = $(this).val();
+				$(this).val("");
+				$(this).attr('placeholder', temp);
+			});
+			
+			//now we fix placeholder
+			$newTab.find("input[name^='iPrice'").each(function() {
+				var temp = $(this).val();
+				$(this).val("");
+				$(this).attr('placeholder', temp);
+			});
+		}
 				
 		//now we give the section id to the duplicate button
 		$newTab.find(".itemDuplicate").attr('id',"dup"+newCount+"_"+section);
@@ -710,7 +733,7 @@ $(document).ready(function() {
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").removeClass('menuEdit');
 		$curItem.find("tr").addClass('savedInput');
-		$curItem.find("input").attr("readonly", "readonly").unbind( "click" );
+		$curItem.find("input").attr("readonly", "readonly");
 		$curItem.find(".itemEdit").removeClass('hide');
 		$curItem.find(".itemEdit").show();
 		$curItem.find(".optionTR").hide();
@@ -728,7 +751,7 @@ $(document).ready(function() {
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").addClass('menuEdit');
 		$curItem.find("tr").removeClass('savedInput');
-		$curItem.find("input").removeAttr("readonly").bind("click",function(){if($(this).val()==$(this).prop('defaultValue')) $(this).val('');});
+		$curItem.find("input").removeAttr("readonly");
 		$curItem.find(".itemSave").removeClass('hide');
 		$curItem.find(".itemSave").show();
 		$curItem.find(".optionTR").show();
@@ -763,6 +786,13 @@ $(document).ready(function() {
 		var tempID = $newSec.find(".deleteSection").attr('id');
 		var newID = tempID.replace(/\d+/,newCount);
 		$newSec.find(".deleteSection").attr('id', newID);
+		
+		//now we fix placeholder
+		$newSec.find("input[name^='mSectionName'").each(function() {
+			var temp = $(this).val();
+			$(this).val("");
+			$(this).attr('placeholder', temp);
+		});
 		
 		$newSec.find(".menuSectionField").addClass('section'+newCount);
 		
@@ -852,14 +882,43 @@ $(document).ready(function() {
 			$newTab.attr('id','event'+newCount);
 		}
 		
-		//bind onClick function and replace ids with incremented value and make value = default value
+		//Replace ids with incremented value and make value = default value
 		$newTab.find(".eventTR input").each(function() {
-			$(this).bind("click",function(){if($(this).val()==$(this).prop('defaultValue')) $(this).val('');});
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
 		});
+		
+		if(!dup){
+			//now we fix placeholder
+			$newTab.find("input[name^='eName'").each(function() {
+				var temp = $(this).val();
+				$(this).val("");
+				$(this).attr('placeholder', temp);
+			});
+			
+			//now we fix placeholder
+			$newTab.find("input[name^='eTime'").each(function() {
+				var temp = $(this).val();
+				$(this).val("");
+				$(this).attr('placeholder', temp);
+			});
+			
+			//now we fix placeholder
+			$newTab.find("input[name^='eDate'").each(function() {
+				var temp = $(this).val();
+				$(this).val("");
+				$(this).attr('placeholder', temp);
+			});
+		}
+		else
+		{
+			//now we fix eID
+			$newTab.find("input[name^='eID'").each(function() {
+				$(this).val("");
+			});
+		}
 				
 		//now we give the item id to the duplicate button
 		$newTab.find(".eventDuplicate").attr('id',"dup"+newCount);
@@ -884,7 +943,7 @@ $(document).ready(function() {
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").removeClass('eventEdit');
 		$curItem.find("tr").addClass('savedInput');
-		$curItem.find("input").attr("readonly", "readonly").unbind( "click" );
+		$curItem.find("input").attr("readonly", "readonly");
 		$curItem.find(".eventTDEdit").removeClass('hide');
 		$curItem.find(".eventTDEdit").show();
 		$curItem.css('background', '#E9E9E9');
@@ -895,7 +954,7 @@ $(document).ready(function() {
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").addClass('eventEdit');
 		$curItem.find("tr").removeClass('savedInput');
-		$curItem.find("input").removeAttr("readonly").bind("click",function(){if($(this).val()==$(this).prop('defaultValue')) $(this).val('');});
+		$curItem.find("input").removeAttr("readonly");
 		$curItem.find(".eventSave").removeClass('hide');
 		$curItem.find(".eventSave").show();
 		$curItem.css('background', '#FFFFFF');
@@ -904,15 +963,72 @@ $(document).ready(function() {
 	$(".eventDelete").live('click', function() {
 		//get event number
 		$curTable = $(this).closest('table');
-		var eventID = $curTable.attr('id');
+		eventID = $curTable.attr('id');
 		
-		//get and update current count
-		var eventCount = $('#eventCountAct').val();
-		var newCount = parseInt(parseInt(eventCount) - 1);
-		$('#eventCountAct').val(newCount);
+		realEventID = $curTable.find('input[name^=eID]').val();
 		
-		//bye-bye
-		$('#'+eventID).remove();
+		if(typeof realEventID =='undefined' || realEventID == '') //event not saved in DB
+		{
+			//get and update current count
+			eventCount = $('#eventCountAct').val();
+			newCount = parseInt(parseInt(eventCount) - 1);
+			$('#eventCountAct').val(newCount);
+			
+			//bye-bye
+			$('#'+eventID).remove();
+		}
+		else //event in DB
+		{
+			noty({
+				layout: 'center',
+				type: 'confirm',
+				text: 'Are you sure you want to delete this event? Note: all event data will be lost!',
+				buttons: [
+				{addClass: 'alert tiny', text: 'Yes, delete this event!', onClick: function($noty) {
+					
+					var url = "code/dashboard/do_eventDelete.php";
+					$.ajax({
+						   type: "POST",
+						   url: url,
+						   data: 'eventID='+realEventID, // serializes the form's elements.
+						   success: function(data)
+						   {
+								try
+								{
+									var dataArray = jQuery.parseJSON(data); //parsing JSON
+								}
+								catch(e)
+								{
+									noty({
+									  type: 'error',
+									  text: 'Connection Error! Check API endpoint.'
+									});
+									
+									//alert(data);
+									
+									return false;
+								}
+									
+								//get and update current count
+								eventCount = $('#eventCountAct').val();
+								newCount = parseInt(parseInt(eventCount) - 1);
+								$('#eventCountAct').val(newCount);
+								
+								//bye-bye
+								$('#'+eventID).remove();
+							}
+						 });
+					$noty.close();
+				  }
+				},
+				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+					$noty.close();
+				  }
+				}
+			  ]
+			});
+		}
+		
 	});
 	
 		$("#eventConfigForm").on('valid', function (event) {
@@ -934,7 +1050,7 @@ $(document).ready(function() {
 						  type: 'error',
 						  text: 'Connection Error! Check API endpoint.'
 						});
-						
+						//alert(data);
 						return false;
 					}
 					
@@ -955,6 +1071,93 @@ $(document).ready(function() {
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
+	});
+	
+	$(".userSave").live('click', function() {
+		$(this).hide();
+		$curItem = $(this).closest('table');
+		$curItem.find("tr").removeClass('userEdit');
+		$curItem.find("tr").addClass('savedInput');
+		$curItem.find("input").attr("readonly", "readonly");
+		$curItem.find(".userTDEdit").removeClass('hide');
+		$curItem.find(".userTDEdit").show();
+		$curItem.css('background', '#E9E9E9');
+	});
+	
+	$(".userTDEdit").live('click', function() {
+		$(this).hide();
+		$curItem = $(this).closest('table');
+		$curItem.find("tr").addClass('userEdit');
+		$curItem.find("tr").removeClass('savedInput');
+		$curItem.find("input").removeAttr("readonly");
+		$curItem.find(".userSave").removeClass('hide');
+		$curItem.find(".userSave").show();
+		$curItem.css('background', '#FFFFFF');
+	});
+	
+	//$(".newUser, .userDuplicate").live('click', function() {
+	$(".newUser").live('click', function() {
+		//new item or duplicate?
+		var dup = 0;
+		if($(this).hasClass("userDuplicate")) dup = 1;
+		
+		//get table user number
+		$curTable = $(this).closest('table');
+		var eventID = $curTable.attr('id');
+		
+		//get and update current count
+		var userCount = $('#userCount').val();
+		var newCount = parseInt(parseInt(userCount) + 1);
+		$('#userCount').val(newCount);
+		$('#userCountAct').val(parseInt($('#userCountAct').val())+1);
+		
+		if(dup) //clone an existing row
+		{
+			//clone specific table
+			$newTab = $('#'+eventID).clone(false);
+			$newTab.attr('id','user'+newCount);
+		}
+		else //clone a dummy row
+		{
+			//clone dummy table
+			$newTab = $('#user0').clone(true);
+			$newTab.attr('id','user'+newCount);
+		}
+		
+		//replace ids with incremented value and make value = default value
+		$newTab.find(".userTR input").each(function() {
+			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+		});
+		
+		if(!dup){
+			//now we fix placeholder
+			$newTab.find("input[name^='uName'").each(function() {
+				var temp = $(this).val();
+				$(this).val("");
+				$(this).attr('placeholder', temp);
+			});
+		}
+		else
+		{
+			//now we fix uID
+			$newTab.find("input[name^='uID'").each(function() {
+				$(this).val("");
+			});
+		}
+				
+		//now we give the item id to the duplicate button
+		$newTab.find(".userDuplicate").attr('id',"dup"+newCount);
+		
+		//hide it so we can animate it!
+		$newTab.css('display','none');
+		
+		//insert before section header/before hidden div
+		$('.firstUserDiv').before($newTab); 
+		$newTab.slideDown('slow');
+		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
 	//make footer take all of the bottom

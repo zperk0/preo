@@ -21,6 +21,7 @@
 						<tbody>
 							<tr class="eventEdit eventTR">
 								<td class="eventTDName">
+									<input type="hidden" name="eID[0]" value="" />
 									<input type="text" name="eName[0]" class="eventField noEnterSubmit" value="<?echo _("Click to add an event name");?>" required/>
 									<small class="error"><?echo _("Please type an event name");?></small>
 								</td>
@@ -48,9 +49,9 @@
 									</div>
 								</td>
 								<td class="eventTDTools">
-									<button type="button" class="eventTableButtons eventSave success"		title="<?echo _("Save");?>"							><i class="icon-save"></i></button>
+									<button type="button" class="eventTableButtons eventSave"					title="<?echo _("Lock");?>"							><i class="icon-lock"></i></button>
 									<button type="button" class="eventTableButtons eventTDEdit hide" 			title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
-									<button type="button" class="eventTableButtons eventDuplicate" 			title="<?echo _("Duplicate");?>" id="dup0"			><i class="icon-copy"></i></button>
+									<button type="button" class="eventTableButtons eventDuplicate" 				title="<?echo _("Duplicate");?>" id="dup0"			><i class="icon-copy"></i></button>
 									<button type="button" class="eventTableButtons secondary eventDelete" 		title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
 								</td>
 							</tr>
@@ -65,11 +66,11 @@
 		foreach($events as $eKey=>$event){
 		//again remember its all 1-indexed thats why we add +1 to the key
 		?>
-			<input type="hidden" name="eID[<?echo ($eKey+1);?>]" value="<?echo $event['id'];?>" />
 			<table class="eventTable" id="event<?echo ($eKey+1)?>" style="background:#E9E9E9">
 				<tbody>
 					<tr class="savedInput eventTR">
 						<td class="eventTDName">
+							<input type="hidden" name="eID[<?echo ($eKey+1);?>]" value="<?echo $event['id'];?>" />
 							<input type="text" name="eName[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo $event['name'];?>" required readonly="readonly"/>
 							<small class="error"><?echo _("Please type an event name");?></small>
 						</td>
@@ -97,9 +98,9 @@
 							</div>
 						</td>
 						<td class="eventTDTools">
-							<button type="button" class="eventTableButtons eventSave success hide" 	title="<?echo _("Save");?>"										><i class="icon-save"></i></button>
-							<button type="button" class="eventTableButtons eventTDEdit" 		title="<?echo _("Edit");?>"										><i class="fi-pencil"></i></button>
-							<button type="button" class="eventTableButtons eventDuplicate" 		title="<?echo _("Duplicate");?>" id="dup<?echo ($eKey+1);?>"	><i class="icon-copy"></i></button>
+							<button type="button" class="eventTableButtons eventSave hide" 			title="<?echo _("Lock");?>"										><i class="icon-lock"></i></button>
+							<button type="button" class="eventTableButtons eventTDEdit" 			title="<?echo _("Edit");?>"										><i class="fi-pencil"></i></button>
+							<button type="button" class="eventTableButtons eventDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($eKey+1);?>"	><i class="icon-copy"></i></button>
 							<button type="button" class="eventTableButtons secondary eventDelete" 	title="<?echo _("Delete");?>"									><i class="fi-x"></i></button>
 						</td>
 					</tr>
