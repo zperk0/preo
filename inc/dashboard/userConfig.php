@@ -75,7 +75,7 @@
 						<td class="userTDRole">
 							<select name="uRole[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" readonly="readonly"/>
 								<option value="ADMIN" 		<?if($user['role']=='ADMIN'){	?>selected="selected"<?}?>><?echo _("Admin")?></option>
-								<option value="READONLY" 	<?if($user['role']=='READONLY'){?>selected="selected"<?}?>><?echo _("Staff")?></option>
+								<option value="STAFF" 		<?if($user['role']=='READONLY'){?>selected="selected"<?}?>><?echo _("Staff")?></option>
 								<option value="OWNER" 		<?if($user['role']=='OWNER'){	?>selected="selected"<?}?>><?echo _("Owner")?></option>
 							</select>
 						</td>
@@ -83,7 +83,7 @@
 							<button type="button" class="userTableButtons userSave hide" 			title="<?echo _("Lock");?>"										><i class="icon-lock"></i></button>
 							<button type="button" class="userTableButtons userTDEdit" 				title="<?echo _("Edit");?>"										><i class="fi-pencil"></i></button>
 							<!--<button type="button" class="userTableButtons userDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($uKey+1);?>"	><i class="icon-copy"></i></button>-->
-							<button type="button" class="userTableButtons secondary userDelete" 	title="<?echo _("Delete");?>"									><i class="fi-x"></i></button>
+							<button type="button" class="userTableButtons secondary userDelete <?if($_SESSION['user_id'] == $user['id']) echo 'hide';?>" 	title="<?echo _("Delete");?>"									><i class="fi-x"></i></button>
 						</td>
 					</tr>
 				</tbody>

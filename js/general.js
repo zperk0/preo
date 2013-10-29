@@ -801,11 +801,57 @@ $(document).ready(function() {
 		$($newSec).fadeIn('slow');
 	});
 	
-	$("#changePassTrigger").live('click', function(e) {
-		$('#passDiv').show();
-		$('#changePassTrigger').hide();
-		e.preventDefault();
+	$('.deleteSection').on('click',function(){
+		//get id
+		sectionID = ($(this).attr('id')).replace("delete_section","");
+		$parentSectionHeader = $(this).parents('#menuSectionRow');
 		
+		
+		noty({
+			layout: 'center',
+			type: 'confirm',
+			text: 'Are you sure you want to delete this section? Note: all items and options will be lost!',
+			buttons: [
+			{addClass: 'alert tiny', text: 'Yes, delete this section and all its contents!', onClick: function($noty) {
+				//get and update current count
+				var secCount = $('#sectionCountAct').val();
+				var newCount = parseInt(parseInt(secCount) - 1);
+				$('#sectionCountAct').val(newCount);
+				
+				//count all items in question and get their ids
+				itemCount = 0;
+				itemIDArray = new Array();
+				$('.tablesection'+sectionID).each(function() {
+					itemIDArray[itemCount] = ($(this).attr('id')).replace("item","");
+					itemCount++;
+				});
+				
+				for(i=0;i<itemIDArray.length;i++) //remove all option count data for each item
+				{
+					$('#item'+itemIDArray[i]+'_optionCount').remove();
+					$('#item'+itemIDArray[i]+'_optionCountAct').remove();
+				}
+				
+				//now we adjust item count
+				var itemCount = $('#itemCountAct').val();
+				var newCount = parseInt(parseInt(itemCount) - itemCount);
+				$('#itemCountAct').val(newCount);
+				
+				//we delete the section here
+				$parentSectionHeader.remove(); //remove section header and buttons!
+
+				$('.tablesection'+sectionID).remove(); //tables of all items gone!
+				$('.firstItemDivsection'+sectionID).remove(); //hidden section hook gone!
+
+				$noty.close();
+			  }
+			},
+			{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+				$noty.close();
+			  }
+			}
+		  ]
+		});
 	});
 	
 	$("#menuConfigForm").on('valid', function (event) {
@@ -969,13 +1015,30 @@ $(document).ready(function() {
 		
 		if(typeof realEventID =='undefined' || realEventID == '') //event not saved in DB
 		{
-			//get and update current count
-			eventCount = $('#eventCountAct').val();
-			newCount = parseInt(parseInt(eventCount) - 1);
-			$('#eventCountAct').val(newCount);
-			
-			//bye-bye
-			$('#'+eventID).remove();
+			noty({
+				layout: 'center',
+				type: 'confirm',
+				text: 'Are you sure you want to delete this event? Note: all event data will be lost!',
+				buttons: [
+				{addClass: 'alert tiny', text: 'Yes, delete this event!', onClick: function($noty) {
+					
+					//get and update current count
+					eventCount = $('#eventCountAct').val();
+					newCount = parseInt(parseInt(eventCount) - 1);
+					$('#eventCountAct').val(newCount);
+					
+					//bye-bye
+					$('#'+eventID).remove();
+					
+					$noty.close();
+				  }
+				},
+				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+					$noty.close();
+				  }
+				}
+			  ]
+			});
 		}
 		else //event in DB
 		{
@@ -1031,7 +1094,7 @@ $(document).ready(function() {
 		
 	});
 	
-		$("#eventConfigForm").on('valid', function (event) {
+	$("#eventConfigForm").on('valid', function (event) {
 		var url = "code/dashboard/do_eventConfig.php";
 
 		$.ajax({
@@ -1064,7 +1127,7 @@ $(document).ready(function() {
 					}
 					else
 					{	
-						noty({ type: 'success', text: 'Menu configuration has been saved!' });
+						noty({ type: 'success', text: 'Event configuration has been saved!' });
 						setTimeout(function(){window.location.replace("./dashboard.php");},1000);
 					}
 				}
@@ -1132,6 +1195,13 @@ $(document).ready(function() {
 			$(this).attr('name', newName);
 		});
 		
+		$newTab.find(".userTR select").each(function() {
+			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+		});
+		
 		if(!dup){
 			//now we fix placeholder
 			$newTab.find("input[name^='uName'").each(function() {
@@ -1160,8 +1230,286 @@ $(document).ready(function() {
 		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
+	$(".userDelete").live('click', function() {
+		//get event number
+		$curTable = $(this).closest('table');
+		userID = $curTable.attr('id');
+		
+		realUserID = $curTable.find('input[name^=uID]').val();
+		
+		if(typeof realUserID =='undefined' || realUserID == '') //event not saved in DB
+		{
+			noty({
+				layout: 'center',
+				type: 'confirm',
+				text: 'Are you sure you want to delete this user? Note: all user data will be lost!',
+				buttons: [
+				{addClass: 'alert tiny', text: 'Yes, delete this user!', onClick: function($noty) {
+					
+					//get and update current count
+					userCount = $('#userCountAct').val();
+					newCount = parseInt(parseInt(userCount) - 1);
+					$('#userCountAct').val(newCount);
+					
+					//bye-bye
+					$('#'+userID).remove();
+					
+					$noty.close();
+				  }
+				},
+				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+					$noty.close();
+				  }
+				}
+			  ]
+			});
+		}
+		else //event in DB
+		{
+			noty({
+				layout: 'center',
+				type: 'confirm',
+				text: 'Are you sure you want to delete this user? Note: all user data will be lost!',
+				buttons: [
+				{addClass: 'alert tiny', text: 'Yes, delete this user!', onClick: function($noty) {
+					
+					var url = "code/dashboard/do_userDelete.php";
+					$.ajax({
+						   type: "POST",
+						   url: url,
+						   data: 'userID='+realUserID, // serializes the form's elements.
+						   success: function(data)
+						   {
+								try
+								{
+									var dataArray = jQuery.parseJSON(data); //parsing JSON
+								}
+								catch(e)
+								{
+									noty({
+									  type: 'error',
+									  text: 'Connection Error! Check API endpoint.'
+									});
+									
+									//alert(data);
+									
+									return false;
+								}
+									
+								//get and update current count
+								userCount = $('#userCountAct').val();
+								newCount = parseInt(parseInt(userCount) - 1);
+								$('#userCountAct').val(newCount);
+								
+								//bye-bye
+								$('#'+userID).remove();
+							}
+						 });
+					$noty.close();
+				  }
+				},
+				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+					$noty.close();
+				  }
+				}
+			  ]
+			});
+		}
+		
+	});
+	
+	$("#userConfigForm").on('valid', function (event) {
+		var url = "code/dashboard/do_userConfig.php";
+
+		$.ajax({
+			   type: "POST",
+			   url: url,
+			   data: $(this).serialize(), // serializes the form's elements.
+			   success: function(data)
+			   {
+					try
+					{
+						var dataArray = jQuery.parseJSON(data); //parsing JSON
+					}
+					catch(e)
+					{
+						noty({
+						  type: 'error',
+						  text: 'Connection Error! Check API endpoint.'
+						});
+						//alert(data);
+						return false;
+					}
+					
+					if(typeof dataArray['status'] !='undefined') //error
+					{
+						noty({
+						  type: 'error',
+						  text: dataArray['message']
+						});
+					}
+					else
+					{	
+						noty({ type: 'success', text: 'User configuration has been saved!' });
+						setTimeout(function(){window.location.replace("./dashboard.php");},1000);
+					}
+				}
+			 });
+
+		return false; // avoid to execute the actual submit of the form.
+	});
+	
+	$(".outletSave").live('click', function() {
+		$(this).hide();
+		$curItem = $(this).closest('table');
+		$curItem.find("tr").removeClass('outletEdit');
+		$curItem.find("tr").addClass('savedInput');
+		$curItem.find("input").attr("readonly", "readonly");
+		$curItem.find(".outletTDEdit").removeClass('hide');
+		$curItem.find(".outletTDEdit").show();
+		$curItem.css('background', '#E9E9E9');
+	});
+	
+	$(".outletTDEdit").live('click', function() {
+		$(this).hide();
+		$curItem = $(this).closest('table');
+		$curItem.find("tr").addClass('outletEdit');
+		$curItem.find("tr").removeClass('savedInput');
+		$curItem.find("input").removeAttr("readonly");
+		$curItem.find(".outletSave").removeClass('hide');
+		$curItem.find(".outletSave").show();
+		$curItem.css('background', '#FFFFFF');
+	});
+	
+	$(".newOutlet").live('click', function() {
+		//new item or duplicate?
+		var dup = 0;
+		if($(this).hasClass("outletDuplicate")) dup = 1;
+		
+		//get table outlet number
+		$curTable = $(this).closest('table');
+		var outletID = $curTable.attr('id');
+		
+		//get and update current count
+		var outletCount = $('#outletCount').val();
+		var newCount = parseInt(parseInt(outletCount) + 1);
+		$('#outletCount').val(newCount);
+		$('#outletCountAct').val(parseInt($('#outletCountAct').val())+1);
+		
+		if(dup) //clone an existing row
+		{
+			//clone specific table
+			$newTab = $('#'+outletID).clone(false);
+			$newTab.attr('id','outlet'+newCount);
+		}
+		else //clone a dummy row
+		{
+			//clone dummy table
+			$newTab = $('#outlet0').clone(true);
+			$newTab.attr('id','outlet'+newCount);
+		}
+		
+		//replace ids with incremented value and make value = default value
+		$newTab.find(".outletTR input").each(function() {
+			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+		});
+		
+		$newTab.find(".outletTR select").each(function() {
+			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+			
+			$(this).multiselect({
+			   checkAllText: "Select all menus",
+			   uncheckAllText: "Unselect all menus",
+			   noneSelectedText: "Select menu(s) for this outlet &#x25BC;",
+			   selectedText: "# of # selected",
+			   selectedList: 0
+			});
+		});
+		
+		if(!dup){
+			//now we fix placeholder
+			$newTab.find("input[name^='oName'").each(function() {
+				var temp = $(this).val();
+				$(this).val("");
+				$(this).attr('placeholder', temp);
+			});
+		}
+		else
+		{
+			//now we fix uID
+			$newTab.find("input[name^='oID'").each(function() {
+				$(this).val("");
+			});
+		}
+				
+		//now we give the item id to the duplicate button
+		$newTab.find(".outletDuplicate").attr('id',"dup"+newCount);
+		
+		//hide it so we can animate it!
+		$newTab.css('display','none');
+		
+		//insert before section header/before hidden div
+		$('.firstOutletDiv').before($newTab); 
+		$newTab.slideDown('slow');
+		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+	});
+	
+	$('#new_menu').on('click', function(){
+		window.location.href = "newMenu.php";
+	});
+	
+	$("#outletConfigForm").on('valid', function (event) {
+		var url = "code/dashboard/do_outletConfig.php";
+
+		$.ajax({
+			   type: "POST",
+			   url: url,
+			   data: $(this).serialize(), // serializes the form's elements.
+			   success: function(data)
+			   {
+					try
+					{
+						var dataArray = jQuery.parseJSON(data); //parsing JSON
+					}
+					catch(e)
+					{
+						noty({
+						  type: 'error',
+						  text: 'Connection Error! Check API endpoint.'
+						});
+						//alert(data);
+						return false;
+					}
+					
+					if(typeof dataArray['status'] !='undefined') //error
+					{
+						noty({
+						  type: 'error',
+						  text: dataArray['message']
+						});
+					}
+					else
+					{	
+						noty({ type: 'success', text: 'Outlet configuration has been saved!' });
+						setTimeout(function(){window.location.replace("./dashboard.php");},1000);
+					}
+				}
+			 });
+
+		return false; // avoid to execute the actual submit of the form.
+	});
+	
 	//make footer take all of the bottom
-	elemHeight = $(window).height() - $('footer').offset().top - 40;
+	if($(window).height() < 1024)
+		elemHeight = 230;
+	else
+		elemHeight = $(window).height() - $('footer').offset().top - 40;
 	$('footer.dashboardFooter div.columns').height(elemHeight);
 	
 	// Twitter App
@@ -1214,59 +1562,12 @@ $(document).ready(function() {
 		$('.phone2pager').toggle();
 	});
 	
-	$('.deleteSection').on('click',function(){
-		//get id
-		sectionID = ($(this).attr('id')).replace("delete_section","");
-		$parentSectionHeader = $(this).parents('#menuSectionRow');
+	$("#changePassTrigger").live('click', function(e) {
+		$('#passDiv').show();
+		$('#changePassTrigger').hide();
+		e.preventDefault();
 		
-		
-		noty({
-			layout: 'center',
-			type: 'confirm',
-			text: 'Are you sure you want to delete this section? Note: all items and options will be lost!',
-			buttons: [
-			{addClass: 'alert tiny', text: 'Yes, delete this section and all its contents!', onClick: function($noty) {
-				//get and update current count
-				var secCount = $('#sectionCountAct').val();
-				var newCount = parseInt(parseInt(secCount) - 1);
-				$('#sectionCountAct').val(newCount);
-				
-				//count all items in question and get their ids
-				itemCount = 0;
-				itemIDArray = new Array();
-				$('.tablesection'+sectionID).each(function() {
-					itemIDArray[itemCount] = ($(this).attr('id')).replace("item","");
-					itemCount++;
-				});
-				
-				for(i=0;i<itemIDArray.length;i++) //remove all option count data for each item
-				{
-					$('#item'+itemIDArray[i]+'_optionCount').remove();
-					$('#item'+itemIDArray[i]+'_optionCountAct').remove();
-				}
-				
-				//now we adjust item count
-				var itemCount = $('#itemCountAct').val();
-				var newCount = parseInt(parseInt(itemCount) - itemCount);
-				$('#itemCountAct').val(newCount);
-				
-				//we delete the section here
-				$parentSectionHeader.remove(); //remove section header and buttons!
-
-				$('.tablesection'+sectionID).remove(); //tables of all items gone!
-				$('.firstItemDivsection'+sectionID).remove(); //hidden section hook gone!
-
-				$noty.close();
-			  }
-			},
-			{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
-				$noty.close();
-			  }
-			}
-		  ]
-		});
 	});
-	
 });
 
 //functions to update phone/app preview
@@ -1330,6 +1631,9 @@ $(window).resize(function(){
 		else map.setCenter( new google.maps.LatLng(mapDefaultCenterLat,mapDefaultCenterLong) );
 		
 	//make footer take all of the bottom
-	elemHeight = $(window).height() - $('footer').offset().top - 40;
+	if($(window).height() < 1024)
+		elemHeight = 230;
+	else
+		elemHeight = $(window).height() - $('footer').offset().top - 40;
 	$('footer.dashboardFooter div.columns').height(elemHeight);
 });

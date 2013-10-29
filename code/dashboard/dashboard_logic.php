@@ -108,8 +108,8 @@
 			$_SESSION['outlet_id'] = $result[0]['id'];
 		}
 		else
-		{	
-			$_SESSION['menu_id']	= $dataJSON[0]['id'];
+		{
+			$_SESSION['menus']	= $dataJSON;
 			$_SESSION['outlet_id'] 	= $dataJSON[0]['outletId'];
 		}
 		///////////////////////////////////////////////////////////////////////////////////////// 

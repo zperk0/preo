@@ -52,9 +52,12 @@
 				<div class="large-12 columns">
 					<div class="accordion" data-options="one_up: false;" data-section="accordion">
 						<section>
-							<h3 data-section-title><?echo _("Menu");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/>
+							<h3 data-section-title><?echo _("Menus");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/>
 							<div class="content" data-section-content>
-								<p><a href="<?echo $_SESSION['path']?>/menuSettings.php"><?echo _("Update menu");?></a></p>
+								<?foreach($_SESSION['menus'] as $menu){?>
+									<p><a href="<?echo $_SESSION['path']?>/menuSettings.php?id=<?echo $menu['id'];?>"><?echo _("Update")." $menu[name]";?></a></p>
+								<?}?>
+								<p><a href="<?echo $_SESSION['path']?>/newMenu.php"><?echo _("Add new menu");?></a></p>
 							</div>
 						</section>
 						<section>
@@ -81,6 +84,7 @@
 						<section class="premiumSection">
 							<h3 data-section-title><?echo _("Premium");?></h3><i class="icon-plus-sign"></i>
 							<div class="content" data-section-content>
+								<p><a href="<?echo $_SESSION['path']?>/outletSettings.php"><?echo _("Manage outlets");?></a></p>
 								<p><a href="#"><?echo _("Find out more");?></a></p>
 							</div>
 						</section>

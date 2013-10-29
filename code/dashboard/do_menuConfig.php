@@ -125,7 +125,8 @@
 	$data 				= array();
 	$data['name'] 		= $mName;
 	$data['accountId'] 	= $_SESSION['account_id'];
-	$data['outletId'] 	= $_SESSION['outlet_id'];
+	if(!$_SESSION['secondaryMenuFlag'])
+		$data['outletId'] 	= $_SESSION['outlet_id']; //secondary menus are non-associated.
 	
 	$jsonData = json_encode($data);
 	
@@ -141,7 +142,9 @@
 		$curlResult = callAPI('POST', $apiURL."menus", $jsonData, $apiAuth); //menu created
 		$result = json_decode($curlResult,true);
 			
-		$_SESSION['menu_id'] = $result['id'];
+		$menuID = $result['id'];
+		
+		if(!isset($_SESSION['secondaryMenuFlag']) || !$_SESSION['secondaryMenuFlag']) $_SESSION['menu_id'] = $menuID;
 	}
 	
 	//now we create sections > items > sectionsXitems > modifiers > modifier-items
@@ -150,7 +153,7 @@
 		//create section
 		$data 				= array();
 		$data['name'] 		= $section['name'];
-		$data['menuId'] 	= $_SESSION['menu_id'];
+		$data['menuId'] 	= $menuID;
 		$data['position'] 	= $sKey;
 				
 		$jsonData = json_encode($data);
@@ -174,7 +177,7 @@
 				$data['quantity'] 		= $item['quantity'];
 				$data['visible'] 		= $item['visible'];
 				
-				$data['menuId'] 		= $_SESSION['menu_id']; //sectionxitems
+				$data['menuId'] 		= $menuID; //sectionxitems
 				$data['sectionId'] 		= $section_id; //sectionxitems
 				$data['position'] 		= $iKey; //sectionxitems
 				
@@ -231,4 +234,8 @@
 	//reset var
 	if(isset($_SESSION['menu_edit_on']) && $_SESSION['menu_edit_on'])
 		$_SESSION['menu_edit_on']=0;
+		
+	//reset var
+	if(isset($_SESSION['secondaryMenuFlag']) && $_SESSION['secondaryMenuFlag'])
+		$_SESSION['secondaryMenuFlag']=0;
 ?>

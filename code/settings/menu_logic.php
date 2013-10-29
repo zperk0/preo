@@ -1,5 +1,6 @@
 <?php
 
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/protect_input.php'); 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
@@ -11,20 +12,25 @@
 	//we get account id from _SESSION
 	$venueID = $_SESSION['venue_id'];
 	
+	//GET
+	$menuID = $_GET['id'];
+	protect($menuID);
+
 	//////MENU////////////////////////////////////////////////////////////////////////////
 	
-	//query to find menu
-	$curlResult = callAPI('GET', $apiURL."menus?venueId=$venueID", false, $apiAuth);
+	//query to find menu sanity
+	$curlResult = callAPI('GET', $apiURL."menus/$menuID", false, $apiAuth);
 	$dataJSON = json_decode($curlResult,true);
 		
-	if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
+	if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404) || empty($menuID)) 
 	{	
 		header('location:/');
 	}
 	else
 	{	
-		$menuID 	= $_SESSION['menu_id']		= $dataJSON[0]['id'];
-		$outletID 	= $_SESSION['outlet_id'] 	= $dataJSON[0]['outletId'];
+		$outletID 			 	= $dataJSON['outletId'];
+		$_SESSION['menu_id'] 	= $menuID;
+		$_SESSION['outlet_id'] 	= $outletID;
 		
 		//now we need to populate all data pertaining to this menu
 		$curlResult = callAPI('GET', $apiURL."menus/$menuID", false, $apiAuth);

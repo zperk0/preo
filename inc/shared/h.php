@@ -24,7 +24,6 @@
 					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Orders");?></a></li>
 					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Stats");?></a></li>
 					<li><a href="<?echo $_SESSION['path']?>/eventSettings.php"							><? echo _("Events");?></a></li>
-					<li><a href="<?echo $_SESSION['path']?>/menuSettings.php"							><? echo _("Menu");?></a></li>
 					<li><a href="#" data-reveal-id="settingsM"											><? echo _("Settings");?></a></li>
 						<?}?>
 					<li><a href="<?echo $_SESSION['path']?>/code/shared/logout.php" class="activated"	><? echo _("Logout");?></a></li>
