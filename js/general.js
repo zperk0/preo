@@ -353,7 +353,6 @@ $(document).ready(function() {
 			$('#appHeading').html(content);
 			
 			$('#picFileName').val(responseText);
-			$('#aHeading').val('');
 		},
 		error: function() { 
 			noty({
@@ -855,6 +854,9 @@ $(document).ready(function() {
 	});
 	
 	$("#menuConfigForm").on('valid', function (event) {
+		//lock all
+		$('.itemSave').trigger('click');
+	
 		var url = "code/dashboard/do_menuConfig.php";
 		
 		$('.itemSave').click();
@@ -892,7 +894,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'Menu configuration has been saved!' });
-						setTimeout(function(){window.location.replace("./dashboard.php");},1000);
+						
 					}
 				}
 			 });
@@ -1095,6 +1097,9 @@ $(document).ready(function() {
 	});
 	
 	$("#eventConfigForm").on('valid', function (event) {
+		//lock all
+		$('.eventSave').trigger('click');
+		
 		var url = "code/dashboard/do_eventConfig.php";
 
 		$.ajax({
@@ -1128,7 +1133,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'Event configuration has been saved!' });
-						setTimeout(function(){window.location.replace("./dashboard.php");},1000);
+						
 					}
 				}
 			 });
@@ -1144,6 +1149,7 @@ $(document).ready(function() {
 		$curItem.find("input").attr("readonly", "readonly");
 		$curItem.find(".userTDEdit").removeClass('hide');
 		$curItem.find(".userTDEdit").show();
+		$curItem.find(".userMenuSingleSelect").multiselect("disable");
 		$curItem.css('background', '#E9E9E9');
 	});
 	
@@ -1155,6 +1161,7 @@ $(document).ready(function() {
 		$curItem.find("input").removeAttr("readonly");
 		$curItem.find(".userSave").removeClass('hide');
 		$curItem.find(".userSave").show();
+		$curItem.find(".userMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#FFFFFF');
 	});
 	
@@ -1200,6 +1207,13 @@ $(document).ready(function() {
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
+			
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: "Role &#x25BC;",
+			   selectedList: 1
+			}); 
 		});
 		
 		if(!dup){
@@ -1318,7 +1332,22 @@ $(document).ready(function() {
 		
 	});
 	
+	$(".userMenuSingleSelect").multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: "Role &#x25BC;",
+	   selectedList: 1
+	}); 
+		
+	$(".userMenuSingleSelect").multiselect('disable');
+	
 	$("#userConfigForm").on('valid', function (event) {
+		//lock all
+		$('.userSave').trigger('click');
+	
+		//enable dropdowns or we wont get the values!
+		$(".userMenuSingleSelect").multiselect('enable');
+		
 		var url = "code/dashboard/do_userConfig.php";
 
 		$.ajax({
@@ -1351,7 +1380,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'User configuration has been saved!' });
-						setTimeout(function(){window.location.replace("./dashboard.php");},1000);
+						
 					}
 				}
 			 });
@@ -1367,6 +1396,7 @@ $(document).ready(function() {
 		$curItem.find("input").attr("readonly", "readonly");
 		$curItem.find(".outletTDEdit").removeClass('hide');
 		$curItem.find(".outletTDEdit").show();
+		$curItem.find(".outletMenuMultiSelect").multiselect("disable");
 		$curItem.css('background', '#E9E9E9');
 	});
 	
@@ -1378,6 +1408,7 @@ $(document).ready(function() {
 		$curItem.find("input").removeAttr("readonly");
 		$curItem.find(".outletSave").removeClass('hide');
 		$curItem.find(".outletSave").show();
+		$curItem.find(".outletMenuMultiSelect").multiselect("enable");
 		$curItem.css('background', '#FFFFFF');
 	});
 	
@@ -1464,7 +1495,113 @@ $(document).ready(function() {
 		window.location.href = "newMenu.php";
 	});
 	
+	$(".outletMenuMultiSelect").multiselect({
+	   checkAllText: "Select all menus",
+	   uncheckAllText: "Unselect all menus",
+	   noneSelectedText: "Select menu(s) for this outlet &#x25BC;",
+	   selectedText: "# of # selected",
+	   selectedList: 0
+	}); 
+		
+	$(".outletMenuMultiSelect").multiselect('disable');
+	
+	$(".outletDelete").live('click', function() {
+		//get outlet number
+		$curTable = $(this).closest('table');
+		outletID = $curTable.attr('id');
+		
+		realOutletID = $curTable.find('input[name^=oID]').val();
+		
+		if(typeof realOutletID =='undefined' || realOutletID == '') //event not saved in DB
+		{
+			noty({
+				layout: 'center',
+				type: 'confirm',
+				text: 'Are you sure you want to delete this outlet? Note: all outlet data will be lost!',
+				buttons: [
+				{addClass: 'alert tiny', text: 'Yes, delete this outlet!', onClick: function($noty) {
+					
+					//get and update current count
+					outletCount = $('#outletCountAct').val();
+					newCount = parseInt(parseInt(outletCount) - 1);
+					$('#outletCountAct').val(newCount);
+					
+					//bye-bye
+					$('#'+outletID).remove();
+					
+					$noty.close();
+				  }
+				},
+				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+					$noty.close();
+				  }
+				}
+			  ]
+			});
+		}
+		else //event in DB
+		{
+			noty({
+				layout: 'center',
+				type: 'confirm',
+				text: 'Are you sure you want to delete this outlet? Note: all outlet data will be lost!',
+				buttons: [
+				{addClass: 'alert tiny', text: 'Yes, delete this outlet!', onClick: function($noty) {
+					
+					var url = "code/dashboard/do_outletDelete.php";
+					$.ajax({
+						   type: "POST",
+						   url: url,
+						   data: 'outletID='+realOutletID, // serializes the form's elements.
+						   success: function(data)
+						   {
+								try
+								{
+									var dataArray = jQuery.parseJSON(data); //parsing JSON
+								}
+								catch(e)
+								{
+									noty({
+									  type: 'error',
+									  text: 'Connection Error! Check API endpoint.'
+									});
+									
+									//alert(data);
+									
+									return false;
+								}
+									
+								//get and update current count
+								outletCount = $('#outletCountAct').val();
+								newCount = parseInt(parseInt(outletCount) - 1);
+								$('#outletCountAct').val(newCount);
+								
+								//bye-bye
+								$('#'+outletID).remove();
+								
+								$noty.close();
+							}
+						 });
+					$noty.close();
+				  }
+				},
+				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+					$noty.close();
+				  }
+				}
+			  ]
+			});
+		}
+		
+	});
+	
 	$("#outletConfigForm").on('valid', function (event) {
+		//lock all
+		$('.outletSave').trigger('click');
+		
+		//enable dropdowns or we wont get the values!
+		$(".outletMenuMultiSelect").multiselect('enable');
+		
 		var url = "code/dashboard/do_outletConfig.php";
 
 		$.ajax({
@@ -1497,7 +1634,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'Outlet configuration has been saved!' });
-						setTimeout(function(){window.location.replace("./dashboard.php");},1000);
+						
 					}
 				}
 			 });
@@ -1567,6 +1704,57 @@ $(document).ready(function() {
 		$('#changePassTrigger').hide();
 		e.preventDefault();
 		
+	});
+	
+	$(".deleteMenu").live('click', function() {
+		//get menu id
+		menuID = $(this).attr('id');
+		
+		menuID = menuID.replace('dmi-','');
+		
+		noty({
+			layout: 'center',
+			type: 'confirm',
+			text: 'Are you sure you want to delete this menu? Note: all menu data will be lost!',
+			buttons: [
+			{addClass: 'alert tiny', text: 'Yes, delete this menu!', onClick: function($noty) {
+				
+				var url = "code/dashboard/do_menuDelete.php";
+				$.ajax({
+					   type: "POST",
+					   url: url,
+					   data: 'menuID='+menuID, // serializes the form's elements.
+					   success: function(data)
+					   {
+							try
+							{
+								var dataArray = jQuery.parseJSON(data); //parsing JSON
+							}
+							catch(e)
+							{
+								noty({
+								  type: 'error',
+								  text: 'Connection Error! Check API endpoint.'
+								});
+								
+								//alert(data);
+								
+								return false;
+							}
+
+							//bye-bye
+							$('#p-'+menuID).remove();
+						}
+					 });
+				$noty.close();
+			  }
+			},
+			{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+				$noty.close();
+			  }
+			}
+		  ]
+		});
 	});
 });
 

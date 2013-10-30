@@ -4,6 +4,16 @@
 		<form id="signinForm" method="POST" data-abide>
 			<h1><?echo _("Your account");?></h1>
 			<div class="row">
+				<div class="large-6 columns fbSignup">
+					<p><?echo _("Login using Facebook");?></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-6 columns googleSignup">
+					<p><?echo _("Login using Google");?></p>
+				</div>
+			</div>
+			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Email");?></label>
 					<input type="email" name="email" placeholder="" required tabindex=1>

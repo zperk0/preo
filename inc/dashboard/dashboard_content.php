@@ -55,7 +55,11 @@
 							<h3 data-section-title><?echo _("Menus");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/>
 							<div class="content" data-section-content>
 								<?foreach($_SESSION['menus'] as $menu){?>
-									<p><a href="<?echo $_SESSION['path']?>/menuSettings.php?id=<?echo $menu['id'];?>"><?echo _("Update")." $menu[name]";?></a></p>
+									<p id="p-<?echo $menu['id']?>">
+										<a class="dashMenuIcon" 			href="<?echo $_SESSION['path']?>/menuSettings.php?id=<?echo $menu['id'];?>" title="<?echo _("Edit")." $menu[name]";?>"><i class="fi-pencil"></i></a>
+										<a class="dashMenuIcon deleteMenu" 	id="dmi-<?echo $menu['id']?>"  title="<?echo _("Delete")." $menu[name]";?>"><i class="fi-x"></i></a> |
+										<?echo $menu['name']?>
+									</p>
 								<?}?>
 								<p><a href="<?echo $_SESSION['path']?>/newMenu.php"><?echo _("Add new menu");?></a></p>
 							</div>

@@ -93,7 +93,7 @@
 		//////MENU////////////////////////////////////////////////////////////////////////////
 		
 		//query to find menus for this venue  
-		$curlResult = callAPI('GET', $apiURL."menus?venueId=$venueID", false, $apiAuth);
+		$curlResult = callAPI('GET', $apiURL."menus?accountId=$accountID", false, $apiAuth);
 		
 		$dataJSON = json_decode($curlResult,true);
 		
@@ -102,7 +102,7 @@
 			$_SESSION['noMenuFlag']=1; 
 			
 			//Let's get the outlet ID now
-			$curlResult = callAPI('GET', $apiURL."outlets?venueId=$venueID", false, $apiAuth);
+			$curlResult = callAPI('GET', $apiURL."outlets?accountId=$accountID", false, $apiAuth);
 			$result = json_decode($curlResult, true);
 			
 			$_SESSION['outlet_id'] = $result[0]['id'];

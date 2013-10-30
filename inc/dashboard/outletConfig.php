@@ -27,11 +27,12 @@
 									<small class="error"><?echo _("Please type an outlet name");?></small>
 								</td>
 								<td class="outletTDMenu">
-									<select name="oMenu[0][]" class="outletField noEnterSubmit inline" style="display:none !important;" multiple="multiple"/>
+									<select name="oMenu[0][]" class="outletField noEnterSubmit inline" style="display:none !important;" multiple="multiple" required/>  <!-- Dummy does not have outletMenuMultiSelect -->
 										<?foreach($menus as $mKey=>$menu){?>
-											<option value="<?echo $menu['id'];?>"><?echo $menu['name'];?></option>
+											<option value="<?echo $menu['id'];?>" <?if($mKey == 0) echo 'selected="selected"';?>><?echo $menu['name'];?></option>
 										<?}?>
 									</select>
+									<small class="error"><?echo _("Please choose a menu");?></small>
 								</td>
 								<td class="outletTDTools">
 									<button type="button" class="outletTableButtons outletSave"					title="<?echo _("Lock");?>"		><i class="icon-lock"></i></button>
@@ -60,11 +61,12 @@
 							<small class="error"><?echo _("Please type an outlet name");?></small>
 						</td>
 						<td class="outletTDMenu">
-							<select name="oMenu[<?echo ($oKey+1);?>][]" class="outletMenuMultiSelect outletField noEnterSubmit small" readonly="readonly" style="display:none !important;" multiple="multiple"/>
+							<select name="oMenu[<?echo ($oKey+1);?>][]" class="outletMenuMultiSelect outletField noEnterSubmit small" readonly="readonly" style="display:none !important;" multiple="multiple" required/>
 								<?foreach($menus as $mKey=>$menu){?>
 									<option value="<?echo $menu['id'];?>" <?if(searchForId($menu['id'],$outletMenus)) echo 'selected="selected"';?>><?echo $menu['name'];?></option>
 								<?}?>
 							</select>
+							<small class="error"><?echo _("Please choose a menu");?></small>
 						</td>
 						<td class="outletTDTools">
 							<button type="button" class="outletTableButtons outletSave hide" 			title="<?echo _("Lock");?>"		><i class="icon-lock"></i></button>
@@ -87,17 +89,3 @@
 		</div>
 	</div>
 </form>
-
-<script src="<?echo $_SESSION['path']?>/js/jqueryui-widgets.js"></script>
-<script src="<?echo $_SESSION['path']?>/js/multi-select.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){ 
-		$(".outletMenuMultiSelect").multiselect({
-		   checkAllText: "Select all menus",
-		   uncheckAllText: "Unselect all menus",
-		   noneSelectedText: "Select menu(s) for this outlet &#x25BC;",
-		   selectedText: "# of # selected",
-		   selectedList: 0
-		}); 
-	});
-</script>

@@ -10,12 +10,12 @@
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
 	
 	//we get account id from _SESSION
-	$venueID = $_SESSION['venue_id'];
+	$accountID = $_SESSION['account_id'];
 	
 	//////OUTLET////////////////////////////////////////////////////////////////////////////
 	
 	//query to find outlets
-	$curlResult = callAPI('GET', $apiURL."outlets?venueId=$venueID", false, $apiAuth);
+	$curlResult = callAPI('GET', $apiURL."outlets?accountId=$accountID", false, $apiAuth);
 	$dataJSON = json_decode($curlResult,true);
 		
 	if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
@@ -30,7 +30,7 @@
 		$outletCount = count($outlets);
 		
 		//get menus
-		$curlResult = callAPI('GET', $apiURL."menus?venueId=$venueID", false, $apiAuth);
+		$curlResult = callAPI('GET', $apiURL."menus?accountId=$accountID", false, $apiAuth);
 		
 		$menus = json_decode($curlResult,true);
 		

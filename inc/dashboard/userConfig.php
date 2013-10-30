@@ -33,7 +33,7 @@
 									<input type="password" name="uPassword[0]" class="userField noEnterSubmit" placeholder="<?echo _("Assign a password");?>"/>
 									</td>
 								<td class="userTDRole">
-									<select name="uRole[0]" class="userField noEnterSubmit inline"/>
+									<select name="uRole[0]" class="userField noEnterSubmit inline" style="display:none !important;"/> <!-- Dummy does not have userMenuSingleSelect -->
 										<option value="ADMIN"><?echo _("Admin")?></option>
 										<option value="STAFF"><?echo _("Staff")?></option>
 										<option value="OWNER"><?echo _("Owner")?></option>
@@ -73,10 +73,10 @@
 							<input type="password" name="uPassword[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" placeholder="<?echo _("Change a password");?>" readonly="readonly"/>
 						</td>
 						<td class="userTDRole">
-							<select name="uRole[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" readonly="readonly"/>
-								<option value="ADMIN" 		<?if($user['role']=='ADMIN'){	?>selected="selected"<?}?>><?echo _("Admin")?></option>
-								<option value="STAFF" 		<?if($user['role']=='READONLY'){?>selected="selected"<?}?>><?echo _("Staff")?></option>
-								<option value="OWNER" 		<?if($user['role']=='OWNER'){	?>selected="selected"<?}?>><?echo _("Owner")?></option>
+							<select name="uRole[<?echo ($uKey+1);?>]" class="userMenuSingleSelect userField noEnterSubmit" readonly="readonly" style="display:none !important;"/>
+								<option value="ADMIN" 	<?if($user['role']=='ADMIN'){?>selected="selected"<?}?>><?echo _("Admin")?></option>
+								<option value="STAFF" 	<?if($user['role']=='STAFF'){?>selected="selected"<?}?>><?echo _("Staff")?></option>
+								<option value="OWNER" 	<?if($user['role']=='OWNER'){?>selected="selected"<?}?>><?echo _("Owner")?></option>
 							</select>
 						</td>
 						<td class="userTDTools">

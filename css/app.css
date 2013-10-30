@@ -266,6 +266,30 @@ ul.custom-inline-list {
   .custom-inline-list-centered ul.custom-inline-list li {
     float: none;
     display: inline-block; }
+	
+/* signup using facebook */
+.fbSignup, .googleSignup{
+	background-image: url("../img/facebook.jpg");
+	height: 35px;
+	width: 250px;
+	color: #FFF;
+	margin-bottom: 30px;
+	margin-left: 20px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+.googleSignup{
+	background-image: url("../img/google.jpg");
+}
+
+.fbSignup p{
+	margin: 4px 0 0 40px;
+}
+
+.googleSignup p{
+	margin: 4px 0 0 50px;
+}
 
 /*Google Maps, infobox fix/overrides for Foundation 4 conflict*/
 #map img{ /*IMP*/
@@ -631,9 +655,6 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit{
 .userTable .userTDRole{
 	width: 9%;
 	font-size: 14px;
-}
-
-.userTable .userTDRole{
 	padding-top: 8px;
 }
 
@@ -692,6 +713,11 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable {
 	width: 101.8% !important;
 	margin-left: -1% !important;
 	margin-bottom: 0px !important;
+}
+
+.userTable .ui-multiselect{
+	font-size: 14px;
+	width: 100% !important;
 }
 
 .outletTable .ui-multiselect{
@@ -799,10 +825,6 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable {
 	-ms-filter: brightness(750%);
 }
 
-.dashContent .accordion section.active i {
-	color: #FCD984 !important;
-}
-
 .dashContent .accordion i{
 	font-size: 28px;
 	padding-left: 23px;
@@ -898,4 +920,11 @@ footer.dashboardFooter div{
 .premiumButton{
 	background: #F9B30A !important;
 	margin-top: 10px;
+}
+
+.dashContent .dashMenuIcon i {
+	font-size: 16px !important;
+	padding-left: 2px !important;
+	padding-right: 2px !important;
+	color: #D7D9DA;
 }

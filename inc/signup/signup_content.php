@@ -4,6 +4,16 @@
 		<form id="signupForm" method="POST" data-abide>
 			<h1><?echo _("Get started");?></h1>
 			<div class="row">
+				<div class="large-6 columns fbSignup">
+					<p><?echo _("Signup using Facebook");?></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-6 columns googleSignup">
+					<p><?echo _("Signup using Google");?></p>
+				</div>
+			</div>
+			<div class="row">
 				<div class="large-6 columns">
 					<label><?echo _("First Name");?></label>
 					<input type="text" name="fName" placeholder="" required pattern="[a-zA-Z]+" tabindex=1>
