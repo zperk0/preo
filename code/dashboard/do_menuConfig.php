@@ -230,12 +230,4 @@
 	}
 	
 	echo $curlResult; //sending a JSON via ajax 
-	
-	//reset var
-	if(isset($_SESSION['menu_edit_on']) && $_SESSION['menu_edit_on'])
-		$_SESSION['menu_edit_on']=0;
-		
-	//reset var
-	if(isset($_SESSION['secondaryMenuFlag']) && $_SESSION['secondaryMenuFlag'])
-		$_SESSION['secondaryMenuFlag']=0;
 ?>

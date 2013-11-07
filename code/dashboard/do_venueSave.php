@@ -13,6 +13,11 @@
 	$vCode = $_POST['vCode'];
 	protect($vCode);
 	
+	$vCat = $_POST['vCat'];
+	protect($vCat);
+	
+	$vEvent = $_POST['vEvent'];
+	
 	preg_match('/\((.*), (.*)\)/', $vCode, $matches);
 	$vLat=$matches[1];
 	$vLong=$matches[2];
@@ -29,6 +34,8 @@
 	$data['latitude']		= $vLat;
 	$data['longitude']		= $vLong;
 	$data['postcode']		= $vPostCode;
+	$data['categoryId']		= $vCat;
+	$data['eventFlag']		= $vEvent;
 	
 	$jsonData = json_encode($data);
 	

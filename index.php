@@ -1,5 +1,5 @@
 <?php session_start();
-	  $_SESSION['path']=""; //e.g. /preview/preoday/webapp
+	  require('getPath.php'); //the only relative link we will have
 	  
 	  if(isset($_SESSION['logged'])) { header('location:./dashboard.php'); exit; } //redirect to dashboard if logged in
 	  

@@ -3,6 +3,8 @@ map = null; // make google maps var global
 mapDefaultCenterLat = 54.370559; // make google maps var global = set center as center of UK
 mapDefaultCenterLong = -2.510376; // make google maps var global = set center as center of UK
 globalPH = '';
+nowTemp = new Date();
+now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
 //on page load fire these things!
 $(document).ready(function() { 
@@ -317,6 +319,7 @@ $(document).ready(function() {
 						  type: 'error',
 						  text: 'Connection Error! Check API endpoint.'
 						});
+						alert(data);
 						
 						return false;
 					}
@@ -951,6 +954,15 @@ $(document).ready(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
+				$(this).attr('pattern', "\\d\\d:\\d\\d");
+			});
+			
+			//now we fix placeholder
+			$newTab.find("input[name^='eETime'").each(function() {
+				var temp = $(this).val();
+				$(this).val("");
+				$(this).attr('placeholder', temp);
+				$(this).attr('pattern', "\\d\\d:\\d\\d");
 			});
 			
 			//now we fix placeholder
@@ -958,6 +970,7 @@ $(document).ready(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
+				$(this).attr('pattern', "^\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d$");
 			});
 		}
 		else
@@ -972,10 +985,11 @@ $(document).ready(function() {
 		$newTab.find(".eventDuplicate").attr('id',"dup"+newCount);
 		
 		//now we add datepicker
-		$newTab.find('.eventTDDate input').fdatepicker({format:'dd/mm/yyyy'}); 
+		$newTab.find('.eventTDDate input').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
 		
 		//now we add timepicker
-		$newTab.find('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+		$newTab.find('input[name^="eTime"').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+		$newTab.find('input[name^="eETime"').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
@@ -1642,16 +1656,209 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
+	$('.openDay').on('click', function(){
+		$('.openDay').addClass('secondary');
+		$(this).removeClass('secondary');
+		
+		id = $(this).attr('id');
+		id = id.substring(0, id.length - 1); //delete the 'B' to get just monday, etc.
+		
+		$('.monday').addClass('hide');
+		$('.tuesday').addClass('hide');
+		$('.wednesday').addClass('hide');
+		$('.thursday').addClass('hide');
+		$('.friday').addClass('hide');
+		$('.saturday').addClass('hide');
+		$('.sunday').addClass('hide');
+		
+		$('.'+id).removeClass('hide');
+	});
+	
+	$('input[name^="ohStartTime"]').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+	
+	$('input[name^="ohEndTime"]').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+	
+	$('input[name^="csStartTime"]').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+	
+	$('input[name^="csEndTime"]').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+	
+	$('input[name^="csEndTime"]').on('changeTime',function() {
+		id = ($(this).parents('div.collectionSlotDiv')).attr('id');
+		getDuration(id);
+	});
+	
+	$('input[name^="ohStartTime"]').on('changeTime',function() {
+		currTime = $(this).val()+":00";
+		
+		newTime = extractAMPM("January 01, 2000 "+currTime);
+		
+		$(this).parent().next('div').children('input[name^="ohEndTime"]').timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+		$(this).parent().next('div').children('input[name^="ohEndTime"]').timepicker('setTime', newTime);
+	});
+	
+	$('input[name^="csStartTime"]').on('changeTime',function() {
+		id = ($(this).parents('div.collectionSlotDiv')).attr('id');
+		getDuration(id);
+		
+		currTime = $(this).val()+":00";
+		
+		newTime = extractAMPM("January 01, 2000 "+currTime);
+		
+		$(this).parent().next('div').children('input[name^="csEndTime"]').timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+		$(this).parent().next('div').children('input[name^="csEndTime"]').timepicker('setTime', newTime);
+	});
+	
+	$('#applyTimesAllDays').on('click',function(){
+		id = ($(this).parents('div.applyAllDiv')).attr('id');
+		id = id.substring(0, id.length - 1); //delete the 'C' to get just monday, etc.
+		
+		//get data for this day
+		ohstartTime = $('.'+id).find("input[name^='ohStartTime']").val();
+		ohendTime = $('.'+id).find("input[name^='ohEndTime']").val();
+		
+		csstartTime = $('.'+id).find("input[name^='csStartTime']").val();
+		csendTime = $('.'+id).find("input[name^='csEndTime']").val();
+		
+		duration = $('.'+id).find("span[name^='csDuration']").text();
+		
+		leadDTime = $('.'+id).find("input[name^='leadDrinksMins']").val();
+		leadFTime = $('.'+id).find("input[name^='leadFoodMins']").val();
+		
+		//apply to all days!
+		$('body').find("input[name^='ohStartTime']").each(function(){
+			$(this).val(ohstartTime);
+		});
+		$('body').find("input[name^='ohEndTime']").each(function(){
+			$(this).val(ohendTime);
+		});
+		$('body').find("input[name^='csStartTime']").each(function(){
+			$(this).val(csstartTime);
+		});
+		$('body').find("input[name^='csEndTime']").each(function(){
+			$(this).val(csendTime);
+		});
+		$('body').find("span[name^='csDuration']").each(function(){
+			$(this).text(duration);
+		});
+		$('body').find("input[name^='leadDrinksMins']").each(function(){
+			$(this).val(leadDTime);
+		});
+		$('body').find("input[name^='leadFoodMins']").each(function(){
+			$(this).val(leadFTime);
+		});
+		
+		//notify!
+		noty({
+			type: 'success',
+			text: 'These times have been applied to all days!'
+		});
+	});
+	
+	$("#nonEventConfigForm").on('valid', function (event) {
+		var url = "code/dashboard/do_nonEventConfig.php";
+
+		$.ajax({
+			   type: "POST",
+			   url: url,
+			   data: $(this).serialize(), // serializes the form's elements.
+			   success: function(data)
+			   {
+					try
+					{
+						var dataArray = jQuery.parseJSON(data); //parsing JSON
+					}
+					catch(e)
+					{
+						noty({
+						  type: 'error',
+						  text: 'Connection Error! Check API endpoint.'
+						});
+						alert(data);
+						return false;
+					}
+					
+					if(typeof dataArray['status'] !='undefined') //error
+					{
+						noty({
+						  type: 'error',
+						  text: dataArray['message']
+						});
+					}
+					else
+					{	
+						noty({ type: 'success', text: 'All times has been saved!' });
+						
+					}
+				}
+			 });
+
+		return false; // avoid to execute the actual submit of the form.
+	});
+	
+	$('input[name^="ebTime"], input[name^="ebETime"]').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+	$('input[name^="ebDate"]').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
+	
+	$('input[name^="ebTime"]').on('changeTime',function() {
+		currTime = $(this).val()+":00";
+		
+		newTime = extractAMPM("January 01, 2000 "+currTime);
+		
+		$(this).parent().next('div').children('input[name^="ebETime"]').timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+		$(this).parent().next('div').children('input[name^="ebETime"]').timepicker('setTime', newTime);
+	});
+	
+	$("#eventBasedConfigForm").on('valid', function (event) {
+		var url = "code/dashboard/do_eventBasedConfig.php";
+
+		$.ajax({
+			   type: "POST",
+			   url: url,
+			   data: $(this).serialize(), // serializes the form's elements.
+			   success: function(data)
+			   {
+					try
+					{
+						var dataArray = jQuery.parseJSON(data); //parsing JSON
+					}
+					catch(e)
+					{
+						noty({
+						  type: 'error',
+						  text: 'Connection Error! Check API endpoint.'
+						});
+						alert(data);
+						return false;
+					}
+					
+					if(typeof dataArray['status'] !='undefined') //error
+					{
+						noty({
+						  type: 'error',
+						  text: dataArray['message']
+						});
+					}
+					else
+					{	
+						noty({ type: 'success', text: 'Event times have been saved!' });
+						
+					}
+				}
+			 });
+
+		return false; // avoid to execute the actual submit of the form.
+	});
+	
 	//make footer take all of the bottom
 	if($(window).height() < 1024)
-		elemHeight = 230;
+		elemHeight = 200;
 	else
 		elemHeight = $(window).height() - $('footer').offset().top - 40;
 	$('footer.dashboardFooter div.columns').height(elemHeight);
+	$('footer.regular div.columns').height(elemHeight-50);
 	
 	// Twitter App
 	$('.twitterfeed').tweet({
-		username: "PreoDayUK",
+		username: "PreoDay",
 		modpath: 'js/twitter_app/index.php',
 		join_text: "auto",
 		avatar_size: 48,
@@ -1699,11 +1906,9 @@ $(document).ready(function() {
 		$('.phone2pager').toggle();
 	});
 	
-	$("#changePassTrigger").live('click', function(e) {
+	$("#changePassTrigger").on('click', function(e) {
 		$('#passDiv').show();
 		$('#changePassTrigger').hide();
-		e.preventDefault();
-		
 	});
 	
 	$(".deleteMenu").live('click', function() {
@@ -1811,6 +2016,64 @@ function searchArray(string,array){
 	return match;
 }
 
+function getDuration(id)
+{
+	start = new Array();
+	$('.'+id).find("input[name^='csStartTime']").each(function(){
+		start.push($(this).val());
+	});
+	
+	end = new Array();
+	$('.'+id).find("input[name^='csEndTime']").each(function(){
+		end.push($(this).val());
+	});
+	
+	result = new Array();
+	for(i=0;i<start.length;i++)
+	{
+		result[i]= Math.abs(new Date('2000/01/01 '+start[i]) - new Date(new Date('2000/01/01 '+end[i])));
+		result[i] = parseInt((Math.floor((result[i]/1000)/60))/60)+"hrs "+ parseInt((Math.floor((result[i]/1000)/60))%60)+"mins";
+	}
+	
+	i=0;
+	$('.'+id).find("span[name^='csDuration']").each(function(){
+		$(this).text(result[i]);
+		i++;
+	});
+}
+
+function extractAMPM(date) {
+    var d = new Date(date);
+    var hh = d.getHours();
+    var m = d.getMinutes();
+    var s = d.getSeconds();
+    var dd = "AM";
+    var h = hh;
+    if (h >= 12) {
+        h = hh-12;
+        dd = "PM";
+    }
+    if (h == 0) {
+        h = 12;
+    }
+    m = m<10?"0"+m:m;
+
+    s = s<10?"0"+s:s;
+
+    /* if you want 2 digit hours:
+    h = h<10?"0"+h:h; */
+
+    var pattern = new RegExp("0?"+hh+":"+m+":"+s);
+
+    var replacement = h+":"+m;
+    /* if you want to add seconds
+    replacement += ":"+s;  */
+    replacement += " "+dd;    
+
+    //return date.replace(pattern,replacement);
+	return(replacement);
+}
+
 //On window resize
 //map resizing with window
 $(window).resize(function(){
@@ -1820,8 +2083,9 @@ $(window).resize(function(){
 		
 	//make footer take all of the bottom
 	if($(window).height() < 1024)
-		elemHeight = 230;
+		elemHeight = 200;
 	else
 		elemHeight = $(window).height() - $('footer').offset().top - 40;
 	$('footer.dashboardFooter div.columns').height(elemHeight);
+	$('footer.regular div.columns').height(elemHeight-50);
 });

@@ -91,8 +91,4 @@
 	}
 	
 	echo $curlResult; //sending a JSON via ajax 
-	
-	//reset var
-	if(isset($_SESSION['user_edit_on']) && $_SESSION['user_edit_on'])
-		$_SESSION['user_edit_on']=0;
 ?>

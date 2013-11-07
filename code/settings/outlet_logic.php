@@ -20,7 +20,7 @@
 		
 	if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
 	{	
-		header('location:/');
+		header("location:$_SESSION[path]/");
 	}
 	else
 	{	
@@ -35,6 +35,8 @@
 		$menus = json_decode($curlResult,true);
 		
 		$_SESSION['outlet_edit_on']=1;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/outletConfig.php');
 	}
 ?>

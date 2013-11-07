@@ -64,6 +64,10 @@ small.error{
 	width: 100%;
 }
 
+input[readonly]{
+	background: lightgrey !important;
+	cursor: no-drop;
+}
 
 /* Chrome autofill colour replacement */
 input:-webkit-autofill {
@@ -98,6 +102,31 @@ input:-webkit-autofill {
 .row--space4d {padding-bottom: 4em;}
 .row--space5d {padding-bottom: 5em;}
 .row--space6d {padding-bottom: 6em;}
+
+/* modals */
+.reveal-modal{
+	background:#E9E9E9;
+}
+
+/* footer */
+footer.regular{
+	background: #DADCDF;
+	padding-top: 40px;
+	margin-bottom: 0;
+}
+
+footer.regular p{
+	margin: 0;
+	padding: 0;
+}
+
+footer.regular .footLinks a{
+	color: #48535D !important;
+}
+
+#langDrop{
+	margin-top: 24px;
+}
 
 /* tips */
 .preoTips{
@@ -169,7 +198,7 @@ input[type='file']{
 
 textarea {
 	resize: none !important;
-	height: 10em !important;
+	height: 3em !important;
 }
 
 .squareInput {
@@ -268,27 +297,45 @@ ul.custom-inline-list {
     display: inline-block; }
 	
 /* signup using facebook */
+.socialMediaDiv{
+	margin-top: 110px;
+}
 .fbSignup, .googleSignup{
-	background-image: url("../img/facebook.jpg");
-	height: 35px;
+	background: #CDCFD0;
+	background-image: url("../img/facebook_connect.jpg");
+	background-repeat:no-repeat;
+	height: 47px;
 	width: 250px;
-	color: #FFF;
 	margin-bottom: 30px;
 	margin-left: 20px;
+	font-weight: bold;
 	cursor: pointer;
-	border-radius: 4px;
 }
 
 .googleSignup{
-	background-image: url("../img/google.jpg");
+	background-image: url("../img/google_connect.jpg");
 }
 
-.fbSignup p{
-	margin: 4px 0 0 40px;
+.fbSignup span, .googleSignup span{
+	margin: 15px 0 0 40px;
+	width: 100%;
+	display: block;
 }
 
-.googleSignup p{
-	margin: 4px 0 0 50px;
+.fbSignup a, .googleSignup a{
+	color: #485362;
+}
+
+/* settings */
+.notiSwitch label.onswitch {
+	margin-left: -25px !important;
+}
+
+.notiSwitch label.offswitch {
+	margin-left: 12px !important;
+}
+.notiSwitch {
+	width: 85px;
 }
 
 /*Google Maps, infobox fix/overrides for Foundation 4 conflict*/
@@ -319,6 +366,16 @@ ul.custom-inline-list {
     text-shadow:0 -1px #000000;
     -webkit-box-shadow: 0 0  8px #000;
     box-shadow: 0 0 8px #000;
+}
+
+.eventFlagNoti label{
+	width: 10px !important;
+}
+.eventFlagNoti label.yes{
+	margin-left: 20px !important;
+}
+.eventFlagNoti label.no{
+	margin-left: 10px !important;
 }
 
 /* app config area*/
@@ -582,9 +639,14 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit{
 	display: inline!important;
 }
 
-.menuTable .menuTDName, .eventTable .eventTDName, .userTable .userTDName{
+.menuTable .menuTDName, .userTable .userTDName{
 	font-weight: bold !important;
 	width: 30%;
+}
+
+.eventTable .eventTDName{
+	font-weight: bold !important;
+	width: 26%;
 }
 
 .outletTable .outletTDName{
@@ -608,8 +670,12 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit{
 	width: 32%;
 }
 
-.menuTable .menuTDPrice, .eventTable .eventTDTime{
+.menuTable .menuTDPrice{
 	width: 9%;
+}
+
+.eventTable .eventTDTime{
+	width: 4%;
 }
 
 .outletTable .outletTDMenu{
@@ -703,7 +769,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit{
 	font-weight: normal;
 }
 
-.menuTable .savedInput input:focus, .eventTable .savedInput input:focus, .userTable .savedInput input:focus, .outletTable .savedInput input:focus{
+.menuTable .savedInput input:focus, .eventTable .savedInput input:focus, .userTable .savedInput input:focus, .outletTable .savedInput input:focus, .menuTable .savedInput input, .eventTable .savedInput input, .userTable .savedInput input, .outletTable .savedInput input{
 	background: #E9E9E9 !important;
 }
 
@@ -927,4 +993,48 @@ footer.dashboardFooter div{
 	padding-left: 2px !important;
 	padding-right: 2px !important;
 	color: #D7D9DA;
+}
+
+.openDay:focus, .openDay:hover{
+	background: #3AA2DC;
+	outline: none;
+}
+
+.openDay {
+	border-bottom: 20px solid #3AA2DC;
+	margin-bottom: -7px;
+}
+
+.openDayContainer {
+	border-bottom: 8px solid #3AA2DC;
+	width: 470px !important;
+}
+
+.openingHours h4{
+	font-family: HelveticaNeueW01-45Ligh !important;
+	color: #48535D;
+}
+.openingHours input{
+	font-family: HelveticaNeueW01-45Ligh !important;
+	font-size: 16px !important;
+	color: #48535D !important;
+	font-weight: bold !important;
+	background: #FFF !important;
+	text-align: center;
+}
+
+span.slotDuration{
+	padding-top: 10px;
+	font-weight: bold;
+	display: inline-block;
+}
+
+.openingHours .justMins{
+	text-align: center;
+	display: inline !important;
+	width: 40px !important;
+}
+
+.openingHours .minSpan{
+	padding-left: 10px;
 }

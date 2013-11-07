@@ -16,6 +16,7 @@
 			<!-- Right Nav Section -->
 			<ul class="right">
 				<?php if(!isset($_SESSION['logged'])) : ?>
+					<li><a href="#"																		><? echo _("Find out more");?></a></li>
 					<li><a href="<?echo $_SESSION['path']?>/signup.php"									><? echo _("Sign Up");?></a></li>
 					<li><a href="<?echo $_SESSION['path']?>/signin.php"	class="activated"				><? echo _("Login");?></a></li>
 				<?php else : 

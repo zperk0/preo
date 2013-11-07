@@ -38,14 +38,15 @@
 		$_SESSION['noVenueFlag']=1; 
 	else
 	{	
-		$_SESSION['venue_id'] 		= $dataJSON[0]['id'];
-		$_SESSION['venue_name'] 	= $dataJSON[0]['name'];
-		$_SESSION['venue_desc'] 	= $dataJSON[0]['description'];
-		$_SESSION['venue_cat'] 		= $dataJSON[0]['categoryId'];
-		$_SESSION['venue_address']  = $dataJSON[0]['address'];	
-		$_SESSION['venue_latitude']	= $dataJSON[0]['latitude'];	
-		$_SESSION['venue_longitude']= $dataJSON[0]['longitude'];	
-		$_SESSION['venue_postcode']	= $dataJSON[0]['postcode'];	
+		$_SESSION['venue_id'] 			= $dataJSON[0]['id'];
+		$_SESSION['venue_name'] 		= $dataJSON[0]['name'];
+		$_SESSION['venue_desc'] 		= $dataJSON[0]['description'];
+		$_SESSION['venue_cat'] 			= $dataJSON[0]['categoryId'];
+		$_SESSION['venue_address']  	= $dataJSON[0]['address'];	
+		$_SESSION['venue_latitude']		= $dataJSON[0]['latitude'];	
+		$_SESSION['venue_longitude']	= $dataJSON[0]['longitude'];	
+		$_SESSION['venue_postcode']		= $dataJSON[0]['postcode'];	
+		$_SESSION['venue_eventFlag']	= $dataJSON[0]['eventFlag'];	
 		
 		//we get venue id from _SESSION
 		$venueID = $_SESSION['venue_id'];

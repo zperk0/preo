@@ -20,7 +20,7 @@
 		<?}?>
 	</nav>
 	<?}?>
-	<form id="venueConfigForm" method="POST" data-abide>
+	<form id="venueConfigForm" method="POST" class="custom" data-abide>
 		<h1><?echo _("Tell us about your venue");?></h1>
 		<div class="large-6 columns">
 			<div class="row">
@@ -56,6 +56,34 @@
 					<label><?echo _("Venue description");?></label>
 					<textarea name="vDesc" required tabindex=4><?if(isset($_SESSION['venue_desc'])) echo $_SESSION['venue_desc'];?></textarea>
 					<small class="error"><?echo _("Please type a venue description");?></small>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<label><?echo _("What type of venue are you?");?></label>
+					<select name="vCat" class="dropdown">
+						<option value="1"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='1')	{?>selected="selected"<?}?>><? echo _("Sports arena");?></option>
+						<option value="2"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='2')	{?>selected="selected"<?}?>><? echo _("Bars, pubs and clubs");?></option>
+						<option value="3"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='3')	{?>selected="selected"<?}?>><? echo _("Workplace catering");?></option>
+						<option value="4"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='4')	{?>selected="selected"<?}?>><? echo _("Retail catering");?></option>
+						<option value="5" 	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='5')	{?>selected="selected"<?}?>><? echo _("Music and cultural");?></option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="large-12 columns">
+					<label><?echo _("Are you an events based business?");?> &nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="Does your business revolve around regular events, eg. football matches, performances, etc?"></i></label>
+					<div class="switch small large-2 columns eventFlagNoti"> 
+						<input name="vEvent" value="0" type="radio" <?if((isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag']) || !isset($_SESSION['venue_eventFlag'])){?>checked<?}?>>
+						<label class="no"><?echo _("No");?></label>
+
+						<input name="vEvent" value="1" type="radio" <?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?>checked<?}?>>
+						<label class="yes"><?echo _("Yes");?></label>
+
+						<span></span>
+					</div>
 				</div>
 			</div>
 			

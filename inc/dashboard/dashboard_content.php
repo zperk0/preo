@@ -62,6 +62,7 @@
 									</p>
 								<?}?>
 								<p><a href="<?echo $_SESSION['path']?>/newMenu.php"><?echo _("Add new menu");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/mealDealSettings.php"><?echo _("Meal Deals");?></a></p>
 							</div>
 						</section>
 						<section>
@@ -83,6 +84,11 @@
 								<p><a href="<?echo $_SESSION['path']?>/venueSettings.php"><?echo _("Venue settings");?></a></p>
 								<p><a href="#" data-reveal-id="settingsM"><?echo _("Account settings");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/userSettings.php"><?echo _("Manage users");?></a></p>
+								<?if($_SESSION['venue_eventFlag']){?>
+									<p><a href="<?echo $_SESSION['path']?>/eventBasedSettings.php"><?echo _("Events, Collection Slots, Lead Times");?></a></p>
+								<?}else{?>
+								<p><a href="<?echo $_SESSION['path']?>/nonEventSettings.php"><?echo _("Hours, Collection Slots, Lead Times");?></a></p>
+								<?}?>
 							</div>
 						</section>
 						<section class="premiumSection">

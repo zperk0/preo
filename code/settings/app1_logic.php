@@ -80,8 +80,10 @@
 		}
 		
 		$_SESSION['app1_edit_on']=1;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/appConfig1.php');
 	}
 	else
-		header('location:/');
+		header("location:$_SESSION[path]/");
 ?>

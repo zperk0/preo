@@ -43,8 +43,10 @@
 	if(isset($venueID)) //if there is no venue set then no App or Menu can be set anyway
 	{	
 		$_SESSION['venue_edit_on']=1;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/venueConfig.php');
 	}
 	else
-		header('location:/');
+		header("location:$_SESSION[path]/");
 ?>

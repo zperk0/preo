@@ -21,6 +21,12 @@
 	$businessName = $_POST['businessName'];
 	protect($businessName);
 	
+	$fbid = $_POST['fbid'];
+	protect($fbid);
+	
+	$gpid = $_POST['gpid'];
+	protect($gpid);
+	
 	//$notificationFlag = $_POST['notification-switch']; //0=off, 1=on
 	//protect($notificationFlag);  //currently we dont store this!
 	
@@ -29,6 +35,8 @@
 	$data['owner']['username']	= $email;
 	$data['owner']['email']		= $email;
 	$data['owner']['password'] 	= $password;
+	$data['owner']['fbid'] 		= $fbid;
+	$data['owner']['gpid'] 		= $gpid;
 	
 	$jsonData = json_encode($data);
 	

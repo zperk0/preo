@@ -43,7 +43,8 @@
 			try { $events[$i]['id']	= /*protect(*/$_POST['eID'][$j];/*);*/ } catch(Exception $e){ /*nothing*/ } 
 			$events[$i]['name'] 	= /*protect(*/$_POST['eName'][$j];//);
 			$events[$i]['desc'] 	= /*protect(*/$_POST['eDesc'][$j];//);
-			$events[$i]['time'] 	= /*protect(*/$_POST['eTime'][$j];//);
+			$events[$i]['starttime']= /*protect(*/$_POST['eTime'][$j];//);
+			$events[$i]['endtime'] 	= /*protect(*/$_POST['eETime'][$j];//);
 			$tempDate 				= /*protect(*/$_POST['eDate'][$j];//);
 				//convert to YYYYMMDD (from DD/MM/YYYY)
 				preg_match('/(\d\d)\/(\d\d)\/(\d\d\d\d)/',$tempDate, $matches);
@@ -65,7 +66,8 @@
 		$data['venueId']		= $_SESSION['venue_id'];
 		$data['name'] 			= $event['name'];
 		$data['description'] 	= $event['desc'];
-		$data['time'] 			= $event['time'];
+		$data['starttime'] 		= $event['starttime'];
+		$data['endtime'] 		= $event['endtime'];
 		$data['date'] 			= $event['date'];
 		$data['visible'] 		= $event['visible'];
 		
@@ -81,9 +83,4 @@
 	}
 	
 	echo $curlResult; //sending a JSON via ajax 
-	
-	
-	//reset var
-	if(isset($_SESSION['event_edit_on']) && $_SESSION['event_edit_on'])
-		$_SESSION['event_edit_on']=0;
 ?>
