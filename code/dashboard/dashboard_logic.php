@@ -126,6 +126,17 @@
 	
 	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag']) /*User has given data for all 4 already*/
 	{	
+		//going to the dashboard!
+		
+		//lets get some quick reports
+		$curlResult = callAPI('GET', $apiURL."venues/$venueID/reports", false, $apiAuth);
+		$dataResult = json_decode($curlResult, true);
+		$_SESSION['venue_report_totalOrders'] 		= $dataResult['totalOrders'];
+		$_SESSION['venue_report_totalRevenue'] 		= $dataResult['totalRevenue'];
+		$_SESSION['venue_report_newUsers'] 			= $dataResult['newUsers'];
+		$_SESSION['venue_report_returningUsers'] 	= $dataResult['returningUsers'];
+		//+d($dataResult);
+		
 		$_SESSION['dashboardFlag']=1;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/dashboard_content.php"); 

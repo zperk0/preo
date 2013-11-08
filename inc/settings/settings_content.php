@@ -50,12 +50,12 @@
 		<div class="row">
 			<div class="large-6 columns">
 				<label><?echo _("Old Password");?></label>
-				<input type="password" name="password" placeholder="" required tabindex=5>
+				<input type="password" name="password" placeholder="" class="passField" tabindex=5>
 				<small class="error"><?echo _("A password address is required. Atleast 8chars and must contain atleast 1 number and 1 uppercase letter.");?></small>
 			</div>
 			<div class="large-6 columns">
 				<label><?echo _("New Password");?></label>
-				<input type="password" name="password" placeholder="" required tabindex=5>
+				<input type="password" name="password" placeholder="" class="passField" tabindex=5>
 				<small class="error"><?echo _("A password address is required. Atleast 8chars and must contain atleast 1 number and 1 uppercase letter.");?></small>
 			</div>
 		</div>

@@ -1909,6 +1909,7 @@ $(document).ready(function() {
 	$("#changePassTrigger").on('click', function(e) {
 		$('#passDiv').show();
 		$('#changePassTrigger').hide();
+		$('.passField').attr('required','required');
 	});
 	
 	$(".deleteMenu").live('click', function() {
@@ -1960,6 +1961,46 @@ $(document).ready(function() {
 			}
 		  ]
 		});
+	});
+	
+	$("#settingsForm").on('valid', function (event) {
+		var url = "code/settings/do_settings.php";
+		$.ajax({
+			   type: "POST",
+			   url: url,
+			   data: $(this).serialize(), // serializes the form's elements.
+			   success: function(data)
+			   {
+					try
+					{
+						var dataArray = jQuery.parseJSON(data); //parsing JSON
+					}
+					catch(e)
+					{
+						noty({
+						  type: 'error',
+						  text: 'Connection Error! Check API endpoint.'
+						});
+						alert(data);
+						return false;
+					}
+					
+					if(typeof dataArray['status'] !='undefined') //error
+					{
+						noty({
+						  type: 'error',
+						  text: dataArray['message']
+						});
+					}
+					else
+					{	
+						noty({ type: 'success', text: 'Setttings have been saved!' });
+						
+					}
+				}
+			 });
+
+		return false; // avoid to execute the actual submit of the form.
 	});
 });
 

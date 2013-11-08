@@ -33,13 +33,13 @@
 			$ebTimes[$i]['eventID'] 		= $eventID;	
 			$ebTimes[$i]['name'] 			= $events[$i]['name'];
 			$ebTimes[$i]['desc'] 			= $events[$i]['description'];
-			$ebTimes[$i]['date'] 			= $events[$i]['date'];
-			$ebTimes[$i]['starttime'] 		= $events[$i]['starttime'];
-			$ebTimes[$i]['endtime'] 		= $events[$i]['endtime'];
+			$ebTimes[$i]['date'] 			= date('d/m/Y',strtotime($events[$i]['date']));
 			
 			$ebTimes[$i]['id']	 			= $dataJSON['id']; 	
-			$ebTimes[$i]['csstarttime']	 	= $dataJSON['csstarttime']; 	
-			$ebTimes[$i]['csendtime'] 		= $dataJSON['csendtime']; 		
+			$ebTimes[$i]['starttime'] 		= substr($events[$i]['starttime'], 0, -3);
+			$ebTimes[$i]['endtime'] 		= substr($events[$i]['endtime'], 0, -3);
+			$ebTimes[$i]['csstarttime']	 	= substr($dataJSON['csstarttime'], 0, -3); 	
+			$ebTimes[$i]['csendtime'] 		= substr($dataJSON['csendtime'], 0, -3); 		
 			$ebTimes[$i]['leaddrinkstime'] 	= $dataJSON['leaddrinkstime']; 
 			$ebTimes[$i]['leadfoodtime'] 	= $dataJSON['leadfoodtime'];	
 		}

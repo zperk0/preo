@@ -33,10 +33,10 @@
 	
 		$dataJSON = json_decode($curlResult,true);
 			
-		$neTimes[$i]['ohstarttime'] 	= $dataJSON['ohstarttime'];	
-		$neTimes[$i]['ohendtime'] 		= $dataJSON['ohendtime']; 		
-		$neTimes[$i]['csstarttime']	 	= $dataJSON['csstarttime']; 	
-		$neTimes[$i]['csendtime'] 		= $dataJSON['csendtime']; 		
+		$neTimes[$i]['ohstarttime'] 	= substr($dataJSON['ohstarttime'], 0, -3);
+		$neTimes[$i]['ohendtime'] 		= substr($dataJSON['ohendtime'], 0, -3);		
+		$neTimes[$i]['csstarttime']	 	= substr($dataJSON['csstarttime'], 0, -3);	
+		$neTimes[$i]['csendtime'] 		= substr($dataJSON['csendtime'], 0, -3); 		
 		$neTimes[$i]['leaddrinkstime'] 	= $dataJSON['leaddrinkstime']; 
 		$neTimes[$i]['leadfoodtime'] 	= $dataJSON['leadfoodtime'];	
 	}

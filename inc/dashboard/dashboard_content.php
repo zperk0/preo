@@ -20,25 +20,25 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<h6><?echo _("Total revenue");?></h6>
-					<h1>&pound; <?echo number_format('10078.46',2);?></h1>
+					<h1>&pound; <?echo number_format($_SESSION['venue_report_totalRevenue'],2);?></h1>
 				</div>
 			</div>
 			<div class="row">
 				<div class="large-12 columns">
 					<h6><?echo _("Total orders");?></h6>
-					<h1><?echo number_format('2024',0);?></h1>
+					<h1><?echo number_format($_SESSION['venue_report_totalOrders'],0);?></h1>
 				</div>
 			</div>
 			<div class="row">
 				<div class="large-12 columns">
 					<h6><?echo _("New users");?></h6>
-					<h1><?echo number_format('75',0);?></h1>
+					<h1><?echo number_format($_SESSION['venue_report_newUsers'],0);?></h1>
 				</div>
 			</div>
 			<div class="row">
 				<div class="large-12 columns">
 					<h6><?echo _("Returning users");?></h6>
-					<h1><?echo number_format('309',0);?></h1>
+					<h1><?echo number_format($_SESSION['venue_report_returningUsers'],0);?></h1>
 				</div>
 			</div>
 		</div>	
