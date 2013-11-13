@@ -61,7 +61,7 @@ $(document).ready(function(){
 					<div class="small-8 large-5 columns">
 						<input type="hidden" name="fbid" <?if($fb_field_flag) echo "value='$fbId'"; else echo "value='0'";?>>
 						<input type="hidden" id="gpid" name="gpid" value='0'>
-						<button type="submit" tabindex=6><?echo _("CONTINUE");?></button>
+						<button type="submit" tabindex=6><?echo _("SIGN UP");?></button>
 					</div>
 				</div>
 			</form>

@@ -57,84 +57,80 @@
 			
 			<div class="hide firstItemDiv"></div> <!-- Dummy hook -->
 
-			<div class="row"> <!-- DUMMY -->
-				<div class="large-12 columns">
-					<table class="menuTable" id="item0" style="display:none;">
-						<tbody>
-							<tr class="menuEdit itemTR">
-								<td class="menuTDName">
-									<input type="text" name="iName[section0][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an item name");?>" required/>
-									<small class="error"><?echo _("Please type an item name");?></small>
-								</td>
-								<td class="menuTDDesc">
-									<input type="text" name="iDesc[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional description");?>"/>
-									<small class="error"><?echo _("Please type a description");?></small>
-								</td>
-								<td class="menuTDPrice">
-									<input type="text" name="iPrice[section0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required/>
-									<small class="error"><?echo _("Amount?");?></small>
-									</td>
-								<td class="menuTDQuant">
-									<input type="text" name="iQuan[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Unlimited");?>"/>
-								</td>
-								<td class="menuTDVisi">
-									<div class="switch tiny"> 
-										<input name="iVisi[section0][0]" value="0" type="radio">
-										<label><?echo _("No");?></label>
+			<table class="menuTable" id="item0" style="display:none;"><!-- DUMMY -->
+				<tbody>
+					<tr class="menuEdit itemTR">
+						<td class="menuTDName">
+							<input type="text" name="iName[section0][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an item name");?>" required/>
+							<small class="error"><?echo _("Please type an item name");?></small>
+						</td>
+						<td class="menuTDDesc">
+							<input type="text" name="iDesc[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional description");?>"/>
+							<small class="error"><?echo _("Please type a description");?></small>
+						</td>
+						<td class="menuTDPrice">
+							<input type="text" name="iPrice[section0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required/>
+							<small class="error"><?echo _("Amount?");?></small>
+							</td>
+						<td class="menuTDQuant">
+							<input type="text" name="iQuan[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Unlimited");?>"/>
+						</td>
+						<td class="menuTDVisi">
+							<div class="switch tiny"> 
+								<input name="iVisi[section0][0]" value="0" type="radio">
+								<label><?echo _("No");?></label>
 
-										<input name="iVisi[section0][0]" value="1" type="radio" checked>
-										<label><?echo _("Yes");?></label>
+								<input name="iVisi[section0][0]" value="1" type="radio" checked>
+								<label><?echo _("Yes");?></label>
 
-										<span></span>
-									</div>
-								</td>
-								<td class="menuTDTools">
-									<button type="button" class="menuTableButtons itemSave"				title="<?echo _("Lock");?>"							><i class="icon-lock"></i></button>
-									<button type="button" class="menuTableButtons itemEdit hide" 		title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
-									<button type="button" class="menuTableButtons itemDuplicate" 		title="<?echo _("Duplicate");?>" id="dup_section0"	><i class="icon-copy"></i></button>
-									<button type="button" class="menuTableButtons secondary itemDelete" title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
-								</td>
-							</tr>
-							<tr class="menuEdit subHeaderTR">
-								<td class="itemSubheader optionTR"><h6><?echo _("Item options (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h3></td>
-							</tr>
-							<tr class="menuEdit optionTR hide" style="display:none;">
-								<td class="menuTDName">
-									<input type="text" name="oName[item0][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an option name");?>" required/>
-									<small class="error"><?echo _("Please type an option name");?></small>
-								</td>
-								<td class="menuTDDesc">
-								</td>
-								<td class="menuTDPrice">
-									<input type="text" name="oPrice[item0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required/>
-									<small class="error"><?echo _("Amount?");?></small>
-									</td>
-								<td class="menuTDQuant">
-								</td>
-								<td class="menuTDVisi">
-									<div class="switch tiny"> 
-										<input name="oVisi[item0][0]" value="0" type="radio">
-										<label><?echo _("No");?></label>
+								<span></span>
+							</div>
+						</td>
+						<td class="menuTDTools">
+							<button type="button" class="menuTableButtons itemSave"				title="<?echo _("Lock");?>"							><i class="icon-lock"></i></button>
+							<button type="button" class="menuTableButtons itemEdit hide" 		title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
+							<button type="button" class="menuTableButtons itemDuplicate" 		title="<?echo _("Duplicate");?>" id="dup_section0"	><i class="icon-copy"></i></button>
+							<button type="button" class="menuTableButtons secondary itemDelete" title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
+						</td>
+					</tr>
+					<tr class="menuEdit subHeaderTR">
+						<td class="itemSubheader optionTR"><h6><?echo _("Item options (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h6></td>
+					</tr>
+					<tr class="menuEdit optionTR hide" style="display:none;">
+						<td class="menuTDName">
+							<input type="text" name="oName[item0][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an option name");?>" required/>
+							<small class="error"><?echo _("Please type an option name");?></small>
+						</td>
+						<td class="menuTDDesc">
+						</td>
+						<td class="menuTDPrice">
+							<input type="text" name="oPrice[item0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required/>
+							<small class="error"><?echo _("Amount?");?></small>
+							</td>
+						<td class="menuTDQuant">
+						</td>
+						<td class="menuTDVisi">
+							<div class="switch tiny"> 
+								<input name="oVisi[item0][0]" value="0" type="radio">
+								<label><?echo _("No");?></label>
 
-										<input name="oVisi[item0][0]" value="1" type="radio" checked>
-										<label><?echo _("Yes");?></label>
+								<input name="oVisi[item0][0]" value="1" type="radio" checked>
+								<label><?echo _("Yes");?></label>
 
-										<span></span>
-									</div>
-								</td>
-								<td class="menuTDTools">
-									<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="icon-copy"></i></button>
-									<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="fi-x"></i></button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
+								<span></span>
+							</div>
+						</td>
+						<td class="menuTDTools">
+							<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="icon-copy"></i></button>
+							<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="fi-x"></i></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 
-	<div class="large-12 columns dynamicDataTable"> <!-- This is where the dynamic data goes into -->
+	<div class="dynamicDataTable"> <!-- This is where the dynamic data goes into -->
 	
 	<?if($_SESSION['menu_edit_on']){
 		$iKey=0; //item number are continuous across sections so we can't use $key in foreach($array as $key=>$var)
@@ -195,7 +191,7 @@
 							</td>
 						</tr>
 						<tr class="menuEdit subHeaderTR">
-							<td class="itemSubheader optionTR hide"><h6><?echo _("Item options (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h3></td>
+							<td class="itemSubheader optionTR hide"><h6><?echo _("Item options (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h6></td>
 						</tr>
 						<tr class="menuEdit hide" style="display:none;"> <!-- This dummy is required! -->
 							<td class="menuTDName">

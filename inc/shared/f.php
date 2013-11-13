@@ -26,6 +26,7 @@
 		<script src="<?echo $_SESSION['path']?>/js/timepicker.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/jqueryui-widgets.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/multi-select.js"></script>
+		<script src="<?echo $_SESSION['path']?>/js/tableSlide.js"></script>
 		
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 		<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
@@ -89,7 +90,7 @@
 				});
 			</script>
 		<?}?>
-		
+		</div> <!-- #wrap ends here -->
 		<?if(isset($_SESSION['dashboardFlag']) && $_SESSION['dashboardFlag'])
 		{
 			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/dashboard_footer.php');
@@ -105,6 +106,5 @@
 		<div id="privM" class="reveal-modal">
 			<?require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/privacy.php');?>
 		</div>
-		
 	</body>
 </html>

@@ -8,4 +8,5 @@
 	$_SESSION['outlet_edit_on']			= 0; 
 	$_SESSION['secondaryMenuFlag']		= 0;
 	$_SESSION['venue_netimes_edit_on']	= 0;
+	$_SESSION['md_edit_on']				= 0;
 ?>

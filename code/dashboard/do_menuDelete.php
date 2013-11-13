@@ -9,7 +9,11 @@
 	protect($menuID);
 	
 	$menu = array();
-	$menu = $_SESSION['menu_old'];
+	//get menu
+	$curlResult = callAPI('GET', $apiURL."menus/$menuID", false, $apiAuth);
+	$dataJSON = json_decode($curlResult,true);
+	
+	$menu = $dataJSON;
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 

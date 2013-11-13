@@ -319,7 +319,7 @@ $(document).ready(function() {
 						  type: 'error',
 						  text: 'Connection Error! Check API endpoint.'
 						});
-						alert(data);
+						//alert(data);
 						
 						return false;
 					}
@@ -607,7 +607,7 @@ $(document).ready(function() {
 		
 		//insert at the end of the table
 		$("#"+itemID+" tr:last").after($newRow);
-		$("#"+itemID+" tr:last").fadeIn('slow');
+		$("#"+itemID+" tr:last").slideRow('down');
 
 		$('html, body').animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
 	});
@@ -712,7 +712,9 @@ $(document).ready(function() {
 		
 		//insert after section header/before hidden div
 		$('.firstItemDiv'+section).before($newTab); 
-		$newTab.slideDown('slow');
+		
+		$($newTab).slideRow('down');
+		
 		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
@@ -800,7 +802,7 @@ $(document).ready(function() {
 		
 		//insert at the end of the table
 		$('.newSection').before($newSec).before($newHook);
-		$($newSec).fadeIn('slow');
+		$($newSec).slideDown('slow');
 	});
 	
 	$('.deleteSection').on('click',function(){
@@ -897,7 +899,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'Menu configuration has been saved!' });
-						
+						setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
 					}
 				}
 			 });
@@ -996,7 +998,7 @@ $(document).ready(function() {
 		
 		//insert before section header/before hidden div
 		$('.firstEventDiv').before($newTab); 
-		$newTab.slideDown('slow');
+		$newTab.slideRow('down');
 		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
@@ -1254,7 +1256,7 @@ $(document).ready(function() {
 		
 		//insert before section header/before hidden div
 		$('.firstUserDiv').before($newTab); 
-		$newTab.slideDown('slow');
+		$newTab.slideRow('down');
 		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
@@ -1501,7 +1503,7 @@ $(document).ready(function() {
 		
 		//insert before section header/before hidden div
 		$('.firstOutletDiv').before($newTab); 
-		$newTab.slideDown('slow');
+		$newTab.slideRow('down');
 		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
@@ -1848,13 +1850,279 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
+	$(".newMD").live('click', function() {
+		//get and update current count
+		var mdCount = $('#mdCount').val();
+		var newCount = parseInt(parseInt(mdCount) + 1);
+		$('#mdCount').val(newCount);
+		$('#mdCountAct').val(parseInt($('#mdCountAct').val())+1);
+		
+		//clone dummy table
+		$newTab = $('#md0').clone(true);
+		$newTab.attr('id','md'+newCount);
+		
+		//replace ids with incremented value and make value = default value
+		$newTab.find(".mdTR input").each(function() {
+			$(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+		});
+		
+		//replace ids with incremented value and make value = default value
+		$newTab.find(".mdTDIName input").each(function() {
+			$(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+		});
+		
+		//replace ids with incremented value
+		$newTab.find(".optionTR span").each(function() {
+			var tempName = $(this).attr('id');
+			var newName = tempName.replace(/\d+_item/gi, newCount+'_item');
+			$(this).attr('id', newName);
+		});
+		
+		//now we fix placeholder
+		$newTab.find("input[name^='mdName'").each(function() {
+			var temp = $(this).val();
+			$(this).val("");
+			$(this).attr('placeholder', temp);
+		});
+		
+		//now we fix placeholder
+		$newTab.find("input[name^='mdPrice'").each(function() {
+			var temp = $(this).val();
+			$(this).val("");
+			$(this).attr('placeholder', temp);
+		});
+		
+		//add id
+		$newTab.find("input[name^='mdID'").each(function() {
+			$(this).val('mid'+newCount);
+		});
+		
+		//hide it so we can animate it!
+		$newTab.css('display','none');
+		
+		//insert after section header/before hidden div
+		$("table:last").before($newTab); 
+		
+		$($newTab).slideRow('down');
+		
+		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+	});
+	
+	$('.mdTDIName i.fi-plus').live('click', function(){
+		$(this).removeClass('fi-plus');
+		$(this).addClass('fi-minus');
+		$(this).parent('button').addClass('secondary');
+		
+		//add price
+		$tempEl = $(this).closest('.mdTable').find('.mdTDTPrice input');
+		temp = parseFloat($tempEl.val());
+		$theSpan = $(this).closest('.mdItemName').find('span');
+		currentPrice = parseFloat($theSpan.attr('data-value'));
+		temp = parseFloat(temp + currentPrice).toFixed(2);
+		$tempEl.val(temp);
+		
+		//add id to list
+		$mdItems = $(this).closest('td.mdTDIName').find('input[name^="mdItems"]');
+		allIDs = $mdItems.val();
+		thisID = $theSpan.attr('id');
+		thisID = thisID.replace(/\d+_item_/gi, "");
+		allIDs = allIDs + thisID + ";";
+		$mdItems.val(allIDs);
+	});
+	
+	$('.mdTDIName i.fi-minus').live('click', function(){
+		$(this).removeClass('fi-minus');
+		$(this).addClass('fi-plus');
+		$(this).parent('button').removeClass('secondary');
+		
+		//subtract price
+		$tempEl = $(this).closest('.mdTable').find('.mdTDTPrice input');
+		temp = parseFloat($tempEl.val());
+		$theSpan = $(this).closest('.mdItemName').find('span');
+		currentPrice = parseFloat($theSpan.attr('data-value'));
+		temp = parseFloat(temp - currentPrice).toFixed(2);
+		$tempEl.val(temp);
+		
+		//remove id from list
+		$mdItems = $(this).closest('td.mdTDIName').find('input[name^="mdItems"]');
+		allIDs = $mdItems.val();
+		thisID = $theSpan.attr('id');
+		thisID = thisID.replace(/\d+_item_/gi, "");
+		allIDs = allIDs.replace(thisID+";", "");
+		$mdItems.val(allIDs);
+	});
+	
+	$(".mdDelete").live('click', function() {
+		//get event number
+		$curTable = $(this).closest('table');
+		mdID = $curTable.attr('id');
+		
+		realmdID = $curTable.find('input[name^=mdID]').val();
+		
+		if(typeof realmdID =='undefined' || realmdID == '' || !realmdID.match(/^\d+$/)) //event not saved in DB
+		{
+			noty({
+				layout: 'center',
+				type: 'confirm',
+				text: 'Are you sure you want to delete this meal deal? Note: all associated data will be lost!',
+				buttons: [
+				{addClass: 'alert tiny', text: 'Yes, delete this meal deal!', onClick: function($noty) {
+					
+					//get and update current count
+					mdCount = $('#mdCountAct').val();
+					newCount = parseInt(parseInt(mdCount) - 1);
+					$('#mdCountAct').val(newCount);
+					
+					//bye-bye
+					$('#'+mdID).remove();
+					
+					$noty.close();
+				  }
+				},
+				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+					$noty.close();
+				  }
+				}
+			  ]
+			});
+		}
+		else //event in DB
+		{
+			noty({
+				layout: 'center',
+				type: 'confirm',
+				text: 'Are you sure you want to delete this meal deal? Note: all associated data will be lost!',
+				buttons: [
+				{addClass: 'alert tiny', text: 'Yes, delete this meal deal!', onClick: function($noty) {
+					
+					var url = "code/dashboard/do_mdDelete.php";
+					$.ajax({
+						   type: "POST",
+						   url: url,
+						   data: 'mdID='+realmdID, // serializes the form's elements.
+						   success: function(data)
+						   {
+								try
+								{
+									var dataArray = jQuery.parseJSON(data); //parsing JSON
+								}
+								catch(e)
+								{
+									noty({
+									  type: 'error',
+									  text: 'Connection Error! Check API endpoint.'
+									});
+									
+									//alert(data);
+									
+									return false;
+								}
+									
+								//get and update current count
+								mdCount = $('#mdCountAct').val();
+								newCount = parseInt(parseInt(mdCount) - 1);
+								$('#mdCountAct').val(newCount);
+								
+								//bye-bye
+								$('#'+mdID).remove();
+							}
+						 });
+					$noty.close();
+				  }
+				},
+				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+					$noty.close();
+				  }
+				}
+			  ]
+			});
+		}
+		
+	});
+	
+	$(".mdSave").live('click', function() {
+		$(this).hide();
+		$curItem = $(this).closest('table');
+		$curItem.find("tr").removeClass('mdEdit');
+		$curItem.find("tr").addClass('savedInput');
+		$curItem.find("input").attr("readonly", "readonly");
+		$curItem.find(".mdTDEdit").removeClass('hide');
+		$curItem.find(".mdTDEdit").show();
+		$curItem.find(".subHeaderTR").slideRow('up');
+		$curItem.find(".optionTR").slideRow('up');
+		$curItem.css('background', '#E9E9E9');
+	});
+	
+	$(".mdTDEdit").live('click', function() {
+		$(this).hide();
+		$curItem = $(this).closest('table');
+		$curItem.find("tr").addClass('mdEdit');
+		$curItem.find("tr").removeClass('savedInput');
+		$curItem.find("input").removeAttr("readonly");
+		$curItem.find(".mdSave").removeClass('hide');
+		$curItem.find(".mdSave").show();
+		$curItem.find(".optionTR").slideRow('down');
+		$curItem.find(".subHeaderTR").slideRow('down');
+		$curItem.css('background', '#FFFFFF');
+	});
+		
+	$("#mealDealConfigForm").on('valid', function (event) {
+		//lock all
+		$('.mdSave').trigger('click');
+	
+		var url = "code/dashboard/do_mdConfig.php";
+
+		$.ajax({
+			   type: "POST",
+			   url: url,
+			   data: $(this).serialize(), // serializes the form's elements.
+			   success: function(data)
+			   {
+					try
+					{
+						var dataArray = jQuery.parseJSON(data); //parsing JSON
+					}
+					catch(e)
+					{
+						noty({
+						  type: 'error',
+						  text: 'Connection Error! Check API endpoint.'
+						});
+						//alert(data);
+						return false;
+					}
+					
+					if(typeof dataArray['status'] !='undefined') //error
+					{
+						noty({
+						  type: 'error',
+						  text: dataArray['message']
+						});
+					}
+					else
+					{	
+						noty({ type: 'success', text: 'All changes has been saved!' });
+						
+					}
+				}
+			 });
+
+		return false; // avoid to execute the actual submit of the form.
+	});
+	
 	//make footer take all of the bottom
-	if($(window).height() < 1024)
+	/*if($(window).height() < 1024)
 		elemHeight = 200;
 	else
 		elemHeight = $(window).height() - $('footer').offset().top - 40;
 	$('footer.dashboardFooter div.columns').height(elemHeight);
-	$('footer.regular div.columns').height(elemHeight-50);
+	$('footer.regular div.columns').height(elemHeight-50);*/
 	
 	// Twitter App
 	$('.twitterfeed').tweet({
@@ -1981,7 +2249,7 @@ $(document).ready(function() {
 						  type: 'error',
 						  text: 'Connection Error! Check API endpoint.'
 						});
-						alert(data);
+						//alert(data);
 						return false;
 					}
 					
@@ -2123,10 +2391,11 @@ $(window).resize(function(){
 		else map.setCenter( new google.maps.LatLng(mapDefaultCenterLat,mapDefaultCenterLong) );
 		
 	//make footer take all of the bottom
+	/*
 	if($(window).height() < 1024)
 		elemHeight = 200;
 	else
 		elemHeight = $(window).height() - $('footer').offset().top - 40;
 	$('footer.dashboardFooter div.columns').height(elemHeight);
-	$('footer.regular div.columns').height(elemHeight-50);
+	$('footer.regular div.columns').height(elemHeight-50);*/
 });

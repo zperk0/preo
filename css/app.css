@@ -19,6 +19,27 @@ h1 { letter-spacing: -2px;}
 h2 { letter-spacing: -1px;}
 h3 { letter-spacing: -1px;}
 
+::selection {
+	background: #3AA2DC; /* Safari */
+	}
+::-moz-selection {
+	background: #3AA2DC; /* Firefox */
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -220px;
+  /* Pad bottom by footer height */
+  padding: 0 0 220px;
+}
+
 body {
 	background:#E9E9E9 !important;
 	font-family: HelveticaNeueW01-45Ligh;
@@ -109,6 +130,9 @@ input:-webkit-autofill {
 }
 
 /* footer */
+footer{
+	min-height: 220px;
+}
 footer.regular{
 	background: #DADCDF;
 	padding-top: 40px;
@@ -571,7 +595,7 @@ ul.custom-inline-list {
 	margin-top: -321px;
 }
 
-.menuField, .eventField, .userField, .outletField{
+.menuField, .eventField, .userField, .outletField, .mdField{
 	background: transparent !important;
 	border: 0 !important;
 	box-shadow: 0 0 0 !important;
@@ -586,11 +610,15 @@ ul.custom-inline-list {
 	margin-bottom: 0 !important;
 }
 
-.menuField:focus, .eventField:focus, .userField:focus, .outletField:focus{
+.menuField:focus, .eventField:focus, .userField:focus, .outletField:focus, .mdField:focus{
 	background: white !important;
 }
 
-.menuTable .menuField:focus, .eventTable .eventField:focus, .userTable .userField:focus, .outletTable .outletField:focus{
+.menuTable .menuField:focus, .eventTable .eventField:focus, .userTable .userField:focus, .outletTable .outletField:focus, .mdTable .mdField:focus{
+	background: #F1F0F2 !important;
+}
+
+.mdTable .mdTDTPrice input:focus{
 	background: #F1F0F2 !important;
 }
 
@@ -600,39 +628,39 @@ ul.custom-inline-list {
 	font-weight: bold !important;
 }
 
-table.menuTable, table.eventTable, table.userTable , table.outletTable {
+table.menuTable, table.eventTable, table.userTable , table.outletTable, table.mdTable {
 	border:0px !important;
 	table-layout: fixed !important;
 	margin-left: 20px;
 }
 
-.menuTable tr, .eventTable tr, .userTable tr, .outletTable tr{
+.menuTable tr, .eventTable tr, .userTable tr, .outletTable tr, .mdTable tr{
 	background: #E9E9E9 !important;
 	font-size: 1.3em !important;
 	border-bottom: 1px solid #B8B9BC;
 }
 
-.menuTable td, .eventTable td, .userTable td, .outletTable td{
+.menuTable td, .eventTable td, .userTable td, .outletTable td, .mdTable td{
 	width: 20%;
 	padding-top: 0;
 	padding-bottom: 0;
 }
 
-.menuTable input, .eventTable input, .userTable input, .outletTable input{
+.menuTable input, .eventTable input, .userTable input, .outletTable input, .mdTable input{
 	padding:1px !important;
 	margin-bottom: 0px !important;
 }
 
-tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit{
+tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	background: #FFF !important;
 }
 
-.menuEdit input, .eventEdit input, .userEdit input, .outletEdit input{
+.menuEdit input, .eventEdit input, .userEdit input, .outletEdit input, .mdEdit input{
 	background: #F1F0F2 !important;
 	color: #48535D !important;
 }
 
-.menuTable .menuField, .eventTable .eventField, .userTable .userField, .outletTable .outletField {
+.menuTable .menuField, .eventTable .eventField, .userTable .userField, .outletTable .outletField, .mdTable .mdField {
 	font-family: HelveticaNeueW01-45Ligh !important;
 	color: #48535D !important;
 	font-size: inherit !important;
@@ -654,7 +682,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit{
 	width: 60%;
 }
 
-.menuTable .menuTDName input, .eventTable .eventTDName input, .userTable .userTDName input, .outletTable .outletTDName input{
+.menuTable .menuTDName input, .eventTable .eventTDName input, .userTable .userTDName input, .outletTable .outletTDName input, .mdTable .mdTDName input{
 	font-weight: bold !important;
 }
 
@@ -692,7 +720,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit{
 	width: 21%;
 }
 
-.menuTable .menuTDPrice input{
+.menuTable .menuTDPrice input, .mdTable .mdTDPrice input, .mdTable .mdTDTPrice input{
 	text-align: center;
 }
 
@@ -730,11 +758,45 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit{
 	text-align: center !important;
 }
 
+.mdTable .mdTDName{
+	font-weight: bold !important;
+	width: 64%;
+}
+
+.mdTable .mdTDTPrice{
+	width: 10%;
+}
+
+.mdTable .mdTDPrice{
+	width: 10%;
+}
+
+.mdTable .mdTDIName{
+	width: 100%;
+}
+
+.mdTable .mdTDTools{
+	width: 8%;
+}
+
+.mdItemName {
+	display: inline-block;
+	width: 32.98%;
+}
+.mdItemName span {
+	width: 80%;
+	display: inline-block;
+	display: inline-block;
+}
+.mdItemName button { 
+	width: 10%;
+}
+
 #menuSectionRow{
 	padding-top: 20px;
 }
 
-.menuTable .menuTDVisi, .eventTable .eventTDVisi{
+.menuTable .menuTDVisi, .eventTable .eventTDVisi, .mdTable .mdTDVisi{
 	width: 8%;
 }
 
@@ -746,7 +808,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit{
 	width: 8%;
 }
 
-.menuTableButtons, .eventTableButtons, .userTableButtons, .outletTableButtons{
+.menuTableButtons, .eventTableButtons, .userTableButtons, .outletTableButtons, .mdTableButtons{
 	font-size: 15px !important;
 	padding: 2px 6px !important;
 	margin-top: 8px;
@@ -758,22 +820,22 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit{
 	width: 64px;
 }
 
-.menuTDVisi .switch, .eventTDVisi .switch{
+.menuTDVisi .switch, .eventTDVisi .switch, .mdTDVisi .switch{
 	margin-top: 14px;
 	padding-right: 4px;
 	padding-left: 4px;
 }
 
-.menuTable h6, .eventTable h6, .userTable h6, .outletTable h6{
+.menuTable h6, .eventTable h6, .userTable h6, .outletTable h6, .mdTable h6{
 	color: #2D7EC5;
 	font-weight: normal;
 }
 
-.menuTable .savedInput input:focus, .eventTable .savedInput input:focus, .userTable .savedInput input:focus, .outletTable .savedInput input:focus, .menuTable .savedInput input, .eventTable .savedInput input, .userTable .savedInput input, .outletTable .savedInput input{
+.menuTable .savedInput input:focus, .eventTable .savedInput input:focus, .userTable .savedInput input:focus, .outletTable .savedInput input:focus, .mdTable .savedInput input:focus, .menuTable .savedInput input, .eventTable .savedInput input, .userTable .savedInput input, .outletTable .savedInput input, .mdTable .savedInput input{
 	background: #E9E9E9 !important;
 }
 
-table.menuTable, table.eventTable, table.userTable, table.outletTable {
+table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdTable {
 	display: table;
 	margin-right: 0px !important;
 	width: 101.8% !important;
@@ -827,11 +889,11 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable {
 	margin-bottom:-12px;
 }
 
-.newItem, .newSection, .deleteSection, .newEvent, .newUser, .newOutlet, .newMenu{
+.newItem, .newSection, .deleteSection, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem{
 	padding: 0 6px;
 }
 
-.newItem, .newEvent, .newUser, .newOutlet{
+.newItem, .newEvent, .newUser, .newOutlet, .newmdItem{
 	background: #2E70B7;
 	border: #2E70B7;
 }
@@ -958,12 +1020,12 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable {
 
 footer.dashboardFooter {
 	background: rgba(0,0,0,0.15);
-	margin-top: 50px;
-	overflow: hidden; /* to force height */
+	/*margin-top: 50px;
+	overflow: hidden;  to force height */
 }
 
 footer.dashboardFooter div{
-	margin-top: 20px;
+	padding-top: 20px;
 }
 
 .TWFoot img, .FBFoot img{

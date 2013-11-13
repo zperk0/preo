@@ -33,8 +33,7 @@
 		$_SESSION['outlet_id'] 	= $outletID;
 		
 		//now we need to populate all data pertaining to this menu
-		$curlResult = callAPI('GET', $apiURL."menus/$menuID", false, $apiAuth);
-		$menu = json_decode($curlResult,true);
+		$menu = $dataJSON;
 		
 		//Now lets simplify what we need
 		
