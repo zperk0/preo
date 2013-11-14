@@ -56,7 +56,7 @@
 			</div>
 			
 			<div class="hide firstItemDiv"></div> <!-- Dummy hook -->
-
+			
 			<table class="menuTable" id="item0" style="display:none;"><!-- DUMMY -->
 				<tbody>
 					<tr class="menuEdit itemTR">
@@ -154,7 +154,7 @@
 			<?foreach($section['items'] as $item){ 
 			//again remember its all 1-indexed thats why we add +1 to the key
 			?>
-				<table class="menuTable tablesection<?echo ($sKey+1);?>" id="item<?echo ($iKey+1)?>" style="background:#E9E9E9">
+				<table class="menuTable tablesection<?echo ($sKey+1);?>" id="item<?echo ($iKey+1)?>" style="background:transparent">
 					<tbody>
 						<tr class="savedInput itemTR">
 							<td class="menuTDName">

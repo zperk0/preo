@@ -47,17 +47,30 @@ function setArray(attr, value)
 	googleUserArray[attr] = value;
 }
 
+function makeRandomPassword()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
+
 function startGSignUp(){
 	$("#fName").val(googleUserArray['fName']);
 	$("#lName").val(googleUserArray['lName']);
 	$("#email").val(googleUserArray['email']);
 	$("#gpid").val(parseInt(googleUserArray['id']));
+	$("#passwordField").val(makeRandomPassword());
 	
-	$('.nameRow, .socialMediaDiv').hide();
+	$('.nameRow, .socialMediaDiv, .emailRow, .passRow').hide();
 	$("#email").attr('readonly','readonly');
 	
 	noty({
 	  type: 'success',
-	  text: 'Google+ Signup complete. Now we just need a couple details from you'
+	  text: 'Google+ Signup complete. Now we just need your business name.'
 	});
 }

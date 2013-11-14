@@ -13,7 +13,7 @@
 			<?php 
 			if($_SESSION['md_edit_on']){
 				foreach($md as $key => $mealDeal){ /*1-index so key+1*/?>
-				<table class="mdTable" id="md<?echo $key+1;?>">
+				<table class="mdTable" id="md<?echo $key+1;?>" style="background:transparent;">
 					<tbody>
 						<tr class="savedInput mdTR">
 							<td class="mdTDName">

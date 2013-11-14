@@ -22,18 +22,19 @@
 							<tr class="userEdit userTR">
 								<td class="userTDName">
 									<input type="hidden" name="uID[0]" value="" />
-									<input type="text" name="uName[0]" class="userField noEnterSubmit" value="<?echo _("Add a user name");?>" required/>
+									<input type="text" name="uName[0]" class="userField noEnterSubmit" value="<?echo _("Add a user name");?>"/>
 									<small class="error"><?echo _("Please type a user name");?></small>
 								</td>
 								<td class="userTDEmail">
-									<input type="text" name="uEmail[0]" class="userField noEnterSubmit" placeholder="<?echo _("Add an email");?>" required/>
+									<input type="email" name="uEmail[0]" class="userField noEnterSubmit" placeholder="<?echo _("Add an email");?>"/>
 									<small class="error"><?echo _("Please type an email");?></small>
 								</td>
 								<td class="userTDPassword">
 									<input type="password" name="uPassword[0]" class="userField noEnterSubmit" placeholder="<?echo _("Assign a password");?>"/>
-									</td>
+									<small class="error"><?echo _("Please type a Password");?></small>
+								</td>
 								<td class="userTDRole">
-									<select name="uRole[0]" class="userField noEnterSubmit inline" style="display:none !important;"/> <!-- Dummy does not have userMenuSingleSelect -->
+									<select name="uRole[0]" class="userField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have userMenuSingleSelect -->
 										<option value="ADMIN"><?echo _("Admin")?></option>
 										<option value="STAFF"><?echo _("Staff")?></option>
 										<option value="OWNER"><?echo _("Owner")?></option>
@@ -57,7 +58,7 @@
 		foreach($account['users'] as $uKey=>$user){
 		//again remember its all 1-indexed thats why we add +1 to the key
 		?>
-			<table class="userTable" id="user<?echo ($uKey+1)?>" style="background:#E9E9E9">
+			<table class="userTable" id="user<?echo ($uKey+1)?>" style="background:transparent">
 				<tbody>
 					<tr class="savedInput userTR">
 						<td class="userTDName">
@@ -66,14 +67,14 @@
 							<small class="error"><?echo _("Please type a user name");?></small>
 						</td>
 						<td class="userTDEmail">
-							<input type="text" name="uEmail[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo $user['email'];?>" placeholder="<?echo _("Add an email");?>" readonly="readonly" required/>
+							<input type="email" name="uEmail[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo $user['email'];?>" placeholder="<?echo _("Add an email");?>" readonly="readonly" required/>
 							<small class="error"><?echo _("Please type an email");?></small>
 						</td>
 						<td class="userTDPassword">
-							<input type="password" name="uPassword[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" placeholder="<?echo _("Change a password");?>" readonly="readonly"/>
+							<input type="password" name="uPassword[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" placeholder="<?echo _("Change a password");?>" readonly="readonly" />
 						</td>
 						<td class="userTDRole">
-							<select name="uRole[<?echo ($uKey+1);?>]" class="userMenuSingleSelect userField noEnterSubmit" readonly="readonly" style="display:none !important;"/>
+							<select name="uRole[<?echo ($uKey+1);?>]" class="userMenuSingleSelect userField noEnterSubmit" style="display:none" readonly="readonly"/>
 								<option value="ADMIN" 	<?if($user['role']=='ADMIN'){?>selected="selected"<?}?>><?echo _("Admin")?></option>
 								<option value="STAFF" 	<?if($user['role']=='STAFF'){?>selected="selected"<?}?>><?echo _("Staff")?></option>
 								<option value="OWNER" 	<?if($user['role']=='OWNER'){?>selected="selected"<?}?>><?echo _("Owner")?></option>

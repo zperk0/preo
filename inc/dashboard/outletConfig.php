@@ -27,7 +27,7 @@
 									<small class="error"><?echo _("Please type an outlet name");?></small>
 								</td>
 								<td class="outletTDMenu">
-									<select name="oMenu[0][]" class="outletField noEnterSubmit inline" style="display:none !important;" multiple="multiple" required/>  <!-- Dummy does not have outletMenuMultiSelect -->
+									<select name="oMenu[0][]" class="outletField noEnterSubmit inline" style="display:none;" multiple="multiple" required/>  <!-- Dummy does not have outletMenuMultiSelect -->
 										<?foreach($menus as $mKey=>$menu){?>
 											<option value="<?echo $menu['id'];?>" <?if($mKey == 0) echo 'selected="selected"';?>><?echo $menu['name'];?></option>
 										<?}?>
@@ -52,7 +52,7 @@
 			//get outlet-menus
 			$outletMenus = getOutletMenus($outlet['id']);
 		?>
-			<table class="outletTable" id="outlet<?echo ($oKey+1)?>" style="background:#E9E9E9">
+			<table class="outletTable" id="outlet<?echo ($oKey+1)?>" style="background:transparent">
 				<tbody>
 					<tr class="savedInput outletTR">
 						<td class="outletTDName">
@@ -61,7 +61,7 @@
 							<small class="error"><?echo _("Please type an outlet name");?></small>
 						</td>
 						<td class="outletTDMenu">
-							<select name="oMenu[<?echo ($oKey+1);?>][]" class="outletMenuMultiSelect outletField noEnterSubmit small" readonly="readonly" style="display:none !important;" multiple="multiple" required/>
+							<select name="oMenu[<?echo ($oKey+1);?>][]" class="outletMenuMultiSelect outletField noEnterSubmit small" readonly="readonly" style="display:none" multiple="multiple" required/>
 								<?foreach($menus as $mKey=>$menu){?>
 									<option value="<?echo $menu['id'];?>" <?if(searchForId($menu['id'],$outletMenus)) echo 'selected="selected"';?>><?echo $menu['name'];?></option>
 								<?}?>

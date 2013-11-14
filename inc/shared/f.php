@@ -34,7 +34,13 @@
 		<script src="<?echo $_SESSION['path']?>/js/general.js"></script>
 		
 		<script>
-			$(document).foundation();
+		  $(document)
+			.foundation()
+			.foundation('abide', {
+			  patterns: {
+				password: /^.+$/,
+			  }
+			});
 			$('.preloader').hide();
 		</script>
 		

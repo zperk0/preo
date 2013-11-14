@@ -404,7 +404,7 @@ if (typeof Object.create !== 'function') {
     };
 
     $.noty.defaults = {
-        layout:'top',
+        layout:'topCenter',
         theme:'defaultTheme',
         type:'alert',
         text:'',
@@ -414,13 +414,13 @@ if (typeof Object.create !== 'function') {
             open:{height:'toggle'},
             close:{height:'toggle'},
             easing:'swing',
-            speed:500
+            speed:250
         },
-        timeout:false,
+        timeout:7500,
         force:false,
         modal:false,
-        maxVisible:5,
-        closeWith:['click'],
+        maxVisible:10,
+        closeWith:['hover'],
         callback:{
             onShow:function () {
             },
@@ -615,6 +615,48 @@ window.noty = function noty(options) {
 
 ;(function($) {
 
+	$.noty.layouts.topCenter = {
+		name: 'topCenter',
+		options: { // overrides options
+
+		},
+		container: {
+			object: '<ul id="noty_topCenter_layout_container" />',
+			selector: 'ul#noty_topCenter_layout_container',
+			style: function() {
+				$(this).css({
+					top: 20,
+					left: 0,
+					position: 'fixed',
+					width: '310px',
+					height: 'auto',
+					margin: 0,
+					padding: 0,
+					listStyleType: 'none',
+					zIndex: 10000000
+				});
+
+				$(this).css({
+					left: ($(window).width() - $(this).outerWidth(false)) / 2 + 'px'
+				});
+			}
+		},
+		parent: {
+			object: '<li />',
+			selector: 'li',
+			css: {}
+		},
+		css: {
+			display: 'none',
+			width: '310px'
+		},
+		addClass: ''
+	};
+
+})(jQuery);
+
+;(function($) {
+
 	$.noty.layouts.center = {
 		name: 'center',
 		options: { // overrides options
@@ -671,7 +713,6 @@ window.noty = function noty(options) {
 })(jQuery);
 
 
-
 ;(function($) {
 
 	$.noty.themes.defaultTheme = {
@@ -680,7 +721,7 @@ window.noty = function noty(options) {
 			borderFix: function() {
 				if (this.options.dismissQueue) {
 					var selector = this.options.layout.container.selector + ' ' + this.options.layout.parent.selector;
-					switch (this.options.layout.name) {
+					/*switch (this.options.layout.name) {
 						case 'top':
 							$(selector).css({borderRadius: '0px 0px 0px 0px'});
 							$(selector).last().css({borderRadius: '0px 0px 5px 5px'}); break;
@@ -694,7 +735,7 @@ window.noty = function noty(options) {
 							$(selector).css({borderRadius: '0px 0px 0px 0px'});
 							$(selector).first().css({borderRadius: '5px 5px 0px 0px'}); break;
 						default: break;
-					}
+					}*/
 				}
 			}
 		},
@@ -714,8 +755,7 @@ window.noty = function noty(options) {
 		style: function() {
 
 			this.$bar.css({
-				overflow: 'hidden',
-				background: "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAoCAYAAAAPOoFWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPZJREFUeNq81tsOgjAMANB2ov7/7ypaN7IlIwi9rGuT8QSc9EIDAsAznxvY4pXPKr05RUE5MEVB+TyWfCEl9LZApYopCmo9C4FKSMtYoI8Bwv79aQJU4l6hXXCZrQbokJEksxHo9KMOgc6w1atHXM8K9DVC7FQnJ0i8iK3QooGgbnyKgMDygBWyYFZoqx4qS27KqLZJjA1D0jK6QJcYEQEiWv9PGkTsbqxQ8oT+ZtZB6AkdsJnQDnMoHXHLGKOgDYuCWmYhEERCI5gaamW0bnHdA3k2ltlIN+2qKRyCND0bhqSYCyTB3CAOc4WusBEIpkeBuPgJMAAX8Hs1NfqHRgAAAABJRU5ErkJggg==') repeat-x scroll left top #fff"
+				overflow: 'hidden'
 			});
 
 			this.$message.css({
@@ -759,7 +799,7 @@ window.noty = function noty(options) {
 			switch (this.options.layout.name) {
 				case 'top':
 					this.$bar.css({
-						borderRadius: '0px 0px 5px 5px',
+					//	borderRadius: '0px 0px 5px 5px',
 						borderBottom: '2px solid #eee',
 						borderLeft: '2px solid #eee',
 						borderRight: '2px solid #eee',
@@ -768,7 +808,7 @@ window.noty = function noty(options) {
 				break;
 				case 'topCenter': case 'center': case 'bottomCenter': case 'inline':
 					this.$bar.css({
-						borderRadius: '5px',
+					//	borderRadius: '5px',
 						border: '1px solid #eee',
 						boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
 					});
@@ -778,7 +818,7 @@ window.noty = function noty(options) {
 				case 'bottomLeft': case 'bottomRight':
 				case 'centerLeft': case 'centerRight':
 					this.$bar.css({
-						borderRadius: '5px',
+					//	borderRadius: '5px',
 						border: '1px solid #eee',
 						boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
 					});
@@ -786,7 +826,7 @@ window.noty = function noty(options) {
 				break;
 				case 'bottom':
 					this.$bar.css({
-						borderRadius: '5px 5px 0px 0px',
+					//	borderRadius: '5px 5px 0px 0px',
 						borderTop: '2px solid #eee',
 						borderLeft: '2px solid #eee',
 						borderRight: '2px solid #eee',
@@ -803,25 +843,25 @@ window.noty = function noty(options) {
 
 			switch (this.options.type) {
 				case 'alert': case 'notification':
-					this.$bar.css({backgroundColor: '#FFF', borderColor: '#CCC', color: '#444'}); break;
+					this.$bar.css({backgroundColor: '#FFF', borderColor: '#FFF', color: '#444'}); break;
 				case 'warning':
-					this.$bar.css({backgroundColor: '#FFEAA8', borderColor: '#FFC237', color: '#826200'});
+					this.$bar.css({backgroundColor: '#FFEAA8', borderColor: '#FFEAA8', color: '#826200'});
 					this.$buttons.css({borderTop: '1px solid #FFC237'}); break;
 				case 'error':
-					this.$bar.css({backgroundColor: 'red', borderColor: 'darkred', color: '#FFF'});
+					this.$bar.css({backgroundColor: '#E60049', borderColor: '#E60049', color: '#FFF'});
 					this.$message.css({fontWeight: 'bold'});
 					this.$buttons.css({borderTop: '1px solid darkred'}); break;
 				case 'information':
-					this.$bar.css({backgroundColor: '#57B7E2', borderColor: '#0B90C4', color: '#FFF'});
+					this.$bar.css({backgroundColor: '#57B7E2', borderColor: '#57B7E2', color: '#FFF'});
 					this.$buttons.css({borderTop: '1px solid #0B90C4'}); break;
 				case 'success':
-					this.$bar.css({backgroundColor: 'lightgreen', borderColor: '#50C24E', color: 'darkgreen'});
+					this.$bar.css({backgroundColor: '#8AC33F', borderColor: '#8AC33F', color: '#FFF'});
 					this.$buttons.css({borderTop: '1px solid #50C24E'});break;
 				case 'confirm':
-					this.$bar.css({backgroundColor: '#E9E9E9', borderColor: '#000', color: '#000'});
+					this.$bar.css({backgroundColor: '#E9E9E9', borderColor: '#E9E9E9', color: '#000'});
 					this.$buttons.css({backgroundColor: '#F7F7F7'});break;
 				default:
-					this.$bar.css({backgroundColor: '#FFF', borderColor: '#CCC', color: '#444'}); break;
+					this.$bar.css({backgroundColor: '#FFF', borderColor: '#FFF', color: '#444'}); break;
 			}
 		},
 		callback: {

@@ -33,7 +33,7 @@ $(document).ready(function() {
 	}
 
 	//STOP ENTER from FORM SUBMISSION for add event typeahead/////////////
-	$('.noEnterSubmit').keypress(function(e){
+	$(".noEnterSubmit").keypress(function(e){
 		if ( e.which == 13 ) return false;
 		//or...
 		if ( e.which == 13 ) e.preventDefault();  //just need to give class="noEnterSubmit"
@@ -57,7 +57,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						//alert(data);
@@ -68,7 +68,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 					}
@@ -81,7 +81,7 @@ $(document).ready(function() {
 						})
 						.fail(function(jqxhr) { 
 							noty({
-								type: 'error',
+								type: 'error',  layout: 'topCenter',
 								text: 'Error: '+jqxhr.responseText	
 							});
 						});
@@ -109,7 +109,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						//alert(data);
@@ -119,7 +119,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 				   
@@ -133,7 +133,7 @@ $(document).ready(function() {
 						})
 						.fail(function(jqxhr) { 
 							noty({
-								type: 'error',
+								type: 'error',  layout: 'topCenter',
 								text: 'Error: '+jqxhr.responseText	
 							});
 						});
@@ -161,7 +161,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						
@@ -173,7 +173,7 @@ $(document).ready(function() {
 					if(dataArray && typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 				   
@@ -185,7 +185,7 @@ $(document).ready(function() {
 						  text: 'Success! Please check your email for further instructions.'
 						});
 						
-						$('#forgotPassM').foundation('reveal', 'close');
+						$("#forgotPassM").foundation('reveal', 'close');
 					}
 				}
 			 });
@@ -201,7 +201,7 @@ $(document).ready(function() {
 		$.post("code/shared/changeLang.php", 'lang='+newLang, function() {window.location.reload();}); 
 	});
 	
-	if($('#map').length > 0)
+	if($("#map").length > 0)
 	{
 		//options for the map
 		var myOptions = {
@@ -226,7 +226,7 @@ $(document).ready(function() {
 		new google.maps.Point(10, 34));
 		
 		//Google Places autocomplete
-		var input = document.getElementById('vSug');
+		var input = document.getElementById("vSug");
 		var options = {'types':[ 'establishment']}; //restricted only to business. We dont need country/street/area names now
 		var autocomplete = new google.maps.places.Autocomplete(input, options);
 		autocomplete.bindTo('bounds', map); //set the guesses to be bound around the map so closer to the location (i.e. UK)
@@ -234,7 +234,7 @@ $(document).ready(function() {
 		google.maps.event.addListener(autocomplete, 'place_changed', function() {
 			place = autocomplete.getPlace();
 			
-			document.getElementById('vCode').value = place.geometry.location.toString();  
+			document.getElementById("vCode").value = place.geometry.location.toString();  
 			
 			if (place.geometry.viewport) {
 				map.fitBounds(place.geometry.viewport);
@@ -258,10 +258,10 @@ $(document).ready(function() {
 			}
 			
 			//now to fix whats in venue address
-			document.getElementById('vAdd').value = address;
+			document.getElementById("vAdd").value = address;
 			
 			//now to fix whats in venue name
-			document.getElementById('vName').value = place.name;
+			document.getElementById("vName").value = place.name;
 
 			marker = new google.maps.Marker({ 
 				map: map, 
@@ -271,30 +271,6 @@ $(document).ready(function() {
 			});
 			  
 			marker.setPosition(place.geometry.location);
-			
-			/* var contentString = '<div class="infobox-wrapper"><div class="infobox"><strong>'+place.name+'</strong><br/>'+address+'</div></div>';
-
-			infobox = new InfoBox({
-				content: contentString,
-				disableAutoPan: false,
-				maxWidth: 150,
-				pixelOffset: new google.maps.Size(-140, 0),
-				zIndex: null,
-				boxStyle: {
-					//background: "url('http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/examples/tipbox.gif') no-repeat",
-					background: '#2E70B7',
-					color: "#FFF",
-					opacity: 0.75,
-					width: "280px"
-				},
-				closeBoxMargin: "12px 4px 2px 2px",
-				closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
-				infoBoxClearance: new google.maps.Size(1, 1)
-			}); 
-			
-			google.maps.event.addListener(marker, 'click', function () {
-				infobox.open(map,marker);
-			});	*/
 		});
 	}
 	
@@ -316,7 +292,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						//alert(data);
@@ -327,7 +303,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 					}
@@ -353,33 +329,33 @@ $(document).ready(function() {
 			
 			//alert(responseText);
 			content="<img src='./img/logoUploads/"+responseText+"'/>";
-			$('#appHeading').html(content);
+			$("#appHeading").html(content);
 			
-			$('#picFileName').val(responseText);
+			$("#picFileName").val(responseText);
 		},
 		error: function() { 
 			noty({
-			  type: 'error',
+			  type: 'error',  layout: 'topCenter',
 			  text: 'Error uploading file'
 			});
 		},
 		beforeSubmit: function(arr, $form, options) { 
 			var acceptedExts = new Array(".jpg",".jpeg",".png");
-			var filename = $('#picFile').val();
+			var filename = $("#picFile").val();
 			filename = filename.toLowerCase();
 			if(searchArray(filename,acceptedExts))
 				return true;
 			else
 			{
 				noty({
-				  type: 'error',
+				  type: 'error',  layout: 'topCenter',
 				  text: 'Incorrect Image File'
 				});
 				return false;
 			}
 		}
 	};
-	$('#logoUpForm').ajaxForm(options);
+	$("#logoUpForm").ajaxForm(options);
 	
 	$("[id^=thumb]").live('click', function() {
 		$("[id^=thumb]").removeClass('selected');
@@ -392,9 +368,9 @@ $(document).ready(function() {
 		$("#wallPaperID").val(plainID);
 	});
 	
-	$('#sugDrop li a').on('click', function() {
+	$("#sugDrop li a").on('click', function() {
 		var content = $(this).html();
-		$('#aHeading').val(content);
+		$("#aHeading").val(content);
 		$("#appHeading").html(content);
 		$("#picFileName").val('');
 	});
@@ -405,9 +381,9 @@ $(document).ready(function() {
 		$("#picFileName").val('');
 	});
 	
-	$('#sugDrop2 li a').on('click', function() {
+	$("#sugDrop2 li a").on('click', function() {
 		var content = $(this).html();
-		$('#aSubheading').val(content);
+		$("#aSubheading").val(content);
 		$("#subHeading").html(content);
 	});
 	
@@ -416,20 +392,20 @@ $(document).ready(function() {
 		$("#subHeading").html(content);
 	});
 	
-	/* $('#textColour').minicolors({
+	/* $("#textColour").minicolors({
 		change: function(hex, opacity) {
 			alert(hex);
 		}
 	}); */
 	
-	$('.visibleUpload, #logoReset').live('click', function() {
-		$('.visibleUpload').toggle();
-		$('.hiddenUpload').toggle();
+	$(".visibleUpload, #logoReset").live('click', function() {
+		$(".visibleUpload").toggle();
+		$(".hiddenUpload").toggle();
 	});
 	
 	$("#doLogoUp").live('click', function() {
-		if($('#picFile').val()) $('#logoUpForm').submit();
-		else noty({ type: 'error', text: 'Please choose a file' });
+		if($("#picFile").val()) $("#logoUpForm").submit();
+		else noty({ type: 'error',  layout: 'topCenter', text: 'Please choose a file' });
 	});
 	
 	$("#logoReset").live('click', function() {
@@ -438,7 +414,7 @@ $(document).ready(function() {
 		$("#picFileName").val('');
 	});
 	
-	$('#appConfig1Sub').live('click', function() { $('#appConfigForm').submit(); });
+	$("#appConfig1Sub").live('click', function() { $("#appConfigForm").submit(); });
 	
 	$("#appConfigForm").on('valid', function (event) {
 		var url = "code/dashboard/do_appConfig1.php";
@@ -456,7 +432,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						
@@ -466,7 +442,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 				   
@@ -503,7 +479,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						
@@ -513,7 +489,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 				   
@@ -535,9 +511,9 @@ $(document).ready(function() {
 		var itemID = $curTable.attr('id');
 		
 		//get and update current count
-		var itemCount = $('#'+itemID+'_optionCountAct').val();
+		var itemCount = $("#"+itemID+"_optionCountAct").val();
 		var newCount = parseInt(parseInt(itemCount) - 1);
-		$('#'+itemID+'_optionCountAct').val(newCount);
+		$("#"+itemID+"_optionCountAct").val(newCount);
 		
 		//bye-bye
 		$(this).parents("tr:first").remove();
@@ -553,10 +529,10 @@ $(document).ready(function() {
 		var itemID = $curTable.attr('id');
 		
 		//get and update current count
-		var itemCount = $('#'+itemID+'_optionCount').val();
+		var itemCount = $("#"+itemID+"_optionCount").val();
 		var newCount = parseInt(parseInt(itemCount) + 1);
-		$('#'+itemID+'_optionCount').val(newCount);
-		$('#'+itemID+'_optionCountAct').val(parseInt($('#'+itemID+'_optionCountAct').val())+1);
+		$("#"+itemID+"_optionCount").val(newCount);
+		$("#"+itemID+"_optionCountAct").val(parseInt($("#"+itemID+"_optionCountAct").val())+1);
 		
 		if(dup)
 		{
@@ -566,7 +542,7 @@ $(document).ready(function() {
 		else
 		{
 			//clone the nearest row
-			$curRow = $(this).closest('tr').next();
+			$curRow = $(this).closest("tr").next();
 		}
 		
         $newRow = $curRow.clone(true);
@@ -583,14 +559,14 @@ $(document).ready(function() {
 		
 		if(!dup){
 			//now we fix placeholder
-			$newRow.find("input[name^='oName'").each(function() {
+			$newRow.find("input[name^=oName]").each(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
 			});
 			
 			//now we fix placeholder
-			$newRow.find("input[name^='oPrice'").each(function() {
+			$newRow.find("input[name^=oPrice]").each(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
@@ -609,7 +585,7 @@ $(document).ready(function() {
 		$("#"+itemID+" tr:last").after($newRow);
 		$("#"+itemID+" tr:last").slideRow('down');
 
-		$('html, body').animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
+		$("html, body").animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
 	});
 	
 	$(".newItem, .itemDuplicate").live('click', function() {
@@ -628,44 +604,44 @@ $(document).ready(function() {
 		var itemID = $curTable.attr('id');
 		
 		//get and update current count
-		var itemCount = $('#itemCount').val();
+		var itemCount = $("#itemCount").val();
 		var newCount = parseInt(parseInt(itemCount) + 1);
-		$('#itemCount').val(newCount);
-		$('#itemCountAct').val(parseInt($('#itemCountAct').val())+1);
+		$("#itemCount").val(newCount);
+		$("#itemCountAct").val(parseInt($("#itemCountAct").val())+1);
 		
 		if(dup) //clone an existing row
 		{
 			//create variables and insert
-			$newOCount = $('#'+itemID+'_optionCount').clone(true);
+			$newOCount = $("#"+itemID+"_optionCount").clone(true);
 			$newOCount.attr('id','item'+newCount+'_optionCount');
 			$newOCount.attr('name','item'+newCount+'_optionCount');
-			$newOCountAct = $('#'+itemID+'_optionCountAct').clone(true);
+			$newOCountAct = $("#"+itemID+"_optionCountAct").clone(true);
 			$newOCountAct.attr('id','item'+newCount+'_optionCountAct');
 			$newOCountAct.attr('name','item'+newCount+'_optionCountAct');
-			$('#'+itemID+'_optionCountAct').after($newOCountAct);
-			$('#'+itemID+'_optionCountAct').after($newOCount);
+			$("#"+itemID+"_optionCountAct").after($newOCountAct);
+			$("#"+itemID+"_optionCountAct").after($newOCount);
 			
 			
 			//clone specific table
-			$newTab = $('#'+itemID).clone(true);
+			$newTab = $("#"+itemID).clone(true);
 			$newTab.attr('id','item'+newCount);
 		}
 		else //clone a dummy row
 		{
 			//create variables and insert
-			$newOCount = $('#item0_optionCount').clone(true);
+			$newOCount = $("#item0_optionCount").clone(true);
 			$newOCount.attr('id','item'+newCount+'_optionCount');
 			$newOCount.attr('name','item'+newCount+'_optionCount');
 			$newOCount.val(0);
-			$newOCountAct = $('#item0_optionCountAct').clone(true);
+			$newOCountAct = $("#item0_optionCountAct").clone(true);
 			$newOCountAct.attr('id','item'+newCount+'_optionCountAct');
 			$newOCountAct.attr('name','item'+newCount+'_optionCountAct');
 			$newOCountAct.val(0);
-			$('#item0_optionCountAct').after($newOCountAct);
-			$('#item0_optionCountAct').after($newOCount);
+			$("#item0_optionCountAct").after($newOCountAct);
+			$("#item0_optionCountAct").after($newOCount);
 			
 			//clone dummy table
-			$newTab = $('#item0').clone(true);
+			$newTab = $("#item0").clone(true);
 			$newTab.attr('id','item'+newCount);
 		}
 		
@@ -690,14 +666,14 @@ $(document).ready(function() {
 		
 		if(!dup){
 			//now we fix placeholder
-			$newTab.find("input[name^='iName'").each(function() {
+			$newTab.find("input[name^=iName]").each(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
 			});
 			
 			//now we fix placeholder
-			$newTab.find("input[name^='iPrice'").each(function() {
+			$newTab.find("input[name^=iPrice]").each(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
@@ -707,15 +683,17 @@ $(document).ready(function() {
 		//now we give the section id to the duplicate button
 		$newTab.find(".itemDuplicate").attr('id',"dup"+newCount+"_"+section);
 		
+		$newTab.css('backgroundColor','#fafafa');
+		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
 		
 		//insert after section header/before hidden div
-		$('.firstItemDiv'+section).before($newTab); 
+		$(".firstItemDiv"+section).before($newTab); 
 		
 		$($newTab).slideRow('down');
 		
-		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
 	$(".itemDelete").live('click', function() {
@@ -724,57 +702,63 @@ $(document).ready(function() {
 		var itemID = $curTable.attr('id');
 		
 		//get and update current count
-		var itemCount = $('#itemCountAct').val();
+		var itemCount = $("#itemCountAct").val();
 		var newCount = parseInt(parseInt(itemCount) - 1);
-		$('#itemCountAct').val(newCount);
+		$("#itemCountAct").val(newCount);
 		
 		//bye-bye
-		$('#'+itemID).remove();
+		$("#"+itemID).remove();
 	});
 	
-	$(".itemSave").live('click', function() {
+	$(".itemSave").on('click', function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").removeClass('menuEdit');
 		$curItem.find("tr").addClass('savedInput');
 		$curItem.find("input").attr("readonly", "readonly");
-		$curItem.find(".itemEdit").removeClass('hide');
-		$curItem.find(".itemEdit").show();
-		$curItem.find(".optionTR").hide();
+	//$curItem.find(".itemEdit").removeClass('hide');
+		$curItem.find(".itemEdit").slideRow('down');
+		$curItem.find(".optionTR").slideRow('up');
+		$curItem.find(".subHeaderTR").slideRow('up');
 		
-		if($curItem.find("input[name^='iDesc']").val() == '')
+		if($curItem.find("input[name^=iDesc]").val() == '')
 		{	
-			globalPH = $curItem.find("input[name^='iDesc']").attr('placeholder');
-			$curItem.find("input[name^='iDesc']").attr('placeholder', '');
+			globalPH = $curItem.find("input[name^=iDesc]").attr('placeholder');
+			$curItem.find("input[name^=iDesc]").attr('placeholder', '');
 		}
-		$curItem.css('background', '#E9E9E9');
+		$curItem.css('background', 'transparent');
+	//	$curItem.unwrap('<div class="tableWrapper" />');
+	//	return false;
 	});
 	
-	$(".itemEdit").live('click', function() {
+	$(".itemEdit").on('click', function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").addClass('menuEdit');
 		$curItem.find("tr").removeClass('savedInput');
 		$curItem.find("input").removeAttr("readonly");
-		$curItem.find(".itemSave").removeClass('hide');
-		$curItem.find(".itemSave").show();
-		$curItem.find(".optionTR").show();
+		//$curItem.find(".itemSave").removeClass('hide');
+		$curItem.find(".itemSave").slideRow('down');
+		$curItem.find(".optionTR").slideRow('down');
+		$curItem.find(".subHeaderTR").slideRow('down');
 		
-		if($curItem.find("input[name^='iDesc']").val() == '')
-			$curItem.find("input[name^='iDesc']").attr('placeholder', globalPH);
-		$curItem.css('background', '#FFFFFF');
+		if($curItem.find("input[name^=iDesc]").val() == '')
+			$curItem.find("input[name^=iDesc]").attr('placeholder', globalPH);
+		$curItem.css('background', '#fafafa');
+	//	$curItem.wrap('<div class="tableWrapper" />');
+	//	return false;
 	});
 	
-	$(".newSection").live('click', function() {
+	$(".newSection").on('click', function() {
 		//get and update current count
-		var secCount = $('#sectionCount').val();
+		var secCount = $("#sectionCount").val();
 		var newCount = parseInt(secCount) + 1;
-		$('#sectionCount').val(newCount);
-		$('#sectionCountAct').val(parseInt($('#sectionCountAct').val())+1);
+		$("#sectionCount").val(newCount);
+		$("#sectionCountAct").val(parseInt($("#sectionCountAct").val())+1);
 	
 		//clone dummy section and dummy hook
-		$newSec = $('#menuSectionRow').clone(true);
-		$newHook = $('.firstItemDiv').clone(true);
+		$newSec = $("#menuSectionRow").clone(true);
+		$newHook = $(".firstItemDiv").clone(true);
 		
 		//prepare hook
 		$newHook.addClass('firstItemDivsection'+newCount);
@@ -792,7 +776,7 @@ $(document).ready(function() {
 		$newSec.find(".deleteSection").attr('id', newID);
 		
 		//now we fix placeholder
-		$newSec.find("input[name^='mSectionName'").each(function() {
+		$newSec.find("input[name^=mSectionName]").each(function() {
 			var temp = $(this).val();
 			$(this).val("");
 			$(this).attr('placeholder', temp);
@@ -801,11 +785,11 @@ $(document).ready(function() {
 		$newSec.find(".menuSectionField").addClass('section'+newCount);
 		
 		//insert at the end of the table
-		$('.newSection').before($newSec).before($newHook);
+		$(".newSection").before($newSec).before($newHook);
 		$($newSec).slideDown('slow');
 	});
 	
-	$('.deleteSection').on('click',function(){
+	$(".deleteSection").on('click',function(){
 		//get id
 		sectionID = ($(this).attr('id')).replace("delete_section","");
 		$parentSectionHeader = $(this).parents('#menuSectionRow');
@@ -818,34 +802,34 @@ $(document).ready(function() {
 			buttons: [
 			{addClass: 'alert tiny', text: 'Yes, delete this section and all its contents!', onClick: function($noty) {
 				//get and update current count
-				var secCount = $('#sectionCountAct').val();
+				var secCount = $("#sectionCountAct").val();
 				var newCount = parseInt(parseInt(secCount) - 1);
-				$('#sectionCountAct').val(newCount);
+				$("#sectionCountAct").val(newCount);
 				
 				//count all items in question and get their ids
 				itemCount = 0;
 				itemIDArray = new Array();
-				$('.tablesection'+sectionID).each(function() {
+				$(".tablesection"+sectionID).each(function() {
 					itemIDArray[itemCount] = ($(this).attr('id')).replace("item","");
 					itemCount++;
 				});
 				
 				for(i=0;i<itemIDArray.length;i++) //remove all option count data for each item
 				{
-					$('#item'+itemIDArray[i]+'_optionCount').remove();
-					$('#item'+itemIDArray[i]+'_optionCountAct').remove();
+					$("#item"+itemIDArray[i]+"_optionCount").remove();
+					$("#item"+itemIDArray[i]+"_optionCountAct").remove();
 				}
 				
 				//now we adjust item count
-				var itemCount = $('#itemCountAct').val();
+				var itemCount = $("#itemCountAct").val();
 				var newCount = parseInt(parseInt(itemCount) - itemCount);
-				$('#itemCountAct').val(newCount);
+				$("#itemCountAct").val(newCount);
 				
 				//we delete the section here
 				$parentSectionHeader.remove(); //remove section header and buttons!
 
-				$('.tablesection'+sectionID).remove(); //tables of all items gone!
-				$('.firstItemDivsection'+sectionID).remove(); //hidden section hook gone!
+				$(".tablesection"+sectionID).remove(); //tables of all items gone!
+				$(".firstItemDivsection"+sectionID).remove(); //hidden section hook gone!
 
 				$noty.close();
 			  }
@@ -860,11 +844,11 @@ $(document).ready(function() {
 	
 	$("#menuConfigForm").on('valid', function (event) {
 		//lock all
-		$('.itemSave').trigger('click');
+		$(".itemSave").trigger('click');
 	
 		var url = "code/dashboard/do_menuConfig.php";
 		
-		$('.itemSave').click();
+		$(".itemSave").click();
 
 		$.ajax({
 			   type: "POST",
@@ -879,7 +863,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						
@@ -891,7 +875,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 				   
@@ -917,21 +901,21 @@ $(document).ready(function() {
 		var eventID = $curTable.attr('id');
 		
 		//get and update current count
-		var eventCount = $('#eventCount').val();
+		var eventCount = $("#eventCount").val();
 		var newCount = parseInt(parseInt(eventCount) + 1);
-		$('#eventCount').val(newCount);
-		$('#eventCountAct').val(parseInt($('#eventCountAct').val())+1);
+		$("#eventCount").val(newCount);
+		$("#eventCountAct").val(parseInt($("#eventCountAct").val())+1);
 		
 		if(dup) //clone an existing row
 		{
 			//clone specific table
-			$newTab = $('#'+eventID).clone(false);
+			$newTab = $("#"+eventID).clone(false);
 			$newTab.attr('id','event'+newCount);
 		}
 		else //clone a dummy row
 		{
 			//clone dummy table
-			$newTab = $('#event0').clone(true);
+			$newTab = $("#event0").clone(true);
 			$newTab.attr('id','event'+newCount);
 		}
 		
@@ -945,22 +929,14 @@ $(document).ready(function() {
 		
 		if(!dup){
 			//now we fix placeholder
-			$newTab.find("input[name^='eName'").each(function() {
+			$newTab.find("input[name^=eName]").each(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
 			});
 			
 			//now we fix placeholder
-			$newTab.find("input[name^='eTime'").each(function() {
-				var temp = $(this).val();
-				$(this).val("");
-				$(this).attr('placeholder', temp);
-				$(this).attr('pattern', "\\d\\d:\\d\\d");
-			});
-			
-			//now we fix placeholder
-			$newTab.find("input[name^='eETime'").each(function() {
+			$newTab.find("input[name^=eTime]").each(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
@@ -968,7 +944,15 @@ $(document).ready(function() {
 			});
 			
 			//now we fix placeholder
-			$newTab.find("input[name^='eDate'").each(function() {
+			$newTab.find("input[name^=eETime]").each(function() {
+				var temp = $(this).val();
+				$(this).val("");
+				$(this).attr('placeholder', temp);
+				$(this).attr('pattern', "\\d\\d:\\d\\d");
+			});
+			
+			//now we fix placeholder
+			$newTab.find("input[name^=eDate]").each(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
@@ -978,7 +962,7 @@ $(document).ready(function() {
 		else
 		{
 			//now we fix eID
-			$newTab.find("input[name^='eID'").each(function() {
+			$newTab.find("input[name^=eID]").each(function() {
 				$(this).val("");
 			});
 		}
@@ -987,19 +971,21 @@ $(document).ready(function() {
 		$newTab.find(".eventDuplicate").attr('id',"dup"+newCount);
 		
 		//now we add datepicker
-		$newTab.find('.eventTDDate input').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
+		$newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
 		
 		//now we add timepicker
-		$newTab.find('input[name^="eTime"').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-		$newTab.find('input[name^="eETime"').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+		$newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+		$newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+		
+		$newTab.css('backgroundColor','#fafafa');
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
 		
 		//insert before section header/before hidden div
-		$('.firstEventDiv').before($newTab); 
+		$(".firstEventDiv").before($newTab); 
 		$newTab.slideRow('down');
-		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
 	$(".eventSave").live('click', function() {
@@ -1010,7 +996,7 @@ $(document).ready(function() {
 		$curItem.find("input").attr("readonly", "readonly");
 		$curItem.find(".eventTDEdit").removeClass('hide');
 		$curItem.find(".eventTDEdit").show();
-		$curItem.css('background', '#E9E9E9');
+		$curItem.css('background', 'transparent');
 	});
 	
 	$(".eventTDEdit").live('click', function() {
@@ -1021,7 +1007,7 @@ $(document).ready(function() {
 		$curItem.find("input").removeAttr("readonly");
 		$curItem.find(".eventSave").removeClass('hide');
 		$curItem.find(".eventSave").show();
-		$curItem.css('background', '#FFFFFF');
+		$curItem.css('background', '#fafafa');
 	});
 	
 	$(".eventDelete").live('click', function() {
@@ -1029,7 +1015,7 @@ $(document).ready(function() {
 		$curTable = $(this).closest('table');
 		eventID = $curTable.attr('id');
 		
-		realEventID = $curTable.find('input[name^=eID]').val();
+		realEventID = $curTable.find("input[name^=eID]").val();
 		
 		if(typeof realEventID =='undefined' || realEventID == '') //event not saved in DB
 		{
@@ -1041,12 +1027,12 @@ $(document).ready(function() {
 				{addClass: 'alert tiny', text: 'Yes, delete this event!', onClick: function($noty) {
 					
 					//get and update current count
-					eventCount = $('#eventCountAct').val();
+					eventCount = $("#eventCountAct").val();
 					newCount = parseInt(parseInt(eventCount) - 1);
-					$('#eventCountAct').val(newCount);
+					$("#eventCountAct").val(newCount);
 					
 					//bye-bye
-					$('#'+eventID).remove();
+					$("#"+eventID).remove();
 					
 					$noty.close();
 				  }
@@ -1081,7 +1067,7 @@ $(document).ready(function() {
 								catch(e)
 								{
 									noty({
-									  type: 'error',
+									  type: 'error',  layout: 'topCenter',
 									  text: 'Connection Error! Check API endpoint.'
 									});
 									
@@ -1091,12 +1077,12 @@ $(document).ready(function() {
 								}
 									
 								//get and update current count
-								eventCount = $('#eventCountAct').val();
+								eventCount = $("#eventCountAct").val();
 								newCount = parseInt(parseInt(eventCount) - 1);
-								$('#eventCountAct').val(newCount);
+								$("#eventCountAct").val(newCount);
 								
 								//bye-bye
-								$('#'+eventID).remove();
+								$("#"+eventID).remove();
 							}
 						 });
 					$noty.close();
@@ -1114,7 +1100,7 @@ $(document).ready(function() {
 	
 	$("#eventConfigForm").on('valid', function (event) {
 		//lock all
-		$('.eventSave').trigger('click');
+		$(".eventSave").trigger('click');
 		
 		var url = "code/dashboard/do_eventConfig.php";
 
@@ -1131,7 +1117,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						//alert(data);
@@ -1141,7 +1127,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 				   
@@ -1166,7 +1152,7 @@ $(document).ready(function() {
 		$curItem.find(".userTDEdit").removeClass('hide');
 		$curItem.find(".userTDEdit").show();
 		$curItem.find(".userMenuSingleSelect").multiselect("disable");
-		$curItem.css('background', '#E9E9E9');
+		$curItem.css('background', 'transparent');
 	});
 	
 	$(".userTDEdit").live('click', function() {
@@ -1178,7 +1164,7 @@ $(document).ready(function() {
 		$curItem.find(".userSave").removeClass('hide');
 		$curItem.find(".userSave").show();
 		$curItem.find(".userMenuSingleSelect").multiselect("enable");
-		$curItem.css('background', '#FFFFFF');
+		$curItem.css('background', '#fafafa');
 	});
 	
 	//$(".newUser, .userDuplicate").live('click', function() {
@@ -1192,21 +1178,21 @@ $(document).ready(function() {
 		var eventID = $curTable.attr('id');
 		
 		//get and update current count
-		var userCount = $('#userCount').val();
+		var userCount = $("#userCount").val();
 		var newCount = parseInt(parseInt(userCount) + 1);
-		$('#userCount').val(newCount);
-		$('#userCountAct').val(parseInt($('#userCountAct').val())+1);
+		$("#userCount").val(newCount);
+		$("#userCountAct").val(parseInt($("#userCountAct").val())+1);
 		
 		if(dup) //clone an existing row
 		{
 			//clone specific table
-			$newTab = $('#'+eventID).clone(false);
+			$newTab = $("#"+eventID).clone(false);
 			$newTab.attr('id','user'+newCount);
 		}
 		else //clone a dummy row
 		{
 			//clone dummy table
-			$newTab = $('#user0').clone(true);
+			$newTab = $("#user0").clone(true);
 			$newTab.attr('id','user'+newCount);
 		}
 		
@@ -1234,7 +1220,7 @@ $(document).ready(function() {
 		
 		if(!dup){
 			//now we fix placeholder
-			$newTab.find("input[name^='uName'").each(function() {
+			$newTab.find("input[name^=uName]").each(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
@@ -1243,21 +1229,27 @@ $(document).ready(function() {
 		else
 		{
 			//now we fix uID
-			$newTab.find("input[name^='uID'").each(function() {
+			$newTab.find("input[name^=uID]").each(function() {
 				$(this).val("");
 			});
 		}
+		
+		$newTab.find("input[name^=uPass]").attr('required','required');
+		$newTab.find("input[name^=uName]").attr('required','required');
+		$newTab.find("input[name^=uEmail]").attr('required','required');
 				
 		//now we give the item id to the duplicate button
 		$newTab.find(".userDuplicate").attr('id',"dup"+newCount);
+		
+		$newTab.css('backgroundColor','#fafafa');
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
 		
 		//insert before section header/before hidden div
-		$('.firstUserDiv').before($newTab); 
+		$(".firstUserDiv").before($newTab); 
 		$newTab.slideRow('down');
-		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
 	$(".userDelete").live('click', function() {
@@ -1265,7 +1257,7 @@ $(document).ready(function() {
 		$curTable = $(this).closest('table');
 		userID = $curTable.attr('id');
 		
-		realUserID = $curTable.find('input[name^=uID]').val();
+		realUserID = $curTable.find("input[name^=uID]").val();
 		
 		if(typeof realUserID =='undefined' || realUserID == '') //event not saved in DB
 		{
@@ -1277,12 +1269,12 @@ $(document).ready(function() {
 				{addClass: 'alert tiny', text: 'Yes, delete this user!', onClick: function($noty) {
 					
 					//get and update current count
-					userCount = $('#userCountAct').val();
+					userCount = $("#userCountAct").val();
 					newCount = parseInt(parseInt(userCount) - 1);
-					$('#userCountAct').val(newCount);
+					$("#userCountAct").val(newCount);
 					
 					//bye-bye
-					$('#'+userID).remove();
+					$("#"+userID).remove();
 					
 					$noty.close();
 				  }
@@ -1317,7 +1309,7 @@ $(document).ready(function() {
 								catch(e)
 								{
 									noty({
-									  type: 'error',
+									  type: 'error',  layout: 'topCenter',
 									  text: 'Connection Error! Check API endpoint.'
 									});
 									
@@ -1327,12 +1319,12 @@ $(document).ready(function() {
 								}
 									
 								//get and update current count
-								userCount = $('#userCountAct').val();
+								userCount = $("#userCountAct").val();
 								newCount = parseInt(parseInt(userCount) - 1);
-								$('#userCountAct').val(newCount);
+								$("#userCountAct").val(newCount);
 								
 								//bye-bye
-								$('#'+userID).remove();
+								$("#"+userID).remove();
 							}
 						 });
 					$noty.close();
@@ -1359,7 +1351,7 @@ $(document).ready(function() {
 	
 	$("#userConfigForm").on('valid', function (event) {
 		//lock all
-		$('.userSave').trigger('click');
+		$(".userSave").trigger('click');
 	
 		//enable dropdowns or we wont get the values!
 		$(".userMenuSingleSelect").multiselect('enable');
@@ -1379,7 +1371,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						//alert(data);
@@ -1389,7 +1381,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 					}
@@ -1413,7 +1405,7 @@ $(document).ready(function() {
 		$curItem.find(".outletTDEdit").removeClass('hide');
 		$curItem.find(".outletTDEdit").show();
 		$curItem.find(".outletMenuMultiSelect").multiselect("disable");
-		$curItem.css('background', '#E9E9E9');
+		$curItem.css('background', 'transparent');
 	});
 	
 	$(".outletTDEdit").live('click', function() {
@@ -1425,7 +1417,7 @@ $(document).ready(function() {
 		$curItem.find(".outletSave").removeClass('hide');
 		$curItem.find(".outletSave").show();
 		$curItem.find(".outletMenuMultiSelect").multiselect("enable");
-		$curItem.css('background', '#FFFFFF');
+		$curItem.css('background', '#fafafa');
 	});
 	
 	$(".newOutlet").live('click', function() {
@@ -1438,21 +1430,21 @@ $(document).ready(function() {
 		var outletID = $curTable.attr('id');
 		
 		//get and update current count
-		var outletCount = $('#outletCount').val();
+		var outletCount = $("#outletCount").val();
 		var newCount = parseInt(parseInt(outletCount) + 1);
-		$('#outletCount').val(newCount);
-		$('#outletCountAct').val(parseInt($('#outletCountAct').val())+1);
+		$("#outletCount").val(newCount);
+		$("#outletCountAct").val(parseInt($("#outletCountAct").val())+1);
 		
 		if(dup) //clone an existing row
 		{
 			//clone specific table
-			$newTab = $('#'+outletID).clone(false);
+			$newTab = $("#"+outletID).clone(false);
 			$newTab.attr('id','outlet'+newCount);
 		}
 		else //clone a dummy row
 		{
 			//clone dummy table
-			$newTab = $('#outlet0').clone(true);
+			$newTab = $("#outlet0").clone(true);
 			$newTab.attr('id','outlet'+newCount);
 		}
 		
@@ -1481,7 +1473,7 @@ $(document).ready(function() {
 		
 		if(!dup){
 			//now we fix placeholder
-			$newTab.find("input[name^='oName'").each(function() {
+			$newTab.find("input[name^=oName]").each(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
@@ -1490,7 +1482,7 @@ $(document).ready(function() {
 		else
 		{
 			//now we fix uID
-			$newTab.find("input[name^='oID'").each(function() {
+			$newTab.find("input[name^=oID]").each(function() {
 				$(this).val("");
 			});
 		}
@@ -1498,16 +1490,18 @@ $(document).ready(function() {
 		//now we give the item id to the duplicate button
 		$newTab.find(".outletDuplicate").attr('id',"dup"+newCount);
 		
+		$newTab.css('backgroundColor','#fafafa');
+		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
 		
 		//insert before section header/before hidden div
-		$('.firstOutletDiv').before($newTab); 
+		$(".firstOutletDiv").before($newTab); 
 		$newTab.slideRow('down');
-		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
-	$('#new_menu').on('click', function(){
+	$("#new_menu").on('click', function(){
 		window.location.href = "newMenu.php";
 	});
 	
@@ -1526,7 +1520,7 @@ $(document).ready(function() {
 		$curTable = $(this).closest('table');
 		outletID = $curTable.attr('id');
 		
-		realOutletID = $curTable.find('input[name^=oID]').val();
+		realOutletID = $curTable.find("input[name^=oID]").val();
 		
 		if(typeof realOutletID =='undefined' || realOutletID == '') //event not saved in DB
 		{
@@ -1538,12 +1532,12 @@ $(document).ready(function() {
 				{addClass: 'alert tiny', text: 'Yes, delete this outlet!', onClick: function($noty) {
 					
 					//get and update current count
-					outletCount = $('#outletCountAct').val();
+					outletCount = $("#outletCountAct").val();
 					newCount = parseInt(parseInt(outletCount) - 1);
-					$('#outletCountAct').val(newCount);
+					$("#outletCountAct").val(newCount);
 					
 					//bye-bye
-					$('#'+outletID).remove();
+					$("#"+outletID).remove();
 					
 					$noty.close();
 				  }
@@ -1578,7 +1572,7 @@ $(document).ready(function() {
 								catch(e)
 								{
 									noty({
-									  type: 'error',
+									  type: 'error',  layout: 'topCenter',
 									  text: 'Connection Error! Check API endpoint.'
 									});
 									
@@ -1588,12 +1582,12 @@ $(document).ready(function() {
 								}
 									
 								//get and update current count
-								outletCount = $('#outletCountAct').val();
+								outletCount = $("#outletCountAct").val();
 								newCount = parseInt(parseInt(outletCount) - 1);
-								$('#outletCountAct').val(newCount);
+								$("#outletCountAct").val(newCount);
 								
 								//bye-bye
-								$('#'+outletID).remove();
+								$("#"+outletID).remove();
 								
 								$noty.close();
 							}
@@ -1613,7 +1607,7 @@ $(document).ready(function() {
 	
 	$("#outletConfigForm").on('valid', function (event) {
 		//lock all
-		$('.outletSave').trigger('click');
+		$(".outletSave").trigger('click');
 		
 		//enable dropdowns or we wont get the values!
 		$(".outletMenuMultiSelect").multiselect('enable');
@@ -1633,7 +1627,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						//alert(data);
@@ -1643,7 +1637,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 					}
@@ -1658,47 +1652,47 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
-	$('.openDay').on('click', function(){
-		$('.openDay').addClass('secondary');
+	$(".openDay").on('click', function(){
+		$(".openDay").addClass('secondary');
 		$(this).removeClass('secondary');
 		
 		id = $(this).attr('id');
 		id = id.substring(0, id.length - 1); //delete the 'B' to get just monday, etc.
 		
-		$('.monday').addClass('hide');
-		$('.tuesday').addClass('hide');
-		$('.wednesday').addClass('hide');
-		$('.thursday').addClass('hide');
-		$('.friday').addClass('hide');
-		$('.saturday').addClass('hide');
-		$('.sunday').addClass('hide');
+		$(".monday").addClass('hide');
+		$(".tuesday").addClass('hide');
+		$(".wednesday").addClass('hide');
+		$(".thursday").addClass('hide');
+		$(".friday").addClass('hide');
+		$(".saturday").addClass('hide');
+		$(".sunday").addClass('hide');
 		
-		$('.'+id).removeClass('hide');
+		$("."+id).removeClass('hide');
 	});
 	
-	$('input[name^="ohStartTime"]').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+	$("input[name^=ohStartTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
 	
-	$('input[name^="ohEndTime"]').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+	$("input[name^=ohEndTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
 	
-	$('input[name^="csStartTime"]').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+	$("input[name^=csStartTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
 	
-	$('input[name^="csEndTime"]').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+	$("input[name^=csEndTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
 	
-	$('input[name^="csEndTime"]').on('changeTime',function() {
+	$("input[name^=csEndTime]").on('changeTime',function() {
 		id = ($(this).parents('div.collectionSlotDiv')).attr('id');
 		getDuration(id);
 	});
 	
-	$('input[name^="ohStartTime"]').on('changeTime',function() {
+	$("input[name^=ohStartTime]").on('changeTime',function() {
 		currTime = $(this).val()+":00";
 		
 		newTime = extractAMPM("January 01, 2000 "+currTime);
 		
-		$(this).parent().next('div').children('input[name^="ohEndTime"]').timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
-		$(this).parent().next('div').children('input[name^="ohEndTime"]').timepicker('setTime', newTime);
+		$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+		$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
 	});
 	
-	$('input[name^="csStartTime"]').on('changeTime',function() {
+	$("input[name^=csStartTime]").on('changeTime',function() {
 		id = ($(this).parents('div.collectionSlotDiv')).attr('id');
 		getDuration(id);
 		
@@ -1706,46 +1700,46 @@ $(document).ready(function() {
 		
 		newTime = extractAMPM("January 01, 2000 "+currTime);
 		
-		$(this).parent().next('div').children('input[name^="csEndTime"]').timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
-		$(this).parent().next('div').children('input[name^="csEndTime"]').timepicker('setTime', newTime);
+		$(this).parent().next("div").children("input[name^=csEndTime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+		$(this).parent().next("div").children("input[name^=csEndTime]").timepicker('setTime', newTime);
 	});
 	
-	$('#applyTimesAllDays').on('click',function(){
+	$("#applyTimesAllDays").on('click',function(){
 		id = ($(this).parents('div.applyAllDiv')).attr('id');
 		id = id.substring(0, id.length - 1); //delete the 'C' to get just monday, etc.
 		
 		//get data for this day
-		ohstartTime = $('.'+id).find("input[name^='ohStartTime']").val();
-		ohendTime = $('.'+id).find("input[name^='ohEndTime']").val();
+		ohstartTime = $("."+id).find("input[name^=ohStartTime]").val();
+		ohendTime = $("."+id).find("input[name^=ohEndTime]").val();
 		
-		csstartTime = $('.'+id).find("input[name^='csStartTime']").val();
-		csendTime = $('.'+id).find("input[name^='csEndTime']").val();
+		csstartTime = $("."+id).find("input[name^=csStartTime]").val();
+		csendTime = $("."+id).find("input[name^=csEndTime]").val();
 		
-		duration = $('.'+id).find("span[name^='csDuration']").text();
+		duration = $("."+id).find("span[name^=csDuration]").text();
 		
-		leadDTime = $('.'+id).find("input[name^='leadDrinksMins']").val();
-		leadFTime = $('.'+id).find("input[name^='leadFoodMins']").val();
+		leadDTime = $("."+id).find("input[name^=leadDrinksMins]").val();
+		leadFTime = $("."+id).find("input[name^=leadFoodMins]").val();
 		
 		//apply to all days!
-		$('body').find("input[name^='ohStartTime']").each(function(){
+		$("body").find("input[name^=ohStartTime]").each(function(){
 			$(this).val(ohstartTime);
 		});
-		$('body').find("input[name^='ohEndTime']").each(function(){
+		$("body").find("input[name^=ohEndTime]").each(function(){
 			$(this).val(ohendTime);
 		});
-		$('body').find("input[name^='csStartTime']").each(function(){
+		$("body").find("input[name^=csStartTime]").each(function(){
 			$(this).val(csstartTime);
 		});
-		$('body').find("input[name^='csEndTime']").each(function(){
+		$("body").find("input[name^=csEndTime]").each(function(){
 			$(this).val(csendTime);
 		});
-		$('body').find("span[name^='csDuration']").each(function(){
+		$("body").find("span[name^=csDuration]").each(function(){
 			$(this).text(duration);
 		});
-		$('body').find("input[name^='leadDrinksMins']").each(function(){
+		$("body").find("input[name^=leadDrinksMins]").each(function(){
 			$(this).val(leadDTime);
 		});
-		$('body').find("input[name^='leadFoodMins']").each(function(){
+		$("body").find("input[name^=leadFoodMins]").each(function(){
 			$(this).val(leadFTime);
 		});
 		
@@ -1772,7 +1766,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						alert(data);
@@ -1782,7 +1776,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 					}
@@ -1797,16 +1791,16 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
-	$('input[name^="ebTime"], input[name^="ebETime"]').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-	$('input[name^="ebDate"]').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
+	$("input[name^=ebTime], input[name^=ebETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+	$("input[name^=ebDate]").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
 	
-	$('input[name^="ebTime"]').on('changeTime',function() {
+	$("input[name^=ebTime]").on('changeTime',function() {
 		currTime = $(this).val()+":00";
 		
 		newTime = extractAMPM("January 01, 2000 "+currTime);
 		
-		$(this).parent().next('div').children('input[name^="ebETime"]').timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
-		$(this).parent().next('div').children('input[name^="ebETime"]').timepicker('setTime', newTime);
+		$(this).parent().next("div").children("input[name^=ebETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+		$(this).parent().next("div").children("input[name^=ebETime]").timepicker('setTime', newTime);
 	});
 	
 	$("#eventBasedConfigForm").on('valid', function (event) {
@@ -1825,7 +1819,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						alert(data);
@@ -1835,7 +1829,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 					}
@@ -1852,13 +1846,13 @@ $(document).ready(function() {
 	
 	$(".newMD").live('click', function() {
 		//get and update current count
-		var mdCount = $('#mdCount').val();
+		var mdCount = $("#mdCount").val();
 		var newCount = parseInt(parseInt(mdCount) + 1);
-		$('#mdCount').val(newCount);
-		$('#mdCountAct').val(parseInt($('#mdCountAct').val())+1);
+		$("#mdCount").val(newCount);
+		$("#mdCountAct").val(parseInt($("#mdCountAct").val())+1);
 		
 		//clone dummy table
-		$newTab = $('#md0').clone(true);
+		$newTab = $("#md0").clone(true);
 		$newTab.attr('id','md'+newCount);
 		
 		//replace ids with incremented value and make value = default value
@@ -1885,23 +1879,25 @@ $(document).ready(function() {
 		});
 		
 		//now we fix placeholder
-		$newTab.find("input[name^='mdName'").each(function() {
+		$newTab.find("input[name^=mdName]").each(function() {
 			var temp = $(this).val();
 			$(this).val("");
 			$(this).attr('placeholder', temp);
 		});
 		
 		//now we fix placeholder
-		$newTab.find("input[name^='mdPrice'").each(function() {
+		$newTab.find("input[name^=mdPrice]").each(function() {
 			var temp = $(this).val();
 			$(this).val("");
 			$(this).attr('placeholder', temp);
 		});
 		
 		//add id
-		$newTab.find("input[name^='mdID'").each(function() {
+		$newTab.find("input[name^=mdID]").each(function() {
 			$(this).val('mid'+newCount);
 		});
+		
+		$newTab.css('backgroundColor','#fafafa');
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
@@ -1911,24 +1907,24 @@ $(document).ready(function() {
 		
 		$($newTab).slideRow('down');
 		
-		$('html, body').animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
-	$('.mdTDIName i.fi-plus').live('click', function(){
+	$(".mdTDIName i.fi-plus").live('click', function(){
 		$(this).removeClass('fi-plus');
 		$(this).addClass('fi-minus');
-		$(this).parent('button').addClass('secondary');
+		$(this).parent("button").addClass('secondary');
 		
 		//add price
-		$tempEl = $(this).closest('.mdTable').find('.mdTDTPrice input');
+		$tempEl = $(this).closest(".mdTable").find('.mdTDTPrice input');
 		temp = parseFloat($tempEl.val());
-		$theSpan = $(this).closest('.mdItemName').find('span');
+		$theSpan = $(this).closest(".mdItemName").find('span');
 		currentPrice = parseFloat($theSpan.attr('data-value'));
 		temp = parseFloat(temp + currentPrice).toFixed(2);
 		$tempEl.val(temp);
 		
 		//add id to list
-		$mdItems = $(this).closest('td.mdTDIName').find('input[name^="mdItems"]');
+		$mdItems = $(this).closest("td.mdTDIName").find("input[name^=mdItems]");
 		allIDs = $mdItems.val();
 		thisID = $theSpan.attr('id');
 		thisID = thisID.replace(/\d+_item_/gi, "");
@@ -1936,21 +1932,21 @@ $(document).ready(function() {
 		$mdItems.val(allIDs);
 	});
 	
-	$('.mdTDIName i.fi-minus').live('click', function(){
+	$(".mdTDIName i.fi-minus").live('click', function(){
 		$(this).removeClass('fi-minus');
 		$(this).addClass('fi-plus');
-		$(this).parent('button').removeClass('secondary');
+		$(this).parent("button").removeClass('secondary');
 		
 		//subtract price
-		$tempEl = $(this).closest('.mdTable').find('.mdTDTPrice input');
+		$tempEl = $(this).closest(".mdTable").find('.mdTDTPrice input');
 		temp = parseFloat($tempEl.val());
-		$theSpan = $(this).closest('.mdItemName').find('span');
+		$theSpan = $(this).closest(".mdItemName").find('span');
 		currentPrice = parseFloat($theSpan.attr('data-value'));
 		temp = parseFloat(temp - currentPrice).toFixed(2);
 		$tempEl.val(temp);
 		
 		//remove id from list
-		$mdItems = $(this).closest('td.mdTDIName').find('input[name^="mdItems"]');
+		$mdItems = $(this).closest("td.mdTDIName").find("input[name^=mdItems]");
 		allIDs = $mdItems.val();
 		thisID = $theSpan.attr('id');
 		thisID = thisID.replace(/\d+_item_/gi, "");
@@ -1963,7 +1959,7 @@ $(document).ready(function() {
 		$curTable = $(this).closest('table');
 		mdID = $curTable.attr('id');
 		
-		realmdID = $curTable.find('input[name^=mdID]').val();
+		realmdID = $curTable.find("input[name^=mdID]").val();
 		
 		if(typeof realmdID =='undefined' || realmdID == '' || !realmdID.match(/^\d+$/)) //event not saved in DB
 		{
@@ -1975,12 +1971,12 @@ $(document).ready(function() {
 				{addClass: 'alert tiny', text: 'Yes, delete this meal deal!', onClick: function($noty) {
 					
 					//get and update current count
-					mdCount = $('#mdCountAct').val();
+					mdCount = $("#mdCountAct").val();
 					newCount = parseInt(parseInt(mdCount) - 1);
-					$('#mdCountAct').val(newCount);
+					$("#mdCountAct").val(newCount);
 					
 					//bye-bye
-					$('#'+mdID).remove();
+					$("#"+mdID).remove();
 					
 					$noty.close();
 				  }
@@ -2015,7 +2011,7 @@ $(document).ready(function() {
 								catch(e)
 								{
 									noty({
-									  type: 'error',
+									  type: 'error',  layout: 'topCenter',
 									  text: 'Connection Error! Check API endpoint.'
 									});
 									
@@ -2025,12 +2021,12 @@ $(document).ready(function() {
 								}
 									
 								//get and update current count
-								mdCount = $('#mdCountAct').val();
+								mdCount = $("#mdCountAct").val();
 								newCount = parseInt(parseInt(mdCount) - 1);
-								$('#mdCountAct').val(newCount);
+								$("#mdCountAct").val(newCount);
 								
 								//bye-bye
-								$('#'+mdID).remove();
+								$("#"+mdID).remove();
 							}
 						 });
 					$noty.close();
@@ -2056,7 +2052,7 @@ $(document).ready(function() {
 		$curItem.find(".mdTDEdit").show();
 		$curItem.find(".subHeaderTR").slideRow('up');
 		$curItem.find(".optionTR").slideRow('up');
-		$curItem.css('background', '#E9E9E9');
+		$curItem.css('background', 'transparent');
 	});
 	
 	$(".mdTDEdit").live('click', function() {
@@ -2069,12 +2065,12 @@ $(document).ready(function() {
 		$curItem.find(".mdSave").show();
 		$curItem.find(".optionTR").slideRow('down');
 		$curItem.find(".subHeaderTR").slideRow('down');
-		$curItem.css('background', '#FFFFFF');
+		$curItem.css('background', '#fafafa');
 	});
 		
 	$("#mealDealConfigForm").on('valid', function (event) {
 		//lock all
-		$('.mdSave').trigger('click');
+		$(".mdSave").trigger('click');
 	
 		var url = "code/dashboard/do_mdConfig.php";
 
@@ -2091,7 +2087,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						//alert(data);
@@ -2101,7 +2097,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 					}
@@ -2116,16 +2112,8 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
-	//make footer take all of the bottom
-	/*if($(window).height() < 1024)
-		elemHeight = 200;
-	else
-		elemHeight = $(window).height() - $('footer').offset().top - 40;
-	$('footer.dashboardFooter div.columns').height(elemHeight);
-	$('footer.regular div.columns').height(elemHeight-50);*/
-	
 	// Twitter App
-	$('.twitterfeed').tweet({
+	$(".twitterfeed").tweet({
 		username: "PreoDay",
 		modpath: 'js/twitter_app/index.php',
 		join_text: "auto",
@@ -2143,41 +2131,41 @@ $(document).ready(function() {
 		auto_join_text_url: ""
 	  });
 	  
-	$('.showNextPhone, .phoneContainer').on('click', function(){
-		if($('.phone2').hasClass('hide'))
+	$(".showNextPhone, .phoneContainer").on('click', function(){
+		if($(".phone2").hasClass('hide'))
 		{
-			$('.phone1').css('margin-left','0');
-			$('.phone1').animate({'margin-left':'-252px'},150);
+			$(".phone1").css('margin-left','0');
+			$(".phone1").animate({'margin-left':'-252px'},150);
 			
-			setTimeout(function(){$('.phone1').hide();$('.phone2').show();$('.phone2').removeClass('hide');$('.phone1').addClass('hide');}, 50);
+			setTimeout(function(){$(".phone1").hide();$(".phone2").show();$(".phone2").removeClass('hide');$(".phone1").addClass('hide');}, 50);
 			
-			$('.phone2').css('margin-left','252px');
-			$('.phone2').animate({'margin-left':'0'},100);
+			$(".phone2").css('margin-left','252px');
+			$(".phone2").animate({'margin-left':'0'},100);
 					
 			
 		}
 		else
 		{
-			$('.phone2').css('margin-left','0px');
-			$('.phone2').animate({'margin-left':'252px'},150);
+			$(".phone2").css('margin-left','0px');
+			$(".phone2").animate({'margin-left':'252px'},150);
 			
-			setTimeout(function(){$('.phone2').hide();$('.phone1').show();$('.phone1').removeClass('hide');$('.phone2').addClass('hide');}, 50);
+			setTimeout(function(){$(".phone2").hide();$(".phone1").show();$(".phone1").removeClass('hide');$(".phone2").addClass('hide');}, 50);
 			
-			$('.phone1').css('margin-left','-252px');
-			$('.phone1').animate({'margin-left':'0'},100);
+			$(".phone1").css('margin-left','-252px');
+			$(".phone1").animate({'margin-left':'0'},100);
 			
-			$('.phone1').removeClass('hide');
-			$('.phone2').addClass('hide');
+			$(".phone1").removeClass('hide');
+			$(".phone2").addClass('hide');
 		}
 		
-		$('.phone1pager').toggle();
-		$('.phone2pager').toggle();
+		$(".phone1pager").toggle();
+		$(".phone2pager").toggle();
 	});
 	
 	$("#changePassTrigger").on('click', function(e) {
-		$('#passDiv').show();
-		$('#changePassTrigger').hide();
-		$('.passField').attr('required','required');
+		$("#passDiv").show();
+		$("#changePassTrigger").hide();
+		$(".passField").attr('required','required');
 	});
 	
 	$(".deleteMenu").live('click', function() {
@@ -2207,7 +2195,7 @@ $(document).ready(function() {
 							catch(e)
 							{
 								noty({
-								  type: 'error',
+								  type: 'error',  layout: 'topCenter',
 								  text: 'Connection Error! Check API endpoint.'
 								});
 								
@@ -2217,7 +2205,7 @@ $(document).ready(function() {
 							}
 
 							//bye-bye
-							$('#p-'+menuID).remove();
+							$("#p-"+menuID).remove();
 						}
 					 });
 				$noty.close();
@@ -2246,7 +2234,7 @@ $(document).ready(function() {
 					catch(e)
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						//alert(data);
@@ -2256,7 +2244,7 @@ $(document).ready(function() {
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
-						  type: 'error',
+						  type: 'error',  layout: 'topCenter',
 						  text: dataArray['message']
 						});
 					}
@@ -2306,10 +2294,10 @@ function updateButton3TextColour(color)
 
 //reset button in venueconfig form
 function clearMapInput() {
-	$('#vSug').val('');
-	$('#vName').val('');
-	$('#vAdd').val('');
-	$('#vCode').val('');
+	$("#vSug").val('');
+	$("#vName").val('');
+	$("#vAdd").val('');
+	$("#vCode").val('');
 	if (typeof marker != 'undefined') marker.setMap(null);
 }
 
@@ -2328,12 +2316,12 @@ function searchArray(string,array){
 function getDuration(id)
 {
 	start = new Array();
-	$('.'+id).find("input[name^='csStartTime']").each(function(){
+	$("."+id).find("input[name^=csStartTime]").each(function(){
 		start.push($(this).val());
 	});
 	
 	end = new Array();
-	$('.'+id).find("input[name^='csEndTime']").each(function(){
+	$("."+id).find("input[name^=csEndTime]").each(function(){
 		end.push($(this).val());
 	});
 	
@@ -2345,7 +2333,7 @@ function getDuration(id)
 	}
 	
 	i=0;
-	$('.'+id).find("span[name^='csDuration']").each(function(){
+	$("."+id).find("span[name^=csDuration]").each(function(){
 		$(this).text(result[i]);
 		i++;
 	});
@@ -2389,13 +2377,4 @@ $(window).resize(function(){
 	google.maps.event.trigger(map, 'resize');
 	if (typeof place != 'undefined') map.setCenter(place.geometry.location);
 		else map.setCenter( new google.maps.LatLng(mapDefaultCenterLat,mapDefaultCenterLong) );
-		
-	//make footer take all of the bottom
-	/*
-	if($(window).height() < 1024)
-		elemHeight = 200;
-	else
-		elemHeight = $(window).height() - $('footer').offset().top - 40;
-	$('footer.dashboardFooter div.columns').height(elemHeight);
-	$('footer.regular div.columns').height(elemHeight-50);*/
 });

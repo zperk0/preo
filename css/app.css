@@ -38,11 +38,19 @@ body {
   margin: 0 auto -220px;
   /* Pad bottom by footer height */
   padding: 0 0 220px;
+  
+  background: transparent url("../img/bg.jpg") no-repeat center bottom !important;
+	-moz-background-size: cover !important;
+	-webkit-background-size: cover !important;
+	-o-background-size: cover !important;
+	-ms-background-size: cover !important;
+	background-size: cover !important;
 }
 
 body {
-	background:#E9E9E9 !important;
+	/*background:#E9E9E9 !important;*/
 	font-family: HelveticaNeueW01-45Ligh;
+	background: transparent !important;
 }
 
 .top-bar{
@@ -126,7 +134,12 @@ input:-webkit-autofill {
 
 /* modals */
 .reveal-modal{
-	background:#E9E9E9;
+	background: transparent url("../img/bg.jpg") no-repeat center bottom !important;
+	-moz-background-size: cover !important;
+	-webkit-background-size: cover !important;
+	-o-background-size: cover !important;
+	-ms-background-size: cover !important;
+	background-size: cover !important;
 }
 
 /* footer */
@@ -599,7 +612,7 @@ ul.custom-inline-list {
 	background: transparent !important;
 	border: 0 !important;
 	box-shadow: 0 0 0 !important;
-	display: inline !important;
+	display: inline;
 	color: #2E70B7 !important;
 	font-family: Co Text W01 Light !important;
 	font-size: 30px !important;
@@ -635,7 +648,8 @@ table.menuTable, table.eventTable, table.userTable , table.outletTable, table.md
 }
 
 .menuTable tr, .eventTable tr, .userTable tr, .outletTable tr, .mdTable tr{
-	background: #E9E9E9 !important;
+	background: transparent !important;
+	
 	font-size: 1.3em !important;
 	border-bottom: 1px solid #B8B9BC;
 }
@@ -652,7 +666,7 @@ table.menuTable, table.eventTable, table.userTable , table.outletTable, table.md
 }
 
 tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
-	background: #FFF !important;
+	background: #fafafa !important;
 }
 
 .menuEdit input, .eventEdit input, .userEdit input, .outletEdit input, .mdEdit input{
@@ -664,7 +678,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	font-family: HelveticaNeueW01-45Ligh !important;
 	color: #48535D !important;
 	font-size: inherit !important;
-	display: inline!important;
+	display: inline;
 }
 
 .menuTable .menuTDName, .userTable .userTDName{
@@ -832,7 +846,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .menuTable .savedInput input:focus, .eventTable .savedInput input:focus, .userTable .savedInput input:focus, .outletTable .savedInput input:focus, .mdTable .savedInput input:focus, .menuTable .savedInput input, .eventTable .savedInput input, .userTable .savedInput input, .outletTable .savedInput input, .mdTable .savedInput input{
-	background: #E9E9E9 !important;
+	background: transparent !important;
 }
 
 table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdTable {
@@ -1103,4 +1117,29 @@ span.slotDuration{
 
 #applyTimesAllDays{
 	display: inline;
+}
+
+.tableWrapper{
+	position:relative;
+	padding: 20px 0;
+	background: #fafafa;
+}
+.tableWrapper:before{
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	height:35px;
+	content: '';
+	background: transparent url(../img/fade-down.png) repeat-x left top;
+}
+
+.tableWrapper:after{
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+	height:25px;
+	content: '';
+	background: transparent url(../img/fade-up.png) repeat-x left bottom;
 }

@@ -3,7 +3,7 @@
 $(document).ready(function(){
 	noty({
 	  type: 'success',
-	  text: 'Now, we just need a couple details from you'
+	  text: 'Now, we just your business name.'
 	});
 });
 </script>
@@ -27,7 +27,7 @@ $(document).ready(function(){
 						<small class="error"><?echo _("Please type your last name. It must be only letters");?></small>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row emailRow <?if($fb_field_flag) echo 'hide';?>">
 					<div class="large-12 columns">
 						<label><?echo _("Your email");?></label>
 						<input type="email" id="email" name="email" placeholder=""  <?if($fb_field_flag) echo "value='$email' readonly='readonly'";?> required tabindex=3>
@@ -35,11 +35,11 @@ $(document).ready(function(){
 					</div>
 				</div>
 				
-				<div class="row">
+				<div class="row passRow <?if($fb_field_flag) echo 'hide';?>">
 					<div class="large-12 columns">
 						<label><?echo _("Create a password");?></label>
-						<input type="password" name="password" placeholder="" required tabindex=4>
-						<small class="error"><?echo _("Please type a password. It must be at least 8 characters long and must contain at least 1 number and 1 uppercase letter");?></small>
+						<input type="password" name="password" id="passwordField" <?if($fb_field_flag) echo "value='".randomPassword()."'";?> required tabindex=4>
+						<small class="error"><?echo _("Please type a password.");?></small>
 					</div>
 				</div>
 				

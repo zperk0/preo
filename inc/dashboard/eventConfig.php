@@ -70,7 +70,7 @@
 		foreach($events as $eKey=>$event){
 		//again remember its all 1-indexed thats why we add +1 to the key
 		?>
-			<table class="eventTable" id="event<?echo ($eKey+1)?>" style="background:#E9E9E9">
+			<table class="eventTable" id="event<?echo ($eKey+1)?>" style="background:transparent">
 				<tbody>
 					<tr class="savedInput eventTR">
 						<td class="eventTDName">
