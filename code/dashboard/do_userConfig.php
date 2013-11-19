@@ -34,14 +34,14 @@
 		$j++;
 	}
 	
-	
+	$newUsers = array();
 	
 	foreach($users as $user)
 	{
-		//create user
+		//create/edit user
 		$data 					= array();
 		
-		if(isset($user['id']) && $user['id']) //edit old
+		if(isset($user['id']) && !preg_match('/^u.*$/',$user['id'])) //edit old
 		{
 			//first we update user
 			$userID = $user['id'];
@@ -79,6 +79,7 @@
 			
 			$dataJSON = json_decode($curlResult,true);
 			$userID = $dataJSON['id'];
+			$newUsers[$user['id']] = $dataJSON['id'];
 			
 			//now we update this user with correct owner - this needs a fix via Scott
 			$role		= strtoupper($user['role']);
@@ -90,5 +91,12 @@
 		}
 	}
 	
-	echo $curlResult; //sending a JSON via ajax 
+	//we need to send back an array along with curlResult
+	$newJSON = array();
+	$newJSON['result'] = json_decode($curlResult,true); //make it an array
+	$newJSON['update']= $newUsers; //add array of new values
+	
+	$newJSON = json_encode($newJSON, true); //back to JSON
+	
+	echo $newJSON; //sending a JSON via ajax 
 ?>

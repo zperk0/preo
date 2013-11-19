@@ -959,13 +959,11 @@ $(document).ready(function() {
 				$(this).attr('pattern', "^\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d$");
 			});
 		}
-		else
-		{
-			//now we fix eID
-			$newTab.find("input[name^=eID]").each(function() {
-				$(this).val("");
-			});
-		}
+		
+		//now we fix eID
+		$newTab.find("input[name^=eID]").each(function() {
+			$(this).val("e"+newCount);
+		});
 				
 		//now we give the item id to the duplicate button
 		$newTab.find(".eventDuplicate").attr('id',"dup"+newCount);
@@ -1143,8 +1141,17 @@ $(document).ready(function() {
 					}
 					else
 					{	
-						noty({ type: 'success', text: 'Event configuration has been saved!' });
+						newIDs = dataArray['update'];
+
+						if(Object.keys(newIDs).length > 0) //this is an object not array so length and stuff works differently
+						{
+							$.each(newIDs, function(index, value) {
+							  $('input[value='+index+']').val(value); //find by value and update!
+							});
+						}
 						
+						noty({ type: 'success', text: 'Event configuration has been saved!' });
+						//alert(data);
 					}
 				}
 			 });
@@ -1235,13 +1242,11 @@ $(document).ready(function() {
 				$(this).attr('placeholder', temp);
 			});
 		}
-		else
-		{
-			//now we fix uID
-			$newTab.find("input[name^=uID]").each(function() {
-				$(this).val("");
-			});
-		}
+		
+		//now we fix uID
+		$newTab.find("input[name^=uID]").each(function() {
+			$(this).val("user"+newCount);
+		});
 		
 		$newTab.find("input[name^=uPass]").attr('required','required');
 		$newTab.find("input[name^=uName]").attr('required','required');
@@ -1383,7 +1388,7 @@ $(document).ready(function() {
 						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
-						//alert(data);
+						alert(data);
 						return false;
 					}
 					
@@ -1396,6 +1401,14 @@ $(document).ready(function() {
 					}
 					else
 					{	
+						newIDs = dataArray['update'];
+
+						if(Object.keys(newIDs).length > 0) //this is an object not array so length and stuff works differently
+						{
+							$.each(newIDs, function(index, value) {
+							  $('input[value='+index+']').val(value); //find by value and update!
+							});
+						}
 						noty({ type: 'success', text: 'User configuration has been saved!' });
 						
 					}

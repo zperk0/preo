@@ -21,7 +21,7 @@
 						<tbody>
 							<tr class="eventEdit eventTR">
 								<td class="eventTDName">
-									<input type="hidden" name="eID[0]" value="" />
+									<input type="hidden" name="eID[0]" value="e0" />
 									<input type="text" name="eName[0]" class="eventField noEnterSubmit" value="<?echo _("Click to add an event name");?>" required/>
 									<small class="error"><?echo _("Please type an event name");?></small>
 								</td>

@@ -26,6 +26,8 @@
 	
 	*/
 	
+	$newEvents = array();
+	
 	$eventCount = $_POST['eventCount']; //linear count -event
 	protect($eventCount);
 	
@@ -61,7 +63,7 @@
 	
 	foreach($events as $event)
 	{
-		//create event
+		//create/update event
 		$data 					= array();
 		$data['venueId']		= $_SESSION['venue_id'];
 		$data['name'] 			= $event['name'];
@@ -73,14 +75,24 @@
 		
 		$jsonData = json_encode($data);
 		
-		if(isset($event['id']) && $event['id']) //edit old
+		if(isset($event['id']) && !preg_match('/^e.*$/',$event['id'])) //edit old
 		{
 			$eventID = $event['id'];
 			$curlResult = callAPI('PUT', $apiURL."events/$eventID", $jsonData, $apiAuth); //event created
 		}
 		else //create new
+		{	
 			$curlResult = callAPI('POST', $apiURL."events", $jsonData, $apiAuth); //event created
+			$dataJSON = json_decode($curlResult,true);
+			$newEvents[$event['id']] = $dataJSON['id'];
+		}
 	}
 	
-	echo $curlResult; //sending a JSON via ajax 
+	//we need to send back an array along with curlResult
+	$newJSON = json_decode($curlResult,true); //make it an array
+	$newJSON['update']= $newEvents; //add array of new values
+	
+	$newJSON = json_encode($newJSON, false); //back to JSON
+	
+	echo $newJSON; //sending a JSON via ajax 
 ?>
