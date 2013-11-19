@@ -5,6 +5,8 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 	
+	if(!isset($_SESSION['secondaryMenuFlag'])) $_SESSION['secondaryMenuFlag']=0;
+	
 	if(isset($_SESSION['menu_edit_on']) && $_SESSION['menu_edit_on']) //We delete the old menu and create a new one!
 	{		
 		$menuID = $_SESSION['menu_id'];
@@ -189,26 +191,26 @@
 				//+d($curlResult);
 				
 				$item_id = $result['id'];
-							
-				//create modifier
-				$data = array();
-				$data['itemId'] = $item_id;
-				$data['name'] = "options"; //we can make this dynamic (and others below) and get front end to allow creation of "sizes", "choice of", etc
-				$data['minChoices'] = "0";
-				$data['maxChoices'] = "100";
-				$data['position'] = $iKey;
-				
-				$jsonData = json_encode($data);
-				$curlResult = callAPI('POST', $apiURL."modifiers", $jsonData, $apiAuth); //modifier created
-				
-				$result = json_decode($curlResult,true);
-				
-				//+d($curlResult);
-				
-				$modifier_id = $result['id'];
 				
 				if(isset($item['options']))
-				{
+				{			
+					//create modifier
+					$data = array();
+					$data['itemId'] = $item_id;
+					$data['name'] = "options"; //we can make this dynamic (and others below) and get front end to allow creation of "sizes", "choice of", etc
+					$data['minChoices'] = "0";
+					$data['maxChoices'] = "100";
+					$data['position'] = $iKey;
+					
+					$jsonData = json_encode($data);
+					$curlResult = callAPI('POST', $apiURL."modifiers", $jsonData, $apiAuth); //modifier created
+					
+					$result = json_decode($curlResult,true);
+					
+					//+d($curlResult);
+					
+					$modifier_id = $result['id'];
+				
 					foreach($item['options'] as $oKey=>$option)
 					{
 						//create modifier item

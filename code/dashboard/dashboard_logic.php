@@ -124,7 +124,7 @@
 	
 	//echo var_dump($_SESSION);
 	
-	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag']) /*User has given data for all 4 already*/
+	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && /*!$_SESSION['noAppFlag-2'] &&*/ !$_SESSION['noMenuFlag']) /*User has given data for all 4 already*/
 	{	
 		//going to the dashboard!
 		
@@ -153,12 +153,12 @@
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig1.php");
 	}
-	else if($_SESSION['noAppFlag-2']) /* User has not given all 4 so third check App-2 */
-	{	
-		$_SESSION['signupWizFlag']=1;
-		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
-		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig2.php"); 
-	}
+	//else if($_SESSION['noAppFlag-2']) /* User has not given all 4 so third check App-2 */
+//	{	
+//		$_SESSION['signupWizFlag']=1;
+//		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
+//		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig2.php"); 
+//	}
 	else if($_SESSION['noMenuFlag']) /* User has not given all 4 so fourth check Menu */
 	{	
 		$_SESSION['signupWizFlag']=1;

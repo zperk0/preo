@@ -15,6 +15,7 @@ function signinCallback(authResult)
 			//console.log(gauth.email);
 			setArray('email', gauth.email);
 			setArray('id', gauth.id);
+			setArray('token', authResult['access_token']);
 		});
 	});
 
@@ -34,10 +35,10 @@ function signinCallback(authResult)
   } 
   else if (authResult['error']) 
   {
-    noty({
+    /*noty({
 	  type: 'error',
 	  text: 'There was an error accessing your Google+ data'
-	});
+	});*/
     console.log('Sign-in state: ' + authResult['error']);
   }
 }
@@ -60,17 +61,65 @@ function makeRandomPassword()
 
 
 function startGSignUp(){
-	$("#fName").val(googleUserArray['fName']);
-	$("#lName").val(googleUserArray['lName']);
-	$("#email").val(googleUserArray['email']);
-	$("#gpid").val(parseInt(googleUserArray['id']));
-	$("#passwordField").val(makeRandomPassword());
-	
-	$('.nameRow, .socialMediaDiv, .emailRow, .passRow').hide();
-	$("#email").attr('readonly','readonly');
-	
-	noty({
-	  type: 'success',
-	  text: 'Google+ Signup complete. Now we just need your business name.'
-	});
+
+	//we check if the user already exists
+	token = googleUserArray['token'];
+	gpid = googleUserArray['id'];
+
+	//check if user already exists - if so try login - else signup
+	$.ajax({
+	   type: "POST",
+	   url: "code/shared/do_googlepCheck.php", 
+	   data: "token="+token+"&gpid="+gpid,
+	   success: function(data)
+	   {
+			try
+			{
+				var dataArray = jQuery.parseJSON(data); //parsing JSON
+			}
+			catch(e)
+			{
+				noty({
+				  type: 'error',  layout: 'topCenter',
+				  text: 'Error! Could not verify Google Plus credentials.'
+				});
+				alert(data);
+				
+				return false;
+			}
+			
+			if(typeof dataArray['status'] !='undefined') //error
+			{
+				noty({
+				  type: 'error',  layout: 'topCenter',
+				  text: dataArray['message']
+				});
+			}
+			else
+			{	
+				//success
+				if(dataArray['signupFlag']=="0")
+				{ 
+					window.location.replace("./dashboard.php");
+				}
+				else
+				{
+					//signup
+					$("#fName").val(googleUserArray['fName']);
+					$("#lName").val(googleUserArray['lName']);
+					$("#email").val(googleUserArray['email']);
+					$("#gpid").val((googleUserArray['id']).toString());
+					$("#passwordField").val(makeRandomPassword());
+					
+					$('.nameRow, .socialMediaDiv, .emailRow, .passRow').hide();
+					$("#email").attr('readonly','readonly');
+					
+					noty({
+					  type: 'success',
+					  text: 'Google+ Signup complete. Now we just need your business name.'
+					});
+				}
+			}
+		}
+	 });
 }

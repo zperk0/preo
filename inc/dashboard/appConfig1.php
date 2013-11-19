@@ -4,11 +4,6 @@
 	<nav class="breadcrumbs row--space1d">
 		<a href="<?echo $_SESSION['path']?>/venueSettings.php"><? echo _("Venue Information");?></a>
 		<a class="current" href="#"><? echo _("App Styling 1/2");?></a>
-		<?if(!$_SESSION['noAppFlag-2']){?>
-			<a href="<?echo $_SESSION['path']?>/appSettings2.php"><? echo _("App Styling 2/2");?></a>
-		<?}else{?>
-			<a class="unavailable" href="#"><? echo _("App Styling 2/2");?></a>
-		<?}?>
 		<?if(!$_SESSION['noMenuFlag']){?>
 			<a href="<?echo $_SESSION['path']?>/menuSettings.php"><? echo _("Menu Creation");?></a>
 		<?}else{?>

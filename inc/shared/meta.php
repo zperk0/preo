@@ -31,6 +31,7 @@
 		   po.src = 'https://apis.google.com/js/client:plusone.js';
 		   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 		 })();
+		 
 		</script>
 		<script src="<?echo $_SESSION['path']?>/js/googleplus.js"></script>
 		

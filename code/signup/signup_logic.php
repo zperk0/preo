@@ -22,31 +22,7 @@
 		//Setting flags for FB-Connect TRUE
 		$fb_field_flag = 1; 	
 	}
-	////////////////////////////////////
 	
-	//CHECK IF FB-USER IS ALREADY A MEMBER
-	if($fb_field_flag && isset($fbId))
-	{
-		//Checking to see if User already exists.
-		$curlResult = callAPI('GET', $apiURL."users/$fbId/fb", false, $apiAuth);
-		$dataJSON = json_decode($curlResult,true);
-		
-		if(isset($dataJSON['id']) && $dataJSON['id']) //User Exists
-		{
-			$userID = $dataJSON['id'];
-			//sign user in
-			$curlResult = callAPI('POST', $apiURL."users/$userID/fbauth", false, $apiAuth);
-			$dataJSON2 = json_decode($curlResult,true);
-		
-			if(isset($dataJSON2['token']))
-			{ 
-				$_SESSION['token']=$dataJSON2['token'];
-				header("location:dashboard.php"); //if user already exists perform an auto-login
-				exit();
-			}
-		}
-
-	}
 	//////////////////////////////////////
 	
 	function randomPassword() {

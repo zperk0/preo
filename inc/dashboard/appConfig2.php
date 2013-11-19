@@ -1,17 +1,5 @@
 <div class="row">
 	<div class="topSpacer"></div>
-	<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
-	<nav class="breadcrumbs row--space1d">
-		<a href="<?echo $_SESSION['path']?>/venueSettings.php"><? echo _("Venue Information");?></a>
-		<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling 1/2");?></a>
-		<a class="current" href="#"><? echo _("App Styling 2/2");?></a>
-		<?if(!$_SESSION['noMenuFlag']){?>
-			<a href="<?echo $_SESSION['path']?>/menuSettings.php"><? echo _("Menu Creation");?></a>
-		<?}else{?>
-			<a class="unavailable" href="#"><? echo _("Menu Creation");?></a>
-		<?}?>
-	</nav>
-	<?}?>
 	<div class="large-12 columns">
 		<div class="row">
 			<h1><?echo _("Style your app");?></h1>
@@ -106,14 +94,3 @@
 		</div>
 	</div>
 </div>	
-<?if(!isset($_SESSION['app2_edit_on']) || !$_SESSION['app2_edit_on']){?>
-<!-- Now we update progressBar tooltip, width and trigger mouseover -->
-<script type="text/javascript">
-$(document).ready(function() {
-	$('.progressIndicator').css('width','180%');
-	$('.progressIndicator').attr('title', "35% done, even more artistic stuff...");
-	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
-	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
-});
-</script>
-<?}?>

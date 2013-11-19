@@ -29,6 +29,10 @@
 									<input type="text" name="eDesc[0]" class="eventField noEnterSubmit" placeholder="<?echo _("Click to add a description");?>"/>
 									<small class="error"><?echo _("Please type a description");?></small>
 								</td>
+								<td class="eventTDDate">
+									<input type="text" name="eDate[0]" class="eventField noEnterSubmit" value="<?echo _("DD/MM/YYYY");?>" required/>
+									<small class="error"><?echo _("Date?");?></small>
+								</td>
 								<td class="eventTDTime">
 									<input type="text" name="eTime[0]" class="eventField noEnterSubmit" value="<?echo _("HH:MM");?>" required/>
 									<small class="error"><?echo _("Time?");?></small>
@@ -37,10 +41,7 @@
 									<input type="text" name="eETime[0]" class="eventField noEnterSubmit" value="<?echo _("HH:MM");?>" required/>
 									<small class="error"><?echo _("Time?");?></small>
 								</td>
-								<td class="eventTDDate">
-									<input type="text" name="eDate[0]" class="eventField noEnterSubmit" value="<?echo _("DD/MM/YYYY");?>" required/>
-									<small class="error"><?echo _("Date?");?></small>
-								</td>
+								
 								<td class="eventTDVisi">
 									<div class="switch tiny"> 
 										<input name="eVisi[0]" value="0" type="radio">
@@ -82,6 +83,10 @@
 							<input type="text" name="eDesc[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" <?if(!empty($event['description'])){?>value="<?echo $event['description'];?>"<?}?> placeholder="<?echo _("Click to add a description");?>" readonly="readonly"/>
 							<small class="error"><?echo _("Please type a description");?></small>
 						</td>
+						<td class="eventTDDate">
+							<input type="text" name="eDate[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('d/m/Y',strtotime($event['date']));?>" pattern="^\d\d\/\d\d\/\d\d\d\d$" placeholder="<?echo _("DD/MM/YYYY");?>" required readonly="readonly"/>
+							<small class="error"><?echo _("Date?");?></small>
+						</td>
 						<td class="eventTDTime">
 							<input type="text" name="eTime[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('H:i',strtotime($event['starttime']));?>" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required readonly="readonly"/>
 							<small class="error"><?echo _("Time?");?></small>
@@ -90,10 +95,7 @@
 							<input type="text" name="eETime[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('H:i',strtotime($event['endtime']));?>" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required readonly="readonly"/>
 							<small class="error"><?echo _("Time?");?></small>
 						</td>
-						<td class="eventTDDate">
-							<input type="text" name="eDate[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('d/m/Y',strtotime($event['date']));?>" pattern="^\d\d\/\d\d\/\d\d\d\d$" placeholder="<?echo _("DD/MM/YYYY");?>" required readonly="readonly"/>
-							<small class="error"><?echo _("Date?");?></small>
-						</td>
+						
 						<td class="eventTDVisi">
 							<div class="switch tiny"> 
 								<input name="eVisi[<?echo ($eKey+1);?>]" value="0" type="radio" <?if(!$event['visible']) echo "checked";?>>

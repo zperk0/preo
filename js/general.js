@@ -867,7 +867,7 @@ $(document).ready(function() {
 						  text: 'Connection Error! Check API endpoint.'
 						});
 						
-						//alert(data);
+						alert(data);
 						
 						return false;
 					}
@@ -986,6 +986,15 @@ $(document).ready(function() {
 		$(".firstEventDiv").before($newTab); 
 		$newTab.slideRow('down');
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+	});
+	
+	$("input[name^=eTime]").on('changeTime',function() {
+		currTime = $(this).val()+":00";
+		
+		newTime = extractAMPM("January 01, 2000 "+currTime);
+		
+		$(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+		$(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
 	});
 	
 	$(".eventSave").live('click', function() {
