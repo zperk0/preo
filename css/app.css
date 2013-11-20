@@ -686,6 +686,9 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	width: 30%;
 }
 
+.eventTable {
+	margin-top: -1px !important;
+}
 .eventTable .eventTDName{
 	font-weight: bold !important;
 	width: 26%;
@@ -758,6 +761,20 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 .eventTable .eventTDDate{
 	width: 13%;
+}
+.eventTable .eventTDCollection{
+	width: 25%;
+}
+
+.eventTable .eventTDLead{
+	width: 10%;
+}
+.eventTable .eventTDAddMore{
+	width: 10%;
+}
+.eventTable .eventTDSpace span{
+	width: 182px;
+	display: block;
 }
 
 .userTable .userTDRole{
@@ -857,9 +874,13 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	margin-bottom: 0px !important;
 }
 
-.userTable .ui-multiselect{
+.userTable .ui-multiselect, .eventTable, .ui-multiselect{
 	font-size: 14px;
 	width: 100% !important;
+}
+
+.eventTable, .ui-multiselect{
+	margin-top: 14px;
 }
 
 .outletTable .ui-multiselect{
@@ -903,8 +924,12 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	margin-bottom:-12px;
 }
 
-.newItem, .newSection, .deleteSection, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem{
+.newItem, .newSection, .deleteSection, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot{
 	padding: 0 6px;
+}
+
+.newCollSlot, .delCollSlot{
+	margin-top: 20px;
 }
 
 .newItem, .newEvent, .newUser, .newOutlet, .newmdItem{

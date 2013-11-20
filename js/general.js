@@ -908,12 +908,34 @@ $(document).ready(function() {
 		
 		if(dup) //clone an existing row
 		{
+			//create variables and insert
+			$newOCount = $("#"+eventID+"_optionCount").clone(true);
+			$newOCount.attr('id','event'+newCount+'_optionCount');
+			$newOCount.attr('name','event'+newCount+'_optionCount');
+			$newOCountAct = $("#"+eventID+"_optionCountAct").clone(true);
+			$newOCountAct.attr('id','event'+newCount+'_optionCountAct');
+			$newOCountAct.attr('name','event'+newCount+'_optionCountAct');
+			$("#"+eventID+"_optionCountAct").after($newOCountAct);
+			$("#"+eventID+"_optionCountAct").after($newOCount);
+		
 			//clone specific table
 			$newTab = $("#"+eventID).clone(false);
 			$newTab.attr('id','event'+newCount);
 		}
 		else //clone a dummy row
 		{
+			//create variables and insert
+			$newOCount = $("#event0_optionCount").clone(true);
+			$newOCount.attr('id','event'+newCount+'_optionCount');
+			$newOCount.attr('name','event'+newCount+'_optionCount');
+			$newOCount.val(1);
+			$newOCountAct = $("#event0_optionCountAct").clone(true);
+			$newOCountAct.attr('id','event'+newCount+'_optionCountAct');
+			$newOCountAct.attr('name','event'+newCount+'_optionCountAct');
+			$newOCountAct.val(1);
+			$("#event0_optionCountAct").after($newOCountAct);
+			$("#event0_optionCountAct").after($newOCount);
+			
 			//clone dummy table
 			$newTab = $("#event0").clone(true);
 			$newTab.attr('id','event'+newCount);
@@ -925,6 +947,34 @@ $(document).ready(function() {
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
+		});
+		
+		//Replace ids with incremented value and make value = default value
+		$newTab.find(".optionTR input").each(function() {
+			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
+			var newName = newName.replace(/\[\d+\]/gi, "["+$newOCount.val()+"]");
+			$(this).attr('name', newName);
+		});
+		
+		//remove multiselect
+		if(dup) $newTab.find(".ui-multiselect").remove();
+		
+		//Replace ids with incremented value and make value = default value + add multiselect
+		$newTab.find(".optionTR select").each(function() {
+			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
+			var newName = newName.replace(/\[\d+\]/gi, "["+$newOCount.val()+"]");
+			$(this).attr('name', newName);
+			
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: "Slot &#x25BC;",
+			   selectedList: 1
+			}); 
 		});
 		
 		if(!dup){
@@ -958,12 +1008,17 @@ $(document).ready(function() {
 				$(this).attr('placeholder', temp);
 				$(this).attr('pattern', "^\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d$");
 			});
+			
+			//now we fix placeholder
+			$newTab.find("input[name^=eLead]").each(function() {
+				var temp = $(this).val();
+				$(this).val("");
+				$(this).attr('placeholder', temp);
+			});
 		}
 		
 		//now we fix eID
-		$newTab.find("input[name^=eID]").each(function() {
-			$(this).val("e"+newCount);
-		});
+		$newTab.find("input[name^=eID]").val("e"+newCount);
 				
 		//now we give the item id to the duplicate button
 		$newTab.find(".eventDuplicate").attr('id',"dup"+newCount);
@@ -1003,6 +1058,8 @@ $(document).ready(function() {
 		$curItem.find("input").attr("readonly", "readonly");
 		$curItem.find(".eventTDEdit").removeClass('hide');
 		$curItem.find(".eventTDEdit").show();
+		$curItem.find(".optionTR").slideRow('up');
+		$curItem.find(".eventMenuSingleSelect").multiselect("disable");
 		$curItem.css('background', 'transparent');
 	});
 	
@@ -1014,6 +1071,8 @@ $(document).ready(function() {
 		$curItem.find("input").removeAttr("readonly");
 		$curItem.find(".eventSave").removeClass('hide');
 		$curItem.find(".eventSave").show();
+		$curItem.find(".optionTR").slideRow('down');
+		$curItem.find(".eventMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 	});
 	
@@ -1105,9 +1164,95 @@ $(document).ready(function() {
 		
 	});
 	
+	$(".eventMenuSingleSelect").multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: "Slot &#x25BC;",
+	   selectedList: 1
+	}); 
+		
+	$(".eventMenuSingleSelect").multiselect('disable');
+	
+	$(".newCollSlot").on('click', function() {
+		//get event number
+		$curTable = $(this).closest('table');
+		var eventID = $curTable.attr('id');
+		 
+		//get and update current count
+		var eventCount = $("#"+eventID+"_optionCount").val();
+		var newCount = parseInt(parseInt(eventCount) + 1);
+		$("#"+eventID+"_optionCount").val(newCount);
+		$("#"+eventID+"_optionCountAct").val(parseInt($("#"+eventID+"_optionCountAct").val())+1);
+		
+		//clone the nearest row
+		$curRow = $(this).closest("tr"); 
+		
+        $newRow = $curRow.clone(false);
+		
+		$newRow.find("td.eventTDAddMore").empty();
+		$newRow.find("td.eventTDAddMore").append("<button type='button' class='delCollSlot secondary' title='Delete this slot'><i class='fi-minus'></i></button>");
+		$newRow.find(".ui-multiselect").remove();
+		
+		$newRow.find("td.eventTDCollection select").each(function() {
+			$(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+			
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: "Slot &#x25BC;",
+			   selectedList: 1
+			}); 
+		});
+		
+		//replace ids with incremented value and make value = default value
+		$newRow.find("input").each(function() {
+			$(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/event\d+/gi, eventID);
+			var newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+		});
+		
+		//now we fix placeholder
+		$newRow.find("input[name^=eLead]").each(function() {
+			var temp = $(this).val();
+			$(this).val("");
+			$(this).attr('placeholder', temp);
+		});
+				
+		//hide it so we can animate it!
+		$newRow.css('display','none');
+		
+		//insert at the end of the table
+		$("#"+eventID+" tr:last").after($newRow);
+		$("#"+eventID+" tr:last").slideRow('down');
+
+		$("html, body").animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
+	});
+	
+	$(".delCollSlot").live('click', function() {
+		//get item number
+		$curTable = $(this).closest('table');
+		var eventID = $curTable.attr('id');
+		
+		//get and update current count
+		var eventCount = $("#"+eventID+"_optionCountAct").val();
+		var newCount = parseInt(parseInt(eventCount) - 1);
+		$("#"+eventID+"_optionCountAct").val(newCount);
+		
+		//bye-bye
+		$(this).parents("tr:first").remove();
+	});
+	
 	$("#eventConfigForm").on('valid', function (event) {
 		//lock all
 		$(".eventSave").trigger('click');
+		
+		//enable dropdowns or we wont get the values!
+		$(".eventMenuSingleSelect").multiselect('enable');
 		
 		var url = "code/dashboard/do_eventConfig.php";
 
@@ -1127,7 +1272,7 @@ $(document).ready(function() {
 						  type: 'error',  layout: 'topCenter',
 						  text: 'Connection Error! Check API endpoint.'
 						});
-						//alert(data);
+						alert(data);
 						return false;
 					}
 					
@@ -1245,7 +1390,7 @@ $(document).ready(function() {
 		
 		//now we fix uID
 		$newTab.find("input[name^=uID]").each(function() {
-			$(this).val("user"+newCount);
+			$(this).val("u"+newCount);
 		});
 		
 		$newTab.find("input[name^=uPass]").attr('required','required');

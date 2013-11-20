@@ -8,9 +8,15 @@
 			</div>
 		</div>
 		<div class="row row--space3">
+			<?if(!$connectedFlag){?>
 			<div class="large-6 columns">
 				<a href="<?echo $stripeLink;?>"><button class="preodayButton" type="submit" tabindex=2><?echo _("CONNECT TO STRIPE");?></button></a>
 			</div>
+			<?}else{?>
+			<div class="large-6 columns">
+				<button class="preodayButton secondary" type="submit" tabindex=2><?echo _("YOU'RE ALREADY CONNECTED");?></button>
+			</div>
+			<?}?>
 		</div>
 	</div>
 </div>	

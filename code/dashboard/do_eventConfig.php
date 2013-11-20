@@ -4,27 +4,6 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
-		
-	/*
-	if(isset($_SESSION['event_edit_on']) && $_SESSION['event_edit_on']) //We delete the old events and create a new ones!
-	{		
-		$venueID = $_SESSION['venue_id'];
-		
-		$events = array();
-		$events = $_SESSION['events_old'];
-		
-		$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
-
-		foreach($events as $event)
-		{
-			$eventID = $event['id'];
-			
-			//kill all events
-			$curlResult = callAPI('DELETE', $apiURL."events/$eventID", false, $apiAuth); //event deleted
-		}
-	} //at this stage all current data is deleted and now we will proceed to putting in new data	
-	
-	*/
 	
 	$newEvents = array();
 	
@@ -54,12 +33,28 @@
 			$events[$i]['visible'] 	= /*protect(*/$_POST['eVisi'][$j];//);
 				if(!isset($events[$i]['visible']) || !$events[$i]['visible']) $events[$i]['visible'] = 0;
 			
+			//now we get all the collectionSlots
+			$x = $y = 1;
+			while($x <= $_POST['event'.$j.'_optionCountAct'] && $y <= $_POST['event'.$j.'_optionCount'])
+			{
+				if(isset($_POST['eColl']['event'.$j][$y]) && $_POST['eColl']['event'.$j][$y])
+				{
+					$events[$i]['cSlots'][$x]['name'] = /*protect(*/$_POST['eColl']['event'.$j][$y];//);
+					$events[$i]['cSlots'][$x]['time'] = /*protect(*/$_POST['eLead']['event'.$j][$y];//);
+					
+					$x++;
+				}
+				$y++;
+			}
+			
 			$i++;
 		}
 		$j++;
 	}
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
+	
+	$venueID = $_SESSION['venue_id'];
 	
 	foreach($events as $event)
 	{
@@ -85,6 +80,24 @@
 			$curlResult = callAPI('POST', $apiURL."events", $jsonData, $apiAuth); //event created
 			$dataJSON = json_decode($curlResult,true);
 			$newEvents[$event['id']] = $dataJSON['id'];
+			$eventID = $dataJSON['id'];
+		}
+		
+		//kill all eb-times items for thie event
+		$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/ebtimes?eventId=$eventID", false, $apiAuth); //venue_eb_times data deleted
+	
+		//just add as previous ones are wiped clean by now!
+		foreach($event['cSlots'] as $cSlot)
+		{
+			$data 					= array();
+			$data['eventId'] 		= $eventID;
+			$data['collectionslot'] = $cSlot['name'];
+			$data['leadtime'] 		= $cSlot['time'];
+					
+			$jsonData = json_encode($data);
+			$curlResult = callAPI('POST', $apiURL."venues/$venueID/ebtimes", $jsonData, $apiAuth); //menu created
+			
+			$result = json_decode($curlResult,true);
 		}
 	}
 	

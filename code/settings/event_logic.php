@@ -27,6 +27,28 @@
 		
 		$events = $dataJSON;
 		
+		//get slots
+		foreach($events as $key => $event)
+		{
+			$eventID = $event['id'];
+		 
+			$curlResult = callAPI('GET', $apiURL."venues/$venueID/ebtimes?eventId=$eventID", false, $apiAuth);
+		
+			$dataJSON = json_decode($curlResult,true);
+			
+			if(!(isset($dataJSON['status']) && $dataJSON['status']='404'))
+			{	
+				$count = 0;
+				foreach($dataJSON as $cSlot)
+				{
+					$events[$key]['cSlots'][$count]['collectionslot'] 	= $cSlot['collectionslot'];
+					$events[$key]['cSlots'][$count]['leadtime'] 		= $cSlot['leadtime'];	
+					$count++;
+				}
+				$events[$key]['collectionCount']=$count;
+			}
+		}
+		
 		$eventCount = count($events);
 		
 		$_SESSION['events_old'] = $events;

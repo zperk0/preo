@@ -6,8 +6,21 @@
 			<h1><?echo _("Your events");?></h1>
 
 			<!-- Hidden inputs here keep count of events -->
-			<input type="hidden" id="eventCount"		name="eventCount" 		value="<?if($_SESSION['event_edit_on']) echo $eventCount; else echo "0";?>"/>
-			<input type="hidden" id="eventCountAct" 	name="eventCountAct"	value="<?if($_SESSION['event_edit_on']) echo $eventCount; else echo "0";?>"/>
+			<input type="hidden" id="eventCount"			name="eventCount" 				value="<?if($_SESSION['event_edit_on']) echo $eventCount; else echo "0";?>"/>
+			<input type="hidden" id="eventCountAct" 		name="eventCountAct"			value="<?if($_SESSION['event_edit_on']) echo $eventCount; else echo "0";?>"/>
+			<input type="hidden" id="event0_optionCount"	name="event0_optionCount" 		value="<?if($_SESSION['event_edit_on']) echo $eventCount; else echo "0";?>"/>
+			<input type="hidden" id="event0_optionCountAct" name="event0_optionCountAct" 	value="<?if($_SESSION['event_edit_on']) echo $eventCount; else echo "0";?>"/>
+			
+			<?if($_SESSION['event_edit_on']) :
+				foreach($events as $eKey=>$event)
+				{
+					//we have to keep this 1-indexed for consistency
+					?>
+					<input type="hidden" id="event<?echo ($eKey+1)?>_optionCount" 	 name="event<?echo ($eKey+1)?>_optionCount"	   value="<?echo $event['collectionCount'];?>"/>
+					<input type="hidden" id="event<?echo ($eKey+1)?>_optionCountAct" name="event<?echo ($eKey+1)?>_optionCountAct" value="<?echo $event['collectionCount'];?>"/>
+					<?
+				}
+			endif; ?>
 
 			<div class="row">
 				<div class="large-12 columns">
@@ -58,6 +71,25 @@
 									<button type="button" class="eventTableButtons eventTDEdit hide" 			title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
 									<button type="button" class="eventTableButtons eventDuplicate" 				title="<?echo _("Duplicate");?>" id="dup0"			><i class="icon-copy"></i></button>
 									<button type="button" class="eventTableButtons secondary eventDelete" 		title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
+								</td>
+							</tr>
+							<tr class="eventEdit optionTR">
+								<td class="eventTDCollection">
+									<select name="eColl[event0][0]" class="eventField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have eventMenuSingleSelect -->
+										<option value="PRESHOW"> <?echo _("Collection Slot: Pre-Show")?></option>
+										<option value="INTERVAL"><?echo _("Collection Slot: Interval")?></option>
+										<option value="POSTSHOW"><?echo _("Collection Slot: Post-Show")?></option>
+									</select>
+								</td>
+								<td class="eventTDLead">
+									<input type="text" name="eLead[event0][0]" class="eventField noEnterSubmit" value="<?echo _("Lead Time (mins)");?>" required/>
+									<small class="error"><?echo _("Amount?");?></small>
+								</td>
+								<td class="eventTDAddMore">
+									<button type="button" class="newCollSlot" title="<?echo _("Add another slot");?>"><i class="fi-plus"></i></button>
+								</td>
+								<td class="eventTDSpace">
+									<span>&nbsp;</span>
 								</td>
 							</tr>
 						</tbody>
@@ -114,6 +146,27 @@
 							<button type="button" class="eventTableButtons secondary eventDelete" 	title="<?echo _("Delete");?>"									><i class="fi-x"></i></button>
 						</td>
 					</tr>
+					<?foreach($event['cSlots'] as $cKey=>$cSlot){?>
+					<tr class="eventEdit optionTR savedInput" style="display:none;">
+						<td class="eventTDCollection">
+							<select name="eColl[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit inline eventMenuSingleSelect hide"/>
+								<option value="PRESHOW" <?if($cSlot['collectionslot']=='PRESHOW')  echo "selected='selected'";?>><?echo _("Collection Slot: Pre-Show")?></option>
+								<option value="INTERVAL"<?if($cSlot['collectionslot']=='INTERVAL') echo "selected='selected'";?>><?echo _("Collection Slot: Interval")?></option>
+								<option value="POSTSHOW"<?if($cSlot['collectionslot']=='POSTSHOW') echo "selected='selected'";?>><?echo _("Collection Slot: Post-Show")?></option>
+							</select>
+						</td>
+						<td class="eventTDLead">
+							<input type="text" name="eLead[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit" value="<?echo $cSlot['leadtime'];?>" required/>
+							<small class="error"><?echo _("Amount?");?></small>
+						</td>
+						<td class="eventTDAddMore">
+							<button type="button" class="newCollSlot" title="<?echo _("Add another slot");?>"><i class="fi-plus"></i></button>
+						</td>
+						<td class="eventTDSpace">
+							<span>&nbsp;</span>
+						</td>
+					</tr>
+					<?}?>
 				</tbody>
 			</table>
 			<script>

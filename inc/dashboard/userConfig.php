@@ -21,7 +21,7 @@
 						<tbody>
 							<tr class="userEdit userTR">
 								<td class="userTDName">
-									<input type="hidden" name="uID[0]" value="" />
+									<input type="hidden" name="uID[0]" value="u0" />
 									<input type="text" name="uName[0]" class="userField noEnterSubmit" value="<?echo _("Add a user name");?>"/>
 									<small class="error"><?echo _("Please type a user name");?></small>
 								</td>

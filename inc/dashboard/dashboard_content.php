@@ -84,9 +84,7 @@
 								<p><a href="#" data-reveal-id="settingsM"><?echo _("Account settings");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/userSettings.php"><?echo _("Manage users");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/paymentSettings.php"><?echo _("Add a payment method");?></a></p>
-								<?if($_SESSION['venue_eventFlag']){?>
-									<p><a href="<?echo $_SESSION['path']?>/eventBasedSettings.php"><?echo _("Events, Collection Slots, Lead Times");?></a></p>
-								<?}else{?>
+								<?if(!$_SESSION['venue_eventFlag']){?>
 								<p><a href="<?echo $_SESSION['path']?>/nonEventSettings.php"><?echo _("Hours, Collection Slots, Lead Times");?></a></p>
 								<?}?>
 							</div>
