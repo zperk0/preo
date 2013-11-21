@@ -76,9 +76,13 @@
 							<tr class="eventEdit optionTR">
 								<td class="eventTDCollection">
 									<select name="eColl[event0][0]" class="eventField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have eventMenuSingleSelect -->
-										<option value="PRESHOW"> <?echo _("Collection Slot: Pre-Show")?></option>
-										<option value="INTERVAL"><?echo _("Collection Slot: Interval")?></option>
-										<option value="POSTSHOW"><?echo _("Collection Slot: Post-Show")?></option>
+										<option value="PRESHOW"  ><?echo _("Collection Slot: Pre-Show")?></option>
+										<option value="PREGAME"  ><?echo _("Collection Slot: Pre-Game")?></option>
+										<option value="INTERVAL" ><?echo _("Collection Slot: Interval")?></option>
+										<option value="INTERVAL2"><?echo _("Collection Slot: Second-Interval")?></option>
+										<option value="HALFTIME" ><?echo _("Collection Slot: Half-time")?></option>
+										<option value="POSTSHOW" ><?echo _("Collection Slot: Post-Show")?></option>
+										<option value="POSTGAME" ><?echo _("Collection Slot: Post-Game")?></option>
 									</select>
 								</td>
 								<td class="eventTDLead">
@@ -150,9 +154,13 @@
 					<tr class="eventEdit optionTR savedInput" style="display:none;">
 						<td class="eventTDCollection">
 							<select name="eColl[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit inline eventMenuSingleSelect hide"/>
-								<option value="PRESHOW" <?if($cSlot['collectionslot']=='PRESHOW')  echo "selected='selected'";?>><?echo _("Collection Slot: Pre-Show")?></option>
-								<option value="INTERVAL"<?if($cSlot['collectionslot']=='INTERVAL') echo "selected='selected'";?>><?echo _("Collection Slot: Interval")?></option>
-								<option value="POSTSHOW"<?if($cSlot['collectionslot']=='POSTSHOW') echo "selected='selected'";?>><?echo _("Collection Slot: Post-Show")?></option>
+								<option value="PRESHOW"  <?if($cSlot['collectionslot']=='PRESHOW'  ) echo "selected='selected'";?>><?echo _("Collection Slot: Pre-Show")?></option>
+								<option value="PREGAME"  <?if($cSlot['collectionslot']=='PREGAME'  ) echo "selected='selected'";?>><?echo _("Collection Slot: Pre-Game")?></option>
+								<option value="INTERVAL" <?if($cSlot['collectionslot']=='INTERVAL ') echo "selected='selected'";?>><?echo _("Collection Slot: Interval")?></option>
+								<option value="INTERVAL2"<?if($cSlot['collectionslot']=='INTERVAL2') echo "selected='selected'";?>><?echo _("Collection Slot: Second-Interval")?></option>
+								<option value="HALFTIME" <?if($cSlot['collectionslot']=='HALFTIME' ) echo "selected='selected'";?>><?echo _("Collection Slot: Half-Time")?></option>
+								<option value="POSTSHOW" <?if($cSlot['collectionslot']=='POSTSHOW' ) echo "selected='selected'";?>><?echo _("Collection Slot: Post-Show")?></option>
+								<option value="POSTGAME" <?if($cSlot['collectionslot']=='POSTGAME' ) echo "selected='selected'";?>><?echo _("Collection Slot: Post-Game")?></option>
 							</select>
 						</td>
 						<td class="eventTDLead">

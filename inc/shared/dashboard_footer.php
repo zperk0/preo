@@ -1,9 +1,9 @@
 		<footer class="dashboardFooter">
 			<div class="row">
 				<div class="large-4 columns premiumDiv">
-					<h3><i class="icon-plus-sign"></i> <?echo _("Detailed reporting");?></h3>
-					<p><?echo _("View comprehensive reports about your app's performance and export a list of users.");?></p>
-					<button type="button" class="success small premiumButton"><?echo _("FIND OUT MORE");?></button>
+					<h3><i class="icon-plus-sign"></i> <?echo _("Premium Features");?></h3>
+					<p><?echo _("Looking for ePOS integration, detailed reporting or the ability to configure multiple outlets?");?></p>
+					<a href="<?echo $_SESSION['path']?>/more.php"><button type="button" class="success small premiumButton"><?echo _("FIND OUT MORE");?></button></a>
 				</div>
 				<div class="large-offset-1 large-2 columns">
 					<p>

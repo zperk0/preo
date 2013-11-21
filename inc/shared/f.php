@@ -31,6 +31,20 @@
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 		<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
 		
+		<!-- Google+ -->
+		<script type="text/javascript">
+			window.___gcfg = {
+			  lang: 'en-US',
+			  parsetags: 'onload'
+			};
+			(function() {
+				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				po.src = 'https://apis.google.com/js/client:plusone.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			  })();
+		</script>
+		<script src="<?echo $_SESSION['path']?>/js/googleplus.js"></script>
+		
 		<script src="<?echo $_SESSION['path']?>/js/general.js"></script>
 		
 		<script>

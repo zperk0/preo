@@ -23,18 +23,7 @@
 		
 		<!-- jQuery -->
 		<script src="<?echo $_SESSION['path']?>/js/jquery-1.8.0.js"></script>
-		
-		<!-- Google+ -->
-		<script type="text/javascript">
-		  (function() {
-		   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-		   po.src = 'https://apis.google.com/js/client:plusone.js';
-		   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-		 })();
-		 
-		</script>
-		<script src="<?echo $_SESSION['path']?>/js/googleplus.js"></script>
-		
+
 	</head>
 	<body>
 	<div id="wrap">

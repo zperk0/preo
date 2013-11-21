@@ -64,12 +64,14 @@
 								<p><a href="<?echo $_SESSION['path']?>/mealDealSettings.php"><?echo _("Meal Deals");?></a></p>
 							</div>
 						</section>
+						<?if($_SESSION['venue_eventFlag']){?>		
 						<section>
 							<h3 data-section-title><?echo _("Events");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/events_small.png"/>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/eventSettings.php"><?echo _("Update events");?></a></p>
 							</div>
 						</section>
+						<?}?>
 						<section>
 							<h3 data-section-title><?echo _("Styling");?></h3><img class="topFix" src="<?echo $_SESSION['path']?>/img/dashboard/styling_small.png"/>
 							<div class="content" data-section-content>
@@ -81,19 +83,20 @@
 							<h3 data-section-title><?echo _("Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/venueSettings.php"><?echo _("Venue settings");?></a></p>
-								<p><a href="#" data-reveal-id="settingsM"><?echo _("Account settings");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/settings.php"><?echo _("Account settings");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/userSettings.php"><?echo _("Manage users");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/paymentSettings.php"><?echo _("Add a payment method");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/finish.php"><?echo _("Publish App");?></a></p>
 								<?if(!$_SESSION['venue_eventFlag']){?>
 								<p><a href="<?echo $_SESSION['path']?>/nonEventSettings.php"><?echo _("Hours, Collection Slots, Lead Times");?></a></p>
 								<?}?>
 							</div>
 						</section>
 						<section class="premiumSection">
-							<h3 data-section-title><?echo _("Premium");?></h3><i class="icon-plus-sign"></i>
+							<h3 data-section-title><?echo _("Premium Features");?></h3><i class="icon-plus-sign"></i>
 							<div class="content" data-section-content>
-								<p><a href="<?echo $_SESSION['path']?>/outletSettings.php"><?echo _("Manage outlets");?></a></p>
-								<p><a href="#"><?echo _("Find out more");?></a></p>
+								<!--<p><a href="<?echo $_SESSION['path']?>/outletSettings.php"><?echo _("Manage outlets");?></a></p>-->
+								<p><a href="<?echo $_SESSION['path']?>/more.php"><?echo _("Find out more");?></a></p>
 							</div>
 						</section>
 					</div>

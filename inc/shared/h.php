@@ -25,17 +25,11 @@
 					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Orders");?></a></li>
 					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Stats");?></a></li>
 					<li><a href="<?echo $_SESSION['path']?>/eventSettings.php"							><? echo _("Events");?></a></li>
-					<li><a href="#" data-reveal-id="settingsM"											><? echo _("Settings");?></a></li>
+					<li><a href="<?echo $_SESSION['path']?>/settings.php"								><? echo _("Settings");?></a></li>
 						<?}?>
 					<li><a href="<?echo $_SESSION['path']?>/code/shared/logout.php" class="activated"	><? echo _("Logout");?></a></li>
 				<?php endif; ?>
 			</ul>
 		</section>
 	</nav>
-	<?php if(isset($_SESSION['logged'])) : ?>
-		<div id="settingsM" class="reveal-modal">
-			<? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/settings/settings_content.php'); ?>
-			<a class="close-reveal-modal">&#215;</a>
-		</div>
-	<?php endif; ?>
 </div>

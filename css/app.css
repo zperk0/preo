@@ -922,6 +922,21 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 
 .itemSubheader h6{
 	margin-bottom:-12px;
+	width: 264px;
+}
+
+.modifierRow {
+	width: 40% !important;
+}
+
+.modifierRow input, .modifierRow select{
+	width: 90%;
+	margin-top: 12px;
+	margin-bottom: 12px !important;
+}
+
+.modifierRow .ui-multiselect{
+	width: 90% !important;
 }
 
 .newItem, .newSection, .deleteSection, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot{
@@ -1167,4 +1182,24 @@ span.slotDuration{
 	height:25px;
 	content: '';
 	background: transparent url(../img/fade-up.png) repeat-x left bottom;
+}
+
+.moreTextArea{
+	height: 150px !important;
+}
+
+#finishForm h3{
+	color:#48535D;
+	font-size: 22px;
+}
+
+#finishForm .preodayButton.large {
+	font-size: 40px;
+	padding: 22px;
+	margin-top: 42px;
+	margin-bottom: 40px;
+}
+#finishForm .goBackToDash {
+	background: #2E70B7;
+	border: #2E70B7;
 }

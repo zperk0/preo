@@ -12,7 +12,11 @@
 		$menuID = $_SESSION['menu_id'];
 		
 		$menu = array();
-		$menu = $_SESSION['menu_old'];
+		
+		//query to find old menu sanity
+		$curlResult = callAPI('GET', $apiURL."menus/$menuID", false, $apiAuth);
+		$dataJSON = json_decode($curlResult,true);
+		$menu = $dataJSON;
 		
 		$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 
@@ -80,13 +84,17 @@
 			{
 				if(isset($_POST['iName']['section'.$j][$b]) && $_POST['iName']['section'.$j][$b])
 				{
-					$menu[$i]['items'][$a]['name'] = /*protect(*/$_POST['iName']['section'.$j][$b];//);
-					$menu[$i]['items'][$a]['desc'] = /*protect(*/$_POST['iDesc']['section'.$j][$b];//);
-					$menu[$i]['items'][$a]['price'] = /*protect(*/$_POST['iPrice']['section'.$j][$b];//);
-					$menu[$i]['items'][$a]['quantity'] = /*protect(*/$_POST['iQuan']['section'.$j][$b];//);
+					$menu[$i]['items'][$a]['name'] 			= /*protect(*/$_POST['iName']['section'.$j][$b];//);
+					$menu[$i]['items'][$a]['desc'] 			= /*protect(*/$_POST['iDesc']['section'.$j][$b];//);
+					$menu[$i]['items'][$a]['price'] 		= /*protect(*/$_POST['iPrice']['section'.$j][$b];//);
+					$menu[$i]['items'][$a]['quantity'] 		= /*protect(*/$_POST['iQuan']['section'.$j][$b];//);
 						if(!isset($menu[$i]['items'][$a]['quantity']) || !$menu[$i]['items'][$a]['quantity']){ $menu[$i]['items'][$a]['quantity'] = 0; }
-					$menu[$i]['items'][$a]['visible'] = /*protect(*/$_POST['iVisi']['section'.$j][$b];//);
+					$menu[$i]['items'][$a]['visible'] 		= /*protect(*/$_POST['iVisi']['section'.$j][$b];//);
 						if(!isset($menu[$i]['items'][$a]['visible']) || !$menu[$i]['items'][$a]['visible']){ $menu[$i]['items'][$a]['visible'] = 0; }
+					if(isset($_POST['iMod']['item'.$b])){
+						$menu[$i]['items'][$a]['modifier'] 		= /*protect(*/$_POST['iMod']['item'.$b];//);
+						$menu[$i]['items'][$a]['modifierType'] 	= /*protect(*/$_POST['iModType']['item'.$b];//);
+					}
 					
 					//now we get all the options
 					$x = $y = 1;
@@ -197,10 +205,36 @@
 					//create modifier
 					$data = array();
 					$data['itemId'] = $item_id;
-					$data['name'] = "options"; //we can make this dynamic (and others below) and get front end to allow creation of "sizes", "choice of", etc
-					$data['minChoices'] = "0";
-					$data['maxChoices'] = "100";
+					$data['name'] = $item['modifier'];
 					$data['position'] = $iKey;
+					
+					switch($item['modifierType'])
+					{
+						case "S":
+						{
+							$data['minChoices'] = "1";
+							$data['maxChoices'] = "1";
+							break;
+						}
+						case "M":
+						{
+							$data['minChoices'] = "1";
+							$data['maxChoices'] = "-1";
+							break;
+						}
+						case "O":
+						{
+							$data['minChoices'] = "0";
+							$data['maxChoices'] = "-1";
+							break;
+						}
+						default:
+						{
+							$data['minChoices'] = "0";
+							$data['maxChoices'] = "-1";
+							break;
+						}
+					}
 					
 					$jsonData = json_encode($data);
 					$curlResult = callAPI('POST', $apiURL."modifiers", $jsonData, $apiAuth); //modifier created

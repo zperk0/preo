@@ -34,7 +34,7 @@
 		
 		//now we need to populate all data pertaining to this menu
 		$menu = $dataJSON;
-		
+
 		//Now lets simplify what we need
 		
 		//Get section count
@@ -48,12 +48,19 @@
 			$itemCount += count($section['items']);
 			
 			foreach($section['items'] as $key=>$item)
-				$itemOptionArray[]['count'] = count($item['modifiers'][0]['items']);
+			{
+				if(isset($item['modifiers'][0]['items']))
+				{
+					$itemOptionArray[]['count'] = count($item['modifiers'][0]['items']);
+				}
+				else
+				{
+					$itemOptionArray[]['count'] = 0;
+				}
+			}
 		}
 		
 		//+d($menu);
-		
-		$_SESSION['menu_old'] = $menu;
 	
 		$_SESSION['menu_edit_on']=1;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 

@@ -2,7 +2,6 @@
 map = null; // make google maps var global
 mapDefaultCenterLat = 54.370559; // make google maps var global = set center as center of UK
 mapDefaultCenterLong = -2.510376; // make google maps var global = set center as center of UK
-globalPH = '';
 nowTemp = new Date();
 now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
@@ -515,6 +514,23 @@ $(document).ready(function() {
 		var newCount = parseInt(parseInt(itemCount) - 1);
 		$("#"+itemID+"_optionCountAct").val(newCount);
 		
+		if(newCount < 1) //remove modifier info
+		{
+			$ele = $curTable.find('.modifierRow');
+			$ele.hide();
+			
+			$ele.find('input').each(function(){
+				$(this).removeProp('required');
+				$(this).val('');
+				$(this).attr('placeholder','Modifier Name');
+			});
+			
+			$ele.find('select').each(function(){
+				$(this).removeProp('required');
+			});
+			
+		}
+		
 		//bye-bye
 		$(this).parents("tr:first").remove();
 	});
@@ -545,8 +561,44 @@ $(document).ready(function() {
 			$curRow = $(this).closest("tr").next();
 		}
 		
-        $newRow = $curRow.clone(true);
+        $newRow = $curRow.clone(false);
 		$newRow.addClass('optionTR');
+		
+		if(!dup)
+		{
+			$(this).parents('.menuEdit').find('.modifierRow').each(function(){
+				$(this).slideRow('down');
+				//replace ids with incremented value and make value = default value (for !dups)
+				$(this).find("input").each(function() {
+					$(this).val( $(this).prop("defaultValue") );
+					var tempName = $(this).attr('name');
+					var newName = tempName.replace(/item\d+/gi, itemID);
+					$(this).attr('name', newName);
+					
+					var temp = $(this).val();
+					$(this).val("");
+					$(this).attr('placeholder', temp);
+					
+					$(this).attr('required','required');
+				});
+				
+				$(this).find("select").each(function() {
+					$(this).val( $(this).prop("defaultValue") );
+					var tempName = $(this).attr('name');
+					var newName = tempName.replace(/item\d+/gi, itemID);
+					$(this).attr('name', newName);
+					
+					$(this).multiselect({
+					   multiple: false,
+					   header: false,
+					   noneSelectedText: "Modifier Type &#x25BC;",
+					   selectedList: 1
+					}); 
+					
+					$(this).attr('required','required');
+				});
+			});
+		}
 		
 		//replace ids with incremented value and make value = default value (for !dups)
 		$newRow.find("input").each(function() {
@@ -623,7 +675,7 @@ $(document).ready(function() {
 			
 			
 			//clone specific table
-			$newTab = $("#"+itemID).clone(true);
+			$newTab = $("#"+itemID).clone(false);
 			$newTab.attr('id','item'+newCount);
 		}
 		else //clone a dummy row
@@ -641,11 +693,12 @@ $(document).ready(function() {
 			$("#item0_optionCountAct").after($newOCount);
 			
 			//clone dummy table
-			$newTab = $("#item0").clone(true);
+			$newTab = $("#item0").clone(false);
 			$newTab.attr('id','item'+newCount);
 		}
 		
 			$newTab.addClass('table'+section);
+		
 		
 		//replace ids with incremented value and make value = default value
 		$newTab.find(".itemTR input").each(function() {
@@ -677,6 +730,41 @@ $(document).ready(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
+			});
+		}
+		
+		if(dup) 
+		{
+			//remove multiselect
+			$newTab.find(".ui-multiselect").remove();
+		
+			$newTab.find('.modifierRow').each(function(){
+				$(this).slideRow('down');
+				//replace ids with incremented value and make value = default value (for !dups)
+				$(this).find("input").each(function() {
+					$(this).val( $(this).prop("defaultValue") );
+					var tempName = $(this).attr('name');
+					var newName = tempName.replace(/item\d+/gi, newCount);
+					$(this).attr('name', newName);
+					
+					var temp = $(this).val();
+					$(this).val("");
+					$(this).attr('placeholder', temp);
+				});
+				
+				$newTab.find('.modifierRow select').each(function() {
+					$(this).val( $(this).prop("defaultValue") );
+					var tempName = $(this).attr('name');
+					var newName = tempName.replace(/item\d+/gi, newCount);
+					$(this).attr('name', newName);
+					
+					$(this).multiselect({
+					   multiple: false,
+					   header: false,
+					   noneSelectedText: "Modifier Type &#x25BC;",
+					   selectedList: 1
+					}); 
+				});
 			});
 		}
 				
@@ -716,19 +804,12 @@ $(document).ready(function() {
 		$curItem.find("tr").removeClass('menuEdit');
 		$curItem.find("tr").addClass('savedInput');
 		$curItem.find("input").attr("readonly", "readonly");
-	//$curItem.find(".itemEdit").removeClass('hide');
 		$curItem.find(".itemEdit").slideRow('down');
 		$curItem.find(".optionTR").slideRow('up');
 		$curItem.find(".subHeaderTR").slideRow('up');
-		
-		if($curItem.find("input[name^=iDesc]").val() == '')
-		{	
-			globalPH = $curItem.find("input[name^=iDesc]").attr('placeholder');
-			$curItem.find("input[name^=iDesc]").attr('placeholder', '');
-		}
+		$curItem.find('.menuEdit').find('.modifierRow').slideRow('up');
 		$curItem.css('background', 'transparent');
-	//	$curItem.unwrap('<div class="tableWrapper" />');
-	//	return false;
+
 	});
 	
 	$(".itemEdit").on('click', function() {
@@ -737,16 +818,11 @@ $(document).ready(function() {
 		$curItem.find("tr").addClass('menuEdit');
 		$curItem.find("tr").removeClass('savedInput');
 		$curItem.find("input").removeAttr("readonly");
-		//$curItem.find(".itemSave").removeClass('hide');
 		$curItem.find(".itemSave").slideRow('down');
 		$curItem.find(".optionTR").slideRow('down');
 		$curItem.find(".subHeaderTR").slideRow('down');
-		
-		if($curItem.find("input[name^=iDesc]").val() == '')
-			$curItem.find("input[name^=iDesc]").attr('placeholder', globalPH);
+		$curItem.find('.menuEdit').find('.modifierRow').slideRow('down');
 		$curItem.css('background', '#fafafa');
-	//	$curItem.wrap('<div class="tableWrapper" />');
-	//	return false;
 	});
 	
 	$(".newSection").on('click', function() {
@@ -821,10 +897,10 @@ $(document).ready(function() {
 				}
 				
 				//now we adjust item count
-				var itemCount = $("#itemCountAct").val();
-				var newCount = parseInt(parseInt(itemCount) - itemCount);
+				var itemCounter = $("#itemCountAct").val();
+				var newCount = parseInt(parseInt(itemCounter) - itemCount);
 				$("#itemCountAct").val(newCount);
-				
+
 				//we delete the section here
 				$parentSectionHeader.remove(); //remove section header and buttons!
 
@@ -840,6 +916,13 @@ $(document).ready(function() {
 			}
 		  ]
 		});
+	});
+	
+	$(".itemMenuSingleSelect").multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: "Modifier Type &#x25BC;",
+	   selectedList: 1
 	});
 	
 	$("#menuConfigForm").on('valid', function (event) {
@@ -883,7 +966,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'Menu configuration has been saved!' });
-						setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
+						//setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
 					}
 				}
 			 });
@@ -2417,7 +2500,7 @@ $(document).ready(function() {
 					}
 					else
 					{	
-						noty({ type: 'success', text: 'Setttings have been saved!' });
+						noty({ type: 'success', text: 'Settings have been saved!' });
 						
 					}
 				}
@@ -2425,6 +2508,34 @@ $(document).ready(function() {
 
 		return false; // avoid to execute the actual submit of the form.
 	});
+	
+	$(".moreSelect").multiselect({
+	   noneSelectedText: "Please select the feature you require &#x25BC;",
+	   selectedText: "# of # selected",
+	   checkAllText: "Select all",
+	   uncheckAllText: ""
+	}); 
+	
+	$("#moreForm").on('valid', function (event) {
+		var url = "code/more/do_sendMore.php";
+		$.ajax({
+		   type: "POST",
+		   url: url,
+		   data: $(this).serialize(), // serializes the form's elements.
+		   success: function(data)
+		   {
+				$('#moreForm').hide();
+				$('#thankyouArea').fadeIn('fast');
+			}
+		 });
+		return false; // avoid to execute the actual submit of the form.
+	});
+	
+	//google+ consent
+	$('.g-signin').on('click', function(){
+		$('#userConsent').val('1');
+	});
+	
 });
 
 //functions to update phone/app preview
