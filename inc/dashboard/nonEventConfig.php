@@ -14,6 +14,9 @@
 				<button id="saturdayB" 	type="button" class="openDay secondary"><?echo _("Sat");?></button>
 				<button id="sundayB" 	type="button" class="openDay secondary"><?echo _("Sun");?></button>
 			</div>
+			
+			<input type="hidden" id="redirectFlag" value="<?echo $redirectFlag;?>"/>
+			
 			<?php 
 			
 			$dow = array('monday','tuesday','wednesday','thursday','friday','saturday','sunday');

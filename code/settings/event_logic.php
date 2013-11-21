@@ -20,6 +20,7 @@
 	if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
 	{	
 		$_SESSION['event_edit_on']=0;
+		$redirectFlag = 1;
 	}
 	else
 	{	
@@ -54,6 +55,7 @@
 		$_SESSION['events_old'] = $events;
 		
 		$_SESSION['event_edit_on']=1;
+		$redirectFlag = 0;
 	}
 	
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 

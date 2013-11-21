@@ -32,22 +32,30 @@
 		$curlResult = callAPI('GET', $apiURL."venues/$venueID/netimes?dow=$dow", false, $apiAuth);
 	
 		$dataJSON = json_decode($curlResult,true);
-			
-		$neTimes[$i]['ohstarttime'] 	= substr($dataJSON['ohstarttime'], 0, -3);
-		$neTimes[$i]['ohendtime'] 		= substr($dataJSON['ohendtime'], 0, -3);		
-		$neTimes[$i]['csstarttime']	 	= substr($dataJSON['csstarttime'], 0, -3);	
-		$neTimes[$i]['csendtime'] 		= substr($dataJSON['csendtime'], 0, -3); 		
-		$neTimes[$i]['leaddrinkstime'] 	= $dataJSON['leaddrinkstime']; 
-		$neTimes[$i]['leadfoodtime'] 	= $dataJSON['leadfoodtime'];	
+		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
+		{	
+			//do nothing
+		}
+		else
+		{
+			$neTimes[$i]['ohstarttime'] 	= substr($dataJSON['ohstarttime'], 0, -3);
+			$neTimes[$i]['ohendtime'] 		= substr($dataJSON['ohendtime'], 0, -3);		
+			$neTimes[$i]['csstarttime']	 	= substr($dataJSON['csstarttime'], 0, -3);	
+			$neTimes[$i]['csendtime'] 		= substr($dataJSON['csendtime'], 0, -3); 		
+			$neTimes[$i]['leaddrinkstime'] 	= $dataJSON['leaddrinkstime']; 
+			$neTimes[$i]['leadfoodtime'] 	= $dataJSON['leadfoodtime'];	
+		}
 	}
 	
 	if(count($neTimes)) 
 	{
 		$_SESSION['venue_netimes_edit_on'] = 1;
-		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
-		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
-		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/nonEventConfig.php');
+		$redirectFlag=0;
 	}
 	else
-		header("location:$_SESSION[path]/");
+		$redirectFlag=1;
+
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/nonEventConfig.php');
 ?>

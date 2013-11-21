@@ -1,7 +1,10 @@
 <style> 
 	@import '<?echo $_SESSION['path']?>/css/dashboard_override.css';
 </style><!-- The dashboard looks slightly different than other pages -->
-
+<?
+//resetting global vars
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/global_vars.php'); 
+?>
 <div class="row dashContentTop">
 	<div class="topSpacer"></div>
 	<div class="large-12 columns">
@@ -160,6 +163,15 @@
 			});
 		<?
 			$_SESSION['pmaReply']='';
+		}?>
+		
+		<?if(isset($_SESSION['appPublished']) && $_SESSION['appPublished']=='08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B'){
+			$_SESSION['appPublished']=0;?>
+			noty({
+			  type: 'success',  layout: 'topCenter',
+			  text: '<?echo _("Your app is now live!");?>'
+			});
+		<?
 		}?>
 	});
 </script>

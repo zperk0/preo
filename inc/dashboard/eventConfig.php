@@ -11,6 +11,8 @@
 			<input type="hidden" id="event0_optionCount"	name="event0_optionCount" 		value="<?if($_SESSION['event_edit_on']) echo $eventCount; else echo "0";?>"/>
 			<input type="hidden" id="event0_optionCountAct" name="event0_optionCountAct" 	value="<?if($_SESSION['event_edit_on']) echo $eventCount; else echo "0";?>"/>
 			
+			<input type="hidden" id="redirectFlag" value="<?echo $redirectFlag;?>"/>
+			
 			<?if($_SESSION['event_edit_on']) :
 				foreach($events as $eKey=>$event)
 				{

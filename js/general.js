@@ -693,7 +693,7 @@ $(document).ready(function() {
 			$("#item0_optionCountAct").after($newOCount);
 			
 			//clone dummy table
-			$newTab = $("#item0").clone(false);
+			$newTab = $("#item0").clone(true);
 			$newTab.attr('id','item'+newCount);
 		}
 		
@@ -739,21 +739,15 @@ $(document).ready(function() {
 			$newTab.find(".ui-multiselect").remove();
 		
 			$newTab.find('.modifierRow').each(function(){
-				$(this).slideRow('down');
+				if(parseInt($newOCountAct.val())) $(this).slideRow('down');
 				//replace ids with incremented value and make value = default value (for !dups)
 				$(this).find("input").each(function() {
-					$(this).val( $(this).prop("defaultValue") );
 					var tempName = $(this).attr('name');
 					var newName = tempName.replace(/item\d+/gi, 'item'+newCount);
 					$(this).attr('name', newName);
-					
-					var temp = $(this).val();
-					$(this).val("");
-					$(this).attr('placeholder', temp);
 				});
 				
 				$newTab.find('.modifierRow select').each(function() {
-					$(this).val( $(this).prop("defaultValue") );
 					var tempName = $(this).attr('name');
 					var newName = tempName.replace(/item\d+/gi, 'item'+newCount);
 					$(this).attr('name', newName);
@@ -801,27 +795,34 @@ $(document).ready(function() {
 	$(".itemSave").on('click', function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
+		var itemID = $curItem.attr('id');
+		var count = parseInt($("#"+itemID+"_optionCountAct").val());
+		
 		$curItem.find("tr").removeClass('menuEdit');
 		$curItem.find("tr").addClass('savedInput');
 		$curItem.find("input").attr("readonly", "readonly");
 		$curItem.find(".itemEdit").slideRow('down');
-		$curItem.find(".optionTR").slideRow('up');
+		if(count) $curItem.find(".optionTR").slideRow('up');
+		$curItem.find(".itemSubheader").slideRow('up');
 		$curItem.find(".subHeaderTR").slideRow('up');
-		$curItem.find('.menuEdit').find('.modifierRow').slideRow('up');
+		if(count) $curItem.find('.menuEdit').find('.modifierRow').slideRow('up');
 		$curItem.css('background', 'transparent');
-
 	});
 	
 	$(".itemEdit").on('click', function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
+		var itemID = $curItem.attr('id');
+		var count = parseInt($("#"+itemID+"_optionCountAct").val());
+		
 		$curItem.find("tr").addClass('menuEdit');
 		$curItem.find("tr").removeClass('savedInput');
 		$curItem.find("input").removeAttr("readonly");
 		$curItem.find(".itemSave").slideRow('down');
-		$curItem.find(".optionTR").slideRow('down');
+		if(count) $curItem.find(".optionTR").slideRow('down');
+		$curItem.find(".itemSubheader").slideRow('down');
 		$curItem.find(".subHeaderTR").slideRow('down');
-		$curItem.find('.menuEdit').find('.modifierRow').slideRow('down');
+		if(count) $curItem.find('.menuEdit').find('.modifierRow').slideRow('down');
 		$curItem.css('background', '#fafafa');
 	});
 	
@@ -927,12 +928,13 @@ $(document).ready(function() {
 	
 	$("#menuConfigForm").on('valid', function (event) {
 		//lock all
-		$(".itemSave").trigger('click');
+		$("body .itemSave").each(function(){
+			if($(this).is(":visible"))
+				$(this).trigger('click');
+		});
 	
 		var url = "code/dashboard/do_menuConfig.php";
 		
-		$(".itemSave").click();
-
 		$.ajax({
 			   type: "POST",
 			   url: url,
@@ -966,7 +968,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'Menu configuration has been saved!' });
-						//setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
 					}
 				}
 			 });
@@ -1332,7 +1334,10 @@ $(document).ready(function() {
 	
 	$("#eventConfigForm").on('valid', function (event) {
 		//lock all
-		$(".eventSave").trigger('click');
+		$("body .eventSave").each(function(){
+			if($(this).is(":visible"))
+				$(this).trigger('click');
+		});
 		
 		//enable dropdowns or we wont get the values!
 		$(".eventMenuSingleSelect").multiselect('enable');
@@ -1379,7 +1384,7 @@ $(document).ready(function() {
 						}
 						
 						noty({ type: 'success', text: 'Event configuration has been saved!' });
-						//alert(data);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
 					}
 				}
 			 });
@@ -1593,7 +1598,11 @@ $(document).ready(function() {
 	
 	$("#userConfigForm").on('valid', function (event) {
 		//lock all
-		$(".userSave").trigger('click');
+		$("body .userSave").each(function(){
+			if($(this).is(":visible"))
+				$(this).trigger('click');
+		});
+		
 	
 		//enable dropdowns or we wont get the values!
 		$(".userMenuSingleSelect").multiselect('enable');
@@ -1857,7 +1866,10 @@ $(document).ready(function() {
 	
 	$("#outletConfigForm").on('valid', function (event) {
 		//lock all
-		$(".outletSave").trigger('click');
+		$("body .outletSave").each(function(){
+			if($(this).is(":visible"))
+				$(this).trigger('click');
+		});
 		
 		//enable dropdowns or we wont get the values!
 		$(".outletMenuMultiSelect").multiselect('enable');
@@ -2033,7 +2045,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'All times has been saved!' });
-						
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
 					}
 				}
 			 });
@@ -2320,7 +2332,10 @@ $(document).ready(function() {
 		
 	$("#mealDealConfigForm").on('valid', function (event) {
 		//lock all
-		$(".mdSave").trigger('click');
+		$("body .mdSave").each(function(){
+			if($(this).is(":visible"))
+				$(this).trigger('click');
+		});
 	
 		var url = "code/dashboard/do_mdConfig.php";
 

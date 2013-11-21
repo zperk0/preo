@@ -19,6 +19,15 @@
 	
 	$_SESSION['paymentMethodApproved'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
 	
-	header('location:'.$tempPath.'/dashboard.php'); //redirect to dash
-	exit;
+	if(isset($_SESSION['noLiveFlag']) && $_SESSION['noLiveFlag'])
+	{
+		$_SESSION['noLiveFlag']=0;
+		header('location:'.$_SESSION['path'].'/finish.php'); //redirect to dash
+		exit;
+	}
+	else
+	{
+		header('location:'.$_SESSION['path'].'/dashboard.php'); //redirect to dash
+		exit;
+	}
 ?>

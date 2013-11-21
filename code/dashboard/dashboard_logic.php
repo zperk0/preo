@@ -18,6 +18,8 @@
 	$_SESSION['noAppFlag-1'] = 0;
 	$_SESSION['noAppFlag-2'] = 0;
 	$_SESSION['noMenuFlag'] = 0;
+	$_SESSION['noEHFlag'] = 0;
+	$_SESSION['noPaymentFlag'] = 0;
 	$_SESSION['signupWizFlag']=0;
 	$_SESSION['dashboardFlag']=0;
 	
@@ -122,9 +124,76 @@
 		$_SESSION['noMenuFlag']=1;
 	}
 	
+	//////EH////////////////////////////////////////////////////////////////////////////
+	if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']) && $venueID)
+	{
+		//eventBased check for event
+		//query to find events
+		$curlResult = callAPI('GET', $apiURL."events?venueId=$venueID", false, $apiAuth);
+		$dataJSON = json_decode($curlResult,true);
+		
+		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
+		{	
+			$_SESSION['noEHFlag']=1;
+		}
+	}
+	else if(((isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag']) || (!isset($_SESSION['venue_eventFlag']))) && (isset($venueID) && $venueID))
+	{
+		$dayCount = 0;
+		
+		//check opening hours
+		for($i=0;$i<7;$i++)
+		{
+			$dow = '';
+			switch($i)
+			{
+				case 0:{ $dow = 'monday'; break; }
+				case 1:{ $dow = 'tuesday'; break; }
+				case 2:{ $dow = 'wednesday'; break; }
+				case 3:{ $dow = 'thursday'; break; }
+				case 4:{ $dow = 'friday'; break; }
+				case 5:{ $dow = 'saturday'; break; }
+				case 6:{ $dow = 'sunday'; break; }
+			}
+			
+			$curlResult = callAPI('GET', $apiURL."venues/$venueID/netimes?dow=$dow", false, $apiAuth);
+		
+			$dataJSON = json_decode($curlResult,true);
+			if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
+			{	
+				$dayCount++;
+			}
+		}
+		
+		if($dayCount == 7) //empty all days
+		{
+			$_SESSION['noEHFlag']=1;
+		}
+	}
+	else
+		$_SESSION['noEHFlag'] = 1;
+
+	
+	//////PAYMENTS////////////////////////////////////////////////////////////////////////////
+	$curlResult = callAPI('GET', $apiURL."accounts/$accountID/paymentproviders", false, $apiAuth);
+	$dataJSON = json_decode($curlResult, true);
+	
+	if(!empty($dataJSON))
+	{
+		$connectedFlag = 0;
+		foreach($dataJSON as $paymentProvider)
+		{
+			if($paymentProvider['type'] == 'Stripe')
+				$connectedFlag = 1;
+		}
+		$_SESSION['noPaymentFlag'] = !$connectedFlag;
+	}
+	else
+		$_SESSION['noPaymentFlag']=1;
+	
 	//echo var_dump($_SESSION);
 	
-	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && /*!$_SESSION['noAppFlag-2'] &&*/ !$_SESSION['noMenuFlag']) /*User has given data for all 4 already*/
+	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && /*!$_SESSION['noAppFlag-2'] &&*/ !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag'] && !$_SESSION['noPaymentFlag']) /*User has given data for all 5 already*/
 	{	
 		//going to the dashboard!
 		
@@ -141,28 +210,47 @@
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/dashboard_content.php"); 
 	}
-	else if($_SESSION['noVenueFlag']) /* User has not given all 4 so first check Venue */
+	else if($_SESSION['noVenueFlag']) /* User has not given all 5 so first check Venue */
 	{	
 		$_SESSION['signupWizFlag']=1;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/venueConfig.php"); 
 	}
-	else if($_SESSION['noAppFlag-1']) /* User has not given all 4 so second check App-1 */
+	else if($_SESSION['noAppFlag-1']) /* User has not given all 5 so second check App-1 */
 	{	
 		$_SESSION['signupWizFlag']=1;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig1.php");
 	}
-	//else if($_SESSION['noAppFlag-2']) /* User has not given all 4 so third check App-2 */
+	//else if($_SESSION['noAppFlag-2']) /* User has not given all --- check App-2 */
 //	{	
 //		$_SESSION['signupWizFlag']=1;
 //		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 //		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig2.php"); 
 //	}
-	else if($_SESSION['noMenuFlag']) /* User has not given all 4 so fourth check Menu */
+	else if($_SESSION['noMenuFlag']) /* User has not given all 5 so third check Menu */
 	{	
 		$_SESSION['signupWizFlag']=1;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/menuConfig.php"); 
+	}
+	else if($_SESSION['noEHFlag']) /* User has not given all 5 so fourth check EH */
+	{	
+		if(!$_SESSION['venue_eventFlag']) 
+		{
+			header("location:".$_SESSION['path'].'/nonEventSettings.php');
+			exit;
+		}
+		else
+		{
+			header("location:".$_SESSION['path'].'/eventSettings.php');
+			exit;
+		}
+	}
+	else if($_SESSION['noPaymentFlag']) /* User has not given all 5 so fifth check Payment */
+	{	
+		$_SESSION['noLiveFlag']=1;
+		header("location:".$_SESSION['path'].'/paymentSettings.php');
+		exit;
 	}
 ?>

@@ -24,7 +24,8 @@
 					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Home");?></a></li>
 					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Orders");?></a></li>
 					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Stats");?></a></li>
-					<li><a href="<?echo $_SESSION['path']?>/eventSettings.php"							><? echo _("Events");?></a></li>
+					<?if($_SESSION['venue_eventFlag']){?>
+					<li><a href="<?echo $_SESSION['path']?>/eventSettings.php"							><? echo _("Events");?></a></li><?}?>
 					<li><a href="<?echo $_SESSION['path']?>/settings.php"								><? echo _("Settings");?></a></li>
 						<?}?>
 					<li><a href="<?echo $_SESSION['path']?>/code/shared/logout.php" class="activated"	><? echo _("Logout");?></a></li>

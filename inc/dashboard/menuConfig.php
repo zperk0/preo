@@ -23,6 +23,8 @@
 			<input type="hidden" id="item0_optionCount" 	name="item0_optionCount"	value="0"/>
 			<input type="hidden" id="item0_optionCountAct" 	name="item0_optionCountAct" value="0"/>
 			
+			<input type="hidden" id="redirectFlag" value="<?echo !$_SESSION['menu_edit_on']?>"/>
+			
 			<?if($_SESSION['menu_edit_on']) :
 				foreach($itemOptionArray as $key=>$itemOption)
 				{
@@ -93,7 +95,7 @@
 						</td>
 					</tr>
 					<tr class="menuEdit subHeaderTR">
-						<td class="itemSubheader optionTR"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h6></td>
+						<td class="itemSubheader"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h6></td>
 						<td class="modifierRow hide">
 							<input type="text" name="iMod[item0]" class="menuField noEnterSubmit" value="<?echo _("Modifier Name");?>" required/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
 						</td>
@@ -200,7 +202,7 @@
 							</td>
 						</tr>
 						<tr class="menuEdit subHeaderTR">
-							<td class="itemSubheader optionTR hide"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h6></td>
+							<td class="itemSubheader hide"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h6></td>
 							<?if(isset($item['modifiers'][0]['items'])){?>
 							<td class="modifierRow hide">
 								<input type="text" name="iMod[item<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo $item['modifiers'][0]['name'];?>" required/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
@@ -214,7 +216,7 @@
 							</td>
 							<?}else{?>
 								<td class="modifierRow hide">
-									<input type="text" name="iMod[item<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Modifier Name");?>" required/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
+									<input type="text" name="iMod[item<?echo ($iKey+1);?>]" class="menuField noEnterSubmit hide" placeholder="<?echo _("Modifier Name");?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
 								</td>
 								<td class="modifierRow hide">
 									<select class="menuField noEnterSubmit inline itemMenuSingleSelect" name="iModType[item<?echo ($iKey+1);?>]" >
@@ -312,7 +314,7 @@
 	</div>
 </form>
 
-<?if(!isset($_SESSION['menu_edit_on']) || !$_SESSION['menu_edit_on']){?>
+<?if((!isset($_SESSION['menu_edit_on']) || !$_SESSION['menu_edit_on'])){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
 $(document).ready(function() {

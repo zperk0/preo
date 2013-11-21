@@ -135,8 +135,8 @@
 	$data 				= array();
 	$data['name'] 		= $mName;
 	$data['accountId'] 	= $_SESSION['account_id'];
-	if(!$_SESSION['secondaryMenuFlag'])
-		$data['outletId'] 	= $_SESSION['outlet_id']; //secondary menus are non-associated.
+	//if(!$_SESSION['secondaryMenuFlag'])
+		$data['outletId'] 	= $_SESSION['outlet_id']; //secondary menus are non-associated. disabled
 	
 	$jsonData = json_encode($data);
 	
