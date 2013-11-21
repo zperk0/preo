@@ -744,7 +744,7 @@ $(document).ready(function() {
 				$(this).find("input").each(function() {
 					$(this).val( $(this).prop("defaultValue") );
 					var tempName = $(this).attr('name');
-					var newName = tempName.replace(/item\d+/gi, newCount);
+					var newName = tempName.replace(/item\d+/gi, 'item'+newCount);
 					$(this).attr('name', newName);
 					
 					var temp = $(this).val();
@@ -755,7 +755,7 @@ $(document).ready(function() {
 				$newTab.find('.modifierRow select').each(function() {
 					$(this).val( $(this).prop("defaultValue") );
 					var tempName = $(this).attr('name');
-					var newName = tempName.replace(/item\d+/gi, newCount);
+					var newName = tempName.replace(/item\d+/gi, 'item'+newCount);
 					$(this).attr('name', newName);
 					
 					$(this).multiselect({
