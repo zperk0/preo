@@ -13,10 +13,9 @@
 		$body .= $feature."\n";
 	}
 	
-	$body .= "\nRequirements:\n".$requirements;
-	$body .= "\n\nFrom:\n".$_SESSION['user_name']." <".$_SESSION['user_email'].">\n\n";
+	$body .= "\nRequirements:\n".$requirements."\n\n";
 	
-	$headers  = "From: PreoDay <no-reply@preoday.com>\r\n";
+	$headers  = "From: ".$_SESSION['user_name']." <".$_SESSION['user_email'].">\r\n";
 	$subject  = "New message from Find Out more form";
 	$to       = 'hello@preoday.com';
 	
