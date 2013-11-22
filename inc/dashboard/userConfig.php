@@ -14,6 +14,18 @@
 					<button id="add_user" 	type="button" class="newUser" title="<?echo _("Add a new user");?>"><i class="fi-plus"></i></button> <?echo _("Add a new user");?>
 				</div>
 			</div>
+			
+			<!--<table class="headerTable">
+				<thead>
+					<tr>
+						<th class="userTDName">Name</th>
+						<th class="userTDEmail">Email</th>
+						<th class="userTDPassword">Password</th>
+						<th class="userTDRole">Role</th>
+						<th class="userTDTools">Tools</th>
+					</tr>
+				</thead>
+			</table>-->
 
 			<div class="row"> <!-- DUMMY -->
 				<div class="large-12 columns">

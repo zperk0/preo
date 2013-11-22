@@ -39,12 +39,10 @@
 		}
 		else
 		{
-			$neTimes[$i]['ohstarttime'] 	= substr($dataJSON['ohstarttime'], 0, -3);
-			$neTimes[$i]['ohendtime'] 		= substr($dataJSON['ohendtime'], 0, -3);		
-			$neTimes[$i]['csstarttime']	 	= substr($dataJSON['csstarttime'], 0, -3);	
-			$neTimes[$i]['csendtime'] 		= substr($dataJSON['csendtime'], 0, -3); 		
-			$neTimes[$i]['leaddrinkstime'] 	= $dataJSON['leaddrinkstime']; 
-			$neTimes[$i]['leadfoodtime'] 	= $dataJSON['leadfoodtime'];	
+			$neTimes[$i]['ohstarttime'] = substr($dataJSON['ohstarttime'], 0, -3);
+			$neTimes[$i]['ohendtime'] 	= substr($dataJSON['ohendtime'], 0, -3);		
+			$neTimes[$i]['duration']	= $dataJSON['duration'];
+			$neTimes[$i]['leadtime'] 	= $dataJSON['leadtime'];	
 		}
 	}
 	

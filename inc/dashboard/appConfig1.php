@@ -10,7 +10,7 @@
 	<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
 	<nav class="breadcrumbs row--space1d">
 		<a href="<?echo $_SESSION['path']?>/venueSettings.php"><? echo _("Venue Information");?></a>
-		<a class="current" href="#"><? echo _("App Styling 1/2");?></a>
+		<a class="current" href="#"><? echo _("App Styling");?></a>
 		<?if(!$_SESSION['noMenuFlag']){?>
 			<a href="<?echo $_SESSION['path']?>/menuSettings.php"><? echo _("Menu Creation");?></a>
 		<?}else{?>
@@ -35,7 +35,7 @@
 	<?}?>
 	<div class="large-12 columns">
 		<div class="row">
-			<h1><?echo _("Style your app");?></h1>
+			<h1><?echo _("Style your app");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is the first screen that your customers will see.");?>"></i></h1>
 			<div id="phonePreview">
 				<form id="appConfigForm" method="POST" data-abide>
 					<div class="large-4 columns left">
@@ -49,6 +49,10 @@
 								  <li><a href="#"><? echo _("Intermission pre-order.");?></a></li>
 								  <li><a href="#"><? echo _("A sparkling fruity alternative to queuing.");?></a></li>
 								  <li><a href="#"><? echo _("Go on, jump the crazy queue and pre-order.");?></a></li>
+								  <li><a href="#"><? echo _("Don't miss the game! Order online and skip the half-time rush");?></a></li>
+								  <li><a href="#"><? echo _("Order interval drinks before the show starts");?></a></li>
+								  <li><a href="#"><? echo _("Stay with friends while the bar prepares your round");?></a></li>
+								  <li><a href="#"><? echo _("Order your coffee and croissant from your table, or from the train.");?></a></li>
 								</ul>
 								<textarea name="aHeading" id="aHeading" placeholder="<?echo _("or create your own...");?>" required tabindex=1><?if(isset($_SESSION['app_heading'])) echo $_SESSION['app_heading'];?></textarea>
 								<small class="error"><?echo _("Please create a headline message");?></small>
@@ -152,7 +156,7 @@
 						<div class="hiddenUpload">
 							<div class="row row--space2u row--space1d">
 								<div class="large-12 small-12 columns">
-									<label class="left row--space0-5d"><?echo _("Logo Upload");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="Note: This will replace your main heading."></i>
+									<label class="left row--space0-5d"><?echo _("Logo Upload");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Note: This will replace your main heading.");?>"></i>
 									<input type="file" id="picFile" name="picFile" accept="image/png,image/jpeg" class="" />
 									<p><?echo _("Supported types: JPG or PNG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 100x75");?></p>
 								</div>

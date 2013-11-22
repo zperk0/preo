@@ -1,14 +1,13 @@
 /* TEAM */
 	WEBFIRE
-	Gareth Evans - Accounts & Design
+	Gareth Evans - Accounts
 	Matt Gould - Design
 	Ashish Mehra - Web Development
-	Kirk Brampton - Design
-	Martin Warner - Web Development
-	Barney Morrison-Lyons - iOS Development
+	Alexandros Stefanou - Frontend and Mobile Development
 
 /* THANKS */
 	Foundation 4 by ZURB
+	jQuery
 		
 /* SITE */
 	Last update: 2013/09/02

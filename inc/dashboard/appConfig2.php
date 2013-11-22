@@ -2,13 +2,13 @@
 	<div class="topSpacer"></div>
 	<div class="large-12 columns">
 		<div class="row">
-			<h1><?echo _("Style your app");?></h1>
+			<h1><?echo _("Style your app");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Gives you the opportunity to brand your menu pages and choose which colours you would like to have on your app.");?>"></i></h1>
 			<div id="phonePreview">
 				<form id="appConfig2Form" method="POST" data-abide>
 					<div class="large-4 columns left">
 						<div class="row">
 							<div class="large-8 columns">
-								<label class="left"><?echo _("Add your venue title");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="This is a shorter version of your venue name that will be visible over your menu."></i>
+								<label class="left"><?echo _("Add your venue title");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("This is a shorter version of your venue name that will be visible over your menu.");?>"></i>
 								<input type="text" name="vTitle" id="vTitle" placeholder="Type a name..." required tabindex=1 value="<?if(isset($_SESSION['app_title'])) echo $_SESSION['app_title']; else echo $_SESSION['venue_name'];?>">
 								<small class="error"><?echo _("Please type a venue title");?></small>
 							</div>

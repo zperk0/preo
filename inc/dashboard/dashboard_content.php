@@ -8,7 +8,7 @@
 <div class="row dashContentTop">
 	<div class="topSpacer"></div>
 	<div class="large-12 columns">
-		<h1><? echo _("Dashboard");?></h1>
+		<h1><? echo _("Dashboard");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
 	</div>
 </div>
 
@@ -79,7 +79,7 @@
 							<h3 data-section-title><?echo _("Styling");?></h3><img class="topFix" src="<?echo $_SESSION['path']?>/img/dashboard/styling_small.png"/>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/appSettings1.php"><?echo _("Home screen");?></a></p>
-								<p><a href="<?echo $_SESSION['path']?>/appSettings2.php"><?echo _("Inner screen");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/appSettings2.php"><?echo _("Menu screen");?></a></p>
 							</div>
 						</section>
 						<section>

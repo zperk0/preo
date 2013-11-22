@@ -25,10 +25,8 @@
 		$neTimes[$i]['dow'] = /*protect(*/$_POST['dow'][$i];//);
 		$neTimes[$i]['ohstarttime'] = /*protect(*/$_POST['ohStartTime'][$i];//);
 		$neTimes[$i]['ohendtime'] = /*protect(*/$_POST['ohEndTime'][$i];//);
-		$neTimes[$i]['csstarttime'] = /*protect(*/$_POST['csStartTime'][$i];//);
-		$neTimes[$i]['csendtime'] = /*protect(*/$_POST['csEndTime'][$i];//);
-		$neTimes[$i]['leaddrinkstime'] = /*protect(*/$_POST['leadDrinksMins'][$i];//);
-		$neTimes[$i]['leadfoodtime'] = /*protect(*/$_POST['leadFoodMins'][$i];//);
+		$neTimes[$i]['duration'] = /*protect(*/$_POST['duration'][$i];//);
+		$neTimes[$i]['leadtime'] = /*protect(*/$_POST['leadtime'][$i];//);
 	}
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
@@ -41,10 +39,8 @@
 		$data['dow'] 			= $netime['dow'];
 		$data['ohstarttime']	= $netime['ohstarttime'];
 		$data['ohendtime'] 		= $netime['ohendtime'];
-		$data['csstarttime'] 	= $netime['csstarttime'];
-		$data['csendtime'] 		= $netime['csendtime'];
-		$data['leaddrinkstime'] = $netime['leaddrinkstime'];
-		$data['leadfoodtime'] 	= $netime['leadfoodtime'];
+		$data['duration'] 		= $netime['duration'];
+		$data['leadtime'] 		= $netime['leadtime'];
 				
 		$jsonData = json_encode($data);
 		$curlResult = callAPI('POST', $apiURL."venues/$venueID/netimes", $jsonData, $apiAuth); //menu created

@@ -577,6 +577,10 @@ ul.custom-inline-list {
 	width: 190px;
 }
 
+h1 i.icon-question-sign, h4 i.icon-question-sign{
+	font-size: 24px !important;
+}
+
 .menuMultiButton i{
 	font-weight: normal !important;
 	font-size: 10px !important;
@@ -641,20 +645,20 @@ ul.custom-inline-list {
 	font-weight: bold !important;
 }
 
-table.menuTable, table.eventTable, table.userTable , table.outletTable, table.mdTable {
+table.menuTable, table.eventTable, table.userTable , table.outletTable, table.mdTable, table.headerTable {
 	border:0px !important;
 	table-layout: fixed !important;
 	margin-left: 20px;
 }
 
-.menuTable tr, .eventTable tr, .userTable tr, .outletTable tr, .mdTable tr{
+.menuTable tr, .eventTable tr, .userTable tr, .outletTable tr, .mdTable tr, table.headerTable tr{
 	background: transparent !important;
 	
 	font-size: 1.3em !important;
 	border-bottom: 1px solid #B8B9BC;
 }
 
-.menuTable td, .eventTable td, .userTable td, .outletTable td, .mdTable td{
+.menuTable td, .eventTable td, .userTable td, .outletTable td, .mdTable td, table.headerTable td{
 	width: 20%;
 	padding-top: 0;
 	padding-bottom: 0;
@@ -681,7 +685,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	display: inline;
 }
 
-.menuTable .menuTDName, .userTable .userTDName{
+.menuTable .menuTDName, .userTable .userTDName, .headerTable .userTDName{
 	font-weight: bold !important;
 	width: 30%;
 }
@@ -711,7 +715,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	width: 28%;
 }
 
-.userTable .userTDEmail{
+.userTable .userTDEmail, .headerTable .userTDEMail{
 	width: 32%;
 }
 
@@ -733,7 +737,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	background: #F7F7F7 !important;
 }
 
-.userTable .userTDPassword{
+.userTable .userTDPassword, .headerTable .userTDPassword{
 	width: 21%;
 }
 
@@ -777,7 +781,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	display: block;
 }
 
-.userTable .userTDRole{
+.userTable .userTDRole, .userTable .userTDRole{
 	width: 9%;
 	font-size: 14px;
 	padding-top: 8px;
@@ -835,7 +839,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	width: 12%;
 }
 
-.userTable .userTDTools, .outletTable .outletTDTools{
+.userTable .userTDTools, .outletTable .outletTDTools, .userTable .userTDTools{
 	width: 8%;
 }
 
@@ -862,11 +866,11 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	font-weight: normal;
 }
 
-.menuTable .savedInput input:focus, .eventTable .savedInput input:focus, .userTable .savedInput input:focus, .outletTable .savedInput input:focus, .mdTable .savedInput input:focus, .menuTable .savedInput input, .eventTable .savedInput input, .userTable .savedInput input, .outletTable .savedInput input, .mdTable .savedInput input{
+.menuTable .savedInput input:focus, .eventTable .savedInput input:focus, .userTable .savedInput input:focus, .outletTable .savedInput input:focus, .mdTable .savedInput input:focus, .menuTable .savedInput input, .eventTable .savedInput input, .userTable .savedInput input, .outletTable .savedInput input, .mdTable .savedInput input, table.headerTable {
 	background: transparent !important;
 }
 
-table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdTable {
+table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdTable,table.headerTable  {
 	display: table;
 	margin-right: 0px !important;
 	width: 101.8% !important;
@@ -897,12 +901,16 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	padding-bottom: 20px;
 }
 
-.menuTable tr, .eventTable tr, .userTable tr , .outletTable tr {
+.menuTable tr, .eventTable tr, .userTable tr , .outletTable tr, table.headerTable tr {
 	display: table;
 	max-width: 50%;
 	margin-left: auto !important;
 	margin-right: auto !important;
 	min-width: 950px;
+}
+
+.headerTable thead {
+	background: transparent;
 }
 
 .subHeaderTR{

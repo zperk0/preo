@@ -5,7 +5,7 @@
 		<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
 			<nav class="breadcrumbs row--space1d">
 				<a href="<?echo $_SESSION['path']?>/venueSettings.php"><? echo _("Venue Information");?></a>
-				<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling 1/2");?></a>
+				<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling");?></a>
 				<a href="<?echo $_SESSION['path']?>/menuSettings.php?id=<?echo $_SESSION['menu_id'];?>&r=1"><? echo _("Menu Creation");?></a>
 				<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="current" href="#"><? echo _("Events");?></a>
 				<?}else{?><a class="current" href="#"><? echo _("Opening Hours");?></a><?}?>

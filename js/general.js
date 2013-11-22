@@ -1936,15 +1936,6 @@ $(document).ready(function() {
 	
 	$("input[name^=ohEndTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
 	
-	$("input[name^=csStartTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-	
-	$("input[name^=csEndTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-	
-	$("input[name^=csEndTime]").on('changeTime',function() {
-		id = ($(this).parents('div.collectionSlotDiv')).attr('id');
-		getDuration(id);
-	});
-	
 	$("input[name^=ohStartTime]").on('changeTime',function() {
 		currTime = $(this).val()+":00";
 		
@@ -1952,18 +1943,6 @@ $(document).ready(function() {
 		
 		$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
 		$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
-	});
-	
-	$("input[name^=csStartTime]").on('changeTime',function() {
-		id = ($(this).parents('div.collectionSlotDiv')).attr('id');
-		getDuration(id);
-		
-		currTime = $(this).val()+":00";
-		
-		newTime = extractAMPM("January 01, 2000 "+currTime);
-		
-		$(this).parent().next("div").children("input[name^=csEndTime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
-		$(this).parent().next("div").children("input[name^=csEndTime]").timepicker('setTime', newTime);
 	});
 	
 	$("#applyTimesAllDays").on('click',function(){
@@ -1974,13 +1953,9 @@ $(document).ready(function() {
 		ohstartTime = $("."+id).find("input[name^=ohStartTime]").val();
 		ohendTime = $("."+id).find("input[name^=ohEndTime]").val();
 		
-		csstartTime = $("."+id).find("input[name^=csStartTime]").val();
-		csendTime = $("."+id).find("input[name^=csEndTime]").val();
+		duration = $("."+id).find("input[name^=duration]").val();
 		
-		duration = $("."+id).find("span[name^=csDuration]").text();
-		
-		leadDTime = $("."+id).find("input[name^=leadDrinksMins]").val();
-		leadFTime = $("."+id).find("input[name^=leadFoodMins]").val();
+		leadTime = $("."+id).find("input[name^=leadtime]").val();
 		
 		//apply to all days!
 		$("body").find("input[name^=ohStartTime]").each(function(){
@@ -1989,20 +1964,11 @@ $(document).ready(function() {
 		$("body").find("input[name^=ohEndTime]").each(function(){
 			$(this).val(ohendTime);
 		});
-		$("body").find("input[name^=csStartTime]").each(function(){
-			$(this).val(csstartTime);
+		$("body").find("input[name^=duration]").each(function(){
+			$(this).val(duration);
 		});
-		$("body").find("input[name^=csEndTime]").each(function(){
-			$(this).val(csendTime);
-		});
-		$("body").find("span[name^=csDuration]").each(function(){
-			$(this).text(duration);
-		});
-		$("body").find("input[name^=leadDrinksMins]").each(function(){
-			$(this).val(leadDTime);
-		});
-		$("body").find("input[name^=leadFoodMins]").each(function(){
-			$(this).val(leadFTime);
+		$("body").find("input[name^=leadtime]").each(function(){
+			$(this).val(leadTime);
 		});
 		
 		//notify!
@@ -2611,32 +2577,6 @@ function searchArray(string,array){
 	   match = true;
 	}
 	return match;
-}
-
-function getDuration(id)
-{
-	start = new Array();
-	$("."+id).find("input[name^=csStartTime]").each(function(){
-		start.push($(this).val());
-	});
-	
-	end = new Array();
-	$("."+id).find("input[name^=csEndTime]").each(function(){
-		end.push($(this).val());
-	});
-	
-	result = new Array();
-	for(i=0;i<start.length;i++)
-	{
-		result[i]= Math.abs(new Date('2000/01/01 '+start[i]) - new Date(new Date('2000/01/01 '+end[i])));
-		result[i] = parseInt((Math.floor((result[i]/1000)/60))/60)+"hrs "+ parseInt((Math.floor((result[i]/1000)/60))%60)+"mins";
-	}
-	
-	i=0;
-	$("."+id).find("span[name^=csDuration]").each(function(){
-		$(this).text(result[i]);
-		i++;
-	});
 }
 
 function extractAMPM(date) {

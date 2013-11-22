@@ -5,7 +5,7 @@
 		<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
 		<nav class="breadcrumbs row--space1d">
 			<a href="<?echo $_SESSION['path']?>/venueSettings.php"><? echo _("Venue Information");?></a>
-			<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling 1/2");?></a>
+			<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling");?></a>
 			<a class="current" href="#"><? echo _("Menu Creation");?></a>
 			<?if(!$_SESSION['noEHFlag']){?>
 				<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a href="<?echo $_SESSION['path']?>/eventSettings.php"><? echo _("Events");?></a>
@@ -25,7 +25,7 @@
 		<?}?>
 		<div class="large-12 columns">
 
-			<h1><?if(!isset($_SESSION['menu_edit_on'])) echo _("Build your menu"); else echo _("Your menu");?></h1>
+			<h1><?if(!isset($_SESSION['menu_edit_on'])) echo _("Build your menu"); else echo _("Your menu");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Now it's time to create your menu. We suggest you keep it simple to start with. An easy way is group items into sections.");?>"></i></h1>
 
 			<!-- Hidden inputs here keep count of menu items and options -->
 			<input type="hidden" id="sectionCount" 			name="sectionCount"			value="<?if($_SESSION['menu_edit_on']) echo $sectionCount; else echo "0";?>"/>
@@ -91,7 +91,7 @@
 							<input type="text" name="iQuan[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Unlimited");?>"/>
 						</td>
 						<td class="menuTDVisi">
-							<div class="switch tiny"> 
+							<div class="switch tiny" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>"> 
 								<input name="iVisi[section0][0]" value="0" type="radio">
 								<label><?echo _("No");?></label>
 
@@ -198,7 +198,7 @@
 								<input type="text" name="iQuan[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" <?if($item['quantity']){?>value="<?echo $item['quantity']?>"<?}else{?>placeholder="<?echo _("Unlimited");}?>"  readonly="readonly"/>
 							</td>
 							<td class="menuTDVisi">
-								<div class="switch tiny"> 
+								<div class="switch tiny" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>"> 
 									<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="0" type="radio" <?if(!$item['visible']){?>checked<?}?>>
 									<label><?echo _("No");?></label>
 
