@@ -9,4 +9,6 @@
 	$_SESSION['secondaryMenuFlag']		= 0;
 	$_SESSION['venue_netimes_edit_on']	= 0;
 	$_SESSION['md_edit_on']				= 0;
+	$_SESSION['pay_edit_on']			= 0;
+	$_SESSION['finish_edit_on']			= 0;
 ?>

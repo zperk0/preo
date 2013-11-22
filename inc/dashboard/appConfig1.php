@@ -1,3 +1,10 @@
+<?
+	if(!isset($_SESSION['app_title'])) $_SESSION['app_title']=null;
+	if(!isset($_SESSION['app_button2Colour'])) $_SESSION['app_button2Colour']=null;
+	if(!isset($_SESSION['app_button3Colour'])) $_SESSION['app_button3Colour']=null;
+	if(!isset($_SESSION['app_button2TextColour'])) $_SESSION['app_button2TextColour']=null;
+	if(!isset($_SESSION['app_button3TextColour'])) $_SESSION['app_button3TextColour']=null;
+?>
 <div class="row">
 	<div class="topSpacer"></div>
 	<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
@@ -9,6 +16,21 @@
 		<?}else{?>
 			<a class="unavailable" href="#"><? echo _("Menu Creation");?></a>
 		<?}?>
+		<?if(!$_SESSION['noEHFlag']){?>
+			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a href="<?echo $_SESSION['path']?>/eventSettings.php"><? echo _("Events");?></a>
+			<?}else{?><a href="<?echo $_SESSION['path']?>/nonEventSettings.php"><? echo _("Opening Hours");?></a><?}?>
+		<?}else{?>
+			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="unavailable" href="#"><? echo _("Events");?></a>
+			<?}else{?><a class="unavailable" href="#"><? echo _("Opening Hours");?></a><?}?>
+		<?}?>
+		
+		<?if(!$_SESSION['noPaymentFlag']){?>
+			<a href="<?echo $_SESSION['path']?>/paymentSettings.php"><? echo _("Payment Method");?></a>
+		<?}else{?>
+			<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
+		<?}?>
+		
+		<a class="unavailable" href="#"><? echo _("Done");?></a>
 	</nav>
 	<?}?>
 	<div class="large-12 columns">
@@ -132,7 +154,7 @@
 								<div class="large-12 small-12 columns">
 									<label class="left row--space0-5d"><?echo _("Logo Upload");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="Note: This will replace your main heading."></i>
 									<input type="file" id="picFile" name="picFile" accept="image/png,image/jpeg" class="" />
-									<p><?echo _("Supported types: JPG or PNG");?><br/><?echo _("Max file size: 10MB");?></p>
+									<p><?echo _("Supported types: JPG or PNG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 100x75");?></p>
 								</div>
 							</div>
 							<div class="row row--space1">
@@ -157,8 +179,8 @@
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
 $(document).ready(function() {
-	$('.progressIndicator').css('width','130%');
-	$('.progressIndicator').attr('title', "26% done, time for the artistic bit...");
+	$('.progressIndicator').css('width','150%');
+	$('.progressIndicator').attr('title', "30% done, time for the artistic bit...");
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });

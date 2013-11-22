@@ -264,6 +264,6 @@
 			}
 		}
 	}
-	
+	$_SESSION['menus'] = $menu;
 	echo $curlResult; //sending a JSON via ajax 
 ?>

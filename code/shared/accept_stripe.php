@@ -22,6 +22,7 @@
 	if(isset($_SESSION['noLiveFlag']) && $_SESSION['noLiveFlag'])
 	{
 		$_SESSION['noLiveFlag']=0;
+		$_SESSION['signupWizFlag']=1;
 		header('location:'.$_SESSION['path'].'/finish.php'); //redirect to dash
 		exit;
 	}

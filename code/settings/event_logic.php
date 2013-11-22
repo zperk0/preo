@@ -3,6 +3,7 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/protect_input.php'); 
 
 
 	//we use the user's token
@@ -56,6 +57,12 @@
 		
 		$_SESSION['event_edit_on']=1;
 		$redirectFlag = 0;
+	}
+	
+	if(isset($_GET['r']))
+	{
+		$redirectFlag = $_GET['r'];
+		protect($redirectFlag);	
 	}
 	
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 

@@ -4,15 +4,30 @@
 	<nav class="breadcrumbs row--space1d">
 		<a class="current"	   href="#"><? echo _("Venue Information");?></a>
 		<?if(!$_SESSION['noAppFlag-1']){?>
-			<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling 1/2");?></a>
+			<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling");?></a>
 		<?}else{?>
-			<a class="unavailable" href="#"><? echo _("App Styling 1/2");?></a>
+			<a class="unavailable" href="#"><? echo _("App Styling");?></a>
 		<?}?>
 		<?if(!$_SESSION['noMenuFlag']){?>
 			<a href="<?echo $_SESSION['path']?>/menuSettings.php"><? echo _("Menu Creation");?></a>
 		<?}else{?>
 			<a class="unavailable" href="#"><? echo _("Menu Creation");?></a>
 		<?}?>
+		<?if(!$_SESSION['noEHFlag']){?>
+			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a href="<?echo $_SESSION['path']?>/eventSettings.php"><? echo _("Events");?></a>
+			<?}else{?><a href="<?echo $_SESSION['path']?>/nonEventSettings.php"><? echo _("Opening Hours");?></a><?}?>
+		<?}else{?>
+			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="unavailable" href="#"><? echo _("Events");?></a>
+			<?}else{?><a class="unavailable" href="#"><? echo _("Opening Hours");?></a><?}?>
+		<?}?>
+		
+		<?if(!$_SESSION['noPaymentFlag']){?>
+			<a href="<?echo $_SESSION['path']?>/paymentSettings.php"><? echo _("Payment Method");?></a>
+		<?}else{?>
+			<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
+		<?}?>
+		
+		<a class="unavailable" href="#"><? echo _("Done");?></a>
 	</nav>
 	<?}?>
 	<form id="venueConfigForm" method="POST" class="custom" data-abide>
@@ -41,7 +56,7 @@
 				<div class="large-12 columns">
 					<label><?echo _("Venue address");?></label>
 					<input type="text" name="vAdd" id="vAdd" required tabindex=3 value="<?if(isset($_SESSION['venue_address'])) echo $_SESSION['venue_address'];?>">
-					<input type="hidden" required name="vCode" id="vCode" value="<?if(isset($_SESSION['venue_latitude']) && isset($_SESSION['venue_longitude']))  echo "(".$_SESSION['venue_latitude'].", ".$_SESSION['venue_longitude'].")";?>">
+					<input type="hidden" name="vCode" id="vCode" value="<?if(isset($_SESSION['venue_latitude']) && isset($_SESSION['venue_longitude']))  echo "(".$_SESSION['venue_latitude'].", ".$_SESSION['venue_longitude'].")"; else echo "(0, 0)";?>">
 					<small class="error"><?echo _("Please type a venue address");?></small>
 				</div>
 			</div>
@@ -100,7 +115,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','100%');
-	$('.progressIndicator').attr('title', "11% done, keep going!");
+	$('.progressIndicator').attr('title', "15% done, keep going!");
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });

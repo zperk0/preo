@@ -60,10 +60,10 @@
 								<?foreach($_SESSION['menus'] as $menu){?>
 									<p id="p-<?echo $menu['id']?>">
 										<a class="dashMenuIcon" 			href="<?echo $_SESSION['path']?>/menuSettings.php?id=<?echo $menu['id'];?>" title="<?echo _("Edit")." $menu[name]";?>"><?echo $menu['name']?></a>
-										<a class="dashMenuIcon deleteMenu" 	id="dmi-<?echo $menu['id']?>"  title="<?echo _("Delete")." $menu[name]";?>"><i class="fi-x"></i></a>
+										<!--<a class="dashMenuIcon deleteMenu" 	id="dmi-<?echo $menu['id']?>"  title="<?echo _("Delete")." $menu[name]";?>"><i class="fi-x"></i></a>-->
 									</p>
 								<?}?>
-								<p><a href="<?echo $_SESSION['path']?>/newMenu.php"><?echo _("Add new menu");?></a></p>
+								<!--<p><a href="<?echo $_SESSION['path']?>/newMenu.php"><?echo _("Add new menu");?></a></p>--?
 								<!--<p><a href="<?echo $_SESSION['path']?>/mealDealSettings.php"><?echo _("Meal Deals");?></a></p>-->
 							</div>
 						</section>
@@ -89,7 +89,8 @@
 								<p><a href="<?echo $_SESSION['path']?>/settings.php"><?echo _("Account settings");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/userSettings.php"><?echo _("Manage users");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/paymentSettings.php"><?echo _("Add a payment method");?></a></p>
-								<p><a href="<?echo $_SESSION['path']?>/finish.php"><?echo _("Publish App");?></a></p>
+								<?if(!$_SESSION['venue_liveFlag']){?><p><a href="<?echo $_SESSION['path']?>/finish.php"><?echo _("Publish My App");?></a></p>
+								<?}else{?><p><a href="<?echo $_SESSION['path']?>/finish.php"><?echo _("Take My App Offline");?></a></p><?}?>
 								<?if(!$_SESSION['venue_eventFlag']){?>
 								<p><a href="<?echo $_SESSION['path']?>/nonEventSettings.php"><?echo _("Hours, Collection Slots, Lead Times");?></a></p>
 								<?}?>
@@ -170,6 +171,15 @@
 			noty({
 			  type: 'success',  layout: 'topCenter',
 			  text: '<?echo _("Your app is now live!");?>'
+			});
+		<?
+		}?>
+		
+		<?if(isset($_SESSION['appUnPublished']) && $_SESSION['appUnPublished']=='08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B'){
+			$_SESSION['appUnPublished']=0;?>
+			noty({
+			  type: 'success',  layout: 'topCenter',
+			  text: '<?echo _("Your app is now offline!");?>'
 			});
 		<?
 		}?>

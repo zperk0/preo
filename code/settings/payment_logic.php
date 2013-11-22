@@ -31,6 +31,8 @@
 		}
 	}
 	
+	if(!$_SESSION['signupWizFlag']) $_SESSION['pay_edit_on']=1;
+	
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/paymentConfig.php');

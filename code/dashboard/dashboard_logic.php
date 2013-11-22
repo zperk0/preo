@@ -49,6 +49,7 @@
 		$_SESSION['venue_longitude']	= $dataJSON[0]['longitude'];	
 		$_SESSION['venue_postcode']		= $dataJSON[0]['postcode'];	
 		$_SESSION['venue_eventFlag']	= $dataJSON[0]['eventFlag'];	
+		$_SESSION['venue_liveFlag']		= $dataJSON[0]['liveFlag'];	
 		
 		//we get venue id from _SESSION
 		$venueID = $_SESSION['venue_id'];
@@ -236,6 +237,7 @@
 	}
 	else if($_SESSION['noEHFlag']) /* User has not given all 5 so fourth check EH */
 	{	
+		$_SESSION['signupWizFlag']=1;
 		if(!$_SESSION['venue_eventFlag']) 
 		{
 			header("location:".$_SESSION['path'].'/nonEventSettings.php');
@@ -249,6 +251,7 @@
 	}
 	else if($_SESSION['noPaymentFlag']) /* User has not given all 5 so fifth check Payment */
 	{	
+		$_SESSION['signupWizFlag']=1;
 		$_SESSION['noLiveFlag']=1;
 		header("location:".$_SESSION['path'].'/paymentSettings.php');
 		exit;

@@ -7,6 +7,20 @@
 			<a href="<?echo $_SESSION['path']?>/venueSettings.php"><? echo _("Venue Information");?></a>
 			<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling 1/2");?></a>
 			<a class="current" href="#"><? echo _("Menu Creation");?></a>
+			<?if(!$_SESSION['noEHFlag']){?>
+				<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a href="<?echo $_SESSION['path']?>/eventSettings.php"><? echo _("Events");?></a>
+				<?}else{?><a href="<?echo $_SESSION['path']?>/nonEventSettings.php"><? echo _("Opening Hours");?></a><?}?>
+			<?}else{?>
+				<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="unavailable" href="#"><? echo _("Events");?></a>
+				<?}else{?><a class="unavailable" href="#"><? echo _("Opening Hours");?></a><?}?>
+			<?}?>
+			<?if(!$_SESSION['noPaymentFlag']){?>
+				<a href="<?echo $_SESSION['path']?>/paymentSettings.php"><? echo _("Payment Method");?></a>
+			<?}else{?>
+				<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
+			<?}?>
+			
+			<a class="unavailable" href="#"><? echo _("Done");?></a>
 		</nav>
 		<?}?>
 		<div class="large-12 columns">
@@ -23,7 +37,7 @@
 			<input type="hidden" id="item0_optionCount" 	name="item0_optionCount"	value="0"/>
 			<input type="hidden" id="item0_optionCountAct" 	name="item0_optionCountAct" value="0"/>
 			
-			<input type="hidden" id="redirectFlag" value="<?echo !$_SESSION['menu_edit_on']?>"/>
+			<input type="hidden" id="redirectFlag" value="<?echo $redirectFlag?>"/>
 			
 			<?if($_SESSION['menu_edit_on']) :
 				foreach($itemOptionArray as $key=>$itemOption)
@@ -318,8 +332,8 @@
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
 $(document).ready(function() {
-	$('.progressIndicator').css('width','240%');
-	$('.progressIndicator').attr('title', "55% done, now for the fun bit!");
+	$('.progressIndicator').css('width','200%');
+	$('.progressIndicator').attr('title', "45% done, now for the fun bit!");
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });

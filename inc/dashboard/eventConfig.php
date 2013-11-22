@@ -2,6 +2,22 @@
 <form id="eventConfigForm" method="POST" data-abide>
 	<div class="row">
 		<div class="topSpacer"></div>
+		<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
+			<nav class="breadcrumbs row--space1d">
+				<a href="<?echo $_SESSION['path']?>/venueSettings.php"><? echo _("Venue Information");?></a>
+				<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling 1/2");?></a>
+				<a href="<?echo $_SESSION['path']?>/menuSettings.php?id=<?echo $_SESSION['menu_id'];?>&r=1"><? echo _("Menu Creation");?></a>
+				<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="current" href="#"><? echo _("Events");?></a>
+				<?}else{?><a class="current" href="#"><? echo _("Opening Hours");?></a><?}?>
+				<?if(!$_SESSION['noPaymentFlag']){?>
+					<a href="<?echo $_SESSION['path']?>/paymentSettings.php"><? echo _("Payment Method");?></a>
+				<?}else{?>
+					<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
+				<?}?>
+				
+				<a class="unavailable" href="#"><? echo _("Done");?></a>
+			</nav>
+		<?}?>
 		<div class="large-12 columns">
 			<h1><?echo _("Your events");?></h1>
 
@@ -202,3 +218,11 @@
 		</div>
 	</div>
 </form>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.progressIndicator').css('width','350%');
+	$('.progressIndicator').attr('title', "75% done, almost there now...");
+	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
+	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
+});
+</script>

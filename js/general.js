@@ -57,7 +57,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						
@@ -68,7 +68,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: dataArray['message'] //text: "Sorry, but there's been an error processing your request."
 						});
 					}
 					else
@@ -109,7 +109,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						return false;
@@ -119,7 +119,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: dataArray['message'] //text: "Sorry, but there's been an error processing your request."
 						});
 				   
 					}
@@ -161,7 +161,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						
 						//alert(data);
@@ -173,7 +173,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 				   
 					}
@@ -292,7 +292,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						
@@ -303,7 +303,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 					}
 					else
@@ -432,9 +432,9 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
-						
+						alert(data);
 						return false;
 					}
 					
@@ -442,7 +442,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: "Sorry, but there's been an error processing your request." /*text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 				   
 					}
@@ -479,7 +479,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						
 						return false;
@@ -489,7 +489,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 				   
 					}
@@ -949,10 +949,10 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						
-						alert(data);
+						//alert(data);
 						
 						return false;
 					}
@@ -961,7 +961,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 				   
 					}
@@ -1219,7 +1219,7 @@ $(document).ready(function() {
 								{
 									noty({
 									  type: 'error',  layout: 'topCenter',
-									  text: 'Connection Error! Check API endpoint.'
+									  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 									});
 									
 									//alert(data);
@@ -1358,9 +1358,9 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
-						alert(data);
+						//alert(data);
 						return false;
 					}
 					
@@ -1368,7 +1368,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 				   
 					}
@@ -1557,7 +1557,7 @@ $(document).ready(function() {
 								{
 									noty({
 									  type: 'error',  layout: 'topCenter',
-									  text: 'Connection Error! Check API endpoint.'
+									  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 									});
 									
 									//alert(data);
@@ -1623,9 +1623,9 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
-						alert(data);
+						//alert(data);
 						return false;
 					}
 					
@@ -1633,7 +1633,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 					}
 					else
@@ -1832,7 +1832,7 @@ $(document).ready(function() {
 								{
 									noty({
 									  type: 'error',  layout: 'topCenter',
-									  text: 'Connection Error! Check API endpoint.'
+									  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 									});
 									
 									//alert(data);
@@ -1890,7 +1890,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						return false;
@@ -1900,7 +1900,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 					}
 					else
@@ -2012,6 +2012,13 @@ $(document).ready(function() {
 		});
 	});
 	
+	$("#nonEventConfigForm").on('invalid', function (event) {
+		noty({
+		  type: 'error',  layout: 'topCenter',
+		  text: "We still need some more information. Don't forget to fill out the remaining days of the week!" /*text: dataArray['message']*/
+		});
+	});
+	
 	$("#nonEventConfigForm").on('valid', function (event) {
 		var url = "code/dashboard/do_nonEventConfig.php";
 
@@ -2029,9 +2036,9 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
-						alert(data);
+						//alert(data);
 						return false;
 					}
 					
@@ -2039,7 +2046,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 					}
 					else
@@ -2082,9 +2089,9 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
-						alert(data);
+						//alert(data);
 						return false;
 					}
 					
@@ -2092,7 +2099,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 					}
 					else
@@ -2274,7 +2281,7 @@ $(document).ready(function() {
 								{
 									noty({
 									  type: 'error',  layout: 'topCenter',
-									  text: 'Connection Error! Check API endpoint.'
+									  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 									});
 									
 									//alert(data);
@@ -2353,7 +2360,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						return false;
@@ -2363,7 +2370,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 					}
 					else
@@ -2461,7 +2468,7 @@ $(document).ready(function() {
 							{
 								noty({
 								  type: 'error',  layout: 'topCenter',
-								  text: 'Connection Error! Check API endpoint.'
+								  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 								});
 								
 								//alert(data);
@@ -2500,7 +2507,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						return false;
@@ -2510,7 +2517,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message']
+						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 					}
 					else
@@ -2590,7 +2597,7 @@ function clearMapInput() {
 	$("#vSug").val('');
 	$("#vName").val('');
 	$("#vAdd").val('');
-	$("#vCode").val('');
+	$("#vCode").val('(0, 0)');
 	if (typeof marker != 'undefined') marker.setMap(null);
 }
 

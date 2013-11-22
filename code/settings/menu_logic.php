@@ -5,7 +5,6 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 
-
 	//we use the user's token
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
 	
@@ -13,9 +12,25 @@
 	$venueID = $_SESSION['venue_id'];
 	
 	//GET
-	$menuID = $_GET['id'];
-	protect($menuID);
-
+	if(isset($_GET['id']))
+	{
+		$menuID = $_GET['id'];
+		protect($menuID);
+	}
+	else
+	{
+		header("location:$_SESSION[path]/");
+		exit;
+	}
+	
+	if(isset($_GET['r']))
+	{
+		$redirectFlag = $_GET['r'];
+		protect($redirectFlag);	
+	}
+	else
+		$redirectFlag = 0;
+		
 	//////MENU////////////////////////////////////////////////////////////////////////////
 	
 	//query to find menu sanity
@@ -25,6 +40,7 @@
 	if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404) || empty($menuID)) 
 	{	
 		header("location:$_SESSION[path]/");
+		exit;
 	}
 	else
 	{	
