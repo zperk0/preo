@@ -64,7 +64,7 @@
 									</p>
 								<?}?>
 								<p><a href="<?echo $_SESSION['path']?>/newMenu.php"><?echo _("Add new menu");?></a></p>
-								<p><a href="<?echo $_SESSION['path']?>/mealDealSettings.php"><?echo _("Meal Deals");?></a></p>
+								<!--<p><a href="<?echo $_SESSION['path']?>/mealDealSettings.php"><?echo _("Meal Deals");?></a></p>-->
 							</div>
 						</section>
 						<?if($_SESSION['venue_eventFlag']){?>		
