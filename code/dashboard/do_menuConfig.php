@@ -102,9 +102,9 @@
 					{
 						if(isset($_POST['oName']['item'.$b][$y]) && $_POST['oName']['item'.$b][$y])
 						{
-							$menu[$i]['items'][$a]['options'][$x]['name'] = /*protect(*/$_POST['oName']['item'.$j][$y];//);
-							$menu[$i]['items'][$a]['options'][$x]['price'] = /*protect(*/$_POST['oPrice']['item'.$j][$y];//);
-							$menu[$i]['items'][$a]['options'][$x]['visible'] = /*protect(*/$_POST['oVisi']['item'.$j][$y];//);
+							$menu[$i]['items'][$a]['options'][$x]['name'] = /*protect(*/$_POST['oName']['item'.$b][$y];//);
+							$menu[$i]['items'][$a]['options'][$x]['price'] = /*protect(*/$_POST['oPrice']['item'.$b][$y];//);
+							$menu[$i]['items'][$a]['options'][$x]['visible'] = /*protect(*/$_POST['oVisi']['item'.$b][$y];//);
 								if(!isset($menu[$i]['items'][$a]['options'][$x]['visible']) || !$menu[$i]['items'][$a]['options'][$x]['visible']){ $menu[$i]['items'][$a]['options'][$x]['visible'] = 0; }
 							
 							$x++;
