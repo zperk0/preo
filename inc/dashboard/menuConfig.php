@@ -102,7 +102,7 @@
 							</div>
 						</td>
 						<td class="menuTDTools">
-							<button type="button" class="menuTableButtons itemSave"				title="<?echo _("Lock");?>"							><i class="icon-lock"></i></button>
+							<button type="button" class="menuTableButtons itemSave"				title="<?echo _("Collapse");?>"							><i class="icon-chevron-up"></i></button>
 							<button type="button" class="menuTableButtons itemEdit hide" 		title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
 							<button type="button" class="menuTableButtons itemDuplicate" 		title="<?echo _("Duplicate");?>" id="dup_section0"	><i class="icon-copy"></i></button>
 							<button type="button" class="menuTableButtons secondary itemDelete" title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
@@ -209,7 +209,7 @@
 								</div>
 							</td>
 							<td class="menuTDTools">
-								<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Lock");?>"							><i class="icon-lock"></i></button>
+								<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Collapse");?>"							><i class="icon-chevron-up"></i></button>
 								<button type="button" class="menuTableButtons itemEdit" 				title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
 								<button type="button" class="menuTableButtons itemDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($iKey+1);?>_section<?echo ($sKey+1);?>"	><i class="icon-copy"></i></button>
 								<button type="button" class="menuTableButtons secondary itemDelete" 	title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>

@@ -40,7 +40,7 @@
 								</div>
 							</td>
 							<td class="mdTDTools">
-								<button type="button" class="mdTableButtons mdSave hide"		title="<?echo _("Lock");?>"		><i class="icon-lock"></i></button>
+								<button type="button" class="mdTableButtons mdSave hide"		title="<?echo _("Collapse");?>"		><i class="icon-chevron-up"></i></button>
 								<button type="button" class="mdTableButtons mdTDEdit"	 		title="<?echo _("Edit");?>"		><i class="fi-pencil"></i></button>
 								<button type="button" class="mdTableButtons secondary mdDelete" title="<?echo _("Delete");?>"	><i class="fi-x"></i></button>
 							</td>
@@ -102,7 +102,7 @@
 							</div>
 						</td>
 						<td class="mdTDTools">
-							<button type="button" class="mdTableButtons mdSave"				title="<?echo _("Lock");?>"		><i class="icon-lock"></i></button>
+							<button type="button" class="mdTableButtons mdSave"				title="<?echo _("Collapse");?>"		><i class="icon-chevron-up"></i></button>
 							<button type="button" class="mdTableButtons mdTDEdit hide" 		title="<?echo _("Edit");?>"		><i class="fi-pencil"></i></button>
 							<button type="button" class="mdTableButtons secondary mdDelete" title="<?echo _("Delete");?>"	><i class="fi-x"></i></button>
 						</td>

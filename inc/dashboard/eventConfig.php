@@ -85,7 +85,7 @@
 									</div>
 								</td>
 								<td class="eventTDTools">
-									<button type="button" class="eventTableButtons eventSave"					title="<?echo _("Lock");?>"							><i class="icon-lock"></i></button>
+									<button type="button" class="eventTableButtons eventSave"					title="<?echo _("Collapse");?>"							><i class="icon-chevron-up"></i></button>
 									<button type="button" class="eventTableButtons eventTDEdit hide" 			title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
 									<button type="button" class="eventTableButtons eventDuplicate" 				title="<?echo _("Duplicate");?>" id="dup0"			><i class="icon-copy"></i></button>
 									<button type="button" class="eventTableButtons secondary eventDelete" 		title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
@@ -162,7 +162,7 @@
 							</div>
 						</td>
 						<td class="eventTDTools">
-							<button type="button" class="eventTableButtons eventSave hide" 			title="<?echo _("Lock");?>"										><i class="icon-lock"></i></button>
+							<button type="button" class="eventTableButtons eventSave hide" 			title="<?echo _("Collapse");?>"										><i class="icon-chevron-up"></i></button>
 							<button type="button" class="eventTableButtons eventTDEdit" 			title="<?echo _("Edit");?>"										><i class="fi-pencil"></i></button>
 							<button type="button" class="eventTableButtons eventDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($eKey+1);?>"	><i class="icon-copy"></i></button>
 							<button type="button" class="eventTableButtons secondary eventDelete" 	title="<?echo _("Delete");?>"									><i class="fi-x"></i></button>

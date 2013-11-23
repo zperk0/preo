@@ -35,7 +35,7 @@
 									<small class="error"><?echo _("Please choose a menu");?></small>
 								</td>
 								<td class="outletTDTools">
-									<button type="button" class="outletTableButtons outletSave"					title="<?echo _("Lock");?>"		><i class="icon-lock"></i></button>
+									<button type="button" class="outletTableButtons outletSave"					title="<?echo _("Collapse");?>"		><i class="icon-chevron-up"></i></button>
 									<button type="button" class="outletTableButtons outletTDEdit hide" 			title="<?echo _("Edit");?>"		><i class="fi-pencil"></i></button>
 									<button type="button" class="outletTableButtons secondary outletDelete" 	title="<?echo _("Delete");?>"	><i class="fi-x"></i></button>
 								</td>
@@ -69,7 +69,7 @@
 							<small class="error"><?echo _("Please choose a menu");?></small>
 						</td>
 						<td class="outletTDTools">
-							<button type="button" class="outletTableButtons outletSave hide" 			title="<?echo _("Lock");?>"		><i class="icon-lock"></i></button>
+							<button type="button" class="outletTableButtons outletSave hide" 			title="<?echo _("Collapse");?>"		><i class="icon-chevron-up"></i></button>
 							<button type="button" class="outletTableButtons outletTDEdit" 				title="<?echo _("Edit");?>"		><i class="fi-pencil"></i></button>
 							<button type="button" class="outletTableButtons secondary outletDelete" 	title="<?echo _("Delete");?>"	><i class="fi-x"></i></button>
 						</td>

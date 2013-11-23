@@ -53,7 +53,7 @@
 									</select>
 								</td>
 								<td class="userTDTools">
-									<button type="button" class="userTableButtons userSave"					title="<?echo _("Lock");?>"					><i class="icon-lock"></i></button>
+									<button type="button" class="userTableButtons userSave"					title="<?echo _("Collapse");?>"					><i class="icon-chevron-up"></i></button>
 									<button type="button" class="userTableButtons userTDEdit hide" 			title="<?echo _("Edit");?>"					><i class="fi-pencil"></i></button>
 									<!--<button type="button" class="userTableButtons userDuplicate" 			title="<?echo _("Duplicate");?>" id="dup0"	><i class="icon-copy"></i></button>-->
 									<button type="button" class="userTableButtons secondary userDelete" 	title="<?echo _("Delete");?>"				><i class="fi-x"></i></button>
@@ -93,7 +93,7 @@
 							</select>
 						</td>
 						<td class="userTDTools">
-							<button type="button" class="userTableButtons userSave hide" 			title="<?echo _("Lock");?>"										><i class="icon-lock"></i></button>
+							<button type="button" class="userTableButtons userSave hide" 			title="<?echo _("Collapse");?>"										><i class="icon-chevron-up"></i></button>
 							<button type="button" class="userTableButtons userTDEdit" 				title="<?echo _("Edit");?>"										><i class="fi-pencil"></i></button>
 							<!--<button type="button" class="userTableButtons userDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($uKey+1);?>"	><i class="icon-copy"></i></button>-->
 							<button type="button" class="userTableButtons secondary userDelete <?if($_SESSION['user_id'] == $user['id']) echo 'hide';?>" 	title="<?echo _("Delete");?>"									><i class="fi-x"></i></button>

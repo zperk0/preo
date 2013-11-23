@@ -716,7 +716,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .userTable .userTDEmail, .headerTable .userTDEMail{
-	width: 32%;
+	width: 30%;
 }
 
 .menuTable .menuTDPrice{
@@ -742,7 +742,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .menuTable .menuTDPrice input, .mdTable .mdTDPrice input, .mdTable .mdTDTPrice input{
-	text-align: center;
+	text-align: left;
 }
 
 .eventTable .eventTDTime input, .userTable .userTDPassword input {
@@ -784,7 +784,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 .userTable .userTDRole, .userTable .userTDRole{
 	width: 9%;
 	font-size: 14px;
-	padding-top: 8px;
+	padding-top: 0px;
 }
 
 .eventTable .eventTDDate input{
