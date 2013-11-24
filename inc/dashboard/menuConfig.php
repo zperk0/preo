@@ -323,7 +323,7 @@
 	
 	<div class="row">
 		<div class="small-12 large-4 columns">
-			<button type="submit"><?echo _("SAVE MENU");?></button>
+			<button id="menuSaveButton" type="submit"><?echo _("SAVE MENU");?></button>
 		</div>
 	</div>
 </form>

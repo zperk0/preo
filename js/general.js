@@ -932,6 +932,8 @@ $(document).ready(function() {
 			if($(this).is(":visible"))
 				$(this).trigger('click');
 		});
+		
+		$('#menuSaveButton').hide();
 	
 		var url = "code/dashboard/do_menuConfig.php";
 		
@@ -972,7 +974,8 @@ $(document).ready(function() {
 					}
 				}
 			 });
-
+		
+		$('#menuSaveButton').show();
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
