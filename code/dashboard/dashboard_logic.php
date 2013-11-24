@@ -233,6 +233,7 @@
 	{	
 		$_SESSION['signupWizFlag']=1;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
+		$redirectFlag=1;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/menuConfig.php"); 
 	}
 	else if($_SESSION['noEHFlag']) /* User has not given all 5 so fourth check EH */

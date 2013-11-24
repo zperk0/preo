@@ -11,6 +11,8 @@
 	//we get account id from _SESSION
 	$venueID = $_SESSION['venue_id'];
 	
+	$redirectFlag=0;
+	
 	//GET
 	if(isset($_GET['id']))
 	{
@@ -23,13 +25,19 @@
 		exit;
 	}
 	
+	if($_SESSION['signupWizFlag'])
+	{
+		$redirectFlag = 1;	
+	}
+	else
+		$redirectFlag = 0;
+		
+		
 	if(isset($_GET['r']))
 	{
 		$redirectFlag = $_GET['r'];
 		protect($redirectFlag);	
 	}
-	else
-		$redirectFlag = 0;
 		
 	//////MENU////////////////////////////////////////////////////////////////////////////
 	
