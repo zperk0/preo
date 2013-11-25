@@ -685,7 +685,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	display: inline;
 }
 
-.menuTable .menuTDName, .userTable .userTDName, .headerTable .userTDName{
+.menuTable .menuTDName, .userTable .userTDName, .headerTable .userTDName, .headerTable .menuTDName{
 	font-weight: bold !important;
 	width: 30%;
 }
@@ -693,7 +693,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 .eventTable {
 	margin-top: -1px !important;
 }
-.eventTable .eventTDName{
+.eventTable .eventTDName, .headerTable .eventTDName{
 	font-weight: bold !important;
 	width: 26%;
 }
@@ -707,24 +707,24 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	font-weight: bold !important;
 }
 
-.menuTable .menuTDDesc{
+.menuTable .menuTDDesc, .headerTable .menuTDDesc{
 	width: 32%;
 }
 
-.eventTable .eventTDDesc{
-	width: 28%;
+.eventTable .eventTDDesc, .headerTable .eventTDDesc{
+	width: 24%;
 }
 
 .userTable .userTDEmail, .headerTable .userTDEMail{
 	width: 30%;
 }
 
-.menuTable .menuTDPrice{
+.menuTable .menuTDPrice, .headerTable .menuTDPrice{
 	width: 9%;
 }
 
-.eventTable .eventTDTime{
-	width: 4%;
+.eventTable .eventTDTime, .headerTable .eventTDTime{
+	width: 8%;
 }
 
 .outletTable .outletTDMenu{
@@ -755,7 +755,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	width: 100% !important;
 }
 
-.menuTable .menuTDQuant{
+.menuTable .menuTDQuant, .headerTable .menuTDQuant{
 	width: 9%;
 }
 
@@ -763,8 +763,8 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	font-size: 80% !important;
 	height: 42px;
 }
-.eventTable .eventTDDate{
-	width: 13%;
+.eventTable .eventTDDate, .headerTable .eventTDDate{
+	width: 14%;
 }
 .eventTable .eventTDCollection{
 	width: 25%;
@@ -781,10 +781,13 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	display: block;
 }
 
-.userTable .userTDRole, .userTable .userTDRole{
+.userTable .userTDRole, .headerTable .userTDRole{
 	width: 9%;
 	font-size: 14px;
 	padding-top: 0px;
+}
+.headerTable .userTDRole{
+	padding-bottom: 1px;
 }
 
 .eventTable .eventTDDate input{
@@ -831,15 +834,15 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	padding-top: 20px;
 }
 
-.menuTable .menuTDVisi, .eventTable .eventTDVisi, .mdTable .mdTDVisi{
+.menuTable .menuTDVisi, .eventTable .eventTDVisi, .mdTable .mdTDVisi, .headerTable .eventTDVisi, .headerTable .menuTDVisi{
 	width: 8%;
 }
 
-.menuTable .menuTDTools, .eventTable .eventTDTools{
+.menuTable .menuTDTools, .eventTable .eventTDTools, .headerTable .eventTDTools, .headerTable .menuTDTools{
 	width: 12%;
 }
 
-.userTable .userTDTools, .outletTable .outletTDTools, .userTable .userTDTools{
+.userTable .userTDTools, .outletTable .outletTDTools, .userTable .userTDTools, .headerTable .userTDTools{
 	width: 8%;
 }
 
@@ -909,8 +912,13 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	min-width: 950px;
 }
 
-.headerTable thead {
+.headerTable thead, .innerTableHeader {
 	background: transparent;
+	font-size: 12px;
+	text-align: center;
+}
+.headerTable thead th, .innerTableHeader th{
+	/*font-weight: normal;*/
 }
 
 .subHeaderTR{
@@ -952,7 +960,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 }
 
 .newCollSlot, .delCollSlot{
-	margin-top: 20px;
+	margin-top: 36px;
 }
 
 .newItem, .newEvent, .newUser, .newOutlet, .newmdItem{

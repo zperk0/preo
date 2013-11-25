@@ -68,6 +68,20 @@
 						<button id="delete_section0" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"><i class="fi-x"></i></button> <?echo _("Delete this section");?>
 					</div>
 				</div>
+				<div class="row hasTableHeader">
+					<table class="headerTable">
+						<thead>
+							<tr>
+								<th class="menuTDName">Name</th>
+								<th class="menuTDDesc">Description</th>
+								<th class="menuTDPrice">Price (&pound;)</th>
+								<th class="menuTDQuant">Quantity</th>
+								<th class="menuTDVisi">Visible?</th>
+								<th class="menuTDTools">Tools</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
 			</div>
 			
 			<div class="hide firstItemDiv"></div> <!-- Dummy hook -->
@@ -84,7 +98,7 @@
 							<small class="error"><?echo _("Please type a description");?></small>
 						</td>
 						<td class="menuTDPrice">
-							<input type="text" name="iPrice[section0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required/>
+							<input type="text" name="iPrice[section0][0]" class="menuField noEnterSubmit" value="<?echo _("&pound.&pound&pound");?>" required/>
 							<small class="error"><?echo _("Amount?");?></small>
 							</td>
 						<td class="menuTDQuant">
@@ -102,7 +116,7 @@
 							</div>
 						</td>
 						<td class="menuTDTools">
-							<button type="button" class="menuTableButtons itemSave"				title="<?echo _("Collapse");?>"							><i class="icon-chevron-up"></i></button>
+							<button type="button" class="menuTableButtons itemSave"				title="<?echo _("Collapse");?>"						><i class="icon-chevron-up"></i></button>
 							<button type="button" class="menuTableButtons itemEdit hide" 		title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
 							<button type="button" class="menuTableButtons itemDuplicate" 		title="<?echo _("Duplicate");?>" id="dup_section0"	><i class="icon-copy"></i></button>
 							<button type="button" class="menuTableButtons secondary itemDelete" title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
@@ -115,9 +129,9 @@
 						</td>
 						<td class="modifierRow hide">
 							<select class="menuField noEnterSubmit inline" name="iModType[item0]" > <!-- Dummy does not have itemMenuSingleSelect -->
-								<option value="S"><?echo _("Single");?></option> <!-- min=1,max=1 -->
-								<option value="M"><?echo _("Multiple");?></option> <!-- min=1,max=-1 -->
-								<option value="O"><?echo _("Optional");?></option> <!-- min=0,max=-1 -->
+								<option value="S"><?echo _("Modifier Type: Single");?></option> <!-- min=1,max=1 -->
+								<option value="M"><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
+								<option value="O"><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
 							</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
 						</td>
 					</tr>
@@ -129,7 +143,7 @@
 						<td class="menuTDDesc">
 						</td>
 						<td class="menuTDPrice">
-							<input type="text" name="oPrice[item0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required/>
+							<input type="text" name="oPrice[item0][0]" class="menuField noEnterSubmit" value="<?echo _("&pound.&pound&pound");?>" required/>
 							<small class="error"><?echo _("Amount?");?></small>
 							</td>
 						<td class="menuTDQuant">
@@ -173,6 +187,20 @@
 					<div class="large-12 columns">
 						<button id="add_section<?echo ($sKey+1);?>" 	type="button" class="newItem" 				title="<?echo _("Add an item to this section");?>"><i class="fi-plus"></i></button> <?echo _("Add an item to this section");?>
 						<button id="delete_section<?echo ($sKey+1);?>" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"><i class="fi-x"></i></button> <?echo _("Delete this section");?>
+					</div>
+					<div class="row hasTableHeader">
+						<table class="headerTable">
+							<thead>
+								<tr>
+									<th class="menuTDName">Name</th>
+									<th class="menuTDDesc">Description</th>
+									<th class="menuTDPrice">Price (&pound;)</th>
+									<th class="menuTDQuant">Quantity</th>
+									<th class="menuTDVisi">Visible?</th>
+									<th class="menuTDTools">Tools</th>
+								</tr>
+							</thead>
+						</table>
 					</div>
 				</div>
 			</div>
@@ -219,13 +247,13 @@
 							<td class="itemSubheader hide"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h6></td>
 							<?if(isset($item['modifiers'][0]['items'])){?>
 							<td class="modifierRow hide">
-								<input type="text" name="iMod[item<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo $item['modifiers'][0]['name'];?>" required/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
+								<input type="text" name="iMod[item<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Modifier Name");?>" value="<?echo $item['modifiers'][0]['name'];?>" required/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
 							</td>
 							<td class="modifierRow hide">
 								<select class="menuField noEnterSubmit inline itemMenuSingleSelect" style="display:none;" name="iModType[item<?echo ($iKey+1);?>]" > 
-									<option value="S" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==1){?>selected="selected"<?}?>><?echo _("Single");?></option> <!-- min=1,max=1 -->
-									<option value="M" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Multiple");?></option> <!-- min=1,max=-1 -->
-									<option value="O" <?if($item['modifiers'][0]['minChoices']==0 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Optional");?></option> <!-- min=0,max=-1 -->
+									<option value="S" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==1){?>selected="selected"<?}?> ><?echo _("Modifier Type: Single");?></option> <!-- min=1,max=1 -->
+									<option value="M" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
+									<option value="O" <?if($item['modifiers'][0]['minChoices']==0 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
 								</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
 							</td>
 							<?}else{?>
@@ -234,9 +262,9 @@
 								</td>
 								<td class="modifierRow hide">
 									<select class="menuField noEnterSubmit inline itemMenuSingleSelect" name="iModType[item<?echo ($iKey+1);?>]" >
-										<option value="S"><?echo _("Single");?></option> <!-- min=1,max=1 -->
-										<option value="M"><?echo _("Multiple");?></option> <!-- min=1,max=-1 -->
-										<option value="O"><?echo _("Optional");?></option> <!-- min=0,max=-1 -->
+										<option value="S"><?echo _("Modifier Type: Single");?></option> <!-- min=1,max=1 -->
+										<option value="M"><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
+										<option value="O"><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
 									</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
 								</td>
 							<?}?>
@@ -249,7 +277,7 @@
 							<td class="menuTDDesc">
 							</td>
 							<td class="menuTDPrice">
-								<input type="text" name="oPrice[item<?echo ($iKey+1);?>][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required/>
+								<input type="text" name="oPrice[item<?echo ($iKey+1);?>][0]" class="menuField noEnterSubmit" value="<?echo _("&pound.&pound&pound");?>" required/>
 								<small class="error"><?echo _("Amount?");?></small>
 								</td>
 							<td class="menuTDQuant">

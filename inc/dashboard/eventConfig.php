@@ -45,6 +45,20 @@
 					<button id="add_event" 	type="button" class="newEvent" title="<?echo _("Add a new event");?>"><i class="fi-plus"></i></button> <?echo _("Add a new event");?>
 				</div>
 			</div>
+			
+			<table class="headerTable">
+				<thead>
+					<tr>
+						<th class="eventTDName" ><? echo _("Name");?></th>
+						<th class="eventTDDesc" ><? echo _("Description");?></th>
+						<th class="eventTDDate" ><? echo _("Start Date");?></th>
+						<th class="eventTDTime" ><? echo _("Start Time");?></th>
+						<th class="eventTDTime" ><? echo _("End Time");?></th>
+						<th class="eventTDVisi" ><? echo _("Visible?");?></th>
+						<th class="eventTDTools"><? echo _("Tools");?></th>
+					</tr>
+				</thead>
+			</table>
 
 			<div class="row"> <!-- DUMMY -->
 				<div class="large-12 columns">
@@ -93,6 +107,7 @@
 							</tr>
 							<tr class="eventEdit optionTR">
 								<td class="eventTDCollection">
+									<label>&nbsp;</label>
 									<select name="eColl[event0][0]" class="eventField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have eventMenuSingleSelect -->
 										<option value="PRESHOW"  ><?echo _("Collection Slot: Pre-Show")?></option>
 										<option value="PREGAME"  ><?echo _("Collection Slot: Pre-Game")?></option>
@@ -104,7 +119,8 @@
 									</select>
 								</td>
 								<td class="eventTDLead">
-									<input type="text" name="eLead[event0][0]" class="eventField noEnterSubmit" value="<?echo _("Lead Time (mins)");?>" required/>
+									<label><?echo _("Lead Time (mins)");?></label>
+									<input type="text" name="eLead[event0][0]" class="eventField noEnterSubmit" value="<?echo _("eg. 30");?>" required/>
 									<small class="error"><?echo _("Amount?");?></small>
 								</td>
 								<td class="eventTDAddMore">
@@ -171,6 +187,7 @@
 					<?foreach($event['cSlots'] as $cKey=>$cSlot){?>
 					<tr class="eventEdit optionTR savedInput" style="display:none;">
 						<td class="eventTDCollection">
+							<label>&nbsp;</label>
 							<select name="eColl[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit inline eventMenuSingleSelect hide"/>
 								<option value="PRESHOW"  <?if($cSlot['collectionslot']=='PRESHOW'  ) echo "selected='selected'";?>><?echo _("Collection Slot: Pre-Show")?></option>
 								<option value="PREGAME"  <?if($cSlot['collectionslot']=='PREGAME'  ) echo "selected='selected'";?>><?echo _("Collection Slot: Pre-Game")?></option>
@@ -182,7 +199,8 @@
 							</select>
 						</td>
 						<td class="eventTDLead">
-							<input type="text" name="eLead[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit" value="<?echo $cSlot['leadtime'];?>" required/>
+							<label><?echo _("Lead Time (mins)");?></label>
+							<input type="text" name="eLead[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit" value="<?echo $cSlot['leadtime'];?>" placeholder="<?echo _("eg. 30");?>" required/>
 							<small class="error"><?echo _("Amount?");?></small>
 						</td>
 						<td class="eventTDAddMore">
@@ -218,6 +236,7 @@
 		</div>
 	</div>
 </form>
+<?if(!$_SESSION['event_edit_on']){?>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','350%');
@@ -226,3 +245,4 @@ $(document).ready(function() {
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });
 </script>
+<?}?>

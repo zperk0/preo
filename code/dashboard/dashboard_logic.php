@@ -208,6 +208,7 @@
 		//+d($dataResult);
 		
 		$_SESSION['dashboardFlag']=1;
+		$_SESSION['signupWizFlag']=0;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/dashboard_content.php"); 

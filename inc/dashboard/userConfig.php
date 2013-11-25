@@ -15,7 +15,7 @@
 				</div>
 			</div>
 			
-			<!--<table class="headerTable">
+			<table class="headerTable">
 				<thead>
 					<tr>
 						<th class="userTDName">Name</th>
@@ -25,7 +25,7 @@
 						<th class="userTDTools">Tools</th>
 					</tr>
 				</thead>
-			</table>-->
+			</table>
 
 			<div class="row"> <!-- DUMMY -->
 				<div class="large-12 columns">
