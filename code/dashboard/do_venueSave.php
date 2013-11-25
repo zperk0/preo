@@ -16,6 +16,12 @@
 	$vCat = $_POST['vCat'];
 	protect($vCat);
 	
+	$leadtime = $_POST['leadtime'];
+	protect($leadtime);
+	
+	$cDuration = $_POST['cDuration'];
+	protect($cDuration);
+	
 	$vEvent = $_POST['vEvent'];
 	
 	preg_match('/\((.*), (.*)\)/', $vCode, $matches);
@@ -27,15 +33,15 @@
 	$vDesc = $_POST['vDesc'];
 	protect($vDesc);
 	
-	$data['name']			= $vName;
-	$data['description']	= $vDesc;
-	$data['accountId']		= $_SESSION['account_id'];
-	$data['address']		= $vAdd;
-	$data['latitude']		= $vLat;
-	$data['longitude']		= $vLong;
-	$data['postcode']		= $vPostCode;
-	$data['categoryId']		= $vCat;
-	$data['eventFlag']		= $vEvent;
+	$data['name']				= $vName;
+	$data['description']		= $vDesc;
+	$data['accountId']			= $_SESSION['account_id'];
+	$data['address']			= $vAdd;
+	$data['latitude']			= $vLat;
+	$data['longitude']			= $vLong;
+	$data['postcode']			= $vPostCode;
+	$data['categoryId']			= $vCat;
+	$data['eventFlag']			= $vEvent;
 	
 	$jsonData = json_encode($data);
 	
@@ -45,12 +51,26 @@
 	{
 		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id'], $jsonData, $apiAuth);
 		$_SESSION['venue_edit_on'] = 0;
+		
+		$data = array();
+		$data['leadTime']			= $leadtime;
+		$data['collectInterval']	= $cDuration;
+		$jsonData = json_encode($data);
+		
+		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
 	}
 	else
 	{
 		$curlResult = callAPI('POST', $apiURL."venues", $jsonData, $apiAuth);
 		
 		$result = json_decode($curlResult, true);
+		
+		$data = array();
+		$data['leadTime']			= $leadtime;
+		$data['collectInterval']	= $cDuration;
+		$jsonData = json_encode($data);
+		
+		$curlResult = callAPI('POST', $apiURL."venues/".$result['id']."/settings", $jsonData, $apiAuth);
 	
 		//Finally add outlet
 		$data = array();

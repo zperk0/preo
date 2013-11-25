@@ -72,7 +72,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("What type of venue are you?");?></label>
-					<select name="vCat" class="dropdown">
+					<select name="vCat" class="dropdown" tabindex=5>
 						<option value="1"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='1')	{?>selected="selected"<?}?>><? echo _("Sports Arena");?></option>
 						<option value="2"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='2')	{?>selected="selected"<?}?>><? echo _("Bars, Pubs and Clubs");?></option>
 						<option value="3"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='3')	{?>selected="selected"<?}?>><? echo _("Workplace/Education Catering");?></option>
@@ -84,12 +84,12 @@
 			
 			<div class="row">
 				<div class="large-12 columns">
-					<label><?echo _("Are you primarily an events based business?");?> &nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="Does your business revolve around regular events, eg. football matches, performances, etc?"></i></label>
+					<label><?echo _("Are you primarily an events based business?");?> &nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Does your business revolve around regular events, eg. football matches, performances, etc?");?>"></i></label>
 					<div class="switch small large-2 columns eventFlagNoti"> 
-						<input name="vEvent" value="0" type="radio" <?if((isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag']) || !isset($_SESSION['venue_eventFlag'])){?>checked<?}?>>
+						<input name="vEvent" value="0" type="radio" <?if(isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag']){?>checked<?}?>>
 						<label class="no"><?echo _("No");?></label>
 
-						<input name="vEvent" value="1" type="radio" <?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?>checked<?}?>>
+						<input name="vEvent" value="1" type="radio" <?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']) || !isset($_SESSION['venue_eventFlag'])){?>checked<?}?>>
 						<label class="yes"><?echo _("Yes");?></label>
 
 						<span></span>
@@ -97,9 +97,25 @@
 				</div>
 			</div>
 			
+			<div class="row cSlotDiv hide">
+				<div class="large-12 columns">
+					<label><?echo _("Collection Slot Duration (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Duration of time between opening hours that your customers can order in");?>"></i></label>
+					<input type="text" name="cDuration" id="cDuration" tabindex=7 placeholder="<?echo _("eg: 30");?>" value="<?if(isset($_SESSION['venue_collectinterval'])) echo $_SESSION['venue_collectinterval'];?>">
+					<small class="error"><?echo _("Please provide a duration in mins");?></small>
+				</div>
+			</div>
+			
+			<div class="row leadTimeDiv hide">
+				<div class="large-12 columns">
+					<label><?echo _("Lead Time (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("The item it takes to prepare your order before the customer can pick it up");?>"></i></label>
+					<input type="text" name="leadtime" id="leadtime" tabindex=8 placeholder="<?echo _("eg: 25");?>" value="<?if(isset($_SESSION['venue_leadtime'])) echo $_SESSION['venue_leadtime'];?>">
+					<small class="error"><?echo _("Please provide a lead time");?></small>
+				</div>
+			</div>
+			
 			<div class="row row--space1">
 				<div class="small-12 large-2 columns">
-					<button id="venueSave" type="submit" tabindex=5><?echo _("SAVE");?></button>
+					<button id="venueSave" type="submit" tabindex=9><?echo _("SAVE");?></button>
 				</div>
 			</div>
 		</div>
@@ -118,6 +134,31 @@ $(document).ready(function() {
 	$('.progressIndicator').attr('title', "15% done, keep going!");
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
+});
+</script>
+<?}else{?>
+<script type="text/javascript">
+$(document).ready(function() {
+	if( $(this).find("input[type=radio][name=vEvent]:checked").val() == '0')
+	{
+		$('.cSlotDiv').slideDown();
+		$('.leadTimeDiv').slideDown();
+		
+		$('#map').animate({height: '588px'});
+		
+		$('.cSlotDiv').find('input').attr('required','required');
+		$('.leadTimeDiv').find('input').attr('required','required');
+	}
+	else
+	{
+		$('.cSlotDiv').slideUp();
+		$('.leadTimeDiv').slideUp();
+		
+		$('#map').animate({height: '430px'});
+		
+		$('.cSlotDiv').find('input').removeAttr('required');
+		$('.leadTimeDiv').find('input').removeAttr('required');
+	}
 });
 </script>
 <?}?>

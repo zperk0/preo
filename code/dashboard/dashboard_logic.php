@@ -40,16 +40,16 @@
 		$_SESSION['noVenueFlag']=1; 
 	else
 	{	
-		$_SESSION['venue_id'] 			= $dataJSON[0]['id'];
-		$_SESSION['venue_name'] 		= $dataJSON[0]['name'];
-		$_SESSION['venue_desc'] 		= $dataJSON[0]['description'];
-		$_SESSION['venue_cat'] 			= $dataJSON[0]['categoryId'];
-		$_SESSION['venue_address']  	= $dataJSON[0]['address'];	
-		$_SESSION['venue_latitude']		= $dataJSON[0]['latitude'];	
-		$_SESSION['venue_longitude']	= $dataJSON[0]['longitude'];	
-		$_SESSION['venue_postcode']		= $dataJSON[0]['postcode'];	
-		$_SESSION['venue_eventFlag']	= $dataJSON[0]['eventFlag'];	
-		$_SESSION['venue_liveFlag']		= $dataJSON[0]['liveFlag'];	
+		$_SESSION['venue_id'] 				= $dataJSON[0]['id'];
+		$_SESSION['venue_name'] 			= $dataJSON[0]['name'];
+		$_SESSION['venue_desc'] 			= $dataJSON[0]['description'];
+		$_SESSION['venue_cat'] 				= $dataJSON[0]['categoryId'];
+		$_SESSION['venue_address']  		= $dataJSON[0]['address'];	
+		$_SESSION['venue_latitude']			= $dataJSON[0]['latitude'];	
+		$_SESSION['venue_longitude']		= $dataJSON[0]['longitude'];	
+		$_SESSION['venue_postcode']			= $dataJSON[0]['postcode'];	
+		$_SESSION['venue_eventFlag']		= $dataJSON[0]['eventFlag'];	
+		$_SESSION['venue_liveFlag']			= $dataJSON[0]['liveFlag'];	
 		
 		//we get venue id from _SESSION
 		$venueID = $_SESSION['venue_id'];
@@ -69,9 +69,11 @@
 			$_SESSION['noAppFlag-1']=1; 
 			$_SESSION['noAppFlag-2']=1; 
 		}
-		else
+		else if(isset($dataJSON['heading']) && !empty($dataJSON['heading']))
 		{	
-			//echo var_dump($dataJSON);
+			$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];	
+			$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];	
+			
 			//app-1
 			$_SESSION['app_heading']			= $dataJSON['heading'];
 			$_SESSION['app_subHeading']			= $dataJSON['subHeading'];
@@ -92,6 +94,14 @@
 				$_SESSION['app_button3TextColour']	= $dataJSON['button3TextColour'];
 				$_SESSION['app_title']				= $dataJSON['title'];
 			}
+		}
+		else
+		{
+			$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];	
+			$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];	
+			
+			$_SESSION['noAppFlag-1']=1; 
+			$_SESSION['noAppFlag-2']=1;
 		}
 		
 		//////MENU////////////////////////////////////////////////////////////////////////////

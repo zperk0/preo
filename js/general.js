@@ -275,6 +275,30 @@ $(document).ready(function() {
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	$('.eventFlagNoti').on('click', function(){
+	
+		if( $(this).find("input[type=radio][name=vEvent]:checked").val() == '0')
+		{
+			$('.cSlotDiv').slideDown();
+			$('.leadTimeDiv').slideDown();
+			
+			$('#map').animate({height: '588px'});
+			
+			$('.cSlotDiv').find('input').attr('required','required');
+			$('.leadTimeDiv').find('input').attr('required','required');
+		}
+		else
+		{
+			$('.cSlotDiv').slideUp();
+			$('.leadTimeDiv').slideUp();
+			
+			$('#map').animate({height: '430px'});
+			
+			$('.cSlotDiv').find('input').removeAttr('required');
+			$('.leadTimeDiv').find('input').removeAttr('required');
+		}
+	});
+	
 	$("#venueConfigForm").on('valid', function (event) {
 		var url = "code/dashboard/do_venueSave.php";
 
