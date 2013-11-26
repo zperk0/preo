@@ -577,8 +577,14 @@ ul.custom-inline-list {
 	width: 190px;
 }
 
-h1 i.icon-question-sign, h4 i.icon-question-sign{
+h1 i.icon-question-sign, h4 i.icon-question-sign {
 	font-size: 24px !important;
+}
+
+.openingHoursDiv h4 span{
+	font-size: 14px;
+	margin-left: 30px;
+	font-weight: normal !important;
 }
 
 .menuMultiButton i{
@@ -955,7 +961,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	width: 90% !important;
 }
 
-.newItem, .newSection, .deleteSection, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot{
+.newItem, .newSection, .deleteSection, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot, .applyTimesAllDays, .addMoreOH, .removeOHDiv {
 	padding: 0 6px;
 }
 
@@ -963,9 +969,14 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	margin-top: 36px;
 }
 
-.newItem, .newEvent, .newUser, .newOutlet, .newmdItem{
+.newItem, .newEvent, .newUser, .newOutlet, .newmdItem, .applyTimesAllDays , .addMoreOH{
 	background: #2E70B7;
 	border: #2E70B7;
+}
+
+.removeOH { 
+	padding: 2px 8px !important;
+	margin-top: 10px !important;
 }
 
 .newSection{
@@ -1142,10 +1153,11 @@ footer.dashboardFooter div{
 	width: 470px !important;
 }
 
-.openingHours h4{
+.openingHoursDiv h4{
 	font-family: HelveticaNeueW01-45Ligh !important;
 	color: #48535D;
 }
+
 .openingHours input{
 	font-family: HelveticaNeueW01-45Ligh !important;
 	font-size: 16px !important;
@@ -1153,6 +1165,11 @@ footer.dashboardFooter div{
 	font-weight: bold !important;
 	background: #FFF !important;
 	text-align: center;
+	width: 80px;
+}
+
+.openingHours small{
+	width: 80px;
 }
 
 span.slotDuration{

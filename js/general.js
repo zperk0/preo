@@ -1972,30 +1972,107 @@ $(document).ready(function() {
 		$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
 	});
 	
-	$("#applyTimesAllDays").on('click',function(){
+	$('.addMoreOH').live('click', function(){
+		$oldDiv = $(this).parents('.openingHoursDiv').find('.openHWrapper:first');
+		$newDiv = $oldDiv.clone(false);
+		
+		$newDiv.find('input').each(function(){
+			$(this).val('');
+			$(this).timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+		});
+		
+		$newDiv.find("input[name^=ohStartTime]").on('changeTime',function() {
+			currTime = $(this).val()+":00";
+			
+			newTime = extractAMPM("January 01, 2000 "+currTime);
+			
+			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
+		});
+		
+		$newDiv.find('.removeOHDiv').show();
+		
+		//hide it so we can animate it!
+		$newDiv.css('display','none');
+		
+		//insert at the end of the list
+		$(this).parents('.openingHoursDiv').find('.openHWrapper:last').after($newDiv);
+		$newDiv.slideDown();
+	});
+	
+	$('.removeOH').live('click', function(){
+		$ele = $(this).parents('.openHWrapper');
+		
+		$ele.slideUp();
+		
+		$ele.remove();
+	});
+	
+	$(".applyTimesAllDays").on('click',function(){
 		id = ($(this).parents('div.applyAllDiv')).attr('id');
 		id = id.substring(0, id.length - 1); //delete the 'C' to get just monday, etc.
 		
 		//get data for this day
-		ohstartTime = $("."+id).find("input[name^=ohStartTime]").val();
-		ohendTime = $("."+id).find("input[name^=ohEndTime]").val();
+		$data = $("."+id).clone(true,true);
 		
-		duration = $("."+id).find("input[name^=duration]").val();
+		openData = new Array();
+		closeData = new Array();
 		
-		leadTime = $("."+id).find("input[name^=leadtime]").val();
+		openCounter = 0;
+		closeCounter = 0;
 		
-		//apply to all days!
-		$("body").find("input[name^=ohStartTime]").each(function(){
-			$(this).val(ohstartTime);
+		$data.find('input[name^=ohStartTime]').each(function(){
+			openData[openCounter] = $(this).val();
+			openCounter++;
 		});
-		$("body").find("input[name^=ohEndTime]").each(function(){
-			$(this).val(ohendTime);
+		
+		$data.find('input[name^=ohEndTime]').each(function(){
+			closeData[closeCounter] = $(this).val();
+			closeCounter++;
 		});
-		$("body").find("input[name^=duration]").each(function(){
-			$(this).val(duration);
-		});
-		$("body").find("input[name^=leadtime]").each(function(){
-			$(this).val(leadTime);
+		
+		$("body").find('.openingHoursDiv').each(function(){
+			if(!($(this).hasClass(id)))
+			{
+				$(this).empty();
+				$(this).append($data.html());
+				
+				openCounter = 0;
+				closeCounter = 0;
+				
+				newID = $(this).attr('id');
+				
+				$(this).find('.openHWrapper').each(function(){
+				
+					$(this).find('input').each(function(){
+						$(this).timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+						var tempName = $(this).attr('name');
+						var newName = tempName.replace(id, newID);
+						$(this).attr('name', newName);
+					});
+					
+					$(this).find('input[name^=ohStartTime]').each(function(){
+						$(this).val(openData[openCounter]);
+						openCounter++;
+					});
+					
+					$(this).find('input[name^=ohEndTime]').each(function(){
+						$(this).val(closeData[closeCounter]);
+						closeCounter++;
+					});
+					
+					$(this).find("input[name^=ohStartTime]").each(function(){
+						$(this).on('changeTime',function() {
+							currTime = $(this).val()+":00";
+							
+							newTime = extractAMPM("January 01, 2000 "+currTime);
+							
+							$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+							$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
+						});
+					});
+				});
+			}
 		});
 		
 		//notify!

@@ -12,7 +12,7 @@
 		$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 
 		//kill all sections and section-items
-		$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/netimes", false, $apiAuth); //venue_ne_times data deleted
+		$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/hours", false, $apiAuth); //venue_hours data deleted
 		
 	} //at this stage all current data is deleted and now we will proceed to putting in new data
 	
@@ -20,33 +20,45 @@
 	
 	$neTimes = array(); //initialising array
 	
-	for($i=0;$i<7;$i++)//create array for all days of the week 0=monday, ..., 6=sunday
+	$dow = array('dummy','sunday','monday','tuesday','wednesday','thursday','friday','saturday');
+	
+	$cOpen  = $_POST['ohStartTime'];
+	$cClose = $_POST['ohEndTime'];
+	
+	for($i=1;$i<8;$i++)//create array for all days of the week 0=monday, ..., 6=sunday
 	{
-		$neTimes[$i]['dow'] = /*protect(*/$_POST['dow'][$i];//);
-		$neTimes[$i]['ohstarttime'] = /*protect(*/$_POST['ohStartTime'][$i];//);
-		$neTimes[$i]['ohendtime'] = /*protect(*/$_POST['ohEndTime'][$i];//);
-		$neTimes[$i]['duration'] = /*protect(*/$_POST['duration'][$i];//);
-		$neTimes[$i]['leadtime'] = /*protect(*/$_POST['leadtime'][$i];//);
+		$counter = 0;
+		foreach($cOpen[$dow[$i]] as $entry)
+		{
+			$neTimes[$i][$counter]['ohstarttime'] = $entry;
+			$counter++;
+		}
+		
+		$counter = 0;
+		foreach($cClose[$dow[$i]] as $entry)
+		{
+			$neTimes[$i][$counter]['ohendtime']   = $entry;
+			$counter++;
+		}
 	}
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
-	
-	
+
 	//create/recreate
-	foreach($neTimes as $netime)
+	foreach($neTimes as $dName => $dow)
 	{
-		$data 					= array();
-		$data['dow'] 			= $netime['dow'];
-		$data['ohstarttime']	= $netime['ohstarttime'];
-		$data['ohendtime'] 		= $netime['ohendtime'];
-		$data['duration'] 		= $netime['duration'];
-		$data['leadtime'] 		= $netime['leadtime'];
-				
-		$jsonData = json_encode($data);
-		$curlResult = callAPI('POST', $apiURL."venues/$venueID/netimes", $jsonData, $apiAuth); //menu created
-		
-		$result = json_decode($curlResult,true);
-		
+		foreach($dow as $line)
+		{
+			$data 			= array();
+			$data['day']	= $dName;
+			$data['open']	= "$line[ohstarttime]:00";
+			$data['close'] 	= "$line[ohendtime]:00";
+			
+			$jsonData = json_encode($data);
+			$curlResult = callAPI('POST', $apiURL."venues/$venueID/hours", $jsonData, $apiAuth); //menu created
+			
+			$result = json_decode($curlResult,true);
+		}
 	}
 	
 	echo $curlResult; //sending a JSON via ajax 

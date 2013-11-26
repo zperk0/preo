@@ -35,52 +35,58 @@
 			
 			<?php 
 			
-			$dow = array('monday','tuesday','wednesday','thursday','friday','saturday','sunday');
-			for($i=0;$i<7;$i++){?>
-			<div class="row row--space1 openingHoursDiv <?echo $dow[$i];?>">
-				<div class="large-6 columns openingHours">
-					<h4><?echo _("Opening Hours");?></h4>
-					<div class="large-3 columns">
-						<label><?echo _("Opens at");?></label>
-						<input type="text" name="ohStartTime[]" class="noEnterSubmit" pattern="\d\d:\d\d" value="<?if($_SESSION['venue_netimes_edit_on']) echo $neTimes[$i]['ohstarttime'];?>" placeholder="<?echo _("HH:MM");?>" required/>
-						<small class="error"><?echo _("Time?");?></small>
-					</div>
-					<div class="large-3 columns">
-						<label><?echo _("Closes at");?></label>
-						<input type="text" name="ohEndTime[]" class="noEnterSubmit" pattern="\d\d:\d\d" value="<?if($_SESSION['venue_netimes_edit_on']) echo $neTimes[$i]['ohendtime'];?>" placeholder="<?echo _("HH:MM");?>" required/>
-						<small class="error"><?echo _("Time?");?></small>
-					</div>
-					<div class="large-3 columns"></div>
-				</div>
-			</div>
-			
-			<div id="<?echo $dow[$i];?>" class="row row--space1 collectionSlotDiv <?echo $dow[$i];?>">
-				<div class="large-6 columns openingHours">
-					<h4><?echo _("Collection Slot");?></h4>
-					<div class="large-3 columns">
-						<label><?echo _("Duration");?></label>
-						<input type="text" pattern="^[\d]+$" name="duration[]" value="<?if($_SESSION['venue_netimes_edit_on']) echo $neTimes[$i]['duration'];?>" class="noEnterSubmit justMins"  placeholder="0" required/><span class="inline minSpan"><?echo _("mins");?></span>
-					</div>
-					<div class="large-6 columns">
-					</div>
-					<div class="large-3 columns">
-					</div>
-				</div>
-			</div>
+			$dow = array('dummy','sunday','monday','tuesday','wednesday','thursday','friday','saturday');
+			for($i=1;$i<8;$i++){?>
+			<div class="row row--space1 openingHoursDiv <?echo $dow[$i];?>" id="<?echo $dow[$i];?>">
+				<h4><?echo _("Opening Hours");?>&nbsp;<span><button class="addMoreOH" type="button"><i class="fi-plus"></i></button> <?echo _("Add another opening hour");?></span></h4>
 
-			<div class="row row--space1 <?echo $dow[$i];?>">
-				<div class="large-6 columns openingHours">
-					<h4><?echo _("Lead Times");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("How much time do you need to prepare advance orders?");?>"></i></h4>
-					<div class="large-3 columns">
-						<input type="text" pattern="^[\d]+$" name="leadtime[]" value="<?if($_SESSION['venue_netimes_edit_on']) echo $neTimes[$i]['leadtime'];?>" class="noEnterSubmit justMins"  placeholder="0" required/><span class="inline minSpan"><?echo _("mins");?></span>
+				<?if(isset($neTimes) && isset($neTimes[$i]) && count($neTimes["$i"]))
+				{
+					$counter = 0;
+					foreach($neTimes["$i"] as $entry){ ?>
+					
+					<div class="large-12 columns openingHours openHWrapper">
+						<div class="large-2 columns">
+							<label><?echo _("Opens at");?></label>
+							<input type="text" name="ohStartTime[<?echo $dow[$i];?>][]" class="noEnterSubmit" pattern="\d\d:\d\d" value="<?echo $entry['ohstarttime'];?>" placeholder="<?echo _("HH:MM");?>" required/>
+							<small class="error"><?echo _("Time?");?></small>
+						</div>
+						<div class="large-2 columns">
+							<label><?echo _("Closes at");?></label>
+							<input type="text" name="ohEndTime[<?echo $dow[$i];?>][]" class="noEnterSubmit" pattern="\d\d:\d\d" value="<?echo $entry['ohendtime'];?>" placeholder="<?echo _("HH:MM");?>" required/>
+							<small class="error"><?echo _("Time?");?></small>
+						</div>
+						<div class="large-1 columns removeOHDiv <?if($counter < 1) echo 'hide';?>">
+							<label>&nbsp;</label>
+							<button class="removeOH secondary small" type="button" title="<?echo _("Remove opening hour");?>"><i class="fi-minus"></i></button>
+						</div>
+						<div class="large-5 columns"></div>
 					</div>
-					<div class="large-3 columns"></div>
-					<div class="large-3 columns"></div>
+					<?$counter++;
+					}
+				}else{?>
+				<div class="large-12 columns openingHours openHWrapper">
+					<div class="large-2 columns">
+						<label><?echo _("Opens at");?></label>
+						<input type="text" name="ohStartTime[<?echo $dow[$i];?>][]" class="noEnterSubmit" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required/>
+						<small class="error"><?echo _("Time?");?></small>
+					</div>
+					<div class="large-2 columns">
+						<label><?echo _("Closes at");?></label>
+						<input type="text" name="ohEndTime[<?echo $dow[$i];?>][]" class="noEnterSubmit" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required/>
+						<small class="error"><?echo _("Time?");?></small>
+					</div>
+					<div class="large-1 columns removeOHDiv hide">
+						<label>&nbsp;</label>
+						<button class="removeOH secondary small" type="button" title="<?echo _("Remove opening hour");?>"><i class="fi-minus"></i></button>
+					</div>
+					<div class="large-5 columns"></div>
 				</div>
+				<?}?>
 			</div>
 			
 			<div id="<?echo $dow[$i];?>C" class="row row--space1 applyAllDiv <?echo $dow[$i];?>">
-				<label id="applyTimesAllDays"><?echo _("Apply these times to all days");?></label>
+				<button class="applyTimesAllDays" type="button"><i class="icon-bolt"></i></button> <?echo _("Apply these times to all days");?>
 				<input type="hidden" name="dow[]" value="<?echo $dow[$i];?>"/>
 			</div>
 			<?}?>
@@ -91,27 +97,10 @@
 	</form>
 </div>
 <script>
-<?for($i=0;$i<7;$i++){?>
+<?for($i=1;$i<8;$i++){?>
 	$('.<?echo $dow[$i];?>').addClass('hide');
 <?}?>
 $('.monday').removeClass('hide');
-<?if($_SESSION['venue_netimes_edit_on']){?>
-$(document).ready(function(){
-	<?for($i=0;$i<7;$i++){
-		$dow = '';
-		switch($i)
-		{
-			case 0:{ $dow = 'monday'; break; }
-			case 1:{ $dow = 'tuesday'; break; }
-			case 2:{ $dow = 'wednesday'; break; }
-			case 3:{ $dow = 'thursday'; break; }
-			case 4:{ $dow = 'friday'; break; }
-			case 5:{ $dow = 'saturday'; break; }
-			case 6:{ $dow = 'sunday'; break; }
-		}?>
-	<?}?>
-});
-<?}?>
 </script>
 <script type="text/javascript">
 $(document).ready(function() {

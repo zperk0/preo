@@ -12,39 +12,83 @@
 	
 	//////nonEvent////////////////////////////////////////////////////////////////////////////
 	
-	//query to find venues_ne_times_data
-		
+	$curlResult = callAPI('GET', $apiURL."venues/$venueID/hours", false, $apiAuth);
+	$dataJSON = json_decode($curlResult,true);
+			
 	$neTimes = array();
 	
-	for($i=0;$i<7;$i++)
+	if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
+	{	
+		//do nothing
+	}
+	else
 	{
-		$dow = '';
-		switch($i)
-		{
-			case 0:{ $dow = 'monday'; break; }
-			case 1:{ $dow = 'tuesday'; break; }
-			case 2:{ $dow = 'wednesday'; break; }
-			case 3:{ $dow = 'thursday'; break; }
-			case 4:{ $dow = 'friday'; break; }
-			case 5:{ $dow = 'saturday'; break; }
-			case 6:{ $dow = 'sunday'; break; }
-		}
+		$suCount = 0;
+		$mCount = 0;
+		$tCount = 0;
+		$wCount = 0;
+		$thCount = 0;
+		$fCount = 0;
+		$sCount = 0;
 		
-		$curlResult = callAPI('GET', $apiURL."venues/$venueID/netimes?dow=$dow", false, $apiAuth);
-	
-		$dataJSON = json_decode($curlResult,true);
-		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
-		{	
-			//do nothing
-		}
-		else
+		foreach($dataJSON as $entry)
 		{
-			$neTimes[$i]['ohstarttime'] = substr($dataJSON['ohstarttime'], 0, -3);
-			$neTimes[$i]['ohendtime'] 	= substr($dataJSON['ohendtime'], 0, -3);		
-			$neTimes[$i]['duration']	= $dataJSON['duration'];
-			$neTimes[$i]['leadtime'] 	= $dataJSON['leadtime'];	
+			switch($entry['day'])
+			{
+				case "1";
+				{
+					$neTimes[$entry['day']][$suCount]['ohstarttime'] = substr($entry['open'], 0, -3);
+					$neTimes[$entry['day']][$suCount]['ohendtime']   = substr($entry['close'], 0, -3);
+					$suCount++;
+					break;
+				}
+				case "2";
+				{
+					$neTimes[$entry['day']][$mCount]['ohstarttime'] = substr($entry['open'], 0, -3);
+					$neTimes[$entry['day']][$mCount]['ohendtime']   = substr($entry['close'], 0, -3);
+					$mCount++;
+					break;
+				}
+				case "3";
+				{
+					$neTimes[$entry['day']][$tCount]['ohstarttime'] = substr($entry['open'], 0, -3);
+					$neTimes[$entry['day']][$tCount]['ohendtime']   = substr($entry['close'], 0, -3);
+					$tCount++;
+					break;
+				}
+				case "4";
+				{
+					$neTimes[$entry['day']][$wCount]['ohstarttime'] = substr($entry['open'], 0, -3);
+					$neTimes[$entry['day']][$wCount]['ohendtime']   = substr($entry['close'], 0, -3);
+					$wCount++;
+					break;
+				}
+				case "5";
+				{
+					$neTimes[$entry['day']][$thCount]['ohstarttime'] = substr($entry['open'], 0, -3);
+					$neTimes[$entry['day']][$thCount]['ohendtime']   = substr($entry['close'], 0, -3);
+					$thCount++;
+					break;
+				}
+				case "6";
+				{
+					$neTimes[$entry['day']][$fCount]['ohstarttime'] = substr($entry['open'], 0, -3);
+					$neTimes[$entry['day']][$fCount]['ohendtime']   = substr($entry['close'], 0, -3);
+					$fCount++;
+					break;
+				}
+				case "7";
+				{
+					$neTimes[$entry['day']][$sCount]['ohstarttime'] = substr($entry['open'], 0, -3);
+					$neTimes[$entry['day']][$sCount]['ohendtime']   = substr($entry['close'], 0, -3);
+					$sCount++;
+					break;
+				}
+			}
 		}
 	}
+	
+	//+d($neTimes);
 	
 	if(count($neTimes)) 
 	{

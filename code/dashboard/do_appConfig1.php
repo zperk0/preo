@@ -57,7 +57,7 @@
 		$_SESSION['app1_edit_on'] = 0;
 	}
 	else
-		$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
+		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth); //venue settings has already created a row
 	
 	echo $curlResult; //sending a JSON via ajax
 ?>

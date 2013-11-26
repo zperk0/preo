@@ -98,8 +98,8 @@
 		else
 		{
 			$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];	
-			$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];	
-			
+			$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];
+
 			$_SESSION['noAppFlag-1']=1; 
 			$_SESSION['noAppFlag-2']=1;
 		}
@@ -150,34 +150,11 @@
 	}
 	else if(((isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag']) || (!isset($_SESSION['venue_eventFlag']))) && (isset($venueID) && $venueID))
 	{
-		$dayCount = 0;
-		
-		//check opening hours
-		for($i=0;$i<7;$i++)
-		{
-			$dow = '';
-			switch($i)
-			{
-				case 0:{ $dow = 'monday'; break; }
-				case 1:{ $dow = 'tuesday'; break; }
-				case 2:{ $dow = 'wednesday'; break; }
-				case 3:{ $dow = 'thursday'; break; }
-				case 4:{ $dow = 'friday'; break; }
-				case 5:{ $dow = 'saturday'; break; }
-				case 6:{ $dow = 'sunday'; break; }
-			}
-			
-			$curlResult = callAPI('GET', $apiURL."venues/$venueID/netimes?dow=$dow", false, $apiAuth);
-		
-			$dataJSON = json_decode($curlResult,true);
-			if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
-			{	
-				$dayCount++;
-			}
-		}
-		
-		if($dayCount == 7) //empty all days
-		{
+		$curlResult = callAPI('GET', $apiURL."venues/$venueID/hours", false, $apiAuth);
+		$dataJSON = json_decode($curlResult,true);
+				
+		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
+		{	
 			$_SESSION['noEHFlag']=1;
 		}
 	}
