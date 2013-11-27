@@ -3,7 +3,7 @@
 	<div class="large-12 columns">
 		<form id="settingsForm" method="POST" data-abide>
 			<div class="row">
-				<h2><? echo _("Settings");?></h2>
+				<h2><? echo _("Profile");?></h2>
 				<div class="large-6 columns">
 					<label><?echo _("First Name");?></label>
 					<input type="text" name="fName" value="<?echo $_SESSION['user_fName'];?>" required pattern="[a-zA-Z]+" tabindex=1>

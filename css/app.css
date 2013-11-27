@@ -714,7 +714,8 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .menuTable .menuTDDesc, .headerTable .menuTDDesc{
-	width: 32%;
+	/*width: 32%;*/
+	width: 43%;
 }
 
 .eventTable .eventTDDesc, .headerTable .eventTDDesc{
@@ -1235,4 +1236,7 @@ span.slotDuration{
 #finishForm .goBackToDash {
 	background: #2E70B7;
 	border: #2E70B7;
+}
+.cyappHead{
+	color: #D7D9DA !important;
 }

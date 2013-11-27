@@ -25,7 +25,7 @@
 		<?}?>
 		<div class="large-12 columns">
 
-			<h1><?if(!isset($_SESSION['menu_edit_on'])) echo _("Build your menu"); else echo _("Your menu");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Now it's time to create your menu. We suggest you keep it simple to start with. An easy way is group items into sections.");?>"></i></h1>
+			<h1><?if(!isset($_SESSION['menu_edit_on'])) echo _("Build your menu"); else echo _("Your menu");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Now it's time to create your menu. We suggest you keep it simple to start with.<br/><br/>An easy way is to group items, i.e. create separate sections for food, cold drinks and hot drinks.");?>"></i></h1>
 
 			<!-- Hidden inputs here keep count of menu items and options -->
 			<input type="hidden" id="sectionCount" 			name="sectionCount"			value="<?if($_SESSION['menu_edit_on']) echo $sectionCount; else echo "0";?>"/>
@@ -75,8 +75,8 @@
 								<th class="menuTDName">Name</th>
 								<th class="menuTDDesc">Description</th>
 								<th class="menuTDPrice">Price (&pound;)</th>
-								<th class="menuTDQuant">Quantity</th>
-								<th class="menuTDVisi">Visible?</th>
+								<!--<th class="menuTDQuant">Quantity</th>
+								<th class="menuTDVisi">Visible?</th>-->
 								<th class="menuTDTools">Tools</th>
 							</tr>
 						</thead>
@@ -101,10 +101,10 @@
 							<input type="text" name="iPrice[section0][0]" class="menuField noEnterSubmit" value="<?echo _("&pound.&pound&pound");?>" required/>
 							<small class="error"><?echo _("Amount?");?></small>
 							</td>
-						<td class="menuTDQuant">
+						<td class="menuTDQuant hide">
 							<input type="text" name="iQuan[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Unlimited");?>"/>
 						</td>
-						<td class="menuTDVisi">
+						<td class="menuTDVisi hide">
 							<div class="switch tiny" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>"> 
 								<input name="iVisi[section0][0]" value="0" type="radio">
 								<label><?echo _("No");?></label>
@@ -125,7 +125,7 @@
 					<tr class="menuEdit subHeaderTR">
 						<td class="itemSubheader"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h6></td>
 						<td class="modifierRow hide">
-							<input type="text" name="iMod[item0]" class="menuField noEnterSubmit" value="<?echo _("Modifier Name");?>" required/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
+							<input type="text" name="iMod[item0]" class="menuField noEnterSubmit" placeholder="<?echo _("Modifier Name");?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
 						</td>
 						<td class="modifierRow hide">
 							<select class="menuField noEnterSubmit inline" name="iModType[item0]" > <!-- Dummy does not have itemMenuSingleSelect -->
@@ -148,7 +148,7 @@
 							</td>
 						<td class="menuTDQuant">
 						</td>
-						<td class="menuTDVisi">
+						<td class="menuTDVisi hide">
 							<div class="switch tiny"> 
 								<input name="oVisi[item0][0]" value="0" type="radio">
 								<label><?echo _("No");?></label>
@@ -195,8 +195,8 @@
 									<th class="menuTDName">Name</th>
 									<th class="menuTDDesc">Description</th>
 									<th class="menuTDPrice">Price (&pound;)</th>
-									<th class="menuTDQuant">Quantity</th>
-									<th class="menuTDVisi">Visible?</th>
+									<!--<th class="menuTDQuant">Quantity</th>
+									<th class="menuTDVisi">Visible?</th>-->
 									<th class="menuTDTools">Tools</th>
 								</tr>
 							</thead>
@@ -222,10 +222,10 @@
 								<input type="text" name="iPrice[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($item['price'],2,'.','');?>" required  readonly="readonly"/>
 								<small class="error"><?echo _("Amount?");?></small>
 								</td>
-							<td class="menuTDQuant">
+							<td class="menuTDQuant hide">
 								<input type="text" name="iQuan[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" <?if($item['quantity']){?>value="<?echo $item['quantity']?>"<?}else{?>placeholder="<?echo _("Unlimited");}?>"  readonly="readonly"/>
 							</td>
-							<td class="menuTDVisi">
+							<td class="menuTDVisi hide">
 								<div class="switch tiny" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>"> 
 									<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="0" type="radio" <?if(!$item['visible']){?>checked<?}?>>
 									<label><?echo _("No");?></label>
@@ -282,7 +282,7 @@
 								</td>
 							<td class="menuTDQuant">
 							</td>
-							<td class="menuTDVisi">
+							<td class="menuTDVisi hide">
 								<div class="switch tiny"> 
 									<input name="oVisi[item<?echo ($iKey+1);?>][0]" value="0" type="radio">
 									<label><?echo _("No");?></label>
@@ -315,7 +315,7 @@
 										</td>
 									<td class="menuTDQuant">
 									</td>
-									<td class="menuTDVisi">
+									<td class="menuTDVisi hide">
 										<div class="switch tiny"> 
 											<input name="oVisi[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" value="0" type="radio" <?if(!$option['visible']){?>checked<?}?>>
 											<label><?echo _("No");?></label>

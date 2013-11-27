@@ -21,12 +21,8 @@
 					<li><a href="<?echo $_SESSION['path']?>/signin.php"	class="activated"				><? echo _("Login");?></a></li>
 				<?php else : 
 						if(!isset($_SESSION['signupWizFlag']) || !$_SESSION['signupWizFlag']){ ?>					
-					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Home");?></a></li>
-					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Orders");?></a></li>
-					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Stats");?></a></li>
-					<?if($_SESSION['venue_eventFlag']){?>
-					<li><a href="<?echo $_SESSION['path']?>/eventSettings.php"							><? echo _("Events");?></a></li><?}?>
-					<li><a href="<?echo $_SESSION['path']?>/settings.php"								><? echo _("Settings");?></a></li>
+					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Dashboard");?></a></li>
+					<li><a href="<?echo $_SESSION['path']?>/settings.php"								><? echo $_SESSION['user_fName']." ".$_SESSION['user_lName'];?></a></li>
 						<?}?>
 					<li><a href="<?echo $_SESSION['path']?>/code/shared/logout.php" class="activated"	><? echo _("Logout");?></a></li>
 				<?php endif; ?>

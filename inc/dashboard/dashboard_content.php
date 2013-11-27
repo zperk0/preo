@@ -48,12 +48,28 @@
 		<div class="large-6 columns">
 			<div class="row">
 				<div class="large-12 columns">
-					<h3><?echo _("Edit");?></h3>
+					<h3 class="cyappHead"><?echo _("Change your app");?></h3>
 				</div>
 			</div>		
 			<div class="row">
 				<div class="large-12 columns">
 					<div class="accordion" data-options="one_up: false;" data-section="accordion">
+						<section>
+							<h3 data-section-title><?echo _("Venue Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
+							<div class="content" data-section-content>
+								<p><a href="<?echo $_SESSION['path']?>/venueSettings.php"><?echo _("Change settings");?></a></p>
+								<?if(!$_SESSION['venue_eventFlag']){?>
+									<p><a href="<?echo $_SESSION['path']?>/nonEventSettings.php"><?echo _("Opening Hours");?></a></p>
+								<?}?>
+							</div>
+						</section>
+						<section>
+							<h3 data-section-title><?echo _("Styling");?></h3><img class="topFix" src="<?echo $_SESSION['path']?>/img/dashboard/styling_small.png"/>
+							<div class="content" data-section-content>
+								<p><a href="<?echo $_SESSION['path']?>/appSettings1.php"><?echo _("Home screen");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/appSettings2.php"><?echo _("Menu screen");?></a></p>
+							</div>
+						</section>
 						<section>
 							<h3 data-section-title><?echo _("Menus");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/>
 							<div class="content" data-section-content>
@@ -76,24 +92,12 @@
 						</section>
 						<?}?>
 						<section>
-							<h3 data-section-title><?echo _("Styling");?></h3><img class="topFix" src="<?echo $_SESSION['path']?>/img/dashboard/styling_small.png"/>
+							<h3 data-section-title><?echo _("Advanced Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
 							<div class="content" data-section-content>
-								<p><a href="<?echo $_SESSION['path']?>/appSettings1.php"><?echo _("Home screen");?></a></p>
-								<p><a href="<?echo $_SESSION['path']?>/appSettings2.php"><?echo _("Menu screen");?></a></p>
-							</div>
-						</section>
-						<section>
-							<h3 data-section-title><?echo _("Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
-							<div class="content" data-section-content>
-								<p><a href="<?echo $_SESSION['path']?>/venueSettings.php"><?echo _("Venue settings");?></a></p>
-								<p><a href="<?echo $_SESSION['path']?>/settings.php"><?echo _("Account settings");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/userSettings.php"><?echo _("Manage users");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/paymentSettings.php"><?echo _("Add a payment method");?></a></p>
 								<?if(!$_SESSION['venue_liveFlag']){?><p><a href="<?echo $_SESSION['path']?>/finish.php"><?echo _("Publish My App");?></a></p>
 								<?}else{?><p><a href="<?echo $_SESSION['path']?>/finish.php"><?echo _("Take My App Offline");?></a></p><?}?>
-								<?if(!$_SESSION['venue_eventFlag']){?>
-								<p><a href="<?echo $_SESSION['path']?>/nonEventSettings.php"><?echo _("Hours, Collection Slots, Lead Times");?></a></p>
-								<?}?>
 							</div>
 						</section>
 						<section class="premiumSection">

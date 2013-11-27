@@ -594,14 +594,14 @@ $(document).ready(function() {
 				$(this).slideRow('down');
 				//replace ids with incremented value and make value = default value (for !dups)
 				$(this).find("input").each(function() {
-					$(this).val( $(this).prop("defaultValue") );
+					//$(this).val( $(this).prop("defaultValue") );
 					var tempName = $(this).attr('name');
 					var newName = tempName.replace(/item\d+/gi, itemID);
 					$(this).attr('name', newName);
 					
-					var temp = $(this).val();
-					$(this).val("");
-					$(this).attr('placeholder', temp);
+					//var temp = $(this).val();
+					//$(this).val("");
+					//$(this).attr('placeholder', temp);
 					
 					$(this).attr('required','required');
 				});
