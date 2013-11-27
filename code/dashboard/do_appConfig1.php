@@ -53,11 +53,11 @@
 		//re-encode it as we have new fields 
 		$jsonData = json_encode($data);
 		
-		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
+		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
 		$_SESSION['app1_edit_on'] = 0;
 	}
 	else
-		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth); //venue settings has already created a row
+		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth); //venue settings has already created a row
 	
 	echo $curlResult; //sending a JSON via ajax
 ?>

@@ -38,7 +38,7 @@
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	
-	$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
+	$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
 	
 	if(isset($_SESSION['app2_edit_on']) && $_SESSION['app2_edit_on']) $_SESSION['app2_edit_on']=0;
 	
