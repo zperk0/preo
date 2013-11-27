@@ -25,15 +25,6 @@
 	$data['button3Colour']		= $button3Colour;
 	$data['button3TextColour']	= $button3TextColour;
 	
-	//from app1 
-	$data['heading']			= $_SESSION['app_heading'];
-	$data['subHeading']			= $_SESSION['app_subHeading'];
-	$data['textColour']			= $_SESSION['app_textColour'];
-	$data['buttonColour']		= $_SESSION['app_buttonColour'];
-	$data['buttonTextColour']	= $_SESSION['app_buttonTextColour'];
-	$data['wallpaperId']		= $_SESSION['app_wallpaperId'];
-	$data['logo']				= $_SESSION['app_logo'];
-	
 	$jsonData = json_encode($data);
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
