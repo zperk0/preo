@@ -57,7 +57,7 @@
 		$data['collectInterval']	= $cDuration;
 		$jsonData = json_encode($data);
 		
-		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
+		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
 	}
 	else
 	{
