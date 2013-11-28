@@ -21,7 +21,7 @@
 				<div class="large-12 columns">
 					<input type="hidden" name="liveFlag" value="<?echo $live?>"/>
 					<?if(!$live){?><button class="preodayButton large" type="submit" id="finishButton" tabindex=1><?echo _("LAUNCH MY APP");?></button><?}
-					else{?><button class="preodayButton large secondary" type="submit" id="finishButton" tabindex=1><?echo _("MAKE MY APP OFFLINE");?></button><?}?>
+					else{?><button class="preodayButton large secondary" type="submit" id="finishButton" tabindex=1><?echo _("TAKE MY APP OFFLINE");?></button><?}?>
 				</div>
 				<div class="large-12 columns">
 					<?if(!$live){?><a href="<?echo $_SESSION['path']?>/dashboard.php"><button class="preodayButton goBackToDash" type="button" tabindex=2><?echo _("I'LL COME BACK LATER TO PUBLISH MY APP");?></button></a><?}

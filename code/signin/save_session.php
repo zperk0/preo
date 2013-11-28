@@ -10,8 +10,11 @@
 	$id = $_POST['id'];
 	protect($id);
 	
-	$name = $_POST['name'];
-	protect($name);
+	$fName = $_POST['fName'];
+	protect($fName);
+	
+	$lName = $_POST['lName'];
+	protect($lName);
 	
 	//we use the user's token
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
@@ -45,8 +48,7 @@
 	
 	$_SESSION['user_id']	= $id;
 	$_SESSION['user_email']	= $email;
-	$_SESSION['user_name']	= $name;
-	$_SESSION['user_lName']	= substr($name, strrpos($name, ' ')+1);
-	$_SESSION['user_fName']	= str_replace(" ".$_SESSION['user_lName'],"",$_SESSION['user_name']);
+	$_SESSION['user_fName']	= $fName;
+	$_SESSION['user_lName']	= $lName;
 	$_SESSION['logged']		= 1;
 ?>

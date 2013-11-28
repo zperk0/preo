@@ -351,7 +351,8 @@
 	
 	<div class="row">
 		<div class="small-12 large-4 columns">
-			<button id="menuSaveButton" type="submit"><?echo _("SAVE MENU");?></button>
+			<button id="menuSaveButton" type="submit"><?echo _("SAVE CHANGES");?></button>
+			<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
 		</div>
 	</div>
 </form>

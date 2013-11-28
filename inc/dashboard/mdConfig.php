@@ -125,7 +125,8 @@
 			</table>
 
 			<div class="row row--space1">
-				<?if(!$_SESSION['noItemsFlag']){?><button type="submit"><?echo _("SAVE");?></button><?}?>
+				<?if(!$_SESSION['noItemsFlag']){?><button id="mdSubButton" type="submit"><?echo _("SAVE CHANGES");?></button><?}?>
+				<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
 			</div>
 		</div>
 	</form>

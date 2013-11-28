@@ -217,6 +217,22 @@ footer.regular .footLinks a{
 	color: #504089 !important;
 }
 
+.dropdown.makeULWider {
+	width: 164px;
+}
+
+.has-dropdown {
+	margin-right: -4px;
+}
+
+.has-dropdown.lessLeft {
+	margin-left: -10px;
+}
+
+.has-dropdown > a:after{
+	border-color: #504089 transparent transparent transparent !important;
+}
+
 /* spacing on top of pages as per design */
 .topSpacer{ 
 	margin-top: 4em;
@@ -334,9 +350,6 @@ ul.custom-inline-list {
     display: inline-block; }
 	
 /* signup using facebook */
-.socialMediaDiv{
-	margin-top: 110px;
-}
 .fbSignup, .googleSignup{
 	background: #CDCFD0;
 	background-image: url("../img/facebook_connect.jpg");
@@ -1070,8 +1083,12 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	height: 100%;
 }
 
+.dashContent {
+	padding-bottom: 100px;
+}
+
 .phone1, .phone2{
-	z-index: -1;
+	z-index: 0;
 	overflow: visible;
 }
 
@@ -1111,7 +1128,7 @@ footer.dashboardFooter div{
 }
 
 .TWFoot img, .FBFoot img{
-	margin-right: 5px;
+	margin-right: 4px;
 }
 
 .LIFoot img, .FBFoot img{
@@ -1237,6 +1254,11 @@ span.slotDuration{
 	background: #2E70B7;
 	border: #2E70B7;
 }
+
 .cyappHead{
 	color: #D7D9DA !important;
+}
+
+#savingButton {
+	width: 179px;
 }

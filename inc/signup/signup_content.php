@@ -1,5 +1,5 @@
 <?if($fb_field_flag){?>
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
 	noty({
 	  type: 'success',
@@ -11,10 +11,23 @@ $(document).ready(function(){
 
 <div class="row">
 	<div class="topSpacer"></div>
-	<div class="large-12 columns">
-		<div class="large-6 columns">
+	<div class="large-6 columns">
+		<h1><?echo _("Get started");?></h1>
+		<div class="large-12 columns socialMediaDiv <?if($fb_field_flag) echo 'hide';?>">
+			<div class="row">
+				<div class="large-6 columns fbSignup">
+					<a href="<?php echo $authCodeUrl;?>"><span><?echo _("Signup using Facebook");?></span></a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-6 columns googleSignup">
+					<input type="hidden" id="userConsent" value="0"/>
+					<span class="g-signin" data-callback="signinCallback" data-clientid="415077578170-8p5u7eurntd3qj7qbrk2nv2mvetuqjur.apps.googleusercontent.com" data-cookiepolicy="single_host_origin" data-requestvisibleactions="http://schemas.google.com/AddActivity" data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email"><?echo _("Signup using Google+");?></span>
+				</div>
+			</div>
+		</div>
+		<div class="large-12 columns">
 			<form id="signupForm" method="POST" data-abide>
-				<h1><?echo _("Get started");?></h1>
 				<div class="row nameRow <?if($fb_field_flag) echo 'hide';?>">
 					<div class="large-12 columns">
 						<label><?echo _("First Name");?></label>
@@ -66,18 +79,14 @@ $(document).ready(function(){
 				</div>
 			</form>
 		</div>
-		<div class="large-offset-1 large-5 columns socialMediaDiv <?if($fb_field_flag) echo 'hide';?>">
-			<div class="row">
-				<div class="large-6 columns fbSignup">
-					<a href="<?php echo $authCodeUrl;?>"><span><?echo _("Signup using Facebook");?></span></a>
-				</div>
-			</div>
-			<div class="row">
-				<div class="large-6 columns googleSignup">
-					<input type="hidden" id="userConsent" value="0"/>
-					<span class="g-signin" data-callback="signinCallback" data-clientid="415077578170-8p5u7eurntd3qj7qbrk2nv2mvetuqjur.apps.googleusercontent.com" data-cookiepolicy="single_host_origin" data-requestvisibleactions="http://schemas.google.com/AddActivity" data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email"><?echo _("Signup using Google+");?></span>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
+
+<?if(isset($_GET['autoG']) && $_GET['autoG']=='1'){?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#userConsent').val('1');
+	$('.g-signin').trigger('click');
+});
+</script>
+<?}?>

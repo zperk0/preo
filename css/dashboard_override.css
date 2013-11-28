@@ -2,10 +2,6 @@ html {
    min-height: 100%;
 }
 #wrap{
- background: transparent !important;
-}
-
-body{
 	background: #593480 !important; /* Old browsers */
 	background: -moz-linear-gradient(45deg,  #593480 0%, #1c83bc 100%) !important; /* FF3.6+ */
 	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#593480), color-stop(100%,#1c83bc)) !important; /* Chrome,Safari4+ */

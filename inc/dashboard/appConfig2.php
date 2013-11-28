@@ -44,7 +44,7 @@
 										<input value="<?if(isset($_SESSION['app_button2Colour'])) echo $_SESSION['app_button2Colour'];else echo "3AA2DC";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButton2Colour(this);'}" id="button2Colour" name="button2Colour" />
 									</div>
 									<div class="large-7 small-7 columns">
-										<label for="buttonColour" class="left inline colorLabel"><?echo _("Choose colour one");?></label>
+										<label for="buttonColour" class="left inline colorLabel"><?echo _("Button one colour");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Enter Hex Colour Code or click to choose your colour.");?>"></i></label>
 									</div>
 								</div>
 								<div class="row">
@@ -52,7 +52,7 @@
 										<input value="<?if(isset($_SESSION['app_button2TextColour'])) echo $_SESSION['app_button2TextColour'];else echo "FFFFFF";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButton2TextColour(this);'}" id="button2TextColour" name="button2TextColour" />
 									</div>
 									<div class="large-7 small-7 columns">
-										<label for="buttonTextColour" class="left inline colorLabel"><?echo _("Choose text colour");?></label>
+										<label for="buttonTextColour" class="left inline colorLabel"><?echo _("Button text colour");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Enter Hex Colour Code or click to choose your colour.");?>"></i></label>
 									</div>
 								</div>
 							</div>
@@ -70,7 +70,7 @@
 										<input value="<?if(isset($_SESSION['app_button3Colour'])) echo $_SESSION['app_button3Colour'];else echo "2E70B7";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButton3Colour(this);'}" id="button3Colour" name="button3Colour" />
 									</div>
 									<div class="large-7 small-7 columns">
-										<label for="buttonColour" class="left inline colorLabel"><?echo _("Choose colour two");?></label>
+										<label for="buttonColour" class="left inline colorLabel"><?echo _("Button two colour");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Enter Hex Colour Code or click to choose your colour.");?>"></i></label>
 									</div>
 								</div>
 								<div class="row">
@@ -78,14 +78,15 @@
 										<input value="<?if(isset($_SESSION['app_button3TextColour'])) echo $_SESSION['app_button3TextColour'];else echo "FFFFFF";?>" type="text" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateButton3TextColour(this);'}" id="button3TextColour" name="button3TextColour" />
 									</div>
 									<div class="large-7 small-7 columns">
-										<label for="buttonTextColour" class="left inline colorLabel"><?echo _("Choose text colour");?></label>
+										<label for="buttonTextColour" class="left inline colorLabel"><?echo _("Button text colour");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Enter Hex Colour Code or click to choose your colour.");?>"></i></label>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="row row--space6u">
 							<div class="large-12 small-12 columns text-right small-centered">
-								<button id="appConfig2Sub" class="preodayButton" type="submit" tabindex=2><?echo _("SAVE");?></button>
+								<button id="appConfig2Sub" class="preodayButton" type="submit" tabindex=2><?echo _("SAVE CHANGES");?></button>
+								<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
 							</div>
 						</div>
 					</div>

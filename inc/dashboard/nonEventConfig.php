@@ -91,7 +91,8 @@
 			</div>
 			<?}?>
 			<div class="row row--space1">
-				<button type="submit"><?echo _("SAVE");?></button>
+				<button id="ohSubButton" type="submit"><?echo _("SAVE CHANGES");?></button>
+				<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
 			</div>
 		</div>
 	</form>

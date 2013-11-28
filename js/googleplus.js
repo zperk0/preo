@@ -3,18 +3,18 @@ googleUserArray = new Array();
 //google+ signup
 function signinCallback(authResult) 
 {
-  console.log('entrying signinCallBack');
+  //console.log('entrying signinCallBack');
   try
   {
 	  if (authResult['access_token']) 
 	  {
-		console.log('Sign in: success');
+		//console.log('Sign in: success');
 		
 		gapi.auth.setToken(authResult);
 
 		gapi.client.load('oauth2', 'v2', function() 
 		{
-			console.log('in client.oauth load');
+			//console.log('in client.oauth load');
 			
 			gapi.client.oauth2.userinfo.get().execute(function(gauth) 
 			{
@@ -28,7 +28,7 @@ function signinCallback(authResult)
 
 		gapi.client.load('plus', 'v1', function() 
 		{
-			console.log('in client.plus load');
+			//console.log('in client.plus load');
 			
 			gapi.client.plus.people.get( {'userId' : 'me'} ).execute(function(gplus) 
 			{
@@ -39,13 +39,13 @@ function signinCallback(authResult)
 			});
 		});
 		
-		console.log(googleUserArray['id']);
-		console.log(googleUserArray['email']);
-		console.log(googleUserArray['fName']);
-		console.log(googleUserArray['lName']);
+		//console.log(googleUserArray['id']);
+		//console.log(googleUserArray['email']);
+		//console.log(googleUserArray['fName']);
+		//console.log(googleUserArray['lName']);
 	
 		setTimeout(function() {
-			if(typeof googleUserArray != 'undefined' && typeof googleUserArray['id'] != 'undefined' && typeof googleUserArray['email'] != 'undefined' && typeof googleUserArray['fName'] != 'undefined' && typeof googleUserArray['lName'] != 'undefined' && googleUserArray['email']!= '' && googleUserArray['fName']!= '' && googleUserArray['lName']!= '' && googleUserArray['id']!= '') {console.log('start signup'); startGSignUp(); }
+			if(typeof googleUserArray != 'undefined' && typeof googleUserArray['id'] != 'undefined' && typeof googleUserArray['email'] != 'undefined' && typeof googleUserArray['fName'] != 'undefined' && typeof googleUserArray['lName'] != 'undefined' && googleUserArray['email']!= '' && googleUserArray['fName']!= '' && googleUserArray['lName']!= '' && googleUserArray['id']!= '') {/*console.log('start signup');*/ startGSignUp(); }
 		}, 1000);
 		
 	  } 
@@ -55,12 +55,12 @@ function signinCallback(authResult)
 		  type: 'error',
 		  text: 'There was an error accessing your Google+ data'
 		});*/
-		console.log('Sign-in state: ' + authResult['error']);
+		//console.log('Sign-in state: ' + authResult['error']);
 	  }
   }
   catch(err) 
   {
-        console.log( "onLoadCallback error: " + err.message );
+        //console.log( "onLoadCallback error: " + err.message );
   }
 }
 
@@ -83,51 +83,57 @@ function makeRandomPassword()
 
 function startGSignUp()
 {
-	if($('#userConsent').val()=='1')
-	{
+	//we check if the user already exists
+	token = googleUserArray['token'];
+	gpid = googleUserArray['id'];
 
-		//we check if the user already exists
-		token = googleUserArray['token'];
-		gpid = googleUserArray['id'];
-
-		//check if user already exists - if so try login - else signup
-		$.ajax({
-		   type: "POST",
-		   url: "code/shared/do_googlepCheck.php", 
-		   data: "token="+token+"&gpid="+gpid,
-		   success: function(data)
-		   {
-				try
-				{
-					var dataArray = jQuery.parseJSON(data); //parsing JSON
-				}
-				catch(e)
-				{
-					noty({
-					  type: 'error',  layout: 'topCenter',
-					  text: 'Error! Could not verify Google Plus credentials.'
-					});
-					alert(data);
-					
-					return false;
-				}
+	//check if user already exists - if so try login - else signup
+	$.ajax({
+	   type: "POST",
+	   url: "code/shared/do_googlepCheck.php", 
+	   data: "token="+token+"&gpid="+gpid,
+	   success: function(data)
+	   {
+			try
+			{
+				var dataArray = jQuery.parseJSON(data); //parsing JSON
+			}
+			catch(e)
+			{
+				noty({
+				  type: 'error',  layout: 'topCenter',
+				  text: 'Error! Could not verify Google Plus credentials.'
+				});
+				alert(data);
 				
-				if(typeof dataArray['status'] !='undefined') //error
-				{
-					noty({
-					  type: 'error',  layout: 'topCenter',
-					  text: dataArray['message']
-					});
+				return false;
+			}
+			
+			if(typeof dataArray['status'] !='undefined') //error
+			{
+				noty({
+				  type: 'error',  layout: 'topCenter',
+				  text: dataArray['message']
+				});
+			}
+			else
+			{	
+				//success
+				if(dataArray['signupFlag']=="0")
+				{ 
+					window.location.replace("./dashboard.php");
 				}
 				else
-				{	
-					//success
-					if(dataArray['signupFlag']=="0")
-					{ 
-						window.location.replace("./dashboard.php");
-					}
-					else
+				{
+					if($('#userConsent').val()=='1')
 					{
+						var pathname = window.location.pathname;
+						
+						if(pathname.match(/signin/g) || pathname.match(/login/g))
+						{
+							window.location.replace("./signup.php?autoG=1");
+						}
+						
 						//signup
 						$("#fName").val(googleUserArray['fName']);
 						$("#lName").val(googleUserArray['lName']);
@@ -143,10 +149,12 @@ function startGSignUp()
 						  text: 'Google+ Signup complete. Now we just need your business name.'
 						});
 					}
+					else
+					{	
+						//console.log("skipping due to lack of consent");
+					}
 				}
 			}
-		 });
-	}
-	else
-		console.log("skipping due to lack of consent");
+		}
+	});
 }

@@ -32,6 +32,7 @@
 	<?}?>
 	<form id="venueConfigForm" method="POST" class="custom" data-abide>
 		<h1><?echo _("Tell us about your venue");?></h1>
+		<input type="hidden" id="redirectFlag" value="<?echo $redirectFlag;?>"/>
 		<div class="large-6 columns">
 			<div class="row">
 				<div class="large-9 small-9 columns">
@@ -77,7 +78,7 @@
 						<option value="2"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='2')	{?>selected="selected"<?}?>><? echo _("Bars, Pubs and Clubs");?></option>
 						<option value="3"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='3')	{?>selected="selected"<?}?>><? echo _("Workplace/Education Catering");?></option>
 						<option value="4"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='4')	{?>selected="selected"<?}?>><? echo _("Retail Catering (Cafe, Sandwich Bar, Restaurant, etc)");?></option>
-						<option value="5" 	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='5')	{?>selected="selected"<?}?>><? echo _("Music and cultural");?></option>
+						<option value="5" 	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='5')	{?>selected="selected"<?}?>><? echo _("Music and Cultural");?></option>
 					</select>
 				</div>
 			</div>
@@ -114,8 +115,9 @@
 			</div>
 			
 			<div class="row row--space1">
-				<div class="small-12 large-2 columns">
-					<button id="venueSave" type="submit" tabindex=9><?echo _("SAVE");?></button>
+				<div class="small-12 large-12 columns">
+					<button id="venueSave" type="submit" tabindex=9><?echo _("SAVE CHANGES");?></button>
+					<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
 				</div>
 			</div>
 		</div>

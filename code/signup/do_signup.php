@@ -10,8 +10,6 @@
 	$lName = $_POST['lName'];
 	protect($lName);
 	
-	$name = $fName." ".$lName;
-	
 	$email = $_POST['email'];
 	protect($email);
 	
@@ -31,7 +29,8 @@
 	//protect($notificationFlag);  //currently we dont store this!
 	
 	$data['name']				= $businessName;
-	$data['owner']['name']		= $name;
+	$data['owner']['firstName']	= $fName;
+	$data['owner']['lastName']	= $lName;
 	$data['owner']['username']	= $email;
 	$data['owner']['email']		= $email;
 	$data['owner']['password'] 	= $password;

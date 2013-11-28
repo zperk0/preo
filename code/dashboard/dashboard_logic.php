@@ -203,6 +203,7 @@
 	else if($_SESSION['noVenueFlag']) /* User has not given all 5 so first check Venue */
 	{	
 		$_SESSION['signupWizFlag']=1;
+		$redirectFlag=1;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/venueConfig.php"); 
@@ -210,6 +211,7 @@
 	else if($_SESSION['noAppFlag-1']) /* User has not given all 5 so second check App-1 */
 	{	
 		$_SESSION['signupWizFlag']=1;
+		$redirectFlag=1;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig1.php");

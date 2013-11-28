@@ -1,9 +1,22 @@
 <div class="row">
 	<div class="topSpacer"></div>
-	<div class="large-12 columns">
-		<div class="large-6 columns">
+	<div class="large-6 columns">
+		<h1><?echo _("Your account");?></h1>
+		<div class="large-12 columns socialMediaDiv">
+			<div class="row">
+				<div class="large-6 columns fbSignup">
+					<a href="<?php echo $authCodeUrl;?>"><span><?echo _("Login using Facebook");?></span></a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-6 columns googleSignup">
+					<input type="hidden" id="userConsent" value="0"/>
+					<span class="g-signin" data-callback="signinCallback" data-clientid="415077578170-8p5u7eurntd3qj7qbrk2nv2mvetuqjur.apps.googleusercontent.com" data-cookiepolicy="single_host_origin" data-requestvisibleactions="http://schemas.google.com/AddActivity" data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email" data-prompt="select_account"><?echo _("Login using Google+");?></span>
+				</div>
+			</div>
+		</div>
+		<div class="large-12 columns">
 			<form id="signinForm" method="POST" data-abide>
-				<h1><?echo _("Your account");?></h1>
 				<div class="row">
 					<div class="large-12 columns">
 						<label><?echo _("Email");?></label>
@@ -32,19 +45,6 @@
 					</div>
 				</div>
 			</form>
-		</div>
-		<div class="large-offset-1 large-5 columns socialMediaDiv">
-			<div class="row">
-				<div class="large-6 columns fbSignup">
-					<a href="<?php echo $authCodeUrl;?>"><span><?echo _("Login using Facebook");?></span></a>
-				</div>
-			</div>
-			<div class="row">
-				<div class="large-6 columns googleSignup">
-					<input type="hidden" id="userConsent" value="0"/>
-					<span class="g-signin" data-callback="signinCallback" data-clientid="415077578170-8p5u7eurntd3qj7qbrk2nv2mvetuqjur.apps.googleusercontent.com" data-cookiepolicy="single_host_origin" data-requestvisibleactions="http://schemas.google.com/AddActivity" data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email" data-prompt="select_account"><?echo _("Login using Google+");?></span>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>

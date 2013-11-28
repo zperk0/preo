@@ -110,7 +110,8 @@
 			
 	<div class="row">
 		<div class="small-12 large-4 columns">
-			<button type="submit"><?echo _("SAVE CHANGES");?></button>
+			<button id="userSubButton" type="submit"><?echo _("SAVE CHANGES");?></button>
+			<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
 		</div>
 	</div>
 </form>

@@ -74,7 +74,7 @@ $(document).ready(function() {
 					else
 					{	
 						$.post("code/signup/save_session.php", 
-						'bName='+dataArray['name']+'&bID='+dataArray['id']+'&email='+dataArray['owner']['email']+'&name='+dataArray['owner']['name']+'&id='+dataArray['owner']['id'],
+						'bName='+dataArray['name']+'&bID='+dataArray['id']+'&email='+dataArray['owner']['email']+'&fName='+dataArray['owner']['firstName']+'&lName='+dataArray['owner']['lastName']+'&id='+dataArray['owner']['id'],
 						function(response){
 							window.location.replace("./dashboard.php");
 						})
@@ -126,7 +126,7 @@ $(document).ready(function() {
 					else
 					{	
 						$.post("code/signin/save_session.php", 
-						'email='+dataArray['email']+'&name='+dataArray['name']+'&id='+dataArray['id'], 
+						'email='+dataArray['email']+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'], 
 						function(response){
 							window.location.replace("./dashboard.php");
 						})
@@ -301,6 +301,9 @@ $(document).ready(function() {
 	
 	$("#venueConfigForm").on('valid', function (event) {
 		var url = "code/dashboard/do_venueSave.php";
+		
+		$('#venueSave').hide();
+		$('#savingButton').show();
 
 		$.ajax({
 			   type: "POST",
@@ -333,9 +336,12 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'Venue changes have been saved!' });
-						setTimeout(function(){window.location.replace("./dashboard.php");},1000);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
 					}
 				}
+			 }).done(function(){
+				$('#venueSave').show();
+				$('#savingButton').hide();
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
@@ -441,6 +447,9 @@ $(document).ready(function() {
 	
 	$("#appConfigForm").on('valid', function (event) {
 		var url = "code/dashboard/do_appConfig1.php";
+		
+		$('#appConfig1Sub').hide();
+		$('#savingButton').show();
 
 		$.ajax({
 			   type: "POST",
@@ -473,9 +482,12 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'App changes have been saved!' });
-						setTimeout(function(){window.location.replace("./dashboard.php");},1000);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
 					}
 				}
+			 }).done(function(){
+				$('#appConfig1Sub').show();
+				$('#savingButton').hide();
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
@@ -488,6 +500,9 @@ $(document).ready(function() {
 	
 	$("#appConfig2Form").on('valid', function (event) {
 		var url = "code/dashboard/do_appConfig2.php";
+		
+		$('#appConfig2Sub').hide();
+		$('#savingButton').show();
 
 		$.ajax({
 			   type: "POST",
@@ -520,9 +535,11 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'App changes have been saved!' });
-						setTimeout(function(){window.location.replace("./dashboard.php");},1000);
 					}
 				}
+			 }).done(function(){
+				$('#appConfig2Sub').show();
+				$('#savingButton').hide();
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
@@ -958,6 +975,7 @@ $(document).ready(function() {
 		});
 		
 		$('#menuSaveButton').hide();
+		$('#savingButton').show();
 	
 		var url = "code/dashboard/do_menuConfig.php";
 		
@@ -997,9 +1015,11 @@ $(document).ready(function() {
 						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
 					}
 				}
+			 }).done(function() {
+				$('#menuSaveButton').show();
+				$('#savingButton').hide();
 			 });
-		
-		$('#menuSaveButton').show();
+	
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
@@ -1158,6 +1178,8 @@ $(document).ready(function() {
 		
 		newTime = extractAMPM("January 01, 2000 "+currTime);
 		
+		$(this).parents('table').find("input[name^=eETime]").timepicker('remove');
+		$(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 		$(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
 		$(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
 	});
@@ -1370,6 +1392,9 @@ $(document).ready(function() {
 		$(".eventMenuSingleSelect").multiselect('enable');
 		
 		var url = "code/dashboard/do_eventConfig.php";
+		
+		$('#eventSubButton').hide();
+		$('#savingButton').show();
 
 		$.ajax({
 			   type: "POST",
@@ -1414,6 +1439,9 @@ $(document).ready(function() {
 						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
 					}
 				}
+			 }).done(function() {
+				$('#eventSubButton').show();
+				$('#savingButton').hide();
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
@@ -1630,6 +1658,8 @@ $(document).ready(function() {
 				$(this).trigger('click');
 		});
 		
+		$('#userSubButton').hide();
+		$('#savingButton').show();
 	
 		//enable dropdowns or we wont get the values!
 		$(".userMenuSingleSelect").multiselect('enable');
@@ -1677,6 +1707,9 @@ $(document).ready(function() {
 						
 					}
 				}
+			 }).done(function() {
+				$('#userSubButton').show();
+				$('#savingButton').hide();
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
@@ -1902,6 +1935,9 @@ $(document).ready(function() {
 		$(".outletMenuMultiSelect").multiselect('enable');
 		
 		var url = "code/dashboard/do_outletConfig.php";
+		
+		$('#outSubButton').hide();
+		$('#savingButton').show();
 
 		$.ajax({
 			   type: "POST",
@@ -1936,6 +1972,9 @@ $(document).ready(function() {
 						
 					}
 				}
+			 }).done(function() {
+				$('#outSubButton').show();
+				$('#savingButton').hide();
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
@@ -1968,6 +2007,8 @@ $(document).ready(function() {
 		
 		newTime = extractAMPM("January 01, 2000 "+currTime);
 		
+		$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('remove');
+		$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 		$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
 		$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
 	});
@@ -1986,6 +2027,8 @@ $(document).ready(function() {
 			
 			newTime = extractAMPM("January 01, 2000 "+currTime);
 			
+			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('remove');
+			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
 			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
 		});
@@ -2058,6 +2101,7 @@ $(document).ready(function() {
 					
 					$(this).find('input[name^=ohEndTime]').each(function(){
 						$(this).val(closeData[closeCounter]);
+						$(this).timepicker({ 'minTime': closeData[closeCounter], 'timeFormat': 'H:i', 'step': 15 });
 						closeCounter++;
 					});
 					
@@ -2067,6 +2111,8 @@ $(document).ready(function() {
 							
 							newTime = extractAMPM("January 01, 2000 "+currTime);
 							
+							$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('remove');
+							$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 							$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
 							$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
 						});
@@ -2091,6 +2137,9 @@ $(document).ready(function() {
 	
 	$("#nonEventConfigForm").on('valid', function (event) {
 		var url = "code/dashboard/do_nonEventConfig.php";
+		
+		$('#ohSubButton').hide();
+		$('#savingButton').show();
 
 		$.ajax({
 			   type: "POST",
@@ -2125,60 +2174,11 @@ $(document).ready(function() {
 						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
 					}
 				}
+			}).done(function() {
+				$('#ohSubButton').show();
+				$('#savingButton').hide();
 			 });
-
-		return false; // avoid to execute the actual submit of the form.
-	});
-	
-	$("input[name^=ebTime], input[name^=ebETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-	$("input[name^=ebDate]").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
-	
-	$("input[name^=ebTime]").on('changeTime',function() {
-		currTime = $(this).val()+":00";
-		
-		newTime = extractAMPM("January 01, 2000 "+currTime);
-		
-		$(this).parent().next("div").children("input[name^=ebETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
-		$(this).parent().next("div").children("input[name^=ebETime]").timepicker('setTime', newTime);
-	});
-	
-	$("#eventBasedConfigForm").on('valid', function (event) {
-		var url = "code/dashboard/do_eventBasedConfig.php";
-
-		$.ajax({
-			   type: "POST",
-			   url: url,
-			   data: $(this).serialize(), // serializes the form's elements.
-			   success: function(data)
-			   {
-					try
-					{
-						var dataArray = jQuery.parseJSON(data); //parsing JSON
-					}
-					catch(e)
-					{
-						noty({
-						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
-						});
-						//alert(data);
-						return false;
-					}
-					
-					if(typeof dataArray['status'] !='undefined') //error
-					{
-						noty({
-						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
-						});
-					}
-					else
-					{	
-						noty({ type: 'success', text: 'Event times have been saved!' });
-						
-					}
-				}
-			 });
+			 
 
 		return false; // avoid to execute the actual submit of the form.
 	});
@@ -2415,6 +2415,9 @@ $(document).ready(function() {
 		});
 	
 		var url = "code/dashboard/do_mdConfig.php";
+		
+		$('#mdSubButton').hide();
+		$('#savingButton').show();
 
 		$.ajax({
 			   type: "POST",
@@ -2449,6 +2452,9 @@ $(document).ready(function() {
 						
 					}
 				}
+			}).done(function() {
+				$('#mdSubButton').show();
+				$('#savingButton').hide();
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
@@ -2474,30 +2480,36 @@ $(document).ready(function() {
 	  });
 	  
 	$(".showNextPhone, .phoneContainer").on('click', function(){
-		if($(".phone2").hasClass('hide'))
+		if(!$(".phone2").is(':visible'))
 		{
+			/*
 			$(".phone1").css('margin-left','0');
 			$(".phone1").animate({'margin-left':'-252px'},150);
 			
-			setTimeout(function(){$(".phone1").hide();$(".phone2").show();$(".phone2").removeClass('hide');$(".phone1").addClass('hide');}, 50);
+			setTimeout(function(){$(".phone1").hide();$(".phone2").show();$(".phone2").removeClass('hide');$(".phone1").addClass('hide');}, 20);
 			
 			$(".phone2").css('margin-left','252px');
 			$(".phone2").animate({'margin-left':'0'},100);
-					
+			*/
 			
+			$(".phone1").hide();
+			$(".phone2").show();
 		}
 		else
 		{
-			$(".phone2").css('margin-left','0px');
+			/*$(".phone2").css('margin-left','0px');
 			$(".phone2").animate({'margin-left':'252px'},150);
 			
-			setTimeout(function(){$(".phone2").hide();$(".phone1").show();$(".phone1").removeClass('hide');$(".phone2").addClass('hide');}, 50);
+			setTimeout(function(){$(".phone2").hide();$(".phone1").show();$(".phone1").removeClass('hide');$(".phone2").addClass('hide');}, 20);
 			
 			$(".phone1").css('margin-left','-252px');
 			$(".phone1").animate({'margin-left':'0'},100);
 			
 			$(".phone1").removeClass('hide');
-			$(".phone2").addClass('hide');
+			$(".phone2").addClass('hide');*/
+			
+			$(".phone2").hide();
+			$(".phone1").show();
 		}
 		
 		$(".phone1pager").toggle();
@@ -2718,7 +2730,10 @@ function extractAMPM(date) {
 //On window resize
 //map resizing with window
 $(window).resize(function(){
-	google.maps.event.trigger(map, 'resize');
-	if (typeof place != 'undefined') map.setCenter(place.geometry.location);
-		else map.setCenter( new google.maps.LatLng(mapDefaultCenterLat,mapDefaultCenterLong) );
+	if($("#map").length > 0)
+	{
+		google.maps.event.trigger(map, 'resize');
+		if (typeof place != 'undefined') map.setCenter(place.geometry.location);
+			else map.setCenter( new google.maps.LatLng(mapDefaultCenterLat,mapDefaultCenterLong) );
+	}
 });
