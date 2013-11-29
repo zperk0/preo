@@ -25,7 +25,7 @@
 		<?}?>
 		<div class="large-12 columns">
 
-			<h1><?if(!isset($_SESSION['menu_edit_on'])) echo _("Build your menu"); else echo _("Your menu");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Now it's time to create your menu. We suggest you keep it simple to start with.<br/><br/>An easy way is to group items, i.e. create separate sections for food, cold drinks and hot drinks.");?>"></i></h1>
+			<h1><?if(!$_SESSION['menu_edit_on'] && !isset($menu)) echo _("Build your menu"); else echo _("Your menu");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Now it's time to create your menu. We suggest you keep it simple to start with.<br/><br/>An easy way is to group items, i.e. create separate sections for food, cold drinks and hot drinks.");?>"></i></h1>
 
 			<!-- Hidden inputs here keep count of menu items and options -->
 			<input type="hidden" id="sectionCount" 			name="sectionCount"			value="<?if($_SESSION['menu_edit_on']) echo $sectionCount; else echo "0";?>"/>
@@ -39,7 +39,7 @@
 			
 			<input type="hidden" id="redirectFlag" value="<?echo $redirectFlag?>"/>
 			
-			<?if($_SESSION['menu_edit_on']) :
+			<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu))) :
 				foreach($itemOptionArray as $key=>$itemOption)
 				{
 					//we have to keep this 1-indexed for consistency
@@ -51,7 +51,7 @@
 			endif; ?>
 
 			<div class="row">
-				<input type="text" name="mName" id="mName" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on']) echo $menu['name'];?>" placeholder="<?echo _("Click to add your menu name");?>" required tabindex=1/>
+				<input type="text" name="mName" id="mName" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo $menu['name'];?>" placeholder="<?echo _("Click to add your menu name");?>" required tabindex=1/>
 				<small class="error"><?echo _("Please type a menu name");?></small>
 			</div>
 
@@ -171,7 +171,7 @@
 
 	<div class="dynamicDataTable"> <!-- This is where the dynamic data goes into -->
 	
-	<?if($_SESSION['menu_edit_on']){
+	<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu))){
 		$iKey=0; //item number are continuous across sections so we can't use $key in foreach($array as $key=>$var)
 		foreach($menu['sections'] as $sKey=>$section){ 
 		//again remember its all 1-indexed thats why we add +1 to the key

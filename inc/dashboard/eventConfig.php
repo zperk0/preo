@@ -108,7 +108,7 @@
 							<tr class="eventEdit optionTR">
 								<td class="eventTDCollection">
 									<label>&nbsp;</label>
-									<select name="eColl[event0][0]" class="eventField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have eventMenuSingleSelect -->
+									<select name="eColl[event0][0]" class="eventField noEnterSubmit inline" style="display:none;" required/> <!-- Dummy does not have eventMenuSingleSelect -->
 										<option value="PRESHOW"  ><?echo _("Collection Slot: Pre-Show")?></option>
 										<option value="PREGAME"  ><?echo _("Collection Slot: Pre-Game")?></option>
 										<option value="INTERVAL" ><?echo _("Collection Slot: Interval")?></option>
@@ -116,6 +116,7 @@
 										<option value="HALFTIME" ><?echo _("Collection Slot: Half-time")?></option>
 										<option value="POSTSHOW" ><?echo _("Collection Slot: Post-Show")?></option>
 										<option value="POSTGAME" ><?echo _("Collection Slot: Post-Game")?></option>
+										<small class="error"><?echo _("Please choose a slot.");?></small>
 									</select>
 								</td>
 								<td class="eventTDLead">
@@ -185,7 +186,7 @@
 						</td>
 					</tr>
 					<?foreach($event['cSlots'] as $cKey=>$cSlot){?>
-					<tr class="eventEdit optionTR savedInput" style="display:none;">
+					<tr class="eventEdit optionTR savedInput" style="display:none;" required>
 						<td class="eventTDCollection">
 							<label>&nbsp;</label>
 							<select name="eColl[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit inline eventMenuSingleSelect hide"/>
@@ -197,6 +198,7 @@
 								<option value="POSTSHOW" <?if($cSlot['collectionslot']=='POSTSHOW' ) echo "selected='selected'";?>><?echo _("Collection Slot: Post-Show")?></option>
 								<option value="POSTGAME" <?if($cSlot['collectionslot']=='POSTGAME' ) echo "selected='selected'";?>><?echo _("Collection Slot: Post-Game")?></option>
 							</select>
+							<small class="error"><?echo _("Please choose a slot.");?></small>
 						</td>
 						<td class="eventTDLead">
 							<label><?echo _("Lead Time (mins)");?></label>

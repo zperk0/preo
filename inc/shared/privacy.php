@@ -3,16 +3,15 @@
 <p><?echo _("\"www.preoday.com\" is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website or app, then you can be assured that it will only be used in accordance with this privacy statement.");?></p>
 <p><?echo _("\"www.preoday.com\" may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes. This policy is effective from 01 June 2013.");?></p>
 <p class="lead"><?echo _("What we collect");?></p>
-<p><?echo _("We may collect the following information:");?>
-	<ul>
-		<li><?echo _("Name");?></li>
-		<li><?echo _("Email Address");?></li>
-		<li><?echo _("Phone Numbers");?></li>
-		<li><?echo _("Demographic information such as postcode, preferences, and interests");?></li>
-		<li><?echo _("Menu orders and prices");?></li>
-		<li><?echo _("Information relevant to customer surveys and/or offers");?></li>
-	</ul>	
-</p>
+<p><?echo _("We may collect the following information:");?></p>
+<ul>
+	<li><?echo _("Name");?></li>
+	<li><?echo _("Email Address");?></li>
+	<li><?echo _("Phone Numbers");?></li>
+	<li><?echo _("Demographic information such as postcode, preferences, and interests");?></li>
+	<li><?echo _("Menu orders and prices");?></li>
+	<li><?echo _("Information relevant to customer surveys and/or offers");?></li>
+</ul>	
 <p><?echo _("What we do with the information we gather.");?><br/><?echo _("We require this information to understand your needs and provide you with a better service, and in particular for internal record keeping.");?></p>
 <p><?echo _("We may use the information to improve our products and services.");?></p>
 <p><?echo _("We may periodically send promotional email about new products, special offers or other information which we think you may find interesting using the email address which you have provided.");?></p>

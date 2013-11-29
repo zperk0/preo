@@ -49,7 +49,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','510%');
-	$('.progressIndicator').attr('title', "100% done, phew! you're done!!");
+	$('.progressIndicator').attr('title', "100% phew! you're done!!");
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });

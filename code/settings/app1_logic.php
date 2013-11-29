@@ -12,6 +12,8 @@
 	//echo $_SESSION['account_name']."<br/>";
 	//echo $_SESSION['account_id']."<br/>";
 	//echo $_SESSION['token']."<br/>";
+	
+	$procMem = 0;
 
 	//we use the user's token
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
@@ -57,7 +59,14 @@
 		}
 		else
 		{
-			$redirectFlag = 0;
+			if( (!isset($_SESSION['signupWizFlag'])) || (isset($_SESSION['signupWizFlag']) && !$_SESSION['signupWizFlag']) )
+			{
+				$redirectFlag = 0;
+			}
+			else
+			{
+				$redirectFlag = 1;
+			}
 			
 			//echo var_dump($dataJSON);
 			//app-1
@@ -82,7 +91,9 @@
 			}
 		}
 		
-		$_SESSION['app1_edit_on']=1;
+		if( (!isset($_SESSION['signupWizFlag'])) || (isset($_SESSION['signupWizFlag']) && !$_SESSION['signupWizFlag']) ) $_SESSION['app1_edit_on']=1;
+		else $procMem=1;
+		
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/appConfig1.php');

@@ -282,8 +282,6 @@ $(document).ready(function() {
 			$('.cSlotDiv').slideDown();
 			$('.leadTimeDiv').slideDown();
 			
-			$('#map').animate({height: '588px'});
-			
 			$('.cSlotDiv').find('input').attr('required','required');
 			$('.leadTimeDiv').find('input').attr('required','required');
 		}
@@ -291,8 +289,6 @@ $(document).ready(function() {
 		{
 			$('.cSlotDiv').slideUp();
 			$('.leadTimeDiv').slideUp();
-			
-			$('#map').animate({height: '430px'});
 			
 			$('.cSlotDiv').find('input').removeAttr('required');
 			$('.leadTimeDiv').find('input').removeAttr('required');
@@ -304,7 +300,7 @@ $(document).ready(function() {
 		
 		$('#venueSave').hide();
 		$('#savingButton').show();
-
+		
 		$.ajax({
 			   type: "POST",
 			   url: url,
@@ -322,7 +318,6 @@ $(document).ready(function() {
 						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
-						
 						return false;
 					}
 					
@@ -336,7 +331,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'Venue changes have been saved!' });
-						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
+						if($('#redirectFlag').val()=='1') { setTimeout(function(){window.location.replace("./dashboard.php");}, 1000); }
 					}
 				}
 			 }).done(function(){
@@ -386,7 +381,7 @@ $(document).ready(function() {
 	};
 	$("#logoUpForm").ajaxForm(options);
 	
-	$("[id^=thumb]").live('click', function() {
+	$("[id^=thumb]").on('click', function() {
 		$("[id^=thumb]").removeClass('selected');
 		$(this).addClass('selected');
 		var tID = $(this).attr('id');
@@ -427,23 +422,23 @@ $(document).ready(function() {
 		}
 	}); */
 	
-	$(".visibleUpload, #logoReset").live('click', function() {
+	$(".visibleUpload, #logoReset").on('click', function() {
 		$(".visibleUpload").toggle();
 		$(".hiddenUpload").toggle();
 	});
 	
-	$("#doLogoUp").live('click', function() {
+	$("#doLogoUp").on('click', function() {
 		if($("#picFile").val()) $("#logoUpForm").submit();
 		else noty({ type: 'error',  layout: 'topCenter', text: 'Please choose a file' });
 	});
 	
-	$("#logoReset").live('click', function() {
+	$("#logoReset").on('click', function() {
 		var content = $("#aHeading").val()
 		$("#appHeading").html(content);
 		$("#picFileName").val('');
 	});
 	
-	$("#appConfig1Sub").live('click', function() { $("#appConfigForm").submit(); });
+	$("#appConfig1Sub").on('click', function() { $("#appConfigForm").submit(); });
 	
 	$("#appConfigForm").on('valid', function (event) {
 		var url = "code/dashboard/do_appConfig1.php";
@@ -467,7 +462,7 @@ $(document).ready(function() {
 						  type: 'error',  layout: 'topCenter',
 						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
-						alert(data);
+						//alert(data);
 						return false;
 					}
 					
@@ -545,7 +540,7 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
-	$(".optionRowDelete").live('click', function() {
+	$(document).on("click", ".optionRowDelete", function() {
 		//get item number
 		$curTable = $(this).closest('table');
 		var itemID = $curTable.attr('id');
@@ -576,7 +571,7 @@ $(document).ready(function() {
 		$(this).parents("tr:first").remove();
 	});
 	
-	$(".newOpt, .optionRowDuplicate").live('click', function() {
+	$(document).on("click", ".newOpt, .optionRowDuplicate", function() {
 		//new item or duplicate?
 		var dup = 0;
 		if($(this).hasClass("optionRowDuplicate")) dup = 1;
@@ -681,7 +676,7 @@ $(document).ready(function() {
 		$("html, body").animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
 	});
 	
-	$(".newItem, .itemDuplicate").live('click', function() {
+	$(document).on("click", ".newItem, .itemDuplicate", function() {
 		//new item or duplicate?
 		var dup = 0;
 		if($(this).hasClass("itemDuplicate")) dup = 1;
@@ -815,11 +810,12 @@ $(document).ready(function() {
 		$(".firstItemDiv"+section).before($newTab); 
 		
 		$($newTab).slideRow('down');
+		if($newTab.find('.itemEdit').is(':visible')) $newTab.find('.itemEdit').trigger('click');
 		
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
-	$(".itemDelete").live('click', function() {
+	$(document).on("click", ".itemDelete", function() {
 		//get item number
 		$curTable = $(this).closest('table');
 		var itemID = $curTable.attr('id');
@@ -833,7 +829,7 @@ $(document).ready(function() {
 		$("#"+itemID).remove();
 	});
 	
-	$(".itemSave").on('click', function() {
+	$(document).on("click", ".itemSave", function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
 		var itemID = $curItem.attr('id');
@@ -850,7 +846,7 @@ $(document).ready(function() {
 		$curItem.css('background', 'transparent');
 	});
 	
-	$(".itemEdit").on('click', function() {
+	$(document).on("click", ".itemEdit", function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
 		var itemID = $curItem.attr('id');
@@ -867,7 +863,7 @@ $(document).ready(function() {
 		$curItem.css('background', '#fafafa');
 	});
 	
-	$(".newSection").on('click', function() {
+	$(document).on("click", ".newSection", function() {
 		//get and update current count
 		var secCount = $("#sectionCount").val();
 		var newCount = parseInt(secCount) + 1;
@@ -907,7 +903,7 @@ $(document).ready(function() {
 		$($newSec).slideDown('slow');
 	});
 	
-	$(".deleteSection").on('click',function(){
+	$(document).on("click", ".deleteSection", function(){
 		//get id
 		sectionID = ($(this).attr('id')).replace("delete_section","");
 		$parentSectionHeader = $(this).parents('#menuSectionRow');
@@ -1023,7 +1019,7 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
-	$(".newEvent, .eventDuplicate").live('click', function() {
+	$(document).on("click", ".newEvent, .eventDuplicate", function() {
 		//new item or duplicate?
 		var dup = 0;
 		if($(this).hasClass("eventDuplicate")) dup = 1;
@@ -1104,7 +1100,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Slot &#x25BC;",
+			   noneSelectedText: "Collection Slot &#x25BC;",
 			   selectedList: 1
 			}); 
 		});
@@ -1170,6 +1166,7 @@ $(document).ready(function() {
 		//insert before section header/before hidden div
 		$(".firstEventDiv").before($newTab); 
 		$newTab.slideRow('down');
+		if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
@@ -1184,7 +1181,7 @@ $(document).ready(function() {
 		$(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
 	});
 	
-	$(".eventSave").live('click', function() {
+	$(document).on("click", ".eventSave", function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").removeClass('eventEdit');
@@ -1197,7 +1194,7 @@ $(document).ready(function() {
 		$curItem.css('background', 'transparent');
 	});
 	
-	$(".eventTDEdit").live('click', function() {
+	$(document).on("click", ".eventTDEdit", function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").addClass('eventEdit');
@@ -1210,7 +1207,7 @@ $(document).ready(function() {
 		$curItem.css('background', '#fafafa');
 	});
 	
-	$(".eventDelete").live('click', function() {
+	$(document).on("click", ".eventDelete", function() {
 		//get event number
 		$curTable = $(this).closest('table');
 		eventID = $curTable.attr('id');
@@ -1301,13 +1298,13 @@ $(document).ready(function() {
 	$(".eventMenuSingleSelect").multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Slot &#x25BC;",
+	   noneSelectedText: "Collection Slot &#x25BC;",
 	   selectedList: 1
 	}); 
 		
 	$(".eventMenuSingleSelect").multiselect('disable');
 	
-	$(".newCollSlot").on('click', function() {
+	$(document).on("click", ".newCollSlot", function() {
 		//get event number
 		$curTable = $(this).closest('table');
 		var eventID = $curTable.attr('id');
@@ -1336,7 +1333,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Slot &#x25BC;",
+			   noneSelectedText: "Collection Slot &#x25BC;",
 			   selectedList: 1
 			}); 
 		});
@@ -1367,7 +1364,7 @@ $(document).ready(function() {
 		$("html, body").animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
 	});
 	
-	$(".delCollSlot").live('click', function() {
+	$(document).on("click", ".delCollSlot", function() {
 		//get item number
 		$curTable = $(this).closest('table');
 		var eventID = $curTable.attr('id');
@@ -1447,7 +1444,7 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
-	$(".userSave").live('click', function() {
+	$(document).on("click", ".userSave", function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").removeClass('userEdit');
@@ -1459,7 +1456,7 @@ $(document).ready(function() {
 		$curItem.css('background', 'transparent');
 	});
 	
-	$(".userTDEdit").live('click', function() {
+	$(document).on("click", ".userTDEdit", function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").addClass('userEdit');
@@ -1471,8 +1468,7 @@ $(document).ready(function() {
 		$curItem.css('background', '#fafafa');
 	});
 	
-	//$(".newUser, .userDuplicate").live('click', function() {
-	$(".newUser").live('click', function() {
+	$(document).on("click", ".newUser", function() {
 		//new item or duplicate?
 		var dup = 0;
 		if($(this).hasClass("userDuplicate")) dup = 1;
@@ -1554,7 +1550,7 @@ $(document).ready(function() {
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
-	$(".userDelete").live('click', function() {
+	$(document).on("click", ".userDelete", function() {
 		//get event number
 		$curTable = $(this).closest('table');
 		userID = $curTable.attr('id');
@@ -1715,7 +1711,7 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
-	$(".outletSave").live('click', function() {
+	$(document).on("click", ".outletSave", function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").removeClass('outletEdit');
@@ -1727,7 +1723,7 @@ $(document).ready(function() {
 		$curItem.css('background', 'transparent');
 	});
 	
-	$(".outletTDEdit").live('click', function() {
+	$(document).on("click", ".outletTDEdit", function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").addClass('outletEdit');
@@ -1739,7 +1735,7 @@ $(document).ready(function() {
 		$curItem.css('background', '#fafafa');
 	});
 	
-	$(".newOutlet").live('click', function() {
+	$(document).on("click", ".newOutlet", function() {
 		//new item or duplicate?
 		var dup = 0;
 		if($(this).hasClass("outletDuplicate")) dup = 1;
@@ -1834,7 +1830,7 @@ $(document).ready(function() {
 		
 	$(".outletMenuMultiSelect").multiselect('disable');
 	
-	$(".outletDelete").live('click', function() {
+	$(document).on("click", ".outletDelete", function() {
 		//get outlet number
 		$curTable = $(this).closest('table');
 		outletID = $curTable.attr('id');
@@ -2013,7 +2009,7 @@ $(document).ready(function() {
 		$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
 	});
 	
-	$('.addMoreOH').live('click', function(){
+	$(document).on("click", '.addMoreOH', function(){
 		$oldDiv = $(this).parents('.openingHoursDiv').find('.openHWrapper:first');
 		$newDiv = $oldDiv.clone(false);
 		
@@ -2043,7 +2039,7 @@ $(document).ready(function() {
 		$newDiv.slideDown();
 	});
 	
-	$('.removeOH').live('click', function(){
+	$(document).on("click", '.removeOH', function(){
 		$ele = $(this).parents('.openHWrapper');
 		
 		$ele.slideUp();
@@ -2051,7 +2047,7 @@ $(document).ready(function() {
 		$ele.remove();
 	});
 	
-	$(".applyTimesAllDays").on('click',function(){
+	$(document).on("click", ".applyTimesAllDays", function(){
 		id = ($(this).parents('div.applyAllDiv')).attr('id');
 		id = id.substring(0, id.length - 1); //delete the 'C' to get just monday, etc.
 		
@@ -2183,7 +2179,7 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
-	$(".newMD").live('click', function() {
+	$(document).on("click", ".newMD", function() {
 		//get and update current count
 		var mdCount = $("#mdCount").val();
 		var newCount = parseInt(parseInt(mdCount) + 1);
@@ -2249,7 +2245,7 @@ $(document).ready(function() {
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
-	$(".mdTDIName i.fi-plus").live('click', function(){
+	$(document).on("click", ".mdTDIName i.fi-plus", function(){
 		$(this).removeClass('fi-plus');
 		$(this).addClass('fi-minus');
 		$(this).parent("button").addClass('secondary');
@@ -2271,7 +2267,7 @@ $(document).ready(function() {
 		$mdItems.val(allIDs);
 	});
 	
-	$(".mdTDIName i.fi-minus").live('click', function(){
+	$(document).on("click", ".mdTDIName i.fi-minus", function(){
 		$(this).removeClass('fi-minus');
 		$(this).addClass('fi-plus');
 		$(this).parent("button").removeClass('secondary');
@@ -2293,7 +2289,7 @@ $(document).ready(function() {
 		$mdItems.val(allIDs);
 	});
 	
-	$(".mdDelete").live('click', function() {
+	$(document).on("click", ".mdDelete", function() {
 		//get event number
 		$curTable = $(this).closest('table');
 		mdID = $curTable.attr('id');
@@ -2381,7 +2377,7 @@ $(document).ready(function() {
 		
 	});
 	
-	$(".mdSave").live('click', function() {
+	$(document).on("click", ".mdSave", function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").removeClass('mdEdit');
@@ -2394,7 +2390,7 @@ $(document).ready(function() {
 		$curItem.css('background', 'transparent');
 	});
 	
-	$(".mdTDEdit").live('click', function() {
+	$(document).on("click", ".mdTDEdit", function() {
 		$(this).hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").addClass('mdEdit');
@@ -2522,7 +2518,7 @@ $(document).ready(function() {
 		$(".passField").attr('required','required');
 	});
 	
-	$(".deleteMenu").live('click', function() {
+	$(document).on("click", ".deleteMenu", function() {
 		//get menu id
 		menuID = $(this).attr('id');
 		

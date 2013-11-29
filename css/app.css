@@ -719,7 +719,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 
 .outletTable .outletTDName{
 	font-weight: bold !important;
-	width: 60%;
+	width: 59%;
 }
 
 .menuTable .menuTDName input, .eventTable .eventTDName input, .userTable .userTDName input, .outletTable .outletTDName input, .mdTable .mdTDName input{
@@ -758,7 +758,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .userTable .userTDPassword, .headerTable .userTDPassword{
-	width: 21%;
+	width: 20%;
 }
 
 .menuTable .menuTDPrice input, .mdTable .mdTDPrice input, .mdTable .mdTDTPrice input{
@@ -802,7 +802,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .userTable .userTDRole, .headerTable .userTDRole{
-	width: 9%;
+	width: 10%;
 	font-size: 14px;
 	padding-top: 0px;
 }
@@ -862,8 +862,12 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	width: 12%;
 }
 
-.userTable .userTDTools, .outletTable .outletTDTools, .userTable .userTDTools, .headerTable .userTDTools{
+.userTable .userTDTools, .userTable .userTDTools, .headerTable .userTDTools{
 	width: 8%;
+}
+
+.outletTable .outletTDTools{
+	width: 9%;
 }
 
 .menuTableButtons, .eventTableButtons, .userTableButtons, .outletTableButtons, .mdTableButtons{

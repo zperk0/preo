@@ -35,7 +35,7 @@
 					
 				<div class="row row--space1">
 					<div class="large-12 columns">
-						<small><a href="#" data-reveal-id="forgotPassM"><?echo _("Forgot your password?");?></a></label></small>
+						<small><a href="#" data-reveal-id="forgotPassM"><?echo _("Forgot your password?");?></a></small>
 					</div>
 				</div>
 				

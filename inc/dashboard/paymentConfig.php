@@ -5,7 +5,7 @@
 		<nav class="breadcrumbs row--space1d">
 			<a href="<?echo $_SESSION['path']?>/venueSettings.php"><? echo _("Venue Information");?></a>
 			<a href="<?echo $_SESSION['path']?>/appSettings1.php"><? echo _("App Styling");?></a>
-			<a href="<?echo $_SESSION['path']?>/menuSettings.php?id=<?echo $_SESSION['menu_id'];?>&r=1"><? echo _("Menu Creation");?></a>
+			<a href="<?echo $_SESSION['path']?>/menuSettings.php?id=<?echo $_SESSION['menus'][0]['id'];?>&r=1"><? echo _("Menu Creation");?></a>
 			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a href="<?echo $_SESSION['path']?>/eventSettings.php?r=1"><? echo _("Events");?></a>
 			<?}else{?><a href="<?echo $_SESSION['path']?>/nonEventSettings.php?r=1"><? echo _("Opening Hours");?></a><?}?>
 			<?if(!$_SESSION['noPaymentFlag']){?>

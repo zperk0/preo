@@ -12,6 +12,8 @@
 	//echo $_SESSION['account_id']."<br/>";
 	//echo $_SESSION['token']."<br/>";
 
+	$procMem = 0;
+	
 	//we use the user's token
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
 	
@@ -43,8 +45,15 @@
 
 	if(isset($venueID)) //if there is no venue set then no App or Menu can be set anyway
 	{	
-		$_SESSION['venue_edit_on']=1;
-		$redirectFlag = 0;
+		if( (!isset($_SESSION['signupWizFlag'])) || (isset($_SESSION['signupWizFlag']) && !$_SESSION['signupWizFlag']) )
+		{
+			$_SESSION['venue_edit_on']=1;
+			$redirectFlag = 0;
+		}
+		else
+			$procMem = 1;
+		
+		
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/venueConfig.php');

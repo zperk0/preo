@@ -83,49 +83,49 @@ function makeRandomPassword()
 
 function startGSignUp()
 {
-	//we check if the user already exists
-	token = googleUserArray['token'];
-	gpid = googleUserArray['id'];
+	if($('#userConsent').val()=='1')
+	{
+		//we check if the user already exists
+		token = googleUserArray['token'];
+		gpid = googleUserArray['id'];
 
-	//check if user already exists - if so try login - else signup
-	$.ajax({
-	   type: "POST",
-	   url: "code/shared/do_googlepCheck.php", 
-	   data: "token="+token+"&gpid="+gpid,
-	   success: function(data)
-	   {
-			try
-			{
-				var dataArray = jQuery.parseJSON(data); //parsing JSON
-			}
-			catch(e)
-			{
-				noty({
-				  type: 'error',  layout: 'topCenter',
-				  text: 'Error! Could not verify Google Plus credentials.'
-				});
-				alert(data);
+		//check if user already exists - if so try login - else signup
+		$.ajax({
+		   type: "POST",
+		   url: "code/shared/do_googlepCheck.php", 
+		   data: "token="+token+"&gpid="+gpid,
+		   success: function(data)
+		   {
+				try
+				{
+					var dataArray = jQuery.parseJSON(data); //parsing JSON
+				}
+				catch(e)
+				{
+					noty({
+					  type: 'error',  layout: 'topCenter',
+					  text: 'Error! Could not verify Google Plus credentials.'
+					});
+					alert(data);
+					
+					return false;
+				}
 				
-				return false;
-			}
-			
-			if(typeof dataArray['status'] !='undefined') //error
-			{
-				noty({
-				  type: 'error',  layout: 'topCenter',
-				  text: dataArray['message']
-				});
-			}
-			else
-			{	
-				//success
-				if(dataArray['signupFlag']=="0")
-				{ 
-					window.location.replace("./dashboard.php");
+				if(typeof dataArray['status'] !='undefined') //error
+				{
+					noty({
+					  type: 'error',  layout: 'topCenter',
+					  text: dataArray['message']
+					});
 				}
 				else
-				{
-					if($('#userConsent').val()=='1')
+				{	
+					//success
+					if(dataArray['signupFlag']=="0")
+					{ 
+						window.location.replace("./dashboard.php");
+					}
+					else
 					{
 						var pathname = window.location.pathname;
 						
@@ -149,12 +149,12 @@ function startGSignUp()
 						  text: 'Google+ Signup complete. Now we just need your business name.'
 						});
 					}
-					else
-					{	
-						//console.log("skipping due to lack of consent");
-					}
 				}
 			}
-		}
-	});
+		});
+	}
+	else
+	{	
+		//console.log("skipping due to lack of consent");
+	}
 }

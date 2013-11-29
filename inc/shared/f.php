@@ -29,9 +29,10 @@
 		<script src="<?echo $_SESSION['path']?>/js/tableSlide.js"></script>
 		
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-		<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
+		<!--<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>-->
 		
 		<!-- Google+ -->
+		<script src="<?echo $_SESSION['path']?>/js/googleplus.js"></script>
 		<script type="text/javascript">
 			window.___gcfg = {
 			  lang: 'en-US',
@@ -43,7 +44,6 @@
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 			  })();
 		</script>
-		<script src="<?echo $_SESSION['path']?>/js/googleplus.js"></script>
 		
 		<script src="<?echo $_SESSION['path']?>/js/general.js"></script>
 		
@@ -55,27 +55,29 @@
 				password: /^.+$/,
 			  }
 			});
-			$('.preloader').hide();
 		</script>
 		
-		<?if(isset($_SESSION['venue_edit_on']) && $_SESSION['venue_edit_on']){?>
+		<?if((isset($_SESSION['venue_edit_on']) && $_SESSION['venue_edit_on']) || (isset($procMem) && $procMem)){?>
 			<script type="text/javascript">
 				$(document).ready(function() {
-					var myLatLng = new google.maps.LatLng(<?echo $_SESSION['venue_latitude'].", ".$_SESSION['venue_longitude'];?>);
-					var marker = new google.maps.Marker({
-						position: myLatLng,
-						map: map,
-						animation: google.maps.Animation.DROP,
-						icon: pinImage,
-						title: '<?echo $_SESSION['venue_name'].", ".$_SESSION['venue_address'];?>'
-					  });
-					  map.setCenter(marker.position);
-					  map.setZoom(15);
+					if($("#map").length > 0)
+					{
+						var myLatLng = new google.maps.LatLng(<?echo $_SESSION['venue_latitude'].", ".$_SESSION['venue_longitude'];?>);
+						var marker = new google.maps.Marker({
+							position: myLatLng,
+							map: map,
+							animation: google.maps.Animation.DROP,
+							icon: pinImage,
+							title: '<?echo $_SESSION['venue_name'].", ".$_SESSION['venue_address'];?>'
+						  });
+						  map.setCenter(marker.position);
+						  map.setZoom(15);
+					}
 				});
 			</script>
 		<?}?>
 		
-		<?if(isset($_SESSION['app1_edit_on']) && $_SESSION['app1_edit_on']){?>
+		<?if((isset($_SESSION['app1_edit_on']) && $_SESSION['app1_edit_on']) || (isset($procMem) && $procMem)){?>
 			<script type="text/javascript">
 				$(document).ready(function() {
 					var content = $("#aHeading").val();
