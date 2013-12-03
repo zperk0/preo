@@ -335,7 +335,7 @@ $(document).ready(function() {
 					}
 				}
 			 }).done(function(){
-				$('#venueSave').show();
+				if(!$('#redirectFlag').val()=='1') $('#venueSave').show();
 				$('#savingButton').hide();
 			 });
 
@@ -481,7 +481,7 @@ $(document).ready(function() {
 					}
 				}
 			 }).done(function(){
-				$('#appConfig1Sub').show();
+				if(!$('#redirectFlag').val()=='1') $('#appConfig1Sub').show();
 				$('#savingButton').hide();
 			 });
 
@@ -894,6 +894,7 @@ $(document).ready(function() {
 			var temp = $(this).val();
 			$(this).val("");
 			$(this).attr('placeholder', temp);
+			$(this).attr('name', 'mSectionName['+newCount+']');
 		});
 		
 		$newSec.find(".menuSectionField").addClass('section'+newCount);
@@ -989,7 +990,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+						  text: "Sorry, but there's been an error processing your request." //text: 'Connection Error! Check API endpoint.'
 						});
 						
 						//alert(data);
@@ -1001,7 +1002,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
+						  text: "Sorry, but there's been an error processing your request." //text: dataArray['message']
 						});
 				   
 					}
@@ -1012,12 +1013,12 @@ $(document).ready(function() {
 					}
 				}
 			 }).done(function() {
-				$('#menuSaveButton').show();
+				if(!$('#redirectFlag').val()=='1') $('#menuSaveButton').show();
 				$('#savingButton').hide();
 			 });
 	
 		return false; // avoid to execute the actual submit of the form.
-	});
+	}); 
 	
 	$(document).on("click", ".newEvent, .eventDuplicate", function() {
 		//new item or duplicate?
@@ -2171,7 +2172,7 @@ $(document).ready(function() {
 					}
 				}
 			}).done(function() {
-				$('#ohSubButton').show();
+				if(!$('#redirectFlag').val()=='1') $('#ohSubButton').show();
 				$('#savingButton').hide();
 			 });
 			 

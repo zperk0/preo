@@ -7,6 +7,8 @@
 	
 	if(!isset($_SESSION['secondaryMenuFlag'])) $_SESSION['secondaryMenuFlag']=0;
 	
+	//+d($_POST);
+	
 	if(isset($_SESSION['menu_edit_on']) && $_SESSION['menu_edit_on']) //We delete the old menu and create a new one!
 	{		
 		$menuID = $_SESSION['menu_id'];
@@ -74,7 +76,7 @@
 	$i = $j = 1;
 	while($i <= $sectionCountAct && $j <= $sectionCount) //$i should break it faster unless linear == actual  -- creating new menu here
 	{
-		if(isset($_POST['mSectionName'][$j]) && $_POST['mSectionName'][$j])
+		if(isset($_POST['mSectionName'][$j]))
 		{
 			$menu[$i]['name'] = /*protect(*/$_POST['mSectionName'][$j];//);
 			
@@ -82,7 +84,7 @@
 			$a = $b = 1; //same 1-index logic here too
 			while($a <= $itemCountAct && $b <= $itemCount)
 			{
-				if(isset($_POST['iName']['section'.$j][$b]) && $_POST['iName']['section'.$j][$b])
+				if(isset($_POST['iName']['section'.$j][$b]))
 				{
 					$menu[$i]['items'][$a]['name'] 			= /*protect(*/$_POST['iName']['section'.$j][$b];//);
 					$menu[$i]['items'][$a]['desc'] 			= /*protect(*/$_POST['iDesc']['section'.$j][$b];//);
@@ -100,7 +102,7 @@
 					$x = $y = 1;
 					while($x <= $_POST['item'.$b.'_optionCountAct'] && $y <= $_POST['item'.$b.'_optionCount'])
 					{
-						if(isset($_POST['oName']['item'.$b][$y]) && $_POST['oName']['item'.$b][$y])
+						if(isset($_POST['oName']['item'.$b][$y]))
 						{
 							$menu[$i]['items'][$a]['options'][$x]['name'] = /*protect(*/$_POST['oName']['item'.$b][$y];//);
 							$menu[$i]['items'][$a]['options'][$x]['price'] = /*protect(*/$_POST['oPrice']['item'.$b][$y];//);

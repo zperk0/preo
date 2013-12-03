@@ -1,5 +1,5 @@
 <?if(!isset($_SESSION['menu_edit_on'])) $_SESSION['menu_edit_on']=0;?>
-<form id="menuConfigForm" method="POST" data-abide>
+<form id="menuConfigForm" method="POST" data-abide> <!--action="/code/dashboard/do_menuConfig.php">-->
 	<div class="row">
 		<div class="topSpacer"></div>
 		<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
@@ -58,7 +58,7 @@
 			<div class="hide" id="menuSectionRow"> <!-- DUMMY -->
 				<div class="row">
 					<div class="large-12 columns menuSectionDiv">
-						<input type="text" name="mSectionName[]" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required/>
+						<input type="text" name="mSectionName[0]" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required/>
 						<small class="error"><?echo _("Please type a section name");?></small>
 					</div>
 				</div>
@@ -179,7 +179,7 @@
 			<div id="menuSectionRow">
 				<div class="row">
 					<div class="large-12 columns menuSectionDiv">
-						<input type="text" name="mSectionName[]" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" required/>
+						<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" required/>
 						<small class="error"><?echo _("Please type a section name");?></small>
 					</div>
 				</div>

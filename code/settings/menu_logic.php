@@ -52,6 +52,12 @@
 	}
 	else
 	{	
+		if($_SESSION['account_id'] != $dataJSON['accountId'])
+		{
+			header("location:$_SESSION[path]/");
+			exit;
+		}
+	
 		$outletID 			 	= $dataJSON['outletId'];
 		$_SESSION['menu_id'] 	= $menuID;
 		$_SESSION['outlet_id'] 	= $outletID;
@@ -84,9 +90,8 @@
 			}
 		}
 		
-		//+d($menu);
-	
-		if( (!isset($_SESSION['signupWizFlag'])) || (isset($_SESSION['signupWizFlag']) && !$_SESSION['signupWizFlag']) ) $_SESSION['menu_edit_on']=1;
+		$_SESSION['menu_edit_on']=1;
+		
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/menuConfig.php');

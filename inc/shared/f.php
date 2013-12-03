@@ -24,6 +24,7 @@
 		<script src="<?echo $_SESSION['path']?>/js/form.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/tweet.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/timepicker.js"></script>
+		<script src="<?echo $_SESSION['path']?>/js/jquery-ui-1.10.3.custom.min.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/jqueryui-widgets.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/multi-select.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/tableSlide.js"></script>
@@ -57,7 +58,7 @@
 			});
 		</script>
 		
-		<?if((isset($_SESSION['venue_edit_on']) && $_SESSION['venue_edit_on']) || (isset($procMem) && $procMem)){?>
+		<?if((isset($_SESSION['venue_edit_on']) && $_SESSION['venue_edit_on'])){?>
 			<script type="text/javascript">
 				$(document).ready(function() {
 					if($("#map").length > 0)
