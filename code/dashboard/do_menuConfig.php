@@ -91,7 +91,7 @@
 					$menu[$i]['items'][$a]['price'] 		= /*protect(*/$_POST['iPrice']['section'.$j][$b];//);
 					$menu[$i]['items'][$a]['quantity'] 		= /*protect(*/$_POST['iQuan']['section'.$j][$b];//);
 						if(!isset($menu[$i]['items'][$a]['quantity']) || !$menu[$i]['items'][$a]['quantity']){ $menu[$i]['items'][$a]['quantity'] = 0; }
-					$menu[$i]['items'][$a]['visible'] 		= /*protect(*/$_POST['iVisi']['section'.$j][$b];//);
+					$menu[$i]['items'][$a]['visible'] 		= '1'; /*protect(*/ // $_POST['iVisi']['section'.$j][$b];//);
 						if(!isset($menu[$i]['items'][$a]['visible']) || !$menu[$i]['items'][$a]['visible']){ $menu[$i]['items'][$a]['visible'] = 0; }
 					if(isset($_POST['iMod']['item'.$b])){
 						$menu[$i]['items'][$a]['modifier'] 		= /*protect(*/$_POST['iMod']['item'.$b];//);
@@ -106,7 +106,7 @@
 						{
 							$menu[$i]['items'][$a]['options'][$x]['name'] = /*protect(*/$_POST['oName']['item'.$b][$y];//);
 							$menu[$i]['items'][$a]['options'][$x]['price'] = /*protect(*/$_POST['oPrice']['item'.$b][$y];//);
-							$menu[$i]['items'][$a]['options'][$x]['visible'] = /*protect(*/$_POST['oVisi']['item'.$b][$y];//);
+							$menu[$i]['items'][$a]['options'][$x]['visible'] = '1'; /*protect(*/ // $_POST['oVisi']['item'.$b][$y];//);
 								if(!isset($menu[$i]['items'][$a]['options'][$x]['visible']) || !$menu[$i]['items'][$a]['options'][$x]['visible']){ $menu[$i]['items'][$a]['options'][$x]['visible'] = 0; }
 							
 							$x++;

@@ -289,18 +289,18 @@ $(document).ready(function() {
 	
 		if( $(this).find("input[type=radio][name=vEvent]:checked").val() == '0')
 		{
-			$('.cSlotDiv').slideDown();
+			//$('.cSlotDiv').slideDown();
 			$('.leadTimeDiv').slideDown();
 			
-			$('.cSlotDiv').find('input').attr('required','required');
+			//$('.cSlotDiv').find('input').attr('required','required');
 			$('.leadTimeDiv').find('input').attr('required','required');
 		}
 		else
 		{
-			$('.cSlotDiv').slideUp();
+			//$('.cSlotDiv').slideUp();
 			$('.leadTimeDiv').slideUp();
 			
-			$('.cSlotDiv').find('input').removeAttr('required');
+			//$('.cSlotDiv').find('input').removeAttr('required');
 			$('.leadTimeDiv').find('input').removeAttr('required');
 		}
 	});
@@ -910,7 +910,7 @@ $(document).ready(function() {
 		
 		//sorting
 		$newSec.find(".hasTableHeader").after("<div class='sortWithinDiv'> </div>" );
-		/*$newSec.find(".sortWithinDiv").sortable({ 
+		$newSec.find(".sortWithinDiv").sortable({ 
 			opacity: 0.5, 
 			axis: "y", 
 			cursor: "move", 
@@ -918,11 +918,73 @@ $(document).ready(function() {
 			handle: ".sortHandle", 
 			cancel: "input,textarea,select,option",
 			placeholder: "sortable-placeholder",
-			cursorAt: { top: 0, left: 0 },
 			tolerance: "pointer",
-			forcePlaceholderSize: true,
-			revert: 100
-		});*/
+			revert: 100,
+			delay: 100,
+			start: function(event,ui){
+				$("<tbody><tr><td></td></tr></tbody>").appendTo(ui.placeholder);
+				oldItemOrder = $(this).sortable('toArray');
+				oldItemOrder.clean("");
+				if($(ui.item).find('.itemSave').is(":visible")) $(ui.item).find('.itemSave').trigger('click');
+				//$('.sortable-placeholder').height($(ui.item).height());
+			},
+			update: function(event, ui) {
+				currentItemOrder = $(this).sortable('toArray');
+				$parentDiv = $(ui.item).parent('.sortWithinDiv');
+
+				itemCounter=1;
+				$parentDiv.find('table').each(function(){
+				
+					var newIndex = oldItemOrder[itemCounter-1]; //we need the old order here so the new elements retain DOM order
+					newIndex = newIndex.replace("item","");
+					
+					//update table id
+					tempName = $(this).attr('id');
+					newName = tempName.replace(/\item\d+/gi, "item"+newIndex+"");
+					$(this).attr('id', newName);
+					
+					//update item_dup button id
+					$(this).find('button[id^=dup]').each(function(){
+						tempName = $(this).attr('id');
+						newName = tempName.replace(/dup\d+_/gi, "dup"+newIndex+"_");
+						$(this).attr('id', newName);
+					});
+					
+					//update item inputs
+					$(this).find('.itemTR input').each(function(){
+						tempName = $(this).attr('name');
+						newName = tempName.replace(/\[\d+\]/gi, "["+newIndex+"]");
+						$(this).attr('name', newName);
+					});
+					
+					//update modifier and options
+					$(this).find('.subHeaderTR input, .subHeaderTR select, .optionTR input').each(function(){
+						tempName = $(this).attr('name');
+						newName = tempName.replace(/\[item\d+\]/gi, "[item"+newIndex+"]");
+						$(this).attr('name', newName);
+					});
+					
+					itemCounter++;
+				});
+				
+				//console.log("old:"+oldItemOrder+" new:"+currentItemOrder);
+				
+				//update item-option counts
+				var itemCountArray = new Array();
+				var itemCountActArray = new Array();
+				for(var i=0;i<currentItemOrder.length;i++)
+				{
+					itemCountArray[i] = $("#"+currentItemOrder[i]+"_optionCount").val();
+					itemCountActArray[i] = $("#"+currentItemOrder[i]+"_optionCountAct").val();
+				}
+				
+				for(var i=0;i<oldItemOrder.length;i++) //the new values go to the old order. that's how the association is preserved.
+				{
+					$("#"+oldItemOrder[i]+"_optionCount").val(itemCountArray[i]);
+					$("#"+oldItemOrder[i]+"_optionCountAct").val(itemCountActArray[i]);
+				}
+			}
+		});
 		
 		//insert at the end of the table
 		$(".newSection").before($newSec).before($newHook);
@@ -1018,7 +1080,7 @@ $(document).ready(function() {
 						  text: "Sorry, but there's been an error processing your request." //text: 'Connection Error! Check API endpoint.'
 						});
 						
-						alert(data);
+						//alert(data);
 						
 						return false;
 					}
@@ -2539,9 +2601,19 @@ $(document).ready(function() {
 	});
 	
 	$("#changePassTrigger").on('click', function(e) {
-		$("#passDiv").show();
-		$("#changePassTrigger").hide();
-		$(".passField").attr('required','required');
+		if(!$("#passDiv").is(":visible"))
+		{
+			$("#passDiv").show();
+			$(".passField").attr('required','required');
+			$("#passFlag").val(1);
+		}
+		else
+		{
+			$("#passDiv").hide();
+			$(".passField").removeAttr('required');
+			$("#passFlag").val(0);
+		}
+		
 	});
 	
 	$(document).on("click", ".deleteMenu", function() {
@@ -2611,7 +2683,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+						  text: "Sorry, but there's been an error processing your request." ///text: 'Connection Error! Check API endpoint.'
 						});
 						//alert(data);
 						return false;
@@ -2619,15 +2691,32 @@ $(document).ready(function() {
 					
 					if(typeof dataArray['status'] !='undefined') //error
 					{
-						noty({
-						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
-						});
+						if($('#passFlag').val()=='1')
+						{
+							noty({
+							  type: 'error',  layout: 'topCenter',
+							  text: "Sorry, incorrect password." //text: dataArray['message']
+							});
+						}
+						else
+						{
+							noty({
+							  type: 'error',  layout: 'topCenter',
+							  text: "Sorry, but there's been an error processing your request." //text: dataArray['message']
+							});
+						}
 					}
 					else
 					{	
-						noty({ type: 'success', text: 'Settings have been saved!' });
-						
+						if($('#passFlag').val()=='1')
+						{
+							noty({ type: 'success', text: 'Settings and Password has been saved!<br/>You will need to log in again with your new password to continue.' });
+							setTimeout(function(){window.location.replace("/logout");}, 2500);
+						}
+						else
+						{
+							noty({ type: 'success', text: 'Settings have been saved!' });
+						}
 					}
 				}
 			 });

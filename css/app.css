@@ -1292,3 +1292,7 @@ table.sortable-placeholder{
 table.sortable-placeholder tbody, table.sortable-placeholder tr, table.sortable-placeholder td {
 	border:none !important;
 }
+
+#passDiv{
+	margin-top: 20px;
+}

@@ -3,6 +3,7 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/protect_input.php'); //input protection functions to keep malicious input at bay
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI_Header.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 		
 	//lets get user id using token
@@ -26,6 +27,9 @@
 	
 	$bName = $_POST['businessName'];
 	protect($bName);
+	
+	$passFlag = $_POST['passFlag'];
+	protect($passFlag);
 	
 	$data = array();
 	$data['name'] = $fName." ".$lName;
@@ -51,6 +55,30 @@
 	$curlResult = callAPI('PUT', $apiURL."accounts/$accountID", $jsonData, $apiAuth); //business name updated
 	
 	$_SESSION['account_name'] = $bName;
+	
+	if($passFlag)
+	{
+		$data = array();
+		$data['username'] = $_SESSION['user_email'];
+		$data['oldPassword'] = $_POST['opassword'];
+		$data['password'] = $_POST['npassword'];
+		
+		$jsonData = json_encode($data);
+		$curlResult = callAPI_Header('POST', $apiURL."users/auth/change", $jsonData, $apiAuth); //password updated
+		
+		if(preg_match('/^4.*$/',$curlResult))
+		{  
+			$curlResult = array();
+			$curlResult['status'] = "404"; 
+			$curlResult = json_encode($curlResult, true); 
+		}
+		else
+		{  
+			$curlResult = array();
+			$curlResult['pass'] = "OK"; 
+			$curlResult = json_encode($curlResult, true); 
+		}
+	}
 	
 	echo $curlResult;
 ?>

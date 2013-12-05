@@ -134,6 +134,7 @@
 								<option value="M"><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
 								<option value="O"><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
 							</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
+							<small class="error"><?echo _("Please choose a type");?></small>
 						</td>
 					</tr>
 					<tr class="menuEdit optionTR hide" style="display:none;">
@@ -259,6 +260,7 @@
 										<option value="M" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
 										<option value="O" <?if($item['modifiers'][0]['minChoices']==0 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
 									</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
+									<small class="error"><?echo _("Please choose a type");?></small>
 								</td>
 								<?}else{?>
 									<td class="modifierRow hide">
@@ -270,6 +272,7 @@
 											<option value="M"><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
 											<option value="O"><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
 										</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
+										<small class="error"><?echo _("Please choose a type");?></small>
 									</td>
 								<?}?>
 							</tr>

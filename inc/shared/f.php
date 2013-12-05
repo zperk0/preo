@@ -61,7 +61,7 @@
 		<script type="text/javascript">
 		$(document).ready(function() {
 			if($("#mName").length > 0){
-				/*$(".sortWithinDiv").sortable({ 
+				$(".sortWithinDiv").sortable({ 
 					opacity: 0.5, 
 					axis: "y", 
 					cursor: "move", 
@@ -71,40 +71,71 @@
 					placeholder: "sortable-placeholder",
 					tolerance: "pointer",
 					revert: 100,
+					delay: 100,
 					start: function(event,ui){
 						$("<tbody><tr><td></td></tr></tbody>").appendTo(ui.placeholder);
 						oldItemOrder = $(this).sortable('toArray');
 						oldItemOrder.clean("");
+						if($(ui.item).find('.itemSave').is(":visible")) $(ui.item).find('.itemSave').trigger('click');
+						//$('.sortable-placeholder').height($(ui.item).height());
 					},
-					stop: function(event, ui) {
-						//var currentItemOrder = $(this).sortable('toArray');
+					update: function(event, ui) {
+						currentItemOrder = $(this).sortable('toArray');
   					    $parentDiv = $(ui.item).parent('.sortWithinDiv');
 
-						//console.log(oldItemOrder);
-						//console.log(currentItemOrder);
-						
-					  
 						itemCounter=1;
 						$parentDiv.find('table').each(function(){
 						
 							var newIndex = oldItemOrder[itemCounter-1]; //we need the old order here so the new elements retain DOM order
+							newIndex = newIndex.replace("item","");
 							
+							//update table id
+							tempName = $(this).attr('id');
+							newName = tempName.replace(/\item\d+/gi, "item"+newIndex+"");
+							$(this).attr('id', newName);
+							
+							//update item_dup button id
+							$(this).find('button[id^=dup]').each(function(){
+								tempName = $(this).attr('id');
+								newName = tempName.replace(/dup\d+_/gi, "dup"+newIndex+"_");
+								$(this).attr('id', newName);
+							});
+							
+							//update item inputs
 							$(this).find('.itemTR input').each(function(){
-							var tempName = $(this).attr('name');
-								var newName = tempName.replace(/\[\d+\]$/gi, "["+newIndex+"]");
+								tempName = $(this).attr('name');
+								newName = tempName.replace(/\[\d+\]/gi, "["+newIndex+"]");
 								$(this).attr('name', newName);
 							});
 							
+							//update modifier and options
 							$(this).find('.subHeaderTR input, .subHeaderTR select, .optionTR input').each(function(){
-								var tempName = $(this).attr('name');
-								var newName = tempName.replace(/\[item\d+\]/gi, "[item"+newIndex+"]");
+								tempName = $(this).attr('name');
+								newName = tempName.replace(/\[item\d+\]/gi, "[item"+newIndex+"]");
 								$(this).attr('name', newName);
 							});
 							
 							itemCounter++;
 						});
+						
+						//console.log("old:"+oldItemOrder+" new:"+currentItemOrder);
+						
+						//update item-option counts
+						var itemCountArray = new Array();
+						var itemCountActArray = new Array();
+						for(var i=0;i<currentItemOrder.length;i++)
+						{
+							itemCountArray[i] = $("#"+currentItemOrder[i]+"_optionCount").val();
+							itemCountActArray[i] = $("#"+currentItemOrder[i]+"_optionCountAct").val();
+						}
+						
+						for(var i=0;i<oldItemOrder.length;i++) //the new values go to the old order. that's how the association is preserved.
+						{
+							$("#"+oldItemOrder[i]+"_optionCount").val(itemCountArray[i]);
+							$("#"+oldItemOrder[i]+"_optionCountAct").val(itemCountActArray[i]);
+						}
 					}
-				});*/
+				});
 			}
 		});
 		</script>

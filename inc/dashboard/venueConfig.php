@@ -98,10 +98,10 @@
 				</div>
 			</div>
 			
-			<div class="row cSlotDiv <?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">
+			<div class="row cSlotDiv hide"><!--<?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">-->
 				<div class="large-12 columns">
 					<label><?echo _("Collection Slot Duration (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is the number of minutes after opening time and before closing time when customers are allowed to collect orders.");?>"></i></label>
-					<input type="text" name="cDuration" id="cDuration" tabindex=7 placeholder="<?echo _("eg: 30");?>" value="<?if(isset($_SESSION['venue_collectinterval'])) echo $_SESSION['venue_collectinterval'];?>">
+					<input type="text" name="cDuration" id="cDuration" tabindex=7 value="5" placeholder="<?echo _("eg: 30");?>" value="<?if(isset($_SESSION['venue_collectinterval'])) echo $_SESSION['venue_collectinterval'];?>" >
 					<small class="error"><?echo _("Please provide a duration in mins");?></small>
 				</div>
 			</div>
@@ -109,7 +109,7 @@
 			<div class="row leadTimeDiv <?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">
 				<div class="large-12 columns">
 					<label><?echo _("Lead Time (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("The time it takes to prepare your order before the customer can pick it up.");?>"></i></label>
-					<input type="text" name="leadtime" id="leadtime" tabindex=8 placeholder="<?echo _("eg: 25");?>" value="<?if(isset($_SESSION['venue_leadtime'])) echo $_SESSION['venue_leadtime'];?>">
+					<input type="text" name="leadtime" id="leadtime" tabindex=8 placeholder="<?echo _("eg: 25");?>" value="<?if(isset($_SESSION['venue_leadtime'])) echo $_SESSION['venue_leadtime'];?>" required>
 					<small class="error"><?echo _("Please provide a lead time");?></small>
 				</div>
 			</div>
