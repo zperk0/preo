@@ -61,6 +61,7 @@
 								<?if(!$_SESSION['venue_eventFlag']){?>
 									<p><a href="<?echo $_SESSION['path']?>/nonEventSettings.php"><?echo _("Opening Hours");?></a></p>
 								<?}?>
+								<p><a><?echo _("Your venue shortcode is")." <strong>".$_SESSION['venue_code']."</strong>";?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("This in the code you need to give to customers so they can type it into 'my order app' to get your branded app.");?>"></i></a></p>
 							</div>
 						</section>
 						<section>

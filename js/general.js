@@ -5,6 +5,16 @@ mapDefaultCenterLong = -2.510376; // make google maps var global = set center as
 nowTemp = new Date();
 now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
+Array.prototype.clean = function(deleteValue) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == deleteValue) {         
+      this.splice(i, 1);
+      i--;
+    }
+  }
+  return this;
+};
+
 //on page load fire these things!
 $(document).ready(function() { 
 	//This really should be part of jQuery
@@ -335,7 +345,7 @@ $(document).ready(function() {
 					}
 				}
 			 }).done(function(){
-				if(!$('#redirectFlag').val()=='1') $('#venueSave').show();
+				if($('#redirectFlag').val()!='1') $('#venueSave').show();
 				$('#savingButton').hide();
 			 });
 
@@ -481,7 +491,7 @@ $(document).ready(function() {
 					}
 				}
 			 }).done(function(){
-				if(!$('#redirectFlag').val()=='1') $('#appConfig1Sub').show();
+				if($('#redirectFlag').val()!='1') $('#appConfig1Sub').show();
 				$('#savingButton').hide();
 			 });
 
@@ -735,7 +745,6 @@ $(document).ready(function() {
 		
 			$newTab.addClass('table'+section);
 		
-		
 		//replace ids with incremented value and make value = default value
 		$newTab.find(".itemTR input").each(function() {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
@@ -807,7 +816,7 @@ $(document).ready(function() {
 		$newTab.css('display','none');
 		
 		//insert after section header/before hidden div
-		$(".firstItemDiv"+section).before($newTab); 
+		$(".firstItemDiv"+section).parent('.row').find('.sortWithinDiv').append($newTab); 
 		
 		$($newTab).slideRow('down');
 		if($newTab.find('.itemEdit').is(':visible')) $newTab.find('.itemEdit').trigger('click');
@@ -898,6 +907,22 @@ $(document).ready(function() {
 		});
 		
 		$newSec.find(".menuSectionField").addClass('section'+newCount);
+		
+		//sorting
+		$newSec.find(".hasTableHeader").after("<div class='sortWithinDiv'> </div>" );
+		/*$newSec.find(".sortWithinDiv").sortable({ 
+			opacity: 0.5, 
+			axis: "y", 
+			cursor: "move", 
+			containment: "parent", 
+			handle: ".sortHandle", 
+			cancel: "input,textarea,select,option",
+			placeholder: "sortable-placeholder",
+			cursorAt: { top: 0, left: 0 },
+			tolerance: "pointer",
+			forcePlaceholderSize: true,
+			revert: 100
+		});*/
 		
 		//insert at the end of the table
 		$(".newSection").before($newSec).before($newHook);
@@ -993,7 +1018,7 @@ $(document).ready(function() {
 						  text: "Sorry, but there's been an error processing your request." //text: 'Connection Error! Check API endpoint.'
 						});
 						
-						//alert(data);
+						alert(data);
 						
 						return false;
 					}
@@ -1013,7 +1038,7 @@ $(document).ready(function() {
 					}
 				}
 			 }).done(function() {
-				if(!$('#redirectFlag').val()=='1') $('#menuSaveButton').show();
+				if($('#redirectFlag').val()!='1') $('#menuSaveButton').show();
 				$('#savingButton').hide();
 			 });
 	
@@ -2172,7 +2197,7 @@ $(document).ready(function() {
 					}
 				}
 			}).done(function() {
-				if(!$('#redirectFlag').val()=='1') $('#ohSubButton').show();
+				if($('#redirectFlag').val()!='1') $('#ohSubButton').show();
 				$('#savingButton').hide();
 			 });
 			 

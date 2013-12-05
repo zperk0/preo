@@ -728,7 +728,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 
 .menuTable .menuTDDesc, .headerTable .menuTDDesc{
 	/*width: 32%;*/
-	width: 43%;
+	width: 40%;
 }
 
 .eventTable .eventTDDesc, .headerTable .eventTDDesc{
@@ -858,7 +858,11 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	width: 8%;
 }
 
-.menuTable .menuTDTools, .eventTable .eventTDTools, .headerTable .eventTDTools, .headerTable .menuTDTools{
+.menuTable .menuTDTools, .headerTable .menuTDTools{
+	width: 15%;
+}
+
+ .eventTable .eventTDTools, .headerTable .eventTDTools{
 	width: 12%;
 }
 
@@ -966,7 +970,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 }
 
 .modifierRow {
-	width: 40% !important;
+	width: 31% !important;
 }
 
 .modifierRow input, .modifierRow select{
@@ -1055,6 +1059,10 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 .dashContent .accordion i{
 	font-size: 28px;
 	padding-left: 23px;
+}
+
+.dashContent .accordion i.noPad{
+	padding-left: 0px;
 }
 
 .dashContent .accordion .topFix{
@@ -1265,4 +1273,22 @@ span.slotDuration{
 
 #savingButton {
 	width: 179px;
+}
+
+.sortWithinDiv {
+	position: relative; /* otherwise dragging breaks */
+}
+
+table.sortable-placeholder{
+	height: 50px;
+	width: 94%;
+	background: transparent;
+	border: 2px dashed rgba(0,0,0,0.3);
+	padding: 5px;
+	margin:3px auto 3px;
+}
+
+
+table.sortable-placeholder tbody, table.sortable-placeholder tr, table.sortable-placeholder td {
+	border:none !important;
 }

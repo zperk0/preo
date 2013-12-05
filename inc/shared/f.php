@@ -48,7 +48,7 @@
 		
 		<script src="<?echo $_SESSION['path']?>/js/general.js"></script>
 		
-		<script>
+		<script type="text/javascript">
 		  $(document)
 			.foundation()
 			.foundation('abide', {
@@ -56,6 +56,57 @@
 				password: /^.+$/,
 			  }
 			});
+		</script>
+		
+		<script type="text/javascript">
+		$(document).ready(function() {
+			if($("#mName").length > 0){
+				/*$(".sortWithinDiv").sortable({ 
+					opacity: 0.5, 
+					axis: "y", 
+					cursor: "move", 
+					containment: "parent", 
+					handle: ".sortHandle", 
+					cancel: "input,textarea,select,option",
+					placeholder: "sortable-placeholder",
+					tolerance: "pointer",
+					revert: 100,
+					start: function(event,ui){
+						$("<tbody><tr><td></td></tr></tbody>").appendTo(ui.placeholder);
+						oldItemOrder = $(this).sortable('toArray');
+						oldItemOrder.clean("");
+					},
+					stop: function(event, ui) {
+						//var currentItemOrder = $(this).sortable('toArray');
+  					    $parentDiv = $(ui.item).parent('.sortWithinDiv');
+
+						//console.log(oldItemOrder);
+						//console.log(currentItemOrder);
+						
+					  
+						itemCounter=1;
+						$parentDiv.find('table').each(function(){
+						
+							var newIndex = oldItemOrder[itemCounter-1]; //we need the old order here so the new elements retain DOM order
+							
+							$(this).find('.itemTR input').each(function(){
+							var tempName = $(this).attr('name');
+								var newName = tempName.replace(/\[\d+\]$/gi, "["+newIndex+"]");
+								$(this).attr('name', newName);
+							});
+							
+							$(this).find('.subHeaderTR input, .subHeaderTR select, .optionTR input').each(function(){
+								var tempName = $(this).attr('name');
+								var newName = tempName.replace(/\[item\d+\]/gi, "[item"+newIndex+"]");
+								$(this).attr('name', newName);
+							});
+							
+							itemCounter++;
+						});
+					}
+				});*/
+			}
+		});
 		</script>
 		
 		<?if((isset($_SESSION['venue_edit_on']) && $_SESSION['venue_edit_on'])){?>

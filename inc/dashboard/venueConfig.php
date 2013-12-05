@@ -64,7 +64,7 @@
 			
 			<div class="row">
 				<div class="large-12 columns">
-					<label><?echo _("Venue description");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Please enter a short description about your venue.");?>"></i></label>
+					<label><?echo _("Venue description");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Please enter a short description about your venue.<br/><br/>This will not appear on your branded app.");?>"></i></label>
 					<textarea name="vDesc" required tabindex=4><?if(isset($_SESSION['venue_desc'])) echo $_SESSION['venue_desc'];?></textarea>
 					<small class="error"><?echo _("Please type a venue description");?></small>
 				</div>
@@ -100,7 +100,7 @@
 			
 			<div class="row cSlotDiv <?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">
 				<div class="large-12 columns">
-					<label><?echo _("Collection Slot Duration (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Duration of time between opening hours that your customers can order in");?>"></i></label>
+					<label><?echo _("Collection Slot Duration (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is the number of minutes after opening time and before closing time when customers are allowed to collect orders.");?>"></i></label>
 					<input type="text" name="cDuration" id="cDuration" tabindex=7 placeholder="<?echo _("eg: 30");?>" value="<?if(isset($_SESSION['venue_collectinterval'])) echo $_SESSION['venue_collectinterval'];?>">
 					<small class="error"><?echo _("Please provide a duration in mins");?></small>
 				</div>
@@ -108,7 +108,7 @@
 			
 			<div class="row leadTimeDiv <?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">
 				<div class="large-12 columns">
-					<label><?echo _("Lead Time (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("The item it takes to prepare your order before the customer can pick it up");?>"></i></label>
+					<label><?echo _("Lead Time (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("The time it takes to prepare your order before the customer can pick it up.");?>"></i></label>
 					<input type="text" name="leadtime" id="leadtime" tabindex=8 placeholder="<?echo _("eg: 25");?>" value="<?if(isset($_SESSION['venue_leadtime'])) echo $_SESSION['venue_leadtime'];?>">
 					<small class="error"><?echo _("Please provide a lead time");?></small>
 				</div>
