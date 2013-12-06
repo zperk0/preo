@@ -32,8 +32,8 @@
 	protect($passFlag);
 	
 	$data = array();
-	$data['firstname'] = $fName;
-	$data['lastname'] = $lName;
+	$data['firstName'] = $fName;
+	$data['lastName'] = $lName;
 	$data['email'] = $email;
 	$data['username'] = $email;
 	
