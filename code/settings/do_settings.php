@@ -32,7 +32,8 @@
 	protect($passFlag);
 	
 	$data = array();
-	$data['name'] = $fName." ".$lName;
+	$data['firstname'] = $fName;
+	$data['lastname'] = $lName;
 	$data['email'] = $email;
 	$data['username'] = $email;
 	
@@ -41,7 +42,6 @@
 	$curlResult = callAPI('PUT', $apiURL."users/$userID", $jsonData, $apiAuth); //user updated
 	
 	$_SESSION['user_email']	= $email;
-	$_SESSION['user_name']	= $data['name'];
 	$_SESSION['user_fName']	= $fName;
 	$_SESSION['user_lName']	= $lName;
 	
