@@ -57,9 +57,9 @@
 						<section>
 							<h3 data-section-title><?echo _("Venue Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
 							<div class="content" data-section-content>
-								<p><a href="<?echo $_SESSION['path']?>/venueSettings.php"><?echo _("Change settings");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/settings"><?echo _("Change settings");?></a></p>
 								<?if(!$_SESSION['venue_eventFlag']){?>
-									<p><a href="<?echo $_SESSION['path']?>/nonEventSettings.php"><?echo _("Opening Hours");?></a></p>
+									<p><a href="<?echo $_SESSION['path']?>/openinghours"><?echo _("Opening Hours");?></a></p>
 								<?}?>
 								<p><a><?echo _("Your venue shortcode is")." <strong>".$_SESSION['venue_code']."</strong>";?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("This in the code you need to give to customers so they can type it into 'my order app' to get your branded app.");?>"></i></a></p>
 							</div>
@@ -67,8 +67,8 @@
 						<section>
 							<h3 data-section-title><?echo _("Styling");?></h3><img class="topFix" src="<?echo $_SESSION['path']?>/img/dashboard/styling_small.png"/>
 							<div class="content" data-section-content>
-								<p><a href="<?echo $_SESSION['path']?>/appSettings1.php"><?echo _("Home screen");?></a></p>
-								<p><a href="<?echo $_SESSION['path']?>/appSettings2.php"><?echo _("Menu screen");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/homescreen"><?echo _("Home screen");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/menuscreen"><?echo _("Menu screen");?></a></p>
 							</div>
 						</section>
 						<section>
@@ -76,7 +76,7 @@
 							<div class="content" data-section-content>
 								<?foreach($_SESSION['menus'] as $menu){?>
 									<p id="p-<?echo $menu['id']?>">
-										<a class="dashMenuIcon" 			href="<?echo $_SESSION['path']?>/menuSettings.php?id=<?echo $menu['id'];?>" title="<?echo _("Edit")." $menu[name]";?>"><?echo $menu['name']?></a>
+										<a class="dashMenuIcon" 			href="<?echo $_SESSION['path']?>/menus/<?echo $menu['id'];?>" title="<?echo _("Edit")." $menu[name]";?>"><?echo $menu['name']?></a>
 										<!--<a class="dashMenuIcon deleteMenu" 	id="dmi-<?echo $menu['id']?>"  title="<?echo _("Delete")." $menu[name]";?>"><i class="fi-x"></i></a>-->
 									</p>
 								<?}?>
@@ -88,24 +88,24 @@
 						<section>
 							<h3 data-section-title><?echo _("Events");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/events_small.png"/>
 							<div class="content" data-section-content>
-								<p><a href="<?echo $_SESSION['path']?>/eventSettings.php"><?echo _("Update events");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/events"><?echo _("Update events");?></a></p>
 							</div>
 						</section>
 						<?}?>
 						<section>
 							<h3 data-section-title><?echo _("Advanced Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
 							<div class="content" data-section-content>
-								<p><a href="<?echo $_SESSION['path']?>/userSettings.php"><?echo _("Manage users");?></a></p>
-								<p><a href="<?echo $_SESSION['path']?>/paymentSettings.php"><?echo _("Add a payment method");?></a></p>
-								<?if(!$_SESSION['venue_liveFlag']){?><p><a href="<?echo $_SESSION['path']?>/finish.php"><?echo _("Publish My App");?></a></p>
-								<?}else{?><p><a href="<?echo $_SESSION['path']?>/finish.php"><?echo _("Take My App Offline");?></a></p><?}?>
+								<p><a href="<?echo $_SESSION['path']?>/users"><?echo _("Manage users");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/payment"><?echo _("Add a payment method");?></a></p>
+								<?if(!$_SESSION['venue_liveFlag']){?><p><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Publish My App");?></a></p>
+								<?}else{?><p><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Take My App Offline");?></a></p><?}?>
 							</div>
 						</section>
 						<section class="premiumSection">
 							<h3 data-section-title><?echo _("Premium Features");?></h3><i class="icon-plus-sign"></i>
 							<div class="content" data-section-content>
 								<!--<p><a href="<?echo $_SESSION['path']?>/outletSettings.php"><?echo _("Manage outlets");?></a></p>-->
-								<p><a href="<?echo $_SESSION['path']?>/more.php"><?echo _("Find out more");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/findoutmore"><?echo _("Find out more");?></a></p>
 							</div>
 						</section>
 					</div>

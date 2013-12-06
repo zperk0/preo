@@ -35,7 +35,7 @@
 					
 				<div class="row row--space1">
 					<div class="large-12 columns">
-						<small><a href="#" data-reveal-id="forgotPassM"><?echo _("Forgot your password?");?></a></small>
+						<small><a href="<?echo $_SESSION['path'];?>/forgot"><?echo _("Forgot your password?");?></a></small>
 					</div>
 				</div>
 				
@@ -47,8 +47,4 @@
 			</form>
 		</div>
 	</div>
-</div>
-<div id="forgotPassM" class="reveal-modal">
-	<? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/forgotpass.php'); ?>
-	<a class="close-reveal-modal">&#215;</a>
 </div>

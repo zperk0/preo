@@ -13,7 +13,7 @@
 	session_start();
 	$_SESSION['lang'] = $tempLang; //we need to remember the lang even after logout
 	
-	header('location:'.$tempPath.'/'); //redirect to homepage
+	header('location:http://www.preoday.com'); //redirect to homepage
 	
 	exit;
 ?>

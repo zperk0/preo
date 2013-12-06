@@ -42,6 +42,8 @@
 	$data['postcode']			= $vPostCode;
 	$data['categoryId']			= $vCat;
 	$data['eventFlag']			= $vEvent;
+	if(isset($_SESSION['venue_code']))
+		$data['code']				= $_SESSION['venue_code'];
 	
 	$jsonData = json_encode($data);
 	

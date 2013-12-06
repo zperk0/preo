@@ -11,7 +11,7 @@
 		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize.css" />
 		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/foundation.css" />
 		<!-- you may add app.css to use for your overrides if you like -->
-		<link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/cc2cde80-6121-4c1b-bebb-f133e0013559.css"/>
+		<link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/cc2cde80-6121-4c1b-bebb-f133e0013559.css"/>
 		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/app.css" /> 
 		
 		<!-- Favicons -->

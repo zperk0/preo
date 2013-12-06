@@ -185,7 +185,7 @@
 	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && /*!$_SESSION['noAppFlag-2'] &&*/ !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag'] && !$_SESSION['noPaymentFlag']) /*User has given data for all 5 already*/
 	{	
 		//going to the dashboard!
-		
+
 		//lets get some quick reports
 		$curlResult = callAPI('GET', $apiURL."venues/$venueID/reports", false, $apiAuth);
 		$dataResult = json_decode($curlResult, true);
@@ -237,12 +237,12 @@
 		$_SESSION['signupWizFlag']=1;
 		if(!$_SESSION['venue_eventFlag']) 
 		{
-			header("location:".$_SESSION['path'].'/nonEventSettings.php');
+			header("location:".$_SESSION['path'].'/openinghours');
 			exit;
 		}
 		else
 		{
-			header("location:".$_SESSION['path'].'/eventSettings.php');
+			header("location:".$_SESSION['path'].'/events');
 			exit;
 		}
 	}
@@ -250,7 +250,7 @@
 	{	
 		$_SESSION['signupWizFlag']=1;
 		$_SESSION['noLiveFlag']=1;
-		header("location:".$_SESSION['path'].'/paymentSettings.php');
+		header("location:".$_SESSION['path'].'/payment');
 		exit;
 	}
 ?>

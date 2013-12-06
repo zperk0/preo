@@ -23,12 +23,12 @@
 	{
 		$_SESSION['noLiveFlag']=0;
 		$_SESSION['signupWizFlag']=1;
-		header('location:'.$_SESSION['path'].'/finish.php'); //redirect to dash
+		header('location:'.$_SESSION['path'].'/publish'); //redirect to dash
 		exit;
 	}
 	else
 	{
-		header('location:'.$_SESSION['path'].'/dashboard.php'); //redirect to dash
+		header('location:'.$_SESSION['path'].'/dashboard'); //redirect to dash
 		exit;
 	}
 ?>

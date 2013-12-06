@@ -50,7 +50,7 @@ $(document).ready(function() {
 	//////////////////////////////////////////////////////////////////////
 
 	$("#signupForm").on('valid', function (event) {
-		var url = "code/signup/do_signup.php";
+		var url = "/doSignUp";
 
 		$.ajax({
 			   type: "POST",
@@ -83,10 +83,10 @@ $(document).ready(function() {
 					}
 					else
 					{	
-						$.post("code/signup/save_session.php", 
+						$.post("/saveSignUp", 
 						'bName='+dataArray['name']+'&bID='+dataArray['id']+'&email='+dataArray['owner']['email']+'&fName='+dataArray['owner']['firstName']+'&lName='+dataArray['owner']['lastName']+'&id='+dataArray['owner']['id'],
 						function(response){
-							window.location.replace("./dashboard.php");
+							window.location.replace("/dashboard");
 						})
 						.fail(function(jqxhr) { 
 							noty({
@@ -103,7 +103,7 @@ $(document).ready(function() {
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	$("#signinForm").on('valid', function (event) {
-		var url = "code/signin/do_signin.php";
+		var url = "/doSignIn";
 
 		$.ajax({
 			   type: "POST",
@@ -129,16 +129,16 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message'] //text: "Sorry, but there's been an error processing your request."
+						  text: "Incorrect credentials or account does not exist." //dataArray['message'] //text: "Sorry, but there's been an error processing your request."
 						});
 				   
 					}
 					else
 					{	
-						$.post("code/signin/save_session.php", 
+						$.post("/saveSignIn", 
 						'email='+dataArray['email']+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'], 
 						function(response){
-							window.location.replace("./dashboard.php");
+							window.location.replace("/dashboard");
 						})
 						.fail(function(jqxhr) { 
 							noty({
@@ -155,7 +155,7 @@ $(document).ready(function() {
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	$("#forgotPassForm").on('valid', function (event) {
-		var url = "code/shared/doForgot.php";
+		var url = "/doForgot";
 
 		$.ajax({
 			   type: "POST",
@@ -202,6 +202,47 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 
+	///////////////////////////////////////////////////////////////////////////////////////////////////
+	$("#resetPassForm").on('valid', function (event) {
+		var url = "/doReset";
+
+		$.ajax({
+			   type: "POST",
+			   url: url,
+			   data: $(this).serialize(), // serializes the form's elements.
+			   success: function(data)
+			   {
+					try
+					{
+						var dataArray = jQuery.parseJSON(data); //parsing JSON
+					}
+					catch(e)
+					{
+						noty({
+						  type: 'error',  layout: 'topCenter',
+						  text: "Sorry, but there's been an error processing your request." //text: 'Connection Error! Check API endpoint.'
+						});
+						//alert(data);
+						return false;
+					}
+					
+					if(typeof dataArray['status'] !='undefined') //error
+					{
+						noty({
+						  type: 'error',  layout: 'topCenter',
+						  text: "Sorry, incorrect code." //text: dataArray['message']
+						});
+					}
+					else
+					{	
+						noty({ type: 'success', text: 'Your password has been reset.<br/>You will now be redirected to the login page.' });
+						setTimeout(function(){window.location.replace("/login");}, 2500);
+					}
+				}
+			 });
+
+		return false; // avoid to execute the actual submit of the form.
+	});
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//change language ajaxy button
@@ -306,7 +347,7 @@ $(document).ready(function() {
 	});
 	
 	$("#venueConfigForm").on('valid', function (event) {
-		var url = "code/dashboard/do_venueSave.php";
+		var url = "/saveVenue";
 		
 		$('#venueSave').hide();
 		$('#savingButton').show();
@@ -341,7 +382,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'Venue changes have been saved!' });
-						if($('#redirectFlag').val()=='1') { setTimeout(function(){window.location.replace("./dashboard.php");}, 1000); }
+						if($('#redirectFlag').val()=='1') { setTimeout(function(){window.location.replace("/dashboard");}, 1000); }
 					}
 				}
 			 }).done(function(){
@@ -354,7 +395,7 @@ $(document).ready(function() {
 	
 	//ajax form upload
 	var options = { 
-		url: 'code/dashboard/doUploadLogo.php',
+		url: '/uploadLogo',
 		success: function(responseText) { 
 			noty({
 			  type: 'success',
@@ -451,7 +492,7 @@ $(document).ready(function() {
 	$("#appConfig1Sub").on('click', function() { $("#appConfigForm").submit(); });
 	
 	$("#appConfigForm").on('valid', function (event) {
-		var url = "code/dashboard/do_appConfig1.php";
+		var url = "/saveHomescreen";
 		
 		$('#appConfig1Sub').hide();
 		$('#savingButton').show();
@@ -487,7 +528,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'App changes have been saved!' });
-						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
 			 }).done(function(){
@@ -504,7 +545,7 @@ $(document).ready(function() {
 	});
 	
 	$("#appConfig2Form").on('valid', function (event) {
-		var url = "code/dashboard/do_appConfig2.php";
+		var url = "/saveMenuscreen";
 		
 		$('#appConfig2Sub').hide();
 		$('#savingButton').show();
@@ -1061,7 +1102,7 @@ $(document).ready(function() {
 		$('#menuSaveButton').hide();
 		$('#savingButton').show();
 	
-		var url = "code/dashboard/do_menuConfig.php";
+		var url = "/saveMenu";
 		
 		$.ajax({
 			   type: "POST",
@@ -1096,7 +1137,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'Menu configuration has been saved!' });
-						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
 			 }).done(function() {
@@ -1338,7 +1379,7 @@ $(document).ready(function() {
 				buttons: [
 				{addClass: 'alert tiny', text: 'Yes, delete this event!', onClick: function($noty) {
 					
-					var url = "code/dashboard/do_eventDelete.php";
+					var url = "/deleteEvent";
 					$.ajax({
 						   type: "POST",
 						   url: url,
@@ -1476,7 +1517,7 @@ $(document).ready(function() {
 		//enable dropdowns or we wont get the values!
 		$(".eventMenuSingleSelect").multiselect('enable');
 		
-		var url = "code/dashboard/do_eventConfig.php";
+		var url = "/saveEvent";
 		
 		$('#eventSubButton').hide();
 		$('#savingButton').show();
@@ -1521,7 +1562,7 @@ $(document).ready(function() {
 						}
 						
 						noty({ type: 'success', text: 'Event configuration has been saved!' });
-						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
 			 }).done(function() {
@@ -1681,7 +1722,7 @@ $(document).ready(function() {
 				buttons: [
 				{addClass: 'alert tiny', text: 'Yes, delete this user!', onClick: function($noty) {
 					
-					var url = "code/dashboard/do_userDelete.php";
+					var url = "/deleteUser";
 					$.ajax({
 						   type: "POST",
 						   url: url,
@@ -1748,7 +1789,7 @@ $(document).ready(function() {
 		//enable dropdowns or we wont get the values!
 		$(".userMenuSingleSelect").multiselect('enable');
 		
-		var url = "code/dashboard/do_userConfig.php";
+		var url = "/saveUser";
 
 		$.ajax({
 			   type: "POST",
@@ -1905,7 +1946,7 @@ $(document).ready(function() {
 	});
 	
 	$("#new_menu").on('click', function(){
-		window.location.href = "newMenu.php";
+		window.location.href = "/newMenu";
 	});
 	
 	$(".outletMenuMultiSelect").multiselect({
@@ -1961,7 +2002,7 @@ $(document).ready(function() {
 				buttons: [
 				{addClass: 'alert tiny', text: 'Yes, delete this outlet!', onClick: function($noty) {
 					
-					var url = "code/dashboard/do_outletDelete.php";
+					var url = "/deleteOutlet";
 					$.ajax({
 						   type: "POST",
 						   url: url,
@@ -2018,7 +2059,7 @@ $(document).ready(function() {
 		//enable dropdowns or we wont get the values!
 		$(".outletMenuMultiSelect").multiselect('enable');
 		
-		var url = "code/dashboard/do_outletConfig.php";
+		var url = "/saveOutlet";
 		
 		$('#outSubButton').hide();
 		$('#savingButton').show();
@@ -2220,7 +2261,7 @@ $(document).ready(function() {
 	});
 	
 	$("#nonEventConfigForm").on('valid', function (event) {
-		var url = "code/dashboard/do_nonEventConfig.php";
+		var url = "/saveHours";
 		
 		$('#ohSubButton').hide();
 		$('#savingButton').show();
@@ -2255,7 +2296,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'All times has been saved!' });
-						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("./dashboard.php");}, 1000);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
 			}).done(function() {
@@ -2420,7 +2461,7 @@ $(document).ready(function() {
 				buttons: [
 				{addClass: 'alert tiny', text: 'Yes, delete this meal deal!', onClick: function($noty) {
 					
-					var url = "code/dashboard/do_mdDelete.php";
+					var url = "/deleteMealDeal";
 					$.ajax({
 						   type: "POST",
 						   url: url,
@@ -2498,7 +2539,7 @@ $(document).ready(function() {
 				$(this).trigger('click');
 		});
 	
-		var url = "code/dashboard/do_mdConfig.php";
+		var url = "/saveMealDeal";
 		
 		$('#mdSubButton').hide();
 		$('#savingButton').show();
@@ -2629,7 +2670,7 @@ $(document).ready(function() {
 			buttons: [
 			{addClass: 'alert tiny', text: 'Yes, delete this menu!', onClick: function($noty) {
 				
-				var url = "code/dashboard/do_menuDelete.php";
+				var url = "/deleteMenu";
 				$.ajax({
 					   type: "POST",
 					   url: url,
@@ -2668,7 +2709,7 @@ $(document).ready(function() {
 	});
 	
 	$("#settingsForm").on('valid', function (event) {
-		var url = "code/settings/do_settings.php";
+		var url = "/saveProfile";
 		$.ajax({
 			   type: "POST",
 			   url: url,
@@ -2683,7 +2724,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." ///text: 'Connection Error! Check API endpoint.'
+						  text: "Sorry, but there's been an error processing your request." //text: 'Connection Error! Check API endpoint.'
 						});
 						//alert(data);
 						return false;
@@ -2732,7 +2773,7 @@ $(document).ready(function() {
 	}); 
 	
 	$("#moreForm").on('valid', function (event) {
-		var url = "code/more/do_sendMore.php";
+		var url = "/sendForm";
 		$.ajax({
 		   type: "POST",
 		   url: url,

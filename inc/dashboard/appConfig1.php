@@ -9,23 +9,23 @@
 	<div class="topSpacer"></div>
 	<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
 	<nav class="breadcrumbs row--space1d">
-		<a href="<?echo $_SESSION['path']?>/venueSettings.php"><? echo _("Venue Information");?></a>
+		<a href="<?echo $_SESSION['path']?>/settings"><? echo _("Venue Information");?></a>
 		<a class="current" href="#"><? echo _("App Styling");?></a>
 		<?if(!$_SESSION['noMenuFlag']){?>
-			<a href="<?echo $_SESSION['path']?>/menuSettings.php"><? echo _("Menu Creation");?></a>
+			<a href="<?echo $_SESSION['path']?>/menus/<?echo $_SESSION['menus'][0]['id'];?>?r=1"><? echo _("Menu Creation");?></a>
 		<?}else{?>
 			<a class="unavailable" href="#"><? echo _("Menu Creation");?></a>
 		<?}?>
 		<?if(!$_SESSION['noEHFlag']){?>
-			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a href="<?echo $_SESSION['path']?>/eventSettings.php"><? echo _("Events");?></a>
-			<?}else{?><a href="<?echo $_SESSION['path']?>/nonEventSettings.php"><? echo _("Opening Hours");?></a><?}?>
+			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a href="<?echo $_SESSION['path']?>/events?r=1"><? echo _("Events");?></a>
+			<?}else{?><a href="<?echo $_SESSION['path']?>/openinghours?r=1"><? echo _("Opening Hours");?></a><?}?>
 		<?}else{?>
 			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="unavailable" href="#"><? echo _("Events");?></a>
 			<?}else{?><a class="unavailable" href="#"><? echo _("Opening Hours");?></a><?}?>
 		<?}?>
 		
 		<?if(!$_SESSION['noPaymentFlag']){?>
-			<a href="<?echo $_SESSION['path']?>/paymentSettings.php"><? echo _("Payment Method");?></a>
+			<a href="<?echo $_SESSION['path']?>/payment"><? echo _("Payment Method");?></a>
 		<?}else{?>
 			<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
 		<?}?>

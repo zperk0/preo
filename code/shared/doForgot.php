@@ -6,7 +6,15 @@
 	
 	$email = strtolower($_POST['emailF']);
 	
+	$url = "";
+	
+	if( (isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['SERVER_PORT'] == 443) ) $url="https://";
+	else $url="http://";
+	
+	$url.=$_SERVER['HTTP_HOST']."/reset?code=";
+	
 	$data['email']	= $email;
+	$data['link']	= $url;
 	
 	$jsonData = json_encode($data);
 	
