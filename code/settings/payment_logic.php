@@ -14,8 +14,14 @@
 	$stripeLink = $curlResult; //this should have come as JSON!
 	
 	//auto choose demo or live
-	if(preg_match('/demo/',$_SERVER['HTTP_HOST'])) $stripeLink .= "&redirect_uri=http://demo.preoday.com/code/shared/accept_stripe.php";
-	else $stripeLink .= "&redirect_uri=http://preoday.com/code/shared/accept_stripe.php";
+	$url = "";
+	
+	if( (isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['SERVER_PORT'] == 443) ) $url="https://";
+	else $url="http://";
+	
+	$url.=$_SERVER['HTTP_HOST'];
+	
+	$stripeLink .= "&redirect_uri=".$url."/code/shared/accept_stripe.php";
 	
 	//check for pre-connection
 	
