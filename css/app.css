@@ -458,7 +458,7 @@ ul.custom-inline-list {
 	background-image: url("../img/iphone5.png");
 	width: 301px; 
 	height: 636px;
-	margin: 0 0.1em;
+	margin: 0 0.1em 3em;
 }
 
 #frame_iphone5 {
@@ -1003,6 +1003,10 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 
 .newSection{
 	margin-top: 20px;
+}
+
+.dashContent #iphone5{
+	margin-bottom: 0px !important;
 }
 
 .dashContent p, .dashContentTop h1, .dashContent a, .dashboardFooter, .dashboardFooter a, .premiumDiv p {

@@ -29,7 +29,7 @@
 		<script src="<?echo $_SESSION['path']?>/js/multi-select.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/tableSlide.js"></script>
 		
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+		<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 		<!--<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>-->
 		
 		<!-- Google+ -->

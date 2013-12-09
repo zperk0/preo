@@ -24,7 +24,7 @@
 		<!-- jQuery -->
 		<script src="<?echo $_SESSION['path']?>/js/jquery1.10.2.js"></script>
 		
-		<?if(isset($_SERVER["ANALYTICS_UA"])){?>
+		<?if(isset($_SERVER["PREO_ANALYTICS_UA"])){?>
 			<!-- Google Analytics -->
 			<script>
 				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
@@ -32,7 +32,7 @@
 				,i[r].l=1*new Date();a=s.createElement(o),
 				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-				ga('create', '<?echo $_SERVER["ANALYTICS_UA"];?>', 'preoday.com');
+				ga('create', '<?echo $_SERVER["PREO_ANALYTICS_UA"];?>', 'preoday.com');
 				ga('send', 'pageview');
 			</script>
 		<?}?>

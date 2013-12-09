@@ -112,7 +112,7 @@
 					</div>
 					<div id="iphone5" class="large-4 columns left">
 						<div id="frame_iphone5">
-							<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/wall<?if(isset($_SESSION['app_wallpaperId'])) echo $_SESSION['app_wallpaperId'];else echo "1";?>.jpg" />
+							<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/wall_wa_<?if(isset($_SESSION['app_wallpaperId'])) echo $_SESSION['app_wallpaperId'];else echo "1";?>.jpg" />
 							<img id="carrierIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/carrier.png" />
 							<img id="poweredIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/powered.png" />
 							<button type="button" class="tiny expand" id="buttonIMG"><?echo _('ORDER NOW');?></button>
@@ -145,6 +145,20 @@
 								<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="3") echo "selected";}?>" id="thumb3">
 									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb3.jpg">
 								</a>
+							</div>
+						</div>
+						<div class="row thumbRow">
+							<div class="large-4 small-4 columns">
+								<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="4") echo "selected";}?>" id="thumb4">
+									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb4.jpg">
+								</a>
+							</div>
+							<div class="large-4 small-4 columns">
+								<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="5") echo "selected";}?>" id="thumb5">
+									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb5.jpg">
+								</a>
+							</div>
+							<div class="large-4 small-4 columns">
 							</div>
 						</div>
 						<div class="visibleUpload">
