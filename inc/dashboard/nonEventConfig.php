@@ -38,7 +38,7 @@
 			$dow = array('dummy','sunday','monday','tuesday','wednesday','thursday','friday','saturday');
 			for($i=1;$i<8;$i++){?>
 			<div class="row row--space1 openingHoursDiv <?echo $dow[$i];?>" id="<?echo $dow[$i];?>">
-				<h4><?echo _("Opening Hours");?>&nbsp;<span><button class="addMoreOH" type="button"><i class="fi-plus"></i></button> <?echo _("Add another opening hour");?></span></h4>
+				<h4><?echo _("Opening Hours");?>&nbsp;<span><button class="addMoreOH" type="button"><i class="fi-plus"></i></button> <?echo _("Add another opening hour");?></span>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("eg: if you close for lunch and reopen in the evening.");?>"></i></h4>
 
 				<?if(isset($neTimes) && isset($neTimes[$i]) && count($neTimes["$i"]))
 				{
