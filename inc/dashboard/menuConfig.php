@@ -146,8 +146,9 @@
 						</td>
 						<td class="menuTDPrice">
 							<input type="text" name="oPrice[item0][0]" class="menuField noEnterSubmit" value="<?echo _("&pound.&pound&pound");?>" required/>
+							&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
 							<small class="error"><?echo _("Amount?");?></small>
-							</td>
+						</td>
 						<td class="menuTDQuant hide">
 						</td>
 						<td class="menuTDVisi hide">
@@ -286,6 +287,7 @@
 								<td class="menuTDPrice">
 									<input type="text" name="oPrice[item<?echo ($iKey+1);?>][0]" class="menuField noEnterSubmit" value="<?echo _("&pound.&pound&pound");?>" required/>
 									<small class="error"><?echo _("Amount?");?></small>
+									&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
 									</td>
 								<td class="menuTDQuant hide">
 								</td>
@@ -319,6 +321,7 @@
 										<td class="menuTDPrice">
 											<input type="text" name="oPrice[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($option['price'],2,'.','');?>" required  readonly="readonly"/>
 											<small class="error"><?echo _("Amount?");?></small>
+											&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
 											</td>
 										<td class="menuTDQuant hide">
 										</td>
