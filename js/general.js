@@ -478,6 +478,11 @@ $(document).ready(function() {
 		$(".hiddenUpload").toggle();
 	});
 	
+	$(".visibleUploadBG, #bgReset").on('click', function() {
+		$(".visibleUploadBG").toggle();
+		$(".hiddenUploadBG").toggle();
+	});
+	
 	$("#doLogoUp").on('click', function() {
 		if($("#picFile").val()) $("#logoUpForm").submit();
 		else noty({ type: 'error',  layout: 'topCenter', text: 'Please choose a file' });
@@ -523,7 +528,7 @@ $(document).ready(function() {
 						  type: 'error',  layout: 'topCenter',
 						  text: "Sorry, but there's been an error processing your request." /*text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
-				   
+						//alert(data);
 					}
 					else
 					{	

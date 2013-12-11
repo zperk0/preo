@@ -123,8 +123,7 @@
 					</div>
 				</form>
 				
-				<div class="large-4 columns right">
-					<form id="logoUpForm" method="POST" enctype="multipart/form-data">
+				<div class="large-4 columns right appstlyeright">
 						<div class="row">
 							<div class="large-12 columns">
 								<label class="row--space0-5d"><?echo _("Select a home-screen background");?></label>
@@ -161,6 +160,31 @@
 							<div class="large-4 small-4 columns">
 							</div>
 						</div>
+					<form id="bgUpForm" method="POST" enctype="multipart/form-data">	
+						<div class="visibleUploadBG">
+							<div class="row row--space2u row--space1d">
+								<div class="large-12 small-12 columns">
+									<button type="button" class="secondary small"><?echo _("UPLOAD YOUR OWN BACKGROUND");?></button>
+								</div>
+							</div>
+						</div>
+						<div class="hiddenUploadBG">
+							<div class="row row--space2u row--space1d">
+								<div class="large-12 small-12 columns">
+									<label class="left row--space0-5d"><?echo _("Custom Background Upload");?></label>
+									<input type="file" id="picFile" name="picFile" accept="image/jpeg" class="" />
+									<p><?echo _("Supported types: JPG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 1080x1920 (exact)");?></p>
+								</div>
+							</div>
+							<div class="row row--space1">
+								<div class="large-8 small-8 columns">
+									<button id="doLogoUp" type="button" class="small"><?echo _("UPLOAD");?></button>
+									<button id="bgReset" type="button" class="small secondary"><?echo _("RESET");?></button>
+								</div>
+							</div>
+						</div>
+					</form>
+					<form id="logoUpForm" method="POST" enctype="multipart/form-data">
 						<div class="visibleUpload">
 							<div class="row row--space2u row--space1d">
 								<div class="large-12 small-12 columns">
@@ -183,6 +207,7 @@
 								</div>
 							</div>
 						</div>
+						
 					</form>
 					<div class="row row--space6u">
 						<div class="large-12 small-12 columns text-right small-centered">

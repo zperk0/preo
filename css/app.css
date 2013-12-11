@@ -433,21 +433,30 @@ ul.custom-inline-list {
 	color: #48535D !important;
 }
 
-#logoUpForm .thumb img {
+.appstlyeright .thumb img {
 	border: 3px solid transparent;
 }
 
-#logoUpForm .selected img{
+.appstlyeright .selected img{
 	border: 3px solid #3AA2DC;
 }
+
+.appstlyeright img {
+	margin-top: 10px;
+}
+
+.appstyleright label{
+	color: #48535D !important;
+}	
 
 .thumbRow {
 	/*width: 130% !important;*/
 }	
 
-.hiddenUpload{
+.hiddenUpload, .hiddenUploadBG{
 	display: none;
 }
+
 
 /* phone area*/
 #phonePreview {
@@ -907,6 +916,13 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	width: 101.8% !important;
 	margin-left: -1% !important;
 	margin-bottom: 0px !important;
+}
+
+.optionTR .menuTDPrice {
+	width: 15%;
+}
+.optionTR .menuTDTools {
+	width: 9%;
 }
 
 .userTable .ui-multiselect, .eventTable, .ui-multiselect{
