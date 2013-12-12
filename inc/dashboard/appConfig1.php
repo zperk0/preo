@@ -177,14 +177,14 @@
 							<div class="row">
 								<div class="large-12 small-12 columns">
 									<label class="left row--space0-5d"><?echo _("Custom Background Upload");?></label>
-									<input type="file" id="bgFile" name="bgFile" accept="image/jpeg" class="" />
-									<p><?echo _("Supported types: JPG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 1080x1920 (exact)");?></p>
 								</div>
 							</div>
 							<div class="row row--space1">
 								<div class="large-8 small-8 columns">
 									<button id="doBGUp" type="button" class="small"><?echo _("UPLOAD");?></button>
 									<button id="bgReset" type="button" class="small secondary"><?echo _("CANCEL");?></button>
+									<input type="file" id="bgFile" name="bgFile" accept="image/jpeg" class="hide" />
+									<p><?echo _("Supported types: JPG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 1080x1920 (exact)");?></p>
 								</div>
 							</div>
 						</div>
@@ -201,14 +201,14 @@
 							<div class="row">
 								<div class="large-12 small-12 columns">
 									<label class="left row--space0-5d"><?echo _("Logo Upload");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Note: This will replace your main heading.");?>"></i>
-									<input type="file" id="picFile" name="picFile" accept="image/png,image/jpeg" class="" />
-									<p><?echo _("Supported types: JPG or PNG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 100x75");?></p>
 								</div>
 							</div>
 							<div class="row row--space1">
 								<div class="large-8 small-8 columns">
 									<button id="doLogoUp" type="button" class="small"><?echo _("UPLOAD");?></button>
 									<button id="logoReset" type="button" class="small secondary"><?echo _("RESET");?></button>
+									<input type="file" id="picFile" name="picFile" accept="image/png,image/jpeg" class="hide" />
+									<p><?echo _("Supported types: JPG or PNG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 100x75");?></p>
 								</div>
 							</div>
 						</div>

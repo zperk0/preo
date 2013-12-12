@@ -529,18 +529,35 @@ $(document).ready(function() {
 	
 	$("#doBGUp").on('click', function() {
 		if($("#bgFile").val()) $("#bgUpForm").submit();
-		else noty({ type: 'error',  layout: 'topCenter', text: 'Please choose a file' });
+		else{ //noty({ type: 'error',  layout: 'topCenter', text: 'Please choose a file' });
+			$("#bgFile").click();
+		}
 	});
 	
 	$("#doLogoUp").on('click', function() {
 		if($("#picFile").val()) $("#logoUpForm").submit();
-		else noty({ type: 'error',  layout: 'topCenter', text: 'Please choose a file' });
+		else{ //noty({ type: 'error',  layout: 'topCenter', text: 'Please choose a file' });
+			$("#picFile").click();
+		}
+	});
+	
+	$("#picFile").on('change', function(){
+		$("#doLogoUp").click();
+	});
+	
+	$("#bgFile").on('change', function(){
+		$("#doBGUp").click();
 	});
 	
 	$("#logoReset").on('click', function() {
 		var content = $("#aHeading").val()
 		$("#appHeading").html(content);
 		$("#picFileName").val('');
+		$("#picFile").val('');
+	});
+	
+	$("#bgReset").on('click', function() {
+		$("#bgFile").val('');
 	});
 	
 	$("#appConfig1Sub").on('click', function() { $("#appConfigForm").submit(); });

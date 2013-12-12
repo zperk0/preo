@@ -463,6 +463,10 @@ label.appTop {
 	margin-top: -30px;
 }
 
+#logoUpForm p, #bgUpForm p {
+	font-size: 14px;
+}
+
 /* phone area*/
 #phonePreview {
 	margin: 0 auto; 
