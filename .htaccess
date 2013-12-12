@@ -106,6 +106,9 @@ RewriteRule ^.*$ /code/dashboard/do_venueSave.php [L]
 RewriteCond %{REQUEST_URI} ^/uploadLogo$ [NC]
 RewriteRule ^.*$ /code/dashboard/doUploadLogo.php [L]
 
+RewriteCond %{REQUEST_URI} ^/uploadBG$ [NC]
+RewriteRule ^.*$ /code/dashboard/doUploadBG.php [L]
+
 RewriteCond %{REQUEST_URI} ^/saveHomescreen$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_appConfig1.php [L]
 

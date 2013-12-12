@@ -126,7 +126,7 @@
 				<div class="large-4 columns right appstlyeright">
 						<div class="row">
 							<div class="large-12 columns">
-								<label class="row--space0-5d"><?echo _("Select a home-screen background");?></label>
+								<label class="row--space0-5d appTop"><?echo _("Select a home-screen background");?></label>
 							</div>
 						</div>
 						<div class="row thumbRow">
@@ -157,43 +157,48 @@
 									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb5.jpg">
 								</a>
 							</div>
-							<div class="large-4 small-4 columns">
+							<div class="large-4 small-4 columns customBGArea">
+								<?php if(isset($_SESSION['app_wallpaperId']) && $_SESSION['app_wallpaperId']!="5" && $_SESSION['app_wallpaperId']!="4" && $_SESSION['app_wallpaperId']!="3" && $_SESSION['app_wallpaperId']!="2" && $_SESSION['app_wallpaperId']!="1" ) { ?>
+								<a class="thumb selected" id="thumb<?echo $_SESSION['app_wallpaperId']?>">
+									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb<?echo $_SESSION['app_wallpaperId']?>.jpg">
+								</a>
+								<? } ?>
 							</div>
 						</div>
 					<form id="bgUpForm" method="POST" enctype="multipart/form-data">	
 						<div class="visibleUploadBG">
-							<div class="row row--space2u row--space1d">
+							<div class="row row--space1u row--space1d">
 								<div class="large-12 small-12 columns">
 									<button type="button" class="secondary small"><?echo _("UPLOAD YOUR OWN BACKGROUND");?></button>
 								</div>
 							</div>
 						</div>
 						<div class="hiddenUploadBG">
-							<div class="row row--space2u row--space1d">
+							<div class="row">
 								<div class="large-12 small-12 columns">
 									<label class="left row--space0-5d"><?echo _("Custom Background Upload");?></label>
-									<input type="file" id="picFile" name="picFile" accept="image/jpeg" class="" />
+									<input type="file" id="bgFile" name="bgFile" accept="image/jpeg" class="" />
 									<p><?echo _("Supported types: JPG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 1080x1920 (exact)");?></p>
 								</div>
 							</div>
 							<div class="row row--space1">
 								<div class="large-8 small-8 columns">
-									<button id="doLogoUp" type="button" class="small"><?echo _("UPLOAD");?></button>
-									<button id="bgReset" type="button" class="small secondary"><?echo _("RESET");?></button>
+									<button id="doBGUp" type="button" class="small"><?echo _("UPLOAD");?></button>
+									<button id="bgReset" type="button" class="small secondary"><?echo _("CANCEL");?></button>
 								</div>
 							</div>
 						</div>
 					</form>
 					<form id="logoUpForm" method="POST" enctype="multipart/form-data">
 						<div class="visibleUpload">
-							<div class="row row--space2u row--space1d">
+							<div class="row">
 								<div class="large-12 small-12 columns">
 									<button type="button" class="secondary small"><?echo _("UPLOAD YOUR OWN LOGO");?></button>
 								</div>
 							</div>
 						</div>
 						<div class="hiddenUpload">
-							<div class="row row--space2u row--space1d">
+							<div class="row">
 								<div class="large-12 small-12 columns">
 									<label class="left row--space0-5d"><?echo _("Logo Upload");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Note: This will replace your main heading.");?>"></i>
 									<input type="file" id="picFile" name="picFile" accept="image/png,image/jpeg" class="" />
@@ -209,7 +214,7 @@
 						</div>
 						
 					</form>
-					<div class="row row--space6u">
+					<div class="row row--space2u">
 						<div class="large-12 small-12 columns text-right small-centered">
 							<button id="appConfig1Sub" class="preodayButton" type="submit" tabindex=3><?echo _("SAVE CHANGES");?></button>
 							<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>

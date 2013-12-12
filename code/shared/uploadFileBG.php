@@ -11,7 +11,7 @@ function compress_image($source_url, $destination_url, $quality) {
 
 	$resizeFlag = 0;
 	
-	$max_dimension = 1024; //width for landscape, height for portrait/square
+	$max_dimension = 1920; //width for landscape, height for portrait/square
 	
 	if($width > $height) //landscape
 	{
@@ -158,10 +158,11 @@ function uploadFile($fileUploadID, $fileLocation, $fileName, $fileEXT, $fileMIME
 				//create original->compressed to 99%
 				compress_image($_FILES["file"]["tmp_name"], $destination, 99);
 				
-				//create thumbnail -> size reduced and compressed to 85%
+				//create thumbnail -> size reduced and compressed to 99%
 				$width = $imginfo_array[0];  
 				$height = $imginfo_array[1]; 
 				
+				/*
 				if($width >= $height) //landscape
 				{
 					$newWidth = 100;
@@ -176,18 +177,12 @@ function uploadFile($fileUploadID, $fileLocation, $fileName, $fileEXT, $fileMIME
 					//newheight / (original height / original width) = new width
 					$newWidth = round($newHeight/($height / $width),0);
 				}
-
-				createThumbnail($_FILES["file"]["tmp_name"], $_FILES["file"]["name"], $destination_thumb, $newWidth, $newHeight, 99);
+				*/
 				
-				//create main image
-				if($ext == "png")
-				{
-					//disabled$im = imagecreatefrompng($destination_thumb); //black substitutes transparency
-				}
-				else
-				{
-					//disabled$im = imagecreatefromjpeg($destination_thumb);
-				}
+				createThumbnail($_FILES["file"]["tmp_name"], $_FILES["file"]["name"], $fileLocation . "wall_wa_".$fileName.".jpg", 252, 451, 99);
+				createThumbnail($_FILES["file"]["tmp_name"], $_FILES["file"]["name"], $fileLocation . "thumb".$fileName.".jpg", 101, 181, 99);
+				createThumbnail($_FILES["file"]["tmp_name"], $_FILES["file"]["name"], $fileLocation . "wall".$fileName.".jpg", 1080, 1920, 99);
+				
 				
 				//delete destination file
 				unlink($destination);

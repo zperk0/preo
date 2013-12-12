@@ -432,7 +432,51 @@ $(document).ready(function() {
 	};
 	$("#logoUpForm").ajaxForm(options);
 	
-	$("[id^=thumb]").on('click', function() {
+	//ajax form upload
+	var optionsBG = { 
+		url: '/uploadBG',
+		success: function(responseText) { 
+			noty({
+			  type: 'success',
+			  text: 'Uploaded!'
+			});
+			
+			//alert(responseText);
+			
+			$("[id^=thumb]").removeClass('selected');
+			var newImgSrc = "./img/wallpapers/wall_wa_" + responseText + ".jpg";
+			$("#phoneWallpaper").attr("src", newImgSrc);
+			$("#wallPaperID").val(responseText);
+			
+			$('.customBGArea').empty();
+			$('<a class="thumb selected" id="thumb'+responseText+'">	<img src="/img/wallpapers/thumb'+responseText+'.jpg"> </a>').appendTo('.customBGArea');
+			
+		},
+		error: function() { 
+			noty({
+			  type: 'error',  layout: 'topCenter',
+			  text: 'Error uploading file'
+			});
+		},
+		beforeSubmit: function(arr, $form, options) { 
+			var acceptedExts = new Array(".jpg",".jpeg");
+			var filename = $("#bgFile").val();
+			filename = filename.toLowerCase();
+			if(searchArray(filename,acceptedExts))
+				return true;
+			else
+			{
+				noty({
+				  type: 'error',  layout: 'topCenter',
+				  text: 'Incorrect Image File'
+				});
+				return false;
+			}
+		}
+	};
+	$("#bgUpForm").ajaxForm(optionsBG);
+	
+	$(document).on("click", "[id^=thumb]", function() {
 		$("[id^=thumb]").removeClass('selected');
 		$(this).addClass('selected');
 		var tID = $(this).attr('id');
@@ -474,13 +518,18 @@ $(document).ready(function() {
 	}); */
 	
 	$(".visibleUpload, #logoReset").on('click', function() {
-		$(".visibleUpload").toggle();
-		$(".hiddenUpload").toggle();
+		$(".visibleUpload").slideToggle();
+		$(".hiddenUpload").slideToggle();
 	});
 	
 	$(".visibleUploadBG, #bgReset").on('click', function() {
-		$(".visibleUploadBG").toggle();
-		$(".hiddenUploadBG").toggle();
+		$(".visibleUploadBG").slideToggle();
+		$(".hiddenUploadBG").slideToggle();
+	});
+	
+	$("#doBGUp").on('click', function() {
+		if($("#bgFile").val()) $("#bgUpForm").submit();
+		else noty({ type: 'error',  layout: 'topCenter', text: 'Please choose a file' });
 	});
 	
 	$("#doLogoUp").on('click', function() {
