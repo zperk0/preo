@@ -184,7 +184,7 @@
 									<button id="doBGUp" type="button" class="small"><?echo _("UPLOAD");?></button>
 									<button id="bgReset" type="button" class="small secondary"><?echo _("CANCEL");?></button>
 									<input type="file" id="bgFile" name="bgFile" accept="image/jpeg" class="hide" />
-									<p><?echo _("Supported types: JPG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 1080x1920 (exact)");?></p>
+									<p><?echo _("Supported types: JPG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 1080x1920");?></p>
 								</div>
 							</div>
 						</div>

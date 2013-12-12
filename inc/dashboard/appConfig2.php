@@ -8,9 +8,9 @@
 					<div class="large-4 columns left">
 						<div class="row">
 							<div class="large-8 columns">
-								<label class="left"><?echo _("Add your venue title");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("This is a shorter version of your venue name that will be visible over your menu.");?>"></i>
-								<input type="text" name="vTitle" id="vTitle" placeholder="Type a name..." required tabindex=1 value="<?if(isset($_SESSION['app_title'])) echo $_SESSION['app_title']; else echo $_SESSION['venue_name'];?>">
-								<small class="error"><?echo _("Please type a venue title");?></small>
+								<label class="left"><?echo _("Add a short venue title");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("This is a shorter version of your venue name that will be visible over your menu.");?>"></i>
+								<input type="text" name="vTitle" id="vTitle" placeholder="Type a name..." required tabindex=1 value="<?if(isset($_SESSION['app_title'])) echo $_SESSION['app_title']; else echo $_SESSION['venue_name'];?>" pattern="^.{0,22}$">
+								<small class="error"><?echo _("Please type a venue title (limited to 22characters)");?></small>
 							</div>
 						</div>
 					</div>
@@ -35,7 +35,7 @@
 								<label class="row--space0-5"><?echo _("Colour scheme");?></label>
 								<div class="row">
 									<div class="large-11 columns">
-										<h6 class="row--space0d">Colour one</h6>
+										<h6 class="row--space0d"><?echo _("Colour one");?></h6>
 										<p><?echo _("This colour is used across section progress buttons and as a highlight colour.");?></p>
 									</div>
 								</div>
