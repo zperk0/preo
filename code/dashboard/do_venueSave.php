@@ -51,7 +51,7 @@
 	
 	if(isset($_SESSION['venue_edit_on']) && $_SESSION['venue_edit_on'])
 	{
-		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id'], $jsonData, $apiAuth);
+		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id'], $jsonData, $apiAuth);
 		$_SESSION['venue_edit_on'] = 0;
 		
 		$data = array();
