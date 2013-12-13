@@ -55,11 +55,19 @@ $(document).ready(function(){
 						<small class="error"><?echo _("Please type a password.");?></small>
 					</div>
 				</div>
-				
+				<?if(!$fb_field_flag){?>
+				<div class="row passRow">
+					<div class="large-12 columns">
+						<label><?echo _("Confirm password");?></label>
+						<input type="password" id="confPassword" required data-equalTo="passwordField" tabindex=5>
+						<small class="error"><?echo _("Passwords don't match.");?></small>
+					</div>
+				</div>
+				<?}?>
 				<div class="row">
 					<div class="large-12 columns">
 						<label><?echo _("Your business name");?></label>
-						<input type="text" name="businessName" placeholder="" required pattern="[a-zA-Z]+" tabindex=5>
+						<input type="text" name="businessName" placeholder="" required pattern="[a-zA-Z]+" tabindex=6>
 						<small class="error"><?echo _("Please type your business name");?></small>
 					</div>
 				</div>
@@ -74,7 +82,7 @@ $(document).ready(function(){
 					<div class="small-8 large-5 columns">
 						<input type="hidden" name="fbid" <?if($fb_field_flag) echo "value='$fbId'"; else echo "value='0'";?>>
 						<input type="hidden" id="gpid" name="gpid" value='0'>
-						<button type="submit" tabindex=6><?echo _("SIGN UP");?></button>
+						<button type="submit" tabindex=7><?echo _("SIGN UP");?></button>
 					</div>
 				</div>
 			</form>

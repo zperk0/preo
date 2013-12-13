@@ -140,6 +140,7 @@ function startGSignUp()
 						$("#email").val(googleUserArray['email']);
 						$("#gpid").val((googleUserArray['id']).toString());
 						$("#passwordField").val(makeRandomPassword());
+						$("#confPassword").val($("#passwordField").val());
 						
 						$('.nameRow, .socialMediaDiv, .emailRow, .passRow').hide();
 						$("#email").attr('readonly','readonly');
