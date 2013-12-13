@@ -52,9 +52,19 @@
 		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
 		{	
 			//nothing
+			$redirectFlag = 1;
 		}
 		else
 		{	
+			if( (!isset($_SESSION['signupWizFlag'])) || (isset($_SESSION['signupWizFlag']) && !$_SESSION['signupWizFlag']) )
+			{
+				$redirectFlag = 0;
+			}
+			else
+			{
+				$redirectFlag = 1;
+			}
+		
 			//echo var_dump($dataJSON);
 			//app-1
 			$_SESSION['app_heading']			= $dataJSON['heading'];

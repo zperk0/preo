@@ -382,7 +382,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'Venue changes have been saved!' });
-						if($('#redirectFlag').val()=='1') { setTimeout(function(){window.location.replace("/dashboard");}, 1000); }
+						if($('#redirectFlag').val()=='1') { setTimeout(function(){window.location.replace("/homescreen");}, 1000); }
 					}
 				}
 			 }).done(function(){
@@ -599,7 +599,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'App changes have been saved!' });
-						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/menuscreen");}, 1000);
 					}
 				}
 			 }).done(function(){
@@ -652,6 +652,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'App changes have been saved!' });
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
 			 }).done(function(){

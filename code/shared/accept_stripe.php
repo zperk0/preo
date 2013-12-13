@@ -9,8 +9,12 @@
 	$state = $_GET['state'];
 	protect($state);
 	
-	$code = $_GET['code'];
-	protect($code);
+	if(isset($_GET['code'])){
+		$code = $_GET['code'];
+		protect($code);
+	}
+	else
+		$code = '';
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	

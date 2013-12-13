@@ -5,7 +5,8 @@
 		<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
 		<nav class="breadcrumbs row--space1d">
 			<a href="<?echo $_SESSION['path']?>/settings"><? echo _("Venue Information");?></a>
-			<a href="<?echo $_SESSION['path']?>/homescreen"><? echo _("App Styling");?></a>
+			<a href="<?echo $_SESSION['path']?>/homescreen"><? echo _("App Styling 1/2");?></a>
+			<a href="<?echo $_SESSION['path']?>/menuscreen"><? echo _("App Styling 2/2");?></a>
 			<a class="current" href="#"><? echo _("Menu Creation");?></a>
 			<?if(!$_SESSION['noEHFlag']){?>
 				<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a href="<?echo $_SESSION['path']?>/events?r=1"><? echo _("Events");?></a>

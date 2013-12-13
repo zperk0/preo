@@ -4,15 +4,6 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 
-	//debug
-	//echo "<br/><br/>";
-	//echo $_SESSION['user_id']."<br/>";
-	//echo $_SESSION['user_name']."<br/>";
-	//echo $_SESSION['user_email']."<br/>";
-	//echo $_SESSION['account_name']."<br/>";
-	//echo $_SESSION['account_id']."<br/>";
-	//echo $_SESSION['token']."<br/>";
-
 	//We need flags to check whether certain information has been previously saved or not. This way we find out whether its a return user or a new user or even a new user who left halfway through.
 	$_SESSION['noVenueFlag'] = 0; 
 	$_SESSION['noAppFlag-1'] = 0;
@@ -182,7 +173,7 @@
 	
 	//echo var_dump($_SESSION);
 	
-	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && /*!$_SESSION['noAppFlag-2'] &&*/ !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag'] && !$_SESSION['noPaymentFlag']) /*User has given data for all 5 already*/
+	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag'] && !$_SESSION['noPaymentFlag']) /*User has given data for all 5 already*/
 	{	
 		//going to the dashboard!
 
@@ -201,7 +192,7 @@
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/dashboard_content.php"); 
 	}
-	else if($_SESSION['noVenueFlag']) /* User has not given all 5 so first check Venue */
+	else if($_SESSION['noVenueFlag']) /* User has not given all 6 so first check Venue */
 	{	
 		$_SESSION['signupWizFlag']=1;
 		$redirectFlag=1;
@@ -209,7 +200,7 @@
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/venueConfig.php"); 
 	}
-	else if($_SESSION['noAppFlag-1']) /* User has not given all 5 so second check App-1 */
+	else if($_SESSION['noAppFlag-1']) /* User has not given all 6 so second check App-1 */
 	{	
 		$_SESSION['signupWizFlag']=1;
 		$redirectFlag=1;
@@ -217,13 +208,14 @@
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig1.php");
 	}
-	//else if($_SESSION['noAppFlag-2']) /* User has not given all --- check App-2 */
-//	{	
-//		$_SESSION['signupWizFlag']=1;
-//		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
-//		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig2.php"); 
-//	}
-	else if($_SESSION['noMenuFlag']) /* User has not given all 5 so third check Menu */
+	else if($_SESSION['noAppFlag-2']) /* User has not given all 6 so third check App-2 */
+ 	{	
+ 		$_SESSION['signupWizFlag']=1;
+		$redirectFlag=1;
+ 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
+ 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig2.php"); 
+ 	}
+	else if($_SESSION['noMenuFlag']) /* User has not given all 6 so fourth check Menu */
 	{	
 		$_SESSION['signupWizFlag']=1;
 		$redirectFlag=1;
@@ -232,7 +224,7 @@
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/menuConfig.php"); 
 	}
-	else if($_SESSION['noEHFlag']) /* User has not given all 5 so fourth check EH */
+	else if($_SESSION['noEHFlag']) /* User has not given all 6 so fifth check EH */
 	{	
 		$_SESSION['signupWizFlag']=1;
 		if(!$_SESSION['venue_eventFlag']) 
@@ -246,7 +238,7 @@
 			exit;
 		}
 	}
-	else if($_SESSION['noPaymentFlag']) /* User has not given all 5 so fifth check Payment */
+	else if($_SESSION['noPaymentFlag']) /* User has not given all 6 so sixth check Payment */
 	{	
 		$_SESSION['signupWizFlag']=1;
 		$_SESSION['noLiveFlag']=1;

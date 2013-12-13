@@ -1,10 +1,42 @@
 <div class="row">
 	<div class="topSpacer"></div>
+	<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
+	<nav class="breadcrumbs row--space1d">
+		<a href="<?echo $_SESSION['path']?>/settings"><? echo _("Venue Information");?></a>
+		<?if(!$_SESSION['noAppFlag-1']){?>
+			<a href="<?echo $_SESSION['path']?>/homescreen"><? echo _("App Styling 1/2");?></a>
+		<?}else{?>
+			<a class="unavailable" href="#"><? echo _("App Styling 1/2");?></a>
+		<?}?>
+		<a class="current" href="#"><? echo _("App Styling 2/2");?></a>
+		<?if(!$_SESSION['noMenuFlag']){?>
+			<a href="<?echo $_SESSION['path']?>/menus/<?echo $_SESSION['menus'][0]['id'];?>?r=1"><? echo _("Menu Creation");?></a>
+		<?}else{?>
+			<a class="unavailable" href="#"><? echo _("Menu Creation");?></a>
+		<?}?>
+		<?if(!$_SESSION['noEHFlag']){?>
+			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a href="<?echo $_SESSION['path']?>/events?r=1"><? echo _("Events");?></a>
+			<?}else{?><a href="<?echo $_SESSION['path']?>/openinghours?r=1"><? echo _("Opening Hours");?></a><?}?>
+		<?}else{?>
+			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="unavailable" href="#"><? echo _("Events");?></a>
+			<?}else{?><a class="unavailable" href="#"><? echo _("Opening Hours");?></a><?}?>
+		<?}?>
+		
+		<?if(!$_SESSION['noPaymentFlag']){?>
+			<a href="<?echo $_SESSION['path']?>/payment"><? echo _("Payment Method");?></a>
+		<?}else{?>
+			<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
+		<?}?>
+		
+		<a class="unavailable" href="#"><? echo _("Done");?></a>
+	</nav>
+	<?}?>
 	<div class="large-12 columns">
 		<div class="row">
 			<h1><?echo _("Style your app");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Gives you the opportunity to brand your menu pages and choose which colours you would like to have on your app.");?>"></i></h1>
 			<div id="phonePreview">
 				<form id="appConfig2Form" method="POST" data-abide>
+					<input type="hidden" id="redirectFlag" value="<?echo $redirectFlag;?>"/>
 					<div class="large-4 columns left">
 						<div class="row">
 							<div class="large-8 columns">
@@ -95,3 +127,14 @@
 		</div>
 	</div>
 </div>	
+<?if(!isset($_SESSION['app2_edit_on']) || !$_SESSION['app2_edit_on']){?>
+<!-- Now we update progressBar tooltip, width and trigger mouseover -->
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.progressIndicator').css('width','180%');
+	$('.progressIndicator').attr('title', "40% done, a couple more design touches...");
+	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
+	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
+});
+</script>
+<?}?>
