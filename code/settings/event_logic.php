@@ -15,7 +15,7 @@
 	//////EVENT////////////////////////////////////////////////////////////////////////////
 	
 	//query to find events
-	$curlResult = callAPI('GET', $apiURL."events?venueId=$venueID", false, $apiAuth);
+	$curlResult = callAPI('GET', $apiURL."venues/$venueID/events", false, $apiAuth);
 	$dataJSON = json_decode($curlResult,true);
 	
 	if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
@@ -34,7 +34,7 @@
 		{
 			$eventID = $event['id'];
 		 
-			$curlResult = callAPI('GET', $apiURL."venues/$venueID/ebtimes?eventId=$eventID", false, $apiAuth);
+			$curlResult = callAPI('GET', $apiURL."events/$eventID/slots", false, $apiAuth);
 		
 			$dataJSON = json_decode($curlResult,true);
 			

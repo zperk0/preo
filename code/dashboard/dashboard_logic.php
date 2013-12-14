@@ -132,7 +132,7 @@
 	{
 		//eventBased check for event
 		//query to find events
-		$curlResult = callAPI('GET', $apiURL."events?venueId=$venueID", false, $apiAuth);
+		$curlResult = callAPI('GET', $apiURL."venues/$venueID/events", false, $apiAuth);
 		$dataJSON = json_decode($curlResult,true);
 		
 		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
@@ -212,6 +212,7 @@
  	{	
  		$_SESSION['signupWizFlag']=1;
 		$redirectFlag=1;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
  		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
  		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig2.php"); 
  	}

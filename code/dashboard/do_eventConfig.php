@@ -77,14 +77,14 @@
 		}
 		else //create new
 		{	
-			$curlResult = callAPI('POST', $apiURL."events", $jsonData, $apiAuth); //event created
+			$curlResult = callAPI('POST', $apiURL."venues/$venueID/events", $jsonData, $apiAuth); //event created
 			$dataJSON = json_decode($curlResult,true);
 			$newEvents[$event['id']] = $dataJSON['id'];
 			$eventID = $dataJSON['id'];
 		}
 		
 		//kill all eb-times items for thie event
-		$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/ebtimes?eventId=$eventID", false, $apiAuth); //venue_eb_times data deleted
+		$curlResult = callAPI('DELETE', $apiURL."events/$eventID/slots", false, $apiAuth); //venue_eb_times data deleted
 	
 		//just add as previous ones are wiped clean by now!
 		foreach($event['cSlots'] as $cSlot)
@@ -95,7 +95,7 @@
 			$data['leadtime'] 		= $cSlot['time'];
 					
 			$jsonData = json_encode($data);
-			$curlResult = callAPI('POST', $apiURL."venues/$venueID/ebtimes", $jsonData, $apiAuth); //menu created
+			$curlResult = callAPI('POST', $apiURL."events/$eventID/slots", $jsonData, $apiAuth); //menu created
 			
 			$result = json_decode($curlResult,true);
 		}
