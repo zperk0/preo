@@ -29,7 +29,7 @@
 			$tempDate 				= /*protect(*/$_POST['eDate'][$j];//);
 				//convert to YYYYMMDD (from DD/MM/YYYY)
 				preg_match('/(\d\d)\/(\d\d)\/(\d\d\d\d)/',$tempDate, $matches);
-				$events[$i]['date'] = $matches[3].$matches[2].$matches[1];
+				$events[$i]['date'] = $matches[3].'-'.$matches[2].'-'.$matches[1];
 			$events[$i]['visible'] 	= /*protect(*/$_POST['eVisi'][$j];//);
 				if(!isset($events[$i]['visible']) || !$events[$i]['visible']) $events[$i]['visible'] = 0;
 			
@@ -63,10 +63,12 @@
 		$data['venueId']		= $_SESSION['venue_id'];
 		$data['name'] 			= $event['name'];
 		$data['description'] 	= $event['desc'];
-		$data['starttime'] 		= $event['starttime'];
-		$data['endtime'] 		= $event['endtime'];
-		$data['date'] 			= $event['date'];
 		$data['visible'] 		= $event['visible'];
+		$data['schedules'] = array();
+		$data['schedules'][0] = array();
+		$data['schedules'][0]['freq'] = 'ONCE';
+		$data['schedules'][0]['startDate'] = $event['date'].'T'.$event['starttime'].':00';
+		$data['schedules'][0]['endDate'] = $event['date'].'T'.$event['endtime'].':00';
 		
 		$jsonData = json_encode($data);
 		
