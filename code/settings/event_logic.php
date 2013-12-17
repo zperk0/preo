@@ -29,10 +29,20 @@
 		
 		$events = $dataJSON;
 		
-		//get slots
+		//get slots and expand schedule
 		foreach($events as $key => $event)
 		{
 			$eventID = $event['id'];
+
+			// decode schedule
+			$sched = $event['schedules'];
+			if ( !empty($sched) ) {
+				$sched = $sched[0];
+				// Dates are div 1000 because php doesn;t like milliseconds??
+				$events[$key]['date'] = $sched['startDate']/1000;
+				$events[$key]['starttime'] = $sched['startDate']/1000;
+				$events[$key]['endtime'] = $sched['endDate']/1000;
+			}
 		 
 			$curlResult = callAPI('GET', $apiURL."events/$eventID/slots", false, $apiAuth);
 		

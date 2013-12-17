@@ -156,15 +156,15 @@
 							<small class="error"><?echo _("Please type a description");?></small>
 						</td>
 						<td class="eventTDDate">
-							<input type="text" name="eDate[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('d/m/Y',strtotime($event['date']));?>" pattern="^\d\d\/\d\d\/\d\d\d\d$" placeholder="<?echo _("DD/MM/YYYY");?>" required readonly="readonly"/>
+							<input type="text" name="eDate[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('d/m/Y',$event['date']);?>" pattern="^\d\d\/\d\d\/\d\d\d\d$" placeholder="<?echo _("DD/MM/YYYY");?>" required readonly="readonly"/>
 							<small class="error"><?echo _("Date?");?></small>
 						</td>
 						<td class="eventTDTime">
-							<input type="text" name="eTime[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('H:i',strtotime($event['starttime']));?>" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required readonly="readonly"/>
+							<input type="text" name="eTime[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('H:i',$event['starttime']);?>" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required readonly="readonly"/>
 							<small class="error"><?echo _("Time?");?></small>
 						</td>
 						<td class="eventTDTime">
-							<input type="text" name="eETime[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('H:i',strtotime($event['endtime']));?>" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required readonly="readonly"/>
+							<input type="text" name="eETime[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('H:i',$event['endtime']);?>" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required readonly="readonly"/>
 							<small class="error"><?echo _("Time?");?></small>
 						</td>
 						
@@ -193,7 +193,7 @@
 							<select name="eColl[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit inline eventMenuSingleSelect hide"/>
 								<option value="PRESHOW"  <?if($cSlot['collectionslot']=='PRESHOW'  ) echo "selected='selected'";?>><?echo _("Collection Slot: Pre-Show")?></option>
 								<option value="PREGAME"  <?if($cSlot['collectionslot']=='PREGAME'  ) echo "selected='selected'";?>><?echo _("Collection Slot: Pre-Game")?></option>
-								<option value="INTERVAL" <?if($cSlot['collectionslot']=='INTERVAL ') echo "selected='selected'";?>><?echo _("Collection Slot: Interval")?></option>
+								<option value="INTERVAL" <?if($cSlot['collectionslot']=='INTERVAL') echo "selected='selected'";?>><?echo _("Collection Slot: Interval")?></option>
 								<option value="INTERVAL2"<?if($cSlot['collectionslot']=='INTERVAL2') echo "selected='selected'";?>><?echo _("Collection Slot: Second-Interval")?></option>
 								<option value="HALFTIME" <?if($cSlot['collectionslot']=='HALFTIME' ) echo "selected='selected'";?>><?echo _("Collection Slot: Half-Time")?></option>
 								<option value="POSTSHOW" <?if($cSlot['collectionslot']=='POSTSHOW' ) echo "selected='selected'";?>><?echo _("Collection Slot: Post-Show")?></option>
