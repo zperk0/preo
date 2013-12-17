@@ -181,148 +181,116 @@
 		foreach($menu['sections'] as $sKey=>$section){ 
 		//again remember its all 1-indexed thats why we add +1 to the key
 		?>
-			<div id="menuSectionRow">
-				<div class="row">
-					<div class="large-12 columns menuSectionDiv">
-						<button type="button" class="sortSecHandle"	title="<?echo _("Reorder Section");?>"><i class="icon-move"></i></button>
-						<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" placeholder="<?echo _("Click to add a section name");?>" required/>
-						<small class="error smallerror"><?echo _("Please type a section name");?></small>
+			<div class="moveSec">
+				<div class="moveSecInner">
+					<div id="menuSectionRow">
+						<div class="row">
+							<div class="large-12 columns menuSectionDiv">
+								<button type="button" class="sortSecHandle"	title="<?echo _("Reorder Section");?>"><i class="icon-move"></i></button>
+								<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" placeholder="<?echo _("Click to add a section name");?>" required/>
+								<small class="error smallerror"><?echo _("Please type a section name");?></small>
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-12 columns">
+								<button id="add_section<?echo ($sKey+1);?>" 	type="button" class="newItem" 				title="<?echo _("Add an item to this section");?>"><i class="fi-plus"></i></button> <?echo _("Add an item to this section");?>
+								<button id="delete_section<?echo ($sKey+1);?>" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"><i class="fi-x"></i></button> <?echo _("Delete this section");?>
+							</div>
+							<div class="row hasTableHeader">
+								<table class="headerTable">
+									<thead>
+										<tr>
+											<th class="menuTDName"><? echo _("Name");?></th>
+											<th class="menuTDDesc"><? echo _("Description");?></th>
+											<th class="menuTDPrice"><? echo _("Price (&pound;)");?></th>
+											<!--<th class="menuTDQuant"><? echo _("Quantity");?></th>
+											<th class="menuTDVisi"><? echo _("Visible?");?></th>-->
+											<th class="menuTDTools"><? echo _("Tools");?></th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="large-12 columns">
-						<button id="add_section<?echo ($sKey+1);?>" 	type="button" class="newItem" 				title="<?echo _("Add an item to this section");?>"><i class="fi-plus"></i></button> <?echo _("Add an item to this section");?>
-						<button id="delete_section<?echo ($sKey+1);?>" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"><i class="fi-x"></i></button> <?echo _("Delete this section");?>
-					</div>
-					<div class="row hasTableHeader">
-						<table class="headerTable">
-							<thead>
-								<tr>
-									<th class="menuTDName"><? echo _("Name");?></th>
-									<th class="menuTDDesc"><? echo _("Description");?></th>
-									<th class="menuTDPrice"><? echo _("Price (&pound;)");?></th>
-									<!--<th class="menuTDQuant"><? echo _("Quantity");?></th>
-									<th class="menuTDVisi"><? echo _("Visible?");?></th>-->
-									<th class="menuTDTools"><? echo _("Tools");?></th>
-								</tr>
-							</thead>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="sortWithinDiv">
-				<?foreach($section['items'] as $item){ 
-				//again remember its all 1-indexed thats why we add +1 to the key
-				?>
-					<table class="menuTable tablesection<?echo ($sKey+1);?>" id="item<?echo ($iKey+1)?>" style="background:transparent">
-						<tbody>
-							<tr class="savedInput itemTR">
-								<td class="menuTDName">
-									<input type="text" name="iName[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo $item['name'];?>" required readonly="readonly"/>
-									<small class="error"><?echo _("Please type an item name");?></small>
-								</td>
-								<td class="menuTDDesc">
-									<input type="text" name="iDesc[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?if(!empty($item['description'])) echo $item['description'];?>" placeholder="<?echo _("Optional description");?>"  readonly="readonly"/>
-									<small class="error"><?echo _("Please type a description");?></small>
-								</td>
-								<td class="menuTDPrice">
-									<input type="text" name="iPrice[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($item['price'],2,'.','');?>" required  readonly="readonly"/>
-									<small class="error"><?echo _("Amount?");?></small>
-									</td>
-								<td class="menuTDQuant hide">
-									<input type="text" name="iQuan[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" <?if($item['quantity']){?>value="<?echo $item['quantity']?>"<?}else{?>placeholder="<?echo _("Unlimited");}?>"  readonly="readonly"/>
-								</td>
-								<td class="menuTDVisi hide">
-									<div class="switch tiny" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>"> 
-										<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="0" type="radio" <?if(!$item['visible']){?>checked<?}?>>
-										<label><?echo _("No");?></label>
-
-										<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="1" type="radio" <?if($item['visible']){?>checked<?}?>>
-										<label><?echo _("Yes");?></label>
-
-										<span></span>
-									</div>
-								</td>
-								<td class="menuTDTools">
-									<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Collapse");?>"							><i class="icon-chevron-up"></i></button>
-									<button type="button" class="menuTableButtons itemEdit" 				title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
-									<button type="button" class="menuTableButtons sortHandle"				title="<?echo _("Reorder");?>"							><i class="icon-move"></i></button>
-									<button type="button" class="menuTableButtons itemDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($iKey+1);?>_section<?echo ($sKey+1);?>"	><i class="icon-copy"></i></button>
-									<button type="button" class="menuTableButtons secondary itemDelete" 	title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
-								</td>
-							</tr>
-							<tr class="menuEdit subHeaderTR">
-								<td class="itemSubheader hide"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h6></td>
-								<?if(isset($item['modifiers'][0]['items'])){?>
-								<td class="modifierRow hide">
-									<input type="text" name="iMod[item<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Modifier Name");?>" value="<?echo $item['modifiers'][0]['name'];?>" required/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
-								</td>
-								<td class="modifierRow hide">
-									<select class="menuField noEnterSubmit inline itemMenuSingleSelect" style="display:none;" name="iModType[item<?echo ($iKey+1);?>]" > 
-										<option value="S" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==1){?>selected="selected"<?}?> ><?echo _("Modifier Type: Single");?></option> <!-- min=1,max=1 -->
-										<option value="M" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
-										<option value="O" <?if($item['modifiers'][0]['minChoices']==0 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
-									</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
-									<small class="error"><?echo _("Please choose a type");?></small>
-								</td>
-								<?}else{?>
-									<td class="modifierRow hide">
-										<input type="text" name="iMod[item<?echo ($iKey+1);?>]" class="menuField noEnterSubmit hide" placeholder="<?echo _("Modifier Name");?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
-									</td>
-									<td class="modifierRow hide">
-										<select class="menuField noEnterSubmit inline itemMenuSingleSelect" name="iModType[item<?echo ($iKey+1);?>]" >
-											<option value="S"><?echo _("Modifier Type: Single");?></option> <!-- min=1,max=1 -->
-											<option value="M"><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
-											<option value="O"><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
-										</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
-										<small class="error"><?echo _("Please choose a type");?></small>
-									</td>
-								<?}?>
-							</tr>
-							<tr class="menuEdit hide" style="display:none;"> <!-- This dummy is required! -->
-								<td class="menuTDName">
-									<input type="text" name="oName[item<?echo ($iKey+1);?>][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an option name");?>" required/>
-									<small class="error"><?echo _("Please type an option name");?></small>
-								</td>
-								<td class="menuTDDesc">
-								</td>
-								<td class="menuTDPrice">
-									<input type="text" name="oPrice[item<?echo ($iKey+1);?>][0]" class="menuField noEnterSubmit" value="<?echo _("&pound.&pound&pound");?>" required/>
-									<small class="error"><?echo _("Amount?");?></small>
-									&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
-									</td>
-								<td class="menuTDQuant hide">
-								</td>
-								<td class="menuTDVisi hide">
-									<div class="switch tiny"> 
-										<input name="oVisi[item<?echo ($iKey+1);?>][0]" value="0" type="radio">
-										<label><?echo _("No");?></label>
-
-										<input name="oVisi[item<?echo ($iKey+1);?>][0]" value="1" type="radio" checked>
-										<label><?echo _("Yes");?></label>
-
-										<span></span>
-									</div>
-								</td>
-								<td class="menuTDTools">
-									<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="icon-copy"></i></button>
-									<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="fi-x"></i></button>
-								</td>
-							</tr>
-							<?if(isset($item['modifiers'][0]['items'])){
-								foreach($item['modifiers'][0]['items'] as $oKey=>$option){ 
-								//again remember its all 1-indexed thats why we add +1 to the key
-								?>
-									<tr class="optionTR savedInput" style="display:none;">
+					<div class="row">
+						<div class="sortWithinDiv">
+						<?foreach($section['items'] as $item){ 
+						//again remember its all 1-indexed thats why we add +1 to the key
+						?>
+							<table class="menuTable tablesection<?echo ($sKey+1);?>" id="item<?echo ($iKey+1)?>" style="background:transparent">
+								<tbody>
+									<tr class="savedInput itemTR">
 										<td class="menuTDName">
-											<input type="text" name="oName[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo $option['name'];?>" required  readonly="readonly"/>
+											<input type="text" name="iName[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo $item['name'];?>" required readonly="readonly"/>
+											<small class="error"><?echo _("Please type an item name");?></small>
+										</td>
+										<td class="menuTDDesc">
+											<input type="text" name="iDesc[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?if(!empty($item['description'])) echo $item['description'];?>" placeholder="<?echo _("Optional description");?>"  readonly="readonly"/>
+											<small class="error"><?echo _("Please type a description");?></small>
+										</td>
+										<td class="menuTDPrice">
+											<input type="text" name="iPrice[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($item['price'],2,'.','');?>" required  readonly="readonly"/>
+											<small class="error"><?echo _("Amount?");?></small>
+											</td>
+										<td class="menuTDQuant hide">
+											<input type="text" name="iQuan[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" <?if($item['quantity']){?>value="<?echo $item['quantity']?>"<?}else{?>placeholder="<?echo _("Unlimited");}?>"  readonly="readonly"/>
+										</td>
+										<td class="menuTDVisi hide">
+											<div class="switch tiny" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>"> 
+												<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="0" type="radio" <?if(!$item['visible']){?>checked<?}?>>
+												<label><?echo _("No");?></label>
+
+												<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="1" type="radio" <?if($item['visible']){?>checked<?}?>>
+												<label><?echo _("Yes");?></label>
+
+												<span></span>
+											</div>
+										</td>
+										<td class="menuTDTools">
+											<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Collapse");?>"							><i class="icon-chevron-up"></i></button>
+											<button type="button" class="menuTableButtons itemEdit" 				title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
+											<button type="button" class="menuTableButtons sortHandle"				title="<?echo _("Reorder");?>"							><i class="icon-move"></i></button>
+											<button type="button" class="menuTableButtons itemDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($iKey+1);?>_section<?echo ($sKey+1);?>"	><i class="icon-copy"></i></button>
+											<button type="button" class="menuTableButtons secondary itemDelete" 	title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
+										</td>
+									</tr>
+									<tr class="menuEdit subHeaderTR">
+										<td class="itemSubheader hide"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h6></td>
+										<?if(isset($item['modifiers'][0]['items'])){?>
+										<td class="modifierRow hide">
+											<input type="text" name="iMod[item<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Modifier Name");?>" value="<?echo $item['modifiers'][0]['name'];?>" required/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
+										</td>
+										<td class="modifierRow hide">
+											<select class="menuField noEnterSubmit inline itemMenuSingleSelect" style="display:none;" name="iModType[item<?echo ($iKey+1);?>]" > 
+												<option value="S" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==1){?>selected="selected"<?}?> ><?echo _("Modifier Type: Single");?></option> <!-- min=1,max=1 -->
+												<option value="M" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
+												<option value="O" <?if($item['modifiers'][0]['minChoices']==0 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
+											</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
+											<small class="error"><?echo _("Please choose a type");?></small>
+										</td>
+										<?}else{?>
+											<td class="modifierRow hide">
+												<input type="text" name="iMod[item<?echo ($iKey+1);?>]" class="menuField noEnterSubmit hide" placeholder="<?echo _("Modifier Name");?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
+											</td>
+											<td class="modifierRow hide">
+												<select class="menuField noEnterSubmit inline itemMenuSingleSelect" name="iModType[item<?echo ($iKey+1);?>]" >
+													<option value="S"><?echo _("Modifier Type: Single");?></option> <!-- min=1,max=1 -->
+													<option value="M"><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
+													<option value="O"><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
+												</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
+												<small class="error"><?echo _("Please choose a type");?></small>
+											</td>
+										<?}?>
+									</tr>
+									<tr class="menuEdit hide" style="display:none;"> <!-- This dummy is required! -->
+										<td class="menuTDName">
+											<input type="text" name="oName[item<?echo ($iKey+1);?>][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an option name");?>" required/>
 											<small class="error"><?echo _("Please type an option name");?></small>
 										</td>
 										<td class="menuTDDesc">
 										</td>
 										<td class="menuTDPrice">
-											<input type="text" name="oPrice[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($option['price'],2,'.','');?>" required  readonly="readonly"/>
+											<input type="text" name="oPrice[item<?echo ($iKey+1);?>][0]" class="menuField noEnterSubmit" value="<?echo _("&pound.&pound&pound");?>" required/>
 											<small class="error"><?echo _("Amount?");?></small>
 											&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
 											</td>
@@ -330,10 +298,10 @@
 										</td>
 										<td class="menuTDVisi hide">
 											<div class="switch tiny"> 
-												<input name="oVisi[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" value="0" type="radio" <?if(!$option['visible']){?>checked<?}?>>
+												<input name="oVisi[item<?echo ($iKey+1);?>][0]" value="0" type="radio">
 												<label><?echo _("No");?></label>
 
-												<input name="oVisi[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" value="1" type="radio" <?if($option['visible']){?>checked<?}?>>
+												<input name="oVisi[item<?echo ($iKey+1);?>][0]" value="1" type="radio" checked>
 												<label><?echo _("Yes");?></label>
 
 												<span></span>
@@ -344,17 +312,53 @@
 											<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="fi-x"></i></button>
 										</td>
 									</tr>
-								<?
-								}
-							}?>
-						</tbody>
-					</table>
-				<?
-					$iKey++;
-				}
-				?>
+									<?if(isset($item['modifiers'][0]['items'])){
+										foreach($item['modifiers'][0]['items'] as $oKey=>$option){ 
+										//again remember its all 1-indexed thats why we add +1 to the key
+										?>
+											<tr class="optionTR savedInput" style="display:none;">
+												<td class="menuTDName">
+													<input type="text" name="oName[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo $option['name'];?>" required  readonly="readonly"/>
+													<small class="error"><?echo _("Please type an option name");?></small>
+												</td>
+												<td class="menuTDDesc">
+												</td>
+												<td class="menuTDPrice">
+													<input type="text" name="oPrice[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($option['price'],2,'.','');?>" required  readonly="readonly"/>
+													<small class="error"><?echo _("Amount?");?></small>
+													&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
+													</td>
+												<td class="menuTDQuant hide">
+												</td>
+												<td class="menuTDVisi hide">
+													<div class="switch tiny"> 
+														<input name="oVisi[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" value="0" type="radio" <?if(!$option['visible']){?>checked<?}?>>
+														<label><?echo _("No");?></label>
+
+														<input name="oVisi[item<?echo ($iKey+1);?>][<?echo ($oKey+1);?>]" value="1" type="radio" <?if($option['visible']){?>checked<?}?>>
+														<label><?echo _("Yes");?></label>
+
+														<span></span>
+													</div>
+												</td>
+												<td class="menuTDTools">
+													<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="icon-copy"></i></button>
+													<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="fi-x"></i></button>
+												</td>
+											</tr>
+										<?
+										}
+									}?>
+								</tbody>
+							</table>
+						<?
+							$iKey++;
+						}
+						?>
+						</div>
+						<div class="hide firstItemDivsection<?echo ($sKey+1);?>"></div>
+					</div>
 				</div>
-				<div class="hide firstItemDivsection<?echo ($sKey+1);?>"></div>
 			</div>
 		<?
 		}

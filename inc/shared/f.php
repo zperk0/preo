@@ -136,6 +136,74 @@
 						}
 					}
 				});
+				$(".dynamicDataTable").sortable({ 
+					opacity: 0.5, 
+					axis: "y", 
+					cursor: "move", 
+					containment: ".dynamicDataTable", 
+					handle: ".sortSecHandle", 
+					cancel: "input,textarea,select,option",
+					placeholder: "sortable-placeholder-sec",
+					tolerance: "pointer",
+					items: "> .moveSec",
+					revert: 100,
+					delay: 100,
+					update: function(event, ui) {
+						//update all sections from the first one in the doc
+						var section = 1 ;
+						$('body').find('.moveSec').each(function(){
+							//for each section
+							$(this).find("input[name^=mSectionName]").attr('name','mSectionName['+section+']'); //update name
+							$(this).find("input[name^=mSectionName]").alterClass('section*', "section"+section);
+							
+							$(this).find("button[id^=add_section]").attr('id','add_section'+section+''); //update add button
+							$(this).find("button[id^=delete_section]").attr('id','delete_section'+section+''); //update delete button
+							
+							
+							$(this).find("table.menuTable").alterClass('tablesection*', "tablesection"+section);   
+							
+							$(this).find("input[name^=iName]").each(function(){
+								tempName = $(this).attr('name');
+								newName = tempName.replace(/\[section\d+\]/gi, "[section"+section+"]");
+								$(this).attr('name', newName);
+							});//update name
+							
+							$(this).find("input[name^=iDesc]").each(function(){
+								tempName = $(this).attr('name');
+								newName = tempName.replace(/\[section\d+\]/gi, "[section"+section+"]");
+								$(this).attr('name', newName);
+							});//update name
+							
+							$(this).find("input[name^=iPrice]").each(function(){
+								tempName = $(this).attr('name');
+								newName = tempName.replace(/\[section\d+\]/gi, "[section"+section+"]");
+								$(this).attr('name', newName);
+							});//update name
+							
+							$(this).find("input[name^=iQuan]").each(function(){
+								tempName = $(this).attr('name');
+								newName = tempName.replace(/\[section\d+\]/gi, "[section"+section+"]");
+								$(this).attr('name', newName);
+							});//update name
+							
+							$(this).find("input[name^=iVisi]").each(function(){
+								tempName = $(this).attr('name');
+								newName = tempName.replace(/\[section\d+\]/gi, "[section"+section+"]");
+								$(this).attr('name', newName);
+							});//update name 
+							
+							$(this).find("button[id^=dup]").each(function(){
+								tempName = $(this).attr('id');
+								newName = tempName.replace(/_section\d+/gi, "_section"+section);
+								$(this).attr('id', newName);
+							});//update duplicate button
+							
+							$(this).find("div").alterClass('firstItemDivsection*', "firstItemDivsection"+section); 
+							
+							section++;
+						});
+					}
+				});
 			}
 		});
 		</script>
