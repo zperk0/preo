@@ -164,10 +164,10 @@
 			<script type="text/javascript">
 				$(document).ready(function() {
 					var content = $("#aHeading").val();
-					$("#appHeading").html(content);
+					if(content != '') $("#appHeading").html(content);
 					
 					var content = $("#aSubheading").val();
-					$("#subHeading").html(content);
+					if(content != '') $("#subHeading").html(content);
 					
 					<?if(isset($_SESSION['app_textColour'])){?>updateTextColour('<?echo $_SESSION['app_textColour']?>');<?}?>
 					<?if(isset($_SESSION['app_buttonColour'])){?>updateButtonColour('<?echo $_SESSION['app_buttonColour']?>');<?}?>

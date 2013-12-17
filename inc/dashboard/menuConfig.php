@@ -59,8 +59,9 @@
 			<div class="hide" id="menuSectionRow"> <!-- DUMMY -->
 				<div class="row">
 					<div class="large-12 columns menuSectionDiv">
+						<button type="button" class="sortSecHandle"	title="<?echo _("Reorder Section");?>"><i class="icon-move"></i></button>
 						<input type="text" name="mSectionName[0]" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required/>
-						<small class="error"><?echo _("Please type a section name");?></small>
+						<small class="error smallerror"><?echo _("Please type a section name");?></small>
 					</div>
 				</div>
 				<div class="row">
@@ -73,12 +74,12 @@
 					<table class="headerTable">
 						<thead>
 							<tr>
-								<th class="menuTDName">Name</th>
-								<th class="menuTDDesc">Description</th>
-								<th class="menuTDPrice">Price (&pound;)</th>
-								<!--<th class="menuTDQuant">Quantity</th>
-								<th class="menuTDVisi">Visible?</th>-->
-								<th class="menuTDTools">Tools</th>
+								<th class="menuTDName"><? echo _("Name");?></th>
+								<th class="menuTDDesc"><? echo _("Description");?></th>
+								<th class="menuTDPrice"><? echo _("Price (&pound;)");?></th>
+								<!--<th class="menuTDQuant"><? echo _("Quantity");?></th>
+								<th class="menuTDVisi"><? echo _("Visible?");?></th>-->
+								<th class="menuTDTools"><? echo _("Tools");?></th>
 							</tr>
 						</thead>
 					</table>
@@ -183,8 +184,9 @@
 			<div id="menuSectionRow">
 				<div class="row">
 					<div class="large-12 columns menuSectionDiv">
-						<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" required/>
-						<small class="error"><?echo _("Please type a section name");?></small>
+						<button type="button" class="sortSecHandle"	title="<?echo _("Reorder Section");?>"><i class="icon-move"></i></button>
+						<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" placeholder="<?echo _("Click to add a section name");?>" required/>
+						<small class="error smallerror"><?echo _("Please type a section name");?></small>
 					</div>
 				</div>
 				<div class="row">
@@ -196,12 +198,12 @@
 						<table class="headerTable">
 							<thead>
 								<tr>
-									<th class="menuTDName">Name</th>
-									<th class="menuTDDesc">Description</th>
-									<th class="menuTDPrice">Price (&pound;)</th>
-									<!--<th class="menuTDQuant">Quantity</th>
-									<th class="menuTDVisi">Visible?</th>-->
-									<th class="menuTDTools">Tools</th>
+									<th class="menuTDName"><? echo _("Name");?></th>
+									<th class="menuTDDesc"><? echo _("Description");?></th>
+									<th class="menuTDPrice"><? echo _("Price (&pound;)");?></th>
+									<!--<th class="menuTDQuant"><? echo _("Quantity");?></th>
+									<th class="menuTDVisi"><? echo _("Visible?");?></th>-->
+									<th class="menuTDTools"><? echo _("Tools");?></th>
 								</tr>
 							</thead>
 						</table>

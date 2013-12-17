@@ -121,7 +121,8 @@
 				<img id="poweredIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/powered.png" />
 				<button type="button" class="tiny expand" id="buttonIMG"><?echo _('ORDER NOW');?></button>
 				<p id="appHeading"><?if(isset($_SESSION['app_heading'])) echo $_SESSION['app_heading'];else echo _("Your heading goes here");?></p>
-				<p id="venSubHeading"><?echo $_SESSION['venue_name'];?></p>
+				<!--<p id="venSubHeading"><?echo $_SESSION['venue_name'];?></p>-->
+				<p id="venSubHeading">&nbsp;</p>
 				<p id="subHeading"><?if(isset($_SESSION['app_subHeading'])) echo $_SESSION['app_subHeading'];else echo _("Your subheading goes here");?></p>
 			</div>
 			<div id="frame_iphone5" class="phone2 hide">

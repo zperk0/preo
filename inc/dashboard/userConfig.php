@@ -18,11 +18,11 @@
 			<table class="headerTable">
 				<thead>
 					<tr>
-						<th class="userTDName">Name</th>
-						<th class="userTDEmail">Email</th>
-						<th class="userTDPassword">Password</th>
-						<th class="userTDRole">Role</th>
-						<th class="userTDTools">Tools</th>
+						<th class="userTDName"><? echo _("Name");?></th>
+						<th class="userTDEmail"><? echo _("Email");?></th>
+						<th class="userTDPassword"><? echo _("Password");?></th>
+						<th class="userTDRole"><? echo _("Role");?></th>
+						<th class="userTDTools"><? echo _("Tools");?></th>
 					</tr>
 				</thead>
 			</table>
@@ -47,8 +47,8 @@
 								</td>
 								<td class="userTDRole">
 									<select name="uRole[0]" class="userField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have userMenuSingleSelect -->
-										<option value="ADMIN"><?echo _("Admin")?></option>
 										<option value="STAFF"><?echo _("Staff")?></option>
+										<option value="ADMIN"><?echo _("Admin")?></option>
 										<option value="OWNER"><?echo _("Owner")?></option>
 									</select>
 								</td>
@@ -87,8 +87,8 @@
 						</td>
 						<td class="userTDRole">
 							<select name="uRole[<?echo ($uKey+1);?>]" class="userMenuSingleSelect userField noEnterSubmit" style="display:none" readonly="readonly"/>
-								<option value="ADMIN" 	<?if($user['role']=='ADMIN'){?>selected="selected"<?}?>><?echo _("Admin")?></option>
 								<option value="STAFF" 	<?if($user['role']=='STAFF'){?>selected="selected"<?}?>><?echo _("Staff")?></option>
+								<option value="ADMIN" 	<?if($user['role']=='ADMIN'){?>selected="selected"<?}?>><?echo _("Admin")?></option>
 								<option value="OWNER" 	<?if($user['role']=='OWNER'){?>selected="selected"<?}?>><?echo _("Owner")?></option>
 							</select>
 						</td>

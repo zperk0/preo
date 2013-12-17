@@ -69,6 +69,7 @@
 								<label class="left"><?echo _("Create a subheading");?></label>
 								<a href="#" data-dropdown="sugDrop2" class="button dropdown secondary sugDropButton"><?echo _("Choose one here");?></a>
 								<ul id="sugDrop2" class="f-dropdown" data-dropdown-content>
+								  <li><a href="#"><?echo $_SESSION['venue_name'];?></a></li>
 								  <li><a href="#"><? echo _("Pre-order food and drinks");?></a></li>
 								  <li><a href="#"><? echo _("Pre-order drinks+food");?></a></li>
 								</ul>
@@ -122,7 +123,8 @@
 							<img id="poweredIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/powered.png" />
 							<button type="button" class="tiny expand" id="buttonIMG"><?echo _('ORDER NOW');?></button>
 							<p id="appHeading"><?echo _("Your heading goes here");?></p>
-							<p id="venSubHeading"><?echo $_SESSION['venue_name'];?></p>
+							<!--<p id="venSubHeading"><?echo $_SESSION['venue_name'];?></p>-->
+							<p id="venSubHeading">&nbsp;</p>
 							<p id="subHeading"><?echo _("Your subheading goes here");?></p>
 						</div>
 					</div>

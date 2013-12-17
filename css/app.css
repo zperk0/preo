@@ -682,6 +682,22 @@ h1 i.icon-question-sign, h4 i.icon-question-sign {
 	font-weight: bold !important;
 }
 
+input[name^=mSectionName] {
+	display: inline !important;
+	width: 90%;
+}
+
+.sortSecHandle {
+	display: inline;
+	padding: 2px 4px;
+	font-size: 14px;
+}
+
+.smallerror {
+	width: 90%;
+	margin-left: 28px;
+}
+
 table.menuTable, table.eventTable, table.userTable , table.outletTable, table.mdTable, table.headerTable {
 	border:0px !important;
 	table-layout: fixed !important;
