@@ -1,4 +1,5 @@
 <?if(!isset($_SESSION['finish_edit_on'])) $_SESSION['finish_edit_on']=0; ?>
+<?if(!isset($_SESSION['pmaReply'])) $_SESSION['pmaReply']=0; ?>
 <div class="row">
 	<div class="topSpacer"></div>
 	<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
@@ -14,6 +15,7 @@
 			<a class="current" href="#"><? echo _("Done");?></a>
 		</nav>
 	<?}?>
+	<?if(!$_SESSION['venue_demoFlag']){?>
 	<div class="large-12 columns">
 		<form id="finishForm" method="POST" action="<?echo $_SESSION['path']?>/code/finish/do_finish.php">
 			<div class="row">
@@ -32,6 +34,21 @@
 			</div>
 		</form>
 	</div>
+	<?}else{?>
+	<div class="large-12 columns">
+		<form id="finishForm" method="POST" action="">
+			<div class="row">
+				<h2><? echo _("The finish line!");?></h2>
+				<h3><?echo _("Your app is built but you are currently in DEMO mode. After you setup a payment method, you can send it into the world!");?></h3>
+				<div class="large-12 columns">
+					<a id="startStripe" href="#"><button class="preodayButton goBackToDash" type="button" tabindex=2><?echo _("SETUP PAYMENT AND LEAVE DEMO MODE");?></button></a>
+					<br/>
+					<a href="<?echo $_SESSION['path']?>/dashboard"><button class="preodayButton secondary" type="button" tabindex=3><?echo _("I'LL COME BACK LATER TO PUBLISH MY APP");?></button></a>
+				</div>
+			</div>
+		</form>
+	</div>
+	<?}?>
 </div>
 
 <script type="text/javascript">
@@ -55,7 +72,7 @@
 		}?>
 	});
 </script>
-<?if(!$_SESSION['pay_edit_on']){?>
+<?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','510%');

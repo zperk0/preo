@@ -104,6 +104,7 @@
 <?}?>
 $('.monday').removeClass('hide');
 </script>
+<?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','350%');
@@ -112,3 +113,4 @@ $(document).ready(function() {
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });
 </script>
+<?}?>

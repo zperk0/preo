@@ -40,6 +40,7 @@
 		$_SESSION['venue_longitude']		= $dataJSON[0]['longitude'];	
 		$_SESSION['venue_postcode']			= $dataJSON[0]['postcode'];	
 		$_SESSION['venue_eventFlag']		= $dataJSON[0]['eventFlag'];	
+		$_SESSION['venue_demoFlag']			= $dataJSON[0]['demoFlag'];	
 		$_SESSION['venue_liveFlag']			= $dataJSON[0]['liveFlag'];	
 		$_SESSION['venue_code']				= $dataJSON[0]['code'];	
 		
@@ -167,16 +168,24 @@
 				$connectedFlag = 1;
 		}
 		$_SESSION['noPaymentFlag'] = !$connectedFlag;
+		
+		if($_SESSION['noPaymentFlag']) //see if we are in demo mode
+		{
+			if($_SESSION['venue_demoFlag']) $_SESSION['noPaymentFlag']=0;
+		}
 	}
 	else
+	{
 		$_SESSION['noPaymentFlag']=1;
+		if($_SESSION['venue_demoFlag']) $_SESSION['noPaymentFlag']=0;
+	}
 	
 	//echo var_dump($_SESSION);
 	
 	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag'] && !$_SESSION['noPaymentFlag']) /*User has given data for all 5 already*/
 	{	
 		//going to the dashboard!
-
+		
 		//lets get some quick reports
 		$curlResult = callAPI('GET', $apiURL."venues/$venueID/reports", false, $apiAuth);
 		$dataResult = json_decode($curlResult, true);

@@ -376,7 +376,7 @@
 	</div>
 </form>
 
-<?if((!isset($_SESSION['menu_edit_on']) || !$_SESSION['menu_edit_on'])){?>
+<?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
 $(document).ready(function() {

@@ -27,7 +27,8 @@
 		$_SESSION['venue_longitude']	= $dataJSON[0]['longitude'];	
 		$_SESSION['venue_postcode']		= $dataJSON[0]['postcode'];	
 		$_SESSION['venue_eventFlag']	= $dataJSON[0]['eventFlag'];	
-		$_SESSION['venue_liveFlag']		= $dataJSON[0]['liveFlag'];	
+		$_SESSION['venue_liveFlag']		= $dataJSON[0]['liveFlag'];
+		$_SESSION['venue_demoFlag']		= $dataJSON[0]['demoFlag'];	
 		$_SESSION['venue_code']			= $dataJSON[0]['code'];	
 		
 		//we get venue id from _SESSION

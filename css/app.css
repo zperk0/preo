@@ -1141,7 +1141,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 }
 
 .dashContent {
-	padding-bottom: 100px;
+	padding-bottom: 70px;
 }
 
 .phone1, .phone2{
@@ -1345,4 +1345,8 @@ table.sortable-placeholder tbody, table.sortable-placeholder tr, table.sortable-
 
 #passDiv{
 	margin-top: 20px;
+}
+
+.pretendRight {
+	float: right !important;
 }

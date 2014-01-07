@@ -1,4 +1,4 @@
-<?if(!isset($_SESSION['pay_edit_on'])) $_SESSION['pay_edit_on']=0; ?>
+<?if(!isset($_SESSION['pay_edit_on'])) $_SESSION['pay_edit_on']=0;?>
 <div class="row">
 	<div class="topSpacer"></div>
 	<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
@@ -30,6 +30,9 @@
 			<div class="large-6 columns">
 				<a href="<?echo $stripeLink;?>"><button class="preodayButton" type="submit" tabindex=2><?echo _("CONNECT TO STRIPE");?></button></a>
 			</div>
+			<div class="large-12 columns">
+				<button id="skipStripe" class="preodayButton secondary" type="button" tabindex=3><?echo _("SKIP THIS FOR NOW AND WORK IN DEMO MODE");?></button>
+			</div>
 			<?}else{?>
 			<div class="large-6 columns">
 				<button class="preodayButton secondary" type="submit" tabindex=2><?echo _("YOU'RE ALREADY CONNECTED");?></button>
@@ -38,7 +41,7 @@
 		</div>
 	</div>
 </div>	
-<?if(!$_SESSION['pay_edit_on']){?>
+<?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','450%');

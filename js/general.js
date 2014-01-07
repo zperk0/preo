@@ -1144,7 +1144,15 @@ $(document).ready(function() {
 		$newSec.find('.sortWithinDiv').after($newHook);
 		
 		//insert at the end of the table
-		$("body").find('.moveSec:last').after($newSec);
+		if($('.moveSec:last').length)
+		{
+			$("body").find('.moveSec:last').after($newSec);
+		}
+		else
+		{
+			$("body").find('.newSection').parent('.row').before($newSec);
+		}
+		
 		$($newSec).slideDown('slow');
 		
 		$('body').find('.firstItemDivsection'+newCount).parents('#menuSectionRow').wrap('<div class="moveSec"></div>').wrap('<div class="moveSecInner"></div>');
@@ -2908,6 +2916,34 @@ $(document).ready(function() {
 	//google+ consent
 	$('.g-signin').on('click', function(){
 		$('#userConsent').val('1');
+	});
+	
+	//skip stripe connect
+	$('#skipStripe').on('click', function(){
+		var url = "/skipStripe";
+		$.ajax({
+		   type: "POST",
+		   url: url,
+		   success: function(data)
+		   {
+				setTimeout(function(){window.location.replace("/dashboard");}, 100);
+			}
+		 });
+		return false; // avoid to execute the actual submit of the form.
+	});
+	
+	//back to stripe connect
+	$('#startStripe').on('click', function(){
+		var url = "/startStripe";
+		$.ajax({
+		   type: "POST",
+		   url: url,
+		   success: function(data)
+		   {
+				setTimeout(function(){window.location.replace("/dashboard");}, 100);
+			}
+		 });
+		return false; // avoid to execute the actual submit of the form.
 	});
 	
 });

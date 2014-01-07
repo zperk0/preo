@@ -8,7 +8,7 @@
 <div class="row dashContentTop">
 	<div class="topSpacer"></div>
 	<div class="large-12 columns">
-		<h1><? echo _("Dashboard");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
+		<h1><? echo _("Dashboard"); if($_SESSION['venue_demoFlag']) echo _(" (DEMO)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
 	</div>
 </div>
 
@@ -186,6 +186,15 @@
 			noty({
 			  type: 'success',  layout: 'topCenter',
 			  text: '<?echo _("Your app is now offline!");?>'
+			});
+		<?
+		}?>
+		
+		<?if(isset($_SESSION['appStripeSkipped']) && $_SESSION['appStripeSkipped']=='08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B'){
+			$_SESSION['appStripeSkipped']=0;?>
+			noty({
+			  type: 'success',  layout: 'topCenter',
+			  text: '<?echo _("Your app is now in DEMO mode.");?>'
 			});
 		<?
 		}?>

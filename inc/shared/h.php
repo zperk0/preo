@@ -14,14 +14,58 @@
 
 		<section class="top-bar-section">
 			<!-- Right Nav Section -->
-			<ul class="right">
+			<ul class="left pretendRight">
 				<?php if(!isset($_SESSION['logged'])) : ?>
 					<li><a href="<?echo $_SESSION['path']?>/signup"									><? echo _("Sign Up");?></a></li>
 					<li><a href="<?echo $_SESSION['path']?>/signin"	class="activated"				><? echo _("Login");?></a></li>
 				<?php else : 
 						if(!isset($_SESSION['signupWizFlag']) || !$_SESSION['signupWizFlag']){ ?>					
-					<li><a href="<?echo $_SESSION['path']?>/"											><? echo _("Dashboard");?></a></li>
-					<li class="has-dropdown"><a href="#" class="activated"><? echo $_SESSION['user_fName']." ".$_SESSION['user_lName'];?></a>
+					<li class="has-dropdown"><a href="<?echo $_SESSION['path']?>/"><? echo _("Dashboard");?></a>
+						<ul class="dropdown">
+							<li><a href="<?echo $_SESSION['path']?>/dashboard"><? echo _("Go to Dashboard");?></a></li>
+							<li class="has-dropdown"><a href="#"><?echo _("Venue Settings");?></a>
+								<ul class="dropdown">
+									<li><a href="<?echo $_SESSION['path']?>/settings"><?echo _("Change Settings");?></a></li>
+									<?if(!isset($_SESSION['venue_eventFlag']) || !$_SESSION['venue_eventFlag']){?><li><a href="<?echo $_SESSION['path']?>/openinghours"><?echo _("Opening Hours");?></a></li><?}?>
+								</ul>
+							</li>
+							<li class="has-dropdown"><a href="#"><?echo _("Styling");?></a>
+								<ul class="dropdown">
+									<li><a href="<?echo $_SESSION['path']?>/homescreen"><?echo _("Home Screen");?></a></li>
+									<li><a href="<?echo $_SESSION['path']?>/menuscreen"><?echo _("Menu Screen");?></a></li>
+								</ul>
+							</li>
+							<li class="has-dropdown"><a href="#"><?echo _("Menus");?></a>
+								<ul class="dropdown">
+									<?foreach($_SESSION['menus'] as $menu){?>
+										<li><a href="<?echo $_SESSION['path']?>/menus/<?echo $menu['id'];?>"><?echo _("Edit")." $menu[name]";?></a></li>
+									<?}?>
+								</ul>
+							</li>
+							<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?>	
+							<li class="has-dropdown"><a href="#"><?echo _("Events");?></a>
+								<ul class="dropdown">
+									<li><a href="<?echo $_SESSION['path']?>/events"><?echo _("Update Events");?></a></li>
+								</ul>
+							</li>
+							<?}?>
+							<li class="has-dropdown"><a href="#"><?echo _("Advanced Settings");?></a>
+								<ul class="dropdown">
+									<li><a href="<?echo $_SESSION['path']?>/users"><?echo _("Manage Users");?></a></li>
+									<li><a href="<?echo $_SESSION['path']?>/payment"><?echo _("Payment Method");?></a></li>
+									<?if(!isset($_SESSION['venue_liveFlag']) || !$_SESSION['venue_liveFlag']){?><li><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Publish My App");?></a></li>
+									<?}else{?><li><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Take My App Offline");?></a></li><?}?>
+									
+								</ul>
+							</li>
+							<li class="has-dropdown"><a href="#"><?echo _("Premium Features");?></a>
+								<ul class="dropdown">
+									<li><a href="<?echo $_SESSION['path']?>/findoutmore"><?echo _("Find out more");?></a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="has-dropdown"><a href="/profile" class="activated"><? echo $_SESSION['user_fName']." ".$_SESSION['user_lName'];?></a>
 						<ul class="dropdown">
 							<li><a href="<?echo $_SESSION['path']?>/profile"><?echo _("Profile");?></a></li>
 							<li><a href="<?echo $_SESSION['path']?>/logout"><? echo _("Logout");?></a></li>
@@ -29,12 +73,12 @@
 					</li>	
 					<li class="has-dropdown lessLeft"><a href="#"><? echo _("Help");?></a>
 						<ul class="dropdown makeULWider">
-							<?if(isset($_SESSION['venue_cat'])){?><li><a href="<?echo $_SESSION['path']?>/docs/GettingStartedGuide_<?echo $_SESSION['venue_cat'];?>.pdf"><?echo _("Getting started");?></a></li><?}?>
+							<?if(isset($_SESSION['venue_cat'])){?><li><a target="_blank" href="<?echo $_SESSION['path']?>/docs/GettingStartedGuide_<?echo $_SESSION['venue_cat'];?>.pdf"><?echo _("Getting started");?></a></li><?}?>
 							<li><a href="<?echo $_SESSION['path']?>/findoutmore"><? echo _("Find out more");?></a></li>
 						</ul>
 					</li>
 					<?}else{?>
-					<?if(isset($_SESSION['venue_cat'])){?><li><a href="<?echo $_SESSION['path']?>/docs/GettingStartedGuide_<?echo $_SESSION['venue_cat'];?>.pdf"><?echo _("Getting started");?></a></li><?}?>
+					<?if(isset($_SESSION['venue_cat'])){?><li><a target="_blank" href="<?echo $_SESSION['path']?>/docs/GettingStartedGuide_<?echo $_SESSION['venue_cat'];?>.pdf"><?echo _("Getting started");?></a></li><?}?>
 					<li><a class="activated" href="<?echo $_SESSION['path']?>/logout"><? echo _("Logout");?></a></li>
 					<?}?>
 				<?php endif; ?>

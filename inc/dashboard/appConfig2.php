@@ -123,7 +123,7 @@
 		</div>
 	</div>
 </div>	
-<?if(!isset($_SESSION['app2_edit_on']) || !$_SESSION['app2_edit_on']){?>
+<?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
 $(document).ready(function() {

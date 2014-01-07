@@ -157,4 +157,10 @@ RewriteRule ^.*$ /code/settings/do_settings.php [L]
 RewriteCond %{REQUEST_URI} ^/sendForm$ [NC]
 RewriteRule ^.*$ /code/more/do_sendMore.php [L]
 
+RewriteCond %{REQUEST_URI} ^/skipStripe$ [NC]
+RewriteRule ^.*$ /code/dashboard/do_skipStripe.php [L]
+
+RewriteCond %{REQUEST_URI} ^/startStripe$ [NC]
+RewriteRule ^.*$ /code/dashboard/do_startStripe.php [L]
+
 RewriteRule ^menus/([^/]*)$ /menuSettings.php?id=$1 [L]
