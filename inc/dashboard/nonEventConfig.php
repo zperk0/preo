@@ -19,8 +19,8 @@
 		</nav>
 	<?}?>
 	<form id="nonEventConfigForm" method="POST" class="custom" data-abide>
-		<h1><?echo _("Tell us about your opening times");?></h1>
-		<div class="large-12 columns">
+		<h1 class="alignHeader"><?echo _("Tell us about your opening times");?></h1>
+		<div class="large-12 columns alignHeader">
 			<div class="row openDayContainer">
 				<label><?echo _("Days your venue is open");?></label>
 				<button id="mondayB" 	type="button" class="openDay"><?echo _("Mon");?></button>
@@ -87,7 +87,7 @@
 			</div>
 			
 			<div id="<?echo $dow[$i];?>C" class="row row--space1 applyAllDiv <?echo $dow[$i];?>">
-				<button class="applyTimesAllDays" type="button"><i class="icon-bolt"></i></button> <?echo _("Apply these times to all days");?>
+				<a class="applyTimesAllDays" href="#"><?echo _("Apply these times to all days");?></a>
 				<input type="hidden" name="dow[]" value="<?echo $dow[$i];?>"/>
 			</div>
 			<?}?>

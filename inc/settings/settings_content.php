@@ -3,7 +3,7 @@
 	<div class="large-12 columns">
 		<form id="settingsForm" method="POST" data-abide>
 			<div class="row">
-				<h2><? echo _("Profile");?></h2>
+				<h2 class="alignHeader"><? echo _("Profile");?></h2>
 				<div class="large-6 columns">
 					<label><?echo _("First Name");?></label>
 					<input type="text" name="fName" value="<?echo $_SESSION['user_fName'];?>" required pattern="[a-zA-Z]+" tabindex=1>
@@ -45,7 +45,7 @@
 			
 			<div class="row">
 				<div class="large-2 small-4 columns">
-					<small><a href="#" id="changePassTrigger"><?echo _("Change password?");?></a></small>
+					<small class="smallNot"><a href="#" id="changePassTrigger"><?echo _("Change password?");?></a></small>
 					
 				</div>
 			</div>

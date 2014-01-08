@@ -8,44 +8,34 @@
 <div class="row dashContentTop">
 	<div class="topSpacer"></div>
 	<div class="large-12 columns">
-		<h1><? echo _("Dashboard"); if($_SESSION['venue_demoFlag']) echo _(" (DEMO)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
+		<h1 class=""><? echo _("Dashboard"); if($_SESSION['venue_demoFlag']) echo _(" (DEMO)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
 	</div>
 </div>
 
 <div class="row row--space1u dashContent">
 	<div class="large-8 columns">	
-		<div class="large-6 columns dashStats">	
+		<div class="large-5 columns dashStats">	
 			<div class="row">
-				<div class="large-12 columns">
-					<h3><?echo _("This month");?></h3>
-				</div>
+				<h3><?echo _("This month");?></h3>
 			</div>
 			<div class="row">
-				<div class="large-12 columns">
-					<h6><?echo _("Total revenue");?></h6>
-					<h1>&pound; <?echo number_format($_SESSION['venue_report_totalRevenue'],2);?></h1>
-				</div>
+				<h6><?echo _("Total revenue");?></h6>
+				<h1>&pound; <?echo number_format($_SESSION['venue_report_totalRevenue'],2);?></h1>
 			</div>
 			<div class="row">
-				<div class="large-12 columns">
-					<h6><?echo _("Total orders");?></h6>
-					<h1><?echo number_format($_SESSION['venue_report_totalOrders'],0);?></h1>
-				</div>
+				<h6><?echo _("Total orders");?></h6>
+				<h1><?echo number_format($_SESSION['venue_report_totalOrders'],0);?></h1>
 			</div>
 			<div class="row">
-				<div class="large-12 columns">
-					<h6><?echo _("New users");?></h6>
-					<h1><?echo number_format($_SESSION['venue_report_newUsers'],0);?></h1>
-				</div>
+				<h6><?echo _("New users");?></h6>
+				<h1><?echo number_format($_SESSION['venue_report_newUsers'],0);?></h1>
 			</div>
 			<div class="row">
-				<div class="large-12 columns">
-					<h6><?echo _("Returning users");?></h6>
-					<h1><?echo number_format($_SESSION['venue_report_returningUsers'],0);?></h1>
-				</div>
+				<h6><?echo _("Returning users");?></h6>
+				<h1><?echo number_format($_SESSION['venue_report_returningUsers'],0);?></h1>
 			</div>
 		</div>	
-		<div class="large-6 columns">
+		<div class="large-7 columns">
 			<div class="row">
 				<div class="large-12 columns">
 					<h3 class="cyappHead"><?echo _("Change your app");?></h3>

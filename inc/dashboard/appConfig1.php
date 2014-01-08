@@ -40,7 +40,7 @@
 	<?}?>
 	<div class="large-12 columns">
 		<div class="row">
-			<h1><?echo _("Style your app");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is the first screen that your customers will see.");?>"></i></h1>
+			<h1 class="alignHeader"><?echo _("Style your app");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is the first screen that your customers will see.");?>"></i></h1>
 			<div id="phonePreview">
 				<form id="appConfigForm" method="POST" data-abide>
 					<input type="hidden" id="redirectFlag" value="<?echo $redirectFlag;?>"/>
@@ -137,40 +137,28 @@
 							</div>
 						</div>
 						<div class="row thumbRow">
-							<div class="large-4 small-4 columns">
-								<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="1") echo "selected";} else echo "selected";?>" id="thumb1">
-									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb1.jpg">
-								</a>
-							</div>
-							<div class="large-4 small-4 columns">
-								<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="2") echo "selected";}?>" id="thumb2">
-									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb2.jpg">
-								</a>
-							</div>
-							<div class="large-4 small-4 columns">
-								<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="3") echo "selected";}?>" id="thumb3">
-									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb3.jpg">
-								</a>
-							</div>
+							<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="1") echo "selected";} else echo "selected";?>" id="thumb1">
+								<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb1.jpg">
+							</a>
+							<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="2") echo "selected";}?>" id="thumb2">
+								<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb2.jpg">
+							</a>
+							<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="3") echo "selected";}?>" id="thumb3">
+								<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb3.jpg">
+							</a>
 						</div>
-						<div class="row thumbRow">
-							<div class="large-4 small-4 columns">
-								<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="4") echo "selected";}?>" id="thumb4">
-									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb4.jpg">
-								</a>
-							</div>
-							<div class="large-4 small-4 columns">
-								<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="5") echo "selected";}?>" id="thumb5">
-									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb5.jpg">
-								</a>
-							</div>
-							<div class="large-4 small-4 columns customBGArea">
-								<?php if(isset($_SESSION['app_wallpaperId']) && $_SESSION['app_wallpaperId']!="5" && $_SESSION['app_wallpaperId']!="4" && $_SESSION['app_wallpaperId']!="3" && $_SESSION['app_wallpaperId']!="2" && $_SESSION['app_wallpaperId']!="1" ) { ?>
-								<a class="thumb selected" id="thumb<?echo $_SESSION['app_wallpaperId']?>">
-									<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb<?echo $_SESSION['app_wallpaperId']?>.jpg">
-								</a>
-								<? } ?>
-							</div>
+						<div class="row thumbRow customBGArea">
+							<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="4") echo "selected";}?>" id="thumb4">
+								<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb4.jpg">
+							</a>
+							<a class="thumb <?if(isset($_SESSION['app_wallpaperId'])) { if($_SESSION['app_wallpaperId']=="5") echo "selected";}?>" id="thumb5">
+								<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb5.jpg">
+							</a>
+							<?php if(isset($_SESSION['app_wallpaperId']) && $_SESSION['app_wallpaperId']!="5" && $_SESSION['app_wallpaperId']!="4" && $_SESSION['app_wallpaperId']!="3" && $_SESSION['app_wallpaperId']!="2" && $_SESSION['app_wallpaperId']!="1" ) { ?>
+							<a class="thumb selected customIMG" id="thumb<?echo $_SESSION['app_wallpaperId']?>">
+								<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb<?echo $_SESSION['app_wallpaperId']?>.jpg">
+							</a>
+							<? } ?>
 						</div>
 					<form id="bgUpForm" method="POST" enctype="multipart/form-data">	
 						<div class="visibleUploadBG">

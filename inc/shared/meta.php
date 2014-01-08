@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<title><? echo _("PreoDay");?></title>
+		<title><? echo _("preoday");?></title>
 
 		<!-- Main CSS files. -->
 		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize.css" />

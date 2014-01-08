@@ -64,3 +64,17 @@
     margin-right:7px;
     margin-left: 2px;
 }
+
+.ui-multiselect-checkboxes li {
+	border-bottom: 1px solid #BCBDBF;
+	width: 90%;
+	margin-left: 4px !important;
+}
+
+.ui-multiselect-checkboxes li:last-of-type {
+	border-bottom: 0px;
+}
+
+.ui-multiselect-checkboxes li label{
+	font-weight: bold;
+}

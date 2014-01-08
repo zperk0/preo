@@ -4352,7 +4352,7 @@ ul.pagination {
     border-width: 1px;
     margin-bottom: 1.25em;
     height: 2.25em;
-    background: white;
+    background: #CED0D1;
     border-color: #cccccc; }
     div.switch label {
       position: relative;
@@ -4428,17 +4428,17 @@ ul.pagination {
       height: 2.25em; }
     div.switch span:last-child {
       border-color: #b3b3b3;
-      background: white;
-      background: -moz-linear-gradient(top, white 0%, #f2f2f2 100%);
+      background: #FFF;
+      /*background: -moz-linear-gradient(top, white 0%, #f2f2f2 100%);
       background: -webkit-linear-gradient(top, white 0%, #f2f2f2 100%);
       background: linear-gradient(to bottom, white 0%, #f2f2f2 100%);
       -webkit-box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 1000px white, -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px whitesmoke;
-      box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 980px white, -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px whitesmoke; }
+      box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 980px white, -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px whitesmoke; */}
     div.switch:hover span:last-child, div.switch:focus span:last-child {
-      background: white;
-      background: -moz-linear-gradient(top, white 0%, #e6e6e6 100%);
+      background: #FFF;
+     /* background: -moz-linear-gradient(top, white 0%, #e6e6e6 100%);
       background: -webkit-linear-gradient(top, white 0%, #e6e6e6 100%);
-      background: linear-gradient(to bottom, white 0%, #e6e6e6 100%); }
+      background: linear-gradient(to bottom, white 0%, #e6e6e6 100%); */}
     div.switch:active {
       background: transparent; }
     div.switch.large {

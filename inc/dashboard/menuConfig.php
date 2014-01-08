@@ -119,8 +119,8 @@
 						</td>
 						<td class="menuTDTools">
 							<button type="button" class="menuTableButtons itemSave"				title="<?echo _("Collapse");?>"						><i class="icon-chevron-up"></i></button>
-							<button type="button" class="menuTableButtons itemEdit hide" 		title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
-							<button type="button" class="menuTableButtons sortHandle"			title="<?echo _("Reorder");?>"							><i class="icon-move"></i></button>
+							<button type="button" class="menuTableButtons itemEdit hide" 		title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
+							<button type="button" class="menuTableButtons sortHandle"			title="<?echo _("Reorder");?>"						><i class="icon-move"></i></button>
 							<button type="button" class="menuTableButtons itemDuplicate" 		title="<?echo _("Duplicate");?>" id="dup_section0"	><i class="icon-copy"></i></button>
 							<button type="button" class="menuTableButtons secondary itemDelete" title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
 						</td>
@@ -248,7 +248,7 @@
 										</td>
 										<td class="menuTDTools">
 											<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Collapse");?>"							><i class="icon-chevron-up"></i></button>
-											<button type="button" class="menuTableButtons itemEdit" 				title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
+											<button type="button" class="menuTableButtons itemEdit" 				title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
 											<button type="button" class="menuTableButtons sortHandle"				title="<?echo _("Reorder");?>"							><i class="icon-move"></i></button>
 											<button type="button" class="menuTableButtons itemDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($iKey+1);?>_section<?echo ($sKey+1);?>"	><i class="icon-copy"></i></button>
 											<button type="button" class="menuTableButtons secondary itemDelete" 	title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
@@ -363,7 +363,7 @@
 		<?
 		}
 	}?>
-		<div class="row">
+		<div class="row alignNewSection">
 			<button type="button" class="newSection" title="<?echo _("Add a new section");?>"><i class="fi-plus"></i></button> <?echo _("Add a new section");?>
 		</div>
 	</div>

@@ -36,7 +36,7 @@
 	</nav>
 	<?}?>
 	<form id="venueConfigForm" method="POST" class="custom" data-abide>
-		<h1><?echo _("Tell us about your venue");?></h1>
+		<h1 class="alignHeader"><?echo _("Tell us about your venue");?></h1>
 		<input type="hidden" id="redirectFlag" value="<?echo $redirectFlag;?>"/>
 		<div class="large-6 columns">
 			<div class="row">
@@ -78,7 +78,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("What type of venue are you?");?></label>
-					<select name="vCat" class="dropdown" tabindex=5>
+					<select name="vCat" class="dropdown pdDropdown" tabindex=5>
 						<option value="1"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='1')	{?>selected="selected"<?}?>><? echo _("Sports Arena");?></option>
 						<option value="2"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='2')	{?>selected="selected"<?}?>><? echo _("Bars, Pubs and Clubs");?></option>
 						<option value="3"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='3')	{?>selected="selected"<?}?>><? echo _("Workplace/Education Catering");?></option>

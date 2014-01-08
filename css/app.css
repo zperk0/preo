@@ -2,6 +2,7 @@
 @import 'font-awesome.css';
 @import '../fonts/helvetica-neue/style.css';
 @import '../fonts/Maven/maven.css';
+@import '../fonts/pd-fonts/pd-style.css';
 @import './jsMiniColors/jsminicolors.css';
 @import 'tweet-list.css';
 @import 'date-time.css';
@@ -257,9 +258,10 @@ textarea {
 .squareInput {
 	width: 100px !important;
 	cursor: pointer;
-	border: 1px solid #8F9094 !important;
+	border: 1px solid lightGray !important;
 	color: #222 !important;
 	text-align: center;
+	box-shadow: 0 0 0 !important;
 	/*color: transparent !important;  so you can't see the cursor/text */
 }
 
@@ -436,9 +438,24 @@ ul.custom-inline-list {
 .appstlyeright .thumb img {
 	border: 3px solid transparent;
 }
-
-.appstlyeright .selected img{
+.appstlyeright .thumb img:hover {
 	border: 3px solid #3AA2DC;
+}
+
+.appstlyeright .selected{
+	position: relative;
+}
+
+.appstlyeright .selected:after {
+	background: transparent url('/img/tick.png') no-repeat center center;
+	position: absolute;
+	right: -4px;
+	top: -110px;
+	content: " ";
+	display: block;
+	width: 28px;
+	height: 28px;
+	background-size: 20px 20px;
 }
 
 .appstlyeright img {
@@ -449,6 +466,7 @@ ul.custom-inline-list {
 label.appTop {
 	color: #2E70B7 !important;
 	font-size: 16px;
+	margin-bottom: 10px;
 }	
 
 .thumbRow {
@@ -662,6 +680,7 @@ h1 i.icon-question-sign, h4 i.icon-question-sign {
 
 #mName{
 	margin-bottom: 0 !important;
+	margin-left: -8px;
 }
 
 .menuField:focus, .eventField:focus, .userField:focus, .outletField:focus, .mdField:focus{
@@ -800,7 +819,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .eventTable .eventTDTime input, .userTable .userTDPassword input {
-	text-align: center;
+	text-align: left;
 	font-size: 80% !important;
 	height: 42px;
 }
@@ -941,6 +960,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	width: 101.8% !important;
 	margin-left: -1% !important;
 	margin-bottom: 0px !important;
+	margin-top: -1px;
 }
 
 .optionTR .menuTDPrice {
@@ -1032,7 +1052,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	margin-top: 36px;
 }
 
-.newItem, .newEvent, .newUser, .newOutlet, .newmdItem, .applyTimesAllDays , .addMoreOH{
+.newItem, .newEvent, .newUser, .newOutlet, .newmdItem, .addMoreOH{
 	background: #2E70B7;
 	border: #2E70B7;
 }
@@ -1221,6 +1241,8 @@ footer.dashboardFooter div{
 .openDay {
 	border-bottom: 20px solid #3AA2DC;
 	margin-bottom: -7px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .openDayContainer {
@@ -1349,4 +1371,38 @@ table.sortable-placeholder tbody, table.sortable-placeholder tr, table.sortable-
 
 .pretendRight {
 	float: right !important;
+}
+
+.alignHeader {
+	margin-left: 14px;
+}
+
+.pdDropdown {
+	background: #CED0D1 !important;
+	font-weight: bold;
+}
+
+.pdDropdown .selector {
+	background: #B9BBBD;
+	border: 0px;
+	height: 99% !important;
+}
+
+.switch label {
+	color: #000 !important;
+	text-transform: uppercase;
+	font-weight: bold !important;
+	letter-spacing: 1px;
+}
+
+.alignNewSection button {
+	margin-left: 16px;
+}
+
+.smallNot {
+	font-size: 12px;
+}
+
+.openingHours {
+	margin-left: -30px;
 }

@@ -3,8 +3,8 @@
 	<div class="large-12 columns">
 		<form id="moreForm" method="POST" data-abide>
 			<div class="row">
-				<h2><? echo _("Find out more");?></h2>
-				<div class="large-4 columns">
+				<h2 class="alignHeader"><? echo _("Find out more");?></h2>
+				<div class="large-4 columns moreFormTopDiv">
 					<select type="text" name="features[]" class="moreSelect" multiple required>
 						<option value="ePOS Integration">ePOS Integration</option>
 						<option value="Detailed reporting">Detailed reporting</option>

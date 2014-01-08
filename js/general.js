@@ -490,7 +490,7 @@ $(document).ready(function() {
 			$("#phoneWallpaper").attr("src", newImgSrc);
 			$("#wallPaperID").val(responseText);
 			
-			$('.customBGArea').empty();
+			$('.customBGArea .customIMG').empty();
 			$('<a class="thumb selected" id="thumb'+responseText+'">	<img src="/img/wallpapers/thumb'+responseText+'.jpg"> </a>').appendTo('.customBGArea');
 			
 		},
