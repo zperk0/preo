@@ -37,8 +37,8 @@
 							</li>
 							<li class="has-dropdown"><a href="#"><?echo _("Menus");?></a>
 								<ul class="dropdown">
-									<?foreach($_SESSION['menus'] as $menu){?>
-										<li><a href="<?echo $_SESSION['path']?>/menus/<?echo $menu['id'];?>"><?echo _("Edit")." $menu[name]";?></a></li>
+									<?foreach($_SESSION['menus'] as $menuL){?>
+										<li><a href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>"><?echo _("Edit")." $menuL[name]";?></a></li>
 									<?}?>
 								</ul>
 							</li>

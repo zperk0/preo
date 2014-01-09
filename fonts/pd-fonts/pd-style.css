@@ -17,13 +17,33 @@
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
-	font-size: 18px;
+	
 
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
+/*THESE UNICODES ARE USED ELSEWHERE AND SHOULD NOT BE CHANGED!*/
+
+.pd-copy:before {
+	content: "\e605";
+}
 .pd-edit:before {
 	content: "\e600";
+}
+.pd-up:before {
+	content: "\e601";
+}
+.pd-down:before {
+	content: "\e602";
+}
+.pd-add:before {
+	content: "\e606";
+}
+.pd-delete:before {
+	content: "\e603";
+}
+.pd-move:before {
+	content: "\e604";
 }

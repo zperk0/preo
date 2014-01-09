@@ -1576,7 +1576,7 @@ $(document).ready(function() {
         $newRow = $curRow.clone(false);
 		
 		$newRow.find("td.eventTDAddMore").empty();
-		$newRow.find("td.eventTDAddMore").append("<button type='button' class='delCollSlot secondary' title='Delete this slot'><i class='fi-minus'></i></button>");
+		$newRow.find("td.eventTDAddMore").append("<button type='button' class='delCollSlot secondary' title='Delete this slot'><i class='pd-delete'></i></button>");
 		$newRow.find(".ui-multiselect").remove();
 		
 		$newRow.find("td.eventTDCollection select").each(function() {
@@ -2502,7 +2502,7 @@ $(document).ready(function() {
 	
 	$(document).on("click", ".mdTDIName i.fi-plus", function(){
 		$(this).removeClass('fi-plus');
-		$(this).addClass('fi-minus');
+		$(this).addClass('pd-delete');
 		$(this).parent("button").addClass('secondary');
 		
 		//add price
@@ -2522,8 +2522,8 @@ $(document).ready(function() {
 		$mdItems.val(allIDs);
 	});
 	
-	$(document).on("click", ".mdTDIName i.fi-minus", function(){
-		$(this).removeClass('fi-minus');
+	$(document).on("click", ".mdTDIName i.pd-delete", function(){
+		$(this).removeClass('pd-delete');
 		$(this).addClass('fi-plus');
 		$(this).parent("button").removeClass('secondary');
 		

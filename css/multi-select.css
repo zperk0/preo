@@ -77,4 +77,9 @@
 
 .ui-multiselect-checkboxes li label{
 	font-weight: bold;
+	padding: 12px 0px 0px;
+}
+
+.ui-multiselect {
+	padding: 10px 12px;
 }

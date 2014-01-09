@@ -43,7 +43,7 @@
 
 			<div class="row">
 				<div class="large-12 columns">
-					<button id="add_event" 	type="button" class="newEvent" title="<?echo _("Add a new event");?>"><i class="fi-plus"></i></button> <?echo _("Add a new event");?>
+					<button id="add_event" 	type="button" class="newEvent" title="<?echo _("Add a new event");?>"><i class="pd-add"></i></button> <?echo _("Add a new event");?>
 				</div>
 			</div>
 			
@@ -55,7 +55,7 @@
 						<th class="eventTDDate" ><? echo _("Start Date");?></th>
 						<th class="eventTDTime" ><? echo _("Start Time");?></th>
 						<th class="eventTDTime" ><? echo _("End Time");?></th>
-						<th class="eventTDVisi" ><? echo _("Visible?");?></th>
+						<th class="eventTDVisi hide" ><? echo _("Visible?");?></th>
 						<th class="eventTDTools"><? echo _("Tools");?></th>
 					</tr>
 				</thead>
@@ -88,7 +88,7 @@
 									<small class="error"><?echo _("Time?");?></small>
 								</td>
 								
-								<td class="eventTDVisi">
+								<td class="eventTDVisi hide">
 									<div class="switch tiny"> 
 										<input name="eVisi[0]" value="0" type="radio">
 										<label><?echo _("No");?></label>
@@ -100,10 +100,10 @@
 									</div>
 								</td>
 								<td class="eventTDTools">
-									<button type="button" class="eventTableButtons eventSave"					title="<?echo _("Collapse");?>"							><i class="icon-chevron-up"></i></button>
-									<button type="button" class="eventTableButtons eventTDEdit hide" 			title="<?echo _("Edit");?>"							><i class="fi-pencil"></i></button>
-									<button type="button" class="eventTableButtons eventDuplicate" 				title="<?echo _("Duplicate");?>" id="dup0"			><i class="icon-copy"></i></button>
-									<button type="button" class="eventTableButtons secondary eventDelete" 		title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
+									<button type="button" class="eventTableButtons eventSave"					title="<?echo _("Collapse");?>"							><i class="pd-up"></i></button>
+									<button type="button" class="eventTableButtons eventTDEdit hide" 			title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
+									<button type="button" class="eventTableButtons eventDuplicate" 				title="<?echo _("Duplicate");?>" id="dup0"			><i class="pd-copy"></i></button>
+									<button type="button" class="eventTableButtons secondary eventDelete" 		title="<?echo _("Delete");?>"						><i class="pd-delete"></i></button>
 								</td>
 							</tr>
 							<tr class="eventEdit optionTR">
@@ -126,7 +126,7 @@
 									<small class="error"><?echo _("Amount?");?></small>
 								</td>
 								<td class="eventTDAddMore">
-									<button type="button" class="newCollSlot" title="<?echo _("Add another slot");?>"><i class="fi-plus"></i></button>
+									<button type="button" class="newCollSlot" title="<?echo _("Add another slot");?>"><i class="pd-add"></i></button>
 								</td>
 								<td class="eventTDSpace">
 									<span>&nbsp;</span>
@@ -168,7 +168,7 @@
 							<small class="error"><?echo _("Time?");?></small>
 						</td>
 						
-						<td class="eventTDVisi">
+						<td class="eventTDVisi hide">
 							<div class="switch tiny"> 
 								<input name="eVisi[<?echo ($eKey+1);?>]" value="0" type="radio" <?if(!$event['visible']) echo "checked";?>>
 								<label><?echo _("No");?></label>
@@ -180,10 +180,10 @@
 							</div>
 						</td>
 						<td class="eventTDTools">
-							<button type="button" class="eventTableButtons eventSave hide" 			title="<?echo _("Collapse");?>"										><i class="icon-chevron-up"></i></button>
-							<button type="button" class="eventTableButtons eventTDEdit" 			title="<?echo _("Edit");?>"										><i class="fi-pencil"></i></button>
-							<button type="button" class="eventTableButtons eventDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($eKey+1);?>"	><i class="icon-copy"></i></button>
-							<button type="button" class="eventTableButtons secondary eventDelete" 	title="<?echo _("Delete");?>"									><i class="fi-x"></i></button>
+							<button type="button" class="eventTableButtons eventSave hide" 			title="<?echo _("Collapse");?>"										><i class="pd-up"></i></button>
+							<button type="button" class="eventTableButtons eventTDEdit" 			title="<?echo _("Edit");?>"										><i class="pd-edit"></i></button>
+							<button type="button" class="eventTableButtons eventDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($eKey+1);?>"	><i class="pd-copy"></i></button>
+							<button type="button" class="eventTableButtons secondary eventDelete" 	title="<?echo _("Delete");?>"									><i class="pd-delete"></i></button>
 						</td>
 					</tr>
 					<?foreach($event['cSlots'] as $cKey=>$cSlot){?>
@@ -207,7 +207,7 @@
 							<small class="error"><?echo _("Amount?");?></small>
 						</td>
 						<td class="eventTDAddMore">
-							<button type="button" class="newCollSlot" title="<?echo _("Add another slot");?>"><i class="fi-plus"></i></button>
+							<button type="button" class="newCollSlot" title="<?echo _("Add another slot");?>"><i class="pd-add"></i></button>
 						</td>
 						<td class="eventTDSpace">
 							<span>&nbsp;</span>

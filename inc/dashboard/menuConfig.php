@@ -59,15 +59,15 @@
 			<div class="hide" id="menuSectionRow"> <!-- DUMMY -->
 				<div class="row">
 					<div class="large-12 columns menuSectionDiv">
-						<button type="button" class="sortSecHandle"	title="<?echo _("Reorder Section");?>"><i class="icon-move"></i></button>
+						<button type="button" class="sortSecHandle"	title="<?echo _("Reorder Section");?>"><i class="pd-move"></i></button>
 						<input type="text" name="mSectionName[0]" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required/>
 						<small class="error smallerror"><?echo _("Please type a section name");?></small>
 					</div>
 				</div>
 				<div class="row">
 					<div class="large-12 columns">
-						<button id="add_section0" 		type="button" class="newItem" 				title="<?echo _("Add an item to this section");?>"><i class="fi-plus"></i></button> <?echo _("Add an item to this section");?>
-						<button id="delete_section0" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"><i class="fi-x"></i></button> <?echo _("Delete this section");?>
+						<button id="add_section0" 		type="button" class="newItem" 				title="<?echo _("Add an item to this section");?>"><i class="pd-add"></i></button> <?echo _("Add an item to this section");?>
+						<button id="delete_section0" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"><i class="pd-delete"></i></button> <?echo _("Delete this section");?>
 					</div>
 				</div>
 				<div class="row hasTableHeader">
@@ -118,15 +118,15 @@
 							</div>
 						</td>
 						<td class="menuTDTools">
-							<button type="button" class="menuTableButtons itemSave"				title="<?echo _("Collapse");?>"						><i class="icon-chevron-up"></i></button>
+							<button type="button" class="menuTableButtons itemSave"				title="<?echo _("Collapse");?>"						><i class="pd-up"></i></button>
 							<button type="button" class="menuTableButtons itemEdit hide" 		title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
-							<button type="button" class="menuTableButtons sortHandle"			title="<?echo _("Reorder");?>"						><i class="icon-move"></i></button>
-							<button type="button" class="menuTableButtons itemDuplicate" 		title="<?echo _("Duplicate");?>" id="dup_section0"	><i class="icon-copy"></i></button>
-							<button type="button" class="menuTableButtons secondary itemDelete" title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
+							<button type="button" class="menuTableButtons sortHandle"			title="<?echo _("Reorder");?>"						><i class="pd-move"></i></button>
+							<button type="button" class="menuTableButtons itemDuplicate" 		title="<?echo _("Duplicate");?>" id="dup_section0"	><i class="pd-copy"></i></button>
+							<button type="button" class="menuTableButtons secondary itemDelete" title="<?echo _("Delete");?>"						><i class="pd-delete"></i></button>
 						</td>
 					</tr>
 					<tr class="menuEdit subHeaderTR">
-						<td class="itemSubheader"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h6></td>
+						<td class="itemSubheader"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="pd-add"></i></button></h6></td>
 						<td class="modifierRow hide">
 							<input type="text" name="iMod[item0]" class="menuField noEnterSubmit" placeholder="<?echo _("Modifier Name");?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
 						</td>
@@ -165,8 +165,8 @@
 							</div>
 						</td>
 						<td class="menuTDTools">
-							<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="icon-copy"></i></button>
-							<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="fi-x"></i></button>
+							<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="pd-copy"></i></button>
+							<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
 						</td>
 					</tr>
 				</tbody>
@@ -186,15 +186,15 @@
 					<div id="menuSectionRow">
 						<div class="row">
 							<div class="large-12 columns menuSectionDiv">
-								<button type="button" class="sortSecHandle"	title="<?echo _("Reorder Section");?>"><i class="icon-move"></i></button>
+								<button type="button" class="sortSecHandle"	title="<?echo _("Reorder Section");?>"><i class="pd-move"></i></button>
 								<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" placeholder="<?echo _("Click to add a section name");?>" required/>
 								<small class="error smallerror"><?echo _("Please type a section name");?></small>
 							</div>
 						</div>
 						<div class="row">
 							<div class="large-12 columns">
-								<button id="add_section<?echo ($sKey+1);?>" 	type="button" class="newItem" 				title="<?echo _("Add an item to this section");?>"><i class="fi-plus"></i></button> <?echo _("Add an item to this section");?>
-								<button id="delete_section<?echo ($sKey+1);?>" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"><i class="fi-x"></i></button> <?echo _("Delete this section");?>
+								<button id="add_section<?echo ($sKey+1);?>" 	type="button" class="newItem" 				title="<?echo _("Add an item to this section");?>"><i class="pd-add"></i></button> <?echo _("Add an item to this section");?>
+								<button id="delete_section<?echo ($sKey+1);?>" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"><i class="pd-delete"></i></button> <?echo _("Delete this section");?>
 							</div>
 							<div class="row hasTableHeader">
 								<table class="headerTable">
@@ -247,15 +247,15 @@
 											</div>
 										</td>
 										<td class="menuTDTools">
-											<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Collapse");?>"							><i class="icon-chevron-up"></i></button>
+											<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Collapse");?>"							><i class="pd-up"></i></button>
 											<button type="button" class="menuTableButtons itemEdit" 				title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
-											<button type="button" class="menuTableButtons sortHandle"				title="<?echo _("Reorder");?>"							><i class="icon-move"></i></button>
-											<button type="button" class="menuTableButtons itemDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($iKey+1);?>_section<?echo ($sKey+1);?>"	><i class="icon-copy"></i></button>
-											<button type="button" class="menuTableButtons secondary itemDelete" 	title="<?echo _("Delete");?>"						><i class="fi-x"></i></button>
+											<button type="button" class="menuTableButtons sortHandle"				title="<?echo _("Reorder");?>"							><i class="pd-move"></i></button>
+											<button type="button" class="menuTableButtons itemDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($iKey+1);?>_section<?echo ($sKey+1);?>"	><i class="pd-copy"></i></button>
+											<button type="button" class="menuTableButtons secondary itemDelete" 	title="<?echo _("Delete");?>"						><i class="pd-delete"></i></button>
 										</td>
 									</tr>
 									<tr class="menuEdit subHeaderTR">
-										<td class="itemSubheader hide"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="fi-plus"></i></button></h6></td>
+										<td class="itemSubheader hide"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="pd-add"></i></button></h6></td>
 										<?if(isset($item['modifiers'][0]['items'])){?>
 										<td class="modifierRow hide">
 											<input type="text" name="iMod[item<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Modifier Name");?>" value="<?echo $item['modifiers'][0]['name'];?>" required/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
@@ -308,8 +308,8 @@
 											</div>
 										</td>
 										<td class="menuTDTools">
-											<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="icon-copy"></i></button>
-											<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="fi-x"></i></button>
+											<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="pd-copy"></i></button>
+											<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
 										</td>
 									</tr>
 									<?if(isset($item['modifiers'][0]['items'])){
@@ -342,8 +342,8 @@
 													</div>
 												</td>
 												<td class="menuTDTools">
-													<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="icon-copy"></i></button>
-													<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="fi-x"></i></button>
+													<button type="button" class="menuTableButtons optionRowDuplicate" title="<?echo _("Duplicate");?>"><i class="pd-copy"></i></button>
+													<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
 												</td>
 											</tr>
 										<?
@@ -364,7 +364,7 @@
 		}
 	}?>
 		<div class="row alignNewSection">
-			<button type="button" class="newSection" title="<?echo _("Add a new section");?>"><i class="fi-plus"></i></button> <?echo _("Add a new section");?>
+			<button type="button" class="newSection" title="<?echo _("Add a new section");?>"><i class="pd-add"></i></button> <?echo _("Add a new section");?>
 		</div>
 	</div>
 	

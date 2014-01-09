@@ -64,10 +64,10 @@
 						<section>
 							<h3 data-section-title><?echo _("Menus");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/>
 							<div class="content" data-section-content>
-								<?foreach($_SESSION['menus'] as $menu){?>
-									<p id="p-<?echo $menu['id']?>">
-										<a class="dashMenuIcon" 			href="<?echo $_SESSION['path']?>/menus/<?echo $menu['id'];?>" title="<?echo _("Edit")." $menu[name]";?>"><?echo $menu['name']?></a>
-										<!--<a class="dashMenuIcon deleteMenu" 	id="dmi-<?echo $menu['id']?>"  title="<?echo _("Delete")." $menu[name]";?>"><i class="fi-x"></i></a>-->
+								<?foreach($_SESSION['menus'] as $menuL){?>
+									<p id="p-<?echo $menuL['id']?>">
+										<a class="dashMenuIcon" 			href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>" title="<?echo _("Edit")." $menuL[name]";?>"><?echo $menuL['name']?></a>
+										<!--<a class="dashMenuIcon deleteMenu" 	id="dmi-<?echo $menuL['id']?>"  title="<?echo _("Delete")." $menuL[name]";?>"><i class="fi-x"></i></a>-->
 									</p>
 								<?}?>
 								<!--<p><a href="<?echo $_SESSION['path']?>/newMenu.php"><?echo _("Add new menu");?></a></p>-->

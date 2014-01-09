@@ -39,7 +39,7 @@
 			$dow = array('dummy','sunday','monday','tuesday','wednesday','thursday','friday','saturday');
 			for($i=1;$i<8;$i++){?>
 			<div class="row row--space1 openingHoursDiv <?echo $dow[$i];?>" id="<?echo $dow[$i];?>">
-				<h4><?echo _("Opening Hours");?>&nbsp;<span><button class="addMoreOH" type="button"><i class="fi-plus"></i></button> <?echo _("Add another opening hour");?></span>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("eg: if you close for lunch and reopen in the evening.");?>"></i></h4>
+				<h4><?echo _("Opening Hours");?>&nbsp;<span><button class="addMoreOH" type="button"><i class="pd-add"></i></button> <?echo _("Add another opening hour");?></span>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("eg: if you close for lunch and reopen in the evening.");?>"></i></h4>
 
 				<?if(isset($neTimes) && isset($neTimes[$i]) && count($neTimes["$i"]))
 				{
@@ -59,7 +59,7 @@
 						</div>
 						<div class="large-1 columns removeOHDiv <?if($counter < 1) echo 'hide';?>">
 							<label>&nbsp;</label>
-							<button class="removeOH secondary small" type="button" title="<?echo _("Remove opening hour");?>"><i class="fi-minus"></i></button>
+							<button class="removeOH secondary small" type="button" title="<?echo _("Remove opening hour");?>"><i class="pd-delete"></i></button>
 						</div>
 						<div class="large-5 columns"></div>
 					</div>
@@ -79,7 +79,7 @@
 					</div>
 					<div class="large-1 columns removeOHDiv hide">
 						<label>&nbsp;</label>
-						<button class="removeOH secondary small" type="button" title="<?echo _("Remove opening hour");?>"><i class="fi-minus"></i></button>
+						<button class="removeOH secondary small" type="button" title="<?echo _("Remove opening hour");?>"><i class="pd-delete"></i></button>
 					</div>
 					<div class="large-5 columns"></div>
 				</div>

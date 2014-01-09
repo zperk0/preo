@@ -11,7 +11,7 @@
 
 			<div class="row">
 				<div class="large-12 columns">
-					<button id="add_user" 	type="button" class="newUser" title="<?echo _("Add a new user");?>"><i class="fi-plus"></i></button> <?echo _("Add a new user");?>
+					<button id="add_user" 	type="button" class="newUser" title="<?echo _("Add a new user");?>"><i class="pd-add"></i></button> <?echo _("Add a new user");?>
 				</div>
 			</div>
 			
@@ -43,7 +43,7 @@
 								</td>
 								<td class="userTDPassword">
 									<input type="password" name="uPassword[0]" class="userField noEnterSubmit" placeholder="<?echo _("Assign a password");?>"/>
-									<small class="error"><?echo _("Please type a Password");?></small>
+									<small class="error"><?echo _("Provide a Password");?></small>
 								</td>
 								<td class="userTDRole">
 									<select name="uRole[0]" class="userField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have userMenuSingleSelect -->
@@ -53,10 +53,10 @@
 									</select>
 								</td>
 								<td class="userTDTools">
-									<button type="button" class="userTableButtons userSave"					title="<?echo _("Collapse");?>"					><i class="icon-chevron-up"></i></button>
-									<button type="button" class="userTableButtons userTDEdit hide" 			title="<?echo _("Edit");?>"					><i class="fi-pencil"></i></button>
-									<!--<button type="button" class="userTableButtons userDuplicate" 			title="<?echo _("Duplicate");?>" id="dup0"	><i class="icon-copy"></i></button>-->
-									<button type="button" class="userTableButtons secondary userDelete" 	title="<?echo _("Delete");?>"				><i class="fi-x"></i></button>
+									<button type="button" class="userTableButtons userSave"					title="<?echo _("Collapse");?>"					><i class="pd-up"></i></button>
+									<button type="button" class="userTableButtons userTDEdit hide" 			title="<?echo _("Edit");?>"					><i class="pd-edit"></i></button>
+									<!--<button type="button" class="userTableButtons userDuplicate" 			title="<?echo _("Duplicate");?>" id="dup0"	><i class="pd-copy"></i></button>-->
+									<button type="button" class="userTableButtons secondary userDelete" 	title="<?echo _("Delete");?>"				><i class="pd-delete"></i></button>
 								</td>
 							</tr>
 						</tbody>
@@ -93,10 +93,10 @@
 							</select>
 						</td>
 						<td class="userTDTools">
-							<button type="button" class="userTableButtons userSave hide" 			title="<?echo _("Collapse");?>"										><i class="icon-chevron-up"></i></button>
-							<button type="button" class="userTableButtons userTDEdit" 				title="<?echo _("Edit");?>"										><i class="fi-pencil"></i></button>
-							<!--<button type="button" class="userTableButtons userDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($uKey+1);?>"	><i class="icon-copy"></i></button>-->
-							<button type="button" class="userTableButtons secondary userDelete <?if($_SESSION['user_id'] == $user['id']) echo 'hide';?>" 	title="<?echo _("Delete");?>"									><i class="fi-x"></i></button>
+							<button type="button" class="userTableButtons userSave hide" 			title="<?echo _("Collapse");?>"										><i class="pd-up"></i></button>
+							<button type="button" class="userTableButtons userTDEdit" 				title="<?echo _("Edit");?>"										><i class="pd-edit"></i></button>
+							<!--<button type="button" class="userTableButtons userDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($uKey+1);?>"	><i class="pd-copy"></i></button>-->
+							<button type="button" class="userTableButtons secondary userDelete <?if($_SESSION['user_id'] == $user['id']) echo 'hide';?>" 	title="<?echo _("Delete");?>"									><i class="pd-delete"></i></button>
 						</td>
 					</tr>
 				</tbody>
