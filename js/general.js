@@ -445,7 +445,10 @@ $(document).ready(function() {
 			});
 			
 			//alert(responseText);
-			content="<img src='./img/logoUploads/"+responseText+"'/>";
+			
+			responseText=responseText.replace('_thumb.png','');
+			
+			content="<img src='"+globalLPath+responseText+"_thumb.png'/>";
 			$("#appHeading").html(content);
 			
 			$("#picFileName").val(responseText);
@@ -457,7 +460,7 @@ $(document).ready(function() {
 			});
 		},
 		beforeSubmit: function(arr, $form, options) { 
-			var acceptedExts = new Array(".jpg",".jpeg",".png");
+			var acceptedExts = new Array(".png");
 			var filename = $("#picFile").val();
 			filename = filename.toLowerCase();
 			if(searchArray(filename,acceptedExts))
@@ -486,12 +489,12 @@ $(document).ready(function() {
 			//alert(responseText);
 			
 			$("[id^=thumb]").removeClass('selected');
-			var newImgSrc = "./img/wallpapers/wall_wa_" + responseText + ".jpg";
+			var newImgSrc = globalWPath + "wall_wa_" + responseText + ".jpg";
 			$("#phoneWallpaper").attr("src", newImgSrc);
 			$("#wallPaperID").val(responseText);
 			
 			$('.customBGArea .customIMG').empty();
-			$('<a class="thumb selected" id="thumb'+responseText+'">	<img src="/img/wallpapers/thumb'+responseText+'.jpg"> </a>').appendTo('.customBGArea');
+			$('<a class="thumb selected" id="thumb'+responseText+'">	<img src="'+globalWPath+'thumb'+responseText+'.jpg"> </a>').appendTo('.customBGArea');
 			
 		},
 		error: function() { 

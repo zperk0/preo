@@ -242,7 +242,7 @@
 					<?if(isset($_SESSION['app_buttonTextColour'])){?>updateButtonTextColour('<?echo $_SESSION['app_buttonTextColour']?>');<?}?>
 					
 					<?if(isset($_SESSION['app_logo']) && !empty($_SESSION['app_logo'])){?>
-						content="<img src='<?echo $_SESSION['path']?>/img/logoUploads/<?echo $_SESSION['app_logo']?>'/>";
+						content="<img src='<?echo $lPath.$_SESSION['app_logo']."_thumb.png";?>'/>";
 						$('#appHeading').html(content);
 					<?}?>
 				});

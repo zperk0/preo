@@ -74,7 +74,7 @@
 			$_SESSION['app_buttonColour']		= $dataJSON['buttonColour'];
 			$_SESSION['app_buttonTextColour']	= $dataJSON['buttonTextColour'];
 			$_SESSION['app_wallpaperId']		= $dataJSON['wallpaperId'];
-			$_SESSION['app_logo']				= $dataJSON['logo'];
+			$_SESSION['app_logo']				= $dataJSON['logoId'];
 			
 			if(!isset($dataJSON['button2Colour']) || !isset($dataJSON['button2TextColour']) || !isset($dataJSON['button3Colour']) || !isset($dataJSON['button3TextColour']) || !isset($dataJSON['title']))
 				$_SESSION['noAppFlag-2']=1;
@@ -180,8 +180,6 @@
 		if($_SESSION['venue_demoFlag']) $_SESSION['noPaymentFlag']=0;
 	}
 	
-	//echo var_dump($_SESSION);
-	
 	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag'] && !$_SESSION['noPaymentFlag']) /*User has given data for all 5 already*/
 	{	
 		//going to the dashboard!
@@ -197,6 +195,7 @@
 		
 		$_SESSION['dashboardFlag']=1;
 		$_SESSION['signupWizFlag']=0;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/wl-paths.php');   //wallpaper-logo paths
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/dashboard_content.php"); 
@@ -213,6 +212,7 @@
 	{	
 		$_SESSION['signupWizFlag']=1;
 		$redirectFlag=1;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/wl-paths.php');   //wallpaper-logo paths
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig1.php");

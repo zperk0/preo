@@ -118,7 +118,13 @@
 					</div>
 					<div id="iphone5" class="large-4 columns left">
 						<div id="frame_iphone5">
-							<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/wall_wa_<?if(isset($_SESSION['app_wallpaperId'])) echo $_SESSION['app_wallpaperId'];else echo "1";?>.jpg" />
+							<?if(isset($_SESSION['app_wallpaperId']) && $_SESSION['app_wallpaperId']!=1 && $_SESSION['app_wallpaperId']!=2 && $_SESSION['app_wallpaperId']!=3 && $_SESSION['app_wallpaperId']!=4 && $_SESSION['app_wallpaperId']!=5){?>
+								<img id="phoneWallpaper" src="<?echo $wPath.'wall_wa_'.$_SESSION['app_wallpaperId'].'.jpg';?>" />
+							<?}else if(isset($_SESSION['app_wallpaperId'])){?>
+								<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/wall_wa_<? echo $_SESSION['app_wallpaperId'];?>.jpg" />
+							<?}else{?>
+								<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/wall_wa_1.jpg" />
+							<?}?>
 							<img id="carrierIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/carrier.png" />
 							<img id="poweredIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/powered.png" />
 							<button type="button" class="tiny expand" id="buttonIMG"><?echo _('ORDER NOW');?></button>
@@ -156,7 +162,7 @@
 							</a>
 							<?php if(isset($_SESSION['app_wallpaperId']) && $_SESSION['app_wallpaperId']!="5" && $_SESSION['app_wallpaperId']!="4" && $_SESSION['app_wallpaperId']!="3" && $_SESSION['app_wallpaperId']!="2" && $_SESSION['app_wallpaperId']!="1" ) { ?>
 							<a class="thumb selected customIMG" id="thumb<?echo $_SESSION['app_wallpaperId']?>">
-								<img src="<?echo $_SESSION['path']?>/img/wallpapers/thumb<?echo $_SESSION['app_wallpaperId']?>.jpg">
+								<img src="<?echo $wPath.'thumb'.$_SESSION['app_wallpaperId'].'.jpg';?>">
 							</a>
 							<? } ?>
 						</div>
@@ -203,7 +209,7 @@
 									<button id="doLogoUp" type="button" class="small"><?echo _("UPLOAD");?></button>
 									<button id="logoReset" type="button" class="small secondary"><?echo _("RESET");?></button>
 									<input type="file" id="picFile" name="picFile" accept="image/png,image/jpeg" class="hide" />
-									<p><?echo _("Supported types: JPG or PNG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 100x75");?></p>
+									<p><?echo _("Supported types: PNG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 100x75");?></p>
 								</div>
 							</div>
 						</div>

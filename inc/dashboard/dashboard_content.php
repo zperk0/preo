@@ -106,7 +106,13 @@
 	<div id="iphone5" class="large-4 columns">
 		<div class="phoneContainer">
 			<div id="frame_iphone5" class="phone1">
-				<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/wall<?if(isset($_SESSION['app_wallpaperId'])) echo $_SESSION['app_wallpaperId'];else echo "1";?>.jpg" />
+				<?if(isset($_SESSION['app_wallpaperId']) && $_SESSION['app_wallpaperId']!=1 && $_SESSION['app_wallpaperId']!=2 && $_SESSION['app_wallpaperId']!=3 && $_SESSION['app_wallpaperId']!=4 && $_SESSION['app_wallpaperId']!=5){?>
+					<img id="phoneWallpaper" src="<?echo $wPath.'wall_wa_'.$_SESSION['app_wallpaperId'].'.jpg';?>" />
+				<?}else if(isset($_SESSION['app_wallpaperId'])){?>
+					<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/wall_wa_<? echo $_SESSION['app_wallpaperId'];?>.jpg" />
+				<?}else{?>
+					<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/wall_wa_1.jpg" />
+				<?}?>
 				<img id="carrierIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/carrier.png" />
 				<img id="poweredIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/powered.png" />
 				<button type="button" class="tiny expand" id="buttonIMG"><?echo _('ORDER NOW');?></button>
@@ -142,7 +148,7 @@
 		<?if(isset($_SESSION['app_buttonTextColour'])){?>updateButtonTextColour('<?echo $_SESSION['app_buttonTextColour']?>');<?}?>
 		
 		<?if(isset($_SESSION['app_logo']) && !empty($_SESSION['app_logo'])){?>
-			content="<img src='<?echo $_SESSION['path']?>/img/logoUploads/<?echo $_SESSION['app_logo']?>'/>";
+			content="<img src='<?echo $lPath.$_SESSION['app_logo']."_thumb.png";?>'/>";
 			$('#appHeading').html(content);
 		<?}?>
 		

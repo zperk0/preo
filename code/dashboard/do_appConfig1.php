@@ -35,7 +35,20 @@
 	$data['buttonColour']		= $buttonColour;
 	$data['buttonTextColour']	= $buttonTextColour;
 	$data['wallpaperId']		= $wallPaperID;
-	$data['logo']				= $picFileName;
+	$data['logoId']				= $picFileName;
+	if(isset($_SERVER['PREO_UPLOAD_PATH']))
+	{
+		if(preg_match('/http/',$_SERVER['PREO_UPLOAD_PATH']))
+		{	
+			$data['wallpaper']		= $_SERVER['PREO_UPLOAD_PATH'].'wallpaper/wall'.$wallPaperID.'.jpg';
+			$data['logo']			= $_SERVER['PREO_UPLOAD_PATH'].'logo/'.$picFileName.'_thumb.png';
+		}
+		else
+		{
+			$data['wallpaper']		= '//'.$_SERVER['HTTP_HOST'].$_SERVER['PREO_UPLOAD_PATH'].'wallpaper/wall'.$wallPaperID.'.jpg';
+			$data['logo']			= '//'.$_SERVER['HTTP_HOST'].$_SERVER['PREO_UPLOAD_PATH'].'logo/'.$picFileName.'_thumb.png';
+		}
+	}
 	
 	$jsonData = json_encode($data);
 	

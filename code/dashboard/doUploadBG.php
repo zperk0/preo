@@ -15,7 +15,12 @@
 	$picExt = $matches[1];
 	if($picExt == 'jpeg') $picExt = 'jpg';
 	
-	$status = uploadFile($picFile,$_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/img/wallpapers/',$picID, ".$picExt", "image/jpeg", "image/jpeg", 11000000, 0);
+	if(isset($_SERVER['PREO_UPLOAD_ROOT']))
+		$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'wallpaper/';
+	else
+		$PREO_UPLOAD_ROOT = '/tmp/upload/wallpaper/';
+	
+	$status = uploadFile($picFile,$_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].$PREO_UPLOAD_ROOT,$picID, ".$picExt", "image/jpeg", "image/jpeg", 11000000, 0);
 	if(!$status) 
 	{
 		echo "Error :(";

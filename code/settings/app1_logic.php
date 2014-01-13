@@ -4,15 +4,6 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 
-	//debug
-	//echo "<br/><br/>";
-	//echo $_SESSION['user_id']."<br/>";
-	//echo $_SESSION['user_name']."<br/>";
-	//echo $_SESSION['user_email']."<br/>";
-	//echo $_SESSION['account_name']."<br/>";
-	//echo $_SESSION['account_id']."<br/>";
-	//echo $_SESSION['token']."<br/>";
-	
 	$procMem = 0;
 
 	//we use the user's token
@@ -44,7 +35,10 @@
 	}
 
 	if(isset($venueID)) //if there is no venue set then no App or Menu can be set anyway
-	{	
+	{
+
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/wl-paths.php');   //wallpaper-logo paths
+	
 		//////APP////////////////////////////////////////////////////////////////////////////
 		
 		//query to find app-settings  
@@ -76,7 +70,7 @@
 			$_SESSION['app_buttonColour']		= $dataJSON['buttonColour'];
 			$_SESSION['app_buttonTextColour']	= $dataJSON['buttonTextColour'];
 			$_SESSION['app_wallpaperId']		= $dataJSON['wallpaperId'];
-			$_SESSION['app_logo']				= $dataJSON['logo'];
+			$_SESSION['app_logo']				= $dataJSON['logoId'];
 			
 			if(!isset($dataJSON['button2Colour']) || !isset($dataJSON['button2TextColour']) || !isset($dataJSON['button3Colour']) || !isset($dataJSON['button3TextColour']) || !isset($dataJSON['title']))
 			{	/*skip*/ }
