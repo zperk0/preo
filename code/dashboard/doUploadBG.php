@@ -16,11 +16,16 @@
 	if($picExt == 'jpeg') $picExt = 'jpg';
 	
 	if(isset($_SERVER['PREO_UPLOAD_ROOT']))
-		$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'wallpaper/';
+	{
+		if(preg_match('/http/',$_SERVER['PREO_UPLOAD_ROOT']))
+			$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'wallpaper/';
+		else
+			$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].$_SERVER['PREO_UPLOAD_ROOT'].'wallpaper/';
+	}
 	else
-		$PREO_UPLOAD_ROOT = '/tmp/upload/wallpaper/';
+		$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/wallpaper/';
 	
-	$status = uploadFile($picFile,$_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].$PREO_UPLOAD_ROOT,$picID, ".$picExt", "image/jpeg", "image/jpeg", 11000000, 0);
+	$status = uploadFile($picFile,$PREO_UPLOAD_ROOT,$picID, ".$picExt", "image/jpeg", "image/jpeg", 11000000, 0);
 	if(!$status) 
 	{
 		echo "Error :(";

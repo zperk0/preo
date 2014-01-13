@@ -208,7 +208,7 @@
 								<div class="large-8 small-8 columns">
 									<button id="doLogoUp" type="button" class="small"><?echo _("UPLOAD");?></button>
 									<button id="logoReset" type="button" class="small secondary"><?echo _("RESET");?></button>
-									<input type="file" id="picFile" name="picFile" accept="image/png,image/jpeg" class="hide" />
+									<input type="file" id="picFile" name="picFile" accept="image/png" class="hide" />
 									<p><?echo _("Supported types: PNG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 100x75");?></p>
 								</div>
 							</div>
