@@ -47,6 +47,9 @@
 		$data['logo']			= '/tmp/upload/'.'logo/'.$picFileName.'_thumb.png';
 	}
 	
+	if(empty($picFileName)) $data['logo']=null;
+	if(preg_match('/^\d$/',$wallPaperID)) $data['wallpaper']=null;
+	
 	$jsonData = json_encode($data);
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
