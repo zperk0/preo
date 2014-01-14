@@ -7,7 +7,7 @@
 				</div>
 				<div class="large-offset-1 large-2 columns">
 					<p>
-						<a class="TWFoot" target="_blank" href="https://twitter.com/preodayuk"><img src="<?echo $_SESSION['path']?>/img/twitter.png"/></a>
+						<a class="TWFoot" target="_blank" href="https://twitter.com/preoday"><img src="<?echo $_SESSION['path']?>/img/twitter.png"/></a>
 						<a class="FBFoot" target="_blank" href="https://www.facebook.com/Preoday"><img src="<?echo $_SESSION['path']?>/img/facebook.png"/></a>
 						<a class="LIFoot" target="_blank" href="http://www.linkedin.com/company/2892744?trk=tyah"><img src="<?echo $_SESSION['path']?>/img/linkedin.png"/></a>
 					</p>
