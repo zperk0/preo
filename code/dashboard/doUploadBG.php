@@ -16,12 +16,7 @@
 	if($picExt == 'jpeg') $picExt = 'jpg';
 	
 	if(isset($_SERVER['PREO_UPLOAD_ROOT']))
-	{
-		if(preg_match('/http/',$_SERVER['PREO_UPLOAD_ROOT']))
-			$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'wallpaper/';
-		else
-			$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].$_SERVER['PREO_UPLOAD_ROOT'].'wallpaper/';
-	}
+		$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'wallpaper/';
 	else
 		$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/wallpaper/';
 	
