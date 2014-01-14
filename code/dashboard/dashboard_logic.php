@@ -177,7 +177,7 @@
 	else
 	{
 		$_SESSION['noPaymentFlag']=1;
-		if($_SESSION['venue_demoFlag']) $_SESSION['noPaymentFlag']=0;
+		if(isset($_SESSION['venue_demoFlag']) && $_SESSION['venue_demoFlag']) $_SESSION['noPaymentFlag']=0;
 	}
 	
 	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag'] && !$_SESSION['noPaymentFlag']) /*User has given data for all 5 already*/

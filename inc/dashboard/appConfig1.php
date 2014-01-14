@@ -80,6 +80,12 @@
 						
 						<div class="row">
 							<div class="large-11 columns">
+							<input type="checkbox" class="custom" id="suppressText" <?if(isset($_SESSION['app_subHeading']) && $_SESSION['app_subHeading']== ' ' && isset($_SESSION['app_heading']) && $_SESSION['app_heading']==' '){?>checked="checked"<?}?>/> <?echo _("Suppress Text");?>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="large-11 columns">
 								<div class="row">
 									<div class="large-4 small-4 columns">
 										<input value="<?if(isset($_SESSION['app_textColour'])) echo $_SESSION['app_textColour'];else echo "FFFFFF";?>" type="text" id="textColour" name="textColour" class="squareInput color {pickerClosable:false, pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black',onImmediateChange:'updateTextColour(this);'}"/>

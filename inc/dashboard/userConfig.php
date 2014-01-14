@@ -21,7 +21,7 @@
 						<th class="userTDName"><? echo _("Name");?></th>
 						<th class="userTDEmail"><? echo _("Email");?></th>
 						<th class="userTDPassword"><? echo _("Password");?></th>
-						<th class="userTDRole"><? echo _("Role");?></th>
+						<th class="userTDRole"><? echo _("Role");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This decides the level of access of your users.");?>"></i></th>
 						<th class="userTDTools"><? echo _("Tools");?></th>
 					</tr>
 				</thead>
@@ -47,9 +47,9 @@
 								</td>
 								<td class="userTDRole">
 									<select name="uRole[0]" class="userField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have userMenuSingleSelect -->
-										<option value="STAFF"><?echo _("Staff")?></option>
-										<option value="ADMIN"><?echo _("Admin")?></option>
-										<option value="OWNER"><?echo _("Owner")?></option>
+										<option value="STAFF" title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
+										<option value="ADMIN" title="<?echo _("Admin: can read/write account but cannot close it down")?>"><?echo _("Admin")?></option>
+										<option value="OWNER" title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 									</select>
 								</td>
 								<td class="userTDTools">
@@ -87,9 +87,9 @@
 						</td>
 						<td class="userTDRole">
 							<select name="uRole[<?echo ($uKey+1);?>]" class="userMenuSingleSelect userField noEnterSubmit" style="display:none" readonly="readonly"/>
-								<option value="STAFF" 	<?if($user['role']=='STAFF'){?>selected="selected"<?}?>><?echo _("Staff")?></option>
-								<option value="ADMIN" 	<?if($user['role']=='ADMIN'){?>selected="selected"<?}?>><?echo _("Admin")?></option>
-								<option value="OWNER" 	<?if($user['role']=='OWNER'){?>selected="selected"<?}?>><?echo _("Owner")?></option>
+								<option value="STAFF" 	<?if($user['role']=='STAFF'){?>selected="selected"<?}?> title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
+								<option value="ADMIN" 	<?if($user['role']=='ADMIN'){?>selected="selected"<?}?> title="<?echo _("Admin: can read/write account but cannot close it down")?>"><?echo _("Admin")?></option>
+								<option value="OWNER" 	<?if($user['role']=='OWNER'){?>selected="selected"<?}?> title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 							</select>
 						</td>
 						<td class="userTDTools">

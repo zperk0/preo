@@ -99,6 +99,10 @@ input[readonly]{
 	cursor: no-drop;
 }
 
+.itemTR input[readonly]{
+	cursor: pointer;
+}
+
 /* Chrome autofill colour replacement */
 input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0px 1000px white inset !important;
@@ -704,6 +708,7 @@ h1 i.icon-question-sign, h4 i.icon-question-sign {
 input[name^=mSectionName] {
 	display: inline !important;
 	width: 90%;
+	margin-left: -12px;
 }
 
 .sortSecHandle {
@@ -714,7 +719,6 @@ input[name^=mSectionName] {
 
 .smallerror {
 	width: 90%;
-	margin-left: 28px;
 }
 
 table.menuTable, table.eventTable, table.userTable , table.outletTable, table.mdTable, table.headerTable {
@@ -727,7 +731,11 @@ table.menuTable, table.eventTable, table.userTable , table.outletTable, table.md
 	background: transparent !important;
 	
 	font-size: 1.3em !important;
-	border-bottom: 1px solid #B8B9BC;
+	/* border-bottom: 1px solid #B8B9BC; */
+}
+
+.itemTR.menuEdit{
+	border-top: 1px solid #B8B9BC;
 }
 
 .menuTable td, .eventTable td, .userTable td, .outletTable td, .mdTable td, table.headerTable td{
@@ -986,7 +994,11 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 }
 
 .dynamicDataTable tr:first-of-type{
-	border-top: 1px solid #B9BBBD !important;
+	border-bottom: 1px solid #B9BBBD !important;
+}
+
+.dynamicDataTable tr.itemTR.menuEdit:first-of-type{
+	border-bottom: 0px !important
 }
 
 .dynamicDataTable{
@@ -1021,8 +1033,10 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 .itemSubheader button{
 	width: 20px;
 	height: 20px;
-	font-size: 15px;
+	font-size: 17px;
 	padding: 1px 2px;
+	background: #2E70B7;
+	border: #2E70B7;
 }
 
 .itemSubheader h6{
@@ -1046,7 +1060,19 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 
 .newItem, .newSection, .deleteSection, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot, .applyTimesAllDays, .addMoreOH, .removeOHDiv {
 	padding: 1px 3px;
-	font-size: 15px;
+	font-size: 20px;
+}
+
+.showOnHover{
+	transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out;
+	opacity: 0;
+	display: inline;
+}
+
+.sectionTools:hover .showOnHover{
+	opacity: 1;	
 }
 
 .newCollSlot, .delCollSlot{
@@ -1065,6 +1091,8 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 
 .newSection{
 	margin-top: 20px;
+	background: #2E70B7;
+	border: #2E70B7;
 }
 
 .dashContent #iphone5{

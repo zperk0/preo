@@ -450,7 +450,7 @@ $(document).ready(function() {
 			
 			content="<img src='"+globalLPath+responseText+"_thumb.png'/>";
 			$("#appHeading").html(content);
-			
+			$("#aHeading").val(' ');
 			$("#picFileName").val(responseText);
 		},
 		error: function() { 
@@ -795,7 +795,7 @@ $(document).ready(function() {
 					$(this).multiselect({
 					   multiple: false,
 					   header: false,
-					   noneSelectedText: "Modifier Type &#x25BC;",
+					   noneSelectedText: "Option Type &#x25BC;",
 					   selectedList: 1
 					}); 
 					
@@ -958,7 +958,7 @@ $(document).ready(function() {
 					$(this).multiselect({
 					   multiple: false,
 					   header: false,
-					   noneSelectedText: "Modifier Type &#x25BC;",
+					   noneSelectedText: "Option Type &#x25BC;",
 					   selectedList: 1
 					}); 
 				});
@@ -1013,8 +1013,11 @@ $(document).ready(function() {
 		$curItem.css('background', 'transparent');
 	});
 	
-	$(document).on("click", ".itemEdit", function() {
-		$(this).hide();
+	$(document).on("click", ".itemEdit, .itemTR input[readonly='readonly']", function() {
+		
+		if($(this).hasClass('itemEdit')) $(this).hide();
+		else $(this).closest('table').find('.itemEdit').hide();
+		
 		$curItem = $(this).closest('table');
 		var itemID = $curItem.attr('id');
 		var count = parseInt($("#"+itemID+"_optionCountAct").val());
@@ -1217,8 +1220,12 @@ $(document).ready(function() {
 	$(".itemMenuSingleSelect").multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Modifier Type &#x25BC;",
+	   noneSelectedText: "Option Type &#x25BC;",
 	   selectedList: 1
+	});
+	
+	$('#menuConfigForm').click(function(event) {
+	  $(this).data('clicked',$(event.target))
 	});
 	
 	$("#menuConfigForm").on('valid', function (event) {
@@ -1228,7 +1235,11 @@ $(document).ready(function() {
 				$(this).trigger('click');
 		});
 		
+		var editingSkip = 0;
+		if ($(this).data('clicked').is('[id=menuSaveButtonE]')) editingSkip = 1;
+		
 		$('#menuSaveButton').hide();
+		if($('#menuSaveButtonE').length) $('#menuSaveButtonE').hide();
 		$('#savingButton').show();
 	
 		var url = "/saveMenu";
@@ -1266,11 +1277,18 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'Menu configuration has been saved!' });
-						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
+						if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
 			 }).done(function() {
-				if($('#redirectFlag').val()!='1') $('#menuSaveButton').show();
+				if($('#redirectFlag').val()!='1') $('#menuSaveButton').show(); 
+				
+				if(editingSkip)
+				{ 
+					$('#menuSaveButton').show(); 
+					$('#menuSaveButtonE').show(); 
+				}
+				
 				$('#savingButton').hide();
 			 });
 	
@@ -2947,6 +2965,23 @@ $(document).ready(function() {
 			}
 		 });
 		return false; // avoid to execute the actual submit of the form.
+	});
+	
+	//suppress text
+	$('#suppressText').on('click', function(){
+		if($(this).is(':checked')){
+			$("#aHeading").val(' ')
+			$("#appHeading").html(' ');
+			$("#aSubheading").val(' ');
+			$("#subHeading").html(' ');
+		}
+		else
+		{
+			$("#aHeading").val('');
+			$("#appHeading").html('Your heading goes here');
+			$("#aSubheading").val('');
+			$("#subHeading").html('Your subheading goes here');
+		}
 	});
 	
 });
