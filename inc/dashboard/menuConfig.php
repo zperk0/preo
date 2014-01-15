@@ -59,15 +59,17 @@
 			<div class="hide" id="menuSectionRow"> <!-- DUMMY -->
 				<div class="row">
 					<div class="large-12 columns menuSectionDiv">
-						<button type="button" class="sortSecHandle"	title="<?echo _("Reorder Section");?>"><i class="pd-move"></i></button>
 						<input type="text" name="mSectionName[0]" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required/>
 						<small class="error smallerror"><?echo _("Please type a section name");?></small>
 					</div>
 				</div>
 				<div class="row">
-					<div class="large-12 columns">
-						<button id="add_section0" 		type="button" class="newItem" 				title="<?echo _("Add an item to this section");?>"><i class="pd-add"></i></button> <?echo _("Add an item to this section");?>
-						<button id="delete_section0" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"><i class="pd-delete"></i></button> <?echo _("Delete this section");?>
+					<div class="large-12 columns sectionTools">
+						<button id="add_section0" 		type="button" class="newItem" 					title="<?echo _("Add an item to this section");?>"	><i class="pd-add"></i></button> <?echo _("Add an item to this section");?>&nbsp;&nbsp;
+						<div class="showOnHover">
+							<button 						type="button" class="sortSecHandle"				title="<?echo _("Move this section");?>"			><i class="pd-move"></i></button> <?echo _("Move this section");?>&nbsp;&nbsp;
+							<button id="delete_section0" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"			><i class="pd-delete"></i></button> <?echo _("Delete this section");?>&nbsp;&nbsp;
+						</div>
 					</div>
 				</div>
 				<div class="row hasTableHeader">
@@ -126,16 +128,16 @@
 						</td>
 					</tr>
 					<tr class="menuEdit subHeaderTR">
-						<td class="itemSubheader"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="pd-add"></i></button></h6></td>
+						<td class="itemSubheader"><h6><button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="pd-add"></i></button> <?echo _("Item options (optional)");?> </h6></td>
 						<td class="modifierRow hide">
-							<input type="text" name="iMod[item0]" class="menuField noEnterSubmit" placeholder="<?echo _("Modifier Name");?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
+							<input type="text" name="iMod[item0]" class="menuField noEnterSubmit" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Pick or type an option title");?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
 						</td>
 						<td class="modifierRow hide">
-							<select class="menuField noEnterSubmit inline" name="iModType[item0]" > <!-- Dummy does not have itemMenuSingleSelect -->
-								<option value="S"><?echo _("Modifier Type: Single");?></option> <!-- min=1,max=1 -->
-								<option value="M"><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
-								<option value="O"><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
-							</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
+							<select class="menuField noEnterSubmit inline" name="iModType[item0]"> <!-- Dummy does not have itemMenuSingleSelect -->
+								<option value="S" title="<?echo _("User must select only one option.");?>"><?echo _("Option Type: Single");?></option> <!-- min=1,max=1 -->
+								<option value="M" title="<?echo _("User must select one or more options.");?>"><?echo _("Option Type: Multiple");?></option> <!-- min=1,max=-1 -->
+								<option value="O" title="<?echo _("User can select zero or more options.");?>"><?echo _("Option Type: Optional");?></option> <!-- min=0,max=-1 -->
+							</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options.");?>"></i>
 							<small class="error"><?echo _("Please choose a type");?></small>
 						</td>
 					</tr>
@@ -186,33 +188,33 @@
 					<div id="menuSectionRow">
 						<div class="row">
 							<div class="large-12 columns menuSectionDiv">
-								<button type="button" class="sortSecHandle"	title="<?echo _("Reorder Section");?>"><i class="pd-move"></i></button>
 								<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" placeholder="<?echo _("Click to add a section name");?>" required/>
 								<small class="error smallerror"><?echo _("Please type a section name");?></small>
 							</div>
 						</div>
 						<div class="row">
-							<div class="large-12 columns">
-								<button id="add_section<?echo ($sKey+1);?>" 	type="button" class="newItem" 				title="<?echo _("Add an item to this section");?>"><i class="pd-add"></i></button> <?echo _("Add an item to this section");?>
-								<button id="delete_section<?echo ($sKey+1);?>" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"><i class="pd-delete"></i></button> <?echo _("Delete this section");?>
-							</div>
-							<div class="row hasTableHeader">
-								<table class="headerTable">
-									<thead>
-										<tr>
-											<th class="menuTDName"><? echo _("Name");?></th>
-											<th class="menuTDDesc"><? echo _("Description");?></th>
-											<th class="menuTDPrice"><? echo _("Price (&pound;)");?></th>
-											<!--<th class="menuTDQuant"><? echo _("Quantity");?></th>
-											<th class="menuTDVisi"><? echo _("Visible?");?></th>-->
-											<th class="menuTDTools"><? echo _("Tools");?></th>
-										</tr>
-									</thead>
-								</table>
+							<div class="large-12 columns sectionTools">
+								<button id="add_section<?echo ($sKey+1);?>" 	type="button" class="newItem" 					title="<?echo _("Add an item to this section");?>"	><i class="pd-add"></i></button> <?echo _("Add an item to this section");?>&nbsp;&nbsp;
+								<div class="showOnHover">
+									<button 						type="button" class="sortSecHandle"								title="<?echo _("Move this section");?>"			><i class="pd-move"></i></button> <?echo _("Move this section");?>&nbsp;&nbsp;
+									<button id="delete_section<?echo ($sKey+1);?>" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"			><i class="pd-delete"></i></button> <?echo _("Delete this section");?>&nbsp;&nbsp;
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="row">
+						<div class="row hasTableHeader">
+							<table class="headerTable">
+								<thead>
+									<tr>
+										<th class="menuTDName"><? echo _("Name");?></th>
+										<th class="menuTDDesc"><? echo _("Description");?></th>
+										<th class="menuTDPrice"><? echo _("Price (&pound;)");?></th>
+										<!--<th class="menuTDQuant"><? echo _("Quantity");?></th>
+										<th class="menuTDVisi"><? echo _("Visible?");?></th>-->
+										<th class="menuTDTools"><? echo _("Tools");?></th>
+									</tr>
+								</thead>
+							</table>
+						</div>
 						<div class="sortWithinDiv">
 						<?foreach($section['items'] as $item){ 
 						//again remember its all 1-indexed thats why we add +1 to the key
@@ -255,29 +257,29 @@
 										</td>
 									</tr>
 									<tr class="menuEdit subHeaderTR">
-										<td class="itemSubheader hide"><h6><?echo _("Item modifier (optional)");?> <button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="pd-add"></i></button></h6></td>
+										<td class="itemSubheader hide"><h6><button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="pd-add"></i></button> <?echo _("Item options (optional)");?></h6></td>
 										<?if(isset($item['modifiers'][0]['items'])){?>
-										<td class="modifierRow hide">
-											<input type="text" name="iMod[item<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Modifier Name");?>" value="<?echo $item['modifiers'][0]['name'];?>" required/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
-										</td>
-										<td class="modifierRow hide">
-											<select class="menuField noEnterSubmit inline itemMenuSingleSelect" style="display:none;" name="iModType[item<?echo ($iKey+1);?>]" > 
-												<option value="S" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==1){?>selected="selected"<?}?> ><?echo _("Modifier Type: Single");?></option> <!-- min=1,max=1 -->
-												<option value="M" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
-												<option value="O" <?if($item['modifiers'][0]['minChoices']==0 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
-											</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
-											<small class="error"><?echo _("Please choose a type");?></small>
-										</td>
-										<?}else{?>
 											<td class="modifierRow hide">
-												<input type="text" name="iMod[item<?echo ($iKey+1);?>]" class="menuField noEnterSubmit hide" placeholder="<?echo _("Modifier Name");?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i>
+												<input type="text" name="iMod[item<?echo ($iKey+1);?>]" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" class="menuField noEnterSubmit hide" placeholder="<?echo _("Pick or type an option title");?>" value="<?echo $item['modifiers'][0]['name'];?>" required/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
 											</td>
 											<td class="modifierRow hide">
-												<select class="menuField noEnterSubmit inline itemMenuSingleSelect" name="iModType[item<?echo ($iKey+1);?>]" >
-													<option value="S"><?echo _("Modifier Type: Single");?></option> <!-- min=1,max=1 -->
-													<option value="M"><?echo _("Modifier Type: Multiple");?></option> <!-- min=1,max=-1 -->
-													<option value="O"><?echo _("Modifier Type: Optional");?></option> <!-- min=0,max=-1 -->
-												</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 modifier.<br/><br/>Multiple: When the user can pick 1 or more modifiers.<br/><br/>Optional: when the user can pick 0 or multiple modifiers.");?>"></i>
+												<select class="menuField noEnterSubmit inline itemMenuSingleSelect" name="iModType[item<?echo ($iKey+1);?>]">
+													<option value="S" title="<?echo _("User must select only one option.");?>" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==1){?>selected="selected"<?}?> ><?echo _("Option Type: Single");?></option> <!-- min=1,max=1 -->
+													<option value="M" title="<?echo _("User must select one or more options.");?>" <?if($item['modifiers'][0]['minChoices']==1 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Option Type: Multiple");?></option> <!-- min=1,max=-1 -->
+													<option value="O" title="<?echo _("User can select zero or more options.");?>" <?if($item['modifiers'][0]['minChoices']==0 && $item['modifiers'][0]['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("Option Type: Optional");?></option> <!-- min=0,max=-1 -->
+												</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options.");?>"></i>
+												<small class="error"><?echo _("Please choose a type");?></small>
+											</td>
+										<?}else{?>
+											<td class="modifierRow hide">
+												<input type="text" name="iMod[item<?echo ($iKey+1);?>]" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" class="menuField noEnterSubmit hide" placeholder="<?echo _("Pick or type an option title");?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
+											</td>
+											<td class="modifierRow hide">
+												<select class="menuField noEnterSubmit inline itemMenuSingleSelect" name="iModType[item<?echo ($iKey+1);?>]">
+													<option value="S" title="<?echo _("User must select only one option.");?>"	  ><?echo _("Option Type: Single");?></option> <!-- min=1,max=1 -->
+													<option value="M" title="<?echo _("User must select one or more options.");?>"><?echo _("Option Type: Multiple");?></option> <!-- min=1,max=-1 -->
+													<option value="O" title="<?echo _("User can select zero or more options.");?>"><?echo _("Option Type: Optional");?></option> <!-- min=0,max=-1 -->
+												</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options.");?>"></i>
 												<small class="error"><?echo _("Please choose a type");?></small>
 											</td>
 										<?}?>
@@ -364,13 +366,18 @@
 		}
 	}?>
 		<div class="row alignNewSection">
-			<button type="button" class="newSection" title="<?echo _("Add a new section");?>"><i class="pd-add"></i></button> <?echo _("Add a new section");?>
+			<h4><button type="button" class="newSection" title="<?echo _("Add a new menu section");?>"><i class="pd-add"></i></button> <?echo _("Add a new menu section");?></h4>
 		</div>
 	</div>
 	
 	<div class="row">
 		<div class="small-12 large-4 columns">
-			<button id="menuSaveButton" type="submit"><?echo _("SAVE CHANGES");?></button>
+			<?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
+				<!--<button id="menuSaveButtonE" type="submit"><?echo _("SAVE & CONTINUE EDITING");?></button> HIDDEN UNTIL PWA-116 -->
+				<button id="menuSaveButton" type="submit"><?echo _("SAVE & FINISH");?></button>
+			<?}else{?>
+				<button id="menuSaveButton" type="submit"><?echo _("SAVE CHANGES");?></button>
+			<?}?>
 			<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
 		</div>
 	</div>

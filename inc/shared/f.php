@@ -19,18 +19,15 @@
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.datepicker.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.abide.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/jquery.noty-full-min.js"></script>
-		<!--<script src="/js/jsMiniColors/jsminicolors.js"></script>-->
 		<script src="<?echo $_SESSION['path']?>/js/jsColor/jscolor.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/form.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/tweet.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/timepicker.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/jquery-ui-1.10.3.custom.min.js"></script>
-		<script src="<?echo $_SESSION['path']?>/js/jqueryui-widgets.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/multi-select.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/tableSlide.js"></script>
 		
 		<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-		<!--<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>-->
 		
 		<!-- Google+ -->
 		<script src="<?echo $_SESSION['path']?>/js/googleplus.js"></script>

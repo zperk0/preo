@@ -99,7 +99,7 @@ input[readonly]{
 	cursor: no-drop;
 }
 
-.itemTR input[readonly]{
+.itemTR input[readonly], .userTR input[readonly], .eventTR input[readonly]{
 	cursor: pointer;
 }
 
@@ -735,7 +735,8 @@ table.menuTable, table.eventTable, table.userTable , table.outletTable, table.md
 }
 
 .itemTR.menuEdit{
-	border-top: 1px solid #B8B9BC;
+	/*border-top: 1px solid #B8B9BC; */
+	margin-top: 7px;
 }
 
 .menuTable td, .eventTable td, .userTable td, .outletTable td, .mdTable td, table.headerTable td{
@@ -863,7 +864,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .userTable .userTDRole, .headerTable .userTDRole{
-	width: 10%;
+	width: 13%;
 	font-size: 14px;
 	padding-top: 0px;
 }
@@ -928,7 +929,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .userTable .userTDTools, .userTable .userTDTools, .headerTable .userTDTools{
-	width: 11%;
+	width: 9%;
 }
 
 .outletTable .outletTDTools{
@@ -997,7 +998,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	border-bottom: 1px solid #B9BBBD !important;
 }
 
-.dynamicDataTable tr.itemTR.menuEdit:first-of-type{
+.dynamicDataTable tr.itemTR.menuEdit:first-of-type, .dynamicDataTable tr.userTR.userEdit:first-of-type, .dynamicDataTable tr.eventTR.eventEdit:first-of-type{
 	border-bottom: 0px !important
 }
 
@@ -1028,6 +1029,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 
 .itemSubheader{
 	padding-top: 8px !important;
+	padding-bottom: 15px !important;
 }
 
 .itemSubheader button{
@@ -1389,6 +1391,9 @@ table.sortable-placeholder, .sortable-placeholder-sec{
 	width: auto;
 }
 
+tbody tr.menuEdit, tbody tr.userEdit, tbody tr.eventEdit {
+	background: transparent !important;
+}
 
 table.sortable-placeholder tbody, table.sortable-placeholder tr, table.sortable-placeholder td {
 	border:none !important;
@@ -1429,6 +1434,10 @@ table.sortable-placeholder tbody, table.sortable-placeholder tr, table.sortable-
 	margin-left: 16px;
 }
 
+.alignNewSection {
+	margin-top: 10px;
+}
+
 .smallNot {
 	font-size: 14px;
 }
@@ -1444,4 +1453,71 @@ table.sortable-placeholder tbody, table.sortable-placeholder tr, table.sortable-
 
 .itemDuplicate, .eventDuplicate{
 	background: #2AB6E5;
+}
+
+ul.ui-autocomplete{
+	width: 270px;
+	border: 1px solid #BCBDBF;
+}
+
+ul.ui-autocomplete li.ui-menu-item  a{
+	color: #4D4D4D;
+}
+
+ul.ui-autocomplete li.ui-menu-item:hover {
+	background: #E4E4E4;
+	cursor: pointer;
+}
+
+ul.ui-autocomplete li.ui-menu-item:last-of-type {
+	border-bottom: 0px;
+}
+
+ul.ui-autocomplete li.ui-menu-item {
+	background: white;
+	border-bottom: 1px solid #BCBDBF;
+	padding: 7px 4px;
+	list-style-type:none;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+input[name^='iMod'], input[name^='iMod']:focus{
+	background: #3AA2DC !important;
+	color: #FFFFFF !important;
+	padding-left: 10px !important;
+	font-weight: bold !important;
+	font-size: 14px !important;
+	height: 39px !important;
+	z-index: 1000;
+	margin-top: 19px;
+}
+
+input[name^='iMod']::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #FFF;
+}
+input[name^='iMod']:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #FFF;
+}
+input[name^='iMod']::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #FFF;
+}
+input[name^='iMod']:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #FFF;
+}
+
+.showAChevy {
+	position: relative;
+	font-family: 'icomoon';
+	font-size: 26px;
+	display: inline-block;
+	margin-top: -10px;
+	top: -33px;
+	float: right;
+	font-weight: normal;
+	width: 20px;
+	color: #FFF;
+	height: 20px;
+	z-index: 2001;
+	left: -48px;
 }

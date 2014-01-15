@@ -21,8 +21,6 @@
     z-index:10000; 
     text-align: left; 
     background-color: #fff;
-    padding-right:1px!important;
-    padding-left:1px!important;
     margin-left:0px!important;
     border-top:0;
 }
@@ -82,4 +80,26 @@
 
 .ui-multiselect {
 	padding: 10px 12px;
+}
+
+.ui-multiselect.ui-widget.ui-state-default.ui-corner-all::after {
+	content: "\e602";
+	position: relative;
+	font-family: 'icomoon';
+	font-size: 26px;
+	display: inline-block;
+	margin-top: -10px;
+	top: 6px;
+	float: right;
+	font-weight: normal;
+}
+
+.ui-multiselect-menu ul li {
+	margin-right: 0px !important;
+	cursor: pointer !important;
+}
+
+.ui-multiselect-checkboxes li{
+	width: 100% !important;
+	margin-left: 0px !important;
 }

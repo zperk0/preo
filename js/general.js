@@ -787,7 +787,7 @@ $(document).ready(function() {
 				});
 				
 				$(this).find("select").each(function() {
-					$(this).val( $(this).prop("defaultValue") );
+					//$(this).val( $(this).prop("defaultValue") );
 					var tempName = $(this).attr('name');
 					var newName = tempName.replace(/item\d+/gi, itemID);
 					$(this).attr('name', newName);
@@ -795,7 +795,7 @@ $(document).ready(function() {
 					$(this).multiselect({
 					   multiple: false,
 					   header: false,
-					   noneSelectedText: "Option Type &#x25BC;",
+					   noneSelectedText: "Pick an option type",
 					   selectedList: 1
 					}); 
 					
@@ -897,7 +897,7 @@ $(document).ready(function() {
 			$("#item0_optionCountAct").after($newOCount);
 			
 			//clone dummy table
-			$newTab = $("#item0").clone(true);
+			$newTab = $("#item0").clone(false);
 			$newTab.attr('id','item'+newCount);
 		}
 		
@@ -958,17 +958,21 @@ $(document).ready(function() {
 					$(this).multiselect({
 					   multiple: false,
 					   header: false,
-					   noneSelectedText: "Option Type &#x25BC;",
+					   noneSelectedText: "Pick an option type",
 					   selectedList: 1
 					}); 
 				});
 			});
 		}
-				
+		
 		//now we give the section id to the duplicate button
 		$newTab.find(".itemDuplicate").attr('id',"dup"+newCount+"_"+section);
 		
+		//add autocomplete
+		$newTab.find("input[name^=iMod]").autocomplete({ source: [ "Choose a size","Choose a flavour","Choose a topping","Choose some extras","Choose a side dish" ], delay: 10, minLength: 0, position: { my: "left top", at: "left bottom", collision: "none", of: $newTab.find("input[name^=iMod]") } });
+		
 		$newTab.css('backgroundColor','#fafafa');
+		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
@@ -978,7 +982,7 @@ $(document).ready(function() {
 		
 		$($newTab).slideRow('down');
 		if($newTab.find('.itemEdit').is(':visible')) $newTab.find('.itemEdit').trigger('click');
-		
+	
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
@@ -1011,6 +1015,7 @@ $(document).ready(function() {
 		$curItem.find(".subHeaderTR").slideRow('up');
 		if(count) $curItem.find('.menuEdit').find('.modifierRow').slideRow('up');
 		$curItem.css('background', 'transparent');
+		$curItem.css('box-shadow', '0px 0px 0px');
 	});
 	
 	$(document).on("click", ".itemEdit, .itemTR input[readonly='readonly']", function() {
@@ -1031,6 +1036,16 @@ $(document).ready(function() {
 		$curItem.find(".subHeaderTR").slideRow('down');
 		if(count) $curItem.find('.menuEdit').find('.modifierRow').slideRow('down');
 		$curItem.css('background', '#fafafa');
+		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+		
+		$curItem.find('select[name^=iModType]').each(function(){ //reinitialize to get the right width
+			$(this).multiselect({
+				   multiple: false,
+				   header: false,
+				   noneSelectedText: "Pick an option type",
+				   selectedList: 1
+				}); 
+		});
 	});
 	
 	$(document).on("click", ".newSection", function() {
@@ -1220,9 +1235,17 @@ $(document).ready(function() {
 	$(".itemMenuSingleSelect").multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Option Type &#x25BC;",
+	   noneSelectedText: "Pick an option type",
 	   selectedList: 1
 	});
+	
+
+	$("input[name^=iMod]").autocomplete({ source: [ "Choose a size","Choose a flavour","Choose a topping","Choose some extras","Choose a side dish" ], delay: 10, minLength: 0 });
+	
+	$(document).on("click", '.showAChevy, input[name^=iMod]', function(){
+		$(this).parent('.modifierRow').find("input[name^=iMod]").autocomplete( "search", "C" );
+	});
+	
 	
 	$('#menuConfigForm').click(function(event) {
 	  $(this).data('clicked',$(event.target))
@@ -1376,7 +1399,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Collection Slot &#x25BC;",
+			   noneSelectedText: "Collection Slot",
 			   selectedList: 1
 			}); 
 		});
@@ -1435,6 +1458,7 @@ $(document).ready(function() {
 		$newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
 		
 		$newTab.css('backgroundColor','#fafafa');
+		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
@@ -1468,10 +1492,12 @@ $(document).ready(function() {
 		$curItem.find(".optionTR").slideRow('up');
 		$curItem.find(".eventMenuSingleSelect").multiselect("disable");
 		$curItem.css('background', 'transparent');
+		$curItem.css('box-shadow', '0px 0px 0px');
 	});
 	
-	$(document).on("click", ".eventTDEdit", function() {
-		$(this).hide();
+	$(document).on("click", ".eventTDEdit, .eventTR input[readonly='readonly']", function() {
+		if($(this).hasClass('eventTDEdit')) $(this).hide();
+		else $(this).closest('table').find('.eventTDEdit').hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").addClass('eventEdit');
 		$curItem.find("tr").removeClass('savedInput');
@@ -1481,6 +1507,7 @@ $(document).ready(function() {
 		$curItem.find(".optionTR").slideRow('down');
 		$curItem.find(".eventMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
+		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
 	});
 	
 	$(document).on("click", ".eventDelete", function() {
@@ -1574,7 +1601,7 @@ $(document).ready(function() {
 	$(".eventMenuSingleSelect").multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Collection Slot &#x25BC;",
+	   noneSelectedText: "Collection Slot",
 	   selectedList: 1
 	}); 
 		
@@ -1609,7 +1636,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Collection Slot &#x25BC;",
+			   noneSelectedText: "Collection Slot",
 			   selectedList: 1
 			}); 
 		});
@@ -1730,10 +1757,12 @@ $(document).ready(function() {
 		$curItem.find(".userTDEdit").show();
 		$curItem.find(".userMenuSingleSelect").multiselect("disable");
 		$curItem.css('background', 'transparent');
+		$curItem.css('box-shadow', '0px 0px 0px');
 	});
 	
-	$(document).on("click", ".userTDEdit", function() {
-		$(this).hide();
+	$(document).on("click", ".userTDEdit, .userTR input[readonly='readonly']", function() {
+		if($(this).hasClass('userTDEdit')) $(this).hide();
+		else $(this).closest('table').find('.userTDEdit').hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").addClass('userEdit');
 		$curItem.find("tr").removeClass('savedInput');
@@ -1742,6 +1771,7 @@ $(document).ready(function() {
 		$curItem.find(".userSave").show();
 		$curItem.find(".userMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
+		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
 	});
 	
 	$(document).on("click", ".newUser", function() {
@@ -1789,7 +1819,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Role &#x25BC;",
+			   noneSelectedText: "Role",
 			   selectedList: 1
 			}); 
 		});
@@ -1816,6 +1846,7 @@ $(document).ready(function() {
 		$newTab.find(".userDuplicate").attr('id',"dup"+newCount);
 		
 		$newTab.css('backgroundColor','#fafafa');
+		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
@@ -1917,7 +1948,7 @@ $(document).ready(function() {
 	$(".userMenuSingleSelect").multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Role &#x25BC;",
+	   noneSelectedText: "Role",
 	   selectedList: 1
 	}); 
 		
@@ -2056,7 +2087,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   checkAllText: "Select all menus",
 			   uncheckAllText: "Unselect all menus",
-			   noneSelectedText: "Select menu(s) for this outlet &#x25BC;",
+			   noneSelectedText: "Select menu(s) for this outlet",
 			   selectedText: "# of # selected",
 			   selectedList: 0
 			});
@@ -2099,7 +2130,7 @@ $(document).ready(function() {
 	$(".outletMenuMultiSelect").multiselect({
 	   checkAllText: "Select all menus",
 	   uncheckAllText: "Unselect all menus",
-	   noneSelectedText: "Select menu(s) for this outlet &#x25BC;",
+	   noneSelectedText: "Select menu(s) for this outlet",
 	   selectedText: "# of # selected",
 	   selectedList: 0
 	}); 
@@ -2913,7 +2944,7 @@ $(document).ready(function() {
 	});
 	
 	$(".moreSelect").multiselect({
-	   noneSelectedText: "Please select the feature you require &#x25BC;",
+	   noneSelectedText: "Please select features you require",
 	   selectedText: "# of # selected",
 	   checkAllText: "Select all",
 	   uncheckAllText: ""
