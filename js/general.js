@@ -1400,7 +1400,8 @@ $(document).ready(function() {
 			   multiple: false,
 			   header: false,
 			   noneSelectedText: "Collection Slot",
-			   selectedList: 1
+			   selectedList: 1,
+			   minWidth: 342
 			}); 
 		});
 		
@@ -1508,6 +1509,16 @@ $(document).ready(function() {
 		$curItem.find(".eventMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+		
+		$curItem.find("td.eventTDCollection select").each(function() {
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: "Collection Slot",
+			   selectedList: 1,
+			   minWidth: 342
+			}); 
+		});
 	});
 	
 	$(document).on("click", ".eventDelete", function() {
@@ -1602,7 +1613,8 @@ $(document).ready(function() {
 	   multiple: false,
 	   header: false,
 	   noneSelectedText: "Collection Slot",
-	   selectedList: 1
+	   selectedList: 1,
+	   minWidth: 342
 	}); 
 		
 	$(".eventMenuSingleSelect").multiselect('disable');
@@ -1637,7 +1649,8 @@ $(document).ready(function() {
 			   multiple: false,
 			   header: false,
 			   noneSelectedText: "Collection Slot",
-			   selectedList: 1
+			   selectedList: 1,
+			   minWidth: 342
 			}); 
 		});
 		
@@ -1820,7 +1833,8 @@ $(document).ready(function() {
 			   multiple: false,
 			   header: false,
 			   noneSelectedText: "Role",
-			   selectedList: 1
+			   selectedList: 1,
+			   minWidth: 108
 			}); 
 		});
 		
