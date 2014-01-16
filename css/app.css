@@ -721,6 +721,10 @@ input[name^=mSectionName] {
 	width: 90%;
 }
 
+.smallesterror {
+	width: 50%;
+}
+
 table.menuTable, table.eventTable, table.userTable , table.outletTable, table.mdTable, table.headerTable {
 	border:0px !important;
 	table-layout: fixed !important;
@@ -965,11 +969,12 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 
 table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdTable,table.headerTable  {
 	display: table;
-	margin-right: 0px !important;
+	margin-right: auto !important;
 	width: 101.8% !important;
-	margin-left: -1% !important;
+	margin-left: auto !important;
 	margin-bottom: 0px !important;
 	margin-top: -1px;
+	max-width: 987px !important;
 }
 
 .optionTR .menuTDPrice {
@@ -977,6 +982,10 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 }
 .optionTR .menuTDTools {
 	width: 9%;
+}
+
+.optionTR {
+	margin-top: -20px;
 }
 
 .userTable .ui-multiselect, .eventTable, .ui-multiselect{
@@ -1025,6 +1034,11 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 
 .subHeaderTR{
 	border-bottom:0 !important;
+	width: 987px;
+}
+
+.xtraModTR{
+	width: 987px;
 }
 
 .itemSubheader{
@@ -1032,7 +1046,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	padding-bottom: 15px !important;
 }
 
-.itemSubheader button{
+.itemSubheader button, .xtraOpt{
 	width: 20px;
 	height: 20px;
 	font-size: 17px;

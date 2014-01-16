@@ -81,11 +81,11 @@
 								</td>
 								<td class="eventTDTime">
 									<input type="text" name="eTime[0]" class="eventField noEnterSubmit" value="<?echo _("HH:MM");?>" required/>
-									<small class="error"><?echo _("Time?");?></small>
+									<small class="error smallerror"><?echo _("Time?");?></small>
 								</td>
 								<td class="eventTDTime">
 									<input type="text" name="eETime[0]" class="eventField noEnterSubmit" value="<?echo _("HH:MM");?>" required/>
-									<small class="error"><?echo _("Time?");?></small>
+									<small class="error smallerror"><?echo _("Time?");?></small>
 								</td>
 								
 								<td class="eventTDVisi hide">
@@ -117,13 +117,13 @@
 										<option value="HALFTIME" ><?echo _("Collection Slot: Half-time")?></option>
 										<option value="POSTSHOW" ><?echo _("Collection Slot: Post-Show")?></option>
 										<option value="POSTGAME" ><?echo _("Collection Slot: Post-Game")?></option>
-										<small class="error"><?echo _("Please choose a slot.");?></small>
 									</select>
+									<small class="error"><?echo _("Please choose a slot.");?></small>
 								</td>
 								<td class="eventTDLead">
 									<label><?echo _("Lead Time (mins)");?></label>
-									<input type="text" name="eLead[event0][0]" class="eventField noEnterSubmit" value="<?echo _("eg. 30");?>" required/>
-									<small class="error"><?echo _("Amount?");?></small>
+									<input type="text" name="eLead[event0][0]" class="eventField noEnterSubmit" value="<?echo _("30");?>" required pattern="^\d+$"/>
+									<small class="error"><?echo _("Time?");?></small>
 								</td>
 								<td class="eventTDAddMore">
 									<button type="button" class="newCollSlot" title="<?echo _("Add another slot");?>"><i class="pd-add"></i></button>
@@ -161,11 +161,11 @@
 						</td>
 						<td class="eventTDTime">
 							<input type="text" name="eTime[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('H:i',strtotime($event['starttime']));?>" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required readonly="readonly"/>
-							<small class="error"><?echo _("Time?");?></small>
+							<small class="error smallerror"><?echo _("Time?");?></small>
 						</td>
 						<td class="eventTDTime">
 							<input type="text" name="eETime[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('H:i',strtotime($event['endtime']));?>" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required readonly="readonly"/>
-							<small class="error"><?echo _("Time?");?></small>
+							<small class="error smallerror"><?echo _("Time?");?></small>
 						</td>
 						
 						<td class="eventTDVisi hide">
@@ -203,8 +203,8 @@
 						</td>
 						<td class="eventTDLead">
 							<label><?echo _("Lead Time (mins)");?></label>
-							<input type="text" name="eLead[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit" value="<?echo $cSlot['leadtime'];?>" placeholder="<?echo _("eg. 30");?>" required/>
-							<small class="error"><?echo _("Amount?");?></small>
+							<input type="text" name="eLead[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit" value="<?echo $cSlot['leadtime'];?>" placeholder="<?echo _("eg. 30");?>" required pattern="^\d+$"/>
+							<small class="error"><?echo _("Time?");?></small>
 						</td>
 						<td class="eventTDAddMore">
 							<button type="button" class="newCollSlot" title="<?echo _("Add another slot");?>"><i class="pd-add"></i></button>

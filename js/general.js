@@ -708,7 +708,7 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
-	$(document).on("click", ".optionRowDelete", function() {
+	$(document).on("click", ".optionRowDelete", function(event) {
 		//get item number
 		$curTable = $(this).closest('table');
 		var itemID = $curTable.attr('id');
@@ -718,28 +718,60 @@ $(document).ready(function() {
 		var newCount = parseInt(parseInt(itemCount) - 1);
 		$("#"+itemID+"_optionCountAct").val(newCount);
 		
-		if(newCount < 1) //remove modifier info
-		{
-			$ele = $curTable.find('.modifierRow');
-			$ele.hide();
+		$ele = $(this).closest('tr');
+		
+		
+		if( ($ele.prev().prev().hasClass('subHeaderTR')) && ( ($ele.next().hasClass('subHeaderTR')) || ($ele.next().hasClass('xtraModTR')) ) )
+		{	
+			$ele.prev().remove();
+			$ele.prev('.subHeaderTR').remove();
 			
-			$ele.find('input').each(function(){
-				$(this).removeProp('required');
-				$(this).val('');
-				$(this).attr('placeholder','Modifier Name');
-			});
-			
-			$ele.find('select').each(function(){
-				$(this).removeProp('required');
-			});
-			
+			$("#"+itemID+"_modCountAct").val(parseInt($("#"+itemID+"_modCountAct").val())-1);
 		}
 		
 		//bye-bye
 		$(this).parents("tr:first").remove();
 	});
 	
-	$(document).on("click", ".newOpt, .optionRowDuplicate", function() {
+	$(document).on("click", ".xtraOpt", function(event) {
+	
+		//get item number
+		$curTable = $(this).closest('table');
+		var itemID = $curTable.attr('id');
+		
+		//get and update current count
+		var itemCount = $("#"+itemID+"_modCount").val();
+		var newCount = parseInt(parseInt(itemCount) + 1);
+		$("#"+itemID+"_modCount").val(newCount);
+		$("#"+itemID+"_modCountAct").val(parseInt($("#"+itemID+"_modCountAct").val())+1);
+	
+	
+		$subHeader = $('#item0 .subHeaderTR:first').clone(false);
+		$dummyData = $('#item0 .subHeaderTR:first').next().clone(false); //dummy row
+		
+		$subHeader.find("select").each(function() {
+			$(this).hide();
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/m\d+/gi, "m"+newCount);
+			$(this).attr('name', newName);
+
+			$(this).attr('required','required'); 
+		});
+		
+		//add autocomplete
+		$subHeader.find("input[name^=iMod]").each(function(){
+			$(this).autocomplete({ source: [ "Choose a size","Choose a flavour","Choose a topping","Choose some extras","Choose a side dish" ], delay: 10, minLength: 0, position: { my: "left top", at: "left bottom", collision: "none", of: $subHeader.find("input[name^=iMod]") } });
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/m\d+/gi, "m"+newCount);
+			$(this).attr('name', newName);
+		});
+		
+		$(this).closest('tr.xtraModTR').before($subHeader).before($dummyData);
+		
+		$subHeader.find('.newOpt').trigger('click');
+	});
+	
+	$(document).on("click", ".newOpt, .optionRowDuplicate", function(event) {
 		//new item or duplicate?
 		var dup = 0;
 		if($(this).hasClass("optionRowDuplicate")) dup = 1;
@@ -753,6 +785,15 @@ $(document).ready(function() {
 		var newCount = parseInt(parseInt(itemCount) + 1);
 		$("#"+itemID+"_optionCount").val(newCount);
 		$("#"+itemID+"_optionCountAct").val(parseInt($("#"+itemID+"_optionCountAct").val())+1);
+		
+		//get mod number
+		if(dup)
+			var modNumber = $(event.target).parents('.optionTR').first().prevAll('.subHeaderTR').first().find('input[name^=iMod]').attr('name');
+		else
+			var modNumber = $(event.target).parents('.subHeaderTR').first().find('input[name^=iMod]').attr('name');
+			
+		modNumber = modNumber.replace(/^iMod.*\[m/gi,'');
+		modNumber = modNumber.replace(']','');
 		
 		if(dup)
 		{
@@ -809,7 +850,8 @@ $(document).ready(function() {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/item\d+/gi, itemID);
-			var newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			newName = newName.replace(/\[m\d+/gi, '[m'+modNumber);
 			$(this).attr('name', newName);
 		});
 		
@@ -837,10 +879,26 @@ $(document).ready(function() {
 		//hide it so we can animate it!
 		$newRow.css('display','none');
 		
-		//insert at the end of the table
-		$("#"+itemID+" tr:last").after($newRow);
-		$("#"+itemID+" tr:last").slideRow('down');
-
+		//now we locate where to place this option row
+		if( ($(event.target).closest('.subHeaderTR').nextAll('.subHeaderTR').first().length) && !dup ) //new option button pressed
+		{
+			//insert just before next heading
+			$(event.target).closest('.subHeaderTR').nextAll('.subHeaderTR').first().before($newRow);
+			$(event.target).closest('.subHeaderTR').nextAll('.subHeaderTR').first().prev($newRow).slideRow('down');
+		}
+		else if( ($(event.target).closest('.optionTR').prevAll('.subHeaderTR').first().nextAll('.subHeaderTR').first().length) && dup ) //duplicate button pressed
+		{
+			//insert just before next heading
+			$(event.target).closest('.optionTR').prevAll('.subHeaderTR').first().nextAll('.subHeaderTR').first().before($newRow);
+			$newRow.slideRow('down');
+		}
+		else
+		{
+			//insert at before "add new option button"
+			$("#"+itemID).find('.xtraModTR').before($newRow);
+			$newRow.slideRow('down');
+		}
+		
 		$("html, body").animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
 	});
 	
@@ -877,6 +935,14 @@ $(document).ready(function() {
 			$("#"+itemID+"_optionCountAct").after($newOCountAct);
 			$("#"+itemID+"_optionCountAct").after($newOCount);
 			
+			$newMCount = $("#"+itemID+"_modCount").clone(true);
+			$newMCount.attr('id','item'+newCount+'_modCount');
+			$newMCount.attr('name','item'+newCount+'_modCount');
+			$newMCountAct = $("#"+itemID+"_modCountAct").clone(true);
+			$newMCountAct.attr('id','item'+newCount+'_modCountAct');
+			$newMCountAct.attr('name','item'+newCount+'_modCountAct');
+			$("#"+itemID+"_modCountAct").after($newMCountAct);
+			$("#"+itemID+"_modCountAct").after($newMCount);
 			
 			//clone specific table
 			$newTab = $("#"+itemID).clone(false);
@@ -896,9 +962,24 @@ $(document).ready(function() {
 			$("#item0_optionCountAct").after($newOCountAct);
 			$("#item0_optionCountAct").after($newOCount);
 			
+			$newMCount = $("#item0_modCount").clone(true);
+			$newMCount.attr('id','item'+newCount+'_modCount');
+			$newMCount.attr('name','item'+newCount+'_modCount');
+			$newMCount.val(0);
+			$newMCountAct = $("#item0_modCountAct").clone(true);
+			$newMCountAct.attr('id','item'+newCount+'_modCountAct');
+			$newMCountAct.attr('name','item'+newCount+'_modCountAct');
+			$newMCountAct.val(0);
+			$("#item0_modCountAct").after($newMCountAct);
+			$("#item0_modCountAct").after($newMCount);
+			
 			//clone dummy table
 			$newTab = $("#item0").clone(false);
 			$newTab.attr('id','item'+newCount);
+			
+			//remove dummy modifier as we add it later manually :)
+			$newTab.find('.subHeaderTR').remove();
+			$newTab.find('.optionTR').remove();
 		}
 		
 			$newTab.addClass('table'+section);
@@ -908,7 +989,7 @@ $(document).ready(function() {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/section\d+/gi, section);
-			var newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
 		});
 		
@@ -1013,6 +1094,7 @@ $(document).ready(function() {
 		if(count) $curItem.find(".optionTR").slideRow('up');
 		$curItem.find(".itemSubheader").slideRow('up');
 		$curItem.find(".subHeaderTR").slideRow('up');
+		$curItem.find(".xtraModTD").slideUp();
 		if(count) $curItem.find('.menuEdit').find('.modifierRow').slideRow('up');
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
@@ -1034,6 +1116,7 @@ $(document).ready(function() {
 		if(count) $curItem.find(".optionTR").slideRow('down');
 		$curItem.find(".itemSubheader").slideRow('down');
 		$curItem.find(".subHeaderTR").slideRow('down');
+		$curItem.find(".xtraModTD").slideDown();
 		if(count) $curItem.find('.menuEdit').find('.modifierRow').slideRow('down');
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
@@ -1148,16 +1231,26 @@ $(document).ready(function() {
 				//update item-option counts
 				var itemCountArray = new Array();
 				var itemCountActArray = new Array();
+				
+				var modCountArray = new Array();
+				var modCountActArray = new Array();
+				
 				for(var i=0;i<currentItemOrder.length;i++)
 				{
 					itemCountArray[i] = $("#"+currentItemOrder[i]+"_optionCount").val();
 					itemCountActArray[i] = $("#"+currentItemOrder[i]+"_optionCountAct").val();
+					
+					modCountArray[i] = $("#"+currentItemOrder[i]+"_modCount").val();
+					modCountActArray[i] = $("#"+currentItemOrder[i]+"_modCountAct").val();
 				}
 				
 				for(var i=0;i<oldItemOrder.length;i++) //the new values go to the old order. that's how the association is preserved.
 				{
 					$("#"+oldItemOrder[i]+"_optionCount").val(itemCountArray[i]);
 					$("#"+oldItemOrder[i]+"_optionCountAct").val(itemCountActArray[i]);
+					
+					$("#"+oldItemOrder[i]+"_modCount").val(modCountArray[i]);
+					$("#"+oldItemOrder[i]+"_modCountAct").val(modCountActArray[i]);
 				}
 			}
 		});
@@ -1171,10 +1264,10 @@ $(document).ready(function() {
 		}
 		else
 		{
-			$("body").find('.newSection').parent('.row').before($newSec);
+			$(this).parent().parent().before($newSec);
 		}
 		
-		$($newSec).slideDown('slow');
+		$newSec.slideDown('slow');
 		
 		$('body').find('.firstItemDivsection'+newCount).parents('#menuSectionRow').wrap('<div class="moveSec"></div>').wrap('<div class="moveSecInner"></div>');
 	});
@@ -1381,7 +1474,7 @@ $(document).ready(function() {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
-			var newName = newName.replace(/\[\d+\]/gi, "["+$newOCount.val()+"]");
+			newName = newName.replace(/\[\d+\]/gi, "["+$newOCount.val()+"]");
 			$(this).attr('name', newName);
 		});
 		
@@ -1393,13 +1486,13 @@ $(document).ready(function() {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
-			var newName = newName.replace(/\[\d+\]/gi, "["+$newOCount.val()+"]");
+			newName = newName.replace(/\[\d+\]/gi, "["+$newOCount.val()+"]");
 			$(this).attr('name', newName);
 			
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Collection Slot",
+			   noneSelectedText: "Choose a Collection Slot",
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
@@ -1514,7 +1607,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Collection Slot",
+			   noneSelectedText: "Choose a Collection Slot",
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
@@ -1612,7 +1705,7 @@ $(document).ready(function() {
 	$(".eventMenuSingleSelect").multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Collection Slot",
+	   noneSelectedText: "Choose a Collection Slot",
 	   selectedList: 1,
 	   minWidth: 342
 	}); 
@@ -1648,7 +1741,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Collection Slot",
+			   noneSelectedText: "Choose a Collection Slot",
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
@@ -1659,7 +1752,7 @@ $(document).ready(function() {
 			$(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/event\d+/gi, eventID);
-			var newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
 		});
 		
@@ -1725,7 +1818,7 @@ $(document).ready(function() {
 						  type: 'error',  layout: 'topCenter',
 						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
-						//alert(data);
+						alert(data);
 						return false;
 					}
 					

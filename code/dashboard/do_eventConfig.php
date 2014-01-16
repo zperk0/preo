@@ -56,6 +56,8 @@
 	
 	$venueID = $_SESSION['venue_id'];
 	
+	$curlResult = '';
+	
 	foreach($events as $event)
 	{
 		//create/update event

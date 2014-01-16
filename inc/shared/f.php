@@ -120,16 +120,26 @@
 						//update item-option counts
 						var itemCountArray = new Array();
 						var itemCountActArray = new Array();
+						
+						var modCountArray = new Array();
+						var modCountActArray = new Array();
+						
 						for(var i=0;i<currentItemOrder.length;i++)
 						{
 							itemCountArray[i] = $("#"+currentItemOrder[i]+"_optionCount").val();
 							itemCountActArray[i] = $("#"+currentItemOrder[i]+"_optionCountAct").val();
+							
+							modCountArray[i] = $("#"+currentItemOrder[i]+"_modCount").val();
+							modCountActArray[i] = $("#"+currentItemOrder[i]+"_modCountAct").val();
 						}
 						
 						for(var i=0;i<oldItemOrder.length;i++) //the new values go to the old order. that's how the association is preserved.
 						{
 							$("#"+oldItemOrder[i]+"_optionCount").val(itemCountArray[i]);
 							$("#"+oldItemOrder[i]+"_optionCountAct").val(itemCountActArray[i]);
+							
+							$("#"+oldItemOrder[i]+"_modCount").val(modCountArray[i]);
+							$("#"+oldItemOrder[i]+"_modCountAct").val(modCountActArray[i]);
 						}
 					}
 				});

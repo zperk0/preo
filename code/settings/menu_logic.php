@@ -66,27 +66,29 @@
 		$menu = $dataJSON;
 
 		//Now lets simplify what we need
-		
-		//Get section count
-		$sectionCount = count($menu['sections']);
-		
-		//Get item count and option count
+
+		//Get section count, item count & info on modifiers + options
 		$itemCount = 0;
-		$itemOptionArray = array();
+		$tempCounter = 0;
+		$itemModOptArray = array();
+		
+		$sectionCount = count($menu['sections']);
 		foreach($menu['sections'] as $section)
 		{
 			$itemCount += count($section['items']);
-			
-			foreach($section['items'] as $key=>$item)
+		
+			foreach($section['items'] as $item)
 			{
-				if(isset($item['modifiers'][0]['items']))
+				$itemModOptArray[$tempCounter]['id'] = $item['id'];
+				$itemModOptArray[$tempCounter]['modCount'] = count($item['modifiers']);
+				$itemModOptArray[$tempCounter]['optCount'] = 0;
+				
+				foreach($item['modifiers'] as $modifiers)
 				{
-					$itemOptionArray[]['count'] = count($item['modifiers'][0]['items']);
+					$itemModOptArray[$tempCounter]['optCount'] += count($modifiers['items']);
 				}
-				else
-				{
-					$itemOptionArray[]['count'] = 0;
-				}
+				
+				$tempCounter++;
 			}
 		}
 		

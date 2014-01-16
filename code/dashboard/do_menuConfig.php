@@ -39,19 +39,19 @@
 						$optionID = $option['id'];
 						
 						//kill all options
-						$curlResult = callAPI('DELETE', $apiURL."modifieritems/$optionID", false, $apiAuth); //section and section items deleted
+						$curlResult = callAPI('DELETE', $apiURL."modifieritems/$optionID", false, $apiAuth); //deleted
 					}
 					
 					//kill all modifiers
-					$curlResult = callAPI('DELETE', $apiURL."modifiers/$modifierID", false, $apiAuth); //section and section items deleted
+					$curlResult = callAPI('DELETE', $apiURL."modifiers/$modifierID", false, $apiAuth); //deleted
 				}
 				
 				//kill all items
-				$curlResult = callAPI('DELETE', $apiURL."items/$itemID", false, $apiAuth); //section and section items deleted
+				$curlResult = callAPI('DELETE', $apiURL."items/$itemID", false, $apiAuth); //deleted
 			}
 			
 			//kill all sections and section-items
-			$curlResult = callAPI('DELETE', $apiURL."sections/$sectionID", false, $apiAuth); //section and section items deleted
+			$curlResult = callAPI('DELETE', $apiURL."sections/$sectionID", false, $apiAuth); //deleted
 		}
 	} //at this stage all current data is deleted and now we will proceed to putting in new data
 	
@@ -93,25 +93,33 @@
 						if(!isset($menu[$i]['items'][$a]['quantity']) || !$menu[$i]['items'][$a]['quantity']){ $menu[$i]['items'][$a]['quantity'] = 0; }
 					$menu[$i]['items'][$a]['visible'] 		= '1'; /*protect(*/ // $_POST['iVisi']['section'.$j][$b];//);
 						if(!isset($menu[$i]['items'][$a]['visible']) || !$menu[$i]['items'][$a]['visible']){ $menu[$i]['items'][$a]['visible'] = 0; }
-					if(isset($_POST['iMod']['item'.$b])){
-						$menu[$i]['items'][$a]['modifier'] 		= /*protect(*/$_POST['iMod']['item'.$b];//);
-						$menu[$i]['items'][$a]['modifierType'] 	= /*protect(*/$_POST['iModType']['item'.$b];//);
-					}
 					
-					//now we get all the options
-					$x = $y = 1;
-					while($x <= $_POST['item'.$b.'_optionCountAct'] && $y <= $_POST['item'.$b.'_optionCount'])
+					$c = $d = 1; //same 1-index logic here too
+					while($c <= $_POST['item'.$b.'_modCountAct'] && $d <= $_POST['item'.$b.'_modCount'])
 					{
-						if(isset($_POST['oName']['item'.$b][$y]))
+						if(isset($_POST['iMod']['item'.$b]['m'.$d]))
 						{
-							$menu[$i]['items'][$a]['options'][$x]['name'] = /*protect(*/$_POST['oName']['item'.$b][$y];//);
-							$menu[$i]['items'][$a]['options'][$x]['price'] = /*protect(*/$_POST['oPrice']['item'.$b][$y];//);
-							$menu[$i]['items'][$a]['options'][$x]['visible'] = '1'; /*protect(*/ // $_POST['oVisi']['item'.$b][$y];//);
-								if(!isset($menu[$i]['items'][$a]['options'][$x]['visible']) || !$menu[$i]['items'][$a]['options'][$x]['visible']){ $menu[$i]['items'][$a]['options'][$x]['visible'] = 0; }
-							
-							$x++;
+							$menu[$i]['items'][$a]['modifiers'][$c]['name'] 	= /*protect(*/$_POST['iMod']['item'.$b]['m'.$d];//);
+							$menu[$i]['items'][$a]['modifiers'][$c]['type'] 	= /*protect(*/$_POST['iModType']['item'.$b]['m'.$d];//);
+						
+							//now we get all the options
+							$x = $y = 1;
+							while($x <= $_POST['item'.$b.'_optionCountAct'] && $y <= $_POST['item'.$b.'_optionCount'])
+							{
+								if(isset($_POST['oName']['item'.$b]['m'.$d][$y]))
+								{
+									$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['name'] = /*protect(*/$_POST['oName']['item'.$b]['m'.$d][$y];//);
+									$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['price'] = /*protect(*/$_POST['oPrice']['item'.$b]['m'.$d][$y];//);
+									$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible'] = '1'; /*protect(*/ // $_POST['oVisi']['item'.$b]['m'.$d][$y];//);
+										if(!isset($menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible']) || !$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible']){ $menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible'] = 0; }
+									
+									$x++;
+								}
+								$y++;
+							}
+							$c++;
 						}
-						$y++;
+						$d++;
 					}
 					$a++;
 				}
@@ -121,6 +129,9 @@
 		}
 		$j++;
 	}
+	
+	//debug 
+	//echo var_export($menu); exit;
 	
 	//The order of things
 		//Accounts have menus
@@ -202,65 +213,68 @@
 				
 				$item_id = $result['id'];
 				
-				if(isset($item['options']))
-				{			
-					//create modifier
-					$data = array();
-					$data['itemId'] = $item_id;
-					$data['name'] = $item['modifier'];
-					$data['position'] = $iKey;
-					
-					switch($item['modifierType'])
+				if(isset($item['modifiers']))
+				{
+					foreach($item['modifiers'] as $mKey=>$modifier)
 					{
-						case "S":
-						{
-							$data['minChoices'] = "1";
-							$data['maxChoices'] = "1";
-							break;
-						}
-						case "M":
-						{
-							$data['minChoices'] = "1";
-							$data['maxChoices'] = "-1";
-							break;
-						}
-						case "O":
-						{
-							$data['minChoices'] = "0";
-							$data['maxChoices'] = "-1";
-							break;
-						}
-						default:
-						{
-							$data['minChoices'] = "0";
-							$data['maxChoices'] = "-1";
-							break;
-						}
-					}
-					
-					$jsonData = json_encode($data);
-					$curlResult = callAPI('POST', $apiURL."modifiers", $jsonData, $apiAuth); //modifier created
-					
-					$result = json_decode($curlResult,true);
-					
-					//+d($curlResult);
-					
-					$modifier_id = $result['id'];
-				
-					foreach($item['options'] as $oKey=>$option)
-					{
-						//create modifier item
+						//create modifier
 						$data = array();
-						$data['modifierId'] = $modifier_id;
-						$data['name'] = $option['name'];
-						$data['price'] = $option['price'];
-						$data['position'] = $oKey;
-						$data['visible'] = $option['visible'];
+						$data['itemId'] = $item_id;
+						$data['name'] = $modifier['name'];
+						$data['position'] = $mKey;
+					
+						switch($modifier['type'])
+						{
+							case "S":
+							{
+								$data['minChoices'] = "1";
+								$data['maxChoices'] = "1";
+								break;
+							}
+							case "M":
+							{
+								$data['minChoices'] = "1";
+								$data['maxChoices'] = "-1";
+								break;
+							}
+							case "O":
+							{
+								$data['minChoices'] = "0";
+								$data['maxChoices'] = "-1";
+								break;
+							}
+							default:
+							{
+								$data['minChoices'] = "0";
+								$data['maxChoices'] = "-1";
+								break;
+							}
+						}
 					
 						$jsonData = json_encode($data);
-						$curlResult = callAPI('POST', $apiURL."modifieritems", $jsonData, $apiAuth); //modifier created
+						$curlResult = callAPI('POST', $apiURL."modifiers", $jsonData, $apiAuth); //modifier created
+						
+						$result = json_decode($curlResult,true);
 						
 						//+d($curlResult);
+						
+						$modifier_id = $result['id'];
+					
+						foreach($modifier['options'] as $oKey=>$option)
+						{
+							//create modifier item
+							$data = array();
+							$data['modifierId'] = $modifier_id;
+							$data['name'] = $option['name'];
+							$data['price'] = $option['price'];
+							$data['position'] = $oKey;
+							$data['visible'] = $option['visible'];
+						
+							$jsonData = json_encode($data);
+							$curlResult = callAPI('POST', $apiURL."modifieritems", $jsonData, $apiAuth); //modifier created
+							
+							//+d($curlResult);
+						}
 					}
 				}
 			}
