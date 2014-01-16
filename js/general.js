@@ -1171,10 +1171,10 @@ $(document).ready(function() {
 		}
 		else
 		{
-			$("body").find('.newSection').parent('.row').before($newSec);
+			$(this).parent().parent().before($newSec);
 		}
 		
-		$($newSec).slideDown('slow');
+		$newSec.slideDown('slow');
 		
 		$('body').find('.firstItemDivsection'+newCount).parents('#menuSectionRow').wrap('<div class="moveSec"></div>').wrap('<div class="moveSecInner"></div>');
 	});
