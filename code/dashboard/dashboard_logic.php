@@ -62,7 +62,7 @@
 			$_SESSION['noAppFlag-1']=1; 
 			$_SESSION['noAppFlag-2']=1; 
 		}
-		else if(isset($dataJSON['heading']) && !empty($dataJSON['heading']))
+		else if(isset($dataJSON['textColour']) && !empty($dataJSON['textColour']))
 		{	
 			$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];	
 			$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];	

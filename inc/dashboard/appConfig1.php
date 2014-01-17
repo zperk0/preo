@@ -60,8 +60,7 @@
 								  <li><a href="#"><? echo _("Stay with friends while the bar prepares your round");?></a></li>
 								  <li><a href="#"><? echo _("Order your coffee and croissant from your table, or from the train.");?></a></li>
 								</ul>
-								<textarea name="aHeading" id="aHeading" placeholder="<?echo _("or create your own...");?>" required tabindex=1><?if(isset($_SESSION['app_heading'])) echo $_SESSION['app_heading'];?></textarea>
-								<small class="error"><?echo _("Please create a headline message");?></small>
+								<textarea name="aHeading" id="aHeading" placeholder="<?echo _("or create your own...");?>" tabindex=1><?if(isset($_SESSION['app_heading'])) echo $_SESSION['app_heading'];?></textarea>
 							</div>
 						</div>
 						<div class="row">
@@ -73,14 +72,7 @@
 								  <li><a href="#"><? echo _("Pre-order food and drinks");?></a></li>
 								  <li><a href="#"><? echo _("Pre-order drinks+food");?></a></li>
 								</ul>
-								<input type="text" name="aSubheading" id="aSubheading" placeholder="<?echo _("or create your own...");?>" required tabindex=2 value="<?if(isset($_SESSION['app_subHeading'])) echo $_SESSION['app_subHeading'];?>">
-								<small class="error"><?echo _("Please create a sub-heading");?></small>
-							</div>
-						</div>
-						
-						<div class="row">
-							<div class="large-11 columns">
-							<input type="checkbox" class="custom" id="suppressText" <?if(isset($_SESSION['app_subHeading']) && $_SESSION['app_subHeading']== ' ' && isset($_SESSION['app_heading']) && $_SESSION['app_heading']==' '){?>checked="checked"<?}?>/> <?echo _("Suppress Text");?>
+								<input type="text" name="aSubheading" id="aSubheading" placeholder="<?echo _("or create your own...");?>" tabindex=2 value="<?if(isset($_SESSION['app_subHeading'])) echo $_SESSION['app_subHeading'];?>">
 							</div>
 						</div>
 						
@@ -134,10 +126,10 @@
 							<img id="carrierIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/carrier.png" />
 							<img id="poweredIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/powered.png" />
 							<button type="button" class="tiny expand" id="buttonIMG"><?echo _('ORDER NOW');?></button>
-							<p id="appHeading"><?echo _("Your heading goes here");?></p>
+							<p id="appHeading"></p>
 							<!--<p id="venSubHeading"><?echo $_SESSION['venue_name'];?></p>-->
 							<p id="venSubHeading">&nbsp;</p>
-							<p id="subHeading"><?echo _("Your subheading goes here");?></p>
+							<p id="subHeading"></p>
 						</div>
 					</div>
 				</form>

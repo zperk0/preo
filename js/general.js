@@ -3104,24 +3104,6 @@ $(document).ready(function() {
 		 });
 		return false; // avoid to execute the actual submit of the form.
 	});
-	
-	//suppress text
-	$('#suppressText').on('click', function(){
-		if($(this).is(':checked')){
-			$("#aHeading").val(' ')
-			$("#appHeading").html(' ');
-			$("#aSubheading").val(' ');
-			$("#subHeading").html(' ');
-		}
-		else
-		{
-			$("#aHeading").val('');
-			$("#appHeading").html('Your heading goes here');
-			$("#aSubheading").val('');
-			$("#subHeading").html('Your subheading goes here');
-		}
-	});
-	
 });
 
 //functions to update phone/app preview
