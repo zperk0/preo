@@ -1,8 +1,8 @@
 <?php //facebook variables
-	$appId       = '514075612022129';
-	$appSecret   = 'b03bcc985fede7b7e3cf7b46df7769c6';
+	$appId       = '1433047090264597';
+	$appSecret   = '4f064e33db83c49c3030706782639c9a';
 	$redirect    = urlencode('http://'.$_SERVER['SERVER_NAME'].'/code/shared/facebook_signup.php');
-	$scope       = 'user_about_me,email,publish_stream';
+	$scope       = 'user_about_me,email';
 	
 	
 	

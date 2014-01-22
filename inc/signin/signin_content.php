@@ -11,7 +11,9 @@
 		<div class="row">
 			<div class="large-6 columns googleSignup">
 				<input type="hidden" id="userConsent" value="0"/>
-				<span class="g-signin" data-callback="signinCallback" data-clientid="415077578170-8p5u7eurntd3qj7qbrk2nv2mvetuqjur.apps.googleusercontent.com" data-cookiepolicy="single_host_origin" data-requestvisibleactions="http://schemas.google.com/AddActivity" data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email" data-prompt="select_account"><?echo _("Login using Google+");?></span>
+				<span class="g-signin" data-callback="signinCallback" data-clientid="26773142567-ui0mkhms9iu18n82k3tegok0b0phnim6.apps.googleusercontent.com" 
+					data-cookiepolicy="single_host_origin" data-scope="email profile" 
+					data-prompt="select_account"><?echo _("Login using Google+");?></span>
 			</div>
 		</div>
 	</div>
