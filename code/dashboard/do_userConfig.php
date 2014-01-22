@@ -35,6 +35,7 @@
 	}
 	
 	$newUsers = array();
+	$userApiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	
 	foreach($users as $user)
 	{
@@ -53,8 +54,6 @@
 		
 			$jsonData = json_encode($data);
 		
-			$userApiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
-			
 			$curlResult = callAPI('PUT', $apiURL."users/$userID", $jsonData, $userApiAuth); //user created
 			
 			//now the role
@@ -75,19 +74,20 @@
 
 			//appToken here is the web-apps token and not the user's
 		
-			$curlResult = callAPI('POST', $apiURL."users", $jsonData, $apiAuth); //user created
+			$curlResult = callAPI('POST', $apiURL."users", $jsonData, $userApiAuth); //user created
 			
 			$dataJSON = json_decode($curlResult,true);
-			$userID = $dataJSON['id'];
-			$newUsers[$user['id']] = $dataJSON['id'];
+			if(isset($dataJSON['id'])) //if no error like duplicate user
+			{
+				$userID = $dataJSON['id'];
+				$newUsers[$user['id']] = $dataJSON['id'];
 			
-			//now we update this user with correct owner - this needs a fix via Scott
-			$role		= strtoupper($user['role']);
-			$accountId	= $_SESSION['account_id'];
-			
-			$userApiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
-			
-			$curlResult = callAPI('POST', $apiURL."users/$userID/role?accountId=$accountId&role=$role", false, $userApiAuth); //user role created
+				//now we update this user with correct owner - this needs a fix via Scott
+				$role		= strtoupper($user['role']);
+				$accountId	= $_SESSION['account_id'];
+				
+				$curlResult = callAPI('POST', $apiURL."users/$userID/role?accountId=$accountId&role=$role", false, $userApiAuth); //user role created
+			}
 		}
 	}
 	

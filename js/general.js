@@ -2106,11 +2106,12 @@ $(document).ready(function() {
 						return false;
 					}
 					
-					if(typeof dataArray['status'] !='undefined') //error
+					if(typeof dataArray['status'] !='undefined' || typeof dataArray['result']['status'] !='undefined') //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
+						  text: "Username/email already exists"
+						  //text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
 					}
 					else
@@ -2124,7 +2125,6 @@ $(document).ready(function() {
 							});
 						}
 						noty({ type: 'success', text: 'User configuration has been saved!' });
-						
 					}
 				}
 			 }).done(function() {
