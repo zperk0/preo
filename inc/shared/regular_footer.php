@@ -15,7 +15,7 @@
 					</p>
 				</div>
 				<div class="large-3 columns footLinks right">
-					<p><a href="mailto:askme@preoday.com"><?echo _("askme@preoday.com");?></a></p>
+					<p><a href="mailto:support@preoday.com"><?echo _("support@preoday.com");?></a></p>
 					<p><a href="#" data-reveal-id="termsM"><? echo _("Legal Statement");?></a></p>
 					<p><a href="#" data-reveal-id="privM"><? echo _("Privacy + Cookies");?></a></p>
 					<p>&copy; <? echo _("Preoday")." ".date('Y');?></p>
