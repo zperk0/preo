@@ -1158,6 +1158,12 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	border: #2E70B7;
 }
 
+p.venueCode {
+	color: #D7D9DA;
+	font-size: 114%;
+	margin-top: -15px;
+}
+
 .dashContent #iphone5{
 	margin-bottom: 0px !important;
 }
