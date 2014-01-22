@@ -145,6 +145,9 @@ RewriteRule ^.*$ /code/dashboard/do_outletDelete.php [L]
 RewriteCond %{REQUEST_URI} ^/saveOutlet$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_outletConfig.php [L]
 
+RewriteCond %{REQUEST_URI} ^/mealdeals$ [NC]
+RewriteRule ^.*$ /mealDealSettings.php [L]
+
 RewriteCond %{REQUEST_URI} ^/deleteMealDeal$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_mdDelete.php [L]
 

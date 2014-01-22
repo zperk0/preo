@@ -19,15 +19,32 @@
 	{
 		if(isset($_POST['mdName'][$j]) && $_POST['mdName'][$j])
 		{
-			$md[$i]['id'] 		= /*protect(*/$_POST['mdID'][$j];//);
-			$md[$i]['name'] 	= /*protect(*/$_POST['mdName'][$j];//);
-			$md[$i]['price'] 	= /*protect(*/$_POST['mdPrice'][$j];//);
-			$md[$i]['visible']	= /*protect(*/$_POST['mdVisi'][$j];//);	
-			$md[$i]['items']	= array_filter( explode(";", $_POST['mdItems'][$j]), 'strlen' ); //no emptys
+			$md[$i]['id'] 			= /*protect(*/$_POST['mdID'][$j];//);
+			$md[$i]['name'] 		= /*protect(*/$_POST['mdName'][$j];//);
+			$md[$i]['price'] 		= /*protect(*/$_POST['mdPrice'][$j];//);
+			$md[$i]['sectionID']	= /*protect(*/$_POST['mdSecID'][$j];//);	
+			$md[$i]['visible']		= /*protect(*/$_POST['mdVisi'][$j];//);	
+			
+			$a = $b = 1;
+			while($a <= $_POST['md'.$j.'_secCountAct'] && $b <= $_POST['md'.$j.'_secCount']) 
+			{
+				if((isset($_POST['iMD'][$j]['s'.$b]) && $_POST['iMD'][$j]['s'.$b]))
+				{
+					$md[$i]['sections'][$a]['name'] = /*protect(*/$_POST['iMD'][$j]['s'.$b];//);
+					$md[$i]['sections'][$a]['items'] = array_filter( explode(";", $_POST['mdItems'][$j]['s'.$b]), 'strlen' ); //no emptys
+					
+					$a++;
+				}
+				$b++;
+			}
 			$i++;
 		}
 		$j++;
 	}
+	
+	//debug
+	//echo var_export($md);
+	//exit;
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	
@@ -35,13 +52,30 @@
 	
 	foreach($md as $mdKey => $mealDeal)
 	{
-		if(isset($_SESSION['md_edit_on']) && $_SESSION['md_edit_on'] && (preg_match('/^\d+$/',$mealDeal['id']))) //We delete the old meal deals and create a new ones!
+		if( (preg_match('/^\d+$/',$mealDeal['id'])) ) //We delete the old meal deals and create a new ones!
 		{		
 			$mdID = $mealDeal['id'];
 
-			//kill all mdparts
-			$curlResult = callAPI('DELETE', $apiURL."menus/mealdeal/items/$mdID", false, $apiAuth); //md parts deleted
+			//get mealdeal sections
+			$curlResultMD = callAPI('GET', $apiURL."items/$mdID/mealdealsections", false, $apiAuth);
+			$dataJSONMD = json_decode($curlResultMD,true);
+			
+			foreach($dataJSONMD as $mdsection)
+			{
+				$msID  = $mdsection['id'];
 				
+				//get mealdeal items
+				$curlResultMDS = callAPI('GET', $apiURL."mealdealsections/$msID/items", false, $apiAuth);
+				$dataJSONMDS = json_decode($curlResultMDS,true);
+				
+				foreach($dataJSONMDS as $mdsectionitem)
+				{
+					$mdSecItemID = $mdsectionitem['id'];	
+					$curlDelete = callAPI('DELETE', $apiURL."mealdealitems/$mdSecItemID", false, $apiAuth);
+				}
+				
+				$curlDelete = callAPI('DELETE', $apiURL."mealdealsections/$msID", false, $apiAuth);
+			}	
 		} //at this stage all current data is deleted and now we will proceed to putting in new data
 		
 		
@@ -51,37 +85,61 @@
 		$data['price'] 		= $mealDeal['price'];
 		$data['visible'] 	= $mealDeal['visible'];
 		$data['venueId'] 	= $_SESSION['venue_id'];
-		$data['position'] 	= $mdKey;
-				
+		$data['position'] 	= $mdKey*1000;
+		$data['sectionId'] 	= $mealDeal['sectionID'];
+		$data['mealDeal'] 	 = 1;
+		$data['description'] = "Meal Deal";
+		$data['quantity'] 	 = 0;
+		$data['menuId'] 	 = $_SESSION['mdMenuID']; 
+		
 		$jsonData = json_encode($data);
 		
-		if(isset($_SESSION['md_edit_on']) && $_SESSION['md_edit_on'] && (preg_match('/^\d+$/',$mealDeal['id']))) //Edit
+		if( (preg_match('/^\d+$/',$mealDeal['id'])) ) //Edit
 		{	
 			$mdID = $mealDeal['id'];
 			
-			$curlResult = callAPI('PUT', $apiURL."menus/mealdeal/$mdID", $jsonData, $apiAuth); //md updated
+			$curlResult = callAPI('PUT', $apiURL."items/$mdID", $jsonData, $apiAuth); //md updated
 			$result = json_decode($curlResult,true);
 		}
 		else //Create
 		{
-			$curlResult = callAPI('POST', $apiURL."menus/mealdeal", $jsonData, $apiAuth); //md created
+			$curlResult = callAPI('POST', $apiURL."items", $jsonData, $apiAuth); //md created
 			$result = json_decode($curlResult,true);
 				
 			$mdID = $result['id'];
 		}
 		
 		//now we create mealDeal parts
-		foreach($mealDeal['items'] as $iKey => $itemID)
+		foreach($mealDeal['sections'] as $sKey => $mdSection)
 		{
 			//create section
-			$data 					= array();
-			$data['itemId'] 		= $itemID;
-			$data['mealdealId'] 	= $mdID;
+			$data 				= array();
+			$data['name'] 		= $mdSection['name'];
+			$data['itemId']		= $mdID;
+			$data['minChoices']	= 1;
+			$data['maxChoices']	= 1;
+			$data['position']	= $sKey*1000;
 					
 			$jsonData = json_encode($data);
-			$curlResult = callAPI('POST', $apiURL."menus/mealdeal/item", $jsonData, $apiAuth); //menu created
+			$curlResult = callAPI('POST', $apiURL."mealdealsections", $jsonData, $apiAuth); //md section created
 			
 			$result = json_decode($curlResult,true);
+			$mdSectionID = $result['id'];
+			
+			foreach($mdSection['items'] as $iKey => $item)
+			{
+				//create section
+				$data 				= array();
+				$data['itemId']		= $item;
+				$data['sectionId']	= $mdSectionID;
+				$data['position']	= $iKey*1000;
+						
+				$jsonData = json_encode($data);
+				$curlResult = callAPI('POST', $apiURL."mealdealitems", $jsonData, $apiAuth); //md section created
+				
+				$result = json_decode($curlResult,true);
+			}
+			
 		}
 	}
 	

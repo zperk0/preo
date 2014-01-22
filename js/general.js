@@ -838,8 +838,8 @@ $(document).ready(function() {
 					   header: false,
 					   noneSelectedText: "Pick an option type",
 					   selectedList: 1
-					}); 
-					
+					});
+
 					$(this).attr('required','required');
 				});
 			});
@@ -1055,6 +1055,8 @@ $(document).ready(function() {
 		$newTab.css('backgroundColor','#fafafa');
 		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
 		
+		$newTab.css('max-width', '4000px'); $newTab.css('margin-left', '-11px');
+		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
 		
@@ -1094,10 +1096,11 @@ $(document).ready(function() {
 		if(count) $curItem.find(".optionTR").slideRow('up');
 		$curItem.find(".itemSubheader").slideRow('up');
 		$curItem.find(".subHeaderTR").slideRow('up');
-		$curItem.find(".xtraModTD").slideUp();
+		$curItem.find(".xtraModTD").hide();
 		if(count) $curItem.find('.menuEdit').find('.modifierRow').slideRow('up');
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
+		$curItem.css('max-width', '987px'); $curItem.css('margin-left', 'auto');
 	});
 	
 	$(document).on("click", ".itemEdit, .itemTR input[readonly='readonly']", function() {
@@ -1116,10 +1119,11 @@ $(document).ready(function() {
 		if(count) $curItem.find(".optionTR").slideRow('down');
 		$curItem.find(".itemSubheader").slideRow('down');
 		$curItem.find(".subHeaderTR").slideRow('down');
-		$curItem.find(".xtraModTD").slideDown();
+		$curItem.find(".xtraModTD").slideDown('fast');
 		if(count) $curItem.find('.menuEdit').find('.modifierRow').slideRow('down');
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+		$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '-11px');
 		
 		$curItem.find('select[name^=iModType]').each(function(){ //reinitialize to get the right width
 			$(this).multiselect({
@@ -1334,9 +1338,11 @@ $(document).ready(function() {
 	
 
 	$("input[name^=iMod]").autocomplete({ source: [ "Choose a size","Choose a flavour","Choose a topping","Choose some extras","Choose a side dish" ], delay: 10, minLength: 0 });
+	$("input[name^=iMD]").autocomplete({ source: [ "Choose a main","Choose a side","Choose a drink","Choose a curry","Choose a burger" ], delay: 10, minLength: 0 });
 	
-	$(document).on("click", '.showAChevy, input[name^=iMod]', function(){
+	$(document).on("click", '.showAChevy, input[name^=iMod], input[name^=iMD]', function(){
 		$(this).parent('.modifierRow').find("input[name^=iMod]").autocomplete( "search", "C" );
+		$(this).parent('.modifierRow').find("input[name^=iMD]").autocomplete( "search", "C" );
 	});
 	
 	
@@ -1587,6 +1593,7 @@ $(document).ready(function() {
 		$curItem.find(".eventMenuSingleSelect").multiselect("disable");
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
+		$curItem.css('max-width', '987px'); $curItem.css('margin-left', 'auto');
 	});
 	
 	$(document).on("click", ".eventTDEdit, .eventTR input[readonly='readonly']", function() {
@@ -1602,6 +1609,7 @@ $(document).ready(function() {
 		$curItem.find(".eventMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+		$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '-11px');
 		
 		$curItem.find("td.eventTDCollection select").each(function() {
 			$(this).multiselect({
@@ -1818,7 +1826,7 @@ $(document).ready(function() {
 						  type: 'error',  layout: 'topCenter',
 						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
-						alert(data);
+						//alert(data);
 						return false;
 					}
 					
@@ -1864,6 +1872,7 @@ $(document).ready(function() {
 		$curItem.find(".userMenuSingleSelect").multiselect("disable");
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
+		$curItem.css('max-width', '987px'); $curItem.css('margin-left', 'auto');
 	});
 	
 	$(document).on("click", ".userTDEdit, .userTR input[readonly='readonly']", function() {
@@ -1878,6 +1887,7 @@ $(document).ready(function() {
 		$curItem.find(".userMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+		$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '-11px');
 	});
 	
 	$(document).on("click", ".newUser", function() {
@@ -2600,13 +2610,22 @@ $(document).ready(function() {
 		$("#mdCount").val(newCount);
 		$("#mdCountAct").val(parseInt($("#mdCountAct").val())+1);
 		
+		$newOCount = $("#md0_secCount").clone(true);
+		$newOCount.attr('id','md'+newCount+'_secCount');
+		$newOCount.attr('name','md'+newCount+'_secCount');
+		$newOCountAct = $("#md0_secCountAct").clone(true);
+		$newOCountAct.attr('id','md'+newCount+'_secCountAct');
+		$newOCountAct.attr('name','md'+newCount+'_secCountAct');
+		$("#md0_secCountAct").after($newOCountAct);
+		$("#md0_secCountAct").after($newOCount);
+		
 		//clone dummy table
 		$newTab = $("#md0").clone(true);
 		$newTab.attr('id','md'+newCount);
 		
 		//replace ids with incremented value and make value = default value
-		$newTab.find(".mdTR input").each(function() {
-			$(this).val( $(this).prop("defaultValue") );
+		$newTab.find(".mdTR input, .mdTR select").each(function() {
+			//$(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
@@ -2641,66 +2660,180 @@ $(document).ready(function() {
 			$(this).attr('placeholder', temp);
 		});
 		
+		//now we fix placeholder
+		$newTab.find("input[name^=mdTPrice]").each(function() {
+			var temp = $(this).val();
+			$(this).val("");
+			$(this).attr('placeholder', temp);
+		});
+		
 		//add id
 		$newTab.find("input[name^=mdID]").each(function() {
 			$(this).val('mid'+newCount);
 		});
 		
+		//add autocomplete
+		$newTab.find("input[name^=iMD]").autocomplete({ source: [ "Choose a main","Choose a side","Choose a drink","Choose a curry","Choose a burger" ], delay: 10, minLength: 0, position: { my: "left top", at: "left bottom", collision: "none", of: $newTab.find("input[name^=iMD]") } });
+		
+		$newTab.find('.modifierRow').remove();
+		$newTab.find('.mdEdit.optionTR').remove();
+		
 		$newTab.css('backgroundColor','#fafafa');
+		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+		$newTab.find('tr').css('border-bottom','0px');
+		
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
 		
 		//insert after section header/before hidden div
-		$("table:last").before($newTab); 
+		$(".dynamicDataTable table").last().before($newTab); 
 		
 		$($newTab).slideRow('down');
+		
+		$newTab.find('.mdTR select').each(function(){
+			$(this).addClass('mdSecSingleSelect');
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: "Where should this meal deal appear?",
+			   selectedList: 1
+			}); 
+		});
 		
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
-	$(document).on("click", ".mdTDIName i.fi-plus", function(){
-		$(this).removeClass('fi-plus');
-		$(this).addClass('pd-delete');
-		$(this).parent("button").addClass('secondary');
+	$(document).on("click", ".mdSectionDelete", function(){
+		//get table id
+		mdID = $(this).closest('table').attr('id');
+		mdIDOnly = mdID.replace('md','');
+			
+		//update count
+		$('#'+mdID+'_secCountAct').val(parseInt($('#'+mdID+'_secCountAct').val())-1);
 		
-		//add price
-		$tempEl = $(this).closest(".mdTable").find('.mdTDTPrice input');
-		temp = parseFloat($tempEl.val());
-		$theSpan = $(this).closest(".mdItemName").find('span');
-		currentPrice = parseFloat($theSpan.attr('data-value'));
-		temp = parseFloat(temp + currentPrice).toFixed(2);
-		$tempEl.val(temp);
-		
-		//add id to list
-		$mdItems = $(this).closest("td.mdTDIName").find("input[name^=mdItems]");
-		allIDs = $mdItems.val();
-		thisID = $theSpan.attr('id');
-		thisID = thisID.replace(/\d+_item_/gi, "");
-		allIDs = allIDs + thisID + ";";
-		$mdItems.val(allIDs);
+		//byebye
+		$(this).parents('.subHeaderTR').first().next().remove();
+		$(this).parents('.subHeaderTR').first().remove();
 	});
 	
-	$(document).on("click", ".mdTDIName i.pd-delete", function(){
-		$(this).removeClass('pd-delete');
-		$(this).addClass('fi-plus');
-		$(this).parent("button").removeClass('secondary');
+	$(document).on("click", ".newMDSection", function(){
 		
-		//subtract price
-		$tempEl = $(this).closest(".mdTable").find('.mdTDTPrice input');
-		temp = parseFloat($tempEl.val());
-		$theSpan = $(this).closest(".mdItemName").find('span');
-		currentPrice = parseFloat($theSpan.attr('data-value'));
-		temp = parseFloat(temp - currentPrice).toFixed(2);
-		$tempEl.val(temp);
+		//get table id
+		mdID = $(this).closest('table').attr('id');
+		mdIDOnly = mdID.replace('md','');
 		
-		//remove id from list
-		$mdItems = $(this).closest("td.mdTDIName").find("input[name^=mdItems]");
-		allIDs = $mdItems.val();
-		thisID = $theSpan.attr('id');
-		thisID = thisID.replace(/\d+_item_/gi, "");
-		allIDs = allIDs.replace(thisID+";", "");
-		$mdItems.val(allIDs);
+		//update count
+		var newCount = parseInt($('#'+mdID+'_secCount').val())+1;
+		$('#'+mdID+'_secCount').val(newCount);
+		
+		$('#'+mdID+'_secCountAct').val(parseInt($('#'+mdID+'_secCountAct').val())+1);
+		
+		//start cloning subheader and fixing names
+		$subHead = $('#md0').find('.subHeaderTR').clone(false);
+		$subHead.find('.mdSubheader h6').html($('.deleteDummy').html());
+		$subHead.find('input, select').each(function(){
+			var tempName = $(this).attr('name');
+			var newName  = tempName.replace(/\[\d+\]/gi, "["+mdIDOnly+"]");
+			newName = newName.replace(/\[s\d+\]/gi, "[s"+newCount+"]");
+			$(this).attr('name', newName);
+			
+		});
+		$subHead.find('input[name^=iMD]').autocomplete({ source: [ "Choose a main","Choose a side","Choose a drink","Choose a curry","Choose a burger"], delay: 10, minLength: 0 });
+		$subHead.find('input[name^=iMD]').attr('required','required');
+		
+		//start cloning options and fixing names
+		$opts = $('#md0').find('.mdEdit.optionTR').clone(false);
+		$opts.find('input[name^=mdItems]').each(function(){
+			var tempName = $(this).attr('name');
+			var newName  = tempName.replace(/\[\d+\]/gi, "["+mdIDOnly+"]");
+			newName = newName.replace(/\[s\d+\]/gi, "[s"+newCount+"]");
+			$(this).attr('name', newName);
+		});
+		
+		$opts.find('.mdTDIName label span').each(function(){
+			var tempName = $(this).attr('id');
+			var newName  = tempName.replace(/\d+_item/gi, newCount+"_item");
+			$(this).attr('id', newName);
+		});
+		
+		//get position
+		$currTR = $(this).parents('.subHeaderTR').first();
+		
+		//hide so we can animate them
+		$subHead.hide();
+		$opts.hide();
+		
+		$currTR.before($subHead).before($opts);
+		
+		//show!
+		$subHead.slideRow('down');
+		$opts.show();
+		$subHead.find('.modifierRow').fadeIn('slow');
+		
+		//now for the dropdown as it needs to be done after show
+		$subHead.find('select[name^=iMDType]').each(function(){
+			$(this).addClass('mdMenuSingleSelect');
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: "Choose a menu section",
+			   selectedList: 1
+			}); 
+			$(this).attr('required','required');
+		}); 
+	});
+	
+	$(document).on("click", ".newmdItem", function(){
+		
+		if($(this).find('i').hasClass('pd-add')) //add
+		{
+			$(this).find('i').removeClass('pd-add');
+			$(this).find('i').addClass('pd-delete');
+			$(this).find('i').parent().addClass('secondary');
+			
+			$theSpan = $(this).closest(".mdItemName").find('span');
+			
+			//add price
+			/*$tempEl = $(this).closest(".mdTable").find('.mdTDTPrice input');
+			temp = parseFloat($tempEl.val());
+			$theSpan = $(this).closest(".mdItemName").find('span');
+			currentPrice = parseFloat($theSpan.attr('data-value'));
+			temp = parseFloat(temp + currentPrice).toFixed(2);
+			$tempEl.val(temp);*/
+			
+			//add id to list
+			$mdItems = $(this).parents(".mdTDIName").first().find("input[name^=mdItems]");
+			allIDs = $mdItems.val();
+			thisID = $theSpan.attr('id');
+			thisID = thisID.replace(/\d+_item_/gi, "");
+			allIDs = allIDs + thisID + ";";
+			$mdItems.val(allIDs);
+		}
+		else
+		{
+			$(this).find('i').removeClass('pd-delete');
+			$(this).find('i').addClass('pd-add');
+			$(this).find('i').parent().removeClass('secondary');
+			
+			$theSpan = $(this).closest(".mdItemName").find('span');
+			
+			//subtract price
+			//$tempEl = $(this).closest(".mdTable").find('.mdTDTPrice input');
+			//temp = parseFloat($tempEl.val());
+			//$theSpan = $(this).closest(".mdItemName").find('span');
+			//currentPrice = parseFloat($theSpan.attr('data-value'));
+			//temp = parseFloat(temp - currentPrice).toFixed(2);
+			//$tempEl.val(temp);
+			
+			//remove id from list
+			$mdItems = $(this).closest("td.mdTDIName").find("input[name^=mdItems]");
+			allIDs = $mdItems.val();
+			thisID = $theSpan.attr('id');
+			thisID = thisID.replace(/\d+_item_/gi, "");
+			allIDs = allIDs.replace(thisID+";", "");
+			$mdItems.val(allIDs);
+		}
 	});
 	
 	$(document).on("click", ".mdDelete", function() {
@@ -2722,7 +2855,7 @@ $(document).ready(function() {
 					//get and update current count
 					mdCount = $("#mdCountAct").val();
 					newCount = parseInt(parseInt(mdCount) - 1);
-					$("#mdCountAct").val(newCount);
+					$("#mdCountAct").val(newCount);	
 					
 					//bye-bye
 					$("#"+mdID).remove();
@@ -2801,21 +2934,65 @@ $(document).ready(function() {
 		$curItem.find(".mdTDEdit").show();
 		$curItem.find(".subHeaderTR").slideRow('up');
 		$curItem.find(".optionTR").slideRow('up');
+		$curItem.find(".modifierRow").hide();
+		$curItem.find(".mdTR select").multiselect("disable");
 		$curItem.css('background', 'transparent');
+		$curItem.css('box-shadow', '0px 0px 0px');
+		//$curItem.css('max-width', '987px'); $curItem.css('margin-left', 'auto');
+		$curItem.find('tr').first().css('border-bottom','1px solid #B9BBBD');
 	});
 	
-	$(document).on("click", ".mdTDEdit", function() {
-		$(this).hide();
+	$(document).on("click", ".mdTDEdit, .mdTR input[readonly='readonly']", function() {
+	
+		if($(this).hasClass('mdTDEdit')) $(this).hide();
+		else $(this).closest('table').find('.mdTDEdit').hide();
+
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").addClass('mdEdit');
 		$curItem.find("tr").removeClass('savedInput');
 		$curItem.find("input").removeAttr("readonly");
+		//$curItem.find("input[name^=mdTPrice]").attr("readonly", "readonly"); //this is always readonly
 		$curItem.find(".mdSave").removeClass('hide');
 		$curItem.find(".mdSave").show();
+		$curItem.find(".mdTR select").multiselect("enable");
 		$curItem.find(".optionTR").slideRow('down');
 		$curItem.find(".subHeaderTR").slideRow('down');
+		$curItem.find(".modifierRow").fadeIn('slow');
 		$curItem.css('background', '#fafafa');
+		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+		//$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '0px');
+		$curItem.find('tr').css('border-bottom','0px');
+		
 	});
+	
+	$(document).on("change",'select[name^=iMDType]', function(){
+		var selectedID = $(this).selected().val();
+		$loc = $(this).parent().parent().next();
+		if(selectedID == 'all')
+		{
+			$loc.find('label').hide();
+			$loc.find('label').show();
+		}
+		else
+		{
+			$loc.find('label').hide();
+			$loc.find('label.sec'+selectedID).show();
+		}
+	});
+	
+	$('.mdSecSingleSelect').multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: "Where should this meal deal appear?",
+	   selectedList: 1
+	}); 
+	
+	$('.mdMenuSingleSelect').multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: "Choose a menu section",
+	   selectedList: 1
+	}); 
 		
 	$("#mealDealConfigForm").on('valid', function (event) {
 		//lock all
@@ -2828,6 +3005,9 @@ $(document).ready(function() {
 		
 		$('#mdSubButton').hide();
 		$('#savingButton').show();
+		
+		//enable dropdowns or we wont get the values!
+		$(".mdSecSingleSelect").multiselect('enable');
 
 		$.ajax({
 			   type: "POST",

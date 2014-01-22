@@ -699,10 +699,18 @@ h1 i.icon-question-sign, h4 i.icon-question-sign {
 	background: #F1F0F2 !important;
 }
 
+#mealDealConfigForm .headerTable{
+	border-bottom: 1px solid #B9BBBD !important;
+}
+
 .menuSectionField{
 	color: #48535D !important;
 	font-size: 26px !important;
 	font-weight: bold !important;
+}
+
+.mdTable tr:first-of-type{
+	border-bottom: 1px solid #B9BBBD;
 }
 
 input[name^=mSectionName] {
@@ -882,38 +890,65 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	text-align: center !important;
 }
 
-.mdTable .mdTDName{
+.mdTable .mdTDName, .headerTable .mdTDName{
 	font-weight: bold !important;
-	width: 64%;
+	width: 35%;
 }
 
-.mdTable .mdTDTPrice{
+.mdTable .mdTDSec, .headerTable .mdTDSec{
+	width: 35%;
+}
+
+.headerTable .mdTDSec {
+	padding-left: 20px;
+}
+
+.headerTable .mdTDPrice, .headerTable .mdTDTPrice {
+	padding-left: 32px;
+}
+
+.headerTable .mdTDTools{
+	padding-left: 40px;
+}
+
+.mdTable .mdTDPrice, .headerTable .mdTDPrice{
 	width: 10%;
 }
 
-.mdTable .mdTDPrice{
+.mdTable .mdTDTPrice, .headerTable .mdTDTPrice{
 	width: 10%;
 }
 
 .mdTable .mdTDIName{
 	width: 100%;
+	padding-bottom: 20px;
 }
 
-.mdTable .mdTDTools{
-	width: 8%;
+.mdTable .mdTDTools, .headerTable .mdTDTools{
+	width: 10%;
+}
+
+.mdItemName span {
+	width: 81%;
+	display: inline-block;
+}
+
+.mdItemName button { 
+	width: 25px;
+	height: 22px;
 }
 
 .mdItemName {
 	display: inline-block;
 	width: 32.98%;
-}
-.mdItemName span {
-	width: 80%;
-	display: inline-block;
-	display: inline-block;
-}
-.mdItemName button { 
-	width: 10%;
+	border-top: 1px solid #B9BBBD;
+	border-bottom: 1px solid #B9BBBD;
+	height: 23px;
+	padding: 6px 0px 29px 2px;
+	color: #444 !important;
+	margin-top: -4px;
+	margin-right: 16px;
+	width: 302px;	
 }
 
 #menuSectionRow{
@@ -971,10 +1006,10 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	display: table;
 	margin-right: auto !important;
 	width: 101.8% !important;
-	margin-left: auto !important;
+	margin-left: auto;
 	margin-bottom: 0px !important;
 	margin-top: -1px;
-	max-width: 987px !important;
+	max-width: 987px;
 }
 
 .optionTR .menuTDPrice {
@@ -988,7 +1023,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	margin-top: -20px;
 }
 
-.userTable .ui-multiselect, .eventTable, .ui-multiselect{
+.userTable .ui-multiselect, .eventTable, .ui-multiselect, .mdTable .ui-multiselect{
 	font-size: 14px;
 	width: 100% !important;
 }
@@ -1004,7 +1039,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 }
 
 .dynamicDataTable tr:first-of-type{
-	border-bottom: 1px solid #B9BBBD !important;
+	border-bottom: 1px solid #B9BBBD ;
 }
 
 .dynamicDataTable tr.itemTR.menuEdit:first-of-type, .dynamicDataTable tr.userTR.userEdit:first-of-type, .dynamicDataTable tr.eventTR.eventEdit:first-of-type{
@@ -1046,7 +1081,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	padding-bottom: 15px !important;
 }
 
-.itemSubheader button, .xtraOpt{
+.itemSubheader button, .xtraOpt, .newMDSection{
 	width: 20px;
 	height: 20px;
 	font-size: 17px;
@@ -1098,6 +1133,18 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 .newItem, .newEvent, .newUser, .newOutlet, .newmdItem, .addMoreOH{
 	background: #2E70B7;
 	border: #2E70B7;
+}
+
+.newmdItem {
+	margin-left: 12px;
+}
+
+.mdSectionDelete {
+	width: 20px;
+	height: 20px;
+	font-size: 17px;
+	padding: 1px 2px;
+	margin-top: 28px;
 }
 
 .removeOH { 
@@ -1405,7 +1452,7 @@ table.sortable-placeholder, .sortable-placeholder-sec{
 	width: auto;
 }
 
-tbody tr.menuEdit, tbody tr.userEdit, tbody tr.eventEdit {
+tbody tr.menuEdit, tbody tr.userEdit, tbody tr.eventEdit, tbody tr.mdEdit {
 	background: transparent !important;
 }
 
@@ -1496,7 +1543,7 @@ ul.ui-autocomplete li.ui-menu-item {
 	font-size: 14px;
 }
 
-input[name^='iMod'], input[name^='iMod']:focus{
+input[name^='iMod'], input[name^='iMod']:focus, input[name^='iMD'], input[name^='iMD']:focus{
 	background: #3AA2DC !important;
 	color: #FFFFFF !important;
 	padding-left: 10px !important;
@@ -1520,6 +1567,19 @@ input[name^='iMod']:-ms-input-placeholder { /* Internet Explorer 10+ */
     color:    #FFF;
 }
 
+input[name^='iMD']::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #FFF;
+}
+input[name^='iMD']:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #FFF;
+}
+input[name^='iMD']::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #FFF;
+}
+input[name^='iMD']:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #FFF;
+}
+
 .showAChevy {
 	position: relative;
 	font-family: 'icomoon';
@@ -1534,4 +1594,21 @@ input[name^='iMod']:-ms-input-placeholder { /* Internet Explorer 10+ */
 	height: 20px;
 	z-index: 2001;
 	left: -48px;
+}
+
+.mdField.ui-autocomplete-input {
+	width: 271px;
+}
+
+#mealDealConfigForm .modifierRow .showAChevy i{
+	margin-left: -26px;
+}
+
+#mealDealConfigForm .headerTable tr {
+	margin-left: 5px !important;
+	margin-right: 0px !important;
+}
+
+table.mdTable{
+	margin-top:0px;
 }

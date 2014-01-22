@@ -10,11 +10,29 @@
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	
-	//kill md parts
-	$curlResult = callAPI('DELETE', $apiURL."menus/mealdeal/items/$mdID", false, $apiAuth); //md parts deleted
+	//get mealdeal sections
+	$curlResultMD = callAPI('GET', $apiURL."items/$mdID/mealdealsections", false, $apiAuth);
+	$dataJSONMD = json_decode($curlResultMD,true);
 	
-	//kill md
-	$curlResult = callAPI('DELETE', $apiURL."menus/mealdeal/$mdID", false, $apiAuth); //md deleted
+	foreach($dataJSONMD as $mdsection)
+	{
+		$msID  = $mdsection['id'];
+		
+		//get mealdeal items
+		$curlResultMDS = callAPI('GET', $apiURL."mealdealsections/$msID/items", false, $apiAuth);
+		$dataJSONMDS = json_decode($curlResultMDS,true);
+		
+		foreach($dataJSONMDS as $mdsectionitem)
+		{
+			$mdSecItemID = $mdsectionitem['id'];	
+			$curlDelete = callAPI('DELETE', $apiURL."mealdealitems/$mdSecItemID", false, $apiAuth);
+		}
+		
+		$curlDelete = callAPI('DELETE', $apiURL."mealdealsections/$msID", false, $apiAuth);
+	}
+	
+	//kill mealdeal
+	$curlResult = callAPI('DELETE', $apiURL."items/$mdID", false, $apiAuth); //md parts deleted
 	
 	echo $curlResult;
 
