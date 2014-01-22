@@ -37,9 +37,21 @@
 							</li>
 							<li class="has-dropdown"><a href="#"><?echo _("Menus");?></a>
 								<ul class="dropdown">
-									<?foreach($_SESSION['menus'] as $menuL){?>
-										<li><a href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>"><?echo _("Edit")." $menuL[name]";?></a></li>
-									<?}?>
+									<?
+										//query to find menus for this venue  
+										$accountID = $_SESSION['account_id'];
+										$mCurlResult = callAPI('GET', $apiURL."menus?accountId=$accountID", false, $apiAuth);
+										$mDataJSON = json_decode($mCurlResult,true);
+										if(!empty($mDataJSON) && (!isset($mDataJSON['status'])))
+										{
+											foreach($mDataJSON as $menuL){?>
+												<li><a href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>"><?echo _("Edit")." $menuL[name]";?></a></li>
+											<?}?>
+											<li><a href="<?echo $_SESSION['path']?>/mealdeals"><?echo _("Meal Deals");?></a></li><?
+										}
+										else {?>
+											<li><a href="#"><?echo _("No menus");?></a></li>
+										<?}?>										
 								</ul>
 							</li>
 							<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?>	

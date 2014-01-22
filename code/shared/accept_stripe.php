@@ -26,8 +26,8 @@
 		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/demo", false, $apiAuth);
 		$_SESSION['venue_demoFlag'] = 1;
 	}
-	
-	$_SESSION['paymentMethodApproved'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
+	else
+		$_SESSION['paymentMethodApproved'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
 	
 	if(isset($_SESSION['noLiveFlag']) && $_SESSION['noLiveFlag'])
 	{
