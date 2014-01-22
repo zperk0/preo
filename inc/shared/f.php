@@ -3,19 +3,21 @@
 		</script>
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.alerts.js"></script>
-		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.clearing.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.cookie.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.dropdown.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.forms.js"></script>
-		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.joyride.js"></script>
-		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.magellan.js"></script>
-		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.orbit.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.placeholder.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.reveal.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.section.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.tooltips.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.topbar.js"></script>
-		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.interchange.js"></script>
+		
+<!--	<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.orbit.js"></script>
+		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.clearing.js"></script>
+		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.joyride.js"></script>
+		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.magellan.js"></script>
+		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.interchange.js"></script> -->
+
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.datepicker.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.abide.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/jquery.noty-full-min.js"></script>

@@ -79,6 +79,8 @@
 		
 			foreach($section['items'] as $item)
 			{
+				if($item['mealDeal']) continue;				
+				
 				$itemModOptArray[$tempCounter]['id'] = $item['id'];
 				$itemModOptArray[$tempCounter]['modCount'] = count($item['modifiers']);
 				$itemModOptArray[$tempCounter]['optCount'] = 0;

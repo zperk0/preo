@@ -49,6 +49,7 @@
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	
 	$curlResult = '';
+	$newMDs = array();
 	
 	foreach($md as $mdKey => $mealDeal)
 	{
@@ -94,7 +95,11 @@
 		
 		$jsonData = json_encode($data);
 		
-		if( (preg_match('/^\d+$/',$mealDeal['id'])) ) //Edit
+		//check item id if it exists then edit otherwise post
+		$curlResultCheck = callAPI('GET', $apiURL."items/".$mealDeal['id'], false, $apiAuth);
+		$dataJSONCheck = json_decode($curlResultCheck,true);
+		
+		if( isset($dataJSONCheck['id']) && $dataJSONCheck['id'] ) //Edit
 		{	
 			$mdID = $mealDeal['id'];
 			
@@ -107,6 +112,8 @@
 			$result = json_decode($curlResult,true);
 				
 			$mdID = $result['id'];
+			$newMDs[$mealDeal['id']] = $mdID;
+			
 		}
 		
 		//now we create mealDeal parts
@@ -143,5 +150,14 @@
 		}
 	}
 	
-	echo $curlResult; //sending a JSON via ajax 
+	//echo $curlResult; //sending a JSON via ajax 
+	
+	//we need to send back an array along with curlResult
+	$newJSON = array();
+	$newJSON['result'] = json_decode($curlResult,true); //make it an array
+	$newJSON['update']= $newMDs; //add array of new values
+	
+	$newJSON = json_encode($newJSON, true); //back to JSON
+	
+	echo $newJSON; //sending a JSON via ajax 
 ?>

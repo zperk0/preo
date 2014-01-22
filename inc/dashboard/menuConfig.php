@@ -227,6 +227,7 @@
 						<div class="sortWithinDiv">
 						<?foreach($section['items'] as $item){ 
 						//again remember its all 1-indexed thats why we add +1 to the key
+							if($item['mealDeal']) continue;	
 						?>
 							<table class="menuTable tablesection<?echo ($sKey+1);?>" id="item<?echo ($iKey+1)?>" style="background:transparent">
 								<tbody>

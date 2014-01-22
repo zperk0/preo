@@ -1559,6 +1559,8 @@ $(document).ready(function() {
 		
 		$newTab.css('backgroundColor','#fafafa');
 		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+		$newTab.css('max-width', '4000px'); 
+		$newTab.css('margin-left', '-15px');
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
@@ -1609,7 +1611,7 @@ $(document).ready(function() {
 		$curItem.find(".eventMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '-11px');
+		$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '-15px');
 		
 		$curItem.find("td.eventTDCollection select").each(function() {
 			$(this).multiselect({
@@ -1856,6 +1858,7 @@ $(document).ready(function() {
 			 }).done(function() {
 				$('#eventSubButton').show();
 				$('#savingButton').hide();
+				$(".eventMenuSingleSelect").multiselect('disable');
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
@@ -1887,7 +1890,7 @@ $(document).ready(function() {
 		$curItem.find(".userMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '-11px');
+		$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '-15px');
 	});
 	
 	$(document).on("click", ".newUser", function() {
@@ -1964,6 +1967,8 @@ $(document).ready(function() {
 		
 		$newTab.css('backgroundColor','#fafafa');
 		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+		$newTab.css('max-width', '4000px'); 
+		$newTab.css('margin-left', '-15px');
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
@@ -2130,6 +2135,7 @@ $(document).ready(function() {
 			 }).done(function() {
 				$('#userSubButton').show();
 				$('#savingButton').hide();
+				$(".userMenuSingleSelect").multiselect('disable');
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
@@ -2395,6 +2401,7 @@ $(document).ready(function() {
 			 }).done(function() {
 				$('#outSubButton').show();
 				$('#savingButton').hide();
+				$(".outletMenuMultiSelect").multiselect('disable');
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
@@ -2681,13 +2688,15 @@ $(document).ready(function() {
 		$newTab.css('backgroundColor','#fafafa');
 		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
 		$newTab.find('tr').css('border-bottom','0px');
+		$newTab.css('max-width', '4000px'); $newTab.css('margin-left', '-11px');
 		
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
+		$newTab.find('select[name^=mdSec]').hide();
 		
 		//insert after section header/before hidden div
-		$(".dynamicDataTable table").last().before($newTab); 
+		$(".dynamicDataTable table").last().after($newTab); 
 		
 		$($newTab).slideRow('down');
 		
@@ -2702,6 +2711,9 @@ $(document).ready(function() {
 		});
 		
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+		
+		$newTab.find('.newMDSection').trigger('click');
+		newTab.find('select[name^=mdSec]').show();
 	});
 	
 	$(document).on("click", ".mdSectionDelete", function(){
@@ -2938,7 +2950,7 @@ $(document).ready(function() {
 		$curItem.find(".mdTR select").multiselect("disable");
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
-		//$curItem.css('max-width', '987px'); $curItem.css('margin-left', 'auto');
+		$curItem.css('max-width', '987px'); $curItem.css('margin-left', 'auto');
 		$curItem.find('tr').first().css('border-bottom','1px solid #B9BBBD');
 	});
 	
@@ -2960,8 +2972,17 @@ $(document).ready(function() {
 		$curItem.find(".modifierRow").fadeIn('slow');
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		//$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '0px');
+		$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '-11px');
 		$curItem.find('tr').css('border-bottom','0px');
+		
+		$curItem.find('select[name^=iMDType]').each(function(){ //reinitialize to get the right width
+			$(this).multiselect({
+				   multiple: false,
+				   header: false,
+				   noneSelectedText: "Choose a menu section",
+				   selectedList: 1
+				}); 
+		});
 		
 	});
 	
@@ -2993,6 +3014,8 @@ $(document).ready(function() {
 	   noneSelectedText: "Choose a menu section",
 	   selectedList: 1
 	}); 
+	
+	$('.mdSecSingleSelect').multiselect('disable');
 		
 	$("#mealDealConfigForm").on('valid', function (event) {
 		//lock all
@@ -3025,11 +3048,11 @@ $(document).ready(function() {
 						  type: 'error',  layout: 'topCenter',
 						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
-						//alert(data);
+						alert(data);
 						return false;
 					}
 					
-					if(typeof dataArray['status'] !='undefined') //error
+					if(typeof dataArray['status'] !='undefined' || typeof dataArray['result']['status'] !='undefined' ) //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
@@ -3038,13 +3061,22 @@ $(document).ready(function() {
 					}
 					else
 					{	
-						noty({ type: 'success', text: 'All changes has been saved!' });
+						newIDs = dataArray['update'];
+
+						if(Object.keys(newIDs).length > 0) //this is an object not array so length and stuff works differently
+						{
+							$.each(newIDs, function(index, value) {
+							  $('input[value='+index+']').val(value); //find by value and update!
+							});
+						}
 						
+						noty({ type: 'success', text: 'All changes has been saved!' });
 					}
 				}
 			}).done(function() {
 				$('#mdSubButton').show();
 				$('#savingButton').hide();
+				$(".mdSecSingleSelect").multiselect('disable');
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
@@ -3072,32 +3104,11 @@ $(document).ready(function() {
 	$(".showNextPhone, .phoneContainer").on('click', function(){
 		if(!$(".phone2").is(':visible'))
 		{
-			/*
-			$(".phone1").css('margin-left','0');
-			$(".phone1").animate({'margin-left':'-252px'},150);
-			
-			setTimeout(function(){$(".phone1").hide();$(".phone2").show();$(".phone2").removeClass('hide');$(".phone1").addClass('hide');}, 20);
-			
-			$(".phone2").css('margin-left','252px');
-			$(".phone2").animate({'margin-left':'0'},100);
-			*/
-			
 			$(".phone1").hide();
 			$(".phone2").show();
 		}
 		else
 		{
-			/*$(".phone2").css('margin-left','0px');
-			$(".phone2").animate({'margin-left':'252px'},150);
-			
-			setTimeout(function(){$(".phone2").hide();$(".phone1").show();$(".phone1").removeClass('hide');$(".phone2").addClass('hide');}, 20);
-			
-			$(".phone1").css('margin-left','-252px');
-			$(".phone1").animate({'margin-left':'0'},100);
-			
-			$(".phone1").removeClass('hide');
-			$(".phone2").addClass('hide');*/
-			
 			$(".phone2").hide();
 			$(".phone1").show();
 		}

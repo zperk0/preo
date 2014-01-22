@@ -49,7 +49,7 @@
 				<tr class="savedInput mdTR">
 					<td class="mdTDName">
 						<input type="hidden" name="mdID[<?echo $key+1;?>]" value="<?echo $mealDeal['id']?>"/>
-						<input type="text" name="mdName[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo $mealDeal['name'];?>" required/>
+						<input type="text" name="mdName[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo $mealDeal['name'];?>" required readonly="readonly"/>
 						<small class="error"><?echo _("Please type an item name");?></small>
 					</td>
 					<td class="mdTDSec">
@@ -61,10 +61,10 @@
 						<small class="error"><?echo _("Please choose a section");?></small>
 					</td>
 					<td class="mdTDTPrice">
-						<input type="text" name="mdTPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>" required/>
+						<input type="text" name="mdTPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>" required readonly="readonly"/>
 					</td>
 					<td class="mdTDPrice">
-						<input type="text" name="mdPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo $mealDeal['price'];?>" required/>
+						<input type="text" name="mdPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo $mealDeal['price'];?>" required readonly="readonly"/>
 						<small class="error"><?echo _("Amount?");?></small>
 						</td>
 					<td class="mdTDVisi hide">
@@ -86,7 +86,7 @@
 				</tr>
 				<?foreach($mealDeal['sections'] as $sKey => $mdS){ /*1-index so key+1*/?>
 					<tr class="savedInput subHeaderTR" style="display:none;">
-						<td class="mdSubheader optionTR"><h6><button type="button" class="mdSectionDelete secondary"><i class="pd-delete"></i></button> <?echo _("Delete this Meal Deal section");?></h6></td>
+						<td class="mdSubheader optionTR"><h6><button type="button" class="mdSectionDelete secondary"><i class="pd-delete"></i></button> <?echo _("Delete this section");?></h6></td>
 						<td class="modifierRow hide">
 							<input type="text" name="iMD[<?echo $key+1;?>][s<?echo $sKey+1?>]" class="mdField noEnterSubmit hide" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Type or pick a selection title");?>" value="<?echo $mdS['name'];?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Choose a main, Choose a side, Choose a drink, etc");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
 							<small class="error smallerror"><?echo _("Please type or pick a title");?></small>
@@ -109,6 +109,7 @@
 							{ 
 								foreach($mdSections as $mdSection) { 
 									foreach($mdSection['items'] as $item) { 
+										if($item['mealDeal']) continue;
 									?>
 										<label class="mdItemName sec<?echo $mdSection['id'];?>" style="display:none;"><span id="<?echo $sKey+1?>_item_<?echo $item['id']?>" data-value="<?echo $item['price'];?>"><?echo $item['name'];?></span> &nbsp; <button type="button" class="newmdItem" title="<?echo _("Add this item to the current Meal Deal");?>"><i class="pd-add"></i></button></label>
 								<?  }
@@ -128,6 +129,7 @@
 				foreach($mdS['items'] as $mdiKey => $mdItem){?> 
 					$(function() { //this inside document.ready makes the following run once DOM is ready (note that is AFTER page load is complete)
 						$('#<?echo $sKey+1;?>_item_<?echo $mdItem?>').closest('.mdItemName').find('.pd-add').trigger('click');
+						$('#<?echo $sKey+1;?>_item_<?echo $mdItem?>').parent().show();
 					});
 				<?}
 			}?>
@@ -201,6 +203,7 @@
 					{ 
 						foreach($mdSections as $mdSection) { 
 							foreach($mdSection['items'] as $item) { 
+								if($item['mealDeal']) continue;
 							?>
 								<label class="mdItemName sec<?echo $mdSection['id'];?>" style="display:none;"><span id="0_item_<?echo $item['id']?>" data-value="<?echo $item['price'];?>"><?echo $item['name'];?></span> &nbsp; <button type="button" class="newmdItem" title="<?echo _("Add this item to the current Meal Deal");?>"><i class="pd-add"></i></button></label>
 						<?  }
@@ -217,7 +220,7 @@
 	</div>
 </form>
 
-<h6 class="hide deleteDummy"><button type="button" class="mdSectionDelete secondary"><i class="pd-delete"></i></button> <?echo _("Delete this Meal Deal section");?></h6>
+<h6 class="hide deleteDummy"><button type="button" class="mdSectionDelete secondary"><i class="pd-delete"></i></button> <?echo _("Delete this section");?></h6>
 
 <?if($_SESSION['noItemsFlag']){?>
 <script type="text/javascript">

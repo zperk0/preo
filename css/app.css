@@ -899,18 +899,6 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	width: 35%;
 }
 
-.headerTable .mdTDSec {
-	padding-left: 20px;
-}
-
-.headerTable .mdTDPrice, .headerTable .mdTDTPrice {
-	padding-left: 32px;
-}
-
-.headerTable .mdTDTools{
-	padding-left: 40px;
-}
-
 .mdTable .mdTDPrice, .headerTable .mdTDPrice{
 	width: 10%;
 }
@@ -948,7 +936,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	color: #444 !important;
 	margin-top: -4px;
 	margin-right: 16px;
-	width: 302px;	
+	width: 290px;	
 }
 
 #menuSectionRow{
@@ -1050,12 +1038,16 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	padding-bottom: 20px;
 }
 
-.menuTable tr, .eventTable tr, .userTable tr , .outletTable tr, table.headerTable tr {
+.menuTable tr, .eventTable tr, .userTable tr , .outletTable tr, table.headerTable tr, .mdTable tr {
 	display: table;
 	max-width: 50%;
 	margin-left: auto !important;
 	margin-right: auto !important;
 	min-width: 950px;
+}
+
+#mealDealConfigForm .headerTable  {
+	width: 950px !important;
 }
 
 .headerTable thead, .innerTableHeader {
@@ -1593,6 +1585,7 @@ input[name^='iMD']:-ms-input-placeholder { /* Internet Explorer 10+ */
 	display: inline-block;
 	margin-top: -10px;
 	top: -33px;
+	top: -33px;
 	float: right;
 	font-weight: normal;
 	width: 20px;
@@ -1602,12 +1595,12 @@ input[name^='iMD']:-ms-input-placeholder { /* Internet Explorer 10+ */
 	left: -48px;
 }
 
-.mdField.ui-autocomplete-input {
-	width: 271px;
+#mealDealConfigForm .modifierRow .showAChevy i{
+	margin-left: -8px;
 }
 
-#mealDealConfigForm .modifierRow .showAChevy i{
-	margin-left: -26px;
+#mealDealConfigForm .optionTR{
+	margin-top: 10px;
 }
 
 #mealDealConfigForm .headerTable tr {
