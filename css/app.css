@@ -606,6 +606,12 @@ label.appTop {
 	width: 77px;
 }
 
+#buttonIMG {
+	height: 26px;
+	width: 75%;
+	margin-left: 41px;
+}
+
 #venTitle{
 	color: #48535D;
 	font-size: 16px;
