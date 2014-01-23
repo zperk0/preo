@@ -202,7 +202,7 @@
 				
 				$data['menuId'] 		= $menuID; //sectionxitems
 				$data['sectionId'] 		= $section_id; //sectionxitems
-				$data['position'] 		= $iKey; //sectionxitems
+				$data['position'] 		= $iKey+1000; //sectionxitems
 				
 				$jsonData = json_encode($data);
 				$curlResult = callAPI('POST', $apiURL."items", $jsonData, $apiAuth); //item created

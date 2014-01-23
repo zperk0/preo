@@ -56,7 +56,7 @@
 		if( (preg_match('/^\d+$/',$mealDeal['id'])) ) //We delete the old meal deals and create a new ones!
 		{		
 			$mdID = $mealDeal['id'];
-
+			
 			//get mealdeal sections
 			$curlResultMD = callAPI('GET', $apiURL."items/$mdID/mealdealsections", false, $apiAuth);
 			$dataJSONMD = json_decode($curlResultMD,true);
@@ -77,7 +77,7 @@
 				
 				$curlDelete = callAPI('DELETE', $apiURL."mealdealsections/$msID", false, $apiAuth);
 			}	
-		} //at this stage all current data is deleted and now we will proceed to putting in new data
+		} //at this stage all current data is deleted and now we will proceed to putting in new data but retaining the old id
 		
 		
 		//create/update md
@@ -86,7 +86,7 @@
 		$data['price'] 		= $mealDeal['price'];
 		$data['visible'] 	= $mealDeal['visible'];
 		$data['venueId'] 	= $_SESSION['venue_id'];
-		$data['position'] 	= $mdKey*1000;
+		$data['position'] 	= $mdKey;
 		$data['sectionId'] 	= $mealDeal['sectionID'];
 		$data['mealDeal'] 	 = 1;
 		$data['description'] = "Meal Deal";

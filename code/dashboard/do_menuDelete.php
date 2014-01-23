@@ -16,7 +16,7 @@
 	$menu = $dataJSON;
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
-
+	
 	foreach($menu['sections'] as $section)
 	{
 		$sectionID = $section['id'];

@@ -9,7 +9,8 @@
 	protect($mdID);
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
-	
+
+	/*
 	//get mealdeal sections
 	$curlResultMD = callAPI('GET', $apiURL."items/$mdID/mealdealsections", false, $apiAuth);
 	$dataJSONMD = json_decode($curlResultMD,true);
@@ -32,7 +33,12 @@
 	}
 	
 	//kill mealdeal
-	$curlResult = callAPI('DELETE', $apiURL."items/$mdID", false, $apiAuth); //md parts deleted
+	//$curlResult = callAPI('DELETE', $apiURL."items/$mdID", false, $apiAuth); //md parts deleted
+	
+	*/
+	
+	//new cascade delete
+	$curlResult = callAPI('DELETE', $apiURL."items/$mdID?cascade=true", false, $apiAuth); //cascade delete everything!
 	
 	echo $curlResult;
 
