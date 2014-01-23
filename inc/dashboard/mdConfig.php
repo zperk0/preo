@@ -126,12 +126,36 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 			<? foreach($mealDeal['sections'] as $sKey => $mdS){
-				foreach($mdS['items'] as $mdiKey => $mdItem){?> 
+				$secTemp = 0;
+				$allFlag = 0;
+				foreach($mdS['items'] as $mdiKey => $mdItem){
+					$secVal = array_searcher($mdItem,$itemSectionArray);
+					if($secTemp == 0)
+						$secTemp = $secVal;
+					else if($secTemp != $secVal)
+						$allFlag = 1;
+				?> 
 					$(function() { //this inside document.ready makes the following run once DOM is ready (note that is AFTER page load is complete)
-						$('#<?echo $sKey+1;?>_item_<?echo $mdItem?>').closest('.mdItemName').find('.pd-add').trigger('click');
-						$('#<?echo $sKey+1;?>_item_<?echo $mdItem?>').parent().show();
+						$('#md<?echo $key+1;?>').find('#<?echo $sKey+1;?>_item_<?echo $mdItem?>').closest('.mdItemName').find('.pd-add').trigger('click');
 					});
 				<?}
+				if($allFlag){
+					?>$("select[name='iMDType[<?echo $key+1;?>][s<?echo $sKey+1?>]']").val("all");
+					  $('#md<?echo $key+1;?>').find("span[id^='<?echo $sKey+1;?>_item_']").parent().show();
+					<?
+				}else{
+					?>$("select[name='iMDType[<?echo $key+1;?>][s<?echo $sKey+1?>]']").val("<?echo $secVal;?>");<?
+					foreach($itemSectionArray as $intermediateArray)
+					{
+						foreach($intermediateArray as $isKey => $isVal)
+						{
+							if($isKey == $secVal)
+							{
+								?>$('#md<?echo $key+1;?>').find("span[id='<?echo $sKey+1;?>_item_<?echo $isVal;?>']").parent().show();<?
+							}
+						}
+					}
+				}
 			}?>
 		});
 		</script>
@@ -232,7 +256,6 @@
 	
 	});
 </script>
-
 <?
 $_SESSION['noItemsFlag']=0;
 }?>

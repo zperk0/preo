@@ -2983,6 +2983,19 @@ $(document).ready(function() {
 				   selectedList: 1
 				}); 
 		});
+		
+		$curItem.find('.mdTDIName label span').each(function() {
+			var curHeight = ($(this).actual('height')).toString();
+			curHeight = parseInt(curHeight.replace('px',''));
+			
+			if(curHeight < 39 && !$(this).hasClass('alreadyApplied'))
+			{	
+				$(this).css('padding-top', '10px');
+			}
+			
+			$(this).addClass('alreadyApplied'); //pass through only once
+		});
+		
 	});
 	
 	$(document).on("change",'select[name^=iMDType]', function(){
@@ -3000,10 +3013,10 @@ $(document).ready(function() {
 		}
 		
 		$(this).parent().parent().next().find('.mdTDIName label span').each(function() {
-			var curHeight = $(this).css('height');
+			var curHeight =  ($(this).actual('height')).toString();
 			curHeight = parseInt(curHeight.replace('px',''));
 			
-			if(curHeight < 40 && !$(this).hasClass('alreadyApplied'))
+			if(curHeight < 39 && !$(this).hasClass('alreadyApplied'))
 			{	
 				$(this).css('padding-top', '10px');
 			}

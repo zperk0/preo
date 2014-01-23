@@ -28,6 +28,7 @@
 		<script src="<?echo $_SESSION['path']?>/js/jquery-ui-1.10.3.custom.min.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/multi-select.js"></script>
 		<script src="<?echo $_SESSION['path']?>/js/tableSlide.js"></script>
+		<script src="<?echo $_SESSION['path']?>/js/js-actual.js"></script>
 		
 		<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 		

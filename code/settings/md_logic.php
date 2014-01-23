@@ -3,7 +3,23 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
-
+	
+	//search 2d array - bespoke
+	function array_searcher($needle, $array2d) 
+	{ 
+		foreach($array2d as $array)
+		{ 
+			foreach($array as $key => $value) 
+			{
+				if ($value == $needle) 
+				{ 
+					return $key; 
+				} 
+			}
+		}
+	}  
+	/////////////////////////////////////////////////////
+	
 	$_SESSION['noItemsFlag']=0;
 	$mdCount=0;
 	
@@ -31,6 +47,7 @@
 		$mdCurlResult = callAPI('GET', $apiURL."menus?accountId=$accID", false, $apiAuth);
 		$mdDataJSON = json_decode($mdCurlResult,true);
 		$mdSections = array();
+		$itemSectionArray = array();
 		if(!empty($mdDataJSON) && (!isset($mdDataJSON['status'])))
 		{
 			$mdMenuID = $mdDataJSON[0]['id'];
@@ -40,6 +57,14 @@
 			$mdMenuDataJSON = json_decode($mdMenuCurlResult,true);
 			
 			$mdSections = $mdMenuDataJSON['sections'];
+			foreach($mdSections as $s)
+			{
+				foreach($s['items'] as $it)
+				{
+					//just getting menu-section => itemid relationship!
+					$itemSectionArray[][$s['id']] = $it['id'];
+				}
+			}
 		}
 
 		////////////////MealDeals//////////////////////////////////////////////////////////////////
