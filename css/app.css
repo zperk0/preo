@@ -923,26 +923,36 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .mdItemName span {
-	width: 81%;
+	width: 83%;
 	display: inline-block;
+	vertical-align: sub;
 }
 
-.mdItemName button { 
+.mdItemName button {
 	width: 25px;
 	height: 22px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	position: absolute;
+	top: 50%;
+	margin-top: -11px;
 }
 
 .mdItemName {
 	display: inline-block;
-	width: 32.98%;
 	border-top: 1px solid #B9BBBD;
 	border-bottom: 1px solid #B9BBBD;
-	height: 23px;
-	padding: 6px 0px 29px 2px;
+	min-height: 23px;
+	padding: 2px 0px 2px 2px;
 	color: #444 !important;
-	margin-top: -4px;
+	margin-top: -5px;
 	margin-right: 16px;
-	width: 290px;	
+	width: 290px;
+	margin-bottom: 0px;
+	position: relative;
+	font-size: 80%;
+	height: 46px;
+	overflow: hidden;
 }
 
 #menuSectionRow{

@@ -232,6 +232,7 @@
 	
 	});
 </script>
+
 <?
 $_SESSION['noItemsFlag']=0;
 }?>
