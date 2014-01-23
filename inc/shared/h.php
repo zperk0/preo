@@ -1,6 +1,6 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
       require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function 
-	  $apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here ?>
+	  if(isset($_SESSION['token'])) $apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here ?>
 <div class="contain-to-grid">
 	<nav class="top-bar">
 		<ul class="title-area">
