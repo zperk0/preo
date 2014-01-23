@@ -471,6 +471,13 @@ $(document).ready(function() {
 				  type: 'error',  layout: 'topCenter',
 				  text: 'Incorrect Image File'
 				});
+				
+				//manual reset
+				var content = $("#aHeading").val()
+				$("#appHeading").html(content);
+				$("#picFileName").val('');
+				$("#picFile").val('');
+				
 				return false;
 			}
 		}
@@ -515,6 +522,10 @@ $(document).ready(function() {
 				  type: 'error',  layout: 'topCenter',
 				  text: 'Incorrect Image File'
 				});
+				
+				//manual reset
+				$("#bgFile").val('');
+				
 				return false;
 			}
 		}

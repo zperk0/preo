@@ -181,7 +181,7 @@
 							<div class="row row--space1">
 								<div class="large-8 small-8 columns">
 									<button id="doBGUp" type="button" class="small"><?echo _("UPLOAD");?></button>
-									<button id="bgReset" type="button" class="small secondary"><?echo _("CANCEL");?></button>
+									<button id="bgReset" type="button" class="small secondary"><?echo _("RESET");?></button>
 									<input type="file" id="bgFile" name="bgFile" accept="image/jpeg" class="hide" />
 									<p><?echo _("Supported types: JPG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 1080x1920");?></p>
 								</div>
