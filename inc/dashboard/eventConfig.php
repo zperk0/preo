@@ -20,7 +20,7 @@
 			</nav>
 		<?}?>
 		<div class="large-12 columns">
-			<h1><?echo _("Your events");?></h1>
+			<h1><?echo _("Your events");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("These show when you are open for ordering, such as performances or matches. They can be viewed from the front page of your app");?>"></i></h1>
 
 			<!-- Hidden inputs here keep count of events -->
 			<input type="hidden" id="eventCount"			name="eventCount" 				value="<?if($_SESSION['event_edit_on']) echo $eventCount; else echo "0";?>"/>

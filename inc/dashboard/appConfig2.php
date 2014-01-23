@@ -29,7 +29,7 @@
 	<?}?>
 	<div class="large-12 columns">
 		<div class="row">
-			<h1 class="alignHeader"><?echo _("Style your app");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Gives you the opportunity to brand your menu pages and choose which colours you would like to have on your app.");?>"></i></h1>
+			<h1 class="alignHeader"><?echo _("Style your app");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can brand your menu page");?>"></i></h1>
 			<div id="phonePreview">
 				<form id="appConfig2Form" method="POST" data-abide>
 					<input type="hidden" id="redirectFlag" value="<?echo $redirectFlag;?>"/>

@@ -2,7 +2,7 @@
 <form id="mealDealConfigForm" method="POST" data-abide >
 	<div class="row">
 		<div class="topSpacer"></div>
-		<h1 class="alignHeader"><?echo _("Meal Deals");?></h1>
+		<h1 class="alignHeader"><?echo _("Meal Deals");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can combine separate food items into one meal combination, e.g. sandwich, crisps and a drink");?>"></i></h1>
 		<div class="large-12 columns">
 			<div class="row">
 				<?if(!$_SESSION['noItemsFlag']){?><button type="button" class="newMD" title="<?echo _("Add a new Meal Deal");?>"><i class="pd-add"></i></button> <?echo _("Add a new Meal Deal"); }?>

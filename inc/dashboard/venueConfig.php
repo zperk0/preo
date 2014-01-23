@@ -90,7 +90,7 @@
 			
 			<div class="row">
 				<div class="large-12 columns">
-					<label><?echo _("Are you primarily an events based business?");?> &nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Does your business revolve around regular events, eg. football matches, performances, etc?");?>"></i></label>
+					<label><?echo _("Are you primarily an events based business?");?> &nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Does your business revolve around regular events, e.g. football matches, performances, etc?");?>"></i></label>
 					<div class="switch small large-2 columns eventFlagNoti"> 
 						<input name="vEvent" value="0" type="radio" <?if((isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag']) || !isset($_SESSION['venue_eventFlag'])){?>checked<?}?>>
 						<label class="no"><?echo _("No");?></label>

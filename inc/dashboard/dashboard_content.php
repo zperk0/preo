@@ -9,7 +9,7 @@
 	<div class="topSpacer"></div>
 	<div class="large-12 columns">
 		<h1 class=""><? echo _("Dashboard"); if($_SESSION['venue_demoFlag']) echo _(" (DEMO)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
-		<p class="venueCode"><?echo _("Your venue shortcode is")." <strong>".$_SESSION['venue_code']."</strong>";?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("This in the code you need to give to customers so they can type it into 'my order app' to get your branded app.");?>"></i></p>
+		<p class="venueCode"><?echo _("Your venue shortcode is")." <strong>".$_SESSION['venue_code']."</strong>";?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("This is the code your customers need to use to find your venue on 'My Order App'");?>"></i></p>
 	</div>
 </div>
 
