@@ -462,6 +462,10 @@ ul.custom-inline-list {
 	background-size: 20px 20px;
 }
 
+.appstlyeright .selected.hideAfter:after {
+	background: transparent !important;
+}
+
 .appstlyeright img {
 	margin-bottom: 30px;
 	margin-top: -10px;
@@ -487,6 +491,21 @@ label.appTop {
 
 #logoUpForm p, #bgUpForm p {
 	font-size: 14px;
+}
+
+.pdLoading {
+	width: 82px;
+	height: 33px;
+	margin: 0px;
+	padding: 11px 0px !important;
+}
+
+.pdLoading img {
+	margin-bottom: 0px;
+	margin-top: 0px;
+	position: absolute;
+	top: 7px;
+	left: 33px;
 }
 
 /* phone area*/
