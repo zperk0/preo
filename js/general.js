@@ -536,7 +536,7 @@ $(document).ready(function() {
 			setTimeout(function() { 
 				$('#thumb'+responseText).trigger('click'); 
 				$('#thumb1').removeClass('hideAfter');
-			}, 10);
+			}, 333);
 			
 			
 		},
