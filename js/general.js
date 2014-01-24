@@ -452,19 +452,39 @@ $(document).ready(function() {
 			$("#appHeading").html(content);
 			$("#aHeading").val(' ');
 			$("#picFileName").val(responseText);
+			
+			//clear for new file
+			$("#picFile").val('');
+			
+			//show button again
+			$('#lo-loading').hide();
+			$('#doLogoUp').show();
 		},
 		error: function() { 
 			noty({
 			  type: 'error',  layout: 'topCenter',
 			  text: 'Error uploading file'
 			});
+			
+			//clear for new file
+			$("#picFile").val('');
+			
+			//show button again
+			$('#lo-loading').hide();
+			$('#doLogoUp').show();
 		},
 		beforeSubmit: function(arr, $form, options) { 
 			var acceptedExts = new Array(".png");
 			var filename = $("#picFile").val();
 			filename = filename.toLowerCase();
 			if(searchArray(filename,acceptedExts))
+			{
+				//hide button again
+				$('#doLogoUp').hide();
+				$('#lo-loading').show();
+				
 				return true;
+			}
 			else
 			{
 				noty({
@@ -500,8 +520,24 @@ $(document).ready(function() {
 			$("#phoneWallpaper").attr("src", newImgSrc);
 			$("#wallPaperID").val(responseText);
 			
-			$('.customBGArea .customIMG').empty();
-			$('<a class="thumb selected" id="thumb'+responseText+'">	<img src="'+globalWPath+'thumb'+responseText+'.jpg"> </a>').appendTo('.customBGArea');
+			$('.customBGArea .customIMG').remove();
+			$('<a class="thumb selected customIMG" id="thumb'+responseText+'">	<img src="'+globalWPath+'thumb'+responseText+'.jpg"> </a>').appendTo('.customBGArea');
+			
+			//clear for new file
+			$("#bgFile").val('');
+			
+			//show button again
+			$('#bg-loading').hide();
+			$('#doBGUp').show();
+			
+			//click to get tick icon
+			$('#thumb1').addClass('hideAfter');
+			$('#thumb1').trigger('click');
+			setTimeout(function() { 
+				$('#thumb'+responseText).trigger('click'); 
+				$('#thumb1').removeClass('hideAfter');
+			}, 333);
+			
 			
 		},
 		error: function() { 
@@ -509,13 +545,26 @@ $(document).ready(function() {
 			  type: 'error',  layout: 'topCenter',
 			  text: 'Error uploading file'
 			});
+			
+			//clear for new file
+			$("#bgFile").val('');
+			
+			//show button again
+			$('#bg-loading').hide();
+			$('#doBGUp').show();
 		},
 		beforeSubmit: function(arr, $form, options) { 
 			var acceptedExts = new Array(".jpg",".jpeg");
 			var filename = $("#bgFile").val();
 			filename = filename.toLowerCase();
 			if(searchArray(filename,acceptedExts))
+			{	
+				//hide button
+				$('#doBGUp').hide();
+				$('#bg-loading').show();
+			
 				return true;
+			}
 			else
 			{
 				noty({
@@ -538,7 +587,12 @@ $(document).ready(function() {
 		var tID = $(this).attr('id');
 		var wall = tID.replace("thumb","wall");
 		var plainID = tID.replace("thumb","");
-		var newImgSrc = "./img/wallpapers/" + wall + ".jpg";
+		
+		if(plainID.match(/^\d+$/gi))
+			var newImgSrc = "./img/wallpapers/" + wall + ".jpg";
+		else
+			var newImgSrc = globalWPath + wall + ".jpg";
+		
 		$("#phoneWallpaper").attr("src", newImgSrc);
 		$("#wallPaperID").val(plainID);
 	});
@@ -584,17 +638,23 @@ $(document).ready(function() {
 	});
 	
 	$("#doBGUp").on('click', function() {
-		if($("#bgFile").val()) $("#bgUpForm").submit();
-		else{ //noty({ type: 'error',  layout: 'topCenter', text: 'Please choose a file' });
-			$("#bgFile").click();
+		if($("#bgFile").val()) 
+		{
+			$("#bgUpForm").submit();
+			$("#bgFile").val('');
 		}
+		else
+			$("#bgFile").click();
 	});
 	
 	$("#doLogoUp").on('click', function() {
-		if($("#picFile").val()) $("#logoUpForm").submit();
-		else{ //noty({ type: 'error',  layout: 'topCenter', text: 'Please choose a file' });
-			$("#picFile").click();
+		if($("#picFile").val())
+		{ 
+			$("#logoUpForm").submit();
+			$("#picFile").val('');
 		}
+		else
+			$("#picFile").click();
 	});
 	
 	$("#picFile").on('change', function(){
@@ -1883,6 +1943,7 @@ $(document).ready(function() {
 		$curItem.find("input").attr("readonly", "readonly");
 		$curItem.find(".userTDEdit").removeClass('hide');
 		$curItem.find(".userTDEdit").show();
+		$curItem.find(".userPassTR").hide();
 		$curItem.find(".userMenuSingleSelect").multiselect("disable");
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
@@ -1898,6 +1959,7 @@ $(document).ready(function() {
 		$curItem.find("input").removeAttr("readonly");
 		$curItem.find(".userSave").removeClass('hide');
 		$curItem.find(".userSave").show();
+		$curItem.find(".userPassTR").show();
 		$curItem.find(".userMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
@@ -1938,6 +2000,18 @@ $(document).ready(function() {
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
+		});
+		
+		$newTab.find("input[name^=uPasswordConf]").each(function() {
+			var tempName = $(this).attr('data-equalTo');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('data-equalTo', newName);
+		});
+		
+		$newTab.find("input[id^=uPassword]").each(function() {
+			var tempName = $(this).attr('id');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('id', newName);
 		});
 		
 		$newTab.find(".userTR select").each(function() {
@@ -2096,7 +2170,7 @@ $(document).ready(function() {
 		
 		$('#userSubButton').hide();
 		$('#savingButton').show();
-	
+		
 		//enable dropdowns or we wont get the values!
 		$(".userMenuSingleSelect").multiselect('enable');
 		
@@ -2147,6 +2221,7 @@ $(document).ready(function() {
 				$('#userSubButton').show();
 				$('#savingButton').hide();
 				$(".userMenuSingleSelect").multiselect('disable');
+				$('.userPassTR').remove(); //now all saved users are in edit mode only
 			 });
 
 		return false; // avoid to execute the actual submit of the form.

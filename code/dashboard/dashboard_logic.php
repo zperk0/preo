@@ -164,7 +164,7 @@
 		$connectedFlag = 0;
 		foreach($dataJSON as $paymentProvider)
 		{
-			if($paymentProvider['type'] == 'Stripe')
+			if(isset($paymentProvider['type']) && $paymentProvider['type'] == 'Stripe')
 				$connectedFlag = 1;
 		}
 		$_SESSION['noPaymentFlag'] = !$connectedFlag;
