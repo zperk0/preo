@@ -1883,6 +1883,7 @@ $(document).ready(function() {
 		$curItem.find("input").attr("readonly", "readonly");
 		$curItem.find(".userTDEdit").removeClass('hide');
 		$curItem.find(".userTDEdit").show();
+		$curItem.find(".userPassTR").hide();
 		$curItem.find(".userMenuSingleSelect").multiselect("disable");
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
@@ -1898,6 +1899,7 @@ $(document).ready(function() {
 		$curItem.find("input").removeAttr("readonly");
 		$curItem.find(".userSave").removeClass('hide');
 		$curItem.find(".userSave").show();
+		$curItem.find(".userPassTR").show();
 		$curItem.find(".userMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
@@ -1938,6 +1940,18 @@ $(document).ready(function() {
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
+		});
+		
+		$newTab.find("input[name^=uPasswordConf]").each(function() {
+			var tempName = $(this).attr('data-equalTo');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('data-equalTo', newName);
+		});
+		
+		$newTab.find("input[id^=uPassword]").each(function() {
+			var tempName = $(this).attr('id');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('id', newName);
 		});
 		
 		$newTab.find(".userTR select").each(function() {

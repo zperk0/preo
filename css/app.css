@@ -784,7 +784,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	display: inline;
 }
 
-.menuTable .menuTDName, .userTable .userTDName, .headerTable .userTDName, .headerTable .menuTDName{
+.menuTable .menuTDName, .headerTable .menuTDName{
 	font-weight: bold !important;
 	width: 30%;
 }
@@ -810,13 +810,12 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	/*width: 32%;*/
 	width: 40%;
 }
+.userTable .userTDName, .headerTable .userTDName, .userTable .userTDEmail, .headerTable .userTDEMail, .userTable .userTDPassword{
+	width: 39%;
+}
 
 .eventTable .eventTDDesc, .headerTable .eventTDDesc{
 	width: 24%;
-}
-
-.userTable .userTDEmail, .headerTable .userTDEMail{
-	width: 30%;
 }
 
 .menuTable .menuTDPrice, .headerTable .menuTDPrice{
@@ -837,8 +836,12 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	background: #F7F7F7 !important;
 }
 
-.userTable .userTDPassword, .headerTable .userTDPassword{
-	width: 17%;
+.userPassTR {
+	margin-bottom: 18px;
+}
+
+.userPassTR label {
+	font-size: 14px;
 }
 
 .menuTable .menuTDPrice input, .mdTable .mdTDPrice input, .mdTable .mdTDTPrice input{
@@ -879,6 +882,11 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 .eventTable .eventTDSpace span{
 	width: 182px;
 	display: block;
+}
+
+#userConfigForm  .headerTable th{
+	text-align: left;
+	padding-left: 0px !important;
 }
 
 .userTable .userTDRole, .headerTable .userTDRole{
@@ -971,11 +979,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	width: 12%;
 }
 
-.userTable .userTDTools, .userTable .userTDTools, .headerTable .userTDTools{
-	width: 9%;
-}
-
-.outletTable .outletTDTools{
+.userTable .userTDTools, .userTable .userTDTools, .headerTable .userTDTools, .outletTable .outletTDTools{
 	width: 9%;
 }
 

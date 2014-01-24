@@ -21,7 +21,10 @@
 		{
 			try { 
 				$users[$i]['id']	= /*protect(*/$_POST['uID'][$j];/*);*/ 
-				$users[$i]['password'] 	= /*protect(*/$_POST['uPassword'][$j];//);
+				if(isset($_POST['uPassword'][$j])) //new user
+					$users[$i]['password'] 	= /*protect(*/$_POST['uPassword'][$j];//);
+				else //edit user
+					$users[$i]['password'] = '';
 			} 
 			catch(Exception $e){ /*nothing*/ } 
 			

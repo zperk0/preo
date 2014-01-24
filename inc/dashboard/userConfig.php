@@ -20,7 +20,6 @@
 					<tr>
 						<th class="userTDName"><? echo _("Name");?></th>
 						<th class="userTDEmail"><? echo _("Email");?></th>
-						<th class="userTDPassword"><? echo _("Password");?></th>
 						<th class="userTDRole"><? echo _("Role");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This decides the level of access of your users.");?>"></i></th>
 						<th class="userTDTools"><? echo _("Tools");?></th>
 					</tr>
@@ -41,10 +40,6 @@
 									<input type="email" name="uEmail[0]" class="userField noEnterSubmit" placeholder="<?echo _("Add an email");?>"/>
 									<small class="error"><?echo _("Please type an email");?></small>
 								</td>
-								<td class="userTDPassword">
-									<input type="password" name="uPassword[0]" class="userField noEnterSubmit" placeholder="<?echo _("Assign a password");?>"/>
-									<small class="error"><?echo _("Provide a Password");?></small>
-								</td>
 								<td class="userTDRole">
 									<select name="uRole[0]" class="userField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have userMenuSingleSelect -->
 										<option value="STAFF" title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
@@ -58,6 +53,20 @@
 									<!--<button type="button" class="userTableButtons userDuplicate" 			title="<?echo _("Duplicate");?>" id="dup0"	><i class="pd-copy"></i></button>-->
 									<button type="button" class="userTableButtons secondary userDelete" 	title="<?echo _("Delete");?>"				><i class="pd-delete"></i></button>
 								</td>
+							</tr>
+							<tr class="userEdit userTR userPassTR">
+								<td class="userTDPassword">
+									<label><?echo _("Password");?></label>
+									<input type="password" id="uPassword[0]" name="uPassword[0]" class="userField noEnterSubmit" placeholder="<?echo _("Assign a password");?>"/>
+									<small class="error"><?echo _("Provide a Password");?></small>
+								</td>
+								<td class="userTDPassword">
+									<label><?echo _("Confirm Password");?></label>
+									<input type="password" name="uPasswordConf[0]" class="userField noEnterSubmit" data-equalTo="uPassword[0]" placeholder="<?echo _("Confirm password");?>"/>
+									<small class="error"><?echo _("Passwords don't match");?></small>
+								</td>
+								<td></td>
+								<td></td>
 							</tr>
 						</tbody>
 					</table>
@@ -82,9 +91,6 @@
 							<input type="email" name="uEmail[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo $user['email'];?>" placeholder="<?echo _("Add an email");?>" readonly="readonly" required/>
 							<small class="error"><?echo _("Please type an email");?></small>
 						</td>
-						<td class="userTDPassword">
-							<input type="password" name="uPassword[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" placeholder="<?echo _("Change a password");?>" readonly="readonly" />
-						</td>
 						<td class="userTDRole">
 							<select name="uRole[<?echo ($uKey+1);?>]" class="userMenuSingleSelect userField noEnterSubmit" style="display:none" readonly="readonly"/>
 								<option value="STAFF" 	<?if($user['role']=='STAFF'){?>selected="selected"<?}?> title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
@@ -93,10 +99,10 @@
 							</select>
 						</td>
 						<td class="userTDTools">
-							<button type="button" class="userTableButtons userSave hide" 			title="<?echo _("Collapse");?>"										><i class="pd-up"></i></button>
-							<button type="button" class="userTableButtons userTDEdit" 				title="<?echo _("Edit");?>"										><i class="pd-edit"></i></button>
-							<!--<button type="button" class="userTableButtons userDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($uKey+1);?>"	><i class="pd-copy"></i></button>-->
-							<button type="button" class="userTableButtons secondary userDelete <?if($_SESSION['user_id'] == $user['id']) echo 'hide';?>" 	title="<?echo _("Delete");?>"									><i class="pd-delete"></i></button>
+							<button type="button" class="userTableButtons userSave hide" title="<?echo _("Collapse");?>"><i class="pd-up"></i></button>
+							<button type="button" class="userTableButtons userTDEdit"	title="<?echo _("Edit");?>"><i class="pd-edit"></i></button>
+							<!--<button type="button" class="userTableButtons userDuplicate"	title="<?echo _("Duplicate");?>" id="dup<?echo ($uKey+1);?>"><i class="pd-copy"></i></button>-->
+							<button type="button" class="userTableButtons secondary userDelete <?if($_SESSION['user_id'] == $user['id']) echo 'hide';?>" title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
 						</td>
 					</tr>
 				</tbody>
