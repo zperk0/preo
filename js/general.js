@@ -2110,7 +2110,7 @@ $(document).ready(function() {
 		
 		$('#userSubButton').hide();
 		$('#savingButton').show();
-	
+		
 		//enable dropdowns or we wont get the values!
 		$(".userMenuSingleSelect").multiselect('enable');
 		
@@ -2161,6 +2161,7 @@ $(document).ready(function() {
 				$('#userSubButton').show();
 				$('#savingButton').hide();
 				$(".userMenuSingleSelect").multiselect('disable');
+				$('.userPassTR').remove(); //now all saved users are in edit mode only
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
