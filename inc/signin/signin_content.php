@@ -46,7 +46,6 @@
 					<button type="submit" tabindex=3><?echo _("LOG IN");?></button>
 				</div>
 			</div>
-
 			<div class="row">
 				<div class="large-12 columns">
 					<small class="smallNot">
