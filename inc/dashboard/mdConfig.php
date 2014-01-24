@@ -119,7 +119,7 @@
 					</tr>
 				<?}?>
 				<tr class="savedInput subHeaderTR" style="display:none;">
-					<td class="mdSubheader optionTR"><h6><button type="button" class="newMDSection"><i class="pd-add"></i></button> <?echo _("Add a selection to this mealdeal");?></h6></td>
+					<td class="mdSubheader optionTR"><h6><button type="button" class="newMDSection"><i class="pd-add"></i></button> <?echo _("Add a selection to this meal deal");?></h6></td>
 				</tr>
 			</tbody>
 		</table>
@@ -204,7 +204,7 @@
 				</td>
 			</tr>
 			<tr class="mdEdit subHeaderTR">
-				<td class="mdSubheader optionTR"><h6><button type="button" class="newMDSection"><i class="pd-add"></i></button> <?echo _("Add a selection to this mealdeal");?></h6></td>
+				<td class="mdSubheader optionTR"><h6><button type="button" class="newMDSection"><i class="pd-add"></i></button> <?echo _("Add a selection to this meal deal");?></h6></td>
 				<td class="modifierRow hide">
 					<input type="text" name="iMD[0][s0]" class="mdField noEnterSubmit hide" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Type or pick a selection title");?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Choose a main, Choose a side, Choose a drink, etc");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
 					<small class="error smallerror"><?echo _("Please type or pick a title");?></small>
