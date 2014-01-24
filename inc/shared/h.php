@@ -26,6 +26,20 @@
 					<li class="has-dropdown"><a href="<?echo $_SESSION['path']?>/"><? echo _("Dashboard");?></a>
 						<ul class="dropdown">
 							<li><a href="<?echo $_SESSION['path']?>/dashboard"><? echo _("Go to Dashboard");?></a></li>
+							
+							<? if(preg_match('/^local/', $_SERVER['SERVER_NAME']) !== false){ ?>
+								<li><a href="http://orders.preoday.com"><? echo _("Fulfillment App");?></a></li>
+							<? }
+							else if(preg_match('/^app-dev/', $_SERVER['SERVER_NAME']) !== false){ ?>
+								<li><a href="http://orders-dev.preoday.com"><? echo _("Fulfillment App");?></a></li>
+							<? }
+							else if(preg_match('/^app-demo/', $_SERVER['SERVER_NAME']) !== false){ ?>
+								<li><a href="http://orders-demo.preoday.com"><? echo _("Fulfillment App");?></a></li>
+							<? }
+							else if(preg_match('/^app\./', $_SERVER['SERVER_NAME']) !== false){ ?>
+								<li><a href="http://orders.preoday.com"><? echo _("Fulfillment App");?></a></li>
+							<? } ?>
+
 							<li class="has-dropdown"><a href="#"><?echo _("Venue Settings");?></a>
 								<ul class="dropdown">
 									<li><a href="<?echo $_SESSION['path']?>/settings"><?echo _("Change Settings");?></a></li>
