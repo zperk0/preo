@@ -111,7 +111,7 @@
 									foreach($mdSection['items'] as $item) { 
 										if($item['mealDeal']) continue;
 									?>
-										<label class="mdItemName sec<?echo $mdSection['id'];?>" style="display:none;"><span id="<?echo $sKey+1?>_item_<?echo $item['id']?>" data-value="<?echo $item['price'];?>"><?echo $item['name'];?></span> &nbsp; <button type="button" class="newmdItem" title="<?echo _("Add this item to the current Meal Deal");?>"><i class="pd-add"></i></button></label>
+										<label class="mdItemName sec<?echo $mdSection['id'];?>" style="display:none;"><span id="<?echo $sKey+1?>_item_<?echo $item['id']?>" data-value="<?echo $item['price'];?>"><?echo "(&pound;".number_format($item['price'],2).") ".$item['name'];?></span> &nbsp; <button type="button" class="newmdItem" title="<?echo _("Add this item to the current Meal Deal");?>"><i class="pd-add"></i></button></label>
 								<?  }
 								}
 							}?>
@@ -229,7 +229,7 @@
 							foreach($mdSection['items'] as $item) { 
 								if($item['mealDeal']) continue;
 							?>
-								<label class="mdItemName sec<?echo $mdSection['id'];?>" style="display:none;"><span id="0_item_<?echo $item['id']?>" data-value="<?echo $item['price'];?>"><?echo $item['name'];?></span> &nbsp; <button type="button" class="newmdItem" title="<?echo _("Add this item to the current Meal Deal");?>"><i class="pd-add"></i></button></label>
+								<label class="mdItemName sec<?echo $mdSection['id'];?>" style="display:none;"><span id="0_item_<?echo $item['id']?>" data-value="<?echo $item['price'];?>"><?echo "(&pound;".number_format($item['price'],2).") ".$item['name'];?></span> &nbsp; <button type="button" class="newmdItem" title="<?echo _("Add this item to the current Meal Deal");?>"><i class="pd-add"></i></button></label>
 						<?  }
 						}
 					}?>
