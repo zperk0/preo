@@ -50,16 +50,16 @@
 				<div class="large-12 columns">
 					<small class="smallNot">
 							<? if(preg_match('/^local/', $_SERVER['SERVER_NAME'])){ ?>
-								<? echo _("Looking for the Fulfillment App?");?><a href="//orders.preoday.com"><? echo _("  Click here");?></a>
+								<? echo _("Looking for the Fulfillment App?");?><a href="//orders.preoday.com" target="_blank"><? echo _("  Click here");?></a>
 							<? }
 							else if(preg_match('/^app\-dev/', $_SERVER['SERVER_NAME'])){ ?>
-								<? echo _("Looking for the Fulfillment App?");?><a href="//orders-dev.preoday.com"><? echo _("  Click here");?></a>
+								<? echo _("Looking for the Fulfillment App?");?><a href="//orders-dev.preoday.com" target="_blank"><? echo _("  Click here");?></a>
 							<? }
 							else if(preg_match('/^app\-demo/', $_SERVER['SERVER_NAME'])){ ?>
-								<? echo _("Looking for the Fulfillment App?");?><a href="//orders-demo.preoday.com"><? echo _("  Click here");?></a>
+								<? echo _("Looking for the Fulfillment App?");?><a href="//orders-demo.preoday.com" target="_blank"><? echo _("  Click here");?></a>
 							<? }
 							else if(preg_match('/^app\./', $_SERVER['SERVER_NAME'])){ ?>
-								<? echo _("Looking for the Fulfillment App?");?><a href="//orders.preoday.com"><? echo _("  Click here");?></a>
+								<? echo _("Looking for the Fulfillment App?");?><a href="//orders.preoday.com" target="_blank"><? echo _("  Click here");?></a>
 							<? } ?>
 
 					</small>
