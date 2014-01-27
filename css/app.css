@@ -928,12 +928,18 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	width: 35%;
 }
 
+.menuTDName input, .menuTDDesc input{
+	-o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
 .mdTable .mdTDSec, .headerTable .mdTDSec{
 	width: 35%;
 }
 
 .mdTable .mdTDPrice, .headerTable .mdTDPrice{
-	width: 10%;
+	width: 20%; /* this goes back to 10% when TDTPrice becomes visible */
 }
 
 .mdTable .mdTDTPrice, .headerTable .mdTDTPrice{

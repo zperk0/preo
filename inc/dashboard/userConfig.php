@@ -43,7 +43,7 @@
 								<td class="userTDRole">
 									<select name="uRole[0]" class="userField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have userMenuSingleSelect -->
 										<option value="STAFF" title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
-										<option value="ADMIN" title="<?echo _("Admin: can read/write account but cannot close it down")?>"><?echo _("Admin")?></option>
+										<!--<option value="ADMIN" title="<?echo _("Admin: can read/write account but cannot close it down")?>"><?echo _("Admin")?></option>-->
 										<option value="OWNER" title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 									</select>
 								</td>
@@ -77,6 +77,7 @@
 	<div class="large-12 columns dynamicDataTable"> <!-- This is where the dynamic data goes into -->
 	<?if($_SESSION['user_edit_on']){
 		foreach($account['users'] as $uKey=>$user){
+			if($_SESSION['user_id'] == $user['id']) continue;
 		//again remember its all 1-indexed thats why we add +1 to the key
 		?>
 			<table class="userTable" id="user<?echo ($uKey+1)?>" style="background:transparent">
@@ -88,13 +89,13 @@
 							<small class="error"><?echo _("Please type a user name");?></small>
 						</td>
 						<td class="userTDEmail">
-							<input type="email" name="uEmail[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo $user['email'];?>" placeholder="<?echo _("Add an email");?>" readonly="readonly" required/>
+							<input type="email" name="uEmail[<?echo ($uKey+1);?>]" class="userField noEnterSubmit preSaved" value="<?echo $user['email'];?>" placeholder="<?echo _("Add an email");?>" readonly="readonly" required/>
 							<small class="error"><?echo _("Please type an email");?></small>
 						</td>
 						<td class="userTDRole">
 							<select name="uRole[<?echo ($uKey+1);?>]" class="userMenuSingleSelect userField noEnterSubmit" style="display:none" readonly="readonly"/>
 								<option value="STAFF" 	<?if($user['role']=='STAFF'){?>selected="selected"<?}?> title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
-								<option value="ADMIN" 	<?if($user['role']=='ADMIN'){?>selected="selected"<?}?> title="<?echo _("Admin: can read/write account but cannot close it down")?>"><?echo _("Admin")?></option>
+								<!--<option value="ADMIN" 	<?if($user['role']=='ADMIN'){?>selected="selected"<?}?> title="<?echo _("Admin: can read/write account but cannot close it down")?>"><?echo _("Admin")?></option>-->
 								<option value="OWNER" 	<?if($user['role']=='OWNER'){?>selected="selected"<?}?> title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 							</select>
 						</td>

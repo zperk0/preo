@@ -1957,6 +1957,7 @@ $(document).ready(function() {
 		$curItem.find("tr").addClass('userEdit');
 		$curItem.find("tr").removeClass('savedInput');
 		$curItem.find("input").removeAttr("readonly");
+		$curItem.find("input[name^='uEmail']").each(function(){ if($(this).hasClass('preSaved')) $(this).attr("readonly", "readonly"); });
 		$curItem.find(".userSave").removeClass('hide');
 		$curItem.find(".userSave").show();
 		$curItem.find(".userPassTR").show();
@@ -2222,6 +2223,7 @@ $(document).ready(function() {
 				$('#savingButton').hide();
 				$(".userMenuSingleSelect").multiselect('disable');
 				$('.userPassTR').remove(); //now all saved users are in edit mode only
+				$("input[name^='uEmail']").each(function(){ $(this).addClass("preSaved"); }); //make saved input emails permanently readonly
 			 });
 
 		return false; // avoid to execute the actual submit of the form.

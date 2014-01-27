@@ -29,7 +29,7 @@
 						<tr>
 							<th class="mdTDName"><? echo _("Name");?></th>
 							<th class="mdTDSec"><? echo _("Section");?> &nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Which menu section does this meal deal belong in?");?>"></i></th>
-							<th class="mdTDTPrice"><? echo _("Total Price (&pound;)");?></th>
+							<th class="mdTDTPrice hide"><? echo _("Total Price (&pound;)");?></th>
 							<th class="mdTDPrice"><? echo _("Discount Price (&pound;)");?></th>
 							<th class="mdTDVisi hide"><? echo _("Visible?");?></th>
 							<th class="mdTDTools"><? echo _("Tools");?></th>
@@ -60,8 +60,8 @@
 						</select>
 						<small class="error"><?echo _("Please choose a section");?></small>
 					</td>
-					<td class="mdTDTPrice">
-						<input type="text" name="mdTPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>" required readonly="readonly"/>
+					<td class="mdTDTPrice hide">
+						<input type="text" name="mdTPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>" readonly="readonly"/>
 					</td>
 					<td class="mdTDPrice">
 						<input type="text" name="mdPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo $mealDeal['price'];?>" required readonly="readonly"/>
@@ -178,9 +178,8 @@
 					</select>
 					<small class="error"><?echo _("Please choose a section");?></small>
 				</td>
-				<td class="mdTDTPrice">
-					<input type="text" name="mdTPrice[0]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>" required/>
-					<small class="error"><?echo _("Amount?");?></small>
+				<td class="mdTDTPrice hide">
+					<input type="text" name="mdTPrice[0]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>"/>
 				</td>
 				<td class="mdTDPrice">
 					<input type="text" name="mdPrice[0]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>" required/>
