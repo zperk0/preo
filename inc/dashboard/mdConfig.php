@@ -64,7 +64,7 @@
 						<input type="text" name="mdTPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>" readonly="readonly"/>
 					</td>
 					<td class="mdTDPrice">
-						<input type="text" name="mdPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo $mealDeal['price'];?>" required readonly="readonly"/>
+						<input type="text" name="mdPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo $mealDeal['price'];?>" required readonly="readonly" pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
 						<small class="error"><?echo _("Amount?");?></small>
 						</td>
 					<td class="mdTDVisi hide">
@@ -182,7 +182,7 @@
 					<input type="text" name="mdTPrice[0]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>"/>
 				</td>
 				<td class="mdTDPrice">
-					<input type="text" name="mdPrice[0]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>" required/>
+					<input type="text" name="mdPrice[0]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>" required pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
 					<small class="error"><?echo _("Amount?");?></small>
 					</td>
 				<td class="mdTDVisi hide">

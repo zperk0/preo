@@ -41,7 +41,9 @@
 			<input type="hidden" id="item0_modCount" 		name="item0_modCount"	 	value="0"/>
 			<input type="hidden" id="item0_modCountAct" 	name="item0_modCountAct" 	value="0"/>
 			
-			<input type="hidden" id="redirectFlag" value="<?echo $redirectFlag?>"/>
+			<input type="hidden" id="redirectFlag" name="redirectFlag" value="<?echo $redirectFlag?>"/>
+			
+			<input type="hidden" id="menuID" name="menuID" value="<?if(isset($menuID)) echo $menuID; else echo "menu1";?>"/>
 			
 			<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu))) :
 				foreach($itemModOptArray as $key=>$itemModOption)
@@ -100,7 +102,7 @@
 				<tbody>
 					<tr class="menuEdit itemTR">
 						<td class="menuTDName">
-							<input type="text" name="iName[section0][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an item name (max 100chars)");?>" required pattern="^.{0,99}$"/>
+							<input type="text" name="iName[section0][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an item name");?>" required pattern="^.{0,99}$"/>
 							<small class="error"><?echo _("Please type an item name (max 100chars)");?></small>
 						</td>
 						<td class="menuTDDesc">
@@ -108,7 +110,8 @@
 							<small class="error"><?echo _("Please type a description (max 250chars)");?></small>
 						</td>
 						<td class="menuTDPrice">
-							<input type="text" name="iPrice[section0][0]" class="menuField noEnterSubmit" value="<?echo _("&pound.&pound&pound");?>" required/>
+							<input type="text" name="iPrice[section0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
+							<small class="error smallerror"><?echo _("Price?");?></small>
 							
 							</td>
 						<td class="menuTDQuant hide">
@@ -156,8 +159,9 @@
 						<td class="menuTDDesc">
 						</td>
 						<td class="menuTDPrice">
-							<input type="text" name="oPrice[item0][m0][0]" class="menuField noEnterSubmit" value="<?echo _("&pound.&pound&pound");?>" required/>
+							<input type="text" name="oPrice[item0][m0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
 							&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
+							<small class="error smallesterror"><?echo _("Price?");?></small>
 						</td>
 						<td class="menuTDQuant hide">
 						</td>
@@ -241,8 +245,9 @@
 											<small class="error"><?echo _("Please type a description (max 250chars)");?></small>
 										</td>
 										<td class="menuTDPrice">
-											<input type="text" name="iPrice[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($item['price'],2,'.','');?>" required  readonly="readonly"/>
-											</td>
+											<input type="text" name="iPrice[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($item['price'],2,'.','');?>" required  readonly="readonly" pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
+											<small class="error smallerror"><?echo _("Price?");?></small>
+										</td>
 										<td class="menuTDQuant hide">
 											<input type="text" name="iQuan[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" <?if($item['quantity']){?>value="<?echo $item['quantity']?>"<?}else{?>placeholder="<?echo _("Unlimited");}?>"  readonly="readonly"/>
 										</td>
@@ -290,8 +295,9 @@
 												<td class="menuTDDesc">
 												</td>
 												<td class="menuTDPrice">
-													<input type="text" name="oPrice[item<?echo ($iKey+1);?>][m0][0]" class="menuField noEnterSubmit" value="<?echo _("&pound.&pound&pound");?>" required/>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
-													</td>
+													<input type="text" name="oPrice[item<?echo ($iKey+1);?>][m0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
+													<small class="error smallesterror"><?echo _("Price?");?></small>
+												</td>
 												<td class="menuTDQuant hide">
 												</td>
 												<td class="menuTDVisi hide">
@@ -321,8 +327,9 @@
 													<td class="menuTDDesc">
 													</td>
 													<td class="menuTDPrice">
-														<input type="text" name="oPrice[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($option['price'],2,'.','');?>" required  readonly="readonly"/>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
-														</td>
+														<input type="text" name="oPrice[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($option['price'],2,'.','');?>" required pattern="^([0-9]+)(\.[0-9]{1,2})?$" readonly="readonly"/>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
+														<small class="error smallesterror"><?echo _("Price?");?></small>
+													</td>
 													<td class="menuTDQuant hide">
 													</td>
 													<td class="menuTDVisi hide">
@@ -370,7 +377,7 @@
 	<div class="row">
 		<div class="small-12 large-4 columns">
 			<?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
-				<!--<button id="menuSaveButtonE" type="submit"><?echo _("SAVE & CONTINUE EDITING");?></button> HIDDEN UNTIL PWA-116 -->
+				<button id="menuSaveButtonE" type="submit"><?echo _("SAVE & CONTINUE EDITING");?></button>
 				<button id="menuSaveButton" type="submit"><?echo _("SAVE & FINISH");?></button>
 			<?}else{?>
 				<button id="menuSaveButton" type="submit"><?echo _("SAVE CHANGES");?></button>

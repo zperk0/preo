@@ -1422,17 +1422,18 @@ $(document).ready(function() {
 	});
 	
 	$("#menuConfigForm").on('valid', function (event) {
+		//who be clickin'?
+		var editingSkip = 0;
+		if ($(this).data('clicked').is('[id=menuSaveButtonE]')) editingSkip = 1;
+		
 		//lock all
 		$("body .itemSave").each(function(){
 			if($(this).is(":visible"))
 				$(this).trigger('click');
 		});
 		
-		var editingSkip = 0;
-		if ($(this).data('clicked').is('[id=menuSaveButtonE]')) editingSkip = 1;
-		
 		$('#menuSaveButton').hide();
-		if($('#menuSaveButtonE').length) $('#menuSaveButtonE').hide();
+		if(editingSkip) $('#menuSaveButtonE').hide();
 		$('#savingButton').show();
 	
 		var url = "/saveMenu";
@@ -1454,12 +1455,12 @@ $(document).ready(function() {
 						  text: "Sorry, but there's been an error processing your request." //text: 'Connection Error! Check API endpoint.'
 						});
 						
-						//alert(data);
+						alert(data);
 						
 						return false;
 					}
 					
-					if(typeof dataArray['status'] !='undefined') //error
+					if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
@@ -1469,6 +1470,15 @@ $(document).ready(function() {
 					}
 					else
 					{	
+						newIDs = dataArray['update'];
+
+						if(Object.keys(newIDs).length > 0) //this is an object not array so length and stuff works differently
+						{
+							$.each(newIDs, function(index, value) {
+							  $('input[value='+index+']').val(value); //find by value and update!
+							});
+						}
+						
 						noty({ type: 'success', text: 'Menu configuration has been saved!' });
 						if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
@@ -1903,7 +1913,7 @@ $(document).ready(function() {
 						return false;
 					}
 					
-					if(typeof dataArray['status'] !='undefined') //error
+					if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
@@ -2197,7 +2207,7 @@ $(document).ready(function() {
 						return false;
 					}
 					
-					if(typeof dataArray['status'] !='undefined' || typeof dataArray['result']['status'] !='undefined') //error
+					if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
@@ -3165,7 +3175,7 @@ $(document).ready(function() {
 						return false;
 					}
 					
-					if(typeof dataArray['status'] !='undefined' || typeof dataArray['result']['status'] !='undefined' ) //error
+					if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
