@@ -27,5 +27,6 @@
 	$_SESSION['user_email']	= $email;
 	$_SESSION['user_fName']	= $fName;
 	$_SESSION['user_lName']	= $lName;
+	$_SESSION['user_role']	= 'OWNER'; //default role upon signup
 	$_SESSION['logged']		= 1;
 ?>

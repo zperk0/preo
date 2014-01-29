@@ -7,12 +7,12 @@
 	
 	if(!isset($_SESSION['secondaryMenuFlag'])) $_SESSION['secondaryMenuFlag']=0;
 	
-	//+d($_POST);
+	//get menuID
+	$menuID = $_POST['menuID'];
+	protect($menuID);
 	
-	if(isset($_SESSION['menu_edit_on']) && $_SESSION['menu_edit_on']) //We delete the old menu and create a new one!
+	if(isset($menuID) && !preg_match('/^menu\d+$/',$menuID)) //We delete the old menu and create a new one!
 	{		
-		$menuID = $_SESSION['menu_id'];
-		
 		$menu = array();
 		
 		//query to find old menu sanity
@@ -143,6 +143,7 @@
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	
+	$newIDs = array();
 	
 	//create/update menu
 	$data 				= array();
@@ -153,10 +154,8 @@
 	
 	$jsonData = json_encode($data);
 	
-	if(isset($_SESSION['menu_edit_on']) && $_SESSION['menu_edit_on']) //Edit
+	if(isset($menuID) && !preg_match('/^menu\d+$/',$menuID)) //Edit
 	{	
-		$menuID = $_SESSION['menu_id'];
-		
 		$curlResult = callAPI('PUT', $apiURL."menus/$menuID", $jsonData, $apiAuth); //menu updated
 		$result = json_decode($curlResult,true);
 	}
@@ -164,8 +163,11 @@
 	{
 		$curlResult = callAPI('POST', $apiURL."menus", $jsonData, $apiAuth); //menu created
 		$result = json_decode($curlResult,true);
-			
+		
+		//save old - new id relationship
+		$newIDs[$menuID] = $result['id'];
 		$menuID = $result['id'];
+		
 		
 		if(!isset($_SESSION['secondaryMenuFlag']) || !$_SESSION['secondaryMenuFlag']) $_SESSION['menu_id'] = $menuID;
 	}
@@ -281,5 +283,14 @@
 		}
 	}
 	$_SESSION['menus'] = $menu;
-	echo $curlResult; //sending a JSON via ajax 
+	//echo $curlResult; //sending a JSON via ajax 
+	
+	//we need to send back an array along with curlResult
+	$newJSON = array();
+	$newJSON['result'] = json_decode($curlResult,true); //make it an array
+	$newJSON['update']= $newIDs; //add array of new values
+	
+	$newJSON = json_encode($newJSON, true); //back to JSON
+	
+	echo $newJSON; //sending a JSON via ajax 
 ?>

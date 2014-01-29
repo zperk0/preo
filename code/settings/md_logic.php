@@ -30,7 +30,7 @@
 	$venueID = $_SESSION['venue_id'];
 	
 	//////Items////////////////////////////////////////////////////////////////////////////
-	
+	$mdMenuID='';
 	//query to find all items for mealdeals
 	$curlResult = callAPI('GET', $apiURL."items/?venueId=$venueID", false, $apiAuth);
 	$dataJSON = json_decode($curlResult,true);

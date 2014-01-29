@@ -14,6 +14,15 @@
 	$_SESSION['signupWizFlag']=0;
 	$_SESSION['dashboardFlag']=0;
 	
+	//ROLE TEST
+	if( !isset($_SESSION['user_role']) || (isset($_SESSION['user_role']) && ($_SESSION['user_role'] != 'OWNER' && $_SESSION['user_role'] != 'ADMIN')) )
+	{
+		$_SESSION['privLogout'] = 1;
+		header("location:".$_SESSION['path'].'/logout');
+		exit;
+	}
+	
+	
 	//we use the user's token
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
 	
@@ -183,6 +192,8 @@
 	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag'] && !$_SESSION['noPaymentFlag']) /*User has given data for all 5 already*/
 	{	
 		//going to the dashboard!
+		
+		//+d($_SESSION);
 		
 		//lets get some quick reports
 		$curlResult = callAPI('GET', $apiURL."venues/$venueID/reports", false, $apiAuth);
