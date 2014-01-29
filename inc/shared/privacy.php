@@ -1,45 +1,193 @@
-<h2><?echo _('Privacy Policy for www.preoday.com');?></h2>
-<p><?echo _("This privacy policy sets out how \"www.preoday.com\" uses and protects any information that you give \"www.preoday.com\" when you use this website or app.");?></p>
-<p><?echo _("\"www.preoday.com\" is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website or app, then you can be assured that it will only be used in accordance with this privacy statement.");?></p>
-<p><?echo _("\"www.preoday.com\" may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes. This policy is effective from 01 June 2013.");?></p>
-<p class="lead"><?echo _("What we collect");?></p>
-<p><?echo _("We may collect the following information:");?></p>
+<h2><?echo _("PRIVACY NOTICE FOR MY ORDER APP");?></h2>
+<p><?echo _("This privacy notice provides
+information on how Preoday Limited (“Preoday”) uses personal data
+relating to users ('you') of its ordering and payment
+services app (the 'App') and related services (together
+referred to in this policy as the 'Services').");?></p>
+<p class="lead"><?echo _("1. Who is Preoday?");?></p>
+<p><?echo _("Preoday Limited is a company registered
+in England and Wales with company number 08243191, and registered
+with the Information Commissioner’s Office under number ZA027520.");?></p>
+<p><?echo _("Preoday runs the App for a venue where
+food, drinks and/or merchandise is available to order (the “Venue”).
+Preoday acts as a data controller in their use of your personal data
+relating to the App, as described in this privacy notice.");?></p>
+<p><?echo _("You can contact Preoday by using the
+contact details set out at paragraph 11 below.");?></p>
+<p class="lead"><?echo _("2. Collection and use of data by
+Preoday");?></p>
+<p><?echo _("2.1. Registration details");?></p>
+<p><?echo _("If you install the App, you will be
+asked to register with Preoday in order to create an account and
+receive the related Services. Registration information may include:");?></p>
 <ul>
-	<li><?echo _("Name");?></li>
-	<li><?echo _("Email Address");?></li>
-	<li><?echo _("Phone Numbers");?></li>
-	<li><?echo _("Demographic information such as postcode, preferences, and interests");?></li>
-	<li><?echo _("Menu orders and prices");?></li>
-	<li><?echo _("Information relevant to customer surveys and/or offers");?></li>
-</ul>	
-<p><?echo _("What we do with the information we gather.");?><br/><?echo _("We require this information to understand your needs and provide you with a better service, and in particular for internal record keeping.");?></p>
-<p><?echo _("We may use the information to improve our products and services.");?></p>
-<p><?echo _("We may periodically send promotional email about new products, special offers or other information which we think you may find interesting using the email address which you have provided.");?></p>
-<p><?echo _("From time to time, we may also use your information to contact you for market research purposes. We may contact you by email, phone, fax or mail.");?></p>
-<p><?echo _("We may use the information to customize the website or app according to your interests.");?></p>
-<p class="lead"><?echo _("SECURITY");?></p>
-<p><?echo _("We are committed to ensuring that your information is secure. In order to prevent unauthorized access or disclosure we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online.");?></p>
-<p class="lead"><?echo _("How we use cookies");?></p>
-<p><?echo _("A cookie is a small file which asks permission to be placed on your computer's hard drive. Once you agree, the file is added and the cookie helps analyze web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes and dislikes by gathering and remembering information about your preferences.");?></p>
-<p><?echo _("We use traffic log cookies to identify which pages are being used. This helps us analyze data about web page traffic and improve our website in order to tailor it to customer needs. We only use this information for statistical analysis purposes and then the data is removed from the system.");?></p>
-<p><?echo _("Overall, cookies help us provide you with a better website, by enabling us to monitor which pages you find useful and which you do not. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us.");?></p>
-<p><?echo _("You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. This may prevent you from taking full advantage of the website.");?></p>
-<p class="lead"><?echo _("PERSONS UNDER 18 YEARS OF AGE ARE EXCLUDED FROM THIS WEBSITE");?></p>
-<p><?echo _("This website is not lawfully accessible to persons under the age of 18 or who are otherwise covered by the provisions of the Child Online Privacy Act of 1998 (COPA). If you are under the age of 18 you must leave this site immediately. Fraudulent use of this website may make you subject to civil or criminal sanctions.");?></p>
-<p class="lead"><?echo _("LINKS TO OTHER WEBSITES");?></p>
-<p><?echo _("Our website may contain links to enable you to visit other websites of interest easily. However, once you have used these links to leave our site, you should note that we do not have any control over that other website. Therefore, we cannot be responsible for the protection and privacy of any information which you provide whilst visiting such sites and such sites are not governed by this privacy statement. You should exercise caution and look at the privacy statement applicable to the website in question.");?></p>
-<p class="lead"><?echo _("YOUR PERSONAL INFORMATION");?></p>
-<p><?echo _("We will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law. We may use your personal information to send you promotional information about third parties which we think you may find interesting if you tell us that you wish this to happen.");?></p>
-<p><?echo _("You may request details of personal information which we hold about you under the Data Protection Act 1998. A small fee will be payable. If you would like a copy of the information held on you please send an email to www.preoday.com.");?></p>
-<p><?echo _("If you believe that any information we are holding on you is incorrect or incomplete, please write to or email us as soon as possible, at the above address. We will promptly correct any information found to be incorrect.");?></p>
-<p class="lead"><?echo _("QUESTIONS, COMMENTS, OR REPORT OF INCIDENTS");?></p>
-<p><?echo _("You may direct questions, comments or reports to:
-www.preoday.com");?></p>
-<p class="lead"><?echo _("REVISIONS TO THIS PRIVACY POLICY WITHOUT NOTICE");?></p>
-<p><?echo _("This Privacy Policy is dynamic. It will continually change. You may not assume that it remains the same and you agree to check the policy each time you visit the site for changes. Unless, in the sole opinion of the website, this policy changes so drastically as to suggest a posted notification on the site or via email, you will receive no notification of changes to this Privacy Policy nor, under any circumstances, does this site promise notification. Your continued use of this site always evidences your acceptance of the terms this Privacy Policy or any modifications.");?></p>
-<p class="lead"><?echo _("LATEST UPDATE");?></p>
-<p><?echo _("This Privacy Policy was last updated on: 01 June 2012.");?></p>
-<a href="<?echo $_SESSION['path']?>/"><img src="<?echo $_SESSION['path']?>/img/logo.png" alt="<? echo _("PreoDay");?>"/></a>
-<p><?echo _("Preoday has created a mobile e-commerce platform specifically for the global food service and hospitality industry. We work with leading brands, niche players and independents alike to improve customer experiences and drive efficiencies in the ordering process. We leverage cutting edge technology and deep industry expertise to connect you more closely with your loyal customers. Just as it should be.");?></p>
-<p><?echo _("Contact us now to learn more at");?> <a href='mailto:hello@preoday.com'>hello@preoday.com</a></p>
+	<li><?echo _("the telephone number of the mobile
+	device on which you have installed the App. This will be used to
+	deliver the Services and manage your password");?></li>
+	<li><?echo _("your email address, which will be
+	used to send you receipts for payments of your order;");?></li>
+	<li><?echo _("your date of birth which will be
+	used to check you are over 18 years of age and as an additional
+	identity check should you need to get in contact with Preoday;");?></li>
+	<li><?echo _("your physical address. This will be
+	used if we need to arrange delivery to you; and");?></li>
+	<li><?echo _("other relevant information, such as
+	venue specific membership numbers, loyalty card numbers, your
+	preferences with regards to mobile orders.");?></li>
+</ul>
+<p><?echo _("As an alternative to providing your
+email address and date of birth, you can register using your choice
+of social media profile, including but not limited to, Facebook or
+Google+, from which Preoday will obtain information, including the
+information above – see also paragraph 4 below.");?></p>
+<p><?echo _("You will also be asked to set a
+password to give access to your account details.");?></p>
+<p><?echo _("2.2. Your payment card details");?></p>
+<p><?echo _("You must have appropriate authority to
+use the payment card that you use for payment.");?></p>
+<p><?echo _("Payment processing services are
+provided by a third party. The details you provide to us in the App
+are passed directly to the payment service provider and will be
+subject to its terms of use and privacy policy. By inputting payment
+card details, you are consenting to use of the payment card details
+by the payment services provider for the purpose of paying for your
+order. If you have any questions relating to these services please
+contact the relevant payment service provider.");?></p>
+<p><?echo _("Preoday does not store any of your
+payment card details on its systems. Payment transactions are between
+you and the Venue. Preoday does not receive your payment.");?></p>
+<p><?echo _("2.3. Visiting a Venue");?></p>
+<p><?echo _("The App allows you to place orders and
+pay for your food, drink and merchandise. After placing an order you
+will pay for it using the App through one of our payment service
+providers. The details of your order will be used to deliver the
+Services and generate your payment receipt.");?></p>
+<p><?echo _("Preoday may also collect data relating
+to your visits (including the food, drink and merchandise you chose,
+the Venue you visited and when, order amounts and your payments) to
+improve the Services, and for analysis and statistical purposes (see
+paragraph 5 below). This data is collected through the App.");?></p>
+<p><?echo _("2.4. Contacting Preoday");?></p>
+<p><?echo _("If you contact Preoday in relation to
+the App (via email, telephone, post or otherwise), we may collect and
+retain your contact details and your communication for the purpose of
+handling your query and keeping records of communications.");?></p>
+<p class="lead"><?echo _("3. Use of data by the Venue");?></p>
+<p><?echo _("Preoday runs the App for the Venue and
+data collected through the App may be disclosed to the Venue. This
+may include your Preoday user details, demographic information and
+details relating to your experience at the Venue. This data may be
+used by the Venue for:");?></p>
+<ul>
+	<li><?echo _("managing your payment of for an
+	order;");?></li>
+	<li><?echo _("analysis and statistics (see
+	paragraph 5 below); and");?></li>
+	<li><?echo _("subject to obtaining your consent
+	which is sought via the App, sending you marketing communications
+	through the App, by push notifications or by email.");?></li>
+</ul>
+<p class="lead"><?echo _("4. Combining with data from other
+sources");?></p>
+<p><?echo _("Information collected using the App and
+relating to your visits to the Venue may be combined by Preoday with
+data from other sources as follows:");?></p>
+<ul>
+	<li><?echo _("if you log in to the App using your
+	social media login, Preoday will collect additional information from
+	your social media profile for analysis and statistical purposes (see
+	paragraph 5 below). If you prefer not to do this, you can register
+	and create a separate account for the App; and");?></li>
+	<li><?echo _("if you download or use (or have
+	downloaded or used) another venue’s Preoday mobile app or an app
+	created using Preoday’s API, Preoday may combine data obtained from
+	this App with data processed in relation to that app.");?></li>
+</ul>
+<p><?echo _("The combined data may be used by
+Preoday for the same purposes outlined in this policy.");?></p>
+<p class="lead"><?echo _("5. Analysis and statistics");?></p>
+<p><?echo _("Preoday may use the data it collects
+about you for analysis and statistical purposes, for example to
+analyse how many users place orders at particular times, food and
+drink preferences, and the characteristics of such users, for example
+their age or gender. If you have logged in using your social media
+login, Preoday may combine data collected from the App and the Venue
+with information from your social media profile for these purposes.");?></p>
+<p><?echo _("Statistics and results of analysis
+(anonymised and without reference to your personal data) may also be
+shared with the Venue, other venues and their suppliers for the
+purpose of improving the services and customer experience within
+those venues.");?></p>
+<p class="lead"><?echo _("6. Other use of your personal data");?></p>
+<p><?echo _("Preoday may also use and disclose your
+personal data for the purposes of:");?></p>
+<ul>
+	<li><?echo _("checking your compliance with the
+	Preoday terms of use for the App;");?></li>
+	<li><?echo _("administration and maintenance of
+	the Services;");?></li>
+	<li><?echo _("compliance with legal obligations,
+	or protection and enforcement of legal rights; and/or");?></li>
+	<li><?echo _("managing actual or potential
+	business transactions (eg in the case of an acquisition of Preoday’s
+	business).");?></li>
+</ul>
+<p class="lead"><?echo _("7. Disclosure of your personal data to
+third parties");?></p>
+<p><?echo _("Preoday may disclose your personal data
+for the purposes outlined at paragraphs 2 to 6 above to third
+parties, including:");?></p>
+<ul>
+	<li><?echo _("our service providers and
+	professional advisers;");?></li>
+	<li><?echo _("governmental bodies and law
+	enforcement authorities;");?></li>
+	<li><?echo _("any investor, lender, purchaser or
+	(on terms of confidentiality) likely investor in, or purchaser of
+	Preoday’s business; and");?></li>
+	<li><?echo _("other third parties where required
+	or permitted by law.");?></li>
+</ul>
+<p><?echo _("Preoday will never sell information
+that can be used to personally identify you to a third party.");?></p>
+<p class="lead"><?echo _("8. Storage and security of your
+personal data");?></p>
+<p><?echo _("Your personal data is stored in
+electronic and physical records maintained by Preoday and/or its
+service providers. Whilst Preoday is based in the UK, it and its
+service providers may have servers located overseas, where the laws
+may not give the same level of protection to personal data as within
+the UK. By submitting your personal data, you agree to allowing your
+personal data to be transferred, processed and stored overseas as set
+out in this paragraph.");?></p>
+<p class="lead"><?echo _("9. Removal of your details");?></p>
+<p><?echo _("You may request deletion of your
+account on the App at any time by sending an email to Preoday at ");?><a href='mailto:hello@preday.com'>hello@preoday.com.</a></p>
+<p><?echo _("However, Preoday may retain certain
+aspects of your account and other personal details for the purposes
+of maintaining records of their dealings with you, analysis and
+statistics.");?></p>
+<p><?echo _("Preoday may delete your account in
+accordance with clauses 5.3 and 8.2 of its terms of use, including in
+the circumstances where you breach its terms or have not used the
+Services for a substantial period of time.");?></p>
+<p class="lead"><?echo _("10. Access to your details");?></p>
+<p><?echo _("If you would like to access a copy of
+any personal data which Preoday hold about you, or if you wish to
+change your consent regarding marketing communications, please send a
+request by email or by post using the contact details in paragraph 11
+below. An administration fee of £10 may be charged to access your
+details.");?></p>
+<p><?echo _("You have the right, in certain
+circumstances, to object to Preoday processing your personal data or
+to request that your personal data is corrected or deleted. Please
+contact us using the contact details in paragraph 11 below.");?></p>
+<p class="lead"><?echo _("11. Queries");?></p>
+<p><?echo _("If you have any queries in relation to
+the processing of your personal data by Preoday Limited, please
+contact us at:");?></p>
+<p><?echo _("Preoday Limited, c/o Lawrence Grant
+Chartered Accountants, 2nd Floor Hygeia House, 66 College Road,
+Harrow, Middlesex, HA1 1BE");?></p>
+<p><?echo _("Email: ");?><a href='mailto:hello@preday.com'>hello@preoday.com.</a></p>
 <a class="close-reveal-modal">&#215;</a>

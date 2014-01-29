@@ -1656,3 +1656,7 @@ input[name^='iMD']:-ms-input-placeholder { /* Internet Explorer 10+ */
 table.mdTable{
 	margin-top:0px;
 }
+
+#termsM li, #privM li {
+	margin-left: 20px;
+}
