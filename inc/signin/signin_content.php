@@ -68,3 +68,18 @@
 
 		</form>
 		</div>
+<?if( isset($_SESSION['privLogout']) && $_SESSION['privLogout'] )
+{
+	$_SESSION['privLogout'] = 0;
+	?>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			noty({
+			type: 'error',  layout: 'topCenter',
+			text: '<?echo _("Sorry, you don\'t have sufficient privileges.<br/><br/>Looking for the Fulfillment App? Click the link at the bottom of this page.");?>'
+			});
+		});
+		</script>
+	<?
+}
+?>
