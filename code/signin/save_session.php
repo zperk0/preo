@@ -45,23 +45,11 @@
 		$_SESSION['account_name']	= $dataArray[0]['name'];
 		$_SESSION['account_id']		= $dataArray[0]['id'];
 	}
-
-	$newCurl = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id'].'/users', false, $apiAuth); 
-	$allUsers = json_decode($newCurl, true);
-	
-	$role ='';
-	
-	foreach($allUsers['users'] as $accUser)
-	{
-		if($accUser['id'] == $id)
-			$role = $accUser['role'];
-	}
 	
 	$_SESSION['user_id']	= $id;
 	$_SESSION['user_email']	= $email;
 	$_SESSION['user_fName']	= $fName;
 	$_SESSION['user_lName']	= $lName;
-	$_SESSION['user_role']	= $role;
 	$_SESSION['logged']		= 1;
 	
 ?>
