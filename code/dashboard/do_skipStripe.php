@@ -10,7 +10,7 @@
 	//we get account id from _SESSION
 	$venueID = $_SESSION['venue_id'];
 	
-	$curlResult = callAPI('PUT', $apiURL."venues/$venueID/demo", false, $apiAuth);
+	$curlResult = callAPI('PUT', $apiURL."venues/$venueID/demo", "{\"demoFlag\": true}", $apiAuth);
 	
 	$_SESSION['appStripeSkipped'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
 ?>

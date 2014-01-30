@@ -22,7 +22,7 @@
 	}
 	else //lets go live
 	{
-		$curlResult = callAPI('PUT', $apiURL."venues/$venueID/live", false, $apiAuth);
+		$curlResult = callAPI('PUT', $apiURL."venues/$venueID/live", "{\"liveFlag\": true}", $apiAuth);
 		
 		$_SESSION['appPublished'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
 		header('location:'.$_SESSION['path'].'/dashboard.php'); //redirect to dash
