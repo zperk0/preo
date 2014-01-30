@@ -4,6 +4,7 @@
 	Matt Gould - Design
 	Ashish Mehra - Web Development
 	Alexandros Stefanou - Frontend and Mobile Development
+	Joe Stone - Frontend and Management
 
 /* THANKS */
 	Foundation 4 by ZURB
