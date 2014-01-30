@@ -1,7 +1,6 @@
-<div class="topSpacer"></div>
-	<div class="row">
-		<h1 class="alignHeader"><?echo _("Your account");?></h1>
-	</div>
+<div class="row">
+	<div class="topSpacer"></div>
+	<h1 class="alignHeader"><?echo _("Your account");?></h1>
 	<div class="large-12 columns socialMediaDiv">
 		<div class="row">
 			<div class="large-6 columns fbSignup">
@@ -65,9 +64,9 @@
 					</small>
 				</div>
 			</div>
-
 		</form>
-		</div>
+	</div>
+</div>
 <?if( isset($_SESSION['privLogout']) && $_SESSION['privLogout'] )
 {
 	$_SESSION['privLogout'] = 0;
