@@ -17,7 +17,6 @@
 	//ROLE TEST
 	if( !isset($_SESSION['user_role']) )
 	{
-
 		// Get the user role from the account
 		// we use the user's token
 		$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens

@@ -23,7 +23,11 @@
 	
 	if(preg_match('/500/',$_SESSION['pmaReply']))
 	{
-		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/demo", "{\"demoFlag\": true}", $apiAuth);
+		$data = array();
+		$data['demoFlag'] = true;
+		$jsonData = json_encode($data);
+		
+		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/demo", $data, $apiAuth);
 		$_SESSION['venue_demoFlag'] = 1;
 	}
 	else
