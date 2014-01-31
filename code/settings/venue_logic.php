@@ -33,6 +33,17 @@
 		
 		//we get venue id from _SESSION
 		$venueID = $_SESSION['venue_id'];
+		
+		//get settings
+		$curlResult = callAPI('GET', $apiURL."venues/$venueID/settings", false, $apiAuth);
+		$dataJSON = json_decode($curlResult,true);
+		
+		if(!empty($dataJSON))
+		{
+			$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];
+			$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];
+		}
+		
 		$redirectFlag = 1;
 	}
 

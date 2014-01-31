@@ -372,18 +372,12 @@ $(document).ready(function() {
 	
 		if( $(this).find("input[type=radio][name=vEvent]:checked").val() == '0')
 		{
-			//$('.cSlotDiv').slideDown();
 			$('.leadTimeDiv').slideDown();
-			
-			//$('.cSlotDiv').find('input').attr('required','required');
 			$('.leadTimeDiv').find('input').attr('required','required');
 		}
 		else
 		{
-			//$('.cSlotDiv').slideUp();
 			$('.leadTimeDiv').slideUp();
-			
-			//$('.cSlotDiv').find('input').removeAttr('required');
 			$('.leadTimeDiv').find('input').removeAttr('required');
 		}
 	});
@@ -1421,6 +1415,18 @@ $(document).ready(function() {
 	  $(this).data('clicked',$(event.target))
 	});
 	
+	$("#menuConfigForm").on('invalid', function (event) {
+		//open all error areas
+		$("td.error").each(function(){
+			if( !$(this).is(":visible") )
+			{	
+				$currButton = $(this).closest('table').find('.itemEdit');
+				if($currButton.is(":visible")) { $currButton.click(); }
+					//$currButton.trigger('click'); 
+			}
+		});
+	});
+	
 	$("#menuConfigForm").on('valid', function (event) {
 		//who be clickin'?
 		var editingSkip = 0;
@@ -2187,6 +2193,8 @@ $(document).ready(function() {
 		
 		var url = "/saveUser";
 
+		var errorFlag = 0;
+		
 		$.ajax({
 			   type: "POST",
 			   url: url,
@@ -2203,6 +2211,9 @@ $(document).ready(function() {
 						  type: 'error',  layout: 'topCenter',
 						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
+						
+						errorFlag = 1;
+						
 						//alert(data);
 						return false;
 					}
@@ -2214,6 +2225,8 @@ $(document).ready(function() {
 						  text: "Username/email already exists"
 						  //text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
+						
+						errorFlag = 1;
 					}
 					else
 					{	
@@ -2226,14 +2239,21 @@ $(document).ready(function() {
 							});
 						}
 						noty({ type: 'success', text: 'User configuration has been saved!' });
+						errorFlag = 0;
 					}
 				}
 			 }).done(function() {
-				$('#userSubButton').show();
-				$('#savingButton').hide();
-				$(".userMenuSingleSelect").multiselect('disable');
-				$('.userPassTR').remove(); //now all saved users are in edit mode only
-				$("input[name^='uEmail']").each(function(){ $(this).addClass("preSaved"); }); //make saved input emails permanently readonly
+					$('#userSubButton').show();
+					$('#savingButton').hide();
+					$(".userMenuSingleSelect").multiselect('disable');
+					if(!errorFlag) 
+					{
+						$('table').each(function(){
+							if($(this).is(':visible'))
+								$(this).find('.userPassTR').remove(); //now all saved users are in edit mode only
+						});
+						$("input[name^='uEmail']").each(function(){ $(this).addClass("preSaved"); }); //make saved input emails permanently readonly
+					}
 			 });
 
 		return false; // avoid to execute the actual submit of the form.

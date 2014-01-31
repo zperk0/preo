@@ -114,7 +114,7 @@
 			<div class="row leadTimeDiv <?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">
 				<div class="large-12 columns">
 					<label><?echo _("Lead Time (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("The time it takes to prepare your order before the customer can pick it up.");?>"></i></label>
-					<input type="text" name="leadtime" id="leadtime" tabindex=8 placeholder="<?echo _("e.g. 25");?>" value="<?if(isset($_SESSION['venue_leadtime'])) echo $_SESSION['venue_leadtime'];?>" required pattern="^\d+$">
+					<input type="text" name="leadtime" id="leadtime" tabindex=8 placeholder="<?echo _("e.g. 25");?>" value="<?if(isset($_SESSION['venue_leadtime'])) echo $_SESSION['venue_leadtime'];?>" <?if(!isset($_SESSION['venue_eventFlag']) || (isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag'])){?>required<?}?> pattern="^\d+$">
 					<small class="error"><?echo _("Please provide a lead time");?></small>
 				</div>
 			</div>
