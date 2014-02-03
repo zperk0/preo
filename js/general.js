@@ -1718,7 +1718,7 @@ $(document).ready(function() {
 		
 		realEventID = $curTable.find("input[name^=eID]").val();
 		
-		if(typeof realEventID =='undefined' || realEventID == '') //event not saved in DB
+		if(typeof realEventID =='undefined' || realEventID == '' || !realEventID.match(/^\d+?$/gi)) //event not saved in DB
 		{
 			noty({
 				layout: 'center',
@@ -2088,7 +2088,7 @@ $(document).ready(function() {
 		
 		realUserID = $curTable.find("input[name^=uID]").val();
 		
-		if(typeof realUserID =='undefined' || realUserID == '') //event not saved in DB
+		if(typeof realUserID =='undefined' || realUserID == '' || !realUserID.match(/^\d+?$/gi)) //event not saved in DB
 		{
 			noty({
 				layout: 'center',

@@ -95,9 +95,14 @@
 		
 		$jsonData = json_encode($data);
 		
-		//check item id if it exists then edit otherwise post
-		$curlResultCheck = callAPI('GET', $apiURL."items/".$mealDeal['id'], false, $apiAuth);
-		$dataJSONCheck = json_decode($curlResultCheck,true);
+		$dataJSONCheck = array();
+		
+		if( (preg_match('/^\d+$/',$mealDeal['id'])) )
+		{
+			//check item id if it exists then edit otherwise post
+			$curlResultCheck = callAPI('GET', $apiURL."items/".$mealDeal['id'], false, $apiAuth);
+			$dataJSONCheck = json_decode($curlResultCheck,true);
+		}
 		
 		if( isset($dataJSONCheck['id']) && $dataJSONCheck['id'] ) //Edit
 		{	
