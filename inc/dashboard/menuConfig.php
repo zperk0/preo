@@ -106,7 +106,7 @@
 							<small class="error"><?echo _("Please type an item name (max 100chars)");?></small>
 						</td>
 						<td class="menuTDDesc">
-							<input type="text" name="iDesc[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional description");?>" pattern="^.{0,99}$"/>
+							<input type="text" name="iDesc[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional description");?>" pattern="^.{0,250}$"/>
 							<small class="error"><?echo _("Please type a description (max 250chars)");?></small>
 						</td>
 						<td class="menuTDPrice">
