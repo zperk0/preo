@@ -98,30 +98,3 @@ $(document).ready(function(){
 });
 </script>
 <?}?>
-
-<?if(isset($_SERVER["PREO_ANALYTICS_UA"])){?>
-
-	<!-- Google Code for Register Conversion Page -->
-	<script type="text/javascript">
-	/* <![CDATA[ */
-	var google_conversion_id = 980771540;
-	var google_conversion_language = "en";
-	var google_conversion_format = "2";
-	var google_conversion_color = "ffffff";
-	var google_conversion_label = "YQ0eCLyrwQgQ1MXV0wM";
-	var google_conversion_value = 0;
-	var google_remarketing_only = false;
-	/* ]]> */
-	</script>
-	<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-	</script>
-	<noscript>
-	<div style="display:inline;">
-	<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/980771540/?value=0&amp;label=YQ0eCLyrwQgQ1MXV0wM&amp;guid=ON&amp;script=0"/>
-	</div>
-	</noscript>
-
-<?}?>
-			
-
-

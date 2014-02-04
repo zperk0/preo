@@ -289,5 +289,18 @@
 		<div id="privM" class="reveal-modal">
 			<?require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/privacy.php');?>
 		</div>
+
+		<?if( isset($adwordsConversionVars) ){?>
+			<!-- Google Code for Register Conversion Page -->
+			<script type="text/javascript">
+			/* <![CDATA[ */
+			<?echo($adwordsConversionVars)?>
+			/* ]]> */
+			</script>
+			<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+			</script>
+		<?}?>
+
+
 	</body>
 </html>
