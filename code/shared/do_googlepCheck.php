@@ -73,5 +73,5 @@
 		$dataArray['signupFlag'] = "1";
 		
 		
-	echo json_encode($dataArray, true);
+	echo json_encode($dataArray);
 ?>

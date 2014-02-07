@@ -70,13 +70,13 @@
 		{  
 			$curlResult = array();
 			$curlResult['status'] = "404"; 
-			$curlResult = json_encode($curlResult, true); 
+			$curlResult = json_encode($curlResult); 
 		}
 		else
 		{  
 			$curlResult = array();
 			$curlResult['pass'] = "OK"; 
-			$curlResult = json_encode($curlResult, true); 
+			$curlResult = json_encode($curlResult); 
 		}
 	}
 	

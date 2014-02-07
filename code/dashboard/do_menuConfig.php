@@ -290,7 +290,7 @@
 	$newJSON['result'] = json_decode($curlResult,true); //make it an array
 	$newJSON['update']= $newIDs; //add array of new values
 	
-	$newJSON = json_encode($newJSON, true); //back to JSON
+	$newJSON = json_encode($newJSON); //back to JSON
 	
 	echo $newJSON; //sending a JSON via ajax 
 ?>
