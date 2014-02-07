@@ -38,7 +38,7 @@
 							<div class="large-8 columns">
 								<label class="left"><?echo _("Add a short venue title");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("This is a shorter version of your venue name that will be visible over your menu.");?>"></i>
 								<input type="text" name="vTitle" id="vTitle" placeholder="Type a name..." required tabindex=1 value="<?if(isset($_SESSION['app_title'])) echo $_SESSION['app_title']; else echo $_SESSION['venue_name'];?>" pattern="^.{0,22}$">
-								<small class="error"><?echo _("Please type a venue title (limited to 22characters)");?></small>
+								<small class="error"><?echo _("Please type a venue title <br/>(max 22chars)");?></small>
 							</div>
 						</div>
 					</div>

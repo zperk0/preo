@@ -31,13 +31,13 @@ $(document).ready(function(){
 				<div class="row nameRow <?if($fb_field_flag) echo 'hide';?>">
 					<div class="large-12 columns">
 						<label><?echo _("First Name");?></label>
-						<input type="text" id="fName" name="fName" placeholder="" <?if($fb_field_flag) echo "value='$fName'";?> required pattern="[a-zA-Z]+" tabindex=1>
-						<small class="error"><?echo _("Please type your first name. It must be only letters");?></small>
+						<input type="text" id="fName" name="fName" placeholder="" <?if($fb_field_flag) echo "value='$fName'";?> required pattern="^.{0,99}$" tabindex=1>
+						<small class="error"><?echo _("Please type your first name.(max 100chars)");?></small>
 					</div>
 					<div class="large-12 columns">
 						<label><?echo _("Last Name");?></label>
-						<input type="text" id="lName" name="lName" placeholder="" required <?if($fb_field_flag) echo "value='$lName'";?>  pattern="[a-zA-Z]+" tabindex=2>
-						<small class="error"><?echo _("Please type your last name. It must be only letters");?></small>
+						<input type="text" id="lName" name="lName" placeholder="" required <?if($fb_field_flag) echo "value='$lName'";?>  pattern="^.{0,99}$" tabindex=2>
+						<small class="error"><?echo _("Please type your last name.(max 100chars)");?></small>
 					</div>
 				</div>
 				<div class="row emailRow <?if($fb_field_flag) echo 'hide';?>">
@@ -67,8 +67,8 @@ $(document).ready(function(){
 				<div class="row">
 					<div class="large-12 columns">
 						<label><?echo _("Your business name");?></label>
-						<input type="text" name="businessName" placeholder="" required pattern="[a-zA-Z]+" tabindex=6>
-						<small class="error"><?echo _("Please type your business name");?></small>
+						<input type="text" name="businessName" placeholder="" required pattern="^.{0,99}$" tabindex=6>
+						<small class="error"><?echo _("Please type your business name (max 100chars)");?></small>
 					</div>
 				</div>
 			

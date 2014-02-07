@@ -60,7 +60,8 @@
 								  <li><a href="#"><? echo _("Stay with friends while the bar prepares your round");?></a></li>
 								  <li><a href="#"><? echo _("Order your coffee and croissant from your table, or from the train.");?></a></li>
 								</ul>
-								<textarea name="aHeading" id="aHeading" placeholder="<?echo _("or create your own...");?>" tabindex=1><?if(isset($_SESSION['app_heading'])) echo $_SESSION['app_heading'];?></textarea>
+								<textarea name="aHeading" id="aHeading" placeholder="<?echo _("or create your own...");?>"  pattern="^.{0,70}$" tabindex=1><?if(isset($_SESSION['app_heading'])) echo $_SESSION['app_heading'];?></textarea>
+								<small class="error"><?echo _("maximum 70 characters");?></small>
 							</div>
 						</div>
 						<div class="row">
@@ -72,7 +73,8 @@
 								  <li><a href="#"><? echo _("Pre-order food and drinks");?></a></li>
 								  <li><a href="#"><? echo _("Pre-order drinks+food");?></a></li>
 								</ul>
-								<input type="text" name="aSubheading" id="aSubheading" placeholder="<?echo _("or create your own...");?>" tabindex=2 value="<?if(isset($_SESSION['app_subHeading'])) echo $_SESSION['app_subHeading'];?>">
+								<input type="text" name="aSubheading" id="aSubheading" placeholder="<?echo _("or create your own...");?>" tabindex=2 pattern="^.{0,30}$" value="<?if(isset($_SESSION['app_subHeading'])) echo $_SESSION['app_subHeading'];?>">
+								<small class="error"><?echo _("maximum 30 characters");?></small>
 							</div>
 						</div>
 						

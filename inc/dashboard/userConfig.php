@@ -33,8 +33,8 @@
 							<tr class="userEdit userTR">
 								<td class="userTDName">
 									<input type="hidden" name="uID[0]" value="u0" />
-									<input type="text" name="uName[0]" class="userField noEnterSubmit" value="<?echo _("Add a user name");?>"/>
-									<small class="error"><?echo _("Please type a user name");?></small>
+									<input type="text" name="uName[0]" class="userField noEnterSubmit" value="<?echo _("Add a user name");?>"  pattern="^.{0,199}$"/>
+									<small class="error"><?echo _("Please type a user name (max 200chars)");?></small>
 								</td>
 								<td class="userTDEmail">
 									<input type="email" name="uEmail[0]" class="userField noEnterSubmit" placeholder="<?echo _("Add an email");?>"/>
@@ -85,8 +85,8 @@
 					<tr class="savedInput userTR">
 						<td class="userTDName">
 							<input type="hidden" name="uID[<?echo ($uKey+1);?>]" value="<?echo $user['id'];?>" />
-							<input type="text" name="uName[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo $user['name'];?>" required readonly="readonly"/>
-							<small class="error"><?echo _("Please type a user name");?></small>
+							<input type="text" name="uName[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo $user['name'];?>" required readonly="readonly"  pattern="^.{0,199}$"/>
+							<small class="error"><?echo _("Please type a user name (max 200chars)");?></small>
 						</td>
 						<td class="userTDEmail">
 							<input type="email" name="uEmail[<?echo ($uKey+1);?>]" class="userField noEnterSubmit preSaved" value="<?echo $user['email'];?>" placeholder="<?echo _("Add an email");?>" readonly="readonly" required/>

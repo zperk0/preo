@@ -68,12 +68,12 @@
 							<tr class="eventEdit eventTR">
 								<td class="eventTDName">
 									<input type="hidden" name="eID[0]" value="e0" />
-									<input type="text" name="eName[0]" class="eventField noEnterSubmit" value="<?echo _("Click to add an event name");?>" required/>
-									<small class="error"><?echo _("Please type an event name");?></small>
+									<input type="text" name="eName[0]" class="eventField noEnterSubmit" value="<?echo _("Click to add an event name");?>"  pattern="^.{0,99}$" required/>
+									<small class="error"><?echo _("Please type an event name (max 100chars)");?></small>
 								</td>
 								<td class="eventTDDesc">
-									<input type="text" name="eDesc[0]" class="eventField noEnterSubmit" placeholder="<?echo _("Click to add a description");?>"/>
-									<small class="error"><?echo _("Please type a description");?></small>
+									<input type="text" name="eDesc[0]" class="eventField noEnterSubmit" placeholder="<?echo _("Click to add a description");?>"  pattern="^.{0,250}$"/>
+									<small class="error"><?echo _("Please type a description (max 250chars)");?></small>
 								</td>
 								<td class="eventTDDate">
 									<input type="text" name="eDate[0]" class="eventField noEnterSubmit" value="<?echo _("DD/MM/YYYY");?>" required/>
@@ -148,12 +148,12 @@
 					<tr class="savedInput eventTR">
 						<td class="eventTDName">
 							<input type="hidden" name="eID[<?echo ($eKey+1);?>]" value="<?echo $event['id'];?>" />
-							<input type="text" name="eName[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo $event['name'];?>" required readonly="readonly"/>
-							<small class="error"><?echo _("Please type an event name");?></small>
+							<input type="text" name="eName[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo $event['name'];?>"  pattern="^.{0,99}$" required readonly="readonly"/>
+							<small class="error"><?echo _("Please type an event name (max 100chars)");?></small>
 						</td>
 						<td class="eventTDDesc">
-							<input type="text" name="eDesc[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" <?if(!empty($event['description'])){?>value="<?echo $event['description'];?>"<?}?> placeholder="<?echo _("Click to add a description");?>" readonly="readonly"/>
-							<small class="error"><?echo _("Please type a description");?></small>
+							<input type="text" name="eDesc[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" <?if(!empty($event['description'])){?>value="<?echo $event['description'];?>"<?}?> placeholder="<?echo _("Click to add a description");?>" readonly="readonly"  pattern="^.{0,250}$"/>
+							<small class="error"><?echo _("Please type a description (max 250chars)");?></small>
 						</td>
 						<td class="eventTDDate">
 							<input type="text" name="eDate[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('d/m/Y',strtotime($event['date']));?>" pattern="^\d\d\/\d\d\/\d\d\d\d$" placeholder="<?echo _("DD/MM/YYYY");?>" required readonly="readonly"/>

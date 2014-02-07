@@ -49,8 +49,8 @@
 				<tr class="savedInput mdTR">
 					<td class="mdTDName">
 						<input type="hidden" name="mdID[<?echo $key+1;?>]" value="<?echo $mealDeal['id']?>"/>
-						<input type="text" name="mdName[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo $mealDeal['name'];?>" required readonly="readonly"/>
-						<small class="error"><?echo _("Please type an item name");?></small>
+						<input type="text" name="mdName[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo $mealDeal['name'];?>" required pattern="^.{0,99}$" readonly="readonly"/>
+						<small class="error"><?echo _("Please type an item name (max 100chars)");?></small>
 					</td>
 					<td class="mdTDSec">
 						<select name="mdSecID[<?echo $key+1;?>]" class="mdField noEnterSubmit inline mdSecSingleSelect" > <!-- Dummy does not have mdSecSingleSelect -->
@@ -88,8 +88,8 @@
 					<tr class="savedInput subHeaderTR" style="display:none;">
 						<td class="mdSubheader optionTR"><h6><button type="button" class="mdSectionDelete secondary"><i class="pd-delete"></i></button> <?echo _("Delete this section");?></h6></td>
 						<td class="modifierRow hide">
-							<input type="text" name="iMD[<?echo $key+1;?>][s<?echo $sKey+1?>]" class="mdField noEnterSubmit hide" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Type or pick a selection title");?>" value="<?echo $mdS['name'];?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Choose a main, Choose a side, Choose a drink, etc");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
-							<small class="error smallerror"><?echo _("Please type or pick a title");?></small>
+							<input type="text" name="iMD[<?echo $key+1;?>][s<?echo $sKey+1?>]" class="mdField noEnterSubmit hide" pattern="^.{0,99}$" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Type or pick a selection title");?>" value="<?echo $mdS['name'];?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Choose a main, Choose a side, Choose a drink, etc");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
+							<small class="error smallerror"><?echo _("Please type or pick a title (max 100chars)");?></small>
 						</td>
 						<td class="modifierRow hide" colspan="3">
 							<select class="mdField noEnterSubmit inline mdMenuSingleSelect" name="iMDType[<?echo $key+1;?>][s<?echo $sKey+1?>]" required> <!-- Dummy does not have mdMenuSingleSelect -->
@@ -167,8 +167,8 @@
 			<tr class="mdEdit mdTR">
 				<td class="mdTDName">
 					<input type="hidden" name="mdID[0]" value="mid0"/>
-					<input type="text" name="mdName[0]" class="mdField noEnterSubmit" value="<?echo _("Click to add a Meal Deal name");?>" required/>
-					<small class="error"><?echo _("Please type an item name");?></small>
+					<input type="text" name="mdName[0]" class="mdField noEnterSubmit" value="<?echo _("Click to add a Meal Deal name");?>" pattern="^.{0,99}$" required/>
+					<small class="error"><?echo _("Please type an item name (max 100chars)");?></small>
 				</td>
 				<td class="mdTDSec">
 					<select name="mdSecID[0]" class="mdField noEnterSubmit inline"> <!-- Dummy does not have mdSecSingleSelect -->
@@ -205,8 +205,8 @@
 			<tr class="mdEdit subHeaderTR">
 				<td class="mdSubheader optionTR"><h6><button type="button" class="newMDSection"><i class="pd-add"></i></button> <?echo _("Add a selection to this meal deal");?></h6></td>
 				<td class="modifierRow hide">
-					<input type="text" name="iMD[0][s0]" class="mdField noEnterSubmit hide" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Type or pick a selection title");?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Choose a main, Choose a side, Choose a drink, etc");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
-					<small class="error smallerror"><?echo _("Please type or pick a title");?></small>
+					<input type="text" name="iMD[0][s0]" class="mdField noEnterSubmit hide" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;"  pattern="^.{0,99}$" placeholder="<?echo _("Type or pick a selection title");?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Choose a main, Choose a side, Choose a drink, etc");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
+					<small class="error smallerror"><?echo _("Please type or pick a title (max 100chars)");?></small>
 				</td>
 				<td class="modifierRow hide" colspan="3">
 					<select class="mdField noEnterSubmit inline" name="iMDType[0][s0]"> <!-- Dummy does not have mdMenuSingleSelect -->

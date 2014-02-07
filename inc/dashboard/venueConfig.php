@@ -53,25 +53,25 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue name");?></label>
-					<input type="text" name="vName" id="vName" required tabindex=2 value="<?if(isset($_SESSION['venue_name'])) echo $_SESSION['venue_name'];?>">
-					<small class="error"><?echo _("Please type a venue name");?></small>
+					<input type="text" name="vName" id="vName" required tabindex=2 value="<?if(isset($_SESSION['venue_name'])) echo $_SESSION['venue_name'];?>" pattern="^.{0,99}$">
+					<small class="error"><?echo _("Please type a venue name (max 100chars)");?></small>
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue address");?></label>
-					<input type="text" name="vAdd" id="vAdd" required tabindex=3 value="<?if(isset($_SESSION['venue_address'])) echo $_SESSION['venue_address'];?>">
+					<input type="text" name="vAdd" id="vAdd" required tabindex=3 value="<?if(isset($_SESSION['venue_address'])) echo $_SESSION['venue_address'];?>" pattern="^.{0,250}$">
 					<input type="hidden" name="vCode" id="vCode" value="<?if(isset($_SESSION['venue_latitude']) && isset($_SESSION['venue_longitude']))  echo "(".$_SESSION['venue_latitude'].", ".$_SESSION['venue_longitude'].")"; else echo "(0, 0)";?>">
-					<small class="error"><?echo _("Please type a venue address");?></small>
+					<small class="error"><?echo _("Please type a venue address (max 250chars)");?></small>
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue description");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Please enter a short description about your venue.<br/><br/>This will not appear on your branded app.");?>"></i></label>
-					<textarea name="vDesc" required tabindex=4><?if(isset($_SESSION['venue_desc'])) echo $_SESSION['venue_desc'];?></textarea>
-					<small class="error"><?echo _("Please type a venue description");?></small>
+					<textarea name="vDesc" required tabindex=4 pattern="^.{0,250}$"><?if(isset($_SESSION['venue_desc'])) echo $_SESSION['venue_desc'];?></textarea>
+					<small class="error"><?echo _("Please type a venue description (max 250chars)");?></small>
 				</div>
 			</div>
 
