@@ -10,8 +10,14 @@
 	$vAdd = $_POST['vAdd'];
 	protect($vAdd);
 	
-	$vCode = $_POST['vCode'];
-	protect($vCode);
+	$vAdd = $_POST['vAdd'];
+	protect($vAdd);
+	
+	$vPostal = $_POST['vPostal'];
+	protect($vPostal);
+	
+	$vCountry = $_POST['vCountry'];
+	protect($vCountry);
 	
 	$vCat = $_POST['vCat'];
 	protect($vCat);
@@ -23,12 +29,14 @@
 	protect($cDuration);
 	
 	$vEvent = $_POST['vEvent'];
+	protect($vEvent);
+	
+	$vCode = $_POST['vCode'];
+	protect($vCode);
 	
 	preg_match('/\((.*), (.*)\)/', $vCode, $matches);
 	$vLat=$matches[1];
 	$vLong=$matches[2];
-	
-	$vPostCode = substr($vAdd, strrpos($vAdd, ', ')+1);
 	
 	$vDesc = $_POST['vDesc'];
 	protect($vDesc);
@@ -39,7 +47,8 @@
 	$data['address']			= $vAdd;
 	$data['latitude']			= $vLat;
 	$data['longitude']			= $vLong;
-	$data['postcode']			= $vPostCode;
+	$data['postcode']			= $vPostal;
+	$data['country']			= $vCountry;
 	$data['categoryId']			= $vCat;
 	$data['eventFlag']			= $vEvent;
 	if(isset($_SESSION['venue_code']))

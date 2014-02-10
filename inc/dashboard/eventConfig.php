@@ -81,11 +81,11 @@
 								</td>
 								<td class="eventTDTime">
 									<input type="text" name="eTime[0]" class="eventField noEnterSubmit" value="<?echo _("HH:MM");?>" required/>
-									<small class="error smallerror"><?echo _("Time?");?></small>
+									<small class="error priceError"><?echo _("Time?");?></small>
 								</td>
 								<td class="eventTDTime">
 									<input type="text" name="eETime[0]" class="eventField noEnterSubmit" value="<?echo _("HH:MM");?>" required/>
-									<small class="error smallerror"><?echo _("Time?");?></small>
+									<small class="error priceError"><?echo _("Time?");?></small>
 								</td>
 								
 								<td class="eventTDVisi hide">
@@ -161,11 +161,11 @@
 						</td>
 						<td class="eventTDTime">
 							<input type="text" name="eTime[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('H:i',strtotime($event['starttime']));?>" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required readonly="readonly"/>
-							<small class="error smallerror"><?echo _("Time?");?></small>
+							<small class="error priceError"><?echo _("Time?");?></small>
 						</td>
 						<td class="eventTDTime">
 							<input type="text" name="eETime[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo date('H:i',strtotime($event['endtime']));?>" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required readonly="readonly"/>
-							<small class="error smallerror"><?echo _("Time?");?></small>
+							<small class="error priceError"><?echo _("Time?");?></small>
 						</td>
 						
 						<td class="eventTDVisi hide">

@@ -68,7 +68,7 @@
 				<div class="row">
 					<div class="large-12 columns menuSectionDiv">
 						<input type="text" name="mSectionName[0]" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
-						<small class="error smallerror"><?echo _("Please type a section name (max 100chars)");?></small>
+						<small class="error msecError"><?echo _("Please type a section name (max 100chars)");?></small>
 					</div>
 				</div>
 				<div class="row">
@@ -110,8 +110,8 @@
 							<small class="error"><?echo _("Please type a description (max 250chars)");?></small>
 						</td>
 						<td class="menuTDPrice">
-							<input type="text" name="iPrice[section0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
-							<small class="error smallerror"><?echo _("Price?");?></small>
+							<input type="text" name="iPrice[section0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
+							<small class="error priceError"><?echo _("Price?");?></small>
 							
 							</td>
 						<td class="menuTDQuant hide">
@@ -140,7 +140,7 @@
 						<td class="itemSubheader"><h6><button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="pd-add"></i></button> <?echo _("Add an option");?> </h6></td>
 						<td class="modifierRow hide">
 							<input type="text" name="iMod[item0][m0]" class="menuField noEnterSubmit" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Type or pick an option title");?>" pattern="^.{0,99}$"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
-							<small class="error smallerror"><?echo _("Please type or pick a title");?></small>
+							<small class="error smallerror selectError"><?echo _("Please type or pick a title");?></small>
 						</td>
 						<td class="modifierRow hide">
 							<select class="menuField noEnterSubmit inline" name="iModType[item0][m0]"> <!-- Dummy does not have itemMenuSingleSelect -->
@@ -159,7 +159,7 @@
 						<td class="menuTDDesc">
 						</td>
 						<td class="menuTDPrice">
-							<input type="text" name="oPrice[item0][m0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
+							<input type="text" name="oPrice[item0][m0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
 							&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
 							<small class="error smallesterror"><?echo _("Price?");?></small>
 						</td>
@@ -202,7 +202,7 @@
 						<div class="row">
 							<div class="large-12 columns menuSectionDiv">
 								<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" placeholder="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
-								<small class="error smallerror"><?echo _("Please type a section name (max 100chars)");?></small>
+								<small class="error msecError"><?echo _("Please type a section name (max 100chars)");?></small>
 							</div>
 						</div>
 						<div class="row">
@@ -245,8 +245,8 @@
 											<small class="error"><?echo _("Please type a description (max 250chars)");?></small>
 										</td>
 										<td class="menuTDPrice">
-											<input type="text" name="iPrice[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($item['price'],2,'.','');?>" required  readonly="readonly" pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
-											<small class="error smallerror"><?echo _("Price?");?></small>
+											<input type="text" name="iPrice[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($item['price'],2,'.','');?>" readonly="readonly" pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
+											<small class="error priceError"><?echo _("Price?");?></small>
 										</td>
 										<td class="menuTDQuant hide">
 											<input type="text" name="iQuan[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" <?if($item['quantity']){?>value="<?echo $item['quantity']?>"<?}else{?>placeholder="<?echo _("Unlimited");}?>"  readonly="readonly"/>
@@ -276,7 +276,7 @@
 												<td class="itemSubheader hide"><h6><button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="pd-add"></i></button> <?echo _("Add an option");?></h6></td>
 												<td class="modifierRow hide">
 													<input type="text" name="iMod[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>]" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" class="menuField noEnterSubmit hide" placeholder="<?echo _("Type or pick an option title");?>" value="<?echo $modifier['name'];?>" required pattern="^.{0,99}$"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
-													<small class="error smallerror"><?echo _("Please type or pick a title");?></small>
+													<small class="error smallerror selectError"><?echo _("Please type or pick a title");?></small>
 												</td>
 												<td class="modifierRow hide">
 													<select class="menuField noEnterSubmit inline itemMenuSingleSelect" style="display:none;" name="iModType[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>]">
@@ -295,7 +295,7 @@
 												<td class="menuTDDesc">
 												</td>
 												<td class="menuTDPrice">
-													<input type="text" name="oPrice[item<?echo ($iKey+1);?>][m0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" required pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
+													<input type="text" name="oPrice[item<?echo ($iKey+1);?>][m0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
 													<small class="error smallesterror"><?echo _("Price?");?></small>
 												</td>
 												<td class="menuTDQuant hide">
@@ -327,7 +327,7 @@
 													<td class="menuTDDesc">
 													</td>
 													<td class="menuTDPrice">
-														<input type="text" name="oPrice[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($option['price'],2,'.','');?>" required pattern="^([0-9]+)(\.[0-9]{1,2})?$" readonly="readonly"/>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
+														<input type="text" name="oPrice[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo number_format($option['price'],2,'.','');?>" pattern="^([0-9]+)(\.[0-9]{1,2})?$" readonly="readonly"/>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
 														<small class="error smallesterror"><?echo _("Price?");?></small>
 													</td>
 													<td class="menuTDQuant hide">

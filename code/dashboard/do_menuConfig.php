@@ -88,7 +88,10 @@
 				{
 					$menu[$i]['items'][$a]['name'] 			= /*protect(*/$_POST['iName']['section'.$j][$b];//);
 					$menu[$i]['items'][$a]['desc'] 			= /*protect(*/$_POST['iDesc']['section'.$j][$b];//);
-					$menu[$i]['items'][$a]['price'] 		= /*protect(*/$_POST['iPrice']['section'.$j][$b];//);
+					if( (!isset($_POST['iPrice']['section'.$j][$b])) || (isset($_POST['iPrice']['section'.$j][$b]) && empty($_POST['iPrice']['section'.$j][$b])) )
+						$menu[$i]['items'][$a]['price'] 		= 0.00;
+					else
+						$menu[$i]['items'][$a]['price'] 		= /*protect(*/$_POST['iPrice']['section'.$j][$b];//);
 					$menu[$i]['items'][$a]['quantity'] 		= /*protect(*/$_POST['iQuan']['section'.$j][$b];//);
 						if(!isset($menu[$i]['items'][$a]['quantity']) || !$menu[$i]['items'][$a]['quantity']){ $menu[$i]['items'][$a]['quantity'] = 0; }
 					$menu[$i]['items'][$a]['visible'] 		= '1'; /*protect(*/ // $_POST['iVisi']['section'.$j][$b];//);
@@ -109,7 +112,10 @@
 								if(isset($_POST['oName']['item'.$b]['m'.$d][$y]))
 								{
 									$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['name'] = /*protect(*/$_POST['oName']['item'.$b]['m'.$d][$y];//);
-									$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['price'] = /*protect(*/$_POST['oPrice']['item'.$b]['m'.$d][$y];//);
+									if( !isset($_POST['oPrice']['item'.$b]['m'.$d][$y]) || ( isset($_POST['oPrice']['item'.$b]['m'.$d][$y]) && empty($_POST['oPrice']['item'.$b]['m'.$d][$y]) ) )
+										$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['price'] = 0.00;
+									else	
+										$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['price'] = /*protect(*/$_POST['oPrice']['item'.$b]['m'.$d][$y];//);
 									$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible'] = '1'; /*protect(*/ // $_POST['oVisi']['item'.$b]['m'.$d][$y];//);
 										if(!isset($menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible']) || !$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible']){ $menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible'] = 0; }
 									

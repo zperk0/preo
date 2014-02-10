@@ -337,8 +337,45 @@ $(document).ready(function() {
 			}
 			
 			var address = '';
+			var street_number = '';
+			var route = '';
+			var locality = '';
+			var postal_town = '';
+			var postal_code = '';
+			var country = '';
+			
 			if (place.address_components) {
-			address = [(place.address_components[0] &&
+			
+			//console.log(place.address_components);
+			
+			arrLength = place.address_components.length;
+
+			for(var i = 0;i<arrLength;i++)
+			{
+				//console.log(place.address_components[i].types);
+				
+				if(place.address_components[i].types == "street_number")
+					street_number = place.address_components[i].long_name;
+					
+				if(place.address_components[i].types == "route")
+					route = place.address_components[i].long_name;
+					
+				if(place.address_components[i].types == "postal_town")
+					postal_town = place.address_components[i].long_name;
+					
+				if(place.address_components[i].types == "postal_code")
+					postal_code = place.address_components[i].long_name;
+					
+				if(place.address_components[i].types[0] == "locality") //comes as array
+					locality = place.address_components[i].long_name;
+					
+				if(place.address_components[i].types[0] == "country")  //comes as an array
+					country = place.address_components[i].short_name;
+			}
+			
+			//console.log(street_number+", "+route+", "+locality+", "+postal_town+", "+postal_code+", "+country);
+			
+			/*address = [(place.address_components[0] &&
 						place.address_components[0].short_name || ''),
 					   (place.address_components[1] &&
 						place.address_components[1].short_name || ''),
@@ -346,11 +383,34 @@ $(document).ready(function() {
 						place.address_components[2].short_name || ''),
 						(place.address_components[4] &&
 						place.address_components[4].short_name || '')
-					  ].join(', ');
-			}
+					  ].join(', '); */
+		}	
+			address = '';		  
 			
+			if(street_number!='')
+				address = address + street_number+", ";
+			
+			if(route!='')
+				address = address + route+", ";
+			
+			if(locality!='')
+				address = address + locality;
+			
+			if(postal_town!='' && postal_town!=locality)
+				address = address + ", " + postal_town;
+						
 			//now to fix whats in venue address
 			document.getElementById("vAdd").value = address;
+			
+			//now to fix whats in venue address
+			document.getElementById("vPostal").value = postal_code;
+			
+			//now to fix whats in venue address
+			$('#vCountry').val(country);
+			var countryLabel = $('#vCountry option:selected').text();
+			$("#vCountry").next('.custom.dropdown').find('li.selected').removeClass('selected');
+			$("#vCountry").next('.custom.dropdown').find('li[value="'+countryLabel+'"]').addClass('selected');
+			$("#vCountry").next('.custom.dropdown').find('a.current').html(countryLabel);
 			
 			//now to fix whats in venue name
 			document.getElementById("vName").value = place.name;
@@ -3477,6 +3537,11 @@ function clearMapInput() {
 	$("#vSug").val('');
 	$("#vName").val('');
 	$("#vAdd").val('');
+	$("#vPostal").val('');
+	$("#vCountry").prop('selectedIndex', 0);
+	$("#vCountry").next('.custom.dropdown').find('li.selected').removeClass('selected');
+	$("#vCountry").next('.custom.dropdown').find('li:first').addClass('selected');
+	$("#vCountry").next('.custom.dropdown').find('a.current').html('United Kingdom');
 	$("#vCode").val('(0, 0)');
 	if (typeof marker != 'undefined') marker.setMap(null);
 }

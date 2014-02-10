@@ -12,7 +12,7 @@
 						<option value="Multiple outlets">Multiple outlets</option>
 						<option value="Other">Other</option>
 					</select>
-					<small class="error"><?echo _("Please select at least one feature");?></small>
+					<small class="error moreSelectError"><?echo _("Please select at least one feature");?></small>
 				</div>
 			</div>
 			<div class="row">
