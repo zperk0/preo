@@ -47,12 +47,12 @@
 						<div id="frame_iphone5">
 							<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/menuWall.jpg" />
 							<button type="button" class="tiny expand" id="buttonIMG2"><?echo _('BASKET');?></button>
-							<button type="button" class="tiny expand menuMultiButton"><i class="fi-plus"></i></button>
-							<button type="button" class="tiny expand menuMultiButton mmb2"><i class="icon-plus"></i></button>
-							<button type="button" class="tiny expand menuMultiButton mmb3"><i class="icon-plus"></i></button>
-							<button type="button" class="tiny expand menuMultiButton mmb4"><i class="icon-plus"></i></button>
-							<button type="button" class="tiny expand menuMultiButton mmb5"><i class="icon-plus"></i></button>
-							<button type="button" class="tiny expand menuMultiButton mmb6"><i class="icon-plus"></i></button>
+							<button type="button" class="tiny expand menuMultiButton"><i class="pd-add"></i></button>
+							<button type="button" class="tiny expand menuMultiButton mmb2"><i class="pd-add"></i></button>
+							<button type="button" class="tiny expand menuMultiButton mmb3"><i class="pd-add"></i></button>
+							<button type="button" class="tiny expand menuMultiButton mmb4"><i class="pd-add"></i></button>
+							<button type="button" class="tiny expand menuMultiButton mmb5"><i class="pd-add"></i></button>
+							<button type="button" class="tiny expand menuMultiButton mmb6"><i class="pd-add"></i></button>
 							<p id="venTitle"><?echo $_SESSION['venue_name'];?></p>
 						</div>
 					</div>

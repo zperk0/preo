@@ -561,12 +561,12 @@ label.appTop {
 }
 
 #aHeading {
-	margin-top: -15px;
+	margin-top: -22px;
 	height: 72px !important;
 }
 
 #aSubheading {
-	margin-top: -15px;
+	margin-top: -22px;
 }
 
 #frame_iphone5  img#poweredIMG{
@@ -675,7 +675,9 @@ h1 i.icon-question-sign, h4 i.icon-question-sign {
 
 .menuMultiButton i{
 	font-weight: normal !important;
-	font-size: 10px !important;
+	font-size: 18px !important;
+	margin-top: -4px;
+	display: inline-block;
 }
 
 .menuMultiButton {
