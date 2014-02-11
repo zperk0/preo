@@ -382,6 +382,14 @@ ul.custom-inline-list {
 	color: #485362;
 }
 
+.socialMediaDiv {
+	padding-left: 7px;
+}
+
+.alignDiv {
+	margin-left: 15px;
+}
+
 /* settings */
 .notiSwitch label.onswitch {
 	margin-left: -25px !important;
@@ -790,9 +798,8 @@ table.menuTable, table.eventTable, table.userTable , table.outletTable, table.md
 	/* border-bottom: 1px solid #B8B9BC; */
 }
 
-.itemTR.menuEdit{
-	/*border-top: 1px solid #B8B9BC; */
-	margin-top: 7px;
+.itemTR, .eventTR, .userTR, .mdTR{
+	margin-top: 20px;
 }
 
 .menuTable td, .eventTable td, .userTable td, .outletTable td, .mdTable td, table.headerTable td{
@@ -824,7 +831,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 
 .menuTable .menuTDName, .headerTable .menuTDName{
 	font-weight: bold !important;
-	width: 30%;
+	width: 325px;
 }
 
 .eventTable {
@@ -845,8 +852,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .menuTable .menuTDDesc, .headerTable .menuTDDesc{
-	/*width: 32%;*/
-	width: 40%;
+	width: 375px;
 }
 .userTable .userTDName, .headerTable .userTDName, .userTable .userTDEmail, .headerTable .userTDEMail, .userTable .userTDPassword{
 	width: 39%;
@@ -857,7 +863,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .menuTable .menuTDPrice, .headerTable .menuTDPrice{
-	width: 9%;
+	width: 125px;
 }
 
 .eventTable .eventTDTime, .headerTable .eventTDTime{
@@ -876,6 +882,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 
 .userPassTR {
 	margin-bottom: 18px;
+	margin-top: -2px;
 }
 
 .userPassTR label {
@@ -914,6 +921,15 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 .eventTable .eventTDLead{
 	width: 10%;
 }
+
+.eventTDLead label {
+	margin-top: 14px;
+}
+
+#eventConfigForm .optionTR{
+	margin-top: -20px;
+}
+
 .eventTable .eventTDAddMore{
 	width: 10%;
 }
@@ -932,8 +948,13 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	font-size: 14px;
 	padding-top: 0px;
 }
+
 .headerTable .userTDRole{
 	padding-bottom: 1px;
+}
+
+.userTDRole button {
+	margin-top: 0px;
 }
 
 .eventTable .eventTDDate input{
@@ -955,6 +976,10 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 
 .mdTable .mdTDSec, .headerTable .mdTDSec{
 	width: 35%;
+}
+
+.mdTDSec button{
+	margin-top: 0px;
 }
 
 .mdTable .mdTDPrice, .headerTable .mdTDPrice{
@@ -1016,7 +1041,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .menuTable .menuTDTools, .headerTable .menuTDTools{
-	width: 15%;
+	width: 153px;
 }
 
  .eventTable .eventTDTools, .headerTable .eventTDTools{
@@ -1030,7 +1055,11 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 .menuTableButtons, .eventTableButtons, .userTableButtons, .outletTableButtons, .mdTableButtons{
 	font-size: 20px !important;
 	padding: 1px 3px !important;
-	margin-top: 23px;
+	margin-top: 8px;
+}
+
+.userTableButtons, .mdTableButtons{
+	margin-top: 5px;
 }
 
 .menuTDPrice input, .eventTDTime input, .userTDPassword input{
@@ -1071,10 +1100,6 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	width: 9%;
 }
 
-.optionTR {
-	margin-top: -20px;
-}
-
 .userTable .ui-multiselect, .eventTable, .ui-multiselect, .mdTable .ui-multiselect{
 	font-size: 14px;
 	width: 100% !important;
@@ -1100,6 +1125,8 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 
 .dynamicDataTable{
 	padding-bottom: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
 .menuTable tr, .eventTable tr, .userTable tr , .outletTable tr, table.headerTable tr, .mdTable tr {
@@ -1149,6 +1176,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 .itemSubheader h6{
 	margin-bottom:-12px;
 	width: 264px;
+	margin-top: 11px;
 }
 
 .modifierRow {
@@ -1157,7 +1185,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 
 .modifierRow input, .modifierRow select{
 	width: 90%;
-	margin-top: 12px;
+	margin-top: 12px !important;
 	margin-bottom: 12px !important;
 }
 
@@ -1212,6 +1240,10 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	margin-top: 20px;
 	background: #2E70B7;
 	border: #2E70B7;
+}
+
+tr {
+	vertical-align: top;
 }
 
 p.venueCode {

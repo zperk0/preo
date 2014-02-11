@@ -1179,8 +1179,7 @@ $(document).ready(function() {
 		
 		$newTab.css('backgroundColor','#fafafa');
 		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		
-		$newTab.css('max-width', '4000px'); $newTab.css('margin-left', '-11px');
+		$newTab.css('max-width', '100%'); 
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
@@ -1225,7 +1224,7 @@ $(document).ready(function() {
 		if(count) $curItem.find('.menuEdit').find('.modifierRow').slideRow('up');
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
-		$curItem.css('max-width', '987px'); $curItem.css('margin-left', 'auto');
+		$curItem.css('max-width', '100%'); 
 	});
 	
 	$(document).on("click", ".itemEdit, .itemTR input[readonly='readonly']", function() {
@@ -1248,8 +1247,7 @@ $(document).ready(function() {
 		if(count) $curItem.find('.menuEdit').find('.modifierRow').slideRow('down');
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '-11px');
-		
+		$curItem.css('max-width', '100%'); 
 		$curItem.find('select[name^=iModType]').each(function(){ //reinitialize to get the right width
 			$(this).multiselect({
 				   multiple: false,
@@ -1706,8 +1704,7 @@ $(document).ready(function() {
 		
 		$newTab.css('backgroundColor','#fafafa');
 		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		$newTab.css('max-width', '4000px'); 
-		$newTab.css('margin-left', '-15px');
+		$newTab.css('max-width', '100%'); 
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
@@ -1742,7 +1739,7 @@ $(document).ready(function() {
 		$curItem.find(".eventMenuSingleSelect").multiselect("disable");
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
-		$curItem.css('max-width', '987px'); $curItem.css('margin-left', 'auto');
+		$curItem.css('max-width', '100%');
 	});
 	
 	$(document).on("click", ".eventTDEdit, .eventTR input[readonly='readonly']", function() {
@@ -1758,7 +1755,7 @@ $(document).ready(function() {
 		$curItem.find(".eventMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '-15px');
+		$curItem.css('max-width', '100%');
 		
 		$curItem.find("td.eventTDCollection select").each(function() {
 			$(this).multiselect({
@@ -2023,7 +2020,7 @@ $(document).ready(function() {
 		$curItem.find(".userMenuSingleSelect").multiselect("disable");
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
-		$curItem.css('max-width', '987px'); $curItem.css('margin-left', 'auto');
+		$curItem.css('max-width', '100%'); 
 	});
 	
 	$(document).on("click", ".userTDEdit, .userTR input[readonly='readonly']", function() {
@@ -2040,7 +2037,7 @@ $(document).ready(function() {
 		$curItem.find(".userMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '-15px');
+		$curItem.css('max-width', '100%'); 
 	});
 	
 	$(document).on("click", ".newUser", function() {
@@ -2129,8 +2126,7 @@ $(document).ready(function() {
 		
 		$newTab.css('backgroundColor','#fafafa');
 		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		$newTab.css('max-width', '4000px'); 
-		$newTab.css('margin-left', '-15px');
+		$newTab.css('max-width', '100%'); 
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
@@ -2866,8 +2862,7 @@ $(document).ready(function() {
 		$newTab.css('backgroundColor','#fafafa');
 		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
 		$newTab.find('tr').css('border-bottom','0px');
-		$newTab.css('max-width', '4000px'); $newTab.css('margin-left', '-11px');
-		
+		$newTab.css('max-width', '100%'); 	
 		
 		//hide it so we can animate it!
 		$newTab.css('display','none');
@@ -2891,7 +2886,6 @@ $(document).ready(function() {
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 		
 		$newTab.find('.newMDSection').trigger('click');
-		newTab.find('select[name^=mdSec]').show();
 	});
 	
 	$(document).on("click", ".mdSectionDelete", function(){
@@ -3128,7 +3122,7 @@ $(document).ready(function() {
 		$curItem.find(".mdTR select").multiselect("disable");
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
-		$curItem.css('max-width', '987px'); $curItem.css('margin-left', 'auto');
+		$curItem.css('max-width', '100%'); 
 		$curItem.find('tr').first().css('border-bottom','1px solid #B9BBBD');
 	});
 	
@@ -3150,7 +3144,7 @@ $(document).ready(function() {
 		$curItem.find(".modifierRow").fadeIn('slow');
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		$curItem.css('max-width', '4000px'); $curItem.css('margin-left', '-11px');
+		$curItem.css('max-width', '100%'); 
 		$curItem.find('tr').css('border-bottom','0px');
 		
 		$curItem.find('select[name^=iMDType]').each(function(){ //reinitialize to get the right width

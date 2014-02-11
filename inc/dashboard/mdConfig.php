@@ -5,7 +5,7 @@
 		<h1 class="alignHeader"><?echo _("Meal Deals");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can combine separate food items into one meal combination, e.g. sandwich, crisps and a drink");?>"></i></h1>
 		<div class="large-12 columns">
 			<div class="row">
-				<?if(!$_SESSION['noItemsFlag']){?><button type="button" class="newMD" title="<?echo _("Add a new Meal Deal");?>"><i class="pd-add"></i></button> <?echo _("Add a new Meal Deal"); }?>
+				<?if(!$_SESSION['noItemsFlag']){?><button type="button" class="newMD alignHeader" title="<?echo _("Add a new Meal Deal");?>"><i class="pd-add"></i></button> <?echo _("Add a new Meal Deal"); }?>
 			</div>
 			<input type="hidden" id="mdCount" 			name="mdCount"			value="<?echo $mdCount;?>"/>
 			<input type="hidden" id="mdCountAct" 		name="mdCountAct"		value="<?echo $mdCount;?>"/>
@@ -238,8 +238,8 @@
 	</table>
 
 	<div class="row row--space1">
-		<?if(!$_SESSION['noItemsFlag']){?><button id="mdSubButton" type="submit"><?echo _("SAVE CHANGES");?></button><?}?>
-		<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
+		<?if(!$_SESSION['noItemsFlag']){?><button id="mdSubButton" class="alignHeader" type="submit"><?echo _("SAVE CHANGES");?></button><?}?>
+		<button id="savingButton" class="hide secondary alignHeader" type="button"><?echo _("SAVING...");?></button>
 	</div>
 </form>
 

@@ -26,7 +26,7 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<div class="row">
-		<div class="large-6 columns left row--space1u">
+		<div class="large-6 columns left row--space1u alignDiv">
 			<form id="signupForm" method="POST" data-abide>
 				<div class="row nameRow <?if($fb_field_flag) echo 'hide';?>">
 					<div class="large-12 columns">
