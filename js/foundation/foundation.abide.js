@@ -62,7 +62,7 @@
     },
 
     events : function () {
-      var self = this,
+	  var self = this,
           forms = $('form[data-abide]', this.scope).attr('novalidate', 'novalidate');
 
       forms
@@ -72,19 +72,21 @@
 
       this.settings.init = true;
 
+	  //console.log(this.settings);
+	  
       if (!this.settings.live_validate) return;
 
       forms
         .find('input, textarea, select')
         .on('blur change', function (e) {
           self.validate([this], e);
-        })
+        });/*
         .on('keydown', function (e) {
           clearTimeout(self.timer);
           self.timer = setTimeout(function () {
             self.validate([this], e);
           }.bind(this), self.settings.timeout);
-        });
+        });*/
     },
 
     validate : function (els, e) {

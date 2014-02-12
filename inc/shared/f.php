@@ -52,8 +52,11 @@
 		  $(document)
 			.foundation()
 			.foundation('abide', {
+			  <?if(preg_match('/\/login$/',$_SERVER['REQUEST_URI']) || preg_match('/\/profile$/',$_SERVER['REQUEST_URI'])  || preg_match('/\/users$/',$_SERVER['REQUEST_URI']) ){?>
+			  live_validate: false,
+			  <?}?>
 			  patterns: {
-				password: /^.+$/,
+				password: /^.+$/
 			  }
 			});
 		</script>

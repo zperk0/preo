@@ -19,9 +19,9 @@
 	<div class="large-12 columns">
 		<form id="finishForm" method="POST" action="<?echo $_SESSION['path']?>/code/finish/do_finish.php">
 			<div class="row">
-				<h2><? echo _("The finish line!");?></h2>
-				<?if(!preg_match('/500/',$_SESSION['pmaReply'])){?><h3><?echo _("Your app is built, you did it, all that's left now is to send it into the world!");?></h3>
-				<?}else{?><h3><?echo _("Your app is built and after you setup a payment method, you can send it into the world!");?></h3><?}?>
+				<h2 class="alignHeader"><? echo _("The finish line!");?></h2>
+				<?if(!preg_match('/500/',$_SESSION['pmaReply'])){?><h3 class="alignHeader"><?echo _("Your app is built, you did it, all that's left now is to send it into the world!");?></h3>
+				<?}else{?><h3 class="alignHeader"><?echo _("Your app is built and after you setup a payment method, you can send it into the world!");?></h3><?}?>
 				<div class="large-12 columns">
 					<input type="hidden" name="liveFlag" value="<?echo $live?>"/>
 					<?if(!$live && !preg_match('/500/',$_SESSION['pmaReply'])){?><button class="preodayButton large" type="submit" id="finishButton" tabindex=1><?echo _("LAUNCH MY APP");?></button><?}

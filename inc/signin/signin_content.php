@@ -22,7 +22,7 @@
 				<div class="large-6 small-11 columns">
 					<label><?echo _("Email");?></label>
 					<input type="email" id="email" name="email" placeholder="" required tabindex=1>
-					<small class="error"><?echo _("Please type your email address");?></small>
+					<small class="error"><?echo _("Please type a valid email address");?></small>
 				</div>
 			</div>
 			

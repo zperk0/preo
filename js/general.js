@@ -677,7 +677,7 @@ $(document).ready(function() {
 	
 	/* $("#textColour").minicolors({
 		change: function(hex, opacity) {
-			alert(hex);
+			//alert(hex);
 		}
 	}); */
 	
@@ -1024,6 +1024,8 @@ $(document).ready(function() {
 			$newRow.slideRow('down');
 		}
 		
+		
+		
 		$("html, body").animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
 	});
 	
@@ -1031,7 +1033,7 @@ $(document).ready(function() {
 		//new item or duplicate?
 		var dup = 0;
 		if($(this).hasClass("itemDuplicate")) dup = 1;
-		
+			
 		//get section
 		section = $(this).attr('id');
 		
@@ -1189,7 +1191,9 @@ $(document).ready(function() {
 		
 		$($newTab).slideRow('down');
 		if($newTab.find('.itemEdit').is(':visible')) $newTab.find('.itemEdit').trigger('click');
-	
+		
+		
+		
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
@@ -1519,7 +1523,7 @@ $(document).ready(function() {
 						  text: "Sorry, but there's been an error processing your request." //text: 'Connection Error! Check API endpoint.'
 						});
 						
-						alert(data);
+						//alert(data);
 						
 						return false;
 					}
@@ -1924,6 +1928,8 @@ $(document).ready(function() {
 		$("#"+eventID+" tr:last").after($newRow);
 		$("#"+eventID+" tr:last").slideRow('down');
 
+		
+		
 		$("html, body").animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
 	});
 	
@@ -2886,6 +2892,8 @@ $(document).ready(function() {
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 		
 		$newTab.find('.newMDSection').trigger('click');
+		
+		
 	});
 	
 	$(document).on("click", ".mdSectionDelete", function(){
@@ -2966,6 +2974,8 @@ $(document).ready(function() {
 			}); 
 			$(this).attr('required','required');
 		}); 
+		
+		
 	});
 	
 	$(document).on("click", ".newmdItem", function(){
@@ -3245,7 +3255,7 @@ $(document).ready(function() {
 						  type: 'error',  layout: 'topCenter',
 						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 						});
-						alert(data);
+						//alert(data);
 						return false;
 					}
 					
