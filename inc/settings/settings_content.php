@@ -28,6 +28,7 @@
 				</div>
 			</div>
 			
+			<!--
 			<div class="row">
 				<div class="small-4 large-2 columns">
 					<label><?echo _("Notifications");?></label>
@@ -42,6 +43,7 @@
 					</div>
 				</div>
 			</div>
+			-->
 			
 			<div class="row">
 				<div class="large-2 small-4 columns">
