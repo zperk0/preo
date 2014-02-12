@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="topSpacer"></div>
-	<div class="large-12 columns">
+	<div class="large-12 small-11 columns">
 		<h2><? echo _("Reset your password?");?></h2>
 		<?if($continueFlag){?>
 		<form id="resetPassForm" method="POST" data-abide>
@@ -19,7 +19,7 @@
 			</div>
 			<br/>
 			<div class="row">
-				<div class="large-3 small-4 columns">
+				<div class="large-3 columns">
 					<button type="submit" class="button" tabindex=3><?echo _("RESET PASSWORD");?></button>
 				</div>
 			</div>

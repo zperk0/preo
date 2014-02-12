@@ -19,7 +19,7 @@
 	<div class="large-12 columns row--space1u">
 		<form id="signinForm" method="POST" data-abide>
 			<div class="row">
-				<div class="large-6 columns">
+				<div class="large-6 small-11 columns">
 					<label><?echo _("Email");?></label>
 					<input type="email" id="email" name="email" placeholder="" required tabindex=1>
 					<small class="error"><?echo _("Please type your email address");?></small>
@@ -27,7 +27,7 @@
 			</div>
 			
 			<div class="row">
-				<div class="large-6 columns">
+				<div class="large-6 small-11 columns">
 					<label><?echo _("Password");?></label>
 					<input type="password" name="password" placeholder="" required tabindex=2>
 					<small class="error"><?echo _("Please type your password");?></small>

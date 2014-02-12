@@ -1352,6 +1352,30 @@ p.venueCode {
 	padding-bottom: 70px;
 }
 
+@media screen and (max-width: 990px){
+	.dashContent #iphone5{
+		display: none;
+	}
+	
+	.dashContent .innerDashContent{
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+		float: none !important;
+	}
+}
+
+@media screen and (max-width: 760px){
+	.dashContent section img, .dashContent section i{
+		display: none;
+	}
+	
+	.dashContent .dashChangeApp{
+		margin-top: 20px;
+		padding-left: 0px;
+	}	
+}
+
 .phone1, .phone2{
 	z-index: 0;
 	overflow: visible;
@@ -1392,6 +1416,7 @@ footer.dashboardFooter div{
 	padding-top: 20px;
 }
 
+
 .TWFoot img, .FBFoot img{
 	margin-right: 4px;
 }
@@ -1402,6 +1427,48 @@ footer.dashboardFooter div{
 
 .TWFoot img, .FBFoot img, .LIFoot img {
 	margin-bottom: 20px;
+}
+
+@media screen and (max-width: 990px) {
+	.LIFoot img, .FBFoot img{
+		margin-left: 0px !important;
+	}
+	
+	.TWFoot img, .FBFoot img {
+		margin-right: 0px !important;
+	}
+	
+	.TWFoot img, .FBFoot img, .LIFoot img {
+		margin-bottom: 2px !important; 
+	}
+}
+
+@media screen and (max-width: 890px) {
+	.dashboardFooter .TWFoot img, .dashboardFooter .FBFoot img, .dashboardFooter .LIFoot img {
+		width: 25px;
+	}
+	
+	.dashboardFooter .centerInfoDiv a, .dashboardFooter .premiumDiv {
+		font-size: 80% !important;
+	}
+	
+	.dashboardFooter .twitterfeed .tweet_text {
+		font-size: 70%;
+		line-height: 14px;
+		display: block;
+	}
+}
+
+@media screen and (max-width: 765px) {
+	.premiumDiv{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.dashboardFooter .twitterfeed {
+		display: none;
+	}
 }
 
 .premiumDiv h3{

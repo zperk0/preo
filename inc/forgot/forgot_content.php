@@ -4,7 +4,7 @@
 		<h2><? echo _("Forgot your password?");?></h2>
 		<form id="forgotPassForm" method="POST" data-abide>
 			<div class="row">
-				<div class="large-6 columns">
+				<div class="large-6 small-11 columns">
 					<label><?echo _("Email");?></label>
 					<input type="email" name="emailF" id="emailF" required tabindex=3>
 					<small class="error"><?echo _("An email address is required.");?></small>
@@ -12,7 +12,7 @@
 			</div>
 			<br/>
 			<div class="row">
-				<div class="large-3 small-4 columns">
+				<div class="large-3 small-11 columns">
 					<button type="submit" class="button" tabindex=6><?echo _("RESET PASSWORD");?></button>
 				</div>
 			</div>

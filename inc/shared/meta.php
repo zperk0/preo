@@ -5,6 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
+		<!-- <meta name="viewport" content="initial-scale=1.0" /> -->
 		<title><? echo _("preoday");?></title>
 
 		<!-- Main CSS files. -->

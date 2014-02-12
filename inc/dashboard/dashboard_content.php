@@ -14,7 +14,7 @@
 </div>
 
 <div class="row row--space1u dashContent">
-	<div class="large-8 columns">	
+	<div class="large-8 small-12 columns innerDashContent">	
 		<div class="large-5 columns dashStats">	
 			<div class="row">
 				<h3><?echo _("This month");?></h3>
@@ -36,7 +36,7 @@
 				<h1><?echo number_format($_SESSION['venue_report_returningUsers'],0);?></h1>
 			</div>
 		</div>	
-		<div class="large-7 columns">
+		<div class="large-7 columns dashChangeApp">
 			<div class="row">
 				<div class="large-12 columns">
 					<h3 class="cyappHead"><?echo _("Change your app");?></h3>
