@@ -64,7 +64,7 @@
 						<input type="text" name="mdTPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>" readonly="readonly"/>
 					</td>
 					<td class="mdTDPrice">
-						<input type="text" name="mdPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo $mealDeal['price'];?>" required readonly="readonly" pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
+						<input type="text" name="mdPrice[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo $mealDeal['price'];?>" readonly="readonly" pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
 						<small class="error"><?echo _("Amount?");?></small>
 						</td>
 					<td class="mdTDVisi hide">
@@ -88,7 +88,7 @@
 					<tr class="savedInput subHeaderTR" style="display:none;">
 						<td class="mdSubheader optionTR"><h6><button type="button" class="mdSectionDelete secondary"><i class="pd-delete"></i></button> <?echo _("Delete this section");?></h6></td>
 						<td class="modifierRow hide">
-							<input type="text" name="iMD[<?echo $key+1;?>][s<?echo $sKey+1?>]" class="mdField noEnterSubmit hide" pattern="^.{0,99}$" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Type or pick a selection title");?>" value="<?echo $mdS['name'];?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Choose a main, Choose a side, Choose a drink, etc");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
+							<input type="text" name="iMD[<?echo $key+1;?>][s<?echo $sKey+1?>]" required class="mdField noEnterSubmit hide" pattern="^.{0,99}$" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Type or pick a selection title");?>" value="<?echo $mdS['name'];?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Choose a main, Choose a side, Choose a drink, etc");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
 							<small class="error smallerror selectError"><?echo _("Please type or pick a title (max 100chars)");?></small>
 						</td>
 						<td class="modifierRow hide" colspan="3">
@@ -182,7 +182,7 @@
 					<input type="text" name="mdTPrice[0]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>"/>
 				</td>
 				<td class="mdTDPrice">
-					<input type="text" name="mdPrice[0]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>" required pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
+					<input type="text" name="mdPrice[0]" class="mdField noEnterSubmit" value="<?echo _("0.00");?>" pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
 					<small class="error"><?echo _("Amount?");?></small>
 					</td>
 				<td class="mdTDVisi hide">
@@ -244,7 +244,6 @@
 </form>
 
 <h6 class="hide deleteDummy"><button type="button" class="mdSectionDelete secondary"><i class="pd-delete"></i></button> <?echo _("Delete this section");?></h6>
-
 <?if($_SESSION['noItemsFlag']){?>
 <script type="text/javascript">
 	$(document).ready(function() {

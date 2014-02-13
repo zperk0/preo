@@ -777,6 +777,11 @@ input[name^=mSectionName] {
 	margin-left: -12px;
 }
 
+.mNameError {
+	width: 986px;
+	margin-left: -8px;
+}
+
 .selectError {
 	margin-top: -12px !important;
 }

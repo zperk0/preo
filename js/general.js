@@ -4,6 +4,7 @@ mapDefaultCenterLat = 54.370559; // make google maps var global = set center as 
 mapDefaultCenterLong = -2.510376; // make google maps var global = set center as center of UK
 nowTemp = new Date();
 now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+submitTime = 0;
 
 Array.prototype.clean = function(deleteValue) {
   for (var i = 0; i < this.length; i++) {
@@ -1024,7 +1025,7 @@ $(document).ready(function() {
 			$newRow.slideRow('down');
 		}
 		
-		
+		$(document).foundation('abide', 'events');
 		
 		$("html, body").animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
 	});
@@ -1192,7 +1193,7 @@ $(document).ready(function() {
 		$($newTab).slideRow('down');
 		if($newTab.find('.itemEdit').is(':visible')) $newTab.find('.itemEdit').trigger('click');
 		
-		
+		$(document).foundation('abide', 'events');
 		
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
@@ -1467,7 +1468,13 @@ $(document).ready(function() {
 	$("input[name^=iMod]").autocomplete({ source: [ "Choose a size","Choose a flavour","Choose a topping","Choose some extras","Choose a side dish" ], delay: 10, minLength: 0 });
 	$("input[name^=iMD]").autocomplete({ source: [ "Choose a main","Choose a side","Choose a drink","Choose a curry","Choose a burger" ], delay: 10, minLength: 0 });
 	
-	$(document).on("click", '.showAChevy, input[name^=iMod], input[name^=iMD]', function(){
+	$(document).on("click", '.showAChevy', function(){
+		$elem = $(this).prevAll('input:first');
+		$elem.focus();
+		$elem.trigger('click');
+	});
+	
+	$(document).on("click", 'input[name^=iMod], input[name^=iMD]', function(){
 		$(this).parent('.modifierRow').find("input[name^=iMod]").autocomplete( "search", "C" );
 		$(this).parent('.modifierRow').find("input[name^=iMD]").autocomplete( "search", "C" );
 	});
@@ -1490,23 +1497,28 @@ $(document).ready(function() {
 	});
 	
 	$("#menuConfigForm").on('valid', function (event) {
-		//who be clickin'?
-		var editingSkip = 0;
-		if ($(this).data('clicked').is('[id=menuSaveButtonE]')) editingSkip = 1;
+		//prevent multiple submissions
+		var newSubmitTime = new Date().getTime();
 		
-		//lock all
-		$("body .itemSave").each(function(){
-			if($(this).is(":visible"))
-				$(this).trigger('click');
-		});
+		if( (newSubmitTime - submitTime) > 400 )
+		{
+			//who be clickin'?
+			var editingSkip = 0;
+			if ($(this).data('clicked').is('[id=menuSaveButtonE]')) editingSkip = 1;
+			
+			//lock all
+			$("body .itemSave").each(function(){
+				if($(this).is(":visible"))
+					$(this).trigger('click');
+			});
+			
+			$('#menuSaveButton').hide();
+			if(editingSkip) $('#menuSaveButtonE').hide();
+			$('#savingButton').show();
 		
-		$('#menuSaveButton').hide();
-		if(editingSkip) $('#menuSaveButtonE').hide();
-		$('#savingButton').show();
-	
-		var url = "/saveMenu";
-		
-		$.ajax({
+			var url = "/saveMenu";
+			
+			$.ajax({
 			   type: "POST",
 			   url: url,
 			   data: $(this).serialize(), // serializes the form's elements.
@@ -1562,7 +1574,9 @@ $(document).ready(function() {
 				
 				$('#savingButton').hide();
 			 });
-	
+		}
+		//update Time
+		submitTime = new Date().getTime();
 		return false; // avoid to execute the actual submit of the form.
 	}); 
 	
@@ -1928,7 +1942,7 @@ $(document).ready(function() {
 		$("#"+eventID+" tr:last").after($newRow);
 		$("#"+eventID+" tr:last").slideRow('down');
 
-		
+		$(document).foundation('abide', 'events');
 		
 		$("html, body").animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
 	});
@@ -1948,21 +1962,26 @@ $(document).ready(function() {
 	});
 	
 	$("#eventConfigForm").on('valid', function (event) {
-		//lock all
-		$("body .eventSave").each(function(){
-			if($(this).is(":visible"))
-				$(this).trigger('click');
-		});
+		//prevent multiple submissions
+		var newSubmitTime = new Date().getTime();
 		
-		//enable dropdowns or we wont get the values!
-		$(".eventMenuSingleSelect").multiselect('enable');
-		
-		var url = "/saveEvent";
-		
-		$('#eventSubButton').hide();
-		$('#savingButton').show();
+		if( (newSubmitTime - submitTime) > 300 )
+		{
+			//lock all
+			$("body .eventSave").each(function(){
+				if($(this).is(":visible"))
+					$(this).trigger('click');
+			});
+			
+			//enable dropdowns or we wont get the values!
+			$(".eventMenuSingleSelect").multiselect('enable');
+			
+			var url = "/saveEvent";
+			
+			$('#eventSubButton').hide();
+			$('#savingButton').show();
 
-		$.ajax({
+			$.ajax({
 			   type: "POST",
 			   url: url,
 			   data: $(this).serialize(), // serializes the form's elements.
@@ -2010,7 +2029,9 @@ $(document).ready(function() {
 				$('#savingButton').hide();
 				$(".eventMenuSingleSelect").multiselect('disable');
 			 });
-
+		}
+		//update Time
+		submitTime = new Date().getTime();
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
@@ -2892,8 +2913,6 @@ $(document).ready(function() {
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 		
 		$newTab.find('.newMDSection').trigger('click');
-		
-		
 	});
 	
 	$(document).on("click", ".mdSectionDelete", function(){
@@ -2975,7 +2994,7 @@ $(document).ready(function() {
 			$(this).attr('required','required');
 		}); 
 		
-		
+		$(document).foundation('abide', 'events');
 	});
 	
 	$(document).on("click", ".newmdItem", function(){
@@ -3225,67 +3244,75 @@ $(document).ready(function() {
 	$('.mdSecSingleSelect').multiselect('disable');
 		
 	$("#mealDealConfigForm").on('valid', function (event) {
-		//lock all
-		$("body .mdSave").each(function(){
-			if($(this).is(":visible"))
-				$(this).trigger('click');
-		});
-	
-		var url = "/saveMealDeal";
+		//prevent multiple submissions
+		var newSubmitTime = new Date().getTime();
 		
-		$('#mdSubButton').hide();
-		$('#savingButton').show();
+		if( (newSubmitTime - submitTime) > 300 )
+		{
+			//lock all
+			$("body .mdSave").each(function(){
+				if($(this).is(":visible"))
+					$(this).trigger('click');
+			});
 		
-		//enable dropdowns or we wont get the values!
-		$(".mdSecSingleSelect").multiselect('enable');
-
-		$.ajax({
-			   type: "POST",
-			   url: url,
-			   data: $(this).serialize(), // serializes the form's elements.
-			   success: function(data)
-			   {
-					try
-					{
-						var dataArray = jQuery.parseJSON(data); //parsing JSON
-					}
-					catch(e)
-					{
-						noty({
-						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
-						});
-						//alert(data);
-						return false;
-					}
-					
-					if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
-					{
-						noty({
-						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
-						});
-					}
-					else
-					{	
-						newIDs = dataArray['update'];
-
-						if(Object.keys(newIDs).length > 0) //this is an object not array so length and stuff works differently
+			var url = "/saveMealDeal";
+			
+			$('#mdSubButton').hide();
+			$('#savingButton').show();
+			
+			//enable dropdowns or we wont get the values!
+			$(".mdSecSingleSelect").multiselect('enable');
+			
+			$.ajax({
+				   type: "POST",
+				   url: url,
+				   data: $(this).serialize(), // serializes the form's elements.
+				   success: function(data)
+				   {
+						try
 						{
-							$.each(newIDs, function(index, value) {
-							  $('input[value='+index+']').val(value); //find by value and update!
+							var dataArray = jQuery.parseJSON(data); //parsing JSON
+						}
+						catch(e)
+						{
+							noty({
+							  type: 'error',  layout: 'topCenter',
+							  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
 							});
+							//alert(data);
+							return false;
 						}
 						
-						noty({ type: 'success', text: 'All changes has been saved!' });
-					}
-				}
-			}).done(function() {
-				$('#mdSubButton').show();
-				$('#savingButton').hide();
-				$(".mdSecSingleSelect").multiselect('disable');
-			 });
+						if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
+						{
+							noty({
+							  type: 'error',  layout: 'topCenter',
+							  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
+							});
+						}
+						else
+						{	
+							newIDs = dataArray['update'];
 
+							if(Object.keys(newIDs).length > 0) //this is an object not array so length and stuff works differently
+							{
+								$.each(newIDs, function(index, value) {
+								  $('input[value='+index+']').val(value); //find by value and update!
+								});
+							}
+							
+							noty({ type: 'success', text: 'All changes has been saved!' });
+						}
+					}
+				}).done(function() {
+					$('#mdSubButton').show();
+					$('#savingButton').hide();
+					$(".mdSecSingleSelect").multiselect('disable');
+				 });
+		}
+		
+		//update Time
+		submitTime = new Date().getTime();
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
@@ -3327,13 +3354,13 @@ $(document).ready(function() {
 	$("#changePassTrigger").on('click', function(e) {
 		if(!$("#passDiv").is(":visible"))
 		{
-			$("#passDiv").show();
+			$("#passDiv").slideDown();
 			$(".passField").attr('required','required');
 			$("#passFlag").val(1);
 		}
 		else
 		{
-			$("#passDiv").hide();
+			$("#passDiv").slideUp();
 			$(".passField").removeAttr('required');
 			$("#passFlag").val(0);
 		}

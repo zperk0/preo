@@ -61,7 +61,7 @@
 
 			<div class="row">
 				<input type="text" name="mName" id="mName" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo $menu['name'];?>" placeholder="<?echo _("Click to add your menu name");?>" required tabindex=1 pattern="^.{0,99}$"/>
-				<small class="error"><?echo _("Please type a menu name (max 100chars)");?></small>
+				<small class="error mNameError"><?echo _("Please type a menu name (max 100chars)");?></small>
 			</div>
 
 			<div class="hide" id="menuSectionRow"> <!-- DUMMY -->

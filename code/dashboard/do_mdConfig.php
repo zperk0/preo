@@ -21,7 +21,10 @@
 		{
 			$md[$i]['id'] 			= /*protect(*/$_POST['mdID'][$j];//);
 			$md[$i]['name'] 		= /*protect(*/$_POST['mdName'][$j];//);
-			$md[$i]['price'] 		= /*protect(*/$_POST['mdPrice'][$j];//);
+			if( (!isset($_POST['mdPrice'][$j])) || (isset($_POST['mdPrice'][$j]) && empty($_POST['mdPrice'][$j])) )
+				$md[$i]['price'] 		= 0.0;
+			else
+				$md[$i]['price'] 		= /*protect(*/$_POST['mdPrice'][$j];//);
 			$md[$i]['sectionID']	= /*protect(*/$_POST['mdSecID'][$j];//);	
 			$md[$i]['visible']		= /*protect(*/$_POST['mdVisi'][$j];//);	
 			
