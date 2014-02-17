@@ -21,16 +21,17 @@
 	$curlResult = callAPI('GET', $apiURL."stripe/connect/auth/?code=$code&state=$state", false, $apiAuth);
 	$_SESSION['pmaReply'] = $curlResult; //again this is not JSON!
 	
-	if(preg_match('/500/',$_SESSION['pmaReply']))
+	if(preg_match('/500/',$_SESSION['pmaReply'])) //Stripe skipped - force DEMO
 	{
 		$data = array();
 		$data['demoFlag'] = true;
+		$data['liveFlag'] = true; //both are set together so the app appears in the mobile app as a demo app.
 		$jsonData = json_encode($data);
 		
 		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/demo", $data, $apiAuth);
 		$_SESSION['venue_demoFlag'] = 1;
 	}
-	else
+	else //ask user whether live or demo
 		$_SESSION['paymentMethodApproved'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
 	
 	if(isset($_SESSION['noLiveFlag']) && $_SESSION['noLiveFlag'])
@@ -42,6 +43,7 @@
 	}
 	else
 	{
+		$_SESSION['noLiveFlag']=0;
 		header('location:'.$_SESSION['path'].'/dashboard'); //redirect to dash
 		exit;
 	}

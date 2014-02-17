@@ -20,31 +20,42 @@
 		<form id="finishForm" method="POST" action="<?echo $_SESSION['path']?>/code/finish/do_finish.php">
 			<div class="row">
 				<h2 class="alignHeader"><? echo _("The finish line!");?></h2>
-				<?if(!preg_match('/500/',$_SESSION['pmaReply'])){?><h3 class="alignHeader"><?echo _("Your app is built, you did it, all that's left now is to send it into the world!");?></h3>
-				<?}else{?><h3 class="alignHeader"><?echo _("Your app is built and after you setup a payment method, you can send it into the world!");?></h3><?}?>
+				<?if(!preg_match('/500/',$_SESSION['pmaReply']) && $_SESSION['signupWizFlag']){?><h3 class="alignHeader"><?echo _("Your app is built, you did it, all that's left now is to send it into the world!");?></h3>
+				<?}else{ if($live){?><h3 class="alignHeader"><?echo _("Your app is currently live. Go into DEMO mode if you want to do some testing.");?></h3><?}else{?>
+				<h3 class="alignHeader"><?echo _("Your app is built but you are currently in DEMO mode. Launch your app and send it into the world!");?></h3><?}}?>
 				<div class="large-12 columns">
 					<input type="hidden" name="liveFlag" value="<?echo $live?>"/>
 					<?if(!$live && !preg_match('/500/',$_SESSION['pmaReply'])){?><button class="preodayButton large" type="submit" id="finishButton" tabindex=1><?echo _("LAUNCH MY APP");?></button><?}
-					else if($live){?><button class="preodayButton large secondary" type="submit" id="finishButton" tabindex=1><?echo _("TAKE MY APP OFFLINE");?></button><?}?>
+					else if($live){?><button class="preodayButton large secondary" type="submit" id="finishButton" tabindex=1><?echo _("SWITCH TO DEMO MODE");?></button><?}?>
 				</div>
 				<div class="large-12 columns">
-					<?if(!$live){?><a href="<?echo $_SESSION['path']?>/dashboard"><button class="preodayButton goBackToDash" type="button" tabindex=2><?echo _("I'LL COME BACK LATER TO PUBLISH MY APP");?></button></a><?}
-					else{?><a href="<?echo $_SESSION['path']?>/dashboard"><button class="preodayButton goBackToDash" type="button" tabindex=2><?echo _("I'LL COME BACK LATER TO CHANGE MY APP STATUS");?></button></a><?}?>
+					<?if(!$live){?><a id="skipStripe" href="#"><button class="preodayButton goBackToDash" type="button" tabindex=2><?echo _("PUT MY APP IN DEMO MODE FOR NOW");?></button></a><?}
+					else{?><a href="<?echo $_SESSION['path']?>/dashboard"><button class="preodayButton goBackToDash" type="button" tabindex=2><?echo _("BACK TO THE DASHBOARD");?></button></a><?}?>
 				</div>
 			</div>
 		</form>
 	</div>
 	<?}else{?>
 	<div class="large-12 columns">
-		<form id="finishForm" method="POST" action="">
+		<form id="finishForm" method="POST" action="<?echo $_SESSION['path']?>/code/finish/do_finish.php">
 			<div class="row">
-				<h2><? echo _("The finish line!");?></h2>
-				<h3><?echo _("Your app is built but you are currently in DEMO mode. After you setup a payment method, you can send it into the world!");?></h3>
+				<h2 class="alignHeader"><? echo _("The finish line!");?></h2>
+				<?if($noPaymentFlag){?>
+				<h3 class="alignHeader"><?echo _("Your app is built but you are currently in DEMO mode. After you setup a payment method, you can send it into the world!");?></h3>
 				<div class="large-12 columns">
 					<a id="startStripe" href="#"><button class="preodayButton goBackToDash" type="button" tabindex=2><?echo _("SETUP PAYMENT AND LEAVE DEMO MODE");?></button></a>
 					<br/>
 					<a href="<?echo $_SESSION['path']?>/dashboard"><button class="preodayButton secondary" type="button" tabindex=3><?echo _("I'LL COME BACK LATER TO PUBLISH MY APP");?></button></a>
 				</div>
+				<?}else{?>
+				<h3 class="alignHeader"><?echo _("Your app is built but you are currently in DEMO mode. Launch it and send it into the world!");?></h3>
+				<div class="large-12 columns">
+					<input type="hidden" name="liveFlag" value="<?echo $live?>"/>
+					<button class="preodayButton large" type="submit" id="finishButton" tabindex=1><?echo _("LAUNCH MY APP");?></button>
+					<br/>
+					<a href="<?echo $_SESSION['path']?>/dashboard"><button class="preodayButton secondary" type="button" tabindex=3><?echo _("I'LL COME BACK LATER TO PUBLISH MY APP");?></button></a>
+				</div>
+				<?}?>
 			</div>
 		</form>
 	</div>

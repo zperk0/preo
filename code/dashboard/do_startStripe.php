@@ -10,5 +10,10 @@
 	//we get account id from _SESSION
 	$venueID = $_SESSION['venue_id'];
 	
-	$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/demo", false, $apiAuth);
+	$data = array();
+	$data['demoFlag'] = false;
+	$data['liveFlag'] = false; //both are set together so the app is now offline
+	$jsonData = json_encode($data);
+	
+	$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/demo", $data, $apiAuth);
 ?>

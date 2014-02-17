@@ -12,6 +12,7 @@
 	
 	$data = array();
 	$data['demoFlag'] = true;
+	$data['liveFlag'] = true; //both are set together so the app appears in the mobile app as a demo app.
 	$jsonData = json_encode($data);
 	
 	$curlResult = callAPI('PUT', $apiURL."venues/$venueID/demo", $data, $apiAuth);

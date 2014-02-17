@@ -13,9 +13,14 @@
 	//we get account id from _SESSION
 	$venueID = $_SESSION['venue_id'];
 	
-	if($liveFlag) //then we make it offline
+	if($liveFlag) //then we make it DEMO
 	{
-		$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/live", false, $apiAuth);
+		$data = array();
+		$data['liveFlag'] = true;
+		$data['demoFlag'] = true;
+		$jsonData = json_encode($data);
+		
+		$curlResult = callAPI('PUT', $apiURL."venues/$venueID/demo", $data, $apiAuth); //live=1 and demo=1
 		
 		$_SESSION['appUnPublished'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
 		header('location:'.$_SESSION['path'].'/dashboard.php'); //redirect to dash
@@ -24,8 +29,10 @@
 	{
 		$data = array();
 		$data['liveFlag'] = true;
+		$data['demoFlag'] = false;
 		$jsonData = json_encode($data);
 		
+		$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/demo", $data, $apiAuth);
 		$curlResult = callAPI('PUT', $apiURL."venues/$venueID/live", $data, $apiAuth);
 		
 		$_SESSION['appPublished'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';

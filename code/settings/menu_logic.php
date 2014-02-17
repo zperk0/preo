@@ -64,7 +64,7 @@
 		
 		//now we need to populate all data pertaining to this menu
 		$menu = $dataJSON;
-
++d($menu);
 		//Now lets simplify what we need
 
 		//Get section count, item count & info on modifiers + options

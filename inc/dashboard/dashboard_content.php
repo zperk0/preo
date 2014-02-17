@@ -87,8 +87,8 @@
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/users"><?echo _("Manage users");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/payment"><?echo _("Add a payment method");?></a></p>
-								<?if(!$_SESSION['venue_liveFlag']){?><p><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Publish My App");?></a></p>
-								<?}else{?><p><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Take My App Offline");?></a></p><?}?>
+								<?if($_SESSION['venue_demoFlag'] ){?><p><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Publish my app");?></a></p>
+								<?}else{?><p><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Put my app in demo mode");?></a></p><?}?>
 							</div>
 						</section>
 						<section class="premiumSection">
@@ -181,7 +181,7 @@
 			$_SESSION['appUnPublished']=0;?>
 			noty({
 			  type: 'success',  layout: 'topCenter',
-			  text: '<?echo _("Your app is now offline!");?>'
+			  text: '<?echo _("Your app is now in DEMO mode.");?>'
 			});
 		<?
 		}?>
