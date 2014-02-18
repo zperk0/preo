@@ -1,44 +1,9 @@
-#Set Expires header to 1sec for HTML and 10yrs for the rest
-<IfModule mod_expires.c>
-	ExpiresActive On
-	ExpiresDefault "access plus 10 years"
-	ExpiresByType text/html "access plus 1 second"
-</IfModule>
-
-#Set Cache-control to 1sec for HTML and 1yr for the rest
-<IfModule mod_headers.c>
-	<FilesMatch "\\.(ico|jpe?g|png|gif|swf)$">
-		Header set Cache-Control "max-age=31536000, public"
-	</FilesMatch>
-	<FilesMatch "\\.(css)$">
-		Header set Cache-Control "max-age=31536000, public"
-	</FilesMatch>
-	<FilesMatch "\\.(js)$">
-		Header set Cache-Control "max-age=31536000, public"
-	</FilesMatch>
-	<FilesMatch "\\.(x?html?|php)$">
-		Header set Cache-Control "max-age=60, private, must-revalidate"
-	</FilesMatch>
-	Header unset ETag
-	Header unset Last-Modified
-</IfModule>
-
-#Send all files g-zipped
-<FilesMatch ".(js|css|html|htm|php|xml)$">
-	SetOutputFilter DEFLATE
-</FilesMatch>
-
 ErrorDocument 400 /404
 ErrorDocument 401 /404
 ErrorDocument 403 /404
 ErrorDocument 404 /404
 
-php_value post_max_size 20M
-
 RewriteEngine on
-
-RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
-RewriteRule ^(.*)$ http://%1/$1 [R=301,NC,L]
 
 RewriteCond %{REQUEST_URI} ^/signin$ [NC]
 RewriteRule ^.*$ signin.php [L]
