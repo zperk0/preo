@@ -8,22 +8,35 @@
 		<!-- <meta name="viewport" content="initial-scale=1.0" /> -->
 		<title><? echo _("preoday");?></title>
 
-		<!-- Main CSS files. -->
-		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize.css" />
-		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/foundation.css" />
-		<!-- you may add app.css to use for your overrides if you like -->
-		<link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/cc2cde80-6121-4c1b-bebb-f133e0013559.css"/>
-		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/app.css" /> 
+		<!-- Main CSS files -combined minified -->
+		<!--<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize_and_foundation_min.css" />-->
+		<!-- Main CSS files -combined -->
+		<!--<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize_and_foundation.css" />-->
+		<!-- Main CSS files -original -->
+		<!--<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize.css" />
+		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/foundation.css" />-->
 		
-		<!-- Favicons -->
-		<link rel="apple-touch-icon" 	href="<?echo $_SESSION['path']?>/img/apple-touch-icon.png"	type="image/x-icon" >
-		<link rel="shortcut icon" 		href="<?echo $_SESSION['path']?>/img/fav.png">
+		<!-- Bespoke CSS -combined (dependants minified) -->
+		<!-- <link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/dependantsMIN_and_app.css" /> -->				
+		<!-- Bespoke CSS -combined-->
+		<!--<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/dependants_and_app.css" /> -->
+		<!-- Bespoke CSS -original-->
+		<!--<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/app.css" /> -->
 		
+		<!-- Main CSS files -combined minified PLUS Bespoke CSS -combined (dependants minified) -->
+		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize-foundationMIN_and_dependantsMIN_and_app.css" />		<!-- CSS 1/1 -->	
+		
+		<!-- Pre-body Javascripts -->
+		<!-- combined minified -->
+		<script src="<?echo $_SESSION['path']?>/js/modernizr_and_jquery1.10.2_min.js"></script>		<!-- JS 1/1 -->
+		
+		<!-- combined -->
+		<!--<script src="<?echo $_SESSION['path']?>/js/modernizr_and_jquery1.10.2.js"></script>-->
+		<!-- original -->
 		<!-- Mordernizr -->
-		<script src="<?echo $_SESSION['path']?>/js/vendor/custom.modernizr.js"></script>
-		
+		<!--<script src="<?echo $_SESSION['path']?>/js/vendor/custom.modernizr.js"></script>-->
 		<!-- jQuery -->
-		<script src="<?echo $_SESSION['path']?>/js/jquery1.10.2.js"></script>
+		<!--<script src="<?echo $_SESSION['path']?>/js/jquery1.10.2.js"></script>-->
 		
 		<?if(isset($_SERVER["PREO_ANALYTICS_UA"])){?>
 			<!-- Google Analytics -->
@@ -37,6 +50,13 @@
 				ga('send', 'pageview');
 			</script>
 		<?}?>
+		
+		<!-- FONT -->
+		<link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/cc2cde80-6121-4c1b-bebb-f133e0013559.css"/>
+		
+		<!-- Favicons -->
+		<link rel="apple-touch-icon" 	href="<?echo $_SESSION['path']?>/img/apple-touch-icon.png"	type="image/x-icon" >
+		<link rel="shortcut icon" 		href="<?echo $_SESSION['path']?>/img/fav.png">
 	</head>
 	<body>
 	<div id="wrap">
