@@ -69,7 +69,7 @@
 		<!--<script src="<?echo $_SESSION['path']?>/js/general.js"></script>-->
 		
 		<!-- Foundation with required JS and Plugins minified COMBINED with Bespoke JS File -->
-		<script src="<?echo $_SESSION['path']?>/js/foundation_reqPlugins_allplugins_min_AND_general.js"></script>		<!-- JS 1/1 -->
+		<script src="<?echo $_SESSION['path']?>/js/foundation_reqPlugins_allplugins_min_AND_general.js"></script>		<!-- JS 1/1 : to be minified and updated with timestamp -->
 	
 		<!-- Google+ External JS -->
 		<script type="text/javascript">

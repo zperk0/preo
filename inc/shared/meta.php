@@ -24,11 +24,11 @@
 		<!--<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/app.css" /> -->
 		
 		<!-- Main CSS files -combined minified PLUS Bespoke CSS -combined (dependants minified) -->
-		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize-foundationMIN_and_dependantsMIN_and_app.css" />		<!-- CSS 1/1 -->	
+		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize-foundationMIN_and_dependantsMIN_and_app.css" />		<!-- CSS 1/1 : to be minified and updated with timestamp -->	
 		
 		<!-- Pre-body Javascripts -->
 		<!-- combined minified -->
-		<script src="<?echo $_SESSION['path']?>/js/modernizr_and_jquery1.10.2_min.js"></script>		<!-- JS 1/1 -->
+		<script src="<?echo $_SESSION['path']?>/js/modernizr_and_jquery1.10.2_min.js"></script>
 		
 		<!-- combined -->
 		<!--<script src="<?echo $_SESSION['path']?>/js/modernizr_and_jquery1.10.2.js"></script>-->
