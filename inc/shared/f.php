@@ -85,7 +85,7 @@
 		</script>
 	
 		<!-- PHP Driven JS Files-->
-		<?if(preg_match('/\/settings/',$_SERVER['REQUEST_URI'])){?>
+		<?if(preg_match('/\/settings/',$_SERVER['REQUEST_URI']) || preg_match('/\/dashboard/',$_SERVER['REQUEST_URI'])){?>
 			<!-- Google Maps Library (no need to load this on all pages) -->
 			<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 		<?}?>
