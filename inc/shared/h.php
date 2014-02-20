@@ -82,8 +82,7 @@
 								<ul class="dropdown">
 									<li><a href="<?echo $_SESSION['path']?>/users"><?echo _("Manage Users");?></a></li>
 									<li><a href="<?echo $_SESSION['path']?>/payment"><?echo _("Payment Method");?></a></li>
-									<?if(isset($_SESSION['venue_demoFlag']) && $_SESSION['venue_demoFlag']){?><li><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Publish my app");?></a></li>
-									<?}else{?><li><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Put my app in demo mode");?>&nbsp;&nbsp;</a></li><?}?>
+									<li><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Change my app mode");?>&nbsp;&nbsp;</a></li>
 									
 								</ul>
 							</li>

@@ -8,8 +8,9 @@
 <div class="row dashContentTop">
 	<div class="topSpacer"></div>
 	<div class="large-12 columns">
-		<h1 class=""><? echo _("Dashboard"); if($_SESSION['venue_demoFlag']) echo _(" (DEMO)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
+		<h1 class=""><? echo _("Dashboard");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
 		<p class="venueCode"><?echo _("Your venue shortcode is")." <strong>".$_SESSION['venue_code']."</strong>";?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("This is the code your customers need to use to find your venue on 'My Order App'");?>"></i></p>
+		<p class="venueCode"><?echo _("Your app is currently in ")."<strong>$currentMode</strong>"._(" mode.");?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("LIVE - Your app is available on My Order App and is ready to take real orders.<br/><br/>DEMO - Your app is available on My Order App but does not take real orders.<br/><br/>OFFLINE - Your app is not available on My Order App.");?>"></i></p>
 	</div>
 </div>
 
@@ -87,8 +88,7 @@
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/users"><?echo _("Manage users");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/payment"><?echo _("Add a payment method");?></a></p>
-								<?if($_SESSION['venue_demoFlag'] ){?><p><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Publish my app");?></a></p>
-								<?}else{?><p><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Put my app in demo mode");?></a></p><?}?>
+								<p><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Change my app mode");?></a></p>
 							</div>
 						</section>
 						<section class="premiumSection">
@@ -190,7 +190,16 @@
 			$_SESSION['appStripeSkipped']=0;?>
 			noty({
 			  type: 'success',  layout: 'topCenter',
-			  text: '<?echo _("Your app is now in DEMO mode.");?>'
+			  text: '<?echo _("Your app is now in OFFLINE mode.");?>'
+			});
+		<?
+		}?>
+		
+		<?if(isset($_SESSION['appOffline']) && $_SESSION['appOffline']=='08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B'){
+			$_SESSION['appOffline']=0;?>
+			noty({
+			  type: 'success',  layout: 'topCenter',
+			  text: '<?echo _("Your app is now in OFFLINE mode.");?>'
 			});
 		<?
 		}?>

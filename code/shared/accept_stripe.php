@@ -21,30 +21,31 @@
 	$curlResult = callAPI('GET', $apiURL."stripe/connect/auth/?code=$code&state=$state", false, $apiAuth);
 	$_SESSION['pmaReply'] = $curlResult; //again this is not JSON!
 	
-	if(preg_match('/500/',$_SESSION['pmaReply'])) //Stripe skipped - force DEMO
+	if(preg_match('/500/',$_SESSION['pmaReply'])) //Stripe skipped - force OFFLINE
 	{
 		$data = array();
-		$data['demoFlag'] = true;
-		$data['liveFlag'] = true; //both are set together so the app appears in the mobile app as a demo app.
+		$data['demoFlag'] = false;
+		$data['liveFlag'] = false; //both are set together so the app is OFFLINE
 		$jsonData = json_encode($data);
 		
-		$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/demo", $data, $apiAuth);
+		$curlResult = callAPI('DELETE', $apiURL."venues/".$_SESSION['venue_id']."/demo", $data, $apiAuth);
 		$_SESSION['venue_demoFlag'] = 1;
 	}
-	else //ask user whether live or demo
+	else //ask user whether live or demo or offline
 		$_SESSION['paymentMethodApproved'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
 	
-	if(isset($_SESSION['noLiveFlag']) && $_SESSION['noLiveFlag'])
+	if(isset($_SESSION['noLiveFlag']) && $_SESSION['noLiveFlag']) //go ahead with "else" from above
 	{
 		$_SESSION['noLiveFlag']=0;
 		$_SESSION['signupWizFlag']=1;
-		header('location:'.$_SESSION['path'].'/publish'); //redirect to dash
+		header('location:'.$_SESSION['path'].'/publish'); 
 		exit;
 	}
-	else
+	else //go ahead with "if" from above
 	{
 		$_SESSION['noLiveFlag']=0;
 		header('location:'.$_SESSION['path'].'/dashboard'); //redirect to dash
+		$_SESSION['appStripeSkipped'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
 		exit;
 	}
 ?>

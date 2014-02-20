@@ -1252,7 +1252,7 @@ tr {
 p.venueCode {
 	color: #D7D9DA;
 	font-size: 114%;
-	margin-top: -15px;
+	margin-top: -20px;
 }
 
 .dashContent #iphone5{
@@ -1351,6 +1351,10 @@ p.venueCode {
 
 .dashContent {
 	padding-bottom: 70px;
+}
+
+.innerDashContent{
+	margin-top: -14px;
 }
 
 @media screen and (max-width: 990px){

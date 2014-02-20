@@ -31,7 +31,7 @@
 				<a href="<?echo $stripeLink;?>"><button class="preodayButton" type="submit" tabindex=2><?echo _("CONNECT TO STRIPE");?></button></a>
 			</div>
 			<div class="large-12 columns">
-				<button id="skipStripe" class="preodayButton secondary" type="button" tabindex=3><?echo _("SKIP THIS FOR NOW AND WORK IN DEMO MODE");?></button>
+				<button id="skipStripe" class="preodayButton secondary" type="button" tabindex=3><?echo _("SKIP THIS FOR NOW");?></button>
 			</div>
 			<?}else{?>
 			<div class="large-6 columns">

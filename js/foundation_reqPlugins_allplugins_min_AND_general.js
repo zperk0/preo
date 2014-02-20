@@ -2182,7 +2182,7 @@ $(document).ready(function() {
 						}
 						
 						noty({ type: 'success', text: 'Event configuration has been saved!' });
-						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/payment");}, 1000);
 					}
 				}
 			 }).done(function() {
@@ -2960,7 +2960,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'All times has been saved!' });
-						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/payment");}, 1000);
 					}
 				}
 			}).done(function() {
@@ -3663,6 +3663,20 @@ $(document).ready(function() {
 		$('#userConsent').val('1');
 	});
 	
+	//go Demo
+	$('#goDemo').on('click', function(){
+		var url = "/goDemo";
+		$.ajax({
+		   type: "POST",
+		   url: url,
+		   success: function(data)
+		   {
+				setTimeout(function(){window.location.replace("/dashboard");}, 100);
+			}
+		 });
+		return false; // avoid to execute the actual submit of the form.
+	});
+	
 	//skip stripe connect
 	$('#skipStripe').on('click', function(){
 		var url = "/skipStripe";
@@ -3685,10 +3699,16 @@ $(document).ready(function() {
 		   url: url,
 		   success: function(data)
 		   {
-				setTimeout(function(){window.location.replace("/dashboard");}, 100);
+				setTimeout(function(){window.location.replace("/payment");}, 100);
 			}
 		 });
 		return false; // avoid to execute the actual submit of the form.
+	});
+	
+	//go Offline
+	$('.goOffline').on('click', function(){
+		$('#offFlag').val(1);
+		$('#finishForm').submit();
 	});
 });
 

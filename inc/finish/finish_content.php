@@ -15,51 +15,46 @@
 			<a class="current" href="#"><? echo _("Done");?></a>
 		</nav>
 	<?}?>
-	<?if(!$_SESSION['venue_demoFlag']){?>
 	<div class="large-12 columns">
 		<form id="finishForm" method="POST" action="<?echo $_SESSION['path']?>/code/finish/do_finish.php">
+			
+			<input type="hidden" name="liveFlag" value="<?echo $live?>"/>
+			<input type="hidden" id="offFlag" name="offFlag" value="0"/>
+			
 			<div class="row">
-				<h2 class="alignHeader"><? echo _("The finish line!");?></h2>
-				<?if(!preg_match('/500/',$_SESSION['pmaReply']) && $_SESSION['signupWizFlag']){?><h3 class="alignHeader"><?echo _("Your app is built, you did it, all that's left now is to send it into the world!");?></h3>
-				<?}else{ if($live){?><h3 class="alignHeader"><?echo _("Your app is currently live. Go into DEMO mode if you want to do some testing.");?></h3><?}else{?>
-				<h3 class="alignHeader"><?echo _("Your app is built but you are currently in DEMO mode. Launch your app and send it into the world!");?></h3><?}}?>
-				<div class="large-12 columns">
-					<input type="hidden" name="liveFlag" value="<?echo $live?>"/>
-					<?if(!$live && !preg_match('/500/',$_SESSION['pmaReply'])){?><button class="preodayButton large" type="submit" id="finishButton" tabindex=1><?echo _("LAUNCH MY APP");?></button><?}
-					else if($live){?><button class="preodayButton large secondary" type="submit" id="finishButton" tabindex=1><?echo _("SWITCH TO DEMO MODE");?></button><?}?>
-				</div>
-				<div class="large-12 columns">
-					<?if(!$live){?><a id="skipStripe" href="#"><button class="preodayButton goBackToDash" type="button" tabindex=2><?echo _("PUT MY APP IN DEMO MODE FOR NOW");?></button></a><?}
-					else{?><a href="<?echo $_SESSION['path']?>/dashboard"><button class="preodayButton goBackToDash" type="button" tabindex=2><?echo _("BACK TO THE DASHBOARD");?></button></a><?}?>
-				</div>
-			</div>
-		</form>
-	</div>
-	<?}else{?>
-	<div class="large-12 columns">
-		<form id="finishForm" method="POST" action="<?echo $_SESSION['path']?>/code/finish/do_finish.php">
-			<div class="row">
-				<h2 class="alignHeader"><? echo _("The finish line!");?></h2>
-				<?if($noPaymentFlag){?>
-				<h3 class="alignHeader"><?echo _("Your app is built but you are currently in DEMO mode. After you setup a payment method, you can send it into the world!");?></h3>
-				<div class="large-12 columns">
-					<a id="startStripe" href="#"><button class="preodayButton goBackToDash" type="button" tabindex=2><?echo _("SETUP PAYMENT AND LEAVE DEMO MODE");?></button></a>
-					<br/>
-					<a href="<?echo $_SESSION['path']?>/dashboard"><button class="preodayButton secondary" type="button" tabindex=3><?echo _("I'LL COME BACK LATER TO PUBLISH MY APP");?></button></a>
-				</div>
+				<?if( (isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']) ){?>
+					<h2 class="alignHeader"><? echo _("The finish line!");?></h2>
 				<?}else{?>
-				<h3 class="alignHeader"><?echo _("Your app is built but you are currently in DEMO mode. Launch it and send it into the world!");?></h3>
-				<div class="large-12 columns">
-					<input type="hidden" name="liveFlag" value="<?echo $live?>"/>
-					<button class="preodayButton large" type="submit" id="finishButton" tabindex=1><?echo _("LAUNCH MY APP");?></button>
-					<br/>
-					<a href="<?echo $_SESSION['path']?>/dashboard"><button class="preodayButton secondary" type="button" tabindex=3><?echo _("I'LL COME BACK LATER TO PUBLISH MY APP");?></button></a>
-				</div>
+					<h2 class="alignHeader"><? echo _("App mode");?></h2>
 				<?}?>
+				
+				<h3 class="alignHeader"><?echo _("Your app is currently in ").$currentMode._(" mode.");?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("LIVE - Your app is available on My Order App and is ready to take real orders.<br/><br/>DEMO - Your app is available on My Order App but does not take real orders.<br/><br/>OFFLINE - Your app is not available on My Order App.");?>"></i></h3>
+				
+				<?if($noPaymentFlag){?><p class="alignHeader"><?echo _("After you setup a payment method, you can send it into the world!");?></p><?}?>
+				
+				<div class="large-12 columns">
+					
+					<?if($noPaymentFlag){?>
+						<a id="startStripe" href="#"><button class="preodayButton large" type="button" tabindex=2><?echo _("SETUP PAYMENT");?></button></a><br/>
+					<?}?>
+					
+					<?if($currentMode == "DEMO"){?>
+							<?if(!$noPaymentFlag){?><button class="preodayButton large" type="submit" id="finishButton" tabindex=1><?echo _("MAKE MY APP LIVE");?></button><br/><?}?>
+					
+					<?} else if($currentMode == "LIVE"){?>
+						<a id="goDemo" href="#"><button class="preodayButton large" type="button" tabindex=2><?echo _("SWITCH TO DEMO MODE");?></button></a><br/>
+					
+					<?} else if($currentMode == "OFFLINE"){?>
+						<?if(!$noPaymentFlag){?><button class="preodayButton large" type="submit" id="finishButton" tabindex=1><?echo _("MAKE MY APP LIVE");?></button><br/><?}?>
+						<a id="goDemo" href="#"><button class="preodayButton goBackToDash" type="button" tabindex=2><?echo _("PUT MY APP IN DEMO MODE");?></button></a><br/>
+					
+					<?} if($currentMode != "OFFLINE"){?><button class="preodayButton secondary goOffline" type="button" tabindex=1><?echo _("TAKE MY APP OFFLINE");?></button><br/><?}?>
+					
+					<a href="<?echo $_SESSION['path']?>/dashboard"><button class="preodayButton secondary" type="button" tabindex=2><?echo _("BACK TO THE DASHBOARD");?></button></a>
+				</div>
 			</div>
 		</form>
 	</div>
-	<?}?>
 </div>
 
 <script type="text/javascript">

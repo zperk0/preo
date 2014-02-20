@@ -28,4 +28,12 @@
 	}
 	else
 		$noPaymentFlag=1;
+		
+	$currentMode = "";
+	if($_SESSION['venue_demoFlag'] && $_SESSION['venue_liveFlag'])
+		$currentMode = "DEMO";
+	else if($_SESSION['venue_liveFlag'] && !$_SESSION['venue_demoFlag'])
+		$currentMode = "LIVE";
+	else if(!$_SESSION['venue_liveFlag']&& !$_SESSION['venue_demoFlag'])
+		$currentMode = "OFFLINE";
 ?>

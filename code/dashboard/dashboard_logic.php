@@ -186,34 +186,21 @@
 	}
 	else
 		$_SESSION['noEHFlag'] = 1;
-
 	
-	//////PAYMENTS////////////////////////////////////////////////////////////////////////////
-	$curlResult = callAPI('GET', $apiURL."accounts/$accountID/paymentproviders", false, $apiAuth);
-	$dataJSON = json_decode($curlResult, true);
-	
-	if(!empty($dataJSON))
-	{
-		$connectedFlag = 0;
-		foreach($dataJSON as $paymentProvider)
-		{
-			if(isset($paymentProvider['type']) && $paymentProvider['type'] == 'Stripe')
-				$connectedFlag = 1;
-		}
-		$_SESSION['noPaymentFlag'] = !$connectedFlag;
-	}
-	else
-		$_SESSION['noPaymentFlag']=1;
-	
-	if($_SESSION['noPaymentFlag']) //see if we are in demo mode, is yes, skip payment check
-		if(isset($_SESSION['venue_demoFlag']) && $_SESSION['venue_demoFlag']) 
-			$_SESSION['noPaymentFlag']=0;
-	
-	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag'] && !$_SESSION['noPaymentFlag']) /*User has given data for all 5 already*/
+	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag']) /*User has given data for all 5 already*/
 	{	
 		//going to the dashboard!
 		
 		//+d($_SESSION);
+		
+		//get mode
+		$currentMode = "";
+		if($_SESSION['venue_demoFlag'] && $_SESSION['venue_liveFlag'])
+			$currentMode = "DEMO";
+		else if($_SESSION['venue_liveFlag'] && !$_SESSION['venue_demoFlag'])
+			$currentMode = "LIVE";
+		else if(!$_SESSION['venue_liveFlag']&& !$_SESSION['venue_demoFlag'])
+			$currentMode = "OFFLINE";
 		
 		//lets get some quick reports
 		$curlResult = callAPI('GET', $apiURL."venues/$venueID/reports", false, $apiAuth);
@@ -231,7 +218,7 @@
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/dashboard_content.php"); 
 	}
-	else if($_SESSION['noVenueFlag']) /* User has not given all 6 so first check Venue */
+	else if($_SESSION['noVenueFlag']) /* User has not given all 5 so first check Venue */
 	{	
 		$_SESSION['signupWizFlag']=1;
 		$redirectFlag=1;
@@ -239,7 +226,7 @@
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/venueConfig.php"); 
 	}
-	else if($_SESSION['noAppFlag-1']) /* User has not given all 6 so second check App-1 */
+	else if($_SESSION['noAppFlag-1']) /* User has not given all 5 so second check App-1 */
 	{	
 		$_SESSION['signupWizFlag']=1;
 		$redirectFlag=1;
@@ -248,7 +235,7 @@
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig1.php");
 	}
-	else if($_SESSION['noAppFlag-2']) /* User has not given all 6 so third check App-2 */
+	else if($_SESSION['noAppFlag-2']) /* User has not given all 5 so third check App-2 */
  	{	
  		$_SESSION['signupWizFlag']=1;
 		$redirectFlag=1;
@@ -256,7 +243,7 @@
  		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
  		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/appConfig2.php"); 
  	}
-	else if($_SESSION['noMenuFlag']) /* User has not given all 6 so fourth check Menu */
+	else if($_SESSION['noMenuFlag']) /* User has not given all 5 so fourth check Menu */
 	{	
 		$_SESSION['signupWizFlag']=1;
 		$redirectFlag=1;
@@ -265,7 +252,7 @@
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/menuConfig.php"); 
 	}
-	else if($_SESSION['noEHFlag']) /* User has not given all 6 so fifth check EH */
+	else if($_SESSION['noEHFlag']) /* User has not given all 5 so fifth check EH */
 	{	
 		$_SESSION['signupWizFlag']=1;
 		if(!$_SESSION['venue_eventFlag']) 
@@ -278,12 +265,5 @@
 			header("location:".$_SESSION['path'].'/events');
 			exit;
 		}
-	}
-	else if($_SESSION['noPaymentFlag']) /* User has not given all 6 so sixth check Payment */
-	{	
-		$_SESSION['signupWizFlag']=1;
-		$_SESSION['noLiveFlag']=1;
-		header("location:".$_SESSION['path'].'/payment');
-		exit;
 	}
 ?>
