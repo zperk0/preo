@@ -8,10 +8,12 @@
 	$userID = $_POST['userID'];
 	protect($userID);
 	
+	$accountId	= $_SESSION['account_id'];
+	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	
 	//kill event
-	$curlResult = callAPI('DELETE', $apiURL."users/$userID", false, $apiAuth); //event deleted
+	$curlResult = callAPI('DELETE', $apiURL."accounts/$accountId/users/$userID", false, $apiAuth); //user-role deleted
 	
 	echo $curlResult;
 

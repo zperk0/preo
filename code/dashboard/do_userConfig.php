@@ -65,7 +65,7 @@
 			
 			$curlResult = callAPI('PUT', $apiURL."users/$userID/role?accountId=$accountId&role=$role", false, $userApiAuth); //user role updated
 		}
-		else //create new
+		else //create new user/role relation
 		{
 			$data 				= array();
 			$data['name']		= $user['name'];
@@ -80,7 +80,7 @@
 			$curlResult = callAPI('POST', $apiURL."users", $jsonData, $userApiAuth); //user created
 			
 			$dataJSON = json_decode($curlResult,true);
-			if(isset($dataJSON['id'])) //if no error like duplicate user
+			if(isset($dataJSON['id'])) //if no duplicate user
 			{
 				$userID = $dataJSON['id'];
 				$newUsers[$user['id']] = $dataJSON['id'];
@@ -90,6 +90,23 @@
 				$accountId	= $_SESSION['account_id'];
 				
 				$curlResult = callAPI('POST', $apiURL."users/$userID/role?accountId=$accountId&role=$role", false, $userApiAuth); //user role created
+			}
+			else //if duplicate user
+			{
+				//POST to accounts/{id}/users and it will create a new role automatically (needs user object)
+				$data = array();
+				$data['email'] 		= $user['email'];
+				$data['username'] 	= $user['email'];
+				$data['role'] 		= strtoupper($user['role']);
+				
+				$jsonData = json_encode($data);
+				
+				$accountId	= $_SESSION['account_id'];
+				
+				$curlResult = callAPI('POST', $apiURL."accounts/$accountId/users", $jsonData, $userApiAuth); //user role created
+				$dataJSON = json_decode($curlResult,true);
+				
+				if(isset($dataJSON['userId'])) $newUsers[$user['id']] = $dataJSON['userId'];
 			}
 		}
 	}

@@ -2466,10 +2466,10 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Username/email already exists"
+						  text: "User already exists!"
 						  //text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
-						
+						//alert(data);
 						errorFlag = 1;
 					}
 					else
@@ -2484,6 +2484,8 @@ $(document).ready(function() {
 						}
 						noty({ type: 'success', text: 'User configuration has been saved!' });
 						errorFlag = 0;
+						
+						//alert(data);
 					}
 				}
 			 }).done(function() {
