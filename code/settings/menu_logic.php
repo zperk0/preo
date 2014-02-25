@@ -74,6 +74,9 @@
 		$tempCounter = 0;
 		$itemModOptArray = array();
 		
+		$mealDealArray = array();
+		$mealDealItemArray = array();
+		
 		$sectionCount = count($menu['sections']);
 		foreach($menu['sections'] as $section)
 		{
@@ -81,7 +84,20 @@
 		
 			foreach($section['items'] as $item)
 			{
-				if($item['mealDeal']) continue;				
+				if($item['mealDeal']) 
+				{
+					$mealDealArray[] = $item['id'];
+					
+					//now we build MealDealItemArray
+					foreach($item['mealDealSections'] as $mds)
+					{
+						foreach($mds['items'] as $mdItem)
+						{
+							$mealDealItemArray[] = $mdItem['itemId'];
+						}
+					}
+					continue;				
+				}
 				
 				$itemModOptArray[$tempCounter]['id'] = $item['id'];
 				$itemModOptArray[$tempCounter]['modCount'] = count($item['modifiers']);
@@ -95,6 +111,9 @@
 				$tempCounter++;
 			}
 		}
+		
+		//+d($mealDealItemArray);
+		//+d($mealDealArray);
 		
 		$_SESSION['menu_edit_on']=1;
 		

@@ -43,8 +43,9 @@
 			
 			<input type="hidden" id="redirectFlag" name="redirectFlag" value="<?echo $redirectFlag?>"/>
 			
-			<input type="hidden" id="menuID" 	name="menuID" value="<?if(isset($menuID)) echo $menuID; else echo "menu1";?>"/>
-			<input type="hidden" id="venueID" 	name="venueID" value="<?if(isset($_SESSION['venue_id'])) echo $_SESSION['venue_id']; else echo "venue1";?>"/>
+			<input type="hidden" id="menuID" 	name="menuID" 		value="<?if(isset($menuID)) echo $menuID; else echo "menu1";?>"/>
+			<input type="hidden" id="venueID" 	name="venueID" 		value="<?if(isset($_SESSION['venue_id'])) echo $_SESSION['venue_id']; else echo "venue1";?>"/>
+			<input type="hidden" id="accountID" name="accountID" 	value="<?if(isset($_SESSION['account_id'])) echo $_SESSION['account_id']; else echo "account1";?>"/>
 			
 			<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu))) :
 				foreach($itemModOptArray as $key=>$itemModOption)
@@ -61,14 +62,14 @@
 			endif; ?>
 
 			<div class="row">
-				<input type="text" name="mName" id="mName" data-insert="false" data-edit="false" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo $menu['name'];?>" placeholder="<?echo _("Click to add your menu name");?>" required tabindex=1 pattern="^.{0,99}$"/>
+				<input type="text" name="mName" id="mName" data-edit="false" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo $menu['name'];?>" placeholder="<?echo _("Click to add your menu name");?>" required tabindex=1 pattern="^.{0,99}$"/>
 				<small class="error mNameError"><?echo _("Please type a menu name (max 100chars)");?></small>
 			</div>
 
 			<div class="hide" id="menuSectionRow"> <!-- DUMMY -->
 				<div class="row">
 					<div class="large-12 columns menuSectionDiv">
-						<input type="text" name="mSectionName[0]" data-insert="false" data-edit="false" data-delete="false" data-id="section0s" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
+						<input type="text" name="mSectionName[0]" data-insert="false" data-edit="false" data-delete="false" data-id="section0s" data-md="false" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
 						<small class="error msecError"><?echo _("Please type a section name (max 100chars)");?></small>
 					</div>
 				</div>
@@ -103,7 +104,7 @@
 				<tbody>
 					<tr class="menuEdit itemTR">
 						<td class="menuTDName">
-							<input type="text" name="iName[section0][0]" data-insert="false" data-edit="false" data-delete="false" data-id="item0i" class="menuField noEnterSubmit" value="<?echo _("Click to add an item name");?>" required pattern="^.{0,99}$"/>
+							<input type="text" name="iName[section0][0]" data-insert="false" data-edit="false" data-delete="false" data-id="item0i"  data-mdi="false" class="menuField noEnterSubmit" value="<?echo _("Click to add an item name");?>" required pattern="^.{0,99}$"/>
 							<small class="error"><?echo _("Please type an item name (max 100chars)");?></small>
 						</td>
 						<td class="menuTDDesc">
@@ -196,13 +197,15 @@
 		$iKey=0; //item number are continuous across sections so we can't use $key in foreach($array as $key=>$var)
 		foreach($menu['sections'] as $sKey=>$section){ 
 		//again remember its all 1-indexed thats why we add +1 to the key
+		$mdFlag = "false";
+		foreach($section['items'] as $secitem) { if(in_array($secitem['id'], $mealDealArray)) {$mdFlag="true"; break;} }
 		?>
 			<div class="moveSec">
 				<div class="moveSecInner">
 					<div id="menuSectionRow">
 						<div class="row">
 							<div class="large-12 columns menuSectionDiv">
-								<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-id="section<?echo $section['id'];?>" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" placeholder="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
+								<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-id="section<?echo $section['id'];?>" data-md="<?echo $mdFlag?>" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" placeholder="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
 								<small class="error msecError"><?echo _("Please type a section name (max 100chars)");?></small>
 							</div>
 						</div>
@@ -238,7 +241,7 @@
 								<tbody>
 									<tr class="savedInput itemTR">
 										<td class="menuTDName">
-											<input type="text" name="iName[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-id="item<?echo $item['id'];?>" class="menuField noEnterSubmit" value="<?echo $item['name'];?>" required readonly="readonly" pattern="^.{0,99}$"/>
+											<input type="text" name="iName[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-id="item<?echo $item['id'];?>" <?if(in_array($item['id'],$mealDealItemArray)){?>data-mdi="true"<?}else{?>data-mdi="false"<?}?> class="menuField noEnterSubmit" value="<?echo $item['name'];?>" required readonly="readonly" pattern="^.{0,99}$"/>
 											<small class="error"><?echo _("Please type an item name (max 100chars)");?></small>
 										</td>
 										<td class="menuTDDesc">

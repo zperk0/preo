@@ -56,7 +56,7 @@
 	
 	foreach($md as $mdKey => $mealDeal)
 	{
-		if( (preg_match('/^\d+$/',$mealDeal['id'])) ) //We delete the old meal deals and create a new ones!
+		if( (preg_match('/^\d+$/',$mealDeal['id'])) ) //We delete the old meal deals and create a new ones RETAINS MealDeal ID!
 		{		
 			$mdID = $mealDeal['id'];
 			

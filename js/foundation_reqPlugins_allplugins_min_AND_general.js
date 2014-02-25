@@ -851,17 +851,31 @@ $(document).ready(function() {
 		
 		$ele = $(this).closest('tr');
 		
+		//add data-attribute
+		$ele.find('input[name^=oName]').attr('data-delete', true);
+		//remove required
+		$ele.find('input[name^=oName], input[name^=oPrice], input[name^=oVisi]').each(function() {
+			$(this).removeAttr('required');
+		});
 		
 		if( ($ele.prev().prev().hasClass('subHeaderTR')) && ( ($ele.next().hasClass('subHeaderTR')) || ($ele.next().hasClass('xtraModTR')) ) )
 		{	
-			$ele.prev().remove();
-			$ele.prev('.subHeaderTR').remove();
+			//add data-attribute
+			$ele.prev().prev('.subHeaderTR').find('input[name^=iMod]').attr('data-delete', true);
+			//remove required
+			$ele.prev().prev('.subHeaderTR').find("input[name^=iMod], select[name^=iModType]").each(function() {
+				$(this).removeAttr('required');
+			});
+			
+			$ele.prev().prev('.subHeaderTR').hide();
+			$ele.prev().hide();
+			
 			
 			$("#"+itemID+"_modCountAct").val(parseInt($("#"+itemID+"_modCountAct").val())-1);
 		}
 		
 		//bye-bye
-		$(this).parents("tr:first").remove();
+		$(this).parents("tr:first").hide();
 	});
 	
 	$(document).on("click", ".xtraOpt", function(event) {
@@ -1016,7 +1030,7 @@ $(document).ready(function() {
 			$(this).attr('data-insert', 'true');
 			$(this).attr('data-id', 'opt'+newCount+'o-'+itemID+'i');
 			
-			alert($(this).attr('data-id'));
+			//alert($(this).attr('data-id'));
 		});
 				
 		//hide it so we can animate it!
@@ -1197,6 +1211,25 @@ $(document).ready(function() {
 			$(this).attr('data-id', 'item'+newCount+'i');
 		});
 		
+		if(dup)
+		{
+			var modCount = 1;
+			$newTab.find("input[name^=iMod]").each(function() {
+				$(this).attr('data-insert', 'true');
+				$(this).attr('data-id', 'mod'+modCount+'m-item'+newCount+'i');
+				modCount++;
+			});
+			var optCount = 1;
+			$newTab.find("input[name^=oName]").each(function() {
+				if($(this).attr('data-id') != 'opt0o-item0i') //skip dummies
+				{
+					$(this).attr('data-insert', 'true');
+					$(this).attr('data-id', 'opt'+optCount+'o-item'+newCount+'i');
+					optCount++;
+				}
+			});
+		}
+		
 		//now we give the section id to the duplicate button
 		$newTab.find(".itemDuplicate").attr('id',"dup"+newCount+"_"+section);
 		
@@ -1226,18 +1259,44 @@ $(document).ready(function() {
 		$curTable = $(this).closest('table');
 		var itemID = $curTable.attr('id');
 		
-		//get and update current count
-		var itemCount = $("#itemCountAct").val();
-		var newCount = parseInt(parseInt(itemCount) - 1);
-		$("#itemCountAct").val(newCount);
+		var text = "Are you sure you want to delete this item?";
 		
-		//add data-attribute
-		$curTable.find("input[name^=iName], input[name^=iMod], input[name^=oName]").each(function() {
-			$(this).attr('data-delete','true');
+		if($curTable.find("input[name^=iName]").data('mdi')) text = "<strong>This item is part of at least 1 Meal Deal.</strong><br/>This item will be disassociated with any Meal Deals if deleted. Are you sure you want to delete this item?";
+		
+		noty({
+			layout: 'center',
+			type: 'confirm',
+			text: text,
+			buttons: [
+			{addClass: 'alert tiny', text: 'Yes, delete this item!', onClick: function($noty) {
+				
+				//get and update current count
+				var itemCount = $("#itemCountAct").val();
+				var newCount = parseInt(parseInt(itemCount) - 1);
+				$("#itemCountAct").val(newCount);
+				
+				//add data-attribute
+				$curTable.find("input[name^=iName], input[name^=iMod], input[name^=oName]").each(function() {
+					$(this).attr('data-delete','true');
+				});
+				
+				//remove required
+				$curTable.find("input[name^=iName], input[name^=iPrice], input[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
+					$(this).removeAttr('required');
+				});
+				
+				//bye-bye
+				$("#"+itemID).hide();
+
+				$noty.close();
+			  }
+			},
+			{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+				$noty.close();
+			  }
+			}
+		  ]
 		});
-		
-		//bye-bye
-		$("#"+itemID).hide();
 	});
 	
 	$(document).on("click", ".itemSave", function() {
@@ -1288,17 +1347,6 @@ $(document).ready(function() {
 				   noneSelectedText: "Pick an option type",
 				   selectedList: 1
 				}); 
-		});
-		
-		//data-attribute
-		$curItem.find('input[name^=iName]').each(function(){
-			$(this).attr('data-edit', 'true');
-		});
-		$curItem.find('input[name^=iMod]').each(function(){
-			$(this).attr('data-edit', 'true');
-		});
-		$curItem.find('input[name^=oName]').each(function(){
-			$(this).attr('data-edit', 'true');
 		});
 	});
 	
@@ -1398,6 +1446,11 @@ $(document).ready(function() {
 						$(this).attr('name', newName);
 					});
 					
+					//add data-attribute
+					$(this).find('input[name^=iName]').each(function(){
+						$(this).attr('data-edit',true);
+					});
+					
 					itemCounter++;
 				});
 				
@@ -1452,11 +1505,14 @@ $(document).ready(function() {
 		sectionID = ($(this).attr('id')).replace("delete_section","");
 		$parentSectionHeader = $(this).parents('#menuSectionRow');
 		
+		var text = "Are you sure you want to delete this section? Note: all items and options will be lost!";
+		
+		if($parentSectionHeader.find("input[name^=mSectionName]").data('md')) text = "<strong>This section contains at least 1 Meal Deal.</strong><br/>All Meal Deals will be deleted along with the section! Are you sure you want to delete this section and all its items?";
 		
 		noty({
 			layout: 'center',
 			type: 'confirm',
-			text: 'Are you sure you want to delete this section? Note: all items and options will be lost!',
+			text: text,
 			buttons: [
 			{addClass: 'alert tiny', text: 'Yes, delete this section and all its contents!', onClick: function($noty) {
 				//get and update current count
@@ -1487,6 +1543,13 @@ $(document).ready(function() {
 				$parentSectionHeader.find("input[name^=mSectionName]").each(function() {
 					$(this).attr('data-delete','true');
 				});
+				
+				//remove required
+				$parentSectionHeader.find("input[name^=mSectionName], input[name^=iName], input[name^=iPrice], input[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
+					$(this).removeAttr('required');
+				});
+				
+				
 				
 				//now we adjust item count
 				var itemCounter = $("#itemCountAct").val();
@@ -1588,6 +1651,11 @@ $(document).ready(function() {
 						$(this).attr('name', newName);
 					});
 					
+					//add data-attribute
+					$(this).find('input[name^=iName]').each(function(){
+						$(this).attr('data-edit',true);
+					});
+					
 					itemCounter++;
 				});
 				
@@ -1683,11 +1751,35 @@ $(document).ready(function() {
 					
 					$(this).find("div").alterClass('firstItemDivsection*', "firstItemDivsection"+section); 
 					
+					//add data-attribute
+					$(this).find('input[name^=mSectionName]').each(function(){
+						$(this).attr('data-edit',true);
+					});
+					
 					section++;
 				});
 			}
 		});
 	}
+	
+	//add data-attribute
+	//main entries
+	$(document).on("blur", 'input[name^=mName], input[name^=mSectionName], input[name^=iName], input[name^=iMod], input[name^=oName]', function(){
+		$(this).attr('data-edit',true);
+	});
+	//dependant entries
+	//item 
+	$(document).on("blur", 'input[name^=iDesc], input[name^=iPrice], input[name^=iQuan], input[name^=iVisi]', function(){
+		$(this).parents('.itemTR').first().find('input[name^=iName]').attr('data-edit',true);
+	});
+	//mod 
+	$(document).on("change", 'select[name^=iModType]', function(){
+		$(this).parents('.subHeaderTR').first().find('input[name^=iMod]').attr('data-edit',true);
+	});
+	//opt 
+	$(document).on("blur", 'input[name^=oPrice], input[name^=oVisi]', function(){
+		$(this).parents('.optionTR').first().find('input[name^=oName]').attr('data-edit',true);
+	});
 	
 	$('#menuConfigForm').click(function(event) {
 	  $(this).data('clicked',$(event.target))
@@ -1734,10 +1826,12 @@ $(document).ready(function() {
 			var menu = {};
 			
 			//MENU
-			menu['id'] 		= $('#menuID').val();
-			menu['name']	= $('#mName').val();
-			menu['insert']	= $('#mName').data('insert');
-			menu['edit']	= $('#mName').data('edit');
+			menu['id'] 			= $('#menuID').val();
+			menu['name']		= $('#mName').val();
+			
+			menu['edit']		= $('#mName').data('edit');
+			
+			menu['accountId']	= $('#accountID').val();
 			
 			//SECTIONS
 			menu['sections'] = {};
@@ -1756,6 +1850,7 @@ $(document).ready(function() {
 					menu['sections'][secCounter]['insert'] 		= $(this).data('insert');
 					menu['sections'][secCounter]['edit'] 		= $(this).data('edit');
 					menu['sections'][secCounter]['delete'] 		= $(this).data('delete');
+					menu['sections'][secCounter]['md'] 			= $(this).data('md');
 					
 					menu['sections'][secCounter]['menuId'] 		= menu['id'];
 					
@@ -1777,13 +1872,14 @@ $(document).ready(function() {
 								menu['sections'][secCounter]['items'][itemCounter]['price'] 	= 0;
 							else	
 								menu['sections'][secCounter]['items'][itemCounter]['price'] 	= $(this).find('input[name^=iPrice]').val();
-							menu['sections'][secCounter]['items'][itemCounter]['visibile'] 		= 0;
+							menu['sections'][secCounter]['items'][itemCounter]['visible'] 		= 0;
 							menu['sections'][secCounter]['items'][itemCounter]['quantity'] 		= 0;
 							menu['sections'][secCounter]['items'][itemCounter]['position'] 		= parseInt(itemCounter+1000);
 								
 							menu['sections'][secCounter]['items'][itemCounter]['insert'] 		= $(this).find('input[name^=iName]').data('insert');
 							menu['sections'][secCounter]['items'][itemCounter]['edit'] 			= $(this).find('input[name^=iName]').data('edit');
 							menu['sections'][secCounter]['items'][itemCounter]['delete'] 		= $(this).find('input[name^=iName]').data('delete');
+							menu['sections'][secCounter]['items'][itemCounter]['mdi'] 			= $(this).find('input[name^=iName]').data('mdi');
 								
 							menu['sections'][secCounter]['items'][itemCounter]['menuId'] 		= menu['id'];
 							menu['sections'][secCounter]['items'][itemCounter]['venueId'] 		= $('#venueID').val();
@@ -1832,39 +1928,43 @@ $(document).ready(function() {
 										}
 									}
 									
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['insert'] 	= $(this).find('input[name^=iName]').data('insert');
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['edit'] 	= $(this).find('input[name^=iName]').data('edit');
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['delete'] 	= $(this).find('input[name^=iName]').data('delete');
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['insert'] 	= $(this).find('input[name^=iMod]').data('insert');
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['edit'] 	= $(this).find('input[name^=iMod]').data('edit');
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['delete'] 	= $(this).find('input[name^=iMod]').data('delete');
 									
 									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['itemId']	= menu['sections'][secCounter]['items'][itemCounter]['id'];
 									
 									//OPTIONS
 									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'] = {};
-									$fullMod = $(this).nextAll(".optionTR").first();
+									$fullMod = $(this).nextAll("tr"); //THIS TAKES ALL OPTIONS FROM MODS BELOW IT!! (so we break when we get to a separator)
 									optCounter = 1;
-									$fullMod.each(function(){
-										var oID = $(this).find('input[name^=oName]').data('id');
-										
-										if(oID != "opt0o")
+									$fullMod.each(function(){ 
+										if( ($(this).children('.itemSubheader').length) || ($(this).children('.xtraModTD').length) ) return false; //break!
+										else if($(this).hasClass('optionTR')) //only see the options row
 										{
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter] = {};
+											var oID = $(this).find('input[name^=oName]').data('id');
 											
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['id'] 			= oID.replace(/opt/,'');
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['name'] 			= $(this).find('input[name^=oName]').val();
-											if($(this).find('input[name^=oPrice]').val() == '')
-												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['price'] 	= 0;
-											else	
-												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['price'] 	= $(this).find('input[name^=oPrice]').val();
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['visibile'] 		= 0;
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['position'] 		= optCounter;
+											if(oID != "opt0o")
+											{
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter] = {};
 												
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['insert'] 		= $(this).find('input[name^=oName]').data('insert');
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['edit'] 			= $(this).find('input[name^=oName]').data('edit');
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['delete'] 		= $(this).find('input[name^=oName]').data('delete');
-											
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['modifierId']	= menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['id']; 
-											
-											optCounter++;
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['id'] 			= oID.replace(/opt/,'');
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['name'] 			= $(this).find('input[name^=oName]').val();
+												if($(this).find('input[name^=oPrice]').val() == '')
+													menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['price'] 	= 0;
+												else	
+													menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['price'] 	= $(this).find('input[name^=oPrice]').val();
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['visible'] 		= 0;
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['position'] 		= optCounter;
+													
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['insert'] 		= $(this).find('input[name^=oName]').data('insert');
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['edit'] 			= $(this).find('input[name^=oName]').data('edit');
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['delete'] 		= $(this).find('input[name^=oName]').data('delete');
+												
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['modifierId']	= menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['id']; 
+												
+												optCounter++;
+											}
 										}
 									});
 									modCounter++;
@@ -1881,7 +1981,7 @@ $(document).ready(function() {
 		
 			menuData = JSON.stringify(menu);
 		
-			//console.log(menu);
+			console.log(menu);
 			//console.log(menuData);
 			
 			$.ajax({
@@ -1917,15 +2017,18 @@ $(document).ready(function() {
 					}
 					else
 					{	
-						/*newIDs = dataArray['update'];
+						newIDs = dataArray['update'];
 
 						if(Object.keys(newIDs).length > 0) //this is an object not array so length and stuff works differently
 						{
 							$.each(newIDs, function(index, value) {
+							if(index.match(/menu/))
 							  $('input[value='+index+']').val(value); //find by value and update!
+							else  
+							  $('input[data-id='+index+']').attr('data-id',value); //find by value and update!
 							});
 						}
-						*/
+						
 						noty({ type: 'success', text: 'Menu configuration has been saved!' });
 						if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
