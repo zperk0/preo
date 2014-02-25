@@ -895,6 +895,10 @@ $(document).ready(function() {
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/m\d+/gi, "m"+newCount);
 			$(this).attr('name', newName);
+			
+			//add data-attribute
+			$(this).attr('data-insert', 'true');
+			$(this).attr('data-id', 'mod'+newCount+'m-'+itemID+'i');
 		});
 		
 		$(this).closest('tr.xtraModTR').before($subHeader).before($dummyData);
@@ -1005,6 +1009,14 @@ $(document).ready(function() {
 		//fix the yes/no slider so the label appears correctly
 		$newRow.find(".menuTDVisi input").each(function() {
 			$(this).trigger('click'); 
+		});
+		
+		//add data-attribute
+		$newRow.find("input[name^=oName]").each(function() {
+			$(this).attr('data-insert', 'true');
+			$(this).attr('data-id', 'opt'+newCount+'o-'+itemID+'i');
+			
+			alert($(this).attr('data-id'));
 		});
 				
 		//hide it so we can animate it!
@@ -1179,6 +1191,12 @@ $(document).ready(function() {
 			});
 		}
 		
+		//add data-attribute
+		$newTab.find("input[name^=iName]").each(function() {
+			$(this).attr('data-insert', 'true');
+			$(this).attr('data-id', 'item'+newCount+'i');
+		});
+		
 		//now we give the section id to the duplicate button
 		$newTab.find(".itemDuplicate").attr('id',"dup"+newCount+"_"+section);
 		
@@ -1213,8 +1231,13 @@ $(document).ready(function() {
 		var newCount = parseInt(parseInt(itemCount) - 1);
 		$("#itemCountAct").val(newCount);
 		
+		//add data-attribute
+		$curTable.find("input[name^=iName], input[name^=iMod], input[name^=oName]").each(function() {
+			$(this).attr('data-delete','true');
+		});
+		
 		//bye-bye
-		$("#"+itemID).remove();
+		$("#"+itemID).hide();
 	});
 	
 	$(document).on("click", ".itemSave", function() {
@@ -1266,6 +1289,17 @@ $(document).ready(function() {
 				   selectedList: 1
 				}); 
 		});
+		
+		//data-attribute
+		$curItem.find('input[name^=iName]').each(function(){
+			$(this).attr('data-edit', 'true');
+		});
+		$curItem.find('input[name^=iMod]').each(function(){
+			$(this).attr('data-edit', 'true');
+		});
+		$curItem.find('input[name^=oName]').each(function(){
+			$(this).attr('data-edit', 'true');
+		});
 	});
 	
 	$(document).on("click", ".newSection", function() {
@@ -1300,6 +1334,10 @@ $(document).ready(function() {
 			$(this).val("");
 			$(this).attr('placeholder', temp);
 			$(this).attr('name', 'mSectionName['+newCount+']');
+			
+			//data-attribute
+			$(this).attr('data-insert', 'true');
+			$(this).attr('data-id', 'section'+newCount+'s');
 		});
 		
 		$newSec.find(".menuSectionField").addClass('section'+newCount);
@@ -1434,22 +1472,32 @@ $(document).ready(function() {
 					itemCount++;
 				});
 				
-				for(i=0;i<itemIDArray.length;i++) //remove all option count data for each item
+				for(i=0;i<itemIDArray.length;i++) //remove all option count data for each item and mark for deletion
 				{
 					$("#item"+itemIDArray[i]+"_optionCount").remove();
 					$("#item"+itemIDArray[i]+"_optionCountAct").remove();
+					
+					//add data-attribute
+					$("#item"+itemIDArray[i]).find("input[name^=iName], input[name^=iMod], input[name^=oName]").each(function() {
+						$(this).attr('data-delete','true');
+					});
 				}
+				
+				//add data-attribute
+				$parentSectionHeader.find("input[name^=mSectionName]").each(function() {
+					$(this).attr('data-delete','true');
+				});
 				
 				//now we adjust item count
 				var itemCounter = $("#itemCountAct").val();
 				var newCount = parseInt(parseInt(itemCounter) - itemCount);
 				$("#itemCountAct").val(newCount);
 
-				//we delete the section here
-				$parentSectionHeader.remove(); //remove section header and buttons!
+				//we hide the section here
+				$parentSectionHeader.hide(); //remove section header and buttons!
 
-				$(".tablesection"+sectionID).remove(); //tables of all items gone!
-				$(".firstItemDivsection"+sectionID).remove(); //hidden section hook gone!
+				$(".tablesection"+sectionID).hide(); //tables of all items gone!
+				$(".firstItemDivsection"+sectionID).hide(); //hidden section hook gone!
 
 				$noty.close();
 			  }
@@ -1658,6 +1706,9 @@ $(document).ready(function() {
 	});
 	
 	$("#menuConfigForm").on('valid', function (event) {
+		//START
+		var start = new Date().getTime();
+		
 		//prevent multiple submissions
 		var newSubmitTime = new Date().getTime();
 		
@@ -1679,10 +1730,165 @@ $(document).ready(function() {
 		
 			var url = "/saveMenu";
 			
+			//create menu object
+			var menu = {};
+			
+			//MENU
+			menu['id'] 		= $('#menuID').val();
+			menu['name']	= $('#mName').val();
+			menu['insert']	= $('#mName').data('insert');
+			menu['edit']	= $('#mName').data('edit');
+			
+			//SECTIONS
+			menu['sections'] = {};
+			secCounter = 1;
+			$("input[name^=mSectionName]").each(function(){
+				var sID = $(this).data('id');
+				
+				if(sID != "section0s")
+				{
+					menu['sections'][secCounter] = {};
+					
+					menu['sections'][secCounter]['id'] 			= sID.replace(/section/,'');
+					menu['sections'][secCounter]['name'] 		= $(this).val();
+					menu['sections'][secCounter]['position'] 	= secCounter;
+					
+					menu['sections'][secCounter]['insert'] 		= $(this).data('insert');
+					menu['sections'][secCounter]['edit'] 		= $(this).data('edit');
+					menu['sections'][secCounter]['delete'] 		= $(this).data('delete');
+					
+					menu['sections'][secCounter]['menuId'] 		= menu['id'];
+					
+					//ITEMS
+					menu['sections'][secCounter]['items'] = {};
+					$fullSection = $(this).parents("#menuSectionRow");
+					itemCounter = 1;
+					$fullSection.find('.tablesection'+secCounter).each(function(){
+						var iID = $(this).find('input[name^=iName]').data('id');
+						
+						if(iID != "item0i")
+						{
+							menu['sections'][secCounter]['items'][itemCounter] = {};
+							
+							menu['sections'][secCounter]['items'][itemCounter]['id'] 			= iID.replace(/item/,'');
+							menu['sections'][secCounter]['items'][itemCounter]['name'] 			= $(this).find('input[name^=iName]').val();
+							menu['sections'][secCounter]['items'][itemCounter]['description']	= $(this).find('input[name^=iDesc]').val();
+							if($(this).find('input[name^=iPrice]').val() == '')
+								menu['sections'][secCounter]['items'][itemCounter]['price'] 	= 0;
+							else	
+								menu['sections'][secCounter]['items'][itemCounter]['price'] 	= $(this).find('input[name^=iPrice]').val();
+							menu['sections'][secCounter]['items'][itemCounter]['visibile'] 		= 0;
+							menu['sections'][secCounter]['items'][itemCounter]['quantity'] 		= 0;
+							menu['sections'][secCounter]['items'][itemCounter]['position'] 		= parseInt(itemCounter+1000);
+								
+							menu['sections'][secCounter]['items'][itemCounter]['insert'] 		= $(this).find('input[name^=iName]').data('insert');
+							menu['sections'][secCounter]['items'][itemCounter]['edit'] 			= $(this).find('input[name^=iName]').data('edit');
+							menu['sections'][secCounter]['items'][itemCounter]['delete'] 		= $(this).find('input[name^=iName]').data('delete');
+								
+							menu['sections'][secCounter]['items'][itemCounter]['menuId'] 		= menu['id'];
+							menu['sections'][secCounter]['items'][itemCounter]['venueId'] 		= $('#venueID').val();
+							menu['sections'][secCounter]['items'][itemCounter]['sectionId'] 	= menu['sections'][secCounter]['id'];
+							
+							//MODIFIERS
+							menu['sections'][secCounter]['items'][itemCounter]['modifiers'] = {};
+							$fullItem = $(this).find(".subHeaderTR");
+							modCounter = 1;
+							$fullItem.each(function(){
+								var mID = $(this).find('input[name^=iMod]').data('id');
+								
+								if(mID != "mod0m")
+								{
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter] = {};
+									
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['id'] 		= mID.replace(/mod/,'');
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['name'] 	= $(this).find('input[name^=iMod]').val();
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['position'] = modCounter;
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['type']	 	= $(this).find('select[name^=iModType]').val();
+									switch(menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['type'])
+									{
+										case "S":
+										{
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['minChoices'] = "1";
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['maxChoices'] = "1";
+											break;
+										}
+										case "M":
+										{
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['minChoices'] = "1";
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['maxChoices'] = "-1";
+											break;
+										}
+										case "O":
+										{
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['minChoices'] = "0";
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['maxChoices'] = "-1";
+											break;
+										}
+										default:
+										{
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['minChoices'] = "0";
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['maxChoices'] = "-1";
+											break;
+										}
+									}
+									
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['insert'] 	= $(this).find('input[name^=iName]').data('insert');
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['edit'] 	= $(this).find('input[name^=iName]').data('edit');
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['delete'] 	= $(this).find('input[name^=iName]').data('delete');
+									
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['itemId']	= menu['sections'][secCounter]['items'][itemCounter]['id'];
+									
+									//OPTIONS
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'] = {};
+									$fullMod = $(this).nextAll(".optionTR").first();
+									optCounter = 1;
+									$fullMod.each(function(){
+										var oID = $(this).find('input[name^=oName]').data('id');
+										
+										if(oID != "opt0o")
+										{
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter] = {};
+											
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['id'] 			= oID.replace(/opt/,'');
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['name'] 			= $(this).find('input[name^=oName]').val();
+											if($(this).find('input[name^=oPrice]').val() == '')
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['price'] 	= 0;
+											else	
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['price'] 	= $(this).find('input[name^=oPrice]').val();
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['visibile'] 		= 0;
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['position'] 		= optCounter;
+												
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['insert'] 		= $(this).find('input[name^=oName]').data('insert');
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['edit'] 			= $(this).find('input[name^=oName]').data('edit');
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['delete'] 		= $(this).find('input[name^=oName]').data('delete');
+											
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['modifierId']	= menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['id']; 
+											
+											optCounter++;
+										}
+									});
+									modCounter++;
+								}
+							});
+							
+							itemCounter++;
+						}
+					});
+					
+					secCounter++;
+				}
+			});
+		
+			menuData = JSON.stringify(menu);
+		
+			//console.log(menu);
+			//console.log(menuData);
+			
 			$.ajax({
 			   type: "POST",
 			   url: url,
-			   data: $(this).serialize(), // serializes the form's elements.
+			   contentType: "application/json",
+			   data: menuData, //custom serialization
 			   success: function(data)
 			   {
 					try
@@ -1696,7 +1902,7 @@ $(document).ready(function() {
 						  text: "Sorry, but there's been an error processing your request." //text: 'Connection Error! Check API endpoint.'
 						});
 						
-						//alert(data);
+						alert(data);
 						
 						return false;
 					}
@@ -1711,7 +1917,7 @@ $(document).ready(function() {
 					}
 					else
 					{	
-						newIDs = dataArray['update'];
+						/*newIDs = dataArray['update'];
 
 						if(Object.keys(newIDs).length > 0) //this is an object not array so length and stuff works differently
 						{
@@ -1719,7 +1925,7 @@ $(document).ready(function() {
 							  $('input[value='+index+']').val(value); //find by value and update!
 							});
 						}
-						
+						*/
 						noty({ type: 'success', text: 'Menu configuration has been saved!' });
 						if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
@@ -1734,6 +1940,10 @@ $(document).ready(function() {
 				}
 				
 				$('#savingButton').hide();
+			 
+				var end = new Date().getTime();
+				var time = end - start;
+				console.log('Execution time: ' + time + "milliseconds");
 			 });
 		}
 		//update Time

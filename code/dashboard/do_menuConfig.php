@@ -4,6 +4,7 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
+	/*
 	
 	if(!isset($_SESSION['secondaryMenuFlag'])) $_SESSION['secondaryMenuFlag']=0;
 	
@@ -78,7 +79,7 @@
 	{
 		if(isset($_POST['mSectionName'][$j]))
 		{
-			$menu[$i]['name'] = /*protect(*/$_POST['mSectionName'][$j];//);
+			$menu[$i]['name'] = $_POST['mSectionName'][$j];//);
 			
 			//now we get all items in this section
 			$a = $b = 1; //same 1-index logic here too
@@ -86,15 +87,15 @@
 			{
 				if(isset($_POST['iName']['section'.$j][$b]))
 				{
-					$menu[$i]['items'][$a]['name'] 			= /*protect(*/$_POST['iName']['section'.$j][$b];//);
-					$menu[$i]['items'][$a]['desc'] 			= /*protect(*/$_POST['iDesc']['section'.$j][$b];//);
+					$menu[$i]['items'][$a]['name'] 			= $_POST['iName']['section'.$j][$b];//);
+					$menu[$i]['items'][$a]['desc'] 			= $_POST['iDesc']['section'.$j][$b];//);
 					if( (!isset($_POST['iPrice']['section'.$j][$b])) || (isset($_POST['iPrice']['section'.$j][$b]) && empty($_POST['iPrice']['section'.$j][$b])) )
 						$menu[$i]['items'][$a]['price'] 		= 0.00;
 					else
-						$menu[$i]['items'][$a]['price'] 		= /*protect(*/$_POST['iPrice']['section'.$j][$b];//);
-					$menu[$i]['items'][$a]['quantity'] 		= /*protect(*/$_POST['iQuan']['section'.$j][$b];//);
+						$menu[$i]['items'][$a]['price'] 		= $_POST['iPrice']['section'.$j][$b];//);
+					$menu[$i]['items'][$a]['quantity'] 		= $_POST['iQuan']['section'.$j][$b];//);
 						if(!isset($menu[$i]['items'][$a]['quantity']) || !$menu[$i]['items'][$a]['quantity']){ $menu[$i]['items'][$a]['quantity'] = 0; }
-					$menu[$i]['items'][$a]['visible'] 		= '1'; /*protect(*/ // $_POST['iVisi']['section'.$j][$b];//);
+					$menu[$i]['items'][$a]['visible'] 		= '1';  // $_POST['iVisi']['section'.$j][$b];//);
 						if(!isset($menu[$i]['items'][$a]['visible']) || !$menu[$i]['items'][$a]['visible']){ $menu[$i]['items'][$a]['visible'] = 0; }
 					
 					$c = $d = 1; //same 1-index logic here too
@@ -102,8 +103,8 @@
 					{
 						if(isset($_POST['iMod']['item'.$b]['m'.$d]))
 						{
-							$menu[$i]['items'][$a]['modifiers'][$c]['name'] 	= /*protect(*/$_POST['iMod']['item'.$b]['m'.$d];//);
-							$menu[$i]['items'][$a]['modifiers'][$c]['type'] 	= /*protect(*/$_POST['iModType']['item'.$b]['m'.$d];//);
+							$menu[$i]['items'][$a]['modifiers'][$c]['name'] 	= $_POST['iMod']['item'.$b]['m'.$d];//);
+							$menu[$i]['items'][$a]['modifiers'][$c]['type'] 	= $_POST['iModType']['item'.$b]['m'.$d];//);
 						
 							//now we get all the options
 							$x = $y = 1;
@@ -111,12 +112,12 @@
 							{
 								if(isset($_POST['oName']['item'.$b]['m'.$d][$y]))
 								{
-									$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['name'] = /*protect(*/$_POST['oName']['item'.$b]['m'.$d][$y];//);
+									$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['name'] = $_POST['oName']['item'.$b]['m'.$d][$y];//);
 									if( !isset($_POST['oPrice']['item'.$b]['m'.$d][$y]) || ( isset($_POST['oPrice']['item'.$b]['m'.$d][$y]) && empty($_POST['oPrice']['item'.$b]['m'.$d][$y]) ) )
 										$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['price'] = 0.00;
 									else	
-										$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['price'] = /*protect(*/$_POST['oPrice']['item'.$b]['m'.$d][$y];//);
-									$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible'] = '1'; /*protect(*/ // $_POST['oVisi']['item'.$b]['m'.$d][$y];//);
+										$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['price'] = $_POST['oPrice']['item'.$b]['m'.$d][$y];//);
+									$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible'] = '1';  // $_POST['oVisi']['item'.$b]['m'.$d][$y];//);
 										if(!isset($menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible']) || !$menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible']){ $menu[$i]['items'][$a]['modifiers'][$c]['options'][$x]['visible'] = 0; }
 									
 									$x++;
@@ -299,4 +300,23 @@
 	$newJSON = json_encode($newJSON); //back to JSON
 	
 	echo $newJSON; //sending a JSON via ajax 
+	
+	*/
+	
+	//DUMMY CALL BACK
+	//we get account id from _SESSION
+	$accountID = $_SESSION['account_id'];
+	
+	$PHP = json_decode(file_get_contents('php://input'),true);
+	
+	//echo var_export($PHP);
+	
+	//////VENUE////////////////////////////////////////////////////////////////////////////
+	
+	//query to find venues
+	$curlResult = callAPI('GET', $apiURL."venues?accountId=$accountID", false, $apiAuth);
+	
+	$dataJSON = json_decode($curlResult,true);
+	
+	echo $curlResult;
 ?>
