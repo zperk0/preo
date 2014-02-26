@@ -1817,6 +1817,14 @@ $(document).ready(function() {
 		$(this).parents('.optionTR').first().find('input[name^=oName]').data('edit',true);
 	});
 	
+	$('.collapseAllMenu').on('click', function(){
+		//lock all
+		$("body .itemSave").each(function(){
+			if($(this).is(":visible"))
+				$(this).trigger('click');
+		});
+	});
+	
 	$('#menuConfigForm').click(function(event) {
 	  $(this).data('clicked',$(event.target))
 	});
@@ -1835,27 +1843,21 @@ $(document).ready(function() {
 	
 	$("#menuConfigForm").on('valid', function (event) {
 		//START
-		var start = new Date().getTime();
+		//var start = new Date().getTime();
 		
 		//prevent multiple submissions
 		var newSubmitTime = new Date().getTime();
 		
 		if( (newSubmitTime - submitTime) > 400 )
 		{
+			$('#menuSaveButton').hide();
+			if(editingSkip) $('#menuSaveButtonE').hide();
+			$('#savingButton').show();
+			
 			//who be clickin'?
 			var editingSkip = 0;
 			if ($(this).data('clicked').is('[id=menuSaveButtonE]')) editingSkip = 1;
 			
-			//lock all
-			$("body .itemSave").each(function(){
-				if($(this).is(":visible"))
-					$(this).trigger('click');
-			});
-			
-			$('#menuSaveButton').hide();
-			if(editingSkip) $('#menuSaveButtonE').hide();
-			$('#savingButton').show();
-		
 			var url = "/saveMenu";
 			
 			//create menu object
@@ -2017,7 +2019,7 @@ $(document).ready(function() {
 		
 			menuData = JSON.stringify(menu);
 		
-			console.log(menu);
+			//console.log(menu);
 			//console.log(menuData);
 			
 			$.ajax({
@@ -2038,7 +2040,7 @@ $(document).ready(function() {
 						  text: "Sorry, but there's been an error processing your request." //text: 'Connection Error! Check API endpoint.'
 						});
 						
-						alert(data);
+						//alert(data);
 						
 						return false;
 					}
@@ -2072,9 +2074,9 @@ $(document).ready(function() {
 						
 						noty({ type: 'success', text: 'Menu configuration has been saved!' });
 						
-						var end = new Date().getTime();
-						var time = end - start;
-						console.log('Execution time: ' + time + "milliseconds");
+						//var end = new Date().getTime();
+						//var time = end - start;
+						//console.log('Execution time: ' + time + "milliseconds");
 						
 						if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}

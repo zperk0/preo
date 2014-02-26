@@ -374,6 +374,7 @@
 	
 	<div class="row">
 		<div class="small-12 large-4 columns">
+				<button class="collapseAllMenu secondary small" type="button"><?echo _("COLLAPSE ALL");?></button>
 			<?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 				<button id="menuSaveButtonE" type="submit"><?echo _("SAVE & CONTINUE EDITING");?></button>
 				<button id="menuSaveButton" type="submit"><?echo _("SAVE & FINISH");?></button>
