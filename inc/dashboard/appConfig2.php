@@ -18,11 +18,7 @@
 			<?}else{?><a class="unavailable" href="#"><? echo _("Opening Hours");?></a><?}?>
 		<?}?>
 		
-		<?if(!$_SESSION['noPaymentFlag']){?>
-			<a href="<?echo $_SESSION['path']?>/payment"><? echo _("Payment Method");?></a>
-		<?}else{?>
-			<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
-		<?}?>
+		<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
 		
 		<a class="unavailable" href="#"><? echo _("Done");?></a>
 	</nav>

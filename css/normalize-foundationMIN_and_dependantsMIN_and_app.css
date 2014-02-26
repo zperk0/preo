@@ -1785,3 +1785,8 @@ table.mdTable{
 #termsM li, #privM li {
 	margin-left: 20px;
 }
+
+.neverShow{
+	display:none !important;
+	visibility:hidden !important;
+}

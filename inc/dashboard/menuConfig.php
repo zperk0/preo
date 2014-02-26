@@ -15,11 +15,7 @@
 				<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="unavailable" href="#"><? echo _("Events");?></a>
 				<?}else{?><a class="unavailable" href="#"><? echo _("Opening Hours");?></a><?}?>
 			<?}?>
-			<?if(!$_SESSION['noPaymentFlag']){?>
-				<a href="<?echo $_SESSION['path']?>/payment"><? echo _("Payment Method");?></a>
-			<?}else{?>
-				<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
-			<?}?>
+			<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
 			
 			<a class="unavailable" href="#"><? echo _("Done");?></a>
 		</nav>
@@ -234,10 +230,8 @@
 						</div>
 						<div class="sortWithinDiv">
 						<?foreach($section['items'] as $item){ 
-						//again remember its all 1-indexed thats why we add +1 to the key
-							if($item['mealDeal']) continue;	
-						?>
-							<table class="menuTable tablesection<?echo ($sKey+1);?>" id="item<?echo ($iKey+1)?>" style="background:transparent">
+						//again remember its all 1-indexed thats why we add +1 to the key?>
+							<table class="menuTable tablesection<?echo ($sKey+1);?> <?if($item['mealDeal']){?>neverShow<?}?>" id="item<?echo ($iKey+1)?>" style="background:transparent<?if($item['mealDeal']){?>;display:none !important;visibility:hidden !important;<?}?>">
 								<tbody>
 									<tr class="savedInput itemTR">
 										<td class="menuTDName">

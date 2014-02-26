@@ -85,7 +85,7 @@
 		
 		if($section['delete']) //delete section
 		{
-			if(!preg_match('/s$/',$section['id'])) //skip unsaved sections
+			if(!preg_match('/s$/',$section['id'])) //skip unsaved sections (123s)
 			{
 				foreach($section['items'] as $item)
 				{
@@ -101,44 +101,38 @@
 							
 							//kill all options
 							$curlResult = callAPI('DELETE', $apiURL."modifieritems/$option_id", false, $apiAuth); //deleted
+							
+							//remove all tags!
+							$option['insert'] = false;
+							$option['delete'] = false;
+							$option['edit']   = false;
 						}
 						
 						//kill all modifiers
 						$curlResult = callAPI('DELETE', $apiURL."modifiers/$modifier_id", false, $apiAuth); //deleted
+						
+						//remove all tags!
+						$modifier['insert'] = false;
+						$modifier['delete'] = false;
+						$modifier['edit']   = false;
 					}
 					
-					//kill all MealDeal dependencies
+					//kill item
 					if($section['md']) //section contains mealdeal
 					{
-						$mdID = $item_id;
-				
-						//get mealdeal sections
-						$curlResultMD = callAPI('GET', $apiURL."items/$mdID/mealdealsections", false, $apiAuth);
-						$dataJSONMD = json_decode($curlResultMD,true);
-						
-						if(!empty($dataJSONMD)) //found a mealdeal!
-						{
-							$curlResult = callAPI('DELETE', $apiURL."items/$mdID?cascade=true", false, $apiAuth); //cascade delete everything!
-						}
+						$curlResult = callAPI('DELETE', $apiURL."items/$item_id?cascade=true", false, $apiAuth); //deleted (kills all MealDeal dependencies)
 					}
-					/* SEE IN ITEMS, the fix is the same as this dies due to dependancy issue
-					if($item['mdi'])
+					else
 					{
-						//if item_id is part of a meal-deal (this removes meal_deal_section_item row)
-						//get mealdeal sections
-						$curlResultMDT = callAPI('GET', $apiURL."mealdealitems/$section_id", false, $apiAuth);
-						$dataJSONMDT = json_decode($curlResultMDT,true);
-						
-						foreach($dataJSONMDT as $mdsectionT)
-						{
-							$mdSecItemIDT = $mdsectionT['id'];	
-							if($item_id == $mdsectionT['itemId'])	
-								$curlDelete = callAPI('DELETE', $apiURL."mealdealitems/$mdSecItemIDT", false, $apiAuth);
-						}
-					}*/
+						//kill item
+						if($item['mdi']) $curlResult = callAPI('DELETE', $apiURL."items/$item_id?cascade=true", false, $apiAuth); //deleted (kills all MealDeal dependencies)
+						else $curlResult = callAPI('DELETE', $apiURL."items/$item_id", false, $apiAuth); //deleted 
+					}
 					
-					//kill all items
-					$curlResult = callAPI('DELETE', $apiURL."items/$item_id", false, $apiAuth); //deleted 
+					//remove all tags!
+					$item['insert'] = false;
+					$item['delete'] = false;
+					$item['edit']   = false;
 				}
 				
 				//kill section
@@ -200,7 +194,7 @@
 			
 			if($item['delete']) //delete item
 			{
-				if(!preg_match('/i$/',$item['id'])) //skip unsaved items
+				if(!preg_match('/i$/',$item['id'])) //skip unsaved items (123i)
 				{
 					foreach($item['modifiers'] as $modifier)
 					{
@@ -212,32 +206,25 @@
 							
 							//kill all options
 							$curlResult = callAPI('DELETE', $apiURL."modifieritems/$option_id", false, $apiAuth); //deleted
+							
+							//remove all tags!
+							$option['insert'] = false;
+							$option['delete'] = false;
+							$option['edit']   = false;
 						}
 						
 						//kill all modifiers
 						$curlResult = callAPI('DELETE', $apiURL."modifiers/$modifier_id", false, $apiAuth); //deleted
-					}
-					
-					//kill all MealDeal dependencies - DEPENDANCY FAIL ASK SCOTT!
-					/*
-					if($mdi)//if item_id is part of a meal-deal (this removes meal_deal_section_item row)
-					{	
-						//get mealdeal sections
-						$curlResultMDT = callAPI('GET', $apiURL."items/$item_id/mealdealsections", false, $apiAuth); //to get mealdeals!
-						$dataJSONMDT = json_decode($curlResultMDT,true);
 						
-						echo var_dump($dataJSONMDT);
-						
-						foreach($dataJSONMDT as $mdsectionT)
-						{
-							echo var_export($mdsectionT);
-							$mdSecItemIDT = $mdsectionT['id'];	
-							$curlDelete = callAPI('DELETE', $apiURL."mealdeals/$mdSecItemIDT", false, $apiAuth);
-						}
+						//remove all tags!
+						$modifier['insert'] = false;
+						$modifier['delete'] = false;
+						$modifier['edit']   = false;
 					}
-					*/
+
 					//kill item
-					$curlResult = callAPI('DELETE', $apiURL."items/$item_id", false, $apiAuth); //deleted 
+					if($mdi) $curlResult = callAPI('DELETE', $apiURL."items/$item_id?cascade=true", false, $apiAuth); //deleted (kills all MealDeal dependencies)
+					else $curlResult = callAPI('DELETE', $apiURL."items/$item_id", false, $apiAuth); //deleted 
 				}
 				
 				//remove all tags for the item!
@@ -288,7 +275,7 @@
 				
 				if($modifier['delete']) //delete modifier
 				{
-					if(!preg_match('/i$/',$modifier['id'])) //skip unsaved mods
+					if(!preg_match('/i$/',$modifier['id'])) //skip unsaved mods (123m-item123i)
 					{
 						foreach($modifier['options'] as $option)
 						{
@@ -296,6 +283,11 @@
 							
 							//kill all options
 							$curlResult = callAPI('DELETE', $apiURL."modifieritems/$option_id", false, $apiAuth); //deleted
+							
+							//remove all tags!
+							$option['insert'] = false;
+							$option['delete'] = false;
+							$option['edit']   = false;
 						}
 						
 						//kill all modifier
@@ -337,7 +329,7 @@
 				}
 
 				//OPTIONS
-				foreach($modifier['options'] as $oKey=>$option)
+				foreach($modifier['options'] as $oKey=>$option) //(123o-item123i)
 				{
 					$option_id 			= $option['id'];
 					

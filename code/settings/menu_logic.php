@@ -91,12 +91,14 @@
 					//now we build MealDealItemArray
 					foreach($item['mealDealSections'] as $mds)
 					{
-						foreach($mds['items'] as $mdItem)
-						{
-							$mealDealItemArray[] = $mdItem['itemId'];
+						if(isset($mds['items']))
+						{	
+							foreach($mds['items'] as $mdItem)
+							{
+								$mealDealItemArray[] = $mdItem['itemId'];
+							}
 						}
 					}
-					continue;				
 				}
 				
 				$itemModOptArray[$tempCounter]['id'] = $item['id'];

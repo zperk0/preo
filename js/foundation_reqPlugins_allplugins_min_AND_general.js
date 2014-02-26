@@ -853,6 +853,7 @@ $(document).ready(function() {
 		
 		//add data-attribute
 		$ele.find('input[name^=oName]').attr('data-delete', true);
+		$ele.find('input[name^=oName]').data('delete', true);
 		//remove required
 		$ele.find('input[name^=oName], input[name^=oPrice], input[name^=oVisi]').each(function() {
 			$(this).removeAttr('required');
@@ -862,6 +863,7 @@ $(document).ready(function() {
 		{	
 			//add data-attribute
 			$ele.prev().prev('.subHeaderTR').find('input[name^=iMod]').attr('data-delete', true);
+			$ele.prev().prev('.subHeaderTR').find('input[name^=iMod]').data('delete', true);
 			//remove required
 			$ele.prev().prev('.subHeaderTR').find("input[name^=iMod], select[name^=iModType]").each(function() {
 				$(this).removeAttr('required');
@@ -911,8 +913,10 @@ $(document).ready(function() {
 			$(this).attr('name', newName);
 			
 			//add data-attribute
-			$(this).attr('data-insert', 'true');
+			$(this).attr('data-insert', true);
+			$(this).data('insert', true);
 			$(this).attr('data-id', 'mod'+newCount+'m-'+itemID+'i');
+			$(this).data('id', 'mod'+newCount+'m-'+itemID+'i');
 		});
 		
 		$(this).closest('tr.xtraModTR').before($subHeader).before($dummyData);
@@ -1027,10 +1031,10 @@ $(document).ready(function() {
 		
 		//add data-attribute
 		$newRow.find("input[name^=oName]").each(function() {
-			$(this).attr('data-insert', 'true');
+			$(this).attr('data-insert', true);
+			$(this).data('insert', true);
 			$(this).attr('data-id', 'opt'+newCount+'o-'+itemID+'i');
-			
-			//alert($(this).attr('data-id'));
+			$(this).data('id', 'opt'+newCount+'o-'+itemID+'i');
 		});
 				
 		//hide it so we can animate it!
@@ -1207,24 +1211,30 @@ $(document).ready(function() {
 		
 		//add data-attribute
 		$newTab.find("input[name^=iName]").each(function() {
-			$(this).attr('data-insert', 'true');
+			$(this).attr('data-insert', true);
+			$(this).data('insert', true);
 			$(this).attr('data-id', 'item'+newCount+'i');
+			$(this).data('id', 'item'+newCount+'i');
 		});
 		
 		if(dup)
 		{
 			var modCount = 1;
 			$newTab.find("input[name^=iMod]").each(function() {
-				$(this).attr('data-insert', 'true');
+				$(this).attr('data-insert', true);
+				$(this).data('insert', true);
 				$(this).attr('data-id', 'mod'+modCount+'m-item'+newCount+'i');
+				$(this).data('id', 'mod'+modCount+'m-item'+newCount+'i');
 				modCount++;
 			});
 			var optCount = 1;
 			$newTab.find("input[name^=oName]").each(function() {
 				if($(this).attr('data-id') != 'opt0o-item0i') //skip dummies
 				{
-					$(this).attr('data-insert', 'true');
+					$(this).attr('data-insert', true);
+					$(this).data('insert', true);
 					$(this).attr('data-id', 'opt'+optCount+'o-item'+newCount+'i');
+					$(this).data('id', 'opt'+optCount+'o-item'+newCount+'i');
 					optCount++;
 				}
 			});
@@ -1277,7 +1287,8 @@ $(document).ready(function() {
 				
 				//add data-attribute
 				$curTable.find("input[name^=iName], input[name^=iMod], input[name^=oName]").each(function() {
-					$(this).attr('data-delete','true');
+					$(this).attr('data-delete',true);
+					$(this).data('delete',true);
 				});
 				
 				//remove required
@@ -1384,8 +1395,10 @@ $(document).ready(function() {
 			$(this).attr('name', 'mSectionName['+newCount+']');
 			
 			//data-attribute
-			$(this).attr('data-insert', 'true');
+			$(this).attr('data-insert', true);
+			$(this).data('insert', true);
 			$(this).attr('data-id', 'section'+newCount+'s');
+			$(this).data('id', 'section'+newCount+'s');
 		});
 		
 		$newSec.find(".menuSectionField").addClass('section'+newCount);
@@ -1449,6 +1462,7 @@ $(document).ready(function() {
 					//add data-attribute
 					$(this).find('input[name^=iName]').each(function(){
 						$(this).attr('data-edit',true);
+						$(this).data('edit',true);
 					});
 					
 					itemCounter++;
@@ -1505,9 +1519,23 @@ $(document).ready(function() {
 		sectionID = ($(this).attr('id')).replace("delete_section","");
 		$parentSectionHeader = $(this).parents('#menuSectionRow');
 		
+		mdFlag = false;
+		mdiFlag = false;
+		
+		if($parentSectionHeader.find("input[name^=mSectionName]").data('md')) mdFlag = true;
+		
+		$parentSectionHeader.find("input[name^=iName]").each(function() { 
+			if($(this).data('mdi')) mdiFlag = true; 
+		});
+		
 		var text = "Are you sure you want to delete this section? Note: all items and options will be lost!";
 		
-		if($parentSectionHeader.find("input[name^=mSectionName]").data('md')) text = "<strong>This section contains at least 1 Meal Deal.</strong><br/>All Meal Deals will be deleted along with the section! Are you sure you want to delete this section and all its items?";
+		if(mdFlag && !mdiFlag)
+			text = "<strong>This section contains at least 1 Meal Deal.</strong><br/>All Meal Deals will be deleted if you continue!";
+		else if(!mdFlag && mdiFlag) 
+		    text = "<strong>This section contains item(s) that are part of at least 1 Meal Deal.</strong><br/>These items will be disassociated with all Meal Deals if you continue!";
+		else if(mdFlag && mdiFlag)
+			text = "<strong>This section contains Meal Deal(s) and item(s) that are part of Meal Deals.</strong><br/>All Meal Deals will be deleted and all Meal Deal items will be disassociated from Meal Deals.";
 		
 		noty({
 			layout: 'center',
@@ -1535,13 +1563,15 @@ $(document).ready(function() {
 					
 					//add data-attribute
 					$("#item"+itemIDArray[i]).find("input[name^=iName], input[name^=iMod], input[name^=oName]").each(function() {
-						$(this).attr('data-delete','true');
+						$(this).attr('data-delete',true);
+						$(this).data('delete',true);
 					});
 				}
 				
 				//add data-attribute
 				$parentSectionHeader.find("input[name^=mSectionName]").each(function() {
-					$(this).attr('data-delete','true');
+					$(this).attr('data-delete',true);
+					$(this).data('delete',true);
 				});
 				
 				//remove required
@@ -1654,6 +1684,7 @@ $(document).ready(function() {
 					//add data-attribute
 					$(this).find('input[name^=iName]').each(function(){
 						$(this).attr('data-edit',true);
+						$(this).data('edit',true);
 					});
 					
 					itemCounter++;
@@ -1754,6 +1785,7 @@ $(document).ready(function() {
 					//add data-attribute
 					$(this).find('input[name^=mSectionName]').each(function(){
 						$(this).attr('data-edit',true);
+						$(this).data('edit',true);
 					});
 					
 					section++;
@@ -1766,19 +1798,23 @@ $(document).ready(function() {
 	//main entries
 	$(document).on("blur", 'input[name^=mName], input[name^=mSectionName], input[name^=iName], input[name^=iMod], input[name^=oName]', function(){
 		$(this).attr('data-edit',true);
+		$(this).data('edit',true);
 	});
 	//dependant entries
 	//item 
 	$(document).on("blur", 'input[name^=iDesc], input[name^=iPrice], input[name^=iQuan], input[name^=iVisi]', function(){
 		$(this).parents('.itemTR').first().find('input[name^=iName]').attr('data-edit',true);
+		$(this).parents('.itemTR').first().find('input[name^=iName]').data('edit',true);
 	});
 	//mod 
 	$(document).on("change", 'select[name^=iModType]', function(){
 		$(this).parents('.subHeaderTR').first().find('input[name^=iMod]').attr('data-edit',true);
+		$(this).parents('.subHeaderTR').first().find('input[name^=iMod]').data('edit',true);
 	});
 	//opt 
 	$(document).on("blur", 'input[name^=oPrice], input[name^=oVisi]', function(){
 		$(this).parents('.optionTR').first().find('input[name^=oName]').attr('data-edit',true);
+		$(this).parents('.optionTR').first().find('input[name^=oName]').data('edit',true);
 	});
 	
 	$('#menuConfigForm').click(function(event) {
@@ -2023,13 +2059,23 @@ $(document).ready(function() {
 						{
 							$.each(newIDs, function(index, value) {
 							if(index.match(/menu/))
+							{
 							  $('input[value='+index+']').val(value); //find by value and update!
+							}
 							else  
-							  $('input[data-id='+index+']').attr('data-id',value); //find by value and update!
+							{ 
+								$('input[data-id='+index+']').attr('data-id',value); //find by value and update!
+								$('input[data-id='+value+']').data('id',value); //find by value and update! (use value from top as index as its already applied!)
+							}
 							});
 						}
 						
 						noty({ type: 'success', text: 'Menu configuration has been saved!' });
+						
+						var end = new Date().getTime();
+						var time = end - start;
+						console.log('Execution time: ' + time + "milliseconds");
+						
 						if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
@@ -2042,11 +2088,21 @@ $(document).ready(function() {
 					$('#menuSaveButtonE').show(); 
 				}
 				
+				//refresh data attributes
+				$("#mName").attr('data-edit', false);
+				$("#mName").data('edit', false);
+				
+				$("input[name^=mSectionName], input[name^=iName], input[name^=iMod], input[name^=oName]").each(function() {
+					$(this).attr('data-delete', false);
+					$(this).attr('data-insert', false);
+					$(this).attr('data-edit', false);
+					
+					$(this).data('delete', false);
+					$(this).data('insert', false);
+					$(this).data('edit', false);
+				});
+				
 				$('#savingButton').hide();
-			 
-				var end = new Date().getTime();
-				var time = end - start;
-				console.log('Execution time: ' + time + "milliseconds");
 			 });
 		}
 		//update Time
