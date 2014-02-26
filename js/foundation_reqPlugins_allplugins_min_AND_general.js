@@ -1850,13 +1850,13 @@ $(document).ready(function() {
 		
 		if( (newSubmitTime - submitTime) > 400 )
 		{
-			$('#menuSaveButton').hide();
-			if(editingSkip) $('#menuSaveButtonE').hide();
-			$('#savingButton').show();
-			
 			//who be clickin'?
 			var editingSkip = 0;
 			if ($(this).data('clicked').is('[id=menuSaveButtonE]')) editingSkip = 1;
+			
+			$('#menuSaveButton').hide();
+			if(editingSkip) $('#menuSaveButtonE').hide();
+			$('#savingButton').show();
 			
 			var url = "/saveMenu";
 			
