@@ -67,7 +67,7 @@
 							<div class="content" data-section-content>
 								<?foreach($_SESSION['menus'] as $menuL){?>
 									<p id="p-<?echo $menuL['id']?>">
-										<a class="dashMenuIcon" 			href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>" title="<?echo _("Edit")." $menuL[name]";?>"><?echo $menuL['name']?></a>
+										<a class="dashMenuIcon" 			href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>" title="<?echo _("Edit")." $menuL[name]";?>"><?echo htmlentities($menuL['name'], ENT_QUOTES)?></a>
 										<!--<a class="dashMenuIcon deleteMenu" 	id="dmi-<?echo $menuL['id']?>"  title="<?echo _("Delete")." $menuL[name]";?>"><i class="fi-x"></i></a>-->
 									</p>
 								<?}?>
@@ -116,10 +116,10 @@
 				<img id="carrierIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/carrier.png" />
 				<img id="poweredIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/powered.png" />
 				<button type="button" class="tiny expand" id="buttonIMG"><?echo _('ORDER NOW');?></button>
-				<p id="appHeading"><?if(isset($_SESSION['app_heading'])) echo $_SESSION['app_heading'];else echo "";?></p>
-				<!--<p id="venSubHeading"><?echo $_SESSION['venue_name'];?></p>-->
+				<p id="appHeading"><?if(isset($_SESSION['app_heading'])) echo htmlentities($_SESSION['app_heading'], ENT_QUOTES);else echo "";?></p>
+				<!--<p id="venSubHeading"><?echo htmlentities($_SESSION['venue_name'], ENT_QUOTES);?></p>-->
 				<p id="venSubHeading">&nbsp;</p>
-				<p id="subHeading"><?if(isset($_SESSION['app_subHeading'])) echo $_SESSION['app_subHeading'];else echo "";?></p>
+				<p id="subHeading"><?if(isset($_SESSION['app_subHeading'])) echo htmlentities($_SESSION['app_subHeading'], ENT_QUOTES);else echo "";?></p>
 			</div>
 			<div id="frame_iphone5" class="phone2 hide">
 				<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/menuWall.jpg" />
@@ -130,7 +130,7 @@
 				<button type="button" class="tiny expand menuMultiButton mmb4"><i class="pd-add"></i></button>
 				<button type="button" class="tiny expand menuMultiButton mmb5"><i class="pd-add"></i></button>
 				<button type="button" class="tiny expand menuMultiButton mmb6"><i class="pd-add"></i></button>
-				<p id="venTitle"><?if(isset($_SESSION['app_title'])) echo $_SESSION['app_title'];else echo _("Venue Title");?></p>
+				<p id="venTitle"><?if(isset($_SESSION['app_title'])) echo htmlentities($_SESSION['app_title'], ENT_QUOTES);else echo _("Venue Title");?></p>
 			</div>
 		</div>
 		<div class="pagerRow phone1pager">

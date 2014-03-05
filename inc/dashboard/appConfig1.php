@@ -65,11 +65,11 @@
 								<label class="left"><?echo _("Create a subheading");?></label>
 								<a href="#" data-dropdown="sugDrop2" class="button dropdown secondary sugDropButton"><?echo _("Choose one here");?></a>
 								<ul id="sugDrop2" class="f-dropdown" data-dropdown-content>
-								  <li><a href="#"><?echo $_SESSION['venue_name'];?></a></li>
+								  <li><a href="#"><?echo htmlentities($_SESSION['venue_name'],ENT_QUOTES);?></a></li>
 								  <li><a href="#"><? echo _("Pre-order food and drinks");?></a></li>
 								  <li><a href="#"><? echo _("Pre-order drinks+food");?></a></li>
 								</ul>
-								<input type="text" name="aSubheading" id="aSubheading" placeholder="<?echo _("or create your own...");?>" tabindex=2 pattern="^.{0,30}$" value="<?if(isset($_SESSION['app_subHeading'])) echo $_SESSION['app_subHeading'];?>">
+								<input type="text" name="aSubheading" id="aSubheading" placeholder="<?echo _("or create your own...");?>" tabindex=2 pattern="^.{0,30}$" value="<?if(isset($_SESSION['app_subHeading'])) echo htmlentities($_SESSION['app_subHeading'],ENT_QUOTES);?>">
 								<small class="error"><?echo _("maximum 30 characters");?></small>
 							</div>
 						</div>
@@ -125,7 +125,7 @@
 							<img id="poweredIMG" src="<?echo $_SESSION['path']?>/img/wallpapers/powered.png" />
 							<button type="button" class="tiny expand" id="buttonIMG"><?echo _('ORDER NOW');?></button>
 							<p id="appHeading"></p>
-							<!--<p id="venSubHeading"><?echo $_SESSION['venue_name'];?></p>-->
+							<!--<p id="venSubHeading"><?echo htmlentities($_SESSION['venue_name'],ENT_QUOTES);?></p>-->
 							<p id="venSubHeading">&nbsp;</p>
 							<p id="subHeading"></p>
 						</div>

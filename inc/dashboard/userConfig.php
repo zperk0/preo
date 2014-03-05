@@ -85,7 +85,7 @@
 					<tr class="savedInput userTR">
 						<td class="userTDName">
 							<input type="hidden" name="uID[<?echo ($uKey+1);?>]" value="<?echo $user['id'];?>" />
-							<input type="text" name="uName[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo $user['name'];?>" required readonly="readonly"  pattern="^.{0,199}$"/>
+							<input type="text" name="uName[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo htmlentities($user['name'], ENT_QUOTES);?>" required readonly="readonly"  pattern="^.{0,199}$"/>
 							<small class="error"><?echo _("Please type a user name (max 200chars)");?></small>
 						</td>
 						<td class="userTDEmail">

@@ -144,11 +144,11 @@
 					<tr class="savedInput eventTR">
 						<td class="eventTDName">
 							<input type="hidden" name="eID[<?echo ($eKey+1);?>]" value="<?echo $event['id'];?>" />
-							<input type="text" name="eName[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo $event['name'];?>"  pattern="^.{0,99}$" required readonly="readonly"/>
+							<input type="text" name="eName[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo htmlentities($event['name'], ENT_QUOTES);?>"  pattern="^.{0,99}$" required readonly="readonly"/>
 							<small class="error"><?echo _("Please type an event name (max 100chars)");?></small>
 						</td>
 						<td class="eventTDDesc">
-							<input type="text" name="eDesc[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" <?if(!empty($event['description'])){?>value="<?echo $event['description'];?>"<?}?> placeholder="<?echo _("Click to add a description");?>" readonly="readonly"  pattern="^.{0,250}$"/>
+							<input type="text" name="eDesc[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" <?if(!empty($event['description'])){?>value="<?echo htmlentities($event['description'], ENT_QUOTES);?>"<?}?> placeholder="<?echo _("Click to add a description");?>" readonly="readonly"  pattern="^.{0,250}$"/>
 							<small class="error"><?echo _("Please type a description (max 250chars)");?></small>
 						</td>
 						<td class="eventTDDate">

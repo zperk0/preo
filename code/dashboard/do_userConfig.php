@@ -20,17 +20,21 @@
 		if(isset($_POST['uName'][$j]) && $_POST['uName'][$j])
 		{
 			try { 
-				$users[$i]['id']	= /*protect(*/$_POST['uID'][$j];/*);*/ 
+				$users[$i]['id']	= $_POST['uID'][$j];
 				if(isset($_POST['uPassword'][$j])) //new user
-					$users[$i]['password'] 	= /*protect(*/$_POST['uPassword'][$j];//);
+					$users[$i]['password'] 	= $_POST['uPassword'][$j];
 				else //edit user
 					$users[$i]['password'] = '';
 			} 
 			catch(Exception $e){ /*nothing*/ } 
 			
-			$users[$i]['name'] 		= /*protect(*/$_POST['uName'][$j];//);
-			$users[$i]['email'] 	= /*protect(*/$_POST['uEmail'][$j];//);
-			$users[$i]['role'] 		= /*protect(*/strtolower($_POST['uRole'][$j]);//);
+			$users[$i]['name'] 		= $_POST['uName'][$j];
+			$users[$i]['email'] 	= $_POST['uEmail'][$j];
+			$users[$i]['role'] 		= strtolower($_POST['uRole'][$j]);
+			
+			//protect
+			protect($users[$i]['name']);
+			protect($users[$i]['email']);
 			
 			$i++;
 		}

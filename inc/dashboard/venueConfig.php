@@ -49,7 +49,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue name");?></label>
-					<input type="text" name="vName" id="vName" required tabindex=2 value="<?if(isset($_SESSION['venue_name'])) echo $_SESSION['venue_name'];?>" pattern="^.{0,99}$">
+					<input type="text" name="vName" id="vName" required tabindex=2 value="<?if(isset($_SESSION['venue_name'])) echo htmlentities($_SESSION['venue_name'], ENT_QUOTES);?>" pattern="^.{0,99}$">
 					<small class="error"><?echo _("Please type a venue name (max 100chars)");?></small>
 				</div>
 			</div>
@@ -57,7 +57,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue address");?></label>
-					<input type="text" name="vAdd" id="vAdd" required tabindex=3 value="<?if(isset($_SESSION['venue_address'])) echo $_SESSION['venue_address'];?>" pattern="^.{0,250}$">
+					<input type="text" name="vAdd" id="vAdd" required tabindex=3 value="<?if(isset($_SESSION['venue_address'])) echo htmlentities($_SESSION['venue_address'], ENT_QUOTES);?>" pattern="^.{0,250}$">
 					<input type="hidden" name="vCode" id="vCode" value="<?if(isset($_SESSION['venue_latitude']) && isset($_SESSION['venue_longitude']))  echo "(".$_SESSION['venue_latitude'].", ".$_SESSION['venue_longitude'].")"; else echo "(0, 0)";?>">
 					<small class="error"><?echo _("Please type a venue address (max 250chars)");?></small>
 				</div>
@@ -66,7 +66,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue post code");?></label>
-					<input type="text" name="vPostal" id="vPostal" required tabindex=4 value="<?if(isset($_SESSION['venue_postcode'])) echo $_SESSION['venue_postcode'];?>" pattern="^.{0,45}$">
+					<input type="text" name="vPostal" id="vPostal" required tabindex=4 value="<?if(isset($_SESSION['venue_postcode'])) echo htmlentities($_SESSION['venue_postcode'], ENT_QUOTES);?>" pattern="^.{0,45}$">
 					<small class="error"><?echo _("Please type a post code (max 45chars)");?></small>
 				</div>
 			</div>

@@ -49,13 +49,13 @@
 				<tr class="savedInput mdTR">
 					<td class="mdTDName">
 						<input type="hidden" name="mdID[<?echo $key+1;?>]" value="<?echo $mealDeal['id']?>"/>
-						<input type="text" name="mdName[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo $mealDeal['name'];?>" required pattern="^.{0,99}$" readonly="readonly"/>
+						<input type="text" name="mdName[<?echo $key+1;?>]" class="mdField noEnterSubmit" value="<?echo htmlentities($mealDeal['name'], ENT_QUOTES);?>" required pattern="^.{0,99}$" readonly="readonly"/>
 						<small class="error"><?echo _("Please type an item name (max 100chars)");?></small>
 					</td>
 					<td class="mdTDSec">
 						<select name="mdSecID[<?echo $key+1;?>]" class="mdField noEnterSubmit inline mdSecSingleSelect" > <!-- Dummy does not have mdSecSingleSelect -->
 							<?foreach($mdSections as $mdSection){?>
-								<option value="<?echo $mdSection['id']?>" <?if($mealDeal['sectionID'] == $mdSection['id']){?>selected="selected"<?}?>><?echo $mdSection['name']?></option>
+								<option value="<?echo $mdSection['id']?>" <?if($mealDeal['sectionID'] == $mdSection['id']){?>selected="selected"<?}?>><?echo htmlentities($mdSection['name'], ENT_QUOTES);?></option>
 							<?}?>
 						</select>
 						<small class="error"><?echo _("Please choose a section");?></small>
@@ -88,14 +88,14 @@
 					<tr class="savedInput subHeaderTR" style="display:none;">
 						<td class="mdSubheader optionTR"><h6><button type="button" class="mdSectionDelete secondary"><i class="pd-delete"></i></button> <?echo _("Delete this section");?></h6></td>
 						<td class="modifierRow hide">
-							<input type="text" name="iMD[<?echo $key+1;?>][s<?echo $sKey+1?>]" required class="mdField noEnterSubmit hide" pattern="^.{0,99}$" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Type or pick a selection title");?>" value="<?echo $mdS['name'];?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Choose a main, Choose a side, Choose a drink, etc");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
+							<input type="text" name="iMD[<?echo $key+1;?>][s<?echo $sKey+1?>]" required class="mdField noEnterSubmit hide" pattern="^.{0,99}$" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Type or pick a selection title");?>" value="<?echo htmlentities($mdS['name'], ENT_QUOTES);?>"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Choose a main, Choose a side, Choose a drink, etc");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
 							<small class="error smallerror selectError"><?echo _("Please type or pick a title (max 100chars)");?></small>
 						</td>
 						<td class="modifierRow hide" colspan="3">
 							<select class="mdField noEnterSubmit inline mdMenuSingleSelect" name="iMDType[<?echo $key+1;?>][s<?echo $sKey+1?>]" required> <!-- Dummy does not have mdMenuSingleSelect -->
 								<option><?echo _("Choose a menu section");?></option>
 								<?foreach($mdSections as $mdSection){?>
-									<option value="<?echo $mdSection['id']?>"><?echo $mdSection['name']?></option>
+									<option value="<?echo $mdSection['id']?>"><?echo htmlentities($mdSection['name'], ENT_QUOTES);?></option>
 								<?}?>
 								<option value="all"><?echo _('All sections');?></option>
 							</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Pick a menu section from where you'd like to import items.");?>"></i>
@@ -173,7 +173,7 @@
 				<td class="mdTDSec">
 					<select name="mdSecID[0]" class="mdField noEnterSubmit inline"> <!-- Dummy does not have mdSecSingleSelect -->
 						<?foreach($mdSections as $mdSection){?>
-							<option value="<?echo $mdSection['id']?>"><?echo $mdSection['name']?></option>
+							<option value="<?echo $mdSection['id']?>"><?echo htmlentities($mdSection['name'], ENT_QUOTES);?></option>
 						<?}?>
 					</select>
 					<small class="error"><?echo _("Please choose a section");?></small>
@@ -212,7 +212,7 @@
 					<select class="mdField noEnterSubmit inline" name="iMDType[0][s0]"> <!-- Dummy does not have mdMenuSingleSelect -->
 						<option><?echo _("Choose a menu section");?></option>
 						<?foreach($mdSections as $mdSection){?>
-							<option value="<?echo $mdSection['id']?>"><?echo $mdSection['name']?></option>
+							<option value="<?echo $mdSection['id']?>"><?echo htmlentities($mdSection['name'], ENT_QUOTES);?></option>
 						<?}?>
 						<option value="all"><?echo _('All sections');?></option>
 					</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Pick a menu section from where you'd like to import items.");?>"></i>

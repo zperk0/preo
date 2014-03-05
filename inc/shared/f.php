@@ -110,13 +110,13 @@
 				$(document).ready(function() {
 					if($("#map").length > 0)
 					{
-						var myLatLng = new google.maps.LatLng(<?echo $_SESSION['venue_latitude'].", ".$_SESSION['venue_longitude'];?>);
+						var myLatLng = new google.maps.LatLng(<?echo  htmlentities($_SESSION['venue_latitude'], ENT_QUOTES).", ".htmlentities($_SESSION['venue_longitude'], ENT_QUOTES);?>);
 						var marker = new google.maps.Marker({
 							position: myLatLng,
 							map: map,
 							animation: google.maps.Animation.DROP,
 							icon: pinImage,
-							title: '<?echo $_SESSION['venue_name'].", ".$_SESSION['venue_address'];?>'
+							title: '<?echo htmlentities($_SESSION['venue_name'], ENT_QUOTES).", ".htmlentities($_SESSION['venue_address'], ENT_QUOTES);?>'
 						  });
 						  map.setCenter(marker.position);
 						  map.setZoom(15);
