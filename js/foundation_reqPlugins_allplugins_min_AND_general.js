@@ -440,14 +440,33 @@ $(document).ready(function() {
 		{
 			$('.leadTimeDiv').slideDown();
 			$('.leadTimeDiv').find('input').attr('required','required');
+
+			$('#advanced-setting').slideDown();
 		}
 		else
 		{
+			$('#advanced-setting').slideUp();
 			$('.leadTimeDiv').slideUp();
 			$('.leadTimeDiv').find('input').removeAttr('required');
 		}
+
 	});
 	
+	$('.eventFlagNoti1 input').on('click', function(){
+		$(".eventFlagNoti1 input").removeAttr("checked");
+		$(this).attr("checked", "true");
+	});
+
+	$('.eventFlagNoti2 input').on('click', function(){
+		$(".eventFlagNoti2 input").removeAttr("checked");
+		$(this).attr("checked", "true");
+	});
+
+	$('.eventFlagNoti3 input').on('click', function(){
+		$(".eventFlagNoti3 input").removeAttr("checked");
+		$(this).attr("checked", "true");
+	});
+
 	$("#venueConfigForm").on('valid', function (event) {
 		var url = "/saveVenue";
 		

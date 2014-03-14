@@ -22,7 +22,7 @@
 		$_SESSION['venue_name'] 		= $dataJSON[0]['name'];
 		$_SESSION['venue_desc'] 		= $dataJSON[0]['description'];
 		$_SESSION['venue_cat'] 			= $dataJSON[0]['categoryId'];
-		$_SESSION['venue_address']  	= $dataJSON[0]['address'];	
+		$_SESSION['venue_address']  	= $dataJSON[0]['address1'];	
 		$_SESSION['venue_latitude']		= $dataJSON[0]['latitude'];	
 		$_SESSION['venue_longitude']	= $dataJSON[0]['longitude'];	
 		$_SESSION['venue_postcode']		= $dataJSON[0]['postcode'];	
@@ -42,9 +42,50 @@
 		if(!empty($dataJSON))
 		{
 			$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];
-			$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];
+			$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];		
+			$_SESSION['delivery_zone'] 			= $dataJSON["deliveryZone"];
+			$_SESSION['order_min'] 				= $dataJSON["orderMin"];
+			$_SESSION['delivery_charge'] 		= $dataJSON["deliveryCharge"];
+			$_SESSION['delivery_order_min'] 	= $dataJSON["deliveryOrderMin"];
+			$_SESSION['delivery_lead_time'] 	= $dataJSON["deliveryLeadTime"];
+			$_SESSION['delivery_discount'] 		= $dataJSON["deliveryDiscount"];
+			$_SESSION['delivery_phone'] 		= $dataJSON["deliveryPhone"];
 		}
 		
+		// get messages
+		$curlResult = callAPI('GET', $apiURL."venues/$venueID/messages", false, $apiAuth );
+		$dataJSON = json_decode($curlResult,true);
+
+		$_SESSION["message_flag"] = "0";
+		if(!empty($dataJSON))
+		{
+			$index = 0;
+			if (count($dataJSON) < 1  ){
+				$_SESSION["message_flag"] = "0";
+			}else{
+				foreach ( $dataJSON as $row_data ){
+					if ($index == 0 ){
+						$_SESSION['msg1_id'] = $row_data['id'];
+						$_SESSION['name1'] = $row_data['name'];
+						$_SESSION['content1'] = $row_data['content'];
+						$_SESSION['active1'] = $row_data['active'];
+					}elseif($index == 1 ){
+						$_SESSION['msg2_id'] = $row_data['id'];
+						$_SESSION['name2'] = $row_data['name'];
+						$_SESSION['content2'] = $row_data['content'];
+						$_SESSION['active2'] = $row_data['active'];
+					}elseif($index == 2 ){
+						$_SESSION['msg3_id'] = $row_data['id'];
+						$_SESSION['name3'] = $row_data['name'];
+						$_SESSION['content3'] = $row_data['content'];
+						$_SESSION['active3'] = $row_data['active'];
+					}
+	    			$index++;
+				}
+				$_SESSION["message_flag"] = "1";
+			}
+		}
+
 		$redirectFlag = 1;
 	}
 

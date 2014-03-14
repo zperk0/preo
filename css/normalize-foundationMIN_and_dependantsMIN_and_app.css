@@ -241,7 +241,7 @@ footer.regular .footLinks a{
 
 /* inputs */
 input, textarea {
-	font-size: 110% !important;
+	font-size: 100% !important;
 	border: 0 !important;
 	font-weight: bold;
 }
@@ -1784,4 +1784,22 @@ table.mdTable{
 
 #termsM li, #privM li {
 	margin-left: 20px;
+}
+
+
+.advanced-setting{
+	background-color: white;
+	border-top: solid 1px #2E70B7;
+	border-bottom: solid 1px #2E70B7;
+	padding: 20px 10px;
+	margin-bottom: 20px;
+}
+
+.advanced-setting label{
+	color: #000 !important;
+	padding-bottom: 15px;
+}
+
+.float-right{
+	float: right;
 }

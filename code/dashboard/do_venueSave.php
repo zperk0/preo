@@ -33,7 +33,55 @@
 	
 	$vCode = $_POST['vCode'];
 	protect($vCode);
+
+	$dZone = $_POST['dZone'];
+	protect($dZone);
+
+	$minVal = $_POST["minVal"];
+	protect($minVal );
+
+	$dCharge = $_POST["dCharge"];
+	protect($dCharge );
+
+	$dOrder = $_POST["dOrder"];
+	protect($dOrder );
+
+	$dLeadTime = $_POST["dLeadTime"];
+	protect($dLeadTime );
 	
+	$disCounted = $_POST["disCounted"];
+	protect($disCounted );
+
+	$contactInfo = $_POST["contactInfo"];
+	protect($contactInfo );
+
+	$name1 = $_POST["shortName1"];
+	protect($name1 );
+
+	$content1 = $_POST["cusNotif1"];
+	protect($content1 );
+
+	$active1 = $_POST["active1"];
+	protect($active1 );
+
+	$name2 = $_POST["shortName2"];
+	protect($name2 );
+
+	$content2 = $_POST["cusNotif2"];
+	protect($content2 );
+
+	$active2 = $_POST["active2"];
+	protect($active2 );
+
+	$name3 = $_POST["shortName3"];
+	protect($name3 );
+
+	$content3 = $_POST["cusNotif3"];
+	protect($content3 );
+
+	$active3 = $_POST["active3"];
+	protect($active3 );
+
 	preg_match('/\((.*), (.*)\)/', $vCode, $matches);
 	$vLat=$matches[1];
 	$vLong=$matches[2];
@@ -69,9 +117,54 @@
 		$data = array();
 		$data['leadTime']			= $leadtime;
 		$data['collectInterval']	= $cDuration;
+		$data['deliveryZone']		= $dZone;
+		$data['orderMin']	        = $minVal;
+		$data['deliveryCharge']	    = $dCharge;
+		$data['deliveryOrderMin']	= $dOrder;
+		$data['deliveryLeadTime']	= $dLeadTime;
+		$data['deliveryDiscount']   = $disCounted;
+		$data['deliveryPhone']		= $contactInfo;
+
 		$jsonData = json_encode($data);
 		
 		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
+
+		// save message
+		$data = array();
+		$data['name'] = $name1;
+		$data['content'] = $content1;
+		$data['active'] = $active1;
+
+		$jsonData = json_encode($data );
+		if ($_SESSION["message_flag"] == 1 ){
+			$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$_SESSION['msg1_id'], $jsonData, $apiAuth);
+		}else{
+			$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
+		}
+
+		$data = array();
+		$data['name'] = $name2;
+		$data['content'] = $content2;
+		$data['active'] = $active2;
+
+		$jsonData = json_encode($data );
+		if ($_SESSION["message_flag"] == 1 ){
+			$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$_SESSION['msg2_id'], $jsonData, $apiAuth);
+		}else{
+			$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
+		}
+
+		$data = array();
+		$data['name'] = $name3;
+		$data['content'] = $content3;
+		$data['active'] = $active3;
+
+		$jsonData = json_encode($data );
+		if ($_SESSION["message_flag"] == 1 ){
+			$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$_SESSION['msg3_id'], $jsonData, $apiAuth);
+		}else{
+			$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
+		}
 	}
 	else
 	{

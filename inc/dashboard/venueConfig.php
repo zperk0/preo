@@ -379,17 +379,123 @@
 					<small class="error"><?echo _("Please provide a lead time");?></small>
 				</div>
 			</div>
-			
-			<div class="row row--space1">
-				<div class="small-12 large-12 columns">
-					<button id="venueSave" type="submit" tabindex=10><?echo _("SAVE CHANGES");?></button>
-					<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
-				</div>
-			</div>
+
 		</div>
 		<div class="large-6 columns hide-for-small">
 			<div class="row row--space1">
 				<div id="map"></div>
+			</div>
+		</div>
+
+		<div class="large-12 small-12 columns advanced-setting <?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>" id="advanced-setting">
+			<div class="row">
+				<div class="large-4  columns">
+					<label>Delivery Zone</label><br>
+					<input type="text" class="delivery_zone" name="dZone" id="dZone" placeholder='eg. "5 miles" or "NW1, NW2..."' tabindex="1" value="<?if(isset($_SESSION['delivery_zone'])) echo $_SESSION['delivery_zone'];?>">
+				</div>
+				<div class="large-1  columns">
+					<label>Min.value order($)</label>
+					<input type="text"  name="minVal" id="minVal" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['order_min'])) echo $_SESSION['order_min'];?>">
+				</div>
+				<div class="large-1  columns">
+					<label>Delivery charge($)</label>
+					<input type="text"  name="dCharge" id="dCharge" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['delivery_charge'])) echo $_SESSION['delivery_charge'];?>">
+				</div>
+				<div class="large-2  columns">
+					<label>Free delivery for orders above($)</label>
+					<input type="text" class="" name="dOrder" id="dOrder" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['delivery_order_min'])) echo $_SESSION['delivery_order_min'];?>">
+				</div>
+				<div class="large-2  columns">
+					<label>Default lead time for deliver(mins)</label>
+					<input type="text" class="" name="dLeadTime" id="dLeadTime" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['delivery_lead_time'])) echo $_SESSION['delivery_lead_time'];?>">
+				</div>
+				<div class="large-2 columns">
+					<label>Discounted offered for delivery  orders</label>
+					<input type="text" class="" name="disCounted" id="disCounted" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['delivery_discount'])) echo $_SESSION['delivery_discount'];?>">
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-7 columns">
+					<label>Preset customer notifications, sent by email and push alert</label>
+				</div>
+				<div class="large-3 columns">
+					<label>Short name</label>
+				</div>
+				<div class="large-1 columns"> 
+					<label>Active</label>
+				</div>
+			</div>			
+			<div class="row">
+				<div class="large-7 columns">
+					<input type="text" class="" name="cusNotif1" id="cusNotif1" placeholder='eg."Your order is running 15 mins late"'  value="<?if(isset($_SESSION['content1'])) echo $_SESSION['content1'];?>"/>
+				</div>
+				<div class="large-3 columns">
+					<input type="text" class="" name="shortName1" id="shortName1" placeholder='eg.Late order'  value="<?if(isset($_SESSION['name1'])) echo $_SESSION['name1'];?>"/>
+				</div>
+				<div class="large-2 columns">
+					<div class="switch small large-6 columns eventFlagNoti1 float-right"> 
+					<input name="active1" id="active1"  value="0" type="radio" <?if((isset($_SESSION['active1']) && !$_SESSION['active1']) || !isset($_SESSION['active1'])){?>checked<?}?>>
+					<label class="no"><?echo _("No");?></label>
+
+					<input name="active1" id="active1" value="1" type="radio" <?if((isset($_SESSION['active1']) && $_SESSION['active1'])){?>checked<?}?>>
+					<label class="yes"><?echo _("Yes");?></label>
+
+					<span></span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-7 columns">
+					<input type="text" class="" name="cusNotif2" id="cusNotif2" placeholder='eg."Your order is on its way"'  value="<?if(isset($_SESSION['content2'])) echo $_SESSION['content2'];?>"/>
+				</div>
+				<div class="large-3 columns">
+					<input type="text" class="" name="shortName2" id="shortName2" placeholder='eg.En-router'  value="<?if(isset($_SESSION['name2'])) echo $_SESSION['name2'];?>"/>
+				</div>
+				<div class="large-2 columns">
+					<div class="switch small large-6 columns eventFlagNoti2 float-right"> 
+					<input name="active2" id="active2" value="0" type="radio" <?if((isset($_SESSION['active2']) && !$_SESSION['active2']) || !isset($_SESSION['active2'])){?>checked<?}?>>
+					<label class="no"><?echo _("No");?></label>
+
+					<input name="active2" id="active2" value="1" type="radio" <?if((isset($_SESSION['active2']) && $_SESSION['active2'])){?>checked<?}?>>
+					<label class="yes"><?echo _("Yes");?></label>
+
+					<span></span>
+					</div>
+				</div>		
+			</div>
+
+			<div class="row">
+				<div class="large-7 columns">
+					<input type="text" class="" name="cusNotif3" id="cusNotif3" placeholder='eg."There is a problem with your order. Please call us"'  value="<?if(isset($_SESSION['content3'])) echo $_SESSION['content3'];?>"/>
+				</div>
+				<div class="large-3 columns">
+					<input type="text" class="" name="shortName3" id="shortName3" placeholder='eg.Call us'  value="<?if(isset($_SESSION['name3'])) echo $_SESSION['name3'];?>"/>
+				</div>
+				<div class="large-2 columns">
+					<div class="switch small large-6 columns eventFlagNoti3 float-right"> 
+					<input name="active3" id="active3" value="0" type="radio" <?if((isset($_SESSION['active3']) && !$_SESSION['active3']) || !isset($_SESSION['active3'])){?>checked<?}?>>
+					<label class="no"><?echo _("No");?></label>
+
+					<input name="active3" id="active3" value="1" type="radio" <?if((isset($_SESSION['active3']) && $_SESSION['active3'])){?>checked<?}?>>
+					<label class="yes"><?echo _("Yes");?></label>
+
+					<span></span>
+					</div>
+				</div>			
+			</div>
+
+			<div class="row">
+				<div class="large-4 columns">
+					<label>In case of customer queries, contact</label>
+					<input type="text" name="contactInfo" id="contactInfo" placeholder="01234 567890" value="<?if(isset($_SESSION['delivery_phone'])) echo $_SESSION['delivery_phone'];?>"/>
+				</div>
+			</div>
+		</div><!-- advanced setting -->
+
+		<div class="row row--space1">
+			<div class="small-12 large-12 columns">
+				<button id="venueSave" type="submit" tabindex=10><?echo _("SAVE CHANGES");?></button>
+				<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
 			</div>
 		</div>
 	</form>
