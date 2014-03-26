@@ -483,7 +483,75 @@
 					</div>
 				</div>			
 			</div>
+			<div class="row">
+				<div class="large-7 columns">
+					<label>Preset order rejection notifications, sent by email  and push alert</label>
+				</div>
+				<div class="large-3 columns">
+					<label>Short name</label>
+				</div>
+				<div class="large-1 columns"> 
+					<label>Active</label>
+				</div>
+			</div>			
+			<div class="row">
+				<div class="large-7 columns">
+					<input type="text" class="" name="cusNotif4" id="cusNotif4" placeholder='eg."Your address is out of our delivery  zone"'  value="<?if(isset($_SESSION['content4'])) echo $_SESSION['content4'];?>"/>
+				</div>
+				<div class="large-3 columns">
+					<input type="text" class="" name="shortName4" id="shortName4" placeholder='eg.Out of zone'  value="<?if(isset($_SESSION['name4'])) echo $_SESSION['name4'];?>"/>
+				</div>
+				<div class="large-2 columns">
+					<div class="switch small large-6 columns eventFlagNoti4 float-right"> 
+					<input name="active4" id="active4"  value="0" type="radio" <?if((isset($_SESSION['active4']) && !$_SESSION['active4']) || !isset($_SESSION['active4'])){?>checked<?}?>>
+					<label class="no"><?echo _("No");?></label>
 
+					<input name="active4" id="active4" value="1" type="radio" <?if((isset($_SESSION['active4']) && $_SESSION['active4'])){?>checked<?}?>>
+					<label class="yes"><?echo _("Yes");?></label>
+
+					<span></span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-7 columns">
+					<input type="text" class="" name="cusNotif5" id="cusNotif5" placeholder='eg."Sorry, that item  is out of stock"'  value="<?if(isset($_SESSION['content5'])) echo $_SESSION['content5'];?>"/>
+				</div>
+				<div class="large-3 columns">
+					<input type="text" class="" name="shortName5" id="shortName5" placeholder='eg.Out of stock'  value="<?if(isset($_SESSION['name5'])) echo $_SESSION['name5'];?>"/>
+				</div>
+				<div class="large-2 columns">
+					<div class="switch small large-6 columns eventFlagNoti5 float-right"> 
+					<input name="active5" id="active5" value="0" type="radio" <?if((isset($_SESSION['active5']) && !$_SESSION['active5']) || !isset($_SESSION['active5'])){?>checked<?}?>>
+					<label class="no"><?echo _("No");?></label>
+
+					<input name="active5" id="active5" value="1" type="radio" <?if((isset($_SESSION['active5']) && $_SESSION['active5'])){?>checked<?}?>>
+					<label class="yes"><?echo _("Yes");?></label>
+
+					<span></span>
+					</div>
+				</div>		
+			</div>
+
+			<div class="row">
+				<div class="large-7 columns">
+					<input type="text" class="" name="cusNotif6" id="cusNotif6" placeholder='eg."Sorry, Your order has been rejected. Please call us"'  value="<?if(isset($_SESSION['content6'])) echo $_SESSION['content6'];?>"/>
+				</div>
+				<div class="large-3 columns">
+					<input type="text" class="" name="shortName6" id="shortName6" placeholder='eg.Call us'  value="<?if(isset($_SESSION['name6'])) echo $_SESSION['name6'];?>"/>
+				</div>
+				<div class="large-2 columns">
+					<div class="switch small large-6 columns eventFlagNoti6 float-right"> 
+					<input name="active6" id="active6" value="0" type="radio" <?if((isset($_SESSION['active6']) && !$_SESSION['active6']) || !isset($_SESSION['active6'])){?>checked<?}?>>
+					<label class="no"><?echo _("No");?></label>
+
+					<input name="active6" id="active6" value="1" type="radio" <?if((isset($_SESSION['active6']) && $_SESSION['active6'])){?>checked<?}?>>
+					<label class="yes"><?echo _("Yes");?></label>
+
+					<span></span>
+					</div>
+				</div>			
+			</div>
 			<div class="row">
 				<div class="large-4 columns">
 					<label>In case of customer queries, contact</label>

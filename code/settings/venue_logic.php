@@ -79,6 +79,21 @@
 						$_SESSION['name3'] = $row_data['name'];
 						$_SESSION['content3'] = $row_data['content'];
 						$_SESSION['active3'] = $row_data['active'];
+					}elseif($index == 3 ){
+						$_SESSION['msg4_id'] = $row_data['id'];
+						$_SESSION['name4'] = $row_data['name'];
+						$_SESSION['content4'] = $row_data['content'];
+						$_SESSION['active4'] = $row_data['active'];
+					}elseif($index == 4 ){
+						$_SESSION['msg5_id'] = $row_data['id'];
+						$_SESSION['name5'] = $row_data['name'];
+						$_SESSION['content5'] = $row_data['content'];
+						$_SESSION['active5'] = $row_data['active'];
+					}elseif($index == 5 ){
+						$_SESSION['msg6_id'] = $row_data['id'];
+						$_SESSION['name6'] = $row_data['name'];
+						$_SESSION['content6'] = $row_data['content'];
+						$_SESSION['active6'] = $row_data['active'];
 					}
 	    			$index++;
 				}
