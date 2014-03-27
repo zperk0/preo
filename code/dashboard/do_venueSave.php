@@ -55,59 +55,20 @@
 	$contactInfo = $_POST["contactInfo"];
 	protect($contactInfo );
 
-	$name1 = $_POST["shortName1"];
-	protect($name1 );
+	$name = array();
+	$content = array();
+	$active = array();
+	for ($ind = 1; $ind < 7; $ind ++ ){
+		$name[$ind - 1] = $_POST["shortName".$ind];
+		protect($name[$ind - 1] );
 
-	$content1 = $_POST["cusNotif1"];
-	protect($content1 );
+		$content[$ind - 1] = $_POST["cusNotif".$ind];
+		protect($content[$ind - 1] );
 
-	$active1 = $_POST["active1"];
-	protect($active1 );
-
-	$name2 = $_POST["shortName2"];
-	protect($name2 );
-
-	$content2 = $_POST["cusNotif2"];
-	protect($content2 );
-
-	$active2 = $_POST["active2"];
-	protect($active2 );
-
-	$name3 = $_POST["shortName3"];
-	protect($name3 );
-
-	$content3 = $_POST["cusNotif3"];
-	protect($content3 );
-
-	$active3 = $_POST["active3"];
-	protect($active3 );
-
-	$name4 = $_POST["shortName4"];
-	protect($name4 );
-
-	$content4 = $_POST["cusNotif4"];
-	protect($content4 );
-
-	$active4 = $_POST["active4"];
-	protect($active4 );
-
-	$name5 = $_POST["shortName5"];
-	protect($name5 );
-
-	$content5 = $_POST["cusNotif5"];
-	protect($content5 );
-
-	$active5 = $_POST["active5"];
-	protect($active5 );
-
-	$name6 = $_POST["shortName6"];
-	protect($name6 );
-
-	$content6 = $_POST["cusNotif6"];
-	protect($content6 );
-
-	$active6 = $_POST["active6"];
-	protect($active6 );
+		$active[$ind - 1] = $_POST["active".$ind];
+		protect($active[$ind - 1] );
+	}
+	
 
 	preg_match('/\((.*), (.*)\)/', $vCode, $matches);
 	$vLat=$matches[1];
@@ -157,77 +118,20 @@
 		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
 
 		// save message
-		$data = array();
-		$data['name'] = $name1;
-		$data['content'] = $content1;
-		$data['active'] = $active1;
+		for ($ind = 1; $ind < 7; $ind++ ){
+			$data = array();
+			$data['name'] = $name[$ind - 1];
+			$data['content'] = $content[$ind - 1];
+			$data['active'] = $active[$ind - 1];
 
-		$jsonData = json_encode($data );
-		if ($_SESSION["message_flag"] == 1 ){
-			$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$_SESSION['msg1_id'], $jsonData, $apiAuth);
-		}else{
-			$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
+			$jsonData = json_encode($data );
+			if ($_SESSION["message_flag"] == 1 ){
+				$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$_SESSION['msg'.$ind.'_id'], $jsonData, $apiAuth);
+			}else{
+				$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
+			}
 		}
-
-		$data = array();
-		$data['name'] = $name2;
-		$data['content'] = $content2;
-		$data['active'] = $active2;
-
-		$jsonData = json_encode($data );
-		if ($_SESSION["message_flag"] == 1 ){
-			$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$_SESSION['msg2_id'], $jsonData, $apiAuth);
-		}else{
-			$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
-		}
-
-		$data = array();
-		$data['name'] = $name3;
-		$data['content'] = $content3;
-		$data['active'] = $active3;
-
-		$jsonData = json_encode($data );
-		if ($_SESSION["message_flag"] == 1 ){
-			$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$_SESSION['msg3_id'], $jsonData, $apiAuth);
-		}else{
-			$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
-		}
-
-		$data = array();
-		$data['name'] = $name4;
-		$data['content'] = $content4;
-		$data['active'] = $active4;
-
-		$jsonData = json_encode($data );
-		if ($_SESSION["message_flag"] == 1 ){
-			$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$_SESSION['msg4_id'], $jsonData, $apiAuth);
-		}else{
-			$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
-		}
-
-		$data = array();
-		$data['name'] = $name5;
-		$data['content'] = $content5;
-		$data['active'] = $active5;
-
-		$jsonData = json_encode($data );
-		if ($_SESSION["message_flag"] == 1 ){
-			$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$_SESSION['msg5_id'], $jsonData, $apiAuth);
-		}else{
-			$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
-		}
-
-		$data = array();
-		$data['name'] = $name6;
-		$data['content'] = $content6;
-		$data['active'] = $active6;
-
-		$jsonData = json_encode($data );
-		if ($_SESSION["message_flag"] == 1 ){
-			$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$_SESSION['msg6_id'], $jsonData, $apiAuth);
-		}else{
-			$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
-		}						
+							
 	}
 	else
 	{

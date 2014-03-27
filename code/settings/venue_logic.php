@@ -59,43 +59,16 @@
 		$_SESSION["message_flag"] = "0";
 		if(!empty($dataJSON))
 		{
-			$index = 0;
+			$index = 1;
 			if (count($dataJSON) < 1  ){
 				$_SESSION["message_flag"] = "0";
 			}else{
 				foreach ( $dataJSON as $row_data ){
-					if ($index == 0 ){
-						$_SESSION['msg1_id'] = $row_data['id'];
-						$_SESSION['name1'] = $row_data['name'];
-						$_SESSION['content1'] = $row_data['content'];
-						$_SESSION['active1'] = $row_data['active'];
-					}elseif($index == 1 ){
-						$_SESSION['msg2_id'] = $row_data['id'];
-						$_SESSION['name2'] = $row_data['name'];
-						$_SESSION['content2'] = $row_data['content'];
-						$_SESSION['active2'] = $row_data['active'];
-					}elseif($index == 2 ){
-						$_SESSION['msg3_id'] = $row_data['id'];
-						$_SESSION['name3'] = $row_data['name'];
-						$_SESSION['content3'] = $row_data['content'];
-						$_SESSION['active3'] = $row_data['active'];
-					}elseif($index == 3 ){
-						$_SESSION['msg4_id'] = $row_data['id'];
-						$_SESSION['name4'] = $row_data['name'];
-						$_SESSION['content4'] = $row_data['content'];
-						$_SESSION['active4'] = $row_data['active'];
-					}elseif($index == 4 ){
-						$_SESSION['msg5_id'] = $row_data['id'];
-						$_SESSION['name5'] = $row_data['name'];
-						$_SESSION['content5'] = $row_data['content'];
-						$_SESSION['active5'] = $row_data['active'];
-					}elseif($index == 5 ){
-						$_SESSION['msg6_id'] = $row_data['id'];
-						$_SESSION['name6'] = $row_data['name'];
-						$_SESSION['content6'] = $row_data['content'];
-						$_SESSION['active6'] = $row_data['active'];
-					}
-	    			$index++;
+					$_SESSION["msg".$index."_id"] = $row_data['id'];
+					$_SESSION["name".$index] = $row_data['name'];
+					$_SESSION["content".$index] = $row_data['content'];
+					$_SESSION["active".$index] = $row_data['active'];
+					$index++;
 				}
 				$_SESSION["message_flag"] = "1";
 			}
