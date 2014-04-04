@@ -1910,7 +1910,7 @@ $(document).ready(function() {
 								menu['sections'][secCounter]['items'][itemCounter]['price'] 	= 0;
 							else	
 								menu['sections'][secCounter]['items'][itemCounter]['price'] 	= $(this).find('input[name^=iPrice]').val();
-							menu['sections'][secCounter]['items'][itemCounter]['visible'] 		= 0;
+							menu['sections'][secCounter]['items'][itemCounter]['visible'] 		= $(this).find('input[name^=iVisi]:checked').val();
 							menu['sections'][secCounter]['items'][itemCounter]['quantity'] 		= 0;
 							menu['sections'][secCounter]['items'][itemCounter]['position'] 		= parseInt(itemCounter+1000);
 								
