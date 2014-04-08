@@ -19,6 +19,18 @@
 	$businessName = $_POST['businessName'];
 	protect($businessName);
 	
+	$phone = $_POST['phone'];
+	protect($phone);
+	
+	$language = $_POST['language'];
+	protect($language);
+	
+	$country = $_POST['country'];
+	protect($country);
+	
+	$timezone = $_POST['timezone'];
+	protect($timezone);
+	
 	$fbid = $_POST['fbid'];
 	protect($fbid);
 	
@@ -33,6 +45,7 @@
 	$data['owner']['lastName']	= $lName;
 	$data['owner']['username']	= $email;
 	$data['owner']['email']		= $email;
+	$data['owner']['phone']		= $phone;
 	$data['owner']['password'] 	= $password;
 	$data['owner']['fbid'] 		= $fbid;
 	$data['owner']['gpid'] 		= $gpid;
