@@ -104,7 +104,7 @@
 			<div class="row discountCollection">
 				<div class="large-12 columns">
 					<label><?echo _("Discount offered for collection orders (%)");?>&nbsp;</label>
-					<input type="text" name="discount" id="discount" tabindex=9 placeholder="<?echo _("e.g. 10");?>" value="<?if(isset($_SESSION['venue_discount'])) echo $_SESSION['venue_discount'];?>" pattern="^\d+$">
+					<input type="text" name="vDiscount" id="vDiscount" tabindex=9 placeholder="<?echo _("e.g. 10");?>" value="<?if(isset($_SESSION['venue_discount'])) echo $_SESSION['venue_discount'];?>" pattern="^\d+$">
 					<small class="error"><?echo _("Please provide a discount percentage");?></small>
 				</div>
 			</div>
@@ -132,8 +132,8 @@
 		<label><?echo _("Address");?></label>
 		<input type="text" name="vAdd" id="vAdd" required tabindex=3 value="<?if(isset($_SESSION['venue_address'])) echo $_SESSION['venue_address'];?>" pattern="^.{0,250}$">
 		<input type="hidden" name="vCode" id="vCode" value="<?if(isset($_SESSION['venue_latitude']) && isset($_SESSION['venue_longitude']))  echo "(".$_SESSION['venue_latitude'].", ".$_SESSION['venue_longitude'].")"; else echo "(0, 0)";?>">
-		<input type="text" name="vAdd" id="vAdd"  tabindex=4 value="<?if(isset($_SESSION['venue_address2'])) echo $_SESSION['venue_address2'];?>" pattern="^.{0,250}$">
-		<input type="text" name="vAdd" id="vAdd"  tabindex=5 value="<?if(isset($_SESSION['venue_address3'])) echo $_SESSION['venue_address3'];?>" pattern="^.{0,250}$">
+		<input type="text" name="vAdd2" id="vAdd2"  tabindex=4 value="<?if(isset($_SESSION['venue_address2'])) echo $_SESSION['venue_address2'];?>" pattern="^.{0,250}$">
+		<input type="text" name="vAdd3" id="vAdd3"  tabindex=5 value="<?if(isset($_SESSION['venue_address3'])) echo $_SESSION['venue_address3'];?>" pattern="^.{0,250}$">
 		
 		<small class="error"><?echo _("Please type a venue address (max 250chars)");?></small>
 	</div>
@@ -429,12 +429,12 @@
 					<input type="text" class="" name="dOrder" id="dOrder" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['delivery_order_min'])) echo $_SESSION['delivery_order_min'];?>">
 				</div>
 				<div class="large-2  columns">
-					<label>Default lead time for deliver(mins)</label>
+					<label>Default lead time for delivery(mins)</label>
 					<input type="text" class="" name="dLeadTime" id="dLeadTime" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['delivery_lead_time'])) echo $_SESSION['delivery_lead_time'];?>">
 				</div>
 				<div class="large-2 columns">
-					<label>Discounted offered for delivery  orders</label>
-					<input type="text" class="" name="disCounted" id="disCounted" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['delivery_discount'])) echo $_SESSION['delivery_discount'];?>">
+					<label>Discounted offered for delivery(%)</label>
+					<input type="text" class="" name="vDeliveryDiscount" id="vDeliveryDiscount" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['delivery_discount'])) echo $_SESSION['delivery_discount'];?>">
 				</div>
 			</div>
 			<div class="row">

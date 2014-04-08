@@ -10,11 +10,17 @@
 	$vAdd = $_POST['vAdd'];
 	protect($vAdd);
 	
-	$vAdd = $_POST['vAdd'];
-	protect($vAdd);
+	$vAdd2 = $_POST['vAdd2'];
+	protect($vAdd2);
 	
+	$vAdd3 = $_POST['vAdd3'];
+	protect($vAdd3);
+		
 	$vPostal = $_POST['vPostal'];
 	protect($vPostal);
+	
+	$vTown = $_POST['vTown'];
+	protect($vTown);
 	
 	$vCountry = $_POST['vCountry'];
 	protect($vCountry);
@@ -49,11 +55,63 @@
 	$dLeadTime = $_POST["dLeadTime"];
 	protect($dLeadTime );
 	
-	$disCounted = $_POST["disCounted"];
-	protect($disCounted );
+	$vDelivery = $_POST["vDelivery"];
+	protect($vDelivery);
+	
+	$vDeliveryDiscount = $_POST["vDeliveryDiscount"];
+	protect($vDeliveryDiscount );
 
 	$contactInfo = $_POST["contactInfo"];
 	protect($contactInfo );
+	
+	$vDiscount = $_POST['vDiscount'];
+	protect($vDiscount);
+		
+	$vDelivery = $_POST["vDelivery"];
+	protect($vDelivery);
+
+	$cusNotif1 = $_POST["cusNotif1"];
+	protect($cusNotif1);
+	$cusNotif2 = $_POST["cusNotif3"];
+	protect($cusNotif2);
+	$cusNotif3 = $_POST["cusNotif3"];
+	protect($cusNotif3);
+	$cusNotif4 = $_POST["cusNotif4"];
+	protect($cusNotif4);
+	$cusNotif5 = $_POST["cusNotif5"];
+	protect($cusNotif5);
+	$cusNotif6 = $_POST["cusNotif6"];
+	protect($cusNotif6);
+	
+	$shortName1 = $_POST["shortName1"];
+	protect($shortName1);
+	$shortName2 = $_POST["shortName2"];
+	protect($shortName2);
+	$shortName3 = $_POST["shortName3"];
+	protect($shortName3);	
+	$shortName4 = $_POST["shortName4"];
+	protect($shortName1);
+	$shortName5 = $_POST["shortName5"];
+	protect($shortName2);
+	$shortName6 = $_POST["shortName6"];
+	protect($shortName3);	
+	
+	
+
+	$active1 = $_POST["active1"];
+	protect($active1);
+	$active2 = $_POST["active2"];
+	protect($active2);
+	$active3 = $_POST["active3"];
+	protect($active3);	
+	$active4 = $_POST["active4"];
+	protect($active4);
+	$active5 = $_POST["active5"];
+	protect($active5);
+	$active6 = $_POST["active6"];
+	protect($active6);	
+	
+
 
 	$name = array();
 	$content = array();
@@ -110,7 +168,7 @@
 		$data['deliveryCharge']	    = $dCharge;
 		$data['deliveryOrderMin']	= $dOrder;
 		$data['deliveryLeadTime']	= $dLeadTime;
-		$data['deliveryDiscount']   = $disCounted;
+		$data['deliveryDiscount']   = $vDeliveryDiscount;
 		$data['deliveryPhone']		= $contactInfo;
 
 		$jsonData = json_encode($data);
