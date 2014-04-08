@@ -434,28 +434,35 @@ $(document).ready(function() {
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	
 	$('.eventFlagNoti').on('click', function(){
+		
+			if( $(this).find("input[type=radio][name=vEvent]:checked").val() == '0')
+			{
+				$('.leadTimeDiv').slideDown();
+				$('.leadTimeDiv').find('input').attr('required','required');				
+			}
+			else
+			{			
+				$('.leadTimeDiv').slideUp();
+				$('.leadTimeDiv').find('input').removeAttr('required');
+			}
 	
-		if( $(this).find("input[type=radio][name=vEvent]:checked").val() == '0')
+		});
+	
+	$('.venueHasDelivery').on('click', function(){
+		var isChecked = $(this).attr("checked")
+		$(this).attr("checked",!isChecked);
+		if( !isChecked)
 		{
-			$('.leadTimeDiv').slideDown();
-			$('.leadTimeDiv').find('input').attr('required','required');
-
 			$('#advanced-setting').slideDown();
-		}
-		else
-		{
+		} else {
+			console.log('sliding up');
 			$('#advanced-setting').slideUp();
-			$('.leadTimeDiv').slideUp();
-			$('.leadTimeDiv').find('input').removeAttr('required');
 		}
-
 	});
 	
-	$('.eventFlagNoti1 input').on('click', function(){
-		$(".eventFlagNoti1 input").removeAttr("checked");
-		$(this).attr("checked", "true");
-	});
+	
 
 	$('.eventFlagNoti2 input').on('click', function(){
 		$(".eventFlagNoti2 input").removeAttr("checked");
