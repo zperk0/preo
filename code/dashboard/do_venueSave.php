@@ -112,6 +112,12 @@
 	protect($active6);	
 	
 
+	$language = $_POST['language'];
+	protect($language);
+	
+	$timezone = $_POST['timezone'];
+	protect($timezone);
+
 
 	$name = array();
 	$content = array();
@@ -170,6 +176,7 @@
 		$data['deliveryLeadTime']	= $dLeadTime;
 		$data['deliveryDiscount']   = $vDeliveryDiscount;
 		$data['deliveryPhone']		= $contactInfo;
+
 
 		$jsonData = json_encode($data);
 		

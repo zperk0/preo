@@ -21,16 +21,7 @@
 	
 	$phone = $_POST['phone'];
 	protect($phone);
-	
-	$language = $_POST['language'];
-	protect($language);
-	
-	$country = $_POST['country'];
-	protect($country);
-	
-	$timezone = $_POST['timezone'];
-	protect($timezone);
-	
+		
 	$fbid = $_POST['fbid'];
 	protect($fbid);
 	
