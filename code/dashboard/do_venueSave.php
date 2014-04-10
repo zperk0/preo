@@ -55,9 +55,6 @@
 	$dLeadTime = $_POST["dLeadTime"];
 	protect($dLeadTime );
 	
-	$vDelivery = $_POST["vDelivery"];
-	protect($vDelivery);
-	
 	$vDeliveryDiscount = $_POST["vDeliveryDiscount"];
 	protect($vDeliveryDiscount );
 
@@ -144,15 +141,22 @@
 	$data['name']				= $vName;
 	$data['description']		= $vDesc;
 	$data['accountId']			= $_SESSION['account_id'];
-	$data['address']			= $vAdd;
+	$data['address1']			= $vAdd;
+	$data['address2']			= $vAdd2;
+	$data['address3']			= $vAdd3;
 	$data['latitude']			= $vLat;
 	$data['longitude']			= $vLong;
 	$data['postcode']			= $vPostal;
 	$data['country']			= $vCountry;
 	$data['categoryId']			= $vCat;
 	$data['eventFlag']			= $vEvent;
+	$data['city']			= $vTown;
+	$data['locale']			= $language;
+	$data['timeZone']			= $timezone;
+	$data['deliverFlag']   = $vDelivery;
+		
 	if(isset($_SESSION['venue_code']))
-		$data['code']				= $_SESSION['venue_code'];
+		$data['code'] = $_SESSION['venue_code'];
 	
 	$jsonData = json_encode($data);
 	
@@ -175,7 +179,12 @@
 		$data['deliveryOrderMin']	= $dOrder;
 		$data['deliveryLeadTime']	= $dLeadTime;
 		$data['deliveryDiscount']   = $vDeliveryDiscount;
+		$data['pickupDiscount']   = $vDiscount;
+
+		
+
 		$data['deliveryPhone']		= $contactInfo;
+
 
 
 		$jsonData = json_encode($data);
@@ -188,6 +197,10 @@
 			$data['name'] = $name[$ind - 1];
 			$data['content'] = $content[$ind - 1];
 			$data['active'] = $active[$ind - 1];
+			if ($ind < 4)
+				$data['type'] = "PUSH_NOTIFY";
+			else
+				$data['type'] = "PUSH_REJECT";
 
 			$jsonData = json_encode($data );
 			if ($_SESSION["message_flag"] == 1 ){

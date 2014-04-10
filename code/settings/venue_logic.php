@@ -1,5 +1,7 @@
 <?php
 
+	ini_set('display_errors', 1);
+	error_reporting(E_ALL ^ E_NOTICE);
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 
@@ -22,7 +24,7 @@
 		$_SESSION['venue_name'] 		= $dataJSON[0]['name'];
 		$_SESSION['venue_desc'] 		= $dataJSON[0]['description'];
 		$_SESSION['venue_cat'] 			= $dataJSON[0]['categoryId'];
-		$_SESSION['venue_address']  	= $dataJSON[0]['address1'];	
+		$_SESSION['venue_address']  	= $dataJSON[0]['address1'];			
 		$_SESSION['venue_latitude']		= $dataJSON[0]['latitude'];	
 		$_SESSION['venue_longitude']	= $dataJSON[0]['longitude'];	
 		$_SESSION['venue_postcode']		= $dataJSON[0]['postcode'];	
@@ -31,6 +33,16 @@
 		$_SESSION['venue_liveFlag']		= $dataJSON[0]['liveFlag'];
 		$_SESSION['venue_demoFlag']		= $dataJSON[0]['demoFlag'];	
 		$_SESSION['venue_code']			= $dataJSON[0]['code'];	
+		$_SESSION['venue_deliveryFlag']	= $dataJSON[0]['deliverFlag'];			
+		$_SESSION['venue_address2']  	= $dataJSON[0]['address2'];	
+		$_SESSION['venue_address3']  	= $dataJSON[0]['address3'];			
+		$_SESSION['venue_town']  		= $dataJSON[0]['city'];	
+		$_SESSION['venue_language']			= $dataJSON[0]['locale'];	
+		$_SESSION['venue_timezone']			= $dataJSON[0]['timeZone'];	
+		
+		
+		
+
 		
 		//we get venue id from _SESSION
 		$venueID = $_SESSION['venue_id'];
@@ -50,6 +62,7 @@
 			$_SESSION['delivery_lead_time'] 	= $dataJSON["deliveryLeadTime"];
 			$_SESSION['delivery_discount'] 		= $dataJSON["deliveryDiscount"];
 			$_SESSION['delivery_phone'] 		= $dataJSON["deliveryPhone"];
+			$_SESSION['venue_discount'] 		= $dataJSON["pickupDiscount"];
 		}
 		
 		// get messages
@@ -100,6 +113,12 @@
 	    $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
 	  }
 	  return $zones_array;
+	}
+
+	function dump($value) {
+	    //echo "<pre>"; 
+	    var_dump($value); 
+    	//echo "</pre>:;
 	}
 	
 ?>

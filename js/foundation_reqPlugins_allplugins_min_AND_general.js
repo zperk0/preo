@@ -451,13 +451,13 @@ $(document).ready(function() {
 		});
 	
 	$('.venueHasDelivery').on('click', function(){
-		var isChecked = $(this).attr("checked")
+		var isChecked = $(this).attr("checked") || false;
 		$(this).attr("checked",!isChecked);
-		if( !isChecked)
+		if(isChecked)
 		{
 			$('#advanced-setting').slideDown();
 		} else {
-			console.log('sliding up');
+			
 			$('#advanced-setting').slideUp();
 		}
 	});

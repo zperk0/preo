@@ -412,9 +412,9 @@
 					<div class="large-12 columns">
 						<label><?echo _("Language");?></label>
 						<select id="language" name="language" class="pdDropdown" required tabindex=5>
-							<option <?if(isset($_SESSION['language']) && $_SESSION['language'] == "EN_GB"){?>selected="selected"<?}?> value="EN_GB">English (United Kingdom)</option>					
-							<option <?if(isset($_SESSION['language']) && $_SESSION['language'] == "EN_US"){?>selected="selected"<?}?> value="EN_US">English (United States)</option>					
-							<option <?if(isset($_SESSION['language']) && $_SESSION['language'] == "DE"){?>selected="selected"<?}?> value="DE">German</option>									
+							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "EN_GB"){?>selected="selected"<?}?> value="EN_GB">English (United Kingdom)</option>					
+							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "EN_US"){?>selected="selected"<?}?> value="EN_US">English (United States)</option>					
+							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "DE"){?>selected="selected"<?}?> value="DE">German</option>									
 						</select>
 						<small class="error"><?echo _("Please select your language");?></small>
 					</div>
@@ -424,20 +424,21 @@
 					<div class="large-12 columns">
 						<label><?echo _("Timezone");?></label>
 						<select id="timezone" name="timezone" class="pdDropdown" required tabindex=5>
-						    <?php foreach(tz_list() as $t) { ?>
-						      <option value="<?php print $t['zone'] ?>">
+						    <?php foreach(tz_list() as $t) {?>
+
+						     <option value="<?php print $t['zone'] ?>"  <?if(isset($_SESSION['venue_timezone']) && $_SESSION['venue_timezone'] == $t['zone']) {?>selected="selected"<?}  ?> >						      	
 						        <?php print $t['diff_from_GMT'] . ' - ' . $t['zone'] ?>
 						      </option>
 						    <?php } ?>
 						  </select>
 						<small class="error"><?echo _("Please select your timezone");?></small>
 					</div>
-				</div>
+				</div>	
 
 
 		</div>
 
-		<div class="large-12 small-12 columns advanced-setting <?if((isset($_SESSION['venue_deliveryFlag']) && $_SESSION['venue_deliveryFlag'])){?>hide<?}?>" id="advanced-setting">
+		<div class="large-12 small-12 columns advanced-setting <?if((isset($_SESSION['venue_deliveryFlag']) && !$_SESSION['venue_deliveryFlag'])){?>hide<?}?>" id="advanced-setting">
 			<div class="row">
 				<div class="large-4  columns">
 					<label>Delivery Zone</label><br>
