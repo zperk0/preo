@@ -195,6 +195,15 @@
 		<?
 		}?>
 		
+		<?if(isset($_SESSION['appStripeDemo']) && $_SESSION['appStripeDemo']=='08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B'){
+			$_SESSION['appStripeDemo']=0;?>
+			noty({
+			  type: 'success',  layout: 'topCenter',
+			  text: '<?echo _("Your app is now in Demo mode.");?>'
+			});
+		<?
+		}?>
+		
 		<?if(isset($_SESSION['appOffline']) && $_SESSION['appOffline']=='08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B'){
 			$_SESSION['appOffline']=0;?>
 			noty({
