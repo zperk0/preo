@@ -44,7 +44,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue name");?></label>
-					<input type="text" name="vName" id="vName" required tabindex=2 value="<?if(isset($_SESSION['venue_name'])) echo $_SESSION['venue_name'];?>" pattern="^.{0,99}$">
+					<input type="text" name="vName" id="vName" required tabindex=1 value="<?if(isset($_SESSION['venue_name'])) echo $_SESSION['venue_name'];?>" pattern="^.{0,99}$">
 					<small class="error"><?echo _("Please type a venue name (max 100chars)");?></small>
 				</div>
 			</div>
@@ -52,7 +52,7 @@
 						<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue description");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Please enter a short description about your venue.<br/><br/>This will not appear on your branded app.");?>"></i></label>
-					<textarea name="vDesc" required tabindex=6 pattern="^.{0,250}$"><?if(isset($_SESSION['venue_desc'])) echo $_SESSION['venue_desc'];?></textarea>
+					<textarea name="vDesc" required tabindex=2 pattern="^.{0,250}$"><?if(isset($_SESSION['venue_desc'])) echo $_SESSION['venue_desc'];?></textarea>
 					<small class="error"><?echo _("Please type a venue description (max 250chars)");?></small>
 				</div>
 			</div>
@@ -60,7 +60,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("What type of venue are you?");?></label>
-					<select name="vCat" class="dropdown pdDropdown" tabindex=7>
+					<select name="vCat" class="dropdown pdDropdown" tabindex=3>
 						<option value="1"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='1')	{?>selected="selected"<?}?>><? echo _("Sports Arena");?></option>
 						<option value="2"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='2')	{?>selected="selected"<?}?>><? echo _("Bars, Pubs and Clubs");?></option>
 						<option value="3"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='3')	{?>selected="selected"<?}?>><? echo _("Workplace/Education Catering");?></option>
@@ -88,7 +88,7 @@
 			<div class="row cSlotDiv hide"><!--<?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">-->
 				<div class="large-12 columns">
 					<label><?echo _("Collection Slot Duration (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is the number of minutes after opening time and before closing time when customers are allowed to collect orders.");?>"></i></label>
-					<input type="text" name="cDuration" id="cDuration" tabindex=8 value="5" placeholder="<?echo _("eg: 30");?>" value="<?if(isset($_SESSION['venue_collectinterval'])) echo $_SESSION['venue_collectinterval'];?>" >
+					<input type="text" name="cDuration" id="cDuration" tabindex=4 value="5" placeholder="<?echo _("eg: 30");?>" value="<?if(isset($_SESSION['venue_collectinterval'])) echo $_SESSION['venue_collectinterval'];?>" >
 					<small class="error"><?echo _("Please provide a duration in mins");?></small>
 				</div>
 			</div>
@@ -96,7 +96,7 @@
 			<div class="row leadTimeDiv <?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">
 				<div class="large-12 columns">
 					<label><?echo _("Default preparation time for collection orders (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("The time it takes to prepare your order before the customer can pick it up.");?>"></i></label>
-					<input type="text" name="leadtime" id="leadtime" tabindex=9 placeholder="<?echo _("e.g. 25");?>" value="<?if(isset($_SESSION['venue_leadtime'])) echo $_SESSION['venue_leadtime'];?>" <?if(!isset($_SESSION['venue_eventFlag']) || (isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag'])){?>required<?}?> pattern="^\d+$">
+					<input type="text" name="leadtime" id="leadtime" tabindex=5 placeholder="<?echo _("e.g. 25");?>" value="<?if(isset($_SESSION['venue_leadtime'])) echo $_SESSION['venue_leadtime'];?>" <?if(!isset($_SESSION['venue_eventFlag']) || (isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag'])){?>required<?}?> pattern="^\d+$">
 					<small class="error"><?echo _("Please provide a lead time");?></small>
 				</div>
 			</div>
@@ -104,7 +104,7 @@
 			<div class="row discountCollection">
 				<div class="large-12 columns">
 					<label><?echo _("Discount offered for collection orders (%)");?>&nbsp;</label>
-					<input type="text" name="vDiscount" id="vDiscount" tabindex=9 placeholder="<?echo _("e.g. 10");?>" value="<?if(isset($_SESSION['venue_discount'])) echo $_SESSION['venue_discount'];?>" pattern="^\d+$">
+					<input type="text" name="vDiscount" id="vDiscount" tabindex=6 placeholder="<?echo _("e.g. 10");?>" value="<?if(isset($_SESSION['venue_discount'])) echo $_SESSION['venue_discount'];?>" pattern="^\d+$">
 					<small class="error"><?echo _("Please provide a discount percentage");?></small>
 				</div>
 			</div>
@@ -123,17 +123,28 @@
 					</div>
 				</div>
 			</div>
-			
+		<div class="row">
+			<div class="large-12 columns">
+				<label><?echo _("Currency");?></label>
+				<select id="currency" name="currency" class="pdDropdown" required tabindex=7>				    
+					<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == "GBP"){?>selected="selected"<?}?> value="GBP">Pound Sterling</option> 
+					<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == "USD"){?>selected="selected"<?}?> value="GBP">US Dollars</option> 
+					<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == "EUR"){?>selected="selected"<?}?> value="GBP">Euro</option> 
+					
+				</select>
+				<small class="error"><?echo _("Please select your currency");?></small>
+			</div>
+		</div>			
 
 		</div>
 		<div class="large-6 columns hide-for-small">
-<div class="row">
+	<div class="row">
 	<div class="large-12 columns">
 		<label><?echo _("Address");?></label>
-		<input type="text" name="vAdd" id="vAdd" required tabindex=3 value="<?if(isset($_SESSION['venue_address'])) echo $_SESSION['venue_address'];?>" pattern="^.{0,250}$">
+		<input type="text" name="vAdd" id="vAdd" required tabindex=7 value="<?if(isset($_SESSION['venue_address'])) echo $_SESSION['venue_address'];?>" pattern="^.{0,250}$">
 		<input type="hidden" name="vCode" id="vCode" value="<?if(isset($_SESSION['venue_latitude']) && isset($_SESSION['venue_longitude']))  echo "(".$_SESSION['venue_latitude'].", ".$_SESSION['venue_longitude'].")"; else echo "(0, 0)";?>">
-		<input type="text" name="vAdd2" id="vAdd2"  tabindex=4 value="<?if(isset($_SESSION['venue_address2'])) echo $_SESSION['venue_address2'];?>" pattern="^.{0,250}$">
-		<input type="text" name="vAdd3" id="vAdd3"  tabindex=5 value="<?if(isset($_SESSION['venue_address3'])) echo $_SESSION['venue_address3'];?>" pattern="^.{0,250}$">
+		<input type="text" name="vAdd2" id="vAdd2"  tabindex=8 value="<?if(isset($_SESSION['venue_address2'])) echo $_SESSION['venue_address2'];?>" pattern="^.{0,250}$">
+		<input type="text" name="vAdd3" id="vAdd3"  tabindex=9 value="<?if(isset($_SESSION['venue_address3'])) echo $_SESSION['venue_address3'];?>" pattern="^.{0,250}$">
 		
 		<small class="error"><?echo _("Please type a venue address (max 250chars)");?></small>
 	</div>
@@ -142,7 +153,7 @@
 <div class="row">
 	<div class="large-12 columns">
 		<label><?echo _("Town/City");?></label>
-		<input type="text" name="vTown" id="vTown" required tabindex=6 value="<?if(isset($_SESSION['venue_town'])) echo $_SESSION['venue_town'];?>" pattern="^.{0,45}$">
+		<input type="text" name="vTown" id="vTown" required tabindex=10 value="<?if(isset($_SESSION['venue_town'])) echo $_SESSION['venue_town'];?>" pattern="^.{0,45}$">
 		<small class="error"><?echo _("Please type a Town/City (max 45chars)");?></small>
 	</div>
 </div>
@@ -151,7 +162,7 @@
 <div class="row">
 	<div class="large-12 columns">
 		<label><?echo _("Country");?></label>
-		<select id="vCountry" name="vCountry" class="pdDropdown" required tabindex=5>
+		<select id="vCountry" name="vCountry" class="pdDropdown" required>
 			<option <?if(isset($_SESSION['venue_country']) && $_SESSION['venue_country'] == "GB"){?>selected="selected"<?}?> value="GB">United Kingdom</option>
 			<option <?if(isset($_SESSION['venue_country']) && $_SESSION['venue_country'] == "AF"){?>selected="selected"<?}?> value="AF">Afghanistan</option>
 			<option <?if(isset($_SESSION['venue_country']) && $_SESSION['venue_country'] == "AX"){?>selected="selected"<?}?> value="AX">Aland Islands</option>
@@ -403,7 +414,7 @@
 		<div class="row">
 			<div class="large-6 columns">
 				<label><?echo _("Post code");?></label>
-				<input type="text" name="vPostal" id="vPostal" required tabindex=8 value="<?if(isset($_SESSION['venue_postcode'])) echo $_SESSION['venue_postcode'];?>" pattern="^.{0,45}$">
+				<input type="text" name="vPostal" id="vPostal" required tabindex=11 value="<?if(isset($_SESSION['venue_postcode'])) echo $_SESSION['venue_postcode'];?>" pattern="^.{0,45}$">
 				<small class="error"><?echo _("Please type a post code (max 45chars)");?></small>
 			</div>
 		</div>
@@ -411,7 +422,7 @@
 		<div class="row">
 					<div class="large-12 columns">
 						<label><?echo _("Language");?></label>
-						<select id="language" name="language" class="pdDropdown" required tabindex=5>
+						<select id="language" name="language" class="pdDropdown" required tabindex=12>
 							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "EN_GB"){?>selected="selected"<?}?> value="EN_GB">English (United Kingdom)</option>					
 							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "EN_US"){?>selected="selected"<?}?> value="EN_US">English (United States)</option>					
 							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "DE"){?>selected="selected"<?}?> value="DE">German</option>									
@@ -423,7 +434,7 @@
 				<div class="row">
 					<div class="large-12 columns">
 						<label><?echo _("Timezone");?></label>
-						<select id="timezone" name="timezone" class="pdDropdown" required tabindex=5>
+						<select id="timezone" name="timezone" class="pdDropdown" required tabindex=13>
 						    <?php foreach(tz_list() as $t) {?>
 
 						     <option value="<?php print $t['zone'] ?>"  <?if(isset($_SESSION['venue_timezone']) && $_SESSION['venue_timezone'] == $t['zone']) {?>selected="selected"<?}  ?> >						      	
@@ -442,27 +453,27 @@
 			<div class="row">
 				<div class="large-4  columns">
 					<label>Delivery Zone</label><br>
-					<input type="text" class="delivery_zone" name="dZone" id="dZone" placeholder='eg. "5 miles" or "NW1, NW2..."' tabindex="1" value="<?if(isset($_SESSION['delivery_zone'])) echo $_SESSION['delivery_zone'];?>">
+					<input type="text" class="delivery_zone" name="dZone" id="dZone" placeholder='eg. "5 miles" or "NW1, NW2..."' tabindex="14" value="<?if(isset($_SESSION['delivery_zone'])) echo $_SESSION['delivery_zone'];?>">
 				</div>
 				<div class="large-1  columns">
 					<label>Min.value order($)</label>
-					<input type="text"  name="minVal" id="minVal" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['order_min'])) echo $_SESSION['order_min'];?>">
+					<input type="text"  name="minVal" id="minVal" placeholder='0.00' tabindex="15" value="<?if(isset($_SESSION['order_min'])) echo $_SESSION['order_min'];?>">
 				</div>
 				<div class="large-1  columns">
 					<label>Delivery charge($)</label>
-					<input type="text"  name="dCharge" id="dCharge" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['delivery_charge'])) echo $_SESSION['delivery_charge'];?>">
+					<input type="text"  name="dCharge" id="dCharge" placeholder='0.00' tabindex="16" value="<?if(isset($_SESSION['delivery_charge'])) echo $_SESSION['delivery_charge'];?>">
 				</div>
 				<div class="large-2  columns">
 					<label>Free delivery for orders above($)</label>
-					<input type="text" class="" name="dOrder" id="dOrder" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['delivery_order_min'])) echo $_SESSION['delivery_order_min'];?>">
+					<input type="text" class="" name="dOrder" id="dOrder" placeholder='0.00' tabindex="17" value="<?if(isset($_SESSION['delivery_order_min'])) echo $_SESSION['delivery_order_min'];?>">
 				</div>
 				<div class="large-2  columns">
 					<label>Default lead time for delivery(mins)</label>
-					<input type="text" class="" name="dLeadTime" id="dLeadTime" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['delivery_lead_time'])) echo $_SESSION['delivery_lead_time'];?>">
+					<input type="text" class="" name="dLeadTime" id="dLeadTime" placeholder='0.00' tabindex="18" value="<?if(isset($_SESSION['delivery_lead_time'])) echo $_SESSION['delivery_lead_time'];?>">
 				</div>
 				<div class="large-2 columns">
 					<label>Discounted offered for delivery(%)</label>
-					<input type="text" class="" name="vDeliveryDiscount" id="vDeliveryDiscount" placeholder='0.00' tabindex="1" value="<?if(isset($_SESSION['delivery_discount'])) echo $_SESSION['delivery_discount'];?>">
+					<input type="text" class="" name="vDeliveryDiscount" id="vDeliveryDiscount" placeholder='0.00' tabindex="19" value="<?if(isset($_SESSION['delivery_discount'])) echo $_SESSION['delivery_discount'];?>">
 				</div>
 			</div>
 			<div class="row">
@@ -478,10 +489,10 @@
 			</div>			
 			<div class="row">
 				<div class="large-7 columns">
-					<input type="text" class="" name="cusNotif1" id="cusNotif1" placeholder='eg."Your order is running 15 mins late"'  value="<?if(isset($_SESSION['content1'])) echo $_SESSION['content1'];?>"/>
+					<input type="text" class="" name="cusNotif1" id="cusNotif1" placeholder='eg."Your order is running 15 mins late"' tabindex=20  value="<?if(isset($_SESSION['content1'])) echo $_SESSION['content1'];?>"/>
 				</div>
 				<div class="large-3 columns">
-					<input type="text" class="" name="shortName1" id="shortName1" placeholder='eg.Late order'  value="<?if(isset($_SESSION['name1'])) echo $_SESSION['name1'];?>"/>
+					<input type="text" class="" name="shortName1" id="shortName1" placeholder='eg.Late order' tabindex=21  value="<?if(isset($_SESSION['name1'])) echo $_SESSION['name1'];?>"/>
 				</div>
 				<div class="large-2 columns">
 					<div class="switch small large-6 columns eventFlagNoti1 float-right"> 
@@ -497,10 +508,10 @@
 			</div>
 			<div class="row">
 				<div class="large-7 columns">
-					<input type="text" class="" name="cusNotif2" id="cusNotif2" placeholder='eg."Your order is on its way"'  value="<?if(isset($_SESSION['content2'])) echo $_SESSION['content2'];?>"/>
+					<input type="text" class="" tabindex=23 name="cusNotif2" id="cusNotif2" placeholder='eg."Your order is on its way"'  value="<?if(isset($_SESSION['content2'])) echo $_SESSION['content2'];?>"/>
 				</div>
 				<div class="large-3 columns">
-					<input type="text" class="" name="shortName2" id="shortName2" placeholder='eg.En-router'  value="<?if(isset($_SESSION['name2'])) echo $_SESSION['name2'];?>"/>
+					<input type="text" class="" tabindex=24 name="shortName2" id="shortName2" placeholder='eg.En-router'  value="<?if(isset($_SESSION['name2'])) echo $_SESSION['name2'];?>"/>
 				</div>
 				<div class="large-2 columns">
 					<div class="switch small large-6 columns eventFlagNoti2 float-right"> 
@@ -517,10 +528,10 @@
 
 			<div class="row">
 				<div class="large-7 columns">
-					<input type="text" class="" name="cusNotif3" id="cusNotif3" placeholder='eg."There is a problem with your order. Please call us"'  value="<?if(isset($_SESSION['content3'])) echo $_SESSION['content3'];?>"/>
+					<input type="text" class="" tabindex=25 name="cusNotif3" id="cusNotif3" placeholder='eg."There is a problem with your order. Please call us"'  value="<?if(isset($_SESSION['content3'])) echo $_SESSION['content3'];?>"/>
 				</div>
 				<div class="large-3 columns">
-					<input type="text" class="" name="shortName3" id="shortName3" placeholder='eg.Call us'  value="<?if(isset($_SESSION['name3'])) echo $_SESSION['name3'];?>"/>
+					<input type="text" class="" tabindex=26 name="shortName3" id="shortName3" placeholder='eg.Call us'  value="<?if(isset($_SESSION['name3'])) echo $_SESSION['name3'];?>"/>
 				</div>
 				<div class="large-2 columns">
 					<div class="switch small large-6 columns eventFlagNoti3 float-right"> 
@@ -547,10 +558,10 @@
 			</div>			
 			<div class="row">
 				<div class="large-7 columns">
-					<input type="text" class="" name="cusNotif4" id="cusNotif4" placeholder='eg."Your address is out of our delivery  zone"'  value="<?if(isset($_SESSION['content4'])) echo $_SESSION['content4'];?>"/>
+					<input type="text" class="" tabindex=27 name="cusNotif4" id="cusNotif4" placeholder='eg."Your address is out of our delivery  zone"'  value="<?if(isset($_SESSION['content4'])) echo $_SESSION['content4'];?>"/>
 				</div>
 				<div class="large-3 columns">
-					<input type="text" class="" name="shortName4" id="shortName4" placeholder='eg.Out of zone'  value="<?if(isset($_SESSION['name4'])) echo $_SESSION['name4'];?>"/>
+					<input type="text" class="" tabindex=28 name="shortName4" id="shortName4" placeholder='eg.Out of zone'  value="<?if(isset($_SESSION['name4'])) echo $_SESSION['name4'];?>"/>
 				</div>
 				<div class="large-2 columns">
 					<div class="switch small large-6 columns eventFlagNoti4 float-right"> 
@@ -566,17 +577,17 @@
 			</div>
 			<div class="row">
 				<div class="large-7 columns">
-					<input type="text" class="" name="cusNotif5" id="cusNotif5" placeholder='eg."Sorry, that item  is out of stock"'  value="<?if(isset($_SESSION['content5'])) echo $_SESSION['content5'];?>"/>
+					<input type="text" class="" tabindex=29 name="cusNotif5" id="cusNotif5" placeholder='eg."Sorry, that item  is out of stock"'  value="<?if(isset($_SESSION['content5'])) echo $_SESSION['content5'];?>"/>
 				</div>
 				<div class="large-3 columns">
-					<input type="text" class="" name="shortName5" id="shortName5" placeholder='eg.Out of stock'  value="<?if(isset($_SESSION['name5'])) echo $_SESSION['name5'];?>"/>
+					<input type="text" class="" tabindex=30 name="shortName5" id="shortName5" placeholder='eg.Out of stock'  value="<?if(isset($_SESSION['name5'])) echo $_SESSION['name5'];?>"/>
 				</div>
 				<div class="large-2 columns">
 					<div class="switch small large-6 columns eventFlagNoti5 float-right"> 
-					<input name="active5" id="active5" value="0" type="radio" <?if((isset($_SESSION['active5']) && !$_SESSION['active5']) || !isset($_SESSION['active5'])){?>checked<?}?>>
+					<input name="active5" id="active5" value="0" tabindex=31 type="radio" <?if((isset($_SESSION['active5']) && !$_SESSION['active5']) || !isset($_SESSION['active5'])){?>checked<?}?>>
 					<label class="no"><?echo _("No");?></label>
 
-					<input name="active5" id="active5" value="1" type="radio" <?if((isset($_SESSION['active5']) && $_SESSION['active5'])){?>checked<?}?>>
+					<input name="active5" id="active5" value="1" type="radio" tabindex=32 <?if((isset($_SESSION['active5']) && $_SESSION['active5'])){?>checked<?}?>>
 					<label class="yes"><?echo _("Yes");?></label>
 
 					<span></span>
@@ -586,10 +597,10 @@
 
 			<div class="row">
 				<div class="large-7 columns">
-					<input type="text" class="" name="cusNotif6" id="cusNotif6" placeholder='eg."Sorry, Your order has been rejected. Please call us"'  value="<?if(isset($_SESSION['content6'])) echo $_SESSION['content6'];?>"/>
+					<input type="text" class="" name="cusNotif6" tabindex=33 id="cusNotif6" placeholder='eg."Sorry, Your order has been rejected. Please call us"'  value="<?if(isset($_SESSION['content6'])) echo $_SESSION['content6'];?>"/>
 				</div>
 				<div class="large-3 columns">
-					<input type="text" class="" name="shortName6" id="shortName6" placeholder='eg.Call us'  value="<?if(isset($_SESSION['name6'])) echo $_SESSION['name6'];?>"/>
+					<input type="text" class="" name="shortName6"  tabindex=34 id="shortName6" placeholder='eg.Call us'  value="<?if(isset($_SESSION['name6'])) echo $_SESSION['name6'];?>"/>
 				</div>
 				<div class="large-2 columns">
 					<div class="switch small large-6 columns eventFlagNoti6 float-right"> 
@@ -606,14 +617,14 @@
 			<div class="row">
 				<div class="large-4 columns">
 					<label>In case of customer queries, contact</label>
-					<input type="text" name="contactInfo" id="contactInfo" placeholder="01234 567890" value="<?if(isset($_SESSION['delivery_phone'])) echo $_SESSION['delivery_phone'];?>"/>
+					<input type="text" name="contactInfo" id="contactInfo" tabindex=35 placeholder="01234 567890" value="<?if(isset($_SESSION['delivery_phone'])) echo $_SESSION['delivery_phone'];?>"/>
 				</div>
 			</div>
 		</div><!-- advanced setting -->
 
 		<div class="row row--space1">
 			<div class="small-12 large-12 columns">
-				<button id="venueSave" type="submit" tabindex=10><?echo _("SAVE CHANGES");?></button>
+				<button id="venueSave" type="submit" tabindex=36><?echo _("SAVE CHANGES");?></button>
 				<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
 			</div>
 		</div>

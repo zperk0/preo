@@ -115,6 +115,9 @@
 	$timezone = $_POST['timezone'];
 	protect($timezone);
 
+	$currency = $_POST['currency'];
+	protect($currency);
+
 
 	$name = array();
 	$content = array();
@@ -154,6 +157,7 @@
 	$data['locale']			= $language;
 	$data['timeZone']			= $timezone;
 	$data['deliverFlag']   = $vDelivery;
+	$data['currency']			= $currency;
 		
 	if(isset($_SESSION['venue_code']))
 		$data['code'] = $_SESSION['venue_code'];

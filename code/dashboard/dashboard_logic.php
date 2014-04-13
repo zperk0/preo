@@ -79,6 +79,7 @@
 		$_SESSION['venue_town']				= $dataJSON[0]['town'];	
 		$_SESSION['venue_locale']				= $dataJSON[0]['locale'];	
 		$_SESSION['venue_timezone']				= $dataJSON[0]['timeZone'];	
+		$_SESSION['venue_currency']				= $dataJSON[0]['currency];	
 		
 		
 		//we get venue id from _SESSION
