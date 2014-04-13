@@ -251,6 +251,7 @@ input[type='file']{
 }
 
 textarea {
+	min-height:70px;
 	resize: none !important;
 	height: 3em !important;
 }
@@ -427,6 +428,18 @@ ul.custom-inline-list {
     -webkit-box-shadow: 0 0  8px #000;
     box-shadow: 0 0 8px #000;
 }
+
+form .switch label{
+	width: 10% !important;
+}
+form .switch label.yes{
+	margin-left: 30% !important;
+}
+form .switch label.no{
+	margin-left: 10% !important;
+}
+
+
 
 
 /* app config area*/
