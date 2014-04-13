@@ -1044,11 +1044,12 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .menuTable .menuTDVisi, .eventTable .eventTDVisi, .mdTable .mdTDVisi, .headerTable .eventTDVisi, .headerTable .menuTDVisi{
-	width: 8%;
+	width: 10%;
 }
 
 .menuTable .menuTDTools, .headerTable .menuTDTools{
-	width: 153px;
+	width: 166px;
+	text-align:right;
 }
 
  .eventTable .eventTDTools, .headerTable .eventTDTools{
@@ -1076,9 +1077,8 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .menuTDVisi .switch, .eventTDVisi .switch, .mdTDVisi .switch{
-	margin-top: 14px;
-	padding-right: 4px;
-	padding-left: 4px;
+	margin-top: 4px;
+	
 }
 
 .menuTable h6, .eventTable h6, .userTable h6, .outletTable h6, .mdTable h6{
@@ -1100,12 +1100,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 	max-width: 987px;
 }
 
-.optionTR .menuTDPrice {
-	width: 15%;
-}
-.optionTR .menuTDTools {
-	width: 9%;
-}
+
 
 .userTable .ui-multiselect, .eventTable, .ui-multiselect, .mdTable .ui-multiselect{
 	font-size: 14px;
