@@ -449,7 +449,7 @@
 
 		</div>
 
-		<div class="large-12 small-12 columns advanced-setting <?if((isset($_SESSION['venue_deliveryFlag']) && !$_SESSION['venue_deliveryFlag'])){?>hide<?}?>" id="advanced-setting">
+		<div class="large-12 small-12 columns advanced-setting <?if( ((isset($_SESSION['venue_deliveryFlag']) && !$_SESSION['venue_deliveryFlag'])) || !isset($_SESSION['venue_deliveryFlag']) ){?>hide<?}?>" id="advanced-setting">
 			<div class="row">
 				<div class="large-4  columns">
 					<label>Delivery Zone</label><br>

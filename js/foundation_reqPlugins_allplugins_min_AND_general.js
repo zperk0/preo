@@ -451,8 +451,8 @@ $(document).ready(function() {
 		});
 	
 	$('.venueHasDelivery').on('click', function(){
-		var isChecked = $(this).attr("checked") || false;
-		$(this).attr("checked",!isChecked);
+		var isChecked = $("#advanced-setting").css("display") == "none";		
+		console.log('isChecked:' + isChecked)
 		if(isChecked)
 		{
 			$('#advanced-setting').slideDown();
