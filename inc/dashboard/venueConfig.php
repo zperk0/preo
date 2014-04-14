@@ -437,7 +437,7 @@
 						<select id="timezone" name="timezone" class="pdDropdown" required tabindex=13>
 						    <?php foreach(tz_list() as $t) {?>
 
-						     <option value="<?php print $t['zone'] ?>"  <?if(isset($_SESSION['venue_timezone']) && $_SESSION['venue_timezone'] == $t['zone']) {?>selected="selected"<?}  ?> >						      	
+						     <option value="<?php print $t['zone'] ?>"  <?if(isset($_SESSION['venue_timezone'])) { if ($_SESSION['venue_timezone'] == $t['zone']) {?>selected="selected"<?} } else {if ($t['zone'] == 'Europe/London') {?>selected="selected"<?}}     ?> >						      	
 						        <?php print $t['diff_from_GMT'] . ' - ' . $t['zone'] ?>
 						      </option>
 						    <?php } ?>
