@@ -154,7 +154,7 @@
 	$data['categoryId']			= $vCat;
 	$data['eventFlag']			= $vEvent;
 	$data['city']			= $vTown;
-	$data['locale']			= $language;
+	$data['locale']			= $language."_".$vCountry;
 	$data['timeZone']			= $timezone;
 	$data['deliverFlag']   = $vDelivery;
 	$data['currency']			= $currency;
