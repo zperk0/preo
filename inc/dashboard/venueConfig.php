@@ -104,8 +104,8 @@
 			<div class="row discountCollection">
 				<div class="large-12 columns">
 					<label><?echo _("Discount offered for collection orders (%)");?>&nbsp;</label>
-					<input type="text" name="vDiscount" id="vDiscount" tabindex=6 placeholder="<?echo _("e.g. 10");?>" value="<?if(isset($_SESSION['venue_discount'])) echo $_SESSION['venue_discount'];?>" pattern="^\d+$">
-					<small class="error"><?echo _("Please provide a discount percentage");?></small>
+					<input type="text" name="vDiscount" id="vDiscount" tabindex=6 required placeholder="<?echo _("e.g. 10");?>" value="<?if(isset($_SESSION['venue_discount'])) echo $_SESSION['venue_discount'];?>" pattern="^(0?[0-9]?[0-9]|100)$">
+					<small class="error"><?echo _("Please provide a discount percentage (between 0 and 100)");?></small>
 				</div>
 			</div>
 			
@@ -472,7 +472,8 @@
 				</div>
 				<div class="large-2 columns">
 					<label>Discounted offered for delivery(%)</label>
-					<input type="text" class="" name="vDeliveryDiscount" id="vDeliveryDiscount" placeholder='0.00' tabindex="19" value="<?if(isset($_SESSION['delivery_discount'])) echo $_SESSION['delivery_discount'];?>">
+					<input type="text" class="" name="vDeliveryDiscount" id="vDeliveryDiscount" placeholder='0.00' tabindex="19" value="<?if(isset($_SESSION['delivery_discount'])) echo $_SESSION['delivery_discount'];?>" pattern="^(0?[0-9]?[0-9]|100)$">
+					<small class="error"><?echo _("Please provide a discount percentage (between 0 and 100)");?></small>
 				</div>
 			</div>
 			<div class="row">
