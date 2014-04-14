@@ -100,6 +100,14 @@
 					<small class="error"><?echo _("Please provide a lead time");?></small>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<label><?echo _("Minimum value for orders");?>&nbsp;</label>
+					<input type="text" name="vOrderMin" id="vOrderMin" tabindex=6 required placeholder="<?echo _("e.g. 5");?>" value="<?if(isset($_SESSION['venue_order_min'])) echo $_SESSION['venue_order_min'];?>" pattern="^\d+$">
+					<small class="error"><?echo _("Please provide a minimum value for ordering");?></small>
+				</div>
+			</div>
 			
 			<div class="row discountCollection">
 				<div class="large-12 columns">
@@ -123,18 +131,7 @@
 					</div>
 				</div>
 			</div>
-		<div class="row">
-			<div class="large-12 columns">
-				<label><?echo _("Currency");?></label>
-				<select id="currency" name="currency" class="pdDropdown" required tabindex=7>				    
-					<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == "GBP"){?>selected="selected"<?}?> value="GBP">Pound Sterling</option> 
-					<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == "USD"){?>selected="selected"<?}?> value="GBP">US Dollars</option> 
-					<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == "EUR"){?>selected="selected"<?}?> value="GBP">Euro</option> 
-					
-				</select>
-				<small class="error"><?echo _("Please select your currency");?></small>
-			</div>
-		</div>			
+			
 
 		</div>
 		<div class="large-6 columns hide-for-small">
@@ -445,6 +442,18 @@
 					</div>
 				</div>	
 
+				<div class="row">
+					<div class="large-12 columns">
+						<label><?echo _("Currency");?></label>
+						<select id="currency" name="currency" class="pdDropdown" required tabindex=7>				    
+							<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == "GBP"){?>selected="selected"<?}?> value="GBP">Pound Sterling</option> 
+							<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == "USD"){?>selected="selected"<?}?> value="USD">US Dollars</option> 
+							<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == "EUR"){?>selected="selected"<?}?> value="EUR">Euro</option> 
+							
+						</select>
+						<small class="error"><?echo _("Please select your currency");?></small>
+					</div>
+				</div>		
 
 		</div>
 
@@ -456,7 +465,7 @@
 				</div>
 				<div class="large-1  columns">
 					<label>Min.value order($)</label>
-					<input type="text"  name="minVal" id="minVal" placeholder='0.00' tabindex="15" value="<?if(isset($_SESSION['order_min'])) echo $_SESSION['order_min'];?>">
+					<input type="text"  name="dMinVal" id="dMinVal" placeholder='0.00' tabindex="15" value="<?if(isset($_SESSION['delivery_order_min'])) echo $_SESSION['delivery_order_min'];?>">
 				</div>
 				<div class="large-1  columns">
 					<label>Delivery charge($)</label>
@@ -464,7 +473,7 @@
 				</div>
 				<div class="large-2  columns">
 					<label>Free delivery for orders above($)</label>
-					<input type="text" class="" name="dOrder" id="dOrder" placeholder='0.00' tabindex="17" value="<?if(isset($_SESSION['delivery_order_min'])) echo $_SESSION['delivery_order_min'];?>">
+					<input type="text" class="" name="dChargeBelow" id="dChargeBelow" placeholder='0.00' tabindex="17" value="<?if(isset($_SESSION['delivery_charge_below'])) echo $_SESSION['delivery_charge_below'];?>">
 				</div>
 				<div class="large-2  columns">
 					<label>Default lead time for delivery(mins)</label>

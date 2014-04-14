@@ -43,14 +43,14 @@
 	$dZone = $_POST['dZone'];
 	protect($dZone);
 
-	$minVal = $_POST["minVal"];
-	protect($minVal );
+	$dMinVal = $_POST["dMinVal"];
+	protect($dMinVal );
 
 	$dCharge = $_POST["dCharge"];
 	protect($dCharge );
 
-	$dOrder = $_POST["dOrder"];
-	protect($dOrder );
+	$dChargeBelow = $_POST["dChargeBelow"];
+	protect($dChargeBelow );
 
 	$dLeadTime = $_POST["dLeadTime"];
 	protect($dLeadTime );
@@ -115,8 +115,11 @@
 	$timezone = $_POST['timezone'];
 	protect($timezone);
 
-	$currency = $_POST['currency'];
-	protect($currency);
+	$vCurrency = $_POST['currency'];
+	protect($vCurrency);
+
+	$vOrderMin = $_POST['vOrderMin'];
+	protect($vCurrency);
 
 
 	$name = array();
@@ -157,7 +160,9 @@
 	$data['locale']			= $language."_".$vCountry;
 	$data['timeZone']			= $timezone;
 	$data['deliverFlag']   = $vDelivery;
-	$data['currency']			= $currency;
+	$data['ccy']			= $vCurrency;
+	
+		
 		
 	if(isset($_SESSION['venue_code']))
 		$data['code'] = $_SESSION['venue_code'];
@@ -176,14 +181,17 @@
 		
 		$data = array();
 		$data['leadTime']			= $leadtime;
+		$data['deliveryOrderMin']	= $dMinVal;
+		$data['deliveryCharge']	    = $dCharge;	
+		$data['deliveryChargeBelow']= $dChargeBelow;
 		$data['collectInterval']	= $cDuration;
-		$data['deliveryZone']		= $dZone;
-		$data['orderMin']	        = $minVal;
-		$data['deliveryCharge']	    = $dCharge;
-		$data['deliveryOrderMin']	= $dOrder;
+		$data['deliveryZone']		= $dZone;					
 		$data['deliveryLeadTime']	= $dLeadTime;
 		$data['deliveryDiscount']   = $vDeliveryDiscount;
-		$data['pickupDiscount']   = $vDiscount;
+		$data['pickupDiscount']   	= $vDiscount;
+		$data['orderMin']			= $vOrderMin;
+			
+		
 
 		
 

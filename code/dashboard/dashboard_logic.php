@@ -76,10 +76,10 @@
 		$_SESSION['venue_demoFlag']			= $dataJSON[0]['demoFlag'];	
 		$_SESSION['venue_liveFlag']			= $dataJSON[0]['liveFlag'];	
 		$_SESSION['venue_code']				= $dataJSON[0]['code'];	
-		$_SESSION['venue_town']				= $dataJSON[0]['town'];	
+		$_SESSION['venue_town']				= $dataJSON[0]['city'];	
 		$_SESSION['venue_language']				= $dataJSON[0]['locale'];	
 		$_SESSION['venue_timezone']				= $dataJSON[0]['timeZone'];	
-		$_SESSION['venue_currency']				= $dataJSON[0]['currency'];	
+		$_SESSION['venue_currency']				= $dataJSON[0]['ccy'];	
 		
 		
 		//we get venue id from _SESSION
