@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://caiocpricci2@bitbucket.org/preoday/webapp.git"
+    "url": "https://bitbucket.org/preoday/webapp.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "",
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-contrib-cssmin": "^0.9.0",
