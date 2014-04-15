@@ -12,7 +12,7 @@ module.exports = function(grunt) {
               'js/foundation/foundation.tooltips.js','js/foundation/foundation.topbar.js','js/foundation/foundation.datepicker.js','js/foundation/foundation.abide.js',
               'js/jquery.noty-full-min.js','js/jsColor/jscolor.js','js/form.js','js/tweet.js','js/timepicker.js','js/jquery-ui-1.10.3.custom.min.js',
               'js/multi-select.js','js/tableSlide.js','js/js-actual.js','js/googleplus.js','js/general.js'],
-        dest: 'js/all_scritps.min.js'
+        dest: 'js/all_scripts.min.js'
       }
     }
   });
