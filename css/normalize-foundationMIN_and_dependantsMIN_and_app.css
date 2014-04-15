@@ -1788,9 +1788,9 @@ table.mdTable{
 
 .advanced-setting{
 	background-color: white;
-	-moz-box-shadow: inset 0px 3px 10px 0px rgba(200, 200, 200, 1);
-	-webkit-box-shadow: inset 0px 3px 10px 0px rgba(200, 200, 200, 1);
-	box-shadow: inset 0px 3px 10px 0px rgba(200, 200, 200, 1);
+	-moz-box-shadow: rgba(70, 83, 93, 0.54902) 0px 0px 6px inset;
+	-webkit-box-shadow: rgba(70, 83, 93, 0.54902) 0px 0px 6px inset;
+	box-shadow: rgba(70, 83, 93, 0.54902) 0px 0px 6px inset;
 	padding: 20px 20px;
 	margin-bottom: 20px;
 }
@@ -1803,3 +1803,27 @@ table.mdTable{
 .float-right{
 	float: right;
 }
+
+#venueConfigForm > .large-6{
+	max-width:31em;
+	margin:0 auto;
+
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+
+
+.large-collumns-wrapper {
+	margin:0 auto;
+	max-width:62.5em;
+}
+

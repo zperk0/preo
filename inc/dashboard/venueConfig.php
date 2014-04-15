@@ -35,9 +35,13 @@
 		<a class="unavailable" href="#"><? echo _("Done");?></a>
 	</nav>
 	<?}?>
+</div>
 	<form id="venueConfigForm" method="POST" class="custom" data-abide>
+	<div class="row">
 		<h1 class="alignHeader"><?echo _("Tell us about your venue");?></h1>
 		<input type="hidden" id="redirectFlag" value="<?echo $redirectFlag;?>"/>
+	</div>
+	<div class='large-collumns-wrapper'>
 		<div class="large-6 columns">
 			
 			
@@ -456,7 +460,8 @@
 				</div>		
 
 		</div>
-
+		<div class='clearFix'></div>
+</div>
 		<div class="large-12 small-12 columns advanced-setting <?if( ((isset($_SESSION['venue_deliveryFlag']) && !$_SESSION['venue_deliveryFlag'])) || !isset($_SESSION['venue_deliveryFlag']) ){?>hide<?}?>" id="advanced-setting">
 			<div class="row">
 				<div class="large-4  columns">
@@ -638,7 +643,6 @@
 			</div>
 		</div>
 	</form>
-</div>
 <?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
