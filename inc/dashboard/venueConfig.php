@@ -64,7 +64,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("What type of venue are you?");?></label>
-					<select name="vCat" class="dropdown pdDropdown" tabindex=3>
+					<select name="vCat" class="dropdown pdDropdown" >
 						<option value="1"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='1')	{?>selected="selected"<?}?>><? echo _("Sports Arena");?></option>
 						<option value="2"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='2')	{?>selected="selected"<?}?>><? echo _("Bars, Pubs and Clubs");?></option>
 						<option value="3"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='3')	{?>selected="selected"<?}?>><? echo _("Workplace/Education Catering");?></option>

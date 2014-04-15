@@ -442,6 +442,28 @@ $(document).ready(function() {
 			$('.leadTimeDiv').find('input').removeAttr('required');
 		}
 	});
+
+	$('.eventFlagNoti2 input').on('click', function(){
+		$(".eventFlagNoti2 input").removeAttr("checked");
+		$(this).attr("checked", "true");
+	});
+
+	$('.eventFlagNoti3 input').on('click', function(){
+		$(".eventFlagNoti3 input").removeAttr("checked");
+		$(this).attr("checked", "true");
+	});
+
+	$('.venueHasDelivery').on('click', function(){
+		var isChecked = $("#advanced-setting").css("display") == "none";		
+		console.log('isChecked:' + isChecked)
+		if(isChecked)
+		{
+			$('#advanced-setting').slideDown();
+		} else {
+			
+			$('#advanced-setting').slideUp();
+		}
+	});
 	
 	$("#venueConfigForm").on('valid', function (event) {
 		var url = "/saveVenue";
