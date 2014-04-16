@@ -520,8 +520,8 @@ $(document).ready(function() {
 			  type: 'success',
 			  text: 'Uploaded!'
 			});
-			
-			//alert(responseText);
+			console.log('resp:',responseText)
+			alert(responseText);
 			
 			responseText=responseText.replace('_thumb.png','');
 			

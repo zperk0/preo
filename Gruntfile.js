@@ -37,13 +37,23 @@ module.exports = function(grunt) {
           from: 'url(icomoon',                   // string replacement
           to: 'url(../fonts/pd-fonts/icomoon'
         }]
+      },
+      jscolor:{
+        src:['js/all_scripts.min.js'],
+        overwrite:true,
+        replacements:[{
+          from:"jscolor/",
+          to: "js/jscolor/"
+
+        }]        
       }
     }
 });
 
-  grunt.registerTask('build', ['uglify','minifycss']);
-  grunt.registerTask('minifycss', ['cssmin','replace:fonts']);
-  grunt.registerTask('replacefonts', ['replace:fonts']);
+  
+  grunt.registerTask('minifyjs', ['uglify','replace:jscolor']);
+  grunt.registerTask('minifycss', ['cssmin','replace:fonts']);  
+  grunt.registerTask('build', ['minifyjs','minifycss']);
   grunt.registerTask('default', ['build']);
 
 };
