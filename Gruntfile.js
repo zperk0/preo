@@ -22,12 +22,28 @@ module.exports = function(grunt) {
               'css/date-time.css','css/multi-select.css','css/app.css'],
         dest: 'css/all_css.min.css',        
       }
+    },
+    replace: {
+      fonts: {
+        src: ['css/all_css.min.css'],             // source files array (supports minimatch)\
+        overwrite: true,
+        replacements: [{
+          from: 'url(maven',                   // string replacement
+          to: 'url(../fonts/Maven/maven'
+        },{ 
+          from: 'url(fonts/new/',                   // string replacement
+          to: 'url(../fonts/helvetica-neue/fonts/new/'
+        },{ 
+          from: 'url(icomoon',                   // string replacement
+          to: 'url(../fonts/pd-fonts/icomoon'
+        }]
+      }
     }
 });
-//TODO fix the relative path for fonts while minifying
 
-  grunt.registerTask('build', ['uglify','cssmin']);
-  grunt.registerTask('minifycss', ['cssmin']);
+  grunt.registerTask('build', ['uglify','minifycss']);
+  grunt.registerTask('minifycss', ['cssmin','replace:fonts']);
+  grunt.registerTask('replacefonts', ['replace:fonts']);
   grunt.registerTask('default', ['build']);
 
 };
