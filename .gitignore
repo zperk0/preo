@@ -4,3 +4,4 @@ tmp
 webapp.esproj
 sites
 node_modules
+.DS_Store
