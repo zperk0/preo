@@ -2822,10 +2822,13 @@ $(document).ready(function() {
 	});
 	
 	$(document).on("click", '.addMoreOH', function(){
+				
 		$oldDiv = $(this).parents('.openingHoursDiv').find('.openHWrapper:first');
 		$newDiv = $oldDiv.clone(false);
+
+		$ohDowCount = $(this).parents('.openingHoursDiv').find('.openHWrapper').length;
 		
-		$newDiv.find('input').each(function(){
+		$newDiv.find('input[type=text]').each(function(){
 			$(this).val('');
 			$(this).timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 		});
@@ -2833,12 +2836,18 @@ $(document).ready(function() {
 		$newDiv.find("input[name^=ohStartTime]").on('changeTime',function() {
 			currTime = $(this).val()+":00";
 			
-			newTime = extractAMPM("January 01, 2000 "+currTime);
-			
+			newTime = extractAMPM("January 01, 2000 "+currTime);			
 			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('remove');
 			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
 			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
+		});
+
+		//increment the name for each row
+		$newDiv.find("input[type=radio]").each(function(){
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d*\]/, '['+$ohDowCount+']');
+			$(this).attr('name', newName);		
 		});
 		
 		$newDiv.find('.removeOHDiv').show();
