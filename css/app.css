@@ -1522,6 +1522,11 @@ footer.dashboardFooter div{
 	width: 80px;
 }
 
+.openingHours .switch{
+	margin-top: 5px;
+	width: 65%;
+}
+
 span.slotDuration{
 	padding-top: 10px;
 	font-weight: bold;
@@ -1834,3 +1839,5 @@ form .switch label.no{
 div.switch input:last-of-type+span+label{
 	right:-55%;
 }
+
+

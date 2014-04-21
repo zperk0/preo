@@ -44,9 +44,33 @@
 				<?if(isset($neTimes) && isset($neTimes[$i]) && count($neTimes["$i"]))
 				{
 					$counter = 0;
-					foreach($neTimes["$i"] as $entry){ ?>
-					
+					foreach($neTimes["$i"] as $entry){ ?>					
 					<div class="large-12 columns openingHours openHWrapper">
+
+						<div class="small-2 columns">
+							<label><?echo _("Open for pickup");?></label>
+							<div class="switch small" title="<?echo _("This chooses whether the venue is open for in store pickup this day or not.");?>"> 
+									<input name="isOpenPickup[<?echo $dow[$i];?>][]" value="0" type="radio">
+									<label class='no'><?echo _("No");?></label>
+
+									<input name="isOpenPickup[<?echo $dow[$i];?>][]" value="1" type="radio" checked>
+									<label class='yes'><?echo _("Yes");?></label>
+
+									<span></span>
+							</div>
+						</div>
+						<div class="small-2 columns">
+							<label><?echo _("Open for delivery");?></label>
+							<div class="switch small" title="<?echo _("This chooses whether the venue is open for delivery pickup this day or not.");?>"> 
+									<input name="isOpenDelivery[<?echo $dow[$i];?>][]" value="0" type="radio">
+									<label class='no'><?echo _("No");?></label>
+
+									<input name="isOpenDelivery[<?echo $dow[$i];?>][]" value="1" type="radio" checked>
+									<label class='yes'><?echo _("Yes");?></label>
+
+									<span></span>
+							</div>
+						</div> 
 						<div class="large-2 columns">
 							<label><?echo _("Opens at");?></label>
 							<input type="text" name="ohStartTime[<?echo $dow[$i];?>][]" class="noEnterSubmit" pattern="\d\d:\d\d" value="<?echo $entry['ohstarttime'];?>" placeholder="<?echo _("HH:MM");?>" required/>

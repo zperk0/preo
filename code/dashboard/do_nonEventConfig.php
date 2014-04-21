@@ -22,6 +22,8 @@
 	
 	$dow = array('dummy','sunday','monday','tuesday','wednesday','thursday','friday','saturday');
 	
+	$cIsOpenPickup  = $_POST['isOpenPickup'];
+	$cIsOpenDelivery  = $_POST['isOpenDelivery'];
 	$cOpen  = $_POST['ohStartTime'];
 	$cClose = $_POST['ohEndTime'];
 	
@@ -40,6 +42,21 @@
 			$neTimes[$i][$counter]['ohendtime']   = $entry;
 			$counter++;
 		}
+
+		$counter = 0;
+		foreach($cIsOpenPickup[$dow[$i]] as $entry)
+		{
+			$neTimes[$i][$counter]['isOpenPickup']   = $entry;
+			$counter++;
+		}
+
+		$counter = 0;
+		foreach($cIsOpenDelivery[$dow[$i]] as $entry)
+		{
+			$neTimes[$i][$counter]['isOpenDelivery']   = $entry;
+			$counter++;
+		}
+		
 	}
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
@@ -52,7 +69,10 @@
 			$data 			= array();
 			$data['day']	= $dName;
 			$data['open']	= "$line[ohstarttime]:00";
-			$data['close'] 	= "$line[ohendtime]:00";
+			$data['close'] 	= "$line[ohendtime]:00";			
+			$data['pickup'] 	= $line["isOpenPickup"];
+			$data['delivery'] 	= $line["isOpenDelivery"]; 
+			
 			
 			$jsonData = json_encode($data);
 			$curlResult = callAPI('POST', $apiURL."venues/$venueID/hours", $jsonData, $apiAuth); //menu created
