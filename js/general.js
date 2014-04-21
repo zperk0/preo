@@ -1064,7 +1064,7 @@ $(document).ready(function() {
 		else section = section.replace(/dup\d+_/gi,"");
 		
 		//get table item number
-		$curTable = $(this).closest('table');
+		$curTable = $(this).closest('table');		
 		var itemID = $curTable.attr('id');
 		
 		//get and update current count
@@ -1181,7 +1181,9 @@ $(document).ready(function() {
 					$(this).attr('name', newName);
 				});
 				
-				$newTab.find('.modifierRow select').each(function() {
+				$newTab.find('.modifierRow select').each(function(index,element) {					
+					//Set value to match original row
+					$(this).val(($curTable.find(".modifierRow select")[index]).value)				
 					var tempName = $(this).attr('name');
 					var newName = tempName.replace(/item\d+/gi, 'item'+newCount);
 					$(this).attr('name', newName);
