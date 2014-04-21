@@ -50,10 +50,10 @@
 						<div class="small-2 columns">
 							<label><?echo _("Open for pickup");?></label>
 							<div class="switch small" title="<?echo _("This chooses whether the venue is open for in store pickup this day or not.");?>"> 
-									<input name="isOpenPickup[<?echo $dow[$i];?>][]" value="0" type="radio">
+									<input name="isOpenPickup[<?echo $dow[$i];?>][<?echo $counter;?>]" value="0" type="radio" <?if ($entry['pickup'] == 0) echo "checked" ?> >
 									<label class='no'><?echo _("No");?></label>
 
-									<input name="isOpenPickup[<?echo $dow[$i];?>][]" value="1" type="radio" checked>
+									<input name="isOpenPickup[<?echo $dow[$i];?>][<?echo $counter;?>]" value="1" type="radio" <?if ($entry['pickup'] != 0) echo "checked" ?>>
 									<label class='yes'><?echo _("Yes");?></label>
 
 									<span></span>
@@ -61,11 +61,11 @@
 						</div>
 						<div class="small-2 columns">
 							<label><?echo _("Open for delivery");?></label>
-							<div class="switch small" title="<?echo _("This chooses whether the venue is open for delivery pickup this day or not.");?>"> 
-									<input name="isOpenDelivery[<?echo $dow[$i];?>][]" value="0" type="radio">
+							<div class="switch small" title="<?echo _("This chooses whether the venue is open for delivery this day or not.");?>"> 
+									<input name="isOpenDelivery[<?echo $dow[$i];?>][<?echo $counter;?>]" value="0" type="radio" <?if ($entry['delivery'] == 0) echo "checked" ?>>
 									<label class='no'><?echo _("No");?></label>
 
-									<input name="isOpenDelivery[<?echo $dow[$i];?>][]" value="1" type="radio" checked>
+									<input name="isOpenDelivery[<?echo $dow[$i];?>][<?echo $counter;?>]" value="1" type="radio" <?if ($entry['delivery'] != 0) echo "checked" ?>>
 									<label class='yes'><?echo _("Yes");?></label>
 
 									<span></span>
