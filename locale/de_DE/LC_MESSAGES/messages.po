@@ -8,14 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-23 17:31+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2014-04-23 18:19+0200\n"
+"PO-Revision-Date: 2014-04-23 17:56+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/404/404_content.php:5
 msgid "Whoops!"
@@ -152,85 +153,92 @@ msgstr "Fertig"
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:39
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:28
 msgid "Style your app"
-msgstr ""
+msgstr "Gestalten Sie Ihre App"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:39
 msgid "This is the first screen that your customers will see."
-msgstr ""
+msgstr "Dies wird die erste Display-Seite, die Ihre Kunden sehen werden."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:46
 msgid "Create a main heading"
-msgstr ""
+msgstr "Erstellen Sie den Haupttitel"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:47
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:66
 msgid "Choose one here"
-msgstr ""
+msgstr "Wählen Sie hier"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:49
 msgid "Leave the 4 deep queue to everyone else and pre-order."
-msgstr ""
+msgstr "Überlassen Sie den Anderen das Anstellen und bestellen Sie vor."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:50
 msgid "Don't miss the game, jump the long queue and pre-order."
 msgstr ""
+"Verpassen Sie nicht das Spiel, überspringen Sie die Schlange und bestellen "
+"Sie einfach vor."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:51
 msgid "Intermission pre-order."
-msgstr ""
+msgstr "In der Pause vorbestellen."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:52
 msgid "A sparkling fruity alternative to queuing."
-msgstr ""
+msgstr "Eine fruchtig-frische Alternative zum unangenehmen Anstellen."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:53
 msgid "Go on, jump the crazy queue and pre-order."
 msgstr ""
+"Los geht’s, überspringe die lange Schlange und bestelle ganz einfach vor."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:54
 msgid "Don't miss the game! Order online and skip the half-time rush"
 msgstr ""
+"Verpassen Sie nicht das Spiel! Bestellen Sie Online und umgehen Sie den "
+"Ansturm zur Halbzeit."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:55
 msgid "Order interval drinks before the show starts"
-msgstr ""
+msgstr "Bestellen Sie Getränke zur Pause, bevor die Show beginnt."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:56
 msgid "Stay with friends while the bar prepares your round"
 msgstr ""
+"Bleib bei deinen Freunden und an der Bar wird schon die nächste Runde für "
+"euch vorbereitet."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:57
 msgid "Order your coffee and croissant from your table, or from the train."
-msgstr ""
+msgstr "Bestellen Sie Ihren Kaffee und Ihr Croissant von Ihrem Sitzplatz."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:59
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:72
 msgid "or create your own..."
-msgstr ""
+msgstr "oder erstellen Sie ihren eigenen..."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:60
 msgid "maximum 70 characters"
-msgstr ""
+msgstr "max 70 Zeichen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:65
 msgid "Create a subheading"
-msgstr ""
+msgstr "Erstellen Sie einen Untertitel"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:69
 msgid "Pre-order food and drinks"
-msgstr ""
+msgstr "Vorbestellung Speisen und Getränke"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:70
 msgid "Pre-order drinks+food"
-msgstr ""
+msgstr "Vorbestellung Speisen+Getränke"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:73
 msgid "maximum 30 characters"
-msgstr ""
+msgstr "max 30 Zeichen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:84
 msgid "Text colour"
-msgstr ""
+msgstr "Schriftfarbe"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:84
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:98
@@ -241,33 +249,34 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:105
 msgid "Enter Hex Colour Code or click to choose your colour."
 msgstr ""
+"Geben Sie den Hex-Farbcode ein oder klicken Sie um Ihre Farbe auszuwählen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:92
 msgid "ORDER NOW button"
-msgstr ""
+msgstr "JETZT BESTELLEN button"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:98
 msgid "Button colour"
-msgstr ""
+msgstr "Button Farbe"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:106
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:79
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:105
 msgid "Button text colour"
-msgstr ""
+msgstr "Button Schriftfarbe"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:126
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:118
 msgid "ORDER NOW"
-msgstr ""
+msgstr "Jetzt Bestellen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:138
 msgid "Select a home-screen background"
-msgstr ""
+msgstr "Wählen Sie den Hintergrund für die Startansicht"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:169
 msgid "UPLOAD YOUR OWN BACKGROUND"
-msgstr ""
+msgstr "Eigenen Hintergrund hochladen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:176
 msgid "Custom Background Upload"
@@ -298,7 +307,7 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:194
 msgid "UPLOAD YOUR OWN LOGO"
-msgstr ""
+msgstr "Eigenes Logo hochladen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:201
 msgid "Logo Upload"
@@ -339,6 +348,11 @@ msgstr "SPEICHERN"
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:382
 msgid "SAVING..."
 msgstr "SPEICHERN..."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:232
+#, fuzzy, php-format
+msgid "30% done, time for the artistic bit..."
+msgstr "30% geschafft, Zeit für den künstlerischen Teil…"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:28
 msgid "This is where you can brand your menu page"
@@ -1441,7 +1455,7 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:398
 #, fuzzy, php-format
-msgid "15% done, keep going!"
+msgid "\"15% done, keep going!\""
 msgstr "15% geschafft, weiter so!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:13

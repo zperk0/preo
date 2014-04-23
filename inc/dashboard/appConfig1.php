@@ -229,7 +229,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','150%');
-	$('.progressIndicator').attr('title', "30% done, time for the artistic bit...");
+	$('.progressIndicator').attr('title', <? echo _("30% done, time for the artistic bit...") ?> );
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });
