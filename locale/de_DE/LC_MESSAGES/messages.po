@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-23 19:04+0200\n"
+"POT-Creation-Date: 2014-04-23 19:44+0200\n"
 "PO-Revision-Date: 2014-04-23 17:56+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -626,7 +626,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:86
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:222
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:51
 msgid "Start Date"
@@ -882,7 +882,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:77
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:213
 msgid "Delete this section"
-msgstr ""
+msgstr "Diesen Abschnitt löschen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:91
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:208
@@ -936,7 +936,7 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:25
 msgid "Build your menu"
-msgstr ""
+msgstr "Bauen Sie Ihr Menü auf"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:25
 msgid "Your menu"
@@ -948,39 +948,43 @@ msgid ""
 "with.<br/><br/>An easy way is to group items, i.e. create separate sections "
 "for food, cold drinks and hot drinks."
 msgstr ""
+"Jetzt können Sie Ihr Menü erstellen. Wir schlagen vor, dass sie es erstmal "
+"einfach halten. <br/><br/>Ein guter Einstieg ist, die Artikel in Gruppen "
+"einzuteilen, z.B. erstellen Sie separate Abschnitte für Speisen, kalte oder "
+"heiße Getränke."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:61
 msgid "Click to add your menu name"
-msgstr ""
+msgstr "Klicken Sie um den Namen Ihres Menüs hinzuzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:62
 msgid "Please type a menu name (max 100chars)"
-msgstr ""
+msgstr "Bitte geben Sie einen Menünamen ein (max 100 Zeichen)"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:68
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:204
 msgid "Click to add a section name"
-msgstr ""
+msgstr "Klicken Sie um den Namen eines Abschnitts hinzuzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:69
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:205
 msgid "Please type a section name (max 100chars)"
-msgstr ""
+msgstr "Bitte geben Sie einen Namen ein (max 100 Zeichen)"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:74
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:210
 msgid "Add an item to this section"
-msgstr ""
+msgstr "Hier Artikel hinzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:76
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:212
 msgid "Move this section"
-msgstr ""
+msgstr "Diesen Abschnitt bewegen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:87
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:223
 msgid "Price (&pound;)"
-msgstr ""
+msgstr "Preis (&euro;)"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:88
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:224
@@ -989,12 +993,12 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:103
 msgid "Click to add an item name"
-msgstr ""
+msgstr "Klicken, um Artikelname hinzuzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:107
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:242
 msgid "Optional description"
-msgstr ""
+msgstr "Beschreibung optional"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:112
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:162
@@ -1027,22 +1031,22 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:138
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:274
 msgid "Add an option"
-msgstr ""
+msgstr "Option hinzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:140
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:276
 msgid "Type or pick an option title"
-msgstr ""
+msgstr "Eingabe oder Auswahl einer Optionsbezeichnung"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:140
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:276
 msgid "Eg. Pick a size, Choice of an option, Add some extras, Select a side"
-msgstr ""
+msgstr "z.B. Größe oder Option auswählen, Extras hinzufügen, Beilage auswählen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:141
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:277
 msgid "Please type or pick a title"
-msgstr ""
+msgstr "Bitte geben Sie eine Bezeichnung ein oder wählen Sie aus."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:145
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:281
@@ -1052,7 +1056,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:145
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:281
 msgid "User selects 1 option"
-msgstr ""
+msgstr "Nutzer wählt 1 Option"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:146
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:282
@@ -1062,7 +1066,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:146
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:282
 msgid "User selects 1 or more options"
-msgstr ""
+msgstr "Nutzer wählt 1 oder mehr Optionen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:147
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:283
@@ -1072,7 +1076,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:147
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:283
 msgid "User selects 0 or more options"
-msgstr ""
+msgstr "Nutzer wählt 0 oder mehr Optionen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:148
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:284
@@ -1081,6 +1085,9 @@ msgid ""
 "user must pick 1 or more options.<br/><br/>Optional: when the user can pick "
 "0 or multiple options."
 msgstr ""
+"Eine: Der Nutzer muss sich nur für eine Option entscheiden.<br/><br/"
+">Mehrere: Der Nutzer muss sich für eine oder mehr Optionen entscheiden. "
+"Optional: Der Nutzer kann sich zwischen 0 und mehrere Optionen entscheiden."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:149
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:285
@@ -1090,13 +1097,13 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:154
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:290
 msgid "Click to add an option name"
-msgstr ""
+msgstr "Klicken, um Optionsbezeichnung hinzuzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:155
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:291
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:323
 msgid "Please type an option name (max 100chars)"
-msgstr ""
+msgstr "Bitte geben Sie eine Optionsbezeichnung ein (max 100 Zeichen)."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:161
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:296
@@ -1105,6 +1112,8 @@ msgid ""
 "This will be in addition to the item price. If there is no price difference, "
 "put in 0.00."
 msgstr ""
+"Dieser Betrag wird dem Preis des Artikels zusätzlich hinzugerechnet. Wenn "
+"keine Preisdifferenz vorhanden ist, fügen Sie hier 0,00 ein."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:183
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:354
@@ -1114,23 +1123,28 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:183
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:354
 msgid "Add an option category to this item <small>(optional)</small>"
-msgstr ""
+msgstr "Diesem Artikel Option hinzufügen <small>(optional)</small>"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:371
 msgid "Add a new menu section"
-msgstr ""
+msgstr "Neuen Menü-Abschnitt hinzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:377
 msgid "COLLAPSE ALL"
-msgstr ""
+msgstr "VERKLEINERN"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:379
 msgid "SAVE & CONTINUE EDITING"
-msgstr ""
+msgstr "SPEICHERN & WEITERBEARBEITEN"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:380
 msgid "SAVE & FINISH"
-msgstr ""
+msgstr "SPEICHERN & BEENDEN"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:394
+#, fuzzy, php-format
+msgid "45% done, now for the fun bit!"
+msgstr "45% geschafft und jetzt weiter zum spaßigeren Teil!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:18
 msgid "Tell us about your opening times"
