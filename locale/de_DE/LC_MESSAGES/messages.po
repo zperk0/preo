@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-23 18:19+0200\n"
+"POT-Creation-Date: 2014-04-23 19:04+0200\n"
 "PO-Revision-Date: 2014-04-23 17:56+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -356,17 +356,19 @@ msgstr "30% geschafft, Zeit für den künstlerischen Teil…"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:28
 msgid "This is where you can brand your menu page"
-msgstr ""
+msgstr "Hier können Sie Ihre Menüseite mit Ihrem Logo gestalten"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:35
 msgid "Add a short venue title"
-msgstr ""
+msgstr "Fügen Sie eine kurze Form Ihres Unternehmensnamen hinzu"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:35
 msgid ""
 "This is a shorter version of your venue name that will be visible over your "
 "menu."
 msgstr ""
+"Dies soll eine kürzere Version Ihres eigentlichen Unternehmensnamens sein "
+"und wird über Ihrem Menü angezeigt."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:37
 msgid "Please type a venue title <br/>(max 22chars)"
@@ -375,34 +377,42 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:45
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:126
 msgid "BASKET"
-msgstr ""
+msgstr "WARENKORB"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:59
 msgid "Colour scheme"
-msgstr ""
+msgstr "Farbgebung"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:62
 msgid "Colour one"
-msgstr ""
+msgstr "Farbe 1"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:63
 msgid ""
 "This colour is used across section progress buttons and as a highlight "
 "colour."
 msgstr ""
+"Diese Farbe ist für die Weiter-Buttons der jeweiligen Abschnitte und dient "
+"dem Hervorheben. "
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:71
 msgid "Button one colour"
-msgstr ""
+msgstr "Button 1 Farbe "
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:89
 msgid ""
 "This colour is used across item select buttons and as a highlight colour."
 msgstr ""
+"Geben Sie den Hex-Farbcode ein oder klicken Sie um Ihre Farbe auszuwählen."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:97
 msgid "Button two colour"
-msgstr ""
+msgstr "Button 2 Farbe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:127
+#, fuzzy, php-format
+msgid "40% done, a couple more design touches..."
+msgstr "40% erledigt, noch ein paar Design-Feinheiten..."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:11
 msgid "This is where you can monitor your takings and reports."
