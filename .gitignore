@@ -1,3 +1,6 @@
 /js/twitter_app/*.json
 /js/twitter_app/*.json
 tmp
+.DS_Store
+webapp.esproj
+node_modules
