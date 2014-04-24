@@ -2,7 +2,7 @@
 
 $lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
 
-$lang="de"; //debug or force german
+//$lang="de"; //debug or force german
 
 switch ($lang)
 {
