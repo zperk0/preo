@@ -110,7 +110,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						
@@ -121,7 +121,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message'] //text: "Sorry, but there's been an error processing your request."
+						  text: dataArray['message'] 
 						});
 					}
 					else
@@ -162,7 +162,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						return false;
@@ -172,7 +172,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Incorrect credentials or account does not exist." //dataArray['message'] //text: "Sorry, but there's been an error processing your request."
+						  text: _tr("Incorrect credentials or account does not exist.") //dataArray['message'] //text: _tr("Sorry, but there's been an error processing your request.")
 						});
 				   
 					}
@@ -192,7 +192,6 @@ $(document).ready(function() {
 					}
 				}
 			 });
-
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
@@ -214,7 +213,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						
 						//alert(data);
@@ -226,7 +225,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
 						});
 				   
 					}
@@ -234,7 +233,7 @@ $(document).ready(function() {
 					{	
 						noty({
 						  type: 'success',
-						  text: 'Success! Please check your email for further instructions.'
+						  text: _tr('Success! Please check your email for further instructions.')
 						});
 						
 						$("#forgotPassM").foundation('reveal', 'close');
@@ -263,7 +262,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." //text: 'Connection Error! Check API endpoint.'
+						  text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'
 						});
 						//alert(data);
 						return false;
@@ -273,12 +272,12 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, incorrect code." //text: dataArray['message']
+						  text: _tr("Sorry, incorrect code.") //text: dataArray['message']
 						});
 					}
 					else
 					{	
-						noty({ type: 'success', text: 'Your password has been reset.<br/>You will now be redirected to the login page.' });
+						noty({ type: 'success', text: _tr('Your password has been reset.<br/>You will now be redirected to the login page.') });
 						setTimeout(function(){window.location.replace("/login");}, 2500);
 					}
 				}
@@ -463,7 +462,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						return false;
@@ -473,12 +472,12 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
 						});
 					}
 					else
 					{	
-						noty({ type: 'success', text: 'Venue changes have been saved!' });
+						noty({ type: 'success', text: _tr('Venue changes have been saved!') });
 						if($('#redirectFlag').val()=='1') { setTimeout(function(){window.location.replace("/homescreen");}, 1000); }
 					}
 				}
@@ -565,7 +564,7 @@ $(document).ready(function() {
 		success: function(responseText) { 
 			noty({
 			  type: 'success',
-			  text: 'Uploaded!'
+			  text: _tr('Uploaded!')
 			});
 			
 			//alert(responseText);
@@ -598,7 +597,7 @@ $(document).ready(function() {
 		error: function() { 
 			noty({
 			  type: 'error',  layout: 'topCenter',
-			  text: 'Error uploading file'
+			  text: _tr('Error uploading file')
 			});
 			
 			//clear for new file
@@ -624,7 +623,7 @@ $(document).ready(function() {
 			{
 				noty({
 				  type: 'error',  layout: 'topCenter',
-				  text: 'Incorrect Image File'
+				  text: _tr('Incorrect Image File')
 				});
 				
 				//manual reset
@@ -753,7 +752,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						return false;
@@ -763,13 +762,13 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
 						});
 						//alert(data);
 					}
 					else
 					{	
-						noty({ type: 'success', text: 'App changes have been saved!' });
+						noty({ type: 'success', text: _tr('App changes have been saved!') });
 						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/menuscreen");}, 1000);
 					}
 				}
@@ -806,7 +805,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						
 						return false;
@@ -816,13 +815,13 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
 						});
 				   
 					}
 					else
 					{	
-						noty({ type: 'success', text: 'App changes have been saved!' });
+						noty({ type: 'success', text: _tr('App changes have been saved!') });
 						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
@@ -886,7 +885,7 @@ $(document).ready(function() {
 		
 		//add autocomplete
 		$subHeader.find("input[name^=iMod]").each(function(){
-			$(this).autocomplete({ source: [ "Choose a size","Choose a flavour","Choose a topping","Choose some extras","Choose a side dish" ], delay: 10, minLength: 0, position: { my: "left top", at: "left bottom", collision: "none", of: $subHeader.find("input[name^=iMod]") } });
+			$(this).autocomplete({ source: [ _tr("Choose a size"),_tr("Choose a flavour"),_tr("Choose a topping"),_tr("Choose some extras"),_tr("Choose a side dish") ], delay: 10, minLength: 0, position: { my: "left top", at: "left bottom", collision: "none", of: $subHeader.find("input[name^=iMod]") } });
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/m\d+/gi, "m"+newCount);
 			$(this).attr('name', newName);
@@ -962,7 +961,7 @@ $(document).ready(function() {
 					$(this).multiselect({
 					   multiple: false,
 					   header: false,
-					   noneSelectedText: "Pick an option type",
+					   noneSelectedText: _tr("Pick an option type"),
 					   selectedList: 1
 					});
 
@@ -1167,7 +1166,7 @@ $(document).ready(function() {
 					$(this).multiselect({
 					   multiple: false,
 					   header: false,
-					   noneSelectedText: "Pick an option type",
+					   noneSelectedText: _tr("Pick an option type"),
 					   selectedList: 1
 					}); 
 				});
@@ -1178,7 +1177,7 @@ $(document).ready(function() {
 		$newTab.find(".itemDuplicate").attr('id',"dup"+newCount+"_"+section);
 		
 		//add autocomplete
-		$newTab.find("input[name^=iMod]").autocomplete({ source: [ "Choose a size","Choose a flavour","Choose a topping","Choose some extras","Choose a side dish" ], delay: 10, minLength: 0, position: { my: "left top", at: "left bottom", collision: "none", of: $newTab.find("input[name^=iMod]") } });
+		$newTab.find("input[name^=iMod]").autocomplete({ source: [ _tr("Choose a size"),_tr("Choose a flavour"),_tr("Choose a topping"),_tr("Choose some extras"),_tr("Choose a side dish") ], delay: 10, minLength: 0, position: { my: "left top", at: "left bottom", collision: "none", of: $newTab.find("input[name^=iMod]") } });
 		
 		$newTab.css('backgroundColor','#fafafa');
 		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
@@ -1257,7 +1256,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 				   multiple: false,
 				   header: false,
-				   noneSelectedText: "Pick an option type",
+				   noneSelectedText: _tr("Pick an option type"),
 				   selectedList: 1
 				}); 
 		});
@@ -1413,9 +1412,9 @@ $(document).ready(function() {
 		noty({
 			layout: 'center',
 			type: 'confirm',
-			text: 'Are you sure you want to delete this section? Note: all items and options will be lost!',
+			text: _tr('Are you sure you want to delete this section? Note: all items and options will be lost!'),
 			buttons: [
-			{addClass: 'alert tiny', text: 'Yes, delete this section and all its contents!', onClick: function($noty) {
+			{addClass: 'alert tiny', text: _tr('Yes, delete this section and all its contents!'), onClick: function($noty) {
 				//get and update current count
 				var secCount = $("#sectionCountAct").val();
 				var newCount = parseInt(parseInt(secCount) - 1);
@@ -1449,7 +1448,7 @@ $(document).ready(function() {
 				$noty.close();
 			  }
 			},
-			{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+			{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
 				$noty.close();
 			  }
 			}
@@ -1465,8 +1464,8 @@ $(document).ready(function() {
 	});
 	
 
-	$("input[name^=iMod]").autocomplete({ source: [ "Choose a size","Choose a flavour","Choose a topping","Choose some extras","Choose a side dish" ], delay: 10, minLength: 0 });
-	$("input[name^=iMD]").autocomplete({ source: [ "Choose a main","Choose a side","Choose a drink","Choose a curry","Choose a burger" ], delay: 10, minLength: 0 });
+	$("input[name^=iMod]").autocomplete({ source: [ _tr("Choose a size"),_tr("Choose a flavour"),_tr("Choose a topping"),_tr("Choose some extras"),_tr("Choose a side dish") ], delay: 10, minLength: 0 });
+	$("input[name^=iMD]").autocomplete({ source: [ _tr("Choose a main"),_tr("Choose a side"),_tr("Choose a drink"),_tr("Choose a curry"),_tr("Choose a burger") ], delay: 10, minLength: 0 });
 	
 	$(document).on("click", '.showAChevy', function(){
 		$elem = $(this).prevAll('input:first');
@@ -1688,7 +1687,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." //text: 'Connection Error! Check API endpoint.'
+						  text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'
 						});
 						
 						//alert(data);
@@ -1700,7 +1699,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." //text: dataArray['message']
+						  text: _tr("Sorry, but there's been an error processing your request.") //text: dataArray['message']
 						});
 				   
 					}
@@ -1715,7 +1714,7 @@ $(document).ready(function() {
 							});
 						}
 						
-						noty({ type: 'success', text: 'Menu configuration has been saved!' });
+						noty({ type: 'success', text: _tr('Menu configuration has been saved!') });
 						if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
@@ -1817,7 +1816,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Choose a Collection Slot",
+			   noneSelectedText: _tr("Choose a Collection Slot"),
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
@@ -1935,7 +1934,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Choose a Collection Slot",
+			   noneSelectedText: _tr("Choose a Collection Slot"),
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
@@ -1954,9 +1953,9 @@ $(document).ready(function() {
 			noty({
 				layout: 'center',
 				type: 'confirm',
-				text: 'Are you sure you want to delete this event? Note: all event data will be lost!',
+				text: _tr('Are you sure you want to delete this event? Note: all event data will be lost!'),
 				buttons: [
-				{addClass: 'alert tiny', text: 'Yes, delete this event!', onClick: function($noty) {
+				{addClass: 'alert tiny', text: _tr('Yes, delete this event!'), onClick: function($noty) {
 					
 					//get and update current count
 					eventCount = $("#eventCountAct").val();
@@ -1969,7 +1968,7 @@ $(document).ready(function() {
 					$noty.close();
 				  }
 				},
-				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+				{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
 					$noty.close();
 				  }
 				}
@@ -1981,9 +1980,9 @@ $(document).ready(function() {
 			noty({
 				layout: 'center',
 				type: 'confirm',
-				text: 'Are you sure you want to delete this event? Note: all event data will be lost!',
+				text: _tr('Are you sure you want to delete this event? Note: all event data will be lost!'),
 				buttons: [
-				{addClass: 'alert tiny', text: 'Yes, delete this event!', onClick: function($noty) {
+				{addClass: 'alert tiny', text: _tr('Yes, delete this event!'), onClick: function($noty) {
 					
 					var url = "/deleteEvent";
 					$.ajax({
@@ -2000,7 +1999,7 @@ $(document).ready(function() {
 								{
 									noty({
 									  type: 'error',  layout: 'topCenter',
-									  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+									  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 									});
 									
 									//alert(data);
@@ -2020,7 +2019,7 @@ $(document).ready(function() {
 					$noty.close();
 				  }
 				},
-				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+				{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
 					$noty.close();
 				  }
 				}
@@ -2033,7 +2032,7 @@ $(document).ready(function() {
 	$(".eventMenuSingleSelect").multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Choose a Collection Slot",
+	   noneSelectedText: _tr("Choose a Collection Slot"),
 	   selectedList: 1,
 	   minWidth: 342
 	}); 
@@ -2069,7 +2068,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Choose a Collection Slot",
+			   noneSelectedText: _tr("Choose a Collection Slot"),
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
@@ -2151,7 +2150,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						return false;
@@ -2161,7 +2160,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
 						});
 				   
 					}
@@ -2280,7 +2279,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Role",
+			   noneSelectedText: _tr("Role"),
 			   selectedList: 1,
 			   minWidth: 108
 			}); 
@@ -2332,9 +2331,9 @@ $(document).ready(function() {
 			noty({
 				layout: 'center',
 				type: 'confirm',
-				text: 'Are you sure you want to delete this user? Note: all user data will be lost!',
+				text: _tr('Are you sure you want to delete this user? Note: all user data will be lost!'),
 				buttons: [
-				{addClass: 'alert tiny', text: 'Yes, delete this user!', onClick: function($noty) {
+				{addClass: 'alert tiny', text: _tr('Yes, delete this user!'), onClick: function($noty) {
 					
 					//get and update current count
 					userCount = $("#userCountAct").val();
@@ -2347,7 +2346,7 @@ $(document).ready(function() {
 					$noty.close();
 				  }
 				},
-				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+				{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
 					$noty.close();
 				  }
 				}
@@ -2359,9 +2358,9 @@ $(document).ready(function() {
 			noty({
 				layout: 'center',
 				type: 'confirm',
-				text: 'Are you sure you want to delete this user? Note: all user data will be lost!',
+				text: _tr('Are you sure you want to delete this user? Note: all user data will be lost!'),
 				buttons: [
-				{addClass: 'alert tiny', text: 'Yes, delete this user!', onClick: function($noty) {
+				{addClass: 'alert tiny', text: _tr('Yes, delete this user!'), onClick: function($noty) {
 					
 					var url = "/deleteUser";
 					$.ajax({
@@ -2378,7 +2377,7 @@ $(document).ready(function() {
 								{
 									noty({
 									  type: 'error',  layout: 'topCenter',
-									  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+									  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 									});
 									
 									//alert(data);
@@ -2398,7 +2397,7 @@ $(document).ready(function() {
 					$noty.close();
 				  }
 				},
-				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+				{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
 					$noty.close();
 				  }
 				}
@@ -2448,7 +2447,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						
 						errorFlag = 1;
@@ -2461,8 +2460,8 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Username/email already exists"
-						  //text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
+						  text: _tr("Username/email already exists")
+						  //text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
 						});
 						
 						errorFlag = 1;
@@ -2477,7 +2476,7 @@ $(document).ready(function() {
 							  $('input[value='+index+']').val(value); //find by value and update!
 							});
 						}
-						noty({ type: 'success', text: 'User configuration has been saved!' });
+						noty({ type: 'success', text: _tr('User configuration has been saved!') });
 						errorFlag = 0;
 					}
 				}
@@ -2565,10 +2564,10 @@ $(document).ready(function() {
 			$(this).attr('name', newName);
 			
 			$(this).multiselect({
-			   checkAllText: "Select all menus",
-			   uncheckAllText: "Unselect all menus",
-			   noneSelectedText: "Select menu(s) for this outlet",
-			   selectedText: "# of # selected",
+			   checkAllText: _tr("Select all menus"),
+			   uncheckAllText: _tr("Unselect all menus"),
+			   noneSelectedText: _tr("Select menu(s) for this outlet"),
+			   selectedText: _tr("# of # selected"),
 			   selectedList: 0
 			});
 		});
@@ -2608,10 +2607,10 @@ $(document).ready(function() {
 	});
 	
 	$(".outletMenuMultiSelect").multiselect({
-	   checkAllText: "Select all menus",
-	   uncheckAllText: "Unselect all menus",
-	   noneSelectedText: "Select menu(s) for this outlet",
-	   selectedText: "# of # selected",
+	   checkAllText: _tr("Select all menus"),
+	   uncheckAllText: _tr("Unselect all menus"),
+	   noneSelectedText: _tr("Select menu(s) for this outlet"),
+	   selectedText: _tr("# of # selected"),
 	   selectedList: 0
 	}); 
 		
@@ -2629,9 +2628,9 @@ $(document).ready(function() {
 			noty({
 				layout: 'center',
 				type: 'confirm',
-				text: 'Are you sure you want to delete this outlet? Note: all outlet data will be lost!',
+				text: _tr('Are you sure you want to delete this outlet? Note: all outlet data will be lost!'),
 				buttons: [
-				{addClass: 'alert tiny', text: 'Yes, delete this outlet!', onClick: function($noty) {
+				{addClass: 'alert tiny', text: _tr('Yes, delete this outlet!'), onClick: function($noty) {
 					
 					//get and update current count
 					outletCount = $("#outletCountAct").val();
@@ -2644,7 +2643,7 @@ $(document).ready(function() {
 					$noty.close();
 				  }
 				},
-				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+				{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
 					$noty.close();
 				  }
 				}
@@ -2656,9 +2655,9 @@ $(document).ready(function() {
 			noty({
 				layout: 'center',
 				type: 'confirm',
-				text: 'Are you sure you want to delete this outlet? Note: all outlet data will be lost!',
+				text: _tr('Are you sure you want to delete this outlet? Note: all outlet data will be lost!'),
 				buttons: [
-				{addClass: 'alert tiny', text: 'Yes, delete this outlet!', onClick: function($noty) {
+				{addClass: 'alert tiny', text: _tr('Yes, delete this outlet!'), onClick: function($noty) {
 					
 					var url = "/deleteOutlet";
 					$.ajax({
@@ -2675,7 +2674,7 @@ $(document).ready(function() {
 								{
 									noty({
 									  type: 'error',  layout: 'topCenter',
-									  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+									  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 									});
 									
 									//alert(data);
@@ -2697,7 +2696,7 @@ $(document).ready(function() {
 					$noty.close();
 				  }
 				},
-				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+				{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
 					$noty.close();
 				  }
 				}
@@ -2736,7 +2735,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						return false;
@@ -2746,12 +2745,12 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
 						});
 					}
 					else
 					{	
-						noty({ type: 'success', text: 'Outlet configuration has been saved!' });
+						noty({ type: 'success', text: _tr('Outlet configuration has been saved!') });
 						
 					}
 				}
@@ -2908,14 +2907,14 @@ $(document).ready(function() {
 		//notify!
 		noty({
 			type: 'success',
-			text: 'These times have been applied to all days!'
+			text: _tr('These times have been applied to all days!')
 		});
 	});
 	
 	$("#nonEventConfigForm").on('invalid', function (event) {
 		noty({
 		  type: 'error',  layout: 'topCenter',
-		  text: "We still need some more information. Don't forget to fill out the remaining days of the week!" /*text: dataArray['message']*/
+		  text: _tr("We still need some more information. Don't forget to fill out the remaining days of the week!") /*text: dataArray['message']*/
 		});
 	});
 	
@@ -2939,7 +2938,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						//alert(data);
 						return false;
@@ -2949,7 +2948,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
 						});
 					}
 					else
@@ -3037,7 +3036,7 @@ $(document).ready(function() {
 		});
 		
 		//add autocomplete
-		$newTab.find("input[name^=iMD]").autocomplete({ source: [ "Choose a main","Choose a side","Choose a drink","Choose a curry","Choose a burger" ], delay: 10, minLength: 0, position: { my: "left top", at: "left bottom", collision: "none", of: $newTab.find("input[name^=iMD]") } });
+		$newTab.find("input[name^=iMD]").autocomplete({ source: [ _tr("Choose a main"),_tr("Choose a side"),_tr("Choose a drink"),_tr("Choose a curry"),_tr("Choose a burger") ], delay: 10, minLength: 0, position: { my: "left top", at: "left bottom", collision: "none", of: $newTab.find("input[name^=iMD]") } });
 		
 		$newTab.find('.modifierRow').remove();
 		$newTab.find('.mdEdit.optionTR').remove();
@@ -3061,7 +3060,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Where should this meal deal appear?",
+			   noneSelectedText: _tr("Where should this meal deal appear?"),
 			   selectedList: 1
 			}); 
 		});
@@ -3106,7 +3105,7 @@ $(document).ready(function() {
 			$(this).attr('name', newName);
 			
 		});
-		$subHead.find('input[name^=iMD]').autocomplete({ source: [ "Choose a main","Choose a side","Choose a drink","Choose a curry","Choose a burger"], delay: 10, minLength: 0 });
+		$subHead.find('input[name^=iMD]').autocomplete({ source: [ _tr("Choose a main"),_tr("Choose a side"),_tr("Choose a drink"),_tr("Choose a curry"),_tr("Choose a burger")], delay: 10, minLength: 0 });
 		$subHead.find('input[name^=iMD]').attr('required','required');
 		
 		//start cloning options and fixing names
@@ -3144,7 +3143,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: "Choose a menu section",
+			   noneSelectedText: _tr("Choose a menu section"),
 			   selectedList: 1
 			}); 
 			$(this).attr('required','required');
@@ -3217,9 +3216,9 @@ $(document).ready(function() {
 			noty({
 				layout: 'center',
 				type: 'confirm',
-				text: 'Are you sure you want to delete this meal deal? Note: all associated data will be lost!',
+				text: _tr('Are you sure you want to delete this meal deal? Note: all associated data will be lost!'),
 				buttons: [
-				{addClass: 'alert tiny', text: 'Yes, delete this meal deal!', onClick: function($noty) {
+				{addClass: 'alert tiny', text: _tr('Yes, delete this meal deal!'), onClick: function($noty) {
 					
 					//get and update current count
 					mdCount = $("#mdCountAct").val();
@@ -3232,7 +3231,7 @@ $(document).ready(function() {
 					$noty.close();
 				  }
 				},
-				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+				{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
 					$noty.close();
 				  }
 				}
@@ -3244,9 +3243,9 @@ $(document).ready(function() {
 			noty({
 				layout: 'center',
 				type: 'confirm',
-				text: 'Are you sure you want to delete this meal deal? Note: all associated data will be lost!',
+				text: _tr('Are you sure you want to delete this meal deal? Note: all associated data will be lost!'),
 				buttons: [
-				{addClass: 'alert tiny', text: 'Yes, delete this meal deal!', onClick: function($noty) {
+				{addClass: 'alert tiny', text: _tr('Yes, delete this meal deal!'), onClick: function($noty) {
 					
 					var url = "/deleteMealDeal";
 					$.ajax({
@@ -3263,7 +3262,7 @@ $(document).ready(function() {
 								{
 									noty({
 									  type: 'error',  layout: 'topCenter',
-									  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+									  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 									});
 									
 									//alert(data);
@@ -3283,7 +3282,7 @@ $(document).ready(function() {
 					$noty.close();
 				  }
 				},
-				{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+				{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
 					$noty.close();
 				  }
 				}
@@ -3386,14 +3385,14 @@ $(document).ready(function() {
 	$('.mdSecSingleSelect').multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Where should this meal deal appear?",
+	   noneSelectedText: _tr("Where should this meal deal appear?"),
 	   selectedList: 1
 	}); 
 	
 	$('.mdMenuSingleSelect').multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Choose a menu section",
+	   noneSelectedText: _tr("Choose a menu section"),
 	   selectedList: 1
 	}); 
 	
@@ -3433,7 +3432,7 @@ $(document).ready(function() {
 						{
 							noty({
 							  type: 'error',  layout: 'topCenter',
-							  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+							  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 							});
 							//alert(data);
 							return false;
@@ -3443,7 +3442,7 @@ $(document).ready(function() {
 						{
 							noty({
 							  type: 'error',  layout: 'topCenter',
-							  text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
+							  text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
 							});
 						}
 						else
@@ -3457,7 +3456,7 @@ $(document).ready(function() {
 								});
 							}
 							
-							noty({ type: 'success', text: 'All changes has been saved!' });
+							noty({ type: 'success', text: _tr('All changes has been saved!') });
 						}
 					}
 				}).done(function() {
@@ -3532,9 +3531,9 @@ $(document).ready(function() {
 		noty({
 			layout: 'center',
 			type: 'confirm',
-			text: 'Are you sure you want to delete this menu? Note: all menu data will be lost!',
+			text: _tr('Are you sure you want to delete this menu? Note: all menu data will be lost!'),
 			buttons: [
-			{addClass: 'alert tiny', text: 'Yes, delete this menu!', onClick: function($noty) {
+			{addClass: 'alert tiny', text: _tr('Yes, delete this menu!'), onClick: function($noty) {
 				
 				var url = "/deleteMenu";
 				$.ajax({
@@ -3551,7 +3550,7 @@ $(document).ready(function() {
 							{
 								noty({
 								  type: 'error',  layout: 'topCenter',
-								  text: "Sorry, but there's been an error processing your request." /*text: 'Connection Error! Check API endpoint.'*/
+								  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 								});
 								
 								//alert(data);
@@ -3566,7 +3565,7 @@ $(document).ready(function() {
 				$noty.close();
 			  }
 			},
-			{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+			{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
 				$noty.close();
 			  }
 			}
@@ -3590,7 +3589,7 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Sorry, but there's been an error processing your request." //text: 'Connection Error! Check API endpoint.'
+						  text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'
 						});
 						//alert(data);
 						return false;
@@ -3602,14 +3601,14 @@ $(document).ready(function() {
 						{
 							noty({
 							  type: 'error',  layout: 'topCenter',
-							  text: "Sorry, incorrect password." //text: dataArray['message']
+							  text: _tr("Sorry, incorrect password.") //text: dataArray['message']
 							});
 						}
 						else
 						{
 							noty({
 							  type: 'error',  layout: 'topCenter',
-							  text: "Sorry, but there's been an error processing your request." //text: dataArray['message']
+							  text: _tr("Sorry, but there's been an error processing your request.") //text: dataArray['message']
 							});
 						}
 					}
@@ -3617,12 +3616,12 @@ $(document).ready(function() {
 					{	
 						if($('#passFlag').val()=='1')
 						{
-							noty({ type: 'success', text: 'Settings and Password has been saved!<br/>You will need to log in again with your new password to continue.' });
+							noty({ type: 'success', text: _tr('Settings and Password has been saved!<br/>You will need to log in again with your new password to continue.') });
 							setTimeout(function(){window.location.replace("/logout");}, 2500);
 						}
 						else
 						{
-							noty({ type: 'success', text: 'Settings have been saved!' });
+							noty({ type: 'success', text: _tr('Settings have been saved!') });
 						}
 					}
 				}
@@ -3632,10 +3631,10 @@ $(document).ready(function() {
 	});
 	
 	$(".moreSelect").multiselect({
-	   noneSelectedText: "Please select features you require",
-	   selectedText: "# of # selected",
-	   checkAllText: "Select all",
-	   uncheckAllText: ""
+	   noneSelectedText: _tr("Please select features you require"),
+	   selectedText: _tr("# of # selected"),
+	   checkAllText: _tr("Select all"),
+	   uncheckAllText: _tr("")
 	}); 
 	
 	$("#moreForm").on('valid', function (event) {

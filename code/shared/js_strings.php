@@ -1,56 +1,63 @@
-<?php 
+<script>
+function _gettxt(str){
+ console.log(str,Dictionary[str])
+	return Dictionary[str];
+} 
 
-echo _("Venue changes have been saved!");
-echo _("Sorry, but there's been an error processing your request.");
-echo _("Incorrect credentials or account does not exist.");
-echo _("Success! Please check your email for further instructions.");
-echo _("Sorry, incorrect code.");
-echo _("Your password has been reset.<br/>You will now be redirected to the login page.");
-echo _("Error uploading file");
-echo _("Incorrect Image File");
-echo _("App changes have been saved!");
-echo _("Choose a size");
-echo _("Choose a flavour");
-echo _("Choose a topping");
-echo _("Choose some extras");
-echo _("Choose a side dish");
-echo _("Are you sure you want to delete this section? Note: all items and options will be lost!");
-echo _("Yes, delete this section and all its contents!");
-echo _("Choose a main");
-echo _("Choose a side");
-echo _("Choose a drink");
-echo _("Choose a curry");
-echo _("Choose a burger");
-echo _("Menu configuration has been saved!");
-echo _("Are you sure you want to delete this event? Note: all event data will be lost!");
-echo _("Yes, delete this event!");
-echo _("No, go back.");
-echo _("Choose a Collection Slot");
-echo _("Event configuration has been saved!");
-echo _("Are you sure you want to delete this user? Note: all user data will be lost!");
-echo _("Yes, delete this user!");
-echo _("Username/email already exists");
-echo _("User configuration has been saved!");
-echo _("Select all menus");
-echo _("Unselect all menus");
-echo _("Select menu(s) for this outlet");
-echo _("# of # selected");
-echo _("Are you sure you want to delete this outlet? Note: all outlet data will be lost!");
-echo _("Yes, delete this outlet!");
-echo _("Outlet configuration has been saved!");
-echo _("These times have been applied to all days!");
-echo _("We still need some more information. Don't forget to fill out the remaining days of the week!");
-echo _("Where should this meal deal appear?");
-echo _("Choose a menu section");
-echo _("Are you sure you want to delete this meal deal? Note: all associated data will be lost!");
-echo _("Yes, delete this meal deal!");
-echo _("All changes has been saved!");
-echo _("Are you sure you want to delete this menu? Note: all menu data will be lost!");
-echo _("Yes, delete this menu!");
-echo _("Settings and Password has been saved!<br/>You will need to log in again with your new password to continue.");
-echo _("Settings have been saved!");
-echo _("Please select features you require");
-echo _("# of # selected");
-echo _("Select all");
-
-?>
+var Dictionary = { 
+	"Sorry, but there's been an error processing your request.":'<? echo _("Sorry, but there\'s been an error processing your request.") ?>',
+	"Incorrect credentials or account does not exist.":'<? echo _("Incorrect credentials or account does not exist.") ?>',
+	"Success! Please check your email for further instructions.":'<? echo _("Success! Please check your email for further instructions.") ?>',
+	"Sorry, incorrect code.":'<? echo _("Sorry, incorrect code.") ?>',
+	"Your password has been reset.<br/>You will now be redirected to the login page.":'<? echo _("Your password has been reset.<br/>You will now be redirected to the login page.") ?>',
+	"Venue changes have been saved!":'<? echo _("Venue changes have been saved!") ?>',
+	"Uploaded!":'<? echo _("Uploaded!") ?>',
+	"Error uploading file":'<? echo _("Error uploading file") ?>',
+	"Incorrect Image File":'<? echo _("Incorrect Image File") ?>',
+	"App changes have been saved!":'<? echo _("App changes have been saved!") ?>',
+	"Choose a size":'<? echo _("Choose a size") ?>',
+	"Choose a flavour":'<? echo _("Choose a flavour") ?>',
+	"Choose a topping":'<? echo _("Choose a topping") ?>',
+	"Choose some extras":'<? echo _("Choose some extras") ?>',
+	"Choose a side dish":'<? echo _("Choose a side dish") ?>',
+	"Pick an option type":'<? echo _("Pick an option type") ?>',
+	"Are you sure you want to delete this section? Note: all items and options will be lost!":'<? echo _("Are you sure you want to delete this section? Note: all items and options will be lost!") ?>',
+	"Yes, delete this section and all its contents!":'<? echo _("Yes, delete this section and all its contents!") ?>',
+	"No, go back.":'<? echo _("No, go back.") ?>',
+	"Choose a main":'<? echo _("Choose a main") ?>',
+	"Choose a side":'<? echo _("Choose a side") ?>',
+	"Choose a drink":'<? echo _("Choose a drink") ?>',
+	"Choose a curry":'<? echo _("Choose a curry") ?>',
+	"Choose a burger":'<? echo _("Choose a burger") ?>',
+	"Menu configuration has been saved!":'<? echo _("Menu configuration has been saved!") ?>',
+	"Choose a Collection Slot":'<? echo _("Choose a Collection Slot") ?>',
+	"Are you sure you want to delete this event? Note: all event data will be lost!":'<? echo _("Are you sure you want to delete this event? Note: all event data will be lost!") ?>',
+	"Yes, delete this event!":'<? echo _("Yes, delete this event!") ?>',
+	"Role":'<? echo _("Role") ?>',
+	"Are you sure you want to delete this user? Note: all user data will be lost!":'<? echo _("Are you sure you want to delete this user? Note: all user data will be lost!") ?>',
+	"Yes, delete this user!":'<? echo _("Yes, delete this user!") ?>',
+	"Username/email already exists":'<? echo _("Username/email already exists") ?>',
+	"User configuration has been saved!":'<? echo _("User configuration has been saved!") ?>',
+	"Select all menus":'<? echo _("Select all menus") ?>',
+	"Unselect all menus":'<? echo _("Unselect all menus") ?>',
+	"Select menu(":'<? echo _("Select menu(") ?>',
+	"# of # selected":'<? echo _("# of # selected") ?>',
+	"Are you sure you want to delete this outlet? Note: all outlet data will be lost!":'<? echo _("Are you sure you want to delete this outlet? Note: all outlet data will be lost!") ?>',
+	"Yes, delete this outlet!":'<? echo _("Yes, delete this outlet!") ?>',
+	"Outlet configuration has been saved!":'<? echo _("Outlet configuration has been saved!") ?>',
+	"These times have been applied to all days!":'<? echo _("These times have been applied to all days!") ?>',
+	"We still need some more information. Don't forget to fill out the remaining days of the week!":'<? echo _("We still need some more information. Don\'t forget to fill out the remaining days of the week!") ?>',
+	"Where should this meal deal appear?":'<? echo _("Where should this meal deal appear?") ?>',
+	"Choose a menu section":'<? echo _("Choose a menu section") ?>',
+	"Are you sure you want to delete this meal deal? Note: all associated data will be lost!":'<? echo _("Are you sure you want to delete this meal deal? Note: all associated data will be lost!") ?>',
+	"Yes, delete this meal deal!":'<? echo _("Yes, delete this meal deal!") ?>',
+	"All changes has been saved!":'<? echo _("All changes has been saved!") ?>',
+	"Are you sure you want to delete this menu? Note: all menu data will be lost!":'<? echo _("Are you sure you want to delete this menu? Note: all menu data will be lost!") ?>',
+	"Yes, delete this menu!":'<? echo _("Yes, delete this menu!") ?>',
+	"Sorry, incorrect password.":'<? echo _("Sorry, incorrect password.") ?>',
+	"Settings and Password has been saved!<br/>You will need to log in again with your new password to continue.":'<? echo _("Settings and Password has been saved!<br/>You will need to log in again with your new password to continue.") ?>',
+	"Settings have been saved!":'<? echo _("Settings have been saved!") ?>',
+	"Please select features you require":'<? echo _("Please select features you require") ?>',
+	"Select all":'<? echo _("Select all") ?>',
+}
+</script>
