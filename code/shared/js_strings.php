@@ -1,4 +1,8 @@
-<script>
+<?php session_start();
+	  require('../../getPath.php'); //the only relative link we will have
+	  require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'); //need this for multi-language support
+?>
+
 function _tr(str){
  console.log(str,Dictionary[str])
 	return Dictionary[str];
@@ -60,4 +64,3 @@ var Dictionary = {
 	"Please select features you require":'<? echo _("Please select features you require") ?>',
 	"Select all":'<? echo _("Select all") ?>',
 }
-</script>
