@@ -1,5 +1,5 @@
 <script>
-function _gettxt(str){
+function _tr(str){
  console.log(str,Dictionary[str])
 	return Dictionary[str];
 } 

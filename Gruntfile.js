@@ -57,7 +57,7 @@ module.exports = function(grunt) {
   grunt.registerTask('jstranslate',"Read general.js and extract strings that need to be translated",function(){
         var file_str = ""+
           "<script>\n"+
-          "function _gettxt(str){\n"+
+          "function _tr(str){\n"+
           " console.log(str,Dictionary[str])\n"+
           "\treturn Dictionary[str];\n"+
           "} \n"+
