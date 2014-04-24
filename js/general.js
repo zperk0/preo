@@ -441,6 +441,21 @@ $(document).ready(function() {
 			$('.leadTimeDiv').find('input').removeAttr('required');
 		}
 	});
+
+	$('.switch').each(function(){
+		var val = $(this).find("input[type=radio][name=vEvent]:checked").val() == '0'
+		console.log('this.val:' + val);
+		if (val){
+			$(this).addClass("off")
+		}
+	}).on('click',function(){
+		var val = $(this).find("input[type=radio][name=vEvent]:checked").val() == '0'
+		if (val){
+			$(this).addClass("off")
+		} else {
+			$(this).removeClass("off")
+		}
+	});
 	
 	$("#venueConfigForm").on('valid', function (event) {
 		var url = "/saveVenue";

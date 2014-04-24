@@ -56,9 +56,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('jstranslate',"Read general.js and extract strings that need to be translated",function(){
         var file_str = ""+
-          "<script>\n"+
           "function _tr(str){\n"+
-          " console.log(str,Dictionary[str])\n"+
+//          " console.log(str,Dictionary[str])\n"+
           "\treturn Dictionary[str];\n"+
           "} \n"+
           "\n"+
@@ -82,7 +81,7 @@ module.exports = function(grunt) {
               }
         }      
         
-        file_str+= "}\n"+ "</script>";
+        file_str+= "}\n";
         fs.writeFileSync('code/shared/js_strings.php', file_str);            
   })
 
