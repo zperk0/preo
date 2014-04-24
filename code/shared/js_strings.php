@@ -1,0 +1,56 @@
+<?php 
+
+echo _("Venue changes have been saved!");
+echo _("Sorry, but there's been an error processing your request.");
+echo _("Incorrect credentials or account does not exist.");
+echo _("Success! Please check your email for further instructions.");
+echo _("Sorry, incorrect code.");
+echo _("Your password has been reset.<br/>You will now be redirected to the login page.");
+echo _("Error uploading file");
+echo _("Incorrect Image File");
+echo _("App changes have been saved!");
+echo _("Choose a size");
+echo _("Choose a flavour");
+echo _("Choose a topping");
+echo _("Choose some extras");
+echo _("Choose a side dish");
+echo _("Are you sure you want to delete this section? Note: all items and options will be lost!");
+echo _("Yes, delete this section and all its contents!");
+echo _("Choose a main");
+echo _("Choose a side");
+echo _("Choose a drink");
+echo _("Choose a curry");
+echo _("Choose a burger");
+echo _("Menu configuration has been saved!");
+echo _("Are you sure you want to delete this event? Note: all event data will be lost!");
+echo _("Yes, delete this event!");
+echo _("No, go back.");
+echo _("Choose a Collection Slot");
+echo _("Event configuration has been saved!");
+echo _("Are you sure you want to delete this user? Note: all user data will be lost!");
+echo _("Yes, delete this user!");
+echo _("Username/email already exists");
+echo _("User configuration has been saved!");
+echo _("Select all menus");
+echo _("Unselect all menus");
+echo _("Select menu(s) for this outlet");
+echo _("# of # selected");
+echo _("Are you sure you want to delete this outlet? Note: all outlet data will be lost!");
+echo _("Yes, delete this outlet!");
+echo _("Outlet configuration has been saved!");
+echo _("These times have been applied to all days!");
+echo _("We still need some more information. Don't forget to fill out the remaining days of the week!");
+echo _("Where should this meal deal appear?");
+echo _("Choose a menu section");
+echo _("Are you sure you want to delete this meal deal? Note: all associated data will be lost!");
+echo _("Yes, delete this meal deal!");
+echo _("All changes has been saved!");
+echo _("Are you sure you want to delete this menu? Note: all menu data will be lost!");
+echo _("Yes, delete this menu!");
+echo _("Settings and Password has been saved!<br/>You will need to log in again with your new password to continue.");
+echo _("Settings have been saved!");
+echo _("Please select features you require");
+echo _("# of # selected");
+echo _("Select all");
+
+?>
