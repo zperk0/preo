@@ -124,7 +124,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','180%');
-	$('.progressIndicator').attr('title', <? echo _("40% done, a couple more design touches...")?>) ;
+	$('.progressIndicator').attr('title', <? echo _("'40% done, a couple more design touches...'")?>) ;
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });

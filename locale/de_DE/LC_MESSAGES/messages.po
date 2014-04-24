@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-23 19:44+0200\n"
+"POT-Creation-Date: 2014-04-24 14:18+0200\n"
 "PO-Revision-Date: 2014-04-23 17:56+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -351,7 +351,7 @@ msgstr "SPEICHERN..."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:232
 #, fuzzy, php-format
-msgid "30% done, time for the artistic bit..."
+msgid "'30% done, time for the artistic bit...'"
 msgstr "30% geschafft, Zeit für den künstlerischen Teil…"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:28
@@ -411,32 +411,33 @@ msgstr "Button 2 Farbe"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:127
 #, fuzzy, php-format
-msgid "40% done, a couple more design touches..."
+msgid "'40% done, a couple more design touches...'"
 msgstr "40% erledigt, noch ein paar Design-Feinheiten..."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:11
 msgid "This is where you can monitor your takings and reports."
-msgstr ""
+msgstr "Hier finden Sie eine Übersicht über Ihre Einnahmen und Meldungen."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:12
 msgid "Your venue shortcode is"
-msgstr ""
+msgstr "Der Shortcode Ihres Unternehmens ist"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:12
 msgid ""
 "This is the code your customers need to use to find your venue on 'My Order "
 "App'"
 msgstr ""
+"Ihre Kunden können Sie mit diesem Code auf 'Meine Bestellung App' finden."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:13
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:31
 msgid "Your app is currently in "
-msgstr ""
+msgstr "Ihre App ist zurzeit im "
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:13
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:31
 msgid " mode."
-msgstr ""
+msgstr " modus."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:13
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:31
@@ -446,44 +447,48 @@ msgid ""
 "take real orders.<br/><br/>OFFLINE - Your app is not available on My Order "
 "App."
 msgstr ""
+"LIVE: Ihre App ist auf „My Order App“ verfügbar und es können richtige "
+"Bestellungen aufgenommen werden.<br/><br/>DEMO: Ihre App ist auf 'My Order "
+"App' verfügbar, es können jedoch nicht richtige Bestellungen aufgenommen "
+"werden.<br/><br/>OFFLINE: Ihre App ist auf 'My Order App'nicht verfügbar."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:21
 msgid "This month"
-msgstr ""
+msgstr "Dieser Monat"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:24
 msgid "Total revenue"
-msgstr ""
+msgstr "Gesamtumsatz"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:28
 msgid "Total orders"
-msgstr ""
+msgstr "Gesamtbestellungen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:32
 msgid "New users"
-msgstr ""
+msgstr "Neue Nutzer"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:36
 msgid "Returning users"
-msgstr ""
+msgstr "Wiederkehrende Nutzer"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:43
 msgid "Change your app"
-msgstr ""
+msgstr "Bearbeiten Sie Ihre App"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:50
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:43
 msgid "Venue Settings"
-msgstr ""
+msgstr "Unternehmens-Settings"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:52
 msgid "Change settings"
-msgstr ""
+msgstr "Settings Bearbeiten"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:59
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:49
 msgid "Styling"
-msgstr ""
+msgstr "Design"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:61
 msgid "Home screen"
@@ -491,12 +496,12 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:62
 msgid "Menu screen"
-msgstr ""
+msgstr "Menü Screen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:66
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:55
 msgid "Menus"
-msgstr ""
+msgstr "Menüs"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:70
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:100
@@ -542,31 +547,31 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:82
 msgid "Update events"
-msgstr ""
+msgstr "Update Veranstaltungen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:87
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:81
 msgid "Advanced Settings"
-msgstr ""
+msgstr "Erweiterte Einstellungen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:89
 msgid "Manage users"
-msgstr ""
+msgstr "Nutzer Verwalten"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:90
 msgid "Add a payment method"
-msgstr ""
+msgstr "Zahlungsweise Hinzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:91
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:85
 msgid "Change my app mode"
-msgstr ""
+msgstr "App-Modus Ändern "
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:95
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/dashboard_footer.php:4
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:89
 msgid "Premium Features"
-msgstr ""
+msgstr "Premium Einstellungen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:97
 msgid "Manage outlets"
@@ -577,7 +582,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:91
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:105
 msgid "Find out more"
-msgstr ""
+msgstr "Erfahren Sie Mehr"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:133
 msgid "Venue Title"
@@ -602,17 +607,20 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:19
 msgid "Your events"
-msgstr ""
+msgstr "Ihre Veranstaltungen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:19
 msgid ""
 "These show when you are open for ordering, such as performances or matches. "
 "They can be viewed from the front page of your app"
 msgstr ""
+"Diese werden angezeigt, wenn Sie bereit sind Bestellungen aufzunehmen, wie z."
+"B bei Aufführungen oder Spielen. Sie sind auf der Startseite Ihrer App zu "
+"sehen. "
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:42
 msgid "Add a new event"
-msgstr ""
+msgstr "Neue Veranstaltung hinzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:49
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:30
@@ -630,15 +638,15 @@ msgstr "Beschreibung"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:51
 msgid "Start Date"
-msgstr ""
+msgstr "Datum"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:52
 msgid "Start Time"
-msgstr ""
+msgstr "Anfang"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:53
 msgid "End Time"
-msgstr ""
+msgstr "Ende"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:54
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:34
@@ -657,17 +665,17 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:67
 msgid "Click to add an event name"
-msgstr ""
+msgstr "Klicken, um den Veranstaltungsnamen hinzuzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:68
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:148
 msgid "Please type an event name (max 100chars)"
-msgstr ""
+msgstr "Bitte geben Sie den Veranstaltungsnamen an (max 100 Zeichen)"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:71
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:151
 msgid "Click to add a description"
-msgstr ""
+msgstr "Klicken, um Beschreibung hinzuzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:72
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:152
@@ -684,7 +692,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:76
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:156
 msgid "Date?"
-msgstr ""
+msgstr "Datum?"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:79
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:83
@@ -708,7 +716,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:69
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:74
 msgid "Time?"
-msgstr ""
+msgstr "Zeit?"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:90
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:170
@@ -764,36 +772,36 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:109
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:190
 msgid "Collection Slot: Pre-Show"
-msgstr ""
+msgstr "Abholzeitraum: Vor der Show"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:110
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:191
 msgid "Collection Slot: Pre-Game"
-msgstr ""
+msgstr "Abholzeitraum: Vor dem Spiel"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:111
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:192
 msgid "Collection Slot: Interval"
-msgstr ""
+msgstr "Abholzeitraum: Pause"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:112
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:193
 msgid "Collection Slot: Second-Interval"
-msgstr ""
+msgstr "Abholzeitraum: Zweite Pause"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:113
 msgid "Collection Slot: Half-time"
-msgstr ""
+msgstr "Abholzeitraum: Halbzeit"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:114
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:195
 msgid "Collection Slot: Post-Show"
-msgstr ""
+msgstr "Abholzeitraum: Nach der Show"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:115
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:196
 msgid "Collection Slot: Post-Game"
-msgstr ""
+msgstr "Abholzeitraum: Nach dem Spiel"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:117
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:198
@@ -804,7 +812,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:201
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:373
 msgid "Lead Time (mins)"
-msgstr ""
+msgstr "Lieferzeit (min)"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:121
 msgid "30"
@@ -813,7 +821,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:125
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:206
 msgid "Add another slot"
-msgstr ""
+msgstr "Zeitraum hinzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:194
 msgid "Collection Slot: Half-Time"
@@ -823,23 +831,31 @@ msgstr ""
 msgid "eg. 30"
 msgstr ""
 
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:243
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:107
+#, php-format
+msgid "'75% done, almost there now...'"
+msgstr ""
+
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:5
 msgid ""
 "This is where you can combine separate food items into one meal combination, "
 "e.g. sandwich, crisps and a drink"
 msgstr ""
+"Hier können einzelne Lebensmittel zu Kombinationen zusammengefasst werden, z."
+"B. ein Sandwich mit Pommes und ein Getränk."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:8
 msgid "Add a new Meal Deal"
-msgstr ""
+msgstr "Meal Deal hinzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:31
 msgid "Section"
-msgstr ""
+msgstr "Kategorie"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:31
 msgid "Which menu section does this meal deal belong in?"
-msgstr ""
+msgstr "In welche Menü-Kategorie Gehört dieser Meal Deal?"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:32
 msgid "Total Price (&pound;)"
@@ -847,14 +863,14 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:33
 msgid "Discount Price (&pound;)"
-msgstr ""
+msgstr "Rabatt-Preis (&euro;)"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:53
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:171
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:104
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:239
 msgid "Please type an item name (max 100chars)"
-msgstr ""
+msgstr "Bitte geben Sie eine Artikelbezeichnung ein (max 100 Zeichen)"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:61
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:102
@@ -887,22 +903,22 @@ msgstr "Diesen Abschnitt löschen"
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:91
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:208
 msgid "Type or pick a selection title"
-msgstr ""
+msgstr "Eingabe oder Auswahl einer Kategorie-Bezeichnung"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:91
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:208
 msgid "Eg. Choose a main, Choose a side, Choose a drink, etc"
-msgstr ""
+msgstr "z.B. Auswahl Hauptgericht, Auswahl Beilage, Auswahl Getränk, etc"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:92
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:209
 msgid "Please type or pick a title (max 100chars)"
-msgstr ""
+msgstr "Bitte geben Sie oder wählen Sie eine Bezeichnung aus (max 100 Zeichen)"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:96
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:213
 msgid "Choose a menu section"
-msgstr ""
+msgstr "Auswahl einer Menü-Kategorie"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:100
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:217
@@ -913,11 +929,12 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:218
 msgid "Pick a menu section from where you'd like to import items."
 msgstr ""
+"Wählen Sie eine Menü-Kategorie aus der Sie die Artikel übertragen wollen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:114
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:231
 msgid "Add this item to the current Meal Deal"
-msgstr ""
+msgstr "Artikel diesem Meal Deal hinzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:122
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:206
@@ -926,7 +943,7 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:170
 msgid "Click to add a Meal Deal name"
-msgstr ""
+msgstr "Klicken um neue Meal Deal Bezeichnung hinzuzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:252
 msgid ""
@@ -1143,7 +1160,7 @@ msgstr "SPEICHERN & BEENDEN"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:394
 #, fuzzy, php-format
-msgid "45% done, now for the fun bit!"
+msgid "'45% done, now for the fun bit!'"
 msgstr "45% geschafft und jetzt weiter zum spaßigeren Teil!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:18
@@ -1237,27 +1254,32 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:19
 msgid "Don't forget to get paid"
-msgstr ""
+msgstr "Vergessen Sie Ihre Bezahlung nicht"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:28
 msgid "CONNECT TO STRIPE"
-msgstr ""
+msgstr "MIT STRIPE VERBINDEN"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:31
 msgid "SKIP THIS FOR NOW"
-msgstr ""
+msgstr "ÜBERSPRINGEN"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:35
 msgid "YOU'RE ALREADY CONNECTED"
 msgstr ""
 
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:45
+#, php-format
+msgid "85% done, we've saved the best for last!"
+msgstr ""
+
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:6
 msgid "User management"
-msgstr ""
+msgstr "Nutzerverwaltung"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:14
 msgid "Add a new user"
-msgstr ""
+msgstr "Neue Nutzer hinzufügen "
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:22
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/forgot/forgot_content.php:8
@@ -1268,11 +1290,11 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:23
 msgid "Role"
-msgstr ""
+msgstr "Funktion"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:23
 msgid "This decides the level of access of your users."
-msgstr ""
+msgstr "Die Funktion entscheidet über die Zugangsberechtigung des Nutzers"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:36
 msgid "Add a user name"
@@ -1301,7 +1323,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:45
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:97
 msgid "Staff"
-msgstr ""
+msgstr "Mitarbeiter"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:46
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:98
@@ -1321,7 +1343,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:47
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:99
 msgid "Owner"
-msgstr ""
+msgstr "Inhaber"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:59
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:31
@@ -1590,7 +1612,7 @@ msgstr ""
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:6
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:98
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:8
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:33
@@ -1660,10 +1682,13 @@ msgid ""
 "Looking for ePOS integration, detailed reporting or the ability to configure "
 "multiple outlets?"
 msgstr ""
+"Interessieren Sie sich für elektronische Zahlungsmethoden (EPOS), "
+"ausführliche Berichte oder die Möglichkeit mehrere Verkaufsstellen zu "
+"konfigurieren?"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/dashboard_footer.php:6
 msgid "FIND OUT MORE"
-msgstr ""
+msgstr "Erfahren Sie Mehr"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/dashboard_footer.php:14
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/regular_footer.php:18
@@ -1703,7 +1728,7 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:28
 msgid "Go to Dashboard"
-msgstr ""
+msgstr "Dashboard"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:31
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:34
@@ -1714,15 +1739,15 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:45
 msgid "Change Settings"
-msgstr ""
+msgstr "Settings Ändern"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:51
 msgid "Home Screen"
-msgstr ""
+msgstr "Home Screen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:52
 msgid "Menu Screen"
-msgstr ""
+msgstr "Menü Screen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:70
 msgid "No menus"
@@ -1730,11 +1755,11 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:77
 msgid "Update Events"
-msgstr ""
+msgstr "Update Veranstaltungen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:83
 msgid "Manage Users"
-msgstr ""
+msgstr "Nutzer Verwalten"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:99
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:110
@@ -1743,12 +1768,12 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:102
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:104
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:109
 msgid "Getting started"
-msgstr ""
+msgstr "Erste Schritte"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/meta.php:9
 msgid "preoday"
