@@ -1,7 +1,12 @@
 #/usr/bin
 echo =======================START=======================
 
-DIR=/Users/ricci/Workspace/oDesk/preoday/webapp
+#three levels above to get the root webapp folder
+DIR=$(dirname $PWD)
+DIR=$(dirname $DIR)
+DIR=$(dirname $DIR)
+
+echo $DIR
 if [ -f ./messages.po ]  
 then
 	echo Renaming old PO file - messages.po to old.po
