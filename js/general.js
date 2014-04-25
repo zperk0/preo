@@ -3015,9 +3015,21 @@ $(document).ready(function() {
 		});
 	});
 	
-	$("#nonEventConfigForm").on('valid', function (event) {
-		var url = "/saveHours";
-		
+	$("#nonEventConfigForm").on('valid', function (event) {		
+		var allClosed = true;		
+		$("select.oh-is-open").each(function(){			
+			allClosed = $(this).val() == "c" ? true : false;		
+			return allClosed; //break if false
+		})		
+		if (allClosed){
+			noty({
+			  type: 'error',  layout: 'topCenter',
+			  text: "Sorry, but you need to have at least one open day." /*text: dataArray['message']*/
+			});
+			return;
+		}		
+
+		var url = "/saveHours";		
 		$('#ohSubButton').hide();
 		$('#savingButton').show();
 
@@ -3026,7 +3038,7 @@ $(document).ready(function() {
 			   url: url,
 			   data: $(this).serialize(), // serializes the form's elements.
 			   success: function(data)
-			   {
+			   {			   	
 					try
 					{
 						var dataArray = jQuery.parseJSON(data); //parsing JSON
@@ -3054,7 +3066,7 @@ $(document).ready(function() {
 						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
-			}).done(function() {
+			}).done(function() {				
 				if($('#redirectFlag').val()!='1') $('#ohSubButton').show();
 				$('#savingButton').hide();
 			 });
