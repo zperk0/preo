@@ -47,6 +47,15 @@ module.exports = function(grunt) {
 
         }]        
       }
+    },
+    watch: {
+      js: {
+        files: ['js/**/*.js','css/**/*.css'],
+        tasks: ['build'],
+        options: {
+          spawn: false,
+        }
+      }
     }
 });
 

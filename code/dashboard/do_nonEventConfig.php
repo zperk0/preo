@@ -22,8 +22,7 @@
 	
 	$dow = array('dummy','sunday','monday','tuesday','wednesday','thursday','friday','saturday');
 	
-	$cIsOpenPickup  = $_POST['isOpenPickup'];
-	$cIsOpenDelivery  = $_POST['isOpenDelivery'];
+	$cIsOpen  = $_POST['ohIsOpen'];	
 	$cOpen  = $_POST['ohStartTime'];
 	$cClose = $_POST['ohEndTime'];
 	
@@ -44,18 +43,12 @@
 		}
 
 		$counter = 0;
-		foreach($cIsOpenPickup[$dow[$i]] as $entry)
+		foreach($cIsOpen[$dow[$i]] as $entry)
 		{
-			$neTimes[$i][$counter]['isOpenPickup']   = $entry;
+			$neTimes[$i][$counter]['ohIsOpen']   = $entry;
 			$counter++;
 		}
-
-		$counter = 0;
-		foreach($cIsOpenDelivery[$dow[$i]] as $entry)
-		{
-			$neTimes[$i][$counter]['isOpenDelivery']   = $entry;
-			$counter++;
-		}
+		
 		
 	}
 	
@@ -68,10 +61,12 @@
 		{
 			$data 			= array();
 			$data['day']	= $dName;
-			$data['open']	= "$line[ohstarttime]:00";
-			$data['close'] 	= "$line[ohendtime]:00";			
-			$data['pickup'] 	= $line["isOpenPickup"];
-			$data['delivery'] 	= $line["isOpenDelivery"]; 
+			
+			$data['open']	= $line["ohIsOpen"] == "c" ? "" : "$line[ohstarttime]:00";
+			$data['close'] 	= $line["ohIsOpen"] == "c" ? "" : "$line[ohendtime]:00";			
+			$data['pickup'] 	= $line["ohIsOpen"] == "c" || $line["ohIsOpen"] == "d" ? 0 : 1;
+			$data['delivery'] 	= $line["ohIsOpen"] == "c" || $line["ohIsOpen"] == "p" ? 0 : 1; 
+			
 			
 			
 			$jsonData = json_encode($data);

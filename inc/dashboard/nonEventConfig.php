@@ -47,36 +47,22 @@
 					foreach($neTimes["$i"] as $entry){ ?>					
 					<div class="large-12 columns openingHours openHWrapper">
 
-						<div class="small-2 columns">
-							<label><?echo _("Open for pickup");?></label>
-							<div class="switch small" title="<?echo _("This chooses whether the venue is open for in store pickup this day or not.");?>"> 
-									<input name="isOpenPickup[<?echo $dow[$i];?>][<?echo $counter;?>]" value="0" type="radio" <?if ($entry['pickup'] == 0) echo "checked" ?> >
-									<label class='no'><?echo _("No");?></label>
+						<div class="small-3 columns">
+							<label><?echo _("Open ");?><i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Let us know if your venue is open for delivery, open for pickup, open for both or if you are closed today.");?>"></i></label>
+							<select class='oh-is-open'  name="ohIsOpen[<?echo $dow[$i];?>][]">
 
-									<input name="isOpenPickup[<?echo $dow[$i];?>][<?echo $counter;?>]" value="1" type="radio" <?if ($entry['pickup'] != 0) echo "checked" ?>>
-									<label class='yes'><?echo _("Yes");?></label>
-
-									<span></span>
-							</div>
-						</div>
-						<div class="small-2 columns">
-							<label><?echo _("Open for delivery");?></label>
-							<div class="switch small" title="<?echo _("This chooses whether the venue is open for delivery this day or not.");?>"> 
-									<input name="isOpenDelivery[<?echo $dow[$i];?>][<?echo $counter;?>]" value="0" type="radio" <?if ($entry['delivery'] == 0) echo "checked" ?>>
-									<label class='no'><?echo _("No");?></label>
-
-									<input name="isOpenDelivery[<?echo $dow[$i];?>][<?echo $counter;?>]" value="1" type="radio" <?if ($entry['delivery'] != 0) echo "checked" ?>>
-									<label class='yes'><?echo _("Yes");?></label>
-
-									<span></span>
-							</div>
-						</div> 
-						<div class="large-2 columns">
+								<option value='b' <? if (!(isset($entry)) || ($entry['pickup'] == 1 && $entry['delivery'] == 1)) {?>selected="selected"<?}?>><?echo _("For delivery and collection") ?> </option>
+								<option value='d' <? if (isset($entry) && ($entry['pickup'] == 0 && $entry['delivery'] == 1)) {?>selected="selected"<?}?>> <?echo _("For delivery only") ?> </option>
+								<option value='p' <? if (isset($entry) && ($entry['pickup'] == 1 && $entry['delivery'] == 0)) {?>selected="selected"<?}?>><?echo _("For collection only") ?> </option>							
+								<option value='c' <? if (isset($entry) && ($entry['pickup'] == 0 && $entry['delivery'] == 0)) {?>selected="selected"<?}?>><?echo _("Closed Today") ?></option>
+							</select>
+						</div>						
+						<div class="large-2 columns ui-timepicker-input-wrapper">
 							<label><?echo _("Opens at");?></label>
 							<input type="text" name="ohStartTime[<?echo $dow[$i];?>][]" class="noEnterSubmit" pattern="\d\d:\d\d" value="<?echo $entry['ohstarttime'];?>" placeholder="<?echo _("HH:MM");?>" required/>
 							<small class="error"><?echo _("Time?");?></small>
 						</div>
-						<div class="large-2 columns">
+						<div class="large-2 columns ui-timepicker-input-wrapper">
 							<label><?echo _("Closes at");?></label>
 							<input type="text" name="ohEndTime[<?echo $dow[$i];?>][]" class="noEnterSubmit" pattern="\d\d:\d\d" value="<?echo $entry['ohendtime'];?>" placeholder="<?echo _("HH:MM");?>" required/>
 							<small class="error"><?echo _("Time?");?></small>
@@ -91,12 +77,21 @@
 					}
 				}else{?>
 				<div class="large-12 columns openingHours openHWrapper">
-					<div class="large-2 columns">
+				<div class="small-3 columns">
+							<label><?echo _("Open ");?><i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Let us know if your venue is open for delivery, open for pickup, open for both or if you are closed today.");?>"></i></label>
+							<select class='oh-is-open' name="ohIsOpen[<?echo $dow[$i];?>][]">								
+								<option value='b' selected="selected"><?echo _("For delivery and collection") ?> </option>
+								<option value='d' > <?echo _("For delivery only") ?> </option>
+								<option value='p' ><?echo _("For collection only") ?> </option>							
+								<option value='c' ><?echo _("Closed Today") ?></option>
+							</select>
+						</div>						
+					<div class="large-2 columns ui-timepicker-input-wrapper">
 						<label><?echo _("Opens at");?></label>
 						<input type="text" name="ohStartTime[<?echo $dow[$i];?>][]" class="noEnterSubmit" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required/>
 						<small class="error"><?echo _("Time?");?></small>
 					</div>
-					<div class="large-2 columns">
+					<div class="large-2 columns ui-timepicker-input-wrapper">
 						<label><?echo _("Closes at");?></label>
 						<input type="text" name="ohEndTime[<?echo $dow[$i];?>][]" class="noEnterSubmit" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required/>
 						<small class="error"><?echo _("Time?");?></small>
@@ -125,6 +120,11 @@
 <script>
 <?for($i=1;$i<8;$i++){?>
 	$('.<?echo $dow[$i];?>').addClass('hide');
+	
+	if ($('.<?echo $dow[$i];?> .oh-is-open').val() == "c"){
+		console.log('hereeee','.<?echo $dow[$i];?>',$('.<?echo $dow[$i];?> .oh-is-open').val())
+		$('.<?echo $dow[$i];?> .ui-timepicker-input-wrapper').hide();	
+	}
 <?}?>
 $('.monday').removeClass('hide');
 </script>
@@ -135,6 +135,7 @@ $(document).ready(function() {
 	$('.progressIndicator').attr('title', "75% done, almost there now...");
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
+
 });
 </script>
 <?}?>

@@ -464,6 +464,8 @@ $(document).ready(function() {
 			$('#advanced-setting').slideUp();
 		}
 	});
+
+	$(".oh-is-open").on('change',onIsOpenChange);
 	
 	$("#venueConfigForm").on('valid', function (event) {
 		var url = "/saveVenue";
@@ -2823,7 +2825,15 @@ $(document).ready(function() {
 	
 	$(document).on("click", '.addMoreOH', function(){
 				
-		$oldDiv = $(this).parents('.openingHoursDiv').find('.openHWrapper:first');
+		$oldDiv = $(this).parents('.openingHoursDiv').find('.openHWrapper:first');		
+		if ($oldDiv.find('.oh-is-open:first').val() == "c"){
+			noty({
+			  type: 'error',  layout: 'topCenter',
+			  text: "You cannot add another opening hour if your venue is closed today." /*text: dataArray['message']*/
+			});
+			return;
+		}
+		console.log($oldDiv,$oldDiv.val())
 		$newDiv = $oldDiv.clone(false);
 
 		$ohDowCount = $(this).parents('.openingHoursDiv').find('.openHWrapper').length;
@@ -2855,9 +2865,19 @@ $(document).ready(function() {
 		//hide it so we can animate it!
 		$newDiv.css('display','none');
 		
+		//add event listener to hid hours if closed
+		$newDiv.find(".oh-is-open").on('change',onIsOpenChange).each(function(i){
+			console.log('i = ' + i)
+			if (i>0){								
+				$(this).find("li:last").remove();
+			}
+		});		
+
 		//insert at the end of the list
 		$(this).parents('.openingHoursDiv').find('.openHWrapper:last').after($newDiv);
+
 		$newDiv.slideDown();
+
 	});
 	
 	$(document).on("click", '.removeOH', function(){
@@ -2869,17 +2889,23 @@ $(document).ready(function() {
 	});
 	
 	$(document).on("click", ".applyTimesAllDays", function(){
+
 		id = ($(this).parents('div.applyAllDiv')).attr('id');
 		id = id.substring(0, id.length - 1); //delete the 'C' to get just monday, etc.
+		
+		//used get original values for select. it's not copied on clone
+		$original = $(".openingHoursDiv."+id);
 		
 		//get data for this day
 		$data = $("."+id).clone(true,true);
 		
 		openData = new Array();
 		closeData = new Array();
+		isOpenData = new Array();
 		
 		openCounter = 0;
 		closeCounter = 0;
+		isOpenCounter = 0;
 		
 		$data.find('input[name^=ohStartTime]').each(function(){
 			openData[openCounter] = $(this).val();
@@ -2890,25 +2916,40 @@ $(document).ready(function() {
 			closeData[closeCounter] = $(this).val();
 			closeCounter++;
 		});
+
+		$original.find('select[name^=ohIsOpen]').each(function(){			
+			isOpenData[isOpenCounter] = $(this).val();
+			isOpenCounter++;
+		});
 		
 		$("body").find('.openingHoursDiv').each(function(){
 			if(!($(this).hasClass(id)))
 			{
 				$(this).empty();
-				$(this).append($data.html());
+				$(this).append($data.html());				
 				
 				openCounter = 0;
 				closeCounter = 0;
+				isOpenCounter = 0;
 				
 				newID = $(this).attr('id');
 				
-				$(this).find('.openHWrapper').each(function(){
+				$(this).find('.openHWrapper').each(function(i){
 				
 					$(this).find('input').each(function(){
 						$(this).timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 						var tempName = $(this).attr('name');
 						var newName = tempName.replace(id, newID);
 						$(this).attr('name', newName);
+					});
+
+					$(this).find('select').each(function(i){
+
+						var tempName = $(this).attr('name');
+						var newName = tempName.replace(id, newID);
+						$(this).attr('name', newName);						
+						$(this).val(isOpenData[isOpenCounter]);
+						isOpenCounter++;
 					});
 					
 					$(this).find('input[name^=ohStartTime]').each(function(){
@@ -2934,6 +2975,11 @@ $(document).ready(function() {
 							$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
 						});
 					});
+					$(this).find(".oh-is-open").on('change',onIsOpenChange);
+					//hide closed option
+					if (i>0){								
+						$(this).find("li:eq(3)").remove();
+					}					
 				});
 			}
 		});
@@ -2944,6 +2990,23 @@ $(document).ready(function() {
 			text: 'These times have been applied to all days!'
 		});
 	});
+
+	function onIsOpenChange(){
+		var val = $(this).val();						
+		if (val == "c"){
+				$(this).closest('.openingHours').find('.ui-timepicker-input-wrapper').slideUp()
+				$(this).closest('.openingHours').find('input').removeAttr("required")
+				$(this).closest('.openingHoursDiv').find('.openHWrapper').each(function(i){
+					if (i>0){
+						$(this).slideUp();		
+						$(this).remove();		
+					}
+				})							
+		} else {
+				$(this).closest('.openingHours').find('.ui-timepicker-input-wrapper').slideDown()								
+				$(this).closest('.openingHours').find('input').prop('required',true);
+		}
+	}
 	
 	$("#nonEventConfigForm").on('invalid', function (event) {
 		noty({
