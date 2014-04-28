@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-28 12:59+0200\n"
+"POT-Creation-Date: 2014-04-28 13:19+0200\n"
 "PO-Revision-Date: 2014-04-28 11:53+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,80 +18,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.4\n"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:6
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:8
 #, fuzzy
 msgid "Sorry, but there\\'s been an error processing your request."
 msgstr ""
 "Es ist leider ein Fehler bei der Bearbeitung Ihres Auftrags aufgetreten!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:7
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:9
 msgid "Incorrect credentials or account does not exist."
 msgstr "Falsche Angaben oder Konto existiert nicht. "
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:8
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:10
 msgid "Success! Please check your email for further instructions."
 msgstr ""
 "Daten wurden gespeichert. Eine E-Mail mit weiteren Anweisungen wurde "
 "versendet. "
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:9
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:11
 msgid "Sorry, incorrect code."
 msgstr "Leider falscher Code. "
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:10
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:12
 msgid ""
 "Your password has been reset.<br/>You will now be redirected to the login "
 "page."
 msgstr ""
 "Ihr Passwort wurde zurückgesetzt. Sie werden nun zum Login weitergeleitet. "
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:11
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:13
 msgid "Venue changes have been saved!"
 msgstr "Änderungen zum Unternehmen wurden gespeichert!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:12
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:14
 #, fuzzy
 msgid "Uploaded!"
 msgstr "Logo Hochladen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:13
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:15
 msgid "Error uploading file"
 msgstr "Fehler beim Upload der Datei."
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:14
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:16
 msgid "Incorrect Image File"
 msgstr "Falsche Bilddatei"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:15
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:17
 msgid "App changes have been saved!"
 msgstr "App-Änderungen wurden gespeichert!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:16
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:18
 msgid "Choose a size"
 msgstr "Größe auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:17
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:19
 msgid "Choose a flavour"
 msgstr "Aroma auswählen."
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:18
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:20
 msgid "Choose a topping"
 msgstr "Topping auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:19
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:21
 msgid "Choose some extras"
 msgstr "Extras auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:20
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:22
 msgid "Choose a side dish"
 msgstr "Beilage auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:21
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:23
 #, fuzzy
 msgid "Pick an option type"
 msgstr "Eingabe oder Auswahl einer Optionsbezeichnung"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:22
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:24
 msgid ""
 "Are you sure you want to delete this section? Note: all items and options "
 "will be lost!"
@@ -99,43 +99,43 @@ msgstr ""
 "Sind Sie sicher, dass sie diesen Abschnitt löschen möchten? Alle Artikel und "
 "Optionen werden bei diesem Vorgang gelöscht. "
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:23
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:25
 msgid "Yes, delete this section and all its contents!"
 msgstr "Ja, diesen Abschnitt und seinen Inhalt löschen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:24
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:26
 msgid "No, go back."
 msgstr "Nein, zurück."
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:25
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:27
 msgid "Choose a main"
 msgstr "Hauptgericht auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:26
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:28
 msgid "Choose a side"
 msgstr "Beilage auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:27
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:29
 msgid "Choose a drink"
 msgstr "Getränk auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:28
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:30
 msgid "Choose a curry"
 msgstr "Bratwurst auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:29
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:31
 msgid "Choose a burger"
 msgstr "Burger auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:30
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:32
 msgid "Menu configuration has been saved!"
 msgstr "Menü-Konfigurationen wurden gespeichert!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:31
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:33
 msgid "Choose a Collection Slot"
 msgstr "Abholzeitraum auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:32
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:34
 msgid ""
 "Are you sure you want to delete this event? Note: all event data will be "
 "lost!"
@@ -143,52 +143,52 @@ msgstr ""
 "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten? Alle "
 "Veranstaltungsdaten werden bei diesem Vorgang gelöscht!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:33
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:35
 msgid "Yes, delete this event!"
 msgstr "Ja, diese Veranstaltung löschen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:34
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:36
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:23
 msgid "Role"
 msgstr "Funktion"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:35
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:37
 msgid ""
 "Are you sure you want to delete this user? Note: all user data will be lost!"
 msgstr ""
 "Sind Sie sicher, dass Sie diesen Nutzer löschen möchten? Alle Nutzerdaten "
 "werden bei diesem Vorgang gelöscht!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:36
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:38
 msgid "Yes, delete this user!"
 msgstr "Ja, diesen Nutzer löschen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:37
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:39
 msgid "Username/email already exists"
 msgstr "Nutzername/E-Mail existiert bereits"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:38
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:40
 msgid "User configuration has been saved!"
 msgstr "Nutzer-Konfigurationen wurden gespeichert!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:39
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:41
 msgid "Select all menus"
 msgstr "Auswahl alle Menüs"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:40
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:42
 msgid "Unselect all menus"
 msgstr "Deselektion alle Menüs"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:41
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:43
 #, fuzzy
 msgid "Select menu("
 msgstr "Auswahl alle Menüs"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:42
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:44
 msgid "# of # selected"
 msgstr "# von # ausgewählt"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:43
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:45
 msgid ""
 "Are you sure you want to delete this outlet? Note: all outlet data will be "
 "lost!"
@@ -196,19 +196,19 @@ msgstr ""
 "Sind Sie sicher, dass sie diesen Standort löschen möchten? Alle "
 "Standortdaten werden bei diesem Vorgang gelöscht!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:44
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:46
 msgid "Yes, delete this outlet!"
 msgstr "Ja, diesen Standort löschen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:45
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:47
 msgid "Outlet configuration has been saved!"
 msgstr "Standort-Konfigurationen wurden gespeichert!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:46
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:48
 msgid "These times have been applied to all days!"
 msgstr "Diese Zeiten wurden allen Tagen zugeordnet!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:47
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:49
 #, fuzzy
 msgid ""
 "We still need some more information. Don\\'t forget to fill out the "
@@ -217,17 +217,17 @@ msgstr ""
 "Wir benötigen noch weitere Informationen. Vergessen Sie nicht, die weiteren "
 "Wochentage auszufüllen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:48
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:50
 msgid "Where should this meal deal appear?"
 msgstr "Wo soll dieser Meal Deal erscheinen?"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:49
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:51
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:96
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:213
 msgid "Choose a menu section"
 msgstr "Auswahl einer Menü-Kategorie"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:50
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:52
 msgid ""
 "Are you sure you want to delete this meal deal? Note: all associated data "
 "will be lost!"
@@ -235,31 +235,31 @@ msgstr ""
 "Sind Sie sicher, dass Sie diesem Meal Deal löschen möchten? Alle "
 "dazugehörigen Daten werden bei diesem Vorgang gelöscht!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:51
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:53
 msgid "Yes, delete this meal deal!"
 msgstr "Ja, diesen Meal Deal löschen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:52
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:54
 msgid "All changes has been saved!"
 msgstr "Alle Änderungen wurden gespeichert!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:53
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:55
 msgid ""
 "Are you sure you want to delete this menu? Note: all menu data will be lost!"
 msgstr ""
 "Sind Sie sicher, dass Sie dieses Menü löschen möchten? Alle Menüdaten werden "
 "bei diesem Vorgang gelöscht!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:54
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:56
 msgid "Yes, delete this menu!"
 msgstr "Ja, dieses Menü löschen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:55
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:57
 #, fuzzy
 msgid "Sorry, incorrect password."
 msgstr "Leider falscher Code. "
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:56
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:58
 msgid ""
 "Settings and Password has been saved!<br/>You will need to log in again with "
 "your new password to continue."
@@ -267,15 +267,15 @@ msgstr ""
 "Einstellungen und Passwort wurde gespeichert! Sie müssen mit sich mit Ihrem "
 "neuen Passwort einloggen um fortfahren zu können."
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:57
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:59
 msgid "Settings have been saved!"
 msgstr "Einstellungen wurden gespeichert!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:58
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:60
 msgid "Please select features you require"
 msgstr "Bitte, wählen Sie die Features aus, die Sie benötigen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:59
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:61
 msgid "Select all"
 msgstr "Alles auswählen"
 
@@ -431,11 +431,11 @@ msgstr "Wählen Sie hier"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:49
 msgid "Leave the 4 deep queue to everyone else and pre-order."
-msgstr "Überlassen Sie den Anderen das Anstellen und bestellen Sie vor."
+msgstr "Lassen Sie Andere warten und bestellen Sie vor"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:50
 msgid "Don't miss the game, jump the long queue and pre-order."
-msgstr " Kein Spiel verpassen wegen Warteschlangen; einfach vorbestellen!"
+msgstr "Kein Spiel verpassen wegen Warteschlangen; einfach vorbestellen!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:51
 msgid "Intermission pre-order."
@@ -443,12 +443,11 @@ msgstr "In der Pause vorbestellen."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:52
 msgid "A sparkling fruity alternative to queuing."
-msgstr "Eine fruchtig-frische Alternative zum unangenehmen Anstellen."
+msgstr "Die fruchtig-frische Alternative zum faden Anstellen."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:53
 msgid "Go on, jump the crazy queue and pre-order."
-msgstr ""
-"Los geht’s, überspringe die lange Schlange und bestelle ganz einfach vor."
+msgstr "Los geht’s, lass das Warten und bestelle einfach vor."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:54
 msgid "Don't miss the game! Order online and skip the half-time rush"
@@ -456,7 +455,7 @@ msgstr "Das Spiel genießen! Online-Bestellen und den Halbzeit-Ansturm meiden."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:55
 msgid "Order interval drinks before the show starts"
-msgstr "Bestellen Sie Getränke zur Pause, bevor die Show beginnt."
+msgstr "Bestellen Sie Getränke zur Pause, noch vor Showbeginn."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:56
 msgid "Stay with friends while the bar prepares your round"
@@ -466,7 +465,7 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:57
 msgid "Order your coffee and croissant from your table, or from the train."
-msgstr "Bestellen Sie Ihren Kaffee und Ihr Croissant von Ihrem Sitzplatz."
+msgstr "Bestellen Sie Kaffee und Croissant vom Sitzplatz aus"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:59
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:72

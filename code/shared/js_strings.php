@@ -1,3 +1,5 @@
+<?php session_start();  require_once('lang.php');?>
+
 function _tr(str){
 	return Dictionary[str];
 } 

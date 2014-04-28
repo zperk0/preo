@@ -29,16 +29,16 @@ module.exports = function(grunt) {
     },
     replace: {
       fonts: {
-        src: ['css/all_css.min.css'],             // source files array (supports minimatch)\
+        src: ['css/all_css.min.css'],            
         overwrite: true,
         replacements: [{
-          from: 'url(maven',                   // string replacement
+          from: 'url(maven',                   
           to: 'url(../fonts/Maven/maven'
         },{ 
-          from: 'url(fonts/new/',                   // string replacement
+          from: 'url(fonts/new/',              
           to: 'url(../fonts/helvetica-neue/fonts/new/'
         },{ 
-          from: 'url(icomoon',                   // string replacement
+          from: 'url(icomoon',                 
           to: 'url(../fonts/pd-fonts/icomoon'
         }]
       },
@@ -56,8 +56,11 @@ module.exports = function(grunt) {
 
   grunt.registerTask('jstranslate',"Read general.js and extract strings that need to be translated",function(){
         var file_str = ""+
+        ""+
+        "<?php session_start();"+
+        "  require_once('lang.php');"+ //need this for multi-language support
+        "?>\n\n"+
           "function _tr(str){\n"+
-//          " console.log(str,Dictionary[str])\n"+
           "\treturn Dictionary[str];\n"+
           "} \n"+
           "\n"+

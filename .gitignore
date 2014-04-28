@@ -4,3 +4,4 @@ tmp
 .DS_Store
 webapp.esproj
 node_modules
+locale/nocache
