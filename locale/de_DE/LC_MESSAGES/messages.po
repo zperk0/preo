@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-28 12:41+0200\n"
+"POT-Creation-Date: 2014-04-28 12:59+0200\n"
 "PO-Revision-Date: 2014-04-28 11:53+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -435,9 +435,7 @@ msgstr "Überlassen Sie den Anderen das Anstellen und bestellen Sie vor."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:50
 msgid "Don't miss the game, jump the long queue and pre-order."
-msgstr ""
-"Verpassen Sie nicht das Spiel, überspringen Sie die Schlange und bestellen "
-"Sie einfach vor."
+msgstr " Kein Spiel verpassen wegen Warteschlangen; einfach vorbestellen!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:51
 msgid "Intermission pre-order."
@@ -454,9 +452,7 @@ msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:54
 msgid "Don't miss the game! Order online and skip the half-time rush"
-msgstr ""
-"Verpassen Sie nicht das Spiel! Bestellen Sie Online und umgehen Sie den "
-"Ansturm zur Halbzeit."
+msgstr "Das Spiel genießen! Online-Bestellen und den Halbzeit-Ansturm meiden."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:55
 msgid "Order interval drinks before the show starts"
@@ -465,8 +461,8 @@ msgstr "Bestellen Sie Getränke zur Pause, bevor die Show beginnt."
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:56
 msgid "Stay with friends while the bar prepares your round"
 msgstr ""
-"Bleib bei deinen Freunden und an der Bar wird schon die nächste Runde für "
-"euch vorbereitet."
+"Bleib bei deinen Freunden, während an der Bar die nächste Runde vorbereitet "
+"wird."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:57
 msgid "Order your coffee and croissant from your table, or from the train."
@@ -487,7 +483,7 @@ msgstr "Erstellen Sie einen Untertitel"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:69
 msgid "Pre-order food and drinks"
-msgstr "Vorbestellung Speisen und Getränke"
+msgstr "Vorbestellen Essen & Getränke"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:70
 msgid "Pre-order drinks+food"
