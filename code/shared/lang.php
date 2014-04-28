@@ -42,11 +42,8 @@ putenv("LC_ALL=$locale");
 setlocale(LC_ALL, $locale);
 //echo setlocale(LC_ALL, 0); //debug
 
+
 $domain = 'messages';
-
-
-//create a symlink on locale named nocache (cd locale && ln -s . nocache) and uconmment the following line to clear gettext cache
-//bindtextdomain($domain, $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/nocache');
 bindtextdomain($domain, $_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/locale");
 bind_textdomain_codeset($domain, "UTF-8");
 textdomain($domain);
