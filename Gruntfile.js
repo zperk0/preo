@@ -29,16 +29,16 @@ module.exports = function(grunt) {
     },
     replace: {
       fonts: {
-        src: ['css/all_css.min.css'],            
+        src: ['css/all_css.min.css'],             // source files array (supports minimatch)\
         overwrite: true,
         replacements: [{
-          from: 'url(maven',                   
+          from: 'url(maven',                   // string replacement
           to: 'url(../fonts/Maven/maven'
         },{ 
-          from: 'url(fonts/new/',              
+          from: 'url(fonts/new/',                   // string replacement
           to: 'url(../fonts/helvetica-neue/fonts/new/'
         },{ 
-          from: 'url(icomoon',                 
+          from: 'url(icomoon',                   // string replacement
           to: 'url(../fonts/pd-fonts/icomoon'
         }]
       },
@@ -54,41 +54,7 @@ module.exports = function(grunt) {
     }
 });
 
-  grunt.registerTask('jstranslate',"Read general.js and extract strings that need to be translated",function(){
-        var file_str = ""+
-        ""+
-        "<?php session_start();"+
-        "  require_once('lang.php');"+ //need this for multi-language support
-        "?>\n\n"+
-          "function _tr(str){\n"+
-          "\treturn Dictionary[str];\n"+
-          "} \n"+
-          "\n"+
-          "var Dictionary = { \n";
-        var filePath = path.join("js",'/general.js');
-        var data = fs.readFileSync(filePath, {encoding: 'utf-8'})                
-        var regex = /_tr\(.*?\)/g; 
-        var result;
-        var usedStrings ={};        
-        while ( (result = regex.exec(data)) ) {                                        
-              
-              var str =result[0].slice(5,-2);              
-              var tmpstr = str.replace(/'/g, "\\'")
-              tmpstr = tmpstr.replace(/"/g, '\\"')
-              grunt.log.writeln(tmpstr);
-              if (usedStrings[str] ===undefined){              
-                if (str != ""){                                    
-                  file_str+= '\t"'+str+'":\'<? echo _("'+tmpstr+'") ?>\',\n'
-                  usedStrings[str] = true;
-                }
-              }
-        }      
-        
-        file_str+= "}\n";
-        fs.writeFileSync('code/shared/js_strings.php', file_str);            
-  })
-
-
+  
   grunt.registerTask('minifyjs', ['uglify','replace:jscolor']);
   grunt.registerTask('minifycss', ['cssmin','replace:fonts']);  
   grunt.registerTask('build', ['minifyjs','minifycss']);
