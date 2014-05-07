@@ -19,22 +19,28 @@
 	{
 		if(isset($_POST['mdName'][$j]) && $_POST['mdName'][$j])
 		{
-			$md[$i]['id'] 			= /*protect(*/$_POST['mdID'][$j];//);
-			$md[$i]['name'] 		= /*protect(*/$_POST['mdName'][$j];//);
+			$md[$i]['id'] 			= $_POST['mdID'][$j];
+			$md[$i]['name'] 		= $_POST['mdName'][$j];
 			if( (!isset($_POST['mdPrice'][$j])) || (isset($_POST['mdPrice'][$j]) && empty($_POST['mdPrice'][$j])) )
 				$md[$i]['price'] 		= 0.0;
 			else
-				$md[$i]['price'] 		= /*protect(*/$_POST['mdPrice'][$j];//);
-			$md[$i]['sectionID']	= /*protect(*/$_POST['mdSecID'][$j];//);	
-			$md[$i]['visible']		= /*protect(*/$_POST['mdVisi'][$j];//);	
+				$md[$i]['price'] 	= $_POST['mdPrice'][$j];
+			$md[$i]['sectionID']	= $_POST['mdSecID'][$j];	
+			$md[$i]['visible']		= $_POST['mdVisi'][$j];	
+			
+			//protect
+			protect($md[$i]['name']);
 			
 			$a = $b = 1;
 			while($a <= $_POST['md'.$j.'_secCountAct'] && $b <= $_POST['md'.$j.'_secCount']) 
 			{
 				if((isset($_POST['iMD'][$j]['s'.$b]) && $_POST['iMD'][$j]['s'.$b]))
 				{
-					$md[$i]['sections'][$a]['name'] = /*protect(*/$_POST['iMD'][$j]['s'.$b];//);
+					$md[$i]['sections'][$a]['name'] = $_POST['iMD'][$j]['s'.$b];
 					$md[$i]['sections'][$a]['items'] = array_filter( explode(";", $_POST['mdItems'][$j]['s'.$b]), 'strlen' ); //no emptys
+					
+					//protect
+					protect($md[$i]['sections'][$a]['name']);
 					
 					$a++;
 				}
@@ -56,7 +62,7 @@
 	
 	foreach($md as $mdKey => $mealDeal)
 	{
-		if( (preg_match('/^\d+$/',$mealDeal['id'])) ) //We delete the old meal deals and create a new ones!
+		if( (preg_match('/^\d+$/',$mealDeal['id'])) ) //We delete the old meal deals and create a new ones RETAINS MealDeal ID!
 		{		
 			$mdID = $mealDeal['id'];
 			

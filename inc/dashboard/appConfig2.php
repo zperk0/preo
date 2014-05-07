@@ -18,11 +18,7 @@
 			<?}else{?><a class="unavailable" href="#"><? echo _("Opening Hours");?></a><?}?>
 		<?}?>
 		
-		<?if(!$_SESSION['noPaymentFlag']){?>
-			<a href="<?echo $_SESSION['path']?>/payment"><? echo _("Payment Method");?></a>
-		<?}else{?>
-			<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
-		<?}?>
+		<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
 		
 		<a class="unavailable" href="#"><? echo _("Done");?></a>
 	</nav>
@@ -37,7 +33,7 @@
 						<div class="row">
 							<div class="large-8 columns">
 								<label class="left"><?echo _("Add a short venue title");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("This is a shorter version of your venue name that will be visible over your menu.");?>"></i>
-								<input type="text" name="vTitle" id="vTitle" placeholder="Type a name..." required tabindex=1 value="<?if(isset($_SESSION['app_title'])) echo $_SESSION['app_title']; else echo $_SESSION['venue_name'];?>" pattern="^.{0,22}$">
+								<input type="text" name="vTitle" id="vTitle" placeholder="Type a name..." required tabindex=1 value="<?if(isset($_SESSION['app_title'])) echo htmlentities($_SESSION['app_title'], ENT_QUOTES); else echo htmlentities($_SESSION['venue_name'], ENT_QUOTES);?>" pattern="^.{0,22}$">
 								<small class="error"><?echo _("Please type a venue title <br/>(max 22chars)");?></small>
 							</div>
 						</div>
@@ -53,7 +49,7 @@
 							<button type="button" class="tiny expand menuMultiButton mmb4"><i class="pd-add"></i></button>
 							<button type="button" class="tiny expand menuMultiButton mmb5"><i class="pd-add"></i></button>
 							<button type="button" class="tiny expand menuMultiButton mmb6"><i class="pd-add"></i></button>
-							<p id="venTitle"><?echo $_SESSION['venue_name'];?></p>
+							<p id="venTitle"><?echo htmlentities($_SESSION['venue_name'], ENT_QUOTES);?></p>
 						</div>
 					</div>
 				
@@ -128,7 +124,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','180%');
-	$('.progressIndicator').attr('title', "40% done, a couple more design touches...");
+	$('.progressIndicator').attr('title', <? echo _("'40% done, a couple more design touches...'")?>) ;
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });

@@ -9,11 +9,8 @@
 			<a href="<?echo $_SESSION['path']?>/menus/<?echo $_SESSION['menus'][0]['id'];?>?r=1"><? echo _("Menu Creation");?></a>
 			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a href="<?echo $_SESSION['path']?>/events?r=1"><? echo _("Events");?></a>
 			<?}else{?><a href="<?echo $_SESSION['path']?>/openinghours?r=1"><? echo _("Opening Hours");?></a><?}?>
-			<?if(!$_SESSION['noPaymentFlag']){?>
-				<a href="<?echo $_SESSION['path']?>/payment"><? echo _("Payment Method");?></a>
-			<?}else{?>
-				<a class="current" href="#"><? echo _("Add a Payment");?></a>
-			<?}?>
+			<a class="current" href="#"><? echo _("Add a Payment");?></a>
+
 			
 			<a class="unavailable" href="#"><? echo _("Done");?></a>
 		</nav>
@@ -45,7 +42,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','450%');
-	$('.progressIndicator').attr('title', "85% done, we've saved the best for last!");
+	$('.progressIndicator').attr('title', <? echo _("85% done, we've saved the best for last!") ?>);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });

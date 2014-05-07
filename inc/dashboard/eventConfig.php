@@ -10,11 +10,7 @@
 				<a href="<?echo $_SESSION['path']?>/menus/<?echo $_SESSION['menus'][0]['id'];?>?r=1"><? echo _("Menu Creation");?></a>
 				<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="current" href="#"><? echo _("Events");?></a>
 				<?}else{?><a class="current" href="#"><? echo _("Opening Hours");?></a><?}?>
-				<?if(!$_SESSION['noPaymentFlag']){?>
-					<a href="<?echo $_SESSION['path']?>/payment"><? echo _("Payment Method");?></a>
-				<?}else{?>
-					<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
-				<?}?>
+				<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
 				
 				<a class="unavailable" href="#"><? echo _("Done");?></a>
 			</nav>
@@ -148,11 +144,11 @@
 					<tr class="savedInput eventTR">
 						<td class="eventTDName">
 							<input type="hidden" name="eID[<?echo ($eKey+1);?>]" value="<?echo $event['id'];?>" />
-							<input type="text" name="eName[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo $event['name'];?>"  pattern="^.{0,99}$" required readonly="readonly"/>
+							<input type="text" name="eName[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" value="<?echo htmlentities($event['name'], ENT_QUOTES);?>"  pattern="^.{0,99}$" required readonly="readonly"/>
 							<small class="error"><?echo _("Please type an event name (max 100chars)");?></small>
 						</td>
 						<td class="eventTDDesc">
-							<input type="text" name="eDesc[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" <?if(!empty($event['description'])){?>value="<?echo $event['description'];?>"<?}?> placeholder="<?echo _("Click to add a description");?>" readonly="readonly"  pattern="^.{0,250}$"/>
+							<input type="text" name="eDesc[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit" <?if(!empty($event['description'])){?>value="<?echo htmlentities($event['description'], ENT_QUOTES);?>"<?}?> placeholder="<?echo _("Click to add a description");?>" readonly="readonly"  pattern="^.{0,250}$"/>
 							<small class="error"><?echo _("Please type a description (max 250chars)");?></small>
 						</td>
 						<td class="eventTDDate">
@@ -244,7 +240,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','350%');
-	$('.progressIndicator').attr('title', "75% done, almost there now...");
+	$('.progressIndicator').attr('title', <? echo _("'75% done, almost there now...'") ?>) ;
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });

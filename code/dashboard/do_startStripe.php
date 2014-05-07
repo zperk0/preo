@@ -11,9 +11,9 @@
 	$venueID = $_SESSION['venue_id'];
 	
 	$data = array();
-	$data['demoFlag'] = false;
-	$data['liveFlag'] = false; //both are set together so the app is now offline
+	$data['demoFlag'] = true;
+	$data['liveFlag'] = true; //both are set together so the app is now DEMO mode
 	$jsonData = json_encode($data);
 	
-	$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/demo", $data, $apiAuth);
+	$curlResult = callAPI('PUT', $apiURL."venues/$venueID/demo", $data, $apiAuth);
 ?>

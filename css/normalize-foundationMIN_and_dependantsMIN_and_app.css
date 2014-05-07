@@ -1785,45 +1785,7 @@ table.mdTable{
 	margin-left: 20px;
 }
 
-
-.advanced-setting{
-	background-color: white;
-	-moz-box-shadow: rgba(70, 83, 93, 0.54902) 0px 0px 6px inset;
-	-webkit-box-shadow: rgba(70, 83, 93, 0.54902) 0px 0px 6px inset;
-	box-shadow: rgba(70, 83, 93, 0.54902) 0px 0px 6px inset;
-	padding: 20px 20px;
-	margin-bottom: 20px;
+.neverShow{
+	display:none !important;
+	visibility:hidden !important;
 }
-
-.advanced-setting label{
-	color: #000 !important;
-	padding-bottom: 15px;
-}
-
-.float-right{
-	float: right;
-}
-
-#venueConfigForm > .large-6{
-	max-width:31em;
-	margin:0 auto;
-
-}
-
-.cf:before,
-.cf:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
-
-.cf:after {
-    clear: both;
-}
-
-
-
-.large-collumns-wrapper {
-	margin:0 auto;
-	max-width:62.5em;
-}
-

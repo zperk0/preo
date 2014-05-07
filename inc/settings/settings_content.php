@@ -6,12 +6,12 @@
 				<h2 class="alignHeader"><? echo _("Profile");?></h2>
 				<div class="large-6 columns">
 					<label><?echo _("First Name");?></label>
-					<input type="text" name="fName" value="<?echo $_SESSION['user_fName'];?>" required pattern="^.{0,99}$" tabindex=1>
+					<input type="text" name="fName" value="<?echo htmlentities($_SESSION['user_fName'], ENT_QUOTES);?>" required pattern="^.{0,99}$" tabindex=1>
 					<small class="error"><?echo _("First Name is required (max 100chars)");?></small>
 				</div>
 				<div class="large-6 columns">
 					<label><?echo _("Last Name");?></label>
-					<input type="text" name="lName" value="<?echo $_SESSION['user_lName'];?>" required pattern="^.{0,99}$" tabindex=2>
+					<input type="text" name="lName" value="<?echo htmlentities($_SESSION['user_lName'], ENT_QUOTES);?>" required pattern="^.{0,99}$" tabindex=2>
 					<small class="error"><?echo _("Last Name is required (max 100chars)");?></small>
 				</div>
 			</div>
@@ -23,7 +23,7 @@
 				</div>
 				<div class="large-6 columns">
 					<label><?echo _("Business Name");?></label>
-					<input type="text" name="businessName" value="<?echo $_SESSION['account_name'];?>" required pattern="^.{0,99}$" tabindex=4>
+					<input type="text" name="businessName" value="<?echo htmlentities($_SESSION['account_name'], ENT_QUOTES);?>" required pattern="^.{0,99}$" tabindex=4>
 					<small class="error"><?echo _("A business name is required (max 100chars)");?></small>
 				</div>
 			</div>

@@ -21,17 +21,21 @@
 	{
 		if(isset($_POST['eName'][$j]) && $_POST['eName'][$j])
 		{
-			try { $events[$i]['id']	= /*protect(*/$_POST['eID'][$j];/*);*/ } catch(Exception $e){ /*nothing*/ } 
-			$events[$i]['name'] 	= /*protect(*/$_POST['eName'][$j];//);
-			$events[$i]['desc'] 	= /*protect(*/$_POST['eDesc'][$j];//);
-			$events[$i]['starttime']= /*protect(*/$_POST['eTime'][$j];//);
-			$events[$i]['endtime'] 	= /*protect(*/$_POST['eETime'][$j];//);
-			$tempDate 				= /*protect(*/$_POST['eDate'][$j];//);
+			try { $events[$i]['id']	= $_POST['eID'][$j]; } catch(Exception $e){ /*nothing*/ } 
+			$events[$i]['name'] 	= $_POST['eName'][$j];
+			$events[$i]['desc'] 	= $_POST['eDesc'][$j];
+			$events[$i]['starttime']= $_POST['eTime'][$j];
+			$events[$i]['endtime'] 	= $_POST['eETime'][$j];
+			$tempDate 				= $_POST['eDate'][$j];
 				//convert to YYYYMMDD (from DD/MM/YYYY)
 				preg_match('/(\d\d)\/(\d\d)\/(\d\d\d\d)/',$tempDate, $matches);
 				$events[$i]['date'] = $matches[3].'-'.$matches[2].'-'.$matches[1];
-			$events[$i]['visible'] 	= /*protect(*/$_POST['eVisi'][$j];//);
+			$events[$i]['visible'] 	= $_POST['eVisi'][$j];
 				if(!isset($events[$i]['visible']) || !$events[$i]['visible']) $events[$i]['visible'] = 0;
+			
+			//protect
+			protect($events[$i]['name']);
+			protect($events[$i]['desc']);
 			
 			//now we get all the collectionSlots
 			$x = $y = 1;
@@ -39,8 +43,8 @@
 			{
 				if(isset($_POST['eColl']['event'.$j][$y]) && $_POST['eColl']['event'.$j][$y])
 				{
-					$events[$i]['cSlots'][$x]['name'] = /*protect(*/$_POST['eColl']['event'.$j][$y];//);
-					$events[$i]['cSlots'][$x]['time'] = /*protect(*/$_POST['eLead']['event'.$j][$y];//);
+					$events[$i]['cSlots'][$x]['name'] = $_POST['eColl']['event'.$j][$y];
+					$events[$i]['cSlots'][$x]['time'] = $_POST['eLead']['event'.$j][$y];
 					
 					$x++;
 				}

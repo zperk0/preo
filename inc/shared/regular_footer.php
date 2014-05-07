@@ -1,11 +1,11 @@
 		<footer class="regular">
 			<div class="row">
 				<div class="large-3 small-2 columns premiumDiv">
-					&nbsp;<!--<a href="#" data-dropdown="langDrop" class="button dropdown small"><? echo _("CHANGE LANGUAGE");?></a>
+					<a href="#" data-dropdown="langDrop" class="button dropdown small"><? echo _("CHANGE LANGUAGE");?></a>
 					<ul id="langDrop" class="f-dropdown">
 						<li><a href="#" class="changeLang" data-new-lang="en"><? echo _("English");?></a></li>
 						<li><a href="#" class="changeLang" data-new-lang="de"><? echo _("German");?></a></li>
-					</ul>-->
+					</ul>
 				</div>
 				<div class="large-offset-4 large-2 small-3 columns left">
 					<p>

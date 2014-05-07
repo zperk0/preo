@@ -15,11 +15,7 @@
 				<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="unavailable" href="#"><? echo _("Events");?></a>
 				<?}else{?><a class="unavailable" href="#"><? echo _("Opening Hours");?></a><?}?>
 			<?}?>
-			<?if(!$_SESSION['noPaymentFlag']){?>
-				<a href="<?echo $_SESSION['path']?>/payment"><? echo _("Payment Method");?></a>
-			<?}else{?>
-				<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
-			<?}?>
+			<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
 			
 			<a class="unavailable" href="#"><? echo _("Done");?></a>
 		</nav>
@@ -43,7 +39,9 @@
 			
 			<input type="hidden" id="redirectFlag" name="redirectFlag" value="<?echo $redirectFlag?>"/>
 			
-			<input type="hidden" id="menuID" name="menuID" value="<?if(isset($menuID)) echo $menuID; else echo "menu1";?>"/>
+			<input type="hidden" id="menuID" 	name="menuID" 		value="<?if(isset($menuID)) echo $menuID; else echo "menu1";?>"/>
+			<input type="hidden" id="venueID" 	name="venueID" 		value="<?if(isset($_SESSION['venue_id'])) echo $_SESSION['venue_id']; else echo "venue1";?>"/>
+			<input type="hidden" id="accountID" name="accountID" 	value="<?if(isset($_SESSION['account_id'])) echo $_SESSION['account_id']; else echo "account1";?>"/>
 			
 			<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu))) :
 				foreach($itemModOptArray as $key=>$itemModOption)
@@ -60,14 +58,14 @@
 			endif; ?>
 
 			<div class="row">
-				<input type="text" name="mName" id="mName" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo $menu['name'];?>" placeholder="<?echo _("Click to add your menu name");?>" required tabindex=1 pattern="^.{0,99}$"/>
+				<input type="text" name="mName" id="mName" data-edit="false" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo _("Click to add your menu name");?>" required tabindex=1 pattern="^.{0,99}$"/>
 				<small class="error mNameError"><?echo _("Please type a menu name (max 100chars)");?></small>
 			</div>
 
 			<div class="hide" id="menuSectionRow"> <!-- DUMMY -->
 				<div class="row">
 					<div class="large-12 columns menuSectionDiv">
-						<input type="text" name="mSectionName[0]" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
+						<input type="text" name="mSectionName[0]" data-insert="false" data-edit="false" data-delete="false" data-id="section0s" data-md="false" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
 						<small class="error msecError"><?echo _("Please type a section name (max 100chars)");?></small>
 					</div>
 				</div>
@@ -102,7 +100,7 @@
 				<tbody>
 					<tr class="menuEdit itemTR">
 						<td class="menuTDName">
-							<input type="text" name="iName[section0][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an item name");?>" required pattern="^.{0,99}$"/>
+							<input type="text" name="iName[section0][0]" data-insert="false" data-edit="false" data-delete="false" data-id="item0i"  data-mdi="false" class="menuField noEnterSubmit" value="<?echo _("Click to add an item name");?>" required pattern="^.{0,99}$"/>
 							<small class="error"><?echo _("Please type an item name (max 100chars)");?></small>
 						</td>
 						<td class="menuTDDesc">
@@ -139,7 +137,7 @@
 					<tr class="menuEdit subHeaderTR">
 						<td class="itemSubheader"><h6><button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="pd-add"></i></button> <?echo _("Add an option");?> </h6></td>
 						<td class="modifierRow hide">
-							<input type="text" name="iMod[item0][m0]" class="menuField noEnterSubmit" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Type or pick an option title");?>" pattern="^.{0,99}$"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
+							<input type="text" name="iMod[item0][m0]" data-insert="false" data-edit="false" data-delete="false" data-id="mod0m-item0i" class="menuField noEnterSubmit" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" placeholder="<?echo _("Type or pick an option title");?>" pattern="^.{0,99}$"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
 							<small class="error smallerror selectError"><?echo _("Please type or pick a title");?></small>
 						</td>
 						<td class="modifierRow hide">
@@ -153,7 +151,7 @@
 					</tr>
 					<tr class="menuEdit hide" style="display:none;">
 						<td class="menuTDName">
-							<input type="text" name="oName[item0][m0][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an option name");?>" required pattern="^.{0,99}$"/>
+							<input type="text" name="oName[item0][m0][0]" data-insert="false" data-edit="false" data-delete="false" data-id="opt0o-item0i" class="menuField noEnterSubmit" value="<?echo _("Click to add an option name");?>" required pattern="^.{0,99}$"/>
 							<small class="error"><?echo _("Please type an option name (max 100chars)");?></small>
 						</td>
 						<td class="menuTDDesc">
@@ -195,13 +193,15 @@
 		$iKey=0; //item number are continuous across sections so we can't use $key in foreach($array as $key=>$var)
 		foreach($menu['sections'] as $sKey=>$section){ 
 		//again remember its all 1-indexed thats why we add +1 to the key
+		$mdFlag = "false";
+		foreach($section['items'] as $secitem) { if(in_array($secitem['id'], $mealDealArray)) {$mdFlag="true"; break;} }
 		?>
 			<div class="moveSec">
 				<div class="moveSecInner">
 					<div id="menuSectionRow">
 						<div class="row">
 							<div class="large-12 columns menuSectionDiv">
-								<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo $section['name'];?>" placeholder="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
+								<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-id="section<?echo $section['id'];?>" data-md="<?echo $mdFlag?>" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo htmlentities($section['name'], ENT_QUOTES);?>" placeholder="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
 								<small class="error msecError"><?echo _("Please type a section name (max 100chars)");?></small>
 							</div>
 						</div>
@@ -230,18 +230,16 @@
 						</div>
 						<div class="sortWithinDiv">
 						<?foreach($section['items'] as $item){ 
-						//again remember its all 1-indexed thats why we add +1 to the key
-							if($item['mealDeal']) continue;	
-						?>
-							<table class="menuTable tablesection<?echo ($sKey+1);?>" id="item<?echo ($iKey+1)?>" style="background:transparent">
+						//again remember its all 1-indexed thats why we add +1 to the key?>
+							<table class="menuTable tablesection<?echo ($sKey+1);?> <?if($item['mealDeal']){?>neverShow<?}?>" id="item<?echo ($iKey+1)?>" style="background:transparent<?if($item['mealDeal']){?>;display:none !important;visibility:hidden !important;<?}?>">
 								<tbody>
 									<tr class="savedInput itemTR">
 										<td class="menuTDName">
-											<input type="text" name="iName[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?echo $item['name'];?>" required readonly="readonly" pattern="^.{0,99}$"/>
+											<input type="text" name="iName[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-id="item<?echo $item['id'];?>" <?if(in_array($item['id'],$mealDealItemArray)){?>data-mdi="true"<?}else{?>data-mdi="false"<?}?> class="menuField noEnterSubmit" value="<?echo htmlentities($item['name'], ENT_QUOTES);?>" required readonly="readonly" pattern="^.{0,99}$"/>
 											<small class="error"><?echo _("Please type an item name (max 100chars)");?></small>
 										</td>
 										<td class="menuTDDesc">
-											<input type="text" name="iDesc[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?if(!empty($item['description'])) echo $item['description'];?>" placeholder="<?echo _("Optional description");?>"  readonly="readonly" pattern="^.{0,250}$"/>
+											<input type="text" name="iDesc[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" value="<?if(!empty($item['description'])) echo htmlentities($item['description'], ENT_QUOTES);?>" placeholder="<?echo _("Optional description");?>"  readonly="readonly" pattern="^.{0,250}$"/>
 											<small class="error"><?echo _("Please type a description (max 250chars)");?></small>
 										</td>
 										<td class="menuTDPrice">
@@ -275,7 +273,7 @@
 											<tr class="menuEdit subHeaderTR">
 												<td class="itemSubheader hide"><h6><button type="button" class="newOpt" title="<?echo _("Add a new option to this item");?>"><i class="pd-add"></i></button> <?echo _("Add an option");?></h6></td>
 												<td class="modifierRow hide">
-													<input type="text" name="iMod[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>]" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" class="menuField noEnterSubmit hide" placeholder="<?echo _("Type or pick an option title");?>" value="<?echo $modifier['name'];?>" required pattern="^.{0,99}$"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
+													<input type="text" name="iMod[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-id="mod<?echo $modifier['id'];?>" style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;" class="menuField noEnterSubmit hide" placeholder="<?echo _("Type or pick an option title");?>" value="<?echo htmlentities($modifier['name'], ENT_QUOTES);?>" required pattern="^.{0,99}$"/>&nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Eg. Pick a size, Choice of an option, Add some extras, Select a side");?>"></i><span class="showAChevy"><i class="pd-down"></i></span>
 													<small class="error smallerror selectError"><?echo _("Please type or pick a title");?></small>
 												</td>
 												<td class="modifierRow hide">
@@ -289,7 +287,7 @@
 											</tr>
 											<tr class="menuEdit hide" style="display:none;"> <!-- This dummy is required! -->
 												<td class="menuTDName">
-													<input type="text" name="oName[item<?echo ($iKey+1);?>][m0][0]" class="menuField noEnterSubmit" value="<?echo _("Click to add an option name");?>" required pattern="^.{0,99}$"/>
+													<input type="text" name="oName[item<?echo ($iKey+1);?>][m0][0]" data-insert="false" data-edit="false" data-delete="false" data-id="opt0o-item0i" class="menuField noEnterSubmit" value="<?echo _("Click to add an option name");?>" required pattern="^.{0,99}$"/>
 													<small class="error"><?echo _("Please type an option name (max 100chars)");?></small>
 												</td>
 												<td class="menuTDDesc">
@@ -321,7 +319,7 @@
 											?>
 												<tr class="optionTR savedInput" style="display:none;">
 													<td class="menuTDName">
-														<input type="text" name="oName[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo $option['name'];?>" required  readonly="readonly" pattern="^.{0,99}$"/>
+														<input type="text" name="oName[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>][<?echo ($oKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-id="opt<?echo $option['id'];?>" class="menuField noEnterSubmit" value="<?echo htmlentities($option['name'], ENT_QUOTES);?>" required  readonly="readonly" pattern="^.{0,99}$"/>
 														<small class="error"><?echo _("Please type an option name (max 100chars)");?></small>
 													</td>
 													<td class="menuTDDesc">
@@ -376,6 +374,7 @@
 	
 	<div class="row">
 		<div class="small-12 large-4 columns">
+				<button class="collapseAllMenu secondary small" type="button"><?echo _("COLLAPSE ALL");?></button>
 			<?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 				<button id="menuSaveButtonE" type="submit"><?echo _("SAVE & CONTINUE EDITING");?></button>
 				<button id="menuSaveButton" type="submit"><?echo _("SAVE & FINISH");?></button>
@@ -392,7 +391,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','200%');
-	$('.progressIndicator').attr('title', "45% done, now for the fun bit!");
+	$('.progressIndicator').attr('title', <? echo _("'45% done, now for the fun bit!'") ?>);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });

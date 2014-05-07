@@ -861,8 +861,8 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 .menuTable .menuTDDesc, .headerTable .menuTDDesc{
 	width: 375px;
 }
-.userTable .userTDName, .headerTable .userTDName, .userTable .userTDEmail, .headerTable .userTDEMail, .userTable .userTDPassword{
-	width: 39%;
+.userTable .userTDName, .headerTable .userTDName, .userTable .userTDEmail, .headerTable .userTDEmail, .userTable .userTDPassword{
+	width: 30%;
 }
 
 .eventTable .eventTDDesc, .headerTable .eventTDDesc{
@@ -1260,6 +1260,10 @@ p.venueCode {
 	color: #D7D9DA;
 }
 
+.premiumDiv p{
+	font-size:0.8em;
+}
+
 .dashContent a:hover, .dashboardFooter a:hover {
 	color: #FFF;
 }
@@ -1472,6 +1476,7 @@ footer.dashboardFooter div{
 .premiumDiv h3{
 	color: #F9B30A;
 	margin-top: -10px;
+	font-size:1.5680em;
 }
 
 .premiumButton{
@@ -1841,3 +1846,10 @@ div.switch input:last-of-type+span+label{
 }
 
 
+
+.switch .no {
+	visibility: collapse;
+}
+.switch.off .no {
+	visibility: visible;
+}
