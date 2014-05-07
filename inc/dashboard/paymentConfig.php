@@ -42,7 +42,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','450%');
-	$('.progressIndicator').attr('title', "85% done, we've saved the best for last!");
+	$('.progressIndicator').attr('title', <? echo _("85% done, we've saved the best for last!") ?>);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });

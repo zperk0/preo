@@ -24,7 +24,7 @@
 		<!--<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/app.css" /> -->
 		
 		<!-- Main CSS files -combined minified PLUS Bespoke CSS -combined (dependants minified) -->
-		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize-foundationMIN_and_dependantsMIN_and_app.css" />		<!-- CSS 1/1 : to be minified and updated with timestamp -->	
+		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/all_css.min.css" />		<!-- CSS 1/1 : to be minified and updated with timestamp -->	
 		
 		<!-- Pre-body Javascripts -->
 		<!-- combined minified -->

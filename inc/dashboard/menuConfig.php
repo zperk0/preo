@@ -85,8 +85,8 @@
 								<th class="menuTDName"><? echo _("Name");?></th>
 								<th class="menuTDDesc"><? echo _("Description");?></th>
 								<th class="menuTDPrice"><? echo _("Price (&pound;)");?></th>
-								<!--<th class="menuTDQuant"><? echo _("Quantity");?></th>
-								<th class="menuTDVisi"><? echo _("Visible?");?></th>-->
+								<!--<th class="menuTDQuant"><? echo _("Quantity");?></th>-->
+								<th class="menuTDVisi"><? echo _("Visible?");?></th>
 								<th class="menuTDTools"><? echo _("Tools");?></th>
 							</tr>
 						</thead>
@@ -115,13 +115,13 @@
 						<td class="menuTDQuant hide">
 							<input type="text" name="iQuan[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Unlimited");?>"/>
 						</td>
-						<td class="menuTDVisi hide">
-							<div class="switch tiny" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>"> 
+						<td class="menuTDVisi">
+							<div class="switch small" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>"> 
 								<input name="iVisi[section0][0]" value="0" type="radio">
-								<label><?echo _("No");?></label>
+								<label class='no'><?echo _("No");?></label>
 
 								<input name="iVisi[section0][0]" value="1" type="radio" checked>
-								<label><?echo _("Yes");?></label>
+								<label class='yes'><?echo _("Yes");?></label>
 
 								<span></span>
 							</div>
@@ -163,13 +163,13 @@
 						</td>
 						<td class="menuTDQuant hide">
 						</td>
-						<td class="menuTDVisi hide">
-							<div class="switch tiny"> 
+						<td class="menuTDVisi">
+							<div class="switch small"> 
 								<input name="oVisi[item0][m0][0]" value="0" type="radio">
-								<label><?echo _("No");?></label>
+								<label class='no'><?echo _("No");?></label>
 
 								<input name="oVisi[item0][m0][0]" value="1" type="radio" checked>
-								<label><?echo _("Yes");?></label>
+								<label class='yes'><?echo _("Yes");?></label>
 
 								<span></span>
 							</div>
@@ -221,8 +221,8 @@
 										<th class="menuTDName"><? echo _("Name");?></th>
 										<th class="menuTDDesc"><? echo _("Description");?></th>
 										<th class="menuTDPrice"><? echo _("Price (&pound;)");?></th>
-										<!--<th class="menuTDQuant"><? echo _("Quantity");?></th>
-										<th class="menuTDVisi"><? echo _("Visible?");?></th>-->
+										<!--<th class="menuTDQuant"><? echo _("Quantity");?></th> -->
+										<th class="menuTDVisi"><? echo _("Visible?");?></th>
 										<th class="menuTDTools"><? echo _("Tools");?></th>
 									</tr>
 								</thead>
@@ -249,13 +249,13 @@
 										<td class="menuTDQuant hide">
 											<input type="text" name="iQuan[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" <?if($item['quantity']){?>value="<?echo $item['quantity']?>"<?}else{?>placeholder="<?echo _("Unlimited");}?>"  readonly="readonly"/>
 										</td>
-										<td class="menuTDVisi hide">
-											<div class="switch tiny" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>"> 
+										<td class="menuTDVisi">
+											<div class="switch small" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>"> 
 												<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="0" type="radio" <?if(!$item['visible']){?>checked<?}?>>
-												<label><?echo _("No");?></label>
+												<label class='no'><?echo _("No");?></label>
 
 												<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="1" type="radio" <?if($item['visible']){?>checked<?}?>>
-												<label><?echo _("Yes");?></label>
+												<label class='yes'><?echo _("Yes");?></label>
 
 												<span></span>
 											</div>
@@ -298,13 +298,13 @@
 												</td>
 												<td class="menuTDQuant hide">
 												</td>
-												<td class="menuTDVisi hide">
-													<div class="switch tiny"> 
+												<td class="menuTDVisi">
+													<div class="switch small"> 
 														<input name="oVisi[item<?echo ($iKey+1);?>][m0][0]" value="0" type="radio">
-														<label><?echo _("No");?></label>
+														<label class='no'><?echo _("No");?></label>
 
 														<input name="oVisi[item<?echo ($iKey+1);?>][m0][0]" value="1" type="radio" checked>
-														<label><?echo _("Yes");?></label>
+														<label class='yes'><?echo _("Yes");?></label>
 
 														<span></span>
 													</div>
@@ -330,13 +330,13 @@
 													</td>
 													<td class="menuTDQuant hide">
 													</td>
-													<td class="menuTDVisi hide">
-														<div class="switch tiny"> 
+													<td class="menuTDVisi">
+														<div class="switch small"> 
 															<input name="oVisi[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>][<?echo ($oKey+1);?>]" value="0" type="radio" <?if(!$option['visible']){?>checked<?}?>>
-															<label><?echo _("No");?></label>
+															<label class="no"><?echo _("No");?></label>
 
 															<input name="oVisi[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>][<?echo ($oKey+1);?>]" value="1" type="radio" <?if($option['visible']){?>checked<?}?>>
-															<label><?echo _("Yes");?></label>
+															<label class="yes"><?echo _("Yes");?></label>
 
 															<span></span>
 														</div>
@@ -391,7 +391,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','200%');
-	$('.progressIndicator').attr('title', "45% done, now for the fun bit!");
+	$('.progressIndicator').attr('title', <? echo _("'45% done, now for the fun bit!'") ?>);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });
