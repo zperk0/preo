@@ -47,7 +47,7 @@ module.exports = function(grunt) {
         overwrite:true,
         replacements:[{
           from:"jscolor/",
-          to: "js/jscolor/"
+          to: "js/jsColor/"
 
         }]        
       }
