@@ -391,7 +391,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','200%');
-	$('.progressIndicator').attr('title', "45% done, now for the fun bit!");
+	$('.progressIndicator').attr('title', <? echo _("'45% done, now for the fun bit!'") ?>);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 });
