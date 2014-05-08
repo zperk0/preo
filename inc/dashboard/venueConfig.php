@@ -38,7 +38,7 @@
 			<div class="row">
 				<div class="large-9 small-9 columns">
 					<label><?echo _("Venue lookup");?></label>
-					<input type="text" class="noEnterSubmit" name="vSug" id="vSug" placeholder=<? echo _("Start typing a venue name...");?> tabindex=1>
+					<input type="text" class="noEnterSubmit" name="vSug" id="vSug" placeholder="<? echo _("Start typing a venue name...");?>" tabindex=1>
 				</div>
 				<div class="large-3 small-3 columns">
 					<label>&nbsp;</label>
