@@ -128,7 +128,7 @@ $('.monday').removeClass('hide');
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.progressIndicator').css('width','350%');
-	$('.progressIndicator').attr('title', <? echo _("'75% done, almost there now...'") ?> );
+	$('.progressIndicator').attr('title', <? echo json_encode(_("75&#37 done, almost there now...")) ?> );
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
 

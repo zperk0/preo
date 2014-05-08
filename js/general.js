@@ -1,5 +1,6 @@
-//general js
+/* BESPOKE JS BELOW GENERAL.JS */
 
+//global variables
 map = null; // make google maps var global
 mapDefaultCenterLat = 54.370559; // make google maps var global = set center as center of UK
 mapDefaultCenterLong = -2.510376; // make google maps var global = set center as center of UK
@@ -1061,6 +1062,14 @@ $(document).ready(function() {
 		//fix the yes/no slider so the label appears correctly
 		$newRow.find(".menuTDVisi input").each(function() {
 			$(this).trigger('click'); 
+		});
+		
+		//add data-attribute
+		$newRow.find("input[name^=oName]").each(function() {
+			$(this).attr('data-insert', true);
+			$(this).data('insert', true);
+			$(this).attr('data-id', 'opt'+newCount+'o-'+itemID+'i');
+			$(this).data('id', 'opt'+newCount+'o-'+itemID+'i');
 		});
 				
 		//hide it so we can animate it!

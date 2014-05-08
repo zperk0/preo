@@ -3,7 +3,7 @@
 $(document).ready(function(){
 	noty({
 	  type: 'success',
-	  text: 'Now, we just need your business name.'
+	  text: <? echo json_encode(_('Now, we just need your business name.')) ?>
 	});
 });
 </script>
