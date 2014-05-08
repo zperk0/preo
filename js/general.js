@@ -469,13 +469,13 @@ $(document).ready(function() {
 	$(".oh-is-open").on('change',onIsOpenChange);
 	
 	$('.switch').each(function(){
-		var val = $(this).find("input[type=radio][name=vEvent]:checked").val() == '0'
+		var val = $(this).find("input[type=radio]:checked").val() == '0'
 		console.log('this.val:' + val);
 		if (val){
 			$(this).addClass("off")
 		}
 	}).on('click',function(){
-		var val = $(this).find("input[type=radio][name=vEvent]:checked").val() == '0'
+		var val = $(this).find("input[type=radio]:checked").val() == '0'
 		if (val){
 			$(this).addClass("off")
 		} else {
