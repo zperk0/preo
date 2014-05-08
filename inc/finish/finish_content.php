@@ -71,7 +71,7 @@
 		else{?>
 			noty({
 			  type: 'error',  layout: 'topCenter',
-			  text: '<? echo _('Payment method was not setup.') ?>'
+			  text: <? echo json_encode(_('Payment method was not setup.')) ?>
 			});
 		<?}
 			$_SESSION['pmaReply']='';

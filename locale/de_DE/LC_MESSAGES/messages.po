@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-08 18:08+0200\n"
+"POT-Creation-Date: 2014-05-08 19:09+0200\n"
 "PO-Revision-Date: 2014-04-28 11:53+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Poedit 1.6.4\n"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:8
-msgid "Sorry, but there\\'s been an error processing your request."
+msgid "Sorry, but there's been an error processing your request."
 msgstr ""
 "Es ist leider ein Fehler bei der Bearbeitung Ihres Auftrags aufgetreten!"
 
@@ -206,9 +206,10 @@ msgid "These times have been applied to all days!"
 msgstr "Diese Zeiten wurden allen Tagen zugeordnet!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:49
+#, fuzzy
 msgid ""
-"We still need some more information. Don\\'t forget to fill out the "
-"remaining days of the week!"
+"We still need some more information. Don't forget to fill out the remaining "
+"days of the week!"
 msgstr ""
 "Wir benötigen noch weitere Informationen. Vergessen Sie nicht, die weiteren "
 "Wochentage auszufüllen!"
@@ -3103,7 +3104,7 @@ msgstr "Datenschutzrichtlinien zu."
 msgid "SIGN UP"
 msgstr "ANMELDEN"
 
-#~ msgid "Sorry, but there's been an error processing your request."
+#~ msgid "Sorry, but there\\'s been an error processing your request."
 #~ msgstr ""
 #~ "Es ist leider ein Fehler bei der Bearbeitung Ihres Auftrags aufgetreten!"
 

@@ -172,7 +172,7 @@
 			$_SESSION['appPublished']=0;?>
 			noty({
 			  type: 'success',  layout: 'topCenter',
-			  text: '<?echo _("Your app is now live!");?>'
+			  text: <?echo json_encode(_("Your app is now live!"));?>
 			});
 		<?
 		}?>
@@ -181,7 +181,7 @@
 			$_SESSION['appUnPublished']=0;?>
 			noty({
 			  type: 'success',  layout: 'topCenter',
-			  text: '<?echo _("Your app is now in DEMO mode.");?>'
+			  text: <?echo json_encode(_("Your app is now in DEMO mode."));?>
 			});
 		<?
 		}?>
@@ -190,7 +190,7 @@
 			$_SESSION['appStripeSkipped']=0;?>
 			noty({
 			  type: 'success',  layout: 'topCenter',
-			  text: '<?echo _("Your app is now in OFFLINE mode.");?>'
+			  text: <?echo json_encode(_("Your app is now in OFFLINE mode."));?>
 			});
 		<?
 		}?>
@@ -199,7 +199,7 @@
 			$_SESSION['appStripeDemo']=0;?>
 			noty({
 			  type: 'success',  layout: 'topCenter',
-			  text: '<?echo _("Your app is now in Demo mode.");?>'
+			  text: <?echo json_encode(_("Your app is now in Demo mode."));?>
 			});
 		<?
 		}?>
@@ -208,7 +208,7 @@
 			$_SESSION['appOffline']=0;?>
 			noty({
 			  type: 'success',  layout: 'topCenter',
-			  text: '<?echo _("Your app is now in OFFLINE mode.");?>'
+			  text: <?echo json_encode(_("Your app is now in OFFLINE mode."));?>
 			});
 		<?
 		}?>
