@@ -230,7 +230,15 @@
 		
 		$data = array();
 		$data['leadTime']			= $leadtime;
+		$data['deliveryOrderMin']	= $dMinVal;
+		$data['deliveryCharge']	    = $dCharge;	
+		$data['deliveryChargeBelow']= $dChargeBelow;
 		$data['collectInterval']	= $cDuration;
+		$data['deliveryZone']		= $dZone;					
+		$data['deliveryLeadTime']	= $dLeadTime;
+		$data['deliveryDiscount']   = $vDeliveryDiscount;
+		$data['pickupDiscount']   	= $vDiscount;
+		$data['orderMin']			= $vOrderMin;
 		
 		if($_SESSION['signupWizFlag'])
 		{
