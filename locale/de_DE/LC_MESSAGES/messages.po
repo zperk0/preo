@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-08 14:06+0200\n"
+"POT-Creation-Date: 2014-05-08 15:32+0200\n"
 "PO-Revision-Date: 2014-04-28 11:53+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1525,7 +1525,7 @@ msgstr "SIE SIND BEREITS VERBUNDEN"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:45
 #, fuzzy, php-format
-msgid "85% done, we've saved the best for last!"
+msgid "'85% done, we\\'ve saved the best for last!'"
 msgstr "85% geschafft, das Beste kommt zum Schluss!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:6
