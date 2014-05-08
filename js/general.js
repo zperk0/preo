@@ -1,3 +1,5 @@
+/* BESPOKE JS BELOW GENERAL.JS */
+
 //global variables
 map = null; // make google maps var global
 mapDefaultCenterLat = 54.370559; // make google maps var global = set center as center of UK
@@ -846,17 +848,33 @@ $(document).ready(function() {
 		
 		$ele = $(this).closest('tr');
 		
+		//add data-attribute
+		$ele.find('input[name^=oName]').attr('data-delete', true);
+		$ele.find('input[name^=oName]').data('delete', true);
+		//remove required
+		$ele.find('input[name^=oName], input[name^=oPrice], input[name^=oVisi]').each(function() {
+			$(this).removeAttr('required');
+		});
 		
 		if( ($ele.prev().prev().hasClass('subHeaderTR')) && ( ($ele.next().hasClass('subHeaderTR')) || ($ele.next().hasClass('xtraModTR')) ) )
 		{	
-			$ele.prev().remove();
-			$ele.prev('.subHeaderTR').remove();
+			//add data-attribute
+			$ele.prev().prev('.subHeaderTR').find('input[name^=iMod]').attr('data-delete', true);
+			$ele.prev().prev('.subHeaderTR').find('input[name^=iMod]').data('delete', true);
+			//remove required
+			$ele.prev().prev('.subHeaderTR').find("input[name^=iMod], select[name^=iModType]").each(function() {
+				$(this).removeAttr('required');
+			});
+			
+			$ele.prev().prev('.subHeaderTR').hide();
+			$ele.prev().hide();
+			
 			
 			$("#"+itemID+"_modCountAct").val(parseInt($("#"+itemID+"_modCountAct").val())-1);
 		}
 		
 		//bye-bye
-		$(this).parents("tr:first").remove();
+		$(this).parents("tr:first").hide();
 	});
 	
 	$(document).on("click", ".xtraOpt", function(event) {
@@ -890,6 +908,12 @@ $(document).ready(function() {
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/m\d+/gi, "m"+newCount);
 			$(this).attr('name', newName);
+			
+			//add data-attribute
+			$(this).attr('data-insert', true);
+			$(this).data('insert', true);
+			$(this).attr('data-id', 'mod'+newCount+'m-'+itemID+'i');
+			$(this).data('id', 'mod'+newCount+'m-'+itemID+'i');
 		});
 		
 		$(this).closest('tr.xtraModTR').before($subHeader).before($dummyData);
@@ -1000,6 +1024,14 @@ $(document).ready(function() {
 		//fix the yes/no slider so the label appears correctly
 		$newRow.find(".menuTDVisi input").each(function() {
 			$(this).trigger('click'); 
+		});
+		
+		//add data-attribute
+		$newRow.find("input[name^=oName]").each(function() {
+			$(this).attr('data-insert', true);
+			$(this).data('insert', true);
+			$(this).attr('data-id', 'opt'+newCount+'o-'+itemID+'i');
+			$(this).data('id', 'opt'+newCount+'o-'+itemID+'i');
 		});
 				
 		//hide it so we can animate it!
@@ -1174,6 +1206,37 @@ $(document).ready(function() {
 			});
 		}
 		
+		//add data-attribute
+		$newTab.find("input[name^=iName]").each(function() {
+			$(this).attr('data-insert', true);
+			$(this).data('insert', true);
+			$(this).attr('data-id', 'item'+newCount+'i');
+			$(this).data('id', 'item'+newCount+'i');
+		});
+		
+		if(dup)
+		{
+			var modCount = 1;
+			$newTab.find("input[name^=iMod]").each(function() {
+				$(this).attr('data-insert', true);
+				$(this).data('insert', true);
+				$(this).attr('data-id', 'mod'+modCount+'m-item'+newCount+'i');
+				$(this).data('id', 'mod'+modCount+'m-item'+newCount+'i');
+				modCount++;
+			});
+			var optCount = 1;
+			$newTab.find("input[name^=oName]").each(function() {
+				if($(this).attr('data-id') != 'opt0o-item0i') //skip dummies
+				{
+					$(this).attr('data-insert', true);
+					$(this).data('insert', true);
+					$(this).attr('data-id', 'opt'+optCount+'o-item'+newCount+'i');
+					$(this).data('id', 'opt'+optCount+'o-item'+newCount+'i');
+					optCount++;
+				}
+			});
+		}
+		
 		//now we give the section id to the duplicate button
 		$newTab.find(".itemDuplicate").attr('id',"dup"+newCount+"_"+section);
 		
@@ -1203,13 +1266,45 @@ $(document).ready(function() {
 		$curTable = $(this).closest('table');
 		var itemID = $curTable.attr('id');
 		
-		//get and update current count
-		var itemCount = $("#itemCountAct").val();
-		var newCount = parseInt(parseInt(itemCount) - 1);
-		$("#itemCountAct").val(newCount);
+		var text = "Are you sure you want to delete this item?";
 		
-		//bye-bye
-		$("#"+itemID).remove();
+		if($curTable.find("input[name^=iName]").data('mdi')) text = "<strong>This item is part of at least 1 Meal Deal.</strong><br/>This item will be disassociated with any Meal Deals if deleted. Are you sure you want to delete this item?";
+		
+		noty({
+			layout: 'center',
+			type: 'confirm',
+			text: text,
+			buttons: [
+			{addClass: 'alert tiny', text: 'Yes, delete this item!', onClick: function($noty) {
+				
+				//get and update current count
+				var itemCount = $("#itemCountAct").val();
+				var newCount = parseInt(parseInt(itemCount) - 1);
+				$("#itemCountAct").val(newCount);
+				
+				//add data-attribute
+				$curTable.find("input[name^=iName], input[name^=iMod], input[name^=oName]").each(function() {
+					$(this).attr('data-delete',true);
+					$(this).data('delete',true);
+				});
+				
+				//remove required
+				$curTable.find("input[name^=iName], input[name^=iPrice], input[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
+					$(this).removeAttr('required');
+				});
+				
+				//bye-bye
+				$("#"+itemID).hide();
+
+				$noty.close();
+			  }
+			},
+			{addClass: 'secondary tiny', text: 'No, go back.', onClick: function($noty) {
+				$noty.close();
+			  }
+			}
+		  ]
+		});
 	});
 	
 	$(document).on("click", ".itemSave", function() {
@@ -1295,6 +1390,12 @@ $(document).ready(function() {
 			$(this).val("");
 			$(this).attr('placeholder', temp);
 			$(this).attr('name', 'mSectionName['+newCount+']');
+			
+			//data-attribute
+			$(this).attr('data-insert', true);
+			$(this).data('insert', true);
+			$(this).attr('data-id', 'section'+newCount+'s');
+			$(this).data('id', 'section'+newCount+'s');
 		});
 		
 		$newSec.find(".menuSectionField").addClass('section'+newCount);
@@ -1355,6 +1456,12 @@ $(document).ready(function() {
 						$(this).attr('name', newName);
 					});
 					
+					//add data-attribute
+					$(this).find('input[name^=iName]').each(function(){
+						$(this).attr('data-edit',true);
+						$(this).data('edit',true);
+					});
+					
 					itemCounter++;
 				});
 				
@@ -1409,11 +1516,28 @@ $(document).ready(function() {
 		sectionID = ($(this).attr('id')).replace("delete_section","");
 		$parentSectionHeader = $(this).parents('#menuSectionRow');
 		
+		mdFlag = false;
+		mdiFlag = false;
+		
+		if($parentSectionHeader.find("input[name^=mSectionName]").data('md')) mdFlag = true;
+		
+		$parentSectionHeader.find("input[name^=iName]").each(function() { 
+			if($(this).data('mdi')) mdiFlag = true; 
+		});
+		
+		var text = "Are you sure you want to delete this section? Note: all items and options will be lost!";
+		
+		if(mdFlag && !mdiFlag)
+			text = "<strong>This section contains at least 1 Meal Deal.</strong><br/>All Meal Deals will be deleted if you continue!";
+		else if(!mdFlag && mdiFlag) 
+		    text = "<strong>This section contains item(s) that are part of at least 1 Meal Deal.</strong><br/>These items will be disassociated with all Meal Deals if you continue!";
+		else if(mdFlag && mdiFlag)
+			text = "<strong>This section contains Meal Deal(s) and item(s) that are part of Meal Deals.</strong><br/>All Meal Deals will be deleted and all Meal Deal items will be disassociated from Meal Deals.";
 		
 		noty({
 			layout: 'center',
 			type: 'confirm',
-			text: 'Are you sure you want to delete this section? Note: all items and options will be lost!',
+			text: text,
 			buttons: [
 			{addClass: 'alert tiny', text: 'Yes, delete this section and all its contents!', onClick: function($noty) {
 				//get and update current count
@@ -1429,22 +1553,41 @@ $(document).ready(function() {
 					itemCount++;
 				});
 				
-				for(i=0;i<itemIDArray.length;i++) //remove all option count data for each item
+				for(i=0;i<itemIDArray.length;i++) //remove all option count data for each item and mark for deletion
 				{
 					$("#item"+itemIDArray[i]+"_optionCount").remove();
 					$("#item"+itemIDArray[i]+"_optionCountAct").remove();
+					
+					//add data-attribute
+					$("#item"+itemIDArray[i]).find("input[name^=iName], input[name^=iMod], input[name^=oName]").each(function() {
+						$(this).attr('data-delete',true);
+						$(this).data('delete',true);
+					});
 				}
+				
+				//add data-attribute
+				$parentSectionHeader.find("input[name^=mSectionName]").each(function() {
+					$(this).attr('data-delete',true);
+					$(this).data('delete',true);
+				});
+				
+				//remove required
+				$parentSectionHeader.find("input[name^=mSectionName], input[name^=iName], input[name^=iPrice], input[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
+					$(this).removeAttr('required');
+				});
+				
+				
 				
 				//now we adjust item count
 				var itemCounter = $("#itemCountAct").val();
 				var newCount = parseInt(parseInt(itemCounter) - itemCount);
 				$("#itemCountAct").val(newCount);
 
-				//we delete the section here
-				$parentSectionHeader.remove(); //remove section header and buttons!
+				//we hide the section here
+				$parentSectionHeader.hide(); //remove section header and buttons!
 
-				$(".tablesection"+sectionID).remove(); //tables of all items gone!
-				$(".firstItemDivsection"+sectionID).remove(); //hidden section hook gone!
+				$(".tablesection"+sectionID).hide(); //tables of all items gone!
+				$(".firstItemDivsection"+sectionID).hide(); //hidden section hook gone!
 
 				$noty.close();
 			  }
@@ -1533,6 +1676,12 @@ $(document).ready(function() {
 						tempName = $(this).attr('name');
 						newName = tempName.replace(/\[item\d+\]/gi, "[item"+newIndex+"]");
 						$(this).attr('name', newName);
+					});
+					
+					//add data-attribute
+					$(this).find('input[name^=iName]').each(function(){
+						$(this).attr('data-edit',true);
+						$(this).data('edit',true);
 					});
 					
 					itemCounter++;
@@ -1630,11 +1779,48 @@ $(document).ready(function() {
 					
 					$(this).find("div").alterClass('firstItemDivsection*', "firstItemDivsection"+section); 
 					
+					//add data-attribute
+					$(this).find('input[name^=mSectionName]').each(function(){
+						$(this).attr('data-edit',true);
+						$(this).data('edit',true);
+					});
+					
 					section++;
 				});
 			}
 		});
 	}
+	
+	//add data-attribute
+	//main entries
+	$(document).on("blur", 'input[name^=mName], input[name^=mSectionName], input[name^=iName], input[name^=iMod], input[name^=oName]', function(){
+		$(this).attr('data-edit',true);
+		$(this).data('edit',true);
+	});
+	//dependant entries
+	//item 
+	$(document).on("blur", 'input[name^=iDesc], input[name^=iPrice], input[name^=iQuan], input[name^=iVisi]', function(){
+		$(this).parents('.itemTR').first().find('input[name^=iName]').attr('data-edit',true);
+		$(this).parents('.itemTR').first().find('input[name^=iName]').data('edit',true);
+	});
+	//mod 
+	$(document).on("change", 'select[name^=iModType]', function(){
+		$(this).parents('.subHeaderTR').first().find('input[name^=iMod]').attr('data-edit',true);
+		$(this).parents('.subHeaderTR').first().find('input[name^=iMod]').data('edit',true);
+	});
+	//opt 
+	$(document).on("blur", 'input[name^=oPrice], input[name^=oVisi]', function(){
+		$(this).parents('.optionTR').first().find('input[name^=oName]').attr('data-edit',true);
+		$(this).parents('.optionTR').first().find('input[name^=oName]').data('edit',true);
+	});
+	
+	$('.collapseAllMenu').on('click', function(){
+		//lock all
+		$("body .itemSave").each(function(){
+			if($(this).is(":visible"))
+				$(this).trigger('click');
+		});
+	});
 	
 	$('#menuConfigForm').click(function(event) {
 	  $(this).data('clicked',$(event.target))
@@ -1653,6 +1839,9 @@ $(document).ready(function() {
 	});
 	
 	$("#menuConfigForm").on('valid', function (event) {
+		//START
+		//var start = new Date().getTime();
+		
 		//prevent multiple submissions
 		var newSubmitTime = new Date().getTime();
 		
@@ -1662,22 +1851,179 @@ $(document).ready(function() {
 			var editingSkip = 0;
 			if ($(this).data('clicked').is('[id=menuSaveButtonE]')) editingSkip = 1;
 			
-			//lock all
-			$("body .itemSave").each(function(){
-				if($(this).is(":visible"))
-					$(this).trigger('click');
-			});
-			
 			$('#menuSaveButton').hide();
 			if(editingSkip) $('#menuSaveButtonE').hide();
 			$('#savingButton').show();
-		
+			
 			var url = "/saveMenu";
+			
+			//create menu object
+			var menu = {};
+			
+			//MENU
+			menu['id'] 			= $('#menuID').val();
+			menu['name']		= $('#mName').val();
+			
+			menu['edit']		= $('#mName').data('edit');
+			
+			menu['accountId']	= $('#accountID').val();
+			
+			//SECTIONS
+			menu['sections'] = {};
+			secCounter = 1;
+			$("input[name^=mSectionName]").each(function(){
+				var sID = $(this).data('id');
+				
+				if(sID != "section0s")
+				{
+					menu['sections'][secCounter] = {};
+					
+					menu['sections'][secCounter]['id'] 			= sID.replace(/section/,'');
+					menu['sections'][secCounter]['name'] 		= $(this).val();
+					menu['sections'][secCounter]['position'] 	= secCounter;
+					
+					menu['sections'][secCounter]['insert'] 		= $(this).data('insert');
+					menu['sections'][secCounter]['edit'] 		= $(this).data('edit');
+					menu['sections'][secCounter]['delete'] 		= $(this).data('delete');
+					menu['sections'][secCounter]['md'] 			= $(this).data('md');
+					
+					menu['sections'][secCounter]['menuId'] 		= menu['id'];
+					
+					//ITEMS
+					menu['sections'][secCounter]['items'] = {};
+					$fullSection = $(this).parents("#menuSectionRow");
+					itemCounter = 1;
+					$fullSection.find('.tablesection'+secCounter).each(function(){
+						var iID = $(this).find('input[name^=iName]').data('id');
+						
+						if(iID != "item0i")
+						{
+							menu['sections'][secCounter]['items'][itemCounter] = {};
+							
+							menu['sections'][secCounter]['items'][itemCounter]['id'] 			= iID.replace(/item/,'');
+							menu['sections'][secCounter]['items'][itemCounter]['name'] 			= $(this).find('input[name^=iName]').val();
+							menu['sections'][secCounter]['items'][itemCounter]['description']	= $(this).find('input[name^=iDesc]').val();
+							if($(this).find('input[name^=iPrice]').val() == '')
+								menu['sections'][secCounter]['items'][itemCounter]['price'] 	= 0;
+							else	
+								menu['sections'][secCounter]['items'][itemCounter]['price'] 	= $(this).find('input[name^=iPrice]').val();
+							menu['sections'][secCounter]['items'][itemCounter]['visible'] 		= $(this).find('input[name^=iVisi]:checked').val();
+							menu['sections'][secCounter]['items'][itemCounter]['quantity'] 		= 0;
+							menu['sections'][secCounter]['items'][itemCounter]['position'] 		= parseInt(itemCounter+1000);
+								
+							menu['sections'][secCounter]['items'][itemCounter]['insert'] 		= $(this).find('input[name^=iName]').data('insert');
+							menu['sections'][secCounter]['items'][itemCounter]['edit'] 			= $(this).find('input[name^=iName]').data('edit');
+							menu['sections'][secCounter]['items'][itemCounter]['delete'] 		= $(this).find('input[name^=iName]').data('delete');
+							menu['sections'][secCounter]['items'][itemCounter]['mdi'] 			= $(this).find('input[name^=iName]').data('mdi');
+								
+							menu['sections'][secCounter]['items'][itemCounter]['menuId'] 		= menu['id'];
+							menu['sections'][secCounter]['items'][itemCounter]['venueId'] 		= $('#venueID').val();
+							menu['sections'][secCounter]['items'][itemCounter]['sectionId'] 	= menu['sections'][secCounter]['id'];
+							
+							//MODIFIERS
+							menu['sections'][secCounter]['items'][itemCounter]['modifiers'] = {};
+							$fullItem = $(this).find(".subHeaderTR");
+							modCounter = 1;
+							$fullItem.each(function(){
+								var mID = $(this).find('input[name^=iMod]').data('id');
+								
+								if(mID != "mod0m")
+								{
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter] = {};
+									
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['id'] 		= mID.replace(/mod/,'');
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['name'] 	= $(this).find('input[name^=iMod]').val();
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['position'] = modCounter;
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['type']	 	= $(this).find('select[name^=iModType]').val();
+									switch(menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['type'])
+									{
+										case "S":
+										{
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['minChoices'] = "1";
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['maxChoices'] = "1";
+											break;
+										}
+										case "M":
+										{
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['minChoices'] = "1";
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['maxChoices'] = "-1";
+											break;
+										}
+										case "O":
+										{
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['minChoices'] = "0";
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['maxChoices'] = "-1";
+											break;
+										}
+										default:
+										{
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['minChoices'] = "0";
+											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['maxChoices'] = "-1";
+											break;
+										}
+									}
+									
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['insert'] 	= $(this).find('input[name^=iMod]').data('insert');
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['edit'] 	= $(this).find('input[name^=iMod]').data('edit');
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['delete'] 	= $(this).find('input[name^=iMod]').data('delete');
+									
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['itemId']	= menu['sections'][secCounter]['items'][itemCounter]['id'];
+									
+									//OPTIONS
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'] = {};
+									$fullMod = $(this).nextAll("tr"); //THIS TAKES ALL OPTIONS FROM MODS BELOW IT!! (so we break when we get to a separator)
+									optCounter = 1;
+									$fullMod.each(function(){ 
+										if( ($(this).children('.itemSubheader').length) || ($(this).children('.xtraModTD').length) ) return false; //break!
+										else if($(this).hasClass('optionTR')) //only see the options row
+										{
+											var oID = $(this).find('input[name^=oName]').data('id');
+											
+											if(oID != "opt0o")
+											{
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter] = {};
+												
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['id'] 			= oID.replace(/opt/,'');
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['name'] 			= $(this).find('input[name^=oName]').val();
+												if($(this).find('input[name^=oPrice]').val() == '')
+													menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['price'] 	= 0;
+												else	
+													menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['price'] 	= $(this).find('input[name^=oPrice]').val();
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['visible'] 		= 0;
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['position'] 		= optCounter;
+													
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['insert'] 		= $(this).find('input[name^=oName]').data('insert');
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['edit'] 			= $(this).find('input[name^=oName]').data('edit');
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['delete'] 		= $(this).find('input[name^=oName]').data('delete');
+												
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['modifierId']	= menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['id']; 
+												
+												optCounter++;
+											}
+										}
+									});
+									modCounter++;
+								}
+							});
+							
+							itemCounter++;
+						}
+					});
+					
+					secCounter++;
+				}
+			});
+		
+			menuData = JSON.stringify(menu);
+		
+			//console.log(menu);
+			//console.log(menuData);
 			
 			$.ajax({
 			   type: "POST",
 			   url: url,
-			   data: $(this).serialize(), // serializes the form's elements.
+			   contentType: "application/json",
+			   data: menuData, //custom serialization
 			   success: function(data)
 			   {
 					try
@@ -1711,11 +2057,24 @@ $(document).ready(function() {
 						if(Object.keys(newIDs).length > 0) //this is an object not array so length and stuff works differently
 						{
 							$.each(newIDs, function(index, value) {
+							if(index.match(/menu/))
+							{
 							  $('input[value='+index+']').val(value); //find by value and update!
+							}
+							else  
+							{ 
+								$('input[data-id='+index+']').attr('data-id',value); //find by value and update!
+								$('input[data-id='+value+']').data('id',value); //find by value and update! (use value from top as index as its already applied!)
+							}
 							});
 						}
 						
 						noty({ type: 'success', text: 'Menu configuration has been saved!' });
+						
+						//var end = new Date().getTime();
+						//var time = end - start;
+						//console.log('Execution time: ' + time + "milliseconds");
+						
 						if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
@@ -1727,6 +2086,20 @@ $(document).ready(function() {
 					$('#menuSaveButton').show(); 
 					$('#menuSaveButtonE').show(); 
 				}
+				
+				//refresh data attributes
+				$("#mName").attr('data-edit', false);
+				$("#mName").data('edit', false);
+				
+				$("input[name^=mSectionName], input[name^=iName], input[name^=iMod], input[name^=oName]").each(function() {
+					$(this).attr('data-delete', false);
+					$(this).attr('data-insert', false);
+					$(this).attr('data-edit', false);
+					
+					$(this).data('delete', false);
+					$(this).data('insert', false);
+					$(this).data('edit', false);
+				});
 				
 				$('#savingButton').hide();
 			 });
@@ -2177,7 +2550,7 @@ $(document).ready(function() {
 						}
 						
 						noty({ type: 'success', text: 'Event configuration has been saved!' });
-						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/payment");}, 1000);
 					}
 				}
 			 }).done(function() {
@@ -2461,10 +2834,10 @@ $(document).ready(function() {
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: "Username/email already exists"
+						  text: "User already exists!"
 						  //text: "Sorry, but there's been an error processing your request." /*text: dataArray['message']*/
 						});
-						
+						//alert(data);
 						errorFlag = 1;
 					}
 					else
@@ -2479,6 +2852,8 @@ $(document).ready(function() {
 						}
 						noty({ type: 'success', text: 'User configuration has been saved!' });
 						errorFlag = 0;
+						
+						//alert(data);
 					}
 				}
 			 }).done(function() {
@@ -2955,7 +3330,7 @@ $(document).ready(function() {
 					else
 					{	
 						noty({ type: 'success', text: 'All times has been saved!' });
-						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/dashboard");}, 1000);
+						if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/payment");}, 1000);
 					}
 				}
 			}).done(function() {
@@ -3658,6 +4033,20 @@ $(document).ready(function() {
 		$('#userConsent').val('1');
 	});
 	
+	//go Demo
+	$('#goDemo').on('click', function(){
+		var url = "/goDemo";
+		$.ajax({
+		   type: "POST",
+		   url: url,
+		   success: function(data)
+		   {
+				setTimeout(function(){window.location.replace("/dashboard");}, 100);
+			}
+		 });
+		return false; // avoid to execute the actual submit of the form.
+	});
+	
 	//skip stripe connect
 	$('#skipStripe').on('click', function(){
 		var url = "/skipStripe";
@@ -3680,10 +4069,16 @@ $(document).ready(function() {
 		   url: url,
 		   success: function(data)
 		   {
-				setTimeout(function(){window.location.replace("/dashboard");}, 100);
+				setTimeout(function(){window.location.replace("/payment");}, 100);
 			}
 		 });
 		return false; // avoid to execute the actual submit of the form.
+	});
+	
+	//go Offline
+	$('.goOffline').on('click', function(){
+		$('#offFlag').val(1);
+		$('#finishForm').submit();
 	});
 });
 
