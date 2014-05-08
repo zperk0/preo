@@ -1797,3 +1797,23 @@ table.mdTable{
 .switch.off .no {
 	visibility: visible;
 }
+
+
+footer .dropdown.button:before{
+	content: "\e602";
+	position: relative;
+	font-family: icomoon;
+	font-size: 26px;
+	display: inline-block;
+	float: right;
+	font-weight: 400;
+	border-width: .5625em;
+	right: 1.125em;
+	margin-top: -.21875em;
+	border-color: #fff transparent transparent;
+	color:white;
+	top: 1px;
+	margin-top: 0;
+	left: 4px;
+
+}
