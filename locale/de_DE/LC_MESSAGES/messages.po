@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-08 15:32+0200\n"
+"POT-Creation-Date: 2014-05-08 18:08+0200\n"
 "PO-Revision-Date: 2014-04-28 11:53+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,6 @@ msgstr ""
 "X-Generator: Poedit 1.6.4\n"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:8
-#, fuzzy
 msgid "Sorry, but there\\'s been an error processing your request."
 msgstr ""
 "Es ist leider ein Fehler bei der Bearbeitung Ihres Auftrags aufgetreten!"
@@ -50,7 +49,6 @@ msgid "Venue changes have been saved!"
 msgstr "Änderungen zum Unternehmen wurden gespeichert!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:14
-#, fuzzy
 msgid "Uploaded!"
 msgstr "Logo Hochladen"
 
@@ -87,7 +85,6 @@ msgid "Choose a side dish"
 msgstr "Beilage auswählen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:23
-#, fuzzy
 msgid "Pick an option type"
 msgstr "Eingabe oder Auswahl einer Optionsbezeichnung"
 
@@ -209,7 +206,6 @@ msgid "These times have been applied to all days!"
 msgstr "Diese Zeiten wurden allen Tagen zugeordnet!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:49
-#, fuzzy
 msgid ""
 "We still need some more information. Don\\'t forget to fill out the "
 "remaining days of the week!"
@@ -255,7 +251,6 @@ msgid "Yes, delete this menu!"
 msgstr "Ja, dieses Menü löschen!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:57
-#, fuzzy
 msgid "Sorry, incorrect password."
 msgstr "Leider falscher Code. "
 
@@ -606,9 +601,8 @@ msgid "SAVING..."
 msgstr "SPEICHERN..."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:232
-#, fuzzy, php-format
-msgid "'30% done, time for the artistic bit...'"
-msgstr "30% geschafft, Zeit für den künstlerischen Teil…"
+msgid "30&#37 done, time for the artistic bit..."
+msgstr "30&#37 geschafft, Zeit für den künstlerischen Teil…"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:28
 msgid "This is where you can brand your menu page"
@@ -666,9 +660,8 @@ msgid "Button two colour"
 msgstr "Button 2 Farbe"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:127
-#, fuzzy, php-format
-msgid "'40% done, a couple more design touches...'"
-msgstr "40% erledigt, noch ein paar Design-Feinheiten..."
+msgid "40&#37 done, a couple more design touches..."
+msgstr "40&#37 erledigt, noch ein paar Design-Feinheiten..."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:11
 msgid "This is where you can monitor your takings and reports."
@@ -1089,9 +1082,8 @@ msgstr "z.B. 30"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:243
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:107
-#, fuzzy, php-format
-msgid "'75% done, almost there now...'"
-msgstr "'75% geschafft, fast fertig...'"
+msgid "75&#37 done, almost there now..."
+msgstr "75&#37 geschafft, fast fertig..."
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:5
 msgid ""
@@ -1197,9 +1189,10 @@ msgid "Click to add a Meal Deal name"
 msgstr "Klicken um neue Meal Deal Bezeichnung hinzuzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:252
+#, fuzzy
 msgid ""
-"You\\'ve not created any items! You won\\'t be able to create Meal Deals "
-"until you have some items in your menu."
+"You've not created any items! You won't be able to create Meal Deals until "
+"you have some items in your menu."
 msgstr ""
 "Sie haben keine Artikel erstellt! Sie werden keine Meal Deals "
 "zusammenstellen können, wenn Sie keine Artikel Ihrem Menü hinzufügen.  "
@@ -1414,9 +1407,8 @@ msgid "SAVE & FINISH"
 msgstr "SPEICHERN & BEENDEN"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:394
-#, fuzzy, php-format
-msgid "'45% done, now for the fun bit!'"
-msgstr "45% geschafft und jetzt weiter zum spaßigeren Teil!"
+msgid "45&#37 done, now for the fun bit!"
+msgstr "45&#37 geschafft und jetzt weiter zum spaßigeren Teil!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:18
 msgid "Tell us about your opening times"
@@ -1524,9 +1516,8 @@ msgid "YOU'RE ALREADY CONNECTED"
 msgstr "SIE SIND BEREITS VERBUNDEN"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:45
-#, fuzzy, php-format
-msgid "'85% done, we\\'ve saved the best for last!'"
-msgstr "85% geschafft, das Beste kommt zum Schluss!"
+msgid "85&#37 done, we've saved the best for last!"
+msgstr "85&#37 geschafft, das Beste kommt zum Schluss!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:6
 msgid "User management"
@@ -1755,9 +1746,8 @@ msgid "Please provide a lead time"
 msgstr "Bitte geben Sie eine Lieferzeit an"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:398
-#, fuzzy, php-format
-msgid "\"15% done, keep going!\""
-msgstr "15% geschafft, weiter so!"
+msgid "15&#37 done, keep going!"
+msgstr "15&#37 geschafft, weiter so!"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:13
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:84
@@ -1801,6 +1791,10 @@ msgstr "MEINE APP OFFLINE STELLEN"
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:53
 msgid "BACK TO THE DASHBOARD"
 msgstr "ZURÜCK ZUM DASHBOARD"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:74
+msgid "Payment method was not setup."
+msgstr "Zahlungsmethode"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/forgot/forgot_content.php:4
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:39
@@ -3033,12 +3027,17 @@ msgid "  Click here"
 msgstr "Hier Klicken"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:78
+#, fuzzy
 msgid ""
-"Sorry, you don\\'t have sufficient privileges.<br/><br/>Looking for the "
+"Sorry, you don't have sufficient privileges.<br/><br/>Looking for the "
 "Fulfilment App? Click the link at the bottom of this page."
 msgstr ""
 "Leider verfügen Sie nicht über die richtigen Zugriffsrechte. <br/><br/> Auf "
 "der Suche nach der Fulfilment App? Sie finden den Link am Seitenende. "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:6
+msgid "Now, we just need your business name."
+msgstr "Ihr Geschäftsname"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:13
 msgid "Get started"
@@ -3104,7 +3103,6 @@ msgstr "Datenschutzrichtlinien zu."
 msgid "SIGN UP"
 msgstr "ANMELDEN"
 
-#, fuzzy
 #~ msgid "Sorry, but there's been an error processing your request."
 #~ msgstr ""
 #~ "Es ist leider ein Fehler bei der Bearbeitung Ihres Auftrags aufgetreten!"
