@@ -75,7 +75,7 @@
 		$(document).ready(function() {
 			noty({
 			type: 'error',  layout: 'topCenter',
-			text: '<?echo _("Sorry, you don\'t have sufficient privileges.<br/><br/>Looking for the Fulfilment App? Click the link at the bottom of this page.");?>'
+			text: <?echo json_encode(_("Sorry, you don't have sufficient privileges.<br/><br/>Looking for the Fulfilment App? Click the link at the bottom of this page."));?>
 			});
 		});
 		</script>

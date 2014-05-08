@@ -249,7 +249,7 @@
 	$(document).ready(function() {
 		noty({
 		  type: 'error',
-		  text: '<? echo _("You\'ve not created any items! You won\'t be able to create Meal Deals until you have some items in your menu."); ?>'
+		  text: <? echo json_encode(_("You've not created any items! You won't be able to create Meal Deals until you have some items in your menu.")); ?>
 		});
 	
 	});

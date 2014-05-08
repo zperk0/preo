@@ -73,12 +73,12 @@ module.exports = function(grunt) {
         while ( (result = regex.exec(data)) ) {                                        
               
               var str =result[0].slice(5,-2);              
-              var tmpstr = str.replace(/'/g, "\\'")
-              tmpstr = tmpstr.replace(/"/g, '\\"')
-              grunt.log.writeln(tmpstr);
+              //var tmpstr = str.replace(/'/g, "\\'")
+              //tmpstr = tmpstr.replace(/"/g, '\\"')
+              grunt.log.writeln(str);
               if (usedStrings[str] ===undefined){              
                 if (str != ""){                                    
-                  file_str+= '\t"'+str+'":\'<? echo _("'+tmpstr+'") ?>\',\n'
+                  file_str+= '\t"'+str+'":<? echo json_encode(_("'+str+'")) ?>,\n'
                   usedStrings[str] = true;
                 }
               }
