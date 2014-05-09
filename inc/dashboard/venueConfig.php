@@ -424,8 +424,8 @@
 				<div class="large-12 columns">
 						<label><?echo _("Language");?></label>
 						<select id="language" name="language" class="pdDropdown" required tabindex=12>
-							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "EN"){?>selected="selected"<?}?> value="EN">English</option>												
-							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "DE"){?>selected="selected"<?}?> value="DE">German</option>									
+							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "en"){?>selected="selected"<?}?> value="en">English</option>												
+							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "de"){?>selected="selected"<?}?> value="en">German</option>									
 						</select>
 						<small class="error"><?echo _("Please select your language");?></small>
 				</div>
