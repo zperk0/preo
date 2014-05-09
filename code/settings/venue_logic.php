@@ -37,7 +37,7 @@
 		$_SESSION['venue_address2']  	= $dataJSON[0]['address2'];	
 		$_SESSION['venue_address3']  	= $dataJSON[0]['address3'];			
 		$_SESSION['venue_town']  		= $dataJSON[0]['city'];	
-		$_SESSION['venue_language']		= explode("_",$dataJSON[0]['locale'])[0];	 //get the locale code if there is a country code or not.
+		$_SESSION['venue_language']		= explode("-",$dataJSON[0]['locale'])[0];	 //get the locale code if there is a country code or not.
 		$_SESSION['venue_timezone']		= $dataJSON[0]['timeZone'];	
 		$_SESSION['venue_currency']		= $dataJSON[0]['ccy'];	
 					
