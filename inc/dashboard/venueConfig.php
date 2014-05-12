@@ -482,11 +482,11 @@
 				</div>
 				<div class="large-2  columns">
 					<label>Default lead time for delivery(mins)</label>
-					<input type="text" class="" name="dLeadTime" id="dLeadTime" placeholder='0.00' tabindex="18" value="<?if(isset($_SESSION['delivery_lead_time'])) echo $_SESSION['delivery_lead_time'];?>">
+					<input type="text" class="" name="dLeadTime" id="dLeadTime" placeholder='0' tabindex="18" value="<?if(isset($_SESSION['delivery_lead_time'])) echo $_SESSION['delivery_lead_time'];?>">
 				</div>
 				<div class="large-2 columns">
 					<label>Discounted offered for delivery(%)</label>
-					<input type="text" class="" name="vDeliveryDiscount" id="vDeliveryDiscount" placeholder='0.00' tabindex="19" value="<?if(isset($_SESSION['delivery_discount'])) echo $_SESSION['delivery_discount'];?>" pattern="^(0?[0-9]?[0-9]|100)$">
+					<input type="text" class="" name="vDeliveryDiscount" id="vDeliveryDiscount" placeholder='0' tabindex="19" value="<?if(isset($_SESSION['delivery_discount'])) echo $_SESSION['delivery_discount'];?>" pattern="^(0?[0-9]?[0-9]|100)$">
 					<small class="error"><?echo _("Please provide a discount percentage (between 0 and 100)");?></small>
 				</div>
 			</div>
