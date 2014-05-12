@@ -272,6 +272,8 @@
 		}
 	}
 
+
+	//FIXME these methods below are duplicated in venue_logic. Not sure what's the best way to share them.
 	function tz_list() {
 	  $zones_array = array();
 	  $timestamp = time();
@@ -281,5 +283,10 @@
 	    $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
 	  }
 	  return $zones_array;
+	}
+
+	function currency_list(){
+		$currencies = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/js/data/common-currency.json'), true);		 		
+		return $currencies;
 	}
 ?>

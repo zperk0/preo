@@ -1,5 +1,6 @@
 <?php
 
+ 						 
 	ini_set('display_errors', 1);
 	error_reporting(E_ALL ^ E_NOTICE);
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
@@ -104,6 +105,7 @@
 	else
 		header("location:$_SESSION[path]/");
 
+	//FIXME these methods below are duplicated in dashboard_logic. Not sure where's the best place to put them. Maybe inc/dashboard/venue_config?
 	function tz_list() {
 	  $zones_array = array();
 	  $timestamp = time();
@@ -113,6 +115,11 @@
 	    $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
 	  }
 	  return $zones_array;
+	}
+
+	function currency_list(){
+		$currencies = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/js/data/common-currency.json'), true);		 		
+		return $currencies;
 	}
 
 	function dump($value) {

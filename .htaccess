@@ -174,4 +174,7 @@ RewriteRule ^.*$ /code/dashboard/do_startStripe.php [L]
 RewriteCond %{REQUEST_URI} ^/goDemo$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_goDemo.php [L]
 
+RewriteCond %{REQUEST_URI} ^/getCurrencies$ [NC]
+RewriteRule ^.*$ /js/data/common-currency.json [L]
+
 RewriteRule ^menus/([^/]*)$ /menuSettings.php?id=$1 [L]

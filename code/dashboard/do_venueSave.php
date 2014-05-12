@@ -161,6 +161,8 @@
 	$data['timeZone']			= $timezone;
 	$data['deliverFlag']   = $vDelivery;
 	$data['ccy']			= $vCurrency;
+	//save the venue_currency so we can use it in the other pages.
+	$_SESSION['venue_currency'] = $vCurrency;
 	
 		
 		

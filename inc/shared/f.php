@@ -174,5 +174,14 @@
 			<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
 			</script>
 		<?}?>
+
+		
+			<script type="text/javascript">	
+				<?if((isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'])){?>
+					var SESSION_VENUE_CURRENCY = <? echo json_encode($_SESSION['venue_currency']);?>
+				<? } else {?>
+					var SESSION_VENUE_CURRENCY = "GBP"; /*defaults to GBP*/
+				<? } ?>	
+			</script>		
 	</body>
 </html>

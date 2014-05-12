@@ -4197,7 +4197,79 @@ $(document).ready(function() {
 		$('#offFlag').val(1);
 		$('#finishForm').submit();
 	});
+
+	var currencyManager = new CurrencyManager();	
+	currencyManager.init("#currency");//
+
 });
+
+function CurrencyManager(){
+	var currentCurrency;
+	var $currency;
+	this.currencies = {};
+
+	function getAllCurrencies(callback){
+		var that = this;
+		var url = "/getCurrencies";
+
+		$.ajax({
+		   type: "GET",
+		   url: url,
+		   dataType:"json",		   
+		   success: function(data)
+		   {
+		   	  console.log("success",data)
+		   	  that.currencies = data;		   	  
+		   }, error:function(data){
+		   	console.log("error",data)
+		   	  that.currencies = {
+		   	  	//In the worst case, if something really wrong happens we still have gpb.
+		   	  	// we never should end here tho.
+		   	  	"GBP": {
+			        "symbol": "£",
+			        "name": "Pound Sterling",
+			        "symbol_native": "£",
+			        "decimal_digits": 2,
+			        "rounding": 0,
+			        "code": "GBP",
+			        "name_plural": "British pounds sterling"
+			    }
+		   	  }
+		    },
+		    complete:function(){
+   	    		callback();
+		   }
+		});
+	}
+
+	this.getCurrency = function(currencyCode){
+		return currencies[currencyCode];
+	}	
+
+	function init(currencySelector){
+		var that = this;
+		$currency = $(currencySelector);
+		console.log("SESSION_VENUE_CURRENCY",SESSION_VENUE_CURRENCY)
+		var currencyCode = "GBP"; //defaults to GBP
+		if (SESSION_VENUE_CURRENCY != undefined){
+			currencyCode  = SESSION_VENUE_CURRENCY;
+		} else if ($currency.length>0){
+			currencyCode = $currency.val();										
+		} 	
+		console.log("Initing CurrencyManager with currency:" + currencyCode);				
+		getAllCurrencies(function(){			
+			that.currentCurrency = that.getCurrency(currencyCode);			
+			$(".currencySymbol").html(that.currentCurrency["symbol"]);
+		});
+		
+	}
+
+	return {
+		init:init,
+		getCurrency:this.getCurrency,
+		currentCurrency:currentCurrency
+	}
+}
 
 //functions to update phone/app preview
 function updateTextColour(color)

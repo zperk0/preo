@@ -107,7 +107,7 @@
 
 			<div class="row">
 				<div class="large-12 columns">
-					<label><?echo _("Minimum value for orders");?>&nbsp;</label>
+					<label><?echo _("Minimum value for orders");?> (<span class='currencySymbol'>$</span>)&nbsp;</label>
 					<input type="text" name="vOrderMin" id="vOrderMin" tabindex=6 required placeholder="<?echo _("e.g. 5");?>" value="<?if(isset($_SESSION['venue_order_min'])) echo $_SESSION['venue_order_min'];?>" pattern="^[0-9]+(\.[0-9]{1,2})?$">
 					<small class="error"><?echo _("Please provide a minimum value for ordering");?></small>
 				</div>
@@ -449,11 +449,10 @@
 			<div class="row">
 				<div class="large-12 columns">
 						<label><?echo _("Currency");?></label>
-						<select id="currency" name="currency" class="pdDropdown" required tabindex=7>				    
-							<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == "GBP"){?>selected="selected"<?}?> value="GBP">Pound Sterling</option> 
-							<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == "USD"){?>selected="selected"<?}?> value="USD">US Dollars</option> 
-							<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == "EUR"){?>selected="selected"<?}?> value="EUR">Euro</option> 
-							
+						<select id="currency" name="currency" class="pdDropdown" required tabindex=7>		
+						<?foreach(currency_list() as $t) {?>		    
+							<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == $t['code']){?>selected="selected"<?}?> value='<? echo $t["code"] ?>'><? echo $t["name"] ?></option> 							
+						<? } ?>						
 						</select>
 						<small class="error"><?echo _("Please select your currency");?></small>
 					</div>
@@ -469,15 +468,15 @@
 					<input type="text" class="delivery_zone" name="dZone" id="dZone" placeholder='eg. "5 miles" or "NW1, NW2..."' tabindex="14" value="<?if(isset($_SESSION['delivery_zone'])) echo $_SESSION['delivery_zone'];?>">
 				</div>
 				<div class="large-1  columns">
-					<label>Min.value order($)</label>
+					<label>Min.value order (<span class='currencySymbol'>$</span>)</label>
 					<input type="text"  name="dMinVal" id="dMinVal" placeholder='0.00' tabindex="15" value="<?if(isset($_SESSION['delivery_order_min'])) echo $_SESSION['delivery_order_min'];?>">
 				</div>
 				<div class="large-1  columns">
-					<label>Delivery charge($)</label>
+					<label>Delivery charge (<span class='currencySymbol'>$</span>)</label>
 					<input type="text"  name="dCharge" id="dCharge" placeholder='0.00' tabindex="16" value="<?if(isset($_SESSION['delivery_charge'])) echo $_SESSION['delivery_charge'];?>">
 				</div>
 				<div class="large-2  columns">
-					<label>Free delivery for orders above($)</label>
+					<label>Free delivery for orders above (<span class='currencySymbol'>$</span>)</label>
 					<input type="text" class="" name="dChargeBelow" id="dChargeBelow" placeholder='0.00' tabindex="17" value="<?if(isset($_SESSION['delivery_charge_below'])) echo $_SESSION['delivery_charge_below'];?>">
 				</div>
 				<div class="large-2  columns">
@@ -643,6 +642,7 @@
 			</div>
 		</div>
 	</form>
+
 <?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
