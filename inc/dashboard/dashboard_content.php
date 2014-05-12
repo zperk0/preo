@@ -22,7 +22,7 @@
 			</div>
 			<div class="row">
 				<h6><?echo _("Total revenue");?></h6>
-				<h1>&pound; <?echo number_format($_SESSION['venue_report_totalRevenue'],2);?></h1>
+				<h1><span class='currencySymbol'></span> <?echo number_format($_SESSION['venue_report_totalRevenue'],2);?></h1>
 			</div>
 			<div class="row">
 				<h6><?echo _("Total orders");?></h6>

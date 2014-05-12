@@ -84,7 +84,7 @@
 							<tr>
 								<th class="menuTDName"><? echo _("Name");?></th>
 								<th class="menuTDDesc"><? echo _("Description");?></th>
-								<th class="menuTDPrice"><? echo _("Price (&pound;)");?></th>
+								<th class="menuTDPrice"><? echo _("Price ");?>(<span class='currencySymbol'></span>)</th>
 								<!--<th class="menuTDQuant"><? echo _("Quantity");?></th>-->
 								<th class="menuTDVisi"><? echo _("Visible?");?></th>
 								<th class="menuTDTools"><? echo _("Tools");?></th>
@@ -220,7 +220,7 @@
 									<tr>
 										<th class="menuTDName"><? echo _("Name");?></th>
 										<th class="menuTDDesc"><? echo _("Description");?></th>
-										<th class="menuTDPrice"><? echo _("Price (&pound;)");?></th>
+										<th class="menuTDPrice"><? echo _("Price ");?>(<span class='currencySymbol'></span>)</th>
 										<!--<th class="menuTDQuant"><? echo _("Quantity");?></th> -->
 										<th class="menuTDVisi"><? echo _("Visible?");?></th>
 										<th class="menuTDTools"><? echo _("Tools");?></th>

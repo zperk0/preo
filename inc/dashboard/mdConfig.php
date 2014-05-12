@@ -29,8 +29,8 @@
 						<tr>
 							<th class="mdTDName"><? echo _("Name");?></th>
 							<th class="mdTDSec"><? echo _("Section");?> &nbsp;<i data-tooltip class="inline icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Which menu section does this meal deal belong in?");?>"></i></th>
-							<th class="mdTDTPrice hide"><? echo _("Total Price (&pound;)");?></th>
-							<th class="mdTDPrice"><? echo _("Discount Price (&pound;)");?></th>
+							<th class="mdTDTPrice hide"><? echo _("Total Price ");?>(<span class='currencySymbol'></span>)</th>
+							<th class="mdTDPrice"><? echo _("Discount Price ");?>(<span class='currencySymbol'></span>)</th>
 							<th class="mdTDVisi hide"><? echo _("Visible?");?></th>
 							<th class="mdTDTools"><? echo _("Tools");?></th>
 						</tr>
@@ -111,7 +111,7 @@
 									foreach($mdSection['items'] as $item) { 
 										if($item['mealDeal']) continue;
 									?>
-										<label class="mdItemName sec<?echo $mdSection['id'];?>" style="display:none;"><span id="<?echo $sKey+1?>_item_<?echo $item['id']?>" data-value="<?echo $item['price'];?>"><?echo "(&pound;".number_format($item['price'],2).") ".$item['name'];?></span> &nbsp; <button type="button" class="newmdItem" title="<?echo _("Add this item to the current Meal Deal");?>"><i class="pd-add"></i></button></label>
+										<label class="mdItemName sec<?echo $mdSection['id'];?>" style="display:none;"><span id="<?echo $sKey+1?>_item_<?echo $item['id']?>" data-value="<?echo $item['price'];?>">(<a class='currencySymbol'></a><?echo number_format($item['price'],2).") ".$item['name'];?></span> &nbsp; <button type="button" class="newmdItem" title="<?echo _("Add this item to the current Meal Deal");?>"><i class="pd-add"></i></button></label>
 								<?  }
 								}
 							}?>
@@ -228,7 +228,7 @@
 							foreach($mdSection['items'] as $item) { 
 								if($item['mealDeal']) continue;
 							?>
-								<label class="mdItemName sec<?echo $mdSection['id'];?>" style="display:none;"><span id="0_item_<?echo $item['id']?>" data-value="<?echo $item['price'];?>"><?echo "(&pound;".number_format($item['price'],2).") ".$item['name'];?></span> &nbsp; <button type="button" class="newmdItem" title="<?echo _("Add this item to the current Meal Deal");?>"><i class="pd-add"></i></button></label>
+								<label class="mdItemName sec<?echo $mdSection['id'];?>" style="display:none;"><span id="0_item_<?echo $item['id']?>" data-value="<?echo $item['price'];?>">(<a class='currencySymbol'></a><?echo number_format($item['price'],2).") ".$item['name'];?></span> &nbsp; <button type="button" class="newmdItem" title="<?echo _("Add this item to the current Meal Deal");?>"><i class="pd-add"></i></button></label>
 						<?  }
 						}
 					}?>

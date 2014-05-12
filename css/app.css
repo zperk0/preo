@@ -1873,3 +1873,9 @@ footer .dropdown.button:before{
 	left: 4px;
 
 }
+
+span .currencySymbol{
+	color:inherit !important;
+	text-decoration: inherit !important;
+	font-style: inherit !important; 	
+}
