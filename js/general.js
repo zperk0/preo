@@ -4242,9 +4242,14 @@ function CurrencyManager(){
 		});
 	}
 
-	this.getCurrency = function(currencyCode){
+	function getCurrency(currencyCode){
 		return currencies[currencyCode];
 	}	
+
+	function refreshCurrencySymbols(currencyCode){				
+		this.currentCurrency = this.getCurrency(currencyCode);	
+		$(".currencySymbol").html(this.currentCurrency["symbol"]);
+	}
 
 	function init(currencySelector){
 		var that = this;
@@ -4253,21 +4258,24 @@ function CurrencyManager(){
 		var currencyCode = "GBP"; //defaults to GBP
 		if (SESSION_VENUE_CURRENCY != undefined){
 			currencyCode  = SESSION_VENUE_CURRENCY;
-		} else if ($currency.length>0){
-			currencyCode = $currency.val();										
-		} 	
+		} 
+		
+		$(currencySelector).on("change",function(){				
+			that.refreshCurrencySymbols($(this).val());
+
+		})
 		console.log("Initing CurrencyManager with currency:" + currencyCode);				
-		getAllCurrencies(function(){			
-			that.currentCurrency = that.getCurrency(currencyCode);			
-			$(".currencySymbol").html(that.currentCurrency["symbol"]);
+		getAllCurrencies(function(){				
+			that.refreshCurrencySymbols(currencyCode);			
 		});
 		
 	}
 
 	return {
 		init:init,
-		getCurrency:this.getCurrency,
-		currentCurrency:currentCurrency
+		getCurrency:getCurrency,
+		currentCurrency:currentCurrency,
+		refreshCurrencySymbols:refreshCurrencySymbols
 	}
 }
 
