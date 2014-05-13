@@ -174,7 +174,7 @@
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	
 	if($vEvent) $_SESSION['venue_eventFlag'] = 1;
-	else $_SESSION['venue_eventFlag'] = 0;
+	else $_SESSION['venue_eventFlag'] = 0;	
 	
 	if(isset($_SESSION['venue_edit_on']) && $_SESSION['venue_edit_on'])
 	{

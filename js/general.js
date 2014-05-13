@@ -4200,8 +4200,64 @@ $(document).ready(function() {
 
 	var currencyManager = new CurrencyManager();	
 	currencyManager.init("#currency");//
+	var deliveryManager = new DeliveryManager();
+	deliveryManager.init();
 
 });
+
+function DeliveryManager(){
+
+	//.prop("disabled",true)
+	
+	
+	function init(){			
+		var that = this;
+		var $names = $(".notificationShort");
+		var $notifications = $(".notificationLong");
+		$names.on("input",this.refreshFlag);
+		$notifications.on("input",this.refreshFlag);		
+		$(".notificationActiveFlag").each(function(){
+				that.initSwitch($(this))
+		} )		
+		
+	}
+
+	function initSwitch($switch){
+		var $row = $switch.closest(".row");		
+		if ($row.find(".notificationLong").val().trim() == "" || $row.find(".notificationShort").val() == "")
+			disableSwitch($switch)
+	}
+
+	function disableSwitch($switch){
+		//not sure why we have to click twice here.  set val and trigger a change doesn't seem to work either
+		$($switch.find("input")[0]).trigger("click")
+		$($switch.find("input")[0]).trigger("click")
+		//disable after click
+		$switch.find("input").prop("disabled",true);					
+	}
+
+	function enableSwitch($switch){
+		if ($switch.find("notificationShort").val() != ""){				
+			$switch.find("input").prop("disabled",false);
+		}				
+	}
+
+	function refreshFlag(e){				
+		var $switch = $(this).closest(".row").find(".switch");
+		if ($(this).val() == ""){			
+			disableSwitch($switch);			
+		} else {
+			enableSwitch($switch);
+		}
+	}
+
+	return{
+		init:init,
+		refreshFlag:refreshFlag,
+		initSwitch:initSwitch
+	}
+
+}
 
 function CurrencyManager(){
 	var currentCurrency;

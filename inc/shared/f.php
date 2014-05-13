@@ -71,6 +71,7 @@
 		<!-- Foundation with required JS and Plugins minified COMBINED with Bespoke JS File Generated using 'grunt build' -->
     <script src="<?echo $_SESSION['path']?>/code/shared/js_strings.php?lang=<?echo $lang?>"></script>
 		<script src="<?echo $_SESSION['path']?>/js/all_scripts.min.js"></script>		<!-- JS 1/1 : to be minified and updated with timestamp -->
+		<!--	<script src="<?echo $_SESSION['path']?>/js/general.js"></script>		<!-- JS 1/1 : to be minified and updated with timestamp -->
 	
 		<!-- Google+ External JS -->
 		<script type="text/javascript">

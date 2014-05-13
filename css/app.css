@@ -1853,6 +1853,16 @@ div.switch input:last-of-type+span+label{
 .switch.off .no {
 	visibility: visible;
 }
+.switch input:disabled + span + label{
+	color: #aaa !important;	
+}
+.switch input:disabled + span + label + span {
+	opacity:0.6;
+}
+
+.switch input:disabled:hover{
+	cursor:default !important;
+}
 
 
 footer .dropdown.button:before{
@@ -1879,3 +1889,4 @@ span .currencySymbol{
 	text-decoration: inherit !important;
 	font-style: inherit !important; 	
 }
+
