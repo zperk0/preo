@@ -504,10 +504,12 @@
 			<? for ($i = 1; $i < 4; $i++ ){ ?>			
 			<div class="row">
 				<div class="large-7 columns">
-					<input type="text" class="notificationLong" name="<?echo("cusNotif".$i)?>" id="<?echo("cusNotif".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['notifications']['content'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['content'.$i])) echo $_SESSION['content'.$i]; ?>"/>
+					<input type="text" class="notificationLong" name="<?echo("cusNotif".$i)?>" id="<?echo("cusNotif".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['notifications']['content'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['content'.$i])) echo $_SESSION['content'.$i]; ?>" pattern="^.{0,199}$"/>
+					<small class="error"><?echo _("Please type a notification (max 200chars)");?></small>
 				</div>
 				<div class="large-3 columns">
-					<input type="text" class="notificationShort" name="<?echo("shortName".$i)?>" id="<?echo("shortName".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['notifications']['name'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['name'.$i])) echo $_SESSION['name'.$i];?>"/>
+					<input type="text" class="notificationShort" name="<?echo("shortName".$i)?>" id="<?echo("shortName".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['notifications']['name'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['name'.$i])) echo $_SESSION['name'.$i];?>" pattern="^.{0,40}$"/>
+					<small class="error"><?echo _("Please type a notification short name (max 40chars)");?></small>
 				</div>
 				<div class="large-2 columns">
 					<div class="switch small large-6 columns notificationActiveFlag float-right"> 
@@ -536,10 +538,12 @@
 			<? for ($i = 4; $i < 7; $i++ ){ ?>			
 			<div class="row">
 				<div class="large-7 columns">
-					<input type="text" class="notificationLong" name="<?echo("cusNotif".$i)?>" id="<?echo("cusNotif".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['reject']['content'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['content'.$i])) echo $_SESSION['content'.$i]; ?>"/>
+					<input type="text" class="notificationLong" name="<?echo("cusNotif".$i)?>" id="<?echo("cusNotif".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['reject']['content'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['content'.$i])) echo $_SESSION['content'.$i]; ?>" pattern="^.{0,199}$"/>
+					<small class="error"><?echo _("Please type a notification (max 200chars)");?></small>
 				</div>
 				<div class="large-3 columns">
-					<input type="text" class="notificationShort" name="<?echo("shortName".$i)?>" id="<?echo("shortName".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['reject']['name'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['name'.$i])) echo $_SESSION['name'.$i];?>"/>
+					<input type="text" class="notificationShort" name="<?echo("shortName".$i)?>" id="<?echo("shortName".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['reject']['name'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['name'.$i])) echo $_SESSION['name'.$i];?>" pattern="^.{0,40}$" />
+					<small class="error"><?echo _("Please type a notification short name (max 40chars)");?></small>
 				</div>
 				<div class="large-2 columns">
 					<div class="switch small large-6 columns notificationActiveFlag float-right"> 

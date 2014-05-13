@@ -4218,14 +4218,31 @@ function DeliveryManager(){
 		$notifications.on("input",this.refreshFlag);		
 		$(".notificationActiveFlag").each(function(){
 				that.initSwitch($(this))
-		} )		
-		
+		} )				
+	}
+
+	function setRequired($switch){
+		var $row = $switch.closest(".row");
+		var $long = $row.find(".notificationLong");
+		var $short = $row.find(".notificationShort");
+		if ($long.val().trim() == "" && $short.val() != ""){
+			$long.prop("required",true).trigger("change");
+			$short.prop("required",false).trigger("change");
+		} else if ($long.val().trim() != "" && $short.val() == ""){
+			$long.prop("required",false).trigger("change");
+			$short.prop("required",true).trigger("change");
+		} else {
+			$long.prop("required",false).trigger("change");
+			$short.prop("required",false).trigger("change");
+		}
 	}
 
 	function initSwitch($switch){
 		var $row = $switch.closest(".row");		
-		if ($row.find(".notificationLong").val().trim() == "" || $row.find(".notificationShort").val() == "")
+		if ($row.find(".notificationLong").val().trim() == "" || $row.find(".notificationShort").val() == ""){
 			disableSwitch($switch)
+			setRequired($switch);
+		}
 	}
 
 	function disableSwitch($switch){
@@ -4233,7 +4250,7 @@ function DeliveryManager(){
 		$($switch.find("input")[0]).trigger("click")
 		$($switch.find("input")[0]).trigger("click")
 		//disable after click
-		$switch.find("input").prop("disabled",true);					
+		$switch.find("input").prop("disabled",true);						
 	}
 
 	function enableSwitch($switch){
@@ -4242,13 +4259,17 @@ function DeliveryManager(){
 		}				
 	}
 
-	function refreshFlag(e){				
-		var $switch = $(this).closest(".row").find(".switch");
-		if ($(this).val() == ""){			
-			disableSwitch($switch);			
-		} else {
+	function refreshFlag(e){					
+		var $row = $(this).closest(".row");
+		var $switch = $row.find(".switch");			
+		var $short = $row.find(".notificationShort");
+		var $long = $row.find(".notificationShort");
+		if ($short.val() != "" && $long.val() != "")
 			enableSwitch($switch);
-		}
+		else 
+			disableSwitch($switch);
+		
+		setRequired($switch);
 	}
 
 	return{
