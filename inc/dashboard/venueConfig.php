@@ -500,64 +500,28 @@
 					<label>Active</label>
 				</div>
 			</div>			
+			<?$tabIndex = 21;?>
+			<? for ($i = 1; $i < 4; $i++ ){ ?>			
 			<div class="row">
 				<div class="large-7 columns">
-					<input type="text" class="" name="cusNotif1" id="cusNotif1" placeholder='<? echo _('eg."Your order is running 15 mins late"')?>' tabindex=20  value="<?if(isset($_SESSION['content1'])) echo $_SESSION['content1']; ?>"/>
+					<input type="text" class="" name="<?echo("cusNotif".$i)?>" id="<?echo("cusNotif".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['notifications']['content'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['content'.$i])) echo $_SESSION['content'.$i]; ?>"/>
 				</div>
 				<div class="large-3 columns">
-					<input type="text" class="" name="shortName1" id="shortName1" placeholder='<? echo _('eg.Late order') ?>' tabindex=21  value="<?if(isset($_SESSION['name1'])) echo $_SESSION['name1'];?>"/>
+					<input type="text" class="" name="<?echo("shortName".$i)?>" id="<?echo("shortName".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['notifications']['name'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['name'.$i])) echo $_SESSION['name'.$i];?>"/>
 				</div>
 				<div class="large-2 columns">
 					<div class="switch small large-6 columns eventFlagNoti1 float-right"> 
-					<input name="active1" id="active1"  value="0" type="radio" <?if((isset($_SESSION['active1']) && !$_SESSION['active1']) || !isset($_SESSION['active1'])){?>checked<?}?>>
+					<input name="<?echo("active".$i)?>" id="<?echo("active".$i)?>" value="0" type="radio" <?if((isset($_SESSION['active'.$i]) && !$_SESSION['active'.$i]) || !isset($_SESSION['active'.$i])){?>checked<?}?>>
 						<label class="no"><?echo _("No");?></label>
 
-					<input name="active1" id="active1" value="1" type="radio" <?if((isset($_SESSION['active1']) && $_SESSION['active1'])){?>checked<?}?>>
+					<input name="<?echo("active".$i)?>" id="<?echo("active".$i)?>" value="1" type="radio" <?if((isset($_SESSION['active'.$i]) && $_SESSION['active'.$i])){?>checked<?}?>>
 						<label class="yes"><?echo _("Yes");?></label>
 
 						<span></span>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="large-7 columns">
-					<input type="text" class="" tabindex=23 name="cusNotif2" id="cusNotif2" placeholder='<?echo _('eg."Your order is on its way"')?>'  value="<?if(isset($_SESSION['content2'])) echo $_SESSION['content2'];?>"/>
-				</div>
-				<div class="large-3 columns">
-					<input type="text" class="" tabindex=24 name="shortName2" id="shortName2" placeholder='<?echo _('eg.En-route')?>'  value="<?if(isset($_SESSION['name2'])) echo $_SESSION['name2'];?>"/>
-				</div>
-				<div class="large-2 columns">
-					<div class="switch small large-6 columns eventFlagNoti2 float-right"> 
-					<input name="active2" id="active2" value="0" type="radio" <?if((isset($_SESSION['active2']) && !$_SESSION['active2']) || !isset($_SESSION['active2'])){?>checked<?}?>>
-					<label class="no"><?echo _("No");?></label>
-			
-					<input name="active2" id="active2" value="1" type="radio" <?if((isset($_SESSION['active2']) && $_SESSION['active2'])){?>checked<?}?>>
-					<label class="yes"><?echo _("Yes");?></label>
-
-					<span></span>
-				</div>
-			</div>
-			</div>
-			
-			<div class="row">
-				<div class="large-7 columns">
-					<input type="text" class="" tabindex=25 name="cusNotif3" id="cusNotif3" placeholder='<?echo _('eg."There is a problem with your order. Please call us"')?>'  value="<?if(isset($_SESSION['content3'])) echo $_SESSION['content3'];?>"/>
-				</div>
-				<div class="large-3 columns">
-					<input type="text" class="" tabindex=26 name="shortName3" id="shortName3" placeholder='<?echo _('eg.Call us')?>'  value="<?if(isset($_SESSION['name3'])) echo $_SESSION['name3'];?>"/>
-			</div>
-				<div class="large-2 columns">
-					<div class="switch small large-6 columns eventFlagNoti3 float-right"> 
-					<input name="active3" id="active3" value="0" type="radio" <?if((isset($_SESSION['active3']) && !$_SESSION['active3']) || !isset($_SESSION['active3'])){?>checked<?}?>>
-					<label class="no"><?echo _("No");?></label>
-			
-					<input name="active3" id="active3" value="1" type="radio" <?if((isset($_SESSION['active3']) && $_SESSION['active3'])){?>checked<?}?>>
-					<label class="yes"><?echo _("Yes");?></label>
-
-					<span></span>
-				</div>
-			</div>
-		</div>
+			<? }?>		
 			<div class="row">
 				<div class="large-7 columns">
 					<label>Preset order rejection notifications, sent by email  and push alert</label>
@@ -569,64 +533,27 @@
 					<label>Active</label>
 				</div>
 			</div>			
+			<? for ($i = 4; $i < 7; $i++ ){ ?>			
 			<div class="row">
 				<div class="large-7 columns">
-					<input type="text" class="" tabindex=27 name="cusNotif4" id="cusNotif4" placeholder='<?echo _('eg."Your address is out of our delivery  zone"')?>'  value="<?if(isset($_SESSION['content4'])) echo $_SESSION['content4'];?>"/>
+					<input type="text" class="" name="<?echo("cusNotif".$i)?>" id="<?echo("cusNotif".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['reject']['content'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['content'.$i])) echo $_SESSION['content'.$i]; ?>"/>
 				</div>
 				<div class="large-3 columns">
-					<input type="text" class="" tabindex=28 name="shortName4" id="shortName4" placeholder='<?echo _('eg.Out of zone')?>'  value="<?if(isset($_SESSION['name4'])) echo $_SESSION['name4'];?>"/>
+					<input type="text" class="" name="<?echo("shortName".$i)?>" id="<?echo("shortName".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['reject']['name'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['name'.$i])) echo $_SESSION['name'.$i];?>"/>
 				</div>
 				<div class="large-2 columns">
-					<div class="switch small large-6 columns eventFlagNoti4 float-right"> 
-					<input name="active4" id="active4"  value="0" type="radio" <?if((isset($_SESSION['active4']) && !$_SESSION['active4']) || !isset($_SESSION['active4'])){?>checked<?}?>>
-					<label class="no"><?echo _("No");?></label>
+					<div class="switch small large-6 columns eventFlagNoti1 float-right"> 
+					<input name="<?echo("active".$i)?>" id="<?echo("active".$i)?>" value="0" type="radio" <?if((isset($_SESSION['active'.$i]) && !$_SESSION['active'.$i]) || !isset($_SESSION['active'.$i])){?>checked<?}?>>
+						<label class="no"><?echo _("No");?></label>
 
-					<input name="active4" id="active4" value="1" type="radio" <?if((isset($_SESSION['active4']) && $_SESSION['active4'])){?>checked<?}?>>
-					<label class="yes"><?echo _("Yes");?></label>
+					<input name="<?echo("active".$i)?>" id="<?echo("active".$i)?>" value="1" type="radio" <?if((isset($_SESSION['active'.$i]) && $_SESSION['active'.$i])){?>checked<?}?>>
+						<label class="yes"><?echo _("Yes");?></label>
 
-					<span></span>
+						<span></span>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="large-7 columns">
-					<input type="text" class="" tabindex=29 name="cusNotif5" id="cusNotif5" placeholder='<?echo _('eg."Sorry, that item  is out of stock"')?>'  value="<?if(isset($_SESSION['content5'])) echo $_SESSION['content5'];?>"/>
-				</div>
-				<div class="large-3 columns">
-					<input type="text" class="" tabindex=30 name="shortName5" id="shortName5" placeholder='<?echo _('eg.Out of stock')?>'  value="<?if(isset($_SESSION['name5'])) echo $_SESSION['name5'];?>"/>
-				</div>
-				<div class="large-2 columns">
-					<div class="switch small large-6 columns eventFlagNoti5 float-right"> 
-					<input name="active5" id="active5" value="0" tabindex=31 type="radio" <?if((isset($_SESSION['active5']) && !$_SESSION['active5']) || !isset($_SESSION['active5'])){?>checked<?}?>>
-					<label class="no"><?echo _("No");?></label>
-
-					<input name="active5" id="active5" value="1" type="radio" tabindex=32 <?if((isset($_SESSION['active5']) && $_SESSION['active5'])){?>checked<?}?>>
-					<label class="yes"><?echo _("Yes");?></label>
-
-					<span></span>
-					</div>
-				</div>		
-			</div>
-
-			<div class="row">
-				<div class="large-7 columns">
-					<input type="text" class="" name="cusNotif6" tabindex=33 id="cusNotif6" placeholder='<?echo _('eg."Sorry, Your order has been rejected. Please call us"')?>'  value="<?if(isset($_SESSION['content6'])) echo $_SESSION['content6'];?>"/>
-				</div>
-				<div class="large-3 columns">
-					<input type="text" class="" name="shortName6"  tabindex=34 id="shortName6" placeholder='<?echo _('eg.Call us')?>'  value="<?if(isset($_SESSION['name6'])) echo $_SESSION['name6'];?>"/>
-				</div>
-				<div class="large-2 columns">
-					<div class="switch small large-6 columns eventFlagNoti6 float-right"> 
-					<input name="active6" id="active6" value="0" type="radio" <?if((isset($_SESSION['active6']) && !$_SESSION['active6']) || !isset($_SESSION['active6'])){?>checked<?}?>>
-					<label class="no"><?echo _("No");?></label>
-
-					<input name="active6" id="active6" value="1" type="radio" <?if((isset($_SESSION['active6']) && $_SESSION['active6'])){?>checked<?}?>>
-					<label class="yes"><?echo _("Yes");?></label>
-
-					<span></span>
-					</div>
-				</div>			
-			</div>
+			<? }?>		
 			<div class="row">
 				<div class="large-4 columns">
 					<label>In case of customer queries, contact</label>

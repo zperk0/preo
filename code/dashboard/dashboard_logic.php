@@ -165,20 +165,17 @@
 		$_SESSION['noMenuFlag']=1;
 
 		//regardless of what we had before, pre set the initial values of the messages as the placeholders
-
-		$_SESSION["content1"] = _("Your order is running 15 mins late");
-		$_SESSION["name1"] = _("Late Order");
-		$_SESSION["content2"] = _("Your order is on its way");
-		$_SESSION["name2"] = _("En-route");
-		$_SESSION["content3"] = _("There is a problem with your order. Please call us");
-		$_SESSION["name3"] = _("Call us");
-
-		$_SESSION["content4"] = _("Your address is out of our delivery zone");
-		$_SESSION["name4"] = _("Out of zone");
-		$_SESSION["content5"] = _("Sorry, that item is out of stock");
-		$_SESSION["name5"] = _("Out of stock");
-		$_SESSION["content6"] = _("Sorry, Your order has been rejected. Please call us");
-		$_SESSION["name6"] = _("Call us");
+		//FIXME strings defined in API_vars
+		$init = 1;
+		for ($i = $init; $i < (count($deliveryMessages["notifications"])/2)+$init ; $i++ ){		
+			$_SESSION["content".$i] = $deliveryMessages["notifications"]["content".$i];
+			$_SESSION["name".$i] =  $deliveryMessages["notifications"]["name".$i];
+		}
+		$init += (count($deliveryMessages["reject"])/2);
+		for ($i = $init; $i < (count($deliveryMessages["reject"])/2)+$init ; $i++ ){		
+			$_SESSION["content".$i] = $deliveryMessages["reject"]["content".$i];
+			$_SESSION["name".$i] =  $deliveryMessages["reject"]["name".$i];
+		}
 
 	}
 	
