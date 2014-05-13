@@ -21,7 +21,6 @@ var Dictionary = {
 	"Choose some extras":<? echo json_encode(_("Choose some extras")) ?>,
 	"Choose a side dish":<? echo json_encode(_("Choose a side dish")) ?>,
 	"Pick an option type":<? echo json_encode(_("Pick an option type")) ?>,
-	"Are you sure you want to delete this section? Note: all items and options will be lost!":<? echo json_encode(_("Are you sure you want to delete this section? Note: all items and options will be lost!")) ?>,
 	"Yes, delete this section and all its contents!":<? echo json_encode(_("Yes, delete this section and all its contents!")) ?>,
 	"No, go back.":<? echo json_encode(_("No, go back.")) ?>,
 	"Choose a main":<? echo json_encode(_("Choose a main")) ?>,

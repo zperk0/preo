@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-08 19:09+0200\n"
+"POT-Creation-Date: 2014-05-13 15:00+0200\n"
 "PO-Revision-Date: 2014-04-28 11:53+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,51 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.4\n"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/dashboard/dashboard_logic.php:169
+msgid "Your order is running 15 mins late"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/dashboard/dashboard_logic.php:170
+msgid "Late Order"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/dashboard/dashboard_logic.php:171
+msgid "Your order is on its way"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/dashboard/dashboard_logic.php:172
+msgid "En-route"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/dashboard/dashboard_logic.php:173
+msgid "There is a problem with your order. Please call us"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/dashboard/dashboard_logic.php:174
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/dashboard/dashboard_logic.php:181
+msgid "Call us"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/dashboard/dashboard_logic.php:176
+msgid "Your address is out of our delivery zone"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/dashboard/dashboard_logic.php:177
+msgid "Out of zone"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/dashboard/dashboard_logic.php:178
+msgid "Sorry, that item is out of stock"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/dashboard/dashboard_logic.php:179
+msgid "Out of stock"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/dashboard/dashboard_logic.php:180
+msgid "Sorry, Your order has been rejected. Please call us"
+msgstr ""
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:8
 msgid "Sorry, but there's been an error processing your request."
@@ -89,50 +134,42 @@ msgid "Pick an option type"
 msgstr "Eingabe oder Auswahl einer Optionsbezeichnung"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:24
-msgid ""
-"Are you sure you want to delete this section? Note: all items and options "
-"will be lost!"
-msgstr ""
-"Sind Sie sicher, dass sie diesen Abschnitt löschen möchten? Alle Artikel und "
-"Optionen werden bei diesem Vorgang gelöscht. "
-
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:25
 msgid "Yes, delete this section and all its contents!"
 msgstr "Ja, diesen Abschnitt und seinen Inhalt löschen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:26
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:25
 msgid "No, go back."
 msgstr "Nein, zurück."
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:27
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:26
 msgid "Choose a main"
 msgstr "Hauptgericht auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:28
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:27
 msgid "Choose a side"
 msgstr "Beilage auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:29
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:28
 msgid "Choose a drink"
 msgstr "Getränk auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:30
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:29
 msgid "Choose a curry"
 msgstr "Bratwurst auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:31
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:30
 msgid "Choose a burger"
 msgstr "Burger auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:32
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:31
 msgid "Menu configuration has been saved!"
 msgstr "Menü-Konfigurationen wurden gespeichert!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:33
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:32
 msgid "Choose a Collection Slot"
 msgstr "Abholzeitraum auswählen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:34
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:33
 msgid ""
 "Are you sure you want to delete this event? Note: all event data will be "
 "lost!"
@@ -140,52 +177,51 @@ msgstr ""
 "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten? Alle "
 "Veranstaltungsdaten werden bei diesem Vorgang gelöscht!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:35
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:34
 msgid "Yes, delete this event!"
 msgstr "Ja, diese Veranstaltung löschen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:36
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:35
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:23
 msgid "Role"
 msgstr "Funktion"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:37
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:36
 msgid ""
 "Are you sure you want to delete this user? Note: all user data will be lost!"
 msgstr ""
 "Sind Sie sicher, dass Sie diesen Nutzer löschen möchten? Alle Nutzerdaten "
 "werden bei diesem Vorgang gelöscht!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:38
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:37
 msgid "Yes, delete this user!"
 msgstr "Ja, diesen Nutzer löschen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:39
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:38
 msgid "Username/email already exists"
 msgstr "Nutzername/E-Mail existiert bereits"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:40
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:39
 msgid "User configuration has been saved!"
 msgstr "Nutzer-Konfigurationen wurden gespeichert!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:41
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:40
 msgid "Select all menus"
 msgstr "Auswahl alle Menüs"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:42
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:41
 msgid "Unselect all menus"
 msgstr "Deselektion alle Menüs"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:43
-#, fuzzy
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:42
 msgid "Select menu("
 msgstr "Auswahl alle Menüs"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:44
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:43
 msgid "# of # selected"
 msgstr "# von # ausgewählt"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:45
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:44
 msgid ""
 "Are you sure you want to delete this outlet? Note: all outlet data will be "
 "lost!"
@@ -193,20 +229,19 @@ msgstr ""
 "Sind Sie sicher, dass sie diesen Standort löschen möchten? Alle "
 "Standortdaten werden bei diesem Vorgang gelöscht!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:46
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:45
 msgid "Yes, delete this outlet!"
 msgstr "Ja, diesen Standort löschen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:47
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:46
 msgid "Outlet configuration has been saved!"
 msgstr "Standort-Konfigurationen wurden gespeichert!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:48
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:47
 msgid "These times have been applied to all days!"
 msgstr "Diese Zeiten wurden allen Tagen zugeordnet!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:49
-#, fuzzy
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:48
 msgid ""
 "We still need some more information. Don't forget to fill out the remaining "
 "days of the week!"
@@ -214,17 +249,17 @@ msgstr ""
 "Wir benötigen noch weitere Informationen. Vergessen Sie nicht, die weiteren "
 "Wochentage auszufüllen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:50
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:49
 msgid "Where should this meal deal appear?"
 msgstr "Wo soll dieser Meal Deal erscheinen?"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:51
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:50
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:96
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:213
 msgid "Choose a menu section"
 msgstr "Auswahl einer Menü-Kategorie"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:52
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:51
 msgid ""
 "Are you sure you want to delete this meal deal? Note: all associated data "
 "will be lost!"
@@ -232,30 +267,30 @@ msgstr ""
 "Sind Sie sicher, dass Sie diesem Meal Deal löschen möchten? Alle "
 "dazugehörigen Daten werden bei diesem Vorgang gelöscht!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:53
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:52
 msgid "Yes, delete this meal deal!"
 msgstr "Ja, diesen Meal Deal löschen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:54
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:53
 msgid "All changes has been saved!"
 msgstr "Alle Änderungen wurden gespeichert!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:55
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:54
 msgid ""
 "Are you sure you want to delete this menu? Note: all menu data will be lost!"
 msgstr ""
 "Sind Sie sicher, dass Sie dieses Menü löschen möchten? Alle Menüdaten werden "
 "bei diesem Vorgang gelöscht!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:56
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:55
 msgid "Yes, delete this menu!"
 msgstr "Ja, dieses Menü löschen!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:57
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:56
 msgid "Sorry, incorrect password."
 msgstr "Leider falscher Code. "
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:58
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:57
 msgid ""
 "Settings and Password has been saved!<br/>You will need to log in again with "
 "your new password to continue."
@@ -263,15 +298,15 @@ msgstr ""
 "Einstellungen und Passwort wurde gespeichert! Sie müssen mit sich mit Ihrem "
 "neuen Passwort einloggen um fortfahren zu können."
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:59
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:58
 msgid "Settings have been saved!"
 msgstr "Einstellungen wurden gespeichert!"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:60
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:59
 msgid "Please select features you require"
 msgstr "Bitte, wählen Sie die Features aus, die Sie benötigen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:61
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:60
 msgid "Select all"
 msgstr "Alles auswählen"
 
@@ -392,7 +427,7 @@ msgstr "Öffnungszeiten"
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:18
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:12
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:12
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:29
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:32
 msgid "Add a Payment"
 msgstr "Zahlungsweise Hinzufügen"
 
@@ -402,7 +437,7 @@ msgstr "Zahlungsweise Hinzufügen"
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:20
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:14
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:15
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:31
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:35
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:15
 msgid "Done"
 msgstr "Fertig"
@@ -582,10 +617,10 @@ msgstr "Größe: 100x75"
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:234
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:241
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:382
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:91
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:110
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:88
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:120
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:381
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:640
 msgid "SAVE CHANGES"
 msgstr "SPEICHERN"
 
@@ -594,10 +629,10 @@ msgstr "SPEICHERN"
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:235
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:242
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:384
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:92
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:111
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:89
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:121
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:382
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:641
 msgid "SAVING..."
 msgstr "SPEICHERN..."
 
@@ -948,10 +983,10 @@ msgstr "Datum?"
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:83
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:159
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:163
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:48
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:53
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:68
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:73
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:58
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:63
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:87
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:92
 msgid "HH:MM"
 msgstr "SS:MM"
 
@@ -961,10 +996,10 @@ msgstr "SS:MM"
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:160
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:164
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:203
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:49
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:54
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:69
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:74
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:59
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:64
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:88
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:93
 msgid "Time?"
 msgstr "Zeit?"
 
@@ -977,7 +1012,14 @@ msgstr "Zeit?"
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:255
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:304
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:336
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:353
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:82
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:129
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:513
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:532
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:552
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:582
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:601
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:621
 msgid "No"
 msgstr "Nein"
 
@@ -990,7 +1032,14 @@ msgstr "Nein"
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:258
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:307
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:339
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:356
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:85
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:132
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:516
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:535
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:555
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:585
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:604
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:624
 msgid "Yes"
 msgstr "Ja"
 
@@ -1060,7 +1109,6 @@ msgstr "Bitte wählen Sie einen Zeitraum aus. "
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:120
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:201
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:373
 msgid "Lead Time (mins)"
 msgstr "Lieferzeit (min)"
 
@@ -1082,7 +1130,7 @@ msgid "eg. 30"
 msgstr "z.B. 30"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:243
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:107
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:131
 msgid "75&#37 done, almost there now..."
 msgstr "75&#37 geschafft, fast fertig..."
 
@@ -1107,12 +1155,12 @@ msgid "Which menu section does this meal deal belong in?"
 msgstr "In welche Menü-Kategorie Gehört dieser Meal Deal?"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:32
-msgid "Total Price (&pound;)"
-msgstr "Gesamtpreis (&Pfund;)"
+msgid "Total Price "
+msgstr "Gesamtpreis "
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:33
-msgid "Discount Price (&pound;)"
-msgstr "Rabatt-Preis (&euro;)"
+msgid "Discount Price "
+msgstr "Rabatt-Preis "
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:53
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:171
@@ -1190,7 +1238,6 @@ msgid "Click to add a Meal Deal name"
 msgstr "Klicken um neue Meal Deal Bezeichnung hinzuzufügen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:252
-#, fuzzy
 msgid ""
 "You've not created any items! You won't be able to create Meal Deals until "
 "you have some items in your menu."
@@ -1247,8 +1294,8 @@ msgstr "Diesen Abschnitt bewegen"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:87
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:223
-msgid "Price (&pound;)"
-msgstr "Preis (&euro;)"
+msgid "Price "
+msgstr "Preis?"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:88
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:224
@@ -1456,21 +1503,53 @@ msgid "eg: if you close for lunch and reopen in the evening."
 msgstr "z.B. wenn Sie in der Mittagszeit schließen und abends wieder öffnen. "
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:47
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:67
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:77
+msgid "Open "
+msgstr "Geöffnet um"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:47
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:77
+msgid ""
+"Let us know if your venue is open for delivery, open for pickup, open for "
+"both or if you are closed today."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:50
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:79
+msgid "For delivery and collection"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:51
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:80
+msgid "For delivery only"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:52
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:81
+msgid "For collection only"
+msgstr "Abholzeitraum auswählen"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:53
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:82
+msgid "Closed Today"
+msgstr "Geschlossen um "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:57
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:86
 msgid "Opens at"
 msgstr "Geöffnet um"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:52
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:72
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:62
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:91
 msgid "Closes at"
 msgstr "Geschlossen um "
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:58
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:78
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:68
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:97
 msgid "Remove opening hour"
 msgstr "Öffnungszeit entfernen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:86
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:105
 msgid "Apply these times to all days"
 msgstr "Diese Zeiten allen Tagen hinzufügen"
 
@@ -1615,55 +1694,29 @@ msgstr "Passwort bestätigen"
 msgid "Passwords don't match"
 msgstr "Passwörter stimmen nicht überein"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:35
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:30
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:13
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:84
+msgid "Payment Method"
+msgstr "Zahlungsmethode"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:41
 msgid "Tell us about your venue"
 msgstr "Erzählen Sie uns über Ihr Unternehmen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:40
-msgid "Venue lookup"
-msgstr "Suche Unternehmen"
-
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:41
-msgid "Start typing a venue name..."
-msgstr "Geben Sie den Namen des Unternehmens ein…"
-
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:51
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:50
 msgid "Venue name"
 msgstr "Name des Unternehmens"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:53
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:52
 msgid "Please type a venue name (max 100chars)"
 msgstr "Bitte geben Sie den Namen des Unternehmens an (max 100 Zeichen)"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:59
-msgid "Venue address"
-msgstr "Adresse des Unternehmens"
-
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:62
-msgid "Please type a venue address (max 250chars)"
-msgstr "Bitte geben Sie die Adresse des Unternehmens an (max 250 Zeichen)"
-
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:68
-msgid "Venue post code"
-msgstr "Postleitzahl des Unternehmens"
-
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:70
-msgid "Please type a post code (max 45chars)"
-msgstr "Bitte geben Sie die Postleitzahl an (max 45 Zeichen)"
-
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:76
-msgid "Venue country"
-msgstr "Land"
-
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:323
-msgid "Please choose a country"
-msgstr "Bitte, Land auswählen"
-
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:329
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:58
 msgid "Venue description"
 msgstr "Beschreibung des Unternehmens"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:329
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:58
 msgid ""
 "Please enter a short description about your venue.<br/><br/>This will not "
 "appear on your branded app."
@@ -1671,39 +1724,39 @@ msgstr ""
 "Bitte geben Sie eine kurze Beschreibung Ihres Unternehmens ein.<br/><br/"
 ">Diese wird nicht auf ihrer Unternehmens-App erscheinen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:331
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:60
 msgid "Please type a venue description (max 250chars)"
 msgstr "Bitte geben Sie eine Unternehmensbeschreibung ein (max 250 Zeichen)"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:337
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:66
 msgid "What type of venue are you?"
 msgstr "Was für ein Unternehmen sind Sie?"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:339
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:68
 msgid "Sports Arena"
 msgstr "Sportarena"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:340
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:69
 msgid "Bars, Pubs and Clubs"
 msgstr "Bars, Pubs und Clubs"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:341
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:70
 msgid "Workplace/Education Catering"
 msgstr "Catering für Betriebe/Bildungseinrichtungen"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:342
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:71
 msgid "Retail Catering (Cafe, Sandwich Bar, Restaurant, etc)"
 msgstr "Gastronomie (Café, Sandwich Bar, Restaurant, etc)"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:343
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:72
 msgid "Music and Cultural"
 msgstr "Musik und Kultur"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:350
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:79
 msgid "Are you primarily an events based business?"
 msgstr "Sind Sie hauptsächlich auf Veranstaltungen spezialisiert"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:350
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:79
 msgid ""
 "Does your business revolve around regular events, e.g. football matches, "
 "performances, etc?"
@@ -1711,11 +1764,11 @@ msgstr ""
 "Beschäftigt sich Ihr Unternehmen regelmäßig mit Veranstaltungen,wie "
 "Fußballspiele, Aufführungen, etc.?"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:365
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:94
 msgid "Collection Slot Duration (mins)"
 msgstr "Abholzeitraum Dauer (Minuten)"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:365
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:94
 msgid ""
 "This is the number of minutes after opening time and before closing time "
 "when customers are allowed to collect orders."
@@ -1723,37 +1776,194 @@ msgstr ""
 "Das ist die Minutenanzahl nach und vor dem Zeitpunkt, an dem Kunden ihre "
 "Bestellungen abholen dürfen. "
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:366
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:95
 msgid "eg: 30"
 msgstr "z.B.: 30"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:367
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:96
 msgid "Please provide a duration in mins"
 msgstr "Bitte geben Sie eine Dauer in Minuten an"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:373
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:102
+msgid "Default preparation time for collection orders (mins)"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:102
 msgid ""
 "The time it takes to prepare your order before the customer can pick it up."
 msgstr ""
 "Die benötigte Zeit für die Vorbereitung der Bestellung, bevor der Kunde sie "
 "abholen darf. "
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:374
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:103
 msgid "e.g. 25"
 msgstr "z.B. 25"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:375
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:104
 msgid "Please provide a lead time"
 msgstr "Bitte geben Sie eine Lieferzeit an"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:398
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:110
+msgid "Minimum value for orders"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:111
+msgid "e.g. 5"
+msgstr "z.B. 25"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:112
+msgid "Please provide a minimum value for ordering"
+msgstr "Bitte geben Sie eine Lieferzeit an"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:118
+msgid "Discount offered for collection orders (%)"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:119
+msgid "e.g. 10"
+msgstr "z.B. 25"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:120
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:489
+msgid "Please provide a discount percentage (between 0 and 100)"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:126
+msgid "Does your venue do home or office delivery?"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:144
+msgid "Address"
+msgstr "Adresse des Unternehmens"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:150
+msgid "Please type a venue address (max 250chars)"
+msgstr "Bitte geben Sie die Adresse des Unternehmens an (max 250 Zeichen)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:156
+msgid "Town/City"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:158
+msgid "Please type a Town/City (max 45chars)"
+msgstr "Bitte geben Sie die Postleitzahl an (max 45 Zeichen)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:165
+msgid "Country"
+msgstr "Land"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:412
+msgid "Please choose a country"
+msgstr "Bitte, Land auswählen"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:417
+msgid "Post code"
+msgstr "Postleitzahl des Unternehmens"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:419
+msgid "Please type a post code (max 45chars)"
+msgstr "Bitte geben Sie die Postleitzahl an (max 45 Zeichen)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:425
+msgid "Language"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:430
+msgid "Please select your language"
+msgstr "Bitte, wählen Sie die Features aus, die Sie benötigen"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:436
+msgid "Timezone"
+msgstr "Zeit?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:445
+msgid "Please select your timezone"
+msgstr "Bitte geben Sie Ihre Ansprüche ein. "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:451
+msgid "Currency"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:457
+msgid "Please select your currency"
+msgstr "Bitte, wählen Sie die Features aus, die Sie benötigen"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:467
+msgid "Delivery Zone"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:468
+msgid "eg. \"5 miles\" or \"NW1, NW2...\""
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:471
+msgid "Min.value order"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:475
+msgid "Delivery charge"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:479
+msgid "Free delivery for orders above"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:483
+msgid "Default lead time for delivery(mins)"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:487
+msgid "Discounted offered for delivery"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:505
+msgid "eg.\"Your order is running 15 mins late\""
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:508
+msgid "eg.Late order"
+msgstr "Neu bestellen"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:524
+msgid "eg.\"Your order is on its way\""
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:527
+msgid "eg.En-route"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:544
+msgid "eg.\"There is a problem with your order. Please call us\""
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:547
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:616
+msgid "eg.Call us"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:574
+msgid "eg.\"Your address is out of our delivery  zone\""
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:577
+msgid "eg.Out of zone"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:593
+msgid "eg.\"Sorry, that item  is out of stock\""
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:596
+msgid "eg.Out of stock"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:613
+msgid "eg.\"Sorry, Your order has been rejected. Please call us\""
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:651
 msgid "15&#37 done, keep going!"
 msgstr "15&#37 geschafft, weiter so!"
-
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:13
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:84
-msgid "Payment Method"
-msgstr "Zahlungsmethode"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:26
 msgid "The finish line!"
@@ -3028,7 +3238,6 @@ msgid "  Click here"
 msgstr "Hier Klicken"
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:78
-#, fuzzy
 msgid ""
 "Sorry, you don't have sufficient privileges.<br/><br/>Looking for the "
 "Fulfilment App? Click the link at the bottom of this page."
@@ -3085,24 +3294,48 @@ msgid "Please type your business name (max 100chars)"
 msgstr "Bitte geben Sie Ihren Geschäftsnamen ein. "
 
 #: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:77
+msgid "Telephone Number"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:79
+msgid "Please type your telephone number"
+msgstr "Bitte geben Sie einen Standortname ein. "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:87
 msgid "By clicking 'Sign Up' you agree to our"
 msgstr "Indem Sie 'Anmelden' anklicken, stimmen Sie unseren"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:77
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:87
 msgid "Terms"
 msgstr "Allgemeinen Geschäftsbedingungen "
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:77
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:87
 msgid "and"
 msgstr "und"
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:77
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:87
 msgid "Privacy Policy"
 msgstr "Datenschutzrichtlinien zu."
 
-#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:85
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:95
 msgid "SIGN UP"
 msgstr "ANMELDEN"
+
+#~ msgid ""
+#~ "Are you sure you want to delete this section? Note: all items and options "
+#~ "will be lost!"
+#~ msgstr ""
+#~ "Sind Sie sicher, dass sie diesen Abschnitt löschen möchten? Alle Artikel "
+#~ "und Optionen werden bei diesem Vorgang gelöscht. "
+
+#~ msgid "Price (&pound;)"
+#~ msgstr "Preis (&euro;)"
+
+#~ msgid "Venue lookup"
+#~ msgstr "Suche Unternehmen"
+
+#~ msgid "Start typing a venue name..."
+#~ msgstr "Geben Sie den Namen des Unternehmens ein…"
 
 #~ msgid "Sorry, but there\\'s been an error processing your request."
 #~ msgstr ""
