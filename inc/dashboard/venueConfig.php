@@ -461,50 +461,50 @@
 		</div>
 		<div class='clearFix'></div>
 </div>
-		<div class="large-12 small-12 columns advanced-setting <?if( ((isset($_SESSION['venue_deliveryFlag']) && !$_SESSION['venue_deliveryFlag'])) || !isset($_SESSION['venue_deliveryFlag']) ){?>hide<?}?>" id="advanced-setting">
-			<div class="row">
-				<div class="large-4  columns">
-					<label><? echo _("Delivery Zone")?></label><br>
+		<div class="small-12 columns advanced-setting <?if( ((isset($_SESSION['venue_deliveryFlag']) && !$_SESSION['venue_deliveryFlag'])) || !isset($_SESSION['venue_deliveryFlag']) ){?>hide<?}?>" id="advanced-setting">
+			<div class="row columns">
+				<div class="small-4  columns">
+					<label><? echo _("Delivery Zone")?> <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be the area you tell your customers that you can deliver within.<br/><br/>You are able to accept or reject the orders.");?>"></i> </label>
 					<input type="text" class="delivery_zone" name="dZone" id="dZone" placeholder='<? echo _('eg. "5 miles" or "NW1, NW2..."')?>' tabindex="14" value="<?if(isset($_SESSION['delivery_zone'])) echo $_SESSION['delivery_zone'];?>">
 				</div>
-				<div class="large-1  columns">
+				<div class="small-15  columns">
 					<label><? echo _("Min.value order")?>(<span class='currencySymbol'>$</span>)</label>
 					<input type="text"  name="dMinVal" id="dMinVal" placeholder='0.00' tabindex="15" value="<?if(isset($_SESSION['delivery_order_min'])) echo $_SESSION['delivery_order_min'];?>">
 				</div>
-				<div class="large-1  columns">
+				<div class="small-15  columns">
 					<label><? echo _("Delivery charge")?>(<span class='currencySymbol'>$</span>)</label>
 					<input type="text"  name="dCharge" id="dCharge" placeholder='0.00' tabindex="16" value="<?if(isset($_SESSION['delivery_charge'])) echo $_SESSION['delivery_charge'];?>">
 				</div>
-				<div class="large-2  columns">
+				<div class="small-15  columns">
 					<label><? echo _("Free delivery for orders above")?>(<span class='currencySymbol'>$</span>)</label>
 					<input type="text" class="" name="dChargeBelow" id="dChargeBelow" placeholder='0.00' tabindex="17" value="<?if(isset($_SESSION['delivery_charge_below'])) echo $_SESSION['delivery_charge_below'];?>">
 				</div>
-				<div class="large-2  columns">
+				<div class="small-15  columns">
 					<label><? echo _("Default lead time for delivery(mins)")?></label>
 					<input type="text" class="" name="dLeadTime" id="dLeadTime" placeholder='0' tabindex="18" value="<?if(isset($_SESSION['delivery_lead_time'])) echo $_SESSION['delivery_lead_time'];?>">
 				</div>
-				<div class="large-2 columns">
+				<div class="small-15 columns">
 					<label><? echo _("Discounted offered for delivery")?>(%)</label>
 					<input type="text" class="" name="vDeliveryDiscount" id="vDeliveryDiscount" placeholder='0' tabindex="19" value="<?if(isset($_SESSION['delivery_discount'])) echo $_SESSION['delivery_discount'];?>" pattern="^(0?[0-9]?[0-9]|100)$">
 					<small class="error"><?echo _("Please provide a discount percentage (between 0 and 100)");?></small>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row columns">
 				<div class="large-7 columns">
-					<label>Preset customer notifications, sent by email and push alert</label>
+					<label><? echo _("Preset customer notifications, sent by email and push alert")?></label>
 				</div>
 				<div class="large-3 columns">
-					<label>Short name</label>
+					<label><? echo _("Short name") ?></label>
 				</div>
-				<div class="large-1 columns"> 
-					<label>Active</label>
+				<div class="large-2 columns"> 
+					<label class="large-8 float-right"><? echo _("Active") ?></label>
 				</div>
 			</div>			
 			<?$tabIndex = 21;?>
 			<? for ($i = 0; $i < 3; $i++ ){ ?>			
 				<? $currentNoti = (isset($deliveryMsgs["PUSH_NOTIFY"]) && isset($deliveryMsgs["PUSH_NOTIFY"][$i])) ? $deliveryMsgs["PUSH_NOTIFY"][$i] : array() ?>			
 				<input type="hidden" name="<?echo("custNotifId".$i)?>" id="<?echo("custNotifId".$i)?>" value="<?if(isset($currentNoti['id'])) echo $currentNoti['id'];?>"/>
-				<div class="row">	
+				<div class="row columns">	
 					<div class="large-7 columns">
 						<input type="text" class="notificationLong" name="<?echo("cusNotif".$i)?>" id="<?echo("cusNotif".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['PUSH_NOTIFY'][$i]['content'].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($currentNoti['content'])) echo $currentNoti['content']; ?>" pattern="^.{0,199}$"/>
 						<small class="error"><?echo _("Please type a notification (max 200chars)");?></small>
@@ -514,7 +514,7 @@
 						<small class="error"><?echo _("Please type a notification short name (max 40chars)");?></small>
 					</div>
 					<div class="large-2 columns">
-						<div class="switch small large-6 columns notificationActiveFlag float-right"> 
+						<div class="switch small large-8 columns notificationActiveFlag float-right"> 
 						<input name="<?echo("active".$i)?>" id="<?echo("active".$i)?>" value="0" type="radio" <?if( isset($currentNoti['active']) && !$currentNoti['active'] ) {?>checked<?}?>>
 							<label class="no"><?echo _("No");?></label>
 
@@ -526,21 +526,21 @@
 					</div>
 				</div>
 			<? }?>		
-			<div class="row">
+			<div class="row columns">
 				<div class="large-7 columns">
-					<label>Preset order rejection notifications, sent by email  and push alert</label>
+					<label><? echo _("Preset order rejection notifications, sent by email  and push alert")?></label>
 				</div>
 				<div class="large-3 columns">
-					<label>Short name</label>
+					<label><? echo _("Short name")?></label>
 				</div>
-				<div class="large-1 columns"> 
-					<label>Active</label>
+				<div class="large-2 columns"> 
+					<label class="large-8 float-right"><? echo _("Active")?></label>
 				</div>
 			</div>			
 			<? for ($i = 0; $i < 3; $i++ ){ ?>			
 			<? $gIndex = 3 + $i; ?>
 			<? $currentNoti = (isset($deliveryMsgs["PUSH_REJECT"]) && isset($deliveryMsgs["PUSH_REJECT"][$i])) ? $deliveryMsgs["PUSH_REJECT"][$i] : array() ?>
-			<div class="row">
+			<div class="row columns">
 				<input type="hidden" name="<?echo("custNotifId".$gIndex)?>" id="<?echo("custNotifId".$gIndex)?>" value="<?if(isset($currentNoti['id'])) echo $currentNoti['id'];?>"/>
 				<div class="large-7 columns">
 					<input type="text" class="notificationLong" name="<?echo("cusNotif".$gIndex)?>" id="<?echo("cusNotif".$gIndex)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['PUSH_REJECT'][$i]['content'].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($currentNoti['content'])) echo $currentNoti['content']; ?>" pattern="^.{0,199}$"/>
@@ -551,7 +551,7 @@
 					<small class="error"><?echo _("Please type a notification short name (max 40chars)");?></small>
 				</div>
 				<div class="large-2 columns">
-					<div class="switch small large-6 columns notificationActiveFlag float-right"> 
+					<div class="switch large-8 small columns notificationActiveFlag float-right"> 
 					<input name="<?echo("active".$gIndex)?>" id="<?echo("active".$gIndex)?>" value="0" type="radio" <?if( isset($currentNoti['active']) && !$currentNoti['active']) {?>checked<?}?>>
 						<label class="no"><?echo _("No");?></label>
 
@@ -563,9 +563,9 @@
 				</div>
 			</div>
 			<? }?>		
-			<div class="row">
+			<div class="row columns">
 				<div class="large-4 columns">
-					<label>In case of customer queries, contact</label>
+					<label><? echo _("In case of customer queries, contact")?></label>
 					<input type="text" name="contactInfo" id="contactInfo" tabindex=35 placeholder="01234 567890" value="<?if(isset($_SESSION['delivery_phone'])) echo $_SESSION['delivery_phone'];?>"/>
 				</div>
 			</div>

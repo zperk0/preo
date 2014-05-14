@@ -726,11 +726,8 @@ h1 i.icon-question-sign, h4 i.icon-question-sign {
 	background: white !important;
 }
 
-.menuTable .menuField:focus, .eventTable .eventField:focus, .userTable .userField:focus, .outletTable .outletField:focus, .mdTable .mdField:focus{
-	background: #F1F0F2 !important;
-}
-
-.mdTable .mdTDTPrice input:focus{
+.menuTable .menuField:focus, .eventTable .eventField:focus, .userTable .userField:focus, .outletTable .outletField:focus, .mdTable .mdField:focus,
+.mdTable .mdTDTPrice input:focus, #advanced-setting input {
 	background: #F1F0F2 !important;
 }
 
@@ -829,7 +826,8 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	color: #48535D !important;
 }
 
-.menuTable .menuField, .eventTable .eventField, .userTable .userField, .outletTable .outletField, .mdTable .mdField {
+.menuTable .menuField, .eventTable .eventField, .userTable .userField, .outletTable .outletField, .mdTable .mdField,
+#advanced-setting input {
 	font-family: HelveticaNeueW01-45Ligh !important;
 	color: #48535D !important;
 	font-size: inherit !important;
@@ -854,8 +852,44 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	width: 59%;
 }
 
-.menuTable .menuTDName input, .eventTable .eventTDName input, .userTable .userTDName input, .outletTable .outletTDName input, .mdTable .mdTDName input{
+.menuTable .menuTDName input, .eventTable .eventTDName input, .userTable .userTDName input, .outletTable .outletTDName input, .mdTable .mdTDName input,
+#advanced-setting input[type=text] {
 	font-weight: bold !important;
+}
+
+#advanced-setting > .row:first-child label{
+	min-height:50px;
+	margin-top:0;	
+	margin-bottom:0;
+}
+
+.advanced-setting label{
+	color: #000 !important;
+	margin-top:15px;
+	margin-bottom:10px;
+}
+
+#advanced-setting input[type=text]{
+	box-shadow: none;
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	font-size:110% !important;
+	margin-bottom:10px;
+}
+#advanced-setting .switch{
+	margin-top:6px;
+	margin-bottom:0;
+}
+
+#advanced-setting .row.columns{
+	float:none;
+}
+
+
+.small-15{
+	position:relative;
+	width:12.5%;
+
 }
 
 .menuTable .menuTDDesc, .headerTable .menuTDDesc{
@@ -1798,10 +1832,7 @@ table.mdTable{
 	margin-bottom: 20px;
 }
 
-.advanced-setting label{
-	color: #000 !important;
-	padding-bottom: 15px;
-}
+
 
 .float-right{
 	float: right;
