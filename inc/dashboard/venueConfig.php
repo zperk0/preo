@@ -1,3 +1,16 @@
+<? 
+	function tz_list() {
+	  $zones_array = array();
+	  $timestamp = time();
+	  foreach(timezone_identifiers_list() as $key => $zone) {
+	    date_default_timezone_set($zone);
+	    $zones_array[$key]['zone'] = $zone;
+	    $zones_array[$key]['diff_from_GMT'] = 'UTC(' . date('P', $timestamp) .")";
+	  }
+	  return $zones_array;
+	}
+?>
+
 <div class="row">
 	<div class="topSpacer"></div>
 	<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
@@ -436,9 +449,8 @@
 						<label><?echo _("Timezone");?></label>
 						<select id="timezone" name="timezone" class="pdDropdown" required tabindex=13>
 						    <?php foreach(tz_list() as $t) {?>
-
 						     <option value="<?php print $t['zone'] ?>"  <?if(isset($_SESSION['venue_timezone'])) { if ($_SESSION['venue_timezone'] == $t['zone']) {?>selected="selected"<?} } else {if ($t['zone'] == 'Europe/London') {?>selected="selected"<?}}     ?> >						      	
-						        <?php print $t['diff_from_GMT'] . ' - ' . $t['zone'] ?>
+						        <?php print $t['zone']." - ".$t['diff_from_GMT']?>
 						      </option>
 						    <?php } ?>
 					</select>

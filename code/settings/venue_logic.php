@@ -87,7 +87,7 @@
 					);					
 					if (!isset($deliveryMsgs[$row_data["type"]]))
 						$deliveryMsgs[$row_data["type"]] = array();
-					
+
 					array_push($deliveryMsgs[$row_data["type"]],$tempArray);
 				}
 				$_SESSION["delivery_msgs"] = $deliveryMsgs;
@@ -111,19 +111,7 @@
 	}
 	else
 		header("location:$_SESSION[path]/");
-
-	//FIXME these methods below are duplicated in dashboard_logic. Not sure where's the best place to put them. Maybe inc/dashboard/venue_config?
-	function tz_list() {
-	  $zones_array = array();
-	  $timestamp = time();
-	  foreach(timezone_identifiers_list() as $key => $zone) {
-	    date_default_timezone_set($zone);
-	    $zones_array[$key]['zone'] = $zone;
-	    $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
-	  }
-	  return $zones_array;
-	}
-
+	
 	function currency_list(){
 		$currencies = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/js/data/common-currency.json'), true);		 		
 		return $currencies;
