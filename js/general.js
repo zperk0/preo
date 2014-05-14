@@ -509,7 +509,7 @@ $(document).ready(function() {
 						return false;
 					}
 					
-					if(typeof dataArray['status'] !='undefined') //error
+					if(dataArray && typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
