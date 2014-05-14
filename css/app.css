@@ -887,8 +887,16 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 
 .small-15{
 	position:relative;
-	width:12.5%;
+	width:13.3%;
+}
+.small-switch{
+	position:relative;
+	width:10%;
+}
 
+.large-35{
+	position:relative;
+	width:31%;
 }
 
 .menuTable .menuTDDesc, .headerTable .menuTDDesc{
