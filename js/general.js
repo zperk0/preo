@@ -4208,8 +4208,6 @@ $(document).ready(function() {
 });
 
 function DeliveryManager(){
-
-	//.prop("disabled",true)
 	
 	
 	function init(){			
@@ -4220,7 +4218,7 @@ function DeliveryManager(){
 		$notifications.on("input",this.refreshFlag);		
 		$(".notificationActiveFlag").each(function(){
 				that.initSwitch($(this))
-		} )				
+		})				
 	}
 
 	function setRequired($switch){
@@ -4265,7 +4263,7 @@ function DeliveryManager(){
 		var $row = $(this).closest(".row");
 		var $switch = $row.find(".switch");			
 		var $short = $row.find(".notificationShort");
-		var $long = $row.find(".notificationShort");
+		var $long = $row.find(".notificationLong");
 		if ($short.val() != "" && $long.val() != "")
 			enableSwitch($switch);
 		else 
