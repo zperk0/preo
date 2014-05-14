@@ -524,7 +524,9 @@ $(document).ready(function() {
 				}
 			 }).done(function(){
 				if($('#redirectFlag').val()!='1') $('#venueSave').show();
-				$('#savingButton').hide();
+				$('#savingButton').hide();				
+				//FIXME maybe this can be replaced with a refresh on the ids for the delivery details
+				setTimeout(window.location.reload(),200);
 			 });
 
 		return false; // avoid to execute the actual submit of the form.

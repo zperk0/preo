@@ -501,28 +501,30 @@
 				</div>
 			</div>			
 			<?$tabIndex = 21;?>
-			<? for ($i = 1; $i < 4; $i++ ){ ?>			
-			<div class="row">
-				<div class="large-7 columns">
-					<input type="text" class="notificationLong" name="<?echo("cusNotif".$i)?>" id="<?echo("cusNotif".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['notifications']['content'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['content'.$i])) echo $_SESSION['content'.$i]; ?>" pattern="^.{0,199}$"/>
-					<small class="error"><?echo _("Please type a notification (max 200chars)");?></small>
-				</div>
-				<div class="large-3 columns">
-					<input type="text" class="notificationShort" name="<?echo("shortName".$i)?>" id="<?echo("shortName".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['notifications']['name'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['name'.$i])) echo $_SESSION['name'.$i];?>" pattern="^.{0,40}$"/>
-					<small class="error"><?echo _("Please type a notification short name (max 40chars)");?></small>
-				</div>
-				<div class="large-2 columns">
-					<div class="switch small large-6 columns notificationActiveFlag float-right"> 
-					<input name="<?echo("active".$i)?>" id="<?echo("active".$i)?>" value="0" type="radio" <?if((isset($_SESSION['active'.$i]) && !$_SESSION['active'.$i]) || !isset($_SESSION['active'.$i])){?>checked<?}?>>
-						<label class="no"><?echo _("No");?></label>
+			<? for ($i = 0; $i < 3; $i++ ){ ?>			
+				<? $currentNoti = (isset($deliveryMsgs["PUSH_NOTIFY"]) && isset($deliveryMsgs["PUSH_NOTIFY"][$i])) ? $deliveryMsgs["PUSH_NOTIFY"][$i] : array() ?>			
+				<input type="hidden" name="<?echo("custNotifId".$i)?>" id="<?echo("custNotifId".$i)?>" value="<?if(isset($currentNoti['id'])) echo $currentNoti['id'];?>"/>
+				<div class="row">	
+					<div class="large-7 columns">
+						<input type="text" class="notificationLong" name="<?echo("cusNotif".$i)?>" id="<?echo("cusNotif".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['PUSH_NOTIFY'][$i]['content'].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($currentNoti['content'])) echo $currentNoti['content']; ?>" pattern="^.{0,199}$"/>
+						<small class="error"><?echo _("Please type a notification (max 200chars)");?></small>
+					</div>
+					<div class="large-3 columns">
+						<input type="text" class="notificationShort" name="<?echo("shortName".$i)?>" id="<?echo("shortName".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['PUSH_NOTIFY'][$i]['name'].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($currentNoti['name'])) echo $currentNoti['name'];?>" pattern="^.{0,40}$"/>
+						<small class="error"><?echo _("Please type a notification short name (max 40chars)");?></small>
+					</div>
+					<div class="large-2 columns">
+						<div class="switch small large-6 columns notificationActiveFlag float-right"> 
+						<input name="<?echo("active".$i)?>" id="<?echo("active".$i)?>" value="0" type="radio" <?if( isset($currentNoti['active']) && !$currentNoti['active'] ) {?>checked<?}?>>
+							<label class="no"><?echo _("No");?></label>
 
-					<input name="<?echo("active".$i)?>" id="<?echo("active".$i)?>" value="1" type="radio" <?if((isset($_SESSION['active'.$i]) && $_SESSION['active'.$i])){?>checked<?}?>>
-						<label class="yes"><?echo _("Yes");?></label>
+						<input name="<?echo("active".$i)?>" id="<?echo("active".$i)?>" value="1" type="radio" <?if( isset($currentNoti['active']) && $currentNoti['active'] ){?>checked<?}?>>
+							<label class="yes"><?echo _("Yes");?></label>
 
-						<span></span>
+							<span></span>
+						</div>
 					</div>
 				</div>
-			</div>
 			<? }?>		
 			<div class="row">
 				<div class="large-7 columns">
@@ -535,22 +537,25 @@
 					<label>Active</label>
 				</div>
 			</div>			
-			<? for ($i = 4; $i < 7; $i++ ){ ?>			
+			<? for ($i = 0; $i < 3; $i++ ){ ?>			
+			<? $gIndex = 3 + $i; ?>
+			<? $currentNoti = (isset($deliveryMsgs["PUSH_REJECT"]) && isset($deliveryMsgs["PUSH_REJECT"][$i])) ? $deliveryMsgs["PUSH_REJECT"][$i] : array() ?>
 			<div class="row">
+				<input type="hidden" name="<?echo("custNotifId".$gIndex)?>" id="<?echo("custNotifId".$gIndex)?>" value="<?if(isset($currentNoti['id'])) echo $currentNoti['id'];?>"/>
 				<div class="large-7 columns">
-					<input type="text" class="notificationLong" name="<?echo("cusNotif".$i)?>" id="<?echo("cusNotif".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['reject']['content'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['content'.$i])) echo $_SESSION['content'.$i]; ?>" pattern="^.{0,199}$"/>
+					<input type="text" class="notificationLong" name="<?echo("cusNotif".$gIndex)?>" id="<?echo("cusNotif".$gIndex)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['PUSH_REJECT'][$i]['content'].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($currentNoti['content'])) echo $currentNoti['content']; ?>" pattern="^.{0,199}$"/>
 					<small class="error"><?echo _("Please type a notification (max 200chars)");?></small>
 				</div>
 				<div class="large-3 columns">
-					<input type="text" class="notificationShort" name="<?echo("shortName".$i)?>" id="<?echo("shortName".$i)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['reject']['name'.$i].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($_SESSION['name'.$i])) echo $_SESSION['name'.$i];?>" pattern="^.{0,40}$" />
+					<input type="text" class="notificationShort" name="<?echo("shortName".$gIndex)?>" id="<?echo("shortName".$gIndex)?>" placeholder='<? echo (_('eg.').'"'.$deliveryMessages['PUSH_REJECT'][$i]['name'].'"')?>' tabindex=<? echo ($tabIndex++); ?>  value="<?if(isset($currentNoti['name'])) echo $currentNoti['name'];?>" pattern="^.{0,40}$" />
 					<small class="error"><?echo _("Please type a notification short name (max 40chars)");?></small>
 				</div>
 				<div class="large-2 columns">
 					<div class="switch small large-6 columns notificationActiveFlag float-right"> 
-					<input name="<?echo("active".$i)?>" id="<?echo("active".$i)?>" value="0" type="radio" <?if((isset($_SESSION['active'.$i]) && !$_SESSION['active'.$i]) || !isset($_SESSION['active'.$i])){?>checked<?}?>>
+					<input name="<?echo("active".$gIndex)?>" id="<?echo("active".$gIndex)?>" value="0" type="radio" <?if( isset($currentNoti['active']) && !$currentNoti['active']) {?>checked<?}?>>
 						<label class="no"><?echo _("No");?></label>
 
-					<input name="<?echo("active".$i)?>" id="<?echo("active".$i)?>" value="1" type="radio" <?if((isset($_SESSION['active'.$i]) && $_SESSION['active'.$i])){?>checked<?}?>>
+					<input name="<?echo("active".$gIndex)?>" id="<?echo("active".$gIndex)?>" value="1" type="radio" <?if( isset($currentNoti['active']) && $currentNoti['active'] ){?>checked<?}?>>
 						<label class="yes"><?echo _("Yes");?></label>
 
 						<span></span>

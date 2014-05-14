@@ -73,17 +73,24 @@
 		$_SESSION["message_flag"] = "0";
 		if(!empty($dataJSON))
 		{
-			$index = 1;
-			if (count($dataJSON) < 1  ){
+			$deliveryMsgs = array();	
+ 			if (count($dataJSON) < 1  ){
 				$_SESSION["message_flag"] = "0";
 			}else{
-				foreach ( $dataJSON as $row_data ){
-					$_SESSION["msg".$index."_id"] = $row_data['id'];
-					$_SESSION["name".$index] = $row_data['name'];
-					$_SESSION["content".$index] = $row_data['content'];
-					$_SESSION["active".$index] = $row_data['active'];
-					$index++;
+				foreach ($dataJSON as $row_data ){
+					
+					$tempArray = array(
+							"id" => $row_data['id'],
+							"name"=> $row_data['name'],
+							"content" => $row_data['content'],
+							"active" => $row_data['active']	
+					);					
+					if (!isset($deliveryMsgs[$row_data["type"]]))
+						$deliveryMsgs[$row_data["type"]] = array();
+					
+					array_push($deliveryMsgs[$row_data["type"]],$tempArray);
 				}
+				$_SESSION["delivery_msgs"] = $deliveryMsgs;
 				$_SESSION["message_flag"] = "1";
 			}
 		}

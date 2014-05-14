@@ -122,18 +122,22 @@
 	protect($vCurrency);
 
 
+	$id = array();
 	$name = array();
 	$content = array();
 	$active = array();
-	for ($ind = 1; $ind < 7; $ind ++ ){
-		$name[$ind - 1] = $_POST["shortName".$ind];
-		protect($name[$ind - 1] );
+	for ($ind = 0; $ind < 6; $ind ++ ){
+		$id[$ind] = $_POST["custNotifId".$ind];
+		protect($id[$ind] );
 
-		$content[$ind - 1] = $_POST["cusNotif".$ind];
-		protect($content[$ind - 1] );
+		$name[$ind] = $_POST["shortName".$ind];
+		protect($name[$ind] );
 
-		$active[$ind - 1] = $_POST["active".$ind];
-		protect($active[$ind - 1] );
+		$content[$ind] = $_POST["cusNotif".$ind];
+		protect($content[$ind] );
+
+		$active[$ind] = $_POST["active".$ind];
+		protect($active[$ind] );
 	}
 	
 
@@ -205,19 +209,26 @@
 		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
 
 		// save message
-		for ($ind = 1; $ind < 7; $ind++ ){
+		for ($ind = 0; $ind < 6; $ind++ ){
 			$data = array();
-			$data['name'] = $name[$ind - 1];
-			$data['content'] = $content[$ind - 1];
-			$data['active'] = $active[$ind - 1];
-			if ($ind < 4)
+			$data['name'] = $name[$ind];
+			$data['content'] = $content[$ind];
+			$data['active'] = $active[$ind];
+				
+			if ($ind < 3)
 				$data['type'] = "PUSH_NOTIFY";
 			else
-				$data['type'] = "PUSH_REJECT";
+				$data['type'] = "PUSH_REJECT";	
 
-			$jsonData = json_encode($data );
-			if ($_SESSION["message_flag"] == 1 ){
-				$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$_SESSION['msg'.$ind.'_id'], $jsonData, $apiAuth);
+			$jsonData = json_encode($data);
+
+			if ($data['name'] == "" && $data['content'] == ""){										
+				if (isset($id[$ind]) && $id[$ind]) {		
+					$curlResult = callAPI("DELETE", $apiURL."venues/".$_SESSION['venue_id']."/messages/".$id[$ind], false, $apiAuth);												
+				}
+			}
+			else if (isset($id[$ind]) && $id[$ind]) {
+				$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$id[$ind], $jsonData, $apiAuth);
 			}else{
 				$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
 			}

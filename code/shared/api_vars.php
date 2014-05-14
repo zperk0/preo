@@ -18,20 +18,34 @@
 	//dont forget to change in both places if these strings change
 
 	$deliveryMessages = array(
-		"notifications" => array (
-			"content1" =>  _("Your order is running 15 mins late"),
-			"name1" => _("Late Order"),
-			"content2" => _("Your order is on its way"),
-			"name2" => _("En-route"),
-			"content3" => _("There is a problem with your order. Please call us"),
-			"name3" => _("Call us")
-		), "reject" => array(
-			"content4" => _("Your address is out of our delivery zone"),
-			"name4" => _("Out of zone"),
-			"content5" => _("Sorry, that item is out of stock"),
-			"name5" => _("Out of stock"),
-			"content6" => _("Sorry, Your order has been rejected. Please call us"),
-			"name6" => _("Call us")
+		"PUSH_NOTIFY" => array (			
+			0 => array (
+				"content" =>  _("Your order is running 15 mins late"),
+				"name" => _("Late Order")
+			), 
+			1 => array (
+				"content" => _("Your order is on its way"),
+				"name" => _("En-route")
+			),
+			2 => array (
+				"content" => _("There is a problem with your order. Please call us"),
+				"name" => _("Call us")
+			)
+							
+		), 
+		"PUSH_REJECT" => array(
+			0 => array (
+				"content" => _("Your address is out of our delivery zone"),
+				"name" => _("Out of zone")
+			), 
+			1 => array (
+				"content" => _("Sorry, that item is out of stock"),
+				"name" => _("Out of stock"),
+			),
+			2 => array (
+				"content" => _("Sorry, Your order has been rejected. Please call us"),
+				"name" => _("Call us")
+			)								
 		)
 	);
 		
