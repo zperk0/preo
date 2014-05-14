@@ -873,8 +873,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	box-shadow: none;
 	-webkit-box-shadow:none;
 	-moz-box-shadow:none;
-	font-size:110% !important;
-	margin-bottom:10px;
+	font-size:110% !important;	
 }
 #advanced-setting .switch{
 	margin-top:6px;

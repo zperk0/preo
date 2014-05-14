@@ -21,30 +21,36 @@
 		"PUSH_NOTIFY" => array (			
 			0 => array (
 				"content" =>  _("Your order is running 15 mins late"),
-				"name" => _("Late Order")
+				"name" => _("Late Order"),
+				"active" => 0
 			), 
 			1 => array (
 				"content" => _("Your order is on its way"),
-				"name" => _("En-route")
+				"name" => _("En-route"),
+				"active" => 0
 			),
 			2 => array (
 				"content" => _("There is a problem with your order. Please call us"),
-				"name" => _("Call us")
+				"name" => _("Call us"),
+				"active" => 0
 			)
 							
 		), 
 		"PUSH_REJECT" => array(
 			0 => array (
 				"content" => _("Your address is out of our delivery zone"),
-				"name" => _("Out of zone")
+				"name" => _("Out of zone"),
+				"active" => 0
 			), 
 			1 => array (
 				"content" => _("Sorry, that item is out of stock"),
 				"name" => _("Out of stock"),
+				"active" => 0
 			),
 			2 => array (
 				"content" => _("Sorry, Your order has been rejected. Please call us"),
-				"name" => _("Call us")
+				"name" => _("Call us"),
+				"active" => 0
 			)								
 		)
 	);

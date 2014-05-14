@@ -208,31 +208,7 @@
 		
 		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
 
-		// save message
-		for ($ind = 0; $ind < 6; $ind++ ){
-			$data = array();
-			$data['name'] = $name[$ind];
-			$data['content'] = $content[$ind];
-			$data['active'] = $active[$ind];
-				
-			if ($ind < 3)
-				$data['type'] = "PUSH_NOTIFY";
-			else
-				$data['type'] = "PUSH_REJECT";	
-
-			$jsonData = json_encode($data);
-
-			if ($data['name'] == "" && $data['content'] == ""){										
-				if (isset($id[$ind]) && $id[$ind]) {		
-					$curlResult = callAPI("DELETE", $apiURL."venues/".$_SESSION['venue_id']."/messages/".$id[$ind], false, $apiAuth);												
-				}
-			}
-			else if (isset($id[$ind]) && $id[$ind]) {
-				$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$id[$ind], $jsonData, $apiAuth);
-			}else{
-				$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
-			}
-		}
+		
 							
 	}
 	else
@@ -274,13 +250,41 @@
 		//Finally add outlet
 		$data = array();
 		$data['venueId'] 	= $result['id'];
+		$_SESSION['venue_id'] = $data['venueId'];
 		$data['name'] 		= $vName;
 		$data['latitude'] 	= $vLat;
 		$data['longitude'] 	= $vLong;
 		
 		$jsonData = json_encode($data);
 		$curlResult = callAPI('POST', $apiURL."outlets", $jsonData, $apiAuth); 
+
 	}
+
+	// save messages
+		for ($ind = 0; $ind < 6; $ind++ ){
+			$data = array();
+			$data['name'] = $name[$ind];
+			$data['content'] = $content[$ind];
+			$data['active'] = $active[$ind];
+				
+			if ($ind < 3)
+				$data['type'] = "PUSH_NOTIFY";
+			else
+				$data['type'] = "PUSH_REJECT";	
+
+			$jsonData = json_encode($data);
+
+			if ($data['name'] == "" && $data['content'] == ""){										
+				if (isset($id[$ind]) && $id[$ind]) {		
+					$curlResult = callAPI("DELETE", $apiURL."venues/".$_SESSION['venue_id']."/messages/".$id[$ind], false, $apiAuth);												
+				}
+			}
+			else if (isset($id[$ind]) && $id[$ind]) {
+				$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$id[$ind], $jsonData, $apiAuth);
+			}else{
+				$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
+			}
+		}
 	
 	echo $curlResult; //sending a JSON via ajax
 ?>

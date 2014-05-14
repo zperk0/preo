@@ -166,16 +166,8 @@
 
 		//regardless of what we had before, pre set the initial values of the messages as the placeholders
 		//FIXME strings defined in API_vars
-		$init = 1;
-		for ($i = $init; $i < (count($deliveryMessages["notifications"])/2)+$init ; $i++ ){		
-			$_SESSION["content".$i] = $deliveryMessages["notifications"]["content".$i];
-			$_SESSION["name".$i] =  $deliveryMessages["notifications"]["name".$i];
-		}
-		$init += (count($deliveryMessages["reject"])/2);
-		for ($i = $init; $i < (count($deliveryMessages["reject"])/2)+$init ; $i++ ){		
-			$_SESSION["content".$i] = $deliveryMessages["reject"]["content".$i];
-			$_SESSION["name".$i] =  $deliveryMessages["reject"]["name".$i];
-		}
+		$deliveryMsgs = $deliveryMessages;
+		
 
 	}
 	
