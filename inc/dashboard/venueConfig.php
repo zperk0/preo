@@ -480,7 +480,7 @@
 					<input type="text" class="" name="dChargeBelow" id="dChargeBelow" placeholder='0.00' tabindex="17" value="<?if(isset($_SESSION['delivery_charge_below'])) echo $_SESSION['delivery_charge_below'];?>">
 				</div>
 				<div class="small-15  columns">
-					<label><? echo _("Default lead time for delivery(mins)")?></label>
+					<label><? echo _("Default lead time for delivery (mins)")?></label>
 					<input type="text" class="" name="dLeadTime" id="dLeadTime" placeholder='0' tabindex="18" value="<?if(isset($_SESSION['delivery_lead_time'])) echo $_SESSION['delivery_lead_time'];?>">
 				</div>
 				<div class="small-15 columns">
