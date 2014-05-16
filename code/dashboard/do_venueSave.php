@@ -1,7 +1,10 @@
 <?php session_start(); //start the session so this file can access $_SESSION vars.
 
 	function formatPercentage($num){
+		if (isset($num) && $num)
 			return $num/100;
+		else
+			return $num;
 	}
 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/protect_input.php'); //input protection functions to keep malicious input at bay

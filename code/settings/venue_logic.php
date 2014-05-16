@@ -4,8 +4,9 @@
 	// error_reporting(E_ALL ^ E_NOTICE);
 
  	function formatDisplayPercentage($num){
- 	if (num > 1) 		
- 		return num;
+
+ 	if ($num > 1 || !((isset($num) && $num))) 		
+ 		return $num;
  	else 
 		return floor($num * 100);
 	
