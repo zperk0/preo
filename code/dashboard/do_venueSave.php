@@ -1,5 +1,9 @@
 <?php session_start(); //start the session so this file can access $_SESSION vars.
 
+	function formatPercentage($num){
+			return $num/100;
+	}
+
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/protect_input.php'); //input protection functions to keep malicious input at bay
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
@@ -55,13 +59,13 @@
 	$dLeadTime = $_POST["dLeadTime"];
 	protect($dLeadTime );
 	
-	$vDeliveryDiscount = $_POST["vDeliveryDiscount"];
+	$vDeliveryDiscount = formatPercentage($_POST["vDeliveryDiscount"]);
 	protect($vDeliveryDiscount );
 
 	$contactInfo = $_POST["contactInfo"];
 	protect($contactInfo );
 	
-	$vDiscount = $_POST['vDiscount'];
+	$vDiscount = formatPercentage($_POST['vDiscount']);
 	protect($vDiscount);
 		
 	$vDelivery = $_POST["vDelivery"];
