@@ -159,6 +159,9 @@ RewriteRule ^.*$ /code/dashboard/do_mdDelete.php [L]
 RewriteCond %{REQUEST_URI} ^/saveMealDeal$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_mdConfig.php [L]
 
+RewriteCond %{REQUEST_URI} ^/deliverySettings$ [NC]
+RewriteRule ^.*$ /code/settings/delivery/delivery-view.php [L]
+
 RewriteCond %{REQUEST_URI} ^/saveProfile$ [NC]
 RewriteRule ^.*$ /code/settings/do_settings.php [L]
 
