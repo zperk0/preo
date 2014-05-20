@@ -361,7 +361,7 @@ ul.custom-inline-list {
 	background-image: url("../img/facebook_connect.jpg");
 	background-repeat:no-repeat;
 	height: 47px;
-	width: 266px;
+	width: 291px;
 	margin-bottom: 14px;
 	margin-left: 24px;
 	font-weight: bold;
@@ -1512,7 +1512,7 @@ footer.dashboardFooter div{
 
 .openDayContainer {
 	border-bottom: 8px solid #3AA2DC;
-	width: 470px !important;
+	display:inline-block;
 }
 
 .openingHoursDiv h4{
@@ -1768,6 +1768,7 @@ input[name^='iMD']:-ms-input-placeholder { /* Internet Explorer 10+ */
 	height: 20px;
 	z-index: 2001;
 	left: -48px;
+
 }
 
 #mealDealConfigForm .modifierRow .showAChevy i{
@@ -1776,6 +1777,7 @@ input[name^='iMD']:-ms-input-placeholder { /* Internet Explorer 10+ */
 
 #mealDealConfigForm .optionTR{
 	margin-top: 10px;
+	width:25%;
 }
 
 #mealDealConfigForm .headerTable tr {

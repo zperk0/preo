@@ -30,6 +30,11 @@ switch ($lang)
 		$locale = 'russian';
 		$strings = 'ru_RU';
 		break;
+
+	case 'fr':
+		$locale = 'french';
+		$strings = 'fr_FR';
+		break;
 	
 	default:
 		$locale = 'english';
