@@ -1,6 +1,9 @@
 <?php //works on Linux and Windows!
 
-$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
+if (isset($_GET['lang']) && $_GET['lang'])
+	$_SESSION['lang'] = $_GET['lang'];
+
+$lang = (isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en');
 
 //$lang="de"; //debug or force german
 
@@ -29,6 +32,11 @@ switch ($lang)
 	case 'ru':
 		$locale = 'russian';
 		$strings = 'ru_RU';
+		break;
+
+	case 'fr':
+		$locale = 'french';
+		$strings = 'fr_FR';
 		break;
 	
 	default:

@@ -52,7 +52,16 @@
 		<?}?>
 		
 		<!-- FONT -->
-		<link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/cc2cde80-6121-4c1b-bebb-f133e0013559.css"/>
+		<script type="text/javascript">
+			var MTIProjectId='5cd06de2-378b-4913-a6e0-3b837629310d';
+			(function() {
+				var mtiTracking = document.createElement('script');
+				mtiTracking.type='text/javascript';
+				mtiTracking.async='true';
+				mtiTracking.src=('https:'==document.location.protocol?'https:':'http:')+'//fast.fonts.net/t/trackingCode.js';
+				(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+			})();
+		</script>
 		
 		<!-- Favicons -->
 		<link rel="apple-touch-icon" 	href="<?echo $_SESSION['path']?>/img/apple-touch-icon.png"	type="image/x-icon" >

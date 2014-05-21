@@ -5,6 +5,7 @@
 					<ul id="langDrop" class="f-dropdown">
 						<li><a href="#" class="changeLang" data-new-lang="en"><? echo _("English");?></a></li>
 						<li><a href="#" class="changeLang" data-new-lang="de"><? echo _("German");?></a></li>
+						<li><a href="#" class="changeLang" data-new-lang="fr"><? echo _("French");?></a></li>
 					</ul>
 				</div>
 				<div class="large-offset-4 large-2 small-3 columns left">
