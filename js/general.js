@@ -314,7 +314,7 @@ $(document).ready(function() {
 		
 		//create cool pins
 		pinColor = "2288C1";
-		pinImage = new google.maps.MarkerImage("//chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+		pinImage = new google.maps.MarkerImage("//chart.googleapis.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
 		new google.maps.Size(21, 34),
 		new google.maps.Point(0,0),
 		new google.maps.Point(10, 34));
