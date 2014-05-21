@@ -61,7 +61,8 @@ module.exports = function(grunt) {
         "  require_once('lang.php');"+ //need this for multi-language support
         "?>\n\n"+
           "function _tr(str){\n"+
-          "\treturn Dictionary[str];\n"+
+          "\tvar trans=Dictionary[str];\n"+
+          "\treturn trans !==undefined ? trans : str;\n"+
           "} \n"+
           "\n"+
           "var Dictionary = { \n";

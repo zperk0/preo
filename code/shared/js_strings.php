@@ -1,7 +1,8 @@
 <?php session_start();  require_once('lang.php');?>
 
 function _tr(str){
-	return Dictionary[str];
+	var trans=Dictionary[str];
+	return trans !==undefined ? trans : str;
 } 
 
 var Dictionary = { 
