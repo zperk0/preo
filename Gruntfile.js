@@ -72,7 +72,7 @@ module.exports = function(grunt) {
         var result;
         var usedStrings ={};        
         while ( (result = regex.exec(data)) ) {                                        
-              
+  
               var str =result[0].slice(5,-2);              
               //var tmpstr = str.replace(/'/g, "\\'")
               //tmpstr = tmpstr.replace(/"/g, '\\"')

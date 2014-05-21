@@ -584,12 +584,11 @@ label.appTop {
 	position: relative;
 	z-index: 4;
 	width: 222px;
-	max-height: 164px;
-	min-height: 70px;
+	max-height: 164px;	
 	word-break:normal;
 	overflow: hidden;
 	text-align: left;
-	font-size: 31px;
+	font-size: 30px;
 	line-height: 32px;
 	font-weight: bold !important;
 	letter-spacing: -1px;
