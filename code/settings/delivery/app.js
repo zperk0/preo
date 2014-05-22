@@ -1,7 +1,7 @@
 //delivery
 
-angular.module('app', [
+angular.module('delivery', [
   'ngResource',
-  'app.resources',
-  'app.controllers' 
+  'delivery.resources',
+  'delivery.controllers' 
 ]);

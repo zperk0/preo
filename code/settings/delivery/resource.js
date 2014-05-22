@@ -1,4 +1,4 @@
-angular.module('app.resources',['ngResource']).
+angular.module('delivery.resources',['ngResource']).
   factory('Resources', function($resource) {
     
     var Venue = $resource('/api/venues/:id',{id:"@id"}, {});

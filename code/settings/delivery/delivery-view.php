@@ -43,7 +43,7 @@
 
 
 </head>
-<body ng-app="app" ng-controller="driversController">
+<body ng-app="delivery" ng-controller="deliveryController">
   <form id="delivery-form" ng-submit="processForm()"> 
   <div class='row'> <h1>Delivery Details</h1></div>
   <div class='row'>

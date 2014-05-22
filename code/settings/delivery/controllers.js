@@ -1,6 +1,6 @@
 
-angular.module('app.controllers',[]).
-  controller('driversController', function($scope,$http,Resources) {
+angular.module('delivery.controllers',[]).
+  controller('deliveryController', function($scope,$http,Resources) {
   	$scope.selected =1;
     $scope.nameFilter = null;
     
