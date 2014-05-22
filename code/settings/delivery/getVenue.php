@@ -34,16 +34,11 @@ else {
 $ret = 1;
 switch($action){
 	case "message":		
-
 		$messages =  json_decode(callAPI('GET', $apiURL."venues/$venueId/messages", false, $apiAuth));		
 		$venue["messages"] = $messages;
-//		$ret = 2;
-//		$venue["messages"] = "messages";
 	case "settings":
 		$settings =  json_decode(callAPI('GET', $apiURL."venues/$venueId/settings", false, $apiAuth));  
 		$venue["settings"] = $settings;
-//		$ret = 3;
-//		$venue["settings"] = "settings";
 	break;	
 	default: 	
 	$ret = 4;
