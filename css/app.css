@@ -727,7 +727,7 @@ h1 i.icon-question-sign, h4 i.icon-question-sign {
 }
 
 .menuTable .menuField:focus, .eventTable .eventField:focus, .userTable .userField:focus, .outletTable .outletField:focus, .mdTable .mdField:focus,
-.mdTable .mdTDTPrice input:focus, #advanced-setting input {
+.mdTable .mdTDTPrice input:focus, #advanced-setting input, .delivery-tab-content input {
 	background: #F1F0F2 !important;
 }
 
@@ -827,7 +827,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .menuTable .menuField, .eventTable .eventField, .userTable .userField, .outletTable .outletField, .mdTable .mdField,
-#advanced-setting input {
+#advanced-setting input,.delivery-tab-content input {
 	font-family: HelveticaNeueW01-45Ligh !important;
 	color: #48535D !important;
 	font-size: inherit !important;
@@ -853,7 +853,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .menuTable .menuTDName input, .eventTable .eventTDName input, .userTable .userTDName input, .outletTable .outletTDName input, .mdTable .mdTDName input,
-#advanced-setting input[type=text] {
+#advanced-setting input[type=text],.delivery-tab-content input {
 	font-weight: bold !important;
 }
 
@@ -869,7 +869,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 	margin-bottom:10px;
 }
 
-#advanced-setting input[type=text]{
+#advanced-setting input[type=text],.delivery-tab-content input{
 	box-shadow: none;
 	-webkit-box-shadow:none;
 	-moz-box-shadow:none;
@@ -1885,22 +1885,6 @@ div.switch input:last-of-type+span+label{
 
 
 
-.switch .no {
-	visibility: collapse;
-}
-.switch.off .no {
-	visibility: visible;
-}
-.switch input:disabled + span + label{
-	color: #aaa !important;	
-}
-.switch input:disabled + span + label + span {
-	opacity:0.6;
-}
-
-.switch input:disabled:hover{
-	cursor:default !important;
-}
 
 
 footer .dropdown.button:before{
@@ -1928,3 +1912,6 @@ span .currencySymbol{
 	font-style: inherit !important; 	
 }
 
+.delivery-tab-content label{
+
+}

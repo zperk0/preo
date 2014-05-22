@@ -14,8 +14,7 @@ angular.module('delivery.resources',['ngResource']).
         put:{
           method: "PUT"
         }
-    });
-    
+    });    
     
     return {
         Venue:Venue,
