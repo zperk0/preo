@@ -3760,8 +3760,7 @@ $(document).ready(function() {
 									  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 									});
 									
-									//alert(data);
-									
+									//alert(data);									
 									return false;
 								}
 									

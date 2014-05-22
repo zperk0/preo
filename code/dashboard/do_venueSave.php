@@ -194,16 +194,9 @@
 		$data['deliveryLeadTime']	= $dLeadTime;
 		$data['deliveryDiscount']   = $vDeliveryDiscount;
 		$data['pickupDiscount']   	= $vDiscount;
-		$data['orderMin']			= $vOrderMin;
-			
-		
-
-		
-
+		$data['orderMin']			= $vOrderMin;		
 		$data['deliveryPhone']		= $contactInfo;
-
-
-
+		
 		$jsonData = json_encode($data);
 		
 		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);

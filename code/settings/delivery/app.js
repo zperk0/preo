@@ -1,3 +1,5 @@
-angular.module('F1FeederApp', [
-  'F1FeederApp.controllers'
+angular.module('app', [
+  'ngResource',
+  'app.resources',
+  'app.controllers' 
 ]);
