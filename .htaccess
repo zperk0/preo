@@ -186,6 +186,7 @@ RewriteRule ^.*$ /js/data/common-currency.json [L]
 RewriteCond %{REQUEST_URI} ^/venues$ [NC]
 RewriteRule ^.*$ /code/settings/delivery/getVenue.php [L]
 
+RewriteRule ^api\/.*$ proxy.php [L]
 
 RewriteRule ^menus/([^/]*)$ /menuSettings.php?id=$1 [L]
 

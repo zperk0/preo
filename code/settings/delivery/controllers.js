@@ -1,39 +1,45 @@
 
-
 angular.module('app.controllers',[]).
-  controller('driversController', function($scope,$http,Venue) {
-  	$scope.selected =2;
+  controller('driversController', function($scope,$http,Resources) {
+  	$scope.selected =1;
     $scope.nameFilter = null;
+    
+    //get venue object
+    var venue = Resources.Venue.get({id:phpSession.venue_id},function(result){        
+    	$scope.venue = result;    	    	
+    },function(err){ console.log("error",arguments)});   
 
-    Venue.query({action:"message"},function(result){
-            console.log("message",result);
-    	$scope.venue = result;    	
-    	var venueMessages = result.messages;
-        $scope.notifyMessages = [];
-        $scope.rejectMessages = [];
-        angular.forEach(venueMessages,function(msg){
-            if (msg.type == "PUSH_NOTIFY"){
-                msg.type = "ORDER_NOTIFY"
-                $scope.notifyMessages.push(msg);
-            } else {
-                msg.type = "ORDER_REJECT"
-                $scope.rejectMessages.push(msg);
-            }
-        }); 
-        console.log($scope.notifyMessages);
+    var venueSettings = Resources.VenueSettings.get({id:phpSession.venue_id},function(result){        
+        $scope.venueSettings = result;              
+    },function(err){ console.log("error",arguments)});   
+
+    var venueMessages = Resources.VenueMessages.query({venueId:phpSession.venue_id},function(result){        
+        console.log("messages",result);
+        $scope.venueMessages = result;              
     },function(err){ console.log("error",arguments)});   
 
     $scope.processForm = function() {
-    	console.log("processings");
-    
-    	$http({
-	        method  : 'POST',
-	        url     : 'saveDelivery',
-	        data    : $scope.venue 
-	    }).success(function(data) {
-            console.log("data",data);
-            location.reload(); 
+    	console.log("processings");    
+        
+        //FIXME
+        //there's no typestring in the db, if we send this param it crashes
+        //not sure why we're receiving both type and typestring here as they seem to be the same.        
+        var messages = $scope.venueMessages;
+        for (var msg in messages){
+            delete messages[msg]["typeString"];
+        }
+
+        //save updated venue settings
+        venueSettings.$patch({id:phpSession.venue_id},function(){
+            console.log('saved:', arguments)
         });
+
+        angular.forEach(venueMessages,function(message){
+            message.$put({venueId:phpSession.venue_id},function(){
+                console.log('saved:', arguments);
+            })
+
+        });    
 
 	};
 

@@ -15,14 +15,10 @@
   <script src="<?echo $_SESSION['path']?>/bower_components/angular-resource/angular-resource.js"></script>
   <script src="<?echo $_SESSION['path']?>/bower_components/jquery/dist/jquery.min.js"></script>
   <script> 
-    var venueId = 156;    
-    var apiAuth = '<? echo ("PreoDay ".$_SESSION['token']) ?>'; //we need to add "PreoDay ". to user tokens  
-    //we get account id from _SESSION
-    var accountId = <? echo ($_SESSION['account_id']) ?>;
-    var apiUrl = 'http://<? echo $apiURL ?>'
-    //////VENUE////////////////////////////////////////////////////////////////////////////  
-    //query to find venues
-    //  $curlResult = callAPI('GET', $apiURL."venues?accountId=$accountID", false, $apiAuth);
+  //FIXME not sure if this is a problem. How to expose only on controller scope?
+  //expose sesion to get the values we need
+  var phpSession = JSON.parse('<? echo json_encode($_SESSION) ?>') ;
+  console.log("session",phpSession);    
   </script>
   <style>
   .delivery-tabs{    
@@ -40,10 +36,11 @@
   }
 
 
-  </style>
+  </style>  
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/app.js"></script>
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/resource.js"></script>
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/controllers.js"></script>
+
 
 </head>
 <body ng-app="app" ng-controller="driversController">
@@ -58,35 +55,31 @@
 
   <div ng:show="selected == 1" class='delivery-tab-content'>
       <label for='deliveryZone'> <?echo _("Delivery Zone")?>
-        <input type='text' id='deliveryZone' name='deliveryZone' ng-model="venue.settings.deliveryZone"/>
+        <input type='text' id='deliveryZone' name='deliveryZone' ng-model="venueSettings.deliveryZone"/>
       </label>  
       <label for='telephone'> <?echo _("In case of customer queries contact:")?>
-        <input type='text' id='telephone' name='telephone' ng-model="venue.settings.deliveryPhone"/>
+        <input type='text' id='telephone' name='telephone' ng-model="venueSettings.deliveryPhone"/>
       </label>
-      
       <label class='inlineLabel' for='minValueOrder'> <?echo _("Min. value order (£)")?>
-        <input type='text' id='minValueOrder' name='minValueOrder' ng-model="venue.settings.deliveryOrderMin"/>
+        <input type='text' id='minValueOrder' name='minValueOrder' ng-model="venueSettings.deliveryOrderMin"/>
       </label>
       <label class='inlineLabel' for='deliveryCharge'> <?echo _("Delivery charge (£)")?>
-        <input type='text' id='deliveryCharge' name='deliveryCharge' ng-model="venue.settings.deliveryCharge"/>
+        <input type='text' id='deliveryCharge' name='deliveryCharge' ng-model="venueSettings.deliveryCharge"/>
       </label>
       <label class='inlineLabel' for='deliveryChargeBelow'> <?echo _("Free delivery for orders above (£)")?>
-        <input type='text' id='deliveryChargeBelow' name='deliveryChargeBelow' ng-model="venue.settings.deliveryChargeBelow"/>
+        <input type='text' id='deliveryChargeBelow' name='deliveryChargeBelow' ng-model="venueSettings.deliveryChargeBelow"/>
       </label>
       <label class='inlineLabel' for='deliveryLeadTime'> <?echo _("Default lead time for delivery (mins)")?>
-        <input type='text' id='deliveryLeadTime' name='deliveryLeadTime' ng-model="venue.settings.deliveryLeadTime"/>
+        <input type='text' id='deliveryLeadTime' name='deliveryLeadTime' ng-model="venueSettings.deliveryLeadTime"/>
       </label>
       <label class='inlineLabel' for='deliveryDiscount'> <?echo _("Discount offered for delivery orders")?>
-        <input type='text' id='deliveryDiscount' name='deliveryDiscount' ng-model="venue.settings.deliveryDiscount"/>
-      </label>
-      <label class='inlineLabel' for='deliveryDiscount'> <?echo _("Discount offered for delivery orders")?>
-        <input type='text' id='deliveryDiscount' name='deliveryDiscount' ng-model="venue.settings.deliveryDiscount"/>
-      </label>
+        <input type='text' id='deliveryDiscount' name='deliveryDiscount' ng-model="venueSettings.deliveryDiscount"/>
+      </label>      
   </div>
-  <div ng:show="selected == 2">
 
-      <div class='row' ng-repeat="message in venue.messages" >
-      <div ng-if='message.type == "ORDER_NOTIFY"'>
+  <div ng:show="selected == 2">
+      <div class='row' ng-repeat="message in venueMessages" >
+      <div ng-if='message.type == "PUSH_NOTIFY"'>
         <label class='inlineLabel' for='deliveryDiscount'>
           <input type='text' id='deliveryDiscount' name='deliveryDiscount' ng-model="message.content"/>
           <input type='text' id='deliveryDiscount' name='deliveryDiscount' ng-model="message.name"/>
@@ -105,8 +98,8 @@
   </div>
 
   <div ng:show="selected == 3">
-       <div class='row' ng-repeat="message in venue.messages" >
-       <div ng-if='message.type == "ORDER_REJECT"'>
+       <div class='row' ng-repeat="message in venueMessages" >
+       <div ng-if='message.type == "PUSH_REJECT"'>
         <label class='inlineLabel' for='deliveryDiscount'>
           <input type='text' id='deliveryDiscount' name='deliveryDiscount' ng-model="message.content"/>
           <input type='text' id='deliveryDiscount' name='deliveryDiscount' ng-model="message.name"/>
