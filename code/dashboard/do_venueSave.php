@@ -1,5 +1,13 @@
 <?php session_start(); //start the session so this file can access $_SESSION vars.
 
+	function formatPercentage($num){
+		if (isset($num) && $num)
+ 			return $num/100;
+		else
+			return $num;
+	}
+
+
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/protect_input.php'); //input protection functions to keep malicious input at bay
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
@@ -39,75 +47,12 @@
 	
 	$vCode = $_POST['vCode'];
 	protect($vCode);
-
-	$dZone = $_POST['dZone'];
-	protect($dZone);
-
-	$dMinVal = $_POST["dMinVal"];
-	protect($dMinVal );
-
-	$dCharge = $_POST["dCharge"];
-	protect($dCharge );
-
-	$dChargeBelow = $_POST["dChargeBelow"];
-	protect($dChargeBelow );
-
-	$dLeadTime = $_POST["dLeadTime"];
-	protect($dLeadTime );
 	
-	$vDeliveryDiscount = $_POST["vDeliveryDiscount"];
-	protect($vDeliveryDiscount );
-
-	$contactInfo = $_POST["contactInfo"];
-	protect($contactInfo );
-	
-	$vDiscount = $_POST['vDiscount'];
+	$vDiscount = formatPercentage($_POST['vDiscount']);
 	protect($vDiscount);
 		
 	$vDelivery = $_POST["vDelivery"];
-	protect($vDelivery);
-
-	$cusNotif1 = $_POST["cusNotif1"];
-	protect($cusNotif1);
-	$cusNotif2 = $_POST["cusNotif3"];
-	protect($cusNotif2);
-	$cusNotif3 = $_POST["cusNotif3"];
-	protect($cusNotif3);
-	$cusNotif4 = $_POST["cusNotif4"];
-	protect($cusNotif4);
-	$cusNotif5 = $_POST["cusNotif5"];
-	protect($cusNotif5);
-	$cusNotif6 = $_POST["cusNotif6"];
-	protect($cusNotif6);
-	
-	$shortName1 = $_POST["shortName1"];
-	protect($shortName1);
-	$shortName2 = $_POST["shortName2"];
-	protect($shortName2);
-	$shortName3 = $_POST["shortName3"];
-	protect($shortName3);	
-	$shortName4 = $_POST["shortName4"];
-	protect($shortName1);
-	$shortName5 = $_POST["shortName5"];
-	protect($shortName2);
-	$shortName6 = $_POST["shortName6"];
-	protect($shortName3);	
-	
-	
-
-	$active1 = $_POST["active1"];
-	protect($active1);
-	$active2 = $_POST["active2"];
-	protect($active2);
-	$active3 = $_POST["active3"];
-	protect($active3);	
-	$active4 = $_POST["active4"];
-	protect($active4);
-	$active5 = $_POST["active5"];
-	protect($active5);
-	$active6 = $_POST["active6"];
-	protect($active6);	
-	
+	protect($vDelivery);	
 
 	$language = $_POST['language'];
 	protect($language);
@@ -186,21 +131,12 @@
 		
 		$data = array();
 		$data['leadTime']			= $leadtime;
-		$data['deliveryOrderMin']	= $dMinVal;
-		$data['deliveryCharge']	    = $dCharge;	
-		$data['deliveryChargeBelow']= $dChargeBelow;
-		$data['collectInterval']	= $cDuration;
-		$data['deliveryZone']		= $dZone;					
-		$data['deliveryLeadTime']	= $dLeadTime;
-		$data['deliveryDiscount']   = $vDeliveryDiscount;
 		$data['pickupDiscount']   	= $vDiscount;
-		$data['orderMin']			= $vOrderMin;		
-		$data['deliveryPhone']		= $contactInfo;
+		$data['orderMin']			= $vOrderMin;
 		
 		$jsonData = json_encode($data);
 		
 		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
-
 		
 							
 	}
@@ -212,13 +148,6 @@
 		
 		$data = array();
 		$data['leadTime']			= $leadtime;
-		$data['deliveryOrderMin']	= $dMinVal;
-		$data['deliveryCharge']	    = $dCharge;	
-		$data['deliveryChargeBelow']= $dChargeBelow;
-		$data['collectInterval']	= $cDuration;
-		$data['deliveryZone']		= $dZone;					
-		$data['deliveryLeadTime']	= $dLeadTime;
-		$data['deliveryDiscount']   = $vDeliveryDiscount;
 		$data['pickupDiscount']   	= $vDiscount;
 		$data['orderMin']			= $vOrderMin;
 		
@@ -253,31 +182,7 @@
 
 	}
 
-	// save messages
-		for ($ind = 0; $ind < 6; $ind++ ){
-			$data = array();
-			$data['name'] = $name[$ind];
-			$data['content'] = $content[$ind];
-			$data['active'] = $active[$ind];
-				
-			if ($ind < 3)
-				$data['type'] = "PUSH_NOTIFY";
-			else
-				$data['type'] = "PUSH_REJECT";	
 
-			$jsonData = json_encode($data);
-
-			if ($data['name'] == "" && $data['content'] == ""){										
-				if (isset($id[$ind]) && $id[$ind]) {		
-					$curlResult = callAPI("DELETE", $apiURL."venues/".$_SESSION['venue_id']."/messages/".$id[$ind], false, $apiAuth);												
-				}
-			}
-			else if (isset($id[$ind]) && $id[$ind]) {
-				$curlResult = callAPI('PUT', $apiURL."venues/".$_SESSION['venue_id']."/messages/".$id[$ind], $jsonData, $apiAuth);
-			}else{
-				$curlResult = callAPI('POST', $apiURL."venues/".$_SESSION['venue_id']."/messages", $jsonData, $apiAuth);
-			}
-		}
 	
 	echo $curlResult; //sending a JSON via ajax
 ?>

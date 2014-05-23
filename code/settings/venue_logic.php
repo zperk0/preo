@@ -1,5 +1,13 @@
 <?php
 
+
+	
+ 	function formatDisplayPercentage($num){
+ 	if ($num > 1 || !((isset($num) && $num)))
+ 		return $num;
+ 	else 
+		return floor($num * 100);	
+	}
  						 
 	ini_set('display_errors', 1);
 	error_reporting(E_ALL ^ E_NOTICE);
@@ -55,45 +63,10 @@
 		{
 			$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];
 			$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];		
-			$_SESSION['delivery_zone'] 			= $dataJSON["deliveryZone"];
-			$_SESSION['venue_order_min']		= $dataJSON["orderMin"];
-			$_SESSION['delivery_charge'] 		= $dataJSON["deliveryCharge"];
-			$_SESSION['delivery_charge_below']	= $dataJSON["deliveryChargeBelow"];
-			$_SESSION['delivery_order_min'] 	= $dataJSON["deliveryOrderMin"];
-			$_SESSION['delivery_lead_time'] 	= $dataJSON["deliveryLeadTime"];
-			$_SESSION['delivery_discount'] 		= $dataJSON["deliveryDiscount"];
-			$_SESSION['delivery_phone'] 		= $dataJSON["deliveryPhone"];
-			$_SESSION['venue_discount'] 		= $dataJSON["pickupDiscount"];
+			$_SESSION['venue_order_min']		= $dataJSON["orderMin"];			
+			$_SESSION['venue_discount'] 		= formatDisplayPercentage($dataJSON["pickupDiscount"]);
 		}
-		
-		// get messages
-		$curlResult = callAPI('GET', $apiURL."venues/$venueID/messages", false, $apiAuth );
-		$dataJSON = json_decode($curlResult,true);
-
-		$_SESSION["message_flag"] = "0";
-		if(!empty($dataJSON))
-		{
-			$deliveryMsgs = array();	
- 			if (count($dataJSON) < 1  ){
-				$_SESSION["message_flag"] = "0";
-			}else{
-				foreach ($dataJSON as $row_data ){
-					
-					$tempArray = array(
-							"id" => $row_data['id'],
-							"name"=> $row_data['name'],
-							"content" => $row_data['content'],
-							"active" => $row_data['active']	
-					);					
-					if (!isset($deliveryMsgs[$row_data["type"]]))
-						$deliveryMsgs[$row_data["type"]] = array();
-
-					array_push($deliveryMsgs[$row_data["type"]],$tempArray);
-				}
-				$_SESSION["delivery_msgs"] = $deliveryMsgs;
-				$_SESSION["message_flag"] = "1";
-			}
-		}
+				
 
 		$redirectFlag = 1;
 	}
