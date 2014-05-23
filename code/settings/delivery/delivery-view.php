@@ -215,18 +215,17 @@
       </div>
       <div class='row messageRow' ng-repeat="message in messages" >      
        <div ng-if='message.type == "PUSH_NOTIFY"'>      
-          <div class='messageCol-1' >
-            <input class='' type='text' ng-change="validateMessage(message)"  ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"' required/>
-            <small class="error"><?echo _("Please type a notification (max 200chars)");?></small>
+          <div class='messageCol-1' ng-class="{'error': validateMessage(message) }">
+            <input class='' type='text' ng-change="validateActive(message)"  ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"' required/>
+            <small class="error" ng-show="validateMessage(message)" ><?echo _("Please enter both the notification and a short name.");?></small>
           </div>
-          <div class='messageCol-2'>
-              <input class='' type='text' ng-change="validateMessage(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"' required/>
-              <small class="error"><?echo _("Please type a name (max 100chars)");?></small>
+          <div class='messageCol-2' ng-class="{'error': validateMessage(message)">
+              <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"' required/>
           </div>
-          <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':message.content==='' || message.name==='' }" > 
-          <input  value="0" type="radio" ng-model="message.active" ng-disabled="message.content==='' || message.name===''" tabindex=-1>
+          <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':!validateActive(message)}" > 
+          <input  value="0" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
             <label class="no">No</label>
-          <input value="1" type="radio" ng-model="message.active" ng-disabled="message.content==='' || message.name===''" tabindex=-1>
+          <input value="1" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
             <label class="yes">Yes</label>
             <span></span>
           </div>
@@ -236,26 +235,32 @@
   </div>
 
   <div ng:show="selected == 3" class='delivery-tab-content'>
-  <div class="row messageRow messageRowHeader">
+     <div class="row messageRow messageRowHeader">
           <div class='messageCol-1'>Preset order rejection notifications, sent by email and push alert</div>
           <div class='messageCol-2'>Short name</div>
           <div class='messageCol-3'>Active?</div>
       </div>
-       <div class='row messageRow' ng-repeat="message in messages" >                
+      <div class='row messageRow' ng-repeat="message in messages" >      
        <div ng-if='message.type == "PUSH_REJECT"'>      
-          <input class='messageCol-1' type='text' ng-change="validateMessage(message)" ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"' required/>
-          <input class='messageCol-2' type='text' ng-change="validateMessage(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"' required  />          
-          <div class="switch messageCol-3" ng-class="{'off': message.active==0}" > 
-            <input  value="0" type="radio" ng-model="message.active" ng-disabled="message.content==='' || message.name===''" tabindex=-1>
-              <label class="no">No</label>
-            <input value="1" type="radio" ng-model="message.active" ng-disabled="message.content==='' || message.name===''" tabindex=-1>
-              <label class="yes">Yes</label>
-              <span></span>
-            </div>          
+
+          <div class='messageCol-1' ng-class="{'error': validateMessage(message) }">
+            <input class='' type='text' ng-change="validateActive(message)"  ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"' required/>
+            <small class="error" ng-show="validateMessage(message)" ><?echo _("Please enter a message and a short name or remove this notification.");?></small>
           </div>
+          <div class='messageCol-2' ng-class="{'error': validateMessage(message)">
+              <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"' required/>
+          </div>
+          <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':!validateActive(message)}" > 
+          <input  value="0" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
+            <label class="no">No</label>
+          <input value="1" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
+            <label class="yes">Yes</label>
+            <span></span>
+          </div>
+          
         </div>
-  </div>  
-  
+      </div>
+  </div>
     <div>
       <button id="deliverySave" type="submit" ><?echo _("SAVE CHANGES");?></button>
       <button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>

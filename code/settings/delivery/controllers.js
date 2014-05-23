@@ -1,7 +1,7 @@
 
 angular.module('delivery.controllers',[]).
   controller('deliveryController', function($scope,$http,Resources,$q) {
-  	$scope.selected =1;    
+  	$scope.selected =2;    
     $scope.triedSubmit = false;
     var placeholderMessages = {
         notify : [
@@ -97,14 +97,20 @@ angular.module('delivery.controllers',[]).
     },function(err){ console.log("error",arguments)});   
 
     $scope.validateMessage = function(message){
-        console.log('validating message:',message)
+        return message.content === undefined ? !(message.name === undefined) : message.name === undefined;
+    }
+
+    $scope.validateActive = function(message){        
         if (message && message.name && message.content){
             if (message.name.trim() === "" && message.content.trim() === ""){
                 message.active = 0;
+                console.log('false1')
                 return false;
             }
+            console.log('true')
             return true;
         }
+        console.log('false2')
         message.active = 0;
         return false;
     }
