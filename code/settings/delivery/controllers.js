@@ -1,7 +1,7 @@
 
 angular.module('delivery.controllers',[]).
   controller('deliveryController', function($scope,$http,Resources,$q) {
-  	$scope.selected =2;    
+  	$scope.selected =1;    
     $scope.triedSubmit = false;
     var placeholderMessages = {
         notify : [
@@ -55,7 +55,6 @@ angular.module('delivery.controllers',[]).
     },function(err){ console.log("error",arguments)});   
 
     var venueMessages = Resources.VenueMessages.query({venueId:phpSession.venue_id},function(messages){                                
-        console.log('setting:',messages)
         var notifications = 0;
         var rejects = 0;        
         for (var i=0;i<6;i++){
@@ -97,20 +96,18 @@ angular.module('delivery.controllers',[]).
     },function(err){ console.log("error",arguments)});   
 
     $scope.validateMessage = function(message){
-        return message.content === undefined ? !(message.name === undefined) : message.name === undefined;
+        console.log("validating message",Boolean(message.content) ? !Boolean(message.name) : Boolean(message.name),message);
+        return Boolean(message.content) ? !Boolean(message.name) : Boolean(message.name);
     }
 
     $scope.validateActive = function(message){        
         if (message && message.name && message.content){
             if (message.name.trim() === "" && message.content.trim() === ""){
                 message.active = 0;
-                console.log('false1')
                 return false;
             }
-            console.log('true')
             return true;
         }
-        console.log('false2')
         message.active = 0;
         return false;
     }
@@ -119,12 +116,9 @@ angular.module('delivery.controllers',[]).
     $scope.processForm = function() {
         $scope.triedSubmit = true;
         if (!$scope.deliveryForm.$valid) {
-            console.log("invalid form");  
-            return false
+            return false;
         };
         
-    	console.log("processings");            
-        console.log($scope.messages);
         //FIXME
         //there's no typestring in the db, if we send this param it crashes
         //not sure why we're receiving both type and typestring here as they seem to be the same.                
@@ -157,11 +151,8 @@ angular.module('delivery.controllers',[]).
             } //if it's not in the database
             else {          
                 //push if the message is not blank
-                console.log("on else:")
                 if (message.name && message.name.trim() != "" && message.content && message.content.trim() !== ""){
-                    console.log("on if in else")
                     message.$save({venueId:phpSession.venue_id},function(){
-                        console.log("saved message",arguments)
                     });
                 }
             }
