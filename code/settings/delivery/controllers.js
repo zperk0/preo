@@ -98,14 +98,17 @@ angular.module('delivery.controllers',[]).
     $scope.validateMessage = function(message){
         console.log('validating message:',message)
         if (message && message.name && message.content){
-            if (message.name.trim() !== "" && message.content.trim() !== ""){
-                console.log('returning true')
-                return true;
+            if (message.name.trim() === "" && message.content.trim() === ""){
+                message.active = 0;
+                return false;
             }
+            return true;
         }
-        console.log('returning false');
+        message.active = 0;
         return false;
     }
+
+
 
 
     $scope.processForm = function() {

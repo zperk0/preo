@@ -175,13 +175,13 @@
       </div>
       <div class='row messageRow' ng-repeat="message in messages" >      
        <div ng-if='message.type == "PUSH_NOTIFY"'>      
-          <input class='messageCol-1' type='text'  ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"'/>
-          <input class='messageCol-2' type='text'  ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"'/>
+          <input class='messageCol-1' type='text' ng-change="validateMessage(message)"  ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"'/>
+          <input class='messageCol-2' type='text' ng-change="validateMessage(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"'/>
           
           <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':message.content==='' || message.name==='' }" > 
-          <input  value="0" type="radio" ng-model="message.active" ng-disabled="message.content==='' || message.name===''">
+          <input  value="0" type="radio" ng-model="message.active" ng-disabled="message.content==='' || message.name===''" tabindex=-1>
             <label class="no">No</label>
-          <input value="1" type="radio" ng-model="message.active" ng-disabled="message.content==='' || message.name===''">
+          <input value="1" type="radio" ng-model="message.active" ng-disabled="message.content==='' || message.name===''" tabindex=-1>
             <label class="yes">Yes</label>
             <span></span>
           </div>
@@ -198,12 +198,12 @@
       </div>
        <div class='row messageRow' ng-repeat="message in messages" >                
        <div ng-if='message.type == "PUSH_REJECT"'>      
-          <input class='messageCol-1' type='text' ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"'/>
-          <input class='messageCol-2' type='text' ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"'/>          
+          <input class='messageCol-1' type='text' ng-change="validateMessage(message)" ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"'/>
+          <input class='messageCol-2' type='text' ng-change="validateMessage(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"'/>          
           <div class="switch messageCol-3" ng-class="{'off': message.active==0}" > 
-            <input  value="0" type="radio" ng-model="message.active">
+            <input  value="0" type="radio" ng-model="message.active" ng-disabled="message.content==='' || message.name===''" tabindex=-1>
               <label class="no">No</label>
-            <input value="1" type="radio" ng-model="message.active">
+            <input value="1" type="radio" ng-model="message.active" ng-disabled="message.content==='' || message.name===''" tabindex=-1>
               <label class="yes">Yes</label>
               <span></span>
             </div>          
@@ -212,7 +212,7 @@
   </div>  
   
   <div class="small-12 large-12 columns">
-        <button id="venueSave" type="submit" tabindex=36><?echo _("SAVE CHANGES");?></button>
+        <button id="venueSave" type="submit" ><?echo _("SAVE CHANGES");?></button>
         <button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
       </div>      
     </div>
