@@ -1,7 +1,8 @@
 
 angular.module('delivery.controllers',[]).
   controller('deliveryController', function($scope,$http,Resources,$q) {
-  	$scope.selected =2;    
+  	$scope.selected =1;    
+    $scope.triedSubmit = false;
     var placeholderMessages = {
         notify : [
         {
@@ -109,9 +110,13 @@ angular.module('delivery.controllers',[]).
     }
 
 
-
-
     $scope.processForm = function() {
+        $scope.triedSubmit = true;
+        if (!$scope.deliveryForm.$valid) {
+            console.log("invalid form");  
+            return false
+        };
+        
     	console.log("processings");            
         console.log($scope.messages);
         //FIXME
@@ -156,5 +161,5 @@ angular.module('delivery.controllers',[]).
             }
         });            
 	};
-
+    
   });

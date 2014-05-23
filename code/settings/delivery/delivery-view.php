@@ -41,9 +41,9 @@
     color:white; 
     font-family:"Co Text W01 Light";
   }
-  .delivery-tab-content{
+  .delivery-tab-holder{
     background:white;
-    padding:0 30px 20px 30px;
+    padding:30px 30px 20px 30px;
     
   }
 
@@ -53,25 +53,30 @@
   .delivery-tabs li.selected a{
       color:#2e70b7;
   }
-  .delivery-tab-holder {
-    background:white;
-    width:100%;
-    padding:0;
-  }  
 
 
-  .inlineLabel {    
+  .inlineControl{
+    margin-bottom: 12px;
+  }
+
+  .inlineControl label{    
+  
     width:auto;
     display:inline-block;
     line-height:2.3125em;
   }
 
-  .delivery-tab-content input.inlineInput {
+  .inlineControl input{    
+
     display: block;
     float: left;
     width: 10%;
     margin-right: 10px;
-    margin-bottom: 12px;
+    
+  }
+
+  .inlineControl small{
+    width:10%;
   }
   
   .clearfix{
@@ -126,6 +131,27 @@
   .switch input:disabled:hover{
     cursor:default !important;
   }
+
+  .delivery-tab-holder input{
+    margin-bottom:0;
+  }
+
+  .controlWrapper{    
+    clear:both;
+  }
+
+  .controlWrapper.largeMarginBottom{
+    margin-bottom:30px;
+  }
+
+  #deliverySave{
+    margin-top:40px;
+  }
+
+  .controlWrapper{
+
+  }
+
   </style>  
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/app.js"></script>
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/resource.js"></script>
@@ -134,40 +160,54 @@
 
 </head>
 <body ng-app="delivery" ng-controller="deliveryController">
-  <form id="delivery-form" ng-submit="processForm()"> 
+  <form name="deliveryForm" id="deliveryForm" ng-submit="processForm()" novalidate>  
   <div class='row'> <h1>Delivery Details</h1></div>
   <div>
     <ul class='row delivery-tabs'>
-      <li ng-class="{'selected': selected==1}" ><a href ng:click="selected=1">General Settings</a></li>
-      <li ng-class="{'selected': selected==2}"><a href ng:click="selected=2">Order Status Alerts</a></li>
-      <li ng-class="{'selected': selected==3}"><a href ng:click="selected=3">Order Rejection Alerts</a></li>
+      <li ng-class="{'selected': selected==1}" ><a href ng:click="selected=1"><?echo _("General Settings")?></a></li>
+      <li ng-class="{'selected': selected==2}"><a href ng:click="selected=2"><?echo _("Order Status Alerts")?></a></li>
+      <li ng-class="{'selected': selected==3}"><a href ng:click="selected=3"><?echo _("Order Rejection Alerts")?></a></li>
     </ul>
   <div class='row delivery-tab-holder'>
-  <div ng:show="selected == 1" class='delivery-tab-content columns'>
-      <label class='colorLabel' for='deliveryZone'> <?echo _("Delivery Zone")?> </label>      
-      <input type='text' id='deliveryZone' name='deliveryZone' ng-model="venueSettings.deliveryZone"/>      
-      
-      <label class='colorLabel' for='telephone'> <?echo _("In case of customer queries contact:")?> </label>
-      <input type='text' id='telephone' name='telephone' ng-model="venueSettings.deliveryPhone" />
-      
-      <label class='colorLabel inlineLabel' for='minValueOrder'> <?echo _("Min. value order (£)")?></label>
-      <input class='inlineInput' type='text' id='minValueOrder' name='minValueOrder' ng-model="venueSettings.deliveryOrderMin"/>      
-      <div class='clearfix'></div>
-      <label class='colorLabel inlineLabel' for='deliveryCharge'> <?echo _("Delivery charge (£)")?></label>
-      <input class='inlineInput' type='text' id='deliveryCharge' name='deliveryCharge' ng-model="venueSettings.deliveryCharge"/>
-      <div class='clearfix'></div>
-      <label class='colorLabel inlineLabel' for='deliveryChargeBelow'> <?echo _("Free delivery for orders above (£)")?></label>
-      <input class='inlineInput' type='text' id='deliveryChargeBelow' name='deliveryChargeBelow' ng-model="venueSettings.deliveryChargeBelow"/>
-      <div class='clearfix'></div>
+  <div ng:show="selected == 1" class='delivery-tab-content'>
+      <div class='controlWrapper largeMarginBottom' ng-class="{'error': deliveryForm.deliveryZone.$invalid && triedSubmit }">
+        <label class='colorLabel' for='deliveryZone'> <?echo _("Delivery Zone")?> </label>      
+        <input type='text' id='deliveryZone' name='deliveryZone' ng-model="venueSettings.deliveryZone" ng-maxlength=200 placeholder='<? echo _('eg. "5 miles" or "NW1, NW2..."')?>'/>      
+        <small  ng-show="deliveryForm.deliveryZone.$invalid && triedSubmit" class="error"><?echo _("Please type a delivery zone (max 200chars)");?></small>
+      </div>
+      <div class='controlWrapper largeMarginBottom'>
+        <label class='colorLabel' for='telephone'> <?echo _("In case of customer queries contact:")?> </label>
+        <input type='text' id='telephone' name='telephone' ng-model="venueSettings.deliveryPhone" placeholder='+44 (0) 12345678' />        
+      </div>
+      <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.minValueOrder.$invalid && triedSubmit }">
+        <label class='colorLabel inlineLabel' for='minValueOrder'> <?echo _("Min. value order (£)")?></label>
+        <input class='inlineInput' placeholder="0.00" type='text' id='minValueOrder' name='minValueOrder' ng-model="venueSettings.deliveryOrderMin" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">      
+        <small  ng-show="deliveryForm.minValueOrder.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 20.52)");?></small>  
+      </div>      
+      <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryCharge.$invalid && triedSubmit }">
+        <label class='colorLabel inlineLabel' for='deliveryCharge'> <?echo _("Delivery charge (£)")?></label>
+        <input class='inlineInput'  placeholder="0.00" type='text' id='deliveryCharge' name='deliveryCharge' ng-model="venueSettings.deliveryCharge" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"/>
+        <small  ng-show="deliveryForm.deliveryCharge.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 3.25)");?></small>
+      </div>
+      <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryBelow.$invalid && triedSubmit }">
+        <label class='colorLabel inlineLabel' for='deliveryChargeBelow'> <?echo _("Free delivery for orders above (£)")?></label>
+        <input class='inlineInput'  placeholder="0.00" type='text' id='deliveryChargeBelow' name='deliveryChargeBelow' ng-model="venueSettings.deliveryChargeBelow" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"/>
+        <small  ng-show="deliveryForm.deliveryChargeBelow.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 3.25)");?></small>
+      </div>
+      <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryLeadTime.$invalid && triedSubmit }">      
       <label class='colorLabel inlineLabel' for='deliveryLeadTime'> <?echo _("Default lead time for delivery (mins)")?></label>
-      <input class='inlineInput' type='text' id='deliveryLeadTime' name='deliveryLeadTime' ng-model="venueSettings.deliveryLeadTime"/>
-      <div class='clearfix'></div>
+      <input class='inlineInput'  placeholder="20" type='text' id='deliveryLeadTime' name='deliveryLeadTime' ng-model="venueSettings.deliveryLeadTime" ng-pattern="/^[0-9]+$/"/>
+      <small  ng-show="deliveryForm.deliveryLeadTime.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid time interval in minutes (e.g. 20)");?></small>
+      </div>
+      <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryDiscount.$invalid && triedSubmit }">      
       <label class='colorLabel inlineLabel' for='deliveryDiscount'> <?echo _("Discount offered for delivery orders")?></label>
-      <input class='inlineInput' type='text' id='deliveryDiscount' name='deliveryDiscount' ng-model="venueSettings.deliveryDiscount"/>
+      <input class='inlineInput'  placeholder="5" type='text' id='deliveryDiscount' name='deliveryDiscount' ng-model="venueSettings.deliveryDiscount" ng-pattern="/^(0?[0-9]?[0-9]|100)$/"/>
+      <small  ng-show="deliveryForm.deliveryDiscount.$invalid && triedSubmit" class="error"><?echo _("Please provide a discount percentage (between 0 and 100)");?></small>
+      </div>
       <div class='clearfix'></div>
   </div>
 
-  <div ng:show="selected == 2" class='delivery-tab-content columns'>
+  <div ng:show="selected == 2" class='delivery-tab-content'>
       <div class="row messageRow messageRowHeader">
           <div class='messageCol-1'>Preset customer notifications, sent by email and push alert</div>
           <div class='messageCol-2'>Short name</div>
@@ -175,9 +215,14 @@
       </div>
       <div class='row messageRow' ng-repeat="message in messages" >      
        <div ng-if='message.type == "PUSH_NOTIFY"'>      
-          <input class='messageCol-1' type='text' ng-change="validateMessage(message)"  ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"'/>
-          <input class='messageCol-2' type='text' ng-change="validateMessage(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"'/>
-          
+          <div class='messageCol-1' >
+            <input class='' type='text' ng-change="validateMessage(message)"  ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"' required/>
+            <small class="error"><?echo _("Please type a notification (max 200chars)");?></small>
+          </div>
+          <div class='messageCol-2'>
+              <input class='' type='text' ng-change="validateMessage(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"' required/>
+              <small class="error"><?echo _("Please type a name (max 100chars)");?></small>
+          </div>
           <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':message.content==='' || message.name==='' }" > 
           <input  value="0" type="radio" ng-model="message.active" ng-disabled="message.content==='' || message.name===''" tabindex=-1>
             <label class="no">No</label>
@@ -190,7 +235,7 @@
       </div>
   </div>
 
-  <div ng:show="selected == 3" class='delivery-tab-content columns'>
+  <div ng:show="selected == 3" class='delivery-tab-content'>
   <div class="row messageRow messageRowHeader">
           <div class='messageCol-1'>Preset order rejection notifications, sent by email and push alert</div>
           <div class='messageCol-2'>Short name</div>
@@ -198,8 +243,8 @@
       </div>
        <div class='row messageRow' ng-repeat="message in messages" >                
        <div ng-if='message.type == "PUSH_REJECT"'>      
-          <input class='messageCol-1' type='text' ng-change="validateMessage(message)" ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"'/>
-          <input class='messageCol-2' type='text' ng-change="validateMessage(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"'/>          
+          <input class='messageCol-1' type='text' ng-change="validateMessage(message)" ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"' required/>
+          <input class='messageCol-2' type='text' ng-change="validateMessage(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"' required  />          
           <div class="switch messageCol-3" ng-class="{'off': message.active==0}" > 
             <input  value="0" type="radio" ng-model="message.active" ng-disabled="message.content==='' || message.name===''" tabindex=-1>
               <label class="no">No</label>
@@ -211,12 +256,12 @@
         </div>
   </div>  
   
-  <div class="small-12 large-12 columns">
-        <button id="venueSave" type="submit" ><?echo _("SAVE CHANGES");?></button>
-        <button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
-      </div>      
-    </div>
-    </div>  
+    <div>
+      <button id="deliverySave" type="submit" ><?echo _("SAVE CHANGES");?></button>
+      <button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
+    </div>      
+  </div>
+  </div>  
   </form>
 </body>
 </html>
