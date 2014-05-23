@@ -1,6 +1,4 @@
 <?php
-
-
 	
  	function formatDisplayPercentage($num){
  	if ($num > 1 || !((isset($num) && $num)))

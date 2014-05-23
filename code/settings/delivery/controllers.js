@@ -95,8 +95,7 @@ angular.module('delivery.controllers',[]).
         $scope.messages = venueMessages;
     },function(err){ console.log("error",arguments)});   
 
-    $scope.validateMessage = function(message){
-        console.log("validating message",Boolean(message.content) ? !Boolean(message.name) : Boolean(message.name),message);
+    $scope.validateMessage = function(message){    
         return Boolean(message.content) ? !Boolean(message.name) : Boolean(message.name);
     }
 
@@ -116,6 +115,10 @@ angular.module('delivery.controllers',[]).
     $scope.processForm = function() {
         $scope.triedSubmit = true;
         if (!$scope.deliveryForm.$valid) {
+            noty({
+              type: 'error',  layout: 'topCenter',
+              text: _tr("Sorry, we need more information, please check if you have filled all the required fields.") /*text: 'Connection Error! Check API endpoint.'*/
+            });
             return false;
         };
         
@@ -128,35 +131,45 @@ angular.module('delivery.controllers',[]).
             delete messages[msg]["placeholder"];
         }
 
-        //save updated venue settings
-        venueSettings.$patch({id:phpSession.venue_id},function(){
-            console.log('saved venue settings:', arguments)
-        });
+        $q.all([
+            venueSettings.$patch({id:phpSession.venue_id}),
+            postMessage(messages[0]),
+            postMessage(messages[1]),
+            postMessage(messages[2]),
+            postMessage(messages[3]),
+            postMessage(messages[4]),
+            postMessage(messages[5])
+        ])
+        .then(function(results){
+            noty({
+              type: 'success',  layout: 'topCenter',
+              text: _tr("Successfully saved delivery settings.") /*text: 'Connection Error! Check API endpoint.'*/
+            });
+                        
+        })
+        
 
-        //save updated messages        
-        angular.forEach(messages,function(message){
-            //if the message is on the database
-            if (message.id){
-                //if it is not blank, update it, 
-                if (message.name.trim() !== "" && message.content.trim() !== "") {
-                    message.$put({venueId:phpSession.venue_id},function(){   
-                        console.log("put message",arguments)                 
-                    });
-                }  // else delete it
-                else {
-                    message.$remove({venueId:phpSession.venue_id},function(){
-                        console.log("deleted message",arguments)
-                    });
-                }
-            } //if it's not in the database
-            else {          
-                //push if the message is not blank
-                if (message.name && message.name.trim() != "" && message.content && message.content.trim() !== ""){
-                    message.$save({venueId:phpSession.venue_id},function(){
-                    });
-                }
-            }
-        });            
 	};
+
+    function postMessage(message){
+        //if the message is on the database
+        if (message.id){
+            //if it is not blank, update it, 
+            if (message.name.trim() !== "" && message.content.trim() !== "") {
+                return message.$put({venueId:phpSession.venue_id});
+            }  // else delete it
+            else {
+                return message.$remove({venueId:phpSession.venue_id});
+            }
+        } //if it's not in the database
+        else {          
+            //push if the message is not blank
+            if (message.name && message.name.trim() != "" && message.content && message.content.trim() !== ""){
+                return message.$save({venueId:phpSession.venue_id});
+            }
+        } 
+        //if we reach this point, there's nothing to be done with this message.
+        return true;            
+    }
     
   });
