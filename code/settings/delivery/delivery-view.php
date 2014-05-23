@@ -219,7 +219,7 @@
             <input class='' type='text' ng-change="validateActive(message)"  ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"' required/>
             <small class="error" ng-show="validateMessage(message)" ><?echo _("Please enter both the notification and a short name.");?></small>
           </div>
-          <div class='messageCol-2' ng-class="{'error': validateMessage(message)">
+          <div class='messageCol-2' ng-class="{'error': validateMessage(message)}">
               <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"' required/>
           </div>
           <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':!validateActive(message)}" > 
@@ -247,7 +247,7 @@
             <input class='' type='text' ng-change="validateActive(message)"  ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"' required/>
             <small class="error" ng-show="validateMessage(message)" ><?echo _("Please enter a message and a short name or remove this notification.");?></small>
           </div>
-          <div class='messageCol-2' ng-class="{'error': validateMessage(message)">
+          <div class='messageCol-2' ng-class="{'error': validateMessage(message)}">
               <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"' required/>
           </div>
           <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':!validateActive(message)}" > 
