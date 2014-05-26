@@ -1,47 +1,35 @@
 
 angular.module('delivery.controllers',[]).
   controller('deliveryController', function($scope,$http,Resources,$q) {
-  	$scope.selected =1;    
+  	$scope.selected =2;    
     $scope.triedSubmit = false;
     var placeholderMessages = {
         notify : [
-        {
-            placeholder:{
-                content:"Your order is running 15 mins late",
-                name:"Late Order"   
-            }
+        {         
+            content:"Your order is running 15 mins late",
+            name:"Late Order"               
         },
         {
-            placeholder:{
-                content:"Your order is on its way",
-                name:"En-route"   
-            }
+            content:"Your order is on its way",
+            name:"En-route"   
         },
-        {
-            placeholder:{
-                content:"There is a problem with your order. Please call us",
-                name:"Call us"   
-            }
+        {          
+            content:"There is a problem with your order. Please call us",
+            name:"Call us"               
         }
     ],
     reject:[
         {
-            placeholder:{
-                content:"Your address is out of our delivery zone",
-                name:"Out of zone"   
-            }
+            content:"Your address is out of our delivery zone",
+            name:"Out of zone"   
         },
         {
-            placeholder:{
-                content:"Sorry, that item is out of stock",
-                name:"Out of stock"   
-            }
+            content:"Sorry, that item is out of stock",
+            name:"Out of stock"   
         },
         {
-            placeholder:{
-                content:"Sorry, Your order has been rejected. Please call us",
-                name:"Call us"   
-            }
+            content:"Sorry, Your order has been rejected. Please call us",
+            name:"Call us"   
         }
     ]};
     
@@ -51,34 +39,40 @@ angular.module('delivery.controllers',[]).
     },function(err){ console.log("error",arguments)});   
 
     var venueSettings = Resources.VenueSettings.get({id:phpSession.venue_id},function(result){        
+        console.log("got venue settings:",venueSettings);
         $scope.venueSettings = result;              
     },function(err){ console.log("error",arguments)});   
 
     var venueMessages = Resources.VenueMessages.query({venueId:phpSession.venue_id},function(messages){                                
+        $scope.messages = {
+            notify:[],
+            reject:[],
+        }
         var notifications = 0;
         var rejects = 0;        
-        for (var i=0;i<6;i++){
-            if (messages.length>i){
+
+           for (var i=0;i<6;i++){
+            if (messages.length>i){                
                 var message = messages[i];
-                if (message.placeholder)
-                    continue;
-                if (message.type == "PUSH_NOTIFY"){
-                    angular.extend(message,placeholderMessages.notify[notifications]);
-                    notifications++;
+                
+                if (message.type == "PUSH_NOTIFY"){                    
+                    $scope.messages.notify.push(message)
+                    notifications++;          
                 } else{
-                    angular.extend(message,placeholderMessages.reject[rejects])
+                    $scope.messages.reject.push(message)
                     rejects++;
                 }
-            } else {
+            } else {                
                 if (notifications < 3){
                     var vm = new Resources.VenueMessages({
                         name:"",
                         content:"",
                         type:"PUSH_NOTIFY",
                         active:0,  
-                        placeholder : placeholderMessages.notify[notifications].placeholder
+                        placeholder : placeholderMessages.notify[notifications]
                     });                    
                     notifications++;          
+                    $scope.messages.notify.push(vm)
                 } else {
                     var vm = new Resources.VenueMessages({
                         name:"",
@@ -88,11 +82,11 @@ angular.module('delivery.controllers',[]).
                         placeholder : placeholderMessages.reject[rejects]
                     })   
                     rejects++;
+                    $scope.messages.reject.push(vm)
                 }
-                venueMessages.push(vm);
+                                
             }
-        }        
-        $scope.messages = venueMessages;
+        }
     },function(err){ console.log("error",arguments)});   
 
     $scope.validateMessage = function(message){    
@@ -125,10 +119,9 @@ angular.module('delivery.controllers',[]).
         //FIXME
         //there's no typestring in the db, if we send this param it crashes
         //not sure why we're receiving both type and typestring here as they seem to be the same.                
-        var messages = $scope.messages;
+        var messages = $scope.messages.reject.concat($scope.messages.notify);
         for (var msg in messages){
-            delete messages[msg]["typeString"];
-            delete messages[msg]["placeholder"];
+            delete messages[msg]["typeString"];            
         }
 
         $q.all([
@@ -141,18 +134,23 @@ angular.module('delivery.controllers',[]).
             postMessage(messages[5])
         ])
         .then(function(results){
+            console.log(results)
             noty({
               type: 'success',  layout: 'topCenter',
               text: _tr("Successfully saved delivery settings.") /*text: 'Connection Error! Check API endpoint.'*/
             });
                         
-        })
+        });
         
 
 	};
+    $scope.getPlaceholder = function(which,index){
+        return placeholderMessages[which][index];
+    }
 
     function postMessage(message){
         //if the message is on the database
+        console.log("posting message:",message);
         if (message.id){
             //if it is not blank, update it, 
             if (message.name.trim() !== "" && message.content.trim() !== "") {

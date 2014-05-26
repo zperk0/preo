@@ -213,14 +213,13 @@
           <div class='messageCol-2'>Short name</div>
           <div class='messageCol-3'>Active?</div>
       </div>
-      <div class='row messageRow' ng-repeat="message in messages" >      
-       <div ng-if='message.type == "PUSH_NOTIFY"'>      
+      <div class='row messageRow' ng-repeat="message in messages.notify" >      
           <div class='messageCol-1' ng-class="{'error': validateMessage(message) }">
-            <input class='' type='text' ng-change="validateActive(message)"  ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"' ng-required='validateMessage(message)'/>
+            <input class='' type='text' ng-change="validateActive(message)"  ng-model="message.content" placeholder='eg."{{getPlaceholder("notify",$index).content}}"' ng-required='validateMessage(message)'/>
             <small class="error" ng-show="validateMessage(message)" ><?echo _("Please enter both the notification and a short name.");?></small>
           </div>
           <div class='messageCol-2' ng-class="{'error': validateMessage(message)}">
-              <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name" placeholder='eg."{{message.placeholder.name}}"' ng-required='validateMessage(message)'/>
+              <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name" placeholder='eg."{{getPlaceholder("notify",$index).name}}"' ng-required='validateMessage(message)'/>
           </div>
           <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':!validateActive(message)}" > 
           <input  value="0" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
@@ -228,9 +227,7 @@
           <input value="1" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
             <label class="yes">Yes</label>
             <span></span>
-          </div>
-          
-        </div>
+          </div>                
       </div>
   </div>
 
@@ -240,15 +237,14 @@
           <div class='messageCol-2'>Short name</div>
           <div class='messageCol-3'>Active?</div>
       </div>
-      <div class='row messageRow' ng-repeat="message in messages" >      
-       <div ng-if='message.type == "PUSH_REJECT"'>      
+      <div class='row messageRow' ng-repeat="message in messages.reject" >      
 
           <div class='messageCol-1' ng-class="{'error': validateMessage(message) }">
-            <input class='' type='text' ng-change="validateActive(message)"  ng-model="message.content" placeholder='eg."{{message.placeholder.content}}"' ng-required='validateMessage(message)'/>
+            <input class='' type='text' ng-change="validateActive(message)"  ng-model="message.content" placeholder='eg."{{getPlaceholder("reject",$index).content}}"' ng-required='validateMessage(message)'/>
             <small class="error" ng-show="validateMessage(message)" ><?echo _("Please enter a message and a short name or remove this notification.");?></small>
           </div>
           <div class='messageCol-2' ng-class="{'error': validateMessage(message)}">
-              <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name"    placeholder='eg."{{message.placeholder.name}}"' ng-required='validateMessage(message)'/>
+              <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name"    placeholder='eg."{{getPlaceholder("reject",$index).name}}"' ng-required='validateMessage(message)'/>
           </div>
           <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':!validateActive(message)}" > 
           <input  value="0" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
@@ -256,10 +252,8 @@
           <input value="1" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
             <label class="yes">Yes</label>
             <span></span>
-          </div>
-          
+          </div>          
         </div>
-      </div>
   </div>
     <div>
       <button id="deliverySave" type="submit" ><?echo _("SAVE CHANGES");?></button>
