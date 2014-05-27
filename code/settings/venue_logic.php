@@ -1,14 +1,17 @@
 <?php
-	
+
+ 	// ini_set('display_errors', 1);
+	// error_reporting(E_ALL ^ E_NOTICE);
+
  	function formatDisplayPercentage($num){
- 	if ($num > 1 || !((isset($num) && $num)))
+
+ 	if ($num > 1 || !((isset($num) && $num))) 		
  		return $num;
  	else 
-		return floor($num * 100);	
+		return floor($num * 100);
+	
 	}
- 						 
-	ini_set('display_errors', 1);
-	error_reporting(E_ALL ^ E_NOTICE);
+	
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 
@@ -61,7 +64,14 @@
 		{
 			$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];
 			$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];		
-			$_SESSION['venue_order_min']		= $dataJSON["orderMin"];			
+			$_SESSION['delivery_zone'] 			= $dataJSON["deliveryZone"];
+			$_SESSION['venue_order_min']		= $dataJSON["orderMin"];
+			$_SESSION['delivery_charge'] 		= $dataJSON["deliveryCharge"];
+			$_SESSION['delivery_charge_below']	= $dataJSON["deliveryChargeBelow"];
+			$_SESSION['delivery_order_min'] 	= $dataJSON["deliveryOrderMin"];
+			$_SESSION['delivery_lead_time'] 	= $dataJSON["deliveryLeadTime"];
+			$_SESSION['delivery_discount'] 		= formatDisplayPercentage($dataJSON["deliveryDiscount"]);
+			$_SESSION['delivery_phone'] 		= $dataJSON["deliveryPhone"];
 			$_SESSION['venue_discount'] 		= formatDisplayPercentage($dataJSON["pickupDiscount"]);
 		}
 				

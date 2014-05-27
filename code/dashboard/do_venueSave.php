@@ -2,11 +2,10 @@
 
 	function formatPercentage($num){
 		if (isset($num) && $num)
- 			return $num/100;
+			return $num/100;
 		else
 			return $num;
 	}
-
 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/protect_input.php'); //input protection functions to keep malicious input at bay
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
@@ -47,6 +46,12 @@
 	
 	$vCode = $_POST['vCode'];
 	protect($vCode);
+	
+	$vDeliveryDiscount = formatPercentage($_POST["vDeliveryDiscount"]);
+	protect($vDeliveryDiscount );
+
+	$contactInfo = $_POST["contactInfo"];
+	protect($contactInfo );
 	
 	$vDiscount = formatPercentage($_POST['vDiscount']);
 	protect($vDiscount);

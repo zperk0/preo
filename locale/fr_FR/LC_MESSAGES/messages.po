@@ -1,0 +1,3127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Preoday Webapp\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-19 18:27+0200\n"
+"PO-Revision-Date: 2014-05-12 23:32+0100\n"
+"Last-Translator: \n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:8
+msgid "Sorry, but there's been an error processing your request."
+msgstr ""
+"Désolés, mais il y a eu une erreur lors du traitement de votre demande."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:9
+msgid "Incorrect credentials or account does not exist."
+msgstr "Références incorrectes ou compte inexistant. "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:10
+msgid "Success! Please check your email for further instructions."
+msgstr "Réussi! Veuillez vérifier vos emails pour la suite des instructions"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:11
+msgid "Sorry, incorrect code."
+msgstr "Désolés, code invalide"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:12
+msgid ""
+"Your password has been reset.<br/>You will now be redirected to the login "
+"page."
+msgstr ""
+"Votre mot de passe a été réinitialisé. <BR/> Vous allez maintenant être "
+"redirigé vers la page de connexion."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:13
+msgid "Venue changes have been saved!"
+msgstr "Vos modifications ont bien été enregistrées !"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:14
+
+msgid "Uploaded!"
+msgstr "Téléchargement logo"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:15
+msgid "Error uploading file"
+msgstr "Erreur téléchargement fichier"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:16
+msgid "Incorrect Image File"
+msgstr "Fichier image incorrect"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:17
+msgid "App changes have been saved!"
+msgstr "Vos modifications ont bien été enregistrées !"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:18
+msgid "Choose a size"
+msgstr "Choisir une taille"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:19
+msgid "Choose a flavour"
+msgstr "Choisir un parfum"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:20
+msgid "Choose a topping"
+msgstr "Choisir une garniture"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:21
+msgid "Choose some extras"
+msgstr "Choisir des extras"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:22
+msgid "Choose a side dish"
+msgstr "Choisir un accompagnement"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:23
+
+msgid "Pick an option type"
+msgstr "Tapez ou choisissez un titre d'option"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:24
+msgid ""
+"Are you sure you want to delete this section? Note: all items and options "
+"will be lost!"
+msgstr ""
+"Êtes-vous sûr de vouloir supprimer cette section? NB: tous les articles et "
+"options seront perdus."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:25
+msgid "Yes, delete this section and all its contents!"
+msgstr "Oui, supprimer cette section ainsi que tout son contenu!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:26
+msgid "No, go back."
+msgstr "Non, revenir"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:27
+msgid "Choose a main"
+msgstr "Choisir un plat"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:28
+msgid "Choose a side"
+msgstr "Choisir un accompagnement"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:29
+msgid "Choose a drink"
+msgstr "Choisir une boisson"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:30
+msgid "Choose a curry"
+msgstr "Choisir un curry"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:31
+msgid "Choose a burger"
+msgstr "Choisir un burger"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:32
+msgid "Menu configuration has been saved!"
+msgstr "Configurations du menu ont bien été enregistrées !"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:33
+msgid "Choose a Collection Slot"
+msgstr "Choisir un créneau de récupération"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:34
+msgid ""
+"Are you sure you want to delete this event? Note: all event data will be "
+"lost!"
+msgstr ""
+"Êtes-vous sûr de vouloir supprimer cet événement? NB: toutes les données de "
+"votre événement seront perdues !"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:35
+msgid "Yes, delete this event!"
+msgstr "Oui, supprimer cet événement"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:36
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:23
+msgid "Role"
+msgstr "Statut"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:37
+msgid ""
+"Are you sure you want to delete this user? Note: all user data will be lost!"
+msgstr ""
+"Êtes-vous sûr de vouloir supprimer cet utilisateur? NB: toutes les données "
+"d'utilisateur vont être perdues !"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:38
+msgid "Yes, delete this user!"
+msgstr "Oui, supprimer cet utilisateur"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:39
+msgid "Username/email already exists"
+msgstr "Nom d'utilisateur/email déjà existant"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:40
+msgid "User configuration has been saved!"
+msgstr "Les configurations d'utilisateur ont bien été enregistrées !"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:41
+msgid "Select all menus"
+msgstr "Sélectionner tous les menus"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:42
+msgid "Unselect all menus"
+msgstr "Désélectionner tous les menus"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:43
+
+msgid "Select menu("
+msgstr "Sélectionner tous les menus("
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:44
+msgid "# of # selected"
+msgstr "# sur # sélectionné(s)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:45
+msgid ""
+"Are you sure you want to delete this outlet? Note: all outlet data will be "
+"lost!"
+msgstr ""
+"Êtes-vous sûr de vouloir supprimer ce point du vente? NB: tous les donées de "
+"point de vente seront perdus!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:46
+msgid "Yes, delete this outlet!"
+msgstr "Oui, supprimer ce point de vente!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:47
+msgid "Outlet configuration has been saved!"
+msgstr "Configurations de point de vente enregistrées !"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:48
+msgid "These times have been applied to all days!"
+msgstr "Ces horaires ont été appliqués à tous les jours!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:49
+msgid ""
+"We still need some more information. Don't forget to fill out the remaining "
+"days of the week!"
+msgstr ""
+"Nous avons besoin de plus d'informations. N'oubliez pas de remplir les jours "
+"de la semaine qui restent !"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:50
+msgid "Where should this meal deal appear?"
+msgstr "Où doit apparaître ce Meal Deal ?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:51
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:96
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:213
+msgid "Choose a menu section"
+msgstr "Choisir une section de menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:52
+msgid ""
+"Are you sure you want to delete this meal deal? Note: all associated data "
+"will be lost!"
+msgstr ""
+"Êtes-vous sûr de vouloir supprimer ce Meal Deal? NB: toutes les données "
+"associées seront perdues!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:53
+msgid "Yes, delete this meal deal!"
+msgstr "Oui, supprimer ce Meal Deal"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:54
+msgid "All changes has been saved!"
+msgstr "Tous vos changements ont été bien enregistrés!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:55
+msgid ""
+"Are you sure you want to delete this menu? Note: all menu data will be lost!"
+msgstr ""
+"Êtes-vous sûr de vouloir supprimer ce menu? NB: toutes les données du menu "
+"seront perdues!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:56
+msgid "Yes, delete this menu!"
+msgstr "Oui! Supprimer ce menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:57
+
+msgid "Sorry, incorrect password."
+msgstr "Désolés, code invalide"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:58
+msgid ""
+"Settings and Password has been saved!<br/>You will need to log in again with "
+"your new password to continue."
+msgstr ""
+"Paramètres et Mot de passe enregistrés ! <br/>> Vous devez vous connecter à "
+"nouveau avec votre nouveau mot de passe pour continuer."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:59
+msgid "Settings have been saved!"
+msgstr "Vos réglages ont été bien enregistrés!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:60
+msgid "Please select features you require"
+msgstr "Veuillez sélectionner fonctions que vous fallez"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/code/shared/js_strings.php:61
+msgid "Select all"
+msgstr "Sélectionner tout"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/404/404_content.php:5
+msgid "Whoops!"
+msgstr "Oups !"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/404/404_content.php:6
+msgid "We can't find the page you're looking for."
+msgstr "Nous ne pouvons trouver la page que vous recherchez"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/404/404_content.php:6
+msgid "Please check out the"
+msgstr "Veuillez consulter le"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/404/404_content.php:6
+msgid "help section"
+msgstr "section d'aide"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/404/404_content.php:6
+msgid "or return to the"
+msgstr "ou retourner au"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/404/404_content.php:6
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:11
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:26
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:12
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:5
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:7
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:7
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:6
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:6
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:5
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:7
+msgid "Venue Information"
+msgstr "Profil de l'entreprise"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:13
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:6
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:8
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:8
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:7
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:7
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:7
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:9
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:8
+msgid "App Styling 1/2"
+msgstr "Design de l'App 1/2 "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:15
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:17
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:7
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:9
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:9
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:8
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:8
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:12
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:14
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:9
+msgid "App Styling 2/2"
+msgstr "Design de l’App 2/2"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:20
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:22
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:9
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:11
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:10
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:10
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:9
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:9
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:17
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:19
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:10
+msgid "Menu Creation"
+msgstr "Création du Menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:25
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:28
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:14
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:17
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:80
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:11
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:12
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:15
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:10
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:10
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:22
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:25
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:11
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:75
+msgid "Events"
+msgstr "Evénements"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:26
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:29
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:15
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:18
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:54
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:12
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:13
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:16
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:11
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:38
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:11
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:23
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:26
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:12
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:46
+msgid "Opening Hours"
+msgstr "Horaires d'ouverture"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:32
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:21
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:13
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:18
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:12
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:12
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:29
+msgid "Add a Payment"
+msgstr "Ajouter un moyen de paiement"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:34
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:23
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:15
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:20
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:14
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:15
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:31
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:15
+msgid "Done"
+msgstr "Terminer"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:39
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:28
+msgid "Style your app"
+msgstr "Styliser votre application"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:39
+msgid "This is the first screen that your customers will see."
+msgstr "Ceci est le premier écran que vos clients verront"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:46
+msgid "Create a main heading"
+msgstr "Créer une en-tête"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:47
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:66
+msgid "Choose one here"
+msgstr "En choisir une ici"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:49
+msgid "Leave the 4 deep queue to everyone else and pre-order."
+msgstr "Laissez la file d'attente aux autres et précommandez ici"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:50
+msgid "Don't miss the game, jump the long queue and pre-order."
+msgstr "Ne ratez pas le match, passez devant les autres et commandez avant."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:51
+msgid "Intermission pre-order."
+msgstr "Commandrez avant la pause"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:52
+msgid "A sparkling fruity alternative to queuing."
+msgstr "Une alternative pétillante et fruitée de faire la queue"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:53
+msgid "Go on, jump the crazy queue and pre-order."
+msgstr "Allez-y, évitez la longue file et commandez en avance"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:54
+msgid "Don't miss the game! Order online and skip the half-time rush"
+msgstr ""
+"Ne ratez pas le match, commandez en ligne et évitez le rush de la pause"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:55
+msgid "Order interval drinks before the show starts"
+msgstr ""
+"Commandez les boissons pour la pause avant que le spectacle ne commence."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:56
+msgid "Stay with friends while the bar prepares your round"
+msgstr "Restez avec vos amis pendant que le bar prépare votre tournée."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:57
+msgid "Order your coffee and croissant from your table, or from the train."
+msgstr ""
+"Commandez votre café et croissant depuis votre bureau ou depuis le train."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:59
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:72
+msgid "or create your own..."
+msgstr "ou créez le vôtre...."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:60
+msgid "maximum 70 characters"
+msgstr "max 70 caractères"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:65
+msgid "Create a subheading"
+msgstr "Créer un sous-titre"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:69
+msgid "Pre-order food and drinks"
+msgstr "Commandez en avance vos plats et boissons"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:70
+msgid "Pre-order drinks+food"
+msgstr "Commandez en avance boissons + plats"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:73
+msgid "maximum 30 characters"
+msgstr "max 30 caractères"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:84
+msgid "Text colour"
+msgstr "Couleur du Texte"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:84
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:98
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:106
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:71
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:79
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:97
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:105
+msgid "Enter Hex Colour Code or click to choose your colour."
+msgstr "Entrez le code de couleur Hex ou cliquez pour choisir votre couleur."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:92
+msgid "ORDER NOW button"
+msgstr "Bouton COMMANDEZ MAINTENANT"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:98
+msgid "Button colour"
+msgstr "Bouton couleur"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:106
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:79
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:105
+msgid "Button text colour"
+msgstr "Bouton couleur du texte"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:126
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:118
+msgid "ORDER NOW"
+msgstr "COMMANDEZ MAINTENANT"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:138
+msgid "Select a home-screen background"
+msgstr "Sélectionnez un écran d' accueil"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:169
+msgid "UPLOAD YOUR OWN BACKGROUND"
+msgstr "TELECHARGEZ VOTRE PROPRE ECRAN D'ACCUEIL"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:176
+msgid "Custom Background Upload"
+msgstr "Téléchargez votre propre écran d'accueil"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:181
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:206
+msgid "UPLOAD"
+msgstr "TELECHARGER"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:183
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:208
+msgid "RESET"
+msgstr "RESET"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:185
+msgid "Supported types: JPG"
+msgstr "Format pris en charge: JPG"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:185
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:210
+msgid "Max file size: 10MB"
+msgstr "Taille de dossier maximum: 10MB"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:185
+msgid "Dimensions: 1080x1920"
+msgstr "Dimensions: 1080 x 1920"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:194
+msgid "UPLOAD YOUR OWN LOGO"
+msgstr "TELECHARGEZ VOTRE PROPRE LOGO"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:201
+msgid "Logo Upload"
+msgstr "Téléchargement logo"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:201
+msgid "Note: This will replace your main heading."
+msgstr "Note: cela va remplacer votre titre principal"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:210
+msgid "Supported types: PNG"
+msgstr "Format pris en charge: PNG"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:210
+msgid "Dimensions: 100x75"
+msgstr "Dimensions: 100x75"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:218
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:112
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:234
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:241
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:382
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:91
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:88
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:120
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:381
+msgid "SAVE CHANGES"
+msgstr "ENREGISTRER MODIFICATIONS"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:219
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:113
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:235
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:242
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:384
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:92
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:89
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:121
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:382
+msgid "SAVING..."
+msgstr "EN COURS DE SAUVEGARDE"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig1.php:232
+
+msgid "30&#37 done, time for the artistic bit..."
+msgstr "30&#37 fait, maintenant c'est l'heure de montrer votre créativité..."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:28
+msgid "This is where you can brand your menu page"
+msgstr "C’est là où vous pouvez styliser votre page de menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:35
+msgid "Add a short venue title"
+msgstr "Ajouter un diminutif à votre lieu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:35
+msgid ""
+"This is a shorter version of your venue name that will be visible over your "
+"menu."
+msgstr ""
+"C’est une version plus courte de votre nom de lieu ce qui sera visible sur "
+"votre menu."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:37
+msgid "Please type a venue title <br/>(max 22chars)"
+msgstr "Veuillez taper un titre du lieu <br/> (max 22 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:45
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:126
+msgid "BASKET"
+msgstr "PANIER"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:59
+msgid "Colour scheme"
+msgstr "Palette de Couleurs"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:62
+msgid "Colour one"
+msgstr "Couleur 1"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:63
+msgid ""
+"This colour is used across section progress buttons and as a highlight "
+"colour."
+msgstr ""
+"Cette couleur est utilisée pour les boutons ‘en cours de ...’ et comme "
+"couleur de surbrillance."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:71
+msgid "Button one colour"
+msgstr "Bouton couleur n°1"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:89
+msgid ""
+"This colour is used across item select buttons and as a highlight colour."
+msgstr ""
+"Cette couleur est utilisée pour des boutons de ‘sélection’ et comme couleur "
+"de surbrillance."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:97
+msgid "Button two colour"
+msgstr "Bouton couleur n°2"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/appConfig2.php:127
+msgid "40&#37 done, a couple more design touches..."
+msgstr "40&#37 fait, encore quelques retouches design..."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:11
+msgid "This is where you can monitor your takings and reports."
+msgstr ""
+"C’est de là que vous pouvez gérer vos recettes et rapports de commandes"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:12
+msgid "Your venue shortcode is"
+msgstr "Votre 'short code' d'entreprise"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:12
+msgid ""
+"This is the code your customers need to use to find your venue on 'My Order "
+"App'"
+msgstr ""
+"C’est le code vos clients devront entrer pour vous trouver sur ‘my order "
+"app’."
+
+# The order of this sentence means that there is no need to translate 'MODE'. Instead the sentence is 'Votre application est actuellement en mode... <ADD STATUS HERE OF THE APPLICATION
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:13
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:31
+msgid "Your app is currently in "
+msgstr "Votre App est actuellement en "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:13
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:31
+msgid " mode."
+msgstr " mode"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:13
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:31
+msgid ""
+"LIVE - Your app is available on My Order App and is ready to take real "
+"orders.<br/><br/>DEMO - Your app is available on My Order App but does not "
+"take real orders.<br/><br/>OFFLINE - Your app is not available on My Order "
+"App."
+msgstr ""
+"LIVE- votre application est disponible sur ‘my order app’ et est prête à "
+"prendre de vraies commandes.br/><br/>DEMO- votre application est disponible "
+"sur ‘my order app’ mais ne prend pas encore de vraies commandes.<br/><br/"
+">OFFLINE- votre application n’est pas disponible sur ‘my order app’"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:21
+msgid "This month"
+msgstr "Ce mois-ci"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:24
+msgid "Total revenue"
+msgstr "Total chiffre d'affaires"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:28
+msgid "Total orders"
+msgstr "Total commandes"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:32
+msgid "New users"
+msgstr "Nouveaux utilisateurs"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:36
+msgid "Returning users"
+msgstr "Utilisateurs récurrents"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:43
+msgid "Change your app"
+msgstr "Modifier votre application"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:50
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:43
+msgid "Venue Settings"
+msgstr "Réglages du Lieu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:52
+msgid "Change settings"
+msgstr "Modifier les paramètres"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:59
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:49
+msgid "Styling"
+msgstr "Style"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:61
+msgid "Home screen"
+msgstr "Ecran d'accueil"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:62
+msgid "Menu screen"
+msgstr "Ecran Menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:66
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:55
+msgid "Menus"
+msgstr "Menus"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:70
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:100
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:180
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:83
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:201
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:131
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:265
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:39
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:73
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:52
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:104
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:65
+msgid "Edit"
+msgstr "Modifier"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:71
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:102
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:182
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:84
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:202
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:134
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:179
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:268
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:314
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:346
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:40
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:74
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:54
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:106
+msgid "Delete"
+msgstr "Supprimer"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:74
+msgid "Add new menu"
+msgstr "Ajouter nouveau menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:75
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:5
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:67
+msgid "Meal Deals"
+msgstr "Deals repas"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:82
+msgid "Update events"
+msgstr "Actualiser vos événements"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:87
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:81
+msgid "Advanced Settings"
+msgstr "Réglages du lieu "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:89
+msgid "Manage users"
+msgstr "Gérer vos utilisateurs"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:90
+msgid "Add a payment method"
+msgstr "Ajouter un moyen de paiement"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:91
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:85
+msgid "Change my app mode"
+msgstr "Changer le statut de l'application"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:95
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/dashboard_footer.php:4
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:89
+msgid "Premium Features"
+msgstr "Fonctions Premium"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:97
+msgid "Manage outlets"
+msgstr "Gérer vos points de ventes"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:98
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/more/more_content.php:6
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:91
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:105
+msgid "Find out more"
+msgstr "En savoir plus"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:133
+msgid "Venue Title"
+msgstr "Titre du lieu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:175
+msgid "Your app is now live!"
+msgstr "Votre application fonctionne maintenant !"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:184
+msgid "Your app is now in DEMO mode."
+msgstr "Votre application est actuellement en mode DEMO"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:193
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:211
+msgid "Your app is now in OFFLINE mode."
+msgstr "Votre application est maintenant en mode hors ligne"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/dashboard_content.php:202
+msgid "Your app is now in Demo mode."
+msgstr "Votre application est maintenant en mode DEMO"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:19
+msgid "Your events"
+msgstr "Vos événements"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:19
+msgid ""
+"These show when you are open for ordering, such as performances or matches. "
+"They can be viewed from the front page of your app"
+msgstr ""
+"Il montreront quand vous êtes ouverts, comme pour des matchs ou spectacles. "
+"Ils seront visibles depuis la première page de l’application"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:42
+msgid "Add a new event"
+msgstr "Ajouter un nouvel événement "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:49
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:30
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:85
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:221
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:21
+msgid "Name"
+msgstr "Nom"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:50
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:86
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:222
+msgid "Description"
+msgstr "Descriptif"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:51
+msgid "Start Date"
+msgstr "Date de début"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:52
+msgid "Start Time"
+msgstr "Heure de début"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:53
+msgid "End Time"
+msgstr "Heure de fin"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:54
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:34
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:89
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:225
+msgid "Visible?"
+msgstr "Visible?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:55
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:35
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:90
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:226
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:24
+msgid "Tools"
+msgstr "Outils"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:67
+msgid "Click to add an event name"
+msgstr "Cliquer pour ajouter un nom d'événement"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:68
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:148
+msgid "Please type an event name (max 100chars)"
+msgstr "Veuillez entrer le nom de l'événement"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:71
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:151
+msgid "Click to add a description"
+msgstr "Cliquer pour ajouter un descriptif"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:72
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:152
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:108
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:243
+msgid "Please type a description (max 250chars)"
+msgstr "Veuillez taper un descriptif (max 250 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:75
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:155
+msgid "DD/MM/YYYY"
+msgstr "JJ/MM/AAAA"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:76
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:156
+msgid "Date?"
+msgstr "Date?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:79
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:83
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:159
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:163
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:48
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:53
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:68
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:73
+msgid "HH:MM"
+msgstr "HH:MM"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:80
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:84
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:122
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:160
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:164
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:203
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:49
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:54
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:69
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:74
+msgid "Time?"
+msgstr "Heure?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:90
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:170
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:73
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:191
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:121
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:169
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:255
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:304
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:336
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:353
+msgid "No"
+msgstr "Non"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:93
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:173
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:76
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:194
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:124
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:172
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:258
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:307
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:339
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:356
+msgid "Yes"
+msgstr "Oui"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:99
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:179
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:82
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:200
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:130
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:264
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:38
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:72
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:51
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:103
+msgid "Collapse"
+msgstr "Réduire"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:101
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:181
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:133
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:178
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:267
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:313
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:345
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:53
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:105
+msgid "Duplicate"
+msgstr "Dupliquer"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:109
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:190
+msgid "Collection Slot: Pre-Show"
+msgstr "Créneau de Collecte: Avant Spectacle"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:110
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:191
+msgid "Collection Slot: Pre-Game"
+msgstr "Créneau de Collecte : Avant-Match"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:111
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:192
+msgid "Collection Slot: Interval"
+msgstr "Créneau de Collecte : Entracte"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:112
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:193
+msgid "Collection Slot: Second-Interval"
+msgstr "Créneau de Collecte : Deuxième Entracte"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:113
+msgid "Collection Slot: Half-time"
+msgstr "Créneau de Collecte : Mi-Temps"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:114
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:195
+msgid "Collection Slot: Post-Show"
+msgstr "Créneau de Collecte : Après le spectacle"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:115
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:196
+msgid "Collection Slot: Post-Game"
+msgstr "Créneau de Collecte : Après Match"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:117
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:198
+msgid "Please choose a slot."
+msgstr "Veuillez choisir un créneau. "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:120
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:201
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:373
+msgid "Lead Time (mins)"
+msgstr "Délais (min)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:121
+msgid "30"
+msgstr "30"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:125
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:206
+msgid "Add another slot"
+msgstr "Ajouter un autre créneau"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:194
+msgid "Collection Slot: Half-Time"
+msgstr "Créneau de Récupération: mi-temps"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:202
+msgid "eg. 30"
+msgstr "ex. 30"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/eventConfig.php:243
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:107
+msgid "75&#37 done, almost there now..."
+msgstr "75&#37 fait, presque terminé..."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:5
+msgid ""
+"This is where you can combine separate food items into one meal combination, "
+"e.g. sandwich, crisps and a drink"
+msgstr ""
+"C’est là où vous pourrez combiner des articles de sections différentes pour "
+"faire un ensemble, ex sandwich, frites et une boisson"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:8
+msgid "Add a new Meal Deal"
+msgstr "Ajouter un nouveau Deal repas"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:31
+msgid "Section"
+msgstr "Section"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:31
+msgid "Which menu section does this meal deal belong in?"
+msgstr "Ce Deal repas appartient à quelle section du menu?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:32
+msgid "Total Price (&pound;)"
+msgstr "Prix Total (&euro;)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:33
+msgid "Discount Price (&pound;)"
+msgstr "Prix avec réduction (&euro;)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:53
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:171
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:104
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:239
+msgid "Please type an item name (max 100chars)"
+msgstr "Entrez le nom d’un article (maximum 100 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:61
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:102
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:179
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:219
+msgid "Please choose a section"
+msgstr "Veuillez choisir une section"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:64
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:182
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:185
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:111
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:160
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:296
+msgid "0.00"
+msgstr "0.00"
+
+# If this is in the sense of quantity it is 'Quantité?'
+# If it is in the sense of total amount i.e. money it will be 'Somme?'
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:68
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:186
+msgid "Amount?"
+msgstr "Somme ?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:89
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:246
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:77
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:213
+msgid "Delete this section"
+msgstr "Supprimer cette section"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:91
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:208
+msgid "Type or pick a selection title"
+msgstr "Inscrire ou choisir un titre de section"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:91
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:208
+msgid "Eg. Choose a main, Choose a side, Choose a drink, etc"
+msgstr "Ex. Choisir un plat, Choisir un accompagnement, Choisir une boisson"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:92
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:209
+msgid "Please type or pick a title (max 100chars)"
+msgstr "Ecrire ou choisir un titre (maximum 100 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:100
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:217
+msgid "All sections"
+msgstr "Toutes les sections"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:101
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:218
+msgid "Pick a menu section from where you'd like to import items."
+msgstr ""
+"Choisir la section du menu de laquelle vous voulez importer les articles. "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:114
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:231
+msgid "Add this item to the current Meal Deal"
+msgstr "Ajouter cet article au Deal repas actuel"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:122
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:206
+msgid "Add a selection to this meal deal"
+msgstr "Ajouter un choix à ce Meal Deal"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:170
+msgid "Click to add a Meal Deal name"
+msgstr "Cliquer ici pour ajouter un nom au Deal repas"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/mdConfig.php:252
+
+msgid ""
+"You've not created any items! You won't be able to create Meal Deals until "
+"you have some items in your menu."
+msgstr ""
+"Vous n'avez pas sélectionné d'articles! Vous n'arriverez pas à créer de "
+"Deals repas"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:25
+msgid "Build your menu"
+msgstr "Créez votre menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:25
+msgid "Your menu"
+msgstr "Votre menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:25
+msgid ""
+"Now it's time to create your menu. We suggest you keep it simple to start "
+"with.<br/><br/>An easy way is to group items, i.e. create separate sections "
+"for food, cold drinks and hot drinks."
+msgstr ""
+"Il est l’heure maintenant de créer votre menu. Nous vous suggérons de le "
+"garder simple pour commencer. <br/><br/> Grouper des articles est efficace "
+"et facile. C’est-à-dire, créer des sections séparées pour les plats, "
+"boissons froides et boissons chaudes. "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:61
+msgid "Click to add your menu name"
+msgstr "Cliquez pour ajouter un nom à votre menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:62
+msgid "Please type a menu name (max 100chars)"
+msgstr "Tapez un nom de menu (max 100 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:68
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:204
+msgid "Click to add a section name"
+msgstr "Cliquez ici pour ajouter un nom de section"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:69
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:205
+msgid "Please type a section name (max 100chars)"
+msgstr "Tapez un nom de section (max 100 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:74
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:210
+msgid "Add an item to this section"
+msgstr "Ajouter un article à cette section"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:76
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:212
+msgid "Move this section"
+msgstr "Bougez cette section"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:87
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:223
+msgid "Price (&pound;)"
+msgstr "Prix (&euro;)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:88
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:224
+msgid "Quantity"
+msgstr "Quantité"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:103
+msgid "Click to add an item name"
+msgstr "Cliquez pour ajouter un nom d'article"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:107
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:242
+msgid "Optional description"
+msgstr "Description optionnelle"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:112
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:162
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:247
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:297
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:329
+msgid "Price?"
+msgstr "Prix?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:116
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:250
+msgid "Unlimited"
+msgstr "Illimité"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:119
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:253
+msgid "This chooses whether you want to activate this food on the menu or not."
+msgstr ""
+"Celui-ci vous servira si vous souhaitez activer cet article dans le menu ou "
+"pas."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:132
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:266
+msgid "Reorder"
+msgstr "Réarranger"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:138
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:274
+msgid "Add a new option to this item"
+msgstr "Ajouter une nouvelle option à cet article"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:138
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:274
+msgid "Add an option"
+msgstr "Ajouter une option"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:140
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:276
+msgid "Type or pick an option title"
+msgstr "Tapez ou choisissez un titre d'option"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:140
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:276
+msgid "Eg. Pick a size, Choice of an option, Add some extras, Select a side"
+msgstr ""
+"ex. choisissez une taille, une option, ajoutez des extras, sélectionnez un "
+"accompagnement"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:141
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:277
+msgid "Please type or pick a title"
+msgstr "Veuillez taper ou choisir un titre"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:145
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:281
+msgid "User must select only one option."
+msgstr "L'utilisateur ne doit choisir qu'une option "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:145
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:281
+msgid "User selects 1 option"
+msgstr "L'utilisateur sélectionne 1 option"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:146
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:282
+msgid "User must select one or more options."
+msgstr "L'utilisateur doit choisir une ou deux options"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:146
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:282
+msgid "User selects 1 or more options"
+msgstr "L'utilisateur sélectionne 1 ou plusieurs options"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:147
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:283
+msgid "User can select zero or more options."
+msgstr "L'utilisateur peut choisir zéro ou plus options"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:147
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:283
+msgid "User selects 0 or more options"
+msgstr "L'utilisateur sélectionne 0 ou plusieurs options"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:148
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:284
+msgid ""
+"Single: When the user must pick only 1 option.<br/><br/>Multiple: When the "
+"user must pick 1 or more options.<br/><br/>Optional: when the user can pick "
+"0 or multiple options."
+msgstr ""
+"Unique : Quand une personne ne doit choisir qu'une option <br/><br/"
+">Multiple: Quand l’utilisateur doit choisir 1 ou plusieurs options <br/><br/"
+">Optionnel: Quand l’utilisateur peut choisir 0 ou plusieurs options"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:149
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:285
+msgid "Please choose a type"
+msgstr "Veuillez choisir un type"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:154
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:290
+msgid "Click to add an option name"
+msgstr "Cliquez pour ajouter un nom d'option"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:155
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:291
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:323
+msgid "Please type an option name (max 100chars)"
+msgstr "Veuillez entrer un nom d'option (max 100 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:161
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:296
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:328
+msgid ""
+"This will be in addition to the item price. If there is no price difference, "
+"put in 0.00."
+msgstr ""
+"Cela sera en plus du prix de l’article. S’il n’y a pas de différence de "
+"prix, veuillez inscrire 0.00 "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:183
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:354
+msgid "Eg. Toppings, Sizes, Exras, etc"
+msgstr "ex. garniture, taille, accompagnements etc"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:183
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:354
+msgid "Add an option category to this item <small>(optional)</small>"
+msgstr ""
+"Ajoutez un option de catégorie à cet article <petit>(optionnel)</petit>"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:371
+msgid "Add a new menu section"
+msgstr "Ajouter une nouvelle section de menus"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:377
+msgid "COLLAPSE ALL"
+msgstr "TOUT REDUIRE"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:379
+msgid "SAVE & CONTINUE EDITING"
+msgstr "ENREGISTRER & CONTINUER"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:380
+msgid "SAVE & FINISH"
+msgstr "ENREGISTRER & TERMINER"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/menuConfig.php:394
+msgid "45&#37 done, now for the fun bit!"
+msgstr "45&#37 fait, maintenant c'est l'heure de s'amuser!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:18
+msgid "Tell us about your opening times"
+msgstr "Informez-nous de vos horaires d'ouverture"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:21
+msgid "Days your venue is open"
+msgstr "Les jours où vous êtes ouverts"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:22
+msgid "Mon"
+msgstr "Lun"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:23
+msgid "Tue"
+msgstr "Mar"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:24
+msgid "Wed"
+msgstr "Mer"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:25
+msgid "Thu"
+msgstr "Jeu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:26
+msgid "Fri"
+msgstr "Ven"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:27
+msgid "Sat"
+msgstr "Sam"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:28
+msgid "Sun"
+msgstr "Dim"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:38
+msgid "Add another opening hour"
+msgstr "Ajouter un autre horaire d'ouverture"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:38
+msgid "eg: if you close for lunch and reopen in the evening."
+msgstr ""
+"ex si vous fermez pendant la pause déjeuner et reouvrez dans la soirée."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:47
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:67
+msgid "Opens at"
+msgstr "Ouvre à"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:52
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:72
+msgid "Closes at"
+msgstr "Ferme à"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:58
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:78
+msgid "Remove opening hour"
+msgstr "Enlever horaire d'ouverture"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/nonEventConfig.php:86
+msgid "Apply these times to all days"
+msgstr "Appliquer ces horaires à tous les jours"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:6
+msgid "Outlets"
+msgstr "Points de vente"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:14
+msgid "Add a new Outlet"
+msgstr "Ajouter un nouveau point de vente "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:15
+msgid "Create a new menu"
+msgstr "Créer un nouveau menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:26
+msgid "Add an outlet name"
+msgstr "Ajouter un nom de point de vente"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:27
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:61
+msgid "Please type an outlet name"
+msgstr "Veuillez taper un nom de point de vente"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:35
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/outletConfig.php:69
+msgid "Please choose a menu"
+msgstr "Veuillez choisir un menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:19
+msgid "Don't forget to get paid"
+msgstr "N’oubliez pas d’être payé !"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:28
+msgid "CONNECT TO STRIPE"
+msgstr "SE CONNECTER À STRIPE"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:31
+msgid "SKIP THIS FOR NOW"
+msgstr "PASSER POUR LE MOMENT"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:35
+msgid "YOU'RE ALREADY CONNECTED"
+msgstr "VOUS ÊTES DÉJÀ CONNECTÉ"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/paymentConfig.php:45
+msgid "85&#37 done, we've saved the best for last!"
+msgstr "85&#37 fait, nous avons gardé le meilleur pour la fin!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:6
+msgid "User management"
+msgstr "Gestion des utilisateurs"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:14
+msgid "Add a new user"
+msgstr "Ajouter un nouvel utilisateur"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:22
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/forgot/forgot_content.php:8
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:20
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:23
+msgid "Email"
+msgstr "Email"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:23
+msgid "This decides the level of access of your users."
+msgstr "Cela permet de choisir le niveau d’accès de vos membres"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:36
+msgid "Add a user name"
+msgstr "Ajouter un nom d'utilisateur"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:37
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:89
+msgid "Please type a user name (max 200chars)"
+msgstr "Veuillez entrer un nom d'utilisateur (max 200 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:40
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:92
+msgid "Add an email"
+msgstr "Ajouter une adresse email"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:41
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:93
+msgid "Please type an email"
+msgstr "Veuillez tapez une adresse email"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:45
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:97
+msgid "Staff: can only read account"
+msgstr "Personnel: peut uniquement lire le compte"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:45
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:97
+msgid "Staff"
+msgstr "Personnel"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:46
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:98
+msgid "Admin: can read/write account but cannot close it down"
+msgstr "Admin : peut lire/modifier le compte mais ne peuvent le fermer"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:46
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:98
+msgid "Admin"
+msgstr "Administrateur "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:47
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:99
+msgid "Owner: can read/write account and close it down"
+msgstr "Propriétaire: peut lire/modifier le compte mais aussi le fermer"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:47
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:99
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:59
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:31
+msgid "Password"
+msgstr "Mot de passe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:60
+msgid "Assign a password"
+msgstr "Assigner un mot de passe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:61
+msgid "Provide a Password"
+msgstr "Fournir un mot de passe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:64
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/reset/reset_content.php:15
+msgid "Confirm Password"
+msgstr "Confirmer votre mot de passe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:65
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:61
+msgid "Confirm password"
+msgstr "Confirmer votre mot de passe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/userConfig.php:66
+msgid "Passwords don't match"
+msgstr "Les mots de passe ne correspondent pas"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:35
+msgid "Tell us about your venue"
+msgstr "Dites-nous en plus sur votre business"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:40
+msgid "Venue lookup"
+msgstr "Recherche lieu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:41
+msgid "Start typing a venue name..."
+msgstr "Commencer à taper un nom de lieu..."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:51
+msgid "Venue name"
+msgstr "Nom de l'endroit"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:53
+msgid "Please type a venue name (max 100chars)"
+msgstr "Veuillez inscrire un nom de lieu (max 100 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:59
+msgid "Venue address"
+msgstr "Adresse de l'endroit"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:62
+msgid "Please type a venue address (max 250chars)"
+msgstr "Veuillez inscrire une adresse (max 250 caractères) "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:68
+msgid "Venue post code"
+msgstr "Code postal de l'endroit"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:70
+msgid "Please type a post code (max 45chars)"
+msgstr "Veuillez inscrire un code postal (max 45 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:76
+msgid "Venue country"
+msgstr "Pays du business"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:323
+msgid "Please choose a country"
+msgstr "Veuillez choisir un pays"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:329
+msgid "Venue description"
+msgstr "Descriptif du lieu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:329
+msgid ""
+"Please enter a short description about your venue.<br/><br/>This will not "
+"appear on your branded app."
+msgstr ""
+"Veuillez entrer un petit description de votre entreprise. <br/><br/> Cela ne "
+"va pas apparaître sur votre application."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:331
+msgid "Please type a venue description (max 250chars)"
+msgstr "Veuillez écrire une description de votre lieu (max 250 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:337
+msgid "What type of venue are you?"
+msgstr "Quel type d'entreprise avez vous?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:339
+msgid "Sports Arena"
+msgstr "Stade"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:340
+msgid "Bars, Pubs and Clubs"
+msgstr "Bars, Pubs et Clubs"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:341
+msgid "Workplace/Education Catering"
+msgstr "Restauration pour le travail/cantines"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:342
+msgid "Retail Catering (Cafe, Sandwich Bar, Restaurant, etc)"
+msgstr "Traiteur au détail (Café, Sandwicherie, Bar, Restaurant, etc)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:343
+msgid "Music and Cultural"
+msgstr "Musique et Culturel"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:350
+msgid "Are you primarily an events based business?"
+msgstr "Etes-vous une entreprise basée sur l’événementiel?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:350
+msgid ""
+"Does your business revolve around regular events, e.g. football matches, "
+"performances, etc?"
+msgstr ""
+"Est-ce que votre business est principalement événementiel? ex. matchs de "
+"foot, shows etc ?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:365
+msgid "Collection Slot Duration (mins)"
+msgstr "Durée du créneau de récupération (mins)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:365
+msgid ""
+"This is the number of minutes after opening time and before closing time "
+"when customers are allowed to collect orders."
+msgstr ""
+"C'est le nombre de minutes après l'horaire d'ouverture et avant la "
+"fermeture, lorsque les clients peuvent récupérer leurs commandes."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:366
+msgid "eg: 30"
+msgstr "ex. 30"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:367
+msgid "Please provide a duration in mins"
+msgstr "Veuillez fournir un durée en minutes."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:373
+msgid ""
+"The time it takes to prepare your order before the customer can pick it up."
+msgstr ""
+"Temps nécessaire à la préparation de la commande avant que le client puisse "
+"la récupérer. "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:374
+msgid "e.g. 25"
+msgstr "ex. 25"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:375
+msgid "Please provide a lead time"
+msgstr "S'il vous plaît fournir un délai de préparation"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/dashboard/venueConfig.php:398
+msgid "15&#37 done, keep going!"
+msgstr "15&#37 fait, continuer!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:13
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:84
+msgid "Payment Method"
+msgstr "Moyen de paiement"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:26
+msgid "The finish line!"
+msgstr "Ligne d'arrivée!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:28
+msgid "App mode"
+msgstr "En mode d'application"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:33
+msgid "After you setup a payment method, you can send it into the world!"
+msgstr ""
+"Après avoir mis en place un moyen de paiement vous pourrez l'envoyer à tout "
+"le monde!"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:38
+msgid "SETUP PAYMENT"
+msgstr "INSTALLER UN MOYEN PAIEMENT"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:42
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:48
+msgid "MAKE MY APP LIVE"
+msgstr "METTRE MON APP en MODE LIVE"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:45
+msgid "SWITCH TO DEMO MODE"
+msgstr "METTRE MON APP en mode DEMO"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:49
+msgid "PUT MY APP IN DEMO MODE"
+msgstr "METTRE MON APP en MODE DEMO"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:51
+msgid "TAKE MY APP OFFLINE"
+msgstr "METTRE MON APP en mode HORS LIGNE "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:53
+msgid "BACK TO THE DASHBOARD"
+msgstr "RETOURNER AU DASHBOARD"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/finish/finish_content.php:74
+msgid "Payment method was not setup."
+msgstr "Moyen de paiement"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/forgot/forgot_content.php:4
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:39
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié ? "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/forgot/forgot_content.php:10
+msgid "An email address is required."
+msgstr "Une adresse mail est requise"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/forgot/forgot_content.php:16
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/reset/reset_content.php:23
+msgid "RESET PASSWORD"
+msgstr "Réinitialiser le mot de passe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/more/more_content.php:15
+msgid "Please select at least one feature"
+msgstr "Veuillez sélectionner au moins une fonction"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/more/more_content.php:20
+msgid ""
+"Describe your requirement. Include details like like the brand of ePOS you "
+"are using or the number of outlets you require."
+msgstr ""
+"Décrire vos exigences. Inclure les détails comme la marque ePOS que vous "
+"utilisez ou le nombre de points de vente dont vous avez besoin "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/more/more_content.php:22
+msgid "Please enter your requirement."
+msgstr "Entrer vos exigences."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/more/more_content.php:28
+msgid "SEND"
+msgstr "ENVOYER"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/more/more_content.php:33
+msgid "Thank you for your request"
+msgstr "Merci de votre demande"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/more/more_content.php:34
+msgid "We'll be in touch shortly."
+msgstr "Nous allons vous contacter prochainement. "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/reset/reset_content.php:4
+msgid "Reset your password?"
+msgstr "réinitialiser votre mot de passe?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/reset/reset_content.php:9
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:66
+msgid "New Password"
+msgstr "Nouveau mot de passe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/reset/reset_content.php:12
+msgid "A password is required."
+msgstr "Un mot de passe est requis"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/reset/reset_content.php:17
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:73
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:63
+msgid "Passwords don't match."
+msgstr "Les mots de passe ne correspondent pas."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/reset/reset_content.php:28
+msgid "Sorry. Invalid code."
+msgstr "Désolés. Code invalide."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:6
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:98
+msgid "Profile"
+msgstr "Profil"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:8
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:33
+msgid "First Name"
+msgstr "Prénom"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:10
+msgid "First Name is required (max 100chars)"
+msgstr "Prénom requis (max 100 caractères) "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:13
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:38
+msgid "Last Name"
+msgstr "Nom de Famille"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:15
+msgid "Last Name is required (max 100chars)"
+msgstr "Nom de Famille requis (max 100 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:22
+msgid "An email address is required"
+msgstr "Une adresse e-mail est requise"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:25
+msgid "Business Name"
+msgstr "Nom de votre entreprise"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:27
+msgid "A business name is required (max 100chars)"
+msgstr "Un nom d'entreprise est requis (max 100 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:34
+msgid "Notifications"
+msgstr "Notifications"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:37
+msgid "Off"
+msgstr "Off "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:40
+msgid "On"
+msgstr "On "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:50
+msgid "Change password?"
+msgstr "Changer votre mot de passe?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:58
+msgid "Old Password"
+msgstr "Ancien mot de passe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:61
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:68
+msgid "A password address is required."
+msgstr "Un adresse de mot de passe et requis"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:71
+msgid "Confirm New Password"
+msgstr "Confirmer votre nouveau mot de passe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/settings/settings_content.php:80
+msgid "SAVE"
+msgstr "ENREGISTRER"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/dashboard_footer.php:5
+msgid ""
+"Looking for ePOS integration, detailed reporting or the ability to configure "
+"multiple outlets?"
+msgstr ""
+"Vous cherchez à intégrer ePOS, les rapports détaillés ou la capacité à "
+"configurer plusieurs points des ventes?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/dashboard_footer.php:6
+msgid "FIND OUT MORE"
+msgstr "EN SAVOIR PLUS"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/dashboard_footer.php:14
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/regular_footer.php:19
+msgid "support@preoday.com"
+msgstr "support@preoday.com"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/dashboard_footer.php:15
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/regular_footer.php:20
+msgid "Legal Statement"
+msgstr "Informations légales"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/dashboard_footer.php:16
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/regular_footer.php:21
+msgid "Privacy + Cookies"
+msgstr "Politique de Confidentialité +  Cookies "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/dashboard_footer.php:17
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/regular_footer.php:22
+msgid "Preoday"
+msgstr "Preoday"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:9
+msgid "PreoDay"
+msgstr "Preoday"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:14
+msgid "Menu"
+msgstr "Menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:22
+msgid "Sign Up"
+msgstr "S'inscrire"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:23
+msgid "Login"
+msgstr "Se connecter"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:28
+msgid "Go to Dashboard"
+msgstr "Aller sur le Dashboard"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:31
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:34
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:37
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:40
+msgid "Fulfilment App"
+msgstr "application d'exécution "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:45
+msgid "Change Settings"
+msgstr "Modifier les réglages"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:51
+msgid "Home Screen"
+msgstr "Ecran d'accueil"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:52
+msgid "Menu Screen"
+msgstr "Ecran de Menu"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:70
+msgid "No menus"
+msgstr "Pas de Menus"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:77
+msgid "Update Events"
+msgstr "Actualiser vos événements"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:83
+msgid "Manage Users"
+msgstr "Gérer vos utilisateurs"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:99
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:110
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:102
+msgid "Help"
+msgstr "Aide"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:104
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/h.php:109
+msgid "Getting started"
+msgstr "Commencer"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/meta.php:9
+msgid "preoday"
+msgstr "preoday"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:1
+msgid "PRIVACY NOTICE FOR MY ORDER APP"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:2
+msgid ""
+"This privacy notice provides\n"
+"information on how Preoday Limited (“Preoday”) uses personal data\n"
+"relating to users ('you') of its ordering and payment\n"
+"services app (the 'App') and related services (together\n"
+"referred to in this policy as the 'Services')."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:7
+msgid "1. Who is Preoday?"
+msgstr "1. Qui est Preoday?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:8
+msgid ""
+"Preoday Limited is a company registered\n"
+"in England and Wales with company number 08243191, and registered\n"
+"with the Information Commissioner’s Office under number ZA027520."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:11
+msgid ""
+"Preoday runs the App for a venue where\n"
+"food, drinks and/or merchandise is available to order (the “Venue”).\n"
+"Preoday acts as a data controller in their use of your personal data\n"
+"relating to the App, as described in this privacy notice."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:15
+msgid ""
+"You can contact Preoday by using the\n"
+"contact details set out at paragraph 11 below."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:17
+msgid ""
+"2. Collection and use of data by\n"
+"Preoday"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:19
+msgid "2.1. Registration details"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:20
+msgid ""
+"If you install the App, you will be\n"
+"asked to register with Preoday in order to create an account and\n"
+"receive the related Services. Registration information may include:"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:24
+msgid ""
+"the telephone number of the mobile\n"
+"\tdevice on which you have installed the App. This will be used to\n"
+"\tdeliver the Services and manage your password"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:27
+msgid ""
+"your email address, which will be\n"
+"\tused to send you receipts for payments of your order;"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:29
+msgid ""
+"your date of birth which will be\n"
+"\tused to check you are over 18 years of age and as an additional\n"
+"\tidentity check should you need to get in contact with Preoday;"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:32
+msgid ""
+"your physical address. This will be\n"
+"\tused if we need to arrange delivery to you; and"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:34
+msgid ""
+"other relevant information, such as\n"
+"\tvenue specific membership numbers, loyalty card numbers, your\n"
+"\tpreferences with regards to mobile orders."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:38
+msgid ""
+"As an alternative to providing your\n"
+"email address and date of birth, you can register using your choice\n"
+"of social media profile, including but not limited to, Facebook or\n"
+"Google+, from which Preoday will obtain information, including the\n"
+"information above – see also paragraph 4 below."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:43
+msgid ""
+"You will also be asked to set a\n"
+"password to give access to your account details."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:45
+msgid "2.2. Your payment card details"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:46
+msgid ""
+"You must have appropriate authority to\n"
+"use the payment card that you use for payment."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:48
+msgid ""
+"Payment processing services are\n"
+"provided by a third party. The details you provide to us in the App\n"
+"are passed directly to the payment service provider and will be\n"
+"subject to its terms of use and privacy policy. By inputting payment\n"
+"card details, you are consenting to use of the payment card details\n"
+"by the payment services provider for the purpose of paying for your\n"
+"order. If you have any questions relating to these services please\n"
+"contact the relevant payment service provider."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:56
+msgid ""
+"Preoday does not store any of your\n"
+"payment card details on its systems. Payment transactions are between\n"
+"you and the Venue. Preoday does not receive your payment."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:59
+msgid "2.3. Visiting a Venue"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:60
+msgid ""
+"The App allows you to place orders and\n"
+"pay for your food, drink and merchandise. After placing an order you\n"
+"will pay for it using the App through one of our payment service\n"
+"providers. The details of your order will be used to deliver the\n"
+"Services and generate your payment receipt."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:65
+msgid ""
+"Preoday may also collect data relating\n"
+"to your visits (including the food, drink and merchandise you chose,\n"
+"the Venue you visited and when, order amounts and your payments) to\n"
+"improve the Services, and for analysis and statistical purposes (see\n"
+"paragraph 5 below). This data is collected through the App."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:70
+msgid "2.4. Contacting Preoday"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:71
+msgid ""
+"If you contact Preoday in relation to\n"
+"the App (via email, telephone, post or otherwise), we may collect and\n"
+"retain your contact details and your communication for the purpose of\n"
+"handling your query and keeping records of communications."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:75
+msgid "3. Use of data by the Venue"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:76
+msgid ""
+"Preoday runs the App for the Venue and\n"
+"data collected through the App may be disclosed to the Venue. This\n"
+"may include your Preoday user details, demographic information and\n"
+"details relating to your experience at the Venue. This data may be\n"
+"used by the Venue for:"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:82
+msgid ""
+"managing your payment of for an\n"
+"\torder;"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:84
+msgid ""
+"analysis and statistics (see\n"
+"\tparagraph 5 below); and"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:86
+msgid ""
+"subject to obtaining your consent\n"
+"\twhich is sought via the App, sending you marketing communications\n"
+"\tthrough the App, by push notifications or by email."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:90
+msgid ""
+"4. Combining with data from other\n"
+"sources"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:92
+msgid ""
+"Information collected using the App and\n"
+"relating to your visits to the Venue may be combined by Preoday with\n"
+"data from other sources as follows:"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:96
+msgid ""
+"if you log in to the App using your\n"
+"\tsocial media login, Preoday will collect additional information from\n"
+"\tyour social media profile for analysis and statistical purposes (see\n"
+"\tparagraph 5 below). If you prefer not to do this, you can register\n"
+"\tand create a separate account for the App; and"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:101
+msgid ""
+"if you download or use (or have\n"
+"\tdownloaded or used) another venue’s Preoday mobile app or an app\n"
+"\tcreated using Preoday’s API, Preoday may combine data obtained from\n"
+"\tthis App with data processed in relation to that app."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:106
+msgid ""
+"The combined data may be used by\n"
+"Preoday for the same purposes outlined in this policy."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:108
+msgid "5. Analysis and statistics"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:109
+msgid ""
+"Preoday may use the data it collects\n"
+"about you for analysis and statistical purposes, for example to\n"
+"analyse how many users place orders at particular times, food and\n"
+"drink preferences, and the characteristics of such users, for example\n"
+"their age or gender. If you have logged in using your social media\n"
+"login, Preoday may combine data collected from the App and the Venue\n"
+"with information from your social media profile for these purposes."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:116
+msgid ""
+"Statistics and results of analysis\n"
+"(anonymised and without reference to your personal data) may also be\n"
+"shared with the Venue, other venues and their suppliers for the\n"
+"purpose of improving the services and customer experience within\n"
+"those venues."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:121
+msgid "6. Other use of your personal data"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:122
+msgid ""
+"Preoday may also use and disclose your\n"
+"personal data for the purposes of:"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:125
+msgid ""
+"checking your compliance with the\n"
+"\tPreoday terms of use for the App;"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:127
+msgid ""
+"administration and maintenance of\n"
+"\tthe Services;"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:129
+msgid ""
+"compliance with legal obligations,\n"
+"\tor protection and enforcement of legal rights; and/or"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:131
+msgid ""
+"managing actual or potential\n"
+"\tbusiness transactions (eg in the case of an acquisition of Preoday’s\n"
+"\tbusiness)."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:135
+msgid ""
+"7. Disclosure of your personal data to\n"
+"third parties"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:137
+msgid ""
+"Preoday may disclose your personal data\n"
+"for the purposes outlined at paragraphs 2 to 6 above to third\n"
+"parties, including:"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:141
+msgid ""
+"our service providers and\n"
+"\tprofessional advisers;"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:143
+msgid ""
+"governmental bodies and law\n"
+"\tenforcement authorities;"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:145
+msgid ""
+"any investor, lender, purchaser or\n"
+"\t(on terms of confidentiality) likely investor in, or purchaser of\n"
+"\tPreoday’s business; and"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:148
+msgid ""
+"other third parties where required\n"
+"\tor permitted by law."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:151
+msgid ""
+"Preoday will never sell information\n"
+"that can be used to personally identify you to a third party."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:153
+msgid ""
+"8. Storage and security of your\n"
+"personal data"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:155
+msgid ""
+"Your personal data is stored in\n"
+"electronic and physical records maintained by Preoday and/or its\n"
+"service providers. Whilst Preoday is based in the UK, it and its\n"
+"service providers may have servers located overseas, where the laws\n"
+"may not give the same level of protection to personal data as within\n"
+"the UK. By submitting your personal data, you agree to allowing your\n"
+"personal data to be transferred, processed and stored overseas as set\n"
+"out in this paragraph."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:163
+msgid "9. Removal of your details"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:164
+msgid ""
+"You may request deletion of your\n"
+"account on the App at any time by sending an email to Preoday at "
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:166
+msgid ""
+"However, Preoday may retain certain\n"
+"aspects of your account and other personal details for the purposes\n"
+"of maintaining records of their dealings with you, analysis and\n"
+"statistics."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:170
+msgid ""
+"Preoday may delete your account in\n"
+"accordance with clauses 5.3 and 8.2 of its terms of use, including in\n"
+"the circumstances where you breach its terms or have not used the\n"
+"Services for a substantial period of time."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:174
+msgid "10. Access to your details"
+msgstr "Accéder à vos détails"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:175
+msgid ""
+"If you would like to access a copy of\n"
+"any personal data which Preoday hold about you, or if you wish to\n"
+"change your consent regarding marketing communications, please send a\n"
+"request by email or by post using the contact details in paragraph 11\n"
+"below. An administration fee of £10 may be charged to access your\n"
+"details."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:181
+msgid ""
+"You have the right, in certain\n"
+"circumstances, to object to Preoday processing your personal data or\n"
+"to request that your personal data is corrected or deleted. Please\n"
+"contact us using the contact details in paragraph 11 below."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:185
+msgid "11. Queries"
+msgstr "11. Questions"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:186
+msgid ""
+"If you have any queries in relation to\n"
+"the processing of your personal data by Preoday Limited, please\n"
+"contact us at:"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:189
+msgid ""
+"Preoday Limited, c/o Lawrence Grant\n"
+"Chartered Accountants, 2nd Floor Hygeia House, 66 College Road,\n"
+"Harrow, Middlesex, HA1 1BE"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/privacy.php:192
+msgid "Email: "
+msgstr "Email : "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/regular_footer.php:4
+msgid "CHANGE LANGUAGE"
+msgstr "CHANGER LA LANGUE"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/regular_footer.php:6
+msgid "English"
+msgstr "Anglais"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/regular_footer.php:7
+msgid "German"
+msgstr "Allemand"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/regular_footer.php:8
+msgid "French"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:1
+msgid "TERMS OF USE FOR MY ORDER APP"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:2
+msgid ""
+"By choosing to set up and create a\n"
+"Preoday My Order App for your venue, you are agreeing to these terms.\n"
+"If you do not agree with these terms, you are unable to comply with\n"
+"these terms, or you do not have the power, right or authority to act\n"
+"on behalf of and bind your company, then you must not proceed with\n"
+"your order."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:8
+msgid ""
+"These terms form a legal agreement (the\n"
+"'Agreement') between you and Preoday Limited, a company\n"
+"registered in England and Wales with company number 08243191\n"
+"('Preoday', 'we' or 'us')."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:12
+msgid "1. The Services"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:13
+msgid ""
+"'Services' means the services\n"
+"provided by Preoday on our website regarding the creation and running\n"
+"of an app to facilitate your customers’ order and payment for food,\n"
+"drinks and merchandise at your venue (the “App”) and any\n"
+"additional services provided by Preoday to you in accordance with\n"
+"this Agreement."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:19
+msgid "2. Registration"
+msgstr "2. Enregistrement"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:20
+msgid ""
+"2.1 In order for you to access the\n"
+"Services, you must register with us and create an account on our\n"
+"website."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:23
+msgid ""
+"2.2 For security purposes, you must\n"
+"also set a password. You should keep your username and password\n"
+"confidential. Any use of the Services with your login credentials\n"
+"will be your responsibility. You can reset your password at any time\n"
+"on our Site."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:28
+msgid ""
+"2.3 You may create additional login\n"
+"credentials for your account (for other staff or admin users). These\n"
+"usernames and passwords should be kept confidential. Any use of the\n"
+"Services with these login credentials will be your responsibility.\n"
+"You can reset these login credentials at any time on our Site."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:33
+msgid ""
+"2.4 As an alternative to creating an\n"
+"account with us you can use existing third party credentials (e.g.\n"
+"Facebook or Google+). If you use third party credentials we may\n"
+"obtain certain information (e.g. your email address and date of\n"
+"birth) from the third party."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:38
+msgid "3. Payment"
+msgstr "3. Paiement"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:39
+msgid ""
+"3.1 In order for you to receive your\n"
+"customers’ payments for the food, drink and merchandise they order\n"
+"using the App, you will need to register with one of our payment\n"
+"service providers."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:43
+msgid ""
+"3.2 Payment processing services are\n"
+"provided by a third party. The details you provide to the payment\n"
+"service provider will be subject to its terms of use and privacy\n"
+"policy. If you have any questions relating to these services please\n"
+"contact the relevant payment services provider."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:48
+msgid ""
+"3.3 Payment transactions are between\n"
+"you and your customers. Whilst we facilitate the payment procedure,\n"
+"Preoday is not involved in the processing of your customers’\n"
+"payments and is not responsible or liable for the services provided\n"
+"by the payment service provider."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:53
+msgid "4. Your use of the Services"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:54
+msgid ""
+"4.1 Subject to your compliance with the\n"
+"terms of this Agreement, we grant you a non-exclusive,\n"
+"non-transferable licence for the purpose of accessing and using the\n"
+"Services in accordance with this Agreement."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:58
+msgid "4.2 You may not:"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:59
+msgid ""
+"4.2.1 sub-license, assign or transfer\n"
+"your rights or obligations under this Agreement;"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:61
+msgid ""
+"4.2.2 access and use the Services using\n"
+"any interface other than in accordance with this Agreement."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:63
+msgid ""
+"4.3 You acknowledge that, except for\n"
+"the content provided by you, the App and the content of the Services\n"
+"are protected by copyright, database rights, trade marks and other\n"
+"intellectual property rights of us and our other licensors, as\n"
+"applicable, and all rights not expressly granted to you are reserved\n"
+"to us and our licensors."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:69
+msgid ""
+"4.4 You may not use the Services in any\n"
+"way incompatible with their intended purpose nor in any unlawful or\n"
+"unauthorised manner and, in particular, you may not:"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:72
+msgid ""
+"4.4.1 make any copies of the Services\n"
+"(other than a single back-up copy to the extent necessary to exercise\n"
+"your rights under this Agreement); nor"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:75
+msgid ""
+"4.4.2 modify, adapt, reverse engineer,\n"
+"decompile or disassemble, create derivative works of, publish,\n"
+"distribute exploit the App or any content or software element of the\n"
+"Services; nor"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:79
+msgid ""
+"4.4.3 remove any copyright or\n"
+"proprietary notices on the App or the content of the Services; nor"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:81
+msgid ""
+"4.4.4 use, distribute or disclose\n"
+"confidential, personal or sensitive information within the content of\n"
+"the App or the Services without appropriate authority; nor"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:84
+msgid ""
+"4.4.5 export the App in breach of\n"
+"applicable export control or other laws relating to the export of\n"
+"technology and software; nor"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:87
+msgid ""
+"4.4.6 make any unlawful or unauthorised\n"
+"use of our (or our service providers’) equipment, networks, systems\n"
+"or software (including attempting to gain unauthorised access,\n"
+"introducing any computer virus or malware, or inhibiting their\n"
+"operation)."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:92
+msgid "5. Duration and termination"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:93
+msgid ""
+"5.1 This Agreement will commence from\n"
+"the time you accept this Agreement."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:95
+msgid ""
+"5.2 You may terminate this Agreement at\n"
+"any time by sending an email to us at "
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:97
+msgid ""
+"5.3 We may withdraw the Services and\n"
+"associated content, suspend your access to the Services and/or\n"
+"terminate this Agreement at any time at our absolute discretion,\n"
+"including (without limitation) if you breach or we reasonably suspect"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:101
+msgid ""
+"that you are in breach of any term of\n"
+"this Agreement, or if we cease to offer (or change the way in which\n"
+"we offer) the Services. You will not be entitled to any compensation\n"
+"for such withdrawal, removal, termination or suspension."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:105
+msgid ""
+"5.4 Following termination of this\n"
+"Agreement or suspension of your access to the Services for any\n"
+"reason, we may retain your account details and other records relating\n"
+"to you for our record keeping. Additionally, your customer’s will\n"
+"no longer be able to access or use the App."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:110
+msgid "6. Extent of the Services"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:111
+msgid ""
+"6.1 Our Services are provided for your\n"
+"convenience, and are not intended to be relied upon by you. Whilst we\n"
+"use reasonable efforts to provide effective Services, we cannot\n"
+"guarantee availability of the Services or the App at all times."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:115
+msgid ""
+"6.2 The App and the Services may\n"
+"contain links to websites provided by third parties, and we are not\n"
+"responsible for the availability, accuracy or content of third party\n"
+"websites."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:119
+msgid "7. Content provided by you"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:120
+msgid "7.1 You agree that you:"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:121
+msgid ""
+"7.1.1 have provided and will continue\n"
+"to provide accurate and complete information in your registration and\n"
+"account, and will update such information as appropriate;"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:124
+msgid ""
+"7.1.2 are responsible for the accuracy\n"
+"of any data or content provided as part of the Services; and"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:126
+msgid ""
+"7.1.3 will not upload or transmit to\n"
+"our (or our service providers’) systems or otherwise provide to us\n"
+"any unlawful content (including any content which is defamatory,\n"
+"obscene or abusive, or in breach or an infringement of intellectual\n"
+"property or privacy rights, or any data protection or confidentiality\n"
+"obligations)."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:132
+msgid ""
+"7.2 You should not rely on our Services\n"
+"for storage or maintenance of information or your content. We may, at\n"
+"any time at our absolute discretion review and remove any content\n"
+"from the Services or request that you re-register or set up a new\n"
+"account for your continued use of the Services."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:137
+msgid "8. Limitations of liability"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:138
+msgid ""
+"8.1 Nothing in this Agreement shall\n"
+"exclude or limit our liability for fraud, or for death or personal\n"
+"injury caused by our negligence or other liability which cannot\n"
+"lawfully be excluded or limited."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:142
+msgid ""
+"8.2 Except as may be expressly set out\n"
+"in this Agreement, all conditions, representations and warranties\n"
+"relating to the App and the Services and are excluded to the maximum\n"
+"extent permitted by law."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:146
+msgid ""
+"8.3 We shall not be liable for any\n"
+"defects or errors in the App or the Services, nor interruptions in or\n"
+"unavailability of the Services, nor any breach of any obligations due\n"
+"to a cause beyond our reasonable control."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:150
+msgid "8.4 We shall not be liable for any:"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:151
+msgid ""
+"8.4.1 loss, damage or distress arising\n"
+"from reliance on information or reliance on availability of services;\n"
+"nor"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:154
+msgid ""
+"8.4.2 loss of business, customers or\n"
+"profits; nor"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:156
+msgid ""
+"8.4.3 indirect, consequential or\n"
+"economic loss, damage or distress (including any such loss, damage or\n"
+"distress arising from unauthorised use of or damage to your data or\n"
+"content),"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:160
+msgid ""
+"which you suffer in relation to this\n"
+"Agreement, or your use of the Services."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:162
+msgid ""
+"8.5 As the Services are provided free\n"
+"of charge, you agree that such exclusions of liability are\n"
+"reasonable."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:165
+msgid ""
+"8.6 Without prejudice to other\n"
+"limitations on our liability (including clause 8.4) or clause 8.1,\n"
+"Preoday's total liability to you in any twelve (12) month period for\n"
+"any other losses or claims relating to the App or the Services and\n"
+"arising during that period is limited to £500 or the fees paid by\n"
+"you to us in such a period, whichever is greater."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:171
+msgid ""
+"8.7 You agree to indemnify us against\n"
+"all liabilities, costs, expenses, damages and losses suffered or\n"
+"incurred by us relating to any breach of clause 7.1.3."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:174
+msgid "9. Changes"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:175
+msgid ""
+"9.1 We may make changes to the\n"
+"Services, this Agreement or the terms on which the App may be used by\n"
+"your customers at any time at our absolute discretion. Depending upon\n"
+"the changes, we may require you to read and accept a new agreement\n"
+"for you to continue to use the Services."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:180
+msgid ""
+"9.2 We may (by means of a notice on our\n"
+"website, within the relevant application store or otherwise) require\n"
+"your customers to install and use an upgraded version of the App in\n"
+"place of the current version, or to uninstall the App if we cease to\n"
+"offer it or the Services. All upgrades to the App fall under the\n"
+"definition of the “App” under this Agreement."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:186
+msgid ""
+"9.3 The Services are currently provided\n"
+"free of charge, but we reserve the right to charge for the Services\n"
+"in the future. If we do charge a fee for the Services, then we shall\n"
+"notify you and, in accordance with clause 5.2, you may terminate this\n"
+"Agreement if you do not wish to continue to use the Services for a\n"
+"fee."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:192
+msgid ""
+"9.4 In the future we may also offer\n"
+"additional services in connection with the App, the Services and the\n"
+"services you provide to your customers. These services may include:\n"
+"service charges (eg for delivery of orders to seats); complex system\n"
+"integration; multi-venue reporting and management; marketing and\n"
+"loyalty functionality; enhanced branding services; support services;\n"
+"business intelligence and order analytics. These services will be\n"
+"subject to subscription charges which will communicate to you at the\n"
+"relevant time."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:201
+msgid "10. Privacy notice"
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:202
+msgid ""
+"10.1 You agree to our use of your\n"
+"personal data as set out in our privacy policy, which can be found at "
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:205
+msgid ""
+"10.2 In particular, please note that\n"
+"although Preoday is based in the UK, it and its service providers\n"
+"may have servers located overseas, where the laws may not give the same "
+"level of protection\n"
+"to personal data as within the UK and that by submitting your\n"
+"personal data, you agree to allowing your personal data to be\n"
+"transferred, processed and stored overseas as set out in this\n"
+"clause."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:212
+msgid "11. General"
+msgstr "11. Général"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:213
+msgid ""
+"11.1 All provisions of this Agreement\n"
+"which by their nature are intended to continue shall survive\n"
+"termination, including terms relating to exclusions and limitations\n"
+"of liability, intellectual property restrictions and on-going use of\n"
+"your data."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:218
+msgid ""
+"11.2 Termination of this Agreement or\n"
+"the Services shall not affect accrued rights and liabilities of you\n"
+"or us up to the date of termination."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:221
+msgid ""
+"11.3 No provision of this Agreement is\n"
+"intended to be enforceable by any person other than you and us."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:223
+msgid ""
+"11.4 We may, without your consent,\n"
+"sub-contract provision of the Services or sub- license our rights\n"
+"under this Agreement to our third party service providers."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:226
+msgid ""
+"11.5 We may, without your consent,\n"
+"assign or transfer any or all of our rights and obligations under\n"
+"this Agreement any successor in title of all or part of the App, the\n"
+"Services, or intellectual property or other rights or obligations\n"
+"subsisting in relation to the same."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:231
+msgid ""
+"11.6 Failure or delay by us to exercise\n"
+"any right or remedy under this Agreement does not constitute a waiver\n"
+"of that right or remedy."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:234
+msgid ""
+"11.7 The terms of this Agreement\n"
+"constitute the entire agreement between you and us with respect to\n"
+"the subject matter and supersede any and all prior agreements,\n"
+"negotiations and discussions relating to the same."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:238
+msgid ""
+"11.8 If any provision of this Agreement\n"
+"is found by any court or legal authority to be invalid, unenforceable\n"
+"or illegal, the other provisions shall remain in force and, to the\n"
+"extent possible, the provision shall be modified to ensure it is\n"
+"valid, enforceable and legal, whilst maintaining or giving effect to\n"
+"its commercial intention."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/shared/terms.php:244
+msgid ""
+"11.9 This Agreement is governed by the\n"
+"laws of England and Wales, and the courts of England and Wales shall\n"
+"have exclusive jurisdiction to hear any disputes arising in\n"
+"connection with it."
+msgstr ""
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:3
+msgid "Your account"
+msgstr "Votre compte"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:7
+msgid "Login using Facebook"
+msgstr "S'inscrire grâce à Facebook"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:15
+msgid "Login using Google+"
+msgstr "S'inscrire grâce à Google +"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:25
+msgid "Please type a valid email address"
+msgstr "Veuillez entrer une adresse email valide"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:33
+msgid "Please type your password"
+msgstr "Veuillez tapez votre mot de passe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:45
+msgid "LOG IN"
+msgstr "SE CONNECTER"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:52
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:55
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:58
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:61
+msgid "Looking for the Fulfilment App?"
+msgstr "Vous cherchez l'application de réalisation?"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:52
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:55
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:58
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:61
+msgid "  Click here"
+msgstr "Cliquez ici"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signin/signin_content.php:78
+
+msgid ""
+"Sorry, you don't have sufficient privileges.<br/><br/>Looking for the "
+"Fulfilment App? Click the link at the bottom of this page."
+msgstr ""
+"Désolé, vous n'avez pas de privilèges suffisants. <br/><br/> Vous cherchez "
+"l'application de réalisation? Cliquez le lien au bas de cet page."
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:6
+
+msgid "Now, we just need your business name."
+msgstr "Le nom de votre entreprise"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:13
+msgid "Get started"
+msgstr "Commencer"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:17
+msgid "Signup using Facebook"
+msgstr "S'inscrire grâce à Facebook"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:24
+msgid "Signup using Google+"
+msgstr "S’inscrire grâce à Google +"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:35
+msgid "Please type your first name.(max 100chars)"
+msgstr "Veuillez taper votre prénom (max 100 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:40
+msgid "Please type your last name.(max 100chars)"
+msgstr "Veuillez taper votre nom (max 100 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:45
+msgid "Your email"
+msgstr "Votre Email"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:47
+msgid "Please type your email"
+msgstr "Veuillez taper votre Email"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:53
+msgid "Create a password"
+msgstr "Créer un mot de passe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:55
+msgid "Please type a password."
+msgstr "Veuillez taper un mot de passe"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:69
+msgid "Your business name"
+msgstr "Le nom de votre entreprise"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:71
+msgid "Please type your business name (max 100chars)"
+msgstr "Veuillez taper le nom de votre entreprise (max 100 caractères)"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:77
+msgid "By clicking 'Sign Up' you agree to our"
+msgstr "En cliquant sur ‘s’inscrire’ vous acceptez nos"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:77
+msgid "Terms"
+msgstr "conditions générales "
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:77
+msgid "and"
+msgstr "et"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:77
+msgid "Privacy Policy"
+msgstr "politique de confidentialité"
+
+#: /Users/ricci/Workspace/oDesk/preoday/webapp/inc/signup/signup_content.php:85
+msgid "SIGN UP"
+msgstr "S'INSCRIRE"
+
+#~ msgid "Event configuration has been saved!"
+#~ msgstr "La configuration d'événement a été enregistrée !"
+
+#~ msgid "Select menu(s) for this outlet"
+#~ msgstr "Sélectionner des menu pour cet point du vente"
