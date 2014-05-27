@@ -29,7 +29,7 @@
 </head>
 <body ng-app="delivery" ng-controller="deliveryController">
   <form name="deliveryForm" id="deliveryForm" ng-submit="processForm()" novalidate>  
-  <div class='row'> <h1>Delivery Details</h1></div>
+  <div class='row'> <h1><?echo _("Delivery Details")?></h1></div>
   <div>
     <ul class='row delivery-tabs'>
       <li ng-class="{'selected': selected==1}" ><a href ng:click="selected=1"><?echo _("General Settings")?></a></li>
@@ -77,9 +77,9 @@
 
   <div ng:show="selected == 2" class='delivery-tab-content'>
       <div class="row messageRow messageRowHeader">
-          <div class='messageCol-1'>Preset customer notifications, sent by email and push alert</div>
-          <div class='messageCol-2'>Short name</div>
-          <div class='messageCol-3'>Active?</div>
+          <div class='messageCol-1'><?echo _("Preset customer notifications, sent by email and push alert")?></div>
+          <div class='messageCol-2'><?echo _("Short name")?></div>
+          <div class='messageCol-3'><?echo _("Active?")?></div>
       </div>
       <div class='row messageRow' ng-repeat="message in messages.notify" >      
           <div class='messageCol-1' ng-class="{'error': validateMessage(message) }">
@@ -91,9 +91,9 @@
           </div>
           <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':!validateActive(message)}" > 
           <input  value="0" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
-            <label class="no">No</label>
+            <label class="no"><?echo _("No")?></label>
           <input value="1" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
-            <label class="yes">Yes</label>
+            <label class="yes"><?echo _("Yes")?></label>
             <span></span>
           </div>                
       </div>
@@ -101,9 +101,9 @@
 
   <div ng:show="selected == 3" class='delivery-tab-content'>
      <div class="row messageRow messageRowHeader">
-          <div class='messageCol-1'>Preset order rejection notifications, sent by email and push alert</div>
-          <div class='messageCol-2'>Short name</div>
-          <div class='messageCol-3'>Active?</div>
+          <div class='messageCol-1'><?echo _("Preset order rejection notifications, sent by email and push alert")?></div>
+          <div class='messageCol-2'><?echo _("Short name")?></div>
+          <div class='messageCol-3'><?echo _("Active?")?></div>
       </div>
       <div class='row messageRow' ng-repeat="message in messages.reject" >      
 
@@ -116,9 +116,9 @@
           </div>
           <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':!validateActive(message)}" > 
           <input  value="0" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
-            <label class="no">No</label>
+            <label class="no"><?echo _("No")?></label>
           <input value="1" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
-            <label class="yes">Yes</label>
+            <label class="yes"><?echo _("Yes")?></label>
             <span></span>
           </div>          
         </div>

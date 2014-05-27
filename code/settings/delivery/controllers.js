@@ -6,30 +6,30 @@ angular.module('delivery.controllers',[]).
     var placeholderMessages = {
         notify : [
         {         
-            content:"Your order is running 15 mins late",
-            name:"Late Order"               
+            content:tr_("Your order is running 15 mins late"),
+            name:tr_("Late Order")
         },
         {
-            content:"Your order is on its way",
-            name:"En-route"   
+            content:tr_("Your order is on its way"),
+            name:tr_("En-route")   
         },
         {          
-            content:"There is a problem with your order. Please call us",
-            name:"Call us"               
+            content:tr_("There is a problem with your order. Please call us"),
+            name:tr_("Call us")
         }
     ],
     reject:[
         {
-            content:"Your address is out of our delivery zone",
-            name:"Out of zone"   
+            content:tr_("Your address is out of our delivery zone"),
+            name:tr_("Out of zone")   
         },
         {
-            content:"Sorry, that item is out of stock",
-            name:"Out of stock"   
+            content:tr_("Sorry, that item is out of stock"),
+            name:tr_("Out of stock")   
         },
         {
-            content:"Sorry, Your order has been rejected. Please call us",
-            name:"Call us"   
+            content:tr_("Sorry, Your order has been rejected. Please call us"),
+            name:tr_("Call us")   
         }
     ]};
     
@@ -39,7 +39,6 @@ angular.module('delivery.controllers',[]).
     },function(err){ console.log("error",arguments)});   
 
     var venueSettings = Resources.VenueSettings.get({id:phpSession.venue_id},function(result){        
-        console.log("got venue settings:",venueSettings);
         $scope.venueSettings = result;              
     },function(err){ console.log("error",arguments)});   
 
@@ -150,7 +149,6 @@ angular.module('delivery.controllers',[]).
 
     function postMessage(message){
         //if the message is on the database
-        console.log("posting message:",message);
         if (message.id){
             //if it is not blank, update it, 
             if (message.name.trim() !== "" && message.content.trim() !== "") {
