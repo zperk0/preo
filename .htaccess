@@ -192,3 +192,6 @@ RewriteRule ^menus/([^/]*)$ /menuSettings.php?id=$1 [L]
 
 RewriteCond %{REQUEST_URI} ^/deliverySettings$ [NC]
 RewriteRule ^.*$ /code/settings/delivery/delivery-view.php [L]
+
+RewriteCond %{REQUEST_URI} ^/shop$ [NC]
+RewriteRule ^.*$ /code/premium/shop/shop.php [L]
