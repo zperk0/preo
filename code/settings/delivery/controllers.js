@@ -1,6 +1,6 @@
 
 angular.module('delivery.controllers',[]).
-  controller('deliveryController', function($scope,$http,Resources,$q) {
+  controller('deliveryController', function($scope,$http,Resources,$q, VENUE_ID) {
   	$scope.selected =2;    
     $scope.triedSubmit = false;
     var placeholderMessages = {
@@ -34,15 +34,15 @@ angular.module('delivery.controllers',[]).
     ]};
     
     //get venue object
-    var venue = Resources.Venue.get({id:phpSession.venue_id},function(result){        
+    var venue = Resources.Venue.get({id:VENUE_ID},function(result){        
     	$scope.venue = result;    	    	
     },function(err){ console.log("error",arguments)});   
 
-    var venueSettings = Resources.VenueSettings.get({id:phpSession.venue_id},function(result){        
+    var venueSettings = Resources.VenueSettings.get({id:VENUE_ID},function(result){        
         $scope.venueSettings = result;              
     },function(err){ console.log("error",arguments)});   
 
-    var venueMessages = Resources.VenueMessages.query({venueId:phpSession.venue_id},function(messages){                                
+    var venueMessages = Resources.VenueMessages.query({venueId:VENUE_ID},function(messages){                                
         $scope.messages = {
             notify:[],
             reject:[],
@@ -123,7 +123,7 @@ angular.module('delivery.controllers',[]).
         }
 
         $q.all([
-            venueSettings.$patch({id:phpSession.venue_id}),
+            venueSettings.$patch({id:VENUE_ID}),
             postMessage(messages[0]),
             postMessage(messages[1]),
             postMessage(messages[2]),
@@ -151,16 +151,16 @@ angular.module('delivery.controllers',[]).
         if (message.id){
             //if it is not blank, update it, 
             if (message.name.trim() !== "" && message.content.trim() !== "") {
-                return message.$put({venueId:phpSession.venue_id});
+                return message.$put();
             }  // else delete it
             else {
-                return message.$remove({venueId:phpSession.venue_id});
+                return message.$remove();
             }
         } //if it's not in the database
         else {          
             //push if the message is not blank
             if (message.name && message.name.trim() != "" && message.content && message.content.trim() !== ""){
-                return message.$save({venueId:phpSession.venue_id});
+                return message.$save({venueId:VENUE_ID});
             }
         } 
         //if we reach this point, there's nothing to be done with this message.

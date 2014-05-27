@@ -7,29 +7,12 @@
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 ?> 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Delivery Settings</title>
-  <script src="<?echo $_SESSION['path']?>/bower_components/angular/angular.js"></script>
-  <script src="<?echo $_SESSION['path']?>/bower_components/angular-route/angular-route.js"></script>
-  <script src="<?echo $_SESSION['path']?>/bower_components/angular-resource/angular-resource.js"></script>
-  <script src="<?echo $_SESSION['path']?>/bower_components/jquery/dist/jquery.min.js"></script>
-  <script> 
-  //FIXME not sure if this is a problem. How to expose only on controller scope?
-  //expose sesion to get the values we need
-  var phpSession = JSON.parse('<? echo json_encode($_SESSION) ?>') ;
-  console.log("session",phpSession);    
-  </script>
-  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/app.js"></script>
-  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/resource.js"></script>
-  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/controllers.js"></script>
-
-
-</head>
-<body ng-app="delivery" ng-controller="deliveryController">
+  <div class="row">
+    <div class="topSpacer"></div>
+  </div>
+<div  ng-app="delivery" ng-controller="deliveryController">
   <form name="deliveryForm" id="deliveryForm" ng-submit="processForm()" novalidate>  
-  <div class='row'> <h1><?echo _("Delivery Details")?></h1></div>
+  <div class='row'> <h1 class="alignHeader"><?echo _("Delivery Details")?></h1></div>
   <div>
     <ul class='row delivery-tabs'>
       <li ng-class="{'selected': selected==1}" ><a href ng:click="selected=1"><?echo _("General Settings")?></a></li>
@@ -130,8 +113,20 @@
   </div>
   </div>  
   </form>
-</body>
-</html>
+</div>
+
+
+  <script src="<?echo $_SESSION['path']?>/bower_components/angular/angular.js"></script>
+  <script src="<?echo $_SESSION['path']?>/bower_components/angular-route/angular-route.js"></script>
+  <script src="<?echo $_SESSION['path']?>/bower_components/angular-resource/angular-resource.js"></script>
+
+  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/app.js"></script>
+  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/resource.js"></script>
+  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/controllers.js"></script>
+  <script> 
+    angular.module('delivery').constant('VENUE_ID', <? echo json_encode($_SESSION['venue_id']) ?>)
+  </script>
+
 
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 
