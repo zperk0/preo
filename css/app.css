@@ -1884,9 +1884,6 @@ div.switch input:last-of-type+span+label{
 }
 
 
-
-
-
 footer .dropdown.button:before{
 	content: "\e602";
 	position: relative;
@@ -1911,7 +1908,129 @@ span .currencySymbol{
 	text-decoration: inherit !important;
 	font-style: inherit !important; 	
 }
+  .delivery-tabs{    
+    list-style: none;    
+  }
+  .delivery-tabs li{    
+    display:inline-block;
+    background:gray;
+    padding:10px 0;
+    width:33%;
+    text-align: center;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 
-.delivery-tab-content label{
+  }
+  .delivery-tabs li a {
+    font-size:1.2em;    
+    color:white; 
+    font-family:"Co Text W01 Light";
+  }
+  .delivery-tab-holder{
+    background:white;
+    padding:30px 30px 20px 30px;
+    
+  }
 
-}
+  .delivery-tabs li.selected{
+      background:white;      
+  }
+  .delivery-tabs li.selected a{
+      color:#2e70b7;
+  }
+
+
+  .inlineControl{
+    margin-bottom: 12px;
+  }
+
+  .inlineControl label{    
+  
+    width:auto;
+    display:inline-block;
+    line-height:2.3125em;
+  }
+
+  .inlineControl input{    
+
+    display: block;
+    float: left;
+    width: 10%;
+    margin-right: 10px;
+    
+  }
+
+  .inlineControl small{
+    width:10%;
+  }
+  
+  .clearfix{
+    clear:both;
+  }
+
+  #telephone{
+    width:30%;
+    display:block;
+  }
+
+  .messageRow .messageCol-1{
+    display:block;
+    float:left;
+    width:50%;
+    margin-right:2%;  
+  }
+  .messageRow .messageCol-2{
+    display:block;
+    float:left;
+    width:30%;
+    margin-right:2%;
+  }
+  .messageRow .messageCol-3{
+    display:block;
+    float:left;
+    width:8%;
+    min-width:90px;
+    max-width:100px;
+  }
+
+  .messageRowHeader{
+    margin-top:25px !important;
+    display:block;
+    margin-bottom:10px !important;
+  }
+
+  .switch .no {
+  visibility: collapse;
+  }
+  .switch.off .no {
+    visibility: visible;
+  }
+  
+  .switch.disabled label{
+    color: #aaa !important; 
+  }
+  .switch.disabled span {
+    opacity:0.6;
+  }
+
+  .switch input:disabled:hover{
+    cursor:default !important;
+  }
+
+  .delivery-tab-holder input{
+    margin-bottom:0;
+  }
+
+  .controlWrapper{    
+    clear:both;
+  }
+
+  .controlWrapper.largeMarginBottom{
+    margin-bottom:30px;
+  }
+
+  #deliverySave{
+    margin-top:40px;
+  }
