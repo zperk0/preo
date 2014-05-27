@@ -67,8 +67,8 @@ angular.module('delivery.controllers',[]).
                         name:"",
                         content:"",
                         type:"PUSH_NOTIFY",
-                        active:0,  
-                        placeholder : placeholderMessages.notify[notifications]
+                        active:0
+                        
                     });                    
                     notifications++;          
                     $scope.messages.notify.push(vm)
@@ -77,8 +77,7 @@ angular.module('delivery.controllers',[]).
                         name:"",
                         content:"",
                         type:"PUSH_REJECT",
-                        active:0, 
-                        placeholder : placeholderMessages.reject[rejects]
+                        active:0
                     })   
                     rejects++;
                     $scope.messages.reject.push(vm)
