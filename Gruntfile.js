@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var wrench = require("wrench");
 
 
 module.exports = function(grunt) {
@@ -73,7 +74,9 @@ module.exports = function(grunt) {
 
 });
 
-  grunt.registerTask('jstranslate',"Read general.js and extract strings that need to be translated",function(){
+
+  grunt.registerTask('jstranslate',"Read all js files and extract strings that need to be translated",function(){
+        var usedStrings ={};        
         var file_str = ""+
         ""+
         "<?php session_start();"+
@@ -85,25 +88,29 @@ module.exports = function(grunt) {
           "} \n"+
           "\n"+
           "var Dictionary = { \n";
-        var filePath = path.join("js",'/general.js');
-        var data = fs.readFileSync(filePath, {encoding: 'utf-8'})                
-        var regex = /_tr\(.*?\)/g; 
-        var result;
-        var usedStrings ={};        
-        while ( (result = regex.exec(data)) ) {                                        
-              
-              var str =result[0].slice(5,-2);              
-              //var tmpstr = str.replace(/'/g, "\\'")
-              //tmpstr = tmpstr.replace(/"/g, '\\"')
-              grunt.log.writeln(str);
-              if (usedStrings[str] ===undefined){              
-                if (str != ""){                                    
-                  file_str+= '\t"'+str+'":<? echo json_encode(_("'+str+'")) ?>,\n'
-                  usedStrings[str] = true;
+        var all = wrench.readdirSyncRecursive("code");
+        var allJs = ["js/general.js"];
+        for (var i=0;i<all.length;i++){
+            var file = all[i];
+            if (file.indexOf(".js") === (file.length-3))
+              allJs.push("code/"+file)
+        }
+        for (var i=0;i<allJs.length;i++){
+          var filePath = allJs[i];
+          var data = fs.readFileSync(filePath, {encoding: 'utf-8'})                
+          var regex = /_tr\(.*?\)/g; 
+          var result;          
+          while ( (result = regex.exec(data)) ) {                                                        
+                var str =result[0].slice(5,-2);              
+                grunt.log.writeln(str);
+                if (usedStrings[str] ===undefined){              
+                  if (str != ""){                                    
+                    file_str+= '\t"'+str+'":<? echo json_encode(_("'+str+'")) ?>,\n'
+                    usedStrings[str] = true;
+                  }
                 }
-              }
-        }      
-        
+          }      
+        }
         file_str+= "}\n";
         fs.writeFileSync('code/shared/js_strings.php', file_str);            
   })

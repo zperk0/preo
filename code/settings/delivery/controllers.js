@@ -6,30 +6,30 @@ angular.module('delivery.controllers',[]).
     var placeholderMessages = {
         notify : [
         {         
-            content:tr_("Your order is running 15 mins late"),
-            name:tr_("Late Order")
+            content:_tr("Your order is running 15 mins late"),
+            name:_tr("Late Order")
         },
         {
-            content:tr_("Your order is on its way"),
-            name:tr_("En-route")   
+            content:_tr("Your order is on its way"),
+            name:_tr("En-route")   
         },
         {          
-            content:tr_("There is a problem with your order. Please call us"),
-            name:tr_("Call us")
+            content:_tr("There is a problem with your order. Please call us"),
+            name:_tr("Call us")
         }
     ],
     reject:[
         {
-            content:tr_("Your address is out of our delivery zone"),
-            name:tr_("Out of zone")   
+            content:_tr("Your address is out of our delivery zone"),
+            name:_tr("Out of zone")   
         },
         {
-            content:tr_("Sorry, that item is out of stock"),
-            name:tr_("Out of stock")   
+            content:_tr("Sorry, that item is out of stock"),
+            name:_tr("Out of stock")   
         },
         {
-            content:tr_("Sorry, Your order has been rejected. Please call us"),
-            name:tr_("Call us")   
+            content:_tr("Sorry, Your order has been rejected. Please call us"),
+            name:_tr("Call us")   
         }
     ]};
     
