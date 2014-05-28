@@ -35,8 +35,7 @@ angular.module('delivery.controllers',[]).
     ]};
     
     //get venue object
-    var venue = Resources.Venue.get({id:VENUE_ID},function(result){        
-    	$scope.venue = result;    	    	
+    $scope.venue = Resources.Venue.get({id:VENUE_ID},function(result){            	
     },function(err){ console.log("error",arguments)});   
 
     var venueSettings = Resources.VenueSettings.get({id:VENUE_ID},function(result){        
@@ -129,10 +128,15 @@ angular.module('delivery.controllers',[]).
         for (var msg in messages){
             delete messages[msg]["typeString"];            
         }
+        //same with the ccySymbol
+        delete $scope.venue["ccySymbol"]
+
         //duplicate the resource to modify the result without changing the values in the screen
         var vmt = new Resources.VenueSettings(venueSettings);
         vmt.deliveryDiscount =Number(venueSettings.deliveryDiscount)/100;        
-        $q.all([
+                        
+        $q.all([           
+            $scope.venue.$patch({id:VENUE_ID}),
             vmt.$patch({id:VENUE_ID}),
             postMessage(messages[0]),
             postMessage(messages[1]),
@@ -143,14 +147,12 @@ angular.module('delivery.controllers',[]).
         ])
         .then(function(results){            
             $scope.isPosting =false;
-            console.log(results)
             noty({
               type: 'success',  layout: 'topCenter',
-              text: _tr("Successfully saved delivery settings.") /*text: 'Connection Error! Check API endpoint.'*/
+              text: _tr("Successfully saved delivery settings.")
             });
-            
-        });
         
+        });           
 
 	};
     $scope.getPlaceholder = function(which,index){
@@ -177,6 +179,6 @@ angular.module('delivery.controllers',[]).
         //if we reach this point, there's nothing to be done with this message.
         return true;            
     }
-    
+
     
   });
