@@ -7,12 +7,51 @@
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 ?> 
+
+<style>
+  #deliveryForm{
+    position:relative;
+  }
+  
+  .deliverySwitch{
+    width:300px;          
+    position:absolute;
+    bottom:20px;
+    right: 0;
+  }
+
+  .deliverySwitch a{
+    display:block;
+    float:left;
+    line-height:26px;
+    margin-right:20px;
+  }
+  .switch{
+    width:80px;    
+    float:left;
+  }
+
+  .deliveryHeader.row {
+    position:relative;
+  }
+</style>
   <div class="row">
     <div class="topSpacer"></div>
   </div>
-<div  ng-app="delivery" ng-controller="deliveryController">
-  <form name="deliveryForm" id="deliveryForm" ng-submit="processForm()" novalidate>  
-  <div class='row'> <h1 class="alignHeader"><?echo _("Delivery Details")?></h1></div>
+  <div  ng-app="delivery" ng-controller="deliveryController">
+    <form name="deliveryForm" id="deliveryForm" ng-submit="processForm()" novalidate >  
+    <div class='row deliveryHeader'> <h1 class="alignHeader"><?echo _("Delivery Details")?></h1>
+    <div class='deliverySwitch'> <a href='#'><?echo _("Enable delivery services")?></a>
+        <div class="switch small" ng-class="{'off': venue.deliverFlag==0}" > 
+          <input  value="0" type="radio" ng-model="venue.deliverFlag" tabindex=-1>
+            <label class="no"><?echo _("No")?></label>
+          <input value="1" type="radio" ng-model="venue.deliverFlag" tabindex=-1>
+            <label class="yes"><?echo _("Yes")?></label>
+            <span></span>
+          </div>          
+
+    </div>
+    </div>
   <div>
     <ul class='row delivery-tabs'>
       <li ng-class="{'selected': selected==1}" ><a href ng:click="selected=1"><?echo _("General Settings")?></a></li>
@@ -31,29 +70,29 @@
         <input type='text' id='telephone' name='telephone' ng-model="venueSettings.deliveryPhone" placeholder='+44 (0) 12345678' />        
       </div>
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.minValueOrder.$invalid && triedSubmit }">
-        <label class='colorLabel inlineLabel' for='minValueOrder'> <?echo _("Min. value order (£)")?></label>
+        <label class='colorLabel inlineLabel' for='minValueOrder'> <?echo _("Minimum order value to qualify for delivery")?></label>
         <input class='inlineInput' placeholder="0.00" type='text' id='minValueOrder' name='minValueOrder' ng-model="venueSettings.deliveryOrderMin" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">      
         <small  ng-show="deliveryForm.minValueOrder.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 20.52)");?></small>  
       </div>      
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryCharge.$invalid && triedSubmit }">
-        <label class='colorLabel inlineLabel' for='deliveryCharge'> <?echo _("Delivery charge (£)")?></label>
+        <label class='colorLabel inlineLabel' for='deliveryCharge'> <?echo _("Delivery charge ")?></label>
         <input class='inlineInput'  placeholder="0.00" type='text' id='deliveryCharge' name='deliveryCharge' ng-model="venueSettings.deliveryCharge" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"/>
         <small  ng-show="deliveryForm.deliveryCharge.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 3.25)");?></small>
       </div>
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryBelow.$invalid && triedSubmit }">
-        <label class='colorLabel inlineLabel' for='deliveryChargeBelow'> <?echo _("Free delivery for orders above (£)")?></label>
+        <label class='colorLabel inlineLabel' for='deliveryChargeBelow'> <?echo _("Free delivery for orders above ")?></label>
         <input class='inlineInput'  placeholder="0.00" type='text' id='deliveryChargeBelow' name='deliveryChargeBelow' ng-model="venueSettings.deliveryChargeBelow" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"/>
         <small  ng-show="deliveryForm.deliveryChargeBelow.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 3.25)");?></small>
       </div>
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryLeadTime.$invalid && triedSubmit }">      
-      <label class='colorLabel inlineLabel' for='deliveryLeadTime'> <?echo _("Default lead time for delivery (mins)")?></label>
+      <label class='colorLabel inlineLabel' for='deliveryLeadTime'> <?echo _("Default lead time for delivery (minutes) ")?> <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("The time it takes to prepare your order.");?>"></i></label>
       <input class='inlineInput'  placeholder="20" type='text' id='deliveryLeadTime' name='deliveryLeadTime' ng-model="venueSettings.deliveryLeadTime" ng-pattern="/^[0-9]+$/"/>
       <small  ng-show="deliveryForm.deliveryLeadTime.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid time interval in minutes (e.g. 20)");?></small>
       </div>
-      <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryDiscount.$invalid && triedSubmit }">      
-      <label class='colorLabel inlineLabel' for='deliveryDiscount'> <?echo _("Discount offered for delivery orders")?></label>
+      <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryDiscount.$invalid && triedSubmit && !isPosting }">      
+      <label class='colorLabel inlineLabel' for='deliveryDiscount'> <?echo _("Discount offered for delivery orders (%)")?></label>
       <input class='inlineInput'  placeholder="5" type='text' id='deliveryDiscount' name='deliveryDiscount' ng-model="venueSettings.deliveryDiscount" ng-pattern="/^(0?[0-9]?[0-9]|100)$/"/>
-      <small  ng-show="deliveryForm.deliveryDiscount.$invalid && triedSubmit" class="error"><?echo _("Please provide a discount percentage (between 0 and 100)");?></small>
+      <small  ng-show="deliveryForm.deliveryDiscount.$invalid && triedSubmit && !isPosting" class="error"><?echo _("Please provide a discount percentage (between 0 and 100)");?></small>
       </div>
       <div class='clearfix'></div>
   </div>
@@ -107,8 +146,8 @@
         </div>
   </div>
     <div>
-      <button id="deliverySave" type="submit" ><?echo _("SAVE CHANGES");?></button>
-      <button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
+      <button ng-show="!isPosting" id="deliverySave" type="submit" ><?echo _("SAVE CHANGES");?></button>
+      <button ng-show="isPosting" class="secondary" type="submit"><?echo _("SAVING...");?></button>
     </div>      
   </div>
   </div>  

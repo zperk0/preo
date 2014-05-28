@@ -1,7 +1,8 @@
 
 angular.module('delivery.controllers',[]).
   controller('deliveryController', function($scope,$http,Resources,$q, VENUE_ID) {
-  	$scope.selected =2;    
+    $scope.isPosting = false;
+  	$scope.selected =1;    
     $scope.triedSubmit = false;
     var placeholderMessages = {
         notify : [
@@ -39,7 +40,10 @@ angular.module('delivery.controllers',[]).
     },function(err){ console.log("error",arguments)});   
 
     var venueSettings = Resources.VenueSettings.get({id:VENUE_ID},function(result){        
+        if (result && typeof result.deliveryDiscount)
+            result.deliveryDiscount =result.deliveryDiscount*100;        
         $scope.venueSettings = result;              
+        console.log($scope.venueSettings);
     },function(err){ console.log("error",arguments)});   
 
     var venueMessages = Resources.VenueMessages.query({venueId:VENUE_ID},function(messages){                                
@@ -105,14 +109,18 @@ angular.module('delivery.controllers',[]).
 
 
     $scope.processForm = function() {
+        $scope.isPosting =true;
         $scope.triedSubmit = true;
         if (!$scope.deliveryForm.$valid) {
             noty({
               type: 'error',  layout: 'topCenter',
               text: _tr("Sorry, we need more information, please check if you have filled all the required fields.") /*text: 'Connection Error! Check API endpoint.'*/
             });
+            $scope.isPosting =false;
             return false;
         };
+
+
         
         //FIXME
         //there's no typestring in the db, if we send this param it crashes
@@ -121,9 +129,11 @@ angular.module('delivery.controllers',[]).
         for (var msg in messages){
             delete messages[msg]["typeString"];            
         }
-
+        //duplicate the resource to modify the result without changing the values in the screen
+        var vmt = new Resources.VenueSettings(venueSettings);
+        vmt.deliveryDiscount =Number(venueSettings.deliveryDiscount)/100;        
         $q.all([
-            venueSettings.$patch({id:VENUE_ID}),
+            vmt.$patch({id:VENUE_ID}),
             postMessage(messages[0]),
             postMessage(messages[1]),
             postMessage(messages[2]),
@@ -131,13 +141,14 @@ angular.module('delivery.controllers',[]).
             postMessage(messages[4]),
             postMessage(messages[5])
         ])
-        .then(function(results){
+        .then(function(results){            
+            $scope.isPosting =false;
             console.log(results)
             noty({
               type: 'success',  layout: 'topCenter',
               text: _tr("Successfully saved delivery settings.") /*text: 'Connection Error! Check API endpoint.'*/
             });
-                        
+            
         });
         
 
