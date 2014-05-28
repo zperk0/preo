@@ -120,7 +120,7 @@
 
 			<div class="row">
 				<div class="large-12 columns">
-					<label><?echo _("Minimum value for orders");?> (<span class='currencySymbol'>$</span>)&nbsp;</label>
+					<label><?echo _("Minimum value for orders");?> </label>
 					<input type="text" name="vOrderMin" id="vOrderMin" tabindex=6 required placeholder="<?echo _("e.g. 5");?>" value="<?if(isset($_SESSION['venue_order_min'])) echo $_SESSION['venue_order_min'];?>" pattern="^[0-9]+(\.[0-9]{1,2})?$">
 					<small class="error"><?echo _("Please provide a minimum value for ordering");?></small>
 				</div>

@@ -80,6 +80,7 @@
 		$_SESSION['venue_language']				= $dataJSON[0]['locale'];	
 		$_SESSION['venue_timezone']				= $dataJSON[0]['timeZone'];	
 		$_SESSION['venue_currency']				= $dataJSON[0]['ccy'];	
+		$_SESSION['venue_ccySymbol']				= $dataJSON[0]['ccySymbol'];	
 		
 		
 		//we get venue id from _SESSION
