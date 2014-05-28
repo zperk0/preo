@@ -171,6 +171,7 @@ angular.module('delivery.controllers',[]).
                 var placeholder = $scope.getPlaceholder(type,i)
                 msg.name = placeholder.name;
                 msg.content = placeholder.content;
+                msg.active = 1;
             }   
         }
     }
