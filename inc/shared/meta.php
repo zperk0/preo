@@ -7,7 +7,6 @@
 		<meta name="viewport" content="width=device-width" />
 		<!-- <meta name="viewport" content="initial-scale=1.0" /> -->
 		<title><? echo _("preoday");?></title>
-		<link href="/bower_components/bootstrap-css-only/css/bootstrap.min.css" rel="stylesheet">
 		<!-- Main CSS files -combined minified -->
 		<!--<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize_and_foundation_min.css" />-->
 		<!-- Main CSS files -combined -->
