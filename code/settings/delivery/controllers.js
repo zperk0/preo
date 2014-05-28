@@ -4,6 +4,7 @@ angular.module('delivery.controllers',[]).
     $scope.isPosting = false;
   	$scope.selected =1;    
     $scope.triedSubmit = false;
+    $scope.finishedLoading = false;
     var placeholderMessages = {
         notify : [
         {         
@@ -88,6 +89,7 @@ angular.module('delivery.controllers',[]).
                                 
             }
         }
+        $scope.finishedLoading = true;
     },function(err){ console.log("error",arguments)});   
 
     $scope.validateMessage = function(message){    
@@ -157,6 +159,39 @@ angular.module('delivery.controllers',[]).
 	};
     $scope.getPlaceholder = function(which,index){
         return placeholderMessages[which][index];
+    }
+
+    $scope.onChangeDeliverFlag = function(){
+        console.log($scope.venue.deliverFlag)
+        if ($scope.venue.deliverFlag == 1){
+            if (areAllMessagesEmpty()){
+                setMessageToPlaceholder();
+            }
+        }
+    }
+
+
+    function setMessageToPlaceholder(){
+        for (var type in $scope.messages){
+            for (var i in $scope.messages[type]){
+                var msg = $scope.messages[type][i];
+                var placeholder = $scope.getPlaceholder(type,i)
+                msg.name = placeholder.name;
+                msg.content = placeholder.content;
+            }   
+        }
+    }
+
+
+    function areAllMessagesEmpty(){
+        for (var type in $scope.messages){
+            for (var i in $scope.messages[type]){
+                var msg = $scope.messages[type][i];
+                if ( (msg.name && msg.name.trim() != "")  || (msg.content && msg.content.trim() != ""))
+                    return false;
+            }
+        }
+        return true;
     }
 
     function postMessage(message){

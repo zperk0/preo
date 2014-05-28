@@ -47,6 +47,12 @@
   .deliveryWrapper.opaque a:hover{
       cursor:default !important;
   }
+
+  .loader{
+    position:absolute;
+    left:49%;
+    top:30%;
+  }
   
 </style>
   <div class="row">
@@ -54,13 +60,16 @@
   </div>
 
   <div  ng-app="delivery" ng-controller="deliveryController">
-    <form name="deliveryForm" id="deliveryForm" ng-submit="processForm()" novalidate >  
+    <div class='loader' ng-show="!finishedLoading">      
+      <img src='/img/spinner.gif'/>
+    </div>
+    <form name="deliveryForm" id="deliveryForm" ng-submit="processForm()" novalidate ng-show="finishedLoading">  
     <div class='row deliveryHeader'> <h1 class="alignHeader"><?echo _("Delivery Details")?></h1>
     <div class='deliverySwitch'> <a href='#'><?echo _("Enable delivery services")?></a>
         <div class="switch small" ng-class="{'off': venue.deliverFlag==0}" > 
-          <input  value="0" type="radio" ng-model="venue.deliverFlag" tabindex=-1>
+          <input ng-change="onChangeDeliverFlag()"  value="0" type="radio" ng-model="venue.deliverFlag" tabindex=-1>
             <label class="no"><?echo _("No")?></label>
-          <input value="1" type="radio" ng-model="venue.deliverFlag" tabindex=-1>
+          <input ng-change="onChangeDeliverFlag()" value="1" type="radio" ng-model="venue.deliverFlag" tabindex=-1>
             <label class="yes"><?echo _("Yes")?></label>
             <span></span>
           </div>          
