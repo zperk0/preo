@@ -1094,7 +1094,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit{
 }
 
 .menuTable .menuTDTools, .headerTable .menuTDTools{
-	width: 166px;
+	width: 168px;
 	text-align:right;
 }
 
