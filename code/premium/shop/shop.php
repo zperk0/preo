@@ -7,26 +7,6 @@
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 ?> 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Delivery Settings</title>
-  <script src="<?echo $_SESSION['path']?>/bower_components/angular/angular.js"></script>
-  <script src="<?echo $_SESSION['path']?>/bower_components/angular-route/angular-route.js"></script>
-  <script src="<?echo $_SESSION['path']?>/bower_components/angular-resource/angular-resource.js"></script>
-  <script src="<?echo $_SESSION['path']?>/bower_components/jquery/dist/jquery.min.js"></script>
-  <script> 
-  //FIXME not sure if this is a problem. How to expose only on controller scope?
-  //expose sesion to get the values we need
-  var phpSession = JSON.parse('<? echo json_encode($_SESSION) ?>') ;
-  console.log("session",phpSession);    
-  </script>
-  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/premium/shop/app.js"></script>
-  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/premium/shop/resource.js"></script>
-  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/premium/shop/controllers.js"></script>
-
-
-</head>
 
 <style>
     .shopHeader{
@@ -104,7 +84,7 @@
     }
 
 </style>
-<body ng-app="shop" ng-controller="shopController">
+<div ng-app="shop" ng-controller="shopController">
   <div class='row'>
     <div class='shopHeader'></div>
 
@@ -125,9 +105,17 @@
     </div>
 
   </div>
-</body>
-</html>
+</div>
 
+<script src="<?echo $_SESSION['path']?>/bower_components/angular/angular.js"></script>
+  <script src="<?echo $_SESSION['path']?>/bower_components/angular-route/angular-route.js"></script>
+  <script src="<?echo $_SESSION['path']?>/bower_components/angular-resource/angular-resource.js"></script>
+  <script src="<?echo $_SESSION['path']?>/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/premium/shop/app.js"></script>
+  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/premium/shop/features.php"></script>
+  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/premium/shop/resource.js"></script>
+  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/premium/shop/controllers.js"></script>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 
 

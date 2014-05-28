@@ -1,12 +1,8 @@
 
 angular.module('shop.controllers',[]).
-  controller('shopController', function($scope,$http,Resources,$q) {
+  controller('shopController', function($scope,$http,Resources,FEATURES,$q) {
 
 
-    $scope.PremiumFeatures = Resources.Feature.query({},function(result){                
-        console.log(arguments)
-    },function(err){ 
-        console.log("error",arguments)
-    });   
+    $scope.PremiumFeatures = FEATURES;
     
   });
