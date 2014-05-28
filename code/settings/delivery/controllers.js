@@ -39,9 +39,7 @@ angular.module('delivery.controllers',[]).
     $scope.venue = Resources.Venue.get({id:VENUE_ID},function(result){            	
     },function(err){ console.log("error",arguments)});   
 
-    var venueSettings = Resources.VenueSettings.get({id:VENUE_ID},function(result){        
-        if (result && typeof result.deliveryDiscount)
-            result.deliveryDiscount =result.deliveryDiscount*100;        
+    var venueSettings = Resources.VenueSettings.get({id:VENUE_ID},function(result){                
         $scope.venueSettings = result;              
         console.log($scope.venueSettings);
     },function(err){ console.log("error",arguments)});   
@@ -133,13 +131,9 @@ angular.module('delivery.controllers',[]).
         //same with the ccySymbol
         delete $scope.venue["ccySymbol"]
 
-        //duplicate the resource to modify the result without changing the values in the screen
-        var vmt = new Resources.VenueSettings(venueSettings);
-        vmt.deliveryDiscount =Number(venueSettings.deliveryDiscount)/100;        
-                        
         $q.all([           
-            $scope.venue.$patch({id:VENUE_ID}),
-            vmt.$patch({id:VENUE_ID}),
+            $scope.venueSettings.$patch({id:VENUE_ID}),
+            venueSettings.$patch({id:VENUE_ID}),
             postMessage(messages[0]),
             postMessage(messages[1]),
             postMessage(messages[2]),

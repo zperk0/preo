@@ -115,7 +115,7 @@
       </div>
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryDiscount.$invalid && triedSubmit && !isPosting }">      
       <label class='colorLabel inlineLabel' for='deliveryDiscount'> <?echo _("Discount offered for delivery orders (%)")?></label>
-      <input class='inlineInput'  placeholder="5" type='text' id='deliveryDiscount' name='deliveryDiscount' ng-model="venueSettings.deliveryDiscount" ng-pattern="/^(0?[0-9]?[0-9]|100)$/" ng-disabled="venue.deliverFlag==0"/>
+      <input class='inlineInput'  placeholder="5" type='text' id='deliveryDiscount' name='deliveryDiscount' ng-model="venueSettings.deliveryDiscount" ng-pattern="/(^0\.[0-9]{1,2})|^[0-1]$/" ng-disabled="venue.deliverFlag==0" percent/>
       <small  ng-show="deliveryForm.deliveryDiscount.$invalid && triedSubmit && !isPosting" class="error"><?echo _("Please provide a discount percentage (between 0 and 100)");?></small>
       </div>
       <div class='clearfix'></div>
@@ -183,9 +183,11 @@
   <script src="<?echo $_SESSION['path']?>/bower_components/angular-route/angular-route.js"></script>
   <script src="<?echo $_SESSION['path']?>/bower_components/angular-resource/angular-resource.js"></script>
 
+
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/app.js"></script>
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/resource.js"></script>
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/controllers.js"></script>
+  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/directive.js"></script>
   <script> 
     angular.module('delivery').constant('VENUE_ID', <? echo json_encode($_SESSION['venue_id']) ?>)
   </script>
