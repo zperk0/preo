@@ -83,7 +83,51 @@
        outline:none;
     }
 
+    .ng-modal-overlay {
+  /* A dark translucent div that covers the whole screen */
+  position:absolute;
+  z-index:9999;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#000000;
+  opacity: 0.8;
+}
+.ng-modal-dialog {
+  /* A centered div above the overlay with a box shadow. */
+  z-index:10000;
+  position: absolute;
+  width: 50%; /* Default */
+
+  /* Center the dialog */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+
+  background-color: #fff;
+  box-shadow: 4px 4px 80px #000;
+}
+.ng-modal-dialog-content {
+  padding:10px;
+  text-align: left;
+}
+.ng-modal-close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 120%;
+  display: inline-block;
+  font-weight: bold;
+  font-family: 'arial', 'sans-serif';
+}
+
 </style>
+
 <div ng-app="shop" ng-controller="shopController">
   <div class='row'>
     <div class='shopHeader'></div>
@@ -98,19 +142,21 @@
                 <h4>{{feature.name}}</h4>
                 <p>{{feature.description}}</p>
                 <span class='price'>£{{feature.price}}/month</span class='price'>
-                <button>Buy</button>
+                <button ng-click="open()">Buy</button>
             </div>
         </div>
         <div class='clearfix'></div>
     </div>
-
   </div>
+  
+
 </div>
 
 <script src="<?echo $_SESSION['path']?>/bower_components/angular/angular.js"></script>
   <script src="<?echo $_SESSION['path']?>/bower_components/angular-route/angular-route.js"></script>
   <script src="<?echo $_SESSION['path']?>/bower_components/angular-resource/angular-resource.js"></script>
-  <script src="<?echo $_SESSION['path']?>/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="<?echo $_SESSION['path']?>/bower_components/angular-ui-bootstrap/dist/ui-bootstrap-0.11.0.js"></script>
+
 
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/premium/shop/app.js"></script>
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/premium/shop/features.php"></script>

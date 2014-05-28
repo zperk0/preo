@@ -1,3 +1,4 @@
+//shop
 angular.module('shop.resources',['ngResource']).
   factory('Resources', function($resource) {
     
