@@ -1,16 +1,12 @@
 angular.module('delivery.directives',[])
 .directive("percent", function($filter){
-    var p = function(viewValue){
-      console.log('hereho',viewValue);
+    var p = function(viewValue){      
       var m = viewValue.match(/^(\d+)/);
-      if (m !== null){
-        console.log("returning:",$filter,$filter('number'),$filter('number')(parseFloat(viewValue)/100))
+      if (m !== null){        
         return $filter('number')(parseFloat(viewValue)/100);
       }
     };
-
     var f = function(modelValue){
-        console.log("horeHe");
         return $filter('number')(parseFloat(modelValue)*100);
     };
 

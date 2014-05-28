@@ -8,58 +8,11 @@
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 ?> 
 
-<style>
-  #deliveryForm{
-    position:relative;
-  }
-
-  .deliverySwitch{
-    width:300px;          
-    position:absolute;
-    bottom:20px;
-    right: 0;
-  }
-
-  .deliverySwitch a{
-    display:block;
-    float:left;
-    line-height:26px;
-    margin-right:20px;
-  }
-  .switch{
-    width:80px;    
-    float:left;
-  }
-
-  .deliveryHeader.row {
-    position:relative;
-  }
-  .deliveryWrapper.opaque{
-    opacity: 0.5;    
-  }
-  .deliveryWrapper.opaque:hover{
-    cursor:default !important;
-  }
-  .deliveryWrapper.opaque label:hover{
-      cursor:default !important;
-  }
-
-  .deliveryWrapper.opaque a:hover{
-      cursor:default !important;
-  }
-
-  .loader{
-    position:absolute;
-    left:49%;
-    top:30%;
-  }
-  
-</style>
   <div class="row">
     <div class="topSpacer"></div>
   </div>
 
-  <div  ng-app="delivery" ng-controller="deliveryController">
+  <div  ng-app="delivery" ng-controller="deliveryController" ng-cloak>
     <div class='loader' ng-show="!finishedLoading">      
       <img src='/img/spinner.gif'/>
     </div>

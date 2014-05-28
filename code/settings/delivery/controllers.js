@@ -41,7 +41,7 @@ angular.module('delivery.controllers',[]).
 
     var venueSettings = Resources.VenueSettings.get({id:VENUE_ID},function(result){                
         $scope.venueSettings = result;              
-        console.log($scope.venueSettings);
+        
     },function(err){ console.log("error",arguments)});   
 
     var venueMessages = Resources.VenueMessages.query({venueId:VENUE_ID},function(messages){                                
@@ -155,8 +155,7 @@ angular.module('delivery.controllers',[]).
         return placeholderMessages[which][index];
     }
 
-    $scope.onChangeDeliverFlag = function(){
-        console.log($scope.venue.deliverFlag)
+    $scope.onChangeDeliverFlag = function(){        
         if ($scope.venue.deliverFlag == 1){
             if (areAllMessagesEmpty()){
                 setMessageToPlaceholder();

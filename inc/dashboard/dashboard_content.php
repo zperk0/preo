@@ -52,7 +52,7 @@
 								<p><a href="<?echo $_SESSION['path']?>/settings"><?echo _("Change settings");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/deliverySettings"><?echo _("Delivery settings");?></a></p>
 								<?if(!$_SESSION['venue_eventFlag']){?>
-									<p><a href="<?echo $_SESSION['path']?>/openinghours"><?echo _("Opening Hours");?></a></p>
+									<p><a href="<?echo $_SESSION['path']?>/openinghours"><?echo _("Opening hours");?></a></p>
 								<?}?>
 							</div>
 						</section>
