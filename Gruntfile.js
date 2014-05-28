@@ -18,6 +18,11 @@ module.exports = function(grunt) {
               'js/jquery.noty-full-min.js','js/jsColor/jscolor.js','js/form.js','js/tweet.js','js/timepicker.js','js/jquery-ui-1.10.3.custom.min.js',
               'js/multi-select.js','js/tableSlide.js','js/js-actual.js','js/googleplus.js','js/general.js'],
         dest: 'js/all_scripts.min.js'
+      },
+      angular:{
+        src: ['bower_components/angular/angular.min.js','bower_components/angular-resource/angular-resource.min.js',
+              'bower_components/angular-route/angular-route.min.js'],
+        dest: 'js/angular_all.min.js'
       }
     },
     cssmin: {
@@ -105,7 +110,7 @@ module.exports = function(grunt) {
   })
 
 
-  grunt.registerTask('minifyjs', ['uglify','replace:jscolor']);
+  grunt.registerTask('minifyjs', ['uglify:build','uglify:angular','replace:jscolor']);
   grunt.registerTask('minifycss', ['cssmin','replace:fonts']);  
   grunt.registerTask('build', ['minifyjs','minifycss']);
   grunt.registerTask('default', ['build']);

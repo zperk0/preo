@@ -132,9 +132,7 @@
 </div>
 
 
-  <script src="<?echo $_SESSION['path']?>/bower_components/angular/angular.js"></script>
-  <script src="<?echo $_SESSION['path']?>/bower_components/angular-route/angular-route.js"></script>
-  <script src="<?echo $_SESSION['path']?>/bower_components/angular-resource/angular-resource.js"></script>
+  <script src="/js/angular_all.min.js"></script>
 
 
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/app.js"></script>
