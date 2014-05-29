@@ -1,5 +1,5 @@
 //shop
-angular.module('shop.resources',['ngResource']).
+angular.module('accountSettings.resources',['ngResource']).
   factory('Resources', function($resource) {
     
     var Feature = $resource('/api/features/:id',{id:"@id"}, {});
