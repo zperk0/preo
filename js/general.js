@@ -1400,6 +1400,12 @@ $(document).ready(function() {
 					var newIndex = oldItemOrder[itemCounter-1]; //we need the old order here so the new elements retain DOM order
 					newIndex = newIndex.replace("item","");
 					
+					//add data-attribute
+					$(this).find('input[name^=iName]').each(function(){
+						$(this).attr('data-edit',true);
+						$(this).data('edit',true);
+					});
+					
 					//update table id
 					tempName = $(this).attr('id');
 					newName = tempName.replace(/\item\d+/gi, "item"+newIndex+"");
@@ -1426,11 +1432,7 @@ $(document).ready(function() {
 						$(this).attr('name', newName);
 					});
 					
-					//add data-attribute
-					$(this).find('input[name^=iName]').each(function(){
-						$(this).attr('data-edit',true);
-						$(this).data('edit',true);
-					});
+					
 					
 					itemCounter++;
 				});
@@ -1845,6 +1847,7 @@ $(document).ready(function() {
 							menu['sections'][secCounter]['items'][itemCounter]['edit'] 			= $(this).find('input[name^=iName]').data('edit');
 							menu['sections'][secCounter]['items'][itemCounter]['delete'] 		= $(this).find('input[name^=iName]').data('delete');
 							menu['sections'][secCounter]['items'][itemCounter]['mdi'] 			= $(this).find('input[name^=iName]').data('mdi');
+							menu['sections'][secCounter]['items'][itemCounter]['md'] 			= $(this).find('input[name^=iName]').data('md');
 								
 							menu['sections'][secCounter]['items'][itemCounter]['menuId'] 		= menu['id'];
 							menu['sections'][secCounter]['items'][itemCounter]['venueId'] 		= $('#venueID').val();
