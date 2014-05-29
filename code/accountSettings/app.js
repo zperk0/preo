@@ -1,6 +1,6 @@
 //shop
-angular.module('shop', [
+angular.module('accountSettings', [
   'ngResource',
-  'shop.resources',
-  'shop.controllers'
+  'accountSettings.resources',
+  'accountSettings.controllers'
 ]);
