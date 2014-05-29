@@ -1371,52 +1371,8 @@ $(document).ready(function() {
 				}); 
 		});
 	});
-	
-	$(document).on("click", ".newSection", function() {
-		//get and update current count
-		var secCount = $("#sectionCount").val();
-		var newCount = parseInt(secCount) + 1;
-		$("#sectionCount").val(newCount);
-		$("#sectionCountAct").val(parseInt($("#sectionCountAct").val())+1);
-	
-		//clone dummy section and dummy hook
-		$newSec = $("#menuSectionRow").clone(true);
-		$newHook = $(".firstItemDiv").clone(true);
-		
-		//prepare hook
-		$newHook.addClass('firstItemDivsection'+newCount);
-		$newHook.removeClass('firstItemDiv');
-		$newHook.removeClass('hide');
-		
-		//add section id to add-item button
-		var tempID = $newSec.find(".newItem").attr('id');
-		var newID = tempID.replace(/\d+/,newCount);
-		$newSec.find(".newItem").attr('id', newID);
-		
-		//add section id to delete-section button
-		var tempID = $newSec.find(".deleteSection").attr('id');
-		var newID = tempID.replace(/\d+/,newCount);
-		$newSec.find(".deleteSection").attr('id', newID);
-		
-		//now we fix placeholder
-		$newSec.find("input[name^=mSectionName]").each(function() {
-			var temp = $(this).val();
-			$(this).val("");
-			$(this).attr('placeholder', temp);
-			$(this).attr('name', 'mSectionName['+newCount+']');
-			
-			//data-attribute
-			$(this).attr('data-insert', true);
-			$(this).data('insert', true);
-			$(this).attr('data-id', 'section'+newCount+'s');
-			$(this).data('id', 'section'+newCount+'s');
-		});
-		
-		$newSec.find(".menuSectionField").addClass('section'+newCount);
-		
-		//sorting
-		$newSec.find(".hasTableHeader").after("<div class='sortWithinDiv'> </div>" );
-		$newSec.find(".sortWithinDiv").sortable({ 
+
+	var sortableParams = { 
 			opacity: 0.5, 
 			axis: "y", 
 			cursor: "move", 
@@ -1458,7 +1414,7 @@ $(document).ready(function() {
 					
 					//update item inputs
 					$(this).find('.itemTR input').each(function(){
-						tempName = $(this).attr('name');
+						tempName = "__TMP"+($(this).attr('name'));						
 						newName = tempName.replace(/\[\d+\]/gi, "["+newIndex+"]");
 						$(this).attr('name', newName);
 					});
@@ -1505,8 +1461,58 @@ $(document).ready(function() {
 					$("#"+oldItemOrder[i]+"_modCount").val(modCountArray[i]);
 					$("#"+oldItemOrder[i]+"_modCountAct").val(modCountActArray[i]);
 				}
+				$("input[name^=__TMP]").each(function(){
+					var newName = this.name.replace("__TMP","");
+					$(this).attr('name', newName);					
+				});
 			}
+		}
+	
+	$(document).on("click", ".newSection", function() {
+		//get and update current count
+		var secCount = $("#sectionCount").val();
+		var newCount = parseInt(secCount) + 1;
+		$("#sectionCount").val(newCount);
+		$("#sectionCountAct").val(parseInt($("#sectionCountAct").val())+1);
+	
+		//clone dummy section and dummy hook
+		$newSec = $("#menuSectionRow").clone(true);
+		$newHook = $(".firstItemDiv").clone(true);
+		
+		//prepare hook
+		$newHook.addClass('firstItemDivsection'+newCount);
+		$newHook.removeClass('firstItemDiv');
+		$newHook.removeClass('hide');
+		
+		//add section id to add-item button
+		var tempID = $newSec.find(".newItem").attr('id');
+		var newID = tempID.replace(/\d+/,newCount);
+		$newSec.find(".newItem").attr('id', newID);
+		
+		//add section id to delete-section button
+		var tempID = $newSec.find(".deleteSection").attr('id');
+		var newID = tempID.replace(/\d+/,newCount);
+		$newSec.find(".deleteSection").attr('id', newID);
+		
+		//now we fix placeholder
+		$newSec.find("input[name^=mSectionName]").each(function() {
+			var temp = $(this).val();
+			$(this).val("");
+			$(this).attr('placeholder', temp);
+			$(this).attr('name', 'mSectionName['+newCount+']');
+			
+			//data-attribute
+			$(this).attr('data-insert', true);
+			$(this).data('insert', true);
+			$(this).attr('data-id', 'section'+newCount+'s');
+			$(this).data('id', 'section'+newCount+'s');
 		});
+		
+		$newSec.find(".menuSectionField").addClass('section'+newCount);
+		
+		//sorting
+		$newSec.find(".hasTableHeader").after("<div class='sortWithinDiv'> </div>" );
+		$newSec.find(".sortWithinDiv").sortable(sortableParams);
 		
 		$newSec.find('.sortWithinDiv').after($newHook);
 		
@@ -1638,97 +1644,7 @@ $(document).ready(function() {
 	
 	if($("#mName").length > 0)
 	{
-		$(".sortWithinDiv").sortable({ 
-			opacity: 0.5, 
-			axis: "y", 
-			cursor: "move", 
-			containment: "parent", 
-			handle: ".sortHandle", 
-			cancel: "input,textarea,select,option",
-			placeholder: "sortable-placeholder",
-			tolerance: "pointer",
-			revert: 100,
-			delay: 100,
-			start: function(event,ui){
-				$("<tbody><tr><td></td></tr></tbody>").appendTo(ui.placeholder);
-				oldItemOrder = $(this).sortable('toArray');
-				oldItemOrder.clean("");
-				if($(ui.item).find('.itemSave').is(":visible")) $(ui.item).find('.itemSave').trigger('click');
-				//$('.sortable-placeholder').height($(ui.item).height());
-			},
-			update: function(event, ui) {
-				currentItemOrder = $(this).sortable('toArray');
-				$parentDiv = $(ui.item).parent('.sortWithinDiv');
-
-				itemCounter=1;
-				$parentDiv.find('table').each(function(){
-				
-					var newIndex = oldItemOrder[itemCounter-1]; //we need the old order here so the new elements retain DOM order
-					newIndex = newIndex.replace("item","");
-					
-					//update table id
-					tempName = $(this).attr('id');
-					newName = tempName.replace(/\item\d+/gi, "item"+newIndex+"");
-					$(this).attr('id', newName);
-					
-					//update item_dup button id
-					$(this).find('button[id^=dup]').each(function(){
-						tempName = $(this).attr('id');
-						newName = tempName.replace(/dup\d+_/gi, "dup"+newIndex+"_");
-						$(this).attr('id', newName);
-					});
-					
-					//update item inputs
-					$(this).find('.itemTR input').each(function(){
-						tempName = $(this).attr('name');
-						newName = tempName.replace(/\[\d+\]/gi, "["+newIndex+"]");
-						$(this).attr('name', newName);
-					});
-					
-					//update modifier and options
-					$(this).find('.subHeaderTR input, .subHeaderTR select, .optionTR input').each(function(){
-						tempName = $(this).attr('name');
-						newName = tempName.replace(/\[item\d+\]/gi, "[item"+newIndex+"]");
-						$(this).attr('name', newName);
-					});
-					
-					//add data-attribute
-					$(this).find('input[name^=iName]').each(function(){
-						$(this).attr('data-edit',true);
-						$(this).data('edit',true);
-					});
-					
-					itemCounter++;
-				});
-				
-				//console.log("old:"+oldItemOrder+" new:"+currentItemOrder);
-				
-				//update item-option counts
-				var itemCountArray = new Array();
-				var itemCountActArray = new Array();
-				
-				var modCountArray = new Array();
-				var modCountActArray = new Array();
-				
-				for(var i=0;i<currentItemOrder.length;i++)
-				{
-					itemCountArray[i] = $("#"+currentItemOrder[i]+"_optionCount").val();
-					itemCountActArray[i] = $("#"+currentItemOrder[i]+"_optionCountAct").val();
-					
-					modCountArray[i] = $("#"+currentItemOrder[i]+"_modCount").val();
-					modCountActArray[i] = $("#"+currentItemOrder[i]+"_modCountAct").val();
-				}
-				
-				for(var i=0;i<oldItemOrder.length;i++) //the new values go to the old order. that's how the association is preserved.
-				{
-					$("#"+oldItemOrder[i]+"_optionCount").val(itemCountArray[i]);
-					$("#"+oldItemOrder[i]+"_optionCountAct").val(itemCountActArray[i]);
-					
-					$("#"+oldItemOrder[i]+"_modCount").val(modCountArray[i]);
-					$("#"+oldItemOrder[i]+"_modCountAct").val(modCountActArray[i]);
-				}
-			}
-		});
+		$(".sortWithinDiv").sortable(sortableParams);
 		$(".dynamicDataTable").sortable({ 
 			opacity: 0.5, 
 			axis: "y", 

@@ -5,3 +5,4 @@ tmp
 webapp.esproj
 node_modules
 locale/nocache
+bower_components
