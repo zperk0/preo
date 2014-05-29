@@ -194,4 +194,7 @@ RewriteCond %{REQUEST_URI} ^/deliverySettings$ [NC]
 RewriteRule ^.*$ /code/settings/delivery/delivery-view.php [L]
 
 RewriteCond %{REQUEST_URI} ^/shop$ [NC]
-RewriteRule ^.*$ /code/features/shop/shop.php [L]
+RewriteRule ^.*$ /code/shop/shop.php [L]
+
+RewriteCond %{REQUEST_URI} ^/accountSettings$ [NC]
+RewriteRule ^.*$ /code/accountSettings/index.php [L]

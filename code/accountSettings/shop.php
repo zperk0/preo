@@ -170,12 +170,20 @@
       right:20px;
    }
 
-   #featureModal{
+   #featureModal,.featureDialog{
       border-radius: 25px;
       border: 8px solid #ccc;
       /*to add some spacing in case we're in the bottom of the page. Or the dialog looks weird*/
       margin-bottom:100px;
       padding:40px;
+   }
+
+   .featureDialog{
+      text-align: center;
+   }
+
+   .featureDialog b {
+      color:black;
    }
 
 </style>
@@ -193,7 +201,7 @@
                 <h4>{{feature.name}}</h4>
                 <p>{{feature.description}}</p>
                 <span class='price'>£{{feature.price}}/month</span class='price'>
-                <button ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">BUY</button>
+                <button class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">BUY</button>
             </div>
         </div>
         <div class='clearfix'></div>
@@ -209,7 +217,7 @@
       </div>
       <div class='rightWrapper'>
           <span class='price'>£{{selectedFeature.feature.price}}/month</span class='price'>
-          <button ng-click="setSelectedFeature(feature)" data-reveal-id="myModal">BUY</button>
+          <button class='preodayButton' ng-click="clickBuy(feature)" data-reveal-id="myModal">BUY</button>
       </div>
       <div class='clearfix'></div>
     </div>
@@ -225,14 +233,30 @@
         <div class='description'>{{selectedFeature.feature.description}}</div>
     </div>
     <a class="close-reveal-modal">&#215;</a>
+
   </div>
 
+
+ <div id="errorDialog" class="reveal-modal medium featureDialog" data-reveal>
+      <p><? echo _("Please add a payment method to your account in order to subscribe to Premium Features")?></p>
+      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings')" ><? echo _("ADD PAYMENT METHOD")?></button>
+      <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('errorDialog')" ><? echo _("RETURN TO STORE")?></button>
 </div>
 
-  <script src="/js/angular_all.min.js"></script>
+<div id="successDialog" class="reveal-modal medium featureDialog" data-reveal>
+      <b><? echo _("Your new Premium Feature is now live!")?></b><br/>
+      <p><? echo _("You can manage subscriptions from your account settings page")?></p>      
+      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings')"><? echo _("ACCOUNT SETTINGS")?></button>
+      <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('successDialog')" ><? echo _("RETURN TO STORE")?></button>
+</div>
 
+</div> <!-- End app -->
+  <script src="/js/angular_all.min.js"></script>  
   <script type="text/javascript" src="/code/features/shop/app.js"></script>
   <script type="text/javascript" src="/code/features/shop/features.php"></script>
+  <script type="text/javascript">
+      angular.module('shop').constant('ACCOUNT_ID', <? echo $_SESSION['account_id']?>);
+  </script>
   <script type="text/javascript" src="/code/features/shop/resource.js"></script>
   <script type="text/javascript" src="/code/features/shop/controllers.js"></script>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
