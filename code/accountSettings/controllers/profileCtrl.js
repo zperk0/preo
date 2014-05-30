@@ -2,6 +2,7 @@
 angular.module('accountSettings.controllers')
  .controller('ProfileCtrl', ['$scope','$q', '$location','ACCOUNT_ID', 'USER_ID','User','Account', 
   function ($scope,$q,$location,ACCOUNT_ID,USER_ID,User,Account) {
+  	$scope.isPosting = false;  	 
   	$scope.isEditing = false;  	 
   	console.log(ACCOUNT_ID,USER_ID)
     Account.get({id:ACCOUNT_ID},function(result){
@@ -35,16 +36,17 @@ angular.module('accountSettings.controllers')
     
     $scope.saveChanges = function(){    	    
 
-
+		$scope.isPosting = true;
     	$q.all([
     		$scope.user.$put(),
     		$scope.account.$put()
-		]).then(function(results){			
-			
+		]).then(function(results){					
+			$scope.isPosting = false;		
 			$scope.isEditing = false;	
 			noty({ type: 'success', text: _tr('Settings have been saved!') });
 
 		},function(){
+			$scope.isPosting = false;
 			noty({
 			  type: 'error',  layout: 'topCenter',
 			  text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'

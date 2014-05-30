@@ -42,6 +42,7 @@
 			
 		</div>
 
-		<button class='preodayButton' ng-click="saveChanges()" type="submit" ><?echo _("SAVE CHANGES");?></button>
+		<button ng-show="!isPosting" class='preodayButton' ng-click="saveChanges()" type="submit" ><?echo _("SAVE CHANGES");?></button>
+		<button ng-show="isPosting" class="secondary" type="button"><?echo _("SAVING...");?></button>
 
 </div>
