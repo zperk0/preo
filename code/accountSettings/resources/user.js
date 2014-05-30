@@ -5,7 +5,7 @@ angular.module('accountSettings.resources').
     var User = $resource('/api/users/:id',{id:"@id"}, {
     	put:{
           method: "PUT"
-        }    	
+        }
     });
 
 	return User

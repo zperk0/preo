@@ -25,7 +25,11 @@ app.config(['$routeProvider',
       when('/billingHistory', {
         templateUrl: '/code/accountSettings/partials/billingHistory.html',
         controller: 'BillingHistoryCtrl'
-      }).      
+      }). 
+      when('/changePassword', {
+        templateUrl: '/code/accountSettings/partials/password.php',
+        controller: 'PasswordCtrl'
+      }).   
       otherwise({
         redirectTo: '/profile'
       });

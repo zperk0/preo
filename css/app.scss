@@ -2322,7 +2322,7 @@ span .currencySymbol {
 
     a{
       color:#48535d;
-            
+
       &:hover{
         cursor:pointer;
         color:#2e70b7;
@@ -2359,7 +2359,7 @@ span .currencySymbol {
         color:#999;
       }
 
-      div{
+      .inputWrapper{
         float:left;
         width:70%;
         margin-left:5%;
@@ -2369,7 +2369,27 @@ span .currencySymbol {
         float:right;
       }
     }
+
+    #passwordForm {
+      .error{
+        input{
+          margin-bottom:1em;
+          background: rgba(227,15,77,0.1) !important ;
+        }
+      }
+      button{
+        margin-top: 30px;
+        margin-bottom: 0;
+      }
+    }
   }
+}
+
+.errorMessage{
+  display: block;
+  margin-top: 20px;
+  clear: both;
+  color: #e30f4d;
 }
 
 

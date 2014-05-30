@@ -1,9 +1,9 @@
 //shop
 angular.module('accountSettings.controllers')
- .controller('ProfileCtrl', ['$scope','$q', 'ACCOUNT_ID', 'USER_ID','User','Account', 
-  function ($scope,$q,ACCOUNT_ID,USER_ID,User,Account) {
+ .controller('ProfileCtrl', ['$scope','$q', '$location','ACCOUNT_ID', 'USER_ID','User','Account', 
+  function ($scope,$q,$location,ACCOUNT_ID,USER_ID,User,Account) {
   	$scope.isEditing = false;  	 
-
+  	console.log(ACCOUNT_ID,USER_ID)
     Account.get({id:ACCOUNT_ID},function(result){
     	$scope.account=result;    	
     });
@@ -23,12 +23,14 @@ angular.module('accountSettings.controllers')
 		})
     });
     
+    $scope.changePassword = function(){
+    	 $location.path("/changePassword");
+    }
 
 
     $scope.toggleEditUserDetails = function(){    	
     	$scope.isEditing = !$scope.isEditing;    	
     }	
-
 
     
     $scope.saveChanges = function(){    	    
