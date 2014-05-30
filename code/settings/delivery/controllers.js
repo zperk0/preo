@@ -146,8 +146,14 @@ angular.module('delivery.controllers',[]).
             noty({
               type: 'success',  layout: 'topCenter',
               text: _tr("Successfully saved delivery settings.")
+            });        
+        },
+        function(error){
+            $scope.isPosting =false;
+            noty({
+              type: 'error',  layout: 'topCenter',
+              text: _tr("Sorry, but there's been an error processing your request.")
             });
-        
         });           
 
 	};
