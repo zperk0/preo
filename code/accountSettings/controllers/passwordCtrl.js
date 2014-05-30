@@ -35,16 +35,16 @@ console.log("user id is:" + USER_ID);
         } else {
         	console.log('posting',$scope.password)        	
         	$http.post('/api/users/auth/change', $scope.password)
-        	.success(function(result){
-        		if (result.status == 401){        			
+        	.success(function(result){        		 
+				noty({ type: 'success', text: _tr('Settings and Password has been saved!<br/>You will need to log in again with your new password to continue.') });
+				setTimeout(function(){window.location.replace("/logout");}, 2500);
+        	}).error(function(error){
+        		// error[0] = obj with msg from server
+        		// error[1] = status code
+        		if (error[1] == 401){        			
         			$scope.oldIncorrect = true;
     				$scope.errorMessage ="Sorry, the old password you entered was incorrect. Please try again!";
-        		} else if (result.status = 200){
-    				noty({ type: 'success', text: _tr('Settings and Password has been saved!<br/>You will need to log in again with your new password to continue.') });
-					setTimeout(function(){window.location.replace("/logout");}, 2500);
-        		}        		
-        	}).error(function(error){
-        		console.log(arguments,error)
+        		}
         	}) 
         	
         }
