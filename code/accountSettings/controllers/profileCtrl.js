@@ -36,27 +36,19 @@ angular.module('accountSettings.controllers')
     $scope.saveChanges = function(){    	    
 
 
-    	//TODO how to return to previous value if the request fails?
-    	//to force a fail change the PUT method on the resource to something invalid 
     	$q.all([
     		$scope.user.$put(),
     		$scope.account.$put()
 		]).then(function(results){			
-			var success = true;
-			angular.forEach(results,function(result){
-				if (result.status && result.status != 200){
-					success = false;
-				}
-			});
-			if (success ){
-				$scope.isEditing = false;	
-				noty({ type: 'success', text: _tr('Settings have been saved!') });
-			} else {
-				noty({
-				  type: 'error',  layout: 'topCenter',
-				  text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'
-				});    		
-			}				
+			console.log("result",results);			
+			$scope.isEditing = false;	
+			noty({ type: 'success', text: _tr('Settings have been saved!') });
+
+		},function(){
+			noty({
+			  type: 'error',  layout: 'topCenter',
+			  text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'
+			});    					
 		});    	
     }
 
