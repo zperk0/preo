@@ -2285,3 +2285,71 @@ span .currencySymbol {
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .hide {
   display: none !important;
 }
+
+.accountSettings{
+    padding-top:50px;
+  
+  .content{
+      width:70%;
+      margin:0;
+      float:left;
+  }
+  
+  .menu{
+      width:25%;
+      margin-right:0;
+      margin-left:5%;
+      float:left;
+  }
+
+  ul,li {
+    list-style: none
+  }
+
+  li{
+    font-size:1em;
+    padding:10px 0;
+    border-bottom:1px solid #333;
+
+    &:hover{
+      cursor:pointer;
+      color:#2e70b7;
+    }
+
+    &.selected{
+      color:#2e70b7;
+    }
+
+  }
+
+  .profileWrapper{
+    background:#fff;
+    padding:30px;
+
+    .rowWrapper{
+      position:relative;
+      clear:both;
+      line-height:50px;
+
+      label{
+        display:block;
+        float:left;
+        width:20%;
+
+      }
+
+      div{
+        float:left;
+        width:70%;
+        margin-left:5%;
+      }
+
+      button{
+        float:right;
+      }
+    }
+  }
+}
+
+
+  

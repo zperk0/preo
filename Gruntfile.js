@@ -73,7 +73,13 @@ module.exports = function(grunt) {
           livereload: true
         }
       },
-
+      php:{
+        files:['**/*.php'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      }
     },
     sass: {
      dist: {
