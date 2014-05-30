@@ -4,12 +4,15 @@ angular.module('accountSettings.controllers')
   function ($scope) {
   		$scope.Views = {
   			profile:0,
-  			subscriptions:1,
-  			paymentMethods:2,
+  			subscription:1,
+  			paymentMethod:2,
   			billingHistory:3
   		}
 
     	$scope.currentView = $scope.Views.profile;
-    
+    	
+    	$scope.setSelected = function(which){
+    		$scope.currentView=which;		
+    	}
 
   }]);    

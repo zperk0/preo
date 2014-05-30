@@ -8,43 +8,6 @@
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 ?> 
 
-  <style>
-
-  .accountSettings{
-  	padding-top:50px;
-  }
-  .accountSettings .content{
-  		width:70%;
-  		margin:0;
-  		float:left;
-  }
-  .accountSettings .menu{
-  		width:25%;
-  		margin-right:0;
-  		margin-left:5%;
-  		float:left;
-  }
-
-  .accountSettings ul,li {
-  	list-style: none
-  }
-
-  .accountSettings li{
-  	font-size:1em;
-  	padding:10px 0;
-  	border-bottom:1px solid #333;
-  }
-  .accountSettings li:hover{
-  	cursor:pointer;
-  	color:#2e70b7;
-  }
-
-  .accountSettings li.selected{
-  	color:#2e70b7;
-  }
-  
-
-  </style>
   <div ng-app="accountSettings"  class='accountSettings row'>
   
   	<div class='content'>
@@ -54,10 +17,10 @@
 		<h3>Account Settings</h3>
 
 		<ul>
-			<li ng-class="{'selected':currentView == Views.profile}" > <a href="#/profile"><?echo _("Profile") ?></a></li>
-			<li ng-class="{'selected':currentView == Views.profile}">  <a href="#/subscription"><?echo _("Subscriptions") ?></a></li>
-			<li ng-class="{'selected':currentView == Views.profile}">  <a href="#/paymentMethod"><?echo _("Payment Methods") ?></a></li>
-			<li ng-class="{'selected':currentView == Views.profile}">  <a href="#/billingHistory"><?echo _("Billing History") ?></a></li>
+			<li ng-class="{'selected':currentView == Views.profile}" ng-click="setSelected(Views.profile)"> <a href="#/profile"><?echo _("Profile") ?></a></li>
+			<li ng-class="{'selected':currentView == Views.subscription}" ng-click="setSelected(Views.subscription)">  <a href="#/subscription"><?echo _("Subscriptions") ?></a></li>
+			<li ng-class="{'selected':currentView == Views.paymentMethod}" ng-click="setSelected(Views.paymentMethod)">  <a href="#/paymentMethod"><?echo _("Payment Methods") ?></a></li>
+			<li ng-class="{'selected':currentView == Views.billingHistory}" ng-click="setSelected(Views.billingHistory)">  <a href="#/billingHistory"><?echo _("Billing History") ?></a></li>
 
 		</ul>
   	</div>
@@ -67,7 +30,16 @@
 
   <script src="/js/angular_all.min.js"></script>  
   <script type="text/javascript" src="/code/accountSettings/app.js"></script>  
-  <script type="text/javascript" src="/code/accountSettings/resource.js"></script>  
+  <script>
+  //always on session after login
+  angular.module('accountSettings').constant('ACCOUNT_ID',<? echo $_SESSION['account_id']?>);
+  angular.module('accountSettings').constant('USER_ID',<? echo $_SESSION['user_id']?>);
+
+
+  
+  </script>
+  <script type="text/javascript" src="/code/accountSettings/resources/user.js"></script>
+  <script type="text/javascript" src="/code/accountSettings/resources/account.js"></script>
   <script type="text/javascript" src="/code/accountSettings/controllers/profileCtrl.js"></script>
   <script type="text/javascript" src="/code/accountSettings/controllers/menuCtrl.js"></script>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 

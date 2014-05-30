@@ -11,7 +11,7 @@ app.config(['$routeProvider',
   	console.log("prividing route");
     $routeProvider.
       when('/profile', {
-        templateUrl: '/code/accountSettings/partials/profile.html',
+        templateUrl: '/code/accountSettings/partials/profile.php',
         controller: 'ProfileCtrl'
       }).      
       when('/subscription', {
@@ -33,3 +33,6 @@ app.config(['$routeProvider',
 
 //control module
 angular.module('accountSettings.controllers',[]);
+
+//resources module
+angular.module('accountSettings.resources',['ngResource']);

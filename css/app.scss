@@ -882,7 +882,7 @@ h1 i.icon-question-sign, h4 i.icon-question-sign {
   }
 }
 
-#advanced-setting input, .delivery-tab-content input {
+#advanced-setting input, .delivery-tab-content input, .profileWrapper input {
   background: #F1F0F2 !important;
 }
 
@@ -982,7 +982,8 @@ tr {
   color: #48535D !important;
 }
 
-.menuTable .menuField, .eventTable .eventField, .userTable .userField, .outletTable .outletField, .mdTable .mdField, #advanced-setting input, .delivery-tab-content input {
+.menuTable .menuField, .eventTable .eventField, .userTable .userField, .outletTable .outletField, 
+.mdTable .mdField, #advanced-setting input, .delivery-tab-content input, .profileWrapper input {
   font-family: HelveticaNeueW01-45Ligh !important;
   color: #48535D !important;
   font-size: inherit !important;
@@ -1012,7 +1013,8 @@ tr {
   width: 59%;
 }
 
-.menuTable .menuTDName input, .eventTable .eventTDName input, .userTable .userTDName input, .outletTable .outletTDName input, .mdTable .mdTDName input, #advanced-setting input[type=text], .delivery-tab-content input {
+.menuTable .menuTDName input, .eventTable .eventTDName input, .userTable .userTDName input, .outletTable .outletTDName input, 
+.mdTable .mdTDName input, #advanced-setting input[type=text], .delivery-tab-content input, .profileWrapper input {
   font-weight: bold !important;
 }
 
@@ -1028,7 +1030,7 @@ tr {
   margin-bottom: 10px;
 }
 
-#advanced-setting input[type=text], .delivery-tab-content input {
+#advanced-setting input[type=text], .delivery-tab-content input, .profileWrapper input {
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -2299,25 +2301,33 @@ span .currencySymbol {
       width:25%;
       margin-right:0;
       margin-left:5%;
-      float:left;
+      float:left;      
   }
 
-  ul,li {
+  ul {
+    
     list-style: none
   }
 
   li{
     font-size:1em;
     padding:10px 0;
-    border-bottom:1px solid #333;
-
-    &:hover{
-      cursor:pointer;
-      color:#2e70b7;
-    }
+    border-bottom:1px solid #999;
 
     &.selected{
-      color:#2e70b7;
+      a {
+        color:#2e70b7;
+      }
+    }
+
+    a{
+      color:#48535d;
+            
+      &:hover{
+        cursor:pointer;
+        color:#2e70b7;
+      }
+ 
     }
 
   }
@@ -2325,6 +2335,17 @@ span .currencySymbol {
   .profileWrapper{
     background:#fff;
     padding:30px;
+    margin-bottom:150px;
+    font-size:110%;
+    margin-top:30px;
+    
+    button{
+      font-size:100%;
+    }
+
+    &>button{
+      margin-top:60px;
+    }
 
     .rowWrapper{
       position:relative;
@@ -2335,7 +2356,7 @@ span .currencySymbol {
         display:block;
         float:left;
         width:20%;
-
+        color:#999;
       }
 
       div{
