@@ -5,7 +5,7 @@ require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');
 
 
 if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] && startsWith($_SERVER['REQUEST_URI'],"/api")){
-	$apiCall = $apiURL."".substr($_SERVER['REQUEST_URI'], 5);
+	$url = $apiURL."".substr($_SERVER['REQUEST_URI'], 5);
     $apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
     //FIXME 
     //not sure when i need this or post
@@ -16,9 +16,27 @@ if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] && startsWith($_SE
     exit;
 }
 
-$result = callAPI($_SERVER['REQUEST_METHOD'],$apiCall,$params,$apiAuth);
 
-echo $result;
+$curl = curl_init($url);                                                                      
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $_SERVER['REQUEST_METHOD']);      
+if($data) curl_setopt($curl, CURLOPT_POSTFIELDS, $data);  
+curl_setopt($curl,CURLOPT_USERAGENT,'Mozilla/5.0 (cURL)');
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);                                                                      
+curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
+	'Content-Type: application/json',                                                                                
+	'Authorization: ' . $apiAuth)                                                                      
+);   
+if(preg_match('/https/', $url))
+	curl_setopt($curl, CURLOPT_CAINFO, $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/cert.pem'); //required for SSL verfication 
+
+$curlResponse = curl_exec($curl);
+$status = curl_getinfo( $curl );
+
+http_response_code ($status["http_code"]);
+
+curl_close($curl);
+
+echo $curlResponse;
 
 function startsWith($haystack, $needle)
 {     
