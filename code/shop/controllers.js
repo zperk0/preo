@@ -3,8 +3,7 @@ var appCtrls = angular.module('shop.controllers',[]);
   
 appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,ACCOUNT_ID) {    
     $scope.PremiumFeatures = FEATURES;
-    $scope.setSelectedFeature = function(index){
-      console.log("hooo",index);
+    $scope.setSelectedFeature = function(index){      
         $scope.selectedFeature = {
             index:index,
             feature:$scope.PremiumFeatures[index]
@@ -31,9 +30,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
               feature:$scope.PremiumFeatures[index]
          };
       }
-    }
-
-    
+    }    
 
     $scope.clickBuy = function(feature){
         //check if the user has a payment method         
@@ -48,8 +45,10 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
               }
             }          
         },function(){
-            //error, something went wrong
-            alert('Something went wrong, please try again.');          
+            noty({
+              type: 'error',  layout: 'topCenter',
+              text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'
+            });                         
         });
     }
 

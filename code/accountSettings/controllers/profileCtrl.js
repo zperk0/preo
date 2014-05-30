@@ -40,7 +40,7 @@ angular.module('accountSettings.controllers')
     		$scope.user.$put(),
     		$scope.account.$put()
 		]).then(function(results){			
-			console.log("result",results);			
+			
 			$scope.isEditing = false;	
 			noty({ type: 'success', text: _tr('Settings have been saved!') });
 
