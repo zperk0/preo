@@ -17,7 +17,7 @@
       <img src='/img/spinner.gif'/>
     </div>
     <form name="deliveryForm" id="deliveryForm" ng-submit="processForm()" novalidate ng-show="finishedLoading">  
-    <div class='row deliveryHeader'> <h1 class="alignHeader"><?echo _("Delivery Details")?></h1>
+    <div class='row deliveryHeader'> <h1 class="alignHeader"><?echo _("Delivery Settings")?></h1>
     <div class='deliverySwitch'> <a href='#'><?echo _("Enable delivery services")?></a>
         <div class="switch small" ng-class="{'off': venue.deliverFlag==0}" > 
           <input ng-change="onChangeDeliverFlag()"  value="0" type="radio" ng-model="venue.deliverFlag" tabindex=-1>
@@ -38,8 +38,8 @@
   <div class='row delivery-tab-holder'>
   <div ng:show="selected == 1" class='delivery-tab-content'>
       <div class='controlWrapper largeMarginBottom' ng-class="{'error': deliveryForm.deliveryZone.$invalid && triedSubmit }">
-        <label class='colorLabel' for='deliveryZone'> <?echo _("Delivery Zone")?> </label>      
-        <input type='text' id='deliveryZone' name='deliveryZone' ng-model="venueSettings.deliveryZone" ng-maxlength=200 placeholder='<? echo _('eg. "5 miles" or "NW1, NW2..."')?>' ng-disabled="venue.deliverFlag==0"/>      
+        <label class='colorLabel' for='deliveryZone'> <?echo _("Delivery Areas")?> </label>      
+        <input type='text' id='deliveryZone' name='deliveryZone' ng-model="venueSettings.deliveryZone" ng-maxlength=200 placeholder='<? echo _('eg. "NW1, NW2..."')?>' ng-disabled="venue.deliverFlag==0"/>      
         <small  ng-show="deliveryForm.deliveryZone.$invalid && triedSubmit" class="error"><?echo _("Please type a delivery zone (max 200chars)");?></small>
       </div>
       <div class='controlWrapper largeMarginBottom'>
@@ -52,17 +52,17 @@
         <small  ng-show="deliveryForm.minValueOrder.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 20.52)");?></small>  
       </div>      
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryCharge.$invalid && triedSubmit }">
-        <label class='colorLabel inlineLabel' for='deliveryCharge'> <?echo _("Delivery charge ")?></label>
+        <label class='colorLabel inlineLabel' for='deliveryCharge'> <?echo _("Delivery charge")?></label>
         <input class='inlineInput'  placeholder="0.00" type='text' id='deliveryCharge' name='deliveryCharge' ng-model="venueSettings.deliveryCharge" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-disabled="venue.deliverFlag==0"/>
         <small  ng-show="deliveryForm.deliveryCharge.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 3.25)");?></small>
       </div>
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryBelow.$invalid && triedSubmit }">
-        <label class='colorLabel inlineLabel' for='deliveryChargeBelow'> <?echo _("Free delivery for orders above ")?></label>
+        <label class='colorLabel inlineLabel' for='deliveryChargeBelow'> <?echo _("Free delivery for orders above")?></label>
         <input class='inlineInput'  placeholder="0.00" type='text' id='deliveryChargeBelow' name='deliveryChargeBelow' ng-model="venueSettings.deliveryChargeBelow" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-disabled="venue.deliverFlag==0"/>
         <small  ng-show="deliveryForm.deliveryChargeBelow.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 3.25)");?></small>
       </div>
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryLeadTime.$invalid && triedSubmit }">      
-      <label class='colorLabel inlineLabel' for='deliveryLeadTime'> <?echo _("Default lead time for delivery (minutes) ")?> <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("The time it takes to prepare your order.");?>"></i></label>
+      <label class='colorLabel inlineLabel' for='deliveryLeadTime'> <?echo _("Default delivery time (minutes)")?> </label>
       <input class='inlineInput'  placeholder="20" type='text' id='deliveryLeadTime' name='deliveryLeadTime' ng-model="venueSettings.deliveryLeadTime" ng-pattern="/^[0-9]+$/" ng-disabled="venue.deliverFlag==0"/>
       <small  ng-show="deliveryForm.deliveryLeadTime.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid time interval in minutes (e.g. 20)");?></small>
       </div>
