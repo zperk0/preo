@@ -56,12 +56,13 @@ module.exports = function(grunt) {
         }]        
       }
     },
-    watch: {
+    watch: {      
       js: {
         files: ['js/**/*.js'],
         tasks: ['minifyjs'],
         options: {
           spawn: false,
+          livereload: true
         }
       },
       scss:{
@@ -69,6 +70,7 @@ module.exports = function(grunt) {
         tasks: ['sass','minifycss','clean:appCss'],
         options: {
           spawn: false,
+          livereload: true
         }
       },
 
