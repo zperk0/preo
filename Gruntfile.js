@@ -64,15 +64,30 @@ module.exports = function(grunt) {
           spawn: false,
         }
       },
-      css:{
-        files: ['css/**/*.css'],
-        tasks: ['minifycss'],
+      scss:{
+        files: ['css/*.scss'],
+        tasks: ['sass','minifycss','clean:appCss'],
         options: {
           spawn: false,
         }
-      }
-    }
+      },
 
+    },
+    sass: {
+     dist: {
+        files: {
+          'css/app.css': 'css/app.scss'
+        }
+      }
+    },
+   clean:{      
+      options:{
+        force:true,
+      },
+      appCss:{
+        src:["css/app.css"]
+     }
+   }
 });
 
 
@@ -122,7 +137,7 @@ module.exports = function(grunt) {
     ])
 
   grunt.registerTask('minifyjs', ['uglify:build','uglify:angular','replace:jscolor']);
-  grunt.registerTask('minifycss', ['cssmin','replace:fonts']);  
+  grunt.registerTask('minifycss', ['sass','cssmin','clean:appCss','replace:fonts']);  
   grunt.registerTask('build', ['minifyjs','minifycss']);
   grunt.registerTask('default', ['watcher']);
 
