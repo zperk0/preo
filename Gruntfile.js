@@ -58,11 +58,18 @@ module.exports = function(grunt) {
     },
     watch: {
       js: {
-        files: ['js/**/*.js','css/**/*.css'],
-        tasks: ['build'],
+        files: ['js/**/*.js'],
+        tasks: ['minifyjs'],
         options: {
           spawn: false,
-    }
+        }
+      },
+      css:{
+        files: ['css/**/*.css'],
+        tasks: ['minifycss'],
+        options: {
+          spawn: false,
+        }
       }
     }
 
@@ -109,10 +116,14 @@ module.exports = function(grunt) {
         fs.writeFileSync('code/shared/js_strings.php', file_str);            
   })
 
+  grunt.registerTask('watcher',[
+      'build',
+      'watch'
+    ])
 
   grunt.registerTask('minifyjs', ['uglify:build','uglify:angular','replace:jscolor']);
   grunt.registerTask('minifycss', ['cssmin','replace:fonts']);  
   grunt.registerTask('build', ['minifyjs','minifycss']);
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('default', ['watcher']);
 
 };
