@@ -292,7 +292,7 @@ $(document).ready(function() {
 	//change language ajaxy button
 	$("a.changeLang").on('click', function () {
 		var newLang = $(this).attr('data-new-lang');
-		$.post("code/shared/changeLang.php", 'lang='+newLang, function() {window.location.reload();}); 
+		$.post("/code/shared/changeLang.php", 'lang='+newLang, function() {window.location.reload();}); 
 	});
 	
 	if($("#map").length > 0)
