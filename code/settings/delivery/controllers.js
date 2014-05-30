@@ -7,33 +7,34 @@ angular.module('delivery.controllers',[]).
     $scope.finishedLoading = false;
     var placeholderMessages = {
         notify : [
-        {         
-            content:_tr("Your order is running 15 mins late"),
-            name:_tr("Late Order")
-        },
-        {
-            content:_tr("Your order is on its way"),
-            name:_tr("En-route")   
-        },
-        {          
-            content:_tr("There is a problem with your order. Please call us"),
-            name:_tr("Call us")
-        }
-    ],
-    reject:[
-        {
-            content:_tr("Your address is out of our delivery zone"),
-            name:_tr("Out of zone")   
-        },
-        {
-            content:_tr("Sorry, that item is out of stock"),
-            name:_tr("Out of stock")   
-        },
-        {
-            content:_tr("Sorry, Your order has been rejected. Please call us"),
-            name:_tr("Call us")   
-        }
-    ]};
+            {         
+                content:_tr("Your order is running 15 mins late"),
+                name:_tr("Late Order")
+            },
+            {
+                content:_tr("Your order is on its way"),
+                name:_tr("En-route")   
+            },
+            {          
+                content:_tr("There is a problem with your order. Please call us"),
+                name:_tr("Call us")
+            }
+        ],
+        reject:[
+            {
+                content:_tr("Your address is out of our delivery zone"),
+                name:_tr("Out of zone")   
+            },
+            {
+                content:_tr("Sorry, that item is out of stock"),
+                name:_tr("Out of stock")   
+            },
+            {
+                content:_tr("Sorry, Your order has been rejected. Please call us"),
+                name:_tr("Call us")   
+            }
+        ]
+    };
     
     //get venue object
     $scope.venue = Resources.Venue.get({id:VENUE_ID},function(result){            	
@@ -56,7 +57,7 @@ angular.module('delivery.controllers',[]).
             if (messages.length>i){                
                 var message = messages[i];
                 
-                if (message.type == "PUSH_NOTIFY"){                    
+                if (message.type == "ORDER_NOTIFY"){                    
                     $scope.messages.notify.push(message)
                     notifications++;          
                 } else{
@@ -68,7 +69,7 @@ angular.module('delivery.controllers',[]).
                     var vm = new Resources.VenueMessages({
                         name:"",
                         content:"",
-                        type:"PUSH_NOTIFY",
+                        type:"ORDER_NOTIFY",
                         active:0
                         
                     });                    
@@ -78,7 +79,7 @@ angular.module('delivery.controllers',[]).
                     var vm = new Resources.VenueMessages({
                         name:"",
                         content:"",
-                        type:"PUSH_REJECT",
+                        type:"ORDER_REJECT",
                         active:0
                     })   
                     rejects++;
@@ -126,7 +127,8 @@ angular.module('delivery.controllers',[]).
         //not sure why we're receiving both type and typestring here as they seem to be the same.                
         var messages = $scope.messages.reject.concat($scope.messages.notify);
         for (var msg in messages){
-            delete messages[msg]["typeString"];            
+            delete messages[msg]["typeString"];
+            delete messages[msg]["suppressed"];   
         }
         //same with the ccySymbol
         delete $scope.venue["ccySymbol"]
