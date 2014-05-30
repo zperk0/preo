@@ -9,7 +9,7 @@ if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] && startsWith($_SE
     $apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
     //FIXME 
     //not sure when i need this or post
-    $params = file_get_contents('php://input');
+    $data = file_get_contents('php://input');
 } else{
     header('HTTP/1.1 400 Bad Request');
     header('X-Proxy-Error: no url');
