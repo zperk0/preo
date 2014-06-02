@@ -110,11 +110,18 @@
 				</div>
 			</div>
 			
-			<div class="row leadTimeDiv <?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">
+			<div class="row leadTimeDiv nonEventOnly <?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">
 				<div class="large-12 columns">
 					<label><?echo _("Default preparation time for collection orders (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("The time it takes to prepare your order before the customer can pick it up.");?>"></i></label>
 					<input type="text" name="leadtime" id="leadtime" tabindex=5 placeholder="<?echo _("e.g. 25");?>" value="<?if(isset($_SESSION['venue_leadtime'])) echo $_SESSION['venue_leadtime'];?>" <?if(!isset($_SESSION['venue_eventFlag']) || (isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag'])){?>required<?}?> pattern="^\d+$">
 					<small class="error"><?echo _("Please provide a lead time");?></small>
+				</div>
+			</div>
+			<div class="row discountCollection nonEventOnly <?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">
+				<div class="large-12 columns">
+					<label><?echo _("Discount offered for collection orders (%)");?>&nbsp;</label>
+					<input type="text" name="vDiscount" id="vDiscount" tabindex=6 placeholder="<?echo _("e.g. 10");?>" value="<?if(isset($_SESSION['venue_discount'])) echo $_SESSION['venue_discount'];?>" pattern="^(0?[0-9]?[0-9]|100)$">
+					<small class="error"><?echo _("Please provide a discount percentage (between 0 and 100)");?></small>
 				</div>
 			</div>
 
@@ -126,13 +133,7 @@
 				</div>
 			</div>
 			
-			<div class="row discountCollection">
-				<div class="large-12 columns">
-					<label><?echo _("Discount offered for collection orders (%)");?>&nbsp;</label>
-					<input type="text" name="vDiscount" id="vDiscount" tabindex=6 placeholder="<?echo _("e.g. 10");?>" value="<?if(isset($_SESSION['venue_discount'])) echo $_SESSION['venue_discount'];?>" pattern="^(0?[0-9]?[0-9]|100)$">
-					<small class="error"><?echo _("Please provide a discount percentage (between 0 and 100)");?></small>
-				</div>
-			</div>
+			
 			
 		
 			

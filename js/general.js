@@ -434,13 +434,13 @@ $(document).ready(function() {
 	
 		if( $(this).find("input[type=radio][name=vEvent]:checked").val() == '0')
 		{
-			$('.leadTimeDiv').slideDown();
-			$('.leadTimeDiv').find('input').attr('required','required');
+			$('.nonEventOnly').slideDown();
+			$('.nonEventOnly').find('input').attr('required','required');
 		}
 		else
 		{
-			$('.leadTimeDiv').slideUp();
-			$('.leadTimeDiv').find('input').removeAttr('required');
+			$('.nonEventOnly').slideUp();
+			$('.nonEventOnly').find('input').removeAttr('required');
 		}
 	});
 
@@ -487,7 +487,7 @@ $(document).ready(function() {
 		var url = "/saveVenue";
 		
 		$('#venueSave').hide();
-		$('#savingButton').show();
+		$('#savingButton').removeClass("hide").show();
 		
 		$.ajax({
 			   type: "POST",
