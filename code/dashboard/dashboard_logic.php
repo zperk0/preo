@@ -80,6 +80,7 @@
 		$_SESSION['venue_language']				= $dataJSON[0]['locale'];	
 		$_SESSION['venue_timezone']				= $dataJSON[0]['timeZone'];	
 		$_SESSION['venue_currency']				= $dataJSON[0]['ccy'];	
+		$_SESSION['venue_ccySymbol']				= $dataJSON[0]['ccySymbol'];	
 		
 		
 		//we get venue id from _SESSION
@@ -162,12 +163,7 @@
 	{
 		$_SESSION['noAppFlag-1']=1;
 		$_SESSION['noAppFlag-2']=1;
-		$_SESSION['noMenuFlag']=1;
-
-		//regardless of what we had before, pre set the initial values of the messages as the placeholders
-		//FIXME strings defined in API_vars
-		$deliveryMsgs = $deliveryMessages;
-		
+		$_SESSION['noMenuFlag']=1;		
 
 	}
 	

@@ -7,4 +7,5 @@ node_modules
 .DS_Store
 locale/nocache
 bower_components
-.sass-cache
+.sass-cache/
+js/.DS_Store

@@ -5,35 +5,41 @@ angular.module('delivery.controllers',[]).
   	$scope.selected =1;    
     $scope.triedSubmit = false;
     $scope.finishedLoading = false;
+    var messageTypes = {
+        notify:["ORDER_NOTIFY"],
+        reject:["ORDER_REJECT"]
+    }
     var placeholderMessages = {
         notify : [
-        {         
-            content:_tr("Your order is running 15 mins late"),
-            name:_tr("Late Order")
-        },
-        {
-            content:_tr("Your order is on its way"),
-            name:_tr("En-route")   
-        },
-        {          
-            content:_tr("There is a problem with your order. Please call us"),
-            name:_tr("Call us")
-        }
-    ],
-    reject:[
-        {
-            content:_tr("Your address is out of our delivery zone"),
-            name:_tr("Out of zone")   
-        },
-        {
-            content:_tr("Sorry, that item is out of stock"),
-            name:_tr("Out of stock")   
-        },
-        {
-            content:_tr("Sorry, Your order has been rejected. Please call us"),
-            name:_tr("Call us")   
-        }
-    ]};
+            {         
+                content:_tr("Your order is running 15 mins late"),
+                name:_tr("Late Order")
+            },
+            {
+                content:_tr("Your order is on its way"),
+                name:_tr("En-route")   
+            },
+            {          
+                content:_tr("There is a problem with your order. Please call us"),
+                name:_tr("Call us")
+            }
+        ],
+        reject:[
+            {
+                content:_tr("Your address is out of our delivery zone"),
+                name:_tr("Out of zone")   
+            },
+            {
+                content:_tr("Sorry, that item is out of stock"),
+                name:_tr("Out of stock")   
+            },
+            {
+                content:_tr("Sorry, Your order has been rejected. Please call us"),
+                name:_tr("Call us")   
+            }
+        ]
+    };
+
     
     //get venue object
     $scope.venue = Resources.Venue.get({id:VENUE_ID},function(result){            	
@@ -55,8 +61,8 @@ angular.module('delivery.controllers',[]).
            for (var i=0;i<6;i++){
             if (messages.length>i){                
                 var message = messages[i];
-                
-                if (message.type == "PUSH_NOTIFY"){                    
+                console.log(message);
+                if (messageTypes.notify.indexOf(message.type) >-1){                    
                     $scope.messages.notify.push(message)
                     notifications++;          
                 } else{
@@ -68,7 +74,7 @@ angular.module('delivery.controllers',[]).
                     var vm = new Resources.VenueMessages({
                         name:"",
                         content:"",
-                        type:"PUSH_NOTIFY",
+                        type:messageTypes.notify[0],
                         active:0
                         
                     });                    
@@ -78,7 +84,7 @@ angular.module('delivery.controllers',[]).
                     var vm = new Resources.VenueMessages({
                         name:"",
                         content:"",
-                        type:"PUSH_REJECT",
+                        type:messageTypes.reject[0],
                         active:0
                     })   
                     rejects++;
@@ -87,11 +93,13 @@ angular.module('delivery.controllers',[]).
                                 
             }
         }
+        console.log($scope.messages);
         $scope.finishedLoading = true;
     },function(err){ console.log("error",arguments)});   
 
     $scope.validateMessage = function(message){    
-        return Boolean(message.content) ? !Boolean(message.name) : Boolean(message.name);
+        var isMsgFilled = Boolean(message.content) ? !Boolean(message.name) : Boolean(message.name);
+        return isMsgFilled && $scope.triedSubmit;
     }
 
     $scope.validateActive = function(message){        
@@ -110,11 +118,7 @@ angular.module('delivery.controllers',[]).
     $scope.processForm = function() {
         $scope.isPosting =true;
         $scope.triedSubmit = true;
-        if (!$scope.deliveryForm.$valid) {
-            noty({
-              type: 'error',  layout: 'topCenter',
-              text: _tr("Sorry, we need more information, please check if you have filled all the required fields.") /*text: 'Connection Error! Check API endpoint.'*/
-            });
+        if (!$scope.deliveryForm.$valid) {            
             $scope.isPosting =false;
             return false;
         };
@@ -126,7 +130,8 @@ angular.module('delivery.controllers',[]).
         //not sure why we're receiving both type and typestring here as they seem to be the same.                
         var messages = $scope.messages.reject.concat($scope.messages.notify);
         for (var msg in messages){
-            delete messages[msg]["typeString"];            
+            delete messages[msg]["typeString"];
+            delete messages[msg]["suppressed"];   
         }
         //same with the ccySymbol
         delete $scope.venue["ccySymbol"]
@@ -177,6 +182,7 @@ angular.module('delivery.controllers',[]).
                 var placeholder = $scope.getPlaceholder(type,i)
                 msg.name = placeholder.name;
                 msg.content = placeholder.content;
+                msg.active = 1;
             }   
         }
     }

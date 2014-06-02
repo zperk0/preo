@@ -3,7 +3,7 @@
 </style><!-- The dashboard looks slightly different than other pages -->
 <?
 //resetting global vars
-	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/global_vars.php'); 
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/global_vars.php');
 ?>
 <div class="row dashContentTop">
 	<div class="topSpacer"></div>
@@ -22,19 +22,19 @@
 			</div>
 			<div class="row">
 				<h6><?echo _("Total revenue");?></h6>
-				<h1><span class='currencySymbol'></span> <?echo number_format($_SESSION['venue_report_totalRevenue'],2);?></h1>
+				<h1><?echo $_SESSION['venue_ccySymbol'].' '.locale_number_format($_SESSION['venue_report_totalRevenue'], 2);?></h1>
 			</div>
 			<div class="row">
 				<h6><?echo _("Total orders");?></h6>
-				<h1><?echo number_format($_SESSION['venue_report_totalOrders'],0);?></h1>
+				<h1><?echo locale_number_format($_SESSION['venue_report_totalOrders'],0);?></h1>
 			</div>
 			<div class="row">
 				<h6><?echo _("New users");?></h6>
-				<h1><?echo number_format($_SESSION['venue_report_newUsers'],0);?></h1>
+				<h1><?echo locale_number_format($_SESSION['venue_report_newUsers'],0);?></h1>
 			</div>
 			<div class="row">
 				<h6><?echo _("Returning users");?></h6>
-				<h1><?echo number_format($_SESSION['venue_report_returningUsers'],0);?></h1>
+				<h1><?echo locale_number_format($_SESSION['venue_report_returningUsers'],0);?></h1>
 			</div>
 		</div>	
 		<div class="large-7 columns dashChangeApp">

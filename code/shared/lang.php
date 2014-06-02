@@ -56,6 +56,13 @@ bindtextdomain($domain, $_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/locale");
 bind_textdomain_codeset($domain, "UTF-8");
 textdomain($domain);
 
+function locale_number_format($number,$decimals=0) {
+  $locale = localeconv();
+  return number_format($number,$decimals,
+             $locale['decimal_point'],
+             $locale['thousands_sep']);
+}
+
 
 /* BACKUP WORKING DEFAULT */
 /*

@@ -47,17 +47,8 @@
 	$vCode = $_POST['vCode'];
 	protect($vCode);
 	
-	$vDeliveryDiscount = formatPercentage($_POST["vDeliveryDiscount"]);
-	protect($vDeliveryDiscount );
-
-	$contactInfo = $_POST["contactInfo"];
-	protect($contactInfo );
-	
 	$vDiscount = formatPercentage($_POST['vDiscount']);
 	protect($vDiscount);
-		
-	$vDelivery = $_POST["vDelivery"];
-	protect($vDelivery);	
 
 	$language = $_POST['language'];
 	protect($language);
@@ -70,25 +61,6 @@
 
 	$vOrderMin = $_POST['vOrderMin'];
 	protect($vCurrency);
-
-
-	$id = array();
-	$name = array();
-	$content = array();
-	$active = array();
-	for ($ind = 0; $ind < 6; $ind ++ ){
-		$id[$ind] = $_POST["custNotifId".$ind];
-		protect($id[$ind] );
-
-		$name[$ind] = $_POST["shortName".$ind];
-		protect($name[$ind] );
-
-		$content[$ind] = $_POST["cusNotif".$ind];
-		protect($content[$ind] );
-
-		$active[$ind] = $_POST["active".$ind];
-		protect($active[$ind] );
-	}
 	
 
 	preg_match('/\((.*), (.*)\)/', $vCode, $matches);
@@ -113,7 +85,6 @@
 	$data['city']			= $vTown;
 	$data['locale']			= $language."-".$vCountry;
 	$data['timeZone']			= $timezone;
-	$data['deliverFlag']   = $vDelivery;
 	$data['ccy']			= $vCurrency;
 	//save the venue_currency so we can use it in the other pages.
 	$_SESSION['venue_currency'] = $vCurrency;

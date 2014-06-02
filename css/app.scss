@@ -2180,6 +2180,10 @@ span .currencySymbol {
 #telephone {
   width: 30%;
   display: block;
+
+  &+small{
+    width:30%;
+  }
 }
 
 .messageRow {
