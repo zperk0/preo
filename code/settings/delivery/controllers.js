@@ -2,7 +2,7 @@
 angular.module('delivery.controllers',[]).
   controller('deliveryController', function($scope,$http,Resources,$q, VENUE_ID) {
     $scope.isPosting = false;
-  	$scope.selected =1;    
+  	$scope.selected =2;    
     $scope.triedSubmit = false;
     $scope.finishedLoading = false;
     var messageTypes = {
@@ -98,7 +98,8 @@ angular.module('delivery.controllers',[]).
     },function(err){ console.log("error",arguments)});   
 
     $scope.validateMessage = function(message){    
-        return Boolean(message.content) ? !Boolean(message.name) : Boolean(message.name);
+        var isMsgFilled = Boolean(message.content) ? !Boolean(message.name) : Boolean(message.name);
+        return isMsgFilled && $scope.triedSubmit;
     }
 
     $scope.validateActive = function(message){        
