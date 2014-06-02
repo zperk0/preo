@@ -6,8 +6,8 @@ angular.module('delivery.controllers',[]).
     $scope.triedSubmit = false;
     $scope.finishedLoading = false;
     var messageTypes = {
-        notify:["ORDER_NOTIFY","PUSH_NOTIFY"],
-        reject:["ORDER_REJECT","PUSH_REJECT"]
+        notify:["ORDER_NOTIFY"],
+        reject:["ORDER_REJECT"]
     }
     var placeholderMessages = {
         notify : [
