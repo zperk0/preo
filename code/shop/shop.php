@@ -239,14 +239,14 @@
 
  <div id="errorDialog" class="reveal-modal medium featureDialog" data-reveal>
       <p><? echo _("Please add a payment method to your account in order to subscribe to Premium Features")?></p>
-      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings')" ><? echo _("ADD PAYMENT METHOD")?></button>
+      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/paymentMethod')" ><? echo _("ADD PAYMENT METHOD")?></button>
       <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('errorDialog')" ><? echo _("RETURN TO STORE")?></button>
 </div>
 
 <div id="successDialog" class="reveal-modal medium featureDialog" data-reveal>
       <b><? echo _("Your new Premium Feature is now live!")?></b><br/>
       <p><? echo _("You can manage subscriptions from your account settings page")?></p>      
-      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings')"><? echo _("ACCOUNT SETTINGS")?></button>
+      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/subscription')"><? echo _("ACCOUNT SETTINGS")?></button>
       <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('successDialog')" ><? echo _("RETURN TO STORE")?></button>
 </div>
 
