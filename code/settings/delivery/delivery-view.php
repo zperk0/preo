@@ -44,22 +44,22 @@
       </div>
       <div class='controlWrapper largeMarginBottom' ng-class="{'error': deliveryForm.telephone.$invalid && triedSubmit }">
         <label class='colorLabel' for='telephone'> <?echo _("In case of customer queries contact:")?> </label>
-        <input type='text' id='telephone' name='telephone' ng-model="venueSettings.deliveryPhone" placeholder='+44 (0) 12345678' ng-disabled="venue.deliverFlag==0" ng-required="true"/>        
-        <small  ng-show="deliveryForm.telephone.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 20.52)");?></small>  
+        <input type='text' id='telephone' name='telephone' ng-model="venueSettings.deliveryPhone" placeholder='+44 (0) 12345678' ng-disabled="venue.deliverFlag==0" ng-required="true"/>
+        <small  ng-show="deliveryForm.telephone.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid telephone number");?></small>  
       </div>
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.minValueOrder.$invalid && triedSubmit }">
         <label class='colorLabel inlineLabel' for='minValueOrder'> <?echo _("Minimum order value to qualify for delivery")?></label>
-        <input class='inlineInput' placeholder="0.00" type='text' id='minValueOrder' name='minValueOrder' ng-model="venueSettings.deliveryOrderMin" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-disabled="venue.deliverFlag==0">      
+        <input class='inlineInput' placeholder="0.00" type='text' id='minValueOrder' name='minValueOrder' ng-model="venueSettings.deliveryOrderMin" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-disabled="venue.deliverFlag==0" currency>      
         <small  ng-show="deliveryForm.minValueOrder.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 20.52)");?></small>  
       </div>      
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryCharge.$invalid && triedSubmit }">
         <label class='colorLabel inlineLabel' for='deliveryCharge'> <?echo _("Delivery charge")?></label>
-        <input class='inlineInput'  placeholder="0.00" type='text' id='deliveryCharge' name='deliveryCharge' ng-model="venueSettings.deliveryCharge" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-disabled="venue.deliverFlag==0"/>
+        <input class='inlineInput'  placeholder="0.00" type='text' id='deliveryCharge' name='deliveryCharge' ng-model="venueSettings.deliveryCharge" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-disabled="venue.deliverFlag==0" currency/>
         <small  ng-show="deliveryForm.deliveryCharge.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 3.25)");?></small>
       </div>
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryBelow.$invalid && triedSubmit }">
         <label class='colorLabel inlineLabel' for='deliveryChargeBelow'> <?echo _("Free delivery for orders above")?></label>
-        <input class='inlineInput'  placeholder="0.00" type='text' id='deliveryChargeBelow' name='deliveryChargeBelow' ng-model="venueSettings.deliveryChargeBelow" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-disabled="venue.deliverFlag==0"/>
+        <input class='inlineInput'  placeholder="0.00" type='text' id='deliveryChargeBelow' name='deliveryChargeBelow' ng-model="venueSettings.deliveryChargeBelow" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-disabled="venue.deliverFlag==0" currency/>
         <small  ng-show="deliveryForm.deliveryChargeBelow.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 3.25)");?></small>
       </div>
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.deliveryLeadTime.$invalid && triedSubmit }">      

@@ -2,7 +2,7 @@
 angular.module('delivery.controllers',[]).
   controller('deliveryController', function($scope,$http,Resources,$q, VENUE_ID) {
     $scope.isPosting = false;
-  	$scope.selected =2;    
+  	$scope.selected =1;    
     $scope.triedSubmit = false;
     $scope.finishedLoading = false;
     var messageTypes = {
