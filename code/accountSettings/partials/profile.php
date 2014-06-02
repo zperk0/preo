@@ -1,5 +1,5 @@
 <h3><?echo _("Profile")?></h3>
-<div class='profileWrapper'>
+<div class='profileWrapper' ng-cloak>
 	
 		<div class='rowWrapper'>
 			<label><? echo _("First Name")?></label>

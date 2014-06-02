@@ -882,7 +882,7 @@ h1 i.icon-question-sign, h4 i.icon-question-sign {
   }
 }
 
-#advanced-setting input, .delivery-tab-content input, .profileWrapper input {
+#advanced-setting input, .delivery-tab-content input {
   background: #F1F0F2 !important;
 }
 
@@ -983,7 +983,7 @@ tr {
 }
 
 .menuTable .menuField, .eventTable .eventField, .userTable .userField, .outletTable .outletField, 
-.mdTable .mdField, #advanced-setting input, .delivery-tab-content input, .profileWrapper input {
+.mdTable .mdField, #advanced-setting input, .delivery-tab-content input {
   font-family: HelveticaNeueW01-45Ligh !important;
   color: #48535D !important;
   font-size: inherit !important;
@@ -1014,7 +1014,7 @@ tr {
 }
 
 .menuTable .menuTDName input, .eventTable .eventTDName input, .userTable .userTDName input, .outletTable .outletTDName input, 
-.mdTable .mdTDName input, #advanced-setting input[type=text], .delivery-tab-content input, .profileWrapper input {
+.mdTable .mdTDName input, #advanced-setting input[type=text], .delivery-tab-content input {
   font-weight: bold !important;
 }
 
@@ -1030,7 +1030,7 @@ tr {
   margin-bottom: 10px;
 }
 
-#advanced-setting input[type=text], .delivery-tab-content input, .profileWrapper input {
+#advanced-setting input[type=text], .delivery-tab-content input {
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -2336,13 +2336,27 @@ span .currencySymbol {
 
   }
 
-  .profileWrapper{
+  .profileWrapper,.paymentWrapper{
     background:#fff;
     padding:30px;
     margin-bottom:150px;
     font-size:110%;
     margin-top:30px;
     
+
+    input {
+      background: #F1F0F2 !important;
+      font-family: HelveticaNeueW01-45Ligh !important;
+      color: #48535D !important;
+      font-size: inherit !important;
+      display: inline;
+      font-weight: bold !important;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      font-size: 110% !important;
+    }
+
     button{
       font-size:100%;
     }
@@ -2372,9 +2386,10 @@ span .currencySymbol {
       button{
         float:right;
       }
-    }
+    }    
+  }
 
-    #passwordForm {
+  #passwordForm {
       .error{
         input{
           margin-bottom:1em;
@@ -2386,7 +2401,6 @@ span .currencySymbol {
         margin-bottom: 0;
       }
     }
-  }
 }
 
 .errorMessage{

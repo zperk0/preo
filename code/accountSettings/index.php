@@ -41,8 +41,10 @@
   <script type="text/javascript" src="/code/accountSettings/directives/equals.js"></script>
   <script type="text/javascript" src="/code/accountSettings/resources/user.js"></script>
   <script type="text/javascript" src="/code/accountSettings/resources/account.js"></script>
+  <script type="text/javascript" src="/code/accountSettings/resources/accountCard.js"></script>
   <script type="text/javascript" src="/code/accountSettings/controllers/profileCtrl.js"></script>
   <script type="text/javascript" src="/code/accountSettings/controllers/passwordCtrl.js"></script>
+  <script type="text/javascript" src="/code/accountSettings/controllers/paymentCtrl.js"></script>
   <script type="text/javascript" src="/code/accountSettings/controllers/menuCtrl.js"></script>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 

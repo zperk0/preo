@@ -1,4 +1,4 @@
-//shop
+
 angular.module('accountSettings.controllers')
  .controller('PasswordCtrl', ['$scope','$q','$http','USER_ID','User',
   function ($scope,$q,$http,USER_ID,User) {
