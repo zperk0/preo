@@ -5,6 +5,10 @@ angular.module('delivery.controllers',[]).
   	$scope.selected =1;    
     $scope.triedSubmit = false;
     $scope.finishedLoading = false;
+    var messageTypes = {
+        notify:["ORDER_NOTIFY","PUSH_NOTIFY"],
+        reject:["ORDER_REJECT","PUSH_REJECT"]
+    }
     var placeholderMessages = {
         notify : [
             {         
@@ -35,6 +39,7 @@ angular.module('delivery.controllers',[]).
             }
         ]
     };
+
     
     //get venue object
     $scope.venue = Resources.Venue.get({id:VENUE_ID},function(result){            	
@@ -56,8 +61,8 @@ angular.module('delivery.controllers',[]).
            for (var i=0;i<6;i++){
             if (messages.length>i){                
                 var message = messages[i];
-                
-                if (message.type == "ORDER_NOTIFY"){                    
+                console.log(message);
+                if (messageTypes.notify.indexOf(message.type) >-1){                    
                     $scope.messages.notify.push(message)
                     notifications++;          
                 } else{
@@ -69,7 +74,7 @@ angular.module('delivery.controllers',[]).
                     var vm = new Resources.VenueMessages({
                         name:"",
                         content:"",
-                        type:"ORDER_NOTIFY",
+                        type:messageTypes.notify[0],
                         active:0
                         
                     });                    
@@ -79,7 +84,7 @@ angular.module('delivery.controllers',[]).
                     var vm = new Resources.VenueMessages({
                         name:"",
                         content:"",
-                        type:"ORDER_REJECT",
+                        type:messageTypes.reject[0],
                         active:0
                     })   
                     rejects++;
@@ -88,6 +93,7 @@ angular.module('delivery.controllers',[]).
                                 
             }
         }
+        console.log($scope.messages);
         $scope.finishedLoading = true;
     },function(err){ console.log("error",arguments)});   
 

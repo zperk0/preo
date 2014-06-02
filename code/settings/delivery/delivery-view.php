@@ -42,9 +42,10 @@
         <input type='text' id='deliveryZone' name='deliveryZone' ng-model="venueSettings.deliveryZone" ng-maxlength=200 placeholder='<? echo _('eg. "NW1, NW2..."')?>' ng-disabled="venue.deliverFlag==0"/>      
         <small  ng-show="deliveryForm.deliveryZone.$invalid && triedSubmit" class="error"><?echo _("Please type a delivery zone (max 200chars)");?></small>
       </div>
-      <div class='controlWrapper largeMarginBottom'>
+      <div class='controlWrapper largeMarginBottom' ng-class="{'error': deliveryForm.minValueOrder.$invalid && triedSubmit }">
         <label class='colorLabel' for='telephone'> <?echo _("In case of customer queries contact:")?> </label>
-        <input type='text' id='telephone' name='telephone' ng-model="venueSettings.deliveryPhone" placeholder='+44 (0) 12345678' ng-disabled="venue.deliverFlag==0"/>        
+        <input type='text' id='telephone' name='telephone' ng-model="venueSettings.deliveryPhone" placeholder='+44 (0) 12345678' ng-disabled="venue.deliverFlag==0" ng-required="true"/>        
+        <small  ng-show="deliveryForm.minValueOrder.$invalid && triedSubmit" class="error"><?echo _("Please enter a valid number (e.g. 20.52)");?></small>  
       </div>
       <div class='controlWrapper inlineControl' ng-class="{'error': deliveryForm.minValueOrder.$invalid && triedSubmit }">
         <label class='colorLabel inlineLabel' for='minValueOrder'> <?echo _("Minimum order value to qualify for delivery")?></label>
