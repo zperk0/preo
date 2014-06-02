@@ -56,16 +56,46 @@ module.exports = function(grunt) {
         }]        
       }
     },
-    watch: {
+    watch: {      
       js: {
-        files: ['js/**/*.js','css/**/*.css'],
-        tasks: ['build'],
+        files: ['js/**/*.js'],
+        tasks: ['minifyjs'],
         options: {
           spawn: false,
-    }
+          livereload: true
+        }
+      },
+      scss:{
+        files: ['css/*.scss'],
+        tasks: ['sass','minifycss','clean:appCss'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      },
+      php:{
+        files:['**/*.php'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
       }
-    }
-
+    },
+    sass: {
+     dist: {
+        files: {
+          'css/app.css': 'css/app.scss'
+        }
+      }
+    },
+   clean:{      
+      options:{
+        force:true,
+      },
+      appCss:{
+        src:["css/app.css"]
+     }
+   }
 });
 
 
@@ -109,10 +139,14 @@ module.exports = function(grunt) {
         fs.writeFileSync('code/shared/js_strings.php', file_str);            
   })
 
+  grunt.registerTask('watcher',[
+      'build',
+      'watch'
+    ])
 
   grunt.registerTask('minifyjs', ['uglify:build','uglify:angular','replace:jscolor']);
-  grunt.registerTask('minifycss', ['cssmin','replace:fonts']);  
+  grunt.registerTask('minifycss', ['sass','cssmin','clean:appCss','replace:fonts']);  
   grunt.registerTask('build', ['minifyjs','minifycss']);
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('default', ['watcher']);
 
 };

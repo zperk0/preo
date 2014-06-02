@@ -117,11 +117,7 @@ angular.module('delivery.controllers',[]).
     $scope.processForm = function() {
         $scope.isPosting =true;
         $scope.triedSubmit = true;
-        if (!$scope.deliveryForm.$valid) {
-            noty({
-              type: 'error',  layout: 'topCenter',
-              text: _tr("Sorry, we need more information, please check if you have filled all the required fields.") /*text: 'Connection Error! Check API endpoint.'*/
-            });
+        if (!$scope.deliveryForm.$valid) {            
             $scope.isPosting =false;
             return false;
         };
