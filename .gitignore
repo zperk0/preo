@@ -8,3 +8,4 @@ node_modules
 locale/nocache
 bower_components
 .sass-cache/
+js/.DS_Store

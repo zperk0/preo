@@ -4201,83 +4201,10 @@ $(document).ready(function() {
 
 	var currencyManager = new CurrencyManager();	
 	currencyManager.init("#currency");//
-	var deliveryManager = new DeliveryManager();
-	deliveryManager.init();
+
+	$("#vOrderMin").autoNumeric('init');
 
 });
-
-function DeliveryManager(){
-	
-	
-	function init(){			
-		var that = this;
-		var $names = $(".notificationShort");
-		var $notifications = $(".notificationLong");
-		$names.on("input",this.refreshFlag);
-		$notifications.on("input",this.refreshFlag);		
-		$(".notificationActiveFlag").each(function(){
-				that.initSwitch($(this))
-		})				
-	}
-
-	function setRequired($switch){
-		var $row = $switch.closest(".row");
-		var $long = $row.find(".notificationLong");
-		var $short = $row.find(".notificationShort");
-		if ($long.val().trim() == "" && $short.val() != ""){
-			$long.prop("required",true).trigger("change");
-			$short.prop("required",false).trigger("change");
-		} else if ($long.val().trim() != "" && $short.val() == ""){
-			$long.prop("required",false).trigger("change");
-			$short.prop("required",true).trigger("change");
-		} else {
-			$long.prop("required",false).trigger("change");
-			$short.prop("required",false).trigger("change");
-		}
-	}
-
-	function initSwitch($switch){
-		var $row = $switch.closest(".row");		
-		if ($row.find(".notificationLong").val().trim() == "" || $row.find(".notificationShort").val() == ""){
-			disableSwitch($switch)
-			setRequired($switch);
-		}
-	}
-
-	function disableSwitch($switch){
-		//not sure why we have to click twice here.  set val and trigger a change doesn't seem to work either
-		$($switch.find("input")[0]).trigger("click")
-		$($switch.find("input")[0]).trigger("click")
-		//disable after click
-		$switch.find("input").prop("disabled",true);						
-	}
-
-	function enableSwitch($switch){
-		if ($switch.find("notificationShort").val() != ""){				
-			$switch.find("input").prop("disabled",false);
-		}				
-	}
-
-	function refreshFlag(e){					
-		var $row = $(this).closest(".row");
-		var $switch = $row.find(".switch");			
-		var $short = $row.find(".notificationShort");
-		var $long = $row.find(".notificationLong");
-		if ($short.val() != "" && $long.val() != "")
-			enableSwitch($switch);
-		else 
-			disableSwitch($switch);
-		
-		setRequired($switch);
-	}
-
-	return{
-		init:init,
-		refreshFlag:refreshFlag,
-		initSwitch:initSwitch
-	}
-
-}
 
 function CurrencyManager(){
 	var currentCurrency;
@@ -4455,3 +4382,4 @@ $(window).resize(function(){
 			else map.setCenter( new google.maps.LatLng(mapDefaultCenterLat,mapDefaultCenterLong) );
 	}
 });
+
