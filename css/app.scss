@@ -17,6 +17,8 @@
 /*basic colours and fonts*/
 
 $premium:#F9B30A;
+$mainDark:#2e70b7;
+$error:#e30f4d;
 
 h1, h2, h3 {
   -webkit-font-smoothing: subpixel-antialiased;
@@ -82,7 +84,7 @@ h6 {
 }
 
 form label {
-  color: #2E70B7 !important;
+  color: $mainDark !important;
   font-size: 100%;
 }
 
@@ -301,7 +303,7 @@ footer {
 }
 
 .top-bar-section a:hover {
-  color: #2E70B7 !important;
+  color: $mainDark !important;
 }
 
 .top-bar {
@@ -313,7 +315,7 @@ footer {
     padding-right: 0 !important;
   }
   a.activated {
-    color: #2E70B7 !important;
+    color: $mainDark !important;
     &:hover {
       color: #504089 !important;
     }
@@ -396,7 +398,7 @@ button.success {
 /* Custom progress indicator */
 
 .progressIndicator {
-  border-top: 5px solid #2E70B7;
+  border-top: 5px solid $mainDark;
   width: 0%;
   margin: 10px 0px 0px 14px;
   transition: width 1s;
@@ -626,7 +628,7 @@ ul.custom-inline-list {
 }
 
 label.appTop {
-  color: #2E70B7 !important;
+  color: $mainDark !important;
   font-size: 16px;
   margin-bottom: 10px;
 }
@@ -831,7 +833,7 @@ h1 i.icon-question-sign, h4 i.icon-question-sign {
   }
   margin: -90px 0px 0 228px;
   width: 22px !important;
-  background: #2E70B7;
+  background: $mainDark;
 }
 
 .mmb2 {
@@ -859,7 +861,7 @@ h1 i.icon-question-sign, h4 i.icon-question-sign {
   border: 0 !important;
   box-shadow: 0 0 0 !important;
   display: inline;
-  color: #2E70B7 !important;
+  color: $mainDark !important;
   font-family: Co Text W01 Light !important;
   font-size: 30px !important;
   font-weight: 100 !important;
@@ -1404,8 +1406,8 @@ table {
     height: 20px;
     font-size: 17px;
     padding: 1px 2px;
-    background: #2E70B7;
-    border: #2E70B7;
+    background: $mainDark;
+    border: $mainDark;
   }
 }
 
@@ -1414,8 +1416,8 @@ table {
   height: 20px;
   font-size: 17px;
   padding: 1px 2px;
-  background: #2E70B7;
-  border: #2E70B7;
+  background: $mainDark;
+  border: $mainDark;
 }
 
 .itemSubheader h6 {
@@ -1458,8 +1460,8 @@ table {
 }
 
 .newItem, .newEvent, .newUser, .newOutlet, .newmdItem, .addMoreOH {
-  background: #2E70B7;
-  border: #2E70B7;
+  background: $mainDark;
+  border: $mainDark;
 }
 
 .newmdItem {
@@ -1481,8 +1483,8 @@ table {
 
 .newSection {
   margin-top: 20px;
-  background: #2E70B7;
-  border: #2E70B7;
+  background: $mainDark;
+  border: $mainDark;
 }
 
 tr {
@@ -1841,8 +1843,8 @@ span.slotDuration {
     margin-bottom: 40px;
   }
   .goBackToDash {
-    background: #2E70B7;
-    border: #2E70B7;
+    background: $mainDark;
+    border: $mainDark;
   }
 }
 
@@ -2153,7 +2155,7 @@ span .currencySymbol {
 .delivery-tabs li.selected {
   background: white;
   a {
-    color: #2e70b7;
+    color: $mainDark;
   }
 }
 
@@ -2326,7 +2328,7 @@ span .currencySymbol {
 
     &.selected{
       a {
-        color:#2e70b7;
+        color:$mainDark;
       }
     }
 
@@ -2335,7 +2337,7 @@ span .currencySymbol {
 
       &:hover{
         cursor:pointer;
-        color:#2e70b7;
+        color:$mainDark;
       }
  
     }
@@ -2346,6 +2348,53 @@ span .currencySymbol {
     color: $premium;
   }
 
+  .activeFeaturesWrapper{
+
+    table{
+      width:100%;
+      padding:0;
+      margin:0;
+      border:none;
+
+      td {
+         margin:0;
+         padding:10px 10px 10px 0;
+         height:auto;
+         width:auto;
+         
+        &:first-child{
+          width:40px;        
+        }
+
+        &:last-child{
+          text-align:right;
+        }
+
+        img{
+          width:20px;
+          margin-left:10px;
+        }
+      }
+      span{
+        color:$mainDark;
+
+        &:hover{
+          cursor:pointer;          
+        }
+      }
+
+      tr.disabled{
+
+        td{
+          color:#ccc;
+        }
+        
+        span{
+            color:$error;
+        }
+      }
+    }
+  }
 
   .profileWrapper,.paymentWrapper,.scheduleWrapper,.activeFeaturesWrapper{
     background:#fff;
@@ -2439,8 +2488,9 @@ span .currencySymbol {
   display: block;
   margin-top: 20px;
   clear: both;
-  color: #e30f4d;
+  color: $error;
 }
+
 
 button.preodayButton.noclick{
   cursor: default !important;

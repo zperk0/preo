@@ -1,6 +1,9 @@
+angular.module('features',[])
+
 //shop
 var app = angular.module('accountSettings', [  
   'ngRoute',
+  'features',
   'accountSettings.resources',
   'accountSettings.controllers'
 ]);

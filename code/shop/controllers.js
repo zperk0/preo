@@ -7,7 +7,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
     getAccountFeatures();
 
     function getAccountFeatures(){
-      Resources.AccountFeaturesList.query({accountId:ACCOUNT_ID},function(result){    
+      Resources.AccountFeatures.query({accountId:ACCOUNT_ID},function(result){    
         $scope.accountFeatures = result;
       });
     }

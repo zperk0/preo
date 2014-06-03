@@ -1,13 +1,25 @@
 angular.module('accountSettings.controllers')
- .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard',
-  function ($scope,$q,$http,ACCOUNT_ID,AccountCard) {
+ .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','AccountFeaturesList','Account',"FEATURES",'AccountFeature',
+  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,AccountFeaturesList,Account,FEATURES,AccountFeature) {
+    var allFeatures = FEATURES;
 
+    Account.get({id:ACCOUNT_ID},function(result){
+      $scope.account = result;
+      console.log($scope.account.billingDate);      
+    })
+
+    AccountFeature.query({accountId:ACCOUNT_ID},function(result){
+      $scope.accountFeaturesList = result;
+      angular.forEach($scope.accountFeaturesList,function(accountFeature){
+        accountFeature.feature = getFeatureById(accountFeature.featureId);
+      });
+    });
 
   	AccountCard.get({accountId:ACCOUNT_ID},function(result){
   		$scope.card = result;  		
   	},function(error){         
   	  if (error.data && error.data.status === 404){
-  		$scope.card = false;	
+  		  $scope.card = false;	
       } else{	  
 		    	noty({
 			      type: 'error',  layout: 'topCenter',
@@ -22,11 +34,33 @@ angular.module('accountSettings.controllers')
     }
 
     $scope.getTotalSubscription = function (){
-    	return 0;
+      var sum = 0;
+      angular.forEach($scope.accountFeaturesList,function(feature){
+          sum += feature.price;
+      });
+    	return sum;
     }
 
-
-    $scope.getFormattedBillingDate = function(){
-    	return "9 Apr, 2014";
+    $getFeatureIcon = function(accountFeature){
+      var feature = etFeatureById(accountFeature.featureId);
+      return feature.icon;
     }
+
+    function getFeatureById(id){
+      return $.grep(allFeatures, function(e){ return e.id == id; })[0];   
+    }
+
+    $scope.updateStatus=function(accountFeature,status){        
+        accountFeature.status = status;
+        accountFeature.$put(function(result){
+          accountFeature.feature = getFeatureById(accountFeature.featureId);
+        },function(error){
+            noty({
+              type: 'error',  layout: 'topCenter',
+              text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'
+          });  
+        });
+    }
+
+    
 }])

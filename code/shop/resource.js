@@ -8,13 +8,13 @@ angular.module('shop.resources',['ngResource']).
 
     var AccountFeature = $resource('/api/features/:accountId/purchase',{accountId:"@accountId"},{})
 
-    var AccountFeaturesList = $resource('/api/features/list/:accountId',{accountId:"@accountId"},{})
+    var AccountFeatures = $resource('/api/features/accountFeature/:accountId/:accountFeatureId',{accountId:"@accountId",accountFeatureId:"@accountFeatureId"},{});    
 
     return {
         Feature:Feature,
         AccountCard:AccountCard,
         AccountFeature:AccountFeature,
-        AccountFeaturesList:AccountFeaturesList
+        AccountFeatures:AccountFeatures
     };
 
   });
