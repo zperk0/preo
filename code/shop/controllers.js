@@ -44,12 +44,15 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
     $scope.clickBuy = function(feature){
         Resources.AccountCard.get({accountId:ACCOUNT_ID},
           function(result){          
-            console.log("got",result);
+            
             if (result.token && result.token!=null){
                 //TODO make a request to stripe to do the payment                                
-                var accountFeature = new Resources.AccountFeature(feature);
+                var accountFeature = new Resources.AccountFeatures({                  
+                  feature:feature
+                });               
+                console.log('saving',accountFeature); 
                 accountFeature.$save({accountId:ACCOUNT_ID},
-                function(result){ 
+                function(result){                   
                     getAccountFeatures();
                     $('#successDialog').foundation('reveal', 'open');        
                 },function(error){
@@ -76,8 +79,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
     $scope.isFeatureOwned = function(feature){      
       var found = false;      
         if (feature && $scope.accountFeatures && $scope.accountFeatures.length >0){
-            angular.forEach($scope.accountFeatures,function(accountFeature){              
-              console.log(feature,accountFeature);
+            angular.forEach($scope.accountFeatures,function(accountFeature){                            
                 if (feature.id == accountFeature.featureId)
                   found = true;
             });

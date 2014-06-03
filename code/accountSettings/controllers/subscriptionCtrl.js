@@ -1,6 +1,6 @@
 angular.module('accountSettings.controllers')
- .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','AccountFeaturesList','Account',"FEATURES",'AccountFeature',
-  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,AccountFeaturesList,Account,FEATURES,AccountFeature) {
+ .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature',
+  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature) {
     var allFeatures = FEATURES;
 
     Account.get({id:ACCOUNT_ID},function(result){
@@ -9,8 +9,8 @@ angular.module('accountSettings.controllers')
     })
 
     AccountFeature.query({accountId:ACCOUNT_ID},function(result){
-      $scope.accountFeaturesList = result;
-      angular.forEach($scope.accountFeaturesList,function(accountFeature){
+      $scope.accountFeatures = result;
+      angular.forEach($scope.accountFeatures,function(accountFeature){
         accountFeature.feature = getFeatureById(accountFeature.featureId);
       });
     });
@@ -35,7 +35,7 @@ angular.module('accountSettings.controllers')
 
     $scope.getTotalSubscription = function (){
       var sum = 0;
-      angular.forEach($scope.accountFeaturesList,function(feature){
+      angular.forEach($scope.accountFeatures,function(feature){
           sum += feature.price;
       });
     	return sum;

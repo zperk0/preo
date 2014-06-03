@@ -19,13 +19,13 @@
 <section class='activeFeaturesWrapper'>
 	<header><? echo _("Active Premium Features")?></header>
 	<br/>
-	<div ng-show='accountFeaturesList === undefined || accountFeaturesList.length === 0' >		
+	<div ng-show='accountFeatures === undefined || accountFeatures.length === 0' >		
 		<p><? echo _("You currently don't have any active Premium Features on your account.")?></p>		
 		<p class='marginBottom100'><? echo _("Why not check out our")?> <a href='/shop' class='premiumFeatureColor'> Available Premium Features </a> <? echo _("and discover how they can start 
 			adding further value to your business today")?></p>			
-	</div ng-show='accountFeaturesList !== undefined && accountFeaturesList.length > 0'>
+	</div ng-show='accountFeatures !== undefined && accountFeatures.length > 0'>
 			<table>
-				<tr ng-repeat="accountFeature in accountFeaturesList" ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>
+				<tr ng-repeat="accountFeature in accountFeatures" ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>
 						<td > <img src='{{accountFeature.feature.icon}}' /> </td>
 						<td> {{accountFeature.feature.name}} </td>
 						<td> {{accountFeature.feature.price}}/month </td>				

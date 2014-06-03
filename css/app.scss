@@ -2368,6 +2368,7 @@ span .currencySymbol {
 
         &:last-child{
           text-align:right;
+          min-width:100px;
         }
 
         img{
