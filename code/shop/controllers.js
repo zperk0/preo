@@ -53,7 +53,6 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
     }
 
     $scope.navigateTo = function(place){        
-        //TODO update the html to point to the correct place after we add the pages
         window.location.assign(place);
     }
     

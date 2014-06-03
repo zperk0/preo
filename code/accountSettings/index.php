@@ -45,6 +45,7 @@
   <script type="text/javascript" src="/code/accountSettings/controllers/profileCtrl.js"></script>
   <script type="text/javascript" src="/code/accountSettings/controllers/passwordCtrl.js"></script>
   <script type="text/javascript" src="/code/accountSettings/controllers/paymentCtrl.js"></script>
+  <script type="text/javascript" src="/code/accountSettings/controllers/subscriptionCtrl.js"></script>
   <script type="text/javascript" src="/code/accountSettings/controllers/menuCtrl.js"></script>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 

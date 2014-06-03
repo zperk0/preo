@@ -15,7 +15,7 @@ app.config(['$routeProvider',
         controller: 'ProfileCtrl'
       }).      
       when('/subscription', {
-        templateUrl: '/code/accountSettings/partials/subscription.html',
+        templateUrl: '/code/accountSettings/partials/subscription.php',
         controller: 'SubscriptionCtrl'
       }).      
       when('/paymentMethod', {

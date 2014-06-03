@@ -16,6 +16,8 @@
 
 /*basic colours and fonts*/
 
+$premium:#F9B30A;
+
 h1, h2, h3 {
   -webkit-font-smoothing: subpixel-antialiased;
   /* -webkit-font-smoothing:antialiased; */
@@ -1582,9 +1584,9 @@ p.venueCode {
     }
   }
   .premiumSection {
-    border-bottom: 1px solid #F9B30A !important;
+    border-bottom: 1px solid $premium !important;
     i, h3 {
-      color: #F9B30A !important;
+      color: $premium !important;
     }
   }
   .pagerRow {
@@ -1721,13 +1723,13 @@ footer.dashboardFooter {
 }
 
 .premiumDiv h3 {
-  color: #F9B30A;
+  color: $premium;
   margin-top: -10px;
   font-size: 1.5680em;
 }
 
 .premiumButton {
-  background: #F9B30A !important;
+  background: $premium !important;
   margin-top: 10px;
 }
 
@@ -2292,6 +2294,10 @@ span .currencySymbol {
   display: none !important;
 }
 
+.marginBottom100{
+  margin-bottom:100px;
+}
+
 .accountSettings{
     padding-top:50px;
   
@@ -2336,13 +2342,33 @@ span .currencySymbol {
 
   }
 
-  .profileWrapper,.paymentWrapper{
+  .premiumFeatureColor{
+    color: $premium;
+  }
+
+
+  .profileWrapper,.paymentWrapper,.scheduleWrapper,.activeFeaturesWrapper{
     background:#fff;
     padding:30px;
     margin-bottom:150px;
     font-size:110%;
     margin-top:30px;
     
+    b{
+      font-weight:bold !important;
+      font-color: black !important;
+    }
+
+    header{
+      font-size:1.3em;
+      font-family: HelveticaNeueW01-45Ligh !important;
+      font-weight:bold;
+      font-color:black;
+    }
+
+    p{
+      font-size:0.8em;
+    }
 
     input {
       background: #F1F0F2 !important;
@@ -2386,7 +2412,7 @@ span .currencySymbol {
       button{
         float:right;
       }
-    }    
+    }   
   }
 
   #passwordForm {
@@ -2401,7 +2427,13 @@ span .currencySymbol {
         margin-bottom: 0;
       }
     }
+
+  .scheduleWrapper{
+    margin-bottom:30px;
+  }
 }
+
+
 
 .errorMessage{
   display: block;
