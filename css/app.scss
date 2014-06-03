@@ -2442,5 +2442,12 @@ span .currencySymbol {
   color: #e30f4d;
 }
 
+button.preodayButton.noclick{
+  cursor: default !important;
+  
+  &:hover{
+    cursor: default !important;
+  }
 
+}
   
