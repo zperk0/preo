@@ -98,8 +98,8 @@
 		
 		$jsonData = json_encode($data);
 		
-		$curlResult = callAPI('POST', $apiURL."venues/".$result['id']."/settings", $jsonData, $apiAuth);
-	
+		$curlResult = callAPI('POST', $apiURL."venues/".$result['id']."/settings", $jsonData, $apiAuth);		
+
 		//Finally add outlet
 		$data = array();
 		$data['venueId'] 	= $result['id'];

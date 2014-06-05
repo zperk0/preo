@@ -11,11 +11,11 @@
 	$venueID = $_SESSION['venue_id'];
 	
 	$data = array();
-	$data['demoFlag'] = false;
-	$data['liveFlag'] = false; //both are set together so the app is OFFLINE.
+	$data['demoFlag'] = true;
+	$data['liveFlag'] = true; //both are set together so the app is OFFLINE.
 	$jsonData = json_encode($data);
 	
-	$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/demo", $data, $apiAuth);
+	$curlResult = callAPI('PUT', $apiURL."venues/$venueID/demo", $data, $apiAuth);
 	
-	$_SESSION['appStripeSkipped'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
+	//$_SESSION['appStripeSkipped'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
 ?>
