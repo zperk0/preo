@@ -2352,7 +2352,7 @@ span .currencySymbol {
     color: $premium;
   }
 
-  .activeFeaturesWrapper,.deactivatedFeaturesWrapper{
+  .activeFeaturesWrapper,.deactivatedFeaturesWrapper,.historyWrapper{
 
     table{
       width:100%;
@@ -2401,7 +2401,24 @@ span .currencySymbol {
     }
   }
 
-  .profileWrapper,.paymentWrapper,.scheduleWrapper,.activeFeaturesWrapper, .deactivatedFeaturesWrapper{
+  .historyWrapper{
+    th{
+      padding:0;
+      width:auto;
+      text-align:left;      
+    }
+
+    td{
+      width:auto !important;
+    }
+
+    button.preodayButton {
+      margin:0;
+    }
+
+  }
+
+  .profileWrapper,.paymentWrapper,.scheduleWrapper,.activeFeaturesWrapper, .deactivatedFeaturesWrapper,.historyWrapper{
     background:#fff;
     padding:30px;    
     font-size:110%;

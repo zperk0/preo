@@ -6,21 +6,20 @@
 	<br/>
 	<div>						
 			<table>
-					<th>
-						<td><? echo _("Inv no.")?></td>
-						<td><? echo _("Date")?></td>
-						<td><? echo _("Status")?></td>
-						<td><? echo _("Amount.")?></td>
-						<td>&nbsp;</td>
-					</th>
-					<tr ng-repeat="accountPayment in accountPayments" >
-						<td > <img src='/img/icon_off.png' /> </td>
-						<td> {{accountFeature.invoiceId}} </td>
-						<td> {{accountFeature.date | date:"MMM dd, yyyy" }} </td>				
-						<td> {{accountFeature.status}} </td>				
-						<td> {{accountFeature.ammount}}  </td>				
+					<tr>
+						<th><? echo _("Inv no.")?></th>
+						<th><? echo _("Date")?></th>
+						<th><? echo _("Status")?></th>
+						<th><? echo _("Amount.")?></th>	
+						<th> </th>
+					</tr>
+					<tr ng-repeat="invoice in invoices" >						
+						<td> {{invoice.id}} </td>
+						<td> {{invoice.issueDate | date:"MMM dd, yyyy" }} </td>				
+						<td> {{invoice.status}} </td>				
+						<td> {{invoice.accountPayment.ammount}}  </td>				
 						<td >
-								<span ng-click='updateStatus(accountFeature,"INSTALLED")'> <? echo _("Reinstall")?> </span>								
+								<button ng-click='downloadPdf(invoice))' type='button' class='preodayButton'> <? echo _("DOWNLOAD PDF")?> </button>								
 						</td>
 					</tr>
 				</table>	
