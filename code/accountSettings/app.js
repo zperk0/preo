@@ -26,8 +26,8 @@ app.config(['$routeProvider',
         controller: 'PaymentCtrl'
       }).      
       when('/billingHistory', {
-        templateUrl: '/code/accountSettings/partials/billingHistory.html',
-        controller: 'BillingHistoryCtrl'
+        templateUrl: '/code/accountSettings/partials/billingHistory.php',
+        controller: 'BillingCtrl'
       }). 
       when('/changePassword', {
         templateUrl: '/code/accountSettings/partials/password.php',

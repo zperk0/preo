@@ -53,7 +53,7 @@ angular.module('accountSettings.controllers')
     }
 
     $scope.hasCancelledFeatures = function(){
-     return (($scope.accountFeatures.length - $scope.activeFeaturesCount) > 0)
+     return $.grep($scope.accountFeatures, function(e){ return e.status == "CANCELLED"; }).length > 0;
     } 
 
     function setActiveCount(){
