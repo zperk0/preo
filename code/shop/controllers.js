@@ -46,18 +46,28 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
           function(result){          
             
             if (result.token && result.token!=null){
-                //TODO make a request to stripe to do the payment                                
-                var accountFeature = new Resources.AccountFeatures({                  
-                  feature:feature
-                });               
-                console.log('saving',accountFeature); 
-                accountFeature.$save({accountId:ACCOUNT_ID},
-                function(result){                   
-                    getAccountFeatures();
-                    $('#successDialog').foundation('reveal', 'open');        
-                },function(error){
-                    displayErrorNoty()
-                });
+                //TODO on new purchases we need to first make a request to stripe to do the payment
+
+                //save payment method
+                var accountPayment = new Resources.AccountPayment()//feature)
+                console.log("beforeSave",accountPayment);
+                accountPayment.$save({accountId:ACCOUNT_ID},function(result){
+                  console.log(result);
+                  //save account feature
+                  var accountFeature = new Resources.AccountFeatures({                  
+                    feature:feature
+                  });                                 
+                  accountFeature.$save({accountId:ACCOUNT_ID},
+                  function(result){                   
+                      getAccountFeatures();
+                      $('#successDialog').foundation('reveal', 'open');        
+                  },function(error){
+                      displayErrorNoty()
+                  });
+                  console.log('saved!');
+              },function(error){
+                  console.log(error);
+              });                  
             }          
         },function(error){          
           if (error.data && error.data.status === 404){

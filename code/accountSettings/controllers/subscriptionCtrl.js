@@ -5,7 +5,7 @@ angular.module('accountSettings.controllers')
 
     Account.get({id:ACCOUNT_ID},function(result){
       $scope.account = result;
-      console.log($scope.account.billingDate);      
+      
     })
 
     AccountFeature.query({accountId:ACCOUNT_ID},function(result){
@@ -13,6 +13,7 @@ angular.module('accountSettings.controllers')
       angular.forEach($scope.accountFeatures,function(accountFeature){
         accountFeature.feature = getFeatureById(accountFeature.featureId);
       });
+      setActiveCount();
     });
 
   	AccountCard.get({accountId:ACCOUNT_ID},function(result){
@@ -36,6 +37,7 @@ angular.module('accountSettings.controllers')
     $scope.getTotalSubscription = function (){
       var sum = 0;
       angular.forEach($scope.accountFeatures,function(feature){
+        if (feature.status != "CANCELLED")
           sum += feature.price;
       });
     	return sum;
@@ -50,10 +52,21 @@ angular.module('accountSettings.controllers')
       return $.grep(allFeatures, function(e){ return e.id == id; })[0];   
     }
 
+    $scope.hasCancelledFeatures = function(){
+     return (($scope.accountFeatures.length - $scope.activeFeaturesCount) > 0)
+    } 
+
+    function setActiveCount(){
+      $scope.activeFeaturesCount = $.grep($scope.accountFeatures, function(e){ return e.status != "CANCELLED"; }).length > 0;
+
+    }
+
+
     $scope.updateStatus=function(accountFeature,status){        
         accountFeature.status = status;
         accountFeature.$put(function(result){
           accountFeature.feature = getFeatureById(accountFeature.featureId);
+          setActiveCount();
         },function(error){
             noty({
               type: 'error',  layout: 'topCenter',

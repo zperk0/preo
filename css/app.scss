@@ -342,6 +342,10 @@ footer {
   margin-top: 4em;
 }
 
+.bottomSpacer{
+  margin-bottom:8em;
+}
+
 /* inputs */
 
 input, textarea {
@@ -2348,7 +2352,7 @@ span .currencySymbol {
     color: $premium;
   }
 
-  .activeFeaturesWrapper{
+  .activeFeaturesWrapper,.deactivatedFeaturesWrapper{
 
     table{
       width:100%;
@@ -2397,10 +2401,9 @@ span .currencySymbol {
     }
   }
 
-  .profileWrapper,.paymentWrapper,.scheduleWrapper,.activeFeaturesWrapper{
+  .profileWrapper,.paymentWrapper,.scheduleWrapper,.activeFeaturesWrapper, .deactivatedFeaturesWrapper{
     background:#fff;
-    padding:30px;
-    margin-bottom:150px;
+    padding:30px;    
     font-size:110%;
     margin-top:30px;
     
@@ -2481,9 +2484,11 @@ span .currencySymbol {
   .scheduleWrapper{
     margin-bottom:30px;
   }
+
+  .deactivatedFeaturesWrapper table tr.disabled td span{
+      color:$mainDark;
+  }
 }
-
-
 
 .errorMessage{
   display: block;

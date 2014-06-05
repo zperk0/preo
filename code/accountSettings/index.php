@@ -12,6 +12,7 @@
   
   	<div class='content'>
   		<div ng-view> </div>
+      <div class='bottomSpacer'></div>
   	</div>
   	<div class='menu' ng-controller="MenuCtrl">
 		<h3>Account Settings</h3>
