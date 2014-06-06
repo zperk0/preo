@@ -49,7 +49,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
                 //TODO on new purchases we need to first make a request to stripe to do the payment
 
                 //save payment method
-                var accountPayment = new Resources.AccountPayment()//feature)
+                var accountPayment = new Resources.AccountPayment(feature)
                 console.log("beforeSave",accountPayment);
                 accountPayment.$save({accountId:ACCOUNT_ID},function(result){
                   console.log(result);
