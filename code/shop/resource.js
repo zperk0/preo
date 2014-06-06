@@ -8,15 +8,19 @@ angular.module('shop.resources',['ngResource']).
 
     var AccountFeatures = $resource('/api/features/accountFeature/:accountId/:accountFeatureId',{accountId:"@accountId",accountFeatureId:"@accountFeatureId"},{});    
 
-    var AccountPayment = $resource('/api/accountPayment/:accountId',{accountId:"@accountId"},{});
+    var Invoice = $resource('/api/accountPayment/:accountId',{accountId:"@accountId"},{
+        put:{
+            method:"PUT"
+        }
+    });
 
-    var StripeCharge = $resource('/api/accountPayment/charge/:accountId/:accountPaymentId',{accountId:"@accountId",accountPaymentId:"@accountPaymentId"},{});
+    var StripeCharge = $resource('/api/accountPayment/charge/:accountId/:invoiceId',{accountId:"@accountId",invoiceId:"@invoiceId"},{});
 
     return {
         Feature:Feature,
         AccountCard:AccountCard,
         AccountFeatures:AccountFeatures,
-        AccountPayment:AccountPayment,
+        Invoice:Invoice,
         StripeCharge:StripeCharge
     };
 

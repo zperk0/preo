@@ -47,34 +47,33 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
             
             if (result.token && result.token!=null){
                                 
-                var accountPayment = new Resources.AccountPayment(feature)
-                console.log("beforeSave",accountPayment);
-                accountPayment.$save({accountId:ACCOUNT_ID},function(result){                  
+                var invoice = new Resources.Invoice(feature)
+                console.log("beforeSave",invoice);
+                invoice.$save({accountId:ACCOUNT_ID},function(result){                  
                   console.log(result,"sending:",result.id);
 
-                  //created the account payment, now try to pay it.
-
-                  Resources.StripeCharge.get({accountId:ACCOUNT_ID,accountPaymentId:result.id},function(result){
-
+                  //created the invoice, now try to pay it.
+                  Resources.StripeCharge.get({accountId:ACCOUNT_ID,invoiceId:result.id},function(result){
                       //if we get a success here, the charge was good! enable account feature
+                      console.log('innnermost result',result)
                       if (result && result.status == "PAID"){
                         var accountFeature = new Resources.AccountFeatures({                  
                           feature:feature
                         });                                 
 
                         accountFeature.$save({accountId:ACCOUNT_ID},
-                          function(result){                   
+                          function(result){
                               getAccountFeatures();
                               $('#successDialog').foundation('reveal', 'open');        
                           },function(error){
                               displayErrorNoty();
                           });
                       } else {
-                        console.log("error");
-                        noty({
-                          type: 'error',  layout: 'topCenter',
-                          text: _tr("Sorry, your payment has not been authorized. Please update your card information and try again.") //text: 'Connection Error! Check API endpoint.'
-                        });  
+                        //set this invoice as rejected. this is a one time purchase, either it succeeds now or it's rejected
+                        invoice.status = "REJECTED";
+                        invoice.payDate = null;
+                        invoice.$put()
+                        console.log("error");                        
                         $('#errorDialog').foundation('reveal', 'open');
                       }
                       
@@ -84,7 +83,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
 
                   });                  
               },function(error){
-                  console.log(error);
+                  console.log('here',error);
               });                  
             } else {
                //we have a card but no token. something was wrong when registering the card
