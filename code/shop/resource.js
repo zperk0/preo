@@ -10,11 +10,14 @@ angular.module('shop.resources',['ngResource']).
 
     var AccountPayment = $resource('/api/accountPayment/:accountId',{accountId:"@accountId"},{});
 
+    var StripeCharge = $resource('/api/accountPayment/charge/:accountId/:accountPaymentId',{accountId:"@accountId",accountPaymentId:"@accountPaymentId"},{});
+
     return {
         Feature:Feature,
         AccountCard:AccountCard,
         AccountFeatures:AccountFeatures,
-        AccountPayment:AccountPayment
+        AccountPayment:AccountPayment,
+        StripeCharge:StripeCharge
     };
 
   });

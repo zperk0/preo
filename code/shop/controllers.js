@@ -46,32 +46,45 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
           function(result){          
             
             if (result.token && result.token!=null){
-                //TODO on new purchases we need to first make a request to stripe to do the payment
-
-                //save payment method
+                                
                 var accountPayment = new Resources.AccountPayment(feature)
                 console.log("beforeSave",accountPayment);
-                accountPayment.$save({accountId:ACCOUNT_ID},function(result){
-                  console.log(result);
-                  //save account feature
-                  var accountFeature = new Resources.AccountFeatures({                  
-                    feature:feature
-                  });                                 
-                  accountFeature.$save({accountId:ACCOUNT_ID},
-                  function(result){                   
-                      getAccountFeatures();
-                      $('#successDialog').foundation('reveal', 'open');        
-                  },function(error){
-                      displayErrorNoty()
-                  });
-                  console.log('saved!');
+                accountPayment.$save({accountId:ACCOUNT_ID},function(result){                  
+                  console.log(result,"sending:",result.id);
+
+                  //created the account payment, now try to pay it.
+
+                  Resources.StripeCharge.get({accountId:ACCOUNT_ID,accountPaymentId:result.id},function(result){
+
+                      console.log(result)
+                      //if we get a success here, the charge was good! enable account feature
+                      var accountFeature = new Resources.AccountFeatures({                  
+                        feature:feature
+                      });                                 
+
+                      accountFeature.$save({accountId:ACCOUNT_ID},
+                        function(result){                   
+                            getAccountFeatures();
+                            $('#successDialog').foundation('reveal', 'open');        
+                        },function(error){
+                            displayErrorNoty();
+                        });
+                      
+                      console.log('saved!');
+                  }, function (error){
+                    console.log("error",error);
+
+                  });                  
               },function(error){
                   console.log(error);
               });                  
+            } else {
+               //we have a card but no token. something was wrong when registering the card
+               $('#errorDialog').foundation('reveal', 'open');
             }          
         },function(error){          
           if (error.data && error.data.status === 404){
-                  $('#errorDialog').foundation('reveal', 'open');
+                $('#errorDialog').foundation('reveal', 'open');
           } else{
               displayErrorNoty()
             }                       

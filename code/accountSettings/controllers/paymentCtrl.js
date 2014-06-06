@@ -36,25 +36,21 @@ angular.module('accountSettings.controllers')
     
 
   	$scope.startEditing = function(){
-		$scope.isEditing = true;
+		  $scope.isEditing = true;
   	};
 
   	$scope.saveChanges = function(){  		
-      saveStripeCard();
-  		
+      saveStripeCard();  		
   	};
 
 
     function getStripeKey(){
-        // $http({ method: 'GET', url:  '/api/config/app'}).
-        // success(function(data) {
-        //     // Cache the settings
-        //     localStorage.setItem('preo-app-settings', JSON.stringify(data) );
-            
-        //     Stripe.setPublishableKey(data.stripeKey);   
-        // });
-        
+        $http({ method: 'GET', url:  '/api/config/app'}).
+        success(function(data) {                        
+            Stripe.setPublishableKey(data.stripeKey);   
+        });        
     }
+    getStripeKey();
 
      var stripeResponseHandler = function(status, response) {
        
@@ -80,7 +76,6 @@ angular.module('accountSettings.controllers')
          $scope.isEditing = false;
     };
     
-    
-    getStripeKey();
   }
+
 }]);	
