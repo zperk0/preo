@@ -59,8 +59,7 @@ angular.module('accountSettings.controllers')
          $scope.errorMessage = response.error.message;
          console.log("error",status,response,$scope.errorMessage)
          $scope.$apply();         
-       } else {
-        $scope.errorMessage = "";
+       } else {        
          // token contains id, last4, and card type
          console.log("success",status,response)
 
@@ -69,13 +68,21 @@ angular.module('accountSettings.controllers')
          $scope.card.type = response.card.type;
         
         if ($scope.card.id)
-          $scope.card.$put({accountId:ACCOUNT_ID});
+          $scope.card.$put({accountId:ACCOUNT_ID},success,error);
         else
-           $scope.card.$save({accountId:ACCOUNT_ID});
+           $scope.card.$save({accountId:ACCOUNT_ID},success,error);
 
-         $scope.isEditing = false;
+         
     };
-    
+
+    function success(){
+      $scope.errorMessage = "";
+      $scope.isEditing = false;
+    }
+
+    function error(error){      
+      $scope.errorMessage = error.data.message;      
+    }    
   }
 
 }]);	

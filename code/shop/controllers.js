@@ -56,19 +56,27 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
 
                   Resources.StripeCharge.get({accountId:ACCOUNT_ID,accountPaymentId:result.id},function(result){
 
-                      console.log(result)
                       //if we get a success here, the charge was good! enable account feature
-                      var accountFeature = new Resources.AccountFeatures({                  
-                        feature:feature
-                      });                                 
+                      if (result && result.status == "PAID"){
+                        var accountFeature = new Resources.AccountFeatures({                  
+                          feature:feature
+                        });                                 
 
-                      accountFeature.$save({accountId:ACCOUNT_ID},
-                        function(result){                   
-                            getAccountFeatures();
-                            $('#successDialog').foundation('reveal', 'open');        
-                        },function(error){
-                            displayErrorNoty();
-                        });
+                        accountFeature.$save({accountId:ACCOUNT_ID},
+                          function(result){                   
+                              getAccountFeatures();
+                              $('#successDialog').foundation('reveal', 'open');        
+                          },function(error){
+                              displayErrorNoty();
+                          });
+                      } else {
+                        console.log("error");
+                        noty({
+                          type: 'error',  layout: 'topCenter',
+                          text: _tr("Sorry, your payment has not been authorized. Please update your card information and try again.") //text: 'Connection Error! Check API endpoint.'
+                        });  
+                        $('#errorDialog').foundation('reveal', 'open');
+                      }
                       
                       console.log('saved!');
                   }, function (error){
