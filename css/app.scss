@@ -2617,6 +2617,14 @@ span .currencySymbol {
     font-size:110%;
     margin-top:30px;
 
+    .inlineWrapper{
+        width: 50px;
+        float: left;
+        &+.inlineWrapper{
+         margin-left: 10px;
+        }
+      }
+
     table tr.alt, table tr.even, table tr:nth-of-type(even) {
       background:transparent;
     }
@@ -2665,19 +2673,25 @@ span .currencySymbol {
     .rowWrapper{
       position:relative;
       clear:both;
-      line-height:50px;
-
+      padding:5px 0;
+      line-height:30px;
       label{
+
         display:block;
         float:left;
         width:20%;
         color:#999 !important;
+
       }
 
       .inputWrapper{
         float:left;
         width:70%;
         margin-left:5%;
+
+        input{
+          margin-top:-10px;
+        }
       }
 
       button{
@@ -2759,6 +2773,13 @@ span .currencySymbol {
   }
 }
 
+.paymentWrapper{
+  .billingAddress{
+    line-height:1.1em;
+    margin-bottom:30px;
+  }
+}
+
 .profileWrapper{
   padding-bottom:100px !important;   
 
@@ -2790,7 +2811,10 @@ button.preodayButton.noclick{
   }
 
 }
-  
+ 
+ .half{
+  width:50% !important;
+ } 
 .featureAppTitle{
   color:#222 !important;
 }

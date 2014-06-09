@@ -2,11 +2,12 @@ angular.module('accountSettings.controllers')
  .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','UnpaidInvoice','Account','StripeCharge',
   function ($scope,$q,$http,ACCOUNT_ID,AccountCard,UnpaidInvoice,Account,StripeCharge) {
     $scope.setSelected($scope.Views.paymentMethod);
-  	$scope.isEditing = true;
+  	$scope.isEditing = false;
     $scope.errorMessage = "";    
   	AccountCard.get({accountId:ACCOUNT_ID},function(result){
   		$scope.card = result;    
       $scope.finishLoading();         
+      console.log($scope.card);
   	},function(error){         
       if (error.data && error.data.status === 404){
   		$scope.isEditing = true;
@@ -35,6 +36,7 @@ angular.module('accountSettings.controllers')
     
 
   	$scope.startEditing = function(){
+      $scope.card.number = "";
 		  $scope.isEditing = true;
   	};
 
@@ -108,5 +110,6 @@ angular.module('accountSettings.controllers')
       $scope.errorMessage = error.data.message;      
     }    
   }
+
 
 }]);	
