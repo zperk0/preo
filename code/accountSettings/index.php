@@ -32,6 +32,8 @@
 
     </div>
   </div>
+  
+
   <script src="/js/angular_all.min.js"></script>  
   <script type="text/javascript" src="/code/accountSettings/app.js"></script>  
   <script>

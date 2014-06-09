@@ -4,7 +4,7 @@ angular.module('accountSettings.controllers')
     var allFeatures = FEATURES;
     $scope.setSelected($scope.Views.subscription);
     $scope.diffInDays = 0;
-
+    
     $q.all([           
           AccountFeature.query({accountId:ACCOUNT_ID}).$promise,
           AccountCard.get({accountId:ACCOUNT_ID}).$promise,
@@ -62,6 +62,19 @@ angular.module('accountSettings.controllers')
 
     }
 
+    $scope.openConfirmDialog = function(feature){
+        $scope.selectedFeature = feature;
+        $('#confirmationDialog').foundation('reveal', 'open');
+    }
+
+    $scope.dialogConfirm = function(){
+      $scope.updateStatus($scope.selectedFeature,"UNINSTALLED")
+      $('#confirmationDialog').foundation('reveal', 'close');
+    }
+    $scope.dialogCancel = function(){
+      $('#confirmationDialog').foundation('reveal', 'close');
+
+    }
 
     $scope.updateStatus=function(accountFeature,status){        
         accountFeature.status = status;

@@ -2564,6 +2564,13 @@ span .currencySymbol {
         &:last-child{
           text-align:right;
           min-width:100px;
+              span{
+            color:$mainDark;        
+
+            &:hover{
+              cursor:pointer;          
+            }
+          }
         }
 
         img{
@@ -2573,24 +2580,20 @@ span .currencySymbol {
           border-radius: 1px;
 
         }
-      }
-      span{
-        color:$mainDark;
-
-        &:hover{
-          cursor:pointer;          
-        }
-      }
+      }      
 
       tr.disabled{
 
         td{
           color:#ccc;
+
+          &:last-child{
+            span{
+              color:$error;
+            }
+          }
         }
-        
-        span{
-            color:$error;
-        }
+              
       }
     }
   }
@@ -2604,8 +2607,14 @@ span .currencySymbol {
 
     td{
       width:auto !important;
+      vertical-align: middle;
+
     }
 
+
+    tr + tr{
+        border-top:1px solid #999;
+    }
     
 
   }
@@ -2809,12 +2818,15 @@ button.preodayButton.noclick{
   &:hover{
     cursor: default !important;
   }
-
 }
+
  
  .half{
   width:50% !important;
  } 
-.featureAppTitle{
-  color:#222 !important;
+
+#confirmationDialog{
+  .preodayButton{
+    min-width:180px;
+  }
 }

@@ -47,7 +47,7 @@
 						<td> <span class='featureAppTitle' ng-show="accountFeature.feature.showAppTitle"> my order app </span> {{accountFeature.feature.name}} </td>
 						<td> {{accountFeature.feature.price}}/month </td>				
 						<td ng-switch='accountFeature.status'>
-								<span ng-switch-when="INSTALLED" ng-click='updateStatus(accountFeature,"UNINSTALLED")'> <? echo _("Uninstall")?></span>
+								<span ng-switch-when="INSTALLED" ng-click='openConfirmDialog(accountFeature)'> <? echo _("Uninstall")?></span>
 								<span ng-switch-when="UNINSTALLED" ng-click='updateStatus(accountFeature,"INSTALLED")'> <? echo _("Cancel")?></span>
 						</td>
 				</tr>
@@ -75,3 +75,11 @@
 
 	</section>
 </div>
+
+<!-- start feature modal -->
+ <div id="confirmationDialog" class="reveal-modal small featureDialog" data-reveal>
+      <p><? echo _("This Premium Feature will remain active on your account until the end of the current billing cycle. You can cancel this uninstall at any time. If you wish to reinstall this Premium Feature after it has been deactivated, simply click on the <span>reinstall</span> option.")?></p>
+      <p><b> <? echo _("Are you sure you want to uninstall this Premium Feature?")?></b></p>
+      <button class='positiveDismiss preodayButton' ng-click="dialogConfirm()" ><? echo _("UNINSTALL")?></button>
+      <button class='negativeDismiss preodayButton' ng-click="dialogCancel()" ><? echo _("CANCEL")?></button>
+  </div><!-- end feature modal -->
