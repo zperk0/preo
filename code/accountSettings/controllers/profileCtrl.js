@@ -35,8 +35,13 @@ angular.module('accountSettings.controllers')
 
     
     $scope.saveChanges = function(){    	    
+        $scope.isPosting = true;
+        $scope.triedSubmit = true;
+        if (!$scope.profileForm.$valid) {            
+            $scope.isPosting =false;
+            return false;
+        };
 
-		$scope.isPosting = true;
     	$q.all([
     		$scope.user.$put(),
     		$scope.account.$put()

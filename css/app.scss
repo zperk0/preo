@@ -2609,6 +2609,7 @@ span .currencySymbol {
 
   }
 
+
   .profileWrapper,.paymentWrapper,.scheduleWrapper,.activeFeaturesWrapper, .deactivatedFeaturesWrapper,.historyWrapper{
     background:#fff;
     padding:30px;    
@@ -2661,7 +2662,7 @@ span .currencySymbol {
         display:block;
         float:left;
         width:20%;
-        color:#999;
+        color:#999 !important;
       }
 
       .inputWrapper{
@@ -2708,6 +2709,21 @@ span .currencySymbol {
 
   }
 }
+
+.profileWrapper{
+  padding-bottom:80px !important;   
+
+  .preodayButton{
+    position:relative;
+      top: 30px;
+      display: block;
+      clear: both;
+  }
+  small{
+    /* FIXME can't figure out why there's a gap between the input and the error msg */
+    line-height:1em;
+  }
+ }
 
 .errorMessage{
   display: block;

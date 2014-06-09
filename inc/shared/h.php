@@ -94,9 +94,9 @@
 							</li>
 						</ul>
 					</li>
-					<li class="has-dropdown"><a href="/profile" class="activated"><? echo $_SESSION['user_fName']." ".$_SESSION['user_lName'];?></a>
+					<li class="has-dropdown"><a href="/accountSettings" class="activated"><? echo $_SESSION['user_fName']." ".$_SESSION['user_lName'];?></a>
 						<ul class="dropdown">
-							<li><a href="<?echo $_SESSION['path']?>/profile"><?echo _("Profile");?></a></li>
+							<li><a href="<?echo $_SESSION['path']?>/accountSettings"><?echo _("Account Settings");?></a></li>
 							<li><a href="<?echo $_SESSION['path']?>/logout"><? echo _("Logout");?></a></li>
 						</ul>
 					</li>	
