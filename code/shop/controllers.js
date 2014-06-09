@@ -4,11 +4,13 @@ var appCtrls = angular.module('shop.controllers',[]);
 appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,ACCOUNT_ID) {    
     $scope.PremiumFeatures = FEATURES;
     $scope.accountFeatures = [];
+    $scope.finishedLoading = false;
     getAccountFeatures();
 
     function getAccountFeatures(){
       Resources.AccountFeatures.query({accountId:ACCOUNT_ID},function(result){    
         $scope.accountFeatures = result;
+        $scope.finishedLoading = true;
       });
     }
     
@@ -42,6 +44,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
     }    
 
     $scope.clickBuy = function(feature){
+
         Resources.AccountCard.get({accountId:ACCOUNT_ID},
           function(result){          
             
@@ -59,8 +62,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
                       if (result && result.status == "PAID"){
                         var accountFeature = new Resources.AccountFeatures({                  
                           feature:feature
-                        });                                 
-
+                        });                                                         
                         accountFeature.$save({accountId:ACCOUNT_ID},
                           function(result){
                               getAccountFeatures();
@@ -103,7 +105,10 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
     }
     
     $scope.dismissDialog = function(dialog){        
+        $('#featureDialog').foundation('reveal', 'close');
         $('#'+dialog).foundation('reveal', 'close');
+        //FIXME not sure why this is not working as it should.
+        $(".reveal-modal-bg").css({"display":"none"});
     }
 
     $scope.isFeatureOwned = function(feature){      

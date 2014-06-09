@@ -238,12 +238,7 @@ input:-webkit-autofill {
 /* modals */
 
 .reveal-modal {
-  background: transparent url("../img/bg.jpg") no-repeat center bottom !important;
-  -moz-background-size: cover !important;
-  -webkit-background-size: cover !important;
-  -o-background-size: cover !important;
-  -ms-background-size: cover !important;
-  background-size: cover !important;
+  
 }
 
 /* footer */
@@ -2300,182 +2295,200 @@ span .currencySymbol {
   display: none !important;
 }
 
-  .shopHeader{
-      background: url('/img/bg.png') no-repeat center;
-      height: 300px;
-      background-size: 100%;
-      margin-bottom:50px;
+  .shopHeader {
+  background: url('/img/bg.png') no-repeat center;
+  height: 300px;
+  background-size: 100%;
+  margin-bottom: 50px;
+}
+
+.shopContent {
+  padding: 0 5%;
+  margin-bottom: 50px;
+}
+
+.premiumFeatureWrapper {
+  padding: 0 30px;
+  margin-bottom: 30px;
+  .preodayButton {
+    font-size: 95%;
+  }
+}
+
+.premiumFeatureTop {
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+  background: rgba(236, 172, 60, 1);
+  background-size: 100px 100px;
+  min-height: 220px;
+  border-radius: 5px;
+  h4 {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 80%;
+    padding-top: 10px;
+    color: white;
+    font-size: 1.3em;
+
+    small{
+      color: white;
     }
+  }
+  img {
+    width: 150px;
+    height: 150px;
+  }
+}
 
-    .shopContent{
-      padding:0 5%;
-      margin-bottom:50px;
+.premiumFeatureBottom {
+  background: white;
+  padding: 10px 10px 15px 10px;
+  h4 {
+    color: black;
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  p {
+    max-height: 60px;
+    overflow: hidden;
+    font-size: 0.8em;
+  }
+  .price {
+    font-weight: bold;
+    line-height: 28px;
+  }
+}
+
+#featureModal .header .price {
+  font-weight: bold;
+  line-height: 28px;
+}
+
+.premiumFeatureBottom button {
+  padding: 5px 20px;
+  float: right;
+  border: none;
+  outline: none;
+}
+
+#featureModal {
+  .header {
+    button {
+      padding: 5px 20px;
+      float: right;
+      border: none;
+      outline: none;
     }
-
-    .premiumFeatureWrapper{
-        display:block;
-        float:left;
-        width:230px;
-        margin-right:50px;
+    img {
+      width: 50px;
+      background: rgba(236, 172, 60, 1);
+      border-radius: 5px;
     }
+  }
+  .content img {
+    width: 400px;
+    margin: 0 auto;
+    display: block;
+  }
+  .header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid gray;
+    margin-bottom: 30px;
+  }
+}
 
-    .premiumFeatureTop{
-      margin-bottom:20px;
-      text-align: center;
-      width:100%;
-      background: rgba(236,172,60,1);
-      background-size:100px 100px;
-      min-height:220px;
-      border-radius:5px;
-    }
-
-    .premiumFeatureTop h4{
-      margin:0 auto;      
-      text-align:center;
-      max-width:80%;
-      padding-top:10px;
-      color:white; 
-      font-size:1.3em;    
-    }
-
-    .premiumFeatureTop img{
-      width:150px;
-      height:150px;
-    }
-
-    .premiumFeatureBottom{
-
-      background: white;
-      padding:10px;
-    }
-    .premiumFeatureBottom h4{
-      color:black;
-      font-weight: bold;
-      font-size:0.8em;
-      margin-bottom: 0;
-      padding-bottom: 0;
-
-    }
-
-    .premiumFeatureBottom p{
-      max-height:60px;
-      overflow: hidden; 
-      font-size:0.8em;      
-    }
-    .premiumFeatureBottom .price, #featureModal .header .price{
-        font-weight: bold;
-        line-height:28px;
-    }
-
-    .premiumFeatureBottom button, #featureModal .header button{
-       padding:5px 20px;
-       float:right;
-       border:none;
-       outline:none;
-    }
-
-     #featureModal .header img{
-        width:50px;
-    }
-    #featureModal .content img{
-        width: 400px;
-        margin: 0 auto;
-        display: block;
-    }   
-
-   #featureModal .header{
-      padding-bottom:20px;
-      border-bottom: 1px solid gray;
-      margin-bottom: 30px;
-   }
-
-   .rightWrapper{
-      position:relative;
-      max-width:40%;
-      float:right;
-   }
-
-   .rightWrapper button{
+.rightWrapper {
+  position: relative;
+  max-width: 40%;
+  float: right;
+  button {
     float: none;
     position: absolute;
     right: 0;
     top: 30px;
-    padding: 5px 28px;    
-   }
+    padding: 5px 28px;
+  }
+  span {
+    display: block;
+    position: Absolute;
+    right: 0;
+    top: 0;
+    color: black;
+  }
+}
 
-   .rightWrapper span{
-      display: block;      
-      position: Absolute;
-      right: 0;
-      top: 0;
-      color: black;
-   }
-
-   .leftWrapper{
-      float:left;
-      display:block;
-      width:60%;
-      position:relative;
-   }
-   .leftWrapper span{
-      position: absolute;
-      left: 55px;
-      top: 0;
-   }   
-
-   .leftWrapper h4{
-     position: absolute;
+.leftWrapper {
+  float: left;
+  display: block;
+  width: 60%;
+  position: relative;
+  span {
+    position: absolute;
+    left: 55px;
+    top: 0;
+  }
+  h4 {
+    position: absolute;
     bottom: 0;
     margin-bottom: 0;
     left: 55px;
-    color: black;    
-   }
+    color: black;
+  }
+}
 
-   #featureModal .content{
-      position:relative;
-   }
+#featureModal .content {
+  position: relative;
+  ul {
+    margin-left: 20px;
+    list-style-image:url('/img/checkmark.png');
+  }
+  li{
+    margin-bottom:5px;
+    padding-left:5px;
+  }
+  h6 {
+    color: #2E70B7;
+    margin-bottom: 1.5em;
+  }
+}
 
-   #featureModal .content ul{
-      margin-left:20px;
-   }
+.chevron {
+  display: block;
+  position: absolute;
+  top: 30%;
+  left: 20px;
+  font-size: 3em;
+  &:hover {
+    cursor: pointer;
+  }
+  &.chevronRight {
+    left: auto;
+    right: 20px;
+  }
+}
 
-   #featureModal .content h6{
-      color:#2E70B7;
-      margin-bottom:1.5em
-   }
+#featureModal {
+  border-radius: 25px;
+  border: 8px solid #ccc;
+  /*to add some spacing in case we're in the bottom of the page. Or the dialog looks weird*/
+  margin-bottom: 100px;
+  padding: 40px;
+}
 
-   .chevron {
-      display:block;
-      position:absolute;
-      top:30%;
-      left:20px;
-      font-size:3em;
-   }
-
-   .chevron:hover{
-      cursor:pointer;
-   }
-
-   .chevron.chevronRight{
-      left:auto;
-      right:20px;
-   }
-
-   #featureModal,.featureDialog{
-      border-radius: 25px;
-      border: 8px solid #ccc;
-      /*to add some spacing in case we're in the bottom of the page. Or the dialog looks weird*/
-      margin-bottom:100px;
-      padding:40px;
-   }
-
-   .featureDialog{
-      text-align: center;
-   }
-
-   .featureDialog b {
-      color:black;
-   }
+.featureDialog {
+  border-radius: 25px;
+  border: 8px solid #ccc;
+  /*to add some spacing in case we're in the bottom of the page. Or the dialog looks weird*/
+  margin-bottom: 100px;
+  padding: 40px;
+  text-align: center;
+  b {
+    color: black;
+  }
+}
 
 
 .marginBottom100{

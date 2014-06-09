@@ -9,13 +9,19 @@
 ?> 
 
 
-<div ng-app="shop" ng-controller="shopController">
-  <div class='row'>
+<div ng-app="shop" ng-controller="shopController" ng-cloak>
+  <div class='loader' ng-show="!finishedLoading">      
+      <img src='/img/spinner.gif'/>
+  </div>  
+  <div ng-show="finishedLoading">  
+  
     <div class='shopHeader'></div>
+    <div class='row'>
     <div class='shopContent'>
-        <div class='premiumFeatureWrapper' ng-repeat="feature in PremiumFeatures" >      
+
+        <div class='premiumFeatureWrapper small-4 large-4 columns' ng-repeat="feature in PremiumFeatures" >      
             <div class='premiumFeatureTop'>
-                <h4>{{feature.name}}</h4>
+                <h4><small ng-show='feature.showAppTitle'> my order app <br/></small>{{feature.name}}</h4>
                 <img ng-src='{{feature.icon}}'/>
             </div>
             <div class='premiumFeatureBottom'>
@@ -72,7 +78,7 @@
       <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/subscription')"><? echo _("ACCOUNT SETTINGS")?></button>
       <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('successDialog')" ><? echo _("RETURN TO STORE")?></button>
 </div>
-
+</div>
 </div> <!-- End app -->
   <script src="/js/angular_all.min.js"></script>  
   <script type="text/javascript" src="/code/shop/app.js"></script>
