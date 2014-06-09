@@ -80,7 +80,9 @@ angular.module('accountSettings.controllers')
         if ($scope.account && $scope.account.billingDate){
           var d = new Date($scope.account.billingDate)
           var now = new Date();
-          $scope.diffInDays = 14 - Math.floor((now - d)/ (1000 * 60 * 60 * 24));
+          console.log(d,now);
+          console.log(Math.floor((now - d)/ (1000 * 60 * 60 * 24)))
+          $scope.diffInDays = 14 + Math.floor((now - d)/ (1000 * 60 * 60 * 24));
         }
         else 
           $scope.diffInDays =0;
