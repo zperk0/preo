@@ -79,7 +79,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
                       
                       console.log('saved!');
                   }, function (error){
-                    console.log("error",error);
+                    console.log("error",error);                    
 
                   });                  
               },function(error){

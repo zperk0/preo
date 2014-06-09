@@ -1,17 +1,18 @@
 angular.module('accountSettings.controllers')
- .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard',
-  function ($scope,$q,$http,ACCOUNT_ID,AccountCard) {
+ .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','UnpaidInvoice','Account','StripeCharge',
+  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,UnpaidInvoice,Account,StripeCharge) {
   	$scope.isEditing = true;
     $scope.errorMessage = "";
 
   	AccountCard.get({accountId:ACCOUNT_ID},function(result){
-  		$scope.card = result;            
-      
+  		$scope.card = result;             
+      $scope.card.ccv = "123";
+      $scope.card.number = "4242424242424242";
   		console.log(result);
   	},function(error){         
       if (error.data && error.data.status === 404){
   		$scope.isEditing = true;
-  		$scope.card = new AccountCard();
+  		$scope.card = new AccountCard();      
       } else{
 	  	//error.
 	    	noty({
@@ -70,14 +71,39 @@ angular.module('accountSettings.controllers')
         if ($scope.card.id)
           $scope.card.$put({accountId:ACCOUNT_ID},success,error);
         else
-           $scope.card.$save({accountId:ACCOUNT_ID},success,error);
+           $scope.card.$save({accountId:ACCOUNT_ID},success,error);         
 
-         
     };
 
     function success(){
       $scope.errorMessage = "";
       $scope.isEditing = false;
+      console.log("success!!");
+      UnpaidInvoice.get({accountId:ACCOUNT_ID},function (invoice){        
+      console.log('got invoice',invoice);  
+          if (invoice.id){ //if we have an invoice, try to pay it
+              StripeCharge.get({accountId:ACCOUNT_ID,invoiceId:invoice.id},
+                function(result){
+                  //if the payment is a success set the billing date for one month from the original billing date
+                  console.log("payment is a success! getting accounts for,",result)
+                  Account.query({accountId:ACCOUNT_ID},function(result){
+                      var account = result[0];
+                      console.log('got account:',account);                      
+                      var tempDate = new Date(account.billingDate);
+                      tempDate.setMonth(tempDate.getMonth() + 1);
+                      account.billingDate = tempDate;
+                      account.$put({accountId:ACCOUNT_ID},function(result){                          
+                          console.log(result,"updated billing date");
+                      });
+                  })
+
+
+              },function (error){
+                    console.log("error",error);                    
+
+              });
+          }
+      });
     }
 
     function error(error){      
