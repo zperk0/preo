@@ -4,31 +4,30 @@ angular.module('accountSettings.controllers')
     var allFeatures = FEATURES;
     $scope.setSelected($scope.Views.subscription);
     $scope.diffInDays = 0;
-    Account.get({id:ACCOUNT_ID},function(result){
-      $scope.account = result;
-      setBillingDate();
-    })
 
-    AccountFeature.query({accountId:ACCOUNT_ID},function(result){
-      $scope.accountFeatures = result;
-      angular.forEach($scope.accountFeatures,function(accountFeature){
-        accountFeature.feature = getFeatureById(accountFeature.featureId);
-      });
-      setActiveCount();
-    });
-
-  	AccountCard.get({accountId:ACCOUNT_ID},function(result){
-  		$scope.card = result;  		
-  	},function(error){         
-  	  if (error.data && error.data.status === 404){
-  		  $scope.card = false;	
-      } else{	  
-		    	noty({
-			      type: 'error',  layout: 'topCenter',
-			      text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'
-		    	});  
-        }                       
-    });
+    $q.all([           
+          AccountFeature.query({accountId:ACCOUNT_ID}).$promise,
+          AccountCard.get({accountId:ACCOUNT_ID}).$promise,
+          Account.get({id:ACCOUNT_ID}).$promise
+      ])
+      .then(function(results){             
+          $scope.finishLoading();         
+          $scope.accountFeatures = results[0];
+          $scope.card = results[1];
+          $scope.account = results[2];
+          setBillingDate();          
+          angular.forEach($scope.accountFeatures,function(accountFeature){              
+              accountFeature.feature = getFeatureById(accountFeature.featureId);
+          });
+          setActiveCount();
+      },
+      function(error){          
+          $scope.card = false;  
+          noty({
+            type: 'error',  layout: 'topCenter',
+            text: _tr("Sorry, but there's been an error processing your request.")
+          });
+    });    
 
 
     $scope.navigateTo = function(place){

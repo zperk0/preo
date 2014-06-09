@@ -6,6 +6,7 @@ angular.module('accountSettings.controllers')
     $scope.setSelected($scope.Views.profile);
   	$scope.isPosting = false;  	 
   	$scope.isEditing = false;  	 
+
   	console.log(ACCOUNT_ID,USER_ID)
     Account.get({id:ACCOUNT_ID},function(result){
     	$scope.account=result;    	
@@ -24,6 +25,7 @@ angular.module('accountSettings.controllers')
     		console.log($scope.user.name)
 
 		})
+        $scope.finishLoading();
     });
     
     $scope.changePassword = function(){

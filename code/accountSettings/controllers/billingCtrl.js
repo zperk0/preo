@@ -6,6 +6,7 @@ angular.module('accountSettings.controllers')
 		Invoice.query({accountId:ACCOUNT_ID},function(result){
       $scope.invoices = result;     
       console.log($scope.invoices);
+      $scope.finishLoading();
     })  		
 
     

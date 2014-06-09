@@ -10,7 +10,10 @@
 
   <div ng-app="accountSettings"  class='accountSettings row'>
     <div ng-controller="MenuCtrl">
-    	<div class='content'>
+      <div class='loader' ng-show="!finishedLoading">      
+          <img src='/img/spinner.gif'/>
+      </div>  
+    	<div class='content' ng-show="finishedLoading">
     		<div ng-view> </div>
         <div class='bottomSpacer'></div>
     	</div>
@@ -39,7 +42,7 @@
 
   
   </script>
-  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script> -->
   <script type="text/javascript" src="/code/accountSettings/directives/equals.js"></script>
   <script type="text/javascript" src="/code/shop/features.php"></script>
   <script type="text/javascript" src="/code/accountSettings/resources/user.js"></script>

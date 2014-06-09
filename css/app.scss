@@ -2319,7 +2319,7 @@ span .currencySymbol {
   margin-bottom: 20px;
   text-align: center;
   width: 100%;
-  background: rgba(236, 172, 60, 1);
+  background: $premium;
   background-size: 100px 100px;
   min-height: 220px;
   border-radius: 5px;
@@ -2384,7 +2384,7 @@ span .currencySymbol {
     }
     img {
       width: 50px;
-      background: rgba(236, 172, 60, 1);
+      background: $premium;
       border-radius: 5px;
     }
   }
@@ -2569,6 +2569,9 @@ span .currencySymbol {
         img{
           width:20px;
           margin-left:10px;
+          background: $premium;
+          border-radius: 1px;
+
         }
       }
       span{
@@ -2603,9 +2606,7 @@ span .currencySymbol {
       width:auto !important;
     }
 
-    button.preodayButton {
-      margin:0;
-    }
+    
 
   }
 
@@ -2615,6 +2616,14 @@ span .currencySymbol {
     padding:30px;    
     font-size:110%;
     margin-top:30px;
+
+    table tr.alt, table tr.even, table tr:nth-of-type(even) {
+      background:transparent;
+    }
+
+    button.preodayButton {
+      margin:0;
+    }
     
     b{
       font-weight:bold !important;
@@ -2692,6 +2701,46 @@ span .currencySymbol {
 
   .scheduleWrapper{
     margin-bottom:30px;
+    position:relative;
+
+    .smallCard{
+
+        font-size:90%;
+        margin-bottom:15px;
+
+        img {
+          margin-right:10px;
+          margin-bottom: 10px;
+        }
+    }
+    .calendar{
+      position:absolute;
+      top:30px;
+      right:30px;
+
+        .month {
+          color:white;
+          text-transform:uppercase;
+          background:#af3c30;
+          font-weight:bold;
+          padding:5px 25px;
+          z-index:3;
+          position:relative;
+        }
+
+        .day{
+          position:relative;
+          border: 1px solid #ccc;
+          margin: -2px 0;
+          z-index: 2;
+          font-size: 2em;
+          color: black;
+          text-align: center;
+          line-height: 70px;
+          font-weight: bold;
+        }
+
+    }
   }
 
   .deactivatedFeaturesWrapper table tr.disabled td span{
@@ -2711,7 +2760,7 @@ span .currencySymbol {
 }
 
 .profileWrapper{
-  padding-bottom:80px !important;   
+  padding-bottom:100px !important;   
 
   .preodayButton{
     position:relative;
@@ -2742,3 +2791,6 @@ button.preodayButton.noclick{
 
 }
   
+.featureAppTitle{
+  color:#222 !important;
+}

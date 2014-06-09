@@ -5,7 +5,8 @@ angular.module('accountSettings.controllers')
   	$scope.isEditing = true;
     $scope.errorMessage = "";    
   	AccountCard.get({accountId:ACCOUNT_ID},function(result){
-  		$scope.card = result;             
+  		$scope.card = result;    
+      $scope.finishLoading();         
   	},function(error){         
       if (error.data && error.data.status === 404){
   		$scope.isEditing = true;

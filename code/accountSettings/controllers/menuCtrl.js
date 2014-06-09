@@ -2,6 +2,7 @@
 angular.module('accountSettings.controllers')
  .controller('MenuCtrl', ['$scope',  
   function ($scope) {
+      $scope.finishedLoading = false;
   		$scope.Views = {
   			profile:0,
   			subscription:1,
@@ -14,5 +15,9 @@ angular.module('accountSettings.controllers')
     	$scope.setSelected = function(which){
     		$scope.currentView=which;		
     	}
+
+      $scope.finishLoading = function(){
+        $scope.finishedLoading = true;
+      }
 
   }]);    
