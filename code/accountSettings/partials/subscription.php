@@ -3,16 +3,22 @@
 	
 <section class='scheduleWrapper'>
 	<header><? echo _("Billing Schedule")?></header>
-	<br/>
+	<br/>	
 	<div ng-show='card === false'>				
 		<p><? echo _("Please add a payment method in order to subscribe to premium features")?></p>
 		<button class='preodayButton'><? echo _("ADD PAYMENT METHOD") ?></button>
 	</div>		
 	<div ng-show='card !== false'>						
-			<p ng-show="account.billingDate !== null"><? echo _("Your account will be billed")?> <b>{{getTotalSubscription()}}</b> <? echo _("on") ?> <b>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>			
-			<p ng-show="account.billingDate === null"><? echo _("You have no active subscriptions, your account will not be billed at this time.")?> </p>						
+			<div ng-show='diffInDays > 0' class='recurringPaymentFailed'>
+				<p><strong><? echo _("Your recurring payment has failed!")?> </strong></p>	
+				<p><? echo _("Please update your card details within ")?> {{ diffInDays }}  <? echo _(" days to prevent your Premium Features from being deactivated.")?> </p>					
+			</div>
+			<div ng-show='diffInDays <= 0'>			
+				<p ng-show="account.billingDate !== null"><? echo _("Your account will be billed")?> <b>{{getTotalSubscription()}}</b> <? echo _("on") ?> <b>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>			
+				<p ng-show="account.billingDate === null"><? echo _("You have no active subscriptions, your account will not be billed at this time.")?> </p>										
+			</div>
 			<button class='preodayButton inlineButton' ng-click="navigateTo('/accountSettings#/paymentMethod')"><? echo _("CHANGE CARD") ?></button>
-			<button class='preodayButton inlineButton' ng-click="navigateTo('/accountSettings#/billingHistory')"><? echo _("BILLING HISTORY") ?></button>
+				<button class='preodayButton inlineButton' ng-click="navigateTo('/accountSettings#/billingHistory')"><? echo _("BILLING HISTORY") ?></button>
 	</div>	
 </section>
 

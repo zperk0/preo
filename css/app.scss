@@ -2683,6 +2683,17 @@ span .currencySymbol {
   .deactivatedFeaturesWrapper table tr.disabled td span{
       color:$mainDark;
   }
+
+  .recurringPaymentFailed{
+      p{
+        color:$error;
+        margin-bottom:5px;
+      }
+      strong{
+        font-weight:bold;
+      }
+
+  }
 }
 
 .errorMessage{

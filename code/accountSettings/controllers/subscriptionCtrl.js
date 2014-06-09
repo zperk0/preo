@@ -2,10 +2,10 @@ angular.module('accountSettings.controllers')
  .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature',
   function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature) {
     var allFeatures = FEATURES;
-
+    $scope.diffInDays = 0;
     Account.get({id:ACCOUNT_ID},function(result){
       $scope.account = result;
-      
+      setBillingDate();
     })
 
     AccountFeature.query({accountId:ACCOUNT_ID},function(result){
@@ -53,7 +53,8 @@ angular.module('accountSettings.controllers')
     }
 
     $scope.hasCancelledFeatures = function(){
-     return $.grep($scope.accountFeatures, function(e){ return e.status == "CANCELLED"; }).length > 0;
+
+     return $scope.accountFeatures && $.grep($scope.accountFeatures, function(e){ return e.status == "CANCELLED"; }).length > 0;
     } 
 
     function setActiveCount(){
@@ -75,5 +76,14 @@ angular.module('accountSettings.controllers')
         });
     }
 
+    function setBillingDate(){
+        if ($scope.account && $scope.account.billingDate){
+          var d = new Date($scope.account.billingDate)
+          var now = new Date();
+          $scope.diffInDays = 14 - Math.floor((now - d)/ (1000 * 60 * 60 * 24));
+        }
+        else 
+          $scope.diffInDays =0;
+    }
     
 }])

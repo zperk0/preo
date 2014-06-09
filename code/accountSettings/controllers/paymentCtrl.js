@@ -6,9 +6,6 @@ angular.module('accountSettings.controllers')
 
   	AccountCard.get({accountId:ACCOUNT_ID},function(result){
   		$scope.card = result;             
-      $scope.card.ccv = "123";
-      $scope.card.number = "4242424242424242";
-  		console.log(result);
   	},function(error){         
       if (error.data && error.data.status === 404){
   		$scope.isEditing = true;
