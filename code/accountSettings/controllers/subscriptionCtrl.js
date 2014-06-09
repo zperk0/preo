@@ -2,6 +2,7 @@ angular.module('accountSettings.controllers')
  .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature',
   function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature) {
     var allFeatures = FEATURES;
+    $scope.setSelected($scope.Views.subscription);
     $scope.diffInDays = 0;
     Account.get({id:ACCOUNT_ID},function(result){
       $scope.account = result;

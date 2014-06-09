@@ -1,9 +1,9 @@
 angular.module('accountSettings.controllers')
  .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','UnpaidInvoice','Account','StripeCharge',
   function ($scope,$q,$http,ACCOUNT_ID,AccountCard,UnpaidInvoice,Account,StripeCharge) {
+    $scope.setSelected($scope.Views.paymentMethod);
   	$scope.isEditing = true;
-    $scope.errorMessage = "";
-
+    $scope.errorMessage = "";    
   	AccountCard.get({accountId:ACCOUNT_ID},function(result){
   		$scope.card = result;             
   	},function(error){         

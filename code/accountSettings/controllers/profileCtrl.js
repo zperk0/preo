@@ -2,6 +2,8 @@
 angular.module('accountSettings.controllers')
  .controller('ProfileCtrl', ['$scope','$q', '$location','ACCOUNT_ID', 'USER_ID','User','Account', 
   function ($scope,$q,$location,ACCOUNT_ID,USER_ID,User,Account) {
+    //inherited from menu control
+    $scope.setSelected($scope.Views.profile);
   	$scope.isPosting = false;  	 
   	$scope.isEditing = false;  	 
   	console.log(ACCOUNT_ID,USER_ID)
