@@ -1,4 +1,4 @@
-angular.module('features').constant('FEATURES', [
+var features = [
 	{
 		description: <?echo json_encode(_("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec eros et justo consectetur sodales. Sed dictum turpis sit amet sapien varius lobortis. Proin mi nibh, euismod eget justo quis, vestibulum molestie turpis. Integer sollicitudin tortor e")) ?>,
 		id: 1,
@@ -39,4 +39,7 @@ angular.module('features').constant('FEATURES', [
 		promoImg: "/img/dashboard.png",
 		icon:'/img/KYC-icon.png'
 	}	
-])
+];
+
+if (angular)
+	angular.module('features').constant('FEATURES', features)

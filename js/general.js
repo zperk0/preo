@@ -4204,6 +4204,25 @@ $(document).ready(function() {
 
 	$("#vOrderMin").autoNumeric('init');
 
+	$('.featureHolder').each(function (){
+			var featureId = $(this).data("feature");			
+			var displayName = "";
+			for (var i=0;i<features.length;i++){
+					var feature = features[i]
+					if (feature.id == featureId){
+						displayName = feature.name;
+						console.log(feature)
+						if (feature.showAppTitle){
+							displayName = "My order app " + feature.name; 
+						}
+						$(this).children(".featureName").html(displayName);
+						$(this).children(".featureIcon").attr("src",feature.icon);
+						break;
+					}
+			}
+									
+	})
+
 });
 
 function CurrencyManager(){

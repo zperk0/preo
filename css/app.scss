@@ -2830,3 +2830,22 @@ button.preodayButton.noclick{
     min-width:180px;
   }
 }
+
+.featureHolder{
+  position:relative;
+  .featureIcon{
+    width: 20px;
+    position:absolute;
+    top:5px;
+    left:5px;  
+    background:$premium;
+    border-radius:5px;
+    
+  }
+
+  .featureName{
+    padding-left:30px !important;
+    padding-right:10px !important;  
+  }
+
+}

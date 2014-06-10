@@ -1,6 +1,10 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
       require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function 
-	  if(isset($_SESSION['token']) && !isset($apiAuth)) $apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here ?>
+    session_start();
+	  		
+
+?>
+<script type="text/javascript" src="/code/shop/features.php"></script>
 <div class="contain-to-grid">
 	<nav class="top-bar">
 		<ul class="title-area">
@@ -89,7 +93,15 @@
 							</li>
 							<li class="has-dropdown"><a href="#"><?echo _("Premium Features");?></a>
 								<ul class="dropdown">
-									<li><a href="<?echo $_SESSION['path']?>/findoutmore"><?echo _("Find out more");?></a></li>
+									<?  //get the features list we have for this acocunt 
+										  $accountId = $_SESSION['account_id'];	  
+											$result = callAPI('GET', $apiURL."features/accountFeature/$accountId", false,"PreoDay ".$_SESSION['token']);
+											$accountFeatures = json_decode($result);											
+											foreach($accountFeatures as $feat) { ?>
+												<li  data-feature='<? echo $feat->featureId ;?>' class='featureHolder'><img class='featureIcon'/><a href="<?echo $_SESSION['path']?>/accountSettings#/subscription"  class='featureName'></a></li>												
+									<?}?>												
+								
+									<li><a href="<?echo $_SESSION['path']?>/shop"><?echo _("+ Store");?></a></li>
 								</ul>
 							</li>
 						</ul>

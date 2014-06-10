@@ -95,8 +95,14 @@
 						<section class="premiumSection">
 							<h3 data-section-title><?echo _("Premium Features");?></h3><i class="icon-plus-sign"></i>
 							<div class="content" data-section-content>
-								<!--<p><a href="<?echo $_SESSION['path']?>/outletSettings.php"><?echo _("Manage outlets");?></a></p>-->
-								<p><a href="<?echo $_SESSION['path']?>/findoutmore"><?echo _("Find out more");?></a></p>
+									<?  //get the features list we have for this acocunt 
+										  $accountId = $_SESSION['account_id'];	  
+											$result = callAPI('GET', $apiURL."features/accountFeature/$accountId", false,"PreoDay ".$_SESSION['token']);
+											$accountFeatures = json_decode($result);											
+											foreach($accountFeatures as $feat) { ?>
+												<p data-feature='<? echo $feat->featureId ;?>' class='featureHolder'><img class='featureIcon'/><a href="<?echo $_SESSION['path']?>/accountSettings#/subscription"  class='featureName'></a></li>												
+									<?}?>												
+								<p><a href="<?echo $_SESSION['path']?>/shop"><?echo _("+ Store");?></a></p>
 							</div>
 						</section>
 					</div>
