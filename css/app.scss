@@ -17,6 +17,7 @@
 /*basic colours and fonts*/
 
 $premium:#F9B30A;
+$darkPremium:#F9B30A;
 $mainDark:#2e70b7;
 $error:#e30f4d;
 
@@ -2831,6 +2832,25 @@ button.preodayButton.noclick{
   }
 }
 
+.shopButton{
+  padding: 5px 35px;
+  margin-top: 20px;
+  background: $premium;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin-left: 5px;
+
+  a{
+     color:white;
+  }
+
+  &:hover{
+      background: $darkPremium;
+  }
+}
+
+
 .featureHolder{
   position:relative;
   .featureIcon{
@@ -2839,7 +2859,8 @@ button.preodayButton.noclick{
     top:5px;
     left:5px;  
     background:$premium;
-    border-radius:5px;
+    border-radius:1px;
+    margin-top:0 !important;
     
   }
 

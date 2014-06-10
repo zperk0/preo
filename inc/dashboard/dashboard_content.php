@@ -102,7 +102,7 @@
 											foreach($accountFeatures as $feat) { ?>
 												<p data-feature='<? echo $feat->featureId ;?>' class='featureHolder'><img class='featureIcon'/><a href="<?echo $_SESSION['path']?>/accountSettings#/subscription"  class='featureName'></a></li>												
 									<?}?>												
-								<p><a href="<?echo $_SESSION['path']?>/shop"><?echo _("+ Store");?></a></p>
+								<p><button class='shopButton'> <a href="<?echo $_SESSION['path']?>/shop"> <?echo _("Store");?> </a> </button></p>
 							</div>
 						</section>
 					</div>
