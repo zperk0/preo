@@ -71,7 +71,17 @@ $(document).ready(function(){
 						<small class="error"><?echo _("Please type your business name (max 100chars)");?></small>
 					</div>
 				</div>
-			
+				
+				<div class="row">
+					<div class="large-12 columns">
+						<label><?echo _("Telephone Number");?></label>
+						<input type="text" name="phone" placeholder="" required pattern="^.{0,99}$" tabindex=6>
+						<small class="error"><?echo _("Please type your telephone number");?></small>
+					</div>
+				</div>
+							
+												
+				
 				<div class="row row--space1">
 					<div class="large-12 columns small-centered large-centered">
 						<small class="smallNot"><?echo _("By clicking 'Sign Up' you agree to our");?> <a href="#" data-reveal-id="termsM"><?echo _("Terms");?></a> <?echo _("and");?> <a href="#" data-reveal-id="privM"><?echo _("Privacy Policy");?></a>.</label></small>

@@ -108,6 +108,9 @@ RewriteRule ^.*$ /code/shared/changeLang.php [L]
 RewriteCond %{REQUEST_URI} ^/saveVenue$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_venueSave.php [L]
 
+RewriteCond %{REQUEST_URI} ^/saveDelivery$ [NC]
+RewriteRule ^.*$ /code/settings/delivery/do_delivery.php [L]
+
 RewriteCond %{REQUEST_URI} ^/uploadLogo$ [NC]
 RewriteRule ^.*$ /code/dashboard/doUploadLogo.php [L]
 
@@ -159,6 +162,9 @@ RewriteRule ^.*$ /code/dashboard/do_mdDelete.php [L]
 RewriteCond %{REQUEST_URI} ^/saveMealDeal$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_mdConfig.php [L]
 
+RewriteCond %{REQUEST_URI} ^/deliverySettings$ [NC]
+RewriteRule ^.*$ /code/settings/delivery/delivery-view.php [L]
+
 RewriteCond %{REQUEST_URI} ^/saveProfile$ [NC]
 RewriteRule ^.*$ /code/settings/do_settings.php [L]
 
@@ -174,4 +180,15 @@ RewriteRule ^.*$ /code/dashboard/do_startStripe.php [L]
 RewriteCond %{REQUEST_URI} ^/goDemo$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_goDemo.php [L]
 
+RewriteCond %{REQUEST_URI} ^/getCurrencies$ [NC]
+RewriteRule ^.*$ /js/data/common-currency.json [L]
+
+RewriteCond %{REQUEST_URI} ^/venues$ [NC]
+RewriteRule ^.*$ /code/settings/delivery/getVenue.php [L]
+
+RewriteRule ^api\/.*$ proxy.php [L]
+
 RewriteRule ^menus/([^/]*)$ /menuSettings.php?id=$1 [L]
+
+RewriteCond %{REQUEST_URI} ^/deliverySettings$ [NC]
+RewriteRule ^.*$ /code/settings/delivery/delivery-view.php [L]

@@ -17,8 +17,12 @@
 	protect($password);
 	
 	$businessName = $_POST['businessName'];
+	$_SESSION['venue_name'] = $businessName; //save it to be used later in the venue_settings page
 	protect($businessName);
 	
+	$phone = $_POST['phone'];
+	protect($phone);
+		
 	$fbid = $_POST['fbid'];
 	protect($fbid);
 	
@@ -33,6 +37,7 @@
 	$data['owner']['lastName']	= $lName;
 	$data['owner']['username']	= $email;
 	$data['owner']['email']		= $email;
+	$data['owner']['phone']		= $phone;
 	$data['owner']['password'] 	= $password;
 	$data['owner']['fbid'] 		= $fbid;
 	$data['owner']['gpid'] 		= $gpid;

@@ -43,6 +43,7 @@
 							<li class="has-dropdown"><a href="#"><?echo _("Venue Settings");?></a>
 								<ul class="dropdown">
 									<li><a href="<?echo $_SESSION['path']?>/settings"><?echo _("Change Settings");?></a></li>
+									<li><a href="<?echo $_SESSION['path']?>/deliverySettings"><?echo _("Delivery Settings");?></a></li>
 									<?if(!isset($_SESSION['venue_eventFlag']) || !$_SESSION['venue_eventFlag']){?><li><a href="<?echo $_SESSION['path']?>/openinghours"><?echo _("Opening Hours");?></a></li><?}?>
 								</ul>
 							</li>

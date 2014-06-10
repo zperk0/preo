@@ -68,9 +68,10 @@
 		<!-- Bespoke JS File -->
 		<!--<script src="<?echo $_SESSION['path']?>/js/general.js"></script>-->
 		
-		<!-- Foundation with required JS and Plugins minified COMBINED with Bespoke JS File -->
-		<script src="<?echo $_SESSION['path']?>/code/shared/js_strings.php?lang=<?echo $lang?>"></script>
-		<script src="<?echo $_SESSION['path']?>/js/all_scripts.min.js"></script><!-- JS 1/1 : to be minified and updated with timestamp -->
+		<!-- Foundation with required JS and Plugins minified COMBINED with Bespoke JS File Generated using 'grunt build' -->
+    <script src="<?echo $_SESSION['path']?>/code/shared/js_strings.php?lang=<?echo $lang?>"></script>
+		<script src="<?echo $_SESSION['path']?>/js/all_scripts.min.js"></script>		<!-- JS 1/1 : to be minified and updated with timestamp -->
+		<!--	<script src="<?echo $_SESSION['path']?>/js/general.js"></script>		<!-- JS 1/1 : to be minified and updated with timestamp -->
 	
 		<!-- Google+ External JS -->
 		<script type="text/javascript">
@@ -174,5 +175,14 @@
 			<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
 			</script>
 		<?}?>
+
+		
+			<script type="text/javascript">	
+				<?if((isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'])){?>
+					var SESSION_VENUE_CURRENCY = <? echo json_encode($_SESSION['venue_currency']);?>
+				<? } else {?>
+					var SESSION_VENUE_CURRENCY = "GBP"; /*defaults to GBP*/
+				<? } ?>	
+			</script>		
 	</body>
 </html>

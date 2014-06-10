@@ -434,24 +434,48 @@ $(document).ready(function() {
 	
 		if( $(this).find("input[type=radio][name=vEvent]:checked").val() == '0')
 		{
-			$('.leadTimeDiv').slideDown();
-			$('.leadTimeDiv').find('input').attr('required','required');
+			$('.nonEventOnly').slideDown();
+			$('.nonEventOnly').find('input').attr('required','required');
 		}
 		else
 		{
-			$('.leadTimeDiv').slideUp();
-			$('.leadTimeDiv').find('input').removeAttr('required');
+			$('.nonEventOnly').slideUp();
+			$('.nonEventOnly').find('input').removeAttr('required');
 		}
 	});
 
+	$('.eventFlagNoti2 input').on('click', function(){
+		$(".eventFlagNoti2 input").removeAttr("checked");
+		$(this).attr("checked", "true");
+	});
+
+	$('.eventFlagNoti3 input').on('click', function(){
+		$(".eventFlagNoti3 input").removeAttr("checked");
+		$(this).attr("checked", "true");
+	});
+
+	$('.venueHasDelivery').on('click', function(){
+		var isChecked = $("#advanced-setting").css("display") == "none";		
+		console.log('isChecked:' + isChecked)
+		if(isChecked)
+		{
+			$('#advanced-setting').slideDown();
+		} else {
+			
+			$('#advanced-setting').slideUp();
+		}
+	});
+
+	$(".oh-is-open").on('change',onIsOpenChange);
+	
 	$('.switch').each(function(){
-		var val = $(this).find("input[type=radio][name=vEvent]:checked").val() == '0'
+		var val = $(this).find("input[type=radio]:checked").val() == '0'
 		console.log('this.val:' + val);
 		if (val){
 			$(this).addClass("off")
 		}
 	}).on('click',function(){
-		var val = $(this).find("input[type=radio][name=vEvent]:checked").val() == '0'
+		var val = $(this).find("input[type=radio]:checked").val() == '0'
 		if (val){
 			$(this).addClass("off")
 		} else {
@@ -463,7 +487,7 @@ $(document).ready(function() {
 		var url = "/saveVenue";
 		
 		$('#venueSave').hide();
-		$('#savingButton').show();
+		$('#savingButton').removeClass("hide").show();
 		
 		$.ajax({
 			   type: "POST",
@@ -485,7 +509,7 @@ $(document).ready(function() {
 						return false;
 					}
 					
-					if(typeof dataArray['status'] !='undefined') //error
+					if(dataArray && typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
@@ -500,7 +524,9 @@ $(document).ready(function() {
 				}
 			 }).done(function(){
 				if($('#redirectFlag').val()!='1') $('#venueSave').show();
-				$('#savingButton').hide();
+				$('#savingButton').hide();				
+				//FIXME maybe this can be replaced with a refresh on the ids for the delivery details
+				setTimeout(window.location.reload(),200);
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
@@ -514,7 +540,7 @@ $(document).ready(function() {
 			  type: 'success',
 			  text: 'Uploaded!'
 			});
-			
+			//console.log('resp:',responseText)
 			//alert(responseText);
 			
 			responseText=responseText.replace('_thumb.png','');
@@ -1205,7 +1231,9 @@ $(document).ready(function() {
 					$(this).attr('name', newName);
 				});
 				
-				$newTab.find('.modifierRow select').each(function() {
+				$newTab.find('.modifierRow select').each(function(index,element) {					
+					//Set value to match original row
+					$(this).val(($curTable.find(".modifierRow select")[index]).value)				
 					var tempName = $(this).attr('name');
 					var newName = tempName.replace(/item\d+/gi, 'item'+newCount);
 					$(this).attr('name', newName);
@@ -1559,7 +1587,7 @@ $(document).ready(function() {
 		noty({
 			layout: 'center',
 			type: 'confirm',
-			text: _tr('Are you sure you want to delete this section? Note: all items and options will be lost!'),
+			text: text,
 			buttons: [
 			{addClass: 'alert tiny', text: _tr('Yes, delete this section and all its contents!'), onClick: function($noty) {
 				//get and update current count
@@ -3101,10 +3129,21 @@ $(document).ready(function() {
 	});
 	
 	$(document).on("click", '.addMoreOH', function(){
+				
 		$oldDiv = $(this).parents('.openingHoursDiv').find('.openHWrapper:first');
+		if ($oldDiv.find('.oh-is-open:first').val() == "c"){
+			noty({
+			  type: 'error',  layout: 'topCenter',
+			  text: "You cannot add another opening hour if your venue is closed today." /*text: dataArray['message']*/
+			});
+			return;
+		}
+		console.log($oldDiv,$oldDiv.val())
 		$newDiv = $oldDiv.clone(false);
 		
-		$newDiv.find('input').each(function(){
+		$ohDowCount = $(this).parents('.openingHoursDiv').find('.openHWrapper').length;
+		
+		$newDiv.find('input[type=text]').each(function(){
 			$(this).val('');
 			$(this).timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 		});
@@ -3113,11 +3152,17 @@ $(document).ready(function() {
 			currTime = $(this).val()+":00";
 			
 			newTime = extractAMPM("January 01, 2000 "+currTime);
-			
 			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('remove');
 			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
 			$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
+		});
+		
+		//increment the name for each row
+		$newDiv.find("input[type=radio]").each(function(){
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d*\]/, '['+$ohDowCount+']');
+			$(this).attr('name', newName);		
 		});
 		
 		$newDiv.find('.removeOHDiv').show();
@@ -3125,9 +3170,19 @@ $(document).ready(function() {
 		//hide it so we can animate it!
 		$newDiv.css('display','none');
 		
+		//add event listener to hid hours if closed
+		$newDiv.find(".oh-is-open").on('change',onIsOpenChange).each(function(i){
+			console.log('i = ' + i)
+			if (i>0){								
+				$(this).find("li:last").remove();
+			}
+		});		
+
 		//insert at the end of the list
 		$(this).parents('.openingHoursDiv').find('.openHWrapper:last').after($newDiv);
+
 		$newDiv.slideDown();
+
 	});
 	
 	$(document).on("click", '.removeOH', function(){
@@ -3139,17 +3194,23 @@ $(document).ready(function() {
 	});
 	
 	$(document).on("click", ".applyTimesAllDays", function(){
+
 		id = ($(this).parents('div.applyAllDiv')).attr('id');
 		id = id.substring(0, id.length - 1); //delete the 'C' to get just monday, etc.
+		
+		//used get original values for select. it's not copied on clone
+		$original = $(".openingHoursDiv."+id);
 		
 		//get data for this day
 		$data = $("."+id).clone(true,true);
 		
 		openData = new Array();
 		closeData = new Array();
+		isOpenData = new Array();
 		
 		openCounter = 0;
 		closeCounter = 0;
+		isOpenCounter = 0;
 		
 		$data.find('input[name^=ohStartTime]').each(function(){
 			openData[openCounter] = $(this).val();
@@ -3161,6 +3222,11 @@ $(document).ready(function() {
 			closeCounter++;
 		});
 		
+		$original.find('select[name^=ohIsOpen]').each(function(){			
+			isOpenData[isOpenCounter] = $(this).val();
+			isOpenCounter++;
+		});
+		
 		$("body").find('.openingHoursDiv').each(function(){
 			if(!($(this).hasClass(id)))
 			{
@@ -3169,16 +3235,26 @@ $(document).ready(function() {
 				
 				openCounter = 0;
 				closeCounter = 0;
+				isOpenCounter = 0;
 				
 				newID = $(this).attr('id');
 				
-				$(this).find('.openHWrapper').each(function(){
+				$(this).find('.openHWrapper').each(function(i){
 				
 					$(this).find('input').each(function(){
 						$(this).timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 						var tempName = $(this).attr('name');
 						var newName = tempName.replace(id, newID);
 						$(this).attr('name', newName);
+					});
+					
+					$(this).find('select').each(function(i){
+
+						var tempName = $(this).attr('name');
+						var newName = tempName.replace(id, newID);
+						$(this).attr('name', newName);						
+						$(this).val(isOpenData[isOpenCounter]);
+						isOpenCounter++;
 					});
 					
 					$(this).find('input[name^=ohStartTime]').each(function(){
@@ -3204,6 +3280,11 @@ $(document).ready(function() {
 							$(this).parent().next("div").children("input[name^=ohEndTime]").timepicker('setTime', newTime);
 						});
 					});
+					$(this).find(".oh-is-open").on('change',onIsOpenChange);
+					//hide closed option
+					if (i>0){								
+						$(this).find("li:eq(3)").remove();
+					}					
 				});
 			}
 		});
@@ -3215,6 +3296,23 @@ $(document).ready(function() {
 		});
 	});
 	
+	function onIsOpenChange(){
+		var val = $(this).val();						
+		if (val == "c"){
+				$(this).closest('.openingHours').find('.ui-timepicker-input-wrapper').slideUp()
+				$(this).closest('.openingHours').find('input').removeAttr("required")
+				$(this).closest('.openingHoursDiv').find('.openHWrapper').each(function(i){
+					if (i>0){
+						$(this).slideUp();		
+						$(this).remove();		
+					}
+				})							
+		} else {
+				$(this).closest('.openingHours').find('.ui-timepicker-input-wrapper').slideDown()								
+				$(this).closest('.openingHours').find('input').prop('required',true);
+		}
+	}
+	
 	$("#nonEventConfigForm").on('invalid', function (event) {
 		noty({
 		  type: 'error',  layout: 'topCenter',
@@ -3223,8 +3321,20 @@ $(document).ready(function() {
 	});
 	
 	$("#nonEventConfigForm").on('valid', function (event) {
+		var allClosed = true;		
+		$("select.oh-is-open").each(function(){			
+			allClosed = $(this).val() == "c" ? true : false;		
+			return allClosed; //break if false
+		})		
+		if (allClosed){
+			noty({
+			  type: 'error',  layout: 'topCenter',
+			  text: "Sorry, but you need to have at least one open day." /*text: dataArray['message']*/
+			});
+			return;
+		}		
+
 		var url = "/saveHours";
-		
 		$('#ohSubButton').hide();
 		$('#savingButton').show();
 
@@ -3569,8 +3679,7 @@ $(document).ready(function() {
 									  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 									});
 									
-									//alert(data);
-									
+									//alert(data);									
 									return false;
 								}
 									
@@ -4008,7 +4117,89 @@ $(document).ready(function() {
 		$('#offFlag').val(1);
 		$('#finishForm').submit();
 	});
+
+	var currencyManager = new CurrencyManager();	
+	currencyManager.init("#currency");//
+
+	$("#vOrderMin").autoNumeric('init');
+
 });
+
+function CurrencyManager(){
+	var currentCurrency;
+	var $currency;
+	this.currencies = {};
+
+	function getAllCurrencies(callback){
+		var that = this;
+		var url = "/getCurrencies";
+
+		$.ajax({
+		   type: "GET",
+		   url: url,
+		   dataType:"json",		   
+		   success: function(data)
+		   {
+		   	  console.log("success",data)
+		   	  that.currencies = data;		   	  
+		   }, error:function(data){
+		   	console.log("error",data)
+		   	  that.currencies = {
+		   	  	//In the worst case, if something really wrong happens we still have gpb.
+		   	  	// we never should end here tho.
+		   	  	"GBP": {
+			        "symbol": "£",
+			        "name": "Pound Sterling",
+			        "symbol_native": "£",
+			        "decimal_digits": 2,
+			        "rounding": 0,
+			        "code": "GBP",
+			        "name_plural": "British pounds sterling"
+			    }
+		   	  }
+		    },
+		    complete:function(){
+   	    		callback();
+		   }
+		});
+	}
+
+	function getCurrency(currencyCode){
+		return currencies[currencyCode];
+	}	
+
+	function refreshCurrencySymbols(currencyCode){				
+		this.currentCurrency = this.getCurrency(currencyCode);	
+		$(".currencySymbol").html(this.currentCurrency["symbol"]);
+	}
+
+	function init(currencySelector){
+		var that = this;
+		$currency = $(currencySelector);
+		console.log("SESSION_VENUE_CURRENCY",SESSION_VENUE_CURRENCY)
+		var currencyCode = "GBP"; //defaults to GBP
+		if (SESSION_VENUE_CURRENCY != undefined){
+			currencyCode  = SESSION_VENUE_CURRENCY;
+		} 
+		
+		$(currencySelector).on("change",function(){				
+			that.refreshCurrencySymbols($(this).val());
+
+		})
+		console.log("Initing CurrencyManager with currency:" + currencyCode);				
+		getAllCurrencies(function(){				
+			that.refreshCurrencySymbols(currencyCode);			
+		});
+		
+	}
+
+	return {
+		init:init,
+		getCurrency:getCurrency,
+		currentCurrency:currentCurrency,
+		refreshCurrencySymbols:refreshCurrencySymbols
+	}
+}
 
 //functions to update phone/app preview
 function updateTextColour(color)
@@ -4110,3 +4301,4 @@ $(window).resize(function(){
 			else map.setCenter( new google.maps.LatLng(mapDefaultCenterLat,mapDefaultCenterLong) );
 	}
 });
+

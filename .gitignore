@@ -1,9 +1,10 @@
 /js/twitter_app/*.json
 /js/twitter_app/*.json
 tmp
-.DS_Store
 webapp.esproj
+sites
 node_modules
+.DS_Store
 locale/nocache
 bower_components
 .sass-cache
