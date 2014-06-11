@@ -13,7 +13,7 @@
 				<p><? echo _("Please update your card details within ")?> {{ diffInDays }}  <? echo _(" days to prevent your Premium Features from being deactivated.")?> </p>					
 			</div>
 			<div ng-show='diffInDays <= 0'>			
-				<p ng-show="account.billingDate !== null"><? echo _("Your account will be billed")?> <b>{{getTotalSubscription()}}</b> <? echo _("on") ?> <b>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>			
+				<p ng-show="account.billingDate !== null"><? echo _("Your account will be billed")?> &pound;<b>{{getTotalSubscription()}}</b> <? echo _("on") ?> <b>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>			
 				<p ng-show="account.billingDate === null"><? echo _("You have no active subscriptions, your account will not be billed at this time.")?> </p>										
 			</div>
 			<div class='smallCard'>
@@ -45,7 +45,7 @@
 				<tr ng-repeat="accountFeature in accountFeatures | filter:{ status:'INSTALLED'}" ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>
 						<td > <img ng-src="{{accountFeature.status === 'INSTALLED' && accountFeature.feature.icon || '/img/icon_off.png'}}" /> </td>
 						<td> <span class='featureAppTitle' ng-show="accountFeature.feature.showAppTitle"> my order app </span> {{accountFeature.feature.name}} </td>
-						<td> {{accountFeature.feature.price}}/month </td>				
+						<td> &pound;{{accountFeature.feature.price}}/month </td>				
 						<td ng-switch='accountFeature.status'>
 								<span ng-switch-when="INSTALLED" ng-click='openConfirmDialog(accountFeature)'> <? echo _("Uninstall")?></span>
 								<span ng-switch-when="UNINSTALLED" ng-click='updateStatus(accountFeature,"INSTALLED")'> <? echo _("Cancel")?></span>
@@ -65,7 +65,7 @@
 					<tr ng-repeat="accountFeature in accountFeatures | filter:{ status:'CANCELLED'}" class="disabled" >
 						<td > <img src='/img/icon_off.png' /> </td>
 						<td> {{accountFeature.feature.name}} </td>
-						<td> {{accountFeature.feature.price}}/month </td>				
+						<td> &pound;{{accountFeature.feature.price}}/month </td>				
 						<td >
 								<span ng-click='updateStatus(accountFeature,"INSTALLED")'> <? echo _("Reinstall")?> </span>								
 						</td>
