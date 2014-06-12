@@ -9,15 +9,12 @@ angular.module('accountSettings.controllers')
 
     function loadAll(callback){
         $q.all([           
-            AccountFeature.query({accountId:ACCOUNT_ID}).$promise,
-            AccountCard.get({accountId:ACCOUNT_ID}).$promise,
+            AccountFeature.query({accountId:ACCOUNT_ID}).$promise,            
             Account.get({id:ACCOUNT_ID}).$promise
         ])
-        .then(function(results){             
-            $scope.finishLoading();         
-            $scope.accountFeatures = results[0];
-            $scope.card = results[1];
-            $scope.account = results[2];
+        .then(function(results){                         
+            $scope.accountFeatures = results[0];            
+            $scope.account = results[1];
             setBillingDate();          
             angular.forEach($scope.accountFeatures,function(accountFeature){              
                 accountFeature.feature = getFeatureById(accountFeature.featureId);
@@ -25,9 +22,15 @@ angular.module('accountSettings.controllers')
             setActiveCount();
             if (callback)
               callback();
+            AccountCard.get({accountId:ACCOUNT_ID},function(result){
+                $scope.card = result;
+                $scope.finishLoading();
+            },function(error){
+                $scope.card = false;  
+                $scope.finishLoading();
+            })
         },
         function(error){          
-            $scope.card = false;  
             displayErrorNoty();
       });    
     }
