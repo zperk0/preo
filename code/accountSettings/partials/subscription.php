@@ -62,7 +62,7 @@
 			<br/>
 			<div>
 				<table>
-					<tr ng-repeat="accountFeature in accountFeatures | filter:{ status:'CANCELLED'}" class="disabled" >
+					<tr ng-repeat="accountFeature in accountFeatures | filter:{ status:'CANCELED'}" class="disabled" >
 						<td > <img src='/img/icon_off.png' /> </td>
 						<td> {{accountFeature.feature.name}} </td>
 						<td> &pound;{{accountFeature.feature.price}}/month </td>				

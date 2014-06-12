@@ -6,7 +6,11 @@ angular.module('shop.resources',['ngResource']).
 
     var AccountCard = $resource('/api/accounts/:accountId/accountcard',{accountId:"@accountId"},{})
 
-    var AccountFeatures = $resource('/api/accounts/:accountId/features/:accountFeatureId',{accountId:"@accountId",accountFeatureId:"@accountFeatureId"},{});    
+    var AccountFeatures = $resource('/api/accounts/:accountId/features/:featureId',{accountId:"@accountId",featureId:"@featureId"},{
+        put:{
+            method:"PUT"
+        }
+    });    
 
     var Invoice = $resource('/api/invoices/:invoiceId',{invoiceId:"@invoiceId"},{
         put:{

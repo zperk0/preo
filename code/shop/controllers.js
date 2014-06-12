@@ -62,8 +62,9 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
                       if (result && result.status == "SUCCESS"){
                         var accountFeature = new Resources.AccountFeatures({                  
                           feature:feature
-                        });                                                         
-                        accountFeature.$save({accountId:ACCOUNT_ID},
+                        });                               
+                        accountFeature.status ="INSTALLED";                          
+                        accountFeature.$put({accountId:ACCOUNT_ID,featureId:feature.id},
                           function(result){
                               getAccountFeatures();
                               $('#successDialog').foundation('reveal', 'open');        
@@ -121,8 +122,9 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
       var found = false;      
         if (feature && $scope.accountFeatures && $scope.accountFeatures.length >0){
             angular.forEach($scope.accountFeatures,function(accountFeature){                            
-                if (feature.id == accountFeature.featureId)
+                if (feature.id == accountFeature.featureId && accountFeature.status != "CANCELED"){
                   found = true;
+                }
             });
         }        
         return found;

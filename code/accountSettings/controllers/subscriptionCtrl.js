@@ -37,7 +37,7 @@ angular.module('accountSettings.controllers')
     $scope.getTotalSubscription = function (){
       var sum = 0;
       angular.forEach($scope.accountFeatures,function(feature){
-        if (feature.status != "CANCELLED")
+        if (feature.status != "CANCELED")
           sum += feature.price;
       });
     	return sum;
@@ -52,13 +52,12 @@ angular.module('accountSettings.controllers')
       return $.grep(allFeatures, function(e){ return e.id == id; })[0];   
     }
 
-    $scope.hasCancelledFeatures = function(){
-
-     return $scope.accountFeatures && $.grep($scope.accountFeatures, function(e){ return e.status == "CANCELLED"; }).length > 0;
+    $scope.hasCancelledFeatures = function(){      
+     return $scope.accountFeatures && $.grep($scope.accountFeatures, function(e){ return e.status == "CANCELED"; }).length > 0;
     } 
 
     function setActiveCount(){
-      $scope.activeFeaturesCount = $.grep($scope.accountFeatures, function(e){ return e.status != "CANCELLED"; }).length > 0;
+      $scope.activeFeaturesCount = $.grep($scope.accountFeatures, function(e){ return e.status != "CANCELED"; }).length > 0;
 
     }
 
