@@ -70,6 +70,5 @@ var Dictionary = {
 	"Sorry, that item is out of stock":<? echo json_encode(_("Sorry, that item is out of stock")) ?>,
 	"Out of stock":<? echo json_encode(_("Out of stock")) ?>,
 	"Sorry, Your order has been rejected. Please call us":<? echo json_encode(_("Sorry, Your order has been rejected. Please call us")) ?>,
-	"Sorry, we need more information, please check if you have filled all the required fields.":<? echo json_encode(_("Sorry, we need more information, please check if you have filled all the required fields.")) ?>,
 	"Successfully saved delivery settings.":<? echo json_encode(_("Successfully saved delivery settings.")) ?>,
 }

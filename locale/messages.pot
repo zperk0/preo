@@ -1,20 +1,21 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PreoDay\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-11 23:29+0100\n"
-"PO-Revision-Date: 2013-09-11 18:08-0000\n"
-"Last-Translator: Ashish Mehra <ashish@webfire.co.uk>\n"
-"Language-Team: Webfire <ashish@webfire.co.uk>\n"
-"Language: English\n"
+"POT-Creation-Date: 2014-06-12 17:16+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: C:\\Users\\Auero\\Documents\\Domains\\PreoDay.com\n"
 
 #: code/settings/delivery/delivery-view.php:20 inc/shared/h.php:46
 msgid "Delivery Settings"
@@ -177,9 +178,7 @@ msgid "Sorry, incorrect code."
 msgstr ""
 
 #: code/shared/js_strings.php:13
-msgid ""
-"Your password has been reset.<br/>You will now be redirected to the login "
-"page."
+msgid "Your password has been reset.<br/>You will now be redirected to the login page."
 msgstr ""
 
 #: code/shared/js_strings.php:14
@@ -263,9 +262,7 @@ msgid "Choose a Collection Slot"
 msgstr ""
 
 #: code/shared/js_strings.php:34
-msgid ""
-"Are you sure you want to delete this event? Note: all event data will be "
-"lost!"
+msgid "Are you sure you want to delete this event? Note: all event data will be lost!"
 msgstr ""
 
 #: code/shared/js_strings.php:35
@@ -277,8 +274,7 @@ msgid "Role"
 msgstr ""
 
 #: code/shared/js_strings.php:37
-msgid ""
-"Are you sure you want to delete this user? Note: all user data will be lost!"
+msgid "Are you sure you want to delete this user? Note: all user data will be lost!"
 msgstr ""
 
 #: code/shared/js_strings.php:38
@@ -310,9 +306,7 @@ msgid "# of # selected"
 msgstr ""
 
 #: code/shared/js_strings.php:45
-msgid ""
-"Are you sure you want to delete this outlet? Note: all outlet data will be "
-"lost!"
+msgid "Are you sure you want to delete this outlet? Note: all outlet data will be lost!"
 msgstr ""
 
 #: code/shared/js_strings.php:46
@@ -328,9 +322,7 @@ msgid "These times have been applied to all days!"
 msgstr ""
 
 #: code/shared/js_strings.php:49
-msgid ""
-"We still need some more information. Don't forget to fill out the remaining "
-"days of the week!"
+msgid "We still need some more information. Don't forget to fill out the remaining days of the week!"
 msgstr ""
 
 #: code/shared/js_strings.php:50
@@ -343,9 +335,7 @@ msgid "Choose a menu section"
 msgstr ""
 
 #: code/shared/js_strings.php:52
-msgid ""
-"Are you sure you want to delete this meal deal? Note: all associated data "
-"will be lost!"
+msgid "Are you sure you want to delete this meal deal? Note: all associated data will be lost!"
 msgstr ""
 
 #: code/shared/js_strings.php:53
@@ -357,8 +347,7 @@ msgid "All changes has been saved!"
 msgstr ""
 
 #: code/shared/js_strings.php:55
-msgid ""
-"Are you sure you want to delete this menu? Note: all menu data will be lost!"
+msgid "Are you sure you want to delete this menu? Note: all menu data will be lost!"
 msgstr ""
 
 #: code/shared/js_strings.php:56
@@ -370,9 +359,7 @@ msgid "Sorry, incorrect password."
 msgstr ""
 
 #: code/shared/js_strings.php:58
-msgid ""
-"Settings and Password has been saved!<br/>You will need to log in again with "
-"your new password to continue."
+msgid "Settings and Password has been saved!<br/>You will need to log in again with your new password to continue."
 msgstr ""
 
 #: code/shared/js_strings.php:59
@@ -695,9 +682,7 @@ msgid "Add a short venue title"
 msgstr ""
 
 #: inc/dashboard/appConfig2.php:35
-msgid ""
-"This is a shorter version of your venue name that will be visible over your "
-"menu."
+msgid "This is a shorter version of your venue name that will be visible over your menu."
 msgstr ""
 
 #: inc/dashboard/appConfig2.php:37
@@ -717,9 +702,7 @@ msgid "Colour one"
 msgstr ""
 
 #: inc/dashboard/appConfig2.php:63
-msgid ""
-"This colour is used across section progress buttons and as a highlight "
-"colour."
+msgid "This colour is used across section progress buttons and as a highlight colour."
 msgstr ""
 
 #: inc/dashboard/appConfig2.php:71
@@ -727,8 +710,7 @@ msgid "Button one colour"
 msgstr ""
 
 #: inc/dashboard/appConfig2.php:89
-msgid ""
-"This colour is used across item select buttons and as a highlight colour."
+msgid "This colour is used across item select buttons and as a highlight colour."
 msgstr ""
 
 #: inc/dashboard/appConfig2.php:97
@@ -748,9 +730,7 @@ msgid "Your venue shortcode is"
 msgstr ""
 
 #: inc/dashboard/dashboard_content.php:12
-msgid ""
-"This is the code your customers need to use to find your venue on 'My Order "
-"App'"
+msgid "This is the code your customers need to use to find your venue on 'My Order App'"
 msgstr ""
 
 #: inc/dashboard/dashboard_content.php:13 inc/finish/finish_content.php:31
@@ -762,11 +742,7 @@ msgid " mode."
 msgstr ""
 
 #: inc/dashboard/dashboard_content.php:13 inc/finish/finish_content.php:31
-msgid ""
-"LIVE - Your app is available on My Order App and is ready to take real "
-"orders.<br/><br/>DEMO - Your app is available on My Order App but does not "
-"take real orders.<br/><br/>OFFLINE - Your app is not available on My Order "
-"App."
+msgid "LIVE - Your app is available on My Order App and is ready to take real orders.<br/><br/>DEMO - Your app is available on My Order App but does not take real orders.<br/><br/>OFFLINE - Your app is not available on My Order App."
 msgstr ""
 
 #: inc/dashboard/dashboard_content.php:21
@@ -913,9 +889,7 @@ msgid "Your events"
 msgstr ""
 
 #: inc/dashboard/eventConfig.php:19
-msgid ""
-"These show when you are open for ordering, such as performances or matches. "
-"They can be viewed from the front page of your app"
+msgid "These show when you are open for ordering, such as performances or matches. They can be viewed from the front page of your app"
 msgstr ""
 
 #: inc/dashboard/eventConfig.php:42
@@ -1069,9 +1043,7 @@ msgid "75&#37 done, almost there now..."
 msgstr ""
 
 #: inc/dashboard/mdConfig.php:5
-msgid ""
-"This is where you can combine separate food items into one meal combination, "
-"e.g. sandwich, crisps and a drink"
+msgid "This is where you can combine separate food items into one meal combination, e.g. sandwich, crisps and a drink"
 msgstr ""
 
 #: inc/dashboard/mdConfig.php:8
@@ -1152,9 +1124,7 @@ msgid "Click to add a Meal Deal name"
 msgstr ""
 
 #: inc/dashboard/mdConfig.php:252
-msgid ""
-"You've not created any items! You won't be able to create Meal Deals until "
-"you have some items in your menu."
+msgid "You've not created any items! You won't be able to create Meal Deals until you have some items in your menu."
 msgstr ""
 
 #: inc/dashboard/menuConfig.php:25
@@ -1166,10 +1136,7 @@ msgid "Your menu"
 msgstr ""
 
 #: inc/dashboard/menuConfig.php:25
-msgid ""
-"Now it's time to create your menu. We suggest you keep it simple to start "
-"with.<br/><br/>An easy way is to group items, i.e. create separate sections "
-"for food, cold drinks and hot drinks."
+msgid "Now it's time to create your menu. We suggest you keep it simple to start with.<br/><br/>An easy way is to group items, i.e. create separate sections for food, cold drinks and hot drinks."
 msgstr ""
 
 #: inc/dashboard/menuConfig.php:61
@@ -1275,10 +1242,7 @@ msgid "User selects 0 or more options"
 msgstr ""
 
 #: inc/dashboard/menuConfig.php:148 inc/dashboard/menuConfig.php:284
-msgid ""
-"Single: When the user must pick only 1 option.<br/><br/>Multiple: When the "
-"user must pick 1 or more options.<br/><br/>Optional: when the user can pick "
-"0 or multiple options."
+msgid "Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options."
 msgstr ""
 
 #: inc/dashboard/menuConfig.php:149 inc/dashboard/menuConfig.php:285
@@ -1296,9 +1260,7 @@ msgstr ""
 
 #: inc/dashboard/menuConfig.php:161 inc/dashboard/menuConfig.php:296
 #: inc/dashboard/menuConfig.php:328
-msgid ""
-"This will be in addition to the item price. If there is no price difference, "
-"put in 0.00."
+msgid "This will be in addition to the item price. If there is no price difference, put in 0.00."
 msgstr ""
 
 #: inc/dashboard/menuConfig.php:183 inc/dashboard/menuConfig.php:354
@@ -1378,9 +1340,7 @@ msgid "Open "
 msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:47 inc/dashboard/nonEventConfig.php:77
-msgid ""
-"Let us know if your venue is open for delivery, open for pickup, open for "
-"both or if you are closed today."
+msgid "Let us know if your venue is open for delivery, open for pickup, open for both or if you are closed today."
 msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:50 inc/dashboard/nonEventConfig.php:79
@@ -1562,9 +1522,7 @@ msgid "Venue description"
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:71
-msgid ""
-"Please enter a short description about your venue.<br/><br/>This will not "
-"appear on your branded app."
+msgid "Please enter a short description about your venue.<br/><br/>This will not appear on your branded app."
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:73
@@ -1600,9 +1558,7 @@ msgid "Are you primarily an events based business?"
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:92
-msgid ""
-"Does your business revolve around regular events, e.g. football matches, "
-"performances, etc?"
+msgid "Does your business revolve around regular events, e.g. football matches, performances, etc?"
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:107
@@ -1610,9 +1566,7 @@ msgid "Collection Slot Duration (mins)"
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:107
-msgid ""
-"This is the number of minutes after opening time and before closing time "
-"when customers are allowed to collect orders."
+msgid "This is the number of minutes after opening time and before closing time when customers are allowed to collect orders."
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:108
@@ -1628,8 +1582,7 @@ msgid "Default preparation time for collection orders (mins)"
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:115
-msgid ""
-"The time it takes to prepare your order before the customer can pick it up."
+msgid "The time it takes to prepare your order before the customer can pick it up."
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:116
@@ -1777,9 +1730,7 @@ msgid "Please select at least one feature"
 msgstr ""
 
 #: inc/more/more_content.php:20
-msgid ""
-"Describe your requirement. Include details like like the brand of ePOS you "
-"are using or the number of outlets you require."
+msgid "Describe your requirement. Include details like like the brand of ePOS you are using or the number of outlets you require."
 msgstr ""
 
 #: inc/more/more_content.php:22
@@ -1884,9 +1835,7 @@ msgid "SAVE"
 msgstr ""
 
 #: inc/shared/dashboard_footer.php:5
-msgid ""
-"Looking for ePOS integration, detailed reporting or the ability to configure "
-"multiple outlets?"
+msgid "Looking for ePOS integration, detailed reporting or the ability to configure multiple outlets?"
 msgstr ""
 
 #: inc/shared/dashboard_footer.php:6
@@ -2852,8 +2801,7 @@ msgstr ""
 msgid ""
 "10.2 In particular, please note that\n"
 "although Preoday is based in the UK, it and its service providers\n"
-"may have servers located overseas, where the laws may not give the same "
-"level of protection\n"
+"may have servers located overseas, where the laws may not give the same level of protection\n"
 "to personal data as within the UK and that by submitting your\n"
 "personal data, you agree to allowing your personal data to be\n"
 "transferred, processed and stored overseas as set out in this\n"
@@ -2970,9 +2918,7 @@ msgid "  Click here"
 msgstr ""
 
 #: inc/signin/signin_content.php:78
-msgid ""
-"Sorry, you don't have sufficient privileges.<br/><br/>Looking for the "
-"Fulfilment App? Click the link at the bottom of this page."
+msgid "Sorry, you don't have sufficient privileges.<br/><br/>Looking for the Fulfilment App? Click the link at the bottom of this page."
 msgstr ""
 
 #: inc/signup/signup_content.php:6
