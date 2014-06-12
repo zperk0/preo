@@ -41,5 +41,5 @@ var features = [
 	}	
 ];
 
-if (angular)
+if (window.angular)
 	angular.module('features').constant('FEATURES', features)

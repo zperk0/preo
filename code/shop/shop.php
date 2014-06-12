@@ -82,7 +82,7 @@
 </div> <!-- End app -->
   <script src="/js/angular_all.min.js"></script>  
   <script type="text/javascript" src="/code/shop/app.js"></script>
-  <script type="text/javascript" src="/code/shop/features.php"></script>
+
   <script type="text/javascript">
       angular.module('shop').constant('ACCOUNT_ID', <? echo $_SESSION['account_id']?>);
   </script>

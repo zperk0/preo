@@ -46,7 +46,6 @@
   </script>
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script> 
   <script type="text/javascript" src="/code/accountSettings/directives/equals.js"></script>
-  <script type="text/javascript" src="/code/shop/features.php"></script>
   <script type="text/javascript" src="/code/accountSettings/resources/user.js"></script>
   <script type="text/javascript" src="/code/accountSettings/resources/account.js"></script>
   <script type="text/javascript" src="/code/accountSettings/resources/accountCard.js"></script>

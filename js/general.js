@@ -4322,3 +4322,9 @@ $(window).resize(function(){
 	}
 });
 
+
+//namespace
+function Preoday(){
+
+
+}

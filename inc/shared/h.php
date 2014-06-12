@@ -4,7 +4,7 @@
 	  		
 
 ?>
-<script type="text/javascript" src="/code/shop/features.php"></script>
+
 <div class="contain-to-grid">
 	<nav class="top-bar">
 		<ul class="title-area">
