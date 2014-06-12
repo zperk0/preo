@@ -2556,7 +2556,7 @@ span .currencySymbol {
          margin:0;
          padding:10px 10px 10px 0;
          height:auto;
-         width:auto;
+         width:auto;        
          
         &:first-child{
           width:40px;        
@@ -2587,15 +2587,12 @@ span .currencySymbol {
 
         td{
           color:#ccc;
-
-          &:last-child{
-            span{
-              color:$error;
-            }
-          }
         }
               
       }
+    }
+    span.negativeButton{
+        color:$error !important;
     }
   }
 
@@ -2767,9 +2764,7 @@ span .currencySymbol {
     }
   }
 
-  .deactivatedFeaturesWrapper table tr.disabled td span{
-      color:$mainDark;
-  }
+
 
   .recurringPaymentFailed{
       p{

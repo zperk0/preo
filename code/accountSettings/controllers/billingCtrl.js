@@ -8,9 +8,6 @@ angular.module('accountSettings.controllers')
       $scope.invoices = result;     
       console.log($scope.invoices);
       $scope.finishLoading();
-    })  		
-
+    })  	
     
-  
-
   }]);    

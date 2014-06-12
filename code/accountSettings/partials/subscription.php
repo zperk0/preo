@@ -45,10 +45,11 @@
 				<tr ng-repeat="accountFeature in accountFeatures | filter:{ status:'INSTALLED'}" ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>
 						<td > <img ng-src="{{accountFeature.status === 'INSTALLED' && accountFeature.feature.icon || '/img/icon_off.png'}}" /> </td>
 						<td> <span class='featureAppTitle' ng-show="accountFeature.feature.showAppTitle"> my order app </span> {{accountFeature.feature.name}} </td>
-						<td> &pound;{{accountFeature.feature.price}}/month </td>				
+						<td ng-show="accountFeature.status === 'INSTALLED'"> &pound;{{accountFeature.feature.price}}/month </td>				
+						<td ng-show="accountFeature.status === 'UNINSTALLED'">  <? echo _("Pending removal") ?> </td>				
 						<td ng-switch='accountFeature.status'>
-								<span ng-switch-when="INSTALLED" ng-click='openConfirmDialog(accountFeature)'> <? echo _("Uninstall")?></span>
-								<span ng-switch-when="UNINSTALLED" ng-click='updateStatus(accountFeature,"INSTALLED")'> <? echo _("Cancel")?></span>
+								<span ng-switch-when="INSTALLED" ng-click='openConfirmDialog(accountFeature)' class='positiveButton'> <? echo _("Uninstall")?></span>
+								<span ng-switch-when="UNINSTALLED" ng-click='updateStatus(accountFeature,"INSTALLED")' class='negativeButton'> <? echo _("Cancel")?></span>
 						</td>
 				</tr>
 			</table>
@@ -67,7 +68,8 @@
 						<td> {{accountFeature.feature.name}} </td>
 						<td> &pound;{{accountFeature.feature.price}}/month </td>				
 						<td >
-								<span ng-click='updateStatus(accountFeature,"INSTALLED")'> <? echo _("Reinstall")?> </span>								
+								<span ng-click='reinstallAccountFeature(accountFeature)' class='positiveButton'> <? echo _("Reinstall")?> </span>
+								<span ng-click='removeAccountFeature(accountFeature)' class='negativeButton'> <? echo _("Remove")?> </span>
 						</td>
 					</tr>
 				</table>	
@@ -80,6 +82,28 @@
  <div id="confirmationDialog" class="reveal-modal small featureDialog" data-reveal>
       <p><? echo _("This Premium Feature will remain active on your account until the end of the current billing cycle. You can cancel this uninstall at any time. If you wish to reinstall this Premium Feature after it has been deactivated, simply click on the <span>reinstall</span> option.")?></p>
       <p><b> <? echo _("Are you sure you want to uninstall this Premium Feature?")?></b></p>
-      <button class='positiveDismiss preodayButton' ng-click="dialogConfirm()" ><? echo _("UNINSTALL")?></button>
-      <button class='negativeDismiss preodayButton' ng-click="dialogCancel()" ><? echo _("CANCEL")?></button>
-  </div><!-- end feature modal -->
+      <button class='positiveDismiss preodayButton' ng-click="dialogConfirm('confirmationDialog')" ><? echo _("UNINSTALL")?></button>
+      <button class='negativeDismiss preodayButton' ng-click="dialogCancel('confirmationDialog')" ><? echo _("CANCEL")?></button>
+  </div>
+  <!-- end feature modal -->
+
+  <!-- start feature modal -->
+ <div id="reinstallDialog" class="reveal-modal small featureDialog" data-reveal>
+      <p><? echo _("This Premium Feature is currently canceled. A new charge will be made to your card before reinstalling this feature.")?></p>
+      <p><b> <? echo _("Are you sure you want to reinstall this Premium Feature?")?></b></p>
+      <button class='positiveDismiss preodayButton' ng-click="dialogConfirm('reinstallDialog')" ><? echo _("REINSTALL")?></button>
+      <button class='negativeDismiss preodayButton' ng-click="dialogCancel('reinstallDialog')" ><? echo _("CANCEL")?></button>
+  </div>
+  <!-- end feature modal -->
+
+   <div id="errorDialog" class="reveal-modal medium featureDialog" data-reveal>
+      <p><? echo _("Please add a payment method to your account in order to subscribe to Premium Features")?></p>
+      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/paymentMethod')" ><? echo _("ADD PAYMENT METHOD")?></button>
+      <button class='negativeDismiss preodayButton secondary' ng-click="dialogCancel('errorDialog')" ><? echo _("RETURN TO ACCOUNT SETTINGS")?></button>
+</div>
+
+<div id="successDialog" class="reveal-modal medium featureDialog" data-reveal>
+      <b><? echo _("Your new Premium Feature is now live!")?></b><br/>
+      <p><? echo _("You can manage subscriptions from your account settings page")?></p>      
+      <button class='positiveDismiss preodayButton' ng-click="dialogCancel('successDialog')"><? echo _("RETURN TO ACCOUNT SETTINGS")?></button>
+</div>
