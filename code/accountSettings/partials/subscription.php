@@ -1,6 +1,6 @@
 <h3><?echo _("Subscriptions")?></h3>
 
-<section class='scheduleWrapper'>
+<section class='scheduleWrapper' >
 	<header><? echo _("Billing Schedule")?></header>
 	<br/>	
 	<div ng-show='card === false'>				
@@ -13,13 +13,13 @@
 				<p><? echo _("Please update your card details within ")?> {{ diffInDays }}  <? echo _(" days to prevent your Premium Features from being deactivated.")?> </p>					
 			</div>
 			<div ng-show='diffInDays <= 0'>			
-				<p ng-show="account.billingDate !== null"><? echo _("Your account will be billed")?> &pound;<b>{{getTotalSubscription()}}</b> <? echo _("on") ?> <b>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>			
+				<p ng-show="account.billingDate !== null"  ><? echo _("Your account will be billed")?> <b class='helveticaneueWMedi'>&pound;{{getTotalSubscription()}}</b> <? echo _("on") ?> <b class='helveticaneueWMedi'>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>			
 				<p ng-show="account.billingDate === null"><? echo _("You have no active subscriptions, your account will not be billed at this time.")?> </p>										
 			</div>
 			<div class='smallCard'>
 				<img src='/img/credit-card.png' class='left'> 
 				<div class='left'>
-					<strong>{{ card.type }}</strong>
+					<strong class='helveticaneueWMedi'>{{ card.type }}</strong>
 					<p> Card ending {{card.number}}</p>
 				</div>
 			</div>

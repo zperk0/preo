@@ -59,7 +59,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
                     function(result){
                       //if we get a success here, the charge was good! enable account feature
                       console.log('innnermost result',result)
-                      if (result && result.status == "PAID"){
+                      if (result && result.status == "SUCCESS"){
                         var accountFeature = new Resources.AccountFeatures({                  
                           feature:feature
                         });                                                         

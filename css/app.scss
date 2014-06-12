@@ -2861,6 +2861,11 @@ button.preodayButton.noclick{
     background:$premium;
     border-radius:1px;
     margin-top:0 !important;
+    filter: brightness(100%) !important;
+    -webkit-filter: brightness(100%) !important;
+    -moz-filter: brightness(100%) !important;
+    -o-filter: brightness(100%) !important;
+    -ms-filter: brightness(100%) !important;
     
   }
 
@@ -2869,4 +2874,8 @@ button.preodayButton.noclick{
     padding-right:10px !important;  
   }
 
+}
+
+.helveticaneueWMedi{
+  font-family: HelveticaNeueW01-65Medi !important;
 }

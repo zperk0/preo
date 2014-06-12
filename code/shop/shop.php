@@ -21,13 +21,13 @@
 
         <div class='premiumFeatureWrapper small-4 large-4 columns' ng-repeat="feature in PremiumFeatures" >      
             <div class='premiumFeatureTop'>
-                <h4><small ng-show='feature.showAppTitle'> my order app <br/></small>{{feature.name}}</h4>
+                <h4  ><small ng-show='feature.showAppTitle' > my order app <br/></small>{{feature.name}}</h4>
                 <img ng-src='{{feature.icon}}'/>
             </div>
             <div class='premiumFeatureBottom'>
-                <h4>{{feature.name}}</h4>
+                <h4 class='helveticaneueWMedi'><span ng-show='feature.showAppTitle' > My order app </span>{{feature.name}}</h4>
                 <p>{{feature.description}}</p>
-                <span class='price'>£{{feature.price}}/month</span class='price'>                
+                <span class='price helveticaneueWMedi' >£{{feature.price}}/month</span class='price'>                
                 <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">BUY</button>
                 <button ng-show="isFeatureOwned(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">VIEW</button>
             </div>
@@ -43,8 +43,8 @@
         <span>my order app</span>
         <h4>{{selectedFeature.feature.name}}</h4>
       </div>
-      <div class='rightWrapper'>
-          <span class='price'>£{{selectedFeature.feature.price}}/month</span class='price'>
+      <div class='rightWrapper '>
+          <span class='price helveticaneueWMedi' >£{{selectedFeature.feature.price}}/month</span class='price'>
           <button ng-show="!isFeatureOwned(selectedFeature.feature)" class='preodayButton' ng-click="clickBuy(selectedFeature.feature)" data-reveal-id="myModal">BUY</button>
           <button ng-show="isFeatureOwned(selectedFeature.feature)" class='preodayButton secondary noclick'>OWNED</button>
       </div>
