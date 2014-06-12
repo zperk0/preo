@@ -1,6 +1,6 @@
 angular.module('accountSettings.controllers')
- .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','UnpaidInvoice','Account','StripeCharge',
-  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,UnpaidInvoice,Account,StripeCharge) {
+ .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','PendingInvoice','Account','StripeCharge',
+  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,PendingInvoice,Account,StripeCharge) {
     $scope.setSelected($scope.Views.paymentMethod);
   	$scope.isEditing = false;
     $scope.errorMessage = "";    
@@ -79,7 +79,7 @@ angular.module('accountSettings.controllers')
       $scope.errorMessage = "";
       $scope.isEditing = false;
       console.log("success!!");
-      UnpaidInvoice.get({accountId:ACCOUNT_ID},function (invoice){        
+      PendingInvoice.get({accountId:ACCOUNT_ID},function (invoice){        
       console.log('got invoice',invoice);  
           if (invoice.id){ //if we have an invoice, try to pay it
               StripeCharge.get({accountId:ACCOUNT_ID,invoiceId:invoice.id},

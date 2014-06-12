@@ -53,7 +53,7 @@
   <script type="text/javascript" src="/code/accountSettings/resources/accountFeature.js"></script>  
   <script type="text/javascript" src="/code/accountSettings/resources/invoice.js"></script>  
   <script type="text/javascript" src="/code/accountSettings/resources/accountInvoice.js"></script>  
-  <script type="text/javascript" src="/code/accountSettings/resources/unpaidInvoice.js"></script>  
+  <script type="text/javascript" src="/code/accountSettings/resources/pendingInvoice.js"></script>  
   <script type="text/javascript" src="/code/accountSettings/resources/stripeCharge.js"></script>    
   <script type="text/javascript" src="/code/accountSettings/controllers/billingCtrl.js"></script>
   <script type="text/javascript" src="/code/accountSettings/controllers/profileCtrl.js"></script>
