@@ -97,7 +97,7 @@
 							<div class="content" data-section-content>
 									<?  //get the features list we have for this acocunt 
 										  $accountId = $_SESSION['account_id'];	  
-											$result = callAPI('GET', $apiURL."features/accountFeature/$accountId", false,"PreoDay ".$_SESSION['token']);
+											$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
 											$accountFeatures = json_decode($result);											
 											foreach($accountFeatures as $feat) { ?>
 												<p data-feature='<? echo $feat->featureId ;?>' class='featureHolder'><img class='featureIcon'/><a href="<?echo $_SESSION['path']?>/accountSettings#/subscription"  class='featureName'></a></li>												

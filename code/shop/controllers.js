@@ -50,13 +50,13 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
             
             if (result.token && result.token!=null){
                                 
-                var invoice = new Resources.Invoice(feature)
+                var invoice = new Resources.Invoice(feature);
                 console.log("beforeSave",invoice);
                 invoice.$save({accountId:ACCOUNT_ID},function(result){                  
-                  console.log(result,"sending:",result.id);
-
+                  console.log(result,"sending:",result.id);                  
                   //created the invoice, now try to pay it.
-                  Resources.StripeCharge.get({accountId:ACCOUNT_ID,invoiceId:result.id},function(result){
+                  Resources.StripeCharge.save({invoiceId:result.id},
+                    function(result){
                       //if we get a success here, the charge was good! enable account feature
                       console.log('innnermost result',result)
                       if (result && result.status == "PAID"){
@@ -72,20 +72,16 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
                           });
                       } else {
                         //set this invoice as rejected. this is a one time purchase, either it succeeds now or it's rejected
-                        invoice.status = "REJECTED";
-                        invoice.payDate = null;
-                        invoice.$put()
-                        console.log("error");                        
-                        $('#errorDialog').foundation('reveal', 'open');
+                        rejectInvoice(invoice);
                       }
                       
                       console.log('saved!');
                   }, function (error){
-                    console.log("error",error);                    
+                    rejectInvoice(invoice);
 
                   });                  
               },function(error){
-                  console.log('here',error);
+                  rejectInvoice(invoice);
               });                  
             } else {
                //we have a card but no token. something was wrong when registering the card
@@ -98,6 +94,16 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
               displayErrorNoty()
             }                       
         });
+    }
+
+    function rejectInvoice(invoice){
+      console.log("rejecting",invoice);
+      invoice.status = "REJECTED";
+      invoice.payDate = null;
+      invoice.$put({invoiceId:invoice.id})
+      console.log("error");                        
+      $('#errorDialog').foundation('reveal', 'open');
+
     }
 
     $scope.navigateTo = function(place){        

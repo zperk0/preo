@@ -1,7 +1,7 @@
 angular.module('accountSettings.resources').
   factory('StripeCharge', function($resource) {
     
-    var StripeCharge = $resource('/api/accountPayment/charge/:accountId/:invoiceId',{accountId:"@accountId",invoiceId:"@invoiceId"},{});
+    var StripeCharge = $resource('/api/invoices/:invoiceId/pay',{invoiceId:"@invoiceId"});
 
 		return StripeCharge;
 

@@ -17,9 +17,9 @@
 						<td> {{invoice.id}} </td>
 						<td> {{invoice.issueDate | date:"MMM dd, yyyy" }} </td>				
 						<td> {{invoice.status}} </td>				
-						<td> {{invoice.accountPayment.ammount}}  </td>				
+						<td> &pound;{{invoice.accountPayment.ammount}}  </td>				
 						<td >
-								<button ng-click='downloadPdf(invoice))' type='button' class='preodayButton'> <? echo _("DOWNLOAD PDF")?> </button>								
+								<button ng-click='downloadPdf(invoice)' type='button' class='preodayButton'> <? echo _("DOWNLOAD PDF")?> </button>								
 						</td>
 					</tr>
 				</table>	

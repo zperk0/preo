@@ -78,7 +78,7 @@ angular.module('accountSettings.controllers')
 
     $scope.updateStatus=function(accountFeature,status){        
         accountFeature.status = status;
-        accountFeature.$put(function(result){
+        accountFeature.$put({accountId:accountFeature.accountId,featureId:accountFeature.featureId},function(result){
           accountFeature.feature = getFeatureById(accountFeature.featureId);
           setActiveCount();
         },function(error){
@@ -95,7 +95,10 @@ angular.module('accountSettings.controllers')
           var now = new Date();
           console.log(d,now);
           console.log(Math.floor((now - d)/ (1000 * 60 * 60 * 24)))
-          $scope.diffInDays = 14 + Math.floor((now - d)/ (1000 * 60 * 60 * 24));
+          if (d >now )
+              $scope.diffInDays = 0;
+          else
+            $scope.diffInDays = 14 - Math.floor((now - d)/ (1000 * 60 * 60 * 24));
         }
         else 
           $scope.diffInDays =0;

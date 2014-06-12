@@ -1,7 +1,7 @@
 angular.module('accountSettings.resources').
   factory('Invoice', function($resource) {
     
-    var Invoice = $resource('/api/accountPayment/:accountId',{accountId:"@accountId"},{
+    var Invoice = $resource('/api/invoices/:invoiceId',{invoiceId:"@invoiceId"},{
     		put:{
     			method:"PUT"
     		}
