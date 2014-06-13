@@ -23,8 +23,7 @@ angular.module('accountSettings.controllers')
     });
 
     var saveStripeCard = function(){          
-    console.log($scope.card);      
-      
+    console.log($scope.card);            
       Stripe.card.createToken({
         name: $scope.card.name,
         number :$scope.card.number,
@@ -48,7 +47,7 @@ angular.module('accountSettings.controllers')
     function getStripeKey(){
         $http({ method: 'GET', url:  '/api/config/app'}).
         success(function(data) {                        
-            Stripe.setPublishableKey(data.stripeKey);   
+            Stripe.setPublishableKey(data.stripeKey);               
         });        
     }
     
@@ -66,12 +65,8 @@ angular.module('accountSettings.controllers')
 
          $scope.card.token = response.id;
          $scope.card.number = response.card.last4;
-         $scope.card.type = response.card.type;
-        
-        if ($scope.card.id)
-          $scope.card.$put({accountId:ACCOUNT_ID},success,error);
-        else
-           $scope.card.$save({accountId:ACCOUNT_ID},success,error);         
+         $scope.card.type = response.card.type;                
+         $scope.card.$save({accountId:ACCOUNT_ID},success,error);         
 
     };
 
