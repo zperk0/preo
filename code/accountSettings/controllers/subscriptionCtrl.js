@@ -45,7 +45,7 @@ angular.module('accountSettings.controllers')
       var sum = 0;
       angular.forEach($scope.accountFeatures,function(feature){
         if (feature.status == "INSTALLED")
-          sum += feature.price;
+          sum += feature.upfrontPrice;
       });
     	return sum;
     }

@@ -27,7 +27,7 @@
             <div class='premiumFeatureBottom'>
                 <h4 class='helveticaneueWMedi'><span ng-show='feature.showAppTitle' > My order app </span>{{feature.name}}</h4>
                 <p>{{feature.description}}</p>
-                <span class='price helveticaneueWMedi' >£{{feature.price}}/month</span class='price'>                
+                <span class='price helveticaneueWMedi' >£{{feature.upfrontPrice}}/month</span class='price'>                
                 <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">BUY</button>
                 <button ng-show="isFeatureOwned(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">VIEW</button>
             </div>
@@ -44,7 +44,7 @@
         <h4>{{selectedFeature.feature.name}}</h4>
       </div>
       <div class='rightWrapper '>
-          <span class='price helveticaneueWMedi' >£{{selectedFeature.feature.price}}/month</span class='price'>
+          <span class='price helveticaneueWMedi' >£{{selectedFeature.feature.upfrontPrice}}/month</span class='price'>
           <button ng-show="!isFeatureOwned(selectedFeature.feature)" class='preodayButton' ng-click="clickBuy(selectedFeature.feature)" data-reveal-id="myModal">BUY</button>
           <button ng-show="isFeatureOwned(selectedFeature.feature)" class='preodayButton secondary noclick'>OWNED</button>
       </div>
