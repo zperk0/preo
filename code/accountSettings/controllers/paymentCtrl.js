@@ -10,10 +10,11 @@ angular.module('accountSettings.controllers')
       console.log($scope.card);
   	},function(error){         
       if (error.data && error.data.status === 404){
-  		$scope.isEditing = true;
-  		$scope.card = new AccountCard();      
+        console.log('ho');
+    		$scope.isEditing = true;
+    		$scope.card = new AccountCard();      
+        $scope.finishLoading();  
       } else{
-	  	//error.
 	    	noty({
 		      type: 'error',  layout: 'topCenter',
 		      text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'
