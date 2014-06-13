@@ -70,7 +70,7 @@
 			$roleData = array();
 			$roleData['role'] = $role;
 			$roleData['accountId'] = $accountId;
-			$jsonData = json_encode($roleData);
+			$jsonRoleData = json_encode($roleData);
 			
 			$curlResult = callAPI('PUT', $apiURL."users/$userID/role?accountId=$accountId&role=$role", $jsonRoleData, $userApiAuth); //user role updated
 		}
