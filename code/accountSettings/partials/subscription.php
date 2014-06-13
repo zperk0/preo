@@ -23,7 +23,7 @@
 					<p> Card ending {{card.number}}</p>
 				</div>
 			</div>
-			<div class='calendar'>
+			<div class='calendar' ng-show='account.billingDate !== null'>
 				<div class='month'>{{ account.billingDate | date:"MMM" }}</div>
 				<div class='day'>{{ account.billingDate | date:"d" }}</div>
 			</div>

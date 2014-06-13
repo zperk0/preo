@@ -22,8 +22,7 @@ angular.module('accountSettings.controllers')
         }                       
     });
 
-    var saveStripeCard = function(){      
-    Stripe.setPublishableKey("pk_test_jdzjWNP5LC2d7wmDceXveDlB");   
+    var saveStripeCard = function(){          
     console.log($scope.card);      
       
       Stripe.card.createToken({
@@ -52,7 +51,7 @@ angular.module('accountSettings.controllers')
             Stripe.setPublishableKey(data.stripeKey);   
         });        
     }
-    getStripeKey();
+    
 
      var stripeResponseHandler = function(status, response) {
        
@@ -112,5 +111,5 @@ angular.module('accountSettings.controllers')
     }    
   }
 
-
+  getStripeKey();
 }]);	
