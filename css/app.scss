@@ -2548,6 +2548,7 @@ span .currencySymbol {
   }
   
   .menu{
+      font-family:"Co Text W01 Light";
       width:25%;
       margin-right:0;
       margin-left:5%;
@@ -2566,12 +2567,14 @@ span .currencySymbol {
 
     &.selected{
       a {
+
         color:$mainDark;
       }
     }
 
     a{
       color:#48535d;
+      font-family:"Co Text W01 Light";
 
       &:hover{
         cursor:pointer;
@@ -2640,7 +2643,7 @@ span .currencySymbol {
 
   .historyWrapper{
     th{
-      padding:0;
+      padding:0 0 10px 0;
       width:auto;
       text-align:left;      
     }
@@ -2667,10 +2670,10 @@ span .currencySymbol {
     margin-top:30px;
 
     .inlineWrapper{
-        width: 50px;
+        width: 12%;
         float: left;
         &+.inlineWrapper{
-         margin-left: 10px;
+         margin-left: 1%;
         }
       }
 
@@ -2859,8 +2862,17 @@ button.preodayButton.noclick{
 }
 
  
+ .capitalise{
+  text-transform:lowercase;  
+    &:first-letter { 
+      text-transform: uppercase; 
+    }
+ }
  .half{
   width:50% !important;
+ } 
+ .quarter{
+  width:25% !important;
  } 
 
 #confirmationDialog{
@@ -2916,3 +2928,25 @@ button.preodayButton.noclick{
 .helveticaneueWMedi{
   font-family: HelveticaNeueW01-65Medi !important;
 }
+
+.reveal-modal{
+  opacity:0 !important;
+  -webkit-transform: translateY(20%);
+  -moz-transform: translateY(20%);
+  -ms-transform: translateY(20%);
+  transform: translateY(20%);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  &.active{    
+    opacity:1 !important;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);    
+  }
+}
+
+
+
+

@@ -16,7 +16,7 @@
 					<tr ng-repeat="invoice in invoices" >						
 						<td> {{invoice.id}} </td>
 						<td> {{invoice.issueDate | date:"MMM dd, yyyy" }} </td>				
-						<td> {{invoice.status}} </td>				
+						<td class='capitalise'> {{invoice.status}} </td>				
 						<td> &pound;{{invoice.accountPayment.ammount}}  </td>				
 						<td >
 								<button ng-click='downloadPdf(invoice)' type='button' class='preodayButton'> <? echo _("DOWNLOAD PDF")?> </button>								

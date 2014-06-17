@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <div id="featureModal" class="reveal-modal medium" data-reveal>
+  <div id="featureModal" class="reveal-modal medium animatable slide-in-bottom" data-reveal>
     <div class='header'>
       <div class='leftWrapper'>
         <img ng-src='{{selectedFeature.feature.icon}}'/>

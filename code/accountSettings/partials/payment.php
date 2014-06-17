@@ -11,7 +11,7 @@
 	<div class='rowWrapper' ng-show='isEditing'>
 		<label><? echo _("CCV")?></label>
 		<div class='inputWrapper'>
-		<input type='text' ng-model='card.ccv' placeholder='<?echo _("Card Security Code")?>'/>
+		<input class='quarter' type='text' ng-model='card.ccv' placeholder='<?echo _("CCV")?>'/>
 		</div>		
 	</div>
 	<div class='rowWrapper'>
