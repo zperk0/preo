@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kyc.directives').
-  directive('chart','ChartType', [function(ChartType) {
+  directive('chart',['ChartType',function(ChartType) {
 
   	return {
   		templateUrl: '/code/kyc/js/directives/chart/chart.htm',
