@@ -2,12 +2,12 @@ var features = [
 	{
 		description: <?echo json_encode(_("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec eros et justo consectetur sodales. Sed dictum turpis sit amet sapien varius lobortis. Proin mi nibh, euismod eget justo quis, vestibulum molestie turpis. Integer sollicitudin tortor e")) ?>,
 		id: 1,
-		name: <? echo json_encode(_("Assisant"))?>,
+		name: <? echo json_encode(_("Assistant"))?>,
 		upfrontPrice: 10,
 		subscriptionPrice:5,
-		showAppTitle:true,
+		showAppTitle:false,
 		descriptionFeatures :[<?echo json_encode(_("Feature 1"))?>,<?echo json_encode(_("Feature 2"))?>,<?echo json_encode(_("Feature 3"))?>,<?echo json_encode(_("Feature 4"))?>,<?echo json_encode(_("Feature 5"))?>],
-		promoImg: "/img/dashboard.png",
+		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
 		icon:'/img/asisstant-icon.png'
 	},
 	{
@@ -16,9 +16,9 @@ var features = [
 		name: <? echo json_encode(_("Loyalty"))?>,
 		upfrontPrice: 20,
 		subscriptionPrice:6,
-		showAppTitle:true,
+		showAppTitle:false,
 		descriptionFeatures :[<?echo json_encode(_("Feature 1"))?>,<?echo json_encode(_("Feature 2"))?>,<?echo json_encode(_("Feature 3"))?>,<?echo json_encode(_("Feature 4"))?>],
-		promoImg: "/img/dashboard.png",
+		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
 		icon:'/img/loyalty-icon.png'
 	},
 	{
@@ -27,9 +27,9 @@ var features = [
 		name: <? echo json_encode(_("Independant"))?>,
 		upfrontPrice: 30,
 		subscriptionPrice:7,
-		showAppTitle:true,
+		showAppTitle:false,
 		descriptionFeatures :[<?echo json_encode(_("Feature 1"))?>,<?echo json_encode(_("Feature 2"))?>,<?echo json_encode(_("Feature 3"))?>],
-		promoImg: "/img/dashboard.png",
+		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
 		icon:'/img/independent-icon.png'
 	},
 	{
@@ -40,7 +40,7 @@ var features = [
 		subscriptionPrice:8,
 		showAppTitle:false,
 		descriptionFeatures :[<?echo json_encode(_("Feature 1"))?>,<?echo json_encode(_("Feature 2"))?>],
-		promoImg: "/img/dashboard.png",
+		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
 		icon:'/img/KYC-icon.png'
 	}	
 ];

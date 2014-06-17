@@ -99,9 +99,16 @@
 										  $accountId = $_SESSION['account_id'];	  
 											$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
 											$accountFeatures = json_decode($result);											
-											foreach($accountFeatures as $feat) { ?>
-												<p data-feature='<? echo $feat->featureId ;?>' class='featureHolder'><img class='featureIcon'/><a href="<?echo $_SESSION['path']?>/accountSettings#/subscription"  class='featureName'></a></li>												
-									<?}?>												
+											if(is_array($accountFeatures) && count($accountFeatures) > 1)
+												foreach($accountFeatures as $feat) { ?>
+													<p data-feature='<? echo $feat->featureId ;?>' class='featureHolder'><img class='featureIcon'/><a href="<?echo $_SESSION['path']?>/accountSettings#/subscription"  class='featureName'></a></li>												
+											<?} else{?>											
+												<p><? echo ("You don't currently have any active Premium Features on your account.")?></p><br/>
+												<p><? echo ("Why not check out our")?><a href="<?echo $_SESSION['path']?>/shop"> <?echo _("Available Premium Features");?></a>
+													<? echo ("and discover how they can start adding further value to your business, today?");?>
+											 </p>
+											<?}?>				
+
 								<p><button class='shopButton'> <a href="<?echo $_SESSION['path']?>/shop"> <?echo _("Store");?> </a> </button></p>
 							</div>
 						</section>

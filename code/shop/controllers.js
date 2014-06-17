@@ -2,46 +2,51 @@
 var appCtrls = angular.module('shop.controllers',[]);
   
 appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,ACCOUNT_ID) {    
+    $scope.currentScreenshot = 0;
+
     $scope.PremiumFeatures = FEATURES;
     $scope.accountFeatures = [];
-    $scope.finishedLoading = false;
+    $scope.finishedLoading = false;      
     getAccountFeatures();
-
+    
     function getAccountFeatures(){
       Resources.AccountFeatures.query({accountId:ACCOUNT_ID},function(result){    
         $scope.accountFeatures = result;
-        $scope.finishedLoading = true;
+        $scope.finishedLoading = true;         
+
       });
     }
-    
+
+    $scope.getScreenshot = function(){
+        if ($scope.selectedFeature){
+          return $scope.selectedFeature.feature.promoImgs[$scope.currentScreenshot];
+        }
+        else 
+          return "";
+    };
+
+    $scope.showNextScreenshot = function(){         
+      if ($scope.selectedFeature && $scope.selectedFeature.feature.promoImgs.length-1 > $scope.currentScreenshot){
+        $scope.currentScreenshot++;      
+      } else {
+        console.log("else", $scope.selectedFeature);
+      }
+    }
+    $scope.showPreviousScreenshot = function(){
+      if ($scope.currentScreenshot > 0){
+        $scope.currentScreenshot--;             
+      }
+    }
+
+    //TODO fix the chevrons logic to slide on the images
     $scope.setSelectedFeature = function(index){      
+        $scope.currentScreenshot = 0;
         $scope.selectedFeature = {
             index:index,
             feature:$scope.PremiumFeatures[index]
         };
     }
 
-    $scope.selectNextFeature = function(){
-      var index = $scope.selectedFeature.index;
-        if (index < $scope.PremiumFeatures.length-1){
-          index++;
-          $scope.selectedFeature = {
-              index:index,
-              feature:$scope.PremiumFeatures[index]
-         };
-      }
-    }
-
-    $scope.selectPreviousFeature = function(){
-        var index = $scope.selectedFeature.index;
-        if (index > 0){
-          index--;
-          $scope.selectedFeature = {
-              index:index,
-              feature:$scope.PremiumFeatures[index]
-         };
-      }
-    }    
 
     $scope.clickBuy = function(feature){
 
@@ -111,7 +116,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
         window.location.assign(place);
     }
     
-    $scope.dismissDialog = function(dialog){        
+    $scope.dismissDialog = function(dialog){
         $('#featureDialog').foundation('reveal', 'close');
         $('#'+dialog).foundation('reveal', 'close');
         //FIXME not sure why this is not working as it should.

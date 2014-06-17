@@ -15,13 +15,18 @@
   </div>  
   <div ng-show="finishedLoading">  
   
-    <div class='shopHeader'></div>
+    <div class='shopHeader'>
+      <div class='row'>
+        <h1><small>my order app </small><br/>Premium Features</h1>
+        <p><?echo _("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec eros et justo consectetur sodales. Sed dictum turpis sit amet sapien varius lobortis. Proin mi nibh, euismod eget justo quis, vestibulum molestie turpis. Integer sollicitudin tortor e") ?>,</p>
+        </div>
+    </div>
     <div class='row'>
     <div class='shopContent'>
 
-        <div class='premiumFeatureWrapper small-4 large-4 columns' ng-repeat="feature in PremiumFeatures" >      
+        <div class='premiumFeatureWrapper small-6 large-4 columns' ng-repeat="feature in PremiumFeatures" >      
             <div class='premiumFeatureTop'>
-                <h4  ><small ng-show='feature.showAppTitle' > my order app <br/></small>{{feature.name}}</h4>
+                <div class='titleWrapper'><h4>{{feature.name}}</h4></div>
                 <img ng-src='{{feature.icon}}'/>
             </div>
             <div class='premiumFeatureBottom'>
@@ -51,9 +56,9 @@
       <div class='clearfix'></div>
     </div>
     <div class='content'>
-        <span class='chevron chevronRight' ng-click="selectNextFeature()">&gt;</span>
-        <span class='chevron chevronLeft' ng-click="selectPreviousFeature()">&lt;</span>
-        <img ng-src='{{selectedFeature.feature.promoImg}}'/>
+        <img ng-show="currentScreenshot<selectedFeature.feature.promoImgs.length-1"  class='chevron chevronRight' ng-click="showNextScreenshot()" src='/img/chevron-right.png'/>
+        <img ng-show="currentScreenshot>0"  class='chevron chevronLeft' ng-click="showPreviousScreenshot()" src='/img/chevron-left.png'/>
+        <img ng-src='{{getScreenshot()}}' class='screenshot'/>
         <h6><?echo _("Features")?></h6>
         <ul>
           <li ng-repeat='descriptionFeature in selectedFeature.feature.descriptionFeatures'> {{descriptionFeature}}</li>
