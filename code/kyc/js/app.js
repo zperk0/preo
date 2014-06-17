@@ -1,13 +1,17 @@
 'use strict';
 angular.module('features',[]);
+angular.module('kyc.controllers', [])
+angular.module('kyc.resources', [])
 
 // Declare app level module which depends on filters, and services
 angular.module('kyc', [
   'ngRoute',
+  'ngResource',
   'kyc.filters',
   'kyc.services',
   'kyc.directives',
-  'kyc.controllers'
+  'kyc.controllers',
+  'kyc.resources'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {templateUrl: '/code/kyc/partials/dashboard.html', controller: 'DashboardCtrl'});

@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="/code/kyc/js/directives/gridster/gridster.css">  
   <link rel="stylesheet" href="/code/kyc/css/app.css"/>  
 
-<div ng-app="kyc">  
+<div ng-app="kyc" ng-controller='MenuCtrl'>  
   
-  <header >
+  <header>
     <div class="container-fluid faixa-orange">
       <div class="container">
         <h4 class="title-white"><span class="glyphicon glyphicon-star"></span> Know your customers</h4>
@@ -37,6 +37,24 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+    <div class="container-fluid" id="container-search">
+    <div class="container">
+      <form class="navbar-form navbar-left" role="search" ng-submit="fetchData()">
+        <div class="form-group">
+          <select name="outlets" id="outlets" multiple>
+            <option ng-repeat="outlet in outlets" value="outlet.id">{{outlet.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="01/01/2014">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="01/01/2014">
+        </div>
+        <button type="submit" class="btn btn-default">Update</button>
+      </form>   
+    </div>
+  </div>
   </header>
 
 
@@ -54,6 +72,8 @@
   <script src="/code/kyc/js/controllers/reports.js"></script>
   <script src="/code/kyc/js/controllers/stock.js"></script>
   <script src="/code/kyc/js/controllers/stream.js"></script>
+  <script src="/code/kyc/js/controllers/menu.js"></script>
+  <script src="/code/kyc/js/resources/outlet.js"></script>
   <script src="/code/kyc/js/filters.js"></script>
   <script src="/code/kyc/js/directives/directives.js"></script>
   <script src="/code/kyc/js/directives/chart/chart.js"></script>
@@ -61,10 +81,9 @@
   <script src="/code/kyc/js/directives/highcharts/highcharts.js"></script>
 
   <script type="text/javascript">
-
-  function template_url( url ) {
-    return '/code/kyc/js/directives/' + url;
-  }
+  
+  //always on session after login
+  angular.module('kyc').constant('ACCOUNT_ID',<? echo $_SESSION['account_id']?>);
 
   </script>
 

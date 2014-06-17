@@ -4,7 +4,7 @@ angular.module('kyc.directives').
   directive('chart', [function() {
 
   	return {
-  		templateUrl: template_url('chart/chart.htm'),
+  		templateUrl: '/code/kyc/js/directives/chart/chart.htm',
   		restrict: 'E',
   		replace: true,
   		scope: {
