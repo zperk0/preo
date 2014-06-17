@@ -13,16 +13,16 @@
 		<table class="table table-striped">
 		  <thead>
 		  	<tr>
-		  		<th>[]</th>
+		  		<th></th>
 		  		<th>Item</th>
 		  		<th>Quantity Ordered</th>
 		  	</tr>
 		  </thead>
 		  <tbody>
-		  	<tr ng-repeat="stock in stocks">
-		  		<td><input type="checkbox" name="" id=""></td>
-		  		<td>{{ stock.name }}</td>
-		  		<td>{{ stock.quantity }}</td>
+		  	<tr ng-repeat="item in stock">
+		  		<td><input type="checkbox"></td>
+		  		<td>{{ item.name }}</td>
+		  		<td>{{ item.quantity }}</td>
 		  	</tr>
 		  </tbody>
 		</table>		

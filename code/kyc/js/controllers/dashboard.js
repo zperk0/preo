@@ -2,35 +2,28 @@
 
 /* Controllers */
 angular.module('kyc.controllers')
-.controller('DashboardCtrl', ['$scope','$http', '$compile', function($scope,$http, $compile) {
-  		var allData = [];  		
-  		
-  		var chartsType = {
-  			NUMBER: 0,
-  			BAR: 1,
-  			PIE: 2,
-  			AREA: 3
-  		};
+.controller('DashboardCtrl', ['$scope','$http', '$compile','ChartType', function($scope,$http, $compile,ChartType) {
+  		var allData = [];  		  	  	
 
   		var charts = {
 		    payingCustomers :{
 			    data: 345,
-			    type: chartsType.NUMBER
+			    type: ChartType.NUMBER
 		    },
 		    ordersPerCustomer :{
 			    data: 3.4,
-			    type: chartsType.NUMBER
+			    type: ChartType.NUMBER
 		    },
 		    averageOrderValue :{
 			    data: '£4.81',
-			    type: chartsType.NUMBER
+			    type: ChartType.NUMBER
 		    },
 		    itemsOrdered :{
 			    data: '2,264',
-			    type: chartsType.NUMBER
+			    type: ChartType.NUMBER
 		    },
 		    revenue:{
-		        type: chartsType.AREA,
+		        type: ChartType.AREA,
 		        data: [369, 640,                    
                     27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342, 26662,
                     26956, 27912, 28999, 28965, 27826, 25579, 25722, 24826, 24605,
@@ -40,21 +33,21 @@ angular.module('kyc.controllers')
 
 		    },
 		    numbersOfOrder: {
-		    	type: chartsType.AREA,
+		    	type: ChartType.AREA,
 		    	data: [ 	6 , 11, 32, 110, 235, 369, 640,
                     1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,                  
                     22380, 21004, 17287, 14747, 13076, 12555, 12144, 11009, 10950,
                     10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104 ]
 		    },
 		    menuItemsPopularity: {
-		    	type: chartsType.AREA,
+		    	type: ChartType.AREA,
 		    	data: [		1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,
                     27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342, 26662,
                     26956, 27912, 28999, 28965, 27826, 25579, 25722, 24826, 24605,
                     10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104 ]
 		    },
 		    ordersByOutlet: {
-		    	type: chartsType.PIE,
+		    	type: ChartType.PIE,
 		    	data: [
                 	{name: "Upper Level Jimmy Mac", y: 6, color: '#17A3DD'},
                 	{name: "Upper Level James Hargreaves", y: 4, color: '#1476B7'},
@@ -64,7 +57,7 @@ angular.module('kyc.controllers')
 		    	]
 		    },
 		    mostPopularItems: {
-		    	type: chartsType.PIE,
+		    	type: ChartType.PIE,
 		    	data: [
                 	{name: "Upper Level Jimmy Mac", y: 6, color: '#17A3DD'},
                 	{name: "Upper Level James Hargreaves", y: 4, color: '#1476B7'},
@@ -74,7 +67,7 @@ angular.module('kyc.controllers')
 		    	]
 		    },
 		    timeOfOrdersPlaced: {
-		    	type: chartsType.PIE,
+		    	type: ChartType.PIE,
 		    	data: [
                 	{name: "Upper Level Jimmy Mac", y: 6, color: '#17A3DD'},
                 	{name: "Upper Level James Hargreaves", y: 4, color: '#1476B7'},
@@ -84,7 +77,7 @@ angular.module('kyc.controllers')
 		    	]
 		    },
 		    customersPie: {
-		    	type: chartsType.PIE,
+		    	type: ChartType.PIE,
 		    	data: [
               	{name: "Upper Level Jimmy Mac", y: 6, color: '#17A3DD'},
               	{name: "Upper Level James Hargreaves", y: 4, color: '#1476B7'},
@@ -94,11 +87,10 @@ angular.module('kyc.controllers')
 		    	]
 		    },
 		    customersBar: {
-		    	type: chartsType.BAR,
+		    	type: ChartType.BAR,
 				data: [
 					{name: 'New', y: 20, color: '#1D9BD6'}, 
-					{name: 'Returning', y: 80, color: '#494F97'}
-				]
+					{name: 'Returning', y: 80, color: '#494F97'}]
 		    }
 		};
   		

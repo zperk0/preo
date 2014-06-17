@@ -74,7 +74,9 @@
   <script src="/code/kyc/js/controllers/stream.js"></script>
   <script src="/code/kyc/js/controllers/menu.js"></script>
   <script src="/code/kyc/js/resources/outlet.js"></script>
+  <script src="/code/kyc/js/resources/orders.js"></script>
   <script src="/code/kyc/js/filters.js"></script>
+  <script src="/code/kyc/js/constants/chartType.js"></script>
   <script src="/code/kyc/js/directives/directives.js"></script>
   <script src="/code/kyc/js/directives/chart/chart.js"></script>
   <script src="/code/kyc/js/directives/gridster/gridster.js"></script>

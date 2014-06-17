@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kyc.directives').
-  directive('chart', [function() {
+  directive('chart','ChartType', [function(ChartType) {
 
   	return {
   		templateUrl: '/code/kyc/js/directives/chart/chart.htm',
@@ -11,13 +11,7 @@ angular.module('kyc.directives').
   			chart: '=element'
   		},
   		link: function( ng, elem, attrs ) {
-        var TYPE = {
-            NUMBER: 0,
-            BAR: 1,
-            PIE: 2,
-            AREA: 3
-        };
-        console.log("hooo",ng,elem,attrs);
+
   			var $actionsChart = elem.find('.actions-chart');
   			var $chart = elem.find('.chart');
   			var heightParent = elem.parent().height();
@@ -48,7 +42,7 @@ angular.module('kyc.directives').
 
         function getChartObject(type){
           switch (type){
-            case TYPE.AREA:
+            case ChartType.AREA:
               return {
                 options:{
                     chart: {

@@ -3,7 +3,6 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope', functio
 
 	function prepareScopeCustomers(){
 		$scope.customers = {};
-
 		
 		angular.forEach($scope.allData,function(row){
 					var customerId  = row.userId;
@@ -18,7 +17,6 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope', functio
 							$scope.customers[customerId].totalSpent+=row.total;
 					};																			
 		});
-		console.log($scope.customers);
 	}
 	
 	prepareScopeCustomers();
