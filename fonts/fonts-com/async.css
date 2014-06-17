@@ -1,4 +1,9 @@
 @font-face{
+font-family:"Co Text W01 Regular";
+src:url("74920efd-7aea-4d67-b6cf-bd14c90b20de.eot?#iefix");
+src:url("74920efd-7aea-4d67-b6cf-bd14c90b20de.eot?#iefix") format("eot"),url("9e96407c-9b36-4e66-ad3d-543e1c44f90b.woff") format("woff"),url("93dec4c6-d9d0-48d1-92b8-e7ca677b756f.ttf") format("truetype"),url("1adb851a-b7df-4ebd-8dba-599f78a37a58.svg#1adb851a-b7df-4ebd-8dba-599f78a37a58") format("svg");
+}
+@font-face{
 font-family:"HelveticaNeueW01-65Medi";
 src:url("07fe0fec-b63f-4963-8ee1-535528b67fdb.eot?#iefix");
 src:url("07fe0fec-b63f-4963-8ee1-535528b67fdb.eot?#iefix") format("eot"),url("60be5c39-863e-40cb-9434-6ebafb62ab2b.woff") format("woff"),url("4c6503c9-859b-4d3b-a1d5-2d42e1222415.ttf") format("truetype"),url("36c182c6-ef98-4021-9b0d-d63122c2bbf5.svg#36c182c6-ef98-4021-9b0d-d63122c2bbf5") format("svg");
