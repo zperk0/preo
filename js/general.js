@@ -129,7 +129,7 @@ $(document).ready(function() {
 					else
 					{	
 						$.post("/saveSignUp", 
-						'bName='+dataArray['name']+'&bID='+dataArray['id']+'&email='+dataArray['owner']['email']+'&fName='+dataArray['owner']['firstName']+'&lName='+dataArray['owner']['lastName']+'&id='+dataArray['owner']['id'],
+						'bName='+dataArray['name']+'&bID='+dataArray['id']+'&email='+encodeURIComponent(dataArray['owner']['email'])+'&fName='+dataArray['owner']['firstName']+'&lName='+dataArray['owner']['lastName']+'&id='+dataArray['owner']['id'],
 						function(response){
 							window.location.replace("/dashboard");
 						})
@@ -181,7 +181,7 @@ $(document).ready(function() {
 					else
 					{	
 						$.post("/saveSignIn", 
-						'email='+dataArray['email']+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'], 
+						'email='+encodeURIComponent(dataArray['email'])+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'], 
 						function(response){
 							window.location.replace("/dashboard");
 						})
