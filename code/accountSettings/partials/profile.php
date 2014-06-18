@@ -23,8 +23,8 @@
 			<label><?echo _("Email Address")?></label>
 			<div class='inputWrapper'>
 			<span ng-click="toggleEditUserDetails()" ng-show='!isEditing'>{{ user.email }}</span>
-			<input type='text' name='email'   ng-show='isEditing' ng-model='user.email' required/>
-			<small  ng-show="profileForm.email.$invalid && triedSubmit" class="error"><?echo _("Please type your email");?></small>
+			<input type='email' name='email'   ng-show='isEditing' ng-model='user.email' required/>
+			<small  ng-show="profileForm.email.$invalid && triedSubmit" class="error"><?echo _("Please type a valid email address");?></small>
 			</div>
 			
 		</div>
