@@ -4152,11 +4152,10 @@ $(document).ready(function() {
       var that = this;
       setTimeout(function(){
         $(that).addClass('active');  
-      },1);    
+      },1)    
     }).on('closed',function(){
         console.log("closed!",this);
         $(this).removeClass("active");
-
     });
 
 });

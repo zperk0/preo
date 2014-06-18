@@ -2552,7 +2552,7 @@ span .currencySymbol {
       width:25%;
       margin-right:0;
       margin-left:5%;
-      float:left;      
+      float:right;      
   }
 
   ul {
@@ -2605,20 +2605,21 @@ span .currencySymbol {
          
         &:first-child{
           width:40px;        
+          &+td{
+            width:40%;
+          }
         }
 
         &:last-child{
           text-align:right;
-          min-width:100px;
-              span{
+          width:200px;
+          span{
             color:$mainDark;        
-
             &:hover{
               cursor:pointer;          
             }
           }
         }
-
         img{
           width:20px;
           margin-left:10px;
@@ -2827,6 +2828,11 @@ span .currencySymbol {
   .billingAddress{
     line-height:1.1em;
     margin-bottom:30px;
+  }
+  .error {
+    input{
+      margin-bottom:1em;
+    }
   }
 }
 

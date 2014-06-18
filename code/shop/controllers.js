@@ -120,7 +120,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
         $('#featureDialog').foundation('reveal', 'close');
         $('#'+dialog).foundation('reveal', 'close');
         //FIXME not sure why this is not working as it should.
-        //$(".reveal-modal-bg").css({"display":"none"});
+        $(".reveal-modal-bg").css({"display":"none"});
     }
 
     $scope.isFeatureOwned = function(feature){      

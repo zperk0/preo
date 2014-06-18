@@ -2,7 +2,7 @@ angular.module('accountSettings.controllers')
  .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','PendingInvoice','Account','StripeCharge',
   function ($scope,$q,$http,ACCOUNT_ID,AccountCard,PendingInvoice,Account,StripeCharge) {
     $scope.setSelected($scope.Views.paymentMethod);
-  	$scope.isEditing = false;
+  	$scope.isEditing = true;
     $scope.errorMessage = "";    
   	AccountCard.get({accountId:ACCOUNT_ID},function(result){
   		$scope.card = result;    
@@ -23,14 +23,14 @@ angular.module('accountSettings.controllers')
     });
 
     var saveStripeCard = function(){          
-    console.log($scope.card);            
-      Stripe.card.createToken({
-        name: $scope.card.name,
-        number :$scope.card.number,
-        cvc : $scope.card.ccv,
-        exp_month : $scope.card.expmonth,
-        exp_year : $scope.card.expyear
-      }, stripeResponseHandler);
+      console.log($scope.card);            
+        Stripe.card.createToken({
+          name: $scope.card.name,
+          number :$scope.card.number,
+          cvc : $scope.card.ccv,
+          exp_month : $scope.card.expmonth,
+          exp_year : $scope.card.expyear
+        }, stripeResponseHandler);
     }
     
 
@@ -39,7 +39,14 @@ angular.module('accountSettings.controllers')
 		  $scope.isEditing = true;
   	};
 
-  	$scope.saveChanges = function(){  		
+  	$scope.saveChanges = function(){  		    
+      $scope.triedSubmit = true;  
+      $scope.isPosting = true;
+      if (!$scope.paymentForm.$valid) {            
+          $scope.isPosting =false;
+          $scope.errorMessage = _tr("Please fill in all the required fields.");
+          return false;
+      };
       saveStripeCard();  		
   	};
 
@@ -57,8 +64,9 @@ angular.module('accountSettings.controllers')
        if (response.error) {
          // Show the errors on the form
          $scope.errorMessage = response.error.message;
-         console.log("error",status,response,$scope.errorMessage)
+         $scope.isPosting = false;
          $scope.$apply();         
+         
        } else {        
          // token contains id, last4, and card type
          console.log("success",status,response)
@@ -73,6 +81,7 @@ angular.module('accountSettings.controllers')
     function success(){
       $scope.errorMessage = "";
       $scope.isEditing = false;
+      $scope.isPosting = false;
       console.log("success!!");
       PendingInvoice.get({accountId:ACCOUNT_ID},function (invoice){        
       console.log('got invoice',invoice);  
@@ -99,10 +108,12 @@ angular.module('accountSettings.controllers')
               });
           }
       });
+    
     }
 
-    function error(error){      
+    function error(error){            
       $scope.errorMessage = error.data.message;      
+      console.log("hooo here",$scope.isPosting)
     }    
   }
 

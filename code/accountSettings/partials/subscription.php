@@ -68,7 +68,7 @@
 						<td> {{accountFeature.feature.name}} </td>
 						<td> &pound;{{accountFeature.feature.upfrontPrice}}/month </td>				
 						<td >
-								<span ng-click='reinstallAccountFeature(accountFeature)' class='positiveButton'> <? echo _("Reinstall")?> </span>
+								<span ng-click='reinstallAccountFeature(accountFeature)' class='positiveButton'> <? echo _("Reinstall")?> </span>&nbsp;
 								<span ng-click='removeAccountFeature(accountFeature)' class='negativeButton'> <? echo _("Remove")?> </span>
 						</td>
 					</tr>

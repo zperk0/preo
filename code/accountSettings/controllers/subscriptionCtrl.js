@@ -1,6 +1,17 @@
 angular.module('accountSettings.controllers')
  .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature','StripeCharge','Invoice',
   function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature,StripeCharge,Invoice) {
+    //FIXME find a way to not have to do this.
+     $("#confirmationDialog,#reinstallDialog,#errorDialog,#successDialog").on('opened', function() {
+      var that = this;
+      setTimeout(function(){
+        $(that).addClass('active');  
+      },1)    
+    }).on('closed',function(){
+        console.log("closed!",this);
+        $(this).removeClass("active");
+    });
+
     var allFeatures = FEATURES;
     $scope.setSelected($scope.Views.subscription);
     $scope.diffInDays = 0;
