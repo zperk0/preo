@@ -22,8 +22,7 @@ angular.module('kyc.directives').
   			if ( ng.chart.showChart ){
           console.log(ng.chart.value.type,"ng.chart.value.type");
           ng.chart.highcharts = getChartObject(ng.chart.value.type);  			
-          //ng.chart.highcharts.options.chart.height = heightParent - 30;
-
+          
   			}
 
         elem.on('dblclick', function() {
@@ -36,7 +35,6 @@ angular.module('kyc.directives').
               $scope.title = ng.chart.title;
             }
           });
-
         });
 
         ng.showOptions = function() {
@@ -49,6 +47,9 @@ angular.module('kyc.directives').
 
         function getChartObject(type){
           switch (type){
+            case ChartType.BAR:
+            case ChartType.PIE:
+            return {};
             case ChartType.AREA:
               return {
                 options:{
