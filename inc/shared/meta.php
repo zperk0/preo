@@ -23,11 +23,11 @@
 		<!--<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/app.css" /> -->
 		
 		<!-- Main CSS files -combined minified PLUS Bespoke CSS -combined (dependants minified) -->
-		<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/all_css.min.css" />		<!-- CSS 1/1 : to be minified and updated with timestamp -->	
+		<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/all_css.min.css" />		<!-- CSS 1/1 : to be minified and updated with timestamp -->	
 		
 		<!-- Pre-body Javascripts -->
 		<!-- combined minified -->
-		<script src="<?echo $_SESSION['path']?>/js/modernizr_and_jquery1.10.2_min.js"></script>
+		<script src="<? echo $_SESSION['path']?>/js/modernizr_and_jquery1.10.2_min.js"></script>
 		
 		<!-- combined -->
 		<!--<script src="<?echo $_SESSION['path']?>/js/modernizr_and_jquery1.10.2.js"></script>-->

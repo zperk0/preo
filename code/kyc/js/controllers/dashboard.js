@@ -17,21 +17,31 @@ angular.module('kyc.controllers', [])
   			AREA: 3
   		};
 
+  		//obj with all possible filters and it's types
+  		var filters = {
+					payingCustomers: {
+							type:NUMBER
+						},
+					mostPopularItems: {
+							type:PIE
+						}
+  		}
+
   		var charts = {
 		    payingCustomers :{
-			    data: 345,
+			    value: 345,
 			    type: chartsType.NUMBER
 		    },
 		    ordersPerCustomer :{
-			    data: 3.4,
+			    value: 3.4,
 			    type: chartsType.NUMBER
 		    },
 		    averageOrderValue :{
-			    data: '£4.81',
+			    value: '£4.81',
 			    type: chartsType.NUMBER
 		    },
 		    itemsOrdered :{
-			    data: '2,264',
+			    value: '2,264',
 			    type: chartsType.NUMBER
 		    },
 		    revenue:{
@@ -98,11 +108,11 @@ angular.module('kyc.controllers', [])
 		    customersPie: {
 		    	type: chartsType.PIE,
 		    	data: [
-              	{name: "Upper Level Jimmy Mac", y: 6, color: '#17A3DD'},
-              	{name: "Upper Level James Hargreaves", y: 4, color: '#1476B7'},
-              	{name: "Lower Level Jimmy Mac", y: 7, color: '#533A86'}, 
-              	{name: "Upper Level James Hargreaves", y: 3, color: '#F5B13D'}, 
-              	{name: "Bob Lord Stand", y: 2, color: '#8ABE4F'}
+                	{name: "Upper Level Jimmy Mac", y: 6, color: '#17A3DD'},
+                	{name: "Upper Level James Hargreaves", y: 4, color: '#1476B7'},
+                	{name: "Lower Level Jimmy Mac", y: 7, color: '#533A86'}, 
+                	{name: "Upper Level James Hargreaves", y: 3, color: '#F5B13D'}, 
+                	{name: "Bob Lord Stand", y: 2, color: '#8ABE4F'}
 		    	]
 		    },
 		    customersBar: {
@@ -114,14 +124,17 @@ angular.module('kyc.controllers', [])
 		    }
 		};
   		
-		$http.get('/code/kyc/data/data.json').success(function (result){					
+		$http.get('/data/data.json').success(function (result){					
 			 		allData = result;
-			 		for (var chart in charts){
-			 				charts[chart].data = getFilteredData(chart);
+			 		for (var filter in filters){
+			 				filters[filter].data = getFilteredData(filter);
 			 		}
+
+			 		//TODO show a loader while we're processing this data, hide it and display the charts after this point.
+			 		
 		 });
 
-		function getFilteredData(filter){
+			function getFilteredData(filter){
 
 				switch (filter){
 						case "payingCustomers": 							
@@ -178,22 +191,550 @@ angular.module('kyc.controllers', [])
 						default: 
 							return {};
 							break;
-					}
 				}
+
+			}
+
+  		var revenueChart = {
+  			options: {
+	            chart: {
+	                type: 'areaspline',
+			       	margin: [0, 0, 0, 0],
+			        spacingTop: 0,
+			        spacingBottom: 0,
+			        spacingLeft: 0,
+			        spacingRight: 0	  	                
+	            },
+				exporting: {
+				         enabled: false
+				},	            
+	            plotOptions: {
+	                line: {
+	                    marker: {
+	                        enabled: false
+	                    }
+	                },
+	                areaspline: {
+	                    lineWidth: 0,
+	                    fillColor: {
+	                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+	                        stops: [
+	                            [0, '#523E8A'],
+	                            [1, '#1AA1DB']
+	                        ]
+	                    },                    
+
+	                    pointStart: 1940,
+	                    marker: {
+	                        enabled: false,
+	                        symbol: 'circle',
+	                        radius: 2,
+	                        states: {
+	                            hover: {
+	                                enabled: true
+	                            }
+	                        }
+	                    }
+	                }
+	            },
+        	},
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: ''
+            },
+            xAxis: {
+                allowDecimals: false,
+                labels: {
+                    enabled: false,
+                    formatter: function() {
+                        return this.value; // clean, unformatted number for year
+                    }
+                }
+            },
+            yAxis: {
+                gridLineWidth: 0,
+                minorGridLineWidth: 0,                
+                title: {
+                    text: ''
+                },
+                labels: {
+                    enabled: false,
+                    formatter: function() {
+                        return this.value / 1000 +'k';
+                    }
+                }
+            },
+            tooltip: {
+                pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+            },
+            series: [{
+                showInLegend: false, 
+                name: 'USA',
+                data: charts.revenue.data
+            }]
+        };
+
+  		var numbersOfOrder = {
+  			options: {
+	            chart: {
+	                type: 'area'
+	            },
+				exporting: {
+				         enabled: false
+				},	            
+	            plotOptions: {
+	                line: {
+	                    marker: {
+	                        enabled: false
+	                    }
+	                },
+	                area: {
+	                    lineWidth: 0,
+	                    fillColor: {
+	                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+	                        stops: [
+	                            [0, '#523E8A'],
+	                            [1, '#1AA1DB']
+	                        ]
+	                    },                    
+
+	                    pointStart: 1940,
+	                    marker: {
+	                        enabled: false,
+	                        symbol: 'circle',
+	                        radius: 2,
+	                        states: {
+	                            hover: {
+	                                enabled: true
+	                            }
+	                        }
+	                    }
+	                }
+	            },
+        	},
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: ''
+            },
+            xAxis: {
+                allowDecimals: false,
+                labels: {
+                    enabled: false,
+                    formatter: function() {
+                        return this.value; // clean, unformatted number for year
+                    }
+                }
+            },
+            yAxis: {
+                gridLineWidth: 0,
+                minorGridLineWidth: 0,                
+                title: {
+                    text: ''
+                },
+                labels: {
+                    enabled: false,
+                    formatter: function() {
+                        return this.value / 1000 +'k';
+                    }
+                }
+            },
+            tooltip: {
+                pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+            },
+            series: [{
+                showInLegend: false, 
+                name: 'USA',
+                data: charts.numbersOfOrder.data
+            }]
+        };
+
+  		var menuItemsPopularity = {
+  			options: {
+	            chart: {
+	                type: 'area'
+	            },
+				exporting: {
+				         enabled: false
+				},	            
+	            plotOptions: {
+	                line: {
+	                    marker: {
+	                        enabled: false
+	                    }
+	                },
+	                area: {
+	                    lineWidth: 0,
+	                    fillColor: {
+	                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+	                        stops: [
+	                            [0, '#523E8A'],
+	                            [1, '#1AA1DB']
+	                        ]
+	                    },                    
+
+	                    pointStart: 1940,
+	                    marker: {
+	                        enabled: false,
+	                        symbol: 'circle',
+	                        radius: 2,
+	                        states: {
+	                            hover: {
+	                                enabled: true
+	                            }
+	                        }
+	                    }
+	                }
+	            },
+        	},
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: ''
+            },
+            xAxis: {
+                allowDecimals: false,
+                labels: {
+                    enabled: false,
+                    formatter: function() {
+                        return this.value; // clean, unformatted number for year
+                    }
+                }
+            },
+            yAxis: {
+                gridLineWidth: 0,
+                minorGridLineWidth: 0,
+                title: {
+                    text: ''
+                },
+                labels: {
+                    enabled: false,
+                    formatter: function() {
+                        return this.value / 1000 +'k';
+                    }
+                }
+            },
+            tooltip: {
+                pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+            },
+            series: [{
+                showInLegend: false, 
+                name: 'USA',
+                data: charts.menuItemsPopularity.data
+            }]
+        };
+
+        var ordersByOutlet = {
+			options: {
+	            chart: {
+	                type: 'pie',
+			       	margin: [0, 0, 0, 0],
+			        spacingTop: 0,
+			        spacingBottom: 0,
+			        spacingLeft: 0,
+			        spacingRight: 0	                
+	            },
+	            tooltip: {
+	                formatter: function() {
+	                    return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+	                }
+	            },	            
+	            exporting: {
+	                 enabled: false
+	            },
+	            plotOptions: {
+	                pie: {
+	                    shadow: false,
+	                    center: [150, 130],
+	                }
+	            },		   
+	            legend: {
+	                enabled: true,
+	                layout: 'vertical',
+	                align: 'right',
+	                center: [150, 130],
+	                width: 200,
+	                verticalAlign: 'top',
+	                y: 80,
+	                x: -30,
+	                borderWidth: 0,
+	                useHTML: true,
+	                labelFormatter: function() {
+	                    return '<div style="text-align: left; width:130px;float:left; font-weight: 400; font-size: 13px; margin-bottom: 10px">' + this.name + '</div>';
+					}
+	            },	                    
+        	},          
+            title: {
+                text: ''
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                }
+            },
+            series: [{
+                name: 'Browsers',
+                data: charts.ordersByOutlet.data,
+                size: '55%',
+                innerSize: '45%',
+                showInLegend:true,
+                dataLabels: {
+                    enabled: false
+                }
+            }]        	
+        };
+
+        var mostPopularItems = {
+			options: {
+	            chart: {
+	                type: 'pie',
+			       	margin: [0, 0, 0, 0],
+			        spacingTop: 0,
+			        spacingBottom: 0,
+			        spacingLeft: 0,
+			        spacingRight: 0	                
+	            },
+	            tooltip: {
+	                formatter: function() {
+	                    return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+	                }
+	            },	            
+	            exporting: {
+	                 enabled: false
+	            },
+	            plotOptions: {
+	                pie: {
+	                    shadow: false,
+	                    center: [150, 130],
+	                }
+	            },		   
+	            legend: {
+	                enabled: true,
+	                layout: 'vertical',
+	                align: 'right',
+	                center: [150, 130],
+	                width: 200,
+	                verticalAlign: 'top',
+	                y: 80,
+	                x: -30,
+	                borderWidth: 0,
+	                useHTML: true,
+	                labelFormatter: function() {
+	                    return '<div style="text-align: left; width:130px;float:left; font-weight: 400; font-size: 13px; margin-bottom: 10px">' + this.name + '</div>';
+					}
+	            },	                    
+        	},          
+            title: {
+                text: ''
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                }
+            },
+            series: [{
+                name: 'Browsers',
+                data: charts.mostPopularItems.data,
+                size: '55%',
+                innerSize: '45%',
+                showInLegend:true,
+                dataLabels: {
+                    enabled: false
+                }
+            }]        	
+        };
+
+        var timeOfOrdersPlaced = {
+			options: {
+	            chart: {
+	                type: 'pie',
+			       	margin: [0, 0, 0, 0],
+			        spacingTop: 0,
+			        spacingBottom: 0,
+			        spacingLeft: 0,
+			        spacingRight: 0	                
+	            },
+	            tooltip: {
+	                formatter: function() {
+	                    return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+	                }
+	            },	            
+	            exporting: {
+	                 enabled: false
+	            },
+	            plotOptions: {
+	                pie: {
+	                    shadow: false,
+	                    center: [150, 130],
+	                }
+	            },		   
+	            legend: {
+	                enabled: true,
+	                layout: 'vertical',
+	                align: 'right',
+	                center: [150, 130],
+	                width: 200,
+	                verticalAlign: 'top',
+	                y: 120,
+	                x: -30,
+	                borderWidth: 0,
+	                useHTML: true,
+	                labelFormatter: function() {
+	                    return '<div style="text-align: left; width:130px;float:left; font-weight: 400; font-size: 13px; margin-bottom: 10px">' + this.name + '</div>';
+					}
+	            },	                    
+        	},          
+            title: {
+                text: ''
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                }
+            },
+            series: [{
+                name: 'Browsers',
+                data: charts.timeOfOrdersPlaced.data,
+                size: '55%',
+                innerSize: '45%',
+                showInLegend:true,
+                dataLabels: {
+                    enabled: false
+                }
+            }]        	
+        };
+
+        var customersPie = {
+			options: {
+	            chart: {
+	                type: 'pie',
+			       	margin: [0, 0, 0, 0],
+			        spacingTop: 0,
+			        spacingBottom: 0,
+			        spacingLeft: 0,
+			        spacingRight: 0	                
+	            },
+	            tooltip: {
+	                formatter: function() {
+	                    return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+	                }
+	            },	            
+	            exporting: {
+	                 enabled: false
+	            },
+	            plotOptions: {
+	                pie: {
+	                    shadow: false,
+	                    center: [150, 130],
+	                }
+	            },		   
+	            legend: {
+	                enabled: true,
+	                layout: 'vertical',
+	                align: 'right',
+	                center: [150, 130],
+	                width: 200,
+	                verticalAlign: 'top',
+	                y: 120,
+	                x: -30,
+	                borderWidth: 0,
+	                useHTML: true,
+	                labelFormatter: function() {
+	                    return '<div style="text-align: left; width:130px;float:left; font-weight: 400; font-size: 13px; margin-bottom: 10px">' + this.name + '</div>';
+					}
+	            },	                    
+        	},          
+            title: {
+                text: ''
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                }
+            },
+            series: [{
+                name: 'Browsers',
+                data: charts.customersPie.data,
+                size: '55%',
+                innerSize: '45%',
+                showInLegend:true,
+                dataLabels: {
+                    enabled: false
+                }
+            }]        	
+        };
+
+        var customersColumn = {
+    		options: {
+                chart: {
+                    type: 'column'
+                },
+	            exporting: {
+	                 enabled: false
+	            },                
+                plotOptions: {
+                    column:{
+                        borderRadius: 5
+                    },
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: false,
+                            format: '{point.y:.1f}%'
+                        }
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                }, 	                
+        	},
+            title: {
+                text: ''
+            },
+            xAxis: {
+                type: 'category',
+                lineWidth: 0,
+                tickWidth: 0
+            },
+            yAxis: {
+                gridLineWidth: 0,
+                minorGridLineWidth: 0,                    
+                title: {
+                    text: ''
+                },
+                labels: {
+                    enabled: false,
+                }
+            },
+
+            series: [{
+                pointWidth: 200,
+                name: 'Customers',
+                showInLegend: false,
+                colorByPoint: true,
+                data: charts.customersBar.data
+            }]
+        };
 
         $scope.changeVisibility = function( value ) {
 
         	if ( !value.display ) {
-							setTimeout(function() {
-				    			angular.element('#removable_' + value.num).triggerHandler('click');
-								}, 0);
-					} else {
+				setTimeout(function() {
+				    angular.element('#removable_' + value.num).triggerHandler('click');
+				}, 0);
+			} else {
 
-							var childScope = $scope.$new();
-							childScope.value = value;
-							$scope.$parent.gridster.add_widget.apply($scope.$parent.gridster, [$compile( '<li class="widget"><chart element="value"></chart></li>' )(childScope), value.size_x, value.size_y, value.col, value.row]);
-					}
+				var childScope = $scope.$new();
+				childScope.value = value;
+				$scope.$parent.gridster.add_widget.apply($scope.$parent.gridster, [$compile( '<li class="widget"><chart element="value"></chart></li>' )(childScope), value.size_x, value.size_y, value.col, value.row]);
+			}
         };
+
 
          $scope.gridsterOptions = {
             resize: {
@@ -206,18 +747,18 @@ angular.module('kyc.controllers', [])
 
           // Mock widgets
           $scope.values = [
-            { num: 1, row: 1, col: 1, size_x: 2, size_y: 1, display: true, title: 'Paying customers', showChart: false, value: charts.payingCustomers.data },
-            { num: 2, row: 1, col: 3, size_x: 2, size_y: 1, display: true, title: 'Orders per customers', showChart: false, value: charts.ordersPerCustomer.data },
-            { num: 3, row: 1, col: 5, size_x: 2, size_y: 1, display: true, title: 'Average order value', showChart: false, value: charts.averageOrderValue.data },
-            { num: 4, row: 1, col: 7, size_x: 2, size_y: 1, display: true, title: 'Items ordered', showChart: false, value: charts.itemsOrdered.data },
-            { num: 5, row: 2, col: 1, size_x: 4, size_y: 2, display: true, title: 'Revenue', showChart: true, highcharts: charts.revenue },
-            { num: 6, row: 2, col: 5, size_x: 4, size_y: 2, display: true, title: 'Orders by outlet', showChart: true, highcharts: charts.orders },
-            { num: 7, row: 3, col: 1, size_x: 4, size_y: 2, display: true, title: 'Numbers of orders', showChart: true, highcharts: charts.numbersOfOrder },
-            { num: 8, row: 3, col: 5, size_x: 4, size_y: 2, display: true, title: 'Most popular items (top 5)', showChart: true, highcharts: charts.mostPopularItems },
-            { num: 9, row: 4, col: 1, size_x: 4, size_y: 2, display: true, title: 'Menu item popularity', showChart: true, highcharts: charts.menuItemsPopularity },
-            { num: 10, row: 4, col: 5, size_x: 4, size_y: 2, display: true, title: 'Time of orders placed', showChart: true, highcharts: charts.timeOfOrdersPlaced },
-            { num: 11, row: 5, col: 1, size_x: 4, size_y: 2, display: true, title: 'Customers', showChart: true, highcharts: charts.customersColumn },
-            { num: 12, row: 5, col: 5, size_x: 4, size_y: 2, display: true, title: 'Customers', showChart: true, highcharts: charts.customersPie }
+            { num: 1, row: 1, col: 1, size_x: 2, size_y: 1, display: true, title: 'Paying customers', showChart: false, value: charts.payingCustomers.value },
+            { num: 2, row: 1, col: 3, size_x: 2, size_y: 1, display: true, title: 'Orders per customers', showChart: false, value: charts.ordersPerCustomer.value },
+            { num: 3, row: 1, col: 5, size_x: 2, size_y: 1, display: true, title: 'Average order value', showChart: false, value: charts.averageOrderValue.value },
+            { num: 4, row: 1, col: 7, size_x: 2, size_y: 1, display: true, title: 'Items ordered', showChart: false, value: charts.itemsOrdered.value },
+            { num: 5, row: 2, col: 1, size_x: 4, size_y: 2, display: true, title: 'Revenue', showChart: true, highcharts: revenueChart },
+            { num: 6, row: 2, col: 5, size_x: 4, size_y: 2, display: true, title: 'Orders by outlet', showChart: true, highcharts: ordersByOutlet },
+            { num: 7, row: 3, col: 1, size_x: 4, size_y: 2, display: true, title: 'Numbers of orders', showChart: true, highcharts: numbersOfOrder },
+            { num: 8, row: 3, col: 5, size_x: 4, size_y: 2, display: true, title: 'Most popular items (top 5)', showChart: true, highcharts: mostPopularItems },
+            { num: 9, row: 4, col: 1, size_x: 4, size_y: 2, display: true, title: 'Menu item popularity', showChart: true, highcharts: menuItemsPopularity },
+            { num: 10, row: 4, col: 5, size_x: 4, size_y: 2, display: true, title: 'Time of orders placed', showChart: true, highcharts: timeOfOrdersPlaced },
+            { num: 11, row: 5, col: 1, size_x: 4, size_y: 2, display: true, title: 'Customers', showChart: true, highcharts: customersColumn },
+            { num: 12, row: 5, col: 5, size_x: 4, size_y: 2, display: true, title: 'Customers', showChart: true, highcharts: customersPie }
 
           ];
 

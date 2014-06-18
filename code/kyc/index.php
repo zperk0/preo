@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/bower_components/gridster/dist/jquery.gridster.min.css">
   <link rel="stylesheet" href="/code/kyc/js/directives/gridster/gridster.css">  
   <link rel="stylesheet" href="/code/kyc/css/app.css"/>  
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div ng-app="kyc">  
   
@@ -21,30 +22,78 @@
       </div>
     </div>
 
-    <nav class="navbar navbar-default" role="navigation" id="navbar-menu">
-      <div class="container">
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="#/dashboard" active-link="active"><i class="fa fa-signal icon-large"></i>Metrics</a>
-            </li>
-            <li><a href="#/stock" active-link="active"><i class="fa fa-arrows-alt icon-large"></i>Stock</a></li>
-            <li><a href="#/customers" active-link="active"><i class="fa fa-user icon-large"></i>Customers</a></li>
-            <li><a href="#/reports" active-link="active"><i class="fa fa-search icon-large"></i>Reports</a></li>
-            <li><a href="#/stream" active-link="active"><i class="fa fa-rss icon-large"></i>Live stream</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
+    <nav class="top-bar" data-topbar role="navigation" id="navbar-menu">
+      <section class="top-bar-section">
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="#/dashboard" active-link="active"><i class="fa fa-signal icon-large"></i>Metrics</a>
+              </li>
+              <li><a href="#/stock" active-link="active"><i class="fa fa-arrows-alt icon-large"></i>Stock</a></li>
+              <li><a href="#/customers" active-link="active"><i class="fa fa-user icon-large"></i>Customers</a></li>
+              <li><a href="#/reports" active-link="active"><i class="fa fa-search icon-large"></i>Reports</a></li>
+              <li><a href="#/stream" active-link="active"><i class="fa fa-rss icon-large"></i>Live stream</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+      </section>
     </nav>
   </header>
 
 
-  <div ng-view></div>
+  <div>
+    <div class="container-fluid" id="container-search">
+      <div class="container overflow">
+
+        <div class="large-6 columns">
+          <form>
+            <div class="row">
+              <div class="large-10 columns">
+                <label>Outlet
+                  <select name="" id="">
+                    <option value="">Option 1</option>
+                    <option value="">Option 2</option>
+                  </select>
+                </label>
+              </div>
+              <div class="large-2 columns">
+                <label>&nbsp;
+                  <button type="submit" class="button tiny">Update</button>            
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="large-6 columns">
+          <form>
+            <div class="row">
+              <div class="small-5 columns">
+                <label>Data
+                  <input type="text" class="form-control" placeholder="01/02/2014">
+                </label>
+              </div>
+              <div class="small-5 columns">
+                <label>&nbsp;
+                  <input type="text" class="form-control" placeholder="01/02/2014">
+                </label>
+              </div>
+              <div class="small-2 columns">
+                <label>&nbsp;
+                  <button type="submit" class="button tiny">Update</button>
+                </label>
+              </div>
+            </div>          
+          </form>
+        </div> 
+      </div>
+    </div>
+    <div ng-view></div>
+  </div>
 
 </div>
   
   <script src="/js/angular_all.min.js"></script>  
+  <script src="/bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
   <script src="/bower_components/gridster/dist/jquery.gridster.min.js"></script>
   <script src="/bower_components/highcharts/highcharts.js"></script>
   <script src="/code/kyc/js/app.js"></script>
@@ -65,6 +114,10 @@
   function template_url( url ) {
     return '/code/kyc/js/directives/' + url;
   }
+
+  function modal_url( url ) {
+    return '/code/kyc/js/modals/' + url + '.htm';
+  }  
 
   </script>
 

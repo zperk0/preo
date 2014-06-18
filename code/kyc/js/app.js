@@ -7,7 +7,8 @@ angular.module('kyc', [
   'kyc.filters',
   'kyc.services',
   'kyc.directives',
-  'kyc.controllers'
+  'kyc.controllers',
+  'mm.foundation'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {templateUrl: '/code/kyc/partials/dashboard.html', controller: 'DashboardCtrl'});

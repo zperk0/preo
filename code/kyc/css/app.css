@@ -4,12 +4,6 @@ body{
   background-color: #EFEFEF;
 }
 
-footer{
-  background-color: #DADCDF;
-  padding: 40px;
-  margin-top: 30px;
-}
-
 .navbar-first{
   padding: 5px 0;
   margin-bottom: 0px;
@@ -25,29 +19,33 @@ footer{
 
 /**********Navbar************/
 #navbar-menu{
-  background-color: #46535D;
+  background-color: #46535D !important;
   border: none;
   margin-bottom: 0px;
+  height: 161px;
+  padding: 0px !important;
 }
 
 #navbar-menu ul li{
-  border-right: 1px solid #333E46
+  border-right: 1px solid #333E46;
+  background: none;
 }
 
 #navbar-menu ul li a{
   display: block;
-  font-size: 16px;
-  padding: 30px 75px;
+  font-size: 16px !important;
+  padding: 30px 70px !important;
+  background: none !important;
 }
 
 #navbar-menu ul li a{
-  color: #333E46;
+  color: #333E46 !important;
   text-align: center;
 }
 
 #navbar-menu ul li a:hover, #navbar-menu ul li a.active{
-  background-color: #929497;
-  color: #fff;  
+  background-color: #929497 !important;
+  color: #fff !important;  
 }
 
 
@@ -59,7 +57,11 @@ footer{
 
 .icon-large{
   font-size: 60px;
-  display: block;
+  display: block !important;
+}
+
+#container-search{
+  padding-top: 20px;
 }
 
 #container-search, #content-list{
@@ -106,7 +108,7 @@ footer{
   margin: 6px 0 3px 0;
   font-weight: 400;
   font-size: 15px;
-  width: 90%;
+  width: 89%;
 }
 
 .overflow{
@@ -168,8 +170,17 @@ footer{
 }
 
 .content-actions button{
-  padding: 5px 20px;
+  padding: 5px 15px;
   margin-right: 10px;
+  background-color: #fff;
+  color: #000;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.content-actions button:hover{
+  background-color: #A4A6A8;
+  color: #fff;
 }
 
 .largerNumber{
@@ -228,4 +239,28 @@ footer{
 
 .add-widget{
   display: none;
+}
+
+.container, #navbar-menu section{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
+
+@media (min-width:768px){.container, #navbar-menu section{width:750px}}
+
+@media (min-width:992px){.container, #navbar-menu section{width:970px}}
+
+@media (min-width:1200px){.container, #navbar-menu section{width:1170px}}
+
+.container-fluid{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
+
+.title-modal-chart{
+  text-align: center;
+  border-bottom: 1px solid #B3B6B8;
+  color: #46535D;
+}
+
+.container-modal-chart{
+  text-align: center;
+}
+
+#content-table > table{
+  width: 100%
 }
