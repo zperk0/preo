@@ -1,10 +1,21 @@
 angular.module('kyc.controllers').controller('StockCtrl', ['$scope', function($scope) {
 
-  	$scope.stocks = [
-  		{ name: '7-UP', quantity: 4 },
-  		{ name: 'Bovril', quantity: 56 },
-  		{ name: 'Carlsberg', quantity: 207 },
-  		{ name: 'Coca Cola', quantity: 36 },
-  	];
+  	$scope.stock = {};
 
+		angular.forEach($scope.allData,function(row){
+			angular.forEach(row.items,function(item){
+				var itemId  = item.id;
+					if ($scope.stock[itemId] === undefined){						
+						$scope.stock[itemId] = {
+								name:item.name,
+								quantity:item.qty
+						}	
+					}
+					else{
+							$scope.stock[itemId].quantity+=item.qty;
+					};																			
+			})					
+		});
+
+		console.log($scope.stock);
   }])
