@@ -32,7 +32,7 @@
             <div class='premiumFeatureBottom'>
                 <h4 class='helveticaneueWMedi' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal"><span ng-show='feature.showAppTitle' > My order app </span>{{feature.name}}</h4>
                 <p>{{feature.shortDescription}}</p>
-                <div class='priceWrapper'>
+                <div class='priceWrapper' ng-show="feature.active">
                   <div class='price helveticaneueWMedi'>£{{feature.subscriptionPrice}}/month</div>                
                   <ul>
                     <li ng-show="feature.upfrontPrice>0">+ &pound;{{feature.upfrontPrice}} <?= _("one-off payment")?></li>
@@ -41,7 +41,9 @@
                   <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >BUY</button>
                   <button ng-show="isFeatureOwned(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">INSTALLED</button>
                 </div>
-                
+                <div class='comingSoon' ng-show="!feature.active">
+                  <button ng-show="!isFeatureOwned(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >COMING SOON</button>
+                </div>
             </div>
         </div>
         <div class='clearfix'></div>
@@ -54,7 +56,7 @@
         <img ng-src='{{selectedFeature.feature.icon}}'/>      
         <h4>{{selectedFeature.feature.name}}</h4>
       </div>
-      <div class='rightWrapper priceWrapper'>
+      <div class='rightWrapper priceWrapper' ng-show="selectedFeature.feature.active">
         <div class='price helveticaneueWMedi'>£{{selectedFeature.feature.subscriptionPrice}}/month</div>                
         <ul>
           <li ng-show="selectedFeature.feature.upfrontPrice>0">+ &pound;{{selectedFeature.feature.upfrontPrice}} <?= _("one-off payment")?></li>
@@ -62,6 +64,9 @@
         </ul>
         <button ng-show="!isFeatureOwned(selectedFeature.feature)" class='preodayButton' ng-click="clickBuy(selectedFeature.feature)">BUY</button>
         <button ng-show="isFeatureOwned(selectedFeature.feature)" class='preodayButton secondary noclick' >INSTALLED</button>        
+      </div>
+      <div class='comingSoon' ng-show="!selectedFeature.feature.active">
+          <button ng-show="!isFeatureOwned(feature)" class='preodayButton secondary noclick' >COMING SOON</button>
       </div>
       <div class='clearfix'></div>
     </div>

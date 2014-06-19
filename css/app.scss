@@ -384,11 +384,14 @@ form {
 }
 
 .preodayButton {
+  border-radius:2px;
   padding: 0.4em 0.85em;
   font-size: 115%;
   border: 1px solid #3AA2DC;
   box-shadow: 0 0 0 !important;
   -webkit-box-shadow: 0 0 0  !important;
+  letter-spacing:1px;
+  font-family:HelveticaNeueW01-45Ligh !important;
 }
 
 button.success {
@@ -2307,6 +2310,17 @@ span .currencySymbol {
 }
 
 .shopWrapper{
+
+  .comingSoon{
+    margin-top:20px;
+    button{
+      letter-spacing: normal;
+      font-size: 90%;      
+      width: 100%;
+      padding: .6em .85em;
+    }
+  }
+
   .priceWrapper{
       position:relative;
       margin-top:20px;
@@ -2335,7 +2349,6 @@ span .currencySymbol {
         padding: 8px 15%;    
         border: none;
         outline: none;
-        border-radius:2px;
         position:absolute;
         font-weight:lighter;
         font-family:HelveticaNeueW01-45Ligh;        
@@ -2493,6 +2506,13 @@ span .currencySymbol {
     margin: 0 auto 50px;
     display: block;
   }  
+  .comingSoon{
+      width:20%;
+      max-width:200px;
+      float:right;
+
+  }
+
   .rightWrapper {
     position: relative;
     max-width: 50%;
@@ -2523,7 +2543,6 @@ span .currencySymbol {
         padding: 8px 15%;    
         border: none;
         outline: none;
-        border-radius:2px;
         position:absolute;
         font-weight:lighter;
         font-family:HelveticaNeueW01-45Ligh;        
