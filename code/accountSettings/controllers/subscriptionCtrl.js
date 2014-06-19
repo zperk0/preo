@@ -2,7 +2,7 @@ angular.module('accountSettings.controllers')
  .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature','StripeCharge','Invoice',
   function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature,StripeCharge,Invoice) {
     //FIXME find a way to not have to do this.
-     $("#confirmationDialog,#reinstallDialog,#errorDialog,#successDialog").on('opened', function() {
+     $(".featureDialog").on('opened', function() {
       var that = this;
       setTimeout(function(){
         $(that).addClass('active');  
@@ -102,13 +102,16 @@ angular.module('accountSettings.controllers')
 
 
     $scope.updateStatus=function(accountFeature,status){        
+        //TODO how to not do this?
+        var previousStatus = accountFeature.status;
         accountFeature.status = status;
         accountFeature.$put({accountId:accountFeature.accountId,featureId:accountFeature.featureId},function(result){
           accountFeature.feature = getFeatureById(accountFeature.featureId);
           setActiveCount();
           $('#confirmationDialog').foundation('reveal', 'close');
         },function(error){
-              displayErrorNoty();
+          accountFeature.status = previousStatus;
+          displayErrorNoty();
         });
     }
 
@@ -140,69 +143,37 @@ angular.module('accountSettings.controllers')
     }
 
     function purchaseFeature(accountFeature){
-      var feature = accountFeature.feature;
-         AccountCard.get({accountId:ACCOUNT_ID},
-          function(result){          
-            
-            if (result.token && result.token!=null){
-                                
-                var invoice = new Invoice(feature);
-                console.log("beforeSave",invoice);
-                invoice.$save({accountId:ACCOUNT_ID},function(result){                  
-                  console.log(result,"sending:",result.id);                  
-                  //created the invoice, now try to pay it.
-                  StripeCharge.save({invoiceId:result.id},
-                    function(result){
-                      //if we get a success here, the charge was good! enable account feature
-                      console.log('innnermost result',result)
-                      if (result && result.status == "SUCCESS"){
-                        var accountFeature = new AccountFeature({                  
-                          feature:feature
-                        });                               
-                        accountFeature.status ="INSTALLED";                          
-                        accountFeature.$put({accountId:ACCOUNT_ID,featureId:feature.id},
-                          function(result){
-                            loadAll(function (){
+      var feature = accountFeature.feature;      
+        AccountCard.get({accountId:ACCOUNT_ID},
+          function(result){                      
+            if (result.token && result.token!=null){               
+                AccountFeature.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){
+                  console.log('here',accountPayment);
+                        if (accountPayment.status ===  "SUCCESS"){
+                          loadAll(function (){
                                $('#successDialog').foundation('reveal', 'open');         
-                            });                             
-                          },function(error){
-                              displayErrorNoty();
-                          });
-                      } else {
-                        //set this invoice as rejected. this is a one time purchase, either it succeeds now or it's rejected
-                        rejectInvoice(invoice);
-                      }
-                      
-                      console.log('saved!');
-                  }, function (error){
-                    rejectInvoice(invoice);
-
-                  });                  
-              },function(error){
-                  rejectInvoice(invoice);
-              });                  
-            } else {
-               //we have a card but no token. something was wrong when registering the card
-               $('#errorDialog').foundation('reveal', 'open');
+                          });                             
+                        } else {                        
+                          var response = JSON.parse(accountPayment.response);
+                          $scope.paymentFailedMessage = response.detail_message;
+                          $('#paymentErrorDialog').foundation('reveal', 'open');
+                          console.log('revealed error dialog');
+                        }                        
+                      },function(error){                        
+                        displayErrorNoty();
+                });
+                                          
             }          
         },function(error){          
-          console.log("here",error);
           if (error.data && error.data.status === 404){
-                $('#errorDialog').foundation('reveal', 'open');
+                $('#noPaymentDialog').foundation('reveal', 'open');
           } else{
               displayErrorNoty()
             }                       
         });
     }
 
-    function rejectInvoice(invoice){
-      console.log("rejecting",invoice);
-      invoice.status = "REJECTED";
-      invoice.payDate = null;
-      invoice.$put({invoiceId:invoice.id})
-      console.log("error");                        
-      $('#errorDialog').foundation('reveal', 'open');
-    }
+    
     
       function displayErrorNoty(){
         noty({

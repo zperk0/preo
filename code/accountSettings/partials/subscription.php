@@ -45,7 +45,7 @@
 				<tr ng-repeat="accountFeature in accountFeatures | filter:{ status:'INSTALLED'}" ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>
 						<td > <img ng-src="{{accountFeature.status === 'INSTALLED' && accountFeature.feature.icon || '/img/icon_off.png'}}" /> </td>
 						<td> <span class='featureAppTitle' ng-show="accountFeature.feature.showAppTitle"> my order app </span> {{accountFeature.feature.name}} </td>
-						<td ng-show="accountFeature.status === 'INSTALLED'"> &pound;{{accountFeature.feature.upfrontPrice}}/month </td>				
+						<td ng-show="accountFeature.status === 'INSTALLED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
 						<td ng-show="accountFeature.status === 'UNINSTALLED'">  <? echo _("Pending removal") ?> </td>				
 						<td ng-switch='accountFeature.status'>
 								<span ng-switch-when="INSTALLED" ng-click='openConfirmDialog(accountFeature)' class='positiveButton'> <? echo _("Uninstall")?></span>
@@ -66,7 +66,7 @@
 					<tr ng-repeat="accountFeature in accountFeatures | filter:{ status:'CANCELED'}" class="disabled" >
 						<td > <img src='/img/icon_off.png' /> </td>
 						<td> {{accountFeature.feature.name}} </td>
-						<td> &pound;{{accountFeature.feature.upfrontPrice}}/month </td>				
+						<td> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
 						<td >
 								<span ng-click='reinstallAccountFeature(accountFeature)' class='positiveButton'> <? echo _("Reinstall")?> </span>&nbsp;
 								<span ng-click='removeAccountFeature(accountFeature)' class='negativeButton'> <? echo _("Remove")?> </span>
@@ -76,6 +76,13 @@
 			</div>
 
 	</section>
+</div>
+
+<div id="paymentErrorDialog" class="reveal-modal medium featureDialog" data-reveal>
+      <p><? echo _("Your payment failed. Please check your payment method and purchase this feature from the shop again. The error message we have is:")?></p>
+      <p>{{paymentFailedMessage}}</p>
+      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/paymentMethod')" ><? echo _("ALTER PAYMENT METHOD")?></button>
+      <button class='negativeDismiss preodayButton secondary' ng-click="dialogCancel('paymentErrorDialog')" ><? echo _("CANCEL")?></button>
 </div>
 
 <!-- start feature modal -->

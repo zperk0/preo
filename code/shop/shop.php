@@ -91,7 +91,7 @@
       <p><? echo _("Your payment failed. The error message we have is:")?></p>
       <p>{{paymentFailedMessage}}</p>
       <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/paymentMethod')" ><? echo _("ALTER PAYMENT METHOD")?></button>
-      <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('noPaymentDialog')" ><? echo _("RETURN TO STORE")?></button>
+      <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('paymentErrorDialog')" ><? echo _("RETURN TO STORE")?></button>
 </div>
 
 <div id="successDialog" class="reveal-modal medium featureDialog" data-reveal>
