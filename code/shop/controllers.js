@@ -55,9 +55,9 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
             
             if (result.token && result.token!=null){
                                 
-                var invoice = new Resources.Invoice(feature);
+                var invoice = new Resources.Invoice();
                 console.log("beforeSave",invoice);
-                invoice.$save({accountId:ACCOUNT_ID},function(result){                  
+                invoice.$save({accountId:ACCOUNT_ID,featureId:feature.id},function(result){                  
                   console.log(result,"sending:",result.id);                  
                   //created the invoice, now try to pay it.
                   Resources.StripeCharge.save({invoiceId:result.id},
