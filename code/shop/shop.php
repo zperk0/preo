@@ -38,7 +38,7 @@
                     <li ng-show="feature.upfrontPrice>0">+ &pound;{{feature.upfrontPrice}} <?= _("one-off payment")?></li>
                     <li>+ <?= _("VAT")?></li>
                   </ul>
-                  <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="clickBuy(feature)" >BUY</button>
+                  <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >BUY</button>
                   <button ng-show="isFeatureOwned(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">INSTALLED</button>
                 </div>
                 
