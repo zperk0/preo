@@ -53,65 +53,31 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
         Resources.AccountCard.get({accountId:ACCOUNT_ID},
           function(result){          
             
-            if (result.token && result.token!=null){
-                                
-                var invoice = new Resources.Invoice();
-                console.log("beforeSave",invoice);
-                invoice.$save({accountId:ACCOUNT_ID,featureId:feature.id},function(result){                  
-                  console.log(result,"sending:",result.id);                  
-                  //created the invoice, now try to pay it.
-                  Resources.StripeCharge.save({invoiceId:result.id},
-                    function(result){
-                      //if we get a success here, the charge was good! enable account feature
-                      console.log('innnermost result',result)
-                      if (result && result.status == "SUCCESS"){
-                        var accountFeature = new Resources.AccountFeatures({                  
-                          feature:feature
-                        });                               
-                        accountFeature.status ="INSTALLED";                          
-                        accountFeature.$put({accountId:ACCOUNT_ID,featureId:feature.id},
-                          function(result){
-                              getAccountFeatures();
-                              $('#successDialog').foundation('reveal', 'open');        
-                          },function(error){
-                              displayErrorNoty();
-                          });
-                      } else {
-                        //set this invoice as rejected. this is a one time purchase, either it succeeds now or it's rejected
-                        rejectInvoice(invoice);
-                      }
-                      
-                      console.log('saved!');
-                  }, function (error){
-                    rejectInvoice(invoice);
-
-                  });                  
-              },function(error){
-                  rejectInvoice(invoice);
-              });                  
-            } else {
-               //we have a card but no token. something was wrong when registering the card
-               $('#errorDialog').foundation('reveal', 'open');
+            if (result.token && result.token!=null){               
+                Resources.AccountFeatures.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){
+                        if (accountPayment.status ===  "SUCCESS"){
+                          getAccountFeatures();
+                          $('#successDialog').foundation('reveal', 'open');          
+                        } else {                        
+                          var response = JSON.parse(accountPayment.response);
+                          $scope.paymentFailedMessage = response.detail_message;
+                          $('#paymentErrorDialog').foundation('reveal', 'open');
+                        }                        
+                      },function(error){                        
+                        displayErrorNoty();
+                });
+                                          
             }          
         },function(error){          
           if (error.data && error.data.status === 404){
-                $('#errorDialog').foundation('reveal', 'open');
+                $('#noPaymentDialog').foundation('reveal', 'open');
           } else{
               displayErrorNoty()
             }                       
         });
     }
 
-    function rejectInvoice(invoice){
-      console.log("rejecting",invoice);
-      invoice.status = "REJECTED";
-      invoice.payDate = null;
-      invoice.$put({invoiceId:invoice.id})
-      console.log("error");                        
-      $('#errorDialog').foundation('reveal', 'open');
-
-    }
-
+  
     $scope.navigateTo = function(place){        
         window.location.assign(place);
     }

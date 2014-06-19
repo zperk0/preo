@@ -38,7 +38,7 @@
                     <li ng-show="feature.upfrontPrice>0">+ &pound;{{feature.upfrontPrice}} <?= _("one-off payment")?></li>
                     <li>+ <?= _("VAT")?></li>
                   </ul>
-                  <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">BUY</button>
+                  <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="clickBuy(feature)" >BUY</button>
                   <button ng-show="isFeatureOwned(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">INSTALLED</button>
                 </div>
                 
@@ -81,10 +81,17 @@
   </div>
 
 
- <div id="errorDialog" class="reveal-modal medium featureDialog" data-reveal>
+ <div id="noPaymentDialog" class="reveal-modal medium featureDialog" data-reveal>
       <p><? echo _("Please add a payment method to your account in order to subscribe to Premium Features")?></p>
       <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/paymentMethod')" ><? echo _("ADD PAYMENT METHOD")?></button>
-      <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('errorDialog')" ><? echo _("RETURN TO STORE")?></button>
+      <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('noPaymentDialog')" ><? echo _("RETURN TO STORE")?></button>
+</div>
+
+<div id="paymentErrorDialog" class="reveal-modal medium featureDialog" data-reveal>
+      <p><? echo _("Your payment failed. The error message we have is:")?></p>
+      <p>{{paymentFailedMessage}}</p>
+      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/paymentMethod')" ><? echo _("ALTER PAYMENT METHOD")?></button>
+      <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('noPaymentDialog')" ><? echo _("RETURN TO STORE")?></button>
 </div>
 
 <div id="successDialog" class="reveal-modal medium featureDialog" data-reveal>
