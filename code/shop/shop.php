@@ -9,7 +9,7 @@
 ?> 
 
 
-<div ng-app="shop" ng-controller="shopController" ng-cloak>
+<div ng-app="shop" ng-controller="shopController" ng-cloak class='shopWrapper'>
   <div class='loader' ng-show="!finishedLoading">      
       <img src='/img/spinner.gif'/>
   </div>  
@@ -18,23 +18,30 @@
     <div class='shopHeader'>
       <div class='row'>
         <h1><small>my order app </small><br/>Premium Features</h1>
-        <p><?echo _("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec eros et justo consectetur sodales. Sed dictum turpis sit amet sapien varius lobortis. Proin mi nibh, euismod eget justo quis, vestibulum molestie turpis. Integer sollicitudin tortor e") ?>,</p>
+        <p><?echo _("At Preoday we believe that businesses such as yours should not pay to receive mobile orders. Our business model is simple: we charge no commission on orders you receive through the app.  Instead, we offer services that bring new value and insight to your business.") ?></p>
         </div>
     </div>
     <div class='row'>
     <div class='shopContent'>
 
         <div class='premiumFeatureWrapper small-6 large-4 columns' ng-repeat="feature in PremiumFeatures" >      
-            <div class='premiumFeatureTop'>
+            <div class='premiumFeatureTop' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">
                 <div class='titleWrapper'><h4>{{feature.name}}</h4></div>
                 <img ng-src='{{feature.icon}}'/>
             </div>
             <div class='premiumFeatureBottom'>
-                <h4 class='helveticaneueWMedi'><span ng-show='feature.showAppTitle' > My order app </span>{{feature.name}}</h4>
-                <p>{{feature.description}}</p>
-                <span class='price helveticaneueWMedi' >£{{feature.upfrontPrice}}/month</span class='price'>                
-                <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">BUY</button>
-                <button ng-show="isFeatureOwned(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">VIEW</button>
+                <h4 class='helveticaneueWMedi' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal"><span ng-show='feature.showAppTitle' > My order app </span>{{feature.name}}</h4>
+                <p>{{feature.shortDescription}}</p>
+                <div class='priceWrapper'>
+                  <div class='price helveticaneueWMedi'>£{{feature.subscriptionPrice}}/month</div>                
+                  <ul>
+                    <li ng-show="feature.upfrontPrice>0">+ &pound;{{feature.upfrontPrice}} <?= _("one-off payment")?></li>
+                    <li>+ <?= _("VAT")?></li>
+                  </ul>
+                  <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">BUY</button>
+                  <button ng-show="isFeatureOwned(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">INSTALLED</button>
+                </div>
+                
             </div>
         </div>
         <div class='clearfix'></div>
@@ -44,14 +51,17 @@
   <div id="featureModal" class="reveal-modal medium animatable slide-in-bottom" data-reveal>
     <div class='header'>
       <div class='leftWrapper'>
-        <img ng-src='{{selectedFeature.feature.icon}}'/>
-        <span>my order app</span>
+        <img ng-src='{{selectedFeature.feature.icon}}'/>      
         <h4>{{selectedFeature.feature.name}}</h4>
       </div>
-      <div class='rightWrapper '>
-          <span class='price helveticaneueWMedi' >£{{selectedFeature.feature.upfrontPrice}}/month</span class='price'>
-          <button ng-show="!isFeatureOwned(selectedFeature.feature)" class='preodayButton' ng-click="clickBuy(selectedFeature.feature)" data-reveal-id="myModal">BUY</button>
-          <button ng-show="isFeatureOwned(selectedFeature.feature)" class='preodayButton secondary noclick'>OWNED</button>
+      <div class='rightWrapper priceWrapper'>
+        <div class='price helveticaneueWMedi'>£{{selectedFeature.feature.subscriptionPrice}}/month</div>                
+        <ul>
+          <li ng-show="selectedFeature.feature.upfrontPrice>0">+ &pound;{{selectedFeature.feature.upfrontPrice}} <?= _("one-off payment")?></li>
+          <li>+ <?= _("VAT")?></li>
+        </ul>
+        <button ng-show="!isFeatureOwned(selectedFeature.feature)" class='preodayButton' ng-click="clickBuy(selectedFeature.feature)">BUY</button>
+        <button ng-show="isFeatureOwned(selectedFeature.feature)" class='preodayButton secondary noclick' >INSTALLED</button>        
       </div>
       <div class='clearfix'></div>
     </div>
