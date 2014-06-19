@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-06-11 23:29+0100\n"
-"PO-Revision-Date: 2014-06-12 16:45-0000\n"
+"PO-Revision-Date: 2014-06-16 13:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de_DE\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: code/settings/delivery/delivery-view.php:20 inc/shared/h.php:46
 msgid "Delivery Settings"
-msgstr "Einstellungen zur Lieferung"
+msgstr "Liefereinstellungen"
 
 #: code/settings/delivery/delivery-view.php:21
 msgid "Enable delivery services"
@@ -268,7 +268,7 @@ msgstr "Burger auswählen"
 
 #: code/shared/js_strings.php:32
 msgid "Menu configuration has been saved!"
-msgstr "Menü-Konfigurationen wurden gespeichert!"
+msgstr "Angebot-Konfigurationen wurden gespeichert!"
 
 #: code/shared/js_strings.php:33
 msgid "Choose a Collection Slot"
@@ -311,15 +311,15 @@ msgstr "Nutzer-Konfigurationen wurden gespeichert!"
 
 #: code/shared/js_strings.php:41
 msgid "Select all menus"
-msgstr "Auswahl alle Menüs"
+msgstr "Auswahl alle Angebote"
 
 #: code/shared/js_strings.php:42
 msgid "Unselect all menus"
-msgstr "Deselektion alle Menüs"
+msgstr "Deselektion alle Angebote"
 
 #: code/shared/js_strings.php:43
 msgid "Select menu("
-msgstr "Auswahl Menü"
+msgstr "Auswahl Angebot"
 
 #: code/shared/js_strings.php:44
 msgid "# of # selected"
@@ -355,24 +355,24 @@ msgstr ""
 
 #: code/shared/js_strings.php:50
 msgid "Where should this meal deal appear?"
-msgstr "Wo soll dieser Meal Deal erscheinen?"
+msgstr "Wo sollen diese Angebote erscheinen?"
 
 #: code/shared/js_strings.php:51 inc/dashboard/mdConfig.php:96
 #: inc/dashboard/mdConfig.php:213
 msgid "Choose a menu section"
-msgstr "Auswahl einer Menü-Kategorie"
+msgstr "Auswahl einer Angebot-Kategorie"
 
 #: code/shared/js_strings.php:52
 msgid ""
 "Are you sure you want to delete this meal deal? Note: all associated data "
 "will be lost!"
 msgstr ""
-"Sind Sie sicher, dass Sie diesem Meal Deal löschen möchten? Alle "
-"dazugehörigen Daten werden bei diesem Vorgang gelöscht!"
+"Sind Sie sicher, dass Sie dieses Angebot löschen möchten? Alle dazugehörigen "
+"Daten werden bei diesem Vorgang gelöscht!"
 
 #: code/shared/js_strings.php:53
 msgid "Yes, delete this meal deal!"
-msgstr "Ja, diesen Meal Deal löschen!"
+msgstr "Ja, dieses Angebot löschen!"
 
 #: code/shared/js_strings.php:54
 msgid "All changes has been saved!"
@@ -382,12 +382,12 @@ msgstr "Alle Änderungen wurden gespeichert!"
 msgid ""
 "Are you sure you want to delete this menu? Note: all menu data will be lost!"
 msgstr ""
-"Sind Sie sicher, dass Sie dieses Menü löschen möchten? Alle Menüdaten werden "
-"bei diesem Vorgang gelöscht!"
+"Sind Sie sicher, dass Sie dieses Angebot löschen möchten? Alle Daten zu "
+"diesem Angebot werden bei diesem Vorgang gelöscht!"
 
 #: code/shared/js_strings.php:56
 msgid "Yes, delete this menu!"
-msgstr "Ja, dieses Menü löschen!"
+msgstr "Ja, dieses Angebot löschen!"
 
 #: code/shared/js_strings.php:57
 msgid "Sorry, incorrect password."
@@ -399,7 +399,7 @@ msgid ""
 "your new password to continue."
 msgstr ""
 "Einstellungen und Passwort wurde gespeichert! Sie müssen mit sich mit Ihrem "
-"neuen Passwort einloggen um fortfahren zu können."
+"neuen Passwort einlochen um fortfahren zu können."
 
 #: code/shared/js_strings.php:59
 msgid "Settings have been saved!"
@@ -460,7 +460,7 @@ msgstr "Leider wurde Ihre Bestellung abgelehnt. Bitte rufen Sie uns an"
 
 #: code/shared/js_strings.php:73
 msgid "Successfully saved delivery settings."
-msgstr "Bestelleinstellungen wurden erfolgreich gespeichert. "
+msgstr "Liefereinstellungen wurden erfolgreich gespeichert. "
 
 #: inc/404/404_content.php:5
 msgid "Whoops!"
@@ -517,7 +517,7 @@ msgstr "App-Gestaltung 2/2"
 #: inc/dashboard/venueConfig.php:30 inc/dashboard/venueConfig.php:32
 #: inc/finish/finish_content.php:10
 msgid "Menu Creation"
-msgstr "Menu-Erstellung"
+msgstr "Erstellen eines Angebots"
 
 #: inc/dashboard/appConfig1.php:25 inc/dashboard/appConfig1.php:28
 #: inc/dashboard/appConfig2.php:14 inc/dashboard/appConfig2.php:17
@@ -613,7 +613,7 @@ msgstr "oder erstellen Sie ihren eigenen..."
 
 #: inc/dashboard/appConfig1.php:60
 msgid "maximum 70 characters"
-msgstr "max 70 Zeichen"
+msgstr "max. 70 Zeichen"
 
 #: inc/dashboard/appConfig1.php:65
 msgid "Create a subheading"
@@ -718,11 +718,11 @@ msgstr "30&#37 geschafft, Zeit für den künstlerischen Teil…"
 
 #: inc/dashboard/appConfig2.php:28
 msgid "This is where you can brand your menu page"
-msgstr "Hier können Sie Ihre Menüseite mit Ihrem Logo gestalten"
+msgstr "Hier können Sie Ihre Angebotsseite mit Ihrem Logo gestalten"
 
 #: inc/dashboard/appConfig2.php:35
 msgid "Add a short venue title"
-msgstr "Fügen Sie eine kurze Form Ihres Unternehmensnamen hinzu"
+msgstr "Fügen Sie eine Abkürzung Ihres Unternehmensnamen hinzu"
 
 #: inc/dashboard/appConfig2.php:35
 msgid ""
@@ -730,11 +730,11 @@ msgid ""
 "menu."
 msgstr ""
 "Dies soll eine Abkürzung Ihres eigentlichen Unternehmensnamens sein und wird "
-"über Ihrem Menü angezeigt."
+"über Ihrem Angebot angezeigt."
 
 #: inc/dashboard/appConfig2.php:37
 msgid "Please type a venue title <br/>(max 22chars)"
-msgstr "Bitte geben Sie einen Unternehmenstitel ein (max. 22 Zeichen)."
+msgstr "Bitte geben Sie einen Unternehmensnamen ein (max. 22 Zeichen)."
 
 #: inc/dashboard/appConfig2.php:45 inc/dashboard/dashboard_content.php:127
 msgid "BASKET"
@@ -834,15 +834,15 @@ msgstr "Bearbeiten Sie Ihre App"
 
 #: inc/dashboard/dashboard_content.php:50 inc/shared/h.php:43
 msgid "Venue Settings"
-msgstr "Unternehmens-Settings"
+msgstr "Unternehmens-Einstellungen"
 
 #: inc/dashboard/dashboard_content.php:52
 msgid "Change settings"
-msgstr "Settings Bearbeiten"
+msgstr "Einstellungen Bearbeiten"
 
 #: inc/dashboard/dashboard_content.php:53
 msgid "Delivery settings"
-msgstr "Einstellungen zur Lieferung"
+msgstr "Liefereinstellungen"
 
 #: inc/dashboard/dashboard_content.php:55
 msgid "Opening hours"
@@ -854,15 +854,15 @@ msgstr "Design"
 
 #: inc/dashboard/dashboard_content.php:62
 msgid "Home screen"
-msgstr "Start-Bildschirm"
+msgstr "Startansicht"
 
 #: inc/dashboard/dashboard_content.php:63
 msgid "Menu screen"
-msgstr "Menü Screen"
+msgstr "Angebot-Ansicht "
 
 #: inc/dashboard/dashboard_content.php:67 inc/shared/h.php:56
 msgid "Menus"
-msgstr "Menüs"
+msgstr "Angebote"
 
 #: inc/dashboard/dashboard_content.php:71 inc/dashboard/eventConfig.php:100
 #: inc/dashboard/eventConfig.php:180 inc/dashboard/mdConfig.php:83
@@ -885,16 +885,16 @@ msgstr "Löschen"
 
 #: inc/dashboard/dashboard_content.php:75
 msgid "Add new menu"
-msgstr "Neues Menü hinzufügen"
+msgstr "Neues Angebot hinzufügen"
 
 #: inc/dashboard/dashboard_content.php:76 inc/dashboard/mdConfig.php:5
 #: inc/shared/h.php:68
 msgid "Meal Deals"
-msgstr "Meal Deals"
+msgstr "Angebote"
 
 #: inc/dashboard/dashboard_content.php:83
 msgid "Update events"
-msgstr "Update Veranstaltungen"
+msgstr "Veranstaltungen aktualisieren"
 
 #: inc/dashboard/dashboard_content.php:88 inc/shared/h.php:82
 msgid "Advanced Settings"
@@ -902,15 +902,15 @@ msgstr "Erweiterte Einstellungen"
 
 #: inc/dashboard/dashboard_content.php:90
 msgid "Manage users"
-msgstr "Nutzer Verwalten"
+msgstr "Nutzer verwalten"
 
 #: inc/dashboard/dashboard_content.php:91
 msgid "Add a payment method"
-msgstr "Zahlungsweise Hinzufügen"
+msgstr "Zahlungsweise hinzufügen"
 
 #: inc/dashboard/dashboard_content.php:92 inc/shared/h.php:86
 msgid "Change my app mode"
-msgstr "App-Modus Ändern "
+msgstr "App-Modus ändern "
 
 #: inc/dashboard/dashboard_content.php:96 inc/shared/dashboard_footer.php:4
 #: inc/shared/h.php:90
@@ -928,7 +928,7 @@ msgstr "Erfahren Sie Mehr"
 
 #: inc/dashboard/dashboard_content.php:134
 msgid "Venue Title"
-msgstr "Unternehmenstitel"
+msgstr "Unternehmensname"
 
 #: inc/dashboard/dashboard_content.php:176
 msgid "Your app is now live!"
@@ -1120,7 +1120,7 @@ msgstr ""
 
 #: inc/dashboard/mdConfig.php:8
 msgid "Add a new Meal Deal"
-msgstr "Meal Deal hinzufügen"
+msgstr "neue Angebote hinzufügen"
 
 #: inc/dashboard/mdConfig.php:31
 msgid "Section"
@@ -1128,7 +1128,7 @@ msgstr "Kategorie"
 
 #: inc/dashboard/mdConfig.php:31
 msgid "Which menu section does this meal deal belong in?"
-msgstr "In welche Menü-Kategorie Gehört dieser Meal Deal?"
+msgstr "In welche Angebots-Kategorie gehören diese Angebote?"
 
 #: inc/dashboard/mdConfig.php:32
 msgid "Total Price "
@@ -1146,7 +1146,7 @@ msgstr "Bitte geben Sie eine Artikelbezeichnung ein (max 100 Zeichen)"
 #: inc/dashboard/mdConfig.php:61 inc/dashboard/mdConfig.php:102
 #: inc/dashboard/mdConfig.php:179 inc/dashboard/mdConfig.php:219
 msgid "Please choose a section"
-msgstr "Bitte wählen Sie einen Abschnitt aus."
+msgstr "Bitte wählen Sie eine Kategorie aus."
 
 #: inc/dashboard/mdConfig.php:64 inc/dashboard/mdConfig.php:182
 #: inc/dashboard/mdConfig.php:185 inc/dashboard/menuConfig.php:111
@@ -1161,7 +1161,7 @@ msgstr "Menge?"
 #: inc/dashboard/mdConfig.php:89 inc/dashboard/mdConfig.php:246
 #: inc/dashboard/menuConfig.php:77 inc/dashboard/menuConfig.php:213
 msgid "Delete this section"
-msgstr "Diesen Abschnitt löschen"
+msgstr "Diese Kategorie löschen"
 
 #: inc/dashboard/mdConfig.php:91 inc/dashboard/mdConfig.php:208
 msgid "Type or pick a selection title"
@@ -1173,44 +1173,44 @@ msgstr "z.B. Auswahl Hauptgericht, Auswahl Beilage, Auswahl Getränk, etc"
 
 #: inc/dashboard/mdConfig.php:92 inc/dashboard/mdConfig.php:209
 msgid "Please type or pick a title (max 100chars)"
-msgstr "Bitte geben Sie oder wählen Sie eine Bezeichnung aus (max 100 Zeichen)"
+msgstr "Eingabe oder Auswahl einer Bezeichnung (max. 100 Zeichen)"
 
 #: inc/dashboard/mdConfig.php:100 inc/dashboard/mdConfig.php:217
 msgid "All sections"
-msgstr "Alle Abschnitte"
+msgstr "Alle Kategorien"
 
 #: inc/dashboard/mdConfig.php:101 inc/dashboard/mdConfig.php:218
 msgid "Pick a menu section from where you'd like to import items."
 msgstr ""
-"Wählen Sie eine Menü-Kategorie aus der Sie die Artikel übertragen wollen"
+"Wählen Sie eine Angebots-Kategorie aus der Sie die Artikel übertragen wollen"
 
 #: inc/dashboard/mdConfig.php:114 inc/dashboard/mdConfig.php:231
 msgid "Add this item to the current Meal Deal"
-msgstr "Artikel diesem Meal Deal hinzufügen"
+msgstr "Artikel diesem Angebot hinzufügen"
 
 #: inc/dashboard/mdConfig.php:122 inc/dashboard/mdConfig.php:206
 msgid "Add a selection to this meal deal"
-msgstr "Diesem Meal Deal eine Auswahl hinzufügen"
+msgstr "Diesem Angebot eine Auswahl hinzufügen"
 
 #: inc/dashboard/mdConfig.php:170
 msgid "Click to add a Meal Deal name"
-msgstr "Klicken um neue Meal Deal Bezeichnung hinzuzufügen"
+msgstr "Klicken um neue Angebotsbezeichnung hinzuzufügen"
 
 #: inc/dashboard/mdConfig.php:252
 msgid ""
 "You've not created any items! You won't be able to create Meal Deals until "
 "you have some items in your menu."
 msgstr ""
-"Sie haben keine Artikel erstellt! Sie werden keine Meal Deals "
-"zusammenstellen können, wenn Sie keine Artikel Ihrem Menü hinzufügen.  "
+"Sie haben keine Artikel erstellt! Sie werden keine Angebote zusammenstellen "
+"können, wenn Sie keine Artikel Ihrem Angebot hinzufügen.  "
 
 #: inc/dashboard/menuConfig.php:25
 msgid "Build your menu"
-msgstr "Bauen Sie Ihr Menü auf"
+msgstr "Erstellen Sie Ihr Angebot"
 
 #: inc/dashboard/menuConfig.php:25
 msgid "Your menu"
-msgstr "Ihr Menü"
+msgstr "Ihr Angebot"
 
 #: inc/dashboard/menuConfig.php:25
 msgid ""
@@ -1218,22 +1218,22 @@ msgid ""
 "with.<br/><br/>An easy way is to group items, i.e. create separate sections "
 "for food, cold drinks and hot drinks."
 msgstr ""
-"Jetzt können Sie Ihr Menü erstellen. Wir schlagen vor, dass sie es erstmal "
-"einfach halten. <br/><br/>Ein guter Einstieg ist, die Artikel in Gruppen "
-"einzuteilen, z.B. erstellen Sie separate Abschnitte für Speisen, kalte oder "
-"heiße Getränke."
+"Jetzt können Sie Ihr Angebot erstellen. Wir schlagen vor, dass sie es "
+"erstmal einfach halten. <br/><br/>Ein guter Einstieg ist, die Artikel in "
+"Gruppen einzuteilen, z.B. erstellen Sie separate Kategorien für Speisen, "
+"kalte oder heiße Getränke."
 
 #: inc/dashboard/menuConfig.php:61
 msgid "Click to add your menu name"
-msgstr "Klicken Sie um den Namen Ihres Menüs hinzuzufügen"
+msgstr "Klicken Sie, um die Bezeichnung Ihres Angebots hinzuzufügen"
 
 #: inc/dashboard/menuConfig.php:62
 msgid "Please type a menu name (max 100chars)"
-msgstr "Bitte geben Sie einen Menünamen ein (max 100 Zeichen)"
+msgstr "Bitte geben Sie eine Angebotsbezeichnung ein (max. 100 Zeichen)"
 
 #: inc/dashboard/menuConfig.php:68 inc/dashboard/menuConfig.php:204
 msgid "Click to add a section name"
-msgstr "Klicken Sie um den Namen eines Abschnitts hinzuzufügen"
+msgstr "Klicken Sie um den Namen einer Kategorie hinzuzufügen"
 
 #: inc/dashboard/menuConfig.php:69 inc/dashboard/menuConfig.php:205
 msgid "Please type a section name (max 100chars)"
@@ -1245,7 +1245,7 @@ msgstr "Hier Artikel hinzufügen"
 
 #: inc/dashboard/menuConfig.php:76 inc/dashboard/menuConfig.php:212
 msgid "Move this section"
-msgstr "Diesen Abschnitt bewegen"
+msgstr "Diese Kategorie bewegen"
 
 #: inc/dashboard/menuConfig.php:87 inc/dashboard/menuConfig.php:223
 msgid "Price "
@@ -1276,8 +1276,8 @@ msgstr "Unbegrenzt"
 #: inc/dashboard/menuConfig.php:119 inc/dashboard/menuConfig.php:253
 msgid "This chooses whether you want to activate this food on the menu or not."
 msgstr ""
-"Hiermit können Sie auswählen, ob Sie Speisen oder Menü aktivieren wollen "
-"oder nicht. "
+"Hiermit können Sie auswählen, ob Sie diesen Artikel im Angebot aktivieren "
+"wollen oder nicht. "
 
 #: inc/dashboard/menuConfig.php:132 inc/dashboard/menuConfig.php:266
 msgid "Reorder"
@@ -1369,7 +1369,7 @@ msgstr "Diesem Artikel Option hinzufügen <small>(optional)</small>"
 
 #: inc/dashboard/menuConfig.php:371
 msgid "Add a new menu section"
-msgstr "Neuen Menü-Abschnitt hinzufügen"
+msgstr "Neue Angebots-Kategorie hinzufügen"
 
 #: inc/dashboard/menuConfig.php:377
 msgid "COLLAPSE ALL"
@@ -1425,7 +1425,7 @@ msgstr "So"
 
 #: inc/dashboard/nonEventConfig.php:38
 msgid "Add another opening hour"
-msgstr "Weitere Öffnungszeit hinzufügen"
+msgstr "Weitere Öffnungszeiten hinzufügen"
 
 #: inc/dashboard/nonEventConfig.php:38
 msgid "eg: if you close for lunch and reopen in the evening."
@@ -1486,7 +1486,7 @@ msgstr "Neuen Standort hinzufügen"
 
 #: inc/dashboard/outletConfig.php:15
 msgid "Create a new menu"
-msgstr "Neues Menü erstellen"
+msgstr "Neues Angebot erstellen"
 
 #: inc/dashboard/outletConfig.php:26
 msgid "Add an outlet name"
@@ -1498,7 +1498,7 @@ msgstr "Bitte geben Sie einen Standortname ein. "
 
 #: inc/dashboard/outletConfig.php:35 inc/dashboard/outletConfig.php:69
 msgid "Please choose a menu"
-msgstr "Bitte wählen Sie ein Menü aus. "
+msgstr "Bitte wählen Sie ein Angebot aus. "
 
 #: inc/dashboard/paymentConfig.php:19
 msgid "Don't forget to get paid"
@@ -1571,7 +1571,7 @@ msgstr "Administrator"
 
 #: inc/dashboard/userConfig.php:47 inc/dashboard/userConfig.php:99
 msgid "Owner: can read/write account and close it down"
-msgstr "Besitzer: kann Konto lesen/bearbeiten und schließen"
+msgstr "Inhaber: kann Konto lesen/bearbeiten und schließen"
 
 #: inc/dashboard/userConfig.php:47 inc/dashboard/userConfig.php:99
 msgid "Owner"
@@ -1612,7 +1612,7 @@ msgstr "Erzählen Sie uns über Ihr Unternehmen"
 
 #: inc/dashboard/venueConfig.php:63
 msgid "Venue name"
-msgstr "Name des Unternehmens"
+msgstr "Unternehmens-Name "
 
 #: inc/dashboard/venueConfig.php:65
 msgid "Please type a venue name (max 100chars)"
@@ -1795,7 +1795,7 @@ msgstr "Die Ziellinie! "
 
 #: inc/finish/finish_content.php:28
 msgid "App mode"
-msgstr "App Modus"
+msgstr "App-Modus"
 
 #: inc/finish/finish_content.php:33
 msgid "After you setup a payment method, you can send it into the world!"
@@ -1851,7 +1851,7 @@ msgid ""
 "Describe your requirement. Include details like like the brand of ePOS you "
 "are using or the number of outlets you require."
 msgstr ""
-"Erläutern, was sie benötigen. Fügen Sie Informationen hinzu, wie z.B. "
+"Erläutern Sie, was Sie benötigen. Fügen Sie Informationen hinzu, wie z.B. "
 "welchen EPOS-Anbieter Sie nutzen oder wie viele Verkaufsstellen Sie "
 "benötigen."
 
@@ -1991,7 +1991,7 @@ msgstr "PreoDay"
 
 #: inc/shared/h.php:14
 msgid "Menu"
-msgstr "Menü"
+msgstr "Angebot"
 
 #: inc/shared/h.php:22
 msgid "Sign Up"
@@ -2008,27 +2008,27 @@ msgstr "Dashboard"
 #: inc/shared/h.php:31 inc/shared/h.php:34 inc/shared/h.php:37
 #: inc/shared/h.php:40
 msgid "Fulfilment App"
-msgstr "Fulfilment App"
+msgstr "Bestellungs-Plattform"
 
 #: inc/shared/h.php:45
 msgid "Change Settings"
-msgstr "Settings Ändern"
+msgstr "Einstellungen Ändern"
 
 #: inc/shared/h.php:52
 msgid "Home Screen"
-msgstr "Home Screen"
+msgstr "Startansicht"
 
 #: inc/shared/h.php:53
 msgid "Menu Screen"
-msgstr "Menü Screen"
+msgstr "Angebots-Ansicht "
 
 #: inc/shared/h.php:71
 msgid "No menus"
-msgstr "Keine Menüs"
+msgstr "Keine Angebote"
 
 #: inc/shared/h.php:78
 msgid "Update Events"
-msgstr "Update Veranstaltungen"
+msgstr "Veranstaltungen aktualisieren"
 
 #: inc/shared/h.php:84
 msgid "Manage Users"
@@ -3038,7 +3038,7 @@ msgstr "EINLOGGEN"
 #: inc/signin/signin_content.php:52 inc/signin/signin_content.php:55
 #: inc/signin/signin_content.php:58 inc/signin/signin_content.php:61
 msgid "Looking for the Fulfilment App?"
-msgstr "Suchen Sie die Fulfilment App?"
+msgstr "Suchen Sie die Bestellungs-Plattform"
 
 #: inc/signin/signin_content.php:52 inc/signin/signin_content.php:55
 #: inc/signin/signin_content.php:58 inc/signin/signin_content.php:61
@@ -3051,7 +3051,7 @@ msgid ""
 "Fulfilment App? Click the link at the bottom of this page."
 msgstr ""
 "Leider verfügen Sie nicht über die richtigen Zugriffsrechte. <br/><br/> Auf "
-"der Suche nach der Fulfilment App? Sie finden den Link am Seitenende. "
+"der Suche nach der Bestellungs-Plattform? Sie finden den Link am Seitenende. "
 
 #: inc/signup/signup_content.php:6
 msgid "Now, we just need your business name."
