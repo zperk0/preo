@@ -2,16 +2,18 @@
 angular.module('features',[]);
 angular.module('kyc.controllers', [])
 angular.module('kyc.resources', [])
+angular.module('kyc.charts',[])
+angular.module('kyc.services',[])
 
 // Declare app level module which depends on filters, and services
 angular.module('kyc', [
   'ngRoute',
-  'ngResource',
-  'kyc.filters',
-  'kyc.services',
+  'ngResource', 
   'kyc.directives',
   'kyc.controllers',
-  'kyc.resources'
+  'kyc.resources',
+  'kyc.services',
+  'kyc.charts'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {templateUrl: '/code/kyc/partials/dashboard.html', controller: 'DashboardCtrl'});

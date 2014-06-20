@@ -66,7 +66,7 @@
   <script src="/bower_components/gridster/dist/jquery.gridster.min.js"></script>
   <script src="/bower_components/highcharts/highcharts.js"></script>
   <script src="/code/kyc/js/app.js"></script>
-  <script src="/code/kyc/js/services.js"></script>
+  <script src="/code/kyc/js/services/outlets.js"></script>
   <script src="/code/kyc/js/controllers/dashboard.js"></script>
   <script src="/code/kyc/js/controllers/customers.js"></script>
   <script src="/code/kyc/js/controllers/reports.js"></script>
@@ -74,13 +74,24 @@
   <script src="/code/kyc/js/controllers/stream.js"></script>
   <script src="/code/kyc/js/controllers/menu.js"></script>
   <script src="/code/kyc/js/resources/outlet.js"></script>
-  <script src="/code/kyc/js/resources/orders.js"></script>
-  <script src="/code/kyc/js/filters.js"></script>
+  <script src="/code/kyc/js/resources/orders.js"></script>  
   <script src="/code/kyc/js/constants/chartType.js"></script>
+  <script src="/code/kyc/js/constants/colors.js"></script>
   <script src="/code/kyc/js/directives/directives.js"></script>
   <script src="/code/kyc/js/directives/chart/chart.js"></script>
   <script src="/code/kyc/js/directives/gridster/gridster.js"></script>
   <script src="/code/kyc/js/directives/highcharts/highcharts.js"></script>
+  <script src="/code/kyc/js/charts/allCharts.js"></script>
+  <script src="/code/kyc/js/charts/payingCustomers.js"></script>
+  <script src="/code/kyc/js/charts/ordersPerCustomer.js"></script>
+  <script src="/code/kyc/js/charts/averageOrderValue.js"></script>
+  <script src="/code/kyc/js/charts/itemsOrdered.js"></script>
+  <script src="/code/kyc/js/charts/ordersByOutlet.js"></script>
+  <script src="/code/kyc/js/charts/mostPopularItems.js"></script>
+  <script src="/code/kyc/js/charts/timeOfOrdersPlaced.js"></script>
+  <script src="/code/kyc/js/charts/customersPie.js"></script>
+  <script src="/code/kyc/js/charts/customersBar.js"></script>
+  <script src="/code/kyc/js/charts/revenue.js"></script>
 
   <script type="text/javascript">
   
