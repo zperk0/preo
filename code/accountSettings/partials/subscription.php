@@ -40,8 +40,8 @@
 		<p><? echo _("You currently don't have any active Premium Features on your account.")?></p>		
 		<p class='marginBottom100'><? echo _("Why not check out our")?> <a href='/shop' class='premiumFeatureColor'>  <? echo _("Available Premium Features")?> </a> <? echo _("and discover how they can start 
 			adding further value to your business today")?></p>			
-	</div ng-show='activeFeaturesCount >= 1'>
-			<table>
+	</div >
+			<table ng-show='activeFeaturesCount >= 1'>
 				<tr ng-repeat="accountFeature in accountFeatures | filter:{ status:'INSTALLED'}" ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>
 						<td > <img ng-src="{{accountFeature.status === 'INSTALLED' && accountFeature.feature.icon || '/img/icon_off.png'}}" /> </td>
 						<td> <span class='featureAppTitle' ng-show="accountFeature.feature.showAppTitle"> my order app </span> {{accountFeature.feature.name}} </td>
@@ -53,6 +53,7 @@
 						</td>
 				</tr>
 			</table>
+			<button class='preodayButton premium inlineButton' ng-click="navigateTo('/shop')"><? echo _("STORE") ?></button>
 	<div>
 		
 	</div>		

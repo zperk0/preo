@@ -392,6 +392,12 @@ form {
   -webkit-box-shadow: 0 0 0  !important;
   letter-spacing:1px;
   font-family:HelveticaNeueW01-45Ligh !important;
+
+  &.premium{
+    background-color:$premium !important;
+    border:none;    
+    font-size:95%;    
+  }
 }
 
 button.success {
@@ -2398,12 +2404,8 @@ span .currencySymbol {
 }
 
 .premiumFeatureWrapper {
-  float:left !important;
   min-width:280px;
-  margin-bottom: 30px;
-  .preodayButton {
-    font-size: 95%;
-  }
+  margin-bottom: 30px;  
 }
 
 .premiumFeatureTop {
@@ -2694,7 +2696,7 @@ span .currencySymbol {
     table{
       width:100%;
       padding:0;
-      margin:0;
+      margin:0 0 30px 0 ;
       border:none;
 
       td {
@@ -2704,7 +2706,7 @@ span .currencySymbol {
          width:auto;        
          
         &:first-child{
-          width:40px;        
+          width:30px;        
           &+td{
             width:40%;
           }
@@ -2721,11 +2723,9 @@ span .currencySymbol {
           }
         }
         img{
-          width:20px;
-          margin-left:10px;
+          width:100%;          
           background: $premium;
           border-radius: 1px;
-
         }
       }      
 
@@ -2815,13 +2815,6 @@ span .currencySymbol {
       font-size: 110% !important;
     }
 
-    button{
-      font-size:100%;
-    }
-
-    &>button{
-      margin-top:60px;
-    }
 
     .rowWrapper{
       position:relative;
@@ -2936,17 +2929,11 @@ span .currencySymbol {
   }
 }
 
-.profileWrapper{
-  padding-bottom:100px !important;   
-
-  .preodayButton{
-    position:relative;
-      top: 30px;
-      display: block;
-      clear: both;
+.profileWrapper{  
+  .rowWrapper:last-of-type{
+    margin-bottom:40px;
   }
-  small{
-    /* FIXME can't figure out why there's a gap between the input and the error msg */
+  small{    
     line-height:1em;
   }
  }

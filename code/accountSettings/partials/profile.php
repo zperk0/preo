@@ -41,9 +41,9 @@
 		<div class='rowWrapper'>
 			<label><?echo _("Password")?></label>
 			<div class='inputWrapper'>*********
-			<button class='preodayButton secondary' ng-click="changePassword()"><?echo _("CHANGE PASSWORD");?></button>
+				<button class='preodayButton secondary' ng-click="changePassword()"><?echo _("CHANGE PASSWORD");?></button>			
 			</div>
-			
+			<div class='clearfix'></div>			
 		</div>
 
 		<button ng-show="!isPosting && isEditing " class='preodayButton' ng-click="saveChanges()" type="submit" ><?echo _("SAVE CHANGES");?></button>
