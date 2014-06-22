@@ -1,8 +1,8 @@
 
-angular.module('kyc').constant('ChartType',
-	{
+angular.module('kyc').constant('ChartType', {
 		NUMBER: 0,
-  	BAR: 1,
-  	PIE: 2,
-  	AREA: 3
+	  	COLUMN: 1,
+	  	PIE: 2,
+	  	AREA: 3,
+	  	AREA_MODAL: 4
 	});

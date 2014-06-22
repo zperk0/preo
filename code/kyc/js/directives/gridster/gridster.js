@@ -241,15 +241,3 @@ angular.module('kyc.directives')
       }
     };
   }])
-
-  .directive('removable', function() {
-            return {
-              require: '^gridster',
-              link: function(scope, element, attr, controller) {
-                element.on('click', function() {
-                  // Have to remove the gridster li element
-                  controller.gridster().remove_widget(element.parents('li'));
-                });
-              }
-            };
-          });

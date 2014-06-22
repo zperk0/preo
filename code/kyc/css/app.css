@@ -22,7 +22,7 @@ body{
   background-color: #46535D !important;
   border: none;
   margin-bottom: 0px;
-  height: 161px;
+  height: 135px;
   padding: 0px !important;
 }
 
@@ -34,7 +34,8 @@ body{
 #navbar-menu ul li a{
   display: block;
   font-size: 16px !important;
-  padding: 30px 70px !important;
+  padding: 17px 0 !important;
+  width: 225px;
   background: none !important;
 }
 
@@ -48,6 +49,46 @@ body{
   color: #fff !important;  
 }
 
+#navbar-menu ul li.metrics a i{
+  background: url('/code/kyc/images/icons/metrics-icon-grey.png') center center no-repeat;
+}
+
+#navbar-menu ul li.metrics a.active i{
+  background: url('/code/kyc/images/icons/metrics-icon-white.png') center center no-repeat;
+}
+
+#navbar-menu ul li.stock a i{
+  background: url('/code/kyc/images/icons/stock-icon-grey.png') center center no-repeat;
+}
+
+#navbar-menu ul li.stock a.active i{
+  background: url('/code/kyc/images/icons/stock-icon-white.png') center center no-repeat;
+}
+
+#navbar-menu ul li.customers a i{
+  background: url('/code/kyc/images/icons/customer-icon-grey.png') center center no-repeat;
+}
+
+#navbar-menu ul li.customers a.active i{
+  background: url('/code/kyc/images/icons/customer-icon-white.png') center center no-repeat;
+}
+
+#navbar-menu ul li.reports a i{
+  background: url('/code/kyc/images/icons/reports-icon-grey.png') center center no-repeat;
+}
+
+#navbar-menu ul li.reports a.active i{
+  background: url('/code/kyc/images/icons/reports-icon-white.png') center center no-repeat;
+}
+
+#navbar-menu ul li.live-stream a i{
+  background: url('/code/kyc/images/icons/live-stream-icon-grey.png') center center no-repeat;
+}
+
+#navbar-menu ul li.live-stream a.active i{
+  background: url('/code/kyc/images/icons/live-stream-icon-white.png') center center no-repeat;
+}
+
 
 /**********End Navbar************/
 
@@ -57,6 +98,7 @@ body{
 
 .icon-large{
   font-size: 60px;
+  height: 56px;
   display: block !important;
 }
 
@@ -150,8 +192,8 @@ body{
   position: relative;
 }
 
-.actions-chart{
-  display: none;
+.container-partials .actions-chart{
+  height: 800px;
 }
 
 .content-actions{
@@ -187,7 +229,7 @@ body{
   font-size: 70px;
   color: #1476B7;
   display: block;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 #filterDashboard{
@@ -263,4 +305,217 @@ body{
 
 #content-table > table{
   width: 100%
+}
+
+
+
+/****** Flip Effect *******/
+
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000;
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  -o-perspective: 1000;  
+}
+
+.content-chart{
+  padding: 15px;
+}
+  /* flip the pane when hovered */
+  .flip-container.active .flipper {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+  }
+
+.flip-container, .front, .back {
+  width: 100%;
+  
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  -ms-transition: 0.6s;
+  -o-transition: 0.6s;
+
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;      
+
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;  
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);  
+}
+
+/****** End Flip Effect *******/
+
+
+.pull-left{
+  float: left;
+}
+
+.pull-right{
+  float: right;
+}
+
+.numberLeft{
+  font-size: 40px;
+  color: #1476B7
+}
+
+.numberRight{
+  font-size: 30px;
+  font-weight: 600;
+  color: #8ABE4F
+}
+
+.top-chart{
+  padding: 10px 0;
+}
+
+.table-list thead th{
+  cursor: pointer;
+}
+
+table .sort i{
+  height: 0px;
+  display: block;
+}
+
+.table-striped{
+  border-collapse: collapse;
+  border
+}
+
+.table-striped, .table-striped td, .table-striped th{
+  border: 1px solid #B8BABC;
+}
+
+.table-striped th input, .table-striped td input{
+  margin: 0px;
+}
+
+.table-striped thead tr th{
+  padding: 15px;
+  background-color: #F3F4F4;
+  color: #797B7D;
+  font-weight: 400;
+}
+
+
+.table-striped tbody tr td{
+  padding: 10px 15px;
+}
+
+#content-table{
+  padding: 0 50px;
+  height: 600px; 
+  overflow-y: scroll;
+  margin-bottom: 50px;
+}
+
+.container-partials{
+  height: 800px;
+}
+
+.input-search{
+  font-size: 14px !important;
+}
+
+.modal-preoday{
+  background: none;
+  padding: 0px;
+  border: none;
+  top: 2em;
+}
+
+.content-modal{
+  background-color: #fff;
+  padding: 1.875em;
+}
+
+.options-modal{
+ margin-top: 30px; 
+}
+
+.inlineBlock{
+  display: inline-block;
+  width: 100%
+}
+
+.percent-modal{
+  color: #8ABE4F;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+}
+
+.percent-modal.negative{
+  color: #533A86
+}
+
+.title-option-modal{
+  color: #655D5D;
+  text-align: center;
+  display: block;
+  font-size: 15px;
+  margin-bottom: 0px;
+}
+
+.block-modal{
+  margin-right: 20px;
+}
+
+.button-option{
+  background-color: #DBDBD9;
+  padding: 10px 45px;
+  font-size: 35px;
+  font-weight: 600;
+  color: #46535D;
+  cursor: pointer;
+  display: block;
+  margin: 10px 0
+}
+
+.block-modal.active .button-option{
+  background-color: #1476B7;
+  color: #fff;
 }

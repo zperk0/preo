@@ -27,35 +27,17 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li>
-                <a href="#/dashboard" active-link="active"><i class="fa fa-signal icon-large"></i>Metrics</a>
+              <li class="metrics">
+                <a href="#/dashboard" active-link="active"><i class="fa icon-large"></i>Metrics</a>
               </li>
-              <li><a href="#/stock" active-link="active"><i class="fa fa-arrows-alt icon-large"></i>Stock</a></li>
-              <li><a href="#/customers" active-link="active"><i class="fa fa-user icon-large"></i>Customers</a></li>
-              <li><a href="#/reports" active-link="active"><i class="fa fa-search icon-large"></i>Reports</a></li>
-              <li><a href="#/stream" active-link="active"><i class="fa fa-rss icon-large"></i>Live stream</a></li>
+              <li class="stock"><a href="#/stock" active-link="active"><i class="fa icon-large"></i>Stock</a></li>
+              <li class="customers"><a href="#/customers" active-link="active"><i class="fa icon-large"></i>Customers</a></li>
+              <li class="reports"><a href="#/reports" active-link="active"><i class="fa icon-large"></i>Reports</a></li>
+              <li class="live-stream"><a href="#/stream" active-link="active"><i class="fa icon-large"></i>Live stream</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
       </section>
     </nav>
-    <div class="container-fluid" id="container-search">
-    <div class="container">
-      <form class="navbar-form navbar-left" role="search" ng-submit="fetchData()">
-        <div class="form-group">
-          <select name="outlets" id="outlets" multiple>
-            <option ng-repeat="outlet in outlets" value="outlet.id">{{outlet.name}}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="01/01/2014">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="01/01/2014">
-        </div>
-        <button type="submit" class="btn btn-default">Update</button>
-      </form>   
-    </div>
-  </div>
   </header>
 
 
@@ -64,13 +46,12 @@
       <div class="container overflow">
 
         <div class="large-6 columns">
-          <form>
+          <form class="navbar-form navbar-left" role="search" ng-submit="fetchData()">
             <div class="row">
               <div class="large-10 columns">
                 <label>Outlet
-                  <select name="" id="">
-                    <option value="">Option 1</option>
-                    <option value="">Option 2</option>
+                  <select name="outlets" id="outlets" class="dropdown pdDropdown" multiple>
+                    <option ng-repeat="outlet in outlets" value="outlet.id">{{outlet.name}}</option>
                   </select>
                 </label>
               </div>
@@ -83,16 +64,16 @@
           </form>
         </div>
         <div class="large-6 columns">
-          <form>
+          <form ng-submit="fetchData()">
             <div class="row">
               <div class="small-5 columns">
                 <label>Data
-                  <input type="text" class="form-control" placeholder="01/02/2014">
+                  <input type="text" class="form-control input-search dropdown pdDropdown" placeholder="01/02/2014" datepicker ng-model="search.start_date" />
                 </label>
               </div>
               <div class="small-5 columns">
                 <label>&nbsp;
-                  <input type="text" class="form-control" placeholder="01/02/2014">
+                  <input type="text" class="form-control input-search dropdown pdDropdown" placeholder="01/02/2014" datepicker ng-model="search.end_date" />
                 </label>
               </div>
               <div class="small-2 columns">
@@ -115,7 +96,8 @@
   <script src="/bower_components/gridster/dist/jquery.gridster.min.js"></script>
   <script src="/bower_components/highcharts/highcharts.js"></script>
   <script src="/code/kyc/js/app.js"></script>
-  <script src="/code/kyc/js/services.js"></script>
+  <script src="/code/kyc/js/services/chart.js"></script>
+  <script src="/code/kyc/js/services/grid.js"></script>
   <script src="/code/kyc/js/controllers/dashboard.js"></script>
   <script src="/code/kyc/js/controllers/customers.js"></script>
   <script src="/code/kyc/js/controllers/reports.js"></script>
@@ -130,6 +112,7 @@
   <script src="/code/kyc/js/directives/chart/chart.js"></script>
   <script src="/code/kyc/js/directives/gridster/gridster.js"></script>
   <script src="/code/kyc/js/directives/highcharts/highcharts.js"></script>
+  <script src="/code/kyc/js/directives/datepicker/datepicker.js"></script>
 
   <script type="text/javascript">
   
