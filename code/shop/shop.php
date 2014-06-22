@@ -32,7 +32,7 @@
             <div class='premiumFeatureBottom'>
                 <h4 class='helveticaneueWMedi' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal"><span ng-show='feature.showAppTitle' > My order app </span>{{feature.name}}</h4>
                 <p>{{feature.shortDescription}}</p>
-                <div class='priceWrapper' ng-show="feature.active">
+                <div class='priceWrapper' ng-show="feature.active && feature.trialPeriod == 0">
                   <div class='price helveticaneueWMedi'>£{{feature.subscriptionPrice}}/month</div>                
                   <ul>
                     <li ng-show="feature.upfrontPrice>0">+ &pound;{{feature.upfrontPrice}} <?= _("one-off payment")?></li>
@@ -43,6 +43,9 @@
                 </div>
                 <div class='comingSoon' ng-show="!feature.active">
                   <button ng-show="!isFeatureOwned(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >COMING SOON</button>
+                </div>
+                <div class='comingSoon' ng-show="feature.trialPeriod > 0">
+                  <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >FREE {{feature.trialPeriod}} DAY TRIAL</button>
                 </div>
             </div>
         </div>
@@ -56,7 +59,7 @@
         <img ng-src='{{selectedFeature.feature.icon}}'/>      
         <h4>{{selectedFeature.feature.name}}</h4>
       </div>
-      <div class='rightWrapper priceWrapper' ng-show="selectedFeature.feature.active">
+      <div class='rightWrapper priceWrapper' ng-show="selectedFeature.feature.active && selectedFeature.feature.trialPeriod == 0">
         <div class='price helveticaneueWMedi'>£{{selectedFeature.feature.subscriptionPrice}}/month</div>                
         <ul>
           <li ng-show="selectedFeature.feature.upfrontPrice>0">+ &pound;{{selectedFeature.feature.upfrontPrice}} <?= _("one-off payment")?></li>
@@ -67,6 +70,9 @@
       </div>
       <div class='comingSoon' ng-show="!selectedFeature.feature.active">
           <button ng-show="!isFeatureOwned(feature)" class='preodayButton secondary noclick' >COMING SOON</button>
+      </div>
+      <div class='comingSoon' ng-show="selectedFeature.feature.trialPeriod > 0">
+        <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="startTrial(selectedFeature.feature)">FREE {{selectedFeature.feature.trialPeriod}} DAY TRIAL</button>
       </div>
       <div class='clearfix'></div>
     </div>

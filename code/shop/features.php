@@ -12,6 +12,7 @@ var features = [
 													<?echo json_encode(_("1 set of changes per month"))?>],
 		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
 		icon:'/img/asisstant-icon.png',
+		trialPeriod:0,
 		active:true
 	},
 	{
@@ -21,6 +22,7 @@ var features = [
 		name: <? echo json_encode(_("Independent"))?>,
 		upfrontPrice: 500,
 		subscriptionPrice:20,		
+		trialPeriod:0,
 		descriptionFeatures :[<?echo json_encode(_("Create, submit, manage and maintain your own branded app in the App Store, Google Play and Windows Phone Store "))?>,
 													<?echo json_encode(_("Manage and resolve any issues or queries"))?>,
 													<?echo json_encode(_("Provide quarterly updates/changes to the app"))?>],
@@ -35,6 +37,7 @@ var features = [
 		name: <? echo json_encode(_("Loyalty"))?>,
 		upfrontPrice: 0,
 		subscriptionPrice:0,
+		trialPeriod:0,
 		descriptionFeatures :[<?echo json_encode(_("Mobile Stamp Cards"))?>,
 													<?echo json_encode(_("Points System"))?>,
 													<?echo json_encode(_("Sales analyser"))?>,
@@ -45,11 +48,12 @@ var features = [
 	},	
 	{
 		id: 4,
-		description: <? echo json_encode(_("Using Preoday, you move closer to your customers.  With our Know Your Customer module you will have the data you need to manage and market to them online.  Information is presented in exciting charts and in an easy-to-use format, allowing fresh insights into buying patterns and improved customer service.  Whether you want to offer special deals to favoured customers, manage stock flows better, understand where new business is coming from, or simply plot your app's growth, it’s all there and ready for you in Know Your Customer.")) ?>,
+		description: <? echo json_encode(_("Using Preoday, you move closer to your customers. With our Know Your Customer module you will have the data you need to manage and market to them online.  Information is presented in exciting charts and in an easy-to-use format, allowing fresh insights into buying patterns and improved customer service.  Whether you want to offer special deals to favoured customers, manage stock flows better, understand where new business is coming from, or simply plot your app's growth, it’s all there and ready for you in Know Your Customer.")) ?>,
 		shortDescription: <? echo json_encode(_("Get extensive reports and analytics on your mobile customers"))?>,		
 		name: <? echo json_encode(_("Know your customer"))?>,
 		upfrontPrice: 0,
 		subscriptionPrice:20,	
+		trialPeriod:30,
 		descriptionFeatures :[<?echo json_encode(_("Customer profiles and order histories"))?>,
 													<?echo json_encode(_("Order analytics and easy-to-use charts"))?>,
 													<?echo json_encode(_("Standard and customised reporting"))?>,
@@ -60,6 +64,7 @@ var features = [
 		active:true
 	}	
 ];
+
 features.sort(function(a, b){
 			if (a.active && b.active)
 				return 0
