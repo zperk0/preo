@@ -21,7 +21,7 @@ angular.module('kyc.directives').
         $chart.height( heightParent );
 
   			if ( ng.chart.showChart ){
-<<<<<<< HEAD
+
           ng.chart.highcharts = $chartService.getChart(  ng.chart.value.type, ng.chart.value.data );
 
           if ( heightParent ) {
@@ -43,11 +43,9 @@ angular.module('kyc.directives').
             ng.chart.highcharts.options.chart.height = heightParent;
           }
 
-=======
           console.log(ng.chart.value.type,"ng.chart.value.type");
           ng.chart.highcharts = getChartObject(ng.chart.value.type);  			
           
->>>>>>> fetch_HEAD
   			}
 
         ng.openModal = function() {
@@ -65,14 +63,9 @@ angular.module('kyc.directives').
               }
 
               $scope.title = ng.chart.title;
-<<<<<<< HEAD
+
 
               $scope.selectOption = function( option ) {
-=======
-            }
-          });
-        });
->>>>>>> fetch_HEAD
 
                 var itemActive = $scope.chart.value.modal.options.filter(function(item) {
                   return item.active == true;
@@ -89,11 +82,11 @@ angular.module('kyc.directives').
 
         };
 
-<<<<<<< HEAD
+
         ng.showOptions = function() {
           $flipContainer.addClass('active');
         };
-=======
+
         function getChartObject(type){
           switch (type){
             case ChartType.BAR:
@@ -188,7 +181,7 @@ angular.module('kyc.directives').
         }
   		
   	
->>>>>>> fetch_HEAD
+
 
         ng.hideOptions = function() {
           $flipContainer.removeClass('active');
