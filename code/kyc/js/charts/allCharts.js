@@ -1,6 +1,6 @@
 angular.module('kyc.charts')
 .factory('AllCharts',['PayingCustomers','OrdersPerCustomer','AverageOrderValue','ItemsOrdered','OrdersByOutlet','MostPopularItems','TimeOfOrdersPlaced',
-												'CustomersPie','CustomersBar','Revenue'
+												'CustomersPie','CustomersBar','Revenue',
 	function(PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
 			CustomersPie,CustomersBar,Revenue) {
 

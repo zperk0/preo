@@ -10,10 +10,14 @@ angular.module('kyc', [
   'ngRoute',
   'ngResource', 
   'kyc.directives',
-  'kyc.controllers',
   'kyc.resources',
   'kyc.services',
-  'kyc.charts'
+  'kyc.charts',
+  'kyc.controllers',  
+  'kyc.resources',
+  'kyc.filters',
+  'mm.foundation'
+
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {templateUrl: '/code/kyc/partials/dashboard.html', controller: 'DashboardCtrl'});

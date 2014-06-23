@@ -1,31 +1,73 @@
+<div class="container container-partials">
+	<div class="flip-container">
+		<div class="flipper">
+			<div class="front" id="content-list">
+				
+				<div class="header-list overflow">
+					<span class="pull-left">Menu items</span>
 
-<div class="container" id="content-list">
-	
-	<div class="header-list overflow">			
-		<span class="pull-left">Menu items</span>
+					<a href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
+						<i class="fa fa-plus"></i>
+					</a>
+				</div>
 
-		<a href="javascript:void(0)" class="pull-right" >
-			<i class="fa fa-plus"></i>
-		</a>
+				<div id="content-table">
+					<table class="table table-striped table-list" ng-init="orderBy = 'name'; direction = false">
+					  <thead>
+					  	<tr>
+					  		<th width="10">
+					  			<input type="checkbox" name="" id="" />
+					  		</th>
+					  		<th ng-click="orderBy = 'name'; direction=!direction">
+					  			Item
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>				  			
+					  		</th>
+					  		<th ng-click="orderBy = 'quantity'; direction=!direction">
+					  			Quantity Ordered
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>				  			
+					  		</th>
+					  	</tr>
+					  </thead>
+					  <tbody>
+					  	<tr ng-repeat="item in stock | orderObjectBy:orderBy:direction">
+					  		<td><input type="checkbox"></td>
+					  		<td>{{ item.name }}</td>
+					  		<td>{{ item.quantity }}</td>
+					  	</tr>
+					  </tbody>
+					</table>		
+				</div>
+
+			</div>
+
+			<div class="actions-chart back">
+				<div class="header-chart overflow">
+				
+					<a href="javascript:void(0)" class="pull-left" ng-click="hideOptions()">
+						<i class="fa fa-arrow-left icon-white"></i>
+					</a>
+
+				</div>
+
+				<div class="content-actions">
+					<h4 class="title-white">Export as...</h4>
+
+					<div class="buttons">
+						<button class="pull-left btn btn-default" >
+							PDF
+						</button>
+						<button class="pull-left btn btn-default">
+							CSV
+						</button>
+					</div>
+				</div>
+			</div>			
+		</div>
 	</div>
-
-	<div id="content-table">
-		<table class="table table-striped">
-		  <thead>
-		  	<tr>
-		  		<th></th>
-		  		<th>Item</th>
-		  		<th>Quantity Ordered</th>
-		  	</tr>
-		  </thead>
-		  <tbody>
-		  	<tr ng-repeat="item in stock">
-		  		<td><input type="checkbox"></td>
-		  		<td>{{ item.name }}</td>
-		  		<td>{{ item.quantity }}</td>
-		  	</tr>
-		  </tbody>
-		</table>		
-	</div>
-
 </div>

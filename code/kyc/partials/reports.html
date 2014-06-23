@@ -1,70 +1,129 @@
-<div class="container-fluid" id="container-search">
-	<div class="container">
+<div class="container container-partials">
+	<div class="flip-container">
+		<div class="flipper">
+			<div class="front" id="content-list">
+				
+				<div class="header-list overflow">			
+					<span class="pull-left">Reports</span>
 
-			<form class="navbar-form navbar-left" role="search">
-			  <div class="form-group">
-			    <select name="" id="">
-			    	<option value="">Option 1</option>
-			    	<option value="">Option 2</option>
-			    </select>
-			  </div>
-			  <button type="submit" class="btn btn-default">Update</button>
-			</form>		
+					<a href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
+						<i class="fa fa-plus"></i>
+					</a>
+				</div>
 
-			<form class="navbar-form navbar-right" role="search">
-			  <div class="form-group">
-			    <input type="text" class="form-control" placeholder="01/01/2014">
-			  </div>
-			  <div class="form-group">
-			    <input type="text" class="form-control" placeholder="01/02/2014">
-			  </div>
-			  <button type="submit" class="btn btn-default">Update</button>
-			</form>		
+				<div id="content-table" >
+					<table class="table table-striped table-list" ng-init="orderBy = 'outlet'; direction = false">
+					  <thead>
+					  	<tr>
+					  		<th width="10">
+					  			<input type="checkbox" name="" id="" />
+					  		</th>
+					  		<th width="60" ng-click="orderBy = 'id'; direction=!direction">
+					  			ID
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th width="80" ng-click="orderBy = 'outlet'; direction=!direction">
+					  			Outlet
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'name'; direction=!direction">
+					  			Name
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'time'; direction=!direction">
+					  			Time
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th width="70" ng-click="orderBy = 'quantity'; direction=!direction">
+					  			Qtd
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'item'; direction=!direction">
+					  			Item
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'modifier'; direction=!direction">
+					  			Modifier
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th width="80" ng-click="orderBy = 'total'; direction=!direction">
+					  			Total
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'status'; direction=!direction">
+					  			Status
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  	</tr>
+					  </thead>
+					  <tbody>
+					  	<tr ng-repeat="report in reports | orderBy:orderBy:direction">
+					  		<td><input type="checkbox" name="" id=""></td>
+					  		<td>{{ report.id }}</td>
+					  		<td>{{ report.outlet }}</td>
+					  		<td>{{ report.name }}</td>
+					  		<td>{{ report.time }}</td>
+					  		<td>{{ report.quantity }}</td>
+					  		<td>{{ report.item }}</td>
+					  		<td>{{ report.modifier }}</td>
+					  		<td>{{ report.total }}</td>
+					  		<td>{{ report.status }}</td>
+					  	</tr>
+					  </tbody>
+					</table>		
+				</div>
+
+			</div>
+
+			<div class="actions-chart back">
+				<div class="header-chart overflow">
+				
+					<a href="javascript:void(0)" class="pull-left" ng-click="hideOptions()">
+						<i class="fa fa-arrow-left icon-white"></i>
+					</a>
+
+				</div>
+
+				<div class="content-actions">
+					<h4 class="title-white">Export as...</h4>
+
+					<div class="buttons">
+						<button class="pull-left btn btn-default" >
+							PDF
+						</button>
+						<button class="pull-left btn btn-default">
+							CSV
+						</button>
+					</div>
+				</div>
+			</div>				
 		</div>
 	</div>
-</div>
-
-<div class="container" id="content-list">
-	
-	<div class="header-list overflow">			
-		<span class="pull-left">Reports</span>
-
-		<a href="javascript:void(0)" class="pull-right" >
-			<i class="fa fa-plus"></i>
-		</a>
-	</div>
-
-	<div id="content-table">
-		<table class="table table-striped">
-		  <thead>
-		  	<tr>
-		  		<th>[]</th>
-		  		<th>ID</th>
-		  		<th>Outlet</th>
-		  		<th>Name</th>
-		  		<th>Time</th>
-		  		<th>Qty</th>
-		  		<th>Item</th>
-		  		<th>Modifier</th>
-		  		<th>Total</th>
-		  		<th>Status</th>
-		  	</tr>
-		  </thead>
-		  <tbody>
-		  	<tr ng-repeat="report in reports">
-		  		<td><input type="checkbox" name="" id=""></td>
-		  		<td>{{ report.id }}</td>
-		  		<td>{{ report.outlet }}</td>
-		  		<td>{{ report.name }}</td>
-		  		<td>{{ report.time }}</td>
-		  		<td>{{ report.quantity }}</td>
-		  		<td>{{ report.item }}</td>
-		  		<td>{{ report.modifier }}</td>
-		  		<td>{{ report.total }}</td>
-		  		<td>{{ report.status }}</td>
-		  	</tr>
-		  </tbody>
-		</table>		
-	</div>
-
 </div>

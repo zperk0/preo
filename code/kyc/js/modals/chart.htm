@@ -1,0 +1,21 @@
+<div class="content-modal">
+	<h4 class="title-modal-chart">{{ title }}</h4>
+
+	<div class="container-modal-chart">
+		<div ng-if="chart.showChart">
+			<highchart id="chart_{{ chart.num }}" config="chart.highcharts"></highchart>
+		</div>
+
+		<div ng-if="!chart.showChart">
+			<span class="largerNumber">{{ chart.value }}</span>
+		</div>
+	</div>
+</div>
+
+<div class="options-modal content-modal overflow" ng-if="chart.value.modal.options">
+	<div class="block-modal pull-left" ng-class="{ active: option.active }" ng-repeat="option in chart.value.modal.options">
+		<p class="title-option-modal">{{ option.name }}</p>
+		<a href="javascript:void(0)" class="button-option" ng-click="selectOption( option )">{{ option.value }}</a>
+		<span class="percent-modal {{ option.status }}">{{ option.percent }}</span>
+	</div>
+</div>
