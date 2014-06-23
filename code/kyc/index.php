@@ -90,6 +90,7 @@
 
 </div>
   
+  <script src="//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" type="text/javascript"></script>
   <script src="/js/angular_all.min.js"></script>  
   <script src="/bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
   <script src="/bower_components/gridster/dist/jquery.gridster.min.js"></script>
@@ -98,6 +99,7 @@
   <script src="/code/kyc/js/services/chart.js"></script>
   <script src="/code/kyc/js/services/grid.js"></script>
   <script src="/code/kyc/js/services/outlets.js"></script>
+  <script src="/code/kyc/js/services/pusher.js"></script>
   <script src="/code/kyc/js/services/stream.js"></script>
   <script src="/code/kyc/js/controllers/dashboard.js"></script>
   <script src="/code/kyc/js/controllers/customers.js"></script>
@@ -131,7 +133,7 @@
   
   //always on session after login
   angular.module('kyc').constant('ACCOUNT_ID',<? echo $_SESSION['account_id']?>);
-
+  angular.module('kyc').constant('PUSHER_KEY', '63aabf4f8531a582c3e6');
   function modal_url( url ) {
     return '/code/kyc/js/modals/' + url + '.htm';
   }  

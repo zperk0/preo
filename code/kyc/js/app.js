@@ -26,8 +26,8 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/reports', {templateUrl: '/code/kyc/partials/reports.html', controller: 'ReportsCtrl'});
   $routeProvider.when('/stream', {templateUrl: '/code/kyc/partials/stream.html', controller: 'StreamCtrl',
      resolve: {
-        load: function ($route, Stream) {          
-          return Stream.load();            
+        load: function ($route, StreamService) {          
+          return StreamService.load();            
         }
     }
   });
