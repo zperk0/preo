@@ -101,6 +101,7 @@
   <script src="/code/kyc/js/services/outlets.js"></script>
   <script src="/code/kyc/js/services/pusher.js"></script>
   <script src="/code/kyc/js/services/stream.js"></script>
+  <script src="/code/kyc/js/services/orders.js"></script>
   <script src="/code/kyc/js/controllers/dashboard.js"></script>
   <script src="/code/kyc/js/controllers/customers.js"></script>
   <script src="/code/kyc/js/controllers/reports.js"></script>

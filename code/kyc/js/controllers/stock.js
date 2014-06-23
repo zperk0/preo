@@ -1,16 +1,11 @@
-angular.module('kyc.controllers').controller('StockCtrl', ['$scope', function($scope) {
+angular.module('kyc.controllers').controller('StockCtrl', ['$scope','OrderService', function($scope,OrderService) {
 
-  	$scope.stock = {};
-
-	$scope.$on('preoday.allData', function( event, data ) {
-		$scope.allData = data.allData;
-		prepareScopeStock();
-	});
-
+  $scope.stock = {};	
+  var allOrders = OrderService.getOrders();
+	
 	function prepareScopeStock(){
-
-		if ( $scope.allData ){
-			angular.forEach($scope.allData,function(row){
+		if ( allOrders ){
+			angular.forEach(allOrders,function(row){
 				angular.forEach(row.items,function(item){
 					var itemId  = item.id;
 						if ($scope.stock[itemId] === undefined){						

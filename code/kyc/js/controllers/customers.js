@@ -1,17 +1,13 @@
-angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope', function($scope) {
+angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderService', function($scope,OrderService) {
 
 	$scope.customers = {};
 
-	$scope.$on('preoday.allData', function( event, data ) {
-		$scope.allData = data.allData;
-		prepareScopeCustomers();
-	});
-
-
+	var allOrders = OrderService.getOrders();
+	prepareScopeCustomers();
 	function prepareScopeCustomers(){
 		
-		if ( $scope.allData ) {
-			angular.forEach($scope.allData,function(row){
+		if ( allOrders ) {
+			angular.forEach(allOrders,function(row){
 						var customerId  = row.userId;
 						if ($scope.customers[customerId] === undefined){
 							$scope.customers[customerId] = {
@@ -27,10 +23,6 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope', functio
 		}
 	}
 	
-	prepareScopeCustomers();
-
-
-
     $scope.showOptions = function() {
       angular.element('.flip-container').addClass('active');
     };

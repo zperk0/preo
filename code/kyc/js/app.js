@@ -20,10 +20,34 @@ angular.module('kyc', [
 
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/dashboard', {templateUrl: '/code/kyc/partials/dashboard.html', controller: 'DashboardCtrl'});
-  $routeProvider.when('/stock', {templateUrl: '/code/kyc/partials/stock.html', controller: 'StockCtrl'});
-  $routeProvider.when('/customers', {templateUrl: '/code/kyc/partials/customers.html', controller: 'CustomersCtrl'});
-  $routeProvider.when('/reports', {templateUrl: '/code/kyc/partials/reports.html', controller: 'ReportsCtrl'});
+  $routeProvider.when('/dashboard', {templateUrl: '/code/kyc/partials/dashboard.html', controller: 'DashboardCtrl',
+    resolve:{
+       load: function ($route, AllCharts) {          
+          return AllCharts.promise;            
+        }
+    }
+  });
+  $routeProvider.when('/stock', {templateUrl: '/code/kyc/partials/stock.html', controller: 'StockCtrl',
+      resolve:{
+       load: function ($route, OrderService) {          
+          return OrderService.load();            
+        }
+    }
+  });
+  $routeProvider.when('/customers', {templateUrl: '/code/kyc/partials/customers.html', controller: 'CustomersCtrl',
+    resolve:{
+       load: function ($route, OrderService) {          
+          return OrderService.load();            
+        }
+    }
+  });
+  $routeProvider.when('/reports', {templateUrl: '/code/kyc/partials/reports.html', controller: 'ReportsCtrl',
+    resolve:{
+       load: function ($route, OrderService) {          
+          return OrderService.load();            
+        }
+    }
+  });
   $routeProvider.when('/stream', {templateUrl: '/code/kyc/partials/stream.html', controller: 'StreamCtrl',
      resolve: {
         load: function ($route, StreamService) {          

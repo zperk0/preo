@@ -22,9 +22,8 @@ angular.module('kyc.services')
       reset: function() {
         console.log('reseting',pusher);
         if ( pusher ) {
-          // Unsubscribe to all events
           var chans = pusher.allChannels();
-          angular.forEeach(chans, function(channel) {
+          angular.forEach(chans, function(channel) {
             channel.unbind();
             pusher.unsubscribe(channel.name);
           })

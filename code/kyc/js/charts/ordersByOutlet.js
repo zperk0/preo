@@ -1,9 +1,11 @@
 angular.module('kyc.charts')
-.factory('OrdersByOutlet',['ChartType','Colors','Outlets', function(ChartType,Colors,Outlets) {
+.factory('OrdersByOutlet',['ChartType','Colors','OutletService', function(ChartType,Colors,OutletService) {
 
 	var type = ChartType.PIE;
 	var ordersByOutlet = {};	
     var colorIndex = 0;
+    var title = 'Orders By Outlet';
+
 
 	function setData(order){
         var outletId = order.outletId;
@@ -16,10 +18,12 @@ angular.module('kyc.charts')
 	}
 
 	function getData(){
+        console.log('getting data here',OutletService.getOutlets());
         var ordersByOutletArray = [];
         angular.forEach(ordersByOutlet,function(item,outletId){
+            console.log("getting name:",outletId,OutletService.getOutletName(outletId));
             ordersByOutletArray.push({
-                name: Outlets.getOutletName(outletId),  
+                name: OutletService.getOutletName(outletId),  
                 colors: Colors[colorIndex],
                 y:item.y
             });
@@ -31,9 +35,19 @@ angular.module('kyc.charts')
     	return type; 
     }
 
+
+    function getHighChart(){
+        return {
+            type:type,
+            title:title,
+            data:getData()
+        }
+    }
+
     return {
         getData:getData,
         getType:getType,
-        setData:setData
+        setData:setData,
+        getHighChart:getHighChart
     };
 }]);

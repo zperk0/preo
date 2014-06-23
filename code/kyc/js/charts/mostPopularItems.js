@@ -1,9 +1,11 @@
 angular.module('kyc.charts')
-.factory('MostPopularItems',['ChartType','Colors','Outlets', function(ChartType,Colors,Outlets) {
+.factory('MostPopularItems',['ChartType','Colors', function(ChartType,Colors) {
 
 	var type = ChartType.PIE;
     var colorIndex = 0;
     var items = {};
+    var title = 'Most Popular Items';
+
     var top5 = [
         {y:0,color:Colors[0]},
         {y:0,color:Colors[1]},
@@ -14,10 +16,10 @@ angular.module('kyc.charts')
     
 	function setData(order){
         angular.forEach(order.items,function(item){
-            if (items[item.id] !== undefined)
-                items[item.id].quantity++;
+            if (items[item.menuItemId] !== undefined)
+                items[item.menuItemId].quantity++;
             else
-                items[item.id]={
+                items[item.menuItemId]={
                     name:item.name,
                     quantity:1
                 };
@@ -38,6 +40,12 @@ angular.module('kyc.charts')
                 }
             }
         }
+        angular.forEach(top5,function(value,index){
+            if (value.name === undefined){                
+                delete top5[index];
+            }
+        })
+        
     }
 
 	function getData(){
@@ -47,10 +55,20 @@ angular.module('kyc.charts')
     	return type; 
     }
 
+    function getHighChart(){
+        return {
+            type:type,
+            title:title,
+            data:getData(),
+
+        }
+    }
+
     return {
         getData:getData,
         getType:getType,
         setData:setData,
-        onSetDataComplete:onSetDataComplete
+        onSetDataComplete:onSetDataComplete,
+        getHighChart:getHighChart
     };
 }]);

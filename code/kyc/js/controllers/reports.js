@@ -1,32 +1,16 @@
-angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', function($scope) {
+angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope','OrderService', function($scope,OrderService) {
 
 	$scope.reports = [];
 
 	var outlets = false;
 	var data = false;
-
-	$scope.$on('preoday.allData', function( event, data ) {
-		$scope.allData = data.allData;
-		data = true;
-
-		if ( outlets ) {
-			prepareScopeReports();
-		}
-	});
-
-	$scope.$on('preoday.outlets', function( event, data ) {
-		$scope.outlets = data.outlets;
-
-		outlets = true;
-		if ( data ) {
-			prepareScopeReports();	
-		}
-	});
+	var allOrders = OrderService.getOrders();
+	prepareScopeReports();
 
 	function prepareScopeReports(){
 
-		if ( $scope.allData ) {
-			angular.forEach($scope.allData,function(row){
+		if ( allOrders) {
+			angular.forEach(allOrders,function(row){
 				angular.forEach(row.items,function(item){
 					$scope.reports.push({
 						id:row.id,

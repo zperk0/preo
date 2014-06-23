@@ -3,6 +3,7 @@ angular.module('kyc.charts')
 
 	var type = ChartType.PIE;
     var colorIndex = 0;    
+    var title = 'Customers (PIE)'
     var data = [
         {name:_tr("New"),y:0,color:Colors[0]},
         {name:_tr("Returning"),y:0,color:Colors[1]}    
@@ -32,9 +33,18 @@ angular.module('kyc.charts')
     	return type; 
     }
 
+     function getHighChart(){
+        return {
+            type:type,
+            title:title,
+            data:getData()
+        }
+    }
+
     return {
         getData:getData,
         getType:getType,
         setData:setData,
+        getHighChart:getHighChart
     };
 }]);

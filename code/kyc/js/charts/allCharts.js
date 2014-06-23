@@ -1,14 +1,14 @@
 angular.module('kyc.charts')
-.factory('AllCharts',['PayingCustomers','OrdersPerCustomer','AverageOrderValue','ItemsOrdered','OrdersByOutlet','MostPopularItems','TimeOfOrdersPlaced',
+.factory('AllCharts',['$q','OrderService','PayingCustomers','OrdersPerCustomer','AverageOrderValue','ItemsOrdered','OrdersByOutlet','MostPopularItems','TimeOfOrdersPlaced',
 												'CustomersPie','CustomersBar','Revenue',
-	function(PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
+	function($q,OrderService,PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
 			CustomersPie,CustomersBar,Revenue) {
-
-		var charts = {
+    var defer = $q.defer();
+	var charts = {
     		payingCustomers:PayingCustomers,
     		ordersPerCustomer:OrdersPerCustomer,
     		averageOrderValue:AverageOrderValue,
-    		ItemsOrdered:ItemsOrdered,
+    		itemsOrdered:ItemsOrdered,
     		ordersByOutlet:OrdersByOutlet,
     		mostPopularItems:MostPopularItems,
     		timeOfOrdersPlaced:TimeOfOrdersPlaced,
@@ -17,5 +17,33 @@ angular.module('kyc.charts')
     		revenue:Revenue
   	}
 
-    return charts;
+    OrderService.load(prepareCharts)
+
+    function prepareCharts(orders){
+            angular.forEach(orders,function(order){
+                angular.forEach(charts,function(chart){
+                    chart.setData(order,[]);
+                })  
+            });
+            angular.forEach(charts,function(chart,key){
+                if (chart.onSetDataComplete){
+                    chart.onSetDataComplete()
+                }            
+            });  
+           defer.resolve(charts); 
+    }
+
+    function getPreparedCharts(){
+        var retCharts = [];
+        angular.forEach(charts,function(chart){
+            if (chart.getHighChart)
+                retCharts.push(chart.getHighChart())
+        })
+        return retCharts;
+    }
+
+    return {
+        promise:defer.promise,
+        getPreparedCharts:getPreparedCharts
+    };
 }]);

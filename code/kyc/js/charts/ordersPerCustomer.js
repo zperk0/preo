@@ -5,6 +5,7 @@ angular.module('kyc.charts')
 		var newCustomers = [];
 		var repeatedCustomers = [];
 		var orders = 0;
+		var title = "Orders per Customer"
 		function setData(order){
 			orders++;
 			var customerId  = order.userId;
@@ -24,9 +25,18 @@ angular.module('kyc.charts')
     	return type; 
     }
 
+    function getHighChart(){
+    	return {
+    		type:type,
+    		title:title,
+    		data:getData()
+    	}
+    }
+
     return {
         getData:getData,
         getType:getType,
-        setData:setData
+        setData:setData,
+        getHighChart:getHighChart
     };
 }]);

@@ -3,7 +3,7 @@ angular.module('kyc.charts')
 
 		var type = ChartType.NUMBER;
 		var itemsOrdered =0;
-		
+		var title = "Items Ordered"
 
 		function setData(order){
 			angular.forEach(order.items,function(item){
@@ -19,9 +19,18 @@ angular.module('kyc.charts')
     	return type; 
     }
 
+    function getHighChart(){
+        return {
+            type:type,
+            title:title,
+            data:getData()
+        }
+    }
+
     return {
         getData:getData,
         getType:getType,
-        setData:setData
+        setData:setData,
+        getHighChart:getHighChart
     };
 }]);

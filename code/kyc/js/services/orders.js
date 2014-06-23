@@ -1,5 +1,5 @@
 angular.module('kyc.services')
-.service('StreamService',['ACCOUNT_ID','Order', function(ACCOUNT_ID,Order) {
+.service('OrderService',['ACCOUNT_ID','Order', function(ACCOUNT_ID,Order) {
 
   
     var orders;

@@ -21,7 +21,7 @@ angular.module('kyc.directives').
         $chart.height( heightParent );
 
   			if ( ng.chart.showChart ){
-          ng.chart.highcharts = $chartService.getChart(  ng.chart.value.type, ng.chart.value.data );
+          ng.chart.highcharts = $chartService.getChart(  ng.chart.value.type, ng.chart.value );
 
           if ( heightParent ) {
 
@@ -54,7 +54,7 @@ angular.module('kyc.directives').
               $scope.chart = angular.copy(ng.chart);
 
               if ( ng.chart.value.modal && ng.chart.value.modal.highcharts ) {
-                $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, ng.chart.value.data );
+                $scope.chart.highcharts = $chartService.getChart(ng.chart.value.modal.highcharts.type, ng.chart.value);
                 $scope.chart.highcharts.options.chart.height = heightParent + 60;
               }
 
@@ -92,7 +92,6 @@ angular.module('kyc.directives').
         }
 
         ng.changeItem = function(){
-          console.log('change item in select');
         }
 
       }

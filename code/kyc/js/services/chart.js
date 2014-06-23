@@ -1,14 +1,8 @@
 'use strict';
-
-/* Services */
-
-
-// Demonstrate how to register services
-// In this case it is a simple value service.
 angular.module('kyc.services', []).
   service('$chartService', ['ChartType', function( ChartType ) {
 
-  		var area = function( data ) {
+  		var area = function( value ) {
   			return {
 	  			options: {
 		            chart: {
@@ -32,8 +26,6 @@ angular.module('kyc.services', []).
 		                            [1, '#1AA1DB']
 		                        ]
 		                    },                    
-
-		                    pointStart: 1940,
 		                    marker: {
 		                        enabled: false,
 		                    }
@@ -47,7 +39,7 @@ angular.module('kyc.services', []).
 	                text: ''
 	            },
 	            xAxis: {
-	                allowDecimals: false,
+            			type: 'datetime',
 	                labels: {
 	                    enabled: false,
 	                }
@@ -66,14 +58,17 @@ angular.module('kyc.services', []).
 	                showInLegend: false,
 	                enableMouseTracking: false,
 	                name: '',
-	                data: data
+	                pointInterval: 24 * 3600 * 1000, //day interval
+                	pointStart: Date.UTC(2006, 0, 1),
+	                data: value.data,
+
 	            }]
         	}
         };      
 
-  		var areaModal = function( data ) {
+  		var areaModal = function( value ) {
   			return {
-	  			options: {categories:['Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
+	  			options: {	  				
 		            chart: {
 		                type: 'area'
 		            },
@@ -113,7 +108,7 @@ angular.module('kyc.services', []).
 	                text: ''
 	            },
 	            xAxis: {
-	            	//categories:['Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
+            			type: 'datetime'	                
 	            },
 	            yAxis: {
 	                gridLineWidth: 0,
@@ -128,13 +123,15 @@ angular.module('kyc.services', []).
 	            series: [{
 	                showInLegend: false,
 	                name: '',
-	                data: data
+	                data: value.data,
+	                pointInterval: 24 * 3600 * 1000, //day interval
+                	pointStart: Date.UTC(2006, 0, 1),
 	            }]
         	}
         };      
 
 
-        var pie = function( data ) {
+        var pie = function( value ) {
         	return {
 				options: {
 		            chart: {
@@ -185,7 +182,7 @@ angular.module('kyc.services', []).
 	            },
 	            series: [{
 	                name: 'Browsers',
-	                data: data,
+	                data: value.data,
 	                size: '55%',
 	                innerSize: '45%',
 	                showInLegend:true,
@@ -196,7 +193,7 @@ angular.module('kyc.services', []).
             }     	
         };
 
-        var column = function( data ) {
+        var column = function( value ) {
         	return {
 	    		options: {
 	                chart: {
@@ -240,31 +237,30 @@ angular.module('kyc.services', []).
 	                    enabled: false,
 	                }
 	            },
-
 	            series: [{
 	                pointWidth: 200,
 	                name: 'Customers',
 	                showInLegend: false,
 	                colorByPoint: true,
-	                data: data
+	                data: value.data
 	            }]
         	}
         };
 
-        var getChart = function( type, data ) {
+        var getChart = function( type, value ) {
 
         	switch(type) {
         		case ChartType.AREA:
-        			return area( data );
+        			return area( value );
         			break; 
         		case ChartType.AREA_MODAL:
-        			return areaModal( data );
+        			return areaModal( value );
         			break; 
         		case ChartType.PIE:
-        			return pie( data );
+        			return pie( value );
         			break; 
         		case ChartType.COLUMN:
-        			return column( data );
+        			return column( value );
         			break;
         	}
 
