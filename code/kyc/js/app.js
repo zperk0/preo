@@ -24,6 +24,12 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/stock', {templateUrl: '/code/kyc/partials/stock.html', controller: 'StockCtrl'});
   $routeProvider.when('/customers', {templateUrl: '/code/kyc/partials/customers.html', controller: 'CustomersCtrl'});
   $routeProvider.when('/reports', {templateUrl: '/code/kyc/partials/reports.html', controller: 'ReportsCtrl'});
-  $routeProvider.when('/stream', {templateUrl: '/code/kyc/partials/stream.html', controller: 'StreamCtrl'});
+  $routeProvider.when('/stream', {templateUrl: '/code/kyc/partials/stream.html', controller: 'StreamCtrl',
+     resolve: {
+        load: function ($route, Stream) {          
+          return Stream.load();            
+        }
+    }
+  });
   $routeProvider.otherwise({redirectTo: '/dashboard'});
 }]);
