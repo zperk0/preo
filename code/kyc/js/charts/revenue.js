@@ -33,16 +33,30 @@ angular.module('kyc.charts')
     	return type; 
     }
 
+    function getNumberRight(){
+
+    }
+
     function getHighChart(){
         return {
             type:type,
             title:title,
             data:getData(),
             numberLeft:totalRevenue,
-            numberRight:"0%" //todo calculate this number
+            numberRight:"0%", //FIXME calculate this number
+            modal: getModal()
         }
     }
 
+    function getModal(){
+            return {
+                    highcharts: {
+                        type: ChartType.AREA_MODAL // type of highcharts in modal
+                    }                  
+                }
+            }
+
+    
     return {
         getData:getData,
         getType:getType,
