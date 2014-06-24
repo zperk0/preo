@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/bower_components/gridster/dist/jquery.gridster.min.css">
   <link rel="stylesheet" href="/code/kyc/js/directives/gridster/gridster.css">  
   <link rel="stylesheet" href="/code/kyc/css/app.css"/>  
+  <link rel="stylesheet" href="/code/kyc/js/directives/multiselect/multiselect.css"/>  
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div ng-app="kyc" ng-controller='MenuCtrl'>  
@@ -43,26 +44,32 @@
 
   <div>
     <div class="container-fluid" id="container-search">
-      <div class="container overflow">
+      <div class="container">
 
         <div class="large-6 columns">
           <form class="navbar-form navbar-left" role="search" ng-submit="fetchData()">
             <div class="row">
               <div class="large-10 columns">
                 <label>Outlet
-                  <select name="outlets" id="outlets" class="dropdown pdDropdown" multiple>
-                    <option ng-repeat="outlet in outlets" value="outlet.id">{{outlet.name}}</option>
-                  </select>
+                  <multi-select    
+                      input-model="outlets"    
+                      button-label="name"
+                      item-label="name"
+                      tick-property="selected"
+                      default-label="All Outlets"
+                  >
+                  </multi-select>
                 </label>
               </div>
               <div class="large-2 columns">
                 <label>&nbsp;
-                  <button type="submit" class="button tiny">Update</button>            
+                  <button type="submit" class="button small">Update</button>            
                 </label>
               </div>
             </div>
           </form>
         </div>
+        
         <div class="large-6 columns">
           <form ng-submit="fetchData()">
             <div class="row">
@@ -78,7 +85,7 @@
               </div>
               <div class="small-2 columns">
                 <label>&nbsp;
-                  <button type="submit" class="button tiny">Update</button>
+                  <button type="submit" class="button small">Update</button>
                 </label>
               </div>
             </div>          
@@ -89,6 +96,13 @@
     <div ng-view></div>
   </div>
 
+  <div class="loading" ng-show="requests">
+    <div class="background-loading"></div>
+    <div class="loading-content">
+      <img src="/img/spinner.gif" />
+    </div>
+  </div>  
+
 </div>
   
   <script src="/js/angular_all.min.js"></script>  
@@ -98,6 +112,7 @@
   <script src="/code/kyc/js/app.js"></script>
   <script src="/code/kyc/js/services/chart.js"></script>
   <script src="/code/kyc/js/services/grid.js"></script>
+  <script src="/code/kyc/js/services/ajaxinterceptor.js"></script>
   <script src="/code/kyc/js/controllers/dashboard.js"></script>
   <script src="/code/kyc/js/controllers/customers.js"></script>
   <script src="/code/kyc/js/controllers/reports.js"></script>
@@ -113,6 +128,7 @@
   <script src="/code/kyc/js/directives/gridster/gridster.js"></script>
   <script src="/code/kyc/js/directives/highcharts/highcharts.js"></script>
   <script src="/code/kyc/js/directives/datepicker/datepicker.js"></script>
+  <script src="/code/kyc/js/directives/multiselect/multiselect.js"></script>
 
   <script type="text/javascript">
   
@@ -121,6 +137,10 @@
 
   function modal_url( url ) {
     return '/code/kyc/js/modals/' + url + '.htm';
+  }  
+
+  function directive_url( url ) {
+    return '/code/kyc/js/directives/' + url;
   }  
 
   </script>

@@ -22,4 +22,37 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/reports', {templateUrl: '/code/kyc/partials/reports.html', controller: 'ReportsCtrl'});
   $routeProvider.when('/stream', {templateUrl: '/code/kyc/partials/stream.html', controller: 'StreamCtrl'});
   $routeProvider.otherwise({redirectTo: '/dashboard'});
+}]).
+run(['$rootScope', function( $rootScope ) {
+  $rootScope.requests = 0;
 }]);
+
+
+angular.module('kyc.services', ['ngResource'], ['$httpProvider', '$locationProvider', '$provide',
+
+    function ($httpProvider, $locationProvider, $provide) {
+
+        // Desativa o modo HTML5
+        $locationProvider.html5Mode(false);
+
+        // ~CONFIG
+        $httpProvider.interceptors.push(['$q', '$window', '$injector', '$AjaxInterceptor', function ($q, $window, $injector, $AjaxInterceptor) {
+            return {
+                // Intercepta a requisição
+                request: function (config) {
+
+                    $AjaxInterceptor.start();
+
+                    return config || $q.when(config);
+                },
+
+                // Intercepta a respota
+                response: function (response) {
+
+                    $AjaxInterceptor.complete();
+
+                    return response || $q.when(response);
+                }
+            };
+        }]);
+    }]);

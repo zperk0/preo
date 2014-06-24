@@ -16,7 +16,7 @@
 					  <thead>
 					  	<tr>
 					  		<th width="10">
-					  			<input type="checkbox" name="" id="" />
+					  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
 					  		</th>
 					  		<th ng-click="orderBy = 'name'; direction=!direction">
 					  			Item
@@ -36,7 +36,7 @@
 					  </thead>
 					  <tbody>
 					  	<tr ng-repeat="item in stock | orderObjectBy:orderBy:direction">
-					  		<td><input type="checkbox"></td>
+					  		<td><input type="checkbox" ng-model="item.selected" /></td>
 					  		<td>{{ item.name }}</td>
 					  		<td>{{ item.quantity }}</td>
 					  	</tr>
@@ -58,13 +58,24 @@
 				<div class="content-actions">
 					<h4 class="title-white">Export as...</h4>
 
-					<div class="buttons">
+					<div class="buttons overflow">
 						<button class="pull-left btn btn-default" >
 							PDF
 						</button>
 						<button class="pull-left btn btn-default">
 							CSV
 						</button>
+					</div>
+
+					<div class="options overflow">
+						<label class="pull-left">
+							<input type="radio" name="option" />
+							All
+						</label>
+						<label class="pull-right">
+							<input type="radio" name="option" />
+							Selected
+						</label>
 					</div>
 				</div>
 			</div>			

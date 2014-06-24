@@ -1,11 +1,22 @@
-angular.module('kyc.controllers').controller('StockCtrl', ['$scope', function($scope) {
+angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInterceptor', function($scope, $AjaxInterceptor) {
 
   	$scope.stock = {};
 
+  	$AjaxInterceptor.start();
+
 	$scope.$on('preoday.allData', function( event, data ) {
 		$scope.allData = data.allData;
+		$AjaxInterceptor.start();
 		prepareScopeStock();
 	});
+
+	$scope.selectAll = function() {
+
+		angular.forEach($scope.stock,function(value, key){
+			value.selected = $scope.all_options;
+		});
+
+	}	
 
 	function prepareScopeStock(){
 
@@ -25,6 +36,8 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', function($s
 				})					
 			});
 		}
+
+		$AjaxInterceptor.complete();
 	}
 
 	prepareScopeStock();

@@ -1,15 +1,18 @@
-angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', function($scope) {
+angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInterceptor', function($scope, $AjaxInterceptor) {
 
 	$scope.reports = [];
 
 	var outlets = false;
 	var data = false;
 
+	$AjaxInterceptor.start();
+
 	$scope.$on('preoday.allData', function( event, data ) {
 		$scope.allData = data.allData;
 		data = true;
 
 		if ( outlets ) {
+			$AjaxInterceptor.start();
 			prepareScopeReports();
 		}
 	});
@@ -19,9 +22,18 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', function(
 
 		outlets = true;
 		if ( data ) {
+			$AjaxInterceptor.start();
 			prepareScopeReports();	
 		}
 	});
+
+	$scope.selectAll = function() {
+
+		for ( var i = $scope.reports.length; i--; ) {
+			$scope.reports[i].selected = $scope.all_options;
+		}
+
+	}
 
 	function prepareScopeReports(){
 
@@ -42,6 +54,8 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', function(
 				})		
 			});
 		}
+
+		$AjaxInterceptor.complete();
 	}
 
 	function getOutletName(id){

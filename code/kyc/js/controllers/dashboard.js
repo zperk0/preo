@@ -2,8 +2,10 @@
 
 /* Controllers */
 angular.module('kyc.controllers')
-.controller('DashboardCtrl', ['$scope','$http', '$compile','ChartType', '$grid', function($scope,$http, $compile,ChartType, $grid) {
+.controller('DashboardCtrl', ['$scope','$http', '$compile','ChartType', '$grid', '$AjaxInterceptor', function($scope,$http, $compile,ChartType, $grid, $AjaxInterceptor) {
   		var allData = [];  		  	  	
+
+  		$AjaxInterceptor.start();
 
   		var charts = {
 		    payingCustomers :{
@@ -36,7 +38,20 @@ angular.module('kyc.controllers')
                     10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104 ],
                 title: 'Revenue',
                 numberLeft: '£5,652.40',
-                numberRight: '+14%'                
+                numberRight: '+14%',
+                modal: {
+                	highcharts: {
+                		type: ChartType.AREA_MODAL // type of highcharts in modal
+                	},
+                	options: [ // options for footer in modal
+                		{ name: 'Specified Dates', value: '102', percent: '+14%', status: 'positive', active: true },
+                		{ name: 'Week', value: '67', percent: '+21%', status: 'positive' },
+                		{ name: 'Month', value: '122', percent: '+140%', status: 'positive' },
+                		{ name: '3 Months', value: '235', percent: '-7%', status: 'negative' },
+                		{ name: '6 Months', value: '427', percent: '+217%', status: 'positive' },
+                		{ name: 'Year', value: '978', percent: '-17%', status: 'negative' },
+                	]
+                }                   
 
 		    },
 		    ordersByOutlet: {
@@ -58,7 +73,20 @@ angular.module('kyc.controllers')
                     10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104 ],
                 title: 'Numbers of orders',
                 numberLeft: '1,175',
-                numberRight: '+27%'                
+                numberRight: '+27%',
+                modal: {
+                	highcharts: {
+                		type: ChartType.AREA_MODAL // type of highcharts in modal
+                	},
+                	options: [ // options for footer in modal
+                		{ name: 'Specified Dates', value: '102', percent: '+14%', status: 'positive', active: true },
+                		{ name: 'Week', value: '67', percent: '+21%', status: 'positive' },
+                		{ name: 'Month', value: '122', percent: '+140%', status: 'positive' },
+                		{ name: '3 Months', value: '235', percent: '-7%', status: 'negative' },
+                		{ name: '6 Months', value: '427', percent: '+217%', status: 'positive' },
+                		{ name: 'Year', value: '978', percent: '-17%', status: 'negative' },
+                	]
+                }                
 		    },
 		    mostPopularItems: {
 		    	type: ChartType.PIE,
@@ -108,7 +136,10 @@ angular.module('kyc.controllers')
                 	{name: "Upper Level James Hargreaves", y: 3, color: '#F5B13D'}, 
                 	{name: "Bob Lord Stand", y: 2, color: '#8ABE4F'}
 		    	],
-		    	title: 'Time of orders placed'
+		    	title: 'Time of orders placed',
+		    	modal: {
+		    		enabled: false
+		    	}
 		    },
 		    customersColumn: {
 		    	type: ChartType.COLUMN,
@@ -230,21 +261,6 @@ angular.module('kyc.controllers')
           $scope.values = $grid.populateItems( charts );
 
 
-
-/*          $scope.values = [
-			{ num: 1, row: 1, col: 1, size_x: 2, size_y: 1, display: true, title: 'Paying customers', showChart: false, value: charts.payingCustomers.data },
-            { num: 2, row: 1, col: 3, size_x: 2, size_y: 1, display: true, title: 'Orders per customers', showChart: false, value: charts.ordersPerCustomer.data },
-            { num: 3, row: 1, col: 5, size_x: 2, size_y: 1, display: true, title: 'Average order value', showChart: false, value: charts.averageOrderValue.data },
-            { num: 4, row: 1, col: 7, size_x: 2, size_y: 1, display: true, title: 'Items ordered', showChart: false, value: charts.itemsOrdered.data },
-            { num: 5, row: 2, col: 1, size_x: 4, size_y: 2, display: true, title: 'Revenue', showChart: true, value: charts.revenue },
-            { num: 6, row: 2, col: 5, size_x: 4, size_y: 2, display: true, title: 'Orders by outlet', showChart: true, value: charts.ordersByOutlet },
-            { num: 7, row: 3, col: 1, size_x: 4, size_y: 2, display: true, title: 'Numbers of orders', showChart: true, value: charts.numbersOfOrder },
-            { num: 8, row: 3, col: 5, size_x: 4, size_y: 2, display: true, title: 'Most popular items (top 5)', showChart: true, value: charts.mostPopularItems },
-            { num: 9, row: 4, col: 1, size_x: 4, size_y: 2, display: true, title: 'Menu item popularity', showChart: true, value: charts.menuItemsPopularity },
-            { num: 10, row: 4, col: 5, size_x: 4, size_y: 2, display: true, title: 'Time of orders placed', showChart: true, value: charts.timeOfOrdersPlaced },
-            { num: 11, row: 5, col: 1, size_x: 4, size_y: 2, display: true, title: 'Customers', showChart: true, value: charts.customersColumn },
-            { num: 12, row: 5, col: 5, size_x: 4, size_y: 2, display: true, title: 'Customers', showChart: true, value: charts.customersPie }
-
-          ];*/
+          $AjaxInterceptor.complete();
 
   }]);
