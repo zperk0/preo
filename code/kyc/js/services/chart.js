@@ -6,7 +6,7 @@ angular.module('kyc.services', []).
   			return {
 	  			options: {
 		            chart: {
-		                type: 'area'
+		                type: 'areaspline'
 		            },
 					exporting: {
 					         enabled: false
@@ -17,7 +17,7 @@ angular.module('kyc.services', []).
 		                        enabled: false
 		                    }
 		                },
-		                area: {
+		                areaspline: {
 		                    lineWidth: 0,
 		                    fillColor: {
 		                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
@@ -59,7 +59,7 @@ angular.module('kyc.services', []).
 	                enableMouseTracking: false,
 	                name: '',
 	                pointInterval: 24 * 3600 * 1000, //day interval
-                	pointStart: Date.UTC(2006, 0, 1),
+                	// pointStart: Date.UTC(2006, 0, 1),
 	                data: value.data,
 
 	            }]

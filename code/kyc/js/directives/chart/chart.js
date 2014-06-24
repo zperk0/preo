@@ -19,7 +19,7 @@ angular.module('kyc.directives').
 
         $actionsChart.height( heightParent );
         $chart.height( heightParent );
-
+        
   			if ( ng.chart.showChart ){
           ng.chart.highcharts = $chartService.getChart(  ng.chart.value.type, ng.chart.value );
 

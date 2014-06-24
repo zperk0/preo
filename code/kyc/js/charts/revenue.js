@@ -5,16 +5,21 @@ angular.module('kyc.charts')
     var dailyRevenue = {};
     var data = [];
     var title = 'Revenue'
+    var totalRevenue =0;
+
 	function setData(order){
         console.log(order.paid);
         var timestamp = new Date(order.paid).setHours(0, 0, 0, 0);
+        console.log(timestamp,order);
 	    if (dailyRevenue[timestamp])
             dailyRevenue[timestamp]+=order.total
         else
             dailyRevenue[timestamp]=order.total;        
+        totalRevenue +=order.total;
 	}
 
     function onSetDataComplete(){
+        console.log(dailyRevenue);
         angular.forEach(dailyRevenue,function(dR){
             data.push(dR);            
         })
@@ -32,7 +37,9 @@ angular.module('kyc.charts')
         return {
             type:type,
             title:title,
-            data:getData()
+            data:getData(),
+            numberLeft:totalRevenue,
+            numberRight:"0%" //todo calculate this number
         }
     }
 
