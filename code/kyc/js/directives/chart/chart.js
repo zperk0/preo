@@ -46,34 +46,38 @@ angular.module('kyc.directives').
 
         ng.openModal = function() {
 
-          $modal.open({
-            templateUrl: modal_url('chart'),
-            windowClass: 'modal-preoday',
-            controller: function( $scope ) {
+          if ( ng.chart.value.modal ) {
 
-              $scope.chart = angular.copy(ng.chart);
+            $modal.open({
+              templateUrl: modal_url('chart'),
+              windowClass: 'modal-preoday',
+              controller: function( $scope ) {
 
-              if ( ng.chart.value.modal && ng.chart.value.modal.highcharts ) {
-                $scope.chart.highcharts = $chartService.getChart(ng.chart.value.modal.highcharts.type, ng.chart.value);
-                $scope.chart.highcharts.options.chart.height = heightParent + 60;
-              }
+                $scope.chart = angular.copy(ng.chart);
 
-              $scope.title = ng.chart.title;
-
-              $scope.selectOption = function( option ) {
-
-                var itemActive = $scope.chart.value.modal.options.filter(function(item) {
-                  return item.active == true;
-                });
-
-                if ( itemActive ) {
-                  itemActive[0].active = false;
+                if ( ng.chart.value.modal.highcharts ) {
+                  $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, ng.chart.value.data );
+                  $scope.chart.highcharts.options.chart.height = heightParent + 40;
                 }
 
-                option.active = true;
+                $scope.title = ng.chart.title;
+
+                $scope.selectOption = function( option ) {
+
+                  var itemActive = $scope.chart.value.modal.options.filter(function(item) {
+                    return item.active == true;
+                  });
+
+                  if ( itemActive ) {
+                    itemActive[0].active = false;
+                  }
+
+                  option.active = true;
+                }
               }
-            }
-          });
+            });
+
+          }
 
         };
 

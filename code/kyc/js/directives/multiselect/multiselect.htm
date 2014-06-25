@@ -1,0 +1,14 @@
+<span class="multiSelect inlineBlock" >
+    <button type="button" class="multiSelect button multiSelectButton dropdown pdDropdown" ng-click="toggleCheckboxes( $event ); refreshSelectedItems();" ng-bind-html="varButtonLabel" ng-focus="onFocus()" ng-blur="onBlur()">
+    </button>
+    <div class="multiSelect checkboxLayer hide">
+        <div ng-repeat="item in inputModel" class="multiSelect multiSelectItem" ng-class="{ active: item[tickProperty] }" >
+            <div class="multiSelect acol">
+                <label class="multiSelect" ng-class="{checkboxSelected:item[ tickProperty ]}">
+                    <input class="multiSelect checkbox" type="checkbox" ng-disabled="itemIsDisabled( item )" ng-checked="item[ tickProperty ]" ng-click="syncItems( item, $event )"/>
+                    <span class="multiSelect" ng-class="{disabled:itemIsDisabled( item )}" ng-bind-html="writeLabel( item, 'itemLabel' )"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</span

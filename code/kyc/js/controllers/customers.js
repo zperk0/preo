@@ -1,9 +1,26 @@
 angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderService', function($scope,OrderService) {
+angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope', '$AjaxInterceptor', function($scope, $AjaxInterceptor) {
 
 	$scope.customers = {};
 
 	var allOrders = OrderService.getOrders();
 	prepareScopeCustomers();
+	$AjaxInterceptor.start();
+
+	$scope.$on('preoday.allData', function( event, data ) {
+		$scope.allData = data.allData;
+		$AjaxInterceptor.start();
+		prepareScopeCustomers();
+	});
+
+	$scope.selectAll = function() {
+
+		angular.forEach($scope.customers,function(value, key){
+			value.selected = $scope.all_options;
+		});
+	}	
+
+
 	function prepareScopeCustomers(){
 		
 		if ( allOrders ) {
@@ -21,6 +38,8 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 						};																			
 			});
 		}
+
+		$AjaxInterceptor.complete();
 	}
 	
     $scope.showOptions = function() {

@@ -27,7 +27,7 @@
 				</div>
 
 				<div class="highcharts-content" ng-dblclick="openModal()">
-					<highchart id="chart_{{ chart.num }}" config="chart.highcharts"></highchart>
+					<highchart id="chart_{{ chart.num }}" config="chart.highcharts" class="chart_{{ chart.value.type }}"></highchart>
 				</div>
 
 				<div ng-if="chart.value.items">

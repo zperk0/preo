@@ -15,6 +15,7 @@ body{
 
 .title-white{
   color: #fff;
+  margin-bottom: 0px;
 }
 
 /**********Navbar************/
@@ -53,7 +54,7 @@ body{
   background: url('/code/kyc/images/icons/metrics-icon-grey.png') center center no-repeat;
 }
 
-#navbar-menu ul li.metrics a.active i{
+#navbar-menu ul li.metrics a.active i, #navbar-menu ul li.metrics:hover a i{
   background: url('/code/kyc/images/icons/metrics-icon-white.png') center center no-repeat;
 }
 
@@ -61,7 +62,7 @@ body{
   background: url('/code/kyc/images/icons/stock-icon-grey.png') center center no-repeat;
 }
 
-#navbar-menu ul li.stock a.active i{
+#navbar-menu ul li.stock a.active i, #navbar-menu ul li.stock:hover a i{
   background: url('/code/kyc/images/icons/stock-icon-white.png') center center no-repeat;
 }
 
@@ -69,7 +70,7 @@ body{
   background: url('/code/kyc/images/icons/customer-icon-grey.png') center center no-repeat;
 }
 
-#navbar-menu ul li.customers a.active i{
+#navbar-menu ul li.customers a.active i, #navbar-menu ul li.customers:hover a i{
   background: url('/code/kyc/images/icons/customer-icon-white.png') center center no-repeat;
 }
 
@@ -77,7 +78,7 @@ body{
   background: url('/code/kyc/images/icons/reports-icon-grey.png') center center no-repeat;
 }
 
-#navbar-menu ul li.reports a.active i{
+#navbar-menu ul li.reports a.active i, #navbar-menu ul li.reports:hover a i{
   background: url('/code/kyc/images/icons/reports-icon-white.png') center center no-repeat;
 }
 
@@ -85,7 +86,7 @@ body{
   background: url('/code/kyc/images/icons/live-stream-icon-grey.png') center center no-repeat;
 }
 
-#navbar-menu ul li.live-stream a.active i{
+#navbar-menu ul li.live-stream a.active i, #navbar-menu ul li.live-stream:hover a i{
   background: url('/code/kyc/images/icons/live-stream-icon-white.png') center center no-repeat;
 }
 
@@ -108,6 +109,10 @@ body{
 
 #container-search, #content-list{
   background-color: #fff
+}
+
+#container-search > .container{
+  height: 85px;
 }
 
 #content-list{
@@ -262,9 +267,9 @@ body{
 }
 
 .block-status{
-  width: 90px; 
+  width: 105px; 
   text-align: center;
-  padding: 5px 10px;
+  padding: 10px;
   display: block;
   color: #fff;
   font-size: 15px;
@@ -276,7 +281,7 @@ body{
 }
 
 .block-status.failed{
-  background-color: #533A86
+  background-color: #1BA4DD
 }
 
 .add-widget{
@@ -421,11 +426,15 @@ table .sort i{
 
 .table-striped{
   border-collapse: collapse;
-  border
 }
 
 .table-striped, .table-striped td, .table-striped th{
   border: 1px solid #B8BABC;
+}
+
+.table-stream td{
+  border-left: 0px;
+  border-right: 0px;
 }
 
 .table-striped th input, .table-striped td input{
@@ -519,3 +528,121 @@ table .sort i{
   background-color: #1476B7;
   color: #fff;
 }
+
+span.multiSelect{
+  color: #4B535D
+}
+
+.options label{
+  color: #fff;
+  margin-right: 20px
+}
+
+.background-loading{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  background-color: #fff;
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=70);
+
+  /* Netscape */
+  -moz-opacity: 0.7;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0.7;
+
+  /* Good browsers */
+  opacity: 0.7;
+}
+
+.loading-content{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  z-index: 9999;
+}
+
+.table-stream tr td{
+  cursor: pointer;
+}
+
+.table-stream tr.active td {
+  background-color: #333F47 !important;
+  border-color: #333F47;
+  color: #fff;
+}
+
+.table-stream tr.result td{
+  padding: 0px;
+  background-color: #fff
+}
+
+.table-stream tr.result p{
+  margin-bottom: 5px
+}
+
+.table-stream tr.result .code{
+  font-size: 25px;
+}
+
+.table-stream tr.result td.padding{
+  padding: 15px;
+}
+
+.table-stream tr.result td.information{
+  border-right: 1px solid #ccc;
+}
+
+.table-max{
+  width: 100%;
+  background: none;
+  border: none;
+  margin: 25px 0 0 0;
+}
+
+.table-max tr td{
+  border: none;
+  padding: 5px 15px !important;
+  font-size: 16px
+}
+
+.text-status{
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.text-status.order{
+  color: #8BC04F
+}
+
+.text-status.failed{
+  color: #1BA4DD
+}
+
+.chart_3:hover{
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=50);
+
+  /* Netscape */
+  -moz-opacity: 0.5;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0.5;
+
+  /* Good browsers */
+  opacity: 0.5;
+};

@@ -25,4 +25,17 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','StreamServ
       angular.element('.flip-container').removeClass('active');
     }		
 
+    $scope.activeStream = function( stream ) {
+
+      var result = $scope.streams.filter(function( item ) {
+        return item.active === true;
+      });
+
+      if ( result && result[0] && result[0].code != stream.code ) {
+        result[0].active = false;
+      }
+
+      stream.active = !stream.active
+    }
+
 }]);

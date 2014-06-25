@@ -4,6 +4,8 @@
 angular.module('kyc.controllers')
 .controller('DashboardCtrl', ['$scope','$http', '$compile','ChartType', '$grid','AllCharts',
  function($scope,$http, $compile,ChartType, $grid,AllCharts) {
+.controller('DashboardCtrl', ['$scope','$http', '$compile','ChartType', '$grid', '$AjaxInterceptor', function($scope,$http, $compile,ChartType, $grid, $AjaxInterceptor) {
+  		var allData = [];  		  	  	
 
 	
  		var charts = AllCharts.getPreparedCharts();
@@ -78,5 +80,8 @@ angular.module('kyc.controllers')
           $scope.values = [];
 
           $scope.values = $grid.populateItems( charts );
+
+
+          $AjaxInterceptor.complete();
 
   }]);

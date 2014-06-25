@@ -1,8 +1,26 @@
-angular.module('kyc.controllers').controller('StockCtrl', ['$scope','OrderService', function($scope,OrderService) {
+angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInterceptor', function($scope, $AjaxInterceptor) {
 
   $scope.stock = {};	
   var allOrders = OrderService.getOrders();
 	
+  	$scope.stock = {};
+
+  	$AjaxInterceptor.start();
+
+	$scope.$on('preoday.allData', function( event, data ) {
+		$scope.allData = data.allData;
+		$AjaxInterceptor.start();
+		prepareScopeStock();
+	});
+
+	$scope.selectAll = function() {
+
+		angular.forEach($scope.stock,function(value, key){
+			value.selected = $scope.all_options;
+		});
+
+	}	
+
 	function prepareScopeStock(){
 		if ( allOrders ){
 			angular.forEach(allOrders,function(row){
@@ -20,6 +38,8 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope','OrderServic
 				})					
 			});
 		}
+
+		$AjaxInterceptor.complete();
 	}
 
 	prepareScopeStock();

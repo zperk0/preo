@@ -11,15 +11,41 @@
 					</a>
 				</div>
 				<div id="content-table">
-					<table class="table table-striped table-list table-condensed">
-					  <tbody>
-					  	<tr ng-repeat="stream in streams">
-					  		<td>
+					<table class="table table-striped table-stream table-list table-condensed">
+					  <tbody ng-repeat="stream in streams" ng-switch on="stream.active">
+					  	<tr ng-click="activeStream(stream)" ng-class="{active: stream.active}">
+					  		<td width="15">
 					  			<span class="block-status {{ stream.order }}">{{ stream.order }}</span>
 					  		</td>
-					  		<td>{{ stream.status }}</td>
-					  		<td>{{ stream.total }}</td>
-					  		<td>{{ stream.updated }}</td>
+					  		<td width="100" valign="middle">£ {{ stream.spent }}</td>
+					  		<td valign="middle">{{ stream.name }}</td>
+					  		<td width="300" valign="middle">{{ stream.numbers }}</td>
+					  		<td width="200" valign="middle">{{ stream.time }}</td>
+					  	</tr>
+					  	<tr ng-switch-when="true" class="result">
+					  		<td colspan="2" class="padding information">
+					  			<p class="code"><b>#{{ stream.code }}</b></p>
+					  			<p>{{ stream.name }}</p>
+					  			<p>Tuesday, 10th June</p>
+					  			<p>12:03:51</p>
+					  			<br />
+					  			<p>Visa ****4580</p>
+					  			<p class="text-status {{ stream.order }}">PAIMENT {{ stream.order === 'order' ? 'success' : 'failed' }}</p>
+					  		</td>
+					  		<td colspan="3">
+					  			<table class="table-max">
+					  				<tbody>
+					  					<tr>
+					  						<td colspan="3">{{ stream.numbers }}</td>
+					  						<td width="200">{{ stream.spent }}</td>
+					  					</tr>
+					  					<tr>
+					  						<td colspan="3"><b>TOTAL</b></td>
+					  						<td width="200"><b>{{ stream.spent }}</b></td>
+					  					</tr>
+					  				</tbody>
+					  			</table>
+					  		</td>
 					  	</tr>
 					  </tbody>
 					</table>		
