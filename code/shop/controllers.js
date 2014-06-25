@@ -13,7 +13,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
       Resources.AccountFeatures.query({accountId:ACCOUNT_ID},function(result){    
         $scope.accountFeatures = result;
         $scope.finishedLoading = true;         
-
+        console.log($scope.accountFeatures);
       });
     }
 
@@ -89,17 +89,45 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
         $(".reveal-modal-bg").css({"display":"none"});
     }
 
-    $scope.isFeatureOwned = function(feature){      
+
+    $scope.getFeatureStatus = function(feature){
       var found = false;      
         if (feature && $scope.accountFeatures && $scope.accountFeatures.length >0){
             angular.forEach($scope.accountFeatures,function(accountFeature){                            
-                if (feature.id == accountFeature.featureId && accountFeature.status != "CANCELED"){
-                  found = true;
+                if (feature.id == accountFeature.featureId){
+                  found = accountFeature.status;
                 }
             });
         }        
         return found;
     }
+    $scope.isFeatureOwned = function(feature){      
+      var found = false;      
+        if (feature && $scope.accountFeatures && $scope.accountFeatures.length >0){
+            angular.forEach($scope.accountFeatures,function(accountFeature){                            
+                if (feature.id == accountFeature.featureId && accountFeature.status != "CANCELED" && accountFeature.status != "REMOVED" ){
+                  found = true;
+                }
+            });
+        }        
+      return found;
+    }
+
+    $scope.getExpiryDate = function(feature){
+       var found = 0;      
+
+        if (feature && $scope.accountFeatures && $scope.accountFeatures.length >0){
+            angular.forEach($scope.accountFeatures,function(accountFeature){                            
+                if (feature.id == accountFeature.featureId && accountFeature.status == "TRIAL"){
+                  if (accountFeature.endDate !== null)
+                    found = Math.floor(( new Date(accountFeature.endDate).getTime() -  new Date().getTime()) / (1000 * 3600 * 24))
+                }
+            });
+        }
+        return found ;
+        
+    }
+
 
     function displayErrorNoty(){
          noty({
