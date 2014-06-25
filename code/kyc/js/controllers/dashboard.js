@@ -2,9 +2,8 @@
 
 /* Controllers */
 angular.module('kyc.controllers')
-.controller('DashboardCtrl', ['$scope','$http', '$compile','ChartType', '$grid','AllCharts',
- function($scope,$http, $compile,ChartType, $grid,AllCharts) {
-.controller('DashboardCtrl', ['$scope','$http', '$compile','ChartType', '$grid', '$AjaxInterceptor', function($scope,$http, $compile,ChartType, $grid, $AjaxInterceptor) {
+.controller('DashboardCtrl', ['$scope','$http', '$compile','ChartType', '$grid','AllCharts','$AjaxInterceptor',
+ function($scope,$http, $compile,ChartType, $grid,AllCharts,$AjaxInterceptor) {
   		var allData = [];  		  	  	
 
 	
@@ -83,5 +82,6 @@ angular.module('kyc.controllers')
 
 
           $AjaxInterceptor.complete();
+ 
 
   }]);

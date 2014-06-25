@@ -1,17 +1,10 @@
-angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderService', function($scope,OrderService) {
-angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope', '$AjaxInterceptor', function($scope, $AjaxInterceptor) {
+angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderService', '$AjaxInterceptor', function($scope,OrderService, $AjaxInterceptor) {
 
 	$scope.customers = {};
 
 	var allOrders = OrderService.getOrders();
 	prepareScopeCustomers();
-	$AjaxInterceptor.start();
 
-	$scope.$on('preoday.allData', function( event, data ) {
-		$scope.allData = data.allData;
-		$AjaxInterceptor.start();
-		prepareScopeCustomers();
-	});
 
 	$scope.selectAll = function() {
 

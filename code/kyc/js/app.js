@@ -22,35 +22,40 @@ angular.module('kyc', [
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {templateUrl: '/code/kyc/partials/dashboard.html', controller: 'DashboardCtrl',
     resolve:{
-       load: function ($route, AllCharts) {          
+       load: function ($route, AllCharts,$AjaxInterceptor) {          
+          $AjaxInterceptor.start();          
           return AllCharts.promise;            
         }
     }
   });
   $routeProvider.when('/stock', {templateUrl: '/code/kyc/partials/stock.html', controller: 'StockCtrl',
       resolve:{
-       load: function ($route, OrderService) {          
+       load: function ($route, OrderService,$AjaxInterceptor) {          
+          $AjaxInterceptor.start();
           return OrderService.load();            
         }
     }
   });
   $routeProvider.when('/customers', {templateUrl: '/code/kyc/partials/customers.html', controller: 'CustomersCtrl',
     resolve:{
-       load: function ($route, OrderService) {          
+       load: function ($route, OrderService,$AjaxInterceptor) {    
+          $AjaxInterceptor.start();      
           return OrderService.load();            
         }
     }
   });
   $routeProvider.when('/reports', {templateUrl: '/code/kyc/partials/reports.html', controller: 'ReportsCtrl',
     resolve:{
-       load: function ($route, OrderService) {          
+       load: function ($route, OrderService,$AjaxInterceptor) {          
+          $AjaxInterceptor.start();
           return OrderService.load();            
         }
     }
   });
   $routeProvider.when('/stream', {templateUrl: '/code/kyc/partials/stream.html', controller: 'StreamCtrl',
      resolve: {
-        load: function ($route, StreamService) {          
+        load: function ($route, StreamService,$AjaxInterceptor) {  
+          $AjaxInterceptor.start();        
           return StreamService.load();            
         }
     }

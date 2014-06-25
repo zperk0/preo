@@ -1,5 +1,5 @@
-angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','StreamService','pusher',
- function($scope,StreamService,pusher) {
+angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','StreamService','pusher','$AjaxInterceptor',
+ function($scope,StreamService,pusher,$AjaxInterceptor) {
 
 	$scope.streams = StreamService.getOrders();
 
@@ -37,5 +37,7 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','StreamServ
 
       stream.active = !stream.active
     }
+
+    $AjaxInterceptor.complete();
 
 }]);

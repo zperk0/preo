@@ -1,40 +1,14 @@
-angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInterceptor', function($scope, $AjaxInterceptor) {
+angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInterceptor','OrderService', function($scope, $AjaxInterceptor,OrderService) {
 
 	$scope.reports = [];
-
-	var outlets = false;
-	var data = false;
+	
 	var allOrders = OrderService.getOrders();
 	prepareScopeReports();
 
-	$AjaxInterceptor.start();
-
-	$scope.$on('preoday.allData', function( event, data ) {
-		$scope.allData = data.allData;
-		data = true;
-
-		if ( outlets ) {
-			$AjaxInterceptor.start();
-			prepareScopeReports();
-		}
-	});
-
-	$scope.$on('preoday.outlets', function( event, data ) {
-		$scope.outlets = data.outlets;
-
-		outlets = true;
-		if ( data ) {
-			$AjaxInterceptor.start();
-			prepareScopeReports();	
-		}
-	});
-
 	$scope.selectAll = function() {
-
 		for ( var i = $scope.reports.length; i--; ) {
 			$scope.reports[i].selected = $scope.all_options;
 		}
-
 	}
 
 	function prepareScopeReports(){
@@ -56,7 +30,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 				})		
 			});
 		}
-
+		console.log('here ho');
 		$AjaxInterceptor.complete();
 	}
 
@@ -86,9 +60,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 		})
 		return modifiers.join(",");
 	}
-
-	prepareScopeReports();
-
     $scope.showOptions = function() {
       angular.element('.flip-container').addClass('active');
     };
