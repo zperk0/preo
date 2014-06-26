@@ -30,7 +30,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 				})		
 			});
 		}
-		console.log('here ho');
 		$AjaxInterceptor.complete();
 	}
 

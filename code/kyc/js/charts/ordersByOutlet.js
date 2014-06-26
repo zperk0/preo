@@ -18,10 +18,8 @@ angular.module('kyc.charts')
 	}
 
 	function getData(){
-        console.log('getting data here',OutletService.getOutlets());
         var ordersByOutletArray = [];
         angular.forEach(ordersByOutlet,function(item,outletId){
-            console.log("getting name:",outletId,OutletService.getOutletName(outletId));
             ordersByOutletArray.push({
                 name: OutletService.getOutletName(outletId),  
                 colors: Colors[colorIndex],

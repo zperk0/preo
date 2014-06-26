@@ -20,7 +20,6 @@ angular.module('kyc.services')
         }        
       },
       reset: function() {
-        console.log('reseting',pusher);
         if ( pusher ) {
           var chans = pusher.allChannels();
           angular.forEach(chans, function(channel) {

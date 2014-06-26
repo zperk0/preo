@@ -2,7 +2,7 @@
 angular.module('kyc.services', []).
   service('$chartService', ['ChartType', function( ChartType ) {
 
-  		var area = function( value ) {
+  		var area = function( value ) {  			
   			return {
 	  			options: {
 		            chart: {
@@ -40,6 +40,7 @@ angular.module('kyc.services', []).
 	            },
 	            xAxis: {
             			type: 'datetime',
+            			minTickInterval: 24 * 3600 * 1000,
 	                labels: {
 	                    enabled: false,
 	                }
@@ -58,19 +59,16 @@ angular.module('kyc.services', []).
 	                showInLegend: false,
 	                enableMouseTracking: false,
 	                name: '',
-	                pointInterval: 24 * 3600 * 1000, //day interval
-                	// pointStart: Date.UTC(2006, 0, 1),
 	                data: value.data,
-
 	            }]
         	}
         };      
 
   		var areaModal = function( value ) {
   			return {
-	  			options: {	  				
+	  			options: {
 		            chart: {
-		                type: 'area'
+		                type: 'areaspline'
 		            },
 					exporting: {
 					    enabled: false
@@ -88,8 +86,7 @@ angular.module('kyc.services', []).
 		                    	lineWidth: 2,
 			                }
 			            },
-		                area: {
-		                    //pointStart: 1940,
+		                areaspline: {
 		                    color: '#E7F1F7',
 	                    	lineColor: '#126FB2',
 	                    	lineWidth: 3,
@@ -108,7 +105,8 @@ angular.module('kyc.services', []).
 	                text: ''
 	            },
 	            xAxis: {
-            			type: 'datetime'	                
+									type: 'datetime',
+            			minTickInterval: 24 * 3600 * 1000,
 	            },
 	            yAxis: {
 	                gridLineWidth: 0,
@@ -123,12 +121,10 @@ angular.module('kyc.services', []).
 	            series: [{
 	                showInLegend: false,
 	                name: '',
-	                data: value.data,
-	                pointInterval: 24 * 3600 * 1000, //day interval
-                	pointStart: Date.UTC(2006, 0, 1),
+	                data: value.data
 	            }]
         	}
-        };      
+        };            
 
 
         var pie = function( value ) {

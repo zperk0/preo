@@ -2,7 +2,6 @@ angular.module('kyc.services').service('$AjaxInterceptor', ['$rootScope', '$time
 
 	return {
 		start: function(){
-			console.log('starting ');
 			++$rootScope.requests;
 		},
 		complete: function(){

@@ -46,17 +46,18 @@ angular.module('kyc.directives').
 
         ng.openModal = function() {
 
-          if ( ng.chart.value.modal ) {
 
+
+          if ( ng.chart.value.modal ) {
+          
             $modal.open({
               templateUrl: modal_url('chart'),
               windowClass: 'modal-preoday',
               controller: function( $scope ) {
 
                 $scope.chart = angular.copy(ng.chart);
-
                 if ( ng.chart.value.modal.highcharts ) {
-                  $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, ng.chart.value.data );
+                  $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, ng.chart.value );
                   $scope.chart.highcharts.options.chart.height = heightParent + 40;
                 }
 
@@ -71,14 +72,13 @@ angular.module('kyc.directives').
                   if ( itemActive ) {
                     itemActive[0].active = false;
                   }
-
+                  
                   option.active = true;
+                  $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {data:option.data});
                 }
               }
             });
-
           }
-
         };
 
         ng.showOptions = function() {
@@ -96,6 +96,7 @@ angular.module('kyc.directives').
         }
 
         ng.changeItem = function(){
+
         }
 
       }

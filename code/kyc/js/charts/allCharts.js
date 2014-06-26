@@ -6,34 +6,44 @@ angular.module('kyc.charts')
     var defer = $q.defer();
 
 	var charts = {
-    		payingCustomers:PayingCustomers,
-    		ordersPerCustomer:OrdersPerCustomer,
-    		averageOrderValue:AverageOrderValue,
-    		itemsOrdered:ItemsOrdered,
-    		ordersByOutlet:OrdersByOutlet,
-    		mostPopularItems:MostPopularItems,
-    		timeOfOrdersPlaced:TimeOfOrdersPlaced,
-    		customersPie:CustomersPie,
-    		customersBar:CustomersBar,
-            revenue2:Revenue
+    		// payingCustomers:PayingCustomers,
+    		// ordersPerCustomer:OrdersPerCustomer,
+    		// averageOrderValue:AverageOrderValue,
+    		// itemsOrdered:ItemsOrdered,
+    		// ordersByOutlet:OrdersByOutlet,
+    		// mostPopularItems:MostPopularItems,
+    		// timeOfOrdersPlaced:TimeOfOrdersPlaced,
+    		// customersPie:CustomersPie,
+    		// customersBar:CustomersBar,
+            revenue:Revenue
   	}
 
     OrderService.load(prepareCharts)
 
-    function prepareCharts(orders){
+    function prepareCharts(orders,minDate,maxDate){
+        if (!minDate)
+            minDate = new Date(new Date().getTime() - (7 * 24 * 3600 * 1000));
+        if (!maxDate)
+            maxDate = new Date();
+        console.log('preparing charts for',minDate,maxDate);
+            angular.forEach(charts,function(chart,key){
+                chart.clearData();
+            });               
             angular.forEach(orders,function(order){
-                angular.forEach(charts,function(chart){
-                    if (chart.setData)
-                        chart.setData(order,[]);
-                })  
+                var created = new Date(order.created).getTime();                
+                    console.log("here ho");
+                    angular.forEach(charts,function(chart){
+                        if (chart.setData)
+                            chart.setData(order,minDate,maxDate);
+                    })  
+                
             });
             angular.forEach(charts,function(chart,key){
                 if (chart.onSetDataComplete){
-                    chart.onSetDataComplete()
+                    chart.onSetDataComplete(minDate,maxDate)
                 }            
             });  
            defer.resolve(charts); 
-           console.log(Revenue.getHighChart());
     }
 
     function getPreparedCharts(){
@@ -49,6 +59,7 @@ angular.module('kyc.charts')
 
     return {
         promise:defer.promise,
-        getPreparedCharts:getPreparedCharts
+        getPreparedCharts:getPreparedCharts,
+        prepareCharts:prepareCharts
     };
 }]);

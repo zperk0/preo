@@ -47,7 +47,7 @@
       <div class="container">
 
         <div class="large-6 columns">
-          <form class="navbar-form navbar-left" role="search" ng-submit="fetchData()">
+          <form class="navbar-form navbar-left" role="search" ng-submit="update()">
             <div class="row">
               <div class="large-10 columns">
                 <label>Outlet
@@ -71,16 +71,16 @@
         </div>
         
         <div class="large-6 columns">
-          <form ng-submit="fetchData()">
+          <form ng-submit="update()">
             <div class="row">
               <div class="small-5 columns">
                 <label>Data
-                  <input type="text" class="form-control input-search dropdown pdDropdown" placeholder="01/02/2014" datepicker ng-model="search.start_date" />
+                  <input type="text" class="form-control input-search dropdown pdDropdown"  datepicker ng-model="minData" />
                 </label>
               </div>
               <div class="small-5 columns">
                 <label>&nbsp;
-                  <input type="text" class="form-control input-search dropdown pdDropdown" placeholder="01/02/2014" datepicker ng-model="search.end_date" />
+                  <input type="text" class="form-control input-search dropdown pdDropdown"  datepicker ng-model="maxData" />
                 </label>
               </div>
               <div class="small-2 columns">
