@@ -32,13 +32,13 @@ angular.module('kyc.services', ['ngResource'], ['$httpProvider', '$locationProvi
 
     function ($httpProvider, $locationProvider, $provide) {
 
-        // Desativa o modo HTML5
+        
         $locationProvider.html5Mode(false);
 
-        // ~CONFIG
+        
         $httpProvider.interceptors.push(['$q', '$window', '$injector', '$AjaxInterceptor', function ($q, $window, $injector, $AjaxInterceptor) {
             return {
-                // Intercepta a requisição
+                
                 request: function (config) {
 
                     $AjaxInterceptor.start();
@@ -46,7 +46,7 @@ angular.module('kyc.services', ['ngResource'], ['$httpProvider', '$locationProvi
                     return config || $q.when(config);
                 },
 
-                // Intercepta a respota
+                
                 response: function (response) {
 
                     $AjaxInterceptor.complete();

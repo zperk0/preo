@@ -19,7 +19,7 @@
   <header>
     <div class="container-fluid faixa-orange">
       <div class="container">
-        <h4 class="title-white"><span class="glyphicon glyphicon-star"></span> Know your customers</h4>
+        <h4 class="title-white"><span class="icon-know-customers"></span> Know your customers</h4>
       </div>
     </div>
 

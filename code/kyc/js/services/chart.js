@@ -105,6 +105,14 @@ angular.module('kyc.services', []).
 		                    }
 		                }
 		            },
+		            tooltip: {
+				    	borderColor: '#1576B7',
+				    	borderWidth: 1,
+		            	backgroundColor: '#1576B7',
+		                formatter: function() {
+		                    return '<b style="color:#fff">'+ this.y +' orders</b>';
+		                }
+		            }
 	        	},
 	            credits: {
 	                enabled: false
@@ -146,8 +154,11 @@ angular.module('kyc.services', []).
 				        spacingRight: 0	                
 		            },
 		            tooltip: {
+				    	borderColor: '#DBDBD9',
+				    	borderWidth: 1,
+		            	backgroundColor: '#DBDBD9',
 		                formatter: function() {
-		                    return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+		                    return '<b>'+ this.y +' %</b>';
 		                }
 		            },	            
 		            exporting: {
@@ -216,11 +227,19 @@ angular.module('kyc.services', []).
 	                            format: '{point.y:.1f}%'
 	                        }
 	                    }
-	                },
+	                },/*
 	                tooltip: {
-	                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-	                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
-	                }, 	                
+	                    pointFormat: '<b>{point.y:.2f}%</b>'
+	                },*/
+
+		            tooltip: {
+				    	borderColor: '#DBDBD9',
+				    	borderWidth: 1,
+		            	backgroundColor: '#DBDBD9',
+		                formatter: function() {
+		                    return '<b>'+ this.y +' %</b>';
+		                }
+		            },
 	        	},
 	            title: {
 	                text: ''
