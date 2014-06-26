@@ -630,6 +630,21 @@ span.multiSelect{
   color: #1BA4DD
 }
 
+.options input[type = "radio"] {
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  -ms-appearance: checkbox;
+  -o-appearance: checkbox;
+} 
+
+.icon-know-customers{
+  background: url("/img/KYC-icon-white-reverse.png") left center no-repeat;
+  float: left;
+  width: 30px;
+  height: 31px;
+  margin-right: 10px;
+}
+
 .chart_3:hover{
   /* IE 8 */
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
