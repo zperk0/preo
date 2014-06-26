@@ -2,6 +2,8 @@
 angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','$http','Outlet','Orders','ACCOUNT_ID', '$AjaxInterceptor',
 	function($scope,$http,Outlet,Orders,ACCOUNT_ID, $AjaxInterceptor) {	
 		
+			$scope.outlets = [];
+
 			Outlet.query({accountId:ACCOUNT_ID},function(result){
 					$scope.outlets = result;
 
@@ -10,7 +12,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','$http','Outl
 
 			$scope.fetchData = function(){
 					//orders&venueId=1
-					//milliseconds //completed status only 
+console.log(getSelectedOutlets());					//milliseconds //completed status only 
 
 					$AjaxInterceptor.start();
 
@@ -24,6 +26,12 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','$http','Outl
 
 					 });
 			};
+
+			var getSelectedOutlets = function(){
+				return $scope.outlets.filter(function(data){
+					return data.selected === true;
+				});
+			}
 
 			$scope.fetchData();
 }])
