@@ -276,11 +276,11 @@ body{
   text-transform: uppercase;
 }
 
-.block-status.order{
+.block-status.good{
   background-color: #8BC04F
 }
 
-.block-status.failed{
+.block-status.bad{
   background-color: #1BA4DD
 }
 
@@ -622,13 +622,14 @@ span.multiSelect{
   text-transform: uppercase;
 }
 
-.text-status.order{
+.text-status.good{
   color: #8BC04F
 }
 
-.text-status.failed{
+.text-status.bad{
   color: #1BA4DD
 }
+
 
 .options input[type = "radio"] {
   -webkit-appearance: checkbox;

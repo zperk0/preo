@@ -114,7 +114,6 @@ angular.module('kyc.charts')
         if (data.length>0){
             startDate = data[0][0];
             endDate = data[data.length-1][0];
-            console.log('totalRevenue',totalRevenue)
             totalRevenue = totalRevenue.toFixed(2)
         }   
     }   

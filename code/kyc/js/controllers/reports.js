@@ -15,19 +15,24 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 
 		if ( allOrders) {
 			angular.forEach(allOrders,function(row){
-				angular.forEach(row.items,function(item){
-					$scope.reports.push({
-						id:row.id,
-						outlet:getOutletName(row.outletId),
-						name:getUserName(row.user),
-						time:row.created,				
-						quantity:item.qty,
-						item:item.name,
-						modifier:getModifiers(item),
-						total:item.total,
-						status:row.status
-					})
-				})		
+				var minTimestamp = $scope.search.start_date.getTime();
+      var maxTimestamp = $scope.search.end_date.getTime();
+      var orderData = new Date(row.created);        
+      if (orderData >= minTimestamp && orderData <= maxTimestamp){
+					angular.forEach(row.items,function(item){
+						$scope.reports.push({
+							id:row.id,
+							outlet:getOutletName(row.outletId),
+							name:getUserName(row.user),
+							time:row.created,				
+							quantity:item.qty,
+							item:item.name,
+							modifier:getModifiers(item),
+							total:item.total,
+							status:row.status
+						})
+					})		
+				}
 			});
 		}
 		$AjaxInterceptor.complete();

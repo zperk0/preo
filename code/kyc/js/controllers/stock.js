@@ -1,7 +1,5 @@
 angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInterceptor','OrderService', function($scope, $AjaxInterceptor,OrderService) {
 	
- 
- 
 	$scope.stock={};
 
   var allOrders = OrderService.getOrders();	
@@ -14,21 +12,26 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 	}	
 
 	function prepareScopeStock(){
-		if ( allOrders ){
-			angular.forEach(allOrders,function(row){
-				angular.forEach(row.items,function(item){
-					var itemId  = item.id;
-						if ($scope.stock[itemId] === undefined){						
-							$scope.stock[itemId] = {
-									name:item.name,
-									quantity:item.qty
-							}	
-						}
-						else{
-								$scope.stock[itemId].quantity+=item.qty;
-						};																			
-				})					
-			});
+		if ( allOrders ){			
+			angular.forEach(allOrders,function(row){			
+		    var minTimestamp = $scope.search.start_date.getTime();
+        var maxTimestamp = $scope.search.end_date.getTime();
+        var orderData = new Date(row.created);        
+        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+	        	angular.forEach(row.items,function(item){
+						var itemId  = item.id;
+							if ($scope.stock[itemId] === undefined){						
+								$scope.stock[itemId] = {
+										name:item.name,
+										quantity:item.qty
+								}	
+							}
+							else{
+									$scope.stock[itemId].quantity+=item.qty;
+							};																			
+					})					
+      		}
+				});											
 		}
 
 		$AjaxInterceptor.complete();		

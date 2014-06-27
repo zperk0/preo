@@ -2,7 +2,7 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','StreamServ
  function($scope,StreamService,pusher,$AjaxInterceptor) {
 
 	$scope.orders = StreamService.getOrders();
-
+    console.log($scope.orders);
     var pusherUpdateEvent = function() {        
         StreamService.load(function(orders){
             $scope.orders = orders;
@@ -14,6 +14,32 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','StreamServ
     var outletIds = [];
     pusher.bind(venueId, outletIds, pusherUpdateEvent);
 
+    $scope.getStatusName = function(status){
+        var statusMap = {
+            PAYMENT_FAILED:"FAILED",
+            NOSHOW:"NO SHOW"
+        }
+
+        return statusMap[status] ? statusMap[status] : status;
+    }
+
+    $scope.getStatusColor = function(status){
+        switch (status) {
+            case "PENDING":
+            case "ACCEPTED":
+            case "PREPARING":
+            case "READY":
+            case "DELIVERING":
+            case "COMPLETED":
+                return "good"
+            case "NOSHOW":
+            case "REJECTED":
+            case "CANCELLED":
+            case "PAYMENT_FAILED":
+            default:
+                return "bad"
+        }
+    }
 
     $scope.showOptions = function() {
       angular.element('.flip-container').addClass('active');

@@ -15,33 +15,37 @@
 					  <tbody ng-repeat="order in orders" ng-switch on="order.active">
 					  	<tr ng-click="activeStream(order)" ng-class="{active: order.active}">
 					  		<td width="15">
-					  			<span class="block-status {{ stream.status }}">{{ order.status }}</span>
+					  			<span class="block-status {{ getStatusColor(order.status) }}">{{ getStatusName(order.status) }}</span>
 					  		</td>
-					  		<td width="100" valign="middle">£ {{ order.total }}</td>
+					  		<td width="100" valign="middle">&pound;{{ order.total }}</td>
 					  		<td valign="middle">{{ order.user.firstName + " " + order.user.lastName }}</td>
 					  		<td width="300" valign="middle">{{ getOrderItems(order).join(",") }}</td>
 					  		<td width="200" valign="middle">{{ getTimeDiff(order.updated) }}</td>
 					  	</tr>
 					  	<tr ng-switch-when="true" class="result">
 					  		<td colspan="2" class="padding information">
-					  			<p class="code"><b>#{{ stream.code }}</b></p>
-					  			<p>{{ stream.name }}</p>
-					  			<p>Tuesday, 10th June</p>
-					  			<p>12:03:51</p>
+					  			<p class="code"><b>#{{ order.id }}</b></p>
+					  			<p>{{ order.firstName + " " + order.lastName }}</p>
+					  			<p>{{order.created | date:'EEEE dd MMMM' }}</p>
+					  			<p>{{order.created | date:'HH:mm:ss' }}</p>
 					  			<br />
-					  			<p>Visa ****4580</p>
-					  			<p class="text-status {{ stream.order }}">PAIMENT {{ stream.order === 'order' ? 'success' : 'failed' }}</p>
+					  			<!-- <p>{{order. ****4580}}</p> //TODO where will this come from?-->
+					  			<p class="text-status {{ getStatusColor(order.status) }}">{{getStatusName(order.status)}}</p>
 					  		</td>
 					  		<td colspan="3">
 					  			<table class="table-max">
 					  				<tbody>
-					  					<tr>
-					  						<td colspan="3">{{ stream.numbers }}</td>
-					  						<td width="200">{{ stream.spent }}</td>
+					  					<tr ng-repeat="item in order.items">
+					  						<td colspan="3">{{ item.qty +" x "+item.name}}</td>
+					  						<td width="200">&pound;{{ item.total.toFixed(2) }}</td>
+					  					</tr>
+					  					<tr ng-show="order.discount && order.discount>0">
+					  						<td colspan="3">Discount</td>
+					  						<td width="200">-&pound;{{ order.discount.toFixed(2) }}</td>
 					  					</tr>
 					  					<tr>
 					  						<td colspan="3"><b>TOTAL</b></td>
-					  						<td width="200"><b>{{ stream.spent }}</b></td>
+					  						<td width="200"><b>&pound;{{ order.total.toFixed(2) }}</b></td>
 					  					</tr>
 					  				</tbody>
 					  			</table>

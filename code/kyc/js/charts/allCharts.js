@@ -6,17 +6,17 @@ angular.module('kyc.charts')
     var defer = $q.defer();
 
 	var charts = {
-    		// payingCustomers:PayingCustomers,
-    		// ordersPerCustomer:OrdersPerCustomer,
-    		// averageOrderValue:AverageOrderValue,
-    		// itemsOrdered:ItemsOrdered,
-    		// ordersByOutlet:OrdersByOutlet,
-    		// mostPopularItems:MostPopularItems,
-    		// timeOfOrdersPlaced:TimeOfOrdersPlaced,
-    		// customersPie:CustomersPie,
-    		// customersBar:CustomersBar,
-      //       revenue:Revenue,
-      //       numberOfOrders:NumberOfOrders,
+    		payingCustomers:PayingCustomers,
+    		ordersPerCustomer:OrdersPerCustomer,
+    		averageOrderValue:AverageOrderValue,
+    		itemsOrdered:ItemsOrdered,
+    		ordersByOutlet:OrdersByOutlet,
+    		mostPopularItems:MostPopularItems,
+    		timeOfOrdersPlaced:TimeOfOrdersPlaced,
+    		customersPie:CustomersPie,
+    		customersBar:CustomersBar,
+            revenue:Revenue,
+            numberOfOrders:NumberOfOrders,
             menuItemPopularity:MenuItemPopularity
   	}
 
@@ -29,7 +29,6 @@ angular.module('kyc.charts')
             maxDate = new Date();
 
             angular.forEach(charts,function(chart,key){
-                console.log(key,chart);
                 chart.clearData();
             });               
             angular.forEach(orders,function(order){

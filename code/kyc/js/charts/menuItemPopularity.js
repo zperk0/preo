@@ -40,7 +40,6 @@ angular.module('kyc.charts')
                 menuItems[item.menuItemId] = {}
             }
             if (menuItems[item.menuItemId][timestamp] === undefined){
-                console.log("creating",item.menuItemId,timestamp);
                 menuItems[item.menuItemId][timestamp]=0
             }
             menuItems[item.menuItemId][timestamp]++;
@@ -56,7 +55,6 @@ angular.module('kyc.charts')
     }
 
     function onSetDataComplete(minDateP,maxDateP){
-        console.log("set all data",menuItems);  
         minDate = minDateP;
         maxDate = maxDateP;
         var nowTimestamp = new Date().getTime();        
@@ -90,8 +88,6 @@ angular.module('kyc.charts')
 
         startDate = -1;
         endDate = 0;
-        console.log("preparing data for",menuItems[selectedItem]);
-        console.log(menuItems,selectedItem);
         
         angular.forEach(menuItems[selectedItem],function(dR,key){                            
             var orderDate = Number(key)
@@ -126,7 +122,6 @@ angular.module('kyc.charts')
                 previousYearData.push(dataRow)
 
         })
-        console.log('data after',data);
         data.sort(sortData);
         weekData.sort(sortData);
         previousWeekData.sort(sortData);
@@ -142,7 +137,6 @@ angular.module('kyc.charts')
         if (data.length>0){
             startDate = data[0][0];
             endDate = data[data.length-1][0];
-            console.log('totalPerDay',totalOrders)            
         }   
     }   
 
@@ -150,7 +144,6 @@ angular.module('kyc.charts')
             return a[0] > b[0]; 
     }
 	function getData(){
-        console.log('returning',data);
 	   return data;
     }
 
@@ -161,7 +154,6 @@ angular.module('kyc.charts')
     function getPercentage(data,oldData){
         var totalData = getPeriodTotal(data[selectedItem]);
         var totalOldData = getPeriodTotal(oldData[selectedItem])   
-        console.log('getting percentage',data,oldData);     
         //return (totalData * 100 / totalOldData).toFixed(0)
         return "";
 
