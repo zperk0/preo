@@ -44,7 +44,7 @@
                 <div class='comingSoon' ng-show="!feature.active">
                   <button ng-show="!isFeatureOwned(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >COMING SOON</button>
                 </div>
-                <div class='comingSoon' ng-show="feature.active && feature.trialPeriod > 0 && getExpiryDate() >= 0 && getFeatureStatus(feature) == 'UNINSTALLED'">
+                <div class='comingSoon' ng-show="feature.active && feature.trialPeriod > 0 && getExpiryDate() >= 0 &&  ( !isFeatureOwned(feature) || getFeatureStatus(feature) == 'UNINSTALLED' )">
                   <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >FREE {{feature.trialPeriod}} DAY TRIAL</button>
                 </div>
                 <div class='comingSoon' ng-show="feature.trialPeriod > 0 && getFeatureStatus(feature) == 'TRIAL'">
@@ -74,8 +74,8 @@
       <div class='comingSoon' ng-show="!selectedFeature.feature.active">
           <button ng-show="!isFeatureOwned(feature)" class='preodayButton secondary noclick' >COMING SOON</button>
       </div>
-      <div class='comingSoon' ng-show="selectedFeature.feature.active && selectedFeature.feature.trialPeriod > 0 && getExpiryDate(selectedFeature.feature) >= 0 && getFeatureStatus(selectedFeature.feature)=='UNINSTALLED'">
-        <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="startTrial(selectedFeature.feature)">FREE {{selectedFeature.feature.trialPeriod}} DAY TRIAL</button>
+      <div class='comingSoon' ng-show="selectedFeature.feature.active && selectedFeature.feature.trialPeriod > 0 && getExpiryDate(selectedFeature.feature) >= 0 && (!isFeatureOwned(feature) || getFeatureStatus(selectedFeature.feature)=='UNINSTALLED')">
+        <button ng-show="!isFeatureOwned(feature)" class='preodayButton' data-reveal-id="startTrialDialog">FREE {{selectedFeature.feature.trialPeriod}} DAY TRIAL</button>
       </div> 
       <div class='comingSoon' ng-show="selectedFeature.feature.trialPeriod > 0 && getFeatureStatus(selectedFeature.feature) == 'TRIAL'">
         <button class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" > TRIAL EXPIRES IN {{ getExpiryDate(selectedFeature.feature) }} DAYS </button>
@@ -119,6 +119,18 @@
       <p><? echo _("You can manage subscriptions from your account settings page")?></p>      
       <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/subscription')"><? echo _("ACCOUNT SETTINGS")?></button>
       <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('successDialog')" ><? echo _("RETURN TO STORE")?></button>
+</div>
+<div id="startTrialDialog" class="reveal-modal medium featureDialog" data-reveal>
+      <b><? echo _("Know your customer - 30 DAY FREE TRIAL")?></b><br/>
+      <p><? echo _("Your card will not be charged for this translaction. You may cancel this trial at any time from your account settings page.")?></p>      
+      <p>
+        <label>
+          <input type="checkbox" ng-model="acceptTerm"/>  
+            I have heard the <a href='#'>Terms and Conditions</a>
+        </label>
+      </p>  
+      <button ng-class="{secondary:!acceptTerm,noclick:!acceptTerm}" class='positiveDismiss preodayButton' ng-click="startTrial(selectedFeature)"><? echo _("BEGIN TRIAL")?></button>
+      <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('successDialog')" ><? echo _("CANCEL")?></button>
 </div>
 </div>
 </div> <!-- End app -->

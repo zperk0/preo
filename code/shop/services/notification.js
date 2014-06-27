@@ -47,14 +47,16 @@ angular.module('notification', []).service('$notification', ['$modal', '$q', '$s
           controller: confirmModalController,
           resolve: {
             data: function () {
+                console.log('reolving data')
               return data;
             },
             deffered: function() {
-                return deffered
+                console.log('reolving deferred')
+                return deffered;
             }
           }
         });
-
+        console.log("confirming");
         return deffered.promise;
 
 	};	

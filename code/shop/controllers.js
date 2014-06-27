@@ -13,7 +13,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
       Resources.AccountFeatures.query({accountId:ACCOUNT_ID},function(result){    
         $scope.accountFeatures = result;
         $scope.finishedLoading = true;         
-        console.log($scope.accountFeatures);
+        console.log('accountFeatures',$scope.accountFeatures);
       });
     }
 
@@ -68,6 +68,22 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
 
     }
 
+    $scope.startTrial = function(){
+      if (!$scope.acceptTerm)
+        return;
+      var feature = $scope.selectedFeature.feature;
+      Resources.AccountFeatures.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){
+        console.log('response:',accountPayment);  
+        if (accountPayment.status ===  "SUCCESS"){
+          getAccountFeatures();
+          $('#successDialog').foundation('reveal', 'open');          
+        }                         
+      },function(error){                        
+        $('#startTrialDialog').foundation('reveal', 'close');          
+        displayErrorNoty();
+      });
+    }
+    
 
     $scope.clickBuy = function(feature){
 
@@ -87,7 +103,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
                       },function(error){                        
                         displayErrorNoty();
                 });
-                                          
+                                        
             }          
         },function(error){          
           if (error.data && error.data.status === 404){
@@ -148,7 +164,6 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
         return found ;
         
     }
-
 
     function displayErrorNoty(){
          noty({
