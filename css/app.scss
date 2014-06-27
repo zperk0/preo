@@ -3049,6 +3049,9 @@ button.preodayButton.noclick{
   }
 }
 
+.errorColor{
+  color :$error !important;
+}
 
 
 @media (min-width:768px) and (max-width:900px){

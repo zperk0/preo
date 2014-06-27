@@ -46,7 +46,7 @@
 						<td > <img ng-src="{{isInstalled(accountFeature) && accountFeature.feature.icon || '/img/icon_off.png'}}" /> </td>
 						<td> <span class='featureAppTitle' ng-show="accountFeature.feature.showAppTitle"> my order app </span> {{accountFeature.feature.name}} </td>
 						<td ng-show="accountFeature.status === 'INSTALLED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
-						<td ng-show="accountFeature.status === 'TRIAL'" class='error'> Free trial expires in {{getExpiryDate(accountFeature)}} days </td>				
+						<td ng-show="accountFeature.status === 'TRIAL'" class='errorColor'> Free trial expires in {{getExpiryDate(accountFeature)}} days </td>				
 						<td ng-show="accountFeature.status === 'UNINSTALLED'">  <? echo _("Pending removal") ?> </td>				
 						<td ng-switch='accountFeature.status'>
 								<span ng-switch-when="INSTALLED" ng-click='openConfirmDialog(accountFeature)' class='positiveButton'> <? echo _("Uninstall")?></span>
