@@ -123,6 +123,7 @@
 </div>
 </div> <!-- End app -->
   <script src="/js/angular_all.min.js"></script>  
+  <script src="/bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
   <script type="text/javascript" src="/code/shop/app.js"></script>
 
   <script type="text/javascript">
@@ -130,6 +131,7 @@
   </script>
   <script type="text/javascript" src="/code/shop/resource.js"></script>
   <script type="text/javascript" src="/code/shop/controllers.js"></script>
+  <script type="text/javascript" src="/code/shop/services/notification.js"></script>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 
 

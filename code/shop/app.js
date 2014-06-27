@@ -5,6 +5,8 @@ angular.module('shop', [
   'ngResource',
   'features',
   'shop.resources',
-  'shop.controllers'
+  'notification',
+  'shop.controllers',
+  'mm.foundation'
 ]);
 
