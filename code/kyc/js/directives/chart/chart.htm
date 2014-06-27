@@ -31,18 +31,8 @@
 				</div>
 
 				<div ng-if="chart.value.items">
-					<select class="dropdown pdDropdown" ng-model="selectedItem" ng-change="changeItem()" ng-init="selectedItem = chart.value.items[0].id">
-						<option ng-repeat="item in chart.value.items" value="{{ item.id }}">{{ item.name }}</option>	
-					</select>
-<!-- 
-	                  <multi-select    
-	                      input-model="chart.value.items"    
-	                      button-label="name"
-	                      item-label="name"
-	                      tick-property="selected"
-	                      default-label="All Items"
-	                  >
-	                  </multi-select>	 -->				
+					<select class="dropdown pdDropdown" ng-model="selectedItem" ng-change="changeItem( selectedItem )" ng-init="selectedItem = chart.value.items[0]" ng-options="item as item.name for item in chart.value.items">
+					</select>				
 				</div>
 
 			</div>
