@@ -75,17 +75,17 @@
             <div class="row">
               <div class="small-5 columns">
                 <label>Data
-                  <input type="text" class="form-control input-search dropdown pdDropdown"  datepicker ng-model="minData" />
+                  <input type="text" class="form-control input-search dropdown pdDropdown" datepicker ng-model="search.start_date" /> 
                 </label>
               </div>
               <div class="small-5 columns">
                 <label>&nbsp;
-                  <input type="text" class="form-control input-search dropdown pdDropdown"  datepicker ng-model="maxData" />
+                  <input type="text" class="form-control input-search dropdown pdDropdown" datepicker compare="search.start_date" ng-model="search.end_date" />
                 </label>
               </div>
               <div class="small-2 columns">
                 <label>&nbsp;
-                  <button type="submit" class="button small">Update</button>
+                  <button type="submit" class="button small" ng-click="fetchDataByDate()">Update</button>
                 </label>
               </div>
             </div>          

@@ -1,24 +1,61 @@
 'use strict';
 
 angular.module('kyc.directives').
-  directive('datepicker', ['$parse', '$filter', function( $parse,$filter ) {
+  directive('datepicker', ['$parse', '$filter', function( $parse, $filter ) {
 
   	return {
-      require:'ngModel',
-      link :function( ng, elem, attrs ,ctrl) {
+      restrict: 'A',
+      require: 'ngModel',
+      scope: {
+        compare: '@'
+      },
+      link: function( ng, elem, attrs, ngModel ) {
 
-      var ngModel = $parse(attrs.ngModel);
+        var nowTemp = new Date();
+        var now = new Date(Date.UTC(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0));
 
-      elem.fdatepicker({
-        format:"dd/mm/yyyy"
-      })
-        .on('changeDate', function(ev) {
-          var that = this;
-           ng.$apply(function(scope){
-                ngModel.assign(scope, ev.date);                
-            });
+        var ngCompare = null;
 
+        if ( attrs.compare ) {
+          ngCompare = $parse( attrs.compare );
+        }
+
+        elem.fdatepicker({
+          formatDate: "MM/dd/yyyy",
+          onRender: function( date ) {
+            return date.valueOf() > now.valueOf() ? 'disabled' : '';          
+          }
+        })
+          .on('changeDate', function(ev) {
+
+             ng.$apply(function(scope){
+
+                if ( ngCompare ) {
+                  var newDate = new Date(ngCompare(ng.$parent));
+                  
+                  if ( ev.date.valueOf() < newDate.valueOf()  ){
+                    ev.date = newDate;
+                  } 
+
+                } 
+
+                ngModel.$setViewValue(ev.date);
+                elem.fdatepicker('setDate', newDate)
+              });
+
+          });
+
+
+        ngModel.$parsers.push(function(data) {
+          return new Date(data)
         });
+
+        ngModel.$formatters.push(function(data) {          
+          return $filter('date')(data, "MM/dd/yyyy");
+        });
+          
+      }
+    };
 
         ctrl.$parsers.push(function(data) {
           return new Date(data)

@@ -93,9 +93,9 @@ angular.module('kyc.directives').
           ng.$parent.$parent.$parent.gridster.remove_widget(angular.element($event.target).parents('li'));
         }
 
-        ng.changeItem = function(){    
-
-          
+        ng.changeItem = function( item ){
+          ng.selectedItem = item;
+          console.log(ng.selectedItem);
         }
 
       }

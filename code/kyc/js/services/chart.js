@@ -151,7 +151,7 @@ angular.module('kyc.services', []).
 				    	borderWidth: 1,
 		            	backgroundColor: '#DBDBD9',
 		                formatter: function() {
-		                    return '<b>'+ this.y +' %</b>';
+		                    return '<b>'+ this.y +'</b>';
 		                }
 		            },	            
 		            exporting: {
@@ -217,7 +217,7 @@ angular.module('kyc.services', []).
 	                        borderWidth: 0,
 	                        dataLabels: {
 	                            enabled: false,
-	                            format: '{point.y:.1f}%'
+	                            format: '{point.y:.1f}'
 	                        }
 	                    }
 	                },/*
@@ -230,7 +230,7 @@ angular.module('kyc.services', []).
 				    	borderWidth: 1,
 		            	backgroundColor: '#DBDBD9',
 		                formatter: function() {
-		                    return '<b>'+ this.y +' %</b>';
+		                    return '<b>'+ this.y +' </b>';
 		                }
 		            },
 	        	},
