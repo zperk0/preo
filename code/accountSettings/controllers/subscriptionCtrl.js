@@ -46,6 +46,13 @@ angular.module('accountSettings.controllers')
       });    
     }
     
+    $scope.isInstalled = function(accountFeature){              
+        return !((accountFeature.status === 'CANCELED') || (accountFeature.status === 'REMOVED') || (accountFeature.status === 'EXPIRED'));
+    }
+    $scope.isCanceled = function(accountFeature){              
+        return (accountFeature.status === 'CANCELED') || (accountFeature.status === 'EXPIRED');
+    }
+  
 
 
     $scope.navigateTo = function(place){
@@ -56,7 +63,7 @@ angular.module('accountSettings.controllers')
       var sum = 0;
       angular.forEach($scope.accountFeatures,function(feature){
         if (feature.status == "INSTALLED")
-          sum += feature.upfrontPrice;
+          sum += feature.subscriptionPrice;
       });
     	return sum;
     }
@@ -71,17 +78,20 @@ angular.module('accountSettings.controllers')
     }
 
     $scope.hasCancelledFeatures = function(){      
-     return $scope.accountFeatures && $.grep($scope.accountFeatures, function(e){ return e.status == "CANCELED"; }).length > 0;
+     return $scope.accountFeatures && $.grep($scope.accountFeatures, function(e){ return (e.status == "CANCELED" || e.status == "EXPIRED");  }).length > 0;
     } 
 
     function setActiveCount(){
-      $scope.activeFeaturesCount = $.grep($scope.accountFeatures, function(e){ return e.status != "CANCELED"; }).length > 0;
+      $scope.activeFeaturesCount = $.grep($scope.accountFeatures, function(e){ return (e.status != "CANCELED" && e.status != "REMOVED" && e.status != "EXPIRED"); }).length > 0;
 
     }
 
     $scope.openConfirmDialog = function(feature){
         $scope.selectedFeature = feature;
-        $('#confirmationDialog').foundation('reveal', 'open');
+        if (feature.status == "TRIAL")
+          $('#uninstallTrial').foundation('reveal', 'open');
+        else
+          $('#confirmationDialog').foundation('reveal', 'open');
     }
 
     $scope.dialogConfirm = function(dialog){
@@ -89,6 +99,9 @@ angular.module('accountSettings.controllers')
       switch (dialog){
         case "confirmationDialog": 
           $scope.updateStatus($scope.selectedFeature,"UNINSTALLED")
+          break;
+        case "uninstallTrial":
+          $scope.updateStatus($scope.selectedFeature,"EXPIRED")
           break;
         case "reinstallDialog":
           purchaseFeature($scope.selectedFeature)
@@ -121,10 +134,7 @@ angular.module('accountSettings.controllers')
     }
 
     $scope.removeAccountFeature = function(accountFeature){
-      accountFeature.$delete({accountId:accountFeature.accountId,featureId:accountFeature.featureId},
-        function(result){
-            $scope.accountFeatures.splice( $scope.accountFeatures.indexOf(accountFeature), 1 );
-      });
+      $scope.updateStatus(accountFeature,"REMOVED");      
     }
 
     function setBillingDate(){
@@ -171,6 +181,10 @@ angular.module('accountSettings.controllers')
               displayErrorNoty()
             }                       
         });
+    }
+
+     $scope.getExpiryDate = function(accountFeature){
+        return Math.floor(( new Date(accountFeature.endDate).getTime() -  new Date().getTime()) / (1000 * 3600 * 24))        
     }
 
     

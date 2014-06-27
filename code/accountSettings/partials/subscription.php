@@ -42,13 +42,15 @@
 			adding further value to your business today")?></p>			
 	</div >
 			<table ng-show='activeFeaturesCount >= 1'>
-				<tr ng-repeat="accountFeature in accountFeatures | filter:{ status:'INSTALLED'}" ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>
-						<td > <img ng-src="{{accountFeature.status === 'INSTALLED' && accountFeature.feature.icon || '/img/icon_off.png'}}" /> </td>
+				<tr ng-repeat="accountFeature in accountFeatures | filter:isInstalled " ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>
+						<td > <img ng-src="{{isInstalled(accountFeature) && accountFeature.feature.icon || '/img/icon_off.png'}}" /> </td>
 						<td> <span class='featureAppTitle' ng-show="accountFeature.feature.showAppTitle"> my order app </span> {{accountFeature.feature.name}} </td>
 						<td ng-show="accountFeature.status === 'INSTALLED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
+						<td ng-show="accountFeature.status === 'TRIAL'" class='error'> Free trial expires in {{getExpiryDate(accountFeature)}} days </td>				
 						<td ng-show="accountFeature.status === 'UNINSTALLED'">  <? echo _("Pending removal") ?> </td>				
 						<td ng-switch='accountFeature.status'>
 								<span ng-switch-when="INSTALLED" ng-click='openConfirmDialog(accountFeature)' class='positiveButton'> <? echo _("Uninstall")?></span>
+								<span ng-switch-when="TRIAL" ng-click='openConfirmDialog(accountFeature)' class='positiveButton'> <? echo _("Uninstall")?></span>
 								<span ng-switch-when="UNINSTALLED" ng-click='updateStatus(accountFeature,"INSTALLED")' class='negativeButton'> <? echo _("Cancel")?></span>
 						</td>
 				</tr>
@@ -64,10 +66,11 @@
 			<br/>
 			<div>
 				<table>
-					<tr ng-repeat="accountFeature in accountFeatures | filter:{ status:'CANCELED'}" class="disabled" >
+					<tr ng-repeat="accountFeature in accountFeatures | filter:isCanceled" class="disabled" >
 						<td > <img src='/img/icon_off.png' /> </td>
-						<td> {{accountFeature.feature.name}} </td>
-						<td> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
+						<td> {{accountFeature.feature.name}} </td>						
+						<td ng-show="accountFeature.status === 'CANCELED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
+						<td ng-show="accountFeature.status === 'EXPIRED'"> <? echo _("Trial has expired")?> </td>				
 						<td >
 								<span ng-click='reinstallAccountFeature(accountFeature)' class='positiveButton'> <? echo _("Reinstall")?> </span>&nbsp;
 								<span ng-click='removeAccountFeature(accountFeature)' class='negativeButton'> <? echo _("Remove")?> </span>
@@ -86,7 +89,7 @@
       <button class='negativeDismiss preodayButton secondary' ng-click="dialogCancel('paymentErrorDialog')" ><? echo _("CANCEL")?></button>
 </div>
 
-<!-- start feature modal -->
+ <!-- start feature modal -->
  <div id="confirmationDialog" class="reveal-modal small featureDialog" data-reveal>
       <p><? echo _("This Premium Feature will remain active on your account until the end of the current billing cycle. You can cancel this uninstall at any time. If you wish to reinstall this Premium Feature after it has been deactivated, simply click on the <span>reinstall</span> option.")?></p>
       <p><b> <? echo _("Are you sure you want to uninstall this Premium Feature?")?></b></p>
@@ -94,6 +97,15 @@
       <button class='negativeDismiss preodayButton' ng-click="dialogCancel('confirmationDialog')" ><? echo _("CANCEL")?></button>
   </div>
   <!-- end feature modal -->
+
+  <!-- start feature modal -->
+	 <div id="uninstallTrial" class="reveal-modal small featureDialog" data-reveal>
+	      <p><? echo _("Your free trial will be imediately canceled and you will no longer have access to this feature.")?></p>
+	      <p><b> <? echo _("Are you sure you want to cancel this Free Trial? This action cannot be undone?")?></b></p>
+	      <button class='positiveDismiss preodayButton' ng-click="dialogConfirm('uninstallTrial')" ><? echo _("UNINSTALL")?></button>
+	      <button class='negativeDismiss preodayButton' ng-click="dialogCancel('uninstallTrial')" ><? echo _("CANCEL")?></button>
+	  </div>
+	  <!-- end feature modal -->
 
   <!-- start feature modal -->
  <div id="reinstallDialog" class="reveal-modal small featureDialog" data-reveal>

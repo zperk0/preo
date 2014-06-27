@@ -386,11 +386,10 @@ form {
 .preodayButton {
   border-radius:2px;
   padding: 0.4em 0.85em;
-  font-size: 115%;
+  font-size: 105%;
   border: 1px solid #3AA2DC;
   box-shadow: 0 0 0 !important;
   -webkit-box-shadow: 0 0 0  !important;
-  letter-spacing:1px;
   font-family:HelveticaNeueW01-45Ligh !important;
 
   &.premium{
@@ -2714,7 +2713,7 @@ span .currencySymbol {
 
         &:last-child{
           text-align:right;
-          width:200px;
+          width:100px;
           span{
             color:$mainDark;        
             &:hover{
@@ -2739,6 +2738,16 @@ span .currencySymbol {
     }
     span.negativeButton{
         color:$error !important;
+    }
+  }
+
+  .deactivatedFeaturesWrapper {
+    table{
+      td{
+        &:last-child{
+          width:200px;
+        }
+      }
     }
   }
 

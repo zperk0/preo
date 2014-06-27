@@ -138,11 +138,27 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
         }        
         return found;
     }
+
+    $scope.isFeatureInstalled = function(feature){
+      var found = false;      
+        if (feature && $scope.accountFeatures && $scope.accountFeatures.length >0){
+            angular.forEach($scope.accountFeatures,function(accountFeature){                                          
+                if (accountFeature.featureId == feature.id)
+                  console.log("is installed",feature.name,accountFeature.status)
+                if (feature.id == accountFeature.featureId && (accountFeature.status === "INSTALLED" || accountFeature.status === "TRIAL" || accountFeature.status === "UNINSTALLED") ){
+                  found = true;
+                }
+            });
+        }        
+      return found;
+    }
     $scope.isFeatureOwned = function(feature){      
       var found = false;      
         if (feature && $scope.accountFeatures && $scope.accountFeatures.length >0){
             angular.forEach($scope.accountFeatures,function(accountFeature){                            
-                if (feature.id == accountFeature.featureId && accountFeature.status != "CANCELED" && accountFeature.status != "REMOVED" ){
+              if (feature.id == accountFeature.featureId){
+              }
+                if (feature.id == accountFeature.featureId && accountFeature.status != "CANCELED" && accountFeature.status != "REMOVED" && accountFeature.status != "UNINSTALLED" ){                
                   found = true;
                 }
             });
@@ -154,13 +170,13 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
        var found = 0;      
 
         if (feature && $scope.accountFeatures && $scope.accountFeatures.length >0){
-            angular.forEach($scope.accountFeatures,function(accountFeature){                            
-                if (feature.id == accountFeature.featureId && accountFeature.status == "TRIAL"){
+            angular.forEach($scope.accountFeatures,function(accountFeature){                      
+                if (feature.id == accountFeature.featureId){
                   if (accountFeature.endDate !== null)
                     found = Math.floor(( new Date(accountFeature.endDate).getTime() -  new Date().getTime()) / (1000 * 3600 * 24))
                 }
             });
-        }
+        }        
         return found ;
         
     }
