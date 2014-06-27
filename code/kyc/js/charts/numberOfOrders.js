@@ -1,11 +1,11 @@
 angular.module('kyc.charts')
-.factory('Revenue',['ChartType', function(ChartType) {
+.factory('NumberOfOrders',['ChartType', function(ChartType) {
 
 	var type = ChartType.AREA;	
-    var dailyRevenue = {};
+    var dailyOrders = {};
     var data = [];
-    var title = 'Revenue'
-    var totalRevenue =0;
+    var title = 'Number of Orders'
+    var totalOrders =0;
     var startDate = 0;
     var endDate = 0;
 
@@ -24,13 +24,10 @@ angular.module('kyc.charts')
 
 	function setData(order,minDate,maxDate){
         var timestamp = new Date(order.paid).setHours(0, 0, 0, 0);
-        if (dailyRevenue[timestamp])
-            dailyRevenue[timestamp]+=order.total
+        if (dailyOrders[timestamp])
+            dailyOrders[timestamp]++;
         else
-            dailyRevenue[timestamp]=order.total;        
-        
-        
-        
+            dailyOrders[timestamp]=1;
 	}
 
     function onSetDataComplete(minDate,maxDate){
@@ -63,15 +60,14 @@ angular.module('kyc.charts')
         previousYearData = [];
 
 
-
         startDate = -1;
         endDate = 0;
-        angular.forEach(dailyRevenue,function(dR,key){                                
+        angular.forEach(dailyOrders,function(dR,key){                                
             var orderDate = Number(key)
             var dataRow = [Number(key),dR];
             if (minTimestamp <= orderDate && maxTimestamp >= orderDate ){
                 data.push(dataRow);            
-                totalRevenue +=dR;                
+                totalOrders +=dR;                
             } else if (orderDate < minTimestamp && orderDate >= previousSpecifiedTimestamp)
                 previousSpecifiedData.push(dataRow)
             if (orderDate >= weekTimestamp)
@@ -114,8 +110,7 @@ angular.module('kyc.charts')
         if (data.length>0){
             startDate = data[0][0];
             endDate = data[data.length-1][0];
-            console.log('totalRevenue',totalRevenue)
-            totalRevenue = totalRevenue.toFixed(2)
+            console.log('totalPerDay',totalOrders)            
         }   
     }   
 
@@ -148,7 +143,7 @@ angular.module('kyc.charts')
             type:type,
             title:title,
             data: getData(),
-            numberLeft:totalRevenue,
+            numberLeft:totalOrders,
             numberRight:getPercentage(data,previousSpecifiedData), 
             modal: getModal()
             
@@ -157,8 +152,8 @@ angular.module('kyc.charts')
 
     function clearData(){
         data = [];
-        dailyRevenue = {};
-        totalRevenue = 0;   
+        dailyOrders = {};
+        totalOrders = 0;   
 
     }
 

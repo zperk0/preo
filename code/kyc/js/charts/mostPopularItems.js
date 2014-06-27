@@ -13,17 +13,33 @@ angular.module('kyc.charts')
         {y:0,color:Colors[3]},
         {y:0,color:Colors[4]}                                   
     ]
+
+    function clearData(){
+        items = {}
+        top5 = [
+            {y:0,color:Colors[0]},
+            {y:0,color:Colors[1]},
+            {y:0,color:Colors[2]},
+            {y:0,color:Colors[3]},
+            {y:0,color:Colors[4]}                                   
+        ];
+    }
     
-	function setData(order){
-        angular.forEach(order.items,function(item){
-            if (items[item.menuItemId] !== undefined)
-                items[item.menuItemId].quantity++;
-            else
-                items[item.menuItemId]={
-                    name:item.name,
-                    quantity:1
-                };
-        });                            
+	function setData(order,minDate,maxDate){
+        var minTimestamp = minDate.getTime();
+        var maxTimestamp = maxDate.getTime();
+        var orderData = new Date(order.created);
+        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+            angular.forEach(order.items,function(item){
+                if (items[item.menuItemId] !== undefined)
+                    items[item.menuItemId].quantity++;
+                else
+                    items[item.menuItemId]={
+                        name:item.name,
+                        quantity:1
+                    };
+            }); 
+        }                                 
 	}
 
     function onSetDataComplete(){
@@ -69,6 +85,7 @@ angular.module('kyc.charts')
         getType:getType,
         setData:setData,
         onSetDataComplete:onSetDataComplete,
-        getHighChart:getHighChart
+        getHighChart:getHighChart,
+        clearData:clearData
     };
 }]);

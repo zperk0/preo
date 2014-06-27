@@ -5,19 +5,29 @@ angular.module('kyc.charts')
 		var newCustomers = [];
 		var repeatedCustomers = [];
 		var title = "Paying Customers"
+    
+    function clearData(){
+        var newCustomers = [];
+        var repeatedCustomers = [];
+    }
 
-		function setData(order){
-			var customerId  = order.userId;
-			if (newCustomers.indexOf(customerId) === -1){
-				newCustomers.push(customerId);
-			}
-			else{
-				if (repeatedCustomers.indexOf(customerId) === -1)
-					repeatedCustomers.push(customerId);
-			}
-		}
+	function setData(order,minDate,maxDate){
+        var minTimestamp = minDate.getTime();
+        var maxTimestamp = maxDate.getTime();
+        var orderData = new Date(order.created);
+        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+    		var customerId  = order.userId;
+    		if (newCustomers.indexOf(customerId) === -1){
+    			newCustomers.push(customerId);
+    		}
+    		else{
+    			if (repeatedCustomers.indexOf(customerId) === -1)
+    				repeatedCustomers.push(customerId);
+    		}
+        }
+	}
 
-		function getData(){
+	function getData(){
     	return newCustomers.length;
     }
     function getType(){
@@ -36,6 +46,7 @@ angular.module('kyc.charts')
         getData:getData,
         getType:getType,
         setData:setData,
-        getHighChart:getHighChart
+        getHighChart:getHighChart,
+        clearData:clearData
     };
 }]);

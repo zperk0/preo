@@ -5,11 +5,15 @@ angular.module('kyc.charts')
 		var itemsOrdered =0;
 		var title = "Items Ordered"
 
-		function setData(order){
-			angular.forEach(order.items,function(item){
-				itemsOrdered+=item.qty;
-			})
-			
+		function setData(order,minDate,maxDate){
+            var minTimestamp = minDate.getTime();
+            var maxTimestamp = maxDate.getTime();
+            var orderData = new Date(order.created);
+            if (orderData >= minTimestamp && orderData <= maxTimestamp){
+    			angular.forEach(order.items,function(item){
+    				itemsOrdered+=item.qty;
+    			})
+    		}
 		}
 
 		function getData(){
@@ -27,10 +31,15 @@ angular.module('kyc.charts')
         }
     }
 
+     function clearData(){        
+        itemsOrdered = 0;
+    }
+
     return {
         getData:getData,
         getType:getType,
         setData:setData,
-        getHighChart:getHighChart
+        getHighChart:getHighChart,
+        clearData:clearData
     };
 }]);

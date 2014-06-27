@@ -9,19 +9,31 @@ angular.module('kyc.charts')
         {name:_tr("Before day of collection"),y:0,color:Colors[1]}
         
     ]
+
+    function clearData(){
+        data = [
+        {name:_tr("Day of collection"),y:0,color:Colors[0]},
+        {name:_tr("Before day of collection"),y:0,color:Colors[1]}
+        ]
+        colorIndex=0;
+    }
     
-	function setData(order){
-        if (order.created !== undefined && order.pickupTime !== undefined){
-            var placed = new Date(order.created).setHours(0, 0, 0, 0);
-            var pickup = new Date(order.pickupTime).setHours(0, 0, 0, 0);    
-            if(placed === pickup){
-                data[0].y++;
-            } else {
-                data[1].y++;
+	function setData(order,minDate,maxDate){
+        var minTimestamp = minDate.getTime();
+        var maxTimestamp = maxDate.getTime();
+        var orderData = new Date(order.created);
+        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+            if (order.created !== undefined && order.pickupTime !== undefined){
+                var placed = new Date(order.created).setHours(0, 0, 0, 0);
+                var pickup = new Date(order.pickupTime).setHours(0, 0, 0, 0);    
+                if(placed === pickup){
+                    data[0].y++;
+                } else {
+                    data[1].y++;
+                }
             }
         }
-        
-                               
+                                    
 	}
 
     function onSetDataComplete(){
@@ -48,6 +60,7 @@ angular.module('kyc.charts')
         getType:getType,
         setData:setData,
         onSetDataComplete:onSetDataComplete,
-        getHighChart:getHighChart  
+        getHighChart:getHighChart,
+        clearData:clearData
     };
 }]);

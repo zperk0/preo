@@ -1,8 +1,8 @@
 angular.module('kyc.charts')
 .factory('AllCharts',['$q','OrderService','PayingCustomers','OrdersPerCustomer','AverageOrderValue','ItemsOrdered','OrdersByOutlet','MostPopularItems','TimeOfOrdersPlaced',
-												'CustomersPie','CustomersBar','Revenue',
+												'CustomersPie','CustomersBar','Revenue','NumberOfOrders','MenuItemPopularity',
 	function($q,OrderService,PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
-			CustomersPie,CustomersBar,Revenue) {
+			CustomersPie,CustomersBar,Revenue,NumberOfOrders,MenuItemPopularity) {
     var defer = $q.defer();
 
 	var charts = {
@@ -15,26 +15,27 @@ angular.module('kyc.charts')
     		// timeOfOrdersPlaced:TimeOfOrdersPlaced,
     		// customersPie:CustomersPie,
     		// customersBar:CustomersBar,
-            revenue:Revenue
+      //       revenue:Revenue,
+      //       numberOfOrders:NumberOfOrders,
+            menuItemPopularity:MenuItemPopularity
   	}
 
-    OrderService.load(prepareCharts)
+    OrderService.load(prepareCharts);
 
     function prepareCharts(orders,minDate,maxDate){
         if (!minDate)
             minDate = new Date(new Date().getTime() - (7 * 24 * 3600 * 1000));
         if (!maxDate)
             maxDate = new Date();
-        console.log('preparing charts for',minDate,maxDate);
+
             angular.forEach(charts,function(chart,key){
+                console.log(key,chart);
                 chart.clearData();
             });               
             angular.forEach(orders,function(order){
                 var created = new Date(order.created).getTime();                
-                    console.log("here ho");
                     angular.forEach(charts,function(chart){
-                        if (chart.setData)
-                            chart.setData(order,minDate,maxDate);
+                        chart.setData(order,minDate,maxDate);
                     })  
                 
             });

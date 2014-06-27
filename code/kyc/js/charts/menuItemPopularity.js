@@ -1,11 +1,12 @@
 angular.module('kyc.charts')
-.factory('Revenue',['ChartType', function(ChartType) {
+.factory('MenuItemPopularity',['ChartType', function(ChartType) {
 
 	var type = ChartType.AREA;	
-    var dailyRevenue = {};
+    
     var data = [];
-    var title = 'Revenue'
-    var totalRevenue =0;
+    var title = 'Menu Item Popularity'
+    
+    var menuItems = {}
     var startDate = 0;
     var endDate = 0;
 
@@ -21,20 +22,44 @@ angular.module('kyc.charts')
     var yearData = []
     var previousYearData = [];
     var allDatas = []
+    var items = [];
+    
+    var selectedItem = -1;
 
-	function setData(order,minDate,maxDate){
-        var timestamp = new Date(order.paid).setHours(0, 0, 0, 0);
-        if (dailyRevenue[timestamp])
-            dailyRevenue[timestamp]+=order.total
-        else
-            dailyRevenue[timestamp]=order.total;        
-        
-        
+    var minDate;
+    var maxDate;
+
+
+    function selectItem(args){
+        console.log(arguments);
+    }
+
+	function setData(order,minDate,maxDate){        
+        var timestamp = new Date(order.created).setHours(0, 0, 0, 0);
+        angular.forEach(order.items,function(item){
+            
+            if (menuItems[item.menuItemId] === undefined){
+                selectedItem = selectedItem == -1 ? item.menuItemId : selectedItem;                
+                items.push({name:item.name,menuItemId:item.menuItemId,callback:selectItem}); 
+                menuItems[item.menuItemId] = {}
+            }
+            if (menuItems[item.menuItemId][timestamp] === undefined){
+                console.log("creating",item.menuItemId,timestamp);
+                menuItems[item.menuItemId][timestamp]=0
+            }
+            menuItems[item.menuItemId][timestamp]++;
+        });
         
 	}
 
-    function onSetDataComplete(minDate,maxDate){
+    function selectItem(itemId){
+        selectedItem = itemId;
+        onSetDataComplete(minDate,maxDate);
+    }
 
+    function onSetDataComplete(minDateP,maxDateP){
+        minDate = minDateP;
+        maxDate = maxDateP;
         var nowTimestamp = new Date().getTime();        
         var minTimestamp = minDate.getTime();
         var maxTimestamp = maxDate.getTime();
@@ -63,15 +88,17 @@ angular.module('kyc.charts')
         previousYearData = [];
 
 
-
         startDate = -1;
         endDate = 0;
-        angular.forEach(dailyRevenue,function(dR,key){                                
+        console.log(menuItems,selectedItem);
+        
+        angular.forEach(menuItems[selectedItem],function(dR,key){                
+            console.log('ho',menuItems[selectedItem],dR,key);                
             var orderDate = Number(key)
             var dataRow = [Number(key),dR];
             if (minTimestamp <= orderDate && maxTimestamp >= orderDate ){
                 data.push(dataRow);            
-                totalRevenue +=dR;                
+                totalOrders +=dR;                
             } else if (orderDate < minTimestamp && orderDate >= previousSpecifiedTimestamp)
                 previousSpecifiedData.push(dataRow)
             if (orderDate >= weekTimestamp)
@@ -114,8 +141,7 @@ angular.module('kyc.charts')
         if (data.length>0){
             startDate = data[0][0];
             endDate = data[data.length-1][0];
-            console.log('totalRevenue',totalRevenue)
-            totalRevenue = totalRevenue.toFixed(2)
+            console.log('totalPerDay',totalOrders)            
         }   
     }   
 
@@ -123,6 +149,7 @@ angular.module('kyc.charts')
             return a[0] > b[0]; 
     }
 	function getData(){
+        console.log('returning',data);
 	   return data;
     }
 
@@ -131,15 +158,19 @@ angular.module('kyc.charts')
     }
 
     function getPercentage(data,oldData){
-        var totalData = getPeriodTotal(data);
-        var totalOldData = getPeriodTotal(oldData)        
+        var totalData = getPeriodTotal(data[selectedItem]);
+        var totalOldData = getPeriodTotal(oldData[selectedItem])        
         return (totalData * 100 / totalOldData).toFixed(0)
 
     }
 
     function getPeriodTotal(data){
+        console.log('total from',data);
         var total = 0;
-        angular.forEach(data,function(d){total+=d[1]})
+        angular.forEach(data,function(d){
+            console.log("adding",d);
+            total+=d[1]
+        })
         return total.toFixed(0);
     }
 
@@ -148,17 +179,17 @@ angular.module('kyc.charts')
             type:type,
             title:title,
             data: getData(),
-            numberLeft:totalRevenue,
+            numberLeft:totalOrders,
             numberRight:getPercentage(data,previousSpecifiedData), 
-            modal: getModal()
-            
+            modal: getModal(),
+            items:items            
         }
     }
 
     function clearData(){
         data = [];
-        dailyRevenue = {};
-        totalRevenue = 0;   
+        dailyOrders = {};
+        totalOrders = 0;   
 
     }
 

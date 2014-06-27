@@ -12,6 +12,7 @@ angular.module('kyc.directives').
   		},
   		link: function( ng, elem, attrs ) {
 
+
         var $actionsChart = elem.find('.actions-chart');
         var $chart = elem.find('.chart');
         var heightParent = elem.parent().height() || 322;
@@ -43,10 +44,8 @@ angular.module('kyc.directives').
           }
 
   			}
-
+        
         ng.openModal = function() {
-
-
 
           if ( ng.chart.value.modal ) {
           
@@ -91,12 +90,12 @@ angular.module('kyc.directives').
   	
         ng.removeGrid = function( chart, $event ) {
           chart.display = false;
-
           ng.$parent.$parent.$parent.gridster.remove_widget(angular.element($event.target).parents('li'));
         }
 
-        ng.changeItem = function(){
+        ng.changeItem = function(){    
 
+          
         }
 
       }

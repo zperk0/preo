@@ -11,19 +11,32 @@ angular.module('kyc.charts')
     var newCustomers = [];
     var repeatedCustomers = [];
     
-	function setData(order){
-        var customerId  = order.userId;
-        if (newCustomers.indexOf(customerId) === -1){
-            newCustomers.push(customerId);
-            data[0].y++;
-        }
-        else{
-            if (repeatedCustomers.indexOf(customerId) === -1){
-                repeatedCustomers.push(customerId);
-                data[1].y++;
+	function setData(order,minDate,maxDate){
+        var minTimestamp = minDate.getTime();
+        var maxTimestamp = maxDate.getTime();
+        var orderData = new Date(order.created);
+        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+            var customerId  = order.userId;
+            if (newCustomers.indexOf(customerId) === -1){
+                newCustomers.push(customerId);
+                data[0].y++;
             }
-        }                               
+            else{
+                if (repeatedCustomers.indexOf(customerId) === -1){
+                    repeatedCustomers.push(customerId);
+                    data[1].y++;
+                }
+            }    
+        }                           
 	}
+
+    function clearData(){
+        colorIndex =0;
+        data = [
+            {name:_tr("New"),y:0,color:Colors[0]},
+            {name:_tr("Returning"),y:0,color:Colors[1]}    
+        ]
+    }
 
 
 	function getData(){
@@ -45,6 +58,7 @@ angular.module('kyc.charts')
         getData:getData,
         getType:getType,
         setData:setData,
-        getHighChart:getHighChart
+        getHighChart:getHighChart,
+        clearData:clearData
     };
 }]);

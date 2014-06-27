@@ -5,10 +5,21 @@ angular.module('kyc.charts')
 	var ordersTotal = 0;
 	var numOfOrders =0;
     var title = "Average Order Value"
-	function setData(order){
-		numOfOrders++;
-		ordersTotal+=order.total;
+
+	function setData(order,minDate,maxDate){
+        var minTimestamp = minDate.getTime();
+        var maxTimestamp = maxDate.getTime();
+        var orderData = new Date(order.created);
+        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+    		numOfOrders++;
+    		ordersTotal+=order.total;
+        }
 	}
+
+    function clearData(){
+        ordersTotal = 0;
+        numOfOrders = 0;
+    }
 
 	function getData(){
     	return (ordersTotal/numOfOrders).toFixed(2);
@@ -29,6 +40,7 @@ angular.module('kyc.charts')
         getData:getData,
         getType:getType,
         setData:setData,
-        getHighChart:getHighChart
+        getHighChart:getHighChart,
+        clearData:clearData
     };
 }]);

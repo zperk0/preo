@@ -6,15 +6,23 @@ angular.module('kyc.charts')
     var colorIndex = 0;
     var title = 'Orders By Outlet';
 
+    function clearData(){
+        colorIndex=0;
+        ordersByOutlet={};
+    }
 
-	function setData(order){
-        var outletId = order.outletId;
-		if (ordersByOutlet[outletId] === undefined)
-            ordersByOutlet[outletId] = {                
-                y:0,
-                
-            }
-		ordersByOutlet[outletId].y+=1;
+	function setData(order,minDate,maxDate){
+        var minTimestamp = minDate.getTime();
+        var maxTimestamp = maxDate.getTime();
+        var orderData = new Date(order.created);
+        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+            var outletId = order.outletId;
+    		if (ordersByOutlet[outletId] === undefined)
+                ordersByOutlet[outletId] = {                
+                    y:0                    
+                }
+            ordersByOutlet[outletId].y+=1;
+        }		
 	}
 
 	function getData(){
@@ -46,6 +54,7 @@ angular.module('kyc.charts')
         getData:getData,
         getType:getType,
         setData:setData,
-        getHighChart:getHighChart
+        getHighChart:getHighChart,
+        clearData:clearData
     };
 }]);
