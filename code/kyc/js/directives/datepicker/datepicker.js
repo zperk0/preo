@@ -57,12 +57,5 @@ angular.module('kyc.directives').
       }
     };
 
-        ctrl.$parsers.push(function(data) {
-          return new Date(data)
-        });
-        ctrl.$formatters.push(function(data) {          
-          return $filter('date')(data, "dd/MM/yyyy");
-        });
-    }
-  }
+  
   }]);
