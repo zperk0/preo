@@ -22,27 +22,7 @@ angular.module('kyc.directives').
         $chart.height( heightParent );
         
   			if ( ng.chart.showChart ){
-          ng.chart.highcharts = $chartService.getChart(  ng.chart.value.type, ng.chart.value );
-
-          if ( heightParent ) {
-
-            if ( ng.chart.value.numberLeft || ng.chart.value.numberRight ) {
-              heightParent -= 40;
-            }
-
-            if ( ng.chart.value.items ) {
-              heightParent -= 90;
-            } else {
-              heightParent -= 30;
-            }
-
-            if ( ng.chart.value.type == ChartType.COLUMN ) {
-              heightParent -= 15;
-            }
-
-            ng.chart.highcharts.options.chart.height = heightParent;
-          }
-
+          refreshChart();
   			}
         
         ng.openModal = function() {
@@ -94,8 +74,38 @@ angular.module('kyc.directives').
         }
 
         ng.changeItem = function( item ){
-          ng.selectedItem = item;
-          console.log(ng.selectedItem);
+          ng.selectedItem = item;          
+          item.callback(item.menuItemId,function(highchart){            
+              ng.chart.value = highchart;
+              refreshChart();              
+          });
+        }
+
+        function refreshChart(){
+          heightParent = elem.parent().height() || 322;
+          $actionsChart.height( heightParent );
+          $chart.height( heightParent );
+
+          ng.chart.highcharts = $chartService.getChart(  ng.chart.value.type, ng.chart.value );
+
+          if ( heightParent ) {
+
+            if ( ng.chart.value.numberLeft || ng.chart.value.numberRight ) {
+              heightParent -= 40;
+            }
+
+            if ( ng.chart.value.items ) {
+              heightParent -= 90;
+            } else {
+              heightParent -= 30;
+            }
+
+            if ( ng.chart.value.type == ChartType.COLUMN ) {
+              heightParent -= 15;
+            }
+
+            ng.chart.highcharts.options.chart.height = heightParent;
+          }
         }
 
       }

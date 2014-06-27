@@ -6,17 +6,17 @@ angular.module('kyc.charts')
     var defer = $q.defer();
 
 	var charts = {
-    		payingCustomers:PayingCustomers,
-    		ordersPerCustomer:OrdersPerCustomer,
-    		averageOrderValue:AverageOrderValue,
-    		itemsOrdered:ItemsOrdered,
-    		ordersByOutlet:OrdersByOutlet,
-    		mostPopularItems:MostPopularItems,
-    		timeOfOrdersPlaced:TimeOfOrdersPlaced,
-    		customersPie:CustomersPie,
-    		customersBar:CustomersBar,
-            revenue:Revenue,
-            numberOfOrders:NumberOfOrders,
+    		// payingCustomers:PayingCustomers,
+    		// ordersPerCustomer:OrdersPerCustomer,
+    		// averageOrderValue:AverageOrderValue,
+    		// itemsOrdered:ItemsOrdered,
+    		// ordersByOutlet:OrdersByOutlet,
+    		// mostPopularItems:MostPopularItems,
+    		// timeOfOrdersPlaced:TimeOfOrdersPlaced,
+    		// customersPie:CustomersPie,
+    		// customersBar:CustomersBar,
+      //       revenue:Revenue,
+      //       numberOfOrders:NumberOfOrders,
             menuItemPopularity:MenuItemPopularity
   	}
 

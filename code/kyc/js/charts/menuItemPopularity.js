@@ -30,10 +30,6 @@ angular.module('kyc.charts')
     var maxDate;
 
 
-    function selectItem(args){
-        console.log(arguments);
-    }
-
 	function setData(order,minDate,maxDate){        
         var timestamp = new Date(order.created).setHours(0, 0, 0, 0);
         angular.forEach(order.items,function(item){
@@ -49,15 +45,18 @@ angular.module('kyc.charts')
             }
             menuItems[item.menuItemId][timestamp]++;
         });
-        
+         
 	}
 
-    function selectItem(itemId){
-        selectedItem = itemId;
-        onSetDataComplete(minDate,maxDate);
+    function selectItem(itemId,cb){
+        clearData();
+        selectedItem = itemId;        
+        onSetDataComplete(minDate,maxDate);        
+        cb(getHighChart());
     }
 
     function onSetDataComplete(minDateP,maxDateP){
+        console.log("set all data",menuItems);  
         minDate = minDateP;
         maxDate = maxDateP;
         var nowTimestamp = new Date().getTime();        
@@ -75,6 +74,7 @@ angular.module('kyc.charts')
         var yearTimestamp = new Date(new Date().getTime() - (1000 * 3600 * 24 * 365))
         var lastYearTimestamp = new Date(new Date().getTime() - (1000 * 3600 * 24 * 365 * 2))
 
+        data = []
         previousSpecifiedData = [];
         weekData = []   
         previousWeekData = []
@@ -90,10 +90,10 @@ angular.module('kyc.charts')
 
         startDate = -1;
         endDate = 0;
+        console.log("preparing data for",menuItems[selectedItem]);
         console.log(menuItems,selectedItem);
         
-        angular.forEach(menuItems[selectedItem],function(dR,key){                
-            console.log('ho',menuItems[selectedItem],dR,key);                
+        angular.forEach(menuItems[selectedItem],function(dR,key){                            
             var orderDate = Number(key)
             var dataRow = [Number(key),dR];
             if (minTimestamp <= orderDate && maxTimestamp >= orderDate ){
@@ -126,6 +126,7 @@ angular.module('kyc.charts')
                 previousYearData.push(dataRow)
 
         })
+        console.log('data after',data);
         data.sort(sortData);
         weekData.sort(sortData);
         previousWeekData.sort(sortData);
@@ -159,16 +160,16 @@ angular.module('kyc.charts')
 
     function getPercentage(data,oldData){
         var totalData = getPeriodTotal(data[selectedItem]);
-        var totalOldData = getPeriodTotal(oldData[selectedItem])        
-        return (totalData * 100 / totalOldData).toFixed(0)
+        var totalOldData = getPeriodTotal(oldData[selectedItem])   
+        console.log('getting percentage',data,oldData);     
+        //return (totalData * 100 / totalOldData).toFixed(0)
+        return "";
 
     }
 
     function getPeriodTotal(data){
-        console.log('total from',data);
         var total = 0;
         angular.forEach(data,function(d){
-            console.log("adding",d);
             total+=d[1]
         })
         return total.toFixed(0);
