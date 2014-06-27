@@ -1,28 +1,60 @@
 'use strict';
 
 angular.module('kyc.directives').
-  directive('datepicker', ['$parse', function( $parse ) {
+  directive('datepicker', ['$parse', '$filter', function( $parse, $filter ) {
 
-  	return function( ng, elem, attrs ) {
+  	return {
+      restrict: 'A',
+      require: 'ngModel',
+      scope: {
+        compare: '@'
+      },
+      link: function( ng, elem, attrs, ngModel ) {
 
-      var ngModel = $parse(attrs.ngModel);
+        var nowTemp = new Date();
+        var now = new Date(Date.UTC(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0));
 
-      var nowTemp = new Date();
-      var now = new Date(Date.UTC(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0));      
+        var ngCompare = null;
 
-      elem.fdatepicker({
-        onRender: function( date ) {
-          return date.valueOf() > now.valueOf() ? 'disabled' : '';          
+        if ( attrs.compare ) {
+          ngCompare = $parse( attrs.compare );
         }
-      })
-        .on('changeDate', function(ev) {
 
-           ng.$apply(function(scope){
-                // Change binded variable
-                ngModel.assign(scope, ev.date);
-            });
+        elem.fdatepicker({
+          formatDate: "MM/dd/yyyy",
+          onRender: function( date ) {
+            return date.valueOf() > now.valueOf() ? 'disabled' : '';          
+          }
+        })
+          .on('changeDate', function(ev) {
 
+             ng.$apply(function(scope){
+
+                if ( ngCompare ) {
+                  var newDate = new Date(ngCompare(ng.$parent));
+                  
+                  if ( ev.date.valueOf() < newDate.valueOf()  ){
+                    ev.date = newDate;
+                  } 
+
+                } 
+
+                ngModel.$setViewValue(ev.date);
+                elem.fdatepicker('setDate', newDate)
+              });
+
+          });
+
+
+        ngModel.$parsers.push(function(data) {
+          return new Date(data)
         });
+
+        ngModel.$formatters.push(function(data) {          
+          return $filter('date')(data, "MM/dd/yyyy");
+        });
+          
+      }
     };
 
   }]);
