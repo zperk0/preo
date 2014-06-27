@@ -157,7 +157,7 @@
 </div>
 
 
-<div id="purchaseDialog" class="reveal-modal medium featureDialog" data-reveal>
+<div id="purchaseDialog" class="reveal-modal medium featureDialog dashboard" data-reveal>
     <b>Know your customer</b><br/>
     <p><? echo _("Your card will be charged ")?> <b>&pound;<span class='featurePrice'></span></b>  <? echo _(" for this transaction. You may cancel this Premium Feature at any time from your account settings page.")?></p>      
     <p>
@@ -170,7 +170,7 @@
     <button class='negativeDismiss preodayButton '><? echo _("CANCEL")?></button>    
 </div>
 
-<div id="expiredDialog" class="reveal-modal medium featureDialog" data-reveal>
+<div id="expiredDialog" class="reveal-modal medium featureDialog dashboard" data-reveal>
     <b>Know your customer - 30 DAYS FREE TRIAL</b><br/>
     <p><? echo _("Your 30 day free trial 	of this Premium Feature has now expired. Would you like to purchase it?")?></p>      	    
     <button class='positiveDismiss preodayButton' ><? echo _("YES PLEASE")?></button>
@@ -183,14 +183,14 @@
     </p>  
 </div>
 
-<div id="successDialog" class="reveal-modal medium featureDialog" data-reveal>
+<div id="successDialog" class="reveal-modal medium featureDialog dashboard" data-reveal>
       <b><? echo _("Your new Premium Feature is now live!")?></b><br/>
       <p><? echo _("You can manage subscriptions from your account settings page")?></p>      
       <button class='positiveDismiss preodayButton' ><? echo _("ACCOUNT SETTINGS")?></button>
       <button class='negativeDismiss preodayButton secondary' ><? echo _("RETURN TO DASHBOARD")?></button>
 </div>
 
-<div id="noPaymentDialog" class="reveal-modal medium featureDialog" data-reveal>
+<div id="noPaymentDialog" class="reveal-modal medium featureDialog dashboard" data-reveal>
       <p><? echo _("Please add a payment method to your account in order to subscribe to Premium Features")?></p>
       <button class='positiveDismiss preodayButton'><? echo _("ADD PAYMENT METHOD")?></button>
       <button class='negativeDismiss preodayButton secondary' ><? echo _("RETURN TO STORE")?></button>
@@ -258,10 +258,16 @@
 					var result = JSON.parse(res)
 					if (result.token && result.token!=null){
 						$.post("/api/accounts/<?echo $_SESSION['account_id']	?>/features/4",function(data){
-							window.localStorage.setItem("showDialog",0); 
-							console.log('got here',data);
+							window.localStorage.setItem("showDialog",0); 							
 							var result = JSON.parse(data)
-							console.log("success",result)
+							if (result.status === "SUCCESS"){
+								console.log('opening success')
+								$('#successDialog').foundation('reveal', 'open');
+							}
+							else {
+								console.log('opening error')
+								$('#noPaymentDialog').foundation('reveal', 'open');
+							}
 						}).fail(function(){
 								$('#noPaymentDialog').foundation('reveal', 'open');
 						});

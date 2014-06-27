@@ -3056,8 +3056,11 @@ button.preodayButton.noclick{
   color :$error !important;
 }
 
-#purchaseDialog {
+#purchaseDialog.dashboard {
   top:100px !important;
+}
+#successDialog.dashboard{
+  top:200px !important;
 }
 
 
