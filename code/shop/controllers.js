@@ -1,7 +1,7 @@
 //shop
 var appCtrls = angular.module('shop.controllers',[]);
   
-appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,ACCOUNT_ID) {    
+appCtrls.controller('shopController', function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification) {    
     $scope.currentScreenshot = 0;
 
     $scope.PremiumFeatures = FEATURES;
@@ -9,7 +9,7 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
     $scope.finishedLoading = false;      
     getAccountFeatures();
     
-    function getAccountFeatures(){
+    function getAccountFeatures() {
       Resources.AccountFeatures.query({accountId:ACCOUNT_ID},function(result){    
         $scope.accountFeatures = result;
         $scope.finishedLoading = true;         
@@ -45,6 +45,27 @@ appCtrls.controller('shopController', function($scope,$http,Resources,FEATURES,A
             index:index,
             feature:$scope.PremiumFeatures[index]
         };
+    }
+
+
+    /****Free Trial***/
+
+    $scope.selectFreeTrial = function(){
+
+      $notification.confirm({
+        title: 'Know Your Customer - 30 DAY FREE TRIAL',
+        content: 'Your card will not be charged for this transaction. <br /> You may cancel this trial at any time from your account settings page.',
+        showTerm: true,
+        msgTerm: 'I have read the Terms and Conditions',
+        btnOk: 'Begin Trial'
+      }).then(function(){
+        // success
+        console.log('success click');
+      }, function(){
+        // cancel
+        console.log('calcel click');
+      });
+
     }
 
 

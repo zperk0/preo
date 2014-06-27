@@ -1,0 +1,26 @@
+<div class="content-modal">
+  <h4 class="title-modal-chart">{{ title }}</h4>
+
+  <div class="container-modal-confirm">
+    {{ content }}
+  </div>
+
+  <p ng-if="showTerm && showTermPosition == 'top'">
+    <label>
+      <input type="checkbox" ng-model="acceptTerm" ng-change="changeTerm(acceptTerm)" />
+      {{ msgTerm }}
+    </label>
+  </p>
+
+  <div class="buttons">
+    <button ng-click="send()" ng-disabled="showTerm && !acceptTerm && forceTerm">{{ btnOk }}</button>
+    <button ng-click="cancel()">{{ btnCancel }}</button>
+  </div>
+
+  <p ng-if="showTerm && showTermPosition == 'bottom'">
+    <label>
+      <input type="checkbox" ng-model="acceptTerm" ng-change="changeTerm(acceptTerm)" />
+      {{ msgTerm }}
+    </label>
+  </p>  
+</div>

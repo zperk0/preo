@@ -45,7 +45,7 @@
                   <button ng-show="!isFeatureOwned(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >COMING SOON</button>
                 </div>
                 <div class='comingSoon' ng-show="feature.trialPeriod > 0">
-                  <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >FREE {{feature.trialPeriod}} DAY TRIAL</button>
+                  <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click="selectFreeTrial($index)">FREE {{feature.trialPeriod}} DAY TRIAL</button>
                 </div>
             </div>
         </div>
@@ -62,8 +62,8 @@
       <div class='rightWrapper priceWrapper' ng-show="selectedFeature.feature.active && selectedFeature.feature.trialPeriod == 0">
         <div class='price helveticaneueWMedi'>£{{selectedFeature.feature.subscriptionPrice}}/month</div>                
         <ul>
-          <li ng-show="selectedFeature.feature.upfrontPrice>0">+ &pound;{{selectedFeature.feature.upfrontPrice}} <?= _("one-off payment")?></li>
-          <li>+ <?= _("VAT")?></li>
+          <li ng-show="selectedFeature.feature.upfrontPrice>0">+ &pound;{{selectedFeature.feature.upfrontPrice}} one-off payment</li>
+          <li>+ VAT</li>
         </ul>
         <button ng-show="!isFeatureOwned(selectedFeature.feature)" class='preodayButton' ng-click="clickBuy(selectedFeature.feature)">BUY</button>
         <button ng-show="isFeatureOwned(selectedFeature.feature)" class='preodayButton secondary noclick' >INSTALLED</button>        
@@ -80,11 +80,11 @@
         <img ng-show="currentScreenshot<selectedFeature.feature.promoImgs.length-1"  class='chevron chevronRight' ng-click="showNextScreenshot()" src='/img/chevron-right.png'/>
         <img ng-show="currentScreenshot>0"  class='chevron chevronLeft' ng-click="showPreviousScreenshot()" src='/img/chevron-left.png'/>
         <img ng-src='{{getScreenshot()}}' class='screenshot'/>
-        <h6><?echo _("Features")?></h6>
+        <h6>Features</h6>
         <ul>
           <li ng-repeat='descriptionFeature in selectedFeature.feature.descriptionFeatures'> {{descriptionFeature}}</li>
         </ul>
-        <h6><?echo _("Description")?></h6>
+        <h6>Description</h6>
         <div class='description'>{{selectedFeature.feature.description}}</div>
     </div>
     <a class="close-reveal-modal">&#215;</a>
@@ -114,6 +114,7 @@
 </div>
 </div> <!-- End app -->
   <script src="/js/angular_all.min.js"></script>  
+  <script src="/bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
   <script type="text/javascript" src="/code/shop/app.js"></script>
 
   <script type="text/javascript">
@@ -121,6 +122,7 @@
   </script>
   <script type="text/javascript" src="/code/shop/resource.js"></script>
   <script type="text/javascript" src="/code/shop/controllers.js"></script>
+  <script type="text/javascript" src="/code/shop/services/notification.js"></script>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 
 
