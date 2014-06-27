@@ -48,31 +48,11 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
     }
 
 
-    /****Free Trial***/
-
-    $scope.selectFreeTrial = function(){
-
-      $notification.confirm({
-        title: 'Know Your Customer - 30 DAY FREE TRIAL',
-        content: 'Your card will not be charged for this transaction. <br /> You may cancel this trial at any time from your account settings page.',
-        showTerm: true,
-        msgTerm: 'I have read the Terms and Conditions',
-        btnOk: 'Begin Trial'
-      }).then(function(){
-        // success
-        console.log('success click');
-      }, function(){
-        // cancel
-        console.log('calcel click');
-      });
-
-    }
-
     $scope.startTrial = function(){
       if (!$scope.acceptTerm)
         return;
       var feature = $scope.selectedFeature.feature;
-      Resources.AccountFeatures.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){
+      Resources.AccountFeatures.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){        
         console.log('response:',accountPayment);  
         if (accountPayment.status ===  "SUCCESS"){
           getAccountFeatures();
@@ -158,7 +138,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             angular.forEach($scope.accountFeatures,function(accountFeature){                            
               if (feature.id == accountFeature.featureId){
               }
-                if (feature.id == accountFeature.featureId && accountFeature.status != "CANCELED" && accountFeature.status != "REMOVED" && accountFeature.status != "UNINSTALLED" ){                
+                if (feature.id == accountFeature.featureId && accountFeature.status != "CANCELED" && accountFeature.status != "REMOVED" && accountFeature.status != "UNINSTALLED" && accountFeature.status != "EXPIRED" ){                
                   found = true;
                 }
             });

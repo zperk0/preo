@@ -126,7 +126,7 @@
       <p>
         <label>
           <input type="checkbox" ng-model="acceptTerm"/>  
-            I have heard the <a href='#'>Terms and Conditions</a>
+            I have read the <a href='#'>Terms and Conditions</a>
         </label>
       </p>  
       <button ng-class="{secondary:!acceptTerm,noclick:!acceptTerm}" class='positiveDismiss preodayButton' ng-click="startTrial(selectedFeature)"><? echo _("BEGIN TRIAL")?></button>
@@ -134,7 +134,7 @@
 </div>
   <div id="startPurchaseDialog" class="reveal-modal medium featureDialog" data-reveal>
       <b>{{selectedFeature.feature.name}}</b><br/>
-      <p><? echo _("Your card will be charged ")?> <b>&pound;{{selectedFeature.feature.upfrontPrice}}</b>  <? echo _(" for this translaction. You may cancel this Premium Feature at any time from your account settings page.")?></p>      
+      <p><? echo _("Your card will be charged ")?> <b>&pound;{{selectedFeature.feature.upfrontPrice}}</b>  <? echo _(" for this transaction. You may cancel this Premium Feature at any time from your account settings page.")?></p>      
       <p>
         <label>
           <input type="checkbox" ng-model="acceptTerm"/>  

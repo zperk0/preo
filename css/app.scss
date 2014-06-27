@@ -2730,6 +2730,9 @@ span .currencySymbol {
 
       tr.disabled{
 
+       img{
+         background: #ccc;
+        }
         td{
           color:#ccc;
         }
@@ -3053,6 +3056,10 @@ button.preodayButton.noclick{
   color :$error !important;
 }
 
+#purchaseDialog {
+  top:100px !important;
+}
+
 
 @media (min-width:768px) and (max-width:900px){
   #featureModal{
@@ -3063,3 +3070,4 @@ button.preodayButton.noclick{
     }
   }
 }
+

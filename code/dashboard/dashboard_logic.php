@@ -216,13 +216,27 @@
 		$_SESSION['venue_report_newUsers'] 			= $dataResult['newUsers'];
 		$_SESSION['venue_report_returningUsers'] 	= $dataResult['returningUsers'];
 		//+d($dataResult);
-		
+	
+
+$newCurl = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id'].'/users', false, $apiAuth); 
+		$curlResult = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id']."/features", false, $apiAuth);
+		$dataResult = json_decode($curlResult, true);		
+		echo ("<script> window.localStorage.setItem('showDialog',0); </script>");
+		foreach ($dataResult as $key => $feature){			
+			if ($feature['status'] == "EXPIRED"){
+				echo ("<script> window.localStorage.setItem('showDialog',1); </script>");
+				break;
+			}
+		}
+
+
+
 		$_SESSION['dashboardFlag']=1;
 		$_SESSION['signupWizFlag']=0;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/wl-paths.php');   //wallpaper-logo paths
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
-		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/dashboard_content.php"); 
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/inc/dashboard/dashboard_content.php"); 			
 	}
 	else if($_SESSION['noVenueFlag']) /* User has not given all 5 so first check Venue */
 	{	

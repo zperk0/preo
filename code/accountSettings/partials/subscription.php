@@ -43,7 +43,7 @@
 	</div >
 			<table ng-show='activeFeaturesCount >= 1'>
 				<tr ng-repeat="accountFeature in accountFeatures | filter:isInstalled " ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>
-						<td > <img ng-src="{{isInstalled(accountFeature) && accountFeature.feature.icon || '/img/icon_off.png'}}" /> </td>
+						<td > <img ng-src="{{accountFeature.feature.icon}}" /> </td>
 						<td> <span class='featureAppTitle' ng-show="accountFeature.feature.showAppTitle"> my order app </span> {{accountFeature.feature.name}} </td>
 						<td ng-show="accountFeature.status === 'INSTALLED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
 						<td ng-show="accountFeature.status === 'TRIAL'" class='errorColor'> Free trial expires in {{getExpiryDate(accountFeature)}} days </td>				
@@ -67,7 +67,7 @@
 			<div>
 				<table>
 					<tr ng-repeat="accountFeature in accountFeatures | filter:isCanceled" class="disabled" >
-						<td > <img src='/img/icon_off.png' /> </td>
+						<td > <img ng-src="{{accountFeature.feature.icon}}" /> </td>
 						<td> {{accountFeature.feature.name}} </td>						
 						<td ng-show="accountFeature.status === 'CANCELED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
 						<td ng-show="accountFeature.status === 'EXPIRED'"> <? echo _("Trial has expired")?> </td>				
