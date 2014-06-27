@@ -153,7 +153,7 @@
   
   //always on session after login
   angular.module('kyc').constant('ACCOUNT_ID',<? echo $_SESSION['account_id']?>);
-  angular.module('kyc').constant('PUSHER_KEY', '63aabf4f8531a582c3e6');
+  angular.module('kyc').constant('PUSHER_KEY', '<? echo $pusherKey ?>');
   function modal_url( url ) {
     return '/code/kyc/js/modals/' + url + '.htm';
   }  

@@ -5,6 +5,9 @@ angular.module('kyc.services')
     var orders;
     
     function getOrders(){
+        orders.sort(function(a,b){
+          return (new Date(b.updated).getTime() - new Date(a.updated).getTime());
+        })
         return orders
 		}
 

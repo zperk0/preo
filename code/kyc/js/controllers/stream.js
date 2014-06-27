@@ -3,10 +3,15 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','StreamServ
 
 	$scope.orders = StreamService.getOrders();
     console.log($scope.orders);
+    var onTimeout = false;
     var pusherUpdateEvent = function() {        
-        StreamService.load(function(orders){
-            $scope.orders = orders;
-        })        
+        if (!onTimeout){
+            onTimeout = true;
+            StreamService.load(function(orders){
+                $scope.orders = orders;
+            })        
+            setTimeout(function(){onTimeout = false},500);
+        }
     };
       
     pusher.reset();

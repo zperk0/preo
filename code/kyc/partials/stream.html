@@ -20,7 +20,7 @@
 					  		<td width="100" valign="middle">&pound;{{ order.total }}</td>
 					  		<td valign="middle">{{ order.user.firstName + " " + order.user.lastName }}</td>
 					  		<td width="300" valign="middle">{{ getOrderItems(order).join(",") }}</td>
-					  		<td width="200" valign="middle">{{ getTimeDiff(order.updated) }}</td>
+					  		<td width="200" valign="middle">{{ getTimeDiff(order.updated) }} ago</td>
 					  	</tr>
 					  	<tr ng-switch-when="true" class="result">
 					  		<td colspan="2" class="padding information">
