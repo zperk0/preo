@@ -75,7 +75,7 @@
             <div class="row">
               <div class="small-5 columns">
                 <label>Data
-                  <input type="text" class="form-control input-search dropdown pdDropdown" placeholder="01/02/2014" datepicker ng-model="search.start_date" />
+                  <input type="text" class="form-control input-search dropdown pdDropdown" placeholder="01/02/2014" datepicker ng-model="search.start_date" /> 
                 </label>
               </div>
               <div class="small-5 columns">
