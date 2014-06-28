@@ -21,7 +21,7 @@ angular.module('kyc.directives').
         }
 
         elem.fdatepicker({
-          formatDate: "MM/dd/yyyy",
+          formatDate: "dd/MM/yyyy",
           onRender: function( date ) {
             return date.valueOf() > now.valueOf() ? 'disabled' : '';          
           }
@@ -32,15 +32,15 @@ angular.module('kyc.directives').
 
                 if ( ngCompare ) {
                   var newDate = new Date(ngCompare(ng.$parent));
-                  
-                  if ( ev.date.valueOf() < newDate.valueOf()  ){
+
+                  if ( ev.date.valueOf() < newDate.valueOf() ){
                     ev.date = newDate;
                   } 
 
                 } 
 
                 ngModel.$setViewValue(ev.date);
-                elem.fdatepicker('setDate', newDate)
+                elem.fdatepicker('setDate', ev.date)
               });
 
           });
