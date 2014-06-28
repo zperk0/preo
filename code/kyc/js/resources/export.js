@@ -3,7 +3,7 @@ angular.module('kyc.resources').
     
     var Pdf = $resource('/api/accounts/:accountId/exports/pdf',{accountId:"@accountId"},{});
 
-    var Csv = $resource('/api/accounts/:accountId/exports/pdf',{accountId:"@accountId"},{});
+    var Csv = $resource('/api/accounts/:accountId/exports/csv',{accountId:"@accountId"},{});
 
     return {
     	Pdf:Pdf,
