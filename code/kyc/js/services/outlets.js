@@ -9,9 +9,12 @@ angular.module('kyc.services')
 
     this.getOutletName = function(outletId){    	
     	var found = false;
+        console.log("outletId",outletId,outlets);
     		angular.forEach(outlets,function(outlet){
-    			if (outlet.id == outletId)
+    			if (outlet.id == outletId){
     				found = outlet.name
+                    console.log('found',outlet.id,outletId);
+                }
     		})
     		return found;
     }

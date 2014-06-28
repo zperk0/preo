@@ -17,12 +17,14 @@ angular.module('kyc.charts')
             {name:_tr("New"),y:0,color:Colors[0]},
             {name:_tr("Returning"),y:0,color:Colors[1]}    
         ]
+        newCustomers = [];
+        repeatedCustomers = [];
     }
     
 	function setData(order,minDate,maxDate){
         var minTimestamp = minDate.getTime();
         var maxTimestamp = maxDate.getTime();
-        var orderData = new Date(order.created);
+        var orderData = new Date(order.created).getTime();
         if (orderData >= minTimestamp && orderData <= maxTimestamp){
             var customerId  = order.userId;
             if (newCustomers.indexOf(customerId) === -1){

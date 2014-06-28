@@ -14,7 +14,8 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 
 
 		$scope.update = function(){			
-			AllCharts.prepareCharts(OrderService.getOrders(),$scope.search.start_date,$scope.search.end_date);
+			console.log('selectedOutlets',getSelectedOutlets());
+			AllCharts.prepareCharts(OrderService.getOrders(),$scope.search.start_date,$scope.search.end_date,getSelectedOutlets());
 			$route.reload();
 		}
 			

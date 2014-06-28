@@ -2,7 +2,6 @@ angular.module('kyc.charts')
 .factory('CustomersBar',['ChartType','Colors', function(ChartType,Colors) {
 
 	var type = ChartType.COLUMN;
-    var colorIndex = 0;    
     var title = 'Customers (Bar)'
     var data = [
         {name:_tr("New"),y:0,color:Colors[0]},
@@ -14,7 +13,7 @@ angular.module('kyc.charts')
 	function setData(order,minDate,maxDate){
         var minTimestamp = minDate.getTime();
         var maxTimestamp = maxDate.getTime();
-        var orderData = new Date(order.created);
+        var orderData = new Date(order.created).getTime();        
         if (orderData >= minTimestamp && orderData <= maxTimestamp){
             var customerId  = order.userId;
             if (newCustomers.indexOf(customerId) === -1){
@@ -27,15 +26,16 @@ angular.module('kyc.charts')
                     data[1].y++;
                 }
             }    
-        }                           
+        }        
 	}
 
     function clearData(){
-        colorIndex =0;
         data = [
             {name:_tr("New"),y:0,color:Colors[0]},
             {name:_tr("Returning"),y:0,color:Colors[1]}    
         ]
+        newCustomers = [];
+        repeatedCustomers = [];
     }
 
 
