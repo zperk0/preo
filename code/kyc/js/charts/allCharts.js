@@ -6,18 +6,18 @@ angular.module('kyc.charts')
     var defer = $q.defer();
 
 	var charts = {
-    		// payingCustomers:PayingCustomers,
-    		// ordersPerCustomer:OrdersPerCustomer,
-    		// averageOrderValue:AverageOrderValue,
-    		// itemsOrdered:ItemsOrdered,
-    		// ordersByOutlet:OrdersByOutlet,
-    		// mostPopularItems:MostPopularItems,
-    		// timeOfOrdersPlaced:TimeOfOrdersPlaced,
+    		payingCustomers:PayingCustomers,
+    		ordersPerCustomer:OrdersPerCustomer,
+    		averageOrderValue:AverageOrderValue,
+    		itemsOrdered:ItemsOrdered,
+    		ordersByOutlet:OrdersByOutlet,
+    		mostPopularItems:MostPopularItems,
+    		timeOfOrdersPlaced:TimeOfOrdersPlaced,
     		customersPie:CustomersPie,
     		customersBar:CustomersBar,
-            // revenue:Revenue,
-            // numberOfOrders:NumberOfOrders,
-            // menuItemPopularity:MenuItemPopularity
+            revenue:Revenue,
+            numberOfOrders:NumberOfOrders,
+            menuItemPopularity:MenuItemPopularity
   	}
 
     OrderService.load(prepareCharts);
@@ -44,8 +44,6 @@ angular.module('kyc.charts')
             });               
             
             angular.forEach(orders,function(order){
-                console.log(selectedOutlets,order.outletId);
-
                 if ( selectedOutlets.length === 0 || findOutlet(selectedOutlets,order.outletId) ){                    
                     var created = new Date(order.created).getTime();                
                         angular.forEach(charts,function(chart){

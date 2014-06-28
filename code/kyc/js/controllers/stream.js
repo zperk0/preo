@@ -4,7 +4,7 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','StreamServ
 	$scope.orders = StreamService.getOrders();
     console.log($scope.orders);
     var onTimeout = false;
-    var pusherUpdateEvent = function() {        
+    var pusherUpdateEvent = function() {                
         if (!onTimeout){
             onTimeout = true;
             StreamService.load(function(orders){
@@ -16,7 +16,11 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','StreamServ
       
     pusher.reset();
     var venueId = 2
+    var selectedOutlets = $scope.getSelectedOutlets();
     var outletIds = [];
+    angular.forEach(selectedOutlets,function(outlet){
+        outletIds.push(outlet.id);
+    })
     pusher.bind(venueId, outletIds, pusherUpdateEvent);
 
     $scope.getStatusName = function(status){
@@ -44,6 +48,12 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','StreamServ
             default:
                 return "bad"
         }
+    }
+
+    $scope.outletFilter = function(order){        
+        console.log('fitering',order,outletIds);
+        return (outletIds && outletIds.length === 0) || (outletIds.indexOf(order.outletId)>-1)
+            
     }
 
     $scope.showOptions = function() {

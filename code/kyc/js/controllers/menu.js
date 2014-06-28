@@ -13,14 +13,13 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			$scope.outlets = OutletService.getOutlets();
 
 
-		$scope.update = function(){			
-			console.log('selectedOutlets',getSelectedOutlets());
-			AllCharts.prepareCharts(OrderService.getOrders(),$scope.search.start_date,$scope.search.end_date,getSelectedOutlets());
+		$scope.update = function(){						
+			AllCharts.prepareCharts(OrderService.getOrders(),$scope.search.start_date,$scope.search.end_date,$scope.getSelectedOutlets());
 			$route.reload();
 		}
 			
 						 
-		var getSelectedOutlets = function(){
+		$scope.getSelectedOutlets = function(){
 			return $scope.outlets.filter(function(data){
 				return data.selected === true;
 			});

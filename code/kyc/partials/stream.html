@@ -12,7 +12,7 @@
 				</div>
 				<div id="content-table">
 					<table class="table table-striped table-stream table-list table-condensed">
-					  <tbody ng-repeat="order in orders" ng-switch on="order.active">
+					  <tbody ng-repeat="order in orders | filter:outletFilter " ng-switch on="order.active" >
 					  	<tr ng-click="activeStream(order)" ng-class="{active: order.active}">
 					  		<td width="15">
 					  			<span class="block-status {{ getStatusColor(order.status) }}">{{ getStatusName(order.status) }}</span>
