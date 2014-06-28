@@ -5,6 +5,8 @@ angular.module('kyc.charts')
     var colorIndex = 0;
     var items = {};
     var title = 'Most Popular Items';
+    var minTimestamp = 0;
+    var maxTimestamp = 0;
 
     var top5 = [
         {y:0,color:Colors[0]},
@@ -26,8 +28,8 @@ angular.module('kyc.charts')
     }
     
 	function setData(order,minDate,maxDate){
-        var minTimestamp = minDate.getTime();
-        var maxTimestamp = maxDate.getTime();
+        minTimestamp = minDate.getTime();
+        maxTimestamp = maxDate.getTime();
         var orderData = new Date(order.created);
         if (orderData >= minTimestamp && orderData <= maxTimestamp){
             angular.forEach(order.items,function(item){
@@ -76,8 +78,28 @@ angular.module('kyc.charts')
             type:type,
             title:title,
             data:getData(),
+            getPdf:getPdf
 
         }
+    }
+
+    function getPdf(){
+        return chartInfo = {
+            type:type,
+            title:title,
+            startDate: minTimestamp,
+            endDate: maxTimestamp,            
+            dataJson: JSON.stringify(getData()),
+            categories: getCategories()
+        }
+    }
+
+    function getCategories(){
+        var arr = []        
+        angular.forEach(top5,function(item){
+            arr.push(item.name);
+        })
+        return arr;
     }
 
     return {

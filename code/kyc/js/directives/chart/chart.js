@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kyc.directives').
-  directive('chart', ['$modal','ChartType', '$chartService', function($modal, ChartType, $chartService) {
+  directive('chart', ['$modal','ChartType', '$chartService','Export','ACCOUNT_ID', function($modal, ChartType, $chartService,Export,ACCOUNT_ID) {
 
   	return {
   		templateUrl: '/code/kyc/js/directives/chart/chart.htm',
@@ -78,6 +78,16 @@ angular.module('kyc.directives').
           item.callback(item.menuItemId,function(highchart){            
               ng.chart.value = highchart;
               refreshChart();              
+          });
+        }
+
+        ng.exportPdf= function(){
+          console.log(ng.chart);
+          var obj = ng.chart.value.getPdf();
+          console.log(obj,"obj");
+          var pdf = new Export.Pdf(obj);          
+          pdf.$save({accountId:ACCOUNT_ID},function(res){
+            console.log('hoo',res);
           });
         }
 

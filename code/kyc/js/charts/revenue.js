@@ -6,8 +6,9 @@ angular.module('kyc.charts')
     var data = [];
     var title = 'Revenue'
     var totalRevenue =0;
-    var startDate = 0;
-    var endDate = 0;
+    var minTimestamp =0;
+    var maxTimestamp =0;
+
 
     var previousSpecifiedData = [];
     var weekData = []   
@@ -36,8 +37,8 @@ angular.module('kyc.charts')
     function onSetDataComplete(minDate,maxDate){
 
         var nowTimestamp = new Date().getTime();        
-        var minTimestamp = minDate.getTime();
-        var maxTimestamp = maxDate.getTime();
+        minTimestamp = minDate.getTime();
+        maxTimestamp = maxDate.getTime();
         var previousSpecifiedTimestamp =  new Date(minTimestamp - (maxTimestamp - minTimestamp))
         var weekTimestamp = new Date(new Date().getTime() - (1000 * 3600 * 24 * 7))
         var lastWeekTimestamp = new Date(new Date().getTime() - (1000 * 3600 * 24 * 7 * 2))
@@ -111,9 +112,7 @@ angular.module('kyc.charts')
         yearData.sort(sortData);
         previousYearData.sort(sortData);
 
-        if (data.length>0){
-            startDate = data[0][0];
-            endDate = data[data.length-1][0];
+        if (data.length>0){            
             totalRevenue = totalRevenue.toFixed(2)
         }   
     }   
@@ -149,7 +148,8 @@ angular.module('kyc.charts')
             data: getData(),
             numberLeft:totalRevenue,
             numberRight:getPercentage(data,previousSpecifiedData), 
-            modal: getModal()
+            modal: getModal(),
+            getPdf:getPdf
             
         }
     }
@@ -159,6 +159,19 @@ angular.module('kyc.charts')
         dailyRevenue = {};
         totalRevenue = 0;   
 
+    }
+
+    function getPdf(){
+        return chartInfo = {
+            type:type,
+            title:title,
+            startDate: minTimestamp,
+            endDate: maxTimestamp,  
+            total: totalRevenue,
+            currency:"£",
+            percentage:getPercentage(data,previousSpecifiedData),    
+            dataJson: JSON.stringify(getData())
+        }
     }
 
 

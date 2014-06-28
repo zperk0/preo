@@ -124,6 +124,7 @@
   <script src="/code/kyc/js/controllers/stock.js"></script>
   <script src="/code/kyc/js/controllers/stream.js"></script>
   <script src="/code/kyc/js/controllers/menu.js"></script>
+  <script src="/code/kyc/js/resources/export.js"></script>
   <script src="/code/kyc/js/resources/outlet.js"></script>
   <script src="/code/kyc/js/resources/order.js"></script>  
   <script src="/code/kyc/js/constants/chartType.js"></script>

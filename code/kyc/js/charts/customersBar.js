@@ -9,10 +9,12 @@ angular.module('kyc.charts')
     ]
     var newCustomers = [];
     var repeatedCustomers = [];
+    var minTimestamp = 0;
+    var maxTimestamp = 0;
     
 	function setData(order,minDate,maxDate){
-        var minTimestamp = minDate.getTime();
-        var maxTimestamp = maxDate.getTime();
+         minTimestamp = minDate.getTime();
+         maxTimestamp = maxDate.getTime();
         var orderData = new Date(order.created).getTime();        
         if (orderData >= minTimestamp && orderData <= maxTimestamp){
             var customerId  = order.userId;
@@ -50,7 +52,19 @@ angular.module('kyc.charts')
         return {
             type:type,
             title:title,
-            data:getData()
+            data:getData(),
+            getPdf:getPdf
+        }
+    }
+
+    function getPdf(){
+        return chartInfo = {
+            type:type,
+            title:title,
+            startDate: minTimestamp,
+            endDate: maxTimestamp,            
+            dataJson: JSON.stringify([data[0].y,data[1].y]),
+            categories: ['New','Returning']
         }
     }
 

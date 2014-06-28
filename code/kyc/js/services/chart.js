@@ -115,6 +115,13 @@ angular.module('kyc.services', []).
 	            xAxis: {
 									type: 'datetime',
             			minTickInterval: 24 * 3600 * 1000,
+            			labels: {
+                    style: {
+                        color: '#b3b6b8',
+                        fontSize: '15px'
+                    }
+
+                },       
 	            },
 	            yAxis: {
 	                gridLineWidth: 0,
@@ -123,8 +130,11 @@ angular.module('kyc.services', []).
 	                    text: ''
 	                },
 	                labels: {
-	                    enabled: true
-	                }
+                    style: {
+                        color: '#b3b6b8',
+                        fontSize: '15px'
+                    }
+                },       
 	            },
 	            series: [{
 	                showInLegend: false,

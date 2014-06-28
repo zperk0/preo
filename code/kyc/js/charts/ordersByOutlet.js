@@ -5,6 +5,8 @@ angular.module('kyc.charts')
 	var ordersByOutlet = {};	
     var colorIndex = 0;
     var title = 'Orders By Outlet';
+    var minTimestamp = 0;
+    var maxTimestamp = 0;
 
     function clearData(){
         colorIndex=0;
@@ -46,8 +48,28 @@ angular.module('kyc.charts')
         return {
             type:type,
             title:title,
-            data:getData()
+            data:getData(),
+            getPdf:getPdf
         }
+    }
+
+     function getPdf(){
+        return chartInfo = {
+            type:type,
+            title:title,
+            startDate: minTimestamp,
+            endDate: maxTimestamp,            
+            dataJson: JSON.stringify(getData()),
+            categories: getCategories()
+        }
+    }
+
+    function getCategories(){
+        var arr = []        
+        angular.forEach(ordersByOutlet,function(item,outletId){
+            arr.push(OutletService.getOutletName(outletId))            
+        })
+        return arr;
     }
 
     return {
