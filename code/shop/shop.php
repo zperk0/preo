@@ -41,6 +41,14 @@
                   <button ng-show="!isFeatureInstalled(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >BUY</button>
                   <button ng-show="isFeatureInstalled(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">INSTALLED</button>
                 </div>
+                <div class='priceWrapper' ng-show="isFeatureInstalled(feature) && getFeatureStatus(feature) != 'TRIAL' ">
+                  <div class='price helveticaneueWMedi'>£{{feature.subscriptionPrice}}/month</div>                
+                  <ul>
+                    <li ng-show="feature.upfrontPrice>0">+ &pound;{{feature.upfrontPrice}} <?= _("one-off payment")?></li>
+                    <li>+ <?= _("VAT")?></li>
+                  </ul>
+                  <button ng-show="isFeatureInstalled(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">INSTALLED</button>
+                </div>
                 <div class='comingSoon' ng-show="!feature.active">
                   <button ng-show="!isFeatureOwned(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >COMING SOON</button>
                 </div>
