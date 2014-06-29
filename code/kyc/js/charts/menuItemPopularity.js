@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('MenuItemPopularity',['ChartType', function(ChartType) {
+.factory('MenuItemPopularity',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
 
 	var type = ChartType.AREA;	
     
@@ -172,10 +172,21 @@ angular.module('kyc.charts')
             numberRight:getPercentage(data,previousSpecifiedData), 
             modal: getModal(),
             items:items,
-            getPdf:getPdf            
+            getPdf:getPdf,
+            getCsv:getCsv
         }
     }
 
+    function getCsv(){
+        var data = getData();
+        var csvData =[[getItemName(selectedItem)]]
+        angular.forEach(data,function(d){
+            csvData.push([ ChartHelper.formatDate(d[0]),d[1] ]) 
+        })
+        return {
+            data:csvData
+        };
+    }
 
     function getPdf(){
         return chartInfo = {

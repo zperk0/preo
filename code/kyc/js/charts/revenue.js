@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('Revenue',['ChartType', function(ChartType) {
+.factory('Revenue',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
 
 	var type = ChartType.AREA;	
     var dailyRevenue = {};
@@ -69,7 +69,7 @@ angular.module('kyc.charts')
         endDate = 0;
         angular.forEach(dailyRevenue,function(dR,key){                                
             var orderDate = Number(key)
-            var dataRow = [Number(key),dR];
+            var dataRow = [Number(key),Number(dR.toFixed(2))];
             if (minTimestamp <= orderDate && maxTimestamp >= orderDate ){
                 data.push(dataRow);            
                 totalRevenue +=dR;                
@@ -138,6 +138,7 @@ angular.module('kyc.charts')
     function getPeriodTotal(data){
         var total = 0;
         angular.forEach(data,function(d){total+=d[1]})
+        
         return total.toFixed(0);
     }
 
@@ -149,9 +150,21 @@ angular.module('kyc.charts')
             numberLeft:totalRevenue,
             numberRight:getPercentage(data,previousSpecifiedData), 
             modal: getModal(),
-            getPdf:getPdf
+            getPdf:getPdf,
+            getCsv:getCsv
             
         }
+    }
+
+    function getCsv(){
+        var data = getData();
+        var csvData =[[title]]
+        angular.forEach(data,function(d){
+            csvData.push([ ChartHelper.formatDate(d[0]),d[1]]) 
+        })
+        return {
+            data:csvData
+        };
     }
 
     function clearData(){

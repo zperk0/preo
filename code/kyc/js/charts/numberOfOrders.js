@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('NumberOfOrders',['ChartType', function(ChartType) {
+.factory('NumberOfOrders',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
 
 	var type = ChartType.AREA;	
     var dailyOrders = {};
@@ -140,7 +140,8 @@ angular.module('kyc.charts')
             numberLeft:totalOrders,
             numberRight:getPercentage(data,previousSpecifiedData), 
             modal: getModal(),
-            getPdf:getPdf
+            getPdf:getPdf,
+            getCsv:getCsv
             
         }
     }
@@ -162,7 +163,17 @@ angular.module('kyc.charts')
         data = [];
         dailyOrders = {};
         totalOrders = 0;   
+    }
 
+    function getCsv(){
+        var data = getData();
+        var csvData =[[title]]
+        angular.forEach(data,function(d){
+            csvData.push([ ChartHelper.formatDate(d[0]),d[1]]) 
+        })
+        return {
+            data:csvData
+        };
     }
 
 

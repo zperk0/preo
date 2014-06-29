@@ -11,19 +11,21 @@ angular.module('kyc.directives').
   			chart: '=element'
   		},
   		link: function( ng, elem, attrs ) {
-
-
+        ng.ChartType = ChartType;
+        var initialHeight = ng.chart.value.type === ChartType.number ? 150 : 322;
         var $actionsChart = elem.find('.actions-chart');
         var $chart = elem.find('.chart');
-        var heightParent = elem.parent().height() || 322;
+        var heightParent = elem.parent().height() || initialHeight;
+
         var $flipContainer = elem.closest('.flip-container');
 
         $actionsChart.height( heightParent );
         $chart.height( heightParent );
         
-  			if ( ng.chart.showChart ){
-          refreshChart();
-  			}
+  			
+
+        refreshChart();
+  			
         
         ng.openModal = function() {
 
@@ -91,8 +93,17 @@ angular.module('kyc.directives').
           });
         }
 
+        ng.exportCsv = function(){
+          var obj = ng.chart.value.getCsv();          
+          var pdf = new Export.Csv(obj);          
+          console.log('sending',pdf)
+          pdf.$save({accountId:ACCOUNT_ID},function(res){
+            console.log('hee',res);
+          });
+        }
+
         function refreshChart(){
-          heightParent = elem.parent().height() || 322;
+          heightParent = elem.parent().height() || initialHeight;
           $actionsChart.height( heightParent );
           $chart.height( heightParent );
 
@@ -113,8 +124,8 @@ angular.module('kyc.directives').
             if ( ng.chart.value.type == ChartType.COLUMN ) {
               heightParent -= 15;
             }
-
-            ng.chart.highcharts.options.chart.height = heightParent;
+            if (ng.chart.highcharts)
+              ng.chart.highcharts.options.chart.height = heightParent;
           }
         }
 

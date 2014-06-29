@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('CustomersBar',['ChartType','Colors', function(ChartType,Colors) {
+.factory('CustomersBar',['ChartType','Colors','ChartHelper', function(ChartType,Colors,ChartHelper) {
 
 	var type = ChartType.COLUMN;
     var title = 'Customers (Bar)'
@@ -53,9 +53,22 @@ angular.module('kyc.charts')
             type:type,
             title:title,
             data:getData(),
-            getPdf:getPdf
+            getPdf:getPdf,
+            getCsv:getCsv
         }
     }
+
+    function getCsv(){
+        var data = getData();
+        var csvData =[[title]]
+        angular.forEach(data,function(d){
+            csvData.push([d.name,d.y]) 
+        })
+        return {
+            data:csvData
+        };
+    }
+
 
     function getPdf(){
         return chartInfo = {

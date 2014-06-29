@@ -136,6 +136,7 @@
   <script src="/code/kyc/js/directives/datepicker/datepicker.js"></script>
   <script src="/code/kyc/js/directives/multiselect/multiselect.js"></script>
   <script src="/code/kyc/js/charts/allCharts.js"></script>
+  <script src="/code/kyc/js/charts/chartHelper.js"></script>
   <script src="/code/kyc/js/charts/payingCustomers.js"></script>
   <script src="/code/kyc/js/charts/ordersPerCustomer.js"></script>
   <script src="/code/kyc/js/charts/averageOrderValue.js"></script>

@@ -12,6 +12,14 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 
 			$scope.outlets = OutletService.getOutlets();
 
+			 $scope.$watch(
+	          "search.start_date",
+	          function( newValue, oldValue ) {
+	              console.log("changed start_date", newValue,oldValue); 
+	          }
+	      );
+ 
+
 
 		$scope.update = function(){						
 			AllCharts.prepareCharts(OrderService.getOrders(),$scope.search.start_date,$scope.search.end_date,$scope.getSelectedOutlets());

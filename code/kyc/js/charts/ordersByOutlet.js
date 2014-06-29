@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('OrdersByOutlet',['ChartType','Colors','OutletService', function(ChartType,Colors,OutletService) {
+.factory('OrdersByOutlet',['ChartType','Colors','OutletService','ChartHelper', function(ChartType,Colors,OutletService,ChartHelper) {
 
 	var type = ChartType.PIE;
 	var ordersByOutlet = {};	
@@ -49,10 +49,22 @@ angular.module('kyc.charts')
             type:type,
             title:title,
             data:getData(),
-            getPdf:getPdf
+            getPdf:getPdf,
+            getCsv:getCsv
         }
     }
 
+    function getCsv(){
+        var data = getData();
+        var csvData =[[title]]
+        angular.forEach(data,function(d){
+            csvData.push([d.name,d.y]) 
+        })
+        return {
+            data:csvData
+        }
+    }
+       
      function getPdf(){
         return chartInfo = {
             type:type,
