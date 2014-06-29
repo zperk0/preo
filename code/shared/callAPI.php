@@ -15,8 +15,11 @@
 			'Content-Type: application/json',                                                                                
 			'Authorization: ' . $auth)                                                                      
 		);   
-		if(preg_match('/https/', $url))
+
+		if(preg_match('/https/', $url)){
+			$url = str_replace('https', 'http', $url);
 			curl_setopt($curl, CURLOPT_CAINFO, $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/cert.pem'); //required for SSL verfication 
+		}
 
 		$curlResponse = curl_exec($curl);
 		

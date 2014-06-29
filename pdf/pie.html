@@ -1,0 +1,204 @@
+<html>
+<head>
+<script src="jquery-1.9.1.min.js"></script>
+<script src="highcharts.js"></script>
+<script>
+$(function () {
+
+	  var chartInfo = {
+        title:"Orders by outlet",
+        startDate: 1403982955032,
+        endDate: 1403982955032,
+        total: "5,625.40",
+        currency:"&pound;",
+        percentage:"+15%",
+        data: [1, 3, 4, 3, 3, 5, 4]
+
+    };
+
+    $('.title').html(chartInfo.title);
+    $('.dates').html(formatDate(chartInfo.startDate) + " - " + formatDate(chartInfo.endDate));
+	var revenueChart = {
+	            chart: {
+	                type: 'pie',
+			       	margin: [0, 0, 0, 0],
+			        spacingTop: 0,
+			        spacingBottom: 0,
+			        spacingLeft: 0,
+			        spacingRight: 0	                
+	            },
+	            tooltip: {
+	                formatter: function() {
+	                    return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+	                }
+	            },	            
+	            exporting: {
+	                 enabled: false
+	            },
+	            plotOptions: {
+	                pie: {
+	                	  size:1150,
+	                    shadow: false,
+	                    center: ["30%","50%"],
+	                    dataLabels: {
+             					   enabled: true
+          						}
+	                },
+	                series:{
+	                	animation:false
+	                }
+	            },		   
+	            legend: {
+		              itemStyle: {		                 
+		                 font: '20px Co Text W01 Light',
+		              },
+		              itemHoverStyle: {
+		               	font: '20px Co Text W01 Bold',
+		              },
+	                enabled: true,
+	                layout: 'vertical',
+	                align: 'right',
+	                
+	                width: 200,
+	                verticalAlign: 'middle',
+	                x:-150,
+	                borderWidth: 0,
+	                useHTML: true,
+	                labelFormatter: function() {
+	                    return '<div style="text-align: left; width:130px;float:left; font-weight: normal; font-size: 20px; margin-bottom: 10px">' + this.name + '</div>';
+									}                  
+        	},          
+            title: {
+                text: ''
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                }
+            },
+            credits:false,
+            series: [{
+                name: 'Browsers',
+                data: JSON.parse(chartInfo.dataJson),
+                size: '90%',
+                innerSize: '70%',
+                showInLegend:true,
+                dataLabels: {
+                    enabled: false
+                }
+            }]        	
+      }
+    $('#container').highcharts(revenueChart);
+    $.each(revenueChart.series[0].data,function(){
+    	console.log(this);
+    	$(".dataTable").append("<li style='background-color:"+this.color+"'>"+formatPercentage(this.y)+"</li>")
+    });
+
+    	function formatPercentage(val){	
+    		var strVal = String(val);
+				if (strVal.indexOf(".") == -1){
+						strVal+=".0";
+				}
+				return strVal+"%";
+			}
+
+			function formatDate(ts){
+        var date = new Date(ts);
+        return date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
+    }
+
+  });
+
+
+
+</script>
+<style>
+	@font-face{
+		font-family:"Co Text W01 Bold";
+		src:url("fonts/fonts-com/137c5228-fcea-49b5-87a2-652892f35567.eot?#iefix");
+		src:url("fonts/fonts-com/137c5228-fcea-49b5-87a2-652892f35567.eot?#iefix") format("eot"),url("fonts/fonts-com/48ad114c-19ab-41fc-92c3-eab9077289d4.woff") format("woff"),url("fonts/fonts-com/82715156-ba20-42e6-8103-3038d1ef9fb9.ttf") format("truetype"),url("fonts/fonts-com/f328709c-b561-4944-95c5-0c5a9ab1a87c.svg#f328709c-b561-4944-95c5-0c5a9ab1a87c") format("svg");
+		}
+		@font-face{
+		font-family:"Co Text W01 Light";
+		src:url("fonts/fonts-com/601bffc8-cea9-4d92-ac3f-617b85516156.eot?#iefix");
+		src:url("fonts/fonts-com/601bffc8-cea9-4d92-ac3f-617b85516156.eot?#iefix") format("eot"),url("fonts/fonts-com/fe5ae5d6-d1f1-487e-9e59-76f5f199c3ae.woff") format("woff"),url("fonts/fonts-com/12ea435b-6a3a-4d98-bcf3-418174b701b7.ttf") format("truetype"),url("fonts/fonts-com/42dd9b27-137a-4cc1-a771-ef3625e2779c.svg#42dd9b27-137a-4cc1-a771-ef3625e2779c") format("svg");
+	}
+	body{
+			font-family:"Co Text W01 Light","sans-serif";;
+	}
+	.title{
+		float:left;		
+		width:40%;
+		text-align:left;
+	}
+	.dates{
+		float:right;
+		width:40%;
+		text-align:right;
+	}
+	.clearFix{
+		clear:both;
+	}
+	.header{
+		border-bottom: 1px solid #ccc;
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+	}
+	.innerHeader{
+		font-size: 200%;
+		color: #1476B7;
+		display: block;
+		font-weight:bold;
+		margin-bottom: 40px;
+		font-family:"Co Text W01 Bold","Co Text W01 Light","sans-serif";
+
+	}
+	.innerHeader sup{
+			font-size:50%;
+			display:inline-block;
+			margin-left:5px;
+			color:#8cbe56;			
+	}
+	.footer{
+		margin-top:40px;
+	}
+	.logo{
+		float:right;
+	}
+	#container{
+		min-width:500px;
+		width: 80%; height: 400px; 
+		margin: 0 auto;
+	}
+	ul{
+		list-style: :none;
+		list-style-type: none;
+		min-width:80px;
+		position:absolute;		
+		top:60px;
+		left:0;
+		text-align: center;
+	}
+
+	li{
+			font-size:25px;
+			color:white;
+			padding:20px;
+			margin-bottom: 1px;
+	}
+</style>
+</head>
+<body>
+<div class='header'>
+		<div class='title'>Orders by outlet</div>
+		<div class='dates'>01/01/14 - 01/02/14</div>
+		<div class='clearFix'></div>
+</div>
+<div id="container" ></div>
+<ul class='dataTable'>			
+</ul>
+<div class='footer'>
+		<div class='logo'>Report generated by <br/><img src='img/logo.png'/></div>
+</div>
+</body>
+</html>

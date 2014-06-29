@@ -1,0 +1,140 @@
+<div class="container container-partials">
+	<div class="flip-container">
+		<div class="flipper">
+			<div class="front" id="content-list">
+				
+				<div class="header-list overflow">			
+					<span class="pull-left">Reports</span>
+
+					<a href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
+						<i class="fa fa-plus"></i>
+					</a>
+				</div>
+
+				<div id="content-table" >
+					<table class="table table-striped table-list" ng-init="orderBy = 'outlet'; direction = false">
+					  <thead>
+					  	<tr>
+					  		<th width="10">
+					  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
+					  		</th>
+					  		<th width="60" ng-click="orderBy = 'id'; direction=!direction">
+					  			ID
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th width="80" ng-click="orderBy = 'outlet'; direction=!direction">
+					  			Outlet
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'name'; direction=!direction">
+					  			Name
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'time'; direction=!direction">
+					  			Time
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th width="70" ng-click="orderBy = 'quantity'; direction=!direction">
+					  			Qtd
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'item'; direction=!direction">
+					  			Item
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'modifier'; direction=!direction">
+					  			Modifier
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th width="80" ng-click="orderBy = 'total'; direction=!direction">
+					  			Total
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'status'; direction=!direction">
+					  			Status
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  	</tr>
+					  </thead>
+					  <tbody>
+					  	<tr ng-repeat="report in reports | orderBy:orderBy:direction">
+					  		<td><input type="checkbox" ng-model="report.selected"></td>
+					  		<td>{{ report.id }}</td>
+					  		<td>{{ report.outlet }}</td>
+					  		<td>{{ report.name }}</td>
+					  		<td>{{ report.time }}</td>
+					  		<td>{{ report.quantity }}</td>
+					  		<td>{{ report.item }}</td>
+					  		<td>{{ report.modifier }}</td>
+					  		<td>{{ report.total }}</td>
+					  		<td>{{ report.status }}</td>
+					  	</tr>
+					  </tbody>
+					</table>		
+				</div>
+
+			</div>
+
+			<div class="actions-chart back">
+				<div class="header-chart overflow">
+				
+					<a href="javascript:void(0)" class="pull-left" ng-click="hideOptions()">
+						<i class="fa fa-arrow-left icon-white"></i>
+					</a>
+
+				</div>
+
+				<div class="content-actions">
+					<h4 class="title-white">Export as...</h4>
+
+					<div class="buttons overflow">
+						<button class="pull-left btn btn-default" ng-click="exportData('pdf')" >
+							PDF
+						</button>
+						<button class="pull-left btn btn-default" ng-click="exportData('csv')">
+							CSV
+						</button>
+					</div>
+
+					<div class="options overflow">
+						<label class="pull-left">
+							<input type="radio" name="option"  value="1" ng-model="exportAll"/>
+							All
+						</label>
+						<label class="pull-right">
+							<input type="radio" name="option" value="0" ng-model="exportAll"/>
+							Selected
+						</label>
+					</div>				
+				</div>
+			</div>				
+		</div>
+	</div>
+</div>

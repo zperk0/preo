@@ -1,6 +1,6 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
       require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function 
-    session_start();
+//    session_start();
 	  		
 
 ?>
@@ -22,10 +22,10 @@
 		<section class="top-bar-section">
 			<!-- Right Nav Section -->
 			<ul class="left pretendRight">
-				<?php if(!isset($_SESSION['logged'])) : ?>
+				<?php if(!isset($_SESSION['logged'])) { ?>
 					<li><a href="<?echo $_SESSION['path']?>/signup"									><? echo _("Sign Up");?></a></li>
 					<li><a href="<?echo $_SESSION['path']?>/signin"	class="activated"				><? echo _("Login");?></a></li>
-				<?php else : 
+				<?php } else {
 						if(!isset($_SESSION['signupWizFlag']) || !$_SESSION['signupWizFlag']){ ?>					
 					<li class="has-dropdown"><a href="<?echo $_SESSION['path']?>/"><? echo _("Dashboard");?></a>
 						<ul class="dropdown">
@@ -122,7 +122,7 @@
 					<?if(isset($_SESSION['venue_cat'])){?><li><a target="_blank" href="<?echo $_SESSION['path']?>/docs/GettingStartedGuide_<?echo $_SESSION['venue_cat'];?>.pdf"><?echo _("Getting started");?></a></li><?}?>
 					<li><a class="activated" href="<?echo $_SESSION['path']?>/logout"><? echo _("Logout");?></a></li>
 					<?}?>
-				<?php endif; ?>
+				<?php } ?>
 			</ul>
 		</section>
 	</nav>

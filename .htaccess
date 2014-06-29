@@ -198,3 +198,6 @@ RewriteRule ^.*$ /code/shop/shop.php [L]
 
 RewriteCond %{REQUEST_URI} ^/accountSettings$ [NC]
 RewriteRule ^.*$ /code/accountSettings/index.php [L]
+
+RewriteCond %{REQUEST_URI} ^/kyc$ [NC]
+RewriteRule ^.*$ /code/kyc/index.php [L]

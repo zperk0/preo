@@ -1,0 +1,84 @@
+<div class="container container-partials">
+	<div class="flip-container">
+		<div class="flipper">
+			<div class="front" id="content-list">
+				
+				<div class="header-list overflow">			
+					<span class="pull-left">Live Stream</span>
+
+					<a href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
+						<i class="fa fa-plus"></i>
+					</a>
+				</div>
+				<div id="content-table">
+					<table class="table table-striped table-stream table-list table-condensed">
+					  <tbody ng-repeat="order in orders | filter:outletFilter " ng-switch on="order.active" >
+					  	<tr ng-click="activeStream(order)" ng-class="{active: order.active}">
+					  		<td width="15">
+					  			<span class="block-status {{ getStatusColor(order.status) }}">{{ getStatusName(order.status) }}</span>
+					  		</td>
+					  		<td width="100" valign="middle">&pound;{{ order.total }}</td>
+					  		<td valign="middle">{{ order.user.firstName + " " + order.user.lastName }}</td>
+					  		<td width="300" valign="middle">{{ getOrderItems(order).join(",") }}</td>
+					  		<td width="200" valign="middle">{{ order.updated | timeAgo }} </td>
+					  	</tr>
+					  	<tr ng-switch-when="true" class="result">
+					  		<td colspan="2" class="padding information">
+					  			<p class="code"><b>#{{ order.id }}</b></p>
+					  			<p>{{ order.firstName + " " + order.lastName }}</p>
+					  			<p>{{order.created | date:'EEEE dd MMMM' }}</p>
+					  			<p>{{order.created | date:'HH:mm:ss' }}</p>
+					  			<br />
+					  			<!-- <p>{{order. ****4580}}</p> //TODO where will this come from?-->
+					  			<p class="text-status {{ getStatusColor(order.status) }}">{{getStatusName(order.status)}}</p>
+					  		</td>
+					  		<td colspan="3">
+					  			<table class="table-max">
+					  				<tbody>
+					  					<tr ng-repeat="item in order.items">
+					  						<td colspan="3">{{ item.qty +" x "+item.name}}</td>
+					  						<td width="200">&pound;{{ item.total.toFixed(2) }}</td>
+					  					</tr>
+					  					<tr ng-show="order.discount && order.discount>0">
+					  						<td colspan="3">Discount</td>
+					  						<td width="200">-&pound;{{ order.discount.toFixed(2) }}</td>
+					  					</tr>
+					  					<tr>
+					  						<td colspan="3"><b>TOTAL</b></td>
+					  						<td width="200"><b>&pound;{{ order.total.toFixed(2) }}</b></td>
+					  					</tr>
+					  				</tbody>
+					  			</table>
+					  		</td>
+					  	</tr>
+					  </tbody>
+					</table>		
+				</div>
+
+			</div>
+
+			<div class="actions-chart back">
+				<div class="header-chart overflow">
+				
+					<a href="javascript:void(0)" class="pull-left" ng-click="hideOptions()">
+						<i class="fa fa-arrow-left icon-white"></i>
+					</a>
+
+				</div>
+
+				<div class="content-actions">
+					<h4 class="title-white">Export as...</h4>
+
+					<div class="buttons">
+						<button class="pull-left btn btn-default" >
+							PDF
+						</button>
+						<button class="pull-left btn btn-default">
+							CSV
+						</button>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div>
+</div>
