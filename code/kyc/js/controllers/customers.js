@@ -1,17 +1,49 @@
-angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderService', '$AjaxInterceptor', function($scope,OrderService, $AjaxInterceptor) {
+angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderService', '$AjaxInterceptor','Export','ACCOUNT_ID',
+ function($scope,OrderService, $AjaxInterceptor,Export,ACCOUNT_ID) {
 
 	$scope.customers = {};
 
 	var allOrders = OrderService.getOrders();
 	prepareScopeCustomers();
-
+	$scope.exportAll="1";
 
 	$scope.selectAll = function() {
-
 		angular.forEach($scope.customers,function(value, key){
 			value.selected = $scope.all_options;
 		});
 	}	
+
+
+	function prepareExportData(){
+		var prepData = [["Customers"]];
+			angular.forEach($scope.customers,function(item){				
+				console.log(item,prepData,$scope.exportAll);	
+					if ($scope.exportAll === "1" || item.selected === true){
+							prepData.push([item.name,item.totalSpent,item.emailAddress]);
+					}
+			})
+		return {
+       data:prepData
+    }
+	}
+
+	$scope.exportData = function(which){
+		console.log('exporting data',which);
+		var data = prepareExportData();
+		switch (which){
+			case 'pdf':
+				// new Export.Pdf(data).$save({accountId:ACCOUNT_ID},function(res){
+	   		// console.log('hoo',res);
+	   		// });
+				break;
+			case 'csv':
+			console.log('sending',data);
+				new Export.Csv(data).$save({accountId:ACCOUNT_ID},function(res){
+	          console.log('hoo',res);
+	      });
+				break;
+		}
+	}
 
 
 	function prepareScopeCustomers(){
@@ -26,12 +58,12 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 								if ($scope.customers[customerId] === undefined){
 									$scope.customers[customerId] = {
 											name:row.user.firstName+" "+row.user.lastName,
-											totalSpent:row.total,
+											totalSpent:Number(row.total.toFixed(2)),
 											emailAddress:row.user.username
 									}	
 								}
 								else{
-										$scope.customers[customerId].totalSpent+=row.total;
+										$scope.customers[customerId].totalSpent = Number(($scope.customers[customerId].totalSpent + row.total).toFixed(2));
 								};																			
 						}
 			});

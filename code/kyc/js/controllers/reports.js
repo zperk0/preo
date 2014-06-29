@@ -1,9 +1,11 @@
-angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInterceptor','OrderService', function($scope, $AjaxInterceptor,OrderService) {
+angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInterceptor','OrderService','Export','ACCOUNT_ID',
+	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID) {
 
 	$scope.reports = [];
 	
 	var allOrders = OrderService.getOrders();
 	prepareScopeReports();
+	$scope.exportAll="1"	;
 
 	$scope.selectAll = function() {
 		for ( var i = $scope.reports.length; i--; ) {
@@ -36,6 +38,39 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 			});
 		}
 		$AjaxInterceptor.complete();
+	}
+
+
+	function prepareExportData(){
+		var prepData = [["Reports"]];
+			angular.forEach($scope.reports,function(item){				
+				console.log(item,prepData);	
+					if ($scope.exportAll === "1" || item.selected === true){
+							prepData.push([item.id,item.outlet,item.name,item.time,item.quantity,item.modifier,item.total,item.status]);
+					}
+			})
+		return {
+       data:prepData
+    }
+	}
+
+
+	$scope.exportData = function(which){
+		console.log('exporting data',which);
+		var data = prepareExportData();
+		switch (which){
+			case 'pdf':
+				// new Export.Pdf(data).$save({accountId:ACCOUNT_ID},function(res){
+	   		// console.log('hoo',res);
+	   		// });
+				break;
+			case 'csv':
+			console.log('sending',data);
+				new Export.Csv(data).$save({accountId:ACCOUNT_ID},function(res){
+	          console.log('hoo',res);
+	      });
+				break;
+		}
 	}
 
 	function getOutletName(id){

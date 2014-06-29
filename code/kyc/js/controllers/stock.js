@@ -2,6 +2,7 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID) {
 	
 	$scope.stock={};
+	$scope.exportAll="1";
 
   var allOrders = OrderService.getOrders();	
 	$scope.selectAll = function() {
@@ -18,8 +19,8 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 		switch (which){
 			case 'pdf':
 				// new Export.Pdf(data).$save({accountId:ACCOUNT_ID},function(res){
-	   //        console.log('hoo',res);
-	   //    });
+	   		// console.log('hoo',res);
+	   		// });
 				break;
 			case 'csv':
 			console.log('sending',data);
