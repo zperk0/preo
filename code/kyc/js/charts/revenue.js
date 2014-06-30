@@ -147,6 +147,7 @@ angular.module('kyc.charts')
             type:type,
             title:title,
             data: getData(),
+            currency:"£",
             numberLeft:totalRevenue,
             numberRight:getPercentage(data,previousSpecifiedData), 
             modal: getModal(),

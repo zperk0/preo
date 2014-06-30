@@ -18,7 +18,7 @@
 
 				<div class="top-chart overflow" ng-if="chart.value.numberLeft || chart.value.numberRight">
 					<div class="pull-left numberLeft" ng-if="chart.value.numberLeft">
-						{{ chart.value.numberLeft }}
+						{{ getText(chart) }}
 					</div>
 
 					<div class="pull-right numberRight" ng-if="chart.value.numberRight">
@@ -38,7 +38,7 @@
 			</div>
 
 			<div ng-if="!chart.showChart" class="content-chart" ng-dblclick="openModal()">
-				<span class="largerNumber">{{ chart.value }}</span>
+				<span class="largerNumber">{{ getText(chart) }}</span>
 			</div>
 
 		</div>

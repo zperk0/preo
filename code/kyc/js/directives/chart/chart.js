@@ -109,6 +109,19 @@ angular.module('kyc.directives').
           });
         }
 
+        ng.getText = function(chart){
+            if (typeof chart.value === "object"){
+              var strNum = chart.value.numberLeft
+            }
+            else{
+              var strNum = chart.value.toLocaleString()
+            }
+            if (chart.currency)              
+              return chart.currency + strNum;
+            else
+              return strNum;
+        }
+
         function refreshChart(){
           heightParent = elem.parent().height() || initialHeight;
           $actionsChart.height( heightParent );

@@ -25,7 +25,7 @@
 					  	<tr ng-switch-when="true" class="result">
 					  		<td colspan="2" class="padding information">
 					  			<p class="code"><b>#{{ order.id }}</b></p>
-					  			<p>{{ order.firstName + " " + order.lastName }}</p>
+					  			<p>{{ order.user.firstName + " " + order.user.lastName }}</p>
 					  			<p>{{order.created | date:'EEEE dd MMMM' }}</p>
 					  			<p>{{order.created | date:'HH:mm:ss' }}</p>
 					  			<br />

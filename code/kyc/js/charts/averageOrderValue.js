@@ -32,7 +32,8 @@ angular.module('kyc.charts')
         return {
             type:type,
             title:title,
-            data:getData()
+            data:getData(),
+            currency:"£"
         }
     }
 
@@ -41,6 +42,6 @@ angular.module('kyc.charts')
         getType:getType,
         setData:setData,
         getHighChart:getHighChart,
-        clearData:clearData
+        clearData:clearData,
     };
 }]);

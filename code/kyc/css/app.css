@@ -2,6 +2,12 @@
 
 body{
   background-color: #EFEFEF;
+  font-family: "Co Text W01 Regular","Co Text W01 Light";
+  font-weight: normal;  
+}
+
+form label, label, .multiSelect .button{
+  color:#46545D !important;
 }
 
 .navbar-first{
@@ -235,10 +241,11 @@ body{
 }
 
 .largerNumber{
-  font-size: 70px;
+  font-size: 60px;
   color: #1476B7;
   display: block;
   margin-top: 30px;
+  font-family:"Co Text W01 Regular";
 }
 
 #filterDashboard{
@@ -406,13 +413,15 @@ body{
 
 .numberLeft{
   font-size: 40px;
-  color: #1476B7
+  color: #1476B7;
+  font-family:"Co Text W01 Bold";
 }
 
 .numberRight{
   font-size: 30px;
   font-weight: 600;
-  color: #8ABE4F
+  color: #8ABE4F;
+  font-family:"Co Text W01 Bold";
 }
 
 .top-chart{
