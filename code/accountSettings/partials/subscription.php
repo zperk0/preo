@@ -22,6 +22,7 @@
 					<strong class='helveticaneueWMedi'>{{ card.type }}</strong>
 					<p> Card ending {{card.number}}</p>
 				</div>
+				<div class='clearfix'></div>
 			</div>
 			<div class='calendar' ng-show='account.billingDate !== null'>
 				<div class='month'>{{ account.billingDate | date:"MMM" }}</div>
