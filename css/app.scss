@@ -2341,7 +2341,7 @@ span .currencySymbol {
 
   .priceWrapper{
       position:relative;
-      margin-top:20px;
+      
 
     .price {
       color:$shopHeader;
@@ -2486,7 +2486,7 @@ span .currencySymbol {
      }
   }
   p {
-    margin-bottom:0;
+    margin-bottom:20px;
     overflow: hidden;
     font-size: 75%;
     text-overflow:hidden;
@@ -2503,26 +2503,36 @@ span .currencySymbol {
   /*to add some spacing in case we're in the bottom of the page. Or the dialog looks weird*/
   margin-bottom: 100px;
   padding: 40px;
-  .header {
-    font-family: "Co Text W01 Light";
-    padding-bottom: 20px;
-    border-bottom: 1px solid gray;
-    margin-bottom: 30px;
+  font-size:2vw;
+
+
+  .close-reveal-modal{
+    font-size: 80%;
+  }
+  .header {         
     position:relative;
+
     img {
-      width: 50px;
+      width:3vw;
       background: $premium;
-      border-radius: 5px;
+      border-radius: 0.5vw;
       float:left;
     }
    
   }
-  .content .screenshot {
-    width: 600px;
-    max-width:80%;
-    margin: 0 auto 50px;
-    display: block;
-  }  
+  .content{
+    font-size:60%;
+    border-top: 1px solid gray;
+    margin-top:20px;
+    padding-top:30px;
+
+     .screenshot {
+      width: 600px;
+      max-width:80%;
+      margin: 0 auto 50px;
+      display: block;
+    }  
+  }
   .comingSoon{
       width:30%;
       max-width:200px;
@@ -2535,12 +2545,14 @@ span .currencySymbol {
     max-width: 50%;
     min-width: 200px;
     float: right;    
+    font-family:helvetica,HelveticaNeueW01-65Medi;
+    font-size:80%;
 
     .price {
       color:$shopHeader;
       font-weight: bold;
       line-height: 25px;
-      font-size:120%;
+      font-size:80%;
     }
       ul{      
         list-style:none;
@@ -2551,8 +2563,7 @@ span .currencySymbol {
           font-weight:normal;
           margin:0;
           padding:0;
-          font-size:50%;
-          font-family:HelveticaNeueW01-45Ligh;        
+          font-size:40%;  
 
         }
       }
@@ -2562,12 +2573,12 @@ span .currencySymbol {
         outline: none;
         position:absolute;
         font-weight:lighter;
-        font-family:HelveticaNeueW01-45Ligh;        
-        font-size:0.8em;
+        font-size:70%;
         top:0;
         right:0;
           &.secondary{
             padding: 8px 6%;   
+            font-size:60%;
           }
       }
   }
@@ -2580,20 +2591,23 @@ span .currencySymbol {
     width: 60%;
     position: absolute;
     left:0;
-    bottom:20px;
+    top:50%;
+    margin-top:-1.5vw;
+
     span {
       position: absolute;
       left: 55px;
       top: 0;
     }
     h4 {
+      font-size:110%;
       color:$shopHeader;
       margin-bottom: 0;
-      font-family: "Co Text W01 Regular";
+      font-family: "Co Text W01 Bold";
       float: left;
       margin-top: 0;
       padding-top: 0;
-      line-height: 50px;
+      line-height: 3vw;
       margin-left: 2%;
     }
   }
@@ -3113,13 +3127,18 @@ button.preodayButton.noclick{
 }
 
 
-@media (min-width:768px) and (max-width:900px){
+@media (min-width:899px) and (max-width:1200px) {
   #featureModal{
-    font-size:90% !important;
+    font-size: 2.5vw; 
 
-    .rightWrapper{
-        min-width:50%;
-    }
+  }
+}
+
+
+@media (max-width:900px) {
+  #featureModal{
+    font-size: 3vw; 
+
   }
 }
 

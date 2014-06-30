@@ -38,8 +38,7 @@
                     <li ng-show="feature.upfrontPrice>0">+ &pound;{{feature.upfrontPrice}} <?= _("one-off payment")?></li>
                     <li>+ <?= _("VAT")?></li>
                   </ul>
-                  <button ng-show="!isFeatureInstalled(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >BUY</button>
-                  <button ng-show="isFeatureInstalled(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">INSTALLED</button>
+                  <button ng-show="!isFeatureInstalled(feature)" class='preodayButton' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" >BUY</button>                  
                 </div>
                 <div class='priceWrapper' ng-show="isFeatureInstalled(feature) && getFeatureStatus(feature) != 'TRIAL' ">
                   <div class='price'>£{{feature.subscriptionPrice}}/month</div>                
@@ -64,13 +63,13 @@
     </div>
   </div>
 
-  <div id="featureModal" class="reveal-modal medium animatable slide-in-bottom" data-reveal>
+  <div id="featureModal" class="reveal-modal large animatable slide-in-bottom" data-reveal>
     <div class='header'>
       <div class='leftWrapper'>
         <img ng-src='{{selectedFeature.feature.icon}}'/>      
         <h4>{{selectedFeature.feature.name}}</h4>
-      </div>
-      <div class='rightWrapper priceWrapper' ng-show="selectedFeature.feature.active && (selectedFeature.feature.trialPeriod == 0 || getExpiryDate(selectedFeature.feature) != 0)  && !isFeatureOwned(feature)  ">
+      </div>        
+      <div class='rightWrapper priceWrapper' ng-show="selectedFeature.feature.active && (selectedFeature.feature.trialPeriod == 0 || getExpiryDate(selectedFeature.feature) != 0)  && !isFeatureOwned(selectedFeature.feature)  ">
         <div class='price'>£{{selectedFeature.feature.subscriptionPrice}}/month</div>                
         <ul>
           <li ng-show="selectedFeature.feature.upfrontPrice>0">+ &pound;{{selectedFeature.feature.upfrontPrice}} <?= _("one-off payment")?></li>
@@ -78,6 +77,14 @@
         </ul>
         <button ng-show="!isFeatureInstalled(selectedFeature.feature)" class='preodayButton' data-reveal-id="startPurchaseDialog">BUY</button>
         <button ng-show="isFeatureInstalled(selectedFeature.feature)" class='preodayButton secondary noclick' >INSTALLED</button>        
+      </div>
+      <div class='rightWrapper priceWrapper' ng-show="isFeatureInstalled(selectedFeature.feature) && getFeatureStatus(selectedFeature.feature) != 'TRIAL' ">
+        <div class='price'>£{{selectedFeature.feature.subscriptionPrice}}/month</div>                
+        <ul>
+          <li ng-show="selectedFeature.feature.upfrontPrice>0">+ &pound;{{selectedFeature.feature.upfrontPrice}} <?= _("one-off payment")?></li>
+          <li>+ <?= _("VAT")?></li>
+        </ul>
+        <button class='preodayButton secondary noclick' >INSTALLED</button>        
       </div>
       <div class='comingSoon' ng-show="!selectedFeature.feature.active">
           <button ng-show="!isFeatureOwned(feature)" class='preodayButton secondary noclick' >COMING SOON</button>
@@ -94,9 +101,11 @@
       <div class='clearfix'></div>
     </div>
     <div class='content'>
+      <div class='topContent'>
         <img ng-show="currentScreenshot<selectedFeature.feature.promoImgs.length-1"  class='chevron chevronRight' ng-click="showNextScreenshot()" src='/img/chevron-right.png'/>
         <img ng-show="currentScreenshot>0"  class='chevron chevronLeft' ng-click="showPreviousScreenshot()" src='/img/chevron-left.png'/>
         <img ng-src='{{getScreenshot()}}' class='screenshot'/>
+      </div>
         <h6><?echo _("Features")?></h6>
         <ul>
           <li ng-repeat='descriptionFeature in selectedFeature.feature.descriptionFeatures'> {{descriptionFeature}}</li>
