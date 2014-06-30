@@ -16,6 +16,10 @@ body{
 .title-white{
   color: #fff;
   margin-bottom: 0px;
+  font-size: 100%;
+  line-height: 50px;
+  position: relative;
+  padding-left: 40px;
 }
 
 /**********Navbar************/
@@ -640,10 +644,12 @@ span.multiSelect{
 
 .icon-know-customers{
   background: url("/img/KYC-icon-white-reverse.png") left center no-repeat;
-  float: left;
-  width: 30px;
-  height: 31px;
-  margin-right: 10px;
+  width:30px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -15px;
+  height: 30px;
 }
 
 .checkboxStyle input[type=checkbox] {  
