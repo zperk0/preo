@@ -31,7 +31,7 @@ angular.module('kyc.directives').
 
           if ( ng.chart.value.modal ) {
           
-            $modal.open({
+            var mod = $modal.open({
               templateUrl: modal_url('chart'),
               windowClass: 'modal-preoday',
               controller: function( $scope ) {
@@ -56,9 +56,16 @@ angular.module('kyc.directives').
                   
                   option.active = true;
                   $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {data:option.data});
-                }
+                }             
               }
             });
+            
+            mod.opened.then(function(){
+              setTimeout(function(){              
+                  $(".modal-preoday").addClass("active");
+                  console.log("ho!")
+              },1)
+            }) 
           }
         };
 

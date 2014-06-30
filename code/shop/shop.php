@@ -30,10 +30,10 @@
                 <img ng-src='{{feature.icon}}'/>
             </div>
             <div class='premiumFeatureBottom'>
-                <h4 class='helveticaneueWMedi' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal"><span ng-show='feature.showAppTitle' > My order app </span>{{feature.name}}</h4>
+                <h4  ng-click="setSelectedFeature($index)" data-reveal-id="featureModal"><span ng-show='feature.showAppTitle' > My order app </span>{{feature.name}}</h4>
                 <p>{{feature.shortDescription}}</p> 
                 <div class='priceWrapper' ng-show="feature.active && (feature.trialPeriod == 0 || getExpiryDate(feature) != 0) && !isFeatureOwned(feature) ">
-                  <div class='price helveticaneueWMedi'>£{{feature.subscriptionPrice}}/month</div>                
+                  <div class='price '>£{{feature.subscriptionPrice}}/month</div>                
                   <ul>
                     <li ng-show="feature.upfrontPrice>0">+ &pound;{{feature.upfrontPrice}} <?= _("one-off payment")?></li>
                     <li>+ <?= _("VAT")?></li>
@@ -42,7 +42,7 @@
                   <button ng-show="isFeatureInstalled(feature)" class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal">INSTALLED</button>
                 </div>
                 <div class='priceWrapper' ng-show="isFeatureInstalled(feature) && getFeatureStatus(feature) != 'TRIAL' ">
-                  <div class='price helveticaneueWMedi'>£{{feature.subscriptionPrice}}/month</div>                
+                  <div class='price'>£{{feature.subscriptionPrice}}/month</div>                
                   <ul>
                     <li ng-show="feature.upfrontPrice>0">+ &pound;{{feature.upfrontPrice}} <?= _("one-off payment")?></li>
                     <li>+ <?= _("VAT")?></li>
@@ -71,7 +71,7 @@
         <h4>{{selectedFeature.feature.name}}</h4>
       </div>
       <div class='rightWrapper priceWrapper' ng-show="selectedFeature.feature.active && (selectedFeature.feature.trialPeriod == 0 || getExpiryDate(selectedFeature.feature) != 0)  && !isFeatureOwned(feature)  ">
-        <div class='price helveticaneueWMedi'>£{{selectedFeature.feature.subscriptionPrice}}/month</div>                
+        <div class='price'>£{{selectedFeature.feature.subscriptionPrice}}/month</div>                
         <ul>
           <li ng-show="selectedFeature.feature.upfrontPrice>0">+ &pound;{{selectedFeature.feature.upfrontPrice}} <?= _("one-off payment")?></li>
           <li>+ <?= _("VAT")?></li>

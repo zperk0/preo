@@ -109,7 +109,7 @@
 											 </p>
 											<?}?>				
 
-								<p><button class='shopButton'> <a href="<?echo $_SESSION['path']?>/shop"> <?echo _("Store");?> </a> </button></p>
+								<p><button class='shopButton'> <a href="<?echo $_SESSION['path']?>/shop"> <?echo _("STORE");?> </a> </button></p>
 							</div>
 						</section>
 					</div>

@@ -2346,7 +2346,7 @@ span .currencySymbol {
           margin:0;
           padding:0;
           font-size:70%;
-          font-family:HelveticaNeueW01-45Ligh;        
+        
 
         }
       }
@@ -2356,7 +2356,7 @@ span .currencySymbol {
         outline: none;
         position:absolute;
         font-weight:lighter;
-        font-family:HelveticaNeueW01-45Ligh;        
+        
         font-size:0.8em;
         top:0;
         right:0;
@@ -2405,7 +2405,7 @@ span .currencySymbol {
 .premiumFeatureWrapper {
   min-width:280px;
   margin-bottom: 30px;  
-  min-height:444px;
+  min-height:470px;
 }
 
 .premiumFeatureTop {
@@ -2456,14 +2456,16 @@ span .currencySymbol {
 .premiumFeatureBottom {
   background: white;
   padding: 20px;
+  font-family:'Helvetica';
 
   
   h4 {    
     font-weight: bold;
     font-size: 0.8em;
-    margin-bottom: 0;
+    margin-bottom: 8px;
     padding-bottom: 0;
-     color:$shopHeader;
+    font-family:'Helvetica';
+    color:$shopHeader;
 
      &:hover{
       color:$premium;
@@ -2475,7 +2477,7 @@ span .currencySymbol {
     overflow: hidden;
     font-size: 75%;
     text-overflow:hidden;
-    color:$shopText;
+    color:$shopHeader;
     max-height:38px;
   }
   
@@ -2890,6 +2892,7 @@ span .currencySymbol {
       position:absolute;
       top:30px;
       right:30px;
+      font-family: helvetica;
 
         .month {
           color:white;
@@ -2906,7 +2909,7 @@ span .currencySymbol {
           border: 1px solid #ccc;
           margin: -2px 0;
           z-index: 2;
-          font-size: 2em;
+          font-size: 2.5em;
           color: black;
           text-align: center;
           line-height: 70px;

@@ -11,8 +11,7 @@ angular.module('kyc.charts')
         var repeatedCustomers = [];
     }
 
-	function setData(order,minDate,maxDate){
-        console.log(minDate,typeof minDate);
+	function setData(order,minDate,maxDate){   
         var minTimestamp = minDate.getTime();
         var maxTimestamp = maxDate.getTime();
         var orderData = new Date(order.created);
