@@ -109,7 +109,7 @@
   <script src="/code/kyc/js/app.js"></script>
   <script src="/code/kyc/js/services/chart.js"></script>
   <script src="/code/kyc/js/services/grid.js"></script>
-  <script src="/code/kyc/js/services/ajaxinterceptor.js"></script>
+  <script src="/code/kyc/js/services/ajaxInterceptor.js"></script>
   <script src="/code/kyc/js/services/outlets.js"></script>
   <script src="/code/kyc/js/services/pusher.js"></script>
   <script src="/code/kyc/js/services/stream.js"></script>

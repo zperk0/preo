@@ -21,16 +21,17 @@ angular.module('accountSettings.controllers')
 	    	});  
         }                       
     });
-
+    
+      
     var saveStripeCard = function(){          
-      console.log($scope.card);            
-        Stripe.card.createToken({
-          name: $scope.card.name,
-          number :$scope.card.number,
-          cvc : $scope.card.ccv,
-          exp_month : $scope.card.expmonth,
-          exp_year : $scope.card.expyear
-        }, stripeResponseHandler);
+      
+      Stripe.card.createToken({
+        name: $scope.card.name,
+        number :$scope.card.number,
+        cvc : $scope.card.ccv,
+        exp_month : $scope.card.expmonth,
+        exp_year : $scope.card.expyear
+      }, stripeResponseHandler);
     }
     
 
@@ -40,6 +41,7 @@ angular.module('accountSettings.controllers')
   	};
 
   	$scope.saveChanges = function(){  		    
+      $scope.errorMessage = "";
       $scope.triedSubmit = true;  
       $scope.isPosting = true;
       if (!$scope.paymentForm.$valid) {            
