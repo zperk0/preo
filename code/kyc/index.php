@@ -7,11 +7,10 @@
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 ?>
-
-  <link rel="stylesheet" href="/bower_components/gridster/dist/jquery.gridster.min.css">
+  
   <link rel="stylesheet" href="/code/kyc/js/directives/gridster/gridster.css">  
-  <link rel="stylesheet" href="/code/kyc/css/app.css"/>  
   <link rel="stylesheet" href="/code/kyc/js/directives/multiselect/multiselect.css"/>  
+  <link rel="stylesheet" href="/code/kyc/css/app.css"/>    
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div ng-app="kyc" ng-controller='MenuCtrl'>  
@@ -106,10 +105,7 @@
 </div>
   
   <script src="//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" type="text/javascript"></script>
-  <script src="/js/angular_all.min.js"></script>  
-  <script src="/bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
-  <script src="/bower_components/gridster/dist/jquery.gridster.min.js"></script>
-  <script src="/bower_components/highcharts/highcharts.js"></script>
+  <script src="/js/angular_all.min.js"></script>    
   <script src="/code/kyc/js/app.js"></script>
   <script src="/code/kyc/js/services/chart.js"></script>
   <script src="/code/kyc/js/services/grid.js"></script>

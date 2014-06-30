@@ -16,18 +16,20 @@ module.exports = function(grunt) {
               'js/foundation/foundation.forms.js', 'js/foundation/foundation.placeholder.js','js/foundation/foundation.reveal.js','js/foundation/foundation.section.js',
               'js/foundation/foundation.tooltips.js','js/foundation/foundation.topbar.js','js/foundation/foundation.datepicker.js','js/foundation/foundation.abide.js',
               'js/jquery.noty-full-min.js','js/jsColor/jscolor.js','js/form.js','js/tweet.js','js/timepicker.js','js/jquery-ui-1.10.3.custom.min.js',              
-              'js/autoNumeric.js','js/multi-select.js','js/tableSlide.js','js/js-actual.js','js/googleplus.js','js/general.js'],
+              'js/autoNumeric.js','js/multi-select.js','js/tableSlide.js','js/js-actual.js','js/googleplus.js','bower_components/gridster/dist/jquery.gridster.min.js',
+              'bower_components/highcharts/highcharts.js',
+              'js/general.js'],
         dest: 'js/all_scripts.min.js'
       },
       angular:{
-        src: ['bower_components/angular/angular.min.js','bower_components/angular-resource/angular-resource.min.js',
-              'bower_components/angular-route/angular-route.min.js'],
+        src: ['bower_components/angular/angular.min.js','bower_components/angular-resource/angular-resource.min.js','bower_components/angular-foundation/mm-foundation.min.js',
+              'bower_components/angular-foundation/mm-foundation-tpls.min.js', 'bower_components/angular-route/angular-route.min.js','bower_components/angular-foundation/mm-foundation-tpls.min.js'],
         dest: 'js/angular_all.min.js'
       }
     },
     cssmin: {
       minify: {              
-        src: ['css/normalize.css', 'css/foundation.css', 'css/app.css'],
+        src: ['css/normalize.css', 'css/foundation.css', 'css/jquery.gridster.min.css','css/app.css'],
         dest: 'css/all_css.min.css',        
       }
     },

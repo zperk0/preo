@@ -156,7 +156,6 @@
 </div>
 </div> <!-- End app -->
   <script src="/js/angular_all.min.js"></script>  
-  <script src="/bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
   <script type="text/javascript" src="/code/shop/app.js"></script>
 
   <script type="text/javascript">
