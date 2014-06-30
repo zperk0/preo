@@ -22,6 +22,8 @@ $mainDark:#2e70b7;
 $error:#e30f4d;
 $shopHeader:#46535d;
 $shopText:#636363;
+$dashboardPremiumLight:#f1f0f2;
+
 
 h1, h2, h3 {
   -webkit-font-smoothing: subpixel-antialiased;
@@ -887,17 +889,17 @@ h1 i.icon-question-sign, h4 i.icon-question-sign {
 }
 
 .menuTable .menuField:focus, .eventTable .eventField:focus, .userTable .userField:focus, .outletTable .outletField:focus {
-  background: #F1F0F2 !important;
+  background: $dashboardPremiumLight !important;
 }
 
 .mdTable {
   .mdField:focus, .mdTDTPrice input:focus {
-    background: #F1F0F2 !important;
+    background: $dashboardPremiumLight !important;
   }
 }
 
 #advanced-setting input, .delivery-tab-content input {
-  background: #F1F0F2 !important;
+  background: $dashboardPremiumLight !important;
 }
 
 #mealDealConfigForm .headerTable {
@@ -992,7 +994,7 @@ tr {
 }
 
 .menuEdit input, .eventEdit input, .userEdit input, .outletEdit input, .mdEdit input {
-  background: #F1F0F2 !important;
+  background: $dashboardPremiumLight !important;
   color: #48535D !important;
 }
 
@@ -1601,11 +1603,20 @@ p.venueCode {
       color: $premium !important;
     }
     p{
-      margin-left:5px;
-      font-size:0.9em; 
-      line-height:1.3em;
+      margin-left:10px;
+      margin-bottom:5px;
+      font-size:1em; 
+      line-height:1.5em;
+
       a{
-        color:$premium;
+        font-family: Helvetica Neue, HelveticaNeueW01-45Ligh,HelveticaNeueW01-65Medi, Helvetica;
+        font-weight:lighter;
+        color:$dashboardPremiumLight;
+        letter-spacing:1px;
+        padding-left:10px;
+        &:hover{
+          color:$premium;
+        }
       }
     }
   }
@@ -2818,7 +2829,7 @@ span .currencySymbol {
     }
 
     input {
-      background: #F1F0F2 !important;
+      background: $dashboardPremiumLight !important;
       font-family: HelveticaNeueW01-45Ligh !important;
       color: #48535D !important;
       font-size: inherit !important;
@@ -3011,27 +3022,20 @@ button.preodayButton.noclick{
 
 .featureHolder{
   position:relative;
+  
   .featureIcon{
-    width: 20px;
-    position:absolute;
-    top:5px;
-    left:5px;  
+    width: 25px;
+    position:relative;    
     background:$premium;
-    border-radius:1px;
+    border-radius:3px;
     margin-top:0 !important;
     filter: brightness(100%) !important;
     -webkit-filter: brightness(100%) !important;
     -moz-filter: brightness(100%) !important;
     -o-filter: brightness(100%) !important;
     -ms-filter: brightness(100%) !important;
-    
+  
   }
-
-  .featureName{
-    padding-left:30px !important;
-    padding-right:10px !important;  
-  }
-
 }
 
 .helveticaneueWMedi{
