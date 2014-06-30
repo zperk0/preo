@@ -101,7 +101,7 @@
 											$accountFeatures = json_decode($result);											
 											if(is_array($accountFeatures) && count($accountFeatures) > 1)
 												foreach($accountFeatures as $feat) { ?>
-													<p data-feature='<? echo $feat->featureId ;?>' class='featureHolder'><img class='featureIcon'/><a href="<?echo $_SESSION['path']?>/accountSettings#/subscription"  class='featureName'></a></li>												
+													<p data-feature='<? echo $feat->featureId ;?>' class='featureHolder'><img class='featureIcon'/><a href="#"  class='featureName'></a></li>												
 											<?} else{?>											
 												<p><? echo ("You don't currently have any active Premium Features on your account.")?></p><br/>
 												<p><? echo ("Why not check out our")?><a href="<?echo $_SESSION['path']?>/shop"> <?echo _("Available Premium Features");?></a>

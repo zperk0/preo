@@ -4126,16 +4126,18 @@ $(document).ready(function() {
 	$('.featureHolder').each(function (){
 			var featureId = $(this).data("feature");			
 			var displayName = "";
-			console.log(this)
+			
 			for (var i=0;i<features.length;i++){
 					var feature = features[i]
 					if (feature.id == featureId){
+						if (feature.link === undefined || feature.link === "")
+							feature.link = "accountSettings#/subscription"
 						displayName = feature.name;
 
 						if (feature.showAppTitle){
 							displayName = "My order app " + feature.name; 
 						}
-						$(this).children(".featureName").html(displayName);						
+						$(this).children(".featureName").attr("href",feature.link).html(displayName);						
 						$(this).children(".featureIcon").attr("src",feature.icon);
 						break;
 					}

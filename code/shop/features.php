@@ -12,7 +12,7 @@ var features = [
 													<?echo json_encode(_("1 set of changes per month"))?>],
 		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
 		icon:'/img/asisstant-icon.png',
-		trialPeriod:0,
+		trialPeriod:0,		
 		active:true
 	},
 	{
@@ -61,6 +61,7 @@ var features = [
 													<?echo json_encode(_("Excel downloads	"))?>],
 		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
 		icon:'/img/KYC-icon.png',
+		link:'kyc',
 		active:true
 	}	
 ];

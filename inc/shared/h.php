@@ -96,9 +96,9 @@
 									<?  //get the features list we have for this acocunt 
 										  $accountId = $_SESSION['account_id'];	  
 											$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
-											$accountFeatures = json_decode($result);											
+											$accountFeatures = json_decode($result);																						
 											foreach($accountFeatures as $feat) { ?>
-												<li  data-feature='<? echo $feat->featureId ;?>' class='menu featureHolder'><img class='featureIcon'/><a href="<?echo $_SESSION['path']?>/accountSettings#/subscription"  class='featureName'></a></li>												
+												<li  data-feature='<? echo $feat->featureId ;?>' class='menu featureHolder'><img class='featureIcon'/><a href="#"  class='featureName'></a></li>												
 									<?}?>												
 								
 									<li><a href="<?echo $_SESSION['path']?>/shop"><?echo _("+ Store");?></a></li>
