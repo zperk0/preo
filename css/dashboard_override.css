@@ -23,6 +23,6 @@ html {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdd4e5', endColorstr='#c6dcec',GradientType=1 ) !important; /* IE6-9 */
 }
 
-.top-bar-section ul li a, .toggle-topbar, .expanded li{
+.top-bar-section ul li a, .toggle-topbar, .expanded li,.featureHolder.menu{
 	background: #C7DCEC !important;
 }

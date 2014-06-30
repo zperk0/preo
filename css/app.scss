@@ -23,6 +23,7 @@ $error:#e30f4d;
 $shopHeader:#46535d;
 $shopText:#636363;
 $dashboardPremiumLight:#f1f0f2;
+$menuBg:#F7F7F7;
 
 
 h1, h2, h3 {
@@ -293,7 +294,7 @@ footer {
 /*top bar customization*/
 
 .contain-to-grid, .top-bar, .top-bar-section ul li a, .toggle-topbar, .expanded li {
-  background: #F7F7F7 !important;
+  background: $menuBg !important;
 }
 
 .top-bar-section a, .toggle-topbar a {
@@ -392,7 +393,8 @@ form {
   border: 1px solid #3AA2DC;
   box-shadow: 0 0 0 !important;
   -webkit-box-shadow: 0 0 0  !important;
-  font-family:HelveticaNeueW01-45Ligh !important;
+  font-family:helvetica;
+  font-weight:lighter;
 
   &.premium{
     background-color:$premium !important;
@@ -1103,7 +1105,7 @@ tr {
   select {
     margin-top: 9px !important;
     font-size: 15px !important;
-    background: #F7F7F7 !important;
+    background: $menuBg !important;
   }
 }
 
@@ -3024,8 +3026,26 @@ button.preodayButton.noclick{
   position:relative;
   
   &.menu{
-    
+    background:$menuBg;
+    min-width:235px;
+
+    .featureIcon{
+      margin:0px 5px;
+
+    }
+
+    a{
+
+        display: inline;
+        background: none !important;
+        padding: 0 !important;
+        line-height: 2.2em !important; 
+
+    }
+
   }
+
+
 
   .featureIcon{
     width: 25px;
