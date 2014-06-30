@@ -2328,7 +2328,7 @@ span .currencySymbol {
 }
 
 .shopWrapper{
-
+  color:$shopHeader;
   .comingSoon{
     
     button{
@@ -2680,6 +2680,7 @@ span .currencySymbol {
 
 .accountSettings{
     padding-top:50px;
+    color:$shopHeader;
   
   .content{
       width:70%;
@@ -2805,6 +2806,10 @@ span .currencySymbol {
     td{
       width:auto !important;
       vertical-align: middle;
+
+      button.preodayButton{
+        margin:8px 0;
+      }
 
     }
 
