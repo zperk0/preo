@@ -65,9 +65,8 @@
 
   <div id="featureModal" class="reveal-modal large animatable slide-in-bottom" data-reveal>
     <div class='header'>
-      <div class='leftWrapper'>
-        <img ng-src='{{selectedFeature.feature.icon}}'/>      
-        <h4>{{selectedFeature.feature.name}}</h4>
+      <div class='leftWrapper'>        
+        <h4><img ng-src='{{selectedFeature.feature.icon}}'/>{{selectedFeature.feature.name}}</h4>
       </div>        
       <div class='rightWrapper priceWrapper' ng-show="selectedFeature.feature.active && (selectedFeature.feature.trialPeriod == 0 || getExpiryDate(selectedFeature.feature) != 0)  && !isFeatureOwned(selectedFeature.feature)  ">
         <div class='price'>£{{selectedFeature.feature.subscriptionPrice}}/month</div>                

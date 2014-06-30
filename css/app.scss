@@ -2330,12 +2330,13 @@ span .currencySymbol {
 .shopWrapper{
 
   .comingSoon{
-    margin-top:20px;
+    
     button{
       letter-spacing: normal;
       font-size: 90%;      
       width: 100%;
       padding: .6em .85em;
+      margin-bottom:25px;
     }
   }
 
@@ -2510,21 +2511,15 @@ span .currencySymbol {
     font-size: 80%;
   }
   .header {         
-    position:relative;
-
-    img {
-      width:3vw;
-      background: $premium;
-      border-radius: 0.5vw;
-      float:left;
-    }
-   
+    position:relative;   
+    margin-top:1vw;
   }
+
   .content{
     font-size:60%;
     border-top: 1px solid gray;
-    margin-top:20px;
-    padding-top:30px;
+    margin-top:1.5vw;
+    padding-top:2.5vw;
 
      .screenshot {
       width: 600px;
@@ -2534,9 +2529,13 @@ span .currencySymbol {
     }  
   }
   .comingSoon{
-      width:30%;
-      max-width:200px;
+      width:auto;
+      font-size: 60%;
       float:right;
+
+      button{
+        margin-bottom:0;
+      }
 
   }
 
@@ -2575,7 +2574,7 @@ span .currencySymbol {
         font-weight:lighter;
         font-size:70%;
         top:0;
-        right:0;
+        right:0;        
           &.secondary{
             padding: 8px 6%;   
             font-size:60%;
@@ -2606,9 +2605,19 @@ span .currencySymbol {
       font-family: "Co Text W01 Bold";
       float: left;
       margin-top: 0;
-      padding-top: 0;
-      line-height: 3vw;
-      margin-left: 2%;
+      padding-top: 0;          
+      padding-left:3.2vw;
+
+      img {
+        width:3vw;
+        background: $premium;
+        border-radius: 0.5vw;
+        position:absolute;
+        left:0;
+        top:50%;
+        margin-top:-1.5vw;
+
+      }
     }
   }
 
@@ -3138,7 +3147,11 @@ button.preodayButton.noclick{
 @media (max-width:900px) {
   #featureModal{
     font-size: 3vw; 
-
+      .leftWrapper{
+        h4{
+          font-size:80%;
+        }
+      }
   }
 }
 
