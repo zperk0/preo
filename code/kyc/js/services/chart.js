@@ -149,16 +149,18 @@ angular.module('kyc.services', []).
         	return {
 				options: {
 		            chart: {
-		                type: 'pie',
-				       	margin: [0, 0, 0, 0],
-				        spacingTop: 0,
-				        spacingBottom: 0,
-				        spacingLeft: 0,
-				        spacingRight: 0	                
+	                type: 'pie',					       	
+					        events: {
+				            load: function(event) {					  	     
+				            		setTimeout(function(){
+				            			$('.highcharts-legend-item rect').attr('rx', '20').attr('ry', '20').attr('width','16').attr('height','16');	
+				            		},100);				                
+					            }
+						        }   
 		            },
 		            tooltip: {
-				    	borderColor: '#DBDBD9',
-				    	borderWidth: 1,
+						    	borderColor: '#DBDBD9',
+						    	borderWidth: 1,
 		            	backgroundColor: '#DBDBD9',
 		                formatter: function() {
 		                    return '<b>'+ this.y +'</b>';
@@ -168,24 +170,21 @@ angular.module('kyc.services', []).
 		                 enabled: false
 		            },
 		            plotOptions: {
-		                pie: {
-		                    shadow: false,
-		                    center: [150, 130],
+		                pie: {		                    
+		                    center: ["25%","50%"],
 		                }
 		            },		   
-		            legend: {
+		            legend: {		            				            		
 		                enabled: true,
-		                layout: 'vertical',
-		                align: 'right',
-		                center: [150, 130],
-		                width: 200,
-		                verticalAlign: 'top',
-		                y: 80,
-		                x: -30,
+		                layout: 'vertical',		                
+		                verticalAlign: 'middle',
+		                 x: 70,
 		                borderWidth: 0,
 		                useHTML: true,
 		                labelFormatter: function() {
-		                    return '<div style="text-align: left; width:130px;float:left; font-weight: 400; font-size: 13px; margin-bottom: 10px">' + this.name + '</div>';
+		                		var style = 'font-weight: normal; font-size: 1.5em; margin-bottom: 12px; margin-top:-2px; font-family:Co Text W01 Light; padding-left:5px;';
+		                		style += "color:#46545d;"
+		                    return '<div style="'+style+'">' + this.name + '</div>';
 						}
 		            },	                    
 	        	},          
@@ -197,11 +196,10 @@ angular.module('kyc.services', []).
 	                    text: ''
 	                }
 	            },
-	            series: [{
-	                name: 'Browsers',
+	            series: [{	                
 	                data: value.data,
-	                size: '55%',
-	                innerSize: '45%',
+	                size: '80%',
+	                innerSize: '65%',
 	                showInLegend:true,
 	                dataLabels: {
 	                    enabled: false
@@ -230,11 +228,7 @@ angular.module('kyc.services', []).
 	                            format: '{point.y:.1f}'
 	                        }
 	                    }
-	                },/*
-	                tooltip: {
-	                    pointFormat: '<b>{point.y:.2f}%</b>'
-	                },*/
-
+	                },
 		            tooltip: {
 				    	borderColor: '#DBDBD9',
 				    	borderWidth: 1,
@@ -266,7 +260,14 @@ angular.module('kyc.services', []).
 	                pointWidth: 200,
 	                name: 'Customers',
 	                showInLegend: false,
-	                colorByPoint: true,
+	                colorByPoint: false,
+	                color: {
+                    linearGradient: { x1: 1, y1: 1, x2: 0, y2: 1},
+                    stops: [
+                        [0, '#523E8A'],
+                        [1, '#1AA1DB']
+                    ]
+                },
 	                data: value.data
 	            }]
         	}

@@ -1,11 +1,11 @@
 angular.module('kyc.charts')
-.factory('CustomersBar',['ChartType','Colors','ChartHelper', function(ChartType,Colors,ChartHelper) {
+.factory('CustomersBar',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
 
 	var type = ChartType.COLUMN;
     var title = 'Customers (Bar)'
     var data = [
-        {name:_tr("New"),y:0,color:Colors[0]},
-        {name:_tr("Returning"),y:0,color:Colors[1]}    
+        {name:_tr("New"),y:0},
+        {name:_tr("Returning"),y:0}    
     ]
     var newCustomers = [];
     var repeatedCustomers = [];
@@ -33,8 +33,8 @@ angular.module('kyc.charts')
 
     function clearData(){
         data = [
-            {name:_tr("New"),y:0,color:Colors[0]},
-            {name:_tr("Returning"),y:0,color:Colors[1]}    
+            {name:_tr("New"),y:0},
+            {name:_tr("Returning"),y:0}    
         ]
         newCustomers = [];
         repeatedCustomers = [];

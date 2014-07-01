@@ -6,6 +6,9 @@ body{
   font-weight: normal;  
 }
 
+#dashboard{
+  margin-bottom:80px;
+}
 
 form label, label, .multiSelect .button{
   color:#46545D !important;
@@ -119,17 +122,15 @@ form label, label, .multiSelect .button{
 }
 
 #container-search, #content-list{
-  background-color: #fff
+  background-color: #fff;
+  padding-bottom: 30px;
 }
 
 #container-search > .container{
   height: 85px;
 }
 
-#content-list{
-  padding: 0px;
-  margin-top: 30px;
-}
+
 
 .widget{
   background-color: #fff;
@@ -174,30 +175,6 @@ form label, label, .multiSelect .button{
 }
 
 
-/***** Socials Network ******/
-.social-network{
-  background: url(../img/socials.png) no-repeat;
-  width: 44px;
-  height: 44px;  
-  display: block;
-}
-
-.social-network.facebook{
-  background-position: -51px -1px ;
-}
-
-.social-network.linkedin {
-  background-position: -101px -1px ;
-}
-
-.social-network.twitter {
-  background-position: -1px -1px ;
-}
-
-.ul-socials li{
-  margin: 0 5px;
-}
-
 
 /***** End Socials Network ******/
 
@@ -208,9 +185,6 @@ form label, label, .multiSelect .button{
   position: relative;
 }
 
-.container-partials .actions-chart{
-  height: 800px;
-}
 
 .content-actions{
   display: inline-block;
@@ -324,12 +298,15 @@ form label, label, .multiSelect .button{
   width: 100%
 }
 
-
+.topSpacing{
+  margin-top:30px;
+}
 
 /****** Flip Effect *******/
 
 /* entire container, keeps perspective */
 .flip-container {
+
   perspective: 1000;
   -webkit-perspective: 1000;
   -moz-perspective: 1000;
@@ -337,9 +314,6 @@ form label, label, .multiSelect .button{
   -o-perspective: 1000;  
 }
 
-.content-chart{
-  padding: 15px;
-}
   /* flip the pane when hovered */
   .flip-container.active .flipper {
     transform: rotateY(180deg);
@@ -352,6 +326,10 @@ form label, label, .multiSelect .button{
 .flip-container, .front, .back {
   width: 100%;
   height:100%;
+}
+
+.flipper, .front{
+  min-height:500px;
 }
 
 /* flip speed goes here */
@@ -368,8 +346,8 @@ form label, label, .multiSelect .button{
   -moz-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;      
-
   position: relative;
+  margin-bottom:100px;
 }
 
 /* hide back of pane during swap */
@@ -386,9 +364,11 @@ form label, label, .multiSelect .button{
   left: 0;
 }
 
+
 /* front pane, placed above back */
 .front {
   z-index: 2;
+  position:relative; /* front doesn't need to be absolute*/
 }
 
 /* back, initially hidden pane */
@@ -483,14 +463,10 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
 
 #content-table{
   padding: 0 50px;
-  height: 600px; 
   overflow-y: scroll;
-  margin-bottom: 50px;
+  max-height: 800px;
 }
 
-.container-partials{
-  height: 800px;
-}
 
 .input-search{
   font-size: 14px !important;
