@@ -11,16 +11,55 @@
 					</a>
 				</div>
 				<div id="content-table">
-					<table class="table table-striped table-stream table-list table-condensed">
+					<table class="table table-striped table-list table-stream table-condensed">
+					<thead>
+					  	<tr>					  		
+					  		<th ng-click="orderBy = 'status'; direction=!direction">
+					  			Status
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'total'; direction=!direction">
+					  			Total
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'customer'; direction=!direction">
+					  			Customer
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>					  	
+					  		<th ng-click="orderBy = 'order'; direction=!direction">
+					  			Order
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
+					  		<th ng-click="orderBy = 'time'; direction=!direction">
+					  			Time
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>					  						  	
+					  	</tr>
+					  </thead>
 					  <tbody ng-repeat="order in orders | filter:outletFilter " ng-switch on="order.active" >
 					  	<tr ng-click="activeStream(order)" ng-class="{active: order.active}">
 					  		<td width="15">
 					  			<span class="block-status {{ getStatusColor(order.status) }}">{{ getStatusName(order.status) }}</span>
 					  		</td>
-					  		<td width="100" valign="middle">&pound;{{ order.total }}</td>
-					  		<td valign="middle">{{ order.user.firstName + " " + order.user.lastName }}</td>
-					  		<td width="300" valign="middle">{{ getOrderItems(order).join(",") }}</td>
-					  		<td width="200" valign="middle">{{ order.updated | timeAgo }} </td>
+					  		<td width="100" valign="middle" class='streamPrice'>&pound;{{ order.total }}</td>
+					  		<td valign="middle" class='streamCustomer'>{{ order.user.firstName + " " + order.user.lastName }}</td>
+					  		<td width="300" valign="middle" class='streamOrder'>{{ getOrderItems(order).join(",") }}</td>
+					  		<td width="200" valign="middle" class='streamUpdated'>{{ order.updated | timeAgo }} ago </td>
 					  	</tr>
 					  	<tr ng-switch-when="true" class="result">
 					  		<td colspan="2" class="padding information">

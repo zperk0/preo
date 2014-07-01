@@ -6,6 +6,7 @@ body{
   font-weight: normal;  
 }
 
+
 form label, label, .multiSelect .button{
   color:#46545D !important;
 }
@@ -438,16 +439,30 @@ table .sort i{
 }
 
 .table-striped{
-  border-collapse: collapse;
+  border-collapse: separate !important;
+  border-radius: 5px;  
+  overflow: hidden;
+  border: 1px solid #b4b6b8; 
+
 }
 
-.table-striped, .table-striped td, .table-striped th{
-  border: 1px solid #B8BABC;
+table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type(even){
+  background-color:#fcfcfc;
 }
 
-.table-stream td{
-  border-left: 0px;
-  border-right: 0px;
+.table-striped tr:first-child th{
+  border-top:none;
+}
+
+.table-striped td:last-child,.table-striped th:last-child{
+  border-right:none;
+}
+
+.table-striped td,.table-striped th{
+  font-family:"Co Text W01 Light";
+  color: #6d6e71;
+  border-top: 1px solid #b4b6b8; 
+  border-right:1px solid #b4b6b8; 
 }
 
 .table-striped th input, .table-striped td input{
@@ -457,7 +472,7 @@ table .sort i{
 .table-striped thead tr th{
   padding: 15px;
   background-color: #F3F4F4;
-  color: #797B7D;
+  
   font-weight: 400;
 }
 
@@ -613,9 +628,6 @@ span.multiSelect{
   padding: 15px;
 }
 
-.table-stream tr.result td.information{
-  border-right: 1px solid #ccc;
-}
 
 .table-max{
   width: 100%;
@@ -702,6 +714,30 @@ span.multiSelect{
     text-align: center;  
     line-height: 15px;  
 }  
+
+.table-striped td.streamPrice{
+  font-family: "Co Text W01 Bold";
+  color:#46545d;
+  font-size:105%;
+}
+
+.table-striped td.streamCustomer{
+  font-family: "Co Text W01 Regular";
+  color:#46545d;
+  font-size:105%;
+}
+
+.table-striped td.streamOrder{
+  font-family: "Co Text W01 Regular";
+  color:#46545d;
+  font-size:85%;
+}
+
+.table-striped td.streamUpdated{
+  font-family: "Co Text W01 Light";
+  color:#939598;
+  font-size:70%;
+}
 
 .chart_3:hover{
   /* IE 8 */
