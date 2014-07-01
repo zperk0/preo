@@ -78,11 +78,11 @@
 					  						<td colspan="3">{{ item.qty +" x "+item.name}}</td>
 					  						<td width="200">&pound;{{ item.total.toFixed(2) }}</td>
 					  					</tr>
-					  					<tr ng-show="order.discount && order.discount>0">
+					  					<tr ng-show="order.discount && order.discount>0" class='streamDiscount'>
 					  						<td colspan="3">Discount</td>
 					  						<td width="200">-&pound;{{ order.discount.toFixed(2) }}</td>
 					  					</tr>
-					  					<tr>
+					  					<tr class='streamTotal'>
 					  						<td colspan="3"><b>TOTAL</b></td>
 					  						<td width="200"><b>&pound;{{ order.total.toFixed(2) }}</b></td>
 					  					</tr>
