@@ -1,19 +1,22 @@
 //shop
 var appCtrls = angular.module('shop.controllers',[]);
   
-appCtrls.controller('shopController', function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification) {    
-    $scope.currentScreenshot = 0;
+appCtrls.controller('shopController', function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification,$AjaxInterceptor) {    
 
+    $AjaxInterceptor.start(); 
+    
+    $scope.currentScreenshot = 0;
     $scope.PremiumFeatures = FEATURES;
     $scope.accountFeatures = [];
     $scope.finishedLoading = false;      
     getAccountFeatures();
     
+    
+    
     function getAccountFeatures() {
       Resources.AccountFeatures.query({accountId:ACCOUNT_ID},function(result){    
-        $scope.accountFeatures = result;
-        $scope.finishedLoading = true;         
-        console.log('accountFeatures',$scope.accountFeatures);
+        $scope.accountFeatures = result;        
+        $AjaxInterceptor.complete(); 
       });
     }
 
@@ -83,7 +86,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
               btnOk: _tr('BUY'),            
               windowClass:'medium'
             }        
-            clickOk = clickBuy;            
+            clickOk = startTrial;            
           break; 
           case "success":
             data = { 
@@ -124,42 +127,49 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
     }
 
 
-    $scope.startTrial = function(){
-      if (!$scope.acceptTerm)
-        return;
+    function startTrial (){
+    $AjaxInterceptor.start();           
       var feature = $scope.selectedFeature.feature;
       Resources.AccountFeatures.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){        
         console.log('response:',accountPayment);  
         if (accountPayment.status ===  "SUCCESS"){
           getAccountFeatures();
-          $('#successDialog').foundation('reveal', 'open');          
+          $scope.showDialog("success");
         }                         
+        $AjaxInterceptor.complete();
       },function(error){                        
-        $('#startTrialDialog').foundation('reveal', 'close');          
+        $scope.showDialog("trial");
         displayErrorNoty();
+        $AjaxInterceptor.complete();
       });
     }
     
 
      function clickBuy(){
+        console.log('starting here')
+        $AjaxInterceptor.start(); 
         var feature = $scope.selectedFeature.feature;
         Resources.AccountCard.get({accountId:ACCOUNT_ID},
           function(result){          
             
             if (result.token && result.token!=null){               
-                Resources.AccountFeatures.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){
-                        if (accountPayment.status ===  "SUCCESS"){
-                          getAccountFeatures();
-                          $scope.showDialog("success");
-                        } else {                        
-                          var response = JSON.parse(accountPayment.response);
-                          $scope.paymentFailedMessage = response.detail_message;
-                          $scope.showDialog("paymentError");
-                        }                        
-                      },function(error){                        
-                        displayErrorNoty();
+                Resources.AccountFeatures.save({accountId:ACCOUNT_ID,featureId:feature.id},
+                  function(accountPayment){
+                    $AjaxInterceptor.complete(); 
+                    if (accountPayment.status ===  "SUCCESS"){
+                      getAccountFeatures();
+                      $scope.showDialog("success");
+                    } else {                        
+                      var response = JSON.parse(accountPayment.response);
+                      $scope.paymentFailedMessage = response.detail_message;
+                      $scope.showDialog("paymentError");
+                    }                        
+                },
+                function(error){                
+                  $AjaxInterceptor.complete();         
+                  displayErrorNoty();
                 });
-                                        
+                                      
             }          
         },function(error){          
           if (error.data && error.data.status === 404){

@@ -94,14 +94,14 @@
     </div>
     <div ng-view></div>
   </div>
+  
 
-  <div class="loading" ng-show="requests">
-    <div class="background-loading"></div>
-    <div class="loading-content">
-      <img src="/img/spinner.gif" />
-    </div>
-  </div>  
-
+    <div class="loading" ng-show="requests">
+      <div class="background-loading"></div>
+      <div class="loading-content">
+        <img src="/img/spinner.gif" />
+      </div>
+    </div>  
 </div>
   
   <script src="//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" type="text/javascript"></script>
@@ -109,7 +109,7 @@
   <script src="/code/kyc/js/app.js"></script>
   <script src="/code/kyc/js/services/chart.js"></script>
   <script src="/code/kyc/js/services/grid.js"></script>
-  <script src="/code/kyc/js/services/ajaxInterceptor.js"></script>
+  <script src="/code/loader/ajaxInterceptor.js"></script>
   <script src="/code/kyc/js/services/outlets.js"></script>
   <script src="/code/kyc/js/services/pusher.js"></script>
   <script src="/code/kyc/js/services/stream.js"></script>

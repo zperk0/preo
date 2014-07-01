@@ -9,12 +9,8 @@
 ?> 
 
 
-<div ng-app="shop" ng-controller="shopController" ng-cloak class='shopWrapper'>
-  <div class='loader' ng-show="!finishedLoading">      
-      <img src='/img/spinner.gif'/>
-  </div>  
-  <div ng-show="finishedLoading">  
-  
+<div ng-app="shop" ng-controller="shopController" ng-cloak class='shopWrapper'>  
+  <div>  
     <div class='shopHeader'>
       <div class='row'>
         <h1><small>my order app </small><br/>Premium Features</h1>
@@ -132,6 +128,14 @@
   
 
 </div>
+
+  <div class="loading" ng-show="requests">
+    <div class="background-loading"></div>
+    <div class="loading-content">
+      <img src="/img/spinner.gif" />
+    </div>
+  </div>  
+
 </div> <!-- End app -->
   <script src="/js/angular_all.min.js"></script>  
   <script type="text/javascript" src="/code/shop/app.js"></script>
@@ -142,6 +146,7 @@
   <script type="text/javascript" src="/code/shop/resource.js"></script>
   <script type="text/javascript" src="/code/shop/controllers.js"></script>
   <script type="text/javascript" src="/code/notification/notification.js"></script>
+  <script type="text/javascript" src="/code/loader/ajaxInterceptor.js"></script>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 
 
