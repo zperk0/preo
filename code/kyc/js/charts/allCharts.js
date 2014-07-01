@@ -22,34 +22,20 @@ angular.module('kyc.charts')
 
     OrderService.load(prepareCharts);
 
-    function findOutlet(selectedOutlets,outletId){
-        var found = false;
-        angular.forEach(selectedOutlets,function(outlet){
-            if (!found && outlet.id == outletId)
-                found = outlet;
-        })
-        return found;
-    }
-
-    function prepareCharts(orders,minDate,maxDate,selectedOutlets){
+    function prepareCharts(orders,minDate,maxDate){
         if (!minDate)
             minDate = new Date(new Date().getTime() - (7 * 24 * 3600 * 1000));
         if (!maxDate)
             maxDate = new Date();
-        if (!selectedOutlets)
-            selectedOutlets = [];
 
             angular.forEach(charts,function(chart,key){
                 chart.clearData();
             });               
-            
             angular.forEach(orders,function(order){
-                if ( selectedOutlets.length === 0 || findOutlet(selectedOutlets,order.outletId) ){                    
-                    var created = new Date(order.created).getTime();                
-                        angular.forEach(charts,function(chart){
-                            chart.setData(order,minDate,maxDate);
-                        })  
-                }
+                var created = new Date(order.created).getTime();                
+                    angular.forEach(charts,function(chart){
+                        chart.setData(order,minDate,maxDate);
+                    })  
                 
             });
             angular.forEach(charts,function(chart,key){

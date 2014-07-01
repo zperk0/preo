@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('TimeOfOrdersPlaced',['ChartType','Colors','ChartHelper', function(ChartType,Colors,ChartHelper) {
+.factory('TimeOfOrdersPlaced',['ChartType','Colors', function(ChartType,Colors) {
 
 	var type = ChartType.PIE;
     var colorIndex = 0;    
@@ -9,8 +9,6 @@ angular.module('kyc.charts')
         {name:_tr("Before day of collection"),y:0,color:Colors[1]}
         
     ]
-    var minTimestamp = 0;
-    var maxTimestamp = 0;
 
     function clearData(){
         data = [
@@ -21,8 +19,8 @@ angular.module('kyc.charts')
     }
     
 	function setData(order,minDate,maxDate){
-        minTimestamp = minDate.getTime();
-        maxTimestamp = maxDate.getTime();
+        var minTimestamp = minDate.getTime();
+        var maxTimestamp = maxDate.getTime();
         var orderData = new Date(order.created);
         if (orderData >= minTimestamp && orderData <= maxTimestamp){
             if (order.created !== undefined && order.pickupTime !== undefined){
@@ -53,31 +51,7 @@ angular.module('kyc.charts')
         return {
             type:type,
             title:title,
-            data:getData(),
-            getPdf:getPdf,
-              getCsv:getCsv
-        }
-    }
-
-    function getCsv(){
-        var data = getData();
-        var csvData =[[title]]
-        angular.forEach(data,function(d){
-            csvData.push([d.name,d.y]) 
-        })
-        return {
-            data:csvData
-        };
-    }
-
-    function getPdf(){
-        return chartInfo = {
-            type:type,
-            title:title,
-            startDate: minTimestamp,
-            endDate: maxTimestamp,            
-            dataJson: JSON.stringify(data),
-            categories: [_tr('Day of collection'),_tr('Before day of collection')]
+            data:getData()
         }
     }
 

@@ -1,12 +1,10 @@
 angular.module('kyc.charts')
-.factory('OrdersByOutlet',['ChartType','Colors','OutletService','ChartHelper', function(ChartType,Colors,OutletService,ChartHelper) {
+.factory('OrdersByOutlet',['ChartType','Colors','OutletService', function(ChartType,Colors,OutletService) {
 
 	var type = ChartType.PIE;
 	var ordersByOutlet = {};	
     var colorIndex = 0;
     var title = 'Orders By Outlet';
-    var minTimestamp = 0;
-    var maxTimestamp = 0;
 
     function clearData(){
         colorIndex=0;
@@ -48,40 +46,8 @@ angular.module('kyc.charts')
         return {
             type:type,
             title:title,
-            data:getData(),
-            getPdf:getPdf,
-            getCsv:getCsv
+            data:getData()
         }
-    }
-
-    function getCsv(){
-        var data = getData();
-        var csvData =[[title]]
-        angular.forEach(data,function(d){
-            csvData.push([d.name,d.y]) 
-        })
-        return {
-            data:csvData
-        }
-    }
-       
-     function getPdf(){
-        return chartInfo = {
-            type:type,
-            title:title,
-            startDate: minTimestamp,
-            endDate: maxTimestamp,            
-            dataJson: JSON.stringify(getData()),
-            categories: getCategories()
-        }
-    }
-
-    function getCategories(){
-        var arr = []        
-        angular.forEach(ordersByOutlet,function(item,outletId){
-            arr.push(OutletService.getOutletName(outletId))            
-        })
-        return arr;
     }
 
     return {

@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('MenuItemPopularity',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
+.factory('MenuItemPopularity',['ChartType', function(ChartType) {
 
 	var type = ChartType.AREA;	
     
@@ -7,8 +7,8 @@ angular.module('kyc.charts')
     var title = 'Menu Item Popularity'
     
     var menuItems = {}
-    var minTimestamp = 0;
-    var maxTimestamp = 0;
+    var startDate = 0;
+    var endDate = 0;
 
     var previousSpecifiedData = [];
     var weekData = []   
@@ -86,7 +86,8 @@ angular.module('kyc.charts')
         previousYearData = [];
 
 
-    
+        startDate = -1;
+        endDate = 0;
         
         angular.forEach(menuItems[selectedItem],function(dR,key){                            
             var orderDate = Number(key)
@@ -133,7 +134,10 @@ angular.module('kyc.charts')
         yearData.sort(sortData);
         previousYearData.sort(sortData);
 
-        
+        if (data.length>0){
+            startDate = data[0][0];
+            endDate = data[data.length-1][0];
+        }   
     }   
 
     function sortData(a,b){
@@ -171,33 +175,7 @@ angular.module('kyc.charts')
             numberLeft:totalOrders,
             numberRight:getPercentage(data,previousSpecifiedData), 
             modal: getModal(),
-            items:items,
-            getPdf:getPdf,
-            getCsv:getCsv
-        }
-    }
-
-    function getCsv(){
-        var data = getData();
-        var csvData =[[getItemName(selectedItem)]]
-        angular.forEach(data,function(d){
-            csvData.push([ ChartHelper.formatDate(d[0]),d[1] ]) 
-        })
-        return {
-            data:csvData
-        };
-    }
-
-    function getPdf(){
-        return chartInfo = {
-            type:type,
-            title:title + " - " +getItemName(selectedItem),
-            startDate: minTimestamp,
-            endDate: maxTimestamp,  
-            currency:"",
-            total: totalOrders,
-            percentage:getPercentage(data,previousSpecifiedData),    
-            dataJson: JSON.stringify(getData())
+            items:items            
         }
     }
 
@@ -206,15 +184,6 @@ angular.module('kyc.charts')
         dailyOrders = {};
         totalOrders = 0;   
 
-    }
-
-    function getItemName(itemId){
-        var found = false;
-        angular.forEach(items,function(item){
-                if (item.menuItemId == itemId)
-                    found = item.name
-        })
-        return found
     }
 
 

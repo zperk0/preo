@@ -1,7 +1,8 @@
 angular.module('kyc.charts')
-.factory('CustomersBar',['ChartType','Colors','ChartHelper', function(ChartType,Colors,ChartHelper) {
+.factory('CustomersBar',['ChartType','Colors', function(ChartType,Colors) {
 
 	var type = ChartType.COLUMN;
+    var colorIndex = 0;    
     var title = 'Customers (Bar)'
     var data = [
         {name:_tr("New"),y:0,color:Colors[0]},
@@ -9,13 +10,11 @@ angular.module('kyc.charts')
     ]
     var newCustomers = [];
     var repeatedCustomers = [];
-    var minTimestamp = 0;
-    var maxTimestamp = 0;
     
 	function setData(order,minDate,maxDate){
-         minTimestamp = minDate.getTime();
-         maxTimestamp = maxDate.getTime();
-        var orderData = new Date(order.created).getTime();        
+        var minTimestamp = minDate.getTime();
+        var maxTimestamp = maxDate.getTime();
+        var orderData = new Date(order.created);
         if (orderData >= minTimestamp && orderData <= maxTimestamp){
             var customerId  = order.userId;
             if (newCustomers.indexOf(customerId) === -1){
@@ -28,16 +27,15 @@ angular.module('kyc.charts')
                     data[1].y++;
                 }
             }    
-        }        
+        }                           
 	}
 
     function clearData(){
+        colorIndex =0;
         data = [
             {name:_tr("New"),y:0,color:Colors[0]},
             {name:_tr("Returning"),y:0,color:Colors[1]}    
         ]
-        newCustomers = [];
-        repeatedCustomers = [];
     }
 
 
@@ -52,32 +50,7 @@ angular.module('kyc.charts')
         return {
             type:type,
             title:title,
-            data:getData(),
-            getPdf:getPdf,
-            getCsv:getCsv
-        }
-    }
-
-    function getCsv(){
-        var data = getData();
-        var csvData =[[title]]
-        angular.forEach(data,function(d){
-            csvData.push([d.name,d.y]) 
-        })
-        return {
-            data:csvData
-        };
-    }
-
-
-    function getPdf(){
-        return chartInfo = {
-            type:type,
-            title:title,
-            startDate: minTimestamp,
-            endDate: maxTimestamp,            
-            dataJson: JSON.stringify([data[0].y,data[1].y]),
-            categories: ['New','Returning']
+            data:getData()
         }
     }
 

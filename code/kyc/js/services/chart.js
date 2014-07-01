@@ -98,11 +98,12 @@ angular.module('kyc.services', []).
 		                }
 		            },
 		            tooltip: {
+		            	useHTML: true,
 				    	borderColor: '#1576B7',
 				    	borderWidth: 1,
 		            	backgroundColor: '#1576B7',
 		                formatter: function() {
-		                    return '<b style="color:#fff">'+ this.y +' orders</b>';
+		                    return '<span style="display:block; color: #A9CCE3; text-align: center; font-size: 12px; margin-bottom: 5px">' + this.y + '</span><b style="color:#fff" dy="10">'+ this.x +' orders</b>';
 		                }
 		            }
 	        	},
@@ -115,13 +116,6 @@ angular.module('kyc.services', []).
 	            xAxis: {
 									type: 'datetime',
             			minTickInterval: 24 * 3600 * 1000,
-            			labels: {
-                    style: {
-                        color: '#b3b6b8',
-                        fontSize: '15px'
-                    }
-
-                },       
 	            },
 	            yAxis: {
 	                gridLineWidth: 0,
@@ -130,11 +124,8 @@ angular.module('kyc.services', []).
 	                    text: ''
 	                },
 	                labels: {
-                    style: {
-                        color: '#b3b6b8',
-                        fontSize: '15px'
-                    }
-                },       
+	                    enabled: true
+	                }
 	            },
 	            series: [{
 	                showInLegend: false,

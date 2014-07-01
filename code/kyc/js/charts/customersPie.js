@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('CustomersPie',['ChartType','Colors','ChartHelper', function(ChartType,Colors,ChartHelper) {
+.factory('CustomersPie',['ChartType','Colors', function(ChartType,Colors) {
 
 	var type = ChartType.PIE;
     var colorIndex = 0;    
@@ -10,8 +10,6 @@ angular.module('kyc.charts')
     ]
     var newCustomers = [];
     var repeatedCustomers = [];
-    var minTimestamp = 0;
-    var maxTimestamp = 0;
 
     function clearData(){
         colorIndex =0;
@@ -19,14 +17,12 @@ angular.module('kyc.charts')
             {name:_tr("New"),y:0,color:Colors[0]},
             {name:_tr("Returning"),y:0,color:Colors[1]}    
         ]
-        newCustomers = [];
-        repeatedCustomers = [];
     }
     
 	function setData(order,minDate,maxDate){
-        minTimestamp = minDate.getTime();
-        maxTimestamp = maxDate.getTime();
-        var orderData = new Date(order.created).getTime();
+        var minTimestamp = minDate.getTime();
+        var maxTimestamp = maxDate.getTime();
+        var orderData = new Date(order.created);
         if (orderData >= minTimestamp && orderData <= maxTimestamp){
             var customerId  = order.userId;
             if (newCustomers.indexOf(customerId) === -1){
@@ -54,32 +50,7 @@ angular.module('kyc.charts')
         return {
             type:type,
             title:title,
-            data:getData(),
-            getPdf:getPdf,
-            getCsv:getCsv
-        }
-    }
-
-    function getCsv(){
-        var data = getData();
-        var csvData =[[title]]
-        angular.forEach(data,function(d){
-            csvData.push([d.name,d.y]) 
-        })
-        return {
-            data:csvData
-        };
-    }
-
-
-    function getPdf(){
-        return chartInfo = {
-            type:type,
-            title:title,
-            startDate: minTimestamp,
-            endDate: maxTimestamp,            
-            dataJson: JSON.stringify(data),
-            categories: ['New','Returning']
+            data:getData()
         }
     }
 

@@ -18,7 +18,7 @@
 
 				<div class="top-chart overflow" ng-if="chart.value.numberLeft || chart.value.numberRight">
 					<div class="pull-left numberLeft" ng-if="chart.value.numberLeft">
-						{{ getText(chart) }}
+						{{ chart.value.numberLeft }}
 					</div>
 
 					<div class="pull-right numberRight" ng-if="chart.value.numberRight">
@@ -26,7 +26,7 @@
 					</div>								
 				</div>
 
-				<div class="highcharts-content" ng-dblclick="openModal()">
+				<div class="highcharts-content" ng-click="openModal()">
 					<highchart id="chart_{{ chart.num }}" config="chart.highcharts" class="chart_{{ chart.value.type }}"></highchart>
 				</div>
 
@@ -38,7 +38,7 @@
 			</div>
 
 			<div ng-if="!chart.showChart" class="content-chart" ng-dblclick="openModal()">
-				<span class="largerNumber">{{ getText(chart) }}</span>
+				<span class="largerNumber">{{ chart.value }}</span>
 			</div>
 
 		</div>
@@ -55,10 +55,10 @@
 				<h4 class="title-white">Export as...</h4>
 
 				<div class="buttons">
-					<button class="pull-left btn btn-default" ng-click="exportPdf()" >
+					<button class="pull-left btn btn-default" >
 						PDF
 					</button>
-					<button class="pull-left btn btn-default" ng-click="exportCsv()">
+					<button class="pull-left btn btn-default">
 						CSV
 					</button>
 				</div>

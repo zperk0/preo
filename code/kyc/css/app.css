@@ -2,13 +2,6 @@
 
 body{
   background-color: #EFEFEF;
-  font-family: "Co Text W01 Regular","Co Text W01 Light";
-  font-weight: normal;  
-}
-
-
-form label, label, .multiSelect .button{
-  color:#46545D !important;
 }
 
 .navbar-first{
@@ -23,10 +16,6 @@ form label, label, .multiSelect .button{
 .title-white{
   color: #fff;
   margin-bottom: 0px;
-  font-size: 100%;
-  line-height: 50px;
-  position: relative;
-  padding-left: 40px;
 }
 
 /**********Navbar************/
@@ -123,7 +112,10 @@ form label, label, .multiSelect .button{
 }
 
 #container-search > .container{
-  height: 85px;
+  /*height: 85px;*/
+  background-color: #fff;
+  overflow: hidden;
+
 }
 
 #content-list{
@@ -242,11 +234,10 @@ form label, label, .multiSelect .button{
 }
 
 .largerNumber{
-  font-size: 60px;
+  font-size: 70px;
   color: #1476B7;
   display: block;
   margin-top: 30px;
-  font-family:"Co Text W01 Regular";
 }
 
 #filterDashboard{
@@ -351,14 +342,14 @@ form label, label, .multiSelect .button{
 
 .flip-container, .front, .back {
   width: 100%;
-  height:100%;
+  
 }
 
 /* flip speed goes here */
 .flipper {
   transition: 0.6s;
   transform-style: preserve-3d;
-  height:100%;
+
   -webkit-transition: 0.6s;
   -moz-transition: 0.6s;
   -ms-transition: 0.6s;
@@ -405,7 +396,7 @@ form label, label, .multiSelect .button{
 
 
 .pull-left{
-  float: left;
+  float: left !important;
 }
 
 .pull-right{
@@ -414,15 +405,13 @@ form label, label, .multiSelect .button{
 
 .numberLeft{
   font-size: 40px;
-  color: #1476B7;
-  font-family:"Co Text W01 Bold";
+  color: #1476B7
 }
 
 .numberRight{
   font-size: 30px;
   font-weight: 600;
-  color: #8ABE4F;
-  font-family:"Co Text W01 Bold";
+  color: #8ABE4F
 }
 
 .top-chart{
@@ -439,31 +428,17 @@ table .sort i{
 }
 
 .table-striped{
-  border-collapse: separate !important;
-  border-radius: 5px;  
-  overflow: hidden;
-  border: 1px solid #b4b6b8; 
-
+  border-collapse: collapse;
 }
 
-table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type(even){
-  background-color:#fcfcfc;
+.table-striped, .table-striped td, .table-striped th{
+  border: 1px solid #B8BABC;
 }
-
-.table-striped tr:first-child th{
-  border-top:none;
-}
-
-.table-striped td:last-child,.table-striped th:last-child{
-  border-right:none;
-}
-
-.table-striped td,.table-striped th{
-  font-family:"Co Text W01 Light";
-  color: #6d6e71;
-  border-top: 1px solid #b4b6b8; 
-  border-right:1px solid #b4b6b8; 
-}
+/* 
+.table-stream td{
+  border-left: 0px;
+  border-right: 0px;
+} */
 
 .table-striped th input, .table-striped td input{
   margin: 0px;
@@ -472,7 +447,7 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
 .table-striped thead tr th{
   padding: 15px;
   background-color: #F3F4F4;
-  
+  color: #797B7D;
   font-weight: 400;
 }
 
@@ -628,6 +603,9 @@ span.multiSelect{
   padding: 15px;
 }
 
+.table-stream tr.result td.information{
+  border-right: 1px solid #ccc;
+}
 
 .table-max{
   width: 100%;
@@ -639,16 +617,7 @@ span.multiSelect{
 .table-max tr td{
   border: none;
   padding: 5px 15px !important;
-  font-size: 16px;
-  color:#333f47;
-}
-
-.table-max .streamDiscount{
-  font-style: italic;
-}
-
-.table-max .streamTotal b{
-  font-family: "Co Text W01 Bold";
+  font-size: 16px
 }
 
 .text-status{
@@ -674,12 +643,10 @@ span.multiSelect{
 
 .icon-know-customers{
   background: url("/img/KYC-icon-white-reverse.png") left center no-repeat;
-  width:30px;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  margin-top: -15px;
-  height: 30px;
+  float: left;
+  width: 30px;
+  height: 31px;
+  margin-right: 10px;
 }
 
 .checkboxStyle input[type=checkbox] {  
@@ -722,30 +689,36 @@ span.multiSelect{
     color: #95979A;  
     text-align: center;  
     line-height: 15px;  
-}  
+} 
 
-.table-striped td.streamPrice{
-  font-family: "Co Text W01 Bold";
-  color:#46545d;
-  font-size:105%;
+#formSearch input{
+  text-align: center;
+  font-size: 13px !important;
 }
 
-.table-striped td.streamCustomer{
-  font-family: "Co Text W01 Regular";
-  color:#46545d;
-  font-size:105%;
+#toSearchDate{
+  width: 15px;
+  float: left;
+} 
+
+#toSearchDate span{
+  font-weight: 600;
+  margin-top: 15px;
+  display: block;
 }
 
-.table-striped td.streamOrder{
-  font-family: "Co Text W01 Regular";
-  color:#46545d;
-  font-size:85%;
+.label-search{
+  color: #505D65;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: block;
 }
 
-.table-striped td.streamUpdated{
-  font-family: "Co Text W01 Light";
-  color:#939598;
-  font-size:70%;
+@media(max-width: 900px) {
+  #container-search > div > .columns{
+    width: 100%
+  }
 }
 
 .chart_3:hover{
