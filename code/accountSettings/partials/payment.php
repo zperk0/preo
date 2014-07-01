@@ -39,7 +39,8 @@
 	</div>	
 	<div class='rowWrapper errorMessage'>{{ errorMessage }}</div>
 	<button ng-show="!isEditing" class='preodayButton' ng-click="startEditing()" type="button" ><?echo _("CHANGE DETAILS");?></button>
-	<button ng-show="!isPosting && isEditing" class='preodayButton' ng-click="saveChanges()" type="submit" ><?echo _("SAVE CHANGES");?></button>
+	<button ng-show="!isPosting && isEditing" class='preodayButton' ng-click="saveChanges()" type="submit" ><?echo _("SAVE CHANGES");?></button>	
 	<button ng-show="isPosting && isEditing" class="secondary" type="button"><?echo _("SAVING...");?></button>
+	<button ng-show="isEditing" class='preodayButton secondary' ng-click="cancelSaving()" ><?echo _("CANCEL");?></button>
 	</form>
 </div>

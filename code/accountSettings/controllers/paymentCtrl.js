@@ -1,10 +1,11 @@
 angular.module('accountSettings.controllers')
- .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','PendingInvoice','Account','StripeCharge',
-  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,PendingInvoice,Account,StripeCharge) {
+ .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','PendingInvoice','Account','StripeCharge','$AjaxInterceptor',
+  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,PendingInvoice,Account,StripeCharge,$AjaxInterceptor) {
+    var oldCard;
     $scope.setSelected($scope.Views.paymentMethod);
   	$scope.isEditing = false;
-    $scope.errorMessage = "";    
-  	AccountCard.get({accountId:ACCOUNT_ID},function(result){
+    $scope.errorMessage = "";      	
+    AccountCard.get({accountId:ACCOUNT_ID},function(result){
   		$scope.card = result;    
       $scope.finishLoading();         
       console.log($scope.card);
@@ -36,11 +37,12 @@ angular.module('accountSettings.controllers')
     
 
   	$scope.startEditing = function(){
+      oldCard = $scope.card.number;
       $scope.card.number = "";
 		  $scope.isEditing = true;
   	};
 
-  	$scope.saveChanges = function(){  		    
+  	$scope.saveChanges = function(){  		          
       $scope.errorMessage = "";
       $scope.triedSubmit = true;  
       $scope.isPosting = true;
@@ -49,6 +51,7 @@ angular.module('accountSettings.controllers')
           $scope.errorMessage = _tr("Please fill in all the required fields.");
           return false;
       };
+      $AjaxInterceptor.start();
       saveStripeCard();  		
   	};
 
@@ -62,17 +65,16 @@ angular.module('accountSettings.controllers')
     
 
      var stripeResponseHandler = function(status, response) {
-       
+       console.log("got here",response,status);
        if (response.error) {
-         // Show the errors on the form
-         $scope.errorMessage = response.error.message;
          $scope.isPosting = false;
+         // Show the errors on the form
+         $scope.errorMessage = response.error.message;         
          $scope.$apply();         
-         
+         $AjaxInterceptor.complete();
        } else {        
          // token contains id, last4, and card type
          console.log("success",status,response)
-
          $scope.card.token = response.id;
          $scope.card.number = response.card.last4;
          $scope.card.type = response.card.type;                
@@ -81,42 +83,57 @@ angular.module('accountSettings.controllers')
     };
 
     function success(){
+      console.log('success');
       $scope.errorMessage = "";
       $scope.isEditing = false;
       $scope.isPosting = false;
-      console.log("success!!");
-      PendingInvoice.get({accountId:ACCOUNT_ID},function (invoice){        
-      console.log('got invoice',invoice);  
+      //TODO display an alert to the user that his card will be charged
+      PendingInvoice.get({accountId:ACCOUNT_ID},function (invoice){              
           if (invoice.id){ //if we have an invoice, try to pay it
               StripeCharge.get({accountId:ACCOUNT_ID,invoiceId:invoice.id},
                 function(result){
-                  //if the payment is a success set the billing date for one month from the original billing date
-                  console.log("payment is a success! getting accounts for,",result)
+                  //if the payment is a success set the billing date for one month from the original billing date                  
                   Account.query({accountId:ACCOUNT_ID},function(result){
                       var account = result[0];
-                      console.log('got account:',account);                      
                       var tempDate = new Date(account.billingDate);
                       tempDate.setMonth(tempDate.getMonth() + 1);
                       account.billingDate = tempDate;
-                      account.$put({accountId:ACCOUNT_ID},function(result){                          
+                      account.$put({accountId:ACCOUNT_ID},
+                      function(result){                          
+                          $AjaxInterceptor.complete();
                           console.log(result,"updated billing date");
+                      },function(){
+                        console.log("error");   
+                        $AjaxInterceptor.complete();
                       });
+                  },function(){
+                    console.log("error -  ");   
+                    $AjaxInterceptor.complete();
                   })
 
-
               },function (error){
-                    console.log("error",error);                    
-
+                  console.log("error",error);                    
+                  $AjaxInterceptor.complete();  
               });
+          } else {
+            $AjaxInterceptor.complete();
           }
-      });
-    
+      },function(){
+        $AjaxInterceptor.complete();
+      });    
     }
 
     function error(error){            
-      $scope.errorMessage = error.data.message;      
-      console.log("hooo here",$scope.isPosting)
+      $scope.isPosting = false;
+      $scope.errorMessage = error.data.message;  
+      $AjaxInterceptor.complete();   
     }    
+  }
+
+  $scope.cancelSaving = function(){
+    $scope.card.number = oldCard;
+    $scope.isPosting =false;
+    $scope.isEditing =false;
   }
 
   getStripeKey();
