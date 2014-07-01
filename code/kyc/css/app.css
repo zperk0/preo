@@ -314,6 +314,10 @@ form label, label, .multiSelect .button{
   -o-perspective: 1000;  
 }
 
+.content-chart{
+  padding: 0 10px 15px 10px;
+  position:relative;
+}
   /* flip the pane when hovered */
   .flip-container.active .flipper {
     transform: rotateY(180deg);
@@ -383,19 +387,14 @@ form label, label, .multiSelect .button{
 
 /****** End Flip Effect *******/
 
-
-.pull-left{
-  float: left;
-}
-
-.pull-right{
-  float: right;
-}
-
 .numberLeft{
   font-size: 40px;
   color: #1476B7;
   font-family:"Co Text W01 Bold";
+  position:absolute;
+  top:15px;
+  left:15px;
+  z-index:2;
 }
 
 .numberRight{
@@ -403,6 +402,10 @@ form label, label, .multiSelect .button{
   font-weight: 600;
   color: #8ABE4F;
   font-family:"Co Text W01 Bold";
+  position:absolute;
+  top:15px;
+  right:15px;
+  z-index:2;
 }
 
 .top-chart{

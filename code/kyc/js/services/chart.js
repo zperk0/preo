@@ -178,12 +178,12 @@ angular.module('kyc.services', []).
 		                enabled: true,
 		                layout: 'vertical',		                
 		                verticalAlign: 'middle',
-		                 x: 70,
+		                x: 50,
 		                borderWidth: 0,
 		                useHTML: true,
 		                labelFormatter: function() {
 		                		var style = 'font-weight: normal; font-size: 1.5em; margin-bottom: 12px; margin-top:-2px; font-family:Co Text W01 Light; padding-left:5px;';
-		                		style += "color:#46545d;"
+		                		style += "color:#46545d; max-width:80px;"
 		                    return '<div style="'+style+'">' + this.name + '</div>';
 						}
 		            },	                    
