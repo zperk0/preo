@@ -17,6 +17,8 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
       });
     }
 
+        
+
     $scope.getScreenshot = function(){
         if ($scope.selectedFeature){
           return $scope.selectedFeature.feature.promoImgs[$scope.currentScreenshot];
@@ -38,13 +40,87 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
       }
     }
 
-    //TODO fix the chevrons logic to slide on the images
     $scope.setSelectedFeature = function(index){      
         $scope.currentScreenshot = 0;
         $scope.selectedFeature = {
             index:index,
             feature:$scope.PremiumFeatures[index]
-        };
+        };        
+    }
+
+    //TODO make this a default modal-preoday
+    $scope.dismissAndShowDialog = function(which){
+      console.log('dismissing')
+      $('#featureModal').on("closed", function closed() {
+        $scope.showDialog(which);
+        $(this).off('closed',closed);        
+      });
+      $('#featureModal').foundation('reveal', 'close');
+    }
+
+    $scope.showDialog = function(which){            
+       console.log("showing dialog",which);        
+       var feature = $scope.selectedFeature.feature;  
+       var clickOk;
+       var clickCancel;
+       var data; 
+        switch (which){
+          case "purchase":
+            data = { 
+              title: feature.name,
+              content: _tr("Your card will be charged ") +"<b>£"+feature.upfrontPrice.toFixed(2) + "</b>" + _tr(" for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
+              showTerm: true,
+              btnOk: _tr('BUY'),            
+              windowClass:'medium'
+            }        
+            clickOk = clickBuy;            
+          break; 
+          case "trial":
+            data = { 
+              title: feature.name + " - " + feature.trialPeriod + _tr(" DAY FREE TRIAL"),
+              content: _tr("Your card will not be charged for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
+              showTerm: true,
+              btnOk: _tr('BUY'),            
+              windowClass:'medium'
+            }        
+            clickOk = clickBuy;            
+          break; 
+          case "success":
+            data = { 
+              title: _tr("Your new Premium Feature is now live!"),
+              content: _tr("You can manage subscriptions from your account settings page"),
+              showTerm: false,
+              btnOk: _tr('ACCOUNT SETTINGS'),
+              btnCancel: _tr('RETURN TO STORE'),            
+              windowClass:'medium'
+            }        
+            clickOk = function(){$scope.navigateTo('/accountSettings#/subscription')};            
+          break; 
+          case "paymentError":
+            data = { 
+              title: _tr("Error"),
+              content: $scope.paymentFailedMessage,
+              showTerm: false,
+              btnOk: _tr('ALTER PAYMENT METHOD'),
+              btnCancel: _tr('RETURN TO STORE'),            
+              windowClass:'medium'
+            }        
+            clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')};            
+          break; 
+          case "noPayment":
+            data = {               
+              content: _tr("Please add a payment method to your account in order to subscribe to Premium Features"),
+              showTerm: false,
+              btnOk: _tr('ADD PAYMENT METHOD'),
+              btnCancel: _tr('RETURN TO STORE'),            
+              windowClass:'medium'
+            }        
+            clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')};            
+          break; 
+        }            
+        $notification.confirm(data).then(clickOk,clickCancel);
+      
+      
     }
 
 
@@ -65,8 +141,8 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
     }
     
 
-    $scope.clickBuy = function(feature){
-
+     function clickBuy(){
+        var feature = $scope.selectedFeature.feature;
         Resources.AccountCard.get({accountId:ACCOUNT_ID},
           function(result){          
             
@@ -74,11 +150,11 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
                 Resources.AccountFeatures.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){
                         if (accountPayment.status ===  "SUCCESS"){
                           getAccountFeatures();
-                          $('#successDialog').foundation('reveal', 'open');          
+                          $scope.showDialog("success");
                         } else {                        
                           var response = JSON.parse(accountPayment.response);
                           $scope.paymentFailedMessage = response.detail_message;
-                          $('#paymentErrorDialog').foundation('reveal', 'open');
+                          $scope.showDialog("paymentError");
                         }                        
                       },function(error){                        
                         displayErrorNoty();
@@ -87,7 +163,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             }          
         },function(error){          
           if (error.data && error.data.status === 404){
-                $('#noPaymentDialog').foundation('reveal', 'open');
+                $scope.showDialog("noPayment");
           } else{
               displayErrorNoty()
             }                       
@@ -98,14 +174,6 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
     $scope.navigateTo = function(place){        
         window.location.assign(place);
     }
-    
-    $scope.dismissDialog = function(dialog){
-        $('#featureDialog').foundation('reveal', 'close');
-        $('#'+dialog).foundation('reveal', 'close');
-        //FIXME not sure why this is not working as it should.
-        $(".reveal-modal-bg").css({"display":"none"});
-    }
-
 
     $scope.getFeatureStatus = function(feature){
       var found = false;      
@@ -123,8 +191,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
       var found = false;      
         if (feature && $scope.accountFeatures && $scope.accountFeatures.length >0){
             angular.forEach($scope.accountFeatures,function(accountFeature){                                          
-                if (accountFeature.featureId == feature.id)
-                  console.log("is installed",feature.name,accountFeature.status)
+                if (accountFeature.featureId == feature.id)                  
                 if (feature.id == accountFeature.featureId && (accountFeature.status === "INSTALLED" || accountFeature.status === "TRIAL" || accountFeature.status === "UNINSTALLED") ){
                   found = true;
                 }

@@ -2659,16 +2659,43 @@ span .currencySymbol {
   }
 }
 
-.featureDialog {
+.modal-preoday {
   border-radius: 25px;
-  border: 8px solid #ccc;
-  /*to add some spacing in case we're in the bottom of the page. Or the dialog looks weird*/
+  border: 8px solid #ccc;  
   margin-bottom: 100px;
   padding: 40px;
-  text-align: center;
-  b {
-    color: black;
+  text-align: center;  
+  outline: none !important;
+  font-family:helvetica;
+  color:#46535d;
+
+  .title-modal-chart{
+    font-weight:bold;
+    font-size:110%;
+    margin-bottom:30px;
+    
   }
+  .container-modal-confirm{
+    line-height:125%;    
+    margin-bottom:30px;
+    font-weight:lighter;
+  }
+
+  .modal-term{
+    label{
+      font-size:110%;
+      font-weight:lighter;  
+      a{
+        color:#27a5dc;
+      }
+    }
+  }
+
+  button{
+    min-width:20%;
+    max-width:200px;
+  }
+
 }
 
 
@@ -3041,11 +3068,7 @@ button.preodayButton.noclick{
   width:25% !important;
  } 
 
-#confirmationDialog{
-  .preodayButton{
-    min-width:180px;
-  }
-}
+
 
 .shopButton{
   padding: 5px 35px;

@@ -4155,8 +4155,7 @@ $(document).ready(function() {
       setTimeout(function(){
         $(that).addClass('active');  
       },1)    
-    }).on('closed',function(){
-        console.log("closed!",this);
+    }).on('closed',function(){        
         $(this).removeClass("active");
     });
 

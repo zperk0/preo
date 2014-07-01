@@ -23,7 +23,8 @@ module.exports = function(grunt) {
       },
       angular:{
         src: ['bower_components/angular/angular.min.js','bower_components/angular-resource/angular-resource.min.js','bower_components/angular-foundation/mm-foundation.min.js',
-              'bower_components/angular-foundation/mm-foundation-tpls.min.js', 'bower_components/angular-route/angular-route.min.js','bower_components/angular-foundation/mm-foundation-tpls.min.js'],
+              'bower_components/angular-foundation/mm-foundation-tpls.min.js', 'bower_components/angular-route/angular-route.min.js','bower_components/angular-foundation/mm-foundation-tpls.min.js',              
+              'bower_components/angular-sanitize/angular-sanitize.min.js'],
         dest: 'js/angular_all.min.js'
       }
     },
