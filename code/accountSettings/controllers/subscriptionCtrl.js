@@ -8,7 +8,7 @@ angular.module('accountSettings.controllers')
         $(that).addClass('active');  
       },1)    
     }).on('closed',function(){
-        console.log("closed!",this);
+        
         $(this).removeClass("active");
     });
 

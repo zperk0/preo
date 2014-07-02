@@ -9,12 +9,8 @@
 ?> 
 
 
-<div ng-app="shop" ng-controller="shopController" ng-cloak class='shopWrapper'>
-  <div class='loader' ng-show="!finishedLoading">      
-      <img src='/img/spinner.gif'/>
-  </div>  
-  <div ng-show="finishedLoading">  
-  
+<div ng-app="shop" ng-controller="shopController" ng-cloak class='shopWrapper'>  
+  <div>  
     <div class='shopHeader'>
       <div class='row'>
         <h1><small>my order app </small><br/>Premium Features</h1>
@@ -74,7 +70,7 @@
           <li ng-show="selectedFeature.feature.upfrontPrice>0">+ &pound;{{selectedFeature.feature.upfrontPrice}} <?= _("one-off payment")?></li>
           <li>+ <?= _("VAT")?></li>
         </ul>
-        <button ng-show="!isFeatureInstalled(selectedFeature.feature)" class='preodayButton' data-reveal-id="startPurchaseDialog">BUY</button>
+        <button ng-show="!isFeatureInstalled(selectedFeature.feature)" class='preodayButton' ng-click='dismissAndShowDialog("purchase")'>BUY</button>
         <button ng-show="isFeatureInstalled(selectedFeature.feature)" class='preodayButton secondary noclick' >INSTALLED</button>        
       </div>
       <div class='rightWrapper priceWrapper' ng-show="isFeatureInstalled(selectedFeature.feature) && getFeatureStatus(selectedFeature.feature) != 'TRIAL' ">
@@ -89,10 +85,10 @@
           <button ng-show="!isFeatureOwned(feature)" class='preodayButton secondary noclick' >COMING SOON</button>
       </div>
       <div class='comingSoon' ng-show="selectedFeature.feature.active && selectedFeature.feature.trialPeriod > 0 && getExpiryDate(selectedFeature.feature) == 0">
-        <button ng-show="!isFeatureOwned(feature)" class='preodayButton' data-reveal-id="startTrialDialog">FREE {{selectedFeature.feature.trialPeriod}} DAY TRIAL</button>
+        <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click='dismissAndShowDialog("trial")'>FREE {{selectedFeature.feature.trialPeriod}} DAY TRIAL</button>
       </div> 
       <div class='comingSoon' ng-show="selectedFeature.feature.trialPeriod > 0 && getFeatureStatus(selectedFeature.feature) == 'TRIAL'">
-        <button class='preodayButton secondary' ng-click="setSelectedFeature($index)" data-reveal-id="featureModal" > TRIAL EXPIRES IN {{ getExpiryDate(selectedFeature.feature) }} DAYS </button>
+        <button class='preodayButton secondary'> TRIAL EXPIRES IN {{ getExpiryDate(selectedFeature.feature) }} DAYS </button>
       </div>       
                 
                 
@@ -117,25 +113,6 @@
   </div>
 
 
- <div id="noPaymentDialog" class="reveal-modal medium featureDialog" data-reveal>
-      <p><? echo _("Please add a payment method to your account in order to subscribe to Premium Features")?></p>
-      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/paymentMethod')" ><? echo _("ADD PAYMENT METHOD")?></button>
-      <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('noPaymentDialog')" ><? echo _("RETURN TO STORE")?></button>
-</div>
-
-<div id="paymentErrorDialog" class="reveal-modal medium featureDialog" data-reveal>
-      <p><? echo _("Your payment failed. The error message we have is:")?></p>
-      <p>{{paymentFailedMessage}}</p>
-      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/paymentMethod')" ><? echo _("ALTER PAYMENT METHOD")?></button>
-      <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('paymentErrorDialog')" ><? echo _("RETURN TO STORE")?></button>
-</div>
-
-<div id="successDialog" class="reveal-modal medium featureDialog" data-reveal>
-      <b><? echo _("Your new Premium Feature is now live!")?></b><br/>
-      <p><? echo _("You can manage subscriptions from your account settings page")?></p>      
-      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/subscription')"><? echo _("ACCOUNT SETTINGS")?></button>
-      <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('successDialog')" ><? echo _("RETURN TO STORE")?></button>
-</div>
 <div id="startTrialDialog" class="reveal-modal medium featureDialog" data-reveal>
       <b>{{selectedFeature.feature.name}} - {{selectedFeature.feature.trialPeriod}} <? echo _("DAY FREE TRIAL")?></b><br/>
       <p><? echo _("Your card will not be charged for this translaction. You may cancel this trial at any time from your account settings page.")?></p>      
@@ -148,20 +125,30 @@
       <button ng-class="{secondary:!acceptTerm,noclick:!acceptTerm}" class='positiveDismiss preodayButton' ng-click="startTrial(selectedFeature)"><? echo _("BEGIN TRIAL")?></button>
       <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('successDialog')" ><? echo _("CANCEL")?></button>
 </div>
-  <div id="startPurchaseDialog" class="reveal-modal medium featureDialog" data-reveal>
-      <b>{{selectedFeature.feature.name}}</b><br/>
-      <p><? echo _("Your card will be charged ")?> <b>&pound;{{selectedFeature.feature.upfrontPrice}}</b>  <? echo _(" for this transaction. You may cancel this Premium Feature at any time from your account settings page.")?></p>      
-      <p>
-        <label>
-          <input type="checkbox" ng-model="acceptTerm"/>  
-            I have heard the <a href='#'>Terms and Conditions</a>
-        </label>
-      </p>  
-      <button ng-class="{secondary:!acceptTerm,noclick:!acceptTerm}" class='positiveDismiss preodayButton' ng-click="clickBuy(selectedFeature.feature)"><? echo _("BUY")?></button>
-      <button class='negativeDismiss preodayButton secondary' ng-click="dismissDialog('successDialog')" ><? echo _("CANCEL")?></button>
-</div>
+  
 
 </div>
+  
+  <div class="loading" ng-show="requests">
+    <div class="background-loading"></div>
+    <div class="loading-content">
+      <div class="spinner">
+        <div class="b1 se"></div>
+        <div class="b2 se"></div>
+        <div class="b3 se"></div>
+        <div class="b4 se"></div>
+        <div class="b5 se"></div>
+        <div class="b6 se"></div>
+        <div class="b7 se"></div>
+        <div class="b8 se"></div>
+        <div class="b9 se"></div>
+        <div class="b10 se"></div>
+        <div class="b11 se"></div>
+        <div class="b12 se"></div>
+      </div>
+    </div>
+  </div>  
+
 </div> <!-- End app -->
   <script src="/js/angular_all.min.js"></script>  
   <script type="text/javascript" src="/code/shop/app.js"></script>
@@ -171,7 +158,8 @@
   </script>
   <script type="text/javascript" src="/code/shop/resource.js"></script>
   <script type="text/javascript" src="/code/shop/controllers.js"></script>
-  <script type="text/javascript" src="/code/shop/services/notification.js"></script>
+  <script type="text/javascript" src="/code/notification/notification.js"></script>
+  <script type="text/javascript" src="/code/loader/ajaxInterceptor.js"></script>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 
 

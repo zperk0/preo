@@ -157,10 +157,10 @@
 </div>
 
 
-<div id="purchaseDialog" class="reveal-modal medium featureDialog dashboard" data-reveal>
-    <b>Know your customer</b><br/>
-    <p><? echo _("Your card will be charged ")?> <b>&pound;<span class='featurePrice'></span></b>  <? echo _(" for this transaction. You may cancel this Premium Feature at any time from your account settings page.")?></p>      
-    <p>
+<div id="purchaseDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
+    <header class="title-notification">Know your customer</header>
+    <div class="container-modal-confirm"><? echo _("Your card will be charged ")?> <b>&pound;<span class='featurePrice'></span></b>  <? echo _(" for this transaction. You may cancel this Premium Feature at any time from your account settings page.")?></div>      
+    <p class='modal-term'>
       <label>
         <input type="checkbox" class='termsAndConditions'/>  
           I have read the <a href='#'>Terms and Conditions</a>
@@ -170,12 +170,12 @@
     <button class='negativeDismiss preodayButton '><? echo _("CANCEL")?></button>    
 </div>
 
-<div id="expiredDialog" class="reveal-modal medium featureDialog dashboard" data-reveal>
-    <b>Know your customer - 30 DAYS FREE TRIAL</b><br/>
-    <p><? echo _("Your 30 day free trial 	of this Premium Feature has now expired. Would you like to purchase it?")?></p>      	    
+<div id="expiredDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
+    <header class="title-notification">Know your customer - 30 DAYS FREE TRIAL</header>
+    <div class="container-modal-confirm"><? echo _("Your 30 day free trial 	of this Premium Feature has now expired. Would you like to purchase it?")?></div>      	    
     <button class='positiveDismiss preodayButton' ><? echo _("YES PLEASE")?></button>
     <button class='negativeDismiss preodayButton'><? echo _("NOT RIGHT NOW")?></button>
-    <p>
+    <p class='modal-term'>
       <label>
         <input type="checkbox" class='doNotShowAgain'/>  
           Do not show this message again
@@ -183,15 +183,15 @@
     </p>  
 </div>
 
-<div id="successDialog" class="reveal-modal medium featureDialog dashboard" data-reveal>
-      <b><? echo _("Your new Premium Feature is now live!")?></b><br/>
-      <p><? echo _("You can manage subscriptions from your account settings page")?></p>      
+<div id="successDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
+      <header class="title-notification"><? echo _("Your new Premium Feature is now live!")?></header>
+      <div class='container-modal-confirm"'><? echo _("You can manage subscriptions from your account settings page")?></div>      
       <button class='positiveDismiss preodayButton' ><? echo _("ACCOUNT SETTINGS")?></button>
       <button class='negativeDismiss preodayButton secondary' ><? echo _("RETURN TO DASHBOARD")?></button>
 </div>
 
-<div id="noPaymentDialog" class="reveal-modal medium featureDialog dashboard" data-reveal>
-      <p><? echo _("Please add a payment method to your account in order to subscribe to Premium Features")?></p>
+<div id="noPaymentDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
+      <div class="container-modal-confirm"><? echo _("Please add a payment method to your account in order to subscribe to Premium Features")?></div>
       <button class='positiveDismiss preodayButton'><? echo _("ADD PAYMENT METHOD")?></button>
       <button class='negativeDismiss preodayButton secondary' ><? echo _("RETURN TO STORE")?></button>
 </div>
@@ -215,7 +215,7 @@
 			})
 		}
 		function positiveDismiss(){
-			var dialog = $(this).parent(".featureDialog");
+			var dialog = $(this).parent(".modal-preoday");
 			var dialogId = dialog.attr("id");
 			if ($('.doNotShowAgain').is(':checked')) {
 				window.localStorage.setItem("showDialogAgain_4",0) 
@@ -242,7 +242,7 @@
 		}
 
 		function negativeDismiss(){
-			var dialog = $(this).parent(".featureDialog");
+			var dialog = $(this).parent(".modal-preoday");
 			var dialogId = dialog.attr("id");
 			if ($('.doNotShowAgain').is(':checked')) {
 				//TODO add featureId dynamically

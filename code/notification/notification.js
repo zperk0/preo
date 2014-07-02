@@ -1,19 +1,13 @@
-angular.module('notification', []).service('$notification', ['$modal', '$q', '$sce', function( $modal, $q, $sce ) {
+angular.module('notification', ['ngSanitize'])
+.service('$notification', ['$modal', '$q', '$sce', function( $modal, $q, $sce ) {
 
     var confirmModalController = function( $scope, $modalInstance, data, deffered ) {
 
+        console.log('confirmed',data);
         $scope.title = data.title || '';
         $scope.content = data.content || '';
 
-        $scope.showTerm = data.showTerm || false;
-        $scope.forceTerm = data.forceTerm;
-
-        if ( $scope.forceTerm !== true && $scope.forceTerm !== false ) {
-            $scope.forceTerm = true;
-        }
-
-        $scope.showTermPosition = data.showTermPosition || 'top';
-        $scope.msgTerm = data.msgTerm || '';
+        $scope.showTerm = data.showTerm || false;        
 
         $scope.acceptTerm = false;
 
@@ -36,14 +30,14 @@ angular.module('notification', []).service('$notification', ['$modal', '$q', '$s
 
     };
 
-	var confirm = function( data ) {
-		var deffered = $q.defer();
+    var confirm = function( data ) {
+        var deffered = $q.defer();
 
-		data = data || {};
+        data = data || {};
 
         var modalCofirm = $modal.open({
-          templateUrl: '/code/shop/modals/confirm.htm',
-          windowClass: data.windowClass || '',
+          templateUrl: '/code/notification/notification.htm',
+          windowClass: 'modal-preoday ' + (data.windowClass || '') ,
           controller: confirmModalController,
           resolve: {
             data: function () {
@@ -56,13 +50,20 @@ angular.module('notification', []).service('$notification', ['$modal', '$q', '$s
             }
           }
         });
-        console.log("confirming");
+        console.log('opened!');        
+        modalCofirm.opened.then(function(){
+              setTimeout(function(){              
+                console.log("here",$(".modal-preoday").length);
+                  $(".modal-preoday").addClass("active");
+                  console.log("here hooo!")
+              },400)
+        }) 
         return deffered.promise;
 
-	};	
+    };  
 
-	return {
-		confirm: confirm
-	};
+    return {
+        confirm: confirm
+    };
 
 }])

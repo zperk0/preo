@@ -49,10 +49,13 @@ angular.module('kyc.charts')
     function getPreparedCharts(){
         var retCharts = [];
         angular.forEach(charts,function(chart){
-            if (chart.getHighChart)
+            if (chart.getHighChart){
+                console.log(chart.getHighChart());
                 retCharts.push(chart.getHighChart())
-            else
+            }
+            else{
                 retCharts.push(chart)
+            }
         })
         return retCharts;
     }

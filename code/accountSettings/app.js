@@ -1,12 +1,17 @@
 angular.module('features',[])
+angular.module('accountSettings.controllers',[]);
+angular.module('accountSettings.resources',['ngResource']);
 
 //shop
 var app = angular.module('accountSettings', [  
   'ngRoute',
   'features',
   'accountSettings.resources',
-  'accountSettings.controllers'
-]);
+  'accountSettings.controllers',
+  'loaders'
+]).run(['$rootScope', function( $rootScope ) {
+  $rootScope.requests = 0;
+}]);
 
 //router
 app.config(['$routeProvider',
@@ -37,9 +42,3 @@ app.config(['$routeProvider',
         redirectTo: '/profile'
       });
   }]);
-
-//control module
-angular.module('accountSettings.controllers',[]);
-
-//resources module
-angular.module('accountSettings.resources',['ngResource']);

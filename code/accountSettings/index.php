@@ -9,11 +9,8 @@
 ?> 
 
   <div ng-app="accountSettings"  class='accountSettings row'>
-    <div ng-controller="MenuCtrl">
-      <div class='loader' ng-show="!finishedLoading">      
-          <img src='/img/spinner.gif'/>
-      </div>  
-    	<div class='content' ng-show="finishedLoading">
+    <div ng-controller="MenuCtrl">      
+    	<div class='content'>
     		<div ng-view> </div>
         <div class='bottomSpacer'></div>
     	</div>
@@ -31,8 +28,29 @@
 
 
     </div>
+
+      <div class="loading" ng-show="requests">
+        <div class="background-loading"></div>
+        <div class="loading-content">
+          <div class="spinner">
+            <div class="b1 se"></div>
+            <div class="b2 se"></div>
+            <div class="b3 se"></div>
+            <div class="b4 se"></div>
+            <div class="b5 se"></div>
+            <div class="b6 se"></div>
+            <div class="b7 se"></div>
+            <div class="b8 se"></div>
+            <div class="b9 se"></div>
+            <div class="b10 se"></div>
+            <div class="b11 se"></div>
+            <div class="b12 se"></div>
+          </div>
+        </div>
+      </div>  
   </div>
-  
+    
+
 
   <script src="/js/angular_all.min.js"></script>  
   <script type="text/javascript" src="/code/accountSettings/app.js"></script>  
@@ -60,6 +78,7 @@
   <script type="text/javascript" src="/code/accountSettings/controllers/paymentCtrl.js"></script>
   <script type="text/javascript" src="/code/accountSettings/controllers/subscriptionCtrl.js"></script>
   <script type="text/javascript" src="/code/accountSettings/controllers/menuCtrl.js"></script>
+  <script type="text/javascript" src="/code/loader/ajaxInterceptor.js"></script>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 
 

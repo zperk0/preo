@@ -1,8 +1,9 @@
 //shop
 angular.module('accountSettings.controllers')
- .controller('MenuCtrl', ['$scope',  
-  function ($scope) {
-      $scope.finishedLoading = false;
+ .controller('MenuCtrl', ['$scope',  '$AjaxInterceptor',
+  function ($scope,$AjaxInterceptor) {
+      
+      $AjaxInterceptor.start();
   		$scope.Views = {
   			profile:0,
   			subscription:1,
@@ -17,7 +18,7 @@ angular.module('accountSettings.controllers')
     	}
 
       $scope.finishLoading = function(){
-        $scope.finishedLoading = true;
+        $AjaxInterceptor.complete();
       }
 
   }]);    
