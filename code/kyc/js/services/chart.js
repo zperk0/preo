@@ -103,7 +103,7 @@ angular.module('kyc.services', []).
 				    	borderWidth: 1,
 		            	backgroundColor: '#1576B7',
 		                formatter: function() {
-		                    return '<span style="display:block; color: #A9CCE3; text-align: center; font-size: 12px; margin-bottom: 5px">' + this.y + '</span><b style="color:#fff" dy="10">'+ this.x +' orders</b>';
+		                    return '<span style="display:block; color: #fff; text-align: center; font-size: 12px; margin-bottom: 5px">' + this.x + ' 2014</span><b style="color:#fff" dy="10">'+ this.y +' orders</b>';
 		                }
 		            }
 	        	},
