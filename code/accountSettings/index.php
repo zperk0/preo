@@ -32,7 +32,20 @@
       <div class="loading" ng-show="requests">
         <div class="background-loading"></div>
         <div class="loading-content">
-          <img src="/img/spinner.gif" />
+          <div class="spinner">
+            <div class="b1 se"></div>
+            <div class="b2 se"></div>
+            <div class="b3 se"></div>
+            <div class="b4 se"></div>
+            <div class="b5 se"></div>
+            <div class="b6 se"></div>
+            <div class="b7 se"></div>
+            <div class="b8 se"></div>
+            <div class="b9 se"></div>
+            <div class="b10 se"></div>
+            <div class="b11 se"></div>
+            <div class="b12 se"></div>
+          </div>
         </div>
       </div>  
   </div>

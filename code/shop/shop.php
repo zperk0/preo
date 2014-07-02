@@ -88,7 +88,7 @@
         <button ng-show="!isFeatureOwned(feature)" class='preodayButton' ng-click='dismissAndShowDialog("trial")'>FREE {{selectedFeature.feature.trialPeriod}} DAY TRIAL</button>
       </div> 
       <div class='comingSoon' ng-show="selectedFeature.feature.trialPeriod > 0 && getFeatureStatus(selectedFeature.feature) == 'TRIAL'">
-        <button class='preodayButton secondary' ng-click="setSelectedFeature($index)" > TRIAL EXPIRES IN {{ getExpiryDate(selectedFeature.feature) }} DAYS </button>
+        <button class='preodayButton secondary'> TRIAL EXPIRES IN {{ getExpiryDate(selectedFeature.feature) }} DAYS </button>
       </div>       
                 
                 
@@ -128,11 +128,24 @@
   
 
 </div>
-
+  
   <div class="loading" ng-show="requests">
     <div class="background-loading"></div>
     <div class="loading-content">
-      <img src="/img/spinner.gif" />
+      <div class="spinner">
+        <div class="b1 se"></div>
+        <div class="b2 se"></div>
+        <div class="b3 se"></div>
+        <div class="b4 se"></div>
+        <div class="b5 se"></div>
+        <div class="b6 se"></div>
+        <div class="b7 se"></div>
+        <div class="b8 se"></div>
+        <div class="b9 se"></div>
+        <div class="b10 se"></div>
+        <div class="b11 se"></div>
+        <div class="b12 se"></div>
+      </div>
     </div>
   </div>  
 
