@@ -288,6 +288,9 @@ form label, label, .multiSelect .button{
   text-align: center;
   border-bottom: 1px solid #B3B6B8;
   color: #46535D;
+  margin-top: -20px;
+  padding-bottom: 15px;
+  font-size: 110%;
 }
 
 .container-modal-chart{
@@ -502,6 +505,7 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
   font-weight: 600;
   text-align: center;
   display: block;
+
 }
 
 .percent-modal.negative{
@@ -514,21 +518,26 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
   display: block;
   font-size: 15px;
   margin-bottom: 0px;
+  font-family: "Co Text W01 Regular";
 }
 
 .block-modal{
-  margin-right: 20px;
+  width:14.5%;
+  margin-right:2%;
+  font-family: "Co Text W01 Bold";
 }
 
 .button-option{
+  text-align: center;
   background-color: #DBDBD9;
-  padding: 10px 45px;
-  font-size: 35px;
+  padding: 12px 0;  
   font-weight: 600;
   color: #46535D;
   cursor: pointer;
   display: block;
-  margin: 10px 0
+  margin: 10px 0;
+  border-radius:2px;
+  font-size:180%;
 }
 
 .block-modal.active .button-option{

@@ -146,22 +146,8 @@ angular.module('kyc.charts')
     function getType(){
     	return type; 
     }
+    
 
-    function getPercentage(data,oldData){
-        var totalData = getPeriodTotal(data[selectedItem]);
-        var totalOldData = getPeriodTotal(oldData[selectedItem])   
-        //return (totalData * 100 / totalOldData).toFixed(0)
-        return "";
-
-    }
-
-    function getPeriodTotal(data){
-        var total = 0;
-        angular.forEach(data,function(d){
-            total+=d[1]
-        })
-        return total.toFixed(0);
-    }
 
     function getHighChart(){
         return {
@@ -169,7 +155,6 @@ angular.module('kyc.charts')
             title:title,
             data: getData(),
             numberLeft:totalOrders,
-            numberRight:getPercentage(data,previousSpecifiedData), 
             modal: getModal(),
             items:items,
             getPdf:getPdf,
@@ -196,7 +181,7 @@ angular.module('kyc.charts')
             endDate: maxTimestamp,  
             currency:"",
             total: totalOrders,
-            percentage:getPercentage(data,previousSpecifiedData),    
+            percentage:ChartHelper.getPercentage(data,previousSpecifiedData),    
             dataJson: JSON.stringify(getData())
         }
     }
@@ -220,12 +205,12 @@ angular.module('kyc.charts')
 
     function getModalOptions(){
         return [ // options for footer in modal
-                    { name: 'Specified Dates', value: getPeriodTotal(data), percent: getPercentage(data,previousSpecifiedData), active: true, data:getData() },
-                    { name: 'Week', value: getPeriodTotal(weekData), percent: getPercentage(weekData,previousWeekData), data:weekData  },
-                    { name: 'Month', value: getPeriodTotal(monthData), percent: getPercentage(monthData,previousMonthData), data:monthData },
-                    { name: '3 Months', value: getPeriodTotal(threeMonthsData), percent: getPercentage(threeMonthsData,previousThreeMonthsData), data:threeMonthsData },
-                    { name: '6 Months', value:  getPeriodTotal(sixMonthsData), percent: getPercentage(sixMonthsData,previousSixMonthsData), data:sixMonthsData },
-                    { name: 'Year',  value:  getPeriodTotal(yearData), percent: getPercentage(yearData,previousYearData), data:yearData },
+                    { name: 'Specified Dates', value: ChartHelper.getPeriodTotal(data), percent: ChartHelper.getPercentage(data,previousSpecifiedData), active: true, data:getData() },
+                    { name: 'Week', value: ChartHelper.getPeriodTotal(weekData), percent: ChartHelper.getPercentage(weekData,previousWeekData), data:weekData  },
+                    { name: 'Month', value: ChartHelper.getPeriodTotal(monthData), percent: ChartHelper.getPercentage(monthData,previousMonthData), data:monthData },
+                    { name: '3 Months', value: ChartHelper.getPeriodTotal(threeMonthsData), percent: ChartHelper.getPercentage(threeMonthsData,previousThreeMonthsData), data:threeMonthsData },
+                    { name: '6 Months', value:  ChartHelper.getPeriodTotal(sixMonthsData), percent: ChartHelper.getPercentage(sixMonthsData,previousSixMonthsData), data:sixMonthsData },
+                    { name: 'Year',  value:  ChartHelper.getPeriodTotal(yearData), percent: ChartHelper.getPercentage(yearData,previousYearData), data:yearData },
                 ]
 
     }

@@ -10,7 +10,7 @@ angular.module('kyc.directives').
   		scope: {
   			chart: '=element'
   		},
-  		link: function( ng, elem, attrs ) {
+  		link: function( ng, elem, attrs ) {        
         ng.ChartType = ChartType;
         var initialHeight = ng.chart.value.type === ChartType.number ? 150 : 322;
         var $actionsChart = elem.find('.actions-chart');
@@ -33,9 +33,9 @@ angular.module('kyc.directives').
           
             var mod = $modal.open({
               templateUrl: modal_url('chart'),
-              windowClass: 'modal-preoday',
+              windowClass: 'large modal-preoday',
               controller: function( $scope ) {
-
+                console.log(ng.chart.value.modal.options,'opts')
                 $scope.chart = angular.copy(ng.chart);
                 if ( ng.chart.value.modal.highcharts ) {
                   $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, ng.chart.value );

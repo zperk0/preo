@@ -158,7 +158,7 @@
 
 
 <div id="purchaseDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
-    <header class="title-modal-chart">Know your customer</header>
+    <header class="title-notification">Know your customer</header>
     <div class="container-modal-confirm"><? echo _("Your card will be charged ")?> <b>&pound;<span class='featurePrice'></span></b>  <? echo _(" for this transaction. You may cancel this Premium Feature at any time from your account settings page.")?></div>      
     <p class='modal-term'>
       <label>
@@ -171,7 +171,7 @@
 </div>
 
 <div id="expiredDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
-    <header class="title-modal-chart">Know your customer - 30 DAYS FREE TRIAL</header>
+    <header class="title-notification">Know your customer - 30 DAYS FREE TRIAL</header>
     <div class="container-modal-confirm"><? echo _("Your 30 day free trial 	of this Premium Feature has now expired. Would you like to purchase it?")?></div>      	    
     <button class='positiveDismiss preodayButton' ><? echo _("YES PLEASE")?></button>
     <button class='negativeDismiss preodayButton'><? echo _("NOT RIGHT NOW")?></button>
@@ -184,7 +184,7 @@
 </div>
 
 <div id="successDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
-      <header class="title-modal-chart"><? echo _("Your new Premium Feature is now live!")?></header>
+      <header class="title-notification"><? echo _("Your new Premium Feature is now live!")?></header>
       <div class='container-modal-confirm"'><? echo _("You can manage subscriptions from your account settings page")?></div>      
       <button class='positiveDismiss preodayButton' ><? echo _("ACCOUNT SETTINGS")?></button>
       <button class='negativeDismiss preodayButton secondary' ><? echo _("RETURN TO DASHBOARD")?></button>
