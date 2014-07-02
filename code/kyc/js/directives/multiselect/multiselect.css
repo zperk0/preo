@@ -69,11 +69,15 @@
 /* Downward pointing arrow */
 .multiSelect .caret {
     float: right;
+    margin-top: 10px;
+    width: 0;
+    height: 0;
+    margin-left: 15px !important;    
     vertical-align: middle;
-    margin: -6px -8px;
-    width: 32px;
-    height: 31px;
-   background: url("/img/arrowOutlet.jpg") left top no-repeat;   
+    border-top: 4px solid #333;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    border-bottom: 0 dotted;       
 }
 
 .multiSelect.multiSelectItem {

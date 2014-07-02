@@ -18,8 +18,24 @@ angular.module('kyc', [
   'kyc.filters',
   'loaders',
   'mm.foundation'
-]).
-config(['$routeProvider', function($routeProvider) {
+])
+.run(['$rootScope','ACCOUNT_ID','$http', function( $rootScope,ACCOUNT_ID,$http) {
+  $rootScope.requests = 0;
+  $http.get("/api/accounts/"+ACCOUNT_ID+"/features").then(
+    function(result){
+      var found = false;  
+      if (result && result.data){
+        angular.forEach(result.data,function(accountFeature){
+            //TODO replace the account feature resource with a model and rework the local statuses            
+            if (accountFeature.featureId === 4 && (accountFeature.status === "INSTALLED "|| accountFeature.status === "TRIAL"))
+              found = true;
+        })  
+      }
+      if (!found)
+        window.location.replace("/dashboard")
+  })
+}])
+.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {templateUrl: '/code/kyc/partials/dashboard.html', controller: 'DashboardCtrl',
     resolve:{
        load: function ($route, AllCharts,$AjaxInterceptor) {          
@@ -61,7 +77,4 @@ config(['$routeProvider', function($routeProvider) {
     }
   });
   $routeProvider.otherwise({redirectTo: '/dashboard'});
-}]).
-run(['$rootScope', function( $rootScope ) {
-  $rootScope.requests = 0;
 }]);

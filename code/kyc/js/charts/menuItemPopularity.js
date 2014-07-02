@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('MenuItemPopularity',['ChartType', function(ChartType) {
+.factory('MenuItemPopularity',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
 
 	var type = ChartType.AREA;	
     
@@ -7,8 +7,8 @@ angular.module('kyc.charts')
     var title = 'Menu Item Popularity'
     
     var menuItems = {}
-    var startDate = 0;
-    var endDate = 0;
+    var minTimestamp = 0;
+    var maxTimestamp = 0;
 
     var previousSpecifiedData = [];
     var weekData = []   
@@ -86,8 +86,7 @@ angular.module('kyc.charts')
         previousYearData = [];
 
 
-        startDate = -1;
-        endDate = 0;
+    
         
         angular.forEach(menuItems[selectedItem],function(dR,key){                            
             var orderDate = Number(key)
@@ -134,10 +133,7 @@ angular.module('kyc.charts')
         yearData.sort(sortData);
         previousYearData.sort(sortData);
 
-        if (data.length>0){
-            startDate = data[0][0];
-            endDate = data[data.length-1][0];
-        }   
+        
     }   
 
     function sortData(a,b){
@@ -195,6 +191,15 @@ angular.module('kyc.charts')
         dailyOrders = {};
         totalOrders = 0;   
 
+    }
+
+    function getItemName(itemId){
+        var found = false;
+        angular.forEach(items,function(item){
+                if (item.menuItemId == itemId)
+                    found = item.name
+        })
+        return found
     }
 
 

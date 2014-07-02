@@ -12,15 +12,15 @@ angular.module('kyc.controllers')
         $scope.changeVisibility = function( value ) {
 
         	if ( !value.display ) {
-    				setTimeout(function() {
-    				    angular.element('#removable_' + value.num).triggerHandler('click');
-    				}, 0);
-    			} else {
+				setTimeout(function() {
+				    angular.element('#removable_' + value.num).triggerHandler('click');
+				}, 0);
+			} else {
 
-    				var childScope = $scope.$new();
-    				childScope.value = value;
-    				$scope.$parent.gridster.add_widget.apply($scope.$parent.gridster, [$compile( '<li class="widget"><chart element="value"></chart></li>' )(childScope), value.size_x, value.size_y, value.col, value.row]);
-    			}
+				var childScope = $scope.$new();
+				childScope.value = value;
+				$scope.$parent.gridster.add_widget.apply($scope.$parent.gridster, [$compile( '<li class="widget"><chart element="value"></chart></li>' )(childScope), value.size_x, value.size_y, value.col, value.row]);
+			}
         };
 
          $scope.gridsterOptions = {

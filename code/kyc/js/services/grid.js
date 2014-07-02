@@ -2,7 +2,7 @@ angular.module('kyc.services').
   service('$grid', ['ChartType', function( ChartType ) {
 
   	var populateItems = function( charts ) {
-
+      console.log("populating",charts);
   	  var values = [];
       var i = 1;
       var grid = 8;
@@ -10,7 +10,7 @@ angular.module('kyc.services').
       var row = 1;
 
       angular.forEach(charts, function(value, key) {
-
+        console.log(value,key,'ho');
       	var data = {};
 
       	data.display = true;
@@ -22,11 +22,13 @@ angular.module('kyc.services').
       		data.size_x = 2;
       		data.size_y = 1;
       		data.value = value.data;
+          data.currency = value.currency;
       	} else {
       		data.showChart = true;
-			     data.size_x = 4;
+			    data.size_x = 4;
       		data.size_y = 2;
       		data.value = value;
+          data.currency = value.currency;
       	}
 
       	data.row = row;

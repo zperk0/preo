@@ -1,13 +1,14 @@
-﻿angular.module('kyc.charts')
-.factory('Revenue',['ChartType', function(ChartType) {
+angular.module('kyc.charts')
+.factory('Revenue',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
 
 	var type = ChartType.AREA;	
     var dailyRevenue = {};
     var data = [];
     var title = 'Revenue'
     var totalRevenue =0;
-    var startDate = 0;
-    var endDate = 0;
+    var minTimestamp =0;
+    var maxTimestamp =0;
+
 
     var previousSpecifiedData = [];
     var weekData = []   
@@ -36,8 +37,8 @@
     function onSetDataComplete(minDate,maxDate){
 
         var nowTimestamp = new Date().getTime();        
-        var minTimestamp = minDate.getTime();
-        var maxTimestamp = maxDate.getTime();
+        minTimestamp = minDate.getTime();
+        maxTimestamp = maxDate.getTime();
         var previousSpecifiedTimestamp =  new Date(minTimestamp - (maxTimestamp - minTimestamp))
         var weekTimestamp = new Date(new Date().getTime() - (1000 * 3600 * 24 * 7))
         var lastWeekTimestamp = new Date(new Date().getTime() - (1000 * 3600 * 24 * 7 * 2))
@@ -68,7 +69,7 @@
         endDate = 0;
         angular.forEach(dailyRevenue,function(dR,key){                                
             var orderDate = Number(key)
-            var dataRow = [Number(key),dR];
+            var dataRow = [Number(key),Number(dR.toFixed(2))];
             if (minTimestamp <= orderDate && maxTimestamp >= orderDate ){
                 data.push(dataRow);            
                 totalRevenue +=dR;                
@@ -111,9 +112,7 @@
         yearData.sort(sortData);
         previousYearData.sort(sortData);
 
-        if (data.length>0){
-            startDate = data[0][0];
-            endDate = data[data.length-1][0];
+        if (data.length>0){            
             totalRevenue = totalRevenue.toFixed(2)
         }   
     }   
@@ -130,16 +129,14 @@
     }
     
 
-    function getPeriodTotal(data){
-        var total = 0;
-        angular.forEach(data,function(d){total+=d[1]})
-        return total.toFixed(0);
-    }
+
+
     function getHighChart(){
         return {
             type:type,
             title:title,
             data: getData(),
+            currency:"£",
             numberLeft:totalRevenue,
             numberRight:ChartHelper.getPercentage(data,previousSpecifiedData), 
             modal: getModal(),
@@ -147,6 +144,17 @@
             getCsv:getCsv
             
         }
+    }
+
+    function getCsv(){
+        var data = getData();
+        var csvData =[[title]]
+        angular.forEach(data,function(d){
+            csvData.push([ ChartHelper.formatDate(d[0]),d[1]]) 
+        })
+        return {
+            data:csvData
+        };
     }
 
     function clearData(){
@@ -168,6 +176,7 @@
             dataJson: JSON.stringify(getData())
         }
     }
+
 
     function getModalOptions(){
         return [ // options for footer in modal

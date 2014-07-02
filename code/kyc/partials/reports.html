@@ -1,5 +1,5 @@
 <div class="container container-partials">
-	<div class="flip-container">
+	<div class="flip-container topSpacing">
 		<div class="flipper">
 			<div class="front" id="content-list">
 				
@@ -25,7 +25,7 @@
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
-					  		<th width="80" ng-click="orderBy = 'outlet'; direction=!direction">
+					  		<th width="90" ng-click="orderBy = 'outlet'; direction=!direction">
 					  			Outlet
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
@@ -47,7 +47,7 @@
 					  			</div>		  			
 					  		</th>
 					  		<th width="70" ng-click="orderBy = 'quantity'; direction=!direction">
-					  			Qtd
+					  			Qty
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
@@ -89,7 +89,7 @@
 					  		<td>{{ report.id }}</td>
 					  		<td>{{ report.outlet }}</td>
 					  		<td>{{ report.name }}</td>
-					  		<td>{{ report.time }}</td>
+					  		<td>{{ report.time | date:"hh:mm:ss"}}</td>
 					  		<td>{{ report.quantity }}</td>
 					  		<td>{{ report.item }}</td>
 					  		<td>{{ report.modifier }}</td>
@@ -115,21 +115,21 @@
 					<h4 class="title-white">Export as...</h4>
 
 					<div class="buttons overflow">
-						<button class="pull-left btn btn-default" >
+						<button class="pull-left btn btn-default" ng-click="exportData('pdf')" >
 							PDF
 						</button>
-						<button class="pull-left btn btn-default">
+						<button class="pull-left btn btn-default" ng-click="exportData('csv')">
 							CSV
 						</button>
 					</div>
 
 					<div class="options overflow">
 						<label class="pull-left">
-							<input type="radio" name="option" />
+							<input type="radio" name="option"  value="1" ng-model="exportAll"/>
 							All
 						</label>
 						<label class="pull-right">
-							<input type="radio" name="option" />
+							<input type="radio" name="option" value="0" ng-model="exportAll"/>
 							Selected
 						</label>
 					</div>				

@@ -7,11 +7,10 @@
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 ?>
-
-  <link rel="stylesheet" href="/bower_components/gridster/dist/jquery.gridster.min.css">
+  
   <link rel="stylesheet" href="/code/kyc/js/directives/gridster/gridster.css">  
-  <link rel="stylesheet" href="/code/kyc/css/app.css"/>  
   <link rel="stylesheet" href="/code/kyc/js/directives/multiselect/multiselect.css"/>  
+  <link rel="stylesheet" href="/code/kyc/css/app.css"/>    
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div ng-app="kyc" ng-controller='MenuCtrl'>  
@@ -49,43 +48,44 @@
         <div class="large-6 columns">
           <form class="navbar-form navbar-left" role="search" ng-submit="update()">
             <div class="row">
-              <div class="small-10 columns">
-                <label class="label-search">Outlet:</label>
-                <multi-select    
-                    input-model="outlets"    
-                    button-label="name"
-                    item-label="name"
-                    tick-property="selected"
-                    default-label="All Outlets"
-                >
-                </multi-select>                
+              <div class="large-10 columns">
+                <label>Outlet
+                  <multi-select    
+                      input-model="outlets"    
+                      button-label="name"
+                      item-label="name"
+                      tick-property="selected"
+                      default-label="All Outlets"
+                  >
+                  </multi-select>
+                </label>
               </div>
-              <div class="small-2 columns">
-                <label class="label-search">&nbsp;</label>
-                <button type="submit" class="button small">Update</button>
+              <div class="large-2 columns">
+                <label>&nbsp;
+                  <button type="submit" class="button small">Update</button>            
+                </label>
               </div>
             </div>
           </form>
         </div>
         
-        <div class="large-5 columns">
-          <form ng-submit="update()" id="formSearch">
+        <div class="large-6 columns">
+          <form ng-submit="update()">
             <div class="row">
-              <div class="small-4 columns">
-                <label class="label-search">Date:</label>
-                <input type="text" name="startDate" class="form-control input-search dropdown pdDropdown" datepicker compare="search.end_date" operation=">" ng-model="search.start_date" /> 
+              <div class="small-5 columns">
+                <label>Data
+                  <input type="text" class="form-control input-search dropdown pdDropdown" datepicker ng-model="search.start_date" /> 
+                </label>
               </div>
-              <div id="toSearchDate">
-                <label class="label-search">&nbsp;</label>
-                <span>to</span>
-              </div>              
-              <div class="small-4 columns">
-                <label class="label-search">&nbsp;</label>
-                <input type="text" name="endDate" class="form-control input-search dropdown pdDropdown" datepicker compare="search.start_date" operation="<" ng-model="search.end_date" />
+              <div class="small-5 columns">
+                <label>&nbsp;
+                  <input type="text" class="form-control input-search dropdown pdDropdown" datepicker compare="search.start_date" ng-model="search.end_date" />
+                </label>
               </div>
-              <div class="small-2 columns pull-left">
-                <label class="label-search">&nbsp;</label>
-                <button type="submit" class="button small" ng-click="fetchDataByDate()">Update</button>
+              <div class="small-2 columns">
+                <label>&nbsp;
+                  <button type="submit" class="button small" ng-click="fetchDataByDate()">Update</button>
+                </label>
               </div>
             </div>          
           </form>
@@ -118,14 +118,11 @@
     </div>  
   
   <script src="//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" type="text/javascript"></script>
-  <script src="/js/angular_all.min.js"></script>  
-  <script src="/bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
-  <script src="/bower_components/gridster/dist/jquery.gridster.min.js"></script>
-  <script src="/bower_components/highcharts/highcharts.js"></script>
+  <script src="/js/angular_all.min.js"></script>    
   <script src="/code/kyc/js/app.js"></script>
   <script src="/code/kyc/js/services/chart.js"></script>
   <script src="/code/kyc/js/services/grid.js"></script>
-  <script src="/code/kyc/js/services/ajaxinterceptor.js"></script>
+  <script src="/code/loader/ajaxInterceptor.js"></script>
   <script src="/code/kyc/js/services/outlets.js"></script>
   <script src="/code/kyc/js/services/pusher.js"></script>
   <script src="/code/kyc/js/services/stream.js"></script>
@@ -136,6 +133,7 @@
   <script src="/code/kyc/js/controllers/stock.js"></script>
   <script src="/code/kyc/js/controllers/stream.js"></script>
   <script src="/code/kyc/js/controllers/menu.js"></script>
+  <script src="/code/kyc/js/resources/export.js"></script>
   <script src="/code/kyc/js/resources/outlet.js"></script>
   <script src="/code/kyc/js/resources/order.js"></script>  
   <script src="/code/kyc/js/constants/chartType.js"></script>
@@ -147,6 +145,7 @@
   <script src="/code/kyc/js/directives/datepicker/datepicker.js"></script>
   <script src="/code/kyc/js/directives/multiselect/multiselect.js"></script>
   <script src="/code/kyc/js/charts/allCharts.js"></script>
+  <script src="/code/kyc/js/charts/chartHelper.js"></script>
   <script src="/code/kyc/js/charts/payingCustomers.js"></script>
   <script src="/code/kyc/js/charts/ordersPerCustomer.js"></script>
   <script src="/code/kyc/js/charts/averageOrderValue.js"></script>
@@ -165,7 +164,7 @@
   
   //always on session after login
   angular.module('kyc').constant('ACCOUNT_ID',<? echo $_SESSION['account_id']?>);
-  angular.module('kyc').constant('PUSHER_KEY', '63aabf4f8531a582c3e6');
+  angular.module('kyc').constant('PUSHER_KEY', '<? echo $pusherKey ?>');
   function modal_url( url ) {
     return '/code/kyc/js/modals/' + url + '.htm';
   }  

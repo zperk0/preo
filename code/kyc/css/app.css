@@ -2,6 +2,16 @@
 
 body{
   background-color: #EFEFEF;
+  font-family: "Co Text W01 Regular","Co Text W01 Light";
+  font-weight: normal;  
+}
+
+#dashboard{
+  margin-bottom:80px;
+}
+
+form label, label, .multiSelect .button{
+  color:#46545D !important;
 }
 
 .navbar-first{
@@ -16,6 +26,10 @@ body{
 .title-white{
   color: #fff;
   margin-bottom: 0px;
+  font-size: 100%;
+  line-height: 50px;
+  position: relative;
+  padding-left: 40px;
 }
 
 /**********Navbar************/
@@ -108,20 +122,15 @@ body{
 }
 
 #container-search, #content-list{
-  background-color: #fff
+  background-color: #fff;
+  padding-bottom: 30px;
 }
 
 #container-search > .container{
-  /*height: 85px;*/
-  background-color: #fff;
-  overflow: hidden;
-
+  height: 85px;
 }
 
-#content-list{
-  padding: 0px;
-  margin-top: 30px;
-}
+
 
 .widget{
   background-color: #fff;
@@ -166,30 +175,6 @@ body{
 }
 
 
-/***** Socials Network ******/
-.social-network{
-  background: url(../img/socials.png) no-repeat;
-  width: 44px;
-  height: 44px;  
-  display: block;
-}
-
-.social-network.facebook{
-  background-position: -51px -1px ;
-}
-
-.social-network.linkedin {
-  background-position: -101px -1px ;
-}
-
-.social-network.twitter {
-  background-position: -1px -1px ;
-}
-
-.ul-socials li{
-  margin: 0 5px;
-}
-
 
 /***** End Socials Network ******/
 
@@ -200,9 +185,6 @@ body{
   position: relative;
 }
 
-.container-partials .actions-chart{
-  height: 800px;
-}
 
 .content-actions{
   display: inline-block;
@@ -234,10 +216,11 @@ body{
 }
 
 .largerNumber{
-  font-size: 70px;
+  font-size: 60px;
   color: #1476B7;
   display: block;
   margin-top: 30px;
+  font-family:"Co Text W01 Regular";
 }
 
 #filterDashboard{
@@ -318,12 +301,15 @@ body{
   width: 100%
 }
 
-
+.topSpacing{
+  margin-top:30px;
+}
 
 /****** Flip Effect *******/
 
 /* entire container, keeps perspective */
 .flip-container {
+
   perspective: 1000;
   -webkit-perspective: 1000;
   -moz-perspective: 1000;
@@ -332,7 +318,8 @@ body{
 }
 
 .content-chart{
-  padding: 15px;
+  padding: 0 10px 15px 10px;
+  position:relative;
 }
   /* flip the pane when hovered */
   .flip-container.active .flipper {
@@ -345,14 +332,18 @@ body{
 
 .flip-container, .front, .back {
   width: 100%;
-  
+  height:100%;
+}
+
+.flipper, .front{
+  min-height:500px;
 }
 
 /* flip speed goes here */
 .flipper {
   transition: 0.6s;
   transform-style: preserve-3d;
-
+  height:100%;
   -webkit-transition: 0.6s;
   -moz-transition: 0.6s;
   -ms-transition: 0.6s;
@@ -362,8 +353,8 @@ body{
   -moz-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;      
-
   position: relative;
+  margin-bottom:100px;
 }
 
 /* hide back of pane during swap */
@@ -380,9 +371,11 @@ body{
   left: 0;
 }
 
+
 /* front pane, placed above back */
 .front {
   z-index: 2;
+  position:relative; /* front doesn't need to be absolute*/
 }
 
 /* back, initially hidden pane */
@@ -397,24 +390,25 @@ body{
 
 /****** End Flip Effect *******/
 
-
-.pull-left{
-  float: left !important;
-}
-
-.pull-right{
-  float: right;
-}
-
 .numberLeft{
   font-size: 40px;
-  color: #1476B7
+  color: #1476B7;
+  font-family:"Co Text W01 Bold";
+  position:absolute;
+  top:15px;
+  left:15px;
+  z-index:2;
 }
 
 .numberRight{
   font-size: 30px;
   font-weight: 600;
-  color: #8ABE4F
+  color: #8ABE4F;
+  font-family:"Co Text W01 Bold";
+  position:absolute;
+  top:15px;
+  right:15px;
+  z-index:2;
 }
 
 .top-chart{
@@ -431,17 +425,31 @@ table .sort i{
 }
 
 .table-striped{
-  border-collapse: collapse;
+  border-collapse: separate !important;
+  border-radius: 5px;  
+  overflow: hidden;
+  border: 1px solid #b4b6b8; 
+
 }
 
-.table-striped, .table-striped td, .table-striped th{
-  border: 1px solid #B8BABC;
+table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type(even){
+  background-color:#fcfcfc;
 }
-/* 
-.table-stream td{
-  border-left: 0px;
-  border-right: 0px;
-} */
+
+.table-striped tr:first-child th{
+  border-top:none;
+}
+
+.table-striped td:last-child,.table-striped th:last-child{
+  border-right:none;
+}
+
+.table-striped td,.table-striped th{
+  font-family:"Co Text W01 Light";
+  color: #6d6e71;
+  border-top: 1px solid #b4b6b8; 
+  border-right:1px solid #b4b6b8; 
+}
 
 .table-striped th input, .table-striped td input{
   margin: 0px;
@@ -450,7 +458,7 @@ table .sort i{
 .table-striped thead tr th{
   padding: 15px;
   background-color: #F3F4F4;
-  color: #797B7D;
+  
   font-weight: 400;
 }
 
@@ -461,14 +469,10 @@ table .sort i{
 
 #content-table{
   padding: 0 50px;
-  height: 600px; 
   overflow-y: scroll;
-  margin-bottom: 50px;
+  max-height: 800px;
 }
 
-.container-partials{
-  height: 800px;
-}
 
 .input-search{
   font-size: 14px !important;
@@ -483,7 +487,7 @@ table .sort i{
 
 .content-modal{
   background-color: #fff;
-  padding: 1.4em;
+  padding: 1.875em;
 }
 
 .options-modal{
@@ -581,9 +585,6 @@ span.multiSelect{
   padding: 15px;
 }
 
-.table-stream tr.result td.information{
-  border-right: 1px solid #ccc;
-}
 
 .table-max{
   width: 100%;
@@ -595,7 +596,16 @@ span.multiSelect{
 .table-max tr td{
   border: none;
   padding: 5px 15px !important;
-  font-size: 16px
+  font-size: 16px;
+  color:#333f47;
+}
+
+.table-max .streamDiscount{
+  font-style: italic;
+}
+
+.table-max .streamTotal b{
+  font-family: "Co Text W01 Bold";
 }
 
 .text-status{
@@ -621,10 +631,12 @@ span.multiSelect{
 
 .icon-know-customers{
   background: url("/img/KYC-icon-white-reverse.png") left center no-repeat;
-  float: left;
-  width: 30px;
-  height: 31px;
-  margin-right: 10px;
+  width:30px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -15px;
+  height: 30px;
 }
 
 .checkboxStyle input[type=checkbox] {  
@@ -667,36 +679,30 @@ span.multiSelect{
     color: #95979A;  
     text-align: center;  
     line-height: 15px;  
-} 
+}  
 
-#formSearch input{
-  text-align: center;
-  font-size: 13px !important;
+.table-striped td.streamPrice{
+  font-family: "Co Text W01 Bold";
+  color:#46545d;
+  font-size:105%;
 }
 
-#toSearchDate{
-  width: 15px;
-  float: left;
-} 
-
-#toSearchDate span{
-  font-weight: 600;
-  margin-top: 15px;
-  display: block;
+.table-striped td.streamCustomer{
+  font-family: "Co Text W01 Regular";
+  color:#46545d;
+  font-size:105%;
 }
 
-.label-search{
-  color: #505D65;
-  font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 10px;
-  display: block;
+.table-striped td.streamOrder{
+  font-family: "Co Text W01 Regular";
+  color:#46545d;
+  font-size:85%;
 }
 
-@media(max-width: 900px) {
-  #container-search > div > .columns{
-    width: 100%
-  }
+.table-striped td.streamUpdated{
+  font-family: "Co Text W01 Light";
+  color:#939598;
+  font-size:70%;
 }
 
 .chart_3:hover{

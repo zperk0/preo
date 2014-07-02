@@ -1,6 +1,8 @@
-angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInterceptor','OrderService', function($scope, $AjaxInterceptor,OrderService) {
+angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInterceptor','OrderService', 'Export','ACCOUNT_ID',
+	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID) {
 	
 	$scope.stock={};
+	$scope.exportAll="1";
 
   var allOrders = OrderService.getOrders();	
 	$scope.selectAll = function() {
@@ -11,6 +13,38 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 
 	}	
 
+	$scope.exportData = function(which){
+		console.log('exporting data',which);
+		var data = prepareExportData();
+		switch (which){
+			case 'pdf':
+				// new Export.Pdf(data).$save({accountId:ACCOUNT_ID},function(res){
+	   		// console.log('hoo',res);
+	   		// });
+				break;
+			case 'csv':
+			console.log('sending',data);
+				new Export.Csv(data).$save({accountId:ACCOUNT_ID},function(res){
+	          console.log('hoo',res);
+	      });
+				break;
+		}
+	}
+
+	function prepareExportData(){
+		var prepData = [["Stock"]];
+			angular.forEach($scope.stock,function(item){
+				console.log($scope.exportAll,$scope.exportAll === 1,item.selected);
+					if ($scope.exportAll === "1" || item.selected === true){
+							prepData.push([item.name,item.quantity]);
+					}
+			})
+		return {
+       data:prepData
+    }
+	}
+
+
 	function prepareScopeStock(){
 		if ( allOrders ){			
 			angular.forEach(allOrders,function(row){			
@@ -19,7 +53,7 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
         var orderData = new Date(row.created);        
         if (orderData >= minTimestamp && orderData <= maxTimestamp){
 	        	angular.forEach(row.items,function(item){
-						var itemId  = item.id;
+						var itemId  = item.menuItemId;
 							if ($scope.stock[itemId] === undefined){						
 								$scope.stock[itemId] = {
 										name:item.name,
@@ -31,9 +65,9 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 							};																			
 					})					
       		}
-				});											
+			});											
 		}
-
+		console.log($scope.stock);
 		$AjaxInterceptor.complete();		
 	}
 

@@ -1,13 +1,13 @@
 angular.module('kyc.charts')
-.factory('NumberOfOrders',['ChartType', function(ChartType) {
+.factory('NumberOfOrders',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
 
 	var type = ChartType.AREA;	
     var dailyOrders = {};
     var data = [];
     var title = 'Number of Orders'
     var totalOrders =0;
-    var startDate = 0;
-    var endDate = 0;
+    var minTimestamp =0;
+    var maxTimestamp =0;
 
     var previousSpecifiedData = [];
     var weekData = []   
@@ -33,8 +33,8 @@ angular.module('kyc.charts')
     function onSetDataComplete(minDate,maxDate){
 
         var nowTimestamp = new Date().getTime();        
-        var minTimestamp = minDate.getTime();
-        var maxTimestamp = maxDate.getTime();
+        minTimestamp = minDate.getTime();
+        maxTimestamp = maxDate.getTime();
         var previousSpecifiedTimestamp =  new Date(minTimestamp - (maxTimestamp - minTimestamp))
         var weekTimestamp = new Date(new Date().getTime() - (1000 * 3600 * 24 * 7))
         var lastWeekTimestamp = new Date(new Date().getTime() - (1000 * 3600 * 24 * 7 * 2))
@@ -60,8 +60,6 @@ angular.module('kyc.charts')
         previousYearData = [];
 
 
-        startDate = -1;
-        endDate = 0;
         angular.forEach(dailyOrders,function(dR,key){                                
             var orderDate = Number(key)
             var dataRow = [Number(key),dR];
@@ -107,10 +105,7 @@ angular.module('kyc.charts')
         yearData.sort(sortData);
         previousYearData.sort(sortData);
 
-        if (data.length>0){
-            startDate = data[0][0];
-            endDate = data[data.length-1][0];
-        }   
+        
     }   
 
     function sortData(a,b){
@@ -131,7 +126,6 @@ angular.module('kyc.charts')
             title:title,
             data: getData(),
             numberLeft:totalOrders,
-
             numberRight:ChartHelper.getPercentage(data,previousSpecifiedData), 
             modal: getModal(),
             getPdf:getPdf,
@@ -139,6 +133,7 @@ angular.module('kyc.charts')
             
         }
     }
+
     function getPdf(){
         return chartInfo = {
             type:type,
@@ -156,7 +151,17 @@ angular.module('kyc.charts')
         data = [];
         dailyOrders = {};
         totalOrders = 0;   
+    }
 
+    function getCsv(){
+        var data = getData();
+        var csvData =[[title]]
+        angular.forEach(data,function(d){
+            csvData.push([ ChartHelper.formatDate(d[0]),d[1]]) 
+        })
+        return {
+            data:csvData
+        };
     }
 
 
