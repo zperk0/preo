@@ -19,7 +19,9 @@
 						<td class='capitalise'> {{invoice.status}} </td>				
 						<td> &pound;{{invoice.accountPayment.ammount}}  </td>				
 						<td >
-								<button ng-click='downloadPdf(invoice)' type='button' class='preodayButton'> <? echo _("DOWNLOAD PDF")?> </button>								
+							<a href='/api/invoices/{{invoice.id}}/pdf' target='_blank' download="invoice.pdf">
+								<button type='button' class='preodayButton'> <? echo _("DOWNLOAD PDF")?> </button>								
+							</a>
 						</td>
 					</tr>
 				</table>	

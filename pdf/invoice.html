@@ -54,7 +54,7 @@ $(function () {
 
 
 	$("#invoiceId").html(invoice.id);
-	$("#dueDate").html(invoice.id);
+	$("#dueDate").html(invoice.dueDate);
 	$("#paidDate").html(invoice.paidDate);
 	$("#vatPercentage").html(vatPercentage);
 	
@@ -123,7 +123,7 @@ $(function () {
 	.invoice th:first-child,.invoice td:first-child{
 		text-align: left;
 		padding-left:20px;
-		width:70%;
+		width:50%;
 	}
 
 	.invoice tr{		
