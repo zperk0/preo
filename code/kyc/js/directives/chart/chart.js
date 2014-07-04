@@ -95,16 +95,16 @@ angular.module('kyc.directives').
           var obj = ng.chart.value.getPdf();
           console.log(obj,"obj");
           var pdf = new Export.Pdf(obj);          
-          pdf.$save({accountId:ACCOUNT_ID},function(res){
+          pdf.$chart({accountId:ACCOUNT_ID},function(res){
             console.log('hoo',res);
           });
         }
 
         ng.exportCsv = function(){
           var obj = ng.chart.value.getCsv();          
-          var pdf = new Export.Csv(obj);          
-          console.log('sending',pdf)
-          pdf.$save({accountId:ACCOUNT_ID},function(res){
+          var csv = new Export.Csv(obj);          
+          console.log('sending',csv)
+          csv.$save({accountId:ACCOUNT_ID},function(res){
             console.log('hee',res);
           });
         }

@@ -14,7 +14,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	}	
 
 
-	function prepareExportData(){
+	function prepareExportCsvData(){
 		var prepData = [["Customers"]];
 			angular.forEach($scope.customers,function(item){				
 				console.log(item,prepData,$scope.exportAll);	
@@ -27,17 +27,38 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
     }
 	}
 
-	$scope.exportData = function(which){
-		console.log('exporting data',which);
-		var data = prepareExportData();
+	function prepareExportPdfData(){
+		var prepData = {
+			"Name" :[],
+			"Total Spent":[],
+			"Email Address":[]
+		};
+			angular.forEach($scope.customers,function(item){
+				console.log($scope.exportAll,$scope.exportAll === 1,item.selected);
+					if ($scope.exportAll === "1" || item.selected === true){
+							prepData["Name"].push(item.name)
+							prepData["Total Spent"].push(item.totalSpent);
+							prepData["Email Address"].push(item.emailAddress);
+					}
+			})
+		return {
+			title:"Customers",
+			startDate:$scope.search.start_date.getTime(),
+			endDate:$scope.search.end_date.getTime(),
+      dataJson:JSON.stringify(prepData)
+    }
+	}
+
+	$scope.exportData = function(which){			
 		switch (which){
 			case 'pdf':
-				// new Export.Pdf(data).$save({accountId:ACCOUNT_ID},function(res){
-	   		// console.log('hoo',res);
-	   		// });
+				var data = prepareExportPdfData();
+				new Export.Pdf(data).$table({accountId:ACCOUNT_ID},function(res){
+					console.log('exported pdf');	   			
+	   		});
 				break;
 			case 'csv':
-			console.log('sending',data);
+			var data = prepareExportCsvData();
 				new Export.Csv(data).$save({accountId:ACCOUNT_ID},function(res){
 	          console.log('hoo',res);
 	      });

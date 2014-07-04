@@ -1,6 +1,7 @@
 angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInterceptor','OrderService', 'Export','ACCOUNT_ID',
 	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID) {
 	
+	
 	$scope.stock={};
 	$scope.exportAll="1";
 
@@ -14,24 +15,24 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 	}	
 
 	$scope.exportData = function(which){
-		console.log('exporting data',which);
-		var data = prepareExportData();
+		
 		switch (which){
 			case 'pdf':
-				// new Export.Pdf(data).$save({accountId:ACCOUNT_ID},function(res){
-	   		// console.log('hoo',res);
-	   		// });
+				var data = prepareExportPdfData();
+				new Export.Pdf(data).$table({accountId:ACCOUNT_ID},function(res){
+	   				
+	   		});
 				break;
 			case 'csv':
-			console.log('sending',data);
+				var data = prepareExportCsvData();
 				new Export.Csv(data).$save({accountId:ACCOUNT_ID},function(res){
-	          console.log('hoo',res);
+	          
 	      });
 				break;
 		}
 	}
 
-	function prepareExportData(){
+	function prepareExportCsvData(){
 		var prepData = [["Stock"]];
 			angular.forEach($scope.stock,function(item){
 				console.log($scope.exportAll,$scope.exportAll === 1,item.selected);
@@ -43,7 +44,25 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
        data:prepData
     }
 	}
-
+	function prepareExportPdfData(){
+		var prepData = {
+			"Item" :[],
+			"Quantity Ordered":[]
+		};
+			angular.forEach($scope.stock,function(item){
+				console.log($scope.exportAll,$scope.exportAll === 1,item.selected);
+					if ($scope.exportAll === "1" || item.selected === true){
+							prepData["Item"].push(item.name)
+							prepData["Quantity Ordered"].push(item.quantity);
+					}
+			})
+		return {
+			title:"Stock",
+			startDate:$scope.search.start_date.getTime(),
+			endDate:$scope.search.end_date.getTime(),
+      dataJson:JSON.stringify(prepData)
+    }
+	}
 
 	function prepareScopeStock(){
 		if ( allOrders ){			

@@ -41,12 +41,12 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	}
 
 
-	function prepareExportData(){
+	function prepareExportCsvData(){
 		var prepData = [["Reports"]];
 			angular.forEach($scope.reports,function(item){				
 				console.log(item,prepData);	
 					if ($scope.exportAll === "1" || item.selected === true){
-							prepData.push([item.id,item.outlet,item.name,item.time,item.quantity,item.modifier,item.total,item.status]);
+							prepData.push([item.id,item.outlet,item.name,item.time,item.quantity,item.item,item.modifier,item.total,item.status]);
 					}
 			})
 		return {
@@ -54,20 +54,53 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
     }
 	}
 
+	function prepareExportPdfData(){
+		var prepData = {
+			"Id" :[],
+			"Outlet":[],
+			"Name":[],
+			"Qty":[],
+			"Item":[],
+			"Modifier":[],
+			"Total":[],
+			"Status":[]
+		};
+			angular.forEach($scope.reports,function(item){
+				console.log($scope.exportAll,$scope.exportAll === 1,item.selected);
+					if ($scope.exportAll === "1" || item.selected === true){
+							prepData["Id"].push(item.id)
+							prepData["Outlet"].push(item.outlet);
+							prepData["Name"].push(item.name);
+							prepData["Qty"].push(item.quantity);
+							prepData["Item"].push(item.item);
+							prepData["Modifier"].push(item.modifier);
+							prepData["Total"].push(item.total);
+							prepData["Status"].push(item.status);
+					}
+			})
+		return {
+			title:"Reports",
+			startDate:$scope.search.start_date.getTime(),
+			endDate:$scope.search.end_date.getTime(),
+      dataJson:JSON.stringify(prepData)
+    }
+	}
+
 
 	$scope.exportData = function(which){
 		console.log('exporting data',which);
-		var data = prepareExportData();
+		
 		switch (which){
 			case 'pdf':
-				// new Export.Pdf(data).$save({accountId:ACCOUNT_ID},function(res){
-	   		// console.log('hoo',res);
-	   		// });
+				var data = prepareExportPdfData();
+				new Export.Pdf(data).$table({accountId:ACCOUNT_ID},function(res){
+	   			
+	   		});
 				break;
 			case 'csv':
-			console.log('sending',data);
+			var data = prepareExportCsvData();
 				new Export.Csv(data).$save({accountId:ACCOUNT_ID},function(res){
-	          console.log('hoo',res);
+	        
 	      });
 				break;
 		}
