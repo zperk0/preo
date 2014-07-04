@@ -70,7 +70,7 @@
           <li ng-show="selectedFeature.feature.upfrontPrice>0">+ &pound;{{selectedFeature.feature.upfrontPrice}} <?= _("one-off payment")?></li>
           <li>+ <?= _("VAT")?></li>
         </ul>
-        <button ng-show="!isFeatureInstalled(selectedFeature.feature)" class='preodayButton' ng-click='dismissAndShowDialog("purchase")'>BUY</button>
+        <button ng-show="!isFeatureInstalled(selectedFeature.feature)" class='preodayButton' ng-click='clickBuy()'>BUY</button>
         <button ng-show="isFeatureInstalled(selectedFeature.feature)" class='preodayButton secondary noclick' >INSTALLED</button>        
       </div>
       <div class='rightWrapper priceWrapper' ng-show="isFeatureInstalled(selectedFeature.feature) && getFeatureStatus(selectedFeature.feature) != 'TRIAL' ">

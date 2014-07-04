@@ -21,6 +21,20 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
     }
 
         
+    function getFeaturePrice(feature){
+
+      Resources.AccountFeatures.getPrice({accountId:ACCOUNT_ID,featureId:feature.id},
+        function(result){                
+          //FIXME find out a way to not have to do this. Maybe change the return value in the server?
+          var price = "";
+          angular.forEach(result,function(res){
+            if (typeof res === "string")
+              price+=res;
+          });
+          $scope.selectedFeatureCalculatedPrice = Number(price).toFixed(2);
+          $scope.dismissAndShowDialog("purchase");
+      });
+    }
 
     $scope.getScreenshot = function(){
         if ($scope.selectedFeature){
@@ -61,8 +75,11 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
       $('#featureModal').foundation('reveal', 'close');
     }
 
-    $scope.showDialog = function(which){            
-       console.log("showing dialog",which);        
+    $scope.clickBuy = function(){
+      getFeaturePrice($scope.selectedFeature.feature);
+    }
+
+    $scope.showDialog = function(which){                   
        var feature = $scope.selectedFeature.feature;  
        var clickOk;
        var clickCancel;
@@ -71,12 +88,12 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
           case "purchase":
             data = { 
               title: feature.name,
-              content: _tr("Your card will be charged ") +"<b>£"+feature.upfrontPrice.toFixed(2) + "</b>" + _tr(" for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
+              content: _tr("Your card will be charged ") +"<b>£"+$scope.selectedFeatureCalculatedPrice+ "</b>" + _tr(" for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
               showTerm: true,
               btnOk: _tr('BUY'),            
               windowClass:'medium'
             }        
-            clickOk = clickBuy;            
+            clickOk = purchaseSelectedFeature;            
           break; 
           case "trial":
             data = { 
@@ -145,8 +162,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
     }
     
 
-     function clickBuy(){
-        console.log('starting here')
+     function purchaseSelectedFeature(){
         $AjaxInterceptor.start(); 
         var feature = $scope.selectedFeature.feature;
         Resources.AccountCard.get({accountId:ACCOUNT_ID},
