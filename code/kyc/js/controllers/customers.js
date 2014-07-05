@@ -13,7 +13,6 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 		});
 	}	
 
-
 	function prepareExportCsvData(){
 		var prepData = [["Customers"]];
 			angular.forEach($scope.customers,function(item){				

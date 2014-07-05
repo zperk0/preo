@@ -70,9 +70,9 @@ angular.module('kyc', [
   });
   $routeProvider.when('/stream', {templateUrl: '/code/kyc/partials/stream.html', controller: 'StreamCtrl',
      resolve: {
-        load: function ($route, StreamService,$AjaxInterceptor) {  
+        load: function ($route, OrderService,$AjaxInterceptor) {  
           $AjaxInterceptor.start();        
-          return StreamService.load();            
+          return OrderService.load();            
         }
     }
   });

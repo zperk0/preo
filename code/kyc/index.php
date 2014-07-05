@@ -125,8 +125,8 @@
   <script src="/code/loader/ajaxInterceptor.js"></script>
   <script src="/code/kyc/js/services/outlets.js"></script>
   <script src="/code/kyc/js/services/pusher.js"></script>
-  <script src="/code/kyc/js/services/stream.js"></script>
   <script src="/code/kyc/js/services/orders.js"></script>
+  <script src="/code/kyc/js/services/currency.js"></script>
   <script src="/code/kyc/js/controllers/dashboard.js"></script>
   <script src="/code/kyc/js/controllers/customers.js"></script>
   <script src="/code/kyc/js/controllers/reports.js"></script>
@@ -136,6 +136,7 @@
   <script src="/code/kyc/js/resources/export.js"></script>
   <script src="/code/kyc/js/resources/outlet.js"></script>
   <script src="/code/kyc/js/resources/order.js"></script>  
+  <script src="/code/kyc/js/resources/venue.js"></script>  
   <script src="/code/kyc/js/constants/chartType.js"></script>
   <script src="/code/kyc/js/constants/colors.js"></script>
   <script src="/code/kyc/js/directives/directives.js"></script>

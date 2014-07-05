@@ -1,13 +1,13 @@
-angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','StreamService','pusher','$AjaxInterceptor','$interval',
- function($scope,StreamService,pusher,$AjaxInterceptor,$interval) {
+angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderService','pusher','$AjaxInterceptor','$interval',
+ function($scope,OrderService,pusher,$AjaxInterceptor,$interval) {
 
-	$scope.orders = StreamService.getOrders();
+	$scope.orders = OrderService.getOrders();
     console.log($scope.orders);
     var onTimeout = false;
     var pusherUpdateEvent = function() {                
         if (!onTimeout){
             onTimeout = true;
-            StreamService.load(function(orders){
+            OrderService.load(function(orders){
                 $scope.orders = orders;
             })        
             setTimeout(function(){onTimeout = false},500);

@@ -14,6 +14,7 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 
 	}	
 
+
 	$scope.exportData = function(which){
 		
 		switch (which){
