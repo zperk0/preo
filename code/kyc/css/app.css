@@ -267,7 +267,7 @@ form label, label, .multiSelect .button{
 }
 
 .block-status.bad{
-  background-color: #1BA4DD
+  background-color: #c0392b;
 }
 
 .add-widget{
@@ -614,11 +614,11 @@ span.multiSelect{
 }
 
 .text-status.good{
-  color: #8BC04F
+  color: #8BC04F;
 }
 
 .text-status.bad{
-  color: #1BA4DD
+  color: #c0392b;
 }
 
 
