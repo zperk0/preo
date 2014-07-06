@@ -69,7 +69,7 @@
 				<table>
 					<tr ng-repeat="accountFeature in accountFeatures | filter:isCanceled" class="disabled" >
 						<td > <img ng-src="{{accountFeature.feature.icon}}" /> </td>
-						<td> {{accountFeature.feature.name}} </td>						
+						<td class='featureTitle'> {{accountFeature.feature.name}} </td>						
 						<td ng-show="accountFeature.status === 'CANCELED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
 						<td ng-show="accountFeature.status === 'EXPIRED'"> <? echo _("Trial has expired")?> </td>				
 						<td >
@@ -81,50 +81,4 @@
 			</div>
 
 	</section>
-</div>
-
-<div id="paymentErrorDialog" class="reveal-modal medium featureDialog" data-reveal>
-      <p><? echo _("Your payment failed. Please check your payment method and purchase this feature from the shop again. The error message we have is:")?></p>
-      <p>{{paymentFailedMessage}}</p>
-      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/paymentMethod')" ><? echo _("ALTER PAYMENT METHOD")?></button>
-      <button class='negativeDismiss preodayButton secondary' ng-click="dialogCancel('paymentErrorDialog')" ><? echo _("CANCEL")?></button>
-</div>
-
- <!-- start feature modal -->
- <div id="confirmationDialog" class="reveal-modal small featureDialog" data-reveal>
-      <p><? echo _("This Premium Feature will remain active on your account until the end of the current billing cycle. You can cancel this uninstall at any time. If you wish to reinstall this Premium Feature after it has been deactivated, simply click on the <span>reinstall</span> option.")?></p>
-      <p><b> <? echo _("Are you sure you want to uninstall this Premium Feature?")?></b></p>
-      <button class='positiveDismiss preodayButton' ng-click="dialogConfirm('confirmationDialog')" ><? echo _("UNINSTALL")?></button>
-      <button class='negativeDismiss preodayButton' ng-click="dialogCancel('confirmationDialog')" ><? echo _("CANCEL")?></button>
-  </div>
-  <!-- end feature modal -->
-
-  <!-- start feature modal -->
-	 <div id="uninstallTrial" class="reveal-modal small featureDialog" data-reveal>
-	      <p><? echo _("Your free trial will be imediately canceled and you will no longer have access to this feature.")?></p>
-	      <p><b> <? echo _("Are you sure you want to cancel this Free Trial? This action cannot be undone?")?></b></p>
-	      <button class='positiveDismiss preodayButton' ng-click="dialogConfirm('uninstallTrial')" ><? echo _("UNINSTALL")?></button>
-	      <button class='negativeDismiss preodayButton' ng-click="dialogCancel('uninstallTrial')" ><? echo _("CANCEL")?></button>
-	  </div>
-	  <!-- end feature modal -->
-
-  <!-- start feature modal -->
- <div id="reinstallDialog" class="reveal-modal small featureDialog" data-reveal>
-      <p><? echo _("This Premium Feature is currently canceled. A new charge will be made to your card before reinstalling this feature.")?></p>
-      <p><b> <? echo _("Are you sure you want to reinstall this Premium Feature?")?></b></p>
-      <button class='positiveDismiss preodayButton' ng-click="dialogConfirm('reinstallDialog')" ><? echo _("REINSTALL")?></button>
-      <button class='negativeDismiss preodayButton' ng-click="dialogCancel('reinstallDialog')" ><? echo _("CANCEL")?></button>
-  </div>
-  <!-- end feature modal -->
-
-   <div id="errorDialog" class="reveal-modal medium featureDialog" data-reveal>
-      <p><? echo _("Please add a payment method to your account in order to subscribe to Premium Features")?></p>
-      <button class='positiveDismiss preodayButton' ng-click="navigateTo('/accountSettings#/paymentMethod')" ><? echo _("ADD PAYMENT METHOD")?></button>
-      <button class='negativeDismiss preodayButton secondary' ng-click="dialogCancel('errorDialog')" ><? echo _("RETURN TO ACCOUNT SETTINGS")?></button>
-</div>
-
-<div id="successDialog" class="reveal-modal medium featureDialog" data-reveal>
-      <b><? echo _("Your new Premium Feature is now live!")?></b><br/>
-      <p><? echo _("You can manage subscriptions from your account settings page")?></p>      
-      <button class='positiveDismiss preodayButton' ng-click="dialogCancel('successDialog')"><? echo _("RETURN TO ACCOUNT SETTINGS")?></button>
 </div>

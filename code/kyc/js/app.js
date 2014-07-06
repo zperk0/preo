@@ -5,8 +5,9 @@ angular.module('kyc.resources', [])
 angular.module('kyc.charts',[])
 angular.module('kyc.services',[])
 
+
 // Declare app level module which depends on filters, and services
-angular.module('kyc', [
+angular.module('kyc', [  
   'ngRoute',
   'ngResource',   
   'kyc.directives',

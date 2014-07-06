@@ -3,7 +3,6 @@ angular.module('notification', ['ngSanitize'])
 
     var confirmModalController = function( $scope, $modalInstance, data, deffered ) {
 
-        console.log('confirmed',data);
         $scope.title = data.title || '';
         $scope.content = data.content || '';
 
@@ -11,8 +10,17 @@ angular.module('notification', ['ngSanitize'])
 
         $scope.acceptTerm = false;
 
-        $scope.btnOk = data.btnOk || 'OK';
-        $scope.btnCancel = data.btnCancel || 'Cancel';
+        if (data.btnOk === false){
+            $scope.btnOk = false;
+        }
+        else{
+            $scope.btnOk = data.btnOk || _tr('OK');
+        }
+        if (data.btnCancel === false ){
+            data.btnCancel = false;
+        } else {
+            $scope.btnCancel = data.btnCancel || _tr('CANCEL');
+        }
 
         $scope.changeTerm = function( newTerm ) {
             $scope.acceptTerm = newTerm;
@@ -41,21 +49,16 @@ angular.module('notification', ['ngSanitize'])
           controller: confirmModalController,
           resolve: {
             data: function () {
-                console.log('reolving data')
               return data;
             },
             deffered: function() {
-                console.log('reolving deferred')
                 return deffered;
             }
           }
         });
-        console.log('opened!');        
         modalCofirm.opened.then(function(){
               setTimeout(function(){              
-                console.log("here",$(".modal-preoday").length);
                   $(".modal-preoday").addClass("active");
-                  console.log("here hooo!")
               },400)
         }) 
         return deffered.promise;

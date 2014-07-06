@@ -1,16 +1,7 @@
 angular.module('accountSettings.controllers')
- .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature','StripeCharge','Invoice',
-  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature,StripeCharge,Invoice) {
-    //FIXME find a way to not have to do this.
-     $(".featureDialog").on('opened', function() {
-      var that = this;
-      setTimeout(function(){
-        $(that).addClass('active');  
-      },1)    
-    }).on('closed',function(){
-        
-        $(this).removeClass("active");
-    });
+ .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature','StripeCharge','Invoice','$notification','$AjaxInterceptor',
+  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature,StripeCharge,Invoice,$notification,$AjaxInterceptor) {
+    
 
     var allFeatures = FEATURES;
     $scope.setSelected($scope.Views.subscription);
@@ -52,7 +43,71 @@ angular.module('accountSettings.controllers')
     $scope.isCanceled = function(accountFeature){              
         return (accountFeature.status === 'CANCELED') || (accountFeature.status === 'EXPIRED');
     }
-  
+    
+    $scope.showDialog = function(which){
+       var clickOk;
+       var clickCancel;
+       var data; 
+        switch (which){
+          case "uninstall":
+            data = { 
+              content: _tr("This Premium Feature will remain active on your account until the end of the current billing cycle. You can cancel this uninstall at any time. If you wish to reinstall this Premium Feature after it has been deactivated, simply click on the <span>reinstall</span> option.")+"<br/><br/><b>"+_tr("Are you sure you want to uninstall this Premium Feature?")+"</b>",
+              showTerm: false,
+              btnOk: _tr('UNINSTALL'),            
+              windowClass:'medium'
+            }        
+            clickOk = function(){$scope.updateStatus($scope.selectedFeature,"UNINSTALLED")};
+          break; 
+          case "uninstallTrial":
+            data = { 
+              content: _tr("Your free trial will be imediately canceled and you will no longer have access to this feature.")+"<br/><br/><b>"+_tr("Are you sure you want to cancel this Free Trial? This action cannot be undone?")+"<b/>",
+              showTerm: false,
+              btnOk: _tr('UNINSTALL'),            
+              windowClass:'medium'
+            }        
+            clickOk = function(){$scope.updateStatus($scope.selectedFeature,"EXPIRED")}
+          break; 
+          case "reinstall":
+            data = { 
+              content: _tr("This Premium Feature is currently canceled. A new charge will be made to your card before reinstalling this feature.")+"<br/><br/><b>"+_tr("Are you sure you want to reinstall this Premium Feature?")+"<b/>",
+              showTerm: false,
+              btnOk: _tr('REINSTALL'),            
+              windowClass:'medium'
+            }        
+            clickOk = function(){purchaseFeature($scope.selectedFeature)}
+          break;
+          case "reinstall":
+            data = { 
+              content: _tr("This Premium Feature is currently canceled. A new charge will be made to your card before reinstalling this feature.")+"<br/><br/><b>"+_tr("Are you sure you want to reinstall this Premium Feature?")+"<b/>",
+              showTerm: false,
+              btnOk: _tr('REINSTALL'),            
+              windowClass:'medium'
+            }        
+            clickOk = function(){purchaseFeature($scope.selectedFeature)}
+          break;
+          case "paymentError":
+             data = { 
+               title: _tr("Error"),
+              content: $scope.paymentFailedMessage,
+              showTerm: false,
+              btnOk: _tr('PAYMENT METHOD'),                  
+              windowClass:'medium'              
+            }        
+            clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')}
+          break;
+          case "success":
+            data = {
+              title:_tr("Your new Premium Feature is now live!"),
+              content: _tr("You can manage subscriptions from your account settings page"),
+              showTerm: false,
+              btnOk:false,
+              btnCancel:_tr("OK"),            
+              windowClass:'medium'
+            }
+          break;
+        }
+      $notification.confirm(data).then(clickOk,clickCancel);
+    };
 
 
     $scope.navigateTo = function(place){
@@ -89,40 +144,23 @@ angular.module('accountSettings.controllers')
     $scope.openConfirmDialog = function(feature){
         $scope.selectedFeature = feature;
         if (feature.status == "TRIAL")
-          $('#uninstallTrial').foundation('reveal', 'open');
+          $scope.showDialog("uninstallTrial");
         else
-          $('#confirmationDialog').foundation('reveal', 'open');
+          $scope.showDialog("uninstall");
     }
 
-    $scope.dialogConfirm = function(dialog){
-
-      switch (dialog){
-        case "confirmationDialog": 
-          $scope.updateStatus($scope.selectedFeature,"UNINSTALLED")
-          break;
-        case "uninstallTrial":
-          $scope.updateStatus($scope.selectedFeature,"EXPIRED")
-          break;
-        case "reinstallDialog":
-          purchaseFeature($scope.selectedFeature)
-          break;
-      } 
-      
-    }
-    $scope.dialogCancel = function(dialog){
-      $('#'+dialog).foundation('reveal', 'close');
-    }
-
-
+        
     $scope.updateStatus=function(accountFeature,status){        
         //TODO how to not do this?
         var previousStatus = accountFeature.status;
         accountFeature.status = status;
         accountFeature.$put({accountId:accountFeature.accountId,featureId:accountFeature.featureId},function(result){
+          console.log("Put account feature success",result,status,accountFeature);
           accountFeature.feature = getFeatureById(accountFeature.featureId);
           setActiveCount();
-          $('#confirmationDialog').foundation('reveal', 'close');
+          
         },function(error){
+          console.log("Put account feature fail",error);
           accountFeature.status = previousStatus;
           displayErrorNoty();
         });
@@ -130,7 +168,7 @@ angular.module('accountSettings.controllers')
 
     $scope.reinstallAccountFeature = function(accountFeature){
       $scope.selectedFeature = accountFeature;
-      $('#reinstallDialog').foundation('reveal', 'open');
+      $scope.showDialog("reinstall");
     }
 
     $scope.removeAccountFeature = function(accountFeature){
@@ -154,6 +192,7 @@ angular.module('accountSettings.controllers')
 
     function purchaseFeature(accountFeature){
       var feature = accountFeature.feature;      
+      $AjaxInterceptor.start();
         AccountCard.get({accountId:ACCOUNT_ID},
           function(result){                      
             if (result.token && result.token!=null){               
@@ -161,22 +200,24 @@ angular.module('accountSettings.controllers')
                   console.log('here',accountPayment);
                         if (accountPayment.status ===  "SUCCESS"){
                           loadAll(function (){
-                               $('#successDialog').foundation('reveal', 'open');         
+                            $AjaxInterceptor.complete();
+                            $scope.showDialog('success');                            
                           });                             
                         } else {                        
+                          $AjaxInterceptor.complete();
                           var response = JSON.parse(accountPayment.response);
                           $scope.paymentFailedMessage = response.detail_message;
-                          $('#paymentErrorDialog').foundation('reveal', 'open');
-                          console.log('revealed error dialog');
+                          $scope.showDialog("paymentError")                          
                         }                        
-                      },function(error){                        
+                      },function(error){              
+                        $AjaxInterceptor.complete();          
                         displayErrorNoty();
                 });
                                           
             }          
         },function(error){          
           if (error.data && error.data.status === 404){
-                $('#noPaymentDialog').foundation('reveal', 'open');
+                $scope.showDialog("paymentError")
           } else{
               displayErrorNoty()
             }                       

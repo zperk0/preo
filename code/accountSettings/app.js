@@ -8,7 +8,9 @@ var app = angular.module('accountSettings', [
   'features',
   'accountSettings.resources',
   'accountSettings.controllers',
-  'loaders'
+  'loaders',
+  'mm.foundation',
+  'notification'
 ]).run(['$rootScope', function( $rootScope ) {
   $rootScope.requests = 0;
 }]);

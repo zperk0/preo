@@ -121,7 +121,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
               title: _tr("Error"),
               content: $scope.paymentFailedMessage,
               showTerm: false,
-              btnOk: _tr('ALTER PAYMENT METHOD'),
+              btnOk: _tr('PAYMENT METHOD'),
               btnCancel: _tr('RETURN TO STORE'),            
               windowClass:'medium'
             }        
