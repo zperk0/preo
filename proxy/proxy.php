@@ -55,6 +55,7 @@ class Proxy {
         curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($this->ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($this->ch, CURLOPT_HEADER, true);
+        curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, $_SERVER['REQUEST_METHOD']);
         curl_setopt($this->ch, CURLOPT_TIMEOUT, $this->config["timeout"]);
         curl_setopt($this->ch, CURLOPT_USERAGENT, "PHP Proxy"); 
         if (!empty($this->config['user']) && !empty($this->config['pass'])){
@@ -95,7 +96,7 @@ class Proxy {
         $this->set_request_headers($headers);
         
         // forward post
-        if ($_SERVER["REQUEST_METHOD"] == "POST")
+        if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "PUT")
         {
             if(in_array($this->get_content_type($headers), array('application/x-www-form-urlencoded','multipart/form-data')))
             {
