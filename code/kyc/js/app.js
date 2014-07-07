@@ -33,7 +33,7 @@ angular.module('kyc', [
         })  
       }
       if (!found)
-        window.location.replace("/dashboard")
+        window.location.replace("/shop#/feature/4")
   })
 }])
 .config(['$routeProvider', function($routeProvider) {

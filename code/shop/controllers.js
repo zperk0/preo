@@ -1,8 +1,23 @@
 //shop
 var appCtrls = angular.module('shop.controllers',[]);
   
-appCtrls.controller('shopController', function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification,$AjaxInterceptor) {    
+appCtrls.controller('shopController', function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification,$AjaxInterceptor,$location) {    
 
+    
+    function initModalFromPath(){
+      if ($location.path() != ''){   
+        var parts = $location.path().split("/");   
+        console.log('parts1',parts[1],parts[1]==='feature');
+        if (parts[1] === 'feature'){            
+            var featureId = Number(parts[2]);
+            console.log('got feature id :',featureId);
+            $scope.setSelectedFeature(featureId);
+            $('#featureModal').foundation('reveal', 'open');
+            $location.path('');
+        }
+      }
+    }
+    
     $AjaxInterceptor.start(); 
     
     $scope.currentScreenshot = 0;
@@ -15,8 +30,9 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
     
     function getAccountFeatures() {
       Resources.AccountFeatures.query({accountId:ACCOUNT_ID},function(result){    
-        $scope.accountFeatures = result;        
+        $scope.accountFeatures = result;                
         $AjaxInterceptor.complete(); 
+        initModalFromPath();
       });
     }
 
@@ -57,12 +73,24 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
       }
     }
 
-    $scope.setSelectedFeature = function(index){      
+    $scope.setSelectedFeature = function(id){      
         $scope.currentScreenshot = 0;
         $scope.selectedFeature = {
-            index:index,
-            feature:$scope.PremiumFeatures[index]
+            index:id,
+            feature:getFeatureById(id)
         };        
+    }
+
+    function getFeatureById(id){
+      console.log("lenght:",$scope.PremiumFeatures.length);
+      console.log($scope.PremiumFeatures);      
+      for (var i=0;i<=$scope.PremiumFeatures.length;i++){        
+        var feature = $scope.PremiumFeatures[i]
+        console.log(id,feature);
+        if (feature.id === id){
+          return feature;
+        }
+      }
     }
 
     //TODO make this a default modal-preoday

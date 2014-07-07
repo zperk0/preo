@@ -5,6 +5,7 @@ angular.module('shop', [
   'ngResource',
   'features',
   'loaders',
+  'ngRoute',
   'shop.resources',
   'notification',
   'shop.controllers',
