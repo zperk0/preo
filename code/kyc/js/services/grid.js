@@ -9,8 +9,7 @@ angular.module('kyc.services').
       var col = 1;
       var row = 1;
 
-      angular.forEach(charts, function(value, key) {
-        console.log(value,key,'ho');
+      angular.forEach(charts, function(value, key) {        
       	var data = {};
 
       	data.display = true;

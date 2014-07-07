@@ -1,7 +1,11 @@
 angular.module('kyc.services')
 .service('OutletService',['ACCOUNT_ID','Outlet', function(ACCOUNT_ID,Outlet) {
-
-    var outlets = Outlet.query({accountId:ACCOUNT_ID});
+    var outlets = [];
+    this.init = function(callback){
+         outlets = Outlet.query({accountId:ACCOUNT_ID},function(res){
+            callback(res);
+        });
+    }    
     
     this.getOutlets = function(){    	
         return outlets;

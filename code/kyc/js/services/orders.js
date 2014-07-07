@@ -18,8 +18,10 @@ angular.module('kyc.services')
       return maxData;
     }
 
-		function load(callback,minCreated,maxCreated) {                         
+		function load(callback,minCreated,maxCreated) {               
+        console.log("orders load:",minCreated,maxCreated);          
         return Order.query({accountId:ACCOUNT_ID,maxCreated:maxCreated,minCreated:minCreated},function (res){
+          console.log('orders loaded',res);
           orders = res;
           if(callback)
             callback(res);

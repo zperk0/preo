@@ -1,16 +1,19 @@
 
-angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','CurrencyService',
-	function($scope,OutletService,OrderService,AllCharts,$route,CurrencyService) {	
-		
+angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','CurrencyService','$AjaxInterceptor',
+	function($scope,OutletService,OrderService,AllCharts,$route,CurrencyService,$AjaxInterceptor) {	
 			$scope.currencySymbol = "£";
 			$scope.outlets = [];
 			$scope.search = {};
 
-			$scope.search.start_date =  new Date(new Date().getTime() - (60 * 24 * 3600 * 1000));
+			$scope.search.start_date =  new Date(new Date().getTime() - (180 * 24 * 3600 * 1000));
 			$scope.search.end_date = new Date();
 
 
-			$scope.outlets = OutletService.getOutlets();
+			OutletService.init(function(){
+				$scope.outlets = OutletService.getOutlets();					
+				AllCharts.init($scope.search.start_date,$scope.search.end_date);
+			})
+			
 
 			 $scope.$watch(
           "search.start_date",
@@ -25,8 +28,12 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		});
 
 		$scope.update = function(){						
-			AllCharts.prepareCharts(OrderService.getOrders(),$scope.search.start_date,$scope.search.end_date,$scope.getSelectedOutlets());
-			$route.reload();
+			$AjaxInterceptor.start();
+			setTimeout(function(){
+				AllCharts.prepareCharts(OrderService.getOrders(),$scope.search.start_date,$scope.search.end_date,$scope.getSelectedOutlets());
+				$route.reload();
+				$AjaxInterceptor.complete();
+			},500);
 		}
 			
 						 
@@ -35,5 +42,5 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 				return data.selected === true;
 			});
 		}
-
+		
 }])

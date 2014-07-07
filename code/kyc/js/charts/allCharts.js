@@ -4,7 +4,8 @@ angular.module('kyc.charts')
 	function($q,OrderService,PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
 			CustomersPie,CustomersBar,Revenue,NumberOfOrders,MenuItemPopularity) {
     var defer = $q.defer();
-
+    var initialMinDate;
+    var initialMaxDate;
 	var charts = {
     		payingCustomers:PayingCustomers,
     		ordersPerCustomer:OrdersPerCustomer,
@@ -20,7 +21,7 @@ angular.module('kyc.charts')
             menuItemPopularity:MenuItemPopularity
   	}
 
-    OrderService.load(prepareCharts);
+        
 
     function findOutlet(selectedOutlets,outletId){
         var found = false;
@@ -31,11 +32,11 @@ angular.module('kyc.charts')
         return found;
     }
 
-    function prepareCharts(orders,minDate,maxDate,selectedOutlets){
+    function prepareCharts(orders,minDate,maxDate,selectedOutlets){        
         if (!minDate)
-            minDate = new Date(new Date().getTime() - (7 * 24 * 3600 * 1000));
+            minDate = initialMinDate;
         if (!maxDate)
-            maxDate = new Date();
+            maxDate = initialMaxDate;
         if (!selectedOutlets)
             selectedOutlets = [];
 
@@ -57,24 +58,31 @@ angular.module('kyc.charts')
                     chart.onSetDataComplete(minDate,maxDate)
                 }            
             });  
-           defer.resolve(charts); 
+        defer.resolve(charts); 
     }
 
     function getPreparedCharts(){
         var retCharts = [];
         angular.forEach(charts,function(chart){
             if (chart.getHighChart){
-                console.log(chart.getHighChart());
                 retCharts.push(chart.getHighChart())
             }
             else{
                 retCharts.push(chart)
             }
         })
+        console.log("getting prepared charts",retCharts)
         return retCharts;
     }
 
+    function init(minDate,maxDate){
+        initialMinDate = minDate;
+        initialMaxDate = maxDate;
+        OrderService.load(prepareCharts);
+    }
+
     return {
+        init:init,
         promise:defer.promise,
         getPreparedCharts:getPreparedCharts,
         prepareCharts:prepareCharts
