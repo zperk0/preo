@@ -24,6 +24,8 @@ angular.module('shop.resources',['ngResource']).
 
     var StripeCharge = $resource('/api/invoices/:invoiceId/pay',{invoiceId:"@invoiceId"},{});
 
+    
+
     return {
         Feature:Feature,
         AccountCard:AccountCard,

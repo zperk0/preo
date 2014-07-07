@@ -213,32 +213,6 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
         return found;
     }
 
-    $scope.isFeatureInstalled = function(feature){
-      var found = false;      
-        if (feature && $scope.accountFeatures && $scope.accountFeatures.length >0){
-            angular.forEach($scope.accountFeatures,function(accountFeature){                                          
-                if (accountFeature.featureId == feature.id)                  
-                if (feature.id == accountFeature.featureId && (accountFeature.status === "INSTALLED" || accountFeature.status === "TRIAL" || accountFeature.status === "UNINSTALLED") ){
-                  found = true;
-                }
-            });
-        }        
-      return found;
-    }
-    $scope.isFeatureOwned = function(feature){      
-      var found = false;      
-        if (feature && $scope.accountFeatures && $scope.accountFeatures.length >0){
-            angular.forEach($scope.accountFeatures,function(accountFeature){                            
-              if (feature.id == accountFeature.featureId){
-              }
-                if (feature.id == accountFeature.featureId && accountFeature.status != "CANCELED" && accountFeature.status != "REMOVED" && accountFeature.status != "UNINSTALLED" && accountFeature.status != "EXPIRED" ){                
-                  found = true;
-                }
-            });
-        }        
-      return found;
-    }
-
     $scope.getExpiryDate = function(feature){
        var found = 0;      
 
