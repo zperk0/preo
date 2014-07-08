@@ -13,6 +13,14 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 		});
 	}	
 
+	$scope.exportPdf= function(){
+  	$scope.pdfData = prepareExportPdfData();    
+  }
+
+  $scope.exportCsv = function(){
+    $scope.csvData = prepareExportCsvData();
+  }
+
 	function prepareExportCsvData(){
 		var prepData = [["Customers"]];
 			angular.forEach($scope.customers,function(item){				
@@ -46,23 +54,6 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 			endDate:$scope.search.end_date.getTime(),
       dataJson:JSON.stringify(prepData)
     }
-	}
-
-	$scope.exportData = function(which){			
-		switch (which){
-			case 'pdf':
-				var data = prepareExportPdfData();
-				new Export.Pdf(data).$table({accountId:ACCOUNT_ID},function(res){
-					console.log('exported pdf');	   			
-	   		});
-				break;
-			case 'csv':
-			var data = prepareExportCsvData();
-				new Export.Csv(data).$save({accountId:ACCOUNT_ID},function(res){
-	          console.log('hoo',res);
-	      });
-				break;
-		}
 	}
 
 

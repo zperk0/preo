@@ -19,10 +19,10 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
   }
 
   $scope.exportCsv = function(){
-    $scope.csvData = { data: prepareExportData() };
+    $scope.csvData = prepareExportCsvData();
   }
 
-	function prepareExportData(type){		
+	function prepareExportCsvData(type){		
 		var prepData = [["Stock"]];
 		angular.forEach($scope.stock,function(item){
 				console.log($scope.exportAll,$scope.exportAll === 1,item.selected);
@@ -30,7 +30,7 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 							prepData.push([item.name,item.quantity]);
 					}
 			})
-		return prepData
+		return { data: prepData };
 	}
 	function prepareExportPdfData(){
 		var prepData = {

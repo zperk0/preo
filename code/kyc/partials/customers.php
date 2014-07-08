@@ -1,10 +1,11 @@
+<? session_start(); ?>
 <div class="container container-partials">
 	<div class="flip-container topSpacing">
 		<div class="flipper">
 			<div class="front" id="content-list">
 				
 				<div class="header-list overflow">			
-					<span class="pull-left">Customers</span>
+					<span class="pull-left"><? echo _("Customers") ?></span>
 
 					<a href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
 						<i class="fa fa-plus"></i>
@@ -19,21 +20,21 @@
 					  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
 					  		</th>
 					  		<th ng-click="orderBy = 'name'; direction=!direction">
-					  			Name
+					  			<? echo _("Name")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
 					  		<th ng-click="orderBy = 'totalSpent'; direction=!direction">
-					  			Total Spent
+					  			<? echo _("Total Spent")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
 					  		<th ng-click="orderBy = 'emailAddress'; direction=!direction">
-					  			Email addres
+					  			<? echo _("Email address")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
@@ -64,25 +65,33 @@
 				</div>
 
 				<div class="content-actions">
-					<h4 class="title-white">Export as...</h4>
+					<h4 class="title-white"><? echo _("Export as...")?></h4>
 
 					<div class="buttons overflow">
-						<button class="pull-left btn btn-default" ng-click="exportData('pdf')">
-							PDF
-						</button>
-						<button class="pull-left btn btn-default" ng-click="exportData('csv')">
-							CSV
-						</button>
+						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()'>
+							<input name='data' value='{{pdfData}}' type='hidden'/>
+								<button class="pull-left btn btn-default">
+										<? echo _("PDF") ?>
+								</button>
+						</form>
+						
+						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/csv/report' method='POST' ng-submit='exportCsv()'>
+							<input name='data' value='{{csvData}}' type='hidden'/>
+								<button class="pull-left btn btn-default">
+										<? echo _("CSV") ?>
+								</button>
+						</form>
+						
 					</div>
 
 					<div class="options overflow">
 						<label class="pull-left">
 							<input type="radio" name="option" value="1" ng-model="exportAll"/>
-							All
+							<? echo _("All")?>
 						</label>
 						<label class="pull-right">
 							<input type="radio" name="option" value="0" ng-model="exportAll"/>
-							Selected
+							<? echo _("Selected")?>
 						</label>
 					</div>				
 				</div>

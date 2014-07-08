@@ -54,7 +54,7 @@ angular.module('kyc', [
         }
     }
   });
-  $routeProvider.when('/customers', {templateUrl: '/code/kyc/partials/customers.html', controller: 'CustomersCtrl',
+  $routeProvider.when('/customers', {templateUrl: '/code/kyc/partials/customers.php', controller: 'CustomersCtrl',
     resolve:{
        load: function ($route, OrderService,$AjaxInterceptor) {    
           $AjaxInterceptor.start();      
