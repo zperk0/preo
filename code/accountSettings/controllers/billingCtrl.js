@@ -4,16 +4,8 @@ angular.module('accountSettings.controllers')
 
 		$scope.setSelected($scope.Views.billingHistory);
 		
-    AccountInvoice.query({accountId:ACCOUNT_ID},function(result){
-      $scope.invoices = result;     
-      console.log('invoices',$scope.invoices);
+    $scope.invoices  = AccountInvoice.query({accountId:ACCOUNT_ID},function(result){      
       $scope.finishLoading();
-    })  	
-    
-
-    // $scope.downloadPdf = function(invoice){
-    // 		Invoice.pdf({invoiceId:invoice.id},function(result){
-    // 				console.log(result);
-    // 		})
-    // }
+    })  	    
+  
   }]);    

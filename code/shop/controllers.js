@@ -42,11 +42,12 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
       Resources.AccountFeatures.getPrice({accountId:ACCOUNT_ID,featureId:feature.id},
         function(result){                
           //FIXME find out a way to not have to do this. Maybe change the return value in the server?
+          console.log('got result',result);
           var price = "";
           angular.forEach(result,function(res){
             if (typeof res === "string")
               price+=res;
-          });
+          });          
           $scope.selectedFeatureCalculatedPrice = Number(price).toFixed(2);
           $scope.dismissAndShowDialog("purchase");
       });
