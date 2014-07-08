@@ -38,7 +38,7 @@ angular.module('kyc', [
   })
 }])
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/dashboard', {templateUrl: '/code/kyc/partials/dashboard.html', controller: 'DashboardCtrl',
+  $routeProvider.when('/dashboard', {templateUrl: '/code/kyc/partials/dashboard.php', controller: 'DashboardCtrl',
     resolve:{
        load: function ($route, AllCharts,$AjaxInterceptor) {          
           $AjaxInterceptor.start();          
