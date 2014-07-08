@@ -8,4 +8,8 @@ angular.module('accountSettings.controllers')
       $scope.finishLoading();
     })  	    
   
+
+    $scope.getExportInvoice = function(id){
+      return "/api/invoices/"+id+"/pdf"
+    }
   }]);    

@@ -19,9 +19,9 @@
 						<td class='capitalise'> {{invoice.status}} </td>				
 						<td> &pound;{{invoice.getTotal()}}  </td>				
 						<td >
-							<a href='/api/invoices/{{invoice.id}}/pdf' target='_blank' download="invoice.pdf">
-								<button type='button' class='preodayButton'> <? echo _("DOWNLOAD PDF")?> </button>								
-							</a>
+							<form action='{{getExportInvoice(invoice.id)}}' method='GET'>								
+									<button type='submit' class='preodayButton'> <? echo _("DOWNLOAD PDF")?> </button>																
+							</form>
 						</td>
 					</tr>
 				</table>	

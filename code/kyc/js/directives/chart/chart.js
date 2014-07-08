@@ -92,11 +92,7 @@ angular.module('kyc.directives').
 
         ng.exportPdf= function(){          
           var obj = ng.chart.value.getPdf();
-          ng.pdfData = JSON.stringify(obj);
-          // var pdf = new Export.Pdf(obj);          
-          // pdf.$chart({accountId:ACCOUNT_ID},function(res){
-          //   console.log('hoo',res);
-          // });
+          ng.pdfData = JSON.stringify(obj);          
         }
 
         ng.exportCsv = function(){
