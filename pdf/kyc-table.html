@@ -9,13 +9,13 @@ $(function () {
     		title: "Stock",
         startDate: 1403982955032,
         endDate: 1403982955032,
-        dataJson: {
+        data: {
 	        "Item" : ["item 1","item 2","item 3"],
 	        "Quantity Ordered":[5,10,25],
 	      }
     };
     
-		var parsedData = JSON.parse(data.dataJson);
+		var parsedData = JSON.parse(data.data);
     $('.title').html(data.title);
 
     $('.dates').html(formatDate(data.startDate) + " - " + formatDate(data.endDate));

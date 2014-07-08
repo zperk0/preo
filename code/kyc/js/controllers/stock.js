@@ -14,36 +14,23 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 
 	}	
 
+  $scope.exportPdf= function(){
+  	$scope.pdfData = prepareExportPdfData();    
+  }
 
-	$scope.exportData = function(which){
-		
-		switch (which){
-			case 'pdf':
-				var data = prepareExportPdfData();
-				new Export.Pdf(data).$table({accountId:ACCOUNT_ID},function(res){
-	   				
-	   		});
-				break;
-			case 'csv':
-				var data = prepareExportCsvData();
-				new Export.Csv(data).$save({accountId:ACCOUNT_ID},function(res){
-	          
-	      });
-				break;
-		}
-	}
+  $scope.exportCsv = function(){
+    $scope.csvData = { data: prepareExportData() };
+  }
 
-	function prepareExportCsvData(){
+	function prepareExportData(type){		
 		var prepData = [["Stock"]];
-			angular.forEach($scope.stock,function(item){
+		angular.forEach($scope.stock,function(item){
 				console.log($scope.exportAll,$scope.exportAll === 1,item.selected);
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData.push([item.name,item.quantity]);
 					}
 			})
-		return {
-       data:prepData
-    }
+		return prepData
 	}
 	function prepareExportPdfData(){
 		var prepData = {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kyc.directives').
-  directive('chart', ['$modal','ChartType', '$chartService','Export','ACCOUNT_ID','$http', function($modal, ChartType, $chartService,Export,ACCOUNT_ID,$http) {
+  directive('chart', ['$modal','ChartType', '$chartService','Export','ACCOUNT_ID', function($modal, ChartType, $chartService,Export,ACCOUNT_ID) {
 
   	return {
   		templateUrl: '/code/kyc/js/directives/chart/chart.php',
@@ -23,7 +23,7 @@ angular.module('kyc.directives').
         $chart.height( heightParent );
         
   			
-        ng.accountId = ACCOUNT_ID;
+
         refreshChart();
   			
         
@@ -90,15 +90,12 @@ angular.module('kyc.directives').
           });
         }
 
-        ng.exportPdf= function(){          
-          var obj = ng.chart.value.getPdf();
-          ng.pdfData = JSON.stringify(obj);          
+        ng.exportPdf= function(){
+          ng.pdfData = ng.chart.value.getPdf();          
         }
 
         ng.exportCsv = function(){
-          var obj = ng.chart.value.getCsv();                    
-          ng.csvData = JSON.stringify(obj);          
-          
+          ng.csvData = ng.chart.value.getCsv();                    
         }
 
         ng.getText = function(chart){

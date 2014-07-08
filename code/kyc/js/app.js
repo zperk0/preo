@@ -46,7 +46,7 @@ angular.module('kyc', [
         }
     }
   });
-  $routeProvider.when('/stock', {templateUrl: '/code/kyc/partials/stock.html', controller: 'StockCtrl',
+  $routeProvider.when('/stock', {templateUrl: '/code/kyc/partials/stock.php', controller: 'StockCtrl',
       resolve:{
        load: function ($route, OrderService,$AjaxInterceptor) {          
           $AjaxInterceptor.start();
