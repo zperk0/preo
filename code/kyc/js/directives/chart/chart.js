@@ -4,7 +4,7 @@ angular.module('kyc.directives').
   directive('chart', ['$modal','ChartType', '$chartService','Export','ACCOUNT_ID','$http', function($modal, ChartType, $chartService,Export,ACCOUNT_ID,$http) {
 
   	return {
-  		templateUrl: '/code/kyc/js/directives/chart/chart.htm',
+  		templateUrl: '/code/kyc/js/directives/chart/chart.php',
   		restrict: 'E',
   		replace: true,
   		scope: {
@@ -96,12 +96,9 @@ angular.module('kyc.directives').
         }
 
         ng.exportCsv = function(){
-          var obj = ng.chart.value.getCsv();          
-          var csv = new Export.Csv(obj);          
-          console.log('sending',csv)
-          csv.$save({accountId:ACCOUNT_ID},function(res){
-            console.log('hee',res);
-          });
+          var obj = ng.chart.value.getCsv();                    
+          ng.csvData = JSON.stringify(obj);          
+          
         }
 
         ng.getText = function(chart){

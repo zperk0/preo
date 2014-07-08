@@ -1,3 +1,5 @@
+<? session_start(); ?>
+
 <div class="flip-container">
 	<div class="flipper">
 		<div class="chart front">
@@ -55,15 +57,20 @@
 				<h4 class="title-white">Export as...</h4>
 
 				<div class="buttons"> 
-					<form action='/api/accounts/2/exports/pdfs/post' method='POST' ng-submit='exportPdf()'>
-					<input name='data' value='{{pdfData}}' type='hidden'/>
-					<button  type='submit' class="pull-left btn btn-default">
-						PDF
-					</button>
+				<!--FIXME I can't figure out a way to use a dynamic action on this form using javascript only. for some reason if we try to alter
+									the action to use the correct account id, the form is not submitted. Find a way to do it correctly and replace this -->
+					<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/post' method='POST' ng-submit='exportPdf()'>
+						<input name='data' value='{{pdfData}}' type='hidden'/>
+							<button  type='submit' class="pull-left btn btn-default">
+								PDF
+							</button>
 					</form>
-					<button class="pull-left btn btn-default" ng-click="exportCsv()">
-						CSV
-					</button>
+					<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/csv/post' method='POST' ng-submit='exportCsv()'>						
+						<input name='data' value='{{csvData}}' type='hidden'/>
+							<button  type='submit' class="pull-left btn btn-default">
+								CSV
+							</button>
+					</form>
 				</div>
 			</div>
 		</div>
