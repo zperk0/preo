@@ -18,7 +18,7 @@
   <header>
     <div class="container-fluid faixa-orange">
       <div class="container">
-        <h4 class="title-white"><span class="icon-know-customers"></span> Know your customers</h4>
+        <h4 class="title-white"><span class="icon-know-customers"></span><? echo _("Know your customers")?></h4>
       </div>
     </div>
 
@@ -28,12 +28,12 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="metrics">
-                <a href="#/dashboard" active-link="active"><i class="fa icon-large"></i>Metrics</a>
+                <a href="#/dashboard" active-link="active"><i class="fa icon-large"></i><? echo _("Metrics")?></a>
               </li>
-              <li class="stock"><a href="#/stock" active-link="active"><i class="fa icon-large"></i>Stock</a></li>
-              <li class="customers"><a href="#/customers" active-link="active"><i class="fa icon-large"></i>Customers</a></li>
-              <li class="reports"><a href="#/reports" active-link="active"><i class="fa icon-large"></i>Reports</a></li>
-              <li class="live-stream"><a href="#/stream" active-link="active"><i class="fa icon-large"></i>Live stream</a></li>
+              <li class="stock"><a href="#/stock" active-link="active"><i class="fa icon-large"></i><? echo _("Stock")?></a></li>
+              <li class="customers"><a href="#/customers" active-link="active"><i class="fa icon-large"></i><? echo _("Customers")?></a></li>
+              <li class="reports"><a href="#/reports" active-link="active"><i class="fa icon-large"></i><? echo _("Reports")?></a></li>
+              <li class="live-stream"><a href="#/stream" active-link="active"><i class="fa icon-large"></i><? echo _("Live stream")?></a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
       </section>
@@ -49,7 +49,7 @@
           <form class="navbar-form navbar-left" role="search" ng-submit="update()">
             <div class="row">
               <div class="large-10 columns">
-                <label>Outlet:
+                <label><? echo _("Outlet:")?>
                   <multi-select    
                       input-model="outlets"    
                       button-label="name"
@@ -62,7 +62,7 @@
               </div>
               <div class="large-2 columns">
                 <label>&nbsp;
-                  <button type="submit" class="button small">Update</button>            
+                  <button type="submit" class="button small"><? echo _("Update")?></button>            
                 </label>
               </div>
             </div>
@@ -73,7 +73,7 @@
           <form ng-submit="update()" class='navbar-form'>
             <div class="row">
               <div class="small-5 columns">
-                <label>Date:
+                <label><? echo _("Date:")?>
                   <input type="text" class="form-control input-search dropdown pdDropdown" datepicker ng-model="search.start_date" /> 
                 </label>
               </div>
@@ -84,7 +84,7 @@
               </div>
               <div class="small-2 columns">
                 <label>&nbsp;
-                  <button type="submit" class="button small" ng-click="fetchDataByDate()">Update</button>
+                  <button type="submit" class="button small" ng-click="fetchDataByDate()"><? echo _("Update")?></button>
                 </label>
               </div>
             </div>          
