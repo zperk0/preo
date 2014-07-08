@@ -70,7 +70,7 @@ angular.module('kyc', [
         }
     }
   });
-  $routeProvider.when('/stream', {templateUrl: '/code/kyc/partials/stream.html', controller: 'StreamCtrl',
+  $routeProvider.when('/stream', {templateUrl: '/code/kyc/partials/stream.php', controller: 'StreamCtrl',
      resolve: {
         load: function ($route, OrderService,$AjaxInterceptor) {  
           $AjaxInterceptor.start();        

@@ -4,46 +4,42 @@
 			<div class="front" id="content-list">
 				
 				<div class="header-list overflow">			
-					<span class="pull-left">Live Stream</span>
-
-					<a href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
-						<i class="fa fa-plus"></i>
-					</a>
+					<span class="pull-left"><? echo _("Live Stream")?></span>				
 				</div>
 				<div id="content-table">
 					<table class="table table-striped table-list table-stream table-condensed">
 					<thead>
 					  	<tr>					  		
 					  		<th ng-click="orderBy = 'status'; direction=!direction">
-					  			Status
+					  			<? echo _("Status")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
 					  		<th ng-click="orderBy = 'total'; direction=!direction">
-					  			Total
+					  			<? echo _("Total")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
 					  		<th ng-click="orderBy = 'customer'; direction=!direction">
-					  			Customer
+					  			<? echo _("Customer")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>					  	
 					  		<th ng-click="orderBy = 'order'; direction=!direction">
-					  			Order
+					  			<? echo _("Order")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
 					  		<th ng-click="orderBy = 'time'; direction=!direction">
-					  			Time
+					  			<? echo _("Time")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
@@ -79,11 +75,11 @@
 					  						<td width="200">{{ currencySymbol+item.total.toFixed(2) }}</td>
 					  					</tr>
 					  					<tr ng-show="order.discount && order.discount>0" class='streamDiscount'>
-					  						<td colspan="3">Discount</td>
+					  						<td colspan="3"><? echo _("Discount")?></td>
 					  						<td width="200">-{{ currencySymbol+order.discount.toFixed(2) }}</td>
 					  					</tr>
 					  					<tr class='streamTotal'>
-					  						<td colspan="3"><b>TOTAL</b></td>
+					  						<td colspan="3"><b><? echo _("TOTAL")?></b></td>
 					  						<td width="200"><b>{{ currencySymbol+order.total.toFixed(2) }}</b></td>
 					  					</tr>
 					  				</tbody>
@@ -104,20 +100,7 @@
 					</a>
 
 				</div>
-
-				<div class="content-actions">
-					<h4 class="title-white">Export as...</h4>
-
-					<div class="buttons">
-						<button class="pull-left btn btn-default" >
-							PDF
-						</button>
-						<button class="pull-left btn btn-default">
-							CSV
-						</button>
-					</div>
-				</div>
-			</div>			
+				
 		</div>
 	</div>
 </div>
