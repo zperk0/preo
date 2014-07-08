@@ -12,38 +12,12 @@ $(function () {
 
 	var vatPercentage = 20;
 
-	var invoice = {
-		id:502756,		
-		dueDate:'November 9, 2013',
-		paidDate:'November 9, 2013',
-		items:[
-				{
-					name:"Assistant",
-					price:100,
-					quantity:1
-				},
-				{
-					name:"Independent",
-					price:100,
-					quantity:1
-				},
-				{
-					name:"Know your customers",
-					price:20,
-					quantity:1,
-				}
-			],
-		user:[
-				"Simon Evans",
-				"Company Name",
-				"Address Line 1",
-				"Address Line 2",
-				"Address Line 3"
-		]
-	};
+	var invoice = {"id":308,"dueDate":"July 21, 2014","paidDate":"July 21, 2014","items":[{"name":"Independant","price":517.33,"quantity":1}],"user":["bla","add1","add2","add3"]};
 
-	if(invoice.paidDate !== undefined || invoice.paidDate !== "")
+	if(invoice.paidDate !== undefined && invoice.paidDate !== ""){
+		console.log(invoice.paidDate===undefined,'here');
 		$(".showIfPaid").css({"display":"block"})
+	}
 
 
 	var billToUiStr="";
@@ -111,6 +85,7 @@ $(function () {
 	}
 
 	.invoice{
+		margin-top:22%;
 		width:100%;		
 	}
 	.invoice th{ padding-bottom:10px;}
@@ -156,19 +131,19 @@ $(function () {
 		position:absolute;
 		left:45%;
 		top:5px;
+		margin:2% 0;
 	}
 
 	.showIfPaid{
 			display:none;
 	}
 	.logo{ margin:2% 0;}
-	.showIfPaid{ margin:2% 0;}
 	.myrow{ padding:0; margin:5% 0 0 0;}
 	.row{ float:left; width:100%; padding-bottom:3px;}
 	.row p{ margin:0;}
 	.row p b{ float:left;}
 	.row p span{ font-weight:bold; width:178px; text-align:right; float:left;}
-	.lastrow{ margin-bottom:4%;}
+	
 	.totalHeader{ font-size:22px; margin-top:2%; line-height:50px;}
 	.totlist{ font-size:19px; margin-top:2%; line-height:50px;}
  
@@ -195,7 +170,7 @@ $(function () {
 		
 		<div class='row myrow'><p><b>Invoice #:</b><span id='invoiceId'></span></p></div>
 		<div class='row'><p><b>Due Date:</b><span id='dueDate'></span></p></div>
-		<div class='row lastrow'><p><b>Paid Date:</b><span id='paidDate'></span></p></div>
+		<div class='row lastrow showIfPaid'><p><b>Paid Date:</b><span id='paidDate'></span></p></div>
 	</div>
 	<table class='invoice' width="100%" border="0" cellspacing="0" cellpadding="0">
 		<tr>
