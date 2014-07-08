@@ -28,7 +28,8 @@ angular.module('kyc', [
       if (result && result.data){
         angular.forEach(result.data,function(accountFeature){
             //TODO replace the account feature resource with a model and rework the local statuses            
-            if (accountFeature.featureId === 4 && (accountFeature.status === "INSTALLED "|| accountFeature.status === "TRIAL"))
+            console.log(accountFeature.featureId,accountFeature.status);
+            if (accountFeature.featureId === 4 && (accountFeature.status === "INSTALLED" || accountFeature.status === "TRIAL"))
               found = true;
         })  
       }
