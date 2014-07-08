@@ -11,6 +11,13 @@ angular.module('kyc.directives').
   			chart: '=element'
   		},
   		link: function( ng, elem, attrs ) {        
+
+        ng.noData = false;
+        if (!ng.chart.showChart){                    
+          if (ng.chart.value === 0 || ng.chart.value === 'NaN' || ng.chart.value == NaN)
+              ng.noData = true;
+        }
+
         ng.ChartType = ChartType;
         var initialHeight = ng.chart.value.type === ChartType.number ? 150 : 322;
         var $actionsChart = elem.find('.actions-chart');
@@ -99,6 +106,7 @@ angular.module('kyc.directives').
         }
 
         ng.getText = function(chart){
+          console.log ("getting text",chart.value);                    
             if (typeof chart.value === "object"){
               var strNum = chart.value.numberLeft
             }

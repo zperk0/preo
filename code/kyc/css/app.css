@@ -340,6 +340,14 @@ form label, label, .multiSelect .button{
   margin-top:30px;
 }
 
+.noData{
+  position: absolute;
+  font-size: 150%;
+  top: 55%;
+  width: 100%;
+
+}
+
 /****** Flip Effect *******/
 
 /* entire container, keeps perspective */
@@ -370,7 +378,7 @@ form label, label, .multiSelect .button{
   height:100%;
 }
 
-.flipper, .front{
+.flipper.reportPage, .front.reportPage{
   min-height:500px;
 }
 

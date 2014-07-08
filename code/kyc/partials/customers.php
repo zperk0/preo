@@ -1,7 +1,7 @@
 <? session_start(); ?>
 <div class="container container-partials">
 	<div class="flip-container topSpacing">
-		<div class="flipper">
+		<div class="flipper reportPage">
 			<div class="front" id="content-list">
 				
 				<div class="header-list overflow">			
