@@ -104,6 +104,35 @@ form label, label, .multiSelect .button{
   background: url('/code/kyc/images/icons/live-stream-icon-white.png') center center no-repeat;
 }
 
+@media(max-width: 954px) {
+  #navbar-menu ul li a i{
+    background: none !important;
+    height: 0px !important;
+  }
+
+  #navbar-menu ul li a{
+    width: 100% !important;
+    padding: 10px !important;
+  }
+
+  #navbar-menu{
+    height: 45px !important;
+  }
+
+  #navbar-menu.expanded{
+    height: 225px !important;
+  }
+
+  #navbar-menu .navbar-nav{
+    width: 92% !important;
+  }
+
+  #icon-menu{
+    background: none !important;
+  }
+}
+
+
 
 /**********End Navbar************/
 
