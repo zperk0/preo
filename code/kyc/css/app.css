@@ -23,6 +23,12 @@ form label, label, .multiSelect .button{
   background-color: #F6B33D;
 }
 
+
+.navbar-form label>*{
+  margin-top:20px;
+}
+
+
 .title-white{
   color: #fff;
   margin-bottom: 0px;

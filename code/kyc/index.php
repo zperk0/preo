@@ -49,7 +49,7 @@
           <form class="navbar-form navbar-left" role="search" ng-submit="update()">
             <div class="row">
               <div class="large-10 columns">
-                <label>Outlet
+                <label>Outlet:
                   <multi-select    
                       input-model="outlets"    
                       button-label="name"
@@ -70,10 +70,10 @@
         </div>
         
         <div class="large-6 columns">
-          <form ng-submit="update()">
+          <form ng-submit="update()" class='navbar-form'>
             <div class="row">
               <div class="small-5 columns">
-                <label>Data
+                <label>Date:
                   <input type="text" class="form-control input-search dropdown pdDropdown" datepicker ng-model="search.start_date" /> 
                 </label>
               </div>
