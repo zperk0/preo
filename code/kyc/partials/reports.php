@@ -1,10 +1,11 @@
+<? session_start();?>
 <div class="container container-partials">
 	<div class="flip-container topSpacing">
 		<div class="flipper">
 			<div class="front" id="content-list">
 				
 				<div class="header-list overflow">			
-					<span class="pull-left">Reports</span>
+					<span class="pull-left"><? echo _("Reports") ?></span>
 
 					<a href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
 						<i class="fa fa-plus"></i>
@@ -19,63 +20,63 @@
 					  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
 					  		</th>
 					  		<th width="60" ng-click="orderBy = 'id'; direction=!direction">
-					  			ID
+					  			<? echo _("ID")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
 					  		<th width="90" ng-click="orderBy = 'outlet'; direction=!direction">
-					  			Outlet
+					  			<? echo _("Outlet")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
 					  		<th ng-click="orderBy = 'name'; direction=!direction">
-					  			Name
+					  			<? echo _("Name")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
 					  		<th ng-click="orderBy = 'time'; direction=!direction">
-					  			Time
+					  			<? echo _("Time")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
 					  		<th width="70" ng-click="orderBy = 'quantity'; direction=!direction">
-					  			Qty
+					  			<? echo _("Qty")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
 					  		<th ng-click="orderBy = 'item'; direction=!direction">
-					  			Item
+					  			<? echo _("Item")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
 					  		<th ng-click="orderBy = 'modifier'; direction=!direction">
-					  			Modifier
+					  			<? echo _("Modifier")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
 					  		<th width="80" ng-click="orderBy = 'total'; direction=!direction">
-					  			Total
+					  			<? echo _("Total")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
 					  		<th ng-click="orderBy = 'status'; direction=!direction">
-					  			Status
+					  			<? echo _("Status")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
@@ -112,25 +113,32 @@
 				</div>
 
 				<div class="content-actions">
-					<h4 class="title-white">Export as...</h4>
+					<h4 class="title-white"><? echo _("Export as...")?></h4>
 
-					<div class="buttons overflow">
-						<button class="pull-left btn btn-default" ng-click="exportData('pdf')" >
-							PDF
-						</button>
-						<button class="pull-left btn btn-default" ng-click="exportData('csv')">
-							CSV
-						</button>
+				<div class="buttons overflow">
+						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()'>
+							<input name='data' value='{{pdfData}}' type='hidden'/>
+								<button class="pull-left btn btn-default" ng-click="exportData('pdf')">
+										<? echo _("PDF") ?>
+								</button>
+						</form>
+						
+						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/csv/report' method='POST' ng-submit='exportCsv()'>
+							<input name='data' value='{{csvData}}' type='hidden'/>
+								<button class="pull-left btn btn-default" ng-click="exportData('csv')">
+										<? echo _("CSV") ?>
+								</button>
+						</form>
+						
 					</div>
-
 					<div class="options overflow">
 						<label class="pull-left">
 							<input type="radio" name="option"  value="1" ng-model="exportAll"/>
-							All
+							<? echo _("All")?>
 						</label>
 						<label class="pull-right">
 							<input type="radio" name="option" value="0" ng-model="exportAll"/>
-							Selected
+							<? echo _("Selected")?>
 						</label>
 					</div>				
 				</div>

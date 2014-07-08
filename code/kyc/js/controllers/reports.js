@@ -87,24 +87,13 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	}
 
 
-	$scope.exportData = function(which){
-		console.log('exporting data',which);
-		
-		switch (which){
-			case 'pdf':
-				var data = prepareExportPdfData();
-				new Export.Pdf(data).$table({accountId:ACCOUNT_ID},function(res){
-	   			
-	   		});
-				break;
-			case 'csv':
-			var data = prepareExportCsvData();
-				new Export.Csv(data).$save({accountId:ACCOUNT_ID},function(res){
-	        
-	      });
-				break;
-		}
-	}
+	$scope.exportPdf= function(){
+  	$scope.pdfData = prepareExportPdfData();    
+  }
+
+  $scope.exportCsv = function(){
+    $scope.csvData = prepareExportCsvData();
+  }
 
 	function getOutletName(id){
 		if ( $scope.outlets ) {
