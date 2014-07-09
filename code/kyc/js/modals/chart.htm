@@ -20,7 +20,7 @@
 			<span ng-show="option.percent>0">+</span>
 			<span ng-show="option.percent<0">-</span>			
 			<span ng-bind-html='option.percent'></span>
-			<span ng-show="isNaN(option.percent)">%</span>
+			<span ng-show="option.percent<0 || option.percent>0">%</span>
 		</span>
 	</div>
 </div>

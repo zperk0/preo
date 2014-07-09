@@ -158,7 +158,8 @@ angular.module('kyc.charts')
             modal: getModal(),
             items:items,
             getPdf:getPdf,
-            getCsv:getCsv
+            getCsv:getCsv,
+            tooltipText: _tr(' orders')
         }
     }
 

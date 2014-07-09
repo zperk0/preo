@@ -141,7 +141,8 @@ angular.module('kyc.charts')
             numberRight:ChartHelper.getPercentage(data,previousSpecifiedData), 
             modal: getModal(),
             getPdf:getPdf,
-            getCsv:getCsv
+            getCsv:getCsv,
+            tooltipText: "£"
             
         }
     }
