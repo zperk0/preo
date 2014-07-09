@@ -67,6 +67,4 @@
 		<link rel="shortcut icon" 		href="<?echo $_SESSION['path']?>/img/fav.png">
 	</head>
 	<body>
-	<!-- //TODO //FIXME How to not push this into prod?? -->
-	<script src="//localhost:35729/livereload.js"></script>
 	<div id="wrap">
