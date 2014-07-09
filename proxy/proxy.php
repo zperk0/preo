@@ -28,24 +28,17 @@ class Proxy {
     
     // curl handle
     protected $ch;
-    
-    // configuration
-    protected $config = array();
+    protected $url;
+    protected $apiAuth;    
 
     /**
      * New proxy instance
      */
-    function __construct()
+    function __construct($url,$apiAuth)
     {        
 
-        // load the config
-        $config = array();
-        require "config.php";
-        
-        // check config
-        if (!count($config)) die("Please provide a valid configuration");
-        
-        $this->config = $config;
+        $this->url = $url;
+        $this->apiAuth = $apiAuth;
         
         // initialize curl
         $this->ch = curl_init();
@@ -56,12 +49,9 @@ class Proxy {
         curl_setopt($this->ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($this->ch, CURLOPT_HEADER, true);
         curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, $_SERVER['REQUEST_METHOD']);
-        curl_setopt($this->ch, CURLOPT_TIMEOUT, $this->config["timeout"]);
+        curl_setopt($this->ch, CURLOPT_TIMEOUT, 10);
         curl_setopt($this->ch, CURLOPT_USERAGENT, "PHP Proxy"); 
-        if (!empty($this->config['user']) && !empty($this->config['pass'])){
-            curl_setopt($this->ch, CURLOPT_USERPWD, "{$this->config['user']}:{$this->config['pass']}");
-            curl_setopt($this->ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-        }
+        
     }
     
     /**
@@ -69,29 +59,18 @@ class Proxy {
      *
      * @param string $url
      */
-    public function forward($url = '')
+    public function forward()
     {
-        // build the correct url
-        if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on")
-        {
-            $url = "https://" . $this->config["server"] . ":" . $this->config["https_port"] . "/" . ltrim($url, "/");
-        } 
-        else 
-        {
-
-            //FIXME removed this to use server name with /v1 after port if using localhost.
-            $url = "http://" . $this->config["server"] . ltrim($url, "/");
-            // $url = "http://" . $this->config["server"] . ":" . $this->config["http_port"] . "/" . ltrim($url, "/");
-        }
+    
         
         // set url
-        curl_setopt($this->ch, CURLOPT_URL, $url);
+        curl_setopt($this->ch, CURLOPT_URL, $this->url);
         
         // forward request headers
         $headers = $this->get_request_headers();
 
         //Added preoday authorization on this proxy
-        $headers['Authorization'] = $this->config['apiAuth'];
+        $headers['Authorization'] = $this->apiAuth;
 
         $this->set_request_headers($headers);
         
@@ -219,10 +198,7 @@ class Proxy {
                 $base_url = $_SERVER["HTTP_HOST"];
                 $base_url .= rtrim(str_replace(basename($_SERVER["SCRIPT_NAME"]), "", $_SERVER["SCRIPT_NAME"]), "/");
                 
-                // replace ports and forward url
-                $header = str_replace(":" . $this->config["http_port"], "", $header);
-                $header = str_replace(":" . $this->config["https_port"], "", $header);
-                $header = str_replace($this->config["server"], $base_url, $header);
+
             }
             
             // set headers
