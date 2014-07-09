@@ -16,15 +16,11 @@
   "dependencies": {
     "angular-resource": "~1.2.16",
     "angular-route": "~1.2.16",
-    "angularjs": "*",
-    "jquery": "~2.1.1"
-  },
-  "devDependencies": {
-    "angular-ui-bootstrap": "~0.11.0",
-    "angular-foundation": "*",
-    "bootstrap-css-only": "~3.1.1",
+    "jquery": "~2.1.1",
+    "angular": "~1.2.19",    
     "gridster": "~0.5.1",
     "highcharts": "~3.0.7",
-    "angular-sanitize": "~1.2.19"
+    "angular-sanitize": "~1.2.19",
+    "angular-foundation": "~0.2.2"
   }
 }
