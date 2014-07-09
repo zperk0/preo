@@ -164,7 +164,7 @@
 						<td class="menuTDQuant hide">
 						</td>
 						<td class="menuTDVisi">
-							<div class="switch small"> 
+							<div class="switch small hide"> 
 								<input name="oVisi[item0][m0][0]" value="0" type="radio">
 								<label class='no'><?echo _("No");?></label>
 
@@ -299,7 +299,7 @@
 												<td class="menuTDQuant hide">
 												</td>
 												<td class="menuTDVisi">
-													<div class="switch small"> 
+													<div class="switch small hide"> 
 														<input name="oVisi[item<?echo ($iKey+1);?>][m0][0]" value="0" type="radio">
 														<label class='no'><?echo _("No");?></label>
 
@@ -331,7 +331,7 @@
 													<td class="menuTDQuant hide">
 													</td>
 													<td class="menuTDVisi">
-														<div class="switch small"> 
+														<div class="switch small hide"> 
 															<input name="oVisi[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>][<?echo ($oKey+1);?>]" value="0" type="radio" <?if(!$option['visible']){?>checked<?}?>>
 															<label class="no"><?echo _("No");?></label>
 

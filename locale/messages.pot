@@ -3,39 +3,36 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Preoday Webapp\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-09 15:46+0100\n"
-"PO-Revision-Date: 2014-05-12 23:32+0100\n"
-"Last-Translator: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: de_DE\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
 
 #: code/accountSettings/index.php:21
 #: code/accountSettings/partials/password.php:1
 #: code/accountSettings/partials/profile.php:1
 #: inc/settings/settings_content.php:6
 msgid "Profile"
-msgstr "Profil"
+msgstr ""
 
 #: code/accountSettings/index.php:22
 #: code/accountSettings/partials/billingHistory.php:1
 #: code/accountSettings/partials/subscription.php:1
-#, fuzzy
 msgid "Subscriptions"
-msgstr "Descriptif"
+msgstr ""
 
 #: code/accountSettings/index.php:23
-#, fuzzy
 msgid "Payment Methods"
-msgstr "Moyen de paiement"
+msgstr ""
 
 #: code/accountSettings/index.php:24
 #: code/accountSettings/partials/billingHistory.php:5
@@ -47,21 +44,17 @@ msgid "Inv no."
 msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:11
-#, fuzzy
 msgid "Date"
-msgstr "Date?"
+msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:12
 #: code/kyc/partials/reports.php:79 code/kyc/partials/stream.php:14
 msgid "Status"
 msgstr ""
 
-# If this is in the sense of quantity it is 'Quantité?'
-# If it is in the sense of total amount i.e. money it will be 'Somme?'
 #: code/accountSettings/partials/billingHistory.php:13
-#, fuzzy
 msgid "Amount"
-msgstr "Somme ?"
+msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:23
 msgid "DOWNLOAD PDF"
@@ -70,17 +63,16 @@ msgstr ""
 #: code/accountSettings/partials/password.php:5
 #: inc/settings/settings_content.php:58
 msgid "Old Password"
-msgstr "Ancien mot de passe"
+msgstr ""
 
 #: code/accountSettings/partials/password.php:12 inc/reset/reset_content.php:9
 #: inc/settings/settings_content.php:66
 msgid "New Password"
-msgstr "Nouveau mot de passe"
+msgstr ""
 
 #: code/accountSettings/partials/password.php:19
-#, fuzzy
 msgid "Confirm"
-msgstr "Confirmer votre mot de passe"
+msgstr ""
 
 #: code/accountSettings/partials/password.php:25
 #: code/accountSettings/partials/payment.php:42
@@ -92,7 +84,7 @@ msgstr "Confirmer votre mot de passe"
 #: inc/dashboard/outletConfig.php:88 inc/dashboard/userConfig.php:120
 #: inc/dashboard/venueConfig.php:468
 msgid "SAVE CHANGES"
-msgstr "ENREGISTRER MODIFICATIONS"
+msgstr ""
 
 #: code/accountSettings/partials/password.php:26
 #: code/accountSettings/partials/payment.php:43
@@ -104,12 +96,11 @@ msgstr "ENREGISTRER MODIFICATIONS"
 #: inc/dashboard/outletConfig.php:89 inc/dashboard/userConfig.php:121
 #: inc/dashboard/venueConfig.php:469
 msgid "SAVING..."
-msgstr "EN COURS DE SAUVEGARDE"
+msgstr ""
 
 #: code/accountSettings/partials/payment.php:1
-#, fuzzy
 msgid "Payment"
-msgstr "3. Paiement"
+msgstr ""
 
 #: code/accountSettings/partials/payment.php:5
 msgid "Card Number"
@@ -137,24 +128,20 @@ msgid "YY"
 msgstr ""
 
 #: code/accountSettings/partials/payment.php:26
-#, fuzzy
 msgid "Billing Address"
-msgstr "Adresse de l'endroit"
+msgstr ""
 
 #: code/accountSettings/partials/payment.php:29
-#, fuzzy
 msgid "Address Line 1"
-msgstr "Adresse de l'endroit"
+msgstr ""
 
 #: code/accountSettings/partials/payment.php:31
-#, fuzzy
 msgid "Address Line 2"
-msgstr "Adresse de l'endroit"
+msgstr ""
 
 #: code/accountSettings/partials/payment.php:33
-#, fuzzy
 msgid "Address Line 3"
-msgstr "Adresse de l'endroit"
+msgstr ""
 
 #: code/accountSettings/partials/payment.php:35
 #: inc/dashboard/venueConfig.php:157
@@ -162,9 +149,8 @@ msgid "Town/City"
 msgstr ""
 
 #: code/accountSettings/partials/payment.php:37
-#, fuzzy
 msgid "Postcode"
-msgstr "Code postal de l'endroit"
+msgstr ""
 
 #: code/accountSettings/partials/payment.php:41
 msgid "CHANGE DETAILS"
@@ -178,52 +164,49 @@ msgstr ""
 #: code/accountSettings/partials/profile.php:5
 #: inc/settings/settings_content.php:8 inc/signup/signup_content.php:33
 msgid "First Name"
-msgstr "Prénom"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:9
 #: inc/signup/signup_content.php:35
 msgid "Please type your first name.(max 100chars)"
-msgstr "Veuillez taper votre prénom (max 100 caractères)"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:14
 #: inc/settings/settings_content.php:13 inc/signup/signup_content.php:38
 msgid "Last Name"
-msgstr "Nom de Famille"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:18
 #: inc/signup/signup_content.php:40
 msgid "Please type your last name.(max 100chars)"
-msgstr "Veuillez taper votre nom (max 100 caractères)"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:23
-#, fuzzy
 msgid "Email Address"
-msgstr "Adresse de l'endroit"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:27
 #: inc/signin/signin_content.php:25
 msgid "Please type a valid email address"
-msgstr "Veuillez entrer une adresse email valide"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:32
 #: inc/settings/settings_content.php:25
 msgid "Business Name"
-msgstr "Nom de votre entreprise"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:36
-#, fuzzy
 msgid "Please type your account name.(max 100chars)"
-msgstr "Veuillez taper votre nom (max 100 caractères)"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:42
 #: inc/dashboard/userConfig.php:59 inc/signin/signin_content.php:31
 msgid "Password"
-msgstr "Mot de passe"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:44
-#, fuzzy
 msgid "CHANGE PASSWORD"
-msgstr "Réinitialiser le mot de passe"
+msgstr ""
 
 #: code/accountSettings/partials/subscription.php:4
 msgid "Billing Schedule"
@@ -243,43 +226,36 @@ msgid "Your recurring payment has failed!"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:13
-#, fuzzy
 msgid "Please update your card details within "
-msgstr "Veuillez taper votre Email"
+msgstr ""
 
 #: code/accountSettings/partials/subscription.php:13
 msgid " days to prevent your Premium Features from being deactivated."
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:16
-#, fuzzy
 msgid "Your account will be billed"
-msgstr "Votre compte"
+msgstr ""
 
 #: code/accountSettings/partials/subscription.php:16
-#, fuzzy
 msgid "on"
-msgstr "Lun"
+msgstr ""
 
 #: code/accountSettings/partials/subscription.php:17
-msgid ""
-"You have no active subscriptions, your account will not be billed at this "
-"time."
+msgid "You have no active subscriptions, your account will not be billed at this time."
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:32
-#, fuzzy
 msgid "CHANGE CARD"
-msgstr "CHANGER LA LANGUE"
+msgstr ""
 
 #: code/accountSettings/partials/subscription.php:33
 msgid "BILLING HISTORY"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:38
-#, fuzzy
 msgid "Active Premium Features"
-msgstr "Fonctions Premium"
+msgstr ""
 
 #: code/accountSettings/partials/subscription.php:41
 msgid "You currently don't have any active Premium Features on your account."
@@ -291,9 +267,8 @@ msgstr ""
 
 #: code/accountSettings/partials/subscription.php:42
 #: inc/dashboard/dashboard_content.php:107
-#, fuzzy
 msgid "Available Premium Features"
-msgstr "Fonctions Premium"
+msgstr ""
 
 #: code/accountSettings/partials/subscription.php:42
 msgid ""
@@ -320,9 +295,8 @@ msgid "STORE"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:66
-#, fuzzy
 msgid "Deactivated Premium Features"
-msgstr "Fonctions Premium"
+msgstr ""
 
 #: code/accountSettings/partials/subscription.php:74
 msgid "Trial has expired"
@@ -361,19 +335,16 @@ msgid "Live stream"
 msgstr ""
 
 #: code/kyc/index.php:44
-#, fuzzy
 msgid "Outlet:"
-msgstr "Points de vente"
+msgstr ""
 
 #: code/kyc/index.php:55 code/kyc/index.php:74
-#, fuzzy
 msgid "Update"
-msgstr "Actualiser vos événements"
+msgstr ""
 
 #: code/kyc/index.php:63
-#, fuzzy
 msgid "Date:"
-msgstr "Date?"
+msgstr ""
 
 #: code/kyc/index.php:68
 msgid "to"
@@ -406,17 +377,15 @@ msgstr ""
 #: inc/dashboard/menuConfig.php:85 inc/dashboard/menuConfig.php:221
 #: inc/dashboard/userConfig.php:21
 msgid "Name"
-msgstr "Nom"
+msgstr ""
 
 #: code/kyc/partials/customers.php:30
-#, fuzzy
 msgid "Total Spent"
-msgstr "Total chiffre d'affaires"
+msgstr ""
 
 #: code/kyc/partials/customers.php:37
-#, fuzzy
 msgid "Email address"
-msgstr "Adresse de l'endroit"
+msgstr ""
 
 #: code/kyc/partials/customers.php:88 code/kyc/partials/reports.php:135
 #: code/kyc/partials/stock.php:80
@@ -425,23 +394,20 @@ msgstr ""
 
 #: code/kyc/partials/customers.php:92 code/kyc/partials/reports.php:139
 #: code/kyc/partials/stock.php:84
-#, fuzzy
 msgid "Selected"
-msgstr "Sélectionner tous les menus("
+msgstr ""
 
 #: code/kyc/partials/reports.php:23
 msgid "ID"
 msgstr ""
 
 #: code/kyc/partials/reports.php:30
-#, fuzzy
 msgid "Outlet"
-msgstr "Points de vente"
+msgstr ""
 
 #: code/kyc/partials/reports.php:44 code/kyc/partials/stream.php:42
-#, fuzzy
 msgid "Time"
-msgstr "Heure?"
+msgstr ""
 
 #: code/kyc/partials/reports.php:51
 msgid "Qty"
@@ -460,14 +426,12 @@ msgid "Total"
 msgstr ""
 
 #: code/kyc/partials/stock.php:8
-#, fuzzy
 msgid "Menu items"
-msgstr "Menus"
+msgstr ""
 
 #: code/kyc/partials/stock.php:30
-#, fuzzy
 msgid "Quantity Ordered"
-msgstr "Quantité"
+msgstr ""
 
 #: code/kyc/partials/stream.php:7
 msgid "Live Stream"
@@ -478,23 +442,20 @@ msgid "Customer"
 msgstr ""
 
 #: code/kyc/partials/stream.php:35
-#, fuzzy
 msgid "Order"
-msgstr "Réarranger"
+msgstr ""
 
 #: code/kyc/partials/stream.php:78
-#, fuzzy
 msgid "Discount"
-msgstr "Prix avec réduction (&euro;)"
+msgstr ""
 
 #: code/kyc/partials/stream.php:82
 msgid "TOTAL"
 msgstr ""
 
 #: code/settings/delivery/delivery-view.php:20 inc/shared/h.php:50
-#, fuzzy
 msgid "Delivery Settings"
-msgstr "Réglages du Lieu"
+msgstr ""
 
 #: code/settings/delivery/delivery-view.php:21
 msgid "Enable delivery services"
@@ -509,7 +470,7 @@ msgstr ""
 #: inc/dashboard/menuConfig.php:255 inc/dashboard/menuConfig.php:304
 #: inc/dashboard/menuConfig.php:336 inc/dashboard/venueConfig.php:95
 msgid "No"
-msgstr "Non"
+msgstr ""
 
 #: code/settings/delivery/delivery-view.php:26
 #: code/settings/delivery/delivery-view.php:96
@@ -520,12 +481,11 @@ msgstr "Non"
 #: inc/dashboard/menuConfig.php:258 inc/dashboard/menuConfig.php:307
 #: inc/dashboard/menuConfig.php:339 inc/dashboard/venueConfig.php:98
 msgid "Yes"
-msgstr "Oui"
+msgstr ""
 
 #: code/settings/delivery/delivery-view.php:34
-#, fuzzy
 msgid "General Settings"
-msgstr "Réglages du Lieu"
+msgstr ""
 
 #: code/settings/delivery/delivery-view.php:35
 msgid "Order Status Alerts"
@@ -544,18 +504,16 @@ msgid "eg. \"NW1, NW2...\""
 msgstr ""
 
 #: code/settings/delivery/delivery-view.php:43
-#, fuzzy
 msgid "Please type a delivery zone (max 200chars)"
-msgstr "Veuillez entrer un nom d'utilisateur (max 200 caractères)"
+msgstr ""
 
 #: code/settings/delivery/delivery-view.php:46
 msgid "In case of customer queries contact:"
 msgstr ""
 
 #: code/settings/delivery/delivery-view.php:48
-#, fuzzy
 msgid "Please enter a valid telephone number"
-msgstr "Veuillez entrer une adresse email valide"
+msgstr ""
 
 #: code/settings/delivery/delivery-view.php:51
 msgid "Minimum order value to qualify for delivery"
@@ -624,266 +582,230 @@ msgstr ""
 #: code/shared/js_strings.php:9
 msgid "Sorry, but there's been an error processing your request."
 msgstr ""
-"Désolés, mais il y a eu une erreur lors du traitement de votre demande."
 
 #: code/shared/js_strings.php:10
 msgid "Incorrect credentials or account does not exist."
-msgstr "Références incorrectes ou compte inexistant. "
+msgstr ""
 
 #: code/shared/js_strings.php:11
 msgid "Success! Please check your email for further instructions."
-msgstr "Réussi! Veuillez vérifier vos emails pour la suite des instructions"
+msgstr ""
 
 #: code/shared/js_strings.php:12
 msgid "Sorry, incorrect code."
-msgstr "Désolés, code invalide"
+msgstr ""
 
 #: code/shared/js_strings.php:13
-msgid ""
-"Your password has been reset.<br/>You will now be redirected to the login "
-"page."
+msgid "Your password has been reset.<br/>You will now be redirected to the login page."
 msgstr ""
-"Votre mot de passe a été réinitialisé. <BR/> Vous allez maintenant être "
-"redirigé vers la page de connexion."
 
 #: code/shared/js_strings.php:14
 msgid "Venue changes have been saved!"
-msgstr "Vos modifications ont bien été enregistrées !"
+msgstr ""
 
 #: code/shared/js_strings.php:15
 msgid "Uploaded!"
-msgstr "Téléchargement logo"
+msgstr ""
 
 #: code/shared/js_strings.php:16
 msgid "Error uploading file"
-msgstr "Erreur téléchargement fichier"
+msgstr ""
 
 #: code/shared/js_strings.php:17
 msgid "Incorrect Image File"
-msgstr "Fichier image incorrect"
+msgstr ""
 
 #: code/shared/js_strings.php:18
 msgid "App changes have been saved!"
-msgstr "Vos modifications ont bien été enregistrées !"
+msgstr ""
 
 #: code/shared/js_strings.php:19
 msgid "Choose a size"
-msgstr "Choisir une taille"
+msgstr ""
 
 #: code/shared/js_strings.php:20
 msgid "Choose a flavour"
-msgstr "Choisir un parfum"
+msgstr ""
 
 #: code/shared/js_strings.php:21
 msgid "Choose a topping"
-msgstr "Choisir une garniture"
+msgstr ""
 
 #: code/shared/js_strings.php:22
 msgid "Choose some extras"
-msgstr "Choisir des extras"
+msgstr ""
 
 #: code/shared/js_strings.php:23
 msgid "Choose a side dish"
-msgstr "Choisir un accompagnement"
+msgstr ""
 
 #: code/shared/js_strings.php:24
 msgid "Pick an option type"
-msgstr "Tapez ou choisissez un titre d'option"
+msgstr ""
 
 #: code/shared/js_strings.php:25
 msgid "Yes, delete this section and all its contents!"
-msgstr "Oui, supprimer cette section ainsi que tout son contenu!"
+msgstr ""
 
 #: code/shared/js_strings.php:26
 msgid "No, go back."
-msgstr "Non, revenir"
+msgstr ""
 
 #: code/shared/js_strings.php:27
 msgid "Choose a main"
-msgstr "Choisir un plat"
+msgstr ""
 
 #: code/shared/js_strings.php:28
 msgid "Choose a side"
-msgstr "Choisir un accompagnement"
+msgstr ""
 
 #: code/shared/js_strings.php:29
 msgid "Choose a drink"
-msgstr "Choisir une boisson"
+msgstr ""
 
 #: code/shared/js_strings.php:30
 msgid "Choose a curry"
-msgstr "Choisir un curry"
+msgstr ""
 
 #: code/shared/js_strings.php:31
 msgid "Choose a burger"
-msgstr "Choisir un burger"
+msgstr ""
 
 #: code/shared/js_strings.php:32
 msgid "Menu configuration has been saved!"
-msgstr "Configurations du menu ont bien été enregistrées !"
+msgstr ""
 
 #: code/shared/js_strings.php:33
 msgid "Choose a Collection Slot"
-msgstr "Choisir un créneau de récupération"
+msgstr ""
 
 #: code/shared/js_strings.php:34
-msgid ""
-"Are you sure you want to delete this event? Note: all event data will be "
-"lost!"
+msgid "Are you sure you want to delete this event? Note: all event data will be lost!"
 msgstr ""
-"Êtes-vous sûr de vouloir supprimer cet événement? NB: toutes les données de "
-"votre événement seront perdues !"
 
 #: code/shared/js_strings.php:35
 msgid "Yes, delete this event!"
-msgstr "Oui, supprimer cet événement"
+msgstr ""
 
 #: code/shared/js_strings.php:36 inc/dashboard/userConfig.php:23
 msgid "Role"
-msgstr "Statut"
+msgstr ""
 
 #: code/shared/js_strings.php:37
-msgid ""
-"Are you sure you want to delete this user? Note: all user data will be lost!"
+msgid "Are you sure you want to delete this user? Note: all user data will be lost!"
 msgstr ""
-"Êtes-vous sûr de vouloir supprimer cet utilisateur? NB: toutes les données "
-"d'utilisateur vont être perdues !"
 
 #: code/shared/js_strings.php:38
 msgid "Yes, delete this user!"
-msgstr "Oui, supprimer cet utilisateur"
+msgstr ""
 
 #: code/shared/js_strings.php:39
 msgid "Username/email already exists"
-msgstr "Nom d'utilisateur/email déjà existant"
+msgstr ""
 
 #: code/shared/js_strings.php:40
 msgid "User configuration has been saved!"
-msgstr "Les configurations d'utilisateur ont bien été enregistrées !"
+msgstr ""
 
 #: code/shared/js_strings.php:41
 msgid "Select all menus"
-msgstr "Sélectionner tous les menus"
+msgstr ""
 
 #: code/shared/js_strings.php:42
 msgid "Unselect all menus"
-msgstr "Désélectionner tous les menus"
+msgstr ""
 
 #: code/shared/js_strings.php:43
 msgid "Select menu("
-msgstr "Sélectionner tous les menus("
+msgstr ""
 
 #: code/shared/js_strings.php:44
 msgid "# of # selected"
-msgstr "# sur # sélectionné(s)"
+msgstr ""
 
 #: code/shared/js_strings.php:45
-msgid ""
-"Are you sure you want to delete this outlet? Note: all outlet data will be "
-"lost!"
+msgid "Are you sure you want to delete this outlet? Note: all outlet data will be lost!"
 msgstr ""
-"Êtes-vous sûr de vouloir supprimer ce point du vente? NB: tous les donées de "
-"point de vente seront perdus!"
 
 #: code/shared/js_strings.php:46
 msgid "Yes, delete this outlet!"
-msgstr "Oui, supprimer ce point de vente!"
+msgstr ""
 
 #: code/shared/js_strings.php:47
 msgid "Outlet configuration has been saved!"
-msgstr "Configurations de point de vente enregistrées !"
+msgstr ""
 
 #: code/shared/js_strings.php:48
 msgid "These times have been applied to all days!"
-msgstr "Ces horaires ont été appliqués à tous les jours!"
+msgstr ""
 
 #: code/shared/js_strings.php:49
-msgid ""
-"We still need some more information. Don't forget to fill out the remaining "
-"days of the week!"
+msgid "We still need some more information. Don't forget to fill out the remaining days of the week!"
 msgstr ""
-"Nous avons besoin de plus d'informations. N'oubliez pas de remplir les jours "
-"de la semaine qui restent !"
 
 #: code/shared/js_strings.php:50
 msgid "Where should this meal deal appear?"
-msgstr "Où doit apparaître ce Meal Deal ?"
+msgstr ""
 
 #: code/shared/js_strings.php:51 inc/dashboard/mdConfig.php:96
 #: inc/dashboard/mdConfig.php:213
 msgid "Choose a menu section"
-msgstr "Choisir une section de menu"
+msgstr ""
 
 #: code/shared/js_strings.php:52
-msgid ""
-"Are you sure you want to delete this meal deal? Note: all associated data "
-"will be lost!"
+msgid "Are you sure you want to delete this meal deal? Note: all associated data will be lost!"
 msgstr ""
-"Êtes-vous sûr de vouloir supprimer ce Meal Deal? NB: toutes les données "
-"associées seront perdues!"
 
 #: code/shared/js_strings.php:53
 msgid "Yes, delete this meal deal!"
-msgstr "Oui, supprimer ce Meal Deal"
+msgstr ""
 
 #: code/shared/js_strings.php:54
 msgid "All changes has been saved!"
-msgstr "Tous vos changements ont été bien enregistrés!"
+msgstr ""
 
 #: code/shared/js_strings.php:55
-msgid ""
-"Are you sure you want to delete this menu? Note: all menu data will be lost!"
+msgid "Are you sure you want to delete this menu? Note: all menu data will be lost!"
 msgstr ""
-"Êtes-vous sûr de vouloir supprimer ce menu? NB: toutes les données du menu "
-"seront perdues!"
 
 #: code/shared/js_strings.php:56
 msgid "Yes, delete this menu!"
-msgstr "Oui! Supprimer ce menu"
+msgstr ""
 
 #: code/shared/js_strings.php:57
 msgid "Sorry, incorrect password."
-msgstr "Désolés, code invalide"
+msgstr ""
 
 #: code/shared/js_strings.php:58
-msgid ""
-"Settings and Password has been saved!<br/>You will need to log in again with "
-"your new password to continue."
+msgid "Settings and Password has been saved!<br/>You will need to log in again with your new password to continue."
 msgstr ""
-"Paramètres et Mot de passe enregistrés ! <br/>> Vous devez vous connecter à "
-"nouveau avec votre nouveau mot de passe pour continuer."
 
 #: code/shared/js_strings.php:59
 msgid "Settings have been saved!"
-msgstr "Vos réglages ont été bien enregistrés!"
+msgstr ""
 
 #: code/shared/js_strings.php:60
 msgid "Please select features you require"
-msgstr "Veuillez sélectionner fonctions que vous fallez"
+msgstr ""
 
 #: code/shared/js_strings.php:61
 msgid "Select all"
-msgstr "Sélectionner tout"
+msgstr ""
 
 #: code/shared/js_strings.php:62
 msgid "Sorry, these password do not match. Please try again."
 msgstr ""
 
 #: code/shared/js_strings.php:63
-#, fuzzy
 msgid "All the fields are required."
-msgstr "Une adresse mail est requise"
+msgstr ""
 
 #: code/shared/js_strings.php:64
 msgid "Please fill in all the required fields."
 msgstr ""
 
 #: code/shared/js_strings.php:65
-msgid ""
-"This Premium Feature will remain active on your account until the end of the "
-"current billing cycle. You can cancel this uninstall at any time. If you "
-"wish to reinstall this Premium Feature after it has been deactivated, simply "
-"click on the <span>reinstall</span> option."
+msgid "This Premium Feature will remain active on your account until the end of the current billing cycle. You can cancel this uninstall at any time. If you wish to reinstall this Premium Feature after it has been deactivated, simply click on the <span>reinstall</span> option."
 msgstr ""
 
 #: code/shared/js_strings.php:66
@@ -895,32 +817,20 @@ msgid "UNINSTALL"
 msgstr ""
 
 #: code/shared/js_strings.php:68
-msgid ""
-"Your free trial will be imediately canceled and you will no longer have "
-"access to this feature."
+msgid "Your free trial will be imediately canceled and you will no longer have access to this feature."
 msgstr ""
 
 #: code/shared/js_strings.php:69
-#, fuzzy
-msgid ""
-"Are you sure you want to cancel this Free Trial? This action cannot be "
-"undone?"
+msgid "Are you sure you want to cancel this Free Trial? This action cannot be undone?"
 msgstr ""
-"Êtes-vous sûr de vouloir supprimer cette section? NB: tous les articles et "
-"options seront perdus."
 
 #: code/shared/js_strings.php:70
-msgid ""
-"This Premium Feature is currently canceled. A new charge will be made to "
-"your card before reinstalling this feature."
+msgid "This Premium Feature is currently canceled. A new charge will be made to your card before reinstalling this feature."
 msgstr ""
 
 #: code/shared/js_strings.php:71
-#, fuzzy
 msgid "Are you sure you want to reinstall this Premium Feature?"
 msgstr ""
-"Êtes-vous sûr de vouloir supprimer cet utilisateur? NB: toutes les données "
-"d'utilisateur vont être perdues !"
 
 #: code/shared/js_strings.php:72
 msgid "REINSTALL"
@@ -935,9 +845,8 @@ msgid "PAYMENT METHOD"
 msgstr ""
 
 #: code/shared/js_strings.php:75 inc/dashboard/dashboard_content.php:187
-#, fuzzy
 msgid "Your new Premium Feature is now live!"
-msgstr "Votre application fonctionne maintenant !"
+msgstr ""
 
 #: code/shared/js_strings.php:76 inc/dashboard/dashboard_content.php:188
 msgid "You can manage subscriptions from your account settings page"
@@ -952,24 +861,20 @@ msgid "New"
 msgstr ""
 
 #: code/shared/js_strings.php:79
-#, fuzzy
 msgid "Returning"
-msgstr "Utilisateurs récurrents"
+msgstr ""
 
 #: code/shared/js_strings.php:80
-#, fuzzy
 msgid " orders"
-msgstr "Total commandes"
+msgstr ""
 
 #: code/shared/js_strings.php:81
-#, fuzzy
 msgid "Day of collection"
-msgstr "Choisir un créneau de récupération"
+msgstr ""
 
 #: code/shared/js_strings.php:82
-#, fuzzy
 msgid "Before day of collection"
-msgstr "Choisir un créneau de récupération"
+msgstr ""
 
 #: code/shared/js_strings.php:84
 msgid "Your order is running 15 mins late"
@@ -1024,9 +929,7 @@ msgid "Your card will be charged "
 msgstr ""
 
 #: code/shared/js_strings.php:97
-msgid ""
-" for this transaction. <br/> You may cancel this Premium Feature at any time "
-"from your account settings page."
+msgid " for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."
 msgstr ""
 
 #: code/shared/js_strings.php:98 inc/dashboard/dashboard_content.php:169
@@ -1038,9 +941,7 @@ msgid " DAY FREE TRIAL"
 msgstr ""
 
 #: code/shared/js_strings.php:100
-msgid ""
-"Your card will not be charged for this transaction. <br/> You may cancel "
-"this Premium Feature at any time from your account settings page."
+msgid "Your card will not be charged for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."
 msgstr ""
 
 #: code/shared/js_strings.php:101 inc/dashboard/dashboard_content.php:189
@@ -1048,22 +949,15 @@ msgid "ACCOUNT SETTINGS"
 msgstr ""
 
 #: code/shared/js_strings.php:102 inc/dashboard/dashboard_content.php:196
-#, fuzzy
 msgid "RETURN TO STORE"
-msgstr "SE CONNECTER À STRIPE"
+msgstr ""
 
 #: code/shared/js_strings.php:103 inc/dashboard/dashboard_content.php:194
-msgid ""
-"Please add a payment method to your account in order to subscribe to Premium "
-"Features"
+msgid "Please add a payment method to your account in order to subscribe to Premium Features"
 msgstr ""
 
 #: code/shop/features.php:4
-msgid ""
-"We understand that running a successful business such as yours can be time-"
-"consuming and that there aren't always enough hours in the day. That is why "
-"we offer Assistant, so we can concentrate on supporting your new app and you "
-"can concentrate on your business."
+msgid "We understand that running a successful business such as yours can be time-consuming and that there aren't always enough hours in the day. That is why we offer Assistant, so we can concentrate on supporting your new app and you can concentrate on your business."
 msgstr ""
 
 #: code/shop/features.php:5
@@ -1091,13 +985,7 @@ msgid "1 set of changes per month"
 msgstr ""
 
 #: code/shop/features.php:20
-msgid ""
-"Preoday provides you with your own branded app in the 'My Order App' "
-"directory.  It’s free of charge, you can be up and running within 30 "
-"minutes, and it avoids the cost and hassle of submissions to Apple, Google "
-"and Windows Store.  However, we understand that some businesses want to see "
-"their app in these places too, so with the Independent service we do it for "
-"you, and at a much lower cost than doing it yourself."
+msgid "Preoday provides you with your own branded app in the 'My Order App' directory.  It’s free of charge, you can be up and running within 30 minutes, and it avoids the cost and hassle of submissions to Apple, Google and Windows Store.  However, we understand that some businesses want to see their app in these places too, so with the Independent service we do it for you, and at a much lower cost than doing it yourself."
 msgstr ""
 
 #: code/shop/features.php:21
@@ -1109,9 +997,7 @@ msgid "Independent"
 msgstr ""
 
 #: code/shop/features.php:26
-msgid ""
-"Create, submit, manage and maintain your own branded app in the App Store, "
-"Google Play and Windows Phone Store "
+msgid "Create, submit, manage and maintain your own branded app in the App Store, Google Play and Windows Phone Store "
 msgstr ""
 
 #: code/shop/features.php:27
@@ -1123,15 +1009,11 @@ msgid "Provide quarterly updates/changes to the app"
 msgstr ""
 
 #: code/shop/features.php:35
-msgid ""
-"Now that customers can order at your venue on their smartphones, you "
-"literally have them at their fingertips. So the best way to keep them "
-"interested is to use Loyalty and offer them exclusive loyalty programmes."
+msgid "Now that customers can order at your venue on their smartphones, you literally have them at their fingertips. So the best way to keep them interested is to use Loyalty and offer them exclusive loyalty programmes."
 msgstr ""
 
 #: code/shop/features.php:36
-msgid ""
-"Keep customers coming back by offering them exclusive loyalty programmes."
+msgid "Keep customers coming back by offering them exclusive loyalty programmes."
 msgstr ""
 
 #: code/shop/features.php:37
@@ -1155,15 +1037,7 @@ msgid "Spend bands"
 msgstr ""
 
 #: code/shop/features.php:51
-msgid ""
-"Using Preoday, you move closer to your customers. With our Know Your "
-"Customer module you will have the data you need to manage and market to them "
-"online.  Information is presented in exciting charts and in an easy-to-use "
-"format, allowing fresh insights into buying patterns and improved customer "
-"service.  Whether you want to offer special deals to favoured customers, "
-"manage stock flows better, understand where new business is coming from, or "
-"simply plot your app's growth, it’s all there and ready for you in Know Your "
-"Customer."
+msgid "Using Preoday, you move closer to your customers. With our Know Your Customer module you will have the data you need to manage and market to them online.  Information is presented in exciting charts and in an easy-to-use format, allowing fresh insights into buying patterns and improved customer service.  Whether you want to offer special deals to favoured customers, manage stock flows better, understand where new business is coming from, or simply plot your app's growth, it’s all there and ready for you in Know Your Customer."
 msgstr ""
 
 #: code/shop/features.php:52
@@ -1195,11 +1069,7 @@ msgid "Excel downloads\t"
 msgstr ""
 
 #: code/shop/shop.php:17
-msgid ""
-"At Preoday we believe that businesses such as yours should not pay to "
-"receive mobile orders. Our business model is simple: we charge no commission "
-"on orders you receive through the app.  Instead, we offer services that "
-"bring new value and insight to your business."
+msgid "At Preoday we believe that businesses such as yours should not pay to receive mobile orders. Our business model is simple: we charge no commission on orders you receive through the app.  Instead, we offer services that bring new value and insight to your business."
 msgstr ""
 
 #: code/shop/shop.php:41 code/shop/shop.php:67
@@ -1211,23 +1081,20 @@ msgid "VAT"
 msgstr ""
 
 #: code/shop/shop.php:90
-#, fuzzy
 msgid "Features"
-msgstr "Fonctions Premium"
+msgstr ""
 
 #: code/shop/shop.php:94 inc/dashboard/eventConfig.php:50
 #: inc/dashboard/menuConfig.php:86 inc/dashboard/menuConfig.php:222
 msgid "Description"
-msgstr "Descriptif"
+msgstr ""
 
 #: code/shop/shop.php:103
 msgid "DAY FREE TRIAL"
 msgstr ""
 
 #: code/shop/shop.php:104
-msgid ""
-"Your card will not be charged for this translaction. You may cancel this "
-"trial at any time from your account settings page."
+msgid "Your card will not be charged for this translaction. You may cancel this trial at any time from your account settings page."
 msgstr ""
 
 #: code/shop/shop.php:111
@@ -1236,35 +1103,35 @@ msgstr ""
 
 #: inc/404/404_content.php:5
 msgid "Whoops!"
-msgstr "Oups !"
+msgstr ""
 
 #: inc/404/404_content.php:6
 msgid "We can't find the page you're looking for."
-msgstr "Nous ne pouvons trouver la page que vous recherchez"
+msgstr ""
 
 #: inc/404/404_content.php:6
 msgid "Please check out the"
-msgstr "Veuillez consulter le"
+msgstr ""
 
 #: inc/404/404_content.php:6
 msgid "help section"
-msgstr "section d'aide"
+msgstr ""
 
 #: inc/404/404_content.php:6
 msgid "or return to the"
-msgstr "ou retourner au"
+msgstr ""
 
 #: inc/404/404_content.php:6 inc/dashboard/dashboard_content.php:11
 #: inc/shared/h.php:30
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:12 inc/dashboard/appConfig2.php:5
 #: inc/dashboard/eventConfig.php:7 inc/dashboard/menuConfig.php:7
 #: inc/dashboard/nonEventConfig.php:6 inc/dashboard/paymentConfig.php:6
 #: inc/dashboard/venueConfig.php:18 inc/finish/finish_content.php:7
 msgid "Venue Information"
-msgstr "Profil de l'entreprise"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:13 inc/dashboard/appConfig2.php:6
 #: inc/dashboard/eventConfig.php:8 inc/dashboard/menuConfig.php:8
@@ -1272,7 +1139,7 @@ msgstr "Profil de l'entreprise"
 #: inc/dashboard/venueConfig.php:20 inc/dashboard/venueConfig.php:22
 #: inc/finish/finish_content.php:8
 msgid "App Styling 1/2"
-msgstr "Design de l'App 1/2 "
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:15 inc/dashboard/appConfig1.php:17
 #: inc/dashboard/appConfig2.php:7 inc/dashboard/eventConfig.php:9
@@ -1280,7 +1147,7 @@ msgstr "Design de l'App 1/2 "
 #: inc/dashboard/paymentConfig.php:8 inc/dashboard/venueConfig.php:25
 #: inc/dashboard/venueConfig.php:27 inc/finish/finish_content.php:9
 msgid "App Styling 2/2"
-msgstr "Design de l’App 2/2"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:20 inc/dashboard/appConfig1.php:22
 #: inc/dashboard/appConfig2.php:9 inc/dashboard/appConfig2.php:11
@@ -1289,7 +1156,7 @@ msgstr "Design de l’App 2/2"
 #: inc/dashboard/venueConfig.php:30 inc/dashboard/venueConfig.php:32
 #: inc/finish/finish_content.php:10
 msgid "Menu Creation"
-msgstr "Création du Menu"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:25 inc/dashboard/appConfig1.php:28
 #: inc/dashboard/appConfig2.php:14 inc/dashboard/appConfig2.php:17
@@ -1299,7 +1166,7 @@ msgstr "Création du Menu"
 #: inc/dashboard/venueConfig.php:35 inc/dashboard/venueConfig.php:38
 #: inc/finish/finish_content.php:11 inc/shared/h.php:80
 msgid "Events"
-msgstr "Evénements"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:26 inc/dashboard/appConfig1.php:29
 #: inc/dashboard/appConfig2.php:15 inc/dashboard/appConfig2.php:18
@@ -1309,339 +1176,309 @@ msgstr "Evénements"
 #: inc/dashboard/venueConfig.php:36 inc/dashboard/venueConfig.php:39
 #: inc/finish/finish_content.php:12 inc/shared/h.php:51
 msgid "Opening Hours"
-msgstr "Horaires d'ouverture"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:32 inc/dashboard/appConfig2.php:21
 #: inc/dashboard/eventConfig.php:13 inc/dashboard/menuConfig.php:18
 #: inc/dashboard/nonEventConfig.php:12 inc/dashboard/paymentConfig.php:12
 #: inc/dashboard/venueConfig.php:45
 msgid "Add a Payment"
-msgstr "Ajouter un moyen de paiement"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:34 inc/dashboard/appConfig2.php:23
 #: inc/dashboard/eventConfig.php:15 inc/dashboard/menuConfig.php:20
 #: inc/dashboard/nonEventConfig.php:14 inc/dashboard/paymentConfig.php:15
 #: inc/dashboard/venueConfig.php:48 inc/finish/finish_content.php:15
 msgid "Done"
-msgstr "Terminer"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:39 inc/dashboard/appConfig2.php:28
 msgid "Style your app"
-msgstr "Styliser votre application"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:39
 msgid "This is the first screen that your customers will see."
-msgstr "Ceci est le premier écran que vos clients verront"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:46
 msgid "Create a main heading"
-msgstr "Créer une en-tête"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:47 inc/dashboard/appConfig1.php:66
 msgid "Choose one here"
-msgstr "En choisir une ici"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:49
 msgid "Leave the 4 deep queue to everyone else and pre-order."
-msgstr "Laissez la file d'attente aux autres et précommandez ici"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:50
 msgid "Don't miss the game, jump the long queue and pre-order."
-msgstr "Ne ratez pas le match, passez devant les autres et commandez avant."
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:51
 msgid "Intermission pre-order."
-msgstr "Commandrez avant la pause"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:52
 msgid "A sparkling fruity alternative to queuing."
-msgstr "Une alternative pétillante et fruitée de faire la queue"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:53
 msgid "Go on, jump the crazy queue and pre-order."
-msgstr "Allez-y, évitez la longue file et commandez en avance"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:54
 msgid "Don't miss the game! Order online and skip the half-time rush"
 msgstr ""
-"Ne ratez pas le match, commandez en ligne et évitez le rush de la pause"
 
 #: inc/dashboard/appConfig1.php:55
 msgid "Order interval drinks before the show starts"
 msgstr ""
-"Commandez les boissons pour la pause avant que le spectacle ne commence."
 
 #: inc/dashboard/appConfig1.php:56
 msgid "Stay with friends while the bar prepares your round"
-msgstr "Restez avec vos amis pendant que le bar prépare votre tournée."
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:57
 msgid "Order your coffee and croissant from your table, or from the train."
 msgstr ""
-"Commandez votre café et croissant depuis votre bureau ou depuis le train."
 
 #: inc/dashboard/appConfig1.php:59 inc/dashboard/appConfig1.php:72
 msgid "or create your own..."
-msgstr "ou créez le vôtre...."
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:60
 msgid "maximum 70 characters"
-msgstr "max 70 caractères"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:65
 msgid "Create a subheading"
-msgstr "Créer un sous-titre"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:69
 msgid "Pre-order food and drinks"
-msgstr "Commandez en avance vos plats et boissons"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:70
 msgid "Pre-order drinks+food"
-msgstr "Commandez en avance boissons + plats"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:73
 msgid "maximum 30 characters"
-msgstr "max 30 caractères"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:84
 msgid "Text colour"
-msgstr "Couleur du Texte"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:84 inc/dashboard/appConfig1.php:98
 #: inc/dashboard/appConfig1.php:106 inc/dashboard/appConfig2.php:71
 #: inc/dashboard/appConfig2.php:79 inc/dashboard/appConfig2.php:97
 #: inc/dashboard/appConfig2.php:105
 msgid "Enter Hex Colour Code or click to choose your colour."
-msgstr "Entrez le code de couleur Hex ou cliquez pour choisir votre couleur."
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:92
 msgid "ORDER NOW button"
-msgstr "Bouton COMMANDEZ MAINTENANT"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:98
 msgid "Button colour"
-msgstr "Bouton couleur"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:106 inc/dashboard/appConfig2.php:79
 #: inc/dashboard/appConfig2.php:105
 msgid "Button text colour"
-msgstr "Bouton couleur du texte"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:126 inc/dashboard/dashboard_content.php:132
 msgid "ORDER NOW"
-msgstr "COMMANDEZ MAINTENANT"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:138
 msgid "Select a home-screen background"
-msgstr "Sélectionnez un écran d' accueil"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:169
 msgid "UPLOAD YOUR OWN BACKGROUND"
-msgstr "TELECHARGEZ VOTRE PROPRE ECRAN D'ACCUEIL"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:176
 msgid "Custom Background Upload"
-msgstr "Téléchargez votre propre écran d'accueil"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:181 inc/dashboard/appConfig1.php:206
 msgid "UPLOAD"
-msgstr "TELECHARGER"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:183 inc/dashboard/appConfig1.php:208
 msgid "RESET"
-msgstr "RESET"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:185
 msgid "Supported types: JPG"
-msgstr "Format pris en charge: JPG"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:185 inc/dashboard/appConfig1.php:210
 msgid "Max file size: 10MB"
-msgstr "Taille de dossier maximum: 10MB"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:185
 msgid "Dimensions: 1080x1920"
-msgstr "Dimensions: 1080 x 1920"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:194
 msgid "UPLOAD YOUR OWN LOGO"
-msgstr "TELECHARGEZ VOTRE PROPRE LOGO"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:201
 msgid "Logo Upload"
-msgstr "Téléchargement logo"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:201
 msgid "Note: This will replace your main heading."
-msgstr "Note: cela va remplacer votre titre principal"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:210
 msgid "Supported types: PNG"
-msgstr "Format pris en charge: PNG"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:210
 msgid "Dimensions: 100x75"
-msgstr "Dimensions: 100x75"
+msgstr ""
 
 #: inc/dashboard/appConfig1.php:232
 msgid "30&#37 done, time for the artistic bit..."
-msgstr "30&#37 fait, maintenant c'est l'heure de montrer votre créativité..."
+msgstr ""
 
 #: inc/dashboard/appConfig2.php:28
 msgid "This is where you can brand your menu page"
-msgstr "C’est là où vous pouvez styliser votre page de menu"
+msgstr ""
 
 #: inc/dashboard/appConfig2.php:35
 msgid "Add a short venue title"
-msgstr "Ajouter un diminutif à votre lieu"
+msgstr ""
 
 #: inc/dashboard/appConfig2.php:35
-msgid ""
-"This is a shorter version of your venue name that will be visible over your "
-"menu."
+msgid "This is a shorter version of your venue name that will be visible over your menu."
 msgstr ""
-"C’est une version plus courte de votre nom de lieu ce qui sera visible sur "
-"votre menu."
 
 #: inc/dashboard/appConfig2.php:37
 msgid "Please type a venue title <br/>(max 22chars)"
-msgstr "Veuillez taper un titre du lieu <br/> (max 22 caractères)"
+msgstr ""
 
 #: inc/dashboard/appConfig2.php:45 inc/dashboard/dashboard_content.php:140
 msgid "BASKET"
-msgstr "PANIER"
+msgstr ""
 
 #: inc/dashboard/appConfig2.php:59
 msgid "Colour scheme"
-msgstr "Palette de Couleurs"
+msgstr ""
 
 #: inc/dashboard/appConfig2.php:62
 msgid "Colour one"
-msgstr "Couleur 1"
+msgstr ""
 
 #: inc/dashboard/appConfig2.php:63
-msgid ""
-"This colour is used across section progress buttons and as a highlight "
-"colour."
+msgid "This colour is used across section progress buttons and as a highlight colour."
 msgstr ""
-"Cette couleur est utilisée pour les boutons ‘en cours de ...’ et comme "
-"couleur de surbrillance."
 
 #: inc/dashboard/appConfig2.php:71
 msgid "Button one colour"
-msgstr "Bouton couleur n°1"
+msgstr ""
 
 #: inc/dashboard/appConfig2.php:89
-msgid ""
-"This colour is used across item select buttons and as a highlight colour."
+msgid "This colour is used across item select buttons and as a highlight colour."
 msgstr ""
-"Cette couleur est utilisée pour des boutons de ‘sélection’ et comme couleur "
-"de surbrillance."
 
 #: inc/dashboard/appConfig2.php:97
 msgid "Button two colour"
-msgstr "Bouton couleur n°2"
+msgstr ""
 
 #: inc/dashboard/appConfig2.php:127
 msgid "40&#37 done, a couple more design touches..."
-msgstr "40&#37 fait, encore quelques retouches design..."
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:11
 msgid "This is where you can monitor your takings and reports."
 msgstr ""
-"C’est de là que vous pouvez gérer vos recettes et rapports de commandes"
 
 #: inc/dashboard/dashboard_content.php:12
 msgid "Your venue shortcode is"
-msgstr "Votre 'short code' d'entreprise"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:12
-msgid ""
-"This is the code your customers need to use to find your venue on 'My Order "
-"App'"
+msgid "This is the code your customers need to use to find your venue on 'My Order App'"
 msgstr ""
-"C’est le code vos clients devront entrer pour vous trouver sur ‘my order "
-"app’."
 
-# The order of this sentence means that there is no need to translate 'MODE'. Instead the sentence is 'Votre application est actuellement en mode... <ADD STATUS HERE OF THE APPLICATION
 #: inc/dashboard/dashboard_content.php:13 inc/finish/finish_content.php:31
 msgid "Your app is currently in "
-msgstr "Votre App est actuellement en "
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:13 inc/finish/finish_content.php:31
 msgid " mode."
-msgstr " mode"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:13 inc/finish/finish_content.php:31
-msgid ""
-"LIVE - Your app is available on My Order App and is ready to take real "
-"orders.<br/><br/>DEMO - Your app is available on My Order App but does not "
-"take real orders.<br/><br/>OFFLINE - Your app is not available on My Order "
-"App."
+msgid "LIVE - Your app is available on My Order App and is ready to take real orders.<br/><br/>DEMO - Your app is available on My Order App but does not take real orders.<br/><br/>OFFLINE - Your app is not available on My Order App."
 msgstr ""
-"LIVE- votre application est disponible sur ‘my order app’ et est prête à "
-"prendre de vraies commandes.br/><br/>DEMO- votre application est disponible "
-"sur ‘my order app’ mais ne prend pas encore de vraies commandes.<br/><br/"
-">OFFLINE- votre application n’est pas disponible sur ‘my order app’"
 
 #: inc/dashboard/dashboard_content.php:21
 msgid "This month"
-msgstr "Ce mois-ci"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:24
 msgid "Total revenue"
-msgstr "Total chiffre d'affaires"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:28
 msgid "Total orders"
-msgstr "Total commandes"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:32
 msgid "New users"
-msgstr "Nouveaux utilisateurs"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:36
 msgid "Returning users"
-msgstr "Utilisateurs récurrents"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:43
 msgid "Change your app"
-msgstr "Modifier votre application"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:50 inc/shared/h.php:47
 msgid "Venue Settings"
-msgstr "Réglages du Lieu"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:52
 msgid "Change settings"
-msgstr "Modifier les paramètres"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:53
-#, fuzzy
 msgid "Delivery settings"
-msgstr "Réglages du Lieu"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:55
-#, fuzzy
 msgid "Opening hours"
-msgstr "Horaires d'ouverture"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:60 inc/shared/h.php:54
 msgid "Styling"
-msgstr "Style"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:62
 msgid "Home screen"
-msgstr "Ecran d'accueil"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:63
 msgid "Menu screen"
-msgstr "Ecran Menu"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:67 inc/shared/h.php:60
 msgid "Menus"
-msgstr "Menus"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:71 inc/dashboard/eventConfig.php:100
 #: inc/dashboard/eventConfig.php:180 inc/dashboard/mdConfig.php:83
@@ -1650,7 +1487,7 @@ msgstr "Menus"
 #: inc/dashboard/outletConfig.php:73 inc/dashboard/userConfig.php:52
 #: inc/dashboard/userConfig.php:104 inc/shared/h.php:70
 msgid "Edit"
-msgstr "Modifier"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:72 inc/dashboard/eventConfig.php:102
 #: inc/dashboard/eventConfig.php:182 inc/dashboard/mdConfig.php:84
@@ -1660,56 +1497,52 @@ msgstr "Modifier"
 #: inc/dashboard/outletConfig.php:40 inc/dashboard/outletConfig.php:74
 #: inc/dashboard/userConfig.php:54 inc/dashboard/userConfig.php:106
 msgid "Delete"
-msgstr "Supprimer"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:75
 msgid "Add new menu"
-msgstr "Ajouter nouveau menu"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:76 inc/dashboard/mdConfig.php:5
 #: inc/shared/h.php:72
 msgid "Meal Deals"
-msgstr "Deals repas"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:83
 msgid "Update events"
-msgstr "Actualiser vos événements"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:88 inc/shared/h.php:86
 msgid "Advanced Settings"
-msgstr "Réglages du lieu "
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:90
 msgid "Manage users"
-msgstr "Gérer vos utilisateurs"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:91
 msgid "Add a payment method"
-msgstr "Ajouter un moyen de paiement"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:92 inc/shared/h.php:90
 msgid "Change my app mode"
-msgstr "Changer le statut de l'application"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:96 inc/shared/dashboard_footer.php:4
 #: inc/shared/h.php:94
 msgid "Premium Features"
-msgstr "Fonctions Premium"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:147
 msgid "Venue Title"
-msgstr "Titre du lieu"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:162
-msgid ""
-" for this transaction. You may cancel this Premium Feature at any time from "
-"your account settings page."
+msgid " for this transaction. You may cancel this Premium Feature at any time from your account settings page."
 msgstr ""
 
 #: inc/dashboard/dashboard_content.php:175
-msgid ""
-"Your 30 day free trial \tof this Premium Feature has now expired. Would you "
-"like to purchase it?"
+msgid "Your 30 day free trial \tof this Premium Feature has now expired. Would you like to purchase it?"
 msgstr ""
 
 #: inc/dashboard/dashboard_content.php:176
@@ -1721,97 +1554,92 @@ msgid "NOT RIGHT NOW"
 msgstr ""
 
 #: inc/dashboard/dashboard_content.php:190
-#, fuzzy
 msgid "RETURN TO DASHBOARD"
-msgstr "RETOURNER AU DASHBOARD"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:310
 msgid "Your app is now live!"
-msgstr "Votre application fonctionne maintenant !"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:319
 msgid "Your app is now in DEMO mode."
-msgstr "Votre application est actuellement en mode DEMO"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:328
 #: inc/dashboard/dashboard_content.php:346
 msgid "Your app is now in OFFLINE mode."
-msgstr "Votre application est maintenant en mode hors ligne"
+msgstr ""
 
 #: inc/dashboard/dashboard_content.php:337
 msgid "Your app is now in Demo mode."
-msgstr "Votre application est maintenant en mode DEMO"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:19
 msgid "Your events"
-msgstr "Vos événements"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:19
-msgid ""
-"These show when you are open for ordering, such as performances or matches. "
-"They can be viewed from the front page of your app"
+msgid "These show when you are open for ordering, such as performances or matches. They can be viewed from the front page of your app"
 msgstr ""
-"Il montreront quand vous êtes ouverts, comme pour des matchs ou spectacles. "
-"Ils seront visibles depuis la première page de l’application"
 
 #: inc/dashboard/eventConfig.php:42
 msgid "Add a new event"
-msgstr "Ajouter un nouvel événement "
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:51
 msgid "Start Date"
-msgstr "Date de début"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:52
 msgid "Start Time"
-msgstr "Heure de début"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:53
 msgid "End Time"
-msgstr "Heure de fin"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:54 inc/dashboard/mdConfig.php:34
 #: inc/dashboard/menuConfig.php:89 inc/dashboard/menuConfig.php:225
 msgid "Visible?"
-msgstr "Visible?"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:55 inc/dashboard/mdConfig.php:35
 #: inc/dashboard/menuConfig.php:90 inc/dashboard/menuConfig.php:226
 #: inc/dashboard/userConfig.php:24
 msgid "Tools"
-msgstr "Outils"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:67
 msgid "Click to add an event name"
-msgstr "Cliquer pour ajouter un nom d'événement"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:68 inc/dashboard/eventConfig.php:148
 msgid "Please type an event name (max 100chars)"
-msgstr "Veuillez entrer le nom de l'événement"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:71 inc/dashboard/eventConfig.php:151
 msgid "Click to add a description"
-msgstr "Cliquer pour ajouter un descriptif"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:72 inc/dashboard/eventConfig.php:152
 #: inc/dashboard/menuConfig.php:108 inc/dashboard/menuConfig.php:243
 msgid "Please type a description (max 250chars)"
-msgstr "Veuillez taper un descriptif (max 250 caractères)"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:75 inc/dashboard/eventConfig.php:155
 msgid "DD/MM/YYYY"
-msgstr "JJ/MM/AAAA"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:76 inc/dashboard/eventConfig.php:156
 msgid "Date?"
-msgstr "Date?"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:79 inc/dashboard/eventConfig.php:83
 #: inc/dashboard/eventConfig.php:159 inc/dashboard/eventConfig.php:163
 #: inc/dashboard/nonEventConfig.php:58 inc/dashboard/nonEventConfig.php:63
 #: inc/dashboard/nonEventConfig.php:87 inc/dashboard/nonEventConfig.php:92
 msgid "HH:MM"
-msgstr "HH:MM"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:80 inc/dashboard/eventConfig.php:84
 #: inc/dashboard/eventConfig.php:122 inc/dashboard/eventConfig.php:160
@@ -1819,7 +1647,7 @@ msgstr "HH:MM"
 #: inc/dashboard/nonEventConfig.php:59 inc/dashboard/nonEventConfig.php:64
 #: inc/dashboard/nonEventConfig.php:88 inc/dashboard/nonEventConfig.php:93
 msgid "Time?"
-msgstr "Heure?"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:99 inc/dashboard/eventConfig.php:179
 #: inc/dashboard/mdConfig.php:82 inc/dashboard/mdConfig.php:200
@@ -1827,7 +1655,7 @@ msgstr "Heure?"
 #: inc/dashboard/outletConfig.php:38 inc/dashboard/outletConfig.php:72
 #: inc/dashboard/userConfig.php:51 inc/dashboard/userConfig.php:103
 msgid "Collapse"
-msgstr "Réduire"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:101 inc/dashboard/eventConfig.php:181
 #: inc/dashboard/menuConfig.php:133 inc/dashboard/menuConfig.php:178
@@ -1835,403 +1663,363 @@ msgstr "Réduire"
 #: inc/dashboard/menuConfig.php:345 inc/dashboard/userConfig.php:53
 #: inc/dashboard/userConfig.php:105
 msgid "Duplicate"
-msgstr "Dupliquer"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:109 inc/dashboard/eventConfig.php:190
 msgid "Collection Slot: Pre-Show"
-msgstr "Créneau de Collecte: Avant Spectacle"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:110 inc/dashboard/eventConfig.php:191
 msgid "Collection Slot: Pre-Game"
-msgstr "Créneau de Collecte : Avant-Match"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:111 inc/dashboard/eventConfig.php:192
 msgid "Collection Slot: Interval"
-msgstr "Créneau de Collecte : Entracte"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:112 inc/dashboard/eventConfig.php:193
 msgid "Collection Slot: Second-Interval"
-msgstr "Créneau de Collecte : Deuxième Entracte"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:113
 msgid "Collection Slot: Half-time"
-msgstr "Créneau de Collecte : Mi-Temps"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:114 inc/dashboard/eventConfig.php:195
 msgid "Collection Slot: Post-Show"
-msgstr "Créneau de Collecte : Après le spectacle"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:115 inc/dashboard/eventConfig.php:196
 msgid "Collection Slot: Post-Game"
-msgstr "Créneau de Collecte : Après Match"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:117 inc/dashboard/eventConfig.php:198
 msgid "Please choose a slot."
-msgstr "Veuillez choisir un créneau. "
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:120 inc/dashboard/eventConfig.php:201
 msgid "Lead Time (mins)"
-msgstr "Délais (min)"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:121
 msgid "30"
-msgstr "30"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:125 inc/dashboard/eventConfig.php:206
 msgid "Add another slot"
-msgstr "Ajouter un autre créneau"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:194
 msgid "Collection Slot: Half-Time"
-msgstr "Créneau de Récupération: mi-temps"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:202
 msgid "eg. 30"
-msgstr "ex. 30"
+msgstr ""
 
 #: inc/dashboard/eventConfig.php:243 inc/dashboard/nonEventConfig.php:131
 msgid "75&#37 done, almost there now..."
-msgstr "75&#37 fait, presque terminé..."
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:5
-msgid ""
-"This is where you can combine separate food items into one meal combination, "
-"e.g. sandwich, crisps and a drink"
+msgid "This is where you can combine separate food items into one meal combination, e.g. sandwich, crisps and a drink"
 msgstr ""
-"C’est là où vous pourrez combiner des articles de sections différentes pour "
-"faire un ensemble, ex sandwich, frites et une boisson"
 
 #: inc/dashboard/mdConfig.php:8
 msgid "Add a new Meal Deal"
-msgstr "Ajouter un nouveau Deal repas"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:31
 msgid "Section"
-msgstr "Section"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:31
 msgid "Which menu section does this meal deal belong in?"
-msgstr "Ce Deal repas appartient à quelle section du menu?"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:32
-#, fuzzy
 msgid "Total Price "
-msgstr "Prix Total (&euro;)"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:33
-#, fuzzy
 msgid "Discount Price "
-msgstr "Prix avec réduction (&euro;)"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:53 inc/dashboard/mdConfig.php:171
 #: inc/dashboard/menuConfig.php:104 inc/dashboard/menuConfig.php:239
 msgid "Please type an item name (max 100chars)"
-msgstr "Entrez le nom d’un article (maximum 100 caractères)"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:61 inc/dashboard/mdConfig.php:102
 #: inc/dashboard/mdConfig.php:179 inc/dashboard/mdConfig.php:219
 msgid "Please choose a section"
-msgstr "Veuillez choisir une section"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:64 inc/dashboard/mdConfig.php:182
 #: inc/dashboard/mdConfig.php:185 inc/dashboard/menuConfig.php:111
 #: inc/dashboard/menuConfig.php:160 inc/dashboard/menuConfig.php:296
 msgid "0.00"
-msgstr "0.00"
+msgstr ""
 
-# If this is in the sense of quantity it is 'Quantité?'
-# If it is in the sense of total amount i.e. money it will be 'Somme?'
 #: inc/dashboard/mdConfig.php:68 inc/dashboard/mdConfig.php:186
 msgid "Amount?"
-msgstr "Somme ?"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:89 inc/dashboard/mdConfig.php:246
 #: inc/dashboard/menuConfig.php:77 inc/dashboard/menuConfig.php:213
 msgid "Delete this section"
-msgstr "Supprimer cette section"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:91 inc/dashboard/mdConfig.php:208
 msgid "Type or pick a selection title"
-msgstr "Inscrire ou choisir un titre de section"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:91 inc/dashboard/mdConfig.php:208
 msgid "Eg. Choose a main, Choose a side, Choose a drink, etc"
-msgstr "Ex. Choisir un plat, Choisir un accompagnement, Choisir une boisson"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:92 inc/dashboard/mdConfig.php:209
 msgid "Please type or pick a title (max 100chars)"
-msgstr "Ecrire ou choisir un titre (maximum 100 caractères)"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:100 inc/dashboard/mdConfig.php:217
 msgid "All sections"
-msgstr "Toutes les sections"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:101 inc/dashboard/mdConfig.php:218
 msgid "Pick a menu section from where you'd like to import items."
 msgstr ""
-"Choisir la section du menu de laquelle vous voulez importer les articles. "
 
 #: inc/dashboard/mdConfig.php:114 inc/dashboard/mdConfig.php:231
 msgid "Add this item to the current Meal Deal"
-msgstr "Ajouter cet article au Deal repas actuel"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:122 inc/dashboard/mdConfig.php:206
 msgid "Add a selection to this meal deal"
-msgstr "Ajouter un choix à ce Meal Deal"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:170
 msgid "Click to add a Meal Deal name"
-msgstr "Cliquer ici pour ajouter un nom au Deal repas"
+msgstr ""
 
 #: inc/dashboard/mdConfig.php:252
-msgid ""
-"You've not created any items! You won't be able to create Meal Deals until "
-"you have some items in your menu."
+msgid "You've not created any items! You won't be able to create Meal Deals until you have some items in your menu."
 msgstr ""
-"Vous n'avez pas sélectionné d'articles! Vous n'arriverez pas à créer de "
-"Deals repas"
 
 #: inc/dashboard/menuConfig.php:25
 msgid "Build your menu"
-msgstr "Créez votre menu"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:25
 msgid "Your menu"
-msgstr "Votre menu"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:25
-msgid ""
-"Now it's time to create your menu. We suggest you keep it simple to start "
-"with.<br/><br/>An easy way is to group items, i.e. create separate sections "
-"for food, cold drinks and hot drinks."
+msgid "Now it's time to create your menu. We suggest you keep it simple to start with.<br/><br/>An easy way is to group items, i.e. create separate sections for food, cold drinks and hot drinks."
 msgstr ""
-"Il est l’heure maintenant de créer votre menu. Nous vous suggérons de le "
-"garder simple pour commencer. <br/><br/> Grouper des articles est efficace "
-"et facile. C’est-à-dire, créer des sections séparées pour les plats, "
-"boissons froides et boissons chaudes. "
 
 #: inc/dashboard/menuConfig.php:61
 msgid "Click to add your menu name"
-msgstr "Cliquez pour ajouter un nom à votre menu"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:62
 msgid "Please type a menu name (max 100chars)"
-msgstr "Tapez un nom de menu (max 100 caractères)"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:68 inc/dashboard/menuConfig.php:204
 msgid "Click to add a section name"
-msgstr "Cliquez ici pour ajouter un nom de section"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:69 inc/dashboard/menuConfig.php:205
 msgid "Please type a section name (max 100chars)"
-msgstr "Tapez un nom de section (max 100 caractères)"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:74 inc/dashboard/menuConfig.php:210
 msgid "Add an item to this section"
-msgstr "Ajouter un article à cette section"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:76 inc/dashboard/menuConfig.php:212
 msgid "Move this section"
-msgstr "Bougez cette section"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:87 inc/dashboard/menuConfig.php:223
-#, fuzzy
 msgid "Price "
-msgstr "Prix?"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:88 inc/dashboard/menuConfig.php:224
 msgid "Quantity"
-msgstr "Quantité"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:103
 msgid "Click to add an item name"
-msgstr "Cliquez pour ajouter un nom d'article"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:107 inc/dashboard/menuConfig.php:242
 msgid "Optional description"
-msgstr "Description optionnelle"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:112 inc/dashboard/menuConfig.php:162
 #: inc/dashboard/menuConfig.php:247 inc/dashboard/menuConfig.php:297
 #: inc/dashboard/menuConfig.php:329
 msgid "Price?"
-msgstr "Prix?"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:116 inc/dashboard/menuConfig.php:250
 msgid "Unlimited"
-msgstr "Illimité"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:119 inc/dashboard/menuConfig.php:253
 msgid "This chooses whether you want to activate this food on the menu or not."
 msgstr ""
-"Celui-ci vous servira si vous souhaitez activer cet article dans le menu ou "
-"pas."
 
 #: inc/dashboard/menuConfig.php:132 inc/dashboard/menuConfig.php:266
 msgid "Reorder"
-msgstr "Réarranger"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:138 inc/dashboard/menuConfig.php:274
 msgid "Add a new option to this item"
-msgstr "Ajouter une nouvelle option à cet article"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:138 inc/dashboard/menuConfig.php:274
 msgid "Add an option"
-msgstr "Ajouter une option"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:140 inc/dashboard/menuConfig.php:276
 msgid "Type or pick an option title"
-msgstr "Tapez ou choisissez un titre d'option"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:140 inc/dashboard/menuConfig.php:276
 msgid "Eg. Pick a size, Choice of an option, Add some extras, Select a side"
 msgstr ""
-"ex. choisissez une taille, une option, ajoutez des extras, sélectionnez un "
-"accompagnement"
 
 #: inc/dashboard/menuConfig.php:141 inc/dashboard/menuConfig.php:277
 msgid "Please type or pick a title"
-msgstr "Veuillez taper ou choisir un titre"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:145 inc/dashboard/menuConfig.php:281
 msgid "User must select only one option."
-msgstr "L'utilisateur ne doit choisir qu'une option "
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:145 inc/dashboard/menuConfig.php:281
 msgid "User selects 1 option"
-msgstr "L'utilisateur sélectionne 1 option"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:146 inc/dashboard/menuConfig.php:282
 msgid "User must select one or more options."
-msgstr "L'utilisateur doit choisir une ou deux options"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:146 inc/dashboard/menuConfig.php:282
 msgid "User selects 1 or more options"
-msgstr "L'utilisateur sélectionne 1 ou plusieurs options"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:147 inc/dashboard/menuConfig.php:283
 msgid "User can select zero or more options."
-msgstr "L'utilisateur peut choisir zéro ou plus options"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:147 inc/dashboard/menuConfig.php:283
 msgid "User selects 0 or more options"
-msgstr "L'utilisateur sélectionne 0 ou plusieurs options"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:148 inc/dashboard/menuConfig.php:284
-msgid ""
-"Single: When the user must pick only 1 option.<br/><br/>Multiple: When the "
-"user must pick 1 or more options.<br/><br/>Optional: when the user can pick "
-"0 or multiple options."
+msgid "Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options."
 msgstr ""
-"Unique : Quand une personne ne doit choisir qu'une option <br/><br/"
-">Multiple: Quand l’utilisateur doit choisir 1 ou plusieurs options <br/><br/"
-">Optionnel: Quand l’utilisateur peut choisir 0 ou plusieurs options"
 
 #: inc/dashboard/menuConfig.php:149 inc/dashboard/menuConfig.php:285
 msgid "Please choose a type"
-msgstr "Veuillez choisir un type"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:154 inc/dashboard/menuConfig.php:290
 msgid "Click to add an option name"
-msgstr "Cliquez pour ajouter un nom d'option"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:155 inc/dashboard/menuConfig.php:291
 #: inc/dashboard/menuConfig.php:323
 msgid "Please type an option name (max 100chars)"
-msgstr "Veuillez entrer un nom d'option (max 100 caractères)"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:161 inc/dashboard/menuConfig.php:296
 #: inc/dashboard/menuConfig.php:328
-msgid ""
-"This will be in addition to the item price. If there is no price difference, "
-"put in 0.00."
+msgid "This will be in addition to the item price. If there is no price difference, put in 0.00."
 msgstr ""
-"Cela sera en plus du prix de l’article. S’il n’y a pas de différence de "
-"prix, veuillez inscrire 0.00 "
 
 #: inc/dashboard/menuConfig.php:183 inc/dashboard/menuConfig.php:354
 msgid "Eg. Toppings, Sizes, Exras, etc"
-msgstr "ex. garniture, taille, accompagnements etc"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:183 inc/dashboard/menuConfig.php:354
 msgid "Add an option category to this item <small>(optional)</small>"
 msgstr ""
-"Ajoutez un option de catégorie à cet article <petit>(optionnel)</petit>"
 
 #: inc/dashboard/menuConfig.php:371
 msgid "Add a new menu section"
-msgstr "Ajouter une nouvelle section de menus"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:377
 msgid "COLLAPSE ALL"
-msgstr "TOUT REDUIRE"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:379
 msgid "SAVE & CONTINUE EDITING"
-msgstr "ENREGISTRER & CONTINUER"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:380
 msgid "SAVE & FINISH"
-msgstr "ENREGISTRER & TERMINER"
+msgstr ""
 
 #: inc/dashboard/menuConfig.php:394
 msgid "45&#37 done, now for the fun bit!"
-msgstr "45&#37 fait, maintenant c'est l'heure de s'amuser!"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:18
 msgid "Tell us about your opening times"
-msgstr "Informez-nous de vos horaires d'ouverture"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:21
 msgid "Days your venue is open"
-msgstr "Les jours où vous êtes ouverts"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:22
 msgid "Mon"
-msgstr "Lun"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:23
 msgid "Tue"
-msgstr "Mar"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:24
 msgid "Wed"
-msgstr "Mer"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:25
 msgid "Thu"
-msgstr "Jeu"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:26
 msgid "Fri"
-msgstr "Ven"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:27
 msgid "Sat"
-msgstr "Sam"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:28
 msgid "Sun"
-msgstr "Dim"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:38
 msgid "Add another opening hour"
-msgstr "Ajouter un autre horaire d'ouverture"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:38
 msgid "eg: if you close for lunch and reopen in the evening."
 msgstr ""
-"ex si vous fermez pendant la pause déjeuner et reouvrez dans la soirée."
 
 #: inc/dashboard/nonEventConfig.php:47 inc/dashboard/nonEventConfig.php:77
-#, fuzzy
 msgid "Open "
-msgstr "Ouvre à"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:47 inc/dashboard/nonEventConfig.php:77
-msgid ""
-"Let us know if your venue is open for delivery, open for pickup, open for "
-"both or if you are closed today."
+msgid "Let us know if your venue is open for delivery, open for pickup, open for both or if you are closed today."
 msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:50 inc/dashboard/nonEventConfig.php:79
@@ -2243,596 +2031,556 @@ msgid "For delivery only"
 msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:52 inc/dashboard/nonEventConfig.php:81
-#, fuzzy
 msgid "For collection only"
-msgstr "Choisir un créneau de récupération"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:53 inc/dashboard/nonEventConfig.php:82
-#, fuzzy
 msgid "Closed Today"
-msgstr "Ferme à"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:57 inc/dashboard/nonEventConfig.php:86
 msgid "Opens at"
-msgstr "Ouvre à"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:62 inc/dashboard/nonEventConfig.php:91
 msgid "Closes at"
-msgstr "Ferme à"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:68 inc/dashboard/nonEventConfig.php:97
 msgid "Remove opening hour"
-msgstr "Enlever horaire d'ouverture"
+msgstr ""
 
 #: inc/dashboard/nonEventConfig.php:105
 msgid "Apply these times to all days"
-msgstr "Appliquer ces horaires à tous les jours"
+msgstr ""
 
 #: inc/dashboard/outletConfig.php:6
 msgid "Outlets"
-msgstr "Points de vente"
+msgstr ""
 
 #: inc/dashboard/outletConfig.php:14
 msgid "Add a new Outlet"
-msgstr "Ajouter un nouveau point de vente "
+msgstr ""
 
 #: inc/dashboard/outletConfig.php:15
 msgid "Create a new menu"
-msgstr "Créer un nouveau menu"
+msgstr ""
 
 #: inc/dashboard/outletConfig.php:26
 msgid "Add an outlet name"
-msgstr "Ajouter un nom de point de vente"
+msgstr ""
 
 #: inc/dashboard/outletConfig.php:27 inc/dashboard/outletConfig.php:61
 msgid "Please type an outlet name"
-msgstr "Veuillez taper un nom de point de vente"
+msgstr ""
 
 #: inc/dashboard/outletConfig.php:35 inc/dashboard/outletConfig.php:69
 msgid "Please choose a menu"
-msgstr "Veuillez choisir un menu"
+msgstr ""
 
 #: inc/dashboard/paymentConfig.php:19
 msgid "Don't forget to get paid"
-msgstr "N’oubliez pas d’être payé !"
+msgstr ""
 
 #: inc/dashboard/paymentConfig.php:28
 msgid "CONNECT TO STRIPE"
-msgstr "SE CONNECTER À STRIPE"
+msgstr ""
 
 #: inc/dashboard/paymentConfig.php:31
 msgid "SKIP THIS FOR NOW"
-msgstr "PASSER POUR LE MOMENT"
+msgstr ""
 
 #: inc/dashboard/paymentConfig.php:35
 msgid "YOU'RE ALREADY CONNECTED"
-msgstr "VOUS ÊTES DÉJÀ CONNECTÉ"
+msgstr ""
 
 #: inc/dashboard/paymentConfig.php:45
 msgid "85&#37 done, we've saved the best for last!"
-msgstr "85&#37 fait, nous avons gardé le meilleur pour la fin!"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:6
 msgid "User management"
-msgstr "Gestion des utilisateurs"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:14
 msgid "Add a new user"
-msgstr "Ajouter un nouvel utilisateur"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:22 inc/forgot/forgot_content.php:8
 #: inc/settings/settings_content.php:20 inc/signin/signin_content.php:23
 msgid "Email"
-msgstr "Email"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:23
 msgid "This decides the level of access of your users."
-msgstr "Cela permet de choisir le niveau d’accès de vos membres"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:36
 msgid "Add a user name"
-msgstr "Ajouter un nom d'utilisateur"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:37 inc/dashboard/userConfig.php:89
 msgid "Please type a user name (max 200chars)"
-msgstr "Veuillez entrer un nom d'utilisateur (max 200 caractères)"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:40 inc/dashboard/userConfig.php:92
 msgid "Add an email"
-msgstr "Ajouter une adresse email"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:41 inc/dashboard/userConfig.php:93
 msgid "Please type an email"
-msgstr "Veuillez tapez une adresse email"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:45 inc/dashboard/userConfig.php:97
 msgid "Staff: can only read account"
-msgstr "Personnel: peut uniquement lire le compte"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:45 inc/dashboard/userConfig.php:97
 msgid "Staff"
-msgstr "Personnel"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:46 inc/dashboard/userConfig.php:98
 msgid "Admin: can read/write account but cannot close it down"
-msgstr "Admin : peut lire/modifier le compte mais ne peuvent le fermer"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:46 inc/dashboard/userConfig.php:98
 msgid "Admin"
-msgstr "Administrateur "
+msgstr ""
 
 #: inc/dashboard/userConfig.php:47 inc/dashboard/userConfig.php:99
 msgid "Owner: can read/write account and close it down"
-msgstr "Propriétaire: peut lire/modifier le compte mais aussi le fermer"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:47 inc/dashboard/userConfig.php:99
 msgid "Owner"
-msgstr "Propriétaire"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:60
 msgid "Assign a password"
-msgstr "Assigner un mot de passe"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:61
 msgid "Provide a Password"
-msgstr "Fournir un mot de passe"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:64 inc/reset/reset_content.php:15
 msgid "Confirm Password"
-msgstr "Confirmer votre mot de passe"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:65 inc/signup/signup_content.php:61
 msgid "Confirm password"
-msgstr "Confirmer votre mot de passe"
+msgstr ""
 
 #: inc/dashboard/userConfig.php:66
 msgid "Passwords don't match"
-msgstr "Les mots de passe ne correspondent pas"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:43 inc/finish/finish_content.php:13
 #: inc/shared/h.php:89
 msgid "Payment Method"
-msgstr "Moyen de paiement"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:54
 msgid "Tell us about your venue"
-msgstr "Dites-nous en plus sur votre business"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:63
 msgid "Venue name"
-msgstr "Nom de l'endroit"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:65
 msgid "Please type a venue name (max 100chars)"
-msgstr "Veuillez inscrire un nom de lieu (max 100 caractères)"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:71
 msgid "Venue description"
-msgstr "Descriptif du lieu"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:71
-msgid ""
-"Please enter a short description about your venue.<br/><br/>This will not "
-"appear on your branded app."
+msgid "Please enter a short description about your venue.<br/><br/>This will not appear on your branded app."
 msgstr ""
-"Veuillez entrer un petit description de votre entreprise. <br/><br/> Cela ne "
-"va pas apparaître sur votre application."
 
 #: inc/dashboard/venueConfig.php:73
 msgid "Please type a venue description (max 250chars)"
-msgstr "Veuillez écrire une description de votre lieu (max 250 caractères)"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:79
 msgid "What type of venue are you?"
-msgstr "Quel type d'entreprise avez vous?"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:81
-#, fuzzy
 msgid "Restaurant (Cafe, Sandwich Bar, Restaurant, etc)"
-msgstr "Traiteur au détail (Café, Sandwicherie, Bar, Restaurant, etc)"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:82
 msgid "Sports Arena"
-msgstr "Stade"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:83
 msgid "Bars, Pubs and Clubs"
-msgstr "Bars, Pubs et Clubs"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:84
 msgid "Workplace/Education Catering"
-msgstr "Restauration pour le travail/cantines"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:85
 msgid "Music and Cultural"
-msgstr "Musique et Culturel"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:92
 msgid "Are you primarily an events based business?"
-msgstr "Etes-vous une entreprise basée sur l’événementiel?"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:92
-msgid ""
-"Does your business revolve around regular events, e.g. football matches, "
-"performances, etc?"
+msgid "Does your business revolve around regular events, e.g. football matches, performances, etc?"
 msgstr ""
-"Est-ce que votre business est principalement événementiel? ex. matchs de "
-"foot, shows etc ?"
 
 #: inc/dashboard/venueConfig.php:107
 msgid "Collection Slot Duration (mins)"
-msgstr "Durée du créneau de récupération (mins)"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:107
-msgid ""
-"This is the number of minutes after opening time and before closing time "
-"when customers are allowed to collect orders."
+msgid "This is the number of minutes after opening time and before closing time when customers are allowed to collect orders."
 msgstr ""
-"C'est le nombre de minutes après l'horaire d'ouverture et avant la "
-"fermeture, lorsque les clients peuvent récupérer leurs commandes."
 
 #: inc/dashboard/venueConfig.php:108
 msgid "eg: 30"
-msgstr "ex. 30"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:109
 msgid "Please provide a duration in mins"
-msgstr "Veuillez fournir un durée en minutes."
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:115
 msgid "Default preparation time for collection orders (mins)"
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:115
-msgid ""
-"The time it takes to prepare your order before the customer can pick it up."
+msgid "The time it takes to prepare your order before the customer can pick it up."
 msgstr ""
-"Temps nécessaire à la préparation de la commande avant que le client puisse "
-"la récupérer. "
 
 #: inc/dashboard/venueConfig.php:116
 msgid "e.g. 25"
-msgstr "ex. 25"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:117
 msgid "Please provide a lead time"
-msgstr "S'il vous plaît fournir un délai de préparation"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:122
 msgid "Discount offered for collection orders (%)"
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:123
-#, fuzzy
 msgid "e.g. 10"
-msgstr "ex. 25"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:130
 msgid "Minimum value for orders"
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:131
-#, fuzzy
 msgid "e.g. 5"
-msgstr "ex. 25"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:132
-#, fuzzy
 msgid "Please provide a minimum value for ordering"
-msgstr "S'il vous plaît fournir un délai de préparation"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:145
-#, fuzzy
 msgid "Address"
-msgstr "Adresse de l'endroit"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:151
 msgid "Please type a venue address (max 250chars)"
-msgstr "Veuillez inscrire une adresse (max 250 caractères) "
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:159
-#, fuzzy
 msgid "Please type a Town/City (max 45chars)"
-msgstr "Veuillez inscrire un code postal (max 45 caractères)"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:166
-#, fuzzy
 msgid "Country"
-msgstr "Pays du business"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:413
 msgid "Please choose a country"
-msgstr "Veuillez choisir un pays"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:418
-#, fuzzy
 msgid "Post code"
-msgstr "Code postal de l'endroit"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:420
 msgid "Please type a post code (max 45chars)"
-msgstr "Veuillez inscrire un code postal (max 45 caractères)"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:426
 msgid "Language"
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:431
-#, fuzzy
 msgid "Please select your language"
-msgstr "Veuillez sélectionner fonctions que vous fallez"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:437
-#, fuzzy
 msgid "Timezone"
-msgstr "Heure?"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:445
-#, fuzzy
 msgid "Please select your timezone"
-msgstr "Entrer vos exigences."
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:451
 msgid "Currency"
 msgstr ""
 
 #: inc/dashboard/venueConfig.php:457
-#, fuzzy
 msgid "Please select your currency"
-msgstr "Veuillez sélectionner fonctions que vous fallez"
+msgstr ""
 
 #: inc/dashboard/venueConfig.php:479
 msgid "15&#37 done, keep going!"
-msgstr "15&#37 fait, continuer!"
+msgstr ""
 
 #: inc/finish/finish_content.php:26
 msgid "The finish line!"
-msgstr "Ligne d'arrivée!"
+msgstr ""
 
 #: inc/finish/finish_content.php:28
 msgid "App mode"
-msgstr "En mode d'application"
+msgstr ""
 
 #: inc/finish/finish_content.php:33
 msgid "After you setup a payment method, you can send it into the world!"
 msgstr ""
-"Après avoir mis en place un moyen de paiement vous pourrez l'envoyer à tout "
-"le monde!"
 
 #: inc/finish/finish_content.php:38
 msgid "SETUP PAYMENT"
-msgstr "INSTALLER UN MOYEN PAIEMENT"
+msgstr ""
 
 #: inc/finish/finish_content.php:42 inc/finish/finish_content.php:48
 msgid "MAKE MY APP LIVE"
-msgstr "METTRE MON APP en MODE LIVE"
+msgstr ""
 
 #: inc/finish/finish_content.php:45
 msgid "SWITCH TO DEMO MODE"
-msgstr "METTRE MON APP en mode DEMO"
+msgstr ""
 
 #: inc/finish/finish_content.php:49
 msgid "PUT MY APP IN DEMO MODE"
-msgstr "METTRE MON APP en MODE DEMO"
+msgstr ""
 
 #: inc/finish/finish_content.php:51
 msgid "TAKE MY APP OFFLINE"
-msgstr "METTRE MON APP en mode HORS LIGNE "
+msgstr ""
 
 #: inc/finish/finish_content.php:53
 msgid "BACK TO THE DASHBOARD"
-msgstr "RETOURNER AU DASHBOARD"
+msgstr ""
 
 #: inc/finish/finish_content.php:74
 msgid "Payment method was not setup."
-msgstr "Moyen de paiement"
+msgstr ""
 
 #: inc/forgot/forgot_content.php:4 inc/signin/signin_content.php:39
 msgid "Forgot your password?"
-msgstr "Mot de passe oublié ? "
+msgstr ""
 
 #: inc/forgot/forgot_content.php:10
 msgid "An email address is required."
-msgstr "Une adresse mail est requise"
+msgstr ""
 
 #: inc/forgot/forgot_content.php:16 inc/reset/reset_content.php:23
 msgid "RESET PASSWORD"
-msgstr "Réinitialiser le mot de passe"
+msgstr ""
 
 #: inc/more/more_content.php:6 inc/shared/h.php:118
 msgid "Find out more"
-msgstr "En savoir plus"
+msgstr ""
 
 #: inc/more/more_content.php:15
 msgid "Please select at least one feature"
-msgstr "Veuillez sélectionner au moins une fonction"
+msgstr ""
 
 #: inc/more/more_content.php:20
-msgid ""
-"Describe your requirement. Include details like like the brand of ePOS you "
-"are using or the number of outlets you require."
+msgid "Describe your requirement. Include details like like the brand of ePOS you are using or the number of outlets you require."
 msgstr ""
-"Décrire vos exigences. Inclure les détails comme la marque ePOS que vous "
-"utilisez ou le nombre de points de vente dont vous avez besoin "
 
 #: inc/more/more_content.php:22
 msgid "Please enter your requirement."
-msgstr "Entrer vos exigences."
+msgstr ""
 
 #: inc/more/more_content.php:28
 msgid "SEND"
-msgstr "ENVOYER"
+msgstr ""
 
 #: inc/more/more_content.php:33
 msgid "Thank you for your request"
-msgstr "Merci de votre demande"
+msgstr ""
 
 #: inc/more/more_content.php:34
 msgid "We'll be in touch shortly."
-msgstr "Nous allons vous contacter prochainement. "
+msgstr ""
 
 #: inc/reset/reset_content.php:4
 msgid "Reset your password?"
-msgstr "réinitialiser votre mot de passe?"
+msgstr ""
 
 #: inc/reset/reset_content.php:12
 msgid "A password is required."
-msgstr "Un mot de passe est requis"
+msgstr ""
 
 #: inc/reset/reset_content.php:17 inc/settings/settings_content.php:73
 #: inc/signup/signup_content.php:63
 msgid "Passwords don't match."
-msgstr "Les mots de passe ne correspondent pas."
+msgstr ""
 
 #: inc/reset/reset_content.php:28
 msgid "Sorry. Invalid code."
-msgstr "Désolés. Code invalide."
+msgstr ""
 
 #: inc/settings/settings_content.php:10
 msgid "First Name is required (max 100chars)"
-msgstr "Prénom requis (max 100 caractères) "
+msgstr ""
 
 #: inc/settings/settings_content.php:15
 msgid "Last Name is required (max 100chars)"
-msgstr "Nom de Famille requis (max 100 caractères)"
+msgstr ""
 
 #: inc/settings/settings_content.php:22
 msgid "An email address is required"
-msgstr "Une adresse e-mail est requise"
+msgstr ""
 
 #: inc/settings/settings_content.php:27
 msgid "A business name is required (max 100chars)"
-msgstr "Un nom d'entreprise est requis (max 100 caractères)"
+msgstr ""
 
 #: inc/settings/settings_content.php:34
 msgid "Notifications"
-msgstr "Notifications"
+msgstr ""
 
 #: inc/settings/settings_content.php:37
 msgid "Off"
-msgstr "Off "
+msgstr ""
 
 #: inc/settings/settings_content.php:40
 msgid "On"
-msgstr "On "
+msgstr ""
 
 #: inc/settings/settings_content.php:50
 msgid "Change password?"
-msgstr "Changer votre mot de passe?"
+msgstr ""
 
 #: inc/settings/settings_content.php:61 inc/settings/settings_content.php:68
 msgid "A password address is required."
-msgstr "Un adresse de mot de passe et requis"
+msgstr ""
 
 #: inc/settings/settings_content.php:71
 msgid "Confirm New Password"
-msgstr "Confirmer votre nouveau mot de passe"
+msgstr ""
 
 #: inc/settings/settings_content.php:80
 msgid "SAVE"
-msgstr "ENREGISTRER"
+msgstr ""
 
 #: inc/shared/dashboard_footer.php:5
-msgid ""
-"Looking for ePOS integration, detailed reporting or the ability to configure "
-"multiple outlets?"
+msgid "Looking for ePOS integration, detailed reporting or the ability to configure multiple outlets?"
 msgstr ""
-"Vous cherchez à intégrer ePOS, les rapports détaillés ou la capacité à "
-"configurer plusieurs points des ventes?"
 
 #: inc/shared/dashboard_footer.php:6
 msgid "FIND OUT MORE"
-msgstr "EN SAVOIR PLUS"
+msgstr ""
 
 #: inc/shared/dashboard_footer.php:14 inc/shared/regular_footer.php:19
 msgid "support@preoday.com"
-msgstr "support@preoday.com"
+msgstr ""
 
 #: inc/shared/dashboard_footer.php:15 inc/shared/regular_footer.php:20
 msgid "Legal Statement"
-msgstr "Informations légales"
+msgstr ""
 
 #: inc/shared/dashboard_footer.php:16 inc/shared/regular_footer.php:21
 msgid "Privacy + Cookies"
-msgstr "Politique de Confidentialité +  Cookies "
+msgstr ""
 
 #: inc/shared/dashboard_footer.php:17 inc/shared/regular_footer.php:22
 msgid "Preoday"
-msgstr "Preoday"
+msgstr ""
 
 #: inc/shared/h.php:13
 msgid "PreoDay"
-msgstr "Preoday"
+msgstr ""
 
 #: inc/shared/h.php:18
 msgid "Menu"
-msgstr "Menu"
+msgstr ""
 
 #: inc/shared/h.php:26
 msgid "Sign Up"
-msgstr "S'inscrire"
+msgstr ""
 
 #: inc/shared/h.php:27
 msgid "Login"
-msgstr "Se connecter"
+msgstr ""
 
 #: inc/shared/h.php:32
 msgid "Go to Dashboard"
-msgstr "Aller sur le Dashboard"
+msgstr ""
 
 #: inc/shared/h.php:35 inc/shared/h.php:38 inc/shared/h.php:41
 #: inc/shared/h.php:44
 msgid "Fulfilment App"
-msgstr "application d'exécution "
+msgstr ""
 
 #: inc/shared/h.php:49
 msgid "Change Settings"
-msgstr "Modifier les réglages"
+msgstr ""
 
 #: inc/shared/h.php:56
 msgid "Home Screen"
-msgstr "Ecran d'accueil"
+msgstr ""
 
 #: inc/shared/h.php:57
 msgid "Menu Screen"
-msgstr "Ecran de Menu"
+msgstr ""
 
 #: inc/shared/h.php:75
 msgid "No menus"
-msgstr "Pas de Menus"
+msgstr ""
 
 #: inc/shared/h.php:82
 msgid "Update Events"
-msgstr "Actualiser vos événements"
+msgstr ""
 
 #: inc/shared/h.php:88
 msgid "Manage Users"
-msgstr "Gérer vos utilisateurs"
+msgstr ""
 
 #: inc/shared/h.php:104
 msgid "+ Store"
 msgstr ""
 
 #: inc/shared/h.php:111
-#, fuzzy
 msgid "Account Settings"
-msgstr "Réglages du Lieu"
+msgstr ""
 
 #: inc/shared/h.php:112 inc/shared/h.php:123
 msgid "Logout"
-msgstr "Se déconnecter"
+msgstr ""
 
 #: inc/shared/h.php:115
 msgid "Help"
-msgstr "Aide"
+msgstr ""
 
 #: inc/shared/h.php:117 inc/shared/h.php:122
 msgid "Getting started"
-msgstr "Commencer"
+msgstr ""
 
 #: inc/shared/meta.php:9
 msgid "preoday"
-msgstr "preoday"
+msgstr ""
 
 #: inc/shared/privacy.php:1
 msgid "PRIVACY NOTICE FOR MY ORDER APP"
@@ -2849,7 +2597,7 @@ msgstr ""
 
 #: inc/shared/privacy.php:7
 msgid "1. Who is Preoday?"
-msgstr "1. Qui est Preoday?"
+msgstr ""
 
 #: inc/shared/privacy.php:8
 msgid ""
@@ -3217,7 +2965,7 @@ msgstr ""
 
 #: inc/shared/privacy.php:174
 msgid "10. Access to your details"
-msgstr "Accéder à vos détails"
+msgstr ""
 
 #: inc/shared/privacy.php:175
 msgid ""
@@ -3239,7 +2987,7 @@ msgstr ""
 
 #: inc/shared/privacy.php:185
 msgid "11. Queries"
-msgstr "11. Questions"
+msgstr ""
 
 #: inc/shared/privacy.php:186
 msgid ""
@@ -3257,19 +3005,19 @@ msgstr ""
 
 #: inc/shared/privacy.php:192
 msgid "Email: "
-msgstr "Email : "
+msgstr ""
 
 #: inc/shared/regular_footer.php:4
 msgid "CHANGE LANGUAGE"
-msgstr "CHANGER LA LANGUE"
+msgstr ""
 
 #: inc/shared/regular_footer.php:6
 msgid "English"
-msgstr "Anglais"
+msgstr ""
 
 #: inc/shared/regular_footer.php:7
 msgid "German"
-msgstr "Allemand"
+msgstr ""
 
 #: inc/shared/regular_footer.php:8
 msgid "French"
@@ -3313,7 +3061,7 @@ msgstr ""
 
 #: inc/shared/terms.php:19
 msgid "2. Registration"
-msgstr "2. Enregistrement"
+msgstr ""
 
 #: inc/shared/terms.php:20
 msgid ""
@@ -3351,7 +3099,7 @@ msgstr ""
 
 #: inc/shared/terms.php:38
 msgid "3. Payment"
-msgstr "3. Paiement"
+msgstr ""
 
 #: inc/shared/terms.php:39
 msgid ""
@@ -3712,8 +3460,7 @@ msgstr ""
 msgid ""
 "10.2 In particular, please note that\n"
 "although Preoday is based in the UK, it and its service providers\n"
-"may have servers located overseas, where the laws may not give the same "
-"level of protection\n"
+"may have servers located overseas, where the laws may not give the same level of protection\n"
 "to personal data as within the UK and that by submitting your\n"
 "personal data, you agree to allowing your personal data to be\n"
 "transferred, processed and stored overseas as set out in this\n"
@@ -3722,7 +3469,7 @@ msgstr ""
 
 #: inc/shared/terms.php:212
 msgid "11. General"
-msgstr "11. Général"
+msgstr ""
 
 #: inc/shared/terms.php:213
 msgid ""
@@ -3797,125 +3544,102 @@ msgstr ""
 
 #: inc/signin/signin_content.php:3
 msgid "Your account"
-msgstr "Votre compte"
+msgstr ""
 
 #: inc/signin/signin_content.php:7
 msgid "Login using Facebook"
-msgstr "S'inscrire grâce à Facebook"
+msgstr ""
 
 #: inc/signin/signin_content.php:15
 msgid "Login using Google+"
-msgstr "S'inscrire grâce à Google +"
+msgstr ""
 
 #: inc/signin/signin_content.php:33
 msgid "Please type your password"
-msgstr "Veuillez tapez votre mot de passe"
+msgstr ""
 
 #: inc/signin/signin_content.php:45
 msgid "LOG IN"
-msgstr "SE CONNECTER"
+msgstr ""
 
 #: inc/signin/signin_content.php:52 inc/signin/signin_content.php:55
 #: inc/signin/signin_content.php:58 inc/signin/signin_content.php:61
 msgid "Looking for the Fulfilment App?"
-msgstr "Vous cherchez l'application de réalisation?"
+msgstr ""
 
 #: inc/signin/signin_content.php:52 inc/signin/signin_content.php:55
 #: inc/signin/signin_content.php:58 inc/signin/signin_content.php:61
 msgid "  Click here"
-msgstr "Cliquez ici"
+msgstr ""
 
 #: inc/signin/signin_content.php:78
-msgid ""
-"Sorry, you don't have sufficient privileges.<br/><br/>Looking for the "
-"Fulfilment App? Click the link at the bottom of this page."
+msgid "Sorry, you don't have sufficient privileges.<br/><br/>Looking for the Fulfilment App? Click the link at the bottom of this page."
 msgstr ""
-"Désolé, vous n'avez pas de privilèges suffisants. <br/><br/> Vous cherchez "
-"l'application de réalisation? Cliquez le lien au bas de cet page."
 
 #: inc/signup/signup_content.php:6
 msgid "Now, we just need your business name."
-msgstr "Le nom de votre entreprise"
+msgstr ""
 
 #: inc/signup/signup_content.php:13
 msgid "Get started"
-msgstr "Commencer"
+msgstr ""
 
 #: inc/signup/signup_content.php:17
 msgid "Signup using Facebook"
-msgstr "S'inscrire grâce à Facebook"
+msgstr ""
 
 #: inc/signup/signup_content.php:24
 msgid "Signup using Google+"
-msgstr "S’inscrire grâce à Google +"
+msgstr ""
 
 #: inc/signup/signup_content.php:45
 msgid "Your email"
-msgstr "Votre Email"
+msgstr ""
 
 #: inc/signup/signup_content.php:47
 msgid "Please type your email"
-msgstr "Veuillez taper votre Email"
+msgstr ""
 
 #: inc/signup/signup_content.php:53
 msgid "Create a password"
-msgstr "Créer un mot de passe"
+msgstr ""
 
 #: inc/signup/signup_content.php:55
 msgid "Please type a password."
-msgstr "Veuillez taper un mot de passe"
+msgstr ""
 
 #: inc/signup/signup_content.php:69
 msgid "Your business name"
-msgstr "Le nom de votre entreprise"
+msgstr ""
 
 #: inc/signup/signup_content.php:71
 msgid "Please type your business name (max 100chars)"
-msgstr "Veuillez taper le nom de votre entreprise (max 100 caractères)"
+msgstr ""
 
 #: inc/signup/signup_content.php:77
 msgid "Telephone Number"
 msgstr ""
 
 #: inc/signup/signup_content.php:79
-#, fuzzy
 msgid "Please type your telephone number"
-msgstr "Veuillez taper un nom de point de vente"
+msgstr ""
 
 #: inc/signup/signup_content.php:87
 msgid "By clicking 'Sign Up' you agree to our"
-msgstr "En cliquant sur ‘s’inscrire’ vous acceptez nos"
+msgstr ""
 
 #: inc/signup/signup_content.php:87
 msgid "Terms"
-msgstr "conditions générales "
+msgstr ""
 
 #: inc/signup/signup_content.php:87
 msgid "and"
-msgstr "et"
+msgstr ""
 
 #: inc/signup/signup_content.php:87
 msgid "Privacy Policy"
-msgstr "politique de confidentialité"
+msgstr ""
 
 #: inc/signup/signup_content.php:95
 msgid "SIGN UP"
-msgstr "S'INSCRIRE"
-
-#~ msgid "Manage outlets"
-#~ msgstr "Gérer vos points de ventes"
-
-#~ msgid "Price (&pound;)"
-#~ msgstr "Prix (&euro;)"
-
-#~ msgid "Venue lookup"
-#~ msgstr "Recherche lieu"
-
-#~ msgid "Start typing a venue name..."
-#~ msgstr "Commencer à taper un nom de lieu..."
-
-#~ msgid "Event configuration has been saved!"
-#~ msgstr "La configuration d'événement a été enregistrée !"
-
-#~ msgid "Select menu(s) for this outlet"
-#~ msgstr "Sélectionner des menu pour cet point du vente"
+msgstr ""

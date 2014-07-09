@@ -175,22 +175,22 @@
 		$curlResult = callAPI('GET', $apiURL."venues/$venueID/events", false, $apiAuth);
 		$dataJSON = json_decode($curlResult,true);
 		
-		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
+		if( ( empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) && (!$_SESSION['venue_liveFlag'] && !$_SESSION['venue_demoFlag'])) 
 		{	
 			$_SESSION['noEHFlag']=1;
 		}
 	}
-	else if(((isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag']) || (!isset($_SESSION['venue_eventFlag']))) && (isset($venueID) && $venueID))
+	else if((((isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag']) || (!isset($_SESSION['venue_eventFlag']))) && (isset($venueID) && $venueID)) && (!$_SESSION['venue_liveFlag'] && !$_SESSION['venue_demoFlag']))
 	{
 		$curlResult = callAPI('GET', $apiURL."venues/$venueID/hours", false, $apiAuth);
 		$dataJSON = json_decode($curlResult,true);
 				
-		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
+		if( (empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) && (!$_SESSION['venue_liveFlag'] && !$_SESSION['venue_demoFlag'])) 
 		{	
 			$_SESSION['noEHFlag']=1;
 		}
 	}
-	else
+	else if ((!$_SESSION['venue_liveFlag'] && !$_SESSION['venue_demoFlag']))
 		$_SESSION['noEHFlag'] = 1;
 	
 	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag']) /*User has given data for all 5 already*/

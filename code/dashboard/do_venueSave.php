@@ -125,21 +125,7 @@
 		$data = array();
 		$data['leadTime']			= $leadtime;
 		$data['pickupDiscount']   	= $vDiscount;
-		$data['orderMin']			= $vOrderMin;
-		
-		if($_SESSION['signupWizFlag'])
-		{
-			//default data
-			$data['textColour']			= 'FFFFFF';
-			$data['buttonColour']		= '3AA2DC';
-			$data['buttonTextColour']	= 'FFFFFF';
-			$data['title'] 				= $vName;	
-			$data['wallpaperId']		= 1;
-			$data['button2Colour'] 		= '3AA2DC';
-			$data['button2TextColour'] 	= 'FFFFFF';	
-			$data['button3Colour'] 		= '2E70B7';		
-			$data['button3TextColour'] 	= 'FFFFFF';
-		}
+		$data['orderMin']			= $vOrderMin;	
 		
 		$jsonData = json_encode($data);
 		

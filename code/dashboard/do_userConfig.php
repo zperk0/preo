@@ -66,8 +66,13 @@
 			//now the role
 			$role		= strtoupper($user['role']);
 			$accountId	= $_SESSION['account_id'];
+
+			$roleData = array();
+			$roleData['role'] = $role;
+			$roleData['accountId'] = $accountId;
+			$jsonRoleData = json_encode($roleData);
 			
-			$curlResult = callAPI('PUT', $apiURL."users/$userID/role?accountId=$accountId&role=$role", false, $userApiAuth); //user role updated
+			$curlResult = callAPI('PUT', $apiURL."users/$userID/role?accountId=$accountId&role=$role", $jsonRoleData, $userApiAuth); //user role updated
 		}
 		else //create new user/role relation
 		{

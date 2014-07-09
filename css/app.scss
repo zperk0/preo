@@ -266,7 +266,11 @@ footer {
 }
 
 #langDrop {
-  margin-top: 24px;
+  // Foundation dropdown uses top: -9999px
+  // to hide dropdown but we have some super
+  // long pages like the menu editor. -9999px is
+  // not enough so move it left as well.
+  left: -999px
 }
 
 /* tips */
@@ -1296,7 +1300,7 @@ tr {
 }
 
 .menuTable .menuTDTools, .headerTable .menuTDTools {
-  width: 166px;
+  width: 168px;
   text-align: right;
 }
 
@@ -1326,6 +1330,9 @@ tr {
 
 .menuTDVisi .switch, .eventTDVisi .switch, .mdTDVisi .switch {
   margin-top: 4px;
+  &.hide {
+    display: none;
+  }
 }
 
 .menuTable h6, .eventTable h6, .userTable h6, .outletTable h6, .mdTable h6 {
