@@ -46,103 +46,92 @@ form label, label, .multiSelect .button{
 }
 
 /**********Navbar************/
-#navbar-menu{
+header{
   background-color: #46535D !important;
-  border: none;
-  margin-bottom: 0px;
-  height: 135px;
-  padding: 0px !important;
+  border: none;  
+  height: 135px;  
+}
+
+header nav, header ul, header li{
+  height:100%;
 }
 
 #navbar-menu ul li{
   border-right: 1px solid #333E46;
-  background: none;
+  width:20%;
+  float:left;
+  display:block;  
+  background-position:center 35%;
+  background-repeat:no-repeat;
+  text-align:center;
+  position:relative;
 }
 
-#navbar-menu ul li a{
-  display: block;
-  font-size: 16px !important;
-  padding: 17px 0 !important;
-  width: 225px;
-  background: none !important;
+#navbar-menu ul li.metrics{
+  background-image: url('/code/kyc/images/icons/metrics-icon-grey.png');
 }
 
-#navbar-menu ul li a{
-  color: #333E46 !important;
-  text-align: center;
+#navbar-menu ul li.metrics.active, #navbar-menu ul li.metrics:hover {
+  background-image: url('/code/kyc/images/icons/metrics-icon-white.png');
 }
 
-#navbar-menu ul li a:hover, #navbar-menu ul li a.active{
-  background-color: #929497 !important;
-  color: #fff !important;  
+#navbar-menu ul li.stock{
+  background-image: url('/code/kyc/images/icons/stock-icon-grey.png');
 }
 
-#navbar-menu ul li.metrics a i{
-  background: url('/code/kyc/images/icons/metrics-icon-grey.png') center center no-repeat;
+#navbar-menu ul li.stock.active, #navbar-menu ul li.stock:hover {
+  background-image: url('/code/kyc/images/icons/stock-icon-white.png') ;
 }
 
-#navbar-menu ul li.metrics a.active i, #navbar-menu ul li.metrics:hover a i{
-  background: url('/code/kyc/images/icons/metrics-icon-white.png') center center no-repeat;
+#navbar-menu ul li.customers{
+  background-image: url('/code/kyc/images/icons/customer-icon-grey.png');
 }
 
-#navbar-menu ul li.stock a i{
-  background: url('/code/kyc/images/icons/stock-icon-grey.png') center center no-repeat;
+#navbar-menu ul li.customers.active, #navbar-menu ul li.customers:hover {
+  background-image: url('/code/kyc/images/icons/customer-icon-white.png') ;
 }
 
-#navbar-menu ul li.stock a.active i, #navbar-menu ul li.stock:hover a i{
-  background: url('/code/kyc/images/icons/stock-icon-white.png') center center no-repeat;
+#navbar-menu ul li.reports{
+  background-image: url('/code/kyc/images/icons/reports-icon-grey.png');
 }
 
-#navbar-menu ul li.customers a i{
-  background: url('/code/kyc/images/icons/customer-icon-grey.png') center center no-repeat;
+#navbar-menu ul li.reports.active, #navbar-menu ul li.reports:hover {
+  background-image: url('/code/kyc/images/icons/reports-icon-white.png') ;
 }
 
-#navbar-menu ul li.customers a.active i, #navbar-menu ul li.customers:hover a i{
-  background: url('/code/kyc/images/icons/customer-icon-white.png') center center no-repeat;
+#navbar-menu ul li.live-stream{
+  background-image: url('/code/kyc/images/icons/live-stream-icon-grey.png');
 }
 
-#navbar-menu ul li.reports a i{
-  background: url('/code/kyc/images/icons/reports-icon-grey.png') center center no-repeat;
+#navbar-menu ul li.live-stream.active, #navbar-menu ul li.live-stream:hover{
+  background-image: url('/code/kyc/images/icons/live-stream-icon-white.png');
+}
+#navbar-menu ul > li:first-child{
+    border-left: 1px solid #333E46;
 }
 
-#navbar-menu ul li.reports a.active i, #navbar-menu ul li.reports:hover a i{
-  background: url('/code/kyc/images/icons/reports-icon-white.png') center center no-repeat;
+#navbar-menu ul li:hover{
+  cursor:pointer;
 }
 
-#navbar-menu ul li.live-stream a i{
-  background: url('/code/kyc/images/icons/live-stream-icon-grey.png') center center no-repeat;
+#navbar-menu ul li.active:hover{
+  cursor:default;
 }
 
-#navbar-menu ul li.live-stream a.active i, #navbar-menu ul li.live-stream:hover a i{
-  background: url('/code/kyc/images/icons/live-stream-icon-white.png') center center no-repeat;
+#navbar-menu ul li.active, #navbar-menu ul li:hover {
+  background-color:#939598 !important;
 }
 
-@media(max-width: 954px) {
-  #navbar-menu ul li a i{
-    background: none !important;
-    height: 0px !important;
-  }
+#navbar-menu ul li span {
+  color:#333f47;  
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 20px;
+}
 
-  #navbar-menu ul li a{
-    width: 100% !important;
-    padding: 10px !important;
-  }
-
-  #navbar-menu{
-    height: 45px !important;
-  }
-
-  #navbar-menu.expanded{
-    height: 225px !important;
-  }
-
-  #navbar-menu .navbar-nav{
-    width: 92% !important;
-  }
-
-  #icon-menu{
-    background: none !important;
-  }
+#navbar-menu ul li.active span,#navbar-menu ul li:hover span{
+  color:#f3f4f4;
 }
 
 
@@ -331,13 +320,7 @@ form label, label, .multiSelect .button{
   display: none;
 }
 
-.container, #navbar-menu section{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
-
-@media (min-width:768px){.container, #navbar-menu section{width:750px}}
-
-@media (min-width:992px){.container, #navbar-menu section{width:970px}}
-
-@media (min-width:1200px){.container, #navbar-menu section{width:1170px}}
+.container{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
 
 .container-fluid{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
 

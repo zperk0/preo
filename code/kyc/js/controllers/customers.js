@@ -1,6 +1,6 @@
 angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderService', '$AjaxInterceptor','Export','ACCOUNT_ID',
  function($scope,OrderService, $AjaxInterceptor,Export,ACCOUNT_ID) {
-
+ 	$scope.currentLocation = 'customers';
 	$scope.customers = {};
 
 	var allOrders = OrderService.getOrders();

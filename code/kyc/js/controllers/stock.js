@@ -1,7 +1,8 @@
 angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInterceptor','OrderService', 'Export','ACCOUNT_ID',
 	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID) {
-	
-	
+
+	$scope.setLocation('stock');
+
 	$scope.stock={};
 	$scope.exportAll="1";
 

@@ -1,6 +1,6 @@
 angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderService','pusher','$AjaxInterceptor','$interval',
  function($scope,OrderService,pusher,$AjaxInterceptor,$interval) {
-
+    $scope.setLocation('stream');
 	$scope.orders = OrderService.getOrders();
     var onTimeout = false;
     var pusherUpdateEvent = function() {                

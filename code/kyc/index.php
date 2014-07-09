@@ -13,37 +13,29 @@
   <link rel="stylesheet" href="/code/kyc/css/app.css"/>    
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-<div ng-app="kyc" ng-controller='MenuCtrl'>  
+<div ng-app="kyc" ng-controller='MenuCtrl' >  
   
-  <header>
-    <div class="container-fluid faixa-orange">
-      <div class="container">
+   <div class="container-fluid faixa-orange">
+      <div class="row">
         <h4 class="title-white"><span class="icon-know-customers"></span><? echo _("Know your customers")?></h4>
       </div>
-    </div>
-
-    <nav class="top-bar" data-topbar role="navigation" id="navbar-menu">
-      <section class="top-bar-section">
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="metrics">
-                <a href="#/dashboard" active-link="active"><i class="fa icon-large"></i><? echo _("Metrics")?></a>
-              </li>
-              <li class="stock"><a href="#/stock" active-link="active"><i class="fa icon-large"></i><? echo _("Stock")?></a></li>
-              <li class="customers"><a href="#/customers" active-link="active"><i class="fa icon-large"></i><? echo _("Customers")?></a></li>
-              <li class="reports"><a href="#/reports" active-link="active"><i class="fa icon-large"></i><? echo _("Reports")?></a></li>
-              <li class="live-stream"><a href="#/stream" active-link="active"><i class="fa icon-large"></i><? echo _("Live stream")?></a></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-      </section>
+    </div> 
+  <header>    
+    <nav class="row" data-topbar role="navigation" id="navbar-menu">      
+          <ul>
+            <li class="metrics" ng-class='{active:currentLocation==="dashboard"}' ng-click='setLocation("dashboard")'><span><? echo _("Metrics")?></span></li>
+            <li class="stock" ng-class='{active:currentLocation==="stock"}' ng-click='setLocation("stock")'><span><? echo _("Stock")?></span></li>
+            <li class="customers" ng-class='{active:currentLocation==="customers"}' ng-click='setLocation("customers")'><span><? echo _("Customers")?></span></li>
+            <li class="reports" ng-class='{active:currentLocation==="reports"}' ng-click='setLocation("reports")'><span><? echo _("Reports")?></span></li>
+            <li class="live-stream" ng-class='{active:currentLocation==="stream"}' ng-click='setLocation("stream")'><span><? echo _("Live stream")?></span></li>
+          </ul>
     </nav>
   </header>
-
+  <div class='clearfix'></div>
 
   <div>
     <div class="container-fluid" id="container-search">
-      <div class="container">
+      <div class="row">
 
         <div class="large-6 columns">
           <form class="navbar-form navbar-left" role="search" ng-submit="update()">
@@ -92,7 +84,7 @@
         </div> 
       </div>
     </div>
-    <div ng-view></div>
+    <div class='row' ng-view></div>
   </div>
   
 

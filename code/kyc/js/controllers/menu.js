@@ -1,6 +1,7 @@
 
-angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','CurrencyService','$AjaxInterceptor',
-	function($scope,OutletService,OrderService,AllCharts,$route,CurrencyService,$AjaxInterceptor) {	
+angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','CurrencyService','$AjaxInterceptor','$location',
+	function($scope,OutletService,OrderService,AllCharts,$route,CurrencyService,$AjaxInterceptor,$location) {	
+			
 			$scope.currencySymbol = "£";
 			$scope.outlets = [];
 			$scope.search = {};
@@ -12,15 +13,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			OutletService.init(function(){
 				$scope.outlets = OutletService.getOutlets();					
 				AllCharts.init($scope.search.start_date,$scope.search.end_date);
-			})
-			
-
-			 $scope.$watch(
-          "search.start_date",
-          function( newValue, oldValue ) {
-          }
-      );
- 
+			})			
 
 		CurrencyService.getCurrency(function(currency){	
 				$scope.currency = currency.symbol;							
@@ -35,7 +28,12 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			},500);
 		}
 			
-						 
+		$scope.setLocation = function(newLocation){
+				$scope.currentLocation = newLocation;				
+				if ($location.path() !== ("/"+newLocation))
+        	$location.path(newLocation);
+		}				 
+
 		$scope.getSelectedOutlets = function(){
 			return $scope.outlets.filter(function(data){
 				return data.selected === true;
