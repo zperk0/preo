@@ -7,7 +7,7 @@
 					<span class="pull-left"><? echo _("Live Stream")?></span>				
 				</div>
 				<div id="content-table">
-					<table class="table table-striped table-list table-stream table-condensed">
+					<table class="table table-striped table-list table-stream table-condensed" ng-init="orderBy = 'updated'; direction = true">
 					<thead>
 					  	<tr>					  		
 					  		<th ng-click="orderBy = 'status'; direction=!direction">
@@ -24,21 +24,21 @@
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
-					  		<th ng-click="orderBy = 'customer'; direction=!direction">
+					  		<th ng-click="orderBy = 'user.firstName'; direction=!direction">
 					  			<? echo _("Customer")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>					  	
-					  		<th ng-click="orderBy = 'order'; direction=!direction">
+					  		<th ng-click="orderBy = 'items'; direction=!direction">
 					  			<? echo _("Order")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
-					  		<th ng-click="orderBy = 'time'; direction=!direction">
+					  		<th ng-click="orderBy = 'updated'; direction=!direction">
 					  			<? echo _("Time")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
@@ -47,7 +47,7 @@
 					  		</th>					  						  	
 					  	</tr>
 					  </thead>
-					  <tbody ng-repeat="order in orders | filter:outletFilter " ng-switch on="order.active" >
+					  <tbody ng-repeat="order in orders | filter:outletFilter | orderObjectBy:orderBy:direction" ng-switch on="order.active" >
 					  	<tr ng-click="activeStream(order)" ng-class="{active: order.active}">
 					  		<td width="15">
 					  			<span class="block-status {{ getStatusColor(order.status) }}">{{ getStatusName(order.status) }}</span>

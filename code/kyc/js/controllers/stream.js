@@ -83,8 +83,9 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
       return items;
     }
 
-    var intervalPromise = $interval(function () { $scope.$apply() }, 5000);      
-    $scope.$on('$destroy', function () { $interval.cancel(intervalPromise); });
+
+    // var intervalPromise = $interval(function () { $scope.$apply() }, 5000);      
+    // $scope.$on('$destroy', function () { $interval.cancel(intervalPromise); });
 
 
     $AjaxInterceptor.complete();
