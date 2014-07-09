@@ -1,5 +1,12 @@
 /* app css stylesheet */
 
+.nopadding{
+  padding:0 !important;
+}
+
+.nomargin{
+  margin:0 !important;
+}
 
 
 body{
@@ -31,10 +38,19 @@ form label, label, .multiSelect .button{
 }
 
 
-.navbar-form label>*{
-  margin-top:20px;
+.navbar-form label{
+  margin-bottom:20px;
 }
 
+.navbar-form .dateTo{
+  line-height:32px;
+  text-align:center;
+}
+
+.navbar-form input{
+  border-radius:3px;
+  text-align:center;
+}
 
 .title-white{
   color: #fff;
@@ -271,27 +287,17 @@ header nav, header ul, header li{
 
 #filterDashboard{
   background-color: #fff;
-  padding: 20px 10px 10px 10px;
-  margin: 30px auto 20px;
-  width: 98%;
+  padding: 2%;
+  margin: 30px auto 20px;  
+}
+
+#filterDashboard li{
+  margin-bottom: 5px;
 }
 
 #filterDashboard ul{
-  overflow: hidden;
-}
-
-#filterDashboard ul li{
-  float: left;
-  margin: 0 5px 5px 0;
-  width: 170px;
-}
-
-#filterDashboard ul li .checkbox{
-  margin: 0px;
-}
-
-#filterDashboard ul li label{
-  font-size: 11px;
+  padding:5px 5px 0px 5px;
+  margin-bottom: 0;
 }
 
 #content-table{
@@ -319,10 +325,6 @@ header nav, header ul, header li{
 .add-widget{
   display: none;
 }
-
-.container{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
-
-.container-fluid{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
 
 .title-modal-chart{
   text-align: center;
@@ -516,9 +518,8 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
 }
 
 #content-table{
-  padding: 0 50px;
-  overflow-y: scroll;
-  max-height: 800px;
+  padding: 0 35px;
+  /*overflow-y: scroll;*/
 }
 
 
@@ -753,6 +754,13 @@ span.multiSelect{
   font-size:70%;
 }
 
+@media screen and (max-width: 62.5em) {
+  .row{
+    width:95%;
+    margin:0 auto;
+  }
+}
+
 .chart_3:hover{
   /* IE 8 */
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
@@ -769,3 +777,5 @@ span.multiSelect{
   /* Good browsers */
   opacity: 0.5;
 };
+
+

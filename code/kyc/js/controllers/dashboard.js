@@ -27,9 +27,9 @@ angular.module('kyc.controllers')
             resize: {
               enabled: true
             },
-            widget_margins: [11, 11],
-	        widget_base_dimensions: [120, 150],
-	        min_cols: 6
+            widget_margins: [10,10],
+	           widget_base_dimensions: [105, 150],
+	           min_cols: 4
           };
 
           $scope.values = [];

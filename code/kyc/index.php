@@ -33,59 +33,52 @@
   </header>
   <div class='clearfix'></div>
 
-  <div>
+  
     <div class="container-fluid" id="container-search">
-      <div class="row">
-
-        <div class="large-6 columns">
-          <form class="navbar-form navbar-left" role="search" ng-submit="update()">
-            <div class="row">
-              <div class="large-10 columns">
-                <label><? echo _("Outlet:")?>
-                  <multi-select    
-                      input-model="outlets"    
-                      button-label="name"
-                      item-label="name"
-                      tick-property="selected"
-                      default-label="All Outlets"
-                  >
-                  </multi-select>
-                </label>
-              </div>
-              <div class="large-2 columns">
-                <label>&nbsp;
-                  <button type="submit" class="button small"><? echo _("Update")?></button>            
-                </label>
+      <div class="row formContainer">
+        
+          <form class="navbar-form navbar-left columns large-7 small-12 nopadding" role="search" ng-submit="update()">
+            <div class='row nomargin'>
+              <div class="columns large-12 small-12 nopadding">              
+                  <label>
+                  <? echo _("Outlet:")?></label>
+                  <div class='columns large-9 small-10 nopadding'>
+                    <multi-select    
+                        input-model="outlets"    
+                        button-label="name"
+                        item-label="name"
+                        tick-property="selected"
+                        default-label="All Outlets"
+                    ></multi-select>
+                   </div>
+                   <div class='columns large-3 small-2'>
+                    <button type="submit" class="button small"><? echo _("Update")?></button>            
+                   </div>                
               </div>
             </div>
+          </form>        
+                
+          <form ng-submit="update()" class='navbar-form navbar-left columns large-5 small-12 nopadding'>            
+              <div class="row nomargin">              
+                  <label><? echo _("Date:")?></label>
+                  <div class="columns large-4 small-4 nopadding"> 
+                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker ng-model="search.start_date" />                           
+                  </div>
+                  <div class='columns large-1 small-2 dateTo nopadding'>
+                    <? echo _("to") ?>
+                  </div>
+                  <div class="columns large-4 small-4 nopadding"> 
+                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker compare="search.start_date" ng-model="search.end_date" />              
+                  </div>
+                  <div class="columns large-3 small-2"> 
+                    <button type="submit" class="button small"><? echo _("Update")?></button>
+                  </div>
+              </div>                      
           </form>
-        </div>
-        
-        <div class="large-6 columns">
-          <form ng-submit="update()" class='navbar-form'>
-            <div class="row">
-              <div class="small-5 columns">
-                <label><? echo _("Date:")?>
-                  <input type="text" class="form-control input-search dropdown pdDropdown" datepicker ng-model="search.start_date" /> 
-                </label>
-              </div>
-              <div class="small-5 columns">
-                <label>&nbsp;
-                  <input type="text" class="form-control input-search dropdown pdDropdown" datepicker compare="search.start_date" ng-model="search.end_date" />
-                </label>
-              </div>
-              <div class="small-2 columns">
-                <label>&nbsp;
-                  <button type="submit" class="button small" ng-click="fetchDataByDate()"><? echo _("Update")?></button>
-                </label>
-              </div>
-            </div>          
-          </form>
-        </div> 
       </div>
     </div>
     <div class='row' ng-view></div>
-  </div>
+  
   
 
   
