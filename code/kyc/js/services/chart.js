@@ -182,6 +182,12 @@ service('$chartService', ['ChartType','$filter',
                         borderColor: '#DBDBD9',
                         borderWidth: 1,
                         backgroundColor: '#DBDBD9',
+                        positioner: function(boxWidth, boxHeight, point) {
+                            return {
+                                x: point.plotX - boxWidth/2 +10 ,
+                                y: point.plotY - boxHeight - 5
+                            };
+                        },
                         formatter: function () {
                             return '<b>' + this.y + '</b>';
                         }
@@ -261,6 +267,12 @@ service('$chartService', ['ChartType','$filter',
                         borderColor: '#DBDBD9',
                         borderWidth: 1,
                         backgroundColor: '#DBDBD9',
+                        positioner: function(boxWidth, boxHeight, point) {
+                            return {
+                                x: point.plotX - boxWidth/2 +10 ,
+                                y: point.plotY - boxHeight + 20
+                            };
+                        },
                         formatter: function () {
                             return '<b>' + this.y + ' </b>';
                         }
