@@ -11,6 +11,7 @@ angular.module('kyc.directives',[])
 angular.module('kyc', [  
   'ngRoute',
   'ngResource',   
+  'ngSanitize',
   'kyc.directives',
   'kyc.resources',
   'kyc.services',

@@ -30,8 +30,7 @@
 							{{ getText(chart) }}
 						</div>
 
-						<div class="pull-right numberRight" ng-if="chart.value.numberRight">
-							{{ chart.value.numberRight }}
+						<div class="pull-right numberRight" ng-if="chart.value.numberRight" ng-bind-html="chart.value.numberRight">							
 						</div>								
 					</div>
 

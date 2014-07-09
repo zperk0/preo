@@ -10,7 +10,8 @@ angular.module('kyc.charts')
     function getPercentage(data,oldData){
         var totalData = getPeriodTotal(data);
         var totalOldData = getPeriodTotal(oldData)        
-        return (totalData * 100 / totalOldData).toFixed(0)
+        var percentage = (totalData * 100 / totalOldData)        
+        return percentage === Infinity ? '&infin;' : percentage.toFixed(2);
     }
 
     function getPeriodTotal(data){
