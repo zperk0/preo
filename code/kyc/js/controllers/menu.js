@@ -5,7 +5,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			$scope.outlets = [];
 			$scope.search = {};
 
-			$scope.search.start_date =  new Date(new Date().getTime() - (1 * 24 * 3600 * 1000));
+			$scope.search.start_date =  new Date(new Date().getTime() - (120 * 24 * 3600 * 1000));
 			$scope.search.end_date = new Date();
 
 

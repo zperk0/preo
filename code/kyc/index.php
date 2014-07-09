@@ -139,7 +139,6 @@
   <script src="/code/kyc/js/resources/venue.js"></script>  
   <script src="/code/kyc/js/constants/chartType.js"></script>
   <script src="/code/kyc/js/constants/colors.js"></script>
-  <script src="/code/kyc/js/directives/directives.js"></script>
   <script src="/code/kyc/js/directives/chart/chart.js"></script>
   <script src="/code/kyc/js/directives/gridster/gridster.js"></script>
   <script src="/code/kyc/js/directives/highcharts/highcharts.js"></script>

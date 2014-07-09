@@ -1,9 +1,16 @@
 /* app css stylesheet */
 
+
+
 body{
   background-color: #EFEFEF;
   font-family: "Co Text W01 Regular","Co Text W01 Light";
   font-weight: normal;  
+}
+
+#wrap{
+  margin: 0;
+  padding: 0;
 }
 
 #dashboard{
@@ -251,11 +258,26 @@ form label, label, .multiSelect .button{
 }
 
 .largerNumber{
-  font-size: 60px;
+  font-size: 330%;
   color: #1476B7;
   display: block;
-  margin-top: 30px;
-  font-family:"Co Text W01 Regular";
+
+  font-family: "Co Text W01 Regular";
+  position: absolute;
+  width: 100%;
+
+  top: 40px;
+  margin-left: 0;
+  padding-left: 0;
+  left: 0;
+}
+
+.largerNumber.medium{
+  font-size:300%;
+}
+
+.largerNumber.small{
+  font-size:260%;
 }
 
 #filterDashboard{
@@ -378,7 +400,7 @@ form label, label, .multiSelect .button{
   height:100%;
 }
 
-.flipper.reportPage, .front.reportPage{
+.reportPage .flipper, .reportPage .front{
   min-height:500px;
 }
 

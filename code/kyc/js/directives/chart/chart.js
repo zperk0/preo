@@ -13,10 +13,31 @@ angular.module('kyc.directives').
   		link: function( ng, elem, attrs ) {        
 
         ng.noData = false;
-        if (!ng.chart.showChart){                    
-          if (ng.chart.value === 0 || ng.chart.value === 'NaN' || ng.chart.value == NaN)
+        angular.forEach(ng.chart.value.data,function(data){
+          console.log(new Date(data[0]),data[1]);
+        })
+        switch (ng.chart.value.type){
+          case ChartType.NUMBER:
+            //we need a number in number charts
+            if (ng.chart.value === 0 || ng.chart.value === 'NaN' || ng.chart.value == NaN){
               ng.noData = true;
+            }
+            break;
+          case ChartType.PIE:          
+          case ChartType.COLUMN:          
+            //we need at least one item in pies/columns charts
+            if (ng.chart.value.data.length === 0){
+              ng.noData = true;
+            }
+          break;          
+          case ChartType.AREA:
+            //we need at least two days of data in area charts
+            if (ng.chart.value.data.length <= 1){
+              ng.noData = true;
+            }
+          break;
         }
+        console.log('ng.noData',ng.noData);
 
         ng.ChartType = ChartType;
         var initialHeight = ng.chart.value.type === ChartType.number ? 150 : 322;

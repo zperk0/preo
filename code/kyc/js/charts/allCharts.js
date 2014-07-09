@@ -11,14 +11,14 @@ angular.module('kyc.charts')
     		ordersPerCustomer:OrdersPerCustomer,
     		averageOrderValue:AverageOrderValue,
     		itemsOrdered:ItemsOrdered,
-    		// ordersByOutlet:OrdersByOutlet,
-    		// mostPopularItems:MostPopularItems,
-    		// timeOfOrdersPlaced:TimeOfOrdersPlaced,
-    		// customersPie:CustomersPie,
-    		// customersBar:CustomersBar,
-      //       revenue:Revenue,
-      //       numberOfOrders:NumberOfOrders,
-      //       menuItemPopularity:MenuItemPopularity
+    		ordersByOutlet:OrdersByOutlet,
+    		mostPopularItems:MostPopularItems,
+    		timeOfOrdersPlaced:TimeOfOrdersPlaced,
+    		customersPie:CustomersPie,
+    		customersBar:CustomersBar,
+            revenue:Revenue,
+            numberOfOrders:NumberOfOrders,
+            menuItemPopularity:MenuItemPopularity
   	}
 
         

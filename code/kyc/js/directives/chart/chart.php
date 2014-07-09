@@ -10,7 +10,7 @@
 					
 				<span class="pull-left">{{ chart.title }}</span>
 
-				<a ng-if="chart.showChart" href="javascript:void(0)" class="pull-right" ng-click="showOptions()">				
+				<a ng-if="chart.showChart" href="javascript:void(0)" class="pull-right" ng-click="showOptions()" ng-if='!noData'>				
 					<i class="fa fa-plus"></i>
 				</a>
 
@@ -20,7 +20,9 @@
 					<div class='noData'>
 						<? echo _("No Data")?>
 					</div>
-			<div ng-if='!noData'>			
+			</div>
+			<div ng-if='!noData'>
+
 				<div ng-if="chart.showChart" class="content-chart">
 
 					<div class="top-chart overflow" ng-if="chart.value.numberLeft || chart.value.numberRight">
@@ -45,7 +47,7 @@
 				</div>
 
 				<div ng-if="!chart.showChart" class="content-chart" ng-dblclick="openModal()">
-					<span class="largerNumber">{{ getText(chart) }}</span>
+					<span class="largerNumber" ng-class="{medium:getText(chart).length>7,small:getText(chart).length>=9}" >{{ getText(chart) }}</span>
 				</div>
 			</div>
 		</div>

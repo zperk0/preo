@@ -4,6 +4,7 @@ angular.module('kyc.controllers', [])
 angular.module('kyc.resources', [])
 angular.module('kyc.charts',[])
 angular.module('kyc.services',[])
+angular.module('kyc.directives',[])
 
 
 // Declare app level module which depends on filters, and services
