@@ -1,4 +1,5 @@
-.multiSelect {             
+.multiSelect .acol label.multiSelect{
+    margin-bottom:0;
 }
 
 .multiSelect.inlineBlock {
