@@ -111,36 +111,34 @@
 					</a>
 
 				</div>
-
 				<div class="content-actions">
-					<h4 class="title-white"><? echo _("Export as...")?></h4>
+					<h4><? echo _("Export as...") ?></h4>
 
-				<div class="buttons overflow">
+
 						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()'>
 							<input name='data' value='{{pdfData}}' type='hidden'/>
-								<button class="pull-left btn btn-default" ng-click="exportData('pdf')">
+								<button ng-click="exportData('pdf')">
 										<? echo _("PDF") ?>
 								</button>
 						</form>
 						
 						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/csv/report' method='POST' ng-submit='exportCsv()'>
 							<input name='data' value='{{csvData}}' type='hidden'/>
-								<button class="pull-left btn btn-default" ng-click="exportData('csv')">
+								<button ng-click="exportData('csv')">
 										<? echo _("CSV") ?>
 								</button>
 						</form>
-						
-					</div>
+											
 					<div class="options overflow">
-						<label class="pull-left">
-							<input type="radio" name="option"  value="1" ng-model="exportAll"/>
-							<? echo _("All")?>
+						<label >
+							<input type="radio" name="option" value="1" ng-model="exportAll"/>
+							<? echo _("All") ?>
 						</label>
-						<label class="pull-right">
+						<label>
 							<input type="radio" name="option" value="0" ng-model="exportAll"/>
-							<? echo _("Selected")?>
+							<? echo _("Selected") ?>
 						</label>
-					</div>				
+					</div>
 				</div>
 			</div>				
 		</div>
