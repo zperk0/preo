@@ -18,7 +18,6 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			 $scope.$watch(
           "search.start_date",
           function( newValue, oldValue ) {
-              console.log("changed start_date", newValue,oldValue); 
           }
       );
  

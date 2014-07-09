@@ -24,7 +24,6 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	function prepareExportCsvData(){
 		var prepData = [["Customers"]];
 			angular.forEach($scope.customers,function(item){				
-				console.log(item,prepData,$scope.exportAll);	
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData.push([item.name,item.totalSpent,item.emailAddress]);
 					}
@@ -41,7 +40,6 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 			"Email Address":[]
 		};
 			angular.forEach($scope.customers,function(item){
-				console.log($scope.exportAll,$scope.exportAll === 1,item.selected);
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData["Name"].push(item.name)
 							prepData["Total Spent"].push(item.totalSpent);

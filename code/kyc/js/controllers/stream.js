@@ -2,7 +2,6 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
  function($scope,OrderService,pusher,$AjaxInterceptor,$interval) {
 
 	$scope.orders = OrderService.getOrders();
-    console.log($scope.orders);
     var onTimeout = false;
     var pusherUpdateEvent = function() {                
         if (!onTimeout){
@@ -51,7 +50,6 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
     }
 
     $scope.outletFilter = function(order){        
-        console.log('fitering',order,outletIds);
         return (outletIds && outletIds.length === 0) || (outletIds.indexOf(order.outletId)>-1)
             
     }

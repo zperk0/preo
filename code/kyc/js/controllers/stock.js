@@ -25,7 +25,6 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 	function prepareExportCsvData(type){		
 		var prepData = [["Stock"]];
 		angular.forEach($scope.stock,function(item){
-				console.log($scope.exportAll,$scope.exportAll === 1,item.selected);
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData.push([item.name,item.quantity]);
 					}
@@ -38,7 +37,6 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 			"Quantity Ordered":[]
 		};
 			angular.forEach($scope.stock,function(item){
-				console.log($scope.exportAll,$scope.exportAll === 1,item.selected);
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData["Item"].push(item.name)
 							prepData["Quantity Ordered"].push(item.quantity);
@@ -74,7 +72,6 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
       		}
 			});											
 		}
-		console.log($scope.stock);
 		$AjaxInterceptor.complete();		
 	}
 

@@ -7,7 +7,6 @@ angular.module('kyc.controllers')
   	
      $AjaxInterceptor.complete();
 	 
-   console.log('before calling prepared charts');
  		var charts = AllCharts.getPreparedCharts();
  	
         $scope.changeVisibility = function( value ) {

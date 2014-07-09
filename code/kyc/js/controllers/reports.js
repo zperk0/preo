@@ -44,7 +44,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	function prepareExportCsvData(){
 		var prepData = [["Reports"]];
 			angular.forEach($scope.reports,function(item){				
-				console.log(item,prepData);	
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData.push([item.id,item.outlet,item.name,item.time,item.quantity,item.item,item.modifier,item.total,item.status]);
 					}
@@ -66,7 +65,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 			"Status":[]
 		};
 			angular.forEach($scope.reports,function(item){
-				console.log($scope.exportAll,$scope.exportAll === 1,item.selected);
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData["Id"].push(item.id)
 							prepData["Outlet"].push(item.outlet);

@@ -2,7 +2,6 @@ angular.module('kyc.services').
   service('$grid', ['ChartType', function( ChartType ) {
 
   	var populateItems = function( charts ) {
-      console.log("populating",charts);
   	  var values = [];
       var i = 1;
       var grid = 8;

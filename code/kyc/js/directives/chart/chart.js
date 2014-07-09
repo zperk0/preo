@@ -10,34 +10,45 @@ angular.module('kyc.directives').
   		scope: {
   			chart: '=element'
   		},
-  		link: function( ng, elem, attrs ) {        
+  		link: function( ng, elem, attrs ) {                
 
-        ng.noData = false;
-        angular.forEach(ng.chart.value.data,function(data){
-          console.log(new Date(data[0]),data[1]);
-        })
-        switch (ng.chart.value.type){
-          case ChartType.NUMBER:
+
+        //find out if there is enough data to be displayed
+        ng.noData = false;        
+        function setNoData(){          
+          if (ng.chart.showChart){
+            switch (ng.chart.value.type){            
+              case ChartType.PIE:          
+              case ChartType.COLUMN:       
+                console.log(ng.chart.title,ng.chart.value.data.length)   
+                //we need at least one item, with data in pies/columns charts
+                if (ng.chart.value.data.length === 0){                  
+                  ng.noData = true;
+                } else {
+                  var allZero = true;
+                  angular.forEach(ng.chart.value.data,function(data){
+                      if (data.y > 0)
+                        allZero = false;
+                  })                  
+                  ng.noData = allZero;
+                }
+              break;          
+              case ChartType.AREA:
+                //we need at least two days of data in area charts
+                if (ng.chart.value.data.length <= 1){
+                  ng.noData = true;
+                }
+              break;
+            }
+          }else {            
             //we need a number in number charts
             if (ng.chart.value === 0 || ng.chart.value === 'NaN' || ng.chart.value == NaN){
               ng.noData = true;
-            }
-            break;
-          case ChartType.PIE:          
-          case ChartType.COLUMN:          
-            //we need at least one item in pies/columns charts
-            if (ng.chart.value.data.length === 0){
-              ng.noData = true;
-            }
-          break;          
-          case ChartType.AREA:
-            //we need at least two days of data in area charts
-            if (ng.chart.value.data.length <= 1){
-              ng.noData = true;
-            }
-          break;
+            }          
+          }
         }
-        console.log('ng.noData',ng.noData);
+        setNoData();
+
 
         ng.ChartType = ChartType;
         var initialHeight = ng.chart.value.type === ChartType.number ? 150 : 322;
@@ -55,7 +66,7 @@ angular.module('kyc.directives').
         refreshChart();
   			
         
-        ng.openModal = function() {
+        function openModal() {
 
           if ( ng.chart.value.modal ) {
           
@@ -63,7 +74,7 @@ angular.module('kyc.directives').
               templateUrl: modal_url('chart'),
               windowClass: 'large modal-preoday',
               controller: function( $scope ) {
-                console.log(ng.chart.value.modal.options,'opts')
+                
                 $scope.chart = angular.copy(ng.chart);
                 if ( ng.chart.value.modal.highcharts ) {
                   $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, ng.chart.value );
@@ -91,7 +102,7 @@ angular.module('kyc.directives').
             mod.opened.then(function(){
               setTimeout(function(){              
                   $(".modal-preoday").addClass("active");
-                  console.log("ho!")
+                  
               },1)
             }) 
           }
@@ -127,7 +138,7 @@ angular.module('kyc.directives').
         }
 
         ng.getText = function(chart){
-          console.log ("getting text",chart.value);                    
+          
             if (typeof chart.value === "object"){
               var strNum = chart.value.numberLeft
             }
@@ -145,7 +156,13 @@ angular.module('kyc.directives').
           $actionsChart.height( heightParent );
           $chart.height( heightParent );
 
-          ng.chart.highcharts = $chartService.getChart(  ng.chart.value.type, ng.chart.value );
+          var highchartsConfig =  $chartService.getChart(  ng.chart.value.type, ng.chart.value );
+          if (ng.chart.value.type === ChartType.AREA){
+            highchartsConfig.options.chart.events = {
+              click:openModal
+            }
+          };
+          ng.chart.highcharts = highchartsConfig;
 
           if ( heightParent ) {
 

@@ -71,7 +71,6 @@ angular.module('kyc.charts')
                 retCharts.push(chart)
             }
         })
-        console.log("getting prepared charts",retCharts)
         return retCharts;
     }
 

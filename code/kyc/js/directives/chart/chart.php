@@ -35,7 +35,7 @@
 						</div>								
 					</div>
 
-					<div class="highcharts-content" ng-dblclick="openModal()">
+					<div class="highcharts-content" >
 						<highchart id="chart_{{ chart.num }}" config="chart.highcharts" class="chart_{{ chart.value.type }}"></highchart>
 					</div>
 
@@ -46,7 +46,7 @@
 
 				</div>
 
-				<div ng-if="!chart.showChart" class="content-chart" ng-dblclick="openModal()">
+				<div ng-if="!chart.showChart" class="content-chart" >
 					<span class="largerNumber" ng-class="{medium:getText(chart).length>7,small:getText(chart).length>=9}" >{{ getText(chart) }}</span>
 				</div>
 			</div>
