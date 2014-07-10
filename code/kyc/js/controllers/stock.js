@@ -45,19 +45,19 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 			})
 		return {
 			title:"Stock",
-			startDate:$scope.search.start_date.getTime(),
-			endDate:$scope.search.end_date.getTime(),
+			startDate:moment($scope.search.start_date).valueOf(),
+			endDate:moment($scope.search.end_date).valueOf(),
       dataJson:JSON.stringify(prepData)
     }
 	}
 
 	function prepareScopeStock(){
 		if ( allOrders ){			
-			angular.forEach(allOrders,function(row){			
-		    var minTimestamp = $scope.search.start_date.getTime();
-        var maxTimestamp = $scope.search.end_date.getTime();
-        var orderData = new Date(row.created);        
-        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+			var minDate = moment($scope.search.start_date)
+      var maxDate = moment($scope.search.end_date)
+			angular.forEach(allOrders,function(row){					    
+        var orderData = moment(row.created);        
+        if (orderData >= minDate && orderData <= maxDate){
 	        	angular.forEach(row.items,function(item){
 						var itemId  = item.menuItemId;
 							if ($scope.stock[itemId] === undefined){						
