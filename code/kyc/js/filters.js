@@ -24,9 +24,10 @@ angular.module('kyc.filters', []).
 .filter('timeAgo', function() {
   return function(date) {      
         if (typeof date !== 'object') {
-            date = new Date(date);
+            date = moment(date);
         }
-        var seconds = Math.floor((new Date() - date) / 1000);
+        console.log(date,moment());
+        var seconds = Math.floor((moment() - date).valueOf() / 1000);
         var intervalType;
 
         var interval = Math.floor(seconds / 31536000);
