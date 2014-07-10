@@ -93,19 +93,7 @@ $(function () {
     	console.log(this);
     	$(".dataTable").append("<li style='background-color:"+this.color+"'>"+formatPercentage(this.y)+"</li>")
     });
-
-    	function formatPercentage(val){	
-    		var strVal = String(val);
-				if (strVal.indexOf(".") == -1){
-						strVal+=".0";
-				}
-				return strVal+"%";
-			}
-
-			function formatDate(ts){
-        var date = new Date(ts);
-        return date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
-    }
+    	
 
   });
 

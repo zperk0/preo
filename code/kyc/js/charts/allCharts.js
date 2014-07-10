@@ -6,6 +6,7 @@ angular.module('kyc.charts')
     var defer = $q.defer();
     var initialMinDate;
     var initialMaxDate;
+    var currency;
 	var charts = {
     		// payingCustomers:PayingCustomers,
     		// ordersPerCustomer:OrdersPerCustomer,
@@ -17,13 +18,14 @@ angular.module('kyc.charts')
     		// customersPie:CustomersPie,
     		// customersBar:CustomersBar,
             // revenue:Revenue,
-            numberOfOrders:NumberOfOrders,
-            // menuItemPopularity:MenuItemPopularity
+            // numberOfOrders:NumberOfOrders,
+            menuItemPopularity:MenuItemPopularity
   	}
 
 
 
-    function init(minDate,maxDate){
+    function init(minDate,maxDate,currencySymbol){
+        currency = currencySymbol;
         initialMinDate = minDate;
         initialMaxDate = maxDate;
         OrderService.load(prepareCharts);
@@ -62,7 +64,7 @@ angular.module('kyc.charts')
             });
             angular.forEach(charts,function(chart,key){
                 if (chart.onSetDataComplete){
-                    chart.onSetDataComplete(minDate,maxDate)
+                    chart.onSetDataComplete(minDate,maxDate,currency)
                 }            
             });  
         defer.resolve(charts); 

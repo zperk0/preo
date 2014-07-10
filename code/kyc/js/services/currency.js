@@ -1,12 +1,10 @@
 angular.module('kyc.services')
 .service('CurrencyService',['ACCOUNT_ID','Venue', function(ACCOUNT_ID,Venue) {
 
-    
-    var currency = "GBP";
 
     var currencyMap = {
         "GBP": {
-            "symbol": "£",
+            "symbol": "%C2%A3",
             "name": "Pound Sterling",
             "symbol_native": "£",
             "decimal_digits": 2,
@@ -15,7 +13,7 @@ angular.module('kyc.services')
             "name_plural": "British pounds sterling"
         },
         "EUR": {
-            "symbol": "€",
+            "symbol": "%E2%82%AC",
             "name": "Euro",
             "symbol_native": "€",
             "decimal_digits": 2,

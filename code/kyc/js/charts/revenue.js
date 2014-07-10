@@ -7,8 +7,10 @@ angular.module('kyc.charts')
     var prepData = {};
     var minTimestamp =0;
     var maxTimestamp =0;
+    var currency;
 
 	function setData(order,minDate,maxDate){
+
         var timestamp = moment(order.paid).startOf('day').valueOf();
         if (dailyRevenue[timestamp])
             dailyRevenue[timestamp]+=order.total
@@ -16,7 +18,8 @@ angular.module('kyc.charts')
             dailyRevenue[timestamp]=order.total;        
 	}
 
-    function onSetDataComplete(minDate,maxDate){                
+    function onSetDataComplete(minDate,maxDate,currencySymbol){
+        currency = currencySymbol;
         minTimestamp = minDate.valueOf();
         maxTimestamp = maxDate.valueOf();
         prepData = ChartHelper.getPreparedAreaData(dailyRevenue,minDate,maxDate,true);    
@@ -37,13 +40,13 @@ angular.module('kyc.charts')
             type:type,
             title:title,
             data: getData(),
-            currency:"£",
+            currency:currency,
             numberLeft:prepData.total,
             numberRight:ChartHelper.getPercentage(prepData.data,prepData.previousSpecifiedData), 
             modal: getModal(),
             getPdf:getPdf,
             getCsv:getCsv,
-            tooltipText: "£"
+            tooltipText:currency
             
         }
     }
@@ -73,7 +76,7 @@ angular.module('kyc.charts')
             startDate: minTimestamp,
             endDate: maxTimestamp,  
             total: prepData.total,
-            currency:"£",
+            currency:currency,
             percentage:ChartHelper.getPercentage(prepData.data,prepData.previousSpecifiedData),    
             dataJson: JSON.stringify(getData())
         }

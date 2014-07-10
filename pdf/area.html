@@ -1,7 +1,9 @@
 <html>
 <head>
-<script src="jquery-1.9.1.min.js"></script>
-<script src="highcharts.js"></script>
+<script src="libs/jquery-1.9.1.min.js"></script>
+<script src="libs/highcharts.js"></script>
+<script src="libs/moment.min.js"></script>
+<script src="libs/shared.js"></script>
 <script>
 
 $(function () {
@@ -11,27 +13,18 @@ $(function () {
         startDate: 1403982955032,
         endDate: 1403982955032,
         total: "5,625.40",
-        currency:"&pound;",
+        currency:"GBP;",
         percentage:"+15%",
         data: [1, 3, 4, 3, 3, 5, 4]
 
     };
 
-    $('.innerHeader').html(chartInfo.currency+chartInfo.total +"<sup>"+formatPercentage(chartInfo.percentage)+"</sup>");
+    $('.innerHeader').html(decodeURI(chartInfo.currency)+chartInfo.total +"<sup>"+formatPercentage(chartInfo.percentage)+"</sup>");
 
     $('.title').html(chartInfo.title);
 
     $('.dates').html(formatDate(chartInfo.startDate) + " - " + formatDate(chartInfo.endDate));
-
-  	function formatPercentage(val){	
-    		var strVal = String(val);
-				if (val <0 )
-					strVal = "-"+strVal;
-				else
-					strVal = "+"+strVal;
-				return strVal+"%";
-		}
-
+  	
 	var revenueChart = {
             chart: {
                 type: 'areaspline'
@@ -79,11 +72,7 @@ $(function () {
         }
     
     $('#container').highcharts(revenueChart);
-    
-    function formatDate(ts){
-        var date = new Date(ts);
-        return date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
-    }
+        
   });
 </script>
 <style>

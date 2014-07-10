@@ -91,9 +91,7 @@ angular.module('kyc.charts')
     }
 
     function clearData(){
-        prepData = {};
-        menuItems = {};        
-
+        prepData = {};        
     }
 
     function getItemName(itemId){

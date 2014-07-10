@@ -150,8 +150,9 @@ angular.module('kyc.directives').
             else{
               var strNum = chart.value.toLocaleString()
             }
-            if (chart.currency)              
-              return chart.currency + strNum;
+            if (chart.currency){
+              return decodeURI(chart.currency) + strNum;
+            }
             else
               return strNum;
         }
