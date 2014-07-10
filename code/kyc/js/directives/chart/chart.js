@@ -12,7 +12,6 @@ angular.module('kyc.directives').
   		},
   		link: function( ng, elem, attrs ) {                
 
-
         //find out if there is enough data to be displayed
         ng.noData = false;        
         function setNoData(){          

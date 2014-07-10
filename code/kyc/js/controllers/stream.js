@@ -1,5 +1,5 @@
-angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderService','pusher','$AjaxInterceptor','$interval',
- function($scope,OrderService,pusher,$AjaxInterceptor,$interval) {
+angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderService','pusher','$AjaxInterceptor','$interval','VENUE_ID',
+ function($scope,OrderService,pusher,$AjaxInterceptor,$interval,VENUE_ID) {
     $scope.setLocation('stream');
 	$scope.orders = OrderService.getOrders();
     var onTimeout = false;
@@ -14,7 +14,8 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
     };
       
     pusher.reset();
-    var venueId = 2
+    var venueId = VENUE_ID;
+    console.log('got venue id :',venueId);
     var selectedOutlets = $scope.getSelectedOutlets();
     var outletIds = [];
     angular.forEach(selectedOutlets,function(outlet){

@@ -25,8 +25,7 @@ angular.module('kyc.filters', []).
   return function(date) {      
         if (typeof date !== 'object') {
             date = moment(date);
-        }
-        console.log(date,moment());
+        }        
         var seconds = Math.floor((moment() - date).valueOf() / 1000);
         var intervalType;
 
