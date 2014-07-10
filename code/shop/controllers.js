@@ -118,7 +118,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             data = { 
               title: feature.name,
               content: _tr("Your card will be charged ") +"<b>£"+$scope.selectedFeatureCalculatedPrice+ "</b>" + _tr(" for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
-              showTerm: true,
+              showTerm: (feature.$terms && feature.$terms.purchase) ? feature.$terms.purchase : false,
               btnOk: _tr('BUY'),            
               windowClass:'medium'
             }        
@@ -128,7 +128,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             data = { 
               title: feature.name + " - " + feature.trialPeriod + _tr(" DAY FREE TRIAL"),
               content: _tr("Your card will not be charged for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
-              showTerm: true,
+              showTerm: (feature.$terms && feature.$terms.trial) ? feature.$terms.trial : false,
               btnOk: _tr('BUY'),            
               windowClass:'medium'
             }        

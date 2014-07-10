@@ -13,7 +13,10 @@ var features = [
 		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
 		icon:'/img/asisstant-icon.png',
 		trialPeriod:0,		
-		active:true
+		active:true,
+		$terms:{
+			purchase:'/terms/140702 Premium Services - Assist.pdf'
+		}
 	},
 	{
 		id: 2,
@@ -28,7 +31,10 @@ var features = [
 													<?echo json_encode(_("Provide quarterly updates/changes to the app"))?>],
 		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
 		icon:'/img/independent-icon.png',
-		active:true
+		active:true,
+		$terms:{
+			purchase:'/terms/140702 Premium Services - Independent.pdf'
+		}
 	},
 	{
 		id: 3,
@@ -62,7 +68,11 @@ var features = [
 		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
 		icon:'/img/KYC-icon.png',
 		link:'kyc',
-		active:true
+		active:true,
+		$terms:{
+			trial:'/terms/140702 Premium Services - KYC Trial Period.pdf',
+			purchase:'/terms/140702 Premium Services - KYC.pdf'
+		}
 	}	
 ];
 

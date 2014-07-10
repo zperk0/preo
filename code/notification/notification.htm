@@ -7,7 +7,7 @@
   <p ng-if="showTerm" class='modal-term'>
     <label>
       <input type="checkbox" ng-model="acceptTerm" ng-change="changeTerm(acceptTerm)" />
-        I have read the <a href="#">Terms and Conditions</a>
+        I have read the <a href="{{showTerm}}" target="_blank">Terms and Conditions</a>
     </label>
   </p>
 
