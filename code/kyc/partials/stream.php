@@ -52,10 +52,10 @@
 					  		<td width="15">
 					  			<span class="block-status {{ getStatusColor(order.status) }}">{{ getStatusName(order.status) }}</span>
 					  		</td>
-					  		<td width="100" valign="middle" class='streamPrice'>{{ currencySymbol+order.total }}</td>
+					  		<td width="100" valign="middle" class='streamPrice'>{{ getCurrency()+order.total }}</td>
 					  		<td valign="middle" class='streamCustomer'>{{ order.user.firstName + " " + order.user.lastName }}</td>
 					  		<td width="300" valign="middle" class='streamOrder'>{{ getOrderItems(order).join(",") }}</td>
-					  		<td width="200" valign="middle" class='streamUpdated'>{{ order.updated | timeAgo }} ago </td>
+					  		<td width="200" valign="middle" class='streamUpdated'>{{ order.updated | timeAgo }}</td>
 					  	</tr>
 					  	<tr ng-switch-when="true" class="result">
 					  		<td colspan="2" class="padding information">
@@ -72,15 +72,15 @@
 					  				<tbody>
 					  					<tr ng-repeat="item in order.items">
 					  						<td colspan="3">{{ item.qty +" x "+item.name}}</td>
-					  						<td width="200">{{ currencySymbol+item.total.toFixed(2) }}</td>
+					  						<td width="200">{{ getCurrency()+item.total.toFixed(2) }}</td>
 					  					</tr>
 					  					<tr ng-show="order.discount && order.discount>0" class='streamDiscount'>
 					  						<td colspan="3"><? echo _("Discount")?></td>
-					  						<td width="200">-{{ currencySymbol+order.discount.toFixed(2) }}</td>
+					  						<td width="200">-{{ getCurrency()+order.discount.toFixed(2) }}</td>
 					  					</tr>
 					  					<tr class='streamTotal'>
 					  						<td colspan="3"><b><? echo _("TOTAL")?></b></td>
-					  						<td width="200"><b>{{ currencySymbol+order.total.toFixed(2) }}</b></td>
+					  						<td width="200"><b>{{ getCurrency()+order.total.toFixed(2) }}</b></td>
 					  					</tr>
 					  				</tbody>
 					  			</table>

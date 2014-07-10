@@ -31,35 +31,52 @@ angular.module('kyc.filters', []).
 
         var interval = Math.floor(seconds / 31536000);
         if (interval >= 1) {
-            intervalType = 'year';
+            if (interval > 1)
+                intervalType = _tr('years ago');
+            else
+                intervalType = _tr('year ago');
         } else {
             interval = Math.floor(seconds / 2592000);
             if (interval >= 1) {
-                intervalType = 'month';
+                if (interval > 1)
+                    intervalType = _tr('months ago');
+                else
+                    intervalType = _tr('month ago');
             } else {
                 interval = Math.floor(seconds / 86400);
                 if (interval >= 1) {
-                    intervalType = 'day';
+                    if (interval > 1)
+                        intervalType = _tr('days ago');
+                    else{
+                        interval = ''
+                        intervalType = _tr('yesterday');
+                    }
                 } else {
                     interval = Math.floor(seconds / 3600);
                     if (interval >= 1) {
-                        intervalType = "hour";
+                        if (interval > 1)
+                            intervalType = _tr('hours ago');
+                        else
+                            intervalType = _tr("hour ago");
                     } else {
                         interval = Math.floor(seconds / 60);
                         if (interval >= 1) {
-                            intervalType = "minute";
+                            if (interval > 1)
+                                intervalType = _tr('minutes ago');
+                            else
+                                intervalType = _tr("minute ago");
                         } else {
                             interval = seconds;
-                            intervalType = "second";
+                            if (interval > 1)
+                                intervalType = _tr('seconds ago');
+                            else
+                                intervalType = _tr("second ago");
                         }
                     }
                 }
             }
         }
-
-        if (interval > 1) {
-            intervalType += 's';
-        }
+        
       return interval + ' ' + intervalType;      
   };  
 })

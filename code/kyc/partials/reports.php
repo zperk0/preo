@@ -94,7 +94,7 @@
 					  		<td>{{ report.quantity }}</td>
 					  		<td>{{ report.item }}</td>
 					  		<td>{{ report.modifier }}</td>
-					  		<td>{{ currencySymbol+report.total }}</td>
+					  		<td>{{ getCurrency()+report.total }}</td>
 					  		<td>{{ report.status }}</td>
 					  	</tr>
 					  </tbody>

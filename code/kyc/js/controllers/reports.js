@@ -16,10 +16,10 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	function prepareScopeReports(){
 
 		if ( allOrders) {
-			angular.forEach(allOrders,function(row){
-				var minTimestamp = $scope.search.start_date.getTime();
-      var maxTimestamp = $scope.search.end_date.getTime();
-      var orderData = new Date(row.created);        
+			var minTimestamp = moment($scope.search.start_date);
+      var maxTimestamp = moment($scope.search.end_date);
+			angular.forEach(allOrders,function(row){			
+      var orderData = moment(row.created);        
       if (orderData >= minTimestamp && orderData <= maxTimestamp){
 					angular.forEach(row.items,function(item){
 						$scope.reports.push({

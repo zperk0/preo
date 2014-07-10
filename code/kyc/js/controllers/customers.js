@@ -60,11 +60,11 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	function prepareScopeCustomers(){
 		
 		if ( allOrders ) {			
-			angular.forEach(allOrders,function(row){
-						var minTimestamp = $scope.search.start_date.getTime();
-		        var maxTimestamp = $scope.search.end_date.getTime();
-		        var orderData = new Date(row.created);        
-		        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+			var minDate = moment($scope.search.start_date)
+      var maxDate = moment($scope.search.end_date)
+			angular.forEach(allOrders,function(row){						
+		        var orderData = moment(row.created);        
+		        if (orderData >= minDate && orderData <= maxDate){
 								var customerId  = row.userId;
 								if ($scope.customers[customerId] === undefined){
 									$scope.customers[customerId] = {
