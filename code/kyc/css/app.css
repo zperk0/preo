@@ -407,11 +407,12 @@ header nav, header ul, header li{
   -o-transform-style: preserve-3d;      
   position: relative;
   margin-bottom:100px;
+  backface-visibility: hidden !important;
 }
 
 /* hide back of pane during swap */
 .front, .back {
-  backface-visibility: hidden;
+  backface-visibility: hidden !important;
 
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
