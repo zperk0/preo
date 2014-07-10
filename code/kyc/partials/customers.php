@@ -46,7 +46,7 @@
 					  	<tr ng-repeat="customer in customers | orderObjectBy:orderBy:direction">
 					  		<td><input type="checkbox" ng-model="customer.selected" /></td>
 					  		<td>{{ customer.name }}</td>
-					  		<td>{{ currencySymbol+customer.totalSpent }}</td>
+					  		<td>{{ getCurrency()+customer.totalSpent }}</td>
 					  		<td>{{ customer.emailAddress }}</td>
 					  	</tr>
 					  </tbody>

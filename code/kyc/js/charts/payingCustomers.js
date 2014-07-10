@@ -22,7 +22,6 @@ angular.module('kyc.charts')
     			if (repeatedCustomers.indexOf(customerId) === -1)
     				repeatedCustomers.push(customerId);
     		}
-            console.log("settingData",newCustomers.length,repeatedCustomers.length)
         }
 	}
 

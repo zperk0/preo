@@ -52,7 +52,7 @@ angular.module('kyc.charts')
             angular.forEach(charts,function(chart,key){
                 chart.clearData();
             });               
-            console.log('cleared data',orders,minDate,maxDate,selectedOutlets)
+
             angular.forEach(orders,function(order){
                 if ( selectedOutlets.length === 0 || findOutlet(selectedOutlets,order.outletId) ){                    
                     var created = new Date(order.created).getTime();                

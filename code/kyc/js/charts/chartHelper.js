@@ -50,9 +50,7 @@ angular.module('kyc.charts')
         var previousYearData = [];
         var total = 0;
 
-        console.log('chartData',chartData);
         angular.forEach(chartData,function(dR,key){                                
-            console.log('each',key,dR);
             var orderDate = Number(key)
             var dataRow = [Number(key),Number(dR.toFixed(2))];
             
@@ -86,9 +84,7 @@ angular.module('kyc.charts')
                 previousYearData.push(dataRow)
 
         })
-        console.log('data before sorting',JSON.stringify(data));
         data.sort(sortData);
-        console.log('data after sorting',JSON.stringify(data));
         weekData.sort(sortData);
         previousWeekData.sort(sortData);
         monthData.sort(sortData);

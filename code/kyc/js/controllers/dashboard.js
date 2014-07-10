@@ -8,7 +8,6 @@ angular.module('kyc.controllers')
     
 	 
  		var charts = AllCharts.getPreparedCharts();
-    console.log('got all data',charts);
  	
         $scope.changeVisibility = function( value ) {
 

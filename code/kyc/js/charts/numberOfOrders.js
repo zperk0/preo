@@ -27,7 +27,6 @@ angular.module('kyc.charts')
     }   
 
 	function getData(){
-        console.log('gettingData',prepData);
 	   return prepData.data;
     }
 

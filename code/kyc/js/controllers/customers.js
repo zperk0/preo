@@ -7,6 +7,8 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	prepareScopeCustomers();
 	$scope.exportAll="1";
 
+
+
 	$scope.selectAll = function() {
 		angular.forEach($scope.customers,function(value, key){
 			value.selected = $scope.all_options;

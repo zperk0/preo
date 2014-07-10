@@ -20,7 +20,6 @@ angular.module('kyc.directives').
             switch (ng.chart.value.type){            
               case ChartType.PIE:          
               case ChartType.COLUMN:       
-                console.log(ng.chart.title,ng.chart.value.data.length)   
                 //we need at least one item, with data in pies/columns charts
                 if (ng.chart.value.data.length === 0){                  
                   ng.noData = true;
@@ -35,7 +34,6 @@ angular.module('kyc.directives').
               break;          
               case ChartType.AREA:
                 //we need at least two days of data in area charts
-                console.log('value:',ng.chart.value);
                 if (ng.chart.value.data.length <= 1){
                   ng.noData = true;
                 }
