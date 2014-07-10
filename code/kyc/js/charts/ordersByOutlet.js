@@ -13,11 +13,12 @@ angular.module('kyc.charts')
         ordersByOutlet={};
     }
 
-	function setData(order,minDate,maxDate){
-        var minTimestamp = minDate.getTime();
-        var maxTimestamp = maxDate.getTime();
-        var orderData = new Date(order.created);
-        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+	function setData(order,minDate,maxDate){        
+        minTimestamp = minDate;
+        maxTimestamp = maxDate;
+        var orderData = moment(order.created);
+        console.log('setData',orderData,minDate,maxDate);
+        if (orderData >= minDate && orderData <= maxDate){
             var outletId = order.outletId;
     		if (ordersByOutlet[outletId] === undefined)
                 ordersByOutlet[outletId] = {                

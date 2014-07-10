@@ -22,7 +22,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		$scope.update = function(){						
 			$AjaxInterceptor.start();
 			setTimeout(function(){
-				AllCharts.prepareCharts(OrderService.getOrders(),$scope.search.start_date,$scope.search.end_date,$scope.getSelectedOutlets());
+				AllCharts.prepareCharts(OrderService.getOrders(),moment($scope.search.start_date),moment($scope.search.end_date),$scope.getSelectedOutlets());
 				$route.reload();
 				$AjaxInterceptor.complete();
 			},500);

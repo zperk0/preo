@@ -12,10 +12,8 @@ angular.module('kyc.charts')
     }
 
 	function setData(order,minDate,maxDate){           
-        var minTimestamp = minDate.getTime();
-        var maxTimestamp = maxDate.getTime();
-        var orderData = new Date(order.created);
-        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+        var orderData = moment(order.created);        
+        if (orderData >= minDate && orderData <= maxDate){                    
     		var customerId  = order.userId;
     		if (newCustomers.indexOf(customerId) === -1){
     			newCustomers.push(customerId);
@@ -24,6 +22,7 @@ angular.module('kyc.charts')
     			if (repeatedCustomers.indexOf(customerId) === -1)
     				repeatedCustomers.push(customerId);
     		}
+            console.log("settingData",newCustomers.length,repeatedCustomers.length)
         }
 	}
 

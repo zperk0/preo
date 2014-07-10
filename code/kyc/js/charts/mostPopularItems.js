@@ -28,9 +28,9 @@ angular.module('kyc.charts')
     }
     
 	function setData(order,minDate,maxDate){
-        minTimestamp = minDate.getTime();
-        maxTimestamp = maxDate.getTime();
-        var orderData = new Date(order.created);
+        minTimestamp = minDate;
+        maxTimestamp = maxDate;
+        var orderData = moment(order.created);
         if (orderData >= minTimestamp && orderData <= maxTimestamp){
             angular.forEach(order.items,function(item){
                 if (items[item.menuItemId] !== undefined)

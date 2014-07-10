@@ -7,20 +7,27 @@ angular.module('kyc.charts')
     var initialMinDate;
     var initialMaxDate;
 	var charts = {
-    		payingCustomers:PayingCustomers,
-    		ordersPerCustomer:OrdersPerCustomer,
-    		averageOrderValue:AverageOrderValue,
-    		itemsOrdered:ItemsOrdered,
-    		ordersByOutlet:OrdersByOutlet,
-    		mostPopularItems:MostPopularItems,
-    		timeOfOrdersPlaced:TimeOfOrdersPlaced,
-    		customersPie:CustomersPie,
-    		customersBar:CustomersBar,
-            revenue:Revenue,
+    		// payingCustomers:PayingCustomers,
+    		// ordersPerCustomer:OrdersPerCustomer,
+    		// averageOrderValue:AverageOrderValue,
+    		// itemsOrdered:ItemsOrdered,
+    		// ordersByOutlet:OrdersByOutlet,
+    		// mostPopularItems:MostPopularItems,
+    		// timeOfOrdersPlaced:TimeOfOrdersPlaced,
+    		// customersPie:CustomersPie,
+    		// customersBar:CustomersBar,
+            // revenue:Revenue,
             numberOfOrders:NumberOfOrders,
-            menuItemPopularity:MenuItemPopularity
+            // menuItemPopularity:MenuItemPopularity
   	}
 
+
+
+    function init(minDate,maxDate){
+        initialMinDate = minDate;
+        initialMaxDate = maxDate;
+        OrderService.load(prepareCharts);
+    }
         
 
     function findOutlet(selectedOutlets,outletId){
@@ -43,7 +50,7 @@ angular.module('kyc.charts')
             angular.forEach(charts,function(chart,key){
                 chart.clearData();
             });               
-            
+            console.log('cleared data',orders,minDate,maxDate,selectedOutlets)
             angular.forEach(orders,function(order){
                 if ( selectedOutlets.length === 0 || findOutlet(selectedOutlets,order.outletId) ){                    
                     var created = new Date(order.created).getTime();                
@@ -74,11 +81,6 @@ angular.module('kyc.charts')
         return retCharts;
     }
 
-    function init(minDate,maxDate){
-        initialMinDate = minDate;
-        initialMaxDate = maxDate;
-        OrderService.load(prepareCharts);
-    }
 
     return {
         init:init,

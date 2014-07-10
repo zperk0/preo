@@ -5,11 +5,9 @@ angular.module('kyc.charts')
 		var itemsOrdered =0;
 		var title = "Items Ordered"
 
-		function setData(order,minDate,maxDate){
-            var minTimestamp = minDate.getTime();
-            var maxTimestamp = maxDate.getTime();
-            var orderData = new Date(order.created);
-            if (orderData >= minTimestamp && orderData <= maxTimestamp){
+		function setData(order,minDate,maxDate){            
+            var orderData = moment(order.created);
+            if (orderData >= minDate && orderData <= maxDate){
     			angular.forEach(order.items,function(item){
     				itemsOrdered+=item.qty;
     			})

@@ -35,6 +35,7 @@ angular.module('kyc.directives').
               break;          
               case ChartType.AREA:
                 //we need at least two days of data in area charts
+                console.log('value:',ng.chart.value);
                 if (ng.chart.value.data.length <= 1){
                   ng.noData = true;
                 }

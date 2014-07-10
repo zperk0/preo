@@ -24,9 +24,9 @@ angular.module('kyc.charts')
     }
     
 	function setData(order,minDate,maxDate){
-        minTimestamp = minDate.getTime();
-        maxTimestamp = maxDate.getTime();
-        var orderData = new Date(order.created).getTime();
+        minTimestamp = minDate;
+        maxTimestamp = maxDate;
+        var orderData = moment(order.created);
         if (orderData >= minTimestamp && orderData <= maxTimestamp){
             var customerId  = order.userId;
             if (newCustomers.indexOf(customerId) === -1){

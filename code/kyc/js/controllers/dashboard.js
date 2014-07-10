@@ -5,9 +5,10 @@ angular.module('kyc.controllers')
 .controller('DashboardCtrl', ['$scope','$http', '$compile','ChartType', '$grid','AllCharts','$AjaxInterceptor',
  function($scope,$http, $compile,ChartType, $grid,AllCharts,$AjaxInterceptor) {
   	$scope.setLocation('dashboard');
-     $AjaxInterceptor.complete();
+    
 	 
  		var charts = AllCharts.getPreparedCharts();
+    console.log('got all data',charts);
  	
         $scope.changeVisibility = function( value ) {
 
@@ -35,9 +36,6 @@ angular.module('kyc.controllers')
           $scope.values = [];
 
           $scope.values = $grid.populateItems( charts );
-
-
-     
+     $AjaxInterceptor.complete();   
  
-
   }]);
