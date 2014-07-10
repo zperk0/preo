@@ -14,6 +14,12 @@
 
 @import 'multi-select.css';
 
+
+* {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
 /*basic colours and fonts*/
 
 $premium:#F9B30A;
