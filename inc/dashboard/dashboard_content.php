@@ -156,20 +156,6 @@
 	</div>
 </div>
 
-
-<div id="purchaseDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
-    <header class="title-notification">Know your customer</header>
-    <div class="container-modal-confirm"><? echo _("Your card will be charged ")?> <b>&pound;<span class='featurePrice'></span></b>  <? echo _(" for this transaction. You may cancel this Premium Feature at any time from your account settings page.")?></div>      
-    <p class='modal-term'>
-      <label>
-        <input type="checkbox" class='termsAndConditions'/>  
-          I have read the <a href='#'>Terms and Conditions</a>
-      </label>
-    </p>  
-    <button class='positiveDismiss preodayButton secondary secondaryIfNotTermsAndConditions' ><? echo _("BUY")?></button>
-    <button class='negativeDismiss preodayButton '><? echo _("CANCEL")?></button>    
-</div>
-
 <div id="expiredDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
     <header class="title-notification">Know your customer - 30 DAYS FREE TRIAL</header>
     <div class="container-modal-confirm"><? echo _("Your 30 day free trial 	of this Premium Feature has now expired. Would you like to purchase it?")?></div>      	    
@@ -183,22 +169,11 @@
     </p>  
 </div>
 
-<div id="successDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
-      <header class="title-notification"><? echo _("Your new Premium Feature is now live!")?></header>
-      <div class='container-modal-confirm"'><? echo _("You can manage subscriptions from your account settings page")?></div>      
-      <button class='positiveDismiss preodayButton' ><? echo _("ACCOUNT SETTINGS")?></button>
-      <button class='negativeDismiss preodayButton secondary' ><? echo _("RETURN TO DASHBOARD")?></button>
-</div>
-
-<div id="noPaymentDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
-      <div class="container-modal-confirm"><? echo _("Please add a payment method to your account in order to subscribe to Premium Features")?></div>
-      <button class='positiveDismiss preodayButton'><? echo _("ADD PAYMENT METHOD")?></button>
-      <button class='negativeDismiss preodayButton secondary' ><? echo _("RETURN TO STORE")?></button>
-</div>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+		//TODO replace all this horrible code with the correct angular modules 
+		//----- start horrible code ------ 
 		var isShowAgain = window.localStorage.getItem("showDialogAgain_4");
 		var isShow = Number(window.localStorage.getItem("showDialog")) === 1 && (isShowAgain === null || Number(isShowAgain) === 1);
 		if (isShow) {
@@ -222,22 +197,8 @@
 			}	
 			switch (dialogId){
 				case "expiredDialog":
-					$('.featurePrice').html("20")					
-					$('#purchaseDialog').foundation('reveal', 'open');
-					$('.termsAndConditions').prop('checked', false);
-					break;
-				case "purchaseDialog":
-					if (!$('.termsAndConditions').is(':checked'))
-						return
-					tryPurchase();
-					break;
-				case "successDialog":
-					window.location.replace("/accountSettings#/subscription");
-					break;
-				case "noPaymentDialog":
-					window.location.replace("/accountSettings#/paymentMethod");
-					break;
-					
+					window.location.replace("/shop#/feature/4");
+					break;							
 			}
 		}
 
@@ -250,32 +211,7 @@
 			}	
 			$('#'+dialogId).foundation('reveal', 'close');
 		}
-
-		function tryPurchase(){
-			console.log('trying',"/api/accounts/<?echo $_SESSION['account_id']?>/accountcard");
-			$.get("/api/accounts/<?echo $_SESSION['account_id']?>/accountcard",
-				function(res){
-					var result = JSON.parse(res)
-					if (result.token && result.token!=null){
-						$.post("/api/accounts/<?echo $_SESSION['account_id']	?>/features/4",function(data){
-							window.localStorage.setItem("showDialog",0); 							
-							var result = JSON.parse(data)
-							if (result.status === "SUCCESS"){
-								console.log('opening success')
-								$('#successDialog').foundation('reveal', 'open');
-							}
-							else {
-								console.log('opening error')
-								$('#noPaymentDialog').foundation('reveal', 'open');
-							}
-						}).fail(function(){
-								$('#noPaymentDialog').foundation('reveal', 'open');
-						});
-					}
-				}).fail(function(){
-						$('#noPaymentDialog').foundation('reveal', 'open');
-			});
-		}
+		//------  end horible code ------ 
 
 
 		<?if(isset($_SESSION['app_textColour'])){?>updateTextColour('<?echo $_SESSION['app_textColour']?>');<?}?>
