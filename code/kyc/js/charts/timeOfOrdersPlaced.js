@@ -3,7 +3,7 @@ angular.module('kyc.charts')
 
 	var type = ChartType.PIE;
     var colorIndex = 0;    
-    var title = 'Time of Orders Placed';
+    var title = _tr('Time of Orders Placed');
     var data = [
         {name:_tr("Day of collection"),y:0,color:Colors[0]},
         {name:_tr("Before day of collection"),y:0,color:Colors[1]}
@@ -21,10 +21,10 @@ angular.module('kyc.charts')
     }
     
 	function setData(order,minDate,maxDate){
-        minTimestamp = minDate;
-        maxTimestamp = maxDate;
+        minTimestamp = minDate.valueOf();
+        maxTimestamp = maxDate.valueOf();
         var orderData = moment(order.created);
-        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+        if (orderData >= minDate && orderData <= maxDate){
             if (order.created !== undefined && order.pickupTime !== undefined){
                 var placed = new Date(order.created).setHours(0, 0, 0, 0);
                 var pickup = new Date(order.pickupTime).setHours(0, 0, 0, 0);    

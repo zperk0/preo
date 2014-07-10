@@ -3,7 +3,7 @@ angular.module('kyc.charts')
 
 	var type = ChartType.AREA;	
     var dailyRevenue = {};    
-    var title = 'Revenue'
+    var title = _tr('Revenue');
     var prepData = {};
     var minTimestamp =0;
     var maxTimestamp =0;

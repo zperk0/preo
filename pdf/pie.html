@@ -1,7 +1,9 @@
 <html>
 <head>
-<script src="jquery-1.9.1.min.js"></script>
-<script src="highcharts.js"></script>
+<script src="libs/jquery-1.9.1.min.js"></script>
+<script src="libs/highcharts.js"></script>
+<script src="libs/moment.min.js"></script>
+<script src="libs/shared.js"></script>
 <script>
 $(function () {
 
@@ -91,7 +93,7 @@ $(function () {
     $('#container').highcharts(revenueChart);
     $.each(revenueChart.series[0].data,function(){
     	console.log(this);
-    	$(".dataTable").append("<li style='background-color:"+this.color+"'>"+formatPercentage(this.y)+"</li>")
+    	$(".dataTable").append("<li style='background-color:"+this.color+"'>"+this.y+"</li>")
     });
     	
 

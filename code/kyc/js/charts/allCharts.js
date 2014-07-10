@@ -19,7 +19,7 @@ angular.module('kyc.charts')
     		// customersBar:CustomersBar,
             // revenue:Revenue,
             // numberOfOrders:NumberOfOrders,
-            menuItemPopularity:MenuItemPopularity
+            // menuItemPopularity:MenuItemPopularity
   	}
 
 

@@ -4,7 +4,7 @@ angular.module('kyc.charts')
 	var type = ChartType.PIE;
 	var ordersByOutlet = {};	
     var colorIndex = 0;
-    var title = 'Orders By Outlet';
+    var title = _tr('Orders By Outlet');
     var minTimestamp = 0;
     var maxTimestamp = 0;
 
@@ -14,10 +14,9 @@ angular.module('kyc.charts')
     }
 
 	function setData(order,minDate,maxDate){        
-        minTimestamp = minDate;
-        maxTimestamp = maxDate;
+        minTimestamp = minDate.valueOf();
+        maxTimestamp = maxDate.valueOf();
         var orderData = moment(order.created);
-        console.log('setData',orderData,minDate,maxDate);
         if (orderData >= minDate && orderData <= maxDate){
             var outletId = order.outletId;
     		if (ordersByOutlet[outletId] === undefined)
@@ -29,11 +28,12 @@ angular.module('kyc.charts')
 	}
 
 	function getData(){
+        colorIndex =0;
         var ordersByOutletArray = [];
         angular.forEach(ordersByOutlet,function(item,outletId){
             ordersByOutletArray.push({
                 name: OutletService.getOutletName(outletId),  
-                colors: Colors[colorIndex],
+                color: Colors[colorIndex],
                 y:item.y
             });
             colorIndex++;

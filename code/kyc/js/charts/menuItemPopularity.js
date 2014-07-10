@@ -83,7 +83,6 @@ angular.module('kyc.charts')
             title:title + " - " +getItemName(selectedItem),
             startDate: minDate.valueOf(),
             endDate: maxDate.valueOf(),  
-            currency:"",
             total: prepData.total,
             percentage:ChartHelper.getPercentage(prepData.data,prepData.previousSpecifiedData),    
             dataJson: JSON.stringify(getData())

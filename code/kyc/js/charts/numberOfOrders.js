@@ -3,7 +3,7 @@ angular.module('kyc.charts')
 
 	var type = ChartType.AREA;	
     var dailyOrders = {};    
-    var title = 'Number of Orders'
+    var title = _tr('Number of Orders');
     
     var minTimestamp =0;
     var maxTimestamp =0;

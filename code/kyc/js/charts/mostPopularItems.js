@@ -1,10 +1,9 @@
 angular.module('kyc.charts')
 .factory('MostPopularItems',['ChartType','Colors','ChartHelper', function(ChartType,Colors,ChartHelper) {
 
-	var type = ChartType.PIE;
-    var colorIndex = 0;
+	var type = ChartType.PIE;    
     var items = {};
-    var title = 'Most Popular Items';
+    var title = _tr('Most Popular Items');
     var minTimestamp = 0;
     var maxTimestamp = 0;
 
@@ -28,10 +27,10 @@ angular.module('kyc.charts')
     }
     
 	function setData(order,minDate,maxDate){
-        minTimestamp = minDate;
-        maxTimestamp = maxDate;
+        minTimestamp = minDate.valueOf();
+        maxTimestamp = maxDate.valueOf();
         var orderData = moment(order.created);
-        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+        if (orderData >= minDate && orderData <= maxDate){
             angular.forEach(order.items,function(item){
                 if (items[item.menuItemId] !== undefined)
                     items[item.menuItemId].quantity++;

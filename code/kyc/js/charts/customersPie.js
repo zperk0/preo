@@ -3,7 +3,7 @@ angular.module('kyc.charts')
 
 	var type = ChartType.PIE;
     var colorIndex = 0;    
-    var title = 'Customers (PIE)'
+    var title = _tr('Customers (PIE)');
     var data = [
         {name:_tr("New"),y:0,color:Colors[0]},
         {name:_tr("Returning"),y:0,color:Colors[1]}    
@@ -24,10 +24,10 @@ angular.module('kyc.charts')
     }
     
 	function setData(order,minDate,maxDate){
-        minTimestamp = minDate;
-        maxTimestamp = maxDate;
+        minTimestamp = minDate.valueOf();
+        maxTimestamp = maxDate.valueOf();
         var orderData = moment(order.created);
-        if (orderData >= minTimestamp && orderData <= maxTimestamp){
+        if (orderData >= minDate && orderData <= maxDate){
             var customerId  = order.userId;
             if (newCustomers.indexOf(customerId) === -1){
                 newCustomers.push(customerId);
@@ -79,7 +79,7 @@ angular.module('kyc.charts')
             startDate: minTimestamp,
             endDate: maxTimestamp,            
             dataJson: JSON.stringify(data),
-            categories: ['New','Returning']
+            categories: [data[0].name,data[1].name]
         }
     }
 

@@ -2,7 +2,7 @@ angular.module('kyc.charts')
 .factory('CustomersBar',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
 
 	var type = ChartType.COLUMN;
-    var title = 'Customers (Bar)'
+    var title = _tr('Customers (Bar)');
     var data = [
         {name:_tr("New"),y:0},
         {name:_tr("Returning"),y:0}    
@@ -77,7 +77,7 @@ angular.module('kyc.charts')
             startDate: minTimestamp,
             endDate: maxTimestamp,            
             dataJson: JSON.stringify([data[0].y,data[1].y]),
-            categories: ['New','Returning']
+            categories: [data[0].name,data[1].name]
         }
     }
 
