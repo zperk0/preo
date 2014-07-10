@@ -74,6 +74,10 @@ angular.module('kyc.directives').
               templateUrl: modal_url('chart'),
               windowClass: 'large modal-preoday',
               controller: function( $scope ) {
+
+                $scope.optionHasData = function(option){                   
+                  return option.data.length > 1 ? 1 : 0 ;
+                }
                 
                 $scope.chart = angular.copy(ng.chart);
                 if ( ng.chart.value.modal.highcharts ) {
@@ -94,7 +98,7 @@ angular.module('kyc.directives').
                   }
                   
                   option.active = true;
-                  $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {data:option.data});
+                  $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data});
                 }             
               }
             });
@@ -157,7 +161,7 @@ angular.module('kyc.directives').
           $chart.height( heightParent );
 
           var highchartsConfig =  $chartService.getChart(  ng.chart.value.type, ng.chart.value );
-          if (ng.chart.value.type === ChartType.AREA){
+          if (ng.chart.value.type === ChartType.AREA){            
             highchartsConfig.options.chart.events = {
               click:openModal
             }
