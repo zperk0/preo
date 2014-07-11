@@ -16,18 +16,12 @@
 
 		<div id="dashboard">
 			
-		  	<div class="gridster">
-		      <!-- Define gridster directives -->
-		      <ul gridster="gridsterOptions" id="ul-widgets">
-		        <li gridster-repeat="value in values" gridster-layout="values" class="widget">
-
+      	<div id='sscontainer' class="sscontainer" shapeshift="shapeshifterConfig">
+		        <div ng-repeat='value in values' class='widget' data-ss-colspan="{{value.showChart ? 2 : 1}}"> 
 		        	<chart element="value"></chart>
-
-		        </li>
-		      </ul>
-
-		    </div>			
-
+		        </div>
+		        
+		    </div>		    	
 		</div>		
 	</div>
 </div>

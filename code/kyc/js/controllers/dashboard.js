@@ -3,8 +3,8 @@
 
 /* Controllers */
 angular.module('kyc.controllers')
-    .controller('DashboardCtrl', ['$scope', '$http', '$compile', 'ChartType', '$grid', 'AllCharts', '$AjaxInterceptor',
-        function ($scope, $http, $compile, ChartType, $grid, AllCharts, $AjaxInterceptor) {
+    .controller('DashboardCtrl', ['$scope', '$http', '$compile', 'ChartType', '$grid', 'AllCharts', '$AjaxInterceptor','$timeout',
+        function ($scope, $http, $compile, ChartType, $grid, AllCharts, $AjaxInterceptor,$timeout) {
             $scope.setLocation('dashboard');
 
 
@@ -24,17 +24,18 @@ angular.module('kyc.controllers')
                 }
             };
 
-            $scope.gridsterOptions = {
-                resize: {
-                    enabled: true
-                },
-                widget_margins: [10, 10],
-                widget_base_dimensions: [105, 150],
-                min_cols: 4
-            };
+            $scope.shapeshifterConfig = {
+                gutterX: 20, // Compensate for div border
+                gutterY: 20, // Compensate for div border
+                paddingX: 0,
+                paddingY: 0,
+                minColumns:2
+            }
             
             $scope.values = $grid.populateItems(charts);
-            $AjaxInterceptor.complete();
 
+            $timeout(function(){
+                $AjaxInterceptor.complete();
+            })            
         }
     ]);

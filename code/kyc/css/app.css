@@ -179,16 +179,6 @@ header nav, header ul, header li{
 
 
 
-.widget{
-  background-color: #fff;
-  overflow: hidden;
-  max-height: 500px; /* approximate max height */
-
-  transition-property: all;
-  transition-duration: .5s;
-  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);  
-}
-
 #ul-widgets{
   margin-left: 0px;
 }
@@ -295,6 +285,7 @@ header nav, header ul, header li{
 
 #filterDashboard li{
   margin-bottom: 5px;
+  list-style: none;
 }
 
 #filterDashboard ul{
@@ -429,6 +420,7 @@ header nav, header ul, header li{
 .front {
   z-index: 2;
   position:relative; /* front doesn't need to be absolute*/
+  background-color: #fff;
 }
 
 /* back, initially hidden pane */
@@ -762,28 +754,34 @@ span.multiSelect{
   font-size:70%;
 }
 
+
+.sscontainer {
+    position: relative;    
+}
+
+.widget {
+    
+    overflow: hidden;  
+    height: 160px;
+    position: absolute;
+    width: 235px;
+    text-align:center;
+}
+
+.widget[data-ss-colspan='2'] { 
+  width: 490px;
+  height:310px; 
+}
+
+.sscontainer .ss-placeholder-child {
+    background: transparent;
+    border: 1px dashed red;
+}
+
 @media screen and (max-width: 62.5em) {
   .row{
     width:95%;
     margin:0 auto;
   }
+
 }
-
-.chart_3:hover{
-  /* IE 8 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-
-  /* IE 5-7 */
-  filter: alpha(opacity=50);
-
-  /* Netscape */
-  -moz-opacity: 0.5;
-
-  /* Safari 1.x */
-  -khtml-opacity: 0.5;
-
-  /* Good browsers */
-  opacity: 0.5;
-};
-
-

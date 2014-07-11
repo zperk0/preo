@@ -8,7 +8,6 @@
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 ?>
   
-  <link rel="stylesheet" href="/code/kyc/js/directives/gridster/gridster.css">  
   <link rel="stylesheet" href="/code/kyc/js/directives/multiselect/multiselect.css"/>  
   <link rel="stylesheet" href="/code/kyc/css/app.css"/>    
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -125,10 +124,10 @@
   <script src="/code/kyc/js/constants/chartType.js"></script>
   <script src="/code/kyc/js/constants/colors.js"></script>
   <script src="/code/kyc/js/directives/chart/chart.js"></script>
-  <script src="/code/kyc/js/directives/gridster/gridster.js"></script>
   <script src="/code/kyc/js/directives/highcharts/highcharts.js"></script>
   <script src="/code/kyc/js/directives/datepicker/datepicker.js"></script>
   <script src="/code/kyc/js/directives/multiselect/multiselect.js"></script>
+  <script src="/code/kyc/js/directives/shapeshifter.js"></script>
   <script src="/code/kyc/js/charts/allCharts.js"></script>
   <script src="/code/kyc/js/charts/chartHelper.js"></script>
   <script src="/code/kyc/js/charts/payingCustomers.js"></script>
