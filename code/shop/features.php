@@ -67,7 +67,7 @@ var features = [
 													<?echo json_encode(_("Excel downloads	"))?>],
 		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
 		icon:'/img/KYC-icon.png',
-		link:'kyc',
+		$link:'/kyc',
 		active:true,
 		$terms:{
 			trial:'/terms/140702 Premium Services - KYC Trial Period.pdf',

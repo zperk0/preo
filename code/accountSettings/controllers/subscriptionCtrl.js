@@ -103,7 +103,8 @@ angular.module('accountSettings.controllers')
 
 
     $scope.navigateTo = function(place){
-    	window.location.assign(place);
+      if (place && place != "")
+    	 window.location.assign(place);
     }
 
     $scope.getTotalSubscription = function (){

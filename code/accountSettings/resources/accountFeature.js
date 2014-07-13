@@ -7,6 +7,15 @@ angular.module('accountSettings.resources').
     		}
     });    
 
+    AccountFeature.prototype.getLink = function(){    	
+    	if (this.feature && this.feature.$link){
+    		console.log("getting link:",this.feature.$link)
+    		return this.feature.$link;
+    	}
+    	
+    	return false;
+    }
+
 		return AccountFeature;
 
   });    

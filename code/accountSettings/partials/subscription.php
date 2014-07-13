@@ -42,13 +42,18 @@
 		<p class='marginBottom100'><? echo _("Why not check out our")?> <a href='/shop' class='premiumFeatureColor'>  <? echo _("Available Premium Features")?> </a> <? echo _("and discover how they can start 
 			adding further value to your business today")?></p>			
 	</div >
-			<table ng-show='activeFeaturesCount >= 1'>
+			<table ng-if='activeFeaturesCount >= 1'>
 				<tr ng-repeat="accountFeature in accountFeatures | filter:isInstalled " ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>
 						<td > <img ng-src="{{accountFeature.feature.icon}}" /> </td>
-						<td class='featureTitle'> <span class='featureAppTitle' ng-show="accountFeature.feature.showAppTitle"> my order app </span> {{accountFeature.feature.name}} </td>
-						<td ng-show="accountFeature.status === 'INSTALLED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
-						<td ng-show="accountFeature.status === 'TRIAL'" class='errorColor'> Free trial expires in {{getExpiryDate(accountFeature)}} days </td>				
-						<td ng-show="accountFeature.status === 'UNINSTALLED'">  <? echo _("Pending removal") ?> </td>				
+						<td class='featureTitle'> <span class='featureAppTitle' ng-show="accountFeature.feature.showAppTitle"> my order app </span> 
+							<a ng-if='accountFeature.getLink()' ng-href='{{accountFeature.getLink()}}'> 
+								{{accountFeature.feature.name}} 
+							</a>
+							<div ng-if='!accountFeature.getLink()'>{{accountFeature.feature.name}} </div>
+						</td>
+						<td ng-if="accountFeature.status === 'INSTALLED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
+						<td ng-if="accountFeature.status === 'TRIAL'" class='errorColor'> Free trial expires in {{getExpiryDate(accountFeature)}} days </td>				
+						<td ng-if="accountFeature.status === 'UNINSTALLED'">  <? echo _("Pending removal") ?> </td>				
 						<td ng-switch='accountFeature.status'>
 								<span ng-switch-when="INSTALLED" ng-click='openConfirmDialog(accountFeature)' class='positiveButton'> <? echo _("Uninstall")?></span>
 								<span ng-switch-when="TRIAL" ng-click='openConfirmDialog(accountFeature)' class='positiveButton'> <? echo _("Uninstall")?></span>
@@ -62,7 +67,7 @@
 	</div>		
 </section>
 
-	<section class='deactivatedFeaturesWrapper' ng-show="hasCancelledFeatures()">
+	<section class='deactivatedFeaturesWrapper' ng-if="hasCancelledFeatures()">
 			<header><? echo _("Deactivated Premium Features")?></header>
 			<br/>
 			<div>
@@ -70,8 +75,8 @@
 					<tr ng-repeat="accountFeature in accountFeatures | filter:isCanceled" class="disabled" >
 						<td > <img ng-src="{{accountFeature.feature.icon}}" /> </td>
 						<td class='featureTitle'> {{accountFeature.feature.name}} </td>						
-						<td ng-show="accountFeature.status === 'CANCELED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
-						<td ng-show="accountFeature.status === 'EXPIRED'"> <? echo _("Trial has expired")?> </td>				
+						<td ng-if="accountFeature.status === 'CANCELED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
+						<td ng-if="accountFeature.status === 'EXPIRED'"> <? echo _("Trial has expired")?> </td>				
 						<td >
 								<span ng-click='reinstallAccountFeature(accountFeature)' class='positiveButton'> <? echo _("Reinstall")?> </span>&nbsp;
 								<span ng-click='removeAccountFeature(accountFeature)' class='negativeButton'> <? echo _("Remove")?> </span>

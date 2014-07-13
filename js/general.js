@@ -4130,14 +4130,15 @@ $(document).ready(function() {
 			for (var i=0;i<features.length;i++){
 					var feature = features[i]
 					if (feature.id == featureId){
-						if (feature.link === undefined || feature.link === "")
-							feature.link = "accountSettings#/subscription"
+						var link = "accountSettings#/subscription";
+						if (feature.$link)
+							link = feature.$link;
 						displayName = feature.name;
 
 						if (feature.showAppTitle){
-							displayName = "My order app " + feature.name; 
+							displayName = _tr("My order app ") + feature.name; 
 						}
-						$(this).children(".featureName").attr("href",feature.link).html(displayName);						
+						$(this).children(".featureName").attr("href",link).html(displayName);						
 						$(this).children(".featureIcon").attr("src",feature.icon);
 						break;
 					}
