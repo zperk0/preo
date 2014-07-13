@@ -9,7 +9,7 @@
 	</div>		
 	<div ng-show='card !== false'>						
 			<div ng-show='diffInDays > 0' class='recurringPaymentFailed'>
-				<p><strong><? echo _("Your recurring payment has failed!")?> </strong></p>	
+				<p><strong><? echo _("You have an outstanding payment!")?> </strong></p>	
 				<p><? echo _("Please update your card details within ")?> {{ diffInDays }}  <? echo _(" days to prevent your Premium Features from being deactivated.")?> </p>					
 			</div>
 			<div ng-show='diffInDays <= 0'>			
