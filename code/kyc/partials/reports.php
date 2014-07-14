@@ -19,7 +19,7 @@
 					  		<th width="10">
 					  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
 					  		</th>					  		
-					  		<th ng-repeat="title in selectedReport.titles" ng-click="orderBy = property; direction=!direction">
+					  		<th ng-repeat="title in selectedReport.titles" ng-click="orderBy = title; direction=!direction;console.log('ngclick',orderBy)">
 					  			{{title}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
@@ -29,12 +29,12 @@
 					  	</tr>
 					  </thead>
 					  <tbody>
-					  	<tr ng-repeat="data in selectedReport.data | orderBy:orderBy:direction">
+					  	<tr ng-repeat="data in selectedReport.data | orderObjectBy:orderBy:direction">
 					  		<td><input type="checkbox" ng-model="data.selected"></td>
-					  		<td>{{ data.dateJoined | date:"dd/MM/yyyy" }}</td>
-					  		<td>{{ data.name }}</td>
-					  		<td>{{ data.email }}</td>
-					  		<td>{{ data.marketing | marketing }}</td>					  		
+					  		<td ng-if='data.dateJoined !== undefined'>{{ data.dateJoined | date:"dd/MM/yyyy" }}</td>
+					  		<td ng-if='data.name !== undefined'>{{ data.name }}</td>
+					  		<td ng-if='data.email !== undefined'>{{ data.email }}</td>
+					  		<td ng-if='data.marketing !== undefined'> {{ data.marketing | marketing }}</td>					  		
 					  	</tr>
 					  </tbody>
 					</table>		
