@@ -18,9 +18,10 @@ angular.module('kyc.reports')
 		function setTitles(report){
 			var titles = [];
 			var data = report.getData();
-			for (var key in data){
+			for (var key in data){				
 				angular.forEach(data[key],function(val,prop){					
-						titles.push(prop)
+						if (String(prop[0])!='$')
+							titles.push(prop)
 				})
 				report.setTitles(titles);
 				break;

@@ -1,5 +1,5 @@
 <? session_start(); ?>
-<div class="container container-partials">
+<div class="container container-partials row">
 	<div class="flip-container topSpacing">
 		<div class="flipper reportPage">
 			<div class="front" id="content-list">

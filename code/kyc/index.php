@@ -33,8 +33,8 @@
   <div class='clearfix'></div>
 
   
-    <div class="container-fluid" id="container-search">
-      <div class="row formContainer" ng-if="currentLocation != 'reports'">
+    <div class="container-fluid" id="container-search" ng-if="currentLocation != 'reports'">
+      <div class="row formContainer" >
         
           <form class="navbar-form navbar-left columns large-7 small-12 nopadding" role="search" ng-submit="update()">
             <div class='row nomargin'>
@@ -76,9 +76,7 @@
           </form>
       </div>
     </div>
-    <div class='row' ng-view></div>
-  
-  
+    <div ng-view></div>
 
   
     <div class="loading" ng-show="requests">
