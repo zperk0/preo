@@ -18,65 +18,9 @@
 					  	<tr>
 					  		<th width="10">
 					  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
-					  		</th>
-					  		<th width="60" ng-click="orderBy = 'id'; direction=!direction">
-					  			<? echo _("ID")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>
-					  		<th width="90" ng-click="orderBy = 'outlet'; direction=!direction">
-					  			<? echo _("Outlet")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>
-					  		<th ng-click="orderBy = 'name'; direction=!direction">
-					  			<? echo _("Name")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>
-					  		<th ng-click="orderBy = 'time'; direction=!direction">
-					  			<? echo _("Time")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>
-					  		<th width="70" ng-click="orderBy = 'quantity'; direction=!direction">
-					  			<? echo _("Qty")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>
-					  		<th ng-click="orderBy = 'item'; direction=!direction">
-					  			<? echo _("Item")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>
-					  		<th ng-click="orderBy = 'modifier'; direction=!direction">
-					  			<? echo _("Modifier")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>
-					  		<th width="80" ng-click="orderBy = 'total'; direction=!direction">
-					  			<? echo _("Total")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>
-					  		<th ng-click="orderBy = 'status'; direction=!direction">
-					  			<? echo _("Status")?>
+					  		</th>					  		
+					  		<th ng-repeat="title in selectedReport.titles" ng-click="orderBy = property; direction=!direction">
+					  			{{title}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
@@ -85,17 +29,12 @@
 					  	</tr>
 					  </thead>
 					  <tbody>
-					  	<tr ng-repeat="report in reports | orderBy:orderBy:direction">
-					  		<td><input type="checkbox" ng-model="report.selected"></td>
-					  		<td>{{ report.id }}</td>
-					  		<td>{{ report.outlet }}</td>
-					  		<td>{{ report.name }}</td>
-					  		<td>{{ report.time | date:"hh:mm:ss"}}</td>
-					  		<td>{{ report.quantity }}</td>
-					  		<td>{{ report.item }}</td>
-					  		<td>{{ report.modifier }}</td>
-					  		<td>{{ getCurrency()+report.total }}</td>
-					  		<td>{{ report.status }}</td>
+					  	<tr ng-repeat="data in selectedReport.data | orderBy:orderBy:direction">
+					  		<td><input type="checkbox" ng-model="data.selected"></td>
+					  		<td>{{ data.dateJoined | date:"dd/MM/yyyy" }}</td>
+					  		<td>{{ data.name }}</td>
+					  		<td>{{ data.email }}</td>
+					  		<td>{{ data.marketing | marketing }}</td>					  		
 					  	</tr>
 					  </tbody>
 					</table>		

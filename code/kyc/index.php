@@ -34,7 +34,7 @@
 
   
     <div class="container-fluid" id="container-search">
-      <div class="row formContainer">
+      <div class="row formContainer" ng-if="currentLocation != 'reports'">
         
           <form class="navbar-form navbar-left columns large-7 small-12 nopadding" role="search" ng-submit="update()">
             <div class='row nomargin'>
@@ -142,6 +142,8 @@
   <script src="/code/kyc/js/charts/numberOfOrders.js"></script>
   <script src="/code/kyc/js/charts/menuItemPopularity.js"></script>
   <script src="/code/kyc/js/charts/revenue.js"></script>
+  <script src="/code/kyc/js/reports/allReports.js"></script>
+  <script src="/code/kyc/js/reports/newCustomers.js"></script>
   <script src="/code/kyc/js/filters.js"></script>
 
   <script type="text/javascript">
