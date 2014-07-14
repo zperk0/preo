@@ -40,6 +40,13 @@
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
+					  		<th ng-click="orderBy = 'marketing'; direction=!direction">
+					  			<? echo _("Marketing")?>
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>
 					  	</tr>
 					  </thead>
 					  <tbody>
@@ -48,6 +55,7 @@
 					  		<td>{{ customer.name }}</td>
 					  		<td>{{ getCurrency()+customer.totalSpent }}</td>
 					  		<td>{{ customer.emailAddress }}</td>
+					  		<td>{{ customer.marketing }}</td>
 					  	</tr>
 					  </tbody>
 					</table>		

@@ -62,6 +62,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 		if ( allOrders ) {			
 			var minDate = moment($scope.search.start_date)
       var maxDate = moment($scope.search.end_date)
+      console.log('allOrders',allOrders);
 			angular.forEach(allOrders,function(row){						
 		        var orderData = moment(row.created);        
 		        if (orderData >= minDate && orderData <= maxDate){
@@ -70,7 +71,8 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 									$scope.customers[customerId] = {
 											name:row.user.firstName+" "+row.user.lastName,
 											totalSpent:Number(row.total.toFixed(2)),
-											emailAddress:row.user.username
+											emailAddress:row.user.username,
+											marketing: (row.user.optinLoyalty || row.user.optinOffers || row.user.optinOther) ? _tr("Accepts") : " - "
 									}	
 								}
 								else{
@@ -79,7 +81,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 						}
 			});
 		}
-
+		console.log('$scope.customers',$scope.customers);
 		$AjaxInterceptor.complete();
 	}
 	
