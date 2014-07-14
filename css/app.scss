@@ -2516,7 +2516,7 @@ span .currencySymbol {
   /*to add some spacing in case we're in the bottom of the page. Or the dialog looks weird*/
   margin-bottom: 100px;
   padding: 40px;
-  font-size:2vw;
+  font-size: 170%; 
   max-width: 1200px;
 
 
@@ -2584,7 +2584,7 @@ span .currencySymbol {
         border: none;
         outline: none;
         position:static;
-        margin-left: 3%;
+        margin-left: 2%;
         float: right;
         font-weight:lighter;
         font-size:70%;
@@ -2606,7 +2606,7 @@ span .currencySymbol {
     position: absolute;
     left:0;
     top:50%;
-    margin-top:-1.5vw;
+    margin-top: -2%;
 
     span {
       position: absolute;
@@ -2621,16 +2621,16 @@ span .currencySymbol {
       float: left;
       margin-top: 0;
       padding-top: 0;          
-      padding-left:3.2vw;
+      padding-left: 9%;
 
       img {
-        width:3vw;
+        width:8%;
         background: $premium;
-        border-radius: 0.5vw;
+        border-radius: 15%;
         position:absolute;
         left:0;
         top:50%;
-        margin-top:-1.5vw;
+        margin-top:-4%;
 
       }
     }
@@ -3238,7 +3238,12 @@ button.preodayButton.noclick{
     font-size: 170%; 
       .leftWrapper{
         h4{
-          font-size:100%;
+          font-size:80%;
+          margin-top: 2%;
+          padding-left: 11%;
+          img{
+            width: 10%;
+          }
         }
       }
   }
