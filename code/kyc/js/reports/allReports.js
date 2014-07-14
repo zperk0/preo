@@ -19,11 +19,7 @@ angular.module('kyc.reports')
 			var titles = [];
 			var data = report.getData();
 			for (var key in data){
-				angular.forEach(data[key],function(val,prop){
-					console.log(optionsMap,prop);
-					if(optionsMap[prop])
-						titles.push(optionsMap[prop])
-					else
+				angular.forEach(data[key],function(val,prop){					
 						titles.push(prop)
 				})
 				report.setTitles(titles);
@@ -48,6 +44,10 @@ angular.module('kyc.reports')
 			
 		}
 
+
+		AllReports.getTitle = function(prop){
+			return optionsMap[prop] ? optionsMap[prop] : prop;
+		}
 
 		AllReports.getReportsList = function(){
 			return reportsList;

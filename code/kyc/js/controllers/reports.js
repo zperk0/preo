@@ -22,10 +22,19 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 			index : 0,			
 			data: $scope.reportsList[0].getData(),
 			titles: $scope.reportsList[0].getTitles()
-		}
-		
-		console.log("select",$scope.selectedReport);
+		}		
+	
 		$AjaxInterceptor.complete();
+	}
+
+	$scope.setOrderBy = function(title){
+		console.log('prev:',$scope.orderBy,title)
+		$scope.orderBy = title;
+		$scope.direction = !$scope.direction
+	}
+
+	$scope.getTitle = function(title){
+		return AllReports.getTitle(title);
 	}
 
 
