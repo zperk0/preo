@@ -1,6 +1,7 @@
 angular.module('kyc.reports')
 .factory('NewCustomers',[function(){
 
+	var title = _tr("New Customers");
 	var Report = {}
 	var data = {}
 	var titles = [];
@@ -36,6 +37,11 @@ angular.module('kyc.reports')
 	Report.getTitles = function(){
 		return titles;
 	}
+
+	Report.getTitle = function(){
+		return title;
+	}
+	
 
 	return Report;
 

@@ -21,6 +21,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 		$scope.selectedReport = {
 			index : 0,			
 			data: $scope.reportsList[0].getData(),
+			title: $scope.reportsList[0].getTitle(),
 			titles: $scope.reportsList[0].getTitles()
 		}		
 	

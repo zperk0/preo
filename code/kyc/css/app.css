@@ -4,6 +4,10 @@
   padding:0 !important;
 }
 
+.nopaddingleft{
+  padding-left:0 !important;
+}
+
 .nomargin{
   margin:0 !important;
 }
@@ -24,7 +28,7 @@ body{
   margin-bottom:80px;
 }
 
-form label, label, .multiSelect .button{
+form label, label, .multiSelect .button, .navbar-form input, .current{
   color:#46545D !important;
 }
 
@@ -165,10 +169,12 @@ header nav, header ul, header li{
 }
 
 #container-search{
-  padding-top: 20px;
+  padding-top: 2em;
+  padding-bottom:0px;
+  background-color: #fff;
 }
 
-#container-search, #content-list{
+#content-list{
   background-color: #fff;
   padding-bottom: 30px;
 }
@@ -784,4 +790,24 @@ span.multiSelect{
     margin:0 auto;
   }
 
+}
+
+form.custom .custom.dropdown{
+  width:90%;
+}
+
+form.custom .custom.dropdown ul ,form.custom .custom.dropdown li{
+  width:100%;
+  left:0 !important;  
+}
+
+/* Downward pointing arrow */
+.dropdown .caret {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    background: url("/img/arrowOutlet.jpg") left top no-repeat;  
+    width:33px;          
+    height:100%; 
 }
