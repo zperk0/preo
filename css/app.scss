@@ -2517,6 +2517,7 @@ span .currencySymbol {
   margin-bottom: 100px;
   padding: 40px;
   font-size:2vw;
+  max-width: 1200px;
 
 
   .close-reveal-modal{
@@ -2582,11 +2583,13 @@ span .currencySymbol {
         padding: 8px 15%;    
         border: none;
         outline: none;
-        position:absolute;
+        position:static;
+        margin-left: 3%;
+        float: right;
         font-weight:lighter;
         font-size:70%;
-        top:0;
-        right:0;        
+        // top:0;
+        // right:0;        
           &.secondary{
             padding: 8px 6%;   
             font-size:60%;
@@ -3224,7 +3227,7 @@ button.preodayButton.noclick{
 
 @media (min-width:899px) and (max-width:1200px) {
   #featureModal{
-    font-size: 2.5vw; 
+    font-size: 160%; 
 
   }
 }
@@ -3232,10 +3235,10 @@ button.preodayButton.noclick{
 
 @media (max-width:900px) {
   #featureModal{
-    font-size: 3vw; 
+    font-size: 170%; 
       .leftWrapper{
         h4{
-          font-size:80%;
+          font-size:100%;
         }
       }
   }
