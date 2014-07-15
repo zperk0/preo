@@ -3,7 +3,7 @@ angular.module('kyc.charts')
 
 		var type = ChartType.NUMBER;
 		var itemsOrdered =0;
-		var title = "Items Ordered"
+		var title = _tr("Items Ordered");
 
 		function setData(order,minDate,maxDate){            
             var orderData = moment(order.created);
