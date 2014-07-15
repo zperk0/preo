@@ -3222,8 +3222,14 @@ button.preodayButton.noclick{
   /* Good browsers */
   opacity: 0.7;
 }
+.highcharts-container {
+  overflow: visible !important;
+}
 
-
+.highcharts-tooltip {
+    position: relative;
+    z-index: 50;
+}
 
 @media (min-width:899px) and (max-width:1200px) {
   #featureModal{
