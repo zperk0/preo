@@ -2606,7 +2606,7 @@ span .currencySymbol {
     position: absolute;
     left:0;
     top:50%;
-    margin-top: -2%;
+    margin-top: -0.5%;
 
     span {
       position: absolute;
@@ -2614,7 +2614,7 @@ span .currencySymbol {
       top: 0;
     }
     h4 {
-      font-size:110%;
+      font-size:105%;
       color:$shopHeader;
       margin-bottom: 0;
       font-family: "Co Text W01 Bold";
@@ -3228,8 +3228,21 @@ button.preodayButton.noclick{
 @media (min-width:899px) and (max-width:1200px) {
   #featureModal{
     font-size: 160%; 
+    .leftWrapper{
+      margin-top: -3.5%;
+    }
 
   }
+}
+
+@media (min-width:899px){
+   #featureModal{
+    font-size: 160%; 
+    .leftWrapper{
+      margin-top: -3.5%;
+    }
+
+  } 
 }
 
 
@@ -3239,10 +3252,28 @@ button.preodayButton.noclick{
       .leftWrapper{
         h4{
           font-size:80%;
-          margin-top: 2%;
+          margin-top: -6%;
           padding-left: 11%;
           img{
             width: 10%;
+            margin-top: -9%;
+          }
+        }
+      }
+  }
+}
+
+@media (min-width:680px) and (max-width:900px) {
+  #featureModal{
+      .leftWrapper{
+        margin-top: 0px;
+        h4{
+          font-size:80%;
+          margin-top: -6%;
+          padding-left: 11%;
+          img{
+            width: 10%;
+            margin-top: -9%;
           }
         }
       }
