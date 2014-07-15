@@ -2,22 +2,22 @@
 
 <div class="container-fluid" id="container-search">
 	<div class="row formContainer" >  
-	    <form class="navbar-form navbar-left columns large-12 small-12 nopadding custom" role="search" ng-submit="update()">
+	    <form class="navbar-form navbar-left columns large-12 small-12 nopadding custom" role="update">
 	      <div class='row nomargin'>
 	        <div class="columns large-12 small-12 nopadding">              
 	            <label>
-	            <? echo _("Choose preset:")?></label>
-	            <div class='columns large-10 small-10 nopaddingleft custom dropdown pdDropdown'>
+	            <? echo _("Choose preset:")?></label>	            
+	            <div class='columns large-10 small-10 nopaddingleft customDropdown pdDropdown'>
 			            <a class="current" dropdown-toggle="#dropdown-example-2">{{selectedReport.title}}</a>
-			            <span class="caret" dropdown-toggle="#dropdown-example-2"></span>
-								  <ul id="dropdown-example-2" class="">
-								    <li ng-repeat="report in reportsList">
+			            <span class="caret" dropdown-toggle="#dropdown-example-2"></span>			            
+								  <ul id="dropdown-example-2" class="f-dropdown">
+								    <li ng-repeat="report in reportsList" ng-click="selectReport(report)">
 								      	{{report.getTitle()}}
 								    </li>
 								  </ul>			             
 	             </div>
 	             <div class='columns large-1 small-2 nopadding'>
-	              <button type="submit" class="button small"><? echo _("Update")?></button>            
+	              <button type="button" class="button small"><? echo _("Update")?></button>            
 	             </div>                
 	        </div>
 	      </div>

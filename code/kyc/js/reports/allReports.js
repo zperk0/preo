@@ -1,11 +1,12 @@
 angular.module('kyc.reports')
-.factory('AllReports',['$q','NewCustomers',
-	function($q,newCustomers) {
+.factory('AllReports',['$q','NewCustomers','ZeroOrdersCustomers',
+	function($q,NewCustomers,ZeroOrdersCustomers) {
 
 		var AllReports = function(){};
 
 		var reportsList = [
-			newCustomers
+			NewCustomers,
+			ZeroOrdersCustomers
 		]
 
 		var optionsMap = {
@@ -16,13 +17,14 @@ angular.module('kyc.reports')
 		}
 
 		function setTitles(report){
+			console.log('setting titles for report',report.getTitle());
 			var titles = [];
 			var data = report.getData();
-			for (var key in data){				
-				angular.forEach(data[key],function(val,prop){					
+			for (var key in data){
+				angular.forEach(data[key],function(val,prop){										
 						if (String(prop[0])!='$')
 							titles.push(prop)
-				})
+				})				
 				report.setTitles(titles);
 				break;
 			}
@@ -30,23 +32,37 @@ angular.module('kyc.reports')
 
 		
 		AllReports.init = function(allOrders){
-			angular.forEach(allOrders,function(order){
-				angular.forEach(reportsList,function(report){
-						report.setData(order)
-				});
-			});
+      var deferred  = $q.defer();
+			initReports().then(function(){
+				angular.forEach(allOrders,function(order){
+					angular.forEach(reportsList,function(report){
 
-			angular.forEach(reportsList,function(report){
-				setTitles(report);
-				if (report.onSetDataComplete){
-						report.onSetDataComplete()
-				}
-			});
-			
+							report.setData(order)				
+					});
+				});				
+				angular.forEach(reportsList,function(report){													
+					if (report.onSetDataComplete){
+							report.onSetDataComplete()
+					}
+					setTitles(report);
+				});
+
+				deferred.resolve();
+			})
+			return deferred.promise;
+		}
+
+		function initReports(){
+				var promises=[]
+				angular.forEach(reportsList , function(report) { 
+					 if (report.init)
+					 	promises.push(report.init())
+				});
+				return $q.all(promises);
 		}
 
 
-		AllReports.getTitle = function(prop){
+		AllReports.getTitle = function(prop){			
 			return optionsMap[prop] ? optionsMap[prop] : prop;
 		}
 

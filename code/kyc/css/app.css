@@ -796,18 +796,62 @@ form.custom .custom.dropdown{
   width:90%;
 }
 
-form.custom .custom.dropdown ul ,form.custom .custom.dropdown li{
+form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   width:100%;
   left:0 !important;  
+  max-width:100% !important;
 }
 
 /* Downward pointing arrow */
-.dropdown .caret {
+.customDropdown .caret {
     position: absolute;
-    top: 0;
+    top: 1px;
     right: 0;
     margin: 0;
     background: url("/img/arrowOutlet.jpg") left top no-repeat;  
     width:33px;          
-    height:100%; 
+    height:99%; 
+
+}
+
+.customDropdown .current{
+  cursor: default;
+  white-space: nowrap;
+  line-height: 2.1em;
+  color: rgba(0,0,0,.75);
+  text-decoration: none;
+  overflow: hidden;
+  display: block;
+  margin-left: .5em;
+  margin-right: 2.3125em;
+}
+
+.customDropdown li{
+  color: #555;
+  font-size: .875em;
+  cursor: default;
+  padding-top: .25em;
+  padding-bottom: .25em;
+  padding-left: .375em;
+  padding-right: 2.375em;
+  min-height: 1.5em;
+  line-height: 1.5em;
+  margin: 0;
+  white-space: nowrap;
+  list-style: none;
+}
+
+.customDropdown ul {
+  position: absolute;
+  width: auto;
+  display: none;
+  left: -1px;
+  top: auto;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border: solid 1px #ccc;
+  font-size: 16p
 }

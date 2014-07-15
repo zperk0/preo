@@ -16,25 +16,28 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 
 	function prepareScopeReports(){
 		orders = OrderService.getOrders();		
-		AllReports.init(orders);		
-		$scope.reportsList = AllReports.getReportsList();
-		$scope.selectedReport = {
-			index : 0,			
-			data: $scope.reportsList[0].getData(),
-			title: $scope.reportsList[0].getTitle(),
-			titles: $scope.reportsList[0].getTitles()
-		}		
-	
-		$AjaxInterceptor.complete();
+		AllReports.init(orders).then(function(){
+			$scope.reportsList = AllReports.getReportsList();
+			$scope.selectReport($scope.reportsList[0]);			
+			$AjaxInterceptor.complete();
+		})		
 	}
 
-	$scope.setOrderBy = function(title){
-		console.log('prev:',$scope.orderBy,title)
+	$scope.selectReport = function(report){		
+		$scope.selectedReport = {
+			data: report.getData(),
+			title: report.getTitle(),
+			titles: report.getTitles()
+		}			
+		console.log('setting s',$scope.selectedReport);			
+	}
+
+	$scope.setOrderBy = function(title){		
 		$scope.orderBy = title;
 		$scope.direction = !$scope.direction
 	}
 
-	$scope.getTitle = function(title){
+	$scope.getTitle = function(title){		
 		return AllReports.getTitle(title);
 	}
 

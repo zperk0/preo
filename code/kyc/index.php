@@ -119,6 +119,7 @@
   <script src="/code/kyc/js/resources/outlet.js"></script>
   <script src="/code/kyc/js/resources/order.js"></script>  
   <script src="/code/kyc/js/resources/venue.js"></script>  
+  <script src="/code/kyc/js/resources/customers.js"></script>  
   <script src="/code/kyc/js/constants/chartType.js"></script>
   <script src="/code/kyc/js/constants/colors.js"></script>
   <script src="/code/kyc/js/directives/chart/chart.js"></script>
@@ -142,6 +143,7 @@
   <script src="/code/kyc/js/charts/revenue.js"></script>
   <script src="/code/kyc/js/reports/allReports.js"></script>
   <script src="/code/kyc/js/reports/newCustomers.js"></script>
+  <script src="/code/kyc/js/reports/zeroOrdersCustomers.js"></script>
   <script src="/code/kyc/js/filters.js"></script>
 
   <script type="text/javascript">
