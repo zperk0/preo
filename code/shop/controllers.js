@@ -108,11 +108,16 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
       getFeaturePrice($scope.selectedFeature.feature);
     }
 
+    $scope.clickGetInTouch = function(){
+      document.location.href = "mailto:hello@preoday.com?subject=Please contact me regarding Enterprise";
+      $('#featureModal').foundation('reveal', 'close');
+    }
+
     $scope.showDialog = function(which){                   
        var feature = $scope.selectedFeature.feature;  
        var clickOk;
        var clickCancel;
-       var data; 
+       var data = null; 
         switch (which){
           case "purchase":
             data = { 
@@ -135,15 +140,19 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             clickOk = startTrial;            
           break; 
           case "success":
-            data = { 
-              title: _tr("Your new Premium Feature is now live!"),
-              content: _tr("You can manage subscriptions from your account settings page"),
-              showTerm: false,
-              btnOk: _tr('ACCOUNT SETTINGS'),
-              btnCancel: _tr('RETURN TO STORE'),            
-              windowClass:'medium'
-            }        
-            clickOk = function(){$scope.navigateTo('/accountSettings#/subscription')};            
+            if ( feature.hasOwnProperty('$link') && feature.$link ) {
+              $scope.navigateTo( feature.$link );
+            } else {
+              data = { 
+                title: _tr("Your new Premium Feature is now live!"),
+                content: _tr("You will be contacted shortly by a member of our team."),
+                showTerm: false,
+                btnOk: _tr('OK'),
+                btnCancel: false,
+                windowClass:'medium'
+              }        
+              clickOk = function(){$scope.navigateTo('/accountSettings#/subscription')};     
+            }       
           break; 
           case "paymentError":
             data = { 
@@ -166,8 +175,10 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             }        
             clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')};            
           break; 
-        }            
-        $notification.confirm(data).then(clickOk,clickCancel);
+        }
+        if ( data ) {
+          $notification.confirm(data).then(clickOk,clickCancel);
+        }
       
       
     }

@@ -691,49 +691,7 @@ span.multiSelect{
   top: 50%;
   margin-top: -15px;
   height: 30px;
-}
-
-.checkboxStyle input[type=checkbox] {  
-    display: none;  
-}  
-
-.checkboxStyle label {  
-    display: inline-block;  
-    cursor: pointer;  
-    position: relative;  
-    padding-left: 25px;  
-    margin-right: 15px;  
-    font-size: 13px;  
 } 
-
-.checkboxStyle label:before {  
-    content: "";  
-    display: inline-block;  
-  
-    width: 16px;  
-    height: 16px;  
-  
-    margin-right: 10px;  
-    position: absolute;  
-    left: 0;  
-    bottombottom: 1px;  
-    background-color: #DCDCDA;  
-}  
-
-.checkboxStyle label.disabled:before {  
-    background-color: #DBDBD9;  
-}  
-.checkboxStyle label.disabled {  
-    color: #DCDCDB;
-}  
-
-.checkboxStyle input[type=checkbox]:checked + label:before {  
-    content: "\2717";  
-    font-size: 15px;  
-    color: #95979A;  
-    text-align: center;  
-    line-height: 15px;  
-}  
 
 .table-striped td.streamPrice{
   font-family: "Co Text W01 Bold";
@@ -764,9 +722,12 @@ span.multiSelect{
     position: relative;    
 }
 
-.widget {
-    
-    overflow: hidden;  
+.highchartsItem{
+  z-index: 10;
+}
+
+.widget {    
+    /*overflow: hidden;  */
     height: 160px;
     position: absolute;
     width: 235px;

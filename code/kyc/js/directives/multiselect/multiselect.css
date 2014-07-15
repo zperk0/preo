@@ -2,8 +2,16 @@
     margin-bottom:0;
 }
 
+label.multiSelect{
+    text-align: left;
+}
+
 .multiSelect.inlineBlock {
     display: inline-block;
+}
+
+.containerMultiSelect{
+    margin: 0 13px;
 }
 
 /* button */
@@ -61,12 +69,28 @@
 /* The checkboxes container */
 .multiSelect .checkboxLayer {
     background-color: #fff;
-    position: absolute;
+    position: absolute;    
     z-index: 999;
-    background-clip: padding-box; 
+    width: 100%;
+    background-clip: padding-box;     
     min-width: 419px;
 }
 
+/* Downward pointing arrow */
+.multiSelect .caret {
+    float: right;    
+    vertical-align: middle;
+    margin: -6px -8px;
+    width: 32px;
+    height: 31px;
+   background: url("/img/arrowOutlet.jpg") left top no-repeat;  
+           
+}
+
+.multiSelectChart .checkboxLayer{
+    left: 23px;
+    width: 91%;
+}
 
 .multiSelect.multiSelectItem {
     display: block;

@@ -73,6 +73,21 @@ var features = [
 			trial:'/terms/140702 Premium Services - KYC Trial Period.pdf',
 			purchase:'/terms/140702 Premium Services - KYC.pdf'
 		}
+	},	
+	{
+		id: 5,
+		description: <? echo json_encode(_("Preoday is not only for small independent companies.  At its heart, Preoday is a robust, open and scale-able mobile ordering platform ideal for the business and performance needs of the world’s largest customers. It is an off-the-shelf solution designed from inception for integrating with your firm’s existing ePOS systems, payment processors, booking systems, website, and loyalty and marketing platforms to offer a complete mobile experience.  Why not get in touch and find out more?")) ?>,
+		shortDescription: <? echo json_encode(_("Full integration and management to meet your businesses performance needs."))?>,		
+		name: <? echo json_encode(_("Enterprise"))?>,
+		descriptionFeatures :[<?echo json_encode(_("A ready-built, fully-equipped mobile ecommerce platform."))?>,
+													<?echo json_encode(_("Real-time executive tools and dashboards for managing multiple branches and outlets."))?>,
+													<?echo json_encode(_("API and tools for rapid integration with third party systems."))?>,
+													<?echo json_encode(_("Consulting Services and, where necessary, bespoke development"))?>,
+													<?echo json_encode(_("Maintenance and support"))?>],
+		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
+		icon:'/img/Enterprise-icon.png',
+		getInTouch: true,
+		active:true,
 	}	
 ];
 

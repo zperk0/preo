@@ -4,12 +4,10 @@
   <div class="container-modal-confirm" ng-bind-html="content">    
   </div>
 
-  <p ng-if="showTerm" class='modal-term'>
-    <label>
-      <input type="checkbox" ng-model="acceptTerm" ng-change="changeTerm(acceptTerm)" />
-        I have read the <a href="{{showTerm}}" target="_blank">Terms and Conditions</a>
-    </label>
-  </p>
+  <div class="checkbox checkboxStyle modal-term content-check-modal" ng-if="showTerm">
+    <input type="checkbox" ng-change="changeTerm(acceptTerm)" ng-model="acceptTerm" id="checkboxNotification" />
+    <label for="checkboxNotification">I have read the <a href="{{showTerm}}" target="_blank">Terms and Conditions</a></label>
+  </div>  
 
   <div class="buttons">
     <button class='preodayButton' ng-if='btnOk' ng-class="{secondary:showTerm && !acceptTerm}" ng-click="send()" ng-disabled="showTerm && !acceptTerm">{{ btnOk }} </button>
