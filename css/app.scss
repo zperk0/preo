@@ -1680,12 +1680,9 @@ p.venueCode {
 @media screen and (max-width: 940px) {
   .options-modal .block-modal{
     width: 30%;
-    height: 150px;
+    height: 90px;
   }
 
-  .reveal-modal{
-    position: absolute !important;
-  }
 
   .options-modal .block-modal div{
     width: 100%

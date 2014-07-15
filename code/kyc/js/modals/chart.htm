@@ -19,12 +19,6 @@
 				<div ng-switch-when="1">
 					<p class="title-option-modal">{{ option.name }}</p>
 					<a href="javascript:void(0)" class="button-option" ng-click="selectOption( option )">{{ option.value }}</a>
-					<span class="percent-modal" ng-class="{ negative:option.percent<0 }"> 
-						<span ng-show="option.percent>0">+</span>
-						<span ng-show="option.percent<0">-</span>			
-						<span ng-bind-html='option.percent'></span>
-						<span ng-show="option.percent<0 || option.percent>0">%</span>
-					</span>
 				</div>
 				<div ng-switch-when="0">
 					 <p class="title-option-modal">{{ option.name }}</p>

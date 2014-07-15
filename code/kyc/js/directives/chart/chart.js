@@ -120,7 +120,8 @@ angular.module('kyc.directives').
   	
         ng.removeGrid = function( chart, $event ) {
           chart.display = false;
-          ng.$parent.$parent.$parent.gridster.remove_widget(angular.element($event.target).parents('li'));
+          console.log(ng.$parent);
+          ng.$parent.$parent.gridster.remove_widget(angular.element($event.target).parents('li'));
         }
 
         ng.changeItem = function( item ){
