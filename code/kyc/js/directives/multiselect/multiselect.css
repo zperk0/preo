@@ -2,8 +2,16 @@
     margin-bottom:0;
 }
 
+label.multiSelect{
+    text-align: left;
+}
+
 .multiSelect.inlineBlock {
     display: inline-block;
+}
+
+.containerMultiSelect{
+    margin: 0 13px;
 }
 
 /* button */
@@ -62,8 +70,10 @@
 .multiSelect .checkboxLayer {
     background-color: #fff;
     position: absolute;
+    left: 23px;
     z-index: 999;
     background-clip: padding-box; 
+    width: 91%;
     min-width: 419px;
 }
 

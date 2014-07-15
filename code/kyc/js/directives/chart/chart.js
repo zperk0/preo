@@ -124,11 +124,18 @@ angular.module('kyc.directives').
         }
 
         ng.changeItem = function( item ){
-          ng.selectedItem = item;          
-          item.callback(item.menuItemId,function(highchart){            
-              ng.chart.value = highchart;
-              refreshChart();              
+          var items = ng.chart.value.items.filter(function(i){
+            return i.selected === true;
           });
+
+          if ( items.length ) {
+            ng.selectedItem = items[0];
+
+            ng.selectedItem.callback(ng.selectedItem.menuItemId,function(highchart){
+                ng.chart.value = highchart;
+                refreshChart();              
+            });
+          }
         }
 
         ng.exportPdf= function(){
@@ -158,7 +165,9 @@ angular.module('kyc.directives').
                     
           var highchartsConfig =  $chartService.getChart(  ng.chart.value.type, ng.chart.value );          
           if ( ng.chart.value.items ) {
-              highchartsConfig.options.chart.height = 215;
+              highchartsConfig.options.chart.height = 205;
+
+              elem.parent().addClass('highchartsItem');
             }
 
           if (ng.chart.value.type === ChartType.AREA){            

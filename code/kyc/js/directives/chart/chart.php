@@ -38,9 +38,17 @@
 						<highchart id="chart_{{ chart.num }}" config="chart.highcharts" class="chart_{{ chart.value.type }}"></highchart>
 					</div>
 
-					<div ng-if="chart.value.items">
-						<select class="dropdown pdDropdown" ng-model="selectedItem" ng-change="changeItem( selectedItem )" ng-init="selectedItem = chart.value.items[0]" ng-options="item as item.name for item in chart.value.items">
-						</select>
+					<div ng-if="chart.value.items" class="containerMultiSelect">
+	                    <multi-select
+	                    	class="dropdown pdDropdown"
+	                        input-model="chart.value.items"
+	                        button-label="name"
+	                        item-label="name"
+	                        tick-property="selected"
+	                        default-label="{{chart.value.items[0].name}}"
+	                        selection-mode="single"
+	                        on-change="changeItem()"
+	                    ></multi-select>						
 					</div>
 
 				</div>

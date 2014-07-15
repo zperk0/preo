@@ -58,6 +58,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
             onClose         : '&',
             onBlur          : '&',
             onFocus         : '&',
+            onChange        : '&',
         },
 
         templateUrl: directive_url('multiselect/multiselect.htm'),
@@ -108,7 +109,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                         break;                    
                     default:                        
                         break;
-                }$scope
+                }
             }                
 
             // Call this function when a checkbox is ticked...
@@ -128,7 +129,14 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                 }
                                 
                 $scope.refreshSelectedItems();                                   
-                e.target.focus();
+
+                if ( attrs.selectionMode && $scope.selectionMode.toUpperCase() === 'SINGLE' ) {
+                    $scope.toggleCheckboxes(e);
+                } else {
+                    e.target.focus();
+                }
+
+                $scope.onChange();
             }     
 
             // Refresh the button to display the selected items and push into output model if specified

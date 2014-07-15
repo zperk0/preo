@@ -764,9 +764,12 @@ span.multiSelect{
     position: relative;    
 }
 
-.widget {
-    
-    overflow: hidden;  
+.highchartsItem{
+  z-index: 10;
+}
+
+.widget {    
+    /*overflow: hidden;  */
     height: 160px;
     position: absolute;
     width: 235px;
