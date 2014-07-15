@@ -140,7 +140,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             clickOk = startTrial;            
           break; 
           case "success":
-            if ( feature.hasOwnProperty('$link') ) {
+            if ( feature.hasOwnProperty('$link') && feature.$link ) {
               $scope.navigateTo( feature.$link );
             } else {
               data = { 
