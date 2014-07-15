@@ -69,14 +69,17 @@ label.multiSelect{
 /* The checkboxes container */
 .multiSelect .checkboxLayer {
     background-color: #fff;
-    position: absolute;
-    left: 23px;
+    position: absolute;    
     z-index: 999;
-    background-clip: padding-box; 
-    width: 91%;
+    width: 100%;
+    background-clip: padding-box;     
     min-width: 419px;
 }
 
+.multiSelectChart .checkboxLayer{
+    left: 23px;
+    width: 91%;
+}
 
 .multiSelect.multiSelectItem {
     display: block;
