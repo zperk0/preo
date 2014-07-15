@@ -135,15 +135,19 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             clickOk = startTrial;            
           break; 
           case "success":
-            data = { 
-              title: _tr("Your new Premium Feature is now live!"),
-              content: _tr("You can manage subscriptions from your account settings page"),
-              showTerm: false,
-              btnOk: _tr('ACCOUNT SETTINGS'),
-              btnCancel: _tr('RETURN TO STORE'),            
-              windowClass:'medium'
-            }        
-            clickOk = function(){$scope.navigateTo('/accountSettings#/subscription')};            
+            if ( feature.hasOwnProperty('$link') ) {
+              $scope.navigateTo( feature.$link );
+            } else {
+              data = { 
+                title: _tr("Your new Premium Feature is now live!"),
+                content: _tr("You can manage subscriptions from your account settings page"),
+                showTerm: false,
+                btnOk: _tr('ACCOUNT SETTINGS'),
+                btnCancel: _tr('RETURN TO STORE'),            
+                windowClass:'medium'
+              }        
+              clickOk = function(){$scope.navigateTo('/accountSettings#/subscription')};     
+            }       
           break; 
           case "paymentError":
             data = { 
