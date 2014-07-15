@@ -76,6 +76,17 @@ label.multiSelect{
     min-width: 419px;
 }
 
+/* Downward pointing arrow */
+.multiSelect .caret {
+    float: right;    
+    vertical-align: middle;
+    margin: -6px -8px;
+    width: 32px;
+    height: 31px;
+   background: url("/img/arrowOutlet.jpg") left top no-repeat;  
+           
+}
+
 .multiSelectChart .checkboxLayer{
     left: 23px;
     width: 91%;
