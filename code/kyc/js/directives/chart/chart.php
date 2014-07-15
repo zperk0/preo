@@ -29,9 +29,7 @@
 						<div class="pull-left numberLeft" ng-if="chart.value.numberLeft">
 							{{ getText(chart) }}
 						</div>
-
-						<div class="pull-right numberRight" ng-if="chart.value.numberRight" ng-bind-html="chart.value.numberRight">							
-						</div>								
+						
 					</div>
 
 					<div class="highcharts-content" >
