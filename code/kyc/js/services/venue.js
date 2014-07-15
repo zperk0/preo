@@ -10,7 +10,7 @@ angular.module('kyc.services')
         function(result){    
           if (result && result.length >0)
             venue = result[0]          
-            defer.resolve(result);
+            defer.resolve(venue);
        });
         return defer.promise;
     }

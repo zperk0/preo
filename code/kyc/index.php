@@ -47,7 +47,7 @@
                         button-label="name"
                         item-label="name"
                         tick-property="selected"
-                        default-label="All Outlets"
+                        default-label="{{venue.name}}"
                     ></multi-select>
                    </div>
                    <div class='columns large-3 small-2'>
