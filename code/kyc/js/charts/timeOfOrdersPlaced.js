@@ -5,8 +5,8 @@ angular.module('kyc.charts')
     var colorIndex = 0;    
     var title = _tr('Time of Orders Placed');
     var data = [
-        {name:_tr("Day of collection"),y:0,color:Colors[0]},
-        {name:_tr("Before day of collection"),y:0,color:Colors[1]}
+        {name:_tr("On the day"),y:0,color:Colors[0]},
+        {name:_tr("In advance"),y:0,color:Colors[1]}
         
     ]
     var minTimestamp = 0;
@@ -14,8 +14,8 @@ angular.module('kyc.charts')
 
     function clearData(){
         data = [
-        {name:_tr("Day of collection"),y:0,color:Colors[0]},
-        {name:_tr("Before day of collection"),y:0,color:Colors[1]}
+        {name:_tr("On the day"),y:0,color:Colors[0]},
+        {name:_tr("In advance"),y:0,color:Colors[1]}
         ]
         colorIndex=0;
     }
