@@ -261,18 +261,17 @@ header nav, header ul, header li{
 }
 
 .largerNumber{
-  font-size: 330%;
+  font-size: 320%;
   color: #1476B7;
   display: block;
-
-  font-family: "Co Text W01 Regular";
+  font-family: "Co Text W01 Bold";
   position: absolute;
   width: 100%;
-
-  top: 40px;
+  top: 30px;
   margin-left: 0;
   padding-left: 0;
   left: 0;
+  letter-spacing: -0.03em;
 }
 
 .largerNumber.medium{
