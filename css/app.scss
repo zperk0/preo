@@ -3493,8 +3493,9 @@ button.preodayButton.noclick{
 }  
 
 .checkboxStyle input[type=checkbox]:checked + label:before {  
-    content: "\2717";  
-    font-size: 15px;  
+    content: "X";  
+    font-size: 13px;  
+    font-weight: 600;
     color: #95979A;  
     text-align: center;  
     line-height: 15px;  
