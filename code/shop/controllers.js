@@ -140,10 +140,10 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             } else {
               data = { 
                 title: _tr("Your new Premium Feature is now live!"),
-                content: _tr("You can manage subscriptions from your account settings page"),
+                content: _tr("You will be contacted shortly by a member of our team."),
                 showTerm: false,
-                btnOk: _tr('ACCOUNT SETTINGS'),
-                btnCancel: _tr('RETURN TO STORE'),            
+                btnOk: _tr('OK'),
+                btnCancel: false,
                 windowClass:'medium'
               }        
               clickOk = function(){$scope.navigateTo('/accountSettings#/subscription')};     
