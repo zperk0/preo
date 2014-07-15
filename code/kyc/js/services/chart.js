@@ -8,7 +8,8 @@ service('$chartService', ['ChartType','$filter',
             return {
                 options: {
                     chart: {
-                        type: 'areaspline'
+                        type: 'areaspline',
+                        height:'250'
                     },
                     exporting: {
                         enabled: false
@@ -75,7 +76,8 @@ service('$chartService', ['ChartType','$filter',
             return {
                 options: {
                     chart: {
-                        type: 'areaspline'
+                        type: 'areaspline',
+                        height:'250'
                     },
                     exporting: {
                         enabled: false
@@ -169,6 +171,7 @@ service('$chartService', ['ChartType','$filter',
                 options: {
                     chart: {
                         type: 'pie',
+                        height:'250',
                         events: {
                             load: function (event) {
                                 setTimeout(function () {
@@ -245,6 +248,7 @@ service('$chartService', ['ChartType','$filter',
             return {
                 options: {
                     chart: {
+                        height:'250',
                         type: 'column'
                     },
                     exporting: {
