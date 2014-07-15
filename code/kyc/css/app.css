@@ -305,7 +305,8 @@ header nav, header ul, header li{
 .block-status{
   width: 105px; 
   text-align: center;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: block;
   color: #fff;
   font-size: 15px;
