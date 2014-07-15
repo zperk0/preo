@@ -855,3 +855,8 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   border: solid 1px #ccc;
   font-size: 16p
 }
+
+.highcharts-content:hover .chart_AREA {
+  opacity:0.5;
+  cursor:pointer;
+}
