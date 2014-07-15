@@ -9,8 +9,8 @@
 				</a>
 					
 				<span class="pull-left">{{ chart.title }}</span>
-
-				<a ng-if="chart.showChart" href="javascript:void(0)" class="pull-right" ng-click="showOptions()" ng-if='!noData'>				
+		
+				<a ng-if="chart.showChart" href="javascript:void(0)" class="pull-right" ng-click="showOptions()" ng-if='!noData'>
 					<i class="fa fa-plus"></i>
 				</a>
 

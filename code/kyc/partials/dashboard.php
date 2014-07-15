@@ -20,7 +20,6 @@
 		        <div ng-repeat='value in values' class='widget' data-ss-colspan="{{value.showChart ? 2 : 1}}"> 
 		        	<chart element="value"></chart>
 		        </div>
-		        
 		    </div>		    	
 		</div>		
 	</div>
