@@ -65,10 +65,12 @@ angular.module('kyc.directives').
         function openModal() {
 
           if ( ng.chart.value.modal ) {
-          
+            var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+            var windowClass = w > 1300 ? 'large' : 'xlarge';
+
             var mod = $modal.open({
               templateUrl: modal_url('chart'),
-              windowClass: 'large modal-preoday',
+              windowClass: windowClass + ' modal-preoday',
               controller: function( $scope ) {
 
                 $scope.optionHasData = function(option){                   
