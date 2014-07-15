@@ -117,7 +117,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
        var feature = $scope.selectedFeature.feature;  
        var clickOk;
        var clickCancel;
-       var data; 
+       var data = null; 
         switch (which){
           case "purchase":
             data = { 
@@ -175,8 +175,10 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             }        
             clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')};            
           break; 
-        }            
-        $notification.confirm(data).then(clickOk,clickCancel);
+        }
+        if ( data ) {
+          $notification.confirm(data).then(clickOk,clickCancel);
+        }
       
       
     }
