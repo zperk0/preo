@@ -1,7 +1,8 @@
 
-angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','CurrencyService','$AjaxInterceptor','$location',
-	function($scope,OutletService,OrderService,AllCharts,$route,CurrencyService,$AjaxInterceptor,$location) {	
+angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','VenueService','$AjaxInterceptor','$location',
+	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location) {	
 			
+
 			$scope.currencySymbol = "%C2%A3";
 			$scope.outlets = [];
 			$scope.search = {};
@@ -13,13 +14,16 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			return decodeURI($scope.currencySymbol);
 		}
 			
-		CurrencyService.getCurrency(function(currency){				
-				$scope.currencySymbol = currency.symbol;							
+		VenueService.init().then(
+			function(venue){			
+				$scope.venue = venue;
+				$scope.currencySymbol = VenueService.getCurrency().symbol;							
 				OutletService.init(function(){
 					$scope.outlets = OutletService.getOutlets();					
 					AllCharts.init($scope.search.start_date,$scope.search.end_date,$scope.currencySymbol);
 				})			
-		});
+			});
+			
 
 		$scope.update = function(){						
 			$AjaxInterceptor.start();
