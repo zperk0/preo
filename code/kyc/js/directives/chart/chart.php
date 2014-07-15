@@ -40,7 +40,7 @@
 
 					<div ng-if="chart.value.items">
 						<select class="dropdown pdDropdown" ng-model="selectedItem" ng-change="changeItem( selectedItem )" ng-init="selectedItem = chart.value.items[0]" ng-options="item as item.name for item in chart.value.items">
-						</select>				
+						</select>
 					</div>
 
 				</div>
