@@ -201,6 +201,7 @@ service('$chartService', ['ChartType','$filter',
                     plotOptions: {
                         pie: {
                             center: ["25%", "50%"],
+                            borderWidth:0
                         }
                     },
                     legend: {
