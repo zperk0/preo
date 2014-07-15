@@ -108,6 +108,11 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
       getFeaturePrice($scope.selectedFeature.feature);
     }
 
+    $scope.clickGetInTouch = function(){
+      document.location.href = "mailto:hello@preoday.com?subject=Please contact me regarding Enterprise";
+      $('#featureModal').foundation('reveal', 'close');
+    }
+
     $scope.showDialog = function(which){                   
        var feature = $scope.selectedFeature.feature;  
        var clickOk;
