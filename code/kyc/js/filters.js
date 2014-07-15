@@ -21,6 +21,11 @@ angular.module('kyc.filters', []).
     return filtered;
   };
 })
+.filter('marketing', function() {
+  return function(marketing) {    
+    return marketing === 1 ? _tr("Active") : " - ";
+  };
+})
 .filter('timeAgo', function() {
   return function(date) {      
         if (typeof date !== 'object') {

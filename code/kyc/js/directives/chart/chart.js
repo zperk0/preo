@@ -49,15 +49,13 @@ angular.module('kyc.directives').
 
 
         ng.ChartType = ChartType;
-        var initialHeight = ng.chart.value.type === ChartType.number ? 150 : 322;
+        
         var $actionsChart = elem.find('.actions-chart');
         var $chart = elem.find('.chart');
-        var heightParent = elem.parent().height() || initialHeight;
+        
 
         var $flipContainer = elem.closest('.flip-container');
 
-        $actionsChart.height( heightParent );
-        $chart.height( heightParent );
         
   			
 
@@ -67,10 +65,12 @@ angular.module('kyc.directives').
         function openModal() {
 
           if ( ng.chart.value.modal ) {
-          
+            var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+            var windowClass = w > 1300 ? 'large' : 'xlarge';
+
             var mod = $modal.open({
               templateUrl: modal_url('chart'),
-              windowClass: 'large modal-preoday',
+              windowClass: windowClass + ' modal-preoday',
               controller: function( $scope ) {
 
                 $scope.optionHasData = function(option){                   
@@ -80,7 +80,7 @@ angular.module('kyc.directives').
                 $scope.chart = angular.copy(ng.chart);
                 if ( ng.chart.value.modal.highcharts ) {
                   $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, ng.chart.value );
-                  $scope.chart.highcharts.options.chart.height = heightParent + 40;
+                  
                 }
 
                 $scope.title = ng.chart.title;
@@ -155,11 +155,12 @@ angular.module('kyc.directives').
         }
 
         function refreshChart(){
-          heightParent = elem.parent().height() || initialHeight;
-          $actionsChart.height( heightParent );
-          $chart.height( heightParent );
+                    
+          var highchartsConfig =  $chartService.getChart(  ng.chart.value.type, ng.chart.value );          
+          if ( ng.chart.value.items ) {
+              highchartsConfig.options.chart.height = 215;
+            }
 
-          var highchartsConfig =  $chartService.getChart(  ng.chart.value.type, ng.chart.value );
           if (ng.chart.value.type === ChartType.AREA){            
             highchartsConfig.options.chart.events = {
               click:openModal
@@ -167,24 +168,6 @@ angular.module('kyc.directives').
           };
           ng.chart.highcharts = highchartsConfig;
 
-          if ( heightParent ) {
-
-            if ( ng.chart.value.numberLeft || ng.chart.value.numberRight ) {
-              heightParent -= 40;
-            }
-
-            if ( ng.chart.value.items ) {
-              heightParent -= 90;
-            } else {
-              heightParent -= 30;
-            }
-
-            if ( ng.chart.value.type == ChartType.COLUMN ) {
-              heightParent -= 15;
-            }
-            if (ng.chart.highcharts)
-              ng.chart.highcharts.options.chart.height = heightParent;
-          }
         }
 
       }

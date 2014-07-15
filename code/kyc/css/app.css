@@ -4,6 +4,10 @@
   padding:0 !important;
 }
 
+.nopaddingleft{
+  padding-left:0 !important;
+}
+
 .nomargin{
   margin:0 !important;
 }
@@ -24,7 +28,7 @@ body{
   margin-bottom:80px;
 }
 
-form label, label, .multiSelect .button{
+form label, label, .multiSelect .button, .navbar-form input, .current{
   color:#46545D !important;
 }
 
@@ -165,10 +169,12 @@ header nav, header ul, header li{
 }
 
 #container-search{
-  padding-top: 20px;
+  padding-top: 2em;
+  padding-bottom:0px;
+  background-color: #fff;
 }
 
-#container-search, #content-list{
+#content-list{
   background-color: #fff;
   padding-bottom: 30px;
 }
@@ -255,18 +261,17 @@ header nav, header ul, header li{
 }
 
 .largerNumber{
-  font-size: 330%;
+  font-size: 320%;
   color: #1476B7;
   display: block;
-
-  font-family: "Co Text W01 Regular";
+  font-family: "Co Text W01 Bold";
   position: absolute;
   width: 100%;
-
-  top: 40px;
+  top: 30px;
   margin-left: 0;
   padding-left: 0;
   left: 0;
+  letter-spacing: -0.03em;
 }
 
 .largerNumber.medium{
@@ -784,4 +789,73 @@ span.multiSelect{
     margin:0 auto;
   }
 
+}
+
+form.custom .custom.dropdown{
+  width:90%;
+}
+
+form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
+  width:100%;
+  left:0 !important;  
+  max-width:100% !important;
+}
+
+/* Downward pointing arrow */
+.customDropdown .caret {
+    position: absolute;
+    top: 1px;
+    right: 0;
+    margin: 0;
+    background: url("/img/arrowOutlet.jpg") left top no-repeat;  
+    width:33px;          
+    height:99%; 
+
+}
+
+.customDropdown .current{
+  cursor: default;
+  white-space: nowrap;
+  line-height: 2.1em;
+  color: rgba(0,0,0,.75);
+  text-decoration: none;
+  overflow: hidden;
+  display: block;
+  margin-left: .5em;
+  margin-right: 2.3125em;
+}
+
+.customDropdown li{
+  color: #555;
+  font-size: .875em;
+  cursor: default;
+  padding-top: .25em;
+  padding-bottom: .25em;
+  padding-left: .375em;
+  padding-right: 2.375em;
+  min-height: 1.5em;
+  line-height: 1.5em;
+  margin: 0;
+  white-space: nowrap;
+  list-style: none;
+}
+
+.customDropdown ul {
+  position: absolute;
+  width: auto;
+  display: none;
+  left: -1px;
+  top: auto;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border: solid 1px #ccc;
+  font-size: 16p
+}
+
+.highcharts-content:hover .chart_AREA {
+  opacity:0.5;
+  cursor:pointer;
 }

@@ -33,8 +33,8 @@
   <div class='clearfix'></div>
 
   
-    <div class="container-fluid" id="container-search">
-      <div class="row formContainer">
+    <div class="container-fluid" id="container-search" ng-if="currentLocation != 'reports'">
+      <div class="row formContainer" >
         
           <form class="navbar-form navbar-left columns large-7 small-12 nopadding" role="search" ng-submit="update()">
             <div class='row nomargin'>
@@ -76,9 +76,7 @@
           </form>
       </div>
     </div>
-    <div class='row' ng-view></div>
-  
-  
+    <div ng-view></div>
 
   
     <div class="loading" ng-show="requests">
@@ -121,6 +119,7 @@
   <script src="/code/kyc/js/resources/outlet.js"></script>
   <script src="/code/kyc/js/resources/order.js"></script>  
   <script src="/code/kyc/js/resources/venue.js"></script>  
+  <script src="/code/kyc/js/resources/customers.js"></script>  
   <script src="/code/kyc/js/constants/chartType.js"></script>
   <script src="/code/kyc/js/constants/colors.js"></script>
   <script src="/code/kyc/js/directives/chart/chart.js"></script>
@@ -142,6 +141,9 @@
   <script src="/code/kyc/js/charts/numberOfOrders.js"></script>
   <script src="/code/kyc/js/charts/menuItemPopularity.js"></script>
   <script src="/code/kyc/js/charts/revenue.js"></script>
+  <script src="/code/kyc/js/reports/allReports.js"></script>
+  <script src="/code/kyc/js/reports/newCustomers.js"></script>
+  <script src="/code/kyc/js/reports/zeroOrdersCustomers.js"></script>
   <script src="/code/kyc/js/filters.js"></script>
 
   <script type="text/javascript">

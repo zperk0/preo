@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid row">
 	<div class="container">
 		<div id="filterDashboard">
 			<ul>
