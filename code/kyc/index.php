@@ -144,6 +144,7 @@
   <script src="/code/kyc/js/reports/allReports.js"></script>
   <script src="/code/kyc/js/reports/newCustomers.js"></script>
   <script src="/code/kyc/js/reports/zeroOrdersCustomers.js"></script>
+  <script src="/code/kyc/js/reports/oneTimeBuyers.js"></script>
   <script src="/code/kyc/js/filters.js"></script>
 
   <script type="text/javascript">

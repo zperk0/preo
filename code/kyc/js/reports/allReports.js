@@ -1,19 +1,22 @@
 angular.module('kyc.reports')
-.factory('AllReports',['$q','NewCustomers','ZeroOrdersCustomers',
-	function($q,NewCustomers,ZeroOrdersCustomers) {
+.factory('AllReports',['$q','NewCustomers','ZeroOrdersCustomers','OneTimeBuyers',
+	function($q,NewCustomers,ZeroOrdersCustomers,OneTimeBuyers) {
 
 		var AllReports = function(){};
 
 		var reportsList = [
 			NewCustomers,
-			ZeroOrdersCustomers
+			ZeroOrdersCustomers,
+			OneTimeBuyers
 		]
 
 		var optionsMap = {
 			dateJoined: _tr("Date Joined"),
 			name: _tr("Name"),
 			email: _tr("Email Address"),
-			marketing: _tr("Marketing")
+			marketing: _tr("Marketing"),
+			dateOfOrder:_tr("Date of Order"),
+			numberOfOrders: _tr("Number of Orders")
 		}
 
 		function setTitles(report){
