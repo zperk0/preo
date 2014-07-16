@@ -200,7 +200,7 @@ service('$chartService', ['ChartType','$filter',
                     },
                     plotOptions: {
                         pie: {
-                            center: ["25%", "50%"],
+                            //center: ["25%", "50%"],
                             borderWidth:0
                         }
                     },
@@ -214,7 +214,7 @@ service('$chartService', ['ChartType','$filter',
                         itemMarginTop:5,
                         itemMarginBottom:5,
                         itemStyle:{
-                            width:"60%",
+                            width:"80%",
                             lineHeight:20,
                             fontSize:17                          
                         },

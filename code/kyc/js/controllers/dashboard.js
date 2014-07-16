@@ -35,6 +35,8 @@ angular.module('kyc.controllers')
 
             $timeout(function(){
                 $AjaxInterceptor.complete();
-            })            
+
+                $(window).trigger('resize')
+            }, 1000)
         }
     ]);
