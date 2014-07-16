@@ -42,7 +42,8 @@
                   <label>
                   <? echo _("Outlet:")?></label>
                   <div class='columns large-9 small-10 nopadding'>
-                    <multi-select    
+                    <multi-select
+                        class="selectOutlet"    
                         input-model="outlets"    
                         button-label="name"
                         item-label="name"

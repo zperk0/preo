@@ -38,7 +38,7 @@
 
 					<div ng-if="chart.value.items" class="containerMultiSelect">
 	                    <multi-select
-	                    	class="dropdown pdDropdown multiSelectChart"
+	                    	class="dropdown pdDropdown multiSelectChart selectOutlet"
 	                        input-model="chart.value.items"
 	                        button-label="name"
 	                        item-label="name"
