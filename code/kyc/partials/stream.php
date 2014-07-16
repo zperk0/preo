@@ -52,7 +52,7 @@
 					  		<td width="15">
 					  			<span class="block-status {{ getStatusColor(order.status) }}">{{ getStatusName(order.status) }}</span>
 					  		</td>
-					  		<td width="100" valign="middle" class='streamPrice'>{{ getCurrency()+order.total }}</td>
+					  		<td width="100" valign="middle" class='streamPrice'>{{ getCurrency()+order.total.toFixed(2) }}</td>
 					  		<td valign="middle" class='streamCustomer'>{{ order.user.firstName + " " + order.user.lastName }}</td>
 					  		<td width="300" valign="middle" class='streamOrder'>{{ getOrderItems(order).join(",") }}</td>
 					  		<td width="200" valign="middle" class='streamUpdated'>{{ order.updated | timeAgo }}</td>
