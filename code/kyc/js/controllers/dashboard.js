@@ -19,6 +19,8 @@ angular.module('kyc.controllers')
                 } else {
                     angular.element('#removable_' + value.num).closest('.flip-container').parent().show();
                 }
+
+                angular.element('#sscontainer').trigger("ss-rearrange");
             };
 
             $scope.shapeshifterConfig = {
