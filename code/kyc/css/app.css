@@ -854,6 +854,10 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   width: 94%;
 }
 
+.selectReport.selectStream .multiSelect.checkboxLayer{
+  width: 96%;
+}
+
 .input-search:focus, .datepicker.dropdown-menu{
     box-shadow: none !important;
    -webkit-box-shadow: none !important;
