@@ -47,7 +47,7 @@
 					  		</th>					  						  	
 					  	</tr>
 					  </thead>
-					  <tbody ng-repeat="order in orders | filter:outletFilter | orderObjectBy:orderBy:direction" ng-switch on="order.active" >
+					  <tbody ng-repeat="order in orders | limitTo:25 | filter:outletFilter | orderObjectBy:orderBy:direction" ng-switch on="order.active" >
 					  	<tr ng-click="activeStream(order)" ng-class="{active: order.active}">
 					  		<td width="15">
 					  			<span class="block-status {{ getStatusColor(order.status) }}">{{ getStatusName(order.status) }}</span>
