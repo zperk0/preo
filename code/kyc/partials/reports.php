@@ -4,22 +4,26 @@
 	<div class="row formContainer" >  
 	    <form class="navbar-form navbar-left columns large-12 small-12 nopadding custom" role="update">
 	      <div class='row nomargin'>
-	        <div class="columns large-12 small-12 nopadding">              
-	            <label>
-	            <? echo _("Choose preset:")?></label>	            
-	            <div class='columns large-10 small-10 nopaddingleft customDropdown pdDropdown'>
-			            <a class="current" dropdown-toggle="#dropdown-example-2">{{selectedReport.title}}</a>
-			            <span class="caret" dropdown-toggle="#dropdown-example-2"></span>			            
-								  <ul id="dropdown-example-2" class="f-dropdown">
-								    <li ng-repeat="report in reportsList" ng-click="selectReport(report)">
-								      	{{report.getTitle()}}
-								    </li>
-								  </ul>			             
-	             </div>
-	             <div class='columns large-1 small-2 nopadding'>
-	              <button type="button" class="button small"><? echo _("Update")?></button>            
-	             </div>                
-	        </div>
+
+	          <div class="columns large-12 small-12 nopadding">              
+	              <label>
+	              <? echo _("Choose preset:")?></label>
+	              <div class='columns large-10 small-10 nopaddingleft customDropdown'>
+	                <multi-select
+	                    class="selectOutlet selectReport"    
+	                    input-model="reportsList"    
+	                    button-label="title"
+	                    item-label="title"
+	                    selection-mode="single"
+	                    tick-property="selected"
+	                    on-change="selectReport()"
+	                    default-label="{{selectedReport.title}}"
+	                ></multi-select>
+	               </div>
+	               <div class='columns large-1 small-2 nopadding'>
+	                <button type="submit" class="button small"><? echo _("Update")?></button>            
+	               </div>                
+	          </div>	        
 	      </div>
 	    </form>        
 	</div>

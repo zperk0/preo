@@ -850,6 +850,10 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   border: 0px !important;
 }
 
+.selectReport .multiSelect.checkboxLayer{
+  width: 94%;
+}
+
 .input-search:focus, .datepicker.dropdown-menu{
     box-shadow: none !important;
    -webkit-box-shadow: none !important;

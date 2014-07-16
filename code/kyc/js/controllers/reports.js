@@ -23,13 +23,22 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 		})		
 	}
 
-	$scope.selectReport = function(report){		
-		$scope.selectedReport = {
-			data: report.getData(),
-			title: report.getTitle(),
-			titles: report.getTitles()
-		}			
-		console.log('setting s',$scope.selectedReport);			
+	$scope.selectReport = function(){
+
+		var report = $scope.reportsList.filter(function(r){
+			return r.selected === true;
+		});
+
+		if ( report.length ) {
+			report = report[0];
+			
+			$scope.selectedReport = {
+				data: report.getData(),
+				title: report.getTitle(),
+				titles: report.getTitles()
+			}			
+			console.log('setting s',$scope.selectedReport);			
+		}
 	}
 
 	$scope.setOrderBy = function(title){		
