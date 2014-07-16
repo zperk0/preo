@@ -182,9 +182,11 @@ service('$chartService', ['ChartType','$filter',
                         }
                     },
                     tooltip: {
-                        borderColor: '#DBDBD9',
-                        borderWidth: 1,
+                        // borderColor: '#DBDBD9',
+                        borderWidth: 0,
                         backgroundColor: '#DBDBD9',
+                        shadow: false,
+                        useHTML: true,
                         positioner: function(boxWidth, boxHeight, point) {
                             return {
                                 x: point.plotX - boxWidth/2 +10 ,
@@ -192,7 +194,7 @@ service('$chartService', ['ChartType','$filter',
                             };
                         },
                         formatter: function () {
-                            return '<b>' + this.y + '</b>';
+                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + Highcharts.numberFormat(this.y, 1) + ' %</div>';
                         }
                     },
                     exporting: {
@@ -269,17 +271,21 @@ service('$chartService', ['ChartType','$filter',
                         }
                     },
                     tooltip: {
-                        borderColor: '#DBDBD9',
-                        borderWidth: 1,
+                        crosshairs: false,
+                        shared: true,
+                        followPointer: true,                        
+                        borderWidth: 0,
                         backgroundColor: '#DBDBD9',
+                        shadow: false,
+                        useHTML: true,
                         positioner: function(boxWidth, boxHeight, point) {
                             return {
                                 x: point.plotX - boxWidth/2 +10 ,
-                                y: point.plotY - boxHeight + 20
+                                y: point.plotY - boxHeight - 5
                             };
                         },
                         formatter: function () {
-                            return '<b>' + this.y + ' </b>';
+                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + Highcharts.numberFormat(this.y, 1) + ' %</div>';
                         }
                     },
                 },

@@ -857,3 +857,16 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
     -o-box-shadow: none !important;
     outline: 0;
 }
+
+.tooltipPie:before{
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7px 7px 0 7px;
+  border-color: #DBDBD9 transparent transparent transparent;
+  position: absolute;
+  left: 38%;
+  top: 35px;
+  z-index: 1000;
+}
