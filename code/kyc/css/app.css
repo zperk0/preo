@@ -821,3 +821,25 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   opacity:0.5;
   cursor:pointer;
 }
+
+.fa{
+  display: inline-block !important;
+}
+
+.fa-plus-kyc{
+  background: url('/img/icon-plus.png') left top no-repeat;
+  width: 12px;
+  height: 12px;
+}
+
+.fa-arrow-left-kyc{
+  background: url('/img/arrow-left.png') left top no-repeat;
+  width: 12px;
+  height: 12px;
+}
+
+.fa-remove-kyc{
+  background: url('/img/icon-remove.png') left top no-repeat;
+  width: 10px;
+  height: 10px;
+}
