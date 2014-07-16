@@ -41,6 +41,16 @@ label.multiSelect{
     
 }
 
+.multiSelect .button:hover, .multiSelect .button:focus{
+    border: 0px;
+    box-shadow: none;
+   -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    outline: 0;
+}
+
 /* button on mouse hover */
 .multiSelect .button:hover {
     background-image: linear-gradient(#fff, #eee);    
