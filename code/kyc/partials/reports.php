@@ -11,7 +11,7 @@
 	              <div class='columns large-10 small-10 nopaddingleft customDropdown'>
 	                <multi-select
 	                    class="selectOutlet selectReport"    
-	                    input-model="reportsList"    
+	                    input-model="reports"    
 	                    button-label="title"
 	                    item-label="title"
 	                    selection-mode="single"
@@ -59,7 +59,7 @@
 						  	</tr>
 						  </thead>
 						  <tbody>
-						  	<tr ng-repeat="data in selectedReport.data | orderObjectBy:orderBy:direction">
+						  	<tr ng-repeat="data in reportsList | orderObjectBy:orderBy:direction">
 						  		<td><input type="checkbox" ng-model="data.selected"></td>
 						  		<td ng-if='data.dateJoined !== undefined'>{{ data.dateJoined | date:"dd/MM/yyyy" }}</td>
 						  		<td ng-if='data.name !== undefined'>{{ data.name }}</td>
@@ -69,6 +69,10 @@
 						  </tbody>
 						</table>		
 					</div>
+
+					<div class="align-center">
+						<pagination class="inlineBlock pagination" boundary-links="true" items-per-page="numPerPage" total-items="totalItems" page="currentPage" num-pages="numPages" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+					</div>						
 
 				</div>
 

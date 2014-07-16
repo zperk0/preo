@@ -50,7 +50,7 @@
 					  	</tr>
 					  </thead>
 					  <tbody>
-					  	<tr ng-repeat="customer in customers | orderObjectBy:orderBy:direction">
+					  	<tr ng-repeat="customer in customersList | orderObjectBy:orderBy:direction">
 					  		<td><input type="checkbox" ng-model="customer.selected" /></td>
 					  		<td>{{ customer.name }}</td>
 					  		<td>{{ getCurrency()+customer.totalSpent.toFixed(2) }}</td>
@@ -60,6 +60,10 @@
 					  </tbody>
 					</table>		
 				</div>
+
+				<div class="align-center">
+					<pagination class="inlineBlock pagination" boundary-links="true" items-per-page="numPerPage" total-items="totalItems" page="currentPage" num-pages="numPages" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+				</div>				
 
 			</div>
 

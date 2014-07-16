@@ -36,7 +36,7 @@
 					  	</tr>
 					  </thead>
 					  <tbody>
-					  	<tr ng-repeat="item in stock | orderObjectBy:orderBy:direction">
+					  	<tr ng-repeat="item in stocks | orderObjectBy:orderBy:direction">
 					  		<td><input type="checkbox" ng-model="item.selected" /></td>
 					  		<td>{{ item.name }}</td>
 					  		<td>{{ item.quantity }}</td>
@@ -44,6 +44,11 @@
 					  </tbody>
 					</table>		
 				</div>
+
+
+				<div class="align-center">
+					<pagination class="inlineBlock pagination" boundary-links="true" items-per-page="numPerPage" total-items="totalItems" page="currentPage" num-pages="numPages" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+				</div>					
 
 			</div>
 

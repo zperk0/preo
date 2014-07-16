@@ -5,7 +5,7 @@ angular.module('kyc.reports')
 	var Report = {}
 	var data = {}
 	var titles = [];
-	var dateRange = moment().subtract('week',2);
+	var dateRange = moment().subtract('year',2);
 
 	Report.setData = function(order){
 		var user = order.user;

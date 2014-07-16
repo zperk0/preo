@@ -546,8 +546,12 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
 }
 
 .inlineBlock{
-  display: inline-block;
+  display: inline-block !important;
   width: 100%
+}
+
+.inlineBlock.pagination{
+  width: auto;
 }
 
 .percent-modal{
@@ -882,4 +886,8 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
 
 .chart_PIE{
   margin-top: 15px;
+}
+
+.align-center{
+  text-align: center;
 }

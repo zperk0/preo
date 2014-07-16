@@ -1,5 +1,5 @@
-angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderService', '$AjaxInterceptor','Export','ACCOUNT_ID',
- function($scope,OrderService, $AjaxInterceptor,Export,ACCOUNT_ID) {
+angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderService', '$AjaxInterceptor','Export','ACCOUNT_ID', 'UtilsService',
+ function($scope,OrderService, $AjaxInterceptor,Export,ACCOUNT_ID, UtilsService) {
  	$scope.setLocation('customers');
 	$scope.customers = {};
 
@@ -82,8 +82,21 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 			});
 		}
 		console.log('$scope.customers',$scope.customers);
+
+		$scope.customersList = $scope.customers;
+		$scope.totalItems = Object.keys($scope.customers).length;
+		$scope.numPerPage = 10;
+		$scope.currentPage = 1;		
+
 		$AjaxInterceptor.complete();
 	}
+
+  $scope.$watch('currentPage + numPerPage', function() {
+    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+    , end = begin + $scope.numPerPage;
+    
+    $scope.customersList = UtilsService.sliceObject( $scope.customers, begin, end );
+  });	
 	
     $scope.showOptions = function() {
       angular.element('.flip-container').addClass('active');
