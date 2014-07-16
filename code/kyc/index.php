@@ -47,7 +47,7 @@
                         button-label="name"
                         item-label="name"
                         tick-property="selected"
-                        default-label="All Outlets"
+                        default-label="{{venue.name}}"
                     ></multi-select>
                    </div>
                    <div class='columns large-3 small-2'>
@@ -108,7 +108,7 @@
   <script src="/code/kyc/js/services/outlets.js"></script>
   <script src="/code/kyc/js/services/pusher.js"></script>
   <script src="/code/kyc/js/services/orders.js"></script>
-  <script src="/code/kyc/js/services/currency.js"></script>
+  <script src="/code/kyc/js/services/venue.js"></script>
   <script src="/code/kyc/js/controllers/dashboard.js"></script>
   <script src="/code/kyc/js/controllers/customers.js"></script>
   <script src="/code/kyc/js/controllers/reports.js"></script>

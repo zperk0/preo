@@ -4,7 +4,7 @@ angular.module('kyc.charts')
 	var type = ChartType.NUMBER;
 	var ordersTotal = 0;
 	var numOfOrders =0;
-    var title = "Average Order Value"
+    var title = _tr("Average Order Value");
 
 	function setData(order,minDate,maxDate){        
         var orderData = moment(order.created);

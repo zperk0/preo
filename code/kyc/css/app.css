@@ -67,7 +67,7 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
 
 /**********Navbar************/
 header{
-  background-color: #46535D !important;
+  background-color: #56666d !important;
   border: none;  
   height: 135px;  
 }
@@ -305,7 +305,8 @@ header nav, header ul, header li{
 .block-status{
   width: 105px; 
   text-align: center;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: block;
   color: #fff;
   font-size: 15px;

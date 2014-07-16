@@ -1,6 +1,19 @@
 angular.module('kyc.services')
-.service('CurrencyService',['ACCOUNT_ID','Venue', function(ACCOUNT_ID,Venue) {
+.service('VenueService',['ACCOUNT_ID','Venue','$q', function(ACCOUNT_ID,Venue,$q) {
 
+    var venue;
+
+    function init(){
+
+        var defer = $q.defer();
+        var v = new Venue.query({accountId:ACCOUNT_ID},
+        function(result){    
+          if (result && result.length >0)
+            venue = result[0]          
+            defer.resolve(venue);
+       });
+        return defer.promise;
+    }
 
     var currencyMap = {
         "GBP": {
@@ -32,20 +45,18 @@ angular.module('kyc.services')
         }
     }
       
-    function getCurrency(callback){
-      new Venue.query({accountId:ACCOUNT_ID},
-        function(result){
-          var ccy = "GBP";
-          if (result && result.length >0)
-            ccy = result[0].ccy;
-          
-          callback(currencyMap[ccy]);
-      });
-
+    function getCurrency(callback){        
+        if (venue){
+          return currencyMap[venue.ccy];
+        }
+        else{
+          return currencyMap["GBP"];
+        }
     }
     
     return {
-    	getCurrency:getCurrency
+    	getCurrency:getCurrency,
+        init:init
     }
 
 }]);

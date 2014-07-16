@@ -5,7 +5,7 @@ angular.module('kyc.charts')
 	var newCustomers = [];
 	var repeatedCustomers = [];
 	var orders = 0;
-	var title = "Orders per Customer"
+	var title = _tr("Orders per Customer");
 
 
     function clearData(){

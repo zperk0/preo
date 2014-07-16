@@ -73,12 +73,8 @@ html, body {
   margin: 0 auto -220px;
   /* Pad bottom by footer height */
   padding: 0 0 220px;
-  background: transparent url("../img/bg.jpg") no-repeat center bottom !important;
-  -moz-background-size: cover !important;
-  -webkit-background-size: cover !important;
-  -o-background-size: cover !important;
-  -ms-background-size: cover !important;
-  background-size: cover !important;
+  background: transparent url("../img/bg.jpg") repeat !important;
+  
 }
 
 body {
