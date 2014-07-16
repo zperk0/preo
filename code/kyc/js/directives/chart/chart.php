@@ -5,13 +5,13 @@
 		<div class="chart front">
 			<div class="header-widget overflow">
 				<a href="javascript:void(0)" id="removable_{{ chart.num }}" class="pull-left" ng-click="removeGrid(chart, $event)" ng-if='!noData'>
-					<i class="fa fa-times"></i>
+					<i class="fa fa-remove-kyc"></i>
 				</a>
 					
 				<span class="pull-left">{{ chart.title }}</span>
 		
 				<a ng-if="chart.showChart" href="javascript:void(0)" class="pull-right" ng-click="showOptions()" ng-if='!noData'>
-					<i class="fa fa-plus"></i>
+					<i class="fa fa-plus-kyc"></i>
 				</a>
 
 			</div>
@@ -60,7 +60,7 @@
 			<div class="header-chart overflow">
 			
 				<a href="javascript:void(0)" class="pull-left" ng-click="hideOptions()">
-					<i class="fa fa-arrow-left icon-white"></i>
+					<i class="fa fa-arrow-left-kyc icon-white"></i>
 				</a>
 
 			</div>
