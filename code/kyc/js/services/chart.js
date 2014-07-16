@@ -218,7 +218,7 @@ service('$chartService', ['ChartType','$filter',
                         itemStyle:{
                             width:"80%",
                             lineHeight:20,
-                            fontSize:17                          
+                            fontSize:13             
                         },
                         useHTML: false,
                         labelFormatter: function () {
