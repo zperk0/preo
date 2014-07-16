@@ -526,6 +526,7 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
 
 .input-search{
   font-size: 14px !important;
+  background-color: #DFE1DE !important;
 }
 
 .modal-preoday{
@@ -869,4 +870,8 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   left: 38%;
   top: 35px;
   z-index: 1000;
+}
+
+.chart_PIE{
+  margin-top: 15px;
 }

@@ -194,7 +194,7 @@ service('$chartService', ['ChartType','$filter',
                             };
                         },
                         formatter: function () {
-                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + Highcharts.numberFormat(this.y, 1) + ' %</div>';
+                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + Highcharts.numberFormat(this.y, 1) + '</div>';
                         }
                     },
                     exporting: {
@@ -285,7 +285,7 @@ service('$chartService', ['ChartType','$filter',
                             };
                         },
                         formatter: function () {
-                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + Highcharts.numberFormat(this.y, 1) + ' %</div>';
+                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + Highcharts.numberFormat(this.y, 1) + '</div>';
                         }
                     },
                 },
