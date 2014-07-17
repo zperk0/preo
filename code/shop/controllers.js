@@ -145,13 +145,12 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             } else {
               data = { 
                 title: _tr("Your new Premium Feature is now live!"),
-                content: _tr("You will be contacted shortly by a member of our team."),
+                content: _tr("You will be contacted shortly by a member of our team. You can manage subscriptions from your <a href='/accountSettings#/subscription'>account settings page.</a>"),
                 showTerm: false,
-                btnOk: _tr('OK'),
-                btnCancel: false,
+                btnCancel:_tr("OK"),
+                btnOk: false,
                 windowClass:'medium'
-              }        
-              clickOk = function(){$scope.navigateTo('/accountSettings#/subscription')};     
+              }
             }       
           break; 
           case "paymentError":

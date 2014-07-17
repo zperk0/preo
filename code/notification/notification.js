@@ -1,10 +1,14 @@
 angular.module('notification', ['ngSanitize'])
-.service('$notification', ['$modal', '$q', '$sce', function( $modal, $q, $sce ) {
+.service('$notification', ['$modal', '$q', '$sce', function( $modal, $q, $sce) {
 
     var confirmModalController = function( $scope, $modalInstance, data, deffered ) {
 
         $scope.title = data.title || '';
         $scope.content = data.content || '';
+
+        $scope.toTrusted = function( html ) {
+            return $sce.trustAsHtml(html);
+        }
 
         $scope.showTerm = data.showTerm || false;        
 
