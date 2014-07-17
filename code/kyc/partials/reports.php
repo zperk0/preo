@@ -8,7 +8,7 @@
 	          <div class="columns large-12 small-12 nopadding">              
 	              <label>
 	              <? echo _("Choose preset:")?></label>
-	              <div class='columns large-10 small-10 nopaddingleft customDropdown'>
+	              <div class='columns large-10 small-10 nopadding'>
 	                <multi-select
 	                    class="selectOutlet selectReport"    
 	                    input-model="reports"    
@@ -20,8 +20,8 @@
 	                    default-label="{{selectedReport.title}}"
 	                ></multi-select>
 	               </div>
-	               <div class='columns large-1 small-2 nopadding'>
-	                <button type="submit" class="button small"><? echo _("Update")?></button>            
+	               <div class='columns large-2 small-2 nopadding'>
+	                <button type="submit" class="button small pull-right"><? echo _("Update")?></button>            
 	               </div>                
 	          </div>	        
 	      </div>
