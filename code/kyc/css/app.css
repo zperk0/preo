@@ -525,8 +525,9 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
 
 
 .input-search{
-  font-size: 14px !important;
+  font-size: 13px !important;
   background-color: #DFE1DE !important;
+  font-weight: 400;
 }
 
 .modal-preoday{
