@@ -7,6 +7,7 @@ angular.module('kyc.controllers')
         function ($scope, $http, $compile, ChartType, $grid, AllCharts, $AjaxInterceptor,$timeout) {
             $scope.setLocation('dashboard');
 
+            $scope.$parent.showDateFilter = true;
 
             var charts = AllCharts.getPreparedCharts();
 

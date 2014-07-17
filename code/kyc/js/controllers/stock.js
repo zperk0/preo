@@ -3,6 +3,8 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 
 	$scope.setLocation('stock');
 
+	$scope.$parent.showDateFilter = true;
+
 	$scope.stock={};
 	$scope.exportAll="1";
 

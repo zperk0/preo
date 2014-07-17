@@ -3,6 +3,8 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
  	$scope.setLocation('customers');
 	$scope.customers = {};
 
+	$scope.$parent.showDateFilter = true;
+
 	var allOrders = OrderService.getOrders();
 	prepareScopeCustomers();
 	$scope.exportAll="1";
