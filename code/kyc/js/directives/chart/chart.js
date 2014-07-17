@@ -177,6 +177,7 @@ angular.module('kyc.directives').
               click:openModal
             }
           };
+          
           ng.chart.highcharts = highchartsConfig;
 
         }

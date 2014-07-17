@@ -47,12 +47,12 @@
 					  		</th>					  						  	
 					  	</tr>
 					  </thead>
-					  <tbody ng-repeat="order in orders | filter:outletFilter | orderObjectBy:orderBy:direction" ng-switch on="order.active" >
+					  <tbody ng-repeat="order in orders | limitTo:25 | filter:outletFilter | orderObjectBy:orderBy:direction" ng-switch on="order.active" >
 					  	<tr ng-click="activeStream(order)" ng-class="{active: order.active}">
 					  		<td width="15">
 					  			<span class="block-status {{ getStatusColor(order.status) }}">{{ getStatusName(order.status) }}</span>
 					  		</td>
-					  		<td width="100" valign="middle" class='streamPrice'>{{ getCurrency()+order.total }}</td>
+					  		<td width="100" valign="middle" class='streamPrice'>{{ getCurrency()+order.total.toFixed(2) }}</td>
 					  		<td valign="middle" class='streamCustomer'>{{ order.user.firstName + " " + order.user.lastName }}</td>
 					  		<td width="300" valign="middle" class='streamOrder'>{{ getOrderItems(order).join(",") }}</td>
 					  		<td width="200" valign="middle" class='streamUpdated'>{{ order.updated | timeAgo }}</td>

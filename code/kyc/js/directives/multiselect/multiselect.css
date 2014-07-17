@@ -4,6 +4,7 @@
 
 label.multiSelect{
     text-align: left;
+    font-size: 100%;
 }
 
 .multiSelect.inlineBlock {
@@ -23,8 +24,9 @@ label.multiSelect{
     text-align: left;
     cursor: pointer;
     border: 1px solid #c6c6c6;
-    padding: 5px 8px 6px;
-    font-size: 14px;
+    padding: 8px 8px 6px 25px;
+    font-size: 13px;
+    font-weight: 400;
     line-height: 1.4;
     border-radius: 2px;
     color: #333;      
@@ -37,6 +39,16 @@ label.multiSelect{
     background-color: #fff;
     background-image: linear-gradient(#fff, #e4e4e4);
     
+}
+
+.multiSelect .button:hover, .multiSelect .button:focus{
+    border: 0px;
+    box-shadow: none;
+   -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    outline: 0;
 }
 
 /* button on mouse hover */
@@ -71,9 +83,18 @@ label.multiSelect{
     background-color: #fff;
     position: absolute;    
     z-index: 999;
-    width: 100%;
+    width: 88%;
     background-clip: padding-box;     
-    min-width: 419px;
+    min-width: 406px;
+}
+
+.multiSelect.checkboxLayer{
+    background-color: #DFE1DE !important;
+    font-size: 13px;
+}
+
+.multiSelect.checkboxLayer .multiSelectItem{
+    padding-left: 25px;
 }
 
 /* Downward pointing arrow */
@@ -89,7 +110,7 @@ label.multiSelect{
 
 .multiSelectChart .checkboxLayer{
     left: 23px;
-    width: 91%;
+    width: 84%;
 }
 
 .multiSelect.multiSelectItem {

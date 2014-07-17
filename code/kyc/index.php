@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/code/kyc/css/app.css"/>    
   <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
 
-<div ng-app="kyc" ng-controller='MenuCtrl' >  
+<div ng-app="kyc" ng-controller='MenuCtrl' ng-init="showDateFilter = true" >  
   
    <div class="container-fluid faixa-orange">
       <div class="row">
@@ -34,15 +34,15 @@
 
   
     <div class="container-fluid" id="container-search" ng-if="currentLocation != 'reports'">
-      <div class="row formContainer" >
-        
-          <form class="navbar-form navbar-left columns large-7 small-12 nopadding" role="search" ng-submit="update()">
+      <div class="row formContainer" >     
+          <form class="navbar-form navbar-left columns {{ showDateFilter ? 'large-7' : 'large-12' }} small-12 nopadding" role="search" ng-submit="update()">
             <div class='row nomargin'>
               <div class="columns large-12 small-12 nopadding">              
                   <label>
                   <? echo _("Outlet:")?></label>
-                  <div class='columns large-9 small-10 nopadding'>
-                    <multi-select    
+                  <div class='columns {{ showDateFilter ? "large-9" : "large-10" }} small-10 nopadding'>
+                    <multi-select
+                        class="selectOutlet {{ showDateFilter ? '' : 'selectReport selectStream' }}"    
                         input-model="outlets"    
                         button-label="name"
                         item-label="name"
@@ -50,14 +50,14 @@
                         default-label="{{venue.name}}"
                     ></multi-select>
                    </div>
-                   <div class='columns large-3 small-2'>
+                   <div class='columns {{ showDateFilter ? "large-3" : "large-1" }} small-2'>
                     <button type="submit" class="button small"><? echo _("Update")?></button>            
                    </div>                
               </div>
             </div>
           </form>        
                 
-          <form ng-submit="update()" class='navbar-form navbar-left columns large-5 small-12 nopadding'>            
+          <form ng-submit="update()" class='navbar-form navbar-left columns large-5 small-12 nopadding' ng-if="showDateFilter">            
               <div class="row nomargin">              
                   <label><? echo _("Date:")?></label>
                   <div class="columns large-4 small-4 nopadding"> 
@@ -109,6 +109,7 @@
   <script src="/code/kyc/js/services/pusher.js"></script>
   <script src="/code/kyc/js/services/orders.js"></script>
   <script src="/code/kyc/js/services/venue.js"></script>
+  <script src="/code/kyc/js/services/utils.js"></script>
   <script src="/code/kyc/js/controllers/dashboard.js"></script>
   <script src="/code/kyc/js/controllers/customers.js"></script>
   <script src="/code/kyc/js/controllers/reports.js"></script>

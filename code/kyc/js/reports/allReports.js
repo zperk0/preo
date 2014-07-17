@@ -43,11 +43,12 @@ angular.module('kyc.reports')
 							report.setData(order)				
 					});
 				});				
-				angular.forEach(reportsList,function(report){													
+				angular.forEach(reportsList,function(report){
 					if (report.onSetDataComplete){
 							report.onSetDataComplete()
 					}
 					setTitles(report);
+					report.title = report.getTitle();
 				});
 
 				deferred.resolve();

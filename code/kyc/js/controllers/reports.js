@@ -1,5 +1,5 @@
-angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInterceptor','OrderService','Export','ACCOUNT_ID','AllReports',
-	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID,AllReports) {
+angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInterceptor','OrderService','Export','ACCOUNT_ID','AllReports', 'UtilsService',
+	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID,AllReports,UtilsService) {
 
 	var orders;
 	$scope.setLocation('reports');
@@ -17,19 +17,56 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	function prepareScopeReports(){
 		orders = OrderService.getOrders();		
 		AllReports.init(orders).then(function(){
-			$scope.reportsList = AllReports.getReportsList();
-			$scope.selectReport($scope.reportsList[0]);			
+			$scope.reports = AllReports.getReportsList();
+			$scope.selectReport($scope.reports[0]);			
+
+			if ( $scope.selectedReport && $scope.selectedReport.data ) {
+				$scope.reportsList = $scope.selectedReport.data;
+				$scope.totalItems = Object.keys($scope.selectedReport.data).length;
+			} else {
+				$scope.reportsList = [];
+				$scope.totalItems = 0;
+			}
+
+			$scope.numPerPage = 10;
+			$scope.currentPage = 1;		
+
 			$AjaxInterceptor.complete();
 		})		
 	}
 
-	$scope.selectReport = function(report){		
-		$scope.selectedReport = {
-			data: report.getData(),
-			title: report.getTitle(),
-			titles: report.getTitles()
-		}			
-		console.log('setting s',$scope.selectedReport);			
+  $scope.$watch('currentPage + numPerPage', function() {
+    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+    , end = begin + $scope.numPerPage;
+    
+    if ( $scope.selectedReport && $scope.selectedReport.data ) {
+    	console.log('lol');
+    	$scope.reportsList = UtilsService.sliceObject($scope.selectedReport.data, begin, end );
+	} else {
+		console.log('lol34');
+	}
+  });		
+
+	$scope.selectReport = function(){
+
+		var report = $scope.reports.filter(function(r){
+			return r.selected === true;
+		});
+
+		if ( report.length ) {
+			report = report[0];
+
+			$scope.selectedReport = {
+				data: report.getData(),
+				title: report.getTitle(),
+				titles: report.getTitles()
+			}
+
+			$scope.totalItems = Object.keys($scope.selectedReport.data).length;	
+			$scope.reportsList = UtilsService.sliceObject($scope.selectedReport.data, 0, $scope.numPerPage);
+			$scope.currentPage = 1;		
+			console.log('setting s',$scope.selectedReport);			
+		}
 	}
 
 	$scope.setOrderBy = function(title){		

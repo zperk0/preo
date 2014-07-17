@@ -472,7 +472,7 @@ header nav, header ul, header li{
 
 table .sort i{
   height: 0px;
-  display: block;
+  display: block !important;
 }
 
 .table-striped{
@@ -526,6 +526,7 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
 
 .input-search{
   font-size: 14px !important;
+  background-color: #DFE1DE !important;
 }
 
 .modal-preoday{
@@ -545,8 +546,12 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
 }
 
 .inlineBlock{
-  display: inline-block;
+  display: inline-block !important;
   width: 100%
+}
+
+.inlineBlock.pagination{
+  width: auto;
 }
 
 .percent-modal{
@@ -838,8 +843,64 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   height: 12px;
 }
 
+.fa-sort-up{
+  background: url('/img/arrow-up.png') left top no-repeat;
+  width: 10px;
+  height: 7px !important;
+  margin-bottom: 2px;
+}
+
+.fa-sort-desc{
+  background: url('/img/arrow-down.png') left top no-repeat;
+  width: 10px;
+  height: 7px !important;
+}
+
 .fa-remove-kyc{
   background: url('/img/icon-remove.png') left top no-repeat;
   width: 10px;
   height: 10px;
+}
+
+.selectOutlet button{
+  background-color: #DFE1DE !important;
+  border: 0px !important;
+}
+
+.selectReport .multiSelect.checkboxLayer{
+  width: 94%;
+}
+
+.selectReport.selectStream .multiSelect.checkboxLayer{
+  width: 96%;
+}
+
+.input-search:focus, .datepicker.dropdown-menu{
+    box-shadow: none !important;
+   -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    outline: 0;
+}
+
+.tooltipPie:before{
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7px 7px 0 7px;
+  border-color: #DBDBD9 transparent transparent transparent;
+  position: absolute;
+  left: 38%;
+  top: 35px;
+  z-index: 1000;
+}
+
+.chart_PIE{
+  margin-top: 15px;
+}
+
+.align-center{
+  text-align: center;
 }

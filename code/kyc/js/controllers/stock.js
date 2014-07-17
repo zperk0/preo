@@ -1,5 +1,5 @@
-angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInterceptor','OrderService', 'Export','ACCOUNT_ID',
-	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID) {
+angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInterceptor','OrderService', 'Export','ACCOUNT_ID', 'UtilsService',
+	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID, UtilsService) {
 
 	$scope.setLocation('stock');
 
@@ -73,10 +73,26 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
       		}
 			});											
 		}
+
+		$scope.stocks = $scope.stock;
+		$scope.totalItems = Object.keys($scope.stock).length;
+		$scope.numPerPage = 10;
+		$scope.currentPage = 1;
 		$AjaxInterceptor.complete();		
 	}
 
+  $scope.$watch('currentPage + numPerPage', function() {
+    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+    , end = begin + $scope.numPerPage;
+    
+    $scope.stocks = UtilsService.sliceObject( $scope.stock, begin, end );
+  });	
+
 	prepareScopeStock();
+
+	  $scope.setPage = function (pageNo) {
+	    $scope.currentPage = pageNo;
+	  };	
 
     $scope.showOptions = function() {
       angular.element('.flip-container').addClass('active');

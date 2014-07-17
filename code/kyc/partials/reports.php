@@ -4,22 +4,26 @@
 	<div class="row formContainer" >  
 	    <form class="navbar-form navbar-left columns large-12 small-12 nopadding custom" role="update">
 	      <div class='row nomargin'>
-	        <div class="columns large-12 small-12 nopadding">              
-	            <label>
-	            <? echo _("Choose preset:")?></label>	            
-	            <div class='columns large-10 small-10 nopaddingleft customDropdown pdDropdown'>
-			            <a class="current" dropdown-toggle="#dropdown-example-2">{{selectedReport.title}}</a>
-			            <span class="caret" dropdown-toggle="#dropdown-example-2"></span>			            
-								  <ul id="dropdown-example-2" class="f-dropdown">
-								    <li ng-repeat="report in reportsList" ng-click="selectReport(report)">
-								      	{{report.getTitle()}}
-								    </li>
-								  </ul>			             
-	             </div>
-	             <div class='columns large-1 small-2 nopadding'>
-	              <button type="button" class="button small"><? echo _("Update")?></button>            
-	             </div>                
-	        </div>
+
+	          <div class="columns large-12 small-12 nopadding">              
+	              <label>
+	              <? echo _("Choose preset:")?></label>
+	              <div class='columns large-10 small-10 nopaddingleft customDropdown'>
+	                <multi-select
+	                    class="selectOutlet selectReport"    
+	                    input-model="reports"    
+	                    button-label="title"
+	                    item-label="title"
+	                    selection-mode="single"
+	                    tick-property="selected"
+	                    on-change="selectReport()"
+	                    default-label="{{selectedReport.title}}"
+	                ></multi-select>
+	               </div>
+	               <div class='columns large-1 small-2 nopadding'>
+	                <button type="submit" class="button small"><? echo _("Update")?></button>            
+	               </div>                
+	          </div>	        
 	      </div>
 	    </form>        
 	</div>
@@ -55,7 +59,7 @@
 						  	</tr>
 						  </thead>
 						  <tbody>
-						  	<tr ng-repeat="data in selectedReport.data | orderObjectBy:orderBy:direction">
+						  	<tr ng-repeat="data in reportsList | orderObjectBy:orderBy:direction">
 						  		<td><input type="checkbox" ng-model="data.selected"></td>
 						  		<td ng-if='data.dateJoined !== undefined'>{{ data.dateJoined | date:"dd/MM/yyyy" }}</td>
 						  		<td ng-if='data.name !== undefined'>{{ data.name }}</td>
@@ -65,6 +69,10 @@
 						  </tbody>
 						</table>		
 					</div>
+
+					<div class="align-center">
+						<pagination class="inlineBlock pagination" boundary-links="true" items-per-page="numPerPage" total-items="totalItems" page="currentPage" num-pages="numPages" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+					</div>						
 
 				</div>
 
