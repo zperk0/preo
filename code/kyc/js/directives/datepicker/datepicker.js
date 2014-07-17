@@ -21,7 +21,7 @@ angular.module('kyc.directives').
         }
 
         elem.fdatepicker({
-          formatDate: "dd/MM/yyyy",
+          format: "dd/mm/yyyy",
           onRender: function( date ) {
             return date.valueOf() > now.valueOf() ? 'disabled' : '';          
           }
@@ -37,7 +37,7 @@ angular.module('kyc.directives').
                     ev.date = newDate;
                   } 
 
-                } 
+                }
 
                 ngModel.$setViewValue(ev.date);
                 elem.fdatepicker('setDate', ev.date)
@@ -47,11 +47,16 @@ angular.module('kyc.directives').
 
 
         ngModel.$parsers.push(function(data) {
-          return new Date(data)
+          if (typeof data === 'string') {
+            var dataArr = data.split('/');
+            return moment([dataArr[2], dataArr[1], dataArr[0]]).format();
+          } else {
+            return moment(data).format();
+          }
         });
 
         ngModel.$formatters.push(function(data) {          
-          return $filter('date')(data, "MM/dd/yyyy");
+          return $filter('date')(data, "dd/MM/yyyy");
         });
           
       }
