@@ -2566,9 +2566,9 @@ span .currencySymbol {
       font-size: 60%;
       float:right;
 
-      button{
-        margin-bottom:0;
-      }
+/*       button{
+  margin-bottom:0;
+} */
 
   }
 
@@ -2641,10 +2641,10 @@ span .currencySymbol {
       float: left;
       margin-top: 0;
       padding-top: 0;          
-      padding-left: 9%;
+      padding-left: 12%;
 
       img {
-        width:8%;
+        width:10%;
         background: $premium;
         border-radius: 15%;
         position:absolute;
@@ -3276,14 +3276,33 @@ button.preodayButton.noclick{
   #featureModal{
     font-size: 170%; 
       .leftWrapper{
+        top: 25%;
         h4{
-          font-size:80%;
+          font-size:68%;
           margin-top: -6%;
           padding-left: 11%;
           img{
             width: 10%;
             margin-top: -9%;
+            top: 16px !important;
           }
+
+          small{
+            display: block;
+            padding-top: 4px;
+          }
+        }
+      }
+
+      .rightWrapper{
+        button{
+          padding: 8px 0 !important;
+          font-size: 49% !important;
+          width: 75%;
+        }
+
+        button.smallButton{
+          width: 60%;
         }
       }
   }
@@ -3523,4 +3542,24 @@ button.preodayButton.noclick{
 
 .contentMessageSubscription{
   width: 355px;
+}
+
+.titleModal span{
+  position: static !important;
+}
+
+.titleModal span.description{
+  font-size: 16px;
+  font-weight: 400 !important;
+  color: #939498;
+  font-family: 'Co Text W01 Regular', 'Co Text W01 Light';
+}
+
+.titleModal span.description small{
+  font-size: 12px;
+  color: #939498 !important;
+}
+
+#featureModal .leftWrapper h4.titleModal img{
+  top: 25px ;
 }

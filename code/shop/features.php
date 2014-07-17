@@ -65,7 +65,7 @@ var features = [
 													<?echo json_encode(_("Standard and customised reporting"))?>,
 													<?echo json_encode(_("Reports across multiple outlets"))?>,
 													<?echo json_encode(_("Excel downloads	"))?>],
-		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
+		promoImgs: ["/img/KYC_screenshot1.jpg","/img/KYC_screenshot2.jpg","/img/KYC_screenshot3.jpg","/img/KYC_screenshot4.jpg","/img/KYC_screenshot5.jpg"],
 		icon:'/img/KYC-icon.png',
 		$link:'/kyc',
 		active:true,
