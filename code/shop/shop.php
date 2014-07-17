@@ -90,7 +90,7 @@
       <div class='clearfix'></div>
     </div>
     <div class='content'>
-      <div class='topContent'>
+      <div class='topContent' ng-if="selectedFeature.feature.promoImgs && selectedFeature.feature.promoImgs.length">
         <img ng-show="currentScreenshot<selectedFeature.feature.promoImgs.length-1"  class='chevron chevronRight' ng-click="showNextScreenshot()" src='/img/chevron-right.png'/>
         <img ng-show="currentScreenshot>0"  class='chevron chevronLeft' ng-click="showPreviousScreenshot()" src='/img/chevron-left.png'/>
         <img ng-src='{{getScreenshot()}}' class='screenshot'/>
