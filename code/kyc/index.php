@@ -50,8 +50,8 @@
                         default-label="{{venue.name}}"
                     ></multi-select>
                    </div>
-                   <div class='columns {{ showDateFilter ? "large-3" : "large-1" }} small-2 nopadding'>
-                    <button type="submit" class="button small pull-right"><? echo _("Update")?></button>            
+                   <div class='columns {{ showDateFilter ? "large-3" : "large-1" }} small-2'>
+                    <button type="submit" class="button small"><? echo _("Update")?></button>            
                    </div>                
               </div>
             </div>
