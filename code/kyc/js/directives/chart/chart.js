@@ -85,6 +85,10 @@ angular.module('kyc.directives').
                   
                 }
 
+                $scope.cancel = function() {
+                    mod.close();
+                };                
+
                 $scope.title = ng.chart.title;
 
                 $scope.selectOption = function( option ) {

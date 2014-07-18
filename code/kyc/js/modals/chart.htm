@@ -1,6 +1,8 @@
 <div class="content-modal">
 	<h4 class="title-modal-chart">{{ title }}</h4>
 
+	<a class="close-reveal-modal" ng-click="cancel()">×</a>
+
 	<div class="container-modal-chart">
 		<div ng-if="!noData">
 			<div ng-if="chart.showChart">
