@@ -3,7 +3,7 @@ angular.module('kyc.charts')
 
 	var type = ChartType.PIE;
     var colorIndex = 0;    
-    var title = _tr('Customers (PIE)');
+    var title = _tr('Customers (Pie)');
     var data = [
         {name:_tr("New"),y:0,color:Colors[0]},
         {name:_tr("Returning"),y:0,color:Colors[1]}    
