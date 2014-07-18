@@ -83,7 +83,7 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
     $scope.getOrderItems = function(order){
       var items = [];
       angular.forEach(order.items,function(item){
-        items.push(item.qty+"x " + item.name);
+        items.push(item.qty+" x " + item.name);
       });
       return items;
     }
