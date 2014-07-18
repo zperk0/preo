@@ -176,7 +176,12 @@ service('$chartService', ['ChartType','$filter',
                         events: {
                             load: function (event) {
                                 setTimeout(function () {
-                                    $('.highcharts-legend-item rect').attr('rx', '20').attr('ry', '20').attr('width', '16').attr('height', '16');
+                                    $('.highcharts-legend-item rect')
+                                    .attr('rx', '20')
+                                    .attr('ry', '20')
+                                    .attr('width', '16')
+                                    .attr('height', '16')
+                                    .css({"cursor":"pointer");
                                 }, 100);
                             }
                         }
