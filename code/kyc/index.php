@@ -51,7 +51,7 @@
                     ></multi-select>
                    </div>
                    <div class='columns {{ showDateFilter ? "large-3" : "large-2 nopadding" }} small-2'>
-                    <button type="submit" class="button small {{ showDateFilter ? '' : 'pull-right' }}"><? echo _("Update")?></button>            
+                    <button type="submit" class="preodayButton small {{ showDateFilter ? '' : 'pull-right' }}"><? echo _("Update")?></button>            
                    </div>                
               </div>
             </div>
@@ -70,7 +70,7 @@
                     <input type="text" class="form-control input-search dropdown pdDropdown" datepicker compare="search.start_date" ng-model="search.end_date" />
                   </div>
                   <div class="columns large-3 small-2 nopadding"> 
-                    <button type="submit" class="button small pull-right"><? echo _("Update")?></button>
+                    <button type="submit" class="preodayButton small pull-right"><? echo _("Update")?></button>
                   </div>
               </div>                      
           </form>

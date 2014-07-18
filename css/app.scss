@@ -401,8 +401,9 @@ form {
   border: 1px solid #3AA2DC;
   box-shadow: 0 0 0 !important;
   -webkit-box-shadow: 0 0 0  !important;
-  font-family:helvetica;
-  font-weight:lighter;
+  font-family:HelveticaNeueW01-45Ligh;
+  font-weight:bold;
+  border-radius: 3px;
 
   &.premium{
     background-color:$premium !important;
@@ -2402,8 +2403,7 @@ span .currencySymbol {
         padding: 8px 15%;    
         border: none;
         outline: none;
-        position:absolute;
-        font-weight:lighter;
+        position:absolute;        
         
         font-size:0.8em;
         top:0;
