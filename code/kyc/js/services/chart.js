@@ -181,7 +181,7 @@ service('$chartService', ['ChartType','$filter',
                                     .attr('ry', '20')
                                     .attr('width', '16')
                                     .attr('height', '16')
-                                    .css({"cursor":"pointer");
+                                    .css({"cursor":"pointer"});
                                 }, 100);
                             }
                         }
