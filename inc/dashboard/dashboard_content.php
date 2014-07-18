@@ -99,7 +99,7 @@
 										  $accountId = $_SESSION['account_id'];	  
 											$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
 											$accountFeatures = json_decode($result);											
-											if(is_array($accountFeatures) && count($accountFeatures) > 1)
+											if(is_array($accountFeatures) && count($accountFeatures) > 0)
 												foreach($accountFeatures as $feat) { ?>
 													<p data-feature='<? echo $feat->featureId ;?>' class='featureHolder'><img class='featureIcon'/><a href="#"  class='featureName'></a></li>												
 											<?} else{?>											

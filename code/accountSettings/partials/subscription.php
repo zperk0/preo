@@ -12,7 +12,7 @@
 				<p><strong><? echo _("You have an outstanding payment!")?> </strong></p>	
 				<p><? echo _("Please update your card details within ")?> {{ diffInDays }}  <? echo _(" days to prevent your Premium Features from being deactivated.")?> </p>					
 			</div>
-			<div ng-show='diffInDays <= 0'>			
+			<div ng-show='diffInDays <= 0' class="contentMessageSubscription">			
 				<p ng-show="account.billingDate !== null"  ><? echo _("Your account will be billed")?> <b class='helveticaneueWMedi'>&pound;{{getTotalSubscription()}}</b> <? echo _("on") ?> <b class='helveticaneueWMedi'>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>			
 				<p ng-show="account.billingDate === null"><? echo _("You have no active subscriptions, your account will not be billed at this time.")?> </p>										
 			</div>

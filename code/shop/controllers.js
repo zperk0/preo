@@ -132,7 +132,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
           case "trial":
             data = { 
               title: feature.name + " - " + feature.trialPeriod + _tr(" DAY FREE TRIAL"),
-              content: _tr("Your card will not be charged for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
+              // content: _tr("Your card will not be charged for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
               showTerm: (feature.$terms && feature.$terms.trial) ? feature.$terms.trial : false,
               btnOk: _tr('BUY'),            
               windowClass:'medium'
@@ -145,13 +145,12 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             } else {
               data = { 
                 title: _tr("Your new Premium Feature is now live!"),
-                content: _tr("You will be contacted shortly by a member of our team."),
+                content: _tr("You will be contacted shortly by a member of our team. You can manage subscriptions from your <a href='/accountSettings#/subscription'>account settings page.</a>"),
                 showTerm: false,
-                btnOk: _tr('OK'),
-                btnCancel: false,
+                btnCancel:_tr("OK"),
+                btnOk: false,
                 windowClass:'medium'
-              }        
-              clickOk = function(){$scope.navigateTo('/accountSettings#/subscription')};     
+              }
             }       
           break; 
           case "paymentError":

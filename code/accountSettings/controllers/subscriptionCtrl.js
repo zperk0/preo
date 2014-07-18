@@ -90,7 +90,7 @@ angular.module('accountSettings.controllers')
           case "success":
             data = {
               title:_tr("Your new Premium Feature is now live!"),
-              content: _tr("You can manage subscriptions from your account settings page"),
+              content: _tr("You can manage subscriptions from your account settings page."),
               showTerm: false,
               btnOk:false,
               btnCancel:_tr("OK"),            

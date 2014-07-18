@@ -50,8 +50,8 @@
                         default-label="{{venue.name}}"
                     ></multi-select>
                    </div>
-                   <div class='columns {{ showDateFilter ? "large-3" : "large-1" }} small-2'>
-                    <button type="submit" class="button small"><? echo _("Update")?></button>            
+                   <div class='columns {{ showDateFilter ? "large-3" : "large-2 nopadding" }} small-2'>
+                    <button type="submit" class="button small {{ showDateFilter ? '' : 'pull-right' }}"><? echo _("Update")?></button>            
                    </div>                
               </div>
             </div>
@@ -61,16 +61,16 @@
               <div class="row nomargin">              
                   <label><? echo _("Date:")?></label>
                   <div class="columns large-4 small-4 nopadding"> 
-                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker ng-model="search.start_date" />                           
+                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker ng-model="search.start_date" />
                   </div>
                   <div class='columns large-1 small-2 dateTo nopadding'>
                     <? echo _("to") ?>
                   </div>
                   <div class="columns large-4 small-4 nopadding"> 
-                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker compare="search.start_date" ng-model="search.end_date" />              
+                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker compare="search.start_date" ng-model="search.end_date" />
                   </div>
-                  <div class="columns large-3 small-2"> 
-                    <button type="submit" class="button small"><? echo _("Update")?></button>
+                  <div class="columns large-3 small-2 nopadding"> 
+                    <button type="submit" class="button small pull-right"><? echo _("Update")?></button>
                   </div>
               </div>                      
           </form>

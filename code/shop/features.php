@@ -10,7 +10,7 @@ var features = [
 													<?echo json_encode(_("Manage your menu, pricing, payments and artwork"))?>,
 													<?echo json_encode(_("Set up extra staff users"))?>,
 													<?echo json_encode(_("1 set of changes per month"))?>],
-		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
+		<!-- promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"], -->
 		icon:'/img/asisstant-icon.png',
 		trialPeriod:0,		
 		active:true,
@@ -29,7 +29,7 @@ var features = [
 		descriptionFeatures :[<?echo json_encode(_("Create, submit, manage and maintain your own branded app in the App Store, Google Play and Windows Phone Store "))?>,
 													<?echo json_encode(_("Manage and resolve any issues or queries"))?>,
 													<?echo json_encode(_("Provide quarterly updates/changes to the app"))?>],
-		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
+		<!-- promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"], -->
 		icon:'/img/independent-icon.png',
 		active:true,
 		$terms:{
@@ -48,7 +48,7 @@ var features = [
 													<?echo json_encode(_("Points System"))?>,
 													<?echo json_encode(_("Sales analyser"))?>,
 													<?echo json_encode(_("Spend bands"))?>],
-		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
+		<!-- promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"], -->
 		icon:'/img/loyalty-icon.png',
 		active:false
 	},	
@@ -65,7 +65,7 @@ var features = [
 													<?echo json_encode(_("Standard and customised reporting"))?>,
 													<?echo json_encode(_("Reports across multiple outlets"))?>,
 													<?echo json_encode(_("Excel downloads	"))?>],
-		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
+		promoImgs: ["/img/KYC_screenshot1.jpg","/img/KYC_screenshot2.jpg","/img/KYC_screenshot3.jpg","/img/KYC_screenshot4.jpg","/img/KYC_screenshot5.jpg"],
 		icon:'/img/KYC-icon.png',
 		$link:'/kyc',
 		active:true,
@@ -84,7 +84,7 @@ var features = [
 													<?echo json_encode(_("API and tools for rapid integration with third party systems."))?>,
 													<?echo json_encode(_("Consulting Services and, where necessary, bespoke development"))?>,
 													<?echo json_encode(_("Maintenance and support"))?>],
-		promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"],
+		<!-- promoImgs: ["/img/dashboard.png","/img/dashboard1.png","/img/dashboard2.png"], -->
 		icon:'/img/Enterprise-icon.png',
 		getInTouch: true,
 		active:true,

@@ -525,8 +525,9 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
 
 
 .input-search{
-  font-size: 14px !important;
+  font-size: 13px !important;
   background-color: #DFE1DE !important;
+  font-weight: 400;
 }
 
 .modal-preoday{
@@ -831,13 +832,13 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   display: inline-block !important;
 }
 
-.fa-plus-kyc{
+.fa-plus-kyc, .fa-plus{
   background: url('/img/icon-plus.png') left top no-repeat;
   width: 12px;
   height: 12px;
 }
 
-.fa-arrow-left-kyc{
+.fa-arrow-left-kyc, .fa-arrow-left{
   background: url('/img/arrow-left.png') left top no-repeat;
   width: 12px;
   height: 12px;
