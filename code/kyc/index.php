@@ -35,14 +35,14 @@
   
     <div class="container-fluid" id="container-search" ng-if="currentLocation != 'reports'">
       <div class="row formContainer" >     
-          <form class="navbar-form navbar-left columns {{ showDateFilter ? 'large-7' : 'large-12' }} small-12 nopadding" role="search" ng-submit="update()">
+          <form class="navbar-form navbar-left columns large-7 small-12 nopadding" role="search" ng-submit="update()">
             <div class='row nomargin'>
               <div class="columns large-12 small-12 nopadding">              
                   <label>
                   <? echo _("Outlet Name:")?></label>
-                  <div class='columns {{ showDateFilter ? "large-9" : "large-10" }} small-10 nopadding'>
+                  <div class='columns large-9 small-10 nopadding'>
                     <multi-select
-                        class="selectOutlet {{ showDateFilter ? '' : 'selectReport selectStream' }}"    
+                        class="selectOutlet"    
                         input-model="outlets"    
                         button-label="name"
                         item-label="name"
@@ -50,8 +50,8 @@
                         default-label="{{venue.name}}"
                     ></multi-select>
                    </div>
-                   <div class='columns {{ showDateFilter ? "large-3" : "large-2 nopadding" }} small-2'>
-                    <button type="submit" class="preodayButton small {{ showDateFilter ? '' : 'pull-right' }}"><? echo _("Update")?></button>            
+                   <div class='columns large-3 small-2'>
+                    <button type="submit" class="preodayButton small "><? echo _("Update")?></button>            
                    </div>                
               </div>
             </div>

@@ -2,13 +2,13 @@
 
 <div class="container-fluid" id="container-search">
 	<div class="row formContainer" >  
-	    <form class="navbar-form navbar-left columns large-12 small-12 nopadding custom" role="update">
+	    <form class="navbar-form navbar-left columns large-7 small-12 nopadding custom" role="update">
 	      <div class='row nomargin'>
 
 	          <div class="columns large-12 small-12 nopadding">              
 	              <label>
 	              <? echo _("Choose preset:")?></label>
-	              <div class='columns large-10 small-10 nopadding'>
+	              <div class='columns large-9 small-10 nopadding'>
 	                <multi-select
 	                    class="selectOutlet selectReport"    
 	                    input-model="reports"    
@@ -20,9 +20,9 @@
 	                    default-label="{{selectedReport.title}}"
 	                ></multi-select>
 	               </div>
-	               <div class='columns large-2 small-2 nopadding'>
-	                <button type="submit" class="button small pull-right"><? echo _("Update")?></button>            
-	               </div>                
+                 <div class='columns large-3 small-2'>
+                  	<button type="submit" class="preodayButton small "><? echo _("Update")?></button>            
+                 </div>           
 	          </div>	        
 	      </div>
 	    </form>        
