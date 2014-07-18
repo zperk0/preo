@@ -67,11 +67,12 @@ angular.module('kyc.charts')
     }
 
     function getCsv(){
-        var data = getData();
-        var csvData =[[getItemName(selectedItem)]]
+        var data = getData();        
+        var csvData =[[minDate.format("DD-MMM-YYYY") + " - " + maxDate.format("DD-MMM-YYYY")],[getItemName(selectedItem)]];        
         angular.forEach(data,function(d){
             csvData.push([ ChartHelper.formatDate(d[0]),d[1] ]) 
         })
+        
         return {
             data:csvData
         };

@@ -53,7 +53,7 @@ angular.module('kyc.charts')
 
     function getCsv(){
         var data = getData();
-        var csvData =[[title]]
+        var csvData =[[moment(minTimestamp).format("DD-MMM-YYYY") + " - " + moment(maxTimestamp).format("DD-MMM-YYYY")],[title]]
         angular.forEach(data,function(d){
             csvData.push([ ChartHelper.formatDate(d[0]),d[1]]) 
         })

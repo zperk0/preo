@@ -146,6 +146,7 @@ angular.module('kyc.directives').
 
         ng.exportCsv = function(){
           ng.csvData = ng.chart.value.getCsv();                    
+          console.log("exporting csvData",ng.csvData);
         }
 
         ng.getText = function(chart){

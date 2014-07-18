@@ -222,6 +222,11 @@ header nav, header ul, header li{
   top:0;
   line-height: 35px;
 }
+
+.header-widget a{
+  position:relative;
+  z-index: 2;
+}
 .header-list span {
   margin: 6px 0 3px 0;
   font-weight: 400;
