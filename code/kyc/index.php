@@ -39,7 +39,7 @@
             <div class='row nomargin'>
               <div class="columns large-12 small-12 nopadding">              
                   <label>
-                  <? echo _("Outlet:")?></label>
+                  <? echo _("Outlet Name:")?></label>
                   <div class='columns {{ showDateFilter ? "large-9" : "large-10" }} small-10 nopadding'>
                     <multi-select
                         class="selectOutlet {{ showDateFilter ? '' : 'selectReport selectStream' }}"    
@@ -59,7 +59,7 @@
                 
           <form ng-submit="update()" class='navbar-form navbar-left columns large-5 small-12 nopadding' ng-if="showDateFilter">            
               <div class="row nomargin">              
-                  <label><? echo _("Date:")?></label>
+                  <label><? echo _("Date Range:")?></label>
                   <div class="columns large-4 small-4 nopadding"> 
                     <input type="text" class="form-control input-search dropdown pdDropdown" datepicker ng-model="search.start_date" />
                   </div>
