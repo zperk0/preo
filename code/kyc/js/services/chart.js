@@ -183,6 +183,7 @@ service('$chartService', ['ChartType','$filter',
                     },
                     tooltip: {
                         // borderColor: '#DBDBD9',
+                        hideDelay:0,
                         borderWidth: 0,
                         backgroundColor: '#DBDBD9',
                         shadow: false,
@@ -271,6 +272,7 @@ service('$chartService', ['ChartType','$filter',
                         }
                     },
                     tooltip: {
+                        hideDelay:0.1,
                         crosshairs: false,
                         shared: true,
                         followPointer: true,                        

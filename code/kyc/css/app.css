@@ -896,6 +896,9 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   left: 38%;
   top: 35px;
   z-index: 1000;
+  transition:all 0.2s lienar;
+  -webkit-transition:all 0.2s lienar;
+  opacity:1;
 }
 
 .chart_PIE{
