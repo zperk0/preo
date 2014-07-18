@@ -881,8 +881,10 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
 }
 
 .selectOutlet button{
-  background-color: #DFE1DE !important;
+  background: #DFE1DE url("/img/arrowOutlet.jpg") right center no-repeat !important;
+  background-size:32px  100% !important;
   border: 0px !important;
+
 }
 
 .selectReport .multiSelect.checkboxLayer{
