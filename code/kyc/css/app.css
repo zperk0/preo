@@ -189,7 +189,7 @@ header nav, header ul, header li{
   margin-left: 0px;
 }
 
-.header-chart, .header-widget, .header-list{
+.header-chart, .header-list{
   padding: 7px 5px;
 }
 
@@ -206,11 +206,27 @@ header nav, header ul, header li{
   color: #E6E7E6;
 }
 
-.header-widget span, .header-list span {
+.header-widget{
+  padding:7px;
+  min-height:35px;
+}
+
+.header-widget span {  
+  width:100%;
+  font-weight: 400;
+  font-size: 15px;  
+  display:block;
+  position:absolute;
+  left:0;
+  text-align: center;
+  top:0;
+  line-height: 35px;
+}
+.header-list span {
   margin: 6px 0 3px 0;
   font-weight: 400;
   font-size: 15px;
-  width: 89%;
+  width: 100%;
 }
 
 .overflow{

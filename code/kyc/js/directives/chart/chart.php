@@ -8,7 +8,7 @@
 					<i class="fa fa-remove-kyc"></i>
 				</a>
 					
-				<span class="pull-left">{{ chart.title }}</span>
+				<span>{{ chart.title }}</span>
 		
 				<a ng-if="chart.showChart" href="javascript:void(0)" class="pull-right" ng-click="showOptions()" ng-if='!noData'>
 					<i class="fa fa-plus-kyc"></i>
