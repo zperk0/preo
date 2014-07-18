@@ -226,7 +226,8 @@ header nav, header ul, header li{
   margin: 6px 0 3px 0;
   font-weight: 400;
   font-size: 15px;
-  width: 100%;
+  line-height:20px;
+  
 }
 
 .overflow{

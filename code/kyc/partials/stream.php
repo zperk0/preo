@@ -4,7 +4,7 @@
 			<div class="front" id="content-list">
 				
 				<div class="header-list overflow">			
-					<span class="pull-left"><? echo _("Live Stream")?></span>				
+					<span><? echo _("Live Stream")?></span>				
 				</div>
 				<div id="content-table">
 					<table class="table table-striped table-list table-stream table-condensed" ng-init="orderBy = 'updated'; direction = true">

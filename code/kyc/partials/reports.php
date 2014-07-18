@@ -35,7 +35,7 @@
 				<div class="front" id="content-list">
 					
 					<div class="header-list overflow">			
-						<span class="pull-left"><? echo _("Reports") ?></span>
+						<span><? echo _("Reports") ?></span>
 
 						<a href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
 							<i class="fa fa-plus"></i>
