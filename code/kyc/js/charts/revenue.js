@@ -46,7 +46,7 @@ angular.module('kyc.charts')
             modal: getModal(),
             getPdf:getPdf,
             getCsv:getCsv,
-            tooltipText:currency
+            tooltipText:decodeURI(currency)
             
         }
     }
