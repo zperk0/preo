@@ -4,7 +4,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	$scope.customers = {};
 
 	$scope.$parent.showDateFilter = true;
-
+	var title = _tr("Customers")
 	var allOrders = OrderService.getOrders();
 	prepareScopeCustomers();
 	$scope.exportAll="1";
@@ -26,7 +26,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
   }
 
 	function prepareExportCsvData(){
-		var prepData = [["Customers"]];
+		var prepData = [[$scope.getExportDate()],[title]];
 			angular.forEach($scope.customers,function(item){				
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData.push([item.name,item.totalSpent,item.emailAddress]);

@@ -1,12 +1,15 @@
 angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInterceptor','OrderService', 'Export','ACCOUNT_ID', 'UtilsService',
 	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID, UtilsService) {
 
+	var title = _tr("Stock");
 	$scope.setLocation('stock');
 
 	$scope.$parent.showDateFilter = true;
 
 	$scope.stock={};
 	$scope.exportAll="1";
+
+
 
   var allOrders = OrderService.getOrders();	
 	$scope.selectAll = function() {
@@ -26,7 +29,8 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
   }
 
 	function prepareExportCsvData(type){		
-		var prepData = [["Stock"]];
+
+		var prepData = [[$scope.getExportDate()],[title]];
 		angular.forEach($scope.stock,function(item){
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData.push([item.name,item.quantity]);

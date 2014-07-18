@@ -46,5 +46,9 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 				return data.selected === true;
 			});
 		}
+
+		$scope.getExportDate = function(){
+			return moment($scope.search.start_date).format("DD-MMM-YYYY") + " - " + moment($scope.search.end_date).format("DD-MMM-YYYY");
+		}
 		
 }])

@@ -2,6 +2,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID,AllReports,UtilsService) {
 
 	var orders;
+	var title = _tr("Reports");
 	$scope.setLocation('reports');
 	$scope.exportAll="1";	
 
@@ -80,7 +81,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 
 
 	function prepareExportCsvData(){
-		var prepData = [["Reports"]];
+		var prepData = [[$scope.getExportDate()],[title]];
 			angular.forEach($scope.reports,function(item){				
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData.push([item.id,item.outlet,item.name,item.time,item.quantity,item.item,item.modifier,item.total,item.status]);
