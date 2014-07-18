@@ -358,6 +358,12 @@ header nav, header ul, header li{
 
 .container-modal-chart{
   text-align: center;
+  position: relative;
+}
+
+.container-modal-chart .noData{
+  padding: 100px 0;
+  position: static;
 }
 
 #content-table > table{
