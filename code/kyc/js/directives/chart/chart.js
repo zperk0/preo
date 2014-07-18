@@ -76,6 +76,8 @@ angular.module('kyc.directives').
                 $scope.optionHasData = function(option){                   
                   return option.data.length > 1 ? 1 : 0 ;
                 }
+
+                $scope.noData = false;
                 
                 $scope.chart = angular.copy(ng.chart);
                 if ( ng.chart.value.modal.highcharts ) {
@@ -87,6 +89,8 @@ angular.module('kyc.directives').
 
                 $scope.selectOption = function( option ) {
 
+                  $scope.noData = false;
+
                   var itemActive = $scope.chart.value.modal.options.filter(function(item) {
                     return item.active == true;
                   });
@@ -97,7 +101,11 @@ angular.module('kyc.directives').
                   
                   option.active = true;
                   $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data});
-                }             
+                }
+
+                $scope.setNoData = function(){
+                  $scope.noData = true;
+                }
               }
             });
             
