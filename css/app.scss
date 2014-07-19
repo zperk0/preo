@@ -3055,6 +3055,7 @@ span .currencySymbol {
 
 
 
+
   .recurringPaymentFailed{
       width: 400px;
       max-width: 75%;
@@ -3124,6 +3125,12 @@ span .currencySymbol {
   margin-top: 20px;
   clear: both;
   color: $error;
+}
+
+.paymentWrapper{
+  button{
+   min-width:120px;
+  }
 }
 
 
