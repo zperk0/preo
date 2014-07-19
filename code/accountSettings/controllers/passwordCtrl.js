@@ -1,7 +1,7 @@
 
 angular.module('accountSettings.controllers')
- .controller('PasswordCtrl', ['$scope','$q','$http','USER_ID','User',
-  function ($scope,$q,$http,USER_ID,User) {
+ .controller('PasswordCtrl', ['$scope','$q','$http','USER_ID','User','$location',
+  function ($scope,$q,$http,USER_ID,User,$location) {
   	$scope.isPosting = false;		
   	$scope.oldIncorrect = false;
   	$scope.newPasswordConfirm ="";
@@ -11,12 +11,11 @@ angular.module('accountSettings.controllers')
   		oldPassword:"",
   		password:""
   	}
-
-console.log("user id is:" + USER_ID);
  User.get({id:USER_ID},function(result){
  	//extend the password obj with the username
  	console.log('got user,',result);
     	$scope.password.username=result.username;    	    	
+      $scope.finishLoading();
     });
 
 
@@ -27,6 +26,11 @@ console.log("user id is:" + USER_ID);
 
     $scope.$watch("user.lastName",showError)
     $scope.$watch("newPasswordConfirm",showError)
+
+
+    $scope.cancel = function(){
+      $location.path("/profile");
+    }
 
 	$scope.saveChanges = function(){
 		$scope.triedSubmit = true;		

@@ -5,15 +5,22 @@ angular.module('accountSettings.controllers')
     //inherited from menu control
     $scope.setSelected($scope.Views.profile);
   	$scope.isPosting = false;  	 
-  	$scope.isEditing = false;  	 
+  	$scope.isEditing = false;  	
 
-  	console.log(ACCOUNT_ID,USER_ID)
+    var beforeCancel;
+
     Account.get({id:ACCOUNT_ID},function(result){
     	$scope.account=result;    	
     });
 
     User.get({id:USER_ID},function(result){
     	$scope.user=result;    	
+        beforeCancel = {
+            firstName:$scope.user.firstName,
+            lastName:$scope.user.lastName, 
+            email:$scope.user.email,
+            name:$scope.user.name    
+        }
     	
     	$scope.$watch("user.firstName",function(newVal,oldVal){
     		$scope.user.name = newVal + " " + $scope.user.lastName;
@@ -33,7 +40,23 @@ angular.module('accountSettings.controllers')
     }
 
 
-    $scope.toggleEditUserDetails = function(){    	
+    $scope.toggleEditUserDetails = function(isCancel){    	
+        if (!$scope.isEditing && !isCancel) {
+            beforeCancel = {
+                firstName:$scope.user.firstName,
+                lastName:$scope.user.lastName, 
+                email:$scope.user.email,
+                name:$scope.user.name    
+            }
+        }
+        if (isCancel){
+            $scope.user.firstName  = beforeCancel.firstName;
+            $scope.user.lastName  = beforeCancel.lastName;
+            $scope.user.email  = beforeCancel.email;
+            $scope.user.name  = beforeCancel.name;
+            $scope.user.firstName  = beforeCancel.firstName;                
+        }
+        
     	$scope.isEditing = !$scope.isEditing;    	
     }	
 

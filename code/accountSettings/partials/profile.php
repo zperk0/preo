@@ -45,8 +45,9 @@
 			</div>
 			<div class='clearfix'></div>			
 		</div>
-
-		<button ng-show="!isPosting && isEditing " class='preodayButton' ng-click="saveChanges()" type="submit" ><?echo _("SAVE CHANGES");?></button>
+		<button ng-show="!isEditing" class='preodayButton' ng-click="toggleEditUserDetails()" type="button" ><?echo _("CHANGE DETAILS");?></button>
+		<button ng-show="!isPosting && isEditing " class='preodayButton' ng-click="saveChanges()" type="submit" ><?echo _("SAVE");?></button>
 		<button ng-show="isPosting" class="secondary" type="button"><?echo _("SAVING...");?></button>
+		<button ng-show="isEditing" class='preodayButton secondary' ng-click="toggleEditUserDetails(true)" ><?echo _("CANCEL");?></button>
  </form>
 </div>
