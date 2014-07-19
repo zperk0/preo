@@ -30,6 +30,7 @@ $shopHeader:#46535d;
 $shopText:#636363;
 $dashboardPremiumLight:#f1f0f2;
 $menuBg:#F7F7F7;
+$heavyGray:#939498;
 
 
 h1, h2, h3 {
@@ -2554,20 +2555,59 @@ span .currencySymbol {
   font-size: 170%; 
   max-width: 1200px;
 
+  .header{
+    position:relative;
+    margin-bottom:15px;
+
+    .leftWrapper{
+      padding-left:60px;
+
+    }
+
+    .titleModal{
+      color:$shopHeader;
+      font-size:110%;
+      font-family:"Co Text W01 Bold";
+    }
+    .titlePrice{
+      font-size:70%;
+      margin-top:0px;
+      color:$heavyGray;
+      font-weight:bold;
+      font-family:helvetica;
+    }
+
+    img{
+      width:50px;
+      position:absolute;
+      left:0;
+      background:$premium;
+      border-radius:5px;      
+      top:50%;
+      margin-top:-25px;
+    }
+
+    button{
+      position:absolute;
+      height:32px;
+      margin:0;
+      top:50%;
+      margin-top:-16px;      
+      font-size:60%;
+      right:0;
+    }
+
+  }
 
   .close-reveal-modal{
     font-size: 80%;
   }
-  .header {         
-    position:relative;   
-    margin-top: 1%;
-  }
+  
 
   .content{
     font-size:60%;
-    border-top: 1px solid gray;
-    margin-top: 2%;
-    padding-top: 4%;
+    border-top: 1px solid gray;    
+    padding-top: 40px;
 
      .screenshot {
       width: 600px;
@@ -2580,96 +2620,10 @@ span .currencySymbol {
       width:auto;
       font-size: 60%;
       float:right;
-
-/*       button{
-  margin-bottom:0;
-} */
-
   }
 
-  .rightWrapper {
-    position: relative;
-    max-width: 50%;
-    min-width: 200px;
-    float: right;    
-    font-family:helvetica,HelveticaNeueW01-65Medi;
-    font-size:80%;
 
-    .price {
-      color:$shopHeader;
-      font-weight: bold;
-      line-height: 25px;
-      font-size:80%;
-    }
-      ul{      
-        list-style:none;
-        list-style-type:none;
-        margin-bottom:0;
-        min-height:32px;
-        li{
-          font-weight:normal;
-          margin:0;
-          padding:0;
-          font-size:40%;  
-
-        }
-      }
-      button {
-        padding: 8px 15%;    
-        border: none;
-        outline: none;
-        position:static;
-        margin-left: 2%;
-        float: right;
-        font-weight:lighter;
-        font-size:70%;
-        // top:0;
-        // right:0;        
-          &.secondary{
-            padding: 8px 6%;   
-            font-size:60%;
-          }
-      }
-  }
   
-
-
-
-  .leftWrapper {    
-    display: block;
-    width: 60%;
-    position: absolute;
-    left:0;
-    top:50%;
-    margin-top: -0.5%;
-
-    span {
-      position: absolute;
-      left: 55px;
-      top: 0;
-    }
-    h4 {
-      font-size:105%;
-      color:$shopHeader;
-      margin-bottom: 0;
-      font-family: "Co Text W01 Bold";
-      float: left;
-      margin-top: 0;
-      padding-top: 0;          
-      padding-left: 12%;
-
-      img {
-        width:10%;
-        background: $premium;
-        border-radius: 15%;
-        position:absolute;
-        left:0;
-        top:50%;
-        margin-top:-4%;
-
-      }
-    }
-  }
 
  .content {
     position: relative;
@@ -3290,77 +3244,39 @@ button.preodayButton.noclick{
     z-index: 50;
 }
 
-@media (min-width:899px) and (max-width:1200px) {
+.ifSmall{
+  display:none;
+}
+
+@media (max-width:1050px) {
   #featureModal{
-    font-size: 160%; 
-    .leftWrapper{
-      margin-top: -3.5%;
+
+    .ifSmall{
+      display:block;
     }
+    .header{
+      font-size:80%;      
 
-  }
-}
+      .leftWrapper{
+        max-width:60%;
+        padding-left:50px;
 
-@media (min-width:899px){
-   #featureModal{
-    font-size: 160%; 
-    .leftWrapper{
-      margin-top: -3.5%;
+        small{
+          font-size:40%;
+        }
+      }
+
+      img{
+        width: 40px;
+        margin-top:-20px;
+      }
+
+      .comingSoon{
+        // max-width: 160px;
+        // height:64px;
+        // margin-top:-32px;
+      }
     }
-
-  } 
-}
-
-
-@media (max-width:900px) {
-  #featureModal{
-    font-size: 170%; 
-      .leftWrapper{
-        top: 25%;
-        h4{
-          font-size:68%;
-          margin-top: -6%;
-          padding-left: 11%;
-          img{
-            width: 10%;
-            margin-top: -9%;
-            top: 16px !important;
-          }
-
-          small{
-            display: block;
-            padding-top: 4px;
-          }
-        }
-      }
-
-      .rightWrapper{
-        button{
-          padding: 8px 0 !important;
-          font-size: 49% !important;
-          width: 75%;
-        }
-
-        button.smallButton{
-          width: 60%;
-        }
-      }
-  }
-}
-
-@media (min-width:680px) and (max-width:900px) {
-  #featureModal{
-      .leftWrapper{
-        margin-top: 0px;
-        h4{
-          font-size:80%;
-          margin-top: -6%;
-          padding-left: 11%;
-          img{
-            width: 10%;
-            margin-top: -9%;
-          }
-        }
-      }
   }
 }
 
@@ -3590,7 +3506,7 @@ button.preodayButton.noclick{
 .titleModal span.description{
   font-size: 16px;
   font-weight:normal;
-  color: #939498;
+  color: $heavyGray;
   font-family: 'Co Text W01 Bold';
   letter-spacing :-0.01em
 
@@ -3598,7 +3514,7 @@ button.preodayButton.noclick{
 
 .titleModal span.description small{
   font-size: 12px;
-  color: #939498 !important;
+  color: $heavyGray !important;
 }
 
 #featureModal .leftWrapper h4.titleModal img{
