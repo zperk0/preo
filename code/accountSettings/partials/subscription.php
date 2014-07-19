@@ -40,7 +40,7 @@
 	<div ng-show='activeFeaturesCount == 0' >		
 		<p><? echo _("You currently don't have any active Premium Features on your account.")?></p>		
 		<p class='marginBottom100'><? echo _("Why not check out our")?> <a href='/shop' class='premiumFeatureColor'>  <? echo _("Available Premium Features")?> </a> <? echo _("and discover how they can start 
-			adding further value to your business today")?></p>			
+			adding further value to your business, today?")?></p>			
 	</div >
 			<table ng-if='activeFeaturesCount >= 1'>
 				<tr ng-repeat="accountFeature in accountFeatures | filter:isInstalled " ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>

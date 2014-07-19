@@ -20,8 +20,8 @@ var features = [
 	},
 	{
 		id: 2,
-		description: <? echo json_encode(_("Preoday provides you with your own branded app in the 'My Order App' directory.  It’s free of charge, you can be up and running within 30 minutes, and it avoids the cost and hassle of submissions to Apple, Google and Windows Store.  However, we understand that some businesses want to see their app in these places too, so with the Independent service we do it for you, and at a much lower cost than doing it yourself.")) ?>,
-		shortDescription: <? echo json_encode(_("Find your venue in the App Store, Google Play and Windows Phone Store"))?>,		
+		description: <? echo json_encode(_("Preoday already provides you with your own branded app in the 'My Order App' directory.  It’s free of charge, you can be up and running within 30 minutes, and it avoids the cost and hassle of submissions to Apple, Google and Windows Store.  However, we understand that some businesses want to see their app in these places too, so with the Independent service we do it for you, and at a much lower cost than doing it yourself.")) ?>,
+		shortDescription: <? echo json_encode(_("Find your venue in the App Store, Google Play and Windows Phone Store."))?>,		
 		name: <? echo json_encode(_("Independent"))?>,
 		upfrontPrice: 500,
 		subscriptionPrice:20,		
@@ -55,7 +55,7 @@ var features = [
 	{
 		id: 4,
 		description: <? echo json_encode(_("Using Preoday, you move closer to your customers. With our Know Your Customer module you will have the data you need to manage and market to them online.  Information is presented in exciting charts and in an easy-to-use format, allowing fresh insights into buying patterns and improved customer service.  Whether you want to offer special deals to favoured customers, manage stock flows better, understand where new business is coming from, or simply plot your app's growth, it’s all there and ready for you in Know Your Customer.")) ?>,
-		shortDescription: <? echo json_encode(_("Get extensive reports and analytics on your mobile customers"))?>,		
+		shortDescription: <? echo json_encode(_("Get extensive reports and analytics on your mobile customers."))?>,		
 		name: <? echo json_encode(_("Know your customer"))?>,
 		upfrontPrice: 0,
 		subscriptionPrice:20,	
@@ -65,7 +65,7 @@ var features = [
 													<?echo json_encode(_("Standard and customised reporting"))?>,
 													<?echo json_encode(_("Reports across multiple outlets"))?>,
 													<?echo json_encode(_("Excel downloads	"))?>],
-		promoImgs: ["/img/KYC_screenshot1.jpg","/img/KYC_screenshot2.jpg","/img/KYC_screenshot3.jpg","/img/KYC_screenshot4.jpg","/img/KYC_screenshot5.jpg"],
+		promoImgs: ["/img/KYC_screenshot1.jpg","/img/KYC_screenshot3.jpg","/img/KYC_screenshot4.jpg","/img/KYC_screenshot5.jpg"],
 		icon:'/img/KYC-icon.png',
 		$link:'/kyc',
 		active:true,
@@ -77,7 +77,7 @@ var features = [
 	{
 		id: 5,
 		description: <? echo json_encode(_("Preoday is not only for small independent companies.  At its heart, Preoday is a robust, open and scale-able mobile ordering platform ideal for the business and performance needs of the world’s largest customers. It is an off-the-shelf solution designed from inception for integrating with your firm’s existing ePOS systems, payment processors, booking systems, website, and loyalty and marketing platforms to offer a complete mobile experience.  Why not get in touch and find out more?")) ?>,
-		shortDescription: <? echo json_encode(_("A mobile ecommerce platform to meet the integration, marketing and management needs of larger businesses"))?>,		
+		shortDescription: <? echo json_encode(_("A mobile ecommerce platform to meet the integration, marketing and management needs of larger businesses."))?>,		
 		name: <? echo json_encode(_("Enterprise"))?>,
 		descriptionFeatures :[<?echo json_encode(_("A ready-built, fully-equipped mobile ecommerce platform."))?>,
 													<?echo json_encode(_("Real-time executive tools and dashboards for managing multiple branches and outlets."))?>,

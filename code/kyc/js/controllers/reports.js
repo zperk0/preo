@@ -7,7 +7,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	$scope.exportAll="1";	
 
 
-	prepareScopeReports();
+	
 	
 	$scope.selectAll = function() {
 		for ( var i = $scope.reports.length; i--; ) {
@@ -16,9 +16,10 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	}
 
 	function prepareScopeReports(){
-		orders = OrderService.getOrders();		
-		AllReports.init(orders).then(function(){
+		
+		console.log("ho")
 			$scope.reports = AllReports.getReportsList();
+			console.log("hoa")
 			$scope.selectReport($scope.reports[0]);			
 
 			if ( $scope.selectedReport && $scope.selectedReport.data ) {
@@ -33,7 +34,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 			$scope.currentPage = 1;		
 
 			$AjaxInterceptor.complete();
-		})		
+
 	}
 
   $scope.$watch('currentPage + numPerPage', function() {
@@ -110,5 +111,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
   $scope.hideOptions = function() {
     angular.element('.flip-container').removeClass('active');
   }		
-
+  
+	prepareScopeReports();
 }])

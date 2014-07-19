@@ -1,6 +1,6 @@
 angular.module('kyc.reports')
-.factory('AllReports',['$q','NewCustomers','ZeroOrdersCustomers','OneTimeBuyers',
-	function($q,NewCustomers,ZeroOrdersCustomers,OneTimeBuyers) {
+.factory('AllReports',['$q','Report','NewCustomers','ZeroOrdersCustomers','OneTimeBuyers','VENUE_ID',
+	function($q,Report,NewCustomers,ZeroOrdersCustomers,OneTimeBuyers,VENUE_ID) {
 
 		var AllReports = function(){};
 
@@ -36,24 +36,41 @@ angular.module('kyc.reports')
 		
 		AllReports.init = function(allOrders){
       var deferred  = $q.defer();
-			initReports().then(function(){
-				angular.forEach(allOrders,function(order){
-					angular.forEach(reportsList,function(report){
 
-							report.setData(order)				
-					});
-				});				
-				angular.forEach(reportsList,function(report){
-					if (report.onSetDataComplete){
-							report.onSetDataComplete()
-					}
-					setTitles(report);
-					report.title = report.getTitle();
-				});
+      fetchData()
+      .then(initReports)
+      .then(function(){
+      	console.log('all reports inited')	
+      })
+			// initReports().then(function(){
+			// 	console.log('all reports inited')
+			// 	angular.forEach(allOrders,function(order){
+			// 		angular.forEach(reportsList,function(report){
 
-				deferred.resolve();
-			})
+			// 				report.setData(order)				
+			// 		});
+			// 	});				
+			// 	angular.forEach(reportsList,function(report){
+			// 		if (report.onSetDataComplete){
+			// 				report.onSetDataComplete()
+			// 		}
+			// 		setTitles(report);
+			// 		report.title = report.getTitle();
+			// 	});
+
+				// deferred.resolve();
+			// })
 			return deferred.promise;
+		}
+
+		function fetchData(){
+			console.log("fetching data")
+			return $q.all([
+					Report.items({venueId:VENUE_ID}).$promise,
+					Report.orders({venueId:VENUE_ID}).$promise,
+					Report.customerOrders({venueId:VENUE_ID}).$promise
+				])
+				
 		}
 
 		function initReports(){

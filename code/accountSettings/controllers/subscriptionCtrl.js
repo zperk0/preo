@@ -60,7 +60,7 @@ angular.module('accountSettings.controllers')
           break; 
           case "uninstallTrial":
             data = { 
-              content: _tr("Your free trial will be imediately canceled and you will no longer have access to this feature.")+"<br/><br/><b>"+_tr("Are you sure you want to cancel this Free Trial? This action cannot be undone?")+"<b/>",
+              content: _tr("Your free trial will be cancelled immediately and you will no longer have access to this feature.")+"<br/><br/><b>"+_tr("Are you sure you want to cancel this Free Trial? This action cannot be undone?")+"<b/>",
               showTerm: false,
               btnOk: _tr('UNINSTALL'),            
               windowClass:'medium'
