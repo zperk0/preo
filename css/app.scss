@@ -2415,15 +2415,11 @@ span .currencySymbol {
         }
       }
       button {
-        padding: 8px 15%;    
-        border: none;
-        outline: none;
-        position:absolute;        
-        
-        font-size:0.8em;
-        top:0;
-        right:0;
-
+        padding: 8px 15%;            
+        outline: none;              
+        font-size:0.8em;      
+        position:relative;
+        margin-bottom:0;
         &.secondary{
           padding: 8px 6%;   
         }
@@ -3609,19 +3605,9 @@ button.preodayButton.noclick{
   top: 25px ;
 }
 
-.priceWrapperList{
-  overflow: hidden;
-  min-height: 88px;
-}
-
 .blockLine{
   min-height: 54px;
   display: block;
-}
-
-.priceWrapperList button{
-  position: static !important;
-  margin-bottom: 0px !important;
 }
 
 .contentInformationPrice{
