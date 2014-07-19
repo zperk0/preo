@@ -63,10 +63,7 @@ angular.module('notification', ['ngSanitize'])
         modalCofirm.opened.then(function(){
               setTimeout(function(){              
                   var maxWidth = 0;
-                  console.log("here ho");
-                  debugger;
-                  $('.notificationButtons button').each(function(){
-                    console.log('width:',$(this).width(),maxWidth);
+                  $('.notificationButtons button').each(function(){                    
                     maxWidth = maxWidth > $(this).width() ? maxWidth : $(this).width();
                   }).width(maxWidth);
                   $(".modal-preoday").addClass("active");

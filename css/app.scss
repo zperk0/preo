@@ -3537,3 +3537,13 @@ button.preodayButton.noclick{
   padding-bottom: 10px;
   margin: 0px;
 }
+.close-modal{
+  font-size: 1.375em;
+  line-height: 1;
+  position: absolute;
+  top: .5em;
+  right: .6875em;
+  color: #aaa;
+  font-weight: 700;
+  cursor: pointer;
+}
