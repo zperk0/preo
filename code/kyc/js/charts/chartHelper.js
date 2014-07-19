@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('ChartHelper',['$filter',function($filter) {
+.factory('ChartHelper',['$filter', 'TickInterval', function($filter, TickInterval) {
 
 	
     function formatDate(timestamp){
@@ -83,7 +83,10 @@ angular.module('kyc.charts')
             if (orderDate >= lastYearTimestamp && orderDate < yearTimestamp)
                 previousYearData.push(dataRow)
 
-        })
+        });
+
+        
+
         data.sort(sortData);
         weekData.sort(sortData);
         previousWeekData.sort(sortData);
@@ -112,43 +115,154 @@ angular.module('kyc.charts')
             previousSixMonthsData:previousSixMonthsData,
             yearData:yearData,
             previousYearData:previousYearData,
-            total:total
+            total:total,
+            minTimestamp: minTimestamp,
+            maxTimestamp: maxTimestamp
         }
     }
 
+    function calculateTickInterval( prepData ) {
+        var daysDiff = moment(prepData.maxTimestamp,'X').diff(moment(prepData.minTimestamp,'X'), 'days');
+        
+        switch( true ) {
+            case daysDiff < 32:
+                return TickInterval.DAY;
+                break;
+            case daysDiff < 183:
+                return TickInterval.WEEK;
+                break;
+            default:
+                return TickInterval.MONTH;
+                break;
+        }
+    }
+
+    function calculateTickIntervalForString( prepData ) {
+        var daysDiff = moment(prepData.maxTimestamp,'X').diff(moment(prepData.minTimestamp,'X'), 'days');
+        
+        switch( true ) {
+            case daysDiff < 32:
+                return 'day';
+                break;
+            case daysDiff < 183:
+                return 'week';
+                break;
+            default:
+                return 'month';
+                break;
+        }
+    }
+
+    function completeEmptyData( data ) {
+        var maxTimeStampForWhile = data.max;
+        var minTimestampForWhile = data.min;
+
+        var responseData = angular.copy(data.value);
+
+        while ( true ) {
+            var valueOf = maxTimeStampForWhile.valueOf();
+
+            if ( valueOf < minTimestampForWhile ) {
+                break;
+            }            
+
+            var valueObject = [valueOf];
+
+            if ( responseData.indexOf(valueObject) === -1 ) {
+                valueObject.push(0);
+                responseData.push(valueObject);
+            }
+
+            maxTimeStampForWhile = maxTimeStampForWhile.subtract(data.dateType, 1);
+        }
+
+        responseData.sort(sortData);
+
+        return responseData;
+    }    
+
     function getModalOptions(prepData){
        // options for footer in modal
+
       return [{
                 name: _tr('Specified Dates'),
                 value: getPeriodTotal(prepData.data),
                 percent: getPercentage(prepData.data, prepData.previousSpecifiedData),
                 active: true,
-                data: prepData.data
+                data: completeEmptyData({
+                    max: moment(prepData.maxTimestamp),
+                    min: moment(prepData.minTimestamp).valueOf(),
+                    value: prepData.data,
+                    dateType: calculateTickIntervalForString(prepData)
+                }),
+                tickInterval: calculateTickInterval(prepData),
+                minTimestamp: prepData.minTimestamp,
+                maxTimestamp: prepData.maxTimestamp                
             }, {
                 name: _tr('Week'),
                 value: getPeriodTotal(prepData.weekData),
                 percent: getPercentage(prepData.weekData, prepData.previousWeekData),
-                data: prepData.weekData
+                data: completeEmptyData({
+                    max: moment().subtract('week',1),
+                    min: moment().subtract('week', 2).valueOf(),
+                    value: prepData.weekData,
+                    dateType: 'day'
+                }),                
+                tickInterval: TickInterval.DAY,
+                minTimestamp: moment().subtract('week',1),
+                maxTimestamp: moment()
             }, {
                 name: _tr('Month'),
                 value: getPeriodTotal(prepData.monthData),
                 percent: getPercentage(prepData.monthData, prepData.previousMonthData),
-                data: prepData.monthData
+                data: completeEmptyData({
+                    max: moment(),
+                    min: moment().subtract('month',1).valueOf(),
+                    value: prepData.monthData,
+                    dateType: 'day'
+                }),                  
+                tickInterval: TickInterval.DAY,
+                minTimestamp: moment().subtract('month', 1),
+                maxTimestamp: moment()
             }, {
                 name: _tr('3 Months'),
                 value: getPeriodTotal(prepData.threeMonthsData),
                 percent: getPercentage(prepData.threeMonthsData, prepData.previousThreeMonthsData),
-                data: prepData.threeMonthsData
+                data: completeEmptyData({
+                    max: moment(),
+                    min: moment().subtract('month',3).valueOf(),
+                    value: prepData.threeMonthsData,
+                    dateType: 'week'
+                }),                  
+                tickInterval: TickInterval.WEEK,
+                minTimestamp: moment().subtract('month',3),
+                maxTimestamp: moment()
             }, {
                 name: _tr('6 Months'),
                 value: getPeriodTotal(prepData.sixMonthsData),
                 percent: getPercentage(prepData.sixMonthsData, prepData.previousSixMonthsData),
-                data: prepData.sixMonthsData
+                data: completeEmptyData({
+                    max: moment(),
+                    min: moment().subtract('month',6).valueOf(),
+                    value: prepData.sixMonthsData,
+                    dateType: 'week'
+                }),                    
+                tickInterval: TickInterval.WEEK,
+                minTimestamp: moment().subtract('month',6),
+                maxTimestamp: moment()
             }, {
                 name: _tr('Year'),
                 value: getPeriodTotal(prepData.yearData),
                 percent: getPercentage(prepData.yearData, prepData.previousYearData),
-                data: prepData.yearData
+                data: completeEmptyData({
+                    max: moment(),
+                    min: moment().subtract('year',1).valueOf(),
+                    value: prepData.yearData,
+                    dateType: 'month'
+                }),                 
+                tickInterval: TickInterval.MONTH,
+                minTimestamp: moment().subtract('year',1),
+                maxTimestamp: moment()
             }, ]
 
     }

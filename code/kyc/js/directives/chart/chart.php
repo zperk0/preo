@@ -17,9 +17,9 @@
 			</div>
 			
 			<div ng-if='noData'>
-					<div class='noData'>
-						<? echo _("No Data")?>
-					</div>
+				<div class='noData'>
+					<? echo _("No Data")?>
+				</div>
 			</div>
 			<div ng-if='!noData'>
 
