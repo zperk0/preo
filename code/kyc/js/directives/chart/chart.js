@@ -73,15 +73,25 @@ angular.module('kyc.directives').
               windowClass: windowClass + ' modal-preoday',
               controller: function( $scope ) {
 
-                $scope.optionHasData = function(option){                   
-                  return option.data.length > 1 ? 1 : 0 ;
+                $scope.optionHasData = function(option){       
+                  return option.data.length > 1 && +option.value > 0 ? 1 : 0 ;
                 }
 
                 $scope.noData = false;
                 
                 $scope.chart = angular.copy(ng.chart);
                 if ( ng.chart.value.modal.highcharts ) {
-                  $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, ng.chart.value );
+                  var firstOption = ng.chart.value.modal.options[0];
+
+                  ng.chart.value.tickInterval = firstOption.tickInterval; 
+                  ng.chart.value.minTimestamp = moment(firstOption.minTimestamp).valueOf();
+                  ng.chart.value.maxTimestamp = moment(firstOption.maxTimestamp).valueOf();
+
+                  var value = angular.copy(ng.chart.value);
+
+                  value.data = firstOption.data;
+
+                  $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, value );               
                   
                 }
 
@@ -104,11 +114,22 @@ angular.module('kyc.directives').
                   }
                   
                   option.active = true;
-                  $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data});
+                  $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data, tickInterval:option.tickInterval, minTimestamp: moment(option.minTimestamp).valueOf(), maxTimestamp: moment(option.maxTimestamp).valueOf()});
                 }
 
-                $scope.setNoData = function(){
+                $scope.setNoData = function( option ) {
                   $scope.noData = true;
+
+
+                  var itemActive = $scope.chart.value.modal.options.filter(function(item) {
+                    return item.active == true;
+                  });
+
+                  if ( itemActive ) {
+                    itemActive[0].active = false;
+                  }              
+                  
+                  option.active = true;    
                 }
               }
             });

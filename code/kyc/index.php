@@ -123,6 +123,7 @@
   <script src="/code/kyc/js/resources/customers.js"></script>  
   <script src="/code/kyc/js/constants/chartType.js"></script>
   <script src="/code/kyc/js/constants/colors.js"></script>
+  <script src="/code/kyc/js/constants/tickInterval.js"></script>
   <script src="/code/kyc/js/directives/chart/chart.js"></script>
   <script src="/code/kyc/js/directives/highcharts/highcharts.js"></script>
   <script src="/code/kyc/js/directives/datepicker/datepicker.js"></script>
