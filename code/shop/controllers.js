@@ -109,7 +109,17 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
     }
 
     $scope.clickBuy = function(){
-      getFeaturePrice($scope.selectedFeature.feature);
+      Resources.AccountCard.get({accountId:ACCOUNT_ID},
+        function(){
+        getFeaturePrice($scope.selectedFeature.feature);
+      },function(error){          
+          if (error.data && error.data.status === 404){
+                $scope.dismissAndShowDialog("noPayment");
+          } else{
+              displayErrorNoty()
+            }                       
+        }
+      );       
     }
 
     $scope.clickGetInTouch = function(){
@@ -163,7 +173,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
               content: $scope.paymentFailedMessage,
               showTerm: false,
               btnOk: _tr('PAYMENT METHOD'),
-              btnCancel: _tr('RETURN TO STORE'),            
+              // btnCancel: _tr('RETURN TO STORE'),            
               windowClass:'medium'
             }        
             clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')};            
@@ -172,8 +182,8 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             data = {               
               content: _tr("Please add a payment method to your account in order to subscribe to Premium Features"),
               showTerm: false,
-              btnOk: _tr('ADD PAYMENT METHOD'),
-              btnCancel: _tr('RETURN TO STORE'),            
+              btnOk: _tr('ADD CARD'),
+              // btnCancel: _tr('CANCEL'),            
               windowClass:'medium'
             }        
             clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')};            
