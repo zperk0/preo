@@ -2769,12 +2769,16 @@ span .currencySymbol {
       margin:0 0 30px 0 ;
       border:none;
 
+      tr{
+        border-bottom: 10px solid transparent;
+      }
+
       td {
          margin:0;
          padding:0;
          height:auto;
          width:auto;        
-         line-height:30px;
+         vertical-align:middle;
          color:$shopHeader;
 
         &:first-child{
@@ -2797,8 +2801,8 @@ span .currencySymbol {
         img{
           width:100%;          
           background: $premium;
-          border-radius: 3px;
-          margin-bottom: 8px;
+          border-radius: 3px;          
+              
         }
       }      
 
@@ -2829,26 +2833,36 @@ span .currencySymbol {
   }
 
   .historyWrapper{
-    th{
-      padding:0 0 10px 0;
-      width:auto;
-      text-align:left;      
-      color:$shopHeader;
-    }
+    table{
 
-    td{
-      width:auto !important;
-      vertical-align: middle;
+      tr{
+        border-bottom:none;
 
-      button.preodayButton{
-        margin:8px 0;
+        form{
+          margin: 0 !important;
+        }
+      }
+      th{
+        padding:0 0 10px 0;
+        width:auto;
+        text-align:left;      
+        color:$shopHeader;
       }
 
-    }
+      td{
+        width:auto !important;
+        vertical-align: middle;
+
+        button.preodayButton{
+          margin:8px 0;
+        }
+
+      }
 
 
-    tr + tr{
-        border-top:1px solid #999;
+      tr + tr{
+          border-top:1px solid #999;
+      }
     }
     
 
