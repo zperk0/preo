@@ -320,9 +320,7 @@ footer {
 }
 
 .top-bar-section {
-  ul li a {
-    padding-right: 0 !important;
-  }
+  
   a.activated {
     color: $mainDark !important;
     &:hover {
