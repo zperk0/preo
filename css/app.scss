@@ -96,11 +96,6 @@ form label {
   font-size: 100%;
 }
 
-.secondary {
-  color: #FFF !important;
-  border: 0 !important;
-}
-
 .has-tip {
   border-bottom: 0;
   &:hover {
@@ -408,6 +403,13 @@ form {
     border:none;    
     font-size:95%;    
   }
+
+
+}
+
+.secondary{
+  border: 1px solid #b8b9bc !important;
+  color:#fff !important;
 }
 
 button.success {
@@ -2881,6 +2883,7 @@ span .currencySymbol {
       padding:0 0 10px 0;
       width:auto;
       text-align:left;      
+      color:$shopHeader;
     }
 
     td{
@@ -3071,6 +3074,19 @@ span .currencySymbol {
       font-size:80%;
       padding:.4em 2.5em;
     }
+
+    .disabled{
+      .featureTitle{
+        a{
+          color:#ccc;
+          &:hover{
+            color:#ccc;
+            cursor:default;
+          }
+        }
+      }
+    }
+
     .featureTitle{
       a{
         color:$shopHeader;

@@ -138,7 +138,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
               title: feature.name + " - " + feature.trialPeriod + _tr(" DAY FREE TRIAL"),
               // content: _tr("Your card will not be charged for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
               showTerm: (feature.$terms && feature.$terms.trial) ? feature.$terms.trial : false,
-              btnOk: _tr('BUY'),            
+              btnOk: _tr('START TRIAL'),            
               windowClass:'medium'
             }        
             clickOk = startTrial;            
