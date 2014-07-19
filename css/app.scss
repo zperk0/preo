@@ -1613,22 +1613,37 @@ p.venueCode {
   }
   .premiumSection {
     border-bottom: 1px solid $premium !important;
+
+    button {
+      &:focus{
+        background:$premium !important;
+      }
+    }
     i, h3 {
       color: $premium !important;
     }
-    p{
-      margin-left:10px;
-      margin-bottom:5px;
-      font-size:1em; 
-      line-height:1.5em;
 
-      a{
-        font-family:  HelveticaNeueW01-45Ligh, HelveticaNeueW01-65Medi, Helvetica;        
-        color:#D7D9DA;
-        letter-spacing:1px;
-        padding-left:10px;
-        &:hover{
-          color:$premium;
+    .featuresText{
+      a {
+        color:$premium;
+      }
+    }
+
+    .featuresList{
+      p{
+        margin-left:10px;
+        margin-bottom:5px;
+        font-size:1em; 
+        line-height:1.5em;
+
+        a{
+          font-family:  HelveticaNeueW01-45Ligh, HelveticaNeueW01-65Medi, Helvetica;        
+          color:#D7D9DA;
+          
+          padding-left:10px;
+          &:hover{
+            color:$premium;
+          }
         }
       }
     }

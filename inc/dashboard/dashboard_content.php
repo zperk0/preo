@@ -95,21 +95,24 @@
 						<section class="premiumSection">
 							<h3 data-section-title><?echo _("Premium Features");?></h3><i class="icon-plus-sign"></i>
 							<div class="content" data-section-content>
+
 									<?  //get the features list we have for this acocunt 
 										  $accountId = $_SESSION['account_id'];	  
 											$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
 											$accountFeatures = json_decode($result);											
-											if(is_array($accountFeatures) && count($accountFeatures) > 0)
-												foreach($accountFeatures as $feat) { ?>
+											if(is_array($accountFeatures) && count($accountFeatures) > 0) { ?> 
+												<div class='featuresList'> 
+												<? foreach($accountFeatures as $feat) { ?>
 													<p data-feature='<? echo $feat->featureId ;?>' class='featureHolder'><img class='featureIcon'/><a href="#"  class='featureName'></a></li>												
-											<?} else{?>											
+											<?} } else{?>											
+												<div class='featuresText'>
 												<p><? echo ("You don't currently have any active Premium Features on your account.")?></p><br/>
 												<p><? echo ("Why not check out our")?><a href="<?echo $_SESSION['path']?>/shop"> <?echo _("Available Premium Features");?></a>
 													<? echo ("and discover how they can start adding further value to your business, today?");?>
 											 </p>
 											<?}?>				
-
-								<p><button class='shopButton'> <a href="<?echo $_SESSION['path']?>/shop"> <?echo _("STORE");?> </a> </button></p>
+											</div>
+								<p><button class='preodayButton shopButton'> <a href="<?echo $_SESSION['path']?>/shop"> <?echo _("STORE");?> </a> </button></p>
 							</div>
 						</section>
 					</div>
