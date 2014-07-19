@@ -74,12 +74,16 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
       }
     }
 
-    $scope.setSelectedFeature = function(id){      
+    $scope.setSelectedFeature = function(id){              ;
         $scope.currentScreenshot = 0;
         $scope.selectedFeature = {
             index:id,
             feature:getFeatureById(id)
         };        
+        setTimeout(function(){
+           $("html, body").animate({ scrollTop: 0 }, "fast");
+        },100);
+        
     }
 
     function getFeatureById(id){

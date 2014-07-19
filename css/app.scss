@@ -2454,6 +2454,8 @@ span .currencySymbol {
     width:560px;
     max-width:90%;
     margin:0 auto 80px;
+    line-height:1.5em;
+    font-size:1.1em;
   }
 
 }
@@ -3565,9 +3567,11 @@ button.preodayButton.noclick{
 
 .titleModal span.description{
   font-size: 16px;
-  font-weight: 400 !important;
+  font-weight:normal
   color: #939498;
-  font-family: 'Co Text W01 Regular', 'Co Text W01 Light';
+  font-family: 'Co Text W01 Bold';
+  letter-spacing :-0.01em
+
 }
 
 .titleModal span.description small{

@@ -13,7 +13,7 @@
   <div>  
     <div class='shopHeader'>
       <div class='row'>
-        <h1><small>my order app </small><br/>Premium Features</h1>
+        <h1>Premium Features</h1>
         <p><?echo _("At Preoday we believe that businesses such as yours should not pay to receive mobile orders. Our business model is simple: we charge no commission on orders you receive through the app.  Instead, we offer services that bring new value and insight to your business.") ?></p>
         </div>
     </div>
