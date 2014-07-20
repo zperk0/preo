@@ -16,12 +16,11 @@
 	                    item-label="title"
 	                    selection-mode="single"
 	                    tick-property="selected"
-	                    on-change="selectReport()"
 	                    default-label="{{selectedReport.title}}"
 	                ></multi-select>
 	               </div>
                  <div class='columns large-3 small-2'>
-                  	<button type="submit" class="preodayButton small "><? echo _("Update")?></button>            
+                  	<button type="button" ng-click='selectReport()' class="preodayButton small "><? echo _("Update")?></button>            
                  </div>           
 	          </div>	        
 	      </div>
@@ -62,6 +61,7 @@
 						  	<tr ng-repeat="data in reportsList | orderObjectBy:orderBy:direction">
 						  		<td><input type="checkbox" ng-model="data.selected"></td>
 						  		<td ng-if='data.dateJoined !== undefined'>{{ data.dateJoined | date:"dd/MM/yyyy" }}</td>
+						  		<td ng-if='data.dateOfOrder !== undefined'>{{ data.dateOfOrder | date:"dd/MM/yyyy" }}</td>
 						  		<td ng-if='data.name !== undefined'>{{ data.name }}</td>
 						  		<td ng-if='data.email !== undefined'>{{ data.email }}</td>
 						  		<td ng-if='data.marketing !== undefined'> {{ data.marketing | marketing }}</td>					  		

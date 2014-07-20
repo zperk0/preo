@@ -7,26 +7,23 @@ angular.module('kyc.reports')
 	var titles = [];
 	var dateRange = moment().subtract('year',2);
 
-	Report.setData = function(order){
-		var user = order.user;
-		var created = moment(user.created);		
-		if (created > dateRange){
-			if (data[user.id] === undefined){
-				data[user.id] = {
-					dateJoined:user.created,
-					name:user.firstName + " " + user.lastName,
-					email:user.username,
-					marketing:(user.optinLoyalty || user.optinOffers || user.optinOther)
-				}				
+	Report.setData = function(reportsData){
+		angular.forEach(reportsData.customerOrders,function(customerOrder){				
+			var created = moment(customerOrder.created);		
+			if (created > dateRange){
+				if (data[customerOrder.id] === undefined){
+					data[customerOrder.id] = {
+						dateJoined:customerOrder.created,
+						name:customerOrder.firstName + " " + customerOrder.lastName,
+						email:customerOrder.username,
+						marketing:(customerOrder.optinLoyalty || customerOrder.optinOffers || customerOrder.optinOther)
+					}				
+				}
 			}
-		}
-	}
-
-	Report.onSetDataComplete = function(){		
+		});			
 	}
 
 	Report.getData = function(){
-		console.log('getting data',data);
 		return data;
 	}
 

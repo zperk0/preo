@@ -3,6 +3,7 @@ angular.module('kyc.reports')
 	function($q,Report,NewCustomers,ZeroOrdersCustomers,OneTimeBuyers,VENUE_ID) {
 
 		var AllReports = function(){};
+		
 
 		var reportsList = [
 			NewCustomers,
@@ -20,7 +21,7 @@ angular.module('kyc.reports')
 		}
 
 		function setTitles(report){
-			console.log('setting titles for report',report.getTitle());
+			
 			var titles = [];
 			var data = report.getData();
 			for (var key in data){
@@ -39,32 +40,27 @@ angular.module('kyc.reports')
 
       fetchData()
       .then(initReports)
-      .then(function(){
-      	console.log('all reports inited')	
-      })
-			// initReports().then(function(){
-			// 	console.log('all reports inited')
-			// 	angular.forEach(allOrders,function(order){
-			// 		angular.forEach(reportsList,function(report){
+      .then(function(){				
+					
+				angular.forEach(reportsList,function(report){
+						report.setData(AllReports.data)				
+				});				
 
-			// 				report.setData(order)				
-			// 		});
-			// 	});				
-			// 	angular.forEach(reportsList,function(report){
-			// 		if (report.onSetDataComplete){
-			// 				report.onSetDataComplete()
-			// 		}
-			// 		setTitles(report);
-			// 		report.title = report.getTitle();
-			// 	});
+				angular.forEach(reportsList,function(report){
+					if (report.onSetDataComplete){
+							report.onSetDataComplete()
+					}
+					setTitles(report);
+					report.title = report.getTitle();
+			});
 
-				// deferred.resolve();
-			// })
+				deferred.resolve();
+			})
+      
 			return deferred.promise;
 		}
 
-		function fetchData(){
-			console.log("fetching data")
+		function fetchData(){			
 			return $q.all([
 					Report.items({venueId:VENUE_ID}).$promise,
 					Report.orders({venueId:VENUE_ID}).$promise,
@@ -73,7 +69,15 @@ angular.module('kyc.reports')
 				
 		}
 
-		function initReports(){
+		function initReports(data){
+				AllReports.data = {
+					items:data[0],
+					orders:data[1],
+					customerOrders:data[2]							
+				}
+				
+				
+
 				var promises=[]
 				angular.forEach(reportsList , function(report) { 
 					 if (report.init)

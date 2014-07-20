@@ -153,8 +153,6 @@ angular.module('kyc.directives').
   	
         ng.removeGrid = function( chart, $event ) {
           chart.display = false;
-          //console.log(ng.$parent);
-          //ng.$parent.$parent.gridster.remove_widget(angular.element($event.target).parents('li'));
           elem.parent().hide();
         }
 
@@ -179,7 +177,6 @@ angular.module('kyc.directives').
 
         ng.exportCsv = function(){
           ng.csvData = ng.chart.value.getCsv();                    
-          console.log("exporting csvData",ng.csvData);
         }
 
         ng.getText = function(chart){

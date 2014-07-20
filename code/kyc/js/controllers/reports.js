@@ -16,10 +16,9 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	}
 
 	function prepareScopeReports(){
-		
-		console.log("ho")
+			
 			$scope.reports = AllReports.getReportsList();
-			console.log("hoa")
+			
 			$scope.selectReport($scope.reports[0]);			
 
 			if ( $scope.selectedReport && $scope.selectedReport.data ) {
@@ -41,34 +40,33 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
     var begin = (($scope.currentPage - 1) * $scope.numPerPage)
     , end = begin + $scope.numPerPage;
     
-    if ( $scope.selectedReport && $scope.selectedReport.data ) {
-    	console.log('lol');
+    if ( $scope.selectedReport && $scope.selectedReport.data ) {    
     	$scope.reportsList = UtilsService.sliceObject($scope.selectedReport.data, begin, end );
-	} else {
-		console.log('lol34');
-	}
+		}	 
   });		
 
-	$scope.selectReport = function(){
-
-		var report = $scope.reports.filter(function(r){
-			return r.selected === true;
-		});
-
-		if ( report.length ) {
-			report = report[0];
-
-			$scope.selectedReport = {
-				data: report.getData(),
-				title: report.getTitle(),
-				titles: report.getTitles()
+	$scope.selectReport = function(which){
+		if (which){
+			var report = which;
+		} else {
+			var report = $scope.reports.filter(function(r){
+				return r.selected === true;
+			});
+			if ( report.length ) {
+				report = report[0];
 			}
-
-			$scope.totalItems = Object.keys($scope.selectedReport.data).length;	
-			$scope.reportsList = UtilsService.sliceObject($scope.selectedReport.data, 0, $scope.numPerPage);
-			$scope.currentPage = 1;		
-			console.log('setting s',$scope.selectedReport);			
 		}
+
+		$scope.selectedReport = {
+			data: report.getData(),
+			title: report.getTitle(),
+			titles: report.getTitles()
+		}
+
+		$scope.totalItems = Object.keys($scope.selectedReport.data).length;	
+		$scope.reportsList = UtilsService.sliceObject($scope.selectedReport.data, 0, $scope.numPerPage);
+		$scope.currentPage = 1;		
+		
 	}
 
 	$scope.setOrderBy = function(title){		

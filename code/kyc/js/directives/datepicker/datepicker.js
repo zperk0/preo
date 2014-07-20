@@ -14,7 +14,7 @@ angular.module('kyc.directives').
 
         var ngCompareEnd = attrs.end ? $parse( attrs.end ) : false;
         var ngCompareStart = attrs.start ? $parse(attrs.start) : false;          
-        console.log(ngCompareStart);
+        
         elem.fdatepicker({
           format: "dd/mm/yyyy",
           onRender: function( date ) {            
@@ -22,7 +22,7 @@ angular.module('kyc.directives').
 
             var isBeforeStart = ngCompareStart && date.valueOf() < ngCompareStart.valueOf();
             // var isAfterEnd = ngCompareEnd && date.valueOf() > ngCompareEnd.valueOf();
-            console.log("onRender", date, ngCompareStart.valueOf());
+            
             // return isAfterToday || isBeforeStart || isAfterEnd ? 'disabled' : '' ;          
             return isBeforeStart ? 'disabled' : '';
           }
@@ -59,7 +59,7 @@ angular.module('kyc.directives').
         ngModel.$formatters.push(function(data) {                    
         return data.format("DD/MM/YYYY");
         });
-        console.log('linked');
+        
       }
     };
 

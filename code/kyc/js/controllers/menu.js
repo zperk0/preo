@@ -16,7 +16,6 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		VenueService.init().then(
 			function(venue){			
 				$scope.venue = venue;
-				console.log('got venue',$scope.venue);
 				$scope.currencySymbol = VenueService.getCurrency().symbol;							
 				OutletService.init(function(){
 					$scope.outlets = OutletService.getOutlets();					

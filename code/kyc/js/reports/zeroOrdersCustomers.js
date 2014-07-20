@@ -16,22 +16,19 @@ angular.module('kyc.reports')
 		return customers.$promise;
 	}
 
-	Report.setData = function(order){
-			if (customersWithOrders.indexOf(order.user.id) == -1)
-				customersWithOrders.push(order.user.id);
+	Report.setData = function(reportsData){
+		angular.forEach(reportsData.customerOrders,function(customerOrder){			
+			if (customerOrder.total)
+				data[customerOrder.id] = {
+						dateJoined:customerOrder.created,
+						name:customerOrder.firstName + " " + customerOrder.lastName,
+						email:customerOrder.username,
+						marketing:(customerOrder.optinLoyalty || customerOrder.optinOffers || customerOrder.optinOther)	
+					}
+		})
 	}
 
 	Report.onSetDataComplete = function(){		
-		angular.forEach(customers,function(customer){
-			if (customersWithOrders.indexOf(customer.id) === -1){
-					data[customer.id] = {
-						dateJoined:customer.created,
-						name:customer.firstName + " " + customer.lastName,
-						email:customer.username,
-						marketing:(customer.optinLoyalty || customer.optinOffers || customer.optinOther)	
-					}
-			}
-		})
 	}
 
 	
@@ -40,7 +37,6 @@ angular.module('kyc.reports')
 	}
 
 	Report.setTitles = function(newTitles){
-		console.log('set zero titles',newTitles);
 		titles = newTitles;
 	}
 

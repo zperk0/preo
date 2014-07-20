@@ -64,7 +64,6 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 		if ( allOrders ) {			
 			var minDate = moment($scope.start_date)
       var maxDate = moment($scope.end_date)
-      console.log('allOrders',allOrders);
 			angular.forEach(allOrders,function(row){						
 		        var orderData = moment(row.created);        
 		        if (orderData >= minDate && orderData <= maxDate){
@@ -83,7 +82,6 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 						}
 			});
 		}
-		console.log('$scope.customers',$scope.customers);
 
 		$scope.customersList = $scope.customers;
 		$scope.totalItems = Object.keys($scope.customers).length;
