@@ -61,13 +61,13 @@
               <div class="row nomargin">              
                   <label><? echo _("Date Range:")?></label>
                   <div class="columns large-4 small-4 nopadding"> 
-                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker ng-model="search.start_date" />
+                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker end="end_date" ng-model="start_date" />
                   </div>
                   <div class='columns large-1 small-2 dateTo nopadding'>
                     <? echo _("to") ?>
                   </div>
                   <div class="columns large-4 small-4 nopadding"> 
-                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker compare="search.start_date" ng-model="search.end_date" />
+                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker start="start_date" ng-model="end_date" />
                   </div>
                   <div class="columns large-3 small-2 nopadding"> 
                     <button type="submit" class="preodayButton small pull-right"><? echo _("Update")?></button>
