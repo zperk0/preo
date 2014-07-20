@@ -203,7 +203,8 @@ service('$chartService', ['ChartType','$filter',
                             };
                         },
                         formatter: function () {
-                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + Highcharts.numberFormat(this.y, 1) + '</div>';
+                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + 
+                            Highcharts.numberFormat(this.y, 1) + '</div>';
                         }
                     },
                     exporting: {
@@ -211,21 +212,23 @@ service('$chartService', ['ChartType','$filter',
                     },
                     plotOptions: {
                         pie: {
-                            //center: ["25%", "50%"],
+                            center: ["20%", "55%"],
                             borderWidth:0
                         }
                     },
                     legend: {
+                        width: 50,
                         enabled: true,
                         layout: 'vertical',
                         verticalAlign: 'middle',
-                        align:'right',
-                        x:-50,
+                        align:'center',
+                        // x:20,
+                        // float:true,
                         borderWidth: 0,
                         itemMarginTop:5,
                         itemMarginBottom:5,
                         itemStyle:{
-                            width:"80%",
+                            width:210,
                             lineHeight:20,
                             fontSize:13             
                         },

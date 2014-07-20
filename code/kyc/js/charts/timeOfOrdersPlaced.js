@@ -4,11 +4,7 @@ angular.module('kyc.charts')
 	var type = ChartType.PIE;
     var colorIndex = 0;    
     var title = _tr('Time of Orders Placed');
-    var data = [
-        {name:_tr("On the day"),y:0,color:Colors[0]},
-        {name:_tr("In advance"),y:0,color:Colors[1]}
-        
-    ]
+    var data;
     var minTimestamp = 0;
     var maxTimestamp = 0;
 
@@ -77,7 +73,7 @@ angular.module('kyc.charts')
             startDate: minTimestamp,
             endDate: maxTimestamp,            
             dataJson: JSON.stringify(data),
-            categories: [_tr('Day of collection'),_tr('Before day of collection')]
+            categories: [_tr('On the day'),_tr('In advance')]
         }
     }
 
