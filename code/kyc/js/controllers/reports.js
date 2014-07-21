@@ -5,6 +5,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	var title = _tr("Reports");
 	$scope.setLocation('reports');
 	$scope.exportAll="1";	
+	$scope.direction = false;
 
 
 	
@@ -43,7 +44,14 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
     if ( $scope.selectedReport && $scope.selectedReport.data ) {    
     	$scope.reportsList = UtilsService.sliceObject($scope.selectedReport.data, begin, end );
 		}	 
-  });		
+  });	
+
+
+	$scope.setOrderBy = function(title){		
+		$scope.orderBy = title;
+		$scope.direction = !$scope.direction
+	}
+	
 
 	$scope.selectReport = function(which){
 		if (which){
@@ -66,12 +74,11 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 		$scope.totalItems = Object.keys($scope.selectedReport.data).length;	
 		$scope.reportsList = UtilsService.sliceObject($scope.selectedReport.data, 0, $scope.numPerPage);
 		$scope.currentPage = 1;		
+		if (report.orderBy){
+			$scope.setOrderBy(report.orderBy);
+			$scope. direction = report.direction !== undefined ? report.direction : $scope.direction;
+		}
 		
-	}
-
-	$scope.setOrderBy = function(title){		
-		$scope.orderBy = title;
-		$scope.direction = !$scope.direction
 	}
 
 	$scope.getTitle = function(title){		

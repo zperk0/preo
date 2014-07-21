@@ -1,27 +1,27 @@
 angular.module('kyc.reports')
-.factory('NewCustomers',[function(){
+.factory('HighestSpendingCustomers',[function(){
 
-	var title = _tr("New Customers");
+	var title = _tr("Highest Spending Customers");
 	var Report = {}
 	var data = {}
 	var titles = [];
-	var dateRange = moment().subtract('week',2);
 
 	Report.setData = function(reportsData){
+
 		angular.forEach(reportsData.customerOrders,function(customerOrder){				
 			var created = moment(customerOrder.created);		
-			if (created > dateRange){
-				if (data[customerOrder.id] === undefined){
+			if (data[customerOrder.id] === undefined){
 					data[customerOrder.id] = {
-						dateJoined:customerOrder.created,
+						totalSpent: customerOrder.total === null ? 0 : customerOrder.total,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
 						email:customerOrder.username,
 						marketing:(customerOrder.optinLoyalty || customerOrder.optinOffers || customerOrder.optinOther)
 					}				
-				}
 			}
 		});			
 	}
+
+	Report.orderBy = "totalSpent";
 
 	Report.getData = function(){
 		return data;

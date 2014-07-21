@@ -42,7 +42,7 @@
 					</div>
 
 					<div id="content-table" >
-						<table class="table table-striped table-list" ng-init="orderBy = 'Date Joined'; direction = false">
+						<table class="table table-striped table-list">
 						  <thead>
 						  	<tr>
 						  		<th width="10">
@@ -60,8 +60,15 @@
 						  <tbody>
 						  	<tr ng-repeat="data in reportsList | orderObjectBy:orderBy:direction">
 						  		<td><input type="checkbox" ng-model="data.selected"></td>
+						  		<td ng-if='data.itemName !== undefined'>{{ data.itemName }}</td>
+						  		<td ng-if='data.quantitySold !== undefined'>{{ data.quantitySold }}</td>
+						  		<td ng-if='data.numberOfOrders !== undefined'>{{ data.numberOfOrders }}</td>
+						  		<td ng-if='data.percentIncrease !== undefined'>{{ data.percentIncrease }}</td>
+						  		<td ng-if='data.percentDecrease !== undefined'>{{ data.percentDecrease }}</td>
+						  		<td ng-if='data.totalSpent !== undefined'>{{ data.totalSpent.toFixed(2) }}</td>
+						  		<td ng-if='data.lastOrder !== undefined'>{{ data.lastOrder | date:"dd/MM/yyyy" }}</td>
 						  		<td ng-if='data.dateJoined !== undefined'>{{ data.dateJoined | date:"dd/MM/yyyy" }}</td>
-						  		<td ng-if='data.dateOfOrder !== undefined'>{{ data.dateOfOrder | date:"dd/MM/yyyy" }}</td>
+						  		<td ng-if='data.dateOfOrder !== undefined'>{{ data.dateOfOrder | date:"dd/MM/yyyy" }}</td>						  		
 						  		<td ng-if='data.name !== undefined'>{{ data.name }}</td>
 						  		<td ng-if='data.email !== undefined'>{{ data.email }}</td>
 						  		<td ng-if='data.marketing !== undefined'> {{ data.marketing | marketing }}</td>					  		

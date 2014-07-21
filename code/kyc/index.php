@@ -148,6 +148,21 @@
   <script src="/code/kyc/js/reports/newCustomers.js"></script>
   <script src="/code/kyc/js/reports/zeroOrdersCustomers.js"></script>
   <script src="/code/kyc/js/reports/oneTimeBuyers.js"></script>
+  <script src="/code/kyc/js/reports/mostFrequentBuyers.js"></script>
+  <script src="/code/kyc/js/reports/highestSpendingCustomers.js"></script>
+  <script src="/code/kyc/js/reports/customersIncreasingOrders.js"></script>
+  <script src="/code/kyc/js/reports/customersDecreasingOrders.js"></script>
+  <script src="/code/kyc/js/reports/customersIncreasingSpend.js"></script>
+  <script src="/code/kyc/js/reports/customersDecreasingSpend.js"></script>
+  <script src="/code/kyc/js/reports/sleepingCustomers.js"></script>
+  <script src="/code/kyc/js/reports/mostPopularItems.js"></script>
+  <script src="/code/kyc/js/reports/itemPopularityIncreasing.js"></script>
+  <script src="/code/kyc/js/reports/itemPopularityDecreasing.js"></script>
+  <script src="/code/kyc/js/reports/highestGrossingDays.js"></script>
+  <script src="/code/kyc/js/reports/lowestGrossingDays.js"></script>
+  <script src="/code/kyc/js/reports/highestOrderDays.js"></script>
+  <script src="/code/kyc/js/reports/lowestOrderDays.js"></script>
+  <script src="/code/kyc/js/reports/highestGrossingHours.js"></script>
   <script src="/code/kyc/js/filters.js"></script>
 
   <script type="text/javascript">

@@ -1,27 +1,30 @@
 angular.module('kyc.reports')
-.factory('NewCustomers',[function(){
+.factory('MostFrequentBuyers',[function(){
 
-	var title = _tr("New Customers");
+	var title = _tr("Most Frequent Buyers");
 	var Report = {}
 	var data = {}
 	var titles = [];
-	var dateRange = moment().subtract('week',2);
 
 	Report.setData = function(reportsData){
+		reportsData.customerOrders.sort(function(a,b){
+			return a.orders - b.orders;
+		})
+
 		angular.forEach(reportsData.customerOrders,function(customerOrder){				
 			var created = moment(customerOrder.created);		
-			if (created > dateRange){
-				if (data[customerOrder.id] === undefined){
+			if (data[customerOrder.id] === undefined){
 					data[customerOrder.id] = {
-						dateJoined:customerOrder.created,
+						numberOfOrders:customerOrder.orders,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
 						email:customerOrder.username,
 						marketing:(customerOrder.optinLoyalty || customerOrder.optinOffers || customerOrder.optinOther)
 					}				
-				}
 			}
 		});			
 	}
+
+	Report.orderBy = "numberOfOrders";
 
 	Report.getData = function(){
 		return data;
