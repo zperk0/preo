@@ -4,13 +4,13 @@
 	<div class="flipper">
 		<div class="chart front">
 			<div class="header-widget overflow">
-				<a href="javascript:void(0)" id="removable_{{ chart.num }}" class="pull-left" ng-click="removeGrid(chart, $event)" ng-if='!noData'>
+				<a href="javascript:void(0)" id="removable_{{ chart.num }}" class="pull-left" ng-click="removeGrid(chart, $event)">
 					<i class="fa fa-remove-kyc"></i>
 				</a>
 					
 				<span>{{ chart.title }}</span>
 		
-				<a ng-if="chart.showChart" href="javascript:void(0)" class="pull-right" ng-click="showOptions()" ng-if='!noData'>
+				<a ng-if="chart.showChart && !noData" href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
 					<i class="fa fa-plus-kyc"></i>
 				</a>
 
