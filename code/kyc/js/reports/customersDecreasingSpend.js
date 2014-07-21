@@ -1,27 +1,28 @@
 angular.module('kyc.reports')
-.factory('NewCustomers',[function(){
+.factory('CustomersDecreasingSpend',[function(){
 
-	var title = _tr("New Customers");
+	var title = _tr("Customers Increasing Spend");
 	var Report = {}
 	var data = {}
 	var titles = [];
-	var dateRange = moment().subtract('week',2);
 
-	Report.setData = function(reportsData){
-		angular.forEach(reportsData.customerOrders,function(customerOrder){				
-			var created = moment(customerOrder.created);		
-			if (created > dateRange){
-				if (data[customerOrder.id] === undefined){
+	Report.setData = function(reportsData){		
+		console.log(reportsData);
+		angular.forEach(reportsData.customerOrders,
+			function(customerOrder){											
+				if (data[customerOrder.id] === undefined && !isNaN(customerOrder.totalPercentage) && customerOrder.totalPercentage < 0){
 					data[customerOrder.id] = {
-						dateJoined:customerOrder.created,
+						percentDecrease: customerOrder.totalPercentage.toFixed(0),
 						name:customerOrder.firstName + " " + customerOrder.lastName,
 						email:customerOrder.username,
 						marketing:(customerOrder.optinLoyalty || customerOrder.optinOffers || customerOrder.optinOther)
 					}				
-				}
-			}
-		});			
+			  }
+		});
+		console.log('set data',data);			
 	}
+
+	Report.orderby = "percentIncrease";
 
 	Report.getData = function(){
 		return data;

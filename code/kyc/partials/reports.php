@@ -2,13 +2,13 @@
 
 <div class="container-fluid" id="container-search">
 	<div class="row formContainer" >  
-	    <form class="navbar-form navbar-left columns large-12 small-12 nopadding custom" role="update">
+	    <form class="navbar-form navbar-left columns large-7 small-12 nopadding custom" role="update">
 	      <div class='row nomargin'>
 
 	          <div class="columns large-12 small-12 nopadding">              
 	              <label>
 	              <? echo _("Choose preset:")?></label>
-	              <div class='columns large-10 small-10 nopadding'>
+	              <div class='columns large-9 small-10 nopadding'>
 	                <multi-select
 	                    class="selectOutlet selectReport"    
 	                    input-model="reports"    
@@ -16,13 +16,12 @@
 	                    item-label="title"
 	                    selection-mode="single"
 	                    tick-property="selected"
-	                    on-change="selectReport()"
 	                    default-label="{{selectedReport.title}}"
 	                ></multi-select>
 	               </div>
-	               <div class='columns large-2 small-2 nopadding'>
-	                <button type="submit" class="button small pull-right"><? echo _("Update")?></button>            
-	               </div>                
+                 <div class='columns large-3 small-2'>
+                  	<button type="button" ng-click='selectReport()' class="preodayButton small "><? echo _("Update")?></button>            
+                 </div>           
 	          </div>	        
 	      </div>
 	    </form>        
@@ -43,7 +42,7 @@
 					</div>
 
 					<div id="content-table" >
-						<table class="table table-striped table-list" ng-init="orderBy = 'Date Joined'; direction = false">
+						<table class="table table-striped table-list">
 						  <thead>
 						  	<tr>
 						  		<th width="10">
@@ -61,7 +60,19 @@
 						  <tbody>
 						  	<tr ng-repeat="data in reportsList | orderObjectBy:orderBy:direction">
 						  		<td><input type="checkbox" ng-model="data.selected"></td>
+						  		<td ng-if='data.timeSlot !== undefined'>{{ data.timeSlot }}</td>
+						  		<td ng-if='data.day !== undefined'>{{ data.day | date:"EEEE" }}</td>
+						  		<td ng-if='data.date !== undefined'>{{ data.date | date:"dd/MM/yyyy" }}</td>
+						  		<td ng-if='data.valueSold !== undefined'>{{ data.valueSold.toFixed(2) }}</td>
+						  		<td ng-if='data.itemName !== undefined'>{{ data.itemName }}</td>
+						  		<td ng-if='data.quantitySold !== undefined'>{{ data.quantitySold }}</td>
+						  		<td ng-if='data.numberOfOrders !== undefined'>{{ data.numberOfOrders }}</td>
+						  		<td ng-if='data.percentIncrease !== undefined'>{{ data.percentIncrease }}</td>
+						  		<td ng-if='data.percentDecrease !== undefined'>{{ data.percentDecrease }}</td>
+						  		<td ng-if='data.totalSpent !== undefined'>{{ data.totalSpent.toFixed(2) }}</td>
+						  		<td ng-if='data.lastOrder !== undefined'>{{ data.lastOrder | date:"dd/MM/yyyy" }}</td>
 						  		<td ng-if='data.dateJoined !== undefined'>{{ data.dateJoined | date:"dd/MM/yyyy" }}</td>
+						  		<td ng-if='data.dateOfOrder !== undefined'>{{ data.dateOfOrder | date:"dd/MM/yyyy" }}</td>						  		
 						  		<td ng-if='data.name !== undefined'>{{ data.name }}</td>
 						  		<td ng-if='data.email !== undefined'>{{ data.email }}</td>
 						  		<td ng-if='data.marketing !== undefined'> {{ data.marketing | marketing }}</td>					  		

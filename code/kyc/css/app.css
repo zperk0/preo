@@ -66,13 +66,13 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
 }
 
 /**********Navbar************/
-header{
+.kycWrapper header{
   background-color: #56666d !important;
   border: none;  
   height: 135px;  
 }
 
-header nav, header ul, header li{
+.kycWrapper header nav, .kycWrapper header ul, .kycWrapper header li{
   height:100%;
 }
 
@@ -558,7 +558,7 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
   font-weight: 400;
 }
 
-.modal-preoday{
+.modal-preoday.modal-chart{
   background: none;
   padding: 0px;
   border: none;
@@ -619,7 +619,7 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
   color: #46535D;
   cursor: pointer;
   display: block;
-  margin: 10px 0;
+  margin: 0 0 10px 0 ;
   border-radius:2px;
   font-size:180%;
 }
@@ -929,10 +929,6 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   transition:all 0.2s lienar;
   -webkit-transition:all 0.2s lienar;
   opacity:1;
-}
-
-.chart_PIE{
-  margin-top: 15px;
 }
 
 .align-center{

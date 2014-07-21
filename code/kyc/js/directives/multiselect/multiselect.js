@@ -374,7 +374,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                     }
                 });    
                 if ( notThere === true ) {
-                    console.log( 'Multi-select error: property "' + missingLabel + '" is not available in the input model. (Name: ' + $scope.directiveId + ')' );
+                    // console.log( 'Multi-select error: property "' + missingLabel + '" is not available in the input model. (Name: ' + $scope.directiveId + ')' );
                 }                
             }            
 

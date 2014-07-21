@@ -74,12 +74,16 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
       }
     }
 
-    $scope.setSelectedFeature = function(id){      
+    $scope.setSelectedFeature = function(id){              ;
         $scope.currentScreenshot = 0;
         $scope.selectedFeature = {
             index:id,
             feature:getFeatureById(id)
         };        
+        setTimeout(function(){
+           $("html, body").animate({ scrollTop: 0 }, "fast");
+        },100);
+        
     }
 
     function getFeatureById(id){
@@ -105,7 +109,17 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
     }
 
     $scope.clickBuy = function(){
-      getFeaturePrice($scope.selectedFeature.feature);
+      Resources.AccountCard.get({accountId:ACCOUNT_ID},
+        function(){
+        getFeaturePrice($scope.selectedFeature.feature);
+      },function(error){          
+          if (error.data && error.data.status === 404){
+                $scope.dismissAndShowDialog("noPayment");
+          } else{
+              displayErrorNoty()
+            }                       
+        }
+      );       
     }
 
     $scope.clickGetInTouch = function(){
@@ -134,13 +148,14 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
               title: feature.name + " - " + feature.trialPeriod + _tr(" DAY FREE TRIAL"),
               // content: _tr("Your card will not be charged for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
               showTerm: (feature.$terms && feature.$terms.trial) ? feature.$terms.trial : false,
-              btnOk: _tr('BUY'),            
+              btnOk: _tr('START TRIAL'),            
               windowClass:'medium'
             }        
             clickOk = startTrial;            
           break; 
           case "success":
             if ( feature.hasOwnProperty('$link') && feature.$link ) {
+              window.sessionStorage.setItem("firsttime_feature_"+feature.id,1);
               $scope.navigateTo( feature.$link );
             } else {
               data = { 
@@ -159,7 +174,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
               content: $scope.paymentFailedMessage,
               showTerm: false,
               btnOk: _tr('PAYMENT METHOD'),
-              btnCancel: _tr('RETURN TO STORE'),            
+              // btnCancel: _tr('RETURN TO STORE'),            
               windowClass:'medium'
             }        
             clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')};            
@@ -168,8 +183,8 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             data = {               
               content: _tr("Please add a payment method to your account in order to subscribe to Premium Features"),
               showTerm: false,
-              btnOk: _tr('ADD PAYMENT METHOD'),
-              btnCancel: _tr('RETURN TO STORE'),            
+              btnOk: _tr('ADD CARD'),
+              // btnCancel: _tr('CANCEL'),            
               windowClass:'medium'
             }        
             clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')};            

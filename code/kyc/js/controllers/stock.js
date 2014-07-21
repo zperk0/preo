@@ -1,12 +1,15 @@
 angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInterceptor','OrderService', 'Export','ACCOUNT_ID', 'UtilsService',
 	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID, UtilsService) {
 
+	var title = _tr("Stock");
 	$scope.setLocation('stock');
 
 	$scope.$parent.showDateFilter = true;
 
 	$scope.stock={};
 	$scope.exportAll="1";
+
+
 
   var allOrders = OrderService.getOrders();	
 	$scope.selectAll = function() {
@@ -26,7 +29,8 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
   }
 
 	function prepareExportCsvData(type){		
-		var prepData = [["Stock"]];
+
+		var prepData = [[$scope.getExportDate()],[title]];
 		angular.forEach($scope.stock,function(item){
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData.push([item.name,item.quantity]);
@@ -47,16 +51,16 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 			})
 		return {
 			title:"Stock",
-			startDate:moment($scope.search.start_date).valueOf(),
-			endDate:moment($scope.search.end_date).valueOf(),
+			startDate:moment($scope.start_date).valueOf(),
+			endDate:moment($scope.end_date).valueOf(),
       dataJson:JSON.stringify(prepData)
     }
 	}
 
 	function prepareScopeStock(){
 		if ( allOrders ){			
-			var minDate = moment($scope.search.start_date)
-      var maxDate = moment($scope.search.end_date)
+			var minDate = moment($scope.start_date)
+      var maxDate = moment($scope.end_date)
 			angular.forEach(allOrders,function(row){					    
         var orderData = moment(row.created);        
         if (orderData >= minDate && orderData <= maxDate){

@@ -19,7 +19,6 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
       
     pusher.reset();
     var venueId = VENUE_ID;
-    console.log('got venue id :',venueId);
     var selectedOutlets = $scope.getSelectedOutlets();
     var outletIds = [];
     angular.forEach(selectedOutlets,function(outlet){

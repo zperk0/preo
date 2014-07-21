@@ -1,27 +1,30 @@
 angular.module('kyc.reports')
-.factory('NewCustomers',[function(){
+.factory('SleepingCustomers',[function(){
 
-	var title = _tr("New Customers");
+	var title = _tr("Sleeping Customers");
 	var Report = {}
 	var data = {}
 	var titles = [];
-	var dateRange = moment().subtract('week',2);
-
-	Report.setData = function(reportsData){
-		angular.forEach(reportsData.customerOrders,function(customerOrder){				
-			var created = moment(customerOrder.created);		
-			if (created > dateRange){
-				if (data[customerOrder.id] === undefined){
+	var dateRange = moment().subtract('month',3);
+	
+	Report.setData = function(reportsData){			
+		angular.forEach(reportsData.customerOrders,
+			function(customerOrder){											
+				if (data[customerOrder.id] === undefined && moment(customerOrder.lastOrder).valueOf() >  dateRange.valueOf()){
+					
 					data[customerOrder.id] = {
-						dateJoined:customerOrder.created,
+						lastOrder: customerOrder.lastOrder,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
 						email:customerOrder.username,
 						marketing:(customerOrder.optinLoyalty || customerOrder.optinOffers || customerOrder.optinOther)
 					}				
-				}
-			}
-		});			
+					
+			  }
+		});
+		console.log('set data',data);			
 	}
+
+	Report.orderby = "lastOrder";
 
 	Report.getData = function(){
 		return data;

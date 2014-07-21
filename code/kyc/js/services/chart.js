@@ -126,7 +126,6 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             }
                             
                             var ui_str = '<div style="background-color: #1576B7; border-radius: 5px; color:#fff;font-family:\'Co Text W01 Light\'; text-align:center; padding:18px 8px;">'+date ;                            
-                            // console.log(value,value.tooltipText);
                             var tooltipText = (this.y == 1 && value.tooltipText[value.tooltipText.length-1].toLowerCase() ==='s' ) ? value.tooltipText.slice(0,-1) : value.tooltipText;                                                    
                             ui_str += '<b style="color:#fff;font-size:160%;font-weight:bold;font-family:\'Co Text W01 Bold\';text-align:center;display:block;margin-top:8px;">';                            
                             if(value.currency)
@@ -223,7 +222,8 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             };
                         },
                         formatter: function () {
-                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + Highcharts.numberFormat(this.y, 1) + '</div>';
+                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + 
+                            Highcharts.numberFormat(this.y, 1) + '</div>';
                         }
                     },
                     exporting: {
@@ -231,21 +231,23 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                     },
                     plotOptions: {
                         pie: {
-                            //center: ["25%", "50%"],
+                            center: ["20%", "55%"],
                             borderWidth:0
                         }
                     },
                     legend: {
+                        width: 50,
                         enabled: true,
                         layout: 'vertical',
                         verticalAlign: 'middle',
-                        align:'right',
-                        x:-50,
+                        align:'center',
+                        // x:20,
+                        // float:true,
                         borderWidth: 0,
                         itemMarginTop:5,
                         itemMarginBottom:5,
                         itemStyle:{
-                            width:"80%",
+                            width:210,
                             lineHeight:20,
                             fontSize:13             
                         },

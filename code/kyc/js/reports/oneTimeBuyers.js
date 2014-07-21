@@ -6,28 +6,20 @@ angular.module('kyc.reports')
 	var data = {}
 	var titles = [];
 
-	Report.setData = function(order){
-		var user = order.user;
-		var created = moment(user.created);				
-		if (data[user.id] === undefined){
-			data[user.id] = {
-				dateJoined:user.created,
-				dateOfOrder:order.created,
-				name:user.firstName + " " + user.lastName,
-				email:user.username,
-				marketing:(user.optinLoyalty || user.optinOffers || user.optinOther)
-			} 			
-		} else {
-			data[user.id] = false;		
-		}			
-	}
-
-	Report.onSetDataComplete = function(){		
-		angular.forEach(data,function(value,key){
-			if (value === false){
-				delete data.key;
+	Report.setData = function(reportsData){
+	
+		angular.forEach(reportsData.customerOrders,function(customerOrder){
+			if (data[customerOrder.id] === undefined && customerOrder.orders === 1){
+				data[customerOrder.id] = {
+					dateJoined:customerOrder.created,
+					dateOfOrder:customerOrder.firstOrder,
+					name:customerOrder.firstName + " " + customerOrder.lastName,
+					email:customerOrder.username,
+					marketing:(customerOrder.optinLoyalty || customerOrder.optinOffers || customerOrder.optinOther)
+				} 			
 			}
-		});
+		})
+			console.log("set data",data);
 	}
 
 	Report.getData = function(){

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/code/kyc/css/app.css"/>    
   <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
 
-<div ng-app="kyc" ng-controller='MenuCtrl' ng-init="showDateFilter = true" >  
+<div ng-app="kyc" ng-controller='MenuCtrl' ng-init="showDateFilter = true" class='kycWrapper'>  
   
    <div class="container-fluid faixa-orange">
       <div class="row">
@@ -35,14 +35,14 @@
   
     <div class="container-fluid" id="container-search" ng-if="currentLocation != 'reports'">
       <div class="row formContainer" >     
-          <form class="navbar-form navbar-left columns {{ showDateFilter ? 'large-7' : 'large-12' }} small-12 nopadding" role="search" ng-submit="update()">
+          <form class="navbar-form navbar-left columns large-7 small-12 nopadding" role="search" ng-submit="update()">
             <div class='row nomargin'>
               <div class="columns large-12 small-12 nopadding">              
                   <label>
                   <? echo _("Outlet Name:")?></label>
-                  <div class='columns {{ showDateFilter ? "large-9" : "large-10" }} small-10 nopadding'>
+                  <div class='columns large-9 small-10 nopadding'>
                     <multi-select
-                        class="selectOutlet {{ showDateFilter ? '' : 'selectReport selectStream' }}"    
+                        class="selectOutlet"    
                         input-model="outlets"    
                         button-label="name"
                         item-label="name"
@@ -50,8 +50,8 @@
                         default-label="{{venue.name}}"
                     ></multi-select>
                    </div>
-                   <div class='columns {{ showDateFilter ? "large-3" : "large-2 nopadding" }} small-2'>
-                    <button type="submit" class="preodayButton small {{ showDateFilter ? '' : 'pull-right' }}"><? echo _("Update")?></button>            
+                   <div class='columns large-3 small-2'>
+                    <button type="submit" class="preodayButton small "><? echo _("Update")?></button>            
                    </div>                
               </div>
             </div>
@@ -61,13 +61,13 @@
               <div class="row nomargin">              
                   <label><? echo _("Date Range:")?></label>
                   <div class="columns large-4 small-4 nopadding"> 
-                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker ng-model="search.start_date" />
+                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker end="end_date" ng-model="start_date" />
                   </div>
                   <div class='columns large-1 small-2 dateTo nopadding'>
                     <? echo _("to") ?>
                   </div>
                   <div class="columns large-4 small-4 nopadding"> 
-                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker compare="search.start_date" ng-model="search.end_date" />
+                    <input type="text" class="form-control input-search dropdown pdDropdown" datepicker start="start_date" ng-model="end_date" />
                   </div>
                   <div class="columns large-3 small-2 nopadding"> 
                     <button type="submit" class="preodayButton small pull-right"><? echo _("Update")?></button>
@@ -102,6 +102,7 @@
   <script src="//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" type="text/javascript"></script>
   <script src="/js/angular_all.min.js"></script>    
   <script src="/code/kyc/js/app.js"></script>
+  <script src="/code/notification/notification.js"></script>
   <script src="/code/kyc/js/services/chart.js"></script>
   <script src="/code/kyc/js/services/grid.js"></script>
   <script src="/code/loader/ajaxInterceptor.js"></script>
@@ -120,7 +121,8 @@
   <script src="/code/kyc/js/resources/outlet.js"></script>
   <script src="/code/kyc/js/resources/order.js"></script>  
   <script src="/code/kyc/js/resources/venue.js"></script>  
-  <script src="/code/kyc/js/resources/customers.js"></script>  
+  <script src="/code/kyc/js/resources/customers.js"></script>
+  <script src="/code/kyc/js/resources/report.js"></script>  
   <script src="/code/kyc/js/constants/chartType.js"></script>
   <script src="/code/kyc/js/constants/colors.js"></script>
   <script src="/code/kyc/js/constants/tickInterval.js"></script>
@@ -147,6 +149,22 @@
   <script src="/code/kyc/js/reports/newCustomers.js"></script>
   <script src="/code/kyc/js/reports/zeroOrdersCustomers.js"></script>
   <script src="/code/kyc/js/reports/oneTimeBuyers.js"></script>
+  <script src="/code/kyc/js/reports/mostFrequentBuyers.js"></script>
+  <script src="/code/kyc/js/reports/highestSpendingCustomers.js"></script>
+  <script src="/code/kyc/js/reports/customersIncreasingOrders.js"></script>
+  <script src="/code/kyc/js/reports/customersDecreasingOrders.js"></script>
+  <script src="/code/kyc/js/reports/customersIncreasingSpend.js"></script>
+  <script src="/code/kyc/js/reports/customersDecreasingSpend.js"></script>
+  <script src="/code/kyc/js/reports/sleepingCustomers.js"></script>
+  <script src="/code/kyc/js/reports/mostPopularItems.js"></script>
+  <script src="/code/kyc/js/reports/itemPopularityIncrease.js"></script>
+  <script src="/code/kyc/js/reports/itemPopularityDecrease.js"></script>
+  <script src="/code/kyc/js/reports/highestGrossingDays.js"></script>
+  <script src="/code/kyc/js/reports/lowestGrossingDays.js"></script>
+  <script src="/code/kyc/js/reports/highestOrderDays.js"></script>
+  <script src="/code/kyc/js/reports/lowestOrderDays.js"></script>
+  <script src="/code/kyc/js/reports/highestGrossingHours.js"></script>
+  <script src="/code/kyc/js/reports/highestOrderHours.js"></script>
   <script src="/code/kyc/js/filters.js"></script>
 
   <script type="text/javascript">

@@ -22,6 +22,7 @@ angular.module('kyc', [
   'kyc.filters',
   'kyc.reports',
   'loaders',
+  'notification',
   'mm.foundation'
 ])
 .run(['$rootScope','ACCOUNT_ID','$http', function( $rootScope,ACCOUNT_ID,$http) {
@@ -67,9 +68,9 @@ angular.module('kyc', [
   });
   $routeProvider.when('/reports', {templateUrl: '/code/kyc/partials/reports.php', controller: 'ReportsCtrl',
     resolve:{
-       load: function ($route, OrderService,$AjaxInterceptor) {          
+       load: function ($route, AllReports,$AjaxInterceptor) {          
           $AjaxInterceptor.start();
-          return OrderService.load();            
+          return AllReports.init();            
         }
     }
   });

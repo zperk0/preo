@@ -4,7 +4,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	$scope.customers = {};
 
 	$scope.$parent.showDateFilter = true;
-
+	var title = _tr("Customers")
 	var allOrders = OrderService.getOrders();
 	prepareScopeCustomers();
 	$scope.exportAll="1";
@@ -26,7 +26,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
   }
 
 	function prepareExportCsvData(){
-		var prepData = [["Customers"]];
+		var prepData = [[$scope.getExportDate()],[title]];
 			angular.forEach($scope.customers,function(item){				
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData.push([item.name,item.totalSpent,item.emailAddress]);
@@ -52,8 +52,8 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 			})
 		return {
 			title:"Customers",
-			startDate:$scope.search.start_date.getTime(),
-			endDate:$scope.search.end_date.getTime(),
+			startDate:$scope.start_date.getTime(),
+			endDate:$scope.end_date.getTime(),
       dataJson:JSON.stringify(prepData)
     }
 	}
@@ -62,9 +62,8 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	function prepareScopeCustomers(){
 		
 		if ( allOrders ) {			
-			var minDate = moment($scope.search.start_date)
-      var maxDate = moment($scope.search.end_date)
-      console.log('allOrders',allOrders);
+			var minDate = moment($scope.start_date)
+      var maxDate = moment($scope.end_date)
 			angular.forEach(allOrders,function(row){						
 		        var orderData = moment(row.created);        
 		        if (orderData >= minDate && orderData <= maxDate){
@@ -83,7 +82,6 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 						}
 			});
 		}
-		console.log('$scope.customers',$scope.customers);
 
 		$scope.customersList = $scope.customers;
 		$scope.totalItems = Object.keys($scope.customers).length;

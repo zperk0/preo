@@ -23,6 +23,7 @@
 		</div>		
 		<div class='rowWrapper errorMessage'>{{ errorMessage }}</div>
 		<button ng-show="!isPosting" class='preodayButton' ng-click="saveChanges()" type="submit" ><?echo _("SAVE CHANGES");?></button>
+		<button ng-show="!isPosting" class='preodayButton secondary' ng-click="cancel()" ><?echo _("CANCEL");?></button>
 		<button ng-show="isPosting" class="secondary" type="button"><?echo _("SAVING...");?></button>
 	</form>
 

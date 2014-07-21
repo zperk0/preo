@@ -5,10 +5,9 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 
 			$scope.currencySymbol = "%C2%A3";
 			$scope.outlets = [];
-			$scope.search = {};
 
-			$scope.search.start_date =  new Date(new Date().getTime() - (120 * 24 * 3600 * 1000));
-			$scope.search.end_date = new Date();
+			$scope.start_date =  moment().subtract('month',3);
+			$scope.end_date = moment();
 
 	 	$scope.getCurrency = function(){
 			return decodeURI($scope.currencySymbol);
@@ -17,11 +16,10 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		VenueService.init().then(
 			function(venue){			
 				$scope.venue = venue;
-				console.log('got venue',$scope.venue);
 				$scope.currencySymbol = VenueService.getCurrency().symbol;							
 				OutletService.init(function(){
 					$scope.outlets = OutletService.getOutlets();					
-					AllCharts.init(moment($scope.search.start_date),moment($scope.search.end_date),$scope.currencySymbol);
+					AllCharts.init(moment($scope.start_date),moment($scope.end_date),$scope.currencySymbol);
 				})			
 			});
 			
@@ -29,7 +27,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		$scope.update = function(){						
 			$AjaxInterceptor.start();
 			setTimeout(function(){
-				AllCharts.prepareCharts(OrderService.getOrders(),moment($scope.search.start_date),moment($scope.search.end_date),$scope.getSelectedOutlets());
+				AllCharts.prepareCharts(OrderService.getOrders(),moment($scope.start_date),moment($scope.end_date),$scope.getSelectedOutlets());
 				$route.reload();
 				$AjaxInterceptor.complete();
 			},500);
@@ -45,6 +43,10 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			return $scope.outlets.filter(function(data){
 				return data.selected === true;
 			});
+		}
+
+		$scope.getExportDate = function(){
+			return moment($scope.start_date).format("DD-MMM-YYYY") + " - " + moment($scope.end_date).format("DD-MMM-YYYY");
 		}
 		
 }])

@@ -70,7 +70,7 @@ angular.module('kyc.directives').
 
             var mod = $modal.open({
               templateUrl: modal_url('chart'),
-              windowClass: windowClass + ' modal-preoday',
+              windowClass: windowClass + ' modal-preoday modal-chart',
               controller: function( $scope ) {
 
                 $scope.optionHasData = function(option){       
@@ -177,7 +177,6 @@ console.log(option);
 
         ng.exportCsv = function(){
           ng.csvData = ng.chart.value.getCsv();                    
-          console.log("exporting csvData",ng.csvData);
         }
 
         ng.getText = function(chart){

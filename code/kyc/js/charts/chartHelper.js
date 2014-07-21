@@ -213,7 +213,7 @@ angular.module('kyc.charts')
                 return TickInterval.DAY;
                 break;
             case daysDiff < 92:
-                return TickInterval.DAY;
+                return TickInterval.WEEK;
                 break;
             case daysDiff < 183:
                 return TickInterval.WEEK_THREE;

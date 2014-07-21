@@ -22,6 +22,7 @@
     "angular-foundation": "~0.2.2",
     "gridster": "~0.5.1",
     "highcharts": "~3.0.7",
-    "moment": "~2.7.0"
+    "moment": "~2.7.0",
+    "underscore": "~1.6.0"
   }
 }

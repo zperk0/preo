@@ -2,11 +2,13 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID,AllReports,UtilsService) {
 
 	var orders;
+	var title = _tr("Reports");
 	$scope.setLocation('reports');
 	$scope.exportAll="1";	
+	$scope.direction = false;
 
 
-	prepareScopeReports();
+	
 	
 	$scope.selectAll = function() {
 		for ( var i = $scope.reports.length; i--; ) {
@@ -15,9 +17,9 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	}
 
 	function prepareScopeReports(){
-		orders = OrderService.getOrders();		
-		AllReports.init(orders).then(function(){
+			
 			$scope.reports = AllReports.getReportsList();
+			
 			$scope.selectReport($scope.reports[0]);			
 
 			if ( $scope.selectedReport && $scope.selectedReport.data ) {
@@ -32,46 +34,51 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 			$scope.currentPage = 1;		
 
 			$AjaxInterceptor.complete();
-		})		
+
 	}
 
   $scope.$watch('currentPage + numPerPage', function() {
     var begin = (($scope.currentPage - 1) * $scope.numPerPage)
     , end = begin + $scope.numPerPage;
     
-    if ( $scope.selectedReport && $scope.selectedReport.data ) {
-    	console.log('lol');
+    if ( $scope.selectedReport && $scope.selectedReport.data ) {    
     	$scope.reportsList = UtilsService.sliceObject($scope.selectedReport.data, begin, end );
-	} else {
-		console.log('lol34');
-	}
-  });		
+		}	 
+  });	
 
-	$scope.selectReport = function(){
-
-		var report = $scope.reports.filter(function(r){
-			return r.selected === true;
-		});
-
-		if ( report.length ) {
-			report = report[0];
-
-			$scope.selectedReport = {
-				data: report.getData(),
-				title: report.getTitle(),
-				titles: report.getTitles()
-			}
-
-			$scope.totalItems = Object.keys($scope.selectedReport.data).length;	
-			$scope.reportsList = UtilsService.sliceObject($scope.selectedReport.data, 0, $scope.numPerPage);
-			$scope.currentPage = 1;		
-			console.log('setting s',$scope.selectedReport);			
-		}
-	}
 
 	$scope.setOrderBy = function(title){		
 		$scope.orderBy = title;
 		$scope.direction = !$scope.direction
+	}
+	
+
+	$scope.selectReport = function(which){
+		if (which){
+			var report = which;
+		} else {
+			var report = $scope.reports.filter(function(r){
+				return r.selected === true;
+			});
+			if ( report.length ) {
+				report = report[0];
+			}
+		}
+
+		$scope.selectedReport = {
+			data: report.getData(),
+			title: report.getTitle(),
+			titles: report.getTitles()
+		}
+
+		$scope.totalItems = Object.keys($scope.selectedReport.data).length;	
+		$scope.reportsList = UtilsService.sliceObject($scope.selectedReport.data, 0, $scope.numPerPage);
+		$scope.currentPage = 1;		
+		if (report.orderBy){
+			$scope.setOrderBy(report.orderBy);
+			$scope. direction = report.direction !== undefined ? report.direction : $scope.direction;
+		}
+		
 	}
 
 	$scope.getTitle = function(title){		
@@ -80,7 +87,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 
 
 	function prepareExportCsvData(){
-		var prepData = [["Reports"]];
+		var prepData = [[$scope.getExportDate()],[title]];
 			angular.forEach($scope.reports,function(item){				
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData.push([item.id,item.outlet,item.name,item.time,item.quantity,item.item,item.modifier,item.total,item.status]);
@@ -109,5 +116,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
   $scope.hideOptions = function() {
     angular.element('.flip-container').removeClass('active');
   }		
-
+  
+	prepareScopeReports();
 }])

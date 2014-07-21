@@ -7,8 +7,8 @@ angular.module('kyc.charts')
 		var title = _tr("Total Customers");
     
     function clearData(){
-        var newCustomers = [];
-        var repeatedCustomers = [];
+        newCustomers = [];
+        repeatedCustomers = [];
     }
 
 	function setData(order,minDate,maxDate){           
@@ -26,6 +26,7 @@ angular.module('kyc.charts')
 	}
 
 	function getData(){
+
     	return newCustomers.length;
     }
     function getType(){

@@ -25,11 +25,12 @@
 $premium:#F9B30A;
 $darkPremium:#F9B30A;
 $mainDark:#2e70b7;
-$error:#e30f4d;
+$error:#f30f0d;
 $shopHeader:#46535d;
 $shopText:#636363;
 $dashboardPremiumLight:#f1f0f2;
 $menuBg:#F7F7F7;
+$heavyGray:#939498;
 
 
 h1, h2, h3 {
@@ -94,11 +95,6 @@ h6 {
 form label {
   color: $mainDark !important;
   font-size: 100%;
-}
-
-.secondary {
-  color: #FFF !important;
-  border: 0 !important;
 }
 
 .has-tip {
@@ -320,9 +316,7 @@ footer {
 }
 
 .top-bar-section {
-  ul li a {
-    padding-right: 0 !important;
-  }
+  
   a.activated {
     color: $mainDark !important;
     &:hover {
@@ -410,6 +404,13 @@ form {
     border:none;    
     font-size:95%;    
   }
+
+
+}
+
+.secondary{
+  border: 1px solid #b8b9bc !important;
+  color:#fff !important;
 }
 
 button.success {
@@ -1613,22 +1614,37 @@ p.venueCode {
   }
   .premiumSection {
     border-bottom: 1px solid $premium !important;
+
+    button {
+      &:focus{
+        background:$premium !important;
+      }
+    }
     i, h3 {
       color: $premium !important;
     }
-    p{
-      margin-left:10px;
-      margin-bottom:5px;
-      font-size:1em; 
-      line-height:1.5em;
 
-      a{
-        font-family:  HelveticaNeueW01-45Ligh, HelveticaNeueW01-65Medi, Helvetica;        
-        color:#D7D9DA;
-        letter-spacing:1px;
-        padding-left:10px;
-        &:hover{
-          color:$premium;
+    .featuresText{
+      a {
+        color:$premium;
+      }
+    }
+
+    .featuresList{
+      p{
+        margin-left:10px;
+        margin-bottom:5px;
+        font-size:1em; 
+        line-height:1.5em;
+
+        a{
+          font-family:  HelveticaNeueW01-45Ligh, HelveticaNeueW01-65Medi, Helvetica;        
+          color:#D7D9DA;
+          
+          padding-left:10px;
+          &:hover{
+            color:$premium;
+          }
         }
       }
     }
@@ -2371,12 +2387,24 @@ span .currencySymbol {
       font-size: 90%;      
       width: 100%;
       padding: .6em .85em;
-      margin-bottom:25px;
+      position:relative;
+      top:55px;
+    
+    }
+  }
+
+  .contentInformationPrice{
+    &+.comingSoon{
+      button{
+        top:0;
+      }
     }
   }
 
   .priceWrapper{
       position:relative;
+
+
       
 
     .price {
@@ -2400,15 +2428,11 @@ span .currencySymbol {
         }
       }
       button {
-        padding: 8px 15%;    
-        border: none;
-        outline: none;
-        position:absolute;        
-        
-        font-size:0.8em;
-        top:0;
-        right:0;
-
+        padding: 8px 15%;            
+        outline: none;              
+        font-size:0.8em;      
+        position:relative;
+        margin-bottom:0;
         &.secondary{
           padding: 8px 6%;   
         }
@@ -2441,6 +2465,8 @@ span .currencySymbol {
     width:560px;
     max-width:90%;
     margin:0 auto 80px;
+    line-height:1.5em;
+    font-size:1.1em;
   }
 
 }
@@ -2505,7 +2531,7 @@ span .currencySymbol {
   background: white;
   padding: 20px;
   font-family:'Helvetica';
-
+  height:222px;
   
   h4 {    
     font-weight: bold;
@@ -2536,129 +2562,58 @@ span .currencySymbol {
   border-radius: 25px;
   border: 8px solid #ccc;
   /*to add some spacing in case we're in the bottom of the page. Or the dialog looks weird*/
-  margin-bottom: 100px;
-  padding: 40px;
+  margin-bottom: 100px;  
   font-size: 170%; 
   max-width: 1200px;
 
+  .header{
+    position:relative;
+    margin-bottom:15px;
+
+
+    .titleModal{
+      color:$shopHeader;
+      font-size:110%;
+      font-family:"Co Text W01 Bold";
+
+      &.fullHeight{
+        line-height:50px;
+      }
+    }
+    .titlePrice{
+      font-size:70%;
+      margin-top:0px;
+      color:$heavyGray;
+      font-weight:bold;
+      font-family:"Co Text W01 Regular";
+    }
+
+    img{
+      width:50px;
+      background:$premium;
+      border-radius:5px;      
+      margin-right:10px;
+      float:left;
+
+      
+    }
+
+    button{        
+      margin-top:10px;        
+      font-size:60%;      
+    }
+
+  }
 
   .close-reveal-modal{
     font-size: 80%;
   }
-  .header {         
-    position:relative;   
-    margin-top: 1%;
-  }
-
-  .content{
-    font-size:60%;
-    border-top: 1px solid gray;
-    margin-top: 2%;
-    padding-top: 4%;
-
-     .screenshot {
-      width: 600px;
-      max-width:80%;
-      margin: 0 auto 50px;
-      display: block;
-    }  
-  }
-  .comingSoon{
-      width:auto;
-      font-size: 60%;
-      float:right;
-
-/*       button{
-  margin-bottom:0;
-} */
-
-  }
-
-  .rightWrapper {
-    position: relative;
-    max-width: 50%;
-    min-width: 200px;
-    float: right;    
-    font-family:helvetica,HelveticaNeueW01-65Medi;
-    font-size:80%;
-
-    .price {
-      color:$shopHeader;
-      font-weight: bold;
-      line-height: 25px;
-      font-size:80%;
-    }
-      ul{      
-        list-style:none;
-        list-style-type:none;
-        margin-bottom:0;
-        min-height:32px;
-        li{
-          font-weight:normal;
-          margin:0;
-          padding:0;
-          font-size:40%;  
-
-        }
-      }
-      button {
-        padding: 8px 15%;    
-        border: none;
-        outline: none;
-        position:static;
-        margin-left: 2%;
-        float: right;
-        font-weight:lighter;
-        font-size:70%;
-        // top:0;
-        // right:0;        
-          &.secondary{
-            padding: 8px 6%;   
-            font-size:60%;
-          }
-      }
-  }
   
-
-
-
-  .leftWrapper {    
-    display: block;
-    width: 60%;
-    position: absolute;
-    left:0;
-    top:50%;
-    margin-top: -0.5%;
-
-    span {
-      position: absolute;
-      left: 55px;
-      top: 0;
-    }
-    h4 {
-      font-size:105%;
-      color:$shopHeader;
-      margin-bottom: 0;
-      font-family: "Co Text W01 Bold";
-      float: left;
-      margin-top: 0;
-      padding-top: 0;          
-      padding-left: 12%;
-
-      img {
-        width:10%;
-        background: $premium;
-        border-radius: 15%;
-        position:absolute;
-        left:0;
-        top:50%;
-        margin-top:-4%;
-
-      }
-    }
-  }
-
+  
  .content {
+    font-size:60%;
+    border-top: 1px solid gray;    
+    padding-top: 40px;
     position: relative;
     ul {
       margin-left: 20px;
@@ -2672,6 +2627,12 @@ span .currencySymbol {
       color: #2E70B7;
       margin-bottom: 1.5em;
     }
+    .screenshot {
+      width: 600px;
+      max-width:80%;
+      margin: 0 auto 50px;
+      display: block;
+    }  
   }
 
   .chevron {
@@ -2701,7 +2662,7 @@ span .currencySymbol {
   border-radius: 25px;
   border: 8px solid #ccc;  
   margin-bottom: 100px;
-  padding: 40px;
+  padding: 0px;
   text-align: center;  
   outline: none !important;
   font-family:helvetica;
@@ -2802,12 +2763,16 @@ span .currencySymbol {
       margin:0 0 30px 0 ;
       border:none;
 
+      tr{
+        border-bottom: 10px solid transparent;
+      }
+
       td {
          margin:0;
          padding:0;
          height:auto;
          width:auto;        
-         line-height:30px;
+         vertical-align:middle;
          color:$shopHeader;
 
         &:first-child{
@@ -2830,8 +2795,8 @@ span .currencySymbol {
         img{
           width:100%;          
           background: $premium;
-          border-radius: 3px;
-          margin-bottom: 8px;
+          border-radius: 3px;          
+              
         }
       }      
 
@@ -2862,25 +2827,36 @@ span .currencySymbol {
   }
 
   .historyWrapper{
-    th{
-      padding:0 0 10px 0;
-      width:auto;
-      text-align:left;      
-    }
+    table{
 
-    td{
-      width:auto !important;
-      vertical-align: middle;
+      tr{
+        border-bottom:none;
 
-      button.preodayButton{
-        margin:8px 0;
+        form{
+          margin: 0 !important;
+        }
+      }
+      th{
+        padding:0 0 10px 0;
+        width:auto;
+        text-align:left;      
+        color:$shopHeader;
       }
 
-    }
+      td{
+        width:auto !important;
+        vertical-align: middle;
+
+        button.preodayButton{
+          margin:8px 0;
+        }
+
+      }
 
 
-    tr + tr{
-        border-top:1px solid #999;
+      tr + tr{
+          border-top:1px solid #999;
+      }
     }
     
 
@@ -2997,7 +2973,7 @@ span .currencySymbol {
     .smallCard{
 
         font-size:90%;
-        margin-bottom:15px;
+        margin-top:15px;
 
         img {
           margin-right:10px;
@@ -3037,7 +3013,11 @@ span .currencySymbol {
 
 
 
+
   .recurringPaymentFailed{
+      width: 400px;
+      max-width: 75%;
+
       p{
         color:$error;
         margin-bottom:5px;
@@ -3053,6 +3033,19 @@ span .currencySymbol {
       font-size:80%;
       padding:.4em 2.5em;
     }
+
+    .disabled{
+      .featureTitle{
+        a{
+          color:#ccc;
+          &:hover{
+            color:#ccc;
+            cursor:default;
+          }
+        }
+      }
+    }
+
     .featureTitle{
       a{
         color:$shopHeader;
@@ -3090,6 +3083,12 @@ span .currencySymbol {
   margin-top: 20px;
   clear: both;
   color: $error;
+}
+
+.paymentWrapper,.profileWrapper{
+  button{
+   min-width:120px;
+  }
 }
 
 
@@ -3253,79 +3252,10 @@ button.preodayButton.noclick{
     z-index: 50;
 }
 
-@media (min-width:899px) and (max-width:1200px) {
-  #featureModal{
-    font-size: 160%; 
-    .leftWrapper{
-      margin-top: -3.5%;
-    }
-
-  }
+.ifSmall{
+  display:none;
 }
 
-@media (min-width:899px){
-   #featureModal{
-    font-size: 160%; 
-    .leftWrapper{
-      margin-top: -3.5%;
-    }
-
-  } 
-}
-
-
-@media (max-width:900px) {
-  #featureModal{
-    font-size: 170%; 
-      .leftWrapper{
-        top: 25%;
-        h4{
-          font-size:68%;
-          margin-top: -6%;
-          padding-left: 11%;
-          img{
-            width: 10%;
-            margin-top: -9%;
-            top: 16px !important;
-          }
-
-          small{
-            display: block;
-            padding-top: 4px;
-          }
-        }
-      }
-
-      .rightWrapper{
-        button{
-          padding: 8px 0 !important;
-          font-size: 49% !important;
-          width: 75%;
-        }
-
-        button.smallButton{
-          width: 60%;
-        }
-      }
-  }
-}
-
-@media (min-width:680px) and (max-width:900px) {
-  #featureModal{
-      .leftWrapper{
-        margin-top: 0px;
-        h4{
-          font-size:80%;
-          margin-top: -6%;
-          padding-left: 11%;
-          img{
-            width: 10%;
-            margin-top: -9%;
-          }
-        }
-      }
-  }
-}
 
 // -- SPINNER -- //
 @-webkit-keyframes fade {
@@ -3491,6 +3421,10 @@ button.preodayButton.noclick{
   margin-top:-15px;
 }
 
+.content-modal{
+  padding: 1.875em;
+}
+
 .content-check-modal{
   margin-bottom: 1.25em;
   line-height: 1.6;
@@ -3552,33 +3486,25 @@ button.preodayButton.noclick{
 
 .titleModal span.description{
   font-size: 16px;
-  font-weight: 400 !important;
-  color: #939498;
-  font-family: 'Co Text W01 Regular', 'Co Text W01 Light';
+  font-weight:normal;
+  color: $heavyGray;
+  font-family: 'Co Text W01 Bold';
+  letter-spacing :-0.01em
+
 }
 
 .titleModal span.description small{
   font-size: 12px;
-  color: #939498 !important;
+  color: $heavyGray !important;
 }
 
 #featureModal .leftWrapper h4.titleModal img{
   top: 25px ;
 }
 
-.priceWrapperList{
-  overflow: hidden;
-  min-height: 88px;
-}
-
 .blockLine{
   min-height: 54px;
   display: block;
-}
-
-.priceWrapperList button{
-  position: static !important;
-  margin-bottom: 0px !important;
 }
 
 .contentInformationPrice{
@@ -3591,4 +3517,14 @@ button.preodayButton.noclick{
   color: #CED0D1;
   padding-bottom: 10px;
   margin: 0px;
+}
+.close-modal{
+  font-size: 1.375em;
+  line-height: 1;
+  position: absolute;
+  top: .5em;
+  right: .6875em;
+  color: #aaa;
+  font-weight: 700;
+  cursor: pointer;
 }

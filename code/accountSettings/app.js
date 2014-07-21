@@ -41,6 +41,6 @@ app.config(['$routeProvider',
         controller: 'PasswordCtrl'
       }).   
       otherwise({
-        redirectTo: '/profile'
+        redirectTo: '/subscription'
       });
   }]);
