@@ -8,16 +8,16 @@ angular.module('kyc.reports')
 		
 
 		var reportsList = [
-			// NewCustomers,
-			// ZeroOrdersCustomers,
-			// OneTimeBuyers,
-			// MostFrequentBuyers,
-			// HighestSpendingCustomers,
-			// CustomersIncreasingOrders,
-			// CustomersIncreasingSpend,
-			// CustomersDecreasingOrders,
-			// CustomersDecreasingSpend,
-			// SleepingCustomers,
+			NewCustomers,
+			ZeroOrdersCustomers,
+			OneTimeBuyers,
+			MostFrequentBuyers,
+			HighestSpendingCustomers,
+			CustomersIncreasingOrders,
+			CustomersIncreasingSpend,
+			CustomersDecreasingOrders,
+			CustomersDecreasingSpend,
+			SleepingCustomers,
 			MostPopularItems
 		]
 
