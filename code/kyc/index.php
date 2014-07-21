@@ -157,13 +157,14 @@
   <script src="/code/kyc/js/reports/customersDecreasingSpend.js"></script>
   <script src="/code/kyc/js/reports/sleepingCustomers.js"></script>
   <script src="/code/kyc/js/reports/mostPopularItems.js"></script>
-  <script src="/code/kyc/js/reports/itemPopularityIncreasing.js"></script>
-  <script src="/code/kyc/js/reports/itemPopularityDecreasing.js"></script>
+  <script src="/code/kyc/js/reports/itemPopularityIncrease.js"></script>
+  <script src="/code/kyc/js/reports/itemPopularityDecrease.js"></script>
   <script src="/code/kyc/js/reports/highestGrossingDays.js"></script>
   <script src="/code/kyc/js/reports/lowestGrossingDays.js"></script>
   <script src="/code/kyc/js/reports/highestOrderDays.js"></script>
   <script src="/code/kyc/js/reports/lowestOrderDays.js"></script>
   <script src="/code/kyc/js/reports/highestGrossingHours.js"></script>
+  <script src="/code/kyc/js/reports/highestOrderHours.js"></script>
   <script src="/code/kyc/js/filters.js"></script>
 
   <script type="text/javascript">

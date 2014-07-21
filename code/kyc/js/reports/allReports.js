@@ -1,24 +1,34 @@
 angular.module('kyc.reports')
 .factory('AllReports',['$q','Report','NewCustomers','ZeroOrdersCustomers','OneTimeBuyers','MostFrequentBuyers','HighestSpendingCustomers','CustomersIncreasingOrders',
-	'CustomersIncreasingSpend','CustomersDecreasingOrders','CustomersDecreasingSpend','SleepingCustomers','MostPopularItemsReport','VENUE_ID',
+	'CustomersIncreasingSpend','CustomersDecreasingOrders','CustomersDecreasingSpend','SleepingCustomers','MostPopularItemsReport','ItemPopularityIncrease','ItemPopularityDecrease',
+	'HighestGrossingDays','LowestGrossingDays','HighestOrderDays','LowestOrderDays','HighestOrderHours','HighestGrossingHours','VENUE_ID',
 	function($q,Report,NewCustomers,ZeroOrdersCustomers,OneTimeBuyers,MostFrequentBuyers,HighestSpendingCustomers,CustomersIncreasingOrders,CustomersIncreasingSpend,
-		CustomersDecreasingOrders,CustomersDecreasingSpend,SleepingCustomers,MostPopularItems,VENUE_ID) {
+		CustomersDecreasingOrders,CustomersDecreasingSpend,SleepingCustomers,MostPopularItems,ItemPopularityIncrease,ItemPopularityDecrease,HighestGrossingDays,
+		LowestGrossingDays,HighestOrderDays,LowestOrderDays,HighestOrderHours,HighestGrossingHours,VENUE_ID) {
 
 		var AllReports = function(){};
 		
 
 		var reportsList = [
-			NewCustomers,
-			ZeroOrdersCustomers,
-			OneTimeBuyers,
-			MostFrequentBuyers,
-			HighestSpendingCustomers,
-			CustomersIncreasingOrders,
-			CustomersIncreasingSpend,
-			CustomersDecreasingOrders,
-			CustomersDecreasingSpend,
-			SleepingCustomers,
-			MostPopularItems
+			// NewCustomers,
+			// ZeroOrdersCustomers,
+			// OneTimeBuyers,
+			// MostFrequentBuyers,
+			// HighestSpendingCustomers,
+			// CustomersIncreasingOrders,
+			// CustomersIncreasingSpend,
+			// CustomersDecreasingOrders,
+			// CustomersDecreasingSpend,
+			// SleepingCustomers,
+			// MostPopularItems,
+			// ItemPopularityIncrease,
+			// ItemPopularityDecrease,
+			// HighestGrossingDays,
+			// LowestGrossingDays,
+			// HighestOrderDays,
+			// LowestOrderDays,
+			// HighestOrderHours,
+			HighestGrossingHours
 		]
 
 		var optionsMap = {
@@ -33,7 +43,10 @@ angular.module('kyc.reports')
 			percentDecrease: _tr("% Decrease"),
 			lastOrder: _tr("Last Order"),
 			itemName : _tr("Item Name"),
-			quantitySold: _tr("Quantity Sold")
+			quantitySold: _tr("Quantity Sold"),
+			day: _tr("Day"),
+			date: _tr("Date"),
+			valueSold: _tr("Value Sold")
 		}
 
 		function setTitles(report){
@@ -95,7 +108,7 @@ angular.module('kyc.reports')
 			console.log('data',data);
 				AllReports.data = {
 					items:data[0],
-					orders:data[1],
+					orders:prepareOrders(data[1]),
 					customerOrders:prepareCustomerOrders(data[2],data[3],data[4])					
 				}
 
@@ -105,6 +118,17 @@ angular.module('kyc.reports')
 					 	promises.push(report.init())
 				});
 				return $q.all(promises);
+		}
+
+		function prepareOrders(orders){
+			angular.forEach(orders,function(order){
+				
+				//get the start of each day to group by
+				order.day = moment(order.created).startOf('day').valueOf();
+				//get the hour of the order only				
+				order.hour = moment(order.created).hour();
+			})
+			return orders;
 		}
 
 		function prepareCustomerOrders(customerOrders,thisMonthCustomerOrders,lastMonthCustomerOrders){				
