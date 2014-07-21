@@ -70,7 +70,7 @@ angular.module('kyc.directives').
 
             var mod = $modal.open({
               templateUrl: modal_url('chart'),
-              windowClass: windowClass + ' modal-preoday',
+              windowClass: windowClass + ' modal-preoday modal-chart',
               controller: function( $scope ) {
 
                 $scope.optionHasData = function(option){       

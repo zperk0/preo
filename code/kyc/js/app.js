@@ -22,6 +22,7 @@ angular.module('kyc', [
   'kyc.filters',
   'kyc.reports',
   'loaders',
+  'notification',
   'mm.foundation'
 ])
 .run(['$rootScope','ACCOUNT_ID','$http', function( $rootScope,ACCOUNT_ID,$http) {

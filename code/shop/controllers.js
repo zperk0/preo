@@ -155,6 +155,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
           break; 
           case "success":
             if ( feature.hasOwnProperty('$link') && feature.$link ) {
+              window.sessionStorage.setItem("firsttime_feature_"+feature.id,1);
               $scope.navigateTo( feature.$link );
             } else {
               data = { 

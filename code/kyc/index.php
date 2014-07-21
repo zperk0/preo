@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/code/kyc/css/app.css"/>    
   <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
 
-<div ng-app="kyc" ng-controller='MenuCtrl' ng-init="showDateFilter = true" >  
+<div ng-app="kyc" ng-controller='MenuCtrl' ng-init="showDateFilter = true" class='kycWrapper'>  
   
    <div class="container-fluid faixa-orange">
       <div class="row">
@@ -102,6 +102,7 @@
   <script src="//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" type="text/javascript"></script>
   <script src="/js/angular_all.min.js"></script>    
   <script src="/code/kyc/js/app.js"></script>
+  <script src="/code/notification/notification.js"></script>
   <script src="/code/kyc/js/services/chart.js"></script>
   <script src="/code/kyc/js/services/grid.js"></script>
   <script src="/code/loader/ajaxInterceptor.js"></script>

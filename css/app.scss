@@ -2662,7 +2662,7 @@ span .currencySymbol {
   border-radius: 25px;
   border: 8px solid #ccc;  
   margin-bottom: 100px;
-  padding: 40px;
+  padding: 0px;
   text-align: center;  
   outline: none !important;
   font-family:helvetica;
@@ -3419,6 +3419,10 @@ button.preodayButton.noclick{
   position:absolute;  
   top:50%;
   margin-top:-15px;
+}
+
+.content-modal{
+  padding: 1.875em;
 }
 
 .content-check-modal{

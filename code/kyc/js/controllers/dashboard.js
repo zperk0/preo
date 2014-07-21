@@ -3,8 +3,8 @@
 
 /* Controllers */
 angular.module('kyc.controllers')
-    .controller('DashboardCtrl', ['$scope', '$http', '$compile', 'ChartType', '$grid', 'AllCharts', '$AjaxInterceptor','$timeout',
-        function ($scope, $http, $compile, ChartType, $grid, AllCharts, $AjaxInterceptor,$timeout) {
+    .controller('DashboardCtrl', ['$scope', '$http', '$compile', 'ChartType', '$grid', 'AllCharts', '$AjaxInterceptor','$timeout','$notification',
+        function ($scope, $http, $compile, ChartType, $grid, AllCharts, $AjaxInterceptor,$timeout,$notification) {
             $scope.setLocation('dashboard');
 
             $scope.$parent.showDateFilter = true;
@@ -35,8 +35,20 @@ angular.module('kyc.controllers')
             $scope.values = $grid.populateItems(charts);
 
             $timeout(function(){
-                $AjaxInterceptor.complete();
+                var isFirstTime = window.sessionStorage.getItem("firsttime_feature_4") === "1";
+                if (isFirstTime){
+                    window.sessionStorage.setItem("firsttime_feature_4",0);
+                    $notification.confirm({               
+                      title: _tr("Welcome to Know Your Customer"),
+                      content: _tr("From here you can view detailed reports and analytics about your customers and the transactions they make."),
+                      showTerm: false,
+                      btnOk: false,
+                      btnCancel: _tr('GET STARTED'),            
+                      windowClass:'medium'
+                    });
+                }
 
+                $AjaxInterceptor.complete();
                 $(window).trigger('resize')
             }, 1000)
         }
