@@ -194,6 +194,7 @@ RewriteRule ^menus/([^/]*)$ /menuSettings.php?id=$1 [L]
 RewriteCond %{REQUEST_URI} ^/deliverySettings$ [NC]
 RewriteRule ^.*$ /code/settings/delivery/delivery-view.php [L]
 
+<<<<<<< HEAD
 RewriteCond %{REQUEST_URI} ^/shop$ [NC]
 RewriteRule ^.*$ /code/shop/shop.php [L]
 
@@ -202,6 +203,7 @@ RewriteRule ^.*$ /code/accountSettings/index.php [L]
 
 RewriteCond %{REQUEST_URI} ^/kyc$ [NC]
 RewriteRule ^.*$ /code/kyc/index.php [L]
-
+=======
 RewriteCond %{REQUEST_URI} ^/switch$ [NC]
 RewriteRule ^.*$ /code/settings/switch/switch-view.php [L]
+>>>>>>> master
