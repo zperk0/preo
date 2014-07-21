@@ -112,7 +112,7 @@ angular.module('kyc.directives').
                   if ( itemActive ) {
                     itemActive[0].active = false;
                   }
-                  
+console.log(option);
                   option.active = true;
                   $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data, tickInterval:option.tickInterval, minTimestamp: moment(option.minTimestamp).valueOf(), maxTimestamp: moment(option.maxTimestamp).valueOf()});
                 }
@@ -153,8 +153,6 @@ angular.module('kyc.directives').
   	
         ng.removeGrid = function( chart, $event ) {
           chart.display = false;
-          //console.log(ng.$parent);
-          //ng.$parent.$parent.gridster.remove_widget(angular.element($event.target).parents('li'));
           elem.parent().hide();
         }
 

@@ -21,10 +21,10 @@ angular.module('kyc.directives').
         }
 
         elem.fdatepicker({
-          format: "dd/mm/yyyy",
+          format: "dd/mm/yyyy",/*
           onRender: function( date ) {
             return date.valueOf() > now.valueOf() ? 'disabled' : '';          
-          }
+          }*/
         })
           .on('changeDate', function(ev) {
 

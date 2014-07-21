@@ -1,8 +1,8 @@
 
 'use strict';
 angular.module('kyc.services', []).
-service('$chartService', ['ChartType','$filter',
-    function (ChartType,$filter) {
+service('$chartService', ['ChartType','$filter', 'TickInterval',
+    function (ChartType,$filter, TickInterval) {
 
         var area = function (value) {
             return {
@@ -116,8 +116,15 @@ service('$chartService', ['ChartType','$filter',
                                 y: point.plotY - boxHeight - 10
                             };
                         },
-                        formatter: function () {                                                        
-                            var date = $filter('date')(new Date(this.x), 'dd MMM yyyy');                                                        
+                        formatter: function () {
+                            var date;
+
+                            if ( this.series.xAxis.tickInterval === TickInterval.MONTH ) {
+                                date = $filter('date')(new Date(this.x), 'MMM yyyy');
+                            } else {
+                                date = $filter('date')(new Date(this.x), 'dd MMM yyyy');
+                            }
+                            
                             var ui_str = '<div style="background-color: #1576B7; border-radius: 5px; color:#fff;font-family:\'Co Text W01 Light\'; text-align:center; padding:18px 8px;">'+date ;                            
                             // console.log(value,value.tooltipText);
                             var tooltipText = (this.y == 1 && value.tooltipText[value.tooltipText.length-1].toLowerCase() ==='s' ) ? value.tooltipText.slice(0,-1) : value.tooltipText;                                                    
@@ -145,7 +152,20 @@ service('$chartService', ['ChartType','$filter',
                         style: {
                             color: '#b3b6b8',
                             fontSize: '15px'
-                        }
+                        },
+                        formatter: function() {
+                            var date;
+
+                            if ( this.axis.tickInterval === TickInterval.MONTH ) {
+                                date = $filter('date')(new Date(this.value), 'MMM');
+                            } else if ( this.axis.tickInterval === TickInterval.WEEK || this.axis.tickInterval === TickInterval.WEEK_THREE ) {
+                                date = $filter('date')(new Date(moment(this.value).startOf('day')), 'dd.MMM');
+                            } else {
+                                date = $filter('date')(new Date(this.value), 'dd.MMM');
+                            }
+
+                            return date;
+                        },                        
                     },
                 },
                 yAxis: {     
