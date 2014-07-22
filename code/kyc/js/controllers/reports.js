@@ -54,12 +54,13 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 
 
 	$scope.setOrderBy = function(orderBy, direction){		
+		$scope.direction = !$scope.direction
+		$scope.orderBy = orderBy;
 		$scope.selectedReport.data = UtilsService.dynamicSortObject($scope.selectedReport.data, orderBy, $scope.direction)
 
 		loadReportsByPage();
-
-		$scope.orderBy = title;
-		$scope.direction = !$scope.direction
+		
+		
 	}
 	
 
@@ -121,10 +122,16 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	
   $scope.showOptions = function() {
     angular.element('.flip-container').addClass('active');
+    setTimeout(function(){
+      	$('.invisibleBack').addClass('visible')
+      },200)
   };
 
   $scope.hideOptions = function() {
     angular.element('.flip-container').removeClass('active');
+    setTimeout(function(){
+      	$('.invisibleBack').removeClass('visible')
+      },200)
   }		
   
 	prepareScopeReports();

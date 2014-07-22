@@ -286,14 +286,10 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   font-size: 320%;
   color: #1476B7;
   display: block;
-  font-family: "Co Text W01 Bold";
-  position: absolute;
-  width: 100%;
-  top: 30px;
-  margin-left: 0;
-  padding-left: 0;
-  left: 0;
+  line-height:110px;
+  position:relative;
   letter-spacing: -0.03em;
+  font-family: 'Co Text W01 Bold';
 }
 
 .largerNumber.medium{
@@ -407,11 +403,6 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
     -o-transform: rotateY(180deg);
   }
 
-.flip-container, .front, .back {
-  width: 100%;
-  height:100%;
-}
-
 .reportPage .flipper, .reportPage .front{
   min-height:500px;
 }
@@ -425,7 +416,6 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   -moz-transition: 0.6s;
   -ms-transition: 0.6s;
   -o-transition: 0.6s;
-
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
@@ -563,15 +553,49 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
   padding: 0px;
   border: none;
   top: 2em;
+  box-shadow: none;
+}
+
+.modal-chart .fa-plus-kyc{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.modal-chart .fa-plus-kyc:hover{
+  cursor:pointer;
+}
+
+.modal-chart .close-reveal-modal{
+  top: 15px;
+  left: 15px;
+  width: 0;
+}
+
+.modal-chart .flipper{
+  margin-bottom: 0;
+}
+
+.modal-chart .content-actions button{
+  width: 80px;
+  min-width: 0;
+  padding: 6px 0;
 }
 
 .content-modal{
-  background-color: #fff;
-  padding: 1.875em;
+  /*background-color: #fff;*/
+  padding: 0;
 }
 
+.modal-chart .flipper .front{
+  padding: 1.875em;
+  background-color: #fff;
+  position:relative;
+}
 .options-modal{
  margin-top: 30px; 
+ background-color: #fff;
+ padding: 1.875em;
 }
 
 .inlineBlock{
@@ -931,4 +955,26 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
  
 .align-center{
   text-align: center;
+}
+
+
+
+.invisibleBack{
+  opacity:0; 
+  z-index:-1;
+}
+
+.invisibleBack.visible{
+  opacity:1;
+   transition: opacity 0.6s linear;
+  -webkit-transition: opacity 0.6s linear;
+  -moz-transition: opacity 0.6s linear;
+  -ms-transition: opacity 0.6s linear;
+  -o-transition: opacity 0.6s linear;
+  z-index:1;
+}
+
+.flip-container .header-chart{
+  position: absolute;
+  top: 0;
 }

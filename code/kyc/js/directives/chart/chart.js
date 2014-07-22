@@ -93,6 +93,20 @@ angular.module('kyc.directives').
 
                   $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, value );               
                   
+                }                
+
+                $scope.showOptions = function() {
+                  $('.modal-chart .flip-container').addClass('active');                  
+                  setTimeout(function(){
+                    $('.modal-chart .invisibleBack').addClass('visible')
+                  },200)
+                };
+
+                $scope.hideOptions = function() {
+                  $('.modal-chart .flip-container').removeClass('active');                  
+                  setTimeout(function(){
+                    $('.modal-chart .invisibleBack').removeClass('visible')
+                  },200)
                 }
 
                 $scope.cancel = function() {
@@ -145,10 +159,17 @@ angular.module('kyc.directives').
 
         ng.showOptions = function() {
           $flipContainer.addClass('active');
+          setTimeout(function(){
+            elem.find('.invisibleBack').addClass('visible');  
+          },200);
+          
         };
 
         ng.hideOptions = function() {
-          $flipContainer.removeClass('active');
+          $flipContainer.removeClass('active');          
+          setTimeout(function(){
+            elem.find('.invisibleBack').removeClass('visible');
+          },100);
         }
   	
         ng.removeGrid = function( chart, $event ) {

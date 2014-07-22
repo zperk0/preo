@@ -174,7 +174,7 @@
   angular.module('kyc').constant('VENUE_ID',<? echo $_SESSION['venue_id']?>);
   angular.module('kyc').constant('PUSHER_KEY', '<? echo $pusherKey ?>');
   function modal_url( url ) {
-    return '/code/kyc/js/modals/' + url + '.htm';
+    return '/code/kyc/js/modals/' + url + '.php';
   }  
 
   function directive_url( url ) {
