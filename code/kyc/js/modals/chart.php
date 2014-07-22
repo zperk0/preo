@@ -1,26 +1,57 @@
-<div class="content-modal">
-	<h4 class="title-modal-chart">{{ title }}</h4>
+<div class="content-modal flip-container">	
+		<div class="flipper">
+			<div class="front">
+					<h4 class="title-modal-chart">{{ title }}</h4>
 
-	<a class="close-reveal-modal" ng-click="cancel()">×</a>
-	<i class="fa fa-plus-kyc" ng-click="flipChart()"></i>
+					<a class="close-reveal-modal" ng-click="cancel()">×</a>
+					<i class="fa fa-plus-kyc" ng-click="showOptions()"></i>
 
-	<div class="container-modal-chart">
-		<div ng-if="!noData">
-			<div ng-if="chart.showChart">
-				<highchart id="chart_{{ chart.num }}" config="chart.highcharts"></highchart>
+					<div class="container-modal-chart">
+						<div ng-if="!noData">
+							<div ng-if="chart.showChart">
+								<highchart id="chart_{{ chart.num }}" config="chart.highcharts"></highchart>
+							</div>
+
+							<div ng-if="!chart.showChart">
+								<span class="largerNumber">{{ chart.value }}</span>
+							</div>		
+						</div>
+
+						<div ng-if='noData'>
+								<div class='noData'>
+									<? echo _("No Data")?>
+								</div>
+						</div>		
+					</div>
 			</div>
-
-			<div ng-if="!chart.showChart">
-				<span class="largerNumber">{{ chart.value }}</span>
-			</div>		
+			<div class="actions-chart back">				
+			</div>
 		</div>
+		<div class="header-chart overflow invisibleBack">			
+					<a href="javascript:void(0)" class="pull-left" ng-click="hideOptions()">
+						<i class="fa fa-arrow-left-kyc icon-white"></i>
+					</a>
+		</div>			
+		<div class="content-actions invisibleBack">
+					<h4><? echo _("Export as...") ?></h4>
 
-		<div ng-if='noData'>
-				<div class='noData'>
-					<? echo _("No Data")?>
+					<div class="buttons"> 
+					<!--FIXME I can't figure out a way to use a dynamic action on this form using javascript only. for some reason if we try to alter
+										the action to use the correct account id, the form is not submitted. Find a way to do it correctly and replace this -->
+						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/post' method='POST' ng-submit='exportPdf()'>
+							<input name='data' value='{{pdfData}}' type='hidden'/>
+								<button  type='submit'>
+									<? echo _("PDF")?>
+								</button>
+						</form>
+						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/csv/post' method='POST' ng-submit='exportCsv()'>						
+							<input name='data' value='{{csvData}}' type='hidden'/>
+								<button  type='submit'>
+									<? echo _("CSV")?>
+								</button>
+						</form>
+					</div>
 				</div>
-		</div>		
-	</div>
 </div>
 
 <div class="options-modal content-modal overflow" ng-if="chart.value.modal.options">

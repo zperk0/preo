@@ -286,14 +286,10 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   font-size: 320%;
   color: #1476B7;
   display: block;
-  font-family: "Co Text W01 Bold";
-  position: absolute;
-  width: 100%;
-  top: 30px;
-  margin-left: 0;
-  padding-left: 0;
-  left: 0;
+  line-height:110px;
+  position:relative;
   letter-spacing: -0.03em;
+  font-family: 'Co Text W01 Bold';
 }
 
 .largerNumber.medium{
@@ -557,6 +553,7 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
   padding: 0px;
   border: none;
   top: 2em;
+  box-shadow: none;
 }
 
 .modal-chart .fa-plus-kyc{
@@ -575,13 +572,30 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
   width: 0;
 }
 
-.content-modal{
-  background-color: #fff;
-  padding: 1.875em;
+.modal-chart .flipper{
+  margin-bottom: 0;
 }
 
+.modal-chart .content-actions button{
+  width: 80px;
+  min-width: 0;
+  padding: 6px 0;
+}
+
+.content-modal{
+  /*background-color: #fff;*/
+  padding: 0;
+}
+
+.modal-chart .flipper .front{
+  padding: 1.875em;
+  background-color: #fff;
+  position:relative;
+}
 .options-modal{
  margin-top: 30px; 
+ background-color: #fff;
+ padding: 1.875em;
 }
 
 .inlineBlock{

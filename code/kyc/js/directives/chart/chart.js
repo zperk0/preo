@@ -93,16 +93,20 @@ angular.module('kyc.directives').
 
                   $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, value );               
                   
-                }
-                var $flipContainer = elem.closest('.flip-container');
+                }                
 
-                ng.showOptions = function() {
-                  $flipContainer.addClass('active');
-
+                $scope.showOptions = function() {
+                  $('.modal-chart .flip-container').addClass('active');                  
+                  setTimeout(function(){
+                    $('.modal-chart .invisibleBack').addClass('visible')
+                  },200)
                 };
 
-                ng.hideOptions = function() {
-                  $flipContainer.removeClass('active');                  
+                $scope.hideOptions = function() {
+                  $('.modal-chart .flip-container').removeClass('active');                  
+                  setTimeout(function(){
+                    $('.modal-chart .invisibleBack').removeClass('visible')
+                  },200)
                 }
 
                 $scope.cancel = function() {
