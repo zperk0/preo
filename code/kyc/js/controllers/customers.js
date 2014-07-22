@@ -86,7 +86,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 		$scope.customers = UtilsService.dynamicSortObject($scope.customers, $scope.orderBy, $scope.direction)
 		$scope.customersList = $scope.customers;
 		$scope.totalItems = Object.keys($scope.customers).length;
-		$scope.numPerPage = 2;
+		$scope.numPerPage = 10;
 		$scope.currentPage = 1;		
 
 		$AjaxInterceptor.complete();
