@@ -121,6 +121,8 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
 
                             if ( this.series.xAxis.tickInterval === TickInterval.MONTH ) {
                                 date = $filter('date')(new Date(this.x), 'MMM yyyy');
+                            } else if ( this.series.xAxis.tickInterval === TickInterval.WEEK ) {
+                                date = moment(this.x).startOf('week').format('DD MMM YYYY') + ' <br /> - <br />' + moment(this.x).endOf('week').format('DD MMM YYYY');
                             } else {
                                 date = $filter('date')(new Date(this.x), 'dd MMM yyyy');
                             }
