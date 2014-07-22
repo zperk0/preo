@@ -122,10 +122,16 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	
   $scope.showOptions = function() {
     angular.element('.flip-container').addClass('active');
+    setTimeout(function(){
+      	$('.invisibleBack').addClass('visible')
+      },200)
   };
 
   $scope.hideOptions = function() {
     angular.element('.flip-container').removeClass('active');
+    setTimeout(function(){
+      	$('.invisibleBack').removeClass('visible')
+      },200)
   }		
   
 	prepareScopeReports();

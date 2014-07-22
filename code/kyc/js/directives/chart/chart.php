@@ -37,16 +37,16 @@
 					</div>
 
 					<div ng-if="chart.value.items" class="containerMultiSelect">
-	                    <multi-select
-	                    	class="dropdown pdDropdown multiSelectChart selectOutlet"
-	                        input-model="chart.value.items"
-	                        button-label="name"
-	                        item-label="name"
-	                        tick-property="selected"
-	                        default-label="{{chart.value.items[0].name}}"
-	                        selection-mode="single"
-	                        on-change="changeItem()"
-	                    ></multi-select>						
+              <multi-select
+              	class="dropdown pdDropdown multiSelectChart selectOutlet"
+                  input-model="chart.value.items"
+                  button-label="name"
+                  item-label="name"
+                  tick-property="selected"
+                  default-label="{{chart.value.items[0].name}}"
+                  selection-mode="single"
+                  on-change="changeItem()"
+              ></multi-select>						
 					</div>
 
 				</div>

@@ -88,14 +88,16 @@
 				</div>
 
 				<div class="actions-chart back">
-					<div class="header-chart overflow">
-					
+				
+				</div>				
+			</div>
+				<div class="header-chart overflow invisibleBack">					
 						<a href="javascript:void(0)" class="pull-left" ng-click="hideOptions()">
 							<i class="fa fa-arrow-left icon-white"></i>
 						</a>
 
 					</div>
-					<div class="content-actions">
+					<div class="content-actions invisibleBack">
 						<h4><? echo _("Export as...") ?></h4>
 
 
@@ -124,8 +126,6 @@
 							</label>
 						</div>
 					</div>
-				</div>				
-			</div>
 		</div>
 	</div>
 </div>

@@ -407,12 +407,6 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
     -o-transform: rotateY(180deg);
   }
 
-.flip-container, .front, .back {
-  width: 100%;
-  height:100%;
-  overflow: hidden;
-}
-
 .reportPage .flipper, .reportPage .front{
   min-height:500px;
 }
