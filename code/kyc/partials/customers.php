@@ -19,28 +19,28 @@
 					  		<th width="10">
 					  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
 					  		</th>
-					  		<th ng-click="orderBy = 'name'; direction=!direction">
+					  		<th ng-click="direction = !direction; setOrderBy('name');">
 					  			<? echo _("Name")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'totalSpent'; direction=!direction">
+					  		<th ng-click="direction = !direction; setOrderBy('totalSpent');">
 					  			<? echo _("Total Spent")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
-					  		<th ng-click="orderBy = 'emailAddress'; direction=!direction">
+					  		<th ng-click="direction = !direction; setOrderBy('emailAddress');">
 					  			<? echo _("Email address")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
-					  		<th ng-click="orderBy = 'marketing'; direction=!direction">
+					  		<th ng-click="direction = !direction; setOrderBy('marketing');">
 					  			<? echo _("Marketing")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
@@ -50,7 +50,7 @@
 					  	</tr>
 					  </thead>
 					  <tbody>
-					  	<tr ng-repeat="customer in customersList | orderObjectBy:orderBy:direction">
+					  	<tr ng-repeat="customer in customersList">
 					  		<td><input type="checkbox" ng-model="customer.selected" /></td>
 					  		<td>{{ customer.name }}</td>
 					  		<td>{{ getCurrency()+customer.totalSpent.toFixed(2) }}</td>

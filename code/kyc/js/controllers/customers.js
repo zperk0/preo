@@ -83,20 +83,32 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 			});
 		}
 
+		$scope.customers = UtilsService.dynamicSortObject($scope.customers, $scope.orderBy, $scope.direction)
 		$scope.customersList = $scope.customers;
 		$scope.totalItems = Object.keys($scope.customers).length;
-		$scope.numPerPage = 10;
+		$scope.numPerPage = 2;
 		$scope.currentPage = 1;		
 
 		$AjaxInterceptor.complete();
 	}
 
-  $scope.$watch('currentPage + numPerPage', function() {
-    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-    , end = begin + $scope.numPerPage;
-    
-    $scope.customersList = UtilsService.sliceObject( $scope.customers, begin, end );
-  });	
+	$scope.setOrderBy = function( orderBy, direction ){
+		$scope.customers = UtilsService.dynamicSortObject($scope.customers, orderBy, $scope.direction)
+
+		loadCustomersByPage();
+	}
+
+	var loadCustomersByPage = function(){
+	    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+	    , end = begin + $scope.numPerPage;
+	    
+		$scope.customersList = $scope.customers.slice(begin, end );		
+	    	// $scope.customersList = UtilsService.sliceObject( $scope.customers, begin, end );		
+	}
+
+	  $scope.$watch('currentPage + numPerPage', function() {
+	  	loadCustomersByPage();
+	  });
 	
     $scope.showOptions = function() {
       angular.element('.flip-container').addClass('active');

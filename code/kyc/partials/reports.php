@@ -48,7 +48,7 @@
 						  		<th width="10">
 						  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
 						  		</th>					  		
-						  		<th ng-repeat="title in selectedReport.titles" ng-click="setOrderBy(title)">
+						  		<th ng-repeat="title in selectedReport.titles" ng-click="direction = !direction; setOrderBy(title);">
 						  			{{getTitle(title)}}
 						  			<div class="sort pull-right">
 						  				<i class="fa fa-sort-up"></i>

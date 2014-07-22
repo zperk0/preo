@@ -19,14 +19,14 @@
 					  		<th width="10">
 					  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
 					  		</th>
-					  		<th ng-click="orderBy = 'name'; direction=!direction">
+					  		<th ng-click="direction = !direction; setOrderBy('name');">
 					  			<? echo _("Item") ?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>				  			
 					  		</th>
-					  		<th ng-click="orderBy = 'quantity'; direction=!direction">
+					  		<th ng-click="direction = !direction; setOrderBy('quantity');">
 					  			<? echo _("Quantity Ordered") ?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
@@ -36,7 +36,7 @@
 					  	</tr>
 					  </thead>
 					  <tbody>
-					  	<tr ng-repeat="item in stocks | orderObjectBy:orderBy:direction">
+					  	<tr ng-repeat="item in stocks">
 					  		<td><input type="checkbox" ng-model="item.selected" /></td>
 					  		<td>{{ item.name }}</td>
 					  		<td>{{ item.quantity }}</td>

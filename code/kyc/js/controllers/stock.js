@@ -80,6 +80,7 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 			});											
 		}
 
+		$scope.stock = UtilsService.dynamicSortObject($scope.stock, $scope.orderBy, $scope.direction)
 		$scope.stocks = $scope.stock;
 		$scope.totalItems = Object.keys($scope.stock).length;
 		$scope.numPerPage = 10;
@@ -87,11 +88,22 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 		$AjaxInterceptor.complete();		
 	}
 
+	$scope.setOrderBy = function( orderBy, direction ){
+		$scope.stock = UtilsService.dynamicSortObject($scope.stock, orderBy, $scope.direction)
+
+		loadStocksByPage();
+	}
+
+	var loadStocksByPage = function(){
+	    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+	    , end = begin + $scope.numPerPage;
+	    
+		$scope.stocks = $scope.stock.slice(begin, end );		
+	    	// $scope.stocks = UtilsService.sliceObject( $scope.stock, begin, end );		
+	}	
+
   $scope.$watch('currentPage + numPerPage', function() {
-    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-    , end = begin + $scope.numPerPage;
-    
-    $scope.stocks = UtilsService.sliceObject( $scope.stock, begin, end );
+  	loadStocksByPage();
   });	
 
 	prepareScopeStock();
