@@ -183,7 +183,10 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                 series: [{
                     showInLegend: false,
                     name: '',
-                    data: value.data
+                    data: value.data,
+                    marker: {
+                        symbol: 'url(/img/marker.png)'
+                    }                    
                 }]
             }
         };
