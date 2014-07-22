@@ -20,9 +20,30 @@ angular.module('kyc.services')
 
     return data;
   };
+
+  var reOrderWidgets = function( element ){
+      var $charts = $(element).children().find('.flip-container');
+      var objectValues = {};
+
+      for (var i = $charts.length - 1; i >= 0; i--) {
+          var $chart = $($charts[i]);
+
+          var index = $charts.index( $chart )
+          var scope = $chart.scope();
+
+          objectValues[scope.value.num] = {
+              order: index,
+              display: scope.value.display
+          };
+          scope.value.order = index;
+      };
+
+      window.sessionStorage.setItem('widgets', angular.toJson(objectValues));    
+  }
 		
   return {
-  	sliceObject: sliceObject
+    sliceObject: sliceObject,
+  	reOrderWidgets: reOrderWidgets,
 
   }
 

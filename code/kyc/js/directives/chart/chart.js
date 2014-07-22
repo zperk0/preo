@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kyc.directives').
-  directive('chart', ['$modal','ChartType', '$chartService','Export','ACCOUNT_ID', function($modal, ChartType, $chartService,Export,ACCOUNT_ID) {
+  directive('chart', ['$modal','ChartType', '$chartService','Export','ACCOUNT_ID', 'UtilsService', function($modal, ChartType, $chartService,Export,ACCOUNT_ID, UtilsService) {
 
   	return {
   		templateUrl: '/code/kyc/js/directives/chart/chart.php',
@@ -11,7 +11,10 @@ angular.module('kyc.directives').
   			chart: '=element'
   		},
   		link: function( ng, elem, attrs ) {                
-
+        
+        if ( !ng.chart.display ) {
+          elem.parent().hide();
+        }
         //find out if there is enough data to be displayed
         ng.noData = false;        
         function setNoData(){          
@@ -55,9 +58,6 @@ angular.module('kyc.directives').
         
 
         var $flipContainer = elem.closest('.flip-container');
-
-        
-  			
 
         refreshChart();
   			
@@ -112,7 +112,7 @@ angular.module('kyc.directives').
                   if ( itemActive ) {
                     itemActive[0].active = false;
                   }
-console.log(option);
+
                   option.active = true;
                   $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data, tickInterval:option.tickInterval, minTimestamp: moment(option.minTimestamp).valueOf(), maxTimestamp: moment(option.maxTimestamp).valueOf()});
                 }
@@ -154,6 +154,8 @@ console.log(option);
         ng.removeGrid = function( chart, $event ) {
           chart.display = false;
           elem.parent().hide();
+
+          UtilsService.reOrderWidgets( elem.closest('.sscontainer') );
         }
 
         ng.changeItem = function( item ){

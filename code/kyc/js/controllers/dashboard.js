@@ -3,8 +3,8 @@
 
 /* Controllers */
 angular.module('kyc.controllers')
-    .controller('DashboardCtrl', ['$scope', '$http', '$compile', 'ChartType', '$grid', 'AllCharts', '$AjaxInterceptor','$timeout','$notification',
-        function ($scope, $http, $compile, ChartType, $grid, AllCharts, $AjaxInterceptor,$timeout,$notification) {
+    .controller('DashboardCtrl', ['$scope', '$http', '$compile', 'ChartType', '$grid', 'AllCharts', '$AjaxInterceptor','$timeout','$notification', 'UtilsService',
+        function ($scope, $http, $compile, ChartType, $grid, AllCharts, $AjaxInterceptor,$timeout,$notification, UtilsService) {
             $scope.setLocation('dashboard');
 
             $scope.$parent.showDateFilter = true;
@@ -19,6 +19,8 @@ angular.module('kyc.controllers')
                     }, 0);
                 } else {
                     angular.element('#removable_' + value.num).closest('.flip-container').parent().show();
+
+                    UtilsService.reOrderWidgets( angular.element('#sscontainer') );
                 }
 
                 angular.element('#sscontainer').trigger("ss-rearrange");

@@ -15,7 +15,6 @@
 
 
 		<div id="dashboard">
-			
       	<div id='sscontainer' class="sscontainer" shapeshift="shapeshifterConfig">
 		        <div ng-repeat='value in values' class='widget' data-ss-colspan="{{value.showChart ? 2 : 1}}"> 
 		        	<chart element="value"></chart>

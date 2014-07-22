@@ -8,6 +8,12 @@ angular.module('kyc.services').
       var col = 1;
       var row = 1;
 
+      var $widgets = window.sessionStorage.getItem('widgets');
+
+      if ( $widgets ) {
+        $widgets = angular.fromJson($widgets);
+      }      
+
       angular.forEach(charts, function(value, key) {        
       	var data = {};
 
@@ -29,6 +35,11 @@ angular.module('kyc.services').
           data.currency = value.currency;
       	}
 
+        if ( $widgets ) {
+          data.order = $widgets[ i ].order;
+          data.display = $widgets[ i ].display;
+        }
+
       	data.row = row;
       	data.col = col;
 
@@ -45,6 +56,16 @@ angular.module('kyc.services').
       	values.push( data );
 
       });
+
+      if ( $widgets ) {
+        values.sort(function compare(a,b) {
+          if (a.order < b.order)
+             return -1;
+          if (a.order > b.order)
+            return 1;
+          return 0;
+        });
+      }
 
       return values;
   	};
