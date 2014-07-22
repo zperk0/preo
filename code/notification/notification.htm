@@ -2,8 +2,10 @@
   <header class="title-notification" ng-if="title">{{ title }}</header>
   <a class="close-modal" ng-click="cancel()">×</a>
 
-  <div class="container-modal-confirm" ng-bind-html="toTrusted(content)">    
+  <div class="container-modal-confirm" ng-if="!templateUrl" ng-bind-html="toTrusted(content)">    
   </div>
+
+  <div class="container-modal-confirm" id="contentPartial" ng-if="templateUrl"></div>
 
   <div class="checkbox checkboxStyle modal-term content-check-modal" ng-if="showTerm">
     <input type="checkbox" ng-change="changeTerm(acceptTerm)" ng-model="acceptTerm" id="checkboxNotification" />
