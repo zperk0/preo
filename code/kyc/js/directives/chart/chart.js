@@ -98,10 +98,11 @@ angular.module('kyc.directives').
 
                 ng.showOptions = function() {
                   $flipContainer.addClass('active');
+
                 };
 
                 ng.hideOptions = function() {
-                  $flipContainer.removeClass('active');
+                  $flipContainer.removeClass('active');                  
                 }
 
                 $scope.cancel = function() {
@@ -154,10 +155,17 @@ angular.module('kyc.directives').
 
         ng.showOptions = function() {
           $flipContainer.addClass('active');
+          setTimeout(function(){
+            elem.find('.invisibleBack').addClass('visible');  
+          },200);
+          
         };
 
         ng.hideOptions = function() {
-          $flipContainer.removeClass('active');
+          $flipContainer.removeClass('active');          
+          setTimeout(function(){
+            elem.find('.invisibleBack').removeClass('visible');
+          },100);
         }
   	
         ng.removeGrid = function( chart, $event ) {

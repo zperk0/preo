@@ -56,16 +56,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="actions-chart back">
-			<div class="header-chart overflow">
-			
+		<div class="actions-chart back">			
+		</div>
+	</div>
+	<div class="header-chart overflow invisibleBack">			
 				<a href="javascript:void(0)" class="pull-left" ng-click="hideOptions()">
 					<i class="fa fa-arrow-left-kyc icon-white"></i>
 				</a>
-
-			</div>
-
-			<div class="content-actions">
+	</div>			
+	<div class="content-actions invisibleBack">
 				<h4><? echo _("Export as...") ?></h4>
 
 				<div class="buttons"> 
@@ -85,6 +84,4 @@
 					</form>
 				</div>
 			</div>
-		</div>
-	</div>
 </div>

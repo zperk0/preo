@@ -953,3 +953,22 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
 
 
 
+.invisibleBack{
+  opacity:0; 
+  z-index:-1;
+}
+
+.invisibleBack.visible{
+  opacity:1;
+   transition: opacity 0.6s linear;
+  -webkit-transition: opacity 0.6s linear;
+  -moz-transition: opacity 0.6s linear;
+  -ms-transition: opacity 0.6s linear;
+  -o-transition: opacity 0.6s linear;
+  z-index:1;
+}
+
+.flip-container .header-chart{
+  position: absolute;
+  top: 0;
+}
