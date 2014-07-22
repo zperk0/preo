@@ -915,7 +915,7 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
     outline: 0;
 }
 
-.tooltipPie:before{
+/* .tooltipPie:before{
   content: "";
   width: 0;
   height: 0;
@@ -926,11 +926,9 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   left: 38%;
   top: 35px;
   z-index: 1000;
-  transition:all 0.2s lienar;
-  -webkit-transition:all 0.2s lienar;
   opacity:1;
-}
-
+} */
+ 
 .align-center{
   text-align: center;
 }

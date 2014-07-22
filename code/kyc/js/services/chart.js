@@ -112,9 +112,6 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                         shadow:false,
                         useHTML:true,
                         positioner: function(boxWidth, boxHeight, point) {
-                            console.log(this);
-                            console.log(boxWidth, boxHeight, point);
-
                             var substract = 20;
 
                             if ( value.currency ) {
@@ -137,13 +134,15 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                                 date = $filter('date')(new Date(this.x), 'dd MMM yyyy');
                             }
 
-                            var ui_str = '<div style="background-color: #1576B7; border-radius: 5px; color:#fff;font-family:\'Co Text W01 Light\'; text-align:center; padding:18px 8px;">'+date ;                            
+                            var ui_str = '<div style="position:relative;"><div style="background-color: #1576B7; border-radius: 5px; color:#fff;font-family:\'Co Text W01 Light\'; text-align:center; padding:18px 8px;">'+date ;                            
                             var tooltipText = (this.y == 1 && value.tooltipText[value.tooltipText.length-1].toLowerCase() ==='s' ) ? value.tooltipText.slice(0,-1) : value.tooltipText;                                                    
                             ui_str += '<b style="color:#fff;font-size:160%;font-weight:bold;font-family:\'Co Text W01 Bold\';text-align:center;display:block;margin-top:8px;">';
                             if(value.currency)
                                 ui_str += tooltipText + "" + this.y.toFixed(2) + '</b></div>';
                             else
                                 ui_str += this.y +""+ tooltipText+'</b></div>';
+
+                            ui_str += '<span style="position: absolute; left: 42%; bottom: -8px; background:url(/img/arrowBlue.png) left top no-repeat; width: 15px; height: 8px; display: block;" "></span></div>';
                             return ui_str;
                         }
                     }
@@ -237,8 +236,8 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             };
                         },
                         formatter: function () {
-                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + 
-                            Highcharts.numberFormat(this.y, 1) + '</div>';
+                            return '<div style="position:relative;"><div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + 
+                            Highcharts.numberFormat(this.y, 1) + '</div> <span style="position: absolute; left: 42%; bottom: -15px; background:url(/img/arrowPie.png) left top no-repeat; width: 15px; height: 9px; display: block;" "></span> </div>';
                         }
                     },
                     exporting: {
