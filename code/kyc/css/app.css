@@ -426,7 +426,6 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   -moz-transition: 0.6s;
   -ms-transition: 0.6s;
   -o-transition: 0.6s;
-
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
@@ -564,6 +563,22 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
   padding: 0px;
   border: none;
   top: 2em;
+}
+
+.modal-chart .fa-plus-kyc{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.modal-chart .fa-plus-kyc:hover{
+  cursor:pointer;
+}
+
+.modal-chart .close-reveal-modal{
+  top: 15px;
+  left: 15px;
+  width: 0;
 }
 
 .content-modal{
@@ -935,3 +950,6 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
 .align-center{
   text-align: center;
 }
+
+
+

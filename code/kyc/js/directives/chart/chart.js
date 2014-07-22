@@ -94,6 +94,15 @@ angular.module('kyc.directives').
                   $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, value );               
                   
                 }
+                var $flipContainer = elem.closest('.flip-container');
+
+                ng.showOptions = function() {
+                  $flipContainer.addClass('active');
+                };
+
+                ng.hideOptions = function() {
+                  $flipContainer.removeClass('active');
+                }
 
                 $scope.cancel = function() {
                     mod.close();

@@ -2,6 +2,7 @@
 	<h4 class="title-modal-chart">{{ title }}</h4>
 
 	<a class="close-reveal-modal" ng-click="cancel()">×</a>
+	<i class="fa fa-plus-kyc" ng-click="flipChart()"></i>
 
 	<div class="container-modal-chart">
 		<div ng-if="!noData">
@@ -16,7 +17,7 @@
 
 		<div ng-if='noData'>
 				<div class='noData'>
-					No Data
+					<? echo _("No Data")?>
 				</div>
 		</div>		
 	</div>
