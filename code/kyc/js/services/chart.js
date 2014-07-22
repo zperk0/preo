@@ -111,9 +111,18 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                         shadow:false,
                         useHTML:true,
                         positioner: function(boxWidth, boxHeight, point) {
+                            console.log(this);
+                            console.log(boxWidth, boxHeight, point);
+
+                            var substract = 20;
+
+                            if ( value.currency ) {
+                                substract = 0;
+                            }
+
                             return {
-                                x: point.plotX - boxWidth/2 +20,
-                                y: point.plotY - boxHeight - 10
+                                x: point.plotX - substract,
+                                y: point.plotY - boxHeight
                             };
                         },
                         formatter: function () {
