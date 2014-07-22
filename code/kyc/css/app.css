@@ -582,7 +582,7 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
   padding: 6px 0;
 }
 
-.content-modal{
+.modal-chart .content-modal{
   /*background-color: #fff;*/
   padding: 0;
 }

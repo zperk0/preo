@@ -7,89 +7,72 @@
 <script>
 $(function () {
 
-	  var chartInfo = {
-        title:"Orders by outlet",
-        startDate: 1403982955032,
-        endDate: 1403982955032,
-        total: "5,625.40",
-        currency:"&pound;",
-        percentage:"+15%",
-        data: [1, 3, 4, 3, 3, 5, 4]
-
-    };
+	  var chartInfo = {"title":"Orders By Outlet","startDate":1398208814228,"endDate":1406071214228,"total":0.0,"dataJson":"[{\"name\":\"caio caio caio caio caio caio caio caio\",\"color\":\"#18a4dd\",\"y\":29},{\"name\":\"bla\",\"color\":\"#1576b7\",\"y\":3},{\"name\":\"scott\",\"color\":\"#543b87\",\"y\":3},{\"name\":false,\"color\":\"#392654\",\"y\":1},{\"name\":\"ble\",\"color\":\"#f5b23e\",\"y\":8}]","categories":["caio","bla","scott","false","ble"],"type":"PIE"};
 
     $('.title').html(chartInfo.title);
     $('.dates').html(formatDate(chartInfo.startDate) + " - " + formatDate(chartInfo.endDate));
-	var revenueChart = {
-	            chart: {
-	                type: 'pie',
-			       	margin: [0, 0, 0, 0],
-			        spacingTop: 0,
-			        spacingBottom: 0,
-			        spacingLeft: 0,
-			        spacingRight: 0	                
-	            },
-	            tooltip: {
-	                formatter: function() {
-	                    return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
-	                }
-	            },	            
-	            exporting: {
-	                 enabled: false
-	            },
-	            plotOptions: {
-	                pie: {
-	                	  size:1150,
-	                    shadow: false,
-	                    center: ["30%","50%"],
-	                    dataLabels: {
-             					   enabled: true
-          						}
-	                },
-	                series:{
-	                	animation:false
-	                }
-	            },		   
-	            legend: {
-		              itemStyle: {		                 
-		                 font: '20px Co Text W01 Light',
-		              },
-		              itemHoverStyle: {
-		               	font: '20px Co Text W01 Bold',
-		              },
-	                enabled: true,
-	                layout: 'vertical',
-	                align: 'right',
-	                
-	                width: 200,
-	                verticalAlign: 'middle',
-	                x:-150,
-	                borderWidth: 0,
-	                useHTML: true,
-	                labelFormatter: function() {
-	                    return '<div style="text-align: left; width:130px;float:left; font-weight: normal; font-size: 20px; margin-bottom: 10px">' + this.name + '</div>';
-									}                  
-        	},          
-            title: {
-                text: ''
-            },
-            yAxis: {
+	var revenueChart = 
+            {	
+
+                    chart: {
+                        type: 'pie',
+                        height:'360'
+                    },
+                    exporting: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        pie: {
+                            center: ["40%", "55%"],
+                            borderWidth:0
+                        }
+                    },
+                    legend: {
+                        width:10,
+                        enabled: true,
+                        layout: 'vertical',
+                        verticalAlign: 'middle',
+                        align:'center',
+                        x:180,
+                        borderWidth: 0,
+                        itemMarginTop:5,
+                        itemMarginBottom:5,
+                        symbolRadius:10,
+                        symbolHeight:20,
+                        symbolWidth:20,
+                        symbolPadding:10,
+                        itemStyle:{                 
+                        		width:200,
+                            lineHeight:25,
+                            fontSize:20,
+                            spacingBottom:30            
+                        },
+                        useHTML: false,
+                        labelFormatter: function () {
+                            var style = 'font-family:Co Text W01 Light;';
+                            style += "color:#46545d"
+                            return '<div style="' + style + '">' + this.name + '</div>';
+                        }
+                    },
                 title: {
                     text: ''
-                }
-            },
-            credits:false,
-            series: [{
-                name: 'Browsers',
-                data: JSON.parse(chartInfo.dataJson),
-                size: '90%',
-                innerSize: '70%',
-                showInLegend:true,
-                dataLabels: {
-                    enabled: false
-                }
-            }]        	
-      }
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    }
+                },
+                series: [{
+                    data: JSON.parse(chartInfo.dataJson),
+                    size: '100%',
+                    innerSize: '80%',
+                    showInLegend: true,
+                    dataLabels: {
+                        enabled: false
+                    },                   
+	                	animation:false	                
+                }]
+            }
     $('#container').highcharts(revenueChart);
     $.each(revenueChart.series[0].data,function(){
     	console.log(this);
@@ -150,30 +133,32 @@ $(function () {
 			color:#8cbe56;			
 	}
 	.footer{
-		margin-top:40px;
+		margin-top:0px;
 	}
 	.logo{
 		float:right;
 	}
 	#container{
 		min-width:500px;
-		width: 80%; height: 400px; 
-		margin: 0 auto;
+		width: 80%; 
+		height: 500px; 
+		margin: 60px auto 0;
+		overflow:visible;
 	}
 	ul{
 		list-style: :none;
 		list-style-type: none;
 		min-width:80px;
 		position:absolute;		
-		top:60px;
+		top:80px;
 		left:0;
 		text-align: center;
 	}
 
 	li{
-			font-size:25px;
+			font-size:30px;
 			color:white;
-			padding:20px;
+			padding:20px 40px;
 			margin-bottom: 1px;
 	}
 </style>

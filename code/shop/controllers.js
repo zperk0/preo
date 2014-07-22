@@ -146,7 +146,6 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
           case "trial":
             data = { 
               title: feature.name + " - " + feature.trialPeriod + _tr(" DAY FREE TRIAL"),
-              // content: _tr("Your card will not be charged for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
               showTerm: (feature.$terms && feature.$terms.trial) ? feature.$terms.trial : false,
               btnOk: _tr('START TRIAL'),            
               windowClass:'medium'
@@ -174,7 +173,6 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
               content: $scope.paymentFailedMessage,
               showTerm: false,
               btnOk: _tr('PAYMENT METHOD'),
-              // btnCancel: _tr('RETURN TO STORE'),            
               windowClass:'medium'
             }        
             clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')};            
@@ -184,7 +182,6 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
               content: _tr("Please add a payment method to your account in order to subscribe to Premium Features"),
               showTerm: false,
               btnOk: _tr('ADD CARD'),
-              // btnCancel: _tr('CANCEL'),            
               windowClass:'medium'
             }        
             clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')};            

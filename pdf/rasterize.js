@@ -10,7 +10,7 @@ if (system.args.length < 3 || system.args.length > 5) {
     address = system.args[1];
     output = system.args[2];
     page.viewportSize = { width: 1000, height: 1000 };
-    page.paperSize = { format: "A4", orientation: 'portrait', margin: '1cm' };
+    page.paperSize = { format: "A4", orientation: 'landscape', margin: '1cm' };
     if (system.args.length > 4) {
         page.zoomFactor = system.args[4];
     }
