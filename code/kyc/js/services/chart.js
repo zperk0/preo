@@ -108,6 +108,7 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                     },
                     tooltip: {
                         borderWidth: 0,
+                        backgroundColor: 'transparent',
                         shadow:false,
                         useHTML:true,
                         positioner: function(boxWidth, boxHeight, point) {
