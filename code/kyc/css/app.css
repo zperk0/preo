@@ -410,6 +410,7 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
 .flip-container, .front, .back {
   width: 100%;
   height:100%;
+  overflow: hidden;
 }
 
 .reportPage .flipper, .reportPage .front{
