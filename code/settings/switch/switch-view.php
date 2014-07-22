@@ -66,9 +66,26 @@
           </div>
       </form>
 
+
+      <div class="row" ng-if="query && (accounts || venues)">
+        <div class="large-12 columns">
+          <h4 ng-if="query.code"> Venue code '{{ query.code }}'</h4>
+          <h4 ng-if="query.name"> Venue name like '{{ query.name }}'</h4>
+          <h4 ng-if="query.admin"> Admin username '{{ query.admin }}'</h4>
+        </div>
+      </div>
+
       <div class="row">
         <div class="large-12 columns">
-          <table>
+          <table ng-if="accounts">
+            <tr><th>AccountId</th><th>Name</th><th></th></tr>
+            <tr ng-repeat="a in accounts track by a.id">
+              <td>{{ a.id }}</td>
+              <td>{{ a.name }}</td>
+              <td><button ng-click="switchAccount(a)"><?echo _("Switch");?></button>
+            </tr>
+          </table>
+          <table ng-if="venues">
             <tr><th>AccountId</th><th>Name</th><th>Code</th><th></th></tr>
             <tr ng-repeat="v in venues track by v.id">
               <td>{{ v.accountId }}</td>
