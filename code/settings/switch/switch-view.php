@@ -49,8 +49,12 @@
               <input type="text" id="code" name="code" ng-model="form.code" placeholder="" tabindex=1>
             </div>
             <div class="large-12 columns">
+              <label><?echo _("Venue Name");?></label>
+              <input type="text" id="name" name="name" ng-model="form.name" placeholder="" tabindex=2>
+            </div>
+            <div class="large-12 columns">
               <label><?echo _("Admin username");?></label>
-              <input type="text" id="admin" name="admin" ng-model="form.name" placeholder="" tabindex=2>
+              <input type="text" id="admin" name="admin" ng-model="form.admin" placeholder="" tabindex=3>
             </div>
           </div>
 
@@ -80,10 +84,7 @@
 
 
   <script src="/js/angular_all.min.js"></script>
-
-
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/switch/app.js"></script>
-  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/switch/controllers.js"></script>
 
 
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
