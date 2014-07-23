@@ -28,6 +28,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			$AjaxInterceptor.start();
 			console.log("updating",$scope.start_date,$scope.end_date)
 			setTimeout(function(){
+				updateDate();
 				AllCharts.init(moment($scope.start_date),moment($scope.end_date),$scope.currencySymbol,$scope.getSelectedOutlets());				
 				$route.reload();
 				$AjaxInterceptor.complete();
@@ -53,7 +54,13 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		}
 
 		$scope.getExportDate = function(){
+			updateDate();
 			return moment($scope.start_date).format("DD-MMM-YYYY") + " - " + moment($scope.end_date).format("DD-MMM-YYYY");
 		}
+
+	  var updateDate = function(){
+		   $scope.start_date = $scope.form.start_date;
+		   $scope.end_date = $scope.form.end_date;   
+	  }
 		
 }])
