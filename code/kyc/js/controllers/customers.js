@@ -41,13 +41,15 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 		var prepData = {
 			"Name" :[],
 			"Total Spent":[],
-			"Email Address":[]
+			"Email Address":[],
+			"Marketing":[]
 		};
 			angular.forEach($scope.customers,function(item){
 					if ($scope.exportAll === "1" || item.selected === true){
 							prepData["Name"].push(item.name)
 							prepData["Total Spent"].push(item.totalSpent);
 							prepData["Email Address"].push(item.emailAddress);
+							prepData["Marketing"].push(item.marketing);
 					}
 			})
 		return {
