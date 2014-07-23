@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kyc.directives').
-  directive('chart', ['$modal','ChartType', '$chartService','Export','ACCOUNT_ID', 'UtilsService', function($modal, ChartType, $chartService,Export,ACCOUNT_ID, UtilsService) {
+  directive('chart', ['$modal','ChartType', '$chartService','Export','ACCOUNT_ID', 'UtilsService', 'ChartHelper', function($modal, ChartType, $chartService,Export,ACCOUNT_ID, UtilsService, ChartHelper) {
 
   	return {
   		templateUrl: '/code/kyc/js/directives/chart/chart.php',
@@ -78,6 +78,8 @@ angular.module('kyc.directives').
                 }
 
                 $scope.noData = false;
+
+                $scope.AccountId = ACCOUNT_ID;
                 
                 $scope.chart = angular.copy(ng.chart);
                 if ( ng.chart.value.modal.highcharts ) {
@@ -91,9 +93,33 @@ angular.module('kyc.directives').
 
                   value.data = firstOption.data;
 
+                  $scope.selectedData = value;
+
                   $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, value );               
                   
-                }                
+                }
+
+
+                $scope.exportPdf= function(){
+                  var data = ng.chart.value.getPdf();
+
+                  data.startDate = $scope.selectedData.minTimestamp;
+                  data.endDate = $scope.selectedData.maxTimestamp;
+                  data.dataJson = JSON.stringify($scope.selectedData.data);
+
+                  $scope.pdfData = data;
+                }
+
+                $scope.exportCsv = function(){
+
+                  var data = $scope.selectedData.data;
+                  var csvData =[[moment($scope.selectedData.minTimestamp).format("DD-MMM-YYYY") + " - " + moment($scope.selectedData.maxTimestamp).format("DD-MMM-YYYY")],['Revenue']]
+                  angular.forEach(data,function(d){
+                      csvData.push([ ChartHelper.formatDate(d[0]),d[1]]) 
+                  });
+
+                  $scope.csvData = { data: csvData };
+                }             
 
                 $scope.showOptions = function() {
                   $('.modal-chart .flip-container').addClass('active');                  
@@ -128,6 +154,11 @@ angular.module('kyc.directives').
                   }
 
                   option.active = true;
+
+                  $scope.selectedData = angular.copy(option);
+                  $scope.selectedData.minTimestamp = moment(option.minTimestamp).valueOf();
+                  $scope.selectedData.maxTimestamp = moment(option.maxTimestamp).valueOf();
+
                   $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data, tickInterval:option.tickInterval, minTimestamp: moment(option.minTimestamp).valueOf(), maxTimestamp: moment(option.maxTimestamp).valueOf()});
                 }
 
