@@ -59,7 +59,7 @@
 						  </thead>
 						  <tbody>
 						  	<tr ng-repeat="data in reportsList | orderObjectBy:orderBy:direction">
-						  		<td><input type="checkbox" ng-model="data.selected"></td>
+						  		<td><input type="checkbox" ng-model="data.$selected"></td>
 						  		<td ng-if='data.timeSlot !== undefined'>{{ data.timeSlot }}</td>
 						  		<td ng-if='data.day !== undefined'>{{ data.day | date:"EEEE" }}</td>
 						  		<td ng-if='data.date !== undefined'>{{ data.date | date:"dd/MM/yyyy" }}</td>

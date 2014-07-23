@@ -1,5 +1,5 @@
-angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInterceptor','OrderService','Export','ACCOUNT_ID','AllReports', 'UtilsService',
-	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID,AllReports,UtilsService) {
+angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInterceptor','OrderService','Export','ACCOUNT_ID','AllReports', 'UtilsService','$filter',
+	function($scope, $AjaxInterceptor,OrderService,Export,ACCOUNT_ID,AllReports,UtilsService,$filter) {
 
 	var orders;
 	var title = _tr("Reports");
@@ -11,8 +11,8 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	
 	
 	$scope.selectAll = function() {
-		for ( var i = $scope.reports.length; i--; ) {
-			$scope.reports[i].selected = $scope.all_options;
+		for ( var i = $scope.selectReport.data.length; i--; ) {
+			$scope.selectReport.data[i].$selected = $scope.all_options;
 		}
 	}
 
@@ -98,15 +98,43 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 
 
 	function prepareExportCsvData(){
-		var prepData = [[$scope.getExportDate()],[title]];
-			angular.forEach($scope.reports,function(item){				
-					if ($scope.exportAll === "1" || item.selected === true){
-							prepData.push([item.id,item.outlet,item.name,item.time,item.quantity,item.item,item.modifier,item.total,item.status]);
+		console.log($scope.selectedReport);
+
+		var prepData = [[$scope.getExportDate()],[$scope.selectedReport.title],$scope.selectedReport.titles];
+		
+			angular.forEach($scope.selectedReport.data,function(item){								
+					if ($scope.exportAll === "1" || item.$selected === true){						
+							var row = [];
+							angular.forEach(item,function(val,prop){
+								console.log("for each val,prop",val,prop);
+								if (prop[0]==="$")
+									return;
+								
+								row.push(getFilteredProp(val,prop))
+							})
+							prepData.push(row);						
 					}
-			})
+			});
+			console.log("prepData",prepData);
 		return {
        data:prepData
     }
+	}
+
+	function getFilteredProp(obj,prop){			
+		switch (prop){
+			case ('day'):
+			case ('lastOrder'):
+			case ('dateJoined'):
+			case ('dateOfOrder'):
+			case ('date'):
+				return  $filter('date')(obj,"dd/MM/yyyy");
+			case ('valueSold'):
+			case ('totalSpent'):
+				return obj.toFixed(2) 									
+			default:
+				return obj
+		}
 	}
 
 	
