@@ -51,16 +51,16 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 			})
 		return {
 			title:"Stock",
-			startDate:moment($scope.start_date).valueOf(),
-			endDate:moment($scope.end_date).valueOf(),
+			startDate:$scope.form.start_date.valueOf(),
+			endDate:$scope.form.end_date.valueOf(),
       dataJson:JSON.stringify(prepData)
     }
 	}
 
 	function prepareScopeStock(){
 		if ( allOrders ){			
-			var minDate = moment($scope.start_date)
-      var maxDate = moment($scope.end_date)
+			var minDate = moment($scope.$parent.form.start_date)
+      var maxDate = moment($scope.$parent.form.end_date)
 			angular.forEach(allOrders,function(row){					    
         var orderData = moment(row.created);                
         console.log('row outletId ', row.outletId);

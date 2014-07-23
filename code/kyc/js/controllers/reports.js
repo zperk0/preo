@@ -113,14 +113,14 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 			});
 			console.log('returning:',{
 				title:$scope.selectedReport.title,
-				startDate:$scope.start_date.valueOf(),
-				endDate:$scope.end_date.valueOf(),
+				startDate:$scope.form.start_date.valueOf(),
+				endDate:$scope.form.end_date.valueOf(),
 	      dataJson:angular.toJson(prepData)
 	    })
 			return {
 				title:$scope.selectedReport.title,
-				startDate:$scope.start_date.valueOf(),
-				endDate:$scope.end_date.valueOf(),
+				startDate:$scope.$parent.form.start_date.valueOf(),
+				endDate:$scope.$parent.form.end_date.valueOf(),
 	      dataJson:angular.toJson(prepData)
 	    }
 	}

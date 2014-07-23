@@ -6,8 +6,12 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			$scope.currencySymbol = "%C2%A3";
 			$scope.outlets = [];
 
-			$scope.start_date =  moment().subtract('month',3);
-			$scope.end_date = moment();
+			$scope.form = {
+				start_date: moment().subtract('month',3),
+				end_date: moment()
+			}
+
+
 
 	 	$scope.getCurrency = function(){
 			return decodeURI($scope.currencySymbol);
@@ -19,17 +23,16 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 				$scope.currencySymbol = VenueService.getCurrency().symbol;							
 				OutletService.init(function(){
 					$scope.outlets = OutletService.getOutlets();					
-					AllCharts.init(moment($scope.start_date),moment($scope.end_date),$scope.currencySymbol);
+					AllCharts.init($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol);
 				})			
 			});
 			
 
 		$scope.update = function(){						
 			$AjaxInterceptor.start();
-			console.log("updating",$scope.start_date,$scope.end_date)
+			console.log("updating",$scope.form.start_date,$scope.form.end_date)
 			setTimeout(function(){
-				updateDate();
-				AllCharts.init(moment($scope.start_date),moment($scope.end_date),$scope.currencySymbol,$scope.getSelectedOutlets());				
+				AllCharts.init($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol,$scope.getSelectedOutlets());				
 				$route.reload();
 				$AjaxInterceptor.complete();
 			},500);
@@ -53,14 +56,10 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			});
 		}
 
-		$scope.getExportDate = function(){
-			updateDate();
-			return moment($scope.start_date).format("DD-MMM-YYYY") + " - " + moment($scope.end_date).format("DD-MMM-YYYY");
+		$scope.getExportDate = function(){			
+			return $scope.form.start_date.format("DD-MMM-YYYY") + " - " + $scope.form.end_date.format("DD-MMM-YYYY");
 		}
 
-	  var updateDate = function(){
-		   $scope.start_date = $scope.form.start_date;
-		   $scope.end_date = $scope.form.end_date;   
-	  }
+	 
 		
 }])

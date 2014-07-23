@@ -52,8 +52,8 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 			})
 		return {
 			title:"Customers",
-			startDate:$scope.start_date.valueOf(),
-			endDate:$scope.end_date.valueOf(),
+			startDate:$scope.form.start_date.valueOf(),
+			endDate:$scope.form.end_date.valueOf(),
       dataJson:JSON.stringify(prepData)
     }
 	}
@@ -62,8 +62,8 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	function prepareScopeCustomers(){
 		
 		if ( allOrders ) {			
-			var minDate = moment($scope.start_date)
-      var maxDate = moment($scope.end_date)
+			var minDate = moment($scope.$parent.form.start_date)
+      var maxDate = moment($scope.$parent.form.end_date)
 			angular.forEach(allOrders,function(row){						
 		        var orderData = moment(row.created);        
 		        if ($scope.$parent.getSelectedOutlets().length  === 0 || $scope.$parent.findOutlet(row.outletId).length >=1 ) {
