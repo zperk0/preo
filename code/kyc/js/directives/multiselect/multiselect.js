@@ -124,17 +124,11 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                         if ( i !== index ) {
                             $scope.inputModel[ i ][ $scope.tickProperty ] = false;
                         }
-                    }        
+                    }    
                     $scope.toggleCheckboxes( e );
                 }
-                                
-                $scope.refreshSelectedItems();                                   
 
-                if ( attrs.selectionMode && $scope.selectionMode.toUpperCase() === 'SINGLE' ) {
-                    $scope.toggleCheckboxes(e);
-                } else {
-                    e.target.focus();
-                }
+                $scope.refreshSelectedItems();
 
                 $scope.onChange();
             }     
@@ -233,7 +227,6 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
 
             // UI operations to show/hide checkboxes based on click event..
             $scope.toggleCheckboxes = function( e ) {                                                
-
                 // Determine what element is clicked (has to be button). 
                 if ( e.target ) {                    
                     if ( e.target.tagName.toUpperCase() !== 'BUTTON' && e.target.className.indexOf( 'multiSelectButton' ) < 0 ) {
@@ -241,7 +234,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                             if ( e.target.tagName.toUpperCase() === 'INPUT' )
                             {
                                 e = $scope.findUpTag( e.target, 'div', 'checkboxLayer' );
-                                e = e.previousSibling;    
+                                e = e.previousSibling.previousSibling;
                             }
                         }
                         else {
@@ -269,6 +262,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                 }                
                                  
                 // Apply the hide css to all multi-select instances except the clicked one
+
                 if ( multiSelectIndex > -1 ) {
                     for( i=0; i < checkboxes.length; i++ ) {
                         if ( i != multiSelectIndex ) {
@@ -285,7 +279,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                     }
 
                     // If it's already displayed, hide it
-                    else if ( checkboxes[ multiSelectIndex ].className == 'multiSelect checkboxLayer dropdown pdDropdown show' ) {                                    
+                    else if ( checkboxes[ multiSelectIndex ].className == 'multiSelect checkboxLayer dropdown pdDropdown show' ) {
                         checkboxes[ multiSelectIndex ].className = 'multiSelect checkboxLayer hide';
                         // https://github.com/isteven/angular-multi-select/pull/5 - On close callback
                         $scope.onClose();                        
