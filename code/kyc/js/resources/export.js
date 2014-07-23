@@ -1,5 +1,5 @@
 angular.module('kyc.resources').
-  factory('Export', function($resource) {
+  factory('Export',['$resource', function($resource) {
     
     var Pdf = $resource('/api/accounts/:accountId/exports/pdf',{accountId:"@accountId"},{
     		table:{
@@ -22,4 +22,4 @@ angular.module('kyc.resources').
     	Csv:Csv,
     	TablePdf:TablePdf
     }
-});
+}]);

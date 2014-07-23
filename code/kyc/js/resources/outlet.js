@@ -1,7 +1,7 @@
 angular.module('kyc.resources').
-  factory('Outlet', function($resource) {
+  factory('Outlet',['$resource', function($resource) {
     
     var Outlet = $resource('/api/outlets',{},{});
 
     return Outlet;
-  });
+  }]);

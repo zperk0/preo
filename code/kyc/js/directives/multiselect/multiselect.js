@@ -120,7 +120,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                 // If it's single selection mode
                 if ( attrs.selectionMode && $scope.selectionMode.toUpperCase() === 'SINGLE' ) {
                     $scope.inputModel[ index ][ $scope.tickProperty ] = true;
-                    for( i=0; i<$scope.inputModel.length;i++) {
+                    for( var i=0; i<$scope.inputModel.length;i++) {
                         if ( i !== index ) {
                             $scope.inputModel[ i ][ $scope.tickProperty ] = false;
                         }
@@ -144,7 +144,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
 
                 $scope.varButtonLabel   = '';
                 $scope.selectedItems    = [];
-                ctr                     = 0;
+                var ctr                     = 0;
                 
                 angular.forEach( $scope.inputModel, function( value, key ) {
                     if ( typeof value !== 'undefined' ) {                        
@@ -261,7 +261,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                 var multiSelectButtons  = document.querySelectorAll( '.multiSelectButton' );   
 
                 // Mark which instance is clicked
-                for( i=0; i < multiSelectButtons.length; i++ ) {
+                for( var i=0; i < multiSelectButtons.length; i++ ) {
                     if ( e === multiSelectButtons[ i ] ) {                        
                         multiSelectIndex = i;
                         break;
@@ -270,7 +270,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                                  
                 // Apply the hide css to all multi-select instances except the clicked one
                 if ( multiSelectIndex > -1 ) {
-                    for( i=0; i < checkboxes.length; i++ ) {
+                    for( var i=0; i < checkboxes.length; i++ ) {
                         if ( i != multiSelectIndex ) {
                             checkboxes[i].className = 'multiSelect checkboxLayer hide';
                         }
@@ -337,7 +337,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
 
             // Generic validation for required attributes
             // Might give false positives so just ignore if everything's alright.
-            validate = function() {
+            var validate = function() {
                 if ( !( 'inputModel' in attrs )) {
                     console.log( 'Multi-select error: input-model is not defined! (ID: ' + $scope.directiveId + ')' );
                 }
@@ -356,7 +356,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
             }
 
             // Validate whether the properties specified in the directive attributes are present in the input model
-            validateProperties = function( arrProperties, arrObject ) {
+            var validateProperties = function( arrProperties, arrObject ) {
                 var notThere = false;            
                 var missingProperty = '';
                 angular.forEach( arrProperties, function( value1, key1 ) {
@@ -367,7 +367,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                                 if (!( value1 in value2 )) {
                                     notThere = true;
                                     keepGoing = false;
-                                    missingLabel = value1;
+                                    var missingLabel = value1;
                                 }
                             }
                         });                    
@@ -431,7 +431,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                 if ( e.type === 'click' || e.type === 'touchend' && $scope.scrolled === false ) {
                     var checkboxes = document.querySelectorAll( '.checkboxLayer' );     
                     if ( e.target.className.indexOf === undefined || e.target.className.indexOf( 'multiSelect' )) {
-                        for( i=0; i < checkboxes.length; i++ ) {                                        
+                        for( var i=0; i < checkboxes.length; i++ ) {                                        
                             checkboxes[i].className = 'multiSelect checkboxLayer hide';                        
                         }
                         e.stopPropagation();

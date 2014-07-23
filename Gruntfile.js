@@ -7,9 +7,16 @@ module.exports = function(grunt) {
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
+  var yeomanConfig = {  
+    kyc:{
+      index:'code/kyc/index.php',
+      output:'code/kyc/js/all.min.js',
+    }
+  }
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    yeoman: yeomanConfig,
     uglify: {      
       build: {
         options: {
@@ -32,6 +39,16 @@ module.exports = function(grunt) {
               'bower_components/angular-foundation/mm-foundation-tpls.min.js', 'bower_components/angular-route/angular-route.min.js','bower_components/angular-foundation/mm-foundation-tpls.min.js',              
               'bower_components/angular-sanitize/angular-sanitize.min.js'],
         dest: 'js/angular_all.min.js'
+      },
+      kyc:{
+        options: {
+          beautify: true,
+          mangle:false,
+          compress:false,
+          sourceMap:true,
+        },
+        src: ["<%= yeoman.kyc.files %>"],
+        dest: "<%= yeoman.kyc.output %>"
       }
     },
     cssmin: {
@@ -69,6 +86,14 @@ module.exports = function(grunt) {
       js: {
         files: ['js/**/*.js'],
         tasks: ['minifyjs'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      },
+      kyc:{
+        files: ["<%= yeoman.kyc.files %>","<%= yeoman.kyc.index %>"],
+        tasks: ['uglify:kyc'],
         options: {
           spawn: false,
           livereload: true
@@ -147,6 +172,23 @@ module.exports = function(grunt) {
         file_str+= "}\n";
         fs.writeFileSync('code/shared/js_strings.php', file_str);            
   })
+
+  grunt.registerTask('prepareWatch',function(){
+    var file = grunt.file.read(yeomanConfig.kyc.index);
+    var fileBlock = String(file.match(/<!-- BEGIN WATCH[\s\S]*END WATCH -->/));  
+    var files = fileBlock.match(/\/.*js/g)
+    for (var i=0;i<files.length;i++){
+      if (files[i][0]==="/")
+        files[i] = files[i].slice(1);
+    }  
+    yeomanConfig.kyc.files = files;
+  });
+
+
+  grunt.registerTask('watchkyc',[
+    'prepareWatch',
+    'watch:kyc'  
+  ])
 
   grunt.registerTask('watcher',[
       'build',

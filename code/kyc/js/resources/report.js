@@ -1,5 +1,5 @@
 angular.module('kyc.resources').
-  factory('Report', function($resource) {
+  factory('Report',['$resource', function($resource) {
     
     var Report = $resource('/api/reports/:venueId',{venueId:"@venueId"},{
     		items:{
@@ -22,4 +22,4 @@ angular.module('kyc.resources').
 
     
     return Report
-});
+}]);

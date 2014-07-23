@@ -1,5 +1,5 @@
 angular.module('kyc.services')
-  .factory('pusher', function (PUSHER_KEY) {
+  .factory('pusher', ['PUSHER_KEY', function (PUSHER_KEY) {
     // Enable pusher logging - don't include this in production
     Pusher.log = function(message) {
       if (window.console && window.console.log) window.console.log(message);
@@ -35,4 +35,4 @@ angular.module('kyc.services')
         pusher.connection.bind(event, callback);
       }
     };
-  });
+  }]);
