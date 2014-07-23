@@ -9,24 +9,14 @@
 <script language='javascript'>
 $(document).ready(function(){
 
-    var chartInfo = {
-        title:"Orders by outlet",
-        startDate: 1403982955032,
-        endDate: 1403982955032,
-        total: "5,625.40",
-        currency:"GBP",
-        percentage:"+15%",
-        dataJson: "",
-        categories: ['New','Returning'],
-    };
+    var chartInfo = {"title":"Customers (Bar)","startDate":1398211935759,"endDate":1406074335759,"total":0.0,"dataJson":"[9,6]","categories":["New","Returning"],"type":"COLUMN"};
 
     $('.title').html(chartInfo.title);
-    $('.dates').html(formatDate(chartInfo.startDate) + " - " + formatDate(chartInfo.endDate));
-        
+    $('.dates').html(formatDate(chartInfo.startDate) + " - " + formatDate(chartInfo.endDate));    
     $('#container').highcharts({
             chart: {
                 type: 'column',
-                spacingTop:100
+                spacingTop:50
             },
             title: {
                 text: '',                
@@ -63,6 +53,7 @@ $(document).ready(function(){
             series: [{
                 name: ' ',
                 showInLegend: false,               
+                pointWidth: 350,
                 color: {
                     linearGradient: { x1: 1, y1: 1, x2: 0, y2: 1},
                     stops: [
@@ -128,13 +119,13 @@ $(document).ready(function(){
             color:#8cbe56;          
     }
     .footer{
-        margin-top:40px;
+        margin-top:50px;
     }
     .logo{
         float:right;
     }
     #container{
-        width: 100%; height: 400px; 
+        width: 100%; height: 500px; 
         margin: 0 auto;
     }
 </style>
