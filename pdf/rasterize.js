@@ -1,6 +1,6 @@
 var page = require('webpage').create(),
     system = require('system'),
-    address, output, size;
+    address, output, size, orientation;
 
 if (system.args.length < 3 || system.args.length > 5) {
     console.log('Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat] [zoom]');
@@ -9,8 +9,9 @@ if (system.args.length < 3 || system.args.length > 5) {
 } else {
     address = system.args[1];
     output = system.args[2];
+    orientation = system.args[3] ? system.args[3] : 'portrait' ; 
     page.viewportSize = { width: 1000, height: 1000 };
-    page.paperSize = { format: "A4", orientation: 'landscape', margin: '1cm' };
+    page.paperSize = { format: "A4", orientation: orientation, margin: '1cm' };
     if (system.args.length > 4) {
         page.zoomFactor = system.args[4];
     }
