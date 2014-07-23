@@ -49,8 +49,12 @@
               <input type="text" id="code" name="code" ng-model="form.code" placeholder="" tabindex=1>
             </div>
             <div class="large-12 columns">
+              <label><?echo _("Venue Name");?></label>
+              <input type="text" id="name" name="name" ng-model="form.name" placeholder="" tabindex=2>
+            </div>
+            <div class="large-12 columns">
               <label><?echo _("Admin username");?></label>
-              <input type="text" id="admin" name="admin" ng-model="form.name" placeholder="" tabindex=2>
+              <input type="text" id="admin" name="admin" ng-model="form.admin" placeholder="" tabindex=3>
             </div>
           </div>
 
@@ -62,9 +66,26 @@
           </div>
       </form>
 
+
+      <div class="row" ng-if="query && (accounts || venues)">
+        <div class="large-12 columns">
+          <h4 ng-if="query.code"> Venue code '{{ query.code }}'</h4>
+          <h4 ng-if="query.name"> Venue name like '{{ query.name }}'</h4>
+          <h4 ng-if="query.admin"> Admin username '{{ query.admin }}'</h4>
+        </div>
+      </div>
+
       <div class="row">
         <div class="large-12 columns">
-          <table>
+          <table ng-if="accounts">
+            <tr><th>AccountId</th><th>Name</th><th></th></tr>
+            <tr ng-repeat="a in accounts track by a.id">
+              <td>{{ a.id }}</td>
+              <td>{{ a.name }}</td>
+              <td><button ng-click="switchAccount(a)"><?echo _("Switch");?></button>
+            </tr>
+          </table>
+          <table ng-if="venues">
             <tr><th>AccountId</th><th>Name</th><th>Code</th><th></th></tr>
             <tr ng-repeat="v in venues track by v.id">
               <td>{{ v.accountId }}</td>
@@ -80,10 +101,7 @@
 
 
   <script src="/js/angular_all.min.js"></script>
-
-
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/switch/app.js"></script>
-  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/switch/controllers.js"></script>
 
 
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
