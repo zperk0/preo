@@ -25,24 +25,50 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
     $scope.accountFeatures = [];
     $scope.finishedLoading = false;      
     getAccountFeatures();
+
+
+    function validateShopCard() {
+      var featureCard = window.sessionStorage.getItem("featureCard");
+
+      if ( featureCard && featureCard != 'false' ) {
+        featureCard = angular.fromJson(featureCard);
+
+        if ( featureCard.card ) {
+          $scope.setSelectedFeature( featureCard.feature );
+          window.sessionStorage.setItem("featureCard", false);
+          getFeaturePrice($scope.selectedFeature.feature, true);
+        }
+      }      
+    }
     
     
     
     function getAccountFeatures() {
       Resources.AccountFeatures.query({accountId:ACCOUNT_ID},function(result){    
         $scope.accountFeatures = result;                
+
+        validateShopCard();
         $AjaxInterceptor.complete(); 
         initModalFromPath();
       });
     }
 
         
-    function getFeaturePrice(feature){
+    function getFeaturePrice(feature, featureCard){
+
+      $AjaxInterceptor.start();
 
       Resources.AccountFeatures.getPrice({accountId:ACCOUNT_ID,featureId:feature.id},
         function(result){                
           $scope.price = result;
-          $scope.dismissAndShowDialog("purchase");
+
+          if ( featureCard ) {
+            $scope.showDialog('purchase');
+          } else {
+            $scope.dismissAndShowDialog("purchase");
+          }
+
+          $AjaxInterceptor.complete();
       });
     }
 
@@ -122,6 +148,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
 
     $scope.showDialog = function(which){                   
        var feature = $scope.selectedFeature.feature;  
+       console.log(feature);
        var clickOk;
        var clickCancel;
        var data = null; 
@@ -182,7 +209,10 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
               // btnCancel: _tr('CANCEL'),            
               windowClass:'medium'
             }        
-            clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')};            
+            clickOk = function(){
+              window.sessionStorage.setItem("featureCard", angular.toJson({feature: feature.id, card: false}));
+              $scope.navigateTo('/accountSettings#/paymentMethod')
+            };
           break; 
         }
         if ( data ) {
