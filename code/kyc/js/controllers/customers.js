@@ -52,8 +52,8 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 			})
 		return {
 			title:"Customers",
-			startDate:$scope.start_date.getTime(),
-			endDate:$scope.end_date.getTime(),
+			startDate:$scope.start_date.valueOf(),
+			endDate:$scope.end_date.valueOf(),
       dataJson:JSON.stringify(prepData)
     }
 	}

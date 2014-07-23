@@ -7,7 +7,9 @@
 
 $(function () {
 
-    var data= {"title":"Stock","startDate":1398212543674,"endDate":1406074943675,"data":"{\"Item\":[\"coke\",\"fanta\",\"burger\",\"coke\",\"fanta\",\"burger\",\"coke\",\"fanta\",\"burger\",\"coke\",\"fanta\",\"burger\",\"coke\",\"fanta\",\"burger\",\"coke\",\"fanta\",\"burger\",\"coke\",\"fanta\",\"burger\",\"coke\",\"fanta\",\"burger\",\"coke\",\"fanta\",\"burger\",\"coke\",\"fanta\",\"burger\",\"coke\",\"fanta\",\"burger\"],\"Quantity Ordered\":[15,533,19,15,533,19,15,533,19,15,533,19,15,533,19,15,533,19,15,533,19,15,533,19,15,533,19,15,533,19,15,533,19]}"};
+    var data= {
+
+    };
     
 		var parsedData = JSON.parse(data.data);
 		var pageCount = 0;
@@ -158,6 +160,7 @@ $(function () {
 		float:right;
 	}
 	.never{
+		page-break-before: avoid !important;
 		page-break-after: avoid !important;
 	}
 
@@ -167,7 +170,7 @@ $(function () {
 
 	.content-table{
 		position:relative;
-		height:850px;
+		height:820px;
 	}
 	.pageCount{
 		position:absolute;
