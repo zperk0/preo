@@ -92,21 +92,46 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 		
 	}
 
-	$scope.getTitle = function(title){		
+	$scope.getTitle = function (title){		
 		return AllReports.getTitle(title);
+	}
+
+		function prepareExportPdfData(){
+			var prepData = {};				
+			angular.forEach($scope.selectedReport.data,function(item){
+					if ($scope.exportAll === "1" || item.$selected === true){													
+							angular.forEach(item,function(val,prop){
+								if (prop[0]==="$")
+									return;
+								var propTitle = $scope.getTitle(prop);
+								if (prepData[propTitle] === undefined){
+									prepData[propTitle] = [];
+								}
+								prepData[propTitle].push(getFilteredProp(val,prop));
+							})							
+					}
+			});
+			console.log('returning:',{
+				title:$scope.selectedReport.title,
+				startDate:$scope.start_date.valueOf(),
+				endDate:$scope.end_date.valueOf(),
+	      dataJson:angular.toJson(prepData)
+	    })
+			return {
+				title:$scope.selectedReport.title,
+				startDate:$scope.start_date.valueOf(),
+				endDate:$scope.end_date.valueOf(),
+	      dataJson:angular.toJson(prepData)
+	    }
 	}
 
 
 	function prepareExportCsvData(){
-		console.log($scope.selectedReport);
-
-		var prepData = [[$scope.getExportDate()],[$scope.selectedReport.title],$scope.selectedReport.titles];
-		
-			angular.forEach($scope.selectedReport.data,function(item){								
+		var prepData = [[$scope.getExportDate()],[$scope.selectedReport.title],$scope.selectedReport.titles];	
+			angular.forEach($scope.selectedReport.data,function(item){
 					if ($scope.exportAll === "1" || item.$selected === true){						
 							var row = [];
 							angular.forEach(item,function(val,prop){
-								console.log("for each val,prop",val,prop);
 								if (prop[0]==="$")
 									return;
 								
@@ -115,7 +140,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 							prepData.push(row);						
 					}
 			});
-			console.log("prepData",prepData);
 		return {
        data:prepData
     }
