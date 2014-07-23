@@ -1308,6 +1308,7 @@ tr {
 .menuTable .menuTDTools, .headerTable .menuTDTools {
   width: 168px;
   text-align: right;
+  padding-right: 0px !important;
 }
 
 .eventTable .eventTDTools, .headerTable .eventTDTools {
@@ -1454,7 +1455,7 @@ table {
 }
 
 .modifierRow {
-  width: 31% !important;
+  width: 35% !important;
   input, select {
     width: 90%;
     margin-top: 12px !important;
@@ -1463,6 +1464,11 @@ table {
   .ui-multiselect {
     width: 90% !important;
   }
+}
+
+.modifierRowDeleteHeader{
+  width: 70px !important;
+  padding-top: 10px !important;
 }
 
 .newItem, .newSection, .deleteSection, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot, .applyTimesAllDays, .addMoreOH, .removeOHDiv {

@@ -875,6 +875,42 @@ $(document).ready(function() {
 
 		return false; // avoid to execute the actual submit of the form.
 	});
+
+	$(document).on('click', '.optionHeaderDelete', function(){
+		var $tr = $(this).closest('tr');
+
+		//add data-attribute
+		$tr.find('input[name^=iMod]').attr('data-delete', true);
+		$tr.find('input[name^=iMod]').data('delete', true);
+		//remove required
+		$tr.find("input[name^=iMod], select[name^=iModType]").each(function() {
+			$(this).removeAttr('required');
+		});
+		
+		var removeRecursion = function( $trRemoved ) {
+			var $nextTr = $trRemoved.next('.optionTR.menuEdit');
+
+			$trRemoved.find('.optionRowDelete').trigger('click');
+
+			if ( $nextTr.length ) {
+				removeRecursion($nextTr);
+			}
+		};
+
+		var $trForRemoved = $tr.next().next('.optionTR.menuEdit');
+
+		if ( $trForRemoved.length ) {
+			removeRecursion( $trForRemoved );
+		}
+
+		$tr.hide();
+		$tr.next().hide();
+
+		var itemID = $tr.closest('table').attr('id');
+		
+		
+		$("#"+itemID+"_modCountAct").val(parseInt($("#"+itemID+"_modCountAct").val())-1);
+	});
 	
 	$(document).on("click", ".optionRowDelete", function(event) {
 		//get item number
@@ -896,7 +932,7 @@ $(document).ready(function() {
 			$(this).removeAttr('required');
 		});
 		
-		if( ($ele.prev().prev().hasClass('subHeaderTR')) && ( ($ele.next().hasClass('subHeaderTR')) || ($ele.next().hasClass('xtraModTR')) ) )
+/*		if( ($ele.prev().prev().hasClass('subHeaderTR')) && ( ($ele.next().hasClass('subHeaderTR')) || ($ele.next().hasClass('xtraModTR')) ) )
 		{	
 			//add data-attribute
 			$ele.prev().prev('.subHeaderTR').find('input[name^=iMod]').attr('data-delete', true);
@@ -911,7 +947,7 @@ $(document).ready(function() {
 			
 			
 			$("#"+itemID+"_modCountAct").val(parseInt($("#"+itemID+"_modCountAct").val())-1);
-		}
+		}*/
 		
 		//bye-bye
 		$(this).parents("tr:first").hide();

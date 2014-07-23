@@ -148,6 +148,9 @@
 							</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options.");?>"></i>
 							<small class="error"><?echo _("Please choose a type");?></small>
 						</td>
+						<td class="modifierRow modifierRowDeleteHeader hide menuTDTools">
+							<button type="button" class="menuTableButtons secondary optionHeaderDelete" title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
+						</td>
 					</tr>
 					<tr class="menuEdit hide" style="display:none;">
 						<td class="menuTDName">
@@ -284,6 +287,9 @@
 													</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options.");?>"></i>
 													<small class="error"><?echo _("Please choose a type");?></small>
 												</td>
+												<td class="modifierRow modifierRowDeleteHeader hide menuTDTools">
+													<button type="button" class="menuTableButtons secondary optionHeaderDelete" title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
+												</td>												
 											</tr>
 											<tr class="menuEdit hide" style="display:none;"> <!-- This dummy is required! -->
 												<td class="menuTDName">
