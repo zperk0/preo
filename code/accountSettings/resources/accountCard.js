@@ -1,6 +1,6 @@
 
 angular.module('accountSettings.resources').
-  factory('AccountCard', function($resource) {
+  factory('AccountCard', ['$resource',function($resource) {
     
     var AccountCard = $resource('/api/accounts/:accountId/accountcard',{accountId:"@accountId"},{
     	put: {
@@ -9,4 +9,4 @@ angular.module('accountSettings.resources').
     });
 
 	return AccountCard
-  });    
+  }]);    

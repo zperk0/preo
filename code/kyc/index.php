@@ -170,7 +170,8 @@
   <script src="/code/kyc/js/reports/highestOrderHours.js"></script>
   <script src="/code/kyc/js/filters.js"></script>
   <!-- END WATCH -->
-  <!-- All Min --> 
+  
+  
   <script src="/code/kyc/js/all.min.js"></script>
 
 

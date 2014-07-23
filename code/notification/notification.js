@@ -2,6 +2,8 @@ angular.module('notification', ['ngSanitize'])
 
 .controller("confirmModalController",['$scope', '$modalInstance', 'data', 'deffered', '$http', '$templateCache', '$compile','$sce', function( $scope, $modalInstance, data, deffered, $http, $templateCache, $compile,$sce ) {
 
+        var templatePath = '/code/notification/templates/';
+        
         $scope.title = data.title || '';
 
         if ( data.hasOwnProperty('templateFullUrl') && data.templateFullUrl ) {

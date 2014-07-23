@@ -11,7 +11,15 @@ module.exports = function(grunt) {
     kyc:{
       index:'code/kyc/index.php',
       output:'code/kyc/js/all.min.js',
-    }
+    },
+    shop:{
+      index:'code/shop/shop.php',
+      output:'code/shop/all.min.js',
+    },
+    accountSettings:{
+      index:'code/accountSettings/index.php',
+      output:'code/accountSettings/js/all.min.js',
+    }    
   }
 
   grunt.initConfig({
@@ -46,6 +54,20 @@ module.exports = function(grunt) {
         },
         src: ["<%= yeoman.kyc.files %>"],
         dest: "<%= yeoman.kyc.output %>"
+      },
+      shop:{
+        options: {
+          beautify: grunt.option('nomin'),
+        },
+        src: ["<%= yeoman.shop.files %>"],
+        dest: "<%= yeoman.shop.output %>"
+      },
+      accountSettings:{
+        options: {
+          beautify: grunt.option('nomin'),
+        },
+        src: ["<%= yeoman.accountSettings.files %>"],
+        dest: "<%= yeoman.accountSettings.output %>"
       }
     },
     cssmin: {
@@ -91,6 +113,22 @@ module.exports = function(grunt) {
       kyc:{
         files: ["<%= yeoman.kyc.files %>","<%= yeoman.kyc.index %>"],
         tasks: ['uglify:kyc'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      },
+      shop:{
+        files: ["<%= yeoman.shop.files %>","<%= yeoman.shop.index %>"],
+        tasks: ['uglify:shop'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      },
+      shop:{
+        files: ["<%= yeoman.accountSettings.files %>","<%= yeoman.accountSettings.index %>"],
+        tasks: ['uglify:accountSettings'],
         options: {
           spawn: false,
           livereload: true
@@ -170,29 +208,37 @@ module.exports = function(grunt) {
         fs.writeFileSync('code/shared/js_strings.php', file_str);            
   })
 
-  grunt.registerTask('prepareWatch',function(){
-    var file = grunt.file.read(yeomanConfig.kyc.index);
+  grunt.registerTask('prepareWatchApp',function(which){
+    var yeomanObj = yeomanConfig[which];
+    var file = grunt.file.read(yeomanObj.index);
     var fileBlock = String(file.match(/<!-- BEGIN WATCH[\s\S]*END WATCH -->/));  
     var files = fileBlock.match(/\/.*js/g)
     for (var i=0;i<files.length;i++){
       if (files[i][0]==="/")
         files[i] = files[i].slice(1);
     }  
-    yeomanConfig.kyc.files = files;
+    console.log('got files',files)
+    yeomanObj.files = files;
   });
 
-
-  grunt.registerTask('watchkyc',[
-    'prepareWatch',
-    'watch:kyc'  
+  grunt.registerTask('accountSettings',[
+    'prepareWatchApp:accountSettings',
+    'uglify:accountSettings'
   ])
 
+  grunt.registerTask('prepareWatch',[
+    'prepareWatchApp:kyc',
+    'prepareWatchApp:shop',
+    'prepareWatchApp:accountSettings'      
+    ])
+
   grunt.registerTask('watcher',[
+      'prepareWatch',
       'build',
       'watch'
     ])
 
-  grunt.registerTask('minifyjs', ['uglify:build','uglify:angular','replace:jscolor']);
+  grunt.registerTask('minifyjs', ['uglify','replace:jscolor']);
   grunt.registerTask('minifycss', ['sass','cssmin','clean:appCss','replace:fonts']);  
   grunt.registerTask('build', ['minifyjs','minifycss']);
   grunt.registerTask('default', ['watcher']);

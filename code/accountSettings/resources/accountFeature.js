@@ -1,5 +1,5 @@
 angular.module('accountSettings.resources').
-  factory('AccountFeature', function($resource) {
+  factory('AccountFeature', ['$resource',function($resource) {
     
     var AccountFeature = $resource('/api/accounts/:accountId/features/:featureId',{accountId:"@accountId",featureId:"@featureId"},{
     		put:{
@@ -22,4 +22,4 @@ angular.module('accountSettings.resources').
 
 		return AccountFeature;
 
-  });    
+  }]);    

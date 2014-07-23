@@ -1,6 +1,6 @@
 //shop
 angular.module('shop.resources',['ngResource']).
-  factory('Resources', function($resource) {
+  factory('Resources',['$resource', function($resource) {
     
     var Feature = $resource('/api/features/:id',{id:"@id"}, {});
 
@@ -34,4 +34,4 @@ angular.module('shop.resources',['ngResource']).
         StripeCharge:StripeCharge
     };
 
-  });
+  }]);

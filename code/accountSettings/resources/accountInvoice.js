@@ -1,5 +1,5 @@
 angular.module('accountSettings.resources').
-  factory('AccountInvoice', function($resource) {
+  factory('AccountInvoice', ['$resource',function($resource) {
     
     var Invoice = $resource('/api/accounts/:accountId/invoices/:invoiceId',{accountId:"@accountId",invoiceId:"@invoiceId"},{});    
 
@@ -9,4 +9,4 @@ angular.module('accountSettings.resources').
 
 		return Invoice;
 
-  });    
+  }]);    

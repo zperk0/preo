@@ -53,33 +53,36 @@
 
 
   <script src="/js/angular_all.min.js"></script>  
-  <script type="text/javascript" src="/code/accountSettings/app.js"></script>  
+
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script> 
+  <!-- BEGIN WATCH
+  <script src="/code/accountSettings/app.js"></script>  
+  <script src="/code/accountSettings/directives/equals.js"></script>
+  <script src="/code/accountSettings/resources/user.js"></script>
+  <script src="/code/accountSettings/resources/account.js"></script>
+  <script src="/code/accountSettings/resources/accountCard.js"></script>
+  <script src="/code/accountSettings/resources/accountFeature.js"></script>  
+  <script src="/code/accountSettings/resources/invoice.js"></script>  
+  <script src="/code/accountSettings/resources/accountInvoice.js"></script>  
+  <script src="/code/accountSettings/resources/pendingInvoice.js"></script>  
+  <script src="/code/accountSettings/resources/stripeCharge.js"></script>    
+  <script src="/code/accountSettings/controllers/billingCtrl.js"></script>
+  <script src="/code/accountSettings/controllers/profileCtrl.js"></script>
+  <script src="/code/accountSettings/controllers/passwordCtrl.js"></script>
+  <script src="/code/accountSettings/controllers/paymentCtrl.js"></script>
+  <script src="/code/accountSettings/controllers/subscriptionCtrl.js"></script>
+  <script src="/code/accountSettings/controllers/menuCtrl.js"></script>
+  <script src="/code/loader/ajaxInterceptor.js"></script>
+  <script src="/code/notification/notification.js"></script>
+  <!-- END WATCH -->
+
+  <script src="/code/accountSettings/js/all.min.js"></script>
+
   <script>
   //always on session after login
   angular.module('accountSettings').constant('ACCOUNT_ID',<? echo $_SESSION['account_id']?>);
-  angular.module('accountSettings').constant('USER_ID',<? echo $_SESSION['user_id']?>);
-
-
-  
+  angular.module('accountSettings').constant('USER_ID',<? echo $_SESSION['user_id']?>);  
   </script>
-  <script type="text/javascript" src="https://js.stripe.com/v2/"></script> 
-  <script type="text/javascript" src="/code/accountSettings/directives/equals.js"></script>
-  <script type="text/javascript" src="/code/accountSettings/resources/user.js"></script>
-  <script type="text/javascript" src="/code/accountSettings/resources/account.js"></script>
-  <script type="text/javascript" src="/code/accountSettings/resources/accountCard.js"></script>
-  <script type="text/javascript" src="/code/accountSettings/resources/accountFeature.js"></script>  
-  <script type="text/javascript" src="/code/accountSettings/resources/invoice.js"></script>  
-  <script type="text/javascript" src="/code/accountSettings/resources/accountInvoice.js"></script>  
-  <script type="text/javascript" src="/code/accountSettings/resources/pendingInvoice.js"></script>  
-  <script type="text/javascript" src="/code/accountSettings/resources/stripeCharge.js"></script>    
-  <script type="text/javascript" src="/code/accountSettings/controllers/billingCtrl.js"></script>
-  <script type="text/javascript" src="/code/accountSettings/controllers/profileCtrl.js"></script>
-  <script type="text/javascript" src="/code/accountSettings/controllers/passwordCtrl.js"></script>
-  <script type="text/javascript" src="/code/accountSettings/controllers/paymentCtrl.js"></script>
-  <script type="text/javascript" src="/code/accountSettings/controllers/subscriptionCtrl.js"></script>
-  <script type="text/javascript" src="/code/accountSettings/controllers/menuCtrl.js"></script>
-  <script type="text/javascript" src="/code/loader/ajaxInterceptor.js"></script>
-  <script type="text/javascript" src="/code/notification/notification.js"></script>
 
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 

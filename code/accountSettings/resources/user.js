@@ -1,6 +1,6 @@
 
 angular.module('accountSettings.resources').
-  factory('User', function($resource) {
+  factory('User', ['$resource',function($resource) {
     
     var User = $resource('/api/users/:id',{id:"@id"}, {
     	put:{
@@ -9,4 +9,4 @@ angular.module('accountSettings.resources').
     });
 
 	return User
-  });
+  }]);

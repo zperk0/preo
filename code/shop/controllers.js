@@ -1,7 +1,8 @@
 //shop
 var appCtrls = angular.module('shop.controllers',[]);
   
-appCtrls.controller('shopController', function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification,$AjaxInterceptor,$location) {    
+appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES', 'ACCOUNT_ID', '$notification','$AjaxInterceptor','$location',
+  function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification,$AjaxInterceptor,$location) {    
 
     
     function initModalFromPath(){
@@ -311,4 +312,4 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
             });  
     }
 
-});
+}]);
