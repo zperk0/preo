@@ -235,6 +235,12 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   
 }
 
+.widget .flipper, .widget .front, .widget .flip-container{
+  height:100%;
+  width:100%;
+  background:white;
+}
+
 .overflow{
   overflow: hidden;
 }
