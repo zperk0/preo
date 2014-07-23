@@ -1,13 +1,35 @@
 angular.module('notification', ['ngSanitize'])
 .service('$notification', ['$modal', '$q', '$sce', function( $modal, $q, $sce) {
 
-    var confirmModalController = function( $scope, $modalInstance, data, deffered ) {
+    var templatePath = '/code/notification/templates/';
+
+    var confirmModalController = function( $scope, $modalInstance, data, deffered, $http, $templateCache, $compile ) {
 
         $scope.title = data.title || '';
-        $scope.content = data.content || '';
+
+        if ( data.hasOwnProperty('templateFullUrl') && data.templateFullUrl ) {
+            angular.extend($scope, data.scope);
+        } else if ( data.hasOwnProperty('templateUrl') && data.templateUrl ) {
+
+            $scope.templateUrl = data.templateUrl;
+
+            $http.get( templatePath + data.templateUrl/*, { cache: $templateCache }*/).then(function (response) {
+              var scopeChild = $scope.$new();
+
+              angular.extend(scopeChild, data.scope);
+
+              angular.element('#contentPartial').html($compile(response.data)(scopeChild));
+            });
+        } else {
+            $scope.content = data.content || '';
+        }
+
+        if ( data.hasOwnProperty('scope') && data.scope ) {
+            $scope = angular.extend($scope, data.scope);
+        }
 
         $scope.toTrusted = function( html ) {
-            return $sce.trustAsHtml(html);
+            return $sce.trustAsHtml(html || '');
         }
 
         $scope.showTerm = data.showTerm || false;        
@@ -47,8 +69,12 @@ angular.module('notification', ['ngSanitize'])
 
         data = data || {};
 
+        if ( data.hasOwnProperty('templateFullUrl') && data.templateFullUrl ) {
+            data.templateFullUrl = templatePath + data.templateFullUrl;
+        }
+
         var modalCofirm = $modal.open({
-          templateUrl: '/code/notification/notification.htm',
+          templateUrl: data.templateFullUrl || '/code/notification/notification.htm',
           windowClass: 'modal-preoday ' + (data.windowClass || '') ,
           controller: confirmModalController,
           resolve: {

@@ -108,12 +108,19 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                     },
                     tooltip: {
                         borderWidth: 0,
+                        backgroundColor: 'transparent',
                         shadow:false,
                         useHTML:true,
                         positioner: function(boxWidth, boxHeight, point) {
+                            var substract = 20;
+
+                            if ( value.currency ) {
+                                substract = 0;
+                            }
+
                             return {
-                                x: point.plotX - boxWidth/2 +20,
-                                y: point.plotY - boxHeight - 10
+                                x: point.plotX - substract,
+                                y: point.plotY - boxHeight
                             };
                         },
                         formatter: function () {
@@ -121,17 +128,21 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
 
                             if ( this.series.xAxis.tickInterval === TickInterval.MONTH ) {
                                 date = $filter('date')(new Date(this.x), 'MMM yyyy');
+                            } else if ( this.series.xAxis.tickInterval === TickInterval.WEEK ) {
+                                date = moment(this.x).startOf('week').format('DD MMM YYYY') + ' <br /> - <br />' + moment(this.x).endOf('week').format('DD MMM YYYY');
                             } else {
                                 date = $filter('date')(new Date(this.x), 'dd MMM yyyy');
                             }
-                            
-                            var ui_str = '<div style="background-color: #1576B7; border-radius: 5px; color:#fff;font-family:\'Co Text W01 Light\'; text-align:center; padding:18px 8px;">'+date ;                            
+
+                            var ui_str = '<div style="position:relative;"><div style="background-color: #1576B7; border-radius: 5px; color:#fff;font-family:\'Co Text W01 Light\'; text-align:center; padding:18px 8px;">'+date ;                            
                             var tooltipText = (this.y == 1 && value.tooltipText[value.tooltipText.length-1].toLowerCase() ==='s' ) ? value.tooltipText.slice(0,-1) : value.tooltipText;                                                    
-                            ui_str += '<b style="color:#fff;font-size:160%;font-weight:bold;font-family:\'Co Text W01 Bold\';text-align:center;display:block;margin-top:8px;">';                            
+                            ui_str += '<b style="color:#fff;font-size:160%;font-weight:bold;font-family:\'Co Text W01 Bold\';text-align:center;display:block;margin-top:8px;">';
                             if(value.currency)
-                                ui_str += this.y.toFixed(2) +""+ tooltipText+'</b></div>';
+                                ui_str += tooltipText + "" + this.y.toFixed(2) + '</b></div>';
                             else
                                 ui_str += this.y +""+ tooltipText+'</b></div>';
+
+                            ui_str += '<span style="position: absolute; left: 42%; bottom: -8px; background:url(/img/arrowBlue.png) left top no-repeat; width: 15px; height: 8px; display: block;" "></span></div>';
                             return ui_str;
                         }
                     }
@@ -183,7 +194,10 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                 series: [{
                     showInLegend: false,
                     name: '',
-                    data: value.data
+                    data: value.data,
+                    marker: {
+                        symbol: 'url(/img/marker.png)'
+                    }                    
                 }]
             }
         };
@@ -222,8 +236,8 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             };
                         },
                         formatter: function () {
-                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + 
-                            Highcharts.numberFormat(this.y, 1) + '</div>';
+                            return '<div style="position:relative;"><div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + 
+                            Highcharts.numberFormat(this.y, 1) + '</div> <span style="position: absolute; left: 42%; bottom: -15px; background:url(/img/arrowPie.png) left top no-repeat; width: 15px; height: 9px; display: block;" "></span> </div>';
                         }
                     },
                     exporting: {

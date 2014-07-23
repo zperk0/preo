@@ -25,31 +25,50 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
     $scope.accountFeatures = [];
     $scope.finishedLoading = false;      
     getAccountFeatures();
+
+
+    function validateShopCard() {
+      var featureCard = window.sessionStorage.getItem("featureCard");
+
+      if ( featureCard && featureCard != 'false' ) {
+        featureCard = angular.fromJson(featureCard);
+
+        if ( featureCard.card ) {
+          $scope.setSelectedFeature( featureCard.feature );
+          window.sessionStorage.setItem("featureCard", false);
+          getFeaturePrice($scope.selectedFeature.feature, true);
+        }
+      }      
+    }
     
     
     
     function getAccountFeatures() {
       Resources.AccountFeatures.query({accountId:ACCOUNT_ID},function(result){    
         $scope.accountFeatures = result;                
+
+        validateShopCard();
         $AjaxInterceptor.complete(); 
         initModalFromPath();
       });
     }
 
         
-    function getFeaturePrice(feature){
+    function getFeaturePrice(feature, featureCard){
+
+      $AjaxInterceptor.start();
 
       Resources.AccountFeatures.getPrice({accountId:ACCOUNT_ID,featureId:feature.id},
         function(result){                
-          //FIXME find out a way to not have to do this. Maybe change the return value in the server?
-          console.log('got result',result);
-          var price = "";
-          angular.forEach(result,function(res){
-            if (typeof res === "string")
-              price+=res;
-          });          
-          $scope.selectedFeatureCalculatedPrice = Number(price).toFixed(2);
-          $scope.dismissAndShowDialog("purchase");
+          $scope.price = result;
+
+          if ( featureCard ) {
+            $scope.showDialog('purchase');
+          } else {
+            $scope.dismissAndShowDialog("purchase");
+          }
+
+          $AjaxInterceptor.complete();
       });
     }
 
@@ -129,6 +148,7 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
 
     $scope.showDialog = function(which){                   
        var feature = $scope.selectedFeature.feature;  
+       console.log(feature);
        var clickOk;
        var clickCancel;
        var data = null; 
@@ -136,10 +156,12 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
           case "purchase":
             data = { 
               title: feature.name,
-              content: _tr("Your card will be charged ") +"<b>£"+$scope.selectedFeatureCalculatedPrice+ "</b>" + _tr(" for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
+              //content: _tr("Your card will be charged ") +"<b>£"+$scope.selectedFeatureCalculatedPrice+ "</b>" + _tr(" for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
+              scope: $scope.price,
+              templateUrl: 'purchase.htm',
               showTerm: (feature.$terms && feature.$terms.purchase) ? feature.$terms.purchase : false,
               btnOk: _tr('BUY'),            
-              windowClass:'medium'
+              windowClass:'small'
             }        
             clickOk = purchaseSelectedFeature;            
           break; 
@@ -184,7 +206,10 @@ appCtrls.controller('shopController', function($scope, $http, Resources, FEATURE
               btnOk: _tr('ADD CARD'),
               windowClass:'medium'
             }        
-            clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')};            
+            clickOk = function(){
+              window.sessionStorage.setItem("featureCard", angular.toJson({feature: feature.id, card: false}));
+              $scope.navigateTo('/accountSettings#/paymentMethod')
+            };
           break; 
         }
         if ( data ) {

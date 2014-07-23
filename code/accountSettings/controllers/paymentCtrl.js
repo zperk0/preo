@@ -82,6 +82,19 @@ angular.module('accountSettings.controllers')
 
     };
 
+    var verifyShopFeature = function(){
+        var featureCard = window.sessionStorage.getItem("featureCard");
+        
+        if ( featureCard && featureCard !== 'false' ) {
+          featureCard = angular.fromJson(featureCard);
+          featureCard.card = true;
+
+          window.sessionStorage.setItem("featureCard", angular.toJson(featureCard));
+
+          window.location.assign('/shop');
+        }      
+    }
+
     function success(){
       console.log('success');
       $scope.errorMessage = "";
@@ -101,22 +114,29 @@ angular.module('accountSettings.controllers')
                       account.$put({accountId:ACCOUNT_ID},
                       function(result){                          
                           $AjaxInterceptor.complete();
+
+                          verifyShopFeature();
+
                           console.log(result,"updated billing date");
                       },function(){
+                        verifyShopFeature();
                         console.log("error");   
                         $AjaxInterceptor.complete();
                       });
                   },function(){
+                    verifyShopFeature();
                     console.log("error -  ");   
                     $AjaxInterceptor.complete();
                   })
 
               },function (error){
+                  verifyShopFeature();
                   console.log("error",error);                    
                   $AjaxInterceptor.complete();  
               });
           } else {
             $AjaxInterceptor.complete();
+            verifyShopFeature();
           }
       },function(){
         $AjaxInterceptor.complete();

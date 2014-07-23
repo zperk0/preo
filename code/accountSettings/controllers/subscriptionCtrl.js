@@ -67,12 +67,17 @@ angular.module('accountSettings.controllers')
             }        
             clickOk = function(){$scope.updateStatus($scope.selectedFeature,"EXPIRED")}
           break; 
-          case "reinstall":          
+          case "reinstall":
+          console.log($scope.selectedFeature);
+          console.log('reinstalling',$scope.selectedFeature.feature.$terms);
             data = { 
-              content: _tr("This Premium Feature is currently canceled. A new charge will be made to your card before reinstalling this feature.")+"<br/><br/><b>"+_tr("Are you sure you want to reinstall this Premium Feature?")+"<b/>",
+              //content: _tr("This Premium Feature is currently canceled. A new charge will be made to your card before reinstalling this feature.")+"<br/><br/><b>"+_tr("Are you sure you want to reinstall this Premium Feature?")+"<b/>",
+              title: 'Reinstall ' + $scope.selectedFeature.feature.name,
+              scope: $scope.price,
+              templateUrl: 'purchase.htm',              
               showTerm: ($scope.selectedFeature.feature.$terms && $scope.selectedFeature.feature.$terms.purchase) ? $scope.selectedFeature.feature.$terms.purchase : false,
               btnOk: _tr('REINSTALL'),            
-              windowClass:'medium'
+              windowClass:'small'
             }   
             clickOk = function(){purchaseFeature($scope.selectedFeature)}
           break;          
@@ -159,8 +164,13 @@ angular.module('accountSettings.controllers')
     }
 
     $scope.reinstallAccountFeature = function(accountFeature){
-      $scope.selectedFeature = accountFeature;
-      $scope.showDialog("reinstall");
+
+      AccountFeature.getPrice({accountId:ACCOUNT_ID,featureId:accountFeature.featureId},
+        function(result){                
+          $scope.price = result;
+          $scope.selectedFeature = accountFeature;
+          $scope.showDialog("reinstall");
+      });
     }
 
     $scope.removeAccountFeature = function(accountFeature){

@@ -3528,3 +3528,28 @@ button.preodayButton.noclick{
   font-weight: 700;
   cursor: pointer;
 }
+
+.content-purchase{
+  padding: 0 20px;
+}
+
+.content-purchase .row{
+  border-bottom: 1px solid #B9BBBD;
+  padding: 10px 0;
+}
+
+.content-purchase .row p{
+  width: 100%;
+  display: table;
+  margin-bottom: 5px;
+}
+
+.content-purchase .row p span.title{
+  width: 70%;
+  text-align: left;
+}
+
+.content-purchase .row p span.price{
+  width: 30%;
+  text-align: right;
+}
