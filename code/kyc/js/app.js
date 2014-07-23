@@ -44,42 +44,42 @@ angular.module('kyc', [
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {templateUrl: '/code/kyc/partials/dashboard.php', controller: 'DashboardCtrl',
     resolve:{
-       load: function ($route, AllCharts,$AjaxInterceptor) {          
+       load: ['$route', 'AllCharts','$AjaxInterceptor', function ($route, AllCharts,$AjaxInterceptor) {          
           $AjaxInterceptor.start();          
           return AllCharts.promise;            
-        }
+        }]
     }
   });
   $routeProvider.when('/stock', {templateUrl: '/code/kyc/partials/stock.php', controller: 'StockCtrl',
       resolve:{
-       load: function ($route, OrderService,$AjaxInterceptor) {          
+       load: ['$route', 'OrderService','$AjaxInterceptor', function ($route, OrderService,$AjaxInterceptor) {          
           $AjaxInterceptor.start();
           return OrderService.load();            
-        }
+        }]
     }
   });
   $routeProvider.when('/customers', {templateUrl: '/code/kyc/partials/customers.php', controller: 'CustomersCtrl',
     resolve:{
-       load: function ($route, OrderService,$AjaxInterceptor) {    
+       load: ['$route', 'OrderService','$AjaxInterceptor', function ($route, OrderService,$AjaxInterceptor) {    
           $AjaxInterceptor.start();      
           return OrderService.load();            
-        }
+        }]
     }
   });
   $routeProvider.when('/reports', {templateUrl: '/code/kyc/partials/reports.php', controller: 'ReportsCtrl',
     resolve:{
-       load: function ($route, AllReports,$AjaxInterceptor) {          
+       load: ['$route', 'AllReports','$AjaxInterceptor', function ($route, AllReports,$AjaxInterceptor) {          
           $AjaxInterceptor.start();
           return AllReports.init();            
-        }
+        }]
     }
   });
   $routeProvider.when('/stream', {templateUrl: '/code/kyc/partials/stream.php', controller: 'StreamCtrl',
      resolve: {
-        load: function ($route, OrderService,$AjaxInterceptor) {  
+        load: ['$route', 'OrderService','$AjaxInterceptor', function ($route, OrderService,$AjaxInterceptor) {  
           $AjaxInterceptor.start();        
           return OrderService.load();            
-        }
+        }]
     }
   });
   $routeProvider.otherwise({redirectTo: '/dashboard'});
