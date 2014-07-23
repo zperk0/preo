@@ -26,8 +26,9 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 
 		$scope.update = function(){						
 			$AjaxInterceptor.start();
+			console.log("updating",$scope.start_date,$scope.end_date)
 			setTimeout(function(){
-				AllCharts.prepareCharts(OrderService.getOrders(),moment($scope.start_date),moment($scope.end_date),$scope.getSelectedOutlets());
+				AllCharts.init(moment($scope.start_date),moment($scope.end_date),$scope.currencySymbol,$scope.getSelectedOutlets());				
 				$route.reload();
 				$AjaxInterceptor.complete();
 			},500);
@@ -42,6 +43,12 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		$scope.getSelectedOutlets = function(){
 			return $scope.outlets.filter(function(data){
 				return data.selected === true;
+			});
+		}
+
+		$scope.findOutlet = function(id){
+			return $scope.outlets.filter(function(data){
+				return data.selected === true && data.id === id;
 			});
 		}
 

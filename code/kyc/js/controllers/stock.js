@@ -62,21 +62,25 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 			var minDate = moment($scope.start_date)
       var maxDate = moment($scope.end_date)
 			angular.forEach(allOrders,function(row){					    
-        var orderData = moment(row.created);        
-        if (orderData >= minDate && orderData <= maxDate){
-	        	angular.forEach(row.items,function(item){
-						var itemId  = item.menuItemId;
-							if ($scope.stock[itemId] === undefined){						
-								$scope.stock[itemId] = {
-										name:item.name,
-										quantity:item.qty
-								}	
-							}
-							else{
-									$scope.stock[itemId].quantity+=item.qty;
-							};																			
-					})					
-      		}
+        var orderData = moment(row.created);                
+        console.log('row outletId ', row.outletId);
+        console.log('parent: outletId ', $scope.$parent.outlets);        
+        if ($scope.$parent.getSelectedOutlets().length === 0 || $scope.$parent.findOutlet(row.outletId).length >=1 ) {
+	        if (orderData >= minDate && orderData <= maxDate){
+		        	angular.forEach(row.items,function(item){
+							var itemId  = item.menuItemId;
+								if ($scope.stock[itemId] === undefined){						
+									$scope.stock[itemId] = {
+											name:item.name,
+											quantity:item.qty
+									}	
+								}
+								else{
+										$scope.stock[itemId].quantity+=item.qty;
+								};																			
+						})					
+	      	}
+	      }
 			});											
 		}
 

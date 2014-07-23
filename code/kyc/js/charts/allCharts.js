@@ -24,11 +24,13 @@ angular.module('kyc.charts')
 
 
 
-    function init(minDate,maxDate,currencySymbol){
+    function init(minDate,maxDate,currencySymbol,selectedOutlets){
         currency = currencySymbol;
         initialMinDate = minDate;
         initialMaxDate = maxDate;
-        OrderService.load(prepareCharts);
+        OrderService.load(function(orders){
+            prepareCharts(orders,minDate,maxDate,selectedOutlets)
+        });
     }
         
 
@@ -51,8 +53,7 @@ angular.module('kyc.charts')
 
             angular.forEach(charts,function(chart,key){
                 chart.clearData();
-            });               
-
+            });                           
             angular.forEach(orders,function(order){
                 if ( selectedOutlets.length === 0 || findOutlet(selectedOutlets,order.outletId) ){                    
                     var created = new Date(order.created).getTime();                

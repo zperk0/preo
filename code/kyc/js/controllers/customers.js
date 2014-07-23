@@ -66,19 +66,21 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
       var maxDate = moment($scope.end_date)
 			angular.forEach(allOrders,function(row){						
 		        var orderData = moment(row.created);        
-		        if (orderData >= minDate && orderData <= maxDate){
-								var customerId  = row.userId;
-								if ($scope.customers[customerId] === undefined){
-									$scope.customers[customerId] = {
-											name:row.user.firstName+" "+row.user.lastName,
-											totalSpent:Number(row.total.toFixed(2)),
-											emailAddress:row.user.username,
-											marketing: (row.user.optinLoyalty || row.user.optinOffers || row.user.optinOther) ? _tr("Accepts") : " - "
-									}	
-								}
-								else{
-										$scope.customers[customerId].totalSpent = Number(($scope.customers[customerId].totalSpent + row.total).toFixed(2));
-								};																			
+		        if ($scope.$parent.getSelectedOutlets().length  === 0 || $scope.$parent.findOutlet(row.outletId).length >=1 ) {
+			        if (orderData >= minDate && orderData <= maxDate){
+									var customerId  = row.userId;
+									if ($scope.customers[customerId] === undefined){
+										$scope.customers[customerId] = {
+												name:row.user.firstName+" "+row.user.lastName,
+												totalSpent:Number(row.total.toFixed(2)),
+												emailAddress:row.user.username,
+												marketing: (row.user.optinLoyalty || row.user.optinOffers || row.user.optinOther) ? _tr("Accepts") : " - "
+										}	
+									}
+									else{
+											$scope.customers[customerId].totalSpent = Number(($scope.customers[customerId].totalSpent + row.total).toFixed(2));
+									};																			
+							}
 						}
 			});
 		}
