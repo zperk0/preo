@@ -42,10 +42,7 @@ module.exports = function(grunt) {
       },
       kyc:{
         options: {
-          beautify: true,
-          mangle:false,
-          compress:false,
-          sourceMap:true,
+          beautify: grunt.option('nomin'),
         },
         src: ["<%= yeoman.kyc.files %>"],
         dest: "<%= yeoman.kyc.output %>"

@@ -1,9 +1,6 @@
 angular.module('notification', ['ngSanitize'])
-.service('$notification', ['$modal', '$q', '$sce', function( $modal, $q, $sce) {
 
-    var templatePath = '/code/notification/templates/';
-
-    var confirmModalController = function( $scope, $modalInstance, data, deffered, $http, $templateCache, $compile ) {
+.controller("confirmModalController",['$scope', '$modalInstance', 'data', 'deffered', '$http', '$templateCache', '$compile','$sce', function( $scope, $modalInstance, data, deffered, $http, $templateCache, $compile,$sce ) {
 
         $scope.title = data.title || '';
 
@@ -62,7 +59,10 @@ angular.module('notification', ['ngSanitize'])
             deffered.reject({ acceptTerm: $scope.acceptTerm });
         };
 
-    };
+}])
+.service('$notification', ['$modal', '$q', '$sce', function( $modal, $q, $sce) {
+
+    var templatePath = '/code/notification/templates/';
 
     var confirm = function( data ) {
         var deffered = $q.defer();
@@ -76,7 +76,7 @@ angular.module('notification', ['ngSanitize'])
         var modalCofirm = $modal.open({
           templateUrl: data.templateFullUrl || '/code/notification/notification.htm',
           windowClass: 'modal-preoday ' + (data.windowClass || '') ,
-          controller: confirmModalController,
+          controller: 'confirmModalController',
           resolve: {
             data: function () {
               return data;
