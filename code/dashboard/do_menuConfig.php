@@ -191,7 +191,11 @@
 			$data['menuId'] 		= $menu_id;
 			$data['sectionId'] 		= $section_id; 
 			$data['position'] 		= $item['position'];
-			$data['mealDeal'] 		= $item['md'];
+
+
+			if ( isset($item['md'])) {
+				$data['mealDeal'] 		= $item['md'];
+			}
 			
 			if($item['delete']) //delete item
 			{
