@@ -1,6 +1,6 @@
 var directives = angular.module('delivery.directives',[]);
 
-directives.directive("percent", function($filter){
+directives.directive("percent", ['$filter', function($filter){
     var p = function(viewValue){      
       var m = viewValue.match(/^(\d+)/);
       if (m !== null){        
@@ -18,7 +18,7 @@ directives.directive("percent", function($filter){
           ctrl.$formatters.unshift(f);
       }
     };
-});
+}]);
 
 //https://github.com/fiestah/angular-money-directive/blob/master/angular-money-directive.js
 directives.directive('currency', function () {

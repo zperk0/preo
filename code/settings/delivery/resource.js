@@ -1,5 +1,5 @@
 angular.module('delivery.resources',['ngResource']).
-  factory('Resources', function($resource) {
+  factory('Resources', ['$resource', function($resource) {
     
     var Venue = $resource('/api/venues/:id',{id:"@id"}, {
         patch: {
@@ -26,4 +26,4 @@ angular.module('delivery.resources',['ngResource']).
         VenueMessages:VenueMessages
     };
 
-  });
+}]);

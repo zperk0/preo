@@ -1,6 +1,6 @@
 
 angular.module('delivery.controllers',[]).
-  controller('deliveryController', function($scope,$http,Resources,$q, VENUE_ID) {
+  controller('deliveryController', ['$scope','$http','Resources','$q', 'VENUE_ID', function($scope,$http,Resources,$q, VENUE_ID) {
     $scope.isPosting = false;
   	$scope.selected =1;    
     $scope.triedSubmit = false;
@@ -221,4 +221,4 @@ angular.module('delivery.controllers',[]).
     }
 
     
-  });
+}]);

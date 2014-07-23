@@ -19,7 +19,11 @@ module.exports = function(grunt) {
     accountSettings:{
       index:'code/accountSettings/index.php',
       output:'code/accountSettings/js/all.min.js',
-    }    
+    },
+    delivery:{
+      index:'code/settings/delivery/delivery-view.php',
+      output:'code/settings/delivery/js/all.min.js',
+    }  
   }
 
   grunt.initConfig({
@@ -54,6 +58,13 @@ module.exports = function(grunt) {
         },
         src: ["<%= yeoman.kyc.files %>"],
         dest: "<%= yeoman.kyc.output %>"
+      },
+      delivery:{
+        options: {
+          beautify: grunt.option('nomin'),
+        },
+        src: ["<%= yeoman.delivery.files %>"],
+        dest: "<%= yeoman.delivery.output %>"
       },
       shop:{
         options: {
@@ -220,16 +231,12 @@ module.exports = function(grunt) {
     console.log('got files',files)
     yeomanObj.files = files;
   });
-
-  grunt.registerTask('accountSettings',[
-    'prepareWatchApp:accountSettings',
-    'uglify:accountSettings'
-  ])
-
+  
   grunt.registerTask('prepareWatch',[
     'prepareWatchApp:kyc',
     'prepareWatchApp:shop',
-    'prepareWatchApp:accountSettings'      
+    'prepareWatchApp:accountSettings',
+    'prepareWatchApp:delivery',
     ])
 
   grunt.registerTask('watcher',[

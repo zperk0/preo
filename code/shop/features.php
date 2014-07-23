@@ -100,4 +100,4 @@ features.sort(function(a, b){
 				return 1
 })
 if (window.angular)
-	angular.module('features').constant('FEATURES', features)
+	angular.module('features',[]).constant('FEATURES', features)

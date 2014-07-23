@@ -136,10 +136,14 @@
   <script src="/js/angular_all.min.js"></script>
 
 
-  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/app.js"></script>
-  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/resource.js"></script>
-  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/controllers.js"></script>
-  <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/delivery/directive.js"></script>
+  <!-- BEGIN WATCH
+  <script src="/code/settings/delivery/app.js"></script>
+  <script src="/code/settings/delivery/resource.js"></script>
+  <script src="/code/settings/delivery/controllers.js"></script>
+  <script src="/code/settings/delivery/directive.js"></script>
+  <!-- END WATCH -->  
+
+  <script src="/code/settings/delivery/js/all.min.js"></script>
   <script> 
     angular.module('delivery').constant('VENUE_ID', <? echo json_encode($_SESSION['venue_id']) ?>)
   </script>
