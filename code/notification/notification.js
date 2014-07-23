@@ -3,7 +3,7 @@ angular.module('notification', ['ngSanitize'])
 
     var templatePath = '/code/notification/templates/';
 
-    var confirmModalController = function( $scope, $modalInstance, data, deffered, $http, $templateCache, $compile ) {
+    var confirmModalController = function( $scope, $modalInstance, data, deffered, $http, $templateCache, $compile, $timeout ) {
 
         $scope.title = data.title || '';
 
@@ -13,13 +13,28 @@ angular.module('notification', ['ngSanitize'])
 
             $scope.templateUrl = data.templateUrl;
 
-            $http.get( templatePath + data.templateUrl/*, { cache: $templateCache }*/).then(function (response) {
+            var load = function( html ) {
               var scopeChild = $scope.$new();
 
               angular.extend(scopeChild, data.scope);
 
-              angular.element('#contentPartial').html($compile(response.data)(scopeChild));
-            });
+              $timeout(function(){
+                angular.element('#contentPartial').html($compile(html)(scopeChild));
+              });
+            };
+
+            var dataCache = $templateCache.get(templatePath + data.templateUrl);
+
+            if ( dataCache ) {
+                load( dataCache );
+            } else {
+
+                $http.get( templatePath + data.templateUrl).then(function (response) {
+                  $templateCache.put(templatePath + data.templateUrl, response.data);
+                  load(response.data);
+                });
+
+            }
         } else {
             $scope.content = data.content || '';
         }
