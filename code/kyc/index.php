@@ -10,8 +10,7 @@
   
   <link rel="stylesheet" href="/code/kyc/js/directives/multiselect/multiselect.css"/>  
   <link rel="stylesheet" href="/code/kyc/css/app.css"/>    
-  <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
-
+  
 <div ng-app="kyc" ng-controller='MenuCtrl' ng-init="showDateFilter = true" class='kycWrapper'>  
   
    <div class="container-fluid faixa-orange">

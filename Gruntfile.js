@@ -54,7 +54,8 @@ module.exports = function(grunt) {
       },
       kyc:{
         options: {
-          beautify: grunt.option('nomin'),
+          beautify:  grunt.option('nomin'),
+          mangle: false          
         },
         src: ["<%= yeoman.kyc.files %>"],
         dest: "<%= yeoman.kyc.output %>"
@@ -231,14 +232,14 @@ module.exports = function(grunt) {
     console.log('got files',files)
     yeomanObj.files = files;
   });
-  
+
   grunt.registerTask('prepareWatch',[
     'prepareWatchApp:kyc',
     'prepareWatchApp:shop',
     'prepareWatchApp:accountSettings',
     'prepareWatchApp:delivery',
     ])
-
+  
   grunt.registerTask('watcher',[
       'prepareWatch',
       'build',
