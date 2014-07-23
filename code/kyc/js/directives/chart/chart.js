@@ -10,7 +10,9 @@ angular.module('kyc.directives').
   		scope: {
   			chart: '=element'
   		},
-  		link: function( ng, elem, attrs ) {                
+  		link: function( ng, elem, attrs ) {
+
+        ng.ACCOUNT_ID = ACCOUNT_ID;
         
         if ( !ng.chart.display ) {
           elem.parent().hide();
@@ -72,6 +74,7 @@ angular.module('kyc.directives').
               templateUrl: modal_url('chart'),
               windowClass: windowClass + ' modal-preoday modal-chart',
               controller: function( $scope ) {
+                $scope.ACCOUNT_ID = ACCOUNT_ID;
 
                 $scope.optionHasData = function(option){       
                   return option.data.length > 1 && +option.value > 0 ? 1 : 0 ;
@@ -111,7 +114,15 @@ angular.module('kyc.directives').
 
                 $scope.cancel = function() {
                     mod.close();
-                };                
+                };
+
+                $scope.exportPdf= function(){
+                  $scope.pdfData = $scope.chart.value.getPdf();          
+                }
+
+                $scope.exportCsv = function(){
+                  $scope.csvData = $scope.chart.value.getCsv();                    
+                }
 
                 $scope.title = ng.chart.title;
 
