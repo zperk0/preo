@@ -44,6 +44,14 @@ angular.module('kyc.directives')
           mod.close();
       };                
 
+      $scope.exportPdf= function(){
+          $scope.pdfData = $scope.chart.value.getPdf();          
+        }
+
+      $scope.exportCsv = function(){
+        $scope.csvData = $scope.chart.value.getCsv();                    
+      }
+
       $scope.title = ng.chart.title;
 
       $scope.selectOption = function( option ) {
@@ -86,7 +94,9 @@ angular.module('kyc.directives')
   		scope: {
   			chart: '=element'
   		},
-  		link: function( ng, elem, attrs ) {                
+  		link: function( ng, elem, attrs ) {
+
+        ng.ACCOUNT_ID = ACCOUNT_ID;
         
         if ( !ng.chart.display ) {
           elem.parent().hide();

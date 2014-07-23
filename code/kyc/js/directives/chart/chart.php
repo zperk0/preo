@@ -68,15 +68,13 @@
 				<h4><? echo _("Export as...") ?></h4>
 
 				<div class="buttons"> 
-				<!--FIXME I can't figure out a way to use a dynamic action on this form using javascript only. for some reason if we try to alter
-									the action to use the correct account id, the form is not submitted. Find a way to do it correctly and replace this -->
-					<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/post' method='POST' ng-submit='exportPdf()'>
+					<form action="{{ '/api/accounts/' + ACCOUNT_ID + '/exports/pdfs/post' }}" method='POST' ng-submit='exportPdf()'>
 						<input name='data' value='{{pdfData}}' type='hidden'/>
 							<button  type='submit'>
 								<? echo _("PDF")?>
 							</button>
 					</form>
-					<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/csv/post' method='POST' ng-submit='exportCsv()'>						
+					<form action="{{ '/api/accounts/' + ACCOUNT_ID + '/exports/csv/post' }}" method='POST' ng-submit='exportCsv()'>						
 						<input name='data' value='{{csvData}}' type='hidden'/>
 							<button  type='submit'>
 								<? echo _("CSV")?>
