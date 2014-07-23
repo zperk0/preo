@@ -57,17 +57,17 @@ angular.module('kyc.charts')
                 }
             }
         }
-        angular.forEach(top5,function(value,index){
-            if (value.name === undefined){                
-                delete top5[index];
-            }
+        top5 = _.filter(top5,function(row){
+            return row.name !== undefined
         })
         
     }
 
 	function getData(){
-    	return top5;
+        return top5;
     }
+
+
     function getType(){
     	return type; 
     }
@@ -99,7 +99,7 @@ angular.module('kyc.charts')
             title:title,
             startDate: minTimestamp,
             endDate: maxTimestamp,            
-            dataJson: JSON.stringify(getData()),
+            dataJson: angular.toJson(getData()),
             categories: getCategories()
         }
     }
