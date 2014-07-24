@@ -1,3 +1,10 @@
+<div class="loading" id="loadingConfig">
+  <div class="background-loading"></div>
+  <div class="loading-content">
+    <img src="/img/spinner.gif" class="img-responsive" alt="Carregando..." title="Carregando..." />
+  </div>
+</div>
+
 <?if(!isset($_SESSION['menu_edit_on'])) $_SESSION['menu_edit_on']=0;?>
 <form id="menuConfigForm" method="POST" data-abide>
 	<div class="row">
@@ -392,10 +399,19 @@
 	</div>
 </form>
 
+
+<script type="text/javascript">
+
+(function($){
+	$('#loadingConfig').hide();
+}(jQuery))
+
+</script>
 <?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
 $(document).ready(function() {
+
 	$('.progressIndicator').css('width','200%');
 	$('.progressIndicator').attr('title', <? echo json_encode(_("45&#37 done, now for the fun bit!")) ?>);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
@@ -403,12 +419,3 @@ $(document).ready(function() {
 });
 </script>
 <?}?>
-
-
-
-<div class="loading" id="loadingConfig">
-  <div class="background-loading"></div>
-  <div class="loading-content">
-    <img src="/img/spinner.gif" class="img-responsive" alt="Carregando..." title="Carregando..." />
-  </div>
-</div>
