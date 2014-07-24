@@ -1,4 +1,5 @@
 angular.module('kyc.reports')
+angular.module('kyc.reports')
 .factory('HighestOrderDays',[function(){
 
 	var title = _tr("Highest Order Days");
@@ -15,8 +16,8 @@ angular.module('kyc.reports')
 				angular.forEach(day,function(order){					
 					if (tempData [key] === undefined){
 						tempData [key] = {
-							day:order.created,
-							date:order.created,
+							day:order.paid,
+							date:order.paid,
 							numberOfOrders:1
 						}
 					} else {

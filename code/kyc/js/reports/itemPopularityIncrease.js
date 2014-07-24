@@ -19,7 +19,7 @@ angular.module('kyc.reports')
 						$lastMonthQuantitySold:0,
 					}
 				}									
-				var created = moment(item.created).format('X');				
+				var created = moment(item.paid).format('X');				
 				if (created >= thisMonth){
 			  	tempData[item.menuItemId].$thisMonthQuantitySold+=item.qty;
 				}

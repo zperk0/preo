@@ -15,7 +15,7 @@ angular.module('kyc.reports')
 				angular.forEach(day,function(order){					
 					if (tempData [key] === undefined){
 						tempData [key] = {
-							timeSlot:moment(order.created).format("HH:00"),
+							timeSlot:moment(order.paid).format("HH:00"),
 							valueSold:order.total
 						}
 					} else {

@@ -12,7 +12,6 @@ angular.module('kyc.reports')
 		})
 
 		angular.forEach(reportsData.customerOrders,function(customerOrder){				
-			var created = moment(customerOrder.created);		
 			if (data[customerOrder.id] === undefined){
 					data[customerOrder.id] = {
 						numberOfOrders:customerOrder.orders,

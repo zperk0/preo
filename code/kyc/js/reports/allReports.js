@@ -124,9 +124,9 @@ angular.module('kyc.reports')
 			angular.forEach(orders,function(order){
 				
 				//get the start of each day to group by
-				order.day = moment(order.created).startOf('day').valueOf();
+				order.day = moment(order.paid).startOf('day').valueOf();
 				//get the hour of the order only				
-				order.hour = moment(order.created).hour();
+				order.hour = moment(order.paid).hour();
 			})
 			return orders;
 		}
