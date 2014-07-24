@@ -403,3 +403,12 @@ $(document).ready(function() {
 });
 </script>
 <?}?>
+
+
+
+<div class="loading" id="loadingConfig">
+  <div class="background-loading"></div>
+  <div class="loading-content">
+    <img src="/img/spinner.gif" class="img-responsive" alt="Carregando..." title="Carregando..." />
+  </div>
+</div>

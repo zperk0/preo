@@ -470,7 +470,6 @@ $(document).ready(function() {
 	
 	$('.switch').each(function(){
 		var val = $(this).find("input[type=radio]:checked").val() == '0'
-		console.log('this.val:' + val);
 		if (val){
 			$(this).addClass("off")
 		}
@@ -1833,16 +1832,24 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	var isSubmitForm = true;
+
+	var $loadingContent = $('#loadingConfig');
 	
 	$("#menuConfigForm").on('valid', function (event) {
+		console.log('valid form');
 		//START
 		//var start = new Date().getTime();
 		
 		//prevent multiple submissions
 		var newSubmitTime = new Date().getTime();
-		
-		if( (newSubmitTime - submitTime) > 400 )
+
+		if(  isSubmitForm && (newSubmitTime - submitTime) > 400 )
 		{
+
+			$loadingContent.show();
+			isSubmitForm = false;
 			//who be clickin'?
 			var editingSkip = 0;
 			if ($(this).data('clicked').is('[id=menuSaveButtonE]')) editingSkip = 1;
@@ -1867,149 +1874,188 @@ $(document).ready(function() {
 			//SECTIONS
 			menu['sections'] = {};
 			secCounter = 1;
-			$("input[name^=mSectionName]").each(function(){
-				var sID = $(this).data('id');
+
+			$inputsSections = $("input[name^=mSectionName]");
+
+			for (var i = 0, len = $inputsSections.length; i < len; i++) {
+				var $inputSectionIndividual = $( $inputsSections[i] );
+
+				var sID = $inputSectionIndividual.data('id');
 				
 				if(sID != "section0s")
 				{
 					menu['sections'][secCounter] = {};
+
+					var menuSecionOneNivel = menu['sections'][secCounter];
 					
-					menu['sections'][secCounter]['id'] 			= sID.replace(/section/,'');
-					menu['sections'][secCounter]['name'] 		= $(this).val();
-					menu['sections'][secCounter]['position'] 	= secCounter;
+					menuSecionOneNivel['id'] 			= sID.replace(/section/,'');
+					menuSecionOneNivel['name'] 		= $inputSectionIndividual.val();
+					menuSecionOneNivel['position'] 	= secCounter;
 					
-					menu['sections'][secCounter]['insert'] 		= $(this).data('insert');
-					menu['sections'][secCounter]['edit'] 		= $(this).data('edit');
-					menu['sections'][secCounter]['delete'] 		= $(this).data('delete');
-					menu['sections'][secCounter]['md'] 			= $(this).data('md');
+					menuSecionOneNivel['insert'] 		= $inputSectionIndividual.data('insert');
+					menuSecionOneNivel['edit'] 		= $inputSectionIndividual.data('edit');
+					menuSecionOneNivel['delete'] 		= $inputSectionIndividual.data('delete');
+					menuSecionOneNivel['md'] 			= $inputSectionIndividual.data('md');
 					
-					menu['sections'][secCounter]['menuId'] 		= menu['id'];
+					menuSecionOneNivel['menuId'] 		= menu['id'];
 					
 					//ITEMS
-					menu['sections'][secCounter]['items'] = {};
-					$fullSection = $(this).parents("#menuSectionRow");
+					menuSecionOneNivel['items'] = {};
+					$fullSection = $inputSectionIndividual.parents("#menuSectionRow");
 					itemCounter = 1;
-					$fullSection.find('.tablesection'+secCounter).each(function(){
-						var iID = $(this).find('input[name^=iName]').data('id');
+
+					var $tablesSection = $fullSection.find('.tablesection'+secCounter);
+
+					for (var j = 0, lenTable = $tablesSection.length; j < lenTable; j++ ) {
+						
+						var $tableSectionUnique = $( $tablesSection[j] );
+					
+					
+						var iID = $tableSectionUnique.find('input[name^=iName]').data('id');
 						
 						if(iID != "item0i")
 						{
-							menu['sections'][secCounter]['items'][itemCounter] = {};
+							var $inputIPrice = $tableSectionUnique.find('input[name^=iPrice]');
+							var $inputName = $tableSectionUnique.find('input[name^=iName]');
+
+							menuSecionOneNivel[itemCounter] = {};
+
+							var menuSectionOneNivelItem = menuSecionOneNivel[itemCounter];
 							
-							menu['sections'][secCounter]['items'][itemCounter]['id'] 			= iID.replace(/item/,'');
-							menu['sections'][secCounter]['items'][itemCounter]['name'] 			= $(this).find('input[name^=iName]').val();
-							menu['sections'][secCounter]['items'][itemCounter]['description']	= $(this).find('input[name^=iDesc]').val();
-							if($(this).find('input[name^=iPrice]').val() == '')
-								menu['sections'][secCounter]['items'][itemCounter]['price'] 	= 0;
+							menuSectionOneNivelItem['id'] 			= iID.replace(/item/,'');
+							menuSectionOneNivelItem['name'] 			= $tableSectionUnique.find('input[name^=iName]').val();
+							menuSectionOneNivelItem['description']	= $tableSectionUnique.find('input[name^=iDesc]').val();
+							if($inputIPrice.val() == '')
+								menuSectionOneNivelItem['price'] 	= 0;
 							else	
-								menu['sections'][secCounter]['items'][itemCounter]['price'] 	= $(this).find('input[name^=iPrice]').val();
-							menu['sections'][secCounter]['items'][itemCounter]['visible'] 		= $(this).find('input[name^=iVisi]:checked').val();
-							menu['sections'][secCounter]['items'][itemCounter]['quantity'] 		= 0;
-							menu['sections'][secCounter]['items'][itemCounter]['position'] 		= parseInt(itemCounter+1000);
+								menuSectionOneNivelItem['price'] 	= $inputIPrice.val();
+							menuSectionOneNivelItem['visible'] 		= $tableSectionUnique.find('input[name^=iVisi]:checked').val();
+							menuSectionOneNivelItem['quantity'] 		= 0;
+							menuSectionOneNivelItem['position'] 		= parseInt(itemCounter+1000);
 								
-							menu['sections'][secCounter]['items'][itemCounter]['insert'] 		= $(this).find('input[name^=iName]').data('insert');
-							menu['sections'][secCounter]['items'][itemCounter]['edit'] 			= $(this).find('input[name^=iName]').data('edit');
-							menu['sections'][secCounter]['items'][itemCounter]['delete'] 		= $(this).find('input[name^=iName]').data('delete');
-							menu['sections'][secCounter]['items'][itemCounter]['mdi'] 			= $(this).find('input[name^=iName]').data('mdi');
-							menu['sections'][secCounter]['items'][itemCounter]['md'] 			= $(this).find('input[name^=iName]').data('md');
+							menuSectionOneNivelItem['insert'] 		= $inputName.data('insert');
+							menuSectionOneNivelItem['edit'] 			= $inputName.data('edit');
+							menuSectionOneNivelItem['delete'] 		= $inputName.data('delete');
+							menuSectionOneNivelItem['mdi'] 			= $inputName.data('mdi');
+							menuSectionOneNivelItem['md'] 			= $inputName.data('md');
 								
-							menu['sections'][secCounter]['items'][itemCounter]['menuId'] 		= menu['id'];
-							menu['sections'][secCounter]['items'][itemCounter]['venueId'] 		= $('#venueID').val();
-							menu['sections'][secCounter]['items'][itemCounter]['sectionId'] 	= menu['sections'][secCounter]['id'];
+							menuSectionOneNivelItem['menuId'] 		= menu['id'];
+							menuSectionOneNivelItem['venueId'] 		= $('#venueID').val();
+							menuSectionOneNivelItem['sectionId'] 	= menuSecionOneNivel['id'];
 							
 							//MODIFIERS
-							menu['sections'][secCounter]['items'][itemCounter]['modifiers'] = {};
-							$fullItem = $(this).find(".subHeaderTR");
+							menuSectionOneNivelItem['modifiers'] = {};
+							$fullItem = $tableSectionUnique.find(".subHeaderTR");
 							modCounter = 1;
-							$fullItem.each(function(){
-								var mID = $(this).find('input[name^=iMod]').data('id');
+
+							for (var k = 0, lenItem = $fullItem.lenght; k < lenItem; k++) {
+
+								var $fullItemUnique = $( $fullItem[k] );
+							
+								var mID = $fullItemUnique.find('input[name^=iMod]').data('id');
 								
 								if(mID != "mod0m")
 								{
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter] = {};
+									var menuSectionOneNivelItemModifiers = menuSectionOneNivelItem['modifiers'];
+
+									menuSectionOneNivelItemModifiers[modCounter] = {};
+
+									var menuSectionOneNivelItemModifiersCounter = menuSectionOneNivelItemModifiers[modCounter];
 									
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['id'] 		= mID.replace(/mod/,'');
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['name'] 	= $(this).find('input[name^=iMod]').val();
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['position'] = modCounter;
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['type']	 	= $(this).find('select[name^=iModType]').val();
-									switch(menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['type'])
+									menuSectionOneNivelItemModifiersCounter['id'] 		= mID.replace(/mod/,'');
+									menuSectionOneNivelItemModifiersCounter['name'] 	= $fullItemUnique.find('input[name^=iMod]').val();
+									menuSectionOneNivelItemModifiersCounter['position'] = modCounter;
+									menuSectionOneNivelItemModifiersCounter['type']	 	= $fullItemUnique.find('select[name^=iModType]').val();
+									switch(menuSectionOneNivelItemModifiersCounter['type'])
 									{
 										case "S":
 										{
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['minChoices'] = "1";
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['maxChoices'] = "1";
+											menuSectionOneNivelItemModifiersCounter['minChoices'] = "1";
+											menuSectionOneNivelItemModifiersCounter['maxChoices'] = "1";
 											break;
 										}
 										case "M":
 										{
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['minChoices'] = "1";
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['maxChoices'] = "-1";
+											menuSectionOneNivelItemModifiersCounter['minChoices'] = "1";
+											menuSectionOneNivelItemModifiersCounter['maxChoices'] = "-1";
 											break;
 										}
 										case "O":
 										{
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['minChoices'] = "0";
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['maxChoices'] = "-1";
+											menuSectionOneNivelItemModifiersCounter['minChoices'] = "0";
+											menuSectionOneNivelItemModifiersCounter['maxChoices'] = "-1";
 											break;
 										}
 										default:
 										{
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['minChoices'] = "0";
-											menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['maxChoices'] = "-1";
+											menuSectionOneNivelItemModifiersCounter['minChoices'] = "0";
+											menuSectionOneNivelItemModifiersCounter['maxChoices'] = "-1";
 											break;
 										}
 									}
 									
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['insert'] 	= $(this).find('input[name^=iMod]').data('insert');
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['edit'] 	= $(this).find('input[name^=iMod]').data('edit');
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['delete'] 	= $(this).find('input[name^=iMod]').data('delete');
+									var $inputNameItem = $fullItemUnique.find('input[name^=iMod]');
+
+									menuSectionOneNivelItemModifiersCounter['insert'] 	= $inputNameItem.data('insert');
+									menuSectionOneNivelItemModifiersCounter['edit'] 	= $inputNameItem.data('edit');
+									menuSectionOneNivelItemModifiersCounter['delete'] 	= $inputNameItem.data('delete');
 									
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['itemId']	= menu['sections'][secCounter]['items'][itemCounter]['id'];
+									menuSectionOneNivelItemModifiersCounter['itemId']	= menuSectionOneNivelItem['id'];
 									
 									//OPTIONS
-									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'] = {};
-									$fullMod = $(this).nextAll("tr"); //THIS TAKES ALL OPTIONS FROM MODS BELOW IT!! (so we break when we get to a separator)
+									menuSectionOneNivelItemModifiersCounter['options'] = {};
+									$fullMod = $fullItemUnique.nextAll("tr"); //THIS TAKES ALL OPTIONS FROM MODS BELOW IT!! (so we break when we get to a separator)
 									optCounter = 1;
-									$fullMod.each(function(){ 
-										if( ($(this).children('.itemSubheader').length) || ($(this).children('.xtraModTD').length) ) return false; //break!
-										else if($(this).hasClass('optionTR')) //only see the options row
+
+									for (var m = 0, lenMod = $fullMod.length; m < lenMod; m++) {
+
+										var $fullModUnique = $( $fullMod[m] );
+									
+										if( ($fullModUnique.children('.itemSubheader').length) || ($fullModUnique.children('.xtraModTD').length) ) return false; //break!
+										else if($fullModUnique.hasClass('optionTR')) //only see the options row
 										{
-											var oID = $(this).find('input[name^=oName]').data('id');
+											var oID = $fullModUnique.find('input[name^=oName]').data('id');
 											
 											if(oID != "opt0o")
 											{
-												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter] = {};
+												var $inputOPriceMod = $fullModUnique.find('input[name^=oPrice]');
+												var $inputONameMod = $fullModUnique.find('input[name^=oName]');
+
+
+
+												menuSectionOneNivelItemModifiersCounter['options'][optCounter] = {};
+												var menuSectionOneNivelItemModifiersCounterOptions = menuSectionOneNivelItemModifiersCounter['options'][optCounter];
 												
-												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['id'] 			= oID.replace(/opt/,'');
-												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['name'] 			= $(this).find('input[name^=oName]').val();
-												if($(this).find('input[name^=oPrice]').val() == '')
-													menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['price'] 	= 0;
+												menuSectionOneNivelItemModifiersCounterOptions['id'] 			= oID.replace(/opt/,'');
+												menuSectionOneNivelItemModifiersCounterOptions['name'] 			= $inputONameMod.val();
+												if($inputOPriceMod.val() == '')
+													menuSectionOneNivelItemModifiersCounterOptions['price'] 	= 0;
 												else	
-													menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['price'] 	= $(this).find('input[name^=oPrice]').val();
-												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['visible'] 		= 1;
-												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['position'] 		= optCounter;
+													menuSectionOneNivelItemModifiersCounterOptions['price'] 	= $inputOPriceMod.val();
+												menuSectionOneNivelItemModifiersCounterOptions['visible'] 		= 1;
+												menuSectionOneNivelItemModifiersCounterOptions['position'] 		= optCounter;
 													
-												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['insert'] 		= $(this).find('input[name^=oName]').data('insert');
-												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['edit'] 			= $(this).find('input[name^=oName]').data('edit');
-												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['delete'] 		= $(this).find('input[name^=oName]').data('delete');
+												menuSectionOneNivelItemModifiersCounterOptions['insert'] 		= $inputONameMod.data('insert');
+												menuSectionOneNivelItemModifiersCounterOptions['edit'] 			= $inputONameMod.data('edit');
+												menuSectionOneNivelItemModifiersCounterOptions['delete'] 		= $inputONameMod.data('delete');
 												
-												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter]['modifierId']	= menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['id']; 
+												menuSectionOneNivelItemModifiersCounterOptions['modifierId']	= menuSectionOneNivelItemModifiersCounter['id']; 
 												
 												optCounter++;
 											}
 										}
-									});
+									};
 									modCounter++;
 								}
-							});
+							};
 							
 							itemCounter++;
 						}
-					});
+					};
 					
 					secCounter++;
 				}
-			});
+			};
 		
 			menuData = JSON.stringify(menu);
 		
@@ -2060,8 +2106,9 @@ $(document).ready(function() {
 							}
 							else  
 							{ 
-								$('input[data-id='+index+']').attr('data-id',value); //find by value and update!
-								$('input[data-id='+value+']').data('id',value); //find by value and update! (use value from top as index as its already applied!)
+								var $inputAjax = $('input[data-id='+index+']');
+								$inputAjax.attr('data-id',value); //find by value and update!
+								$inputAjax.data('id',value); //find by value and update! (use value from top as index as its already applied!)
 							}
 							});
 						}
@@ -2079,21 +2126,32 @@ $(document).ready(function() {
 					$('#menuSaveButtonE').show(); 
 				}
 				
+				var $inputMName = $("#mName");
+
 				//refresh data attributes
-				$("#mName").attr('data-edit', false);
-				$("#mName").data('edit', false);
+				$inputMName.attr('data-edit', false);
+				$inputMName.data('edit', false);
+
+				var $inputEachAjax = $("input[name^=mSectionName], input[name^=iName], input[name^=iMod], input[name^=oName]");
 				
-				$("input[name^=mSectionName], input[name^=iName], input[name^=iMod], input[name^=oName]").each(function() {
-					$(this).attr('data-delete', false);
-					$(this).attr('data-insert', false);
-					$(this).attr('data-edit', false);
+				for (var p = 0, lenAjax = $inputEachAjax.length; p < lenAjax; p++) {
 					
-					$(this).data('delete', false);
-					$(this).data('insert', false);
-					$(this).data('edit', false);
-				});
+					var $inputEachAjaxUnique = $( $inputEachAjax[p] );
+				
+					$inputEachAjaxUnique.attr('data-delete', false);
+					$inputEachAjaxUnique.attr('data-insert', false);
+					$inputEachAjaxUnique.attr('data-edit', false);
+					
+					$inputEachAjaxUnique.data('delete', false);
+					$inputEachAjaxUnique.data('insert', false);
+					$inputEachAjaxUnique.data('edit', false);
+				};
 				
 				$('#savingButton').hide();
+
+				isSubmitForm = true;
+
+				$loadingContent.hide();
 			 });
 		}
 		//update Time
