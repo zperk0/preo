@@ -1837,7 +1837,10 @@ $(document).ready(function() {
 
 	var $loadingContent = $('#loadingConfig');
 	
-	$("#menuConfigForm").on('valid', function (event) {
+	$("#menuConfigForm").on('valid.fndtn.abide', function (event) {
+
+		event.preventDefault();
+
 		console.log('valid form');
 		//START
 		//var start = new Date().getTime();
@@ -1875,7 +1878,7 @@ $(document).ready(function() {
 			menu['sections'] = {};
 			secCounter = 1;
 
-			$inputsSections = $("input[name^=mSectionName]");
+			var $inputsSections = $("input[name^=mSectionName]");
 
 			for (var i = 0, len = $inputsSections.length; i < len; i++) {
 				var $inputSectionIndividual = $( $inputsSections[i] );
@@ -1901,7 +1904,9 @@ $(document).ready(function() {
 					
 					//ITEMS
 					menuSecionOneNivel['items'] = {};
-					$fullSection = $inputSectionIndividual.parents("#menuSectionRow");
+
+					menu['sections'][secCounter] = menuSecionOneNivel;
+					var $fullSection = $inputSectionIndividual.parents("#menuSectionRow");
 					itemCounter = 1;
 
 					var $tablesSection = $fullSection.find('.tablesection'+secCounter);
@@ -1918,9 +1923,10 @@ $(document).ready(function() {
 							var $inputIPrice = $tableSectionUnique.find('input[name^=iPrice]');
 							var $inputName = $tableSectionUnique.find('input[name^=iName]');
 
-							menuSecionOneNivel[itemCounter] = {};
+							menuSecionOneNivel['items'][itemCounter] = {};
+							menu['sections'][secCounter]['items'][itemCounter] = {};
 
-							var menuSectionOneNivelItem = menuSecionOneNivel[itemCounter];
+							var menuSectionOneNivelItem = menuSecionOneNivel['items'][itemCounter];
 							
 							menuSectionOneNivelItem['id'] 			= iID.replace(/item/,'');
 							menuSectionOneNivelItem['name'] 			= $tableSectionUnique.find('input[name^=iName]').val();
@@ -1945,10 +1951,12 @@ $(document).ready(function() {
 							
 							//MODIFIERS
 							menuSectionOneNivelItem['modifiers'] = {};
-							$fullItem = $tableSectionUnique.find(".subHeaderTR");
+
+							menu['sections'][secCounter]['items'][itemCounter] = menuSectionOneNivelItem;
+							var $fullItem = $tableSectionUnique.find(".subHeaderTR");
 							modCounter = 1;
 
-							for (var k = 0, lenItem = $fullItem.lenght; k < lenItem; k++) {
+							for (var k = 0, lenItem = $fullItem.length; k < lenItem; k++) {
 
 								var $fullItemUnique = $( $fullItem[k] );
 							
@@ -2004,14 +2012,18 @@ $(document).ready(function() {
 									
 									//OPTIONS
 									menuSectionOneNivelItemModifiersCounter['options'] = {};
-									$fullMod = $fullItemUnique.nextAll("tr"); //THIS TAKES ALL OPTIONS FROM MODS BELOW IT!! (so we break when we get to a separator)
+
+									menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter] = menuSectionOneNivelItemModifiersCounter;
+									var $fullMod = $fullItemUnique.nextAll("tr"); //THIS TAKES ALL OPTIONS FROM MODS BELOW IT!! (so we break when we get to a separator)
 									optCounter = 1;
 
 									for (var m = 0, lenMod = $fullMod.length; m < lenMod; m++) {
 
 										var $fullModUnique = $( $fullMod[m] );
 									
-										if( ($fullModUnique.children('.itemSubheader').length) || ($fullModUnique.children('.xtraModTD').length) ) return false; //break!
+										if( ($fullModUnique.children('.itemSubheader').length) || ($fullModUnique.children('.xtraModTD').length) ) {
+											break;
+										}  //break!
 										else if($fullModUnique.hasClass('optionTR')) //only see the options row
 										{
 											var oID = $fullModUnique.find('input[name^=oName]').data('id');
@@ -2021,9 +2033,10 @@ $(document).ready(function() {
 												var $inputOPriceMod = $fullModUnique.find('input[name^=oPrice]');
 												var $inputONameMod = $fullModUnique.find('input[name^=oName]');
 
-
-
 												menuSectionOneNivelItemModifiersCounter['options'][optCounter] = {};
+
+												// menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'] = {};
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter] = {}
 												var menuSectionOneNivelItemModifiersCounterOptions = menuSectionOneNivelItemModifiersCounter['options'][optCounter];
 												
 												menuSectionOneNivelItemModifiersCounterOptions['id'] 			= oID.replace(/opt/,'');
@@ -2040,6 +2053,8 @@ $(document).ready(function() {
 												menuSectionOneNivelItemModifiersCounterOptions['delete'] 		= $inputONameMod.data('delete');
 												
 												menuSectionOneNivelItemModifiersCounterOptions['modifierId']	= menuSectionOneNivelItemModifiersCounter['id']; 
+
+												menu['sections'][secCounter]['items'][itemCounter]['modifiers'][modCounter]['options'][optCounter] = menuSectionOneNivelItemModifiersCounterOptions;
 												
 												optCounter++;
 											}
@@ -2056,7 +2071,7 @@ $(document).ready(function() {
 					secCounter++;
 				}
 			};
-		
+		console.log(menu);
 			menuData = JSON.stringify(menu);
 		
 			//console.log(menu);
@@ -3232,7 +3247,7 @@ $(document).ready(function() {
 			});
 			return;
 		}
-		console.log($oldDiv,$oldDiv.val())
+		// console.log($oldDiv,$oldDiv.val())
 		$newDiv = $oldDiv.clone(false);
 		
 		$ohDowCount = $(this).parents('.openingHoursDiv').find('.openHWrapper').length;
@@ -3266,7 +3281,7 @@ $(document).ready(function() {
 		
 		//add event listener to hid hours if closed
 		$newDiv.find(".oh-is-open").on('change',onIsOpenChange).each(function(i){
-			console.log('i = ' + i)
+			// console.log('i = ' + i)
 			if (i>0){								
 				$(this).find("li:last").remove();
 			}
@@ -4271,7 +4286,7 @@ function CurrencyManager(){
 		   dataType:"json",		   
 		   success: function(data)
 		   {
-		   	  console.log("success",data)
+		   	  // console.log("success",data)
 		   	  that.currencies = data;		   	  
 		   }, error:function(data){
 		   	console.log("error",data)
