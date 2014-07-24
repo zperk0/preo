@@ -11,10 +11,17 @@
 		if($data) curl_setopt($curl, CURLOPT_POSTFIELDS, $data);  
 		curl_setopt($curl,CURLOPT_USERAGENT,'Mozilla/5.0 (cURL)');
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);                                                                      
-		curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
+		$headers = array(                                                                          
 			'Content-Type: application/json',                                                                                
-			'Authorization: ' . $auth)                                                                      
-		);   
+			'Authorization: ' . $auth,
+			'preo-appid: webapp',
+			'x-real-ip: '.$_SERVER['REMOTE_ADDR']);
+
+		if (isset($_SESSION['venue_id'])){
+        $headers[] = 'preo-venueid: '.$_SESSION['venue_id'];
+    }
+
+		curl_setopt($curl, CURLOPT_HTTPHEADER,$headers);   
 
 		if(preg_match('/https/', $url)){
 			$url = str_replace('https', 'http', $url);

@@ -71,6 +71,12 @@ class Proxy {
 
         //Added preoday authorization on this proxy
         $headers['Authorization'] = $this->apiAuth;
+        $headers['preo-appid'] = 'webapp';
+        $headers['x-real-ip'] = $_SERVER['REMOTE_ADDR'];
+        //Added preoday authorization on this proxy
+        if (isset($_SESSION['venue_id'])){
+            $headers['preo-venueid'] = $_SESSION['venue_id'];
+        }
 
         $this->set_request_headers($headers);
         
