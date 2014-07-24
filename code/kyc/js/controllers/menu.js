@@ -1,14 +1,14 @@
 
-angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','VenueService','$AjaxInterceptor','$location',
-	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location) {	
+angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','VenueService','$AjaxInterceptor','$location','INITIAL_DATES',
+	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location,INITIAL_DATES) {	
 			
 
 			$scope.currencySymbol = "%C2%A3";
 			$scope.outlets = [];
 
 			$scope.form = {
-				start_date: moment().subtract('month',3),
-				end_date: moment()
+				start_date: moment(INITIAL_DATES.start),
+				end_date: moment(INITIAL_DATES.end)
 			}
 
 
@@ -29,12 +29,15 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			
 
 		$scope.update = function(){						
-			$AjaxInterceptor.start();
-			console.log("updating",$scope.form.start_date,$scope.form.end_date)
+			$AjaxInterceptor.start();			
 			setTimeout(function(){
-				AllCharts.init($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol,$scope.getSelectedOutlets());				
-				$route.reload();
-				$AjaxInterceptor.complete();
+				console.log("updating",$scope.form.start_date.format("DD/MM/YYYY"),$scope.form.end_date.format('DD/MM/YYYY'));
+				AllCharts.reloadCharts($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol,$scope.getSelectedOutlets())
+				.then(function(){
+					console.log('on then');
+					 $scope.$broadcast('KYC_RELOAD');					 
+				});				
+				console.log('after reloaded charts');
 			},500);
 		}
 			

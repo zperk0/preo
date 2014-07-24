@@ -11,6 +11,13 @@ angular.module('kyc.controllers')
 
             var charts = AllCharts.getPreparedCharts();
 
+            $scope.$on('KYC_RELOAD',function(){                
+                charts = AllCharts.getPreparedCharts();                                    
+                $scope.values = $grid.populateItems(charts);
+                refreshGrid();                
+            })
+            
+
             $scope.changeVisibility = function (value) {
 
                 if (!value.display) {
@@ -33,26 +40,32 @@ angular.module('kyc.controllers')
                 paddingY: 0,
                 minColumns:2
             }
-            
-            $scope.values = $grid.populateItems(charts);
+                        
 
-            $timeout(function(){
-                var isFirstTime = window.sessionStorage.getItem("firsttime_feature_4") === "1";
-                if (isFirstTime){
-                    window.sessionStorage.setItem("firsttime_feature_4",0);
-                    $notification.confirm({               
-                      title: _tr("Welcome to Know Your Customer"),
-                      content: _tr("From here you can view detailed reports and analytics about your customers and the transactions they make."),
-                      showTerm: false,
-                      btnOk: false,
-                      btnCancel: _tr('GET STARTED'),            
-                      windowClass:'medium'
-                    });
-                }
+            function refreshGrid(){
+               $scope.values = $grid.populateItems(charts);
+               $timeout(function(){
+                    var isFirstTime = window.sessionStorage.getItem("firsttime_feature_4") === "1";
+                    if (isFirstTime){
+                        window.sessionStorage.setItem("firsttime_feature_4",0);
+                        $notification.confirm({               
+                          title: _tr("Welcome to Know Your Customer"),
+                          content: _tr("From here you can view detailed reports and analytics about your customers and the transactions they make."),
+                          showTerm: false,
+                          btnOk: false,
+                          btnCancel: _tr('GET STARTED'),            
+                          windowClass:'medium'
+                        });
+                    }
 
-                $AjaxInterceptor.complete();
-                $(window).trigger('resize')
-                angular.element('#sscontainer').trigger("ss-rearrange");
-            }, 1000)
+                    
+                    $(window).trigger('resize')
+                    angular.element('#sscontainer').trigger("ss-rearrange");
+                    console.log('did all & completed');
+                    $AjaxInterceptor.complete();
+                }, 1000)
+            }
+            refreshGrid();
+           
         }
     ]);

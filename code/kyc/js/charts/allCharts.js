@@ -4,8 +4,7 @@ angular.module('kyc.charts')
 	function($q,OrderService,PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
 			CustomersPie,CustomersBar,Revenue,NumberOfOrders,MenuItemPopularity) {
     var defer = $q.defer();
-    var initialMinDate;
-    var initialMaxDate;
+    
     var currency;
 	var charts = {
     		payingCustomers:PayingCustomers,
@@ -24,15 +23,28 @@ angular.module('kyc.charts')
 
 
 
-    function init(minDate,maxDate,currencySymbol,selectedOutlets){
-        currency = currencySymbol;
-        initialMinDate = minDate;
-        initialMaxDate = maxDate;
-        OrderService.load(function(orders){
+
+
+    function init(minDate,maxDate,currencySymbol,selectedOutlets){        
+        currency = currencySymbol;        
+        OrderService.load(minDate,maxDate)
+        .then(function(orders){
             prepareCharts(orders,minDate,maxDate,selectedOutlets)
         });
     }
         
+    function reloadCharts(minDate,maxDate,currencySymbol,selectedOutlets){
+        var chartDefer = $q.defer();
+        currency = currencySymbol;        
+        OrderService.load(minDate,maxDate)
+        .then(function(orders){
+            console.log('on orderservice then')
+            prepareCharts(orders,minDate,maxDate,selectedOutlets);            
+            chartDefer.resolve(charts);
+            console.log('resolved defer charts')
+        });
+        return chartDefer.promise;
+    }
 
     function findOutlet(selectedOutlets,outletId){
         var found = false;
@@ -44,13 +56,10 @@ angular.module('kyc.charts')
     }
 
     function prepareCharts(orders,minDate,maxDate,selectedOutlets){        
-        if (!minDate)
-            minDate = initialMinDate;
-        if (!maxDate)
-            maxDate = initialMaxDate;
+        
         if (!selectedOutlets)
-            selectedOutlets = [];
-
+            selectedOutlets = [];   
+            console.log('preparing charts',orders.length,angular.toJson(orders));
             angular.forEach(charts,function(chart,key){
                 chart.clearData();
             });                           
@@ -67,6 +76,8 @@ angular.module('kyc.charts')
                     chart.onSetDataComplete(minDate,maxDate,currency)
                 }            
             });  
+
+            console.log('chart0 data --',charts['payingCustomers'].getData())
         defer.resolve(charts); 
     }
 
@@ -88,6 +99,7 @@ angular.module('kyc.charts')
         init:init,
         promise:defer.promise,
         getPreparedCharts:getPreparedCharts,
-        prepareCharts:prepareCharts
+        prepareCharts:prepareCharts,
+        reloadCharts:reloadCharts
     };
 }]);

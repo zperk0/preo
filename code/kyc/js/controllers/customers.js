@@ -1,7 +1,7 @@
 angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderService', '$AjaxInterceptor','Export','ACCOUNT_ID', 'UtilsService',
  function($scope,OrderService, $AjaxInterceptor,Export,ACCOUNT_ID, UtilsService) {
  	$scope.setLocation('customers');
-	$scope.customers = {};
+	
 
 	$scope.$parent.showDateFilter = true;
 	var title = _tr("Customers")
@@ -9,6 +9,11 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	prepareScopeCustomers();
 	$scope.exportAll="1";
 
+
+	$scope.$on('KYC_RELOAD',function(){                
+      allOrders = OrderService.getOrders();	      
+      prepareScopeCustomers();
+  })
 
 
 	$scope.selectAll = function() {
@@ -60,12 +65,12 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 
 
 	function prepareScopeCustomers(){
-		
+		$scope.customers = {};
 		if ( allOrders ) {			
 			var minDate = moment($scope.$parent.form.start_date)
       var maxDate = moment($scope.$parent.form.end_date)
 			angular.forEach(allOrders,function(row){						
-		        var orderData = moment(row.created);        
+		        var orderData = moment(row.paid);        
 		        if ($scope.$parent.getSelectedOutlets().length  === 0 || $scope.$parent.findOutlet(row.outletId).length >=1 ) {
 			        if (orderData >= minDate && orderData <= maxDate){
 									var customerId  = row.userId;

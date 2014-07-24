@@ -4,11 +4,14 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 	var title = _tr("Stock");
 	$scope.setLocation('stock');
 
-	$scope.$parent.showDateFilter = true;
-
-	$scope.stock={};
+	$scope.$parent.showDateFilter = true;	
 	$scope.exportAll="1";
 
+
+	$scope.$on('KYC_RELOAD',function(){                
+      allOrders = OrderService.getOrders();	      
+      prepareScopeStock();
+  })
 
 
   var allOrders = OrderService.getOrders();	
@@ -58,11 +61,12 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 	}
 
 	function prepareScopeStock(){
+		$scope.stock={};
 		if ( allOrders ){			
 			var minDate = moment($scope.$parent.form.start_date)
       var maxDate = moment($scope.$parent.form.end_date)
 			angular.forEach(allOrders,function(row){					    
-        var orderData = moment(row.created);                
+        var orderData = moment(row.paid);                
         console.log('row outletId ', row.outletId);
         console.log('parent: outletId ', $scope.$parent.outlets);        
         if ($scope.$parent.getSelectedOutlets().length === 0 || $scope.$parent.findOutlet(row.outletId).length >=1 ) {
