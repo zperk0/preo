@@ -56,7 +56,6 @@ angular.module('kyc.charts')
             });                           
             angular.forEach(orders,function(order){
                 if ( selectedOutlets.length === 0 || findOutlet(selectedOutlets,order.outletId) ){                    
-                    var created = new Date(order.created).getTime();                
                         angular.forEach(charts,function(chart){
                             chart.setData(order,minDate,maxDate);
                         })  

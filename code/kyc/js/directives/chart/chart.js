@@ -1,91 +1,7 @@
 'use strict';
 
-angular.module('kyc.directives')
-
-  .controller('modalCtrl',['$scope','$chartService',function( $scope,$chartService ) {
-
-      $scope.optionHasData = function(option){       
-        return option.data.length > 1 && +option.value > 0 ? 1 : 0 ;
-      }
-
-      $scope.noData = false;
-      
-      $scope.chart = angular.copy(ng.chart);
-      if ( ng.chart.value.modal.highcharts ) {
-        var firstOption = ng.chart.value.modal.options[0];
-
-        ng.chart.value.tickInterval = firstOption.tickInterval; 
-        ng.chart.value.minTimestamp = moment(firstOption.minTimestamp).valueOf();
-        ng.chart.value.maxTimestamp = moment(firstOption.maxTimestamp).valueOf();
-
-        var value = angular.copy(ng.chart.value);
-
-        value.data = firstOption.data;
-
-        $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, value );               
-        
-      }                
-
-      $scope.showOptions = function() {
-        $('.modal-chart .flip-container').addClass('active');                  
-        setTimeout(function(){
-          $('.modal-chart .invisibleBack').addClass('visible')
-        },200)
-      };
-
-      $scope.hideOptions = function() {
-        $('.modal-chart .flip-container').removeClass('active');                  
-        setTimeout(function(){
-          $('.modal-chart .invisibleBack').removeClass('visible')
-        },200)
-      }
-
-      $scope.cancel = function() {
-          mod.close();
-      };                
-
-      $scope.exportPdf= function(){
-          $scope.pdfData = $scope.chart.value.getPdf();          
-        }
-
-      $scope.exportCsv = function(){
-        $scope.csvData = $scope.chart.value.getCsv();                    
-      }
-
-      $scope.title = ng.chart.title;
-
-      $scope.selectOption = function( option ) {
-
-        $scope.noData = false;
-
-        var itemActive = $scope.chart.value.modal.options.filter(function(item) {
-          return item.active == true;
-        });
-
-        if ( itemActive ) {
-          itemActive[0].active = false;
-        }
-
-        option.active = true;
-        $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data, tickInterval:option.tickInterval, minTimestamp: moment(option.minTimestamp).valueOf(), maxTimestamp: moment(option.maxTimestamp).valueOf()});
-      }
-
-      $scope.setNoData = function( option ) {
-        $scope.noData = true;
-
-
-        var itemActive = $scope.chart.value.modal.options.filter(function(item) {
-          return item.active == true;
-        });
-
-        if ( itemActive ) {
-          itemActive[0].active = false;
-        }              
-        
-        option.active = true;    
-      }
-  }])
-  .directive('chart', ['$modal','ChartType', '$chartService','Export','ACCOUNT_ID', 'UtilsService', function($modal, ChartType, $chartService,Export,ACCOUNT_ID, UtilsService) {
+angular.module('kyc.directives').
+  directive('chart', ['$modal','ChartType', '$chartService','Export','ACCOUNT_ID', 'UtilsService', 'ChartHelper', function($modal, ChartType, $chartService,Export,ACCOUNT_ID, UtilsService, ChartHelper) {
 
   	return {
   		templateUrl: '/code/kyc/js/directives/chart/chart.php',
@@ -94,9 +10,7 @@ angular.module('kyc.directives')
   		scope: {
   			chart: '=element'
   		},
-  		link: function( ng, elem, attrs ) {
-
-        ng.ACCOUNT_ID = ACCOUNT_ID;
+  		link: function( ng, elem, attrs ) {                
         
         if ( !ng.chart.display ) {
           elem.parent().hide();
@@ -157,7 +71,112 @@ angular.module('kyc.directives')
             var mod = $modal.open({
               templateUrl: modal_url('chart'),
               windowClass: windowClass + ' modal-preoday modal-chart',
-              controller: 'modalCtrl'
+              controller: ['$scope',function( $scope ) {
+
+                $scope.optionHasData = function(option){       
+                  return option.data.length > 1 && +option.value > 0 ? 1 : 0 ;
+                }
+
+                $scope.noData = false;
+
+                $scope.AccountId = ACCOUNT_ID;
+                
+                $scope.chart = angular.copy(ng.chart);
+                if ( ng.chart.value.modal.highcharts ) {
+                  var firstOption = ng.chart.value.modal.options[0];
+
+                  ng.chart.value.tickInterval = firstOption.tickInterval; 
+                  ng.chart.value.minTimestamp = moment(firstOption.minTimestamp).valueOf();
+                  ng.chart.value.maxTimestamp = moment(firstOption.maxTimestamp).valueOf();
+
+                  var value = angular.copy(ng.chart.value);
+
+                  value.data = firstOption.data;
+
+                  $scope.selectedData = value;
+
+                  $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, value );               
+                  
+                }
+
+
+                $scope.exportPdf= function(){
+                  var data = ng.chart.value.getPdf();
+
+                  data.startDate = $scope.selectedData.minTimestamp;
+                  data.endDate = $scope.selectedData.maxTimestamp;
+                  data.dataJson = JSON.stringify($scope.selectedData.data);
+
+                  $scope.pdfData = data;
+                }
+
+                $scope.exportCsv = function(){
+
+                  var data = $scope.selectedData.data;
+                  var csvData =[[moment($scope.selectedData.minTimestamp).format("DD-MMM-YYYY") + " - " + moment($scope.selectedData.maxTimestamp).format("DD-MMM-YYYY")],['Revenue']]
+                  angular.forEach(data,function(d){
+                      csvData.push([ ChartHelper.formatDate(d[0]),d[1]]) 
+                  });
+
+                  $scope.csvData = { data: csvData };
+                }             
+
+                $scope.showOptions = function() {
+                  $('.modal-chart .flip-container').addClass('active');                  
+                  setTimeout(function(){
+                    $('.modal-chart .invisibleBack').addClass('visible')
+                  },200)
+                };
+
+                $scope.hideOptions = function() {
+                  $('.modal-chart .flip-container').removeClass('active');                  
+                  setTimeout(function(){
+                    $('.modal-chart .invisibleBack').removeClass('visible')
+                  },200)
+                }
+
+                $scope.cancel = function() {
+                    mod.close();
+                };                
+
+                $scope.title = ng.chart.title;
+
+                $scope.selectOption = function( option ) {
+
+                  $scope.noData = false;
+
+                  var itemActive = $scope.chart.value.modal.options.filter(function(item) {
+                    return item.active == true;
+                  });
+
+                  if ( itemActive ) {
+                    itemActive[0].active = false;
+                  }
+
+                  option.active = true;
+
+                  $scope.selectedData = angular.copy(option);
+                  $scope.selectedData.minTimestamp = moment(option.minTimestamp).valueOf();
+                  $scope.selectedData.maxTimestamp = moment(option.maxTimestamp).valueOf();
+
+                  $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data, tickInterval:option.tickInterval, minTimestamp: moment(option.minTimestamp).valueOf(), maxTimestamp: moment(option.maxTimestamp).valueOf()});
+                }
+
+                $scope.setNoData = function( option ) {
+                  $scope.noData = true;
+
+
+                  var itemActive = $scope.chart.value.modal.options.filter(function(item) {
+                    return item.active == true;
+                  });
+
+                  if ( itemActive ) {
+                    itemActive[0].active = false;
+                  }              
+                  
+                  option.active = true;    
+                }
+              }]
             });
             
             mod.opened.then(function(){

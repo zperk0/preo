@@ -19,11 +19,11 @@ angular.module('kyc.charts')
 	function setData(order,minDate,maxDate){
         minTimestamp = minDate.valueOf();
         maxTimestamp = maxDate.valueOf();
-        var orderData = moment(order.created);
+        var orderData = moment(order.paid);
         if (orderData >= minDate && orderData <= maxDate){
-            if (order.created !== undefined && order.pickupTime !== undefined){
-                var placed = new Date(order.created).setHours(0, 0, 0, 0);
-                var pickup = new Date(order.pickupTime).setHours(0, 0, 0, 0);    
+            if (order.paid !== undefined && order.pickupTime !== undefined){
+                var placed = moment(order.paid).startOf('day').valueOf();
+                var pickup = moment(order.pickupTime).startOf('day').valueOf();
                 if(placed === pickup){
                     data[0].y++;
                 } else {
