@@ -114,7 +114,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
 
             // Call this function when a checkbox is ticked...
             $scope.syncItems = function( item, e ) {                                                                
-                index = $scope.inputModel.indexOf( item );                
+                var index = $scope.inputModel.indexOf( item );                
                 $scope.inputModel[ index ][ $scope.tickProperty ]   = !$scope.inputModel[ index ][ $scope.tickProperty ];
                 
                 // If it's single selection mode
