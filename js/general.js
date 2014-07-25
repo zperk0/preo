@@ -523,7 +523,7 @@ $(document).ready(function() {
 				}
 			 }).done(function(){
 				if($('#redirectFlag').val()!='1') $('#venueSave').show();
-				$('#savingButton').hide();				
+				$('#savingButton').hide();
 				//FIXME maybe this can be replaced with a refresh on the ids for the delivery details
 				setTimeout(window.location.reload(),200);
 			 });
@@ -1837,9 +1837,7 @@ $(document).ready(function() {
 
 	var $loadingContent = $('#loadingConfig');
 	
-	$("#menuConfigForm").on('valid.fndtn.abide', function (event) {
-
-		event.preventDefault();
+	$("#menuConfigForm").on('valid', function (event) {
 
 		console.log('valid form');
 		//START

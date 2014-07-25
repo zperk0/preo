@@ -42,7 +42,10 @@
 	protect($cDuration);
 	
 	$vEvent = $_POST['vEvent'];
-	protect($vEvent);
+	protect($vEvent);	
+
+	$vDelivery = $_POST['vDelivery'];
+	protect($vDelivery);
 	
 	$vCode = $_POST['vCode'];
 	protect($vCode);
@@ -82,6 +85,7 @@
 	$data['country']			= $vCountry;
 	$data['categoryId']			= $vCat;
 	$data['eventFlag']			= $vEvent;
+	$data['deliverFlag']		= $vDelivery;
 	$data['city']			= $vTown;
 	$data['locale']			= $language."-".$vCountry;
 	$data['timeZone']			= $timezone;

@@ -132,6 +132,21 @@
 					<small class="error"><?echo _("Please provide a minimum value for ordering");?></small>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<label><?echo _("Do you offer a delivery service?");?> &nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("You can specify your delivery settings from the dashboard");?>"></i></label>
+					<div class="switch small large-2 columns"> 
+						<input name="vDelivery" value="0" type="radio" <?if((isset($_SESSION['venue_deliverFlag']) && !$_SESSION['venue_deliverFlag']) || !isset($_SESSION['venue_deliverFlag'])){?>checked<?}?>>
+						<label class="no"><?echo _("No");?></label>
+
+						<input name="vDelivery" value="1" type="radio" <?if((isset($_SESSION['venue_deliverFlag']) && $_SESSION['venue_deliverFlag'])){?>checked<?}?>>
+						<label class="yes"><?echo _("Yes");?></label>
+
+						<span></span>
+					</div>
+				</div>
+			</div>
 			
 			
 			

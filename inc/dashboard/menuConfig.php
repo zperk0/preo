@@ -6,7 +6,7 @@
 </div>
 
 <?if(!isset($_SESSION['menu_edit_on'])) $_SESSION['menu_edit_on']=0;?>
-<form id="menuConfigForm" method="POST" data-abide>
+<form id="menuConfigForm" method="POST" data-abide="ajax">
 	<div class="row">
 		<div class="topSpacer"></div>
 		<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
