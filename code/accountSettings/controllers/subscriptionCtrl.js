@@ -1,6 +1,6 @@
 angular.module('accountSettings.controllers')
- .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature','StripeCharge','Invoice','$notification','$AjaxInterceptor',
-  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature,StripeCharge,Invoice,$notification,$AjaxInterceptor) {
+ .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature','$notification','$AjaxInterceptor',
+  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature,$notification,$AjaxInterceptor) {
     
 
     var allFeatures = FEATURES;

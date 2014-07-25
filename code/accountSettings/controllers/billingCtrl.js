@@ -1,6 +1,6 @@
 angular.module('accountSettings.controllers')
- .controller('BillingCtrl', ['$scope', 'ACCOUNT_ID', 'Invoice', 'AccountInvoice',
-  function ($scope,ACCOUNT_ID,Invoice,AccountInvoice) {
+ .controller('BillingCtrl', ['$scope', 'ACCOUNT_ID', 'AccountInvoice',
+  function ($scope,ACCOUNT_ID,AccountInvoice) {
 
 		$scope.setSelected($scope.Views.billingHistory);
 		

@@ -55,17 +55,14 @@
   <script src="/js/angular_all.min.js"></script>  
 
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script> 
-  <!-- BEGIN WATCH
+  <!-- BEGIN WATCH 
   <script src="/code/accountSettings/app.js"></script>  
   <script src="/code/accountSettings/directives/equals.js"></script>
   <script src="/code/accountSettings/resources/user.js"></script>
   <script src="/code/accountSettings/resources/account.js"></script>
   <script src="/code/accountSettings/resources/accountCard.js"></script>
   <script src="/code/accountSettings/resources/accountFeature.js"></script>  
-  <script src="/code/accountSettings/resources/invoice.js"></script>  
   <script src="/code/accountSettings/resources/accountInvoice.js"></script>  
-  <script src="/code/accountSettings/resources/pendingInvoice.js"></script>  
-  <script src="/code/accountSettings/resources/stripeCharge.js"></script>    
   <script src="/code/accountSettings/controllers/billingCtrl.js"></script>
   <script src="/code/accountSettings/controllers/profileCtrl.js"></script>
   <script src="/code/accountSettings/controllers/passwordCtrl.js"></script>

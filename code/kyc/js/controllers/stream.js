@@ -7,6 +7,7 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
     $scope.setLocation('stream');
 	$scope.orders = OrderService.getOrders();
     var onTimeout = false;
+    
     var pusherUpdateEvent = function() {                
         if (!onTimeout){
             onTimeout = true;

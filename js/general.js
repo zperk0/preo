@@ -1801,12 +1801,13 @@ $(document).ready(function() {
 	$("#menuConfigForm").on('valid', function (event) {
 		//START
 		//var start = new Date().getTime();
-		
+			console.log('on valid');
 		//prevent multiple submissions
 		var newSubmitTime = new Date().getTime();
 		
 		if( (newSubmitTime - submitTime) > 400 )
 		{
+			console.log('on if valid');
 			//who be clickin'?
 			var editingSkip = 0;
 			if ($(this).data('clicked').is('[id=menuSaveButtonE]')) editingSkip = 1;

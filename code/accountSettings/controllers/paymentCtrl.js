@@ -1,6 +1,6 @@
 angular.module('accountSettings.controllers')
- .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','PendingInvoice','Account','StripeCharge','$AjaxInterceptor',
-  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,PendingInvoice,Account,StripeCharge,$AjaxInterceptor) {
+ .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account','$AjaxInterceptor','AccountInvoice','$notification',
+  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,$AjaxInterceptor,AccountInvoice,$notification) {
     var oldCard;
     $scope.setSelected($scope.Views.paymentMethod);
   	$scope.isEditing = false;
@@ -78,7 +78,7 @@ angular.module('accountSettings.controllers')
          $scope.card.token = response.id;
          $scope.card.number = response.card.last4;
          $scope.card.type = response.card.type;                
-         $scope.card.$save({accountId:ACCOUNT_ID},success,error);         
+         $scope.card.$save({accountId:ACCOUNT_ID},success,stripeError);         
 
     };
 
@@ -100,51 +100,55 @@ angular.module('accountSettings.controllers')
       $scope.errorMessage = "";
       $scope.isEditing = false;
       $scope.isPosting = false;
-      //TODO display an alert to the user that his card will be charged
-      PendingInvoice.get({accountId:ACCOUNT_ID},function (invoice){              
-          if (invoice.id){ //if we have an invoice, try to pay it
-              StripeCharge.get({accountId:ACCOUNT_ID,invoiceId:invoice.id},
-                function(result){
-                  //if the payment is a success set the billing date for one month from the original billing date                  
-                  Account.query({accountId:ACCOUNT_ID},function(result){
-                      var account = result[0];
-                      var tempDate = new Date(account.billingDate);
-                      tempDate.setMonth(tempDate.getMonth() + 1);
-                      account.billingDate = tempDate;
-                      account.$put({accountId:ACCOUNT_ID},
-                      function(result){                          
-                          $AjaxInterceptor.complete();
-
-                          verifyShopFeature();
-
-                          console.log(result,"updated billing date");
-                      },function(){
-                        verifyShopFeature();
-                        console.log("error");   
-                        $AjaxInterceptor.complete();
-                      });
-                  },function(){
-                    verifyShopFeature();
-                    console.log("error -  ");   
-                    $AjaxInterceptor.complete();
-                  })
-
-              },function (error){
-                  verifyShopFeature();
-                  console.log("error",error);                    
-                  $AjaxInterceptor.complete();  
-              });
-          } else {
-            $AjaxInterceptor.complete();
-            verifyShopFeature();
-          }
-      },function(){
-        $AjaxInterceptor.complete();
-      });    
+      //successfully changed the account card. now we check if there is a billing date in the past
+      Account.query({accountId:ACCOUNT_ID},function(result){
+          var account = result[0];
+          if (moment().valueOf() > moment(account.billingDate).valueOf()){
+            //if there is a billing date in the past, the user owes us money. try to renew the subscriptions
+            AccountInvoice.payPending({accountId:ACCOUNT_ID},function(result){
+                console.log('got pay pending result',result)                              
+                $AjaxInterceptor.complete();
+                if (result.status === "SUCCESS"){             
+                  console.log('got payment ctrl status success')     
+                  $notification.confirm({
+                    title: _tr("Payment method updated succesfully!"),
+                    content: _tr("Your outstand payment has been paid. Your card was charged <b>&pound;" + result.ammount.toFixed(2) + "</b> and your premium features will remain active."),
+                    showTerm: false,
+                    btnOk:false,
+                    btnCancel: _tr('OK'),
+                    windowClass:'medium'
+                  })                
+                } else{
+                  console.log('got error');
+                  apiError(result);
+                }                
+            },apiError);
+          } else{
+            $AjaxInterceptor.complete();   
+            verifyShopFeature(); 
+          }        
+      },apiError);    
     }
 
-    function error(error){            
+    function apiError(error){
+      console.log('error',error);
+      noty({
+        type: 'error',  layout: 'topCenter',
+        text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'
+      });  
       $scope.isPosting = false;
+      $scope.isEditing = true;
+      $scope.card.number = "";        
+      if(error.response !== undefined && error.response !== ""){
+        var response = angular.fromJson(error.response);        
+        $scope.errorMessage = response.detail_message;          
+      }
+      $AjaxInterceptor.complete();
+    }
+
+    function stripeError(error){            
+      $scope.isPosting = false;
+      $scope.isEditing = true;
       $scope.errorMessage = error.data.message;  
       $AjaxInterceptor.complete();   
     }    
