@@ -3598,3 +3598,16 @@ button.preodayButton.noclick{
   /* Good browsers */
   opacity: 0.7;
 }
+
+ /* Error Handling */
+      [data-preoabide] .error small.error, [data-preoabide] span.error, [data-preoabide] small.error {
+        display: block;
+        padding: 0.375em 0.25em;
+        margin-top: 0;
+        margin-bottom: 1em;
+        font-size: 0.75em;
+        font-weight: bold;
+        background: #e30f4d;
+        color: white; }
+      [data-preoabide] span.error, [data-preoabide] small.error {
+        display: none; }
