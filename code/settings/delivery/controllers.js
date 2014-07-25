@@ -137,8 +137,8 @@ angular.module('delivery.controllers',[]).
         delete $scope.venue["ccySymbol"]
 
         $q.all([           
-            $scope.venue.$patch({id:VENUE_ID}).$promise,
-            venueSettings.$patch({id:VENUE_ID}).$promise,
+            Resources.Venue.put({id:VENUE_ID}, $scope.venue).$promise,
+            Resources.VenueSettings.put({id:VENUE_ID}, venueSettings).$promise,
             postMessage(messages[0]).$promise,
             postMessage(messages[1]).$promise,
             postMessage(messages[2]).$promise,
