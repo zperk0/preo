@@ -15,6 +15,8 @@ angular.module('kyc.directives').
         if ( !ng.chart.display ) {
           elem.parent().hide();
         }
+
+        ng.ACCOUNT_ID = ACCOUNT_ID;
         //find out if there is enough data to be displayed
         ng.noData = false;        
         function setNoData(){          
@@ -79,7 +81,8 @@ angular.module('kyc.directives').
 
                 $scope.noData = false;
 
-                $scope.AccountId = ACCOUNT_ID;
+                $scope.ACCOUNT_ID = ACCOUNT_ID;
+
                 
                 $scope.chart = angular.copy(ng.chart);
                 if ( ng.chart.value.modal.highcharts ) {

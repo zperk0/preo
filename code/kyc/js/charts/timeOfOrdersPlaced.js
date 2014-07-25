@@ -67,7 +67,7 @@ angular.module('kyc.charts')
     }
 
     function getPdf(){
-        return chartInfo = {
+        return  {
             type:type,
             title:title,
             startDate: minTimestamp,
