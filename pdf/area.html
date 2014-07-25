@@ -24,6 +24,32 @@ $(function () {
     $('.title').html(chartInfo.title);
 
     $('.dates').html(formatDate(chartInfo.startDate) + " - " + formatDate(chartInfo.endDate));
+
+    var TickInterval = {
+		DAY		 : 24 * 3600 * 1000,
+	  	WEEK	 : 7 * 24 * 3600 * 1000,
+	  	WEEK_THREE : 3 * 7 * 24 * 3600 * 1000,
+	  	MONTH	 : 30 * 24 * 3600 * 1000
+	}
+
+    function calculateTickInterval( prepData ) {
+        var daysDiff = moment(new Date(prepData.maxTimestamp)).diff(moment(new Date(prepData.minTimestamp)), 'days');
+
+        switch( true ) {
+            case daysDiff < 32:
+                return TickInterval.DAY;
+                break;
+            case daysDiff < 92:
+                return TickInterval.WEEK;
+                break;
+            case daysDiff < 183:
+                return TickInterval.WEEK_THREE;
+                break;
+            default:
+                return TickInterval.MONTH;
+                break;
+        }
+    }  
   	
 	var revenueChart = {
             chart: {
@@ -34,23 +60,37 @@ $(function () {
             },         
             xAxis: {
                 type: 'datetime',
-                minTickInterval: 24 * 3600 * 1000,
+                tickInterval: calculateTickInterval({ maxTimestamp: chartInfo.endDate, minTimestamp: chartInfo.startDate }),
+                min: chartInfo.startDate,
+                max: chartInfo.endDate,               
                 labels: {
                     style: {
                         color: '#b3b6b8',
-                        font: '15px Co Text W01 Light',
-                    }
+                        fontSize: '15px Co Text W01 Light'
+                    },
+                    formatter: function() {
+                        var date;
 
-                },       
+                        if ( this.axis.tickInterval === TickInterval.MONTH ) {
+                            date = moment(this.value).format('MMM');
+                        } else if ( this.axis.tickInterval === TickInterval.WEEK || this.axis.tickInterval === TickInterval.WEEK_THREE ) {
+                            date = moment(this.value).startOf('day').format('DD.MMM');
+                        } else {
+                            date = moment(this.value).format('DD.MMM');
+                        }
+
+                        return date;
+                    },                        
+                },    
             },
             yAxis:{
-     							gridLineDashStyle: 'dot',
-     							labels: {
-                    style: {
-                        color: '#b3b6b8',                        
-                        font: '15px Co Text W01 Light',
-                    }
-                },       
+					gridLineDashStyle: 'dot',				
+					labels: {
+	                    style: {
+	                        color: '#b3b6b8',                        
+	                        font: '15px Co Text W01 Light',
+	                    }
+                	},       
             },
             plotOptions: {      		
                 areaspline: {

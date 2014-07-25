@@ -186,7 +186,25 @@ angular.module('kyc.charts')
         }   
 
         return {
-            data: data,
+            data: completeEmptyData({
+                max: moment(maxTimestamp).startOf('day'),
+                min: moment(minTimestamp).startOf('day').valueOf(),
+                value: dataModal,
+                dateType: calculateTickIntervalForString({ maxTimestamp: maxTimestamp, minTimestamp: minTimestamp }),
+                filterData: function( data, valueOf ) {
+                    switch (this.dateType) {
+                        case 'day':
+                            return FilterCharts.day(data, valueOf);
+                            break;
+                        case 'week':
+                            return FilterCharts.week(data, valueOf);
+                            break;
+                        case 'month':
+                            return FilterCharts.month(data, valueOf);
+                            break;
+                    }
+                }
+            }),
             dataModal: dataModal,
             previousSpecifiedData: previousSpecifiedData,
             weekData: weekData,

@@ -1,5 +1,12 @@
+<div class="loading" id="loadingConfig">
+  <div class="background-loading"></div>
+  <div class="loading-content">
+    <img src="/img/spinner.gif" class="img-responsive" alt="Carregando..." title="Carregando..." />
+  </div>
+</div>
+
 <?if(!isset($_SESSION['menu_edit_on'])) $_SESSION['menu_edit_on']=0;?>
-<form id="menuConfigForm" method="POST" data-abide>
+<form id="menuConfigForm" method="POST" data-abide="ajax">
 	<div class="row">
 		<div class="topSpacer"></div>
 		<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
@@ -148,6 +155,9 @@
 							</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options.");?>"></i>
 							<small class="error"><?echo _("Please choose a type");?></small>
 						</td>
+						<td class="modifierRow modifierRowDeleteHeader hide menuTDTools">
+							<button type="button" class="menuTableButtons secondary optionHeaderDelete" title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
+						</td>
 					</tr>
 					<tr class="menuEdit hide" style="display:none;">
 						<td class="menuTDName">
@@ -284,6 +294,9 @@
 													</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options.");?>"></i>
 													<small class="error"><?echo _("Please choose a type");?></small>
 												</td>
+												<td class="modifierRow modifierRowDeleteHeader hide menuTDTools">
+													<button type="button" class="menuTableButtons secondary optionHeaderDelete" title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
+												</td>												
 											</tr>
 											<tr class="menuEdit hide" style="display:none;"> <!-- This dummy is required! -->
 												<td class="menuTDName">
@@ -386,10 +399,19 @@
 	</div>
 </form>
 
+
+<script type="text/javascript">
+
+(function($){
+	$('#loadingConfig').hide();
+}(jQuery))
+
+</script>
 <?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
 $(document).ready(function() {
+
 	$('.progressIndicator').css('width','200%');
 	$('.progressIndicator').attr('title', <? echo json_encode(_("45&#37 done, now for the fun bit!")) ?>);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);

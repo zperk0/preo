@@ -46,7 +46,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	var loadReportsByPage = function(){
 	    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
 	    , end = begin + $scope.numPerPage;
-	    
+	    console.log($scope.selectedReport);
 	    if ( $scope.selectedReport && $scope.selectedReport.data ) {    
 	    	$scope.reportsList = $scope.selectedReport.data.slice(begin, end );
 		}	 		
@@ -59,8 +59,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 		$scope.selectedReport.data = UtilsService.dynamicSortObject($scope.selectedReport.data, orderBy, $scope.direction)
 
 		loadReportsByPage();
-		
-		
 	}
 	
 
@@ -85,10 +83,10 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 		$scope.totalItems = Object.keys($scope.selectedReport.data).length;	
 		$scope.reportsList = UtilsService.sliceObject($scope.selectedReport.data, 0, $scope.numPerPage);
 		$scope.currentPage = 1;		
-		if (report.orderBy){
-			$scope.setOrderBy(report.orderBy);
-			$scope. direction = report.direction !== undefined ? report.direction : $scope.direction;
-		}
+		
+		
+		$scope.setOrderBy(report.orderBy || $scope.selectedReport.titles[0]);
+		$scope.direction = report.direction !== undefined ? report.direction : $scope.direction;
 		
 	}
 

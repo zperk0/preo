@@ -2,14 +2,14 @@ angular.module('delivery.resources',['ngResource']).
   factory('Resources', ['$resource', function($resource) {
     
     var Venue = $resource('/api/venues/:id',{id:"@id"}, {
-        patch: {
+        put: {
             method:"PUT"
         }
     });
 
     var VenueSettings = $resource('/api/venues/:id/settings',{id:"@id"}, {
-      patch : {
-        method: "PATCH"      
+      put : {
+        method: "PUT"      
       }
 
     });
