@@ -59,7 +59,7 @@ angular.module('kyc.charts')
         
         if (!selectedOutlets)
             selectedOutlets = [];   
-            console.log('preparing charts',orders.length,angular.toJson(orders));
+            // console.log('preparing charts',orders.length,angular.toJson(orders));
             angular.forEach(charts,function(chart,key){
                 chart.clearData();
             });                           
@@ -77,7 +77,7 @@ angular.module('kyc.charts')
                 }            
             });  
 
-            console.log('chart0 data --',charts['payingCustomers'].getData())
+            // console.log('chart0 data --',charts['payingCustomers'].getData())
         defer.resolve(charts); 
     }
 

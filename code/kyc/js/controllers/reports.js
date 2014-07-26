@@ -46,7 +46,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	var loadReportsByPage = function(){
 	    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
 	    , end = begin + $scope.numPerPage;
-	    console.log($scope.selectedReport);
+	    // console.log($scope.selectedReport);
 	    if ( $scope.selectedReport && $scope.selectedReport.data ) {    
 	    	$scope.reportsList = $scope.selectedReport.data.slice(begin, end );
 		}	 		

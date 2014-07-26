@@ -10,12 +10,12 @@ angular.module('kyc.reports')
 	Report.setData = function(reportsData){					
 		var tempData = {}	
 		var grouped = _.groupBy(reportsData.orders,'hour');
-		console.log('grouped',grouped);
+		// console.log('grouped',grouped);
 		angular.forEach(grouped,function(day,key){			
 				angular.forEach(day,function(order){					
 					if (tempData [key] === undefined){
 						tempData [key] = {
-							timeSlot:moment(order.paid).format("HH:00"),
+							timeSlot: moment(order.paid).format("HH:00") + ' - ' + moment(order.paid).format("HH:59"),
 							numberOfOrders:1
 						}
 					} else {
@@ -24,7 +24,7 @@ angular.module('kyc.reports')
 				})						
 		})
 		
-		console.log('tempData',tempData);
+		// console.log('tempData',tempData);
 		data =  _.sortBy(tempData,function(row){ return -row.numberOfOrders})
 						.slice(0,itemsToShow);
 					

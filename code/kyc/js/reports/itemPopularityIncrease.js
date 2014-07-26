@@ -32,7 +32,6 @@ angular.module('kyc.reports')
 
 	Report.onSetDataComplete = function(){
 		angular.forEach(tempData,function(item,key){
-			console.log('each item',item)
 			
 			if (item.$thisMonthQuantitySold > item.$lastMonthQuantitySold ){
 				var popularity = ( 100 * item.$thisMonthQuantitySold )/item.$lastMonthQuantitySold ;

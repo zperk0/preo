@@ -15,7 +15,7 @@ angular.module('kyc.reports')
 				angular.forEach(day,function(order){					
 					if (tempData [key] === undefined){
 						tempData [key] = {
-							timeSlot:moment(order.paid).format("HH:00"),
+							timeSlot: moment(order.paid).format("HH:00") + ' - ' + moment(order.paid).format("HH:59"),
 							valueSold:order.total
 						}
 					} else {
@@ -24,7 +24,6 @@ angular.module('kyc.reports')
 				})						
 		})
 		
-		console.log('tempData',tempData);
 		data =  _.sortBy(tempData,function(row){ return row.valueSold})
 						.slice(0,itemsToShow);
 					
