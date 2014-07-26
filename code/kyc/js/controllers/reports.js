@@ -32,7 +32,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 
 			$scope.selectedReport.data = UtilsService.dynamicSortObject($scope.selectedReport.data, $scope.orderBy, $scope.direction)
 
-			$scope.numPerPage = 10;
+			$scope.numPerPage = 20;
 			$scope.currentPage = 1;		
 
 			$AjaxInterceptor.complete();
