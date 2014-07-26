@@ -112,11 +112,9 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                         shadow:false,
                         useHTML:true,
                         positioner: function(boxWidth, boxHeight, point) {
-                            var substract = 20;
+                            var substract = boxWidth / 2;
 
-                            if ( value.currency ) {
-                                substract = 0;
-                            }
+                            substract -= this.chart.plotLeft;
 
                             return {
                                 x: point.plotX - substract,
@@ -167,9 +165,9 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             var date;
 
                             if ( this.axis.tickInterval === TickInterval.MONTH ) {
-                                date = $filter('date')(new Date(this.value), 'MMM');
+                                date = $filter('date')(new Date(moment(this.value).startOf('month').add('days', 10)), 'MMM');
                             } else if ( this.axis.tickInterval === TickInterval.WEEK || this.axis.tickInterval === TickInterval.WEEK_THREE ) {
-                                date = $filter('date')(new Date(moment(this.value).startOf('day')), 'dd.MMM');
+                                date = $filter('date')(new Date(moment(this.value).startOf('week').add('days', 3)), 'dd.MMM');
                             } else {
                                 date = $filter('date')(new Date(this.value), 'dd.MMM');
                             }
