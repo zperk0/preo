@@ -237,7 +237,7 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                         },
                         formatter: function () {
                             return '<div style="position:relative;"><div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + 
-                            Highcharts.numberFormat(this.y, 1) + '</div> <span style="position: absolute; left: 42%; bottom: -15px; background:url(/img/arrowPie.png) left top no-repeat; width: 15px; height: 9px; display: block;" "></span> </div>';
+                            Highcharts.numberFormat(this.y, (this.y % 1 === 0 ? 0 : 1)) + '</div> <span style="position: absolute; left: 42%; bottom: -15px; background:url(/img/arrowPie.png) left top no-repeat; width: 15px; height: 9px; display: block;" "></span> </div>';
                         }
                     },
                     exporting: {
@@ -331,7 +331,7 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             };
                         },
                         formatter: function () {
-                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + Highcharts.numberFormat(this.y, 1) + '</div>';
+                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + Highcharts.numberFormat(this.y, (this.y % 1 === 0 ? 0 : 1)) + '</div>';
                         }
                     },
                 },
