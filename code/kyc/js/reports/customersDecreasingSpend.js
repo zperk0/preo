@@ -1,7 +1,7 @@
 angular.module('kyc.reports')
 .factory('CustomersDecreasingSpend',[function(){
 
-	var title = _tr("Customers Increasing Spend");
+	var title = _tr("Customers Decreasing Spend");
 	var Report = {}
 	var data = {}
 	var titles = [];
