@@ -24,7 +24,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderBy = "numberOfOrders";
-	Report.direction = true;
+	
 	Report.description = _tr("Displays the accumulative number of orders, broken down by 24 x 1 hour time slots.");
 
 	Report.getData = function(){

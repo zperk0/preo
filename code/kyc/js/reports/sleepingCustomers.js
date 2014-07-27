@@ -25,6 +25,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderby = "lastOrder";
+	Report.direction = true;		
 	Report.description = _tr("Displays all customers who have previously made at least one order, but haven’t ordered for 3 months.")
 
 	Report.getData = function(){

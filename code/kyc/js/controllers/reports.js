@@ -5,7 +5,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	var title = _tr("Reports");
 	$scope.setLocation('reports');
 	$scope.exportAll="1";	
-	$scope.direction = false;
+	$scope.direction = true;
 
 
 	
@@ -53,9 +53,12 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	}		  	
 
 
-	$scope.setOrderBy = function(orderBy, direction){		
+	$scope.setOrderBy = function(orderBy, direction){				
 		if (direction !== undefined)
 				$scope.direction = direction;		
+		else 
+			$scope.direction = !$scope.direction;
+		console.log('set order by',orderBy,$scope.direction)
 		$scope.orderBy = orderBy;
 		$scope.selectedReport.data = UtilsService.dynamicSortObject($scope.selectedReport.data, orderBy, $scope.direction)
 		loadReportsByPage();
