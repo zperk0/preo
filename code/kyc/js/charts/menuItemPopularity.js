@@ -4,7 +4,7 @@ angular.module('kyc.charts')
 	var type = ChartType.AREA;	
     var title = _tr('Menu Item Popularity');
     var menuItems = {}        
-    var selectedItem = -1;
+    var selectedItem = window.sessionStorage.getItem("KYC_SELECTED_ITEM")
     var minDate;
     var maxDate;
     var prepData = {};
@@ -16,7 +16,7 @@ angular.module('kyc.charts')
         angular.forEach(order.items,function(item){
             
             if (menuItems[item.menuItemId] === undefined){
-                selectedItem = selectedItem == - 1 ? item.menuItemId : selectedItem;                
+                selectedItem = selectedItem === null ? item.menuItemId : Number(selectedItem);                
                 items.push({name:item.name,menuItemId:item.menuItemId,callback:selectItem}); 
                 menuItems[item.menuItemId] = {}
             }
@@ -29,13 +29,16 @@ angular.module('kyc.charts')
 	}
 
     function selectItem(itemId,cb){
-        clearData();
+        // clearData();
         selectedItem = itemId;        
+        window.sessionStorage.setItem("KYC_SELECTED_ITEM",itemId);
+        console.log("setItem",window.sessionStorage.getItem("KYC_SELECTED_ITEM"));
         onSetDataComplete(minDate,maxDate);        
         cb(getHighChart());
     }
 
     function onSetDataComplete(minDateP,maxDateP){
+        console.log('completed',selectedItem,window.sessionStorage.getItem("KYC_SELECTED_ITEM"));
         minDate = minDateP;
         maxDate = maxDateP;        
         prepData = ChartHelper.getPreparedAreaData(menuItems[selectedItem],minDate,maxDate,false);
@@ -52,10 +55,11 @@ angular.module('kyc.charts')
     
 
 
-    function getHighChart(){
+    function getHighChart(){        
         return {
             type:type,
             title:title,
+            selectedItem:getItemName(selectedItem),
             data: getData(),
             numberLeft:prepData.total,
             modal: getModal(),
@@ -81,7 +85,7 @@ angular.module('kyc.charts')
     function getPdf(){
         return  {
             type:type,
-            title:title + " - " +getItemName(selectedItem),
+            title:title + " - " +getItemName(selectedItem),            
             startDate: minDate.valueOf(),
             endDate: maxDate.valueOf(),  
             total: prepData.total,
@@ -91,7 +95,9 @@ angular.module('kyc.charts')
     }
 
     function clearData(){
-        prepData = {};        
+        prepData = {};
+        items =[];        
+        menuItems = {};
     }
 
     function getItemName(itemId){

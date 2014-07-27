@@ -43,7 +43,7 @@
                   button-label="name"
                   item-label="name"
                   tick-property="selected"
-                  default-label="{{chart.value.items[0].name}}"
+                  default-label="{{chart.value.selectedItem}}"
                   selection-mode="single"
                   on-change="changeItem()"
               ></multi-select>						

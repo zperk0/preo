@@ -102,7 +102,7 @@
 
   <script src="//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" type="text/javascript"></script>
   <script src="/js/angular_all.min.js"></script>    
-  <!-- BEGIN WATCH 
+  <!-- BEGIN WATCH -->
   <script src="/code/kyc/js/app.js"></script>
   <script src="/code/notification/notification.js"></script>
   <script src="/code/kyc/js/services/chart.js"></script>
@@ -171,7 +171,7 @@
   <!-- END WATCH -->
   
   
-  <script src="/code/kyc/js/all.min.js"></script>
+  <!-- <script src="/code/kyc/js/all.min.js"></script> -->
 
 
   <script type="text/javascript">
@@ -182,8 +182,8 @@
   angular.module('kyc').constant('VENUE_ID',<? echo $_SESSION['venue_id']?>);
   angular.module('kyc').constant('PUSHER_KEY', '<? echo $pusherKey ?>');
   angular.module('kyc').constant('INITIAL_DATES', {
-       start:new Date().getTime() - 1000 * 60 * 60 * 24 * 180, //3 months ago
-       end: new Date().getTime()
+       start: new Date("2014-05-01"),
+       end:  new Date("2014-06-30")
   });
 
   function modal_url( url ) {
