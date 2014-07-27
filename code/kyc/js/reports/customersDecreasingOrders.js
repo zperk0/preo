@@ -22,7 +22,7 @@ angular.module('kyc.reports')
 		console.log('set data',data);			
 	}
 
-	Report.orderby = "percentIncrease";
+	Report.orderby = "percentDecrease";
 
 	Report.getData = function(){
 		return data;

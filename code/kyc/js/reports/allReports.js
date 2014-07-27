@@ -93,7 +93,6 @@ angular.module('kyc.reports')
 			var now = moment().valueOf();
 			var lastMonthEnd = moment().subtract('month',1).valueOf();
 			var lastMonthBegin = moment().subtract('month',2).valueOf();			
-
 			return $q.all([
 					Report.items({venueId:VENUE_ID}).$promise,
 					Report.orders({venueId:VENUE_ID}).$promise,
@@ -131,7 +130,7 @@ angular.module('kyc.reports')
 			return orders;
 		}
 
-		function prepareCustomerOrders(customerOrders,thisMonthCustomerOrders,lastMonthCustomerOrders){				
+		function prepareCustomerOrders(customerOrders,thisMonthCustomerOrders,lastMonthCustomerOrders){	
 			console.log(customerOrders.length,thisMonthCustomerOrders.length,lastMonthCustomerOrders.length)
 				angular.forEach(customerOrders,function(customerOrder){
 					var thisMonth;

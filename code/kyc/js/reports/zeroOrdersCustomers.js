@@ -18,7 +18,7 @@ angular.module('kyc.reports')
 
 	Report.setData = function(reportsData){
 		angular.forEach(reportsData.customerOrders,function(customerOrder){			
-			if (customerOrder.total)
+			if (customerOrder.orders === 0)
 				data[customerOrder.id] = {
 						dateJoined:customerOrder.created,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
@@ -27,6 +27,9 @@ angular.module('kyc.reports')
 					}
 		})
 	}
+
+	Report.orderBy = "dateJoined";
+	Report.direction = false;
 
 	Report.onSetDataComplete = function(){		
 	}

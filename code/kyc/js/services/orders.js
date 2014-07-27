@@ -32,7 +32,6 @@ angular.module('kyc.services')
       //max paid on the query is always now.
       maxPaid = moment().valueOf();
         return Order.query({accountId:ACCOUNT_ID,maxPaid:maxPaid,minPaid:minPaid},function (res){
-          console.log('called load',res);
           orders = res;
 				}).$promise;            
       }

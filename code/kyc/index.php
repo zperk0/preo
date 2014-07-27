@@ -102,7 +102,7 @@
 
   <script src="//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" type="text/javascript"></script>
   <script src="/js/angular_all.min.js"></script>    
-  <!-- BEGIN WATCH -->
+  <!-- BEGIN WATCH 
   <script src="/code/kyc/js/app.js"></script>
   <script src="/code/notification/notification.js"></script>
   <script src="/code/kyc/js/services/chart.js"></script>
@@ -171,7 +171,7 @@
   <!-- END WATCH -->
   
   
-  <!-- <script src="/code/kyc/js/all.min.js"></script> -->
+  <script src="/code/kyc/js/all.min.js"></script>
 
 
   <script type="text/javascript">

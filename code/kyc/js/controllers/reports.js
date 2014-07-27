@@ -34,7 +34,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 
 			$scope.numPerPage = 20;
 			$scope.currentPage = 1;		
-
+			console.log($scope.selectedReport);
 			$AjaxInterceptor.complete();
 
 	}

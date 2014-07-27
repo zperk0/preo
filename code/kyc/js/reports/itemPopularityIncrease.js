@@ -8,8 +8,8 @@ angular.module('kyc.reports')
 	var titles = [];
 	
 	Report.setData = function(reportsData){			
-		var thisMonth = moment().subtract('month',1).format('X');
-		var lastMonth = moment().subtract('month',2).format('X');
+		var thisMonth = moment().subtract('month',1).valueOf();
+		var lastMonth = moment().subtract('month',2).valueOf();
 		angular.forEach(reportsData.items,
 			function(item){						
 				if (tempData[item.menuItemId] === undefined){					
@@ -19,7 +19,7 @@ angular.module('kyc.reports')
 						$lastMonthQuantitySold:0,
 					}
 				}									
-				var created = moment(item.paid).format('X');				
+				var created = moment(item.paid).valueOf();				
 				if (created >= thisMonth){
 			  	tempData[item.menuItemId].$thisMonthQuantitySold+=item.qty;
 				}
@@ -35,17 +35,19 @@ angular.module('kyc.reports')
 			
 			if (item.$thisMonthQuantitySold > item.$lastMonthQuantitySold ){
 				var popularity = ( 100 * item.$thisMonthQuantitySold )/item.$lastMonthQuantitySold ;
+				if (popularity === Infinity)
+					popularity = 100;
 				data[key] = {
 					itemName: item.name,
 					quantitySold : item.$thisMonthQuantitySold,
-					percentIncrease:popularity.toFixed(0)
+					percentIncrease: popularity.toFixed(0)
 				}			
 			}
 		})
 		console.log('data',data);
 	}
 
-	Report.orderBy = "";
+	Report.orderBy = "percentIncrease";
 
 	Report.getData = function(){
 		return data;

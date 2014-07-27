@@ -10,7 +10,7 @@ angular.module('kyc.reports')
 	Report.setData = function(reportsData){
 		angular.forEach(reportsData.customerOrders,function(customerOrder){				
 			var created = moment(customerOrder.created);		
-			if (created > dateRange){
+			if (created > dateRange || customerOrder.firstOrder > dateRange){
 				if (data[customerOrder.id] === undefined){
 					data[customerOrder.id] = {
 						dateJoined:customerOrder.created,
@@ -20,8 +20,11 @@ angular.module('kyc.reports')
 					}				
 				}
 			}
-		});			
+		});		
 	}
+
+	Report.orderBy = "dateJoined";
+	Report.direction = false;
 
 	Report.getData = function(){
 		return data;

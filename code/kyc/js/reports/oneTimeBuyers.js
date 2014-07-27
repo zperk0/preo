@@ -19,8 +19,10 @@ angular.module('kyc.reports')
 				} 			
 			}
 		})
-			console.log("set data",data);
 	}
+
+	Report.orderBy = "dateOfOrder";
+	Report.direction = false;
 
 	Report.getData = function(){
 		return data;

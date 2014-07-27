@@ -10,7 +10,7 @@ angular.module('kyc.reports')
 	Report.setData = function(reportsData){			
 		angular.forEach(reportsData.customerOrders,
 			function(customerOrder){											
-				if (data[customerOrder.id] === undefined && moment(customerOrder.lastOrder).valueOf() >  dateRange.valueOf()){
+				if (data[customerOrder.id] === undefined && moment(customerOrder.lastOrder).valueOf() <  dateRange.valueOf()){
 					
 					data[customerOrder.id] = {
 						lastOrder: customerOrder.lastOrder,
@@ -25,6 +25,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderby = "lastOrder";
+	
 
 	Report.getData = function(){
 		return data;

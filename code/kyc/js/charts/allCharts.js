@@ -38,10 +38,8 @@ angular.module('kyc.charts')
         currency = currencySymbol;        
         OrderService.load(minDate,maxDate)
         .then(function(orders){
-            console.log('on orderservice then')
             prepareCharts(orders,minDate,maxDate,selectedOutlets);            
             chartDefer.resolve(charts);
-            console.log('resolved defer charts')
         });
         return chartDefer.promise;
     }
@@ -59,7 +57,6 @@ angular.module('kyc.charts')
         
         if (!selectedOutlets)
             selectedOutlets = [];   
-            // console.log('preparing charts',orders.length,angular.toJson(orders));
             angular.forEach(charts,function(chart,key){
                 chart.clearData();
             });                           
@@ -81,7 +78,6 @@ angular.module('kyc.charts')
                 }            
             });  
 
-            // console.log('chart0 data --',charts['payingCustomers'].getData())
         defer.resolve(charts); 
     }
 
