@@ -181,8 +181,9 @@
   angular.module('kyc').constant('ACCOUNT_ID',<? echo $_SESSION['account_id']?>);
   angular.module('kyc').constant('VENUE_ID',<? echo $_SESSION['venue_id']?>);
   angular.module('kyc').constant('PUSHER_KEY', '<? echo $pusherKey ?>');
+  //moment is not available here yet.
   angular.module('kyc').constant('INITIAL_DATES', {
-       start: new Date("2013-01-01"),
+       start: new Date().getTime() - (1000 * 60 * 60 * 24 * 90),
        end:  new Date()
   });
 
