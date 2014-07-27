@@ -22,6 +22,7 @@ angular.module('kyc.reports')
 
 	Report.orderBy = "quantitySold";	
 	Report.description = _tr("Displays top 10 most popular items.");
+	Report.direction = false;
 
 	Report.getData = function(){
 		return data;

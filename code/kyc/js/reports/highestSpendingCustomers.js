@@ -22,6 +22,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderBy = "totalSpent";
+	Report.direction = false;
 	Report.description = _tr("Displays top 50 customers who have the highest transactional spend.")
 
 	Report.getData = function(){
