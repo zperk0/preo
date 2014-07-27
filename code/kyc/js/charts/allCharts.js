@@ -7,17 +7,17 @@ angular.module('kyc.charts')
     
     var currency;
 	var charts = {
-    		// payingCustomers:PayingCustomers,
-    		// ordersPerCustomer:OrdersPerCustomer,
-    		// averageOrderValue:AverageOrderValue,
-    		// itemsOrdered:ItemsOrdered,
-    		// ordersByOutlet:OrdersByOutlet,
-    		// mostPopularItems:MostPopularItems,
-    		// timeOfOrdersPlaced:TimeOfOrdersPlaced,
-    		// customersPie:CustomersPie,
-    		// customersBar:CustomersBar,
-      //       revenue:Revenue,
-      //       numberOfOrders:NumberOfOrders,
+    		payingCustomers:PayingCustomers,
+    		ordersPerCustomer:OrdersPerCustomer,
+    		averageOrderValue:AverageOrderValue,
+    		itemsOrdered:ItemsOrdered,
+    		ordersByOutlet:OrdersByOutlet,
+    		mostPopularItems:MostPopularItems,
+    		timeOfOrdersPlaced:TimeOfOrdersPlaced,
+    		customersPie:CustomersPie,
+    		customersBar:CustomersBar,
+            revenue:Revenue,
+            numberOfOrders:NumberOfOrders,
             menuItemPopularity:MenuItemPopularity
   	}
 
@@ -65,9 +65,13 @@ angular.module('kyc.charts')
             });                           
             angular.forEach(orders,function(order){
                 if ( selectedOutlets.length === 0 || findOutlet(selectedOutlets,order.outletId) ){                    
-                        angular.forEach(charts,function(chart){
-                            chart.setData(order,minDate,maxDate);
-                        })  
+                    
+                    // if (order.paid === null)
+                    //     return;
+
+                    angular.forEach(charts,function(chart){
+                        chart.setData(order,minDate,maxDate);
+                    })  
                 }
                 
             });

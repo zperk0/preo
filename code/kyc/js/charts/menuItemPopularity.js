@@ -23,7 +23,7 @@ angular.module('kyc.charts')
             if (menuItems[item.menuItemId][timestamp] === undefined){
                 menuItems[item.menuItemId][timestamp]=0
             }
-            menuItems[item.menuItemId][timestamp]++;
+            menuItems[item.menuItemId][timestamp]+=item.qty;
         });
          
 	}

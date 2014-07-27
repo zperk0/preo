@@ -182,8 +182,8 @@
   angular.module('kyc').constant('VENUE_ID',<? echo $_SESSION['venue_id']?>);
   angular.module('kyc').constant('PUSHER_KEY', '<? echo $pusherKey ?>');
   angular.module('kyc').constant('INITIAL_DATES', {
-       start: new Date("2014-05-01"),
-       end:  new Date("2014-06-30")
+       start: new Date("2013-01-01"),
+       end:  new Date()
   });
 
   function modal_url( url ) {

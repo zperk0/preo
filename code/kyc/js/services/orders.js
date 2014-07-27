@@ -18,9 +18,19 @@ angular.module('kyc.services')
       return maxData;
     }
 
-		function load(minPaid,maxPaid) {                   
-      minPaid = minPaid === undefined ? moment(INITIAL_DATES.start).startOf('day').valueOf() : minPaid.startOf('day').valueOf();
-      maxPaid = maxPaid === undefined ? moment(INITIAL_DATES.end).startOf('day').valueOf() : maxPaid.endOf('day').valueOf();
+    function getMinDateForQuery(minPaid){     
+      //we need at least two years of data to calculate the area charts,
+      return minPaid === undefined  || minPaid.valueOf() > moment().subtract('year',2).valueOf() ? 
+                moment().subtract('year',2).valueOf() : 
+                minPaid.startOf('day').valueOf();
+    }
+
+
+		function load(minPaid,maxPaid) {                        
+      minPaid = getMinDateForQuery(minPaid);
+
+      //max paid on the query is always now.
+      maxPaid = moment().valueOf();
         return Order.query({accountId:ACCOUNT_ID,maxPaid:maxPaid,minPaid:minPaid},function (res){
           console.log('called load',res);
           orders = res;

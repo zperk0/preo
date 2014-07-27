@@ -36,6 +36,7 @@ angular.module('kyc.charts')
 
 
     function getHighChart(){
+        console.log('get modal options',getModal());        
         return {
             type:type,
             title:title,

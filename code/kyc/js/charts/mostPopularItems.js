@@ -33,11 +33,11 @@ angular.module('kyc.charts')
         if (orderData >= minDate && orderData <= maxDate){
             angular.forEach(order.items,function(item){
                 if (items[item.menuItemId] !== undefined)
-                    items[item.menuItemId].quantity++;
+                    items[item.menuItemId].quantity+=item.qty;
                 else
                     items[item.menuItemId]={
                         name:item.name,
-                        quantity:1
+                        quantity:item.qty
                     };
             }); 
         }                                 
