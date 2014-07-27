@@ -34,7 +34,7 @@ angular.module('kyc.services').
       		data.value = value;
           data.currency = value.currency;
       	}
-        console.log('widgets',$widgets,i);
+        
         if ( $widgets ) {
           data.order = $widgets[ i ].order;
           data.display = $widgets[ i ].display;

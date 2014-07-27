@@ -6,7 +6,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	$scope.$parent.showDateFilter = true;
 	var title = _tr("Customers")
 	var allOrders = OrderService.getOrders();
-	prepareScopeCustomers();
+	
 	$scope.exportAll="1";
 
 
@@ -95,13 +95,15 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 		$scope.customers = UtilsService.dynamicSortObject($scope.customers, $scope.orderBy, $scope.direction)
 		$scope.customersList = $scope.customers;
 		$scope.totalItems = Object.keys($scope.customers).length;
-		$scope.numPerPage = 10;
+		$scope.numPerPage = 20;
 		$scope.currentPage = 1;		
-
+		$scope.setOrderBy('totalSpent',true);
 		$AjaxInterceptor.complete();
 	}
 
 	$scope.setOrderBy = function( orderBy, direction ){
+		if (direction !== undefined)
+				$scope.direction = direction;
 		$scope.customers = UtilsService.dynamicSortObject($scope.customers, orderBy, $scope.direction)
 
 		loadCustomersByPage();
@@ -115,6 +117,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	    	// $scope.customersList = UtilsService.sliceObject( $scope.customers, begin, end );		
 	}
 
+	prepareScopeCustomers();
 	  $scope.$watch('currentPage + numPerPage', function() {
 	  	loadCustomersByPage();
 	  });

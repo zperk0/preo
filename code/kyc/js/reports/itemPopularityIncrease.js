@@ -27,7 +27,7 @@ angular.module('kyc.reports')
 			  	tempData[item.menuItemId].$lastMonthQuantitySold+=item.qty;
 			  }
 		});		
-		console.log(tempData,'tempData');
+		
 	}
 
 	Report.onSetDataComplete = function(){
@@ -44,7 +44,7 @@ angular.module('kyc.reports')
 				}			
 			}
 		})
-		console.log('data',data);
+		
 	}
 
 	Report.orderBy = "percentIncrease";

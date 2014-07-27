@@ -31,13 +31,13 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		$scope.update = function(){						
 			$AjaxInterceptor.start();			
 			setTimeout(function(){
-				console.log("updating",$scope.form.start_date.format("DD/MM/YYYY"),$scope.form.end_date.format('DD/MM/YYYY'));
+				
 				AllCharts.reloadCharts($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol,$scope.getSelectedOutlets())
 				.then(function(){
-					console.log('on then');
+					
 					 $scope.$broadcast('KYC_RELOAD');					 
 				});				
-				console.log('after reloaded charts');
+				
 			},500);
 		}
 			

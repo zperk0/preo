@@ -61,7 +61,7 @@ angular.module('kyc.controllers')
                     
                     $(window).trigger('resize')
                     angular.element('#sscontainer').trigger("ss-rearrange");
-                    console.log('did all & completed');
+                    
                     $AjaxInterceptor.complete();
                 }, 1000)
             }

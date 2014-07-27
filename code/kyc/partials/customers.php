@@ -13,7 +13,7 @@
 				</div>
 
 				<div id="content-table">
-					<table class="table table-striped table-list" ng-init="orderBy = 'name'; direction = false">
+					<table class="table table-striped table-list">
 					  <thead>
 					  	<tr>
 					  		<th width="10">

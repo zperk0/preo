@@ -7,7 +7,7 @@ angular.module('kyc.reports')
 	var titles = [];
 
 	Report.setData = function(reportsData){		
-		console.log(reportsData);
+		
 		angular.forEach(reportsData.customerOrders,
 			function(customerOrder){											
 				if (data[customerOrder.id] === undefined && !isNaN(customerOrder.orderPercentage) && customerOrder.orderPercentage < 0 ){					
@@ -19,7 +19,7 @@ angular.module('kyc.reports')
 					}				
 			  }
 		});
-		console.log('set data',data);			
+		
 	}
 
 	Report.orderby = "percentDecrease";

@@ -6,7 +6,7 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 
 	$scope.$parent.showDateFilter = true;	
 	$scope.exportAll="1";
-
+	$scope.numPerPage = 20;
 
 	$scope.$on('KYC_RELOAD',function(){                
       allOrders = OrderService.getOrders();	      
@@ -67,8 +67,8 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
       var maxDate = $scope.$parent.form.end_date;
 			angular.forEach(allOrders,function(row){					    
         var orderData = moment.utc(row.paid);                
-        console.log('row outletId ', row.outletId);
-        console.log('parent: outletId ', $scope.$parent.outlets);        
+        
+        
         if ($scope.$parent.getSelectedOutlets().length === 0 || $scope.$parent.findOutlet(row.outletId).length >=1 ) {
 	        if (orderData >= minDate && orderData <= maxDate){
 		        	angular.forEach(row.items,function(item){
@@ -86,17 +86,19 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 	      	}
 	      }
 			});											
-		}
-
+		}		
 		$scope.stock = UtilsService.dynamicSortObject($scope.stock, $scope.orderBy, $scope.direction)
 		$scope.stocks = $scope.stock;
-		$scope.totalItems = Object.keys($scope.stock).length;
-		$scope.numPerPage = 10;
-		$scope.currentPage = 1;
+		$scope.totalItems = Object.keys($scope.stock).length;		
+		$scope.currentPage = 1;		
+		$scope.setOrderBy('quantity',true);	
 		$AjaxInterceptor.complete();		
+		
 	}
 
 	$scope.setOrderBy = function( orderBy, direction ){
+		if (direction !== undefined)
+				$scope.direction = direction;
 		$scope.stock = UtilsService.dynamicSortObject($scope.stock, orderBy, $scope.direction)
 
 		loadStocksByPage();
@@ -115,7 +117,6 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
   });	
 
 	prepareScopeStock();
-
 	  $scope.setPage = function (pageNo) {
 	    $scope.currentPage = pageNo;
 	  };	

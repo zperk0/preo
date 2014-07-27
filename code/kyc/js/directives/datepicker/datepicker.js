@@ -49,7 +49,7 @@ angular.module('kyc.directives').
           } else {
             date = moment.utc(data)
           }
-          console.log("start",attrs.start !== undefined);
+          
           if (attrs.start !== undefined) {
             return date.endOf('day');
           } else{

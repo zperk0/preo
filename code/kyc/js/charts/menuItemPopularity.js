@@ -32,13 +32,13 @@ angular.module('kyc.charts')
         // clearData();
         selectedItem = itemId;        
         window.sessionStorage.setItem("KYC_SELECTED_ITEM",itemId);
-        console.log("setItem",window.sessionStorage.getItem("KYC_SELECTED_ITEM"));
+        
         onSetDataComplete(minDate,maxDate);        
         cb(getHighChart());
     }
 
     function onSetDataComplete(minDateP,maxDateP){
-        console.log('completed',selectedItem,window.sessionStorage.getItem("KYC_SELECTED_ITEM"));
+        
         minDate = minDateP;
         maxDate = maxDateP;        
         prepData = ChartHelper.getPreparedAreaData(menuItems[selectedItem],minDate,maxDate,false);

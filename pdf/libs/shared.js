@@ -9,5 +9,5 @@ function formatPercentage(val){
 		}
 
 function formatDate(ts){        
-    return moment(ts).format("DD/MM/YYYY");
+    return moment.utc(ts).format("DD/MM/YYYY");
 }

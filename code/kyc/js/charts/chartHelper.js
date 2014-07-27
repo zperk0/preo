@@ -290,7 +290,7 @@ angular.module('kyc.charts')
        // options for footer in modal
 
       return [{
-                name: _tr('Specified Dates'),
+                name: _tr('Date Range'),
                 value: getPeriodTotal(prepData.data),
                 percent: getPercentage(prepData.data, prepData.previousSpecifiedData),
                 active: true,
