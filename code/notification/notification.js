@@ -1,6 +1,7 @@
 angular.module('notification', ['ngSanitize'])
 
-.controller("confirmModalController",['$scope', '$modalInstance', 'data', 'deffered', '$http', '$templateCache', '$compile','$sce', function( $scope, $modalInstance, data, deffered, $http, $templateCache, $compile,$sce ) {
+.controller("confirmModalController",['$scope', '$modalInstance', 'data', 'deffered', '$http', '$templateCache', '$compile','$sce','$timeout', 
+  function( $scope, $modalInstance, data, deffered, $http, $templateCache, $compile,$sce,$timeout) {
 
         var templatePath = '/code/notification/templates/';
         
