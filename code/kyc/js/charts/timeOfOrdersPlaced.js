@@ -19,11 +19,11 @@ angular.module('kyc.charts')
 	function setData(order,minDate,maxDate){
         minTimestamp = minDate.valueOf();
         maxTimestamp = maxDate.valueOf();
-        var orderData = moment(order.paid);
+        var orderData = moment.utc(order.paid);
         if (orderData >= minDate && orderData <= maxDate){
             if (order.paid !== undefined && order.pickupTime !== undefined){
-                var placed = moment(order.paid).startOf('day').valueOf();
-                var pickup = moment(order.pickupTime).startOf('day').valueOf();
+                var placed = moment.utc(order.paid).startOf('day').valueOf();
+                var pickup = moment.utc(order.pickupTime).startOf('day').valueOf();
                 if(placed === pickup){
                     data[0].y++;
                 } else {
@@ -57,7 +57,7 @@ angular.module('kyc.charts')
 
     function getCsv(){
         var data = getData();
-        var csvData =[[moment(minTimestamp).format("DD-MMM-YYYY") + " - " + moment(maxTimestamp).format("DD-MMM-YYYY")],[title]]
+        var csvData =[[moment.utc(minTimestamp).format("DD-MMM-YYYY") + " - " + moment.utc(maxTimestamp).format("DD-MMM-YYYY")],[title]]
         angular.forEach(data,function(d){
             csvData.push([d.name,d.y]) 
         })

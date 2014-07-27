@@ -12,7 +12,7 @@ angular.module('kyc.charts')
 
 
 	function setData(order,minDate,maxDate){        
-        var timestamp = moment(order.paid).startOf('day').valueOf();
+        var timestamp = moment.utc(order.paid).startOf('day').valueOf();
         angular.forEach(order.items,function(item){
             
             if (menuItems[item.menuItemId] === undefined){

@@ -8,8 +8,8 @@ angular.module('kyc.reports')
 	var titles = [];
 	
 	Report.setData = function(reportsData){			
-		var thisMonth = moment().subtract('month',1).valueOf();
-		var lastMonth = moment().subtract('month',2).valueOf();
+		var thisMonth = moment.utc().subtract('month',1).valueOf();
+		var lastMonth = moment.utc().subtract('month',2).valueOf();
 		angular.forEach(reportsData.items,
 			function(item){						
 				if (tempData[item.menuItemId] === undefined){					
@@ -19,7 +19,7 @@ angular.module('kyc.reports')
 						$lastMonthQuantitySold:0,
 					}
 				}									
-				var created = moment(item.paid).valueOf();				
+				var created = moment.utc(item.paid).valueOf();				
 				if (created >= thisMonth){
 			  	tempData[item.menuItemId].$thisMonthQuantitySold+=item.qty;
 				}

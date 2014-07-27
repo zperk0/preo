@@ -11,7 +11,7 @@ angular.module('kyc.charts')
     var prepData = {};
 
 	function setData(order,minDate,maxDate){
-        var timestamp = moment(order.paid).startOf('day').valueOf();
+        var timestamp = moment.utc(order.paid).startOf('day').valueOf();
         if (dailyOrders[timestamp])
             dailyOrders[timestamp]++;
         else
@@ -70,7 +70,7 @@ angular.module('kyc.charts')
 
     function getCsv(){
         var data = getData();
-        var csvData =[[moment(minTimestamp).format("DD-MMM-YYYY") + " - " + moment(maxTimestamp).format("DD-MMM-YYYY")],[title]]
+        var csvData =[[moment.utc(minTimestamp).format("DD-MMM-YYYY") + " - " + moment.utc(maxTimestamp).format("DD-MMM-YYYY")],[title]]
         angular.forEach(data,function(d){
             csvData.push([ ChartHelper.formatDate(d[0]),d[1]]) 
         })

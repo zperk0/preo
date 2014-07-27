@@ -11,9 +11,11 @@ angular.module('kyc.charts')
         repeatedCustomers = [];
     }
 
-	function setData(order,minDate,maxDate){           
-        var orderData = moment(order.paid);        
-        if (orderData >= minDate && orderData <= maxDate){                    
+	function setData(order,minDate,maxDate){               
+        var orderData = moment.utc(order.paid).valueOf();        
+        console.log('orderData',moment.utc(orderData).format("DD/MM/YYYY - HH:SS"),minDate.format("DD/MM/YYYY - HH:SS"),maxDate.format("DD/MM/YYYY - HH:SS"));
+        if (orderData >= minDate.valueOf() && orderData <= maxDate.valueOf()){                
+            console.log('in if')    
     		var customerId  = order.userId;
     		if (newCustomers.indexOf(customerId) === -1){
     			newCustomers.push(customerId);
@@ -23,6 +25,7 @@ angular.module('kyc.charts')
     				repeatedCustomers.push(customerId);
     		}
         }
+        console.log('data',newCustomers);
 	}
 
 	function getData(){

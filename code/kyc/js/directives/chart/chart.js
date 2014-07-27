@@ -89,8 +89,8 @@ angular.module('kyc.directives').
                   var firstOption = ng.chart.value.modal.options[0];
 
                   ng.chart.value.tickInterval = firstOption.tickInterval; 
-                  ng.chart.value.minTimestamp = moment(firstOption.minTimestamp).valueOf();
-                  ng.chart.value.maxTimestamp = moment(firstOption.maxTimestamp).valueOf();
+                  ng.chart.value.minTimestamp = moment.utc(firstOption.minTimestamp).valueOf();
+                  ng.chart.value.maxTimestamp = moment.utc(firstOption.maxTimestamp).valueOf();
 
                   var value = angular.copy(ng.chart.value);
 
@@ -116,7 +116,7 @@ angular.module('kyc.directives').
                 $scope.exportCsv = function(){
 
                   var data = $scope.selectedData.data;
-                  var csvData =[[moment($scope.selectedData.minTimestamp).format("DD-MMM-YYYY") + " - " + moment($scope.selectedData.maxTimestamp).format("DD-MMM-YYYY")],['Revenue']]
+                  var csvData =[[moment.utc($scope.selectedData.minTimestamp).format("DD-MMM-YYYY") + " - " + moment.utc($scope.selectedData.maxTimestamp).format("DD-MMM-YYYY")],['Revenue']]
                   angular.forEach(data,function(d){
                       csvData.push([ ChartHelper.formatDate(d[0]),d[1]]) 
                   });
@@ -159,10 +159,10 @@ angular.module('kyc.directives').
                   option.active = true;
 
                   $scope.selectedData = angular.copy(option);
-                  $scope.selectedData.minTimestamp = moment(option.minTimestamp).valueOf();
-                  $scope.selectedData.maxTimestamp = moment(option.maxTimestamp).valueOf();
+                  $scope.selectedData.minTimestamp = moment.utc(option.minTimestamp).valueOf();
+                  $scope.selectedData.maxTimestamp = moment.utc(option.maxTimestamp).valueOf();
 
-                  $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data, tickInterval:option.tickInterval, minTimestamp: moment(option.minTimestamp).valueOf(), maxTimestamp: moment(option.maxTimestamp).valueOf()});
+                  $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data, tickInterval:option.tickInterval, minTimestamp: moment.utc(option.minTimestamp).valueOf(), maxTimestamp: moment.utc(option.maxTimestamp).valueOf()});
                 }
 
                 $scope.setNoData = function( option ) {

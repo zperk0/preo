@@ -183,8 +183,10 @@
   angular.module('kyc').constant('PUSHER_KEY', '<? echo $pusherKey ?>');
   //moment is not available here yet.
   angular.module('kyc').constant('INITIAL_DATES', {
-       start: new Date().getTime() - (1000 * 60 * 60 * 24 * 90),
-       end:  new Date()
+       // start: new Date().getTime() - (1000 * 60 * 60 * 24 * 90),
+       // end:  new Date()
+       start: new Date('2014-05-12'),
+       end:  new Date('2014-05-12')
   });
 
   function modal_url( url ) {

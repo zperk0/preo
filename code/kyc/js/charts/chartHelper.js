@@ -25,17 +25,17 @@ angular.module('kyc.charts')
     var FilterCharts = {
         day: function( data, valueOf ) {
             return data.filter(function( y, index ){
-                return moment(y[0]).valueOf() === moment(valueOf).valueOf();
+                return moment.utc(y[0]).valueOf() === moment.utc(valueOf).valueOf();
             });
         },
         week: function( data, valueOf ) {
             return data.filter(function( y, index ){
-                return moment(y[0]).week() === moment(valueOf).week();
+                return moment.utc(y[0]).week() === moment.utc(valueOf).week();
             });
         },
         month: function( data, valueOf ) {
             return data.filter(function( y, index ){
-               return moment(y[0]).month() == moment(valueOf).month();
+               return moment.utc(y[0]).month() == moment.utc(valueOf).month();
             });
         }
     };
@@ -49,7 +49,7 @@ angular.module('kyc.charts')
             if ( daysFiltered.length ) {
                 daysFiltered[1] += +dataRowCopied[1];
             } else {
-                dataRowCopied[0] = moment(dataRowCopied[0]).startOf('day').valueOf();
+                dataRowCopied[0] = moment.utc(dataRowCopied[0]).startOf('day').valueOf();
                 data.push(dataRowCopied);
             }
         },
@@ -60,7 +60,7 @@ angular.module('kyc.charts')
             if ( weekFiltered.length ) {
                 data[ data.indexOf(weekFiltered[0]) ][1] += +dataRowCopied[1];
             } else {
-                dataRowCopied[0] = moment(dataRowCopied[0]).startOf('week').valueOf();
+                dataRowCopied[0] = moment.utc(dataRowCopied[0]).startOf('week').valueOf();
                 data.push(dataRowCopied);
             }
         },
@@ -71,7 +71,7 @@ angular.module('kyc.charts')
             if ( monthsFiltered.length ) {
                 data[ data.indexOf(monthsFiltered[0]) ][1] += dataRowCopied[1];
             } else {
-                dataRowCopied[0] = moment(dataRowCopied[0]).startOf('month').valueOf();
+                dataRowCopied[0] = moment.utc(dataRowCopied[0]).startOf('month').valueOf();
                 data.push(dataRowCopied);
             }
         }
@@ -79,17 +79,17 @@ angular.module('kyc.charts')
 
     function getPreparedAreaData(chartData,minTimestamp,maxTimestamp,showDecimal){
         showDecimal = showDecimal ? showDecimal : false;
-        var previousSpecifiedTimestamp =  moment(minTimestamp - (maxTimestamp - minTimestamp))        
-        var weekTimestamp = moment().subtract('week',1);
-        var lastWeekTimestamp = moment().subtract('week',2);
-        var monthTimestamp = moment().subtract('month',1);
-        var lastMonthTimestamp = moment().subtract('month',2);
-        var threeMonthsTimestamp = moment().subtract('month',3);
-        var lastThreeMonthsTimestamp = moment().subtract('month',6);
-        var sixMonthsTimestamp = moment().subtract('month',6);
-        var lastSixMonthsTimestamp = moment().subtract('month',12);
-        var yearTimestamp = moment().subtract('year',1);
-        var lastYearTimestamp = moment().subtract('year',2);
+        var previousSpecifiedTimestamp =  moment.utc(minTimestamp - (maxTimestamp - minTimestamp))        
+        var weekTimestamp = moment.utc().subtract('week',1);
+        var lastWeekTimestamp = moment.utc().subtract('week',2);
+        var monthTimestamp = moment.utc().subtract('month',1);
+        var lastMonthTimestamp = moment.utc().subtract('month',2);
+        var threeMonthsTimestamp = moment.utc().subtract('month',3);
+        var lastThreeMonthsTimestamp = moment.utc().subtract('month',6);
+        var sixMonthsTimestamp = moment.utc().subtract('month',6);
+        var lastSixMonthsTimestamp = moment.utc().subtract('month',12);
+        var yearTimestamp = moment.utc().subtract('year',1);
+        var lastYearTimestamp = moment.utc().subtract('year',2);
 
 
         var data = [];
@@ -187,8 +187,8 @@ angular.module('kyc.charts')
 
         return {
             data: completeEmptyData({
-                max: moment(maxTimestamp).startOf('day'),
-                min: moment(minTimestamp).startOf('day').valueOf(),
+                max: moment.utc(maxTimestamp).startOf('day'),
+                min: moment.utc(minTimestamp).startOf('day').valueOf(),
                 value: dataModal,
                 dateType: calculateTickIntervalForString({ maxTimestamp: maxTimestamp, minTimestamp: minTimestamp }),
                 filterData: function( data, valueOf ) {
@@ -224,7 +224,7 @@ angular.module('kyc.charts')
     }
 
     function calculateTickInterval( prepData ) {
-        var daysDiff = moment(prepData.maxTimestamp,'X').diff(moment(prepData.minTimestamp,'X'), 'days');
+        var daysDiff = moment.utc(prepData.maxTimestamp,'X').diff(moment.utc(prepData.minTimestamp,'X'), 'days');
         
         switch( true ) {
             case daysDiff < 32:
@@ -243,7 +243,7 @@ angular.module('kyc.charts')
     }
 
     function calculateTickIntervalForString( prepData ) {
-        var daysDiff = moment(prepData.maxTimestamp,'X').diff(moment(prepData.minTimestamp,'X'), 'days');
+        var daysDiff = moment.utc(prepData.maxTimestamp,'X').diff(moment.utc(prepData.minTimestamp,'X'), 'days');
         
         switch( true ) {
             case daysDiff < 32:
@@ -295,8 +295,8 @@ angular.module('kyc.charts')
                 percent: getPercentage(prepData.data, prepData.previousSpecifiedData),
                 active: true,
                 data: completeEmptyData({
-                    max: moment(prepData.maxTimestamp).startOf('day'),
-                    min: moment(prepData.minTimestamp).startOf('day').valueOf(),
+                    max: moment.utc(prepData.maxTimestamp).startOf('day'),
+                    min: moment.utc(prepData.minTimestamp).startOf('day').valueOf(),
                     value: prepData.dataModal,
                     dateType: calculateTickIntervalForString(prepData),
                     filterData: function( data, valueOf ) {
@@ -321,71 +321,71 @@ angular.module('kyc.charts')
                 value: getPeriodTotal(prepData.weekData),
                 percent: getPercentage(prepData.weekData, prepData.previousWeekData),
                 data: completeEmptyData({
-                    max: moment().startOf('day'),
-                    min: moment().subtract('week', 1).startOf('day').valueOf(),
+                    max: moment.utc().startOf('day'),
+                    min: moment.utc().subtract('week', 1).startOf('day').valueOf(),
                     value: prepData.weekData,
                     dateType: 'day',
                     filterData: FilterCharts.day
                 }),                
                 tickInterval: TickInterval.DAY,
-                minTimestamp: moment().subtract('week',1),
-                maxTimestamp: moment()
+                minTimestamp: moment.utc().subtract('week',1),
+                maxTimestamp: moment.utc()
             }, {
                 name: _tr('Month'),
                 value: getPeriodTotal(prepData.monthData),
                 percent: getPercentage(prepData.monthData, prepData.previousMonthData),
                 data: completeEmptyData({
-                    max: moment().startOf('day'),
-                    min: moment().subtract('month',1).startOf('day').valueOf(),
+                    max: moment.utc().startOf('day'),
+                    min: moment.utc().subtract('month',1).startOf('day').valueOf(),
                     value: prepData.monthData,
                     dateType: 'day',
                     filterData: FilterCharts.day
                 }),                  
                 tickInterval: TickInterval.DAY,
-                minTimestamp: moment().subtract('month', 1),
-                maxTimestamp: moment()
+                minTimestamp: moment.utc().subtract('month', 1),
+                maxTimestamp: moment.utc()
             }, {
                 name: _tr('3 Months'),
                 value: getPeriodTotal(prepData.threeMonthsData),
                 percent: getPercentage(prepData.threeMonthsData, prepData.previousThreeMonthsData),
                 data: completeEmptyData({
-                    max: moment().startOf('day'),
-                    min: moment().subtract('month',3).startOf('day').valueOf(),
+                    max: moment.utc().startOf('day'),
+                    min: moment.utc().subtract('month',3).startOf('day').valueOf(),
                     value: prepData.threeMonthsData,
                     dateType: 'week',
                     filterData: FilterCharts.week
                 }),                  
                 tickInterval: TickInterval.WEEK,
-                minTimestamp: moment().subtract('month',3),
-                maxTimestamp: moment()
+                minTimestamp: moment.utc().subtract('month',3),
+                maxTimestamp: moment.utc()
             }, {
                 name: _tr('6 Months'),
                 value: getPeriodTotal(prepData.sixMonthsData),
                 percent: getPercentage(prepData.sixMonthsData, prepData.previousSixMonthsData),
                 data: completeEmptyData({
-                    max: moment().startOf('day'),
-                    min: moment().subtract('month',6).startOf('day').valueOf(),
+                    max: moment.utc().startOf('day'),
+                    min: moment.utc().subtract('month',6).startOf('day').valueOf(),
                     value: prepData.sixMonthsData,
                     dateType: 'week',
                     filterData: FilterCharts.week
                 }),                    
                 tickInterval: TickInterval.WEEK_THREE,
-                minTimestamp: moment().subtract('month',6),
-                maxTimestamp: moment()
+                minTimestamp: moment.utc().subtract('month',6),
+                maxTimestamp: moment.utc()
             }, {
                 name: _tr('Year'),
                 value: getPeriodTotal(prepData.yearData),
                 percent: getPercentage(prepData.yearData, prepData.previousYearData),
                 data: completeEmptyData({
-                    max: moment().startOf('day'),
-                    min: moment().subtract('year',1).startOf('day').valueOf(),
+                    max: moment.utc().startOf('day'),
+                    min: moment.utc().subtract('year',1).startOf('day').valueOf(),
                     value: prepData.yearData,
                     dateType: 'month',
                     filterData: FilterCharts.month
                 }),                 
                 tickInterval: TickInterval.MONTH,
-                minTimestamp: moment().subtract('year',1),
-                maxTimestamp: moment()
+                minTimestamp: moment.utc().subtract('year',1),
+                maxTimestamp: moment.utc()
             }, ]
 
     }

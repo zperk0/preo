@@ -18,12 +18,12 @@ angular.module('kyc.directives').
 
             if ( ng.compareStart ) {
 
-              var isBeforeStart = date.valueOf() < ng.compareStart.valueOf() || date.valueOf() >= moment().endOf('day').valueOf();
+              var isBeforeStart = date.valueOf() < ng.compareStart.valueOf() || date.valueOf() >= moment.utc().endOf('day').valueOf();
 
               return isBeforeStart ? 'disabled' : '' ;  
             } else if ( ng.compareEnd ) {
 
-              var isAfterEnd = date.valueOf() > moment(ng.compareEnd).endOf('day').valueOf();
+              var isAfterEnd = date.valueOf() > moment.utc(ng.compareEnd).endOf('day').valueOf();
 
               return isAfterEnd ? 'disabled' : '' ;  
             }
@@ -42,11 +42,18 @@ angular.module('kyc.directives').
 
 
         ngModel.$parsers.push(function(data) {
+          var date;
           if (typeof data === 'string') {
-            var dataArr = data.split('/');
-            return moment([dataArr[2], +dataArr[1] - 1, +dataArr[0]]);
+            var dataArr = data.split('/');            
+            date = moment.utc([dataArr[2], +dataArr[1] - 1, +dataArr[0]]);
           } else {
-            return moment(data);
+            date = moment.utc(data)
+          }
+          console.log("start",attrs.start !== undefined);
+          if (attrs.start !== undefined) {
+            return date.endOf('day');
+          } else{
+            return date.startOf('day');
           }
         });
 

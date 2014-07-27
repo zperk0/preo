@@ -5,11 +5,11 @@ angular.module('kyc.reports')
 	var Report = {}
 	var data = {}
 	var titles = [];
-	var dateRange = moment().subtract('week',2);
+	var dateRange = moment.utc().subtract('week',2);
 
 	Report.setData = function(reportsData){
 		angular.forEach(reportsData.customerOrders,function(customerOrder){				
-			var created = moment(customerOrder.created);		
+			var created = moment.utc(customerOrder.created);		
 			if (created > dateRange || customerOrder.firstOrder > dateRange){
 				if (data[customerOrder.id] === undefined){
 					data[customerOrder.id] = {

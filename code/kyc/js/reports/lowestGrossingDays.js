@@ -5,7 +5,7 @@ angular.module('kyc.reports')
 	var Report = {}
 	var data = []		
 	var titles = [];
-	var dateRange = moment().subtract('month',1);
+	var dateRange = moment.utc().subtract('month',1);
 	var itemsToShow = 10;
 	Report.setData = function(reportsData){					
 		var tempData = {}	

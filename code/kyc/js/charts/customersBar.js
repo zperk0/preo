@@ -15,7 +15,7 @@ angular.module('kyc.charts')
 	function setData(order,minDate,maxDate){
         minTimestamp = minDate.valueOf();
         maxTimestamp = maxDate.valueOf();
-        var orderData = moment(order.paid);
+        var orderData = moment.utc(order.paid);
         if (orderData >= minDate && orderData <= maxDate){
             var customerId  = order.userId;
             if (newCustomers.indexOf(customerId) === -1){
@@ -60,7 +60,7 @@ angular.module('kyc.charts')
 
     function getCsv(){
         var data = getData();
-        var csvData =[[moment(minTimestamp).format("DD-MMM-YYYY") + " - " + moment(maxTimestamp).format("DD-MMM-YYYY")],[title]]
+        var csvData =[[moment.utc(minTimestamp).format("DD-MMM-YYYY") + " - " + moment.utc(maxTimestamp).format("DD-MMM-YYYY")],[title]]
         angular.forEach(data,function(d){
             csvData.push([d.name,d.y]) 
         })

@@ -127,7 +127,7 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             if ( this.series.xAxis.tickInterval === TickInterval.MONTH ) {
                                 date = $filter('date')(new Date(this.x), 'MMM yyyy');
                             } else if ( this.series.xAxis.tickInterval === TickInterval.WEEK || this.series.xAxis.tickInterval === TickInterval.WEEK_THREE ) {
-                                date = moment(this.x).startOf('week').format('DD MMM YYYY') + ' <br /> - <br />' + moment(this.x).endOf('week').format('DD MMM YYYY');
+                                date = moment.utc(this.x).startOf('week').format('DD MMM YYYY') + ' <br /> - <br />' + moment.utc(this.x).endOf('week').format('DD MMM YYYY');
                             } else {
                                 date = $filter('date')(new Date(this.x), 'dd MMM yyyy');
                             }
@@ -165,9 +165,9 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             var date;
 
                             if ( this.axis.tickInterval === TickInterval.MONTH ) {
-                                date = $filter('date')(new Date(moment(this.value).startOf('month').add('days', 10)), 'MMM');
+                                date = $filter('date')(new Date(moment.utc(this.value).startOf('month').add('days', 10)), 'MMM');
                             } else if ( this.axis.tickInterval === TickInterval.WEEK || this.axis.tickInterval === TickInterval.WEEK_THREE ) {
-                                date = $filter('date')(new Date(moment(this.value).startOf('week').add('days', 3)), 'dd.MMM');
+                                date = $filter('date')(new Date(moment.utc(this.value).startOf('week').add('days', 3)), 'dd.MMM');
                             } else {
                                 date = $filter('date')(new Date(this.value), 'dd.MMM');
                             }

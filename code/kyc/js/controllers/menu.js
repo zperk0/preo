@@ -7,8 +7,8 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			$scope.outlets = [];
 
 			$scope.form = {
-				start_date: moment(INITIAL_DATES.start),
-				end_date: moment(INITIAL_DATES.end)
+				start_date: moment.utc(INITIAL_DATES.start).startOf('day'),
+				end_date: moment.utc(INITIAL_DATES.end).endOf('day')
 			}
 
 

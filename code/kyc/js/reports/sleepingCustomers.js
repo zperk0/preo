@@ -5,12 +5,12 @@ angular.module('kyc.reports')
 	var Report = {}
 	var data = {}
 	var titles = [];
-	var dateRange = moment().subtract('month',3);
+	var dateRange = moment.utc().subtract('month',3);
 	
 	Report.setData = function(reportsData){			
 		angular.forEach(reportsData.customerOrders,
 			function(customerOrder){											
-				if (data[customerOrder.id] === undefined && moment(customerOrder.lastOrder).valueOf() <  dateRange.valueOf()){
+				if (data[customerOrder.id] === undefined && moment.utc(customerOrder.lastOrder).valueOf() <  dateRange.valueOf()){
 					
 					data[customerOrder.id] = {
 						lastOrder: customerOrder.lastOrder,

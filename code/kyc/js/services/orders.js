@@ -20,8 +20,8 @@ angular.module('kyc.services')
 
     function getMinDateForQuery(minPaid){     
       //we need at least two years of data to calculate the area charts,
-      return minPaid === undefined  || minPaid.valueOf() > moment().subtract('year',2).valueOf() ? 
-                moment().subtract('year',2).valueOf() : 
+      return minPaid === undefined  || minPaid.valueOf() > moment.utc().subtract('year',2).valueOf() ? 
+                moment.utc().subtract('year',2).valueOf() : 
                 minPaid.startOf('day').valueOf();
     }
 
@@ -30,7 +30,7 @@ angular.module('kyc.services')
       minPaid = getMinDateForQuery(minPaid);
 
       //max paid on the query is always now.
-      maxPaid = moment().valueOf();
+      maxPaid = moment.utc().valueOf();
         return Order.query({accountId:ACCOUNT_ID,maxPaid:maxPaid,minPaid:minPaid},function (res){
           orders = res;
 				}).$promise;            

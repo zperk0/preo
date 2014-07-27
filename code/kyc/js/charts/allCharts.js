@@ -54,7 +54,8 @@ angular.module('kyc.charts')
     }
 
     function prepareCharts(orders,minDate,maxDate,selectedOutlets){        
-        
+        minDate = moment.utc(minDate);
+        maxDate = moment.utc(maxDate);
         if (!selectedOutlets)
             selectedOutlets = [];   
             angular.forEach(charts,function(chart,key){

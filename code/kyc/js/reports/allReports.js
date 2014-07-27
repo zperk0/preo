@@ -90,9 +90,9 @@ angular.module('kyc.reports')
 		}
 
 		function fetchData(){			
-			var now = moment().valueOf();
-			var lastMonthEnd = moment().subtract('month',1).valueOf();
-			var lastMonthBegin = moment().subtract('month',2).valueOf();			
+			var now = moment.utc().valueOf();
+			var lastMonthEnd = moment.utc().subtract('month',1).valueOf();
+			var lastMonthBegin = moment.utc().subtract('month',2).valueOf();			
 			return $q.all([
 					Report.items({venueId:VENUE_ID}).$promise,
 					Report.orders({venueId:VENUE_ID}).$promise,
@@ -123,9 +123,9 @@ angular.module('kyc.reports')
 			angular.forEach(orders,function(order){
 				
 				//get the start of each day to group by
-				order.day = moment(order.paid).startOf('day').valueOf();
+				order.day = moment.utc(order.paid).startOf('day').valueOf();
 				//get the hour of the order only				
-				order.hour = moment(order.paid).hour();
+				order.hour = moment.utc(order.paid).hour();
 			})
 			return orders;
 		}

@@ -9,7 +9,7 @@ angular.module('kyc.reports')
 	Report.setData = function(reportsData){
 
 		angular.forEach(reportsData.customerOrders,function(customerOrder){				
-			var created = moment(customerOrder.paid);		
+			var created = moment.utc(customerOrder.paid);		
 			if (data[customerOrder.id] === undefined){
 					data[customerOrder.id] = {
 						totalSpent: customerOrder.total === null ? 0 : customerOrder.total,
