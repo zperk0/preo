@@ -77,7 +77,8 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 		$scope.selectedReport = {
 			data: report.getData(),
 			title: report.getTitle(),
-			titles: report.getTitles()
+			titles: report.getTitles(),
+			description: report.description
 		}
 
 		$scope.totalItems = Object.keys($scope.selectedReport.data).length;	
@@ -87,7 +88,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 		
 		$scope.setOrderBy(report.orderBy || $scope.selectedReport.titles[0]);
 		$scope.direction = report.direction !== undefined ? report.direction : $scope.direction;
-		
 	}
 
 	$scope.getTitle = function (title){		

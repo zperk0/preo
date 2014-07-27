@@ -35,6 +35,8 @@ angular.module('kyc.reports')
 	Report.orderBy = "numberOfOrders";
 	Report.direction = false;
 
+	Report.description = _tr("Display top 10 lowest order days.");
+
 	Report.getData = function(){
 		return data;
 	}

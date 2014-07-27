@@ -1,7 +1,7 @@
 angular.module('kyc.reports')
 .factory('NewCustomers',[function(){
 
-	var title = _tr("New Customers");
+	var title = _tr("New Customers");	
 	var Report = {}
 	var data = {}
 	var titles = [];
@@ -25,6 +25,7 @@ angular.module('kyc.reports')
 
 	Report.orderBy = "dateJoined";
 	Report.direction = false;
+	Report.description = _tr("Displays all new customers who have signed up, or had their first order, in the past two weeks.")
 
 	Report.getData = function(){
 		return data;
@@ -41,7 +42,6 @@ angular.module('kyc.reports')
 	Report.getTitle = function(){
 		return title;
 	}
-	
 
 	return Report;
 

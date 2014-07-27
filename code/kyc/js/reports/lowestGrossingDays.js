@@ -34,6 +34,7 @@ angular.module('kyc.reports')
 
 	Report.orderBy = "valueSold";
 	Report.direction = false;
+	Report.description = _tr("Display top 10 lowest grossing days.");
 
 	Report.getData = function(){
 		return data;

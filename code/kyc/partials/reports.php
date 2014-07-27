@@ -34,7 +34,9 @@
 				<div class="front" id="content-list">
 					
 					<div class="header-list overflow">			
-						<span><? echo _("Reports") ?></span>
+						<span>{{selectedReport.title}}</span> 
+						<i class="icon-question-sign preoTips has-tip tip-bottom" tooltip-placement="bottom" data-selector="tooltip617tigam7vi" tooltip="{{selectedReport.description}}">
+						</i>
 
 						<a href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
 							<i class="fa fa-plus"></i>
@@ -53,7 +55,7 @@
 						  			<div class="sort pull-right">
 						  				<i class="fa fa-sort-up"></i>
 						  				<i class="fa fa-sort-desc"></i>
-						  			</div>		  			
+						  			</div>		  									  			
 						  		</th>
 						  	</tr>
 						  </thead>

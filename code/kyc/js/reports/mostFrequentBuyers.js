@@ -24,6 +24,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderBy = "numberOfOrders";
+	Report.description = _tr("Displays top 50 customers who have placed the most number of orders.")
 
 	Report.getData = function(){
 		return data;

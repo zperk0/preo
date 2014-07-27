@@ -25,6 +25,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderBy = "valueSold";
+	Report.description = _tr("Displays the accumulative total spent, broken down by 24 x 1 hour time slots.");
 
 	Report.getData = function(){
 		return data;

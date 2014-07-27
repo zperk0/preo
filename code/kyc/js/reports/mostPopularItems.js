@@ -20,7 +20,8 @@ angular.module('kyc.reports')
 		});
 	}
 
-	Report.orderBy = "quantitySold";
+	Report.orderBy = "quantitySold";	
+	Report.description = _tr("Displays top 10 most popular items.");
 
 	Report.getData = function(){
 		return data;

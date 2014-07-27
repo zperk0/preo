@@ -23,6 +23,7 @@ angular.module('kyc.reports')
 
 	Report.orderBy = "dateOfOrder";
 	Report.direction = false;
+	Report.description = _tr("Displays all customers who have placed only one order.")
 
 	Report.getData = function(){
 		return data;

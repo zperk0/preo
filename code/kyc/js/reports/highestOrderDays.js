@@ -34,6 +34,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderBy = "numberOfOrders";
+	Report.description = _tr("Display top 10 highest order days.");
 
 	Report.getData = function(){
 		return data;

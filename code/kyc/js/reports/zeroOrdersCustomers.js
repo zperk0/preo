@@ -3,6 +3,7 @@ angular.module('kyc.reports')
 	function(VenueCustomers,VENUE_ID){
 
 	var title = _tr("Customers with zero orders");
+
 	var titles = [];
 	var data = {};
 	var Report = {}
@@ -30,6 +31,7 @@ angular.module('kyc.reports')
 
 	Report.orderBy = "dateJoined";
 	Report.direction = false;
+	Report.description = _tr("Displays all customers who have signed up but have not yet placed any orders.")
 
 	Report.onSetDataComplete = function(){		
 	}

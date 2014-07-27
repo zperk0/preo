@@ -19,10 +19,10 @@ angular.module('kyc.reports')
 					}				
 			  }
 		});
-		console.log('set data',data);			
 	}
 
 	Report.orderby = "percentDecrease";
+	Report.description = _tr("Displays all customers who spent less this month than the previous month.")
 
 	Report.getData = function(){
 		return data;

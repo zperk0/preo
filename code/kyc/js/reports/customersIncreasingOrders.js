@@ -23,6 +23,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderby = "percentIncrease";
+	Report.description = _tr("Displays all customers who placed more orders this month than the previous month.")
 
 	Report.getData = function(){
 		return data;
