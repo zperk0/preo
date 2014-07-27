@@ -185,8 +185,8 @@
   angular.module('kyc').constant('INITIAL_DATES', {
        start: new Date().getTime() - (1000 * 60 * 60 * 24 * 90),
        end:  new Date()
-       // start: new Date('2014-05-12'),
-       // end:  new Date('2014-05-12')
+       // start: new Date('2014-05-01'),
+       // end:  new Date('2014-05-02')
   });
 
   function modal_url( url ) {

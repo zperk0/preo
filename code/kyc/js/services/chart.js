@@ -73,6 +73,7 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
         };
 
         var areaModal = function (value) {
+            var len = value.data.length; 
             return {
                 options: {
                     chart: {
@@ -101,7 +102,7 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             lineWidth: 3,
                             marker: {
                                 fillColor: '#126FB2',
-                                enabled: false
+                                enabled: len > 1 ? false : true
 
                             }
                         }
@@ -188,6 +189,8 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             fontSize: '15px'
                         }
                     },
+                    min: 0,
+                    minRange: 1
                 },
                 series: [{
                     showInLegend: false,

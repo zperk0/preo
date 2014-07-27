@@ -25,8 +25,8 @@
 
 				<div ng-if="chart.showChart" class="content-chart">
 
-					<div class="top-chart overflow" ng-if="chart.value.numberLeft || chart.value.numberRight">
-						<div class="pull-left numberLeft" ng-if="chart.value.numberLeft">
+					<div class="top-chart overflow" ng-if="chart.value.numberLeft !== undefined">
+						<div class="pull-left numberLeft" ng-if="chart.value.numberLeft !== undefined">
 							{{ getText(chart) }}
 						</div>
 						

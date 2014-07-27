@@ -55,16 +55,10 @@
 <div class="options-modal content-modal overflow" ng-if="chart.value.modal.options">
 	<div class="content-options-modal">
 		<div class="block-modal pull-left" ng-class="{ active: option.active }" ng-repeat="option in chart.value.modal.options">
-			<div ng-switch="optionHasData(option)">
-				<div ng-switch-when="1">
+			<div>
 					<p class="title-option-modal">{{ option.name }}</p>
 					<a href="javascript:void(0)" class="button-option" ng-click="selectOption( option )">{{ option.value }}</a>
-				</div>
-				<div ng-switch-when="0">
-					 <p class="title-option-modal">{{ option.name }}</p>
-					 <a href="javascript:void(0)" class="button-option" ng-click="setNoData(option)"> - </a>
-				</div>
-			</div>
+			</div>					
 		</div>
 	</div>
 </div>

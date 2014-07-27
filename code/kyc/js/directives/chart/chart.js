@@ -26,7 +26,7 @@ angular.module('kyc.directives').
               case ChartType.COLUMN:       
                 //we need at least one item, with data in pies/columns charts
                 if (ng.chart.value.data.length === 0){                  
-                  ng.noData = false;
+                  ng.noData = true;
                 } else {
                   var allZero = true;
                   angular.forEach(ng.chart.value.data,function(data){
@@ -38,15 +38,15 @@ angular.module('kyc.directives').
               break;          
               case ChartType.AREA:
                 //we need at least two days of data in area charts
-                if (ng.chart.value.data.length <= 1){
-                  ng.noData = false;
+                if (ng.chart.value.data.length < 1) {
+                  ng.noData = true;
                 }
               break;
             }
           }else {            
             //we need a number in number charts
             if (ng.chart.value === 0 || ng.chart.value === 'NaN' || ng.chart.value == NaN){
-              ng.noData = false;
+              ng.noData = true;
             }          
           }
         }
@@ -76,7 +76,7 @@ angular.module('kyc.directives').
               controller: ['$scope',function( $scope ) {
 
                 $scope.optionHasData = function(option){       
-                  return option.data.length > 1 && +option.value > 0 ? 1 : 0 ;
+                  return option.data.length > 1 ? 1 : 0 ;
                 }
 
                 $scope.noData = false;
