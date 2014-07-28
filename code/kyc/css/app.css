@@ -1080,18 +1080,27 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
 }
 
 .marketingIcon{
-  height: 30px;
+  height: 22px;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -15px;
-  margin-left: -15px;
+  margin-top: -11px;
+  margin-left: -11px;
 }
 
+ .marketingIcon {
+height: 22px;
+position: absolute;
+top: 50%;
+left: 50%;
+margin-top: -10px;
+margin-left: -12px;
+
+}
 .marketingTd{
   text-align:center;
 }
 
 .marketingOpt{
-  width:25px;
+  width:15px;
 }
