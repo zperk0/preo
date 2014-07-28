@@ -8,6 +8,8 @@ angular.module('kyc.reports')
 	var titles = [];
 	
 	Report.setData = function(reportsData){			
+		data = {}
+	  tempData = {};
 		var thisMonth = moment.utc().subtract('month',1).valueOf();
 		var lastMonth = moment.utc().subtract('month',2).valueOf();
 		angular.forEach(reportsData.items,
@@ -40,7 +42,7 @@ angular.module('kyc.reports')
 				data[key] = {
 					itemName: item.name,
 					quantitySold : item.$thisMonthQuantitySold,
-					percentIncrease: popularity.toFixed(0)
+					percentIncrease: popularity
 				}			
 			}
 		})
@@ -48,6 +50,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderBy = "percentIncrease";
+	Report.direction = false;
 	Report.description = _tr("Displays all items that sold more this month than last month.");
 
 	Report.getData = function(){

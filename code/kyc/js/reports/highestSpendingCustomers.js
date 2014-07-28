@@ -7,7 +7,7 @@ angular.module('kyc.reports')
 	var titles = [];
 
 	Report.setData = function(reportsData){
-
+		data = {};
 		angular.forEach(reportsData.customerOrders,function(customerOrder){				
 			var created = moment.utc(customerOrder.paid);		
 			if (data[customerOrder.id] === undefined){
@@ -24,7 +24,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderBy = "totalSpent";
-	Report.direction = false;
+	Report.direction = true;
 	Report.description = _tr("Displays top 50 customers who have the highest transactional spend.")
 
 	Report.getData = function(){

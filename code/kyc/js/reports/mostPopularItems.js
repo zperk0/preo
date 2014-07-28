@@ -7,6 +7,7 @@ angular.module('kyc.reports')
 	var titles = [];
 	
 	Report.setData = function(reportsData){			
+		data = {};
 		angular.forEach(reportsData.items,
 			function(item){											
 				if (data[item.menuItemId] === undefined){					
@@ -21,8 +22,9 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderBy = "quantitySold";	
+	Report.direction = false;
 	Report.description = _tr("Displays top 10 most popular items.");
-	Report.direction = true;
+	
 
 	Report.getData = function(){
 		return data;

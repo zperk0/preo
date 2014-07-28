@@ -7,12 +7,12 @@ angular.module('kyc.reports')
 	var titles = [];
 
 	Report.setData = function(reportsData){		
-		
+		data = {};
 		angular.forEach(reportsData.customerOrders,
 			function(customerOrder){											
 				if (data[customerOrder.id] === undefined && !isNaN(customerOrder.orderPercentage) && customerOrder.orderPercentage < 0 ){					
 					data[customerOrder.id] = {
-						percentDecrease: customerOrder.orderPercentage.toFixed(0),
+						percentDecrease: customerOrder.orderPercentage,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
 						email:customerOrder.username,
 						loyalty: customerOrder.optinLoyalty,

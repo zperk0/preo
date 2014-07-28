@@ -7,7 +7,7 @@ angular.module('kyc.reports')
 	var titles = [];
 
 	Report.setData = function(reportsData){
-	
+		data = {};
 		angular.forEach(reportsData.customerOrders,function(customerOrder){
 			if (data[customerOrder.id] === undefined && customerOrder.orders === 1){
 				data[customerOrder.id] = {

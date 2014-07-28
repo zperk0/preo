@@ -9,6 +9,7 @@ angular.module('kyc.reports')
 	var itemsToShow = 10;
 	Report.setData = function(reportsData){					
 		var tempData = {}	
+		data = [];
 		var grouped = _.groupBy(reportsData.orders,'day');
 		angular.forEach(grouped,function(day,key){
 			if (key > dateRange.valueOf()){
@@ -33,7 +34,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderBy = "valueSold";
-	Report.direction = false;
+	Report.direction = true;
 	Report.description = _tr("Display top 10 lowest grossing days.");
 
 	Report.getData = function(){

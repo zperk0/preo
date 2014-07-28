@@ -7,6 +7,7 @@ angular.module('kyc.reports')
 	var titles = [];
 
 	Report.setData = function(reportsData){
+		data = {};
 		reportsData.customerOrders.sort(function(a,b){
 			return a.orders - b.orders;
 		})

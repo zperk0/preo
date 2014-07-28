@@ -75,8 +75,8 @@
 						  		<td ng-if='data.itemName !== undefined'>{{ data.itemName }}</td>
 						  		<td ng-if='data.quantitySold !== undefined'>{{ data.quantitySold }}</td>
 						  		<td ng-if='data.numberOfOrders !== undefined'>{{ data.numberOfOrders }}</td>
-						  		<td ng-if='data.percentIncrease !== undefined'>{{ data.percentIncrease }}</td>
-						  		<td ng-if='data.percentDecrease !== undefined'>{{ data.percentDecrease }}</td>
+						  		<td ng-if='data.percentIncrease !== undefined'>{{ data.percentIncrease.toFixed(2) }}</td>
+						  		<td ng-if='data.percentDecrease !== undefined'>{{ data.percentDecrease.toFixed(2) }}</td>
 						  		<td ng-if='data.totalSpent !== undefined'>{{ data.totalSpent.toFixed(2) }}</td>
 						  		<td ng-if='data.lastOrder !== undefined'>{{ data.lastOrder | date:"dd/MM/yyyy" }}</td>
 						  		<td ng-if='data.dateJoined !== undefined'>{{ data.dateJoined | date:"dd/MM/yyyy" }}</td>

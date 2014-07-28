@@ -10,7 +10,7 @@ angular.module('kyc.reports')
 
 	
 	Report.setData = function(reportsData){					
-	
+		data = [];	
 		angular.forEach(reportsData.orders,function(order){
 				var hour =  moment.utc(order.paid).hour();
 				if (data[hour] === undefined) 
@@ -25,6 +25,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderBy = "valueSold";
+	Report.direction = false;
 	Report.description = _tr("Displays the accumulative total spent, broken down by 24 x 1 hour time slots.");
 
 	Report.getData = function(){

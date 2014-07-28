@@ -7,12 +7,12 @@ angular.module('kyc.reports')
 	var titles = [];
 
 	Report.setData = function(reportsData){		
-		console.log(reportsData);
+		data = {};
 		angular.forEach(reportsData.customerOrders,
 			function(customerOrder){											
 				if (data[customerOrder.id] === undefined && !isNaN(customerOrder.totalPercentage) && customerOrder.totalPercentage > 0){
 					data[customerOrder.id] = {
-						percentIncrease: customerOrder.totalPercentage.toFixed(0),
+						percentIncrease: customerOrder.totalPercentage,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
 						email:customerOrder.username,
 						loyalty: customerOrder.optinLoyalty,
@@ -25,6 +25,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderby = "percentIncrease";
+	Report.direction = true;
 	Report.description = _tr("Displays all customers who spent more this month than the previous month.")
 
 	Report.getData = function(){

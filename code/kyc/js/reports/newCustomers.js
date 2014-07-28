@@ -8,6 +8,7 @@ angular.module('kyc.reports')
 	var dateRange = moment.utc().subtract('week',2);
 
 	Report.setData = function(reportsData){
+		data = {};
 		angular.forEach(reportsData.customerOrders,function(customerOrder){				
 			var created = moment.utc(customerOrder.created);		
 			if (created > dateRange || customerOrder.firstOrder > dateRange){

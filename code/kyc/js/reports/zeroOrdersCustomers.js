@@ -7,17 +7,10 @@ angular.module('kyc.reports')
 	var titles = [];
 	var data = {};
 	var Report = {}
-	var customers;	
-	var customersWithOrders = [];
 
-	Report.init = function($q){
-		data = {};
-		customersWithOrders = [];
-		customers = VenueCustomers.query({id:VENUE_ID})
-		return customers.$promise;
-	}
 
 	Report.setData = function(reportsData){
+		data = {};
 		angular.forEach(reportsData.customerOrders,function(customerOrder){			
 			if (customerOrder.orders === 0)
 				data[customerOrder.id] = {

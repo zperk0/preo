@@ -6,8 +6,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	$scope.setLocation('reports');
 	$scope.exportAll="1";	
 	$scope.direction = true;
-
-
+	var isPrepared = false;
 	
 	
 	$scope.selectAll = function() {
@@ -41,7 +40,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 			$scope.currentPage = 1;		
 			console.log('selectedReports',$scope.selectedReport);
 			$AjaxInterceptor.complete();
-
+			isPrepared = true;
 	}
 
 	  $scope.$watch('currentPage + numPerPage', function() {
@@ -94,8 +93,10 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 		$scope.currentPage = 1;		
 		
 		
-		$scope.setOrderBy(report.orderBy || $scope.selectedReport.titles[0]);
 		$scope.direction = report.direction !== undefined ? report.direction : $scope.direction;
+		var orderBy = report.orderBy !== undefined ? report.orderBy :  $scope.selectedReport.titles[0];
+		$scope.setOrderBy(orderBy);
+		
 	}
 
 	$scope.getTitle = function (title){		
@@ -190,7 +191,8 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
     setTimeout(function(){
       	$('.invisibleBack').removeClass('visible')
       },200)
-  }		
-  
-	prepareScopeReports();
+  }
+
+  if (!isPrepared)
+		prepareScopeReports();
 }])
