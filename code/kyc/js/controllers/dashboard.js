@@ -39,7 +39,7 @@ angular.module('kyc.controllers')
                 paddingX: 0,
                 paddingY: 0,
                 minColumns:2
-            }
+            };           
                         
 
             function refreshGrid(){

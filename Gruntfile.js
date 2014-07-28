@@ -83,7 +83,7 @@ module.exports = function(grunt) {
     },
     cssmin: {
       minify: {              
-        src: ['css/normalize.css', 'css/foundation.css', 'css/jquery.gridster.min.css','css/app.css'],
+        src: ['css/normalize.css', 'css/foundation.css', 'css/jquery.gridster.min.css','bower_components/select2/select2.css','css/app.css'],
         dest: 'css/all_css.min.css',        
       }
     },

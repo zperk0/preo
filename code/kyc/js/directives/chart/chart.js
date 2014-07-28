@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kyc.directives').
-  directive('chart', ['$modal','ChartType', '$chartService','Export','ACCOUNT_ID', 'UtilsService', 'ChartHelper', function($modal, ChartType, $chartService,Export,ACCOUNT_ID, UtilsService, ChartHelper) {
+  directive('chart', ['$modal','ChartType', '$chartService','Export','ACCOUNT_ID', 'UtilsService', 'ChartHelper', '$timeout', function($modal, ChartType, $chartService,Export,ACCOUNT_ID, UtilsService, ChartHelper, $timeout) {
 
   	return {
   		templateUrl: '/code/kyc/js/directives/chart/chart.php',
@@ -211,21 +211,15 @@ angular.module('kyc.directives').
           elem.parent().hide();
 
           UtilsService.reOrderWidgets( elem.closest('.sscontainer') );
-        }
+        }    
 
         ng.changeItem = function( item ){
-          var items = ng.chart.value.items.filter(function(i){
-            return i.selected === true;
-          });
-
-          if ( items.length ) {
-            ng.selectedItem = items[0];
+            ng.selectedItem = ng.chart.value.items[ ng.chart.value.selectedItem ];
 
             ng.selectedItem.callback(ng.selectedItem.menuItemId,function(highchart){
                 ng.chart.value = highchart;
                 refreshChart();              
             });
-          }
         }
 
         ng.exportPdf= function(){
@@ -258,7 +252,7 @@ angular.module('kyc.directives').
               highchartsConfig.options.chart.height = 205;
 
               elem.parent().addClass('highchartsItem');
-            }
+          }
 
           if (ng.chart.value.type === ChartType.AREA){            
             highchartsConfig.options.chart.events = {
