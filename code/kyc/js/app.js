@@ -23,7 +23,8 @@ angular.module('kyc', [
   'kyc.reports',
   'loaders',
   'notification',
-  'mm.foundation'
+  'mm.foundation',
+  'ui.select2'
 ])
 .run(['$rootScope','ACCOUNT_ID','$http', function( $rootScope,ACCOUNT_ID,$http) {
   $rootScope.requests = 0;

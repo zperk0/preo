@@ -23,6 +23,8 @@
     "gridster": "~0.5.1",
     "highcharts": "~3.0.7",
     "moment": "~2.7.0",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "select2": "3.5",
+    "angular-ui-select2": "--save-dev",
   }
 }

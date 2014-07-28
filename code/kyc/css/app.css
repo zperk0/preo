@@ -921,11 +921,90 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   height: 10px;
 }
 
+/*********************Select2 plugin**********************/
+
+.select2Preoday{
+  width: 100%;
+}
+
+.select2Preoday a.select2-default{
+  background: #DFE1DE;
+  background-size:32px  100% !important;
+  border: 0px !important;
+  text-align: left;
+  padding: 0 0 0 25px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 32px;
+  color: #333 !important;     
+}
+
+.select2Preoday.select2-container .select2-choice{
+  height: 33px;
+}
+
+.select2Preoday.select2-container .select2-choice .select2-arrow{
+  width: 32px;
+}
+
+.select2Preoday.select2-container .select2-choice .select2-arrow b{
+  background: url("/img/arrowOutletSmall.png") right center no-repeat !important;
+}
+
+.select2Preoday.select2-container-active .select2-choice,
+.select2Preoday.select2-container-active .select2-choices{
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+.select2-results{
+   background-color: #dfe1de !important;
+   padding-left: 0px !important;
+   margin: 0px !important;
+   overflow: hidden !important;
+}
+
+.select2-result-label{
+  font-size: 13px !important;
+  color: #46545d !important;
+  padding-left: 25px !important;
+}
+
+.select2-result-label:hover, .select2-results .select2-highlighted{
+  background-color: #46535D !important;
+  color: #fff !important;
+}
+
+.select2-search{
+  padding: 0px !important;
+}
+
+.select2-no-results{
+  background-color: #46535D !important;
+  color: #46545d !important;
+  font-size: 13px;
+}
+
+.select2-input{
+   /*background-color: #dfe1de !important;*/
+    font-size: 13px !important;
+    font-weight: 400;
+}
+
+.select2-results .select2-highlighted .select2-result-label{
+  color: #fff !important; 
+}
+
+.select2-drop{
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  border: 0px !important;
+}
+
 .selectOutlet button{
   background: #DFE1DE url("/img/arrowOutlet.jpg") right center no-repeat !important;
   background-size:32px  100% !important;
   border: 0px !important;
-
 }
 
 .selectReport .multiSelect.checkboxLayer{
@@ -936,13 +1015,14 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   width: 96%;
 }
 
-.input-search:focus, .datepicker.dropdown-menu{
+.input-search:focus, .datepicker.dropdown-menu, .select2-input:focus{
     box-shadow: none !important;
    -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     -ms-box-shadow: none !important;
     -o-box-shadow: none !important;
-    outline: 0;
+    outline: 0 !important;
+    -webkit-appearance:none;
 }
 
 /* .tooltipPie:before{
