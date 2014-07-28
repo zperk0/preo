@@ -80,7 +80,7 @@ angular.module('kyc.charts')
     function getPreparedAreaData(chartData,minTimestamp,maxTimestamp,showDecimal){
         showDecimal = showDecimal ? showDecimal : false;
         var previousSpecifiedTimestamp =  moment.utc(minTimestamp - (maxTimestamp - minTimestamp))        
-        var weekTimestamp = moment.utc().subtract('week',1);
+        var weekTimestamp = moment.utc().startOf('day').subtract('week',1);
         var lastWeekTimestamp = moment.utc().subtract('week',2);
         var monthTimestamp = moment.utc().subtract('month',1);
         var lastMonthTimestamp = moment.utc().subtract('month',2);
@@ -321,7 +321,7 @@ angular.module('kyc.charts')
                 value: getPeriodTotal(prepData.weekData),
                 percent: getPercentage(prepData.weekData, prepData.previousWeekData),
                 data: completeEmptyData({
-                    max: moment.utc().startOf('day'),
+                    max: moment.utc().endOf('day'),
                     min: moment.utc().startOf('day').subtract('week', 1).valueOf(),
                     value: prepData.weekData,
                     dateType: 'day',
