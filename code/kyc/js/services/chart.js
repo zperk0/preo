@@ -166,7 +166,7 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             var date;
 
                             if ( this.axis.tickInterval === TickInterval.MONTH ) {
-                                date = $filter('date')(new Date(moment.utc(this.value).startOf('month').add('days', 10)), 'MMM');
+                                date = $filter('date')(new Date(moment.utc(this.value).startOf('month')), 'MMM');
                             } else if ( this.axis.tickInterval === TickInterval.WEEK || this.axis.tickInterval === TickInterval.WEEK_THREE ) {
                                 date = $filter('date')(new Date(moment.utc(this.value).startOf('week').add('days', 3)), 'dd.MMM');
                             } else {
