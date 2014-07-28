@@ -16,7 +16,9 @@ angular.module('kyc.reports')
 						lastOrder: customerOrder.lastOrder,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
 						email:customerOrder.username,
-						marketing:(customerOrder.optinLoyalty || customerOrder.optinOffers || customerOrder.optinOther)
+						loyalty: customerOrder.optinLoyalty,
+						offers: customerOrder.optinOffers,
+						other: customerOrder.optinOther
 					}				
 					
 			  }

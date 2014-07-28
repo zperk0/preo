@@ -35,7 +35,9 @@
 					
 					<div class="header-list overflow">			
 						<span>{{selectedReport.title}}</span> 
-						<i class="icon-question-sign preoTips has-tip tip-bottom" tooltip-placement="bottom" data-selector="tooltip617tigam7vi" tooltip="{{selectedReport.description}}">
+						<i class="icon-question-sign preoTips has-tip tip-bottom" tooltip-placement="bottom" 
+						data-selector="tooltip617tigam7vi" tooltip="{{selectedReport.description}}" tooltip-append-to-body='true'
+	tooltip-animation='false'>
 						</i>
 
 						<a href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
@@ -51,11 +53,15 @@
 						  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
 						  		</th>					  		
 						  		<th ng-repeat="title in selectedReport.titles" ng-click="setOrderBy(title);">
-						  			{{getTitle(title)}}
-						  			<div class="sort pull-right">
-						  				<i class="fa fa-sort-up"></i>
-						  				<i class="fa fa-sort-desc"></i>
-						  			</div>		  									  			
+
+						  			<div ng-if="isMarketingTitle(title)" marketing="{{title}}"></div> 
+						  			<div ng-if="!isMarketingTitle(title)">
+							  			{{getTitle(title)}}
+							  			<div class="sort pull-right">
+							  				<i class="fa fa-sort-up"></i>
+							  				<i class="fa fa-sort-desc"></i>
+							  			</div>		  									  			
+						  			</div>
 						  		</th>
 						  	</tr>
 						  </thead>
@@ -77,7 +83,9 @@
 						  		<td ng-if='data.dateOfOrder !== undefined'>{{ data.dateOfOrder | date:"dd/MM/yyyy" }}</td>						  		
 						  		<td ng-if='data.name !== undefined'>{{ data.name }}</td>
 						  		<td ng-if='data.email !== undefined'>{{ data.email }}</td>
-						  		<td ng-if='data.marketing !== undefined'> {{ data.marketing | marketing }}</td>					  		
+						  		<td ng-if='data.loyalty !== undefined' class='marketingTd'><img class='marketingOpt' ng-src="{{data.loyalty  | marketing }}"/></td>
+					  			<td ng-if='data.offers !== undefined' class='marketingTd'><img class='marketingOpt' ng-src="{{data.offers  | marketing }}"/></td>
+					  			<td ng-if='data.other !== undefined' class='marketingTd'><img class='marketingOpt' ng-src="{{data.other  | marketing }}"/></td>
 						  	</tr>
 						  </tbody>
 						</table>		

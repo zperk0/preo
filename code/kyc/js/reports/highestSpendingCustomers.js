@@ -15,7 +15,9 @@ angular.module('kyc.reports')
 						totalSpent: customerOrder.total === null ? 0 : customerOrder.total,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
 						email:customerOrder.username,
-						marketing:(customerOrder.optinLoyalty || customerOrder.optinOffers || customerOrder.optinOther)
+						loyalty: customerOrder.optinLoyalty,
+						offers: customerOrder.optinOffers,
+						other: customerOrder.optinOther
 					}				
 			}
 		});			

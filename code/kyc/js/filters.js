@@ -23,7 +23,7 @@ angular.module('kyc.filters', []).
 })
 .filter('marketing', function() {
   return function(marketing) {    
-    return marketing === 1 ? _tr("Active") : " - ";
+    return marketing === 1 ? "/img/marketing-in.png" : "/img/marketing-out.png";
   };
 })
 .filter('timeAgo', function() {

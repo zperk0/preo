@@ -19,34 +19,30 @@
 					  		<th width="10">
 					  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
 					  		</th>
-					  		<th ng-click="direction = !direction; setOrderBy('name');">
+					  		<th ng-click=" setOrderBy('name');">
 					  			<? echo _("Name")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="direction = !direction; setOrderBy('totalSpent');">
+					  		<th ng-click=" setOrderBy('totalSpent');">
 					  			<? echo _("Total Spent")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
-					  		<th ng-click="direction = !direction; setOrderBy('emailAddress');">
+					  		<th ng-click=" setOrderBy('emailAddress');">
 					  			<? echo _("Email address")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
-					  		</th>
-					  		<th ng-click="direction = !direction; setOrderBy('marketing');">
-					  			<? echo _("Marketing")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>
+					  		</th>					  		
+					  		<th > <div marketing='loyalty'></div></th>
+					  		<th><div marketing='offers'></div></th>
+					  		<th ><div marketing='other'></div></th>
 					  	</tr>
 					  </thead>
 					  <tbody>
@@ -55,7 +51,9 @@
 					  		<td>{{ customer.name }}</td>
 					  		<td>{{ getCurrency()+customer.totalSpent.toFixed(2) }}</td>
 					  		<td>{{ customer.emailAddress }}</td>
-					  		<td>{{ customer.marketing }}</td>
+					  		<td class='marketingTd'><img class='marketingOpt' ng-src="{{customer.loyalty  | marketing }}"/></td>
+					  		<td class='marketingTd'><img class='marketingOpt' ng-src="{{customer.offers  | marketing }}"/></td>
+					  		<td class='marketingTd'><img class='marketingOpt' ng-src="{{customer.other  | marketing }}"/></td>
 					  	</tr>
 					  </tbody>
 					</table>		

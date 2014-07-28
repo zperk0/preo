@@ -17,7 +17,9 @@ angular.module('kyc.reports')
 						numberOfOrders:customerOrder.orders,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
 						email:customerOrder.username,
-						marketing:(customerOrder.optinLoyalty || customerOrder.optinOffers || customerOrder.optinOther)
+						loyalty: customerOrder.optinLoyalty,
+						offers: customerOrder.optinOffers,
+						other: customerOrder.optinOther
 					}				
 			}
 		});			

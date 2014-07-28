@@ -24,7 +24,9 @@ angular.module('kyc.reports')
 						dateJoined:customerOrder.created,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
 						email:customerOrder.username,
-						marketing:(customerOrder.optinLoyalty || customerOrder.optinOffers || customerOrder.optinOther)	
+						loyalty: customerOrder.optinLoyalty,
+						offers: customerOrder.optinOffers,
+						other: customerOrder.optinOther	
 					}
 		})
 	}

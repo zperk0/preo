@@ -133,6 +133,7 @@
   <script src="/code/kyc/js/directives/datepicker/datepicker.js"></script>
   <script src="/code/kyc/js/directives/multiselect/multiselect.js"></script>
   <script src="/code/kyc/js/directives/shapeshifter.js"></script>
+  <script src="/code/kyc/js/directives/marketing/marketing.js"></script>
   <script src="/code/kyc/js/charts/allCharts.js"></script>
   <script src="/code/kyc/js/charts/chartHelper.js"></script>
   <script src="/code/kyc/js/charts/payingCustomers.js"></script>
@@ -168,6 +169,8 @@
   <script src="/code/kyc/js/reports/highestGrossingHours.js"></script>
   <script src="/code/kyc/js/reports/highestOrderHours.js"></script>
   <script src="/code/kyc/js/filters.js"></script>
+  <script src="/code/kyc/js/constants/marketingResources.js"></script>
+  
   <!-- END WATCH -->
   
   

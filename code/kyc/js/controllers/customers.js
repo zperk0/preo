@@ -7,8 +7,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	var title = _tr("Customers")
 	var allOrders = OrderService.getOrders();
 	
-	$scope.exportAll="1";
-
+	$scope.exportAll="1";	
 
 	$scope.$on('KYC_RELOAD',function(){                
       allOrders = OrderService.getOrders();	      
@@ -81,7 +80,9 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 												name:row.user.firstName+" "+row.user.lastName,
 												totalSpent:Number(row.total.toFixed(2)),
 												emailAddress:row.user.username,
-												marketing: (row.user.optinLoyalty || row.user.optinOffers || row.user.optinOther) ? _tr("Accepts") : " - "
+												loyalty: row.user.optinLoyalty,
+												offers: row.user.optinOffers,
+												other: row.user.optinOther
 										}	
 									}
 									else{
@@ -102,8 +103,12 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	}
 
 	$scope.setOrderBy = function( orderBy, direction ){
+		console.log('parent setting order by',orderBy,direction);
 		if (direction !== undefined)
 				$scope.direction = direction;
+		else
+			$scope.direction = !$scope.direction ;
+		
 		$scope.customers = UtilsService.dynamicSortObject($scope.customers, orderBy, $scope.direction)
 
 		loadCustomersByPage();

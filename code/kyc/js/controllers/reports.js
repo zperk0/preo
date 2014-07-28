@@ -16,6 +16,11 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 		}
 	}
 
+	$scope.isMarketingTitle = function(title){
+		var is = title === 'loyalty' || title === 'offers' || title === 'other';;			
+		return is ? title : is;
+	}
+
 	function prepareScopeReports(){
 			
 			$scope.reports = AllReports.getReportsList();
@@ -34,7 +39,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 
 			$scope.numPerPage = 20;
 			$scope.currentPage = 1;		
-			console.log($scope.selectedReport);
+			console.log('selectedReports',$scope.selectedReport);
 			$AjaxInterceptor.complete();
 
 	}

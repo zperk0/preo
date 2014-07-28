@@ -502,7 +502,6 @@ table .sort i{
 .table-striped{
   border-collapse: separate !important;
   border-radius: 5px;  
-  overflow: hidden;
   border: 1px solid #b4b6b8; 
 
 }
@@ -526,6 +525,9 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
   border-right:1px solid #b4b6b8; 
 }
 
+.table-striped th{
+  position:relative;
+}
 .table-striped th input, .table-striped td input{
   margin: 0px;
 }
@@ -983,4 +985,21 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
 .flip-container .header-chart{
   position: absolute;
   top: 0;
+}
+
+.marketingIcon{
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -15px;
+  margin-left: -15px;
+}
+
+.marketingTd{
+  text-align:center;
+}
+
+.marketingOpt{
+  width:25px;
 }
