@@ -46,6 +46,9 @@ angular.module('kyc.reports')
 			quantitySold: _tr("Quantity Sold"),
 			day: _tr("Day"),
 			date: _tr("Date"),
+			loyalty: _tr("Loyalty"),
+			other: _tr("Other"),
+			offers: _tr("Offers"),
 			valueSold: _tr("Value Sold")
 		}
 
