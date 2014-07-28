@@ -37,7 +37,8 @@
 					</div>
 
 					<div ng-if="chart.value.items" class="containerMultiSelect">
-						<select ui-select2 ng-model="chart.value.selectedItem" ng-change="changeItem()" data-placeholder="{{chart.value.selectedItem}}" class="dropdown pdDropdown multiSelectChart selectOutlet select2Preoday">
+						<select ui-select2 ng-model="chart.value.selectedItem" ng-change="changeItem()" 						
+						data-placeholder="{{chart.value.selectedItem}}" class="dropdown pdDropdown multiSelectChart selectOutlet select2Preoday">
 						    <option value=""></option>
 						    <option ng-repeat="item in chart.value.items" value="{{ $index }}">{{item.name}}</option>
 						</select>
