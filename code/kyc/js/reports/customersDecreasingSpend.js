@@ -24,6 +24,7 @@ angular.module('kyc.reports')
 	}
 
 	Report.orderby = "percentDecrease";
+	Report.direction = false;
 	Report.description = _tr("Displays all customers who spent less this month than the previous month.")
 
 	Report.getData = function(){
