@@ -24,7 +24,7 @@
     "highcharts": "~3.0.7",
     "moment": "~2.7.0",
     "underscore": "~1.6.0",
-    "select2": "3.5",
-    "angular-ui-select2": "--save-dev",
+    "select2": "~3.5.1",
+    "angular-ui-select2": "~0.0.5"
   }
 }
