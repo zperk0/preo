@@ -265,6 +265,10 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   text-align:center;
 }
 
+.content-actionsModal{
+  top: 32%;
+}
+
 .content-actions h4{
   color:white;
   font-size:120%;
@@ -273,6 +277,10 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
 
 .content-actions form{
   display:inline;
+}
+
+.content-actions form.formLeft{
+  margin-right: 15px;
 }
 
 .content-actions button{
@@ -672,6 +680,20 @@ span.multiSelect{
 .options label + label{
   position:relative;
   left:20px;  
+}
+
+.content-optionsExport{
+  width: 100%;
+  text-align: center;
+}
+
+.optionsExport{
+  display: inline-block;
+  padding-left: 25px;
+}
+
+.optionsExport > div{
+  float: left;
 }
 
 

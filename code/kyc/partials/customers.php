@@ -91,7 +91,7 @@
 					<h4><? echo _("Export as...") ?></h4>
 
 
-						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()'>
+						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()' class="formLeft">
 							<input name='data' value='{{pdfData}}' type='hidden'/>
 								<button ng-click="exportData('pdf')">
 										<? echo _("PDF") ?>
@@ -105,16 +105,18 @@
 								</button>
 						</form>
 											
-					<div class="options overflow">
-						<label >
-							<input type="radio" name="option" value="1" ng-model="exportAll"/>
-							<? echo _("All") ?>
-						</label>
-						<label>
-							<input type="radio" name="option" value="0" ng-model="exportAll"/>
-							<? echo _("Selected") ?>
-						</label>
-					</div>
+						<div class="content-optionsExport">
+							<div class="options optionsExport overflow">						
+							  <div class="checkbox checkboxStyle">
+							  	<input type="radio" ng-model="exportAll" name="option" value="1" id="exportAll" />
+							    <label for="exportAll"><? echo _("All") ?></label>
+							  </div>					
+							  <div class="checkbox checkboxStyle">
+							  	<input type="radio" ng-model="exportAll" name="option" value="0" id="exportSelected" />
+							    <label for="exportSelected"><? echo _("Selected") ?></label>
+							  </div>					
+							</div>
+						</div>	
 				</div>
 			</div>
 </div>

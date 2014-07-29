@@ -3440,6 +3440,10 @@ button.preodayButton.noclick{
     display: none;  
 }  
 
+.checkboxStyle input[type=radio] {  
+    display: none;  
+}  
+
 .checkboxStyle label {  
     display: inline-block;  
     cursor: pointer;  
@@ -3462,6 +3466,12 @@ button.preodayButton.noclick{
     background-color: #DCDCDA;  
 }  
 
+.optionsExport .checkboxStyle label:before{
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;  
+}
+
 .content-check-modal label:before{
   top: 6px;
 }
@@ -3474,6 +3484,15 @@ button.preodayButton.noclick{
 }  
 
 .checkboxStyle input[type=checkbox]:checked + label:before {  
+    content: "X";  
+    font-size: 13px;  
+    font-weight: 600;
+    color: #95979A;  
+    text-align: center;  
+    line-height: 15px;  
+} 
+
+.checkboxStyle input[type=radio]:checked + label:before {  
     content: "X";  
     font-size: 13px;  
     font-weight: 600;
