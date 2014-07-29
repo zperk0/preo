@@ -2,8 +2,8 @@
 	<div class="container">
 		<div id="filterDashboard">
 			<ul>
-				<li ng-repeat="value in values" class='columns large-3 nopadding'>
-				  <div class="checkbox checkboxStyle">
+				<li ng-repeat="value in values" class='columns large-2 nopadding'>
+				  <div class="checkbox checkboxStyle checkboxStyleDashboard">
 				  	<input type="checkbox" ng-change='changeVisibility(value)' ng-model="value.display" id="check_{{ value.num }}" />
 				    <label for="check_{{ value.num }}" ng-class="{disabled: !value.display}">{{ value.title }}</label>
 				  </div>
