@@ -1076,3 +1076,21 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   position: absolute;
   top: 0;
 }
+
+.checkboxPartials{
+  position: relative;
+}
+
+.checkboxPartials label{
+  margin-right: 0px;
+  padding-left: 18px;
+}
+
+.checkboxPartials label:before{
+  margin-top: -10px;
+  top: 0px;
+}
+
+.flipRelative{
+  position: relative;
+}
