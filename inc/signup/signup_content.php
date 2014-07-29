@@ -43,7 +43,7 @@ $(document).ready(function(){
 				<div class="row emailRow <?if($fb_field_flag) echo 'hide';?>">
 					<div class="large-12 columns">
 						<label><?echo _("Your email");?></label>
-						<input type="email" id="email" name="email" placeholder=""  <?if($fb_field_flag) echo "value='$email' readonly='readonly'";?> required tabindex=3>
+						<input type="text" id="email" name="email" placeholder=""  <?if($fb_field_flag) echo "value='$email' readonly='readonly'";?> required pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' tabindex=3>
 						<small class="error"><?echo _("Please type your email");?></small>
 					</div>
 				</div>
