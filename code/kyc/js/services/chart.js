@@ -181,7 +181,9 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                     },
                 },
                 yAxis: {     
-                    gridLineWidth: 0,
+                    gridLineWidth: 1,
+                    gridLineColor: '#C0C0C0',
+                    gridLineDashStyle: 'dot',
                     minorGridLineWidth: 0,
                     title: {
                         text: ''
