@@ -14,10 +14,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 		for ( var i = $scope.selectedReport.data.length; i--; ) {
 			$scope.selectedReport.data[i].$selected = $scope.all_options;
 		}
-/*		console.log($scope.reportsList);
-		for ( var i = $scope.reportsList.length; i--; ) {
-			$scope.reportsList[i].selected = $scope.all_options;
-		}*/
 	}
 
 	function prepareScopeReports(){
