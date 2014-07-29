@@ -9,7 +9,10 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                 options: {
                     chart: {
                         type: 'areaspline',
-                        height:'250'
+                        height:'250',
+                        style: {
+                            cursor: 'url(/img/cursorChart.png), auto',
+                        }
                     },
                     exporting: {
                         enabled: false
@@ -160,7 +163,7 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                     labels: {
                         style: {
                             color: '#b3b6b8',
-                            fontSize: '15px'
+                            fontSize: '15px'                          
                         },
                         formatter: function() {
                             var date;
