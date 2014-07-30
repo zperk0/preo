@@ -38,10 +38,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 
 			$scope.numPerPage = 20;
 			$scope.currentPage = 1;		
-<<<<<<< HEAD
-			console.log('selectedReports',$scope.selectedReport);
-=======
->>>>>>> features_ronaldo
 			$AjaxInterceptor.complete();
 			isPrepared = true;
 	}

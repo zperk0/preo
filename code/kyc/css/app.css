@@ -1102,33 +1102,6 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   top: 0;
 }
 
-<<<<<<< HEAD
-.marketingIcon{
-  height: 22px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -11px;
-  margin-left: -11px;
-}
-
- .marketingIcon {
-height: 22px;
-position: absolute;
-top: 50%;
-left: 50%;
-margin-top: -10px;
-margin-left: -12px;
-
-}
-.marketingTd{
-  text-align:center;
-}
-
-.marketingOpt{
-  width:15px;
-}
-=======
 .checkboxPartials{
   position: relative;
 }
@@ -1155,4 +1128,28 @@ margin-left: -12px;
 .checkboxStyleDashboard label.disabled{
   color: #C1C1C1 !important;
 }
->>>>>>> features_ronaldo
+.marketingIcon{
+  height: 22px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -11px;
+  margin-left: -11px;
+}
+
+ .marketingIcon {
+height: 22px;
+position: absolute;
+top: 50%;
+left: 50%;
+margin-top: -10px;
+margin-left: -12px;
+
+}
+.marketingTd{
+  text-align:center;
+}
+
+.marketingOpt{
+  width:15px;
+}
