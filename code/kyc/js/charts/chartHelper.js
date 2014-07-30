@@ -80,7 +80,7 @@ angular.module('kyc.charts')
     function getPreparedAreaData(chartData,minTimestamp,maxTimestamp,showDecimal){
         showDecimal = showDecimal ? showDecimal : false;
         var previousSpecifiedTimestamp =  moment.utc(minTimestamp - (maxTimestamp - minTimestamp))        
-        var weekTimestamp = moment.utc().subtract('week',1);
+        var weekTimestamp = moment.utc().startOf('day').subtract('week',1);
         var lastWeekTimestamp = moment.utc().subtract('week',2);
         var monthTimestamp = moment.utc().subtract('month',1);
         var lastMonthTimestamp = moment.utc().subtract('month',2);
@@ -321,8 +321,8 @@ angular.module('kyc.charts')
                 value: getPeriodTotal(prepData.weekData),
                 percent: getPercentage(prepData.weekData, prepData.previousWeekData),
                 data: completeEmptyData({
-                    max: moment.utc().startOf('day'),
-                    min: moment.utc().subtract('week', 1).startOf('day').valueOf(),
+                    max: moment.utc().endOf('day'),
+                    min: moment.utc().startOf('day').subtract('week', 1).valueOf(),
                     value: prepData.weekData,
                     dateType: 'day',
                     filterData: FilterCharts.day
@@ -336,7 +336,7 @@ angular.module('kyc.charts')
                 percent: getPercentage(prepData.monthData, prepData.previousMonthData),
                 data: completeEmptyData({
                     max: moment.utc().startOf('day'),
-                    min: moment.utc().subtract('month',1).startOf('day').valueOf(),
+                    min: moment.utc().startOf('day').subtract('month',1).valueOf(),
                     value: prepData.monthData,
                     dateType: 'day',
                     filterData: FilterCharts.day
@@ -350,7 +350,7 @@ angular.module('kyc.charts')
                 percent: getPercentage(prepData.threeMonthsData, prepData.previousThreeMonthsData),
                 data: completeEmptyData({
                     max: moment.utc().startOf('day'),
-                    min: moment.utc().subtract('month',3).startOf('day').valueOf(),
+                    min: moment.utc().startOf('day').subtract('month',3).valueOf(),
                     value: prepData.threeMonthsData,
                     dateType: 'week',
                     filterData: FilterCharts.week
@@ -364,7 +364,7 @@ angular.module('kyc.charts')
                 percent: getPercentage(prepData.sixMonthsData, prepData.previousSixMonthsData),
                 data: completeEmptyData({
                     max: moment.utc().startOf('day'),
-                    min: moment.utc().subtract('month',6).startOf('day').valueOf(),
+                    min: moment.utc().startOf('day').subtract('month',6).valueOf(),
                     value: prepData.sixMonthsData,
                     dateType: 'week',
                     filterData: FilterCharts.week
@@ -377,8 +377,8 @@ angular.module('kyc.charts')
                 value: getPeriodTotal(prepData.yearData),
                 percent: getPercentage(prepData.yearData, prepData.previousYearData),
                 data: completeEmptyData({
-                    max: moment.utc().startOf('day'),
-                    min: moment.utc().subtract('year',1).startOf('day').valueOf(),
+                    max: moment.utc().startOf('month'),
+                    min: moment.utc().startOf('month').subtract('year',1).valueOf(),
                     value: prepData.yearData,
                     dateType: 'month',
                     filterData: FilterCharts.month

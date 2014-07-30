@@ -10,8 +10,8 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	
 	
 	$scope.selectAll = function() {
-		for ( var i = $scope.selectReport.data.length; i--; ) {
-			$scope.selectReport.data[i].$selected = $scope.all_options;
+		for ( var i = $scope.selectedReport.data.length; i--; ) {
+			$scope.selectedReport.data[i].$selected = $scope.all_options;
 		}
 	}
 
@@ -38,7 +38,10 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 
 			$scope.numPerPage = 20;
 			$scope.currentPage = 1;		
+<<<<<<< HEAD
 			console.log('selectedReports',$scope.selectedReport);
+=======
+>>>>>>> features_ronaldo
 			$AjaxInterceptor.complete();
 			isPrepared = true;
 	}

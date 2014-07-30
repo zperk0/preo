@@ -29,7 +29,7 @@
 </div>
 <div class='row'>
 	<div class="container container-partials">
-		<div class="flip-container topSpacing">
+		<div class="flip-container flipRelative topSpacing">
 			<div class="flipper reportPage">
 				<div class="front" id="content-list">
 					
@@ -50,7 +50,10 @@
 						  <thead>
 						  	<tr>
 						  		<th width="10">
-						  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
+								  <div class="checkbox checkboxStyle checkboxPartials">
+								  	<input type="checkbox" ng-model="all_options" ng-change="selectAll()" id="all_options" />
+								    <label for="all_options"></label>
+								  </div>
 						  		</th>					  		
 						  		<th ng-repeat="title in selectedReport.titles" ng-click="setOrderBy(title);">
 
@@ -66,8 +69,13 @@
 						  	</tr>
 						  </thead>
 						  <tbody>
-						  	<tr ng-repeat="data in reportsList | orderObjectBy:orderBy:direction">
-						  		<td><input type="checkbox" ng-model="data.$selected"></td>
+						  	<tr ng-repeat="(key, data) in reportsList | orderObjectBy:orderBy:direction">
+						  		<td>
+								  <div class="checkbox checkboxStyle checkboxPartials">
+								  	<input type="checkbox" ng-model="data.$selected" id="check_{{ key }}" />
+								    <label for="check_{{ key }}"></label>
+								  </div>						  			
+						  		</td>
 						  		<td ng-if='data.timeSlot !== undefined'>{{ data.timeSlot }}</td>
 						  		<td ng-if='data.day !== undefined'>{{ data.day | date:"EEEE" }}</td>
 						  		<td ng-if='data.date !== undefined'>{{ data.date | date:"dd/MM/yyyy" }}</td>
@@ -111,7 +119,7 @@
 						<h4><? echo _("Export as...") ?></h4>
 
 
-							<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()'>
+							<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()' class="formLeft">
 								<input name='data' value='{{pdfData}}' type='hidden'/>
 									<button ng-click="exportData('pdf')">
 											<? echo _("PDF") ?>
@@ -125,16 +133,18 @@
 									</button>
 							</form>
 												
-						<div class="options overflow">
-							<label >
-								<input type="radio" name="option" value="1" ng-model="exportAll"/>
-								<? echo _("All") ?>
-							</label>
-							<label>
-								<input type="radio" name="option" value="0" ng-model="exportAll"/>
-								<? echo _("Selected") ?>
-							</label>
-						</div>
+							<div class="content-optionsExport">
+								<div class="options optionsExport overflow">						
+								  <div class="checkbox checkboxStyle">
+								  	<input type="radio" ng-model="exportAll" name="option" value="1" id="exportAll" />
+								    <label for="exportAll"><? echo _("All") ?></label>
+								  </div>					
+								  <div class="checkbox checkboxStyle">
+								  	<input type="radio" ng-model="exportAll" name="option" value="0" id="exportSelected" />
+								    <label for="exportSelected"><? echo _("Selected") ?></label>
+								  </div>					
+								</div>
+							</div>	
 					</div>
 		</div>
 	</div>

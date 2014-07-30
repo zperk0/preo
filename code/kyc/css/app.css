@@ -265,6 +265,10 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   text-align:center;
 }
 
+.content-actionsModal{
+  top: 32%;
+}
+
 .content-actions h4{
   color:white;
   font-size:120%;
@@ -273,6 +277,10 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
 
 .content-actions form{
   display:inline;
+}
+
+.content-actions form.formLeft{
+  margin-right: 15px;
 }
 
 .content-actions button{
@@ -351,10 +359,11 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
 
 .title-modal-chart{
   text-align: center;
-  border-bottom: 1px solid #B3B6B8;
+  border-bottom: 1px solid #DDDDDD;
   color: #46535D;
   margin-top: -20px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
   font-size: 110%;
 }
 
@@ -673,6 +682,20 @@ span.multiSelect{
 .options label + label{
   position:relative;
   left:20px;  
+}
+
+.content-optionsExport{
+  width: 100%;
+  text-align: center;
+}
+
+.optionsExport{
+  display: inline-block;
+  padding-left: 25px;
+}
+
+.optionsExport > div{
+  float: left;
 }
 
 
@@ -1079,6 +1102,7 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   top: 0;
 }
 
+<<<<<<< HEAD
 .marketingIcon{
   height: 22px;
   position: absolute;
@@ -1104,3 +1128,31 @@ margin-left: -12px;
 .marketingOpt{
   width:15px;
 }
+=======
+.checkboxPartials{
+  position: relative;
+}
+
+.checkboxPartials label{
+  margin-right: 0px;
+  padding-left: 18px;
+}
+
+.checkboxPartials label:before{
+  margin-top: -10px;
+  top: 0px;
+}
+
+.flipRelative{
+  position: relative;
+}
+
+.checkboxStyleDashboard label{
+  color: #9F9FA2 !important;
+  font-size: 11px;
+  padding-left: 22px;
+}
+.checkboxStyleDashboard label.disabled{
+  color: #C1C1C1 !important;
+}
+>>>>>>> features_ronaldo

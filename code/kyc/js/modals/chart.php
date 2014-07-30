@@ -32,7 +32,7 @@
 						<i class="fa fa-arrow-left-kyc icon-white"></i>
 					</a>
 		</div>			
-		<div class="content-actions invisibleBack">
+		<div class="content-actions content-actionsModal invisibleBack">
 					<h4><? echo _("Export as...") ?></h4>
 
 					<div class="buttons"> 
@@ -52,7 +52,7 @@
 				</div>
 </div>
 
-<div class="options-modal content-modal overflow" ng-if="chart.value.modal.options">
+<div class="options-modal  content-modal overflow" ng-if="chart.value.modal.options">
 	<div class="content-options-modal">
 		<div class="block-modal pull-left" ng-class="{ active: option.active }" ng-repeat="option in chart.value.modal.options">
 			<div>

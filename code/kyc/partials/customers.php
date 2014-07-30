@@ -1,6 +1,6 @@
 <? session_start(); ?>
 <div class="container container-partials row">
-	<div class="flip-container topSpacing">
+	<div class="flip-container flipRelative topSpacing">
 		<div class="flipper reportPage">
 			<div class="front" id="content-list">
 				
@@ -17,7 +17,10 @@
 					  <thead>
 					  	<tr>
 					  		<th width="10">
-					  			<input type="checkbox" ng-model="all_options" ng-change="selectAll()" />
+							  <div class="checkbox checkboxStyle checkboxPartials">
+							  	<input type="checkbox" ng-model="all_options" ng-change="selectAll()" id="all_options" />
+							    <label for="all_options"></label>
+							  </div>
 					  		</th>
 					  		<th ng-click=" setOrderBy('name');">
 					  			<? echo _("Name")?>
@@ -46,8 +49,13 @@
 					  	</tr>
 					  </thead>
 					  <tbody>
-					  	<tr ng-repeat="customer in customersList">
-					  		<td><input type="checkbox" ng-model="customer.selected" /></td>
+					  	<tr ng-repeat="(key, customer) in customersList">
+					  		<td>
+							  <div class="checkbox checkboxStyle checkboxPartials">
+							  	<input type="checkbox" ng-model="customer.selected" id="check_{{ key }}" />
+							    <label for="check_{{ key }}"></label>
+							  </div>					  		
+					  		</td>
 					  		<td>{{ customer.name }}</td>
 					  		<td>{{ getCurrency()+customer.totalSpent.toFixed(2) }}</td>
 					  		<td>{{ customer.emailAddress }}</td>
@@ -81,7 +89,7 @@
 					<h4><? echo _("Export as...") ?></h4>
 
 
-						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()'>
+						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()' class="formLeft">
 							<input name='data' value='{{pdfData}}' type='hidden'/>
 								<button ng-click="exportData('pdf')">
 										<? echo _("PDF") ?>
@@ -95,16 +103,18 @@
 								</button>
 						</form>
 											
-					<div class="options overflow">
-						<label >
-							<input type="radio" name="option" value="1" ng-model="exportAll"/>
-							<? echo _("All") ?>
-						</label>
-						<label>
-							<input type="radio" name="option" value="0" ng-model="exportAll"/>
-							<? echo _("Selected") ?>
-						</label>
-					</div>
+						<div class="content-optionsExport">
+							<div class="options optionsExport overflow">						
+							  <div class="checkbox checkboxStyle">
+							  	<input type="radio" ng-model="exportAll" name="option" value="1" id="exportAll" />
+							    <label for="exportAll"><? echo _("All") ?></label>
+							  </div>					
+							  <div class="checkbox checkboxStyle">
+							  	<input type="radio" ng-model="exportAll" name="option" value="0" id="exportSelected" />
+							    <label for="exportSelected"><? echo _("Selected") ?></label>
+							  </div>					
+							</div>
+						</div>	
 				</div>
 			</div>
 </div>

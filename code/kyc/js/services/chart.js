@@ -9,7 +9,10 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                 options: {
                     chart: {
                         type: 'areaspline',
-                        height:'250'
+                        height:'250',
+                        style: {
+                            cursor: 'url(/img/cursorChart.png), auto',
+                        }
                     },
                     exporting: {
                         enabled: false
@@ -160,13 +163,13 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                     labels: {
                         style: {
                             color: '#b3b6b8',
-                            fontSize: '15px'
+                            fontSize: '15px'                          
                         },
                         formatter: function() {
                             var date;
 
                             if ( this.axis.tickInterval === TickInterval.MONTH ) {
-                                date = $filter('date')(new Date(moment.utc(this.value).startOf('month').add('days', 10)), 'MMM');
+                                date = $filter('date')(new Date(moment.utc(this.value).startOf('month')), 'MMM');
                             } else if ( this.axis.tickInterval === TickInterval.WEEK || this.axis.tickInterval === TickInterval.WEEK_THREE ) {
                                 date = $filter('date')(new Date(moment.utc(this.value).startOf('week').add('days', 3)), 'dd.MMM');
                             } else {
@@ -178,7 +181,9 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                     },
                 },
                 yAxis: {     
-                    gridLineWidth: 0,
+                    gridLineWidth: 1,
+                    gridLineColor: '#C0C0C0',
+                    gridLineDashStyle: 'dot',
                     minorGridLineWidth: 0,
                     title: {
                         text: ''
@@ -238,7 +243,7 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                         },
                         formatter: function () {
                             return '<div style="position:relative;"><div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + 
-                            Highcharts.numberFormat(this.y, (this.y % 1 === 0 ? 0 : 1)) + '</div> <span style="position: absolute; left: 42%; bottom: -15px; background:url(/img/arrowPie.png) left top no-repeat; width: 15px; height: 9px; display: block;" "></span> </div>';
+                            Highcharts.numberFormat(this.y, (this.y % 1 === 0 ? 0 : 1)) + '</div> <span style="position: absolute; left: 33%; bottom: -15px; background:url(/img/arrowPie.png) left top no-repeat; width: 15px; height: 9px; display: block;" "></span> </div>';
                         }
                     },
                     exporting: {
@@ -332,7 +337,8 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             };
                         },
                         formatter: function () {
-                            return '<div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + Highcharts.numberFormat(this.y, (this.y % 1 === 0 ? 0 : 1)) + '</div>';
+                            return '<div style="position:relative;"><div class="tooltipPie" style="font-size: 14px; font-weight: 600; padding: 5px 7px">' + 
+                            Highcharts.numberFormat(this.y, (this.y % 1 === 0 ? 0 : 1)) + '</div> <span style="position: absolute; left: 33%; bottom: -15px; background:url(/img/arrowPie.png) left top no-repeat; width: 15px; height: 9px; display: block;" "></span> </div>';
                         }
                     },
                 },

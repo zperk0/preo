@@ -21,7 +21,7 @@
 			<div class="row">
 				<div class="large-6 small-11 columns">
 					<label><?echo _("Email");?></label>
-					<input type="email" id="email" name="email" placeholder="" required tabindex=1>
+					<input type="text" id="email" name="email" placeholder="" required pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' tabindex=1>
 					<small class="error"><?echo _("Please type a valid email address");?></small>
 				</div>
 			</div>
@@ -42,7 +42,8 @@
 			
 			<div class="row">
 				<div class="small-8 large-5 columns">
-					<button type="submit" tabindex=3><?echo _("LOG IN");?></button>
+					<button type="submit" tabindex=3 id="btnLogin"><?echo _("LOG IN");?></button>
+					<button id="logingButton" class="hide secondary" type="button"><?echo _("LOGING...");?></button>					
 				</div>
 			</div>
 			<div class="row">
