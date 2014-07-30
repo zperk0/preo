@@ -1,20 +1,55 @@
-angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderService','pusher','$AjaxInterceptor','$interval','VENUE_ID',
- function($scope,OrderService,pusher,$AjaxInterceptor,$interval,VENUE_ID) {
+angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderService','pusher','$AjaxInterceptor','$interval','VENUE_ID', 'UtilsService',
+ function($scope,OrderService,pusher,$AjaxInterceptor,$interval,VENUE_ID, UtilsService) {
 
     $scope.$parent.showDateFilter = false;
 
-
     $scope.setLocation('stream');
 	$scope.orders = OrderService.getOrders();
-    var onTimeout = false;
+
+    var lastTimeStamp = moment().valueOf();
+
+    $scope.orders.$promise.then(function(){
+        $scope.orders = $scope.orders.sort(UtilsService.dynamicSort('updated', true))
+
+        if ( $scope.orders.length ) {
+            lastTimeStamp = moment($scope.orders[0].updated).valueOf();
+        }
+    });
+
+    var isRequesting = false;
+
+    var qtdRequests = 0;
     
-    var pusherUpdateEvent = function() {                
-        if (!onTimeout){
-            onTimeout = true;
-            OrderService.load(function(orders){
-                $scope.orders = orders;
-            })        
-            setTimeout(function(){onTimeout = false},500);
+    var pusherUpdateEvent = function() {
+        ++qtdRequests;
+        
+        if ( !isRequesting ) {
+            isRequesting = true;
+            qtdRequests = 0;
+
+            var outletsIds = $scope.getSelectedOutlets();
+
+            if ( !outletsIds.length ) {
+                outletsIds = [ $scope.outlets[0].id ];
+            } else {
+                outletsIds = outletsIds.map(function(x){
+                    return x.id;
+                });
+            }
+
+            OrderService.loadSince(lastTimeStamp, VENUE_ID, outletsIds).then(function(orders){
+                if ( orders.length ) {
+                    lastTimeStamp = moment(orders[0].updated).valueOf();
+                }
+
+                $scope.orders = UtilsService.mergeArraysUnique( orders, angular.copy($scope.orders) );
+
+                isRequesting = false;
+
+                if ( qtdRequests ) { 
+                    pusherUpdateEvent();
+                }
+            });
         }
     };
       

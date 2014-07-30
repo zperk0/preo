@@ -26,19 +26,26 @@ angular.module('kyc.services')
     }
 
 
-		function load(minPaid,maxPaid) {                        
+    function load(minPaid,maxPaid) {                        
       minPaid = getMinDateForQuery(minPaid);
 
       //max paid on the query is always now.
       maxPaid = moment.utc().valueOf();
         return Order.query({accountId:ACCOUNT_ID,maxPaid:maxPaid,minPaid:minPaid},function (res){
           orders = res;
+        }).$promise;            
+      }
+
+		function loadSince(since, venueId, outletIds) {
+        return Order.query({accountId:ACCOUNT_ID, since: since, venueId: venueId, outletIds: outletIds, orderBy: 'updated'},function (res){
+          orders = res;
 				}).$promise;            
       }
 
 		
     return {
-    	load:load,
+      load:load,
+    	loadSince:loadSince,
     	getOrders:getOrders
 
     }

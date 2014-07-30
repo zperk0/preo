@@ -47,8 +47,10 @@ angular.module('kyc.services')
           sortOrder = -1;
       }
 
-      var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-      return result * sortOrder;
+      return function( a, b ) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+      }
       
   }
 
@@ -72,13 +74,39 @@ angular.module('kyc.services')
         return result * sortOrder;
     });
     return index;
+  };
+
+  /**
+  * Merge 2 arrays of objects and remove item repeat
+  */
+
+  var mergeArraysUnique = function( newArray, oldArray ) {
+
+    var arrOldIds = oldArray.map(function( x ) {
+      return x.id;
+    });
+
+    for (var i = newArray.length - 1; i >= 0; i--) {
+      var a = newArray[i];
+
+      var index = arrOldIds.indexOf( a.id );
+
+      if ( index !== -1 ) {
+        oldArray.splice(index, 1);
+        arrOldIds.splice(index, 1);
+      }
+    };
+
+    return newArray.concat( oldArray );
+
   }
 		
   return {
     sliceObject: sliceObject,
     reOrderWidgets: reOrderWidgets,
     dynamicSort: dynamicSort,
-  	dynamicSortObject: dynamicSortObject,
+    dynamicSortObject: dynamicSortObject,
+  	mergeArraysUnique: mergeArraysUnique,
 
   }
 
