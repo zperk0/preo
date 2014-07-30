@@ -1,6 +1,6 @@
 angular.module('accountSettings.controllers')
- .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature','$notification','$AjaxInterceptor',
-  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature,$notification,$AjaxInterceptor) {
+ .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature','$notification','$AjaxInterceptor','AccountInvoice',
+  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature,$notification,$AjaxInterceptor,AccountInvoice) {
     
 
     var allFeatures = FEATURES;
@@ -12,11 +12,13 @@ angular.module('accountSettings.controllers')
     function loadAll(callback){
         $q.all([           
             AccountFeature.query({accountId:ACCOUNT_ID}).$promise,            
-            Account.get({id:ACCOUNT_ID}).$promise
+            Account.get({id:ACCOUNT_ID}).$promise,
+            AccountInvoice.getPending({accountId:ACCOUNT_ID}).$promise
         ])
         .then(function(results){                         
             $scope.accountFeatures = results[0];            
             $scope.account = results[1];
+            $scope.subscriptionInvoice = results[2];
             setBillingDate();          
             angular.forEach($scope.accountFeatures,function(accountFeature){              
                 accountFeature.feature = getFeatureById(accountFeature.featureId);

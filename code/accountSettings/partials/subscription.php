@@ -3,18 +3,18 @@
 <section class='scheduleWrapper' >
 	<header><? echo _("Billing Schedule")?></header>
 	<br/>	
-	<div ng-show='card === false'>				
+	<div ng-if='card === false && (!subscriptionInvoice || subscriptionInvoice.status !== "REJECTED")'>				
 		<p><? echo _("Please add a payment method in order to subscribe to premium features")?></p>
-		<button class='preodayButton'><? echo _("ADD PAYMENT METHOD") ?></button>
+		<button class='preodayButton' ng-click='navigateTo("/accountSettings#/paymentMethod")'><? echo _("ADD PAYMENT METHOD") ?></button>
 	</div>		
-	<div ng-show='card !== false'>						
-			<div ng-show='diffInDays > 0' class='recurringPaymentFailed'>
+	<div ng-if='card !== false'>						
+			<div ng-if='subscriptionInvoice && subscriptionInvoice.status === "REJECTED" ' class='recurringPaymentFailed'>
 				<p><strong><? echo _("You have an outstanding payment!")?> </strong></p>	
 				<p><? echo _("Please update your card details within ")?> {{ diffInDays }}  <? echo _(" days to prevent your Premium Features from being deactivated.")?> </p>					
 			</div>
-			<div ng-show='diffInDays <= 0' class="contentMessageSubscription">			
-				<p ng-show="account.billingDate !== null"  ><? echo _("Your account will be billed")?> <b class='helveticaneueWMedi'>&pound;{{getTotalSubscription()}}</b> <? echo _("on") ?> <b class='helveticaneueWMedi'>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>			
-				<p ng-show="account.billingDate === null"><? echo _("You have no active subscriptions, your account will not be billed at this time.")?> </p>										
+			<div ng-if='!subscriptionInvoice || subscriptionInvoice.status !== "REJECTED"' class="contentMessageSubscription">			
+				<p ng-if="account.billingDate !== null"  ><? echo _("Your account will be billed")?> <b class='helveticaneueWMedi'>&pound;{{getTotalSubscription()}}</b> <? echo _("on") ?> <b class='helveticaneueWMedi'>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>			
+				<p ng-if="account.billingDate === null"><? echo _("You have no active subscriptions, your account will not be billed at this time.")?> </p>										
 			</div>
 			<div class='smallCard'>
 				<img src='/img/credit-card.png' class='left'> 
@@ -24,7 +24,7 @@
 				</div>
 				<div class='clearfix'></div>
 			</div>
-			<div class='calendar' ng-show='account.billingDate !== null'>
+			<div class='calendar' ng-if='account.billingDate !== null'>
 				<div class='month'>{{ account.billingDate | date:"MMM" }}</div>
 				<div class='day'>{{ account.billingDate | date:"d" }}</div>
 			</div>

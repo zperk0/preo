@@ -5,7 +5,12 @@ angular.module('accountSettings.resources').
     		payPending:{
               method:'POST',
               url:'/api/accounts/:accountId/invoices/payPending'
-          }            
+          },
+        getPending:{
+            method:'POST',
+            url:'/api/accounts/:accountId/invoices/getSubscriptionInvoice'
+        } 
+
     });    
 
     Invoice.prototype.getTotal = function(){     
