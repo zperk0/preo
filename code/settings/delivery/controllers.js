@@ -1,10 +1,62 @@
 
 angular.module('delivery.controllers',[]).
-  controller('deliveryController', ['$scope','$http','Resources','$q', 'VENUE_ID', function($scope,$http,Resources,$q, VENUE_ID) {
+  controller('deliveryController', ['$scope','$http','Resources','$q', 'VENUE_ID', '$rootScope', function($scope,$http,Resources,$q, VENUE_ID, $rootScope) {
+    $scope.isPosting = false;
+    $scope.triedSubmit = false;
+    $rootScope.requests = 2;
+    
+    //get venue object
+    $scope.venue = Resources.Venue.get({id:VENUE_ID},function(result){
+        --$rootScope.requests;
+    },function(err){ console.log("error",arguments)});   
+
+    var venueSettings = Resources.VenueSettings.get({id:VENUE_ID},function(result){                
+        $scope.venueSettings = result;
+
+        --$rootScope.requests;
+        
+    },function(err){ console.log("error",arguments)});
+
+
+    $scope.processForm = function() {
+        $scope.isPosting =true;
+        $scope.triedSubmit = true;
+        if (!$scope.deliveryForm.$valid) {            
+            $scope.isPosting =false;
+            return false;
+        };
+
+
+        //same with the ccySymbol
+        delete $scope.venue["ccySymbol"]
+
+        $q.all([           
+            Resources.Venue.put({id:VENUE_ID}, $scope.venue).$promise,
+            Resources.VenueSettings.put({id:VENUE_ID}, venueSettings).$promise
+        ])
+        .then(function(results){            
+            $scope.isPosting =false;
+            noty({
+              type: 'success',  layout: 'topCenter',
+              text: _tr("Successfully saved delivery settings.")
+            });        
+        },
+        function(error){
+            $scope.isPosting =false;
+            noty({
+              type: 'error',  layout: 'topCenter',
+              text: _tr("Sorry, but there's been an error processing your request.")
+            });
+        });           
+
+    };
+    
+}]).
+controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '$rootScope', function($scope,$http,Resources,$q, VENUE_ID, $rootScope) {
     $scope.isPosting = false;
   	$scope.selected =1;    
     $scope.triedSubmit = false;
-    $scope.finishedLoading = false;
+    $rootScope.requests = 1;
     var messageTypes = {
         notify:["ORDER_NOTIFY"],
         reject:["ORDER_REJECT"]
@@ -39,16 +91,6 @@ angular.module('delivery.controllers',[]).
             }
         ]
     };
-
-    
-    //get venue object
-    $scope.venue = Resources.Venue.get({id:VENUE_ID},function(result){            	
-    },function(err){ console.log("error",arguments)});   
-
-    var venueSettings = Resources.VenueSettings.get({id:VENUE_ID},function(result){                
-        $scope.venueSettings = result;              
-        
-    },function(err){ console.log("error",arguments)});   
 
     var venueMessages = Resources.VenueMessages.query({venueId:VENUE_ID},function(messages){                                
         $scope.messages = {
@@ -93,6 +135,8 @@ angular.module('delivery.controllers',[]).
                                 
             }
         }
+
+        $rootScope.requests = 0;
         console.log($scope.messages);
         $scope.finishedLoading = true;
     },function(err){ console.log("error",arguments)});   
@@ -133,12 +177,8 @@ angular.module('delivery.controllers',[]).
             delete messages[msg]["typeString"];
             delete messages[msg]["suppressed"];   
         }
-        //same with the ccySymbol
-        delete $scope.venue["ccySymbol"]
 
-        $q.all([           
-            Resources.Venue.put({id:VENUE_ID}, $scope.venue).$promise,
-            Resources.VenueSettings.put({id:VENUE_ID}, venueSettings).$promise,
+        $q.all([
             postMessage(messages[0]).$promise,
             postMessage(messages[1]).$promise,
             postMessage(messages[2]).$promise,
@@ -221,4 +261,4 @@ angular.module('delivery.controllers',[]).
     }
 
     
-}]);
+}])
