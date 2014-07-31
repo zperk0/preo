@@ -96,10 +96,16 @@
 							<h3 data-section-title><?echo _("Premium Features");?></h3><i class="icon-plus-sign"></i>
 							<div class="content" data-section-content>
 
-									<?  //get the features list we have for this acocunt 
+									<?  //get the features list we have for this acocunt 									   
+											function filterActive($feat){
+													if ($feat->status != 'CANCELED' && $feat->status != 'EXPIRED' ){
+														return True;
+													}
+													return False;
+											}											
 										  $accountId = $_SESSION['account_id'];	  
 											$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
-											$accountFeatures = json_decode($result);											
+											$accountFeatures = array_filter(json_decode($result),"filterActive");
 											if(is_array($accountFeatures) && count($accountFeatures) > 0) { ?> 
 												<div class='featuresList'> 
 												<? foreach($accountFeatures as $feat) { ?>
