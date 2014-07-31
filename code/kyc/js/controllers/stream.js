@@ -29,9 +29,7 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
 
             var outletsIds = $scope.getSelectedOutlets();
 
-            if ( !outletsIds.length ) {
-                outletsIds = [ $scope.outlets[0].id ];
-            } else {
+            if ( outletsIds.length ) {
                 outletsIds = outletsIds.map(function(x){
                     return x.id;
                 });
@@ -40,9 +38,9 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
             OrderService.loadSince(lastTimeStamp, VENUE_ID, outletsIds).then(function(orders){
                 if ( orders.length ) {
                     lastTimeStamp = moment(orders[0].updated).valueOf();
-                }
 
-                $scope.orders = UtilsService.mergeArraysUnique( orders, angular.copy($scope.orders) );
+                    $scope.orders = UtilsService.mergeArraysUnique( orders, angular.copy($scope.orders) );
+                }
 
                 isRequesting = false;
 
