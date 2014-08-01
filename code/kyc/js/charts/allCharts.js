@@ -11,24 +11,22 @@ angular.module('kyc.charts')
     		ordersPerCustomer:OrdersPerCustomer,
     		averageOrderValue:AverageOrderValue,
     		itemsOrdered:ItemsOrdered,
-    		ordersByOutlet:OrdersByOutlet,
-    		mostPopularItems:MostPopularItems,
-    		timeOfOrdersPlaced:TimeOfOrdersPlaced,
-    		customersPie:CustomersPie,
-    		customersBar:CustomersBar,
             revenue:Revenue,
             numberOfOrders:NumberOfOrders,
-            menuItemPopularity:MenuItemPopularity
-  	}
-
-
-
+            mostPopularItems:MostPopularItems,
+            menuItemPopularity:MenuItemPopularity,
+            customersPie:CustomersPie,
+            customersBar:CustomersBar,
+            timeOfOrdersPlaced:TimeOfOrdersPlaced,
+            ordersByOutlet:OrdersByOutlet
+  	};
 
 
     function init(minDate,maxDate,currencySymbol,selectedOutlets){        
         currency = currencySymbol;        
         OrderService.load(minDate,maxDate)
         .then(function(orders){
+            console.log(orders);
             prepareCharts(orders,minDate,maxDate,selectedOutlets)
         });
     }
