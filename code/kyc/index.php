@@ -145,6 +145,7 @@
   <script src="/code/kyc/js/charts/ordersByOutlet.js"></script>
   <script src="/code/kyc/js/charts/mostPopularItems.js"></script>
   <script src="/code/kyc/js/charts/timeOfOrdersPlaced.js"></script>
+  <script src="/code/kyc/js/charts/averageOrderValueArea.js"></script>
   <script src="/code/kyc/js/charts/customersPie.js"></script>
   <script src="/code/kyc/js/charts/customersBar.js"></script>
   <script src="/code/kyc/js/charts/numberOfOrders.js"></script>

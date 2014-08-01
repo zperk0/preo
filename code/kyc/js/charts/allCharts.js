@@ -1,8 +1,8 @@
 angular.module('kyc.charts')
 .factory('AllCharts',['$q','OrderService','PayingCustomers','OrdersPerCustomer','AverageOrderValue','ItemsOrdered','OrdersByOutlet','MostPopularItems','TimeOfOrdersPlaced',
-												'CustomersPie','CustomersBar','Revenue','NumberOfOrders','MenuItemPopularity',
+												'CustomersPie','CustomersBar','Revenue','NumberOfOrders','MenuItemPopularity', 'AverageOrderValueArea',
 	function($q,OrderService,PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
-			CustomersPie,CustomersBar,Revenue,NumberOfOrders,MenuItemPopularity) {
+			CustomersPie,CustomersBar,Revenue,NumberOfOrders,MenuItemPopularity, AverageOrderValueArea) {
     var defer = $q.defer();
     
     var currency;
@@ -15,7 +15,8 @@ angular.module('kyc.charts')
             numberOfOrders:NumberOfOrders,
             mostPopularItems:MostPopularItems,
             menuItemPopularity:MenuItemPopularity,
-            customersPie:CustomersPie,
+            //customersPie:CustomersPie,
+            averageOrderValueArea: AverageOrderValueArea,
             customersBar:CustomersBar,
             timeOfOrdersPlaced:TimeOfOrdersPlaced,
             ordersByOutlet:OrdersByOutlet
@@ -26,7 +27,6 @@ angular.module('kyc.charts')
         currency = currencySymbol;        
         OrderService.load(minDate,maxDate)
         .then(function(orders){
-            console.log(orders);
             prepareCharts(orders,minDate,maxDate,selectedOutlets)
         });
     }
