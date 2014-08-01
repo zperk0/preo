@@ -950,7 +950,7 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   width: 100%;
 }
 
-.select2Preoday a.select2-default{
+.select2Preoday a.select2-default, .select2Preoday a.select2-choice{
   background: #CED0D1!important;
   background-size:32px  100% !important;
   border: 0px;
