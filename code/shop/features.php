@@ -25,6 +25,7 @@ var features = [
 		name: <? echo json_encode(_("Independent"))?>,
 		upfrontPrice: 1000,
 		subscriptionPrice:50,		
+		contractMonths:12,
 		trialPeriod:0,
 		descriptionFeatures :[<?echo json_encode(_("Create, submit, manage and maintain your own branded app in the App Store, Google Play and Windows Phone Store "))?>,
 													<?echo json_encode(_("Manage and resolve any issues or queries"))?>,

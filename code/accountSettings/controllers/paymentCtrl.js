@@ -114,7 +114,7 @@ angular.module('accountSettings.controllers')
                       console.log('got invoice',invoice);
                        $notification.confirm({                           
                           title: _tr("Pending payment resolved"),
-                          scope: invoice,
+                          scope: invoice,                          
                           templateUrl: 'subscriptionpayment.php',              
                           showTerm: false,
                           btnOk: false, 

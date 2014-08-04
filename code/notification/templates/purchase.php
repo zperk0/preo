@@ -3,11 +3,12 @@
   <div class="row">
     <p ng-if="upfrontPrice">
       <span class="pull-left title"><? echo _("One-off payment") ?></span>
-      <span class="pull-right price">£{{ upfrontPrice.toFixed(2) }}</span>
+      <span class="pull-right price">£{{ upfrontPrice.toFixed(2) }}</span>      
     </p>
     <p ng-if="subscriptionPrice">
       <span class="pull-left title"><? echo _("Monthly charge") ?></span>
-      <span class="pull-right price">£{{ subscriptionPrice.toFixed(2) }}</span>
+      <span class="pull-right price">£{{ subscriptionPrice.toFixed(2) }}</span>      
+      <small ng-if="contractMonths" class='clearfix pull-right'><i >({{contractMonths}}<? echo _(" months contract")?>)</i></small>
     </p>
   </div>
   <div class="row">

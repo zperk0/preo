@@ -55,7 +55,16 @@
 						<td ng-if="accountFeature.status === 'TRIAL'" class='errorColor'> Free trial expires in {{getExpiryDate(accountFeature)}} days </td>				
 						<td ng-if="accountFeature.status === 'UNINSTALLED'">  <? echo _("Pending removal") ?> </td>				
 						<td ng-switch='accountFeature.status'>
-								<span ng-switch-when="INSTALLED" ng-click='openConfirmDialog(accountFeature)' class='positiveButton'> <? echo _("Uninstall")?></span>
+								<span ng-switch-when="INSTALLED"  > 
+									<span ng-click='openConfirmDialog(accountFeature)' ng-if="!accountFeature.isInContractPeriod()" class='positiveButton'>
+										<? echo _("Uninstall")?>
+									</span>
+									<span ng-if="accountFeature.isInContractPeriod()" class='disabled'
+									tooltip-animation='false' tooltip="<? echo _('Contract ends on') ?> {{accountFeature.getContractEnd() | date:'dd/MM/yyyy' }} "   tooltip-append-to-body='true'>
+										<? echo _("Uninstall")?>
+									</span>
+
+								</span>
 								<span ng-switch-when="TRIAL" ng-click='openConfirmDialog(accountFeature)' class='positiveButton'> <? echo _("Uninstall")?></span>
 								<span ng-switch-when="UNINSTALLED" ng-click='updateStatus(accountFeature,"INSTALLED")' class='negativeButton'> <? echo _("Cancel")?></span>
 						</td>

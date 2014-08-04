@@ -61,8 +61,10 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
 
       Resources.AccountFeatures.getPrice({accountId:ACCOUNT_ID,featureId:feature.id},
         function(result){                
-          $scope.price = result;
-
+        $scope.price = result;
+          if (feature.contractMonths){
+              $scope.price.contractMonths = feature.contractMonths;
+          }        
           if ( featureCard ) {
             $scope.showDialog('purchase');
           } else {

@@ -2804,6 +2804,15 @@ span .currencySymbol {
           border-radius: 3px;          
               
         }
+
+        span.disabled{
+            font-style:italic;
+            text-decoration:line-through;
+            color:#ccc;
+            &:hover{
+              cursor:default;
+            }
+        }
       }      
 
       tr.disabled{
@@ -2816,10 +2825,13 @@ span .currencySymbol {
         }
               
       }
+
+
     }
     span.negativeButton{
         color:$error !important;
     }
+
   }
 
   .deactivatedFeaturesWrapper {
