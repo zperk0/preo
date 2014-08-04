@@ -1,8 +1,8 @@
 angular.module('kyc.charts')
 .factory('AllCharts',['$q','OrderService','PayingCustomers','OrdersPerCustomer','AverageOrderValue','ItemsOrdered','OrdersByOutlet','MostPopularItems','TimeOfOrdersPlaced',
-												'CustomersPie','CustomersBar','Revenue','NumberOfOrders','MenuItemPopularity',
+												'CustomersPie','CustomersBar','Revenue','NumberOfOrders','MenuItemPopularity', 'AverageOrderValueArea',
 	function($q,OrderService,PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
-			CustomersPie,CustomersBar,Revenue,NumberOfOrders,MenuItemPopularity) {
+			CustomersPie,CustomersBar,Revenue,NumberOfOrders,MenuItemPopularity, AverageOrderValueArea) {
     var defer = $q.defer();
     
     var currency;
@@ -11,18 +11,16 @@ angular.module('kyc.charts')
     		ordersPerCustomer:OrdersPerCustomer,
     		averageOrderValue:AverageOrderValue,
     		itemsOrdered:ItemsOrdered,
-    		ordersByOutlet:OrdersByOutlet,
-    		mostPopularItems:MostPopularItems,
-    		timeOfOrdersPlaced:TimeOfOrdersPlaced,
-    		customersPie:CustomersPie,
-    		customersBar:CustomersBar,
             revenue:Revenue,
             numberOfOrders:NumberOfOrders,
-            menuItemPopularity:MenuItemPopularity
-  	}
-
-
-
+            mostPopularItems:MostPopularItems,
+            menuItemPopularity:MenuItemPopularity,
+            //customersPie:CustomersPie,
+            averageOrderValueArea: AverageOrderValueArea,
+            customersBar:CustomersBar,
+            timeOfOrdersPlaced:TimeOfOrdersPlaced,
+            ordersByOutlet:OrdersByOutlet
+  	};
 
 
     function init(minDate,maxDate,currencySymbol,selectedOutlets){        

@@ -128,6 +128,7 @@
   <script src="/code/kyc/js/resources/venue.js"></script>  
   <script src="/code/kyc/js/resources/customers.js"></script>
   <script src="/code/kyc/js/resources/report.js"></script>  
+  <script src="/code/kyc/js/resources/account.js"></script>  
   <script src="/code/kyc/js/constants/chartType.js"></script>
   <script src="/code/kyc/js/constants/colors.js"></script>
   <script src="/code/kyc/js/constants/tickInterval.js"></script>
@@ -146,6 +147,7 @@
   <script src="/code/kyc/js/charts/ordersByOutlet.js"></script>
   <script src="/code/kyc/js/charts/mostPopularItems.js"></script>
   <script src="/code/kyc/js/charts/timeOfOrdersPlaced.js"></script>
+  <script src="/code/kyc/js/charts/averageOrderValueArea.js"></script>
   <script src="/code/kyc/js/charts/customersPie.js"></script>
   <script src="/code/kyc/js/charts/customersBar.js"></script>
   <script src="/code/kyc/js/charts/numberOfOrders.js"></script>

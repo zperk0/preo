@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('MenuItemPopularity',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
+.factory('MenuItemPopularity',['ChartType','ChartHelper', 'UtilsService', function(ChartType,ChartHelper, UtilsService) {
 
 	var type = ChartType.AREA;	
     var title = _tr('Menu Item Popularity');
@@ -10,14 +10,17 @@ angular.module('kyc.charts')
     var prepData = {};
     var items = [];
 
+    items = UtilsService.getItems();
+
 
 	function setData(order,minDate,maxDate){        
         var timestamp = moment.utc(order.paid).startOf('day').valueOf();
+
         angular.forEach(order.items,function(item){
             
             if (menuItems[item.menuItemId] === undefined){
                 selectedItem = selectedItem === null ? item.menuItemId : Number(selectedItem);                
-                items.push({name:item.name,menuItemId:item.menuItemId,callback:selectItem}); 
+                //items.push({name:item.name,menuItemId:item.menuItemId,callback:selectItem}); 
                 menuItems[item.menuItemId] = {}
             }
             if (menuItems[item.menuItemId][timestamp] === undefined){
@@ -59,11 +62,12 @@ angular.module('kyc.charts')
         return {
             type:type,
             title:title,
-            selectedItem:getItemName(selectedItem),
+            selectedItem: getItemIndex(selectedItem),
+            selectItem:selectItem,
             data: getData(),
             numberLeft:prepData.total,
             modal: getModal(),
-            items:items,
+            items: UtilsService.getItems(),
             getPdf:getPdf,
             getCsv:getCsv,
             tooltipText: _tr(' orders')
@@ -108,6 +112,16 @@ angular.module('kyc.charts')
         })
         return found
     }
+
+    function getItemIndex(itemId) {
+        var found = false;
+        angular.forEach(UtilsService.getItems(),function(item, key){
+                if (item.id == itemId)
+                    found = key
+        })
+        return found
+    }
+
 
 
     function getModal(){

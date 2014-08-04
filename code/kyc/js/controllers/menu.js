@@ -1,8 +1,7 @@
 
-angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','VenueService','$AjaxInterceptor','$location','INITIAL_DATES',
-	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location,INITIAL_DATES) {	
-			
-
+angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','VenueService','$AjaxInterceptor','$location','INITIAL_DATES', 'UtilsService', 'Account', 'ACCOUNT_ID',
+	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location,INITIAL_DATES, UtilsService, Account, ACCOUNT_ID) {	
+	
 			$scope.currencySymbol = "%C2%A3";
 			$scope.outlets = [];
 
@@ -16,6 +15,10 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 	 	$scope.getCurrency = function(){
 			return decodeURI($scope.currencySymbol);
 		}
+
+	    Account.getItems({id: ACCOUNT_ID}).$promise.then(function( data ){
+	        UtilsService.setItems(data);
+	    });
 			
 		VenueService.init().then(
 			function(venue){			

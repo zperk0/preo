@@ -1,6 +1,8 @@
 angular.module('kyc.services')
 .service('UtilsService',[function() {
 
+  var items = [];
+
     
   var sliceObject = function( object, begin, end ) {
 
@@ -20,6 +22,14 @@ angular.module('kyc.services')
 
     return data;
   };
+
+  var setItems = function( itemsData ) {
+    items = itemsData;
+  };
+
+  var getItems = function(){
+    return items;
+  }
 
   var reOrderWidgets = function( element ){
       var $charts = $(element).children().find('.flip-container');
@@ -78,7 +88,9 @@ angular.module('kyc.services')
     sliceObject: sliceObject,
     reOrderWidgets: reOrderWidgets,
     dynamicSort: dynamicSort,
-  	dynamicSortObject: dynamicSortObject,
+    dynamicSortObject: dynamicSortObject,
+    setItems: setItems,
+  	getItems: getItems,
 
   }
 

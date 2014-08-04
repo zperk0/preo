@@ -9,10 +9,7 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                 options: {
                     chart: {
                         type: 'areaspline',
-                        height:'250',
-                        style: {
-                            cursor: 'url(/img/cursorChart.png), auto',
-                        }
+                        height:'250'                        
                     },
                     exporting: {
                         enabled: false

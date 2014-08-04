@@ -952,7 +952,7 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   width: 100%;
 }
 
-.select2Preoday a.select2-default{
+.select2Preoday a.select2-default, .select2Preoday a.select2-choice{
   background: #CED0D1!important;
   background-size:32px  100% !important;
   border: 0px;
@@ -974,8 +974,8 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
 }
 
 .select2Preoday.select2-container .select2-choice .select2-arrow b{
-  background: url("/img/arrowOutlet.jpg") center no-repeat;
-  background-size: 100% 100%;
+  background: url("/img/arrowOutlet.jpg") center no-repeat !important;
+  background-size: 100% 100% !important;
 
 }
 
@@ -997,7 +997,7 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
    background-color: #dfe1de !important;
    padding-left: 0px !important;
    margin: 0px !important;
-   overflow: hidden !important;
+   overflow-y: scroll !important;
 }
 
 .select2-result-label{
