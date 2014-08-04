@@ -92,7 +92,7 @@ angular.module('notification', ['ngSanitize'])
         }
 
         var modalCofirm = $modal.open({
-          templateUrl: data.templateFullUrl || '/code/notification/notification.htm',
+          templateUrl: data.templateFullUrl || '/code/notification/notification.php',
           windowClass: 'modal-preoday ' + (data.windowClass || '') ,
           controller: 'confirmModalController',
           resolve: {

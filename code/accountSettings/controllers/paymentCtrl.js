@@ -109,15 +109,28 @@ angular.module('accountSettings.controllers')
                 console.log('got pay pending result',result)                              
                 $AjaxInterceptor.complete();
                 if (result.status === "SUCCESS"){             
-                  console.log('got payment ctrl status success')     
-                  $notification.confirm({
-                    title: _tr("Payment method updated succesfully!"),
-                    content: _tr("Your outstand payment has been paid. Your card was charged <b>&pound;" + result.ammount.toFixed(2) + "</b> and your premium features will remain active."),
-                    showTerm: false,
-                    btnOk:false,
-                    btnCancel: _tr('OK'),
-                    windowClass:'medium'
-                  })                
+
+                  AccountInvoice.get({accountId:ACCOUNT_ID,invoiceId:result.invoiceId},function(invoice){
+                      console.log('got invoice',invoice);
+                       $notification.confirm({                           
+                          title: _tr("Pending payment resolved"),
+                          scope: invoice,
+                          templateUrl: 'subscriptionpayment.php',              
+                          showTerm: false,
+                          btnOk: false, 
+                          btnCancel: _tr("Ok"),            
+                          windowClass:'small'
+                      })                
+                  },function(){
+                      $notification.confirm({
+                      title: _tr("Payment method updated succesfully!"),
+                      content: _tr("Your outstand payment has been paid. Your card was charged <b>&pound;" + result.ammount.toFixed(2) + "</b> and your premium features will remain active."),
+                      showTerm: false,
+                      btnOk:false,
+                      btnCancel: _tr('OK'),
+                      windowClass:'medium'
+                    })                
+                  });
                 } else{
                   console.log('got error');
                   apiError(result);

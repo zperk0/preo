@@ -159,7 +159,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
               title: feature.name,
               //content: _tr("Your card will be charged ") +"<b>£"+$scope.selectedFeatureCalculatedPrice+ "</b>" + _tr(" for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."),
               scope: $scope.price,
-              templateUrl: 'purchase.htm',
+              templateUrl: 'purchase.php',
               showTerm: (feature.$terms && feature.$terms.purchase) ? feature.$terms.purchase : false,
               btnOk: _tr('BUY'),            
               windowClass:'small'

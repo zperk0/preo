@@ -69,14 +69,12 @@ angular.module('accountSettings.controllers')
             }        
             clickOk = function(){$scope.updateStatus($scope.selectedFeature,"EXPIRED")}
           break; 
-          case "reinstall":
-          console.log($scope.selectedFeature);
-          console.log('reinstalling',$scope.selectedFeature.feature.$terms);
+          case "reinstall":          
             data = { 
               //content: _tr("This Premium Feature is currently canceled. A new charge will be made to your card before reinstalling this feature.")+"<br/><br/><b>"+_tr("Are you sure you want to reinstall this Premium Feature?")+"<b/>",
               title: 'Reinstall ' + $scope.selectedFeature.feature.name,
               scope: $scope.price,
-              templateUrl: 'purchase.htm',              
+              templateUrl: 'purchase.php',              
               showTerm: ($scope.selectedFeature.feature.$terms && $scope.selectedFeature.feature.$terms.purchase) ? $scope.selectedFeature.feature.$terms.purchase : false,
               btnOk: _tr('REINSTALL'),            
               windowClass:'small'

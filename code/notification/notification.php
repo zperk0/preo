@@ -9,7 +9,7 @@
 
   <div class="checkbox checkboxStyle modal-term content-check-modal" ng-if="showTerm">
     <input type="checkbox" ng-change="changeTerm(acceptTerm)" ng-model="acceptTerm" id="checkboxNotification" />
-    <label for="checkboxNotification">I have read the <a href="{{showTerm}}" target="_blank">Terms and Conditions</a></label>
+    <label for="checkboxNotification"><? echo _("I have read the")?> <a href="{{showTerm}}" target="_blank"><? echo _("Terms and Conditions") ?></a></label>
   </div>  
 
   <div class="buttons notificationButtons">
