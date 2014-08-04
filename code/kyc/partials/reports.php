@@ -8,7 +8,7 @@
 	          <div class="columns large-12 small-12 nopadding">              
 	              <label>
 	              <? echo _("Choose preset:")?></label>
-	              <div class='columns large-9 small-10 nopadding'>
+	              <div class='columns large-12 small-12 nopadding'>
 	                <multi-select
 	                    class="selectOutlet selectReport"    
 	                    input-model="reports"    
@@ -16,12 +16,10 @@
 	                    item-label="title"
 	                    selection-mode="single"
 	                    tick-property="selected"
-	                    default-label="{{selectedReport.title}}"
+		                   default-label="{{selectedReport.title}}"
+		                   on-item-click="{{selectReport()}}"
 	                ></multi-select>
-	               </div>
-                 <div class='columns large-3 small-2'>
-                  	<button type="button" ng-click='selectReport()' class="preodayButton small "><? echo _("Update")?></button>            
-                 </div>           
+	               </div>                 
 	          </div>	        
 	      </div>
 	    </form>        

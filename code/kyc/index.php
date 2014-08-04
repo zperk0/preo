@@ -51,7 +51,7 @@
                     ></multi-select>
                    </div>
                    <div class='columns large-3 small-2'>
-                    <button type="submit" class="preodayButton small "><? echo _("Update")?></button>            
+                    <button type="submit" class="preodayButton small "><? echo _("Refresh")?></button>            
                    </div>                
               </div>
             </div>
@@ -70,7 +70,7 @@
                     <input type="text" class="form-control input-search dropdown pdDropdown" datepicker start="form.start_date" ng-model="form.end_date" />
                   </div>
                   <div class="columns large-3 small-2 nopadding"> 
-                    <button type="submit" class="preodayButton small pull-right"><? echo _("Update")?></button>
+                    <button type="submit" class="preodayButton small pull-right"><? echo _("Refresh")?></button>
                   </div>
               </div>                      
           </form>
