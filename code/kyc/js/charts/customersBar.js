@@ -4,7 +4,7 @@ angular.module('kyc.charts')
 	var type = ChartType.COLUMN;
     var title = _tr('Customers (Bar)');
     var data = [
-        {name:_tr("New"),y:0},
+        {name:_tr("Total"),y:0},
         {name:_tr("Returning"),y:0}    
     ]
     var newCustomers = [];
@@ -33,7 +33,7 @@ angular.module('kyc.charts')
 
     function clearData(){
         data = [
-            {name:_tr("New"),y:0},
+            {name:_tr("Total"),y:0},
             {name:_tr("Returning"),y:0}    
         ]
         newCustomers = [];
