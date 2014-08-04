@@ -6,6 +6,7 @@ var features = [
 		name: <? echo json_encode(_("Assistant"))?>,
 		upfrontPrice: 100,
 		subscriptionPrice:10,
+		contractMonths:3,
 		descriptionFeatures :[<?echo json_encode(_("Set up your branded app in My Order App "))?>,
 													<?echo json_encode(_("Manage your menu, pricing, payments and artwork"))?>,
 													<?echo json_encode(_("Set up extra staff users"))?>,

@@ -168,6 +168,9 @@ angular.module('accountSettings.controllers')
       AccountFeature.getPrice({accountId:ACCOUNT_ID,featureId:accountFeature.featureId},
         function(result){                
           $scope.price = result;
+          if (accountFeature.feature.contractMonths){
+              $scope.price.contractMonths = accountFeature.feature.contractMonths;
+          }        
           $scope.selectedFeature = accountFeature;
           $scope.showDialog("reinstall");
       });
