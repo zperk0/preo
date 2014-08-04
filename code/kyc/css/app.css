@@ -972,8 +972,8 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
 }
 
 .select2Preoday.select2-container .select2-choice .select2-arrow b{
-  background: url("/img/arrowOutlet.jpg") center no-repeat;
-  background-size: 100% 100%;
+  background: url("/img/arrowOutlet.jpg") center no-repeat !important;
+  background-size: 100% 100% !important;
 
 }
 
