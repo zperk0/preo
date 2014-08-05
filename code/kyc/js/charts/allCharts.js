@@ -1,7 +1,7 @@
 angular.module('kyc.charts')
-.factory('AllCharts',['$q','OrderService','PayingCustomers','OrdersPerCustomer','AverageOrderValue','ItemsOrdered','OrdersByOutlet','MostPopularItems','TimeOfOrdersPlaced',
+.factory('AllCharts',['$q','OrderService', 'UtilsService', 'Venue', 'VENUE_ID', 'PayingCustomers','OrdersPerCustomer','AverageOrderValue','ItemsOrdered','OrdersByOutlet','MostPopularItems','TimeOfOrdersPlaced',
 												'CustomersPie','CustomersBar','Revenue','NumberOfOrders','MenuItemPopularity', 'AverageOrderValueArea',
-	function($q,OrderService,PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
+	function($q,OrderService, UtilsService, Venue, VENUE_ID, PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
 			CustomersPie,CustomersBar,Revenue,NumberOfOrders,MenuItemPopularity, AverageOrderValueArea) {
     var defer = $q.defer();
     
@@ -35,13 +35,18 @@ angular.module('kyc.charts')
         var chartDefer = $q.defer();
         currency = currencySymbol;
 
+        var outlets = [];
         if ( selectedOutlets.length ) {
-            selectedOutlets = selectedOutlets.map(function(x){
+            outlets = selectedOutlets.map(function(x){
                 return x.id;
             })
         }
 
-        OrderService.load(minDate,maxDate, selectedOutlets)
+        Venue.getItems({id: VENUE_ID, outletIds: outlets}).$promise.then(function( data ){
+            UtilsService.setItems(data);
+        });        
+
+        OrderService.load(minDate,maxDate, outlets)
         .then(function(orders){
             prepareCharts(orders,minDate,maxDate,selectedOutlets);            
             chartDefer.resolve(charts);
