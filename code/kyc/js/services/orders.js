@@ -29,6 +29,10 @@ angular.module('kyc.services')
     function load(minPaid,maxPaid,outletIds) {                        
       minPaid = getMinDateForQuery(minPaid);
 
+      if ( outletIds && outletIds.length ) {
+        outletIds = outletIds.join(',');
+      }
+
       //max paid on the query is always now.
       maxPaid = moment.utc().valueOf();
         return Order.query({accountId:ACCOUNT_ID, venueId: VENUE_ID, maxPaid:maxPaid,minPaid:minPaid, outletIds: outletIds},function (res){
@@ -37,6 +41,11 @@ angular.module('kyc.services')
       }
 
 		function loadSince(since, outletIds) {
+
+        if ( outletIds && outletIds.length ) {
+          outletIds = outletIds.join(',');
+        }
+      
         return Order.query({accountId:ACCOUNT_ID, since: since, venueId: VENUE_ID, outletIds: outletIds, orderBy: 'updated'},function (res){
           orders = res;
 				}).$promise;            

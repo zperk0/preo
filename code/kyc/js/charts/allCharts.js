@@ -42,7 +42,7 @@ angular.module('kyc.charts')
             })
         }
 
-        Venue.getItems({id: VENUE_ID, outletIds: outlets}).$promise.then(function( data ){
+        Venue.getItems({id: VENUE_ID, outletIds: outlets.join(',')}).$promise.then(function( data ){
             UtilsService.setItems(data);
         });        
 
