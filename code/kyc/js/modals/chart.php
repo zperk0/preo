@@ -8,8 +8,8 @@
 
 					<div class="container-modal-chart " >
 						<div ng-if="!noData">
-							<div ng-if="chart.showChart" class="highcharts-content"> 
-								<highchart id="chart_{{ chart.num }}" config="chart.highcharts"></highchart>
+							<div ng-if="chart.showChart" class="highcharts-content" id="highchartsContent"> 
+								<highchart ng-if="displayChart" id="chart_{{ chart.num }}" config="chart.highcharts"></highchart>
 							</div>
 
 							<div ng-if="!chart.showChart">

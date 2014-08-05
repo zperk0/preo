@@ -80,6 +80,7 @@ angular.module('kyc.directives').
                 }
 
                 $scope.noData = false;
+                $scope.displayChart = false;
 
                 $scope.ACCOUNT_ID = ACCOUNT_ID;
 
@@ -98,7 +99,12 @@ angular.module('kyc.directives').
 
                   $scope.selectedData = value;
 
-                  $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, value );                  
+                  $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, value );
+
+                  $timeout(function(){
+                    $scope.chart.highcharts.options.chart.width = $('#highchartsContent').width() - 20;
+                    $scope.displayChart = true;
+                  }, 100)
                 }
 
 
@@ -162,7 +168,7 @@ angular.module('kyc.directives').
                   $scope.selectedData.maxTimestamp = moment.utc(option.maxTimestamp).valueOf();
 
                   $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data, tickInterval:option.tickInterval, minTimestamp: moment.utc(option.minTimestamp).valueOf(), maxTimestamp: moment.utc(option.maxTimestamp).valueOf()});
-                  $scope.chart.highcharts.options.chart.width = $('#highchartsContent').width();
+                  // $scope.chart.highcharts.options.chart.width = $('#highchartsContent').width();
                 }
 
                 $scope.setNoData = function( option ) {
