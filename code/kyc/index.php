@@ -47,7 +47,7 @@
                         button-label="name"
                         item-label="name"
                         tick-property="selected"
-                        default-label="{{venue.name}}"
+                        default-label="{{venue.name | characters:57 }}"
                     ></multi-select>
                    </div>
                    <div class='columns large-3 small-2'>

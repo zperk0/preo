@@ -54,6 +54,7 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
     var outletIds = [];
 
     var reloadPusher = function(){
+        outletIds = [];
         pusher.reset();
 
         selectedOutlets = $scope.getSelectedOutlets();
@@ -94,7 +95,8 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
         }
     }
 
-    $scope.outletFilter = function(order){        
+
+    $scope.outletFilter = function(order){
         return (outletIds && outletIds.length === 0) || (outletIds.indexOf(order.outletId)>-1)
             
     }

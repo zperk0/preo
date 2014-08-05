@@ -180,6 +180,8 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                         }
                     });
 
+                    $scope.varButtonLabel = $filter('characters')($scope.varButtonLabel, 57);
+
                     if ( $scope.more === true ) {
                         if (tempMaxLabels > 0) {
                             $scope.varButtonLabel += ', ... ';

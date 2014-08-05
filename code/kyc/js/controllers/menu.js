@@ -1,14 +1,14 @@
 
 angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','VenueService','$AjaxInterceptor','$location','INITIAL_DATES', 'UtilsService', 'Account', 'ACCOUNT_ID',
 	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location,INITIAL_DATES, UtilsService, Account, ACCOUNT_ID) {	
-	
-			$scope.currencySymbol = "%C2%A3";
-			$scope.outlets = [];
 
-			$scope.form = {
-				start_date: moment.utc(INITIAL_DATES.start).startOf('day'),
-				end_date: moment.utc(INITIAL_DATES.end).endOf('day')
-			}
+		$scope.currencySymbol = "%C2%A3";
+		$scope.outlets = [];
+
+		$scope.form = {
+			start_date: moment.utc(INITIAL_DATES.start).startOf('day'),
+			end_date: moment.utc(INITIAL_DATES.end).endOf('day')
+		}
 
 
 
