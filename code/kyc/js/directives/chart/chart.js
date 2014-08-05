@@ -98,8 +98,7 @@ angular.module('kyc.directives').
 
                   $scope.selectedData = value;
 
-                  $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, value );               
-                  
+                  $scope.chart.highcharts = $chartService.getChart(  ng.chart.value.modal.highcharts.type, value );                  
                 }
 
 
@@ -163,6 +162,7 @@ angular.module('kyc.directives').
                   $scope.selectedData.maxTimestamp = moment.utc(option.maxTimestamp).valueOf();
 
                   $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data, tickInterval:option.tickInterval, minTimestamp: moment.utc(option.minTimestamp).valueOf(), maxTimestamp: moment.utc(option.maxTimestamp).valueOf()});
+                  $scope.chart.highcharts.options.chart.width = $('#highchartsContent').width();
                 }
 
                 $scope.setNoData = function( option ) {
@@ -185,7 +185,6 @@ angular.module('kyc.directives').
             mod.opened.then(function(){
               setTimeout(function(){              
                   $(".modal-preoday").addClass("active");
-                  
               },1)
             }) 
           }

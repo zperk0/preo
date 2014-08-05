@@ -6,9 +6,9 @@
 					<a class="close-reveal-modal" ng-click="cancel()">×</a>
 					<i class="fa fa-plus-kyc" ng-click="showOptions()"></i>
 
-					<div class="container-modal-chart">
+					<div class="container-modal-chart " >
 						<div ng-if="!noData">
-							<div ng-if="chart.showChart">
+							<div ng-if="chart.showChart" class="highcharts-content" id="highchartsContent"> 
 								<highchart id="chart_{{ chart.num }}" config="chart.highcharts"></highchart>
 							</div>
 
