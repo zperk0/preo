@@ -7,9 +7,10 @@ angular.module('kyc.reports')
 	var titles = [];
 	var dateRange = moment.utc().subtract('month',1);
 	var itemsToShow = 10;
+
 	Report.setData = function(reportsData){					
+		
 		var tempData = {}	
-		var data = {};
 		var grouped = _.groupBy(reportsData.orders,'day');
 		angular.forEach(grouped,function(day,key){
 			if (key > dateRange.valueOf()){
@@ -27,10 +28,9 @@ angular.module('kyc.reports')
 			}
 		})
 		
-		data =  _.sortBy(tempData,function(row){ return -row.valueSold})
-						.slice(0,itemsToShow);
-					
 		
+		data =  _.sortBy(tempData,function(row){ return -row.valueSold})
+						.slice(0,itemsToShow);		
 	}
 
 	Report.orderBy = "valueSold";
@@ -38,6 +38,7 @@ angular.module('kyc.reports')
 	Report.description = _tr("Display top 10 highest grossing days.");
 
 	Report.getData = function(){
+		console.log('getting h data',data);
 		return data;
 	}
 
