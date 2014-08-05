@@ -33,7 +33,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 		var prepData = [[$scope.getExportDate()],[title]];
 			angular.forEach($scope.customers,function(item){				
 					if ($scope.exportAll === "1" || item.selected === true){
-							prepData.push([item.name,item.totalSpent,item.emailAddress]);
+							prepData.push([item.name,item.totalSpent.toFixed(2),item.emailAddress,item.loyalty,item.offers,item.other]);
 					}
 			})
 		return {
@@ -54,7 +54,7 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 					if ($scope.exportAll === "1" || item.selected === true){
 						console.log('exporting',item);
 							prepData["Name"].push(item.name)
-							prepData["Total Spent"].push(item.totalSpent);
+							prepData["Total Spent"].push(item.totalSpent.toFixed(2));
 							prepData["Email Address"].push(item.emailAddress);
 							prepData["Loyalty"].push(item.loyalty);
 							prepData["Offers"].push(item.offers);
