@@ -16,8 +16,8 @@
 	                    item-label="title"
 	                    selection-mode="single"
 	                    tick-property="selected"
-		                   default-label="{{selectedReport.title}}"
-		                   on-item-click="{{selectReport()}}"
+		                  default-label="{{selectedReport.title}}"
+		                  on-close="selectReport()"
 	                ></multi-select>
 	               </div>                 
 	          </div>	        
