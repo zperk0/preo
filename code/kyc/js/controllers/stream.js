@@ -27,15 +27,7 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
             isRequesting = true;
             qtdRequests = 0;
 
-            var outletsIds = $scope.getSelectedOutlets();
-
-            if ( outletsIds.length ) {
-                outletsIds = outletsIds.map(function(x){
-                    return x.id;
-                });
-            }
-
-            OrderService.loadSince(lastTimeStamp, VENUE_ID, outletsIds).then(function(orders){
+            OrderService.loadSince(lastTimeStamp, VENUE_ID, outletIds).then(function(orders){
                 if ( orders.length ) {
                     lastTimeStamp = moment(orders[0].updated).valueOf();
 
@@ -51,14 +43,29 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
         }
     };
       
-    pusher.reset();
+    $scope.$on('KYC_RELOAD', function(){
+        reloadPusher();
+
+        $AjaxInterceptor.complete();
+    });
+      
     var venueId = VENUE_ID;
-    var selectedOutlets = $scope.getSelectedOutlets();
+    var selectedOutlets = null;
     var outletIds = [];
-    angular.forEach(selectedOutlets,function(outlet){
-        outletIds.push(outlet.id);
-    })
-    pusher.bind(venueId, outletIds, pusherUpdateEvent);
+
+    var reloadPusher = function(){
+        pusher.reset();
+
+        selectedOutlets = $scope.getSelectedOutlets();
+
+        angular.forEach(selectedOutlets,function(outlet){
+            outletIds.push(outlet.id);
+        });
+
+        pusher.bind(venueId, outletIds, pusherUpdateEvent);
+    }
+
+    reloadPusher();
 
     $scope.getStatusName = function(status){
         var statusMap = {
