@@ -23,7 +23,7 @@ angular.module('kyc.charts')
   	};
 
 
-    function init(minDate,maxDate,currencySymbol,selectedOutlets){        
+    function init(minDate,maxDate,currencySymbol, selectedOutlets){        
         currency = currencySymbol;        
         OrderService.load(minDate,maxDate)
         .then(function(orders){
@@ -31,10 +31,17 @@ angular.module('kyc.charts')
         });
     }
         
-    function reloadCharts(minDate,maxDate,currencySymbol,selectedOutlets){
+    function reloadCharts(minDate,maxDate,currencySymbol, selectedOutlets){
         var chartDefer = $q.defer();
-        currency = currencySymbol;        
-        OrderService.load(minDate,maxDate)
+        currency = currencySymbol;
+
+        if ( selectedOutlets.length ) {
+            selectedOutlets = selectedOutlets.map(function(x){
+                return x.id;
+            })
+        }
+
+        OrderService.load(minDate,maxDate, selectedOutlets)
         .then(function(orders){
             prepareCharts(orders,minDate,maxDate,selectedOutlets);            
             chartDefer.resolve(charts);

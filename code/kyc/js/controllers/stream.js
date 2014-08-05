@@ -27,7 +27,7 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
             isRequesting = true;
             qtdRequests = 0;
 
-            OrderService.loadSince(lastTimeStamp, VENUE_ID, outletIds).then(function(orders){
+            OrderService.loadSince(lastTimeStamp, outletIds).then(function(orders){
                 if ( orders.length ) {
                     lastTimeStamp = moment(orders[0].updated).valueOf();
 
@@ -97,8 +97,7 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
 
 
     $scope.outletFilter = function(order){
-        return (outletIds && outletIds.length === 0) || (outletIds.indexOf(order.outletId)>-1)
-            
+        return (outletIds && outletIds.length === 0) || (outletIds.indexOf(order.outletId) !== -1)
     }
 
     $scope.showOptions = function() {
