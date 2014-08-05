@@ -33,7 +33,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 				$scope.reportsList = [];
 				$scope.totalItems = 0;
 			}
-			
+
 			$scope.selectedReport.data = UtilsService.dynamicSortObject($scope.selectedReport.data, $scope.orderBy, $scope.direction)
 
 			$scope.numPerPage = 20;
@@ -161,6 +161,8 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 				return  $filter('date')(obj,"dd/MM/yyyy");
 			case ('valueSold'):
 			case ('totalSpent'):
+			case ('percentDecrease'):
+			case ('percentIncrease'):
 				return obj.toFixed(2) 									
 			default:
 				return obj
