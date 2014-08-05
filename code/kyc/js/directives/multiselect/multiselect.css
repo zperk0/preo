@@ -38,7 +38,8 @@ label.multiSelect{
     white-space:normal;
     background-color: #fff;
     background-image: linear-gradient(#fff, #e4e4e4);
-    
+    max-height: 32px;
+    overflow: hidden;    
 }
 
 .multiSelect .button:hover, .multiSelect .button:focus{

@@ -47,7 +47,7 @@
                         button-label="name"
                         item-label="name"
                         tick-property="selected"
-                        default-label="{{venue.name | characters:57 }}"
+                        default-label="{{venue.name }}"
                     ></multi-select>
                    </div>
                    <div class='columns large-3 small-2'>
@@ -105,6 +105,7 @@
   <script src="/js/angular_all.min.js"></script>      
   <!-- BEGIN WATCH 
   <script src="/bower_components/select2/select2.js"></script>    
+  <script src="/js/jquery.dotdotdot.min.js"></script>    
   <script src="/bower_components/angular-ui-select2/src/select2.js"></script>    
   <script src="/code/kyc/js/app.js"></script>
   <script src="/code/notification/notification.js"></script>
@@ -137,6 +138,7 @@
   <script src="/code/kyc/js/directives/datepicker/datepicker.js"></script>
   <script src="/code/kyc/js/directives/multiselect/multiselect.js"></script>
   <script src="/code/kyc/js/directives/shapeshifter.js"></script>
+  <script src="/code/kyc/js/directives/dotdotdot.js"></script>
   <script src="/code/kyc/js/directives/marketing/marketing.js"></script>
   <script src="/code/kyc/js/charts/allCharts.js"></script>
   <script src="/code/kyc/js/charts/chartHelper.js"></script>
