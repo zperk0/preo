@@ -1,5 +1,5 @@
 angular.module('kyc.services')
-.service('OrderService',['ACCOUNT_ID','Order','INITIAL_DATES', function(ACCOUNT_ID,Order,INITIAL_DATES) {
+.service('OrderService',['ACCOUNT_ID','Order','INITIAL_DATES', 'VENUE_ID', function(ACCOUNT_ID,Order,INITIAL_DATES, VENUE_ID) {
 
     
     //start with at least one year of data    
@@ -26,18 +26,27 @@ angular.module('kyc.services')
     }
 
 
-    function load(minPaid,maxPaid) {                        
+    function load(minPaid,maxPaid,outletIds) {                        
       minPaid = getMinDateForQuery(minPaid);
+
+      if ( outletIds && outletIds.length ) {
+        outletIds = outletIds.join(',');
+      }
 
       //max paid on the query is always now.
       maxPaid = moment.utc().valueOf();
-        return Order.query({accountId:ACCOUNT_ID,maxPaid:maxPaid,minPaid:minPaid},function (res){
+        return Order.query({accountId:ACCOUNT_ID, venueId: VENUE_ID, maxPaid:maxPaid,minPaid:minPaid, outletIds: outletIds},function (res){
           orders = res;
         }).$promise;            
       }
 
-		function loadSince(since, venueId, outletIds) {
-        return Order.query({accountId:ACCOUNT_ID, since: since, venueId: venueId, outletIds: outletIds, orderBy: 'updated'},function (res){
+		function loadSince(since, outletIds) {
+
+        if ( outletIds && outletIds.length ) {
+          outletIds = outletIds.join(',');
+        }
+      
+        return Order.query({accountId:ACCOUNT_ID, since: since, venueId: VENUE_ID, outletIds: outletIds, orderBy: 'updated'},function (res){
           orders = res;
 				}).$promise;            
       }

@@ -1,5 +1,5 @@
 <span class="multiSelect inlineBlock" >
-    <button type="button" class="multiSelect button multiSelectButton dropdown pdDropdown" ng-click="toggleCheckboxes( $event ); refreshSelectedItems();" ng-bind-html="varButtonLabel" ng-focus="onFocus()" ng-blur="onBlur()">
+    <button type="button" class="multiSelect button multiSelectButton dropdown pdDropdown" ng-click="toggleCheckboxes( $event ); refreshSelectedItems();" ng-bind-html="varButtonLabel" dotdotdot ng-focus="onFocus()" ng-blur="onBlur()">
     </button>
     <div class="multiSelect checkboxLayer hide">
         <div ng-repeat="item in inputModel" class="multiSelect multiSelectItem" ng-class="{ active: item[tickProperty] }" >

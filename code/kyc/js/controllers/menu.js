@@ -1,14 +1,14 @@
 
-angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','VenueService','$AjaxInterceptor','$location','INITIAL_DATES', 'UtilsService', 'Account', 'ACCOUNT_ID',
-	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location,INITIAL_DATES, UtilsService, Account, ACCOUNT_ID) {	
-	
-			$scope.currencySymbol = "%C2%A3";
-			$scope.outlets = [];
+angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','VenueService','$AjaxInterceptor','$location','INITIAL_DATES', 'UtilsService', 'Venue', 'VENUE_ID',
+	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location,INITIAL_DATES, UtilsService, Venue, VENUE_ID) {	
 
-			$scope.form = {
-				start_date: moment.utc(INITIAL_DATES.start).startOf('day'),
-				end_date: moment.utc(INITIAL_DATES.end).endOf('day')
-			}
+		$scope.currencySymbol = "%C2%A3";
+		$scope.outlets = [];
+
+		$scope.form = {
+			start_date: moment.utc(INITIAL_DATES.start).startOf('day'),
+			end_date: moment.utc(INITIAL_DATES.end).endOf('day')
+		}
 
 
 
@@ -16,7 +16,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			return decodeURI($scope.currencySymbol);
 		}
 
-	    Account.getItems({id: ACCOUNT_ID}).$promise.then(function( data ){
+	    Venue.getItems({id: VENUE_ID}).$promise.then(function( data ){
 	        UtilsService.setItems(data);
 	    });
 			
@@ -25,7 +25,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 				$scope.venue = venue;
 				$scope.currencySymbol = VenueService.getCurrency().symbol;							
 				OutletService.init(function(){
-					$scope.outlets = OutletService.getOutlets();					
+					$scope.outlets = OutletService.getOutlets();
 					AllCharts.init($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol);
 				})			
 			});

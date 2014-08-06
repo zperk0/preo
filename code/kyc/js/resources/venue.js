@@ -5,7 +5,12 @@ angular.module('kyc.resources').
       query: {
         method: 'GET',
         isArray: true
-      }
+      },
+      getItems: {
+        method: 'GET',
+        url: '/api/venues/:id/items',
+        isArray: true
+      }      
     });    
 
     return Venue;

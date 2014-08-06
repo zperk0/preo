@@ -32,7 +32,7 @@
 						
 					</div>
 
-					<div class="highcharts-content" >
+					<div class="highcharts-content">
 						<highchart id="chart_{{ chart.num }}" config="chart.highcharts" class="chart_{{ chart.value.type }}"></highchart>
 					</div>
 

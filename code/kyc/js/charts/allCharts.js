@@ -1,7 +1,7 @@
 angular.module('kyc.charts')
-.factory('AllCharts',['$q','OrderService','PayingCustomers','OrdersPerCustomer','AverageOrderValue','ItemsOrdered','OrdersByOutlet','MostPopularItems','TimeOfOrdersPlaced',
+.factory('AllCharts',['$q','OrderService', 'UtilsService', 'Venue', 'VENUE_ID', 'PayingCustomers','OrdersPerCustomer','AverageOrderValue','ItemsOrdered','OrdersByOutlet','MostPopularItems','TimeOfOrdersPlaced',
 												'CustomersPie','CustomersBar','Revenue','NumberOfOrders','MenuItemPopularity', 'AverageOrderValueArea',
-	function($q,OrderService,PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
+	function($q,OrderService, UtilsService, Venue, VENUE_ID, PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
 			CustomersPie,CustomersBar,Revenue,NumberOfOrders,MenuItemPopularity, AverageOrderValueArea) {
     var defer = $q.defer();
     
@@ -23,7 +23,7 @@ angular.module('kyc.charts')
   	};
 
 
-    function init(minDate,maxDate,currencySymbol,selectedOutlets){        
+    function init(minDate,maxDate,currencySymbol, selectedOutlets){        
         currency = currencySymbol;        
         OrderService.load(minDate,maxDate)
         .then(function(orders){
@@ -31,10 +31,22 @@ angular.module('kyc.charts')
         });
     }
         
-    function reloadCharts(minDate,maxDate,currencySymbol,selectedOutlets){
+    function reloadCharts(minDate,maxDate,currencySymbol, selectedOutlets){
         var chartDefer = $q.defer();
-        currency = currencySymbol;        
-        OrderService.load(minDate,maxDate)
+        currency = currencySymbol;
+
+        var outlets = [];
+        if ( selectedOutlets.length ) {
+            outlets = selectedOutlets.map(function(x){
+                return x.id;
+            })
+        }
+
+        Venue.getItems({id: VENUE_ID, outletIds: outlets.join(',')}).$promise.then(function( data ){
+            UtilsService.setItems(data);
+        });        
+
+        OrderService.load(minDate,maxDate, outlets)
         .then(function(orders){
             prepareCharts(orders,minDate,maxDate,selectedOutlets);            
             chartDefer.resolve(charts);

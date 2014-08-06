@@ -321,7 +321,7 @@ angular.module('kyc.charts')
                 value: getPeriodTotal(prepData.weekData),
                 percent: getPercentage(prepData.weekData, prepData.previousWeekData),
                 data: completeEmptyData({
-                    max: moment.utc().endOf('day'),
+                    max: moment.utc().startOf('day'),
                     min: moment.utc().startOf('day').subtract('week', 1).valueOf(),
                     value: prepData.weekData,
                     dateType: 'day',
