@@ -105,9 +105,10 @@ angular.module('kyc.charts')
     }
 
     function getItemName(itemId){
+        console.log('getting name for ',itemId,UtilsService.getItems());
         var found = false;
-        angular.forEach(items,function(item){
-                if (item.menuItemId == itemId)
+        angular.forEach(UtilsService.getItems(),function(item){
+                if (item.id == itemId)
                     found = item.name
         })
         return found
