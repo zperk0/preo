@@ -129,7 +129,6 @@
   <script src="/code/kyc/js/resources/venue.js"></script>  
   <script src="/code/kyc/js/resources/customers.js"></script>
   <script src="/code/kyc/js/resources/report.js"></script>  
-  <script src="/code/kyc/js/resources/account.js"></script>  
   <script src="/code/kyc/js/constants/chartType.js"></script>
   <script src="/code/kyc/js/constants/colors.js"></script>
   <script src="/code/kyc/js/constants/tickInterval.js"></script>
@@ -193,7 +192,7 @@
   angular.module('kyc').constant('PUSHER_KEY', '<? echo $pusherKey ?>');
   //moment is not available here yet.
   angular.module('kyc').constant('INITIAL_DATES', {
-       start: new Date().getTime() - (1000 * 60 * 60 * 24 * 90),
+       start: new Date().getTime() - (1000 * 60 * 60 * 24 * 30),
        end:  new Date()
        // start: new Date('2014-05-01'),
        // end:  new Date('2014-05-02')

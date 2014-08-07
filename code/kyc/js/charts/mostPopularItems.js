@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('MostPopularItems',['ChartType','Colors','ChartHelper', function(ChartType,Colors,ChartHelper) {
+.factory('MostPopularItems',['ChartType','Colors','ChartHelper','UtilsService', function(ChartType,Colors,ChartHelper,UtilsService) {
 
 	var type = ChartType.PIE;    
     var items = {};
@@ -36,6 +36,7 @@ angular.module('kyc.charts')
                     items[item.menuItemId].quantity+=item.qty;
                 else
                     items[item.menuItemId]={
+                        id:item.menuItemId,
                         name:item.name,
                         quantity:item.qty
                     };
@@ -43,24 +44,28 @@ angular.module('kyc.charts')
         }                                 
 	}
 
-    function onSetDataComplete(){
-        for (var id in items){
-            for (var pos in top5){
-                if (items[id].quantity > top5[pos].y){
-                    for (var i=(top5.length-1);i>pos;i--){
-                        top5[i].y = top5[i-1].y
-                        top5[i].name = top5[i-1].name
-                    }
-                    top5[pos].y = items[id].quantity;
-                    top5[pos].name = items[id].name;
-                    break;
-                }
-            }
-        }
-        top5 = _.filter(top5,function(row){
-            return row.name !== undefined
+    function getIds(list){
+        var idList = []
+        angular.forEach(list,function(item){
+            idList.push(item.id);
         })
-        
+        return idList;
+    }
+
+    function onSetDataComplete(){
+        var allMenuItems = getIds(UtilsService.getItems());
+        console.log('allMenuItems',allMenuItems);
+        console.log('items',items);        
+        var itemsArray = _.chain(_.values(items))            
+            .filter(function(item){return allMenuItems.indexOf(item.id) > -1})
+            .sortBy(function(item){return -item.quantity})
+            .first(5)
+            .value();
+        for (var i=0;i<itemsArray.length;i++){
+            top5[i].y = itemsArray[i].quantity;
+            top5[i].name = itemsArray[i].name;
+        }
+        console.log('top 5',top5);
     }
 
 	function getData(){

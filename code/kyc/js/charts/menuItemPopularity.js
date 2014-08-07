@@ -33,6 +33,7 @@ angular.module('kyc.charts')
 
     function selectItem(itemId,cb){
         // clearData();
+        console.log('selecting item',itemId);
         selectedItem = itemId;        
         window.sessionStorage.setItem("KYC_SELECTED_ITEM",itemId);
         
@@ -62,7 +63,8 @@ angular.module('kyc.charts')
         return {
             type:type,
             title:title,
-            selectedItem: getItemIndex(selectedItem),
+            selectedItemId:selectedItem,
+            selectedItem: getItem(selectedItem),
             selectItem:selectItem,
             data: getData(),
             numberLeft:prepData.total,
@@ -114,11 +116,11 @@ angular.module('kyc.charts')
         return found
     }
 
-    function getItemIndex(itemId) {
+    function getItem(itemId) {
         var found = false;
         angular.forEach(UtilsService.getItems(),function(item, key){
                 if (item.id == itemId)
-                    found = key
+                    found = item
         })
         return found
     }
