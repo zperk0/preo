@@ -12,7 +12,7 @@ angular.module('kyc.reports')
 			function(customerOrder){											
 				if (data[customerOrder.id] === undefined && !isNaN(customerOrder.totalPercentage) && customerOrder.totalPercentage < 0){
 					data[customerOrder.id] = {
-						percentDecrease: customerOrder.totalPercentage,
+						percentDecrease: Math.abs(customerOrder.totalPercentage),
 						name:customerOrder.firstName + " " + customerOrder.lastName,
 						email:customerOrder.username,
 						loyalty: customerOrder.optinLoyalty,

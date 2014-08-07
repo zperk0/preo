@@ -15,7 +15,6 @@ angular.module('kyc.charts')
             numberOfOrders:NumberOfOrders,
             mostPopularItems:MostPopularItems,
             menuItemPopularity:MenuItemPopularity,
-            //customersPie:CustomersPie,
             averageOrderValueArea: AverageOrderValueArea,
             customersBar:CustomersBar,
             timeOfOrdersPlaced:TimeOfOrdersPlaced,

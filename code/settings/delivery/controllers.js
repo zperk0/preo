@@ -1,4 +1,3 @@
-
 angular.module('delivery.controllers',[]).
   controller('deliveryController', ['$scope','$http','Resources','$q', 'VENUE_ID', '$rootScope', function($scope,$http,Resources,$q, VENUE_ID, $rootScope) {
     $scope.isPosting = false;
