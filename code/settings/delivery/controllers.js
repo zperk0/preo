@@ -92,6 +92,9 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
         ]
     };
 
+    $scope.venue = Resources.Venue.get({id:VENUE_ID},function(result){
+    },function(err){ console.log("error",arguments)});    
+
     var venueMessages = Resources.VenueMessages.query({venueId:VENUE_ID},function(messages){                                
         $scope.messages = {
             notify:[],
@@ -146,6 +149,16 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
         return isMsgFilled && $scope.triedSubmit;
     }
 
+    $scope.validateEmail = function(email){
+        if ( !email.length ) {
+            return true;
+        }
+
+        var patt = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+
+        return patt.test(email);
+    }
+
     $scope.validateActive = function(message){        
         if (message && message.name && message.content){
             if (message.name.trim() === "" && message.content.trim() === ""){
@@ -167,6 +180,18 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
             return false;
         };
 
+        if ( $scope.venue.notificationEmailAddress ) {
+            if ( !$scope.validateEmail($scope.venue.notificationEmailAddress) ) {
+                noty({
+                  type: 'error',  layout: 'topCenter',
+                  text: _tr("Email is invalid")
+                });
+
+                $scope.isPosting =false;
+                return false;
+            }
+        }        
+
 
         
         //FIXME
@@ -178,7 +203,10 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
             delete messages[msg]["suppressed"];   
         }
 
+        delete $scope.venue.ccySymbol;
+
         $q.all([
+            $scope.venue.$put(),
             postMessage(messages[0]).$promise,
             postMessage(messages[1]).$promise,
             postMessage(messages[2]).$promise,

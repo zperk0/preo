@@ -6,9 +6,11 @@
 <script>
 
 $(function () {
-
     var data= {
-
+    	title: "Customers",
+    	startDate: 1399507200000,
+    	endDate: 1407369599999,
+    	data: "{\"Name\":[\"Joe DebonoJoe DebonoJoe DebonoJoe DebonoJoe DebonoJoe DebonoJoe Debono\",\"John Kelly\",\"Wendy Harris\",\"Brian Meggs\",\"Brian Long\",\"Stephen Devine\",\"Tom Street\",\"alan donn\",\"caio ricci\",\"Lawrence Cohen\",\"Nick Ramsden\",\"Kenny  Wilkins\",\"Jane  Carey\",\"Barry Galvin\",\"kane westwood\",\"Barbara Chapman\",\"James Stevens\",\"Clive Pilcher\",\"Andrew Riley\",\"Joe Debono\",\"John Kelly\",\"Wendy Harris\",\"Brian Meggs\",\"Brian Long\",\"Stephen Devine\",\"Tom Street\",\"alan donn\",\"caio ricci\",\"Lawrence Cohen\",\"Nick Ramsden\",\"Kenny  Wilkins\",\"Jane  Carey\",\"Barry Galvin\",\"kane westwood\",\"Barbara Chapman\",\"James Stevens\",\"Clive Pilcher\",\"Andrew Riley\"],\"Total Spent\":[33,31.3,30.5,21.6,14,13.7,13.4,13,11.8,8,7.3,7,6.7,6.6,6.6,5.5,4.8,4.8,2.5,33,31.3,30.5,21.6,14,13.7,13.4,13,11.8,8,7.3,7,6.7,6.6,6.6,5.5,4.8,4.8,2.5],\"Email Address\":[\"joe@drs-caterers.com\",\"seankelly69@icloud.com\",\"wendyjharris@hotmail.co.uk\",\"brian.meggs@informa.com\",\"brianlong@ntlworld.com\",\"sjpdevine2000@yahoo.co.uk\",\"tomstreer@hotmail.co.uk\",\"donn111@live.co.uk\",\"caio.ricci@gmail.com\",\"laerence.cojen@hotmail.co.uk\",\"n.ramsden1@gmail.com\",\"knnwlkns2000@yahoo.co.uk\",\"janecarey@yahoo.co.uk\",\"b.galvin@virginmedia.com\",\"kane.westwood@googlemail.com\",\"barbarachapman2001@yahoo.co.uk\",\"james.stevens@harpercollins.co.uk\",\"clivepilcher@yahoo.co.uk\",\"andrewdavidriley@gmail.com\",\"joe@drs-caterers.com\",\"seankelly69@icloud.com\",\"wendyjharris@hotmail.co.uk\",\"brian.meggs@informa.com\",\"brianlong@ntlworld.com\",\"sjpdevine2000@yahoo.co.uk\",\"tomstreer@hotmail.co.uk\",\"donn111@live.co.uk\",\"caio.ricci@gmail.com\",\"laerence.cojen@hotmail.co.uk\",\"n.ramsden1@gmail.com\",\"knnwlkns2000@yahoo.co.uk\",\"janecarey@yahoo.co.uk\",\"b.galvin@virginmedia.com\",\"kane.westwood@googlemail.com\",\"barbarachapman2001@yahoo.co.uk\",\"james.stevens@harpercollins.co.uk\",\"clivepilcher@yahoo.co.uk\",\"andrewdavidriley@gmail.com\"],\"Loyalty\":[0,1,0,1,1,0,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,0,1,1,0,0,1,1,0,1,1,1,1,1,1,1,1,1],\"Offers\":[0,1,0,1,1,0,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,0,1,1,0,0,1,1,0,1,1,1,1,1,1,1,1,1],\"Other\":[0,0,0,1,0,0,0,1,0,0,0,0,1,0,1,1,0,1,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,1,1,0,1,1]}"
     };
     
 		var parsedData = JSON.parse(data.data);
@@ -25,10 +27,14 @@ $(function () {
 				else
 					strVal = "+"+strVal;
 				return strVal+"%";
-		}
+	}
 
 		var headerRow = []
 		var dataRows = [];
+
+		var heightLine = 40;
+		var heightBreakLine = 19;
+		console.log(parsedData);
 		$.each(parsedData,function(title,dataArray){
 				var td = "<th>"+title+"</th>"
 				headerRow.push(td);
@@ -49,6 +55,17 @@ $(function () {
 
 		function insertRow(tableId,row){
 			$('#'+tableId+' tbody').append('<tr>'+row+'</tr>');
+
+			var $row = $('#'+tableId+' tbody').children('tr').last();
+
+			var heightTd = $row.children('td').outerHeight() + $row.children('td').innerHeight();
+
+			if ( heightTd > heightLine ) {
+
+				var substractHeight = heightTd - heightLine;
+
+				maxRows = maxRows - ( substractHeight / heightBreakLine );
+			}
 		}
 
 		var tableId;
@@ -59,6 +76,8 @@ $(function () {
 				}
 				tableId = insertTable();
 				insertHeader(tableId);
+
+				maxRows = 20;
 			}
 			var ui_str = '';
 			$.each(rowItems,function(i,v){
@@ -152,7 +171,7 @@ $(function () {
 			color:#8cbe56;			
 	}
 	.footer{
-		margin-top:40px;
+		margin-top:80px;
 		page-break-after: always;
 	}
 
@@ -165,7 +184,7 @@ $(function () {
 	}
 
 	.table-list thead th{
-  cursor: pointer;
+  		cursor: pointer;
 	}
 
 	.content-table{

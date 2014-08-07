@@ -22,8 +22,8 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	}	
 
 	$scope.exportPdf= function(){
-  	$scope.pdfData = prepareExportPdfData();    
-  }
+  		$scope.pdfData = prepareExportPdfData();    
+  	}
 
   $scope.exportCsv = function(){
     $scope.csvData = prepareExportCsvData();

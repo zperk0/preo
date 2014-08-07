@@ -5,6 +5,7 @@
     <ul class='row delivery-tabs'>
       <li ng-class="{'selected': selected==1}" ><a href ng:click="selected=1"><?echo _("Order Status Alerts")?></a></li>
       <li ng-class="{'selected': selected==2}" ><a href ng:click="selected=2"><?echo _("Order Rejection Alerts")?></a></li>
+      <li ng-class="{'selected': selected==3}" ><a href ng:click="selected=3"><?echo _("Venue Alerts")?></a></li>
     </ul>
   <div class='row delivery-tab-holder'>
   <div ng:show="selected == 1" class='delivery-tab-content'>
@@ -54,6 +55,20 @@
             <span></span>
           </div>          
         </div>
+  </div>  
+
+  <div ng:show="selected == 3" class='delivery-tab-content'>
+     <div class="row messageRow messageRowHeader">
+          <div class='messageCol-1'>
+            <?echo _("Email address for receiving venue alerts")?>
+            <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("In addition to the fulfilment app, you can also receive email updates to notify when you have received a new order");?>"></i>
+          </div>
+      </div> 
+      <div class='row messageRow contentMail'>
+        <div ng-class="{'error': !validateEmail(venue.notificationEmailAddress)}">
+            <input type='text' ng-model="venue.notificationEmailAddress" />
+        </div>
+      </div>
   </div>    
   </div>
   </div>
