@@ -48,6 +48,7 @@ angular.module('kyc.charts')
 
             if ( daysFiltered.length ) {
                 daysFiltered[1] += +dataRowCopied[1];
+                daysFiltered[1] = +daysFiltered[1].toFixed(2);
             } else {
                 dataRowCopied[0] = moment.utc(dataRowCopied[0]).startOf('day').valueOf();
                 data.push(dataRowCopied);
@@ -58,7 +59,9 @@ angular.module('kyc.charts')
             var dataRowCopied = angular.copy(dataRow);
 
             if ( weekFiltered.length ) {
-                data[ data.indexOf(weekFiltered[0]) ][1] += +dataRowCopied[1];
+                var indexOf = data.indexOf(weekFiltered[0]);
+                data[ indexOf ][1] += +dataRowCopied[1];
+                data[ indexOf ][1] = +data[ indexOf ][1].toFixed(2);
             } else {
                 dataRowCopied[0] = moment.utc(dataRowCopied[0]).startOf('week').valueOf();
                 data.push(dataRowCopied);
@@ -69,7 +72,9 @@ angular.module('kyc.charts')
             var dataRowCopied = angular.copy(dataRow);
 
             if ( monthsFiltered.length ) {
-                data[ data.indexOf(monthsFiltered[0]) ][1] += dataRowCopied[1];
+                var indexOf = data.indexOf(monthsFiltered[0]);
+                data[ indexOf ][1] += +dataRowCopied[1];
+                data[ indexOf ][1] = +data[ indexOf ][1].toFixed(2);
             } else {
                 dataRowCopied[0] = moment.utc(dataRowCopied[0]).startOf('month').valueOf();
                 data.push(dataRowCopied);
