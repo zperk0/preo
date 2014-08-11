@@ -108,11 +108,11 @@ function createThumbnail($source_url, $fileName, $destination_url, $newWidth, $n
   // Save the image.
   if($ext == "png")
   {
-	imagepng($tempImg, "$destination_url", 9) or die("Cant save image");
+	imagepng($tempImg, "$destination_url", 9);
   }
   else
   {
-	imagejpeg($tempImg, "$destination_url", $quality) or die("Cant save image");
+	imagejpeg($tempImg, "$destination_url", $quality);
   }
  
   // Clean up.
