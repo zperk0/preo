@@ -3657,3 +3657,33 @@ button.preodayButton.noclick{
   float: left;
   // margin-right: 1px;
 }
+
+.btnViewImages{
+  margin-top: -30px;
+  display: inline-block;
+  font-size: 18px;
+}
+
+.list-images-item li {
+  display: none !important;
+}
+.clearing-blackout .list-images-item li {
+  display: inline !important;
+}
+
+.item-image{
+  position: relative;
+}
+
+.deleteImageItem{
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  font-size: 15px; 
+  z-index: 6;
+  display: none;
+}
+
+.list-images-item li:hover .deleteImageItem, .list-images-item li.visible .deleteImageItem{
+  display: block;
+}

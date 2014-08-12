@@ -253,19 +253,20 @@
 				$item['id'] = $item_id; //update item-id in JSON
 
 				if ( isset($item['images']) ) {
-					foreach ($items['images'] as $Image) {
+					foreach ($item['images'] as $Image) {
 						if(isset($_SERVER['PREO_UPLOAD_ROOT']))
 							$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'menuitem/';
 						else
 							$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/menuitem/';
 
-						cropImage( $PREO_UPLOAD_ROOT . '/temp/' . $Image->image, $PREO_UPLOAD_ROOT . '/fix/' . $Image->image, $Image->w, $Image->h, $Image->x, $Image->y, 99 );
-						unlink( $PREO_UPLOAD_ROOT . '/temp/' . $Image->image );
+						cropImage( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'], $PREO_UPLOAD_ROOT . 'fix/' . $Image['image'], $Image['w'], $Image['h'], $Image['x'], $Image['y'], 99 );
+						unlink( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'] );
 
 						$data = array();
-						$data['image'] = $PREO_UPLOAD_ROOT . '/fix/' . $Image->image;
+						$data['image'] = 'fix/' . $Image['image'];
+						$data['itemId'] = $item_id;
 						$jsonData 	= json_encode($data);
-						$curlResult = callAPI('POST', $apiURL."items/" . $item_id . "/image", $jsonData, $apiAuth); //item created
+						$curlResult = callAPI('POST', $apiURL."imageitem", $jsonData, $apiAuth); //item created
 						$result 	= json_decode($curlResult,true);
 					}
 				}
@@ -281,22 +282,21 @@
 				$curlResult = callAPI('PUT', $apiURL."items/$item_id", $jsonData, $apiAuth); //item edited
 				$result 	= json_decode($curlResult,true);
 				
-
-
 				if ( isset($item['images']) ) {
-					foreach ($items['images'] as $Image) {
+					foreach ($item['images'] as $Image) {
 						if(isset($_SERVER['PREO_UPLOAD_ROOT']))
 							$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'menuitem/';
 						else
 							$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/menuitem/';
 
-						cropImage( $PREO_UPLOAD_ROOT . '/temp/' . $Image->image, $PREO_UPLOAD_ROOT . '/fix/' . $Image->image, $Image->w, $Image->h, $Image->x, $Image->y, 99 );
-						unlink( $PREO_UPLOAD_ROOT . '/temp/' . $Image->image );
+						cropImage( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'], $PREO_UPLOAD_ROOT . 'fix/' . $Image['image'], $Image['w'], $Image['h'], $Image['x'], $Image['y'], 99 );
+						unlink( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'] );
 
 						$data = array();
-						$data['image'] = $PREO_UPLOAD_ROOT . '/fix/' . $Image->image;
+						$data['image'] = 'fix/' . $Image['image'];
+						$data['itemId'] = $item_id;
 						$jsonData 	= json_encode($data);
-						$curlResult = callAPI('POST', $apiURL."items/" . $item_id . "/image", $jsonData, $apiAuth); //item created
+						$curlResult = callAPI('POST', $apiURL."imageitem", $jsonData, $apiAuth); //item created
 						$result 	= json_decode($curlResult,true);
 					}
 				}

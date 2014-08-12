@@ -288,6 +288,27 @@
 											<button type="button" class="menuTableButtons sortHandle"				title="<?echo _("Reorder");?>"							><i class="pd-move"></i></button>
 											<button type="button" class="menuTableButtons itemDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($iKey+1);?>_section<?echo ($sKey+1);?>"	><i class="pd-copy"></i></button>
 											<button type="button" class="menuTableButtons secondary itemDelete" 	title="<?echo _("Delete");?>"						><i class="pd-delete"></i></button>
+											<?php 
+											if ( isset($item['images']) && count($item['images']) ) {
+											 ?>
+											<a href="javascript:void(0)" class="btnViewImages">View images</a>
+											<ul class="clearing-thumbs list-images-item clearing-feature" data-clearing>
+												<?php 
+												foreach ($item['images'] as $key => $Image) {
+												?>
+												<li class="clearing-featured-img item-image" data-id="<?php echo $Image['id'] ?>">
+													<a href="<?php echo $mPath . $Image['image'] ?>">
+														<span class="deleteImageItem">Delete</span>
+														<img src="<?php echo $mPath . $Image['image'] ?>" alt="">
+													</a>
+												</li>
+												<?php 
+												}
+												?>
+											</ul>
+											<?php 
+											}
+											?>
 										</td>
 									</tr>
 									<?if(isset($item['modifiers']) && count($item['modifiers'])){
