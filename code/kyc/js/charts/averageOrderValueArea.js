@@ -1,7 +1,7 @@
 angular.module('kyc.charts')
 .factory('AverageOrderValueArea',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
 
-	var type = ChartType.AREA;	
+    var type = ChartType.AREA;  
     var dailyAverageTotal = {};    
     var dailyAverageOrder = {};    
     var title = _tr('Average order value (area)');
@@ -12,7 +12,7 @@ angular.module('kyc.charts')
     var maxTimestamp =0;
     var currency;
 
-	function setData(order,minDate,maxDate){
+    function setData(order,minDate,maxDate){
         var timestamp = moment.utc(order.paid).endOf('day').valueOf();
         if (dailyAverageTotal[timestamp]){
             dailyAverageTotal[timestamp] += order.total;
@@ -22,7 +22,7 @@ angular.module('kyc.charts')
             dailyAverageTotal[timestamp] = order.total;
             dailyAverageOrder[timestamp] = 1;
         }
-	}
+    }
 
     function onSetDataComplete(minDate,maxDate,currencySymbol){
         currency = currencySymbol;
@@ -52,7 +52,7 @@ angular.module('kyc.charts')
                     var valuePrepDataOrder = prepDataOrder[key][i][1];
 
                     if ( valueData[1] > 0 && valuePrepDataOrder > 0 ) {
-                        resultNumber = valueData[1] / valuePrepDataOrder;
+                        resultNumber = ((valueData[1] / valuePrepDataOrder).toFixed(2)) / 1;
                     } 
 
                     result.push( [valueData[0], resultNumber] );
@@ -61,7 +61,7 @@ angular.module('kyc.charts')
                 prepDataAverage[key] = result;
 
             } else {
-                prepDataAverage[key] =  value / prepDataOrder[key];
+                prepDataAverage[key] =  ((value / prepDataOrder[key]).toFixed(2)) / 1;
             }
 
         })
@@ -87,12 +87,12 @@ angular.module('kyc.charts')
     }
 
     
-	function getData(){
-	   return prepData.data;
+    function getData(){
+       return prepData.data;
     }
 
     function getType(){
-    	return type; 
+        return type; 
     }
 
 
