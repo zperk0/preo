@@ -140,6 +140,11 @@ function uploadFile($fileUploadID, $fileLocation, $fileEXT, $fileMIME, $fileMIME
 
 	$fileNames = [];
 
+	$MAX_WIDTH = 600;
+	$MAX_HEIGHT = 400;
+
+	$LIMIT_WIDTH = 1000;
+
 	for ($i=0; $i < $length; $i++) {
 		$fileName = strtoupper(uniqid('', false));
 		
@@ -168,21 +173,37 @@ function uploadFile($fileUploadID, $fileLocation, $fileEXT, $fileMIME, $fileMIME
 				}
 				else
 				{
+					$image = array(
+						'new' 	  => true,
+						'cropped' => false
+					);
 					$fileEXT = strtolower(substr($_FILES["file"]["name"][$i], strrpos($_FILES["file"]["name"][$i], '.'))); //this gets .jpg,.png, etc
 					$destination = $fileLocation . $fileName . $fileEXT;
 					$destination_thumb = $fileLocation . $fileName. "_thumb" . $fileEXT;
 					
 					//create original->compressed to 99%
-					compress_image($_FILES["file"]["tmp_name"][$i], $destination, 99);
+					//compress_image($_FILES["file"]["tmp_name"][$i], $destination, 99);
 					
 					//create thumbnail -> size reduced and compressed to 99%
 					$width = $imginfo_array[0];  
 					$height = $imginfo_array[1]; 
 					
-					createThumbnail($_FILES["file"]["tmp_name"][$i], $_FILES["file"]["name"][$i], $fileLocation . "item_".$fileName. $fileEXT, 800, 600, 99);
+					if ( $width > $MAX_WIDTH ) {
+						$image['cropped'] = true;
+						$image['width'] = $width;
+
+						if ( $width > $LIMIT_WIDTH ) {
+							$image['width'] = 800;
+							createThumbnail($_FILES["file"]["tmp_name"][$i], $_FILES["file"]["name"][$i], $fileLocation . "item_".$fileName. $fileEXT, 800, 600, 99);
+						} else {
+							move_uploaded_file($_FILES['file']['tmp_name'][$i], $fileLocation . "item_".$fileName. $fileEXT);
+						}
+					} else {
+						move_uploaded_file($_FILES['file']['tmp_name'][$i], $fileLocation . "item_".$fileName. $fileEXT);
+					}
 					
 					//delete destination file
-					unlink($destination);
+					//unlink($destination);
 					
 					//destory temp
 					imagedestroy($_FILES["file"]["tmp_name"][$i]); //destroy temp file
@@ -190,11 +211,8 @@ function uploadFile($fileUploadID, $fileLocation, $fileEXT, $fileMIME, $fileMIME
 					if($debug) echo "Stored in: " . $destination;
 					if($debug) echo "Thumbnail Stored in: " . $destination_thumb;
 					
-
-					$fileNames[] = array(
-						'new' => true,
-						'image' => "item_".$fileName. $fileEXT
-					);
+					$image['image'] = "item_".$fileName. $fileEXT;
+					$fileNames[] = $image;
 					//return true;
 				}
 			}

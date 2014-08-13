@@ -22,7 +22,7 @@
 		$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/menuitem/temp/';
 	
 	$status = uploadFile($picFile,$PREO_UPLOAD_ROOT,".$picExt", "image/jpeg", "image/png", 11000000, 0);
-	if(!$status) 
+	if(!$status)
 	{
 		echo "Error :(";
 		exit;

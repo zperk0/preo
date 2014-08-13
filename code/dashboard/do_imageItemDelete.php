@@ -21,7 +21,7 @@
 
 			//kill menu
 		$curlResult = callAPI('DELETE', $apiURL."imageitem/$imageID", false, $apiAuth); //menu deleted
-		if ( $Image['image_thumb'] ) {
+		if ( isset($Image['image_thumb']) ) {
 			unlink( $PREO_UPLOAD_ROOT . $Image['image_thumb'] );	
 		}
 		unlink( $PREO_UPLOAD_ROOT .  $Image['image'] );
