@@ -167,7 +167,7 @@ angular.module('kyc.directives').
                   $scope.selectedData.minTimestamp = moment.utc(option.minTimestamp).valueOf();
                   $scope.selectedData.maxTimestamp = moment.utc(option.maxTimestamp).valueOf();
 
-                  $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data, tickInterval:option.tickInterval, minTimestamp: moment.utc(option.minTimestamp).valueOf(), maxTimestamp: moment.utc(option.maxTimestamp).valueOf()});
+                  $scope.chart.highcharts = $chartService.getChart( ng.chart.value.modal.highcharts.type, {tooltipText:ng.chart.value.tooltipText,data:option.data, currency: ng.chart.value.currency, tickInterval:option.tickInterval, minTimestamp: moment.utc(option.minTimestamp).valueOf(), maxTimestamp: moment.utc(option.maxTimestamp).valueOf()});
                   // $scope.chart.highcharts.options.chart.width = $('#highchartsContent').width();
                 }
 

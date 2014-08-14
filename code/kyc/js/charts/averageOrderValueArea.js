@@ -52,7 +52,7 @@ angular.module('kyc.charts')
                     var valuePrepDataOrder = prepDataOrder[key][i][1];
 
                     if ( valueData[1] > 0 && valuePrepDataOrder > 0 ) {
-                        resultNumber = valueData[1] / valuePrepDataOrder;
+                        resultNumber = ((valueData[1] / valuePrepDataOrder).toFixed(2)) / 1;
                     } 
 
                     result.push( [valueData[0], resultNumber] );
@@ -61,7 +61,7 @@ angular.module('kyc.charts')
                 prepDataAverage[key] = result;
 
             } else {
-                prepDataAverage[key] =  value / prepDataOrder[key];
+                prepDataAverage[key] =  ((value / prepDataOrder[key]).toFixed(2)) / 1;
             }
 
         })

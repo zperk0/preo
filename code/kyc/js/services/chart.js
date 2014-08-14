@@ -132,7 +132,7 @@ service('$chartService', ['ChartType','$filter', 'TickInterval',
                             } else {
                                 date = $filter('date')(new Date(this.x), 'dd MMM yyyy');
                             }
-
+                            
                             var ui_str = '<div style="position:relative;"><div style="background-color: #1576B7; border-radius: 5px; color:#fff;font-family:\'Co Text W01 Light\'; text-align:center; padding:18px 8px;">'+date ;                            
                             var tooltipText = (this.y == 1 && value.tooltipText[value.tooltipText.length-1].toLowerCase() ==='s' ) ? value.tooltipText.slice(0,-1) : value.tooltipText;                                                    
                             ui_str += '<b style="color:#fff;font-size:160%;font-weight:bold;font-family:\'Co Text W01 Bold\';text-align:center;display:block;margin-top:8px;">';
