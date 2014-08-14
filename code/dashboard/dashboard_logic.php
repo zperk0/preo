@@ -223,13 +223,11 @@ $newCurl = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id'].'/users', 
 		$dataResult = json_decode($curlResult, true);		
 		echo ("<script> window.localStorage.setItem('showDialog',0); </script>");
 		foreach ($dataResult as $key => $feature){			
-			if ($feature['status'] == "EXPIRED"){
+			if (isset($feature['status']) && $feature['status'] == "EXPIRED"){
 				echo ("<script> window.localStorage.setItem('showDialog',1); </script>");
 				break;
 			}
 		}
-
-
 
 		$_SESSION['dashboardFlag']=1;
 		$_SESSION['signupWizFlag']=0;

@@ -701,6 +701,7 @@ label.appTop {
   width: 301px;
   height: 636px;
   margin: 0 0.1em 3em;
+  position: relative;
 }
 
 #frame_iphone5 {
@@ -3656,4 +3657,31 @@ button.preodayButton.noclick{
 .colMenuItems > button, .colMenuItems > form{
   float: left;
   // margin-right: 1px;
+}
+
+.venueMode{
+  width: 100%;
+  text-align: center;
+}
+
+.switchDashboardMode{
+  display: inline-block;
+}
+
+.switchDashboardMode > a{
+  float: left;
+  margin: 4px 15px 0 0;
+}
+
+.switchDashboardMode > .switch{
+  width: 95px;
+}
+
+.venueMode{
+  margin: -40px 0 0 -5%;
+  position: absolute;
+}
+
+#loadingDashboard{
+  display: none;
 }

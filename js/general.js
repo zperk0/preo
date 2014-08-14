@@ -4396,6 +4396,45 @@ $(document).ready(function() {
 		 });
 		return false; // avoid to execute the actual submit of the form.
 	});
+
+	$('.inputSwitchMode').on('change', function(){
+		console.log('alterou ', $(this).val());
+
+		var value = +$(this).val();
+
+		$('#loadingDashboard').show();
+
+		if ( value === 0 ) {
+			$.ajax({
+			   type: "POST",
+			   url: '/goDemo',
+			   data: {
+			   	notNotify: true
+			   },	
+			   success: function(data)
+			    {
+			    	$('.currentMode').text('DEMO');
+			    	$('#loadingDashboard').hide();
+					noty({ type: 'success', text: _tr('Your app is now in Demo mode!') });
+				}
+			 });
+		} else if ( value === 1 ) {
+			$.ajax({
+			   type: "POST",
+			   url: '/code/finish/do_finish.php',
+			   data: {
+			   	liveFlag: 0,
+			   	offFlag: 0
+			   },
+			   success: function(data)
+			    {
+			    	$('.currentMode').text('LIVE');
+			    	$('#loadingDashboard').hide();
+					noty({ type: 'success', text: _tr('Your app is now live!') });
+				}
+			 });			
+		}
+	})
 	
 	//back to stripe connect
 	$('#startStripe').on('click', function(){

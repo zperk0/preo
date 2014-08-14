@@ -10,7 +10,7 @@
 	<div class="large-12 columns">
 		<h1 class=""><? echo _("Dashboard");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
 		<p class="venueCode"><?echo _("Your venue shortcode is")." <strong>".$_SESSION['venue_code']."</strong>";?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("This is the code your customers need to use to find your venue on 'My Order App'");?>"></i></p>
-		<p class="venueCode"><?echo _("Your app is currently in ")."<strong>$currentMode</strong>"._(" mode.");?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("LIVE - Your app is available on My Order App and is ready to take real orders.<br/><br/>DEMO - Your app is available on My Order App but does not take real orders.<br/><br/>OFFLINE - Your app is not available on My Order App.");?>"></i></p>
+		<p class="venueCode"><?echo _("Your app is currently in ")."<strong class='currentMode'>$currentMode</strong>"._(" mode.");?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("LIVE - Your app is available on My Order App and is ready to take real orders.<br/><br/>DEMO - Your app is available on My Order App but does not take real orders.<br/><br/>OFFLINE - Your app is not available on My Order App.");?>"></i></p>
 	</div>
 </div>
 
@@ -105,7 +105,10 @@
 											}											
 										  $accountId = $_SESSION['account_id'];	  
 											$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
-											$accountFeatures = array_filter(json_decode($result),"filterActive");
+											$resultArray = json_decode($result);
+											if ( is_array($resultArray)) {
+												$accountFeatures = array_filter(json_decode($result),"filterActive");
+											}
 											if(is_array($accountFeatures) && count($accountFeatures) > 0) { ?> 
 												<div class='featuresList'> 
 												<? foreach($accountFeatures as $feat) { ?>
@@ -127,6 +130,19 @@
 		</div>
 	</div>
 	<div id="iphone5" class="large-4 columns">
+		<div class="venueMode">
+			<div class='switchDashboardMode'> <a href='#'><?echo _("Switch mode:")?></a>
+				<div class="switch small large-2 columns eventFlagNoti"> 
+					<input name="vEvent" value="0" type="radio" class="inputSwitchMode" <?php echo $currentMode === "DEMO" ? "checked='checked'" : ""?>>
+					<label class="no"><?echo _("DEMO");?></label>
+
+					<input name="vEvent" value="1" type="radio" class="inputSwitchMode" <?php echo $currentMode === "LIVE" ? "checked='checked'" : ""?>>
+					<label class="yes"><?echo _("LIVE");?></label>
+
+					<span></span>
+				</div>	          	
+          	</div>
+		</div>
 		<div class="phoneContainer">
 			<div id="frame_iphone5" class="phone1">
 				<?if(isset($_SESSION['app_wallpaperId']) && $_SESSION['app_wallpaperId']!=1 && $_SESSION['app_wallpaperId']!=2 && $_SESSION['app_wallpaperId']!=3 && $_SESSION['app_wallpaperId']!=4 && $_SESSION['app_wallpaperId']!=5){?>
@@ -164,6 +180,26 @@
 		</div>
 	</div>
 </div>
+
+<div class="loading" id="loadingDashboard" ng-show="requests">
+  <div class="background-loading"></div>
+  <div class="loading-content">
+    <div class="spinner">
+      <div class="b1 se"></div>
+      <div class="b2 se"></div>
+      <div class="b3 se"></div>
+      <div class="b4 se"></div>
+      <div class="b5 se"></div>
+      <div class="b6 se"></div>
+      <div class="b7 se"></div>
+      <div class="b8 se"></div>
+      <div class="b9 se"></div>
+      <div class="b10 se"></div>
+      <div class="b11 se"></div>
+      <div class="b12 se"></div>
+    </div>
+  </div>
+</div>  
 
 <div id="expiredDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
     <header class="title-notification">Know your customer - 30 DAYS FREE TRIAL</header>
