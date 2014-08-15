@@ -205,7 +205,7 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
         delete $scope.venue.ccySymbol;
 
         $q.all([
-            Resources.Venue.put({id:VENUE_ID}, $scope.venue).$promise,
+            // Resources.Venue.put({id:VENUE_ID}, $scope.venue).$promise,s
             postMessage(messages[0]).$promise,
             postMessage(messages[1]).$promise,
             postMessage(messages[2]).$promise,
