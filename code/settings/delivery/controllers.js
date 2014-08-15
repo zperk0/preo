@@ -149,7 +149,7 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
     }
 
     $scope.validateEmail = function(email){
-        if ( !email.length ) {
+        if ( !email || !email.length ) {
             return true;
         }
 
@@ -205,7 +205,7 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
         delete $scope.venue.ccySymbol;
 
         $q.all([
-            // Resources.Venue.put({id:VENUE_ID}, $scope.venue).$promise,s
+            $scope.venue.$put(),
             postMessage(messages[0]).$promise,
             postMessage(messages[1]).$promise,
             postMessage(messages[2]).$promise,
