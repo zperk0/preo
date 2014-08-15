@@ -17,7 +17,5 @@
 	
 	$curlResult = callAPI('PUT', $apiURL."venues/$venueID/demo", $data, $apiAuth);
 	
-	if ( !isset($_POST['notNotify']) || !$_POST['notNotify'] ) {
-		$_SESSION['appUnPublished'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
-	}
+	$_SESSION['appUnPublished'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
 ?>

@@ -3674,7 +3674,11 @@ button.preodayButton.noclick{
 }
 
 .switchDashboardMode > .switch{
-  width: 95px;
+  width: 125px;
+}
+
+.switchDashboardMode > .switch.off{
+  width: 110px;
 }
 
 .venueMode{

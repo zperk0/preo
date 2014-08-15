@@ -131,13 +131,15 @@
 	</div>
 	<div id="iphone5" class="large-4 columns">
 		<div class="venueMode">
+		<?php 
+		 ?>
 			<div class='switchDashboardMode'> <a href='#'><?echo _("Switch mode:")?></a>
 				<div class="switch small large-2 columns eventFlagNoti"> 
-					<input name="vEvent" value="0" type="radio" class="inputSwitchMode" <?php echo $currentMode === "DEMO" ? "checked='checked'" : ""?>>
-					<label class="no"><?echo _("DEMO");?></label>
+					<input name="vMode" value="0" type="radio" class="inputSwitchMode" <?php echo $currentMode == "ONLINE" || $currentMode != "OFFLINE" ? "checked='checked'" : ""?>>
+					<label class="no"><?echo _("ONLINE");?></label>
 
-					<input name="vEvent" value="1" type="radio" class="inputSwitchMode" <?php echo $currentMode === "LIVE" ? "checked='checked'" : ""?>>
-					<label class="yes"><?echo _("LIVE");?></label>
+					<input name="vMode" value="1" type="radio" class="inputSwitchMode" <?php echo $currentMode == "OFFLINE" ? "checked='checked'" : ""?>>
+					<label class="yes"><?echo _("OFFLINE");?></label>
 
 					<span></span>
 				</div>	          	

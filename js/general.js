@@ -4404,21 +4404,23 @@ $(document).ready(function() {
 
 		$('#loadingDashboard').show();
 
-		if ( value === 0 ) {
+		if ( value === 1 ) {
 			$.ajax({
 			   type: "POST",
-			   url: '/goDemo',
+			   url: '/code/finish/do_finish.php',
 			   data: {
-			   	notNotify: true
-			   },	
+			   	liveFlag: 0,
+			   	offFlag: 1,
+			   	offFlagVerify: 1
+			   },
 			   success: function(data)
 			    {
-			    	$('.currentMode').text('DEMO');
+			    	$('.currentMode').text('OFFLINE');
 			    	$('#loadingDashboard').hide();
-					noty({ type: 'success', text: _tr('Your app is now in Demo mode!') });
+					noty({ type: 'success', text: _tr('Your app is now offline!') });
 				}
-			 });
-		} else if ( value === 1 ) {
+			 });			
+		} else if ( value === 0 ) {
 			$.ajax({
 			   type: "POST",
 			   url: '/code/finish/do_finish.php',
@@ -4430,7 +4432,7 @@ $(document).ready(function() {
 			    {
 			    	$('.currentMode').text('LIVE');
 			    	$('#loadingDashboard').hide();
-					noty({ type: 'success', text: _tr('Your app is now live!') });
+					noty({ type: 'success', text: _tr('Your app is now online!') });
 				}
 			 });			
 		}
