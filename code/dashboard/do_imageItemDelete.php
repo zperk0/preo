@@ -10,7 +10,7 @@
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 
-	$curlResult = callAPI('GET', $apiURL."imageitem/$imageID", false, $apiAuth);
+	$curlResult = callAPI('GET', $apiURL."itemimages/$imageID", false, $apiAuth);
 	$Image = json_decode($curlResult,true);
 
 	if ( $Image ) {
@@ -20,9 +20,9 @@
 			$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/menuitem/';
 
 			//kill menu
-		$curlResult = callAPI('DELETE', $apiURL."imageitem/$imageID", false, $apiAuth); //menu deleted
-		if ( isset($Image['image_thumb']) ) {
-			unlink( $PREO_UPLOAD_ROOT . $Image['image_thumb'] );	
+		$curlResult = callAPI('DELETE', $apiURL."itemimages/$imageID", false, $apiAuth); //menu deleted
+		if ( isset($Image['imageThumb']) ) {
+			unlink( $PREO_UPLOAD_ROOT . $Image['imageThumb'] );	
 		}
 		unlink( $PREO_UPLOAD_ROOT .  $Image['image'] );
 	}

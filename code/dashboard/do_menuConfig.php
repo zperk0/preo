@@ -204,7 +204,7 @@
 				if(!preg_match('/i$/',$item['id'])) //skip unsaved items (123i)
 				{
 					foreach ($item['images'] as $keyImage => $idImage) {
-						$curlResult = callAPI('GET', $apiURL."imageitem/$idImage", false, $apiAuth);
+						$curlResult = callAPI('GET', $apiURL."itemimages/$idImage", false, $apiAuth);
 						$Image = json_decode($curlResult,true);
 
 						if ( $Image ) {
@@ -214,9 +214,9 @@
 								$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/menuitem/';
 
 								//kill menu
-							$curlResult = callAPI('DELETE', $apiURL."imageitem/$idImage", false, $apiAuth); //menu deleted
-							if ( isset($Image['image_thumb']) ) {
-								unlink( $PREO_UPLOAD_ROOT . $Image['image_thumb'] );	
+							$curlResult = callAPI('DELETE', $apiURL."itemimages/$idImage", false, $apiAuth); //menu deleted
+							if ( isset($Image['imageThumb']) ) {
+								unlink( $PREO_UPLOAD_ROOT . $Image['imageThumb'] );	
 							}
 							unlink( $PREO_UPLOAD_ROOT .  $Image['image'] );
 						}
@@ -291,7 +291,7 @@
 						$data['image'] = 'fix/' . $Image['image'];
 						$data['itemId'] = $item_id;
 						$jsonData 	= json_encode($data);
-						$curlResult = callAPI('POST', $apiURL."imageitem", $jsonData, $apiAuth); //item created
+						$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
 						$result 	= json_decode($curlResult,true);
 						$newImages['item' . $item_id][] = $result['id'];
 					}
@@ -326,7 +326,7 @@
 						$data['image'] = 'fix/' . $Image['image'];
 						$data['itemId'] = $item_id;
 						$jsonData 	= json_encode($data);
-						$curlResult = callAPI('POST', $apiURL."imageitem", $jsonData, $apiAuth); //item created
+						$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
 						$result 	= json_decode($curlResult,true);
 						$newImages['item' . $item_id][] = $result['id'];
 					}
