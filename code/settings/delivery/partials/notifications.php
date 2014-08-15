@@ -1,5 +1,15 @@
   <form name="deliveryForm" id="deliveryForm" ng-submit="processForm()" novalidate ng-show="finishedLoading">  
     <div class='row deliveryHeader'> <h1 class="alignHeader"><?echo _("Preset Notifications")?></h1>
+    <div class='deliverySwitch'> <a href='#'><?echo _("Enable delivery services")?></a>
+        <div class="switch small" ng-class="{'off': venue.deliverFlag==0}" > 
+          <input ng-change="onChangeDeliverFlag()"  value="0" type="radio" ng-model="venue.deliverFlag" tabindex=-1>
+            <label class="no"><?echo _("No")?></label>
+          <input ng-change="onChangeDeliverFlag()" value="1" type="radio" ng-model="venue.deliverFlag" tabindex=-1>
+            <label class="yes"><?echo _("Yes")?></label>
+            <span></span>
+          </div>          
+
+    </div>    
     </div>
   <div class='deliveryWrapper' ng-class="{'opaque':venue.deliverFlag==0}">
     <ul class='row delivery-tabs'>
