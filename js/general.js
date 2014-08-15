@@ -4398,8 +4398,6 @@ $(document).ready(function() {
 	});
 
 	$('.inputSwitchMode').on('change', function(){
-		console.log('alterou ', $(this).val());
-
 		var value = +$(this).val();
 
 		$('#loadingDashboard').show();
