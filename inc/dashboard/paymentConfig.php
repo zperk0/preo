@@ -31,6 +31,9 @@
 				<button id="skipStripe" class="preodayButton secondary" type="button" tabindex=3><?echo _("SKIP THIS FOR NOW");?></button>
 			</div>
 			<?}else{?>
+			<div class="large-12 columns">
+				<a class="preodayButton button" href="https://dashboard.stripe.com/" target="_blank"><?echo _("GO TO YOUR STRIPE ACCOUNT");?></a>
+			</div>
 			<div class="large-6 columns">
 				<button class="preodayButton secondary" type="submit" tabindex=2><?echo _("YOU'RE ALREADY CONNECTED");?></button>
 			</div>
