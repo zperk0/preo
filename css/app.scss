@@ -3687,3 +3687,29 @@ button.preodayButton.noclick{
 .list-images-item li:hover .deleteImageItem, .list-images-item li.visible .deleteImageItem{
   display: block;
 }
+
+#loadingMenuConfig{
+  display: none;
+}
+
+.colMenuItems .clearing-blackout .visible-img .contentImageClearing.active{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  overflow: hidden;
+  width: 600px;
+  height: 400px;
+  margin-left: -300px;
+  margin-top: -200px;
+}
+
+.colMenuItems .clearing-blackout .visible-img .contentImageClearing.active img{
+  position: static !important;
+  max-width: inherit;
+  max-height: inherit;
+}
+
+.clickImageForView img{
+  max-width: inherit;
+  max-height: inherit;  
+}

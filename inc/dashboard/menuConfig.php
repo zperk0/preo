@@ -301,7 +301,7 @@
 												foreach ($item['images'] as $key => $Image) {
 												?>
 												<li class="clearing-featured-img item-image" data-id="<?php echo $Image['id'] ?>">
-													<a href="<?php echo $mPath . $Image['image'] ?>">
+													<a href="<?php echo $mPath . $Image['image'] ?>" class="clickImagesSaved">
 														<span class="deleteImageItem">Delete</span>
 														<img src="<?php echo $mPath . $Image['image'] ?>" alt="">
 													</a>
@@ -442,6 +442,25 @@
   <!-- <a class="close-reveal-modal">&#215;</a> -->
 </div>
 
+<div class="loading" id="loadingMenuConfig">
+  <div class="background-loading"></div>
+  <div class="loading-content">
+    <div class="spinner">
+      <div class="b1 se"></div>
+      <div class="b2 se"></div>
+      <div class="b3 se"></div>
+      <div class="b4 se"></div>
+      <div class="b5 se"></div>
+      <div class="b6 se"></div>
+      <div class="b7 se"></div>
+      <div class="b8 se"></div>
+      <div class="b9 se"></div>
+      <div class="b10 se"></div>
+      <div class="b11 se"></div>
+      <div class="b12 se"></div>
+    </div>
+  </div>
+</div>  
 
 <script type="text/javascript">
 

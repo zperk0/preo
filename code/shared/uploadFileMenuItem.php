@@ -191,9 +191,11 @@ function uploadFile($fileUploadID, $fileLocation, $fileEXT, $fileMIME, $fileMIME
 					if ( $width > $MAX_WIDTH ) {
 						$image['cropped'] = true;
 						$image['width'] = $width;
+						$image['height'] = $height;
 
 						if ( $width > $LIMIT_WIDTH ) {
 							$image['width'] = 800;
+							$image['height'] = 600;
 							createThumbnail($_FILES["file"]["tmp_name"][$i], $_FILES["file"]["name"][$i], $fileLocation . "item_".$fileName. $fileEXT, 800, 600, 99);
 						} else {
 							move_uploaded_file($_FILES['file']['tmp_name'][$i], $fileLocation . "item_".$fileName. $fileEXT);

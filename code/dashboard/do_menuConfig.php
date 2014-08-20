@@ -5,6 +5,7 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 	require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/uploadFileMenuItem.php'); //uploadFile 
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/SystemStatic.php');
 	
 	//1 - if delete, then remove insert,edit
 	//2 - if insert, then remove edit
@@ -208,10 +209,7 @@
 						$Image = json_decode($curlResult,true);
 
 						if ( $Image ) {
-							if(isset($_SERVER['PREO_UPLOAD_ROOT']))
-								$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'menuitem/';
-							else
-								$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/menuitem/';
+							$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "/menuitem/" );
 
 								//kill menu
 							$curlResult = callAPI('DELETE', $apiURL."itemimages/$idImage", false, $apiAuth); //menu deleted
@@ -275,10 +273,7 @@
 
 				if ( isset($item['images']) ) {
 					foreach ($item['images'] as $Image) {
-						if(isset($_SERVER['PREO_UPLOAD_ROOT']))
-							$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'menuitem/';
-						else
-							$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/menuitem/';
+						$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "/menuitem/" );
 
 						if ( $Image['cropped'] ) {
 							cropImage( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'], $PREO_UPLOAD_ROOT . 'fix/' . $Image['image'], $Image['w'], $Image['h'], $Image['x'], $Image['y'], 99 );
@@ -288,7 +283,7 @@
 						unlink( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'] );
 
 						$data = array();
-						$data['image'] = 'fix/' . $Image['image'];
+						$data['image'] = '/menuitem/fix/' . $Image['image'];
 						$data['itemId'] = $item_id;
 						$jsonData 	= json_encode($data);
 						$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
@@ -313,17 +308,14 @@
 				}
 				
 				if ( isset($item['images']) ) {
-					foreach ($item['images'] as $Image) {
-						if(isset($_SERVER['PREO_UPLOAD_ROOT']))
-							$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'menuitem/';
-						else
-							$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/menuitem/';
+					$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "/menuitem/" );
 
+					foreach ($item['images'] as $Image) {
 						cropImage( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'], $PREO_UPLOAD_ROOT . 'fix/' . $Image['image'], $Image['w'], $Image['h'], $Image['x'], $Image['y'], 99 );
 						unlink( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'] );
 
 						$data = array();
-						$data['image'] = 'fix/' . $Image['image'];
+						$data['image'] = '/menuitem/fix/' . $Image['image'];
 						$data['itemId'] = $item_id;
 						$jsonData 	= json_encode($data);
 						$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created

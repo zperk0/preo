@@ -102,6 +102,9 @@
 									<button type="button" class="eventTableButtons secondary eventDelete" 		title="<?echo _("Delete");?>"						><i class="pd-delete"></i></button>
 								</td>
 							</tr>
+							<tr class="eventEdit outletTR">
+								
+							</tr>
 							<tr class="eventEdit optionTR">
 								<td class="eventTDCollection">
 									<label>&nbsp;</label>
