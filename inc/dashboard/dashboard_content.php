@@ -4,6 +4,19 @@
 <?
 //resetting global vars
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/global_vars.php');
+
+	$curlResult = callAPI('GET', $apiURL."accounts/$accountId/paymentproviders", false, $apiAuth);
+	$dataJSON = json_decode($curlResult, true);
+	$connectedFlag = 0;	
+	if(!empty($dataJSON))
+	{	
+		foreach($dataJSON as $paymentProvider)
+		{
+			if(isset($paymentProvider['type']) && $paymentProvider['type'] == 'Stripe')
+				$connectedFlag = 1;
+		}
+	}
+		
 ?>
 <div class="row dashContentTop">
 	<div class="topSpacer"></div>
@@ -36,7 +49,7 @@
 				<h6><?echo _("Returning users");?></h6>
 				<h1><?echo locale_number_format($_SESSION['venue_report_returningUsers'],0);?></h1>
 			</div>
-		</div>	
+		</div>			
 		<div class="large-7 columns dashChangeApp">
 			<div class="row">
 				<div class="large-12 columns">
@@ -129,21 +142,16 @@
 			</div>
 		</div>
 	</div>
+
 	<div id="iphone5" class="large-4 columns">
 		<div class="venueMode">
-		<?php 
-		 ?>
-			<div class='switchDashboardMode'> <a href='#'><?echo _("Switch mode:")?></a>
-				<div class="switch small large-2 columns eventFlagNoti"> 
-					<input name="vMode" value="0" type="radio" class="inputSwitchMode" <?php echo $currentMode == "ONLINE" || $currentMode != "OFFLINE" ? "checked='checked'" : ""?>>
-					<label class="no"><?echo _("ONLINE");?></label>
+		 	<span><?echo _("Change app mode")?> <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("LIVE - Your app is available on My Order App and is ready to take real orders.<br/><br/>DEMO - Your app is available on My Order App but does not take real orders.<br/><br/>OFFLINE - Your app is not available on My Order App.");?>"></i></span>
 
-					<input name="vMode" value="1" type="radio" class="inputSwitchMode" <?php echo $currentMode == "OFFLINE" ? "checked='checked'" : ""?>>
-					<label class="yes"><?echo _("OFFLINE");?></label>
-
-					<span></span>
-				</div>	          	
-          	</div>
+		 	<div class='switchModeWrapper'>
+				<div class='switchDashboardMode <? if ($currentMode === "OFFLINE") echo _("active") ?>'  data-mode='o' ><?echo _("OFFLINE")?> </div>
+				<div class='switchDashboardMode <? if ($currentMode === "DEMO") echo _("active") ?>' data-mode='d'><?echo _("DEMO")?> </div>
+				<div class='switchDashboardMode <? if ($currentMode === "LIVE") echo _("active") ?>' data-mode='<? if ($connectedFlag){echo ("l");} else {echo ("n");} ?>'><?echo _("LIVE")?> </div>
+			</div>
 		</div>
 		<div class="phoneContainer">
 			<div id="frame_iphone5" class="phone1">
@@ -216,17 +224,26 @@
     </p>  
 </div>
 
+<div id="noPaymentMethod" class="reveal-modal medium modal-preoday dashboard" data-reveal>
+    <header class="title-notification"><?echo _("Payment provider is not connected!")?></header>
+    <div class="container-modal-confirm"><? echo _("Before taking your app live you need to connect it to a payment providerso that you can start accepting payments and start getting paid!")?></div>      	    
+    <button class='positiveDismiss preodayButton' ><? echo _("CONNECT")?></button>
+    <button class='negativeDismiss preodayButton'><? echo _("CANCEL")?></button>    
+</div>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+
 		//TODO replace all this horrible code with the correct angular modules 
 		//----- start horrible code ------ 
 		var isShowAgain = window.localStorage.getItem("showDialogAgain_4");
 		var isShow = Number(window.localStorage.getItem("showDialog")) === 1 && (isShowAgain === null || Number(isShowAgain) === 1);
-		if (isShow) {
-			$('#expiredDialog').foundation('reveal', 'open');
-			$('.positiveDismiss').on('click',positiveDismiss);
-			$('.negativeDismiss').on('click',negativeDismiss);
+		
+		$('.positiveDismiss').on('click',positiveDismiss);
+		$('.negativeDismiss').on('click',negativeDismiss);
+		if (isShow) {		
+			$('#expiredDialog').foundation('reveal', 'open');			
 			$('.termsAndConditions').on("change",function(){
 				if ($(this).is(":checked")){
 					$('.secondaryIfNotTermsAndConditions').removeClass("secondary")
@@ -239,23 +256,35 @@
 		function positiveDismiss(){
 			var dialog = $(this).parent(".modal-preoday");
 			var dialogId = dialog.attr("id");
+			console.log('here',dialog);
 			if ($('.doNotShowAgain').is(':checked')) {
 				window.localStorage.setItem("showDialogAgain_4",0) 
-			}	
+			}				
 			switch (dialogId){
 				case "expiredDialog":
 					window.location.replace("/shop#/feature/4");
 					break;							
+				case "noPaymentMethod":
+					console.log('nopay');
+					window.location.replace("/payment");
+				break;
 			}
 		}
 
 		function negativeDismiss(){
+
 			var dialog = $(this).parent(".modal-preoday");
 			var dialogId = dialog.attr("id");
-			if ($('.doNotShowAgain').is(':checked')) {
-				//TODO add featureId dynamically
-				window.localStorage.setItem("showDialogAgain_4",0) 
-			}	
+			switch (dialogId){
+				case "expiredDialog":
+					if ($('.doNotShowAgain').is(':checked')) {
+						//TODO add featureId dynamically
+						window.localStorage.setItem("showDialogAgain_4",0) 
+					}
+					break;
+				default:
+					break;
+				}								
 			$('#'+dialogId).foundation('reveal', 'close');
 		}
 		//------  end horible code ------ 

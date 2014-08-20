@@ -4397,43 +4397,54 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 
-	$('.inputSwitchMode').on('change', function(){
-		var value = +$(this).val();
+	$('.switchDashboardMode').on('click', function(){		
+		var value = $(this).data("mode");
 
-		$('#loadingDashboard').show();
 
-		if ( value === 1 ) {
-			$.ajax({
-			   type: "POST",
-			   url: '/code/finish/do_finish.php',
-			   data: {
+		if ( value === 'l' ) {
+			var mode = _tr("LIVE");
+			var modeMsg = _tr("Your app is now live!");
+			var data = {
+			   	liveFlag: 0,
+			   	offFlag: 0,
+			   	offFlagVerify: 0
+		   }
+		} 
+		else if ( value === 'd' ) {
+			var mode = _tr("DEMO");
+			var modeMsg = _tr("Your app is now in demo mode!");
+			var data = {
+			   	liveFlag: 1,
+			   	offFlag: 0,
+			   	offFlagVerify: 0
+		   }
+		}
+		else if ( value === 'o' ) {
+			var mode = _tr("OFFLINE");
+			var modeMsg = _tr("Your app is now offline!");
+			var data = {
 			   	liveFlag: 0,
 			   	offFlag: 1,
-			   	offFlagVerify: 1
-			   },
-			   success: function(data)
-			    {
-			    	$('.currentMode').text('OFFLINE');
-			    	$('#loadingDashboard').hide();
-					noty({ type: 'success', text: _tr('Your app is now offline!') });
-				}
-			 });			
-		} else if ( value === 0 ) {
-			$.ajax({
-			   type: "POST",
-			   url: '/code/finish/do_finish.php',
-			   data: {
-			   	liveFlag: 0,
-			   	offFlag: 0
-			   },
-			   success: function(data)
-			    {
-			    	$('.currentMode').text('LIVE');
-			    	$('#loadingDashboard').hide();
-					noty({ type: 'success', text: _tr('Your app is now online!') });
-				}
-			 });			
+			   	offFlagVerify: 0
+		   }
+		}else if ( value === 'n' ) {
+			//TODO finish this.
+			$('#noPaymentMethod').foundation('reveal', 'open');
+			return;
 		}
+		$('#loadingDashboard').show();		
+		$(".switchDashboardMode").removeClass('active');
+		$(this).addClass('active');
+		$.ajax({
+		   type: "POST",
+		   url: '/code/finish/do_finish.php',
+		   data:data,
+		   success: function(data) {
+		    	$('.currentMode').text(mode);
+		    	$('#loadingDashboard').hide();
+					noty({ type: 'success', text: modeMsg });
+		  	}
+		 });					
 	})
 	
 	//back to stripe connect

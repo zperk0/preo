@@ -218,7 +218,7 @@
 		//+d($dataResult);
 	
 
-$newCurl = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id'].'/users', false, $apiAuth); 
+	$newCurl = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id'].'/users', false, $apiAuth); 
 		$curlResult = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id']."/features", false, $apiAuth);
 		$dataResult = json_decode($curlResult, true);		
 		echo ("<script> window.localStorage.setItem('showDialog',0); </script>");
@@ -228,7 +228,6 @@ $newCurl = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id'].'/users', 
 				break;
 			}
 		}
-
 		$_SESSION['dashboardFlag']=1;
 		$_SESSION['signupWizFlag']=0;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/wl-paths.php');   //wallpaper-logo paths

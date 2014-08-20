@@ -3440,7 +3440,7 @@ button.preodayButton.noclick{
   margin-top:-15px;
 }
 
-.content-modal, #expiredDialog{
+.content-modal, #expiredDialog, #noPaymentMethod{
   padding: 1.875em;
 }
 
@@ -3659,33 +3659,47 @@ button.preodayButton.noclick{
   // margin-right: 1px;
 }
 
+#loadingDashboard{
+  display: none;
+}
+
 .venueMode{
-  width: 100%;
-  text-align: center;
+  margin-top:-80px;
+}
+
+.venueMode span{  
+  color: #D7D9DA;
+  font-weight: normal;
+  display:block;
+}
+
+.switchModeWrapper{
+  margin-top:10px;
+  border:2px solid #d7d9da;
+  border-radius:10px;
+  font-size:90%;
+  height:36px;
+}
+
+.switchModeWrapper .switchDashboardMode:first-child{
+  border-top-left-radius:5px;
+  border-bottom-left-radius:5px;  
+}
+.switchDashboardMode:last-of-type{
+  border-top-right-radius:5px;
+  border-bottom-right-radius:5px;    
 }
 
 .switchDashboardMode{
-  display: inline-block;
-}
+  text-align:center;
+  width:33.3%;
+  float:left;
+  color:#d7d9da;
+  padding:10px 0;
 
-.switchDashboardMode > a{
-  float: left;
-  margin: 4px 15px 0 0;
-}
-
-.switchDashboardMode > .switch{
-  width: 125px;
-}
-
-.switchDashboardMode > .switch.off{
-  width: 110px;
-}
-
-.venueMode{
-  margin: -40px 0 0 -5%;
-  position: absolute;
-}
-
-#loadingDashboard{
-  display: none;
+  &:hover,&.active{
+    cursor:pointer;
+    background:#d7d9da;
+    color:$shopHeader;
+  }
 }
