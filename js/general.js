@@ -4398,11 +4398,14 @@ $(document).ready(function() {
 	});
 
 	$('.switchDashboardMode').on('click', function(){		
+
+		if ($(this).hasClass("active")){
+			return;
+		}
 		var value = $(this).data("mode");
 
 
 		if ( value === 'l' ) {
-			var mode = _tr("LIVE");
 			var modeMsg = _tr("Your app is now live!");
 			var data = {
 			   	liveFlag: 0,
@@ -4411,7 +4414,6 @@ $(document).ready(function() {
 		   }
 		} 
 		else if ( value === 'd' ) {
-			var mode = _tr("DEMO");
 			var modeMsg = _tr("Your app is now in demo mode!");
 			var data = {
 			   	liveFlag: 1,
@@ -4420,7 +4422,6 @@ $(document).ready(function() {
 		   }
 		}
 		else if ( value === 'o' ) {
-			var mode = _tr("OFFLINE");
 			var modeMsg = _tr("Your app is now offline!");
 			var data = {
 			   	liveFlag: 0,
@@ -4440,7 +4441,6 @@ $(document).ready(function() {
 		   url: '/code/finish/do_finish.php',
 		   data:data,
 		   success: function(data) {
-		    	$('.currentMode').text(mode);
 		    	$('#loadingDashboard').hide();
 					noty({ type: 'success', text: modeMsg });
 		  	}
