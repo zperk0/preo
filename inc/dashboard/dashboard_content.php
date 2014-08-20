@@ -147,10 +147,10 @@
 		<div class="venueMode">
 		 	<span><?echo _("Change app mode")?> <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("LIVE - Your app is available on My Order App and is ready to take real orders.<br/><br/>DEMO - Your app is available on My Order App but does not take real orders.<br/><br/>OFFLINE - Your app is not available on My Order App.");?>"></i></span>
 
-		 	<div class='switchModeWrapper'>
-				<div class='switchDashboardMode <? if ($currentMode === "OFFLINE") echo _("active") ?>'  data-mode='o' ><?echo _("OFFLINE")?> </div>
-				<div class='switchDashboardMode <? if ($currentMode === "DEMO") echo _("active") ?>' data-mode='d'><?echo _("DEMO")?> </div>
-				<div class='switchDashboardMode <? if ($currentMode === "LIVE") echo _("active") ?>' data-mode='<? if ($connectedFlag){echo ("l");} else {echo ("n");} ?>'><?echo _("LIVE")?> </div>
+		 	<div class='switchModeWrapper columns'>
+				<div class='switchDashboardMode columns large-4 <? if ($currentMode === "OFFLINE") echo _("active") ?>'  data-mode='o' ><?echo _("OFFLINE")?> </div>
+				<div class='switchDashboardMode columns large-4 <? if ($currentMode === "DEMO") echo _("active") ?>' data-mode='d'><?echo _("DEMO")?> </div>
+				<div class='switchDashboardMode columns large-4 <? if ($currentMode === "LIVE") echo _("active") ?>' data-mode='<? if ($connectedFlag){echo ("l");} else {echo ("n");} ?>'><?echo _("LIVE")?> </div>
 			</div>
 		</div>
 		<div class="phoneContainer">

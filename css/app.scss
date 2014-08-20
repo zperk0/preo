@@ -3664,7 +3664,10 @@ button.preodayButton.noclick{
 }
 
 .venueMode{
-  margin-top:-80px;
+  position:absolute;
+  left:0;
+  top:-80px;
+  width:100%;
 }
 
 .venueMode span{  
@@ -3676,9 +3679,10 @@ button.preodayButton.noclick{
 .switchModeWrapper{
   margin-top:10px;
   border:2px solid #d7d9da;
-  border-radius:10px;
+  border-radius:8px;
   font-size:90%;
   height:36px;
+  padding:0;
 }
 
 .switchModeWrapper .switchDashboardMode:first-child{
@@ -3688,11 +3692,12 @@ button.preodayButton.noclick{
 .switchDashboardMode:last-of-type{
   border-top-right-radius:5px;
   border-bottom-right-radius:5px;    
+  width:34%;
 }
 
 .switchDashboardMode{
   text-align:center;
-  width:33.3%;
+  width:33%;
   float:left;
   color:#d7d9da;
   padding:10px 0;
