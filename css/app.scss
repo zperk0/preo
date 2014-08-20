@@ -3687,11 +3687,13 @@ button.preodayButton.noclick{
 
 .switchModeWrapper .switchDashboardMode:first-child{
   border-top-left-radius:5px;
-  border-bottom-left-radius:5px;  
+  border-bottom-left-radius:5px;
+  border-right: 1px solid #d7d9da;
 }
 .switchDashboardMode:last-of-type{
   border-top-right-radius:5px;
-  border-bottom-right-radius:5px;    
+  border-bottom-right-radius:5px;
+  border-left: 1px solid #d7d9da;
   width:34%;
 }
 
