@@ -132,10 +132,16 @@
 
 								<span></span>
 							</div>
-						</td>
-						<td class="menuTDTools">
+						</td>		
+						<td class="menuTDTools colMenuItems">
 							<button type="button" class="menuTableButtons itemSave"				title="<?echo _("Collapse");?>"						><i class="pd-up"></i></button>
 							<button type="button" class="menuTableButtons itemEdit hide" 		title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
+							<form action="" method="POST" class="formImageMenuItem" enctype="multipart/form-data">
+								<button type="button" class="menuTableButtons doImageMenuItem" title="<?echo _("UPLOAD");?>"><i class="pd-upload"></i></button>
+								<!-- <button id="lo-loading" type="button" class="small secondary pdLoading hide" title="Uploading..."><img src="<?echo $_SESSION['path']?>/img/loading.gif"/></button> -->
+								<!-- <button id="logoReset" type="button" class="small secondary"><?echo _("RESET");?></button> -->
+								<input type="file" multiple="multiple" name="picFile[]" accept="image/png;image/jpg;image/jpeg" class="hide picImageMenuItem" />
+							</form>
 							<button type="button" class="menuTableButtons sortHandle"			title="<?echo _("Reorder");?>"						><i class="pd-move"></i></button>
 							<button type="button" class="menuTableButtons itemDuplicate" 		title="<?echo _("Duplicate");?>" id="dup_section0"	><i class="pd-copy"></i></button>
 							<button type="button" class="menuTableButtons secondary itemDelete" title="<?echo _("Delete");?>"						><i class="pd-delete"></i></button>
@@ -270,9 +276,15 @@
 												<span></span>
 											</div>
 										</td>
-										<td class="menuTDTools">
+										<td class="menuTDTools colMenuItems">
 											<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Collapse");?>"							><i class="pd-up"></i></button>
 											<button type="button" class="menuTableButtons itemEdit" 				title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
+											<form action="" method="POST" class="formImageMenuItem" enctype="multipart/form-data">
+												<button type="button" class="menuTableButtons doImageMenuItem" title="<?echo _("UPLOAD");?>"><i class="pd-upload"></i></button>
+												<!-- <button id="lo-loading" type="button" class="small secondary pdLoading hide" title="Uploading..."><img src="<?echo $_SESSION['path']?>/img/loading.gif"/></button> -->
+												<!-- <button id="logoReset" type="button" class="small secondary"><?echo _("RESET");?></button> -->
+												<input type="file" multiple="multiple" name="picFile[]" accept="image/png;image/jpg;image/jpeg" class="hide picImageMenuItem" />
+											</form>
 											<button type="button" class="menuTableButtons sortHandle"				title="<?echo _("Reorder");?>"							><i class="pd-move"></i></button>
 											<button type="button" class="menuTableButtons itemDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($iKey+1);?>_section<?echo ($sKey+1);?>"	><i class="pd-copy"></i></button>
 											<button type="button" class="menuTableButtons secondary itemDelete" 	title="<?echo _("Delete");?>"						><i class="pd-delete"></i></button>
@@ -398,6 +410,12 @@
 		</div>
 	</div>
 </form>
+
+<div id="modalImagesCrop" class="reveal-modal" data-options="closeOnBackgroundClick:false" data-reveal>
+  <h2>Images for crop.</h2>
+  <div id="contentModalImagesCrop"></div>
+  <!-- <a class="close-reveal-modal">&#215;</a> -->
+</div>
 
 
 <script type="text/javascript">

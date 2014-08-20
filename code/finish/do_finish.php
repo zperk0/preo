@@ -8,8 +8,10 @@
 	protect($liveFlag);
 	
 	$offFlag = $_POST['offFlag'];
-	protect($offFlag);
-	
+	protect($offFlag);	
+
+	$offFlagVerify = isset($_POST['offFlagVerify']) ? $_POST['offFlagVerify'] : 0;
+	protect($offFlagVerify);
 	//we use the user's token
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
 	
@@ -39,9 +41,13 @@
 			
 			$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/demo", $data, $apiAuth); //reset both flags (offline)
 			$curlResult = callAPI('PUT', $apiURL."venues/$venueID/live", $data, $apiAuth); //go live!
-			
-			$_SESSION['appPublished'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
-			header('location:'.$_SESSION['path'].'/dashboard'); //redirect to dash
+
+			if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+				$_SESSION['appPublished'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
+				header('location:'.$_SESSION['path'].'/dashboard'); //redirect to dash
+			} else {
+				return true;
+			}
 		}
 	}
 	else //take the app offline.
@@ -51,9 +57,12 @@
 		$data['demoFlag'] = false;
 		$jsonData = json_encode($data);
 		
-		$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/demo", $data, $apiAuth); //reset both flags (offline)
-		
-		$_SESSION['appOffline'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
-		header('location:'.$_SESSION['path'].'/dashboard'); //redirect to dash
+		if ( $offFlagVerify ) {
+			$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/live", $data, $apiAuth); //reset both flags (offline)
+		} else {
+			$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/demo", $data, $apiAuth); //reset both flags (offline)
+			$_SESSION['appOffline'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
+			header('location:'.$_SESSION['path'].'/dashboard'); //redirect to dash
+		}
 	}
 ?>

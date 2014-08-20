@@ -701,6 +701,7 @@ label.appTop {
   width: 301px;
   height: 636px;
   margin: 0 0.1em 3em;
+  position: relative;
 }
 
 #frame_iphone5 {
@@ -3439,7 +3440,7 @@ button.preodayButton.noclick{
   margin-top:-15px;
 }
 
-.content-modal, #expiredDialog{
+.content-modal, #expiredDialog, #noPaymentMethod{
   padding: 1.875em;
 }
 
@@ -3643,3 +3644,74 @@ button.preodayButton.noclick{
         color: white; }
       [data-preoabide] span.error, [data-preoabide] small.error {
         display: none; }
+
+
+.contentMail{
+  margin-bottom: 7.8em !important;
+}
+
+.colMenuItems{
+  overflow: hidden;
+}
+
+.colMenuItems > button, .colMenuItems > form{
+  float: left;
+  // margin-right: 1px;
+}
+
+#loadingDashboard{
+  display: none;
+}
+
+.venueMode{
+  position:absolute;
+  left:0;
+  top:-80px;
+  width:100%;
+}
+
+.venueMode span{  
+  color: #D7D9DA;
+  font-weight: normal;
+  display:block;
+}
+
+.switchModeWrapper{
+  margin-top:10px;
+  border:2px solid #d7d9da;
+  border-radius:8px;
+  font-size:90%;
+  height:36px;
+  padding:0;
+}
+
+.switchModeWrapper .switchDashboardMode:first-child{
+  border-top-left-radius:5px;
+  border-bottom-left-radius:5px;  
+}
+.switchDashboardMode:last-of-type{
+  border-top-right-radius:5px;
+  border-bottom-right-radius:5px;    
+  width:34%;
+}
+
+.switchDashboardMode{
+  text-align:center;
+  width:33%;
+  float:left;
+  color:#d7d9da;
+  padding:10px 0;
+
+  &:hover{
+    cursor:pointer;
+    background:#d7d9da;
+    color:$shopHeader;
+  }
+  &.active{
+    background:#d7d9da;
+    color:$shopHeader;
+    &:hover{     
+     cursor:default;
+    }
+  }
+}

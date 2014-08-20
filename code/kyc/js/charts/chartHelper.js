@@ -1,10 +1,10 @@
 angular.module('kyc.charts')
 .factory('ChartHelper',['$filter', 'TickInterval', function($filter, TickInterval) {
 
-	
+    
     function formatDate(timestamp){
-    	var date = new Date(timestamp);
-    	return  $filter('date')(date, "dd-MMM-yyyy")    	
+        var date = new Date(timestamp);
+        return  $filter('date')(date, "dd-MMM-yyyy")        
     }
 
     function getPercentage(data,oldData){

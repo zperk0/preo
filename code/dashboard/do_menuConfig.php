@@ -4,6 +4,7 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
+	require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/uploadFileMenuItem.php'); //uploadFile 
 	
 	//1 - if delete, then remove insert,edit
 	//2 - if insert, then remove edit
@@ -250,6 +251,24 @@
 				//New item ID
 				$item_id 	= $result['id'];
 				$item['id'] = $item_id; //update item-id in JSON
+
+				if ( isset($item['images']) ) {
+					foreach ($items['images'] as $Image) {
+						if(isset($_SERVER['PREO_UPLOAD_ROOT']))
+							$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'menuitem/';
+						else
+							$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/menuitem/';
+
+						cropImage( $PREO_UPLOAD_ROOT . '/temp/' . $Image->image, $PREO_UPLOAD_ROOT . '/fix/' . $Image->image, $Image->w, $Image->h, $Image->x, $Image->y, 99 );
+						unlink( $PREO_UPLOAD_ROOT . '/temp/' . $Image->image );
+
+						$data = array();
+						$data['image'] = $PREO_UPLOAD_ROOT . '/fix/' . $Image->image;
+						$jsonData 	= json_encode($data);
+						$curlResult = callAPI('POST', $apiURL."items/" . $item_id . "/image", $jsonData, $apiAuth); //item created
+						$result 	= json_decode($curlResult,true);
+					}
+				}
 				
 				//remove insert, edit tags for the item!
 				$item['insert'] = false;
@@ -262,6 +281,25 @@
 				$curlResult = callAPI('PUT', $apiURL."items/$item_id", $jsonData, $apiAuth); //item edited
 				$result 	= json_decode($curlResult,true);
 				
+
+
+				if ( isset($item['images']) ) {
+					foreach ($items['images'] as $Image) {
+						if(isset($_SERVER['PREO_UPLOAD_ROOT']))
+							$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'menuitem/';
+						else
+							$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/menuitem/';
+
+						cropImage( $PREO_UPLOAD_ROOT . '/temp/' . $Image->image, $PREO_UPLOAD_ROOT . '/fix/' . $Image->image, $Image->w, $Image->h, $Image->x, $Image->y, 99 );
+						unlink( $PREO_UPLOAD_ROOT . '/temp/' . $Image->image );
+
+						$data = array();
+						$data['image'] = $PREO_UPLOAD_ROOT . '/fix/' . $Image->image;
+						$jsonData 	= json_encode($data);
+						$curlResult = callAPI('POST', $apiURL."items/" . $item_id . "/image", $jsonData, $apiAuth); //item created
+						$result 	= json_decode($curlResult,true);
+					}
+				}
 				//remove edit tag for the item!
 				$item['edit'] 	= false;
 			}

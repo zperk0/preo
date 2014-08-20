@@ -4,13 +4,25 @@
 <?
 //resetting global vars
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/global_vars.php');
+
+	$curlResult = callAPI('GET', $apiURL."accounts/$accountId/paymentproviders", false, $apiAuth);
+	$dataJSON = json_decode($curlResult, true);
+	$connectedFlag = 0;	
+	if(!empty($dataJSON))
+	{	
+		foreach($dataJSON as $paymentProvider)
+		{
+			if(isset($paymentProvider['type']) && $paymentProvider['type'] == 'Stripe')
+				$connectedFlag = 1;
+		}
+	}
+		
 ?>
 <div class="row dashContentTop">
 	<div class="topSpacer"></div>
 	<div class="large-12 columns">
 		<h1 class=""><? echo _("Dashboard");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
 		<p class="venueCode"><?echo _("Your venue shortcode is")." <strong>".$_SESSION['venue_code']."</strong>";?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("This is the code your customers need to use to find your venue on 'My Order App'");?>"></i></p>
-		<p class="venueCode"><?echo _("Your app is currently in ")."<strong>$currentMode</strong>"._(" mode.");?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("LIVE - Your app is available on My Order App and is ready to take real orders.<br/><br/>DEMO - Your app is available on My Order App but does not take real orders.<br/><br/>OFFLINE - Your app is not available on My Order App.");?>"></i></p>
 	</div>
 </div>
 
@@ -36,7 +48,7 @@
 				<h6><?echo _("Returning users");?></h6>
 				<h1><?echo locale_number_format($_SESSION['venue_report_returningUsers'],0);?></h1>
 			</div>
-		</div>	
+		</div>			
 		<div class="large-7 columns dashChangeApp">
 			<div class="row">
 				<div class="large-12 columns">
@@ -105,7 +117,10 @@
 											}											
 										  $accountId = $_SESSION['account_id'];	  
 											$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
-											$accountFeatures = array_filter(json_decode($result),"filterActive");
+											$resultArray = json_decode($result);
+											if ( is_array($resultArray)) {
+												$accountFeatures = array_filter(json_decode($result),"filterActive");
+											}
 											if(is_array($accountFeatures) && count($accountFeatures) > 0) { ?> 
 												<div class='featuresList'> 
 												<? foreach($accountFeatures as $feat) { ?>
@@ -126,7 +141,17 @@
 			</div>
 		</div>
 	</div>
+
 	<div id="iphone5" class="large-4 columns">
+		<div class="venueMode">
+		 	<span><?echo _("Change app mode")?> <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("LIVE - Your app is available on My Order App and is ready to take real orders.<br/><br/>DEMO - Your app is available on My Order App but does not take real orders.<br/><br/>OFFLINE - Your app is not available on My Order App.");?>"></i></span>
+
+		 	<div class='switchModeWrapper columns'>
+				<div class='switchDashboardMode columns large-4 <? if ($currentMode === "OFFLINE") echo _("active") ?>'  data-mode='o' ><?echo _("OFFLINE")?> </div>
+				<div class='switchDashboardMode columns large-4 <? if ($currentMode === "DEMO") echo _("active") ?>' data-mode='d'><?echo _("DEMO")?> </div>
+				<div class='switchDashboardMode columns large-4 <? if ($currentMode === "LIVE") echo _("active") ?>' data-mode='<? if ($connectedFlag){echo ("l");} else {echo ("n");} ?>'><?echo _("LIVE")?> </div>
+			</div>
+		</div>
 		<div class="phoneContainer">
 			<div id="frame_iphone5" class="phone1">
 				<?if(isset($_SESSION['app_wallpaperId']) && $_SESSION['app_wallpaperId']!=1 && $_SESSION['app_wallpaperId']!=2 && $_SESSION['app_wallpaperId']!=3 && $_SESSION['app_wallpaperId']!=4 && $_SESSION['app_wallpaperId']!=5){?>
@@ -165,6 +190,26 @@
 	</div>
 </div>
 
+<div class="loading" id="loadingDashboard" ng-show="requests">
+  <div class="background-loading"></div>
+  <div class="loading-content">
+    <div class="spinner">
+      <div class="b1 se"></div>
+      <div class="b2 se"></div>
+      <div class="b3 se"></div>
+      <div class="b4 se"></div>
+      <div class="b5 se"></div>
+      <div class="b6 se"></div>
+      <div class="b7 se"></div>
+      <div class="b8 se"></div>
+      <div class="b9 se"></div>
+      <div class="b10 se"></div>
+      <div class="b11 se"></div>
+      <div class="b12 se"></div>
+    </div>
+  </div>
+</div>  
+
 <div id="expiredDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
     <header class="title-notification">Know your customer - 30 DAYS FREE TRIAL</header>
     <div class="container-modal-confirm"><? echo _("Your 30 day free trial 	of this Premium Feature has now expired. Would you like to purchase it?")?></div>      	    
@@ -178,17 +223,26 @@
     </p>  
 </div>
 
+<div id="noPaymentMethod" class="reveal-modal medium modal-preoday dashboard" data-reveal>
+    <header class="title-notification"><?echo _("Payment provider is not connected!")?></header>
+    <div class="container-modal-confirm"><? echo _("Before taking your app live you need to connect it to a payment providerso that you can start accepting payments and start getting paid!")?></div>      	    
+    <button class='positiveDismiss preodayButton' ><? echo _("CONNECT")?></button>
+    <button class='negativeDismiss preodayButton'><? echo _("CANCEL")?></button>    
+</div>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+
 		//TODO replace all this horrible code with the correct angular modules 
 		//----- start horrible code ------ 
 		var isShowAgain = window.localStorage.getItem("showDialogAgain_4");
 		var isShow = Number(window.localStorage.getItem("showDialog")) === 1 && (isShowAgain === null || Number(isShowAgain) === 1);
-		if (isShow) {
-			$('#expiredDialog').foundation('reveal', 'open');
-			$('.positiveDismiss').on('click',positiveDismiss);
-			$('.negativeDismiss').on('click',negativeDismiss);
+		
+		$('.positiveDismiss').on('click',positiveDismiss);
+		$('.negativeDismiss').on('click',negativeDismiss);
+		if (isShow) {		
+			$('#expiredDialog').foundation('reveal', 'open');			
 			$('.termsAndConditions').on("change",function(){
 				if ($(this).is(":checked")){
 					$('.secondaryIfNotTermsAndConditions').removeClass("secondary")
@@ -201,23 +255,35 @@
 		function positiveDismiss(){
 			var dialog = $(this).parent(".modal-preoday");
 			var dialogId = dialog.attr("id");
+			console.log('here',dialog);
 			if ($('.doNotShowAgain').is(':checked')) {
 				window.localStorage.setItem("showDialogAgain_4",0) 
-			}	
+			}				
 			switch (dialogId){
 				case "expiredDialog":
 					window.location.replace("/shop#/feature/4");
 					break;							
+				case "noPaymentMethod":
+					console.log('nopay');
+					window.location.replace("/payment");
+				break;
 			}
 		}
 
 		function negativeDismiss(){
+
 			var dialog = $(this).parent(".modal-preoday");
 			var dialogId = dialog.attr("id");
-			if ($('.doNotShowAgain').is(':checked')) {
-				//TODO add featureId dynamically
-				window.localStorage.setItem("showDialogAgain_4",0) 
-			}	
+			switch (dialogId){
+				case "expiredDialog":
+					if ($('.doNotShowAgain').is(':checked')) {
+						//TODO add featureId dynamically
+						window.localStorage.setItem("showDialogAgain_4",0) 
+					}
+					break;
+				default:
+					break;
+				}								
 			$('#'+dialogId).foundation('reveal', 'close');
 		}
 		//------  end horible code ------ 
