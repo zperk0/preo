@@ -122,7 +122,7 @@ function createThumbnail($source_url, $fileName, $destination_url, $newWidth, $n
 
 
 
-function uploadFile($fileUploadID, $fileLocation, $fileEXT, $fileMIME, $fileMIME2, $maxFileSize, $debug)
+function uploadFile($fileUploadID, $fileLocation, $folderMenu, $fileEXT, $fileMIME, $fileMIME2, $maxFileSize, $debug)
 {
 	if ( !is_array($fileUploadID['name']) ) {
 		$_FILES['file'] = array(
@@ -155,6 +155,12 @@ function uploadFile($fileUploadID, $fileLocation, $fileEXT, $fileMIME, $fileMIME
 		{
 			if ($_FILES["file"]["error"][$i] > 0)
 			{
+				$fileNames[] = array(
+					"status" => 'error',
+					"message" => "Return Code: " . $_FILES["file"]["error"][$i],
+				);
+
+				return $fileNames;
 				if($debug) echo "Return Code: " . $_FILES["file"]["error"][$i] . "<br />";
 				else return false;
 			}
@@ -213,7 +219,8 @@ function uploadFile($fileUploadID, $fileLocation, $fileEXT, $fileMIME, $fileMIME
 					if($debug) echo "Stored in: " . $destination;
 					if($debug) echo "Thumbnail Stored in: " . $destination_thumb;
 					
-					$image['image'] = "item_".$fileName. $fileEXT;
+					$image['status'] = 'success';
+					$image['url'] = $folderMenu . "/item_".$fileName. $fileEXT;
 					$fileNames[] = $image;
 					//return true;
 				}
@@ -222,8 +229,10 @@ function uploadFile($fileUploadID, $fileLocation, $fileEXT, $fileMIME, $fileMIME
 		}
 		else
 		{
-			echo "Invalid file";
-			//return false;
+			$fileNames[] = array(
+				"status" => 'error',
+				"message" => 'Invalid file',
+			);
 		}
 
 	}
@@ -231,7 +240,7 @@ function uploadFile($fileUploadID, $fileLocation, $fileEXT, $fileMIME, $fileMIME
 	return $fileNames;
 }
 
-function cropImage( $src, $dest, $width, $height, $x, $y, $quality = 90 ) {
+function cropImage( $src, $dest, $destFolder, $width, $height, $x, $y, $imgW, $imgH, $imgInitW, $imgInitH, $quality = 90 ) {
 	$quality = 90;
 
 	$ext = strtolower(substr($src, strrpos($src, '.')+1)); //this gets jpg, png, etc (note no .)
@@ -245,9 +254,13 @@ function cropImage( $src, $dest, $width, $height, $x, $y, $quality = 90 ) {
 	  $img_r = imagecreatefromjpeg($src) or die("Error Opening original");
     }
 
+	$resizedImage = imagecreatetruecolor($imgW, $imgH);
+	imagecopyresampled($resizedImage, $img_r, 0, 0, 0, 0, $imgW, 
+				$imgH, $imgInitW, $imgInitH);		
+
 	$dst_r = ImageCreateTrueColor( $width, $height );
 
-	imagecopyresampled($dst_r,$img_r,0,0, $x, $y,
+	imagecopyresampled($dst_r,$resizedImage,0,0, $x, $y,
 	    $width,$height, $width, $height);
 
     if($ext == "png")
@@ -258,6 +271,11 @@ function cropImage( $src, $dest, $width, $height, $x, $y, $quality = 90 ) {
     {
 	  imagejpeg($dst_r, $dest, $quality) or die("Cant save image");
     }
+
+	return array(array(
+			"status" => 'success',
+			"url" => $destFolder
+		  ));
 }
 
 ?>

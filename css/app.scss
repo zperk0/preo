@@ -1103,7 +1103,7 @@ tr {
 }
 
 .menuTable .menuTDPrice, .headerTable .menuTDPrice {
-  width: 125px;
+  width: 120px;
 }
 
 .eventTable .eventTDTime, .headerTable .eventTDTime {
@@ -1309,6 +1309,10 @@ tr {
   width: 168px;
   text-align: right;
   padding-right: 0px !important;
+}
+
+.menuTable .menuTDTools, .headerTable .menuTDTools.colMenuItems {
+  width: 195px;
 }
 
 .eventTable .eventTDTools, .headerTable .eventTDTools {
@@ -3655,7 +3659,7 @@ button.preodayButton.noclick{
 
 .colMenuItems > button, .colMenuItems > .contentForm{
   float: left;
-  // margin-right: 1px;
+  margin-right: 3px;
 }
 
 .btnViewImages{
@@ -3712,4 +3716,82 @@ button.preodayButton.noclick{
 .clickImageForView img{
   max-width: inherit;
   max-height: inherit;  
+}
+
+.itemUpload{
+  padding: 0px !important;
+}
+
+.pd-upload{
+  float: left;
+  background: url('/img/icon-uploader.jpg') left top no-repeat;
+  width: 23px;
+  height: 22px;
+}
+
+.footer-modalCrop, .header-modalCrop{
+  overflow: hidden;
+}
+
+.bg-uploader{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.progressImageCrop {
+  position: absolute;
+  top: 52%;
+  left: 20%;
+  width: 60%;
+  display: inline-block;
+  border: 1px solid #E5E5E5;
+  padding: 1px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display: none;
+}
+
+.barImageCrop{
+  background-color: #07A4DE;
+  width: 0%;
+  height: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.percentImageCrop{
+  display: none;
+}
+
+#modalImagesCrop{
+  padding: 35px 0;
+}
+
+#modalImagesCrop .content-modal{
+  position: relative;
+  padding-top: 1em;
+}
+
+#modalImagesCrop .preodayButton {
+  font-weight: 400;
+  font-size: 90%;
+  padding: 0.6em 1em;
+  min-width: 49%;
+  margin-bottom: 0px;
+}
+
+.spacing-modalCrop{
+  padding: 0 30px;
+}
+
+#title-modalCrop{
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+#menuConfigForm tbody .menuTDPrice{
+  text-align: right;
 }

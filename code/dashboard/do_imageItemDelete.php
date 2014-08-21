@@ -4,23 +4,21 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/SystemStatic.php');
 		
-	$imageID = $_POST['imageID'];
-	protect($imageID);
+	$idItem = $_POST['idItem'];
+	protect($idItem);
 	
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 
-	$curlResult = callAPI('GET', $apiURL."itemimages/$imageID", false, $apiAuth);
+	$curlResult = callAPI('GET', $apiURL."itemimages/$idItem", false, $apiAuth);
 	$Image = json_decode($curlResult,true);
 
-	if ( $Image ) {
-		if(isset($_SERVER['PREO_UPLOAD_ROOT']))
-			$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'menuitem/';
-		else
-			$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/menuitem/';
+	if ( $Image && isset($Image['image']) ) {
+		$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "" );
 
 			//kill menu
-		$curlResult = callAPI('DELETE', $apiURL."itemimages/$imageID", false, $apiAuth); //menu deleted
+		$curlResult = callAPI('DELETE', $apiURL."itemimages/$idItem", false, $apiAuth); //menu deleted
 		if ( isset($Image['imageThumb']) ) {
 			unlink( $PREO_UPLOAD_ROOT . $Image['imageThumb'] );	
 		}

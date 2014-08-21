@@ -611,389 +611,143 @@ $(document).ready(function() {
 		}
 	};
 
-	$(document).on('click', '.btnViewImages', function(){
-		$(this).next().find('.clearing-thumbs').children('li').eq(0).children('a').trigger('click');
-
-		setTimeout(function(){
-			$('.clearing-blackout').find('.clearing-thumbs').children('li').eq(0).children('a').trigger('click')
-		})
-	})
-
-	$(document).on('click', '.deleteImageItem', function(){
-		var $this = $(this);
-		var $li = $this.closest('li');
-		var id = $li.data('id');
-
-		var removeItems = function( $this, $li ){
-			var $list = $li.parent('ul').children('li');
-			var index = $list.index($li);
-			var length = $list.length;
-
-			if ( length > 1 ) {
-				if ( index == (length - 1)) {
-					$li.prev().children('a').trigger('click');
-				} else {
-					$li.next().children('a').trigger('click');
-				}
-
-				$li.remove();
-			} else {
-				var $container = $this.closest('.clearing-assembled');
-				$container.prev().remove();
-				$li.closest('.clearing-container').children('.clearing-close').trigger('click');
-				$container.remove();
-			}			
-		};
-
-		var isNumeric = function(n) {
-		  return !isNaN(parseFloat(n)) && isFinite(n);
-		}
-
-		if ( id ) {
-			$.post('/deleteImageItem', {imageID: id})
-				.done(function(){
-					removeItems( $this, $li );
-				})
-				.fail(function(){
-					noty({
-					  type: 'error',  layout: 'topCenter',
-					  text: 'Error for delete image'
-					});				
-				});
-		} else if ( isNumeric($li.data('image-upload')) ) {
-			var id = $li.data('image-upload');
-			var $input = $this.closest('table').find('input[name^=iName]');
-			var idItem = $input.data('id');
-
-			imagesMenu[idItem].splice(id, 1);
-			removeItems( $this, $li );
-		}
-	})
-
 	$("#logoUpForm").ajaxForm(options);
 
 	// images of item for uploader
 	var imagesMenu = {};
 
 	var $modalImagesCrop = $('#modalImagesCrop');
+	var $barImageCrop = $('.barImageCrop');
+	var $percentImageCrop = $('.percentImageCrop');
+	var $progressImageCrop = $('.progressImageCrop');
+	var $imageCrop = $('#imageCrop');
+	var $titleModalCrop = $('#title-modalCrop');
+	var $saveChangesModalCrop = $('#saveChangesModalCrop');
+	var $cancelModalImageCrop = $('#cancelModalImageCrop');
+	var $addPicture = $('#addPicture');
 
-	$(document).on('click', '.buttonCROP', function(){
-		var lengthImages = $('#listImagesCrop li').length;
+	var lastImageUpload = {};
+	var cropperInstance = null;
 
-		var image = imagesMenu[$(this).data('image-item')][$(this).data('index')];
-
-		if ( image ) {
-			image['croppedfinish'] = true;
-		}
-
-		if ( $(this).data('orbit-link') == 'image-' + lengthImages ) {
-			var idItem = $(this).data('image-item');
-			loadImageInDOM(idItem);
-			$modalImagesCrop.foundation('reveal', 'close');
-		} else {
-			var widthModal = image['width'] + 63;
-			$modalImagesCrop.animate({
-				width: widthModal,
-				left: '50%',
-				marginLeft: -(widthModal / 2)
-			});						
-		}
-	});	
-
-
-	// set coordinates for image crop
-	var setCoordinates = function (c, index, idItem)
-	{
-		var item = imagesMenu[idItem][index];
-
-		if ( item ) {				
-			item.x = c.x;
-			item.y = c.y;
-			item.x2 = c.x2;
-			item.y2 = c.y2;
-			item.w = c.w;
-			item.h = c.h;
-		}
-	}			
-
-	var instancesJcrop = [];
-
-	$modalImagesCrop.on('opened', function(){
-		$('#listImagesCrop').foundation('orbit').resize();
-		var $images = $('.imagesForCrop');
-		var $firstImage = $( $images[0] );
-
-		var image = imagesMenu[$firstImage.data('image-item')][$firstImage.data('index')];
-
-		if ( image ) {
-			var widthModal = image['width'] + 63;				
-
-			$modalImagesCrop.animate({
-				width: widthModal,
-				left: '50%',
-				marginLeft: -( widthModal / 2 )
-			});	
-		}			
-
-		// add jcrop in images
-		for (var i = $images.length - 1; i >= 0; i--) {
-			var $image = $( $images[i] );
-
-			var widthImage = $image.width();
-			var heightImage = $image.height();
-			var widthOfCrop = 600;
-			var heightOfCrop = 400;
-
-			var x = (widthImage - widthOfCrop) / 2;
-			var y = (heightImage - heightOfCrop) / 2;
-
-			$image.Jcrop({
-				index: $image.parent().data('index'),
-				idItem: $image.data('image-item'),
-				onChange: setCoordinates,
-				onSelect: setCoordinates,
-				setSelect:   [ x, y, widthOfCrop, heightOfCrop ],
-				maxSize: [widthOfCrop, heightOfCrop],
-				minSize: [widthOfCrop, heightOfCrop],
-				aspectRatio: 3 / 2
-			},function(){
-				instancesJcrop.push(this);
-
-				var $holders = $('.jcrop-holder').find('.jcrop-holder');
-
-				for (var i = $holders.length - 1; i >= 0; i--) {
-					var $holder = $( $holders[i] );
-
-					$holder.children().eq(0).remove();
-				};
-			});
-		};						
-	});
-
-	$modalImagesCrop.on('closed', function(){
-		var $images = $('.imagesForCrop');
-
-		for (var i = $images.length - 1; i >= 0; i--) {
-			var $image = $( $images[i] );
-			var idItem = $image.attr('data-image-item');
-
-			var index = $image.attr('data-index');
-			var image = imagesMenu[idItem][index];
-
-			if ( image && image.hasOwnProperty('cropped') && image.cropped && (!image.hasOwnProperty('croppedfinish') || !image.croppedfinish) ) {
-				imagesMenu[idItem].splice(index, 1);
-				$image.parent().remove();
-			}
-		};
-
-		for (var i = instancesJcrop.length - 1; i >= 0; i--) {
-			var api = instancesJcrop[i];
-
-			api.destroy();
-			instancesJcrop.splice(i, 1)
-		};
-	});	
-
-	var calculatePreview = function( $li, image ) {
-		var style = "";
-		
-		var rx = 175 / image.w;
-		var ry = 150 / image.h;
-
-		style += 'width: ' + Math.round(rx * image['width']) + 'px;';
-		style += 'height: ' + Math.round(ry * image['height']) + 'px;';
-		style += 'margin-left: -' + Math.round(rx * image.x) + 'px;';
-		style += 'margin-top: -' + Math.round(ry * image.y) + 'px;';
-
-		return style;
-	}
-
-	var calculatePreviewLarge = function( $li, image ) {
-		var style = "";
-		
-		var rx = image.w / image.w;
-		var ry = image.h / image.h;
-
-		style += 'width: ' + Math.round(rx * image.width) + 'px;';
-		style += 'height: ' + Math.round(ry * image.height) + 'px;';
-		style += 'margin-left: -300px !important;';
-		style += 'margin-top: -200px !important;';
-
-		return style;
-	}
-
-	var loadImageInDOM = function(idItem){
-		var images = imagesMenu[idItem];
-
-		var $input = $('.menuTable').find('input[data-id=' + idItem + ']');
-
-		// add new images in dom
-		if ( $input ) {
-			var $table = $input.closest('table');
-			var $ul = $table.find('.list-images-item');
-			if ( $ul && $ul.length ) {
-				var html = [];
-				for (var i = 0, len = images.length; i < len; i++) {
-					var image = images[i];
-
-
-					var style = calculatePreview( $ul.children('li').eq(0), image );
-
-					image['new'] = false;
-					html.push('<li class="clearing-featured-img item-image" data-image-upload="' + i + '">');
-					html.push('<a href="' + globalMPath + 'temp/' + image.image + '" data-item="' + idItem + '" class="clickImageForView">');
-					html.push('<span class="deleteImageItem">Delete</span>');
-					html.push('<img src="' + globalMPath + 'temp/' + image.image + '" alt="" style="' + style + '">');
-					html.push('</li>');
-				};
-				$ul.append(html.join(''));
-			} else {
-				var html = ['<a href="javascript:void(0)" class="btnViewImages">View images</a>'];
-				html.push('<ul class="clearing-thumbs list-images-item clearing-feature" data-clearing>');
-				for (var i = 0, len = images.length; i < len; i++) {
-					var image = images[i];
-					image['new'] = false;
-
-					var style = calculatePreview( null, image );
-
-					html.push('<li class="clearing-featured-img item-image" data-image-upload="' + i + '">');
-					html.push('<a href="' + globalMPath + 'temp/' + image.image + '" data-item="' + idItem + '" class="clickImageForView">');
-					html.push('<span class="deleteImageItem">Delete</span>');
-					html.push('<img src="' + globalMPath + 'temp/' + image.image + '" alt="" style="' + style + '">');
-					html.push('</li>');
-				};
-				html.push('</ul>');
-				$table.find('tbody tr:first td:last').append(html.join(''));
-				$(document).foundation('clearing','init'); 
-			}
-		} 				
-	}		
-
-	var styleOld;
-	$(document).on('click', '.clickImageForView', function(e){
-		e.preventDefault();
-		var idItem = $(this).data('item');
-
-		var image = imagesMenu[idItem][$(this).parent().data('image-upload')];
-
-		if (image && image.hasOwnProperty('cropped') && image.cropped && image.hasOwnProperty('croppedfinish') && image.croppedfinish) {
-			var style = calculatePreviewLarge( $(this).siblings('img'), image )
-
-			if ( !styleOld ) {
-				styleOld = $('.clearing-container .visible-img img').attr('style');
-			}
-			$('.clearing-container .contentImageClearing').addClass('active');
-			$('.clearing-container .visible-img img').attr('style', style);
-		}
+	$(document).on('click', '#cancelModalImageCrop', function(){
+		$modalImagesCrop.foundation('reveal', 'close');
+		cropperInstance.destroy();
 	})
 
-	$(document).on('click', '.clickImagesSaved', function(e){
-		e.preventDefault();
-		$('.clearing-container .contentImageClearing').removeClass('active');
-		$('.clearing-container .visible-img img').attr('style', styleOld);
+	$(document).on('click', '#saveChangesModalCrop', function(){
+
+		if ( lastImageUpload ) {
+			imagesMenu[lastImageUpload.idItem] = [{
+				cropped: true,
+				url: lastImageUpload.url
+			}]
+		}
+
+		$modalImagesCrop.foundation('reveal', 'close');
+		cropperInstance.destroy();
 	})
 
-	//ajax form upload
-	var optionsMenuItem = {
-		target: this, 
-		url: '/uploadMenuItemImage',
-		success: function(responseText, statusText, xhr, $form) { 
-			--postImage;
+	$(document).on('click', '.itemUpload', function(){
 
-			var $table = $form.closest('table');
-			var $input = $table.find('input[name^=iName]');
+		var $table = $(this).closest('table');
+		var $input = $table.find('input[name^=iName]');		
 
-			var idItem = $input.data('id');
-			$input.data('edit', true);
+		var imageUrl = $(this).data('image-url');
+		var idItem = $input.data('id');
 
-			var arrImages = JSON.parse(responseText);
-
-			noty({
-			  type: 'success',
-			  text: arrImages.length + ' images uploaded successfully.'
-			});
-
-			if ( imagesMenu[idItem] ) {
-				imagesMenu[idItem] = imagesMenu[idItem].concat(arrImages);
-			} else {
-				imagesMenu[idItem] = arrImages;
+		if ( imageUrl ) {
+			if ( !imagesMenu.hasOwnProperty(idItem) ) {
+				imagesMenu[idItem] = [{
+					saved: true,
+					cropped: false,
+					url: imageUrl
+				}]
 			}
+		}
 
-			var htmlImages = ['<ul data-orbit  data-options="timer:false; timer_speed: 0; pause_on_hover: false; bullets: false; navigation_arrows: false;" id="listImagesCrop">'];
+		$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
 
-			var indexSlider = 0;
-			var itensModal = 0;
-			for (var i = 0, len = imagesMenu[idItem].length; i < len; i++) {
-				var image = imagesMenu[idItem][i];
-				if ( image.hasOwnProperty('new') && image['new'] && image['cropped'] ) {
-					++itensModal;
-					htmlImages.push('<li data-index="' + i + '" data-orbit-slide="image-' + indexSlider + '">');
-					htmlImages.push('<img src="' + globalMPath + 'temp/' + image.image + '" data-index="' + i + '" data-image-item="' + idItem + '" class="imagesForCrop" alt="" />');
-					htmlImages.push('<div class="containerButtonsCrop"><button type="button" data-index="' + i + '" data-image-item="' + idItem + '" data-orbit-link="image-' + (indexSlider + 1) + '" class="buttonCROP">CROP</button></div>')
-					htmlImages.push('</li>');
+		$titleModalCrop.text($input.val());
 
-					++indexSlider;
+		lastImageUpload = null;
+
+		cropperInstance = new Croppic('croppic', {
+			idItem: idItem,
+			customUploadButtonId: 'addPicture',
+			uploadUrl: '/uploadMenuItemImage',
+			cropUrl: '/uploadMenuItemImage',
+			onBeforeImgUpload: function(){
+				$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+				$cancelModalImageCrop.addClass('secondary').attr('disabled', 'disabled');
+				$addPicture.addClass('secondary').attr('disabled', 'disabled');
+
+	            var percentVal = '0%';
+	            $barImageCrop.width(percentVal);
+	            $percentImageCrop.html(percentVal);			
+	            $progressImageCrop.show();				
+			},
+	        onUploadProgress: function(event, position, total, percentComplete) {
+	            var percentVal = percentComplete + '%';
+	            $barImageCrop.width(percentVal);
+	            $percentImageCrop.html(percentVal);
+	        },
+			onAfterImgUpload: function(){
+				$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
+				$progressImageCrop.hide();
+			},
+			onBeforeImgCrop: function(){
+	            var percentVal = '0%';
+	            $barImageCrop.width(percentVal);
+	            $percentImageCrop.html(percentVal);			
+	            $progressImageCrop.show();				
+				$cancelModalImageCrop.addClass('secondary').attr('disabled', 'disabled');
+			},
+			onAfterImgCrop:		function(){ 
+				lastImageUpload = {
+					saved: false,
+					idItem: this.options.idItem,
+					url: this.croppedImg.attr('src')
+				};
+
+				$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
+				$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
+				$progressImageCrop.hide();
+			},
+			onRemoveCroppedImage: function(){
+				var idItem = this.options.idItem;
+				var image = imagesMenu[idItem];
+
+				if ( image && image[0].saved ) {
+					$.post('/deleteImageItem', {idItem: idItem.replace('item', '')})
+						.done(function(){
+							imagesMenu[idItem] = null;
+						})
+						.fail(function(){
+							noty({
+							  type: 'error',  layout: 'topCenter',
+							  text: 'Error for delete image'
+							});
+						});
 				}
-			};
-			htmlImages.push('</ul>');		
 
-			if ( itensModal ) {
-				$('#contentModalImagesCrop').html(htmlImages.join(''));
-			} else {
-				loadImageInDOM( idItem );
+				$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+				$addPicture.removeClass('secondary').removeAttr('disabled', 'disabled');
 			}
+		});
 
-			// bugfix for 1 item in orbit carousel foundation
-			if ( imagesMenu[idItem].length === 1 ) {
-				$('#listImagesCrop').bind('click', function(){
-					var height = $(this).height();
-					$(this).attr('style', 'height: ' + height + 'px !important');
+		if ( imagesMenu.hasOwnProperty(idItem) && imagesMenu[idItem] ) {
+			cropperInstance.destroy();			
+			cropperInstance.obj.append('<img class="croppedImg" src="'+imagesMenu[idItem][0].url+'">');			
+			cropperInstance.croppedImg = cropperInstance.obj.find('.croppedImg');
+			cropperInstance.init();
 
-					$('.orbit-slide-number span').eq(0).text('1');
-				});
-			}
-
-			
-			$(document).foundation('orbit', 'reflow');
-			
-			$('.buttonCROP[data-orbit-link="image-' + indexSlider + '"]').text("FINISH");
-
-			$('#loadingMenuConfig').hide();
-			if ( itensModal ) {
-				$modalImagesCrop.foundation('reveal', 'open');
-			}
-		},
-		error: function() { 
-			$('#loadingMenuConfig').hide();
-			noty({
-			  type: 'error',  layout: 'topCenter',
-			  text: 'Error uploading file'
-			});
-
-			--postImage;
-		},
-		beforeSubmit: function(arr, $form, options) { 
-			var acceptedExts = [".jpg", ".jpeg",".png"];
-			var filename = $form.children('input:file').val();
-			filename = filename.toLowerCase();
-			++postImage;
-			if(searchArray(filename,acceptedExts))
-			{			
-				$('#loadingMenuConfig').show();
-				return true;
-			}
-			else
-			{
-				noty({
-				  type: 'error',  layout: 'topCenter',
-				  text: 'Incorrect Image File'
-				});
-				
-				return false;
-			}
+			$addPicture.addClass('secondary').attr('disabled', 'disabled');
+		} else {
+			$addPicture.removeClass('secondary').removeAttr('disabled', 'disabled');
 		}
-	};	
-	$(".formImageMenuItem").ajaxForm(optionsMenuItem);
+
+		$modalImagesCrop.foundation('reveal', 'open');
+	});
 	
 	//ajax form upload
 	var optionsBG = { 
@@ -1112,13 +866,7 @@ $(document).ready(function() {
 		var content = $(this).val();
 		$("#subHeading").html(content);
 	});
-	
-	/* $("#textColour").minicolors({
-		change: function(hex, opacity) {
-			//alert(hex);
-		}
-	}); */
-	
+
 	$(".visibleUpload, #logoReset").on('click', function() {
 		$(".visibleUpload").slideToggle();
 		$(".hiddenUpload").slideToggle();
@@ -1346,23 +1094,6 @@ $(document).ready(function() {
 		$ele.find('input[name^=oName], input[name^=oPrice], input[name^=oVisi]').each(function() {
 			$(this).removeAttr('required');
 		});
-		
-/*		if( ($ele.prev().prev().hasClass('subHeaderTR')) && ( ($ele.next().hasClass('subHeaderTR')) || ($ele.next().hasClass('xtraModTR')) ) )
-		{	
-			//add data-attribute
-			$ele.prev().prev('.subHeaderTR').find('input[name^=iMod]').attr('data-delete', true);
-			$ele.prev().prev('.subHeaderTR').find('input[name^=iMod]').data('delete', true);
-			//remove required
-			$ele.prev().prev('.subHeaderTR').find("input[name^=iMod], select[name^=iModType]").each(function() {
-				$(this).removeAttr('required');
-			});
-			
-			$ele.prev().prev('.subHeaderTR').hide();
-			$ele.prev().hide();
-			
-			
-			$("#"+itemID+"_modCountAct").val(parseInt($("#"+itemID+"_modCountAct").val())-1);
-		}*/
 		
 		//bye-bye
 		$(this).parents("tr:first").hide();
@@ -1632,13 +1363,6 @@ $(document).ready(function() {
 			$newTab.find('.subHeaderTR').remove();
 			$newTab.find('.optionTR').remove();
 		}
-
-		var htmlForm = ['<form action="" method="POST" class="formImageMenuItem" enctype="multipart/form-data">'];
-		htmlForm.push('<button type="button" class="menuTableButtons doImageMenuItem" title="'+ _tr("UPLOAD") + '"><i class="pd-upload"></i></button>');
-		htmlForm.push('<input type="file" multiple="multiple" name="picFile[]" accept="image/png;image/jpg;image/jpeg" class="hide picImageMenuItem" />');
-		htmlForm.push('</form>');
-
-		$newTab.find('.contentForm').html(htmlForm.join(''));
 			$newTab.addClass('table'+section);
 		
 		//replace ids with incremented value and make value = default value
@@ -1755,8 +1479,6 @@ $(document).ready(function() {
 		$($newTab).slideRow('down');
 		if($newTab.find('.itemEdit').is(':visible')) $newTab.find('.itemEdit').trigger('click');
 		
-		// $(document).foundation('abide', 'events');
-		$newTab.find(".formImageMenuItem").ajaxForm(optionsMenuItem);
 		activeUploadImageItem($newTab.find('.doImageMenuItem'), $newTab.find('.picImageMenuItem'));
 
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
@@ -2367,20 +2089,12 @@ $(document).ready(function() {
 							menuSectionOneNivelItem['venueId'] 		= $('#venueID').val();
 							menuSectionOneNivelItem['sectionId'] 	= menuSecionOneNivel['id'];
 							
-							if ( $inputName.data('delete') ) {
-								var $list = $tableSectionUnique.find('.list-images-item');
-
-								if ( $list && $list.length ) {
-									menuSectionOneNivelItem['images'] = [];
-									for (var z = 0, len = $list.length; z < len; z++) {
-										var $li = $( $list[z] );
-										if ( $li && $li.length ) {
-											menuSectionOneNivelItem['images'].push($li.data('id'));
-										}
-									};
-								}
-							} else {
+							if ( !$inputName.data('delete') ) {
 								menuSectionOneNivelItem['images'] 		= imagesMenu[iID];
+
+								if( !menuSectionOneNivelItem['edit'] && !menuSectionOneNivelItem['insert'] && !menuSectionOneNivelItem['delete'] ) {
+									menuSectionOneNivelItem['edit'] = true;
+								}
 							}
 							//MODIFIERS
 							menuSectionOneNivelItem['modifiers'] = {};
@@ -2564,21 +2278,18 @@ $(document).ready(function() {
 
 						if ( Object.keys(imagesIDS).length > 0 ) {
 							$.each(imagesIDS, function( index, value ){
-
-								if ( value ) {
-									var $input = $('.menuTable').find('input[data-id=' + index + ']');
-									var $table = $input.closest('table');
-									var $ul = $table.find('.list-images-item');
-									
-									for (var i = 0, len = value.length; i < len; i++) {
-										var $li = $ul.find('li[data-image-upload="' + i + '"]');
-										if ( $li && $li.length ) {
-											$li.removeAttr('data-image-upload');
-											$li.attr('data-id', value[i]);
+								if ( value && value.length ) {
+									if ( value[0] instanceof Object ) {
+										if (value[0].hasOwnProperty('replace')) {
+											imagesMenu[value[0].id] = [{
+												saved: true,
+												url: imagesMenu[index][0].url,
+												cropped: true
+											}]
 										}
-									};
+									}
+									imagesMenu[index][0].saved = true;
 								}
-
 							})
 						}
 						

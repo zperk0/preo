@@ -204,20 +204,18 @@
 			{
 				if(!preg_match('/i$/',$item['id'])) //skip unsaved items (123i)
 				{
-					foreach ($item['images'] as $keyImage => $idImage) {
-						$curlResult = callAPI('GET', $apiURL."itemimages/$idImage", false, $apiAuth);
-						$Image = json_decode($curlResult,true);
+					$curlResult = callAPI('GET', $apiURL."itemimages/$item_id", false, $apiAuth);
+					$Image = json_decode($curlResult,true);
 
-						if ( $Image ) {
-							$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "/menuitem/" );
+					if ( $Image ) {
+						$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "" );
 
-								//kill menu
-							$curlResult = callAPI('DELETE', $apiURL."itemimages/$idImage", false, $apiAuth); //menu deleted
-							if ( isset($Image['imageThumb']) ) {
-								unlink( $PREO_UPLOAD_ROOT . $Image['imageThumb'] );	
-							}
-							unlink( $PREO_UPLOAD_ROOT .  $Image['image'] );
+							//kill menu
+						$curlResult = callAPI('DELETE', $apiURL."itemimages/$item_id", false, $apiAuth); //menu deleted
+						if ( isset($Image['imageThumb']) ) {
+							unlink( $PREO_UPLOAD_ROOT . $Image['imageThumb'] );	
 						}
+						unlink( $PREO_UPLOAD_ROOT .  $Image['image'] );
 					}
 
 					foreach($item['modifiers'] as $modifier)
@@ -263,32 +261,35 @@
 				$curlResult = callAPI('POST', $apiURL."items", $jsonData, $apiAuth); //item created
 				$result 	= json_decode($curlResult,true);
 				
+
 				//save old - new id relationship
 				$newIDs['item'.$item_id] = 'item'.$result['id'];
 				$newImages['item' . $item_id] = array();
 				
 				//New item ID
+				$oldItemId = $item_id;
 				$item_id 	= $result['id'];
 				$item['id'] = $item_id; //update item-id in JSON
 
 				if ( isset($item['images']) ) {
+					$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "/menuitem/" );
 					foreach ($item['images'] as $Image) {
-						$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "/menuitem/" );
+						if ( isset($Image['cropped']) && $Image['cropped'] ) {
+							// cropImage( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'], $PREO_UPLOAD_ROOT . 'fix/' . $Image['image'], $Image['w'], $Image['h'], $Image['x'], $Image['y'], 99 );
 
-						if ( $Image['cropped'] ) {
-							cropImage( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'], $PREO_UPLOAD_ROOT . 'fix/' . $Image['image'], $Image['w'], $Image['h'], $Image['x'], $Image['y'], 99 );
-						} else {
-							copy($PREO_UPLOAD_ROOT . 'temp/' . $Image['image'], $PREO_UPLOAD_ROOT . 'fix/' . $Image['image']);
+							$newImage = explode('/', $Image['url']);
+							$newImage = $newImage[ count($newImage) - 1 ];
+							copy($PREO_UPLOAD_ROOT . '/temp/' . $newImage, $PREO_UPLOAD_ROOT . '/fix/' . $newImage);
+							unlink($PREO_UPLOAD_ROOT . '/temp/' . $newImage);
+
+							$data = array();
+							$data['image'] = '/menuitem/fix/' . $newImage;
+							$data['itemId'] = $item_id;
+							$jsonData 	= json_encode($data);
+							$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
+							$result 	= json_decode($curlResult,true);
+							$newImages['item' . $oldItemId][] = array('id' => 'item' . $item_id, 'replace' => true);
 						}
-						unlink( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'] );
-
-						$data = array();
-						$data['image'] = '/menuitem/fix/' . $Image['image'];
-						$data['itemId'] = $item_id;
-						$jsonData 	= json_encode($data);
-						$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
-						$result 	= json_decode($curlResult,true);
-						$newImages['item' . $item_id][] = $result['id'];
 					}
 				}
 				
@@ -306,21 +307,25 @@
 				if ( !isset($newImages['item' . $item_id]) ) {
 					$newImages['item' . $item_id] = array();
 				}
-				
 				if ( isset($item['images']) ) {
 					$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "/menuitem/" );
-
 					foreach ($item['images'] as $Image) {
-						cropImage( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'], $PREO_UPLOAD_ROOT . 'fix/' . $Image['image'], $Image['w'], $Image['h'], $Image['x'], $Image['y'], 99 );
-						unlink( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'] );
+						if ( isset($Image['cropped']) && $Image['cropped'] ) {
+							// cropImage( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'], $PREO_UPLOAD_ROOT . 'fix/' . $Image['image'], $Image['w'], $Image['h'], $Image['x'], $Image['y'], 99 );
 
-						$data = array();
-						$data['image'] = '/menuitem/fix/' . $Image['image'];
-						$data['itemId'] = $item_id;
-						$jsonData 	= json_encode($data);
-						$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
-						$result 	= json_decode($curlResult,true);
-						$newImages['item' . $item_id][] = $result['id'];
+							$newImage = explode('/', $Image['url']);
+							$newImage = $newImage[ count($newImage) - 1 ];
+							copy($PREO_UPLOAD_ROOT . '/temp/' . $newImage, $PREO_UPLOAD_ROOT . '/fix/' . $newImage);
+							unlink($PREO_UPLOAD_ROOT . '/temp/' . $newImage);
+
+							$data = array();
+							$data['image'] = '/menuitem/fix/' . $newImage;
+							$data['itemId'] = $item_id;
+							$jsonData 	= json_encode($data);
+							$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
+							$result 	= json_decode($curlResult,true);
+							$newImages['item' . $item_id][] = $result['id'];							
+						}
 					}
 				}
 				//remove edit tag for the item!
