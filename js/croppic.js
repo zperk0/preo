@@ -15,7 +15,6 @@
 
 		// DEFAULT OPTIONS
 		that.options = {
-			idItem: 0,
 			uploadUrl:'',
 			uploadData:{},
 			cropUrl:'',
@@ -35,9 +34,7 @@
 			onImgDrag: null,
 			onImgZoom: null,
 			onBeforeImgCrop: null,
-			onAfterImgCrop: null,
-			onRemoveCroppedImage: null,
-			onUploadProgress: null
+			onAfterImgCrop: null
 		};
 
 		// OVERWRITE DEFAULT OPTIONS
@@ -129,11 +126,6 @@
 			if( !$.isEmptyObject(that.croppedImg)){
 			
 				that.cropControlRemoveCroppedImage.on('click',function(){ 
-
-					if ( typeof that.options.onRemoveCroppedImage === 'function' ) {
-						that.options.onRemoveCroppedImage.call(that);
-					} 
-
 					that.croppedImg.remove();
 					$(this).hide();
 					
@@ -161,8 +153,8 @@
 						formData.append( key , that.options.uploadData[key] );	
 					}
 				}
-
-				var settings = {
+				
+				$.ajax({
                     url: that.options.uploadUrl,
                     data: formData,
                     context: document.body,
@@ -170,13 +162,8 @@
                     contentType: false,
                     processData: false,
                     type: 'POST'
-				};
-
-				var xhr = new XMLHttpRequest();
-
-				var transferComplete = function( data ){
-					var response = jQuery.parseJSON(data);
-
+				}).always(function(data){
+					response = jQuery.parseJSON(data);
 					if(response.status=='success'){
 						
 						that.imgInitW = that.imgW = response.width;
@@ -200,32 +187,11 @@
 						that.obj.append('<p style="width:100%; height:100%; text-align:center; line-height:'+that.objH+'px;">'+response.message+'</p>');
 						that.hideLoader();
 						setTimeout( function(){ that.reset(); },2000)
-					}					
-				};
+					}
+					
 
-		        if (that.options.onUploadProgress) {
-	                xhr.upload.addEventListener('progress', function(event) {
-	                    var percent = 0;
-	                    var position = event.loaded || event.position;
-	                    var total = event.total;
-	                    if (event.lengthComputable) {
-	                        percent = Math.ceil(position / total * 100);
-	                    }
-	                    that.options.onUploadProgress(event, position, total, percent);
-	                }, false);
-		        }
-
-				xhr.onreadystatechange = function (aEvt) {
-				  if (xhr.readyState == 4) {
-				     if(xhr.status == 200) {
-				     	transferComplete( xhr.responseText );
-				     }
-				  }
-				};
-				xhr.addEventListener('load', transferComplete, false);
-				xhr.open('POST', that.options.uploadUrl, true);
-				xhr.send(formData);		        
-
+				});
+				
 			});
 		
 		},

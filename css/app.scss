@@ -3795,3 +3795,9 @@ button.preodayButton.noclick{
 #menuConfigForm tbody .menuTDPrice{
   text-align: right;
 }
+
+#modalImagesCrop img{
+  max-width: inherit;
+  width: auto !important;
+  height: auto !important;
+}

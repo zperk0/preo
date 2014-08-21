@@ -672,7 +672,6 @@ $(document).ready(function() {
 		lastImageUpload = null;
 
 		cropperInstance = new Croppic('croppic', {
-			idItem: idItem,
 			customUploadButtonId: 'addPicture',
 			uploadUrl: '/uploadMenuItemImage',
 			cropUrl: '/uploadMenuItemImage',
@@ -686,11 +685,6 @@ $(document).ready(function() {
 	            $percentImageCrop.html(percentVal);			
 	            $progressImageCrop.show();				
 			},
-	        onUploadProgress: function(event, position, total, percentComplete) {
-	            var percentVal = percentComplete + '%';
-	            $barImageCrop.width(percentVal);
-	            $percentImageCrop.html(percentVal);
-	        },
 			onAfterImgUpload: function(){
 				$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
 				$progressImageCrop.hide();
@@ -705,35 +699,42 @@ $(document).ready(function() {
 			onAfterImgCrop:		function(){ 
 				lastImageUpload = {
 					saved: false,
-					idItem: this.options.idItem,
+					idItem: this.idItem,
 					url: this.croppedImg.attr('src')
 				};
 
 				$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
 				$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
 				$progressImageCrop.hide();
-			},
-			onRemoveCroppedImage: function(){
-				var idItem = this.options.idItem;
-				var image = imagesMenu[idItem];
-
-				if ( image && image[0].saved ) {
-					$.post('/deleteImageItem', {idItem: idItem.replace('item', '')})
-						.done(function(){
-							imagesMenu[idItem] = null;
-						})
-						.fail(function(){
-							noty({
-							  type: 'error',  layout: 'topCenter',
-							  text: 'Error for delete image'
-							});
-						});
-				}
-
-				$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
-				$addPicture.removeClass('secondary').removeAttr('disabled', 'disabled');
 			}
 		});
+		
+		cropperInstance.idItem = idItem;
+		cropperInstance.onUploadProgress = function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            $barImageCrop.width(percentVal);
+            $percentImageCrop.html(percentVal);
+        };
+        cropperInstance.onRemoveCroppedImage = function(){
+			var idItem = this.idItem;
+			var image = imagesMenu[idItem];
+
+			if ( image && image[0].saved ) {
+				$.post('/deleteImageItem', {idItem: idItem.replace('item', '')})
+					.done(function(){
+						imagesMenu[idItem] = null;
+					})
+					.fail(function(){
+						noty({
+						  type: 'error',  layout: 'topCenter',
+						  text: 'Error for delete image'
+						});
+					});
+			}
+
+			$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+			$addPicture.removeClass('secondary').removeAttr('disabled', 'disabled');
+		};
 
 		if ( imagesMenu.hasOwnProperty(idItem) && imagesMenu[idItem] ) {
 			cropperInstance.destroy();			

@@ -3456,6 +3456,9 @@ label.error {
     .reveal-modal.small {
       margin-left: -20%;
       width: 40%; }
+    .reveal-modal.xsmall {
+      margin-left: -21%;
+      width: 43%; }
     .reveal-modal.medium {
       margin-left: -30%;
       width: 60%; }
@@ -3465,6 +3468,13 @@ label.error {
     .reveal-modal.xlarge {
       margin-left: -47.5%;
       width: 95%; } }
+
+@media only screen and (min-width: 768px) and (max-width: 1500px) {
+    .reveal-modal.xsmall {
+      margin-left: -25%;
+      width: 50%; }
+}
+
 @media print {
   .reveal-modal {
     background: white !important; } }

@@ -407,14 +407,8 @@
 		</div>
 	</div>
 </form>
-<!-- 
-<div id="modalImagesCrop" class="reveal-modal" data-options="closeOnBackgroundClick:false" data-reveal>
-  <h2>Images for crop.</h2>
-  <div id="contentModalImagesCrop"></div>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
- -->
-<div id="modalImagesCrop" class="reveal-modal modal-preoday tiny" data-options="closeOnBackgroundClick:false" data-reveal>	
+
+<div id="modalImagesCrop" class="reveal-modal modal-preoday xsmall" data-options="closeOnBackgroundClick:false" data-reveal>	
 	<form action="" method="POST" class="formImageMenuItem" enctype="multipart/form-data">
 		<div class="header-modalCrop spacing-modalCrop">
 			<header class="title-notification" id="title-modalCrop">Name of item</header>
@@ -424,9 +418,6 @@
 		
 		<div class="content-modal">
 			<div id="croppic"></div>
-<!-- 			<div class="bg-uploader">
-	<img src="/img/backgroundUploader.png" alt="" id="imageCrop" />
-</div> -->
 			<div class="progressImageCrop">
 			    <div class="barImageCrop"></div >
 			    <div class="percentImageCrop">0%</div>

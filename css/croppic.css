@@ -1,6 +1,6 @@
 			#croppic{
-				width: 328px;  /* MANDATORY */
-				height: 219px; /* MANDATORY */
+				width: 600px;  /* MANDATORY */
+				height: 400px; /* MANDATORY */
 				position: relative;  /* MANDATORY */
 				
 				box-sizing: content-box;
