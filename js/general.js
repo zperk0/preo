@@ -611,172 +611,6 @@ $(document).ready(function() {
 		}
 	};
 	$("#logoUpForm").ajaxForm(options);
-
-	var imagesMenu = {};
-
-	//ajax form upload
-	var optionsMenuItem = {
-		target: this, 
-		url: '/uploadMenuItemImage',
-		success: function(responseText, statusText, xhr, $form) { 
-			noty({
-			  type: 'success',
-			  text: 'Uploaded!'
-			});
-
-			--postImage;
-			//console.log('resp:',responseText)
-			//alert(responseText);
-
-			var idItem = $form.closest('table').attr('id');
-
-			var arrImages = JSON.parse(responseText);
-
-			if ( imagesMenu[idItem] ) {
-				imagesMenu[idItem].concat(arrImages);
-			} else {
-				imagesMenu[idItem] = arrImages;
-			}
-
-			var htmlImages = ['<ul data-orbit  data-options="timer:false; timer_speed: 0; pause_on_hover: false; bullets: false; navigation_arrows: false;" id="listImagesCrop">'];
-
-			var indexSlider = 0;
-			for (var i = 0, len = imagesMenu[idItem].length; i < len; i++) {
-				var image = imagesMenu[idItem][i];
-				if ( image.hasOwnProperty('new') && image['new'] ) {
-					htmlImages.push('<li data-index="' + i + '" data-orbit-slide="image-' + indexSlider + '">');
-					htmlImages.push('<img src="' + globalMPath + 'temp/' + image.image + '" class="imagesForCrop" alt="" />');
-					htmlImages.push('<div class="containerButtonsCrop"><button type="button" data-orbit-link="image-' + (indexSlider + 1) + '" class="buttonCROP">CROP</button></div>')
-					htmlImages.push('</li>');
-
-					++indexSlider;
-				}
-			};
-			htmlImages.push('</ul>');
-
-			$('#contentModalImagesCrop').html(htmlImages.join(''));
-			$(document).foundation('orbit', 'reflow');
-			
-			$('.buttonCROP[data-orbit-link="image-' + indexSlider + '"]').text("CONCLUIR");
-
-			$(document).on('click', '.buttonCROP', function(){
-				var lengthImages = $('#listImagesCrop li').length;
-
-				if ( $(this).data('orbit-link') == 'image-' + lengthImages ) {
-					$('#modalImagesCrop').foundation('reveal', 'close');
-				}
-			});
-
-			function setCoordinates(c, index)
-			{
-				var item = imagesMenu[idItem][index];
-				item.x = c.x;
-				item.y = c.y;
-				item.x2 = c.x2;
-				item.y2 = c.y2;
-				item.w = c.w;
-				item.h = c.h;
-
-				console.log(item);
-			}			
-
-	
-
-			$('#modalImagesCrop').on('opened', function(){
-				$('#listImagesCrop').foundation('orbit').resize();
-
-				var $images = $('.imagesForCrop');
-
-				for (var i = $images.length - 1; i >= 0; i--) {
-					var $image = $( $images[i] );
-
-					var widthOfImage = $image.width();
-					var widthOfCrop = widthOfImage / 2;
-					var heightOfImage = $image.height();
-					var heightOfCrop = heightOfImage / 2;
-
-					var x = widthOfCrop / 2;
-					var y = heightOfCrop / 2;
-
-					$image.Jcrop({
-						onChange: (function( index ) {
-							return function( c ) {
-								setCoordinates(c, index);
-							};
-						}( $image.parent().data('index') )),
-						onSelect: (function( index ) {
-							return function( c ) {
-								setCoordinates(c, index);
-							};
-						}( $image.parent().data('index') )),
-						setSelect:   [ x, y, widthOfCrop + x, heightOfCrop + y ],
-						aspectRatio: 3 / 2
-					});				
-				};						
-			});
-			$('#modalImagesCrop').foundation('reveal', 'open');
-
-
-/*			responseText=responseText.replace('_thumb.png','');
-			
-			content="<img src='"+globalLPath+responseText+"_thumb.png'/>";
-			$("#appHeading").html(content);
-			$("#aHeading").val(' ');
-			$("#picFileName").val(responseText);
-			
-			//clear for new file
-			$("#picFile").val('');
-			
-			//show button again
-			$('#lo-loading').hide();
-			$('#doLogoUp').show();*/
-		},
-		error: function() { 
-			noty({
-			  type: 'error',  layout: 'topCenter',
-			  text: 'Error uploading file'
-			});
-
-			--postImage;
-			
-			//clear for new file
-			$("#picFile").val('');
-			
-			//show button again
-			$('#lo-loading').hide();
-			$('#doLogoUp').show();
-		},
-		beforeSubmit: function(arr, $form, options) { 
-			++postImage;
-/*			var acceptedExts = new Array(".png");
-			var filename = $("#picFile").val();
-			filename = filename.toLowerCase();
-			if(searchArray(filename,acceptedExts))
-			{
-				//hide button again
-				$('#doLogoUp').hide();
-				$('#lo-loading').show();
-				
-				return true;
-			}
-			else
-			{
-				noty({
-				  type: 'error',  layout: 'topCenter',
-				  text: 'Incorrect Image File'
-				});
-				
-				//manual reset
-				var content = $("#aHeading").val()
-				$("#appHeading").html(content);
-				$("#picFileName").val('');
-				$("#picFile").val('');
-				
-				return false;
-			}*/
-		}
-	};	
-	$(".formImageMenuItem").ajaxForm(optionsMenuItem);
 	
 	//ajax form upload
 	var optionsBG = { 
@@ -922,22 +756,6 @@ $(document).ready(function() {
 			$("#bgFile").click();
 	});
 	
-	$(".doImageMenuItem").on('click', function() {
-		var $this = $(this);
-
-		if($this.siblings(".picImageMenuItem").val())
-		{ 
-			$this.parent(".formImageMenuItem").submit();
-			$this.siblings(".picImageMenuItem").val('');
-		}
-		else
-			$this.siblings(".picImageMenuItem").click();
-	});
-	
-	$(".picImageMenuItem").on('change', function(){
-		$(this).siblings(".doImageMenuItem").click();
-	});	
-
 	$("#doLogoUp").on('click', function() {
 		if($("#picFile").val())
 		{ 
@@ -2031,13 +1849,11 @@ $(document).ready(function() {
 	var isSubmitForm = true;
 
 	var $loadingContent = $('#loadingConfig');
-
-	var postImage = 0;
 	
 	$("#menuConfigForm").on('valid', function (event) {
 		var newSubmitTime = new Date().getTime();
 
-		if(  isSubmitForm && (newSubmitTime - submitTime) > 400 && !postImage )
+		if(  isSubmitForm && (newSubmitTime - submitTime) > 400)
 		{
 
 			$loadingContent.show();
@@ -2136,9 +1952,7 @@ $(document).ready(function() {
 								
 							menuSectionOneNivelItem['menuId'] 		= menu['id'];
 							menuSectionOneNivelItem['venueId'] 		= $('#venueID').val();
-							menuSectionOneNivelItem['sectionId'] 	= menuSecionOneNivel['id'];
-							
-							menuSectionOneNivelItem['images'] 		= imagesMenu[iID];
+							menuSectionOneNivelItem['sectionId'] 	= menuSecionOneNivel['id'];						
 							//MODIFIERS
 							menuSectionOneNivelItem['modifiers'] = {};
 
