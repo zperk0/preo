@@ -2392,6 +2392,7 @@ $(document).ready(function() {
 			$("#"+eventID+"_optionCountAct").after($newOCount);
 		
 			//clone specific table
+			$oldTab = $("#"+eventID);			
 			$newTab = $("#"+eventID).clone(false);
 			$newTab.attr('id','event'+newCount);
 		}
@@ -2435,7 +2436,7 @@ $(document).ready(function() {
 		if(dup) $newTab.find(".ui-multiselect").remove();
 		
 		//Replace ids with incremented value and make value = default value + add multiselect
-		$newTab.find(".optionTR select").each(function() {
+		$newTab.find(".optionTR .eventTDCollection select").each(function() {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
@@ -2446,6 +2447,23 @@ $(document).ready(function() {
 			   multiple: false,
 			   header: false,
 			   noneSelectedText: _tr("Choose a Collection Slot"),
+			   selectedList: 1,
+			   minWidth: 342
+			}); 
+		});
+
+		//Replace ids with incremented value and make value = default value + add multiselect
+		$newTab.find(".optionTR .eventTDOutletLocation select").each(function() {
+			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			if ($oldTab) $(this).val($oldTab.find(".optionTR .eventTDOutletLocation select").val());
+			var tempName = $(this).attr('name');			
+			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);			
+			newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");			
+			$(this).attr('name', newName);
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: _tr("Choose an Outlet Location"),
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
@@ -2568,6 +2586,16 @@ $(document).ready(function() {
 			   minWidth: 342
 			}); 
 		});
+
+		$curItem.find("td.eventTDOutletLocation select").each(function() {
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: _tr("Choose an Outlet Location"),
+			   selectedList: 1,
+			   minWidth: 342
+			}) ; 
+		});
 	});
 	
 	$(document).on("click", ".eventDelete", function() {
@@ -2658,10 +2686,17 @@ $(document).ready(function() {
 		
 	});
 	
-	$(".eventMenuSingleSelect").multiselect({
+	$(".eventMenuSingleSelect.selectCollectionSlot").multiselect({
 	   multiple: false,
 	   header: false,
 	   noneSelectedText: _tr("Choose a Collection Slot"),
+	   selectedList: 1,
+	   minWidth: 342
+	}); 
+	$(".eventMenuSingleSelect.selectOutletLocation").multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: _tr("Choose an Outlet Location"),
 	   selectedList: 1,
 	   minWidth: 342
 	}); 
@@ -2701,7 +2736,7 @@ $(document).ready(function() {
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
-		});
+		});	
 		
 		//replace ids with incremented value and make value = default value
 		$newRow.find("input").each(function() {

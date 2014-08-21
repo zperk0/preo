@@ -1,3 +1,4 @@
+
 <?if(!isset($_SESSION['event_edit_on'])) $_SESSION['event_edit_on']=0;?>
 <form id="eventConfigForm" method="POST" data-abide>
 	<div class="row">
@@ -102,7 +103,18 @@
 									<button type="button" class="eventTableButtons secondary eventDelete" 		title="<?echo _("Delete");?>"						><i class="pd-delete"></i></button>
 								</td>
 							</tr>
-							<tr class="eventEdit optionTR">
+							<? if (isset($_SESSION['outlet_locations'])){ ?>
+								<tr class="eventEdit optionTR savedInput" required>
+									<td class="eventTDOutletLocation">
+											<select name="eOutletLocation[0]" class="eventField noEnterSubmit inline"  required/> 
+											<? foreach($_SESSION['outlet_locations'] as $key => $outletLocation) {?>
+												<option value="<?= $outletLocation['id']?>"  ><?= $outletLocation['name']?></option>											
+											<?}?>
+											</select>
+										</td>								
+								</tr>
+							<?}?>
+							<tr class="eventEdit optionTR ">
 								<td class="eventTDCollection">
 									<label>&nbsp;</label>
 									<select name="eColl[event0][0]" class="eventField noEnterSubmit inline" style="display:none;" required/> <!-- Dummy does not have eventMenuSingleSelect -->
@@ -123,11 +135,8 @@
 								</td>
 								<td class="eventTDAddMore">
 									<button type="button" class="newCollSlot" title="<?echo _("Add another slot");?>"><i class="pd-add"></i></button>
-								</td>
-								<td class="eventTDSpace">
-									<span>&nbsp;</span>
-								</td>
-							</tr>
+								</td>								
+							</tr>							
 						</tbody>
 					</table>
 				</div>
@@ -182,11 +191,22 @@
 							<button type="button" class="eventTableButtons secondary eventDelete" 	title="<?echo _("Delete");?>"									><i class="pd-delete"></i></button>
 						</td>
 					</tr>
+					<? if (isset($_SESSION['outlet_locations'])){ ?>
+						<tr class="eventEdit optionTR savedInput" style="display:none;" required>
+									<td class="eventTDOutletLocation">
+										<select name="eOutletLocation[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit inline" required class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide"/> 
+										<? foreach($_SESSION['outlet_locations'] as $key => $outletLocation) { ?>
+											<option value="<?= $outletLocation['id']?>" <?if($event['outletLocationId']==$outletLocation['id']) echo "selected='selected'";?> ><?= $outletLocation['name']?></option>											
+										<?}?>
+										</select>
+									</td>
+								</tr>
+						<?}?>
 					<?foreach($event['cSlots'] as $cKey=>$cSlot){?>
 					<tr class="eventEdit optionTR savedInput" style="display:none;" required>
 						<td class="eventTDCollection">
 							<label>&nbsp;</label>
-							<select name="eColl[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit inline eventMenuSingleSelect hide"/>
+							<select name="eColl[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectCollectionSlot hide"/>
 								<option value="PRESHOW"  <?if($cSlot['collectionslot']=='PRESHOW'  ) echo "selected='selected'";?>><?echo _("Collection Slot: Pre-Show")?></option>
 								<option value="PREGAME"  <?if($cSlot['collectionslot']=='PREGAME'  ) echo "selected='selected'";?>><?echo _("Collection Slot: Pre-Game")?></option>
 								<option value="INTERVAL" <?if($cSlot['collectionslot']=='INTERVAL') echo "selected='selected'";?>><?echo _("Collection Slot: Interval")?></option>
@@ -204,12 +224,9 @@
 						</td>
 						<td class="eventTDAddMore">
 							<button type="button" class="newCollSlot" title="<?echo _("Add another slot");?>"><i class="pd-add"></i></button>
-						</td>
-						<td class="eventTDSpace">
-							<span>&nbsp;</span>
-						</td>
+						</td>						
 					</tr>
-					<?}?>
+					<?}?>					
 				</tbody>
 			</table>
 			<script>

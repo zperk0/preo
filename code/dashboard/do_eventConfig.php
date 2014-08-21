@@ -26,6 +26,7 @@
 			$events[$i]['desc'] 	= $_POST['eDesc'][$j];
 			$events[$i]['starttime']= $_POST['eTime'][$j];
 			$events[$i]['endtime'] 	= $_POST['eETime'][$j];
+			$events[$i]['outletLocationId'] 	= $_POST['eOutletLocation'][$j];
 			$tempDate 				= $_POST['eDate'][$j];
 				//convert to YYYYMMDD (from DD/MM/YYYY)
 				preg_match('/(\d\d)\/(\d\d)\/(\d\d\d\d)/',$tempDate, $matches);
@@ -70,6 +71,7 @@
 		$data['name'] 			= $event['name'];
 		$data['description'] 	= $event['desc'];
 		$data['visible'] 		= $event['visible'];
+		$data['outletLocationId'] 	= $event['outletLocationId'];
 		$data['schedules'] = array();
 		$data['schedules'][0] = array();
 		$data['schedules'][0]['freq'] = 'ONCE';
