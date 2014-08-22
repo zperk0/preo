@@ -15,6 +15,10 @@
 	$picExt =  preg_match ("/^.*\/(.*)$/", $picFile["type"], $matches);
 	$picExt = $matches[1];
 	if($picExt == 'jpeg') $picExt = 'jpg';
+
+	$MAX_FILESIZE = 5000000; // 5mb
+
+	$extensions = array('jpg', 'png');
 	
 	if(isset($_SERVER['PREO_UPLOAD_ROOT'])) {
 		$docRoot = $_SERVER['PREO_UPLOAD_ROOT'];
@@ -39,6 +43,22 @@
 			unlink( $docRoot . $_POST['imgUrl'] );
 		}
 	} else {
+		if ( !in_array($picExt, $extensions) ) {
+			header('Content-Type: application/json');
+			echo json_encode( array(
+				'status' => 'error',
+				'message' => 'Invalid file. Invalid format file'
+			)); exit();		
+		}
+
+		if ( $picFile['size'] > $MAX_FILESIZE ) {
+			header('Content-Type: application/json');
+			echo json_encode( array(
+				'status' => 'error',
+				'message' => 'Invalid file. Max filesize 5mb'
+			)); exit();
+		}
+		
 		$status = uploadFile($picFile,$PREO_UPLOAD_ROOT, $folderMenu, ".$picExt", "image/jpeg", "image/png", 11000000, 0);
 	}
 	if(!$status)

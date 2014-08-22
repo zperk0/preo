@@ -51,7 +51,7 @@
 				if ( typeof data === 'string' ) {
 					response = jQuery.parseJSON(data);	
 					valid = true;
-				} else if ( data.status === 'success' ) {
+				} else if ( data.status === 'success' || data.status === 'error' ) {
 					response = data;
 					valid = true;
 				}
@@ -169,9 +169,13 @@
 					}
 					
 					if(response.status=='error'){
-						that.obj.append('<p style="width:100%; height:100%; text-align:center; line-height:'+that.objH+'px;">'+response.message+'</p>');
+						//that.obj.append('<p style="width:100%; height:100%; text-align:center; line-height:'+that.objH+'px;">'+response.message+'</p>');
 						that.hideLoader();
-						setTimeout( function(){ that.reset(); },2000)
+						if (that.options.onAfterImgUpload) that.options.onAfterImgUpload.call({
+							status: 'error',
+							message: response.message
+						});
+						setTimeout( function(){ that.reset(); })
 					}
 				}
 			};

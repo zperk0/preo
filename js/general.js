@@ -625,6 +625,7 @@ $(document).ready(function() {
 	var $saveChangesModalCrop = $('#saveChangesModalCrop');
 	var $cancelModalImageCrop = $('#cancelModalImageCrop');
 	var $addPicture = $('#addPicture');
+	var $errorMessageImageCrop = $('#errorMessageImageCrop');
 
 	var lastImageUpload = {};
 	var cropperInstance = null;
@@ -682,18 +683,26 @@ $(document).ready(function() {
 
 	            var percentVal = '0%';
 	            $barImageCrop.width(percentVal);
-	            $percentImageCrop.html(percentVal);			
-	            $progressImageCrop.show();				
+	            $percentImageCrop.html(percentVal);
+	            $progressImageCrop.show();
 			},
 			onAfterImgUpload: function(){
+				if ( this.hasOwnProperty('status') && this.status === 'error' ) {
+					$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
+					$addPicture.removeClass('secondary').removeAttr('disabled');
+					$errorMessageImageCrop.text(this.message).show();
+				} else {
+					$errorMessageImageCrop.hide();
+				}
+
 				$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
 				$progressImageCrop.hide();
 			},
 			onBeforeImgCrop: function(){
 	            var percentVal = '0%';
 	            $barImageCrop.width(percentVal);
-	            $percentImageCrop.html(percentVal);			
-	            $progressImageCrop.show();				
+	            $percentImageCrop.html(percentVal);
+	            $progressImageCrop.show();
 				$cancelModalImageCrop.addClass('secondary').attr('disabled', 'disabled');
 			},
 			onAfterImgCrop:		function(){ 

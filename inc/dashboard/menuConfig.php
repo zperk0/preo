@@ -414,6 +414,8 @@
 			<header class="title-notification" id="title-modalCrop">Name of item</header>
 			<button type="button" class="doImageMenuItem preodayButton pull-left" id="addPicture" title="<?echo _("UPLOAD");?>">ADD PICTURE</button>
 			<input type="file" name="picFile[]" accept="image/png;image/jpg;image/jpeg" class="hide picImageMenuItem" />	
+			<p id="descriptionExtensions">JPG, PNG (Max. file size 5mb)</p>
+			<p id="errorMessageImageCrop"></p>
 		</div>
 		
 		<div class="content-modal">
@@ -426,7 +428,7 @@
 		
 		<div class="footer-modalCrop spacing-modalCrop">
 			<button class="preodayButton pull-left" type="button" id="saveChangesModalCrop">SAVE CHANGES</button>
-			<button class="preodayButton pull-right" type="button" id="cancelModalImageCrop">CANCEL</button>
+			<button class="preodayButton pull-left" type="button" id="cancelModalImageCrop">CANCEL</button>
 		</div>
 	</form>
 </div>

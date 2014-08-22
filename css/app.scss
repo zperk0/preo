@@ -3779,7 +3779,7 @@ button.preodayButton.noclick{
   font-weight: 400;
   font-size: 90%;
   padding: 0.6em 1em;
-  min-width: 49%;
+  width: 175px;
   margin-bottom: 0px;
 }
 
@@ -3800,4 +3800,27 @@ button.preodayButton.noclick{
   max-width: inherit;
   width: auto !important;
   height: auto !important;
+}
+
+#descriptionExtensions, #errorMessageImageCrop{
+  float: left;
+  width: 100%;
+  text-align: left;
+  margin-top: 5px;  
+  margin-bottom: 0px;
+}
+
+#descriptionExtensions{
+  color: #C0C0C0;
+  font-size: 11px;  
+}
+
+#saveChangesModalCrop{
+  margin-right: 10px
+}
+
+#errorMessageImageCrop{
+  font-size: 12px;  
+  color: #CE0000;
+  display: none;
 }
