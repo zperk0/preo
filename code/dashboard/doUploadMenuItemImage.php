@@ -44,7 +44,8 @@
 		exit;
 	}
 	else {
-		echo json_encode( $status[0] ); exit();
+		header('Content-Type: application/json');
+		echo json_encode( $status[0], JSON_FORCE_OBJECT ); exit();
 	}
 		
 	error_reporting($level);
