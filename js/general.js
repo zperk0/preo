@@ -732,7 +732,7 @@ $(document).ready(function() {
 					});
 			}
 
-			$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+			$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled', 'disabled');
 			$addPicture.removeClass('secondary').removeAttr('disabled', 'disabled');
 		};
 
