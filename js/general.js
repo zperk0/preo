@@ -2368,7 +2368,7 @@ $(document).ready(function() {
 		//new item or duplicate?
 		var dup = 0;
 		if($(this).hasClass("eventDuplicate")) dup = 1;
-		
+		var $oldTab;
 		//get table event number
 		$curTable = $(this).closest('table');
 		var eventID = $curTable.attr('id');
