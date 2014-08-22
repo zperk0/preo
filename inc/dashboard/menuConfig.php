@@ -134,8 +134,8 @@
 							</div>
 						</td>		
 						<td class="menuTDTools colMenuItems">
+							<button type="button" class="menuTableButtons itemUpload" 		title="<?echo _("Upload image");?>"							><i class="pd-upload"></i></button>						
 							<button type="button" class="menuTableButtons itemSave"				title="<?echo _("Collapse");?>"						><i class="pd-up"></i></button>
-							<button type="button" class="menuTableButtons itemUpload" 		title="<?echo _("Upload image");?>"							><i class="pd-upload"></i></button>
 							<button type="button" class="menuTableButtons itemEdit hide" 		title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
 							<button type="button" class="menuTableButtons sortHandle"			title="<?echo _("Reorder");?>"						><i class="pd-move"></i></button>
 							<button type="button" class="menuTableButtons itemDuplicate" 		title="<?echo _("Duplicate");?>" id="dup_section0"	><i class="pd-copy"></i></button>
@@ -272,14 +272,14 @@
 											</div>
 										</td>
 										<td class="menuTDTools colMenuItems">
-											<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Collapse");?>"							><i class="pd-up"></i></button>
 											<?php
 												$attr = ''; 
 												if ( isset($item['images']) && count($item['images']) ) {
 													$attr = 'data-image-url = "' . $mPath . $item['images'][0]['image'] . '"';
 												}
 											?>
-											<button type="button" class="menuTableButtons itemUpload" 	<?php echo $attr ?>	title="<?echo _("Upload image");?>"							><i class="pd-upload"></i></button>
+											<button type="button" class="menuTableButtons itemUpload" 	<?php echo $attr ?>	title="<?echo _("Upload image");?>"							><i class="pd-upload"></i></button>										
+											<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Collapse");?>"							><i class="pd-up"></i></button>
 											<button type="button" class="menuTableButtons itemEdit" 				title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
 											<button type="button" class="menuTableButtons sortHandle"				title="<?echo _("Reorder");?>"							><i class="pd-move"></i></button>
 											<button type="button" class="menuTableButtons itemDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($iKey+1);?>_section<?echo ($sKey+1);?>"	><i class="pd-copy"></i></button>
