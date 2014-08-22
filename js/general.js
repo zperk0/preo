@@ -2277,7 +2277,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: _tr("Choose an Outlet Location"),
+			   noneSelectedText: _tr("Choose Event Location"),
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
@@ -2405,7 +2405,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: _tr("Choose an Outlet Location"),
+			   noneSelectedText: _tr("Choose Event Location"),
 			   selectedList: 1,
 			   minWidth: 342
 			}) ; 
@@ -2510,7 +2510,7 @@ $(document).ready(function() {
 	$(".eventMenuSingleSelect.selectOutletLocation").multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: _tr("Choose an Outlet Location"),
+	   noneSelectedText: _tr("Choose Event Location"),
 	   selectedList: 1,
 	   minWidth: 342
 	}); 
