@@ -399,12 +399,6 @@
 	</div>
 </form>
 
-<div id="modalImagesCrop" class="reveal-modal" data-options="closeOnBackgroundClick:false" data-reveal>
-  <h2>Images for crop.</h2>
-  <div id="contentModalImagesCrop"></div>
-  <!-- <a class="close-reveal-modal">&#215;</a> -->
-</div>
-
 
 <script type="text/javascript">
 

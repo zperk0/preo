@@ -32,9 +32,6 @@
 .pd-edit:before {
 	content: "\e600";
 }
-.pd-upload:before{
-  content: "^";
-}
 .pd-up:before {
 	content: "\e601";
 }
