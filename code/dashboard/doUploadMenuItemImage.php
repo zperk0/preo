@@ -33,8 +33,11 @@
 		$imgUrl = explode('/', $imgUrl);
 		$imgUrl[ count($imgUrl) - 1 ] = 'item_' . strtoupper(uniqid('', false)) . $fileEXT;
 		$imgUrl = implode("/", $imgUrl);
-		$status = cropImage($docRoot . $_POST['imgUrl'], $docRoot . $imgUrl, $imgUrl, $_POST['cropW'], $_POST['cropH'], $_POST['imgX1'], $_POST['imgY1'], $_POST['imgW'], $_POST['imgH'], $_POST['imgInitW'], $_POST['imgInitH']);
-		unlink( $docRoot . $_POST['imgUrl'] );
+		$status = cropImage($docRoot . $_POST['imgUrl'], $docRoot . $imgUrl, $_POST['imgUrl'], $imgUrl, $_POST['cropW'], $_POST['cropH'], $_POST['imgX1'], $_POST['imgY1'], $_POST['imgW'], $_POST['imgH'], $_POST['imgInitW'], $_POST['imgInitH']);
+
+		if ( $status && $status[0]['url'] !== $_POST['imgUrl'] ) {
+			unlink( $docRoot . $_POST['imgUrl'] );
+		}
 	} else {
 		$status = uploadFile($picFile,$PREO_UPLOAD_ROOT, $folderMenu, ".$picExt", "image/jpeg", "image/png", 11000000, 0);
 	}

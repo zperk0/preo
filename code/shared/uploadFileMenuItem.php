@@ -240,8 +240,23 @@ function uploadFile($fileUploadID, $fileLocation, $folderMenu, $fileEXT, $fileMI
 	return $fileNames;
 }
 
-function cropImage( $src, $dest, $destFolder, $width, $height, $x, $y, $imgW, $imgH, $imgInitW, $imgInitH, $quality = 90 ) {
+function cropImage( $src, $dest, $sourceFolder, $destFolder, $width, $height, $x, $y, $imgW, $imgH, $imgInitW, $imgInitH, $quality = 90 ) {
 	$quality = 90;
+
+	$MAX_WIDTH = 600;
+	$MAX_HEIGHT = 400;
+
+	$imginfo_array = getimagesize($src);   // returns a false if not a valid image file
+
+	$width = $imginfo_array[0];  
+	$height = $imginfo_array[1]; 	
+
+	if ( $width < $MAX_WIDTH ) {
+		return array(array(
+			"status" => 'success',
+			"url" => $sourceFolder
+		  ));
+	}
 
 	$ext = strtolower(substr($src, strrpos($src, '.')+1)); //this gets jpg, png, etc (note no .)
 
