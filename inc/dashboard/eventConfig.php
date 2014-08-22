@@ -103,10 +103,10 @@
 									<button type="button" class="eventTableButtons secondary eventDelete" 		title="<?echo _("Delete");?>"						><i class="pd-delete"></i></button>
 								</td>
 							</tr>
-							<? if (isset($_SESSION['outlet_locations'])){ ?>
+							<? if (isset($_SESSION['outlet_locations']) &&  count($_SESSION['outlet_locations'])>0){ ?>
 								<tr class="eventEdit optionTR savedInput" required>
 									<td class="eventTDOutletLocation">
-											<select name="eOutletLocation[0]" class="eventField noEnterSubmit inline"  required/> 
+											<select name="eOutletLocation[0]" class="eventField noEnterSubmit inline"/> 
 											<? foreach($_SESSION['outlet_locations'] as $key => $outletLocation) {?>
 												<option value="<?= $outletLocation['id']?>"  ><?= $outletLocation['name']?></option>											
 											<?}?>
@@ -191,10 +191,10 @@
 							<button type="button" class="eventTableButtons secondary eventDelete" 	title="<?echo _("Delete");?>"									><i class="pd-delete"></i></button>
 						</td>
 					</tr>
-					<? if (isset($_SESSION['outlet_locations'])){ ?>
+					<? if (isset($_SESSION['outlet_locations']) && count($_SESSION['outlet_locations'])>0 ){ ?>
 						<tr class="eventEdit optionTR savedInput" style="display:none;" required>
 									<td class="eventTDOutletLocation">
-										<select name="eOutletLocation[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit inline" required class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide"/> 
+										<select name="eOutletLocation[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit inline" class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide"/> 
 										<? foreach($_SESSION['outlet_locations'] as $key => $outletLocation) { ?>
 											<option value="<?= $outletLocation['id']?>" <?if($event['outletLocationId']==$outletLocation['id']) echo "selected='selected'";?> ><?= $outletLocation['name']?></option>											
 										<?}?>

@@ -2597,7 +2597,7 @@ $(document).ready(function() {
 	$("#eventConfigForm").on('valid', function (event) {
 		//prevent multiple submissions
 		var newSubmitTime = new Date().getTime();
-		
+		console.log('here',newSubmitTime,submitTime);
 		if( (newSubmitTime - submitTime) > 300 )
 		{
 			//lock all
@@ -2606,6 +2606,7 @@ $(document).ready(function() {
 					$(this).trigger('click');
 			});
 			
+			console.log('here')
 			//enable dropdowns or we wont get the values!
 			$(".eventMenuSingleSelect").multiselect('enable');
 			
@@ -3462,6 +3463,7 @@ $(document).ready(function() {
 	}
 	
 	$("#nonEventConfigForm").on('invalid', function (event) {
+		console.log('here ho');
 		noty({
 		  type: 'error',  layout: 'topCenter',
 		  text: _tr("We still need some more information. Don't forget to fill out the remaining days of the week!") /*text: dataArray['message']*/

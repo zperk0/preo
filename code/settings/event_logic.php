@@ -94,7 +94,7 @@
 		
 		$sorted = array();
 		foreach ($locations as $key => $location){
-			if ($location['parent'] == null){
+			if ($location['parent'] == null && $location['id'] !=null){
 					$location['children'] = getAllChildren($locations,$location);
 					$sorted[] = $location;
 			}
@@ -119,10 +119,11 @@
 		}	
 	}
 
-	$curlResult = callAPI('GET', $apiURL."venues/$venueID/outletlocations", false, $apiAuth);
+	$curlResult = callAPI('GET', $apiURL."venues/$venueID/outletlocations?outlets=false", false, $apiAuth);
 	$outletLocations = json_decode($curlResult,true);
-	$tree = sortLocations($outletLocations);
 	
+	$tree = sortLocations($outletLocations);	
+
 	$_SESSION['outlet_locations'] = getOutletLocationSelectOptions($tree);
 	
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
