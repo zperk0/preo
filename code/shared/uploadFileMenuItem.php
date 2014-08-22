@@ -240,7 +240,7 @@ function uploadFile($fileUploadID, $fileLocation, $folderMenu, $fileEXT, $fileMI
 	return $fileNames;
 }
 
-function cropImage( $src, $dest, $sourceFolder, $destFolder, $width, $height, $x, $y, $imgW, $imgH, $imgInitW, $imgInitH, $quality = 90 ) {
+function cropImage( $src, $dest, $sourceFolder, $destFolder, $imgInitW, $imgInitH, $imgW, $imgH, $imgY1, $imgX1, $cropW, $cropH, $quality = 90 ) {
 	$quality = 90;
 
 	$MAX_WIDTH = 600;
@@ -258,33 +258,44 @@ function cropImage( $src, $dest, $sourceFolder, $destFolder, $width, $height, $x
 		  ));
 	}
 
-	$ext = strtolower(substr($src, strrpos($src, '.')+1)); //this gets jpg, png, etc (note no .)
-
-    if($ext == "png")
-    {
-	  $img_r = imagecreatefrompng($src) or die("Error Opening original");
-    }
-    else
-    {
-	  $img_r = imagecreatefromjpeg($src) or die("Error Opening original");
-    }
+	$what = getimagesize($src);
+	switch(strtolower($what['mime']))
+	{
+	    case 'image/png':
+	        $img_r = imagecreatefrompng($src);
+			$source_image = imagecreatefrompng($src);
+			$type = '.png';
+	        break;
+	    case 'image/jpeg':
+	        $img_r = imagecreatefromjpeg($src);
+			$source_image = imagecreatefromjpeg($src);
+			$type = '.jpeg';
+	        break;
+	    default: die('image type not supported');
+	}
 
 	$resizedImage = imagecreatetruecolor($imgW, $imgH);
-	imagecopyresampled($resizedImage, $img_r, 0, 0, 0, 0, $imgW, 
-				$imgH, $imgInitW, $imgInitH);		
+	imagecopyresampled($resizedImage, $source_image, 0, 0, 0, 0, $imgW, 
+				$imgH, $imgInitW, $imgInitH);	
+	
+	
+	$dest_image = imagecreatetruecolor($cropW, $cropH);
+	imagecopyresampled($dest_image, $resizedImage, 0, 0, $imgX1, $imgY1, $cropW, 
+				$cropH, $cropW, $cropH);
 
-	$dst_r = ImageCreateTrueColor( $width, $height );
-
-	imagecopyresampled($dst_r,$resizedImage,0,0, $x, $y,
-	    $width,$height, $width, $height);
-
-    if($ext == "png")
+    if($type == ".png")
     {
-	  imagepng($dst_r, $dest, $quality) or die("Cant save image");
+	  imagepng($dest_image, $dest, $quality) or die(json_encode( array(
+															'status' => 'error',
+															'message' => 'Error in save file'
+													)));
     }
     else
     {
-	  imagejpeg($dst_r, $dest, $quality) or die("Cant save image");
+	  imagejpeg($dest_image, $dest, $quality) or die(json_encode( array(
+															'status' => 'error',
+															'message' => 'Error in save file'
+													)));
     }
 
 	return array(array(

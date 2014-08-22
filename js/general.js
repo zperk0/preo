@@ -673,6 +673,8 @@ $(document).ready(function() {
 		lastImageUpload = null;
 
 		cropperInstance = new Croppic('croppic', {
+			zoomFactor:10,
+			doubleZoomControls:true,			
 			customUploadButtonId: 'addPicture',
 			uploadUrl: '/uploadMenuItemImage',
 			cropUrl: '/uploadMenuItemImage',
