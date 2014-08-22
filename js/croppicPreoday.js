@@ -2,6 +2,17 @@
 	Croppic.prototype.idItem = 0;
 	Croppic.prototype.onRemoveCroppedImage = null;
 	Croppic.prototype.onUploadProgress = null;
+	Croppic.prototype.reset = function() {
+		var that = this;
+		that.destroy();
+		
+		that.init();
+
+		$('#saveChangesModalCrop').removeClass('secondary').removeAttr('disabled');
+		$('#cancelModalImageCrop').removeClass('secondary').removeAttr('disabled');
+		$('#addPicture').removeClass('secondary').removeAttr('disabled');
+		$('.cropControlsUpload').remove();
+	};
 	Croppic.prototype.crop = function() {
 		var that = this;
 		
