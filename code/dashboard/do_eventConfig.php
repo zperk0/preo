@@ -5,6 +5,15 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 	
+
+function getEventDuration($startHours,$endHours){
+	 $start_date = new DateTime($startHours,new DateTimeZone('GMT'));
+   $end_date = new DateTime($endHours,new DateTimeZone('GMT'));
+   $diff = $start_date->diff($end_date);
+   return $diff->h * 60 + $diff->i;  
+}
+
+
 	$newEvents = array();
 	
 	$eventCount = $_POST['eventCount']; //linear count -event
@@ -64,7 +73,7 @@
 	$curlResult = '';
 	
 	foreach($events as $event)
-	{
+	{		
 		//create/update event
 		$data 					= array();
 		$data['venueId']		= $_SESSION['venue_id'];
@@ -72,6 +81,7 @@
 		$data['description'] 	= $event['desc'];
 		$data['visible'] 		= $event['visible'];
 		$data['outletLocationId'] 	= $event['outletLocationId'];
+		$data['duration'] 		= getEventDuration($event['starttime'],$event['endtime']);
 		$data['schedules'] = array();
 		$data['schedules'][0] = array();
 		$data['schedules'][0]['freq'] = 'ONCE';
