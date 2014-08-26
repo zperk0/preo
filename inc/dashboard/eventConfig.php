@@ -107,6 +107,7 @@
 								<tr class="eventEdit optionTR savedInput" required>
 									<td class="eventTDOutletLocation">
 											<select name="eOutletLocation[0]" class="eventField noEnterSubmit inline"/> 
+											<option value=""  ><?= _("Not Specified")?></option>
 											<? foreach($_SESSION['outlet_locations'] as $key => $outletLocation) {?>
 												<option value="<?= $outletLocation['id']?>"  ><?= $outletLocation['name']?></option>											
 											<?}?>
@@ -195,6 +196,7 @@
 						<tr class="eventEdit optionTR savedInput" style="display:none;" required>
 									<td class="eventTDOutletLocation">
 										<select name="eOutletLocation[<?echo ($eKey+1);?>]" class="eventField noEnterSubmit inline" class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide"/> 
+										<option value=""  ><?= _("Not Specified")?></option>
 										<? foreach($_SESSION['outlet_locations'] as $key => $outletLocation) { ?>
 											<option value="<?= $outletLocation['id']?>" <?if($event['outletLocationId']==$outletLocation['id']) echo "selected='selected'";?> ><?= $outletLocation['name']?></option>											
 										<?}?>
