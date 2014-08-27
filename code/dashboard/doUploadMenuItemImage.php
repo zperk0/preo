@@ -33,9 +33,9 @@
 
 	if ( isset($_POST['cropW']) ) {
 		$imgUrl = $_POST['imgUrl'];
-		$oldName = $imgUrl[ count($imgUrl) - 1 ]; 
 		$fileEXT = strtolower(substr($_POST['imgUrl'], strrpos($_POST['imgUrl'], '.'))); //this gets .jpg,.png, etc
 		$imgUrl = explode('/', $imgUrl);
+		$oldName = $imgUrl[ count($imgUrl) - 1 ]; 
 		$imgUrl[ count($imgUrl) - 1 ] = 'item_' . strtoupper(uniqid('', false)) . $fileEXT;
 		$imgUrl = $imgUrl[ count($imgUrl) - 1 ];
 
