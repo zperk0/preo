@@ -2036,6 +2036,18 @@ table.sortable-placeholder {
   background: #2AB6E5;
 }
 
+/* From Jquery UI css */
+.ui-helper-hidden-accessible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
 ul.ui-autocomplete {
   width: 270px;
   border: 1px solid #BCBDBF;

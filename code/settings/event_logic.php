@@ -105,7 +105,7 @@
 	function getOutletLocationSelectOptions($tree){		
 		$output = array(); 
 		foreach ($tree as $node){			
-			indentNodeForSelect($node,0,$output);
+			indentNodeForSelect($node,1,$output);
 		}		
 		return $output;
 	}
