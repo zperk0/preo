@@ -23,7 +23,7 @@
 	if(isset($_SERVER['PREO_UPLOAD_ROOT'])) {
 		$docRoot = $_SERVER['PREO_UPLOAD_ROOT'];
 		$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'menuitem/temp/';
-		$folderMenu = $_SERVER['PREO_UPLOAD_ROOT'] . '/menuitem/temp';
+		$folderMenu = '/' . $_SERVER['PREO_UPLOAD_PATH'] . '/menuitem/temp';
 	}
 	else {
 		$docRoot = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'];
