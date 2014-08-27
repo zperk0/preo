@@ -20,9 +20,9 @@
 
 	$extensions = array('jpg', 'png');
 	
-	if(isset($_SERVER['PREO_UPLOAD_PATH'])) {
-		$docRoot = $_SERVER['PREO_UPLOAD_PATH'];
-		$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_PATH'].'menuitem/temp/';
+	if(isset($_SERVER['PREO_UPLOAD_ROOT'])) {
+		$docRoot = $_SERVER['PREO_UPLOAD_ROOT'];
+		$PREO_UPLOAD_ROOT = $_SERVER['PREO_UPLOAD_ROOT'].'menuitem/temp/';
 		$folderMenu = '/menuitem/temp';
 	}
 	else {
