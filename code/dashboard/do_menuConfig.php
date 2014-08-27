@@ -6,6 +6,22 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 	require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/uploadFileMenuItem.php'); //uploadFile 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/SystemStatic.php');
+
+
+	function getImagePath(){
+		$path = "";
+			if(isset($_SERVER['PREO_UPLOAD_PATH']))
+			{
+				$path = $_SERVER['PREO_UPLOAD_PATH'];				
+			}
+			else
+			{
+				$path = '/tmp/upload/';				
+			}
+		return $path;
+	}
+
+	
 	
 	//1 - if delete, then remove insert,edit
 	//2 - if insert, then remove edit
@@ -283,7 +299,7 @@
 							unlink($PREO_UPLOAD_ROOT . '/temp/' . $newImage);
 
 							$data = array();
-							$data['image'] = '/tmp/upload/menuitem/fix/' . $newImage;
+							$data['image'] = getImagePath().'menuitem/fix/' . $newImage;
 							$data['itemId'] = $item_id;
 							$jsonData 	= json_encode($data);
 							$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
@@ -319,7 +335,7 @@
 							unlink($PREO_UPLOAD_ROOT . '/temp/' . $newImage);
 
 							$data = array();
-							$data['image'] = '/tmp/upload/menuitem/fix/' . $newImage;
+							$data['image'] = getImagePath().'menuitem/fix/' . $newImage;
 							$data['itemId'] = $item_id;
 							$jsonData 	= json_encode($data);
 							$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
