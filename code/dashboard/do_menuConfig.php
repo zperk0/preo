@@ -10,9 +10,9 @@
 
 	function getImagePath(){
 		$path = "";
-			if(isset($_SERVER['PREO_UPLOAD_PATH']))
+			if(isset($_SERVER['PREO_UPLOAD_ROOT']))
 			{
-				$path = $_SERVER['PREO_UPLOAD_PATH'];				
+				$path = $_SERVER['PREO_UPLOAD_ROOT'];				
 			}
 			else
 			{
