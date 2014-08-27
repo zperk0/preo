@@ -22,6 +22,9 @@
 		if ( isset($Image['imageThumb']) ) {
 			unlink( $PREO_UPLOAD_ROOT . $Image['imageThumb'] );	
 		}
-		unlink( $PREO_UPLOAD_ROOT .  $Image['image'] );
+
+		$image = explode('/', $Image['image']);
+		$image = $image[count($image) - 1];
+		unlink( $PREO_UPLOAD_ROOT . '/menuitem/fix/' . $image  );
 	}
 ?>

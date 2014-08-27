@@ -2,6 +2,7 @@
 	Croppic.prototype.idItem = 0;
 	Croppic.prototype.onRemoveCroppedImage = null;
 	Croppic.prototype.onUploadProgress = null;
+	Croppic.prototype.removedImage = false;
 	Croppic.prototype.reset = function() {
 		var that = this;
 		that.destroy();
@@ -111,11 +112,13 @@
 		
 			that.cropControlRemoveCroppedImage.on('click',function(){ 
 
+				that.removedImage = true;
+
 				if ( typeof that.onRemoveCroppedImage === 'function' ) {
 					that.onRemoveCroppedImage.call(that);
 				} 
 
-				that.croppedImg.remove();
+				that.croppedImg.hide();
 				$(this).hide();
 				
 				if( !$.isEmptyObject(that.defaultImg)){ 

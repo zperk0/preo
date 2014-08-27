@@ -631,21 +631,54 @@ $(document).ready(function() {
 	var cropperInstance = null;
 
 	$(document).on('click', '#cancelModalImageCrop', function(){
-		$modalImagesCrop.foundation('reveal', 'close');
-		cropperInstance.destroy();
+
+		if ( cropperInstance.removedImage ) {
+			cropperInstance.removedImage = false;
+			cropperInstance.croppedImg.show();
+			cropperInstance.cropControlRemoveCroppedImage.show();
+			$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+		} else {
+			$modalImagesCrop.foundation('reveal', 'close');
+		}
 	})
+
+	$modalImagesCrop.on('closed', function(){
+		cropperInstance.destroy();
+	});
 
 	$(document).on('click', '#saveChangesModalCrop', function(){
 
-		if ( lastImageUpload ) {
-			imagesMenu[lastImageUpload.idItem] = [{
-				cropped: true,
-				url: lastImageUpload.url
-			}]
-		}
+		if ( cropperInstance.removedImage ) {
+			cropperInstance.removedImage = false;
+			var idItem = cropperInstance.idItem;
+			var image = imagesMenu[idItem];
 
-		$modalImagesCrop.foundation('reveal', 'close');
-		cropperInstance.destroy();
+			if ( image && image[0].saved ) {
+				$.post('/deleteImageItem', {idItem: idItem.replace('item', '')})
+					.done(function(){
+						imagesMenu[idItem] = null;
+					})
+					.fail(function(){
+						noty({
+						  type: 'error',  layout: 'topCenter',
+						  text: 'Error for delete image'
+						});
+					});
+			}
+
+			$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+			$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
+			$addPicture.removeClass('secondary').removeAttr('disabled');			
+		} else {
+			if ( lastImageUpload ) {
+				imagesMenu[lastImageUpload.idItem] = [{
+					cropped: true,
+					url: lastImageUpload.url
+				}]
+			}
+
+			$modalImagesCrop.foundation('reveal', 'close');
+		}
 	})
 
 	$(document).on('click', '.itemUpload', function(){
@@ -665,6 +698,8 @@ $(document).ready(function() {
 				}]
 			}
 		}
+
+		$modalImagesCrop.css('top', $(window).scrollTop());
 
 		$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
 
@@ -726,25 +761,10 @@ $(document).ready(function() {
             $barImageCrop.width(percentVal);
             $percentImageCrop.html(percentVal);
         };
-        cropperInstance.onRemoveCroppedImage = function(){
-			var idItem = this.idItem;
-			var image = imagesMenu[idItem];
-
-			if ( image && image[0].saved ) {
-				$.post('/deleteImageItem', {idItem: idItem.replace('item', '')})
-					.done(function(){
-						imagesMenu[idItem] = null;
-					})
-					.fail(function(){
-						noty({
-						  type: 'error',  layout: 'topCenter',
-						  text: 'Error for delete image'
-						});
-					});
-			}
-
-			$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled', 'disabled');
-			$addPicture.removeClass('secondary').removeAttr('disabled', 'disabled');
+        cropperInstance.onRemoveCroppedImage = function(  ) {
+			$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
+			$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
+			$addPicture.addClass('secondary').attr('disabled', 'disabled');
 		};
 
 		if ( imagesMenu.hasOwnProperty(idItem) && imagesMenu[idItem] ) {
