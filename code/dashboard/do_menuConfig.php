@@ -12,7 +12,7 @@
 		$path = "";
 			if(isset($_SERVER['PREO_UPLOAD_PATH']))
 			{
-				$path = $_SERVER['PREO_UPLOAD_PATH'];				
+				$path = '/' . $_SERVER['PREO_UPLOAD_PATH'];				
 			}
 			else
 			{
