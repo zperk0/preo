@@ -283,7 +283,7 @@
 							unlink($PREO_UPLOAD_ROOT . '/temp/' . $newImage);
 
 							$data = array();
-							$data['image'] = '/menuitem/fix/' . $newImage;
+							$data['image'] = '/tmp/upload/menuitem/fix/' . $newImage;
 							$data['itemId'] = $item_id;
 							$jsonData 	= json_encode($data);
 							$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
@@ -319,7 +319,7 @@
 							unlink($PREO_UPLOAD_ROOT . '/temp/' . $newImage);
 
 							$data = array();
-							$data['image'] = '/menuitem/fix/' . $newImage;
+							$data['image'] = '/tmp/upload/menuitem/fix/' . $newImage;
 							$data['itemId'] = $item_id;
 							$jsonData 	= json_encode($data);
 							$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created

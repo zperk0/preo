@@ -10,10 +10,9 @@
 	{
 		$wPath = '/tmp/upload/'.'wallpaper/';
 		$lPath = '/tmp/upload/'.'logo/';
-		$mPath = '/tmp/upload/';
 	}
 
-	$jsMPath = $mPath . "menuitem/";
+	$jsMPath = "/tmp/upload/menuitem/";
 	?>
 	<script type="text/javascript">
 		globalWPath = "<?echo $wPath;?>";
