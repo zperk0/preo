@@ -275,7 +275,7 @@
 											<?php
 												$attr = ''; 
 												if ( isset($item['images']) && count($item['images']) ) {
-													$attr = 'data-image-url = "' . $mPath . $item['images'][0]['image'] . '"';
+													$attr = 'data-image-url = "' . $item['images'][0]['image'] . '"';
 												}
 											?>
 											<button type="button" class="menuTableButtons itemUpload" 	<?php echo $attr ?>	title="<?echo _("Upload image");?>"							><i class="pd-upload"></i></button>										
