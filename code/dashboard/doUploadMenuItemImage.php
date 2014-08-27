@@ -41,7 +41,7 @@
 		$imgUrl[ count($imgUrl) - 1 ] = 'item_' . strtoupper(uniqid('', false)) . $fileEXT;
 		$imgUrl = $imgUrl[ count($imgUrl) - 1 ];
 
-		$status = cropImage($docRoot . '/menuitem/temp/' . $oldName, $docRoot . '/menuitem/temp/' . $imgUrl, $_POST['imgUrl'], $fixMenu . $imgUrl, $_POST['imgInitW'], $_POST['imgInitH'], $_POST['imgW'], $_POST['imgH'], $_POST['imgY1'], $_POST['imgX1'], $_POST['cropW'], $_POST['cropH']);
+		$status = cropImage($docRoot . '/menuitem/temp/' . $oldName, $docRoot . '/menuitem/fix/' . $imgUrl, $_POST['imgUrl'], $fixMenu . $imgUrl, $_POST['imgInitW'], $_POST['imgInitH'], $_POST['imgW'], $_POST['imgH'], $_POST['imgY1'], $_POST['imgX1'], $_POST['cropW'], $_POST['cropH']);
 
 		if ( $status && $status[0]['url'] !== $_POST['imgUrl'] ) {
 			unlink( $docRoot . $_POST['imgUrl'] );
