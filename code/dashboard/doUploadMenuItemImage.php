@@ -26,19 +26,20 @@
 		$folderMenu = '/' . $_SERVER['PREO_UPLOAD_PATH'] . '/menuitem/temp';
 	}
 	else {
-		$docRoot = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'];
+		$docRoot = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'] . '/tmp/upload/';
 		$PREO_UPLOAD_ROOT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/tmp/upload/menuitem/temp/';
 		$folderMenu = '/tmp/upload/menuitem/temp/';	
 	}
 
 	if ( isset($_POST['cropW']) ) {
 		$imgUrl = $_POST['imgUrl'];
+		$oldName = $imgUrl[ count($imgUrl) - 1 ]; 
 		$fileEXT = strtolower(substr($_POST['imgUrl'], strrpos($_POST['imgUrl'], '.'))); //this gets .jpg,.png, etc
 		$imgUrl = explode('/', $imgUrl);
 		$imgUrl[ count($imgUrl) - 1 ] = 'item_' . strtoupper(uniqid('', false)) . $fileEXT;
-		$imgUrl = implode("/", $imgUrl);
+		$imgUrl = $imgUrl[ count($imgUrl) - 1 ];
 
-		$status = cropImage($docRoot . $_POST['imgUrl'], $docRoot . $imgUrl, $_POST['imgUrl'], $imgUrl, $_POST['imgInitW'], $_POST['imgInitH'], $_POST['imgW'], $_POST['imgH'], $_POST['imgY1'], $_POST['imgX1'], $_POST['cropW'], $_POST['cropH']);
+		$status = cropImage($docRoot . '/menuitem/temp/' . $oldName, $docRoot . '/menuitem/temp/' . $imgUrl, $_POST['imgUrl'], $imgUrl, $_POST['imgInitW'], $_POST['imgInitH'], $_POST['imgW'], $_POST['imgH'], $_POST['imgY1'], $_POST['imgX1'], $_POST['cropW'], $_POST['cropH']);
 
 		if ( $status && $status[0]['url'] !== $_POST['imgUrl'] ) {
 			unlink( $docRoot . $_POST['imgUrl'] );
