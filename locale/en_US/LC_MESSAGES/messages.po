@@ -1,0 +1,3751 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PreoDay\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-09 15:29+0100\n"
+"PO-Revision-Date: 2013-09-11 18:08-0000\n"
+"Last-Translator: Ashish Mehra <ashish@webfire.co.uk>\n"
+"Language-Team: Webfire <ashish@webfire.co.uk>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: C:\\Users\\Auero\\Documents\\Domains\\PreoDay.com\n"
+
+#: code/accountSettings/index.php:21
+#: code/accountSettings/partials/password.php:1
+#: code/accountSettings/partials/profile.php:1
+#: inc/settings/settings_content.php:6
+msgid "Profile"
+msgstr ""
+
+#: code/accountSettings/index.php:22
+#: code/accountSettings/partials/billingHistory.php:1
+#: code/accountSettings/partials/subscription.php:1
+msgid "Subscriptions"
+msgstr ""
+
+#: code/accountSettings/index.php:23
+msgid "Payment Methods"
+msgstr ""
+
+#: code/accountSettings/index.php:24
+#: code/accountSettings/partials/billingHistory.php:5
+msgid "Billing History"
+msgstr ""
+
+#: code/accountSettings/partials/billingHistory.php:10
+msgid "Inv no."
+msgstr ""
+
+#: code/accountSettings/partials/billingHistory.php:11
+msgid "Date"
+msgstr ""
+
+#: code/accountSettings/partials/billingHistory.php:12
+#: code/kyc/partials/reports.php:79 code/kyc/partials/stream.php:14
+msgid "Status"
+msgstr ""
+
+#: code/accountSettings/partials/billingHistory.php:13
+msgid "Amount"
+msgstr ""
+
+#: code/accountSettings/partials/billingHistory.php:23
+msgid "DOWNLOAD PDF"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:5
+#: inc/settings/settings_content.php:58
+msgid "Old Password"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:12 inc/reset/reset_content.php:9
+#: inc/settings/settings_content.php:66
+msgid "New Password"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:19
+msgid "Confirm"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:25
+#: code/accountSettings/partials/payment.php:42
+#: code/accountSettings/partials/profile.php:49
+#: code/settings/delivery/delivery-view.php:129
+#: inc/dashboard/appConfig1.php:218 inc/dashboard/appConfig2.php:112
+#: inc/dashboard/eventConfig.php:234 inc/dashboard/mdConfig.php:241
+#: inc/dashboard/menuConfig.php:382 inc/dashboard/nonEventConfig.php:110
+#: inc/dashboard/outletConfig.php:88 inc/dashboard/userConfig.php:120
+#: inc/dashboard/venueConfig.php:468
+msgid "SAVE CHANGES"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:26
+#: code/accountSettings/partials/payment.php:43
+#: code/accountSettings/partials/profile.php:50
+#: code/settings/delivery/delivery-view.php:130
+#: inc/dashboard/appConfig1.php:219 inc/dashboard/appConfig2.php:113
+#: inc/dashboard/eventConfig.php:235 inc/dashboard/mdConfig.php:242
+#: inc/dashboard/menuConfig.php:384 inc/dashboard/nonEventConfig.php:111
+#: inc/dashboard/outletConfig.php:89 inc/dashboard/userConfig.php:121
+#: inc/dashboard/venueConfig.php:469
+msgid "SAVING..."
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:1
+msgid "Payment"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:5
+msgid "Card Number"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:8
+msgid "Credit Card Number"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:12
+#: code/accountSettings/partials/payment.php:14
+msgid "CCV"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:18
+msgid "Expires"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:21
+msgid "MM"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:22
+msgid "YY"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:26
+msgid "Billing Address"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:29
+msgid "Address Line 1"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:31
+msgid "Address Line 2"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:33
+msgid "Address Line 3"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:35
+#: inc/dashboard/venueConfig.php:157
+msgid "Town/City"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:37
+msgid "Postcode"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:41
+msgid "CHANGE DETAILS"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:44 code/shared/js_strings.php:83
+#: code/shop/shop.php:112 inc/dashboard/dashboard_content.php:170
+msgid "CANCEL"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:5
+#: inc/settings/settings_content.php:8 inc/signup/signup_content.php:33
+msgid "First Name"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:9
+#: inc/signup/signup_content.php:35
+msgid "Please type your first name.(max 100chars)"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:14
+#: inc/settings/settings_content.php:13 inc/signup/signup_content.php:38
+msgid "Last Name"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:18
+#: inc/signup/signup_content.php:40
+msgid "Please type your last name.(max 100chars)"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:23
+msgid "Email Address"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:27
+#: inc/signin/signin_content.php:25
+msgid "Please type a valid email address"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:32
+#: inc/settings/settings_content.php:25
+msgid "Business Name"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:36
+msgid "Please type your account name.(max 100chars)"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:42
+#: inc/dashboard/userConfig.php:59 inc/signin/signin_content.php:31
+msgid "Password"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:44
+msgid "CHANGE PASSWORD"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:4
+msgid "Billing Schedule"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:7
+msgid "Please add a payment method in order to subscribe to premium features"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:8
+#: code/shared/js_strings.php:104 inc/dashboard/dashboard_content.php:195
+msgid "ADD PAYMENT METHOD"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:12
+msgid "Your recurring payment has failed!"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:13
+msgid "Please update your card details within "
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:13
+msgid " days to prevent your Premium Features from being deactivated."
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:16
+msgid "Your account will be billed"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:16
+msgid "on"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:17
+msgid ""
+"You have no active subscriptions, your account will not be billed at this "
+"time."
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:32
+msgid "CHANGE CARD"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:33
+msgid "BILLING HISTORY"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:38
+msgid "Active Premium Features"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:41
+msgid "You currently don't have any active Premium Features on your account."
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:42
+msgid "Why not check out our"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:42
+#: inc/dashboard/dashboard_content.php:107
+msgid "Available Premium Features"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:42
+msgid ""
+"and discover how they can start \n"
+"\t\t\tadding further value to your business today"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:51
+msgid "Pending removal"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:53
+#: code/accountSettings/partials/subscription.php:54
+msgid "Uninstall"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:55
+msgid "Cancel"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:59
+#: inc/dashboard/dashboard_content.php:112
+msgid "STORE"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:66
+msgid "Deactivated Premium Features"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:74
+msgid "Trial has expired"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:76
+msgid "Reinstall"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:77
+msgid "Remove"
+msgstr ""
+
+#: code/kyc/index.php:20
+msgid "Know your customers"
+msgstr ""
+
+#: code/kyc/index.php:26
+msgid "Metrics"
+msgstr ""
+
+#: code/kyc/index.php:27
+msgid "Stock"
+msgstr ""
+
+#: code/kyc/index.php:28 code/kyc/partials/customers.php:8
+msgid "Customers"
+msgstr ""
+
+#: code/kyc/index.php:29 code/kyc/partials/reports.php:8
+msgid "Reports"
+msgstr ""
+
+#: code/kyc/index.php:30
+msgid "Live stream"
+msgstr ""
+
+#: code/kyc/index.php:44
+msgid "Outlet:"
+msgstr ""
+
+#: code/kyc/index.php:55 code/kyc/index.php:74
+msgid "Update"
+msgstr ""
+
+#: code/kyc/index.php:63
+msgid "Date:"
+msgstr ""
+
+#: code/kyc/index.php:68
+msgid "to"
+msgstr ""
+
+#: code/kyc/js/directives/chart/chart.php:21
+msgid "No Data"
+msgstr ""
+
+#: code/kyc/js/directives/chart/chart.php:63
+#: code/kyc/partials/customers.php:68 code/kyc/partials/reports.php:115
+#: code/kyc/partials/stock.php:60
+msgid "Export as..."
+msgstr ""
+
+#: code/kyc/js/directives/chart/chart.php:71
+#: code/kyc/partials/customers.php:74 code/kyc/partials/reports.php:121
+#: code/kyc/partials/stock.php:66
+msgid "PDF"
+msgstr ""
+
+#: code/kyc/js/directives/chart/chart.php:77
+#: code/kyc/partials/customers.php:81 code/kyc/partials/reports.php:128
+#: code/kyc/partials/stock.php:73
+msgid "CSV"
+msgstr ""
+
+#: code/kyc/partials/customers.php:23 code/kyc/partials/reports.php:37
+#: inc/dashboard/eventConfig.php:49 inc/dashboard/mdConfig.php:30
+#: inc/dashboard/menuConfig.php:85 inc/dashboard/menuConfig.php:221
+#: inc/dashboard/userConfig.php:21
+msgid "Name"
+msgstr ""
+
+#: code/kyc/partials/customers.php:30
+msgid "Total Spent"
+msgstr ""
+
+#: code/kyc/partials/customers.php:37
+msgid "Email address"
+msgstr ""
+
+#: code/kyc/partials/customers.php:88 code/kyc/partials/reports.php:135
+#: code/kyc/partials/stock.php:80
+msgid "All"
+msgstr ""
+
+#: code/kyc/partials/customers.php:92 code/kyc/partials/reports.php:139
+#: code/kyc/partials/stock.php:84
+msgid "Selected"
+msgstr ""
+
+#: code/kyc/partials/reports.php:23
+msgid "ID"
+msgstr ""
+
+#: code/kyc/partials/reports.php:30
+msgid "Outlet"
+msgstr ""
+
+#: code/kyc/partials/reports.php:44 code/kyc/partials/stream.php:42
+msgid "Time"
+msgstr ""
+
+#: code/kyc/partials/reports.php:51
+msgid "Qty"
+msgstr ""
+
+#: code/kyc/partials/reports.php:58 code/kyc/partials/stock.php:23
+msgid "Item"
+msgstr ""
+
+#: code/kyc/partials/reports.php:65
+msgid "Modifier"
+msgstr ""
+
+#: code/kyc/partials/reports.php:72 code/kyc/partials/stream.php:21
+msgid "Total"
+msgstr ""
+
+#: code/kyc/partials/stock.php:8
+msgid "Menu items"
+msgstr ""
+
+#: code/kyc/partials/stock.php:30
+msgid "Quantity Ordered"
+msgstr ""
+
+#: code/kyc/partials/stream.php:7
+msgid "Live Stream"
+msgstr ""
+
+#: code/kyc/partials/stream.php:28
+msgid "Customer"
+msgstr ""
+
+#: code/kyc/partials/stream.php:35
+msgid "Order"
+msgstr ""
+
+#: code/kyc/partials/stream.php:78
+msgid "Discount"
+msgstr ""
+
+#: code/kyc/partials/stream.php:82
+msgid "TOTAL"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:20 inc/shared/h.php:50
+msgid "Delivery Settings"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:21
+msgid "Enable delivery services"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:24
+#: code/settings/delivery/delivery-view.php:94
+#: code/settings/delivery/delivery-view.php:119
+#: inc/dashboard/eventConfig.php:90 inc/dashboard/eventConfig.php:170
+#: inc/dashboard/mdConfig.php:73 inc/dashboard/mdConfig.php:191
+#: inc/dashboard/menuConfig.php:121 inc/dashboard/menuConfig.php:169
+#: inc/dashboard/menuConfig.php:255 inc/dashboard/menuConfig.php:304
+#: inc/dashboard/menuConfig.php:336 inc/dashboard/venueConfig.php:95
+msgid "No"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:26
+#: code/settings/delivery/delivery-view.php:96
+#: code/settings/delivery/delivery-view.php:121
+#: inc/dashboard/eventConfig.php:93 inc/dashboard/eventConfig.php:173
+#: inc/dashboard/mdConfig.php:76 inc/dashboard/mdConfig.php:194
+#: inc/dashboard/menuConfig.php:124 inc/dashboard/menuConfig.php:172
+#: inc/dashboard/menuConfig.php:258 inc/dashboard/menuConfig.php:307
+#: inc/dashboard/menuConfig.php:339 inc/dashboard/venueConfig.php:98
+msgid "Yes"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:34
+msgid "General Settings"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:35
+msgid "Order Status Alerts"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:36
+msgid "Order Rejection Alerts"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:41
+msgid "Delivery Areas"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:42
+msgid "eg. \"NW1, NW2...\""
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:43
+msgid "Please type a delivery zone (max 200chars)"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:46
+msgid "In case of customer queries contact:"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:48
+msgid "Please enter a valid telephone number"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:51
+msgid "Minimum order value to qualify for delivery"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:53
+msgid "Please enter a valid number (e.g. 20.52)"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:56
+msgid "Delivery charge"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:58
+#: code/settings/delivery/delivery-view.php:63
+msgid "Please enter a valid number (e.g. 3.25)"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:61
+msgid "Free delivery for orders above"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:66
+msgid "Default delivery time (minutes)"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:68
+msgid "Please enter a valid time interval in minutes (e.g. 20)"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:71
+msgid "Discount offered for delivery orders (%)"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:73
+#: inc/dashboard/venueConfig.php:124
+msgid "Please provide a discount percentage (between 0 and 100)"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:80
+msgid "Preset customer notifications, sent by email and push alert"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:81
+#: code/settings/delivery/delivery-view.php:105
+msgid "Short name"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:82
+#: code/settings/delivery/delivery-view.php:106
+msgid "Active?"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:87
+msgid "Please enter both the notification and a short name."
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:104
+msgid "Preset order rejection notifications, sent by email and push alert"
+msgstr ""
+
+#: code/settings/delivery/delivery-view.php:112
+msgid "Please enter a message and a short name or remove this notification."
+msgstr ""
+
+#: code/shared/js_strings.php:9
+msgid "Sorry, but there's been an error processing your request."
+msgstr ""
+
+#: code/shared/js_strings.php:10
+msgid "Incorrect credentials or account does not exist."
+msgstr ""
+
+#: code/shared/js_strings.php:11
+msgid "Success! Please check your email for further instructions."
+msgstr ""
+
+#: code/shared/js_strings.php:12
+msgid "Sorry, incorrect code."
+msgstr ""
+
+#: code/shared/js_strings.php:13
+msgid ""
+"Your password has been reset.<br/>You will now be redirected to the login "
+"page."
+msgstr ""
+
+#: code/shared/js_strings.php:14
+msgid "Venue changes have been saved!"
+msgstr ""
+
+#: code/shared/js_strings.php:15
+msgid "Uploaded!"
+msgstr ""
+
+#: code/shared/js_strings.php:16
+msgid "Error uploading file"
+msgstr ""
+
+#: code/shared/js_strings.php:17
+msgid "Incorrect Image File"
+msgstr ""
+
+#: code/shared/js_strings.php:18
+msgid "App changes have been saved!"
+msgstr ""
+
+#: code/shared/js_strings.php:19
+msgid "Choose a size"
+msgstr ""
+
+#: code/shared/js_strings.php:20
+msgid "Choose a flavour"
+msgstr ""
+
+#: code/shared/js_strings.php:21
+msgid "Choose a topping"
+msgstr ""
+
+#: code/shared/js_strings.php:22
+msgid "Choose some extras"
+msgstr ""
+
+#: code/shared/js_strings.php:23
+msgid "Choose a side dish"
+msgstr ""
+
+#: code/shared/js_strings.php:24
+msgid "Pick an option type"
+msgstr ""
+
+#: code/shared/js_strings.php:25
+msgid "Yes, delete this section and all its contents!"
+msgstr ""
+
+#: code/shared/js_strings.php:26
+msgid "No, go back."
+msgstr ""
+
+#: code/shared/js_strings.php:27
+msgid "Choose a main"
+msgstr ""
+
+#: code/shared/js_strings.php:28
+msgid "Choose a side"
+msgstr ""
+
+#: code/shared/js_strings.php:29
+msgid "Choose a drink"
+msgstr ""
+
+#: code/shared/js_strings.php:30
+msgid "Choose a curry"
+msgstr ""
+
+#: code/shared/js_strings.php:31
+msgid "Choose a burger"
+msgstr ""
+
+#: code/shared/js_strings.php:32
+msgid "Menu configuration has been saved!"
+msgstr ""
+
+#: code/shared/js_strings.php:33
+msgid "Choose a Collection Slot"
+msgstr ""
+
+#: code/shared/js_strings.php:34
+msgid ""
+"Are you sure you want to delete this event? Note: all event data will be "
+"lost!"
+msgstr ""
+
+#: code/shared/js_strings.php:35
+msgid "Yes, delete this event!"
+msgstr ""
+
+#: code/shared/js_strings.php:36 inc/dashboard/userConfig.php:23
+msgid "Role"
+msgstr ""
+
+#: code/shared/js_strings.php:37
+msgid ""
+"Are you sure you want to delete this user? Note: all user data will be lost!"
+msgstr ""
+
+#: code/shared/js_strings.php:38
+msgid "Yes, delete this user!"
+msgstr ""
+
+#: code/shared/js_strings.php:39
+msgid "Username/email already exists"
+msgstr ""
+
+#: code/shared/js_strings.php:40
+msgid "User configuration has been saved!"
+msgstr ""
+
+#: code/shared/js_strings.php:41
+msgid "Select all menus"
+msgstr ""
+
+#: code/shared/js_strings.php:42
+msgid "Unselect all menus"
+msgstr ""
+
+#: code/shared/js_strings.php:43
+msgid "Select menu("
+msgstr ""
+
+#: code/shared/js_strings.php:44
+msgid "# of # selected"
+msgstr ""
+
+#: code/shared/js_strings.php:45
+msgid ""
+"Are you sure you want to delete this outlet? Note: all outlet data will be "
+"lost!"
+msgstr ""
+
+#: code/shared/js_strings.php:46
+msgid "Yes, delete this outlet!"
+msgstr ""
+
+#: code/shared/js_strings.php:47
+msgid "Outlet configuration has been saved!"
+msgstr ""
+
+#: code/shared/js_strings.php:48
+msgid "These times have been applied to all days!"
+msgstr ""
+
+#: code/shared/js_strings.php:49
+msgid ""
+"We still need some more information. Don't forget to fill out the remaining "
+"days of the week!"
+msgstr ""
+
+#: code/shared/js_strings.php:50
+msgid "Where should this meal deal appear?"
+msgstr ""
+
+#: code/shared/js_strings.php:51 inc/dashboard/mdConfig.php:96
+#: inc/dashboard/mdConfig.php:213
+msgid "Choose a menu section"
+msgstr ""
+
+#: code/shared/js_strings.php:52
+msgid ""
+"Are you sure you want to delete this meal deal? Note: all associated data "
+"will be lost!"
+msgstr ""
+
+#: code/shared/js_strings.php:53
+msgid "Yes, delete this meal deal!"
+msgstr ""
+
+#: code/shared/js_strings.php:54
+msgid "All changes has been saved!"
+msgstr ""
+
+#: code/shared/js_strings.php:55
+msgid ""
+"Are you sure you want to delete this menu? Note: all menu data will be lost!"
+msgstr ""
+
+#: code/shared/js_strings.php:56
+msgid "Yes, delete this menu!"
+msgstr ""
+
+#: code/shared/js_strings.php:57
+msgid "Sorry, incorrect password."
+msgstr ""
+
+#: code/shared/js_strings.php:58
+msgid ""
+"Settings and Password has been saved!<br/>You will need to log in again with "
+"your new password to continue."
+msgstr ""
+
+#: code/shared/js_strings.php:59
+msgid "Settings have been saved!"
+msgstr ""
+
+#: code/shared/js_strings.php:60
+msgid "Please select features you require"
+msgstr ""
+
+#: code/shared/js_strings.php:61
+msgid "Select all"
+msgstr ""
+
+#: code/shared/js_strings.php:62
+msgid "Sorry, these password do not match. Please try again."
+msgstr ""
+
+#: code/shared/js_strings.php:63
+msgid "All the fields are required."
+msgstr ""
+
+#: code/shared/js_strings.php:64
+msgid "Please fill in all the required fields."
+msgstr ""
+
+#: code/shared/js_strings.php:65
+msgid ""
+"This Premium Feature will remain active on your account until the end of the "
+"current billing cycle. You can cancel this uninstall at any time. If you "
+"wish to reinstall this Premium Feature after it has been deactivated, simply "
+"click on the <span>reinstall</span> option."
+msgstr ""
+
+#: code/shared/js_strings.php:66
+msgid "Are you sure you want to uninstall this Premium Feature?"
+msgstr ""
+
+#: code/shared/js_strings.php:67
+msgid "UNINSTALL"
+msgstr ""
+
+#: code/shared/js_strings.php:68
+msgid ""
+"Your free trial will be imediately canceled and you will no longer have "
+"access to this feature."
+msgstr ""
+
+#: code/shared/js_strings.php:69
+msgid ""
+"Are you sure you want to cancel this Free Trial? This action cannot be "
+"undone?"
+msgstr ""
+
+#: code/shared/js_strings.php:70
+msgid ""
+"This Premium Feature is currently canceled. A new charge will be made to "
+"your card before reinstalling this feature."
+msgstr ""
+
+#: code/shared/js_strings.php:71
+msgid "Are you sure you want to reinstall this Premium Feature?"
+msgstr ""
+
+#: code/shared/js_strings.php:72
+msgid "REINSTALL"
+msgstr ""
+
+#: code/shared/js_strings.php:73
+msgid "Error"
+msgstr ""
+
+#: code/shared/js_strings.php:74
+msgid "PAYMENT METHOD"
+msgstr ""
+
+#: code/shared/js_strings.php:75 inc/dashboard/dashboard_content.php:187
+msgid "Your new Premium Feature is now live!"
+msgstr ""
+
+#: code/shared/js_strings.php:76 inc/dashboard/dashboard_content.php:188
+msgid "You can manage subscriptions from your account settings page"
+msgstr ""
+
+#: code/shared/js_strings.php:77
+msgid "OK"
+msgstr ""
+
+#: code/shared/js_strings.php:78
+msgid "New"
+msgstr ""
+
+#: code/shared/js_strings.php:79
+msgid "Returning"
+msgstr ""
+
+#: code/shared/js_strings.php:80
+msgid " orders"
+msgstr ""
+
+#: code/shared/js_strings.php:81
+msgid "Day of collection"
+msgstr ""
+
+#: code/shared/js_strings.php:82
+msgid "Before day of collection"
+msgstr ""
+
+#: code/shared/js_strings.php:84
+msgid "Your order is running 15 mins late"
+msgstr ""
+
+#: code/shared/js_strings.php:85
+msgid "Late Order"
+msgstr ""
+
+#: code/shared/js_strings.php:86
+msgid "Your order is on its way"
+msgstr ""
+
+#: code/shared/js_strings.php:87
+msgid "En-route"
+msgstr ""
+
+#: code/shared/js_strings.php:88
+msgid "There is a problem with your order. Please call us"
+msgstr ""
+
+#: code/shared/js_strings.php:89
+msgid "Call us"
+msgstr ""
+
+#: code/shared/js_strings.php:90
+msgid "Your address is out of our delivery zone"
+msgstr ""
+
+#: code/shared/js_strings.php:91
+msgid "Out of zone"
+msgstr ""
+
+#: code/shared/js_strings.php:92
+msgid "Sorry, that item is out of stock"
+msgstr ""
+
+#: code/shared/js_strings.php:93
+msgid "Out of stock"
+msgstr ""
+
+#: code/shared/js_strings.php:94
+msgid "Sorry, Your order has been rejected. Please call us"
+msgstr ""
+
+#: code/shared/js_strings.php:95
+msgid "Successfully saved delivery settings."
+msgstr ""
+
+#: code/shared/js_strings.php:96 inc/dashboard/dashboard_content.php:162
+msgid "Your card will be charged "
+msgstr ""
+
+#: code/shared/js_strings.php:97
+msgid ""
+" for this transaction. <br/> You may cancel this Premium Feature at any time "
+"from your account settings page."
+msgstr ""
+
+#: code/shared/js_strings.php:98 inc/dashboard/dashboard_content.php:169
+msgid "BUY"
+msgstr ""
+
+#: code/shared/js_strings.php:99
+msgid " DAY FREE TRIAL"
+msgstr ""
+
+#: code/shared/js_strings.php:100
+msgid ""
+"Your card will not be charged for this transaction. <br/> You may cancel "
+"this Premium Feature at any time from your account settings page."
+msgstr ""
+
+#: code/shared/js_strings.php:101 inc/dashboard/dashboard_content.php:189
+msgid "ACCOUNT SETTINGS"
+msgstr ""
+
+#: code/shared/js_strings.php:102 inc/dashboard/dashboard_content.php:196
+msgid "RETURN TO STORE"
+msgstr ""
+
+#: code/shared/js_strings.php:103 inc/dashboard/dashboard_content.php:194
+msgid ""
+"Please add a payment method to your account in order to subscribe to Premium "
+"Features"
+msgstr ""
+
+#: code/shop/features.php:4
+msgid ""
+"We understand that running a successful business such as yours can be time-"
+"consuming and that there aren't always enough hours in the day. That is why "
+"we offer Assistant, so we can concentrate on supporting your new app and you "
+"can concentrate on your business."
+msgstr ""
+
+#: code/shop/features.php:5
+msgid "Get some help managing your app, from set-up to ongoing maintenance."
+msgstr ""
+
+#: code/shop/features.php:6
+msgid "Assistant"
+msgstr ""
+
+#: code/shop/features.php:9
+msgid "Set up your branded app in My Order AppÂ "
+msgstr ""
+
+#: code/shop/features.php:10
+msgid "Manage your menu, pricing, payments and artwork"
+msgstr ""
+
+#: code/shop/features.php:11
+msgid "Set up extra staff users"
+msgstr ""
+
+#: code/shop/features.php:12
+msgid "1 set of changes per month"
+msgstr ""
+
+#: code/shop/features.php:20
+msgid ""
+"Preoday provides you with your own branded app in the 'My Order App' "
+"directory. Â Itâ€™s free of charge, you can be up and running within 30 "
+"minutes, and it avoids the cost and hassle of submissions to Apple, Google "
+"and Windows Store. Â However, we understand that some businesses want to see "
+"their app in these places too, so with the Independent service we do it for "
+"you, and at a much lower cost than doing it yourself."
+msgstr ""
+
+#: code/shop/features.php:21
+msgid "Find your venue in the App Store, Google Play and Windows Phone Store"
+msgstr ""
+
+#: code/shop/features.php:22
+msgid "Independent"
+msgstr ""
+
+#: code/shop/features.php:26
+msgid ""
+"Create, submit, manage and maintain your own branded app in the App Store, "
+"Google Play and Windows Phone StoreÂ "
+msgstr ""
+
+#: code/shop/features.php:27
+msgid "Manage and resolve any issues or queries"
+msgstr ""
+
+#: code/shop/features.php:28
+msgid "Provide quarterly updates/changes to the app"
+msgstr ""
+
+#: code/shop/features.php:35
+msgid ""
+"Now that customers can order at your venue on their smartphones, you "
+"literally have them at their fingertips. So the best way to keep them "
+"interested is to use Loyalty and offer them exclusive loyalty programmes."
+msgstr ""
+
+#: code/shop/features.php:36
+msgid ""
+"Keep customers coming back by offering them exclusive loyalty programmes."
+msgstr ""
+
+#: code/shop/features.php:37
+msgid "Loyalty"
+msgstr ""
+
+#: code/shop/features.php:41
+msgid "Mobile Stamp Cards"
+msgstr ""
+
+#: code/shop/features.php:42
+msgid "Points System"
+msgstr ""
+
+#: code/shop/features.php:43
+msgid "Sales analyser"
+msgstr ""
+
+#: code/shop/features.php:44
+msgid "Spend bands"
+msgstr ""
+
+#: code/shop/features.php:51
+msgid ""
+"Using Preoday, you move closer to your customers. With our Know Your "
+"Customer module you will have the data you need to manage and market to them "
+"online. Â Information is presented in exciting charts and in an easy-to-use "
+"format, allowing fresh insights into buying patterns and improved customer "
+"service. Â Whether you want to offer special deals to favoured customers, "
+"manage stock flows better, understand where new business is coming from, or "
+"simply plot your app's growth, itâ€™s all there and ready for you in Know Your "
+"Customer."
+msgstr ""
+
+#: code/shop/features.php:52
+msgid "Get extensive reports and analytics on your mobile customers"
+msgstr ""
+
+#: code/shop/features.php:53
+msgid "Know your customer"
+msgstr ""
+
+#: code/shop/features.php:57
+msgid "Customer profiles and order histories"
+msgstr ""
+
+#: code/shop/features.php:58
+msgid "Order analytics and easy-to-use charts"
+msgstr ""
+
+#: code/shop/features.php:59
+msgid "Standard and customised reporting"
+msgstr ""
+
+#: code/shop/features.php:60
+msgid "Reports across multiple outlets"
+msgstr ""
+
+#: code/shop/features.php:61
+msgid "Excel downloads\t"
+msgstr ""
+
+#: code/shop/shop.php:17
+msgid ""
+"At Preoday we believe that businesses such as yours should not pay to "
+"receive mobile orders.Â Our business model is simple: we charge no commission "
+"on orders you receive through the app. Â Instead, we offer services that "
+"bring new value and insight to your business."
+msgstr ""
+
+#: code/shop/shop.php:41 code/shop/shop.php:67
+msgid "one-off payment"
+msgstr ""
+
+#: code/shop/shop.php:42 code/shop/shop.php:68
+msgid "VAT"
+msgstr ""
+
+#: code/shop/shop.php:90
+msgid "Features"
+msgstr ""
+
+#: code/shop/shop.php:94 inc/dashboard/eventConfig.php:50
+#: inc/dashboard/menuConfig.php:86 inc/dashboard/menuConfig.php:222
+msgid "Description"
+msgstr ""
+
+#: code/shop/shop.php:103
+msgid "DAY FREE TRIAL"
+msgstr ""
+
+#: code/shop/shop.php:104
+msgid ""
+"Your card will not be charged for this translaction. You may cancel this "
+"trial at any time from your account settings page."
+msgstr ""
+
+#: code/shop/shop.php:111
+msgid "BEGIN TRIAL"
+msgstr ""
+
+#: inc/404/404_content.php:5
+msgid "Whoops!"
+msgstr ""
+
+#: inc/404/404_content.php:6
+msgid "We can't find the page you're looking for."
+msgstr ""
+
+#: inc/404/404_content.php:6
+msgid "Please check out the"
+msgstr ""
+
+#: inc/404/404_content.php:6
+msgid "help section"
+msgstr ""
+
+#: inc/404/404_content.php:6
+msgid "or return to the"
+msgstr ""
+
+#: inc/404/404_content.php:6 inc/dashboard/dashboard_content.php:11
+#: inc/shared/h.php:30
+msgid "Dashboard"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:12 inc/dashboard/appConfig2.php:5
+#: inc/dashboard/eventConfig.php:7 inc/dashboard/menuConfig.php:7
+#: inc/dashboard/nonEventConfig.php:6 inc/dashboard/paymentConfig.php:6
+#: inc/dashboard/venueConfig.php:18 inc/finish/finish_content.php:7
+msgid "Venue Information"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:13 inc/dashboard/appConfig2.php:6
+#: inc/dashboard/eventConfig.php:8 inc/dashboard/menuConfig.php:8
+#: inc/dashboard/nonEventConfig.php:7 inc/dashboard/paymentConfig.php:7
+#: inc/dashboard/venueConfig.php:20 inc/dashboard/venueConfig.php:22
+#: inc/finish/finish_content.php:8
+msgid "App Styling 1/2"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:15 inc/dashboard/appConfig1.php:17
+#: inc/dashboard/appConfig2.php:7 inc/dashboard/eventConfig.php:9
+#: inc/dashboard/menuConfig.php:9 inc/dashboard/nonEventConfig.php:8
+#: inc/dashboard/paymentConfig.php:8 inc/dashboard/venueConfig.php:25
+#: inc/dashboard/venueConfig.php:27 inc/finish/finish_content.php:9
+msgid "App Styling 2/2"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:20 inc/dashboard/appConfig1.php:22
+#: inc/dashboard/appConfig2.php:9 inc/dashboard/appConfig2.php:11
+#: inc/dashboard/eventConfig.php:10 inc/dashboard/menuConfig.php:10
+#: inc/dashboard/nonEventConfig.php:9 inc/dashboard/paymentConfig.php:9
+#: inc/dashboard/venueConfig.php:30 inc/dashboard/venueConfig.php:32
+#: inc/finish/finish_content.php:10
+msgid "Menu Creation"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:25 inc/dashboard/appConfig1.php:28
+#: inc/dashboard/appConfig2.php:14 inc/dashboard/appConfig2.php:17
+#: inc/dashboard/dashboard_content.php:81 inc/dashboard/eventConfig.php:11
+#: inc/dashboard/menuConfig.php:12 inc/dashboard/menuConfig.php:15
+#: inc/dashboard/nonEventConfig.php:10 inc/dashboard/paymentConfig.php:10
+#: inc/dashboard/venueConfig.php:35 inc/dashboard/venueConfig.php:38
+#: inc/finish/finish_content.php:11 inc/shared/h.php:80
+msgid "Events"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:26 inc/dashboard/appConfig1.php:29
+#: inc/dashboard/appConfig2.php:15 inc/dashboard/appConfig2.php:18
+#: inc/dashboard/eventConfig.php:12 inc/dashboard/menuConfig.php:13
+#: inc/dashboard/menuConfig.php:16 inc/dashboard/nonEventConfig.php:11
+#: inc/dashboard/nonEventConfig.php:38 inc/dashboard/paymentConfig.php:11
+#: inc/dashboard/venueConfig.php:36 inc/dashboard/venueConfig.php:39
+#: inc/finish/finish_content.php:12 inc/shared/h.php:51
+msgid "Opening Hours"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:32 inc/dashboard/appConfig2.php:21
+#: inc/dashboard/eventConfig.php:13 inc/dashboard/menuConfig.php:18
+#: inc/dashboard/nonEventConfig.php:12 inc/dashboard/paymentConfig.php:12
+#: inc/dashboard/venueConfig.php:45
+msgid "Add a Payment"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:34 inc/dashboard/appConfig2.php:23
+#: inc/dashboard/eventConfig.php:15 inc/dashboard/menuConfig.php:20
+#: inc/dashboard/nonEventConfig.php:14 inc/dashboard/paymentConfig.php:15
+#: inc/dashboard/venueConfig.php:48 inc/finish/finish_content.php:15
+msgid "Done"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:39 inc/dashboard/appConfig2.php:28
+msgid "Style your app"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:39
+msgid "This is the first screen that your customers will see."
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:46
+msgid "Create a main heading"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:47 inc/dashboard/appConfig1.php:66
+msgid "Choose one here"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:49
+msgid "Leave the 4 deep queue to everyone else and pre-order."
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:50
+msgid "Don't miss the game, jump the long queue and pre-order."
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:51
+msgid "Intermission pre-order."
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:52
+msgid "A sparkling fruity alternative to queuing."
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:53
+msgid "Go on, jump the crazy queue and pre-order."
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:54
+msgid "Don't miss the game! Order online and skip the half-time rush"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:55
+msgid "Order interval drinks before the show starts"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:56
+msgid "Stay with friends while the bar prepares your round"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:57
+msgid "Order your coffee and croissant from your table, or from the train."
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:59 inc/dashboard/appConfig1.php:72
+msgid "or create your own..."
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:60
+msgid "maximum 70 characters"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:65
+msgid "Create a subheading"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:69
+msgid "Pre-order food and drinks"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:70
+msgid "Pre-order drinks+food"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:73
+msgid "maximum 30 characters"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:84
+msgid "Text colour"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:84 inc/dashboard/appConfig1.php:98
+#: inc/dashboard/appConfig1.php:106 inc/dashboard/appConfig2.php:71
+#: inc/dashboard/appConfig2.php:79 inc/dashboard/appConfig2.php:97
+#: inc/dashboard/appConfig2.php:105
+msgid "Enter Hex Colour Code or click to choose your colour."
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:92
+msgid "ORDER NOW button"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:98
+msgid "Button colour"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:106 inc/dashboard/appConfig2.php:79
+#: inc/dashboard/appConfig2.php:105
+msgid "Button text colour"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:126 inc/dashboard/dashboard_content.php:132
+msgid "ORDER NOW"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:138
+msgid "Select a home-screen background"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:169
+msgid "UPLOAD YOUR OWN BACKGROUND"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:176
+msgid "Custom Background Upload"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:181 inc/dashboard/appConfig1.php:206
+msgid "UPLOAD"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:183 inc/dashboard/appConfig1.php:208
+msgid "RESET"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:185
+msgid "Supported types: JPG"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:185 inc/dashboard/appConfig1.php:210
+msgid "Max file size: 10MB"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:185
+msgid "Dimensions: 1080x1920"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:194
+msgid "UPLOAD YOUR OWN LOGO"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:201
+msgid "Logo Upload"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:201
+msgid "Note: This will replace your main heading."
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:210
+msgid "Supported types: PNG"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:210
+msgid "Dimensions: 100x75"
+msgstr ""
+
+#: inc/dashboard/appConfig1.php:232
+msgid "30&#37 done, time for the artistic bit..."
+msgstr ""
+
+#: inc/dashboard/appConfig2.php:28
+msgid "This is where you can brand your menu page"
+msgstr ""
+
+#: inc/dashboard/appConfig2.php:35
+msgid "Add a short venue title"
+msgstr ""
+
+#: inc/dashboard/appConfig2.php:35
+msgid ""
+"This is a shorter version of your venue name that will be visible over your "
+"menu."
+msgstr ""
+
+#: inc/dashboard/appConfig2.php:37
+msgid "Please type a venue title <br/>(max 22chars)"
+msgstr ""
+
+#: inc/dashboard/appConfig2.php:45 inc/dashboard/dashboard_content.php:140
+msgid "BASKET"
+msgstr ""
+
+#: inc/dashboard/appConfig2.php:59
+msgid "Colour scheme"
+msgstr ""
+
+#: inc/dashboard/appConfig2.php:62
+msgid "Colour one"
+msgstr ""
+
+#: inc/dashboard/appConfig2.php:63
+msgid ""
+"This colour is used across section progress buttons and as a highlight "
+"colour."
+msgstr ""
+
+#: inc/dashboard/appConfig2.php:71
+msgid "Button one colour"
+msgstr ""
+
+#: inc/dashboard/appConfig2.php:89
+msgid ""
+"This colour is used across item select buttons and as a highlight colour."
+msgstr ""
+
+#: inc/dashboard/appConfig2.php:97
+msgid "Button two colour"
+msgstr ""
+
+#: inc/dashboard/appConfig2.php:127
+msgid "40&#37 done, a couple more design touches..."
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:11
+msgid "This is where you can monitor your takings and reports."
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:12
+msgid "Your venue shortcode is"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:12
+msgid ""
+"This is the code your customers need to use to find your venue on 'My Order "
+"App'"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:13 inc/finish/finish_content.php:31
+msgid "Your app is currently in "
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:13 inc/finish/finish_content.php:31
+msgid " mode."
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:13 inc/finish/finish_content.php:31
+msgid ""
+"LIVE - Your app is available on My Order App and is ready to take real "
+"orders.<br/><br/>DEMO - Your app is available on My Order App but does not "
+"take real orders.<br/><br/>OFFLINE - Your app is not available on My Order "
+"App."
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:21
+msgid "This month"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:24
+msgid "Total revenue"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:28
+msgid "Total orders"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:32
+msgid "New users"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:36
+msgid "Returning users"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:43
+msgid "Change your app"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:50 inc/shared/h.php:47
+msgid "Venue Settings"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:52
+msgid "Change settings"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:53
+msgid "Delivery settings"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:55
+msgid "Opening hours"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:60 inc/shared/h.php:54
+msgid "Styling"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:62
+msgid "Home screen"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:63
+msgid "Menu screen"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:67 inc/shared/h.php:60
+msgid "Menus"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:71 inc/dashboard/eventConfig.php:100
+#: inc/dashboard/eventConfig.php:180 inc/dashboard/mdConfig.php:83
+#: inc/dashboard/mdConfig.php:201 inc/dashboard/menuConfig.php:131
+#: inc/dashboard/menuConfig.php:265 inc/dashboard/outletConfig.php:39
+#: inc/dashboard/outletConfig.php:73 inc/dashboard/userConfig.php:52
+#: inc/dashboard/userConfig.php:104 inc/shared/h.php:70
+msgid "Edit"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:72 inc/dashboard/eventConfig.php:102
+#: inc/dashboard/eventConfig.php:182 inc/dashboard/mdConfig.php:84
+#: inc/dashboard/mdConfig.php:202 inc/dashboard/menuConfig.php:134
+#: inc/dashboard/menuConfig.php:179 inc/dashboard/menuConfig.php:268
+#: inc/dashboard/menuConfig.php:314 inc/dashboard/menuConfig.php:346
+#: inc/dashboard/outletConfig.php:40 inc/dashboard/outletConfig.php:74
+#: inc/dashboard/userConfig.php:54 inc/dashboard/userConfig.php:106
+msgid "Delete"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:75
+msgid "Add new menu"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:76 inc/dashboard/mdConfig.php:5
+#: inc/shared/h.php:72
+msgid "Meal Deals"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:83
+msgid "Update events"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:88 inc/shared/h.php:86
+msgid "Advanced Settings"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:90
+msgid "Manage users"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:91
+msgid "Add a payment method"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:92 inc/shared/h.php:90
+msgid "Change my app mode"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:96 inc/shared/dashboard_footer.php:4
+#: inc/shared/h.php:94
+msgid "Premium Features"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:147
+msgid "Venue Title"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:162
+msgid ""
+" for this transaction. You may cancel this Premium Feature at any time from "
+"your account settings page."
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:175
+msgid ""
+"Your 30 day free trial \tof this Premium Feature has now expired. Would you "
+"like to purchase it?"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:176
+msgid "YES PLEASE"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:177
+msgid "NOT RIGHT NOW"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:190
+msgid "RETURN TO DASHBOARD"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:310
+msgid "Your app is now live!"
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:319
+msgid "Your app is now in DEMO mode."
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:328
+#: inc/dashboard/dashboard_content.php:346
+msgid "Your app is now in OFFLINE mode."
+msgstr ""
+
+#: inc/dashboard/dashboard_content.php:337
+msgid "Your app is now in Demo mode."
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:19
+msgid "Your events"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:19
+msgid ""
+"These show when you are open for ordering, such as performances or matches. "
+"They can be viewed from the front page of your app"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:42
+msgid "Add a new event"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:51
+msgid "Start Date"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:52
+msgid "Start Time"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:53
+msgid "End Time"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:54 inc/dashboard/mdConfig.php:34
+#: inc/dashboard/menuConfig.php:89 inc/dashboard/menuConfig.php:225
+msgid "Visible?"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:55 inc/dashboard/mdConfig.php:35
+#: inc/dashboard/menuConfig.php:90 inc/dashboard/menuConfig.php:226
+#: inc/dashboard/userConfig.php:24
+msgid "Tools"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:67
+msgid "Click to add an event name"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:68 inc/dashboard/eventConfig.php:148
+msgid "Please type an event name (max 100chars)"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:71 inc/dashboard/eventConfig.php:151
+msgid "Click to add a description"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:72 inc/dashboard/eventConfig.php:152
+#: inc/dashboard/menuConfig.php:108 inc/dashboard/menuConfig.php:243
+msgid "Please type a description (max 250chars)"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:75 inc/dashboard/eventConfig.php:155
+msgid "DD/MM/YYYY"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:76 inc/dashboard/eventConfig.php:156
+msgid "Date?"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:79 inc/dashboard/eventConfig.php:83
+#: inc/dashboard/eventConfig.php:159 inc/dashboard/eventConfig.php:163
+#: inc/dashboard/nonEventConfig.php:58 inc/dashboard/nonEventConfig.php:63
+#: inc/dashboard/nonEventConfig.php:87 inc/dashboard/nonEventConfig.php:92
+msgid "HH:MM"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:80 inc/dashboard/eventConfig.php:84
+#: inc/dashboard/eventConfig.php:122 inc/dashboard/eventConfig.php:160
+#: inc/dashboard/eventConfig.php:164 inc/dashboard/eventConfig.php:203
+#: inc/dashboard/nonEventConfig.php:59 inc/dashboard/nonEventConfig.php:64
+#: inc/dashboard/nonEventConfig.php:88 inc/dashboard/nonEventConfig.php:93
+msgid "Time?"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:99 inc/dashboard/eventConfig.php:179
+#: inc/dashboard/mdConfig.php:82 inc/dashboard/mdConfig.php:200
+#: inc/dashboard/menuConfig.php:130 inc/dashboard/menuConfig.php:264
+#: inc/dashboard/outletConfig.php:38 inc/dashboard/outletConfig.php:72
+#: inc/dashboard/userConfig.php:51 inc/dashboard/userConfig.php:103
+msgid "Collapse"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:101 inc/dashboard/eventConfig.php:181
+#: inc/dashboard/menuConfig.php:133 inc/dashboard/menuConfig.php:178
+#: inc/dashboard/menuConfig.php:267 inc/dashboard/menuConfig.php:313
+#: inc/dashboard/menuConfig.php:345 inc/dashboard/userConfig.php:53
+#: inc/dashboard/userConfig.php:105
+msgid "Duplicate"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:109 inc/dashboard/eventConfig.php:190
+msgid "Collection Slot: Pre-Show"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:110 inc/dashboard/eventConfig.php:191
+msgid "Collection Slot: Pre-Game"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:111 inc/dashboard/eventConfig.php:192
+msgid "Collection Slot: Interval"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:112 inc/dashboard/eventConfig.php:193
+msgid "Collection Slot: Second-Interval"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:113
+msgid "Collection Slot: Half-time"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:114 inc/dashboard/eventConfig.php:195
+msgid "Collection Slot: Post-Show"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:115 inc/dashboard/eventConfig.php:196
+msgid "Collection Slot: Post-Game"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:117 inc/dashboard/eventConfig.php:198
+msgid "Please choose a slot."
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:120 inc/dashboard/eventConfig.php:201
+msgid "Lead Time (mins)"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:121
+msgid "30"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:125 inc/dashboard/eventConfig.php:206
+msgid "Add another slot"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:194
+msgid "Collection Slot: Half-Time"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:202
+msgid "eg. 30"
+msgstr ""
+
+#: inc/dashboard/eventConfig.php:243 inc/dashboard/nonEventConfig.php:131
+msgid "75&#37 done, almost there now..."
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:5
+msgid ""
+"This is where you can combine separate food items into one meal combination, "
+"e.g. sandwich, crisps and a drink"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:8
+msgid "Add a new Meal Deal"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:31
+msgid "Section"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:31
+msgid "Which menu section does this meal deal belong in?"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:32
+msgid "Total Price "
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:33
+msgid "Discount Price "
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:53 inc/dashboard/mdConfig.php:171
+#: inc/dashboard/menuConfig.php:104 inc/dashboard/menuConfig.php:239
+msgid "Please type an item name (max 100chars)"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:61 inc/dashboard/mdConfig.php:102
+#: inc/dashboard/mdConfig.php:179 inc/dashboard/mdConfig.php:219
+msgid "Please choose a section"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:64 inc/dashboard/mdConfig.php:182
+#: inc/dashboard/mdConfig.php:185 inc/dashboard/menuConfig.php:111
+#: inc/dashboard/menuConfig.php:160 inc/dashboard/menuConfig.php:296
+msgid "0.00"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:68 inc/dashboard/mdConfig.php:186
+msgid "Amount?"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:89 inc/dashboard/mdConfig.php:246
+#: inc/dashboard/menuConfig.php:77 inc/dashboard/menuConfig.php:213
+msgid "Delete this section"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:91 inc/dashboard/mdConfig.php:208
+msgid "Type or pick a selection title"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:91 inc/dashboard/mdConfig.php:208
+msgid "Eg. Choose a main, Choose a side, Choose a drink, etc"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:92 inc/dashboard/mdConfig.php:209
+msgid "Please type or pick a title (max 100chars)"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:100 inc/dashboard/mdConfig.php:217
+msgid "All sections"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:101 inc/dashboard/mdConfig.php:218
+msgid "Pick a menu section from where you'd like to import items."
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:114 inc/dashboard/mdConfig.php:231
+msgid "Add this item to the current Meal Deal"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:122 inc/dashboard/mdConfig.php:206
+msgid "Add a selection to this meal deal"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:170
+msgid "Click to add a Meal Deal name"
+msgstr ""
+
+#: inc/dashboard/mdConfig.php:252
+msgid ""
+"You've not created any items! You won't be able to create Meal Deals until "
+"you have some items in your menu."
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:25
+msgid "Build your menu"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:25
+msgid "Your menu"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:25
+msgid ""
+"Now it's time to create your menu. We suggest you keep it simple to start "
+"with.<br/><br/>An easy way is to group items, i.e. create separate sections "
+"for food, cold drinks and hot drinks."
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:61
+msgid "Click to add your menu name"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:62
+msgid "Please type a menu name (max 100chars)"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:68 inc/dashboard/menuConfig.php:204
+msgid "Click to add a section name"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:69 inc/dashboard/menuConfig.php:205
+msgid "Please type a section name (max 100chars)"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:74 inc/dashboard/menuConfig.php:210
+msgid "Add an item to this section"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:76 inc/dashboard/menuConfig.php:212
+msgid "Move this section"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:87 inc/dashboard/menuConfig.php:223
+msgid "Price "
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:88 inc/dashboard/menuConfig.php:224
+msgid "Quantity"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:103
+msgid "Click to add an item name"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:107 inc/dashboard/menuConfig.php:242
+msgid "Optional description"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:112 inc/dashboard/menuConfig.php:162
+#: inc/dashboard/menuConfig.php:247 inc/dashboard/menuConfig.php:297
+#: inc/dashboard/menuConfig.php:329
+msgid "Price?"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:116 inc/dashboard/menuConfig.php:250
+msgid "Unlimited"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:119 inc/dashboard/menuConfig.php:253
+msgid "This chooses whether you want to activate this food on the menu or not."
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:132 inc/dashboard/menuConfig.php:266
+msgid "Reorder"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:138 inc/dashboard/menuConfig.php:274
+msgid "Add a new option to this item"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:138 inc/dashboard/menuConfig.php:274
+msgid "Add an option"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:140 inc/dashboard/menuConfig.php:276
+msgid "Type or pick an option title"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:140 inc/dashboard/menuConfig.php:276
+msgid "Eg. Pick a size, Choice of an option, Add some extras, Select a side"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:141 inc/dashboard/menuConfig.php:277
+msgid "Please type or pick a title"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:145 inc/dashboard/menuConfig.php:281
+msgid "User must select only one option."
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:145 inc/dashboard/menuConfig.php:281
+msgid "User selects 1 option"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:146 inc/dashboard/menuConfig.php:282
+msgid "User must select one or more options."
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:146 inc/dashboard/menuConfig.php:282
+msgid "User selects 1 or more options"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:147 inc/dashboard/menuConfig.php:283
+msgid "User can select zero or more options."
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:147 inc/dashboard/menuConfig.php:283
+msgid "User selects 0 or more options"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:148 inc/dashboard/menuConfig.php:284
+msgid ""
+"Single: When the user must pick only 1 option.<br/><br/>Multiple: When the "
+"user must pick 1 or more options.<br/><br/>Optional: when the user can pick "
+"0 or multiple options."
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:149 inc/dashboard/menuConfig.php:285
+msgid "Please choose a type"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:154 inc/dashboard/menuConfig.php:290
+msgid "Click to add an option name"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:155 inc/dashboard/menuConfig.php:291
+#: inc/dashboard/menuConfig.php:323
+msgid "Please type an option name (max 100chars)"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:161 inc/dashboard/menuConfig.php:296
+#: inc/dashboard/menuConfig.php:328
+msgid ""
+"This will be in addition to the item price. If there is no price difference, "
+"put in 0.00."
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:183 inc/dashboard/menuConfig.php:354
+msgid "Eg. Toppings, Sizes, Exras, etc"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:183 inc/dashboard/menuConfig.php:354
+msgid "Add an option category to this item <small>(optional)</small>"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:371
+msgid "Add a new menu section"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:377
+msgid "COLLAPSE ALL"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:379
+msgid "SAVE & CONTINUE EDITING"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:380
+msgid "SAVE & FINISH"
+msgstr ""
+
+#: inc/dashboard/menuConfig.php:394
+msgid "45&#37 done, now for the fun bit!"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:18
+msgid "Tell us about your opening times"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:21
+msgid "Days your venue is open"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:22
+msgid "Mon"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:23
+msgid "Tue"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:24
+msgid "Wed"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:25
+msgid "Thu"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:26
+msgid "Fri"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:27
+msgid "Sat"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:28
+msgid "Sun"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:38
+msgid "Add another opening hour"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:38
+msgid "eg: if you close for lunch and reopen in the evening."
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:47 inc/dashboard/nonEventConfig.php:77
+msgid "Open "
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:47 inc/dashboard/nonEventConfig.php:77
+msgid ""
+"Let us know if your venue is open for delivery, open for pickup, open for "
+"both or if you are closed today."
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:50 inc/dashboard/nonEventConfig.php:79
+msgid "For delivery and collection"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:51 inc/dashboard/nonEventConfig.php:80
+msgid "For delivery only"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:52 inc/dashboard/nonEventConfig.php:81
+msgid "For collection only"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:53 inc/dashboard/nonEventConfig.php:82
+msgid "Closed Today"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:57 inc/dashboard/nonEventConfig.php:86
+msgid "Opens at"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:62 inc/dashboard/nonEventConfig.php:91
+msgid "Closes at"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:68 inc/dashboard/nonEventConfig.php:97
+msgid "Remove opening hour"
+msgstr ""
+
+#: inc/dashboard/nonEventConfig.php:105
+msgid "Apply these times to all days"
+msgstr ""
+
+#: inc/dashboard/outletConfig.php:6
+msgid "Outlets"
+msgstr ""
+
+#: inc/dashboard/outletConfig.php:14
+msgid "Add a new Outlet"
+msgstr ""
+
+#: inc/dashboard/outletConfig.php:15
+msgid "Create a new menu"
+msgstr ""
+
+#: inc/dashboard/outletConfig.php:26
+msgid "Add an outlet name"
+msgstr ""
+
+#: inc/dashboard/outletConfig.php:27 inc/dashboard/outletConfig.php:61
+msgid "Please type an outlet name"
+msgstr ""
+
+#: inc/dashboard/outletConfig.php:35 inc/dashboard/outletConfig.php:69
+msgid "Please choose a menu"
+msgstr ""
+
+#: inc/dashboard/paymentConfig.php:19
+msgid "Don't forget to get paid"
+msgstr ""
+
+#: inc/dashboard/paymentConfig.php:28
+msgid "CONNECT TO STRIPE"
+msgstr ""
+
+#: inc/dashboard/paymentConfig.php:31
+msgid "SKIP THIS FOR NOW"
+msgstr ""
+
+#: inc/dashboard/paymentConfig.php:35
+msgid "YOU'RE ALREADY CONNECTED"
+msgstr ""
+
+#: inc/dashboard/paymentConfig.php:45
+msgid "85&#37 done, we've saved the best for last!"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:6
+msgid "User management"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:14
+msgid "Add a new user"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:22 inc/forgot/forgot_content.php:8
+#: inc/settings/settings_content.php:20 inc/signin/signin_content.php:23
+msgid "Email"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:23
+msgid "This decides the level of access of your users."
+msgstr ""
+
+#: inc/dashboard/userConfig.php:36
+msgid "Add a user name"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:37 inc/dashboard/userConfig.php:89
+msgid "Please type a user name (max 200chars)"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:40 inc/dashboard/userConfig.php:92
+msgid "Add an email"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:41 inc/dashboard/userConfig.php:93
+msgid "Please type an email"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:45 inc/dashboard/userConfig.php:97
+msgid "Staff: can only read account"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:45 inc/dashboard/userConfig.php:97
+msgid "Staff"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:46 inc/dashboard/userConfig.php:98
+msgid "Admin: can read/write account but cannot close it down"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:46 inc/dashboard/userConfig.php:98
+msgid "Admin"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:47 inc/dashboard/userConfig.php:99
+msgid "Owner: can read/write account and close it down"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:47 inc/dashboard/userConfig.php:99
+msgid "Owner"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:60
+msgid "Assign a password"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:61
+msgid "Provide a Password"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:64 inc/reset/reset_content.php:15
+msgid "Confirm Password"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:65 inc/signup/signup_content.php:61
+msgid "Confirm password"
+msgstr ""
+
+#: inc/dashboard/userConfig.php:66
+msgid "Passwords don't match"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:43 inc/finish/finish_content.php:13
+#: inc/shared/h.php:89
+msgid "Payment Method"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:54
+msgid "Tell us about your venue"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:63
+msgid "Venue name"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:65
+msgid "Please type a venue name (max 100chars)"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:71
+msgid "Venue description"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:71
+msgid ""
+"Please enter a short description about your venue.<br/><br/>This will not "
+"appear on your branded app."
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:73
+msgid "Please type a venue description (max 250chars)"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:79
+msgid "What type of venue are you?"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:81
+msgid "Restaurant (Cafe, Sandwich Bar, Restaurant, etc)"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:82
+msgid "Sports Arena"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:83
+msgid "Bars, Pubs and Clubs"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:84
+msgid "Workplace/Education Catering"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:85
+msgid "Music and Cultural"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:92
+msgid "Are you primarily an events based business?"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:92
+msgid ""
+"Does your business revolve around regular events, e.g. football matches, "
+"performances, etc?"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:107
+msgid "Collection Slot Duration (mins)"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:107
+msgid ""
+"This is the number of minutes after opening time and before closing time "
+"when customers are allowed to collect orders."
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:108
+msgid "eg: 30"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:109
+msgid "Please provide a duration in mins"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:115
+msgid "Default preparation time for collection orders (mins)"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:115
+msgid ""
+"The time it takes to prepare your order before the customer can pick it up."
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:116
+msgid "e.g. 25"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:117
+msgid "Please provide a lead time"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:122
+msgid "Discount offered for collection orders (%)"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:123
+msgid "e.g. 10"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:130
+msgid "Minimum value for orders"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:131
+msgid "e.g. 5"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:132
+msgid "Please provide a minimum value for ordering"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:145
+msgid "Address"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:151
+msgid "Please type a venue address (max 250chars)"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:159
+msgid "Please type a Town/City (max 45chars)"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:166
+msgid "Country"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:413
+msgid "Please choose a country"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:418
+msgid "Post code"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:420
+msgid "Please type a post code (max 45chars)"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:426
+msgid "Language"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:431
+msgid "Please select your language"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:437
+msgid "Timezone"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:445
+msgid "Please select your timezone"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:451
+msgid "Currency"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:457
+msgid "Please select your currency"
+msgstr ""
+
+#: inc/dashboard/venueConfig.php:479
+msgid "15&#37 done, keep going!"
+msgstr ""
+
+#: inc/finish/finish_content.php:26
+msgid "The finish line!"
+msgstr ""
+
+#: inc/finish/finish_content.php:28
+msgid "App mode"
+msgstr ""
+
+#: inc/finish/finish_content.php:33
+msgid "After you setup a payment method, you can send it into the world!"
+msgstr ""
+
+#: inc/finish/finish_content.php:38
+msgid "SETUP PAYMENT"
+msgstr ""
+
+#: inc/finish/finish_content.php:42 inc/finish/finish_content.php:48
+msgid "MAKE MY APP LIVE"
+msgstr ""
+
+#: inc/finish/finish_content.php:45
+msgid "SWITCH TO DEMO MODE"
+msgstr ""
+
+#: inc/finish/finish_content.php:49
+msgid "PUT MY APP IN DEMO MODE"
+msgstr ""
+
+#: inc/finish/finish_content.php:51
+msgid "TAKE MY APP OFFLINE"
+msgstr ""
+
+#: inc/finish/finish_content.php:53
+msgid "BACK TO THE DASHBOARD"
+msgstr ""
+
+#: inc/finish/finish_content.php:74
+msgid "Payment method was not setup."
+msgstr ""
+
+#: inc/forgot/forgot_content.php:4 inc/signin/signin_content.php:39
+msgid "Forgot your password?"
+msgstr ""
+
+#: inc/forgot/forgot_content.php:10
+msgid "An email address is required."
+msgstr ""
+
+#: inc/forgot/forgot_content.php:16 inc/reset/reset_content.php:23
+msgid "RESET PASSWORD"
+msgstr ""
+
+#: inc/more/more_content.php:6 inc/shared/h.php:118
+msgid "Find out more"
+msgstr ""
+
+#: inc/more/more_content.php:15
+msgid "Please select at least one feature"
+msgstr ""
+
+#: inc/more/more_content.php:20
+msgid ""
+"Describe your requirement. Include details like like the brand of ePOS you "
+"are using or the number of outlets you require."
+msgstr ""
+
+#: inc/more/more_content.php:22
+msgid "Please enter your requirement."
+msgstr ""
+
+#: inc/more/more_content.php:28
+msgid "SEND"
+msgstr ""
+
+#: inc/more/more_content.php:33
+msgid "Thank you for your request"
+msgstr ""
+
+#: inc/more/more_content.php:34
+msgid "We'll be in touch shortly."
+msgstr ""
+
+#: inc/reset/reset_content.php:4
+msgid "Reset your password?"
+msgstr ""
+
+#: inc/reset/reset_content.php:12
+msgid "A password is required."
+msgstr ""
+
+#: inc/reset/reset_content.php:17 inc/settings/settings_content.php:73
+#: inc/signup/signup_content.php:63
+msgid "Passwords don't match."
+msgstr ""
+
+#: inc/reset/reset_content.php:28
+msgid "Sorry. Invalid code."
+msgstr ""
+
+#: inc/settings/settings_content.php:10
+msgid "First Name is required (max 100chars)"
+msgstr ""
+
+#: inc/settings/settings_content.php:15
+msgid "Last Name is required (max 100chars)"
+msgstr ""
+
+#: inc/settings/settings_content.php:22
+msgid "An email address is required"
+msgstr ""
+
+#: inc/settings/settings_content.php:27
+msgid "A business name is required (max 100chars)"
+msgstr ""
+
+#: inc/settings/settings_content.php:34
+msgid "Notifications"
+msgstr ""
+
+#: inc/settings/settings_content.php:37
+msgid "Off"
+msgstr ""
+
+#: inc/settings/settings_content.php:40
+msgid "On"
+msgstr ""
+
+#: inc/settings/settings_content.php:50
+msgid "Change password?"
+msgstr ""
+
+#: inc/settings/settings_content.php:61 inc/settings/settings_content.php:68
+msgid "A password address is required."
+msgstr ""
+
+#: inc/settings/settings_content.php:71
+msgid "Confirm New Password"
+msgstr ""
+
+#: inc/settings/settings_content.php:80
+msgid "SAVE"
+msgstr ""
+
+#: inc/shared/dashboard_footer.php:5
+msgid ""
+"Looking for ePOS integration, detailed reporting or the ability to configure "
+"multiple outlets?"
+msgstr ""
+
+#: inc/shared/dashboard_footer.php:6
+msgid "FIND OUT MORE"
+msgstr ""
+
+#: inc/shared/dashboard_footer.php:14 inc/shared/regular_footer.php:19
+msgid "support@preoday.com"
+msgstr ""
+
+#: inc/shared/dashboard_footer.php:15 inc/shared/regular_footer.php:20
+msgid "Legal Statement"
+msgstr ""
+
+#: inc/shared/dashboard_footer.php:16 inc/shared/regular_footer.php:21
+msgid "Privacy + Cookies"
+msgstr ""
+
+#: inc/shared/dashboard_footer.php:17 inc/shared/regular_footer.php:22
+msgid "Preoday"
+msgstr ""
+
+#: inc/shared/h.php:13
+msgid "PreoDay"
+msgstr ""
+
+#: inc/shared/h.php:18
+msgid "Menu"
+msgstr ""
+
+#: inc/shared/h.php:26
+msgid "Sign Up"
+msgstr ""
+
+#: inc/shared/h.php:27
+msgid "Login"
+msgstr ""
+
+#: inc/shared/h.php:32
+msgid "Go to Dashboard"
+msgstr ""
+
+#: inc/shared/h.php:35 inc/shared/h.php:38 inc/shared/h.php:41
+#: inc/shared/h.php:44
+msgid "Fulfilment App"
+msgstr ""
+
+#: inc/shared/h.php:49
+msgid "Change Settings"
+msgstr ""
+
+#: inc/shared/h.php:56
+msgid "Home Screen"
+msgstr ""
+
+#: inc/shared/h.php:57
+msgid "Menu Screen"
+msgstr ""
+
+#: inc/shared/h.php:75
+msgid "No menus"
+msgstr ""
+
+#: inc/shared/h.php:82
+msgid "Update Events"
+msgstr ""
+
+#: inc/shared/h.php:88
+msgid "Manage Users"
+msgstr ""
+
+#: inc/shared/h.php:104
+msgid "+ Store"
+msgstr ""
+
+#: inc/shared/h.php:111
+msgid "Account Settings"
+msgstr ""
+
+#: inc/shared/h.php:112 inc/shared/h.php:123
+msgid "Logout"
+msgstr ""
+
+#: inc/shared/h.php:115
+msgid "Help"
+msgstr ""
+
+#: inc/shared/h.php:117 inc/shared/h.php:122
+msgid "Getting started"
+msgstr ""
+
+#: inc/shared/meta.php:9
+msgid "preoday"
+msgstr ""
+
+#: inc/shared/privacy.php:1
+msgid "PRIVACY NOTICE FOR MY ORDER APP"
+msgstr ""
+
+#: inc/shared/privacy.php:2
+msgid ""
+"This privacy notice provides\n"
+"information on how Preoday Limited (â€œPreodayâ€) uses personal data\n"
+"relating to users ('you') of its ordering and payment\n"
+"services app (the 'App') and related services (together\n"
+"referred to in this policy as the 'Services')."
+msgstr ""
+
+#: inc/shared/privacy.php:7
+msgid "1. Who is Preoday?"
+msgstr ""
+
+#: inc/shared/privacy.php:8
+msgid ""
+"Preoday Limited is a company registered\n"
+"in England and Wales with company number 08243191, and registered\n"
+"with the Information Commissionerâ€™s Office under number ZA027520."
+msgstr ""
+
+#: inc/shared/privacy.php:11
+msgid ""
+"Preoday runs the App for a venue where\n"
+"food, drinks and/or merchandise is available to order (the â€œVenueâ€).\n"
+"Preoday acts as a data controller in their use of your personal data\n"
+"relating to the App, as described in this privacy notice."
+msgstr ""
+
+#: inc/shared/privacy.php:15
+msgid ""
+"You can contact Preoday by using the\n"
+"contact details set out at paragraph 11 below."
+msgstr ""
+
+#: inc/shared/privacy.php:17
+msgid ""
+"2. Collection and use of data by\n"
+"Preoday"
+msgstr ""
+
+#: inc/shared/privacy.php:19
+msgid "2.1. Registration details"
+msgstr ""
+
+#: inc/shared/privacy.php:20
+msgid ""
+"If you install the App, you will be\n"
+"asked to register with Preoday in order to create an account and\n"
+"receive the related Services. Registration information may include:"
+msgstr ""
+
+#: inc/shared/privacy.php:24
+msgid ""
+"the telephone number of the mobile\n"
+"\tdevice on which you have installed the App. This will be used to\n"
+"\tdeliver the Services and manage your password"
+msgstr ""
+
+#: inc/shared/privacy.php:27
+msgid ""
+"your email address, which will be\n"
+"\tused to send you receipts for payments of your order;"
+msgstr ""
+
+#: inc/shared/privacy.php:29
+msgid ""
+"your date of birth which will be\n"
+"\tused to check you are over 18 years of age and as an additional\n"
+"\tidentity check should you need to get in contact with Preoday;"
+msgstr ""
+
+#: inc/shared/privacy.php:32
+msgid ""
+"your physical address. This will be\n"
+"\tused if we need to arrange delivery to you; and"
+msgstr ""
+
+#: inc/shared/privacy.php:34
+msgid ""
+"other relevant information, such as\n"
+"\tvenue specific membership numbers, loyalty card numbers, your\n"
+"\tpreferences with regards to mobile orders."
+msgstr ""
+
+#: inc/shared/privacy.php:38
+msgid ""
+"As an alternative to providing your\n"
+"email address and date of birth, you can register using your choice\n"
+"of social media profile, including but not limited to, Facebook or\n"
+"Google+, from which Preoday will obtain information, including the\n"
+"information above â€“ see also paragraph 4 below."
+msgstr ""
+
+#: inc/shared/privacy.php:43
+msgid ""
+"You will also be asked to set a\n"
+"password to give access to your account details."
+msgstr ""
+
+#: inc/shared/privacy.php:45
+msgid "2.2. Your payment card details"
+msgstr ""
+
+#: inc/shared/privacy.php:46
+msgid ""
+"You must have appropriate authority to\n"
+"use the payment card that you use for payment."
+msgstr ""
+
+#: inc/shared/privacy.php:48
+msgid ""
+"Payment processing services are\n"
+"provided by a third party. The details you provide to us in the App\n"
+"are passed directly to the payment service provider and will be\n"
+"subject to its terms of use and privacy policy. By inputting payment\n"
+"card details, you are consenting to use of the payment card details\n"
+"by the payment services provider for the purpose of paying for your\n"
+"order. If you have any questions relating to these services please\n"
+"contact the relevant payment service provider."
+msgstr ""
+
+#: inc/shared/privacy.php:56
+msgid ""
+"Preoday does not store any of your\n"
+"payment card details on its systems. Payment transactions are between\n"
+"you and the Venue. Preoday does not receive your payment."
+msgstr ""
+
+#: inc/shared/privacy.php:59
+msgid "2.3. Visiting a Venue"
+msgstr ""
+
+#: inc/shared/privacy.php:60
+msgid ""
+"The App allows you to place orders and\n"
+"pay for your food, drink and merchandise. After placing an order you\n"
+"will pay for it using the App through one of our payment service\n"
+"providers. The details of your order will be used to deliver the\n"
+"Services and generate your payment receipt."
+msgstr ""
+
+#: inc/shared/privacy.php:65
+msgid ""
+"Preoday may also collect data relating\n"
+"to your visits (including the food, drink and merchandise you chose,\n"
+"the Venue you visited and when, order amounts and your payments) to\n"
+"improve the Services, and for analysis and statistical purposes (see\n"
+"paragraph 5 below). This data is collected through the App."
+msgstr ""
+
+#: inc/shared/privacy.php:70
+msgid "2.4. Contacting Preoday"
+msgstr ""
+
+#: inc/shared/privacy.php:71
+msgid ""
+"If you contact Preoday in relation to\n"
+"the App (via email, telephone, post or otherwise), we may collect and\n"
+"retain your contact details and your communication for the purpose of\n"
+"handling your query and keeping records of communications."
+msgstr ""
+
+#: inc/shared/privacy.php:75
+msgid "3. Use of data by the Venue"
+msgstr ""
+
+#: inc/shared/privacy.php:76
+msgid ""
+"Preoday runs the App for the Venue and\n"
+"data collected through the App may be disclosed to the Venue. This\n"
+"may include your Preoday user details, demographic information and\n"
+"details relating to your experience at the Venue. This data may be\n"
+"used by the Venue for:"
+msgstr ""
+
+#: inc/shared/privacy.php:82
+msgid ""
+"managing your payment of for an\n"
+"\torder;"
+msgstr ""
+
+#: inc/shared/privacy.php:84
+msgid ""
+"analysis and statistics (see\n"
+"\tparagraph 5 below); and"
+msgstr ""
+
+#: inc/shared/privacy.php:86
+msgid ""
+"subject to obtaining your consent\n"
+"\twhich is sought via the App, sending you marketing communications\n"
+"\tthrough the App, by push notifications or by email."
+msgstr ""
+
+#: inc/shared/privacy.php:90
+msgid ""
+"4. Combining with data from other\n"
+"sources"
+msgstr ""
+
+#: inc/shared/privacy.php:92
+msgid ""
+"Information collected using the App and\n"
+"relating to your visits to the Venue may be combined by Preoday with\n"
+"data from other sources as follows:"
+msgstr ""
+
+#: inc/shared/privacy.php:96
+msgid ""
+"if you log in to the App using your\n"
+"\tsocial media login, Preoday will collect additional information from\n"
+"\tyour social media profile for analysis and statistical purposes (see\n"
+"\tparagraph 5 below). If you prefer not to do this, you can register\n"
+"\tand create a separate account for the App; and"
+msgstr ""
+
+#: inc/shared/privacy.php:101
+msgid ""
+"if you download or use (or have\n"
+"\tdownloaded or used) another venueâ€™s Preoday mobile app or an app\n"
+"\tcreated using Preodayâ€™s API, Preoday may combine data obtained from\n"
+"\tthis App with data processed in relation to that app."
+msgstr ""
+
+#: inc/shared/privacy.php:106
+msgid ""
+"The combined data may be used by\n"
+"Preoday for the same purposes outlined in this policy."
+msgstr ""
+
+#: inc/shared/privacy.php:108
+msgid "5. Analysis and statistics"
+msgstr ""
+
+#: inc/shared/privacy.php:109
+msgid ""
+"Preoday may use the data it collects\n"
+"about you for analysis and statistical purposes, for example to\n"
+"analyse how many users place orders at particular times, food and\n"
+"drink preferences, and the characteristics of such users, for example\n"
+"their age or gender. If you have logged in using your social media\n"
+"login, Preoday may combine data collected from the App and the Venue\n"
+"with information from your social media profile for these purposes."
+msgstr ""
+
+#: inc/shared/privacy.php:116
+msgid ""
+"Statistics and results of analysis\n"
+"(anonymised and without reference to your personal data) may also be\n"
+"shared with the Venue, other venues and their suppliers for the\n"
+"purpose of improving the services and customer experience within\n"
+"those venues."
+msgstr ""
+
+#: inc/shared/privacy.php:121
+msgid "6. Other use of your personal data"
+msgstr ""
+
+#: inc/shared/privacy.php:122
+msgid ""
+"Preoday may also use and disclose your\n"
+"personal data for the purposes of:"
+msgstr ""
+
+#: inc/shared/privacy.php:125
+msgid ""
+"checking your compliance with the\n"
+"\tPreoday terms of use for the App;"
+msgstr ""
+
+#: inc/shared/privacy.php:127
+msgid ""
+"administration and maintenance of\n"
+"\tthe Services;"
+msgstr ""
+
+#: inc/shared/privacy.php:129
+msgid ""
+"compliance with legal obligations,\n"
+"\tor protection and enforcement of legal rights; and/or"
+msgstr ""
+
+#: inc/shared/privacy.php:131
+msgid ""
+"managing actual or potential\n"
+"\tbusiness transactions (eg in the case of an acquisition of Preodayâ€™s\n"
+"\tbusiness)."
+msgstr ""
+
+#: inc/shared/privacy.php:135
+msgid ""
+"7. Disclosure of your personal data to\n"
+"third parties"
+msgstr ""
+
+#: inc/shared/privacy.php:137
+msgid ""
+"Preoday may disclose your personal data\n"
+"for the purposes outlined at paragraphs 2 to 6 above to third\n"
+"parties, including:"
+msgstr ""
+
+#: inc/shared/privacy.php:141
+msgid ""
+"our service providers and\n"
+"\tprofessional advisers;"
+msgstr ""
+
+#: inc/shared/privacy.php:143
+msgid ""
+"governmental bodies and law\n"
+"\tenforcement authorities;"
+msgstr ""
+
+#: inc/shared/privacy.php:145
+msgid ""
+"any investor, lender, purchaser or\n"
+"\t(on terms of confidentiality) likely investor in, or purchaser of\n"
+"\tPreodayâ€™s business; and"
+msgstr ""
+
+#: inc/shared/privacy.php:148
+msgid ""
+"other third parties where required\n"
+"\tor permitted by law."
+msgstr ""
+
+#: inc/shared/privacy.php:151
+msgid ""
+"Preoday will never sell information\n"
+"that can be used to personally identify you to a third party."
+msgstr ""
+
+#: inc/shared/privacy.php:153
+msgid ""
+"8. Storage and security of your\n"
+"personal data"
+msgstr ""
+
+#: inc/shared/privacy.php:155
+msgid ""
+"Your personal data is stored in\n"
+"electronic and physical records maintained by Preoday and/or its\n"
+"service providers. Whilst Preoday is based in the UK, it and its\n"
+"service providers may have servers located overseas, where the laws\n"
+"may not give the same level of protection to personal data as within\n"
+"the UK. By submitting your personal data, you agree to allowing your\n"
+"personal data to be transferred, processed and stored overseas as set\n"
+"out in this paragraph."
+msgstr ""
+
+#: inc/shared/privacy.php:163
+msgid "9. Removal of your details"
+msgstr ""
+
+#: inc/shared/privacy.php:164
+msgid ""
+"You may request deletion of your\n"
+"account on the App at any time by sending an email to Preoday at "
+msgstr ""
+
+#: inc/shared/privacy.php:166
+msgid ""
+"However, Preoday may retain certain\n"
+"aspects of your account and other personal details for the purposes\n"
+"of maintaining records of their dealings with you, analysis and\n"
+"statistics."
+msgstr ""
+
+#: inc/shared/privacy.php:170
+msgid ""
+"Preoday may delete your account in\n"
+"accordance with clauses 5.3 and 8.2 of its terms of use, including in\n"
+"the circumstances where you breach its terms or have not used the\n"
+"Services for a substantial period of time."
+msgstr ""
+
+#: inc/shared/privacy.php:174
+msgid "10. Access to your details"
+msgstr ""
+
+#: inc/shared/privacy.php:175
+msgid ""
+"If you would like to access a copy of\n"
+"any personal data which Preoday hold about you, or if you wish to\n"
+"change your consent regarding marketing communications, please send a\n"
+"request by email or by post using the contact details in paragraph 11\n"
+"below. An administration fee of Â£10 may be charged to access your\n"
+"details."
+msgstr ""
+
+#: inc/shared/privacy.php:181
+msgid ""
+"You have the right, in certain\n"
+"circumstances, to object to Preoday processing your personal data or\n"
+"to request that your personal data is corrected or deleted. Please\n"
+"contact us using the contact details in paragraph 11 below."
+msgstr ""
+
+#: inc/shared/privacy.php:185
+msgid "11. Queries"
+msgstr ""
+
+#: inc/shared/privacy.php:186
+msgid ""
+"If you have any queries in relation to\n"
+"the processing of your personal data by Preoday Limited, please\n"
+"contact us at:"
+msgstr ""
+
+#: inc/shared/privacy.php:189
+msgid ""
+"Preoday Limited, c/o Lawrence Grant\n"
+"Chartered Accountants, 2nd Floor Hygeia House, 66 College Road,\n"
+"Harrow, Middlesex, HA1 1BE"
+msgstr ""
+
+#: inc/shared/privacy.php:192
+msgid "Email: "
+msgstr ""
+
+#: inc/shared/regular_footer.php:4
+msgid "CHANGE LANGUAGE"
+msgstr ""
+
+#: inc/shared/regular_footer.php:6
+msgid "English"
+msgstr ""
+
+#: inc/shared/regular_footer.php:7
+msgid "German"
+msgstr ""
+
+#: inc/shared/regular_footer.php:8
+msgid "French"
+msgstr ""
+
+#: inc/shared/terms.php:1
+msgid "TERMS OF USE FOR MY ORDER APP"
+msgstr ""
+
+#: inc/shared/terms.php:2
+msgid ""
+"By choosing to set up and create a\n"
+"Preoday My Order App for your venue, you are agreeing to these terms.\n"
+"If you do not agree with these terms, you are unable to comply with\n"
+"these terms, or you do not have the power, right or authority to act\n"
+"on behalf of and bind your company, then you must not proceed with\n"
+"your order."
+msgstr ""
+
+#: inc/shared/terms.php:8
+msgid ""
+"These terms form a legal agreement (the\n"
+"'Agreement') between you and Preoday Limited, a company\n"
+"registered in England and Wales with company number 08243191\n"
+"('Preoday', 'we' or 'us')."
+msgstr ""
+
+#: inc/shared/terms.php:12
+msgid "1. The Services"
+msgstr ""
+
+#: inc/shared/terms.php:13
+msgid ""
+"'Services' means the services\n"
+"provided by Preoday on our website regarding the creation and running\n"
+"of an app to facilitate your customersâ€™ order and payment for food,\n"
+"drinks and merchandise at your venue (the â€œAppâ€) and any\n"
+"additional services provided by Preoday to you in accordance with\n"
+"this Agreement."
+msgstr ""
+
+#: inc/shared/terms.php:19
+msgid "2. Registration"
+msgstr ""
+
+#: inc/shared/terms.php:20
+msgid ""
+"2.1 In order for you to access the\n"
+"Services, you must register with us and create an account on our\n"
+"website."
+msgstr ""
+
+#: inc/shared/terms.php:23
+msgid ""
+"2.2 For security purposes, you must\n"
+"also set a password. You should keep your username and password\n"
+"confidential. Any use of the Services with your login credentials\n"
+"will be your responsibility. You can reset your password at any time\n"
+"on our Site."
+msgstr ""
+
+#: inc/shared/terms.php:28
+msgid ""
+"2.3 You may create additional login\n"
+"credentials for your account (for other staff or admin users). These\n"
+"usernames and passwords should be kept confidential. Any use of the\n"
+"Services with these login credentials will be your responsibility.\n"
+"You can reset these login credentials at any time on our Site."
+msgstr ""
+
+#: inc/shared/terms.php:33
+msgid ""
+"2.4 As an alternative to creating an\n"
+"account with us you can use existing third party credentials (e.g.\n"
+"Facebook or Google+). If you use third party credentials we may\n"
+"obtain certain information (e.g. your email address and date of\n"
+"birth) from the third party."
+msgstr ""
+
+#: inc/shared/terms.php:38
+msgid "3. Payment"
+msgstr ""
+
+#: inc/shared/terms.php:39
+msgid ""
+"3.1 In order for you to receive your\n"
+"customersâ€™ payments for the food, drink and merchandise they order\n"
+"using the App, you will need to register with one of our payment\n"
+"service providers."
+msgstr ""
+
+#: inc/shared/terms.php:43
+msgid ""
+"3.2 Payment processing services are\n"
+"provided by a third party. The details you provide to the payment\n"
+"service provider will be subject to its terms of use and privacy\n"
+"policy. If you have any questions relating to these services please\n"
+"contact the relevant payment services provider."
+msgstr ""
+
+#: inc/shared/terms.php:48
+msgid ""
+"3.3 Payment transactions are between\n"
+"you and your customers. Whilst we facilitate the payment procedure,\n"
+"Preoday is not involved in the processing of your customersâ€™\n"
+"payments and is not responsible or liable for the services provided\n"
+"by the payment service provider."
+msgstr ""
+
+#: inc/shared/terms.php:53
+msgid "4. Your use of the Services"
+msgstr ""
+
+#: inc/shared/terms.php:54
+msgid ""
+"4.1 Subject to your compliance with the\n"
+"terms of this Agreement, we grant you a non-exclusive,\n"
+"non-transferable licence for the purpose of accessing and using the\n"
+"Services in accordance with this Agreement."
+msgstr ""
+
+#: inc/shared/terms.php:58
+msgid "4.2 You may not:"
+msgstr ""
+
+#: inc/shared/terms.php:59
+msgid ""
+"4.2.1 sub-license, assign or transfer\n"
+"your rights or obligations under this Agreement;"
+msgstr ""
+
+#: inc/shared/terms.php:61
+msgid ""
+"4.2.2 access and use the Services using\n"
+"any interface other than in accordance with this Agreement."
+msgstr ""
+
+#: inc/shared/terms.php:63
+msgid ""
+"4.3 You acknowledge that, except for\n"
+"the content provided by you, the App and the content of the Services\n"
+"are protected by copyright, database rights, trade marks and other\n"
+"intellectual property rights of us and our other licensors, as\n"
+"applicable, and all rights not expressly granted to you are reserved\n"
+"to us and our licensors."
+msgstr ""
+
+#: inc/shared/terms.php:69
+msgid ""
+"4.4 You may not use the Services in any\n"
+"way incompatible with their intended purpose nor in any unlawful or\n"
+"unauthorised manner and, in particular, you may not:"
+msgstr ""
+
+#: inc/shared/terms.php:72
+msgid ""
+"4.4.1 make any copies of the Services\n"
+"(other than a single back-up copy to the extent necessary to exercise\n"
+"your rights under this Agreement); nor"
+msgstr ""
+
+#: inc/shared/terms.php:75
+msgid ""
+"4.4.2 modify, adapt, reverse engineer,\n"
+"decompile or disassemble, create derivative works of, publish,\n"
+"distribute exploit the App or any content or software element of the\n"
+"Services; nor"
+msgstr ""
+
+#: inc/shared/terms.php:79
+msgid ""
+"4.4.3 remove any copyright or\n"
+"proprietary notices on the App or the content of the Services; nor"
+msgstr ""
+
+#: inc/shared/terms.php:81
+msgid ""
+"4.4.4 use, distribute or disclose\n"
+"confidential, personal or sensitive information within the content of\n"
+"the App or the Services without appropriate authority; nor"
+msgstr ""
+
+#: inc/shared/terms.php:84
+msgid ""
+"4.4.5 export the App in breach of\n"
+"applicable export control or other laws relating to the export of\n"
+"technology and software; nor"
+msgstr ""
+
+#: inc/shared/terms.php:87
+msgid ""
+"4.4.6 make any unlawful or unauthorised\n"
+"use of our (or our service providersâ€™) equipment, networks, systems\n"
+"or software (including attempting to gain unauthorised access,\n"
+"introducing any computer virus or malware, or inhibiting their\n"
+"operation)."
+msgstr ""
+
+#: inc/shared/terms.php:92
+msgid "5. Duration and termination"
+msgstr ""
+
+#: inc/shared/terms.php:93
+msgid ""
+"5.1 This Agreement will commence from\n"
+"the time you accept this Agreement."
+msgstr ""
+
+#: inc/shared/terms.php:95
+msgid ""
+"5.2 You may terminate this Agreement at\n"
+"any time by sending an email to us at "
+msgstr ""
+
+#: inc/shared/terms.php:97
+msgid ""
+"5.3 We may withdraw the Services and\n"
+"associated content, suspend your access to the Services and/or\n"
+"terminate this Agreement at any time at our absolute discretion,\n"
+"including (without limitation) if you breach or we reasonably suspect"
+msgstr ""
+
+#: inc/shared/terms.php:101
+msgid ""
+"that you are in breach of any term of\n"
+"this Agreement, or if we cease to offer (or change the way in which\n"
+"we offer) the Services. You will not be entitled to any compensation\n"
+"for such withdrawal, removal, termination or suspension."
+msgstr ""
+
+#: inc/shared/terms.php:105
+msgid ""
+"5.4 Following termination of this\n"
+"Agreement or suspension of your access to the Services for any\n"
+"reason, we may retain your account details and other records relating\n"
+"to you for our record keeping. Additionally, your customerâ€™s will\n"
+"no longer be able to access or use the App."
+msgstr ""
+
+#: inc/shared/terms.php:110
+msgid "6. Extent of the Services"
+msgstr ""
+
+#: inc/shared/terms.php:111
+msgid ""
+"6.1 Our Services are provided for your\n"
+"convenience, and are not intended to be relied upon by you. Whilst we\n"
+"use reasonable efforts to provide effective Services, we cannot\n"
+"guarantee availability of the Services or the App at all times."
+msgstr ""
+
+#: inc/shared/terms.php:115
+msgid ""
+"6.2 The App and the Services may\n"
+"contain links to websites provided by third parties, and we are not\n"
+"responsible for the availability, accuracy or content of third party\n"
+"websites."
+msgstr ""
+
+#: inc/shared/terms.php:119
+msgid "7. Content provided by you"
+msgstr ""
+
+#: inc/shared/terms.php:120
+msgid "7.1 You agree that you:"
+msgstr ""
+
+#: inc/shared/terms.php:121
+msgid ""
+"7.1.1 have provided and will continue\n"
+"to provide accurate and complete information in your registration and\n"
+"account, and will update such information as appropriate;"
+msgstr ""
+
+#: inc/shared/terms.php:124
+msgid ""
+"7.1.2 are responsible for the accuracy\n"
+"of any data or content provided as part of the Services; and"
+msgstr ""
+
+#: inc/shared/terms.php:126
+msgid ""
+"7.1.3 will not upload or transmit to\n"
+"our (or our service providersâ€™) systems or otherwise provide to us\n"
+"any unlawful content (including any content which is defamatory,\n"
+"obscene or abusive, or in breach or an infringement of intellectual\n"
+"property or privacy rights, or any data protection or confidentiality\n"
+"obligations)."
+msgstr ""
+
+#: inc/shared/terms.php:132
+msgid ""
+"7.2 You should not rely on our Services\n"
+"for storage or maintenance of information or your content. We may, at\n"
+"any time at our absolute discretion review and remove any content\n"
+"from the Services or request that you re-register or set up a new\n"
+"account for your continued use of the Services."
+msgstr ""
+
+#: inc/shared/terms.php:137
+msgid "8. Limitations of liability"
+msgstr ""
+
+#: inc/shared/terms.php:138
+msgid ""
+"8.1 Nothing in this Agreement shall\n"
+"exclude or limit our liability for fraud, or for death or personal\n"
+"injury caused by our negligence or other liability which cannot\n"
+"lawfully be excluded or limited."
+msgstr ""
+
+#: inc/shared/terms.php:142
+msgid ""
+"8.2 Except as may be expressly set out\n"
+"in this Agreement, all conditions, representations and warranties\n"
+"relating to the App and the Services and are excluded to the maximum\n"
+"extent permitted by law."
+msgstr ""
+
+#: inc/shared/terms.php:146
+msgid ""
+"8.3 We shall not be liable for any\n"
+"defects or errors in the App or the Services, nor interruptions in or\n"
+"unavailability of the Services, nor any breach of any obligations due\n"
+"to a cause beyond our reasonable control."
+msgstr ""
+
+#: inc/shared/terms.php:150
+msgid "8.4 We shall not be liable for any:"
+msgstr ""
+
+#: inc/shared/terms.php:151
+msgid ""
+"8.4.1 loss, damage or distress arising\n"
+"from reliance on information or reliance on availability of services;\n"
+"nor"
+msgstr ""
+
+#: inc/shared/terms.php:154
+msgid ""
+"8.4.2 loss of business, customers or\n"
+"profits; nor"
+msgstr ""
+
+#: inc/shared/terms.php:156
+msgid ""
+"8.4.3 indirect, consequential or\n"
+"economic loss, damage or distress (including any such loss, damage or\n"
+"distress arising from unauthorised use of or damage to your data or\n"
+"content),"
+msgstr ""
+
+#: inc/shared/terms.php:160
+msgid ""
+"which you suffer in relation to this\n"
+"Agreement, or your use of the Services."
+msgstr ""
+
+#: inc/shared/terms.php:162
+msgid ""
+"8.5 As the Services are provided free\n"
+"of charge, you agree that such exclusions of liability are\n"
+"reasonable."
+msgstr ""
+
+#: inc/shared/terms.php:165
+msgid ""
+"8.6 Without prejudice to other\n"
+"limitations on our liability (including clause 8.4) or clause 8.1,\n"
+"Preoday's total liability to you in any twelve (12) month period for\n"
+"any other losses or claims relating to the App or the Services and\n"
+"arising during that period is limited to Â£500 or the fees paid by\n"
+"you to us in such a period, whichever is greater."
+msgstr ""
+
+#: inc/shared/terms.php:171
+msgid ""
+"8.7 You agree to indemnify us against\n"
+"all liabilities, costs, expenses, damages and losses suffered or\n"
+"incurred by us relating to any breach of clause 7.1.3."
+msgstr ""
+
+#: inc/shared/terms.php:174
+msgid "9. Changes"
+msgstr ""
+
+#: inc/shared/terms.php:175
+msgid ""
+"9.1 We may make changes to the\n"
+"Services, this Agreement or the terms on which the App may be used by\n"
+"your customers at any time at our absolute discretion. Depending upon\n"
+"the changes, we may require you to read and accept a new agreement\n"
+"for you to continue to use the Services."
+msgstr ""
+
+#: inc/shared/terms.php:180
+msgid ""
+"9.2 We may (by means of a notice on our\n"
+"website, within the relevant application store or otherwise) require\n"
+"your customers to install and use an upgraded version of the App in\n"
+"place of the current version, or to uninstall the App if we cease to\n"
+"offer it or the Services. All upgrades to the App fall under the\n"
+"definition of the â€œAppâ€ under this Agreement."
+msgstr ""
+
+#: inc/shared/terms.php:186
+msgid ""
+"9.3 The Services are currently provided\n"
+"free of charge, but we reserve the right to charge for the Services\n"
+"in the future. If we do charge a fee for the Services, then we shall\n"
+"notify you and, in accordance with clause 5.2, you may terminate this\n"
+"Agreement if you do not wish to continue to use the Services for a\n"
+"fee."
+msgstr ""
+
+#: inc/shared/terms.php:192
+msgid ""
+"9.4 In the future we may also offer\n"
+"additional services in connection with the App, the Services and the\n"
+"services you provide to your customers. These services may include:\n"
+"service charges (eg for delivery of orders to seats); complex system\n"
+"integration; multi-venue reporting and management; marketing and\n"
+"loyalty functionality; enhanced branding services; support services;\n"
+"business intelligence and order analytics. These services will be\n"
+"subject to subscription charges which will communicate to you at the\n"
+"relevant time."
+msgstr ""
+
+#: inc/shared/terms.php:201
+msgid "10. Privacy notice"
+msgstr ""
+
+#: inc/shared/terms.php:202
+msgid ""
+"10.1 You agree to our use of your\n"
+"personal data as set out in our privacy policy, which can be found at "
+msgstr ""
+
+#: inc/shared/terms.php:205
+msgid ""
+"10.2 In particular, please note that\n"
+"although Preoday is based in the UK, it and its service providers\n"
+"may have servers located overseas, where the laws may not give the same "
+"level of protection\n"
+"to personal data as within the UK and that by submitting your\n"
+"personal data, you agree to allowing your personal data to be\n"
+"transferred, processed and stored overseas as set out in this\n"
+"clause."
+msgstr ""
+
+#: inc/shared/terms.php:212
+msgid "11. General"
+msgstr ""
+
+#: inc/shared/terms.php:213
+msgid ""
+"11.1 All provisions of this Agreement\n"
+"which by their nature are intended to continue shall survive\n"
+"termination, including terms relating to exclusions and limitations\n"
+"of liability, intellectual property restrictions and on-going use of\n"
+"your data."
+msgstr ""
+
+#: inc/shared/terms.php:218
+msgid ""
+"11.2 Termination of this Agreement or\n"
+"the Services shall not affect accrued rights and liabilities of you\n"
+"or us up to the date of termination."
+msgstr ""
+
+#: inc/shared/terms.php:221
+msgid ""
+"11.3 No provision of this Agreement is\n"
+"intended to be enforceable by any person other than you and us."
+msgstr ""
+
+#: inc/shared/terms.php:223
+msgid ""
+"11.4 We may, without your consent,\n"
+"sub-contract provision of the Services or sub- license our rights\n"
+"under this Agreement to our third party service providers."
+msgstr ""
+
+#: inc/shared/terms.php:226
+msgid ""
+"11.5 We may, without your consent,\n"
+"assign or transfer any or all of our rights and obligations under\n"
+"this Agreement any successor in title of all or part of the App, the\n"
+"Services, or intellectual property or other rights or obligations\n"
+"subsisting in relation to the same."
+msgstr ""
+
+#: inc/shared/terms.php:231
+msgid ""
+"11.6 Failure or delay by us to exercise\n"
+"any right or remedy under this Agreement does not constitute a waiver\n"
+"of that right or remedy."
+msgstr ""
+
+#: inc/shared/terms.php:234
+msgid ""
+"11.7 The terms of this Agreement\n"
+"constitute the entire agreement between you and us with respect to\n"
+"the subject matter and supersede any and all prior agreements,\n"
+"negotiations and discussions relating to the same."
+msgstr ""
+
+#: inc/shared/terms.php:238
+msgid ""
+"11.8 If any provision of this Agreement\n"
+"is found by any court or legal authority to be invalid, unenforceable\n"
+"or illegal, the other provisions shall remain in force and, to the\n"
+"extent possible, the provision shall be modified to ensure it is\n"
+"valid, enforceable and legal, whilst maintaining or giving effect to\n"
+"its commercial intention."
+msgstr ""
+
+#: inc/shared/terms.php:244
+msgid ""
+"11.9 This Agreement is governed by the\n"
+"laws of England and Wales, and the courts of England and Wales shall\n"
+"have exclusive jurisdiction to hear any disputes arising in\n"
+"connection with it."
+msgstr ""
+
+#: inc/signin/signin_content.php:3
+msgid "Your account"
+msgstr ""
+
+#: inc/signin/signin_content.php:7
+msgid "Login using Facebook"
+msgstr ""
+
+#: inc/signin/signin_content.php:15
+msgid "Login using Google+"
+msgstr ""
+
+#: inc/signin/signin_content.php:33
+msgid "Please type your password"
+msgstr ""
+
+#: inc/signin/signin_content.php:45
+msgid "LOG IN"
+msgstr ""
+
+#: inc/signin/signin_content.php:52 inc/signin/signin_content.php:55
+#: inc/signin/signin_content.php:58 inc/signin/signin_content.php:61
+msgid "Looking for the Fulfilment App?"
+msgstr ""
+
+#: inc/signin/signin_content.php:52 inc/signin/signin_content.php:55
+#: inc/signin/signin_content.php:58 inc/signin/signin_content.php:61
+msgid "  Click here"
+msgstr ""
+
+#: inc/signin/signin_content.php:78
+msgid ""
+"Sorry, you don't have sufficient privileges.<br/><br/>Looking for the "
+"Fulfilment App? Click the link at the bottom of this page."
+msgstr ""
+
+#: inc/signup/signup_content.php:6
+msgid "Now, we just need your business name."
+msgstr ""
+
+#: inc/signup/signup_content.php:13
+msgid "Get started"
+msgstr ""
+
+#: inc/signup/signup_content.php:17
+msgid "Signup using Facebook"
+msgstr ""
+
+#: inc/signup/signup_content.php:24
+msgid "Signup using Google+"
+msgstr ""
+
+#: inc/signup/signup_content.php:45
+msgid "Your email"
+msgstr ""
+
+#: inc/signup/signup_content.php:47
+msgid "Please type your email"
+msgstr ""
+
+#: inc/signup/signup_content.php:53
+msgid "Create a password"
+msgstr ""
+
+#: inc/signup/signup_content.php:55
+msgid "Please type a password."
+msgstr ""
+
+#: inc/signup/signup_content.php:69
+msgid "Your business name"
+msgstr ""
+
+#: inc/signup/signup_content.php:71
+msgid "Please type your business name (max 100chars)"
+msgstr ""
+
+#: inc/signup/signup_content.php:77
+msgid "Telephone Number"
+msgstr ""
+
+#: inc/signup/signup_content.php:79
+msgid "Please type your telephone number"
+msgstr ""
+
+#: inc/signup/signup_content.php:87
+msgid "By clicking 'Sign Up' you agree to our"
+msgstr ""
+
+#: inc/signup/signup_content.php:87
+msgid "Terms"
+msgstr ""
+
+#: inc/signup/signup_content.php:87
+msgid "and"
+msgstr ""
+
+#: inc/signup/signup_content.php:87
+msgid "Privacy Policy"
+msgstr ""
+
+#: inc/signup/signup_content.php:95
+msgid "SIGN UP"
+msgstr ""
