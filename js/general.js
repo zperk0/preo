@@ -664,6 +664,8 @@ $(document).ready(function() {
 						  text: 'Error for delete image'
 						});
 					});
+			} else {
+				imagesMenu[idItem] = null;
 			}
 
 			$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
