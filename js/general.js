@@ -637,6 +637,7 @@ $(document).ready(function() {
 			cropperInstance.croppedImg.show();
 			cropperInstance.cropControlRemoveCroppedImage.show();
 			$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+			$modalImagesCrop.foundation('reveal', 'close');
 		} else {
 			$modalImagesCrop.foundation('reveal', 'close');
 		}
