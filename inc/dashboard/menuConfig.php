@@ -409,6 +409,7 @@
 </form>
 
 <div id="modalImagesCrop" class="reveal-modal modal-preoday xsmall" data-options="closeOnBackgroundClick:false" data-reveal>	
+	<a class="close-reveal-modal">×</a>
 	<form action="" method="POST" class="formImageMenuItem" enctype="multipart/form-data">
 		<div class="header-modalCrop spacing-modalCrop">
 			<header class="title-notification" id="title-modalCrop">Name of item</header>

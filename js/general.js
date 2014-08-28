@@ -714,8 +714,8 @@ $(document).ready(function() {
 			uploadUrl: '/uploadMenuItemImage',
 			cropUrl: '/uploadMenuItemImage',
 			onBeforeImgUpload: function(){
-				$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
-				$cancelModalImageCrop.addClass('secondary').attr('disabled', 'disabled');
+/*				$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+				$cancelModalImageCrop.addClass('secondary').attr('disabled', 'disabled');*/
 				$addPicture.addClass('secondary').attr('disabled', 'disabled');
 
 	            var percentVal = '0%';
@@ -740,7 +740,7 @@ $(document).ready(function() {
 	            $barImageCrop.width(percentVal);
 	            $percentImageCrop.html(percentVal);
 	            $progressImageCrop.show();
-				$cancelModalImageCrop.addClass('secondary').attr('disabled', 'disabled');
+				// $cancelModalImageCrop.addClass('secondary').attr('disabled', 'disabled');
 			},
 			onAfterImgCrop:		function(){ 
 				lastImageUpload = {
