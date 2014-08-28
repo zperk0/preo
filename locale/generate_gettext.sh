@@ -17,7 +17,7 @@ echo $ROOT
 echo Generating php file list /tmp/listfile.txt
 find $ROOT | grep .php > /tmp/listfile.txt
 echo Generating .POT file - $POT
-gettext/bin/gettext -n PHP --no-wrap -f /tmp/listfile.txt -o $POT --from-code=UTF-8
+gettext -n -L PHP --no-wrap -f /tmp/listfile.txt -o $POT --from-code=UTF-8
 
 echo Generating po files
 find $DIR -name \*.po -exec msgmerge -U {} $POT \;
