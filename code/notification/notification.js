@@ -77,6 +77,10 @@ angular.module('notification', ['ngSanitize'])
             deffered.reject({ acceptTerm: $scope.acceptTerm });
         };
 
+        $scope.validateDiscountCode = function(){
+          console.log('validateDiscount');
+        }
+
 }])
 .service('$notification', ['$modal', '$q', '$sce', function( $modal, $q, $sce) {
 

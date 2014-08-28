@@ -3569,32 +3569,60 @@ button.preodayButton.noclick{
 
 .content-purchase{
   padding: 0 20px;
+
+   .row{
+      border-bottom: 1px solid #B9BBBD;
+      padding: 10px 0;
+    
+        p{
+            width: 100%;
+            display: table;
+            margin-bottom: 5px;
+
+            span.title{
+              width: 70%;
+              text-align: left;
+            }
+
+            span.price{
+              width: 30%;
+              text-align: right;
+            }
+        }
+    }
+
+  .discountRow{
+    padding:2% 3%;
+    background: $dashboardPremiumLight;
+    margin-top:2%;
+    text-align:left;
+    p{
+      margin-bottom:0;
+      font-size:90%;
+    }
+
+    input{
+      width: 77%;
+      margin: 0 1% 5px 0;
+      display: inline;
+      font-weight: 400;
+      padding: 5px 0 5px 10px;
+      font-size: 80%!important;    
+    }
+
+    button{
+      font-weight: 400;
+      width: 19%;
+      padding: 5px 0;
+      border: none;
+      font-size: 90% !important;
+      margin-bottom:0;
+      top:2px;
+    }
+  }
 }
 
-.content-purchase .row{
-  border-bottom: 1px solid #B9BBBD;
-  padding: 10px 0;
-}
 
-.content-purchase .row p{
-  width: 100%;
-  display: table;
-  margin-bottom: 5px;
-}
-
-.content-purchase .row p span.title{
-  width: 70%;
-  text-align: left;
-}
-
-.content-purchase .row p span.price{
-  width: 30%;
-  text-align: right;
-}
-
-#loadingConfig{
-  // display: none;
-}
 
 #loadingConfig .loading-content{
   width: 100px;

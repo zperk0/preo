@@ -20,11 +20,18 @@
       <span class="pull-left title"><? echo _("VAT @ 20%")?></span>
       <span class="pull-right price">£{{ vat.toFixed(2) }}</span>
     </p>
-  </div>
-  <div class="row">
+    <p ng-if="discount"><i>
+      <span class="pull-left title"><? echo _("Discount")?></span>
+      <span class="pull-right price">£{{ discount.toFixed(2) }}</span>
+    </i></p>    
     <p>
       <strong class="pull-left title"><? echo _("TOTAL")?></strong>
       <strong class="pull-right price">£{{ total.toFixed(2) }}</strong>
     </p>
+  </div>
+  <div class="discountRow">
+    <p><? echo _("Have a discount code?")?></p>
+    <input type='text' ngModel='discountCode' name='discountCode'/>
+    <button type='button' class='preodayButton' ng-click="validateDiscountCode()"><? echo _("APPLY") ?></button>
   </div>
 </div>
