@@ -1,6 +1,7 @@
 angular.module('features',[])
 angular.module('accountSettings.controllers',[]);
 angular.module('accountSettings.resources',['ngResource']);
+angular.module('resources',['ngResource'])
 
 //shop
 var app = angular.module('accountSettings', [  
@@ -10,7 +11,9 @@ var app = angular.module('accountSettings', [
   'accountSettings.controllers',
   'loaders',
   'mm.foundation',
-  'notification'
+  'notification',
+  'resources',
+  'constants'
 ]).run(['$rootScope', function( $rootScope ) {
   $rootScope.requests = 0;
 }]);

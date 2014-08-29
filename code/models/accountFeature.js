@@ -1,4 +1,4 @@
-angular.module('accountSettings.resources').
+angular.module('resources').
   factory('AccountFeature', ['$resource',function($resource) {
     
     var AccountFeature = $resource('/api/accounts/:accountId/features/:featureId',{accountId:"@accountId",featureId:"@featureId"},{
@@ -35,7 +35,6 @@ angular.module('accountSettings.resources').
         return contractEnds.toDate();
         
     }
-
 
 		return AccountFeature;
 

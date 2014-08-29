@@ -1,8 +1,8 @@
 //shop
 var appCtrls = angular.module('shop.controllers',[]);
   
-appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES', 'ACCOUNT_ID', '$notification','$AjaxInterceptor','$location',
-  function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification,$AjaxInterceptor,$location) {    
+appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES', 'ACCOUNT_ID', '$notification','$AjaxInterceptor','$location','AccountFeature',
+  function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification,$AjaxInterceptor,$location,AccountFeature) {    
 
     
     function initModalFromPath(){
@@ -45,7 +45,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     
     
     function getAccountFeatures() {
-      Resources.AccountFeatures.query({accountId:ACCOUNT_ID},function(result){    
+      AccountFeature.query({accountId:ACCOUNT_ID},function(result){    
         $scope.accountFeatures = result;                
 
         validateShopCard();
@@ -59,7 +59,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
 
       $AjaxInterceptor.start();
 
-      Resources.AccountFeatures.getPrice({accountId:ACCOUNT_ID,featureId:feature.id},
+      AccountFeature.getPrice({accountId:ACCOUNT_ID,featureId:feature.id},
         function(result){                
         $scope.price = result;
           if (feature.contractMonths){
@@ -226,7 +226,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     function startTrial (){
     $AjaxInterceptor.start();           
       var feature = $scope.selectedFeature.feature;
-      Resources.AccountFeatures.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){        
+      AccountFeature.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){        
         console.log('response:',accountPayment);  
         if (accountPayment.status ===  "SUCCESS"){
           getAccountFeatures();
@@ -248,7 +248,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
           function(result){          
             
             if (result.token && result.token!=null){               
-                Resources.AccountFeatures.save({accountId:ACCOUNT_ID,featureId:feature.id},
+                AccountFeature.save({accountId:ACCOUNT_ID,featureId:feature.id},
                   function(accountPayment){
                     $AjaxInterceptor.complete(); 
                     if (accountPayment.status ===  "SUCCESS"){

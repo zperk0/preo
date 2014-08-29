@@ -181,14 +181,9 @@
   
   
   <script src="/code/kyc/js/all.min.js"></script>
-
-
-  <script type="text/javascript">
-  
+  <script src="/code/constants/session.php"></script>  
+  <script type="text/javascript">  
   //always on session after login
-
-  angular.module('kyc').constant('ACCOUNT_ID',<? echo $_SESSION['account_id']?>);
-  angular.module('kyc').constant('VENUE_ID',<? echo $_SESSION['venue_id']?>);
   angular.module('kyc').constant('PUSHER_KEY', '<? echo $pusherKey ?>');
   //moment is not available here yet.
   angular.module('kyc').constant('INITIAL_DATES', {

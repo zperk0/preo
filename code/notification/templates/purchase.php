@@ -22,16 +22,19 @@
     </p>
     <p ng-if="discount"><i>
       <span class="pull-left title"><? echo _("Discount")?></span>
-      <span class="pull-right price">£{{ discount.toFixed(2) }}</span>
+      <span class="pull-right price">-£{{ discount.toFixed(2) }}</span>
     </i></p>    
     <p>
       <strong class="pull-left title"><? echo _("TOTAL")?></strong>
       <strong class="pull-right price">£{{ total.toFixed(2) }}</strong>
     </p>
   </div>
-  <div class="discountRow">
+  <div class="discountRow" ng-hide="discount" class='fader'>
     <p><? echo _("Have a discount code?")?></p>
-    <input type='text' ngModel='discountCode' name='discountCode'/>
-    <button type='button' class='preodayButton' ng-click="validateDiscountCode()"><? echo _("APPLY") ?></button>
+    <input type='text' ng-model='discountCode'/>
+    <button type='button' class='preodayButton' ng-class='{secondary:discountCode===""}' 
+          ng-disabled='discountCode===""' ng-click="validateDiscountCode()"><? echo _("APPLY") ?></button>
+    <p class='errorColor' ng-if='errorMsg'>{{errorMsg}}</p>
   </div>
+
 </div>

@@ -1,26 +1,43 @@
 angular.module('notification', ['ngSanitize'])
 
-.controller("confirmModalController",['$scope', '$modalInstance', 'data', 'deffered', '$http', '$templateCache', '$compile','$sce','$timeout', 
-  function( $scope, $modalInstance, data, deffered, $http, $templateCache, $compile,$sce,$timeout) {
+.controller("confirmModalController",['$scope', '$modalInstance', 'data', 'deffered', '$http', '$templateCache', '$compile','$sce','$timeout',
+  'AccountFeature','ACCOUNT_ID','VENUE_ID','USER_ID',
+  function( $scope, $modalInstance, data, deffered, $http, $templateCache, $compile,$sce,$timeout,AccountFeature,ACCOUNT_ID,VENUE_ID,USER_ID) {
 
         var templatePath = '/code/notification/templates/';
         
-        $scope.title = data.title || '';
-
-        if ( data.hasOwnProperty('templateFullUrl') && data.templateFullUrl ) {
+        $scope.title = data.title || '';        
+        $scope.discountCode = "";
+        if ( data.hasOwnProperty('templateFullUrl') && data.templateFullUrl ) {          
             angular.extend($scope, data.scope);
-        } else if ( data.hasOwnProperty('templateUrl') && data.templateUrl ) {
-
+        } else if ( data.hasOwnProperty('templateUrl') && data.templateUrl ) {          
             $scope.templateUrl = data.templateUrl;
 
             var load = function( html ) {
-              var scopeChild = $scope.$new();
+              var $scopeChild = $scope.$new();
+              angular.extend($scopeChild, data.scope);
 
-              angular.extend(scopeChild, data.scope);
+              $scopeChild.validateDiscountCode = function(){
+                $scopeChild.errorMsg = "";
+                if (!$scopeChild.discountCode ){
+                  $scopeChild.errorMsg = _tr("Please enter a discount code");
+                }
+                AccountFeature.getPrice({accountId:ACCOUNT_ID,
+                                         featureId:$scopeChild.featureId,
+                                         code:$scopeChild.discountCode.toUpperCase(),
+                                         venueId:VENUE_ID,
+                                         userId:USER_ID
+                },function(result){
+                  angular.extend($scopeChild,result)
+                },function(error){
+                  if (error.status === 400 && error.data)
+                    $scopeChild.errorMsg = error.data.message;
+                });  
+              }
 
               $timeout(function(){
-                angular.element('#contentPartial').html($compile(html)(scopeChild));
-              });
+                angular.element('#contentPartial').html($compile(html)($scopeChild));
+              });              
             };
 
             var dataCache = $templateCache.get(templatePath + data.templateUrl);
@@ -77,9 +94,7 @@ angular.module('notification', ['ngSanitize'])
             deffered.reject({ acceptTerm: $scope.acceptTerm });
         };
 
-        $scope.validateDiscountCode = function(){
-          console.log('validateDiscount');
-        }
+       
 
 }])
 .service('$notification', ['$modal', '$q', '$sce', function( $modal, $q, $sce) {
