@@ -8,35 +8,16 @@ angular.module('notification', ['ngSanitize'])
         
         $scope.title = data.title || '';        
         $scope.discountCode = "";
+        $scope.appliedDiscount = false;
         if ( data.hasOwnProperty('templateFullUrl') && data.templateFullUrl ) {          
             angular.extend($scope, data.scope);
         } else if ( data.hasOwnProperty('templateUrl') && data.templateUrl ) {          
             $scope.templateUrl = data.templateUrl;
 
-            var load = function( html ) {
-              var $scopeChild = $scope.$new();
-              angular.extend($scopeChild, data.scope);
-
-              $scopeChild.validateDiscountCode = function(){
-                $scopeChild.errorMsg = "";
-                if (!$scopeChild.discountCode ){
-                  $scopeChild.errorMsg = _tr("Please enter a discount code");
-                }
-                AccountFeature.getPrice({accountId:ACCOUNT_ID,
-                                         featureId:$scopeChild.featureId,
-                                         code:$scopeChild.discountCode.toUpperCase(),
-                                         venueId:VENUE_ID,
-                                         userId:USER_ID
-                },function(result){
-                  angular.extend($scopeChild,result)
-                },function(error){
-                  if (error.status === 400 && error.data)
-                    $scopeChild.errorMsg = error.data.message;
-                });  
-              }
-
+            var load = function( html ) {              
+              
               $timeout(function(){
-                angular.element('#contentPartial').html($compile(html)($scopeChild));
+                angular.element('#contentPartial').html($compile(html)($scope));
               });              
             };
 
@@ -86,13 +67,40 @@ angular.module('notification', ['ngSanitize'])
 
         $scope.send = function() {
             $modalInstance.close();
-            deffered.resolve({ acceptTerm: $scope.acceptTerm });
+            
+            var resolveObj = {
+              acceptTerm: $scope.acceptTerm
+            }
+            if ($scope.appliedDiscount){
+              resolveObj.discountCode = $scope.discountCode;
+            }
+
+            deffered.resolve(resolveObj);
         };
 
         $scope.cancel = function() {
             $modalInstance.close();
             deffered.reject({ acceptTerm: $scope.acceptTerm });
         };
+
+        $scope.validateDiscountCode = function(){
+            $scope.errorMsg = "";
+            if (!$scope.discountCode ){
+              $scope.errorMsg = _tr("Please enter a discount code");
+            }
+            AccountFeature.getPrice({accountId:ACCOUNT_ID,
+                                     featureId:$scope.featureId,
+                                     code:$scope.discountCode.toUpperCase(),
+                                     venueId:VENUE_ID,
+                                     userId:USER_ID
+            },function(result){
+              angular.extend($scope,result)
+              $scope.appliedDiscount = true;
+            },function(error){
+              if (error.status === 400 && error.data)
+                $scope.errorMsg = error.data.message;
+            });  
+          }     
 
        
 
