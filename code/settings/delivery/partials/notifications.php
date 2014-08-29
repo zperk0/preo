@@ -16,11 +16,11 @@
       </div>
       <div class='row messageRow' ng-repeat="message in messages.notify" >      
           <div class='messageCol-1' ng-class="{'error': validateMessage(message) }">
-            <input class='' type='text' ng-change="validateActive(message)"  ng-model="message.content" placeholder='eg."{{getPlaceholder("notify",$index).content}}"' ng-required='validateMessage(message)' ng-disabled="venue.deliverFlag==0"/>
+            <input class='' type='text' ng-change="validateActive(message)"  ng-model="message.content" placeholder='eg."{{getPlaceholder("notify",$index).content}}"' ng-required='validateMessage(message)' />
             <small class="error" ng-show="validateMessage(message)" ><?echo _("Please enter both the notification and a short name.");?></small>
           </div>
           <div class='messageCol-2' ng-class="{'error': validateMessage(message)}">
-              <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name" placeholder='eg."{{getPlaceholder("notify",$index).name}}"' ng-required='validateMessage(message)' ng-disabled="venue.deliverFlag==0"/>
+              <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name" placeholder='eg."{{getPlaceholder("notify",$index).name}}"' ng-required='validateMessage(message)' />
           </div>
           <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':!validateActive(message)}" > 
           <input  value="0" type="radio" ng-model="message.active" ng-disabled="!validateActive(message) || venue.deliverFlag==0" tabindex=-1>
@@ -41,11 +41,11 @@
       <div class='row messageRow' ng-repeat="message in messages.reject" >      
 
           <div class='messageCol-1' ng-class="{'error': validateMessage(message) }">
-            <input class='' type='text' ng-change="validateActive(message)"  ng-model="message.content" placeholder='eg."{{getPlaceholder("reject",$index).content}}"' ng-required='validateMessage(message)' ng-disabled="venue.deliverFlag==0"/>
+            <input class='' type='text' ng-change="validateActive(message)"  ng-model="message.content" placeholder='eg."{{getPlaceholder("reject",$index).content}}"' ng-required='validateMessage(message)' />
             <small class="error" ng-show="validateMessage(message)" ><?echo _("Please enter a message and a short name or remove this notification.");?></small>
           </div>
           <div class='messageCol-2' ng-class="{'error': validateMessage(message)}">
-              <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name"    placeholder='eg."{{getPlaceholder("reject",$index).name}}"' ng-required='validateMessage(message)'ng-disabled="venue.deliverFlag==0"/>
+              <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name"    placeholder='eg."{{getPlaceholder("reject",$index).name}}"' ng-required='validateMessage(message)' />
           </div>
           <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':!validateActive(message)}" > 
           <input  value="0" type="radio" ng-model="message.active" ng-disabled="!validateActive(message) || venue.deliverFlag==0" tabindex=-1>
