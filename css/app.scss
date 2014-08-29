@@ -701,6 +701,7 @@ label.appTop {
   width: 301px;
   height: 636px;
   margin: 0 0.1em 3em;
+  position: relative;
 }
 
 #frame_iphone5 {
@@ -2037,6 +2038,18 @@ table.sortable-placeholder {
 
 .itemDuplicate, .eventDuplicate {
   background: #2AB6E5;
+}
+
+/* From Jquery UI css */
+.ui-helper-hidden-accessible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 ul.ui-autocomplete {
@@ -3443,7 +3456,7 @@ button.preodayButton.noclick{
   margin-top:-15px;
 }
 
-.content-modal, #expiredDialog{
+.content-modal, #expiredDialog, #noPaymentMethod{
   padding: 1.875em;
 }
 
@@ -3653,9 +3666,66 @@ button.preodayButton.noclick{
   margin-bottom: 7.8em !important;
 }
 
-.colMenuItems{
-  overflow: hidden;
+
+#loadingDashboard{
+  display: none;
 }
+
+.venueMode{
+  position:absolute;
+  left:0;
+  top:-80px;
+  width:100%;
+}
+
+.venueMode span{  
+  color: #D7D9DA;
+  font-weight: normal;
+  display:block;
+}
+
+.switchModeWrapper{
+  margin-top:10px;
+  border:2px solid #d7d9da;
+  border-radius:8px;
+  font-size:90%;
+  height:36px;
+  padding:0;
+}
+
+.switchModeWrapper .switchDashboardMode:first-child{
+  border-top-left-radius:5px;
+  border-bottom-left-radius:5px;
+  border-right: 1px solid #d7d9da;
+}
+.switchDashboardMode:last-of-type{
+  border-top-right-radius:5px;
+  border-bottom-right-radius:5px;
+  border-left: 1px solid #d7d9da;
+  width:34%;
+}
+
+.switchDashboardMode{
+  text-align:center;
+  width:33%;
+  float:left;
+  color:#d7d9da;
+  padding:10px 0;
+
+  &:hover{
+    cursor:pointer;
+    background:#d7d9da;
+    color:$shopHeader;
+  }
+  &.active{
+    background:#d7d9da;
+    color:$shopHeader;
+    &:hover{     
+     cursor:default;
+    }
+  }
+}
+
 
 .colMenuItems > button, .colMenuItems > .contentForm{
   float: left;

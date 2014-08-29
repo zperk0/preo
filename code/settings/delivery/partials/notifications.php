@@ -1,7 +1,7 @@
   <form name="deliveryForm" id="deliveryForm" ng-submit="processForm()" novalidate ng-show="finishedLoading">  
     <div class='row deliveryHeader'> <h1 class="alignHeader"><?echo _("Preset Notifications")?></h1>
     </div>
-  <div class='deliveryWrapper' ng-class="{'opaque':venue.deliverFlag==0}">
+  <div class='deliveryWrapper'>
     <ul class='row delivery-tabs'>
       <li ng-class="{'selected': selected==1}" ><a href ng:click="selected=1"><?echo _("Order Status Alerts")?></a></li>
       <li ng-class="{'selected': selected==2}" ><a href ng:click="selected=2"><?echo _("Order Rejection Alerts")?></a></li>

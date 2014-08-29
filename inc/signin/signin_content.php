@@ -43,7 +43,7 @@
 			<div class="row">
 				<div class="small-8 large-5 columns">
 					<button type="submit" tabindex=3 id="btnLogin"><?echo _("LOG IN");?></button>
-					<button id="logingButton" class="hide secondary" type="button"><?echo _("LOGING...");?></button>					
+					<button id="logingButton" class="hide secondary" type="button"><?echo _("LOGGING...");?></button>
 				</div>
 			</div>
 			<div class="row">

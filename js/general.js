@@ -1516,6 +1516,8 @@ $(document).ready(function() {
 		
 		activeUploadImageItem($newTab.find('.doImageMenuItem'), $newTab.find('.picImageMenuItem'));
 
+		// $(document).foundation('abide', 'events');
+		
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
@@ -2378,7 +2380,7 @@ $(document).ready(function() {
 		//new item or duplicate?
 		var dup = 0;
 		if($(this).hasClass("eventDuplicate")) dup = 1;
-		
+		var $oldTab;
 		//get table event number
 		$curTable = $(this).closest('table');
 		var eventID = $curTable.attr('id');
@@ -2402,6 +2404,7 @@ $(document).ready(function() {
 			$("#"+eventID+"_optionCountAct").after($newOCount);
 		
 			//clone specific table
+			$oldTab = $("#"+eventID);			
 			$newTab = $("#"+eventID).clone(false);
 			$newTab.attr('id','event'+newCount);
 		}
@@ -2445,7 +2448,7 @@ $(document).ready(function() {
 		if(dup) $newTab.find(".ui-multiselect").remove();
 		
 		//Replace ids with incremented value and make value = default value + add multiselect
-		$newTab.find(".optionTR select").each(function() {
+		$newTab.find(".optionTR .eventTDCollection select").each(function() {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
@@ -2456,6 +2459,23 @@ $(document).ready(function() {
 			   multiple: false,
 			   header: false,
 			   noneSelectedText: _tr("Choose a Collection Slot"),
+			   selectedList: 1,
+			   minWidth: 342
+			}); 
+		});
+
+		//Replace ids with incremented value and make value = default value + add multiselect
+		$newTab.find(".optionTR .eventTDOutletLocation select").each(function() {
+			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			if ($oldTab) $(this).val($oldTab.find(".optionTR .eventTDOutletLocation select").val());
+			var tempName = $(this).attr('name');			
+			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);			
+			newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");			
+			$(this).attr('name', newName);
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: _tr("Choose Event Location"),
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
@@ -2578,6 +2598,16 @@ $(document).ready(function() {
 			   minWidth: 342
 			}); 
 		});
+
+		$curItem.find("td.eventTDOutletLocation select").each(function() {
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: _tr("Choose Event Location"),
+			   selectedList: 1,
+			   minWidth: 342
+			}) ; 
+		});
 	});
 	
 	$(document).on("click", ".eventDelete", function() {
@@ -2668,10 +2698,17 @@ $(document).ready(function() {
 		
 	});
 	
-	$(".eventMenuSingleSelect").multiselect({
+	$(".eventMenuSingleSelect.selectCollectionSlot").multiselect({
 	   multiple: false,
 	   header: false,
 	   noneSelectedText: _tr("Choose a Collection Slot"),
+	   selectedList: 1,
+	   minWidth: 342
+	}); 
+	$(".eventMenuSingleSelect.selectOutletLocation").multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: _tr("Choose Event Location"),
 	   selectedList: 1,
 	   minWidth: 342
 	}); 
@@ -2711,7 +2748,7 @@ $(document).ready(function() {
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
-		});
+		});	
 		
 		//replace ids with incremented value and make value = default value
 		$newRow.find("input").each(function() {
@@ -4406,6 +4443,56 @@ $(document).ready(function() {
 		 });
 		return false; // avoid to execute the actual submit of the form.
 	});
+
+	$('.switchDashboardMode').on('click', function(){		
+
+		if ($(this).hasClass("active")){
+			return;
+		}
+		var value = $(this).data("mode");
+
+
+		if ( value === 'l' ) {
+			var modeMsg = _tr("Your app is now live!");
+			var data = {
+			   	liveFlag: 0,
+			   	offFlag: 0,
+			   	offFlagVerify: 0
+		   }
+		} 
+		else if ( value === 'd' ) {
+			var modeMsg = _tr("Your app is now in demo mode!");
+			var data = {
+			   	liveFlag: 1,
+			   	offFlag: 0,
+			   	offFlagVerify: 0
+		   }
+		}
+		else if ( value === 'o' ) {
+			var modeMsg = _tr("Your app is now offline!");
+			var data = {
+			   	liveFlag: 0,
+			   	offFlag: 1,
+			   	offFlagVerify: 0
+		   }
+		}else if ( value === 'n' ) {
+			//TODO finish this.
+			$('#noPaymentMethod').foundation('reveal', 'open');
+			return;
+		}
+		$('#loadingDashboard').show();		
+		$(".switchDashboardMode").removeClass('active');
+		$(this).addClass('active');
+		$.ajax({
+		   type: "POST",
+		   url: '/code/finish/do_finish.php',
+		   data:data,
+		   success: function(data) {
+		    	$('#loadingDashboard').hide();
+					noty({ type: 'success', text: modeMsg });
+		  	}
+		 });					
+	})
 	
 	//back to stripe connect
 	$('#startStripe').on('click', function(){

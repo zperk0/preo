@@ -113,7 +113,7 @@ angular.module('accountSettings.controllers')
                   AccountInvoice.get({accountId:ACCOUNT_ID,invoiceId:result.invoiceId},function(invoice){
                       console.log('got invoice',invoice);
                        $notification.confirm({                           
-                          title: _tr("Pending payment resolved"),
+                          title: _tr("Outstanding payment resolved"),
                           scope: invoice,                          
                           templateUrl: 'subscriptionpayment.php',              
                           showTerm: false,

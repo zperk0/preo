@@ -1,10 +1,10 @@
 angular.module('kyc.charts')
 .factory('ChartHelper',['$filter', 'TickInterval', function($filter, TickInterval) {
 
-	
+    
     function formatDate(timestamp){
-    	var date = new Date(timestamp);
-    	return  $filter('date')(date, "dd-MMM-yyyy")    	
+        var date = new Date(timestamp);
+        return  $filter('date')(date, "dd-MMM-yyyy")        
     }
 
     function getPercentage(data,oldData){
@@ -47,9 +47,6 @@ angular.module('kyc.charts')
             var dataRowCopied = angular.copy(dataRow);
 
             if ( daysFiltered.length ) {
-                daysFiltered[1] += +dataRowCopied[1];
-                daysFiltered[1] += +dataRowCopied[1];
-                daysFiltered[1] = +daysFiltered[1].toFixed(2);
                 daysFiltered[1] += dataRowCopied[1];
                 daysFiltered[1] = ((+daysFiltered[1]).toFixed(2)) / 1;
             } else {
@@ -62,10 +59,6 @@ angular.module('kyc.charts')
             var dataRowCopied = angular.copy(dataRow);
 
             if ( weekFiltered.length ) {
-                data[ data.indexOf(weekFiltered[0]) ][1] += +dataRowCopied[1];
-                var indexOf = data.indexOf(weekFiltered[0]);
-                data[ indexOf ][1] += +dataRowCopied[1];
-                data[ indexOf ][1] = +data[ indexOf ][1].toFixed(2);
                 var index = data.indexOf(weekFiltered[0]);
                 data[ index ][1] += dataRowCopied[1];
                 data[ index ][1] = ((+data[index][1]).toFixed(2)) / 1;
@@ -79,10 +72,6 @@ angular.module('kyc.charts')
             var dataRowCopied = angular.copy(dataRow);
 
             if ( monthsFiltered.length ) {
-                data[ data.indexOf(monthsFiltered[0]) ][1] += dataRowCopied[1];
-                var indexOf = data.indexOf(monthsFiltered[0]);
-                data[ indexOf ][1] += +dataRowCopied[1];
-                data[ indexOf ][1] = +data[ indexOf ][1].toFixed(2);
                 var index = data.indexOf(monthsFiltered[0]);
                 data[ index ][1] += dataRowCopied[1];
                 data[ index ][1] = ((+data[ index ][1]).toFixed(2)) / 1;

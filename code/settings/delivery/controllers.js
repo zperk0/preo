@@ -149,7 +149,7 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
     }
 
     $scope.validateEmail = function(email){
-        if ( !email.length ) {
+        if ( !email || !email.length ) {
             return true;
         }
 
