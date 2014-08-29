@@ -73,6 +73,58 @@
 		$redirectFlag = $_GET['r'];
 		protect($redirectFlag);	
 	}
+
+	function byPath($a,$b){
+		return $a['path'] > $b['path'];
+	}
+
+	function getAllChildren($list,$parent){
+			$allChildren = array();
+			foreach ($list as $location){
+				if ($location['parent'] == $parent['id'] && ($location['id'] != $location['parent'])){
+					$location['children'] = getAllChildren($list,$location);
+					$allChildren[] = $location;
+				}
+			}
+			return $allChildren;
+	}
+
+	function sortLocations($locations){
+		usort($locations,'byPath');		
+		
+		$sorted = array();
+		foreach ($locations as $key => $location){
+			if ($location['parent'] == null && $location['id'] !=null){
+					$location['children'] = getAllChildren($locations,$location);
+					$sorted[] = $location;
+			}
+		}	
+		return $sorted;	
+	}
+
+	function getOutletLocationSelectOptions($tree){		
+		$output = array(); 
+		foreach ($tree as $node){			
+			indentNodeForSelect($node,1,$output);
+		}		
+		return $output;
+	}
+
+	function indentNodeForSelect($node,$indent,&$output){
+		$children = $node['children'];
+		$formattedChild = ['id'=>$node['id'],'name'=>str_repeat("--",$indent).' '.$node['name']];		
+		$output[] = $formattedChild;
+		foreach ($children as $child){
+			indentNodeForSelect($child,$indent+1,$output);			
+		}	
+	}
+
+	$curlResult = callAPI('GET', $apiURL."venues/$venueID/outletlocations?outlets=false", false, $apiAuth);
+	$outletLocations = json_decode($curlResult,true);
+	
+	$tree = sortLocations($outletLocations);	
+
+	$_SESSION['outlet_locations'] = getOutletLocationSelectOptions($tree);
 	
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
