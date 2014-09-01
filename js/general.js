@@ -3964,7 +3964,7 @@ $(document).ready(function() {
 							return false;
 						}
 						
-						if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
+						if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && dataArray['result'] && typeof dataArray['result']['status'] !='undefined') ) //error
 						{
 							noty({
 							  type: 'error',  layout: 'topCenter',
