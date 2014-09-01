@@ -637,41 +637,43 @@ $(document).ready(function() {
 			cropperInstance.croppedImg.show();
 			cropperInstance.cropControlRemoveCroppedImage.show();
 			$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
-			$modalImagesCrop.foundation('reveal', 'close');
-		} else {
-			$modalImagesCrop.foundation('reveal', 'close');
 		}
+
+		$modalImagesCrop.foundation('reveal', 'close');
 	})
 
 	$modalImagesCrop.on('closed', function(){
 		cropperInstance.destroy();
 	});
 
+	var removeImage = function(){
+		cropperInstance.removedImage = false;
+		var idItem = cropperInstance.idItem;
+		var image = imagesMenu[idItem];
+
+		if ( image && image[0].saved ) {
+			$.post('/deleteImageItem', {idItem: idItem.replace('item', '')})
+				.done(function(){
+					imagesMenu[idItem] = null;
+				})
+				.fail(function(){
+					noty({
+					  type: 'error',  layout: 'topCenter',
+					  text: 'Error for delete image'
+					});
+				});
+		} else {
+			imagesMenu[idItem] = null;
+		}
+
+		$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+		$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');		
+	};
+
 	$(document).on('click', '#saveChangesModalCrop', function(){
 
 		if ( cropperInstance.removedImage ) {
-			cropperInstance.removedImage = false;
-			var idItem = cropperInstance.idItem;
-			var image = imagesMenu[idItem];
-
-			if ( image && image[0].saved ) {
-				$.post('/deleteImageItem', {idItem: idItem.replace('item', '')})
-					.done(function(){
-						imagesMenu[idItem] = null;
-					})
-					.fail(function(){
-						noty({
-						  type: 'error',  layout: 'topCenter',
-						  text: 'Error for delete image'
-						});
-					});
-			} else {
-				imagesMenu[idItem] = null;
-			}
-
-			$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
-			$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
-			$addPicture.removeClass('secondary').removeAttr('disabled');			
+			removeImage();	
 		} else {
 			if ( lastImageUpload ) {
 				imagesMenu[lastImageUpload.idItem] = [{
@@ -679,9 +681,9 @@ $(document).ready(function() {
 					url: lastImageUpload.url
 				}]
 			}
-
-			$modalImagesCrop.foundation('reveal', 'close');
 		}
+
+		$modalImagesCrop.foundation('reveal', 'close');		
 	})
 
 	$(document).on('click', '.itemUpload', function(){
@@ -719,8 +721,11 @@ $(document).ready(function() {
 			onBeforeImgUpload: function(){
 /*				$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
 				$cancelModalImageCrop.addClass('secondary').attr('disabled', 'disabled');*/
-				$addPicture.addClass('secondary').attr('disabled', 'disabled');
-
+				//$addPicture.addClass('secondary').attr('disabled', 'disabled');
+				if ( cropperInstance.cropControlRemoveCroppedImage instanceof jQuery ) {
+					cropperInstance.cropControlRemoveCroppedImage.trigger('click');
+				}
+				removeImage();
 	            var percentVal = '0%';
 	            $barImageCrop.width(percentVal);
 	            $percentImageCrop.html(percentVal);
@@ -729,7 +734,7 @@ $(document).ready(function() {
 			onAfterImgUpload: function(){
 				if ( this.hasOwnProperty('status') && this.status === 'error' ) {
 					$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
-					$addPicture.removeClass('secondary').removeAttr('disabled');
+					//$addPicture.removeClass('secondary').removeAttr('disabled');
 					$errorMessageImageCrop.text(this.message).show();
 				} else {
 					$errorMessageImageCrop.hide();
@@ -767,7 +772,7 @@ $(document).ready(function() {
         cropperInstance.onRemoveCroppedImage = function(  ) {
 			$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
 			$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
-			$addPicture.addClass('secondary').attr('disabled', 'disabled');
+			//$addPicture.addClass('secondary').attr('disabled', 'disabled');
 		};
 
 		if ( imagesMenu.hasOwnProperty(idItem) && imagesMenu[idItem] ) {
@@ -776,9 +781,7 @@ $(document).ready(function() {
 			cropperInstance.croppedImg = cropperInstance.obj.find('.croppedImg');
 			cropperInstance.init();
 
-			$addPicture.addClass('secondary').attr('disabled', 'disabled');
-		} else {
-			$addPicture.removeClass('secondary').removeAttr('disabled', 'disabled');
+			//$addPicture.addClass('secondary').attr('disabled', 'disabled');
 		}
 
 		$modalImagesCrop.foundation('reveal', 'open');
