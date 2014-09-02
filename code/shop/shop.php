@@ -134,18 +134,16 @@
 
 </div> <!-- End app -->
   <script src="/js/angular_all.min.js"></script>  
-  <!-- BEGIN WATCH 
+  <!-- BEGIN WATCH
   <script src="/code/shop/app.js"></script>
   <script src="/code/shop/resource.js"></script>
   <script src="/code/shop/controllers.js"></script>
   <script src="/code/notification/notification.js"></script>
   <script src="/code/loader/ajaxInterceptor.js"></script>
-
+  <script src="/code/models/accountFeature.js"></script>
 <!-- END WATCH -->
 <script src="/code/shop/all.min.js"></script>  
-  <script type="text/javascript">
-      angular.module('shop').constant('ACCOUNT_ID', <? echo $_SESSION['account_id']?>);
-  </script>
+<script src="/code/constants/session.php"></script>  
   
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 

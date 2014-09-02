@@ -1,8 +1,8 @@
 //shop
 var appCtrls = angular.module('shop.controllers',[]);
   
-appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES', 'ACCOUNT_ID', '$notification','$AjaxInterceptor','$location',
-  function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification,$AjaxInterceptor,$location) {    
+appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES', 'ACCOUNT_ID', '$notification','$AjaxInterceptor','$location','AccountFeature','USER_ID','VENUE_ID',
+  function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification,$AjaxInterceptor,$location,AccountFeature,USER_ID,VENUE_ID) {    
 
     
     function initModalFromPath(){
@@ -45,7 +45,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     
     
     function getAccountFeatures() {
-      Resources.AccountFeatures.query({accountId:ACCOUNT_ID},function(result){    
+      AccountFeature.query({accountId:ACCOUNT_ID},function(result){    
         $scope.accountFeatures = result;                
 
         validateShopCard();
@@ -59,7 +59,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
 
       $AjaxInterceptor.start();
 
-      Resources.AccountFeatures.getPrice({accountId:ACCOUNT_ID,featureId:feature.id},
+      AccountFeature.getPrice({accountId:ACCOUNT_ID,featureId:feature.id},
         function(result){                
         $scope.price = result;
           if (feature.contractMonths){
@@ -226,7 +226,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     function startTrial (){
     $AjaxInterceptor.start();           
       var feature = $scope.selectedFeature.feature;
-      Resources.AccountFeatures.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){        
+      AccountFeature.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){        
         console.log('response:',accountPayment);  
         if (accountPayment.status ===  "SUCCESS"){
           getAccountFeatures();
@@ -241,14 +241,14 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     }
     
 
-     function purchaseSelectedFeature(){
+     function purchaseSelectedFeature(obj){
         $AjaxInterceptor.start(); 
         var feature = $scope.selectedFeature.feature;
         Resources.AccountCard.get({accountId:ACCOUNT_ID},
-          function(result){          
-            
+          function(result){                      
             if (result.token && result.token!=null){               
-                Resources.AccountFeatures.save({accountId:ACCOUNT_ID,featureId:feature.id},
+                console.log('here ho',obj.discountCode,USER_ID);
+                AccountFeature.save({accountId:ACCOUNT_ID,featureId:feature.id,userId:USER_ID,venueId:VENUE_ID,code:obj.discountCode},
                   function(accountPayment){
                     $AjaxInterceptor.complete(); 
                     if (accountPayment.status ===  "SUCCESS"){

@@ -1,4 +1,5 @@
 angular.module('features',[])
+angular.module('resources',['ngResource'])
 
 //shop
 angular.module('shop', [
@@ -9,7 +10,9 @@ angular.module('shop', [
   'shop.resources',
   'notification',
   'shop.controllers',
-  'mm.foundation'
+  'mm.foundation',
+  'resources',
+  'constants'
 ])
 .run(['$rootScope', function( $rootScope ) {
   $rootScope.requests = 0;

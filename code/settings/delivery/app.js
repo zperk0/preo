@@ -5,7 +5,8 @@ angular.module('delivery', [
   'ngRoute',
   'delivery.resources',  
   'delivery.controllers',
-  'delivery.directives'
+  'delivery.directives',
+  'constants'
 ]).config(['$routeProvider', function( $routeProvider ) {
   $routeProvider.when('/', {templateUrl: '/code/settings/delivery/partials/delivery.php', controller: 'deliveryController'/*,
     resolve:{

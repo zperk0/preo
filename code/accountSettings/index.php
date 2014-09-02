@@ -70,16 +70,12 @@
   <script src="/code/accountSettings/controllers/subscriptionCtrl.js"></script>
   <script src="/code/accountSettings/controllers/menuCtrl.js"></script>
   <script src="/code/loader/ajaxInterceptor.js"></script>
-  <script src="/code/notification/notification.js"></script>
+  <script src="/code/models/AccountFeature.js"></script>
+  <script src="/code/notification/notification.js"></script>  
   <!-- END WATCH -->
 
   <script src="/code/accountSettings/js/all.min.js"></script>
-
-  <script>
-  //always on session after login
-  angular.module('accountSettings').constant('ACCOUNT_ID',<? echo $_SESSION['account_id']?>);
-  angular.module('accountSettings').constant('USER_ID',<? echo $_SESSION['user_id']?>);  
-  </script>
+  <script src="/code/constants/session.php"></script>  
 
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 

@@ -6,16 +6,6 @@ angular.module('shop.resources',['ngResource']).
 
     var AccountCard = $resource('/api/accounts/:accountId/accountcard',{accountId:"@accountId"},{})
 
-    var AccountFeatures = $resource('/api/accounts/:accountId/features/:featureId',{accountId:"@accountId",featureId:"@featureId"},{
-        put:{
-            method:"PUT"
-        },
-        getPrice:{
-            method:'GET',
-            url:'/api/accounts/:accountId/features/:featureId/price'
-        }
-    });    
-
     var Invoice = $resource('/api/invoices/:invoiceId',{invoiceId:"@invoiceId"},{
         put:{
             method:"PUT"
@@ -25,11 +15,9 @@ angular.module('shop.resources',['ngResource']).
     var StripeCharge = $resource('/api/invoices/:invoiceId/pay',{invoiceId:"@invoiceId"},{});
 
     
-
     return {
         Feature:Feature,
         AccountCard:AccountCard,
-        AccountFeatures:AccountFeatures,
         Invoice:Invoice,
         StripeCharge:StripeCharge
     };
