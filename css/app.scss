@@ -1104,7 +1104,7 @@ tr {
 }
 
 .menuTable .menuTDPrice, .headerTable .menuTDPrice {
-  width: 125px;
+  width: 120px;
 }
 
 .eventTable .eventTDTime, .headerTable .eventTDTime {
@@ -1310,6 +1310,10 @@ tr {
   width: 168px;
   text-align: right;
   padding-right: 0px !important;
+}
+
+.menuTable .menuTDTools, .headerTable .menuTDTools.colMenuItems {
+  width: 197px;
 }
 
 .eventTable .eventTDTools, .headerTable .eventTDTools {
@@ -3749,3 +3753,170 @@ button.preodayButton.noclick{
   }
 }
 
+.colMenuItems > button, .colMenuItems > .contentForm{
+  float: left;
+  margin-right: 3px;
+}
+
+.btnViewImages{
+  margin-top: -30px;
+  display: inline-block;
+  font-size: 18px;
+}
+
+.list-images-item li {
+  display: none !important;
+}
+.clearing-blackout .list-images-item li {
+  display: inline !important;
+}
+
+.item-image{
+  position: relative;
+}
+
+.deleteImageItem{
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  font-size: 15px; 
+  z-index: 6;
+  display: none;
+}
+
+.list-images-item li:hover .deleteImageItem, .list-images-item li.visible .deleteImageItem{
+  display: block;
+}
+
+#loadingMenuConfig{
+  display: none;
+}
+
+.colMenuItems .clearing-blackout .visible-img .contentImageClearing.active{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  overflow: hidden;
+  width: 600px;
+  height: 400px;
+  margin-left: -300px;
+  margin-top: -200px;
+}
+
+.colMenuItems .clearing-blackout .visible-img .contentImageClearing.active img{
+  position: static !important;
+  max-width: inherit;
+  max-height: inherit;
+}
+
+.clickImageForView img{
+  max-width: inherit;
+  max-height: inherit;  
+}
+
+.itemUpload{
+  padding: 0px !important;
+}
+
+.pd-upload{
+  float: left;
+  background: url('/img/icon-uploader.jpg') left top no-repeat;
+  width: 26px;
+  height: 25px;
+}
+
+.footer-modalCrop, .header-modalCrop{
+  overflow: hidden;
+}
+
+.bg-uploader{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.progressImageCrop {
+  position: absolute;
+  top: 52%;
+  left: 20%;
+  width: 60%;
+  display: inline-block;
+  border: 1px solid #E5E5E5;
+  padding: 1px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display: none;
+}
+
+.barImageCrop{
+  background-color: #07A4DE;
+  width: 0%;
+  height: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.percentImageCrop{
+  display: none;
+}
+
+#modalImagesCrop{
+  padding: 35px 0;
+}
+
+#modalImagesCrop .content-modal{
+  position: relative;
+  padding-top: 1em;
+}
+
+#modalImagesCrop .preodayButton {
+  font-weight: 400;
+  font-size: 90%;
+  padding: 0.6em 1em;
+  width: 175px;
+  margin-bottom: 0px;
+}
+
+.spacing-modalCrop{
+  padding: 0 30px;
+}
+
+#title-modalCrop{
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+#menuConfigForm tbody .menuTDPrice{
+  text-align: right;
+}
+
+#modalImagesCrop img{
+  max-width: inherit;
+  width: auto;
+  height: auto;
+}
+
+#descriptionExtensions, #errorMessageImageCrop{
+  float: left;
+  width: 100%;
+  text-align: left;
+  margin-top: 5px;  
+  margin-bottom: 0px;
+}
+
+#descriptionExtensions{
+  color: #C0C0C0;
+  font-size: 11px;  
+}
+
+#saveChangesModalCrop{
+  margin-right: 10px
+}
+
+#errorMessageImageCrop{
+  font-size: 12px;  
+  color: #CE0000;
+  display: none;
+}

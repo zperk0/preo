@@ -36,8 +36,8 @@ module.exports = function(grunt) {
         },
         src: ['js/foundation/foundation.js','js/foundation/foundation.alerts.js','js/foundation/foundation.cookie.js','js/foundation/foundation.dropdown.js',
               'js/foundation/foundation.forms.js', 'js/foundation/foundation.placeholder.js','js/foundation/foundation.reveal.js','js/foundation/foundation.section.js',
-              'js/foundation/foundation.tooltips.js','js/foundation/foundation.topbar.js','js/foundation/foundation.datepicker.js','js/foundation/foundation.abide.js', 'js/foundation/foundation.orbit.js',
-              'js/jquery.noty-full-min.js','js/jsColor/jscolor.js','js/form.js','js/tweet.js','js/timepicker.js','js/jquery-ui.min.js',
+              'js/foundation/foundation.tooltips.js','js/foundation/foundation.topbar.js','js/foundation/foundation.datepicker.js','js/foundation/foundation.abide.js', 'js/foundation/foundation.orbit.js', 'js/foundation/foundation.clearing.js',
+              'js/jquery.noty-full-min.js','js/jsColor/jscolor.js','js/form.js','js/tweet.js','js/timepicker.js','js/jquery-ui.min.js', 'js/croppic.js', 'js/croppicPreoday.js',
               'js/autoNumeric.js','js/multi-select.js','js/tableSlide.js','js/js-actual.js','js/googleplus.js','bower_components/gridster/dist/jquery.gridster.min.js',
               'bower_components/moment/moment.js','bower_components/highcharts/highcharts.js','js/jquery.shapeshift.js','bower_components/underscore/underscore.js',
               'js/preoabide.js','js/general.js'],
@@ -83,7 +83,7 @@ module.exports = function(grunt) {
     },
     cssmin: {
       minify: {              
-        src: ['css/normalize.css', 'css/foundation.css', 'css/jquery.gridster.min.css','bower_components/select2/select2.css','css/app.css'],
+        src: ['css/normalize.css', 'css/foundation.css', 'css/jquery.gridster.min.css','bower_components/select2/select2.css','css/app.css', 'css/croppic.css'],
         dest: 'css/all_css.min.css',        
       }
     },

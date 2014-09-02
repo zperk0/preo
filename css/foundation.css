@@ -3446,6 +3446,10 @@ label.error {
     font-weight: bold;
     cursor: pointer; }
 
+    .reveal-modal.xsmall {
+      margin-left: -337px;
+      width: 675px; }    
+
 @media only screen and (min-width: 768px) {
   .reveal-modal {
     padding: 1.875em;

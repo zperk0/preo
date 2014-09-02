@@ -4,6 +4,24 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
+	require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/uploadFileMenuItem.php'); //uploadFile 
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/SystemStatic.php');
+
+
+	function getImagePath(){
+		$path = "";
+			if(isset($_SERVER['PREO_UPLOAD_PATH']))
+			{
+				$path = '/' . $_SERVER['PREO_UPLOAD_PATH'];				
+			}
+			else
+			{
+				$path = '/tmp/upload/';				
+			}
+		return $path;
+	}
+
+	
 	
 	//1 - if delete, then remove insert,edit
 	//2 - if insert, then remove edit
@@ -23,6 +41,7 @@
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	
 	$newIDs = array(); //store info that updates the page post-call
+	$newImages = array();
 	
 	//Parse JSON object from JS
 	$menu = json_decode(file_get_contents('php://input'),true);
@@ -201,6 +220,20 @@
 			{
 				if(!preg_match('/i$/',$item['id'])) //skip unsaved items (123i)
 				{
+					$curlResult = callAPI('GET', $apiURL."itemimages/$item_id", false, $apiAuth);
+					$Image = json_decode($curlResult,true);
+
+					if ( $Image ) {
+						$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "" );
+
+							//kill menu
+						$curlResult = callAPI('DELETE', $apiURL."itemimages/$item_id", false, $apiAuth); //menu deleted
+						if ( isset($Image['imageThumb']) ) {
+							unlink( $PREO_UPLOAD_ROOT . $Image['imageThumb'] );	
+						}
+						unlink( $PREO_UPLOAD_ROOT .  $Image['image'] );
+					}
+
 					foreach($item['modifiers'] as $modifier)
 					{
 						$modifier_id = $modifier['id'];
@@ -244,12 +277,37 @@
 				$curlResult = callAPI('POST', $apiURL."items", $jsonData, $apiAuth); //item created
 				$result 	= json_decode($curlResult,true);
 				
+
 				//save old - new id relationship
 				$newIDs['item'.$item_id] = 'item'.$result['id'];
+				$newImages['item' . $item_id] = array();
 				
 				//New item ID
+				$oldItemId = $item_id;
 				$item_id 	= $result['id'];
 				$item['id'] = $item_id; //update item-id in JSON
+
+				if ( isset($item['images']) ) {
+					$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "/menuitem/" );
+					foreach ($item['images'] as $Image) {
+						if ( isset($Image['cropped']) && $Image['cropped'] ) {
+							// cropImage( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'], $PREO_UPLOAD_ROOT . 'fix/' . $Image['image'], $Image['w'], $Image['h'], $Image['x'], $Image['y'], 99 );
+
+							$newImage = explode('/', $Image['url']);
+							$newImage = $newImage[ count($newImage) - 1 ];
+							copy($PREO_UPLOAD_ROOT . '/temp/' . $newImage, $PREO_UPLOAD_ROOT . '/fix/' . $newImage);
+							unlink($PREO_UPLOAD_ROOT . '/temp/' . $newImage);
+
+							$data = array();
+							$data['image'] = getImagePath().'menuitem/fix/' . $newImage;
+							$data['itemId'] = $item_id;
+							$jsonData 	= json_encode($data);
+							$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
+							$result 	= json_decode($curlResult,true);
+							$newImages['item' . $oldItemId][] = array('id' => 'item' . $item_id, 'replace' => true);
+						}
+					}
+				}
 				
 				//remove insert, edit tags for the item!
 				$item['insert'] = false;
@@ -261,7 +319,31 @@
 				$jsonData 	= json_encode($data);
 				$curlResult = callAPI('PUT', $apiURL."items/$item_id", $jsonData, $apiAuth); //item edited
 				$result 	= json_decode($curlResult,true);
-								
+
+				if ( !isset($newImages['item' . $item_id]) ) {
+					$newImages['item' . $item_id] = array();
+				}
+				if ( isset($item['images']) ) {
+					$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "/menuitem/" );
+					foreach ($item['images'] as $Image) {
+						if ( isset($Image['cropped']) && $Image['cropped'] ) {
+							// cropImage( $PREO_UPLOAD_ROOT . 'temp/' . $Image['image'], $PREO_UPLOAD_ROOT . 'fix/' . $Image['image'], $Image['w'], $Image['h'], $Image['x'], $Image['y'], 99 );
+
+							$newImage = explode('/', $Image['url']);
+							$newImage = $newImage[ count($newImage) - 1 ];
+							copy($PREO_UPLOAD_ROOT . '/temp/' . $newImage, $PREO_UPLOAD_ROOT . '/fix/' . $newImage);
+							unlink($PREO_UPLOAD_ROOT . '/temp/' . $newImage);
+
+							$data = array();
+							$data['image'] = getImagePath().'menuitem/fix/' . $newImage;
+							$data['itemId'] = $item_id;
+							$jsonData 	= json_encode($data);
+							$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
+							$result 	= json_decode($curlResult,true);
+							$newImages['item' . $item_id][] = $result['id'];							
+						}
+					}
+				}
 				//remove edit tag for the item!
 				$item['edit'] 	= false;
 			}
@@ -390,7 +472,6 @@
 			}
 		}
 	}
-	
 	//echo var_export($menu);
 	
 	if(empty($curlResult)) $curlResult = '[{"status" : 200}]';
@@ -402,6 +483,7 @@
 	$newJSON 			= array();
 	$newJSON['result'] 	= json_decode($curlResult,true); //make it an array
 	$newJSON['update']	= $newIDs; //add array of new values
+	$newJSON['images'] 	= $newImages;
 	$newJSON 			= json_encode($newJSON); //back to JSON
 	
 	echo $newJSON; //sending a JSON via ajax 

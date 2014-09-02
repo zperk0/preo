@@ -134,6 +134,12 @@ RewriteRule ^.*$ /newMenu.php [L]
 RewriteCond %{REQUEST_URI} ^/deleteMenu$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_menuDelete.php [L]
 
+RewriteCond %{REQUEST_URI} ^/deleteImageItem$ [NC]
+RewriteRule ^.*$ /code/dashboard/do_imageItemDelete.php [L]
+
+RewriteCond %{REQUEST_URI} ^/uploadMenuItemImage$ [NC]
+RewriteRule ^.*$ /code/dashboard/doUploadMenuItemImage.php [L]
+
 RewriteCond %{REQUEST_URI} ^/saveHours$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_nonEventConfig.php [L]
 

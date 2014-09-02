@@ -134,6 +134,7 @@
 							</div>
 						</td>		
 						<td class="menuTDTools colMenuItems">
+							<button type="button" class="menuTableButtons itemUpload" 		title="<?echo _("Upload image");?>"							><i class="pd-upload"></i></button>						
 							<button type="button" class="menuTableButtons itemSave"				title="<?echo _("Collapse");?>"						><i class="pd-up"></i></button>
 							<button type="button" class="menuTableButtons itemEdit hide" 		title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
 							<button type="button" class="menuTableButtons sortHandle"			title="<?echo _("Reorder");?>"						><i class="pd-move"></i></button>
@@ -271,11 +272,19 @@
 											</div>
 										</td>
 										<td class="menuTDTools colMenuItems">
+											<?php
+												$attr = ''; 
+												if ( isset($item['images']) && count($item['images']) ) {
+													$attr = 'data-image-url = "' . $item['images'][0]['image'] . '"';
+												}
+											?>
+											<button type="button" class="menuTableButtons itemUpload" 	<?php echo $attr ?>	title="<?echo _("Upload image");?>"							><i class="pd-upload"></i></button>										
 											<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Collapse");?>"							><i class="pd-up"></i></button>
 											<button type="button" class="menuTableButtons itemEdit" 				title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
 											<button type="button" class="menuTableButtons sortHandle"				title="<?echo _("Reorder");?>"							><i class="pd-move"></i></button>
 											<button type="button" class="menuTableButtons itemDuplicate" 			title="<?echo _("Duplicate");?>" id="dup<?echo ($iKey+1);?>_section<?echo ($sKey+1);?>"	><i class="pd-copy"></i></button>
 											<button type="button" class="menuTableButtons secondary itemDelete" 	title="<?echo _("Delete");?>"						><i class="pd-delete"></i></button>
+
 										</td>
 									</tr>
 									<?if(isset($item['modifiers']) && count($item['modifiers'])){
@@ -399,6 +408,51 @@
 	</div>
 </form>
 
+<div id="modalImagesCrop" class="reveal-modal modal-preoday xsmall" data-options="closeOnBackgroundClick:false" data-reveal>	
+	<a class="close-reveal-modal">×</a>
+	<form action="" method="POST" class="formImageMenuItem" enctype="multipart/form-data">
+		<div class="header-modalCrop spacing-modalCrop">
+			<header class="title-notification" id="title-modalCrop">Name of item</header>
+			<button type="button" class="doImageMenuItem preodayButton pull-left" id="addPicture" title="<?echo _("UPLOAD");?>">ADD PICTURE</button>
+			<input type="file" name="picFile[]" accept="image/png;image/jpg;image/jpeg" class="hide picImageMenuItem" />	
+			<p id="descriptionExtensions">JPG, PNG (Max. file size 5mb)</p>
+			<p id="errorMessageImageCrop"></p>
+		</div>
+		
+		<div class="content-modal">
+			<div id="croppic"></div>
+			<div class="progressImageCrop">
+			    <div class="barImageCrop"></div >
+			    <div class="percentImageCrop">0%</div>
+			</div>
+		</div>
+		
+		<div class="footer-modalCrop spacing-modalCrop">
+			<button class="preodayButton pull-left" type="button" id="saveChangesModalCrop">SAVE CHANGES</button>
+			<button class="preodayButton pull-left" type="button" id="cancelModalImageCrop">CANCEL</button>
+		</div>
+	</form>
+</div>
+
+<div class="loading" id="loadingMenuConfig">
+  <div class="background-loading"></div>
+  <div class="loading-content">
+    <div class="spinner">
+      <div class="b1 se"></div>
+      <div class="b2 se"></div>
+      <div class="b3 se"></div>
+      <div class="b4 se"></div>
+      <div class="b5 se"></div>
+      <div class="b6 se"></div>
+      <div class="b7 se"></div>
+      <div class="b8 se"></div>
+      <div class="b9 se"></div>
+      <div class="b10 se"></div>
+      <div class="b11 se"></div>
+      <div class="b12 se"></div>
+    </div>
+  </div>
+</div>  
 
 <script type="text/javascript">
 

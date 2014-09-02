@@ -610,7 +610,182 @@ $(document).ready(function() {
 			}
 		}
 	};
+
 	$("#logoUpForm").ajaxForm(options);
+
+	// images of item for uploader
+	var imagesMenu = {};
+
+	var $modalImagesCrop = $('#modalImagesCrop');
+	var $barImageCrop = $('.barImageCrop');
+	var $percentImageCrop = $('.percentImageCrop');
+	var $progressImageCrop = $('.progressImageCrop');
+	var $imageCrop = $('#imageCrop');
+	var $titleModalCrop = $('#title-modalCrop');
+	var $saveChangesModalCrop = $('#saveChangesModalCrop');
+	var $cancelModalImageCrop = $('#cancelModalImageCrop');
+	var $addPicture = $('#addPicture');
+	var $errorMessageImageCrop = $('#errorMessageImageCrop');
+
+	var lastImageUpload = {};
+	var cropperInstance = null;
+
+	$(document).on('click', '#cancelModalImageCrop', function(){
+
+		if ( cropperInstance.removedImage ) {
+			cropperInstance.removedImage = false;
+			cropperInstance.croppedImg.show();
+			cropperInstance.cropControlRemoveCroppedImage.show();
+			$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+		}
+
+		$modalImagesCrop.foundation('reveal', 'close');
+	})
+
+	$modalImagesCrop.on('closed', function(){
+		cropperInstance.destroy();
+	});
+
+	var removeImage = function(){
+		cropperInstance.removedImage = false;
+		var idItem = cropperInstance.idItem;
+		var image = imagesMenu[idItem];
+
+		if ( image && image[0].saved ) {
+			$.post('/deleteImageItem', {idItem: idItem.replace('item', '')})
+				.done(function(){
+					imagesMenu[idItem] = null;
+				})
+				.fail(function(){
+					noty({
+					  type: 'error',  layout: 'topCenter',
+					  text: 'Error for delete image'
+					});
+				});
+		} else {
+			imagesMenu[idItem] = null;
+		}
+
+		$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+		$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');		
+	};
+
+	$(document).on('click', '#saveChangesModalCrop', function(){
+
+		if ( cropperInstance.removedImage ) {
+			removeImage();	
+		} else {
+			if ( lastImageUpload ) {
+				imagesMenu[lastImageUpload.idItem] = [{
+					cropped: true,
+					url: lastImageUpload.url
+				}]
+			}
+		}
+
+		$modalImagesCrop.foundation('reveal', 'close');		
+	})
+
+	$(document).on('click', '.itemUpload', function(){
+
+		var $table = $(this).closest('table');
+		var $input = $table.find('input[name^=iName]');		
+
+		var imageUrl = $(this).data('image-url');
+		var idItem = $input.data('id');
+
+		if ( imageUrl ) {
+			if ( !imagesMenu.hasOwnProperty(idItem) ) {
+				imagesMenu[idItem] = [{
+					saved: true,
+					cropped: false,
+					url: imageUrl
+				}]
+			}
+		}
+
+		$modalImagesCrop.css('top', $(window).scrollTop());
+
+		$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+
+		$titleModalCrop.text($input.val());
+
+		lastImageUpload = null;
+
+		cropperInstance = new Croppic('croppic', {
+			zoomFactor:10,
+			doubleZoomControls:true,			
+			customUploadButtonId: 'addPicture',
+			uploadUrl: '/uploadMenuItemImage',
+			cropUrl: '/uploadMenuItemImage',
+			onBeforeImgUpload: function(){
+/*				$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+				$cancelModalImageCrop.addClass('secondary').attr('disabled', 'disabled');*/
+				//$addPicture.addClass('secondary').attr('disabled', 'disabled');
+				if ( cropperInstance.cropControlRemoveCroppedImage instanceof jQuery ) {
+					cropperInstance.cropControlRemoveCroppedImage.trigger('click');
+				}
+				removeImage();
+	            var percentVal = '0%';
+	            $barImageCrop.width(percentVal);
+	            $percentImageCrop.html(percentVal);
+	            $progressImageCrop.show();
+			},
+			onAfterImgUpload: function(){
+				if ( this.hasOwnProperty('status') && this.status === 'error' ) {
+					$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
+					//$addPicture.removeClass('secondary').removeAttr('disabled');
+					$errorMessageImageCrop.text(this.message).show();
+				} else {
+					$errorMessageImageCrop.hide();
+				}
+
+				$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
+				$progressImageCrop.hide();
+			},
+			onBeforeImgCrop: function(){
+	            var percentVal = '0%';
+	            $barImageCrop.width(percentVal);
+	            $percentImageCrop.html(percentVal);
+	            $progressImageCrop.show();
+				// $cancelModalImageCrop.addClass('secondary').attr('disabled', 'disabled');
+			},
+			onAfterImgCrop:		function(){ 
+				lastImageUpload = {
+					saved: false,
+					idItem: this.idItem,
+					url: this.croppedImg.attr('src')
+				};
+
+				$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
+				$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
+				$progressImageCrop.hide();
+			}
+		});
+		
+		cropperInstance.idItem = idItem;
+		cropperInstance.onUploadProgress = function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            $barImageCrop.width(percentVal);
+            $percentImageCrop.html(percentVal);
+        };
+        cropperInstance.onRemoveCroppedImage = function(  ) {
+			$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
+			$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
+			//$addPicture.addClass('secondary').attr('disabled', 'disabled');
+		};
+
+		if ( imagesMenu.hasOwnProperty(idItem) && imagesMenu[idItem] ) {
+			cropperInstance.destroy();			
+			cropperInstance.obj.append('<img class="croppedImg" src="'+imagesMenu[idItem][0].url+'">');			
+			cropperInstance.croppedImg = cropperInstance.obj.find('.croppedImg');
+			cropperInstance.init();
+
+			//$addPicture.addClass('secondary').attr('disabled', 'disabled');
+		}
+
+		$modalImagesCrop.foundation('reveal', 'open');
+	});
 	
 	//ajax form upload
 	var optionsBG = { 
@@ -729,13 +904,7 @@ $(document).ready(function() {
 		var content = $(this).val();
 		$("#subHeading").html(content);
 	});
-	
-	/* $("#textColour").minicolors({
-		change: function(hex, opacity) {
-			//alert(hex);
-		}
-	}); */
-	
+
 	$(".visibleUpload, #logoReset").on('click', function() {
 		$(".visibleUpload").slideToggle();
 		$(".hiddenUpload").slideToggle();
@@ -756,6 +925,26 @@ $(document).ready(function() {
 			$("#bgFile").click();
 	});
 	
+	var activeUploadImageItem = function( $doImageMenuItem, $picImageMenuItem ) {
+		$doImageMenuItem.on('click', function() {
+			var $this = $(this);
+
+			if($this.siblings(".picImageMenuItem").val())
+			{ 
+				$this.parent(".formImageMenuItem").submit();
+				$this.siblings(".picImageMenuItem").val('');
+			}
+			else
+				$this.siblings(".picImageMenuItem").click();
+		});
+		
+		$picImageMenuItem.on('change', function(){
+			$(this).siblings(".doImageMenuItem").click();
+		});	
+	}
+
+	activeUploadImageItem($(".doImageMenuItem"), $(".picImageMenuItem"));
+
 	$("#doLogoUp").on('click', function() {
 		if($("#picFile").val())
 		{ 
@@ -943,23 +1132,6 @@ $(document).ready(function() {
 		$ele.find('input[name^=oName], input[name^=oPrice], input[name^=oVisi]').each(function() {
 			$(this).removeAttr('required');
 		});
-		
-/*		if( ($ele.prev().prev().hasClass('subHeaderTR')) && ( ($ele.next().hasClass('subHeaderTR')) || ($ele.next().hasClass('xtraModTR')) ) )
-		{	
-			//add data-attribute
-			$ele.prev().prev('.subHeaderTR').find('input[name^=iMod]').attr('data-delete', true);
-			$ele.prev().prev('.subHeaderTR').find('input[name^=iMod]').data('delete', true);
-			//remove required
-			$ele.prev().prev('.subHeaderTR').find("input[name^=iMod], select[name^=iModType]").each(function() {
-				$(this).removeAttr('required');
-			});
-			
-			$ele.prev().prev('.subHeaderTR').hide();
-			$ele.prev().hide();
-			
-			
-			$("#"+itemID+"_modCountAct").val(parseInt($("#"+itemID+"_modCountAct").val())-1);
-		}*/
 		
 		//bye-bye
 		$(this).parents("tr:first").hide();
@@ -1229,7 +1401,6 @@ $(document).ready(function() {
 			$newTab.find('.subHeaderTR').remove();
 			$newTab.find('.optionTR').remove();
 		}
-		
 			$newTab.addClass('table'+section);
 		
 		//replace ids with incremented value and make value = default value
@@ -1346,6 +1517,8 @@ $(document).ready(function() {
 		$($newTab).slideRow('down');
 		if($newTab.find('.itemEdit').is(':visible')) $newTab.find('.itemEdit').trigger('click');
 		
+		activeUploadImageItem($newTab.find('.doImageMenuItem'), $newTab.find('.picImageMenuItem'));
+
 		// $(document).foundation('abide', 'events');
 		
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
@@ -1849,11 +2022,13 @@ $(document).ready(function() {
 	var isSubmitForm = true;
 
 	var $loadingContent = $('#loadingConfig');
+
+	var postImage = 0;
 	
 	$("#menuConfigForm").on('valid', function (event) {
 		var newSubmitTime = new Date().getTime();
 
-		if(  isSubmitForm && (newSubmitTime - submitTime) > 400)
+		if(  isSubmitForm && (newSubmitTime - submitTime) > 400 && !postImage )
 		{
 
 			$loadingContent.show();
@@ -1952,7 +2127,15 @@ $(document).ready(function() {
 								
 							menuSectionOneNivelItem['menuId'] 		= menu['id'];
 							menuSectionOneNivelItem['venueId'] 		= $('#venueID').val();
-							menuSectionOneNivelItem['sectionId'] 	= menuSecionOneNivel['id'];						
+							menuSectionOneNivelItem['sectionId'] 	= menuSecionOneNivel['id'];
+							
+							if ( !$inputName.data('delete') ) {
+								menuSectionOneNivelItem['images'] 		= imagesMenu[iID];
+
+								if( !menuSectionOneNivelItem['edit'] && !menuSectionOneNivelItem['insert'] && !menuSectionOneNivelItem['delete'] ) {
+									menuSectionOneNivelItem['edit'] = true;
+								}
+							}
 							//MODIFIERS
 							menuSectionOneNivelItem['modifiers'] = {};
 
@@ -2075,7 +2258,7 @@ $(document).ready(function() {
 					secCounter++;
 				}
 			};
-		console.log(menu);
+		
 			menuData = JSON.stringify(menu);
 		
 			//console.log(menu);
@@ -2115,6 +2298,7 @@ $(document).ready(function() {
 					else
 					{	
 						newIDs = dataArray['update'];
+						var imagesIDS = dataArray['images'];
 
 						if(Object.keys(newIDs).length > 0) //this is an object not array so length and stuff works differently
 						{
@@ -2130,6 +2314,23 @@ $(document).ready(function() {
 								$inputAjax.data('id',value); //find by value and update! (use value from top as index as its already applied!)
 							}
 							});
+						}
+
+						if ( Object.keys(imagesIDS).length > 0 ) {
+							$.each(imagesIDS, function( index, value ){
+								if ( value && value.length ) {
+									if ( value[0] instanceof Object ) {
+										if (value[0].hasOwnProperty('replace')) {
+											imagesMenu[value[0].id] = [{
+												saved: true,
+												url: imagesMenu[index][0].url,
+												cropped: true
+											}]
+										}
+									}
+									imagesMenu[index][0].saved = true;
+								}
+							})
 						}
 						
 						noty({ type: 'success', text: _tr('Menu configuration has been saved!') });
@@ -2597,7 +2798,7 @@ $(document).ready(function() {
 	$("#eventConfigForm").on('valid', function (event) {
 		//prevent multiple submissions
 		var newSubmitTime = new Date().getTime();
-		console.log('here',newSubmitTime,submitTime);
+		
 		if( (newSubmitTime - submitTime) > 300 )
 		{
 			//lock all
@@ -2606,7 +2807,6 @@ $(document).ready(function() {
 					$(this).trigger('click');
 			});
 			
-			console.log('here')
 			//enable dropdowns or we wont get the values!
 			$(".eventMenuSingleSelect").multiselect('enable');
 			
@@ -3463,7 +3663,6 @@ $(document).ready(function() {
 	}
 	
 	$("#nonEventConfigForm").on('invalid', function (event) {
-		console.log('here ho');
 		noty({
 		  type: 'error',  layout: 'topCenter',
 		  text: _tr("We still need some more information. Don't forget to fill out the remaining days of the week!") /*text: dataArray['message']*/

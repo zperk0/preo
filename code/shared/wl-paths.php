@@ -1,5 +1,4 @@
 <?php 
-
 	//PATHS
 	if(isset($_SERVER['PREO_UPLOAD_PATH']))
 	{
@@ -11,6 +10,8 @@
 		$wPath = '/tmp/upload/'.'wallpaper/';
 		$lPath = '/tmp/upload/'.'logo/';
 	}
+
+	
 	?>
 	<script type="text/javascript">
 		globalWPath = "<?echo $wPath;?>";
