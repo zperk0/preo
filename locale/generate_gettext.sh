@@ -3,11 +3,13 @@ echo =======================START=======================
 
 #
 DIR=$(dirname $0)
-ROOT=$(dirname $DIR)
 
 POT=$DIR/messages.pot
 
-pushd $ROOT
+pushd $DIR
+cd ..
+
+ROOT=$(pwd)
 
 grunt jstranslate
 
