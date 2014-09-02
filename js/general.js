@@ -2182,7 +2182,7 @@ $(document).ready(function() {
 		//new item or duplicate?
 		var dup = 0;
 		if($(this).hasClass("eventDuplicate")) dup = 1;
-		
+		var $oldTab;
 		//get table event number
 		$curTable = $(this).closest('table');
 		var eventID = $curTable.attr('id');
@@ -2206,6 +2206,7 @@ $(document).ready(function() {
 			$("#"+eventID+"_optionCountAct").after($newOCount);
 		
 			//clone specific table
+			$oldTab = $("#"+eventID);			
 			$newTab = $("#"+eventID).clone(false);
 			$newTab.attr('id','event'+newCount);
 		}
@@ -2249,7 +2250,7 @@ $(document).ready(function() {
 		if(dup) $newTab.find(".ui-multiselect").remove();
 		
 		//Replace ids with incremented value and make value = default value + add multiselect
-		$newTab.find(".optionTR select").each(function() {
+		$newTab.find(".optionTR .eventTDCollection select").each(function() {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
@@ -2260,6 +2261,23 @@ $(document).ready(function() {
 			   multiple: false,
 			   header: false,
 			   noneSelectedText: _tr("Choose a Collection Slot"),
+			   selectedList: 1,
+			   minWidth: 342
+			}); 
+		});
+
+		//Replace ids with incremented value and make value = default value + add multiselect
+		$newTab.find(".optionTR .eventTDOutletLocation select").each(function() {
+			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			if ($oldTab) $(this).val($oldTab.find(".optionTR .eventTDOutletLocation select").val());
+			var tempName = $(this).attr('name');			
+			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);			
+			newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");			
+			$(this).attr('name', newName);
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: _tr("Choose Event Location"),
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
@@ -2382,6 +2400,16 @@ $(document).ready(function() {
 			   minWidth: 342
 			}); 
 		});
+
+		$curItem.find("td.eventTDOutletLocation select").each(function() {
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: _tr("Choose Event Location"),
+			   selectedList: 1,
+			   minWidth: 342
+			}) ; 
+		});
 	});
 	
 	$(document).on("click", ".eventDelete", function() {
@@ -2472,10 +2500,17 @@ $(document).ready(function() {
 		
 	});
 	
-	$(".eventMenuSingleSelect").multiselect({
+	$(".eventMenuSingleSelect.selectCollectionSlot").multiselect({
 	   multiple: false,
 	   header: false,
 	   noneSelectedText: _tr("Choose a Collection Slot"),
+	   selectedList: 1,
+	   minWidth: 342
+	}); 
+	$(".eventMenuSingleSelect.selectOutletLocation").multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: _tr("Choose Event Location"),
 	   selectedList: 1,
 	   minWidth: 342
 	}); 
@@ -2515,7 +2550,7 @@ $(document).ready(function() {
 			   selectedList: 1,
 			   minWidth: 342
 			}); 
-		});
+		});	
 		
 		//replace ids with incremented value and make value = default value
 		$newRow.find("input").each(function() {
@@ -2562,7 +2597,7 @@ $(document).ready(function() {
 	$("#eventConfigForm").on('valid', function (event) {
 		//prevent multiple submissions
 		var newSubmitTime = new Date().getTime();
-		
+		console.log('here',newSubmitTime,submitTime);
 		if( (newSubmitTime - submitTime) > 300 )
 		{
 			//lock all
@@ -2571,6 +2606,7 @@ $(document).ready(function() {
 					$(this).trigger('click');
 			});
 			
+			console.log('here')
 			//enable dropdowns or we wont get the values!
 			$(".eventMenuSingleSelect").multiselect('enable');
 			
@@ -3427,6 +3463,7 @@ $(document).ready(function() {
 	}
 	
 	$("#nonEventConfigForm").on('invalid', function (event) {
+		console.log('here ho');
 		noty({
 		  type: 'error',  layout: 'topCenter',
 		  text: _tr("We still need some more information. Don't forget to fill out the remaining days of the week!") /*text: dataArray['message']*/
