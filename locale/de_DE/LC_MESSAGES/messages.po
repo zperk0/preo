@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-02 18:20+0100\n"
+"POT-Creation-Date: 2014-09-02 18:51+0100\n"
 "PO-Revision-Date: 2014-06-16 13:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,6 +47,7 @@ msgid "Inv no."
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/billingHistory.php:11
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:133
 #, fuzzy
 msgid "Date"
 msgstr "Datum?"
@@ -99,6 +100,7 @@ msgstr "Ã„NDERUNGEN SPEICHERN"
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/password.php:26
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/payment.php:44
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/profile.php:51
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:88
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:231
 msgid "CANCEL"
 msgstr ""
@@ -214,6 +216,7 @@ msgid "Please type your last name.(max 100chars)"
 msgstr "Bitte geben Sie Ihren Nachnamen ein (max. 100 Zeichen). "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/profile.php:23
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:123
 #, fuzzy
 msgid "Email Address"
 msgstr "Adresse des Unternehmens"
@@ -368,15 +371,18 @@ msgid "Metrics"
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/kyc/index.php:26
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:95
 msgid "Stock"
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/kyc/index.php:27
 #: /Users/scott/dev/workspaces/preoday/webapp/code/kyc/partials/customers.php:8
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:93
 msgid "Customers"
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/kyc/index.php:28
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:94
 msgid "Reports"
 msgstr ""
 
@@ -433,6 +439,7 @@ msgid "CSV"
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/kyc/partials/customers.php:26
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:122
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:50
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:30
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:92
@@ -442,6 +449,7 @@ msgid "Name"
 msgstr "Name"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/kyc/partials/customers.php:33
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:126
 #, fuzzy
 msgid "Total Spent"
 msgstr "Gesamtumsatz"
@@ -488,6 +496,7 @@ msgid "Live Stream"
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/kyc/partials/stream.php:21
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:115
 msgid "Total"
 msgstr ""
 
@@ -1053,17 +1062,589 @@ msgstr ""
 msgid "Payment method updated succesfully!"
 msgstr "Zahlungsmethode"
 
-#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:181
-#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:180
-#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:179
-#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:176
-#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:175
-msgid ">1?"
-msgstr ""
-
-#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:87
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:73
 msgid "Your outstand payment has been paid. Your card was charged <b>&pound;"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:74
+msgid "</b> and your premium features will remain active."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:75
+msgid "OK"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:76
+msgid ""
+"This Premium Feature will remain active on your account until the end of the "
+"current billing cycle. You can cancel this uninstall at any time. If you "
+"wish to reinstall this Premium Feature after it has been deactivated, simply "
+"click on the <span>reinstall</span> option."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:77
+#, fuzzy
+msgid "Are you sure you want to uninstall this Premium Feature?"
+msgstr ""
+"Sind Sie sicher, dass Sie diesen Nutzer lÃ¶schen mÃ¶chten? Alle Nutzerdaten "
+"werden bei diesem Vorgang gelÃ¶scht!"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:78
+msgid "UNINSTALL"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:79
+msgid ""
+"Your free trial will be cancelled immediately and you will no longer have "
+"access to this feature."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:80
+#, fuzzy
+msgid ""
+"Are you sure you want to cancel this Free Trial? This action cannot be "
+"undone?"
+msgstr ""
+"Sind Sie sicher, dass sie diesen Abschnitt lÃ¶schen mÃ¶chten? Alle Artikel "
+"und Optionen werden bei diesem Vorgang gelÃ¶scht. "
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:81
+msgid ""
+"This Premium Feature is currently canceled. A new charge will be made to "
+"your card before reinstalling this feature."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:82
+#, fuzzy
+msgid "Are you sure you want to reinstall this Premium Feature?"
+msgstr ""
+"Sind Sie sicher, dass Sie diesen Nutzer lÃ¶schen mÃ¶chten? Alle Nutzerdaten "
+"werden bei diesem Vorgang gelÃ¶scht!"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:83
+msgid "REINSTALL"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:84
+msgid "Error"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:85
+msgid "PAYMENT METHOD"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:86
+#, fuzzy
+msgid "Your new Premium Feature is now live!"
+msgstr "Ihre App ist nun einsatzbereit!"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:87
+msgid "You can manage subscriptions from your account settings page."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:89
+#, fuzzy
+msgid "Please enter a discount code"
+msgstr "Bitte geben Sie einen Standortname ein. "
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:90
+msgid "Welcome to Know Your Customer"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:91
+msgid ""
+"From here you can view detailed reports and analytics about your customers "
+"and the transactions they make."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:92
+msgid "GET STARTED"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:96
+#, fuzzy
+msgid "Date Range"
+msgstr "Datum?"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:97
+msgid "Week"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:98
+#, fuzzy
+msgid "Month"
+msgstr "Dieser Monat"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:99
+#, fuzzy
+msgid "3 Months"
+msgstr "Dieser Monat"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:100
+#, fuzzy
+msgid "6 Months"
+msgstr "Dieser Monat"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:101
+msgid "Year"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:102
+#, fuzzy
+msgid "Total Customers"
+msgstr "Gesamtbestellungen"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:103
+msgid "Orders per Customer"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:104
+msgid "Average Order Value"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:105
+#, fuzzy
+msgid "Items Ordered"
+msgstr "verspÃ¤tete Bestellung"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:106
+msgid "Orders By Outlet"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:107
+msgid "Most Popular Items"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:108
+msgid "On the day"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:109
+msgid "In advance"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:110
+msgid "Time of Orders Placed"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:111
+msgid "Average order value (are"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:112
+msgid "New"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:113
+#, fuzzy
+msgid "Returning"
+msgstr "Wiederkehrende Nutzer"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:114
+msgid "Customers (Pi"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:116
+msgid "Customers (Ba"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:117
+#, fuzzy
+msgid " orders"
+msgstr "Gesamtbestellungen"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:118
+msgid "Number of Orders"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:119
+msgid "Menu Item Popularity"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:120
+#, fuzzy
+msgid "Revenue"
+msgstr "Gesamtumsatz"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:121
+#, fuzzy
+msgid "Date Joined"
+msgstr "Datum?"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:124
+msgid "Marketing"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:125
+#, fuzzy
+msgid "Date of Order"
+msgstr "verspÃ¤tete Bestellung"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:127
+msgid "% Increase"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:128
+msgid "% Decrease"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:129
+#, fuzzy
+msgid "Last Order"
+msgstr "verspÃ¤tete Bestellung"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:130
+#, fuzzy
+msgid "Item Name"
+msgstr "Nachname"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:131
+#, fuzzy
+msgid "Quantity Sold"
+msgstr "Menge"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:132
+#, fuzzy
+msgid "Day"
+msgstr "PreoDay"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:134
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shop/features.php:45
+msgid "Loyalty"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:135
+msgid "Other"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:136
+msgid "Offers"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:137
+msgid "Value Sold"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:138
+#, fuzzy
+msgid "New Customers"
+msgstr "Neue Nutzer"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:139
+msgid ""
+"Displays all new customers who have signed up, or had their first order, in "
+"the past two weeks."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:140
+msgid "Customers with zero orders"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:141
+msgid ""
+"Displays all customers who have signed up but have not yet placed any orders."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:142
+msgid "One Time Buyers"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:143
+msgid "Displays all customers who have placed only one order."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:144
+msgid "Most Frequent Buyers"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:145
+msgid "Displays top 50 customers who have placed the most number of orders."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:146
+msgid "Highest Spending Customers"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:147
+msgid "Displays top 50 customers who have the highest transactional spend."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:148
+msgid "Customers Increasing Orders"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:149
+msgid ""
+"Displays all customers who placed more orders this month than the previous "
+"month."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:150
+msgid "Customers Decreasing Orders"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:151
+msgid ""
+"Displays all customers who placed less orders this month than the previous "
+"month."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:152
+msgid "Customers Increasing Spend"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:153
+msgid ""
+"Displays all customers who spent more this month than the previous month."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:154
+msgid "Customers Decreasing Spend"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:155
+msgid ""
+"Displays all customers who spent less this month than the previous month."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:156
+#, fuzzy
+msgid "Sleeping Customers"
+msgstr "Wiederkehrende Nutzer"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:157
+msgid ""
+"Displays all customers who have previously made at least one order, but "
+"haven't ordered for 3 months."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:158
+msgid "Displays top 10 most popular items."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:159
+msgid "Item Popularity Increase"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:160
+msgid "Displays all items that sold more this month than last month."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:161
+msgid "Item Popularity Decrease"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:162
+msgid "Displays all items that sold less this month than last month"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:163
+msgid "Highest Grossing Days"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:164
+msgid "Display top 10 highest grossing days."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:165
+msgid "Lowest Grossing Days"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:166
+msgid "Display top 10 lowest grossing days."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:167
+msgid "Highest Order Days"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:168
+msgid "Display top 10 highest order days."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:169
+msgid "Lowest Order Days"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:170
+msgid "Display top 10 lowest order days."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:171
+msgid "Highest Grossing Hours"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:172
+msgid ""
+"Displays the accumulative total spent, broken down by 24 x 1 hour time slots."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:173
+msgid "Highest Order Hours"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:174
+msgid ""
+"Displays the accumulative number of orders, broken down by 24 x 1 hour time "
+"slots."
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:175
+msgid "years ago"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:176
+msgid "year ago"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:177
+#, fuzzy
+msgid "months ago"
+msgstr "Dieser Monat"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:178
+#, fuzzy
+msgid "month ago"
+msgstr "Dieser Monat"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:179
+msgid "days ago"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:180
+msgid "yesterday"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:181
+msgid "hours ago"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:182
+#, fuzzy
+msgid "hour ago"
+msgstr "Ihr Konto"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:183
+msgid "minutes ago"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:184
+msgid "minute ago"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:185
+msgid "seconds ago"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:186
+msgid "second ago"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:187
+msgid "Contact this customer regarding loyalty programmes"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:188
+msgid "Contact this customer with discounts and special offers"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:189
+msgid "Contact this customer with newsletters, research and marketing emails"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:190
+msgid "Successfully saved delivery settings."
+msgstr "Liefereinstellungen wurden erfolgreich gespeichert. "
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:191
+msgid "Your order is running 15 mins late"
+msgstr "Ihre Bestellung ist um 15 Min. im Verzug"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:192
+msgid "Late Order"
+msgstr "verspÃ¤tete Bestellung"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:193
+msgid "Your order is on its way"
+msgstr "Ihre Bestellung ist auf dem Weg"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:194
+msgid "En-route"
+msgstr "Unterwegs"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:195
+msgid "There is a problem with your order. Please call us"
+msgstr ""
+"Bei Ihrer Bestellung ist ein Problem aufgetreten. Bitte rufen Sie uns an"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:196
+msgid "Call us"
+msgstr "Bitte anrufen"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:197
+msgid "Your address is out of our delivery zone"
+msgstr "Ihre Adresse ist auÃŸerhalb unseres Liefergebiets "
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:198
+msgid "Out of zone"
+msgstr "AuÃŸerhalb des Liefergebiets"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:199
+msgid "Sorry, that item is out of stock"
+msgstr "Leider ist dieser Artikel nicht vorrÃ¤tig"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:200
+msgid "Out of stock"
+msgstr "Nicht vorrÃ¤tig"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:201
+msgid "Sorry, Your order has been rejected. Please call us"
+msgstr "Leider wurde Ihre Bestellung abgelehnt. Bitte rufen Sie uns an"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:202
+msgid "Email is invalid"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:203
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shop/shop.php:79
+msgid "BUY"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:204
+msgid " DAY FREE TRIAL"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:205
+msgid "START TRIAL"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:206
+msgid ""
+"You will be contacted shortly by a member of our team. You can manage "
+"subscriptions from your <a href='/accountSettings#/subscription'>account "
+"settings page.</a>"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:207
+msgid ""
+"Please add a payment method to your account in order to subscribe to Premium "
+"Features"
+msgstr ""
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:208
+#, fuzzy
+msgid "ADD CARD"
+msgstr "SPRACHE Ã„NDERN"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:209
+#, fuzzy
+msgid "Your card will be charged "
+msgstr "Ihr Konto"
+
+#: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:210
+msgid ""
+" for this transaction. <br/> You may cancel this Premium Feature at any time "
+"from your account settings page."
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shop/features.php:4
@@ -1140,10 +1721,6 @@ msgstr ""
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shop/features.php:44
 msgid ""
 "Keep customers coming back by offering them exclusive loyalty programmes."
-msgstr ""
-
-#: /Users/scott/dev/workspaces/preoday/webapp/code/shop/features.php:45
-msgid "Loyalty"
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shop/features.php:49
@@ -1313,10 +1890,6 @@ msgstr ""
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shop/shop.php:51
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shop/shop.php:80
 msgid "INSTALLED"
-msgstr ""
-
-#: /Users/scott/dev/workspaces/preoday/webapp/code/shop/shop.php:79
-msgid "BUY"
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shop/shop.php:102
@@ -4237,71 +4810,12 @@ msgstr "ANMELDEN"
 #~ msgstr "Allgemeine Einstellungen"
 
 #, fuzzy
-#~ msgid ""
-#~ "Are you sure you want to cancel this Free Trial? This action cannot be "
-#~ "undone?"
-#~ msgstr ""
-#~ "Sind Sie sicher, dass sie diesen Abschnitt lÃ¶schen mÃ¶chten? Alle "
-#~ "Artikel und Optionen werden bei diesem Vorgang gelÃ¶scht. "
-
-#, fuzzy
-#~ msgid "Are you sure you want to reinstall this Premium Feature?"
-#~ msgstr ""
-#~ "Sind Sie sicher, dass Sie diesen Nutzer lÃ¶schen mÃ¶chten? Alle "
-#~ "Nutzerdaten werden bei diesem Vorgang gelÃ¶scht!"
-
-#, fuzzy
-#~ msgid "Your new Premium Feature is now live!"
-#~ msgstr "Ihre App ist nun einsatzbereit!"
-
-#, fuzzy
-#~ msgid "Returning"
-#~ msgstr "Wiederkehrende Nutzer"
-
-#, fuzzy
 #~ msgid "Day of collection"
 #~ msgstr "Abholzeitraum auswÃ¤hlen"
 
 #, fuzzy
 #~ msgid "Before day of collection"
 #~ msgstr "FÃ¼r Lieferung und Abholung"
-
-#~ msgid "Your order is running 15 mins late"
-#~ msgstr "Ihre Bestellung ist um 15 Min. im Verzug"
-
-#~ msgid "Late Order"
-#~ msgstr "verspÃ¤tete Bestellung"
-
-#~ msgid "Your order is on its way"
-#~ msgstr "Ihre Bestellung ist auf dem Weg"
-
-#~ msgid "En-route"
-#~ msgstr "Unterwegs"
-
-#~ msgid "There is a problem with your order. Please call us"
-#~ msgstr ""
-#~ "Bei Ihrer Bestellung ist ein Problem aufgetreten. Bitte rufen Sie uns an"
-
-#~ msgid "Call us"
-#~ msgstr "Bitte anrufen"
-
-#~ msgid "Your address is out of our delivery zone"
-#~ msgstr "Ihre Adresse ist auÃŸerhalb unseres Liefergebiets "
-
-#~ msgid "Out of zone"
-#~ msgstr "AuÃŸerhalb des Liefergebiets"
-
-#~ msgid "Sorry, that item is out of stock"
-#~ msgstr "Leider ist dieser Artikel nicht vorrÃ¤tig"
-
-#~ msgid "Out of stock"
-#~ msgstr "Nicht vorrÃ¤tig"
-
-#~ msgid "Sorry, Your order has been rejected. Please call us"
-#~ msgstr "Leider wurde Ihre Bestellung abgelehnt. Bitte rufen Sie uns an"
-
-#~ msgid "Successfully saved delivery settings."
-#~ msgstr "Liefereinstellungen wurden erfolgreich gespeichert. "
 
 #, fuzzy
 #~ msgid "RETURN TO STORE"
