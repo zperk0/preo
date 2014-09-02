@@ -31,8 +31,19 @@
 		$curlResult = callAPI('DELETE', $apiURL."venues/".$_SESSION['venue_id']."/demo", $data, $apiAuth);
 		$_SESSION['venue_demoFlag'] = 1;
 	}
-	else //ask user whether live or demo or offline
-		$_SESSION['paymentMethodApproved'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
+	else {
+		//ask user whether live or demo or offline
+		$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
+		$data = array();
+		$data['liveFlag'] = true;
+		$data['demoFlag'] = false;
+		$jsonData = json_encode($data);
+		
+		$curlResult = callAPI('DELETE', $apiURL."venues/" . $_SESSION['venue_id'] . "/demo", $data, $apiAuth); //reset both flags (offline)
+		$curlResult = callAPI('PUT', $apiURL."venues/" . $_SESSION['venue_id'] . "/live", $data, $apiAuth); //go live!
+
+		$_SESSION['paymentMethodApproved'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';		
+	}
 	
 	if(isset($_SESSION['noLiveFlag']) && $_SESSION['noLiveFlag']) //go ahead with "else" from above
 	{
