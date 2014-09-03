@@ -249,9 +249,39 @@ function cropImage( $src, $dest, $sourceFolder, $destFolder, $imgInitW, $imgInit
 	$imginfo_array = getimagesize($src);   // returns a false if not a valid image file
 
 	$width = $imginfo_array[0];  
-	$height = $imginfo_array[1]; 	
+	$height = $imginfo_array[1]; 
 
-	if ( $width < $MAX_WIDTH || $imgW === 'NaN' ) {
+	if ( $width < $MAX_WIDTH || $height < $MAX_HEIGHT || $imgW === 'NaN' ) {
+		$aspect = $width / $height;
+
+		if ( $height > $MAX_HEIGHT ) {
+			$newHeight = $MAX_HEIGHT;
+			$newWidth = $newHeight / $aspect;
+
+			$name = explode('/', $dest);
+			$name = $name[count($name) - 1];
+			createThumbnail($src, $name, $dest, $newWidth, $newHeight, $quality);
+
+			return array(array(
+				"status" => 'success',
+				"url" => $destFolder
+			  ));			
+		}
+
+		if ( $width > $MAX_WIDTH ) {
+			$newWidth = $MAX_WIDTH;
+			$newHeight = $newWidth / $aspect;
+
+			$name = explode('/', $dest);
+			$name = $name[count($name) - 1];
+			createThumbnail($src, $name, $dest, $newWidth, $newHeight, $quality);
+
+			return array(array(
+				"status" => 'success',
+				"url" => $destFolder
+			  ));						
+		}
+
 		return array(array(
 			"status" => 'success',
 			"url" => $sourceFolder
