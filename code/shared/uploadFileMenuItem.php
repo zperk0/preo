@@ -258,16 +258,14 @@ function cropImage( $src, $dest, $sourceFolder, $destFolder, $imgInitW, $imgInit
 		  ));
 	}
 
-	$what = getimagesize($src);
-	switch(strtolower($what['mime']))
+	switch(strtolower($imginfo_array['mime']))
 	{
 	    case 'image/png':
-	        $img_r = imagecreatefrompng($src);
 			$source_image = imagecreatefrompng($src);
+			imagealphablending( $source_image, true );
 			$type = '.png';
 	        break;
 	    case 'image/jpeg':
-	        $img_r = imagecreatefromjpeg($src);
 			$source_image = imagecreatefromjpeg($src);
 			$type = '.jpeg';
 	        break;
@@ -275,24 +273,35 @@ function cropImage( $src, $dest, $sourceFolder, $destFolder, $imgInitW, $imgInit
 	}
 
 	$resizedImage = imagecreatetruecolor($imgW, $imgH);
+	if ( $type === '.png' ) {
+		imagesavealpha( $resizedImage, true );    			
+		imagealphablending( $resizedImage, false );
+		$transparent = imagecolorallocatealpha($resizedImage, 0, 0, 0, 127);
+		imagefill($resizedImage, 0, 0, $transparent);	
+	}
 	imagecopyresampled($resizedImage, $source_image, 0, 0, 0, 0, $imgW, 
 				$imgH, $imgInitW, $imgInitH);	
 	
 	
 	$dest_image = imagecreatetruecolor($cropW, $cropH);
-	imagecopyresampled($dest_image, $resizedImage, 0, 0, $imgX1, $imgY1, $cropW, 
-				$cropH, $cropW, $cropH);
+	if ( $type === '.png' ) {
+		imagesavealpha( $dest_image, true );    			
+		imagealphablending( $dest_image, false );
+		$transparent = imagecolorallocatealpha($dest_image, 0, 0, 0, 127);
+		imagefill($dest_image, 0, 0, $transparent);
+	}
+	imagecopyresampled($dest_image, $resizedImage, 0, 0, $imgX1, $imgY1, $cropW, $cropH, $cropW, $cropH);
 
     if($type == ".png")
     {
-	  imagepng($dest_image, $dest, $quality) or die(json_encode( array(
+	  imagepng($dest_image, $dest, 9) or die(json_encode( array(
 															'status' => 'error',
 															'message' => 'Error in save file'
 													)));
     }
     else
     {
-	  imagejpeg($dest_image, $dest, $quality) or die(json_encode( array(
+	  imagejpeg($dest_image, $dest, 90) or die(json_encode( array(
 															'status' => 'error',
 															'message' => 'Error in save file'
 													)));
