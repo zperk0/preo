@@ -251,7 +251,7 @@ function cropImage( $src, $dest, $sourceFolder, $destFolder, $imgInitW, $imgInit
 	$width = $imginfo_array[0];  
 	$height = $imginfo_array[1]; 	
 
-	if ( $width < $MAX_WIDTH ) {
+	if ( $width < $MAX_WIDTH || $imgW === 'NaN' ) {
 		return array(array(
 			"status" => 'success',
 			"url" => $sourceFolder
