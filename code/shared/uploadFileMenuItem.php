@@ -275,7 +275,7 @@ function cropImage( $src, $dest, $sourceFolder, $destFolder, $imgInitW, $imgInit
 	$resizedImage = imagecreatetruecolor($imgW, $imgH);
 	if ( $type === '.png' ) {
 		imagesavealpha( $resizedImage, true );    			
-		imagealphablending( $resizedImage, false );
+		imagealphablending( $resizedImage, true );
 		$transparent = imagecolorallocatealpha($resizedImage, 0, 0, 0, 127);
 		imagefill($resizedImage, 0, 0, $transparent);	
 	}
@@ -286,7 +286,7 @@ function cropImage( $src, $dest, $sourceFolder, $destFolder, $imgInitW, $imgInit
 	$dest_image = imagecreatetruecolor($cropW, $cropH);
 	if ( $type === '.png' ) {
 		imagesavealpha( $dest_image, true );    			
-		imagealphablending( $dest_image, false );
+		imagealphablending( $dest_image, true );
 		$transparent = imagecolorallocatealpha($dest_image, 0, 0, 0, 127);
 		imagefill($dest_image, 0, 0, $transparent);
 	}
