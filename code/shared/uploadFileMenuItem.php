@@ -285,7 +285,7 @@ function cropImage( $src, $dest, $sourceFolder, $destFolder, $imgInitW, $imgInit
 
     if($type == ".png")
     {
-	  imagepng($dest_image, $dest, $quality) or die(json_encode( array(
+	  imagepng($dest_image, $dest, 9) or die(json_encode( array(
 															'status' => 'error',
 															'message' => 'Error in save file'
 													)));
