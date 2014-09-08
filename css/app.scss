@@ -1593,7 +1593,7 @@ p.venueCode {
   .accordion {
     section {
       &:first-child {
-        border-top: 1px solid;
+        border-top: none;
       }
       border-bottom: 1px solid;
       margin-top: 10px;

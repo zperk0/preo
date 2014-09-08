@@ -49,12 +49,7 @@
 				<h1><?echo locale_number_format($_SESSION['venue_report_returningUsers'],0);?></h1>
 			</div>
 		</div>			
-		<div class="large-7 columns dashChangeApp">
-			<div class="row">
-				<div class="large-12 columns">
-					<h3 class="cyappHead"><?echo _("Change your app");?></h3>
-				</div>
-			</div>		
+		<div class="large-7 columns dashChangeApp">				
 			<div class="row">
 				<div class="large-12 columns">
 					<div class="accordion" data-options="one_up: false;" data-section="accordion">
