@@ -1,26 +1,24 @@
 angular.module('notification', ['ngSanitize'])
 
-.controller("confirmModalController",['$scope', '$modalInstance', 'data', 'deffered', '$http', '$templateCache', '$compile','$sce','$timeout', 
-  function( $scope, $modalInstance, data, deffered, $http, $templateCache, $compile,$sce,$timeout) {
+.controller("confirmModalController",['$scope', '$modalInstance', 'data', 'deffered', '$http', '$templateCache', '$compile','$sce','$timeout',
+  'AccountFeature','ACCOUNT_ID','VENUE_ID','USER_ID',
+  function( $scope, $modalInstance, data, deffered, $http, $templateCache, $compile,$sce,$timeout,AccountFeature,ACCOUNT_ID,VENUE_ID,USER_ID) {
 
         var templatePath = '/code/notification/templates/';
         
-        $scope.title = data.title || '';
-
-        if ( data.hasOwnProperty('templateFullUrl') && data.templateFullUrl ) {
+        $scope.title = data.title || '';        
+        $scope.discountCode = "";
+        $scope.appliedDiscount = false;
+        if ( data.hasOwnProperty('templateFullUrl') && data.templateFullUrl ) {          
             angular.extend($scope, data.scope);
-        } else if ( data.hasOwnProperty('templateUrl') && data.templateUrl ) {
-
+        } else if ( data.hasOwnProperty('templateUrl') && data.templateUrl ) {          
             $scope.templateUrl = data.templateUrl;
 
-            var load = function( html ) {
-              var scopeChild = $scope.$new();
-
-              angular.extend(scopeChild, data.scope);
-
+            var load = function( html ) {              
+              
               $timeout(function(){
-                angular.element('#contentPartial').html($compile(html)(scopeChild));
-              });
+                angular.element('#contentPartial').html($compile(html)($scope));
+              });              
             };
 
             var dataCache = $templateCache.get(templatePath + data.templateUrl);
@@ -69,13 +67,42 @@ angular.module('notification', ['ngSanitize'])
 
         $scope.send = function() {
             $modalInstance.close();
-            deffered.resolve({ acceptTerm: $scope.acceptTerm });
+            
+            var resolveObj = {
+              acceptTerm: $scope.acceptTerm
+            }
+            if ($scope.appliedDiscount){
+              resolveObj.discountCode = $scope.discountCode;
+            }
+
+            deffered.resolve(resolveObj);
         };
 
         $scope.cancel = function() {
             $modalInstance.close();
             deffered.reject({ acceptTerm: $scope.acceptTerm });
         };
+
+        $scope.validateDiscountCode = function(){
+            $scope.errorMsg = "";
+            if (!$scope.discountCode ){
+              $scope.errorMsg = _tr("Please enter a discount code");
+            }
+            AccountFeature.getPrice({accountId:ACCOUNT_ID,
+                                     featureId:$scope.featureId,
+                                     code:$scope.discountCode.toUpperCase(),
+                                     venueId:VENUE_ID,
+                                     userId:USER_ID
+            },function(result){
+              angular.extend($scope,result)
+              $scope.appliedDiscount = true;
+            },function(error){
+              if (error.status === 400 && error.data)
+                $scope.errorMsg = error.data.message;
+            });  
+          }     
+
+       
 
 }])
 .service('$notification', ['$modal', '$q', '$sce', function( $modal, $q, $sce) {

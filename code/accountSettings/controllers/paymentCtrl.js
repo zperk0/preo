@@ -124,7 +124,7 @@ angular.module('accountSettings.controllers')
                   },function(){
                       $notification.confirm({
                       title: _tr("Payment method updated succesfully!"),
-                      content: _tr("Your outstand payment has been paid. Your card was charged <b>&pound;" + result.ammount.toFixed(2) + "</b> and your premium features will remain active."),
+                      content: _tr("Your outstand payment has been paid. Your card was charged <b>&pound;") + result.ammount.toFixed(2) + _tr("</b> and your premium features will remain active."),
                       showTerm: false,
                       btnOk:false,
                       btnCancel: _tr('OK'),

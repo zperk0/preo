@@ -1,7 +1,17 @@
-angular.module('accountSettings.resources').
+angular.module('resources').
   factory('AccountFeature', ['$resource',function($resource) {
     
     var AccountFeature = $resource('/api/accounts/:accountId/features/:featureId',{accountId:"@accountId",featureId:"@featureId"},{
+            save:{
+                method:'POST',
+                params:{
+                    accountId:"@accountId",
+                    featureId:"@featureId",
+                    userId:"@userId",
+                    venueId:"@venueId",
+                    code:"@code"
+                }
+            },
     		put:{
     			method:"PUT",    
     		},
@@ -35,7 +45,6 @@ angular.module('accountSettings.resources').
         return contractEnds.toDate();
         
     }
-
 
 		return AccountFeature;
 

@@ -36,46 +36,45 @@ angular.module('kyc.filters', []).
 
         var interval = Math.floor(seconds / 31536000);
         if (interval >= 1) {
-            if (interval > 1)
-                intervalType = _tr('years ago');
-            else
-                intervalType = _tr('year ago');
+            intervalType = _tr('years ago');
+            if ( interval < 1 ) {
+                intervalType = _tr('year ago');                
+            }
         } else {
             interval = Math.floor(seconds / 2592000);
             if (interval >= 1) {
-                if (interval > 1)
-                    intervalType = _tr('months ago');
-                else
-                    intervalType = _tr('month ago');
+                intervalType = _tr('months ago');
+                if ( interval < 1 ) {
+                    intervalType = _tr('month ago');                
+                }                
             } else {
                 interval = Math.floor(seconds / 86400);
                 if (interval >= 1) {
-                    if (interval > 1)
-                        intervalType = _tr('days ago');
-                    else{
+                    intervalType = _tr('days ago')
+                    if (interval < 1) {
                         interval = ''
                         intervalType = _tr('yesterday');
                     }
                 } else {
                     interval = Math.floor(seconds / 3600);
                     if (interval >= 1) {
-                        if (interval > 1)
-                            intervalType = _tr('hours ago');
-                        else
-                            intervalType = _tr("hour ago");
+                        intervalType = _tr('hours ago');
+                        if ( interval < 1 ) {
+                            intervalType = _tr('hour ago');                
+                        }                                        
                     } else {
                         interval = Math.floor(seconds / 60);
                         if (interval >= 1) {
-                            if (interval > 1)
-                                intervalType = _tr('minutes ago');
-                            else
-                                intervalType = _tr("minute ago");
+                            intervalType = _tr('minutes ago');
+                            if ( interval < 1 ) {
+                                intervalType = _tr('minute ago');                
+                            }                                                                    
                         } else {
                             interval = seconds;
-                            if (interval > 1)
-                                intervalType = _tr('seconds ago');
-                            else
-                                intervalType = _tr("second ago");
+                            intervalType = _tr('seconds ago');
+                            if ( interval < 1 ) {
+                                intervalType = _tr('second ago');                
+                            }                                                                                                
                         }
                     }
                 }

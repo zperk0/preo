@@ -34,9 +34,7 @@
   <!-- END WATCH -->  
 
   <script src="/code/settings/delivery/js/all.min.js"></script>
-  <script> 
-    angular.module('delivery').constant('VENUE_ID', <? echo json_encode($_SESSION['venue_id']) ?>)
-  </script>
+  <script src="/code/constants/session.php"></script>  
 
 
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
