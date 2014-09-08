@@ -1566,8 +1566,11 @@ p.venueCode {
 
 .dashContent {
   color: #00C1F3;
-  h1, h3 {
+  h1, h3, .titleDashContent {
     color: #00C1F3;
+    &:hover{
+      color: #00C1F3;
+    }
   }
   p {
     margin-bottom: 0;
