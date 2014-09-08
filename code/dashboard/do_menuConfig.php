@@ -212,8 +212,8 @@
 			$data['position'] 		= $item['position'];
 
 
-			if ( isset($item['md'])) {
-				$data['mealDeal'] 		= $item['md'];
+			if ( isset($item['md']) && $item['md'] ) {
+				$data['mealDeal'] 		= 1;
 			}
 			
 			if($item['delete']) //delete item
