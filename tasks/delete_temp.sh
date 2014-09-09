@@ -4,12 +4,8 @@ basePath=''
 mTime=0
 
 
-while getopts "h?p:t:" opt; do
-    case "$opt" in
-    h|\?)
-        echo 'ha'
-        exit 0
-        ;;
+while getopts "p:t:" opt; do
+    case "$opt" in    
     p)  basePath=$OPTARG				
         ;;
     t)  mTime=$OPTARG
