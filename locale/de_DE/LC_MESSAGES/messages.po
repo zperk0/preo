@@ -2,21 +2,21 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# 
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-02 18:51+0100\n"
-"PO-Revision-Date: 2014-06-16 13:18+0100\n"
+"PO-Revision-Date: 2014-09-10 16:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/index.php:21
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/billingHistory.php:1
@@ -78,9 +78,8 @@ msgid "New Password"
 msgstr "Neues Passwort"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/password.php:19
-#, fuzzy
 msgid "Confirm"
-msgstr "Passwort bestÃ¤tigen"
+msgstr "Passwort bestätigen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/password.php:25
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/delivery.php:58
@@ -95,7 +94,7 @@ msgstr "Passwort bestÃ¤tigen"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:120
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:483
 msgid "SAVE CHANGES"
-msgstr "Ã„NDERUNGEN SPEICHERN"
+msgstr "ÄNDERUNGEN SPEICHERN"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/password.php:26
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/payment.php:44
@@ -123,9 +122,8 @@ msgid "SAVING..."
 msgstr "SPEICHERN..."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/payment.php:1
-#, fuzzy
 msgid "Payment"
-msgstr "Zahlungsweise HinzufÃ¼gen"
+msgstr "Zahlungsweise Hinzügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/payment.php:5
 msgid "Card Number"
@@ -224,12 +222,12 @@ msgstr "Adresse des Unternehmens"
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/profile.php:27
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/signin/signin_content.php:25
 msgid "Please type a valid email address"
-msgstr "Bitte geben Sie eine gÃ¼ltige E-Mail Adresse ein"
+msgstr "Bitte geben Sie eine gültige E-Mail Adresse ein"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/profile.php:32
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/settings/settings_content.php:25
 msgid "Business Name"
-msgstr "GeschÃ¤ftsname"
+msgstr "Geschäftsname"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/profile.php:36
 #, fuzzy
@@ -243,9 +241,8 @@ msgid "Password"
 msgstr "Passwort"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/profile.php:44
-#, fuzzy
 msgid "CHANGE PASSWORD"
-msgstr "PASSWORT ZURÃœCKSETZEN"
+msgstr "PASSWORT ZURÜCKSETZEN"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/subscription.php:4
 msgid "Billing Schedule"
@@ -289,9 +286,8 @@ msgid ""
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/subscription.php:32
-#, fuzzy
 msgid "CHANGE CARD"
-msgstr "SPRACHE Ã„NDERN"
+msgstr "SPRACHE ÄNDERN"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/accountSettings/partials/subscription.php:33
 msgid "BILLING HISTORY"
@@ -473,9 +469,8 @@ msgid "Selected"
 msgstr "Auswahl Angebot"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/kyc/partials/reports.php:10
-#, fuzzy
 msgid "Choose preset:"
-msgstr "GrÃ¶ÃŸe auswÃ¤hlen"
+msgstr "Größe auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/kyc/partials/stock.php:8
 #, fuzzy
@@ -505,9 +500,8 @@ msgid "Customer"
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/kyc/partials/stream.php:35
-#, fuzzy
 msgid "Order"
-msgstr "verspÃ¤tete Bestellung"
+msgstr "verspätete Bestellung"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/kyc/partials/stream.php:42
 #, fuzzy
@@ -539,9 +533,8 @@ msgid "One-off payment"
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/notification/templates/purchase.php:9
-#, fuzzy
 msgid "Monthly charge"
-msgstr "ZustellgebÃ¼hr"
+msgstr "Zustellgebühr"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/notification/templates/purchase.php:11
 msgid "*minimum "
@@ -630,28 +623,28 @@ msgstr "Bei Kundenanfragen kontaktieren Sie:"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/delivery.php:25
 msgid "Please enter a valid telephone number"
-msgstr "Bitte geben Sie eine gÃ¼ltige Telefonnummer ein "
+msgstr "Bitte geben Sie eine gültige Telefonnummer ein "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/delivery.php:28
 msgid "Minimum order value to qualify for delivery"
-msgstr "Erforderlicher Mindestbestellwert fÃ¼r Lieferung"
+msgstr "Erforderlicher Mindestbestellwert für Lieferung"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/delivery.php:30
 msgid "Please enter a valid number (e.g. 20.52)"
-msgstr "Bitte eine gÃ¼ltige Nummer eingeben (z.B. 20.52)"
+msgstr "Bitte eine gültige Nummer eingeben (z.B. 20.52)"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/delivery.php:33
 msgid "Delivery charge"
-msgstr "ZustellgebÃ¼hr"
+msgstr "Zustellgebühr"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/delivery.php:35
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/delivery.php:40
 msgid "Please enter a valid number (e.g. 3.25)"
-msgstr "Bitte eine gÃ¼ltige Nummer eingeben (z.B. 3.25)"
+msgstr "Bitte eine gültige Nummer eingeben (z.B. 3.25)"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/delivery.php:38
 msgid "Free delivery for orders above"
-msgstr "Freie Lieferung fÃ¼r Bestellungen Ã¼ber"
+msgstr "Freie Lieferung für Bestellungen über"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/delivery.php:43
 msgid "Default delivery time (minutes)"
@@ -659,16 +652,16 @@ msgstr "Lieferverzug (in Minuten)"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/delivery.php:45
 msgid "Please enter a valid time interval in minutes (e.g. 20)"
-msgstr "Bitte gÃ¼ltigen Zeitraum in Minuten eingeben (z.B. 20)"
+msgstr "Bitte gültigen Zeitraum in Minuten eingeben (z.B. 20)"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/delivery.php:48
 msgid "Discount offered for delivery orders (%)"
-msgstr "Rabbatangebot fÃ¼r Lieferbestellungen (%)"
+msgstr "Rabbatangebot für Lieferbestellungen (%)"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/delivery.php:50
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:124
 msgid "Please provide a discount percentage (between 0 and 100)"
-msgstr "Bitte geben Sie den Prozentsatz fÃ¼r Rabatt an (zwischen 0 und 100)"
+msgstr "Bitte geben Sie den Prozentsatz für Rabatt an (zwischen 0 und 100)"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:2
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/shared/h.php:52
@@ -678,11 +671,11 @@ msgstr "Benachrichtigungen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:6
 msgid "Order Status Alerts"
-msgstr "Meldung Ã¼ber Bestellstatus"
+msgstr "Meldung über Bestellstatus"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:7
 msgid "Order Rejection Alerts"
-msgstr "Meldung Ã¼ber abgelehnte Bestellung "
+msgstr "Meldung über abgelehnte Bestellung "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:8
 #, fuzzy
@@ -692,13 +685,13 @@ msgstr "Unternehmensname"
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:13
 msgid "Preset customer notifications, sent by email and push alert"
 msgstr ""
-"Voreingestellte Benachrichtigungen fÃ¼r Kunden per E-Mail und Push Meldung "
+"Voreingestellte Benachrichtigungen für Kunden per E-Mail und Push Meldung "
 "versendet"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:14
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:38
 msgid "Short name"
-msgstr "AbkÃ¼rzung"
+msgstr "Abkürzung"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:15
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:39
@@ -707,7 +700,7 @@ msgstr "Aktiv?"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:20
 msgid "Please enter both the notification and a short name."
-msgstr "Bitte Benachrichtigung und AbkÃ¼rzung eingeben"
+msgstr "Bitte Benachrichtigung und Abkürzung eingeben"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:37
 msgid "Preset order rejection notifications, sent by email and push alert"
@@ -718,8 +711,8 @@ msgstr ""
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:45
 msgid "Please enter a message and a short name or remove this notification."
 msgstr ""
-"Bitte eine Nachricht und eine AbkÃ¼rzung eingeben oder diese "
-"Benachrichtigung lÃ¶schen."
+"Bitte eine Nachricht und eine Abkürzung eingeben oder diese Benachrichtigung "
+"löschen."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/delivery/partials/notifications.php:63
 msgid "Email address for receiving venue alerts"
@@ -746,9 +739,8 @@ msgid "Venue Name"
 msgstr "Unternehmens-Name "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/switch/switch-view.php:56
-#, fuzzy
 msgid "Admin username"
-msgstr "Nutzername hinzufÃ¼gen"
+msgstr "Nutzername hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/settings/switch/switch-view.php:63
 msgid "Search"
@@ -788,11 +780,11 @@ msgid ""
 "Your password has been reset.<br/>You will now be redirected to the login "
 "page."
 msgstr ""
-"Ihr Passwort wurde zurÃ¼ckgesetzt. Sie werden nun zum Login weitergeleitet. "
+"Ihr Passwort wurde zurückgesetzt. Sie werden nun zum Login weitergeleitet. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:14
 msgid "Venue changes have been saved!"
-msgstr "Ã„nderungen zum Unternehmen wurden gespeichert!"
+msgstr "Änderungen zum Unternehmen wurden gespeichert!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:15
 msgid "Uploaded!"
@@ -808,27 +800,27 @@ msgstr "Falsche Bilddatei"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:18
 msgid "App changes have been saved!"
-msgstr "App-Ã„nderungen wurden gespeichert!"
+msgstr "App-Änderungen wurden gespeichert!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:19
 msgid "Choose a size"
-msgstr "GrÃ¶ÃŸe auswÃ¤hlen"
+msgstr "Große a auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:20
 msgid "Choose a flavour"
-msgstr "Aroma auswÃ¤hlen."
+msgstr "Aroma auswählen."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:21
 msgid "Choose a topping"
-msgstr "Topping auswÃ¤hlen"
+msgstr "Topping auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:22
 msgid "Choose some extras"
-msgstr "Extras auswÃ¤hlen"
+msgstr "Extras auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:23
 msgid "Choose a side dish"
-msgstr "Beilage auswÃ¤hlen"
+msgstr "Beilage auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:24
 msgid "Pick an option type"
@@ -836,31 +828,31 @@ msgstr "Eingabe oder Auswahl einer Optionsbezeichnung"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:25
 msgid "Yes, delete this section and all its contents!"
-msgstr "Ja, diesen Abschnitt und seinen Inhalt lÃ¶schen!"
+msgstr "Ja, diesen Abschnitt und seinen Inhalt löschen!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:26
 msgid "No, go back."
-msgstr "Nein, zurÃ¼ck."
+msgstr "Nein, zurück."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:27
 msgid "Choose a main"
-msgstr "Hauptgericht auswÃ¤hlen"
+msgstr "Hauptgericht auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:28
 msgid "Choose a side"
-msgstr "Beilage auswÃ¤hlen"
+msgstr "Beilage auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:29
 msgid "Choose a drink"
-msgstr "GetrÃ¤nk auswÃ¤hlen"
+msgstr "Getränk auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:30
 msgid "Choose a curry"
-msgstr "Bratwurst auswÃ¤hlen"
+msgstr "Bratwurst auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:31
 msgid "Choose a burger"
-msgstr "Burger auswÃ¤hlen"
+msgstr "Burger auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:32
 msgid "Menu configuration has been saved!"
@@ -868,7 +860,7 @@ msgstr "Angebot-Konfigurationen wurden gespeichert!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:33
 msgid "Choose a Collection Slot"
-msgstr "Abholzeitraum auswÃ¤hlen"
+msgstr "Abholzeitraum auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:34
 #, fuzzy
@@ -880,12 +872,12 @@ msgid ""
 "Are you sure you want to delete this event? Note: all event data will be "
 "lost!"
 msgstr ""
-"Sind Sie sicher, dass Sie diese Veranstaltung lÃ¶schen mÃ¶chten? Alle "
-"Veranstaltungsdaten werden bei diesem Vorgang gelÃ¶scht!"
+"Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten? Alle "
+"Veranstaltungsdaten werden bei diesem Vorgang gelöscht!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:36
 msgid "Yes, delete this event!"
-msgstr "Ja, diese Veranstaltung lÃ¶schen!"
+msgstr "Ja, diese Veranstaltung löschen!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:37
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:23
@@ -896,12 +888,12 @@ msgstr "Funktion"
 msgid ""
 "Are you sure you want to delete this user? Note: all user data will be lost!"
 msgstr ""
-"Sind Sie sicher, dass Sie diesen Nutzer lÃ¶schen mÃ¶chten? Alle Nutzerdaten "
-"werden bei diesem Vorgang gelÃ¶scht!"
+"Sind Sie sicher, dass Sie diesen Nutzer löschen möchten? Alle Nutzerdaten "
+"werden bei diesem Vorgang gelöscht!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:39
 msgid "Yes, delete this user!"
-msgstr "Ja, diesen Nutzer lÃ¶schen!"
+msgstr "Ja, diesen Nutzer löschen!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:40
 msgid "Username/email already exists"
@@ -925,19 +917,19 @@ msgstr "Auswahl Angebot"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:45
 msgid "# of # selected"
-msgstr "# von # ausgewÃ¤hlt"
+msgstr "# von # ausgewählt"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:46
 msgid ""
 "Are you sure you want to delete this outlet? Note: all outlet data will be "
 "lost!"
 msgstr ""
-"Sind Sie sicher, dass sie diesen Standort lÃ¶schen mÃ¶chten? Alle "
-"Standortdaten werden bei diesem Vorgang gelÃ¶scht!"
+"Sind Sie sicher, dass sie diesen Standort löschen möchten? Alle "
+"Standortdaten werden bei diesem Vorgang gelöscht!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:47
 msgid "Yes, delete this outlet!"
-msgstr "Ja, diesen Standort lÃ¶schen!"
+msgstr "Ja, diesen Standort löschen!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:48
 msgid "Outlet configuration has been saved!"
@@ -952,8 +944,8 @@ msgid ""
 "We still need some more information. Don't forget to fill out the remaining "
 "days of the week!"
 msgstr ""
-"Wir benÃ¶tigen noch weitere Informationen. Vergessen Sie nicht, die weiteren "
-"Wochentage auszufÃ¼llen!"
+"Wir benötigen noch weitere Informationen. Vergessen Sie nicht, die weiteren "
+"Wochentage auszufüllen!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:51
 msgid "Where should this meal deal appear?"
@@ -970,27 +962,27 @@ msgid ""
 "Are you sure you want to delete this meal deal? Note: all associated data "
 "will be lost!"
 msgstr ""
-"Sind Sie sicher, dass Sie dieses Angebot lÃ¶schen mÃ¶chten? Alle "
-"dazugehÃ¶rigen Daten werden bei diesem Vorgang gelÃ¶scht!"
+"Sind Sie sicher, dass Sie dieses Angebot löschen möchten? Alle dazugehörigen "
+"Daten werden bei diesem Vorgang gelöscht!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:54
 msgid "Yes, delete this meal deal!"
-msgstr "Ja, dieses Angebot lÃ¶schen!"
+msgstr "Ja, dieses Angebot löschen!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:55
 msgid "All changes has been saved!"
-msgstr "Alle Ã„nderungen wurden gespeichert!"
+msgstr "Alle Änderungen wurden gespeichert!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:56
 msgid ""
 "Are you sure you want to delete this menu? Note: all menu data will be lost!"
 msgstr ""
-"Sind Sie sicher, dass Sie dieses Angebot lÃ¶schen mÃ¶chten? Alle Daten zu "
-"diesem Angebot werden bei diesem Vorgang gelÃ¶scht!"
+"Sind Sie sicher, dass Sie dieses Angebot löschen möchten? Alle Daten zu "
+"diesem Angebot werden bei diesem Vorgang gelöscht!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:57
 msgid "Yes, delete this menu!"
-msgstr "Ja, dieses Angebot lÃ¶schen!"
+msgstr "Ja, dieses Angebot löschen!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:58
 msgid "Sorry, incorrect password."
@@ -1001,8 +993,8 @@ msgid ""
 "Settings and Password has been saved!<br/>You will need to log in again with "
 "your new password to continue."
 msgstr ""
-"Einstellungen und Passwort wurde gespeichert! Sie mÃ¼ssen mit sich mit Ihrem "
-"neuen Passwort einlochen um fortfahren zu kÃ¶nnen."
+"Einstellungen und Passwort wurde gespeichert! Sie müssen mit sich mit Ihrem "
+"neuen Passwort einlochen um fortfahren zu können."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:60
 msgid "Settings have been saved!"
@@ -1010,11 +1002,11 @@ msgstr "Einstellungen wurden gespeichert!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:61
 msgid "Please select features you require"
-msgstr "Bitte, wÃ¤hlen Sie die Features aus, die Sie benÃ¶tigen"
+msgstr "Bitte, wählen Sie die Features aus, die Sie benötigen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:62
 msgid "Select all"
-msgstr "Alles auswÃ¤hlen"
+msgstr "Alles auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:63
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:322
@@ -1041,9 +1033,8 @@ msgid "Sorry, these password do not match. Please try again."
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:68
-#, fuzzy
 msgid "All the fields are required."
-msgstr "Eine E-Mail Adresse wird benÃ¶tigt."
+msgstr "Eine E-Mail Adresse wird benötigt."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:69
 msgid "Please fill in all the required fields."
@@ -1083,11 +1074,10 @@ msgid ""
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:77
-#, fuzzy
 msgid "Are you sure you want to uninstall this Premium Feature?"
 msgstr ""
-"Sind Sie sicher, dass Sie diesen Nutzer lÃ¶schen mÃ¶chten? Alle Nutzerdaten "
-"werden bei diesem Vorgang gelÃ¶scht!"
+"Sind Sie sicher, dass Sie diesen Nutzer löschen möchten? Alle Nutzerdaten "
+"werden bei diesem Vorgang gelöscht!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:78
 msgid "UNINSTALL"
@@ -1100,13 +1090,12 @@ msgid ""
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:80
-#, fuzzy
 msgid ""
 "Are you sure you want to cancel this Free Trial? This action cannot be "
 "undone?"
 msgstr ""
-"Sind Sie sicher, dass sie diesen Abschnitt lÃ¶schen mÃ¶chten? Alle Artikel "
-"und Optionen werden bei diesem Vorgang gelÃ¶scht. "
+"Sind Sie sicher, dass sie diesen Abschnitt löschen möchten? Alle Artikel und "
+"Optionen werden bei diesem Vorgang gelöscht. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:81
 msgid ""
@@ -1115,11 +1104,10 @@ msgid ""
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:82
-#, fuzzy
 msgid "Are you sure you want to reinstall this Premium Feature?"
 msgstr ""
-"Sind Sie sicher, dass Sie diesen Nutzer lÃ¶schen mÃ¶chten? Alle Nutzerdaten "
-"werden bei diesem Vorgang gelÃ¶scht!"
+"Sind Sie sicher, dass Sie diesen Nutzer löschen möchten? Alle Nutzerdaten "
+"werden bei diesem Vorgang gelöscht!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:83
 msgid "REINSTALL"
@@ -1203,9 +1191,8 @@ msgid "Average Order Value"
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:105
-#, fuzzy
 msgid "Items Ordered"
-msgstr "verspÃ¤tete Bestellung"
+msgstr "verspätete Bestellung"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:106
 msgid "Orders By Outlet"
@@ -1276,9 +1263,8 @@ msgid "Marketing"
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:125
-#, fuzzy
 msgid "Date of Order"
-msgstr "verspÃ¤tete Bestellung"
+msgstr "verspätete Bestellung"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:127
 msgid "% Increase"
@@ -1289,9 +1275,8 @@ msgid "% Decrease"
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:129
-#, fuzzy
 msgid "Last Order"
-msgstr "verspÃ¤tete Bestellung"
+msgstr "verspätete Bestellung"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:130
 #, fuzzy
@@ -1562,7 +1547,7 @@ msgstr "Ihre Bestellung ist um 15 Min. im Verzug"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:192
 msgid "Late Order"
-msgstr "verspÃ¤tete Bestellung"
+msgstr "verspätete Bestellung"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:193
 msgid "Your order is on its way"
@@ -1583,19 +1568,19 @@ msgstr "Bitte anrufen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:197
 msgid "Your address is out of our delivery zone"
-msgstr "Ihre Adresse ist auÃŸerhalb unseres Liefergebiets "
+msgstr "Ihre Adresse ist außerhalb unseres Liefergebiets "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:198
 msgid "Out of zone"
-msgstr "AuÃŸerhalb des Liefergebiets"
+msgstr "Außerhalb des Liefergebiets"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:199
 msgid "Sorry, that item is out of stock"
-msgstr "Leider ist dieser Artikel nicht vorrÃ¤tig"
+msgstr "Leider ist dieser Artikel nicht vorrätig"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:200
 msgid "Out of stock"
-msgstr "Nicht vorrÃ¤tig"
+msgstr "Nicht vorrätig"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:201
 msgid "Sorry, Your order has been rejected. Please call us"
@@ -1632,9 +1617,8 @@ msgid ""
 msgstr ""
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:208
-#, fuzzy
 msgid "ADD CARD"
-msgstr "SPRACHE Ã„NDERN"
+msgstr "SPRACHE ÄNDERN"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/code/shared/js_strings.php:209
 #, fuzzy
@@ -1922,7 +1906,7 @@ msgstr "Hilfe"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/404/404_content.php:6
 msgid "or return to the"
-msgstr "oder kehren Sie zurÃ¼ck zum"
+msgstr "oder kehren Sie zurück zum"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/404/404_content.php:6
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:24
@@ -2012,7 +1996,7 @@ msgstr "Veranstaltungen"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/finish/finish_content.php:12
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/shared/h.php:51
 msgid "Opening Hours"
-msgstr "Ã–ffnungszeiten"
+msgstr "Öffnungszeiten"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:32
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig2.php:21
@@ -2022,7 +2006,7 @@ msgstr "Ã–ffnungszeiten"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/paymentConfig.php:12
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:45
 msgid "Add a Payment"
-msgstr "Zahlungsweise HinzufÃ¼gen"
+msgstr "Zahlungsweise Hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:34
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig2.php:23
@@ -2051,7 +2035,7 @@ msgstr "Erstellen Sie den Haupttitel"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:47
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:66
 msgid "Choose one here"
-msgstr "WÃ¤hlen Sie hier"
+msgstr "Wählen Sie hier"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:49
 msgid "Leave the 4 deep queue to everyone else and pre-order."
@@ -2071,11 +2055,11 @@ msgstr "Die fruchtig-frische Alternative zum faden Anstellen."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:53
 msgid "Go on, jump the crazy queue and pre-order."
-msgstr "Los gehtâ€™s, lass das Warten und bestelle einfach vor."
+msgstr "Los gehts, lass das Warten und bestelle einfach vor."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:54
 msgid "Don't miss the game! Order online and skip the half-time rush"
-msgstr "Das Spiel genieÃŸen! Online-Bestellen und den Halbzeit-Ansturm meiden."
+msgstr "Das Spiel genießen! Online-Bestellen und den Halbzeit-Ansturm meiden."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:55
 msgid "Order interval drinks before the show starts"
@@ -2084,8 +2068,8 @@ msgstr "Bestellen Sie GetrÃ¤nke zur Pause, noch vor Showbeginn."
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:56
 msgid "Stay with friends while the bar prepares your round"
 msgstr ""
-"Bleib bei deinen Freunden, wÃ¤hrend an der Bar die nÃ¤chste Runde "
-"vorbereitet wird."
+"Bleib bei deinen Freunden, während an der Bar die nächste Runde vorbereitet "
+"wird."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:57
 msgid "Order your coffee and croissant from your table, or from the train."
@@ -2106,11 +2090,11 @@ msgstr "Erstellen Sie einen Untertitel"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:69
 msgid "Pre-order food and drinks"
-msgstr "Vorbestellen Essen & GetrÃ¤nke"
+msgstr "Vorbestellen Essen & Getränke"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:70
 msgid "Pre-order drinks+food"
-msgstr "Vorbestellung Speisen+GetrÃ¤nke"
+msgstr "Vorbestellung Speisen+Getränke"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:73
 msgid "maximum 30 characters"
@@ -2129,7 +2113,7 @@ msgstr "Schriftfarbe"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig2.php:105
 msgid "Enter Hex Colour Code or click to choose your colour."
 msgstr ""
-"Geben Sie den Hex-Farbcode ein oder klicken Sie um Ihre Farbe auszuwÃ¤hlen"
+"Geben Sie den Hex-Farbcode ein oder klicken Sie um Ihre Farbe auszuwählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:92
 msgid "ORDER NOW button"
@@ -2152,7 +2136,7 @@ msgstr "Jetzt Bestellen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:138
 msgid "Select a home-screen background"
-msgstr "WÃ¤hlen Sie den Hintergrund fÃ¼r die Startansicht"
+msgstr "Wählen Sie den Hintergrund für die Startansicht"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:169
 msgid "UPLOAD YOUR OWN BACKGROUND"
@@ -2171,20 +2155,20 @@ msgstr "HOCHLADEN"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:183
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:208
 msgid "RESET"
-msgstr "ZURÃœCKSETZEN"
+msgstr "ZURÜCKSETZEN"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:185
 msgid "Supported types: JPG"
-msgstr "UnterstÃ¼tze Formate: JPG"
+msgstr "Unterstütze Formate: JPG"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:185
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:210
 msgid "Max file size: 10MB"
-msgstr "Maximale DateigrÃ¶ÃŸe: 10MB"
+msgstr "Maximale Dateigröße: 10MB"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:185
 msgid "Dimensions: 1080x1920"
-msgstr "GrÃ¶ÃŸe: 1080x1920"
+msgstr "Größe: 1080x1920"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:194
 msgid "UPLOAD YOUR OWN LOGO"
@@ -2196,35 +2180,35 @@ msgstr "Logo Hochladen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:201
 msgid "Note: This will replace your main heading."
-msgstr "Hinweis: das wird Ihre HauptÃ¼berschrift ersetzen."
+msgstr "Hinweis: das wird Ihre Hauptüberschrift ersetzen."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:210
 msgid "Supported types: PNG"
-msgstr "UnterstÃ¼tzte Formate: PNG"
+msgstr "Unterstützte Formate: PNG"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:210
 msgid "Dimensions: 100x75"
-msgstr "GrÃ¶ÃŸe: 100x75"
+msgstr "Größe: 100x75"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig1.php:232
 msgid "30&#37 done, time for the artistic bit..."
-msgstr "30&#37 geschafft, Zeit fÃ¼r den kÃ¼nstlerischen Teilâ€¦"
+msgstr "30&#37 geschafft, Zeit für den künstlerischen Teil..."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig2.php:28
 msgid "This is where you can brand your menu page"
-msgstr "Hier kÃ¶nnen Sie Ihre Angebotsseite mit Ihrem Logo gestalten"
+msgstr "Hier können Sie Ihre Angebotsseite mit Ihrem Logo gestalten"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig2.php:35
 msgid "Add a short venue title"
-msgstr "FÃ¼gen Sie eine AbkÃ¼rzung Ihres Unternehmensnamen hinzu"
+msgstr "Fügen Sie eine Abkürzung Ihres Unternehmensnamen hinzu"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig2.php:35
 msgid ""
 "This is a shorter version of your venue name that will be visible over your "
 "menu."
 msgstr ""
-"Dies soll eine AbkÃ¼rzung Ihres eigentlichen Unternehmensnamens sein und "
-"wird Ã¼ber Ihrem Angebot angezeigt."
+"Dies soll eine Abkürzung Ihres eigentlichen Unternehmensnamens sein und wird "
+"über Ihrem Angebot angezeigt."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig2.php:37
 msgid "Please type a venue title <br/>(max 22chars)"
@@ -2248,7 +2232,7 @@ msgid ""
 "This colour is used across section progress buttons and as a highlight "
 "colour."
 msgstr ""
-"Diese Farbe ist fÃ¼r die Weiter-Buttons der jeweiligen Abschnitte und dient "
+"Diese Farbe ist für die Weiter-Buttons der jeweiligen Abschnitte und dient "
 "dem Hervorheben. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig2.php:71
@@ -2271,7 +2255,7 @@ msgstr "40&#37 erledigt, noch ein paar Design-Feinheiten..."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:24
 msgid "This is where you can monitor your takings and reports."
-msgstr "Hier finden Sie eine Ãœbersicht Ã¼ber Ihre Einnahmen und Meldungen."
+msgstr "Hier finden Sie eineÜbersicht über Ihre Einnahmen und Meldungen."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:25
 msgid "Your venue shortcode is"
@@ -2281,7 +2265,7 @@ msgstr "Der Shortcode Ihres Unternehmens ist"
 msgid ""
 "This is the code your customers need to use to find your venue on 'My Order "
 "App'"
-msgstr "Ihre Kunden kÃ¶nnen Sie mit diesem Code auf My Order App finden."
+msgstr "Ihre Kunden können Sie mit diesem Code auf My Order App finden."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:33
 msgid "This month"
@@ -2327,7 +2311,7 @@ msgstr "Benachrichtigungen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:68
 msgid "Opening hours"
-msgstr "Ã–ffnungszeiten"
+msgstr "Öffnungszeiten"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:73
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/shared/h.php:55
@@ -2379,11 +2363,11 @@ msgstr "Bearbeiten"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:54
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:106
 msgid "Delete"
-msgstr "LÃ¶schen"
+msgstr "Löschen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:88
 msgid "Add new menu"
-msgstr "Neues Angebot hinzufÃ¼gen"
+msgstr "Neues Angebot hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:89
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:5
@@ -2406,7 +2390,7 @@ msgstr "Nutzer verwalten"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:104
 msgid "Add a payment method"
-msgstr "Zahlungsweise hinzufÃ¼gen"
+msgstr "Zahlungsweise hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:105
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/shared/h.php:91
@@ -2414,9 +2398,8 @@ msgid "Change my app mode"
 msgstr "App-Modus Ã¤ndern "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:148
-#, fuzzy
 msgid "Change app mode"
-msgstr "App-Modus Ã¤ndern "
+msgstr "App-Modus ändern "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:148
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/finish/finish_content.php:31
@@ -2426,10 +2409,10 @@ msgid ""
 "take real orders.<br/><br/>OFFLINE - Your app is not available on My Order "
 "App."
 msgstr ""
-"LIVE: Ihre App ist auf My Order App verfÃ¼gbar und es kÃ¶nnen richtige "
+"LIVE: Ihre App ist auf My Order App verfügbar und es können richtige "
 "Bestellungen aufgenommen werden.<br/><br/>DEMO: Ihre App ist auf 'My Order "
-"App' verfÃ¼gbar, es kÃ¶nnen jedoch nicht richtige Bestellungen aufgenommen "
-"werden.<br/><br/>OFFLINE: Ihre App ist auf 'My Order App'nicht verfÃ¼gbar."
+"App' verfügbar, es können jedoch nicht richtige Bestellungen aufgenommen "
+"werden.<br/><br/>OFFLINE: Ihre App ist auf 'My Order App'nicht verfügbar."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:151
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/dashboard_content.php:152
@@ -2506,12 +2489,12 @@ msgid ""
 "They can be viewed from the front page of your app"
 msgstr ""
 "Diese werden angezeigt, wenn Sie bereit sind Bestellungen aufzunehmen, wie z."
-"B bei AuffÃ¼hrungen oder Spielen. Sie sind auf der Startseite Ihrer App zu "
+"B bei Aufführungen oder Spielen. Sie sind auf der Startseite Ihrer App zu "
 "sehen. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:43
 msgid "Add a new event"
-msgstr "Neue Veranstaltung hinzufÃ¼gen"
+msgstr "Neue Veranstaltung hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:52
 msgid "Start Date"
@@ -2542,7 +2525,7 @@ msgstr "Tools"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:68
 msgid "Click to add an event name"
-msgstr "Klicken, um den Veranstaltungsnamen hinzuzufÃ¼gen"
+msgstr "Klicken, um den Veranstaltungsnamen hinzuzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:69
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:158
@@ -2552,7 +2535,7 @@ msgstr "Bitte geben Sie den Veranstaltungsnamen an (max 100 Zeichen)"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:72
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:161
 msgid "Click to add a description"
-msgstr "Klicken, um Beschreibung hinzuzufÃ¼gen"
+msgstr "Klicken, um Beschreibung hinzuzufägen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:73
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:162
@@ -2663,7 +2646,7 @@ msgstr "Abholzeitraum: Nach dem Spiel"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:130
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:220
 msgid "Please choose a slot."
-msgstr "Bitte wÃ¤hlen Sie einen Zeitraum aus. "
+msgstr "Bitte wählen Sie einen Zeitraum aus. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:133
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:223
@@ -2677,7 +2660,7 @@ msgstr "30"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:138
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:228
 msgid "Add another slot"
-msgstr "Zeitraum hinzufÃ¼gen"
+msgstr "Zeitraum hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/eventConfig.php:216
 msgid "Collection Slot: Half-Time"
@@ -2697,12 +2680,12 @@ msgid ""
 "This is where you can combine separate food items into one meal combination, "
 "e.g. sandwich, crisps and a drink"
 msgstr ""
-"Hier kÃ¶nnen einzelne Lebensmittel zu Kombinationen zusammengefasst werden, "
-"z.B. ein Sandwich mit Pommes und ein GetrÃ¤nk."
+"Hier können einzelne Lebensmittel zu Kombinationen zusammengefasst werden, z."
+"B. ein Sandwich mit Pommes und ein Getränk."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:8
 msgid "Add a new Meal Deal"
-msgstr "neue Angebote hinzufÃ¼gen"
+msgstr "neue Angebote hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:31
 msgid "Section"
@@ -2710,7 +2693,7 @@ msgstr "Kategorie"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:31
 msgid "Which menu section does this meal deal belong in?"
-msgstr "In welche Angebots-Kategorie gehÃ¶ren diese Angebote?"
+msgstr "In welche Angebots-Kategorie gehören diese Angebote?"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:32
 msgid "Total Price "
@@ -2732,7 +2715,7 @@ msgstr "Bitte geben Sie eine Artikelbezeichnung ein (max 100 Zeichen)"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:179
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:219
 msgid "Please choose a section"
-msgstr "Bitte wÃ¤hlen Sie eine Kategorie aus."
+msgstr "Bitte wählen Sie eine Kategorie aus."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:64
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:182
@@ -2753,7 +2736,7 @@ msgstr "Menge?"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:84
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:224
 msgid "Delete this section"
-msgstr "Diese Kategorie lÃ¶schen"
+msgstr "Diese Kategorie löschen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:91
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:208
@@ -2763,7 +2746,7 @@ msgstr "Eingabe oder Auswahl einer Kategorie-Bezeichnung"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:91
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:208
 msgid "Eg. Choose a main, Choose a side, Choose a drink, etc"
-msgstr "z.B. Auswahl Hauptgericht, Auswahl Beilage, Auswahl GetrÃ¤nk, etc"
+msgstr "z.B. Auswahl Hauptgericht, Auswahl Beilage, Auswahl Getränk, etc"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:92
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:209
@@ -2779,22 +2762,21 @@ msgstr "Alle Kategorien"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:218
 msgid "Pick a menu section from where you'd like to import items."
 msgstr ""
-"WÃ¤hlen Sie eine Angebots-Kategorie aus der Sie die Artikel Ã¼bertragen "
-"wollen"
+"Wählen Sie eine Angebots-Kategorie aus der Sie die Artikel übertragen wollen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:114
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:231
 msgid "Add this item to the current Meal Deal"
-msgstr "Artikel diesem Angebot hinzufÃ¼gen"
+msgstr "Artikel diesem Angebot hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:122
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:206
 msgid "Add a selection to this meal deal"
-msgstr "Diesem Angebot eine Auswahl hinzufÃ¼gen"
+msgstr "Diesem Angebot eine Auswahl hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:170
 msgid "Click to add a Meal Deal name"
-msgstr "Klicken um neue Angebotsbezeichnung hinzuzufÃ¼gen"
+msgstr "Klicken um neue Angebotsbezeichnung hinzuzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/mdConfig.php:252
 msgid ""
@@ -2802,7 +2784,7 @@ msgid ""
 "you have some items in your menu."
 msgstr ""
 "Sie haben keine Artikel erstellt! Sie werden keine Angebote zusammenstellen "
-"kÃ¶nnen, wenn Sie keine Artikel Ihrem Angebot hinzufÃ¼gen.  "
+"können, wenn Sie keine Artikel Ihrem Angebot hinzufügen.  "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:32
 msgid "Build your menu"
@@ -2818,14 +2800,14 @@ msgid ""
 "with.<br/><br/>An easy way is to group items, i.e. create separate sections "
 "for food, cold drinks and hot drinks."
 msgstr ""
-"Jetzt kÃ¶nnen Sie Ihr Angebot erstellen. Wir schlagen vor, dass sie es "
+"Jetzt können Sie Ihr Angebot erstellen. Wir schlagen vor, dass sie es "
 "erstmal einfach halten. <br/><br/>Ein guter Einstieg ist, die Artikel in "
-"Gruppen einzuteilen, z.B. erstellen Sie separate Kategorien fÃ¼r Speisen, "
-"kalte oder heiÃŸe GetrÃ¤nke."
+"Gruppen einzuteilen, z.B. erstellen Sie separate Kategorien für Speisen, "
+"kalte oder heiße Getränke."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:68
 msgid "Click to add your menu name"
-msgstr "Klicken Sie, um die Bezeichnung Ihres Angebots hinzuzufÃ¼gen"
+msgstr "Klicken Sie, um die Bezeichnung Ihres Angebots hinzuzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:69
 msgid "Please type a menu name (max 100chars)"
@@ -2834,7 +2816,7 @@ msgstr "Bitte geben Sie eine Angebotsbezeichnung ein (max. 100 Zeichen)"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:75
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:215
 msgid "Click to add a section name"
-msgstr "Klicken Sie um den Namen einer Kategorie hinzuzufÃ¼gen"
+msgstr "Klicken Sie um den Namen einer Kategorie hinzuzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:76
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:216
@@ -2844,7 +2826,7 @@ msgstr "Bitte geben Sie einen Namen ein (max 100 Zeichen)"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:81
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:221
 msgid "Add an item to this section"
-msgstr "Hier Artikel hinzufÃ¼gen"
+msgstr "Hier Artikel hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:83
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:223
@@ -2863,7 +2845,7 @@ msgstr "Menge"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:110
 msgid "Click to add an item name"
-msgstr "Klicken, um Artikelname hinzuzufÃ¼gen"
+msgstr "Klicken, um Artikelname hinzuzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:114
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:253
@@ -2887,7 +2869,7 @@ msgstr "Unbegrenzt"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:264
 msgid "This chooses whether you want to activate this food on the menu or not."
 msgstr ""
-"Hiermit kÃ¶nnen Sie auswÃ¤hlen, ob Sie diesen Artikel im Angebot aktivieren "
+"Hiermit können Sie auswählen, ob Sie diesen Artikel im Angebot aktivieren "
 "wollen oder nicht. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:137
@@ -2904,12 +2886,12 @@ msgstr "Neu bestellen"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:146
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:293
 msgid "Add a new option to this item"
-msgstr "Neue Option diesem Artikel hinzufÃ¼gen."
+msgstr "Neue Option diesem Artikel hinzufügen."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:146
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:293
 msgid "Add an option"
-msgstr "Option hinzufÃ¼gen"
+msgstr "Option hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:148
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:295
@@ -2919,43 +2901,42 @@ msgstr "Eingabe oder Auswahl einer Optionsbezeichnung"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:148
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:295
 msgid "Eg. Pick a size, Choice of an option, Add some extras, Select a side"
-msgstr ""
-"z.B. GrÃ¶ÃŸe oder Option auswÃ¤hlen, Extras hinzufÃ¼gen, Beilage auswÃ¤hlen"
+msgstr "z.B. Größe oder Option auswählen, Extras hinzufügen, Beilage auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:149
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:296
 msgid "Please type or pick a title"
-msgstr "Bitte geben Sie eine Bezeichnung ein oder wÃ¤hlen Sie aus."
+msgstr "Bitte geben Sie eine Bezeichnung ein oder wählen Sie aus."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:153
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:300
 msgid "User must select only one option."
-msgstr "Nutzer kann nur eine Option auswÃ¤hlen."
+msgstr "Nutzer kann nur eine Option auswählen."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:153
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:300
 msgid "User selects 1 option"
-msgstr "Nutzer wÃ¤hlt 1 Option"
+msgstr "Nutzer wählt 1 Option"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:154
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:301
 msgid "User must select one or more options."
-msgstr "Nutzer kann eine oder mehr Optionen auswÃ¤hlen."
+msgstr "Nutzer kann eine oder mehr Optionen auswählen."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:154
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:301
 msgid "User selects 1 or more options"
-msgstr "Nutzer wÃ¤hlt 1 oder mehr Optionen"
+msgstr "Nutzer wählt 1 oder mehr Optionen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:155
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:302
 msgid "User can select zero or more options."
-msgstr "Nutzer kann null oder mehr Optionen auswÃ¤hlen. "
+msgstr "Nutzer kann null oder mehr Optionen auswählen. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:155
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:302
 msgid "User selects 0 or more options"
-msgstr "Nutzer wÃ¤hlt 0 oder mehr Optionen"
+msgstr "Nutzer wählt 0 oder mehr Optionen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:156
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:303
@@ -2964,19 +2945,19 @@ msgid ""
 "user must pick 1 or more options.<br/><br/>Optional: when the user can pick "
 "0 or multiple options."
 msgstr ""
-"Eine: Der Nutzer muss sich nur fÃ¼r eine Option entscheiden.<br/><br/"
-">Mehrere: Der Nutzer muss sich fÃ¼r eine oder mehr Optionen entscheiden. "
+"Eine: Der Nutzer muss sich nur für eine Option entscheiden.<br/><br/"
+">Mehrere: Der Nutzer muss sich für eine oder mehr Optionen entscheiden. "
 "Optional: Der Nutzer kann sich zwischen 0 und mehrere Optionen entscheiden."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:157
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:304
 msgid "Please choose a type"
-msgstr "Bitte wÃ¤hlen Sie einen Typ aus."
+msgstr "Bitte wählen Sie einen Typ aus."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:165
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:312
 msgid "Click to add an option name"
-msgstr "Klicken, um Optionsbezeichnung hinzuzufÃ¼gen"
+msgstr "Klicken, um Optionsbezeichnung hinzuzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:166
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:313
@@ -2991,22 +2972,22 @@ msgid ""
 "This will be in addition to the item price. If there is no price difference, "
 "put in 0.00."
 msgstr ""
-"Dieser Betrag wird dem Preis des Artikels zusÃ¤tzlich hinzugerechnet. Wenn "
-"keine Preisdifferenz vorhanden ist, fÃ¼gen Sie hier 0,00 ein."
+"Dieser Betrag wird dem Preis des Artikels zusätzlich hinzugerechnet. Wenn "
+"keine Preisdifferenz vorhanden ist, fügen Sie hier 0,00 ein."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:194
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:376
 msgid "Eg. Toppings, Sizes, Exras, etc"
-msgstr "Z.B. Toppings, GrÃ¶ÃŸe, Extras, etc."
+msgstr "Z.B. Toppings, Größe, Extras, etc."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:194
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:376
 msgid "Add an option category to this item <small>(optional)</small>"
-msgstr "Diesem Artikel Option hinzufÃ¼gen <small>(optional)</small>"
+msgstr "Diesem Artikel Option hinzufügen <small>(optional)</small>"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:393
 msgid "Add a new menu section"
-msgstr "Neue Angebots-Kategorie hinzufÃ¼gen"
+msgstr "Neue Angebots-Kategorie hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:399
 msgid "COLLAPSE ALL"
@@ -3022,15 +3003,15 @@ msgstr "SPEICHERN & BEENDEN"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/menuConfig.php:470
 msgid "45&#37 done, now for the fun bit!"
-msgstr "45&#37 geschafft und jetzt weiter zum spaÃŸigeren Teil!"
+msgstr "45&#37 geschafft und jetzt weiter zum spaßigeren Teil!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:18
 msgid "Tell us about your opening times"
-msgstr "Informieren Sie uns Ã¼ber Ihre Ã–ffnungszeiten."
+msgstr "Informieren Sie uns über Ihre Öffnungszeiten."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:21
 msgid "Days your venue is open"
-msgstr "Tage, an denen Ihr Unternehmen geÃ¶ffnet hat"
+msgstr "Tage, an denen Ihr Unternehmen geöffnet hat"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:22
 msgid "Mon"
@@ -3062,17 +3043,16 @@ msgstr "So"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:38
 msgid "Add another opening hour"
-msgstr "Weitere Ã–ffnungszeiten hinzufÃ¼gen"
+msgstr "Weitere Öffnungszeiten hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:38
 msgid "eg: if you close for lunch and reopen in the evening."
-msgstr ""
-"z.B. wenn Sie in der Mittagszeit schlieÃŸen und abends wieder Ã¶ffnen. "
+msgstr "z.B. wenn Sie in der Mittagszeit schließen und abends wieder öffnen. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:47
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:77
 msgid "Open "
-msgstr "GeÃ¶ffnet um"
+msgstr "Geöffnet um"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:47
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:77
@@ -3080,24 +3060,24 @@ msgid ""
 "Let us know if your venue is open for delivery, open for pickup, open for "
 "both or if you are closed today."
 msgstr ""
-"Teilen Sie uns mit, ob Ihr GeschÃ¤ft heute fÃ¼r Lieferung geÃ¶ffnet ist, "
-"fÃ¼r Abholungen geÃ¶ffnet ist, fÃ¼r beides geÃ¶ffnet ist oder ob Sie heute "
+"Teilen Sie uns mit, ob Ihr Geschäft heute für Lieferung geöffnet ist, für "
+"Abholungen geöffnet ist, für beides geöffnet ist oder ob Sie heute "
 "geschlossen haben. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:50
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:79
 msgid "For delivery and collection"
-msgstr "FÃ¼r Lieferung und Abholung"
+msgstr "Für Lieferung und Abholung"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:51
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:80
 msgid "For delivery only"
-msgstr "Nur fÃ¼r Lieferung"
+msgstr "Nur für Lieferung"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:52
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:81
 msgid "For collection only"
-msgstr "Abholzeitraum auswÃ¤hlen"
+msgstr "Abholzeitraum auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:53
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:82
@@ -3107,7 +3087,7 @@ msgstr "Geschlossen um "
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:57
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:86
 msgid "Opens at"
-msgstr "GeÃ¶ffnet um"
+msgstr "Geöffnet um"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:62
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:91
@@ -3117,11 +3097,11 @@ msgstr "Geschlossen um "
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:68
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:97
 msgid "Remove opening hour"
-msgstr "Ã–ffnungszeit entfernen"
+msgstr "Öffnungszeit entfernen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/nonEventConfig.php:105
 msgid "Apply these times to all days"
-msgstr "Diese Zeiten allen Tagen hinzufÃ¼gen"
+msgstr "Diese Zeiten allen Tagen hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/outletConfig.php:6
 msgid "Outlets"
@@ -3129,7 +3109,7 @@ msgstr "Standorte"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/outletConfig.php:14
 msgid "Add a new Outlet"
-msgstr "Neuen Standort hinzufÃ¼gen"
+msgstr "Neuen Standort hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/outletConfig.php:15
 msgid "Create a new menu"
@@ -3137,7 +3117,7 @@ msgstr "Neues Angebot erstellen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/outletConfig.php:26
 msgid "Add an outlet name"
-msgstr "Standortname hinzufÃ¼gen"
+msgstr "Standortname hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/outletConfig.php:27
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/outletConfig.php:61
@@ -3159,7 +3139,7 @@ msgstr "MIT STRIPE VERBINDEN"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/paymentConfig.php:31
 msgid "SKIP THIS FOR NOW"
-msgstr "ÃœBERSPRINGEN"
+msgstr "ÜBERSPRINGEN"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/paymentConfig.php:35
 msgid "GO TO YOUR STRIPE ACCOUNT"
@@ -3175,7 +3155,7 @@ msgstr "Nutzerverwaltung"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:14
 msgid "Add a new user"
-msgstr "Neue Nutzer hinzufÃ¼gen "
+msgstr "Neue Nutzer hinzufügen "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:22
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/forgot/forgot_content.php:8
@@ -3186,11 +3166,11 @@ msgstr "E-Mail"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:23
 msgid "This decides the level of access of your users."
-msgstr "Die Funktion entscheidet Ã¼ber die Zugangsberechtigung des Nutzers"
+msgstr "Die Funktion entscheidet über die Zugangsberechtigung des Nutzers"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:36
 msgid "Add a user name"
-msgstr "Nutzername hinzufÃ¼gen"
+msgstr "Nutzername hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:37
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:89
@@ -3200,7 +3180,7 @@ msgstr "Bitte geben einen Nutzernamen ein (max. 200 Zeichen). "
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:40
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:92
 msgid "Add an email"
-msgstr "E-Mail hinzufÃ¼gen"
+msgstr "E-Mail hinzufügen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:41
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:93
@@ -3220,7 +3200,7 @@ msgstr "Mitarbeiter"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:46
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:98
 msgid "Admin: can read/write account but cannot close it down"
-msgstr "Administrator: kann Konto lesen/bearbeiten und schlieÃŸen"
+msgstr "Administrator: kann Konto lesen/bearbeiten und schließen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:46
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:98
@@ -3230,7 +3210,7 @@ msgstr "Administrator"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:47
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:99
 msgid "Owner: can read/write account and close it down"
-msgstr "Inhaber: kann Konto lesen/bearbeiten und schlieÃŸen"
+msgstr "Inhaber: kann Konto lesen/bearbeiten und schließen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:47
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:99
@@ -3248,16 +3228,16 @@ msgstr "Passwort angeben"
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:64
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/reset/reset_content.php:15
 msgid "Confirm Password"
-msgstr "Passwort bestÃ¤tigen"
+msgstr "Passwort bestätigen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:65
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/signup/signup_content.php:61
 msgid "Confirm password"
-msgstr "Passwort bestÃ¤tigen"
+msgstr "Passwort bestätigen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/userConfig.php:66
 msgid "Passwords don't match"
-msgstr "PasswÃ¶rter stimmen nicht Ã¼berein"
+msgstr "Passwörter stimmen nicht überein"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:43
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/finish/finish_content.php:13
@@ -3267,7 +3247,7 @@ msgstr "Zahlungsmethode"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:54
 msgid "Tell us about your venue"
-msgstr "ErzÃ¤hlen Sie uns Ã¼ber Ihr Unternehmen"
+msgstr "Erzählen Sie uns über Ihr Unternehmen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:63
 msgid "Venue name"
@@ -3295,11 +3275,11 @@ msgstr "Bitte geben Sie eine Unternehmensbeschreibung ein (max 250 Zeichen)"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:79
 msgid "What type of venue are you?"
-msgstr "Was fÃ¼r ein Unternehmen sind Sie?"
+msgstr "Was für ein Unternehmen sind Sie?"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:81
 msgid "Restaurant (Cafe, Sandwich Bar, Restaurant, etc)"
-msgstr "Gastronomiegewerbe (CafÃ©, Sandwich Bar, Restaurant, etc)"
+msgstr "Gastronomiegewerbe (Café, Sandwich Bar, Restaurant, etc)"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:82
 msgid "Sports Arena"
@@ -3311,7 +3291,7 @@ msgstr "Bars, Pubs und Clubs"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:84
 msgid "Workplace/Education Catering"
-msgstr "Catering fÃ¼r Betriebe/Bildungseinrichtungen"
+msgstr "Catering für Betriebe/Bildungseinrichtungen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:85
 msgid "Music and Cultural"
@@ -3319,15 +3299,15 @@ msgstr "Musik und Kultur"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:92
 msgid "Are you primarily an events based business?"
-msgstr "Sind Sie hauptsÃ¤chlich auf Veranstaltungen spezialisiert"
+msgstr "Sind Sie hauptsächlich auf Veranstaltungen spezialisiert"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:92
 msgid ""
 "Does your business revolve around regular events, e.g. football matches, "
 "performances, etc?"
 msgstr ""
-"BeschÃ¤ftigt sich Ihr Unternehmen regelmÃ¤ÃŸig mit Veranstaltungen,wie "
-"FuÃŸballspiele, AuffÃ¼hrungen, etc.?"
+"Beschäftigt sich Ihr Unternehmen regelmäßig mit Veranstaltungen,wie "
+"Füßballspiele, Aufführungen, etc.?"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:107
 msgid "Collection Slot Duration (mins)"
@@ -3339,7 +3319,7 @@ msgid ""
 "when customers are allowed to collect orders."
 msgstr ""
 "Das ist die Minutenanzahl nach und vor dem Zeitpunkt, an dem Kunden ihre "
-"Bestellungen abholen dÃ¼rfen. "
+"Bestellungen abholen dürfen. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:108
 msgid "eg: 30"
@@ -3351,14 +3331,14 @@ msgstr "Bitte geben Sie eine Dauer in Minuten an"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:115
 msgid "Default preparation time for collection orders (mins)"
-msgstr "VerzÃ¶gerte Vorbereitungszeit fÃ¼r Abholbestellungen (in Min.)"
+msgstr "Verzögerte Vorbereitungszeit für Abholbestellungen (in Min.)"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:115
 msgid ""
 "The time it takes to prepare your order before the customer can pick it up."
 msgstr ""
-"Die benÃ¶tigte Zeit fÃ¼r die Vorbereitung der Bestellung, bevor der Kunde "
-"sie abholen darf. "
+"Die benötigte Zeit für die Vorbereitung der Bestellung, bevor der Kunde sie "
+"abholen darf. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:116
 msgid "e.g. 25"
@@ -3370,7 +3350,7 @@ msgstr "Bitte geben Sie eine Lieferzeit an"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:122
 msgid "Discount offered for collection orders (%)"
-msgstr "Rabattangebot fÃ¼r Abholbestellungen (in %) "
+msgstr "Rabattangebot für Abholbestellungen (in %) "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:123
 msgid "e.g. 10"
@@ -3378,7 +3358,7 @@ msgstr "z.B. 25"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:130
 msgid "Minimum value for orders"
-msgstr "Mindestbestellwert fÃ¼r Bestellungen "
+msgstr "Mindestbestellwert für Bestellungen "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:131
 msgid "e.g. 5"
@@ -3415,7 +3395,7 @@ msgstr "Land"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:428
 msgid "Please choose a country"
-msgstr "Bitte Land auswÃ¤hlen"
+msgstr "Bitte Land auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:433
 msgid "Post code"
@@ -3431,7 +3411,7 @@ msgstr "Sprache"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:446
 msgid "Please select your language"
-msgstr "Bitte Sprache auswÃ¤hlen"
+msgstr "Bitte Sprache auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:452
 msgid "Timezone"
@@ -3439,15 +3419,15 @@ msgstr "Zeit?"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:460
 msgid "Please select your timezone"
-msgstr "Bitte Zeitzone auswÃ¤hlen"
+msgstr "Bitte Zeitzone auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:466
 msgid "Currency"
-msgstr "WÃ¤hrung"
+msgstr "Währung"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:472
 msgid "Please select your currency"
-msgstr "Bitte WÃ¤hrung auswÃ¤hlen"
+msgstr "Bitte Währung auswählen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/venueConfig.php:494
 msgid "15&#37 done, keep going!"
@@ -3472,7 +3452,7 @@ msgstr " Modus."
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/finish/finish_content.php:33
 msgid "After you setup a payment method, you can send it into the world!"
 msgstr ""
-"Sobald Sie Ihre Zahlungsmethode festgelegt haben, kÃ¶nnen Sie durchstarten!"
+"Sobald Sie Ihre Zahlungsmethode festgelegt haben, können Sie durchstarten!"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/finish/finish_content.php:38
 msgid "SETUP PAYMENT"
@@ -3497,7 +3477,7 @@ msgstr "MEINE APP OFFLINE STELLEN"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/finish/finish_content.php:53
 msgid "BACK TO THE DASHBOARD"
-msgstr "ZURÃœCK ZUM DASHBOARD"
+msgstr "ZURÜCK ZUM DASHBOARD"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/finish/finish_content.php:74
 msgid "Payment method was not setup."
@@ -3510,12 +3490,12 @@ msgstr "Haben Sie Ihr Passwort vergessen?"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/forgot/forgot_content.php:10
 msgid "An email address is required."
-msgstr "Eine E-Mail Adresse wird benÃ¶tigt."
+msgstr "Eine E-Mail Adresse wird benötigt."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/forgot/forgot_content.php:16
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/reset/reset_content.php:23
 msgid "RESET PASSWORD"
-msgstr "PASSWORT ZURÃœCKSETZEN"
+msgstr "PASSWORT ZURÜCKSETZEN"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/more/more_content.php:6
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/shared/h.php:125
@@ -3524,20 +3504,20 @@ msgstr "Erfahren Sie Mehr"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/more/more_content.php:15
 msgid "Please select at least one feature"
-msgstr "Bitte wÃ¤hlen Sie mindestens ein Feature aus"
+msgstr "Bitte wählen Sie mindestens ein Feature aus"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/more/more_content.php:20
 msgid ""
 "Describe your requirement. Include details like like the brand of ePOS you "
 "are using or the number of outlets you require."
 msgstr ""
-"ErlÃ¤utern Sie, was Sie benÃ¶tigen. FÃ¼gen Sie Informationen hinzu, wie z.B. "
+"Erläutern Sie, was Sie benötigen. Fügen Sie Informationen hinzu, wie z.B. "
 "welchen EPOS-Anbieter Sie nutzen oder wie viele Verkaufsstellen Sie "
-"benÃ¶tigen."
+"benötigen."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/more/more_content.php:22
 msgid "Please enter your requirement."
-msgstr "Bitte geben Sie an, was Sie benÃ¶tigen. "
+msgstr "Bitte geben Sie an, was Sie benötigen. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/more/more_content.php:28
 msgid "SEND"
@@ -3545,45 +3525,45 @@ msgstr "SCHICKEN"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/more/more_content.php:33
 msgid "Thank you for your request"
-msgstr "Vielen Dank fÃ¼r Ihre Anfrage"
+msgstr "Vielen Dank für Ihre Anfrage"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/more/more_content.php:34
 msgid "We'll be in touch shortly."
-msgstr "In KÃ¼rze werden wir mit Ihnen in Kontakt treten."
+msgstr "In Kürze werden wir mit Ihnen in Kontakt treten."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/reset/reset_content.php:4
 msgid "Reset your password?"
-msgstr "Passwort zurÃ¼cksetzen?"
+msgstr "Passwort zurücksetzen?"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/reset/reset_content.php:12
 msgid "A password is required."
-msgstr "Ein Passwort wird benÃ¶tigt."
+msgstr "Ein Passwort wird benötigt."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/reset/reset_content.php:17
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/settings/settings_content.php:73
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/signup/signup_content.php:63
 msgid "Passwords don't match."
-msgstr "PasswÃ¶rter stimmen nicht Ã¼berein"
+msgstr "Passwörter stimmen nicht Überein"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/reset/reset_content.php:28
 msgid "Sorry. Invalid code."
-msgstr "UngÃ¼ltiger Code. "
+msgstr "Ungültiger Code. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/settings/settings_content.php:10
 msgid "First Name is required (max 100chars)"
-msgstr "Der Vorname wird benÃ¶tigt (max. 100 Zeichen)"
+msgstr "Der Vorname wird benötigt (max. 100 Zeichen)"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/settings/settings_content.php:15
 msgid "Last Name is required (max 100chars)"
-msgstr "Der Nachname wird benÃ¶tigt (max. 100 Zeichen)"
+msgstr "Der Nachname wird benötigt (max. 100 Zeichen)"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/settings/settings_content.php:22
 msgid "An email address is required"
-msgstr "Eine E-Mail Adresse wird benÃ¶tigt"
+msgstr "Eine E-Mail Adresse wird benötigt"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/settings/settings_content.php:27
 msgid "A business name is required (max 100chars)"
-msgstr "Ein GeschÃ¤ftsname wird benÃ¶tigt (max. 100 Zeichen)"
+msgstr "Ein Geschäftsname wird benötigt (max. 100 Zeichen)"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/settings/settings_content.php:34
 msgid "Notifications"
@@ -3599,7 +3579,7 @@ msgstr "An"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/settings/settings_content.php:50
 msgid "Change password?"
-msgstr "Passwort Ã¤ndern?"
+msgstr "Passwort Ãndern?"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/settings/settings_content.php:61
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/settings/settings_content.php:68
@@ -3608,15 +3588,15 @@ msgstr "Eine E-Mail Adresse ist erforderlich. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/settings/settings_content.php:71
 msgid "Confirm New Password"
-msgstr "Neues Passwort bestÃ¤tigen"
+msgstr "Neues Passwort bestätigen"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/shared/dashboard_footer.php:5
 msgid ""
 "Looking for ePOS integration, detailed reporting or the ability to configure "
 "multiple outlets?"
 msgstr ""
-"Interessieren Sie sich fÃ¼r elektronische Zahlungsmethoden (EPOS), "
-"ausfÃ¼hrliche Berichte oder die MÃ¶glichkeit mehrere Verkaufsstellen zu "
+"Interessieren Sie sich für elektronische Zahlungsmethoden (EPOS), "
+"ausführliche Berichte oder die Möglichkeit mehrere Verkaufsstellen zu "
 "konfigurieren?"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/shared/dashboard_footer.php:6
@@ -3672,7 +3652,7 @@ msgstr "Bestellungs-Plattform"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/shared/h.php:49
 msgid "Change Settings"
-msgstr "Einstellungen Ã„ndern"
+msgstr "Einstellungen Ändern"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/shared/h.php:57
 msgid "Home Screen"
@@ -4148,7 +4128,7 @@ msgstr "E-Mail: "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/shared/regular_footer.php:8
 msgid "CHANGE LANGUAGE"
-msgstr "SPRACHE Ã„NDERN"
+msgstr "SPRACHE ÄNDERN"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/shared/regular_footer.php:10
 msgid "English"
@@ -4726,13 +4706,12 @@ msgid ""
 "Sorry, you don't have sufficient privileges.<br/><br/>Looking for the "
 "Fulfilment App? Click the link at the bottom of this page."
 msgstr ""
-"Leider verfÃ¼gen Sie nicht Ã¼ber die richtigen Zugriffsrechte. <br/><br/> "
-"Auf der Suche nach der Bestellungs-Plattform? Sie finden den Link am "
-"Seitenende. "
+"Leider verfügen Sie nicht über die richtigen Zugriffsrechte. <br/><br/> Auf "
+"der Suche nach der Bestellungs-Plattform? Sie finden den Link am Seitenende. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/signup/signup_content.php:6
 msgid "Now, we just need your business name."
-msgstr "Jetzt, mÃ¼ssen wir nur noch den Namen Ihres GeschÃ¤fts erfahren. "
+msgstr "Jetzt, müssen wir nur noch den Namen Ihres Geschäfts erfahren. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/signup/signup_content.php:13
 msgid "Get started"
@@ -4764,11 +4743,11 @@ msgstr "Bitte geben Sie ein Passwort ein."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/signup/signup_content.php:69
 msgid "Your business name"
-msgstr "Ihr GeschÃ¤ftsname"
+msgstr "Ihr Geschäftsname"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/signup/signup_content.php:71
 msgid "Please type your business name (max 100chars)"
-msgstr "Bitte geben Sie Ihren GeschÃ¤ftsnamen ein. "
+msgstr "Bitte geben Sie Ihren Geschäftsnamen ein. "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/signup/signup_content.php:77
 msgid "Telephone Number"
@@ -4784,7 +4763,7 @@ msgstr "Indem Sie 'Anmelden' anklicken, stimmen Sie unseren"
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/signup/signup_content.php:87
 msgid "Terms"
-msgstr "Allgemeinen GeschÃ¤ftsbedingungen "
+msgstr "Allgemeinen Geschäftsbedingungen "
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/signup/signup_content.php:87
 msgid "and"
