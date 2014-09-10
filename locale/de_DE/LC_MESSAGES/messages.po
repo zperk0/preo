@@ -2243,7 +2243,7 @@ msgstr "Button 1 Farbe "
 msgid ""
 "This colour is used across item select buttons and as a highlight colour."
 msgstr ""
-"Geben Sie den Hex-Farbcode ein oder klicken Sie um Ihre Farbe auszuwÃ¤hlen."
+"Geben Sie den Hex-Farbcode ein oder klicken Sie um Ihre Farbe auszuwählen."
 
 #: /Users/scott/dev/workspaces/preoday/webapp/inc/dashboard/appConfig2.php:97
 msgid "Button two colour"

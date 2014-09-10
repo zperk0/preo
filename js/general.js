@@ -2132,7 +2132,8 @@ $(document).ready(function() {
 							if ( !$inputName.data('delete') ) {
 								menuSectionOneNivelItem['images'] 		= imagesMenu[iID];
 
-								if( !menuSectionOneNivelItem['edit'] && !menuSectionOneNivelItem['insert'] && !menuSectionOneNivelItem['delete'] ) {
+								if( !menuSectionOneNivelItem['edit'] && !menuSectionOneNivelItem['insert'] && !menuSectionOneNivelItem['delete'] 
+									&& imagesMenu[iID] instanceof Object && imagesMenu[iID].length && !imagesMenu[iID][0].saved) {
 									menuSectionOneNivelItem['edit'] = true;
 								}
 							}
