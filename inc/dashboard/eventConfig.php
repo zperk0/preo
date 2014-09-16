@@ -225,7 +225,15 @@
 							<small class="error"><?echo _("Time?");?></small>
 						</td>
 						<td class="eventTDAddMore">
+							<?php 
+							if ( $cKey === 0 ) {
+							?>
 							<button type="button" class="newCollSlot" title="<?echo _("Add another slot");?>"><i class="pd-add"></i></button>
+							<?php 
+							} else {
+							?>
+							<button type="button" class="delCollSlot secondary" title="Delete this slot"><i class="pd-delete"></i></button>
+							<?php } ?>
 						</td>						
 					</tr>
 					<?}?>					
