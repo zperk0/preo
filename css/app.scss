@@ -1572,8 +1572,11 @@ p.venueCode {
 
 .dashContent {
   color: #00C1F3;
-  h1, h3 {
+  h1, h3, .titleDashContent {
     color: #00C1F3;
+    &:hover{
+      color: #00C1F3;
+    }
   }
   p {
     margin-bottom: 0;
@@ -1596,7 +1599,7 @@ p.venueCode {
   .accordion {
     section {
       &:first-child {
-        border-top: 1px solid;
+        border-top: none;
       }
       border-bottom: 1px solid;
       margin-top: 10px;
