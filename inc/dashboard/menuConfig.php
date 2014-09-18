@@ -82,6 +82,7 @@
 						<div class="showOnHover">
 							<button 						type="button" class="sortSecHandle"				title="<?echo _("Move this section");?>"			><i class="pd-move"></i></button> <?echo _("Move this section");?>&nbsp;&nbsp;&nbsp;&nbsp;
 							<button id="delete_section0" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"			><i class="pd-delete"></i></button> <?echo _("Delete this section");?>&nbsp;&nbsp;&nbsp;&nbsp;
+							<label class="custom-checkbox"><input type="checkbox" class="collapseSection" id="collapse_section0" data-value="0" data-edit="false" name="collapse[]" value="1" /> <span class="icon"></span><span class="text"><?echo _("Collapse this section");?></span></label>
 						</div>
 					</div>
 				</div>
@@ -202,7 +203,7 @@
 	
 	<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu))){
 		$iKey=0; //item number are continuous across sections so we can't use $key in foreach($array as $key=>$var)
-		foreach($menu['sections'] as $sKey=>$section){ 
+		foreach($menu['sections'] as $sKey=>$section){
 		//again remember its all 1-indexed thats why we add +1 to the key
 		$mdFlag = "false";
 		foreach($section['items'] as $secitem) { if(in_array($secitem['id'], $mealDealArray)) {$mdFlag="true"; break;} }
@@ -222,6 +223,7 @@
 								<div class="showOnHover">
 									<button 						type="button" class="sortSecHandle"								title="<?echo _("Move this section");?>"			><i class="pd-move"></i></button> <?echo _("Move this section");?>&nbsp;&nbsp;&nbsp;&nbsp;
 									<button id="delete_section<?echo ($sKey+1);?>" 	type="button" class="deleteSection secondary" 	title="<?echo _("Delete this section");?>"			><i class="pd-delete"></i></button> <?echo _("Delete this section");?>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label class="custom-checkbox"><input type="checkbox" class="collapseSection" id="collapse_section<?echo ($sKey+1);?>" data-value="<?php echo $section['collapse'] ?>" data-edit="false" name="collapse[]" value="1" <?php echo $section['collapse'] == '1' ? 'checked="checked"' : null ?> /> <span class="icon"></span><span class="text"><?echo _("Collapse this section");?></span></label>
 								</div>
 							</div>
 						</div>
