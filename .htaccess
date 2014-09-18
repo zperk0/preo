@@ -211,3 +211,6 @@ RewriteRule ^.*$ /code/kyc/index.php [L]
 
 RewriteCond %{REQUEST_URI} ^/switch$ [NC]
 RewriteRule ^.*$ /code/settings/switch/switch-view.php [L]
+
+RewriteCond %{REQUEST_URI} ^/invite/(.*)$ [NC]
+RewriteRule ^.*$ signup.php?inviteKey=$0 [L]

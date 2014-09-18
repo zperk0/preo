@@ -97,10 +97,17 @@ $(document).ready(function() {
 	$("#signupForm").on('valid', function (event) {
 		var url = "/doSignUp";
 
+		var moreParams = '';
+		var invite = false;
+		if ( $(this).data('invite') ) {
+			invite = true;
+			moreParams = '&inviteKey=' + $(this).data('invite');
+		}
+
 		$.ajax({
 			   type: "POST",
 			   url: url,
-			   data: $(this).serialize(), // serializes the form's elements.
+			   data: $(this).serialize() + moreParams, // serializes the form's elements.
 			   success: function(data)
 			   {
 					try
@@ -118,8 +125,8 @@ $(document).ready(function() {
 						
 						return false;
 					}
-					
-					if(typeof dataArray['status'] !='undefined') //error
+					//if(typeof dataArray['status'] !='undefined') //error
+					if(dataArray['status'] && dataArray['status'] != '200') //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
@@ -128,8 +135,14 @@ $(document).ready(function() {
 					}
 					else
 					{	
-						$.post("/saveSignUp", 
-						'bName='+dataArray['name']+'&bID='+dataArray['id']+'&email='+encodeURIComponent(dataArray['owner']['email'])+'&fName='+dataArray['owner']['firstName']+'&lName='+dataArray['owner']['lastName']+'&id='+dataArray['owner']['id'],
+
+						var parameters = '';
+						if ( invite ) {
+						 	parameters = 'bID='+dataArray['id']+'&email='+encodeURIComponent(dataArray['email'])+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'];
+						} else {
+							parameters = 'bName='+dataArray['name']+'&bID='+dataArray['id']+'&email='+encodeURIComponent(dataArray['owner']['email'])+'&fName='+dataArray['owner']['firstName']+'&lName='+dataArray['owner']['lastName']+'&id='+dataArray['owner']['id'];
+						}
+						$.post("/saveSignUp", parameters,
 						function(response){
 							window.location.replace("/dashboard");
 						})
@@ -300,6 +313,21 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	///////////////////////////////////////////////////////////////////////////////////////////////////
+
+	$(document).on('click', '.inputLinkMail', function(){
+		var
+			$this = $(this),
+			$tr = $this.closest('tr').next('tr');
+
+		if ( $this.is(':checked') ) {
+			$tr.hide();
+			$tr.find('input').removeAttr('required');
+		} else {
+			$tr.show();
+			$tr.find('input').attr('required', '');
+		}
+	});
+
 
 	//change language ajaxy button
 	$("a.changeLang").on('click', function () {

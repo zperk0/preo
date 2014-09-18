@@ -27,11 +27,11 @@ $(document).ready(function(){
 	</div>
 	<div class="row">
 		<div class="large-6 small-11 columns left row--space1u alignDiv">
-			<form id="signupForm" method="POST" data-abide>
+			<form id="signupForm" method="POST" data-abide <?php echo $User ? 'data-invite="' . $inviteKey . '"' : null ?>>
 				<div class="row nameRow <?if($fb_field_flag) echo 'hide';?>">
 					<div class="large-12 columns">
 						<label><?echo _("First Name");?></label>
-						<input type="text" id="fName" name="fName" placeholder="" <?if($fb_field_flag) echo "value='$fName'";?> required pattern="^.{0,99}$" tabindex=1>
+						<input type="text" id="fName" name="fName" placeholder="" <?if($fb_field_flag) echo "value='$fName'";if($User) echo "value='" . $User['name'] . "'";?> required pattern="^.{0,99}$" tabindex=1>
 						<small class="error"><?echo _("Please type your first name.(max 100chars)");?></small>
 					</div>
 					<div class="large-12 columns">
@@ -43,7 +43,7 @@ $(document).ready(function(){
 				<div class="row emailRow <?if($fb_field_flag) echo 'hide';?>">
 					<div class="large-12 columns">
 						<label><?echo _("Your email");?></label>
-						<input type="text" id="email" name="email" placeholder=""  <?if($fb_field_flag) echo "value='$email' readonly='readonly'";?> required pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' tabindex=3>
+						<input type="text" id="email" name="email" placeholder=""  <?if($fb_field_flag) echo "value='$email' readonly='readonly'";if($User) echo "value='" . $User["email"] . "' readonly='readonly'";?> required pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' tabindex=3>
 						<small class="error"><?echo _("Please type your email");?></small>
 					</div>
 				</div>
@@ -64,6 +64,9 @@ $(document).ready(function(){
 					</div>
 				</div>
 				<?}?>
+				<?php 
+				if ( !$User ) {
+				?>
 				<div class="row">
 					<div class="large-12 columns">
 						<label><?echo _("Your business name");?></label>
@@ -71,6 +74,7 @@ $(document).ready(function(){
 						<small class="error"><?echo _("Please type your business name (max 100chars)");?></small>
 					</div>
 				</div>
+				<?php } ?>
 				
 				<div class="row">
 					<div class="large-12 columns">

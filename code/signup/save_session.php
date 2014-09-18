@@ -19,7 +19,7 @@
 	
 	$bID = $_POST['bID'];
 	protect($bID);
-	
+
 	$_SESSION['account_name']=$bName;
 	$_SESSION['account_id']=$bID;
 	

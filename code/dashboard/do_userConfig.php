@@ -30,6 +30,7 @@
 			
 			$users[$i]['name'] 		= $_POST['uName'][$j];
 			$users[$i]['email'] 	= $_POST['uEmail'][$j];
+			$users[$i]['mail'] 		= isset($_POST['mail'][$j]) ? 1 : 0;
 			$users[$i]['role'] 		= strtolower($_POST['uRole'][$j]);
 			
 			//protect
@@ -57,6 +58,7 @@
 			$data['name']		= $user['name'];
 			$data['username']	= $user['email'];
 			$data['email']		= $user['email'];
+			$data['active'] = 1;
 			//$data['password'] 	= $user['password']; //implement change password later
 		
 			$jsonData = json_encode($data);
@@ -80,7 +82,15 @@
 			$data['name']		= $user['name'];
 			$data['username']	= $user['email'];
 			$data['email']		= $user['email'];
-			$data['password'] 	= $user['password'];
+			$data['password'] 	= 'test';
+			$data['active'] = 1;
+
+			if ( $user['mail'] ) {
+				$data['inviteUserId'] = $_SESSION['user_id'];
+				$data['active'] = 0;
+			} else {
+				$data['password'] 	= $user['password'];
+			}
 			
 			$jsonData = json_encode($data);
 
@@ -89,6 +99,7 @@
 			$curlResult = callAPI('POST', $apiURL."users", $jsonData, $userApiAuth); //user created
 			
 			$dataJSON = json_decode($curlResult,true);
+
 			if(isset($dataJSON['id'])) //if no duplicate user
 			{
 				$userID = $dataJSON['id'];
@@ -99,6 +110,7 @@
 				$accountId	= $_SESSION['account_id'];
 				
 				$curlResult = callAPI('POST', $apiURL."users/$userID/role?accountId=$accountId&role=$role", false, $userApiAuth); //user role created
+				callAPI('POST', $apiURL."users/invite/mail/" . $dataJSON['inviteKey'], false, $userApiAuth);
 			}
 			else //if duplicate user
 			{

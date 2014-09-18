@@ -6,6 +6,34 @@
 
 	/* Requesting Facebook Fields */
 
+
+	$User = null;
+	if ( isset($_GET['inviteKey']) ) {
+		$inviteKey = $_GET['inviteKey'];
+
+		$inviteKey = explode('/', $inviteKey);
+
+		if (is_array($inviteKey) && count($inviteKey) === 2) {
+			$inviteKey = $inviteKey[1];
+		} else {
+			header("location: " . $_SESSION['path']); exit();
+		}
+		protect($inviteKey);
+
+		$data = [];
+		
+		$jsonData = json_encode($data);
+		
+		$curlResult = callAPI('GET', $apiURL."users/invite/" . $inviteKey, $jsonData, $apiAuth);		
+		$dataJSON 	= json_decode($curlResult,true);
+
+		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)){
+			header("location: /"); exit();
+		}
+
+		$User = $dataJSON;
+	}
+
 	if(!(isset($_SESSION['fb_state']))) $_SESSION['fb_state'] = md5(uniqid(rand(), TRUE)); //NEED FOR CSRF PROTECTION VIA FACEBOOK CONNECT
 	
 	require_once($_SERVER['DOCUMENT_ROOT'].'/code/shared/facebook_vars.php'); 

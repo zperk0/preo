@@ -39,6 +39,10 @@
 								<td class="userTDEmail">
 									<input type="email" name="uEmail[0]" class="userField noEnterSubmit" placeholder="<?echo _("Add an email");?>"/>
 									<small class="error"><?echo _("Please type an email");?></small>
+									<label class="linkMail">
+										<input type="checkbox" name="mail[0]" class="inputLinkMail" />
+										Email a link to the user to set their password
+									</label>
 								</td>
 								<td class="userTDRole">
 									<select name="uRole[0]" class="userField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have userMenuSingleSelect -->
