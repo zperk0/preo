@@ -64,17 +64,13 @@ $(document).ready(function(){
 					</div>
 				</div>
 				<?}?>
-				<?php 
-				if ( !$User ) {
-				?>
 				<div class="row">
 					<div class="large-12 columns">
 						<label><?echo _("Your business name");?></label>
-						<input type="text" name="businessName" placeholder="" required pattern="^.{0,99}$" tabindex=6>
+						<input type="text" name="businessName" placeholder="" required pattern="^.{0,99}$" tabindex=6 <?php if($User) echo "value='" . $User['account']["name"] . "' readonly='readonly'" ?> >
 						<small class="error"><?echo _("Please type your business name (max 100chars)");?></small>
 					</div>
 				</div>
-				<?php } ?>
 				
 				<div class="row">
 					<div class="large-12 columns">

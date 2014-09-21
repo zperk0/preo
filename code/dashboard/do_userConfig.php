@@ -9,6 +9,12 @@
 	protect($userCount);
 	
 	$userCountAct = $_POST['userCountAct']; //actual count -user
+	protect($userCountAct);			
+
+	$inviteUserCount = $_POST['inviteUserCount']; //linear count -user
+	protect($userCount);
+	
+	$inviteUserCountAct = $_POST['inviteUserCountAct']; //actual count -user
 	protect($userCountAct);
 	
 	$users = array(); //initialising user 
@@ -30,12 +36,36 @@
 			
 			$users[$i]['name'] 		= $_POST['uName'][$j];
 			$users[$i]['email'] 	= $_POST['uEmail'][$j];
-			$users[$i]['mail'] 		= isset($_POST['mail'][$j]) ? 1 : 0;
 			$users[$i]['role'] 		= strtolower($_POST['uRole'][$j]);
 			
 			//protect
 			protect($users[$i]['name']);
 			protect($users[$i]['email']);
+			
+			$i++;
+		}
+		$j++;
+	}	
+
+	$inviteUsers = array(); //initialising user 
+	//remember everything is 1-indexed. 0 is dummy data
+	$i = $j = 1;
+	while($i <= $inviteUserCountAct && $j <= $inviteUserCount) //$i should break it faster unless linear == actual  -- creating new user here
+	{
+		if(isset($_POST['iuName'][$j]) && $_POST['iuName'][$j])
+		{
+			try { 
+				$inviteUsers[$i]['id']	= $_POST['iuID'][$j];
+			} 
+			catch(Exception $e){ /*nothing*/ } 
+			
+			$inviteUsers[$i]['name'] 		= $_POST['iuName'][$j];
+			$inviteUsers[$i]['email'] 	= $_POST['iuEmail'][$j];
+			$inviteUsers[$i]['role'] 		= strtolower($_POST['iuRole'][$j]);
+			
+			//protect
+			protect($inviteUsers[$i]['name']);
+			protect($inviteUsers[$i]['email']);
 			
 			$i++;
 		}
@@ -58,7 +88,6 @@
 			$data['name']		= $user['name'];
 			$data['username']	= $user['email'];
 			$data['email']		= $user['email'];
-			$data['active'] = 1;
 			//$data['password'] 	= $user['password']; //implement change password later
 		
 			$jsonData = json_encode($data);
@@ -82,15 +111,7 @@
 			$data['name']		= $user['name'];
 			$data['username']	= $user['email'];
 			$data['email']		= $user['email'];
-			$data['password'] 	= 'test';
-			$data['active'] = 1;
-
-			if ( $user['mail'] ) {
-				$data['inviteUserId'] = $_SESSION['user_id'];
-				$data['active'] = 0;
-			} else {
-				$data['password'] 	= $user['password'];
-			}
+			$data['password'] 	= $user['password'];
 			
 			$jsonData = json_encode($data);
 
@@ -110,7 +131,6 @@
 				$accountId	= $_SESSION['account_id'];
 				
 				$curlResult = callAPI('POST', $apiURL."users/$userID/role?accountId=$accountId&role=$role", false, $userApiAuth); //user role created
-				callAPI('POST', $apiURL."users/invite/mail/" . $dataJSON['inviteKey'], false, $userApiAuth);
 			}
 			else //if duplicate user
 			{
@@ -130,12 +150,43 @@
 				if(isset($dataJSON['userId'])) $newUsers[$user['id']] = $dataJSON['userId'];
 			}
 		}
+	}	
+
+	$newInviteUsers = array();
+	$userApiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
+	
+	foreach($inviteUsers as $user)
+	{
+		//create/edit user
+		$data 					= array();
+	
+		$data 				= array();
+		$data['name']		= $user['name'];
+		$data['inviteId']		= $_SESSION['user_id'];
+		$data['accountId']		= $_SESSION['account_id'];
+		$data['email']		= $user['email'];
+		$data['role']		= $user['role'];
+		
+		$jsonData = json_encode($data);
+
+		//appToken here is the web-apps token and not the user's
+	
+		$curlResult = callAPI('POST', $apiURL."invite", $jsonData, $userApiAuth); //user created
+		
+		$dataJSON = json_decode($curlResult,true);
+
+		if(isset($dataJSON['id'])) //if no duplicate user
+		{
+			$newInviteUsers[$user['id']] = $dataJSON['id'];		
+		}
+
 	}
 	
 	//we need to send back an array along with curlResult
 	$newJSON = array();
 	$newJSON['result'] = json_decode($curlResult,true); //make it an array
 	$newJSON['update']= $newUsers; //add array of new values
+	$newJSON['update_invite']= $newInviteUsers; //add array of new values
 	
 	$newJSON = json_encode($newJSON); //back to JSON
 	

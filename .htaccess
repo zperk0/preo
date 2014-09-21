@@ -152,6 +152,9 @@ RewriteRule ^.*$ /code/dashboard/do_eventConfig.php [L]
 RewriteCond %{REQUEST_URI} ^/deleteUser$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_userDelete.php [L]
 
+RewriteCond %{REQUEST_URI} ^/deleteInviteUser$ [NC]
+RewriteRule ^.*$ /code/dashboard/do_inviteUserDelete.php [L]
+
 RewriteCond %{REQUEST_URI} ^/saveUser$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_userConfig.php [L]
 

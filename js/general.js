@@ -136,12 +136,7 @@ $(document).ready(function() {
 					else
 					{	
 
-						var parameters = '';
-						if ( invite ) {
-						 	parameters = 'bID='+dataArray['id']+'&email='+encodeURIComponent(dataArray['email'])+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'];
-						} else {
-							parameters = 'bName='+dataArray['name']+'&bID='+dataArray['id']+'&email='+encodeURIComponent(dataArray['owner']['email'])+'&fName='+dataArray['owner']['firstName']+'&lName='+dataArray['owner']['lastName']+'&id='+dataArray['owner']['id'];
-						}
+						var parameters = 'bName='+dataArray['name']+'&bID='+dataArray['id']+'&email='+encodeURIComponent(dataArray['owner']['email'])+'&fName='+dataArray['owner']['firstName']+'&lName='+dataArray['owner']['lastName']+'&id='+dataArray['owner']['id'];
 						$.post("/saveSignUp", parameters,
 						function(response){
 							window.location.replace("/dashboard");
@@ -313,20 +308,6 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	///////////////////////////////////////////////////////////////////////////////////////////////////
-
-	$(document).on('click', '.inputLinkMail', function(){
-		var
-			$this = $(this),
-			$tr = $this.closest('tr').next('tr');
-
-		if ( $this.is(':checked') ) {
-			$tr.hide();
-			$tr.find('input').removeAttr('required');
-		} else {
-			$tr.show();
-			$tr.find('input').attr('required', '');
-		}
-	});
 
 
 	//change language ajaxy button
@@ -3027,6 +3008,72 @@ $(document).ready(function() {
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
 	
+	$(document).on("click", ".inviteUser", function() {
+		
+		//get table user number
+		$curTable = $(this).closest('table');
+		var eventID = $curTable.attr('id');
+		
+		//get and update current count
+		var userCount = $("#inviteUserCount").val();
+		var newCount = parseInt(parseInt(userCount) + 1);
+		$("#inviteUserCount").val(newCount);
+		$("#inviteUserCountAct").val(parseInt($("#inviteUserCountAct").val())+1);
+
+		//clone dummy table
+		$newTab = $("#inviteUser0").clone(true);
+		$newTab.attr('id','inviteUser'+newCount);
+		
+		//replace ids with incremented value and make value = default value
+		$newTab.find(".userTR input").each(function() {
+			$(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+		});
+		
+		$newTab.find("input[name^=uPasswordConf]").each(function() {
+			var tempName = $(this).attr('data-equalTo');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('data-equalTo', newName);
+		});
+		
+		$newTab.find(".userTR select").each(function() {
+			$(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+			
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: _tr("Role"),
+			   selectedList: 1,
+			   minWidth: 108
+			}); 
+		});
+		
+		//now we fix uID
+		$newTab.find("input[name^=iuID]").each(function() {
+			$(this).val("u"+newCount);
+		});
+		
+		$newTab.find("input[name^=iuName]").attr('required','required');
+		$newTab.find("input[name^=iuEmail]").attr('required','required');
+		
+		$newTab.css('backgroundColor','#fafafa');
+		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+		$newTab.css('max-width', '100%'); 
+		
+		//hide it so we can animate it!
+		$newTab.css('display','none');
+		
+		//insert before section header/before hidden div
+		$(".firstInviteUserDiv").before($newTab); 
+		$newTab.slideRow('down');
+		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+	});
+	
 	$(document).on("click", ".userDelete", function() {
 		//get event number
 		$curTable = $(this).closest('table');
@@ -3097,6 +3144,94 @@ $(document).ready(function() {
 								userCount = $("#userCountAct").val();
 								newCount = parseInt(parseInt(userCount) - 1);
 								$("#userCountAct").val(newCount);
+								
+								//bye-bye
+								$("#"+userID).remove();
+							}
+						 });
+					$noty.close();
+				  }
+				},
+				{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
+					$noty.close();
+				  }
+				}
+			  ]
+			});
+		}
+		
+	});
+	
+	$(document).on("click", ".inviteUserDelete", function() {
+		//get event number
+		$curTable = $(this).closest('table');
+		userID = $curTable.attr('id');
+		
+		realUserID = $curTable.find("input[name^=iuID]").val();
+		
+		if(typeof realUserID =='undefined' || realUserID == '' || !realUserID.match(/^\d+?$/gi)) //event not saved in DB
+		{
+			noty({
+				layout: 'center',
+				type: 'confirm',
+				text: _tr('Are you sure you want to delete this invite user?'),
+				buttons: [
+				{addClass: 'alert tiny', text: _tr('Yes, delete this user!'), onClick: function($noty) {
+					
+					//get and update current count
+					userCount = $("#inviteUserCountAct").val();
+					newCount = parseInt(parseInt(userCount) - 1);
+					$("#inviteUserCountAct").val(newCount);
+					
+					//bye-bye
+					$("#"+userID).remove();
+					
+					$noty.close();
+				  }
+				},
+				{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
+					$noty.close();
+				  }
+				}
+			  ]
+			});
+		}
+		else //event in DB
+		{
+			noty({
+				layout: 'center',
+				type: 'confirm',
+				text: _tr('Are you sure you want to delete this invite user?'),
+				buttons: [
+				{addClass: 'alert tiny', text: _tr('Yes, delete this invite user!'), onClick: function($noty) {
+					
+					var url = "/deleteInviteUser";
+					$.ajax({
+						   type: "POST",
+						   url: url,
+						   data: 'inviteID='+realUserID, // serializes the form's elements.
+						   success: function(data)
+						   {
+								try
+								{
+									var dataArray = jQuery.parseJSON(data); //parsing JSON
+								}
+								catch(e)
+								{
+									noty({
+									  type: 'error',  layout: 'topCenter',
+									  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
+									});
+									
+									//alert(data);
+									
+									return false;
+								}
+									
+								//get and update current count
+								userCount = $("#inviteUserCountAct").val();
+								newCount = parseInt(parseInt(userCount) - 1);
+								$("#inviteUserCountAct").val(newCount);
 								
 								//bye-bye
 								$("#"+userID).remove();
