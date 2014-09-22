@@ -34,14 +34,22 @@
 		}
 
 		$User = $dataJSON;
+
+		if ( isset($_SESSION['logged']) && $_SESSION['logged'] == 1 && $_SESSION['user_email'] != $User['email'] ) {
+			$content = _('This invite key is not for your user.');
+			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/404/404_content.php');
+			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php');  exit();
+		}
+
+
 		$diff = strtotime("now") - strtotime($User['created']);
 		$hours = floor($diff / (60 * 60));
 
 		if ( $hours >= 24 ) {
 			$content = _('Sorry, the time to activate your account expired.');
-			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/404/404_content.php');  exit();
+			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/404/404_content.php');
+			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php');  exit();
 		}
-
 
 		$curlResult = callAPI('GET', $apiURL."users/username/" . $User['email'], $jsonData, $apiAuth);		
 		$userModel = json_decode($curlResult,true);		
@@ -54,21 +62,25 @@
 			$curlResult = callAPI('POST', $apiURL."users/$userID/role?accountId=$accountId&role=$role", false, $apiAuth); //user role created
 			$dataJSON = json_decode($curlResult,true);			
 
-			setUserLogger([
-				'account' => [
-					'name' 		=> $User['account']['name'],
-					'id'   		=> $User['account']['id']
-				],
-				'user' => [
-					'id'		=> $User['id'],
-					'email' 	=> $User['email'],
-					'firstName' => $User['name'],
-					'lastName'	=> '',
-					'role' 		=> 'OWNER'
-				]
-			]);
+			if ( isset($_SESSION['logged']) && $_SESSION['logged'] == 1 ) {
+				setUserLogger([
+					'account' => [
+						'name' 		=> $User['account']['name'],
+						'id'   		=> $User['account']['id']
+					],
+					'user' => [
+						'id'		=> $User['id'],
+						'email' 	=> $User['email'],
+						'firstName' => $User['name'],
+						'lastName'	=> '',
+						'role' 		=> 'OWNER'
+					]
+				]);
 
-			redirectPage('dashboard');
+				redirectPage('dashboard');
+			} else {
+				redirectPage('login');
+			}
 		}
 	}
 
