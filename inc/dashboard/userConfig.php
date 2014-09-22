@@ -83,7 +83,7 @@
 		?>
 			<table class="userTable" id="user<?echo ($uKey+1)?>" style="background:transparent">
 				<tbody>
-					<tr class="savedInput userTR">
+					<tr class="savedInput inviteUserTable userTR">
 						<td class="userTDName">
 							<input type="hidden" name="uID[<?echo ($uKey+1);?>]" value="<?echo $user['id'];?>" />
 							<input type="text" name="uName[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo htmlentities($user['firstName'] . $user['lastName'], ENT_QUOTES);?>" required readonly="readonly"  pattern="^.{0,199}$"/>
@@ -146,9 +146,9 @@
 
 			<div class="row"> <!-- DUMMY -->
 				<div class="large-12 columns">
-					<table class="userTable hide" id="inviteUser0" style="display:none;">
+					<table class="userTable hide inviteUserTable" id="inviteUser0" style="display:none;">
 						<tbody>
-							<tr class="userEdit userTR">
+							<tr class="userEdit inviteUserTR">
 								<td class="userTDName">
 									<input type="hidden" name="iuID[0]" value="u0" />
 									<input type="text" name="iuName[0]" class="userField noEnterSubmit" placeholder="<?echo _("Add a user name");?>"  pattern="^.{0,199}$"/>
@@ -180,9 +180,9 @@
 		foreach($inviteUsers as $uKey=>$user){
 		//again remember its all 1-indexed thats why we add +1 to the key
 		?>
-			<table class="userTable" id="inviteUser<?echo ($uKey+1)?>" style="background:transparent">
+			<table class="userTable " id="inviteUser<?echo ($uKey+1)?>" style="background:transparent">
 				<tbody>
-					<tr class="savedInput ">
+					<tr class="savedInput inviteUserTR">
 						<td class="userTDName">
 							<input type="hidden" name="iuID[<?echo ($uKey+1);?>]" value="<?echo $user['id'];?>" />
 							<input type="text" name="iuName[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo htmlentities($user['name'], ENT_QUOTES);?>" required readonly="readonly"  pattern="^.{0,199}$"/>

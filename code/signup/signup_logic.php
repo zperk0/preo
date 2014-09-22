@@ -18,7 +18,7 @@
 		if (is_array($inviteKey) && count($inviteKey) === 2) {
 			$inviteKey = $inviteKey[1];
 		} else {
-			header("location: " . $_SESSION['path']); exit();
+			redirectPage($_SESSION['path']);
 		}
 		protect($inviteKey);
 
@@ -30,7 +30,7 @@
 		$dataJSON 	= json_decode($curlResult,true);
 
 		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)){
-			header("location: /"); exit();
+			redirectPage('');
 		}
 
 		$User = $dataJSON;
@@ -66,7 +66,9 @@
 					'lastName'	=> '',
 					'role' 		=> 'OWNER'
 				]
-			]);		
+			]);
+
+			redirectPage('dashboard');
 		}
 	}
 

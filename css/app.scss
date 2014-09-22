@@ -985,7 +985,7 @@ table {
   /* border-bottom: 1px solid #B8B9BC; */
 }
 
-.itemTR, .eventTR, .userTR, .mdTR {
+.itemTR, .eventTR, .userTR, .inviteUserTR, .mdTR {
   margin-top: 20px;
 }
 
@@ -1391,7 +1391,7 @@ table {
     &:first-of-type {
       border-bottom: 1px solid #B9BBBD;
     }
-    &.itemTR.menuEdit:first-of-type, &.userTR.userEdit:first-of-type, &.eventTR.eventEdit:first-of-type {
+    &.itemTR.menuEdit:first-of-type, &.userTR.userEdit:first-of-type, &.inviteUserTR.userEdit:first-of-type, &.eventTR.eventEdit:first-of-type {
       border-bottom: 0px !important;
     }
   }

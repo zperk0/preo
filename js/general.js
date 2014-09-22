@@ -2878,10 +2878,8 @@ $(document).ready(function() {
 		submitTime = new Date().getTime();
 		return false; // avoid to execute the actual submit of the form.
 	});
-	
-	$(document).on("click", ".userSave", function() {
-		$(this).hide();
-		$curItem = $(this).closest('table');
+
+	function userSave($curItem){
 		$curItem.find("tr").removeClass('userEdit');
 		$curItem.find("tr").addClass('savedInput');
 		$curItem.find("input").attr("readonly", "readonly");
@@ -2891,7 +2889,12 @@ $(document).ready(function() {
 		$curItem.find(".userMenuSingleSelect").multiselect("disable");
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
-		$curItem.css('max-width', '100%'); 
+		$curItem.css('max-width', '100%'); 		
+	}
+	
+	$(document).on("click", ".userSave", function() {
+		$(this).hide();
+		userSave($this.closest('table'));
 	});
 	
 	$(document).on("click", ".userTDEdit, .userTR input[readonly='readonly']", function() {
@@ -3025,7 +3028,7 @@ $(document).ready(function() {
 		$newTab.attr('id','inviteUser'+newCount);
 		
 		//replace ids with incremented value and make value = default value
-		$newTab.find(".userTR input").each(function() {
+		$newTab.find(".inviteUserTR input").each(function() {
 			$(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
@@ -3038,7 +3041,7 @@ $(document).ready(function() {
 			$(this).attr('data-equalTo', newName);
 		});
 		
-		$newTab.find(".userTR select").each(function() {
+		$newTab.find(".inviteUserTR select").each(function() {
 			$(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
@@ -3319,6 +3322,10 @@ $(document).ready(function() {
 							  $('input[value='+index+']').val(value); //find by value and update!
 							});
 						}
+
+						$('.inviteUserTable').each(function(){
+							userSave($(this));
+						});		
 						noty({ type: 'success', text: _tr('User configuration has been saved!') });
 						errorFlag = 0;
 						

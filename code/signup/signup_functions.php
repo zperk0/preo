@@ -28,3 +28,13 @@ function setUserLogger( $User ) {
 	$_SESSION['user_role']	= $User['user']['role']; //default role upon signup
 	$_SESSION['logged']		= 1;	
 }
+
+
+function redirectPage( $page ){
+	if (headers_sent()) {
+		echo "<meta http-equiv='Refresh' content='0; url=http://" . $_SERVER['HTTP_HOST'] . "/" . $page . "'>";
+	} else {
+		header("location: /" . $page);
+	}	
+	exit();
+}
