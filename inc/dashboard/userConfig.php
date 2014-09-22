@@ -83,7 +83,7 @@
 		?>
 			<table class="userTable" id="user<?echo ($uKey+1)?>" style="background:transparent">
 				<tbody>
-					<tr class="savedInput inviteUserTable userTR">
+					<tr class="savedInput userTR">
 						<td class="userTDName">
 							<input type="hidden" name="uID[<?echo ($uKey+1);?>]" value="<?echo $user['id'];?>" />
 							<input type="text" name="uName[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo htmlentities($user['firstName'] . $user['lastName'], ENT_QUOTES);?>" required readonly="readonly"  pattern="^.{0,199}$"/>

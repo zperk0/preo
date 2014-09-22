@@ -2894,7 +2894,7 @@ $(document).ready(function() {
 	
 	$(document).on("click", ".userSave", function() {
 		$(this).hide();
-		userSave($this.closest('table'));
+		userSave($(this).closest('table'));
 	});
 	
 	$(document).on("click", ".userTDEdit, .userTR input[readonly='readonly']", function() {
