@@ -3930,6 +3930,22 @@ button.preodayButton.noclick{
   display: none;
 }
 
+.accordion.contentSectionsDashboard section > h3[data-section-title]{
+  width: 80% !important;
+}
+
+.contentSectionsDashboard section > img{
+  width: 20% !important;
+}
+
+@media screen and (max-width: 767px) {
+
+  .contentSectionsDashboard section > img{
+    width: auto !important;
+  }
+
+}
+
 .custom-checkbox{
   display: inline-block;
   position: relative;

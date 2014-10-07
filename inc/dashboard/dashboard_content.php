@@ -52,7 +52,7 @@
 		<div class="large-7 columns dashChangeApp">				
 			<div class="row">
 				<div class="large-12 columns">
-					<div class="accordion" data-options="one_up: false;" data-section="accordion">
+					<div class="accordion contentSectionsDashboard" data-options="one_up: false;" data-section="accordion">
 						<section>
 							<h3 data-section-title><a href="//orders.preoday.com" target="_blank" class="titleDashContent"><?echo _("Order Screen");?></a></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/order-icon_small.png"/>
 						</section>
