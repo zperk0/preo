@@ -1,0 +1,39 @@
+/* General count styles
+-------------------------------------------------- */
+
+[class*="count"] {
+  display: inline-block;
+  padding: 4px 9px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 13px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, .3);
+  border-radius: 100px;
+}
+
+/* Count modifiers
+-------------------------------------------------- */
+
+/* Overriding styles for counts with modifiers  */
+.count-main,
+.count-positive,
+.count-negative {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
+}
+
+/* Main count  */
+.count-main {
+  background-color: #1eafe7;
+}
+
+/* Positive count  */
+.count-positive {
+  background-color: #34ba15;
+}
+
+/* Negative count  */
+.count-negative {
+  background-color: #e71e1e;
+}

@@ -1,0 +1,110 @@
+/* General button styles
+-------------------------------------------------- */
+
+[class*="button"] {
+  position: relative;
+  display: inline-block;
+  padding: 4px 12px;
+  margin: 0;
+  font-weight: bold;
+  line-height: 18px;
+  color: #333;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  vertical-align: top;
+  cursor: pointer;
+  background-color: #f8f8f8;
+  border: 1px solid rgba(0, 0, 0, .3);
+  border-radius: 3px;
+}
+
+/* Active */
+[class*="button"]:active {
+  padding-top: 5px;
+  padding-bottom: 3px;
+  color: #333;
+  background-color: #ccc;
+  background-image: none;
+}
+
+/* Button modifiers
+-------------------------------------------------- */
+
+/* Overriding styles for buttons with modifiers  */
+.button-main,
+.button-positive,
+.button-negative {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
+}
+
+/* Main button */
+.button-main {
+  background-color: #1eafe7;
+  border: 1px solid #117aaa;
+}
+
+/* Positive button  */
+.button-positive {
+  background-color: #34ba15;
+  border: 1px solid #278f0f;
+}
+
+/* Negative button  */
+.button-negative {
+  background-color: #e71e1e;
+  border: 1px solid #b51a1a;
+}
+
+/* Active state for buttons with modifiers */
+.button-main:active,
+.button-positive:active,
+.button-negative:active {
+  color: #fff;
+}
+.button-main:active {
+  background-color: #0876b1;
+}
+.button-positive:active {
+  background-color: #298f11;
+}
+.button-negative:active {
+  background-color: #b21a1a;
+}
+
+/* Block level buttons (full width buttons) */
+.button-block {
+  display: block;
+  padding: 12px 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Active state for block level buttons */
+.button-block:active {
+  padding: 12px 0;
+}
+
+/* Counts in buttons
+-------------------------------------------------- */
+
+/* Generic styles for all counts within buttons */
+[class*="button"] [class*="count"] {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-right: -4px;
+  margin-left: 4px;
+  text-shadow: none;
+  background-color: rgba(0, 0, 0, .2);
+}
+
+/* Position counts within block level buttons
+   Note: These are absolutely positioned so that text of button isn't "pushed" by count and always
+   stays at true center of button */
+.button-block [class*="count"] {
+  position: absolute;
+  right: 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-right: 10px;
+}

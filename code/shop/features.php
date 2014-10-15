@@ -91,6 +91,9 @@ var features = [
 							],
 		icon:'/img/weborders-icon.png',
 		active:true,
+		$terms:{
+			purchase:'/terms/140702 Premium Services - Web Order and Web Order Plus.pdf'
+		}		
 	},
 	{
 		id: 7,
@@ -108,6 +111,9 @@ var features = [
 							],
 		icon:'/img/weborders-icon-plus.png',
 		active:true,
+		$terms:{
+			purchase:'/terms/140702 Premium Services - Web Order and Web Order Plus.pdf'
+		}
 	},		
 	{
 		id: 5,
