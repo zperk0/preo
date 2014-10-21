@@ -265,7 +265,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
             }).join(', ');
 
             data = {               
-              content: _tr("This feature depends on ") + name,
+              content: _tr("To access this feature you need to have ") + name + _tr(" installed first "),
               showTerm: false,
               btnOk: _tr('BUY ') + name,
               windowClass:'medium'
