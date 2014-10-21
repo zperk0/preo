@@ -1,3 +1,7 @@
+<?php 
+	session_start();
+?>
+
 var features = [
 	{
 		id: 1,
@@ -91,6 +95,13 @@ var features = [
 							],
 		icon:'/img/weborders-icon.png',
 		active:true,
+		modal: {
+			success: {
+				content: [<?echo json_encode(_("Customers can now place orders online by visiting:")); ?>,
+						  <?echo json_encode("<a class='linkSuccessShop' href='http://" . $_SERVER['HTTP_HOST'] . "/" . str_replace(' ', '-', $_SESSION['venue_name']) . "'>http://" . $_SERVER['HTTP_HOST'] . "/" . str_replace(' ', '-', $_SESSION['venue_name']) . "</a>"); ?>
+						 ]
+			}
+		},
 		$terms:{
 			purchase:'/terms/140702 Premium Services - Web Order and Web Order Plus.pdf'
 		}		
@@ -111,6 +122,11 @@ var features = [
 							],
 		icon:'/img/weborders-icon-plus.png',
 		active:true,
+		modal: {
+			success: {
+				content: <?echo json_encode(_("A member of our team will be in touch very shortly to register your custom domain name.")); ?>
+			}
+		},		
 		$terms:{
 			purchase:'/terms/140702 Premium Services - Web Order and Web Order Plus.pdf'
 		}

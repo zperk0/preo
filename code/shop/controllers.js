@@ -183,12 +183,28 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
               $scope.navigateTo( feature.$link );
             } else {
               data = { 
-                title: _tr("Your new Premium Feature is now live!"),
-                content: _tr("You will be contacted shortly by a member of our team. You can manage subscriptions from your <a href='/accountSettings#/subscription'>account settings page.</a>"),
                 showTerm: false,
                 btnCancel:_tr("OK"),
                 btnOk: false,
                 windowClass:'medium'
+              };
+
+              if (feature.hasOwnProperty('modal') && feature.modal && feature.modal.hasOwnProperty('success')) {
+                var modal = feature.modal.success;
+                if (modal.title) {
+                  data.title = modal.title;
+                } else {
+                  data.title = _tr("Your new Premium Feature is now live!");  
+                }
+
+                if ( modal.content instanceof Array ) {
+                  data.content = modal.content.join('<br />');
+                } else {
+                  data.content = modal.content;
+                }
+              } else {
+                data.title = _tr("Your new Premium Feature is now live!");
+                data.content = _tr("You will be contacted shortly by a member of our team. You can manage subscriptions from your <a href='/accountSettings#/subscription'>account settings page.</a>");
               }
             }       
           break; 
