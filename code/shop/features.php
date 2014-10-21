@@ -122,6 +122,7 @@ var features = [
 							],
 		icon:'/img/weborders-icon-plus.png',
 		active:true,
+		depends: [6],
 		modal: {
 			success: {
 				content: <?echo json_encode(_("A member of our team will be in touch very shortly to register your custom domain name.")); ?>

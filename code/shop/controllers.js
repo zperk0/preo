@@ -96,7 +96,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
       }
     }
 
-    $scope.setSelectedFeature = function(id){              ;
+    $scope.setSelectedFeature = function(id){
         $scope.currentScreenshot = 0;
         $scope.selectedFeature = {
             index:id,
@@ -111,7 +111,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     function getFeatureById(id){
       console.log("lenght:",$scope.PremiumFeatures.length);
       console.log($scope.PremiumFeatures);      
-      for (var i=0;i<=$scope.PremiumFeatures.length;i++){        
+      for (var i=0, len = $scope.PremiumFeatures.length;i<len;i++){        
         var feature = $scope.PremiumFeatures[i]
         console.log(id,feature);
         if (feature.id === id){
@@ -131,17 +131,46 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     }
 
     $scope.clickBuy = function(){
-      Resources.AccountCard.get({accountId:ACCOUNT_ID},
-        function(){
-        getFeaturePrice($scope.selectedFeature.feature);
-      },function(error){          
-          if (error.data && error.data.status === 404){
-                $scope.dismissAndShowDialog("noPayment");
-          } else{
-              displayErrorNoty()
-            }                       
+      var feature = $scope.selectedFeature.feature;
+
+      var accountCard = function(){
+        Resources.AccountCard.get({accountId:ACCOUNT_ID},
+          function(){
+          getFeaturePrice($scope.selectedFeature.feature);
+        },function(error){          
+            if (error.data && error.data.status === 404){
+                  $scope.dismissAndShowDialog("noPayment");
+            } else{
+                displayErrorNoty()
+              }                       
+          }
+        );
+      };
+
+      if ( feature.hasOwnProperty('depends') && feature.depends.length ) {
+        var featureDepends = [];
+        for (var i = 0, len = feature.depends.length; i < len; i++) {
+          var featureResults = $scope.accountFeatures.filter(function (a) {
+            return a.featureId == feature.depends[i];
+          })
+          if (!featureResults || (featureResults && !featureResults.length)) {
+            var f = getFeatureById(feature.depends[i]);
+            featureDepends.push({
+              id: feature.depends[i],
+              name: f.name
+            });
+          }
+        };
+
+        if (featureDepends.length) {
+          $scope.featureDepends = featureDepends;
+          $scope.dismissAndShowDialog("depends");
+        } else {
+          accountCard();
         }
-      );       
+      } else {
+        accountCard();
+      }      
     }
 
     $scope.clickGetInTouch = function(){
@@ -230,6 +259,23 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
               $scope.navigateTo('/accountSettings#/paymentMethod')
             };
           break; 
+          case "depends":
+            var name = $scope.featureDepends.map(function (elem) {
+              return elem.name;
+            }).join(', ');
+
+            data = {               
+              content: _tr("This feature depends on ") + name,
+              showTerm: false,
+              btnOk: _tr('BUY ') + name,
+              windowClass:'medium'
+            }        
+            clickOk = function(){
+              console.log('clicou ok ', $scope.featureDepends[0].id, $scope.featureDepends);
+              $scope.setSelectedFeature($scope.featureDepends[0].id);
+              $('#featureModal').foundation('reveal', 'open');
+            };
+          break; 
         }
         if ( data ) {
           $notification.confirm(data).then(clickOk,clickCancel);
@@ -276,9 +322,26 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
                       $scope.showDialog("paymentError");
                     }                        
                 },
-                function(error){                
-                  $AjaxInterceptor.complete();         
-                  displayErrorNoty();
+                function(error){
+                  $AjaxInterceptor.complete();
+                  if (error.status == 412) {
+                    var message = error.data.message;
+                    message = message.replace('[','').replace(']', '');
+                    message = message.split(',');
+                    $scope.featureDepends = [];
+                    for (var i = 0, len = message.length; i < len; i++) {
+                      var id = message[i];
+                      $scope.featureDepends.push({
+                        id: +id,
+                        name: FEATURES.filter(function(a){
+                          return a.id == id;
+                        })[0].name
+                      });
+                    };
+                    $scope.showDialog("depends");                    
+                  } else {
+                    displayErrorNoty();
+                  }
                 });
                                       
             }          
