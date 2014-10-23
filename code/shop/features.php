@@ -87,7 +87,7 @@ var features = [
 		name: <? echo json_encode(_("Web Order"))?>,
 		upfrontPrice: 0,
 		subscriptionPrice:25,
-		trialPeriod:0,
+		trialPeriod: 3,
 		descriptionFeatures :[<?echo json_encode(_("Have your own branded webpage for customers to place web-orders"))?>,
 							  <?echo json_encode(_("Can be updated and managed in real-time"))?>,
 							  <?echo json_encode(_("Automatically syncs with your mobile app"))?>,
