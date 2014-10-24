@@ -104,7 +104,7 @@ var features = [
 		modal: {
 			success: {
 				content: [<?echo json_encode(_("Customers can now place orders online by visiting:")); ?>,
-						  <?echo json_encode("<a class='linkSuccessShop' href='http://" . $_SERVER['HTTP_HOST'] . "/" . $permalinkVenue . "'>http://" . $_SERVER['HTTP_HOST'] . "/" . $permalinkVenue . "</a>"); ?>
+						  <?echo json_encode("<a class='linkSuccessShop' href='http://preoday.com/" . $permalinkVenue . "'>http://preoday.com/" . $permalinkVenue . "</a>"); ?>
 						 ]
 			}
 		},
