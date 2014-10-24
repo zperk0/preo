@@ -249,25 +249,53 @@ function cropImage( $src, $dest, $sourceFolder, $destFolder, $imgInitW, $imgInit
 	$imginfo_array = getimagesize($src);   // returns a false if not a valid image file
 
 	$width = $imginfo_array[0];  
-	$height = $imginfo_array[1]; 	
+	$height = $imginfo_array[1]; 
 
-	if ( $width < $MAX_WIDTH ) {
+	if ( $width < $MAX_WIDTH || $height < $MAX_HEIGHT || $imgW === 'NaN' ) {
+		$aspect = $width / $height;
+
+		if ( $height > $MAX_HEIGHT ) {
+			$newHeight = $MAX_HEIGHT;
+			$newWidth = $newHeight / $aspect;
+
+			$name = explode('/', $dest);
+			$name = $name[count($name) - 1];
+			createThumbnail($src, $name, $dest, $newWidth, $newHeight, $quality);
+
+			return array(array(
+				"status" => 'success',
+				"url" => $destFolder
+			  ));			
+		}
+
+		if ( $width > $MAX_WIDTH ) {
+			$newWidth = $MAX_WIDTH;
+			$newHeight = $newWidth / $aspect;
+
+			$name = explode('/', $dest);
+			$name = $name[count($name) - 1];
+			createThumbnail($src, $name, $dest, $newWidth, $newHeight, $quality);
+
+			return array(array(
+				"status" => 'success',
+				"url" => $destFolder
+			  ));						
+		}
+
 		return array(array(
 			"status" => 'success',
 			"url" => $sourceFolder
 		  ));
 	}
 
-	$what = getimagesize($src);
-	switch(strtolower($what['mime']))
+	switch(strtolower($imginfo_array['mime']))
 	{
 	    case 'image/png':
-	        $img_r = imagecreatefrompng($src);
 			$source_image = imagecreatefrompng($src);
+			imagealphablending( $source_image, true );
 			$type = '.png';
 	        break;
 	    case 'image/jpeg':
-	        $img_r = imagecreatefromjpeg($src);
 			$source_image = imagecreatefromjpeg($src);
 			$type = '.jpeg';
 	        break;
@@ -275,13 +303,24 @@ function cropImage( $src, $dest, $sourceFolder, $destFolder, $imgInitW, $imgInit
 	}
 
 	$resizedImage = imagecreatetruecolor($imgW, $imgH);
+	if ( $type === '.png' ) {
+		imagesavealpha( $resizedImage, true );    			
+		imagealphablending( $resizedImage, true );
+		$transparent = imagecolorallocatealpha($resizedImage, 0, 0, 0, 127);
+		imagefill($resizedImage, 0, 0, $transparent);	
+	}
 	imagecopyresampled($resizedImage, $source_image, 0, 0, 0, 0, $imgW, 
 				$imgH, $imgInitW, $imgInitH);	
 	
 	
 	$dest_image = imagecreatetruecolor($cropW, $cropH);
-	imagecopyresampled($dest_image, $resizedImage, 0, 0, $imgX1, $imgY1, $cropW, 
-				$cropH, $cropW, $cropH);
+	if ( $type === '.png' ) {
+		imagesavealpha( $dest_image, true );    			
+		imagealphablending( $dest_image, true );
+		$transparent = imagecolorallocatealpha($dest_image, 0, 0, 0, 127);
+		imagefill($dest_image, 0, 0, $transparent);
+	}
+	imagecopyresampled($dest_image, $resizedImage, 0, 0, $imgX1, $imgY1, $cropW, $cropH, $cropW, $cropH);
 
     if($type == ".png")
     {
@@ -292,7 +331,7 @@ function cropImage( $src, $dest, $sourceFolder, $destFolder, $imgInitW, $imgInit
     }
     else
     {
-	  imagejpeg($dest_image, $dest, $quality) or die(json_encode( array(
+	  imagejpeg($dest_image, $dest, 90) or die(json_encode( array(
 															'status' => 'error',
 															'message' => 'Error in save file'
 													)));

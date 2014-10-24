@@ -101,6 +101,7 @@
 		$data['name'] 		= $section['name'];
 		$data['menuId'] 	= $menu_id;
 		$data['position'] 	= $section['position'];
+		$data['collapse'] 	= $section['collapse'];
 		
 		if($section['delete']) //delete section
 		{
@@ -223,7 +224,7 @@
 					$curlResult = callAPI('GET', $apiURL."itemimages/$item_id", false, $apiAuth);
 					$Image = json_decode($curlResult,true);
 
-					if ( $Image ) {
+					if ( $Image && is_array($Image) && isset($Image['image']) ) {
 						$PREO_UPLOAD_ROOT = SystemStatic::getUploadRoot( "" );
 
 							//kill menu

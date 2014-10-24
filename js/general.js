@@ -2024,6 +2024,17 @@ $(document).ready(function() {
 	var $loadingContent = $('#loadingConfig');
 
 	var postImage = 0;
+
+	$(document).on('click', '.collapseSection', function(){
+		var $this = $(this);
+		if ( $this.is(':checked') && $this.data('value') != '1' ) {
+			$this.data('edit', true);
+		} else if(!$this.is(':checked') && $this.data('value') == '1' ) {
+			$this.data('edit', true);
+		} else {
+			$this.data('edit', false);
+		}
+	});
 	
 	$("#menuConfigForm").on('valid', function (event) {
 		var newSubmitTime = new Date().getTime();
@@ -2070,10 +2081,15 @@ $(document).ready(function() {
 					menu['sections'][secCounter] = {};
 
 					var menuSecionOneNivel = menu['sections'][secCounter];
+
+					var $inputCollapse = $inputSectionIndividual.parent().parent().parent().find('.collapseSection');
+
+					var collapse = $inputCollapse.is(':checked') ? 1 : 0;
 					
 					menuSecionOneNivel['id'] 			= sID.replace(/section/,'');
 					menuSecionOneNivel['name'] 		= $inputSectionIndividual.val();
 					menuSecionOneNivel['position'] 	= secCounter;
+					menuSecionOneNivel['collapse'] 	= collapse;
 					
 					menuSecionOneNivel['insert'] 		= $inputSectionIndividual.data('insert');
 					menuSecionOneNivel['edit'] 		= $inputSectionIndividual.data('edit');
@@ -2081,6 +2097,10 @@ $(document).ready(function() {
 					menuSecionOneNivel['md'] 			= $inputSectionIndividual.data('md');
 					
 					menuSecionOneNivel['menuId'] 		= menu['id'];
+
+					if ( !menuSecionOneNivel['edit'] && !menuSecionOneNivel['insert'] && !menuSecionOneNivel['delete'] ) {
+						menuSecionOneNivel['edit'] = $inputCollapse.data('edit');
+					}
 					
 					//ITEMS
 					menuSecionOneNivel['items'] = {};
@@ -2358,6 +2378,13 @@ $(document).ready(function() {
 				for (var p = 0, lenAjax = $inputEachAjax.length; p < lenAjax; p++) {
 					
 					var $inputEachAjaxUnique = $( $inputEachAjax[p] );
+
+					if ( $inputEachAjaxUnique[0].name.indexOf('mSectionName') !== -1 ) {
+						var $inputCollapseAjax = $inputEachAjaxUnique.parent().parent().parent().find('.collapseSection');
+						var collapseAjax = $inputCollapseAjax.is(':checked') ? 1 : 0;
+						$inputCollapseAjax.data('value', collapseAjax);
+						$inputCollapseAjax.attr('data-value', collapseAjax);
+					}
 				
 					$inputEachAjaxUnique.attr('data-delete', false);
 					$inputEachAjaxUnique.attr('data-insert', false);
@@ -4201,7 +4228,7 @@ $(document).ready(function() {
 							return false;
 						}
 						
-						if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
+						if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && dataArray['result'] && typeof dataArray['result']['status'] !='undefined') ) //error
 						{
 							noty({
 							  type: 'error',  layout: 'topCenter',
