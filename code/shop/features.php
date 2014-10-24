@@ -1,5 +1,11 @@
 <?php 
 	session_start();
+	$permalinkVenue = '';
+	if ( isset($_SESSION['venue_permalink']) ) {
+		$permalinkVenue = $_SESSION['venue_permalink'];
+	} else if (isset($_SESSION['venue_name'])) {
+		$permalinkVenue = str_replace(' ', '-', $_SESSION['venue_name']);
+	}
 ?>
 
 var features = [
@@ -98,7 +104,7 @@ var features = [
 		modal: {
 			success: {
 				content: [<?echo json_encode(_("Customers can now place orders online by visiting:")); ?>,
-						  <?echo json_encode("<a class='linkSuccessShop' href='http://" . $_SERVER['HTTP_HOST'] . "/" . str_replace(' ', '-', $_SESSION['venue_name']) . "'>http://" . $_SERVER['HTTP_HOST'] . "/" . str_replace(' ', '-', $_SESSION['venue_name']) . "</a>"); ?>
+						  <?echo json_encode("<a class='linkSuccessShop' href='http://" . $_SERVER['HTTP_HOST'] . "/" . $permalinkVenue . "'>http://" . $_SERVER['HTTP_HOST'] . "/" . $permalinkVenue . "</a>"); ?>
 						 ]
 			}
 		},
