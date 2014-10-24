@@ -787,6 +787,68 @@ $(document).ready(function() {
 		$modalImagesCrop.foundation('reveal', 'open');
 	});
 	
+	var tags = [];
+	var $listTags = $('.listTags');
+
+	$.getJSON('/menuitem_tags.json').done(function( data ){
+		for (var i = 0, len = data.tags.length; i < len; i++) {
+			var tag = data.tags[i];
+
+			tags.push('<li>' +
+						'<div class="checkbox checkboxStyle">' +
+						  	'<input type="checkbox" value="' + tag.id + '" id="check_' + tag.id + '">' +
+						    '<label for="check_' + tag.id + '">' +
+						    	'<span>' + tag.name + '</span>' + 
+						    	'<img src="/img/menu-icons/' + tag.icon + '" width="30" alt="' + tag.name + '" />' +
+						    '</label>' +
+					  	'</div>' +
+					'</li>');
+		};
+
+		$listTags.html(tags.join(''));
+	})
+
+	// images of item for uploader
+	var tagsMenu = {};
+
+	var $modalTags = $('#modalTags');
+	var $titleTags = $('#title-tags');
+	var $saveChangesTags = $('#saveChangesTags');
+	var $cancelModalTags = $('#cancelModalTags');
+	var idItemForTags = null;
+
+	$(document).on('click', '#cancelModalTags', function(){
+		$modalTags.foundation('reveal', 'close');
+	});
+
+	$(document).on('click', '#saveChangesTags', function(){
+		var $inputs = $listTags.find('input:checked');
+
+		tagsMenu[idItemForTags] = [];
+
+		for (var i = 0, len = $inputs.length; i < len; i++) {
+			var $input = $($inputs[i]);
+			tagsMenu.push($input.val());
+		};
+
+		$modalTags.foundation('reveal', 'close');		
+	})
+
+	$(document).on('click', '.itemTags', function(){
+
+		var $table = $(this).closest('table');
+		var $input = $table.find('input[name^=iName]');		
+		idItemForTags = $input.data('id');
+
+		$listTags.find('input:checkbox').removeAttr('checked');
+
+		$modalTags.css('top', $(window).scrollTop() + 100);
+
+		$titleTags.text('Tags for ' + $input.val());
+
+		$modalTags.foundation('reveal', 'open');
+	}); 
+	
 	//ajax form upload
 	var optionsBG = { 
 		url: '/uploadBG',

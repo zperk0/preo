@@ -1,0 +1,12 @@
+{
+	"tags": [
+		{"id": "1", "name": "Medium", "icon": "medium.png"},
+		{"id": "2", "name": "Spicy", "icon": "spicy.png"},
+		{"id": "3", "name": "Hot", "icon": "hot.png"},
+		{"id": "4", "name": "Vegetarian", "icon": "vegetarian.png"},
+		{"id": "5", "name": "Vegan", "icon": "vegan.png"},
+		{"id": "6", "name": "Contains nuts", "icon": "contains-nuts.png"},
+		{"id": "7", "name": "Gluten free", "icon": "gluten-free.png"},
+		{"id": "8", "name": "Halal", "icon": "halal.png"}
+	]
+}
