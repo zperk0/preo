@@ -796,8 +796,8 @@ $(document).ready(function() {
 
 			tags.push('<li>' +
 						'<div class="checkbox checkboxStyle">' +
-						  	'<input type="checkbox" value="' + tag.id + '" id="check_' + tag.id + '">' +
-						    '<label for="check_' + tag.id + '">' +
+						  	'<input type="checkbox" value="' + tag.id + '" id="checktag_' + tag.id + '">' +
+						    '<label for="checktag_' + tag.id + '">' +
 						    	'<span>' + tag.name + '</span>' + 
 						    	'<img src="/img/menu-icons/' + tag.icon + '" width="30" alt="' + tag.name + '" />' +
 						    '</label>' +
@@ -806,7 +806,7 @@ $(document).ready(function() {
 		};
 
 		$listTags.html(tags.join(''));
-	})
+	});
 
 	// images of item for uploader
 	var tagsMenu = {};
@@ -815,7 +815,22 @@ $(document).ready(function() {
 	var $titleTags = $('#title-tags');
 	var $saveChangesTags = $('#saveChangesTags');
 	var $cancelModalTags = $('#cancelModalTags');
+	var $lastInputName = null;
 	var idItemForTags = null;
+
+	var $itemTags = $('.itemTags');
+	for (var i = $itemTags.length - 1; i >= 0; i--) {
+		var $tag = $($itemTags[i]);
+		var tagsItem = $tag.data('tags');
+
+		var $table = $tag.closest('table');
+		var $input = $table.find('input[name^=iName]');		
+		var id = $input.data('id');
+
+		if (tagsItem) {
+			tagsMenu[id] = tagsItem;
+		}
+	};
 
 	$(document).on('click', '#cancelModalTags', function(){
 		$modalTags.foundation('reveal', 'close');
@@ -828,8 +843,11 @@ $(document).ready(function() {
 
 		for (var i = 0, len = $inputs.length; i < len; i++) {
 			var $input = $($inputs[i]);
-			tagsMenu.push($input.val());
+			tagsMenu[idItemForTags].push($input.val());
 		};
+
+		$lastInputName.attr('data-edit', true);
+		$lastInputName.data('edit', true);
 
 		$modalTags.foundation('reveal', 'close');		
 	})
@@ -838,9 +856,20 @@ $(document).ready(function() {
 
 		var $table = $(this).closest('table');
 		var $input = $table.find('input[name^=iName]');		
+		$lastInputName = $input;
 		idItemForTags = $input.data('id');
 
 		$listTags.find('input:checkbox').removeAttr('checked');
+
+		var tagsModal = tagsMenu[idItemForTags];
+
+		if (tagsModal && tagsModal.length) {
+			for (var i = tagsModal.length - 1; i >= 0; i--) {
+				var t = tagsModal[i];
+
+				$('#checktag_' + t).attr('checked', 'checked');
+			};
+		}
 
 		$modalTags.css('top', $(window).scrollTop() + 100);
 
@@ -2213,6 +2242,7 @@ $(document).ready(function() {
 							
 							if ( !$inputName.data('delete') ) {
 								menuSectionOneNivelItem['images'] 		= imagesMenu[iID];
+								menuSectionOneNivelItem['tags'] 		= tagsMenu[iID];
 
 								if( !menuSectionOneNivelItem['edit'] && !menuSectionOneNivelItem['insert'] && !menuSectionOneNivelItem['delete'] 
 									&& imagesMenu[iID] instanceof Object && imagesMenu[iID].length && !imagesMenu[iID][0].saved) {

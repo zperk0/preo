@@ -279,10 +279,14 @@
 												$attr = ''; 
 												if ( isset($item['images']) && count($item['images']) ) {
 													$attr = 'data-image-url = "' . $item['images'][0]['image'] . '"';
+												} 
+												$attrTags = '';
+												if ( isset($item['tags']) && count($item['tags']) ) {
+													$attrTags = 'data-tags="' . json_encode($item['tags']) . '"';
 												}
 											?>
 											<button type="button" class="menuTableButtons itemUpload" 	<?php echo $attr ?>	title="<?echo _("Upload image");?>"							><i class="pd-upload"></i></button>										
-											<button type="button" class="menuTableButtons itemTags" 		title="<?echo _("Add tags");?>"							><i class="pd-tags"></i></button>
+											<button type="button" class="menuTableButtons itemTags" 	<?php echo $attrTags ?>	title="<?echo _("Add tags");?>"							><i class="pd-tags"></i></button>
 											<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Collapse");?>"							><i class="pd-up"></i></button>
 											<button type="button" class="menuTableButtons itemEdit" 				title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
 											<button type="button" class="menuTableButtons sortHandle"				title="<?echo _("Reorder");?>"							><i class="pd-move"></i></button>

@@ -78,12 +78,20 @@
 		$mealDealItemArray = array();
 		
 		$sectionCount = count($menu['sections']);
-		foreach($menu['sections'] as $section)
+		foreach($menu['sections'] as $keySection => $section)
 		{
 			$itemCount += count($section['items']);
 		
-			foreach($section['items'] as $item)
+			foreach($section['items'] as $keyItem => $item)
 			{
+				$tagsResult = $item['tags'];
+				$tags = [];
+				foreach ($tagsResult as $Tag) {
+					$tags[] = $Tag['tagId'];
+				}
+
+				$menu['sections'][$keySection]['items'][$keyItem]['tags'] = $tags;
+
 				if($item['mealDeal']) 
 				{
 					$mealDealArray[] = $item['id'];
