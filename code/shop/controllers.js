@@ -173,8 +173,8 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
       }      
     }
 
-    $scope.clickGetInTouch = function(){
-      document.location.href = "mailto:hello@preoday.com?subject=Please contact me regarding Enterprise";
+    $scope.clickGetInTouch = function(feature){
+      document.location.href = "mailto:hello@preoday.com?subject=Please contact me regarding " + feature.name;
       $('#featureModal').foundation('reveal', 'close');
     }
 
@@ -267,7 +267,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
             data = {               
               content: _tr("To access this feature you need to have ") + name + _tr(" installed first "),
               showTerm: false,
-              btnOk: _tr('BUY ') + name,
+              btnOk: _tr('Buy ') + name,
               windowClass:'medium'
             }        
             clickOk = function(){
