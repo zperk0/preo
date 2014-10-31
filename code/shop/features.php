@@ -92,7 +92,7 @@ var features = [
 		shortDescription: <? echo json_encode(_("Your own individual web page that allows customers to place orders online."))?>,
 		name: <? echo json_encode(_("Web Order"))?>,
 		upfrontPrice: 0,
-		subscriptionPrice:25,
+		subscriptionPrice:20,
 		trialPeriod: 90,
 		descriptionFeatures :[<?echo json_encode(_("Have your own branded webpage for customers to place web-orders"))?>,
 							  <?echo json_encode(_("Can be updated and managed in real-time"))?>,
