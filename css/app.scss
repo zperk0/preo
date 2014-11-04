@@ -3967,6 +3967,11 @@ button.preodayButton.noclick{
   display: inline-block;
   background: url("/img/box-off.png") no-repeat;
 }
+.linkSuccessShop{
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+}
 
 .custom-checkbox input[type=checkbox]:checked + span.icon{
   background: url("/img/box-on.png") no-repeat;
@@ -3985,3 +3990,5 @@ button.preodayButton.noclick{
   -khtml-opacity: 0;
   -moz-opacity: 0;
 }
+
+
