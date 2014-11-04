@@ -71,7 +71,7 @@ var features = [
 		name: <? echo json_encode(_("Know your customer"))?>,
 		upfrontPrice: 0,
 		subscriptionPrice:20,	
-		trialPeriod:30,
+		trialPeriod:90,
 		descriptionFeatures :[<?echo json_encode(_("Customer profiles and order histories"))?>,
 													<?echo json_encode(_("Order analytics and easy-to-use charts"))?>,
 													<?echo json_encode(_("Standard and customised reporting"))?>,
