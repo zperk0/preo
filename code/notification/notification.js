@@ -132,11 +132,7 @@ angular.module('notification', ['ngSanitize'])
           }
         });
         modalCofirm.opened.then(function(){
-              setTimeout(function(){              
-                  var maxWidth = 0;
-                  $('.notificationButtons button').each(function(){                    
-                    maxWidth = maxWidth > $(this).width() ? maxWidth : $(this).width();
-                  }).width(maxWidth);
+              setTimeout(function(){                                
                   $(".modal-preoday").addClass("active");
               },400)
         }) 

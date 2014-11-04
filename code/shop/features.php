@@ -1,3 +1,13 @@
+<?php 
+	session_start();
+	$permalinkVenue = '';
+	if ( isset($_SESSION['venue_permalink']) ) {
+		$permalinkVenue = $_SESSION['venue_permalink'];
+	} else if (isset($_SESSION['venue_name'])) {
+		$permalinkVenue = str_replace(' ', '-', $_SESSION['venue_name']);
+	}
+?>
+
 var features = [
 	{
 		id: 1,
@@ -76,6 +86,59 @@ var features = [
 			purchase:'/terms/140702 Premium Services - KYC.pdf'
 		}
 	},	
+	{
+		id: 6,
+		description: <? echo json_encode(_("Web Order gives your customers the chance to be able to place orders online from your own dedicated web page. Use it as your website, or link to it from an existing website or social media page, and give your business extra presence and functionality on the web. It is managed from the same dashboard as your mobile app, so every update you make is automatically synced across both platforms.")) ?>,
+		shortDescription: <? echo json_encode(_("Your own individual web page that allows customers to place orders online."))?>,
+		name: <? echo json_encode(_("Web Order"))?>,
+		upfrontPrice: 0,
+		subscriptionPrice:25,
+		trialPeriod: 90,
+		descriptionFeatures :[<?echo json_encode(_("Have your own branded webpage for customers to place web-orders"))?>,
+							  <?echo json_encode(_("Can be updated and managed in real-time"))?>,
+							  <?echo json_encode(_("Automatically syncs with your mobile app"))?>,
+							  <?echo json_encode(_("No commission on orders"))?>,
+							],
+		icon:'/img/weborders-icon.png',
+		active:true,
+		modal: {
+			success: {
+				content: [<?echo json_encode(_("Customers can now place orders online by visiting:")); ?>,
+						  <?echo json_encode("<a class='linkSuccessShop' href='http://preoday.com/" . $permalinkVenue . "'>http://preoday.com/" . $permalinkVenue . "</a>"); ?>
+						 ]
+			}
+		},
+		$terms:{
+			purchase:'/terms/140702 Premium Services - Web Order and Web Order Plus.pdf'
+		}		
+	},
+	{
+		id: 7,
+		description: <? echo json_encode(_("Upgrade your Web Orders page with a customised domain name of your choosing. This could be the name of your restaurant or something else relevant. A memorable web address can make it easier for customers to find you online and strengthens your brand.")) ?>,
+		shortDescription: <? echo json_encode(_("Upgrade Web Order with a customised web address, chosen by you"))?>,
+		name: <? echo json_encode(_("Web Order PLUS"))?>,
+		upfrontPrice: 0,
+		subscriptionPrice:5,
+		trialPeriod:0,
+		descriptionFeatures :[<?echo json_encode(_("Have your own branded webpage for customers to place web-orders"))?>,
+							   <?echo json_encode(_("Can be updated and managed in real-time"))?>,
+							   <?echo json_encode(_("Automatically syncs with your mobile app"))?>,
+							   <?echo json_encode(_("No commission on orders"))?>,
+							   <?echo json_encode(_("Choose your own customised domain name"))?>,
+							],
+		icon:'/img/weborders-icon-plus.png',
+		getInTouch: true,
+		active:true,
+		depends: [6],
+		modal: {
+			success: {
+				content: <?echo json_encode(_("A member of our team will be in touch very shortly to register your custom domain name.")); ?>
+			}
+		},		
+		$terms:{
+			purchase:'/terms/140702 Premium Services - Web Order and Web Order Plus.pdf'
+		}
+	},		
 	{
 		id: 5,
 		description: <? echo json_encode(_("Preoday is not only for small independent companies.  At its heart, Preoday is a robust, open and scale-able mobile ordering platform ideal for the business and performance needs of the world’s largest customers. It is an off-the-shelf solution designed from inception for integrating with your firm’s existing ePOS systems, payment processors, booking systems, website, and loyalty and marketing platforms to offer a complete mobile experience.  Why not get in touch and find out more?")) ?>,
