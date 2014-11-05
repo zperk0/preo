@@ -96,7 +96,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
       }
     }
 
-    $scope.setSelectedFeature = function(id){              ;
+    $scope.setSelectedFeature = function(id){
         $scope.currentScreenshot = 0;
         $scope.selectedFeature = {
             index:id,
@@ -111,7 +111,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     function getFeatureById(id){
       console.log("lenght:",$scope.PremiumFeatures.length);
       console.log($scope.PremiumFeatures);      
-      for (var i=0;i<=$scope.PremiumFeatures.length;i++){        
+      for (var i=0, len = $scope.PremiumFeatures.length;i<len;i++){        
         var feature = $scope.PremiumFeatures[i]
         console.log(id,feature);
         if (feature.id === id){
@@ -131,21 +131,50 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     }
 
     $scope.clickBuy = function(){
-      Resources.AccountCard.get({accountId:ACCOUNT_ID},
-        function(){
-        getFeaturePrice($scope.selectedFeature.feature);
-      },function(error){          
-          if (error.data && error.data.status === 404){
-                $scope.dismissAndShowDialog("noPayment");
-          } else{
-              displayErrorNoty()
-            }                       
+      var feature = $scope.selectedFeature.feature;
+
+      var accountCard = function(){
+        Resources.AccountCard.get({accountId:ACCOUNT_ID},
+          function(){
+          getFeaturePrice($scope.selectedFeature.feature);
+        },function(error){          
+            if (error.data && error.data.status === 404){
+                  $scope.dismissAndShowDialog("noPayment");
+            } else{
+                displayErrorNoty()
+              }                       
+          }
+        );
+      };
+
+      if ( feature.hasOwnProperty('depends') && feature.depends.length ) {
+        var featureDepends = [];
+        for (var i = 0, len = feature.depends.length; i < len; i++) {
+          var featureResults = $scope.accountFeatures.filter(function (a) {
+            return a.featureId == feature.depends[i];
+          })
+          if (!featureResults || (featureResults && !featureResults.length)) {
+            var f = getFeatureById(feature.depends[i]);
+            featureDepends.push({
+              id: feature.depends[i],
+              name: f.name
+            });
+          }
+        };
+
+        if (featureDepends.length) {
+          $scope.featureDepends = featureDepends;
+          $scope.dismissAndShowDialog("depends");
+        } else {
+          accountCard();
         }
-      );       
+      } else {
+        accountCard();
+      }      
     }
 
-    $scope.clickGetInTouch = function(){
-      document.location.href = "mailto:hello@preoday.com?subject=Please contact me regarding Enterprise";
+    $scope.clickGetInTouch = function(feature){
+      document.location.href = "mailto:hello@preoday.com?subject=Please contact me regarding " + feature.name;
       $('#featureModal').foundation('reveal', 'close');
     }
 
@@ -183,12 +212,28 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
               $scope.navigateTo( feature.$link );
             } else {
               data = { 
-                title: _tr("Your new Premium Feature is now live!"),
-                content: _tr("You will be contacted shortly by a member of our team. You can manage subscriptions from your <a href='/accountSettings#/subscription'>account settings page.</a>"),
                 showTerm: false,
                 btnCancel:_tr("OK"),
                 btnOk: false,
                 windowClass:'medium'
+              };
+
+              if (feature.hasOwnProperty('modal') && feature.modal && feature.modal.hasOwnProperty('success')) {
+                var modal = feature.modal.success;
+                if (modal.title) {
+                  data.title = modal.title;
+                } else {
+                  data.title = _tr("Your new Premium Feature is now live!");  
+                }
+
+                if ( modal.content instanceof Array ) {
+                  data.content = modal.content.join('<br />');
+                } else {
+                  data.content = modal.content;
+                }
+              } else {
+                data.title = _tr("Your new Premium Feature is now live!");
+                data.content = _tr("You will be contacted shortly by a member of our team. You can manage subscriptions from your <a href='/accountSettings#/subscription'>account settings page.</a>");
               }
             }       
           break; 
@@ -212,6 +257,23 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
             clickOk = function(){
               window.sessionStorage.setItem("featureCard", angular.toJson({feature: feature.id, card: false}));
               $scope.navigateTo('/accountSettings#/paymentMethod')
+            };
+          break; 
+          case "depends":
+            var name = $scope.featureDepends.map(function (elem) {
+              return elem.name;
+            }).join(', ');
+
+            data = {               
+              content: _tr("To access this feature you need to have ") + name + _tr(" installed first "),
+              showTerm: false,
+              btnOk: _tr('Buy ') + name,
+              windowClass:'medium'
+            }        
+            clickOk = function(){
+              console.log('clicou ok ', $scope.featureDepends[0].id, $scope.featureDepends);
+              $scope.setSelectedFeature($scope.featureDepends[0].id);
+              $('#featureModal').foundation('reveal', 'open');
             };
           break; 
         }
@@ -260,9 +322,26 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
                       $scope.showDialog("paymentError");
                     }                        
                 },
-                function(error){                
-                  $AjaxInterceptor.complete();         
-                  displayErrorNoty();
+                function(error){
+                  $AjaxInterceptor.complete();
+                  if (error.status == 412) {
+                    var message = error.data.message;
+                    message = message.replace('[','').replace(']', '');
+                    message = message.split(',');
+                    $scope.featureDepends = [];
+                    for (var i = 0, len = message.length; i < len; i++) {
+                      var id = message[i];
+                      $scope.featureDepends.push({
+                        id: +id,
+                        name: FEATURES.filter(function(a){
+                          return a.id == id;
+                        })[0].name
+                      });
+                    };
+                    $scope.showDialog("depends");                    
+                  } else {
+                    displayErrorNoty();
+                  }
                 });
                                       
             }          

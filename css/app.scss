@@ -1313,7 +1313,7 @@ tr {
 }
 
 .menuTable .menuTDTools, .headerTable .menuTDTools.colMenuItems {
-  width: 197px;
+  width: 200px;
 }
 
 .eventTable .eventTDTools, .headerTable .eventTDTools {
@@ -1328,6 +1328,12 @@ tr {
   font-size: 20px !important;
   padding: 1px 3px !important;
   margin-top: 8px;
+}
+
+@-moz-document url-prefix() { 
+  .menuTableButtons, .eventTableButtons, .userTableButtons, .outletTableButtons, .mdTableButtons {
+     padding: 0px 3px !important;
+  }
 }
 
 .userTableButtons, .mdTableButtons {
@@ -1566,8 +1572,11 @@ p.venueCode {
 
 .dashContent {
   color: #00C1F3;
-  h1, h3 {
+  h1, h3, .titleDashContent {
     color: #00C1F3;
+    &:hover{
+      color: #00C1F3;
+    }
   }
   p {
     margin-bottom: 0;
@@ -1590,7 +1599,7 @@ p.venueCode {
   .accordion {
     section {
       &:first-child {
-        border-top: 1px solid;
+        border-top: none;
       }
       border-bottom: 1px solid;
       margin-top: 10px;
@@ -3925,4 +3934,50 @@ button.preodayButton.noclick{
 .linkMail{
   font-size: 14px;
   color: #4F4F4F !important;
+}
+.custom-checkbox{
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  top: 0px;
+}
+
+.custom-checkbox span.text{
+  display: inline-block;
+  margin-top: 7px;
+  color: #48535d;
+}
+
+.custom-checkbox span.icon{
+  width: 28px;
+  height: 27px;  
+  margin-right: 5px;
+  float: left;
+  display: inline-block;
+  background: url("/img/box-off.png") no-repeat;
+}
+
+.custom-checkbox input[type=checkbox]:checked + span.icon{
+  background: url("/img/box-on.png") no-repeat;
+}
+.custom-checkbox input[type="checkbox"]{
+  margin: 0;
+  position: absolute;
+  z-index: 2;            
+  cursor: pointer;
+  outline: none;
+  opacity: 0;
+  /* CSS hacks for older browsers */
+  _noFocusLine: expression(this.hideFocus=true); 
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -khtml-opacity: 0;
+  -moz-opacity: 0;
+}
+
+
+.linkSuccessShop{
+  margin-top: 20px;
+  display: block;
+  text-align: center;
 }

@@ -47,7 +47,11 @@
                     <button ng-if="feature.trialPeriod > 0 && getFeatureStatus(feature) === false" class='preodayButton' ng-click="setSelectedFeature(feature.id)" data-reveal-id="featureModal" ><?echo _("FREE")?> {{feature.trialPeriod}} <?echo _("DAY TRIAL")?></button>
                     <button ng-if="feature.trialPeriod > 0  && getFeatureStatus(feature) ===  'TRIAL'" class='preodayButton secondary' ng-click="setSelectedFeature(feature.id)" data-reveal-id="featureModal" ><?echo _("TRIAL EXPIRES IN")?> {{ getExpiryDate(feature) }} <?echo _("DAYS")?> </button>
                   </div>
-                  <button ng-if="getFeatureStatus(feature) === 'REMOVED' || getFeatureStatus(feature) === 'CANCELED' || (feature.trialPeriod === 0 && getFeatureStatus(feature) === false) || getFeatureStatus(feature) === 'EXPIRED'"  class='preodayButton' ng-click="setSelectedFeature(feature.id)" data-reveal-id="featureModal" ><?echo _("BUY<")?>/button>
+                  <button ng-if="getFeatureStatus(feature) === 'REMOVED' || getFeatureStatus(feature) === 'CANCELED' || 
+                        (feature.trialPeriod === 0 && getFeatureStatus(feature) === false) || getFeatureStatus(feature) === 'EXPIRED'" 
+                         class='preodayButton' ng-click="setSelectedFeature(feature.id)" data-reveal-id="featureModal" ><?echo _("BUY")?>
+                   </button>
+
                   <button ng-if="getFeatureStatus(feature) === 'UNINSTALLED' || getFeatureStatus(feature) === 'INSTALLED'"   class='preodayButton secondary' ng-click="setSelectedFeature(feature.id)" data-reveal-id="featureModal"><?echo _("INSTALLED")?></button>
                 </div>                           
                 
@@ -76,14 +80,16 @@
           <button class='comingSoon preodayButton secondary noclick' disabled><?echo _("COMING SOON")?></button>
       </div>  
       <div ng-if="selectedFeature.feature.active && (selectedFeature.feature.trialPeriod == 0 || getExpiryDate(selectedFeature.feature) != 0) && getFeatureStatus(selectedFeature.feature) !== 'TRIAL'">
-        <button ng-if="getFeatureStatus(selectedFeature.feature) === 'REMOVED' || getFeatureStatus(selectedFeature.feature) === 'CANCELED' || getFeatureStatus(selectedFeature.feature) === false || getFeatureStatus(selectedFeature.feature) === 'EXPIRED'" class='preodayButton smallButton' ng-click='clickBuy()'><?echo _("BUY")?></button>
+        <button ng-if="(getFeatureStatus(selectedFeature.feature) === 'REMOVED' || getFeatureStatus(selectedFeature.feature) === 'CANCELED' 
+        || getFeatureStatus(selectedFeature.feature) === false || getFeatureStatus(selectedFeature.feature) === 'EXPIRED') && !selectedFeature.feature.getInTouch"
+          class='preodayButton smallButton' ng-click='clickBuy()'><?echo _("BUY")?></button>
         <button ng-if="getFeatureStatus(selectedFeature.feature) === 'UNINSTALLED' || getFeatureStatus(selectedFeature.feature) === 'INSTALLED'" class='preodayButton secondary noclick smallButton' ><?echo _("INSTALLED")?></button>              
       </div>            
       <div ng-if="selectedFeature.feature.active && selectedFeature.feature.trialPeriod > 0 && getExpiryDate(selectedFeature.feature) === 0">
         <button class='comingSoon preodayButton' ng-click='dismissAndShowDialog("trial")'><?echo _("FREE")?> {{selectedFeature.feature.trialPeriod}} <?echo _("DAY TRIAL")?></button>
       </div>            
       <div ng-if="selectedFeature.feature.getInTouch">
-        <button class='comingSoon preodayButton' ng-click='clickGetInTouch()'><?echo _("GET IN TOUCH")?></button>
+        <button class='comingSoon preodayButton' ng-click='clickGetInTouch(selectedFeature.feature)'><?echo _("GET IN TOUCH")?></button>
       </div> 
       <div ng-if="selectedFeature.feature.trialPeriod > 0 && getFeatureStatus(selectedFeature.feature) == 'TRIAL'">
         <button class='comingSoon preodayButton secondary' disabled> <?echo _("TRIAL EXPIRES IN")?> {{ getExpiryDate(selectedFeature.feature) }} <?echo _("DAYS")?> </button>

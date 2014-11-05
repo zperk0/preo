@@ -65,6 +65,9 @@
 	{	
 		$_SESSION['venue_id'] 				= $dataJSON[0]['id'];
 		$_SESSION['venue_name'] 			= $dataJSON[0]['name'];
+		if (isset($dataJSON[0]['permalink'])) {
+			$_SESSION['venue_permalink'] 		= $dataJSON[0]['permalink'];
+		}
 		$_SESSION['venue_desc'] 			= $dataJSON[0]['description'];
 		$_SESSION['venue_cat'] 				= $dataJSON[0]['categoryId'];
 		$_SESSION['venue_address1']  		= $dataJSON[0]['address1'];	
