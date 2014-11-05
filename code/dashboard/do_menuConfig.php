@@ -22,17 +22,17 @@
 	}
 
 	function getCodeTagById( $tagId ){
-		$tags = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "menuitem_tags.json"))->tags;
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/tags.php'); 
 		$resultTag = null;
 		foreach ($tags as $Tag) {
-			if ($Tag->id == $tagId) {
+			if ($Tag['id'] == $tagId) {
 				$resultTag = $Tag;
 				break;
 			}
 		}
 
 		if ( $resultTag ) {
-			return $resultTag->code;
+			return $resultTag['code'];
 		}
 		return null;
 	}
@@ -330,13 +330,15 @@
 
 				if ( isset($item['tags']) ) {
 					foreach ($item['tags'] as $tagId) {
-						$data = array();
-						$data['tagId'] = $tagId;
-						$data['menuItemId'] = $item_id;
-						$data['code'] = getCodeTagById($tagId);
-						$jsonData 	= json_encode($data);
-						$curlResult = callAPI('POST', $apiURL."items/$item_id/tags", $jsonData, $apiAuth); //item created
-						$result 	= json_decode($curlResult,true);
+						if ($tagId){
+							$data = array();
+							$data['tagId'] = $tagId;
+							$data['menuItemId'] = $item_id;
+							$data['code'] = getCodeTagById($tagId);
+							$jsonData 	= json_encode($data);
+							$curlResult = callAPI('POST', $apiURL."items/$item_id/tags", $jsonData, $apiAuth); //item created
+							$result 	= json_decode($curlResult,true);
+						}
 					}
 				}
 				
@@ -379,13 +381,15 @@
 				$curlResult = callAPI('DELETE', $apiURL."items/$item_id/tags", false, $apiAuth); //menu deleted
 				if ( isset($item['tags']) ) {
 					foreach ($item['tags'] as $tagId) {
-						$data = array();
-						$data['tagId'] = $tagId;
-						$data['menuItemId'] = $item_id;
-						$data['code'] = getCodeTagById($tagId);
-						$jsonData 	= json_encode($data);
-						$curlResult = callAPI('POST', $apiURL."items/$item_id/tags", $jsonData, $apiAuth); //item created
-						$result 	= json_decode($curlResult,true);
+						if ($tagId){
+							$data = array();
+							$data['tagId'] = $tagId;
+							$data['menuItemId'] = $item_id;
+							$data['code'] = getCodeTagById($tagId);
+							$jsonData 	= json_encode($data);
+							$curlResult = callAPI('POST', $apiURL."items/$item_id/tags", $jsonData, $apiAuth); //item created
+							$result 	= json_decode($curlResult,true);
+						}
 					}
 				}				
 				//remove edit tag for the item!
