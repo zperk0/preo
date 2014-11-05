@@ -54,10 +54,10 @@
 				<div class="large-12 columns">
 					<div class="accordion contentSectionsDashboard" data-options="one_up: false;" data-section="accordion">
 						<section>
-							<h3 data-section-title><a href="//orders.preoday.com" target="_blank" class="titleDashContent"><?echo _("Order Screen");?></a></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/order-icon_small.png"/>
+							<h3 data-section-title><a href="//orders.preoday.com" target="_blank" class="titleDashContent"><span><?echo _("Order Screen");?></span></a> <img src="<?echo $_SESSION['path']?>/img/dashboard/order-icon_small.png"/></h3>
 						</section>
 						<section>
-							<h3 data-section-title><?echo _("Venue Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
+							<h3 data-section-title><span><?echo _("Venue Settings");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/></h3>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/settings"><?echo _("Change settings");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/deliverySettings"><?echo _("Delivery settings");?></a></p>
@@ -68,14 +68,14 @@
 							</div>
 						</section>
 						<section>
-							<h3 data-section-title><?echo _("Styling");?></h3><img class="topFix" src="<?echo $_SESSION['path']?>/img/dashboard/styling_small.png"/>
+							<h3 data-section-title><span><?echo _("Styling");?></span><img class="topFix" src="<?echo $_SESSION['path']?>/img/dashboard/styling_small.png"/></h3>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/homescreen"><?echo _("Home screen");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/menuscreen"><?echo _("Menu screen");?></a></p>
 							</div>
 						</section>
 						<section>
-							<h3 data-section-title><?echo _("Menus");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/>
+							<h3 data-section-title><span><?echo _("Menus");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/></h3>
 							<div class="content" data-section-content>
 								<?foreach($_SESSION['menus'] as $menuL){?>
 									<p id="p-<?echo $menuL['id']?>">
@@ -89,14 +89,14 @@
 						</section>
 						<?if($_SESSION['venue_eventFlag']){?>		
 						<section>
-							<h3 data-section-title><?echo _("Events");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/events_small.png"/>
+							<h3 data-section-title><span><?echo _("Events");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/events_small.png"/></h3>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/events"><?echo _("Update events");?></a></p>
 							</div>
 						</section>
 						<?}?>
 						<section>
-							<h3 data-section-title><?echo _("Advanced Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
+							<h3 data-section-title><span><?echo _("Advanced Settings");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/></h3>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/users"><?echo _("Manage users");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/payment"><?echo _("Add a payment method");?></a></p>
@@ -104,7 +104,7 @@
 							</div>
 						</section>
 						<section class="premiumSection active">
-							<h3 data-section-title><?echo _("Premium Features");?></h3><i class="icon-plus-sign"></i>
+							<h3 data-section-title><span><?echo _("Premium Features");?></span><i class="icon-plus-sign"></i></h3>
 							<div class="content" data-section-content>
 
 									<?  //get the features list we have for this acocunt 									   

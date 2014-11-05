@@ -3931,7 +3931,58 @@ button.preodayButton.noclick{
 }
 
 .accordion.contentSectionsDashboard section > h3[data-section-title]{
-  width: 80% !important;
+  width: 100% !important;
+  position: relative;
+  height: auto;
+
+  span {
+    width: 80%;
+    display: inline-block;
+  }
+
+  img{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -10%;
+  }
+
+  i {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -4%;    
+  }
+}
+
+@media screen and (max-width: 910px) {
+
+  .accordion.contentSectionsDashboard section > h3[data-section-title]{
+    img {
+      margin-top: -12%;
+    }
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+
+  .accordion.contentSectionsDashboard section > h3[data-section-title]{
+    img {
+      margin-top: -13%;
+    }
+  }
+
+}
+
+@media screen and (max-width: 780px) {
+
+  .accordion.contentSectionsDashboard section > h3[data-section-title]{
+    img.topFix {
+      margin-top: -11%;
+    }
+  }
+
 }
 
 .contentSectionsDashboard section > img{
