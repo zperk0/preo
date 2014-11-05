@@ -790,9 +790,10 @@ $(document).ready(function() {
 	var tags = [];
 	var $listTags = $('.listTags');
 
-	$.getJSON('/menuitem_tags.json').done(function( data ){
-		for (var i = 0, len = data.tags.length; i < len; i++) {
-			var tag = data.tags[i];
+	$.get('/menuitem_tags.php').done(function( data ){
+		data = JSON.parse(data);
+		for (var i = 0, len = data.length; i < len; i++) {
+			var tag = data[i];
 
 			tags.push('<li>' +
 						'<div class="checkbox checkboxStyle">' +
