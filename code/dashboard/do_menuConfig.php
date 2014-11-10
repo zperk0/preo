@@ -21,24 +21,6 @@
 		return $path;
 	}
 
-	function getCodeTagById( $tagId ){
-		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/tags.php'); 
-		$resultTag = null;
-		foreach ($tags as $Tag) {
-			if ($Tag['id'] == $tagId) {
-				$resultTag = $Tag;
-				break;
-			}
-		}
-
-		if ( $resultTag ) {
-			return $resultTag['code'];
-		}
-		return null;
-	}
-
-	
-	
 	//1 - if delete, then remove insert,edit
 	//2 - if insert, then remove edit
 	//3 - delete meal_deal_section_item before removing SECTION & ITEM
@@ -329,12 +311,11 @@
 				}
 
 				if ( isset($item['tags']) ) {
-					foreach ($item['tags'] as $tagId) {
-						if ($tagId){
-							$data = array();
-							$data['tagId'] = $tagId;
+					foreach ($item['tags'] as $code) {
+						if ($code){
+							$data = array();							
 							$data['menuItemId'] = $item_id;
-							$data['code'] = getCodeTagById($tagId);
+							$data['code'] = $code;
 							$jsonData 	= json_encode($data);
 							$curlResult = callAPI('POST', $apiURL."items/$item_id/tags", $jsonData, $apiAuth); //item created
 							$result 	= json_decode($curlResult,true);
@@ -380,12 +361,11 @@
 
 				$curlResult = callAPI('DELETE', $apiURL."items/$item_id/tags", false, $apiAuth); //menu deleted
 				if ( isset($item['tags']) ) {
-					foreach ($item['tags'] as $tagId) {
-						if ($tagId){
-							$data = array();
-							$data['tagId'] = $tagId;
+					foreach ($item['tags'] as $code) {
+						if ($code){
+							$data = array();							
 							$data['menuItemId'] = $item_id;
-							$data['code'] = getCodeTagById($tagId);
+							$data['code'] = $code;
 							$jsonData 	= json_encode($data);
 							$curlResult = callAPI('POST', $apiURL."items/$item_id/tags", $jsonData, $apiAuth); //item created
 							$result 	= json_decode($curlResult,true);

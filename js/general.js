@@ -794,11 +794,11 @@ $(document).ready(function() {
 		data = JSON.parse(data);
 		for (var i = 0, len = data.length; i < len; i++) {
 			var tag = data[i];
-
+			console.log('code',tag.code);
 			tags.push('<li>' +
 						'<div class="checkbox checkboxStyle">' +
-						  	'<input type="checkbox" value="' + tag.id + '" id="checktag_' + tag.id + '">' +
-						    '<label for="checktag_' + tag.id + '">' +
+						  	'<input type="checkbox" value="' + tag.code + '" id="checktag_' + tag.code + '">' +
+						    '<label for="checktag_' + tag.code + '">' +
 						    	'<span>' + tag.name + '</span>' + 
 						    	'<img src="/img/menu-icons/' + tag.icon + '" width="30" alt="' + tag.name + '" />' +
 						    '</label>' +

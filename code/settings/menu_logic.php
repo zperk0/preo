@@ -87,7 +87,7 @@
 				$tagsResult = $item['tags'];
 				$tags = [];
 				foreach ($tagsResult as $Tag) {
-					$tags[] = $Tag['tagId'];
+					$tags[] = $Tag['code'];
 				}
 
 				$menu['sections'][$keySection]['items'][$keyItem]['tags'] = $tags;

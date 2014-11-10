@@ -282,7 +282,7 @@
 												} 
 												$attrTags = '';
 												if ( isset($item['tags']) && count($item['tags']) ) {
-													$attrTags = 'data-tags="' . json_encode($item['tags']) . '"';
+													$attrTags = 'data-tags=\'' . json_encode($item['tags']) . '\'';
 												}
 											?>
 											<button type="button" class="menuTableButtons itemUpload" 	<?php echo $attr ?>	title="<?echo _("Upload image");?>"							><i class="pd-upload"></i></button>										
