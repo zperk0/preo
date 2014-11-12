@@ -740,8 +740,12 @@ $(document).ready(function() {
 					$errorMessageImageCrop.hide();
 				}
 
-				$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
-				$progressImageCrop.hide();
+				if ( !this.imgInitH ) {
+					cropperInstance.cropControlCrop.trigger('click');
+				} else {
+					$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
+					$progressImageCrop.hide();
+				}
 			},
 			onBeforeImgCrop: function(){
 	            var percentVal = '0%';
