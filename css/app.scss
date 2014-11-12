@@ -1307,13 +1307,13 @@ tr {
 }
 
 .menuTable .menuTDTools, .headerTable .menuTDTools {
-  width: 168px;
+  width: 230px;
   text-align: right;
   padding-right: 0px !important;
 }
 
 .menuTable .menuTDTools, .headerTable .menuTDTools.colMenuItems {
-  width: 200px;
+  width: 250px;
 }
 
 .eventTable .eventTDTools, .headerTable .eventTDTools {
@@ -3823,7 +3823,7 @@ button.preodayButton.noclick{
   max-height: inherit;  
 }
 
-.itemUpload{
+.itemUpload, .itemTags{
   padding: 0px !important;
 }
 
@@ -3831,6 +3831,12 @@ button.preodayButton.noclick{
   float: left;
   background: url('/img/icon-uploader.jpg') left top no-repeat;
   width: 26px;
+  height: 25px;
+}
+.pd-tags{
+  float: left;
+  background: url('/img/icon-tags.png') left top no-repeat;
+  width: 25px;
   height: 25px;
 }
 
@@ -3871,16 +3877,16 @@ button.preodayButton.noclick{
   display: none;
 }
 
-#modalImagesCrop{
+#modalImagesCrop, #modalTags{
   padding: 35px 0;
 }
 
-#modalImagesCrop .content-modal{
+#modalImagesCrop .content-modal, #modalTags .content-modal{
   position: relative;
   padding-top: 1em;
 }
 
-#modalImagesCrop .preodayButton {
+#modalImagesCrop .preodayButton, #modalTags .preodayButton {
   font-weight: 400;
   font-size: 90%;
   padding: 0.6em 1em;
@@ -3920,7 +3926,7 @@ button.preodayButton.noclick{
   font-size: 11px;  
 }
 
-#saveChangesModalCrop{
+#saveChangesModalCrop, #saveChangesTags{
   margin-right: 10px
 }
 
@@ -3970,6 +3976,37 @@ button.preodayButton.noclick{
   -moz-opacity: 0;
 }
 
+
+.listTags{
+  list-style-type: none;
+  overflow: hidden;
+  width: 100%;
+
+  li {
+    float: left;
+    width: 150px;
+    text-align: left;
+
+    label{
+      color: #48535D !important;
+
+      span {
+        float: left;
+      }
+
+      img {
+        float: left;
+        margin: -6px 0 0 -3px;
+      }
+    }
+  }
+}
+
+.formTags{
+  .title-notification{
+    text-align: left;
+  }
+}
 
 .linkSuccessShop{
   margin-top: 20px;

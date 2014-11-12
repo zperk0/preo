@@ -21,8 +21,6 @@
 		return $path;
 	}
 
-	
-	
 	//1 - if delete, then remove insert,edit
 	//2 - if insert, then remove edit
 	//3 - delete meal_deal_section_item before removing SECTION & ITEM
@@ -235,6 +233,8 @@
 						unlink( $PREO_UPLOAD_ROOT .  $Image['image'] );
 					}
 
+					$curlResult = callAPI('DELETE', $apiURL."items/$item_id/tags", false, $apiAuth); //menu deleted
+
 					foreach($item['modifiers'] as $modifier)
 					{
 						$modifier_id = $modifier['id'];
@@ -309,6 +309,19 @@
 						}
 					}
 				}
+
+				if ( isset($item['tags']) ) {
+					foreach ($item['tags'] as $code) {
+						if ($code){
+							$data = array();							
+							$data['menuItemId'] = $item_id;
+							$data['code'] = $code;
+							$jsonData 	= json_encode($data);
+							$curlResult = callAPI('POST', $apiURL."items/$item_id/tags", $jsonData, $apiAuth); //item created
+							$result 	= json_decode($curlResult,true);
+						}
+					}
+				}
 				
 				//remove insert, edit tags for the item!
 				$item['insert'] = false;
@@ -345,6 +358,20 @@
 						}
 					}
 				}
+
+				$curlResult = callAPI('DELETE', $apiURL."items/$item_id/tags", false, $apiAuth); //menu deleted
+				if ( isset($item['tags']) ) {
+					foreach ($item['tags'] as $code) {
+						if ($code){
+							$data = array();							
+							$data['menuItemId'] = $item_id;
+							$data['code'] = $code;
+							$jsonData 	= json_encode($data);
+							$curlResult = callAPI('POST', $apiURL."items/$item_id/tags", $jsonData, $apiAuth); //item created
+							$result 	= json_decode($curlResult,true);
+						}
+					}
+				}				
 				//remove edit tag for the item!
 				$item['edit'] 	= false;
 			}

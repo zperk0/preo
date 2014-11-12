@@ -791,6 +791,98 @@ $(document).ready(function() {
 		$modalImagesCrop.foundation('reveal', 'open');
 	});
 	
+	var tags = [];
+	var $listTags = $('.listTags');
+
+	$.get('/menuitem_tags.php').done(function( data ){
+		data = JSON.parse(data);
+		for (var i = 0, len = data.length; i < len; i++) {
+			var tag = data[i];
+			console.log('code',tag.code);
+			tags.push('<li>' +
+						'<div class="checkbox checkboxStyle">' +
+						  	'<input type="checkbox" value="' + tag.code + '" id="checktag_' + tag.code + '">' +
+						    '<label for="checktag_' + tag.code + '">' +
+						    	'<span>' + tag.name + '</span>' + 
+						    	'<img src="/img/menu-icons/' + tag.icon + '" width="30" alt="' + tag.name + '" />' +
+						    '</label>' +
+					  	'</div>' +
+					'</li>');
+		};
+
+		$listTags.html(tags.join(''));
+	});
+
+	// images of item for uploader
+	var tagsMenu = {};
+
+	var $modalTags = $('#modalTags');
+	var $titleTags = $('#title-tags');
+	var $saveChangesTags = $('#saveChangesTags');
+	var $cancelModalTags = $('#cancelModalTags');
+	var $lastInputName = null;
+	var idItemForTags = null;
+
+	var $itemTags = $('.itemTags');
+	for (var i = $itemTags.length - 1; i >= 0; i--) {
+		var $tag = $($itemTags[i]);
+		var tagsItem = $tag.data('tags');
+
+		var $table = $tag.closest('table');
+		var $input = $table.find('input[name^=iName]');		
+		var id = $input.data('id');
+
+		if (tagsItem) {
+			tagsMenu[id] = tagsItem;
+		}
+	};
+
+	$(document).on('click', '#cancelModalTags', function(){
+		$modalTags.foundation('reveal', 'close');
+	});
+
+	$(document).on('click', '#saveChangesTags', function(){
+		var $inputs = $listTags.find('input:checked');
+
+		tagsMenu[idItemForTags] = [];
+
+		for (var i = 0, len = $inputs.length; i < len; i++) {
+			var $input = $($inputs[i]);
+			tagsMenu[idItemForTags].push($input.val());
+		};
+
+		$lastInputName.attr('data-edit', true);
+		$lastInputName.data('edit', true);
+
+		$modalTags.foundation('reveal', 'close');		
+	})
+
+	$(document).on('click', '.itemTags', function(){
+
+		var $table = $(this).closest('table');
+		var $input = $table.find('input[name^=iName]');		
+		$lastInputName = $input;
+		idItemForTags = $input.data('id');
+
+		$listTags.find('input:checkbox').removeAttr('checked');
+
+		var tagsModal = tagsMenu[idItemForTags];
+
+		if (tagsModal && tagsModal.length) {
+			for (var i = tagsModal.length - 1; i >= 0; i--) {
+				var t = tagsModal[i];
+
+				$('#checktag_' + t).attr('checked', 'checked');
+			};
+		}
+
+		$modalTags.css('top', $(window).scrollTop() + 100);
+
+		$titleTags.text('Tags for ' + $input.val());
+
+		$modalTags.foundation('reveal', 'open');
+	}); 
+	
 	//ajax form upload
 	var optionsBG = { 
 		url: '/uploadBG',
@@ -2155,6 +2247,7 @@ $(document).ready(function() {
 							
 							if ( !$inputName.data('delete') ) {
 								menuSectionOneNivelItem['images'] 		= imagesMenu[iID];
+								menuSectionOneNivelItem['tags'] 		= tagsMenu[iID];
 
 								if( !menuSectionOneNivelItem['edit'] && !menuSectionOneNivelItem['insert'] && !menuSectionOneNivelItem['delete'] 
 									&& imagesMenu[iID] instanceof Object && imagesMenu[iID].length && !imagesMenu[iID][0].saved) {
