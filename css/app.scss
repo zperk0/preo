@@ -4013,3 +4013,17 @@ button.preodayButton.noclick{
   display: block;
   text-align: center;
 }
+
+.noShop{
+  .accountSettings{
+    .content{
+      width:80%;
+      float:none;
+      margin:0 auto;
+    }
+    .menu{
+      display:none;
+    }
+  }
+
+}

@@ -1,7 +1,6 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
       require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function 
-//    session_start();
-	  		
+      require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/override_vars.php');
 
 ?>
 
@@ -10,7 +9,7 @@
 		<ul class="title-area">
 			<li class="name">
 				<h1>
-					<a href="<?echo $_SESSION['path']?>/"><img src="<?echo $_SESSION['path']?>/img/logo.png" alt="<? echo _("PreoDay");?>"/></a>
+					<a href="<?echo $_SESSION['path']?>/"><img src="<?echo $_SESSION['OVERRIDES']['logo']?>" alt="<? echo _("PreoDay");?>"/></a>
 				</h1>
 				<div class="progressIndicator has-tip tip-right" data-tooltip></div>
 			</li>
@@ -92,25 +91,27 @@
 									
 								</ul>
 							</li>
-							<li class="has-dropdown"><a href="#"><?echo _("Premium Features");?></a>
-								<ul class="dropdown">
-									<?  //get the features list we have for this acocunt 
-											function filterActiveMenu($feat){												
-													if ($feat->status != 'CANCELED' && $feat->status != 'EXPIRED' ){
-														return True;
-													}
-													return False;
-											}											
-										  $accountId = $_SESSION['account_id'];	  
-											$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
-											$accountFeatures = array_filter(json_decode($result),"filterActiveMenu");											 										 
-											foreach($accountFeatures as $feat) { ?>
-												<li  data-feature='<? echo $feat->featureId ;?>' class='menu featureHolder'><img class='featureIcon'/><a href="#"  class='featureName'></a></li>												
-									<?}?>												
-								
-									<li><a href="<?echo $_SESSION['path']?>/shop"><?echo _("+ Store");?></a></li>
-								</ul>
-							</li>
+							<? if ($_SESSION['OVERRIDES']['hasShop']) { ?>
+								<li class="has-dropdown"><a href="#"><?echo _("Premium Features");?></a>
+									<ul class="dropdown">
+										<?  //get the features list we have for this acocunt 
+												function filterActiveMenu($feat){												
+														if ($feat->status != 'CANCELED' && $feat->status != 'EXPIRED' ){
+															return True;
+														}
+														return False;
+												}											
+											  $accountId = $_SESSION['account_id'];	  
+												$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
+												$accountFeatures = array_filter(json_decode($result),"filterActiveMenu");											 										 
+												foreach($accountFeatures as $feat) { ?>
+													<li  data-feature='<? echo $feat->featureId ;?>' class='menu featureHolder'><img class='featureIcon'/><a href="#"  class='featureName'></a></li>												
+										<?}?>												
+									
+										<li><a href="<?echo $_SESSION['path']?>/shop"><?echo _("+ Store");?></a></li>
+									</ul>
+								</li>
+							<?}?>												
 						</ul>
 					</li>
 					<li class="has-dropdown"><a href="/accountSettings" class="activated"><? echo $_SESSION['user_fName']." ".$_SESSION['user_lName'];?></a>

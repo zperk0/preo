@@ -15,12 +15,14 @@
         <div class='bottomSpacer'></div>
     	</div>
     	<div class='menu'>
-  		<h3>Account Settings</h3>
+  		<h3><? echo _("Account Settings") ?></h3>
 
   		<ul>  			
+      <? if ($_SESSION['OVERRIDES']['hasShop']) { ?>
   			<li ng-class="{'selected':currentView == Views.subscription}" ng-click="setSelected(Views.subscription)">  <a href="#/subscription"><?echo _("Subscriptions") ?></a></li>
   			<li ng-class="{'selected':currentView == Views.paymentMethod}" ng-click="setSelected(Views.paymentMethod)">  <a href="#/paymentMethod"><?echo _("Payment Methods") ?></a></li>
   			<li ng-class="{'selected':currentView == Views.billingHistory}" ng-click="setSelected(Views.billingHistory)">  <a href="#/billingHistory"><?echo _("Billing History") ?></a></li>
+      <? }?>
         <li ng-class="{'selected':currentView == Views.profile}" ng-click="setSelected(Views.profile)"> <a href="#/profile"><?echo _("Profile") ?></a></li>
 
   		</ul>

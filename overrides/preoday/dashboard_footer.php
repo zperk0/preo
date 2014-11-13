@@ -1,10 +1,12 @@
 		<footer class="dashboardFooter">
 			<div class="row">
+			<? if ($_SESSION['OVERRIDES']['hasShop']) { ?>
 				<div class="large-4 columns premiumDiv">
 					<h3><i class="icon-plus-sign"></i> <?echo _("Premium Features");?></h3>
 					<p><?echo _("Looking for ePOS integration, detailed reporting or the ability to configure multiple outlets?");?></p>
 					<a href="<?echo $_SESSION['path']?>/findoutmore"><button type="button" class="success small premiumButton"><?echo _("FIND OUT MORE");?></button></a>
 				</div>
+			<? } ?>
 				<div class="large-offset-1 large-2 small-offset-1 small-5 columns centerInfoDiv">
 					<p>
 						<a class="TWFoot" target="_blank" href="https://twitter.com/preoday"><img src="<?echo $_SESSION['path']?>/img/twitter.png"/></a>

@@ -103,6 +103,7 @@
 								<p><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Change my app mode");?></a></p>
 							</div>
 						</section>
+						<? if ($_SESSION['OVERRIDES']['hasShop']) { ?>
 						<section class="premiumSection active">
 							<h3 data-section-title><?echo _("Premium Features");?></h3><i class="icon-plus-sign"></i>
 							<div class="content" data-section-content>
@@ -135,6 +136,7 @@
 								<p><button class='preodayButton shopButton'> <a href="<?echo $_SESSION['path']?>/shop"> <?echo _("STORE");?> </a> </button></p>
 							</div>
 						</section>
+						<?}?>	
 					</div>
 				</div>
 			</div>
