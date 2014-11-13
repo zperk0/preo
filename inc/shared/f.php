@@ -7,15 +7,7 @@
 		else{			
 			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['OVERRIDES']['regular_footer']);			
 			}?>
-		
-		<div id="termsM" class="reveal-modal">
-			<?require($_SERVER['DOCUMENT_ROOT'].$_SESSION['OVERRIDES']['terms']);?>
-		</div>
-		
-		<div id="privM" class="reveal-modal">
-			<?require($_SERVER['DOCUMENT_ROOT'].$_SESSION['OVERRIDES']['privacy']);?>
-		</div>
-
+			
 		<!-- JAVASCRIPTS -->
 				
 		<!-- Foundation JS Files -->

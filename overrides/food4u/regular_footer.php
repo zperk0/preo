@@ -23,9 +23,9 @@
 					</p>
 				</div>
 				<div class="large-3 small-7 columns footLinks right">
-					<p><a href="mailto:support@food4u.com"><?echo _("support@food4u.com");?></a></p>
-					<p><a href="#" data-reveal-id="termsM"><? echo _("Legal Statement");?></a></p>
-					<p><a href="#" data-reveal-id="privM"><? echo _("Privacy + Cookies");?></a></p>
+					<p><a href="mailto:support@food4u.com"><?echo _("support@food4u.com");?></a></p>					
+					<p><a href='<?echo $_SESSION['OVERRIDES']['terms']?>' ><? echo _("Legal Statement");?></a></p>
+					<p><a href="<?echo $_SESSION['OVERRIDES']['privacy']?>" ><? echo _("Privacy + Cookies");?></a></p>
 					<p>&copy; <? echo _("Food4u")." ".date('Y');?></p>
 				</div>
 			</div>
