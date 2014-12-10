@@ -57,6 +57,22 @@
 							<h3 data-section-title><a href="//orders.preoday.com" target="_blank" class="titleDashContent"><?echo _("Order Screen");?></a></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/order-icon_small.png"/>
 						</section>
 						<section>
+							<h3 data-section-title><a href="/kyc" class="titleDashContent"><?echo _("Customer Analytics");?></a></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/analytics-icon.png"/>
+						</section>
+						<section>
+							<h3 data-section-title><?echo _("Menus");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/>
+							<div class="content" data-section-content>
+								<?foreach($_SESSION['menus'] as $menuL){?>
+									<p id="p-<?echo $menuL['id']?>">
+										<a class="dashMenuIcon" 			href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>" title="<?echo _("Edit")." $menuL[name]";?>"><?echo htmlentities($menuL['name'], ENT_QUOTES)?></a>
+										<!--<a class="dashMenuIcon deleteMenu" 	id="dmi-<?echo $menuL['id']?>"  title="<?echo _("Delete")." $menuL[name]";?>"><i class="fi-x"></i></a>-->
+									</p>
+								<?}?>
+								<!--<p><a href="<?echo $_SESSION['path']?>/newMenu.php"><?echo _("Add new menu");?></a></p>-->
+								<p><a href="<?echo $_SESSION['path']?>/mealdeals"><?echo _("Meal Deals");?></a></p>
+							</div>
+						</section>						
+						<section>
 							<h3 data-section-title><?echo _("Venue Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/settings"><?echo _("Change settings");?></a></p>
@@ -74,19 +90,6 @@
 								<p><a href="<?echo $_SESSION['path']?>/menuscreen"><?echo _("Menu screen");?></a></p>
 							</div>
 						</section>
-						<section>
-							<h3 data-section-title><?echo _("Menus");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/>
-							<div class="content" data-section-content>
-								<?foreach($_SESSION['menus'] as $menuL){?>
-									<p id="p-<?echo $menuL['id']?>">
-										<a class="dashMenuIcon" 			href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>" title="<?echo _("Edit")." $menuL[name]";?>"><?echo htmlentities($menuL['name'], ENT_QUOTES)?></a>
-										<!--<a class="dashMenuIcon deleteMenu" 	id="dmi-<?echo $menuL['id']?>"  title="<?echo _("Delete")." $menuL[name]";?>"><i class="fi-x"></i></a>-->
-									</p>
-								<?}?>
-								<!--<p><a href="<?echo $_SESSION['path']?>/newMenu.php"><?echo _("Add new menu");?></a></p>-->
-								<p><a href="<?echo $_SESSION['path']?>/mealdeals"><?echo _("Meal Deals");?></a></p>
-							</div>
-						</section>
 						<?if($_SESSION['venue_eventFlag']){?>		
 						<section>
 							<h3 data-section-title><?echo _("Events");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/events_small.png"/>
@@ -94,8 +97,8 @@
 								<p><a href="<?echo $_SESSION['path']?>/events"><?echo _("Update events");?></a></p>
 							</div>
 						</section>
-						<?}?>
-						<section>
+						<?}?>						
+						<section class="premiumSectionBorderBottom">
 							<h3 data-section-title><?echo _("Advanced Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/users"><?echo _("Manage users");?></a></p>
@@ -103,37 +106,17 @@
 								<p><a href="<?echo $_SESSION['path']?>/publish"><?echo _("Change my app mode");?></a></p>
 							</div>
 						</section>
-						<section class="premiumSection active">
-							<h3 data-section-title><?echo _("Premium Features");?></h3><i class="icon-plus-sign"></i>
+						<section class="premiumSection">
+							<h3 data-section-title><a href="<?echo $_SESSION['path']?>/accountSettings"><?echo _("My Account");?></a></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/account-icon.png"/>
+						</section>	
+						<section class="premiumSection">
+							<h3 data-section-title><?echo _("Help");?></h3><img class="noFilter" src="<?echo $_SESSION['path']?>/img/dashboard/help-icon.png"/>
 							<div class="content" data-section-content>
-
-									<?  //get the features list we have for this acocunt 									   
-											function filterActive($feat){
-													if ($feat->status != 'CANCELED' && $feat->status != 'EXPIRED' ){
-														return True;
-													}
-													return False;
-											}											
-										  $accountId = $_SESSION['account_id'];	  
-											$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
-											$resultArray = json_decode($result);
-											if ( is_array($resultArray)) {
-												$accountFeatures = array_filter(json_decode($result),"filterActive");
-											}
-											if(is_array($accountFeatures) && count($accountFeatures) > 0) { ?> 
-												<div class='featuresList'> 
-												<? foreach($accountFeatures as $feat) { ?>
-													<p data-feature='<? echo $feat->featureId ;?>' class='featureHolder'><img class='featureIcon'/><a href="#"  class='featureName'></a></li>												
-											<?} } else{?>											
-												<div class='featuresText'>
-												<p><? echo ("You don't currently have any active Premium Features on your account.")?></p><br/>
-												<p><? echo ("Why not check out our")?><a href="<?echo $_SESSION['path']?>/shop"> <?echo _("Available Premium Features");?></a>
-													<? echo ("and discover how they can start adding further value to your business, today?");?>
-											 </p>
-											<?}?>				
-											</div>
-								<p><button class='preodayButton shopButton'> <a href="<?echo $_SESSION['path']?>/shop"> <?echo _("STORE");?> </a> </button></p>
-							</div>
+								<div> 
+									<p><a href="http://www.preoday.com/faq/" target="_blank" class='featureName'>Frequently Asked Questions</a></p>
+									<p><a href="<?echo $_SESSION['path']?>/support"  class='featureName'>Support</a></p>
+								</div>
+							</div>							
 						</section>
 					</div>
 				</div>

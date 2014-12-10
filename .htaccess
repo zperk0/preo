@@ -59,7 +59,7 @@ RewriteRule ^.*$ settings.php [L]
 RewriteCond %{REQUEST_URI} ^/settings$ [NC]
 RewriteRule ^.*$ venueSettings.php [L]
 
-RewriteCond %{REQUEST_URI} ^/findoutmore$ [NC]
+RewriteCond %{REQUEST_URI} ^/support$ [NC]
 RewriteRule ^.*$ more.php [L]
 
 RewriteCond %{REQUEST_URI} ^/more$ [NC]

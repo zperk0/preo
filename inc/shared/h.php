@@ -115,14 +115,14 @@
 					</li>
 					<li class="has-dropdown"><a href="/accountSettings" class="activated"><? echo $_SESSION['user_fName']." ".$_SESSION['user_lName'];?></a>
 						<ul class="dropdown">
-							<li><a href="<?echo $_SESSION['path']?>/accountSettings"><?echo _("Account Settings");?></a></li>
+							<li><a href="<?echo $_SESSION['path']?>/accountSettings"><?echo _("My Account");?></a></li>
 							<li><a href="<?echo $_SESSION['path']?>/logout"><? echo _("Logout");?></a></li>
 						</ul>
 					</li>	
 					<li class="has-dropdown lessLeft"><a href="#"><? echo _("Help");?></a>
 						<ul class="dropdown makeULWider">
-							<?if(isset($_SESSION['venue_cat'])){?><li><a target="_blank" href="<?echo $_SESSION['path']?>/docs/GettingStartedGuide_<?echo $_SESSION['venue_cat'];?>.pdf"><?echo _("Getting started");?></a></li><?}?>
-							<li><a href="<?echo $_SESSION['path']?>/findoutmore"><? echo _("Find out more");?></a></li>
+							<li><a href="http://www.preoday.com/faq/" target="_blank"><? echo _("FAQs");?></a></li>
+							<li><a href="<?echo $_SESSION['path']?>/support"><? echo _("Support");?></a></li>
 						</ul>
 					</li>
 					<?}else{?>
