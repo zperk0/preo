@@ -35,64 +35,15 @@
 </section>
 
 <section class='activeFeaturesWrapper'>
-	<header><? echo _("Active Premium Features")?></header>
+	<header><? echo _("My Subscriptions")?></header>
 	<br/>
-	<div ng-show='activeFeaturesCount == 0' >		
-		<p><? echo _("You currently don't have any active Premium Features on your account.")?></p>		
-		<p class='marginBottom100'><? echo _("Why not check out our")?> <a href='/shop' class='premiumFeatureColor'>  <? echo _("Available Premium Features")?> </a> <? echo _("and discover how they can start 
-			adding further value to your business, today?")?></p>			
-	</div >
-			<table ng-if='activeFeaturesCount >= 1'>
-				<tr ng-repeat="accountFeature in accountFeatures | filter:isInstalled " ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>
-						<td > <img ng-src="{{accountFeature.feature.icon}}" /> </td>
-						<td class='featureTitle'> <span class='featureAppTitle' ng-show="accountFeature.feature.showAppTitle"> my order app </span> 
-							<a ng-if='accountFeature.getLink()' ng-href='{{accountFeature.getLink()}}'> 
-								{{accountFeature.feature.name}} 
-							</a>
-							<div ng-if='!accountFeature.getLink()'>{{accountFeature.feature.name}} </div>
-						</td>
-						<td ng-if="accountFeature.status === 'INSTALLED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
-						<td ng-if="accountFeature.status === 'TRIAL'" class='errorColor'> Free trial expires in {{getExpiryDate(accountFeature)}} days </td>				
-						<td ng-if="accountFeature.status === 'UNINSTALLED'">  <? echo _("Pending removal") ?> </td>				
-						<td ng-switch='accountFeature.status'>
-								<span ng-switch-when="INSTALLED"  > 
-									<span ng-click='openConfirmDialog(accountFeature)' ng-if="!accountFeature.isInContractPeriod()" class='positiveButton'>
-										<? echo _("Uninstall")?>
-									</span>
-									<span ng-if="accountFeature.isInContractPeriod()" class='disabled'
-									tooltip-animation='false' tooltip="<? echo _('Contract ends on') ?> {{accountFeature.getContractEnd() | date:'dd/MM/yyyy' }} "   tooltip-append-to-body='true'>
-										<? echo _("Uninstall")?>
-									</span>
-
-								</span>
-								<span ng-switch-when="TRIAL" ng-click='openConfirmDialog(accountFeature)' class='positiveButton'> <? echo _("Uninstall")?></span>
-								<span ng-switch-when="UNINSTALLED" ng-click='updateStatus(accountFeature,"INSTALLED")' class='negativeButton'> <? echo _("Cancel")?></span>
-						</td>
-				</tr>
-			</table>
-			<button class='preodayButton premium inlineButton' ng-click="navigateTo('/shop')"><? echo _("STORE") ?></button>
-	<div>
-		
-	</div>		
+	<div class="blockSubscriptions">
+		<p><? echo _("You are currently subscribed to the BASIC package.")?></p>		
+		<p class="textGreen"><? echo _("Your free trial of this subscription will end at midnight on 18th December 2014")?></p>		
+	</div>
+	<div class="buttonsSubscriptions">
+		<button class='preodayButton inlineButton' ng-click="navigateTo('/shop')"><? echo _("UPGRADE") ?></button>		
+		<button class='preodayButton inlineButton' ng-click="navigateTo('/shop')"><? echo _("CANCEL") ?></button>		
+	</div>
 </section>
-
-	<section class='deactivatedFeaturesWrapper' ng-if="hasCancelledFeatures()">
-			<header><? echo _("Deactivated Premium Features")?></header>
-			<br/>
-			<div>
-				<table>
-					<tr ng-repeat="accountFeature in accountFeatures | filter:isCanceled" class="disabled" >
-						<td > <img ng-src="{{accountFeature.feature.icon}}" /> </td>
-						<td class='featureTitle'> {{accountFeature.feature.name}} </td>						
-						<td ng-if="accountFeature.status === 'CANCELED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
-						<td ng-if="accountFeature.status === 'EXPIRED'"> <? echo _("Trial has expired")?> </td>				
-						<td >
-								<span ng-click='reinstallAccountFeature(accountFeature)' class='positiveButton'> <? echo _("Reinstall")?> </span>&nbsp;
-								<span ng-click='removeAccountFeature(accountFeature)' class='negativeButton'> <? echo _("Remove")?> </span>
-						</td>
-					</tr>
-				</table>	
-			</div>
-
-	</section>
 </div>
