@@ -57,7 +57,7 @@ angular.module('accountSettings.controllers')
             data = { 
               btnOk: _tr('CANCEL'),
               btnCancel: _tr('CONFIRM'),
-              content: _tr("Your subscription will remain active until the end of the current billing cycle, you will no longer be billed after this date. You venue will be taken offline but you will still be able to log in to account if you ever want to resubscribe.") + '<br /><br />' + _tr('Are you sure you want to cancel?'),
+              content: _tr("Your subscription will remain active until the end of the current billing cycle, you will no longer be billed after this date. Your venue will be taken offline but you will still be able to log in to account if you ever want to resubscribe.") + '<br /><br />' + _tr('Are you sure you want to cancel?'),
               contentClass: 'cancelPackage',
               windowClass:'small'
             },
