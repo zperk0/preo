@@ -28,18 +28,31 @@ angular.module('kyc', [
 ])
 .run(['$rootScope','ACCOUNT_ID','$http', function( $rootScope,ACCOUNT_ID,$http) {
   $rootScope.requests = 0;
-  $http.get("/api/accounts/"+ACCOUNT_ID+"/features").then(
+  $http.get("/api/accounts/"+ACCOUNT_ID+"/packages").then(
     function(result){
       var found = false;  
       if (result && result.data){
-        angular.forEach(result.data,function(accountFeature){
-            //TODO replace the account feature resource with a model and rework the local statuses            
-            if (accountFeature.featureId === 4 && (accountFeature.status === "INSTALLED" || accountFeature.status === "TRIAL" || accountFeature.status === "UNINSTALLED"))
-              found = true;
-        })  
+        for (var i = 0, len = result.data.length; i < len; i++) {
+          var accountPackage = result.data[i];
+          if (accountPackage && accountPackage.preoPackage && accountPackage.preoPackage.features) {
+            for (var j = 0, lenJ = accountPackage.preoPackage.features.length; j < lenJ; j++) {
+              var feature = accountPackage.preoPackage.features[j];
+              //TODO replace the account feature resource with a model and rework the local statuses            
+              if (feature.id === 4 && (accountPackage.status === "INSTALLED" || accountPackage.status === "TRIAL" || accountPackage.status === "UNINSTALLED")) {
+                found = true;
+                break;
+              }
+            }
+          }
+
+          if (found) {
+            break;
+          }
+        }
       }
-      if (!found)
-        window.location.replace("/shop#/feature/4")
+      if (!found) {
+        window.location.replace("/dashboard");
+      }
   })
 }])
 .config(['$routeProvider', function($routeProvider) {

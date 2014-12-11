@@ -4,7 +4,7 @@
 <?
 //resetting global vars
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/global_vars.php');
-
+	$accountId = $_SESSION['account_id'];
 	$curlResult = callAPI('GET', $apiURL."accounts/$accountId/paymentproviders", false, $apiAuth);
 	$dataJSON = json_decode($curlResult, true);
 	$connectedFlag = 0;	
@@ -15,6 +15,28 @@
 			if(isset($paymentProvider['type']) && $paymentProvider['type'] == 'Stripe')
 				$connectedFlag = 1;
 		}
+	}	
+
+	$curlResult = callAPI('GET', $apiURL."accounts/$accountId/packages", false, $apiAuth);
+	$dataJSON = json_decode($curlResult, true);
+	$showKYC = false;
+	if(!empty($dataJSON))
+	{	
+		foreach($dataJSON as $accountPackage)
+		{
+			if (isset($accountPackage['preoPackage']) && is_array($accountPackage['preoPackage']) && is_array($accountPackage['preoPackage']['features'])) {
+				foreach($accountPackage['preoPackage']['features'] as $feature) {
+					if ($feature['id'] == 4 && ($accountPackage['status'] === "INSTALLED" || $accountPackage['status'] === "TRIAL" || $accountPackage['status'] === "UNINSTALLED")) {
+						$showKYC = true;
+						break;
+					}
+				}
+			}
+
+			if ($showKYC) {
+				break;
+			}
+		}
 	}
 		
 ?>
@@ -22,7 +44,11 @@
 	<div class="topSpacer"></div>
 	<div class="large-12 columns">
 		<h1 class=""><? echo _("Dashboard");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
-		<p class="venueCode"><?echo _("Your venue shortcode is")." <strong>".$_SESSION['venue_code']."</strong>";?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("This is the code your customers need to use to find your venue on 'My Order App'");?>"></i></p>
+		<?php 
+		if (isset($_SESSION['venue_permalink'])) {
+		?>
+		<p class="venueCode"><?echo _("Your Web Orders URL is")." <a href='http://www.preoday.com/".$_SESSION['venue_permalink']."' target='_blank'><strong>www.preoday.com/".$_SESSION['venue_permalink']."</strong></a>";?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title=""></i></p>
+		<?php } ?>
 	</div>
 </div>
 
@@ -56,9 +82,13 @@
 						<section>
 							<h3 data-section-title><a href="//orders.preoday.com" target="_blank" class="titleDashContent"><?echo _("Order Screen");?></a></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/order-icon_small.png"/>
 						</section>
+						<?php 
+						if ($showKYC) {
+						?>						
 						<section>
 							<h3 data-section-title><a href="/kyc" class="titleDashContent"><?echo _("Customer Analytics");?></a></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/analytics-icon.png"/>
 						</section>
+						<?php } ?>
 						<section>
 							<h3 data-section-title><?echo _("Menus");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/>
 							<div class="content" data-section-content>
