@@ -1,5 +1,4 @@
 'use strict';
-angular.module('features',[]);
 angular.module('kyc.controllers', [])
 angular.module('kyc.resources', [])
 angular.module('kyc.charts',[])

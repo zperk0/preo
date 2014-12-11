@@ -92,25 +92,6 @@
 									
 								</ul>
 							</li>
-							<li class="has-dropdown"><a href="#"><?echo _("Premium Features");?></a>
-								<ul class="dropdown">
-									<?  //get the features list we have for this acocunt 
-											function filterActiveMenu($feat){												
-													if ($feat->status != 'CANCELED' && $feat->status != 'EXPIRED' ){
-														return True;
-													}
-													return False;
-											}											
-										  $accountId = $_SESSION['account_id'];	  
-											$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
-											$accountFeatures = array_filter(json_decode($result),"filterActiveMenu");											 										 
-											foreach($accountFeatures as $feat) { ?>
-												<li  data-feature='<? echo $feat->featureId ;?>' class='menu featureHolder'><img class='featureIcon'/><a href="#"  class='featureName'></a></li>												
-									<?}?>												
-								
-									<li><a href="<?echo $_SESSION['path']?>/shop"><?echo _("+ Store");?></a></li>
-								</ul>
-							</li>
 						</ul>
 					</li>
 					<li class="has-dropdown"><a href="/accountSettings" class="activated"><? echo $_SESSION['user_fName']." ".$_SESSION['user_lName'];?></a>

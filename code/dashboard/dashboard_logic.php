@@ -221,16 +221,7 @@
 		//+d($dataResult);
 	
 
-	$newCurl = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id'].'/users', false, $apiAuth); 
-		$curlResult = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id']."/features", false, $apiAuth);
-		$dataResult = json_decode($curlResult, true);		
-		echo ("<script> window.localStorage.setItem('showDialog',0); </script>");
-		foreach ($dataResult as $key => $feature){			
-			if (isset($feature['status']) && $feature['status'] == "EXPIRED"){
-				echo ("<script> window.localStorage.setItem('showDialog',1); </script>");
-				break;
-			}
-		}
+		$newCurl = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id'].'/users', false, $apiAuth); 
 		$_SESSION['dashboardFlag']=1;
 		$_SESSION['signupWizFlag']=0;
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/wl-paths.php');   //wallpaper-logo paths

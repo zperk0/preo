@@ -3,7 +3,7 @@ angular.module('accountSettings.resources').
     
     var AccountPackages = $resource('/api/accounts/:accountId/packages/:packageId',{accountId:"@accountId",packageId:"@packageId"},{
     		put:{
-              method:'PUT',
+          method:'PUT',
         }
     });    
 

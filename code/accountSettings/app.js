@@ -1,4 +1,3 @@
-angular.module('packages',[])
 angular.module('accountSettings.controllers',[]);
 angular.module('accountSettings.resources',['ngResource']);
 angular.module('resources',['ngResource'])
@@ -6,7 +5,6 @@ angular.module('resources',['ngResource'])
 //shop
 var app = angular.module('accountSettings', [  
   'ngRoute',
-  'packages',
   'accountSettings.resources',
   'accountSettings.controllers',
   'loaders',

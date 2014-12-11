@@ -1,10 +1,8 @@
-angular.module('packages',[])
 angular.module('resources',['ngResource'])
 
 //shop
 angular.module('shop', [
   'ngResource',
-  'packages',
   'loaders',
   'ngRoute',
   'shop.resources',
