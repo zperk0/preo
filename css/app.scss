@@ -2724,6 +2724,11 @@ span .currencySymbol {
     line-height:125%;    
     margin-bottom:30px;
     font-weight:lighter;
+
+    &.updatePackage {
+      margin-bottom: 0px;
+      text-align: left;
+    }
   }
 
   .modal-term{

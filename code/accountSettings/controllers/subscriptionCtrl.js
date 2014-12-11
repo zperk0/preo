@@ -133,6 +133,31 @@ angular.module('accountSettings.controllers')
      return $scope.accountFeatures && $.grep($scope.accountFeatures, function(e){ return (e.status == "CANCELED" || e.status == "EXPIRED");  }).length > 0;
     } 
 
+    $scope.updatePackage = function () {
+      $notification.confirm({
+        btnOk: false,
+        btnCancel: false,
+        content: _tr("To upgrade your account, please contact ") + "<a href='mailto:support@preoday.com'>support@preoday.com</a>.",
+        contentClass: 'updatePackage',
+        windowClass:'small'
+      });
+    }
+
+    $scope.cancelPackage = function () {
+      $notification.confirm({
+        btnOk: _tr('CANCEL'),
+        btnCancel: _tr('CONFIRM'),
+        content: _tr("Your subscription will remain active until the end of the current billing cycle, you will no longer be billed after this date. You venue will be taken offline but you will still be able to log in to account if you ever want to resubscribe.") + '<br /><br />' + _tr('Are you sure you want to cancel?'),
+        contentClass: 'cancelPackage',
+        windowClass:'small'
+      }).then(function () {
+        // cancel button
+      }, function () {
+        //call in your server
+        //@PUT: http://local.preoday.com/api/accounts/{accountid}/packages/{packageid}
+      });
+    }
+
     function setActiveCount(){
       $scope.activeFeaturesCount = $.grep($scope.accountFeatures, function(e){ return (e.status != "CANCELED" && e.status != "REMOVED" && e.status != "EXPIRED"); }).length > 0;
 

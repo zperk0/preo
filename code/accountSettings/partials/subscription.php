@@ -42,8 +42,8 @@
 		<p class="textGreen"><? echo _("Your free trial of this subscription will end at midnight on 18th December 2014")?></p>		
 	</div>
 	<div class="buttonsSubscriptions">
-		<button class='preodayButton inlineButton' ng-click="navigateTo('/shop')"><? echo _("UPGRADE") ?></button>		
-		<button class='preodayButton inlineButton' ng-click="navigateTo('/shop')"><? echo _("CANCEL") ?></button>		
+		<button class='preodayButton inlineButton' ng-click="updatePackage()"><? echo _("UPGRADE") ?></button>		
+		<button class='preodayButton inlineButton' ng-click="cancelPackage()"><? echo _("CANCEL") ?></button>		
 	</div>
 </section>
 </div>

@@ -49,6 +49,8 @@ angular.module('notification', ['ngSanitize'])
 
         $scope.acceptTerm = false;
 
+        $scope.contentClass = data.contentClass || '';
+
         if (data.btnOk === false){
             $scope.btnOk = false;
         }
