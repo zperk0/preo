@@ -1,8 +1,8 @@
 //shop
 var appCtrls = angular.module('shop.controllers',[]);
   
-appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES', 'ACCOUNT_ID', '$notification','$AjaxInterceptor','$location','AccountFeature','USER_ID','VENUE_ID',
-  function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification,$AjaxInterceptor,$location,AccountFeature,USER_ID,VENUE_ID) {    
+appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'PACKAGES', 'ACCOUNT_ID', '$notification','$AjaxInterceptor','$location','AccountFeature','USER_ID','VENUE_ID',
+  function($scope, $http, Resources, PACKAGES, ACCOUNT_ID, $notification,$AjaxInterceptor,$location,AccountFeature,USER_ID,VENUE_ID) {    
 
     
     function initModalFromPath(){
@@ -22,7 +22,7 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     $AjaxInterceptor.start(); 
     
     $scope.currentScreenshot = 0;
-    $scope.PremiumFeatures = FEATURES;
+    $scope.PremiumFeatures = PACKAGES;
     $scope.accountFeatures = [];
     $scope.finishedLoading = false;      
     getAccountFeatures();

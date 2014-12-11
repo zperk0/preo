@@ -34,16 +34,24 @@
 	</div>	
 </section>
 
-<section class='activeFeaturesWrapper'>
+<section class='activeFeaturesWrapper' ng-repeat="accountPackage in accountPackages">
 	<header><? echo _("My Subscriptions")?></header>
-	<br/>
-	<div class="blockSubscriptions">
-		<p><? echo _("You are currently subscribed to the BASIC package.")?></p>		
-		<p class="textGreen"><? echo _("Your free trial of this subscription will end at midnight on 18th December 2014")?></p>		
-	</div>
-	<div class="buttonsSubscriptions">
-		<button class='preodayButton inlineButton' ng-click="updatePackage()"><? echo _("UPGRADE") ?></button>		
-		<button class='preodayButton inlineButton' ng-click="cancelPackage()"><? echo _("CANCEL") ?></button>		
-	</div>
+
+	<section class='activeFeaturesWrapper'>
+		<div class="blockSubscriptions" ng-if="isInstalled(accountPackage)">
+			<p><?php echo _("You are currently subscribed to the ") ?> {{ accountPackage.$package.name + _tr(" package.") }}</p>
+			<p class="textGreen" ng-if="accountPackage.trialPeriod"><?php echo _("Your free trial of this subscription will end at midnight on 18th December 2014") ?> {{ getTrialPeriod(accountPackage) }}</p>
+		</div>
+		<div class="blockSubscriptions" ng-if="isCanceled(accountPackage)">
+			<p><?php echo _("Your subscription has been cancelled ") ?></p>
+		</div>
+		<div class="buttonsSubscriptions" ng-if="isInstalled(accountPackage)">
+			<button class='preodayButton inlineButton' ng-click="updatePackage(accountPackage)"><? echo _("UPGRADE") ?></button>		
+			<button class='preodayButton inlineButton' ng-click="cancelPackage(accountPackage)"><? echo _("CANCEL") ?></button>		
+		</div>
+		<div class="buttonsSubscriptions" ng-if="isCanceled(accountPackage)">
+			<button class='preodayButton inlineButton' ng-click="resubscribePackage(accountPackage)"><? echo _("RESUBSCRIBE") ?></button>		
+		</div>
+	</section>
 </section>
 </div>

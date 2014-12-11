@@ -1,10 +1,10 @@
-angular.module('features',[])
+angular.module('packages',[])
 angular.module('resources',['ngResource'])
 
 //shop
 angular.module('shop', [
   'ngResource',
-  'features',
+  'packages',
   'loaders',
   'ngRoute',
   'shop.resources',

@@ -63,6 +63,7 @@
   <script src="/code/accountSettings/resources/accountCard.js"></script>
   <script src="/code/accountSettings/resources/accountFeature.js"></script>  
   <script src="/code/accountSettings/resources/accountInvoice.js"></script>  
+  <script src="/code/accountSettings/resources/accountPackages.js"></script>  
   <script src="/code/accountSettings/controllers/billingCtrl.js"></script>
   <script src="/code/accountSettings/controllers/profileCtrl.js"></script>
   <script src="/code/accountSettings/controllers/passwordCtrl.js"></script>

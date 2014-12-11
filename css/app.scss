@@ -2807,6 +2807,10 @@ span .currencySymbol {
   }
 
   .activeFeaturesWrapper,.deactivatedFeaturesWrapper,.historyWrapper{
+  
+    section {
+      background-color: #F4F4F4;
+    }
 
     table{
       width:100%;

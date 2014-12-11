@@ -78,7 +78,7 @@
 		<script src="<?echo $_SESSION['path']?>/js/all_scripts.min.js"></script>		<!-- JS 1/1 : to be minified and updated with timestamp -->
 		<!--	<script src="<?echo $_SESSION['path']?>/js/general.js"></script>		<!-- JS 1/1 : to be minified and updated with timestamp -->
 	
-		<script type="text/javascript" src="/code/shop/features.php"></script>
+		<script type="text/javascript" src="/code/shop/packages.php"></script>
 		<!-- Google+ External JS -->
 		<script type="text/javascript">
 			window.___gcfg = {

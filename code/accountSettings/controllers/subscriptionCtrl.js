@@ -1,9 +1,9 @@
 angular.module('accountSettings.controllers')
- .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature','$notification','$AjaxInterceptor','AccountInvoice',
-  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature,$notification,$AjaxInterceptor,AccountInvoice) {
+ .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"PACKAGES",'AccountPackages','$notification','$AjaxInterceptor','AccountInvoice',
+  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,PACKAGES,AccountPackages,$notification,$AjaxInterceptor,AccountInvoice) {
     
 
-    var allFeatures = FEATURES;
+    var allPackages = PACKAGES;
     $scope.setSelected($scope.Views.subscription);
     $scope.diffInDays = 0;
     loadAll();
@@ -11,17 +11,18 @@ angular.module('accountSettings.controllers')
 
     function loadAll(callback){
         $q.all([           
-            AccountFeature.query({accountId:ACCOUNT_ID}).$promise,            
+            AccountPackages.query({accountId:ACCOUNT_ID}).$promise,            
             Account.get({id:ACCOUNT_ID}).$promise,
             AccountInvoice.getPending({accountId:ACCOUNT_ID}).$promise
         ])
         .then(function(results){                         
-            $scope.accountFeatures = results[0];            
+            $scope.accountPackages = results[0];            
+            console.log($scope.accountPackages);
             $scope.account = results[1];
             $scope.subscriptionInvoice = results[2];
             setBillingDate();          
-            angular.forEach($scope.accountFeatures,function(accountFeature){              
-                accountFeature.feature = getFeatureById(accountFeature.featureId);
+            angular.forEach($scope.accountPackages,function(accountPackage){              
+                accountPackage.$package = getPackageById(accountPackage.preoPackageId);
             });
             setActiveCount();
             if (callback)
@@ -39,11 +40,11 @@ angular.module('accountSettings.controllers')
       });    
     }
     
-    $scope.isInstalled = function(accountFeature){              
-        return !((accountFeature.status === 'CANCELED') || (accountFeature.status === 'REMOVED') || (accountFeature.status === 'EXPIRED'));
+    $scope.isInstalled = function(accountPackage){              
+        return !((accountPackage.status === 'CANCELED') || (accountPackage.status === 'REMOVED') || (accountPackage.status === 'EXPIRED') || (accountPackage.status === 'UNINSTALLED'));
     }
-    $scope.isCanceled = function(accountFeature){              
-        return (accountFeature.status === 'CANCELED') || (accountFeature.status === 'EXPIRED');
+    $scope.isCanceled = function(accountPackage){              
+        return (accountPackage.status === 'CANCELED') || (accountPackage.status === 'EXPIRED') || (accountPackage.status === 'UNINSTALLED');
     }
     
     $scope.showDialog = function(which){
@@ -113,24 +114,28 @@ angular.module('accountSettings.controllers')
 
     $scope.getTotalSubscription = function (){
       var sum = 0;
-      angular.forEach($scope.accountFeatures,function(feature){
-        if (feature.status == "INSTALLED")
-          sum += feature.subscriptionPrice;
+      angular.forEach($scope.accountPackages,function(Package){
+        if (Package.status == "INSTALLED")
+          sum += Package.subscriptionPrice;
       });
     	return sum;
     }
 
-    $getFeatureIcon = function(accountFeature){
-      var feature = etFeatureById(accountFeature.featureId);
-      return feature.icon;
+    $getFeatureIcon = function(accountPackage){
+      var Package = getPackageById(accountPackage.preoPackageId);
+      return Package.icon;
     }
 
-    function getFeatureById(id){
-      return $.grep(allFeatures, function(e){ return e.id == id; })[0];   
+    function getPackageById(id){
+      return $.grep(allPackages, function(e){ return e.id == id; })[0];   
     }
 
-    $scope.hasCancelledFeatures = function(){      
-     return $scope.accountFeatures && $.grep($scope.accountFeatures, function(e){ return (e.status == "CANCELED" || e.status == "EXPIRED");  }).length > 0;
+    $scope.getTrialPeriod = function (accountPackage) {
+      return moment(accountPackage.startDate).add(accountPackage.$package.trialPeriod, 'day').format('Do, MMMM YYYY');
+    }
+
+    $scope.hasCancelledPackages = function(){      
+     return $scope.accountPackages && $.grep($scope.accountPackages, function(e){ return (e.status == "CANCELED" || e.status == "EXPIRED");  }).length > 0;
     } 
 
     $scope.updatePackage = function () {
@@ -143,7 +148,7 @@ angular.module('accountSettings.controllers')
       });
     }
 
-    $scope.cancelPackage = function () {
+    $scope.cancelPackage = function (accountPackage) {
       $notification.confirm({
         btnOk: _tr('CANCEL'),
         btnCancel: _tr('CONFIRM'),
@@ -155,11 +160,30 @@ angular.module('accountSettings.controllers')
       }, function () {
         //call in your server
         //@PUT: http://local.preoday.com/api/accounts/{accountid}/packages/{packageid}
+        console.log(accountPackage);
+        var previousStatus = accountPackage.status;
+        accountPackage.status = 'UNINSTALLED';
+        delete accountPackage.vat;
+        delete accountPackage.statusString;
+        accountPackage.$put({accountId: ACCOUNT_ID, packageId: accountPackage.preoPackageId},function(result){
+          console.log("Put account package success",result,status,accountPackage);
+          accountPackage.$package = getPackageById(accountPackage.preoPackageId);
+          setActiveCount();
+          
+        },function(error){
+          console.log("Put account package fail",error);
+          accountPackage.status = previousStatus;
+          displayErrorNoty();
+        });        
       });
     }
 
+    $scope.resubscribePackage = function (accountPackage) {
+      purchasePackage(accountPackage);
+    }
+
     function setActiveCount(){
-      $scope.activeFeaturesCount = $.grep($scope.accountFeatures, function(e){ return (e.status != "CANCELED" && e.status != "REMOVED" && e.status != "EXPIRED"); }).length > 0;
+      $scope.activePackagesCount = $.grep($scope.accountPackages, function(e){ return (e.status != "CANCELED" && e.status != "REMOVED" && e.status != "EXPIRED"); }).length > 0;
 
     }
 
@@ -172,37 +196,37 @@ angular.module('accountSettings.controllers')
     }
 
         
-    $scope.updateStatus=function(accountFeature,status){        
+    $scope.updateStatus=function(accountPackage,status){        
         //TODO how to not do this?
-        var previousStatus = accountFeature.status;
-        accountFeature.status = status;
-        accountFeature.$put({accountId:accountFeature.accountId,featureId:accountFeature.featureId},function(result){
-          console.log("Put account feature success",result,status,accountFeature);
-          accountFeature.feature = getFeatureById(accountFeature.featureId);
+        var previousStatus = accountPackage.status;
+        accountPackage.status = status;
+        accountPackage.$put({accountId:accountPackage.accountId,packageId: accountPackage.preoPackageId},function(result){
+          console.log("Put account package success",result,status,accountPackage);
+          accountPackage.feature = getPackageById(accountPackage.preoPackageId);
           setActiveCount();
           
         },function(error){
-          console.log("Put account feature fail",error);
-          accountFeature.status = previousStatus;
+          console.log("Put account package fail",error);
+          accountPackage.status = previousStatus;
           displayErrorNoty();
         });
     }
 
-    $scope.reinstallAccountFeature = function(accountFeature){
+    $scope.reinstallAccountPackage = function(accountPackage){
 
-      AccountFeature.getPrice({accountId:ACCOUNT_ID,featureId:accountFeature.featureId},
+      AccountPackages.getPrice({accountId:ACCOUNT_ID,packageId:accountPackage.preoPackageId},
         function(result){                
           $scope.price = result;
-          if (accountFeature.feature.contractMonths){
-              $scope.price.contractMonths = accountFeature.feature.contractMonths;
+          if (accountPackage.$package.contractMonths){
+              $scope.price.contractMonths = accountPackage.feature.contractMonths;
           }        
-          $scope.selectedFeature = accountFeature;
+          $scope.selectedPackage = accountPackage;
           $scope.showDialog("reinstall");
       });
     }
 
-    $scope.removeAccountFeature = function(accountFeature){
-      $scope.updateStatus(accountFeature,"REMOVED");      
+    $scope.removeAccountPackage = function(accountPackage){
+      $scope.updateStatus(accountPackage,"REMOVED");      
     }
 
     function setBillingDate(){
@@ -220,18 +244,18 @@ angular.module('accountSettings.controllers')
           $scope.diffInDays =0;
     }
 
-    function purchaseFeature(accountFeature){
-      var feature = accountFeature.feature;      
+    function purchasePackage(accountPackage){
+      var Package = accountPackage.$package;
       $AjaxInterceptor.start();
         AccountCard.get({accountId:ACCOUNT_ID},
           function(result){                      
             if (result.token && result.token!=null){               
-                AccountFeature.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){
+                AccountPackages.save({accountId:ACCOUNT_ID,packageId: Package.id},function(accountPayment){
                   console.log('here',accountPayment);
                         if (accountPayment.status ===  "SUCCESS"){
                           loadAll(function (){
                             $AjaxInterceptor.complete();
-                            $scope.showDialog('success');                            
+                            //$scope.showDialog('success');                            
                           });                             
                         } else {                        
                           $AjaxInterceptor.complete();
@@ -254,12 +278,10 @@ angular.module('accountSettings.controllers')
         });
     }
 
-     $scope.getExpiryDate = function(accountFeature){
-        return Math.floor(( new Date(accountFeature.endDate).getTime() -  new Date().getTime()) / (1000 * 3600 * 24))        
+     $scope.getExpiryDate = function(accountPackage){
+        return Math.floor(( new Date(accountPackage.endDate).getTime() -  new Date().getTime()) / (1000 * 3600 * 24))        
     }
 
-    
-    
       function displayErrorNoty(){
         noty({
               type: 'error',  layout: 'topCenter',
