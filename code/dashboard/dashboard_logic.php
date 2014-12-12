@@ -193,7 +193,7 @@
 			$_SESSION['noEHFlag']=1;
 		}
 	}
-	else if ((!$_SESSION['venue_liveFlag'] && !$_SESSION['venue_demoFlag']))
+	else if ( (!isset($_SESSION['venue_liveFlag']) || !$_SESSION['venue_liveFlag']) && ( !isset($_SESSION['venue_demoFlag']) || !$_SESSION['venue_demoFlag']))
 		$_SESSION['noEHFlag'] = 1;
 	
 	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag']) /*User has given data for all 5 already*/
