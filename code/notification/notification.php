@@ -12,8 +12,12 @@
     <label for="checkboxNotification"><? echo _("I have read the")?> <a href="{{showTerm}}" target="_blank"><? echo _("Terms and Conditions") ?></a></label>
   </div>  
 
-  <div class="buttons notificationButtons">
+  <div class="buttons notificationButtons" ng-if="!modifyPositionButtons">
     <button class='preodayButton' ng-if='btnOk' ng-class="{secondary:showTerm && !acceptTerm}" ng-click="send()" ng-disabled="showTerm && !acceptTerm">{{ btnOk }} </button>
     <button class='preodayButton' ng-if='btnCancel' ng-click="cancel()">{{ btnCancel }}</button>
+  </div>
+  <div class="buttons notificationButtons" ng-if="modifyPositionButtons">
+    <button class='preodayButton' ng-if='btnCancel' ng-click="cancel()">{{ btnCancel }}</button>  
+    <button class='preodayButton' ng-if='btnOk' ng-class="{secondary:showTerm && !acceptTerm}" ng-click="send()" ng-disabled="showTerm && !acceptTerm">{{ btnOk }} </button>
   </div>
 </div>
