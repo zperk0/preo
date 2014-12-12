@@ -4609,15 +4609,32 @@ $(document).ready(function() {
 			return;
 		}
 		$('#loadingDashboard').show();		
-		$(".switchDashboardMode").removeClass('active');
-		$(this).addClass('active');
+
+		var $switchDashboardMode = $(".switchDashboardMode")
+		var $newItem = $(this);
+		
 		$.ajax({
 		   type: "POST",
 		   url: '/code/finish/do_finish.php',
 		   data:data,
 		   success: function(data) {
-		    	$('#loadingDashboard').hide();
+		   		try {
+		   			data = $.parseJSON(data);
+		   			if (data.hasOwnProperty('status') && data.status == 'error') {
+		   				noty({ type: 'error', text: _tr('You need to subscribe to a package before changing the app mode') });	
+		   				$('#loadingDashboard').hide();
+		   			} else {
+			   			$switchDashboardMode.removeClass('active');
+			   			$newItem.addClass('active');
+				    	$('#loadingDashboard').hide();
+						noty({ type: 'success', text: modeMsg });
+		   			}
+		   		} catch(e) {
+		   			$switchDashboardMode.removeClass('active');
+		   			$newItem.addClass('active');
+			    	$('#loadingDashboard').hide();
 					noty({ type: 'success', text: modeMsg });
+		   		}
 		  	}
 		 });					
 	})
