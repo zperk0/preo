@@ -93,58 +93,6 @@ $(document).ready(function() {
 		if ( e.which == 13 ) e.preventDefault();  //just need to give class="noEnterSubmit"
 	}); 
 	//////////////////////////////////////////////////////////////////////
-
-	$("#signupForm").on('valid', function (event) {
-		var url = "/doSignUp";
-
-		$.ajax({
-			   type: "POST",
-			   url: url,
-			   data: $(this).serialize(), // serializes the form's elements.
-			   success: function(data)
-			   {
-					try
-					{
-						var dataArray = jQuery.parseJSON(data); //parsing JSON
-					
-					}
-					catch(e)
-					{
-						noty({
-						  type: 'error',  layout: 'topCenter',
-						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
-						});
-						//alert(data);
-						
-						return false;
-					}
-					
-					if(typeof dataArray['status'] !='undefined') //error
-					{
-						noty({
-						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message'] 
-						});
-					}
-					else
-					{	
-						$.post("/saveSignUp", 
-						'bName='+dataArray['name']+'&bID='+dataArray['id']+'&email='+encodeURIComponent(dataArray['owner']['email'])+'&fName='+dataArray['owner']['firstName']+'&lName='+dataArray['owner']['lastName']+'&id='+dataArray['owner']['id'],
-						function(response){
-							window.location.replace("/dashboard");
-						})
-						.fail(function(jqxhr) { 
-							noty({
-								type: 'error',  layout: 'topCenter',
-								text: 'Error: '+jqxhr.responseText	
-							});
-						});
-					}
-				}
-			 });
-
-		return false; // avoid to execute the actual submit of the form.
-	});
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	$("#signinForm").on('valid', function (event) {

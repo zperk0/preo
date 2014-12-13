@@ -1,110 +1,119 @@
-<?if($fb_field_flag){?>
-<script type="text/javascript">
-$(document).ready(function(){
-	noty({
-	  type: 'success',
-	  text: <? echo json_encode(_('Now, we just need your business name.')) ?>
-	});
-});
-</script>
-<?}?>
-<div class="row">
-	<div class="topSpacer"></div>
-	<h1 class="alignHeader"><?echo _("Get started");?></h1>
-	<div class="large-12 columns socialMediaDiv <?if($fb_field_flag) echo 'hide';?>">
-		<div class="row">
-			<div class="large-6 columns fbSignup">
-				<a href="<?php echo $authCodeUrl;?>"><span><?echo _("Signup using Facebook");?></span></a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="large-6 columns googleSignup">
-				<input type="hidden" id="userConsent" value="0"/>
-				<span class="g-signin" data-callback="signinCallback" data-clientid="26773142567-ui0mkhms9iu18n82k3tegok0b0phnim6.apps.googleusercontent.com" 
-						data-cookiepolicy="single_host_origin" data-scope="email profile"><?echo _("Signup using Google+");?></span>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="large-6 small-11 columns left row--space1u alignDiv">
-			<form id="signupForm" method="POST" data-abide>
-				<div class="row nameRow <?if($fb_field_flag) echo 'hide';?>">
-					<div class="large-12 columns">
-						<label><?echo _("First Name");?></label>
-						<input type="text" id="fName" name="fName" placeholder="" <?if($fb_field_flag) echo "value='$fName'";?> required pattern="^.{0,99}$" tabindex=1>
-						<small class="error"><?echo _("Please type your first name.(max 100chars)");?></small>
-					</div>
-					<div class="large-12 columns">
-						<label><?echo _("Last Name");?></label>
-						<input type="text" id="lName" name="lName" placeholder="" required <?if($fb_field_flag) echo "value='$lName'";?>  pattern="^.{0,99}$" tabindex=2>
-						<small class="error"><?echo _("Please type your last name.(max 100chars)");?></small>
-					</div>
-				</div>
-				<div class="row emailRow <?if($fb_field_flag) echo 'hide';?>">
-					<div class="large-12 columns">
-						<label><?echo _("Your email");?></label>
-						<input type="text" id="email" name="email" placeholder=""  <?if($fb_field_flag) echo "value='$email' readonly='readonly'";?> required pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' tabindex=3>
-						<small class="error"><?echo _("Please type your email");?></small>
-					</div>
-				</div>
+<div class="sections grey">
+	<div class="container">
+		<div class="col col-lg-12">
+			<h1 class="text-center">Sign up with Preoday</h1>
+			<p class="lead text-center">Start receiving mobile orders today</p>
+			<div class="bs-callout">
 				
-				<div class="row passRow <?if($fb_field_flag) echo 'hide';?>">
-					<div class="large-12 columns">
-						<label><?echo _("Create a password");?></label>
-						<input type="password" name="password" id="passwordField" <?if($fb_field_flag) echo "value='".randomPassword()."'";?> required tabindex=4>
-						<small class="error"><?echo _("Please type a password.");?></small>
+				<form class="form text-left" role="form" id="cAccount" method="POST" enctype="multipart/form-data">
+					<h3><span class="no-icon no-1"></span>Basic information</h3>
+					<div class="row">
+						<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						  	<div class="form-group firstname">
+						  		<label for="firstname">First name</label>
+						    	<input type="text" name="firstname" class="form-control" id="firstname">
+							</div>
+						</div>
+						<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<div class="form-group surname">
+							  	<label for="surname">Surname</label>
+							    <input type="text" name="surname" class="form-control" id="surname">
+							</div>
+						</div>
 					</div>
-				</div>
-				<?if(!$fb_field_flag){?>
-				<div class="row passRow">
-					<div class="large-12 columns">
-						<label><?echo _("Confirm password");?></label>
-						<input type="password" id="confPassword" required data-equalTo="passwordField" tabindex=5>
-						<small class="error"><?echo _("Passwords don't match.");?></small>
+					<div class="row">
+						<div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						  	<div class="form-group businessname">
+						  		<label for="businessname">Business name</label>
+						      	<input type="text" name="businessname" class="form-control" id="businessname">
+						  	</div>
+						</div>
 					</div>
-				</div>
-				<?}?>
-				<div class="row">
-					<div class="large-12 columns">
-						<label><?echo _("Your business name");?></label>
-						<input type="text" name="businessName" placeholder="" required pattern="^.{0,99}$" tabindex=6>
-						<small class="error"><?echo _("Please type your business name (max 100chars)");?></small>
+				  	<hr>
+				  	<h3><span class="no-icon no-2"></span>Create your Preoday account</h3>
+				  	<div class="row">
+						<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						  	<div class="form-group emailaddress">
+						  		<label for="emailaddress">Email address</label>
+						    	<input type="text" name="emailaddress" class="form-control" id="email">
+							</div>
+						</div>
+						<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<div class="form-group password">
+							  	<label for="password">Password</label>
+							    <input type="password" name="password" class="form-control" id="password">
+							</div>
+						</div>
 					</div>
-				</div>
-				
-				<div class="row">
-					<div class="large-12 columns">
-						<label><?echo _("Telephone Number");?></label>
-						<input type="text" name="phone" placeholder="" required pattern="^.{0,99}$" tabindex=6>
-						<small class="error"><?echo _("Please type your telephone number");?></small>
+				  	<hr>
+				  	<h3><span class="no-icon no-3"></span>Billing information<span class="security-info"></span></h3>
+				  	<h4 class="green">Your 14 day free trial will last until midnight on December 10th, 2014</h4>
+				  	<p class="cancel">If you choose not to continue using Preoday just cancel before the trail ends and you won’t be charged (we’ll email you 2 days before the trial ends to remind you). You can upgrade, downgrade or cancel at any time.</p>
+				  	<div class="row">
+						<div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						  	<div class="form-group cardnumber">
+						  		<label for="cardnumber">Card number</label>
+						      	<input type="text" name="cardnumber" class="form-control" id="cardnumber">
+						  	</div>
+						</div>
 					</div>
-				</div>
+					<div class="row">
+						<div class="col col-xs-6 col-sm-6 col-md-4 col-lg-4">
+						  	<div class="form-group expirymonth">
+						  		<label for="expirydate">Expiry (month/year)</label>
+						      	<select name="expirymonth" id="expirymonth" class="form-control" style="width: 49%; display: inline-block;">
+									<option value="blank">  </option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+									<option value="06">06</option>
+									<option value="07">07</option>
+									<option value="08">08</option>
+									<option value="09">09</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								</select>
 							
-												
-				
-				<div class="row row--space1">
-					<div class="large-12 columns small-centered large-centered">
-						<small class="smallNot"><?echo _("By clicking 'Sign Up' you agree to our");?> <a href="#" data-reveal-id="termsM"><?echo _("Terms");?></a> <?echo _("and");?> <a href="#" data-reveal-id="privM"><?echo _("Privacy Policy");?></a>.</label></small>
-					</div>
-				</div>
-			
-				<div class="row">
-					<div class="small-8 large-5 columns">
-						<input type="hidden" name="fbid" <?if($fb_field_flag) echo "value='$fbId'"; else echo "value='0'";?>>
-						<input type="hidden" id="gpid" name="gpid" value='0'>
-						<button type="submit" tabindex=7><?echo _("SIGN UP");?></button>
-					</div>
-				</div>
-			</form>
+								<select name="expiryyear" id="expiryyear" class="form-control" style="width: 49%; display: inline-block;">
+									<option value="blank">    </option>
+									<option value="2015">2015</option>
+									<option value="2016">2016</option>
+									<option value="2017">2017</option>
+									<option value="2018">2018</option>
+									<option value="2019">2019</option>
+								</select>
+							</div>
+						</div>
+						<div class="col col-xs-12 col-sm-6 col-md-2 col-lg-2">
+						  	<div class="form-group securitycode">
+						  		<label for="securitycode">Security code</label>
+						      	<input type="text" name="securitycode" class="form-control" id="securitycode">
+						  	</div>
+						</div>
+						<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						  	<div class="form-group postcode">
+						  		<label for="postcode">Postcode</label>
+						      	<input type="text" name="postcode" class="form-control" id="postcode">
+						  	</div>
+						</div>
+				  	</div>
+				  	
+
+				  	
+				  	<div class="form-group accept">
+				  		<label class="checkbox-inline accept">
+						  	<input type="checkbox" name="accept" id="inlineCheckbox1" value="option1"> I have read and accept the <a href="http://preoday.madebyck.com/terms-service/">terms of service</a> and <a href="http://preoday.madebyck.com/privacy-policy-2/">privacy policy</a>, including the terms regarding cookies
+						</label>
+				  	</div>
+				  	<div class="form-group text-center">
+				  		<button type="submit" value="Submit" class="btn btn-lg btn-primary">Start using my Preoday app</button>
+				  	</div>
+				  	<div class="messages"></div>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
-
-<?if(isset($_GET['autoG']) && $_GET['autoG']=='1'){?>
-<script type="text/javascript">
-$(document).ready(function(){
-	$('#userConsent').val('1');
-	$('.g-signin').trigger('click');
-});
-</script>
-<?}?>

@@ -79,6 +79,7 @@ angular.module('accountSettings.controllers')
          $scope.card.number = response.card.last4;
          $scope.card.type = response.card.type;                
          $scope.card.$save({accountId:ACCOUNT_ID},success,stripeError);         
+      
 
     };
 
