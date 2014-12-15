@@ -2,7 +2,7 @@
 	  require('getPath.php'); //the only relative link we will have
 	  require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'); //need this for multi-language support
 	  
-	  $signupPage = true;
+	  $showCssBeforeLogin = true;
 
 	  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 	  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h_signup.php'); 

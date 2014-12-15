@@ -40,7 +40,7 @@
 	<section class='activeFeaturesWrapper'>
 		<div class="blockSubscriptions" ng-if="isInstalled(accountPackage)">
 			<p><?php echo _("You are currently subscribed to the ") ?> {{ accountPackage.preoPackage.name + _tr(" package.") }}</p>
-			<p class="textGreen" ng-if="accountPackage.preoPackage.trialPeriod"><?php echo _("Your free trial of this subscription will end at midnight on ") ?> {{ getTrialPeriod(accountPackage) }}</p>
+			<p class="textGreen" ng-if="accountPackage.status == 'TRIAL'"><?php echo _("Your free trial of this subscription will end at midnight on ") ?> {{ getTrialPeriod(accountPackage) }}</p>
 		</div>
 		<div class="blockSubscriptions" ng-if="isUninstaled(accountPackage)">
 			<p><?php echo _("Your subscription has been cancelled ") ?></p>

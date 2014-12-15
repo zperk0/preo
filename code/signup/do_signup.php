@@ -4,10 +4,8 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 
-
-	print_r($_POST);exit();
-
 	$accountCard = $_POST['accountCard'];
+	protectArray($accountCard);
 	
 	$venueId = $_POST['venueId'];
 	protect($venueId);		
@@ -57,13 +55,17 @@
 	
 	$jsonData = json_encode($data);
 	
-	$curlResult = callAPI('PUT', $apiURL."venues/" . $venueId . "/claim", $jsonData, $apiAuth);
+	$curlResult = callAPI('PUT', $apiURL."venueclaim/" . $venueId, $jsonData, $apiAuth);
 	
 	$dataJSON = json_decode($curlResult,true);
+
+	$curlResult = callAPI('GET', $apiURL."venues/" . $venueId, $jsonData, $apiAuth);
+	$dataJSONVenue = json_decode($curlResult,true);
 	
-	if(isset($dataJSON['owner']['token'])) $_SESSION['token']=$dataJSON['owner']['token']; //otherwise its an error! 
+	if(isset($dataJSON['token'])) $_SESSION['token']=$dataJSON['token']; //otherwise its an error! 
 	
-	echo $curlResult; //sending a JSON via ajax
+	$dataJSON['accountId'] = $dataJSONVenue['accountId'];
+	echo json_encode($dataJSON); //sending a JSON via ajax
 	
 	//DEBUG
 	//$decodedCurl = json_decode($curlResult,true);

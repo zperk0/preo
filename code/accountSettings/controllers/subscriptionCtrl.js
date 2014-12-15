@@ -57,12 +57,17 @@ angular.module('accountSettings.controllers')
             data = { 
               btnOk: _tr('CONFIRM'),
               btnCancel: _tr('CANCEL'),
-              content: _tr("Your subscription will remain active until the end of the current billing cycle, you will no longer be billed after this date. Your venue will be taken offline but you will still be able to log in to account if you ever want to resubscribe.") + '<br /><br />' + _tr('Are you sure you want to cancel?'),
               contentClass: 'cancelPackage',
               modifyPositionButtons: true,
               windowClass:'small'
             },
-            clickOk = function(){cancelPackage()}
+            clickOk = function(){cancelPackage()};
+
+            if (accountPackage.status == 'TRIAL') {
+              data.content = _tr("Your venue will be taken offline but you still be able to log in to your account if you ever want to resubscribe.") + '<br /><br />' + _tr('Are you sure you want to cancel?');
+            } else {
+              data.content = _tr("Your subscription will remain active until the end of the current billing cycle, you will no longer be billed after this date. Your venue will be taken offline but you will still be able to log in to account if you ever want to resubscribe.") + '<br /><br />' + _tr('Are you sure you want to cancel?');
+            }
           break;          
           case "paymentError":
              data = { 

@@ -24,9 +24,8 @@
 		
 		<!-- Main CSS files -combined minified PLUS Bespoke CSS -combined (dependants minified) -->
 		<?php 
-		if (isset($signupPage) && $signupPage) {
+		if (isset($showCssBeforeLogin) && $showCssBeforeLogin) {
 		?>
-		<link rel='stylesheet' href='http://fast.fonts.net/cssapi/291bd54e-c550-4b0c-82f8-56132474b776.css?ver=4.0.1' type='text/css' media='all' />
 		<link rel='stylesheet' href='<? echo $_SESSION['path']?>/css/signup.css' type='text/css' media='all' />
 		<?php } else { ?>
 		<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/all_css.min.css" />		<!-- CSS 1/1 : to be minified and updated with timestamp -->	
