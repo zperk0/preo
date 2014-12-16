@@ -3,7 +3,7 @@
 			<div class="row">
 				<div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3 logo-col">
 					<p><a class="logo-grey" href="http://preoday.com/" rel="home">Preoday</a></p>
-					<p>&#169; Preoday 2014</p>
+					<p>&#169; Preoday <?php echo date("Y") ?></p>
 				</div>
 				<div class="col col-xs-12 col-sm-6 col-md-2 col-lg-2">
 					<nav>

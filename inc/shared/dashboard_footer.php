@@ -1,6 +1,6 @@
 		<footer class="dashboardFooter">
 			<div class="row">
-				<div class="large-offset-1 large-2 small-offset-1 small-5 columns centerInfoDiv">
+				<div class="large-2 small-5 columns centerInfoDiv">
 					<p>
 						<a class="TWFoot" target="_blank" href="https://twitter.com/preoday"><img src="<?echo $_SESSION['path']?>/img/twitter.png"/></a>
 						<a class="FBFoot" target="_blank" href="https://www.facebook.com/Preoday"><img src="<?echo $_SESSION['path']?>/img/facebook.png"/></a>

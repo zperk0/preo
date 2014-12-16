@@ -47,7 +47,7 @@
 		<?php 
 		if (isset($_SESSION['venue_permalink'])) {
 		?>
-		<p class="venueCode large-8 small-12"><?echo _("Your Web Orders URL is")." <a href='http://www.preoday.com/".$_SESSION['venue_permalink']."' target='_blank'><strong>www.preoday.com/".$_SESSION['venue_permalink']."</strong></a>";?>&nbsp;&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title=""></i></p>
+		<p class="venueCode large-8 small-12"><?echo _("Your online order page is")." <a href='http://www.preoday.com/".$_SESSION['venue_permalink']."' target='_blank'><strong>www.preoday.com/".$_SESSION['venue_permalink']."</strong></a>";?></p>
 		<?php } ?>
 	</div>
 </div>
