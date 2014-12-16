@@ -106,23 +106,31 @@ $(document).ready(function () {
         });        
     }	
 
-	function getQueryParams(qs) {
-	    qs = qs.split("+").join(" ");
-
-	    var params = {}, tokens,
-	        re = /[?&]?([^=]+)=([^&]*)/g;
-
-	    while (tokens = re.exec(qs)) {
-	        params[decodeURIComponent(tokens[1]).toLowerCase()]
-	            = decodeURIComponent(tokens[2]);
+	var queryParams = function () {
+	  // This function is anonymous, is executed immediately and 
+	  // the return value is assigned to QueryString!
+	  var query_string = {};
+	  var query = decodeURIComponent(window.location.search.substring(1));
+	  var vars = query.split("&");
+	  for (var i=0;i<vars.length;i++) {
+	    var pair = vars[i].split("=");
+	    	// If first entry with this name
+	    if (typeof query_string[pair[0]] === "undefined") {
+	      query_string[pair[0].toLowerCase()] = pair[1];
+	    	// If second entry with this name
+	    } else if (typeof query_string[pair[0]] === "string") {
+	      var arr = [ query_string[pair[0]], pair[1] ];
+	      query_string[pair[0].toLowerCase()] = arr;
+	    	// If third or later entry with this name
+	    } else {
+	      query_string[pair[0].toLowerCase()].push(pair[1]);
 	    }
-
-	    return params;
-	}    
+	  } 
+	    return query_string;
+	} ();
 
     getStripeKey();
 
-    var queryParams = getQueryParams(document.location.search);
     if (!queryParams || !queryParams.businessname || !queryParams.packageid || !queryParams.venueid) {
     	window.location.href = 'http://www.preoday.com/';
     } else {
