@@ -19,7 +19,7 @@
 							  	<div class="row">
 							  		<div class="col col-xs-12">
 									  	<div class="form-group text-center">
-									  		<button type="submit" value="Submit" class="btn btn-block btn-fourth"><?echo _("Sign in");?></button>
+									  		<button type="submit" value="Submit" class="btn btn-block btn-fourth"><?echo _("Reset my password");?></button>
 									  	</div>
 								  	</div>
 								</div>

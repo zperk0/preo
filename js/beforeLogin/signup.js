@@ -8,7 +8,7 @@ $(document).ready(function () {
 		if (!$('#termsConditions').is(':checked')) {
 			noty({
 			  type: 'error',  layout: 'topCenter',
-			  text: _tr("Your have accept tems & conditions for start using Preoday app.")
+			  text: _tr("You must accept the terms and conditions to start using your Preoday app.")
 			});			
 			return false;
 		}
