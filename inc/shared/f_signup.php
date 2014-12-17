@@ -6,12 +6,11 @@
 			var SESSION_VENUE_CURRENCY = "GBP"; /*defaults to GBP*/
 		<? } ?>	
 	</script>
-	
+
 	<script src="<?echo $_SESSION['path']?>/js/all_scripts.min.js"></script>
 
 	<script type='text/javascript' src='<?echo $_SESSION['path']?>/js/beforeLogin/modernizr.custom.js'></script>
 	<script type='text/javascript' src='<?echo $_SESSION['path']?>/js/beforeLogin/classie.js'></script>
-	<script type='text/javascript' src='<?echo $_SESSION['path']?>/js/beforeLogin/menu.js'></script>	
 	
 
 	<script type="text/javascript">
@@ -25,15 +24,12 @@
 			password: /^.+$/
 		  }
 		});
-	</script>
 
-	<?php 
-	if ($url == 'signup') {
-	?>
-		<script type="text/javascript" src="https://js.stripe.com/v2/"></script> 
-	<?php
-	}
-	?>
+		$('#trigger-overlay').on('click', function ($e) {
+			$e.preventDefault();
+			window.history.go(-1);
+		})		
+	</script>
 
     <div class="loading" id="loading">
       <div class="background-loading"></div>

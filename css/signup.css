@@ -987,7 +987,7 @@ a:focus {
   margin: 5px 0;
   z-index: 10000;
   text-indent: -1000%;
-  background-image: url("../img/beforeLogin/logo.svg");
+  background-image: url("../img/beforeLogin/logo-white.svg");
   background-position: 50% 50%;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -1198,8 +1198,8 @@ a:focus {
   font-size: 14px;
   outline: none;
   position: relative;
-  border: 2px solid #2589c7;
-  color: #2589c7;
+  border: 2px solid #fff;
+  color: #fff;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
@@ -1248,16 +1248,13 @@ a:focus {
   border: 2px solid #ffffff;
 }
 .navbar .btn.menu:after {
-  content: "Menu";
+  content: "Cancel";
   position: relative;
   margin: 0 auto;
 }
-.navbar .btn.menu.active:after {
-  content: "Close";
-}
 .navbar .navbar-default {
-  background-color: #ffffff;
-  border-color: #ffffff;
+  background-color: #2489C7;
+  border-color: #2489C7;
 }
 .navbar .navbar-right {
   margin-right: 0 !important;
@@ -1275,8 +1272,8 @@ a:focus {
 }
 
 .navbar-default {
-  background-color: #ffffff;
-  border-color: #ffffff;
+  background-color: #2489C7;
+  border-color: #2489C7;
 }
 
 .navbar2 {

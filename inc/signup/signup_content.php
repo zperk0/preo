@@ -139,3 +139,4 @@
 	</div>
 
 	<script type='text/javascript' src='<?echo $_SESSION['path']?>/js/beforeLogin/signup.js'></script>
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script> 
