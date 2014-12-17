@@ -1,4 +1,5 @@
 <?php 
+	if(isset($_SESSION['logged'])) { header('location:'.$_SESSION['path'].'/dashboard'); exit; } //redirect to dashboard if logged in
 	$url = substr($_SERVER['REDIRECT_URL'], 1);
 ?>
 
