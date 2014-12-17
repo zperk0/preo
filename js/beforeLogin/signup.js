@@ -71,27 +71,30 @@ $(document).ready(function () {
 			},
 		   success: function(data)
 		   {
-		   		if (data instanceof Object) {
-					$.post("/saveSignUp", 
-					'bName='+queryParams.businessname+'&bID='+data.accountId+'&email='+encodeURIComponent(data.email)+'&fName='+data.firstName+'&lName='+data.lastName+'&id='+data.id,
-					function(response){
-						window.location.replace("/dashboard");
-					})
-					.fail(function(jqxhr) { 
-						noty({
-							type: 'error',  layout: 'topCenter',
-							text: 'Error: '+jqxhr.responseText	
-						});
+		   	console.log("success",data);
+		   		if (data instanceof Object && data.status == undefined) {
+						$.post("/saveSignUp", 
+						'bName='+queryParams.businessname+'&bID='+data.accountId+'&email='+encodeURIComponent(data.email)+'&fName='+data.firstName+'&lName='+data.lastName+'&id='+data.id,
+						function(response){
+							window.location.replace("/dashboard");
+						})
+						.fail(function(jqxhr) { 
+							noty({
+								type: 'error',  layout: 'topCenter',
+								text: 'Error: '+jqxhr.responseText	
+							});
 
-						$('#loading').hide();
-					});
+							$('#loading').hide();
+						});
 		   		} else {
 		   			$('#loading').hide();
-					noty({
-					  type: 'error',  layout: 'topCenter',
-					  text: _tr("Sorry, but there's been an error processing your request.")
-					});
-					//alert(data);
+		   			var message = _tr("Sorry, but there's been an error processing your request.");
+		   			if (data.status != undefined)
+		   				message = data.message;
+						noty({
+						  type: 'error',  layout: 'topCenter',
+						  text: message
+						});					
 					
 					return false;		
 		   		}
