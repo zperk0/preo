@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+	$('#loading').show();
 	var CARD = null;
 
 	$("#signUpForm").on('valid', function () {
@@ -109,9 +109,29 @@ $(document).ready(function () {
         });        
     }	
 
+  function validateVenue(venueId,callback){
+  	$.get("/api/venues/"+venueId)
+  	.then(function(data){
+  		if (data.claimed != null){  			
+  			noty({
+				  type: 'success',  layout: 'topCenter',
+				  text: _tr("This venue has been claimed already, sign in to access your dashboard.")
+				});			
+  			setTimeout(function(){
+  				window.location.href = '/login';
+  			},2000)
+  			
+  		}else {
+  			$('#loading').hide();  		
+  			$('#businessName').val(data.name);
+  			callback();
+  		}
+  	}).fail(function(){
+  			window.location.href = 'http://www.preoday.com/';
+  	})
+  }
+
 	var queryParams = function () {
-	  // This function is anonymous, is executed immediately and 
-	  // the return value is assigned to QueryString!
 	  var query_string = {};
 	  var query = decodeURIComponent(window.location.search.substring(1));
 	  var vars = query.split("&");
@@ -132,12 +152,14 @@ $(document).ready(function () {
 	    return query_string;
 	} ();
 
-    getStripeKey();
+    getStripeKey();    
 
-    if (!queryParams || !queryParams.businessname || !queryParams.packageid || !queryParams.venueid) {
+    if (!queryParams  || !queryParams.packageid || !queryParams.venueid) {
     	window.location.href = 'http://www.preoday.com/';
     } else {
-    	$('#businessName').val(queryParams.businessname);
-    	$('#firstname').focus();
+    	validateVenue(queryParams.venueid,function(){    	
+    		$('#firstname').focus();
+    	});    	
     }
+
 });
