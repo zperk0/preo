@@ -35,8 +35,8 @@ function getEventDuration($startHours,$endHours){
 			$events[$i]['desc'] 	= $_POST['eDesc'][$j];
 			$events[$i]['starttime']= $_POST['eTime'][$j];
 			$events[$i]['endtime'] 	= $_POST['eETime'][$j];
-			if ( isset($_POST['eOutletLocation'][$j]) ) {
-				$events[$i]['outletLocationId'] 	=  $_POST['eOutletLocation'][$j];
+			if (isset($_POST['eOutletLocation']) && isset($_POST['eOutletLocation'][$j])) {
+				$events[$i]['outletLocationId'] 	= $_POST['eOutletLocation'][$j];
 			}
 			$tempDate 				= $_POST['eDate'][$j];
 				//convert to YYYYMMDD (from DD/MM/YYYY)
@@ -82,7 +82,7 @@ function getEventDuration($startHours,$endHours){
 		$data['name'] 			= $event['name'];
 		$data['description'] 	= $event['desc'];
 		$data['visible'] 		= $event['visible'];
-		if ( isset($event['outletLocationId']) ) {
+		if (isset($event['outletLocationId'])) {
 			$data['outletLocationId'] 	= $event['outletLocationId'];
 		}
 		$data['duration'] 		= getEventDuration($event['starttime'],$event['endtime']);
