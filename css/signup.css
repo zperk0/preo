@@ -1827,7 +1827,8 @@ fieldset[disabled] .btn-fourth.active {
   margin-bottom: 50px;
 }
 .sections.sign-up label.accept a {
-  font-weight: 400;
+  font-weight: bold;
+  text-decoration: underline;
 }
 .sections.sign-up hr {
   margin-top: 55px;
