@@ -308,13 +308,13 @@ $(document).ready(function() {
 			
 			if (place.address_components) {
 			
-			//console.log(place.address_components);
+			
 			
 			arrLength = place.address_components.length;
 
 			for(var i = 0;i<arrLength;i++)
 			{
-				//console.log(place.address_components[i].types);
+				
 				
 				if(place.address_components[i].types == "street_number")
 					street_number = place.address_components[i].long_name;
@@ -335,7 +335,6 @@ $(document).ready(function() {
 					country = place.address_components[i].short_name;
 			}
 			
-			//console.log(street_number+", "+route+", "+locality+", "+postal_town+", "+postal_code+", "+country);
 			
 			/*address = [(place.address_components[0] &&
 						place.address_components[0].short_name || ''),
@@ -416,7 +415,7 @@ $(document).ready(function() {
 
 	$('.venueHasDelivery').on('click', function(){
 		var isChecked = $("#advanced-setting").css("display") == "none";		
-		console.log('isChecked:' + isChecked)
+		
 		if(isChecked)
 		{
 			$('#advanced-setting').slideDown();
@@ -499,7 +498,7 @@ $(document).ready(function() {
 			  type: 'success',
 			  text: 'Uploaded!'
 			});
-			//console.log('resp:',responseText)
+			
 			//alert(responseText);
 			
 			responseText=responseText.replace('_thumb.png','');
@@ -746,7 +745,7 @@ $(document).ready(function() {
 		data = JSON.parse(data);
 		for (var i = 0, len = data.length; i < len; i++) {
 			var tag = data[i];
-			console.log('code',tag.code);
+			
 			tags.push('<li>' +
 						'<div class="checkbox checkboxStyle">' +
 						  	'<input type="checkbox" value="' + tag.code + '" id="checktag_' + tag.code + '">' +
@@ -1730,7 +1729,7 @@ $(document).ready(function() {
 					itemCounter++;
 				});
 				
-				//console.log("old:"+oldItemOrder+" new:"+currentItemOrder);
+				
 				
 				//update item-option counts
 				var itemCountArray = new Array();
@@ -2327,8 +2326,7 @@ $(document).ready(function() {
 		
 			menuData = JSON.stringify(menu);
 		
-			//console.log(menu);
-			//console.log(menuData);
+			
 			
 			$.ajax({
 			   type: "POST",
@@ -3560,7 +3558,7 @@ $(document).ready(function() {
 			});
 			return;
 		}
-		// console.log($oldDiv,$oldDiv.val())
+		
 		$newDiv = $oldDiv.clone(false);
 		
 		$ohDowCount = $(this).parents('.openingHoursDiv').find('.openHWrapper').length;
@@ -3594,7 +3592,7 @@ $(document).ready(function() {
 		
 		//add event listener to hid hours if closed
 		$newDiv.find(".oh-is-open").on('change',onIsOpenChange).each(function(i){
-			// console.log('i = ' + i)
+			
 			if (i>0){								
 				$(this).find("li:last").remove();
 			}
@@ -4666,7 +4664,7 @@ function CurrencyManager(){
 		   dataType:"json",		   
 		   success: function(data)
 		   {
-		   	  // console.log("success",data)
+		   	  
 		   	  that.currencies = data;		   	  
 		   }, error:function(data){
 		   	console.log("error",data)
@@ -4702,7 +4700,7 @@ function CurrencyManager(){
 	function init(currencySelector){
 		var that = this;
 		$currency = $(currencySelector);
-		console.log("SESSION_VENUE_CURRENCY",SESSION_VENUE_CURRENCY)
+		
 		var currencyCode = "GBP"; //defaults to GBP
 		if (SESSION_VENUE_CURRENCY != undefined){
 			currencyCode  = SESSION_VENUE_CURRENCY;
@@ -4712,7 +4710,7 @@ function CurrencyManager(){
 			that.refreshCurrencySymbols($(this).val());
 
 		})
-		console.log("Initing CurrencyManager with currency:" + currencyCode);				
+		
 		getAllCurrencies(function(){				
 			that.refreshCurrencySymbols(currencyCode);			
 		});

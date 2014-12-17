@@ -39,16 +39,13 @@
 			</div>
 		</div>
 	</footer>
+	
+	<script src="<?echo $_SESSION['path']?>/js/all_scripts.min.js"></script>
 
-	<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type='text/javascript' src='<?echo $_SESSION['path']?>/js/beforeLogin/modernizr.custom.js'></script>
 	<script type='text/javascript' src='<?echo $_SESSION['path']?>/js/beforeLogin/classie.js'></script>
 	<script type='text/javascript' src='<?echo $_SESSION['path']?>/js/beforeLogin/menu.js'></script>	
 	
-	<script src="<?echo $_SESSION['path']?>/js/jquery.noty-full-min.js"></script>
-	<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.js"></script>
-	<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.forms.js"></script>
-	<script src="<?echo $_SESSION['path']?>/js/foundation/foundation.abide.js"></script>
 
 	<script type="text/javascript">
 	  $(document)
