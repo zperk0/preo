@@ -78,9 +78,9 @@
 		<div class="large-7 columns dashChangeApp">				
 			<div class="row">
 				<div class="large-12 columns">
-					<div class="accordion" data-options="one_up: false;" data-section="accordion">
+					<div class="accordion contentSectionsDashboard" data-options="one_up: false;" data-section="accordion">
 						<section>
-							<h3 data-section-title><a href="//orders.preoday.com" target="_blank" class="titleDashContent"><?echo _("Order Screen");?></a></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/order-icon_small.png"/>
+							<h3 data-section-title><a href="//orders.preoday.com" target="_blank" class="titleDashContent"><span><?echo _("Order Screen");?></span></a> <img src="<?echo $_SESSION['path']?>/img/dashboard/order-icon_small.png"/></h3>
 						</section>
 						<?php 
 						if ($showKYC) {
@@ -90,7 +90,7 @@
 						</section>
 						<?php } ?>
 						<section>
-							<h3 data-section-title><?echo _("Menus");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/>
+							<h3 data-section-title><span><?echo _("Menus");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/></h3>
 							<div class="content" data-section-content>
 								<?foreach($_SESSION['menus'] as $menuL){?>
 									<p id="p-<?echo $menuL['id']?>">
@@ -103,7 +103,7 @@
 							</div>
 						</section>						
 						<section>
-							<h3 data-section-title><?echo _("Venue Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
+							<h3 data-section-title><span><?echo _("Venue Settings");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/></h3>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/settings"><?echo _("Change settings");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/deliverySettings"><?echo _("Delivery settings");?></a></p>
@@ -114,7 +114,7 @@
 							</div>
 						</section>
 						<section>
-							<h3 data-section-title><?echo _("Styling");?></h3><img class="topFix" src="<?echo $_SESSION['path']?>/img/dashboard/styling_small.png"/>
+							<h3 data-section-title><span><?echo _("Styling");?></span><img class="topFix" src="<?echo $_SESSION['path']?>/img/dashboard/styling_small.png"/></h3>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/homescreen"><?echo _("Home screen");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/menuscreen"><?echo _("Menu screen");?></a></p>
@@ -122,14 +122,14 @@
 						</section>
 						<?if($_SESSION['venue_eventFlag']){?>		
 						<section>
-							<h3 data-section-title><?echo _("Events");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/events_small.png"/>
+							<h3 data-section-title><span><?echo _("Events");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/events_small.png"/></h3>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/events"><?echo _("Update events");?></a></p>
 							</div>
 						</section>
 						<?}?>						
 						<section class="premiumSectionBorderBottom">
-							<h3 data-section-title><?echo _("Advanced Settings");?></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/>
+							<h3 data-section-title><span><?echo _("Advanced Settings");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/></h3>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/users"><?echo _("Manage users");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/payment"><?echo _("Add a payment method");?></a></p>
@@ -137,10 +137,10 @@
 							</div>
 						</section>
 						<section class="premiumSection">
-							<h3 data-section-title><a href="<?echo $_SESSION['path']?>/accountSettings"><?echo _("My Account");?></a></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/account-icon.png"/>
+							<h3 data-section-title><a href="<?echo $_SESSION['path']?>/accountSettings"><?echo _("My Account");?></a><img src="<?echo $_SESSION['path']?>/img/dashboard/account-icon.png"/></h3>
 						</section>	
 						<section class="premiumSection">
-							<h3 data-section-title><?echo _("Help");?></h3><img class="noFilter" src="<?echo $_SESSION['path']?>/img/dashboard/help-icon.png"/>
+							<h3 data-section-title><?echo _("Help");?><img class="noFilter" src="<?echo $_SESSION['path']?>/img/dashboard/help-icon.png"/></h3>
 							<div class="content" data-section-content>
 								<div> 
 									<p><a href="http://www.preoday.com/faq/" target="_blank" class='featureName'>Frequently Asked Questions</a></p>

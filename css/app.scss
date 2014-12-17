@@ -3959,6 +3959,74 @@ button.preodayButton.noclick{
   display: none;
 }
 
+.accordion.contentSectionsDashboard section > h3[data-section-title]{
+  width: 100% !important;
+  position: relative;
+  height: auto;
+  min-height: 50px;
+
+  span {
+    width: 80%;
+    display: inline-block;
+  }
+
+  img{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -10%;
+  }
+
+  i {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -4%;    
+  }
+}
+
+@media screen and (max-width: 910px) {
+
+  .accordion.contentSectionsDashboard section > h3[data-section-title]{
+    img {
+      margin-top: -12%;
+    }
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+
+  .accordion.contentSectionsDashboard section > h3[data-section-title]{
+    img {
+      margin-top: -13%;
+    }
+  }
+
+}
+
+@media screen and (max-width: 780px) {
+
+  .accordion.contentSectionsDashboard section > h3[data-section-title]{
+    img.topFix {
+      margin-top: -11%;
+    }
+  }
+
+}
+
+.contentSectionsDashboard section > img{
+  width: 20% !important;
+}
+
+@media screen and (max-width: 767px) {
+
+  .contentSectionsDashboard section > img{
+    width: auto !important;
+  }
+
+}
+
 .custom-checkbox{
   display: inline-block;
   position: relative;
@@ -3980,6 +4048,11 @@ button.preodayButton.noclick{
   display: inline-block;
   background: url("/img/box-off.png") no-repeat;
 }
+.linkSuccessShop{
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+}
 
 .custom-checkbox input[type=checkbox]:checked + span.icon{
   background: url("/img/box-on.png") no-repeat;
@@ -3998,7 +4071,6 @@ button.preodayButton.noclick{
   -khtml-opacity: 0;
   -moz-opacity: 0;
 }
-
 
 .listTags{
   list-style-type: none;
