@@ -73,7 +73,7 @@
 							<div class="col col-xs-12 col-sm-4 col-md-4 col-lg-4">
 								<div class="form-group expirymonth">
 									<label for="expirydate" style="width: 100%;"><?php echo _("Expiry (month/year)"); ?></label>
-									<select name="expirymonth" id="expirymonth" required class="form-control" style="width: 45%; display: inline-block;">
+									<select name="expirymonth" id="expirymonth" required class="form-control" style="width: 43%; display: inline-block;">
 										<option value=""></option>
 										<option value="01">01</option>
 										<option value="02">02</option>
@@ -88,7 +88,7 @@
 										<option value="11">11</option>
 										<option value="12">12</option>
 									</select>
-									<select name="expiryyear" id="expiryyear" required class="form-control" style="width: 52%; display: inline-block;">
+									<select name="expiryyear" id="expiryyear" required class="form-control" style="width: 54%; display: inline-block;">
 										<option value=""></option>
 										<option value="2015">2015</option>
 										<option value="2016">2016</option>
@@ -135,6 +135,8 @@
 								<small class="error"><?echo _("Your have accept tems & conditions for start using Preoday app.");?></small>
 							</label>
 						</div>
+						<div class="readMessage" id="errorStripe"></div>
+						<div class="separator"></div>
 						<div class="form-group text-center">
 							<button type="submit" value="Submit" class="btn btn-lg btn-primary"><?php echo _("Start using my Preoday app"); ?></button>
 						</div>

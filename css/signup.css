@@ -1498,7 +1498,7 @@ label {
 label.accept {
   font-weight: 200;
   font-size: 16px;
-  margin-bottom: 50px;
+  margin-bottom: 0;
 }
 label.accept a {
   font-weight: 400;
@@ -1848,7 +1848,7 @@ fieldset[disabled] .btn-fourth.active {
   font-weight: 100;
   font-size: 16px;
   margin-top: 25px;
-  margin-bottom: 50px;
+  margin-bottom: 0;
 }
 .sections.sign-up label.accept a {
   font-weight: bold;
@@ -2442,4 +2442,21 @@ footer .logo-grey {
 
 #loading {
   display: none;
+}
+
+#errorStripe {
+  display: none;
+}
+
+.separator {
+  display: block;
+  margin-bottom: 50px;
+}
+
+.readMessage {
+  color: #AE0000;
+}
+
+#errorStripe.active, .readMessage.active {
+  display: block;
 }

@@ -11,6 +11,8 @@ $(document).ready(function () {
 			return false;
 		}
 
+		$('#errorStripe').removeClass('active');
+
 		$('#loading').show();
 
 		CARD = {
@@ -39,13 +41,13 @@ $(document).ready(function () {
 	var stripeResponseHandler = function (status, response) {
        if (response.error) {
        	$('#loading').hide();
-       	// show error message
+       	$('#errorStripe').html(response.error.message).addClass('active');
        } else {        
          // token contains id, last4, and card type
-         CARD.token = response.id;
-         CARD.number = response.card.last4;
-         CARD.type = response.card.type;
-         postForm();
+        CARD.token = response.id;
+        CARD.number = response.card.last4;
+        CARD.type = response.card.type;
+        postForm();
        }
 	}
 
@@ -78,24 +80,24 @@ $(document).ready(function () {
 						function(response){
 							window.location.replace("/dashboard");
 						})
-						.fail(function(jqxhr) { 
+						.fail(function(jqxhr) { 							
+							$('#errorStripe').html(jqxhr.responseText).addClass('active');
 							noty({
-								type: 'error',  layout: 'topCenter',
-								text: 'Error: '+jqxhr.responseText	
+							  type: 'error',  layout: 'topCenter',
+							  text: _tr("Sorry, but there's been an error processing your request.")
 							});							
 							$('#loading').hide();
 						});
 		   		} else {
 		   			$('#loading').hide();
-		   			var message = _tr("Sorry, but there's been an error processing your request.");
 		   			if (data.status != undefined)
-		   				message = data.message;
+		   				$('#errorStripe').html(data.message).addClass('active');
+
 						noty({
 						  type: 'error',  layout: 'topCenter',
-						  text: message
-						});					
-					
-					return false;		
+						  text: _tr("Sorry, but there's been an error processing your request.")
+						});
+						return false;		
 		   		}
 			}
 		 });
