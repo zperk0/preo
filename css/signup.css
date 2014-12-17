@@ -1489,7 +1489,8 @@ label.accept {
   margin-bottom: 50px;
 }
 label.accept a {
-  font-weight: 400;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .form-group {
