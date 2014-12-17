@@ -2,9 +2,7 @@ $(document).ready(function () {
 
 	var CARD = null;
 
-	$("#signUpForm").on('submit', function ($e) {
-		$e.preventDefault();
-
+	$("#signUpForm").on('valid', function () {
 		if (!$('#termsConditions').is(':checked')) {
 			noty({
 			  type: 'error',  layout: 'topCenter',
@@ -34,6 +32,8 @@ $(document).ready(function () {
         exp_month : CARD.expmonth,
         exp_year : CARD.expyear
       }, stripeResponseHandler);
+
+      return false;
 	});
 
 	var stripeResponseHandler = function (status, response) {
