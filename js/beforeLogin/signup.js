@@ -82,8 +82,7 @@ $(document).ready(function () {
 							noty({
 								type: 'error',  layout: 'topCenter',
 								text: 'Error: '+jqxhr.responseText	
-							});
-
+							});							
 							$('#loading').hide();
 						});
 		   		} else {
@@ -102,10 +101,11 @@ $(document).ready(function () {
 		 });
 	}
 
-    function getStripeKey(){
+    function getStripeKey(callback){
         $.get('/api/config/app').
         success(function(data) {                        
-            Stripe.setPublishableKey(data.stripeKey);               
+            Stripe.setPublishableKey(data.stripeKey);                           
+            callback();
         });        
     }	
 
@@ -124,7 +124,7 @@ $(document).ready(function () {
   		}else {
   			$('#loading').hide();  		
   			$('#businessName').val(data.name);
-  			callback();
+  			getStripeKey(callback);  			
   		}
   	}).fail(function(){
   			window.location.href = 'http://www.preoday.com/';
@@ -152,7 +152,7 @@ $(document).ready(function () {
 	    return query_string;
 	} ();
 
-    getStripeKey();    
+    
 
     if (!queryParams  || !queryParams.packageid || !queryParams.venueid) {
     	window.location.href = 'http://www.preoday.com/';
