@@ -51,8 +51,15 @@
 						</div>
 						<hr>
 						<h3><span class="no-icon no-3"></span><?php echo _("Billing information"); ?><span class="security-info"></span></h3>
-						<h4 class="text-green"><?php echo _("Your 14 day free trial will last until midnight on December 10th, 2014"); ?></h4>
+						<?php  
+							if (isset($_GET['packageId']) && $_GET['packageId'] == 1) {
+							$date = strtotime(date("Y-m-d H:i:s"));
+							$date = strtotime("+14 day", $date);
+							$date = date('F jS, Y', $date);
+						?>
+						<h4 class="text-green"><?php echo _("Your 14 day free trial will last until midnight on ") . $date; ?></h4>
 						<h5><?php echo _("If you choose not to continue using Preoday just cancel before the trail ends and you won’t be charged (we’ll email you 2 days before the trial ends to remind you). You can upgrade, downgrade or cancel at any time."); ?></h5>
+						<?php } ?>
 						<div class="row">
 							<div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<div class="form-group cardnumber">

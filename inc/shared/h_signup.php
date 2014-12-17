@@ -1,4 +1,8 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<?php 
+	$url = substr($_SERVER['REDIRECT_URL'], 1);
+?>
+
+<nav class="navbar navbar-default navbar-fixed-top <?php echo $url == 'signup' ? 'signupHeader' : '' ?>" role="navigation">
 	<div class="container" id="cblue">
 		<div class="navbar-header">
 			<a id="logo" class="logo" href="http://preoday.com/" rel="home">Preoday</a>

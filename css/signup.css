@@ -998,6 +998,11 @@ a:focus {
   width: 100px;
   height: 21px;
 }
+
+.signupHeader .logo {
+  background-image: url("../img/beforeLogin/logo.svg");
+}
+
 @media (min-width: 768px) {
   .logo, footer .logo-grey {
     width: 140px;
@@ -1205,6 +1210,11 @@ a:focus {
   transition: all 0.3s;
   /* Pseudo elements for icons */
 }
+.navbar.signupHeader .btn {
+  border: 2px solid #2589c7;
+  color: #2589c7;  
+}
+
 @media (min-width: 768px) {
   .navbar .btn {
     padding: 5px 20px;
@@ -1274,6 +1284,11 @@ a:focus {
 .navbar-default {
   background-color: #2489C7;
   border-color: #2489C7;
+}
+
+.navbar-default.signupHeader {
+  background-color: #fff;
+  border-color: #fff;  
 }
 
 .navbar2 {
@@ -1591,6 +1606,18 @@ hr {
 
 .btn-secondary:active {
   box-shadow: 0 0 #b4b6b8;
+}
+
+.btn:focus{
+  background-color: #fff;
+  color: #2589c7;
+  border-color: #2589c7;
+}
+
+.signupHeader .btn:focus{
+  background-color: #2589c7;
+  color: #fff;
+  border-color: #fff;  
 }
 
 .btn-secondary:hover,
