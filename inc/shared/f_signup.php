@@ -1,44 +1,11 @@
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col col-xs-12 col-sm-12 col-md-3 col-lg-3 logo-col">
-					<p><a class="logo-grey" href="http://preoday.com/" rel="home">Preoday</a></p>
-					<p>&#169; Preoday <?php echo date("Y") ?></p>
-				</div>
-				<div class="col col-xs-12 col-sm-6 col-md-2 col-lg-2">
-					<nav>
-						<li id="menu-item-68" class="menu-header menu-item menu-item-type-custom menu-item-object-custom menu-item-68"><a href="#"><?php echo _("About Preoday"); ?></a></li>
-						<li id="menu-item-53" class=" menu-item-53"><a href="http://preoday.com/about/"><?php echo _("About"); ?></a></li>
-						<li id="menu-item-52" class=" menu-item-52"><a href="http://preoday.com/faq/"><?php echo _("FAQ"); ?></a></li>
-						<li id="menu-item-51" class=" menu-item-51"><a href="http://preoday.com/contact/"><?php echo _("Contact"); ?></a></li>
-						<li id="menu-item-50" class=" menu-item-50"><a href="http://preoday.com/press/"><?php echo _("Press"); ?></a></li>
-						<li id="menu-item-49" class=" menu-item-49"><a href="http://preoday.com/blog/"><?php echo _("Blog"); ?></a></li>
-					</nav>				
-				</div>
-				<div class="col col-xs-12 col-sm-6 col-md-2 col-lg-2">
-					<nav>
-						<li id="menu-item-67" class="menu-header menu-item menu-item-type-custom menu-item-object-custom menu-item-67"><a href="#"><?php echo _("Work with us"); ?></a></li>
-						<li id="menu-item-55" class=" menu-item-55"><a href="http://preoday.com/partners/"><?php echo _("Partners"); ?></a></li>
-						<li id="menu-item-54" class=" menu-item-54"><a href="http://preoday.com/portals/"><?php echo _("Portals"); ?></a></li>
-					</nav>			
-				</div>
-				<div class="col col-xs-12 col-sm-6 col-md-2 col-lg-2">
-					<nav>
-						<li id="menu-item-66" class="menu-header menu-item menu-item-type-custom menu-item-object-custom menu-item-66"><a href="#"><?php echo _("Legal stuff"); ?></a></li>
-						<li id="menu-item-57" class=" menu-item-57"><a href="http://preoday.com/privacy-policy/"><?php echo _("Privacy Policy"); ?></a></li>
-						<li id="menu-item-56" class=" menu-item-56"><a href="http://preoday.com/terms-use/"><?php echo _("Terms of use"); ?></a></li>
-					</nav>			
-				</div>
-				<div class="col col-xs-12 col-sm-6 col-md-3 col-lg-3 social-col">
-					<a href="https://twitter.com/preoday" class="social-icon twitter"></a>
-					<a href="https://www.facebook.com/Preoday" class="social-icon facebook"></a>
-					<a href="#" class="social-icon google-plus"></a>
-					<a href="#" class="social-icon youtube"></a>
-					<a href="http://www.linkedin.com/company/2892744?trk=tyah" class="social-icon linkedin"></a>
-				</div>
-			</div>
-		</div>
-	</footer>
+	
+	<script type="text/javascript">	
+		<?if((isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'])){?>
+			var SESSION_VENUE_CURRENCY = <? echo json_encode($_SESSION['venue_currency']);?>
+		<? } else {?>
+			var SESSION_VENUE_CURRENCY = "GBP"; /*defaults to GBP*/
+		<? } ?>	
+	</script>
 	
 	<script src="<?echo $_SESSION['path']?>/js/all_scripts.min.js"></script>
 
