@@ -101,7 +101,7 @@ angular.module('accountSettings.controllers')
     $scope.getTotalSubscription = function (){
       var sum = 0;
       angular.forEach($scope.accountPackages,function(Package){
-        if (Package.status == "INSTALLED")
+        if (Package.status == "INSTALLED" || Package.status == "TRIAL")
           sum += Package.subscriptionPrice;
       });
     	return sum;
