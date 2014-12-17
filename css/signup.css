@@ -1760,7 +1760,7 @@ fieldset[disabled] .btn-fourth.active {
 
 .sections {
   padding: 95px 0;
-  position: relative;
+  /*position: relative;*/
 }
 .sections.white {
   background: #ffffff;
