@@ -1,7 +1,6 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
       require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function 
-//    session_start();
-	  		
+      require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/override_vars.php');
 
 ?>
 
@@ -10,7 +9,7 @@
 		<ul class="title-area">
 			<li class="name">
 				<h1>
-					<a href="<?echo $_SESSION['path']?>/"><img src="<?echo $_SESSION['path']?>/img/logo.png" alt="<? echo _("PreoDay");?>"/></a>
+					<a href="<?echo $_SESSION['path']?>/"><img src="<?echo $_SESSION['OVERRIDES']['logo']?>" alt="<? echo _("PreoDay");?>"/></a>
 				</h1>
 				<div class="progressIndicator has-tip tip-right" data-tooltip></div>
 			</li>
