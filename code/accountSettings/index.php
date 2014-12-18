@@ -15,7 +15,7 @@
         <div class='bottomSpacer'></div>
     	</div>
     	<div class='menu'>
-  		<h3>My Account</h3>
+  		<h3><? echo _("My Account") ?></h3>
 
   		<ul>  			
   			<li ng-class="{'selected':currentView == Views.subscription}" ng-click="setSelected(Views.subscription)">  <a href="#/subscription"><?echo _("Subscriptions") ?></a></li>
