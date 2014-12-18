@@ -2460,3 +2460,15 @@ footer .logo-grey {
 #errorStripe.active, .readMessage.active {
   display: block;
 }
+
+.package{
+  display:none;
+} 
+
+.trial .package-trial{
+  display:block;
+}
+
+.payment .package-payment{
+  display:block;
+}

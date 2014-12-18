@@ -51,15 +51,44 @@
 						</div>
 						<hr>
 						<h3><span class="no-icon no-3"></span><?php echo _("Billing information"); ?><span class="security-info"></span></h3>
-						<?php  
-							if (isset($_GET['packageId']) && $_GET['packageId'] == 1) {
-							$date = strtotime(date("Y-m-d H:i:s"));
-							$date = strtotime("+14 day", $date);
-							$date = date('F jS, Y', $date);
-						?>
-						<h4 class="text-green"><?php echo _("Your 14 day free trial will last until midnight on ") . $date; ?></h4>
-						<h5><?php echo _("If you choose not to continue using Preoday just cancel before the trail ends and you won’t be charged (we’ll email you 2 days before the trial ends to remind you). You can upgrade, downgrade or cancel at any time."); ?></h5>
-						<?php } ?>
+						<div class='package-wrapper'>
+							<div class='package package-trial'>
+									<h4 class="text-green"><?php echo _("Your 14 day free trial will last until midnight on ") . $date; ?></h4>
+									<h5><?php echo _("If you choose not to continue using Preoday just cancel before the trail ends and you won’t be charged (we’ll email you 2 days before the trial ends to remind you). You can upgrade, downgrade or cancel at any time."); ?></h5>
+							</div>
+							<div class='package package-payment'>
+								<label for="cardnumber"><?php echo _("Transaction Details"); ?></label>
+								<div class='package-payment-box'>
+										<div class='row'>
+											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
+												<?php echo _("Description")?>
+											</div>
+											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
+												<?php echo _("Unit price")?>
+											</div>
+											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
+												<?php echo _("Next billing date")?>
+											</div>
+											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
+												<?php echo _("Amount")?>
+											</div>
+										</div>
+										<div class='row'>
+											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
+												<span class='package-name'></span>
+											</div>
+											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
+												<span class='package-unit-price'></span>
+											</div>
+											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
+												<span class='billing-date'></span>
+											</div>
+											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
+												<span class='package-amount'></span>
+											</div>
+										</div>										
+							</div>											
+						</div>
 						<div class="row">
 							<div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<div class="form-group cardnumber">

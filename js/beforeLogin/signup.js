@@ -1,6 +1,7 @@
 $(document).ready(function () {
 	$('#loading').show();
 	var CARD = null;
+	var claimUrl = 'http://www.preoday.com/';
 
 	$("#signUpForm").on('valid', function () {
 		if (!$('#termsConditions').is(':checked')) {
@@ -111,26 +112,49 @@ $(document).ready(function () {
         });        
     }	
 
-  function validateVenue(venueId,callback){
+  function validateVenue(venueId,packageId,callback){
   	$.get("/api/venues/"+venueId)
   	.then(function(data){
   		if (data.claimed != null){  			
-  			noty({
-				  type: 'success',  layout: 'topCenter',
-				  text: _tr("This venue has been claimed already, sign in to access your dashboard.")
-				});			
-  			setTimeout(function(){
-  				window.location.href = '/login';
-  			},2000)
-  			
+  			notifyAndRedirect('success',_tr("This venue has been claimed already, sign in to access your dashboard."),2000,'/login');
   		}else {
   			$('#loading').hide();  		
   			$('#businessName').val(data.name);
-  			getStripeKey(callback);  			
+  			$.get("/api/packages/package/"+packageId).then(function(preoPackage){
+  				console.log('preoPack',preoPackage);
+  				setPackageInfo(preoPackage);
+  				getStripeKey(callback);  				
+  			}).fail(function(){
+  				notifyAndRedirect('success',_tr("There's a problem with your package, pelase try again."),3000,claimUrl);
+  			});  			
   		}
   	}).fail(function(){
-  			window.location.href = 'http://www.preoday.com/';
+  		  notifyAndRedirect('success',_tr("There's a problem with the selected venue, pelase try again."),3000,claimUrl);
+  			window.location.href = claimUrl;
   	})
+  }
+
+  function setPackageInfo(preoPackage){  	
+  	console.log('ho');
+  	console.log(preoPackage);
+  	if (preoPackage.trialPeriod && preoPackage.trialPeriod > 0)
+  		$('body').addClass("trial");  		
+  	else {
+			$('body').addClass("payment");  
+			$('.package-name').html(preoPackage.name);		
+			$('.package-unit-price').html('£'+preoPackage.subscriptionPrice+"/"+_tr("month"));
+			$('.package-billing-date').html('£'+preoPackage.subscriptionPrice+"/"+_tr("month"));
+  	}
+  }
+
+  function notifyAndRedirect(type,message,duration,destination){
+  	noty({
+				  type: type,  layout: 'topCenter',
+				  text: message
+				});			
+			setTimeout(function(){
+				window.location.href = destination
+			},duration)
   }
 
 	var queryParams = function () {
@@ -157,9 +181,9 @@ $(document).ready(function () {
     
 
     if (!queryParams  || !queryParams.packageid || !queryParams.venueid) {
-    	window.location.href = 'http://www.preoday.com/';
+    	window.location.href = claimUrl;
     } else {
-    	validateVenue(queryParams.venueid,function(){    	
+    	validateVenue(queryParams.venueid, queryParams.packageid, function(){    	
     		$('#firstname').focus();
     	});    	
     }
