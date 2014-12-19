@@ -68,7 +68,6 @@ $(document).ready(function () {
 			    "email": $('#email').val(),
 			    "password": $('#password').val()
 			  },  
-			  "businessName": queryParams.businessname,
 			  "preoPackageId": queryParams.packageid,
 			  "venueId": queryParams.venueid
 			},

@@ -59,11 +59,28 @@
 	
 	$dataJSON = json_decode($curlResult,true);
 
+	if ($dataJSON['status']){
+		http_response_code($dataJson['status']);
+		echo $curlResult;
+		die();
+	}
+
 	$curlResult = callAPI('GET', $apiURL."venues/" . $venueId, $jsonData, $apiAuth);
 	$dataJSONVenue = json_decode($curlResult,true);
 	
-	if(isset($dataJSON['token'])) $_SESSION['token']=$dataJSON['token']; //otherwise its an error! 
+	if(!isset($dataJSON['token'])) {
+		$signinData = array();
+		$signinData['username']	= $email;
+		$signinData['password']	= $password;	
+		$signinJsonData= json_encode($signinData);		
+		$curlResult = callAPI('POST', $apiURL."users/auth" , $signinJsonData, $apiAuth);	
+		$dataJSON = json_decode($curlResult,true);
+	}
 	
+	if(isset($dataJSON['token'])) {
+		$_SESSION['token']=$dataJSON['token']; //otherwise its an error! 
+	}
+
 	$dataJSON['accountId'] = $dataJSONVenue['accountId'];
 	echo json_encode($dataJSON); //sending a JSON via ajax
 	
