@@ -1,6 +1,6 @@
 <?php
 	
-	$httpHost =  $_SERVER[HTTP_HOST];	
+	$httpHost =  $_SERVER["HTTP_HOST"];	
 
 	/***** Default values *****/
 	$overridePath = "/overrides/preoday";	
@@ -26,7 +26,7 @@
 
 	//at this point meta has been imported so the main css is in, safe to add the overrides here!
 	
-	if ($_SESSION['OVERRIDES']["css"]){
+	if (isset($_SESSION['OVERRIDES']["css"])){
 		$cssFile = $_SERVER['DOCUMENT_ROOT'].$_SESSION['OVERRIDES']["css"];
 		if (file_exists($cssFile)){
 			echo '<link type="text/css" rel="stylesheet" href="'.$_SESSION['OVERRIDES']["css"].'" />';

@@ -42,6 +42,6 @@ app.config(['$routeProvider',
         controller: 'PasswordCtrl'
       }).   
       otherwise({
-        redirectTo: HAS_SHOP ? '/subscription' : '/profile'
+        redirectTo: '/subscription'
       });
   }]);

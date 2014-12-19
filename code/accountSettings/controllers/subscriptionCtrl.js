@@ -14,7 +14,7 @@ angular.module('accountSettings.controllers')
             Account.get({id:ACCOUNT_ID}).$promise,
             AccountInvoice.getPending({accountId:ACCOUNT_ID}).$promise
         ])
-        .then(function(results){                         
+        .then(function(results){              
             $scope.accountPackages = results[0];
             $scope.account = results[1];
             $scope.subscriptionInvoice = results[2];
