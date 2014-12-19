@@ -2477,6 +2477,7 @@ footer .logo-grey {
 .package-payment-box {
   background-color: #DBDEE1;
   padding: 25px;
+  margin-bottom: 15px;
 }
 
 .package-payment-box table {
@@ -2639,4 +2640,8 @@ footer .logo-grey {
   height: 20px;
   background: url("../img/beforeLogin/closeModal.png") left top no-repeat;
   text-decoration: none;
+}
+
+#termsConditions {
+  margin-right: 15px;
 }
