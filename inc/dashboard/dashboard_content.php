@@ -86,7 +86,7 @@
 						if ($showKYC) {
 						?>						
 						<section>
-							<h3 data-section-title><a href="/kyc" class="titleDashContent"><?echo _("Customer Analytics");?></a></h3><img src="<?echo $_SESSION['path']?>/img/dashboard/analytics-icon.png"/>
+							<h3 data-section-title><a href="/kyc" class="titleDashContent"><?echo _("Customer Analytics");?></a> <img src="<?echo $_SESSION['path']?>/img/dashboard/analytics-icon.png"/></h3>
 						</section>
 						<?php } ?>
 						<section>
