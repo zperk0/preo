@@ -53,40 +53,64 @@
 						<h3><span class="no-icon no-3"></span><?php echo _("Billing information"); ?><span class="security-info"></span></h3>
 						<div class='package-wrapper'>
 							<div class='package package-trial'>
-									<h4 class="text-green"><?php echo _("Your 14 day free trial will last until midnight on ") . $date; ?></h4>
+									<h4 class="text-green"><?php echo _("Your 14 day free trial will last until midnight on ") ?></h4>
 									<h5><?php echo _("If you choose not to continue using Preoday just cancel before the trail ends and you won’t be charged (we’ll email you 2 days before the trial ends to remind you). You can upgrade, downgrade or cancel at any time."); ?></h5>
 							</div>
 							<div class='package package-payment'>
 								<label for="cardnumber"><?php echo _("Transaction Details"); ?></label>
 								<div class='package-payment-box'>
-										<div class='row'>
-											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
-												<?php echo _("Description")?>
-											</div>
-											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
-												<?php echo _("Unit price")?>
-											</div>
-											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
-												<?php echo _("Next billing date")?>
-											</div>
-											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
-												<?php echo _("Amount")?>
-											</div>
-										</div>
-										<div class='row'>
-											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
-												<span class='package-name'></span>
-											</div>
-											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
-												<span class='package-unit-price'></span>
-											</div>
-											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
-												<span class='billing-date'></span>
-											</div>
-											<div class='col col-xs-3 col-sm-3 col-md-3 col-lg-3'>
-												<span class='package-amount'></span>
-											</div>
-										</div>										
+									<table>
+										<thead>
+											<tr>
+												<th width="30%"><?php echo _("Description")?></th>
+												<th width="30%"><?php echo _("Unit price")?></th>
+												<th width="30%"><?php echo _("Next billing date")?></th>
+												<th width="10%"><?php echo _("Amount")?></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="white">
+												<td>
+													<span class='package-name'></span>
+												</td>
+												<td class='package-unit-price'>
+												</td>
+												<td class='billing-date'>
+												</td>
+												<td>
+													<span class='package-amount'></span>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<img src="/img/beforeLogin/iconRememberBiling.png" alt="" class="pull-left imgRemember" />
+													<a href="javascript:void(0)" class="pull-left textRemember">
+														<?php echo _("Remember you can upgrade, downgrade or cancel your package at any time.") ?>
+													</a>
+												</td>
+												<td colspan="2" align="right">
+													<table class="tableSubTotal">
+														<tbody>
+															<tr>
+																<td align="left">Subtotal</td>
+																<td class="subtotal" align="right"></td>
+															</tr>
+															<tr class="trPaddingBottom">
+																<td align="left">VAT @20%</td>
+																<td class="vat" align="right"></td>
+															</tr>
+														</tbody>
+														<tfoot>
+															<tr>
+																<td align="left">Total</td>
+																<td class="total" align="right"></td>
+															</tr>															
+														</tfoot>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>									
 							</div>											
 						</div>
 						<div class="row">
@@ -94,6 +118,7 @@
 								<div class="form-group cardnumber">
 									<label for="cardnumber"><?php echo _("Card number"); ?></label>
 									<input type="text" name="cardnumber" required class="form-control" id="cardnumber">
+									<span class="textTrialCardNumber"><?php echo _("Why do you need my card details for a free trial?"); ?></span>
 									<small class="error"><?echo _("Please type your card number");?></small>
 								</div>
 							</div>
@@ -178,3 +203,14 @@
 
 	<script type='text/javascript' src='<?echo $_SESSION['path']?>/js/beforeLogin/signup.js'></script>
 	<script type="text/javascript" src="https://js.stripe.com/v2/"></script> 
+
+	<div class="modal">
+		<div class="backgroundModal"></div>
+		<div class="contentModal">
+			<a href="javascript:void(0)" class="closeModal"></a>
+			<h4 class="titleModal"><?php echo _("Why do you need my credit card for a free trial?"); ?></h4>
+			<div class="content">
+				<?php echo _("We ask for your credit card to allow your membership to continue after your free trial, should you choose not to cancel. This also allows us to reduce fraud and prevent multiple free trials for one person. This helps us deliver better service for all the honest customers. Remember that we won't bill you anything during your free trial and that you can cancel at any moment before your trial ends.") ?>
+			</div>
+		</div>
+	</div>

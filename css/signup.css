@@ -2472,3 +2472,140 @@ footer .logo-grey {
 .payment .package-payment{
   display:block;
 }
+
+.package-payment-box {
+  background-color: #DBDEE1;
+  padding: 25px;
+}
+
+.package-payment-box table {
+  border-collapse: collapse;
+}
+
+.package-payment-box table thead th, .package-payment-box table tbody td {
+  padding: 17px 0;
+}
+
+.package-payment-box table tfoot tr {
+  border-top: 1px solid #82898D;
+}
+
+.package-payment-box table tfoot td {
+  font-weight: 600;
+}
+
+.package-payment-box .tableSubTotal thead th, .package-payment-box .tableSubTotal tbody td, .package-payment-box .tableSubTotal tfoot td {
+  padding: 0;
+}
+
+.package-payment-box table tfoot tr td {
+  padding-top: 5px !important;
+}
+
+.package-payment-box table tr.trPaddingBottom td {
+  padding-bottom: 5px;
+}
+
+
+.package-payment-box table thead th {
+  padding-top: 0px;
+}
+
+.package-payment-box table thead{
+  font-weight: normal;
+}
+
+.package-payment-box table tbody tr.white{
+  background-color: #fff;
+}
+
+.package-name {
+  padding-left: 17px;
+  display: block;
+}
+.package-amount {
+  padding-right: 17px;
+  display: block;
+}
+
+.pull-left {
+  float: left;
+}
+
+.imgRemember {
+  margin-top: 5px;
+}
+
+.textRemember {
+  width: 80%;
+  margin-left: 15px;
+}
+
+.cardnumber {
+  position: relative;
+}
+
+.cardnumber .textTrialCardNumber {
+  position: absolute;
+  top: 40px;
+  right: 25px;
+  display: none;
+  font-weight: 600;
+  font-size: 14px;
+  color: #2589C7;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cardnumber .textTrialCardNumber:hover {
+  color: #1B638D;
+}
+
+.trial .textTrialCardNumber {
+  display: block;
+}
+
+.trial #cardnumber {
+  padding-right: 335px;
+}
+
+.modal {
+  display: none;
+}
+
+.modal.active {
+  display: block;
+}
+
+.backgroundModal {
+  background-color: #42505B;
+  opacity: 0.7;
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.contentModal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 6;
+  transform: translate(-50%, -50%);  
+  background-color: #fff;
+  padding: 80px;
+}
+
+.titleModal {
+  color: #2589C7
+}
+
+.closeModal {
+  float: right;
+  width: 20px;
+  height: 20px;
+  background: url("../img/beforeLogin/closeModal.png") left top no-repeat;
+  text-decoration: none;
+}

@@ -137,13 +137,32 @@ $(document).ready(function () {
   function setPackageInfo(preoPackage){  	
   	console.log('ho');
   	console.log(preoPackage);
-  	if (preoPackage.trialPeriod && preoPackage.trialPeriod > 0)
-  		$('body').addClass("trial");  		
-  	else {
+  	if (preoPackage.trialPeriod && preoPackage.trialPeriod > 0) {
+  		$('body').addClass("trial"); 
+
+  		$('.textTrialCardNumber').bind('click', function () {
+  			$('.modal').addClass('active');
+  		})
+
+  		$('.closeModal').bind('click', function () {
+  			$(this).closest('.modal').removeClass('active');
+  		})
+  	} else {
 			$('body').addClass("payment");  
 			$('.package-name').html(preoPackage.name);		
 			$('.package-unit-price').html('£'+preoPackage.subscriptionPrice+"/"+_tr("month"));
 			$('.package-billing-date').html('£'+preoPackage.subscriptionPrice+"/"+_tr("month"));
+			var contractMonths = 1;
+			if (preoPackage.contractMonths) {
+				contractMonths = preoPackage.contractMonths;
+			}
+			var subtotal = preoPackage.subscriptionPrice * contractMonths;
+			var vat = (subtotal * 0.2).toFixed(2);
+			$('.package-amount').html('£' + subtotal);
+			$('.subtotal').html('£' + subtotal);
+			$('.vat').html('£' + vat);
+			$('.total').html('£' + (subtotal + vat));
+
   	}
   }
 
