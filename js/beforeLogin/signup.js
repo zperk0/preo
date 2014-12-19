@@ -151,17 +151,22 @@ $(document).ready(function () {
 			$('body').addClass("payment");  
 			$('.package-name').html(preoPackage.name);		
 			$('.package-unit-price').html('£'+preoPackage.subscriptionPrice+"/"+_tr("month"));
-			$('.package-billing-date').html('£'+preoPackage.subscriptionPrice+"/"+_tr("month"));
+			var date = new Date();
+
+			
 			var contractMonths = 1;
 			if (preoPackage.contractMonths) {
 				contractMonths = preoPackage.contractMonths;
 			}
+			var d = moment().add(contractMonths,'months');
+			$('.package-billing-date').html(d.format('Do MMM YYYY'));
 			var subtotal = preoPackage.subscriptionPrice * contractMonths;
 			var vat = (subtotal * 0.2).toFixed(2);
+			var total = (subtotal + subtotal * 0.2).toFixed(2);
 			$('.package-amount').html('£' + subtotal);
 			$('.subtotal').html('£' + subtotal);
 			$('.vat').html('£' + vat);
-			$('.total').html('£' + (subtotal + vat));
+			$('.total').html('£' + total);
 
   	}
   }

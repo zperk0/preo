@@ -1367,7 +1367,7 @@ a:focus {
   position: fixed;
   right: 0;
   left: 0;
-  z-index: 1030;
+  z-index: 1;
 }
 
 .text-center {
@@ -2471,6 +2471,7 @@ footer .logo-grey {
 
 .payment .package-payment{
   display:block;
+  color:#46545e;
 }
 
 .package-payment-box {
@@ -2491,8 +2492,9 @@ footer .logo-grey {
 }
 
 .package-payment-box table tfoot td {
-  font-weight: 600;
+  font-weight: 700;
 }
+
 
 .package-payment-box .tableSubTotal thead th, .package-payment-box .tableSubTotal tbody td, .package-payment-box .tableSubTotal tfoot td {
   padding: 0;
@@ -2509,6 +2511,7 @@ footer .logo-grey {
 
 .package-payment-box table thead th {
   padding-top: 0px;
+  font-weight: normal;
 }
 
 .package-payment-box table thead{
@@ -2570,11 +2573,26 @@ footer .logo-grey {
 }
 
 .modal {
-  display: none;
+  visibility: hidden;
 }
 
 .modal.active {
-  display: block;
+  visibility: visible;
+}
+
+.modal.active .backgroundModal{
+  height: 100%;
+}
+
+.modal.active .contentModal{
+  
+  height:auto;
+  opacity:1;
+  transform: translate(-50%, -50%);  
+  -webkit-transform: translate(-50%, -50%);  
+  -moz-transform: translate(-50%, -50%);  
+  -o-transform: translate(-50%, -50%);  
+  -ms-transform: translate(-50%, -50%);  
 }
 
 .backgroundModal {
@@ -2584,18 +2602,31 @@ footer .logo-grey {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100%;  
+  
+  transition:height 0.3s linear;
+  -webkit-transition:height 0.3s linear;
 }
+
 
 .contentModal {
   position: fixed;
   left: 50%;
   top: 50%;
   z-index: 6;
-  transform: translate(-50%, -50%);  
+  transform: translate(-50%, -100%);  
+  -webkit-transform: translate(-50%, -100%);  
+  -moz-transform: translate(-50%, -100%);  
+  -o-transform: translate(-50%, -100%);  
+  -ms-transform: translate(-50%, -100%);  
   background-color: #fff;
-  padding: 80px;
+  padding: 30px 40px 50px;
+  border-top: 10px solid #2589c7;
+  border-radius: 5px;
+  opacity:0;  
+  width: 80%;
+  transition:all 0.3s linear;
+  -webkit-transition:all 0.3s linear;
 }
 
 .titleModal {

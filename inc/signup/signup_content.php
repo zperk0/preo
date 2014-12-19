@@ -75,7 +75,7 @@
 												</td>
 												<td class='package-unit-price'>
 												</td>
-												<td class='billing-date'>
+												<td class='package-billing-date'>
 												</td>
 												<td>
 													<span class='package-amount'></span>
@@ -206,7 +206,7 @@
 
 	<div class="modal">
 		<div class="backgroundModal"></div>
-		<div class="contentModal">
+		<div class="contentModal large">
 			<a href="javascript:void(0)" class="closeModal"></a>
 			<h4 class="titleModal"><?php echo _("Why do you need my credit card for a free trial?"); ?></h4>
 			<div class="content">
