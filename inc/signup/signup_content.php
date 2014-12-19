@@ -192,7 +192,7 @@
 						<div class="readMessage" id="errorStripe"></div>
 						<div class="separator"></div>
 						<div class="form-group text-center">
-							<button type="submit" value="Submit" class="btn btn-lg btn-primary"><?php echo _("Start using my Preoday app"); ?></button>
+							<button type="submit" value="Submit" id="btnStartPreodayApp" class="btn btn-lg btn-primary"><?php echo _("Start using my Preoday app"); ?></button>
 						</div>
 						<div class="messages"></div>
 					</form>
