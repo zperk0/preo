@@ -2649,3 +2649,8 @@ footer .logo-grey {
 #btnStartPreodayApp {
   font-weight: 600;
 }
+
+.sections.sign-up h4.venue-name-text{
+  margin-top:0;
+  margin-bottom:60px;
+}

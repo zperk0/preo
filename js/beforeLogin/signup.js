@@ -114,13 +114,13 @@ $(document).ready(function () {
   function validateVenue(venueId,packageId,callback){
   	$.get("/api/venues/"+venueId)
   	.then(function(data){
+  		console.log('validate venue',data);
   		if (data.claimed != null){  			
   			notifyAndRedirect('success',_tr("This venue has been claimed already, sign in to access your dashboard."),2000,'/login');
   		}else {
   			$('#loading').hide();  		
-  			$('#businessName').val(data.name);
-  			$.get("/api/packages/package/"+packageId).then(function(preoPackage){
-  				console.log('preoPack',preoPackage);
+  			$('.venue-name').html(data.name);  			
+  			$.get("/api/packages/package/"+packageId).then(function(preoPackage){  				
   				setPackageInfo(preoPackage);
   				getStripeKey(callback);  				
   			}).fail(function(){
@@ -134,8 +134,6 @@ $(document).ready(function () {
   }
 
   function setPackageInfo(preoPackage){  	
-  	console.log('ho');
-  	console.log(preoPackage);
   	if (preoPackage.trialPeriod && preoPackage.trialPeriod > 0) {
   		$('body').addClass("trial"); 
 
@@ -146,6 +144,9 @@ $(document).ready(function () {
   		$('.closeModal').bind('click', function () {
   			$(this).closest('.modal').removeClass('active');
   		})
+  		var d = moment().add(preoPackage.trialPeriod,'days');
+  		$('.end-of-trial').html(d.format("DD/MM/YYYY"));
+
   	} else {
 			$('body').addClass("payment");  
 			$('.package-name').html(preoPackage.name);		

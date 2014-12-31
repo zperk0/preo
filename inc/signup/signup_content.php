@@ -6,6 +6,7 @@
 				<div class="bs-callout">
 
 					<form class="form text-left" role="form" id="signUpForm" data-abide enctype="multipart/form-data">
+						<h4 class="text-green venue-name-text"><span class='venue-name'></span><?php echo _(", you're just a few steps away from going live.") ?></h4>
 						<h3><span class="no-icon no-1"></span><?php echo _("Basic information"); ?></h3>
 						<div class="row">
 							<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -23,14 +24,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<div class="form-group businessname">
-									<label for="businessname"><?php echo _("Business name"); ?></label>
-									<input type="text" disabled="disabled" name="businessname" class="form-control" id="businessName">
-								</div>
-							</div>
-						</div>
 						<hr>
 						<h3><span class="no-icon no-2"></span><?php echo _("Create your Preoday account"); ?></h3>
 						<div class="row">
@@ -42,7 +35,7 @@
 								</div>
 							</div>
 							<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6">
-								<div class="form-group password">
+								<div class="form-group password">	
 									<label for="password"><?php echo _("Password"); ?></label>
 									<input type="password" name="password" required class="form-control" id="password">
 									<small class="error"><?echo _("Please type your password");?></small>
@@ -53,7 +46,7 @@
 						<h3><span class="no-icon no-3"></span><?php echo _("Billing information"); ?><span class="security-info"></span></h3>
 						<div class='package-wrapper'>
 							<div class='package package-trial'>
-									<h4 class="text-green"><?php echo _("Your 14 day free trial will last until midnight on ") ?></h4>
+									<h4 class="text-green"><?php echo _("Your 14 day free trial will last until midnight on ") ?><span class='end-of-trial'></span></h4>
 									<h5><?php echo _("If you choose not to continue using Preoday just cancel before the trail ends and you won’t be charged (we’ll email you 2 days before the trial ends to remind you). You can upgrade, downgrade or cancel at any time."); ?></h5>
 							</div>
 							<div class='package package-payment'>
