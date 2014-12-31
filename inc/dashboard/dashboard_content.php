@@ -140,9 +140,11 @@
 							<h3 data-section-title><a href="<?echo $_SESSION['path']?>/accountSettings"><?echo _("My Account");?></a><img src="<?echo $_SESSION['path']?>/img/dashboard/account-icon.png"/></h3>
 						</section>	
 						<section class="premiumSection">
-							<h3 data-section-title><?echo _("Help");?><img class="noFilter" src="<?echo $_SESSION['path']?>/img/dashboard/help-icon.png"/></h3>
+							<h3 data-section-title><?echo _("Help");?><img class="noFilter" src="<?echo $_SESSION['path']?>/img/dashboard/help-icon.png"/></h3>							
 							<div class="content" data-section-content>
 								<div> 
+									<p class='link-to-video'><span ></span><a href='http://youtu.be/4kQ2nhQY-fA'><?echo _("Getting Started")?></a></p>
+									<p  class='link-to-video'><span></span><a href='http://youtu.be/_NDa7xIgPDY'><?echo _("Editing your Menu")?></a></p>
 									<p><a href="http://www.preoday.com/faq/" target="_blank" class='featureName'>Frequently Asked Questions</a></p>
 									<p><a href="<?echo $_SESSION['path']?>/support"  class='featureName'>Support</a></p>
 								</div>

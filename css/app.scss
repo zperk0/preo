@@ -326,7 +326,7 @@ footer {
 }
 
 .dropdown.makeULWider {
-  width: 164px;
+  min-width: 164px;
 }
 
 .has-dropdown {
@@ -1546,6 +1546,7 @@ p.venueCode {
     margin-bottom: 0px !important;
   }
   p {
+    position:relative;
     color: #D7D9DA;
   }
 }
@@ -4121,4 +4122,33 @@ button.preodayButton.noclick{
 
 .buttonsSubscriptions {
   margin-top: 20px;
+}
+
+.link-to-video 
+ {
+    position:relative;
+    span{
+      background:url("../img/play-icon-white.png") no-repeat center;
+      background-size:cover; 
+      width:24px;
+      height:24px;
+      display:block;
+      position:absolute;
+      left:0px;
+      top:0;
+    }
+    a{
+      padding-left:28px;
+    }
+}
+
+.top-bar-section .dropdown li.link-to-video { 
+  span {
+    background:url("../img/play-icon-grey.png") no-repeat center;
+    left:15px;
+  }
+  a{
+    padding-left:45px;
+  }
+
 }
