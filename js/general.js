@@ -2482,14 +2482,18 @@ $(document).ready(function() {
 						$inputCollapseAjax.data('value', collapseAjax);
 						$inputCollapseAjax.attr('data-value', collapseAjax);
 					}
-				
-					$inputEachAjaxUnique.attr('data-delete', false);
-					$inputEachAjaxUnique.attr('data-insert', false);
-					$inputEachAjaxUnique.attr('data-edit', false);
 					
-					$inputEachAjaxUnique.data('delete', false);
-					$inputEachAjaxUnique.data('insert', false);
-					$inputEachAjaxUnique.data('edit', false);
+					if ($inputEachAjaxUnique.data('delete') == 'true' || $inputEachAjaxUnique.attr('data-delete') == 'true' ) {
+						$inputEachAjaxUnique.closest('tr').remove();
+					} else {
+						$inputEachAjaxUnique.attr('data-delete', false);
+						$inputEachAjaxUnique.attr('data-insert', false);
+						$inputEachAjaxUnique.attr('data-edit', false);
+						
+						$inputEachAjaxUnique.data('delete', false);
+						$inputEachAjaxUnique.data('insert', false);
+						$inputEachAjaxUnique.data('edit', false);
+					}
 				};
 				
 				$('#savingButton').hide();
