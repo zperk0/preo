@@ -534,10 +534,32 @@ $(document).ready(function() {
 					}
 				}
 			 }).done(function(){
-				if($('#redirectFlag').val()!='1') $('#venueSave').show();
-				$('#savingButton').hide();
-				//FIXME maybe this can be replaced with a refresh on the ids for the delivery details
-				setTimeout(window.location.reload(),200);
+			 	var postMessages = function (messages) {
+			 		$.ajax({
+			 			url: "/saveMessages",
+			 			type: "POST",
+			 			data: { 
+			 				messages: JSON.stringify(messages)
+			 			},
+			 			success: function () {
+			 				redirectPage();
+			 			}
+			 		})
+			 	},
+			 	redirectPage = function () {
+					if($('#redirectFlag').val()!='1') $('#venueSave').show();
+					$('#savingButton').hide();
+					//FIXME maybe this can be replaced with a refresh on the ids for the delivery details
+					setTimeout(window.location.reload(),200);
+			 	};
+
+			 	var valueDelivery = $( "input:radio[name=vDelivery]:checked" ).val();
+
+			 	if (valueDelivery == '1') {
+			 		postMessages(messagesAlert.notify.concat(messagesAlert.reject));
+			 	} else {
+			 		redirectPage();
+			 	}
 			 });
 
 		return false; // avoid to execute the actual submit of the form.
