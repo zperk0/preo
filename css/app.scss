@@ -4142,6 +4142,21 @@ button.preodayButton.noclick{
     }
 }
 
+.pretendRight {
+  .link-to-video {
+    span {
+      top: 2px;
+    }
+  }
+}
+
+p.link-to-video  {
+  margin-bottom: 5px !important;
+}
+p.link-to-video:first-child  {
+  margin-bottom: 7px !important;
+}
+
 .top-bar-section .dropdown li.link-to-video { 
   span {
     background:url("../img/play-icon-grey.png") no-repeat center;
@@ -4151,4 +4166,10 @@ button.preodayButton.noclick{
     padding-left:45px;
   }
 
+}
+
+#videoModal {
+  .title-notification {
+    margin-top: 15px;
+  }
 }

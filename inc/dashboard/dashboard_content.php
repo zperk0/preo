@@ -143,8 +143,8 @@
 							<h3 data-section-title><?echo _("Help");?><img class="noFilter" src="<?echo $_SESSION['path']?>/img/dashboard/help-icon.png"/></h3>							
 							<div class="content" data-section-content>
 								<div> 
-									<p class='link-to-video'><span ></span><a href='http://youtu.be/4kQ2nhQY-fA' target='_blank'><?echo _("Getting Started")?></a></p>
-									<p  class='link-to-video'><span></span><a href='http://youtu.be/_NDa7xIgPDY' target='_blank'><?echo _("Editing your Menu")?></a></p>
+									<p class='link-to-video'><span ></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Getting_Started"><?echo _("Getting Started")?></a></p>
+									<p  class='link-to-video'><span></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Editing_your_menu"><?echo _("Editing your Menu")?></a></p>
 									<p><a href="http://www.preoday.com/faq/" target="_blank" class='featureName'>Frequently Asked Questions</a></p>
 									<p><a href="<?echo $_SESSION['path']?>/support"  class='featureName'>Support</a></p>
 								</div>
@@ -242,6 +242,14 @@
     <div class="container-modal-confirm"><? echo _("Before taking your app live you need to connect it to a payment provider so that you can start accepting payments and start getting paid!")?></div>
     <button class='positiveDismiss preodayButton' ><? echo _("CONNECT")?></button>
     <button class='negativeDismiss preodayButton'><? echo _("CANCEL")?></button>    
+</div>
+
+<div id="videoModal" class="reveal-modal medium modal-preoday dashboard" data-reveal>
+	<a class="close-reveal-modal">×</a>
+    <header class="title-notification"></header>
+	<video controls width="100%">
+		<source src=""></source>
+	</video>    
 </div>
 
 <script type="text/javascript">

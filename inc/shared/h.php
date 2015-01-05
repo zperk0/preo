@@ -101,8 +101,8 @@
 					</li>	
 					<li class="has-dropdown lessLeft"><a href="#"><? echo _("Help");?></a>
 						<ul class="dropdown makeULWider">
-							<li class='link-to-video'><span ></span><a href='http://youtu.be/4kQ2nhQY-fA' target='_blank'><?echo _("Getting Started")?></a></li>
-							<li class='link-to-video'><span></span><a href='http://youtu.be/_NDa7xIgPDY' target='_blank'><?echo _("Editing your Menu")?></a></li>
+							<li class='link-to-video'><span ></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Getting_Started"><?echo _("Getting Started")?></a></li>
+							<li  class='link-to-video'><span></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Editing_your_menu"><?echo _("Editing your Menu")?></a></li>
 							<li><a href="http://www.preoday.com/faq/" target="_blank"><? echo _("FAQs");?></a></li>
 							<li><a href="<?echo $_SESSION['path']?>/support"><? echo _("Support");?></a></li>
 						</ul>

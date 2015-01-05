@@ -3612,6 +3612,27 @@ $(document).ready(function() {
 		
 		$ele.remove();
 	});
+
+	$('.openVideoModal').on('click', function () {
+		var $this = $(this);
+		var $videoModal = $('#videoModal');
+		var $video = $videoModal.find('video');
+
+		$videoModal.find('.title-notification').text($this.text());
+		
+		$video.html("")
+			.append('<source src="/videos/' + $this.data('name') + '.webm" type="video/webm">')
+			.append('<source src="/videos/' + $this.data('name') + '.mp4" type="video/mp4">')
+			.load();
+		$videoModal.foundation('reveal', 'open');
+		
+		$video[0].onloadstart = function () {
+			$video[0].play();
+		}
+		$videoModal.on('closed', function(){
+			$video[0].pause();
+		});		
+	})
 	
 	$(document).on("click", ".applyTimesAllDays", function(){
 
