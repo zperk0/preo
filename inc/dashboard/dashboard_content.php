@@ -263,8 +263,16 @@ if ($packageTrial) {
 <div id="expiredPackageDialog" class="reveal-modal small modal-preoday dashboard" data-reveal>
 	<a class="close-reveal-modal">×</a>
     <header class="title-notification"><?php echo _("Your package ") . $packageTrial['preoPackage']['name'] . _(" is trial"); ?></header>
-    <div class="container-modal-confirm"><? echo _("Your free trial will expire on ") . "<b>" . date("d/m/Y H:i:s", strtotime($packageTrial['endDate'])) . "</b>. " . _("Please add your card details to prevent your app from being disabled.")?></div>
-    <a class='preodayButton' href="/accountSettings#/paymentMethod"><? echo _("GO TO MY ACCOUNT")?></a>
+    <div class="container-modal-confirm">
+	    <?php 
+	    $start = time(); // or your date as well
+	    $end = strtotime($packageTrial['endDate']);
+	    $days = ceil(abs($end - $start) / 86400);
+	    ?>
+    	<? echo _("Your free trial expires in ") . "<b>$days</b>" . _(" days.") . _(" To continue using your app after the free trial, register your card details for the ") . "<b>" . $packageTrial['preoPackage']['name'] . "</b>" . _(" on the 'My Account' tab located on your dashboard.")?>
+    	<p class="textSmall">If you would like to unsubscribe, go to 'My Account' and click Cancel.</p>
+    </div>
+    <a class='preodayButton' href="/accountSettings"><? echo _("GO TO MY ACCOUNT")?></a>
 </div>
 <?php } ?>
 
