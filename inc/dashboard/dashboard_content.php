@@ -17,23 +17,43 @@
 		}
 	}	
 
+	$accountCard = true;
+	$curlResult = callAPI('GET', $apiURL."accounts/$accountId/accountcard", false, $apiAuth);
+	$dataJSON = json_decode($curlResult, true);
+	if(empty($dataJSON) || !is_array($dataJSON) || !isset($dataJSON['accountId'])) {
+		$accountCard = false;
+	}
+
 	$curlResult = callAPI('GET', $apiURL."accounts/$accountId/packages", false, $apiAuth);
 	$dataJSON = json_decode($curlResult, true);
 	$showKYC = false;
+	$packageTrial = false;
 	if(!empty($dataJSON))
 	{	
 		foreach($dataJSON as $accountPackage)
 		{
-			if (isset($accountPackage['preoPackage']) && is_array($accountPackage['preoPackage']) && is_array($accountPackage['preoPackage']['features'])) {
-				foreach($accountPackage['preoPackage']['features'] as $feature) {
-					if ($feature['id'] == 4 && ($accountPackage['status'] === "INSTALLED" || $accountPackage['status'] === "TRIAL" || $accountPackage['status'] === "UNINSTALLED")) {
-						$showKYC = true;
-						break;
+			if (isset($accountPackage['preoPackage']) && is_array($accountPackage['preoPackage'])) {
+
+				if ($accountPackage['status'] === "TRIAL") {
+					$endDate = strtotime($accountPackage['endDate']);
+					$endDate = mktime(date("H", $endDate), date("i", $endDate), date("s", $endDate), date("m", $endDate), date("d", $endDate), date("Y", $endDate));
+
+					if ($endDate > time() && !$accountCard) {
+						$packageTrial = $accountPackage;
+					}
+				}
+
+				if (is_array($accountPackage['preoPackage']['features']) && !$showKYC) {
+					foreach($accountPackage['preoPackage']['features'] as $feature) {
+						if ($feature['id'] == 4 && ($accountPackage['status'] === "INSTALLED" || $accountPackage['status'] === "TRIAL" || $accountPackage['status'] === "UNINSTALLED")) {
+							$showKYC = true;
+							break;
+						}
 					}
 				}
 			}
 
-			if ($showKYC) {
+			if ($showKYC && $packageTrial) {
 				break;
 			}
 		}
@@ -237,6 +257,17 @@
     </p>  
 </div>
 
+<?php 
+if ($packageTrial) {
+?>
+<div id="expiredPackageDialog" class="reveal-modal small modal-preoday dashboard" data-reveal>
+	<a class="close-reveal-modal">×</a>
+    <header class="title-notification"><?php echo _("Your package ") . $packageTrial['preoPackage']['name'] . _(" is trial"); ?></header>
+    <div class="container-modal-confirm"><? echo _("Your free trial will expire on ") . "<b>" . date("d/m/Y H:i:s", strtotime($packageTrial['endDate'])) . "</b>. " . _("Please add your card details to prevent your app from being disabled.")?></div>
+    <a class='preodayButton' href="/accountSettings#/paymentMethod"><? echo _("GO TO MY ACCOUNT")?></a>
+</div>
+<?php } ?>
+
 <div id="noPaymentMethod" class="reveal-modal medium modal-preoday dashboard" data-reveal>
     <header class="title-notification"><?echo _("Payment provider is not connected!")?></header>
     <div class="container-modal-confirm"><? echo _("Before taking your app live you need to connect it to a payment provider so that you can start accepting payments and start getting paid!")?></div>
@@ -254,12 +285,17 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
 
 		//TODO replace all this horrible code with the correct angular modules 
 		//----- start horrible code ------ 
 		var isShowAgain = window.localStorage.getItem("showDialogAgain_4");
 		var isShow = Number(window.localStorage.getItem("showDialog")) === 1 && (isShowAgain === null || Number(isShowAgain) === 1);
+
+		<?php 
+		if ($packageTrial) {
+		 ?>
+		$('#expiredPackageDialog').foundation('reveal', 'open');
+		 <?php } ?>
 		
 		$('.positiveDismiss').on('click',positiveDismiss);
 		$('.negativeDismiss').on('click',negativeDismiss);

@@ -4173,3 +4173,11 @@ p.link-to-video:first-child  {
     margin-top: 15px;
   }
 }
+
+#expiredPackageDialog {
+  padding: 20px;
+
+  .preodayButton {
+    display: inline-block;
+  }
+}
