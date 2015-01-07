@@ -65,7 +65,7 @@
 	<div class="large-12 columns">
 		<h1 class=""><? echo _("Dashboard");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
 		<?php 
-		if (isset($_SESSION['venue_permalink'])) {
+		if (isset($_SESSION['venue_permalink']) && $_SESSION['OVERRIDES']['has_web_orders']) {
 		?>
 		<p class="venueCode large-8 small-12"><?echo _("Your online order page is")." <a href='http://www.preoday.com/".$_SESSION['venue_permalink']."' target='_blank'><strong>www.preoday.com/".$_SESSION['venue_permalink']."</strong></a>";?></p>
 		<?php } ?>
@@ -100,7 +100,7 @@
 				<div class="large-12 columns">
 					<div class="accordion contentSectionsDashboard" data-options="one_up: false;" data-section="accordion">
 						<section>
-							<h3 data-section-title><a href="//orders.preoday.com" target="_blank" class="titleDashContent"><span><?echo _("Order Screen");?></span></a> <img src="<?echo $_SESSION['path']?>/img/dashboard/order-icon_small.png"/></h3>
+							<h3 data-section-title><a href="<?echo $_SESSION['OVERRIDES']["link_orders"]?>" target="_blank" class="titleDashContent"><span><?echo _("Order Screen");?></span></a> <img src="<?echo $_SESSION['path']?>/img/dashboard/order-icon_small.png"/></h3>
 						</section>
 						<?php 
 						if ($showKYC) {
@@ -165,7 +165,7 @@
 								<div> 
 									<p class='link-to-video'><span ></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Getting_Started"><?echo _("Getting Started")?></a></p>
 									<p  class='link-to-video'><span></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Editing_your_menu"><?echo _("Editing your Menu")?></a></p>
-									<p><a href="http://www.preoday.com/faq/" target="_blank" class='featureName'>Frequently Asked Questions</a></p>
+									<p><a href="<?echo $_SESSION['OVERRIDES']["link_faq"]?>" target="_blank" class='featureName'>Frequently Asked Questions</a></p>
 									<p><a href="<?echo $_SESSION['path']?>/support"  class='featureName'>Support</a></p>
 								</div>
 							</div>							
