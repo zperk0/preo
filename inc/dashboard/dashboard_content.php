@@ -262,7 +262,7 @@ if ($packageTrial) {
 ?>
 <div id="expiredPackageDialog" class="reveal-modal small modal-preoday dashboard" data-reveal>
 	<a class="close-reveal-modal">×</a>
-    <header class="title-notification"><?php echo _("Your package ") . $packageTrial['preoPackage']['name'] . _(" is trial"); ?></header>
+    <header class="title-notification"><?php echo $packageTrial['preoPackage']['name'] . _(" Trial"); ?></header>
     <div class="container-modal-confirm">
 	    <?php 
 	    $start = time(); // or your date as well
