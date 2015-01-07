@@ -270,7 +270,6 @@ if ($packageTrial) {
 	    $days = ceil(abs($end - $start) / 86400);
 	    ?>
     	<? echo _("Your free trial expires in ") . "<b>$days</b>" . _(" days.") . _(" To continue using your app after the free trial, register your card details for the ") . "<b>" . $packageTrial['preoPackage']['name'] . "</b>" . _(" on the 'My Account' tab located on your dashboard.")?>
-    	<p class="textSmall">If you would like to unsubscribe, go to 'My Account' and click Cancel.</p>
     </div>
     <a class='preodayButton' href="/accountSettings"><? echo _("GO TO MY ACCOUNT")?></a>
 </div>
