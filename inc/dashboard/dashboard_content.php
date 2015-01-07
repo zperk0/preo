@@ -269,10 +269,10 @@ if ($packageTrial) {
 	    $end = strtotime($packageTrial['endDate']);
 	    $days = ceil(abs($end - $start) / 86400);
 	    ?>
-    	<? echo _("Your free trial expires in ") . "<b>$days</b>" . _(" days.") . _(" To continue using your app after the free trial, register your card details for the ") . "<b>" . $packageTrial['preoPackage']['name'] . "</b>" . _(" on the 'My Account' tab located on your dashboard.")?>
-    	<p class="textSmall">If you would like to unsubscribe, go to 'My Account' and click Cancel.</p>
+    	<p class="text"><? echo _("Your free trial expires in ") . "<b>$days</b>" . _(" days.") . _(" To continue using your app after the free trial, register your card details for the ") . "<b>" . $packageTrial['preoPackage']['name'] . "</b>" . _(" on the 'My Account' tab located on your dashboard.")?></p>
+    	<!-- <p class="textSmall">If you would like to unsubscribe, go to 'My Account' and click Cancel.</p> -->
     </div>
-    <a class='preodayButton' href="/accountSettings"><? echo _("GO TO MY ACCOUNT")?></a>
+    <a class='preodayButton blue' href="/accountSettings"><? echo _("GO TO MY ACCOUNT")?></a>
 </div>
 <?php } ?>
 
@@ -302,6 +302,12 @@ if ($packageTrial) {
 		<?php 
 		if ($packageTrial) {
 		 ?>
+		var isShowAgainTrial = window.localStorage.getItem("showDialogAgainTrial");
+		if (!isShowAgainTrial) {
+			var message = _tr("Your app has been assigned to the ") + "<b><?php echo $packageTrial['preoPackage']['name']; ?></b>" + _tr(", which includes a 2 week free trial. To continue using your app after the free trial, you will need to register your card details on the 'My Account' tab located on your dashboard.");
+			$('#expiredPackageDialog .text').html(message);
+			window.localStorage.setItem("showDialogAgainTrial", true);
+		}
 		$('#expiredPackageDialog').foundation('reveal', 'open');
 		 <?php } ?>
 		

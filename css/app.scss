@@ -405,7 +405,21 @@ form {
     font-size:95%;    
   }
 
+  &.blue {
+    padding: 0.4em 0.85em;
+    font-size: 115%;
+    border: 1px solid #3AA2DC;
+    background-color: #3AA2DC;
+    color: #fff;
+    box-shadow: 0 0 0 !important;
+    -webkit-box-shadow: 0 0 0  !important;
 
+    &:hover {
+      border: 1px solid #3AA2DC;
+      color: #3AA2DC;
+      background-color: #fff;
+    }
+  }
 }
 
 .secondary{
