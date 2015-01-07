@@ -16,18 +16,17 @@
 
 
 	$testHost = "food4uapp.co.uk";
+	
+	if ( substr_compare($httpHost, $testHost, -strlen($testHost)) === 0 ) {
+		$overridePath = "/overrides/food4u";
+		$_SESSION['OVERRIDES']["css"] = $overridePath."/override.css";
+		$_SESSION['OVERRIDES']["logo"] = false;
+		$_SESSION['OVERRIDES']["regular_footer"] = $overridePath."/regular_footer.php";
+		$_SESSION['OVERRIDES']["dashboard_footer"] = $overridePath."/dashboard_footer.php";		
+		$_SESSION['OVERRIDES']["sign_in_message"] = _("Sign in to your Dashboard");
+		$_SESSION['OVERRIDES']["has_web_orders"] = false;
+	}
 
-	switch ($httpHost) {
-		case $testHost:
-			$overridePath = "/overrides/food4u";
-			$_SESSION['OVERRIDES']["css"] = $overridePath."/override.css";
-			$_SESSION['OVERRIDES']["logo"] = false;
-			$_SESSION['OVERRIDES']["regular_footer"] = $overridePath."/regular_footer.php";
-			$_SESSION['OVERRIDES']["dashboard_footer"] = $overridePath."/dashboard_footer.php";		
-			$_SESSION['OVERRIDES']["sign_in_message"] = _("Sign in to your Dashboard");
-			$_SESSION['OVERRIDES']["has_web_orders"] = false;
-			break;
-	}	
 	//at this point meta has been imported so the main css is in, safe to add the overrides here!
 	
 	if (isset($_SESSION['OVERRIDES']["css"])){
