@@ -5,7 +5,7 @@
 			<div class="col col-sm-offset-1 col-xs-12 col-sm-10">
 				<div class="col col-sm-offset-2 col-md-offset-3 col-xs-12 col-sm-8 col-md-6">
 					<div class="bs-callout text-center">
-						<h3><?echo _("Sign in to your Preoday Dashboard");?></h3>
+						<h3><?echo $_SESSION['OVERRIDES']['sign_in_message'];?></h3>
 						<form class="form" method="POST" role="form" id="signinForm" data-abide>
 						  	<div class="row">
 								<div class="col col-xs-12 text-left">

@@ -8,9 +8,11 @@
 	<nav class="top-bar">
 		<ul class="title-area">
 			<li class="name">
+			<? if ($_SESSION['OVERRIDES']['logo'] != false) { ?>
 				<h1>
 					<a href="<?echo $_SESSION['path']?>/"><img src="<?echo $_SESSION['OVERRIDES']['logo']?>" alt="<? echo _("PreoDay");?>"/></a>
 				</h1>
+			<? } ?>
 				<div class="progressIndicator has-tip tip-right" data-tooltip></div>
 			</li>
 			<li class="toggle-topbar">
@@ -29,19 +31,8 @@
 					<li class="has-dropdown"><a href="<?echo $_SESSION['path']?>/"><? echo _("Dashboard");?></a>
 						<ul class="dropdown">
 							<li><a href="<?echo $_SESSION['path']?>/dashboard"><? echo _("Go to Dashboard");?></a></li>
-							
-							<? if(preg_match('/^local/', $_SERVER['SERVER_NAME'])){ ?>
-								<li><a href="//orders-dev.preoday.com" target="_blank"><? echo _("Order Screen");?></a></li>
-							<? }
-							else if(preg_match('/^app\-dev/', $_SERVER['SERVER_NAME'])){ ?>
-								<li><a href="//orders-dev.preoday.com" target="_blank"><? echo _("Order Screen");?></a></li>
-							<? }
-							else if(preg_match('/^app\-demo/', $_SERVER['SERVER_NAME'])){ ?>
-								<li><a href="//orders-demo.preoday.com" target="_blank"><? echo _("Order Screen");?></a></li>
-							<? }
-							else if(preg_match('/^app\./', $_SERVER['SERVER_NAME'])){ ?>
-								<li><a href="//orders.preoday.com" target="_blank"><? echo _("Order Screen");?></a></li>
-							<? } ?>
+																					
+							<li><a href="<?echo $_SESSION['OVERRIDES']["link_orders"]?>" target="_blank"><? echo _("Order Screen");?></a></li>							
 
 							<li class="has-dropdown"><a href="#"><?echo _("Venue Settings");?></a>
 								<ul class="dropdown">
@@ -103,7 +94,7 @@
 						<ul class="dropdown makeULWider">
 							<li class='link-to-video'><span ></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Getting_Started"><?echo _("Getting Started")?></a></li>
 							<li  class='link-to-video'><span></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Editing_your_menu"><?echo _("Editing your Menu")?></a></li>
-							<li><a href="http://www.preoday.com/faq/" target="_blank"><? echo _("FAQs");?></a></li>
+							<li><a href="<?echo $_SESSION['OVERRIDES']["link_faq"]?>" target="_blank"><? echo _("FAQs");?></a></li>
 							<li><a href="<?echo $_SESSION['path']?>/support"><? echo _("Support");?></a></li>
 						</ul>
 					</li>
