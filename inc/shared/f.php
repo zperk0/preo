@@ -1,20 +1,13 @@
 		</div> <!-- #wrap ends here -->
 		<?if(isset($_SESSION['dashboardFlag']) && $_SESSION['dashboardFlag'])
 		{
-			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/dashboard_footer.php');
+			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['OVERRIDES']['dashboard_footer']);			
 			$_SESSION['dashboardFlag']=0;
 		}
-		else
-			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/regular_footer.php');?>
-	
-		<div id="termsM" class="reveal-modal">
-			<?require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/terms.php');?>
-		</div>
-		
-		<div id="privM" class="reveal-modal">
-			<?require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/privacy.php');?>
-		</div>
-
+		else{			
+			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['OVERRIDES']['regular_footer']);			
+			}?>
+			
 		<!-- JAVASCRIPTS -->
 				
 		<!-- Foundation JS Files -->
@@ -77,8 +70,6 @@
 				
 		<script src="<?echo $_SESSION['path']?>/js/all_scripts.min.js"></script>		<!-- JS 1/1 : to be minified and updated with timestamp -->
 		<!--	<script src="<?echo $_SESSION['path']?>/js/general.js"></script>		<!-- JS 1/1 : to be minified and updated with timestamp -->
-	
-		<script type="text/javascript" src="/code/shop/features.php"></script>
 		<!-- Google+ External JS -->
 		<script type="text/javascript">
 			window.___gcfg = {
@@ -111,27 +102,7 @@
 			  }
 			});
 		</script>
-		
-		<?if((isset($_SESSION['venue_edit_on']) && $_SESSION['venue_edit_on'])){?>
-			<!-- Only on /setting during edit -->
-			<script type="text/javascript">
-				$(document).ready(function() {
-					if($("#map").length > 0)
-					{
-						var myLatLng = new google.maps.LatLng(<?echo  htmlentities($_SESSION['venue_latitude'], ENT_QUOTES).", ".htmlentities($_SESSION['venue_longitude'], ENT_QUOTES);?>);
-						var marker = new google.maps.Marker({
-							position: myLatLng,
-							map: map,
-							animation: google.maps.Animation.DROP,
-							icon: pinImage,
-							title: '<?echo htmlentities($_SESSION['venue_name'], ENT_QUOTES).", ".htmlentities($_SESSION['venue_address'], ENT_QUOTES);?>'
-						  });
-						  map.setCenter(marker.position);
-						  map.setZoom(15);
-					}
-				});
-			</script>
-		<?}?>
+			
 		
 		<?if((isset($_SESSION['app1_edit_on']) && $_SESSION['app1_edit_on']) || (isset($procMem) && $procMem)){?>
 			<!-- Only on /homescreen during edit -->

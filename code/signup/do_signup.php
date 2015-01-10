@@ -3,54 +3,86 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/protect_input.php'); //input protection functions to keep malicious input at bay
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
+
+	$accountCard = $_POST['accountCard'];
+	protectArray($accountCard);
 	
-	$fName = $_POST['fName'];
+	$venueId = $_POST['venueId'];
+	protect($venueId);		
+
+	$preoPackageId = $_POST['preoPackageId'];
+	protect($preoPackageId);	
+
+	$fName = $_POST['user']['firstName'];
 	protect($fName);
 	
-	$lName = $_POST['lName'];
+	$lName = $_POST['user']['lastName'];
 	protect($lName);
 	
-	$email = $_POST['email'];
+	$email = $_POST['user']['email'];
 	protect($email);
 	
-	$password = $_POST['password'];
+	$password = $_POST['user']['password'];
 	protect($password);
 	
 	$businessName = $_POST['businessName'];
 	$_SESSION['venue_name'] = $businessName; //save it to be used later in the venue_settings page
 	protect($businessName);
-	
+/*	
 	$phone = $_POST['phone'];
-	protect($phone);
+	protect($phone);*/
 		
-	$fbid = $_POST['fbid'];
+/*	$fbid = $_POST['fbid'];
 	protect($fbid);
 	
 	$gpid = $_POST['gpid'];
-	protect($gpid);
+	protect($gpid);*/
 	
 	//$notificationFlag = $_POST['notification-switch']; //0=off, 1=on
 	//protect($notificationFlag);  //currently we dont store this!
 	
-	$data['name']				= $businessName;
-	$data['owner']['firstName']	= $fName;
-	$data['owner']['lastName']	= $lName;
-	$data['owner']['username']	= $email;
-	$data['owner']['email']		= $email;
-	$data['owner']['phone']		= $phone;
-	$data['owner']['password'] 	= $password;
-	$data['owner']['fbid'] 		= $fbid;
-	$data['owner']['gpid'] 		= $gpid;
+	$data['accountCard']		= $accountCard;
+	$data['preoPackageId']		= $preoPackageId;
+	// $data['name']				= $businessName;
+	$data['user']['firstName']	= $fName;
+	$data['user']['lastName']	= $lName;
+	$data['user']['username']	= $email;
+	$data['user']['email']		= $email;
+	// $data['user']['phone']		= $phone;
+	$data['user']['password'] 	= $password;
+/*	$data['owner']['fbid'] 		= $fbid;
+	$data['owner']['gpid'] 		= $gpid;*/
 	
 	$jsonData = json_encode($data);
 	
-	$curlResult = callAPI('POST', $apiURL."accounts", $jsonData, $apiAuth);
+	$curlResult = callAPI('PUT', $apiURL."venueclaim/" . $venueId, $jsonData, $apiAuth);
 	
 	$dataJSON = json_decode($curlResult,true);
+
+	if ($dataJSON['status']){
+		http_response_code($dataJson['status']);
+		echo $curlResult;
+		die();
+	}
+
+	$curlResult = callAPI('GET', $apiURL."venues/" . $venueId, $jsonData, $apiAuth);
+	$dataJSONVenue = json_decode($curlResult,true);
 	
-	if(isset($dataJSON['owner']['token'])) $_SESSION['token']=$dataJSON['owner']['token']; //otherwise its an error! 
+	if(!isset($dataJSON['token'])) {
+		$signinData = array();
+		$signinData['username']	= $email;
+		$signinData['password']	= $password;	
+		$signinJsonData= json_encode($signinData);		
+		$curlResult = callAPI('POST', $apiURL."users/auth" , $signinJsonData, $apiAuth);	
+		$dataJSON = json_decode($curlResult,true);
+	}
 	
-	echo $curlResult; //sending a JSON via ajax
+	if(isset($dataJSON['token'])) {
+		$_SESSION['token']=$dataJSON['token']; //otherwise its an error! 
+	}
+
+	$dataJSON['accountId'] = $dataJSONVenue['accountId'];
+	echo json_encode($dataJSON); //sending a JSON via ajax
 	
 	//DEBUG
 	//$decodedCurl = json_decode($curlResult,true);

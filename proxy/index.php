@@ -8,7 +8,10 @@ if (strpos($url, "/api") === 0) {
 	$url = substr($_SERVER['REQUEST_URI'], 5);    
 }
 $url = $apiURL . ltrim($url, "/");
-$apiAuth = "PreoDay ".$_SESSION['token'];
+
+if (isset($_SESSION['token'])) {
+	$apiAuth = "PreoDay ".$_SESSION['token'];
+}
 
 $proxy = new Proxy($url,$apiAuth);
 $proxy->forward();
