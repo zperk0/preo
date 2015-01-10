@@ -108,7 +108,7 @@ angular.module('accountSettings.controllers')
     }
 
     $scope.getTrialPeriod = function (accountPackage) {
-      return moment(accountPackage.endDate).format('Do, MMMM YYYY');
+      return moment(accountPackage.endDate).add(-1,'day').format('Do, MMMM YYYY');
     }
 
     $scope.resubscribePackage = function (accountPackage) {
