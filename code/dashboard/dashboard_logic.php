@@ -224,6 +224,22 @@
 		$newCurl = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id'].'/users', false, $apiAuth); 
 		$_SESSION['dashboardFlag']=1;
 		$_SESSION['signupWizFlag']=0;
+
+
+		// FIXME: This is a hack to get login redirect to work because everything assumes
+		// That the dashboard is loaded on every login. This should be removed once the redirect
+		// is setup correctly
+		if (isset($_SESSION['REDIRECT_AFTER_LOGIN']) && $_SESSION['REDIRECT_AFTER_LOGIN']) {
+			$redirect = $_SESSION['REDIRECT_AFTER_LOGIN'];
+			unset($_SESSION['REDIRECT_AFTER_LOGIN']);
+			header("location: " . $redirect);
+			exit();
+		}
+
+
+
+
+
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/wl-paths.php');   //wallpaper-logo paths
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 

@@ -43,5 +43,3 @@
 		</div>
 	</div>
 </div>
-
-<script type='text/javascript' src='<?echo $_SESSION['path']?>/js/beforeLogin/signin.js'></script>

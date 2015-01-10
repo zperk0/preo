@@ -1,7 +1,8 @@
 <?php
-if(!$_SESSION['logged'] || !isset($_SESSION['token']))
+if(!isset($_SESSION['logged']) || !$_SESSION['logged'] || !isset($_SESSION['token']))
 {
-	header('location:/logout');
+	$_SESSION['REDIRECT_AFTER_LOGIN'] = $_SERVER['REQUEST_URI'];
+	header('location:/login');
 	exit();
 }
 ?>

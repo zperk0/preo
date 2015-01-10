@@ -98,8 +98,7 @@ $(document).ready(function() {
 	$("#signinForm").on('valid', function (event) {
 		var url = "/doSignIn";
 
-		$('#btnLogin').hide();
-		$('#logingButton').removeClass("hide").show();
+		$('#loading').show();
 
 		$.ajax({
 			   type: "POST",
@@ -118,8 +117,7 @@ $(document).ready(function() {
 						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 
-						$('#btnLogin').show();
-						$('#logingButton').addClass("hide").hide();						
+						$('#loading').hide();	
 						//alert(data);
 						return false;
 					}
@@ -131,8 +129,7 @@ $(document).ready(function() {
 						  text: _tr("Incorrect credentials or account does not exist.") //dataArray['message'] //text: _tr("Sorry, but there's been an error processing your request.")
 						});
 
-						$('#btnLogin').show();
-						$('#logingButton').addClass("hide").hide();
+						$('#loading').hide();
 				   
 					}
 					else
@@ -148,8 +145,7 @@ $(document).ready(function() {
 								text: 'Error: '+jqxhr.responseText	
 							});
 
-							$('#btnLogin').show();
-							$('#logingButton').addClass("hide").hide();							
+							$('#loading').hide();
 						});
 					}
 				}
