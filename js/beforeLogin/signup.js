@@ -159,8 +159,12 @@ $(document).ready(function () {
 
   	} else {
 			$('body').addClass("payment");  
-			$('.package-name').html(preoPackage.name);		
-			$('.package-unit-price').html('£'+preoPackage.subscriptionPrice+"/"+_tr("month"));
+			$('.package-name').html(preoPackage.name);	
+			var moreUnitPrice = '';
+			if (preoPackage.id === 3) {
+				moreUnitPrice = ' ' + _tr('(first 12 months upfront)');
+			}
+			$('.package-unit-price').html('£'+preoPackage.subscriptionPrice+"/"+_tr("month") + moreUnitPrice);
 			var date = new Date();
 
 			
