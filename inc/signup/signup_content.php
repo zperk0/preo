@@ -175,7 +175,7 @@
 						</div>
 						<div class="form-group accept">
 							<label class="checkbox-inline accept">
-								<input type="checkbox" required name="accept" id="termsConditions" value="Y"><?php echo _("I have read accept the"); ?>  <a href="http://preoday.com/terms-service/"><?php echo _("terms of service"); ?></a> <?php echo _("and"); ?> <a href="http://preoday.com/privacy-policy-2/"><?php echo _("privacy policy"); ?></a><?php echo _(", including the terms regarding cookies"); ?>
+								<input type="checkbox" required name="accept" id="termsConditions" value="Y"><?php echo _("I have read accept the"); ?>  <a href="https://www.preoday.com/terms-service/" target="_blank"><?php echo _("terms of service"); ?></a> <?php echo _("and"); ?> <a href="http://www.preoday.com/privacy-policy-2/" target="_blank"><?php echo _("privacy policy"); ?></a><?php echo _(", including the terms regarding cookies"); ?>
 								<small class="error"><?echo _("Your have accept tems & conditions for start using Preoday app.");?></small>
 							</label>
 						</div>

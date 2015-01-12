@@ -81,7 +81,7 @@ class Proxy {
         $this->set_request_headers($headers);
         
         // forward post
-        if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "PUT")
+        if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "PUT" || $_SERVER["REQUEST_METHOD"] == "PATCH")
         {
             if(in_array($this->get_content_type($headers), array('application/x-www-form-urlencoded','multipart/form-data')))
             {
