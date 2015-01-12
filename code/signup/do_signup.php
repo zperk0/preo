@@ -24,10 +24,10 @@
 	
 	$password = $_POST['user']['password'];
 	protect($password);
-	
+/*	
 	$businessName = $_POST['businessName'];
 	$_SESSION['venue_name'] = $businessName; //save it to be used later in the venue_settings page
-	protect($businessName);
+	protect($businessName);*/
 /*	
 	$phone = $_POST['phone'];
 	protect($phone);*/
@@ -59,8 +59,8 @@
 	
 	$dataJSON = json_decode($curlResult,true);
 
-	if ($dataJSON['status']){
-		http_response_code($dataJson['status']);
+	if (is_array($dataJSON) && isset($dataJSON['status'])){
+		http_response_code($dataJSON['status']);
 		echo $curlResult;
 		die();
 	}

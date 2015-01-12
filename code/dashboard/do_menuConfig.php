@@ -52,8 +52,9 @@
 		$data 					= array();
 		$data['name'] 			= $menu['name'];
 		$data['accountId'] 		= $menu['accountId'];
-		//if(!$_SESSION['secondaryMenuFlag'])
-			$data['outletId'] 	= $_SESSION['outlet_id']; //secondary menus are non-associated. disabled
+		if (isset($_SESSION['outlet_id'])){
+ 			$data['outletId'] 	= $_SESSION['outlet_id']; //secondary menus are non-associated. disabled
+		}
 		
 		$jsonData 	= json_encode($data);
 		$curlResult = callAPI('POST', $apiURL."menus", $jsonData, $apiAuth); //menu created
@@ -513,6 +514,10 @@
 	$newJSON['update']	= $newIDs; //add array of new values
 	$newJSON['images'] 	= $newImages;
 	$newJSON 			= json_encode($newJSON); //back to JSON
+
+	if (isset($_SESSION['noMenuFlag'])) {
+		$_SESSION['noMenuFlag'] = 0;
+	}	
 	
 	echo $newJSON; //sending a JSON via ajax 
 ?>

@@ -139,6 +139,7 @@
 		$data = array();
 		$data['venueId'] 	= $result['id'];
 		$_SESSION['venue_id'] = $data['venueId'];
+		$_SESSION['noVenueFlag'] = 0;
 		$data['name'] 		= $vName;
 		$data['latitude'] 	= $vLat;
 		$data['longitude'] 	= $vLong;

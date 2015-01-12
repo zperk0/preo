@@ -1,7 +1,11 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
       require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function 
       require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/override_vars.php');
+    if ( isset($_SESSION['logged']) ) {
+		require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/account_functions.php');   //kint
 
+		$venues = getVenues( $_SESSION['user_id'] );
+	}
 ?>
 
 <div class="contain-to-grid">
@@ -82,6 +86,11 @@
 									
 								</ul>
 							</li>
+							<?php  
+							if ( is_array($venues) && count($venues) > 1 ) {
+							?>
+							<li><a href="<?echo $_SESSION['path']?>/selectVenue"><?echo _("Switch Venue");?></a></li>
+							<?php } ?>								
 						</ul>
 					</li>
 					<li class="has-dropdown"><a href="/accountSettings" class="activated"><? echo $_SESSION['user_fName']." ".$_SESSION['user_lName'];?></a>

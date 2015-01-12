@@ -5,4 +5,9 @@ if(!isset($_SESSION['logged']) || !$_SESSION['logged'] || !isset($_SESSION['toke
 	header('location:/login');
 	exit();
 }
+
+if ( !isset($_SESSION['venue_id']) && $_SESSION['noVenueFlag'] != 1 ) {
+	header("location:".$_SESSION['path'].'/selectVenue');
+	exit;		
+}
 ?>

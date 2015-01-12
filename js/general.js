@@ -134,8 +134,20 @@ $(document).ready(function() {
 					}
 					else
 					{	
+						var lastVenueSelected = jQuery.parseJSON(window.localStorage.getItem('lastVenueSelected'));
+						var venueSelected = '';
+						if ( lastVenueSelected && lastVenueSelected instanceof Array && lastVenueSelected.length ) {
+							lastVenueSelected = lastVenueSelected.filter(function(a){
+								return a.userId == dataArray['id']; 
+							});
+
+							if ( lastVenueSelected.length ) {
+								venueSelected = '&venueId=' + lastVenueSelected[0].venueId;
+							}
+						}
+
 						$.post("/saveSignIn", 
-						'email='+encodeURIComponent(dataArray['email'])+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'], 
+						'email='+encodeURIComponent(dataArray['email'])+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'] + venueSelected, 
 						function(response){
 							window.location.replace("/dashboard");
 						})
@@ -2782,6 +2794,14 @@ $(document).ready(function() {
 	   selectedList: 1,
 	   minWidth: 342
 	}); 
+
+	$(".venueSingleSelect").multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: _tr("Choose Venue"),
+	   selectedList: 1,
+	   minWidth: 342
+	}); 	
 		
 	$(".eventMenuSingleSelect").multiselect('disable');
 	
@@ -2861,6 +2881,92 @@ $(document).ready(function() {
 		//bye-bye
 		$(this).parents("tr:first").remove();
 	});
+
+	$("#selectVenueForm").on('valid', function (event) {
+		//prevent multiple submissions
+		var newSubmitTime = new Date().getTime();
+		
+		if( (newSubmitTime - submitTime) > 300 )
+		{
+			//enable dropdowns or we wont get the values!
+			$(".venueSingleSelect").multiselect('enable');
+			
+			var url = "/do_selectVenue";
+			var data = $(this).serialize();
+			$(".venueSingleSelect").multiselect('disable');
+			
+			$('#venueSubButton').hide();
+			$('#savingButton').show();
+
+			$.ajax({
+			   type: "POST",
+			   url: url,
+			   data: data, // serializes the form's elements.
+			   success: function(data)
+			   {
+					try
+					{
+						var dataArray = jQuery.parseJSON(data); //parsing JSON
+					}
+					catch(e)
+					{
+						noty({
+						  type: 'error',  layout: 'topCenter',
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
+						});
+						//alert(data);
+						return false;
+					}
+					
+					if( typeof dataArray['status'] !='undefined')//error
+					{
+						noty({
+						  type: 'error',  layout: 'topCenter',
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
+						});
+				   
+					}
+					else
+					{	
+						noty({ type: 'success', text: 'Venue selected!' });
+
+						var userId = $("#selectVenueForm").data('userid');
+						var venueId = $('.venueSingleSelect').val();
+
+						var lastVenueSelected = jQuery.parseJSON(window.localStorage.getItem('lastVenueSelected'));
+						if ( lastVenueSelected && lastVenueSelected instanceof Array && lastVenueSelected.length ) {
+							var foundUser = false;
+							for (var i = lastVenueSelected.length - 1; i >= 0; i--) {
+								if ( lastVenueSelected[i].userId == userId ) {
+									lastVenueSelected[i].venueId = venueId;
+									foundUser = true;
+									break;
+								}
+							};
+
+							if ( !foundUser ) {
+								lastVenueSelected.push({ userId: userId, venueId: venueId });
+							}
+						} else {
+							lastVenueSelected = [{ userId: userId, venueId: venueId }];
+						}
+
+						window.localStorage.setItem('lastVenueSelected', JSON.stringify(lastVenueSelected));
+						setTimeout(function(){
+							window.location = "/dashboard";
+						})
+					}
+				}
+			 }).done(function() {
+				$('#venueSubButton').show();
+				$('#savingButton').hide();
+				$(".venueSingleSelect").multiselect('enable');
+			 });
+		}
+		//update Time
+		submitTime = new Date().getTime();
+		return false; // avoid to execute the actual submit of the form.
+	});	
 	
 	$("#eventConfigForm").on('valid', function (event) {
 		//prevent multiple submissions
