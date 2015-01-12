@@ -282,14 +282,6 @@ if ($packageTrial) {
     <button class='negativeDismiss preodayButton'><? echo _("CANCEL")?></button>    
 </div>
 
-<div id="videoModal" class="reveal-modal medium modal-preoday dashboard" data-reveal>
-	<a class="close-reveal-modal">×</a>
-    <header class="title-notification"></header>
-	<video controls width="100%">
-		<source src=""></source>
-	</video>    
-</div>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 

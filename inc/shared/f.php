@@ -1,4 +1,13 @@
 		</div> <!-- #wrap ends here -->
+
+		<div id="videoModal" class="reveal-modal medium modal-preoday dashboard" data-reveal>
+			<a class="close-reveal-modal">×</a>
+		    <header class="title-notification"></header>
+			<video controls width="100%">
+				<source src=""></source>
+			</video>    
+		</div>		
+		
 		<?if(isset($_SESSION['dashboardFlag']) && $_SESSION['dashboardFlag'])
 		{
 			require($_SERVER['DOCUMENT_ROOT'].$_SESSION['OVERRIDES']['dashboard_footer']);			
