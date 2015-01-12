@@ -99,6 +99,16 @@ $(document).ready(function () {
 						});
 						return false;		
 		   		}
+			},  error: function (data) {
+				if (data instanceof Object) {
+					$('#loading').hide();
+
+					if (data.status == 401 && data.responseJSON.message.indexOf('APIUserToken') !== -1) {
+						notifyAndRedirect('success',_tr("This email address already exists, please sign in to access your dashboard."),2000,'/login');
+					} else {
+						$('#errorStripe').html(data.responseJSON.message).addClass('active');
+					}	
+				}
 			}
 		 });
 	}
