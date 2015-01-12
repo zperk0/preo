@@ -158,8 +158,6 @@ $(document).ready(function () {
 			if (preoPackage.contractMonths) {
 				contractMonths = preoPackage.contractMonths;
 			}
-			var d = moment().add(contractMonths,'months');
-			$('.package-billing-date').html(d.format('Do MMM YYYY'));
 			var subtotal = preoPackage.subscriptionPrice * contractMonths;
 			var vat = (subtotal * 0.2).toFixed(2);
 			var total = (subtotal + subtotal * 0.2).toFixed(2);
