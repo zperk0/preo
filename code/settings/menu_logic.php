@@ -44,7 +44,6 @@
 	//query to find menu sanity
 	$curlResult = callAPI('GET', $apiURL."menus/$menuID", false, $apiAuth);
 	$dataJSON = json_decode($curlResult,true);
-		
 	if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404) || empty($menuID)) 
 	{	
 		header("location:$_SESSION[path]/");

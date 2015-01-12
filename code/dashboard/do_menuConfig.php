@@ -7,6 +7,18 @@
 	require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/uploadFileMenuItem.php'); //uploadFile 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/SystemStatic.php');
 
+	function getTagIdByCode( $code ) {
+		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/tags.php'); 
+		$tagId = false;
+		foreach ($tags as $Tag) {
+			if ($Tag['code'] == $code) {
+				$tagId = $Tag['id'];
+				break;
+			}
+		}
+		return $tagId;
+	}
+
 
 	function getImagePath(){
 		$path = "";
@@ -313,12 +325,16 @@
 				if ( isset($item['tags']) ) {
 					foreach ($item['tags'] as $code) {
 						if ($code){
-							$data = array();							
-							$data['menuItemId'] = $item_id;
-							$data['code'] = $code;
-							$jsonData 	= json_encode($data);
-							$curlResult = callAPI('POST', $apiURL."items/$item_id/tags", $jsonData, $apiAuth); //item created
-							$result 	= json_decode($curlResult,true);
+							$tagId = getTagIdByCode($code);
+							if ($tagId) {
+								$data = array();							
+								$data['menuItemId'] = $item_id;
+								$data['code'] = $code;
+								$data['tagId'] = $tagId;
+								$jsonData 	= json_encode($data);
+								$curlResult = callAPI('POST', $apiURL."items/$item_id/tags", $jsonData, $apiAuth); //item created
+								$result 	= json_decode($curlResult,true);
+							}
 						}
 					}
 				}
@@ -363,12 +379,16 @@
 				if ( isset($item['tags']) ) {
 					foreach ($item['tags'] as $code) {
 						if ($code){
-							$data = array();							
-							$data['menuItemId'] = $item_id;
-							$data['code'] = $code;
-							$jsonData 	= json_encode($data);
-							$curlResult = callAPI('POST', $apiURL."items/$item_id/tags", $jsonData, $apiAuth); //item created
-							$result 	= json_decode($curlResult,true);
+							$tagId = getTagIdByCode($code);
+							if ($tagId) {
+								$data = array();							
+								$data['menuItemId'] = $item_id;
+								$data['code'] = $code;
+								$data['tagId'] = $tagId;
+								$jsonData 	= json_encode($data);
+								$curlResult = callAPI('POST', $apiURL."items/$item_id/tags", $jsonData, $apiAuth); //item created
+								$result 	= json_decode($curlResult,true);
+							}
 						}
 					}
 				}				
