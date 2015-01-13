@@ -57,7 +57,6 @@
 											<tr>
 												<th width="30%"><?php echo _("Description")?></th>
 												<th width="30%"><?php echo _("Unit price")?></th>
-												<th width="30%"><?php echo _("Next billing date")?></th>
 												<th width="10%"><?php echo _("Amount")?></th>
 											</tr>
 										</thead>
@@ -67,8 +66,6 @@
 													<span class='package-name'></span>
 												</td>
 												<td class='package-unit-price'>
-												</td>
-												<td class='package-billing-date'>
 												</td>
 												<td>
 													<span class='package-amount'></span>
