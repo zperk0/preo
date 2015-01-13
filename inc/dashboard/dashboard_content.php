@@ -262,7 +262,7 @@ if ($packageTrial) {
 ?>
 <div id="expiredPackageDialog" class="reveal-modal small modal-preoday dashboard" data-reveal>
 	<a class="close-reveal-modal">×</a>
-    <header class="title-notification"><?php echo $packageTrial['preoPackage']['name'] . _(" is trial"); ?></header>
+    <header class="title-notification"><?php echo $packageTrial['preoPackage']['name'] . _(" trial"); ?></header>
     <div class="container-modal-confirm">
 	    <?php 
 	    $start = time(); // or your date as well
@@ -280,14 +280,6 @@ if ($packageTrial) {
     <div class="container-modal-confirm"><? echo _("Before taking your app live you need to connect it to a payment provider so that you can start accepting payments and start getting paid!")?></div>
     <button class='positiveDismiss preodayButton' ><? echo _("CONNECT")?></button>
     <button class='negativeDismiss preodayButton'><? echo _("CANCEL")?></button>    
-</div>
-
-<div id="videoModal" class="reveal-modal medium modal-preoday dashboard" data-reveal>
-	<a class="close-reveal-modal">×</a>
-    <header class="title-notification"></header>
-	<video controls width="100%">
-		<source src=""></source>
-	</video>    
 </div>
 
 <script type="text/javascript">

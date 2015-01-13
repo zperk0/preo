@@ -24,8 +24,8 @@
 	
 	$password = $_POST['user']['password'];
 	protect($password);
-/*	
-	$businessName = $_POST['businessName'];
+	
+/*	$businessName = $_POST['businessName'];
 	$_SESSION['venue_name'] = $businessName; //save it to be used later in the venue_settings page
 	protect($businessName);*/
 /*	

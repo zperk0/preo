@@ -99,6 +99,16 @@ $(document).ready(function () {
 						});
 						return false;		
 		   		}
+			},  error: function (data) {
+				if (data instanceof Object) {
+					$('#loading').hide();
+
+					if (data.status == 401 && data.responseJSON.message.indexOf('APIUserToken') !== -1) {
+						notifyAndRedirect('success',_tr("This email address already exists, please sign in to access your dashboard."),2000,'/login');
+					} else {
+						$('#errorStripe').html(data.responseJSON.message).addClass('active');
+					}	
+				}
 			}
 		 });
 	}
@@ -149,8 +159,12 @@ $(document).ready(function () {
 
   	} else {
 			$('body').addClass("payment");  
-			$('.package-name').html(preoPackage.name);		
-			$('.package-unit-price').html('£'+preoPackage.subscriptionPrice+"/"+_tr("month"));
+			$('.package-name').html(preoPackage.name);	
+			var moreUnitPrice = '';
+			if (preoPackage.id === 3) {
+				moreUnitPrice = ' ' + _tr('(first 12 months upfront)');
+			}
+			$('.package-unit-price').html('£'+preoPackage.subscriptionPrice+"/"+_tr("month") + moreUnitPrice);
 			var date = new Date();
 
 			
@@ -158,8 +172,6 @@ $(document).ready(function () {
 			if (preoPackage.contractMonths) {
 				contractMonths = preoPackage.contractMonths;
 			}
-			var d = moment().add(contractMonths,'months');
-			$('.package-billing-date').html(d.format('Do MMM YYYY'));
 			var subtotal = preoPackage.subscriptionPrice * contractMonths;
 			var vat = (subtotal * 0.2).toFixed(2);
 			var total = (subtotal + subtotal * 0.2).toFixed(2);
