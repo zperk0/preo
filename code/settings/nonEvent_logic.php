@@ -123,23 +123,8 @@
 		if (is_array($menus) && !isset($menus[0])) {
 			$_SESSION['menus'] = [$menus];
 		}	
-	} else {
-		$accountID = $_SESSION['account_id'];
-		$curlResult = callAPI('GET', $GLOBALS['apiURL']."menus?accountId=$accountID", false, $apiAuth);
-		
-		$dataJSON = json_decode($curlResult,true);
-
-		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404))
-		{	
-			$_SESSION['noMenuFlag'] = 1;
-			header("Location: /dashboard");exit();
-		} else {
-			$_SESSION['noMenuFlag']=0; 
-			$_SESSION['menus']	= $dataJSON;
-			$_SESSION['outlet_id'] 	= $dataJSON[0]['outletId'];			
-		}
 	}
-
+	
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/nonEventConfig.php');

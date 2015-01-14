@@ -78,7 +78,7 @@ $(document).ready(function () {
 						$.post("/saveSignUp", 
 						'bName='+queryParams.businessname+'&bID='+data.accountId+'&email='+encodeURIComponent(data.email)+'&fName='+data.firstName+'&lName='+data.lastName+'&id='+data.id,
 						function(response){
-							window.location.replace("/dashboard");
+							window.location.href = "/dashboard";
 						})
 						.fail(function(jqxhr) { 							
 							$('#errorStripe').html(jqxhr.responseText).addClass('active');
