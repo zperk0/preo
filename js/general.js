@@ -4819,7 +4819,7 @@ $(document).ready(function() {
         $(this).removeClass("active");
     });
 
-    console.log('window.location.pathname',window.location.pathname, window.location.pathname === '/newVenue')
+    //Clears the inputs on the newVenue page to reuse the template
     if (window.location.pathname === "/newVenue"){
     	$('input').val('');
     	$('textarea').val('');
