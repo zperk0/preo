@@ -78,7 +78,8 @@ angular.module('switch.controllers',[]).
 
     $scope.switchAccount = function(venueOrAccount) {
         if ( window.confirm("Are you sure you wish to switch your account to: \n" + venueOrAccount.name) ) {
-            $scope.finishedLoading =false;
+            window.localStorage.clear();                    
+            $scope.finishedLoading =false;            
 
             // Set the new account
             $http.post('/api/accounts/' + (venueOrAccount.accountId || venueOrAccount.id) + '/switch')
@@ -89,7 +90,8 @@ angular.module('switch.controllers',[]).
                     type: 'success',
                     text: 'You user has been switched to the ' + venueOrAccount.name + ' account.<br>' +
                         ' You will now be logged out for the settings to take effect.'
-                });
+                }); 
+                
 
             	// logout
                 setTimeout(function(){window.location.replace("/logout");}, 2500);

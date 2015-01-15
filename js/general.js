@@ -136,7 +136,9 @@ $(document).ready(function() {
 					}
 					else
 					{	
+
 						var lastVenueSelected = jQuery.parseJSON(window.localStorage.getItem('lastVenueSelected'));
+						console.log("Last selected",lastVenueSelected );
 						var venueSelected = '';
 						if ( lastVenueSelected && lastVenueSelected instanceof Array && lastVenueSelected.length ) {
 							lastVenueSelected = lastVenueSelected.filter(function(a){
