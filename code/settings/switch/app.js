@@ -79,7 +79,7 @@ angular.module('switch.controllers',[]).
     $scope.switchAccount = function(venueOrAccount) {
         if ( window.confirm("Are you sure you wish to switch your account to: \n" + venueOrAccount.name) ) {
             window.localStorage.clear();                    
-            $scope.finishedLoading =false;            
+            $scope.finishedLoading = false;            
 
             // Set the new account
             $http.post('/api/accounts/' + (venueOrAccount.accountId || venueOrAccount.id) + '/switch')
@@ -108,9 +108,7 @@ angular.module('switch.controllers',[]).
 
                 console.log(data);
             });
-
         }
-
     }
     
   });

@@ -129,9 +129,9 @@
 		}		
 		$data['accountId'] = json_decode($curlResult,true)['id'];		
 		$jsonData = json_encode($data);	
-		$curlResult = callAPI('POST', $apiURL."venues", $jsonData, $apiAuth);
+		$venueCurlResult = callAPI('POST', $apiURL."venues", $jsonData, $apiAuth);
 		
-		$result = json_decode($curlResult, true);
+		$result = json_decode($venueCurlResult, true);
 		
 		$data = array();
 		$data['leadTime']			= $leadtime;
@@ -158,5 +158,5 @@
 
 
 	
-	echo $curlResult; //sending a JSON via ajax
+	echo $venueCurlResult; //sending a JSON via ajax
 ?>

@@ -466,17 +466,16 @@ $(document).ready(function() {
 		$('#venueSave').hide();
 		$('#savingButton').removeClass("hide").show();
 		
+		var dataArray;
 		$.ajax({
 			   type: "POST",
 			   url: url+queryParam,
 			   data: $(this).serialize(), // serializes the form's elements.
 			   success: function(data)
 			   {
-			   		console.log('got data',data);
-			   		return;
 					try
 					{
-						var dataArray = jQuery.parseJSON(data); //parsing JSON
+						dataArray = jQuery.parseJSON(data); //parsing JSON
 					}
 					catch(e)
 					{
@@ -491,7 +490,6 @@ $(document).ready(function() {
 					if (isNewVenue)
 					{
 				 		doSelectVenue("venueId="+dataArray['id']);
-					 	$('#redirectFlag').val('0');
 				 		return false;
 				 	}
 					
@@ -508,14 +506,35 @@ $(document).ready(function() {
 						if($('#redirectFlag').val()=='1') { setTimeout(function(){window.location.replace("/homescreen");}, 1000); }
 					}
 				}
-			 }).done(function(){			 				 	
-				return;	
+			 }).done(function(){			 				 					
 				if($('#redirectFlag').val()!='1') $('#venueSave').show();
 				$('#savingButton').hide();
-				//FIXME maybe this can be replaced with a refresh on the ids for the delivery details
-				setTimeout(window.location.reload(),200);
-			 });
+				$('#redirectFlag').val('0');
+				if (isNewVenue){				
+					console.log(dataArray);
+			 		if (window.confirm("Do wish to switch your account to: \n" + dataArray.name)){			 		
+			 				$.ajax({
+			 					type:'POST',
+			 					url:'/api/accounts/' + dataArray.accountId + '/switch',
+			 					success:function(){
+		 						noty({ 
+				                    type: 'success',
+				                    text: 'You user has been switched to the ' + dataArray.name + ' account.<br>' +
+				                        ' You will now be logged out for the settings to take effect.'
+				                }); 
+				                
 
+				            	// logout
+				                setTimeout(function(){window.location.replace("/logout");}, 2500);
+			 					}
+			 				})
+			 		};
+			 		
+				} else {
+					setTimeout(window.location.reload(),200);
+				}
+			 });
+		 console.log('returning false');
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
@@ -2962,9 +2981,8 @@ $(document).ready(function() {
 						}
 
 						window.localStorage.setItem('lastVenueSelected', JSON.stringify(lastVenueSelected));
-						setTimeout(function(){
-							window.location = "/dashboard";
-						})
+						
+						
 					}
 				}
 			 }).done(function() {
@@ -2989,6 +3007,9 @@ $(document).ready(function() {
 			$('#venueSubButton').hide();
 			$('#savingButton').show();			
 			doSelectVenue(data)
+			setTimeout(function(){
+				window.location = "/dashboard";
+			})
 		}
 		//update Time
 		submitTime = new Date().getTime();
@@ -4805,6 +4826,7 @@ $(document).ready(function() {
     	$('.alignHeader').html("Create a new venue");
 		return;
 	} 
+	
 });
 
 function CurrencyManager(){
