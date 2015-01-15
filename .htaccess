@@ -212,6 +212,9 @@ RewriteRule ^.*$ /code/kyc/index.php [L]
 RewriteCond %{REQUEST_URI} ^/switch$ [NC]
 RewriteRule ^.*$ /code/settings/switch/switch-view.php [L]
 
+RewriteCond %{REQUEST_URI} ^/newVenue$ [NC]
+RewriteRule ^.*$ /code/settings/new-venue/new-venue.php [L]
+
 RewriteCond %{REQUEST_URI} ^/selectVenue$ [NC]
 RewriteRule ^.*$ selectVenue.php [L]
 

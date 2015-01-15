@@ -120,8 +120,15 @@
 		
 							
 	}
-	else
-	{
+	else{		
+		if ($_GET['skipUser']){
+			$accountData = array();
+			$accountData['name'] = $vName;
+			$accountJsonData = json_encode($accountData);
+			$curlResult	 = callAPI('POST', $apiURL."accounts?skipUser=1", $accountJsonData, $apiAuth);	
+		}		
+		$data['accountId'] = json_decode($curlResult,true)['id'];		
+		$jsonData = json_encode($data);	
 		$curlResult = callAPI('POST', $apiURL."venues", $jsonData, $apiAuth);
 		
 		$result = json_decode($curlResult, true);

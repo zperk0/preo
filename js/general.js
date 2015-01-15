@@ -62,6 +62,8 @@ $.fn.alterClass = function ( removals, additions ) {
 
 //on page load fire these things!
 $(document).ready(function() { 
+
+
 	//This really should be part of jQuery
 	$.fn.exists = function(){return this.length>0;}
 	
@@ -448,8 +450,15 @@ $(document).ready(function() {
 			$(this).removeClass("off")
 		}
 	});
-	
+		
 	$("#venueConfigForm").on('valid', function (event) {
+		var isNewVenue = false;
+		var queryParam = "";
+		if (window.location.pathname === "/newVenue"){
+			isNewVenue= true;
+			queryParam+="?skipUser=1"
+		}
+
 		var url = "/saveVenue";
 		
 		$('#venueSave').hide();
@@ -457,10 +466,12 @@ $(document).ready(function() {
 		
 		$.ajax({
 			   type: "POST",
-			   url: url,
+			   url: url+queryParam,
 			   data: $(this).serialize(), // serializes the form's elements.
 			   success: function(data)
 			   {
+			   		console.log('got data',data);
+			   		return;
 					try
 					{
 						var dataArray = jQuery.parseJSON(data); //parsing JSON
@@ -474,6 +485,13 @@ $(document).ready(function() {
 						//alert(data);
 						return false;
 					}
+
+					if (isNewVenue)
+					{
+				 		doSelectVenue("venueId="+dataArray['id']);
+					 	$('#redirectFlag').val('0');
+				 		return false;
+				 	}
 					
 					if(dataArray && typeof dataArray['status'] !='undefined') //error
 					{
@@ -488,7 +506,8 @@ $(document).ready(function() {
 						if($('#redirectFlag').val()=='1') { setTimeout(function(){window.location.replace("/homescreen");}, 1000); }
 					}
 				}
-			 }).done(function(){
+			 }).done(function(){			 				 	
+				return;	
 				if($('#redirectFlag').val()!='1') $('#venueSave').show();
 				$('#savingButton').hide();
 				//FIXME maybe this can be replaced with a refresh on the ids for the delivery details
@@ -2886,26 +2905,11 @@ $(document).ready(function() {
 		$(this).parents("tr:first").remove();
 	});
 
-	$("#selectVenueForm").on('valid', function (event) {
-		//prevent multiple submissions
-		var newSubmitTime = new Date().getTime();
-		
-		if( (newSubmitTime - submitTime) > 300 )
-		{
-			//enable dropdowns or we wont get the values!
-			$(".venueSingleSelect").multiselect('enable');
-			
-			var url = "/do_selectVenue";
-			var data = $(this).serialize();
-			$(".venueSingleSelect").multiselect('disable');
-			
-			$('#venueSubButton').hide();
-			$('#savingButton').show();
-
-			$.ajax({
+	function doSelectVenue(formData){
+		$.ajax({
 			   type: "POST",
-			   url: url,
-			   data: data, // serializes the form's elements.
+			   url: "/do_selectVenue",
+			   data: formData, // serializes the form's elements.
 			   success: function(data)
 			   {
 					try
@@ -2966,6 +2970,23 @@ $(document).ready(function() {
 				$('#savingButton').hide();
 				$(".venueSingleSelect").multiselect('enable');
 			 });
+	}
+
+	$("#selectVenueForm").on('valid', function (event) {
+		//prevent multiple submissions
+		var newSubmitTime = new Date().getTime();
+		
+		if( (newSubmitTime - submitTime) > 300 )
+		{
+			//enable dropdowns or we wont get the values!
+			$(".venueSingleSelect").multiselect('enable');
+						
+			var data = $(this).serialize();
+			$(".venueSingleSelect").multiselect('disable');
+			
+			$('#venueSubButton').hide();
+			$('#savingButton').show();			
+			doSelectVenue(data)
 		}
 		//update Time
 		submitTime = new Date().getTime();
@@ -4533,6 +4554,7 @@ $(document).ready(function() {
 		});
 	});
 	
+
 	$("#settingsForm").on('valid', function (event) {
 		var url = "/saveProfile";
 		$.ajax({
@@ -4774,6 +4796,13 @@ $(document).ready(function() {
         $(this).removeClass("active");
     });
 
+    console.log('window.location.pathname',window.location.pathname, window.location.pathname === '/newVenue')
+    if (window.location.pathname === "/newVenue"){
+    	$('input').val('');
+    	$('textarea').val('');
+    	$('.alignHeader').html("Create a new venue");
+		return;
+	} 
 });
 
 function CurrencyManager(){

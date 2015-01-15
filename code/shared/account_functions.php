@@ -10,6 +10,8 @@
 		//query to find venues
 		$curlResult = callAPI('GET', $GLOBALS['apiURL']."venues/" . $venueId, false, $apiAuth);
 		
+		// var_dump($curlResult);
+		// die($curlResult);
 		$dataJSON = json_decode($curlResult,true);
 
 		//query to find venues

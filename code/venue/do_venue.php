@@ -9,8 +9,9 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/account_functions.php');   //kint
 
-	$venueId = $_POST['venueId'];
+	$venueId = $_POST['venueId'];	
 	protect($venueId);
+	$_SESSION['venue_id'] = $venueId;
 
 	if (!$venueId) {
 		$curlResult = '[{"status" : 400, "message": "venueId required"}]';
