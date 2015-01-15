@@ -86,8 +86,9 @@
             </tr>
           </table>
           <table ng-if="venues">
-            <tr><th>AccountId</th><th>Name</th><th>Code</th><th></th></tr>
+            <tr><th>VenueId</th><th>AccountId</th><th>Name</th><th>Code</th><th></th></tr>
             <tr ng-repeat="v in venues track by v.id">
+              <td>{{ v.id }}</td>
               <td>{{ v.accountId }}</td>
               <td>{{ v.name }}</td>
               <td>{{ v.code }}</td>
