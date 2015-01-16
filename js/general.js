@@ -173,6 +173,8 @@ $(document).ready(function() {
 	$("#forgotPassForm").on('valid', function (event) {
 		var url = "/doForgot";
 
+		$('#loading').show();
+
 		$.ajax({
 			   type: "POST",
 			   url: url,
@@ -190,7 +192,7 @@ $(document).ready(function() {
 						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						
-						//alert(data);
+						$('#loading').hide();
 						
 						return false;
 					}
@@ -212,6 +214,8 @@ $(document).ready(function() {
 						
 						$("#forgotPassM").foundation('reveal', 'close');
 					}
+
+					$('#loading').hide();
 				}
 			 });
 
