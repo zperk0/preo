@@ -1899,7 +1899,7 @@ fieldset[disabled] .btn-fourth.active {
 }
 .sections.sign-in .bg, .sections.forgot-password .bg {
   background-image: url(../img/beforeLogin/sign-in.png);
-  position: absolute;
+  position: fixed;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;

@@ -59,7 +59,7 @@
 	
 	$dataJSON = json_decode($curlResult,true);
 
-	if ($dataJSON['status']){
+	if (is_array($dataJSON) && isset($dataJSON['status'])){
 		http_response_code($dataJSON['status']);
 		echo $curlResult;
 		die();

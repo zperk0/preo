@@ -62,6 +62,8 @@ $.fn.alterClass = function ( removals, additions ) {
 
 //on page load fire these things!
 $(document).ready(function() { 
+
+
 	//This really should be part of jQuery
 	$.fn.exists = function(){return this.length>0;}
 	
@@ -134,8 +136,22 @@ $(document).ready(function() {
 					}
 					else
 					{	
+
+						var lastVenueSelected = jQuery.parseJSON(window.localStorage.getItem('lastVenueSelected'));
+						console.log("Last selected",lastVenueSelected );
+						var venueSelected = '';
+						if ( lastVenueSelected && lastVenueSelected instanceof Array && lastVenueSelected.length ) {
+							lastVenueSelected = lastVenueSelected.filter(function(a){
+								return a.userId == dataArray['id']; 
+							});
+
+							if ( lastVenueSelected.length ) {
+								venueSelected = '&venueId=' + lastVenueSelected[0].venueId;
+							}
+						}
+
 						$.post("/saveSignIn", 
-						'email='+encodeURIComponent(dataArray['email'])+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'], 
+						'email='+encodeURIComponent(dataArray['email'])+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'] + venueSelected, 
 						function(response){
 							window.location.replace("/dashboard");
 						})
@@ -157,6 +173,8 @@ $(document).ready(function() {
 	$("#forgotPassForm").on('valid', function (event) {
 		var url = "/doForgot";
 
+		$('#loading').show();
+
 		$.ajax({
 			   type: "POST",
 			   url: url,
@@ -174,7 +192,7 @@ $(document).ready(function() {
 						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						
-						//alert(data);
+						$('#loading').hide();
 						
 						return false;
 					}
@@ -196,6 +214,8 @@ $(document).ready(function() {
 						
 						$("#forgotPassM").foundation('reveal', 'close');
 					}
+
+					$('#loading').hide();
 				}
 			 });
 
@@ -436,22 +456,30 @@ $(document).ready(function() {
 			$(this).removeClass("off")
 		}
 	});
-	
+		
 	$("#venueConfigForm").on('valid', function (event) {
+		var isNewVenue = false;
+		var queryParam = "";
+		if (window.location.pathname === "/newVenue"){
+			isNewVenue= true;
+			queryParam+="?skipUser=1"
+		}
+
 		var url = "/saveVenue";
 		
 		$('#venueSave').hide();
 		$('#savingButton').removeClass("hide").show();
 		
+		var dataArray;
 		$.ajax({
 			   type: "POST",
-			   url: url,
+			   url: url+queryParam,
 			   data: $(this).serialize(), // serializes the form's elements.
 			   success: function(data)
 			   {
 					try
 					{
-						var dataArray = jQuery.parseJSON(data); //parsing JSON
+						dataArray = jQuery.parseJSON(data); //parsing JSON
 					}
 					catch(e)
 					{
@@ -462,6 +490,12 @@ $(document).ready(function() {
 						//alert(data);
 						return false;
 					}
+
+					if (isNewVenue)
+					{
+				 		doSelectVenue("venueId="+dataArray['id']);
+				 		return false;
+				 	}
 					
 					if(dataArray && typeof dataArray['status'] !='undefined') //error
 					{
@@ -476,13 +510,35 @@ $(document).ready(function() {
 						if($('#redirectFlag').val()=='1') { setTimeout(function(){window.location.replace("/homescreen");}, 1000); }
 					}
 				}
-			 }).done(function(){
+			 }).done(function(){			 				 					
 				if($('#redirectFlag').val()!='1') $('#venueSave').show();
 				$('#savingButton').hide();
-				//FIXME maybe this can be replaced with a refresh on the ids for the delivery details
-				setTimeout(window.location.reload(),200);
-			 });
+				$('#redirectFlag').val('0');
+				if (isNewVenue){				
+					console.log(dataArray);
+			 		if (window.confirm("Do wish to switch your account to: \n" + dataArray.name)){			 		
+			 				$.ajax({
+			 					type:'POST',
+			 					url:'/api/accounts/' + dataArray.accountId + '/switch',
+			 					success:function(){
+		 						noty({ 
+				                    type: 'success',
+				                    text: 'You user has been switched to the ' + dataArray.name + ' account.<br>' +
+				                        ' You will now be logged out for the settings to take effect.'
+				                }); 
+				                
 
+				            	// logout
+				                setTimeout(function(){window.location.replace("/logout");}, 2500);
+			 					}
+			 				})
+			 		};
+			 		
+				} else {
+					setTimeout(window.location.reload(),200);
+				}
+			 });
+		 console.log('returning false');
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
@@ -2424,14 +2480,18 @@ $(document).ready(function() {
 						$inputCollapseAjax.data('value', collapseAjax);
 						$inputCollapseAjax.attr('data-value', collapseAjax);
 					}
-				
-					$inputEachAjaxUnique.attr('data-delete', false);
-					$inputEachAjaxUnique.attr('data-insert', false);
-					$inputEachAjaxUnique.attr('data-edit', false);
 					
-					$inputEachAjaxUnique.data('delete', false);
-					$inputEachAjaxUnique.data('insert', false);
-					$inputEachAjaxUnique.data('edit', false);
+					if ($inputEachAjaxUnique.data('delete') == 'true' || $inputEachAjaxUnique.attr('data-delete') == 'true' ) {
+						$inputEachAjaxUnique.closest('tr').remove();
+					} else {
+						$inputEachAjaxUnique.attr('data-delete', false);
+						$inputEachAjaxUnique.attr('data-insert', false);
+						$inputEachAjaxUnique.attr('data-edit', false);
+						
+						$inputEachAjaxUnique.data('delete', false);
+						$inputEachAjaxUnique.data('insert', false);
+						$inputEachAjaxUnique.data('edit', false);
+					}
 				};
 				
 				$('#savingButton').hide();
@@ -2782,6 +2842,14 @@ $(document).ready(function() {
 	   selectedList: 1,
 	   minWidth: 342
 	}); 
+
+	$(".venueSingleSelect").multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: _tr("Choose Venue"),
+	   selectedList: 1,
+	   minWidth: 342
+	}); 	
 		
 	$(".eventMenuSingleSelect").multiselect('disable');
 	
@@ -2861,6 +2929,96 @@ $(document).ready(function() {
 		//bye-bye
 		$(this).parents("tr:first").remove();
 	});
+
+	function doSelectVenue(formData){
+		$.ajax({
+			   type: "POST",
+			   url: "/do_selectVenue",
+			   data: formData, // serializes the form's elements.
+			   success: function(data)
+			   {
+					try
+					{
+						var dataArray = jQuery.parseJSON(data); //parsing JSON
+					}
+					catch(e)
+					{
+						noty({
+						  type: 'error',  layout: 'topCenter',
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
+						});
+						//alert(data);
+						return false;
+					}
+					
+					if( typeof dataArray['status'] !='undefined')//error
+					{
+						noty({
+						  type: 'error',  layout: 'topCenter',
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
+						});
+				   
+					}
+					else
+					{	
+						noty({ type: 'success', text: 'Venue selected!' });
+
+						var userId = $("#selectVenueForm").data('userid');
+						var venueId = $('.venueSingleSelect').val();
+
+						var lastVenueSelected = jQuery.parseJSON(window.localStorage.getItem('lastVenueSelected'));
+						if ( lastVenueSelected && lastVenueSelected instanceof Array && lastVenueSelected.length ) {
+							var foundUser = false;
+							for (var i = lastVenueSelected.length - 1; i >= 0; i--) {
+								if ( lastVenueSelected[i].userId == userId ) {
+									lastVenueSelected[i].venueId = venueId;
+									foundUser = true;
+									break;
+								}
+							};
+
+							if ( !foundUser ) {
+								lastVenueSelected.push({ userId: userId, venueId: venueId });
+							}
+						} else {
+							lastVenueSelected = [{ userId: userId, venueId: venueId }];
+						}
+
+						window.localStorage.setItem('lastVenueSelected', JSON.stringify(lastVenueSelected));
+						
+						
+					}
+				}
+			 }).done(function() {
+				$('#venueSubButton').show();
+				$('#savingButton').hide();
+				$(".venueSingleSelect").multiselect('enable');
+			 });
+	}
+
+	$("#selectVenueForm").on('valid', function (event) {
+		//prevent multiple submissions
+		var newSubmitTime = new Date().getTime();
+		
+		if( (newSubmitTime - submitTime) > 300 )
+		{
+			//enable dropdowns or we wont get the values!
+			$(".venueSingleSelect").multiselect('enable');
+						
+			var data = $(this).serialize();
+			$(".venueSingleSelect").multiselect('disable');
+			
+			$('#venueSubButton').hide();
+			$('#savingButton').show();			
+			doSelectVenue(data)
+			setTimeout(function(){
+				window.location = "/dashboard";
+			})
+		}
+		//update Time
+		submitTime = new Date().getTime();
+		return false; // avoid to execute the actual submit of the form.
+	});	
 	
 	$("#eventConfigForm").on('valid', function (event) {
 		//prevent multiple submissions
@@ -4423,6 +4581,7 @@ $(document).ready(function() {
 		});
 	});
 	
+
 	$("#settingsForm").on('valid', function (event) {
 		var url = "/saveProfile";
 		$.ajax({
@@ -4664,6 +4823,14 @@ $(document).ready(function() {
         $(this).removeClass("active");
     });
 
+    //Clears the inputs on the newVenue page to reuse the template
+    if (window.location.pathname === "/newVenue"){
+    	$('input').val('');
+    	$('textarea').val('');
+    	$('.alignHeader').html("Create a new venue");
+		return;
+	} 
+	
 });
 
 function CurrencyManager(){

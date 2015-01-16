@@ -120,11 +120,18 @@
 		
 							
 	}
-	else
-	{
-		$curlResult = callAPI('POST', $apiURL."venues", $jsonData, $apiAuth);
+	else{		
+		if ($_GET['skipUser']){
+			$accountData = array();
+			$accountData['name'] = $vName;
+			$accountJsonData = json_encode($accountData);
+			$curlResult	 = callAPI('POST', $apiURL."accounts", $accountJsonData, $apiAuth);	
+		}		
+		$data['accountId'] = json_decode($curlResult,true)['id'];		
+		$jsonData = json_encode($data);	
+		$venueCurlResult = callAPI('POST', $apiURL."venues", $jsonData, $apiAuth);
 		
-		$result = json_decode($curlResult, true);
+		$result = json_decode($venueCurlResult, true);
 		
 		$data = array();
 		$data['leadTime']			= $leadtime;
@@ -139,6 +146,7 @@
 		$data = array();
 		$data['venueId'] 	= $result['id'];
 		$_SESSION['venue_id'] = $data['venueId'];
+		$_SESSION['noVenueFlag'] = 0;
 		$data['name'] 		= $vName;
 		$data['latitude'] 	= $vLat;
 		$data['longitude'] 	= $vLong;
@@ -150,5 +158,5 @@
 
 
 	
-	echo $curlResult; //sending a JSON via ajax
+	echo $venueCurlResult; //sending a JSON via ajax
 ?>

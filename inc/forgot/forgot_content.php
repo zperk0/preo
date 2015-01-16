@@ -9,10 +9,10 @@
 								<h3><?echo _("Enter your email and we’ll send you a link to reset your password");?></h3>
 							  	<div class="row">
 									<div class="col col-xs-12 text-left">
-									  	<div class="form-group emailaddress">
-									  		<label for="emailaddress"><?echo _("Email address");?></label>
-									    	<input type="text" name="emailaddress" class="form-control" required pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' id="4">
-									    	<small class="error"><?echo _("An email address is required.");?></small>
+										<div class="form-group emailaddress">
+											<label for="emailF"><?echo _("Email address");?></label>
+											<input type="text" name="emailF" class="form-control" required pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' id="4">
+											<small class="error"><?echo _("An email address is required.");?></small>
 										</div>
 									</div>
 								</div>
@@ -31,5 +31,3 @@
 			</div>
 		</div>
 	</div>
-
-	<script type='text/javascript' src='<?echo $_SESSION['path']?>/js/beforeLogin/forgot.js'></script>

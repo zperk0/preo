@@ -32,6 +32,8 @@
 	$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
 	
 	if(isset($_SESSION['app2_edit_on']) && $_SESSION['app2_edit_on']) $_SESSION['app2_edit_on']=0;
+
+	$_SESSION['noAppFlag-2'] = 0;
 	
 	echo $curlResult; //sending a JSON via ajax
 ?>
