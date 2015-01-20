@@ -16,7 +16,6 @@
 
 
 	$testHost = "food4uapp.co.uk";
-	
 	if ( substr_compare($httpHost, $testHost, -strlen($testHost)) === 0 ) {
 		$overridePath = "/overrides/food4u";
 		$_SESSION['OVERRIDES']["css"] = $overridePath."/override.css";
@@ -25,6 +24,9 @@
 		$_SESSION['OVERRIDES']["dashboard_footer"] = $overridePath."/dashboard_footer.php";		
 		$_SESSION['OVERRIDES']["sign_in_message"] = _("Sign in to your Dashboard");
 		$_SESSION['OVERRIDES']["has_web_orders"] = false;
+		$_SESSION['OVERRIDES']["terms"] = "http://food4uapp.co.uk/terms-conditions";
+		$_SESSION['OVERRIDES']["privacy"] = "http://food4uapp.co.uk/privacy-policy";
+		$_SESSION['OVERRIDES']["link_orders"] = "//orders.food4uapp.co.uk";
 	}
 
 	//at this point meta has been imported so the main css is in, safe to add the overrides here!

@@ -36,7 +36,7 @@
 						<ul class="dropdown">
 							<li><a href="<?echo $_SESSION['path']?>/dashboard"><? echo _("Go to Dashboard");?></a></li>
 																					
-							<li><a href="<?echo $_SESSION['OVERRIDES']["link_orders"]?>" target="_blank"><? echo _("Order Screen");?></a></li>							
+							<li><a href="<?echo $_SESSION['OVERRIDES']["link_orders"]?>" target="_blank"><? echo _("Order Screen");?></a></li>
 
 							<li class="has-dropdown"><a href="#"><?echo _("Venue Settings");?></a>
 								<ul class="dropdown">
