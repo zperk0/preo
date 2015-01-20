@@ -118,6 +118,13 @@
 		protect($redirectFlag);	
 	}
 
+	if (isset($_SESSION['menus'])) {
+		$menus = $_SESSION['menus'];
+		if (is_array($menus) && !isset($menus[0])) {
+			$_SESSION['menus'] = [$menus];
+		}	
+	}
+	
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/dashboard/nonEventConfig.php');

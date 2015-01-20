@@ -15,7 +15,7 @@
         <div class='bottomSpacer'></div>
     	</div>
     	<div class='menu'>
-  		<h3>Account Settings</h3>
+  		<h3><? echo _("My Account") ?></h3>
 
   		<ul>  			
   			<li ng-class="{'selected':currentView == Views.subscription}" ng-click="setSelected(Views.subscription)">  <a href="#/subscription"><?echo _("Subscriptions") ?></a></li>
@@ -63,6 +63,7 @@
   <script src="/code/accountSettings/resources/accountCard.js"></script>
   <script src="/code/accountSettings/resources/accountFeature.js"></script>  
   <script src="/code/accountSettings/resources/accountInvoice.js"></script>  
+  <script src="/code/accountSettings/resources/accountPackages.js"></script>  
   <script src="/code/accountSettings/controllers/billingCtrl.js"></script>
   <script src="/code/accountSettings/controllers/profileCtrl.js"></script>
   <script src="/code/accountSettings/controllers/passwordCtrl.js"></script>

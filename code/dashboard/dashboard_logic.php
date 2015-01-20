@@ -3,12 +3,9 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/account_functions.php'); 
 
 	//We need flags to check whether certain information has been previously saved or not. This way we find out whether its a return user or a new user or even a new user who left halfway through.
-	$_SESSION['noVenueFlag'] = 0; 
-	$_SESSION['noAppFlag-1'] = 0;
-	$_SESSION['noAppFlag-2'] = 0;
-	$_SESSION['noMenuFlag'] = 0;
 	$_SESSION['noEHFlag'] = 0;
 	$_SESSION['noPaymentFlag'] = 0;
 	$_SESSION['signupWizFlag']=0;
@@ -48,127 +45,11 @@
 	
 	//we use the user's token
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
+
+	$venueID = isset($_SESSION['venue_id']) ? $_SESSION['venue_id'] : 0;
 	
 	//we get account id from _SESSION
 	$accountID = $_SESSION['account_id'];
-	
-	//////VENUE////////////////////////////////////////////////////////////////////////////
-	
-	//query to find venues
-	$curlResult = callAPI('GET', $apiURL."venues?accountId=$accountID", false, $apiAuth);
-	
-	$dataJSON = json_decode($curlResult,true);
-	
-	if(empty($dataJSON)) 
-		$_SESSION['noVenueFlag']=1; 
-	else
-	{	
-		$_SESSION['venue_id'] 				= $dataJSON[0]['id'];
-		$_SESSION['venue_name'] 			= $dataJSON[0]['name'];
-		if (isset($dataJSON[0]['permalink'])) {
-			$_SESSION['venue_permalink'] 		= $dataJSON[0]['permalink'];
-		}
-		$_SESSION['venue_desc'] 			= $dataJSON[0]['description'];
-		$_SESSION['venue_cat'] 				= $dataJSON[0]['categoryId'];
-		$_SESSION['venue_address1']  		= $dataJSON[0]['address1'];	
-		$_SESSION['venue_address2']  		= $dataJSON[0]['address2'];	
-		$_SESSION['venue_address3']  		= $dataJSON[0]['address3'];			
-		$_SESSION['venue_postcode']			= $dataJSON[0]['postcode'];	
-		$_SESSION['venue_country']			= $dataJSON[0]['country'];	
-		$_SESSION['venue_eventFlag']		= $dataJSON[0]['eventFlag'];	
-		$_SESSION['venue_demoFlag']			= $dataJSON[0]['demoFlag'];	
-		$_SESSION['venue_liveFlag']			= $dataJSON[0]['liveFlag'];	
-		$_SESSION['venue_code']				= $dataJSON[0]['code'];	
-		$_SESSION['venue_town']				= $dataJSON[0]['city'];	
-		$_SESSION['venue_language']				= $dataJSON[0]['locale'];	
-		$_SESSION['venue_timezone']				= $dataJSON[0]['timeZone'];	
-		$_SESSION['venue_currency']				= $dataJSON[0]['ccy'];	
-		$_SESSION['venue_ccySymbol']				= $dataJSON[0]['ccySymbol'];	
-		
-		
-		//we get venue id from _SESSION
-		$venueID = $_SESSION['venue_id'];
-	}	
-	if(isset($venueID)) //if there is no venue set then no App or Menu can be set anyway
-	{
-		//////APP////////////////////////////////////////////////////////////////////////////
-		
-		//query to find app-settings  
-		$curlResult = callAPI('GET', $apiURL."venues/$venueID/settings", false, $apiAuth);
-		
-		$dataJSON = json_decode($curlResult,true);
-		
-		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
-		{	
-			$_SESSION['noAppFlag-1']=1; 
-			$_SESSION['noAppFlag-2']=1; 
-		}
-		else if(isset($dataJSON['textColour']) && !empty($dataJSON['textColour']))
-		{	
-			$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];	
-			$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];	
-			
-			//app-1
-			$_SESSION['app_heading']			= $dataJSON['heading'];
-			$_SESSION['app_subHeading']			= $dataJSON['subHeading'];
-			$_SESSION['app_textColour']			= $dataJSON['textColour'];
-			$_SESSION['app_buttonColour']		= $dataJSON['buttonColour'];
-			$_SESSION['app_buttonTextColour']	= $dataJSON['buttonTextColour'];
-			$_SESSION['app_wallpaperId']		= $dataJSON['wallpaperId'];
-			$_SESSION['app_logo']				= $dataJSON['logoId'];
-			
-			if(!isset($dataJSON['button2Colour']) || !isset($dataJSON['button2TextColour']) || !isset($dataJSON['button3Colour']) || !isset($dataJSON['button3TextColour']) || !isset($dataJSON['title']))
-				$_SESSION['noAppFlag-2']=1;
-			else
-			{
-				//app-2
-				$_SESSION['app_button2Colour']		= $dataJSON['button2Colour'];
-				$_SESSION['app_button2TextColour']	= $dataJSON['button2TextColour'];
-				$_SESSION['app_button3Colour']		= $dataJSON['button3Colour'];
-				$_SESSION['app_button3TextColour']	= $dataJSON['button3TextColour'];
-				$_SESSION['app_title']				= $dataJSON['title'];
-			}
-		}
-		else
-		{
-			$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];	
-			$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];
-
-			$_SESSION['noAppFlag-1']=1; 
-			$_SESSION['noAppFlag-2']=1;
-		}
-		
-		//////MENU////////////////////////////////////////////////////////////////////////////
-		
-		//query to find menus for this venue  
-		$curlResult = callAPI('GET', $apiURL."menus?accountId=$accountID", false, $apiAuth);
-		
-		$dataJSON = json_decode($curlResult,true);
-		
-		if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 
-		{	
-			$_SESSION['noMenuFlag']=1; 
-			
-			//Let's get the outlet ID now
-			$curlResult = callAPI('GET', $apiURL."outlets?accountId=$accountID", false, $apiAuth);
-			$result = json_decode($curlResult, true);
-			
-			$_SESSION['outlet_id'] = $result[0]['id'];
-		}
-		else
-		{
-			$_SESSION['menus']	= $dataJSON;
-			$_SESSION['outlet_id'] 	= $dataJSON[0]['outletId'];
-		}
-		///////////////////////////////////////////////////////////////////////////////////////// 
-	}
-	else
-	{
-		$_SESSION['noAppFlag-1']=1;
-		$_SESSION['noAppFlag-2']=1;
-		$_SESSION['noMenuFlag']=1;		
-
-	}
 	
 	//////EH////////////////////////////////////////////////////////////////////////////
 	if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']) && $venueID)
@@ -183,21 +64,25 @@
 			$_SESSION['noEHFlag']=1;
 		}
 	}
-	else if((((isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag']) || (!isset($_SESSION['venue_eventFlag']))) && (isset($venueID) && $venueID)) && (!$_SESSION['venue_liveFlag'] && !$_SESSION['venue_demoFlag']))
+	else if((((isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag']) || (!isset($_SESSION['venue_eventFlag']))) && (isset($venueID) && $venueID)) && ((!isset($_SESSION['venue_liveFlag']) || !$_SESSION['venue_liveFlag']) && (!isset($_SESSION['venue_demoFlag']) || !$_SESSION['venue_demoFlag'])))
 	{
 		$curlResult = callAPI('GET', $apiURL."venues/$venueID/hours", false, $apiAuth);
 		$dataJSON = json_decode($curlResult,true);
 				
-		if( (empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) && (!$_SESSION['venue_liveFlag'] && !$_SESSION['venue_demoFlag'])) 
+		if( (empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) && ((!isset($_SESSION['venue_liveFlag']) || !$_SESSION['venue_liveFlag']) && (!isset($_SESSION['venue_demoFlag']) || !$_SESSION['venue_demoFlag'])))
 		{	
 			$_SESSION['noEHFlag']=1;
 		}
 	}
-	else if ((!$_SESSION['venue_liveFlag'] && !$_SESSION['venue_demoFlag']))
+	else if ( (!isset($_SESSION['venue_liveFlag']) || !$_SESSION['venue_liveFlag']) && ( !isset($_SESSION['venue_demoFlag']) || !$_SESSION['venue_demoFlag']))
 		$_SESSION['noEHFlag'] = 1;
 	
-	if(!$_SESSION['noVenueFlag'] && !$_SESSION['noAppFlag-1'] && !$_SESSION['noAppFlag-2'] && !$_SESSION['noMenuFlag'] && !$_SESSION['noEHFlag']) /*User has given data for all 5 already*/
+	if((!isset($_SESSION['noVenueFlag']) || !$_SESSION['noVenueFlag']) && (!isset($_SESSION['noAppFlag-1']) || !$_SESSION['noAppFlag-1']) && (!isset($_SESSION['noAppFlag-2']) || !$_SESSION['noAppFlag-2']) && (!isset($_SESSION['noMenuFlag']) || !$_SESSION['noMenuFlag']) && (!isset($_SESSION['noEHFlag']) || !$_SESSION['noEHFlag'])) /*User has given data for all 5 already*/
 	{	
+
+		if (!isset($_SESSION['venue_code']) && $venueID > 0) {
+			loggedVenue($venueID);
+		}		
 		//going to the dashboard!
 		
 		//+d($_SESSION);
@@ -221,18 +106,25 @@
 		//+d($dataResult);
 	
 
-	$newCurl = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id'].'/users', false, $apiAuth); 
-		$curlResult = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id']."/features", false, $apiAuth);
-		$dataResult = json_decode($curlResult, true);		
-		echo ("<script> window.localStorage.setItem('showDialog',0); </script>");
-		foreach ($dataResult as $key => $feature){			
-			if (isset($feature['status']) && $feature['status'] == "EXPIRED"){
-				echo ("<script> window.localStorage.setItem('showDialog',1); </script>");
-				break;
-			}
-		}
+		$newCurl = callAPI('GET', $apiURL."accounts/".$_SESSION['account_id'].'/users', false, $apiAuth); 
 		$_SESSION['dashboardFlag']=1;
 		$_SESSION['signupWizFlag']=0;
+
+
+		// FIXME: This is a hack to get login redirect to work because everything assumes
+		// That the dashboard is loaded on every login. This should be removed once the redirect
+		// is setup correctly
+		if (isset($_SESSION['REDIRECT_AFTER_LOGIN']) && $_SESSION['REDIRECT_AFTER_LOGIN']) {
+			$redirect = $_SESSION['REDIRECT_AFTER_LOGIN'];
+			unset($_SESSION['REDIRECT_AFTER_LOGIN']);
+			header("location: " . $redirect);
+			exit();
+		}
+
+
+
+
+
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/wl-paths.php');   //wallpaper-logo paths
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
 		require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 

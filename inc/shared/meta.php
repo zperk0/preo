@@ -23,7 +23,13 @@
 		<!--<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/app.css" /> -->
 		
 		<!-- Main CSS files -combined minified PLUS Bespoke CSS -combined (dependants minified) -->
+		<?php 
+		if (isset($showCssBeforeLogin) && $showCssBeforeLogin) {
+		?>
+		<link rel='stylesheet' href='<? echo $_SESSION['path']?>/css/signup.css' type='text/css' media='all' />
+		<?php } else { ?>
 		<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/all_css.min.css" />		<!-- CSS 1/1 : to be minified and updated with timestamp -->	
+		<?php } ?>
 		
 		<!-- Pre-body Javascripts -->
 		<!-- combined minified -->

@@ -75,6 +75,10 @@
 			$result = json_decode($curlResult,true);
 		}
 	}
+
+	if (isset($_SESSION['noEHFlag'])) {
+		$_SESSION['noEHFlag'] = 0;
+	}	
 	
 	echo $curlResult; //sending a JSON via ajax 
 ?>

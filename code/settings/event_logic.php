@@ -15,7 +15,10 @@
 	//////EVENT////////////////////////////////////////////////////////////////////////////
 	
 	//query to find events
-	$curlResult = callAPI('GET', $apiURL."venues/$venueID/events", false, $apiAuth);
+	$date = strtotime(date("Y-m-d H:i:s"));
+	$date = strtotime("-7 day", $date);
+	$date = date("Y/m/d", $date);
+	$curlResult = callAPI('GET', $apiURL."venues/$venueID/events?after=" . $date, false, $apiAuth);
 	$dataJSON = json_decode($curlResult,true);
 	
 	if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']=404)) 

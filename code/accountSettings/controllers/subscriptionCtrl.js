@@ -1,9 +1,8 @@
 angular.module('accountSettings.controllers')
- .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account',"FEATURES",'AccountFeature','$notification','$AjaxInterceptor','AccountInvoice',
-  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,FEATURES,AccountFeature,$notification,$AjaxInterceptor,AccountInvoice) {
+ .controller('SubscriptionCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account', 'AccountPackages','$notification','$AjaxInterceptor','AccountInvoice',
+  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account, AccountPackages,$notification,$AjaxInterceptor,AccountInvoice) {
     
 
-    var allFeatures = FEATURES;
     $scope.setSelected($scope.Views.subscription);
     $scope.diffInDays = 0;
     loadAll();
@@ -11,18 +10,15 @@ angular.module('accountSettings.controllers')
 
     function loadAll(callback){
         $q.all([           
-            AccountFeature.query({accountId:ACCOUNT_ID}).$promise,            
+            AccountPackages.query({accountId:ACCOUNT_ID}).$promise,            
             Account.get({id:ACCOUNT_ID}).$promise,
             AccountInvoice.getPending({accountId:ACCOUNT_ID}).$promise
         ])
-        .then(function(results){                         
-            $scope.accountFeatures = results[0];            
+        .then(function(results){              
+            $scope.accountPackages = results[0];
             $scope.account = results[1];
             $scope.subscriptionInvoice = results[2];
             setBillingDate();          
-            angular.forEach($scope.accountFeatures,function(accountFeature){              
-                accountFeature.feature = getFeatureById(accountFeature.featureId);
-            });
             setActiveCount();
             if (callback)
               callback();
@@ -39,47 +35,39 @@ angular.module('accountSettings.controllers')
       });    
     }
     
-    $scope.isInstalled = function(accountFeature){              
-        return !((accountFeature.status === 'CANCELED') || (accountFeature.status === 'REMOVED') || (accountFeature.status === 'EXPIRED'));
+    $scope.isInstalled = function(accountPackage){              
+        return !((accountPackage.status === 'CANCELED') || (accountPackage.status === 'REMOVED') || (accountPackage.status === 'EXPIRED') || (accountPackage.status === 'UNINSTALLED'));
     }
-    $scope.isCanceled = function(accountFeature){              
-        return (accountFeature.status === 'CANCELED') || (accountFeature.status === 'EXPIRED');
+    $scope.isCanceled = function(accountPackage){              
+        return (accountPackage.status === 'CANCELED') || (accountPackage.status === 'EXPIRED');
+    }
+    $scope.isUninstaled = function(accountPackage){              
+        return (accountPackage.status == 'UNINSTALLED' || accountPackage.status === 'CANCELED' || accountPackage.status === 'EXPIRED');
     }
     
-    $scope.showDialog = function(which){
+    $scope.showDialog = function(which, accountPackage){
+        if (accountPackage) {
+          $scope.currentAccountPackage = accountPackage;
+        }
        var clickOk;
        var clickCancel;
        var data; 
         switch (which){
-          case "uninstall":
+          case "cancelPackage":          
             data = { 
-              content: _tr("This Premium Feature will remain active on your account until the end of the current billing cycle. You can cancel this uninstall at any time. If you wish to reinstall this Premium Feature after it has been deactivated, simply click on the <span>reinstall</span> option.")+"<br/><br/><b>"+_tr("Are you sure you want to uninstall this Premium Feature?")+"</b>",
-              showTerm: false,
-              btnOk: _tr('UNINSTALL'),            
-              windowClass:'medium'
-            }        
-            clickOk = function(){$scope.updateStatus($scope.selectedFeature,"UNINSTALLED")};
-          break; 
-          case "uninstallTrial":
-            data = { 
-              content: _tr("Your free trial will be cancelled immediately and you will no longer have access to this feature.")+"<br/><br/><b>"+_tr("Are you sure you want to cancel this Free Trial? This action cannot be undone?")+"<b/>",
-              showTerm: false,
-              btnOk: _tr('UNINSTALL'),            
-              windowClass:'medium'
-            }        
-            clickOk = function(){$scope.updateStatus($scope.selectedFeature,"EXPIRED")}
-          break; 
-          case "reinstall":          
-            data = { 
-              //content: _tr("This Premium Feature is currently canceled. A new charge will be made to your card before reinstalling this feature.")+"<br/><br/><b>"+_tr("Are you sure you want to reinstall this Premium Feature?")+"<b/>",
-              title: 'Reinstall ' + $scope.selectedFeature.feature.name,
-              scope: $scope.price,
-              templateUrl: 'purchase.php',              
-              showTerm: ($scope.selectedFeature.feature.$terms && $scope.selectedFeature.feature.$terms.purchase) ? $scope.selectedFeature.feature.$terms.purchase : false,
-              btnOk: _tr('REINSTALL'),            
+              btnOk: _tr('CONFIRM'),
+              btnCancel: _tr('CANCEL'),
+              contentClass: 'cancelPackage',
+              modifyPositionButtons: true,
               windowClass:'small'
-            }   
-            clickOk = function(){purchaseFeature($scope.selectedFeature)}
+            },
+            clickOk = function(){cancelPackage()};
+
+            if (accountPackage.status == 'TRIAL') {
+              data.content = _tr("Your venue will be taken offline but you still be able to log in to your account if you ever want to resubscribe.") + '<br /><br />' + _tr('Are you sure you want to cancel?');
+            } else {
+              data.content = _tr("Your subscription will remain active until the end of the current billing cycle, you will no longer be billed after this date. Your venue will be taken offline but you will still be able to log in to account if you ever want to resubscribe.") + '<br /><br />' + _tr('Are you sure you want to cancel?');
+            }
           break;          
           case "paymentError":
              data = { 
@@ -91,14 +79,13 @@ angular.module('accountSettings.controllers')
             }        
             clickOk = function(){$scope.navigateTo('/accountSettings#/paymentMethod')}
           break;
-          case "success":
+          case "updatePackage":
             data = {
-              title:_tr("Your new Premium Feature is now live!"),
-              content: _tr("You can manage subscriptions from your account settings page."),
-              showTerm: false,
-              btnOk:false,
-              btnCancel:_tr("OK"),            
-              windowClass:'medium'
+              btnOk: false,
+              btnCancel: false,
+              content: _tr("To upgrade your account, please contact ") + "<a href='mailto:support@preoday.com'>support@preoday.com</a>.",
+              contentClass: 'updatePackage',
+              windowClass:'small'  
             }
           break;
         }
@@ -113,71 +100,39 @@ angular.module('accountSettings.controllers')
 
     $scope.getTotalSubscription = function (){
       var sum = 0;
-      angular.forEach($scope.accountFeatures,function(feature){
-        if (feature.status == "INSTALLED")
-          sum += feature.subscriptionPrice;
+      angular.forEach($scope.accountPackages,function(Package){
+        if (Package.status == "INSTALLED" || Package.status == "TRIAL")
+          sum += Package.subscriptionPrice;
       });
     	return sum;
     }
 
-    $getFeatureIcon = function(accountFeature){
-      var feature = etFeatureById(accountFeature.featureId);
-      return feature.icon;
+    $scope.getTrialPeriod = function (accountPackage) {
+      return moment(accountPackage.endDate).add(-1,'day').format('Do, MMMM YYYY');
     }
 
-    function getFeatureById(id){
-      return $.grep(allFeatures, function(e){ return e.id == id; })[0];   
+    $scope.resubscribePackage = function (accountPackage) {
+      purchasePackage(accountPackage);
     }
 
-    $scope.hasCancelledFeatures = function(){      
-     return $scope.accountFeatures && $.grep($scope.accountFeatures, function(e){ return (e.status == "CANCELED" || e.status == "EXPIRED");  }).length > 0;
-    } 
+    function cancelPackage() {
+      var accountPackage = $scope.currentAccountPackage;
+      var previousStatus = accountPackage.status;
+      accountPackage.status = 'UNINSTALLED';
+      delete accountPackage.vat;
+      accountPackage.$put({accountId: ACCOUNT_ID, packageId: accountPackage.preoPackageId},function(result){
+        console.log("Put account package success",result,status,accountPackage);
+        setActiveCount();
+        
+      },function(error){
+        console.log("Put account package fail",error);
+        accountPackage.status = previousStatus;
+        displayErrorNoty();
+      });      
+    }
 
     function setActiveCount(){
-      $scope.activeFeaturesCount = $.grep($scope.accountFeatures, function(e){ return (e.status != "CANCELED" && e.status != "REMOVED" && e.status != "EXPIRED"); }).length > 0;
-
-    }
-
-    $scope.openConfirmDialog = function(feature){
-        $scope.selectedFeature = feature;
-        if (feature.status == "TRIAL")
-          $scope.showDialog("uninstallTrial");
-        else
-          $scope.showDialog("uninstall");
-    }
-
-        
-    $scope.updateStatus=function(accountFeature,status){        
-        //TODO how to not do this?
-        var previousStatus = accountFeature.status;
-        accountFeature.status = status;
-        accountFeature.$put({accountId:accountFeature.accountId,featureId:accountFeature.featureId},function(result){
-          console.log("Put account feature success",result,status,accountFeature);
-          accountFeature.feature = getFeatureById(accountFeature.featureId);
-          setActiveCount();
-          
-        },function(error){
-          console.log("Put account feature fail",error);
-          accountFeature.status = previousStatus;
-          displayErrorNoty();
-        });
-    }
-
-    $scope.reinstallAccountFeature = function(accountFeature){
-
-      AccountFeature.getPrice({accountId:ACCOUNT_ID,featureId:accountFeature.featureId},
-        function(result){                
-          $scope.price = result;
-          if (accountFeature.feature.contractMonths){
-              $scope.price.contractMonths = accountFeature.feature.contractMonths;
-          }        
-          $scope.selectedFeature = accountFeature;
-          $scope.showDialog("reinstall");
-      });
-    }
-
-    $scope.removeAccountFeature = function(accountFeature){
-      $scope.updateStatus(accountFeature,"REMOVED");      
+      $scope.activePackagesCount = $.grep($scope.accountPackages, function(e){ return (e.status != "CANCELED" && e.status != "REMOVED" && e.status != "EXPIRED"); }).length > 0;
     }
 
     function setBillingDate(){
@@ -195,18 +150,18 @@ angular.module('accountSettings.controllers')
           $scope.diffInDays =0;
     }
 
-    function purchaseFeature(accountFeature){
-      var feature = accountFeature.feature;      
+    function purchasePackage(accountPackage){
+      var Package = accountPackage.preoPackage;
       $AjaxInterceptor.start();
         AccountCard.get({accountId:ACCOUNT_ID},
           function(result){                      
             if (result.token && result.token!=null){               
-                AccountFeature.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){
+                AccountPackages.save({accountId:ACCOUNT_ID,packageId: Package.id},function(accountPayment){
                   console.log('here',accountPayment);
                         if (accountPayment.status ===  "SUCCESS"){
                           loadAll(function (){
                             $AjaxInterceptor.complete();
-                            $scope.showDialog('success');                            
+                            //$scope.showDialog('success');                            
                           });                             
                         } else {                        
                           $AjaxInterceptor.complete();
@@ -229,12 +184,6 @@ angular.module('accountSettings.controllers')
         });
     }
 
-     $scope.getExpiryDate = function(accountFeature){
-        return Math.floor(( new Date(accountFeature.endDate).getTime() -  new Date().getTime()) / (1000 * 3600 * 24))        
-    }
-
-    
-    
       function displayErrorNoty(){
         noty({
               type: 'error',  layout: 'topCenter',

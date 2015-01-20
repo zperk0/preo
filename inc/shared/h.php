@@ -1,17 +1,22 @@
 <?php require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
       require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function 
-//    session_start();
-	  		
+      require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/override_vars.php');
+    if ( isset($_SESSION['logged']) ) {
+		require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/account_functions.php');   //kint
 
+		$venues = getVenues( $_SESSION['user_id'] );
+	}
 ?>
 
 <div class="contain-to-grid">
 	<nav class="top-bar">
 		<ul class="title-area">
 			<li class="name">
+			<? if ($_SESSION['OVERRIDES']['logo'] != false) { ?>
 				<h1>
-					<a href="<?echo $_SESSION['path']?>/"><img src="<?echo $_SESSION['path']?>/img/logo.png" alt="<? echo _("PreoDay");?>"/></a>
+					<a href="<?echo $_SESSION['path']?>/"><img src="<?echo $_SESSION['OVERRIDES']['logo']?>" alt="<? echo _("PreoDay");?>"/></a>
 				</h1>
+			<? } ?>
 				<div class="progressIndicator has-tip tip-right" data-tooltip></div>
 			</li>
 			<li class="toggle-topbar">
@@ -30,19 +35,8 @@
 					<li class="has-dropdown"><a href="<?echo $_SESSION['path']?>/"><? echo _("Dashboard");?></a>
 						<ul class="dropdown">
 							<li><a href="<?echo $_SESSION['path']?>/dashboard"><? echo _("Go to Dashboard");?></a></li>
-							
-							<? if(preg_match('/^local/', $_SERVER['SERVER_NAME'])){ ?>
-								<li><a href="//orders-dev.preoday.com" target="_blank"><? echo _("Order Screen");?></a></li>
-							<? }
-							else if(preg_match('/^app\-dev/', $_SERVER['SERVER_NAME'])){ ?>
-								<li><a href="//orders-dev.preoday.com" target="_blank"><? echo _("Order Screen");?></a></li>
-							<? }
-							else if(preg_match('/^app\-demo/', $_SERVER['SERVER_NAME'])){ ?>
-								<li><a href="//orders-demo.preoday.com" target="_blank"><? echo _("Order Screen");?></a></li>
-							<? }
-							else if(preg_match('/^app\./', $_SERVER['SERVER_NAME'])){ ?>
-								<li><a href="//orders.preoday.com" target="_blank"><? echo _("Order Screen");?></a></li>
-							<? } ?>
+																					
+							<li><a href="<?echo $_SESSION['OVERRIDES']["link_orders"]?>" target="_blank"><? echo _("Order Screen");?></a></li>							
 
 							<li class="has-dropdown"><a href="#"><?echo _("Venue Settings");?></a>
 								<ul class="dropdown">
@@ -92,37 +86,25 @@
 									
 								</ul>
 							</li>
-							<li class="has-dropdown"><a href="#"><?echo _("Premium Features");?></a>
-								<ul class="dropdown">
-									<?  //get the features list we have for this acocunt 
-											function filterActiveMenu($feat){												
-													if ($feat->status != 'CANCELED' && $feat->status != 'EXPIRED' ){
-														return True;
-													}
-													return False;
-											}											
-										  $accountId = $_SESSION['account_id'];	  
-											$result = callAPI('GET', $apiURL."accounts/$accountId/features", false,"PreoDay ".$_SESSION['token']);
-											$accountFeatures = array_filter(json_decode($result),"filterActiveMenu");											 										 
-											foreach($accountFeatures as $feat) { ?>
-												<li  data-feature='<? echo $feat->featureId ;?>' class='menu featureHolder'><img class='featureIcon'/><a href="#"  class='featureName'></a></li>												
-									<?}?>												
-								
-									<li><a href="<?echo $_SESSION['path']?>/shop"><?echo _("+ Store");?></a></li>
-								</ul>
-							</li>
+							<?php  
+							if ( is_array($venues) && count($venues) > 1 ) {
+							?>
+							<li><a href="<?echo $_SESSION['path']?>/selectVenue"><?echo _("Switch Venue");?></a></li>
+							<?php } ?>								
 						</ul>
 					</li>
 					<li class="has-dropdown"><a href="/accountSettings" class="activated"><? echo $_SESSION['user_fName']." ".$_SESSION['user_lName'];?></a>
 						<ul class="dropdown">
-							<li><a href="<?echo $_SESSION['path']?>/accountSettings"><?echo _("Account Settings");?></a></li>
+							<li><a href="<?echo $_SESSION['path']?>/accountSettings"><?echo _("My Account");?></a></li>
 							<li><a href="<?echo $_SESSION['path']?>/logout"><? echo _("Logout");?></a></li>
 						</ul>
 					</li>	
 					<li class="has-dropdown lessLeft"><a href="#"><? echo _("Help");?></a>
 						<ul class="dropdown makeULWider">
-							<?if(isset($_SESSION['venue_cat'])){?><li><a target="_blank" href="<?echo $_SESSION['path']?>/docs/GettingStartedGuide_<?echo $_SESSION['venue_cat'];?>.pdf"><?echo _("Getting started");?></a></li><?}?>
-							<li><a href="<?echo $_SESSION['path']?>/findoutmore"><? echo _("Find out more");?></a></li>
+							<li class='link-to-video'><span ></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Getting_Started"><?echo _("Getting Started")?></a></li>
+							<li  class='link-to-video'><span></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Editing_your_menu"><?echo _("Editing your Menu")?></a></li>
+							<li><a href="<?echo $_SESSION['OVERRIDES']["link_faq"]?>" target="_blank"><? echo _("FAQs");?></a></li>
+							<li><a href="<?echo $_SESSION['path']?>/support"><? echo _("Support");?></a></li>
 						</ul>
 					</li>
 					<?}else{?>

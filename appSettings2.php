@@ -7,4 +7,6 @@
 	
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/authentication.php'); 
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/settings/app2_logic.php'); 
-	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); 
+	?>
+

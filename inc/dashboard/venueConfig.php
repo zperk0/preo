@@ -16,17 +16,17 @@
 	<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
 	<nav class="breadcrumbs row--space1d">
 		<a class="current"	   href="#"><? echo _("Venue Information");?></a>
-		<?if(!$_SESSION['noAppFlag-1']){?>
+		<?if(!isset($_SESSION['noAppFlag-1']) || !$_SESSION['noAppFlag-1']){?>
 			<a href="<?echo $_SESSION['path']?>/homescreen"><? echo _("App Styling 1/2");?></a>
 		<?}else{?>
 			<a class="unavailable" href="#"><? echo _("App Styling 1/2");?></a>
 		<?}?>
-		<?if(!$_SESSION['noAppFlag-2']){?>
+		<?if(!isset($_SESSION['noAppFlag-2']) || !$_SESSION['noAppFlag-2']){?>
 			<a href="<?echo $_SESSION['path']?>/menuscreen"><? echo _("App Styling 2/2");?></a>
 		<?}else{?>
 			<a class="unavailable" href="#"><? echo _("App Styling 2/2");?></a>
 		<?}?>
-		<?if(!$_SESSION['noMenuFlag']){?>
+		<?if((!isset($_SESSION['noMenuFlag']) || !$_SESSION['noMenuFlag']) && isset($_SESSION['menus'])){?>
 			<a href="<?echo $_SESSION['path']?>/menus/<?echo $_SESSION['menus'][0]['id'];?>?r=1"><? echo _("Menu Creation");?></a>
 		<?}else{?>
 			<a class="unavailable" href="#"><? echo _("Menu Creation");?></a>

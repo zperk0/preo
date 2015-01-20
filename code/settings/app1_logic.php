@@ -19,7 +19,7 @@
 	
 	$dataJSON = json_decode($curlResult,true);
 	
-	if(!empty($dataJSON)) 
+	if(!empty($dataJSON) && !isset($venueID)) 
 	{	
 		$_SESSION['venue_id'] 		= $dataJSON[0]['id'];
 		$_SESSION['venue_name'] 	= $dataJSON[0]['name'];

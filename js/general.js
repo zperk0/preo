@@ -62,6 +62,8 @@ $.fn.alterClass = function ( removals, additions ) {
 
 //on page load fire these things!
 $(document).ready(function() { 
+
+
 	//This really should be part of jQuery
 	$.fn.exists = function(){return this.length>0;}
 	
@@ -93,65 +95,12 @@ $(document).ready(function() {
 		if ( e.which == 13 ) e.preventDefault();  //just need to give class="noEnterSubmit"
 	}); 
 	//////////////////////////////////////////////////////////////////////
-
-	$("#signupForm").on('valid', function (event) {
-		var url = "/doSignUp";
-
-		$.ajax({
-			   type: "POST",
-			   url: url,
-			   data: $(this).serialize(), // serializes the form's elements.
-			   success: function(data)
-			   {
-					try
-					{
-						var dataArray = jQuery.parseJSON(data); //parsing JSON
-					
-					}
-					catch(e)
-					{
-						noty({
-						  type: 'error',  layout: 'topCenter',
-						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
-						});
-						//alert(data);
-						
-						return false;
-					}
-					
-					if(typeof dataArray['status'] !='undefined') //error
-					{
-						noty({
-						  type: 'error',  layout: 'topCenter',
-						  text: dataArray['message'] 
-						});
-					}
-					else
-					{	
-						$.post("/saveSignUp", 
-						'bName='+dataArray['name']+'&bID='+dataArray['id']+'&email='+encodeURIComponent(dataArray['owner']['email'])+'&fName='+dataArray['owner']['firstName']+'&lName='+dataArray['owner']['lastName']+'&id='+dataArray['owner']['id'],
-						function(response){
-							window.location.replace("/dashboard");
-						})
-						.fail(function(jqxhr) { 
-							noty({
-								type: 'error',  layout: 'topCenter',
-								text: 'Error: '+jqxhr.responseText	
-							});
-						});
-					}
-				}
-			 });
-
-		return false; // avoid to execute the actual submit of the form.
-	});
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	$("#signinForm").on('valid', function (event) {
 		var url = "/doSignIn";
 
-		$('#btnLogin').hide();
-		$('#logingButton').removeClass("hide").show();
+		$('#loading').show();
 
 		$.ajax({
 			   type: "POST",
@@ -170,8 +119,7 @@ $(document).ready(function() {
 						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 
-						$('#btnLogin').show();
-						$('#logingButton').addClass("hide").hide();						
+						$('#loading').hide();	
 						//alert(data);
 						return false;
 					}
@@ -183,14 +131,27 @@ $(document).ready(function() {
 						  text: _tr("Incorrect credentials or account does not exist.") //dataArray['message'] //text: _tr("Sorry, but there's been an error processing your request.")
 						});
 
-						$('#btnLogin').show();
-						$('#logingButton').addClass("hide").hide();
+						$('#loading').hide();
 				   
 					}
 					else
 					{	
+
+						var lastVenueSelected = jQuery.parseJSON(window.localStorage.getItem('lastVenueSelected'));
+						console.log("Last selected",lastVenueSelected );
+						var venueSelected = '';
+						if ( lastVenueSelected && lastVenueSelected instanceof Array && lastVenueSelected.length ) {
+							lastVenueSelected = lastVenueSelected.filter(function(a){
+								return a.userId == dataArray['id']; 
+							});
+
+							if ( lastVenueSelected.length ) {
+								venueSelected = '&venueId=' + lastVenueSelected[0].venueId;
+							}
+						}
+
 						$.post("/saveSignIn", 
-						'email='+encodeURIComponent(dataArray['email'])+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'], 
+						'email='+encodeURIComponent(dataArray['email'])+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'] + venueSelected, 
 						function(response){
 							window.location.replace("/dashboard");
 						})
@@ -200,8 +161,7 @@ $(document).ready(function() {
 								text: 'Error: '+jqxhr.responseText	
 							});
 
-							$('#btnLogin').show();
-							$('#logingButton').addClass("hide").hide();							
+							$('#loading').hide();
 						});
 					}
 				}
@@ -212,6 +172,8 @@ $(document).ready(function() {
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	$("#forgotPassForm").on('valid', function (event) {
 		var url = "/doForgot";
+
+		$('#loading').show();
 
 		$.ajax({
 			   type: "POST",
@@ -230,7 +192,7 @@ $(document).ready(function() {
 						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 						});
 						
-						//alert(data);
+						$('#loading').hide();
 						
 						return false;
 					}
@@ -252,6 +214,8 @@ $(document).ready(function() {
 						
 						$("#forgotPassM").foundation('reveal', 'close');
 					}
+
+					$('#loading').hide();
 				}
 			 });
 
@@ -360,13 +324,13 @@ $(document).ready(function() {
 			
 			if (place.address_components) {
 			
-			//console.log(place.address_components);
+			
 			
 			arrLength = place.address_components.length;
 
 			for(var i = 0;i<arrLength;i++)
 			{
-				//console.log(place.address_components[i].types);
+				
 				
 				if(place.address_components[i].types == "street_number")
 					street_number = place.address_components[i].long_name;
@@ -387,7 +351,6 @@ $(document).ready(function() {
 					country = place.address_components[i].short_name;
 			}
 			
-			//console.log(street_number+", "+route+", "+locality+", "+postal_town+", "+postal_code+", "+country);
 			
 			/*address = [(place.address_components[0] &&
 						place.address_components[0].short_name || ''),
@@ -468,7 +431,7 @@ $(document).ready(function() {
 
 	$('.venueHasDelivery').on('click', function(){
 		var isChecked = $("#advanced-setting").css("display") == "none";		
-		console.log('isChecked:' + isChecked)
+		
 		if(isChecked)
 		{
 			$('#advanced-setting').slideDown();
@@ -493,22 +456,30 @@ $(document).ready(function() {
 			$(this).removeClass("off")
 		}
 	});
-	
+		
 	$("#venueConfigForm").on('valid', function (event) {
+		var isNewVenue = false;
+		var queryParam = "";
+		if (window.location.pathname === "/newVenue"){
+			isNewVenue= true;
+			queryParam+="?skipUser=1"
+		}
+
 		var url = "/saveVenue";
 		
 		$('#venueSave').hide();
 		$('#savingButton').removeClass("hide").show();
 		
+		var dataArray;
 		$.ajax({
 			   type: "POST",
-			   url: url,
+			   url: url+queryParam,
 			   data: $(this).serialize(), // serializes the form's elements.
 			   success: function(data)
 			   {
 					try
 					{
-						var dataArray = jQuery.parseJSON(data); //parsing JSON
+						dataArray = jQuery.parseJSON(data); //parsing JSON
 					}
 					catch(e)
 					{
@@ -519,6 +490,12 @@ $(document).ready(function() {
 						//alert(data);
 						return false;
 					}
+
+					if (isNewVenue)
+					{
+				 		doSelectVenue("venueId="+dataArray['id']);
+				 		return false;
+				 	}
 					
 					if(dataArray && typeof dataArray['status'] !='undefined') //error
 					{
@@ -561,7 +538,7 @@ $(document).ready(function() {
 			 		redirectPage();
 			 	}
 			 });
-
+		 console.log('returning false');
 		return false; // avoid to execute the actual submit of the form.
 	});
 	
@@ -573,7 +550,7 @@ $(document).ready(function() {
 			  type: 'success',
 			  text: 'Uploaded!'
 			});
-			//console.log('resp:',responseText)
+			
 			//alert(responseText);
 			
 			responseText=responseText.replace('_thumb.png','');
@@ -820,7 +797,7 @@ $(document).ready(function() {
 		data = JSON.parse(data);
 		for (var i = 0, len = data.length; i < len; i++) {
 			var tag = data[i];
-			console.log('code',tag.code);
+			
 			tags.push('<li>' +
 						'<div class="checkbox checkboxStyle">' +
 						  	'<input type="checkbox" value="' + tag.code + '" id="checktag_' + tag.code + '">' +
@@ -1804,7 +1781,7 @@ $(document).ready(function() {
 					itemCounter++;
 				});
 				
-				//console.log("old:"+oldItemOrder+" new:"+currentItemOrder);
+				
 				
 				//update item-option counts
 				var itemCountArray = new Array();
@@ -2401,8 +2378,7 @@ $(document).ready(function() {
 		
 			menuData = JSON.stringify(menu);
 		
-			//console.log(menu);
-			//console.log(menuData);
+			
 			
 			$.ajax({
 			   type: "POST",
@@ -2504,14 +2480,18 @@ $(document).ready(function() {
 						$inputCollapseAjax.data('value', collapseAjax);
 						$inputCollapseAjax.attr('data-value', collapseAjax);
 					}
-				
-					$inputEachAjaxUnique.attr('data-delete', false);
-					$inputEachAjaxUnique.attr('data-insert', false);
-					$inputEachAjaxUnique.attr('data-edit', false);
 					
-					$inputEachAjaxUnique.data('delete', false);
-					$inputEachAjaxUnique.data('insert', false);
-					$inputEachAjaxUnique.data('edit', false);
+					if ($inputEachAjaxUnique.data('delete') == 'true' || $inputEachAjaxUnique.attr('data-delete') == 'true' ) {
+						$inputEachAjaxUnique.closest('tr').remove();
+					} else {
+						$inputEachAjaxUnique.attr('data-delete', false);
+						$inputEachAjaxUnique.attr('data-insert', false);
+						$inputEachAjaxUnique.attr('data-edit', false);
+						
+						$inputEachAjaxUnique.data('delete', false);
+						$inputEachAjaxUnique.data('insert', false);
+						$inputEachAjaxUnique.data('edit', false);
+					}
 				};
 				
 				$('#savingButton').hide();
@@ -2862,6 +2842,14 @@ $(document).ready(function() {
 	   selectedList: 1,
 	   minWidth: 342
 	}); 
+
+	$(".venueSingleSelect").multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: _tr("Choose Venue"),
+	   selectedList: 1,
+	   minWidth: 342
+	}); 	
 		
 	$(".eventMenuSingleSelect").multiselect('disable');
 	
@@ -2941,6 +2929,96 @@ $(document).ready(function() {
 		//bye-bye
 		$(this).parents("tr:first").remove();
 	});
+
+	function doSelectVenue(formData){
+		$.ajax({
+			   type: "POST",
+			   url: "/do_selectVenue",
+			   data: formData, // serializes the form's elements.
+			   success: function(data)
+			   {
+					try
+					{
+						var dataArray = jQuery.parseJSON(data); //parsing JSON
+					}
+					catch(e)
+					{
+						noty({
+						  type: 'error',  layout: 'topCenter',
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
+						});
+						//alert(data);
+						return false;
+					}
+					
+					if( typeof dataArray['status'] !='undefined')//error
+					{
+						noty({
+						  type: 'error',  layout: 'topCenter',
+						  text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
+						});
+				   
+					}
+					else
+					{	
+						noty({ type: 'success', text: 'Venue selected!' });
+
+						var userId = $("#selectVenueForm").data('userid');
+						var venueId = $('.venueSingleSelect').val();
+
+						var lastVenueSelected = jQuery.parseJSON(window.localStorage.getItem('lastVenueSelected'));
+						if ( lastVenueSelected && lastVenueSelected instanceof Array && lastVenueSelected.length ) {
+							var foundUser = false;
+							for (var i = lastVenueSelected.length - 1; i >= 0; i--) {
+								if ( lastVenueSelected[i].userId == userId ) {
+									lastVenueSelected[i].venueId = venueId;
+									foundUser = true;
+									break;
+								}
+							};
+
+							if ( !foundUser ) {
+								lastVenueSelected.push({ userId: userId, venueId: venueId });
+							}
+						} else {
+							lastVenueSelected = [{ userId: userId, venueId: venueId }];
+						}
+
+						window.localStorage.setItem('lastVenueSelected', JSON.stringify(lastVenueSelected));
+						
+						
+					}
+				}
+			 }).done(function() {
+				$('#venueSubButton').show();
+				$('#savingButton').hide();
+				$(".venueSingleSelect").multiselect('enable');
+			 });
+	}
+
+	$("#selectVenueForm").on('valid', function (event) {
+		//prevent multiple submissions
+		var newSubmitTime = new Date().getTime();
+		
+		if( (newSubmitTime - submitTime) > 300 )
+		{
+			//enable dropdowns or we wont get the values!
+			$(".venueSingleSelect").multiselect('enable');
+						
+			var data = $(this).serialize();
+			$(".venueSingleSelect").multiselect('disable');
+			
+			$('#venueSubButton').hide();
+			$('#savingButton').show();			
+			doSelectVenue(data)
+			setTimeout(function(){
+				window.location = "/dashboard";
+			})
+		}
+		//update Time
+		submitTime = new Date().getTime();
+		return false; // avoid to execute the actual submit of the form.
+	});	
 	
 	$("#eventConfigForm").on('valid', function (event) {
 		//prevent multiple submissions
@@ -3634,7 +3712,7 @@ $(document).ready(function() {
 			});
 			return;
 		}
-		// console.log($oldDiv,$oldDiv.val())
+		
 		$newDiv = $oldDiv.clone(false);
 		
 		$ohDowCount = $(this).parents('.openingHoursDiv').find('.openHWrapper').length;
@@ -3668,7 +3746,7 @@ $(document).ready(function() {
 		
 		//add event listener to hid hours if closed
 		$newDiv.find(".oh-is-open").on('change',onIsOpenChange).each(function(i){
-			// console.log('i = ' + i)
+			
 			if (i>0){								
 				$(this).find("li:last").remove();
 			}
@@ -3688,6 +3766,27 @@ $(document).ready(function() {
 		
 		$ele.remove();
 	});
+
+	$('.openVideoModal').on('click', function () {
+		var $this = $(this);
+		var $videoModal = $('#videoModal');
+		var $video = $videoModal.find('video');
+
+		$videoModal.find('.title-notification').text($this.text());
+		
+		$video.html("")
+			.append('<source src="/videos/' + $this.data('name') + '.webm" type="video/webm">')
+			.append('<source src="/videos/' + $this.data('name') + '.mp4" type="video/mp4">')
+			.load();
+		$videoModal.foundation('reveal', 'open');
+		
+		$video[0].onloadstart = function () {
+			$video[0].play();
+		}
+		$videoModal.on('closed', function(){
+			$video[0].pause();
+		});		
+	})
 	
 	$(document).on("click", ".applyTimesAllDays", function(){
 
@@ -4482,6 +4581,7 @@ $(document).ready(function() {
 		});
 	});
 	
+
 	$("#settingsForm").on('valid', function (event) {
 		var url = "/saveProfile";
 		$.ajax({
@@ -4631,15 +4731,32 @@ $(document).ready(function() {
 			return;
 		}
 		$('#loadingDashboard').show();		
-		$(".switchDashboardMode").removeClass('active');
-		$(this).addClass('active');
+
+		var $switchDashboardMode = $(".switchDashboardMode")
+		var $newItem = $(this);
+		
 		$.ajax({
 		   type: "POST",
 		   url: '/code/finish/do_finish.php',
 		   data:data,
 		   success: function(data) {
-		    	$('#loadingDashboard').hide();
+		   		try {
+		   			data = $.parseJSON(data);
+		   			if (data.hasOwnProperty('status') && data.status == 'error') {
+		   				noty({ type: 'error', text: _tr('You need to subscribe to a package before changing the app mode') });	
+		   				$('#loadingDashboard').hide();
+		   			} else {
+			   			$switchDashboardMode.removeClass('active');
+			   			$newItem.addClass('active');
+				    	$('#loadingDashboard').hide();
+						noty({ type: 'success', text: modeMsg });
+		   			}
+		   		} catch(e) {
+		   			$switchDashboardMode.removeClass('active');
+		   			$newItem.addClass('active');
+			    	$('#loadingDashboard').hide();
 					noty({ type: 'success', text: modeMsg });
+		   		}
 		  	}
 		 });					
 	})
@@ -4706,6 +4823,14 @@ $(document).ready(function() {
         $(this).removeClass("active");
     });
 
+    //Clears the inputs on the newVenue page to reuse the template
+    if (window.location.pathname === "/newVenue"){
+    	$('input').val('');
+    	$('textarea').val('');
+    	$('.alignHeader').html("Create a new venue");
+		return;
+	} 
+	
 });
 
 function CurrencyManager(){
@@ -4723,7 +4848,7 @@ function CurrencyManager(){
 		   dataType:"json",		   
 		   success: function(data)
 		   {
-		   	  // console.log("success",data)
+		   	  
 		   	  that.currencies = data;		   	  
 		   }, error:function(data){
 		   	console.log("error",data)
@@ -4759,7 +4884,7 @@ function CurrencyManager(){
 	function init(currencySelector){
 		var that = this;
 		$currency = $(currencySelector);
-		console.log("SESSION_VENUE_CURRENCY",SESSION_VENUE_CURRENCY)
+		
 		var currencyCode = "GBP"; //defaults to GBP
 		if (SESSION_VENUE_CURRENCY != undefined){
 			currencyCode  = SESSION_VENUE_CURRENCY;
@@ -4769,7 +4894,7 @@ function CurrencyManager(){
 			that.refreshCurrencySymbols($(this).val());
 
 		})
-		console.log("Initing CurrencyManager with currency:" + currencyCode);				
+		
 		getAllCurrencies(function(){				
 			that.refreshCurrencySymbols(currencyCode);			
 		});
