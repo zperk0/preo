@@ -4004,6 +4004,16 @@ button.preodayButton.noclick{
   }
 }
 
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    /* Safari only override */
+    ::i-block-chrome, .accordion.contentSectionsDashboard section > h3[data-section-title]{
+      img{
+        top: 0px;
+      }
+    }
+}
+
+
 @media screen and (max-width: 910px) {
 
   .accordion.contentSectionsDashboard section > h3[data-section-title]{
