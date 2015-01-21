@@ -13,6 +13,7 @@
 	$_SESSION['OVERRIDES']["has_web_orders"] = true;
 	$_SESSION['OVERRIDES']["link_orders"] = "//orders.preoday.com";
 	$_SESSION['OVERRIDES']["link_faq"] = "http://www.preoday.com/faq/";
+	$_SESSION['OVERRIDES']["help_menu"] = true;
 
 
 	$testHost = "food4uapp.co.uk";
@@ -27,6 +28,7 @@
 		$_SESSION['OVERRIDES']["terms"] = "http://food4uapp.co.uk/terms-conditions";
 		$_SESSION['OVERRIDES']["privacy"] = "http://food4uapp.co.uk/privacy-policy";
 		$_SESSION['OVERRIDES']["link_orders"] = "//orders.food4uapp.co.uk";
+		$_SESSION['OVERRIDES']["help_menu"] = false;
 	}
 
 	//at this point meta has been imported so the main css is in, safe to add the overrides here!

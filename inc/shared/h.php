@@ -99,6 +99,7 @@
 							<li><a href="<?echo $_SESSION['path']?>/logout"><? echo _("Logout");?></a></li>
 						</ul>
 					</li>	
+					<?php if ($_SESSION['OVERRIDES']['help_menu']) { ?>
 					<li class="has-dropdown lessLeft"><a href="#"><? echo _("Help");?></a>
 						<ul class="dropdown makeULWider">
 							<li class='link-to-video'><span ></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Getting_Started"><?echo _("Getting Started")?></a></li>
@@ -107,6 +108,9 @@
 							<li><a href="<?echo $_SESSION['path']?>/support"><? echo _("Support");?></a></li>
 						</ul>
 					</li>
+					<?php  } else { ?>
+					<li class="lessLeft"><a href="<?echo $_SESSION['path']?>/support"><? echo _("Support");?></a></li>
+					<?php } ?>
 					<?}else{?>
 					<?if(isset($_SESSION['venue_cat'])){?><li><a target="_blank" href="<?echo $_SESSION['path']?>/docs/GettingStartedGuide_<?echo $_SESSION['venue_cat'];?>.pdf"><?echo _("Getting started");?></a></li><?}?>
 					<li><a class="activated" href="<?echo $_SESSION['path']?>/logout"><? echo _("Logout");?></a></li>

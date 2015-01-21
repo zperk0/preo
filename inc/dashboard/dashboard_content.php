@@ -160,6 +160,7 @@
 							<h3 data-section-title><a href="<?echo $_SESSION['path']?>/accountSettings"><?echo _("My Account");?></a><img src="<?echo $_SESSION['path']?>/img/dashboard/account-icon.png"/></h3>
 						</section>	
 						<section class="premiumSection">
+							<?php if ($_SESSION['OVERRIDES']['help_menu']) { ?>
 							<h3 data-section-title><?echo _("Help");?><img class="noFilter" src="<?echo $_SESSION['path']?>/img/dashboard/help-icon.png"/></h3>							
 							<div class="content" data-section-content>
 								<div> 
@@ -168,7 +169,10 @@
 									<p><a href="<?echo $_SESSION['OVERRIDES']["link_faq"]?>" target="_blank" class='featureName'>Frequently Asked Questions</a></p>
 									<p><a href="<?echo $_SESSION['path']?>/support"  class='featureName'>Support</a></p>
 								</div>
-							</div>							
+							</div>
+							<?php } else { ?>
+							<h3 data-section-title><a href="<?echo $_SESSION['path']?>/support"><?echo _("Support");?></a><img src="<?echo $_SESSION['path']?>/img/dashboard/help-icon.png"/></h3>
+							<?php } ?>
 						</section>
 					</div>
 				</div>
