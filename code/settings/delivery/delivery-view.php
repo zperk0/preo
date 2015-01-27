@@ -28,6 +28,7 @@
 
   <!-- BEGIN WATCH
   <script src="/code/settings/delivery/app.js"></script>
+  <script src="/code/settings/delivery/messages.js"></script>
   <script src="/code/settings/delivery/resource.js"></script>
   <script src="/code/settings/delivery/controllers.js"></script>
   <script src="/code/settings/delivery/directive.js"></script>

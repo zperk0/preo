@@ -510,33 +510,33 @@ $(document).ready(function() {
 						if($('#redirectFlag').val()=='1') { setTimeout(function(){window.location.replace("/homescreen");}, 1000); }
 					}
 				}
-			 }).done(function(){			 				 					
-				if($('#redirectFlag').val()!='1') $('#venueSave').show();
-				$('#savingButton').hide();
-				$('#redirectFlag').val('0');
-				if (isNewVenue){				
-					console.log(dataArray);
-			 		if (window.confirm("Do wish to switch your account to: \n" + dataArray.name)){			 		
-			 				$.ajax({
-			 					type:'POST',
-			 					url:'/api/accounts/' + dataArray.accountId + '/switch',
-			 					success:function(){
-		 						noty({ 
-				                    type: 'success',
-				                    text: 'You user has been switched to the ' + dataArray.name + ' account.<br>' +
-				                        ' You will now be logged out for the settings to take effect.'
-				                }); 
-				                
-
-				            	// logout
-				                setTimeout(function(){window.location.replace("/logout");}, 2500);
-			 					}
-			 				})
-			 		};
-			 		
-				} else {
+			 }).done(function(){
+			 	var postMessages = function (messages) {
+			 		$.ajax({
+			 			url: "/saveMessages",
+			 			type: "POST",
+			 			data: { 
+			 				messages: JSON.stringify(messages)
+			 			},
+			 			success: function () {
+			 				redirectPage();
+			 			}
+			 		})
+			 	},
+			 	redirectPage = function () {
+					if($('#redirectFlag').val()!='1') $('#venueSave').show();
+					$('#savingButton').hide();
+					//FIXME maybe this can be replaced with a refresh on the ids for the delivery details
 					setTimeout(window.location.reload(),200);
-				}
+			 	};
+
+			 	var valueDelivery = $( "input:radio[name=vDelivery]:checked" ).val();
+
+			 	if (valueDelivery == '1') {
+			 		postMessages(messagesAlert.notify.concat(messagesAlert.reject));
+			 	} else {
+			 		redirectPage();
+			 	}
 			 });
 		 console.log('returning false');
 		return false; // avoid to execute the actual submit of the form.

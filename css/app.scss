@@ -2433,6 +2433,7 @@ span .currencySymbol {
   position: absolute;
   left: 49%;
   top: 30%;
+  z-index: 1;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
@@ -4003,6 +4004,16 @@ button.preodayButton.noclick{
     margin-top: -4%;    
   }
 }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    /* Safari only override */
+    ::i-block-chrome, .accordion.contentSectionsDashboard section > h3[data-section-title]{
+      img{
+        top: 0px;
+      }
+    }
+}
+
 
 @media screen and (max-width: 910px) {
 

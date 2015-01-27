@@ -9,6 +9,16 @@ angular.module('delivery.controllers',[]).
         --$rootScope.requests;
     },function(err){ console.log("error",arguments)});   
 
+    ++$rootScope.requests;
+
+    var quantityMessages = 0;
+    var deliveryChanged = false;
+
+    Resources.VenueMessages.query({venueId:VENUE_ID},function(messages){
+        quantityMessages = messages.length
+        --$rootScope.requests;
+    });
+
     var venueSettings = Resources.VenueSettings.get({id:VENUE_ID},function(result){                
         $scope.venueSettings = result;
 
@@ -16,6 +26,7 @@ angular.module('delivery.controllers',[]).
         
     },function(err){ console.log("error",arguments)});
 
+    var placeholderMessages = messagesAlert.notify.concat(messagesAlert.reject);
 
     $scope.processForm = function() {
         $scope.isPosting =true;
@@ -29,11 +40,26 @@ angular.module('delivery.controllers',[]).
         //same with the ccySymbol
         delete $scope.venue["ccySymbol"]
 
-        $q.all([           
+        var calls = [           
             Resources.Venue.put({id:VENUE_ID}, $scope.venue).$promise,
             Resources.VenueSettings.put({id:VENUE_ID}, venueSettings).$promise
-        ])
+        ];
+
+        if ( deliveryChanged && $scope.venue.deliverFlag == 1 && quantityMessages == 0 ) {
+            calls.push(postMessage(placeholderMessages[0]).$promise);
+            calls.push(postMessage(placeholderMessages[1]).$promise);
+            calls.push(postMessage(placeholderMessages[2]).$promise);
+            calls.push(postMessage(placeholderMessages[3]).$promise);
+            calls.push(postMessage(placeholderMessages[4]).$promise);
+            calls.push(postMessage(placeholderMessages[5]).$promise);
+
+            quantityMessages = 6;
+        }
+
+        ++$rootScope.requests;
+        $q.all(calls)
         .then(function(results){            
+            --$rootScope.requests;
             $scope.isPosting =false;
             noty({
               type: 'success',  layout: 'topCenter',
@@ -49,6 +75,21 @@ angular.module('delivery.controllers',[]).
         });           
 
     };
+
+
+    $scope.onChangeDeliverFlag = function(){
+        deliveryChanged = true;
+    }    
+
+    function postMessage(newMessage){
+        var message = new Resources.VenueMessages();
+        message.content = newMessage.content;
+        message.name = newMessage.name;
+        message.type = newMessage.type;
+        message.orderType = newMessage.type;
+
+        return message.$save({venueId:VENUE_ID});  
+    }      
     
 }]).
 controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '$rootScope', function($scope,$http,Resources,$q, VENUE_ID, $rootScope) {
@@ -60,36 +101,6 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
         notify:["ORDER_NOTIFY"],
         reject:["ORDER_REJECT"]
     }
-    var placeholderMessages = {
-        notify : [
-            {         
-                content:_tr("Your order is running 15 mins late"),
-                name:_tr("Late Order")
-            },
-            {
-                content:_tr("Your order is on its way"),
-                name:_tr("En-route")   
-            },
-            {          
-                content:_tr("There is a problem with your order. Please call us"),
-                name:_tr("Call us")
-            }
-        ],
-        reject:[
-            {
-                content:_tr("Your address is out of our delivery zone"),
-                name:_tr("Out of zone")   
-            },
-            {
-                content:_tr("Sorry, that item is out of stock"),
-                name:_tr("Out of stock")   
-            },
-            {
-                content:_tr("Sorry, Your order has been rejected. Please call us"),
-                name:_tr("Call us")   
-            }
-        ]
-    };
 
     $scope.venue = Resources.Venue.get({id:VENUE_ID},function(result){
     },function(err){ console.log("error",arguments)});    
@@ -230,15 +241,7 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
 
 	};
     $scope.getPlaceholder = function(which,index){
-        return placeholderMessages[which][index];
-    }
-
-    $scope.onChangeDeliverFlag = function(){        
-        if ($scope.venue.deliverFlag == 1){
-            if (areAllMessagesEmpty()){
-                setMessageToPlaceholder();
-            }
-        }
+        return messagesAlert[which][index];
     }
 
 

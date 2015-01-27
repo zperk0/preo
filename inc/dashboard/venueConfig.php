@@ -137,10 +137,10 @@
 				<div class="large-12 columns">
 					<label><?echo _("Do you offer a delivery service?");?> &nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("You can specify your delivery settings from the dashboard");?>"></i></label>
 					<div class="switch small large-2 columns"> 
-						<input name="vDelivery" value="0" type="radio" <?if((isset($_SESSION['venue_deliverFlag']) && !$_SESSION['venue_deliverFlag']) || !isset($_SESSION['venue_deliverFlag'])){?>checked<?}?>>
+						<input name="vDelivery" class="vDelivery" value="0" type="radio" <?if((isset($_SESSION['venue_deliverFlag']) && !$_SESSION['venue_deliverFlag']) || !isset($_SESSION['venue_deliverFlag'])){?>checked<?}?>>
 						<label class="no"><?echo _("No");?></label>
 
-						<input name="vDelivery" value="1" type="radio" <?if((isset($_SESSION['venue_deliverFlag']) && $_SESSION['venue_deliverFlag'])){?>checked<?}?>>
+						<input name="vDelivery" class="vDelivery" value="1" type="radio" <?if((isset($_SESSION['venue_deliverFlag']) && $_SESSION['venue_deliverFlag'])){?>checked<?}?>>
 						<label class="yes"><?echo _("Yes");?></label>
 
 						<span></span>
@@ -486,6 +486,7 @@
 		</div>
 	</form>
 
+<script src="/code/settings/delivery/messages.js"></script>
 <?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
