@@ -1,5 +1,6 @@
 <?php session_start(); //start the session so this file can access $_SESSION vars.
-
+ 	ini_set('display_errors', 1);
+	error_reporting(E_ALL ^ E_NOTICE);
 	function formatPercentage($num){
 		if (isset($num) && $num)
 			return $num/100;
@@ -10,6 +11,7 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/protect_input.php'); //input protection functions to keep malicious input at bay
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/account_functions.php');   //API calling function
 	
 	$vName = $_POST['vName'];
 	protect($vName);
@@ -46,6 +48,9 @@
 
 	$vDelivery = $_POST['vDelivery'];
 	protect($vDelivery);
+
+	$vCash = $_POST['vCash'];
+	protect($vCash);
 	
 	$vCode = $_POST['vCode'];
 	protect($vCode);
@@ -86,6 +91,7 @@
 	$data['categoryId']			= $vCat;
 	$data['eventFlag']			= $vEvent;
 	$data['deliverFlag']		= $vDelivery;
+	$data['cashFlag']		= $vCash;
 	$data['city']			= $vTown;
 	$data['locale']			= $language."-".$vCountry;
 	$data['timeZone']			= $timezone;
@@ -117,6 +123,8 @@
 		$jsonData = json_encode($data);
 		
 		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
+
+		setDataVenue($data);
 		
 							
 	}

@@ -1,8 +1,5 @@
 <?php
 
- 	// ini_set('display_errors', 1);
-	// error_reporting(E_ALL ^ E_NOTICE);
-
  	function formatDisplayPercentage($num){
 
  	if ($num > 1 || !((isset($num) && $num))) 		
@@ -14,6 +11,7 @@
 	
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/account_functions.php');   //API calling function
 
 	//we use the user's token
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
@@ -30,7 +28,13 @@
 	
 	if(!empty($dataJSON)) 
 	{	
-		$_SESSION['venue_id'] 			= $dataJSON[0]['id'];
+
+
+
+		$dataJSON[0]['locale'] = explode("-",$dataJSON[0]['locale'])[0];
+		setDataVenue($dataJSON[0]);
+
+		/*$_SESSION['venue_id'] 			= $dataJSON[0]['id'];
 		$_SESSION['venue_name'] 		= $dataJSON[0]['name'];
 		if (isset($dataJSON[0]['permalink'])) {
 			$_SESSION['venue_permalink'] 		= $dataJSON[0]['permalink'];
@@ -53,7 +57,7 @@
 		$_SESSION['venue_town']  		= $dataJSON[0]['city'];	
 		$_SESSION['venue_language']		= explode("-",$dataJSON[0]['locale'])[0];	 //get the locale code if there is a country code or not.
 		$_SESSION['venue_timezone']		= $dataJSON[0]['timeZone'];	
-		$_SESSION['venue_currency']		= $dataJSON[0]['ccy'];	
+		$_SESSION['venue_currency']		= $dataJSON[0]['ccy'];	*/
 					
 
 		

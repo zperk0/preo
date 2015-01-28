@@ -148,6 +148,22 @@
 				</div>
 			</div>
 			
+
+			<div class="row">
+				<div class="large-12 columns">
+					<label><?echo _("Enable cash payment option?");?></label>
+					<div class="switch small large-2 columns"> 
+						<input name="vCash" class="vDelivery" value="0" type="radio" <?if((isset($_SESSION['venue_cashFlag']) && !$_SESSION['venue_cashFlag']) || !isset($_SESSION['venue_cashFlag'])){?>checked<?}?>>
+						<label class="no"><?echo _("No");?></label>
+
+						<input name="vCash" class="vDelivery" value="1" type="radio" <?if((isset($_SESSION['venue_cashFlag']) && $_SESSION['venue_cashFlag'])){?>checked<?}?>>
+						<label class="yes"><?echo _("Yes");?></label>
+
+						<span></span>
+					</div>
+				</div>
+			</div>
+			
 			
 			
 		
