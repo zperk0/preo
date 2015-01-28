@@ -34,32 +34,6 @@
 		$dataJSON[0]['locale'] = explode("-",$dataJSON[0]['locale'])[0];
 		setDataVenue($dataJSON[0]);
 
-		/*$_SESSION['venue_id'] 			= $dataJSON[0]['id'];
-		$_SESSION['venue_name'] 		= $dataJSON[0]['name'];
-		if (isset($dataJSON[0]['permalink'])) {
-			$_SESSION['venue_permalink'] 		= $dataJSON[0]['permalink'];
-		}		
-		$_SESSION['venue_desc'] 		= $dataJSON[0]['description'];
-		$_SESSION['venue_cat'] 			= $dataJSON[0]['categoryId'];
-		$_SESSION['venue_address']  	= $dataJSON[0]['address1'];			
-		$_SESSION['venue_latitude']		= $dataJSON[0]['latitude'];	
-		$_SESSION['venue_longitude']	= $dataJSON[0]['longitude'];	
-		$_SESSION['venue_postcode']		= $dataJSON[0]['postcode'];	
-		$_SESSION['venue_country']		= $dataJSON[0]['country'];	
-		$_SESSION['venue_eventFlag']	= $dataJSON[0]['eventFlag'];
-		$_SESSION['venue_deliverFlag']	= $dataJSON[0]['deliverFlag'];	
-		$_SESSION['venue_liveFlag']		= $dataJSON[0]['liveFlag'];
-		$_SESSION['venue_demoFlag']		= $dataJSON[0]['demoFlag'];	
-		$_SESSION['venue_code']			= $dataJSON[0]['code'];	
-		$_SESSION['venue_deliveryFlag']	= $dataJSON[0]['deliverFlag'];			
-		$_SESSION['venue_address2']  	= $dataJSON[0]['address2'];	
-		$_SESSION['venue_address3']  	= $dataJSON[0]['address3'];			
-		$_SESSION['venue_town']  		= $dataJSON[0]['city'];	
-		$_SESSION['venue_language']		= explode("-",$dataJSON[0]['locale'])[0];	 //get the locale code if there is a country code or not.
-		$_SESSION['venue_timezone']		= $dataJSON[0]['timeZone'];	
-		$_SESSION['venue_currency']		= $dataJSON[0]['ccy'];	*/
-					
-
 		
 		//we get venue id from _SESSION
 		$venueID = $_SESSION['venue_id'];

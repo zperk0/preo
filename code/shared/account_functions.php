@@ -71,28 +71,7 @@
 			$_SESSION['noVenueFlag']=0; 
 			$_SESSION['account_id'] 			= $dataJSON['accountId'];
 			$_SESSION['account_name'] 			= $dataJSONAccount['name'];			
-			/*$_SESSION['venue_id'] 				= $dataJSON['id'];
-			$_SESSION['venue_name'] 			= $dataJSON['name'];
-			if (isset($dataJSON['permalink'])) {
-				$_SESSION['venue_permalink'] = $dataJSON['permalink'];
-			}
-			$_SESSION['venue_desc'] 			= $dataJSON['description'];
-			$_SESSION['venue_cat'] 				= $dataJSON['categoryId'];
-			$_SESSION['venue_address1']  		= $dataJSON['address1'];	
-			$_SESSION['venue_address2']  		= $dataJSON['address2'];	
-			$_SESSION['venue_address3']  		= $dataJSON['address3'];			
-			$_SESSION['venue_postcode']			= $dataJSON['postcode'];	
-			$_SESSION['venue_country']			= $dataJSON['country'];	
-			$_SESSION['venue_eventFlag']		= $dataJSON['eventFlag'];	
-			$_SESSION['venue_demoFlag']			= $dataJSON['demoFlag'];	
-			$_SESSION['venue_liveFlag']			= $dataJSON['liveFlag'];	
-			$_SESSION['venue_cashFlag']			= $dataJSON['cashFlag'];	
-			$_SESSION['venue_code']				= $dataJSON['code'];	
-			$_SESSION['venue_town']				= $dataJSON['city'];	
-			$_SESSION['venue_language']				= $dataJSON['locale'];	
-			$_SESSION['venue_timezone']				= $dataJSON['timeZone'];	
-			$_SESSION['venue_currency']				= $dataJSON['ccy'];	
-			$_SESSION['venue_ccySymbol']				= $dataJSON['ccySymbol'];	*/
+
 			setDataVenue($dataJSON);
 			
 			//we get venue id from _SESSION

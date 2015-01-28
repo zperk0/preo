@@ -1,6 +1,4 @@
 <?php session_start(); //start the session so this file can access $_SESSION vars.
- 	ini_set('display_errors', 1);
-	error_reporting(E_ALL ^ E_NOTICE);
 	function formatPercentage($num){
 		if (isset($num) && $num)
 			return $num/100;
