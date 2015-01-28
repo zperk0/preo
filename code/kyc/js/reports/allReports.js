@@ -107,7 +107,6 @@ angular.module('kyc.reports')
 		}
 
 		function initReports(data){
-			console.log('data',data);
 				AllReports.data = {
 					items:data[0],
 					orders:prepareOrders(data[1]),
@@ -134,7 +133,6 @@ angular.module('kyc.reports')
 		}
 
 		function prepareCustomerOrders(customerOrders,thisMonthCustomerOrders,lastMonthCustomerOrders){	
-			console.log(customerOrders.length,thisMonthCustomerOrders.length,lastMonthCustomerOrders.length)
 				angular.forEach(customerOrders,function(customerOrder){
 					var thisMonth;
 					var lastMonth;

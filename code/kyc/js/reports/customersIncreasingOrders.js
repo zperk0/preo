@@ -21,7 +21,6 @@ angular.module('kyc.reports')
 					}				
 			  }
 		});
-		console.log('set data',data);			
 	}
 
 	Report.orderby = "percentIncrease";

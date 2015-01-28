@@ -38,7 +38,6 @@ angular.module('kyc.reports')
 	Report.description = _tr("Display top 10 highest grossing days.");
 
 	Report.getData = function(){
-		console.log('getting h data',data);
 		return data;
 	}
 

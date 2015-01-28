@@ -52,7 +52,6 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 		};
 			angular.forEach($scope.customers,function(item){
 					if ($scope.exportAll === "1" || item.selected === true){
-						console.log('exporting',item);
 							prepData["Name"].push(item.name)
 							prepData["Total Spent"].push(item.totalSpent.toFixed(2));
 							prepData["Email Address"].push(item.emailAddress);
@@ -108,7 +107,6 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	}
 
 	$scope.setOrderBy = function( orderBy, direction ){
-		console.log('parent setting order by',orderBy,direction);
 		if (direction !== undefined)
 				$scope.direction = direction;
 		else

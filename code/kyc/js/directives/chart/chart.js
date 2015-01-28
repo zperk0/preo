@@ -219,10 +219,8 @@ angular.module('kyc.directives').
         }    
 
         ng.changeItem = function( item ){
-            
-            console.log('selectedItemId',ng.chart.value.selectedItemId);
+                        
             ng.chart.value.selectItem( ng.chart.value.selectedItemId,function(highchart){
-                console.log('highchart',highchart);
                 ng.chart.value = highchart;
                 refreshChart();              
             });

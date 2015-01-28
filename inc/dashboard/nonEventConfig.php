@@ -118,7 +118,6 @@
 	$('.<?echo $dow[$i];?>').addClass('hide');
 	
 	if ($('.<?echo $dow[$i];?> .oh-is-open').val() == "c"){
-		console.log('hereeee','.<?echo $dow[$i];?>',$('.<?echo $dow[$i];?> .oh-is-open').val())
 		$('.<?echo $dow[$i];?> .ui-timepicker-input-wrapper').hide();	
 	}
 <?}?>

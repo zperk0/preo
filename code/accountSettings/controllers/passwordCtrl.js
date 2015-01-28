@@ -13,7 +13,6 @@ angular.module('accountSettings.controllers')
   	}
  User.get({id:USER_ID},function(result){
  	//extend the password obj with the username
- 	console.log('got user,',result);
     	$scope.password.username=result.username;    	    	
       $scope.finishLoading();
     });

@@ -33,7 +33,6 @@ angular.module('kyc.charts')
 
     function selectItem(itemId,cb){
         // clearData();
-        console.log('selecting item',itemId);
         selectedItem = itemId;        
         window.sessionStorage.setItem("KYC_SELECTED_ITEM",itemId);
         
@@ -107,7 +106,6 @@ angular.module('kyc.charts')
     }
 
     function getItemName(itemId){
-        console.log('getting name for ',itemId,UtilsService.getItems());
         var found = false;
         angular.forEach(UtilsService.getItems(),function(item){
                 if (item.id == itemId)

@@ -120,12 +120,10 @@ angular.module('accountSettings.controllers')
       var previousStatus = accountPackage.status;
       accountPackage.status = 'UNINSTALLED';
       delete accountPackage.vat;
-      accountPackage.$put({accountId: ACCOUNT_ID, packageId: accountPackage.preoPackageId},function(result){
-        console.log("Put account package success",result,status,accountPackage);
+      accountPackage.$put({accountId: ACCOUNT_ID, packageId: accountPackage.preoPackageId},function(result){        
         setActiveCount();
         
-      },function(error){
-        console.log("Put account package fail",error);
+      },function(error){        
         accountPackage.status = previousStatus;
         displayErrorNoty();
       });      
@@ -139,8 +137,6 @@ angular.module('accountSettings.controllers')
         if ($scope.account && $scope.account.billingDate){
           var d = new Date($scope.account.billingDate)
           var now = new Date();
-          console.log(d,now);
-          console.log(Math.floor((now - d)/ (1000 * 60 * 60 * 24)))
           if (d >now )
               $scope.diffInDays = 0;
           else
@@ -157,7 +153,6 @@ angular.module('accountSettings.controllers')
           function(result){                      
             if (result.token && result.token!=null){               
                 AccountPackages.save({accountId:ACCOUNT_ID,packageId: Package.id},function(accountPayment){
-                  console.log('here',accountPayment);
                         if (accountPayment.status ===  "SUCCESS"){
                           loadAll(function (){
                             $AjaxInterceptor.complete();

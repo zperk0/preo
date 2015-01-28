@@ -116,7 +116,6 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
            for (var i=0;i<6;i++){
             if (messages.length>i){                
                 var message = messages[i];
-                console.log(message);
                 if (messageTypes.notify.indexOf(message.type) >-1){                    
                     $scope.messages.notify.push(message)
                     notifications++;          
@@ -150,7 +149,6 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
         }
 
         $rootScope.requests = 0;
-        console.log($scope.messages);
         $scope.finishedLoading = true;
     },function(err){ console.log("error",arguments)});   
 

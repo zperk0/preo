@@ -54,8 +54,6 @@ angular.module('kyc.charts')
 
     function onSetDataComplete(){
         var allMenuItems = getIds(UtilsService.getItems());
-        console.log('allMenuItems',allMenuItems);
-        console.log('items',items);        
         var itemsArray = _.chain(_.values(items))            
             .filter(function(item){return allMenuItems.indexOf(item.id) > -1})
             .sortBy(function(item){return -item.quantity})
@@ -65,7 +63,6 @@ angular.module('kyc.charts')
             top5[i].y = itemsArray[i].quantity;
             top5[i].name = itemsArray[i].name;
         }
-        console.log('top 5',top5);
     }
 
 	function getData(){

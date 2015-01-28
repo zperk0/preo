@@ -7,11 +7,9 @@ angular.module('accountSettings.controllers')
     $scope.errorMessage = "";      	
     AccountCard.get({accountId:ACCOUNT_ID},function(result){
   		$scope.card = result;    
-      $scope.finishLoading();         
-      console.log($scope.card);
+      $scope.finishLoading();               
   	},function(error){         
-      if (error.data && error.data.status === 404){
-        console.log('ho');
+      if (error.data && error.data.status === 404){        
     		$scope.isEditing = true;
     		$scope.card = new AccountCard();      
         $scope.finishLoading();  
@@ -65,7 +63,7 @@ angular.module('accountSettings.controllers')
     
 
      var stripeResponseHandler = function(status, response) {
-       console.log("got here",response,status);
+       
        if (response.error) {
          $scope.isPosting = false;
          // Show the errors on the form
@@ -74,7 +72,7 @@ angular.module('accountSettings.controllers')
          $AjaxInterceptor.complete();
        } else {        
          // token contains id, last4, and card type
-         console.log("success",status,response)
+         
          $scope.card.token = response.id;
          $scope.card.number = response.card.last4;
          $scope.card.type = response.card.type;                
@@ -97,7 +95,7 @@ angular.module('accountSettings.controllers')
     }
 
     function success(){
-      console.log('success');
+      
       $scope.errorMessage = "";
       $scope.isEditing = false;
       $scope.isPosting = false;
@@ -107,12 +105,12 @@ angular.module('accountSettings.controllers')
           if (moment().valueOf() > moment(account.billingDate).valueOf()){
             //if there is a billing date in the past, the user owes us money. try to renew the subscriptions
             AccountInvoice.payPending({accountId:ACCOUNT_ID},function(result){
-                console.log('got pay pending result',result)                              
+                
                 $AjaxInterceptor.complete();
                 if (result.status === "SUCCESS"){             
 
                   AccountInvoice.get({accountId:ACCOUNT_ID,invoiceId:result.invoiceId},function(invoice){
-                      console.log('got invoice',invoice);
+                      
                        $notification.confirm({                           
                           title: _tr("Outstanding payment resolved"),
                           scope: invoice,                          
@@ -132,8 +130,7 @@ angular.module('accountSettings.controllers')
                       windowClass:'medium'
                     })                
                   });
-                } else{
-                  console.log('got error');
+                } else{                
                   apiError(result);
                 }                
             },apiError);
