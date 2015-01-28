@@ -322,7 +322,6 @@ if ($packageTrial) {
 		function positiveDismiss(){
 			var dialog = $(this).parent(".modal-preoday");
 			var dialogId = dialog.attr("id");
-			console.log('here',dialog);
 			if ($('.doNotShowAgain').is(':checked')) {
 				window.localStorage.setItem("showDialogAgain_4",0) 
 			}				
@@ -331,7 +330,6 @@ if ($packageTrial) {
 					window.location.replace("/shop#/feature/4");
 					break;							
 				case "noPaymentMethod":
-					console.log('nopay');
 					window.location.replace("/payment");
 				break;
 			}

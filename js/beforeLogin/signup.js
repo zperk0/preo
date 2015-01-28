@@ -73,7 +73,6 @@ $(document).ready(function () {
 			},
 		   success: function(data)
 		   {
-		   	console.log("success",data);
 		   		if (data instanceof Object && data.status == undefined) {
 						$.post("/saveSignUp", 
 						'bName='+queryParams.businessname+'&bID='+data.accountId+'&email='+encodeURIComponent(data.email)+'&fName='+data.firstName+'&lName='+data.lastName+'&id='+data.id,
@@ -124,7 +123,6 @@ $(document).ready(function () {
   function validateVenue(venueId,packageId,callback){
   	$.get("/api/venues/"+venueId)
   	.then(function(data){
-  		console.log('validate venue',data);
   		if (data.claimed != null){  			
   			notifyAndRedirect('success',_tr("This venue has been claimed already, sign in to access your dashboard."),2000,'/login');
   		}else {

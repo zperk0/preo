@@ -80,7 +80,6 @@
       // [data-preoabide] span.error, [data-preoabide] small.error {
       //   display: none; }
 
-      console.log('f,scope',forms,this.scope)
       forms
         .on('submit validate', function (e) {
           return self.validate($(this).find('input, textarea, select').get(), e);

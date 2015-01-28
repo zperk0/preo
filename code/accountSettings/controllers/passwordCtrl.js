@@ -38,15 +38,13 @@ angular.module('accountSettings.controllers')
             return false;
         } else {
         	$scope.isPosting = true;
-        	console.log('posting',$scope.password)        	
         	$http.post('/api/users/auth/change', $scope.password)
         	.success(function(result){
-            console.log('hey');
         		$scope.isPosting = false;
 				    noty({ type: 'success', text: _tr('Settings and Password has been saved!<br/>You will need to log in again with your new password to continue.') });
 		        setTimeout(function(){window.location.replace("/logout");}, 2500);
     	    }).error(function(error){
-            console.log('hoo');
+
         		$scope.isPosting = false;        	
         		if (error.status == 401){        			
         			$scope.oldIncorrect = true;
