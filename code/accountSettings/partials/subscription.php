@@ -53,7 +53,7 @@
 		</div>
 		<div class="buttonsSubscriptions" ng-if="isUninstaled(accountPackage)">
 			<button class='preodayButton inlineButton' ng-if="card" ng-click="resubscribePackage(accountPackage)"><? echo _("RESUBSCRIBE") ?></button>	
-			<button class='preodayButton inlineButton disabled' ng-if="!card" ng-click="resubscribePackage(accountPackage)"><? echo _("RESUBSCRIBE") ?></button>		
+			<button class='preodayButton inlineButton disabled' ng-if="!card"><? echo _("RESUBSCRIBE") ?></button>		
 		</div>
 	</section>
 </section>
