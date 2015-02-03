@@ -105,7 +105,6 @@ angular.module('accountSettings.controllers')
           if (moment().valueOf() > moment(account.billingDate).valueOf()){
             //if there is a billing date in the past, the user owes us money. try to renew the subscriptions
             AccountInvoice.payPending({accountId:ACCOUNT_ID},function(result){
-                
                 $AjaxInterceptor.complete();
                 if (result.status === "SUCCESS"){             
 
