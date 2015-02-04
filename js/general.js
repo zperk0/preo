@@ -460,7 +460,7 @@ $(document).ready(function() {
 	$("#venueConfigForm").on('valid', function (event) {
 		var isNewVenue = false;
 		var queryParam = "";
-		if (window.location.pathname === "/newVenue"){
+		if (window.location.pathname.toLowerCase() === "/newvenue"){
 			isNewVenue= true;
 			queryParam+="?skipUser=1"
 		}
@@ -493,7 +493,8 @@ $(document).ready(function() {
 
 					if (isNewVenue)
 					{
-				 		doSelectVenue("venueId="+dataArray['id']);
+						alert
+				 		doSelectVenue("venueId="+dataArray['id'],true);
 				 		return false;
 				 	}
 					
@@ -2930,7 +2931,7 @@ $(document).ready(function() {
 		$(this).parents("tr:first").remove();
 	});
 
-	function doSelectVenue(formData){
+	function doSelectVenue(formData,refreshAfter){
 		$.ajax({
 			   type: "POST",
 			   url: "/do_selectVenue",
@@ -2985,7 +2986,9 @@ $(document).ready(function() {
 						}
 
 						window.localStorage.setItem('lastVenueSelected', JSON.stringify(lastVenueSelected));
-						
+						if (refreshAfter){
+							window.location.href = "/dashboard";
+						}
 						
 					}
 				}
@@ -4824,7 +4827,7 @@ $(document).ready(function() {
     });
 
     //Clears the inputs on the newVenue page to reuse the template
-    if (window.location.pathname === "/newVenue"){
+    if (window.location.pathname.toLowerCase() === "/newvenue"){
     	$('input').val('');
     	$('textarea').val('');
     	$('.alignHeader').html("Create a new venue");
