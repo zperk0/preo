@@ -10,6 +10,18 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			end_date: moment.utc(INITIAL_DATES.end).endOf('day')
 		}
 
+		$scope.enableEventFilter = function () {
+			$scope.showEventsFilter = true;
+		}
+
+		$scope.disableEventFilter = function () {
+			$scope.showEventsFilter = false;
+		}
+
+		$scope.isEventFilter = function () {
+			return $scope.showEventsFilter;
+		}
+
 
 
 	 	$scope.getCurrency = function(){
@@ -23,6 +35,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		VenueService.init().then(
 			function(venue){			
 				$scope.venue = venue;
+				console.log(venue);
 				$scope.currencySymbol = VenueService.getCurrency().symbol;							
 				OutletService.init(function(){
 					$scope.outlets = OutletService.getOutlets();
@@ -35,13 +48,66 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			$AjaxInterceptor.start();			
 			setTimeout(function(){
 				
-				AllCharts.reloadCharts($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol,$scope.getSelectedOutlets())
-				.then(function(){
-					
-					 $scope.$broadcast('KYC_RELOAD');					 
-				});				
+				if ($scope.isEventFilter()) {
+					$scope.loadEvents();
+				} else {
+					AllCharts.reloadCharts($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol,$scope.getSelectedOutlets())
+					.then(function(){
+						
+						 $scope.$broadcast('KYC_RELOAD');					 
+					});	
+				}			
 				
 			},500);
+		}
+
+		var allEventsIds = [];
+		var getAllEventsIds = function () {
+			allEventsIds = [];
+
+			for (var i = 0, len = $scope.events.length; i < len; i++) {
+				allEventsIds.push($scope.events[i].id);
+			};
+
+			return allEventsIds;
+		}
+
+		var getEventsSelected = function () {
+			var eventsSelected = [];
+
+			for (var i = 0, len = $scope.events.length; i < len; i++) {
+				var currentEvent = $scope.events[i];
+				if (currentEvent.selected) {
+					eventsSelected.push(currentEvent.id);
+				}				
+			};
+
+			if (eventsSelected.length) {
+				return eventsSelected;
+			}
+
+			return allEventsIds;			
+		}
+
+		$scope.loadEvents = function () {
+			VenueService.getEvents($scope.form.start_date).then(function (events) {
+				$scope.events = events;
+				loadOrdersEvents(getAllEventsIds());
+			})
+		}
+
+		var loadOrdersEvents = function (events) {
+			OrderService.getOrdersByEvents($scope.form.start_date, $scope.form.end_date, events).then(function (orders) {
+				$scope.$broadcast('ORDERS_EVENTS_LOADED', { orders: orders });
+				$AjaxInterceptor.complete();
+			}, function () {
+				// body...
+			})
+		}
+
+		$scope.updateDataWithEvents = function () {
+			$AjaxInterceptor.start();
+			loadOrdersEvents(getEventsSelected());
 		}
 			
 		$scope.setLocation = function(newLocation){

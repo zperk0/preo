@@ -5,6 +5,7 @@ angular.module('kyc.controllers').controller('StockCtrl', ['$scope', '$AjaxInter
 	$scope.setLocation('stock');
 
 	$scope.$parent.showDateFilter = true;	
+	$scope.disableEventFilter();
 	$scope.exportAll="1";
 	$scope.numPerPage = 20;
 
