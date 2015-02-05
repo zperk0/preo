@@ -21,56 +21,49 @@
 							    <label for="all_options"></label>
 							  </div>
 					  		</th>					  	  	
-					  		<th ng-click="orderBy = 'items'; direction=!direction">
+					  		<th ng-if="eventsSelected.length > 1" ng-click="orderBy = 'eventName'; direction=!direction">
+					  			<? echo _("Event")?>
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>		  			
+					  		</th>				  	  	
+					  		<th ng-click="orderBy = 'user.name'; direction=!direction">
 					  			<? echo _("Customer")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>
-					  		<th ng-click="orderBy = 'updated'; direction=!direction">
+					  		<th ng-click="orderBy = 'user.email'; direction=!direction">
 					  			<? echo _("Email")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>	
-					  		<th ng-click="orderBy = 'updated'; direction=!direction">
+					  		<th ng-click="orderBy = 'order.phone'; direction=!direction">
 					  			<? echo _("Phone Number")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>	
-					  		<th ng-click="orderBy = 'updated'; direction=!direction">
-					  			<? echo _("Quantity items")?>
+					  		<th ng-click="orderBy = 'itemString'; direction=!direction">
+					  			<? echo _("Items")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>	
-					  		<th ng-click="orderBy = 'updated'; direction=!direction">
-					  			<? echo _("Item")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>	
-					  		<th ng-click="orderBy = 'updated'; direction=!direction">
-					  			<? echo _("Item Total")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>	
-					  		<th ng-click="orderBy = 'updated'; direction=!direction">
+					  		<th ng-click="orderBy = 'total'; direction=!direction">
 					  			<? echo _("Order Total")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
 					  		</th>	
-					  		<th > <div marketing='loyalty'></div></th>
+					  		<th> <div marketing='loyalty'></div></th>
 					  		<th><div marketing='offers'></div></th>
 					  		<th ><div marketing='other'></div></th>			  						  	
 					  	</tr>
@@ -83,19 +76,18 @@
 							    <label for="check_{{ order.id }}"></label>
 							  </div>						  			
 					  		</td>
+					  		<td ng-if="eventsSelected.length > 1">{{ getEventName(order) }}</td>
 					  		<td>{{ order.user.name }}</td>
 					  		<td>{{ order.user.email }}</td>
 					  		<td>{{ order.phone || order.user.phone }}</td>
-					  		<td>{{ data.valueSold.toFixed(2) }}</td>
-					  		<td>{{ data.itemName }}</td>
-					  		<td>{{ data.quantitySold }}</td>
-					  		<td>{{ data.numberOfOrders }}</td>
-					  		<td class='marketingTd'><img class='marketingOpt' ng-src="{{order.user.optinLoyalty  | marketing }}"/></td>
-					  		<td class='marketingTd'><img class='marketingOpt' ng-src="{{order.user.optinOffers  | marketing }}"/></td>
-					  		<td class='marketingTd'><img class='marketingOpt' ng-src="{{order.user.optionOther  | marketing }}"/></td>
+					  		<td ng-bind-html="getItemsAsString(order)"></td>
+					  		<td>{{ getCurrency() + order.total.toFixed(2) }}</td>
+					  		<td class='marketingTd' width="40"><img class='marketingOpt' ng-src="{{order.user.optinLoyalty  | marketing }}"/></td>
+					  		<td class='marketingTd' width="40"><img class='marketingOpt' ng-src="{{order.user.optinOffers  | marketing }}"/></td>
+					  		<td class='marketingTd' width="40"><img class='marketingOpt' ng-src="{{order.user.optinOther  | marketing }}"/></td>
 					  	</tr>			  
 					  </tbody>
-					</table>		
+					</table>	
 				</div>
 
 				<div class="align-center">

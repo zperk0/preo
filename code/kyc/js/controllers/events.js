@@ -6,24 +6,38 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
 
     $scope.setLocation('events');
 
-   /* $scope.orders.$promise.then(function(){
-        $scope.orders = $scope.orders.sort(UtilsService.dynamicSort('updated', true))
-    });*/
+    var title = _tr("Events");
 
-    var isRequesting = false;
-
-    var qtdRequests = 0;
-    var title = _tr("Events")
-      
-    $scope.$on('ORDERS_EVENTS_LOADED', function(event, data){
-        console.log('orders ==== ', data.orders);
+    var processOrders = function (data) {
         $scope.allOrders = data.orders;
         $scope.orders = data.orders;
 
         $scope.totalItems = $scope.orders.length;
 
         $AjaxInterceptor.complete();
+    }
+      
+    $scope.$on('ORDERS_EVENTS_LOADED', function(event, data){
+        $scope.ordersLoaded = data.orders;
+        processOrders(data);
     });
+
+    $scope.$on('SELECT_EVENT', function () {
+        var eventIds = $scope.getEventsSelectedIds();
+        var newOrders = [];
+
+        for (var i = 0, len = $scope.ordersLoaded.length; i < len; i++) {
+            var order = $scope.ordersLoaded[i];
+
+            if (eventIds.indexOf(order.eventId) !== -1) {
+                newOrders.push(order);
+            }
+        };
+
+        processOrders({
+            orders: newOrders
+        });
+    })
 
     $scope.loadEvents();
 
@@ -48,10 +62,30 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
       }     
 
     function prepareExportCsvData(){
+        var events = $scope.getEventsSelected();       
+
         var prepData = [[$scope.getExportDate()],[title]];
             angular.forEach($scope.allOrders,function(order){                
                     if ($scope.exportAll === "1" || order.selected === true){
-                            prepData.push([order.name,order.totalSpent.toFixed(2),order.emailAddress,order.loyalty,order.offers,order.other]);
+                        var arrPrepData = [ order.id ];
+                        
+                        var arrItems = getItemsAsString(order);
+                        if (events.length > 1) {                            
+                            arrPrepData.push($scope.getEventById(order.eventId).name || order.eventId);
+                        }          
+
+                        arrPrepData.push($scope.getOutletById(order.outletId).name || order.outletId);
+                        arrPrepData.push(order.user.name);
+                        arrPrepData.push(order.user.email);
+                        arrPrepData.push(order.phone || order.user.phone);
+                        arrPrepData.push(arrItems.join(';'));
+                        arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
+                        arrPrepData.push(order.status);
+                        arrPrepData.push(order.user.optinLoyalty);
+                        arrPrepData.push(order.user.optinOffers);
+                        arrPrepData.push(order.user.optinOther);
+
+                        prepData.push(arrPrepData);
                     }
             })
         return {
@@ -63,39 +97,94 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
         var arrItems = [];
 
         var items = order.items;
+        var total = 0;
 
         for (var i = 0, len = items.length; i < len; i++) {
             var item = items[i];
+            total += item.total;
 
-            arrItems.push(item.qty + 'x ' + item.name + ' ' + item.total);
+            arrItems.push(item.qty + 'x ' + item.name + ' ' + $scope.getCurrency() + item.total.toFixed(2));
         };
 
-        return arrItems.join('\n');
+        order.total = total;
+
+        return arrItems;
+    }
+
+    $scope.getItemsAsString = function (order) {
+        if (!order.itemString) {
+            order.itemString = getItemsAsString(order).join('<br />');
+        }
+        return order.itemString;
+    }
+
+    $scope.getEventName = function (order) {
+        if (!order.eventName) {
+            order.eventName = $scope.getEventById(order.eventId).name  || order.eventId;
+        }
+
+        return order.eventName;
     }
 
     function prepareExportPdfData(){
         var prepData = {
+            "Order ID" :[]           
+        };
+
+        var events = $scope.getEventsSelected();
+
+        if (events.length > 1) {
+            prepData['Event'] = [];
+        }
+
+        angular.extend(prepData, {
+            "Outlet" :[],
             "Customer" :[],
             "Email":[],
-            "Phone Number":[]
-            //"Items":[]
-        };
-            angular.forEach($scope.allOrders,function(order){
+            "Phone Number":[],
+            "Items":[],
+            "Order Total":[],
+            "Order Status":[],
+            "Loyalty":[],
+            "Offers":[],
+            "Other":[]             
+        });
+
+            angular.forEach($scope.allOrders,function(order, key){
                     if ($scope.exportAll === "1" || order.selected === true){
-                            prepData["Customer"].push(order.user.name)
+                            prepData["Order ID"].push(order.id);
+                            prepData["Outlet"].push($scope.getOutletById(order.outletId).name || order.outletId);
+                            prepData["Customer"].push(order.user.name);
                             prepData["Email"].push(order.user.email);
                             prepData["Phone Number"].push(order.phone || order.user.phone);
-                            //prepData["Items"].push(getItemsAsString(order));
+
+                            var arrItems = getItemsAsString(order);
+
+                            if (events.length > 1) {
+                                prepData['Event'].push($scope.getEventById(order.eventId).name || order.eventId);
+                            }
+
+                            prepData["Items"].push(arrItems.join('___BR___'));
+                            prepData["Order Total"].push($scope.getCurrency() + order.total.toFixed(2));
+                            prepData["Order Status"].push(order.status);
+                            prepData["Loyalty"].push(order.user.optinLoyalty);
+                            prepData["Offers"].push(order.user.optinOffers);
+                            prepData["Other"].push(order.user.optinOther);                            
                     }
             })
-
-            console.log(prepData);
-        return {
-            title:"Events",
+        var result = {
             startDate:$scope.form.start_date.valueOf(),
             endDate:$scope.form.end_date.valueOf(),
             dataJson:JSON.stringify(prepData)
+        };
+
+        if (events.length > 1) {
+            result.title = events[0].name;
+        } else {
+            result.title = _tr("Events");
         }
+
+        return result;
     }     
 
     $scope.selectAll = function() {

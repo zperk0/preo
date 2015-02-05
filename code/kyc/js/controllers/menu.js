@@ -72,13 +72,15 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			return allEventsIds;
 		}
 
-		var getEventsSelected = function () {
+		$scope.eventsSelected = [];
+
+		$scope.getEventsSelected = function () {
 			var eventsSelected = [];
 
 			for (var i = 0, len = $scope.events.length; i < len; i++) {
 				var currentEvent = $scope.events[i];
 				if (currentEvent.selected) {
-					eventsSelected.push(currentEvent.id);
+					eventsSelected.push(currentEvent);
 				}				
 			};
 
@@ -86,11 +88,33 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 				return eventsSelected;
 			}
 
-			return allEventsIds;			
+			return $scope.events;			
+		}
+
+		$scope.getEventsSelectedIds = function () {
+			var eventsSelected = $scope.eventsSelected;
+			var arr = [];
+
+			for (var i = 0, len = eventsSelected.length; i < len; i++) {
+				arr.push(eventsSelected[i].id);	
+			};
+
+			return arr;		
+		}
+
+		$scope.getEventById = function (id) {
+			var eventsSearch = $scope.eventsSelected;
+
+			var events = eventsSearch.filter(function (e) {
+				return e.id === id;
+			});	
+
+			return events.length ? events[0] : {};
 		}
 
 		$scope.loadEvents = function () {
 			VenueService.getEvents($scope.form.start_date).then(function (events) {
+				$scope.eventsSelected = events;
 				$scope.events = events;
 				loadOrdersEvents(getAllEventsIds());
 			})
@@ -107,7 +131,10 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 
 		$scope.updateDataWithEvents = function () {
 			$AjaxInterceptor.start();
-			loadOrdersEvents(getEventsSelected());
+
+			$scope.eventsSelected = $scope.getEventsSelected();
+
+			$scope.$broadcast('SELECT_EVENT');
 		}
 			
 		$scope.setLocation = function(newLocation){
@@ -120,6 +147,14 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			return $scope.outlets.filter(function(data){
 				return data.selected === true;
 			});
+		}	 
+
+		$scope.getOutletById = function(id){
+			var outlets = $scope.outlets.filter(function(o){
+				return o.id === id;
+			});
+
+			return outlets.length ? outlets[0] : {};
 		}
 
 		$scope.findOutlet = function(id){
