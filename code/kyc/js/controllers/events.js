@@ -64,7 +64,28 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
     function prepareExportCsvData(){
         var events = $scope.getEventsSelected();       
 
-        var prepData = [[$scope.getExportDate()],[title]];
+        if (events.length == 1) {
+            title = events[0].name;
+        }
+
+        var titlesCSV = ["Order ID"];
+
+        if (events.length > 1) {
+            titlesCSV.push('Event');
+        }
+
+        titlesCSV.push("Outlet");
+        titlesCSV.push("Customer");
+        titlesCSV.push("Email");
+        titlesCSV.push("Phone");
+        titlesCSV.push("Items");
+        titlesCSV.push("Order Total");
+        titlesCSV.push("Order Status");
+        titlesCSV.push("Loyalty");
+        titlesCSV.push("Offers");
+        titlesCSV.push("Other");
+
+        var prepData = [[$scope.getExportDate()],[title], titlesCSV];
             angular.forEach($scope.allOrders,function(order){                
                     if ($scope.exportAll === "1" || order.selected === true){
                         var arrPrepData = [ order.id ];
@@ -79,7 +100,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
                         arrPrepData.push(order.user.email);
                         arrPrepData.push(order.phone || order.user.phone);
                         arrPrepData.push(arrItems.join(';'));
-                        arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
+                        arrPrepData.push(order.total.toFixed(2));
                         arrPrepData.push(order.status);
                         arrPrepData.push(order.user.optinLoyalty);
                         arrPrepData.push(order.user.optinOffers);
@@ -140,23 +161,23 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
         angular.extend(prepData, {
             "Outlet" :[],
             "Customer" :[],
-            "Email":[],
-            "Phone Number":[],
+            "Email" :[],
+            "Phone" :[],
             "Items":[],
             "Order Total":[],
             "Order Status":[],
             "Loyalty":[],
-            "Offers":[],
-            "Other":[]             
+            "Offers":[]        
         });
 
             angular.forEach($scope.allOrders,function(order, key){
                     if ($scope.exportAll === "1" || order.selected === true){
                             prepData["Order ID"].push(order.id);
                             prepData["Outlet"].push($scope.getOutletById(order.outletId).name || order.outletId);
+                            var arrCustomer = [order.user.name, order.user.email, order.phone || order.user.phone];
                             prepData["Customer"].push(order.user.name);
                             prepData["Email"].push(order.user.email);
-                            prepData["Phone Number"].push(order.phone || order.user.phone);
+                            prepData["Phone"].push(order.phone || order.user.phone);
 
                             var arrItems = getItemsAsString(order);
 
@@ -168,14 +189,14 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
                             prepData["Order Total"].push($scope.getCurrency() + order.total.toFixed(2));
                             prepData["Order Status"].push(order.status);
                             prepData["Loyalty"].push(order.user.optinLoyalty);
-                            prepData["Offers"].push(order.user.optinOffers);
-                            prepData["Other"].push(order.user.optinOther);                            
+                            prepData["Offers"].push(order.user.optinOffers);                     
                     }
             })
         var result = {
             startDate:$scope.form.start_date.valueOf(),
             endDate:$scope.form.end_date.valueOf(),
-            dataJson:JSON.stringify(prepData)
+            dataJson:JSON.stringify(prepData),
+            orientation: 'LANDSCAPE'
         };
 
         if (events.length > 1) {
