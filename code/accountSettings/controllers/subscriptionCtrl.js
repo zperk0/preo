@@ -83,7 +83,7 @@ angular.module('accountSettings.controllers')
             data = {
               btnOk: false,
               btnCancel: false,
-              content: _tr("To upgrade your account, please contact ") + "<a href='mailto:support@preoday.com'>support@preoday.com</a>.",
+              content: _tr("To upgrade your account, please contact ") + "<a href='mailto:" + EMAILS.SUPPORT + "'>" + EMAILS.SUPPORT + "</a>.",
               contentClass: 'updatePackage',
               windowClass:'small'  
             }
