@@ -182,7 +182,7 @@
 
 	<div id="iphone5" class="large-4 columns">
 		<div class="venueMode">
-		 	<span><?echo _("Change app mode")?> <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("LIVE - Your app is available on My Order App and is ready to take real orders.<br/><br/>DEMO - Your app is available on My Order App but does not take real orders.<br/><br/>OFFLINE - Your app is not available on My Order App.");?>"></i></span>
+		 	<span><?echo _("Change app mode")?> <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom noPad" title="<?echo _("LIVE - Your app is visible and is ready to take real orders.<br/><br/>DEMO - Your app is visible but does not take real orders.<br/><br/>OFFLINE - Your app is not visible.");?>"></i></span>
 
 		 	<div class='switchModeWrapper columns'>
 				<div class='switchDashboardMode columns large-4 <? if ($currentMode === "OFFLINE") echo _("active") ?>'  data-mode='o' ><?echo _("OFFLINE")?> </div>
