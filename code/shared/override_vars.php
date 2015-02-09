@@ -23,6 +23,7 @@
 	$_SESSION['OVERRIDES']["hello_email"] = "hello@preoday.com";
 	$_SESSION['OVERRIDES']["claim_url"] = $_SESSION['OVERRIDES']["site"] . "/takeaway";
 	$_SESSION['OVERRIDES']["title"] = "Preoday";
+	$_SESSION['OVERRIDES']["billing"] = true;
 
 
 	$testHost = "food4uapp.co.uk";
@@ -46,6 +47,7 @@
 		$_SESSION['OVERRIDES']["support_email"] = "info@food4uapp.co.uk";
 		$_SESSION['OVERRIDES']["hello_email"] = "info@food4uapp.co.uk";
 		$_SESSION['OVERRIDES']["claim_url"] = $_SESSION['OVERRIDES']["site"];
+		$_SESSION['OVERRIDES']["billing"] = false;
 	}
 
 ?>
