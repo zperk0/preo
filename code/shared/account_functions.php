@@ -23,6 +23,7 @@
 		$_SESSION['venue_postcode']			= $data['postcode'];	
 		$_SESSION['venue_country']			= $data['country'];	
 		$_SESSION['venue_eventFlag']		= $data['eventFlag'];	
+		$_SESSION['venue_deliverFlag']		= $data['deliverFlag'];	
 
 		if (isset($data['demoFlag'])){
 			$_SESSION['venue_demoFlag']			= $data['demoFlag'];
