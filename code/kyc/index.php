@@ -84,8 +84,8 @@
                     <multi-select
                         class="selectOutlet"    
                         input-model="events"    
-                        button-label="name"
-                        item-label="name"
+                        button-label="fullName"
+                        item-label="fullName"
                         tick-property="selected"
                         default-label="Events"
                     ></multi-select>
