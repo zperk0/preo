@@ -87,6 +87,10 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   position:relative;
 }
 
+#navbar-menu.withEvents ul li {
+  width: 16.6%;
+}
+
 #navbar-menu ul li.metrics{
   background-image: url('/code/kyc/images/icons/metrics-icon-grey.png');
 }
@@ -126,6 +130,16 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
 #navbar-menu ul li.live-stream.active, #navbar-menu ul li.live-stream:hover{
   background-image: url('/code/kyc/images/icons/live-stream-icon-white.png');
 }
+
+#navbar-menu ul li.events{
+  background-image: url('/code/kyc/images/icons/events-icon-grey.png');
+  background-size: 43px;
+}
+
+#navbar-menu ul li.events.active, #navbar-menu ul li.events:hover{
+  background-image: url('/code/kyc/images/icons/events-icon-white.png');
+}
+
 #navbar-menu ul > li:first-child{
     border-left: 1px solid #333E46;
 }
@@ -416,6 +430,14 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
     -moz-transform: rotateY(180deg);
     -ms-transform: rotateY(180deg);
     -o-transform: rotateY(180deg);
+  }
+
+  .flip-container.active {
+    min-height: 300px;
+  }
+
+  .flip-container.active .back {
+    min-height: 300px;
   }
 
 .reportPage .flipper, .reportPage .front{
@@ -1152,4 +1174,8 @@ margin-left: -12px;
 
 .marketingOpt{
   width:15px;
+}
+
+.colItems {
+  width: 240px;
 }
