@@ -77,6 +77,11 @@
 
   <script src="/code/accountSettings/js/all.min.js"></script>
   <script src="/code/constants/session.php"></script>  
+  <script>
+  var EMAILS: {
+    SUPPORT: "<?php echo $_SESSION['OVERRIDES']['support_email'] ?>"
+  }
+  </script>
 
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 

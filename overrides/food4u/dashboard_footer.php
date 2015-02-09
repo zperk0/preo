@@ -6,7 +6,7 @@
 	<a class="FBFoot" target="_blank" href="#"><img src="<?echo $_SESSION['path']?>/img/facebook.png"/></a>
 	<a class="LIFoot" target="_blank" href="#"><img src="<?echo $_SESSION['path']?>/img/linkedin.png"/></a>
 </p> -->
-					<p><a href="mailto:info@food4uapp.co.uk"><?echo _("info@food4uapp.co.uk");?></a></p>
+					<p><a href="mailto:<?php echo $_SESSION['OVERRIDES']["support_email"] ?>"><?echo $_SESSION['OVERRIDES']["support_email"];?></a></p>
 					<p><a href="<?php echo $_SESSION['OVERRIDES']["terms"] ?>" target="_blank"><? echo _("Legal Statement");?></a></p>
 					<p><a href="<?php echo $_SESSION['OVERRIDES']["privacy"] ?>" target="_blank"><? echo _("Privacy + Cookies");?></a></p>				
 				</div>				
