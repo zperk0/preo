@@ -1,7 +1,7 @@
 	<div class="sections grey sign-up">
 		<div class="container">
 			<div class="col col-lg-12">
-				<h1 class="text-center"><?php echo _("Sign up with Preoday"); ?></h1>
+				<h1 class="text-center"><?php echo _("Sign up with ") . $_SESSION['OVERRIDES']['title'] ?></h1>
 				<p class="lead text-center"><?php echo _("Start receiving mobile orders today"); ?></p>
 				<div class="bs-callout">
 
@@ -25,7 +25,7 @@
 							</div>
 						</div>
 						<hr>
-						<h3><span class="no-icon no-2"></span><?php echo _("Create your Preoday account"); ?></h3>
+						<h3><span class="no-icon no-2"></span><?php echo _("Create your ") . $_SESSION['OVERRIDES']['title'] . _(" account"); ?></h3>
 						<div class="row">
 							<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6">
 								<div class="form-group emailaddress">
@@ -47,7 +47,7 @@
 						<div class='package-wrapper'>
 							<div class='package package-trial'>
 									<h4 class="text-green"><?php echo _("Your 14 day free trial will last until midnight on ") ?><span class='end-of-trial'></span></h4>
-									<h5><?php echo _("If you choose not to continue using Preoday just cancel before the trail ends and you won’t be charged (we’ll email you 2 days before the trial ends to remind you). You can upgrade, downgrade or cancel at any time."); ?></h5>
+									<h5><?php echo _("If you choose not to continue using ") . $_SESSION['OVERRIDES']['title'] . _(" just cancel before the trail ends and you won’t be charged (we’ll email you 2 days before the trial ends to remind you). You can upgrade, downgrade or cancel at any time."); ?></h5>
 							</div>
 							<div class='package package-payment'>
 								<label for="cardnumber"><?php echo _("Transaction Details"); ?></label>
@@ -175,14 +175,14 @@
 						</div>
 						<div class="form-group accept">
 							<label class="checkbox-inline accept">
-								<input type="checkbox" required name="accept" id="termsConditions" value="Y"><?php echo _("I have read accept the"); ?>  <a href="https://www.preoday.com/terms-service/" target="_blank"><?php echo _("terms of service"); ?></a> <?php echo _("and"); ?> <a href="http://www.preoday.com/privacy-policy-2/" target="_blank"><?php echo _("privacy policy"); ?></a><?php echo _(", including the terms regarding cookies"); ?>
-								<small class="error"><?echo _("Your have accept tems & conditions for start using Preoday app.");?></small>
+								<input type="checkbox" required name="accept" id="termsConditions" value="Y"><?php echo _("I have read accept the"); ?>  <a href="<?php echo $_SESSION['OVERRIDES']["terms"] ?>" target="_blank"><?php echo _("terms of service"); ?></a> <?php echo _("and"); ?> <a href="<?php echo $_SESSION['OVERRIDES']["privacy"] ?>" target="_blank"><?php echo _("privacy policy"); ?></a><?php echo _(", including the terms regarding cookies"); ?>
+								<small class="error"><?echo _("Your have accept tems & conditions for start using ") . $_SESSION['OVERRIDES']['title'] . _(" app.");?></small>
 							</label>
 						</div>
 						<div class="readMessage" id="errorStripe"></div>
 						<div class="separator"></div>
 						<div class="form-group text-center">
-							<button type="submit" value="Submit" id="btnStartPreodayApp" class="btn btn-lg btn-primary"><?php echo _("Start using my Preoday app"); ?></button>
+							<button type="submit" value="Submit" id="btnStartPreodayApp" class="btn btn-lg btn-primary"><?php echo _("Start using my ") . $_SESSION['OVERRIDES']['title'] . _(" app"); ?></button>
 						</div>
 						<div class="messages"></div>
 					</form>
@@ -190,6 +190,14 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+	var CURRENT_DATA = {
+		CLAIM_URL: "<?php echo $_SESSION['OVERRIDES']['claim_url'] ?>",
+		TITLE: "<?php echo $_SESSION['OVERRIDES']['title'] ?>"
+	};
+
+	</script>
 
 	<script type='text/javascript' src='<?echo $_SESSION['path']?>/js/beforeLogin/signup.js'></script>
 	<script type="text/javascript" src="https://js.stripe.com/v2/"></script> 

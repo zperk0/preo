@@ -8,7 +8,7 @@
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 ?> 
 
-  <div ng-app="accountSettings"  class='accountSettings row'>
+  <div ng-app="accountSettings"  class='accountSettings row <?php  echo $_SESSION["OVERRIDES"]["billing"] ? "" : "no-billing" ?>'>
     <div ng-controller="MenuCtrl">      
     	<div class='content'>
     		<div ng-view> </div>
@@ -18,9 +18,11 @@
   		<h3><? echo _("My Account") ?></h3>
 
   		<ul>  			
+      <? if ($_SESSION['OVERRIDES']['billing']) { ?>
   			<li ng-class="{'selected':currentView == Views.subscription}" ng-click="setSelected(Views.subscription)">  <a href="#/subscription"><?echo _("Subscriptions") ?></a></li>
   			<li ng-class="{'selected':currentView == Views.paymentMethod}" ng-click="setSelected(Views.paymentMethod)">  <a href="#/paymentMethod"><?echo _("Payment Methods") ?></a></li>
   			<li ng-class="{'selected':currentView == Views.billingHistory}" ng-click="setSelected(Views.billingHistory)">  <a href="#/billingHistory"><?echo _("Billing History") ?></a></li>
+      <? } ?>
         <li ng-class="{'selected':currentView == Views.profile}" ng-click="setSelected(Views.profile)"> <a href="#/profile"><?echo _("Profile") ?></a></li>
 
   		</ul>
@@ -77,6 +79,12 @@
 
   <script src="/code/accountSettings/js/all.min.js"></script>
   <script src="/code/constants/session.php"></script>  
+  <script>
+  var HAS_BILLING = <?php echo $_SESSION['OVERRIDES']['billing']  == true  ? "true" : "false" ?>;
+  var EMAILS = {
+    SUPPORT: "<?php echo $_SESSION['OVERRIDES']['support_email'] ?>"
+  }
+  </script>
 
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
 

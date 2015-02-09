@@ -113,12 +113,12 @@
 	{
 		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id'], $jsonData, $apiAuth);
 		
-		$data = array();
-		$data['leadTime']			= $leadtime;
-		$data['pickupDiscount']   	= $vDiscount;
-		$data['orderMin']			= $vOrderMin;
+		$dataSettings = array();
+		$dataSettings['leadTime']			= $leadtime;
+		$dataSettings['pickupDiscount']   	= $vDiscount;
+		$dataSettings['orderMin']			= $vOrderMin;
 		
-		$jsonData = json_encode($data);
+		$jsonData = json_encode($dataSettings);
 		
 		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id']."/settings", $jsonData, $apiAuth);
 
