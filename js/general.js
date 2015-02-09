@@ -2567,11 +2567,11 @@ $(document).ready(function() {
 		});
 		
 		//Replace ids with incremented value and make value = default value
-		$newTab.find(".optionTR input").each(function() {
+		$newTab.find(".optionTR input").each(function(key, value) {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
-			newName = newName.replace(/\[\d+\]/gi, "["+$newOCount.val()+"]");
+			newName = newName.replace(/\[\d+\]/gi, "["+(key+1)+"]");
 			$(this).attr('name', newName);
 		});
 		
@@ -2579,11 +2579,12 @@ $(document).ready(function() {
 		if(dup) $newTab.find(".ui-multiselect").remove();
 		
 		//Replace ids with incremented value and make value = default value + add multiselect
-		$newTab.find(".optionTR .eventTDCollection select").each(function() {
+		$newTab.find(".optionTR .eventTDCollection select").each(function(key, value) {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			if ($oldTab) $(this).val($($oldTab.find(".optionTR .eventTDCollection select")[key]).val());
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
-			newName = newName.replace(/\[\d+\]/gi, "["+$newOCount.val()+"]");
+			newName = newName.replace(/\[\d+\]/gi, "["+(key+1)+"]");
 			$(this).attr('name', newName);
 			
 			$(this).multiselect({
@@ -2596,13 +2597,14 @@ $(document).ready(function() {
 		});
 
 		//Replace ids with incremented value and make value = default value + add multiselect
-		$newTab.find(".optionTR .eventTDOutletLocation select").each(function() {
+		$newTab.find(".optionTR .eventTDOutletLocation select").each(function(key, value) {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			if ($oldTab) $(this).val($oldTab.find(".optionTR .eventTDOutletLocation select").val());
 			var tempName = $(this).attr('name');			
 			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);			
 			newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");			
 			$(this).attr('name', newName);
+
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
