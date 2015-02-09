@@ -1,4 +1,5 @@
-<?php session_start();
+<?php 
+session_start();
 	require('getPath.php'); //the only relative link we will have
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 	//resetting global vars

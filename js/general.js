@@ -460,7 +460,7 @@ $(document).ready(function() {
 	$("#venueConfigForm").on('valid', function (event) {
 		var isNewVenue = false;
 		var queryParam = "";
-		if (window.location.pathname === "/newVenue"){
+		if (window.location.pathname.toLowerCase() === "/newvenue"){
 			isNewVenue= true;
 			queryParam+="?skipUser=1"
 		}
@@ -493,7 +493,8 @@ $(document).ready(function() {
 
 					if (isNewVenue)
 					{
-				 		doSelectVenue("venueId="+dataArray['id']);
+						alert
+				 		doSelectVenue("venueId="+dataArray['id'],true);
 				 		return false;
 				 	}
 					
@@ -2566,11 +2567,11 @@ $(document).ready(function() {
 		});
 		
 		//Replace ids with incremented value and make value = default value
-		$newTab.find(".optionTR input").each(function() {
+		$newTab.find(".optionTR input").each(function(key, value) {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
-			newName = newName.replace(/\[\d+\]/gi, "["+$newOCount.val()+"]");
+			newName = newName.replace(/\[\d+\]/gi, "["+(key+1)+"]");
 			$(this).attr('name', newName);
 		});
 		
@@ -2578,11 +2579,12 @@ $(document).ready(function() {
 		if(dup) $newTab.find(".ui-multiselect").remove();
 		
 		//Replace ids with incremented value and make value = default value + add multiselect
-		$newTab.find(".optionTR .eventTDCollection select").each(function() {
+		$newTab.find(".optionTR .eventTDCollection select").each(function(key, value) {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			if ($oldTab) $(this).val($($oldTab.find(".optionTR .eventTDCollection select")[key]).val());
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
-			newName = newName.replace(/\[\d+\]/gi, "["+$newOCount.val()+"]");
+			newName = newName.replace(/\[\d+\]/gi, "["+(key+1)+"]");
 			$(this).attr('name', newName);
 			
 			$(this).multiselect({
@@ -2595,13 +2597,14 @@ $(document).ready(function() {
 		});
 
 		//Replace ids with incremented value and make value = default value + add multiselect
-		$newTab.find(".optionTR .eventTDOutletLocation select").each(function() {
+		$newTab.find(".optionTR .eventTDOutletLocation select").each(function(key, value) {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			if ($oldTab) $(this).val($oldTab.find(".optionTR .eventTDOutletLocation select").val());
 			var tempName = $(this).attr('name');			
 			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);			
 			newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");			
 			$(this).attr('name', newName);
+
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
@@ -2930,7 +2933,7 @@ $(document).ready(function() {
 		$(this).parents("tr:first").remove();
 	});
 
-	function doSelectVenue(formData){
+	function doSelectVenue(formData,refreshAfter){
 		$.ajax({
 			   type: "POST",
 			   url: "/do_selectVenue",
@@ -2985,7 +2988,9 @@ $(document).ready(function() {
 						}
 
 						window.localStorage.setItem('lastVenueSelected', JSON.stringify(lastVenueSelected));
-						
+						if (refreshAfter){
+							window.location.href = "/dashboard";
+						}
 						
 					}
 				}
@@ -4824,7 +4829,7 @@ $(document).ready(function() {
     });
 
     //Clears the inputs on the newVenue page to reuse the template
-    if (window.location.pathname === "/newVenue"){
+    if (window.location.pathname.toLowerCase() === "/newvenue"){
     	$('input').val('');
     	$('textarea').val('');
     	$('.alignHeader').html("Create a new venue");
