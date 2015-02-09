@@ -1,13 +1,13 @@
 $(document).ready(function () {
 	$('#loading').show();
 	var CARD = null;
-	var claimUrl = 'http://www.preoday.com/';
+	var claimUrl = CURRENT_DATA.CLAIM_URL;
 
 	$("#signUpForm").on('valid', function () {
 		if (!$('#termsConditions').is(':checked')) {
 			noty({
 			  type: 'error',  layout: 'topCenter',
-			  text: _tr("You must accept the terms and conditions to start using your Preoday app.")
+			  text: _tr("You must accept the terms and conditions to start using your ") + CURRENT_DATA.TITLE + _tr(" app.")
 			});			
 			return false;
 		}

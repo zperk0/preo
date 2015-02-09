@@ -1,3 +1,7 @@
+<?php 
+require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/override_vars.php');
+?>
+
 <!DOCTYPE html>
 	<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
 	<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
@@ -6,7 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!-- <meta name="viewport" content="initial-scale=1.0" /> -->
-		<title><? echo _("preoday");?></title>
+		<title><? echo $_SESSION['OVERRIDES']["title"];?></title>
 		<!-- Main CSS files -combined minified -->
 		<!--<link type="text/css" rel="stylesheet" href="<?echo $_SESSION['path']?>/css/normalize_and_foundation_min.css" />-->
 		<!-- Main CSS files -combined -->
@@ -31,6 +35,18 @@
 		<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/all_css.min.css" />		<!-- CSS 1/1 : to be minified and updated with timestamp -->	
 		<?php } ?>
 		
+		<?php 
+			//at this point meta has been imported so the main css is in, safe to add the overrides here!
+			
+			if (isset($_SESSION['OVERRIDES']["css"])){
+				$cssFile = $_SERVER['DOCUMENT_ROOT'].$_SESSION['OVERRIDES']["css"];
+				if (file_exists($cssFile)){
+					echo '<link type="text/css" rel="stylesheet" href="'.$_SESSION['OVERRIDES']["css"].'" />';
+				}	
+			}
+
+		 ?>
+
 		<!-- Pre-body Javascripts -->
 		<!-- combined minified -->
 		<script src="<? echo $_SESSION['path']?>/js/modernizr_and_jquery1.10.2_min.js"></script>
@@ -51,7 +67,7 @@
 				,i[r].l=1*new Date();a=s.createElement(o),
 				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-				ga('create', '<?echo $_SERVER["PREO_ANALYTICS_UA"];?>', 'preoday.com');
+				ga('create', '<?echo $_SERVER["PREO_ANALYTICS_UA"];?>', '<?php echo $_SESSION["OVERRIDES"]["ga_link"] ?>');
 				ga('send', 'pageview');
 			</script>
 		<?}?>
@@ -69,8 +85,8 @@
 		</script>
 		
 		<!-- Favicons -->
-		<link rel="apple-touch-icon" 	href="<?echo $_SESSION['path']?>/img/apple-touch-icon.png"	type="image/x-icon" >
-		<link rel="shortcut icon" 		href="<?echo $_SESSION['path']?>/img/fav.png">
+		<link rel="apple-touch-icon" 	href="<?php echo $_SESSION['OVERRIDES']["apple-touch-icon"] ?>"	type="image/x-icon" >
+		<link rel="shortcut icon" 		href="<?php echo $_SESSION['OVERRIDES']["favicon"] ?>">
 	</head>
 	<body>
 	<div id="wrap">
