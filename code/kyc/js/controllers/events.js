@@ -54,10 +54,12 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
     }      
 
     $scope.exportPdf= function(){
+        $scope.currentAction = 'pdf';
         $scope.pdfData = prepareExportPdfData();    
     }
 
       $scope.exportCsv = function(){
+        $scope.currentAction = 'csv;'
         $scope.csvData = prepareExportCsvData();
       }     
 
@@ -86,6 +88,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
         titlesCSV.push("Other");
 
         var prepData = [[$scope.getExportDate()],[title], titlesCSV];
+        var total = 0;
             angular.forEach($scope.allOrders,function(order){                
                     if ($scope.exportAll === "1" || order.selected === true){
                         var arrPrepData = [ order.id ];
@@ -99,16 +102,25 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
                         arrPrepData.push(order.user.name);
                         arrPrepData.push(order.user.email);
                         arrPrepData.push(order.phone || order.user.phone);
-                        arrPrepData.push(arrItems.join(';'));
-                        arrPrepData.push(order.total.toFixed(2));
+                        arrPrepData.push('\"' + arrItems.join(';').replaceAll('\"', '') + '\"');
+                        arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
                         arrPrepData.push(order.status);
                         arrPrepData.push(order.user.optinLoyalty);
                         arrPrepData.push(order.user.optinOffers);
                         arrPrepData.push(order.user.optinOther);
 
                         prepData.push(arrPrepData);
+
+                        total += order.total;
                     }
             })
+
+        prepData.push([
+            '', '', '', '', '', '', '', '', '', '', ''
+        ]);    
+        prepData.push([
+            '', '', '', '', '', '', 'Total', $scope.getCurrency() + total.toFixed(2), '', '', ''
+        ]);
         return {
            data:prepData
         }
@@ -124,7 +136,14 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
             var item = items[i];
             total += item.total;
 
-            arrItems.push(item.qty + 'x ' + item.name + ' ' + $scope.getCurrency() + item.total.toFixed(2));
+            var currency = null;
+            if ($scope.currentAction == 'pdf') {
+                currency = $scope.getCurrencyByAscii();
+            } else {
+                currency = $scope.getCurrency();
+            }
+
+            arrItems.push(item.qty + 'x ' + item.name + ' ' + currency + item.total.toFixed(2));
         };
 
         order.total = total;
@@ -161,8 +180,6 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
         angular.extend(prepData, {
             "Outlet" :[],
             "Customer" :[],
-            "Email" :[],
-            "Phone" :[],
             "Items":[],
             "Order Total":[],
             "Order Status":[],
@@ -170,28 +187,45 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
             "Offers":[]        
         });
 
-            angular.forEach($scope.allOrders,function(order, key){
-                    if ($scope.exportAll === "1" || order.selected === true){
-                            prepData["Order ID"].push(order.id);
-                            prepData["Outlet"].push($scope.getOutletById(order.outletId).name || order.outletId);
-                            var arrCustomer = [order.user.name, order.user.email, order.phone || order.user.phone];
-                            prepData["Customer"].push(order.user.name);
-                            prepData["Email"].push(order.user.email);
-                            prepData["Phone"].push(order.phone || order.user.phone);
+        var total = 0;
 
-                            var arrItems = getItemsAsString(order);
+        angular.forEach($scope.allOrders,function(order, key){
+                if ($scope.exportAll === "1" || order.selected === true){
+                        prepData["Order ID"].push(order.id);
+                        prepData["Outlet"].push($scope.getOutletById(order.outletId).name || order.outletId);
+                        var arrCustomer = [order.user.name, order.user.email, order.phone || order.user.phone];
+                        prepData["Customer"].push(arrCustomer.join('___BR___'));
 
-                            if (events.length > 1) {
-                                prepData['Event'].push($scope.getEventById(order.eventId).name || order.eventId);
-                            }
+                        var arrItems = getItemsAsString(order);
 
-                            prepData["Items"].push(arrItems.join('___BR___'));
-                            prepData["Order Total"].push($scope.getCurrency() + order.total.toFixed(2));
-                            prepData["Order Status"].push(order.status);
-                            prepData["Loyalty"].push(order.user.optinLoyalty);
-                            prepData["Offers"].push(order.user.optinOffers);                     
-                    }
-            })
+                        if (events.length > 1) {
+                            prepData['Event'].push($scope.getEventById(order.eventId).name || order.eventId);
+                        }
+
+                        prepData["Items"].push(arrItems.join('___BR___'));
+                        prepData["Order Total"].push($scope.getCurrencyByAscii() + order.total.toFixed(2));
+                        prepData["Order Status"].push(order.status);
+                        prepData["Loyalty"].push(order.user.optinLoyalty);
+                        prepData["Offers"].push(order.user.optinOffers);      
+
+                        total += order.total;               
+                }
+        })
+
+        prepData["Order ID"].push('');
+        prepData["Outlet"].push('');
+        prepData["Customer"].push('');
+
+        if (events.length > 1) {
+            prepData['Event'].push('');
+        }
+
+        prepData["Items"].push('Total');
+        prepData["Order Total"].push($scope.getCurrencyByAscii() + total.toFixed(2));
+        prepData["Order Status"].push('');
+        prepData["Loyalty"].push('');
+        prepData["Offers"].push('');
+
         var result = {
             startDate:$scope.form.start_date.valueOf(),
             endDate:$scope.form.end_date.valueOf(),

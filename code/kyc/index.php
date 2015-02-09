@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="/code/kyc/css/app.css"/>    
   
 <div ng-app="kyc" ng-controller='MenuCtrl' ng-init="showDateFilter = true" class='kycWrapper'>  
-  
    <div class="container-fluid faixa-orange">
       <div class="row">
         <h4 class="title-white"><span class="icon-know-customers"></span><? echo _("Know your customers")?></h4>

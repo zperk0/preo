@@ -34,22 +34,8 @@
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>		  			
-					  		</th>
-					  		<th ng-click="orderBy = 'user.email'; direction=!direction">
-					  			<? echo _("Email")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
 					  		</th>	
-					  		<th ng-click="orderBy = 'order.phone'; direction=!direction">
-					  			<? echo _("Phone Number")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>	
-					  		<th ng-click="orderBy = 'itemString'; direction=!direction">
+					  		<th ng-click="orderBy = 'itemString'; direction=!direction" class="colItems">
 					  			<? echo _("Items")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
@@ -77,9 +63,11 @@
 							  </div>						  			
 					  		</td>
 					  		<td ng-if="eventsSelected.length > 1">{{ getEventName(order) }}</td>
-					  		<td>{{ order.user.name }}</td>
-					  		<td>{{ order.user.email }}</td>
-					  		<td>{{ order.phone || order.user.phone }}</td>
+					  		<td>
+					  			{{ order.user.name }} <br />
+					  			{{ order.user.email }} <br />
+					  			{{ order.phone || order.user.phone }}
+					  		</td>
 					  		<td ng-bind-html="getItemsAsString(order)"></td>
 					  		<td>{{ getCurrency() + order.total.toFixed(2) }}</td>
 					  		<td class='marketingTd' width="40"><img class='marketingOpt' ng-src="{{order.user.optinLoyalty  | marketing }}"/></td>

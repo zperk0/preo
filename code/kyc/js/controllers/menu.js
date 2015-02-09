@@ -28,6 +28,28 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			return decodeURI($scope.currencySymbol);
 		}
 
+	 	$scope.getCurrencyByAscii = function(){
+			var currency = decodeURI($scope.currencySymbol);
+
+			var currencyString = '__CURRENCY__';
+			switch(currency) {
+				case '£':
+					currencyString += 'pound;'
+					break;
+				case '€':
+					currencyString += 'euro;'
+					break;
+				case '$':
+					currencyString += '#36;'
+					break;
+				default: 
+					currencyString = currency;
+					break;
+			}
+
+			return currencyString;
+		}
+
 	    Venue.getItems({id: VENUE_ID}).$promise.then(function( data ){
 	        UtilsService.setItems(data);
 	    });
