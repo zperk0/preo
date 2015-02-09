@@ -9,7 +9,7 @@
 	<div class="container" id="cblue">
 			<?php if ($_SESSION['OVERRIDES']["logo"] != false) { ?>		
 				<div class="navbar-header">			
-					<a id="logo" class="logo" href="http://preoday.com/" rel="home">Preoday</a>			
+					<a id="logo" class="logo" href="<?php echo $_SESSION['OVERRIDES']["site"] ?>" rel="home"><?php echo $_SESSION['OVERRIDES']["title"] ?></a>			
 				</div>
 			<?php } ?>
 			<div class="nav navbar-nav navbar-text navbar-right">

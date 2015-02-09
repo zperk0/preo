@@ -1,6 +1,6 @@
-<?php require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
-      require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function 
-      require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/override_vars.php');
+<?php 
+	require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
+    require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function 
     if ( isset($_SESSION['logged']) ) {
 		require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/account_functions.php');   //kint
 
@@ -14,7 +14,7 @@
 			<li class="name">
 			<? if ($_SESSION['OVERRIDES']['logo'] != false) { ?>
 				<h1>
-					<a href="<?echo $_SESSION['path']?>/"><img src="<?echo $_SESSION['OVERRIDES']['logo']?>" alt="<? echo _("PreoDay");?>"/></a>
+					<a href="<?echo $_SESSION['path']?>/"><img src="<?echo $_SESSION['OVERRIDES']['logo']?>" alt="<? echo $_SESSION['OVERRIDES']["title"];?>"/></a>
 				</h1>
 			<? } ?>
 				<div class="progressIndicator has-tip tip-right" data-tooltip></div>
