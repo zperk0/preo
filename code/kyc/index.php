@@ -84,10 +84,10 @@
                     <multi-select
                         class="selectOutlet"    
                         input-model="events"    
-                        button-label="name"
-                        item-label="name"
+                        button-label="fullName"
+                        item-label="fullName"
                         tick-property="selected"
-                        default-label="Events"
+                        default-label="{{ defaultLabelEvents }}"
                     ></multi-select>
                    </div>
                    <div class='columns large-3 small-2'>
