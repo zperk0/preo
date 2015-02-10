@@ -87,7 +87,7 @@
                         button-label="fullName"
                         item-label="fullName"
                         tick-property="selected"
-                        default-label="Events"
+                        default-label="{{ defaultLabelEvents }}"
                     ></multi-select>
                    </div>
                    <div class='columns large-3 small-2'>
