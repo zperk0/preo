@@ -5,7 +5,7 @@
         <form>
             <div class="helperContainer">
                 <div  ng-if="displayHelper('filter') && enableSearch" class="contentSearch select2-search">
-                    <input placeholder="Search..." type="text" ng-click="select('filter', $event )" ng-model="inputLabel.labelFilter" ng-change="updateFilter();getFormElements();" class="inputFilter" />
+                    <input type="text" ng-click="select('filter', $event )" ng-model="inputLabel.labelFilter" ng-change="updateFilter();getFormElements();" class="inputFilter" />
                 </div>
             </div>
             <div class="checkBoxContainer">
@@ -13,7 +13,7 @@
                     <div class="multiSelect acol">
                         <label class="multiSelect" ng-class="{checkboxSelected:item[ tickProperty ]}">
                             <input class="multiSelect checkbox" type="checkbox" ng-disabled="itemIsDisabled( item )" ng-checked="item[ tickProperty ]" ng-click="syncItems( item, $event )"/>
-                            <span class="multiSelect" ng-class="{disabled:itemIsDisabled( item )}" ng-bind-html="writeLabel( item, 'itemLabel' )"></span>
+                            <span class="multiSelect multiSelectItem" ng-class="{disabled:itemIsDisabled( item )}" ng-bind-html="writeLabel( item, 'itemLabel' )"></span>
                         </label>
                     </div>
                 </div>

@@ -190,6 +190,13 @@ label.multiSelect span {
     margin-bottom: 0px;
 }
 
+.multiSelect span.multiSelectItem {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 !important;
+}
+
 /* On mouse over and focus */
 label.multiSelect input:focus ~ span::after,
 label.multiSelect span:focus::after, 

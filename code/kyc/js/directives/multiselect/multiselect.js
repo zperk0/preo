@@ -145,7 +145,6 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                         for (var key in $scope.inputModel[ i ] ) {
                             // if filter string is in one of object property                            
                             if ( typeof $scope.inputModel[ i ][ key ] !== 'boolean'  && String( $scope.inputModel[ i ][ key ] ).toUpperCase().indexOf( $scope.inputLabel.labelFilter.toUpperCase() ) >= 0 ) {
-                                console.log('ciu no go data');
                                 gotData = true;
                                 break;
                             }
