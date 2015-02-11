@@ -1,6 +1,6 @@
 
-angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','VenueService','$AjaxInterceptor','$location','INITIAL_DATES', 'UtilsService', 'Venue', 'VENUE_ID',
-	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location,INITIAL_DATES, UtilsService, Venue, VENUE_ID) {	
+angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','VenueService','$AjaxInterceptor','$location','INITIAL_DATES', 'UtilsService', 'Venue', 'VENUE_ID', '$filter',
+	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location,INITIAL_DATES, UtilsService, Venue, VENUE_ID, $filter) {	
 
 		$scope.currencySymbol = "%C2%A3";
 		$scope.outlets = [];
@@ -142,17 +142,21 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 					$scope.defaultLabelEvents = _tr('Events');
 					for (var i = events.length - 1; i >= 0; i--) {
 						var current = events[i];
-						current.fullName = moment(current.schedules[0].startDate).format('DD/MM/YYYY hh:mm') + ' - ' + current.name;
+						var startDate = moment(current.schedules[0].startDate);
+						current.startDateTimeStamp = startDate.valueOf();
+						current.fullName = startDate.format('DD/MM/YYYY hh:mm') + ' - ' + current.name;
 					};
 				} else {
 					$scope.defaultLabelEvents = _tr('No events in this period');
 				}
 
 				$scope.eventsSelected = events;
-				$scope.events = events;
+				$scope.events = $filter('orderBy')(events, 'startDateTimeStamp', true);			
 				loadOrdersEvents(getAllEventsIds());
 			})
 		}
+
+
 
 		var loadOrdersEvents = function (events) {
 			if (events.length) {
@@ -172,6 +176,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			$AjaxInterceptor.start();
 
 			$scope.eventsSelected = $scope.getEventsSelected();
+			console.log($scope.eventsSelected);
 
 			$scope.$broadcast('SELECT_EVENT');
 		}

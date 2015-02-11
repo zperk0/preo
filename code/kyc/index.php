@@ -80,10 +80,11 @@
               <div class="columns large-12 small-12 nopadding">              
                   <label>
                   <? echo _("Events: ")?></label>
-                  <div class='columns large-9 small-10 nopadding'>
+                  <div class='columns large-9 small-10 nopadding'>           
                     <multi-select
                         class="selectOutlet"    
-                        input-model="events"    
+                        input-model="events"
+                        enable-search="true"
                         button-label="fullName"
                         item-label="fullName"
                         tick-property="selected"

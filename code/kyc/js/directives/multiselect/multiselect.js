@@ -31,7 +31,7 @@
  * --------------------------------------------------------------------------------
  */
 
-angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter', function ( $sce, $filter ) {
+angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter', '$timeout', function ( $sce, $filter, $timeout ) {
     return {
         restrict: 
             'AE',
@@ -51,6 +51,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
             orientation     : '@',
             defaultLabel    : '@',
             maxLabels       : '@',
+            enableSearch    : '@',
             isDisabled      : '=',
             directiveId     : '@',
             helperElements  : '@',
@@ -70,6 +71,11 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
             $scope.varButtonLabel   = '';   
             $scope.currentButton    = null;
             $scope.scrolled         = false;
+            $scope.enableSearch = $scope.enableSearch === 'true';
+            $scope.filteredModel    = [];
+            $scope.inputLabel = {
+                labelFilter: ''
+            }
 
             // Show or hide a helper element 
             $scope.displayHelper = function( elementString ) {
@@ -112,17 +118,81 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                 }
             }                
 
+            $scope.updateFilter = function()
+            {
+                // we check by looping from end of array
+                $scope.filteredModel   = [];
+                var i = 0;
+
+                if ( typeof $scope.inputModel === 'undefined' ) {
+                    return [];                   
+                }
+
+                if ($scope.inputLabel.labelFilter === '') {
+                    $scope.filteredModel = $scope.inputModel;
+                    return;
+                }
+
+                for( i = $scope.inputModel.length - 1; i >= 0; i-- ) {
+                    // if it's group end
+                    if ( typeof $scope.inputModel[ i ][ $scope.groupProperty ] !== 'undefined' && $scope.inputModel[ i ][ $scope.groupProperty ] === false ) {
+                        $scope.filteredModel.push( $scope.inputModel[ i ] );
+                    }
+                    
+                    // if it's data 
+                    var gotData = false;
+                    if ( typeof $scope.inputModel[ i ][ $scope.groupProperty ] === 'undefined' ) {    
+                        for (var key in $scope.inputModel[ i ] ) {
+                            // if filter string is in one of object property                            
+                            if ( typeof $scope.inputModel[ i ][ key ] !== 'boolean'  && String( $scope.inputModel[ i ][ key ] ).toUpperCase().indexOf( $scope.inputLabel.labelFilter.toUpperCase() ) >= 0 ) {
+                                console.log('ciu no go data');
+                                gotData = true;
+                                break;
+                            }
+                        }                        
+                        if ( gotData === true ) {    
+                            // push
+                            $scope.filteredModel.push( $scope.inputModel[ i ] );
+                        }
+                    }
+
+                    // if it's group start
+                    if ( typeof $scope.inputModel[ i ][ $scope.groupProperty ] !== 'undefined' && $scope.inputModel[ i ][ $scope.groupProperty ] === true ) {
+
+                        if ( typeof $scope.filteredModel[ $scope.filteredModel.length - 1 ][ $scope.groupProperty ] !== 'undefined' && $scope.filteredModel[ $scope.filteredModel.length - 1 ][ $scope.groupProperty ] === false ) {
+                            $scope.filteredModel.pop();
+                        }
+                        else {
+                            $scope.filteredModel.push( $scope.inputModel[ i ] );
+                        }
+                    }
+                }                
+
+                $scope.filteredModel.reverse();  
+                $timeout( function() {
+                    $scope.getFormElements();               
+                },0);
+            };            
+
+            // List all the input elements.
+            // This function will be called everytime the filter is updated. Not good for performance, but oh well..
+            $scope.getFormElements = function() {                     
+                $scope.formElements = [];
+                for ( var i = 0; i < element[ 0 ].getElementsByTagName( 'FORM' )[ 0 ].elements.length ; i++ ) { 
+                    $scope.formElements.push( element[ 0 ].getElementsByTagName( 'FORM' )[ 0 ].elements[ i ] );
+                }
+            }                   
+
             // Call this function when a checkbox is ticked...
             $scope.syncItems = function( item, e ) {                                                                
-                var index = $scope.inputModel.indexOf( item );                
-                $scope.inputModel[ index ][ $scope.tickProperty ]   = !$scope.inputModel[ index ][ $scope.tickProperty ];
-                
+                var index = $scope.filteredModel.indexOf( item );    
+                $scope.filteredModel[ index ][ $scope.tickProperty ]   = !$scope.filteredModel[ index ][ $scope.tickProperty ];
                 // If it's single selection mode
                 if ( attrs.selectionMode && $scope.selectionMode.toUpperCase() === 'SINGLE' ) {
-                    $scope.inputModel[ index ][ $scope.tickProperty ] = true;
-                    for( var i=0; i<$scope.inputModel.length;i++) {
+                    $scope.filteredModel[ index ][ $scope.tickProperty ] = true;
+                    for( var i=0; i<$scope.filteredModel.length;i++) {
                         if ( i !== index ) {
-                            $scope.inputModel[ i ][ $scope.tickProperty ] = false;
+                            $scope.filteredModel[ i ][ $scope.tickProperty ] = false;
                         }
                     }    
                     $scope.toggleCheckboxes( e );
@@ -140,7 +210,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                 $scope.selectedItems    = [];
                 var ctr                     = 0;
                 
-                angular.forEach( $scope.inputModel, function( value, key ) {
+                angular.forEach( $scope.filteredModel, function( value, key ) {
                     if ( typeof value !== 'undefined' ) {                        
                         if ( value[ $scope.tickProperty ] === true || value[ $scope.tickProperty ] === 'true' ) {
                             $scope.selectedItems.push( value );        
@@ -225,6 +295,87 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                 return $sce.trustAsHtml( label );
             }
 
+
+            // prepare original index
+            $scope.prepareIndex = function() {
+                var ctr = 0;
+                angular.forEach( $scope.filteredModel, function( value, key ) {
+                    value[ $scope.indexProperty ] = ctr;
+                    ctr++;
+                });
+            }
+
+            // navigate using up and down arrow
+            $scope.keyboardListener = function( e ) { 
+                
+                var key = e.keyCode ? e.keyCode : e.which;      
+                var isNavigationKey = false;                
+
+                // ESC key (close)
+                if ( key === 27 ) {
+                    $scope.toggleCheckboxes( e );
+                }                    
+                
+                // next element ( tab, down & right key )                    
+                else if ( key === 40 || key === 39 || ( !e.shiftKey && key == 9 ) ) {                    
+                    isNavigationKey = true;
+                    prevTabIndex = $scope.tabIndex; 
+                    $scope.tabIndex++;                         
+                    if ( $scope.tabIndex > $scope.formElements.length - 1 ) {
+                        $scope.tabIndex = 0;
+                        prevTabIndex = $scope.formElements.length - 1; 
+                    }                                                            
+                    while ( $scope.formElements[ $scope.tabIndex ].disabled === true ) {                                                                        
+                        $scope.tabIndex++;
+                        if ( $scope.tabIndex > $scope.formElements.length - 1 ) {
+                            $scope.tabIndex = 0;                            
+                        }                                                                                    
+                    }
+                }
+                
+                // prev element ( shift+tab, up & left key )
+                else if ( key === 38 || key === 37 || ( e.shiftKey && key == 9 ) ) { 
+                    isNavigationKey = true;
+                    prevTabIndex = $scope.tabIndex; 
+                    $scope.tabIndex--;                              
+                    if ( $scope.tabIndex < 0 ) {
+                        $scope.tabIndex = $scope.formElements.length - 1;
+                        prevTabIndex = 0;
+                    }                                         
+                    while ( $scope.formElements[ $scope.tabIndex ].disabled === true ) {
+                        $scope.tabIndex--;
+                        if ( $scope.tabIndex < 0 ) {
+                            $scope.tabIndex = $scope.formElements.length - 1;
+                        }                                                                 
+                    }                                 
+                }    
+
+                if ( isNavigationKey === true ) {                     
+
+                    e.preventDefault();
+                    e.stopPropagation();                    
+
+                    // set focus on the checkbox
+                    $scope.formElements[ $scope.tabIndex ].focus();                                    
+                    
+                    // css styling
+                    var actEl = document.activeElement;        
+
+                    if ( actEl.type.toUpperCase() === 'CHECKBOX' ) {                                                   
+                        $scope.setFocusStyle( $scope.tabIndex );
+                        $scope.removeFocusStyle( prevTabIndex );
+                    }                    
+                    else {
+                        $scope.removeFocusStyle( prevTabIndex );
+                        $scope.removeFocusStyle( helperItemsLength );
+                        $scope.removeFocusStyle( $scope.formElements.length - 1 );
+                    } 
+                }
+
+                isNavigationKey = false;
+            }
+
+
             // UI operations to show/hide checkboxes based on click event..
             $scope.toggleCheckboxes = function( e ) {                                                
                 // Determine what element is clicked (has to be button). 
@@ -246,7 +397,8 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                     }
                 }                    
 
-                $scope.labelFilter = '';                
+                $scope.inputLabel.labelFilter = '';                
+                $scope.updateFilter();   
               
                 // Search all the multi-select instances based on the class names
                 var multiSelectIndex    = -1;                                
@@ -307,21 +459,21 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                 var temp = [];
                 switch( type.toUpperCase() ) {
                     case 'ALL':
-                        angular.forEach( $scope.inputModel, function( value, key ) {
+                        angular.forEach( $scope.filteredModel, function( value, key ) {
                             if ( typeof value !== 'undefined' && value[ $scope.disableProperty ] !== true ) {                        
                                 value[ $scope.tickProperty ] = true;
                             }
                         });                                        
                         break;
                     case 'NONE':
-                        angular.forEach( $scope.inputModel, function( value, key ) {
+                        angular.forEach( $scope.filteredModel, function( value, key ) {
                             if ( typeof value !== 'undefined' && value[ $scope.disableProperty ] !== true ) {                        
                                 value[ $scope.tickProperty ] = false;
                             }
                         });                
                         break;      
                     case 'RESET':     
-                        $scope.inputModel = angular.copy( $scope.backUp );
+                        $scope.filteredModel = angular.copy( $scope.backUp );
                         break;
                     default:                        
                 }
@@ -386,7 +538,8 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                 if ( $scope.newVal !== 'undefined' ) {
                     validateProperties( $scope.itemLabel.split( ' ' ), $scope.inputModel );
                     validateProperties( new Array( $scope.tickProperty ), $scope.inputModel );
-                }                
+                }    
+                $scope.updateFilter();            
                 $scope.refreshSelectedItems();                                                 
             }, true);
 
@@ -423,8 +576,8 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
             angular.element( document ).bind( 'click touchend' , function( e ) {                                                                
 
                 if ( e.type === 'click' || e.type === 'touchend' && $scope.scrolled === false ) {
-                    var checkboxes = document.querySelectorAll( '.checkboxLayer' );     
-                    if ( e.target.className.indexOf === undefined || e.target.className.indexOf( 'multiSelect' )) {
+                    var checkboxes = document.querySelectorAll( '.checkboxLayer' );   
+                    if ( e.target.className.indexOf === undefined || (e.target.className.indexOf( 'multiSelect' ) === -1 && e.target.className.indexOf( 'inputFilter' ) === -1 && e.target.className.indexOf( 'clearButton' ) === -1)) {
                         for( var i=0; i < checkboxes.length; i++ ) {                                        
                             checkboxes[i].className = 'multiSelect checkboxLayer hide';                        
                         }

@@ -168,6 +168,28 @@ label.multiSelect span {
     margin-left: 1px;
 }
 
+.multiSelect .contentSearch {
+    padding: 20px 24px 0 24px;
+}
+.multiSelect .checkBoxContainer {
+    max-height: 200px;
+    overflow-y: scroll !important;
+}
+
+.multiSelect .contentSearch input {
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+}
+.multiSelect .contentSearch button {
+    background: none !important;
+    background-color: #3aa2dc !important;
+}
+
+.multiSelect form {
+    margin-bottom: 0px;
+}
+
 /* On mouse over and focus */
 label.multiSelect input:focus ~ span::after,
 label.multiSelect span:focus::after, 
