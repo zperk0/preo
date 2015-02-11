@@ -82,7 +82,7 @@
                   <? echo _("Events: ")?></label>
                   <div class='columns large-9 small-10 nopadding'>           
                     <multi-select
-                        class="selectOutlet"    
+                        class="selectOutlet selectEvents"    
                         input-model="events"
                         enable-search="true"
                         button-label="fullName"

@@ -417,21 +417,21 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                 if ( multiSelectIndex > -1 ) {
                     for( var i=0; i < checkboxes.length; i++ ) {
                         if ( i != multiSelectIndex ) {
-                            checkboxes[i].className = 'multiSelect checkboxLayer hide';
+                            checkboxes[i].className = 'multiSelect checkboxLayer select2-drop-active hide';
                         }
                     }                    
 
                     // If it's already hidden, show it
-                    if ( checkboxes[ multiSelectIndex ].className == 'multiSelect checkboxLayer hide' ) {                    
+                    if ( checkboxes[ multiSelectIndex ].className == 'multiSelect checkboxLayer select2-drop-active hide' ) {                    
                         $scope.currentButton = multiSelectButtons[ multiSelectIndex ];
-                        checkboxes[ multiSelectIndex ].className = 'multiSelect checkboxLayer dropdown pdDropdown show';
+                        checkboxes[ multiSelectIndex ].className = 'multiSelect checkboxLayer dropdown pdDropdown select2-drop-active show';
                         // https://github.com/isteven/angular-multi-select/pull/5 - On open callback
                         $scope.onOpen();                        
                     }
 
                     // If it's already displayed, hide it
-                    else if ( checkboxes[ multiSelectIndex ].className == 'multiSelect checkboxLayer dropdown pdDropdown show' ) {
-                        checkboxes[ multiSelectIndex ].className = 'multiSelect checkboxLayer hide';
+                    else if ( checkboxes[ multiSelectIndex ].className == 'multiSelect checkboxLayer dropdown pdDropdown select2-drop-active show' ) {
+                        checkboxes[ multiSelectIndex ].className = 'multiSelect checkboxLayer select2-drop-active hide';
                         // https://github.com/isteven/angular-multi-select/pull/5 - On close callback
                         $scope.onClose();                        
                     }
@@ -578,7 +578,7 @@ angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter'
                     var checkboxes = document.querySelectorAll( '.checkboxLayer' );   
                     if ( e.target.className.indexOf === undefined || (e.target.className.indexOf( 'multiSelect' ) === -1 && e.target.className.indexOf( 'inputFilter' ) === -1 && e.target.className.indexOf( 'clearButton' ) === -1)) {
                         for( var i=0; i < checkboxes.length; i++ ) {                                        
-                            checkboxes[i].className = 'multiSelect checkboxLayer hide';                        
+                            checkboxes[i].className = 'multiSelect checkboxLayer select2-drop-active hide';                        
                         }
                         e.stopPropagation();
                     }                                                                        

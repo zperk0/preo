@@ -176,7 +176,6 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			$AjaxInterceptor.start();
 
 			$scope.eventsSelected = $scope.getEventsSelected();
-			console.log($scope.eventsSelected);
 
 			$scope.$broadcast('SELECT_EVENT');
 		}
