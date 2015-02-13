@@ -96,5 +96,13 @@ angular.module('kyc', [
         }]
     }
   });
+  $routeProvider.when('/events', {templateUrl: '/code/kyc/partials/events.php', controller: 'EventsCtrl',
+     resolve: {
+        load: ['$route', 'OrderService','$AjaxInterceptor', function ($route, OrderService,$AjaxInterceptor) {  
+          $AjaxInterceptor.start();        
+          return OrderService.load();            
+        }]
+    }
+  });
   $routeProvider.otherwise({redirectTo: '/dashboard'});
 }]);
