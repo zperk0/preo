@@ -119,7 +119,7 @@
 						<div class="content-optionsExport">
 							<div class="options optionsExport overflow">						
 							  <div class="checkbox checkboxStyle">
-							  	<input type="radio" ng-model="exportAll" name="option" value="1" id="exportAll" />
+							  	<input type="radio" ng-model="exportAll" name="option" value="1" id="exportAll"/>
 							    <label for="exportAll"><? echo _("All") ?></label>
 							  </div>					
 							  <div class="checkbox checkboxStyle">
