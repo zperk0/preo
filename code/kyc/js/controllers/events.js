@@ -5,6 +5,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
     $scope.enableEventFilter();
 
     $scope.setLocation('events');
+    $scope.exportAll="1";   
 
     var title = _tr("Events");
 
