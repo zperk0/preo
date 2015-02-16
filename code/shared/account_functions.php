@@ -33,9 +33,9 @@
 			$_SESSION['venue_liveFlag']			= $data['liveFlag'];	
 		}
 
-		if (isset($data['cashFlag'])) {
-			$_SESSION['venue_cashFlag']			= $data['cashFlag'];	
-		}
+		// if (isset($data['cashFlag'])) {
+		// 	$_SESSION['venue_cashFlag']			= $data['cashFlag'];	
+		// }
 
 		if (isset($data['code'])) {
 			$_SESSION['venue_code']				= $data['code'];	
