@@ -2,7 +2,6 @@ angular.module('kyc.controllers').controller('StreamCtrl', ['$scope','OrderServi
  function($scope,OrderService,pusher,$AjaxInterceptor,$interval,VENUE_ID, UtilsService) {
 
     $scope.$parent.showDateFilter = false;
-    $scope.disableEventFilter();
 
     $scope.setLocation('stream');
 	$scope.orders = OrderService.getOrders();

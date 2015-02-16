@@ -13,20 +13,20 @@
   <link rel="stylesheet" href="/code/kyc/css/app.css"/>    
   
 <div ng-app="kyc" ng-controller='MenuCtrl' ng-init="showDateFilter = true" class='kycWrapper'>  
+  
    <div class="container-fluid faixa-orange">
       <div class="row">
         <h4 class="title-white"><span class="icon-know-customers"></span><? echo _("Know your customers")?></h4>
       </div>
     </div> 
   <header>    
-    <nav class="row" data-topbar role="navigation" id="navbar-menu" ng-class="{withEvents: venue.eventFlag}">      
+    <nav class="row" data-topbar role="navigation" id="navbar-menu">      
           <ul>
             <li class="metrics" ng-class='{active:currentLocation==="dashboard"}' ng-click='setLocation("dashboard")'><span><? echo _("Metrics")?></span></li>
             <li class="stock" ng-class='{active:currentLocation==="stock"}' ng-click='setLocation("stock")'><span><? echo _("Stock")?></span></li>
             <li class="customers" ng-class='{active:currentLocation==="customers"}' ng-click='setLocation("customers")'><span><? echo _("Customers")?></span></li>
             <li class="reports" ng-class='{active:currentLocation==="reports"}' ng-click='setLocation("reports")'><span><? echo _("Reports")?></span></li>
             <li class="live-stream" ng-class='{active:currentLocation==="stream"}' ng-click='setLocation("stream")'><span><? echo _("Live stream")?></span></li>
-            <li class="events" ng-if="venue.eventFlag" ng-class='{active:currentLocation==="events"}' ng-click='setLocation("events")'><span><? echo _("Events")?></span></li>
           </ul>
     </nav>
   </header>
@@ -35,7 +35,7 @@
   
     <div class="container-fluid" id="container-search" ng-if="currentLocation != 'reports'">
       <div class="row formContainer" >     
-          <form class="navbar-form navbar-left columns large-7 small-12 nopadding" role="search" ng-if="!isEventFilter()" ng-submit="update()">
+          <form class="navbar-form navbar-left columns large-7 small-12 nopadding" role="search" ng-submit="update()">
             <div class='row nomargin'>
               <div class="columns large-12 small-12 nopadding">              
                   <label>
@@ -74,29 +74,6 @@
                   </div>
               </div>                      
           </form>
-
-          <form class="navbar-form navbar-left columns large-6 small-12 nopadding" role="search" ng-if="isEventFilter()" ng-submit="updateDataWithEvents()">
-            <div class='row nomargin'>
-              <div class="columns large-12 small-12 nopadding">              
-                  <label>
-                  <? echo _("Events: ")?></label>
-                  <div class='columns large-9 small-10 nopadding'>           
-                    <multi-select
-                        class="selectOutlet selectEvents"    
-                        input-model="events"
-                        enable-search="true"
-                        button-label="fullName"
-                        item-label="fullName"
-                        tick-property="selected"
-                        default-label="{{ defaultLabelEvents }}"
-                    ></multi-select>
-                   </div>
-                   <div class='columns large-3 small-2'>
-                    <button type="submit" class="preodayButton small "><? echo _("Refresh")?></button>            
-                   </div>                
-              </div>
-            </div>
-          </form>            
       </div>
     </div>
     <div ng-view></div>
@@ -145,7 +122,6 @@
   <script src="/code/kyc/js/controllers/reports.js"></script>
   <script src="/code/kyc/js/controllers/stock.js"></script>
   <script src="/code/kyc/js/controllers/stream.js"></script>
-  <script src="/code/kyc/js/controllers/events.js"></script>
   <script src="/code/kyc/js/controllers/menu.js"></script>
   <script src="/code/kyc/js/resources/export.js"></script>
   <script src="/code/kyc/js/resources/outlet.js"></script>
@@ -216,16 +192,6 @@
        // start: new Date('2014-05-01'),
        // end:  new Date('2014-05-02')
   });
-
-  String.prototype.replaceAll = function(de, para){
-      var str = this;
-      var pos = str.indexOf(de);
-      while (pos > -1){
-      str = str.replace(de, para);
-      pos = str.indexOf(de);
-    }
-      return (str);
-  } 
 
   function modal_url( url ) {
     return '/code/kyc/js/modals/' + url + '.php';
