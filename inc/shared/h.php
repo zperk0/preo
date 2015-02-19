@@ -61,6 +61,7 @@
 										$mDataJSON = json_decode($mCurlResult,true);
 										if(!empty($mDataJSON) && (!isset($mDataJSON['status'])))
 										{
+											$_SESSION['menus'] = $mDataJSON;
 											foreach($mDataJSON as $menuL){?>
 												<li><a href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>"><?echo _("Edit")." $menuL[name]";?></a></li>
 											<?}?>
