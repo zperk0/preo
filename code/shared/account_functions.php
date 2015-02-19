@@ -165,4 +165,12 @@
 
 		return $curlResult = '[{"status" : 200}]';		
 	}
+
+	function getCurrentlyUserRole() {
+	  $apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens		
+	  $curlResult = callAPI('GET', $GLOBALS['apiURL']."users/auth/roles/admin", false, $apiAuth);
+	  if(empty($curlResult)) $curlResult = '{"status" : 200}';
+
+	  return json_decode($curlResult, true);		
+	}
 ?>

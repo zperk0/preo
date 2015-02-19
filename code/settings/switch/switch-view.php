@@ -5,14 +5,9 @@
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
+  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/account_functions.php'); 
 
-
-  // Make sure we have perms to use this
-  $apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
-  $curlResult = callAPI('GET', $apiURL."users/auth/roles/admin", false, $apiAuth);
-  if(empty($curlResult)) $curlResult = '[{"status" : 200}]';
-
-  $result = json_decode($curlResult, true);
+  $result = getCurrentlyUserRole();
 
   if ( isset($result['status']) && $result['status'] == 403 ) { 
     // Send a 404 only admins should see this

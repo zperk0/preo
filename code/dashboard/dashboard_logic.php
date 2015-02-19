@@ -12,7 +12,7 @@
 	$_SESSION['dashboardFlag']=0;
 	
 	//ROLE TEST
-	if( !isset($_SESSION['user_role']) )
+	if( !isset($_SESSION['user_role']) && isset($_SESSION['account_id']) )
 	{
 		// Get the user role from the account
 		// we use the user's token
@@ -37,9 +37,14 @@
 
 	if( !isset($_SESSION['user_role']) || ($_SESSION['user_role'] != 'OWNER' && $_SESSION['user_role'] != 'ADMIN') )
 	{
-		$_SESSION['privLogout'] = 1;
-		header("location:".$_SESSION['path'].'/logout');
-		exit;
+			$result = getCurrentlyUserRole();
+		  if ( isset($result['status']) && $result['status'] == 403 ) { 
+			$_SESSION['privLogout'] = 1;
+			header("location:".$_SESSION['path'].'/logout');
+			exit;
+		  }
+
+		  header("location:".$_SESSION['path'].'/switch'); exit();
 	}
 	
 	
