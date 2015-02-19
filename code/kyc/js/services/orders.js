@@ -51,24 +51,11 @@ angular.module('kyc.services')
 				}).$promise;            
       }
 
-    function getOrdersByEvents(minPaid,maxPaid,eventIds) {
-      minPaid = getMinDateForQuery(minPaid);
-
-      if ( eventIds && eventIds.length ) {
-        eventIds = eventIds.join(',');
-      }
-
-      //max paid on the query is always now.
-      maxPaid = moment.utc().valueOf();
-        return Order.query({accountId:ACCOUNT_ID, venueId: VENUE_ID, maxPaid:maxPaid,minPaid:minPaid, eventIds: eventIds}).$promise;   
-    }
-
 		
     return {
       load:load,
     	loadSince:loadSince,
-    	getOrders:getOrders,
-      getOrdersByEvents: getOrdersByEvents
+    	getOrders:getOrders
 
     }
 

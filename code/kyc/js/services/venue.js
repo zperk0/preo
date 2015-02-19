@@ -44,19 +44,6 @@ angular.module('kyc.services')
             "name_plural": "US dollars"
         }
     }
-
-    function getMinDateForQuery(minPaid){     
-      //we need at least two years of data to calculate the area charts,
-      return minPaid === undefined  || minPaid.valueOf() > moment.utc().subtract('year',2).valueOf() ? 
-                moment.utc().subtract('year',2).valueOf() : 
-                minPaid.startOf('day').valueOf();
-    }
-
-    function getEvents(minPaid) {                        
-         minPaid = minPaid.format('YYYY/M/D')
-
-      return Venue.getEvents({id: venue.id, after: minPaid}).$promise;            
-    }      
       
     function getCurrency(callback){        
         if (venue){
@@ -69,8 +56,7 @@ angular.module('kyc.services')
     
     return {
     	getCurrency:getCurrency,
-        init:init,
-        getEvents: getEvents
+        init:init
     }
 
 }]);
