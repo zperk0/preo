@@ -504,8 +504,18 @@
 	//echo var_export($menu);
 	
 	if(empty($curlResult)) $curlResult = '[{"status" : 200}]';
+		
+	if (isset($_SESSION['menus'])){
+		foreach($_SESSION['menus'] as $key => $eachMenu){
+			if ($menu['id'] == $eachMenu['id']){
+				$_SESSION['menus'][$key] = $menu;
+				break;
+			}								
+		}
+	} else {
+		$_SESSION['menus'] = [$menu];
+	}
 	
-	$_SESSION['menus'] = $menu;
 	//echo $curlResult; //sending a JSON via ajax 
 	
 	//we need to send back an array along with curlResult
