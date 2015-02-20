@@ -3015,10 +3015,7 @@ $(document).ready(function() {
 			
 			$('#venueSubButton').hide();
 			$('#savingButton').show();			
-			doSelectVenue(data)
-			setTimeout(function(){
-				window.location = "/dashboard";
-			})
+			doSelectVenue(data);
 		}
 		//update Time
 		submitTime = new Date().getTime();
