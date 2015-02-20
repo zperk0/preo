@@ -7,7 +7,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
     $scope.setLocation('events');
     $scope.exportAll="1";   
 
-    var title = '';
+    var title = _tr("Events");
 
     var processOrders = function (data) {
         $scope.allOrders = data.orders;
@@ -64,16 +64,6 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
         $scope.csvData = prepareExportCsvData();
       }     
 
-      $scope.getExportDateForEvent = function () {
-        var events = $scope.getEventsSelected();
-
-        if (events.length > 1) {
-            return moment(events[events.length - 1].schedules[0].startDate).format("DD-MMM-YYYY") + ' - ' + moment(events[0].schedules[0].startDate).format("DD-MMM-YYYY");
-        }
-
-        return $scope.form.start_date.format("DD-MMM-YYYY") + " - " + $scope.form.end_date.format("DD-MMM-YYYY");
-      }
-
     function prepareExportCsvData(){
         var events = $scope.getEventsSelected();       
 
@@ -90,6 +80,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
         titlesCSV.push("Outlet");
         titlesCSV.push("Customer");
         titlesCSV.push("Email");
+        titlesCSV.push("Phone");
         titlesCSV.push("Items");
         titlesCSV.push("Order Total");
         titlesCSV.push("Order Status");
@@ -97,22 +88,21 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
         titlesCSV.push("Offers");
         titlesCSV.push("Other");
 
-        var statusOrderHide = ['NOSHOW', 'REJECTED', 'CANCELLED', 'PAYMENT_FAILED'];
-
-        var prepData = [[$scope.getExportDateForEvent()],[title], titlesCSV];
+        var prepData = [[$scope.getExportDate()],[title], titlesCSV];
         var total = 0;
             angular.forEach($scope.allOrders,function(order){                
-                    if ($scope.exportAll === "1" || order.selected === true && statusOrderHide.indexOf(order.status) === -1 ){
+                    if ($scope.exportAll === "1" || order.selected === true){
                         var arrPrepData = [ order.id ];
                         
                         var arrItems = getItemsAsString(order);
                         if (events.length > 1) {                            
-                            arrPrepData.push($scope.getEventById(order.eventId).fullName);
+                            arrPrepData.push($scope.getEventById(order.eventId).name || order.eventId);
                         }          
 
                         arrPrepData.push($scope.getOutletById(order.outletId).name || order.outletId);
                         arrPrepData.push(order.user.name);
                         arrPrepData.push(order.user.email);
+                        arrPrepData.push(order.phone || order.user.phone);
                         arrPrepData.push('\"' + arrItems.join(';').replaceAll('\"', '') + '\"');
                         arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
                         arrPrepData.push(order.status);
@@ -171,7 +161,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
 
     $scope.getEventName = function (order) {
         if (!order.eventName) {
-            order.eventName = $scope.getEventById(order.eventId).fullName;
+            order.eventName = $scope.getEventById(order.eventId).name  || order.eventId;
         }
 
         return order.eventName;
@@ -204,13 +194,13 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
                 if ($scope.exportAll === "1" || order.selected === true){
                         prepData["Order ID"].push(order.id);
                         prepData["Outlet"].push($scope.getOutletById(order.outletId).name || order.outletId);
-                        var arrCustomer = [order.user.name, order.user.email];
+                        var arrCustomer = [order.user.name, order.user.email, order.phone || order.user.phone];
                         prepData["Customer"].push(arrCustomer.join('___BR___'));
 
                         var arrItems = getItemsAsString(order);
 
                         if (events.length > 1) {
-                            prepData['Event'].push($scope.getEventById(order.eventId).fullName);
+                            prepData['Event'].push($scope.getEventById(order.eventId).name || order.eventId);
                         }
 
                         prepData["Items"].push(arrItems.join('___BR___'));
@@ -245,9 +235,9 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
         };
 
         if (events.length > 1) {
-            result.title = _tr("Orders By Events");
-        } else {
             result.title = events[0].name;
+        } else {
+            result.title = _tr("Events");
         }
 
         return result;

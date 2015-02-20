@@ -7,6 +7,8 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	$scope.exportAll="1";	
 	$scope.direction = true;
 	var isPrepared = false;
+
+	$scope.disableEventFilter();
 	
 	
 	$scope.selectAll = function() {

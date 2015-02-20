@@ -8,6 +8,7 @@ angular.module('kyc.controllers')
             $scope.setLocation('dashboard');
 
             $scope.$parent.showDateFilter = true;
+            $scope.disableEventFilter();
 
             var charts = AllCharts.getPreparedCharts();
 

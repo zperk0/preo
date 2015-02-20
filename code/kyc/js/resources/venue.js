@@ -10,6 +10,11 @@ angular.module('kyc.resources').
         method: 'GET',
         url: '/api/venues/:id/items',
         isArray: true
+      } ,
+      getEvents: {
+        method: 'GET',
+        url: '/api/venues/:id/events',
+        isArray: true
       }      
     });    
 
