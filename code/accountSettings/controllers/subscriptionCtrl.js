@@ -45,7 +45,7 @@ angular.module('accountSettings.controllers')
         return (accountPackage.status == 'UNINSTALLED' || accountPackage.status === 'CANCELED' || accountPackage.status === 'EXPIRED');
     }
     
-    $scope.showDialog = function(which, accountPackage){
+    $scope.showDialog = function(which, accountPackage, invoice){
         if (accountPackage) {
           $scope.currentAccountPackage = accountPackage;
         }
@@ -87,6 +87,29 @@ angular.module('accountSettings.controllers')
               contentClass: 'updatePackage',
               windowClass:'small'  
             }
+          break;
+          case "paymentResolved":
+            data = {
+              title: _tr("Payment resolved"),
+              scope: invoice,                          
+              templateUrl: 'subscriptionpayment.php',              
+              showTerm: false,
+              btnOk: false, 
+              btnCancel: _tr("Ok"),            
+              windowClass:'small'   
+            };
+          break;
+          case "resubscribePackage":
+            data = {
+              title: _tr("Resubscription Details"),
+              scope: invoice,
+              templateUrl: 'subscriptionpayment.php',              
+              showTerm: false,
+              btnOk: _tr("Ok"), 
+              btnCancel: false,            
+              windowClass:'small'
+            };
+            clickOk = function () {payPackage();}       
           break;
         }
       $notification.confirm(data).then(clickOk,clickCancel);
@@ -146,8 +169,8 @@ angular.module('accountSettings.controllers')
           $scope.diffInDays =0;
     }
 
-    function purchasePackage(accountPackage){
-      var Package = accountPackage.preoPackage;
+    var payPackage = function () {
+      var Package = $scope.currentAccountPackage.preoPackage;
       $AjaxInterceptor.start();
         AccountCard.get({accountId:ACCOUNT_ID},
           function(result){                      
@@ -155,10 +178,19 @@ angular.module('accountSettings.controllers')
                 AccountPackages.save({accountId:ACCOUNT_ID,packageId: Package.id},function(accountPayment){
                         if (accountPayment.status ===  "SUCCESS"){
                           loadAll(function (){
-                            $AjaxInterceptor.complete();
+                            
+                            if (accountPayment.invoiceId) {
+                              AccountInvoice.get({accountId:ACCOUNT_ID,invoiceId:accountPayment.invoiceId},function(invoice){
+                                  $AjaxInterceptor.complete();   
+
+                                  $scope.showDialog("paymentResolved", false, invoice);     
+                              });
+                            } else {
+                              $AjaxInterceptor.complete(); 
+                            }
                             //$scope.showDialog('success');                            
                           });                             
-                        } else {                        
+                        } else {     
                           $AjaxInterceptor.complete();
                           var response = JSON.parse(accountPayment.response);
                           $scope.paymentFailedMessage = response.detail_message;
@@ -177,6 +209,32 @@ angular.module('accountSettings.controllers')
               displayErrorNoty()
             }                       
         });
+    };     
+
+    function purchasePackage(accountPackage){
+      if (accountPackage.status === 'CANCELED') {
+        var preoPackage = accountPackage.preoPackage;
+
+        var contractMonths = 1;
+        if (preoPackage.contractMonths) {
+          contractMonths = preoPackage.contractMonths;
+        }
+        var subtotal = preoPackage.subscriptionPrice * contractMonths;
+        var vat = (subtotal * 0.2);
+        var total = (subtotal + subtotal * 0.2);
+
+        $scope.showDialog("resubscribePackage", accountPackage, {
+          invoiceItems: [{
+            description: preoPackage.name,
+            price: total
+          }],
+          vat: vat,
+          total: total,
+        });
+      } else {
+        $scope.currentAccountPackage = accountPackage;
+        payPackage();
+      }
     }
 
       function displayErrorNoty(){
