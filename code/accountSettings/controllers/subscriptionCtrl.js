@@ -192,8 +192,7 @@ angular.module('accountSettings.controllers')
                           });                             
                         } else {     
                           $AjaxInterceptor.complete();
-                          var response = JSON.parse(accountPayment.response);
-                          $scope.paymentFailedMessage = response.detail_message;
+                          $scope.paymentFailedMessage = accountPayment.response;
                           $scope.showDialog("paymentError")                          
                         }                        
                       },function(error){              
