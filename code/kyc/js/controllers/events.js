@@ -64,11 +64,11 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
         $scope.csvData = prepareExportCsvData();
       }     
 
-      $scope.getExportDateForEvent = function () {
+      $scope.getExportDateForEvent = function (orderEach) {
         var events = $scope.getEventsSelected();
 
         if (events.length > 1) {
-            return moment(events[events.length - 1].schedules[0].startDate).format("DD-MMM-YYYY") + ' - ' + moment(events[0].schedules[0].startDate).format("DD-MMM-YYYY");
+            return moment($scope.getEventById(orderEach[orderEach.length - 1].eventId).schedules[0].startDate).format("DD-MMM-YYYY") + ' - ' + moment($scope.getEventById(orderEach[0].eventId).schedules[0].startDate).format("DD-MMM-YYYY");
         }
 
         return $scope.form.start_date.format("DD-MMM-YYYY") + " - " + $scope.form.end_date.format("DD-MMM-YYYY");
@@ -99,10 +99,15 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
 
         var statusOrderHide = ['NOSHOW', 'REJECTED', 'CANCELLED', 'PAYMENT_FAILED'];
 
-        var prepData = [[$scope.getExportDateForEvent()],[title], titlesCSV];
+        var orderEach = $scope.allOrders.filter(function (order) {
+            return statusOrderHide.indexOf(order.status) === -1;
+        })
+
+        var prepData = [[$scope.getExportDateForEvent(orderEach)],[title], titlesCSV];
         var total = 0;
-            angular.forEach($scope.allOrders,function(order){                
-                    if ($scope.exportAll === "1" || order.selected === true && statusOrderHide.indexOf(order.status) === -1 ){
+
+            angular.forEach(orderEach,function(order){                
+                    if ($scope.exportAll === "1" || order.selected === true){
                         var arrPrepData = [ order.id ];
                         
                         var arrItems = getItemsAsString(order);
