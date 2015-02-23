@@ -88,6 +88,24 @@ label.multiSelect{
     background-clip: padding-box;     
     min-width: 406px;
 }
+/* The checkboxes container */
+.selectEvents .multiSelect.checkboxLayer .select2-drop {
+    background-color: #DFE1DE !important;
+    border: 0px !important;
+}
+
+.selectEvents .multiSelect.checkboxLayer {
+    min-width: 0 !important;
+    width: 100% !important;
+    position: relative !important;
+}
+
+.selectEvents .multiSelect form {
+    position: absolute;
+    width: 100%;
+    border: 1px solid #aaa;
+    border-top: 0;
+}
 
 .multiSelect.checkboxLayer{
     background-color: #DFE1DE !important;
@@ -153,7 +171,7 @@ label.multiSelect span {
 }
 
 .multiSelect .show {
-    display: inline-block;
+    /*display: inline-block;*/
 }
 
 .multiSelect .hide {
@@ -166,6 +184,46 @@ label.multiSelect span {
 
 .multiSelect .helperButton + .helperButton  {
     margin-left: 1px;
+}
+
+.multiSelect .contentSearch {
+    padding: 20px 24px 0 24px;
+}
+.multiSelect .checkBoxContainer {
+    max-height: 200px;
+    overflow-y: scroll !important;
+}
+
+.selectEvents .multiSelect .checkBoxContainer {
+    position: relative !important;
+}
+
+.multiSelect .contentSearch input {
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 0;
+}
+.multiSelect .contentSearch button {
+    background: none !important;
+    background-color: #3aa2dc !important;
+}
+
+.multiSelect form {
+    margin-bottom: 0px;
+}
+
+.multiSelect .inputFilter {
+    text-align: left;
+    font-weight: 400;
+    font-size: 13px !important;
+}
+
+.multiSelect span.multiSelectItem {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 !important;
 }
 
 /* On mouse over and focus */

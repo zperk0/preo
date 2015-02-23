@@ -136,22 +136,8 @@ $(document).ready(function() {
 					}
 					else
 					{	
-
-						var lastVenueSelected = jQuery.parseJSON(window.localStorage.getItem('lastVenueSelected'));
-						console.log("Last selected",lastVenueSelected );
-						var venueSelected = '';
-						if ( lastVenueSelected && lastVenueSelected instanceof Array && lastVenueSelected.length ) {
-							lastVenueSelected = lastVenueSelected.filter(function(a){
-								return a.userId == dataArray['id']; 
-							});
-
-							if ( lastVenueSelected.length ) {
-								venueSelected = '&venueId=' + lastVenueSelected[0].venueId;
-							}
-						}
-
 						$.post("/saveSignIn", 
-						'email='+encodeURIComponent(dataArray['email'])+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'] + venueSelected, 
+						'email='+encodeURIComponent(dataArray['email'])+'&fName='+dataArray['firstName']+'&lName='+dataArray['lastName']+'&id='+dataArray['id'], 
 						function(response){
 							window.location.replace("/dashboard");
 						})
@@ -2966,28 +2952,6 @@ $(document).ready(function() {
 					{	
 						noty({ type: 'success', text: 'Venue selected!' });
 
-						var userId = $("#selectVenueForm").data('userid');
-						var venueId = $('.venueSingleSelect').val();
-
-						var lastVenueSelected = jQuery.parseJSON(window.localStorage.getItem('lastVenueSelected'));
-						if ( lastVenueSelected && lastVenueSelected instanceof Array && lastVenueSelected.length ) {
-							var foundUser = false;
-							for (var i = lastVenueSelected.length - 1; i >= 0; i--) {
-								if ( lastVenueSelected[i].userId == userId ) {
-									lastVenueSelected[i].venueId = venueId;
-									foundUser = true;
-									break;
-								}
-							};
-
-							if ( !foundUser ) {
-								lastVenueSelected.push({ userId: userId, venueId: venueId });
-							}
-						} else {
-							lastVenueSelected = [{ userId: userId, venueId: venueId }];
-						}
-
-						window.localStorage.setItem('lastVenueSelected', JSON.stringify(lastVenueSelected));
 						if (refreshAfter){
 							window.location.href = "/dashboard";
 						}
@@ -3015,10 +2979,7 @@ $(document).ready(function() {
 			
 			$('#venueSubButton').hide();
 			$('#savingButton').show();			
-			doSelectVenue(data)
-			setTimeout(function(){
-				window.location = "/dashboard";
-			})
+			doSelectVenue(data);
 		}
 		//update Time
 		submitTime = new Date().getTime();

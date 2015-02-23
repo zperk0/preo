@@ -4,6 +4,8 @@ angular.module('kyc.controllers').controller('CustomersCtrl', ['$scope','OrderSe
 	
 
 	$scope.$parent.showDateFilter = true;
+	$scope.disableEventFilter();
+
 	var title = _tr("Customers")
 	var allOrders = OrderService.getOrders();
 	
