@@ -149,7 +149,7 @@
 			</div>
 			
 
-			<!-- <div class="row">
+			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Enable cash payment option?");?></label>
 					<div class="switch small large-2 columns"> 
@@ -162,7 +162,7 @@
 						<span></span>
 					</div>
 				</div>
-			</div> -->
+			</div> 
 			
 			
 			
