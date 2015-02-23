@@ -47,8 +47,8 @@
 	$vDelivery = $_POST['vDelivery'];
 	protect($vDelivery);
 
-	// $vCash = $_POST['vCash'];
-	// protect($vCash);
+	$vCash = $_POST['vCash'];
+	protect($vCash);
 	
 	$vCode = $_POST['vCode'];
 	protect($vCode);
@@ -89,7 +89,7 @@
 	$data['categoryId']			= $vCat;
 	$data['eventFlag']			= $vEvent;
 	$data['deliverFlag']		= $vDelivery;
-	// $data['cashFlag']		= $vCash;
+	$data['cashFlag']		= $vCash;
 	$data['city']			= $vTown;
 	$data['locale']			= $language."-".$vCountry;
 	$data['timeZone']			= $timezone;
