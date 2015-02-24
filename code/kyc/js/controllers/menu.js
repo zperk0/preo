@@ -137,7 +137,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		}
 
 		$scope.loadEvents = function () {
-			VenueService.getEvents($scope.form.start_date).then(function (events) {
+			VenueService.getEvents($scope.form.start_date, $scope.form.end_date).then(function (events) {
 				if (events.length) {
 					$scope.defaultLabelEvents = _tr('Events');
 					for (var i = events.length - 1; i >= 0; i--) {
