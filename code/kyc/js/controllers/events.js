@@ -177,6 +177,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
     $scope.getEventName = function (order) {
         if (!order.eventName) {
             order.eventName = $scope.getEventById(order.eventId).fullName;
+            order.startDateTimeStampEvent = $scope.getEventById(order.eventId).startDateTimeStamp;
         }
 
         return order.eventName;

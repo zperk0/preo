@@ -21,7 +21,7 @@
 							    <label for="all_options"></label>
 							  </div>
 					  		</th>					  	  	
-					  		<th ng-if="eventsSelected.length > 1" ng-click="orderBy = 'eventName'; direction=!direction">
+					  		<th ng-click="$parent.orderBy = 'startDateTimeStampEvent'; $parent.direction=!direction" ng-if="eventsSelected.length > 1">
 					  			<? echo _("Event")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
