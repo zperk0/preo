@@ -1,15 +1,15 @@
 angular.module('kyc.services')
-.service('VenueService',['ACCOUNT_ID','Venue','$q', function(ACCOUNT_ID,Venue,$q) {
+.service('VenueService',['ACCOUNT_ID', 'VENUE_ID', 'Venue','$q', function(ACCOUNT_ID, VENUE_ID, Venue,$q) {
 
     var venue;
 
     function init(){
 
         var defer = $q.defer();
-        var v = new Venue.query({accountId:ACCOUNT_ID},
+        var v = new Venue.query({venueId:VENUE_ID},
         function(result){    
           if (result && result.length >0)
-            venue = result[0]          
+            venue = result[0];
             defer.resolve(venue);
        });
         return defer.promise;

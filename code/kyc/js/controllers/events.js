@@ -1,5 +1,12 @@
-angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderService','pusher','$AjaxInterceptor','$interval','VENUE_ID', 'UtilsService',
- function($scope,OrderService,pusher,$AjaxInterceptor,$interval,VENUE_ID, UtilsService) {
+angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location', 'OrderService','pusher','$AjaxInterceptor','$interval', 'UtilsService',
+ function($scope, $location, OrderService,pusher,$AjaxInterceptor,$interval, UtilsService) {
+
+
+    if (!$scope.venue.eventFlag) {
+        $location.path('/dashboard');
+        $AjaxInterceptor.complete();
+        return;
+    }
 
     $scope.$parent.showDateFilter = true;
     $scope.enableEventFilter();
