@@ -190,15 +190,6 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         return order.itemString;
     }
 
-    $scope.getEventName = function (order) {
-        if (!order.eventName) {
-            order.eventName = $scope.getEventById(order.eventId).fullName;
-            order.startDateTimeStampEvent = $scope.getEventById(order.eventId).startDateTimeStamp;
-        }
-
-        return order.eventName;
-    }
-
     function prepareExportPdfData(){
         var prepData = {
             "Order ID" :[]           

@@ -62,7 +62,7 @@
 							    <label for="check_{{ order.id }}"></label>
 							  </div>						  			
 					  		</td>
-					  		<td ng-if="eventsSelected.length > 1">{{ getEventName(order) }}</td>
+					  		<td ng-if="eventsSelected.length > 1">{{ order.eventName }}</td>
 					  		<td>
 					  			{{ order.user.name }} <br />
 					  			{{ order.user.email }} <br />

@@ -143,6 +143,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 					for (var i = events.length - 1; i >= 0; i--) {
 						var current = events[i];
 						var startDate = moment(current.schedules[0].startDate);
+
 						current.startDateTimeStamp = startDate.valueOf();
 						current.fullName = startDate.format('DD/MM/YYYY hh:mm') + ' - ' + current.name;
 					};
@@ -161,6 +162,16 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		var loadOrdersEvents = function (events) {
 			if (events.length) {
 				OrderService.getOrdersByEvents($scope.form.start_date, $scope.form.end_date, events).then(function (orders) {
+
+					for (var i = orders.length - 1; i >= 0; i--) {
+						var order = orders[i];
+
+			            order.eventName = $scope.getEventById(order.eventId).fullName;
+			            order.startDateTimeStampEvent = $scope.getEventById(order.eventId).startDateTimeStamp;
+					};
+
+					orders = $filter('orderBy')(orders, 'startDateTimeStampEvent', true);
+
 					$scope.$broadcast('ORDERS_EVENTS_LOADED', { orders: orders });
 					$AjaxInterceptor.complete();
 				}, function () {
