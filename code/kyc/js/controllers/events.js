@@ -137,9 +137,18 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
         prepData.push([
             '', '', '', '', '', '', 'Total', $scope.getCurrency() + total.toFixed(2), '', '', ''
         ]);
-        return {
+
+        var result = {
            data:prepData
+        };
+
+        if (events.length > 1) {
+            result.nameOfFile = _tr("Orders Report") + ' (' + $scope.form.start_date.format("DD-MM-YYYY") + "-" + $scope.form.end_date.format("DD-MM-YYYY") + ')';
+        } else {
+            result.nameOfFile = events[0].name;
         }
+
+        return result;
     }
 
     var getItemsAsString = function (order) {
