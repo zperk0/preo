@@ -208,9 +208,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
             "Customer" :[],
             "Items":[],
             "Order Total":[],
-            "Order Status":[],
-            "Loyalty":[],
-            "Offers":[]        
+            "Order Status":[]   
         });
 
         var total = 0;
@@ -230,9 +228,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
 
                         prepData["Items"].push(arrItems.join('___BR___'));
                         prepData["Order Total"].push($scope.getCurrencyByAscii() + order.total.toFixed(2));
-                        prepData["Order Status"].push(order.status);
-                        prepData["Loyalty"].push(order.user.optinLoyalty);
-                        prepData["Offers"].push(order.user.optinOffers);      
+                        prepData["Order Status"].push(order.status);     
 
                         total += order.total;               
                 }
@@ -249,8 +245,6 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
         prepData["Items"].push('Total');
         prepData["Order Total"].push($scope.getCurrencyByAscii() + total.toFixed(2));
         prepData["Order Status"].push('');
-        prepData["Loyalty"].push('');
-        prepData["Offers"].push('');
 
         var result = {
             startDate:$scope.form.start_date.valueOf(),
