@@ -5,7 +5,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		$scope.currencySymbol = "%C2%A3";
 		$scope.outlets = [];
 
-		$scope.defaultLabelEvents = _tr('Events');
+		$scope.defaultLabelEvents = _tr('Select Events...');
 
 		$scope.form = {
 			start_date: moment.utc(INITIAL_DATES.start).startOf('day'),
@@ -139,7 +139,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		$scope.loadEvents = function () {
 			VenueService.getEvents($scope.form.start_date, $scope.form.end_date).then(function (events) {
 				if (events.length) {
-					$scope.defaultLabelEvents = _tr('Events');
+					$scope.defaultLabelEvents = _tr('Select Events...');
 					for (var i = events.length - 1; i >= 0; i--) {
 						var current = events[i];
 						var startDate = moment(current.schedules[0].startDate);
