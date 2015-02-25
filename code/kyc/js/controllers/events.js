@@ -135,7 +135,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
             '', '', '', '', '', '', '', '', '', '', ''
         ]);    
         prepData.push([
-            '', '', '', '', '', '', 'Total', $scope.getCurrency() + total.toFixed(2), '', '', ''
+            '', '', '', '', '', 'Total', $scope.getCurrency() + total.toFixed(2), '', '', '', ''
         ]);
 
         var result = {
