@@ -266,6 +266,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
             result.title = events[0].name;
         }
 
+        $scope.currentAction = '';
         return result;
     }     
 
