@@ -194,8 +194,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
 
     function prepareExportPdfData(){
         var prepData = {
-            "Order ID" :[],
-            "Items": []           
+            "Order ID" :[]           
         };
 
         var events = $scope.getEventsSelected();
@@ -207,6 +206,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope','OrderServi
         angular.extend(prepData, {
             "Outlet" :[],
             "Customer" :[],
+            "Items":[],
             "Order Total":[],
             "Order Status":[]   
         });
