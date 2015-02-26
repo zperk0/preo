@@ -248,7 +248,8 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
             startDate:$scope.form.start_date.valueOf(),
             endDate:$scope.form.end_date.valueOf(),
             dataJson:JSON.stringify(prepData),
-            orientation: 'LANDSCAPE'
+            orientation: 'LANDSCAPE',
+            type: 'kyc-table-event'
         };
 
         if (events.length > 1) {
