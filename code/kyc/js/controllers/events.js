@@ -126,7 +126,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                         arrPrepData.push($scope.getOutletById(order.outletId).name || order.outletId);
                         arrPrepData.push(order.user.name);
                         arrPrepData.push(order.user.email);
-                        arrPrepData.push(moment(order.created).format('DD/MM/YYYY hh:mm'));
+                        arrPrepData.push(moment(order.created).format('DD/MM/YYYY HH:mm'));
                         arrPrepData.push('\"' + arrItems.join(';').replaceAll('\"', '') + '\"');
                         arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
                         arrPrepData.push(order.status);

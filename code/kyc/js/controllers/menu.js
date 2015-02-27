@@ -145,7 +145,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 						var startDate = moment(current.schedules[0].startDate);
 
 						current.startDateTimeStamp = startDate.valueOf();
-						current.fullName = startDate.format('DD/MM/YYYY hh:mm') + ' - ' + current.name;
+						current.fullName = startDate.format('DD/MM/YYYY HH:mm') + ' - ' + current.name;
 					};
 				} else {
 					$scope.defaultLabelEvents = _tr('No events in this period');
