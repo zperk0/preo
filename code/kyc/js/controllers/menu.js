@@ -32,7 +32,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 
 	 	$scope.getCurrencyByAscii = function(){
 			var currency = decodeURI($scope.currencySymbol);
-
+			console.log("returning currency",$scope.currencySymbol);
 			var currencyString = '__CURRENCY__';
 			switch(currency) {
 				case '£':

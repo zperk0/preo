@@ -97,6 +97,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         titlesCSV.push("Outlet");
         titlesCSV.push("Customer");
         titlesCSV.push("Email");
+        titlesCSV.push("Order Time");
         titlesCSV.push("Items");
         titlesCSV.push("Order Total");
         titlesCSV.push("Order Status");
@@ -121,10 +122,11 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                         if (events.length > 1) {                            
                             arrPrepData.push($scope.getEventById(order.eventId).fullName);
                         }          
-
+                        console.log("each",order);
                         arrPrepData.push($scope.getOutletById(order.outletId).name || order.outletId);
                         arrPrepData.push(order.user.name);
                         arrPrepData.push(order.user.email);
+                        arrPrepData.push(moment(order.created).format('DD/MM/YYYY hh:mm'));
                         arrPrepData.push('\"' + arrItems.join(';').replaceAll('\"', '') + '\"');
                         arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
                         arrPrepData.push(order.status);
