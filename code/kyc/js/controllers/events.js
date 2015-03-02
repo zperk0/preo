@@ -140,12 +140,15 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                     }
             })
 
-        prepData.push([
-            '', '', '', '', '', '', '', '', '', '', ''
-        ]);    
-        prepData.push([
+        var totalData = [
             '', '', '', '', '', 'Total', $scope.getCurrency() + total.toFixed(2), '', '', '', ''
-        ]);
+        ];
+
+        if (events.length > 1) {
+            totalData.unshift('');
+        }        
+
+        prepData.push(totalData);
 
         var result = {
            data:prepData
