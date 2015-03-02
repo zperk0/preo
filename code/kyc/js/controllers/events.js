@@ -86,6 +86,8 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
         if (events.length == 1) {
             title = events[0].name;
+        } else {
+            title = '';
         }
 
         var titlesCSV = ["Order ID"];
