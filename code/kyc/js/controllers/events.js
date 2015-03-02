@@ -122,7 +122,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                         
                         var arrItems = getItemsAsString(order);
                         if (events.length > 1) {                            
-                            arrPrepData.push($scope.getEventById(order.eventId).fullName);
+                            arrPrepData.push('\"' + $scope.getEventById(order.eventId).fullName + '\"');
                         }          
                         console.log("each",order);
                         arrPrepData.push($scope.getOutletById(order.outletId).name || order.outletId);
