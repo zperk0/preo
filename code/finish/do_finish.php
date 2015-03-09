@@ -58,7 +58,8 @@
 			$curlResult = callAPI('PUT', $apiURL."venues/$venueID/live", $data, $apiAuth); //go live!
 			validCall($curlResult);	
 
-				
+			$_SESSION['venue_demoFlag'] = 0;
+			$_SESSION['venue_liveFlag'] = 1;	
 
 			if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 				$_SESSION['appPublished'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
