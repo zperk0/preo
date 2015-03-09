@@ -132,11 +132,11 @@ $(document).ready(function () {
   				setPackageInfo(preoPackage);
   				getStripeKey(callback);  				
   			}).fail(function(){
-  				notifyAndRedirect('success',_tr("There's a problem with your package, pelase try again."),3000,claimUrl);
+  				notifyAndRedirect('success',_tr("There's a problem with your package, please try again."),3000,claimUrl);
   			});  			
   		}
   	}).fail(function(){
-  		  notifyAndRedirect('success',_tr("There's a problem with the selected venue, pelase try again."),3000,claimUrl);
+  		  notifyAndRedirect('success',_tr("There's a problem with the selected venue, please try again."),3000,claimUrl);
   			window.location.href = claimUrl;
   	})
   }
