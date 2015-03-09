@@ -38,6 +38,9 @@
 			
 			$curlResult = callAPI('PUT', $apiURL."venues/$venueID/demo", $data, $apiAuth); //live=0 and demo=0
 			validCall($curlResult);
+
+			$_SESSION['venue_demoFlag'] = 1;
+			$_SESSION['venue_liveFlag'] = 1;			
 			
 			$_SESSION['appUnPublished'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
 			header('location:'.$_SESSION['path'].'/dashboard'); //redirect to dash
@@ -53,7 +56,9 @@
 			validCall($curlResult);
 
 			$curlResult = callAPI('PUT', $apiURL."venues/$venueID/live", $data, $apiAuth); //go live!
-			validCall($curlResult);		
+			validCall($curlResult);	
+
+				
 
 			if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 				$_SESSION['appPublished'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
@@ -73,10 +78,15 @@
 		if ( $offFlagVerify ) {
 			$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/live", $data, $apiAuth); //reset both flags (offline)
 			validCall($curlResult);		
+
+			$_SESSION['venue_demoFlag'] = 0;
+			$_SESSION['venue_liveFlag'] = 0;			
 		} else {
 			$curlResult = callAPI('DELETE', $apiURL."venues/$venueID/demo", $data, $apiAuth); //reset both flags (offline)
 			validCall($curlResult);
 
+			$_SESSION['venue_demoFlag'] = 0;
+			$_SESSION['venue_liveFlag'] = 0;
 			$_SESSION['appOffline'] = '08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B';
 			header('location:'.$_SESSION['path'].'/dashboard'); //redirect to dash
 		}
