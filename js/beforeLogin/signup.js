@@ -12,6 +12,18 @@ $(document).ready(function () {
 			return false;
 		}
 
+		if ($.trim($('#firstname').val()).length === 0) {
+			$('#firstname').parent().addClass('error');
+			$('#firstname').val('').focus();
+			return false;
+		}
+
+		if ($.trim($('#surname').val()).length === 0) {
+			$('#surname').parent().addClass('error');
+			$('#surname').val('').focus();
+			return false;
+		}
+
 		$('#errorStripe').removeClass('active');
 
 		$('#loading').show();
