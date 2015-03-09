@@ -114,6 +114,15 @@
 							</div>
 						</div>
 						<div class="row">
+							<div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="form-group cardname">
+									<label for="cardname"><?php echo _("Name"); ?></label>
+									<input type="text" name="cardname" required class="form-control" id="cardname">
+									<small class="error"><?echo _("Please type your card name");?></small>
+								</div>
+							</div>
+						</div>
+						<div class="row">
 							<div class="col col-xs-12 col-sm-4 col-md-4 col-lg-4">
 								<div class="form-group expirymonth">
 									<label for="expirydate" style="width: 100%;"><?php echo _("Expiry (month/year)"); ?></label>

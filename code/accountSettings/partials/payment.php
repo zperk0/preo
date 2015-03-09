@@ -8,6 +8,13 @@
 		<input type='text' ng-show='isEditing' name='card' ng-model='card.number' placeholder='<?echo _("Credit Card Number")?>' required/>
 		</div>		
 	</div>
+	<div class='rowWrapper' ng-class="{'error': paymentForm.name.$invalid && triedSubmit }">
+		<label><? echo _("Name")?></label>
+		<div class='inputWrapper'>
+		<span ng-show='!isEditing'>{{ card.name }}</span> 
+		<input type='text' ng-show='isEditing' name='name' ng-model='card.name' placeholder='<?echo _("Credit Card Name")?>' required/>
+		</div>		
+	</div>
 	<div class='rowWrapper' ng-show='isEditing' ng-class="{'error': paymentForm.ccv.$invalid && triedSubmit }">
 		<label><? echo _("CCV")?></label>
 		<div class='inputWrapper'>

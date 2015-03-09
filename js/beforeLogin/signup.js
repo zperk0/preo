@@ -24,12 +24,18 @@ $(document).ready(function () {
 			return false;
 		}
 
+		if ($.trim($('#cardname').val()).length === 0) {
+			$('#cardname').parent().addClass('error');
+			$('#cardname').val('').focus();
+			return false;
+		}
+
 		$('#errorStripe').removeClass('active');
 
 		$('#loading').show();
 
 		CARD = {
-			name: $('#firstname').val() + ' ' + $('#surname').val(),
+			name: $('#cardname').val(),
 			number: $('#cardnumber').val(),
 	        ccv : $('#securitycode').val(),
 	        expmonth : $('#expirymonth').val(),

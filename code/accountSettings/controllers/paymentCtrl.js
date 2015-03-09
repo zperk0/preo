@@ -1,40 +1,26 @@
 angular.module('accountSettings.controllers')
- .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID', 'USER_ID', 'AccountCard','Account', 'User', '$AjaxInterceptor','AccountInvoice','$notification',
-  function ($scope,$q,$http,ACCOUNT_ID, USER_ID, AccountCard,Account, User, $AjaxInterceptor,AccountInvoice,$notification) {
+ .controller('PaymentCtrl', ['$scope','$q','$http','ACCOUNT_ID','AccountCard','Account','$AjaxInterceptor','AccountInvoice','$notification',
+  function ($scope,$q,$http,ACCOUNT_ID,AccountCard,Account,$AjaxInterceptor,AccountInvoice,$notification) {
     var oldCard;
     $scope.setSelected($scope.Views.paymentMethod);
-    $scope.isEditing = false;
-    $scope.errorMessage = "";   
-
-    var user = null;
-
-    User.get({id:USER_ID},function(result){
-      user=result;
-
-      AccountCard.get({accountId:ACCOUNT_ID},function(result){
-        $scope.card = result;    
-        
-        if (!$scope.card.name) {
-          $scope.card.name = user.firstName;
-          if (user.lastName) {
-            $scope.card.name += ' ' + user.lastName;
-          }
-        }
-
-        $scope.finishLoading();               
-      },function(error){         
-        if (error.data && error.data.status === 404){        
-          $scope.isEditing = true;
-          $scope.card = new AccountCard();      
-          $scope.finishLoading();  
-        } else{
-          noty({
-            type: 'error',  layout: 'topCenter',
-            text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'
-          });  
-          }                       
-      });      
+  	$scope.isEditing = false;
+    $scope.errorMessage = "";      	
+    AccountCard.get({accountId:ACCOUNT_ID},function(result){
+  		$scope.card = result;
+      $scope.finishLoading();               
+  	},function(error){         
+      if (error.data && error.data.status === 404){        
+    		$scope.isEditing = true;
+    		$scope.card = new AccountCard();      
+        $scope.finishLoading();  
+      } else{
+	    	noty({
+		      type: 'error',  layout: 'topCenter',
+		      text: _tr("Sorry, but there's been an error processing your request.") //text: 'Connection Error! Check API endpoint.'
+	    	});  
+        }                       
     });
+    
       
     var saveStripeCard = function(){          
       
@@ -48,13 +34,13 @@ angular.module('accountSettings.controllers')
     }
     
 
-    $scope.startEditing = function(){
+  	$scope.startEditing = function(){
       oldCard = $scope.card.number;
       $scope.card.number = "";
-      $scope.isEditing = true;
-    };
+		  $scope.isEditing = true;
+  	};
 
-    $scope.saveChanges = function(){                
+  	$scope.saveChanges = function(){  		          
       $scope.errorMessage = "";
       $scope.triedSubmit = true;  
       $scope.isPosting = true;
@@ -64,8 +50,8 @@ angular.module('accountSettings.controllers')
           return false;
       };
       $AjaxInterceptor.start();
-      saveStripeCard();     
-    };
+      saveStripeCard();  		
+  	};
 
 
     function getStripeKey(){
@@ -185,4 +171,4 @@ angular.module('accountSettings.controllers')
   }
 
   getStripeKey();
-}]);  
+}]);	
