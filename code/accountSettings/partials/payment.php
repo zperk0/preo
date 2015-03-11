@@ -9,7 +9,7 @@
 		</div>		
 	</div>
 	<div class='rowWrapper' ng-class="{'error': paymentForm.name.$invalid && triedSubmit }">
-		<label><? echo _("Name")?></label>
+		<label><? echo _("Name on card")?></label>
 		<div class='inputWrapper'>
 		<span ng-show='!isEditing'>{{ card.name }}</span> 
 		<input type='text' ng-show='isEditing' name='name' ng-model='card.name' placeholder='<?echo _("Credit Card Name")?>' required/>

@@ -116,9 +116,9 @@
 						<div class="row">
 							<div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<div class="form-group cardname">
-									<label for="cardname"><?php echo _("Name"); ?></label>
+									<label for="cardname"><?php echo _("Name on card"); ?></label>
 									<input type="text" name="cardname" required class="form-control" id="cardname">
-									<small class="error"><?echo _("Please type your card name");?></small>
+									<small class="error"><?echo _("Please type the name in your card");?></small>
 								</div>
 							</div>
 						</div>
