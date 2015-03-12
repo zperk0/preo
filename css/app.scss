@@ -115,6 +115,8 @@ small.error {
   }
 }
 
+
+
 .breadcrumbs {
   background: transparent;
   border: 0;
@@ -3149,6 +3151,14 @@ span .currencySymbol {
     input{
       margin-bottom:1em;
     }
+  }
+
+  input{
+     &.error{
+      background: #FFF !important;
+      border: 1px solid #e30f4d !important;
+      margin-bottom: 1em;
+     }
   }
 }
 
