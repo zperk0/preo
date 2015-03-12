@@ -29,19 +29,19 @@
 		<input type='text' ng-show='isEditing' name='yy' ng-model='card.expyear' placeholder='<?echo _("YY")?>' class='inlineWrapper' required/>
 		</div>		
 	</div>
-	<div class='rowWrapper' ng-class="{'error': (paymentForm.address1.$invalid || paymentForm.city.$invalid || paymentForm.postcode.$invalid  ) && triedSubmit }">
+	<div class='rowWrapper'>
 		<label><? echo _("Billing Address")?></label>
 		<div class='inputWrapper billingAddress'>
 		<span ng-show='!isEditing'>{{ card.address1}}<span ng-show='card.address1 && card.address1 != ""'>,<br/></span></span> 
-		<input type='text' ng-show='isEditing' name='address1' ng-model='card.address1' placeholder='<?echo _("Address Line 1")?>' required/>
-		<span ng-show='!isEditing'>{{ card.address2}}<span ng-show='card.address2 && card.address2 != ""'>,<br/></span></span> 
+		<input type='text' ng-class="{'error': (paymentForm.address1.$invalid)}"   ng-show='isEditing' name='address1' ng-model='card.address1' placeholder='<?echo _("Address Line 1")?>' required/>
+		<span ng-show='!isEditing' class=''>{{ card.address2}}<span ng-show='card.address2 && card.address2 != ""'>,<br/></span></span> 
 		<input type='text' ng-show='isEditing' ng-model='card.address2' placeholder='<?echo _("Address Line 2")?>' />
 		<span ng-show='!isEditing'>{{ card.address3}}<span ng-show='card.address3 && card.address3 != "" '>,<br/></span></span> 
 		<input type='text' ng-show='isEditing' ng-model='card.address3' placeholder='<?echo _("Address Line 3")?>' />
 		<span ng-show='!isEditing'>{{ card.city}}<span ng-show='card.city && card.city != "" '>,<br/></span></span> 
-		<input type='text' ng-show='isEditing' name='city' ng-model='card.city' placeholder='<?echo _("Town/City")?>' required/>
+		<input type='text' ng-class="{'error': (paymentForm.city.$invalid)}" ng-show='isEditing' name='city' ng-model='card.city' placeholder='<?echo _("Town/City")?>' required/>
 		<span ng-show='!isEditing' >{{ card.postcode}}<span ng-show='card.postcode && card.postcode != "" '><br/></span></span> 
-		<input type='text' class='half' name='postcode' ng-show='isEditing' ng-model='card.postcode' placeholder='<?echo _("Postcode")?>' required/>
+		<input type='text' class='half' name='postcode' ng-class="{'error': (paymentForm.postcode.$invalid)}" ng-show='isEditing' ng-model='card.postcode' placeholder='<?echo _("Postcode")?>' required/>
 		</div>		
 	</div>	
 	<div class='rowWrapper errorMessage'>{{ errorMessage }}</div>
