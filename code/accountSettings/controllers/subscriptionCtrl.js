@@ -182,7 +182,6 @@ angular.module('accountSettings.controllers')
                             if (accountPayment.invoiceId) {
                               AccountInvoice.get({accountId:ACCOUNT_ID,invoiceId:accountPayment.invoiceId},function(invoice){
                                   $AjaxInterceptor.complete();   
-
                                   $scope.showDialog("paymentResolved", false, invoice);     
                               });
                             } else {
@@ -218,17 +217,19 @@ angular.module('accountSettings.controllers')
         if (preoPackage.contractMonths) {
           contractMonths = preoPackage.contractMonths;
         }
-        var subtotal = preoPackage.subscriptionPrice * contractMonths;
+        
+        var subtotal = accountPackage.subscriptionPrice * contractMonths;
+        console.log('subtotal',subtotal);
         var vat = (subtotal * 0.2);
-        var total = (subtotal + subtotal * 0.2);
-
+        var total = (subtotal + vat);
+        console.log('total',total);
         $scope.showDialog("resubscribePackage", accountPackage, {
           invoiceItems: [{
             description: preoPackage.name,
-            price: total
+            price: subtotal
           }],
           vat: vat,
-          total: total,
+          total: subtotal,
         });
       } else {
         $scope.currentAccountPackage = accountPackage;
