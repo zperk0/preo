@@ -19,7 +19,7 @@
       </div>
     </div> 
   <header>    
-    <nav class="row" data-topbar role="navigation" id="navbar-menu" ng-class="{withEvents: venue.eventFlag}">      
+    <nav class="row withEvents" data-topbar role="navigation" id="navbar-menu">
           <ul>
             <li class="metrics" ng-class='{active:currentLocation==="dashboard"}' ng-click='setLocation("dashboard")'><span><? echo _("Metrics")?></span></li>
             <li class="stock" ng-class='{active:currentLocation==="stock"}' ng-click='setLocation("stock")'><span><? echo _("Stock")?></span></li>
@@ -27,6 +27,7 @@
             <li class="reports" ng-class='{active:currentLocation==="reports"}' ng-click='setLocation("reports")'><span><? echo _("Reports")?></span></li>
             <li class="live-stream" ng-class='{active:currentLocation==="stream"}' ng-click='setLocation("stream")'><span><? echo _("Live stream")?></span></li>
             <li class="events" ng-if="venue.eventFlag" ng-class='{active:currentLocation==="events"}' ng-click='setLocation("events")'><span><? echo _("Events")?></span></li>
+            <li class="orders" ng-if="!venue.eventFlag" ng-class='{active:currentLocation==="orders"}' ng-click='setLocation("orders")'><span><? echo _("Orders")?></span></li>
           </ul>
     </nav>
   </header>
@@ -126,7 +127,7 @@
 
   <script src="//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" type="text/javascript"></script>
   <script src="/js/angular_all.min.js"></script>      
-  <!-- BEGIN WATCH 
+  <!-- BEGIN WATCH
   <script src="/bower_components/select2/select2.js"></script>    
   <script src="/js/jquery.dotdotdot.min.js"></script>    
   <script src="/bower_components/angular-ui-select2/src/select2.js"></script>    
@@ -146,6 +147,7 @@
   <script src="/code/kyc/js/controllers/stock.js"></script>
   <script src="/code/kyc/js/controllers/stream.js"></script>
   <script src="/code/kyc/js/controllers/events.js"></script>
+  <script src="/code/kyc/js/controllers/orders.js"></script>
   <script src="/code/kyc/js/controllers/menu.js"></script>
   <script src="/code/kyc/js/resources/export.js"></script>
   <script src="/code/kyc/js/resources/outlet.js"></script>

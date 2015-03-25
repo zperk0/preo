@@ -140,6 +140,15 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   background-image: url('/code/kyc/images/icons/events-icon-white.png');
 }
 
+#navbar-menu ul li.orders{
+    background-image: url('/code/kyc/images/icons/events-icon-grey.png');
+    background-size: 43px;
+}
+
+#navbar-menu ul li.orders.active, #navbar-menu ul li.orders:hover{
+    background-image: url('/code/kyc/images/icons/events-icon-white.png');
+}
+
 #navbar-menu ul > li:first-child{
     border-left: 1px solid #333E46;
 }
@@ -925,7 +934,7 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   padding: 0;
   background: #fff;
   border: solid 1px #ccc;
-  font-size: 16p
+  font-size: 16px;
 }
 
 .highcharts-content:hover .chart_AREA {
