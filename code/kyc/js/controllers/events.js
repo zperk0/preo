@@ -101,11 +101,13 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         titlesCSV.push("Email");
         titlesCSV.push("Order Time");
         titlesCSV.push("Items");
+        titlesCSV.push("Special Request");
         titlesCSV.push("Order Total");
         titlesCSV.push("Order Status");
         titlesCSV.push("Loyalty");
         titlesCSV.push("Offers");
         titlesCSV.push("Other");
+        titlesCSV.push("Collection");
 
         var statusOrderHide = ['NOSHOW', 'REJECTED', 'CANCELLED', 'PAYMENT_FAILED'];
 
@@ -130,11 +132,13 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                         arrPrepData.push(order.user.email);
                         arrPrepData.push(moment(order.created).format('DD/MM/YYYY HH:mm'));
                         arrPrepData.push('\"' + arrItems.join(';').replaceAll('\"', '') + '\"');
+                        arrPrepData.push(order.notes);
                         arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
                         arrPrepData.push(order.status);
                         arrPrepData.push(order.user.optinLoyalty);
                         arrPrepData.push(order.user.optinOffers);
                         arrPrepData.push(order.user.optinOther);
+                        arrPrepData.push(order.pickupSlot);
 
                         prepData.push(arrPrepData);
 
