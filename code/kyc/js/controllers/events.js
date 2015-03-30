@@ -224,8 +224,9 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
             return statusOrderHide.indexOf(order.status) === -1;
         })
 
-
+        console.log('before for each');
         angular.forEach(orderEach,function(order, key){
+            console.log('in for each')
                 if ($scope.exportAll === "1" || order.selected === true){
                         prepData["Order ID"].push(order.id);
                         prepData["Outlet"].push(order.address ? order.address : ($scope.getOutletById(order.outletId).name || order.outletId));
@@ -237,8 +238,9 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                         if (events.length > 1) {
                             prepData['Event'].push($scope.getEventById(order.eventId).fullName);
                         }
-
-                        prepData["Items"].push(arrItems.join('___BR___'));
+                        var notes = order.notes ?  "___BR______BR___  ----- Special Requests -----  ___BR______BR___" + order.notes  : "";
+                        console.log('notes',order.notes);
+                        prepData["Items"].push(arrItems.join('___BR___') + notes);
                         prepData["Order Total"].push($scope.getCurrencyByAscii() + order.total.toFixed(2));
                         prepData["Collection"].push(order.pickupSlot);     
 
