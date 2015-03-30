@@ -56,7 +56,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
     var loadEventsByPage = function(){
         var begin = (($scope.currentPage - 1) * $scope.numPerPage)
         , end = begin + $scope.numPerPage;
-        if ( $scope.allOrders && $scope.allOrders ) {
+        if ( $scope.allOrders && $scope.allOrders.length ) {
             $scope.orders = $scope.allOrders.slice(begin, end );
         }           
     }      
@@ -75,7 +75,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         var events = $scope.getEventsSelected();
 
         if (events.length > 1) {
-            return moment($scope.getEventById(orderEach[orderEach.length - 1].eventId).schedules[0].startDate).format("DD-MMM-YYYY") + ' - ' + moment($scope.getEventById(orderEach[0].eventId).schedules[0].startDate).format("DD-MMM-YYYY");
+            return moment($scope.getEventById(orderEach[orderEach.length - 1].eventId).schedules[0].startDate).format("DD-MMM-YYYY") + ' - ' + moment($scope.getEventById(orderEach[0].eventId).schedules[0].endDate).format("DD-MMM-YYYY");
         }
 
         return $scope.form.start_date.format("DD-MMM-YYYY") + " - " + $scope.form.end_date.format("DD-MMM-YYYY");
@@ -157,7 +157,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         };
 
         if (events.length > 1) {
-            result.nameOfFile = _tr("Orders Report") + ' (' + $scope.form.start_date.format("DD-MM-YYYY") + "-" + $scope.form.end_date.format("DD-MM-YYYY") + ')';
+            result.nameOfFile = _tr("Orders Report") + ' (' + $scope.form.start_date.format("DD-MM-YY") + "-" + $scope.form.end_date.format("DD-MM-YY") + ')';
         } else {
             result.nameOfFile = events[0].name;
         }
@@ -299,7 +299,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
     
     $scope.numPerPage = 20;
-    $scope.currentPage = 1; 
+    $scope.currentPage = 1;
 
     $AjaxInterceptor.complete();
 
