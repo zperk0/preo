@@ -210,18 +210,25 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
         angular.extend(prepData, {
             "Outlet" :[],
+            "Collection": [],            
             "Customer" :[],
             "Items":[],
-            "Order Total":[],
-            "Order Status":[]   
+            "Order Total":[]
         });
 
         var total = 0;
 
-        angular.forEach($scope.allOrders,function(order, key){
+        var statusOrderHide = ['NOSHOW', 'REJECTED', 'CANCELLED', 'PAYMENT_FAILED'];
+
+        var orderEach = $scope.allOrders.filter(function (order) {
+            return statusOrderHide.indexOf(order.status) === -1;
+        })
+
+
+        angular.forEach(orderEach,function(order, key){
                 if ($scope.exportAll === "1" || order.selected === true){
                         prepData["Order ID"].push(order.id);
-                        prepData["Outlet"].push($scope.getOutletById(order.outletId).name || order.outletId);
+                        prepData["Outlet"].push(order.address ? order.address : ($scope.getOutletById(order.outletId).name || order.outletId));
                         var arrCustomer = [order.user.name, order.user.email];
                         prepData["Customer"].push(arrCustomer.join('___BR___'));
 
@@ -233,7 +240,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
                         prepData["Items"].push(arrItems.join('___BR___'));
                         prepData["Order Total"].push($scope.getCurrencyByAscii() + order.total.toFixed(2));
-                        prepData["Order Status"].push(order.status);     
+                        prepData["Collection"].push(order.pickupSlot);     
 
                         total += order.total;               
                 }
@@ -249,8 +256,8 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
         prepData["Items"].push('Total');
         prepData["Order Total"].push($scope.getCurrencyByAscii() + total.toFixed(2));
-        prepData["Order Status"].push('');
-
+        prepData["Collection"].push('');
+        console.log('pushing ',JSON.stringify(prepData));
         var result = {
             startDate:$scope.form.start_date.valueOf(),
             endDate:$scope.form.end_date.valueOf(),
