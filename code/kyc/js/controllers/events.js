@@ -101,11 +101,13 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         titlesCSV.push("Email");
         titlesCSV.push("Order Time");
         titlesCSV.push("Items");
+        titlesCSV.push("Special Request");
         titlesCSV.push("Order Total");
         titlesCSV.push("Order Status");
         titlesCSV.push("Loyalty");
         titlesCSV.push("Offers");
         titlesCSV.push("Other");
+        titlesCSV.push("Collection");
 
         var statusOrderHide = ['NOSHOW', 'REJECTED', 'CANCELLED', 'PAYMENT_FAILED'];
 
@@ -130,11 +132,13 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                         arrPrepData.push(order.user.email);
                         arrPrepData.push(moment(order.created).format('DD/MM/YYYY HH:mm'));
                         arrPrepData.push('\"' + arrItems.join(';').replaceAll('\"', '') + '\"');
+                        arrPrepData.push(order.notes);
                         arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
                         arrPrepData.push(order.status);
                         arrPrepData.push(order.user.optinLoyalty);
                         arrPrepData.push(order.user.optinOffers);
                         arrPrepData.push(order.user.optinOther);
+                        arrPrepData.push(order.pickupSlot);
 
                         prepData.push(arrPrepData);
 
@@ -210,18 +214,26 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
         angular.extend(prepData, {
             "Outlet" :[],
+            "Collection": [],            
             "Customer" :[],
             "Items":[],
-            "Order Total":[],
-            "Order Status":[]   
+            "Order Total":[]
         });
 
         var total = 0;
 
-        angular.forEach($scope.allOrders,function(order, key){
+        var statusOrderHide = ['NOSHOW', 'REJECTED', 'CANCELLED', 'PAYMENT_FAILED'];
+
+        var orderEach = $scope.allOrders.filter(function (order) {
+            return statusOrderHide.indexOf(order.status) === -1;
+        })
+
+        console.log('before for each');
+        angular.forEach(orderEach,function(order, key){
+            console.log('in for each')
                 if ($scope.exportAll === "1" || order.selected === true){
                         prepData["Order ID"].push(order.id);
-                        prepData["Outlet"].push($scope.getOutletById(order.outletId).name || order.outletId);
+                        prepData["Outlet"].push(order.address ? order.address : ($scope.getOutletById(order.outletId).name || order.outletId));
                         var arrCustomer = [order.user.name, order.user.email];
                         prepData["Customer"].push(arrCustomer.join('___BR___'));
 
@@ -230,10 +242,11 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                         if (events.length > 1) {
                             prepData['Event'].push($scope.getEventById(order.eventId).fullName);
                         }
-
-                        prepData["Items"].push(arrItems.join('___BR___'));
+                        var notes = order.notes ?  "___BR______BR___  ----- Special Requests -----  ___BR______BR___" + order.notes  : "";
+                        console.log('notes',order.notes);
+                        prepData["Items"].push(arrItems.join('___BR___') + notes);
                         prepData["Order Total"].push($scope.getCurrencyByAscii() + order.total.toFixed(2));
-                        prepData["Order Status"].push(order.status);     
+                        prepData["Collection"].push(order.pickupSlot);     
 
                         total += order.total;               
                 }
@@ -249,8 +262,8 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
         prepData["Items"].push('Total');
         prepData["Order Total"].push($scope.getCurrencyByAscii() + total.toFixed(2));
-        prepData["Order Status"].push('');
-
+        prepData["Collection"].push('');
+        console.log('pushing ',JSON.stringify(prepData));
         var result = {
             startDate:$scope.form.start_date.valueOf(),
             endDate:$scope.form.end_date.valueOf(),
