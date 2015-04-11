@@ -181,7 +181,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 				$scope.$broadcast('ORDERS_EVENTS_LOADED', { orders: [] });
 				$AjaxInterceptor.complete();
 			}
-		}
+		};
 
 		$scope.updateDataWithEvents = function () {
 			$AjaxInterceptor.start();
@@ -189,19 +189,19 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			$scope.eventsSelected = $scope.getEventsSelected();
 
 			$scope.$broadcast('SELECT_EVENT');
-		}
+		};
 			
 		$scope.setLocation = function(newLocation){
 				$scope.currentLocation = newLocation;				
 				if ($location.path() !== ("/"+newLocation))
         	$location.path(newLocation);
-		}				 
+		};
 
 		$scope.getSelectedOutlets = function(){
 			return $scope.outlets.filter(function(data){
 				return data.selected === true;
 			});
-		}	 
+		};
 
 		$scope.getOutletById = function(id){
 			var outlets = $scope.outlets.filter(function(o){
@@ -220,7 +220,4 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		$scope.getExportDate = function(){			
 			return $scope.form.start_date.format("DD-MMM-YYYY") + " - " + $scope.form.end_date.format("DD-MMM-YYYY");
 		}
-
-	 
-		
 }])
