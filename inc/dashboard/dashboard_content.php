@@ -26,6 +26,7 @@
 
 	$curlResult = callAPI('GET', $apiURL."accounts/$accountId/packages", false, $apiAuth);
 	$dataJSON = json_decode($curlResult, true);
+
 	$showKYC = false;
 	$packageTrial = false;
 	if(!empty($dataJSON))
