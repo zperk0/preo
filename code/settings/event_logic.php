@@ -92,6 +92,17 @@
 			return $allChildren;
 	}
 
+	function removeLastChildren($list){
+		foreach ($list as $i => $outlet){
+			if(!count($outlet['children'])){
+				unset($list[$i]);
+			} else {
+				$list[$i]['children'] = removeLastChildren($outlet['children']);
+			}
+		}	
+		return $list;
+	}
+
 	function sortLocations($locations){
 		usort($locations,'byPath');		
 		
@@ -101,8 +112,9 @@
 					$location['children'] = getAllChildren($locations,$location);
 					$sorted[] = $location;
 			}
-		}	
-		return $sorted;	
+		}
+		
+		return removeLastChildren($sorted);
 	}
 
 	function getOutletLocationSelectOptions($tree){		
