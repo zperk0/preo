@@ -178,6 +178,14 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         for (var i = 0, len = items.length; i < len; i++) {
             var item = items[i];
             total += item.total;
+            var mods = '';
+            angular.forEach(item.modifiers, function(modifier,key) {
+                if (key == item.modifiers.length-1) {
+                    mods += modifier.name;
+                } else {
+                    mods += modifier.name + key +', ';
+                }
+            });
 
             var currency = null;
             if ($scope.currentAction == 'pdf') {
@@ -186,7 +194,14 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                 currency = $scope.getCurrency();
             }
 
-            arrItems.push(item.qty + 'x ' + item.name + ' ' + currency + item.total.toFixed(2));
+            var itemString = item.qty;
+            itemString += 'x ';
+            itemString += item.name;
+            itemString += (item.modifiers.length ? ' (' + mods + ') ' : ' ');
+            itemString += currency;
+            itemString += item.total.toFixed(2);
+
+            arrItems.push(itemString);
         };
 
         order.total = total;

@@ -23,9 +23,9 @@
               <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name" placeholder='eg."{{getPlaceholder("notify",$index).name}}"' ng-required='validateMessage(message)' />
           </div>
           <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':!validateActive(message)}" > 
-          <input  value="0" type="radio" ng-model="message.active" ng-disabled="!validateActive(message) || venue.deliverFlag==0" tabindex=-1>
+          <input  value="0" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
             <label class="no"><?echo _("No")?></label>
-          <input value="1" type="radio" ng-model="message.active" ng-disabled="!validateActive(message) || venue.deliverFlag==0" tabindex=-1>
+          <input value="1" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
             <label class="yes"><?echo _("Yes")?></label>
             <span></span>
           </div>                
@@ -48,9 +48,9 @@
               <input class='' type='text' ng-change="validateActive(message)" ng-model="message.name"    placeholder='eg."{{getPlaceholder("reject",$index).name}}"' ng-required='validateMessage(message)' />
           </div>
           <div class="messageCol-3 switch" ng-class="{'off': message.active==0, 'disabled':!validateActive(message)}" > 
-          <input  value="0" type="radio" ng-model="message.active" ng-disabled="!validateActive(message) || venue.deliverFlag==0" tabindex=-1>
+          <input  value="0" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
             <label class="no"><?echo _("No")?></label>
-          <input value="1" type="radio" ng-model="message.active" ng-disabled="!validateActive(message) || venue.deliverFlag==0" tabindex=-1>
+          <input value="1" type="radio" ng-model="message.active" ng-disabled="!validateActive(message)" tabindex=-1>
             <label class="yes"><?echo _("Yes")?></label>
             <span></span>
           </div>          

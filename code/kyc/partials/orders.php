@@ -12,7 +12,7 @@
 					</a>
 				</div>
 				<div id="content-table">
-					<table class="table table-striped table-list table-stream table-condensed" ng-init="orderBy = 'updated'; direction = true">
+					<table class="table table-striped table-list table-stream table-condensed" ng-init="direction = true;">
 					<thead>
 					  	<tr>
 					  		<th width="10">
@@ -21,35 +21,35 @@
 							    <label for="all_options"></label>
 							  </div>
 					  		</th>
-					  		<th ng-click="orderBy = 'dateTimeStamp'; direction=!direction">
+					  		<th ng-click="direction=!direction; setOrderBy('dateTimeStamp');">
                                 <? echo _("Date/Time")?>
                                 <div class="sort pull-right">
                                     <i class="fa fa-sort-up"></i>
                                     <i class="fa fa-sort-desc"></i>
                                 </div>
                             </th>
-					  		<th ng-click="$parent.orderBy = 'outletName'; direction=!direction" ng-if="$parent.getSelectedOutlets().length > 1 || $parent.getSelectedOutlets().length == 0">
+					  		<th ng-click="direction=!direction; setOrderBy('outletName');" ng-if="$parent.getSelectedOutlets().length > 1 || $parent.getSelectedOutlets().length == 0">
 					  			<? echo _("Outlet")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'user.name'; direction=!direction">
+					  		<th ng-click="direction=!direction; setOrderBy('user.name');">
 					  			<? echo _("Customer")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'itemString'; direction=!direction" class="colItems">
+					  		<th ng-click="direction=!direction; setOrderBy('itemString');" class="colItems">
 					  			<? echo _("Items")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'total'; direction=!direction">
+					  		<th ng-click="direction=!direction; setOrderBy('total');">
 					  			<? echo _("Order Total")?>
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
@@ -62,7 +62,7 @@
 					  	</tr>
 					  </thead>
 					  <tbody>
-						<tr ng-repeat="order in orders | limitTo:numPerPage | orderObjectBy:orderBy:direction">
+						<tr ng-repeat="order in orders | limitTo:numPerPage">
 					  		<td>
 							  <div class="checkbox checkboxStyle checkboxPartials">
 							  	<input type="checkbox" ng-model="order.selected" id="check_{{ order.id }}" />

@@ -1,5 +1,5 @@
-angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location', 'OrderService','$AjaxInterceptor',
-    function($scope, $location, OrderService,$AjaxInterceptor) {
+angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location', 'OrderService','$AjaxInterceptor','UtilsService',
+    function($scope, $location, OrderService,$AjaxInterceptor,UtilsService) {
 
         if ($scope.venue.eventFlag) {
             $location.path('/dashboard');
@@ -18,34 +18,48 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
         function _processOrders (orders) {
             console.log("ORDERS === ", orders);
             if ( orders.length ) {
-                $scope.allOrders = orders;
-                $scope.orders = orders;
+                $scope.allOrders = [];
+                $scope.orders = [];
+                var minDate = $scope.$parent.form.start_date;
+                console.log("minDate === ", minDate);
+                var maxDate = $scope.$parent.form.end_date;
+                console.log("maxDate === ", maxDate);
 
-                for (var i = orders.length - 1; i >= 0; i--) {
-                    var order = orders[i];
-                    order.outletName = $scope.getOutletById(order.outletId).name;
-                    order.dateTimeStamp = moment.utc(order.created).valueOf();
-                    order.dateTime = moment.utc(order.created).format('DD/MM/YYYY HH:mm');
-                };
+                    for (var i = orders.length - 1; i >= 0; i--) {
+                        var order = orders[i];
+                        var orderDate = moment.utc(order.created);
+                        if (orderDate >= minDate && orderDate <= maxDate) {
+                            order.outletName = $scope.getOutletById(order.outletId).name;
+                            order.dateTimeStamp = moment.utc(order.created).valueOf();
+                            order.dateTime = moment.utc(order.created).format('DD/MM/YYYY HH:mm');
+                            $scope.allOrders.push(order);
+                        }
+                    };
 
+                $scope.orders = $scope.allOrders;
+                $scope.currentPage = 1;
+                $scope.direction = true;
                 $scope.totalItems = $scope.orders.length;
+                $scope.setOrderBy('dateTimeStamp')
             }
             $AjaxInterceptor.complete();
         };
+
         $scope.$on('KYC_RELOAD',function(){
-            var selectedOutlets = $scope.getSelectedOutlets();
-            var outletIds = [];
-            for (var i = selectedOutlets.length - 1; i >= 0; i--) {
-                outletIds.push(selectedOutlets[i].id);
-            }
-            OrderService.loadSince(moment.utc($scope.form.start_date).valueOf(),outletIds).then(function() {
-                _processOrders(OrderService.getOrders());
-            });
+            _processOrders(OrderService.getOrders());
         });
 
         $scope.$watch('currentPage + numPerPage', function() {
             loadOrdersByPage();
         });
+
+        $scope.setOrderBy = function( orderBy, direction ){
+            if (direction !== undefined)
+                $scope.direction = direction;
+            $scope.allOrders = UtilsService.dynamicSortObject($scope.allOrders, orderBy, $scope.direction)
+
+            loadOrdersByPage();
+        }
 
         var loadOrdersByPage = function(){
             var begin = (($scope.currentPage - 1) * $scope.numPerPage)
@@ -64,6 +78,14 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             for (var i = 0, len = items.length; i < len; i++) {
                 var item = items[i];
                 total += item.total;
+                var mods = '';
+                angular.forEach(item.modifiers, function(modifier,key) {
+                    if (key == item.modifiers.length-1) {
+                        mods += modifier.name;
+                    } else {
+                        mods += modifier.name + ', ';
+                    }
+                });
 
                 var currency = null;
                 if ($scope.currentAction == 'pdf') {
@@ -72,7 +94,14 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
                     currency = $scope.getCurrency();
                 }
 
-                arrItems.push(item.qty + 'x ' + item.name + ' ' + currency + item.total.toFixed(2));
+                var itemString = item.qty;
+                itemString += 'x ';
+                itemString += item.name;
+                itemString += (item.modifiers.length ? ' (' + mods + ') ' : ' ');
+                itemString += currency;
+                itemString += item.total.toFixed(2);
+
+                arrItems.push(itemString);
             };
 
             order.total = total;
@@ -291,5 +320,6 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             return result;
         }
 
+        _processOrders(OrderService.getOrders());
         $AjaxInterceptor.complete();
     }]);
