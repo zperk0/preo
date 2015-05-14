@@ -161,6 +161,13 @@ $(document).ready(function () {
 
   function setPackageInfo(preoPackage){  	
   	if (preoPackage.trialPeriod && preoPackage.trialPeriod > 0) {
+
+  		if (preoPackage.id === 4 || preoPackage.id === 5) {
+  			$('.package-trial .text-green').text(_tr('Your free trial will end after 10 successful orders'));
+  			$('.package-trial h5').text(_tr('If you choose not to continue using Preoday just cancel before the trial ends and you won’t be charged (we’ll email you after your 8th order to remind you). You can upgrade, downgrade or cancel at any time.'));
+  		}
+
+
   		$('body').addClass("trial"); 
 
   		$('.textTrialCardNumber').bind('click', function () {
