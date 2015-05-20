@@ -285,7 +285,7 @@ if ($packageTrial) {
 
 <div id="noPaymentMethod" class="reveal-modal medium modal-preoday dashboard" data-reveal>
     <header class="title-notification"><?echo _("Payment provider is not connected!")?></header>
-    <div class="container-modal-confirm"><? echo _("Before taking your app live you need to connect it to a payment provider so that you can start accepting payments and start getting paid!")?></div>
+    <div class="container-modal-confirm"><? echo _("Before taking your app live you need to connect it to a payment provider or enable cash payments so that you can start accepting payments and start getting paid!")?></div>
     <button class='positiveDismiss preodayButton' ><? echo _("CONNECT")?></button>
     <button class='negativeDismiss preodayButton'><? echo _("CANCEL")?></button>    
 </div>
