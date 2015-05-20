@@ -13,25 +13,21 @@
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	
 	//////PAYMENTS////////////////////////////////////////////////////////////////////////////
-	if ($_SESSION['venue_cashFlag']) {
-		$noPaymentFlag = 0;
-	} else {
-		$curlResult = callAPI('GET', $apiURL."accounts/$accountID/paymentproviders", false, $apiAuth);
-		$dataJSON = json_decode($curlResult, true);
-		
-		if(!empty($dataJSON))
+	$curlResult = callAPI('GET', $apiURL."venues/$venueID/paymentproviders", false, $apiAuth);
+	$dataJSON = json_decode($curlResult, true);
+	
+	if(!empty($dataJSON))
+	{
+		$connectedFlag = 0;
+		foreach($dataJSON as $paymentProvider)
 		{
-			$connectedFlag = 0;
-			foreach($dataJSON as $paymentProvider)
-			{
-				if(isset($paymentProvider['type']) && $paymentProvider['type'] == 'Stripe')
-					$connectedFlag = 1;
-			}
-			$noPaymentFlag = !$connectedFlag;
+			if(isset($paymentProvider['type']) && ($paymentProvider['type'] == 'Stripe' || $paymentProvider['type'] == 'CASH'))
+				$connectedFlag = 1;
 		}
-		else
-			$noPaymentFlag=1;
+		$noPaymentFlag = !$connectedFlag;
 	}
+	else
+		$noPaymentFlag=1;
 		
 	$currentMode = "";
 	if($_SESSION['venue_demoFlag'] && $_SESSION['venue_liveFlag'])

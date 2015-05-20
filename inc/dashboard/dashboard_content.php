@@ -5,21 +5,18 @@
 //resetting global vars
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/global_vars.php');
 	$accountId = $_SESSION['account_id'];
+	$venueId = $_SESSION['venue_id'];
 	$connectedFlag = 0;	
 
-	if ($_SESSION['venue_cashFlag']) {
-		$connectedFlag = 1;
-	} else {
-		$curlResult = callAPI('GET', $apiURL."accounts/$accountId/paymentproviders", false, $apiAuth);
-		$dataJSON = json_decode($curlResult, true);		
+	$curlResult = callAPI('GET', $apiURL."venues/$venueId/paymentproviders", false, $apiAuth);
+	$dataJSON = json_decode($curlResult, true);		
 
-		if(!empty($dataJSON))
-		{	
-			foreach($dataJSON as $paymentProvider)
-			{
-				if(isset($paymentProvider['type']) && $paymentProvider['type'] == 'Stripe')
-					$connectedFlag = 1;
-			}
+	if(!empty($dataJSON))
+	{	
+		foreach($dataJSON as $paymentProvider)
+		{
+			if(isset($paymentProvider['type']) && ($paymentProvider['type'] == 'Stripe' || $paymentProvider['type'] == 'CASH'))
+				$connectedFlag = 1;
 		}
 	}	
 
