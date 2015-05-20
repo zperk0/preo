@@ -183,7 +183,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                 if (key == item.modifiers.length-1) {
                     mods += modifier.name;
                 } else {
-                    mods += modifier.name + key +', ';
+                    mods += modifier.name + ', ';
                 }
             });
 
