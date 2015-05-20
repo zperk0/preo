@@ -22,7 +22,7 @@
 		if ($curlResult) {
 			$curlResult = json_decode($curlResult, true);
 			if ($curlResult['status'] == 403) {
-				echo '{"status": "error"}'; exit();
+				echo json_encode($curlResult); exit();
 			}
 		}		
 	}

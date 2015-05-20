@@ -4708,8 +4708,13 @@ $(document).ready(function() {
 		   success: function(data) {
 		   		try {
 		   			data = $.parseJSON(data);
-		   			if (data.hasOwnProperty('status') && data.status == 'error') {
-		   				noty({ type: 'error', text: _tr('You need to subscribe to a package before changing the app mode') });	
+		   			console.log(data);
+		   			if (data.hasOwnProperty('status') && data.status == 403) {
+		   				if (data.message === 'Venue without payment provider and cash') {
+		   					noty({ type: 'error', text: _tr('You need to accept at least one payment method before going live') });	
+		   				} else {
+		   					noty({ type: 'error', text: _tr('You need to subscribe to a package before changing the app mode') });	
+		   				}
 		   				$('#loadingDashboard').hide();
 		   			} else {
 			   			$switchDashboardMode.removeClass('active');
