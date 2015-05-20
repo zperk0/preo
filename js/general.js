@@ -4710,7 +4710,7 @@ $(document).ready(function() {
 		   			data = $.parseJSON(data);
 		   			console.log(data);
 		   			if (data.hasOwnProperty('status') && data.status == 403) {
-		   				if (data.message === 'Venue without payment provider and cash') {
+		   				if (data.message === 'Venue must accept at least one payment type to go live') {
 		   					noty({ type: 'error', text: _tr('You need to accept at least one payment method before going live') });	
 		   				} else {
 		   					noty({ type: 'error', text: _tr('You need to subscribe to a package before changing the app mode') });	
