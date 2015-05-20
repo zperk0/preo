@@ -1,19 +1,25 @@
 <style> 
-	@import '<?echo $_SESSION['path']?>/css/dashboard_override.css';
+	@import "<?echo $_SESSION['path']?>/css/dashboard_override.css";
 </style><!-- The dashboard looks slightly different than other pages -->
 <?
 //resetting global vars
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/global_vars.php');
 	$accountId = $_SESSION['account_id'];
-	$curlResult = callAPI('GET', $apiURL."accounts/$accountId/paymentproviders", false, $apiAuth);
-	$dataJSON = json_decode($curlResult, true);
 	$connectedFlag = 0;	
-	if(!empty($dataJSON))
-	{	
-		foreach($dataJSON as $paymentProvider)
-		{
-			if(isset($paymentProvider['type']) && $paymentProvider['type'] == 'Stripe')
-				$connectedFlag = 1;
+
+	if ($_SESSION['venue_cashFlag']) {
+		$connectedFlag = 1;
+	} else {
+		$curlResult = callAPI('GET', $apiURL."accounts/$accountId/paymentproviders", false, $apiAuth);
+		$dataJSON = json_decode($curlResult, true);		
+
+		if(!empty($dataJSON))
+		{	
+			foreach($dataJSON as $paymentProvider)
+			{
+				if(isset($paymentProvider['type']) && $paymentProvider['type'] == 'Stripe')
+					$connectedFlag = 1;
+			}
 		}
 	}	
 
