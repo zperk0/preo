@@ -24,6 +24,8 @@
 		$_SESSION['venue_country']			= $data['country'];	
 		$_SESSION['venue_eventFlag']		= $data['eventFlag'];	
 		$_SESSION['venue_deliverFlag']		= $data['deliverFlag'];	
+		$_SESSION['venue_latitude']		= $data['latitude'];	
+		$_SESSION['venue_longitude']		= $data['longitude'];	
 
 		if (isset($data['demoFlag'])){
 			$_SESSION['venue_demoFlag']			= $data['demoFlag'];
