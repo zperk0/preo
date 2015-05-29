@@ -1,4 +1,5 @@
 <?php session_start(); //start the session so this file can access $_SESSION vars.
+
 	function formatPercentage($num){
 		if (isset($num) && $num)
 			return $num/100;
@@ -67,12 +68,7 @@
 
 	$vOrderMin = $_POST['vOrderMin'];
 	protect($vCurrency);
-	
-
-	preg_match('/\((.*), (.*)\)/', $vCode, $matches);
-	$vLat=$matches[1];
-	$vLong=$matches[2];
-	
+		
 	$vDesc = $_POST['vDesc'];
 	protect($vDesc);
 	
@@ -82,8 +78,6 @@
 	$data['address1']			= $vAdd;
 	$data['address2']			= $vAdd2;
 	$data['address3']			= $vAdd3;
-	$data['latitude']			= $vLat;
-	$data['longitude']			= $vLong;
 	$data['postcode']			= $vPostal;
 	$data['country']			= $vCountry;
 	$data['categoryId']			= $vCat;
