@@ -1959,17 +1959,48 @@ $(document).ready(function() {
 	   noneSelectedText: "Pick an option type",
 	   selectedList: 1
 	});
-	
+
+    var slots = [
+        {label:_tr("Collection Slot: Pre-Show"),key:'PRESHOW'},
+        {label:_tr("Collection Slot: Pre-Game"),key:'PREGAME'},
+        {label:_tr("Collection Slot: Interval"),key:'INTERVAL'},
+        {label:_tr("Collection Slot: Second-Interval"),key:'INTERVAL2'},
+        {label:_tr("Collection Slot: Half-time"),key:'HALFTIME'},
+        {label:_tr("Collection Slot: Post-Show"),key:'POSTSHOW'},
+        {label:_tr("Collection Slot: Post-Game"),key:'POSTGAME'}
+    ];
 
 	$("input[name^=iMod]").autocomplete({ source: [ _tr("Choose a size"),_tr("Choose a flavour"),_tr("Choose a topping"),_tr("Choose some extras"),_tr("Choose a side dish") ], delay: 10, minLength: 0 });
 	$("input[name^=iMD]").autocomplete({ source: [ _tr("Choose a main"),_tr("Choose a side"),_tr("Choose a drink"),_tr("Choose a curry"),_tr("Choose a burger") ], delay: 10, minLength: 0 });
-	
+
+    $(".dynamicDataTable input[name^=eColl]").each(function(item){
+        var $input = $(this);
+        var slot = $input.data('slot');
+        $(this).autocomplete({
+            source: slots,
+            select: function(event,ui){
+                $(event.target).val(ui.item.key);
+            }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none", of: $("input[name^=eColl]") } });
+        var item = slots.filter(function(s){
+            return s.key === slot;
+        });
+        if (item.length) {
+            $input.val(item[0].label);
+        } else {
+            $input.val(slot);
+        }
+    });
+
 	$(document).on("click", '.showAChevy', function(){
 		$elem = $(this).prevAll('input:first');
 		$elem.focus();
 		$elem.trigger('click');
 	});
-	
+
+    $(document).on("click", 'input[name^=eColl]', function(){
+        $(this).autocomplete( "search", "C" );
+    });
+
 	$(document).on("click", 'input[name^=iMod], input[name^=iMD]', function(){
 		$(this).parent('.modifierRow').find("input[name^=iMod]").autocomplete( "search", "C" );
 		$(this).parent('.modifierRow').find("input[name^=iMD]").autocomplete( "search", "C" );
@@ -2056,7 +2087,7 @@ $(document).ready(function() {
 	
 	//add data-attribute
 	//main entries
-	$(document).on("blur", 'input[name^=mName], input[name^=mSectionName], input[name^=iName], input[name^=iMod], input[name^=oName]', function(){
+	$(document).on("blur", 'input[name^=mName], input[name^=mSectionName], input[name^=eColl], input[name^=iName], input[name^=iMod], input[name^=oName]', function(){
 		$(this).attr('data-edit',true);
 		$(this).data('edit',true);
 	});
@@ -2066,7 +2097,7 @@ $(document).ready(function() {
 		$(this).parents('.itemTR').first().find('input[name^=iName]').attr('data-edit',true);
 		$(this).parents('.itemTR').first().find('input[name^=iName]').data('edit',true);
 	});
-	//mod 
+	//mod
 	$(document).on("change", 'select[name^=iModType]', function(){
 		$(this).parents('.subHeaderTR').first().find('input[name^=iMod]').attr('data-edit',true);
 		$(this).parents('.subHeaderTR').first().find('input[name^=iMod]').data('edit',true);
@@ -2491,7 +2522,8 @@ $(document).ready(function() {
 		//update Time
 		submitTime = new Date().getTime();
 		return false; // avoid to execute the actual submit of the form.
-	}); 
+	});
+
 	
 	$(document).on("click", ".newEvent, .eventDuplicate", function() {
 		//new item or duplicate?
@@ -2553,7 +2585,16 @@ $(document).ready(function() {
 		});
 		
 		//Replace ids with incremented value and make value = default value
-		$newTab.find(".optionTR input").each(function(key, value) {
+		$newTab.find(".optionTR .eventTDCollection input").each(function(key, value) {
+			if(!dup) $(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
+			newName = newName.replace(/\[\d+\]/gi, "["+(key+1)+"]");
+			$(this).attr('name', newName);
+		});
+
+		//Replace ids with incremented value and make value = default value
+		$newTab.find(".optionTR .eventTDLead input").each(function(key, value) {
 			if(!dup) $(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
@@ -2563,24 +2604,8 @@ $(document).ready(function() {
 		
 		//remove multiselect
 		if(dup) $newTab.find(".ui-multiselect").remove();
-		
-		//Replace ids with incremented value and make value = default value + add multiselect
-		$newTab.find(".optionTR .eventTDCollection select").each(function(key, value) {
-			if(!dup) $(this).val( $(this).prop("defaultValue") );
-			if ($oldTab) $(this).val($($oldTab.find(".optionTR .eventTDCollection select")[key]).val());
-			var tempName = $(this).attr('name');
-			var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
-			newName = newName.replace(/\[\d+\]/gi, "["+(key+1)+"]");
-			$(this).attr('name', newName);
-			
-			$(this).multiselect({
-			   multiple: false,
-			   header: false,
-			   noneSelectedText: _tr("Choose a Collection Slot"),
-			   selectedList: 1,
-			   minWidth: 342
-			}); 
-		});
+
+
 
 		//Replace ids with incremented value and make value = default value + add multiselect
 		$newTab.find(".optionTR .eventTDOutletLocation select").each(function(key, value) {
@@ -2663,6 +2688,18 @@ $(document).ready(function() {
 		//insert before section header/before hidden div
 		$(".firstEventDiv").before($newTab); 
 		$newTab.slideRow('down');
+
+
+		$newTab.find(".optionTR .eventTDCollection input").each(function(key, value) {
+				$(this).autocomplete({
+                    source: slots,
+                    select: function(event,ui){
+                        console.log('here',event, ui)
+                        $(event.target).val(ui.item.key);
+                    }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none" } });
+		});
+
+
 		if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
@@ -2687,7 +2724,6 @@ $(document).ready(function() {
 		$curItem.find(".eventTDEdit").removeClass('hide');
 		$curItem.find(".eventTDEdit").show();
 		$curItem.find(".optionTR").slideRow('up');
-		$curItem.find(".eventMenuSingleSelect").multiselect("disable");
 		$curItem.css('background', 'transparent');
 		$curItem.css('box-shadow', '0px 0px 0px');
 		$curItem.css('max-width', '100%');
@@ -2703,7 +2739,6 @@ $(document).ready(function() {
 		$curItem.find(".eventSave").removeClass('hide');
 		$curItem.find(".eventSave").show();
 		$curItem.find(".optionTR").slideRow('down');
-		$curItem.find(".eventMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
 		$curItem.css('max-width', '100%');
@@ -2817,13 +2852,7 @@ $(document).ready(function() {
 		
 	});
 	
-	$(".eventMenuSingleSelect.selectCollectionSlot").multiselect({
-	   multiple: false,
-	   header: false,
-	   noneSelectedText: _tr("Choose a Collection Slot"),
-	   selectedList: 1,
-	   minWidth: 342
-	}); 
+	
 	$(".eventMenuSingleSelect.selectOutletLocation").multiselect({
 	   multiple: false,
 	   header: false,
@@ -2840,7 +2869,6 @@ $(document).ready(function() {
 	   minWidth: 342
 	}); 	
 		
-	$(".eventMenuSingleSelect").multiselect('disable');
 	
 	$(document).on("click", ".newCollSlot", function() {
 		//get event number
@@ -2862,28 +2890,31 @@ $(document).ready(function() {
 		$newRow.find("td.eventTDAddMore").append("<button type='button' class='delCollSlot secondary' title='Delete this slot'><i class='pd-delete'></i></button>");
 		$newRow.find(".ui-multiselect").remove();
 		
-		$newRow.find("td.eventTDCollection select").each(function() {
-			$(this).val( $(this).prop("defaultValue") );
-			var tempName = $(this).attr('name');
-			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
-			$(this).attr('name', newName);
-			
-			$(this).multiselect({
-			   multiple: false,
-			   header: false,
-			   noneSelectedText: _tr("Choose a Collection Slot"),
-			   selectedList: 1,
-			   minWidth: 342
-			}); 
-		});	
-		
-		//replace ids with incremented value and make value = default value
-		$newRow.find("input").each(function() {
+		//Replace ids with incremented value and make value = default value
+		$newRow.find(".eventTDCollection input").each(function(key, value) {
 			$(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/event\d+/gi, eventID);
 			newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
+		});
+
+		//Replace ids with incremented value and make value = default value
+		$newRow.find(".eventTDLead input").each(function(key, value) {
+			$(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/event\d+/gi, eventID);
+			newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+		});
+
+		$newRow.find(".eventTDCollection input").each(function(key, value) {
+			$(this).autocomplete({
+                source: slots,
+                select: function(event,ui){
+                    console.log('here',event, ui)
+                    $(event.target).val(ui.item.key);
+                }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none" } });
 		});
 		
 		//now we fix placeholder
@@ -2998,8 +3029,6 @@ $(document).ready(function() {
 					$(this).trigger('click');
 			});
 			
-			//enable dropdowns or we wont get the values!
-			$(".eventMenuSingleSelect").multiselect('enable');
 			
 			var url = "/saveEvent";
 			
@@ -3052,7 +3081,6 @@ $(document).ready(function() {
 			 }).done(function() {
 				$('#eventSubButton').show();
 				$('#savingButton').hide();
-				$(".eventMenuSingleSelect").multiselect('disable');
 			 });
 		}
 		//update Time

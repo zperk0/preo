@@ -118,15 +118,12 @@
 							<tr class="eventEdit optionTR ">
 								<td class="eventTDCollection">
 									<label>&nbsp;</label>
-									<select name="eColl[event0][0]" class="eventField noEnterSubmit inline" style="display:none;" required/> <!-- Dummy does not have eventMenuSingleSelect -->
-										<option value="PRESHOW"  ><?echo _("Collection Slot: Pre-Show")?></option>
-										<option value="PREGAME"  ><?echo _("Collection Slot: Pre-Game")?></option>
-										<option value="INTERVAL" ><?echo _("Collection Slot: Interval")?></option>
-										<option value="INTERVAL2"><?echo _("Collection Slot: Second-Interval")?></option>
-										<option value="HALFTIME" ><?echo _("Collection Slot: Half-time")?></option>
-										<option value="POSTSHOW" ><?echo _("Collection Slot: Post-Show")?></option>
-										<option value="POSTGAME" ><?echo _("Collection Slot: Post-Game")?></option>
-									</select>
+									<input type="text" name="eColl[event0][0]" data-insert="false" data-edit="false" data-delete="false" 
+									class="eventField noEnterSubmit inline eventMenuSingleSelect selectCollectionSlot" 
+									style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;margin-top: 14px;  height: 37px;" placeholder="<?echo _("Choose a Collection Slot");?>" pattern="^.{0,99}$"/>&nbsp;
+									<span class="showAChevy" style="top: -37px; left: -15px;">
+										<i class="pd-down"></i>
+									</span>
 									<small class="error"><?echo _("Please choose a slot.");?></small>
 								</td>
 								<td class="eventTDLead">
@@ -208,15 +205,13 @@
 					<tr class="eventEdit optionTR savedInput" style="display:none;" required>
 						<td class="eventTDCollection">
 							<label>&nbsp;</label>
-							<select name="eColl[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectCollectionSlot hide"/>
-								<option value="PRESHOW"  <?if($cSlot['collectionslot']=='PRESHOW'  ) echo "selected='selected'";?>><?echo _("Collection Slot: Pre-Show")?></option>
-								<option value="PREGAME"  <?if($cSlot['collectionslot']=='PREGAME'  ) echo "selected='selected'";?>><?echo _("Collection Slot: Pre-Game")?></option>
-								<option value="INTERVAL" <?if($cSlot['collectionslot']=='INTERVAL') echo "selected='selected'";?>><?echo _("Collection Slot: Interval")?></option>
-								<option value="INTERVAL2"<?if($cSlot['collectionslot']=='INTERVAL2') echo "selected='selected'";?>><?echo _("Collection Slot: Second-Interval")?></option>
-								<option value="HALFTIME" <?if($cSlot['collectionslot']=='HALFTIME' ) echo "selected='selected'";?>><?echo _("Collection Slot: Half-Time")?></option>
-								<option value="POSTSHOW" <?if($cSlot['collectionslot']=='POSTSHOW' ) echo "selected='selected'";?>><?echo _("Collection Slot: Post-Show")?></option>
-								<option value="POSTGAME" <?if($cSlot['collectionslot']=='POSTGAME' ) echo "selected='selected'";?>><?echo _("Collection Slot: Post-Game")?></option>
-							</select>
+							<input type="text" data-slot="<?echo $cSlot['collectionslot'];?>" name="eColl[event<?echo ($eKey+1);?>][<?echo ($cKey+1);?>]" data-id="coll<?echo $cSlot['id'];?>" data-insert="false" data-edit="false" data-delete="false" 
+							style="background: #3AA2DC !important;color: #FFFFFF !important; font-size: 14px !important;margin-top: 14px;  height: 37px;" 
+							class="eventField noEnterSubmit inline eventMenuSingleSelect selectCollectionSlot hide" placeholder="<?echo _("Choose a Collection Slot");?>" value="<?echo htmlentities($modifier['name'], ENT_QUOTES);?>" required pattern="^.{0,99}$"/>
+							&nbsp;
+							<span class="showAChevy" style="top: -37px; left: -15px;">
+								<i class="pd-down"></i>
+							</span>
 							<small class="error"><?echo _("Please choose a slot.");?></small>
 						</td>
 						<td class="eventTDLead">
