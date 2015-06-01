@@ -1970,26 +1970,15 @@ $(document).ready(function() {
         {label:_tr("Collection Slot: Post-Game"),key:'POSTGAME'}
     ];
 
+	$(".savedInput input[name^=eColl]").autocomplete({
+                    source: slots,
+                    select: function(event,ui){
+                        console.log('here',event, ui)
+                        $(event.target).val(ui.item.key);
+                    }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none" } });
 	$("input[name^=iMod]").autocomplete({ source: [ _tr("Choose a size"),_tr("Choose a flavour"),_tr("Choose a topping"),_tr("Choose some extras"),_tr("Choose a side dish") ], delay: 10, minLength: 0 });
 	$("input[name^=iMD]").autocomplete({ source: [ _tr("Choose a main"),_tr("Choose a side"),_tr("Choose a drink"),_tr("Choose a curry"),_tr("Choose a burger") ], delay: 10, minLength: 0 });
 
-    $(".dynamicDataTable input[name^=eColl]").each(function(item){
-        var $input = $(this);
-        var slot = $input.data('slot');
-        $(this).autocomplete({
-            source: slots,
-            select: function(event,ui){
-                $(event.target).val(ui.item.key);
-            }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none", of: $("input[name^=eColl]") } });
-        var item = slots.filter(function(s){
-            return s.key === slot;
-        });
-        if (item.length) {
-            $input.val(item[0].label);
-        } else {
-            $input.val(slot);
-        }
-    });
 
 	$(document).on("click", '.showAChevy', function(){
 		$elem = $(this).prevAll('input:first');
