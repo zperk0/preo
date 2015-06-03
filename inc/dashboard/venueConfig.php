@@ -163,6 +163,21 @@
 					</div>
 				</div>
 			</div> 
+
+			<div class="row">
+				<div class="large-12 columns">
+					<label><?echo _("Enable require's phone option?");?></label>
+					<div class="switch small large-2 columns"> 
+						<input name="vPhone" class="vPhone" value="0" type="radio" <?if((isset($_SESSION['venue_requiresPhone']) && !$_SESSION['venue_requiresPhone']) || !isset($_SESSION['venue_requiresPhone'])){?>checked<?}?>>
+						<label class="no"><?echo _("No");?></label>
+
+						<input name="vPhone" class="vPhone" value="1" type="radio" <?if((isset($_SESSION['venue_requiresPhone']) && $_SESSION['venue_requiresPhone'])){?>checked<?}?>>
+						<label class="yes"><?echo _("Yes");?></label>
+
+						<span></span>
+					</div>
+				</div>
+			</div> 
 			
 			
 			
