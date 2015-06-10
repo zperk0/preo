@@ -166,7 +166,7 @@
 
 			<div class="row">
 				<div class="large-12 columns">
-					<label><?echo _("Enable require's phone option?");?></label>
+					<label><?echo _("Do you require a phone number?");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("By default phone numbers are only required for delivery orders, if you enable this option it will be mandatory for pickup orders as well.");?>"></i></label>
 					<div class="switch small large-2 columns"> 
 						<input name="vPhone" class="vPhone" value="0" type="radio" <?if((isset($_SESSION['venue_requiresPhone']) && !$_SESSION['venue_requiresPhone']) || !isset($_SESSION['venue_requiresPhone'])){?>checked<?}?>>
 						<label class="no"><?echo _("No");?></label>
