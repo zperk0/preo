@@ -1,5 +1,5 @@
 <?php  session_start();
-require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/global_vars.php'); 
+  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/global_vars.php'); 
   require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'); //need this for multi-language support
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/authentication.php');  
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
@@ -42,8 +42,12 @@ require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/global_vars.ph
   <!-- BEGIN WATCH  -->
   <script src="/code/events/js/app.js"></script>  
   <script src="/code/events/js/controller.js"></script>  
+
   <script src="/code/events/js/directives/slot.js"></script>  
   <script src="/code/events/js/directives/event.js"></script>  
+
+  <script src="/code/events/js/services/event.js"></script>  
+
   <script src="/code/notification/notification.js"></script>  
   <!-- END WATCH -->
 
