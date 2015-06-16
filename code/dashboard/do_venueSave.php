@@ -1,4 +1,5 @@
 <?php session_start(); //start the session so this file can access $_SESSION vars.
+
 	function formatPercentage($num){
 		if (isset($num) && $num)
 			return $num/100;
@@ -49,6 +50,9 @@
 
 	$vCash = $_POST['vCash'];
 	protect($vCash);
+
+	$vPhone = $_POST['vPhone'];
+	protect($vPhone);
 	
 	$vCode = $_POST['vCode'];
 	protect($vCode);
@@ -67,12 +71,7 @@
 
 	$vOrderMin = $_POST['vOrderMin'];
 	protect($vCurrency);
-	
-
-	preg_match('/\((.*), (.*)\)/', $vCode, $matches);
-	$vLat=$matches[1];
-	$vLong=$matches[2];
-	
+		
 	$vDesc = $_POST['vDesc'];
 	protect($vDesc);
 	
@@ -82,8 +81,6 @@
 	$data['address1']			= $vAdd;
 	$data['address2']			= $vAdd2;
 	$data['address3']			= $vAdd3;
-	$data['latitude']			= $vLat;
-	$data['longitude']			= $vLong;
 	$data['postcode']			= $vPostal;
 	$data['country']			= $vCountry;
 	$data['categoryId']			= $vCat;
@@ -117,6 +114,8 @@
 		$dataSettings['leadTime']			= $leadtime;
 		$dataSettings['pickupDiscount']   	= $vDiscount;
 		$dataSettings['orderMin']			= $vOrderMin;
+		$dataSettings['requiresPhone']		= $vPhone;
+		$_SESSION['venue_requiresPhone'] 	= $vPhone;
 		
 		$jsonData = json_encode($dataSettings);
 		
@@ -143,6 +142,7 @@
 		$data['leadTime']			= $leadtime;
 		$data['pickupDiscount']   	= $vDiscount;
 		$data['orderMin']			= $vOrderMin;	
+		$dataSettings['requiresPhone']		= $vPhone;
 		
 		$jsonData = json_encode($data);
 		

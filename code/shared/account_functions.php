@@ -51,6 +51,12 @@
 		}			
 	}
 
+	function setDefaultSettings($data) {
+		$_SESSION['venue_requiresPhone'] 	= $data['requiresPhone'];
+		$_SESSION['venue_collectinterval']	= $data['collectInterval'];	
+		$_SESSION['venue_leadtime']			= $data['leadTime'];		
+	}
+
 	function loggedVenue( $venueId ){
 		$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
 		//query to find venues
@@ -96,8 +102,8 @@
 			else if(isset($dataJSON['textColour']) && !empty($dataJSON['textColour']))
 			{	
 				$_SESSION['noAppFlag-1']=0; 
-				$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];	
-				$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];	
+
+				setDefaultSettings($dataJSON);
 				
 				//app-1
 				$_SESSION['app_heading']			= $dataJSON['heading'];
@@ -123,8 +129,7 @@
 			}
 			else
 			{
-				$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];	
-				$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];
+				setDefaultSettings($dataJSON);
 
 				$_SESSION['noAppFlag-1']=1; 
 				$_SESSION['noAppFlag-2']=1;
