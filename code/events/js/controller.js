@@ -1,7 +1,7 @@
 (function(window, angular){
 
 angular.module('events')
-.controller('EventsCtrl', function ($scope,Events) {
+.controller('EventsCtrl', function ($scope,EventService) {
 
 // get all events
   var vm = this;
