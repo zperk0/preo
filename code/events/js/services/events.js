@@ -1,7 +1,7 @@
 (function(window, angular){
 
 angular.module('events')
-.service('Events', function () {
+.service('Events', function ($http) {
     
     var service = {};
 
@@ -22,6 +22,23 @@ angular.module('events')
             $ionicLoading.hide();
         }
     }
+
+    service.get = function (filter) {
+
+        var query = filter ? '?after=' + filter : '';
+
+        return $http.get('/api/venues/5/events' + query);
+    };
+
+    service.getSlots = function(eventid) {
+
+        return $http.get('/api/events/' + eventid + '/slots');
+    };
+
+    service.getOutletLocations = function() {
+
+        return $http.get('/api/venues/5/outletlocations');
+    };
 
     return service;
 
