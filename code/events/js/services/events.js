@@ -37,7 +37,7 @@ angular.module('events')
 
     service.getOutletLocations = function() {
 
-        return $http.get('/api/venues/5/outletlocations');
+        return $http.get('/api/venues/5/outletlocations?outlets=false');
     };
 
     return service;

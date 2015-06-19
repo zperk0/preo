@@ -1,4 +1,4 @@
-<div class='event-view' ng-controller="EventsCtrl as eventsCtrl">
+<div ng-controller="EventsCtrl as eventsCtrl">
 	<?if(!isset($_SESSION['event_edit_on'])) $_SESSION['event_edit_on']=0;?>
 	<form id="eventConfigForm" method="POST" data-abide>
 		<div class="row">
@@ -20,23 +20,18 @@
 				<h1><?echo _("Your events");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("These show when you are open for ordering, such as performances or matches. They can be viewed from the front page of your app");?>"></i></h1>
 
 				<!-- Hidden inputs here keep count of events -->
-				<input type="hidden" id="eventCount"			name="eventCount" 				ng-value="<?php if($_SESSION['event_edit_on']) echo "eventsCtrl.length"; else echo "0";?>"/>
-				<input type="hidden" id="eventCountAct" 		name="eventCountAct"			ng-value="<?php if($_SESSION['event_edit_on']) echo "eventsCtrl.length"; else echo "0";?>"/>
-				<input type="hidden" id="event0_optionCount"	name="event0_optionCount" 		ng-value="<?php if($_SESSION['event_edit_on']) echo "eventsCtrl.length"; else echo "0";?>"/>
-				<input type="hidden" id="event0_optionCountAct" name="event0_optionCountAct" 	ng-value="<?php if($_SESSION['event_edit_on']) echo "eventsCtrl.length"; else echo "0";?>"/>
+				<input type="hidden" id="eventCount"			name="eventCount" 				ng-value="eventsCtrl.event_edit_on == 1 ? eventsCtrl.length : 0"/>
+				<input type="hidden" id="eventCountAct" 		name="eventCountAct"			ng-value="eventsCtrl.event_edit_on == 1 ? eventsCtrl.length : 0"/>
+				<input type="hidden" id="event0_optionCount"	name="event0_optionCount" 		ng-value="eventsCtrl.event_edit_on == 1 ? eventsCtrl.length : 0"/>
+				<input type="hidden" id="event0_optionCountAct" name="event0_optionCountAct" 	ng-value="eventsCtrl.event_edit_on == 1 ? eventsCtrl.length : 0"/>
 				
-				<input type="hidden" id="redirectFlag" ng-value="eventsCtrl.redirectFlag"/>
-				
-				<?if($_SESSION['event_edit_on']) :
-					foreach($events as $eKey=>$event)
-					{
-						//we have to keep this 1-indexed for consistency
-						?>
-						<input type="hidden" id="event<?echo ($eKey+1)?>_optionCount" 	 name="event<?echo ($eKey+1)?>_optionCount"	   value="<?echo $event['collectionCount'];?>"/>
-						<input type="hidden" id="event<?echo ($eKey+1)?>_optionCountAct" name="event<?echo ($eKey+1)?>_optionCountAct" value="<?echo $event['collectionCount'];?>"/>
-						<?
-					}
-				endif; ?>
+				<input type="hidden" id="redirectFlag" ng-value="eventCtrl.redirectFlag"/>
+
+				<!-- we have to keep this 1-indexed for consistency -->
+				<div ng-repeat='event in eventsCtrl.events'>
+					<input type="hidden" id="event{{$index + 1}}_optionCount" 	 name="event{{$index + 1}}_optionCount"	   ng-value="event.collectionCount"/>
+					<input type="hidden" id="event{{$index + 1}}_optionCountAct" name="event{{$index + 1}}_optionCountAct" ng-value="event.collectionCount"/>
+				</div>
 
 				<div class="row">
 					<div class="large-12 columns">
@@ -141,7 +136,7 @@
 			</div>
 		</div>
 		<div class="large-12 columns dynamicDataTable"> <!-- This is where the dynamic data goes into -->
-			<table class="eventTable" ng-repeat='event in eventsCtrl.events' id="event{{ $index + 1 }}">
+			<table class="eventTable" ng-repeat='event in eventsCtrl.events' id="event{{ $index + 1 }}" style='background: transparent;'>
 				<tbody>
 					<tr class="savedInput eventTR">
 						<td class="eventTDName">
@@ -187,7 +182,7 @@
 					<tr ng-if='eventsCtrl.outletLocations.length > 0' class="eventEdit optionTR savedInput" style="display:none;" required>
 						<td class="eventTDOutletLocation">
 							<select name="eOutletLocation[{{ $index + 1 }}]" ng-model='event.outletLocationId' class="eventField noEnterSubmit inline" class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide"> 
-								<option value=""  ><?= _("All Locations")?></option>
+								<option value=""  ><?echo _("All Locations")?></option>
 								<option ng-repeat='outletLocation in eventsCtrl.outletLocations' ng-value="outletLocation.id">{{outletLocation.name}}</option>											
 							</select>
 						</td>
