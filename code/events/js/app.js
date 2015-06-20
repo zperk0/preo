@@ -1,4 +1,4 @@
-var app = angular.module('events', ['ngRoute', ])
+var app = angular.module('events', ['ngRoute', 'constants'])
 .config(['$routeProvider',
     function($routeProvider) {
         console.log("prividing route");

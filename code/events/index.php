@@ -11,7 +11,7 @@
 
   <div ng-app="events">
     
-      <div ng-view> </div>
+      <div ng-view></div>
       <div class="loading" ng-show="requests">
         <div class="background-loading"></div>
         <div class="loading-content">
@@ -32,12 +32,10 @@
         </div>
       </div>  
   </div>
-    
-  <link rel="stylesheet" type="text/css" href="css/events.css">
+
   <link rel="stylesheet" href="/code/kyc/js/directives/multiselect/multiselect.css"/> 
 
   <script src="/js/angular_all.min.js"></script>  
-  <!-- // <script src="/js/general.js"></script>   -->
   <script src="/code/kyc/js/directives/multiselect/multiselect.js"></script>
   <!-- // <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>   -->
 
@@ -46,8 +44,8 @@
   <script src="/code/events/js/app.js"></script>  
   <script src="/code/events/js/controller.js"></script>  
 
-  <!-- // <script src="/code/events/js/directives/slot.js"></script>   -->
-  <!-- // <script src="/code/events/js/directives/event.js"></script>   -->
+  <script src="/code/events/js/directives/slot/slot.js"></script>  
+  <script src="/code/events/js/directives/event/event.js"></script>  
 
   <script src="/code/events/js/services/events.js"></script>  
 

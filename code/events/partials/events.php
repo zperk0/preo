@@ -1,21 +1,7 @@
 <div ng-controller="EventsCtrl as eventsCtrl">
-	<?if(!isset($_SESSION['event_edit_on'])) $_SESSION['event_edit_on']=0;?>
 	<form id="eventConfigForm" method="POST" data-abide>
 		<div class="row">
 			<div class="topSpacer"></div>
-			<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
-				<nav class="breadcrumbs row--space1d">
-					<a href="<?echo $_SESSION['path']?>/settings"><? echo _("Venue Information");?></a>
-					<a href="<?echo $_SESSION['path']?>/homescreen"><? echo _("App Styling 1/2");?></a>
-					<a href="<?echo $_SESSION['path']?>/menuscreen"><? echo _("App Styling 2/2");?></a>
-					<a href="<?echo $_SESSION['path']?>/menus/<?echo $_SESSION['menus'][0]['id'];?>?r=1"><? echo _("Menu Creation");?></a>
-					<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="current" href="#"><? echo _("Events");?></a>
-					<?}else{?><a class="current" href="#"><? echo _("Opening Hours");?></a><?}?>
-					<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
-					
-					<a class="unavailable" href="#"><? echo _("Done");?></a>
-				</nav>
-			<?}?>
 			<div class="large-12 columns">
 				<h1><?echo _("Your events");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("These show when you are open for ordering, such as performances or matches. They can be viewed from the front page of your app");?>"></i></h1>
 
@@ -181,9 +167,9 @@
 					</tr>
 					<tr ng-if='eventsCtrl.outletLocations.length > 0' class="eventEdit optionTR savedInput" style="display:none;" required>
 						<td class="eventTDOutletLocation">
-							<select name="eOutletLocation[{{ $index + 1 }}]" ng-model='event.outletLocationId' class="eventField noEnterSubmit inline" class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide"> 
+							<select name="eOutletLocation[{{ $index + 1 }}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide"> 
 								<option value=""  ><?echo _("All Locations")?></option>
-								<option ng-repeat='outletLocation in eventsCtrl.outletLocations' ng-value="outletLocation.id">{{outletLocation.name}}</option>											
+								<option ng-repeat='outletLocation in eventsCtrl.outletLocations' ng-value="outletLocation.id" ng-selected="event.id == outletLocation.id">{{outletLocation.name}}</option>											
 							</select>
 						</td>
 					</tr>
@@ -224,15 +210,4 @@
 			</div>
 		</div>
 	</form>
-	<?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
-	<script type="text/javascript">
-	$(document).ready(function() {
-
-		$('.progressIndicator').css('width','350%');
-		$('.progressIndicator').attr('title', <? echo json_encode(_("75&#37 done, almost there now...")) ?>) ;
-		setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
-		setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
-	});
-	</script>
-	<?}?>
 </div>

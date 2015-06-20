@@ -6,6 +6,7 @@
         var vm = this;
 
         function _init() {
+
             _getEvents();
             _getOutletLocations();
         }
@@ -70,11 +71,6 @@
                         //now we add timepicker
                         $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
                         $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-
-                        $('select.eventField').multiselect({
-                           multiple: false,
-                           header: false
-                        }); 
                     }, 0);
 
                     vm.redirectFlag = 0;
@@ -95,7 +91,8 @@
                 var outletLocations = result.data,
                     sorted = sortLocations(outletLocations);
 
-                console.log(outletLocations, sorted);
+                console.log(outletLocations);
+                console.log(sorted);
 
                 vm.outletLocations = getOutletLocationSelectOptions(sorted);
 
@@ -116,7 +113,6 @@
             var allChildren = [];
 
             list.forEach(function(elem, index) {
-
                 if(elem.parent == parent.id && elem.id != elem.parent) {
 
                     elem.children = getAllChildren(list, elem);
@@ -137,9 +133,13 @@
             // }   
             // return list;
 
+            console.log(list)
+
             list.forEach(function(elem, index) {
 
-                if(elem.children.length != 0){
+                console.log(elem.children)
+
+                if(elem.children.length == 0){
                     list.splice(index, 1);
                 } else {
                     elem.children = removeLastChildren(elem.children);
@@ -161,18 +161,22 @@
             // }
             // return removeLastChildren($sorted);
 
-            // locations.sort(function(a, b) {
-
-            //     return a.path >b.path;
+            // locations = usort(locations, function(a, b) {
+            //     console.log(a.path, b.path)
+            //     console.log(a.path > b.path)
+            //     return a.path > b.path;
             // });
+
+            locations.sort(locations, function(a, b) { return a.path < b.path; });
 
             var sorted = [];
             locations.forEach(function(elem, index) {
                 if(elem.parent == null && elem.id != null) {
                     elem.children = getAllChildren(locations, elem);
                     sorted.push(elem);
+                    console.log(elem)
                 }
-            })
+            });
             
             return removeLastChildren(sorted);
         }
@@ -233,6 +237,48 @@
                 } 
             } 
             return y;
+        }
+
+        function usort(inputArr, sorter) {
+
+          var valArr = [],
+            k = '',
+            i = 0,
+            strictForIn = false,
+            populateArr = {};
+
+          if (typeof sorter === 'string') {
+            sorter = this[sorter];
+          } else if (Object.prototype.toString.call(sorter) === '[object Array]') {
+            sorter = this[sorter[0]][sorter[1]];
+          }
+
+          // BEGIN REDUNDANT
+          this.php_js = this.php_js || {};
+          this.php_js.ini = this.php_js.ini || {};
+          // END REDUNDANT
+          strictForIn = this.php_js.ini['phpjs.strictForIn'] && this.php_js.ini['phpjs.strictForIn'].local_value && this.php_js
+            .ini['phpjs.strictForIn'].local_value !== 'off';
+          populateArr = strictForIn ? inputArr : populateArr;
+
+          for (k in inputArr) { // Get key and value arrays
+            if (inputArr.hasOwnProperty(k)) {
+              valArr.push(inputArr[k]);
+              if (strictForIn) {
+                delete inputArr[k];
+              }
+            }
+          }
+          try {
+            valArr.sort(sorter);
+          } catch (e) {
+            return false;
+          }
+          for (i = 0; i < valArr.length; i++) { // Repopulate the old array
+            populateArr[i] = valArr[i];
+          }
+
+          return strictForIn || populateArr;
         }
 
 

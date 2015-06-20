@@ -1,9 +1,10 @@
 (function(window, angular){
 
 angular.module('events')
-.service('Events', function ($http) {
+.service('Events', function ($http, VENUE_ID) {
     
-    var service = {};
+    var service = {},
+        venueid = VENUE_ID;
 
     service.show = function () {
         if (isNative) {
@@ -27,7 +28,7 @@ angular.module('events')
 
         var query = filter ? '?after=' + filter : '';
 
-        return $http.get('/api/venues/5/events' + query);
+        return $http.get('/api/venues/' + venueid + '/events' + query);
     };
 
     service.getSlots = function(eventid) {
@@ -37,7 +38,7 @@ angular.module('events')
 
     service.getOutletLocations = function() {
 
-        return $http.get('/api/venues/5/outletlocations?outlets=false');
+        return $http.get('/api/venues/' + venueid + '/outletlocations?outlets=false');
     };
 
     return service;
