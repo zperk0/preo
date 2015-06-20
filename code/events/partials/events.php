@@ -6,10 +6,10 @@
 				<h1><?echo _("Your events");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("These show when you are open for ordering, such as performances or matches. They can be viewed from the front page of your app");?>"></i></h1>
 
 				<!-- Hidden inputs here keep count of events -->
-				<input type="hidden" id="eventCount"			name="eventCount" 				ng-value="eventsCtrl.event_edit_on == 1 ? eventsCtrl.length : 0"/>
-				<input type="hidden" id="eventCountAct" 		name="eventCountAct"			ng-value="eventsCtrl.event_edit_on == 1 ? eventsCtrl.length : 0"/>
-				<input type="hidden" id="event0_optionCount"	name="event0_optionCount" 		ng-value="eventsCtrl.event_edit_on == 1 ? eventsCtrl.length : 0"/>
-				<input type="hidden" id="event0_optionCountAct" name="event0_optionCountAct" 	ng-value="eventsCtrl.event_edit_on == 1 ? eventsCtrl.length : 0"/>
+				<input type="hidden" id="eventCount"			name="eventCount" 				ng-value="eventsCtrl.event_edit_on == 1 ? eventsCtrl.events.length : 0"/>
+				<input type="hidden" id="eventCountAct" 		name="eventCountAct"			ng-value="eventsCtrl.event_edit_on == 1 ? eventsCtrl.events.length : 0"/>
+				<input type="hidden" id="event0_optionCount"	name="event0_optionCount" 		ng-value="eventsCtrl.event_edit_on == 1 ? eventsCtrl.events.length : 0"/>
+				<input type="hidden" id="event0_optionCountAct" name="event0_optionCountAct" 	ng-value="eventsCtrl.event_edit_on == 1 ? eventsCtrl.events.length : 0"/>
 				
 				<input type="hidden" id="redirectFlag" ng-value="eventCtrl.redirectFlag"/>
 
@@ -86,7 +86,7 @@
 								</tr>
 								<tr ng-if='eventsCtrl.outletLocations.length > 0' class="eventEdit optionTR savedInput" required>
 									<td class="eventTDOutletLocation">
-										<select name="eOutletLocation[0]" class="eventField noEnterSubmit inline"/> 
+										<select name="eOutletLocation[0]" class="eventField noEnterSubmit inline"> 
 											<option value=""  ><?= _("All Locations")?></option>
 											<option ng-repeat='outletLocation in eventsCtrl.outletLocations' ng-value="outletLocation.id">{{ outletLocation.name }}</option>
 										</select>
@@ -95,7 +95,7 @@
 								<tr class="eventEdit optionTR ">
 									<td class="eventTDCollection">
 										<label>&nbsp;</label>
-										<select name="eColl[event0][0]" class="eventField noEnterSubmit inline" style="display:none;" required> <!-- Dummy does not have eventMenuSingleSelect -->
+										<select name="eColl[event0][0]" class="eventField noEnterSubmit inline" required> <!-- Dummy does not have eventMenuSingleSelect -->
 											<option value="PRESHOW"  ><?echo _("Collection Slot: Pre-Show")?></option>
 											<option value="PREGAME"  ><?echo _("Collection Slot: Pre-Game")?></option>
 											<option value="INTERVAL" ><?echo _("Collection Slot: Interval")?></option>
@@ -165,7 +165,7 @@
 							<button type="button" class="eventTableButtons secondary eventDelete" 	title="<?echo _("Delete");?>"									><i class="pd-delete"></i></button>
 						</td>
 					</tr>
-					<tr ng-if='eventsCtrl.outletLocations.length > 0' class="eventEdit optionTR savedInput" style="display:none;" required>
+					<tr ng-if='eventsCtrl.outletLocations.length > 0' class="eventEdit optionTR savedInput" required style='display: none;'>
 						<td class="eventTDOutletLocation">
 							<select name="eOutletLocation[{{ $index + 1 }}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide"> 
 								<option value=""  ><?echo _("All Locations")?></option>
@@ -173,11 +173,18 @@
 							</select>
 						</td>
 					</tr>
-
-					<tr ng-repeat='slot in event.cSlots' class="eventEdit optionTR savedInput" style="display:none;" required>
+					<!-- slot directive -->
+					<tr slot elements='event.cSlots' countevent='$parent.$index' class="eventEdit optionTR savedInput" required>
+						<!-- <td> -->
+							<!-- <slot ng-repeat='slot in event.cSlots' element='slot' countevent='$parent.$index' countevent='$parent.$index' countslot='$index'></slot> -->
+							<!-- <slot element='slot' countevent='$index'></slot> -->
+						<!-- </td> -->
+					</tr>
+					 <!-- <slot ng-repeat='slot in event.cSlots' element='slot' countevent='$parent.$index' style='display: none;'></slot> -->
+					<!-- <tr ng-repeat='slot in event.cSlots' class="eventEdit optionTR savedInput" required>
 						<td class="eventTDCollection">
 							<label>&nbsp;</label>
-							<select ng-model='slot.collectionslot' name="eColl[event{{ $parent.$index + 1 }}][{{$index + 1}}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectCollectionSlot hide">
+							<select ng-model='slot.collectionslot' name="eColl[event{{ $parent.$index + 1 }}][{{ $index + 1}}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectCollectionSlot hide">
 								<option value="PRESHOW"><?echo _("Collection Slot: Pre-Show")?></option>
 								<option value="PREGAME"><?echo _("Collection Slot: Pre-Game")?></option>
 								<option value="INTERVAL"><?echo _("Collection Slot: Interval")?></option>
@@ -197,7 +204,7 @@
 							<button ng-if='$index == 0' type="button" class="newCollSlot" title="<?echo _("Add another slot");?>"><i class="pd-add"></i></button>
 							<button ng-if='$index != 0' type="button" class="delCollSlot secondary" title="Delete this slot"><i class="pd-delete"></i></button>
 						</td>						
-					</tr>			
+					</tr> -->
 				</tbody>
 			</table>
 			<div class="hide firstEventDiv"></div> <!-- Dummy hook -->

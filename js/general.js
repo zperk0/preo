@@ -2729,40 +2729,40 @@ $(document).ready(function() {
 		$curItem.css('max-width', '100%');
 	});
 	
-	$(document).on("click", ".eventTDEdit, .eventTR input[readonly='readonly']", function() {
-		if($(this).hasClass('eventTDEdit')) $(this).hide();
-		else $(this).closest('table').find('.eventTDEdit').hide();
-		$curItem = $(this).closest('table');
-		$curItem.find("tr").addClass('eventEdit');
-		$curItem.find("tr").removeClass('savedInput');
-		$curItem.find("input").removeAttr("readonly");
-		$curItem.find(".eventSave").removeClass('hide');
-		$curItem.find(".eventSave").show();
-		$curItem.find(".optionTR").slideRow('down');
-		$curItem.css('background', '#fafafa');
-		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		$curItem.css('max-width', '100%');
+	// $(document).on("click", ".eventTDEdit, .eventTR input[readonly='readonly']", function() {
+	// 	if($(this).hasClass('eventTDEdit')) $(this).hide();
+	// 	else $(this).closest('table').find('.eventTDEdit').hide();
+	// 	$curItem = $(this).closest('table');
+	// 	$curItem.find("tr").addClass('eventEdit');
+	// 	$curItem.find("tr").removeClass('savedInput');
+	// 	$curItem.find("input").removeAttr("readonly");
+	// 	$curItem.find(".eventSave").removeClass('hide');
+	// 	$curItem.find(".eventSave").show();
+	// 	$curItem.find(".optionTR").slideRow('down');
+	// 	$curItem.css('background', '#fafafa');
+	// 	$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+	// 	$curItem.css('max-width', '100%');
 		
-		$curItem.find("td.eventTDCollection select").each(function() {
-			$(this).multiselect({
-			   multiple: false,
-			   header: false,
-			   noneSelectedText: _tr("Choose a Collection Slot"),
-			   selectedList: 1,
-			   minWidth: 342
-			}); 
-		});
+	// 	$curItem.find("td.eventTDCollection select").each(function() {
+	// 		$(this).multiselect({
+	// 		   multiple: false,
+	// 		   header: false,
+	// 		   noneSelectedText: _tr("Choose a Collection Slot"),
+	// 		   selectedList: 1,
+	// 		   minWidth: 342
+	// 		}); 
+	// 	});
 
-		$curItem.find("td.eventTDOutletLocation select").each(function() {
-			$(this).multiselect({
-			   multiple: false,
-			   header: false,
-			   noneSelectedText: _tr("Choose Event Location"),
-			   selectedList: 1,
-			   minWidth: 342
-			}) ; 
-		});
-	});
+	// 	$curItem.find("td.eventTDOutletLocation select").each(function() {
+	// 		$(this).multiselect({
+	// 		   multiple: false,
+	// 		   header: false,
+	// 		   noneSelectedText: _tr("Choose Event Location"),
+	// 		   selectedList: 1,
+	// 		   minWidth: 342
+	// 		}) ; 
+	// 	});
+	// });
 	
 	$(document).on("click", ".eventDelete", function() {
 		//get event number
@@ -2870,85 +2870,85 @@ $(document).ready(function() {
 	}); 	
 		
 	
-	$(document).on("click", ".newCollSlot", function() {
-		//get event number
-		$curTable = $(this).closest('table');
-		var eventID = $curTable.attr('id');
+	// $(document).on("click", ".newCollSlot", function() {
+	// 	//get event number
+	// 	$curTable = $(this).closest('table');
+	// 	var eventID = $curTable.attr('id');
 		 
-		//get and update current count
-		var eventCount = $("#"+eventID+"_optionCount").val();
-		var newCount = parseInt(parseInt(eventCount) + 1);
-		$("#"+eventID+"_optionCount").val(newCount);
-		$("#"+eventID+"_optionCountAct").val(parseInt($("#"+eventID+"_optionCountAct").val())+1);
+	// 	//get and update current count
+	// 	var eventCount = $("#"+eventID+"_optionCount").val();
+	// 	var newCount = parseInt(parseInt(eventCount) + 1);
+	// 	$("#"+eventID+"_optionCount").val(newCount);
+	// 	$("#"+eventID+"_optionCountAct").val(parseInt($("#"+eventID+"_optionCountAct").val())+1);
 		
-		//clone the nearest row
-		$curRow = $(this).closest("tr"); 
+	// 	//clone the nearest row
+	// 	$curRow = $(this).closest("tr"); 
 		
-        $newRow = $curRow.clone(false);
+ //        $newRow = $curRow.clone(false);
 		
-		$newRow.find("td.eventTDAddMore").empty();
-		$newRow.find("td.eventTDAddMore").append("<button type='button' class='delCollSlot secondary' title='Delete this slot'><i class='pd-delete'></i></button>");
-		$newRow.find(".ui-multiselect").remove();
+	// 	$newRow.find("td.eventTDAddMore").empty();
+	// 	$newRow.find("td.eventTDAddMore").append("<button type='button' class='delCollSlot secondary' title='Delete this slot'><i class='pd-delete'></i></button>");
+	// 	$newRow.find(".ui-multiselect").remove();
 		
-		//Replace ids with incremented value and make value = default value
-		$newRow.find(".eventTDCollection input").each(function(key, value) {
-			$(this).val( $(this).prop("defaultValue") );
-			var tempName = $(this).attr('name');
-			var newName = tempName.replace(/event\d+/gi, eventID);
-			newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
-			$(this).attr('name', newName);
-		});
+	// 	//Replace ids with incremented value and make value = default value
+	// 	$newRow.find(".eventTDCollection input").each(function(key, value) {
+	// 		$(this).val( $(this).prop("defaultValue") );
+	// 		var tempName = $(this).attr('name');
+	// 		var newName = tempName.replace(/event\d+/gi, eventID);
+	// 		newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
+	// 		$(this).attr('name', newName);
+	// 	});
 
-		//Replace ids with incremented value and make value = default value
-		$newRow.find(".eventTDLead input").each(function(key, value) {
-			$(this).val( $(this).prop("defaultValue") );
-			var tempName = $(this).attr('name');
-			var newName = tempName.replace(/event\d+/gi, eventID);
-			newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
-			$(this).attr('name', newName);
-		});
+	// 	//Replace ids with incremented value and make value = default value
+	// 	$newRow.find(".eventTDLead input").each(function(key, value) {
+	// 		$(this).val( $(this).prop("defaultValue") );
+	// 		var tempName = $(this).attr('name');
+	// 		var newName = tempName.replace(/event\d+/gi, eventID);
+	// 		newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");
+	// 		$(this).attr('name', newName);
+	// 	});
 
-		$newRow.find(".eventTDCollection input").each(function(key, value) {
-			$(this).autocomplete({
-                source: slots,
-                select: function(event,ui){
-                    console.log('here',event, ui)
-                    $(event.target).val(ui.item.key);
-                }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none" } });
-		});
+	// 	$newRow.find(".eventTDCollection input").each(function(key, value) {
+	// 		$(this).autocomplete({
+ //                source: slots,
+ //                select: function(event,ui){
+ //                    console.log('here',event, ui)
+ //                    $(event.target).val(ui.item.key);
+ //                }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none" } });
+	// 	});
 		
-		//now we fix placeholder
-		$newRow.find("input[name^=eLead]").each(function() {
-			var temp = $(this).val();
-			$(this).val("");
-			$(this).attr('placeholder', temp);
-		});
+	// 	//now we fix placeholder
+	// 	$newRow.find("input[name^=eLead]").each(function() {
+	// 		var temp = $(this).val();
+	// 		$(this).val("");
+	// 		$(this).attr('placeholder', temp);
+	// 	});
 				
-		//hide it so we can animate it!
-		$newRow.css('display','none');
+	// 	//hide it so we can animate it!
+	// 	$newRow.css('display','none');
 		
-		//insert at the end of the table
-		$("#"+eventID+" tr:last").after($newRow);
-		$("#"+eventID+" tr:last").slideRow('down');
+	// 	//insert at the end of the table
+	// 	$("#"+eventID+" tr:last").after($newRow);
+	// 	$("#"+eventID+" tr:last").slideRow('down');
 
-		// $(document).foundation('abide', 'events');
+	// 	// $(document).foundation('abide', 'events');
 		
-		$("html, body").animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
-	});
+	// 	$("html, body").animate({scrollTop: $($newRow).offset().top - ( $(window).height() - $($newRow).outerHeight(true) ) / 2}, 200); //.animate({ scrollTop: $($newRow).offset().top }, 250);
+	// });
 	
-	$(document).on("click", ".delCollSlot", function() {
-		//get item number
-		$curTable = $(this).closest('table');
-		var eventID = $curTable.attr('id');
+	// $(document).on("click", ".delCollSlot", function() {
+	// 	//get item number
+	// 	$curTable = $(this).closest('table');
+	// 	var eventID = $curTable.attr('id');
 		
-		//get and update current count
-		var eventCount = $("#"+eventID+"_optionCountAct").val();
-		var newCount = parseInt(parseInt(eventCount) - 1);
-		$("#"+eventID+"_optionCountAct").val(newCount);
+	// 	//get and update current count
+	// 	var eventCount = $("#"+eventID+"_optionCountAct").val();
+	// 	var newCount = parseInt(parseInt(eventCount) - 1);
+	// 	$("#"+eventID+"_optionCountAct").val(newCount);
 		
-		//bye-bye
-		$(this).parents("tr:first").remove();
-	});
+	// 	//bye-bye
+	// 	$(this).parents("tr:first").remove();
+	// });
 
 	function doSelectVenue(formData,refreshAfter){
 		$.ajax({

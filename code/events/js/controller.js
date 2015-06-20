@@ -71,6 +71,27 @@
                         //now we add timepicker
                         $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
                         $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+
+                        /*$('#event0').find("td.eventTDCollection select").each(function() {
+                            $(this).multiselect({
+                               multiple: false,
+                               header: false,
+                               noneSelectedText: _tr("Choose a Collection Slot"),
+                               selectedList: 1,
+                               minWidth: 342
+                            }); 
+                        });
+
+                        $('#event0').find("td.eventTDOutletLocation select").each(function() {
+                            $(this).multiselect({
+                               multiple: false,
+                               header: false,
+                               noneSelectedText: _tr("Choose Event Location"),
+                               selectedList: 1,
+                               minWidth: 342
+                            }) ; 
+                        });*/
+                        
                     }, 0);
 
                     vm.redirectFlag = 0;
@@ -91,12 +112,7 @@
                 var outletLocations = result.data,
                     sorted = sortLocations(outletLocations);
 
-                console.log(outletLocations);
-                console.log(sorted);
-
                 vm.outletLocations = getOutletLocationSelectOptions(sorted);
-
-                console.log(vm.outletLocations);
             }); 
         }
 
@@ -174,7 +190,6 @@
                 if(elem.parent == null && elem.id != null) {
                     elem.children = getAllChildren(locations, elem);
                     sorted.push(elem);
-                    console.log(elem)
                 }
             });
             
