@@ -91,7 +91,7 @@
                                minWidth: 342
                             }) ; 
                         });*/
-                        
+
                     }, 0);
 
                     vm.redirectFlag = 0;
@@ -295,25 +295,7 @@
 
           return strictForIn || populateArr;
         }
-
-
-        // Format date to show on table (DD/MM/YYYY)
-        vm.formatDate = function(str_date) {
-
-            var date = new Date(str_date),
-                formatted = str_date ? date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() : '';
-
-            return formatted;
-        };
-        // Format time to show on table (HH:MM)
-        vm.formatTime = function(str_time) {
-
-            var date = new Date(str_time),
-                formatted = str_time ? date.getHours() + ':' + date.getMinutes() : '';
-
-            return formatted;
-        };
-
+        
         _init();
     });
 

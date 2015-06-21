@@ -1,7 +1,7 @@
-<tr ng-repeat='slot in slots'>
+<tr ng-repeat='slot in slots' style='display: none'>
 	<td class="eventTDCollection">
 		<label>&nbsp;</label>
-		<select ng-model='slot.collectionslot' name="eColl[event{{ event_index + 1 }}][{{ $index + 1}}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectCollectionSlot hide">
+		<select ng-model='slot.collectionslot' name="eColl[event{{ event_index + 1 }}][{{ $index + 1}}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectCollectionSlot hide" style='display: none'>
 			<option value="PRESHOW"><?echo _("Collection Slot: Pre-Show")?></option>
 			<option value="PREGAME"><?echo _("Collection Slot: Pre-Game")?></option>
 			<option value="INTERVAL"><?echo _("Collection Slot: Interval")?></option>

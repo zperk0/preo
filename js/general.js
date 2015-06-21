@@ -2715,19 +2715,19 @@ $(document).ready(function() {
 		$(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
 	});
 	
-	$(document).on("click", ".eventSave", function() {
-		$(this).hide();
-		$curItem = $(this).closest('table');
-		$curItem.find("tr").removeClass('eventEdit');
-		$curItem.find("tr").addClass('savedInput');
-		$curItem.find("input").attr("readonly", "readonly");
-		$curItem.find(".eventTDEdit").removeClass('hide');
-		$curItem.find(".eventTDEdit").show();
-		$curItem.find(".optionTR").slideRow('up');
-		$curItem.css('background', 'transparent');
-		$curItem.css('box-shadow', '0px 0px 0px');
-		$curItem.css('max-width', '100%');
-	});
+	// $(document).on("click", ".eventSave", function() {
+	// 	$(this).hide();
+	// 	$curItem = $(this).closest('table');
+	// 	$curItem.find("tr").removeClass('eventEdit');
+	// 	$curItem.find("tr").addClass('savedInput');
+	// 	$curItem.find("input").attr("readonly", "readonly");
+	// 	$curItem.find(".eventTDEdit").removeClass('hide');
+	// 	$curItem.find(".eventTDEdit").show();
+	// 	$curItem.find(".optionTR").slideRow('up');
+	// 	$curItem.css('background', 'transparent');
+	// 	$curItem.css('box-shadow', '0px 0px 0px');
+	// 	$curItem.css('max-width', '100%');
+	// });
 	
 	// $(document).on("click", ".eventTDEdit, .eventTR input[readonly='readonly']", function() {
 	// 	if($(this).hasClass('eventTDEdit')) $(this).hide();
