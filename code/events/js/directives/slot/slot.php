@@ -1,4 +1,4 @@
-<tr ng-repeat='slot in slots' style='display: none'>
+<tr ng-repeat='slot in slots track by $index' style='display: none'>
 	<td class="eventTDCollection">
 		<label>&nbsp;</label>
 		<select ng-model='slot.collectionslot' name="eColl[event{{ event_index + 1 }}][{{ $index + 1}}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectCollectionSlot hide" style='display: none'>

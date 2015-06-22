@@ -16,7 +16,7 @@ angular.module('events')
 
                 // add new slot
                 ng.slots.push({
-                    collectionslot: 'PREGAME',
+                    collectionslot: 'PRESHOW',
                     leadtime: ''
                 });
 

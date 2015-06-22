@@ -1,5 +1,5 @@
 <div ng-controller="EventsCtrl as eventsCtrl">
-	<form id="eventConfigForm" method="POST" data-abide>
+	<form ng-submit='eventsCtrl.save()' id="eventConfigForm" method="POST" data-abide>
 		<div class="row">
 			<div class="topSpacer"></div>
 			<div class="large-12 columns">
@@ -21,7 +21,7 @@
 
 				<div class="row">
 					<div class="large-12 columns">
-						<button id="add_event" 	type="button" class="newEvent" title="<?echo _("Add a new event");?>"><i class="pd-add"></i></button> <?echo _("Add a new event");?>
+						<button ng-click='eventsCtrl.addEvent()' id="add_event" type="button" class="newEvent" title="<?echo _("Add a new event");?>"><i class="pd-add"></i></button> <?echo _("Add a new event");?>
 					</div>
 				</div>
 				
@@ -128,8 +128,8 @@
 				
 		<div class="row">
 			<div class="small-12 large-4 columns">
-				<button id="eventSubButton" type="submit"><?echo _("SAVE CHANGES");?></button>
-				<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
+				<button ng-hide='eventsCtrl.isSaving' id="eventSubButton" type="submit"><?echo _("SAVE CHANGES");?></button>
+				<button ng-show='eventsCtrl.isSaving' id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
 			</div>
 		</div>
 	</form>

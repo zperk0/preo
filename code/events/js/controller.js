@@ -3,7 +3,8 @@
     angular.module('events')
     .controller('EventsCtrl', function($scope, Events, $timeout, $q) {
         // get all events
-        var vm = this;
+        var vm = this,
+            submitTime = 0;
 
         function _init() {
 
@@ -105,6 +106,151 @@
             });
         }
 
+        vm.addEvent = function() {
+
+            var obj = {
+                cSlots: [{
+                    collectionslot: 'PRESHOW',
+                    leadtime: ''
+                }]
+            };
+
+            vm.events.push(obj);
+
+            $timeout(function() {
+
+                $('.eventTDEdit').last().click();
+
+                var $newTab = $('.eventTable').last();
+
+                // //now we add datepicker
+                $newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
+                
+                // //now we add timepicker
+                $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+                $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+                
+                $newTab.css('backgroundColor','#fafafa');
+                $newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+                $newTab.css('max-width', '100%'); 
+                
+                // //hide it so we can animate it!
+                // $newTab.css('display','none');
+                
+                // //insert before section header/before hidden div
+                // $(".firstEventDiv").before($newTab); 
+                // $newTab.slideRow('down');
+
+
+                $newTab.find(".optionTR .eventTDCollection input").each(function(key, value) {
+                        $(this).autocomplete({
+                            source: slots,
+                            select: function(event,ui){
+                                console.log('here',event, ui)
+                                $(event.target).val(ui.item.key);
+                            }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none" } });
+                });
+
+
+                if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
+                $("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+            }, 0)
+        };
+
+        // TODO: TERMINAR
+        vm.save = function() {
+
+            var newSubmitTime = new Date().getTime();
+
+            console.log(vm.events);
+
+            if((newSubmitTime - submitTime) > 300) {
+                
+                vm.isSaving = true;
+
+                Events.saveChanges(vm.events).then(function() {
+
+                    vm.isSaving = false;
+                    console.log(arguments);
+                }, function() {
+
+                    vm.isSaving = false;
+                    console.log(arguments);
+                });
+
+                submitTime = new Date().getTime();
+            }
+
+            // //prevent multiple submissions
+            // var newSubmitTime = new Date().getTime();
+            
+            // if( (newSubmitTime - submitTime) > 300 )
+            // {
+            //     //lock all
+            //     $("body .eventSave").each(function(){
+            //         if($(this).is(":visible"))
+            //             $(this).trigger('click');
+            //     });
+                
+                
+            //     var url = "/saveEvent";
+                
+            //     $('#eventSubButton').hide();
+            //     $('#savingButton').show();
+
+            //     $.ajax({
+            //        type: "POST",
+            //        url: url,
+            //        data: $(this).serialize(), // serializes the form's elements.
+            //        success: function(data)
+            //        {
+            //             try
+            //             {
+            //                 var dataArray = jQuery.parseJSON(data); //parsing JSON
+            //             }
+            //             catch(e)
+            //             {
+            //                 noty({
+            //                   type: 'error',  layout: 'topCenter',
+            //                   text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
+            //                 });
+            //                 //alert(data);
+            //                 return false;
+            //             }
+                        
+            //             if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
+            //             {
+            //                 noty({
+            //                   type: 'error',  layout: 'topCenter',
+            //                   text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
+            //                 });
+                       
+            //             }
+            //             else
+            //             {   
+            //                 newIDs = dataArray['update'];
+
+            //                 if(Object.keys(newIDs).length > 0) //this is an object not array so length and stuff works differently
+            //                 {
+            //                     $.each(newIDs, function(index, value) {
+            //                       $('input[value='+index+']').val(value); //find by value and update!
+            //                     });
+            //                 }
+                            
+            //                 noty({ type: 'success', text: 'Event configuration has been saved!' });
+            //                 if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/payment");}, 1000);
+            //             }
+            //         }
+            //      }).done(function() {
+            //         $('#eventSubButton').show();
+            //         $('#savingButton').hide();
+            //      });
+            // }
+            // //update Time
+            // submitTime = new Date().getTime();
+            // return false; // avoid to execute the actual submit of the form.
+        }
+
         function _getOutletLocations() {
 
             Events.getOutletLocations().then(function(result) {
@@ -117,14 +263,6 @@
         }
 
         function getAllChildren(list, parent){
-            // $allChildren = array();
-            // foreach ($list as $location){
-            //     if ($location['parent'] == $parent['id'] && ($location['id'] != $location['parent'])){
-            //         $location['children'] = getAllChildren($list,$location);
-            //         $allChildren[] = $location;
-            //     }
-            // }
-            // return $allChildren;
 
             var allChildren = [];
 
@@ -139,21 +277,9 @@
             return allChildren;
         }
 
-        function removeLastChildren(list){
-            // foreach (list as $i => $outlet){
-            //     if(!count($outlet['children'])){
-            //         unset(list[$i]);
-            //     } else {
-            //         list[$i]['children'] = removeLastChildren($outlet['children']);
-            //     }
-            // }   
-            // return list;
-
-            console.log(list)
+        function removeLastChildren(list) {
 
             list.forEach(function(elem, index) {
-
-                console.log(elem.children)
 
                 if(elem.children.length == 0){
                     list.splice(index, 1);
@@ -165,17 +291,7 @@
             return list;
         }
 
-        function sortLocations(locations){
-            // usort(locations,'byPath');     
-            
-            // $sorted = array();
-            // foreach (locations as $key => $location){
-            //     if ($location['parent'] == null && $location['id'] !=null){
-            //             $location['children'] = getAllChildren(locations,$location);
-            //             $sorted[] = $location;
-            //     }
-            // }
-            // return removeLastChildren($sorted);
+        function sortLocations(locations) {
 
             // locations = usort(locations, function(a, b) {
             //     console.log(a.path, b.path)
@@ -196,13 +312,8 @@
             return removeLastChildren(sorted);
         }
 
-        function getOutletLocationSelectOptions(tree){     
-            // $output = array(); 
-            // foreach ($tree as $node){           
-            //     indentNodeForSelect($node,1,$output);
-            // }       
-            // return $output;
-
+        function getOutletLocationSelectOptions(tree) {
+            
             var output = [];
 
             tree.forEach(function(elem, index) {
@@ -214,14 +325,7 @@
         }
 
         function indentNodeForSelect(node, indent, output){
-
-            // $children = $node['children'];
-            // $formattedChild = ['id'=>$node['id'],'name'=>str_repeat("--",$indent).' '.$node['name']];       
-            // $output[] = $formattedChild;
-            // foreach ($children as $child){
-            //     indentNodeForSelect($child,$indent+1,$output);          
-            // }
-
+            
             var children = node.children,
                 formattedChild = {
                     id: node.id,

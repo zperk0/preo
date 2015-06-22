@@ -1,4 +1,4 @@
-<table class="eventTable" ng-repeat='event in events' id="event{{ $index + 1 }}" style='background: transparent;'>
+<table class="eventTable" ng-repeat='event in events track by $index' id="event{{ $index + 1 }}" style='background: transparent;'>
 	<tbody>
 		<tr class="savedInput eventTR">
 			<td class="eventTDName">
@@ -37,15 +37,15 @@
 			<td class="eventTDTools">
 				<button type="button" ng-click='collapseOptions($event)' class="eventTableButtons eventSave hide" 			title="<?echo _("Collapse");?>"										><i class="pd-up"></i></button>
 				<button type="button" ng-click='expandOptions($event)' class="eventTableButtons eventTDEdit" 			title="<?echo _("Edit");?>"										><i class="pd-edit"></i></button>
-				<button type="button" class="eventTableButtons eventDuplicate" 			title="<?echo _("Duplicate");?>" id="dup{{ $index + 1 }}"	><i class="pd-copy"></i></button>
-				<button type="button" class="eventTableButtons secondary eventDelete" 	title="<?echo _("Delete");?>"									><i class="pd-delete"></i></button>
+				<button type="button" ng-click='duplicate(event, $event)' class="eventTableButtons eventDuplicate" 			title="<?echo _("Duplicate");?>" id="dup{{ $index + 1 }}"	><i class="pd-copy"></i></button>
+				<button type="button" ng-click='delete(event)' class="eventTableButtons secondary eventDelete" 	title="<?echo _("Delete");?>"									><i class="pd-delete"></i></button>
 			</td>
 		</tr>
 		<tr ng-if='outletLocations.length > 0' class="eventEdit optionTR savedInput" required style='display: none;'>
 			<td class="eventTDOutletLocation">
 				<select name="eOutletLocation[{{ $index + 1 }}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide"> 
 					<option value=""  ><?echo _("All Locations")?></option>
-					<option ng-repeat='outletLocation in outletLocations' ng-value="outletLocation.id" ng-selected="event.id == outletLocation.id">{{outletLocation.name}}</option>											
+					<option ng-repeat='outletLocation in outletLocations track by $index' ng-value="outletLocation.id" ng-selected="event.id == outletLocation.id">{{outletLocation.name}}</option>											
 				</select>
 			</td>
 		</tr>
