@@ -35,10 +35,10 @@ angular.module('events')
         var arrPromises = [];
 
         // kill all eb-times items for thie event
-        // arrPromises.push($http.delete('/api/events/' + eventid + '/slots'));
+        arrPromises.push($http.delete('/api/events/' + eventid + '/slots'));
         
         //kill event
-        // arrPromises.push($http.delete('/api/events/' + eventid))
+        arrPromises.push($http.delete('/api/events/' + eventid));
 
         return $q.all(arrPromises);
     };
