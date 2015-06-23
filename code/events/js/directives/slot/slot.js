@@ -20,21 +20,32 @@ angular.module('events')
                     leadtime: ''
                 });
 
+                console.log(ng.slots)
+
                 $timeout(function() {
 
                     // multiselect ui
                     var select = $(elem.context.parentElement).find('select').last();
-                    select.multiselect({
-                        multiple: false,
-                        header: false,
-                        noneSelectedText: _tr("Choose a Collection Slot"),
-                        selectedList: 1,
-                        minWidth: 342
-                     });
+                    
+                    $timeout(function() {
+                        select.multiselect({
+                            multiple: false,
+                            header: false,
+                            noneSelectedText: _tr("Choose a Collection Slot"),
+                            selectedList: 1,
+                            minWidth: 342
+                        });
+                    }, 0);
+
+                    $(elem.context.parentElement).find(".optionTR").last()
+                        .slideRow('down')
+                        .addClass('eventEdit')
+                        .removeClass('savedInput');
 
                     // scroll body to the new slot position
                     $("html, body").animate({scrollTop: select.closest('tr').offset().top - ( $(window).height() - select.closest('tr').outerHeight(true) ) / 2}, 200);
                 }, 0);
+
             };
             
             ng.delete =  function(elem) {

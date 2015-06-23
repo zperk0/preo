@@ -35,8 +35,8 @@
                     if (sched.length > 0) {
 
                         elem.date = sched[0].startDate;
-                        elem.starttime = sched[0].startDate;
-                        elem.end = sched[0].endDate;
+                        elem.starttime = formatTime(sched[0].startDate);
+                        elem.endtime = formatTime(sched[0].endDate);
                     }
 
                     // get slots from the event
@@ -162,8 +162,6 @@
 
             var newSubmitTime = new Date().getTime();
 
-            console.log(vm.events);
-
             if((newSubmitTime - submitTime) > 300) {
                 
                 vm.isSaving = true;
@@ -249,6 +247,19 @@
             // //update Time
             // submitTime = new Date().getTime();
             // return false; // avoid to execute the actual submit of the form.
+        }
+
+        function formatTime(str_time) {
+
+            var date = new Date(str_time),
+                formatted = str_time ? pad(date.getUTCHours(), 2) + ':' + pad(date.getUTCMinutes(), 2) : '';
+
+            return formatted;
+        };
+
+        function pad (str, max) {
+            str = str.toString();
+            return str.length < max ? pad("0" + str, max) : str;
         }
 
         function _getOutletLocations() {

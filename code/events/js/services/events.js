@@ -1,7 +1,7 @@
 (function(window, angular){
 
 angular.module('events')
-.service('Events', function ($http, VENUE_ID) {
+.service('Events', function ($http, $q, VENUE_ID) {
     
     var service = {},
         venueid = VENUE_ID;
@@ -45,73 +45,110 @@ angular.module('events')
 
     service.saveChanges = function(events) {
 
+        var arrPromises = [];
+
+        console.log('EVENTS TO SAVE: ');
         console.log(events);
 
         // create/update event
         events.forEach(function(elem, index) {
             
-            var data = {};
+            var data = {},
+                defer = $q.defer();
+
             data.venueId = venueid;
             data.name = elem.name;
-            data.description = elem.desc;
-            data.visible = elem.visible;
+            data.description = elem.description;
+            data.visible = elem.visible || 0;
+        
+            var dateToEdit = new Date(elem.date);
+
+            if(dateToEdit == 'Invalid Date') {
+                var date = angular.copy(elem.date);
+                date = elem.date.split('/');
+                dateToEdit = new Date(date[2], date[1] - 1, date[0]);
+            }
+
+            var year = dateToEdit.getUTCFullYear(),
+                month = dateToEdit.getUTCMonth(),
+                day = dateToEdit.getUTCDate(),
+                starttimeStr = elem.starttime.split(':'),
+                endtimeStr = elem.endtime.split(':'),
+                finalStartTime = new Date(year, month, day, starttimeStr[0], starttimeStr[1]),
+                finalEndTime = new Date(year, month, day, endtimeStr[0], endtimeStr[1]);
+
             if (elem.hasOwnProperty('outletLocationId') && elem.outletLocationId !== 'undefined') {
                 data.outletLocationId = elem.outletLocationId;
             }
-            data.duration = getEventDuration(elem.starttime, elem.endtime);
+            data.duration = getEventDuration(finalStartTime, finalEndTime);
             data.schedules = [];
             data.schedules.push({
                 freq: 'ONCE',
-                startDate: elem.date + 'T' + elem.starttime + ':00',
-                endDate: elem.date + 'T' + elem.endtime + ':00'
+                startDate: day + '/' + pad(String(Number(month) + 1), 2) + '/' + year + 'T' + elem.starttime + ':00',
+                endDate: day + '/' + pad(String(Number(month) + 1), 2) + '/' + year + 'T' + elem.endtime + ':00'
             });
-            
-            console.log(elem.id.match('/^e.*$/'))
 
-            // edit old
-            if(elem.id && !elem.id.match('/^e.*$/')) {
+            // edit old'
+            if(elem.id && !String(elem.id).match('/^e.*$/')) {
 
-                console.log('EDIT: ' + elem.id, data)
+                console.log('EDIT: ' + elem.id);
+                console.log(data);
                 var eventID = elem.id;
-                // $http.put("api/events/" + eventID, data); //event created
+
+                $http.put("/api/events/" + eventID, data).then(function() {
+
+                    //event created, let's config the slots
+                    configSlots(eventId, elem, e, defer);
+                });
+
             }
             // create new
             else {   
-                console.log('Create: ' + data)
-                // $http.post("/api/venues/" + venueid + "/events", data); //event created
+                console.log('Create EVENT: ');
+                console.log(data);
+                
+                $http.post("/api/venues/" + venueid + "/events", data).then(function(result) {
+
+                    var eventID = result.data.id;
+
+                    //event created, let's config the slots
+                    configSlots(eventId, elem, e, defer);
+                });
             }
             
-            //kill all eb-times items for thie event
-            // $http.delete("/api/events/" + elem.id + "/slots"); //venue_eb_times data deleted
-        
-            //just add as previous ones are wiped clean by now!
-            elem.cSlots.forEach(function(e, i) {
-                var data = [];
-                data.eventId = elem.eventid;
-                // data.collectionslot = e.name;
-                // data.leadtime = e.time;
-
-                console.log(data);
-
-                // $http.post("/api/events/" + elem.eventid + "/slots", data); //menu created
-            });
+            // add promise
+            arrPromises.push(defer.promise);
         });
 
-        function getEventDuration(startHours, endHours){
+        function configSlots(eventid, elem, e, defer) {
 
-            var today = new Date(startHours);
-            var Christmas = new Date("12-25-2012");
-            var diffMs = (Christmas - today); // milliseconds between now & Christmas
-            var diffDays = Math.round(diffMs / 86400000); // days
-            var diffHrs = Math.round((diffMs % 86400000) / 3600000); // hours
-            var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
-            alert(diffDays + " days, " + diffHrs + " hours, " + diffMins + " minutes until Christmas 2009 =)");
+            var slotsPromises = [];
 
-            /*var start_date = new DateTime(startHours,new DateTimeZone('GMT'));
-            var end_date = new DateTime(endHours,new DateTimeZone('GMT'));
-            var diff = start_date->diff(end_date);
-            return $diff->h * 60 + $diff->i;*/  
+            //kill all eb-times items for thie event
+            $http.delete("/api/events/" + eventid + "/slots").then(function() {
+
+                //just add as previous ones are wiped clean by now!
+                elem.cSlots.forEach(function(e, i) {
+
+                    e.eventId = elem.id;
+                    // data.collectionslot = e.name;
+                    // data.leadtime = e.time;
+
+                    console.log('eventid: ' + eventid);
+                    console.log('SAVE SLOT: ');
+                    console.log(e);
+
+                    // post slots
+                    slotsPromises.push($http.post("/api/events/" + eventid + "/slots", data)); //menu created
+                });
+
+            }); //venue_eb_times data deleted  
+        
+            // all slots posted, resolve the promise
+            $q.all(slotsPromises).then(defer.resolve);        
         }
+
+        return $q.all(arrPromises);
 
         // $newEvents = array();
         
@@ -193,18 +230,18 @@ angular.module('events')
             
         //     $jsonData = json_encode($data);
             
-        //     if(isset($event['id']) && !preg_match('/^e.*$/',$event['id'])) //edit old
-        //     {
-        //         $eventID = $event['id'];
-        //         $curlResult = callAPI('PUT', $apiURL."events/$eventID", $jsonData, $apiAuth); //event created
-        //     }
-        //     else //create new
-        //     {   
-        //         $curlResult = callAPI('POST', $apiURL."venues/$venueID/events", $jsonData, $apiAuth); //event created
-        //         $dataJSON = json_decode($curlResult,true);
-        //         $newEvents[$event['id']] = $dataJSON['id'];
-        //         $eventID = $dataJSON['id'];
-        //     }
+            // if(isset($event['id']) && !preg_match('/^e.*$/',$event['id'])) //edit old
+            // {
+            //     $eventID = $event['id'];
+            //     $curlResult = callAPI('PUT', $apiURL."events/$eventID", $jsonData, $apiAuth); //event created
+            // }
+            // else //create new
+            // {   
+            //     $curlResult = callAPI('POST', $apiURL."venues/$venueID/events", $jsonData, $apiAuth); //event created
+            //     $dataJSON = json_decode($curlResult,true);
+            //     $newEvents[$event['id']] = $dataJSON['id'];
+            //     $eventID = $dataJSON['id'];
+            // }
             
         //     //kill all eb-times items for thie event
         //     $curlResult = callAPI('DELETE', $apiURL."events/$eventID/slots", false, $apiAuth); //venue_eb_times data deleted
@@ -231,8 +268,6 @@ angular.module('events')
         // $newJSON = json_encode($newJSON); //back to JSON
         
         // echo $newJSON; //sending a JSON via ajax
-
-        
     }
 
     service.getSlots = function(eventid) {
@@ -245,6 +280,19 @@ angular.module('events')
 
         return $http.get('/api/venues/' + venueid + '/outletlocations?outlets=false');
     };
+
+    function getEventDuration(startHours, endHours){
+
+        var diffMs = (endHours - startHours);
+        var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
+
+        return diffMins;
+    }
+
+    function pad (str, max) {
+        str = str.toString();
+        return str.length < max ? pad("0" + str, max) : str;
+    }
 
     return service;
 

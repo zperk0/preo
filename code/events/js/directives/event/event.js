@@ -388,33 +388,25 @@ angular.module('events')
 
             function removeEventFromList(eventToDelete) {
 
-                ng.events.some(function(elem, index) {
+                ng.$apply(function() {
 
-                    if(elem == eventToDelete) {
-                        ng.events.splice(index, 1);
-                        return true;
-                    }
+                    ng.events.some(function(elem, index) {
 
-                    return false;
+                        if(elem == eventToDelete) {
+                            ng.events.splice(index, 1);
+                            return true;
+                        }
+
+                        return false;
+                    });
                 });
-
-                ng.$apply();
             }
 
             // Format date to show on table (DD/MM/YYYY)
             ng.formatDate = function(str_date) {
 
                 var date = new Date(str_date),
-                    formatted = str_date ? date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() : '';
-
-                return formatted;
-            };
-
-            // Format time to show on table (HH:MM)
-            ng.formatTime = function(str_time) {
-
-                var date = new Date(str_time),
-                    formatted = str_time ? date.getHours() + ':' + date.getMinutes() : '';
+                    formatted = str_date ? date.getUTCDate() + '/' + (date.getUTCMonth() + 1) + '/' + date.getUTCFullYear() : '';
 
                 return formatted;
             };

@@ -14,7 +14,7 @@
 	</td>
 	<td class="eventTDLead">
 		<label><?echo _("Lead Time (mins)");?></label>
-		<input type="text" name="eLead[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-value="slot.leadtime" placeholder="<?echo _("eg. 30");?>" required pattern="^\d+$"/>
+		<input type="text" name="eLead[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.leadtime" placeholder="<?echo _("eg. 30");?>" required pattern="^\d+$"/>
 		<small class="error"><?echo _("Time?");?></small>
 	</td>
 	<td class="eventTDAddMore">
