@@ -84,8 +84,8 @@ angular.module('events')
             data.schedules = [];
             data.schedules.push({
                 freq: 'ONCE',
-                startDate: day + '/' + pad(String(Number(month) + 1), 2) + '/' + year + 'T' + elem.starttime + ':00',
-                endDate: day + '/' + pad(String(Number(month) + 1), 2) + '/' + year + 'T' + elem.endtime + ':00'
+                startDate: day + '-' + pad(String(Number(month) + 1), 2) + '-' + year + 'T' + elem.starttime + ':00',
+                endDate: day + '-' + pad(String(Number(month) + 1), 2) + '-' + year + 'T' + elem.endtime + ':00'
             });
 
             // edit old'

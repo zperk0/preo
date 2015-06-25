@@ -2704,16 +2704,16 @@ $(document).ready(function() {
 	// 	$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	// });
 	
-	$("input[name^=eTime]").on('changeTime',function() {
-		currTime = $(this).val()+":00";
+	// $("input[name^=eTime]").on('changeTime',function() {
+	// 	currTime = $(this).val()+":00";
 		
-		newTime = extractAMPM("January 01, 2000 "+currTime);
+	// 	newTime = extractAMPM("January 01, 2000 "+currTime);
 		
-		$(this).parents('table').find("input[name^=eETime]").timepicker('remove');
-		$(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-		$(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
-		$(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
-	});
+	// 	$(this).parents('table').find("input[name^=eETime]").timepicker('remove');
+	// 	$(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+	// 	$(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+	// 	$(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
+	// });
 	
 	// $(document).on("click", ".eventSave", function() {
 	// 	$(this).hide();

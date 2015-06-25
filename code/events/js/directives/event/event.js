@@ -91,7 +91,7 @@ angular.module('events')
                     // //now we add timepicker
                     $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
                     $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-                    
+
                     $newTab.css('backgroundColor','#fafafa');
                     $newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
                     $newTab.css('max-width', '100%'); 
@@ -406,7 +406,7 @@ angular.module('events')
             ng.formatDate = function(str_date) {
 
                 var date = new Date(str_date),
-                    formatted = str_date ? date.getUTCDate() + '/' + (date.getUTCMonth() + 1) + '/' + date.getUTCFullYear() : '';
+                    formatted = str_date ? pad(String(date.getUTCDate()), 2) + '/' + pad(String(date.getUTCMonth() + 1), 2) + '/' + date.getUTCFullYear() : '';
 
                 return formatted;
             };

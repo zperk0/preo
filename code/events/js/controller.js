@@ -45,11 +45,13 @@
                         var slots = resp.data || [];
                         elem.cSlots = [];
 
+                        console.log(slots)
+
                         slots.forEach(function(e, i) {
 
                             elem.cSlots.push({
                                 collectionslot: e.collectionslot,
-                                leadtime: e.leadtime
+                                leadtime: e.leadTime
                             });
                             elem.collectionCount = i;
                         });
@@ -63,7 +65,6 @@
                 $q.all(arrPromises).then(function() {
 
                     vm.events = events;
-                    console.log(vm.events);
 
                     // Wait to finish ng-repeat
                     $timeout(function() {
@@ -72,6 +73,18 @@
                         //now we add timepicker
                         $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
                         $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+
+                        $("input[name^=eTime]").on('changeTime',function() {
+
+                            currTime = $(this).val()+":00";
+                            
+                            newTime = extractAMPM("January 01, 2000 "+currTime);
+                            
+                            $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
+                            $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+                            $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+                            $(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
+                        });
 
                         /*$('#event0').find("td.eventTDCollection select").each(function() {
                             $(this).multiselect({
@@ -130,6 +143,20 @@
                 $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
                 $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
                 
+                $newTab.find("input[name^=eTime]").on('changeTime',function() {
+
+                    console.log('change time')
+
+                    currTime = $(this).val()+":00";
+                    
+                    newTime = extractAMPM("January 01, 2000 "+currTime);
+                    
+                    $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
+                    $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+                    $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+                    $(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
+                });
+
                 $newTab.css('backgroundColor','#fafafa');
                 $newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
                 $newTab.css('max-width', '100%'); 
@@ -257,7 +284,8 @@
             return formatted;
         };
 
-        function pad (str, max) {
+        // Utils - format string
+        window.pad = function(str, max) {
             str = str.toString();
             return str.length < max ? pad("0" + str, max) : str;
         }

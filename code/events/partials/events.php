@@ -9,13 +9,25 @@
 						<button ng-click='eventsCtrl.addEvent()' id="add_event" type="button" class="newEvent" title="<?echo _("Add a new event");?>"><i class="pd-add"></i></button> <?echo _("Add a new event");?>
 					</div>
 				</div>
+				<table class="headerTable">
+					<thead>
+						<tr>
+							<th class="eventTDName" ><?php echo _("Name"); ?></th>
+							<th class="eventTDDesc" ><?php echo _("Description"); ?></th>
+							<th class="eventTDDate" ><?php echo _("Start Date"); ?></th>
+							<th class="eventTDTime" ><?php echo _("Start Time"); ?></th>
+							<th class="eventTDTime" ><?php echo _("End Time"); ?></th>
+							<th class="eventTDVisi hide" ><?php echo _("Visible?"); ?></th>
+							<th class="eventTDTools"><?php echo _("Tools"); ?></th>
+						</tr>
+					</thead>
+				</table>
 			</div>
 		</div>
 		<div class="large-12 columns dynamicDataTable"> <!-- This is where the dynamic data goes into -->
 			<event elements='eventsCtrl.events' outlet='eventsCtrl.outletLocations'></event>
 			<!-- <div class="hide firstEventDiv"></div> <!-- Dummy hook -->
 		</div>
-				
 		<div class="row">
 			<div class="small-12 large-4 columns">
 				<button ng-hide='eventsCtrl.isSaving' id="eventSubButton" type="submit"><?echo _("SAVE CHANGES");?></button>

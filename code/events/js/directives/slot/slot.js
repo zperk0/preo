@@ -17,10 +17,10 @@ angular.module('events')
                 // add new slot
                 ng.slots.push({
                     collectionslot: 'PRESHOW',
+                    start: '',
+                    step: '',
                     leadtime: ''
                 });
-
-                console.log(ng.slots)
 
                 $timeout(function() {
 

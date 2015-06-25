@@ -43,9 +43,8 @@
 		</tr>
 		<tr ng-if='outletLocations.length > 0' class="eventEdit optionTR savedInput" required style='display: none;'>
 			<td class="eventTDOutletLocation">
-				<select ng-model='event.outletLocationId' name="eOutletLocation[{{ $index + 1 }}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide"> 
+				<select ng-model='event.outletLocationId' ng-options='outletLocation.id as outletLocation.name for outletLocation in outletLocations' name="eOutletLocation[{{ $index + 1 }}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide"> 
 					<option value=""  ><?echo _("All Locations")?></option>
-					<option ng-repeat='outletLocation in outletLocations track by $index' ng-value="outletLocation.id" ng-selected="event.id == outletLocation.id">{{outletLocation.name}}</option>											
 				</select>
 			</td>
 		</tr>
