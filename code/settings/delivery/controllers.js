@@ -215,12 +215,12 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
 
         $q.all([
             $scope.venue.$put(),
-            postMessage(messages[0]).$promise,
-            postMessage(messages[1]).$promise,
-            postMessage(messages[2]).$promise,
-            postMessage(messages[3]).$promise,
-            postMessage(messages[4]).$promise,
-            postMessage(messages[5]).$promise
+            postMessage(messages[0]),
+            postMessage(messages[1]),
+            postMessage(messages[2]),
+            postMessage(messages[3]),
+            postMessage(messages[4]),
+            postMessage(messages[5])
         ])
         .then(function(results){            
             $scope.isPosting =false;
@@ -272,16 +272,24 @@ controller('notificationCtrl', ['$scope','$http','Resources','$q', 'VENUE_ID', '
         if (message.id){
             //if it is not blank, update it, 
             if (message.name.trim() !== "" && message.content.trim() !== "") {
-                return message.$put();
+                return message.$put().$promise;
             }  // else delete it
             else {
-                return message.$remove();
+                return message.$remove().$promise;
             }
         } //if it's not in the database
         else {          
             //push if the message is not blank
             if (message.name && message.name.trim() != "" && message.content && message.content.trim() !== ""){
-                return message.$save({venueId:VENUE_ID});
+                var deferred = $q.defer();
+                message.$save({venueId:VENUE_ID}).then(function (data) {
+                    message.id = data.id;
+                    deferred.resolve();
+                }, function (data) {
+                    console.log('reject here', data, message);
+                    deferred.reject();
+                });
+                return deferred.promise;
             }
         } 
         //if we reach this point, there's nothing to be done with this message.
