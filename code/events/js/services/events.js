@@ -68,6 +68,8 @@ angular.module('events')
                 date = elem.date.split('/');
                 dateToEdit = new Date(date[2], date[1] - 1, date[0]);
             }
+            console.log(elem.starttime)
+            console.log(elem.endtime)
 
             var year = dateToEdit.getUTCFullYear(),
                 month = dateToEdit.getUTCMonth(),
@@ -77,15 +79,18 @@ angular.module('events')
                 finalStartTime = new Date(year, month, day, starttimeStr[0], starttimeStr[1]),
                 finalEndTime = new Date(year, month, day, endtimeStr[0], endtimeStr[1]);
 
+
             if (elem.hasOwnProperty('outletLocationId') && elem.outletLocationId !== 'undefined') {
                 data.outletLocationId = elem.outletLocationId;
             }
-            data.duration = getEventDuration(finalStartTime, finalEndTime);
+            data.duration = getEventDuration(finalStartTime.getTime(), finalEndTime.getTime());
             data.schedules = [];
             data.schedules.push({
                 freq: 'ONCE',
-                startDate: day + '-' + pad(String(Number(month) + 1), 2) + '-' + year + 'T' + elem.starttime + ':00',
-                endDate: day + '-' + pad(String(Number(month) + 1), 2) + '-' + year + 'T' + elem.endtime + ':00'
+                startDate: year + '-' + pad(String(Number(month) + 1), 2) + '-' + day + 'T' + elem.starttime + ':00',
+                // startDate: day + '-' + pad(String(Number(month) + 1), 2) + '-' + year + 'T' + elem.starttime + ':00',
+                endDate: year + '-' + pad(String(Number(month) + 1), 2) + '-' + day + 'T' + elem.endtime + ':00'
+                // endDate: day + '-' + pad(String(Number(month) + 1), 2) + '-' + year + 'T' + elem.endtime + ':00'
             });
 
             // edit old'
@@ -98,7 +103,7 @@ angular.module('events')
                 $http.put("/api/events/" + eventID, data).then(function() {
 
                     //event created, let's config the slots
-                    configSlots(eventId, elem, e, defer);
+                    configSlots(eventID, elem, defer);
                 });
 
             }
@@ -112,7 +117,7 @@ angular.module('events')
                     var eventID = result.data.id;
 
                     //event created, let's config the slots
-                    configSlots(eventId, elem, e, defer);
+                    configSlots(eventID, elem, defer);
                 });
             }
             
@@ -120,7 +125,7 @@ angular.module('events')
             arrPromises.push(defer.promise);
         });
 
-        function configSlots(eventid, elem, e, defer) {
+        function configSlots(eventid, elem, defer) {
 
             var slotsPromises = [];
 
@@ -130,7 +135,7 @@ angular.module('events')
                 //just add as previous ones are wiped clean by now!
                 elem.cSlots.forEach(function(e, i) {
 
-                    e.eventId = elem.id;
+                    e.eventId = eventid;
                     // data.collectionslot = e.name;
                     // data.leadtime = e.time;
 
@@ -139,7 +144,7 @@ angular.module('events')
                     console.log(e);
 
                     // post slots
-                    slotsPromises.push($http.post("/api/events/" + eventid + "/slots", data)); //menu created
+                    slotsPromises.push($http.post("/api/events/" + eventid + "/slots", e)); //menu created
                 });
 
             }); //venue_eb_times data deleted  
@@ -283,15 +288,13 @@ angular.module('events')
 
     function getEventDuration(startHours, endHours){
 
+        console.log(startHours, endHours)
+
         var diffMs = (endHours - startHours);
-        var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
+        // var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
+        var diffMins = Math.round(diffMs / 60000); // minutes
 
         return diffMins;
-    }
-
-    function pad (str, max) {
-        str = str.toString();
-        return str.length < max ? pad("0" + str, max) : str;
     }
 
     return service;

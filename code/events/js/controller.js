@@ -1,15 +1,25 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('EventsCtrl', function($scope, Events, $timeout, $q) {
+    .controller('EventsCtrl', function($scope, $rootScope, Events, $timeout, $q) {
         // get all events
         var vm = this,
             submitTime = 0;
 
         function _init() {
 
-            _getEvents();
-            _getOutletLocations();
+            Preoday.User.auth({
+                username: 'caio.ricci@gdcommunity.co.uk',
+                password: '123456'
+            }).then(function(user) {
+                console.log('user logged', user);
+
+                _getEvents();
+                _getOutletLocations();
+            });
+
+            // _getEvents();
+            // _getOutletLocations();
         }
 
         function _getEvents() {
@@ -68,8 +78,10 @@
 
                     // Wait to finish ng-repeat
                     $timeout(function() {
+
                         //now we add datepicker
                         $('.eventTDDate input').fdatepicker({format: 'dd/mm/yyyy'});
+
                         //now we add timepicker
                         $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
                         $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
@@ -77,35 +89,12 @@
                         $("input[name^=eTime]").on('changeTime',function() {
 
                             currTime = $(this).val()+":00";
-                            
-                            newTime = extractAMPM("January 01, 2000 "+currTime);
-                            
+                            newTime = extractAMPM("January 01, 2000 "+currTime);                            
                             $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
                             $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
                             $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
                             $(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
                         });
-
-                        /*$('#event0').find("td.eventTDCollection select").each(function() {
-                            $(this).multiselect({
-                               multiple: false,
-                               header: false,
-                               noneSelectedText: _tr("Choose a Collection Slot"),
-                               selectedList: 1,
-                               minWidth: 342
-                            }); 
-                        });
-
-                        $('#event0').find("td.eventTDOutletLocation select").each(function() {
-                            $(this).multiselect({
-                               multiple: false,
-                               header: false,
-                               noneSelectedText: _tr("Choose Event Location"),
-                               selectedList: 1,
-                               minWidth: 342
-                            }) ; 
-                        });*/
-
                     }, 0);
 
                     vm.redirectFlag = 0;
@@ -184,7 +173,6 @@
             }, 0)
         };
 
-        // TODO: TERMINAR
         vm.save = function() {
 
             var newSubmitTime = new Date().getTime();
@@ -205,7 +193,8 @@
 
                 submitTime = new Date().getTime();
             }
-
+            
+            /*OLD CODE*/
             // //prevent multiple submissions
             // var newSubmitTime = new Date().getTime();
             
@@ -284,12 +273,6 @@
             return formatted;
         };
 
-        // Utils - format string
-        window.pad = function(str, max) {
-            str = str.toString();
-            return str.length < max ? pad("0" + str, max) : str;
-        }
-
         function _getOutletLocations() {
 
             Events.getOutletLocations().then(function(result) {
@@ -332,12 +315,6 @@
 
         function sortLocations(locations) {
 
-            // locations = usort(locations, function(a, b) {
-            //     console.log(a.path, b.path)
-            //     console.log(a.path > b.path)
-            //     return a.path > b.path;
-            // });
-
             locations.sort(locations, function(a, b) { return a.path < b.path; });
 
             var sorted = [];
@@ -379,6 +356,25 @@
             });
         }
 
+        // Utils - format string
+        window.pad = function(str, max) {
+            str = str.toString();
+            return str.length < max ? pad("0" + str, max) : str;
+        }
+
+        // Utils - angular safe apply
+        $rootScope.safeApply = function(fn) {
+            var phase = this.$root.$$phase;
+            if(phase == '$apply' || phase == '$digest') {
+                if(fn && (typeof(fn) === 'function')) {
+                    fn();
+                }
+            } else {
+                this.$apply(fn);
+            }
+        };
+
+        // Utils - repeat string
         function str_repeat(input, multiplier) {
           
             var y = '';
@@ -395,48 +391,6 @@
                 } 
             } 
             return y;
-        }
-
-        function usort(inputArr, sorter) {
-
-          var valArr = [],
-            k = '',
-            i = 0,
-            strictForIn = false,
-            populateArr = {};
-
-          if (typeof sorter === 'string') {
-            sorter = this[sorter];
-          } else if (Object.prototype.toString.call(sorter) === '[object Array]') {
-            sorter = this[sorter[0]][sorter[1]];
-          }
-
-          // BEGIN REDUNDANT
-          this.php_js = this.php_js || {};
-          this.php_js.ini = this.php_js.ini || {};
-          // END REDUNDANT
-          strictForIn = this.php_js.ini['phpjs.strictForIn'] && this.php_js.ini['phpjs.strictForIn'].local_value && this.php_js
-            .ini['phpjs.strictForIn'].local_value !== 'off';
-          populateArr = strictForIn ? inputArr : populateArr;
-
-          for (k in inputArr) { // Get key and value arrays
-            if (inputArr.hasOwnProperty(k)) {
-              valArr.push(inputArr[k]);
-              if (strictForIn) {
-                delete inputArr[k];
-              }
-            }
-          }
-          try {
-            valArr.sort(sorter);
-          } catch (e) {
-            return false;
-          }
-          for (i = 0; i < valArr.length; i++) { // Repopulate the old array
-            populateArr[i] = valArr[i];
-          }
-
-          return strictForIn || populateArr;
         }
         
         _init();

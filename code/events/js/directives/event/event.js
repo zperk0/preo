@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('events')
-.directive('event', ['$timeout', '$q', 'Events', function($timeout, $q, Events) {
+.directive('event', ['$timeout', '$q', '$rootScope', 'Events', function($timeout, $q, $rootScope, Events) {
 
     return {
         templateUrl: '/code/events/js/directives/event/event.php',
@@ -13,6 +13,7 @@ angular.module('events')
         },
         link: function(ng, elem, attrs) {
 
+            // Expand options to edit event info
             ng.expandOptions = function(event) {
 
                 var curItem = $(event.currentTarget).closest('table'),
@@ -54,6 +55,7 @@ angular.module('events')
                 });
             };
 
+            // Collapse options and stop editing
             ng.collapseOptions = function(event) {
 
                 var button = $(event.currentTarget),
@@ -72,6 +74,7 @@ angular.module('events')
                 curItem.css('max-width', '100%');
             };
 
+            // Duplicate event
             ng.duplicate = function(objEvent, event) {
 
                 var newEvent = angular.copy(objEvent);
@@ -118,6 +121,7 @@ angular.module('events')
                     $("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
                 }, 0);
 
+                /*OLD CODE*/
                 // var button = event.currentTarget;
 
                 // //new item or duplicate?
@@ -300,6 +304,7 @@ angular.module('events')
                 // $("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
             };
 
+            // Delete event
             ng.delete = function(eventToDelete) {
 
                 var realEventID = eventToDelete.id; // id from DB
@@ -351,6 +356,7 @@ angular.module('events')
                                     });
                                 });
 
+                            /*OLD CODE*/
                             // var url = "/deleteEvent";
                             // $.ajax({
                             //        type: "POST",
@@ -386,9 +392,10 @@ angular.module('events')
                 }
             };
 
+            // Remove event from scope
             function removeEventFromList(eventToDelete) {
 
-                ng.$apply(function() {
+                $rootScope.safeApply(function() {
 
                     ng.events.some(function(elem, index) {
 

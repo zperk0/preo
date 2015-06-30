@@ -24,9 +24,9 @@
 				</table>
 			</div>
 		</div>
-		<div class="large-12 columns dynamicDataTable"> <!-- This is where the dynamic data goes into -->
+		<div class="large-12 columns dynamicDataTable"> 
+			<!-- This is where the dynamic data goes into -->
 			<event elements='eventsCtrl.events' outlet='eventsCtrl.outletLocations'></event>
-			<!-- <div class="hide firstEventDiv"></div> <!-- Dummy hook -->
 		</div>
 		<div class="row">
 			<div class="small-12 large-4 columns">
@@ -36,3 +36,5 @@
 		</div>
 	</form>
 </div>
+
+<script type="text/javascript" src='/bower_components/javascript-core/preoday/preoday.min.js'></script>
