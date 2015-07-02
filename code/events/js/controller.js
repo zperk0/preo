@@ -1,7 +1,7 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('EventsCtrl', function($scope, $rootScope, Events, $timeout, $q, VENUE_ID) {
+    .controller('EventsCtrl', function($scope, $rootScope, $timeout, $q, Events, CollectionSlots) {
         
         var vm = this,
             submitTime = 0;
@@ -16,13 +16,12 @@
 
             var oneDay = 24 * 60 * 60 * 1000,
                 date = new Date(),
-                interval = 7,
+                interval = 100,
                 firstDate = new Date(date.getTime() - (oneDay * interval)),
                 filter = firstDate.getFullYear() + '/' + (firstDate.getMonth() + 1) + '/' + firstDate.getDate();
 
             // get events from the last 7 days (interval)
-            // Events.get(filter).then(function(result) {
-            Preoday.Event.getAll(VENUE_ID, filter).then(function(result) {
+            Events.get(filter).then(function(result) {
 
                 console.log(result);
 
@@ -43,7 +42,9 @@
                     }
 
                     // get slots from the event
-                    Events.getSlots(elem.id).then(function(resp) {
+                    CollectionSlots.get(elem).then(function(resp) {
+
+                        console.log(resp)
 
                         var slots = resp.data || [];
                         elem.cSlots = [];
@@ -180,7 +181,50 @@
                 
                 vm.isSaving = true;
 
-                Events.saveChanges(vm.events).then(function() {
+                var arrPromises = [];
+
+                // console.log('EVENTS TO SAVE: ', vm.events);
+
+                // create/update event
+                vm.events.forEach(function(elem, index) {
+                    
+                    var data = formatData(elem),
+                        deferred = $q.defer();
+
+                    // edit old
+                    if(elem.id && !String(elem.id).match('/^e.*$/')) {
+
+                        // console.log('EDIT: ' + elem.id, data);
+                        Events.update(elem).then(function(result) {
+
+                            console.log(result);
+                            configSlots(elem.id, elem, deferred);
+
+                        }, function(result) {
+                            console.error('Error saving event. ' + result);
+                            deferred.resolve(result);
+                        });
+                    }
+                    // create new
+                    else {
+
+                        // console.log('Create EVENT: ', data);
+                        Events.create(data).then(function(result) {
+
+                            console.log(result);
+                            configSlots(result.data.id, elem, deferred);
+
+                        }, function(result) {
+                            console.error('Error saving event. ' + result);
+                            deferred.resolve(result);
+                        });
+                    }
+
+                    arrPromises.push(deferred.promise);
+                });
+                
+                // wait for all event promises to be resolved
+                $q.all(arrPromises).then(function() {
 
                     vm.isSaving = false;
                     // console.log(arguments);
@@ -190,8 +234,85 @@
                     // console.log(arguments);
                 });
 
+                // save last submit time
                 submitTime = new Date().getTime();
             }
+        }
+
+        function formatData(evt) {
+
+            var dateToEdit = null,
+                data = {
+                    venueId: venueid,
+                    name: evt.name,
+                    description: evt.description,
+                    visible: evt.visible || 1
+                };
+
+            if(evt.date.indexOf('/') != -1) {
+
+                var date = evt.date.split('/');
+                dateToEdit = new Date(date[2], date[1] - 1, date[0]);
+            }
+            else
+                dateToEdit = new Date(evt.date);
+
+            var year = dateToEdit.getUTCFullYear(),
+                month = dateToEdit.getUTCMonth(),
+                day = dateToEdit.getUTCDate(),
+                starttimeStr = evt.starttime.split(':'),
+                endtimeStr = evt.endtime.split(':'),
+                finalStartTime = new Date(year, month, day, starttimeStr[0], starttimeStr[1]),
+                finalEndTime = new Date(year, month, day, endtimeStr[0], endtimeStr[1]);
+
+
+            if (evt.hasOwnProperty('outletLocationId') && evt.outletLocationId !== 'undefined')
+                data.outletLocationId = evt.outletLocationId;
+
+            data.duration = getEventDuration(finalStartTime.getTime(), finalEndTime.getTime());
+            data.schedules = [
+                {
+                    freq: 'ONCE',
+                    startDate: year + '-' + pad(String(Number(month) + 1), 2) + '-' + pad(String(day), 2) + 'T' + evt.starttime + ':00',
+                    endDate: year + '-' + pad(String(Number(month) + 1), 2) + '-' + pad(String(day), 2) + 'T' + evt.endtime + ':00'
+                }
+            ];
+
+            return data;
+        }
+
+        function getEventDuration(startHours, endHours){
+
+            var diffMs = (endHours - startHours);
+            var diffMins = Math.round(diffMs / 60000); // minutes
+
+            return diffMins;
+        }
+
+        function configSlots(eventid, elem, defer) {
+
+            var slotsPromises = [];
+
+            //kill all eb-times items for thie event
+            CollectionSlots.delete(elem).then(function() {
+
+                //just add as previous ones are wiped clean by now!
+                elem.cSlots.forEach(function(e, i) {
+
+                    e.eventId = eventid;
+                    // data.collectionslot = e.name;
+                    // data.leadtime = e.time;
+
+                    // console.log('eventid: ' + eventid, e);
+
+                    // post slots
+                    slotsPromises.push(CollectionSlots.create(e)); //menu created
+                });
+
+            }); //venue_eb_times data deleted  
+        
+            // all slots posted, resolve the promise
+            $q.all(slotsPromises).then(defer.resolve);
         }
 
         function formatTime(str_time) {

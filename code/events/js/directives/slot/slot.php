@@ -1,7 +1,7 @@
 <tr ng-repeat='slot in slots track by $index' style='display: none'>
 	<td class="eventTDCollection">
 		<label>&nbsp;</label>
-		<select ng-model='slot.collectionslot' name="eColl[event{{ event_index + 1 }}][{{ $index + 1}}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectCollectionSlot hide" style='display: none'>
+		<select ng-model='slot.name' name="eColl[event{{ event_index + 1 }}][{{ $index + 1}}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectCollectionSlot hide" style='display: none'>
 			<option value="PRESHOW"><?echo _("Collection Slot: Pre-Show")?></option>
 			<option value="PREGAME"><?echo _("Collection Slot: Pre-Game")?></option>
 			<option value="INTERVAL"><?echo _("Collection Slot: Interval")?></option>
@@ -14,7 +14,22 @@
 	</td>
 	<td class="eventTDLead">
 		<label><?echo _("Lead Time (mins)");?></label>
-		<input type="text" name="eLead[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.leadtime" placeholder="<?echo _("eg. 30");?>" required pattern="^\d+$"/>
+		<input type="text" name="eLead[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.leadTime" placeholder="<?echo _("eg. 30");?>" required pattern="^\d+$"/>
+		<small class="error"><?echo _("Time?");?></small>
+	</td>
+	<td class="eventTDStart">
+		<label><?echo _("Start (mins)");?></label>
+		<input type="text" name="eStart[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.start" placeholder="<?echo _("eg. 30");?>" required pattern="^\d+$"/>
+		<small class="error"><?echo _("Time?");?></small>
+	</td>
+	<td class="eventTDEnd">
+		<label><?echo _("End (mins)");?></label>
+		<input type="text" name="eEnd[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.end" placeholder="<?echo _("eg. 30");?>" required pattern="^\d+$"/>
+		<small class="error"><?echo _("Time?");?></small>
+	</td>
+	<td class="eventTDStep">
+		<label><?echo _("Step (mins)");?></label>
+		<input type="text" name="eStep[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.step" placeholder="<?echo _("eg. 30");?>" required pattern="^\d+$"/>
 		<small class="error"><?echo _("Time?");?></small>
 	</td>
 	<td class="eventTDAddMore">
