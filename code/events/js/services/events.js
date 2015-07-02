@@ -131,7 +131,7 @@ angular.module('events')
                 venueId: venueid,
                 name: evt.name,
                 description: evt.description,
-                visible: evt.visible || 0
+                visible: evt.visible || 1
             };
 
         if(evt.date.indexOf('/') != -1) {

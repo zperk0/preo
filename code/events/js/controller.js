@@ -8,19 +8,8 @@
 
         function _init() {
 
-            Preoday.User.auth({
-                username: 'caio.ricci@gdcommunity.co.uk',
-                password: '123456'
-            }).then(function(user) {
-                // console.log('user logged', user);
-
-                // get all events
-                _getEvents();
-                _getOutletLocations();
-            });
-
-            // _getEvents();
-            // _getOutletLocations();
+            _getEvents();
+            _getOutletLocations();
         }
 
         function _getEvents() {
