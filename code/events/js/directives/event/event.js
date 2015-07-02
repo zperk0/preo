@@ -343,7 +343,7 @@ angular.module('events')
                             
 
                             console.log('Make api request...')
-                            Events.deleteEvent(realEventID).then(
+                            Events.deleteEvent(eventToDelete).then(
                                 function() { // success
 
                                     console.log(arguments);

@@ -1,8 +1,8 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('EventsCtrl', function($scope, $rootScope, Events, $timeout, $q) {
-        // get all events
+    .controller('EventsCtrl', function($scope, $rootScope, Events, $timeout, $q, VENUE_ID) {
+        
         var vm = this,
             submitTime = 0;
 
@@ -12,8 +12,9 @@
                 username: 'caio.ricci@gdcommunity.co.uk',
                 password: '123456'
             }).then(function(user) {
-                console.log('user logged', user);
+                // console.log('user logged', user);
 
+                // get all events
                 _getEvents();
                 _getOutletLocations();
             });
@@ -31,9 +32,12 @@
                 filter = firstDate.getFullYear() + '/' + (firstDate.getMonth() + 1) + '/' + firstDate.getDate();
 
             // get events from the last 7 days (interval)
-            Events.get(filter).then(function(result) {
+            // Events.get(filter).then(function(result) {
+            Preoday.Event.getAll(VENUE_ID, filter).then(function(result) {
 
-                var events = result.data || [],
+                console.log(result);
+
+                var events = result || [],
                     arrPromises = [];
 
                 //get slots and expand schedule
@@ -67,6 +71,14 @@
                         });
 
                         defer.resolve();
+                    }, function(result) {
+                        //something went wrong on API
+                        // console.error(result);
+                        console.error('Error getting slots from API: ' + result.data.message);
+                        
+                        // resolving the promise just to bind the events on scope
+                        defer.resolve(result.data);
+                        // defer.reject(result.data);
                     });
 
                     arrPromises.push(defer.promise);
@@ -100,9 +112,10 @@
                     vm.redirectFlag = 0;
                     vm.event_edit_on = 1;
                 });
-            }, function() {
+            }, function(data) {
                 //something went wrong on API
-                console.error('Error getting events from API.');
+                console.error(data);
+                console.error('Error getting events from API:' + data.message);
                 vm.redirectFlag = 1;
                 vm.event_edit_on = 0;
             });
@@ -134,8 +147,6 @@
                 
                 $newTab.find("input[name^=eTime]").on('changeTime',function() {
 
-                    console.log('change time')
-
                     currTime = $(this).val()+":00";
                     
                     newTime = extractAMPM("January 01, 2000 "+currTime);
@@ -162,7 +173,6 @@
                         $(this).autocomplete({
                             source: slots,
                             select: function(event,ui){
-                                console.log('here',event, ui)
                                 $(event.target).val(ui.item.key);
                             }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none" } });
                 });
@@ -184,85 +194,15 @@
                 Events.saveChanges(vm.events).then(function() {
 
                     vm.isSaving = false;
-                    console.log(arguments);
+                    // console.log(arguments);
                 }, function() {
 
                     vm.isSaving = false;
-                    console.log(arguments);
+                    // console.log(arguments);
                 });
 
                 submitTime = new Date().getTime();
             }
-            
-            /*OLD CODE*/
-            // //prevent multiple submissions
-            // var newSubmitTime = new Date().getTime();
-            
-            // if( (newSubmitTime - submitTime) > 300 )
-            // {
-            //     //lock all
-            //     $("body .eventSave").each(function(){
-            //         if($(this).is(":visible"))
-            //             $(this).trigger('click');
-            //     });
-                
-                
-            //     var url = "/saveEvent";
-                
-            //     $('#eventSubButton').hide();
-            //     $('#savingButton').show();
-
-            //     $.ajax({
-            //        type: "POST",
-            //        url: url,
-            //        data: $(this).serialize(), // serializes the form's elements.
-            //        success: function(data)
-            //        {
-            //             try
-            //             {
-            //                 var dataArray = jQuery.parseJSON(data); //parsing JSON
-            //             }
-            //             catch(e)
-            //             {
-            //                 noty({
-            //                   type: 'error',  layout: 'topCenter',
-            //                   text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
-            //                 });
-            //                 //alert(data);
-            //                 return false;
-            //             }
-                        
-            //             if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
-            //             {
-            //                 noty({
-            //                   type: 'error',  layout: 'topCenter',
-            //                   text: _tr("Sorry, but there's been an error processing your request.") /*text: dataArray['message']*/
-            //                 });
-                       
-            //             }
-            //             else
-            //             {   
-            //                 newIDs = dataArray['update'];
-
-            //                 if(Object.keys(newIDs).length > 0) //this is an object not array so length and stuff works differently
-            //                 {
-            //                     $.each(newIDs, function(index, value) {
-            //                       $('input[value='+index+']').val(value); //find by value and update!
-            //                     });
-            //                 }
-                            
-            //                 noty({ type: 'success', text: 'Event configuration has been saved!' });
-            //                 if($('#redirectFlag').val()=='1') setTimeout(function(){window.location.replace("/payment");}, 1000);
-            //             }
-            //         }
-            //      }).done(function() {
-            //         $('#eventSubButton').show();
-            //         $('#savingButton').hide();
-            //      });
-            // }
-            // //update Time
-            // submitTime = new Date().getTime();
-            // return false; // avoid to execute the actual submit of the form.
         }
 
         function formatTime(str_time) {

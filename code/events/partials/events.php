@@ -31,7 +31,7 @@
 		<div class="row">
 			<div class="small-12 large-4 columns">
 				<button ng-hide='eventsCtrl.isSaving' id="eventSubButton" type="submit"><?echo _("SAVE CHANGES");?></button>
-				<button ng-show='eventsCtrl.isSaving' id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
+				<button ng-show='eventsCtrl.isSaving' id="savingButton" class="secondary" type="button"><?echo _("SAVING...");?></button>
 			</div>
 		</div>
 	</form>
