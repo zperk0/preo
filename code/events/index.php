@@ -9,6 +9,8 @@
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
 ?> 
 
+<link rel="stylesheet" type="text/css" href="/code/events/css/style.css">
+
   <div ng-app="events">
     
       <div ng-view></div>

@@ -14,18 +14,18 @@ angular.module('events')
 
             ng.add = function() {
 
+                var newSlot = {
+                    end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
+                };
+                
                 // add new slot
-                ng.slots.push({
-                    collectionslot: 'PRESHOW',
-                    start: '',
-                    step: '',
-                    leadtime: ''
-                });
+                ng.slots.push(newSlot);
 
                 $timeout(function() {
 
                     // multiselect ui
-                    var select = $(elem.context.parentElement).find('select').last();
+                    var select = $(elem.context.parentElement).find('select').last(),
+                        inputName = $(elem.context.parentElement).find('.eventTDCollection .slotName').last();
                     
                     $timeout(function() {
                         select.multiselect({
@@ -34,6 +34,30 @@ angular.module('events')
                             noneSelectedText: _tr("Choose a Collection Slot"),
                             selectedList: 1,
                             minWidth: 342
+                        });
+
+                        console.log(inputName)
+
+                        // autocomplete for slot name
+                        inputName.autocomplete({ 
+                            source: [ 
+                                _tr("Collection Slot: Pre-Show"),
+                                _tr("Collection Slot: Pre-Game"),
+                                _tr("Collection Slot: Interval"),
+                                _tr("Collection Slot: Second-Interval"),
+                                _tr("Collection Slot: Half-Time"),
+                                _tr("Collection Slot: Post-Show"),
+                                _tr("Collection Slot: Post-Game")
+                            ], 
+                            delay: 10, 
+                            minLength: 0,
+                            select: function(evt, ui) {
+                                
+                                // apply value on model
+                                newSlot.name = ui.item.value;
+                                ng.$apply();
+                            },
+                            position: { my: "left top", at: "left bottom", collision: "none", of: inputName} 
                         });
                     }, 0);
 

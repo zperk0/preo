@@ -1,7 +1,7 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('EventsCtrl', function($scope, $rootScope, $timeout, $q, Events, CollectionSlots) {
+    .controller('EventsCtrl', function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots) {
         
         var vm = this,
             submitTime = 0;
@@ -16,7 +16,7 @@
 
             var oneDay = 24 * 60 * 60 * 1000,
                 date = new Date(),
-                interval = 100,
+                interval = 14,
                 firstDate = new Date(date.getTime() - (oneDay * interval)),
                 filter = firstDate.getFullYear() + '/' + (firstDate.getMonth() + 1) + '/' + firstDate.getDate();
 
@@ -46,19 +46,24 @@
 
                         console.log(resp)
 
-                        var slots = resp.data || [];
+                        var slots = resp || [];
                         elem.cSlots = [];
 
                         console.log(slots)
-
-                        slots.forEach(function(e, i) {
-
+                        if(slots.length == 0)
                             elem.cSlots.push({
-                                collectionslot: e.collectionslot,
-                                leadtime: e.leadTime
+                                end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
+                            })
+                        else
+                            slots.forEach(function(e, i) {
+
+                                // elem.cSlots.push({
+                                //     collectionslot: e.collectionslot,
+                                //     leadtime: e.leadTime
+                                // });
+                                elem.cSlots.push(e);
+                                elem.collectionCount = i;
                             });
-                            elem.collectionCount = i;
-                        });
 
                         defer.resolve();
                     }, function(result) {
@@ -115,8 +120,7 @@
 
             var obj = {
                 cSlots: [{
-                    collectionslot: 'PRESHOW',
-                    leadtime: ''
+                    end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
                 }]
             };
 
@@ -158,16 +162,6 @@
                 // $(".firstEventDiv").before($newTab); 
                 // $newTab.slideRow('down');
 
-
-                $newTab.find(".optionTR .eventTDCollection input").each(function(key, value) {
-                        $(this).autocomplete({
-                            source: slots,
-                            select: function(event,ui){
-                                $(event.target).val(ui.item.key);
-                            }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none" } });
-                });
-
-
                 if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
                 $("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
             }, 0)
@@ -188,20 +182,25 @@
                 // create/update event
                 vm.events.forEach(function(elem, index) {
                     
-                    var data = formatData(elem),
+                    var data = formatData(angular.copy(elem)),
                         deferred = $q.defer();
+
+                    console.log(elem)
 
                     // edit old
                     if(elem.id && !String(elem.id).match('/^e.*$/')) {
 
+                        console.log(elem)
+
                         // console.log('EDIT: ' + elem.id, data);
-                        Events.update(elem).then(function(result) {
+                        Events.update(elem, data).then(function(result) {
 
                             console.log(result);
-                            configSlots(elem.id, elem, deferred);
+                            configSlots(result, elem, deferred);
 
                         }, function(result) {
-                            console.error('Error saving event. ' + result);
+                            console.error('Error saving event. ');
+                            console.log(result);
                             deferred.resolve(result);
                         });
                     }
@@ -212,10 +211,11 @@
                         Events.create(data).then(function(result) {
 
                             console.log(result);
-                            configSlots(result.data.id, elem, deferred);
+                            configSlots(result, elem, deferred);
 
                         }, function(result) {
-                            console.error('Error saving event. ' + result);
+                            console.error('Error saving event. ');
+                            console.log(result);
                             deferred.resolve(result);
                         });
                     }
@@ -243,7 +243,7 @@
 
             var dateToEdit = null,
                 data = {
-                    venueId: venueid,
+                    venueId: VENUE_ID,
                     name: evt.name,
                     description: evt.description,
                     visible: evt.visible || 1
@@ -289,30 +289,40 @@
             return diffMins;
         }
 
-        function configSlots(eventid, elem, defer) {
+        function configSlots(eventObj, elem, defer) {
 
-            var slotsPromises = [];
 
+            
             //kill all eb-times items for thie event
-            CollectionSlots.delete(elem).then(function() {
+            eventObj.deleteSlots().then(function() {
 
-                //just add as previous ones are wiped clean by now!
-                elem.cSlots.forEach(function(e, i) {
+                var slotsPromises = [];
+                console.log('event id ' + eventObj.id)
+                console.log(elem)
 
-                    e.eventId = eventid;
-                    // data.collectionslot = e.name;
-                    // data.leadtime = e.time;
+                if(elem.cSlots.length > 0) {
 
-                    // console.log('eventid: ' + eventid, e);
+                    //just add as previous ones are wiped clean by now!
+                    elem.cSlots.forEach(function(e, i) {
+                    
+                        // console.log('eventObj.id: ' + eventObj.id, e);
+                        e.eventId = eventObj.id;
+                        // post slots
+                        slotsPromises.push(CollectionSlots.create(e));
+                        
+                    });
 
-                    // post slots
-                    slotsPromises.push(CollectionSlots.create(e)); //menu created
-                });
+                    // all slots posted, resolve the promise
+                    $q.all(slotsPromises).then(defer.resolve);
+                }
+                else
+                    defer.resolve();
 
+            }, function(result) {
+                console.log(result);
+                defer.reject(result)
             }); //venue_eb_times data deleted  
         
-            // all slots posted, resolve the promise
-            $q.all(slotsPromises).then(defer.resolve);
         }
 
         function formatTime(str_time) {

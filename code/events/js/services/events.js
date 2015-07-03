@@ -15,23 +15,44 @@ angular.module('events')
 
         // console.log('DELETE: ' + event.id);
 
-        var arrPromises = [];
+        var deferred = $q.defer();
 
-        arrPromises.push(event.delete());
+        // clean up slots first
+        if(event.cSlots.length > 0)
+            event.deleteSlots().then(function() {
+                delEvent(event, deferred);
+            }, function(data) {
+                deferred.reject(data);
+            });
+        else
+            delEvent(event, deferred);
+
+        function delEvent(e, d) {
+
+            e.delete().then(function(data) {
+                console.log('deleted all')
+                console.log(d)
+                d.resolve(data);
+            }, function(data) {
+                d.reject(data);
+            });
+        }
+
+        return deferred.promise;
 
         // kill all eb-times items for thie event
         // arrPromises.push($http.delete('/api/events/' + event.id + '/slots'));
         
         //kill event
         // arrPromises.push($http.delete('/api/events/' + event.id));
-
-        return $q.all(arrPromises);
     };
 
-    service.update = function(elem) {
+    service.update = function(elem, data) {
+
+        console.log(elem, data)
 
         // JSCORE Event
-        return elem.save();
+        return elem.save(data);
     };
 
     service.create = function(data) {

@@ -14,7 +14,7 @@ angular.module('events')
         link: function(ng, elem, attrs) {
 
             // Expand options to edit event info
-            ng.expandOptions = function(event) {
+            ng.expandOptions = function(event, eventObj) {
 
                 var curItem = $(event.currentTarget).closest('table'),
                     isEditButton = $(event.currentTarget).hasClass('eventTDEdit');
@@ -37,19 +37,42 @@ angular.module('events')
                 curItem.css('max-width', '100%');
 
                 // multiselect ui
-                curItem.find("td.eventTDCollection select").multiselect({
-                    multiple: false,
-                    header: false,
-                    noneSelectedText: _tr("Choose a Collection Slot"),
-                    selectedList: 1,
-                    minWidth: 342
+                // curItem.find("td.eventTDCollection select").multiselect({
+                //     multiple: false,
+                //     header: false,
+                //     noneSelectedText: _tr("Choose a Collection Slot"),
+                //     selectedList: 1,
+                //     minWidth: 342
+                // });
+
+                // autocomplete for slot name
+                curItem.find(".eventTDCollection .slotName").autocomplete({ 
+                    source: [ 
+                        _tr("Collection Slot: Pre-Show"),
+                        _tr("Collection Slot: Pre-Game"),
+                        _tr("Collection Slot: Interval"),
+                        _tr("Collection Slot: Second-Interval"),
+                        _tr("Collection Slot: Half-Time"),
+                        _tr("Collection Slot: Post-Show"),
+                        _tr("Collection Slot: Post-Game")
+                    ], 
+                    delay: 10, 
+                    minLength: 0,
+                    select: function(evt, ui) {
+
+                        // workaround to apply value on model by ui element
+                        eventObj.cSlots[evt.target.parentElement.parentElement.rowIndex - 2].name = ui.item.value;
+                        ng.$apply();
+                    },
+                    position: { my: "left top", at: "left bottom", collision: "none", of: curItem.find(".eventTDCollection .slotName")} 
                 });
 
                 // multiselect ui
                 curItem.find("td.eventTDOutletLocation select").multiselect({
                     multiple: false,
                     header: false,
-                    noneSelectedText: _tr("Choose Event Location"),
+                    noneSelectedText: 
+                    _tr("Choose Event Location"),
                     selectedList: 1,
                     minWidth: 342
                 });
@@ -106,202 +129,9 @@ angular.module('events')
                     // $(".firstEventDiv").before($newTab); 
                     // $newTab.slideRow('down');
 
-
-                    $newTab.find(".optionTR .eventTDCollection input").each(function(key, value) {
-                            $(this).autocomplete({
-                                source: slots,
-                                select: function(event,ui){
-                                    console.log('here',event, ui)
-                                    $(event.target).val(ui.item.key);
-                                }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none" } });
-                    });
-
-
                     if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
                     $("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
                 }, 0);
-
-                /*OLD CODE*/
-                // var button = event.currentTarget;
-
-                // //new item or duplicate?
-                // var dup = 0;
-                // if($(button).hasClass("eventDuplicate")) dup = 1;
-                // var $oldTab, $newTab;
-                // //get table event number
-                // var $curTable = $(button).closest('table');
-                // var eventID = $curTable.attr('id');
-                
-                // //get and update current count
-                // var eventCount = $("#eventCount").val();
-                // var newCount = parseInt(parseInt(eventCount) + 1);
-                // $("#eventCount").val(newCount);
-                // $("#eventCountAct").val(parseInt($("#eventCountAct").val())+1);
-                
-                // if(dup) //clone an existing row
-                // {
-                //     //create variables and insert
-                //     var $newOCount = $("#"+eventID+"_optionCount").clone(true);
-                //     $newOCount.attr('id','event'+newCount+'_optionCount');
-                //     $newOCount.attr('name','event'+newCount+'_optionCount');
-                //     var $newOCountAct = $("#"+eventID+"_optionCountAct").clone(true);
-                //     $newOCountAct.attr('id','event'+newCount+'_optionCountAct');
-                //     $newOCountAct.attr('name','event'+newCount+'_optionCountAct');
-                //     $("#"+eventID+"_optionCountAct").after($newOCountAct);
-                //     $("#"+eventID+"_optionCountAct").after($newOCount);
-                
-                //     //clone specific table
-                //     $oldTab = $("#"+eventID);           
-                //     $newTab = $("#"+eventID).clone(false);
-                //     $newTab.attr('id','event'+newCount);
-                // }
-                // else //clone a dummy row
-                // {
-                //     //create variables and insert
-                //     var $newOCount = $("#event0_optionCount").clone(true);
-                //     $newOCount.attr('id','event'+newCount+'_optionCount');
-                //     $newOCount.attr('name','event'+newCount+'_optionCount');
-                //     $newOCount.val(1);
-                //     var $newOCountAct = $("#event0_optionCountAct").clone(true);
-                //     $newOCountAct.attr('id','event'+newCount+'_optionCountAct');
-                //     $newOCountAct.attr('name','event'+newCount+'_optionCountAct');
-                //     $newOCountAct.val(1);
-                //     $("#event0_optionCountAct").after($newOCountAct);
-                //     $("#event0_optionCountAct").after($newOCount);
-                    
-                //     //clone dummy table
-                //     $newTab = $("#event0").clone(true);
-                //     $newTab.attr('id','event'+newCount);
-                // }
-                
-                // //Replace ids with incremented value and make value = default value
-                // $newTab.find(".eventTR input").each(function() {
-                //     if(!dup) $(this).val( $(this).prop("defaultValue") );
-                //     var tempName = $(this).attr('name');
-                //     var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
-                //     $(this).attr('name', newName);
-                // });
-                
-                // //Replace ids with incremented value and make value = default value
-                // $newTab.find(".optionTR .eventTDCollection input").each(function(key, value) {
-                //     if(!dup) $(this).val( $(this).prop("defaultValue") );
-                //     var tempName = $(this).attr('name');
-                //     var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
-                //     newName = newName.replace(/\[\d+\]/gi, "["+(key+1)+"]");
-                //     $(this).attr('name', newName);
-                // });
-
-                // //Replace ids with incremented value and make value = default value
-                // $newTab.find(".optionTR .eventTDLead input").each(function(key, value) {
-                //     if(!dup) $(this).val( $(this).prop("defaultValue") );
-                //     var tempName = $(this).attr('name');
-                //     var newName = tempName.replace(/event\d+/gi, 'event'+newCount);
-                //     newName = newName.replace(/\[\d+\]/gi, "["+(key+1)+"]");
-                //     $(this).attr('name', newName);
-                // });
-                
-                // //remove multiselect
-                // if(dup) $newTab.find(".ui-multiselect").remove();
-
-
-
-                // //Replace ids with incremented value and make value = default value + add multiselect
-                // $newTab.find(".optionTR .eventTDOutletLocation select").each(function(key, value) {
-                //     if(!dup) $(this).val( $(this).prop("defaultValue") );
-                //     if ($oldTab) $(this).val($oldTab.find(".optionTR .eventTDOutletLocation select").val());
-                //     var tempName = $(this).attr('name');            
-                //     var newName = tempName.replace(/event\d+/gi, 'event'+newCount);         
-                //     newName = newName.replace(/\[\d+\]/gi, "["+newCount+"]");           
-                //     $(this).attr('name', newName);
-
-                //     $(this).multiselect({
-                //        multiple: false,
-                //        header: false,
-                //        noneSelectedText: _tr("Choose Event Location"),
-                //        selectedList: 1,
-                //        minWidth: 342
-                //     }); 
-                // });
-                
-                // if(!dup){
-                //     //now we fix placeholder
-                //     $newTab.find("input[name^=eName]").each(function() {
-                //         var temp = $(this).val();
-                //         $(this).val("");
-                //         $(this).attr('placeholder', temp);
-                //     });
-                    
-                //     //now we fix placeholder
-                //     $newTab.find("input[name^=eTime]").each(function() {
-                //         var temp = $(this).val();
-                //         $(this).val("");
-                //         $(this).attr('placeholder', temp);
-                //         $(this).attr('pattern', "\\d\\d:\\d\\d");
-                //     });
-                    
-                //     //now we fix placeholder
-                //     $newTab.find("input[name^=eETime]").each(function() {
-                //         var temp = $(this).val();
-                //         $(this).val("");
-                //         $(this).attr('placeholder', temp);
-                //         $(this).attr('pattern', "\\d\\d:\\d\\d");
-                //     });
-                    
-                //     //now we fix placeholder
-                //     $newTab.find("input[name^=eDate]").each(function() {
-                //         var temp = $(this).val();
-                //         $(this).val("");
-                //         $(this).attr('placeholder', temp);
-                //         $(this).attr('pattern', "^\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d$");
-                //     });
-                    
-                //     //now we fix placeholder
-                //     $newTab.find("input[name^=eLead]").each(function() {
-                //         var temp = $(this).val();
-                //         $(this).val("");
-                //         $(this).attr('placeholder', temp);
-                //     });
-                // }
-                
-                // //now we fix eID
-                // $newTab.find("input[name^=eID]").val("e"+newCount);
-                        
-                // //now we give the item id to the duplicate button
-                // $newTab.find(".eventDuplicate").attr('id',"dup"+newCount);
-                
-                // var $newTab = $('.eventTable').last();
-
-                // // //now we add datepicker
-                // $newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
-                
-                // // //now we add timepicker
-                // $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-                // $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-                
-                // $newTab.css('backgroundColor','#fafafa');
-                // $newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-                // $newTab.css('max-width', '100%'); 
-                
-                // // //hide it so we can animate it!
-                // // $newTab.css('display','none');
-                
-                // // //insert before section header/before hidden div
-                // // $(".firstEventDiv").before($newTab); 
-                // // $newTab.slideRow('down');
-
-
-                // $newTab.find(".optionTR .eventTDCollection input").each(function(key, value) {
-                //         $(this).autocomplete({
-                //             source: slots,
-                //             select: function(event,ui){
-                //                 console.log('here',event, ui)
-                //                 $(event.target).val(ui.item.key);
-                //             }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none" } });
-                // });
-
-
-                // if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
-                // $("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
             };
 
             // Delete event
@@ -355,31 +185,7 @@ angular.module('events')
                                         text: _tr("Sorry, but there's been an error processing your request.")
                                     });
                                 });
-
-                            /*OLD CODE*/
-                            // var url = "/deleteEvent";
-                            // $.ajax({
-                            //        type: "POST",
-                            //        url: url,
-                            //        data: 'eventID='+realEventID, // serializes the form's elements.
-                            //        success: function(data)
-                            //        {
-                            //             try {
-                            //                 var dataArray = jQuery.parseJSON(data); //parsing JSON
-                            //             }
-                            //             catch(e) {
-                                            
-                            //                 noty({
-                            //                   type: 'error',  layout: 'topCenter',
-                            //                   text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
-                            //                 });
-                                            
-                            //                 return false;
-                            //             }
-                                            
-                            //             removeEventFromList(eventToDelete);
-                            //         }
-                            //      });
+                            
                             $noty.close();
                           }
                         },
