@@ -1,7 +1,7 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('EventsCtrl', function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots) {
+    .controller('EventsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID', 'Events', 'CollectionSlots', function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots) {
         
         var vm = this,
             submitTime = 0;
@@ -454,6 +454,6 @@
         }
         
         _init();
-    });
+    }]);
 
 }(window, angular));

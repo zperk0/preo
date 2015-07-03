@@ -39,23 +39,23 @@
 
   <script src="/js/angular_all.min.js"></script>  
   <script src="/code/kyc/js/directives/multiselect/multiselect.js"></script>
-  <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>  
+  
 
   
-  <!-- BEGIN WATCH  -->
+  <!-- BEGIN WATCH  
+  <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>  
   <script src="/code/events/js/app.js"></script>  
   <script src="/code/events/js/controller.js"></script>  
-
   <script src="/code/events/js/directives/slot/slot.js"></script>  
   <script src="/code/events/js/directives/event/event.js"></script>  
-
   <script src="/code/events/js/services/collectionslots.js"></script>  
   <script src="/code/events/js/services/events.js"></script>  
 
   <script src="/code/notification/notification.js"></script>  
   <!-- END WATCH -->
 
-  <!-- script src="/code/events/js/all.min.js"></script -->
+  <script src="/code/events/all.min.js"></script>
+
   <script src="/code/constants/session.php"></script>    
 
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
