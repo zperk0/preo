@@ -23,6 +23,10 @@ module.exports = function(grunt) {
     delivery:{
       index:'code/settings/delivery/delivery-view.php',
       output:'code/settings/delivery/js/all.min.js',
+    } ,
+    events:{
+      index:'code/events/index.php',
+      output:'code/events/all.min.js',
     }  
   }
 
@@ -72,6 +76,13 @@ module.exports = function(grunt) {
         },
         src: ["<%= yeoman.shop.files %>"],
         dest: "<%= yeoman.shop.output %>"
+      },
+      events:{
+        options: {
+          beautify: grunt.option('nomin'),
+        },
+        src: ["<%= yeoman.events.files %>"],
+        dest: "<%= yeoman.events.output %>"
       },
       accountSettings:{
         options: {
@@ -139,6 +150,14 @@ module.exports = function(grunt) {
       },
       shop:{
         files: ["<%= yeoman.accountSettings.files %>","<%= yeoman.accountSettings.index %>"],
+        tasks: ['uglify:accountSettings'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      },
+      events:{
+        files: ["<%= yeoman.events.files %>","<%= yeoman.events.index %>"],
         tasks: ['uglify:accountSettings'],
         options: {
           spawn: false,
@@ -237,6 +256,7 @@ module.exports = function(grunt) {
     'prepareWatchApp:shop',
     'prepareWatchApp:accountSettings',
     'prepareWatchApp:delivery',
+    'prepareWatchApp:events'
     ])
   
   grunt.registerTask('watcher',[

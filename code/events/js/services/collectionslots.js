@@ -1,7 +1,7 @@
 (function(window, angular){
 
 angular.module('events')
-.service('CollectionSlots', function ($http, $q, VENUE_ID) {
+.service('CollectionSlots',['$http','$q','VENUE_ID', function ($http, $q, VENUE_ID) {
     
     var service = {},
         venueid = VENUE_ID;
@@ -30,6 +30,6 @@ angular.module('events')
 
     return service;
 
-});
+}]);
 
 }(window, angular));
