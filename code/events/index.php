@@ -39,7 +39,7 @@
 
   <script src="/js/angular_all.min.js"></script>  
   <script src="/code/kyc/js/directives/multiselect/multiselect.js"></script>
-  <!-- // <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>   -->
+  <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>  
 
   
   <!-- BEGIN WATCH  -->

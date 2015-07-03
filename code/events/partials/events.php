@@ -36,5 +36,3 @@
 		</div>
 	</form>
 </div>
-
-<script type="text/javascript" src='/bower_components/javascript-core/preoday/preoday.min.js'></script>
