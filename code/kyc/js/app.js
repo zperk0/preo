@@ -1,10 +1,10 @@
 'use strict';
-angular.module('kyc.controllers', [])
-angular.module('kyc.resources', [])
-angular.module('kyc.charts',[])
-angular.module('kyc.services',[])
-angular.module('kyc.directives',[])
-angular.module('kyc.reports',[])
+angular.module('kyc.controllers', []);
+angular.module('kyc.resources', []);
+angular.module('kyc.charts',[]);
+angular.module('kyc.services',[]);
+angular.module('kyc.directives',[]);
+angular.module('kyc.reports',[]);
 
 
 // Declare app level module which depends on filters, and services
@@ -24,7 +24,8 @@ angular.module('kyc', [
   'notification',
   'mm.foundation',
   'ui.select2',
-  'constants'
+  'constants',
+  'webapp.components'
 ])
 .run(['$rootScope','ACCOUNT_ID','$http', function( $rootScope,ACCOUNT_ID,$http) {
   $rootScope.requests = 0;
