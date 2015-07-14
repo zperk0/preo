@@ -1,10 +1,13 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('EventsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID', 'Events', 'CollectionSlots', function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots) {
+    .controller('EventsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID', 'Events', 'CollectionSlots', '$AjaxInterceptor', function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots, $AjaxInterceptor) {
         
         var vm = this,
             submitTime = 0;
+
+        $rootScope.requests = 0;
+        $AjaxInterceptor.start();
 
         function _init() {
 
@@ -16,7 +19,7 @@
 
             var oneDay = 24 * 60 * 60 * 1000,
                 date = new Date(),
-                interval = 14,
+                interval = 7,
                 firstDate = new Date(date.getTime() - (oneDay * interval)),
                 filter = firstDate.getFullYear() + '/' + (firstDate.getMonth() + 1) + '/' + firstDate.getDate();
 
@@ -44,12 +47,12 @@
                     // get slots from the event
                     CollectionSlots.get(elem).then(function(resp) {
 
-                        console.log(resp)
+                        // console.log(resp)
 
                         var slots = resp || [];
                         elem.cSlots = [];
 
-                        console.log(slots)
+                        // console.log(slots)
                         if(slots.length == 0)
                             elem.cSlots.push({
                                 end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
@@ -102,6 +105,8 @@
                             $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
                             $(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
                         });
+
+                        $AjaxInterceptor.complete();
                     }, 0);
 
                     vm.redirectFlag = 0;
