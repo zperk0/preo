@@ -191,6 +191,41 @@
 
         vm.save = function() {
 
+            $('small.error').hide();
+
+            var valid = false;
+
+            $('.eventTable').each(function(i, e) {
+
+                var startElem = $(e).find('.eventTDStart'),
+                    endElem = $(e).find('.eventTDEnd'),
+                    stepElem = $(e).find('.eventTDStep');
+
+                if((startElem.find('input').val() == '' && endElem.find('input').val() == '' && stepElem.find('input').val() == '') || 
+                   (startElem.find('input').val() != '' && endElem.find('input').val() != '' && stepElem.find('input').val() != ''))
+                    valid = true;
+                else {
+
+                    $timeout(function() {
+                        if($(e).find('.eventTDEdit').css('display') != 'none') 
+                            $(e).find('.eventTDEdit').click();
+                    },0);
+
+                    if(startElem.find('input').val() == '')
+                        startElem.find('small.error').show();
+                    if(endElem.find('input').val() == '')
+                        endElem.find('small.error').show();
+                    if(stepElem.find('input').val() == '')
+                        stepElem.find('small.error').show();
+
+                    valid = false;
+                    return false;
+                }
+            });
+
+            if(!valid)
+                return false;
+
             var newSubmitTime = new Date().getTime();
 
             if((newSubmitTime - submitTime) > 300) {
