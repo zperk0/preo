@@ -1,7 +1,7 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('EventsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID', 'Events', 'CollectionSlots', '$AjaxInterceptor', function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots, $AjaxInterceptor) {
+    .controller('EventsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID', 'Events', 'CollectionSlots', '$AjaxInterceptor', '$modal', function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots, $AjaxInterceptor, $modal) {
         
         var vm = this,
             submitTime = 0;
@@ -123,53 +123,70 @@
 
         vm.addEvent = function() {
 
-            var obj = {
-                cSlots: [{
-                    end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
-                }]
-            };
+            var modalInstance = $modal.open({
+                templateUrl: '/code/events/partials/modal-event.php',
+                controller: 'ModalCtrl as modal'/*,
+                resolve: {
+                    items: function () {
+                        return $scope.items;
+                    }
+                }*/
+            });
 
-            vm.events.push(obj);
+            modalInstance.result.then(function (selectedItem) {
+                // $scope.selected = selectedItem;
+                console.log(selectedItem);
+            }, function () {
+                console.log('Modal dismissed at: ' + new Date());
+            });
 
-            $timeout(function() {
+            // var obj = {
+            //     cSlots: [{
+            //         end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
+            //     }]
+            // };
 
-                $('.eventTDEdit').last().click();
+            // vm.events.push(obj);
 
-                var $newTab = $('.eventTable').last();
+            // $timeout(function() {
 
-                // //now we add datepicker
-                $newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
+            //     $('.eventTDEdit').last().click();
+
+            //     var $newTab = $('.eventTable').last();
+
+            //     // //now we add datepicker
+            //     $newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
                 
-                // //now we add timepicker
-                $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-                $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+            //     // //now we add timepicker
+            //     $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+            //     $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
                 
-                $newTab.find("input[name^=eTime]").on('changeTime',function() {
+            //     $newTab.find("input[name^=eTime]").on('changeTime',function() {
 
-                    currTime = $(this).val()+":00";
+            //         currTime = $(this).val()+":00";
                     
-                    newTime = extractAMPM("January 01, 2000 "+currTime);
+            //         newTime = extractAMPM("January 01, 2000 "+currTime);
                     
-                    $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
-                    $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-                    $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
-                    $(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
-                });
+            //         $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
+            //         $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+            //         $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+            //         $(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
+            //     });
 
-                $newTab.css('backgroundColor','#fafafa');
-                $newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-                $newTab.css('max-width', '100%'); 
+            //     $newTab.css('backgroundColor','#fafafa');
+            //     $newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+            //     $newTab.css('max-width', '100%'); 
                 
-                // //hide it so we can animate it!
-                // $newTab.css('display','none');
+            //     // //hide it so we can animate it!
+            //     // $newTab.css('display','none');
                 
-                // //insert before section header/before hidden div
-                // $(".firstEventDiv").before($newTab); 
-                // $newTab.slideRow('down');
+            //     // //insert before section header/before hidden div
+            //     // $(".firstEventDiv").before($newTab); 
+            //     // $newTab.slideRow('down');
 
-                if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
-                $("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
-            }, 0)
+            //     if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
+            //     $("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+            // }, 0)
         };
 
         vm.save = function() {

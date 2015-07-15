@@ -1,3 +1,75 @@
 .slot-container td {
 	padding-top: 14px;
 }
+
+/*Foundaton animation*/
+
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+          transition: opacity .15s linear;
+}
+.fade.in {
+  opacity: 1 !important;
+}
+
+.reveal-modal.fade {
+  -webkit-transition: -webkit-transform .3s ease-out;
+     -moz-transition:    -moz-transform .3s ease-out;
+       -o-transition:      -o-transform .3s ease-out;
+          transition:         transform .3s ease-out;
+  -webkit-transform: translate(0, -25%);
+      -ms-transform: translate(0, -25%);
+          transform: translate(0, -25%);
+}
+.reveal-modal.in {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.reveal-modal-bg.fade {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.reveal-modal-bg.in {
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+
+/*Modal*/
+
+.reveal-modal {
+  position: absolute !important;
+}
+
+.ct-modal-event .btnNext {
+  float: right;
+}
+
+.ct-modal-event .btnPrev {
+  float: left;
+}
+
+.ct-modal-event .slot-sentence input, .ct-modal-event .slot-sentence select {
+  display: inline-block;
+  width: 40px;
+  height: 35px;
+  margin-bottom: 5px;
+}
+
+.ct-modal-event .slot-sentence select {
+  width: 80px;
+  padding: 0;
+}
+
+.ct-modal-event label {
+  font-weight: bold;
+}
+
+.ct-modal-event .newCollSlot {
+  margin: auto;
+  padding: 0;
+  width: 40px;
+  height: 30px;
+}

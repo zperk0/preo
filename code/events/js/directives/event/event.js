@@ -60,8 +60,10 @@ angular.module('events')
                     minLength: 0,
                     select: function(evt, ui) {
 
+                        var childIndex = ng.outletLocations.length > 0 ? 2 : 1;
+
                         // workaround to apply value on model by ui element
-                        eventObj.cSlots[evt.target.parentElement.parentElement.rowIndex - 2].name = ui.item.value;
+                        eventObj.cSlots[evt.target.parentElement.parentElement.rowIndex - childIndex].name = ui.item.value;
                         ng.$apply();
                     },
                     position: { my: "left top", at: "left bottom", collision: "none", of: curItem.find(".eventTDCollection .slotName")} 
