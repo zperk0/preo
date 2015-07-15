@@ -6,17 +6,19 @@
         
             var vm = this;
             vm.activeTab = 1;
+            vm.totalTabs = 4;
+
+            vm.date = new Date();
+            vm.minDate = new Date();
+            vm.events = [];
+
             vm.eventObj = {};
             vm.slots = [{end: '', eventId: '', leadTime: '', name: '', start: '', step: ''}];
             vm.schedules = [{freq: 'ONCE', startDate: '', endDate: ''}];
-
-            // cSlots: [{
-            //     end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
-            // }]
             
             vm.next = function() {
 
-                if(vm.activeTab < 3) 
+                if(vm.activeTab < vm.totalTabs) 
                     vm.activeTab++;
             };
 
@@ -34,6 +36,18 @@
             vm.addSchedule = function() {
 
                 vm.schedules.push({end: '', eventId: '', leadTime: '', name: '', start: '', step: ''});
+            };
+
+            vm.openEvent = function(events) {
+
+              console.log('open here', events);
+              // if (events.length) {
+              //   vm.dayEvents = events;
+              //   UtilsService.selfApply($scope);
+              // } else {
+              //   vm.dayEvents = null;
+              //   UtilsService.selfApply($scope);
+              // }
             };
 
             vm.closeModal = function() {

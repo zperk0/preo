@@ -26,7 +26,7 @@
             // get events from the last 7 days (interval)
             Events.get(filter).then(function(result) {
 
-                console.log(result);
+                // console.log(result);
 
                 var events = result || [],
                     arrPromises = [];
@@ -72,7 +72,7 @@
                     }, function(result) {
                         //something went wrong on API
                         // console.error(result);
-                        console.error('Error getting slots from API: ' + result.data.message);
+                        // console.error('Error getting slots from API: ' + result.data.message);
                         
                         // resolving the promise just to bind the events on scope
                         defer.resolve(result.data);
@@ -98,8 +98,8 @@
 
                         $("input[name^=eTime]").on('changeTime',function() {
 
-                            currTime = $(this).val()+":00";
-                            newTime = extractAMPM("January 01, 2000 "+currTime);                            
+                            var currTime = $(this).val()+":00";
+                            var newTime = extractAMPM("January 01, 2000 "+currTime);                            
                             $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
                             $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
                             $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
@@ -114,8 +114,8 @@
                 });
             }, function(data) {
                 //something went wrong on API
-                console.error(data);
-                console.error('Error getting events from API:' + data.message);
+                // console.error(data);
+                // console.error('Error getting events from API:' + data.message);
                 vm.redirectFlag = 1;
                 vm.event_edit_on = 0;
             });
@@ -123,70 +123,70 @@
 
         vm.addEvent = function() {
 
-            var modalInstance = $modal.open({
-                templateUrl: '/code/events/partials/modal-event.php',
-                controller: 'ModalCtrl as modal'/*,
-                resolve: {
-                    items: function () {
-                        return $scope.items;
-                    }
-                }*/
-            });
+            // var modalInstance = $modal.open({
+            //     templateUrl: '/code/events/partials/modal-event.php',
+            //     controller: 'ModalCtrl as modal',
+            //     resolve: {
+            //         items: function () {
+            //             return $scope.items;
+            //         }
+            //     }
+            // });
 
-            modalInstance.result.then(function (selectedItem) {
-                // $scope.selected = selectedItem;
-                console.log(selectedItem);
-            }, function () {
-                console.log('Modal dismissed at: ' + new Date());
-            });
+            // modalInstance.result.then(function (selectedItem) {
+            //     // $scope.selected = selectedItem;
+            //     console.log(selectedItem);
+            // }, function () {
+            //     console.log('Modal dismissed at: ' + new Date());
+            // });
 
-            // var obj = {
-            //     cSlots: [{
-            //         end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
-            //     }]
-            // };
+            var obj = {
+                cSlots: [{
+                    end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
+                }]
+            };
 
-            // vm.events.push(obj);
+            vm.events.push(obj);
 
-            // $timeout(function() {
+            $timeout(function() {
 
-            //     $('.eventTDEdit').last().click();
+                $('.eventTDEdit').last().click();
 
-            //     var $newTab = $('.eventTable').last();
+                var $newTab = $('.eventTable').last();
 
-            //     // //now we add datepicker
-            //     $newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
+                // //now we add datepicker
+                $newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
                 
-            //     // //now we add timepicker
-            //     $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-            //     $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+                // //now we add timepicker
+                $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+                $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
                 
-            //     $newTab.find("input[name^=eTime]").on('changeTime',function() {
+                $newTab.find("input[name^=eTime]").on('changeTime',function() {
 
-            //         currTime = $(this).val()+":00";
+                    var currTime = $(this).val()+":00";
                     
-            //         newTime = extractAMPM("January 01, 2000 "+currTime);
+                    var newTime = extractAMPM("January 01, 2000 "+currTime);
                     
-            //         $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
-            //         $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-            //         $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
-            //         $(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
-            //     });
+                    $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
+                    $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+                    $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+                    $(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
+                });
 
-            //     $newTab.css('backgroundColor','#fafafa');
-            //     $newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-            //     $newTab.css('max-width', '100%'); 
+                $newTab.css('backgroundColor','#fafafa');
+                $newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+                $newTab.css('max-width', '100%'); 
                 
-            //     // //hide it so we can animate it!
-            //     // $newTab.css('display','none');
+                // //hide it so we can animate it!
+                // $newTab.css('display','none');
                 
-            //     // //insert before section header/before hidden div
-            //     // $(".firstEventDiv").before($newTab); 
-            //     // $newTab.slideRow('down');
+                // //insert before section header/before hidden div
+                // $(".firstEventDiv").before($newTab); 
+                // $newTab.slideRow('down');
 
-            //     if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
-            //     $("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
-            // }, 0)
+                if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
+                $("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+            }, 0)
         };
 
         vm.save = function() {
@@ -201,28 +201,32 @@
 
                 // console.log('EVENTS TO SAVE: ', vm.events);
 
+                // console.log('total events: ' + vm.events.length)
+
                 // create/update event
                 vm.events.forEach(function(elem, index) {
                     
                     var data = formatData(angular.copy(elem)),
                         deferred = $q.defer();
 
-                    console.log(elem)
+                    // console.log(elem)
 
                     // edit old
                     if(elem.id && !String(elem.id).match('/^e.*$/')) {
 
-                        console.log(elem)
+                        // console.log(elem)
 
                         // console.log('EDIT: ' + elem.id, data);
                         Events.update(elem, data).then(function(result) {
 
-                            console.log(result);
+                            // console.log('event ok (update)' + index);
+
+                            // console.log(result);
                             configSlots(result, elem, deferred);
 
                         }, function(result) {
-                            console.error('Error saving event. ');
-                            console.log(result);
+                            // console.error('Error saving event. ');
+                            // console.log(result);
                             deferred.resolve(result);
                         });
                     }
@@ -232,12 +236,13 @@
                         // console.log('Create EVENT: ', data);
                         Events.create(data).then(function(result) {
 
-                            console.log(result);
+                            // console.log('event ok (create) ' + index);
+                            // console.log(result);
                             configSlots(result, elem, deferred);
 
                         }, function(result) {
-                            console.error('Error saving event. ');
-                            console.log(result);
+                            // console.error('Error saving event. ');
+                            // console.log(result);
                             deferred.resolve(result);
                         });
                     }
@@ -245,12 +250,18 @@
                     arrPromises.push(deferred.promise);
                 });
                 
+                // console.log('total promises events: ' + vm.events.length)
+
                 // wait for all event promises to be resolved
                 $q.all(arrPromises).then(function() {
+
+                    // console.log('All finished')
 
                     vm.isSaving = false;
                     // console.log(arguments);
                 }, function() {
+
+                    // console.log('All finished - error')
 
                     vm.isSaving = false;
                     // console.log(arguments);
@@ -313,32 +324,47 @@
 
         function configSlots(eventObj, elem, defer) {
 
-
+            // console.log('total slots: ' + elem.cSlots.length)
             
             //kill all eb-times items for thie event
             eventObj.deleteSlots().then(function() {
 
                 var slotsPromises = [];
-                console.log('event id ' + eventObj.id)
-                console.log(elem)
+                // console.log('event id ' + eventObj.id)
+                // console.log(elem)
 
                 if(elem.cSlots.length > 0) {
 
                     //just add as previous ones are wiped clean by now!
                     elem.cSlots.forEach(function(e, i) {
-                    
+
+                        var deferred = $q.defer();
+
                         // console.log('eventObj.id: ' + eventObj.id, e);
                         e.eventId = eventObj.id;
                         // post slots
-                        slotsPromises.push(CollectionSlots.create(e));
-                        
+                        CollectionSlots.create(e).then(function() {
+
+                            // console.log('slot ok ' + i);
+                            deferred.resolve();
+                        }, function(data) {
+
+                            // console.log('slot error ');
+                            // console.log(data);
+
+                            deferred.reject();
+                        });;
+
+                        slotsPromises.push(deferred.promise);
                     });
 
                     // all slots posted, resolve the promise
                     $q.all(slotsPromises).then(defer.resolve);
                 }
-                else
+                else {
+                    // console.log('event slot ok - no slots')
                     defer.resolve();
+                }
 
             }, function(result) {
                 console.log(result);

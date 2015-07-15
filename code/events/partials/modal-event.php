@@ -90,12 +90,33 @@
       </div>
       <button ng-click="add()" ng-if="$index == 0" type="button" class="newCollSlot ng-scope" title="Add another slot"><i class="pd-add"></i></button>
     </div>
+
+    <div ng-show="modal.activeTab == 4">
+      <div class='white-bg calendar-box'>
+        <h3 translate>CHOOSE YOUR EVENT DATE</h3>
+        <div class="contentCalendar contentTitleCalendar">
+          <button type="button" class="btnLeftCalendar btnCalendar" ng-click="modal.move(-1)" tabindex="-1">&lt;</button>
+          <span class="titleMonth">
+            <select name="ddlMonth" class="titleMonth"
+                    ng-model="modal.currentMonth"
+                    ng-change="modal.changeMonth()"
+                    ng-options="month.valueOf as month.text for month in modal.months"
+                    >
+            </select>
+          </span>
+          <!-- <span class="titleMonth">{{ modal.date | date: 'MMMM yyyy' }}</span> -->
+          <button type="button" class="btnRightCalendar btnCalendar" ng-click="modal.move(1)" tabindex="-1">&gt;</button>
+        </div>
+        <preo-calendar class="eventsDatePicker" day-click="modal.openEvent(events)" events="modal.events" min-date="modal.minDate" ng-model="modal.date" show-weeks="false" class="well well-sm"></preo-calendar>
+      </div>
+    </div>
+
   </div>
 
   <!-- <p>Selected: <b>{{ selected.item }}</b></p> -->
 
   <button class="btnPrev button" ng-click="modal.previous()" ng-show='modal.activeTab > 1'>Previous</button>
-  <button class="btnNext button" ng-click="modal.next()" ng-show='modal.activeTab < 3'>Next</button>
-  <button class="btnNext button" ng-click="modal.closeModal()" ng-show='modal.activeTab == 3'>Done</button>
+  <button class="btnNext button" ng-click="modal.next()" ng-show='modal.activeTab < modal.totalTabs'>Next</button>
+  <button class="btnNext button" ng-click="modal.closeModal()" ng-show='modal.activeTab == modal.totalTabs'>Done</button>
 
 </div>

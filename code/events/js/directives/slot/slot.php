@@ -15,22 +15,22 @@
 	</td>
 	<td class="eventTDLeadTime">
 		<label><?echo _("Lead Time (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Some help here...");?>"></i></label>
-		<input type="text" name="eLead[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.leadTime" placeholder="<?echo _("eg. 30");?>" required pattern="^\d+$"/>
+		<input type="text" name="eLead[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.leadTime" placeholder="<?echo _("eg. 30");?>" pattern="^\d+$"/>
 		<small class="error"><?echo _("Time?");?></small>
 	</td>
 	<td class="eventTDStart">
 		<label><?echo _("Start (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Some help here...");?>"></i></label>
-		<input type="text" name="eStart[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.start" placeholder="<?echo _("eg. 30");?>" required pattern="^\d+$"/>
+		<input type="text" name="eStart[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.start" placeholder="<?echo _("eg. 30");?>" pattern="^\d+$"/>
 		<small class="error"><?echo _("Time?");?></small>
 	</td>
 	<td class="eventTDEnd">
 		<label><?echo _("End (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Some help here...");?>"></i></label>
-		<input type="text" name="eEnd[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.end" placeholder="<?echo _("eg. 30");?>" required pattern="^\d+$"/>
+		<input type="text" name="eEnd[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.end" placeholder="<?echo _("eg. 30");?>" pattern="^\d+$"/>
 		<small class="error"><?echo _("Time?");?></small>
 	</td>
 	<td class="eventTDStep">
 		<label><?echo _("Step (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Some help here...");?>"></i></label>
-		<input type="text" name="eStep[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.step" placeholder="<?echo _("eg. 30");?>" required pattern="^\d+$"/>
+		<input type="text" name="eStep[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.step" placeholder="<?echo _("eg. 30");?>" pattern="^\d+$"/>
 		<small class="error"><?echo _("Time?");?></small>
 	</td>
 	<td class="eventTDAddMore">
