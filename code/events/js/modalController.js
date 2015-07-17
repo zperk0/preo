@@ -117,6 +117,11 @@
                 
                 $scope.$broadcast('$move', {direction: direction});
                 // UtilsService.selfApply($scope);
+
+
+                $timeout(function() {
+                    $('select.titleMonth').multiselect('refresh');
+                });
             };
 
             vm.closeModal = function() {
@@ -198,13 +203,16 @@
                 $('.schedEndDate').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}});
                 $('.startTime').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 
-                $('select.titleMonth').multiselect({
+                var a = $('select.titleMonth').multiselect({
                 // $('.ct-modal-event select').multiselect({
                     multiple: false,
                     header: false,
                     selectedList: 1,
                     minWidth: 342
                 });
+
+                // console.log(a)
+                window.a = a;
 
             }
             
