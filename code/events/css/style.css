@@ -2,6 +2,11 @@
 	padding-top: 14px !important;
 }
 
+/*ui component fix for modal*/
+.ui-autocomplete  {
+  z-index: 500;
+}
+
 /*Foundaton animation*/
 
 .fade {
@@ -40,15 +45,33 @@
 /*Modal*/
 
 .reveal-modal {
-  position: absolute !important;
+  /*position: absolute !important;*/
+  top: 15px;
 }
 
-.ct-modal-event .btnNext {
+.ct-modal-event input {
+  background-color: #f1f0f2;
+}
+
+.ct-modal-event .ui-multiselect {
+  width: auto !important;
+}
+
+.ct-modal-event .ct-btns {
+  margin-top: 25px;
+}
+
+.ct-modal-event .ct-btns .btnNext {
   float: right;
 }
 
-.ct-modal-event .btnPrev {
+.ct-modal-event .ct-btns .btnPrev {
   float: left;
+}
+
+.ct-modal-event .slot-sentence {
+  padding-bottom: 40px;
+  border-bottom: 1px solid black;
 }
 
 .ct-modal-event .slot-sentence input, .ct-modal-event .slot-sentence select {
@@ -72,4 +95,96 @@
   padding: 0;
   width: 40px;
   height: 30px;
+}
+
+/*tab slots*/
+.slotTab {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/*calendar*/
+.colItemCalendar {
+  padding: 5px;
+}
+
+.colItemCalendar button, .colItemCalendar button:hover, .colItemCalendar button:active {
+  padding: 5px;
+  margin-bottom: 0px;
+  border: 1px solid grey;
+  background: #fff;
+  color: #9B9B9B;
+  min-height: 46px;
+  font-weight: lighter;
+}
+
+.colItemCalendar button.isCurrentMonth {
+  color: #9B9B9B;
+  font-weight: normal;
+}
+
+.colItemCalendar button.isWeekend {
+  background-color: #D2D2D2;
+}
+
+.colItemCalendar button.dayActive {
+  background-color: #3aa2dc;
+  border-color: #2288c1;
+  color: #fff;
+}
+
+.ct-tabs, .ct-calendar {
+  width: 49%;
+  float: left;
+}
+
+.ct-calendar {
+  float: right;
+}
+
+.ct-calendar .ui-multiselect, .scheduleTab .ui-multiselect {
+  margin-top: 0;
+  width: 100% !important;
+}
+
+.ct-calendar table {
+  width: 100%;
+  margin: 0;
+}
+
+.contentTitleCalendar td {
+  padding: 0;
+  margin: 0;
+}
+
+  .contentTitleCalendar td:nth-child(1), .contentTitleCalendar td:nth-child(3) {
+    width: 5%;
+  }
+
+  .contentTitleCalendar td:nth-child(2) {
+    width: 90%;
+  }
+
+.contentTitleCalendar span.titleMonth {
+  width: 100%;
+  margin: 0;
+  float: left;
+}
+
+.contentTitleCalendar .btnCalendar {
+  padding: 10px;
+  margin: 0;
+}
+
+  .contentTitleCalendar .btnLeftCalendar {
+    float: left;
+  }
+
+  .contentTitleCalendar .btnRightCalendar {
+    float: right;
+  }
+
+/*error*/
+small.error {
+  display: none;
 }

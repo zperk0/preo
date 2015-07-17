@@ -44,7 +44,7 @@
   
 
   
-  <!-- BEGIN WATCH
+  <!-- BEGIN WATCH -->
   <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>  
   <script src="/code/loader/ajaxInterceptor.js"></script>  
   <script src="/code/events/js/app.js"></script>  
@@ -59,7 +59,7 @@
   <script src="/code/notification/notification.js"></script>  
   <!-- END WATCH -->
 
-  <script src="/code/events/all.min.js"></script>
+  <!-- // <script src="/code/events/all.min.js"></script> -->
 
   <script src="/code/constants/session.php"></script>    
 
