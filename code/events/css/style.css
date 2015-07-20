@@ -98,7 +98,7 @@
 }
 
 /*tab slots*/
-.slotTab {
+.slotTab, .infoTab, .scheduleTab {
   max-height: 400px;
   overflow-y: auto;
 }
@@ -142,7 +142,7 @@
   float: right;
 }
 
-.ct-calendar .ui-multiselect, .scheduleTab .ui-multiselect {
+.ct-calendar .ui-multiselect, .scheduleTab .ui-multiselect, .infoTab .ui-multiselect {
   margin-top: 0;
   width: 100% !important;
 }

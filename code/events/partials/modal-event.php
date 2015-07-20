@@ -9,7 +9,7 @@
   <!-- <small class="error priceError"><?echo _("Time?");?></small> -->
   <div class='ct-tabs'>
 
-    <div ng-show="modal.activeTab == 1">
+    <div class='infoTab' ng-show="modal.activeTab == 1">
       <div>
         <label>Event name:</label>
         <input type="text" ng-model='modal.eventObj.name' placeholder='Event name' maxlength="100">
@@ -32,6 +32,12 @@
         <input type="text" ng-model='modal.eventObj.starttime' class='startTime' placeholder='Start time'>
         <small class="error priceError"><?echo _("Time?");?></small>
       </div>
+      <div>
+        <label>Outlet location:</label>
+        <select ng-model='modal.eventObj.outletLocationId' ng-options='outletLocation.id as outletLocation.name for outletLocation in modal.outletLocations'> 
+          <option value=""  ><?echo _("All Locations")?></option>
+        </select>
+      </div>
     </div>
 
     <div class='scheduleTab' ng-show="modal.activeTab == 2">
@@ -51,12 +57,12 @@
       </div>
       <div ng-hide='modal.schedules.freq == "CUSTOM"'>
         <label>Schedule Start Date:</label>
-        <input type="text" ng-model='sched.date' class='schedStartDate'>
+        <input type="text" ng-model='modal.schedules.startDate' class='schedStartDate'>
         <small class="error"><?echo _("Date?");?></small>
       </div>
       <div ng-hide='modal.schedules.freq == "CUSTOM"'>
         <label>Schedule End Date:</label>
-        <input type="text" ng-model='sched.endDate' class='schedEndDate'>
+        <input type="text" ng-model='modal.schedules.endDate' class='schedEndDate'>
         <small class="error"><?echo _("Date?");?></small>
       </div>
       <div ng-show='modal.schedules.freq == "CUSTOM"'>
@@ -145,7 +151,7 @@
         </table>
         <!-- <span class="titleMonth">{{ modal.date | date: 'MMMM yyyy' }}</span> -->        
       </div>
-      <preo-calendar class="eventsDatePicker" day-click="modal.openEvent(events)" events="modal.events" min-date="modal.minDate" ng-model="modal.date" show-weeks="false" class="well well-sm"></preo-calendar>
+      <preo-calendar class="eventsDatePicker" day-click="modal.openEvent(events)" events="modal.events" min-date="modal.minDate" ng-model="modal.schedules" show-weeks="false" class="well well-sm"></preo-calendar>
     </div>
   </div>
 

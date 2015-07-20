@@ -17,12 +17,13 @@ angular.module('events')
     maxDate: null
   })
   .controller('PreoCalendarController', ['$scope', '$attrs', '$parse', '$interpolate', '$timeout', '$log', 'dateFilter', 'preoCalendarConfig', function($scope, $attrs, $parse, $interpolate, $timeout, $log, dateFilter, preoCalendarConfig) {
-    var self = this,
-      ngModelCtrl = { $setViewValue: angular.noop }; // nullModelCtrl
+    var self = this/*,
+      ngModelCtrl = { $setViewValue: angular.noop }*/; // nullModelCtrl
     self.dateObjectModel = {};
 
     // Modes chain
     this.modes = ['day', 'month', 'year'];
+    this.selectedDays = [];
 
     // Configuration attributes
     angular.forEach(['formatDay', 'formatMonth', 'formatYear', 'formatDayHeader', 'formatDayTitle', 'formatMonthTitle',
@@ -48,20 +49,36 @@ angular.module('events')
     this.events = $scope.events;
     this.isFirstRun = true;
 
-    $scope.$watch('events', function() {
-      self.events = $scope.events;
-      if(self.events.length && self.isFirstRun) {
-        $scope.select(self.createDateObject(self.activeDate, self.formatDay,true));
-        self.isFirstRun = false;
-      }
-      self.refreshView();
+    $scope.$watch('ngModel.startDate', function(newValue, oldValue) {
+
+      console.log(newValue, oldValue)
+      
+      if(newValue != '')
+        $scope.select(newValue, oldValue);
     });
 
-    $scope.$watch(function(){
-      return ngModelCtrl.$modelValue;
-    }, function() {
-      self.refreshView();
+    $scope.$watch('ngModel.endDate', function(newValue, oldValue) {
+
+      if(newValue != '')
+        $scope.select(newValue, oldValue);
     });
+
+    // $scope.$watch('events', function() {
+    //   self.events = $scope.events;
+    //   if(self.events.length && self.isFirstRun) {
+    //     $scope.select(self.createDateObject(self.activeDate, self.formatDay,true));
+    //     self.isFirstRun = false;
+    //   }
+    //   self.refreshView();
+    // });
+
+    // console.log(ngModel)
+
+    // $scope.$watch(function(){
+    //   return ngModelCtrl.$modelValue;
+    // }, function() {
+    //   self.refreshView();
+    // });
 
     this.getEvents = function() {
       return $scope.events;
@@ -84,40 +101,42 @@ angular.module('events')
     };
 
     this.init = function( ngModelCtrl_ ) {
-      ngModelCtrl = ngModelCtrl_;
+      // ngModelCtrl = ngModelCtrl_;
 
-      ngModelCtrl.$render = function() {
-        self.render();
-      };
+      // console.log(ngModelCtrl.ngModel);
+
+      // ngModelCtrl.$render = function() {
+      //   self.render();
+      // };
     };
 
-    this.render = function() {
-      if ( ngModelCtrl.$modelValue ) {
-        var date = new Date( ngModelCtrl.$modelValue ),
-          isValid = !isNaN(date);
+    // this.render = function() {
+    //   if ( ngModelCtrl.$modelValue ) {
+    //     var date = new Date( ngModelCtrl.$modelValue ),
+    //       isValid = !isNaN(date);
 
-        if ( isValid ) {
-          this.activeDate = date;
-        } else {
-          $log.error('Datepicker directive: "ng-model" value must be a Date object, a number of milliseconds since 01.01.1970 or a string representing an RFC2822 or ISO 8601 date.');
-        }
-        //ngModelCtrl.$setValidity('date', isValid);
-      }
-      this.refreshView();
-    };
+    //     if ( isValid ) {
+    //       this.activeDate = date;
+    //     } else {
+    //       $log.error('Datepicker directive: "ng-model" value must be a Date object, a number of milliseconds since 01.01.1970 or a string representing an RFC2822 or ISO 8601 date.');
+    //     }
+    //     //ngModelCtrl.$setValidity('date', isValid);
+    //   }
+    //   this.refreshView();
+    // };
 
     this.refreshView = function() {
       if ( this.element ) {
         this._refreshView();
 
-        var date = ngModelCtrl.$modelValue ? new Date(ngModelCtrl.$modelValue) : null;
+        // var date = ngModelCtrl.$modelValue ? new Date(ngModelCtrl.$modelValue) : null;
         //ngModelCtrl.$setValidity('date-disabled', !date || (this.element && !this.isDisabled(date)));
       }
     };
 
     this.createDateObject = function(date, format) {
-      var model = ngModelCtrl.$modelValue ? new Date(ngModelCtrl.$modelValue) : null;
-      var selected = model && this.isSelected(date);
+      // var model = ngModelCtrl.$modelValue ? new Date(ngModelCtrl.$modelValue) : null;
+      var selected = /*model && */this.isSelected(date);
 
       date.setHours(0);
       date.setMinutes(0);
@@ -147,14 +166,50 @@ angular.module('events')
       return arrays;
     };
 
-    $scope.select = function( dateObject ) {
-      var date = dateObject.date;
+    $scope.select = function( dateObject, oldDate ) {
+
+      var date;
+
+      if(dateObject.date)
+        date = dateObject.date;
+      else {
+
+        var stringDate = dateObject.split('/');
+        date = new Date(stringDate[2], stringDate[1] - 1, stringDate[0]);
+      }
+
       if ( $scope.datepickerMode === self.minMode ) {
-        var dt = ngModelCtrl.$modelValue ? new Date( ngModelCtrl.$modelValue ) : new Date(0, 0, 0, 0, 0, 0, 0);
-        dt.setFullYear( date.getFullYear(), date.getMonth(), date.getDate() );
-        ngModelCtrl.$setViewValue( dt );
-        ngModelCtrl.$render();
+        var dt = /*ngModelCtrl.$modelValue ? new Date( ngModelCtrl.$modelValue ) : */new Date(0, 0, 0, 0, 0, 0, 0);
+        dt.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());
+        // ngModelCtrl.$setViewValue( dt );
+        // ngModelCtrl.$render();
+
+        if(oldDate) {
+
+          var strOldDt = oldDate.split('/');
+          var oldDtObj = new Date(strOldDt[2], strOldDt[1] - 1, strOldDt[0]);
+
+          self.selectedDays.some(function(elem, index) {
+            if(elem.getTime() == oldDtObj.getTime()) {
+              self.selectedDays.splice(index, 1);
+              return true;
+            }
+          });
+        }
+
         self.activeDate = dt;
+
+        self.selectedDays.some(function(elem, index) {
+          if(elem.getTime() == dt.getTime()) {
+            self.selectedDays.splice(index, 1);
+            return true;
+          }
+        });
+
+        self.selectedDays.push(dt);
+
+        console.log(self.selectedDays);
+
         self.refreshView();
 
         $scope.onDayClick(dateObject);
@@ -168,8 +223,8 @@ angular.module('events')
       var year = self.activeDate.getFullYear() + direction * (self.step.years || 0),
         month = self.activeDate.getMonth() + direction * (self.step.months || 0);
       self.activeDate.setFullYear(year, month, 1);
-      ngModelCtrl.$setViewValue( self.activeDate );
-      ngModelCtrl.$render();
+      // ngModelCtrl.$setViewValue( self.activeDate );
+      // ngModelCtrl.$render();
       self.refreshView();
     };
 
@@ -300,10 +355,27 @@ angular.module('events')
         };
 
         ctrl.isSelected = function(date1) {
-          var dateOne = new Date( date1.getFullYear(), date1.getMonth(), date1.getDate() );
-          var dateTwo = new Date( ctrl.activeDate.getFullYear(), ctrl.activeDate.getMonth(), ctrl.activeDate.getDate() );
+          // var dateOne = new Date( date1.getFullYear(), date1.getMonth(), date1.getDate() );
+          // var dateTwo = new Date( ctrl.activeDate.getFullYear(), ctrl.activeDate.getMonth(), ctrl.activeDate.getDate() );
 
-          return dateOne.getTime() === dateTwo.getTime();
+          // return dateOne.getTime() === dateTwo.getTime();
+
+          var dateOne = new Date( date1.getFullYear(), date1.getMonth(), date1.getDate() );
+          var isSelected = false
+
+          ctrl.selectedDays.forEach(function(elem, index) {
+
+            var dateTwo = new Date( elem.getFullYear(), elem.getMonth(), elem.getDate() );
+            if(dateOne.getTime() === dateTwo.getTime()) {
+
+              isSelected = true;
+              return true;
+            }
+          });
+
+          // var dateTwo = new Date( ctrl.activeDate.getFullYear(), ctrl.activeDate.getMonth(), ctrl.activeDate.getDate() );
+
+          return isSelected;
         };
 
         ctrl.isCurrentMonth = function(date1) {
@@ -379,17 +451,20 @@ angular.module('events')
         dateDisabled: '&',
         attrRows: '@rows',
         dayClick: '&',
-        events: '='
+        events: '=',
+        ngModel: '='
       },
-      require: ['preoCalendar', '?ngModel'],
+      require: ['preoCalendar'],
       controller: 'PreoCalendarController',
       link: function(scope, element, attrs, ctrls) {
         var preoCalendarCtrl = ctrls[0], ngModelCtrl = ctrls[1];
 
-        if ( ngModelCtrl ) {
-          preoCalendarCtrl.init( ngModelCtrl );
+        console.log(scope.ngModel)
 
-        }
+        // if ( ngModelCtrl ) {
+        //   preoCalendarCtrl.init( ngModelCtrl );
+
+        // }
       }
     };
   })

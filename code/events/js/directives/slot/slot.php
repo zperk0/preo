@@ -20,17 +20,17 @@
 	</td>
 	<td class="eventTDStart">
 		<label><?echo _("Start (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("The time in minutes, from the start of the event, to the start of the pickup slot");?>"></i></label>
-		<input type="text" name="eStart[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.start" placeholder="<?echo _("eg. 30");?>" pattern="^\d+$"/>
+		<input type="text" name="eStart[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.start" placeholder="<?echo _("eg. 30");?>"/>
 		<small class="error"><?echo _("Enter minutes?");?></small>
 	</td>
 	<td class="eventTDEnd">
 		<label><?echo _("End (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("The time in minutes, from the start of the event, to the end of the pickup slot");?>"></i></label>
-		<input type="text" name="eEnd[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.end" placeholder="<?echo _("eg. 30");?>" pattern="^\d+$"/>
+		<input type="text" name="eEnd[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.end" placeholder="<?echo _("eg. 30");?>"/>
 		<small class="error"><?echo _("Enter minutes?");?></small>
 	</td>
 	<td class="eventTDStep">
 		<label><?echo _("Step (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("What is the number of minutes in between each pickup slot step?");?>"></i></label>
-		<input type="text" name="eStep[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.step" placeholder="<?echo _("eg. 30");?>" pattern="^\d+$"/>
+		<input type="text" name="eStep[event{{ event_index + 1 }}][{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model="slot.step" placeholder="<?echo _("eg. 30");?>"/>
 		<small class="error"><?echo _("Enter minutes?");?></small>
 	</td>
 	<td class="eventTDAddMore">

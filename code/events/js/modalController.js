@@ -1,17 +1,18 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('ModalCtrl', ['$scope', '$timeout',
-        function($scope, $timeout) {
+    .controller('ModalCtrl', ['$scope', '$timeout', 'items',
+        function($scope, $timeout, items) {
         
             var vm = this,
                 schedInit = false,
                 slotInit = false;
 
+            vm.outletLocations = items;
             vm.activeTab = 1;
             vm.totalTabs = 3;
 
-            vm.date = new Date();
+            // vm.date = new Date();
             vm.minDate = new Date();
             vm.events = [];
             vm.months = [];
@@ -32,12 +33,12 @@
                 vm.months.push(newDate);
             }
 
-            $scope.$watch(function(){
-                return vm.date;
-            }, function(){
+            // $scope.$watch(function(){
+                // return vm.date;
+            // }, function(){
                 vm.currentMonth = moment(vm.date).utc().startOf('month').valueOf();
                 // UtilsService.selfApply($scope);
-            });
+            // });
 
 
             vm.eventObj = {};
@@ -151,18 +152,50 @@
                 //     });
                 // });
 
-                vm.eventObj.cSlots = cSlots;
-                vm.eventObj.schedules = vm.schedules;
+                var strStart = vm.schedules.startDate.split('/'),
+                    startDate = new Date(strStart[2], strStart[1] - 1, strStart[0]).toISOString(),
+                    strEnd = vm.schedules.endDate.split('/'),
+                    endDate = new Date(strEnd[2], strEnd[1] - 1, strEnd[0]).toISOString();
 
-                vm.eventObj.date = vm.schedules.date;
+                // vm.schedules.startDate = startDate;
+                // vm.schedules.endDate = endDate;
+
+                vm.eventObj.cSlots = cSlots;
+                vm.eventObj.schedules = [
+                {
+                    freq: vm.schedules.freq,
+                    startDate: startDate.substr(0, startDate.length - 1),
+                    endDate: endDate.substr(0, startDate.length - 1)
+                }];
+
+                console.log(vm.eventObj.schedules);
+
+                var strDt = vm.schedules.startDate.split('/');
+                var date = new Date(strDt[2], strDt[1] - 1, strDt[0]);
+
+                vm.eventObj.date = date;
+
+                console.log(isNaN(vm.eventObj.days));
+                console.log(isNaN(vm.eventObj.hours));
+
+                var days = isNaN(vm.eventObj.days) ? 0 : Number(vm.eventObj.days);
+                var hours = isNaN(vm.eventObj.hours) ? 0 : Number(vm.eventObj.hours);
+                var minutes = isNaN(vm.eventObj.minutes) ? 0 : Number(vm.eventObj.hours);
+
+                console.log(days, hours)
+
+                var duration = (days * 24 * 60) + (hours * 60) + minutes;
+                vm.eventObj.duration = duration;
+
+                console.log(duration);
+                
+                // return overflow on body
+                $(document.body).css('overflow', 'auto');
 
                 $scope.$close(vm.eventObj);
             };
 
             function initUiSlots() {
-
-                console.log($('.ct-slots').last().find('select'))
-                console.log($('.ct-slots').last().find('.slotName'))
 
                 $('.ct-slots').last().find('select').multiselect({
                     multiple: false,
@@ -203,7 +236,7 @@
                 $('.schedEndDate').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}});
                 $('.startTime').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 
-                var a = $('select.titleMonth').multiselect({
+                $('select.titleMonth').multiselect({
                 // $('.ct-modal-event select').multiselect({
                     multiple: false,
                     header: false,
@@ -211,9 +244,12 @@
                     minWidth: 342
                 });
 
-                // console.log(a)
-                window.a = a;
-
+                $('.infoTab select').multiselect({
+                    multiple: false,
+                    header: false,
+                    selectedList: 1,
+                    minWidth: 342
+                });
             }
             
             $timeout(_init, 0);

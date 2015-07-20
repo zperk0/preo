@@ -19,7 +19,7 @@
 				<small class="error priceError"><?echo _("Time?");?></small>
 			</td>
 			<td class="eventTDTime">
-				<input type="text" ng-click='expandOptions($event, event)' name="eETime[{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model='event.endtime' ng-value="event.endtime" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" required readonly="readonly"/>
+				<input type="text" ng-click='expandOptions($event, event)' name="eETime[{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model='event.endtime' ng-value="event.endtime" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" readonly="readonly"/>
 				<small class="error priceError"><?echo _("Time?");?></small>
 			</td>
 			

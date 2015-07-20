@@ -128,7 +128,7 @@
                 controller: 'ModalCtrl as modal',
                 resolve: {
                     items: function () {
-                        return $scope.items;
+                        return vm.outletLocations;
                     }
                 }
             });
@@ -140,6 +140,8 @@
             }, function () {
                 console.log('Modal dismissed at: ' + new Date());
             });
+
+            $(document.body).css('overflow', 'hidden');
 
             // var obj = {
             //     cSlots: [{
@@ -318,7 +320,8 @@
                     visible: evt.visible || 1
                 };
 
-            if(evt.date.indexOf('/') != -1) {
+            // if(evt.date.indexOf('/') != -1) {
+            if(typeof evt.date == 'string') {
 
                 var date = evt.date.split('/');
                 dateToEdit = new Date(date[2], date[1] - 1, date[0]);
@@ -326,26 +329,27 @@
             else
                 dateToEdit = new Date(evt.date);
 
-            var year = dateToEdit.getUTCFullYear(),
-                month = dateToEdit.getUTCMonth(),
-                day = dateToEdit.getUTCDate(),
-                starttimeStr = evt.starttime.split(':'),
-                endtimeStr = evt.endtime.split(':'),
-                finalStartTime = new Date(year, month, day, starttimeStr[0], starttimeStr[1]),
-                finalEndTime = new Date(year, month, day, endtimeStr[0], endtimeStr[1]);
-
-
             if (evt.hasOwnProperty('outletLocationId') && evt.outletLocationId !== 'undefined')
                 data.outletLocationId = evt.outletLocationId;
 
-            data.duration = getEventDuration(finalStartTime.getTime(), finalEndTime.getTime());
-            data.schedules = [
-                {
-                    freq: 'ONCE',
-                    startDate: year + '-' + pad(String(Number(month) + 1), 2) + '-' + pad(String(day), 2) + 'T' + evt.starttime + ':00',
-                    endDate: year + '-' + pad(String(Number(month) + 1), 2) + '-' + pad(String(day), 2) + 'T' + evt.endtime + ':00'
-                }
-            ];
+            // var year = dateToEdit.getUTCFullYear(),
+            //     month = dateToEdit.getUTCMonth(),
+            //     day = dateToEdit.getUTCDate(),
+            //     starttimeStr = evt.starttime.split(':'),
+            //     endtimeStr = evt.endtime.split(':'),
+            //     finalStartTime = new Date(year, month, day, starttimeStr[0], starttimeStr[1]),
+            //     finalEndTime = new Date(year, month, day, endtimeStr[0], endtimeStr[1]);
+            
+            // data.duration = getEventDuration(finalStartTime.getTime(), finalEndTime.getTime());
+            data.duration = evt.duration;
+            data.schedules = evt.schedules;
+            // data.schedules = [
+            //     {
+            //         freq: evt.schedules.freq,
+            //         startDate: year + '-' + pad(String(Number(month) + 1), 2) + '-' + pad(String(day), 2) + 'T' + evt.starttime + ':00',
+            //         endDate: year + '-' + pad(String(Number(month) + 1), 2) + '-' + pad(String(day), 2) + 'T' + evt.endtime + ':00'
+            //     }
+            // ];
 
             return data;
         }
