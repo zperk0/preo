@@ -156,7 +156,7 @@
                     startDate = new Date(strStart[2], strStart[1] - 1, strStart[0]).toISOString(),
                     strEnd = vm.schedules.endDate.split('/'),
                     endDate = new Date(strEnd[2], strEnd[1] - 1, strEnd[0]).toISOString();
-
+1
                 // vm.schedules.startDate = startDate;
                 // vm.schedules.endDate = endDate;
 
