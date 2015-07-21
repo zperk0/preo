@@ -1,18 +1,18 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('ModalCtrl', ['$scope', '$timeout', 'items',
-        function($scope, $timeout, items) {
+    .controller('ModalCtrl', ['$scope', '$timeout', 'items', '$rootScope',
+        function($scope, $timeout, items, $rootScope) {
         
             var vm = this,
                 schedInit = false,
                 slotInit = false;
 
-            vm.outletLocations = items;
+            vm.outletLocations = items.outletLocations;
             vm.activeTab = 1;
             vm.totalTabs = 3;
 
-            // vm.date = new Date();
+            vm.date = new Date();
             vm.minDate = new Date();
             vm.events = [];
             vm.months = [];
@@ -33,15 +33,14 @@
                 vm.months.push(newDate);
             }
 
-            // $scope.$watch(function(){
-                // return vm.date;
-            // }, function(){
+            $scope.$watch(function(){
+                return vm.date;
+            }, function(){
                 vm.currentMonth = moment(vm.date).utc().startOf('month').valueOf();
                 // UtilsService.selfApply($scope);
-            // });
+            });
 
-
-            vm.eventObj = {};
+            vm.eventObj = items.eventObj || {};
             vm.schedules = {freq: 'ONCE', startDate: '', endDate: ''};
             vm.slots = [{end: '', eventId: '', leadTime: '', name: '', start: '', step: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true'}];
             
@@ -122,7 +121,7 @@
 
                 $timeout(function() {
                     $('select.titleMonth').multiselect('refresh');
-                });
+                }, 1000);
             };
 
             vm.closeModal = function() {
@@ -156,9 +155,6 @@
                     startDate = new Date(strStart[2], strStart[1] - 1, strStart[0]).toISOString(),
                     strEnd = vm.schedules.endDate.split('/'),
                     endDate = new Date(strEnd[2], strEnd[1] - 1, strEnd[0]).toISOString();
-1
-                // vm.schedules.startDate = startDate;
-                // vm.schedules.endDate = endDate;
 
                 vm.eventObj.cSlots = cSlots;
                 vm.eventObj.schedules = [
@@ -168,26 +164,17 @@
                     endDate: endDate.substr(0, startDate.length - 1)
                 }];
 
-                console.log(vm.eventObj.schedules);
-
                 var strDt = vm.schedules.startDate.split('/');
                 var date = new Date(strDt[2], strDt[1] - 1, strDt[0]);
 
                 vm.eventObj.date = date;
 
-                console.log(isNaN(vm.eventObj.days));
-                console.log(isNaN(vm.eventObj.hours));
-
                 var days = isNaN(vm.eventObj.days) ? 0 : Number(vm.eventObj.days);
                 var hours = isNaN(vm.eventObj.hours) ? 0 : Number(vm.eventObj.hours);
                 var minutes = isNaN(vm.eventObj.minutes) ? 0 : Number(vm.eventObj.hours);
 
-                console.log(days, hours)
-
                 var duration = (days * 24 * 60) + (hours * 60) + minutes;
                 vm.eventObj.duration = duration;
-
-                console.log(duration);
                 
                 // return overflow on body
                 $(document.body).css('overflow', 'auto');

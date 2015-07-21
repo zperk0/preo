@@ -10,7 +10,7 @@
     <tr ng-repeat="row in rows track by $index">
       <td ng-show="showWeeks" class="text-center h6 colItemCalendar"><em>{{ weekNumbers[$index] }}</em></td>
       <td ng-repeat="dt in row track by dt.date" class="text-center colItemCalendar" role="gridcell" id="{{dt.uid}}" aria-disabled="{{!!dt.disabled}}" ng-class="{'has-event': dt.$events, 'isCurrentMonth': dt.isCurrentMonth}">
-        <button type="button" style="width:100%;" class="btn btn-sm itemCalendar" ng-class="{'dayActive': dt.selected, 'btn-between': dt.between, 'has-event': dt.$events, 'isCurrentMonth': dt.isCurrentMonth, 'isWeekend': ($index === 5) || ($index === 6)}" ng-disabled="dt.disabled" tabindex="-1">
+        <button type="button" style="width:100%;" class="btn btn-sm itemCalendar" ng-class="{'dayActive': dt.selected, 'btn-between': dt.between, 'has-event': dt.$events, 'isCurrentMonth': dt.isCurrentMonth, 'isWeekend': ($index === 5) || ($index === 6)}"  ng-click="select(dt)" ng-disabled="dt.disabled" tabindex="-1">
         <!-- ng-click="select(dt)" -->
               <span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current || dt.isCurrentMonth}">
                 {{dt.label}} <br>

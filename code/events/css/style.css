@@ -47,6 +47,9 @@
 .reveal-modal {
   /*position: absolute !important;*/
   top: 15px;
+  bottom: 15px;
+  /*max-height: 400px;*/
+  overflow-y: auto;
 }
 
 .ct-modal-event input {
@@ -61,6 +64,10 @@
   margin-top: 25px;
 }
 
+.ct-modal-event .ct-btns .button {
+  width: 130px;
+}
+
 .ct-modal-event .ct-btns .btnNext {
   float: right;
 }
@@ -70,6 +77,7 @@
 }
 
 .ct-modal-event .slot-sentence {
+  margin-top: 10px;
   padding-bottom: 40px;
   border-bottom: 1px solid black;
 }
@@ -98,14 +106,15 @@
 }
 
 /*tab slots*/
-.slotTab, .infoTab, .scheduleTab {
+/*.slotTab, .infoTab, .scheduleTab {
   max-height: 400px;
   overflow-y: auto;
-}
+}*/
 
 /*calendar*/
 .colItemCalendar {
   padding: 5px;
+  width: 14.2857%;
 }
 
 .colItemCalendar button, .colItemCalendar button:hover, .colItemCalendar button:active {
@@ -113,9 +122,16 @@
   margin-bottom: 0px;
   border: 1px solid grey;
   background: #fff;
-  color: #9B9B9B;
+  color: #efefef;
   min-height: 46px;
   font-weight: lighter;
+}
+
+.colItemCalendar button[disabled], .colItemCalendar button[disabled]:hover, .colItemCalendar button[disabled]:active {
+  color: #fff !important;
+}
+.colItemCalendar button[disabled].isWeekend, .colItemCalendar button[disabled].isWeekend:hover, .colItemCalendar button[disabled].isWeekend:active {
+  color: #D2D2D2;
 }
 
 .colItemCalendar button.isCurrentMonth {
@@ -123,23 +139,51 @@
   font-weight: normal;
 }
 
-.colItemCalendar button.isWeekend {
+.colItemCalendar button.isWeekend.isCurrentMonth {
   background-color: #D2D2D2;
 }
 
+.colItemCalendar .itemCalendar {
+  width: 100% !important;
+  height: 55px !important;
+}
+
 .colItemCalendar button.dayActive {
-  background-color: #3aa2dc;
+  background-color: #3aa2dc !important;
   border-color: #2288c1;
   color: #fff;
 }
 
-.ct-tabs, .ct-calendar {
+.ct-tabs {
+  width: 100%;
+}
+
+/*.scheduleTab, .ct-calendar {
   width: 49%;
+  float: left;
+}*/
+
+/*.ct-calendar {*/
+  /*float: right;*/
+/*}*/
+
+.duration-fields {
+  width: 33.3333%;
   float: left;
 }
 
-.ct-calendar {
+.duration-fields input {
+  width: 95%;
+  /*padding: 5px;*/
+}
+
+/*.duration-fields input:nth-child(2) {
   float: right;
+}*/
+
+.slotTab .ui-multiselect {
+  margin: 0;
+  margin-bottom: 5px;
 }
 
 .ct-calendar .ui-multiselect, .scheduleTab .ui-multiselect, .infoTab .ui-multiselect {

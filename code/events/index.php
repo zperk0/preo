@@ -54,7 +54,8 @@
   <script src="/code/events/js/directives/event/event.js"></script>  
   <script src="/code/events/js/directives/preo-calendar/preo-calendar.js"></script>  
   <script src="/code/events/js/services/collectionslots.js"></script>  
-  <script src="/code/events/js/services/events.js"></script>  
+  <script src="/code/events/js/services/events.js"></script>
+  <script src="/code/events/js/services/date.js"></script>
 
   <script src="/code/notification/notification.js"></script>  
   <!-- END WATCH -->

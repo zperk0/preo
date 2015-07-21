@@ -128,7 +128,9 @@
                 controller: 'ModalCtrl as modal',
                 resolve: {
                     items: function () {
-                        return vm.outletLocations;
+                        return {
+                            outletLocations: vm.outletLocations
+                        };
                     }
                 }
             });
@@ -139,6 +141,7 @@
                 vm.events.push(selectedItem);
             }, function () {
                 console.log('Modal dismissed at: ' + new Date());
+                $(document.body).css('overflow', 'auto');
             });
 
             $(document.body).css('overflow', 'hidden');
@@ -339,7 +342,7 @@
             //     endtimeStr = evt.endtime.split(':'),
             //     finalStartTime = new Date(year, month, day, starttimeStr[0], starttimeStr[1]),
             //     finalEndTime = new Date(year, month, day, endtimeStr[0], endtimeStr[1]);
-            
+
             // data.duration = getEventDuration(finalStartTime.getTime(), finalEndTime.getTime());
             data.duration = evt.duration;
             data.schedules = evt.schedules;

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('events')
-.directive('event', ['$timeout', '$q', '$rootScope', 'Events', function($timeout, $q, $rootScope, Events) {
+.directive('event', ['$timeout', '$q', '$rootScope', 'Events', '$modal', function($timeout, $q, $rootScope, Events, $modal) {
 
     return {
         templateUrl: '/code/events/js/directives/event/event.php',
@@ -15,6 +15,30 @@ angular.module('events')
 
             // Expand options to edit event info
             ng.expandOptions = function(event, eventObj) {
+
+                // var modalInstance = $modal.open({
+                //     templateUrl: '/code/events/partials/modal-event.php',
+                //     controller: 'ModalCtrl as modal',
+                //     resolve: {
+                //         items: function () {
+                //             return {
+                //                 outletLocations: ng.outletLocations,
+                //                 eventObj: eventObj
+                //             };
+                //         }
+                //     }
+                // });
+
+                // modalInstance.result.then(function (selectedItem) {
+                //     // $scope.selected = selectedItem;
+                //     console.log(selectedItem);
+                //     // vm.events.push(selectedItem);
+                // }, function () {
+                //     console.log('Modal dismissed at: ' + new Date());
+                //     $(document.body).css('overflow', 'auto');
+                // });
+
+                // $(document.body).css('overflow', 'hidden');
 
                 var curItem = $(event.currentTarget).closest('table'),
                     isEditButton = $(event.currentTarget).hasClass('eventTDEdit');
