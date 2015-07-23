@@ -2,7 +2,7 @@
 
     angular.module('events')
     .controller('EventsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID', 'Events', 'CollectionSlots', '$AjaxInterceptor', '$modal', function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots, $AjaxInterceptor, $modal) {
-        
+
         var vm = this,
             submitTime = 0;
 
@@ -73,7 +73,7 @@
                         //something went wrong on API
                         // console.error(result);
                         // console.error('Error getting slots from API: ' + result.data.message);
-                        
+
                         // resolving the promise just to bind the events on scope
                         defer.resolve(result.data);
                         // defer.reject(result.data);
@@ -99,7 +99,7 @@
                         $("input[name^=eTime]").on('changeTime',function() {
 
                             var currTime = $(this).val()+":00";
-                            var newTime = extractAMPM("January 01, 2000 "+currTime);                            
+                            var newTime = extractAMPM("January 01, 2000 "+currTime);
                             $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
                             $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
                             $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
@@ -135,11 +135,12 @@
                 }
             });
 
-            modalInstance.result.then(function (selectedItem) {
-                // $scope.selected = selectedItem;
-                console.log(selectedItem);
-                vm.events.push(selectedItem);
+            modalInstance.result.then(function (eventData) {
+
+                console.log(eventData);
+                vm.events.push(eventData);
             }, function () {
+
                 console.log('Modal dismissed at: ' + new Date());
                 $(document.body).css('overflow', 'auto');
             });
@@ -161,18 +162,18 @@
             //     var $newTab = $('.eventTable').last();
 
             //     // //now we add datepicker
-            //     $newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
-                
+            //     $newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}});
+
             //     // //now we add timepicker
-            //     $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-            //     $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-                
+            //     $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+            //     $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+
             //     $newTab.find("input[name^=eTime]").on('changeTime',function() {
 
             //         var currTime = $(this).val()+":00";
-                    
+
             //         var newTime = extractAMPM("January 01, 2000 "+currTime);
-                    
+
             //         $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
             //         $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
             //         $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
@@ -181,13 +182,13 @@
 
             //     $newTab.css('backgroundColor','#fafafa');
             //     $newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-            //     $newTab.css('max-width', '100%'); 
-                
+            //     $newTab.css('max-width', '100%');
+
             //     // //hide it so we can animate it!
             //     // $newTab.css('display','none');
-                
+
             //     // //insert before section header/before hidden div
-            //     // $(".firstEventDiv").before($newTab); 
+            //     // $(".firstEventDiv").before($newTab);
             //     // $newTab.slideRow('down');
 
             //     if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
@@ -207,13 +208,13 @@
                     endElem = $(e).find('.eventTDEnd'),
                     stepElem = $(e).find('.eventTDStep');
 
-                if((startElem.find('input').val() == '' && endElem.find('input').val() == '' && stepElem.find('input').val() == '') || 
+                if((startElem.find('input').val() == '' && endElem.find('input').val() == '' && stepElem.find('input').val() == '') ||
                    (startElem.find('input').val() != '' && endElem.find('input').val() != '' && stepElem.find('input').val() != ''))
                     valid = true;
                 else {
 
                     $timeout(function() {
-                        if($(e).find('.eventTDEdit').css('display') != 'none') 
+                        if($(e).find('.eventTDEdit').css('display') != 'none')
                             $(e).find('.eventTDEdit').click();
                     },0);
 
@@ -235,7 +236,7 @@
             var newSubmitTime = new Date().getTime();
 
             if((newSubmitTime - submitTime) > 300) {
-                
+
                 vm.isSaving = true;
 
                 var arrPromises = [];
@@ -246,7 +247,7 @@
 
                 // create/update event
                 vm.events.forEach(function(elem, index) {
-                    
+
                     var data = formatData(angular.copy(elem)),
                         deferred = $q.defer();
 
@@ -290,7 +291,7 @@
 
                     arrPromises.push(deferred.promise);
                 });
-                
+
                 // console.log('total promises events: ' + vm.events.length)
 
                 // wait for all event promises to be resolved
@@ -368,7 +369,7 @@
         function configSlots(eventObj, elem, defer) {
 
             // console.log('total slots: ' + elem.cSlots.length)
-            
+
             //kill all eb-times items for thie event
             eventObj.deleteSlots().then(function() {
 
@@ -412,8 +413,8 @@
             }, function(result) {
                 console.log(result);
                 defer.reject(result)
-            }); //venue_eb_times data deleted  
-        
+            }); //venue_eb_times data deleted
+
         }
 
         function formatTime(str_time) {
@@ -432,7 +433,7 @@
                     sorted = sortLocations(outletLocations);
 
                 vm.outletLocations = getOutletLocationSelectOptions(sorted);
-            }); 
+            });
         }
 
         function getAllChildren(list, parent){
@@ -475,12 +476,12 @@
                     sorted.push(elem);
                 }
             });
-            
+
             return removeLastChildren(sorted);
         }
 
         function getOutletLocationSelectOptions(tree) {
-            
+
             var output = [];
 
             tree.forEach(function(elem, index) {
@@ -492,15 +493,15 @@
         }
 
         function indentNodeForSelect(node, indent, output){
-            
+
             var children = node.children,
                 formattedChild = {
                     id: node.id,
                     name: str_repeat("--", indent) + ' ' + node.name
-                };       
-            
+                };
+
             output.push(formattedChild);
-            
+
             children.forEach(function(elem, index) {
 
                 indentNodeForSelect(elem, (indent+1), output);
@@ -527,23 +528,23 @@
 
         // Utils - repeat string
         function str_repeat(input, multiplier) {
-          
+
             var y = '';
             while (true) {
                 if (multiplier & 1) {
                     y += input;
-                } 
+                }
                 multiplier >>= 1;
                 if (multiplier) {
                     input += input;
-                } 
+                }
                 else {
                     break;
-                } 
-            } 
+                }
+            }
             return y;
         }
-        
+
         _init();
     }]);
 

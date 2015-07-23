@@ -7,7 +7,7 @@
   <!-- <small class="error"><?echo _("Date?");?></small> -->
   <!-- <small class="error priceError"><?echo _("Time?");?></small> -->
   <!-- <small class="error priceError"><?echo _("Time?");?></small> -->
-  <div class='ct-tabs'> 
+  <div class='ct-tabs'>
 
     <div class='infoTab' ng-show="modal.activeTab == 1">
       <div>
@@ -40,7 +40,7 @@
       </div>
       <div>
         <label>Outlet location:</label>
-        <select ng-model='modal.eventObj.outletLocationId' ng-options='outletLocation.id as outletLocation.name for outletLocation in modal.outletLocations'> 
+        <select ng-model='modal.eventObj.outletLocationId' ng-options='outletLocation.id as outletLocation.name for outletLocation in modal.outletLocations'>
           <option value=""  ><?echo _("All Locations")?></option>
         </select>
       </div>
@@ -100,9 +100,9 @@
                   </td>
                 </tr>
               </table>
-              <!-- <span class="titleMonth">{{ modal.date | date: 'MMMM yyyy' }}</span> -->        
+              <!-- <span class="titleMonth">{{ modal.date | date: 'MMMM yyyy' }}</span> -->
             </div>
-            <preo-calendar class="eventsDatePicker" day-click="modal.openEvent(events)" events="modal.events" min-date="modal.minDate" ng-model="modal.date" schedules='modal.schedules' show-weeks="false" ng- class="well well-sm"></preo-calendar>
+            <preo-calendar class="eventsDatePicker" selected-days="modal.selectedDays" min-date="modal.minDate" ng-model="modal.date" schedules='modal.schedules' show-weeks="false" ng- class="well well-sm"></preo-calendar>
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@
           <small class="error"><?echo _("Please choose a slot.");?></small>
         </div>
         <p class='slot-sentence'>
-          This slot starts <input type="text" ng-model='slot.start'> minutes 
+          This slot starts <input type="text" ng-model='slot.start'> minutes
           <select ng-model='slot.startFactor' class='start-select'>
             <option value="-1">Before</option>
             <option value="1">After</option>
@@ -128,7 +128,7 @@
             <option value="-1">Before</option>
             <option value="1">After</option>
           </select>
-          the event start time with a lead time of 
+          the event start time with a lead time of
           <input type="text" ng-model='slot.leadTime'><small class="error"><?echo _("Enter minutes?");?></small> minutes and it
           <select ng-model='slot.hasSteps' class='step-select'>
             <option value="true">is</option>

@@ -47,13 +47,13 @@ angular.module('events')
     $scope.datepickerMode = $scope.datepickerMode || preoCalendarConfig.datepickerMode;
     $scope.uniqueId = 'datepicker-' + $scope.$id + '-' + Math.floor(Math.random() * 10000);
     this.activeDate = angular.isDefined($attrs.initDate) ? $scope.$parent.$eval($attrs.initDate) : new Date();
-    this.events = $scope.events;
+    // this.events = $scope.events;
     this.isFirstRun = true;
 
     $scope.$watch('schedules.startDate', function(newValue, oldValue) {
-      
+
       $scope.schedules.endDate = '';
-      self.selectedDays = [];
+      $scope.selectedDays = [];
 
       if(newValue != '' && newValue)
         $scope.select(newValue, oldValue);
@@ -69,7 +69,15 @@ angular.module('events')
 
     $scope.$watch('schedules.freq', function(newValue, oldValue) {
 
+      if(oldValue == 'CUSTOM') {
+
+        $scope.selectedDays = [];
+        $scope.schedules.startDate = '';
+        $scope.schedules.endDate = '';
+      }
+
       self.frequency = newValue;
+
       self.updateFrequency();
       // if(newValue != '' && newValue)
         // $scope.select(newValue, oldValue);
@@ -79,10 +87,14 @@ angular.module('events')
     $scope.$watch('ngModel', function(newValue, oldValue) {
 
       if(newValue != '' && newValue)
-        $scope.select(newValue);
+        $scope.select({
+          activeDate: newValue
+        });
     });
 
     this.updateFrequency = function() {
+
+      console.log($scope.schedules);
 
       if($scope.schedules.startDate && $scope.schedules.startDate != '' && $scope.schedules.endDate && $scope.schedules.endDate != '') {
 
@@ -90,42 +102,48 @@ angular.module('events')
             end = DateUtils.formatDate($scope.schedules.endDate),
             totalDays = DateUtils.daysBetween(start, end);
 
-        // keep the dirst occurency
-        self.selectedDays = [self.selectedDays[0]];
+        // keep the first occurency
+        if($scope.selectedDays.length > 0)
+          $scope.selectedDays = [$scope.selectedDays[0]];
+        console.log($scope.selectedDays)
 
         switch(self.frequency) {
           case 'ONCE':
 
           break;
-          case 'DAILY': 
+          case 'DAILY':
 
             for(var i = 1; i <= totalDays; i++) {
 
               var date = DateUtils.addDays(start, i);
-              self.selectedDays.push(date);
+              $scope.selectedDays.push(date);
             }
           break;
-          case 'WEEKLY': 
+          case 'WEEKLY':
 
             var lastDate = start,
-                oneWeek = 1000 * 60 * 60 * 24 * 7;
+                oneWeek = 1000 * 60 * 60 * 24 * 7,
+                summertimeDiff = 1000 * 60 * 60;
 
-            while((lastDate.getTime() + oneWeek) <= end.getTime()) {
+            while((lastDate.getTime() + oneWeek) <= end.getTime() +  summertimeDiff) {
 
               lastDate = DateUtils.addDays(lastDate, 7);
-              self.selectedDays.push(lastDate);
+              $scope.selectedDays.push(lastDate);
             }
 
           break;
           case 'MONTHLY':
 
-            var lastDate = start;
-            while((lastDate.getMonth() + 1) <= end.getMonth()) {
+            var lastDate = start,
+                summertimeDiff = 1000 * 60 * 60;
+
+            do {
 
               lastDate.setMonth(lastDate.getMonth() + 1);
               if(lastDate.getTime() <= end.getTime())
-                self.selectedDays.push(new Date(lastDate));
-            }
+                $scope.selectedDays.push(new Date(lastDate));
+
+            } while(lastDate.getTime() <= end.getTime() + summertimeDiff);
 
           break;
           case 'YEARLY':
@@ -136,21 +154,25 @@ angular.module('events')
 
               lastDate.setFullYear(lastDate.getFullYear() + 1);
               if(lastDate.getTime() <= end.getTime())
-                self.selectedDays.push(new Date(lastDate));
-            } 
+                $scope.selectedDays.push(new Date(lastDate));
+            }
 
           break;
           case 'CUSTOM':
             $scope.schedules.startDate = '';
             $scope.schedules.endDate = '';
 
-            self.selectedDays = [];
+            $scope.selectedDays = [];
           break;
         }
 
       }
-      else 
-        self.selectedDays = [];
+      else {
+        if($scope.selectedDays.length > 0)
+          $scope.selectedDays = [$scope.selectedDays[0]];
+        else
+          $scope.selectedDays = [];
+      }
 
       // refresh view
       self.refreshView();
@@ -171,9 +193,9 @@ angular.module('events')
     //   self.refreshView();
     // });
 
-    this.getEvents = function() {
-      return $scope.events;
-    };
+    // this.getEvents = function() {
+    //   return $scope.events;
+    // };
 
     $scope.isActive = function(dateObject) {
       if (self.compare(dateObject.date, self.activeDate) === 0) {
@@ -183,13 +205,17 @@ angular.module('events')
       return false;
     };
 
-    $scope.onDayClick = function(data) {
-      if (!!!data.disabled) {
+    // $scope.onDayClick = function(data) {
+      /*if (!!!data.disabled) {
         $scope.dayClick({
           events: data.$events || []
         });
-      }
-    };
+      }*/
+      // console.log(data)
+      // $scope.dayClick({
+      //   selectedDays: data || []
+      // });
+    // };
 
     this.init = function( ngModelCtrl_ ) {
       // ngModelCtrl = ngModelCtrl_;
@@ -236,7 +262,7 @@ angular.module('events')
       return {
         date: date,
         label: dateFilter(date, format),
-        $events: this.getEventDate(date),
+        // $events: this.getEventDate(date),
         isCurrentMonth: this.isCurrentMonth(date),
         selected: selected,
         disabled: this.isDisabled(date),
@@ -259,20 +285,37 @@ angular.module('events')
 
     $scope.select = function( dateObject, oldDate ) {
 
-      var date, dt = new Date(0, 0, 0, 0, 0, 0, 0);
+      var date, dt = new Date(0, 0, 0, 0, 0, 0, 0), removing = false;
 
       if ( $scope.datepickerMode === self.minMode ) {
 
         if(typeof dateObject == 'object') {
 
-          date = dateObject.date ? dateObject.date : dateObject;
+          console.log(dateObject)
 
+          date = dateObject.activeDate ? dateObject.activeDate : dateObject.date ? dateObject.date : dateObject;
+          // date = dateObject.date ? dateObject.date : dateObject;
           dt.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());
-
           self.activeDate = dt;
 
-          if($scope.schedules.freq == 'CUSTOM')
-            self.selectedDays.push(dt);
+          // don't push dates from active date control
+          if($scope.schedules.freq == 'CUSTOM' && !dateObject.hasOwnProperty('activeDate')) {
+
+            $scope.selectedDays.some(function(elem, index) {
+
+              if(dt.getTime() == elem.getTime()) {
+
+                $scope.selectedDays.splice(index, 1);
+                removing = true;
+              }
+
+              return removing;
+            });
+
+            if(!removing)
+              $scope.selectedDays.push(dt);
+          }
+
         }
 
         // input from user (start and end)
@@ -281,30 +324,30 @@ angular.module('events')
           date = DateUtils.formatDate(dateObject);
           dt.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());
 
-          // remove old date 
+          // remove old date
           if(oldDate) {
 
             var strOldDt = oldDate.split('/');
             var oldDtObj = new Date(strOldDt[2], strOldDt[1] - 1, strOldDt[0]);
 
-            self.selectedDays.some(function(elem, index) {
+            $scope.selectedDays.some(function(elem, index) {
               if(elem.getTime() == oldDtObj.getTime()) {
-                self.selectedDays.splice(index, 1);
+                $scope.selectedDays.splice(index, 1);
                 return true;
               }
             });
           }
 
-          self.selectedDays.push(dt);
+          $scope.selectedDays.push(dt);
         }
 
         // refresh view
         self.refreshView();
 
-        // event to be called outside of the directive
-        $scope.onDayClick(dateObject);
+        // $scope.onDayClick(dateObject);
+        // $scope.onDayClick($scope.selectedDays);
       } else {
-        
+
         self.activeDate = date;
         $scope.datepickerMode = self.modes[ self.modes.indexOf( $scope.datepickerMode ) - 1 ];
       }
@@ -453,9 +496,9 @@ angular.module('events')
           // return dateOne.getTime() === dateTwo.getTime();
 
           var dateOne = new Date( date1.getFullYear(), date1.getMonth(), date1.getDate() );
-          var isSelected = false
+          var isSelected = false;
 
-          ctrl.selectedDays.forEach(function(elem, index) {
+          scope.selectedDays.forEach(function(elem, index) {
 
             var dateTwo = new Date( elem.getFullYear(), elem.getMonth(), elem.getDate() );
             if(dateOne.getTime() === dateTwo.getTime()) {
@@ -481,19 +524,19 @@ angular.module('events')
           return yearDate === yearCurrentDate && monthDate === monthCurrentDate;
         };
 
-        ctrl.getEventDate = function(date) {
-          var newDateOne = (new Date( date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0 )).getTime();
-          var eventsDate = ctrl.getEvents().filter(function(ev) {
-            var dateEv = new Date(ev.schedules[0].startDate);
+        // ctrl.getEventDate = function(date) {
+        //   var newDateOne = (new Date( date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0 )).getTime();
+        //   var eventsDate = ctrl.getEvents().filter(function(ev) {
+        //     var dateEv = new Date(ev.schedules[0].startDate);
 
-            dateEv.setHours(0);
-            dateEv.setMinutes(0);
-            dateEv.setSeconds(0);
+        //     dateEv.setHours(0);
+        //     dateEv.setMinutes(0);
+        //     dateEv.setSeconds(0);
 
-            return dateEv.getTime() === newDateOne;
-          });
-          return eventsDate.length ? eventsDate : null;
-        };
+        //     return dateEv.getTime() === newDateOne;
+        //   });
+        //   return eventsDate.length ? eventsDate : null;
+        // };
 
         function getISO8601WeekNumber(date) {
           var checkDate = new Date(date);
@@ -542,8 +585,8 @@ angular.module('events')
         datepickerMode: '=?',
         dateDisabled: '&',
         attrRows: '@rows',
-        dayClick: '&',
-        events: '=',
+        // dayClick: '&',
+        selectedDays: '=',
         ngModel: '=',
         schedules: '='
       },
