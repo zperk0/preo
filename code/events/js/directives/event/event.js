@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('events')
-.directive('event', ['$timeout', '$q', '$rootScope', 'Events', '$modal', function($timeout, $q, $rootScope, Events, $modal) {
+.directive('event', ['$timeout', '$q', '$rootScope', 'Events', '$modal', '$log', function($timeout, $q, $rootScope, Events, $modal, $log) {
 
     return {
         templateUrl: '/code/events/js/directives/event/event.php',
@@ -31,10 +31,10 @@ angular.module('events')
 
                 // modalInstance.result.then(function (selectedItem) {
                 //     // $scope.selected = selectedItem;
-                //     console.log(selectedItem);
+                //     $log.log(selectedItem);
                 //     // vm.events.push(selectedItem);
                 // }, function () {
-                //     console.log('Modal dismissed at: ' + new Date());
+                //     $log.log('Modal dismissed at: ' + new Date());
                 //     $(document.body).css('overflow', 'auto');
                 // });
 
@@ -45,7 +45,7 @@ angular.module('events')
 
                 if(!$(event.currentTarget).attr('readonly') && !isEditButton) // not expand again when clicking on input
                     return;
-                
+
                 // hide edit button
                 if(isEditButton) $(event.currentTarget).hide();
                 else $(event.currentTarget).closest('table').find('.eventTDEdit').hide();
@@ -70,8 +70,8 @@ angular.module('events')
                 // });
 
                 // autocomplete for slot name
-                curItem.find(".eventTDCollection .slotName").autocomplete({ 
-                    source: [ 
+                curItem.find(".eventTDCollection .slotName").autocomplete({
+                    source: [
                         _tr("Collection Slot: Pre-Show"),
                         _tr("Collection Slot: Pre-Game"),
                         _tr("Collection Slot: Interval"),
@@ -79,8 +79,8 @@ angular.module('events')
                         _tr("Collection Slot: Half-Time"),
                         _tr("Collection Slot: Post-Show"),
                         _tr("Collection Slot: Post-Game")
-                    ], 
-                    delay: 10, 
+                    ],
+                    delay: 10,
                     minLength: 0,
                     select: function(evt, ui) {
 
@@ -90,14 +90,14 @@ angular.module('events')
                         eventObj.cSlots[evt.target.parentElement.parentElement.rowIndex - childIndex].name = ui.item.value;
                         ng.$apply();
                     },
-                    position: { my: "left top", at: "left bottom", collision: "none", of: curItem.find(".eventTDCollection .slotName")} 
+                    position: { my: "left top", at: "left bottom", collision: "none", of: curItem.find(".eventTDCollection .slotName")}
                 });
 
                 // multiselect ui
                 curItem.find("td.eventTDOutletLocation select").multiselect({
                     multiple: false,
                     header: false,
-                    noneSelectedText: 
+                    noneSelectedText:
                     _tr("Choose Event Location"),
                     selectedList: 1,
                     minWidth: 342
@@ -138,21 +138,21 @@ angular.module('events')
                     var $newTab = $('.eventTable').last();
 
                     // //now we add datepicker
-                    $newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}}); 
-                    
+                    $newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}});
+
                     // //now we add timepicker
-                    $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
-                    $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 }); 
+                    $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+                    $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 
                     $newTab.css('backgroundColor','#fafafa');
                     $newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-                    $newTab.css('max-width', '100%'); 
-                    
+                    $newTab.css('max-width', '100%');
+
                     // //hide it so we can animate it!
                     // $newTab.css('display','none');
-                    
+
                     // //insert before section header/before hidden div
-                    // $(".firstEventDiv").before($newTab); 
+                    // $(".firstEventDiv").before($newTab);
                     // $newTab.slideRow('down');
 
                     if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
@@ -165,8 +165,8 @@ angular.module('events')
 
                 var realEventID = eventToDelete.id; // id from DB
 
-                console.log(realEventID);
-                
+                $log.log(realEventID);
+
                 // event not saved in DB
                 if(typeof realEventID =='undefined' || realEventID == '' || !String(realEventID).match(/^\d+?$/gi)) {
                     noty({
@@ -175,7 +175,7 @@ angular.module('events')
                         text: _tr('Are you sure you want to delete this event? Note: all event data will be lost!'),
                         buttons: [
                         {addClass: 'alert tiny', text: _tr('Yes, delete this event!'), onClick: function($noty) {
-                            
+
                             removeEventFromList(eventToDelete);
 
                             $noty.close();
@@ -196,22 +196,22 @@ angular.module('events')
                         text: _tr('Are you sure you want to delete this event? Note: all event data will be lost!'),
                         buttons: [
                         {addClass: 'alert tiny', text: _tr('Yes, delete this event!'), onClick: function($noty) {
-                            
 
-                            console.log('Make api request...')
+
+                            $log.log('Make api request...')
                             Events.deleteEvent(eventToDelete).then(
                                 function() { // success
 
-                                    console.log(arguments);
+                                    $log.log(arguments);
                                     removeEventFromList(eventToDelete);
                                 }, function() { // error
-                                    
+
                                     noty({
                                         type: 'error',  layout: 'topCenter',
                                         text: _tr("Sorry, but there's been an error processing your request.")
                                     });
                                 });
-                            
+
                             $noty.close();
                           }
                         },

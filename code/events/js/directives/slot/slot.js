@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('events')
-.directive('slot', ['$timeout', function($timeout) {
+.directive('slot', ['$timeout', '$log', function($timeout, $log) {
     return {
         templateUrl: '/code/events/js/directives/slot/slot.php',
         restrict: 'A',
@@ -17,7 +17,7 @@ angular.module('events')
                 var newSlot = {
                     end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
                 };
-                
+
                 // add new slot
                 ng.slots.push(newSlot);
 
@@ -26,7 +26,7 @@ angular.module('events')
                     // multiselect ui
                     var select = $(elem.context.parentElement).find('select').last(),
                         inputName = $(elem.context.parentElement).find('.eventTDCollection .slotName').last();
-                    
+
                     $timeout(function() {
                         select.multiselect({
                             multiple: false,
@@ -36,11 +36,11 @@ angular.module('events')
                             minWidth: 342
                         });
 
-                        console.log(inputName)
+                        $log.log(inputName)
 
                         // autocomplete for slot name
-                        inputName.autocomplete({ 
-                            source: [ 
+                        inputName.autocomplete({
+                            source: [
                                 _tr("Collection Slot: Pre-Show"),
                                 _tr("Collection Slot: Pre-Game"),
                                 _tr("Collection Slot: Interval"),
@@ -48,16 +48,16 @@ angular.module('events')
                                 _tr("Collection Slot: Half-Time"),
                                 _tr("Collection Slot: Post-Show"),
                                 _tr("Collection Slot: Post-Game")
-                            ], 
-                            delay: 10, 
+                            ],
+                            delay: 10,
                             minLength: 0,
                             select: function(evt, ui) {
-                                
+
                                 // apply value on model
                                 newSlot.name = ui.item.value;
                                 ng.$apply();
                             },
-                            position: { my: "left top", at: "left bottom", collision: "none", of: inputName} 
+                            position: { my: "left top", at: "left bottom", collision: "none", of: inputName}
                         });
                     }, 0);
 
@@ -71,12 +71,12 @@ angular.module('events')
                 }, 0);
 
             };
-            
+
             ng.delete =  function(elem) {
 
                 // search for slot to delete
                 ng.slots.some(function(e, i) {
-                    
+
                     if(elem == e) {
 
                         ng.slots.splice(i, 1);

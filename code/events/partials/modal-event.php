@@ -4,23 +4,22 @@
   <!-- {{modal.eventObj}} -->
   <!-- {{modal.schedules}} -->
   <!-- {{modal.slots}} -->
-  <div class='ct-tabs'>
+  <div class='ct-tabs' ng-class='{ invalid : modal.validation }'>
 
     <div class='infoTab' ng-show="modal.activeTab == 1">
       <div>
         <label><?php echo _("Event name:");?></label>
-        <input type="text" ng-model='modal.eventObj.name' placeholder='<?php echo _("Event name");?>' maxlength="100">
-        <small class="error"><?echo _("Please type an event name (max 100chars)");?></small>
+        <input type="text" ng-model='modal.eventObj.name' placeholder='<?echo _("Click to add an event name");?>' maxlength="100" pattern="^.{0,99}$" required>
+        <small ng-show='!modal.eventObj.name' class="error"><?echo _("Please type an event name (max 100chars)");?></small>
         <label><?php echo _("Event description:");?></label>
-        <input type="text" ng-model='modal.eventObj.description' placeholder='<?php echo _("Event description");?>' maxlength="250">
-        <small class="error"><?echo _("Please type a description (max 250chars)");?></small>
+        <input type="text" ng-model='modal.eventObj.description' placeholder='<?echo _("Click to add a description");?>' maxlength="250" pattern="^.{0,250}$">
+        <!-- <small class="error"><?echo _("Please type a description (max 250chars)");?></small> -->
       </div>
       <div>
-        <!-- <h4>Duration</h4> -->
         <div class='duration-fields'>
           <label><?php echo _("Start time:");?></label>
-          <input type="text" ng-model='modal.eventObj.starttime' class='startTime' placeholder='<?php echo _("Start time");?>'>
-          <small class="error priceError"><?echo _("Time?");?></small>
+          <input type="text" ng-model='modal.eventObj.starttime' class='startTime' placeholder='<?php echo _("HH:MM");?>' required>
+          <small ng-show='!modal.eventObj.starttime' class="error priceError"><?echo _("Time?");?></small>
         </div>
         <div class='duration-fields'>
           <label><?php echo _("Days:");?></label>
@@ -48,7 +47,6 @@
         <h4><?php echo _("Schedule");?></h4>
         <div>
           <label><?php echo _("Event frequency:");?></label>
-          <!-- <input type="text" ng-model='sched.freq'> -->
           <select ng-model='modal.schedules.freq'>
             <option value="ONCE"><?php echo _("ONCE");?></option>
             <option value="DAILY"><?php echo _("DAILY");?></option>
@@ -57,21 +55,22 @@
             <option value="YEARLY"><?php echo _("YEARLY");?></option>
             <option value="CUSTOM"><?php echo _("CUSTOM");?></option>
           </select>
-          <small class="error"><?echo _("Choose the schedule frequency.");?></small>
+          <!-- <small ng-show='!modal.schedules.freq' class="error"><?echo _("Choose the schedule frequency.");?></small> -->
         </div>
         <div class='sched-dates' ng-hide='modal.schedules.freq == "CUSTOM"'>
           <label><?php echo _("Event first occurency:");?></label>
           <input type="text" ng-model='modal.schedules.startDate' class='schedStartDate'>
-          <small class="error"><?echo _("Date?");?></small>
+          <small ng-show='modal.schedules.startDate == ""' class="error"><?echo _("Date?");?></small>
         </div>
         <div class='sched-dates' ng-hide='modal.schedules.freq == "CUSTOM"'>
           <label><?php echo _("Event last occurency:");?></label>
           <p ng-show='modal.schedules.startDate == ""'><?php echo _("Choose the first occurency.");?></p>
           <input type="text" ng-model='modal.schedules.endDate' class='schedEndDate' ng-hide='modal.schedules.startDate == ""'>
-          <small class="error"><?echo _("Date?");?></small>
+          <small ng-show='!modal.schedules.endDate' class="error"><?echo _("Date?");?></small>
         </div>
         <div ng-show='modal.schedules.freq == "CUSTOM"'>
           <p><?php echo _("Select the days on the calendar below.");?></p>
+          <small ng-show='modal.selectedDays.length == 0' class="error"><?echo _("Date?");?></small>
         </div>
         <div class='ct-calendar'>
           <div class='white-bg calendar-box'>
@@ -110,32 +109,51 @@
       <div class='ct-slots' ng-repeat='slot in modal.slots'>
         <div>
           <label><?php echo _("Slot name");?></label>
-          <input type="text" ng-model='slot.name' class='slotName' data-index='{{ $index }}'>
-          <small class="error"><?echo _("Please choose a slot.");?></small>
+          <input type="text" ng-model='slot.name' class='slotName' data-index='{{ $index }}' required placeholder="<?echo _("Enter a name for the slot");?>">
+          <small ng-show='slot.name == ""' class="error"><?echo _("Please choose a slot.");?></small>
         </div>
-        <p class='slot-sentence'>
-          <?php echo _("This slot starts ");?><input type="text" ng-model='slot.start'> <?php echo _("minutes");?>
+        <div class='slot-sentence'>
+          <span><?php echo _("This slot starts ");?></span>
+          <div class='ct-inputs-sentence'>
+            <input type="text" ng-model='slot.start' pattern="^\d+$" ng-change='slot.startError = false'>
+            <small ng-show='slot.startError' class="error start"><?echo _("Enter minutes?");?></small>
+            <!-- <small ng-show='slot.start == ""' class="error start"><?echo _("Enter minutes?");?></small> -->
+          </div>
+          <span><?php echo _("minutes");?></span>
           <select ng-model='slot.startFactor' class='start-select'>
             <option value="-1"><?php echo _("Before");?></option>
             <option value="1"><?php echo _("After");?></option>
           </select>
-          <small class="error"><?echo _("Please choose an option.");?></small>
-          <?php echo _("the event, it ends");?> <input type="text" ng-model='slot.end'><small class="error"><?echo _("Enter minutes?");?></small> <?php echo _("minutes");?>
+          <span><?php echo _("the event, it ends");?></span>
+          <div class='ct-inputs-sentence'>
+            <input type="text" ng-model='slot.end' pattern="^\d+$" ng-change='slot.endError = false'>
+            <!-- <small ng-show='slot.end == ""' class="error end"><?echo _("Enter minutes?");?></small> -->
+            <small ng-show='slot.endError' class="error end"><?echo _("Enter minutes?");?></small>
+          </div>
+          <span><?php echo _("minutes");?></span>
           <select ng-model='slot.endFactor' class='end-select'>
             <option value="-1"><?php echo _("Before");?></option>
             <option value="1"><?php echo _("After");?></option>
           </select>
-          <?php echo _("the event start time with a lead time of");?>
-          <input type="text" ng-model='slot.leadTime'><small class="error"><?echo _("Enter minutes?");?></small> <?php echo _("minutes and it");?>
+          <span><?php echo _("the event start time with a lead time of");?></span>
+          <div class='ct-inputs-sentence'>
+            <input type="text" ng-model='slot.leadTime' required pattern="^\d+$">
+            <small ng-show='slot.leadTime == ""' class="error leadtime"><?echo _("Enter minutes?");?></small>
+          </div>
+          <span><?php echo _("minutes and it");?></span>
           <select ng-model='slot.hasSteps' class='step-select'>
             <option value="true"><?php echo _("is");?></option>
             <option value="false"><?php echo _("is not");?></option>
           </select>
-          <small class="error"><?echo _("Please choose an option.");?></small>
-          <?php echo _("broken down in steps");?>
-          <span ng-show='slot.hasSteps'><?php echo _("of");?> <input type="text" ng-model='slot.step'><small class="error"><?echo _("Enter minutes?");?></small> <?php echo _("minutes");?></span>
-          .
-        </p>
+          <span><?php echo _("broken down in steps");?></span>
+          <span ng-show='slot.hasSteps'><?php echo _("of");?>
+          <div class='ct-inputs-sentence'>
+            <input type="text" ng-model='slot.step' ng-change='slot.stepError = false'>
+            <!-- <small ng-show='slot.step == ""' class="error step"><?echo _("Enter minutes?");?></small> -->
+            <small ng-show='slot.stepError' class="error step"><?echo _("Enter minutes?");?></small>
+          </div>
+          <span><?php echo _("minutes");?></span>.
+        </div>
       </div>
       <div>
         <label><?php echo _("Add another slot");?></label>

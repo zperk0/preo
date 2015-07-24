@@ -1,7 +1,7 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('EventsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID', 'Events', 'CollectionSlots', '$AjaxInterceptor', '$modal', function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots, $AjaxInterceptor, $modal) {
+    .controller('EventsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID', 'Events', 'CollectionSlots', '$AjaxInterceptor', '$modal', '$log', function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots, $AjaxInterceptor, $modal, $log) {
 
         var vm = this,
             submitTime = 0;
@@ -26,7 +26,7 @@
             // get events from the last 7 days (interval)
             Events.get(filter).then(function(result) {
 
-                // console.log(result);
+                // $log.log(result);
 
                 var events = result || [],
                     arrPromises = [];
@@ -49,7 +49,7 @@
                         // get slots from the event
                         CollectionSlots.get(_event).then(function(resp) {
 
-                            // console.log(resp)
+                            // $log.log(resp)
 
                             var slots = resp || [];
                             _event.cSlots = [];
@@ -135,11 +135,11 @@
 
             modalInstance.result.then(function (eventData) {
 
-                console.log(eventData);
+                // $log.log(eventData);
                 vm.events.push(eventData);
             }, function () {
 
-                console.log('Modal dismissed at: ' + new Date());
+                // $log.log('Modal dismissed at: ' + new Date());
                 $(document.body).css('overflow', 'auto');
             });
 
@@ -239,9 +239,9 @@
 
                 var arrPromises = [];
 
-                // console.log('EVENTS TO SAVE: ', vm.events);
+                // $log.log('EVENTS TO SAVE: ', vm.events);
 
-                // console.log('total events: ' + vm.events.length)
+                // $log.log('total events: ' + vm.events.length)
 
                 // create/update event
                 vm.events.forEach(function(elem, index) {
@@ -249,40 +249,40 @@
                     var data = formatData(angular.copy(elem)),
                         deferred = $q.defer();
 
-                    // console.log(elem)
+                    // $log.log(elem)
 
                     // edit old
                     if(elem.id && !String(elem.id).match('/^e.*$/')) {
 
-                        // console.log(elem)
+                        // $log.log(elem)
 
-                        // console.log('EDIT: ' + elem.id, data);
+                        // $log.log('EDIT: ' + elem.id, data);
                         Events.update(elem, data).then(function(result) {
 
-                            // console.log('event ok (update)' + index);
+                            // $log.log('event ok (update)' + index);
 
-                            // console.log(result);
+                            // $log.log(result);
                             configSlots(result, elem, deferred);
 
                         }, function(result) {
                             // console.error('Error saving event. ');
-                            // console.log(result);
+                            // $log.log(result);
                             deferred.resolve(result);
                         });
                     }
                     // create new
                     else {
 
-                        // console.log('Create EVENT: ', data);
+                        // $log.log('Create EVENT: ', data);
                         Events.create(data).then(function(result) {
 
-                            // console.log('event ok (create) ' + index);
-                            // console.log(result);
+                            // $log.log('event ok (create) ' + index);
+                            // $log.log(result);
                             configSlots(result, elem, deferred);
 
                         }, function(result) {
                             // console.error('Error saving event. ');
-                            // console.log(result);
+                            // $log.log(result);
                             deferred.resolve(result);
                         });
                     }
@@ -290,21 +290,21 @@
                     arrPromises.push(deferred.promise);
                 });
 
-                // console.log('total promises events: ' + vm.events.length)
+                // $log.log('total promises events: ' + vm.events.length)
 
                 // wait for all event promises to be resolved
                 $q.all(arrPromises).then(function() {
 
-                    // console.log('All finished')
+                    // $log.log('All finished')
 
                     vm.isSaving = false;
-                    // console.log(arguments);
+                    // $log.log(arguments);
                 }, function() {
 
-                    // console.log('All finished - error')
+                    // $log.log('All finished - error')
 
                     vm.isSaving = false;
-                    // console.log(arguments);
+                    // $log.log(arguments);
                 });
 
                 // save last submit time
@@ -366,14 +366,14 @@
 
         function configSlots(eventObj, elem, defer) {
 
-            // console.log('total slots: ' + elem.cSlots.length)
+            // $log.log('total slots: ' + elem.cSlots.length)
 
             //kill all eb-times items for thie event
             eventObj.deleteSlots().then(function() {
 
                 var slotsPromises = [];
-                // console.log('event id ' + eventObj.id)
-                // console.log(elem)
+                // $log.log('event id ' + eventObj.id)
+                // $log.log(elem)
 
                 if(elem.cSlots.length > 0) {
 
@@ -382,17 +382,17 @@
 
                         var deferred = $q.defer();
 
-                        // console.log('eventObj.id: ' + eventObj.id, e);
+                        // $log.log('eventObj.id: ' + eventObj.id, e);
                         e.eventId = eventObj.id;
                         // post slots
                         CollectionSlots.create(e).then(function() {
 
-                            // console.log('slot ok ' + i);
+                            // $log.log('slot ok ' + i);
                             deferred.resolve();
                         }, function(data) {
 
-                            // console.log('slot error ');
-                            // console.log(data);
+                            // $log.log('slot error ');
+                            // $log.log(data);
 
                             deferred.reject();
                         });;
@@ -404,12 +404,12 @@
                     $q.all(slotsPromises).then(defer.resolve);
                 }
                 else {
-                    // console.log('event slot ok - no slots')
+                    // $log.log('event slot ok - no slots')
                     defer.resolve();
                 }
 
             }, function(result) {
-                console.log(result);
+                // $log.log(result);
                 defer.reject(result)
             }); //venue_eb_times data deleted
 

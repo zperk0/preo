@@ -24,7 +24,7 @@
 				</table>
 			</div>
 		</div>
-		<div class="large-12 columns dynamicDataTable"> 
+		<div class="large-12 columns dynamicDataTable">
 			<!-- This is where the dynamic data goes into -->
 			<event elements='eventsCtrl.events' outlet='eventsCtrl.outletLocations'></event>
 		</div>

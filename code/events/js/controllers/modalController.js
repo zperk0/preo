@@ -1,8 +1,8 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('ModalCtrl', ['$scope', '$timeout', 'items', '$rootScope',
-        function($scope, $timeout, items, $rootScope) {
+    .controller('ModalCtrl', ['$scope', '$timeout', 'items', '$rootScope', '$log',
+        function($scope, $timeout, items, $rootScope, $log) {
 
             var vm = this,
                 schedInit = false,
@@ -17,6 +17,8 @@
             vm.events = [];
             vm.months = [];
             vm.selectedDays = [];
+
+            vm.validation = false;
 
             for (var i=0; i<=12; i++) {
 
@@ -47,31 +49,38 @@
 
             vm.next = function() {
 
-                if(vm.activeTab < vm.totalTabs)
-                    vm.activeTab++;
+                vm.validation = true;
 
-                $timeout(function() {
+                if(validateData(vm.activeTab)) {
 
-                    if(vm.activeTab == 2 && !schedInit) {
+                    vm.validation = false;
 
-                         schedInit = true;
+                    if(vm.activeTab < vm.totalTabs)
+                        vm.activeTab++;
 
-                        $('.scheduleTab select').multiselect({
-                            multiple: false,
-                            header: false,
-                            selectedList: 1,
-                            minWidth: 342
-                        });
-                    }
+                    $timeout(function() {
 
-                    if(vm.activeTab == 3 && !slotInit) {
+                        if(vm.activeTab == 2 && !schedInit) {
 
-                        slotInit = true;
+                            schedInit = true;
 
-                        initUiSlots();
-                    }
+                            $('.scheduleTab select').multiselect({
+                                multiple: false,
+                                header: false,
+                                selectedList: 1,
+                                minWidth: 342
+                            });
+                        }
 
-                }, 0);
+                        if(vm.activeTab == 3 && !slotInit) {
+
+                            slotInit = true;
+
+                            initUiSlots();
+                        }
+
+                    }, 0);
+                }
             };
 
             vm.previous = function() {
@@ -110,16 +119,23 @@
 
             vm.closeModal = function() {
 
-                vm.eventObj.cSlots = configSlots(vm.slots);
-                vm.eventObj.schedules = configSchedules(vm.schedules, vm.selectedDays);
-                vm.eventObj.duration = configDuration(vm.eventObj);
-                vm.eventObj.date = vm.eventObj.schedules[0] ? vm.eventObj.schedules[0].startDate : '';
+                vm.validation = true;
 
-                // return overflow on body
-                $(document.body).css('overflow', 'auto');
+                if(validateData(vm.activeTab)) {
 
-                // close modal and return the event data
-                $scope.$close(vm.eventObj);
+                    vm.validation = false;
+
+                    vm.eventObj.cSlots = configSlots(vm.slots);
+                    vm.eventObj.schedules = configSchedules(vm.schedules, vm.selectedDays);
+                    vm.eventObj.duration = configDuration(vm.eventObj);
+                    vm.eventObj.date = vm.eventObj.schedules[0] ? vm.eventObj.schedules[0].startDate : '';
+
+                    // return overflow on body
+                    $(document.body).css('overflow', 'auto');
+
+                    // close modal and return the event data
+                    $scope.$close(vm.eventObj);
+                }
             };
 
             function configSlots(slots) {
@@ -130,8 +146,8 @@
 
                     cSlots.push({
                         name: elem.name,
-                        start: elem.start * elem.startFactor,
-                        end: elem.end * elem.endFactor,
+                        start: !isNaN(elem.start) && elem.start != ''  ?  elem.start * elem.startFactor : '',
+                        end: !isNaN(elem.end) && elem.end != ''  ?  elem.end * elem.endFactor : '',
                         step: elem.step,
                         leadTime: elem.leadTime
                     });
@@ -143,8 +159,6 @@
             function configSchedules(sched, selected) {
 
                 var schedules = [];
-
-                console.log(sched)
 
                 if(sched.freq != 'CUSTOM' && sched.startDate != '' && sched.startDate != '') {
 
@@ -189,6 +203,7 @@
                 return duration;
             }
 
+            // config ui components for adding collection slot
             function initUiSlots() {
 
                 $('.ct-slots').last().find('select').multiselect({
@@ -218,6 +233,57 @@
                     },
                     position: { my: "left top", at: "left bottom", collision: "none", of: $('.ct-slots').last().find('.slotName')}
                 });
+            }
+
+            // validate required fields based on active tab
+            function validateData(activeTab) {
+
+                var isValid = true;
+
+                switch(activeTab) {
+                    case 1:
+                        if(!vm.eventObj.name || !vm.eventObj.starttime)
+                            isValid = false;
+                    break;
+
+                    case 2:
+                        if(((vm.schedules.startDate == '' || vm.schedules.endDate == '') && vm.schedules.freq != 'CUSTOM') || ((vm.schedules.freq == 'CUSTOM' && vm.selectedDays.length == 0)))
+                            isValid = false;
+                    break;
+
+                    case 3:
+                        vm.slots.some(function(slot, index) {
+
+                            if(slot.name != '' && slot.leadTime != '') {
+
+                                if((slot.start != '' && slot.end != '' && slot.step != '') || (slot.start == '' && slot.end == '' && slot.step == ''))
+                                    isValid = true;
+                                else {
+
+                                    if(slot.start == '')
+                                        slot.startError = true;
+                                    if(slot.end == '')
+                                        slot.endError = true;
+                                    if(slot.step == '')
+                                        slot.stepError = true;
+
+                                    isValid = false;
+                                    return true;
+                                }
+                            }
+                            else {
+
+                                isValid = false;
+                                return true;
+                            }
+
+
+                            return false;
+                        });
+                    break;
+                }
+
+                return isValid;
             }
 
             function _init() {
