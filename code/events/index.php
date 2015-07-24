@@ -44,12 +44,13 @@
 
 
 
-  <!-- BEGIN WATCH
+  <!-- BEGIN WATCH -->
   <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>
+  <script src="/code/events/js/utils/fallbackECMA5.js"></script>
   <script src="/code/loader/ajaxInterceptor.js"></script>
   <script src="/code/events/js/app.js"></script>
-  <script src="/code/events/js/controller.js"></script>
-  <script src="/code/events/js/modalController.js"></script>
+  <script src="/code/events/js/controllers/controller.js"></script>
+  <script src="/code/events/js/controllers/modalController.js"></script>
   <script src="/code/events/js/directives/slot/slot.js"></script>
   <script src="/code/events/js/directives/event/event.js"></script>
   <script src="/code/events/js/directives/preo-calendar/preo-calendar.js"></script>
@@ -60,7 +61,7 @@
   <script src="/code/notification/notification.js"></script>
   <!-- END WATCH -->
 
-  <script src="/code/events/all.min.js"></script>
+  <!-- // <script src="/code/events/all.min.js"></script> -->
 
   <script src="/code/constants/session.php"></script>
 
