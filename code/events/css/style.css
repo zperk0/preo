@@ -45,10 +45,8 @@
 /*Modal*/
 
 .reveal-modal {
-  /*position: absolute !important;*/
   top: 15px;
   bottom: 15px;
-  /*max-height: 400px;*/
   overflow-y: auto;
 }
 
@@ -105,12 +103,6 @@
   height: 30px;
 }
 
-/*tab slots*/
-/*.slotTab, .infoTab, .scheduleTab {
-  max-height: 400px;
-  overflow-y: auto;
-}*/
-
 /*calendar*/
 .colItemCalendar {
   padding: 5px;
@@ -128,14 +120,16 @@
 }
 
 .colItemCalendar button[disabled], .colItemCalendar button[disabled]:hover, .colItemCalendar button[disabled]:active {
-  color: #fff !important;
+  /*color: #fff !important;*/
+  border: 1px solid #cdcdcd;
 }
 .colItemCalendar button[disabled].isWeekend, .colItemCalendar button[disabled].isWeekend:hover, .colItemCalendar button[disabled].isWeekend:active {
-  color: #D2D2D2;
+  /*color: #D2D2D2;*/
 }
 
 .colItemCalendar button.isCurrentMonth {
-  color: #9B9B9B;
+  /*color: #9B9B9B;*/
+  color: #4d4d4d;
   font-weight: normal;
 }
 
@@ -152,38 +146,6 @@
   background-color: #3aa2dc !important;
   border-color: #2288c1;
   color: #fff;
-}
-
-.ct-tabs {
-  width: 100%;
-}
-
-/*.scheduleTab, .ct-calendar {
-  width: 49%;
-  float: left;
-}*/
-
-/*.ct-calendar {*/
-  /*float: right;*/
-/*}*/
-
-.duration-fields {
-  width: 33.3333%;
-  float: left;
-}
-
-.duration-fields input {
-  width: 95%;
-  /*padding: 5px;*/
-}
-
-/*.duration-fields input:nth-child(2) {
-  float: right;
-}*/
-
-.slotTab .ui-multiselect {
-  margin: 0;
-  margin-bottom: 5px;
 }
 
 .ct-calendar .ui-multiselect, .scheduleTab .ui-multiselect, .infoTab .ui-multiselect {
@@ -228,7 +190,38 @@
     float: right;
   }
 
+
+/*tabs*/
+
+.ct-tabs {
+  width: 100%;
+}
+
+.duration-fields {
+  width: 25%;
+  float: left;
+}
+
+.duration-fields input {
+  width: 99%;
+}
+
+.slotTab .ui-multiselect {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
 /*error*/
 small.error {
   display: none;
+}
+
+/*Schedule tab*/
+.sched-dates {
+  width: 50%;
+  float: left;
+}
+
+.sched-dates input {
+  width: 95%;
 }
