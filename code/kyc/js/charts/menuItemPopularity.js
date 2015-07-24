@@ -58,7 +58,7 @@ angular.module('kyc.charts')
     
 
 
-    function getHighChart(){        
+    function getHighChart(){
         return {
             type:type,
             title:title,

@@ -528,76 +528,6 @@ $(document).ready(function() {
 		 console.log('returning false');
 		return false; // avoid to execute the actual submit of the form.
 	});
-	
-	//ajax form upload
-	var options = { 
-		url: '/uploadLogo',
-		success: function(responseText) { 
-			noty({
-			  type: 'success',
-			  text: 'Uploaded!'
-			});
-			
-			//alert(responseText);
-			
-			responseText=responseText.replace('_thumb.png','');
-			
-			content="<img src='"+globalLPath+responseText+"_thumb.png'/>";
-			$("#appHeading").html(content);
-			$("#aHeading").val(' ');
-			$("#picFileName").val(responseText);
-			
-			//clear for new file
-			$("#picFile").val('');
-			
-			//show button again
-			$('#lo-loading').hide();
-			$('#doLogoUp').show();
-		},
-		error: function() { 
-			noty({
-			  type: 'error',  layout: 'topCenter',
-			  text: 'Error uploading file'
-			});
-			
-			//clear for new file
-			$("#picFile").val('');
-			
-			//show button again
-			$('#lo-loading').hide();
-			$('#doLogoUp').show();
-		},
-		beforeSubmit: function(arr, $form, options) { 
-			var acceptedExts = new Array(".png");
-			var filename = $("#picFile").val();
-			filename = filename.toLowerCase();
-			if(searchArray(filename,acceptedExts))
-			{
-				//hide button again
-				$('#doLogoUp').hide();
-				$('#lo-loading').show();
-				
-				return true;
-			}
-			else
-			{
-				noty({
-				  type: 'error',  layout: 'topCenter',
-				  text: 'Incorrect Image File'
-				});
-				
-				//manual reset
-				var content = $("#aHeading").val()
-				$("#appHeading").html(content);
-				$("#picFileName").val('');
-				$("#picFile").val('');
-				
-				return false;
-			}
-		}
-	};
-
-	$("#logoUpForm").ajaxForm(options);
 
 	// images of item for uploader
 	var imagesMenu = {};
@@ -966,14 +896,10 @@ $(document).ready(function() {
 	$("#sugDrop li a").on('click', function() {
 		var content = $(this).html();
 		$("#aHeading").val(content);
-		$("#appHeading").html(content);
-		$("#picFileName").val('');
 	});
 	
 	$("#aHeading").bind('propertychange keyup input paste',function() {
 		var content = $(this).val();
-		$("#appHeading").html(content);
-		$("#picFileName").val('');
 	});
 	
 	$("#sugDrop2 li a").on('click', function() {
@@ -1047,8 +973,6 @@ $(document).ready(function() {
 	
 	$("#logoReset").on('click', function() {
 		var content = $("#aHeading").val()
-		$("#appHeading").html(content);
-		$("#picFileName").val('');
 		$("#picFile").val('');
 	});
 	
@@ -4430,7 +4354,6 @@ function CurrencyManager(){
 //functions to update phone/app preview
 function updateTextColour(color)
 {
-	$("#appHeading").css('color', '#'+color);
 	$("#venSubHeading").css('color', '#'+color);
 	$("#subHeading").css('color', '#'+color);
 }
