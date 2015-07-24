@@ -44,40 +44,38 @@
                         elem.endtime = formatTime(sched[0].endDate);
                     }
 
-                    // get slots from the event
-                    CollectionSlots.get(elem).then(function(resp) {
+                    (function(_event) {
 
-                        // console.log(resp)
+                        // get slots from the event
+                        CollectionSlots.get(_event).then(function(resp) {
 
-                        var slots = resp || [];
-                        elem.cSlots = [];
+                            // console.log(resp)
 
-                        // console.log(slots)
-                        if(slots.length == 0)
-                            elem.cSlots.push({
-                                end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
-                            })
-                        else
-                            slots.forEach(function(e, i) {
+                            var slots = resp || [];
+                            _event.cSlots = [];
 
-                                // elem.cSlots.push({
-                                //     collectionslot: e.collectionslot,
-                                //     leadtime: e.leadTime
-                                // });
-                                elem.cSlots.push(e);
-                                elem.collectionCount = i;
-                            });
+                            if(slots.length == 0)
+                                _event.cSlots.push({
+                                    end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
+                                });
+                            else
+                                slots.forEach(function(e, i) {
 
-                        defer.resolve();
-                    }, function(result) {
-                        //something went wrong on API
-                        // console.error(result);
-                        // console.error('Error getting slots from API: ' + result.data.message);
+                                    _event.cSlots.push(e);
+                                    _event.collectionCount = i;
+                                });
 
-                        // resolving the promise just to bind the events on scope
-                        defer.resolve(result.data);
-                        // defer.reject(result.data);
-                    });
+                            defer.resolve();
+                        }, function(result) {
+                            //something went wrong on API
+                            // console.error(result);
+                            // console.error('Error getting slots from API: ' + result.data.message);
+
+                            // resolving the promise just to bind the events on scope
+                            defer.resolve(result.data);
+                            // defer.reject(result.data);
+                        });
+                    }(elem));
 
                     arrPromises.push(defer.promise);
                 });
