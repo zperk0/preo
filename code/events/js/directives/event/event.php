@@ -22,13 +22,13 @@
 				<input type="text" ng-click='expandOptions($event, event)' name="eETime[{{ $index + 1 }}]" class="eventField noEnterSubmit" ng-model='event.endtime' ng-value="event.endtime" pattern="\d\d:\d\d" placeholder="<?echo _("HH:MM");?>" readonly="readonly"/>
 				<small class="error priceError"><?echo _("Time?");?></small>
 			</td>
-			
+
 			<td class="eventTDVisi hide">
 
-				<div class="switch tiny"> 
+				<div class="switch tiny">
 					<input name="eVisi[{{ $index + 1 }}]" value="0" type="radio" ng-checked="event.visible">
 					<label><?echo _("Yes");?></label>
-					
+
 					<input name="eVisi[{{ $index + 1 }}]" value="0" type="radio" ng-checked="event.visible">
 					<label><?echo _("No");?></label>
 				</div>
@@ -43,7 +43,7 @@
 		</tr>
 		<tr ng-if='outletLocations.length > 0' class="eventEdit optionTR savedInput" required style='display: none;'>
 			<td class="eventTDOutletLocation">
-				<select ng-model='event.outletLocationId' ng-options='outletLocation.id as outletLocation.name for outletLocation in outletLocations' name="eOutletLocation[{{ $index + 1 }}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide"> 
+				<select ng-model='event.outletLocationId' ng-options='outletLocation.id as outletLocation.name for outletLocation in outletLocations' name="eOutletLocation[{{ $index + 1 }}]" class="eventField noEnterSubmit inline eventMenuSingleSelect selectOutletLocation hide">
 					<option value=""  ><?echo _("All Locations")?></option>
 				</select>
 			</td>

@@ -36,6 +36,8 @@
 
                     var sched = elem.schedules,
                         defer = $q.defer();
+
+                    // console.log(elem)
                     // decode schedule
                     if (sched.length > 0) {
 
@@ -87,22 +89,22 @@
                     // Wait to finish ng-repeat
                     $timeout(function() {
 
-                        //now we add datepicker
-                        $('.eventTDDate input').fdatepicker({format: 'dd/mm/yyyy'});
+                        // //now we add datepicker
+                        // $('.eventTDDate input').fdatepicker({format: 'dd/mm/yyyy'});
 
-                        //now we add timepicker
-                        $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-                        $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+                        // //now we add timepicker
+                        // $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+                        // $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 
-                        $("input[name^=eTime]").on('changeTime',function() {
+                        // $("input[name^=eTime]").on('changeTime',function() {
 
-                            var currTime = $(this).val()+":00";
-                            var newTime = extractAMPM("January 01, 2000 "+currTime);
-                            $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
-                            $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-                            $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
-                            $(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
-                        });
+                        //     var currTime = $(this).val()+":00";
+                        //     var newTime = extractAMPM("January 01, 2000 "+currTime);
+                        //     $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
+                        //     $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
+                        //     $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
+                        //     $(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
+                        // });
 
                         $AjaxInterceptor.complete();
                     }, 0);
@@ -322,7 +324,6 @@
                     visible: evt.visible || 1
                 };
 
-            // if(evt.date.indexOf('/') != -1) {
             if(typeof evt.date == 'string') {
 
                 var date = evt.date.split('/');

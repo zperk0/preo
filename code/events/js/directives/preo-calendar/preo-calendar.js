@@ -52,7 +52,17 @@ angular.module('events')
 
     $scope.$watch('schedules.startDate', function(newValue, oldValue) {
 
-      $scope.schedules.endDate = '';
+      // first time with endDate defined (edit mode)
+      // console.log(oldValue, newValue)
+      // if(!oldValue)
+        $scope.schedules.endDate = '';
+        console.log($scope.schedules.freq)
+
+      // if the event will happen only once, set the end date
+      // if($scope.schedules.freq == 'ONCE') {
+        self.updateFrequency($scope.schedules.freq);
+      // }
+
       $scope.selectedDays = [];
 
       if(newValue != '' && newValue)
@@ -63,7 +73,7 @@ angular.module('events')
 
       if(newValue != '' && newValue) {
 
-        self.updateFrequency();
+        self.updateFrequency($scope.schedules.freq);
       }
     });
 
@@ -78,7 +88,7 @@ angular.module('events')
 
       self.frequency = newValue;
 
-      self.updateFrequency();
+      self.updateFrequency($scope.schedules.freq);
       // if(newValue != '' && newValue)
         // $scope.select(newValue, oldValue);
     });
@@ -92,24 +102,25 @@ angular.module('events')
         });
     });
 
-    this.updateFrequency = function() {
+    this.updateFrequency = function(freq) {
 
-      console.log($scope.schedules);
+      // if($scope.schedules.startDate && $scope.schedules.startDate != '' && $scope.schedules.endDate && $scope.schedules.endDate != '') {
+      if($scope.schedules.startDate && $scope.schedules.startDate != '') {
 
-      if($scope.schedules.startDate && $scope.schedules.startDate != '' && $scope.schedules.endDate && $scope.schedules.endDate != '') {
-
-        var start = DateUtils.formatDate($scope.schedules.startDate),
-            end = DateUtils.formatDate($scope.schedules.endDate),
+        var start = DateUtils.getDateObj($scope.schedules.startDate),
+            end = DateUtils.getDateObj($scope.schedules.endDate),
             totalDays = DateUtils.daysBetween(start, end);
 
         // keep the first occurency
         if($scope.selectedDays.length > 0)
           $scope.selectedDays = [$scope.selectedDays[0]];
-        console.log($scope.selectedDays)
 
-        switch(self.frequency) {
+        switch(freq) {
           case 'ONCE':
 
+            var date = DateUtils.getDateObj($scope.schedules.startDate);
+            date.setDate(date.getDate() + 1);
+            $scope.schedules.endDate = DateUtils.getStrDate(date);
           break;
           case 'DAILY':
 
@@ -291,8 +302,6 @@ angular.module('events')
 
         if(typeof dateObject == 'object') {
 
-          console.log(dateObject)
-
           date = dateObject.activeDate ? dateObject.activeDate : dateObject.date ? dateObject.date : dateObject;
           // date = dateObject.date ? dateObject.date : dateObject;
           dt.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());
@@ -321,7 +330,7 @@ angular.module('events')
         // input from user (start and end)
         else if(typeof dateObject == 'string') {
 
-          date = DateUtils.formatDate(dateObject);
+          date = DateUtils.getDateObj(dateObject);
           dt.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());
 
           // remove old date

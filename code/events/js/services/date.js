@@ -28,13 +28,22 @@ angular.module('events')
 	    return new Date(theDate.getTime() + days *24*60*60*1000);
 	}
 
-	service.formatDate = function(dateString) {
+	service.getDateObj = function(dateString) {
 
 		var arrDate = dateString.split('/');
-        return new Date(arrDate[2], arrDate[1] - 1, arrDate[0], 12);
+    return new Date(arrDate[2], arrDate[1] - 1, arrDate[0], 12);
 	}
 
-    return service;
+  // Format date to show on table (DD/MM/YYYY)
+  service.getStrDate = function(str_date) {
+
+    var date = new Date(str_date),
+        formatted = str_date ? pad(String(date.getUTCDate()), 2) + '/' + pad(String(date.getUTCMonth() + 1), 2) + '/' + date.getUTCFullYear() : '';
+
+    return formatted;
+  };
+
+  return service;
 
 }]);
 

@@ -10,10 +10,10 @@
       <div>
         <label><?php echo _("Event name:");?></label>
         <input type="text" ng-model='modal.eventObj.name' placeholder='<?echo _("Click to add an event name");?>' maxlength="100" pattern="^.{0,99}$" required>
-        <small ng-show='!modal.eventObj.name' class="error"><?echo _("Please type an event name (max 100chars)");?></small>
+        <small ng-show='!modal.eventObj.name' class="error"><?echo _("Please type an event name (max 100 chars)");?></small>
         <label><?php echo _("Event description:");?></label>
         <input type="text" ng-model='modal.eventObj.description' placeholder='<?echo _("Click to add a description");?>' maxlength="250" pattern="^.{0,250}$">
-        <!-- <small class="error"><?echo _("Please type a description (max 250chars)");?></small> -->
+        <!-- <small class="error"><?echo _("Please type a description (max 250 chars)");?></small> -->
       </div>
       <div>
         <div class='duration-fields'>
@@ -24,14 +24,17 @@
         <div class='duration-fields'>
           <label><?php echo _("Days:");?></label>
           <input type="text" ng-model='modal.eventObj.days' placeholder='<?php echo _("Days");?>'>
+          <small ng-show='!modal.eventObj.days && !modal.eventObj.hours && !modal.eventObj.minutes' class="error priceError"><?echo _("Time?");?></small>
         </div>
         <div class='duration-fields'>
           <label><?php echo _("Hours:");?></label>
           <input type="text" ng-model='modal.eventObj.hours' placeholder='<?php echo _("Hours");?>'>
+          <small ng-show='!modal.eventObj.days && !modal.eventObj.hours && !modal.eventObj.minutes' class="error priceError"><?echo _("Time?");?></small>
         </div>
         <div class='duration-fields'>
           <label><?php echo _("Minutes:");?></label>
           <input type="text" ng-model='modal.eventObj.minutes' placeholder='<?php echo _("Minutes");?>'>
+          <small ng-show='!modal.eventObj.days && !modal.eventObj.hours && !modal.eventObj.minutes' class="error priceError"><?echo _("Time?");?></small>
         </div>
       </div>
       <div>
@@ -65,8 +68,8 @@
         <div class='sched-dates' ng-hide='modal.schedules.freq == "CUSTOM"'>
           <label><?php echo _("Event last occurency:");?></label>
           <p ng-show='modal.schedules.startDate == ""'><?php echo _("Choose the first occurency.");?></p>
-          <input type="text" ng-model='modal.schedules.endDate' class='schedEndDate' ng-hide='modal.schedules.startDate == ""'>
-          <small ng-show='!modal.schedules.endDate' class="error"><?echo _("Date?");?></small>
+          <input type="text" ng-model='modal.schedules.endDate' class='schedEndDate' ng-hide='modal.schedules.startDate == ""' ng-disabled='modal.schedules.freq == "ONCE"'>
+          <small ng-show='modal.schedules.endDate == "" || !modal.schedules.endDate' class="error"><?echo _("Date?");?></small>
         </div>
         <div ng-show='modal.schedules.freq == "CUSTOM"'>
           <p><?php echo _("Select the days on the calendar below.");?></p>
@@ -110,7 +113,7 @@
         <div>
           <label><?php echo _("Slot name");?></label>
           <input type="text" ng-model='slot.name' class='slotName' data-index='{{ $index }}' required placeholder="<?echo _("Enter a name for the slot");?>">
-          <small ng-show='slot.name == ""' class="error"><?echo _("Please choose a slot.");?></small>
+          <small ng-show='slot.name == "" || !slot.name' class="error"><?echo _("Please choose a slot.");?></small>
         </div>
         <div class='slot-sentence'>
           <span><?php echo _("This slot starts ");?></span>
@@ -138,7 +141,7 @@
           <span><?php echo _("the event start time with a lead time of");?></span>
           <div class='ct-inputs-sentence'>
             <input type="text" ng-model='slot.leadTime' required pattern="^\d+$">
-            <small ng-show='slot.leadTime == ""' class="error leadtime"><?echo _("Enter minutes?");?></small>
+            <!-- <small ng-show='slot.leadTime == ""' class="error leadtime"><?echo _("Enter minutes?");?></small> -->
           </div>
           <span><?php echo _("minutes and it");?></span>
           <select ng-model='slot.hasSteps' class='step-select'>

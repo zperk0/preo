@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('events')
-.directive('event', ['$timeout', '$q', '$rootScope', 'Events', '$modal', '$log', function($timeout, $q, $rootScope, Events, $modal, $log) {
+.directive('event', ['$timeout', '$q', '$rootScope', 'Events', '$modal', '$log', 'DateUtils', function($timeout, $q, $rootScope, Events, $modal, $log, DateUtils) {
 
     return {
         templateUrl: '/code/events/js/directives/event/event.php',
@@ -16,92 +16,92 @@ angular.module('events')
             // Expand options to edit event info
             ng.expandOptions = function(event, eventObj) {
 
-                // var modalInstance = $modal.open({
-                //     templateUrl: '/code/events/partials/modal-event.php',
-                //     controller: 'ModalCtrl as modal',
-                //     resolve: {
-                //         items: function () {
-                //             return {
-                //                 outletLocations: ng.outletLocations,
-                //                 eventObj: eventObj
-                //             };
-                //         }
-                //     }
+                var modalInstance = $modal.open({
+                    templateUrl: '/code/events/partials/modal-event.php',
+                    controller: 'ModalCtrl as modal',
+                    resolve: {
+                        items: function () {
+                            return {
+                                outletLocations: ng.outletLocations,
+                                eventObj: eventObj
+                            };
+                        }
+                    }
+                });
+
+                modalInstance.result.then(function (selectedItem) {
+                    // $scope.selected = selectedItem;
+                    $log.log(selectedItem);
+                    // vm.events.push(selectedItem);
+                }, function () {
+                    $log.log('Modal dismissed at: ' + new Date());
+                    $(document.body).css('overflow', 'auto');
+                });
+
+                $(document.body).css('overflow', 'hidden');
+
+                // var curItem = $(event.currentTarget).closest('table'),
+                //     isEditButton = $(event.currentTarget).hasClass('eventTDEdit');
+
+                // if(!$(event.currentTarget).attr('readonly') && !isEditButton) // not expand again when clicking on input
+                //     return;
+
+                // // hide edit button
+                // if(isEditButton) $(event.currentTarget).hide();
+                // else $(event.currentTarget).closest('table').find('.eventTDEdit').hide();
+
+                // curItem.find("tr").addClass('eventEdit');
+                // curItem.find("tr").removeClass('savedInput');
+                // curItem.find("input").removeAttr("readonly");
+                // curItem.find(".eventSave").removeClass('hide');
+                // curItem.find(".eventSave").show();
+                // curItem.find(".optionTR").slideRow('down');
+                // curItem.css('background', '#fafafa');
+                // curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+                // curItem.css('max-width', '100%');
+
+                // // multiselect ui
+                // // curItem.find("td.eventTDCollection select").multiselect({
+                // //     multiple: false,
+                // //     header: false,
+                // //     noneSelectedText: _tr("Choose a Collection Slot"),
+                // //     selectedList: 1,
+                // //     minWidth: 342
+                // // });
+
+                // // autocomplete for slot name
+                // curItem.find(".eventTDCollection .slotName").autocomplete({
+                //     source: [
+                //         _tr("Collection Slot: Pre-Show"),
+                //         _tr("Collection Slot: Pre-Game"),
+                //         _tr("Collection Slot: Interval"),
+                //         _tr("Collection Slot: Second-Interval"),
+                //         _tr("Collection Slot: Half-Time"),
+                //         _tr("Collection Slot: Post-Show"),
+                //         _tr("Collection Slot: Post-Game")
+                //     ],
+                //     delay: 10,
+                //     minLength: 0,
+                //     select: function(evt, ui) {
+
+                //         var childIndex = ng.outletLocations.length > 0 ? 2 : 1;
+
+                //         // workaround to apply value on model by ui element
+                //         eventObj.cSlots[evt.target.parentElement.parentElement.rowIndex - childIndex].name = ui.item.value;
+                //         ng.$apply();
+                //     },
+                //     position: { my: "left top", at: "left bottom", collision: "none", of: curItem.find(".eventTDCollection .slotName")}
                 // });
 
-                // modalInstance.result.then(function (selectedItem) {
-                //     // $scope.selected = selectedItem;
-                //     $log.log(selectedItem);
-                //     // vm.events.push(selectedItem);
-                // }, function () {
-                //     $log.log('Modal dismissed at: ' + new Date());
-                //     $(document.body).css('overflow', 'auto');
-                // });
-
-                // $(document.body).css('overflow', 'hidden');
-
-                var curItem = $(event.currentTarget).closest('table'),
-                    isEditButton = $(event.currentTarget).hasClass('eventTDEdit');
-
-                if(!$(event.currentTarget).attr('readonly') && !isEditButton) // not expand again when clicking on input
-                    return;
-
-                // hide edit button
-                if(isEditButton) $(event.currentTarget).hide();
-                else $(event.currentTarget).closest('table').find('.eventTDEdit').hide();
-
-                curItem.find("tr").addClass('eventEdit');
-                curItem.find("tr").removeClass('savedInput');
-                curItem.find("input").removeAttr("readonly");
-                curItem.find(".eventSave").removeClass('hide');
-                curItem.find(".eventSave").show();
-                curItem.find(".optionTR").slideRow('down');
-                curItem.css('background', '#fafafa');
-                curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-                curItem.css('max-width', '100%');
-
-                // multiselect ui
-                // curItem.find("td.eventTDCollection select").multiselect({
+                // // multiselect ui
+                // curItem.find("td.eventTDOutletLocation select").multiselect({
                 //     multiple: false,
                 //     header: false,
-                //     noneSelectedText: _tr("Choose a Collection Slot"),
+                //     noneSelectedText:
+                //     _tr("Choose Event Location"),
                 //     selectedList: 1,
                 //     minWidth: 342
                 // });
-
-                // autocomplete for slot name
-                curItem.find(".eventTDCollection .slotName").autocomplete({
-                    source: [
-                        _tr("Collection Slot: Pre-Show"),
-                        _tr("Collection Slot: Pre-Game"),
-                        _tr("Collection Slot: Interval"),
-                        _tr("Collection Slot: Second-Interval"),
-                        _tr("Collection Slot: Half-Time"),
-                        _tr("Collection Slot: Post-Show"),
-                        _tr("Collection Slot: Post-Game")
-                    ],
-                    delay: 10,
-                    minLength: 0,
-                    select: function(evt, ui) {
-
-                        var childIndex = ng.outletLocations.length > 0 ? 2 : 1;
-
-                        // workaround to apply value on model by ui element
-                        eventObj.cSlots[evt.target.parentElement.parentElement.rowIndex - childIndex].name = ui.item.value;
-                        ng.$apply();
-                    },
-                    position: { my: "left top", at: "left bottom", collision: "none", of: curItem.find(".eventTDCollection .slotName")}
-                });
-
-                // multiselect ui
-                curItem.find("td.eventTDOutletLocation select").multiselect({
-                    multiple: false,
-                    header: false,
-                    noneSelectedText:
-                    _tr("Choose Event Location"),
-                    selectedList: 1,
-                    minWidth: 342
-                });
             };
 
             // Collapse options and stop editing
@@ -242,13 +242,14 @@ angular.module('events')
             }
 
             // Format date to show on table (DD/MM/YYYY)
-            ng.formatDate = function(str_date) {
+            ng.formatDate = DateUtils.getStrDate;
+            // ng.formatDate = function(str_date) {
 
-                var date = new Date(str_date),
-                    formatted = str_date ? pad(String(date.getUTCDate()), 2) + '/' + pad(String(date.getUTCMonth() + 1), 2) + '/' + date.getUTCFullYear() : '';
+            //     var date = new Date(str_date),
+            //         formatted = str_date ? pad(String(date.getUTCDate()), 2) + '/' + pad(String(date.getUTCMonth() + 1), 2) + '/' + date.getUTCFullYear() : '';
 
-                return formatted;
-            };
+            //     return formatted;
+            // };
         }
     };
 }]);
