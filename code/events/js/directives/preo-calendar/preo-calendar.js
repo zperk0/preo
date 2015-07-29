@@ -53,20 +53,15 @@ angular.module('events')
     $scope.$watch('schedules.startDate', function(newValue, oldValue) {
 
       // first time with endDate defined (edit mode)
-      // console.log(oldValue, newValue)
-      // if(!oldValue)
+      if(!oldValue)
         $scope.schedules.endDate = '';
-        console.log($scope.schedules.freq)
-
-      // if the event will happen only once, set the end date
-      // if($scope.schedules.freq == 'ONCE') {
-        self.updateFrequency($scope.schedules.freq);
-      // }
 
       $scope.selectedDays = [];
 
       if(newValue != '' && newValue)
         $scope.select(newValue, oldValue);
+
+      self.updateFrequency($scope.schedules.freq);
     });
 
     $scope.$watch('schedules.endDate', function(newValue, oldValue) {
