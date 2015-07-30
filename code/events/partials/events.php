@@ -1,5 +1,5 @@
 <div ng-controller="EventsCtrl as eventsCtrl">
-	<form ng-submit='eventsCtrl.save()' id="eventConfigForm" method="POST" data-abide>
+	<form ng-submit='eventsCtrl.save()' id="eventConfigForm" method="POST" data-abide novalidate>
 		<div class="row">
 			<div class="topSpacer"></div>
 			<div class="large-12 columns">
