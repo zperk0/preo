@@ -58,7 +58,7 @@
                     items.eventObj.minutes = Math.floor(items.eventObj.duration % 60);
                 }
 
-                if(items.eventObj.schedules) {
+                if(items.eventObj.schedules.length > 0) {
 
                     if(items.eventObj.schedules.length > 1) {
 
