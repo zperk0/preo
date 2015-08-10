@@ -86,8 +86,17 @@
 
 .ct-slots .slot-sentence {
   margin-top: 10px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   border-bottom: 1px solid black;
+}
+
+.slot-sentence .ct-delete {
+  margin-top: 20px;
+}
+
+.slot-sentence .delCollSlot {
+  margin: 0;
+  margin-bottom: 12px;
 }
 
 .ct-inputs-sentence {
@@ -99,8 +108,13 @@
   /*bottom: -25px;*/
 }
 
-.invalid .ct-inputs-sentence .error{
+.invalid .ct-inputs-sentence .error {
   top: 0;
+  width: 100%;
+}
+
+.ct-modal-event .error {
+  width: auto;
 }
 
 
@@ -121,7 +135,7 @@
   font-weight: bold;
 }
 
-.ct-modal-event .newCollSlot {
+.ct-modal-event .newCollSlot, .ct-modal-event .delCollSlot {
   margin: auto;
   padding: 0;
   width: 40px;

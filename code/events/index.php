@@ -57,6 +57,7 @@
   <script src="/code/events/js/services/collectionslots.js"></script>
   <script src="/code/events/js/services/events.js"></script>
   <script src="/code/events/js/services/date.js"></script>
+  <script src="/code/events/js/services/tempStorage.js"></script>
 
   <script src="/code/notification/notification.js"></script>
   <!-- END WATCH -->

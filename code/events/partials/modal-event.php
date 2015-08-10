@@ -22,19 +22,23 @@
           <small ng-show='!modal.eventObj.starttime' class="error priceError"><?echo _("Time?");?></small>
         </div>
         <div class='duration-fields'>
-          <label><?php echo _("Days:");?></label>
+          <label><?php echo _("Duration (days):");?></label>
+          <!-- <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("What's your event duration?");?>"></i> -->
           <input type="text" ng-model='modal.eventObj.days' placeholder='<?php echo _("Days");?>'>
           <small ng-show='!modal.eventObj.days && !modal.eventObj.hours && !modal.eventObj.minutes' class="error priceError"><?echo _("Time?");?></small>
+          <small ng-show='modal.isInvalidFormat(modal.eventObj.days)' class="error priceError"><?echo _("Enter a number");?></small>
         </div>
         <div class='duration-fields'>
-          <label><?php echo _("Hours:");?></label>
+          <label><?php echo _("Duration (hours):");?></label>
           <input type="text" ng-model='modal.eventObj.hours' placeholder='<?php echo _("Hours");?>'>
           <small ng-show='!modal.eventObj.days && !modal.eventObj.hours && !modal.eventObj.minutes' class="error priceError"><?echo _("Time?");?></small>
+          <small ng-show='modal.isInvalidFormat(modal.eventObj.hours)' class="error priceError"><?echo _("Enter a number");?></small>
         </div>
         <div class='duration-fields'>
-          <label><?php echo _("Minutes:");?></label>
+          <label><?php echo _("Duration (minutes):");?></label>
           <input type="text" ng-model='modal.eventObj.minutes' placeholder='<?php echo _("Minutes");?>'>
           <small ng-show='!modal.eventObj.days && !modal.eventObj.hours && !modal.eventObj.minutes' class="error priceError"><?echo _("Time?");?></small>
+          <small ng-show='modal.isInvalidFormat(modal.eventObj.minutes)' class="error priceError"><?echo _("Enter a number");?></small>
         </div>
       </div>
       <div>
@@ -61,13 +65,13 @@
           <!-- <small ng-show='!modal.schedules.freq' class="error"><?echo _("Choose the schedule frequency.");?></small> -->
         </div>
         <div class='sched-dates' ng-hide='modal.schedules.freq == "CUSTOM"'>
-          <label><?php echo _("Event first occurency:");?></label>
+          <label><?php echo _("Event first occurrence:");?></label>
           <input type="text" ng-model='modal.schedules.startDate' class='schedStartDate'>
           <small ng-show='modal.schedules.startDate == ""' class="error"><?echo _("Date?");?></small>
         </div>
         <div class='sched-dates' ng-hide='modal.schedules.freq == "CUSTOM"'>
-          <label><?php echo _("Event last occurency:");?></label>
-          <p ng-show='modal.schedules.startDate == ""'><?php echo _("Choose the first occurency.");?></p>
+          <label><?php echo _("Event last occurrence:");?></label>
+          <p ng-show='modal.schedules.startDate == ""'><?php echo _("Choose the first occurrence.");?></p>
           <input type="text" ng-model='modal.schedules.endDate' class='schedEndDate' ng-hide='modal.schedules.startDate == ""' ng-disabled='modal.schedules.freq == "ONCE"'>
           <small ng-show='modal.schedules.endDate == "" || !modal.schedules.endDate' class="error"><?echo _("Date?");?></small>
         </div>
@@ -119,7 +123,7 @@
           <span><?php echo _("This slot starts ");?></span>
           <div class='ct-inputs-sentence'>
             <input type="text" ng-model='slot.start' pattern="^\d+$" ng-change='slot.startError = false'>
-            <small ng-show='slot.startError' class="error start"><?echo _("Enter minutes?");?></small>
+            <small ng-show='slot.startError || modal.isInvalidFormat(slot.start)' class="error start"><?echo _("Enter minutes?");?></small>
             <!-- <small ng-show='slot.start == ""' class="error start"><?echo _("Enter minutes?");?></small> -->
           </div>
           <span><?php echo _("minutes");?></span>
@@ -131,16 +135,17 @@
           <div class='ct-inputs-sentence'>
             <input type="text" ng-model='slot.end' pattern="^\d+$" ng-change='slot.endError = false'>
             <!-- <small ng-show='slot.end == ""' class="error end"><?echo _("Enter minutes?");?></small> -->
-            <small ng-show='slot.endError' class="error end"><?echo _("Enter minutes?");?></small>
+            <small ng-show='slot.endError || modal.isInvalidFormat(slot.end)' class="error end"><?echo _("Enter minutes?");?></small>
           </div>
           <span><?php echo _("minutes");?></span>
-          <select ng-model='slot.endFactor' class='end-select'>
+          <select ng-model='slot.endFactor' class='end-select'><a href=""></a>
             <option value="-1"><?php echo _("Before");?></option>
             <option value="1"><?php echo _("After");?></option>
           </select>
           <span><?php echo _("the event start time with a lead time of");?></span>
           <div class='ct-inputs-sentence'>
             <input type="text" ng-model='slot.leadTime' required pattern="^\d+$">
+            <small ng-show='modal.isInvalidFormat(slot.leadTime) && slot.leadTime' class="error priceError"><?echo _("Enter a number");?></small>
             <!-- <small ng-show='slot.leadTime == ""' class="error leadtime"><?echo _("Enter minutes?");?></small> -->
           </div>
           <span><?php echo _("minutes and it");?></span>
@@ -149,20 +154,25 @@
             <option value="false"><?php echo _("is not");?></option>
           </select>
           <span><?php echo _("broken down in steps");?></span>
+          <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Some help about steps here...");?>"></i>
           <span ng-show='slot.hasSteps'><?php echo _("of");?>
           <div class='ct-inputs-sentence'>
             <input type="text" ng-model='slot.step' ng-change='slot.stepError = false'>
             <!-- <small ng-show='slot.step == ""' class="error step"><?echo _("Enter minutes?");?></small> -->
-            <small ng-show='slot.stepError' class="error step"><?echo _("Enter minutes?");?></small>
+            <small ng-show='slot.stepError || modal.isInvalidFormat(slot.step)' class="error step"><?echo _("Enter minutes?");?></small>
           </div>
           <span><?php echo _("minutes");?></span>.
+          <div class='ct-delete' ng-if='$index != 0'>
+            <button ng-click='modal.deleteSlot(slot)' type="button" class="delCollSlot secondary" title="Delete this slot"><i class="pd-delete"></i></button>
+            <?php echo _("Delete this slot");?>
+          </div>
         </div>
       </div>
       <div>
-        <label><?php echo _("Add another slot");?></label>
         <button ng-click="modal.addSlot()" class="newCollSlot" title="Add another slot">
           <i class="pd-add"></i>
         </button>
+        <?php echo _("Add another slot");?>
       </div>
       <!-- <div>
         <input type="checkbox">

@@ -40,13 +40,12 @@
                 return vm.date;
             }, function(){
                 vm.currentMonth = moment(vm.date).utc().startOf('month').valueOf();
-                // UtilsService.selfApply($scope);
             });
 
 
             vm.eventObj = items.eventObj || {name: '', description: '', starttime: '', days: '', hours: '', minutes: ''};
             vm.schedules = {freq: 'ONCE', startDate: '', endDate: ''};
-            vm.slots = [{end: '', eventId: '', leadTime: '', name: '', start: '', step: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true'}];
+            vm.slots = [{eventId: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true'}];
 
             // configure event data if we are editing an event
             if(items.eventObj) {
@@ -143,11 +142,25 @@
 
             vm.addSlot = function() {
 
-                vm.slots.push({end: '', eventId: '', leadTime: '', name: '', start: '', step: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true'});
+                vm.slots.push({eventId: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true'});
 
                 $timeout(function() {
                     initUiSlots();
-                }, 0);
+                });
+            };
+
+            vm.deleteSlot = function(elem) {
+
+                // search for slot to delete
+                vm.slots.some(function(e, i) {
+
+                    if(elem == e) {
+
+                        vm.slots.splice(i, 1);
+                        return true;
+                    }
+                    return false;
+                });
             };
 
             vm.changeMonth = function() {
@@ -164,7 +177,7 @@
 
                 $timeout(function() {
                     $('select.titleMonth').multiselect('refresh');
-                }, 1000);
+                });
             };
 
             vm.closeModal = function() {
@@ -179,8 +192,6 @@
                     vm.eventObj.schedules = configSchedules(vm.schedules, vm.selectedDays, vm.eventObj.starttime);
                     vm.eventObj.duration = configDuration(vm.eventObj);
                     vm.eventObj.date = vm.eventObj.schedules[0] ? vm.eventObj.schedules[0].startDate : '';
-
-                    console.log(vm.eventObj.schedules[0].startDate)
 
                     // return overflow on body
                     $(document.body).css('overflow', 'auto');
@@ -308,9 +319,7 @@
                     case 1:
                         var pattern = /\d\d:\d\d/;
 
-                        console.log(vm.eventObj.hour)
-
-                        if(!vm.eventObj.name || !vm.eventObj.starttime || !pattern.test(vm.eventObj.starttime) || (vm.eventObj.days == '' && vm.eventObj.hours == '' && vm.eventObj.minutes == '')) {
+                        if(!vm.eventObj.name || !vm.eventObj.starttime || !pattern.test(vm.eventObj.starttime) || (vm.eventObj.days == '' && vm.eventObj.hours == '' && vm.eventObj.minutes == '') || isNaN(vm.eventObj.days) || isNaN(vm.eventObj.hours) || isNaN(vm.eventObj.minutes)) {
 
                             isValid = false;
 
@@ -342,7 +351,7 @@
 
                             if(slot.name && slot.name != '') {
 
-                                if(((slot.start != '' && slot.start != null) && (slot.end != '' && slot.end != null) && (slot.step != '' && slot.step != null))
+                                if(((slot.start != '' && slot.start != null && !isNaN(slot.start)) && (slot.end != '' && slot.end != null && !isNaN(slot.end)) && (slot.step != '' && slot.step != null && !isNaN(slot.step)))
                                     || ((slot.start == '' || slot.start == null) && (slot.end == '' || slot.end == null) && (slot.step == '' || slot.step == null)))
                                     isValid = true;
                                 else {
@@ -379,6 +388,11 @@
 
                 return isValid;
             }
+
+            vm.isInvalidFormat = function(data) {
+
+                return isNaN(data);
+            };
 
             function _init() {
 

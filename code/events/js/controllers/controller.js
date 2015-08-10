@@ -1,7 +1,8 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('EventsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID', 'Events', 'CollectionSlots', '$AjaxInterceptor', '$modal', '$log', function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots, $AjaxInterceptor, $modal, $log) {
+    .controller('EventsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID', 'Events', 'CollectionSlots', '$AjaxInterceptor', '$modal', '$log', 'TempStorage',
+        function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots, $AjaxInterceptor, $modal, $log, TempStorage) {
 
         var vm = this,
             submitTime = 0;
@@ -86,6 +87,14 @@
 
                     vm.events = events;
 
+                    var tempEvents = TempStorage.get('tempEvents');
+                    tempEvents.forEach(function(evt) {
+
+                        $rootScope.safeApply(function() {
+                            vm.events.push(evt);
+                        });
+                    });
+
                     // Wait to finish ng-repeat
                     $timeout(function() {
 
@@ -139,6 +148,10 @@
 
                 // $log.log(eventData);
                 vm.events.push(eventData);
+
+                var itemsUnsaved = TempStorage.get('tempEvents') || '[]';
+                itemsUnsaved.push(eventData);
+                TempStorage.set('tempEvents', itemsUnsaved);
             }, function () {
 
                 // $log.log('Modal dismissed at: ' + new Date());
@@ -300,6 +313,10 @@
                     // $log.log('All finished')
 
                     vm.isSaving = false;
+
+                    // remove temp items saved
+                    sessionStorage.clear('tempEvents');
+
                     // $log.log(arguments);
                 }, function() {
 

@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('events')
-.directive('event', ['$timeout', '$q', '$rootScope', 'Events', '$modal', '$log', 'DateUtils', function($timeout, $q, $rootScope, Events, $modal, $log, DateUtils) {
+.directive('event', ['$timeout', '$q', '$rootScope', 'Events', '$modal', '$log', 'DateUtils', 'TempStorage',
+    function($timeout, $q, $rootScope, Events, $modal, $log, DateUtils, TempStorage) {
 
     return {
         templateUrl: '/code/events/js/directives/event/event.php',
@@ -165,7 +166,7 @@ angular.module('events')
 
                 var realEventID = eventToDelete.id; // id from DB
 
-                $log.log(realEventID);
+                // $log.log(realEventID);
 
                 // event not saved in DB
                 if(typeof realEventID =='undefined' || realEventID == '' || !String(realEventID).match(/^\d+?$/gi)) {
@@ -239,6 +240,8 @@ angular.module('events')
                         return false;
                     });
                 });
+
+                TempStorage.remove('tempEvents', eventToDelete);
             }
 
             // Format date to show on table (DD/MM/YYYY)
