@@ -38,10 +38,7 @@
 
             $scope.$watch(function(){
                 return vm.date;
-            }, function(){
-                vm.currentMonth = moment(vm.date).utc().startOf('month').valueOf();
-            });
-
+            }, refreshCurrentMonth);
 
             vm.eventObj = items.eventObj || {name: '', description: '', starttime: '', days: '', hours: '', minutes: ''};
             vm.schedules = {freq: 'ONCE', startDate: '', endDate: ''};
@@ -175,9 +172,7 @@
 
                 $scope.$broadcast('$move', {direction: direction});
 
-                $timeout(function() {
-                    $('select.titleMonth').multiselect('refresh');
-                });
+                refreshCurrentMonth();
             };
 
             vm.closeModal = function() {
@@ -229,14 +224,14 @@
                 if(sched.freq != 'CUSTOM' && sched.startDate != '' && sched.endDate != '') {
 
                     var strStart = sched.startDate.split('/'),
-                        startDate = new Date(strStart[2], strStart[1] - 1, strStart[0], hours, minutes).toISOString(),
+                        startDate = moment.utc([strStart[2], strStart[1] - 1, strStart[0], hours, minutes]).format('YYYY-MM-DDThh:mm:ss'),
                         strEnd = sched.endDate.split('/'),
-                        endDate = new Date(strEnd[2], strEnd[1] - 1, strEnd[0], hours, minutes).toISOString();
+                        endDate = moment.utc([strEnd[2], strEnd[1] - 1, strEnd[0], hours, minutes]).format('YYYY-MM-DDThh:mm:ss');
 
                     schedules = [{
                         freq: sched.freq,
-                        startDate: startDate.substr(0, startDate.length - 1),
-                        endDate: endDate.substr(0, startDate.length - 1)
+                        startDate: startDate,
+                        endDate: endDate
                     }];
                 }
                 // CUSTOM schedule
@@ -349,7 +344,7 @@
                         // validate slot fields
                         vm.slots.some(function(slot, index) {
 
-                            if(slot.name && slot.name != '') {
+                            if(slot.name && slot.name != '' && slot.leadTime && slot.leadTime != '') {
 
                                 if(((slot.start != '' && slot.start != null && !isNaN(slot.start)) && (slot.end != '' && slot.end != null && !isNaN(slot.end)) && (slot.step != '' && slot.step != null && !isNaN(slot.step)))
                                     || ((slot.start == '' || slot.start == null) && (slot.end == '' || slot.end == null) && (slot.step == '' || slot.step == null)))
@@ -393,6 +388,14 @@
 
                 return isNaN(data);
             };
+
+            function refreshCurrentMonth() {
+
+                vm.currentMonth = moment(vm.date).utc().startOf('month').valueOf();
+                $timeout(function() {
+                    $('select.titleMonth').multiselect('refresh');
+                });
+            }
 
             function _init() {
 

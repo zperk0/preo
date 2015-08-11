@@ -17,8 +17,7 @@ angular.module('events')
     maxDate: null
   })
   .controller('PreoCalendarController', ['$scope', '$attrs', '$parse', '$interpolate', '$timeout', '$log', 'dateFilter', 'preoCalendarConfig', 'DateUtils', function($scope, $attrs, $parse, $interpolate, $timeout, $log, dateFilter, preoCalendarConfig, DateUtils) {
-    var self = this/*,
-      ngModelCtrl = { $setViewValue: angular.noop }*/; // nullModelCtrl
+    var self = this;
     self.dateObjectModel = {};
 
     // Modes chain
@@ -47,7 +46,6 @@ angular.module('events')
     $scope.datepickerMode = $scope.datepickerMode || preoCalendarConfig.datepickerMode;
     $scope.uniqueId = 'datepicker-' + $scope.$id + '-' + Math.floor(Math.random() * 10000);
     this.activeDate = angular.isDefined($attrs.initDate) ? $scope.$parent.$eval($attrs.initDate) : new Date();
-    // this.events = $scope.events;
     this.isFirstRun = true;
 
     $scope.$watch('schedules.startDate', function(newValue, oldValue) {
@@ -84,14 +82,12 @@ angular.module('events')
       self.frequency = newValue;
 
       self.updateFrequency($scope.schedules.freq);
-      // if(newValue != '' && newValue)
-        // $scope.select(newValue, oldValue);
     });
 
     // change active date (controls current month)
     $scope.$watch('ngModel', function(newValue, oldValue) {
 
-      if(newValue != '' && newValue)
+      if(newValue != '' && newValue && newValue != self.activeDate)
         $scope.select({
           activeDate: newValue
         });
@@ -99,7 +95,6 @@ angular.module('events')
 
     this.updateFrequency = function(freq) {
 
-      // if($scope.schedules.startDate && $scope.schedules.startDate != '' && $scope.schedules.endDate && $scope.schedules.endDate != '') {
       if($scope.schedules.startDate && $scope.schedules.startDate != '') {
 
         var start = DateUtils.getDateObj($scope.schedules.startDate),
@@ -184,25 +179,6 @@ angular.module('events')
       self.refreshView();
     }
 
-    // $scope.$watch('events', function() {
-    //   self.events = $scope.events;
-    //   if(self.events.length && self.isFirstRun) {
-    //     $scope.select(self.createDateObject(self.activeDate, self.formatDay,true));
-    //     self.isFirstRun = false;
-    //   }
-    //   self.refreshView();
-    // });
-
-    // $scope.$watch(function(){
-    //   return ngModelCtrl.$modelValue;
-    // }, function() {
-    //   self.refreshView();
-    // });
-
-    // this.getEvents = function() {
-    //   return $scope.events;
-    // };
-
     $scope.isActive = function(dateObject) {
       if (self.compare(dateObject.date, self.activeDate) === 0) {
         $scope.activeDateId = dateObject.uid;
@@ -211,55 +187,14 @@ angular.module('events')
       return false;
     };
 
-    // $scope.onDayClick = function(data) {
-      /*if (!!!data.disabled) {
-        $scope.dayClick({
-          events: data.$events || []
-        });
-      }*/
-      // console.log(data)
-      // $scope.dayClick({
-      //   selectedDays: data || []
-      // });
-    // };
-
-    this.init = function( ngModelCtrl_ ) {
-      // ngModelCtrl = ngModelCtrl_;
-
-      // console.log(ngModelCtrl.ngModel);
-
-      // ngModelCtrl.$render = function() {
-      //   self.render();
-      // };
-    };
-
-    // this.render = function() {
-    //   if ( ngModelCtrl.$modelValue ) {
-    //     var date = new Date( ngModelCtrl.$modelValue ),
-    //       isValid = !isNaN(date);
-
-    //     if ( isValid ) {
-    //       this.activeDate = date;
-    //     } else {
-    //       $log.error('Datepicker directive: "ng-model" value must be a Date object, a number of milliseconds since 01.01.1970 or a string representing an RFC2822 or ISO 8601 date.');
-    //     }
-    //     //ngModelCtrl.$setValidity('date', isValid);
-    //   }
-    //   this.refreshView();
-    // };
-
     this.refreshView = function() {
       if ( this.element ) {
         this._refreshView();
-
-        // var date = ngModelCtrl.$modelValue ? new Date(ngModelCtrl.$modelValue) : null;
-        //ngModelCtrl.$setValidity('date-disabled', !date || (this.element && !this.isDisabled(date)));
       }
     };
 
     this.createDateObject = function(date, format) {
-      // var model = ngModelCtrl.$modelValue ? new Date(ngModelCtrl.$modelValue) : null;
-      var selected = /*model && */this.isSelected(date);
+      var selected = this.isSelected(date);
 
       date.setHours(0);
       date.setMinutes(0);
@@ -268,7 +203,6 @@ angular.module('events')
       return {
         date: date,
         label: dateFilter(date, format),
-        // $events: this.getEventDate(date),
         isCurrentMonth: this.isCurrentMonth(date),
         selected: selected,
         disabled: this.isDisabled(date),
@@ -301,6 +235,7 @@ angular.module('events')
           // date = dateObject.date ? dateObject.date : dateObject;
           dt.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());
           self.activeDate = dt;
+          $scope.ngModel = self.activeDate;
 
           // don't push dates from active date control
           if($scope.schedules.freq == 'CUSTOM' && !dateObject.hasOwnProperty('activeDate')) {
@@ -347,9 +282,6 @@ angular.module('events')
 
         // refresh view
         self.refreshView();
-
-        // $scope.onDayClick(dateObject);
-        // $scope.onDayClick($scope.selectedDays);
       } else {
 
         self.activeDate = date;
@@ -362,8 +294,6 @@ angular.module('events')
         month = self.activeDate.getMonth() + direction * (self.step.months || 0);
       self.activeDate.setFullYear(year, month, 1);
       $scope.ngModel = self.activeDate;
-      // ngModelCtrl.$setViewValue( self.activeDate );
-      // ngModelCtrl.$render();
       self.refreshView();
     };
 
@@ -494,10 +424,6 @@ angular.module('events')
         };
 
         ctrl.isSelected = function(date1) {
-          // var dateOne = new Date( date1.getFullYear(), date1.getMonth(), date1.getDate() );
-          // var dateTwo = new Date( ctrl.activeDate.getFullYear(), ctrl.activeDate.getMonth(), ctrl.activeDate.getDate() );
-
-          // return dateOne.getTime() === dateTwo.getTime();
 
           var dateOne = new Date( date1.getFullYear(), date1.getMonth(), date1.getDate() );
           var isSelected = false;
@@ -512,8 +438,6 @@ angular.module('events')
             }
           });
 
-          // var dateTwo = new Date( ctrl.activeDate.getFullYear(), ctrl.activeDate.getMonth(), ctrl.activeDate.getDate() );
-
           return isSelected;
         };
 
@@ -527,20 +451,6 @@ angular.module('events')
 
           return yearDate === yearCurrentDate && monthDate === monthCurrentDate;
         };
-
-        // ctrl.getEventDate = function(date) {
-        //   var newDateOne = (new Date( date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0 )).getTime();
-        //   var eventsDate = ctrl.getEvents().filter(function(ev) {
-        //     var dateEv = new Date(ev.schedules[0].startDate);
-
-        //     dateEv.setHours(0);
-        //     dateEv.setMinutes(0);
-        //     dateEv.setSeconds(0);
-
-        //     return dateEv.getTime() === newDateOne;
-        //   });
-        //   return eventsDate.length ? eventsDate : null;
-        // };
 
         function getISO8601WeekNumber(date) {
           var checkDate = new Date(date);
@@ -583,13 +493,11 @@ angular.module('events')
     return {
       restrict: 'EA',
       replace: true,
-      // templateUrl: template_directive('preo-calendar/preo-calendar'),
       templateUrl: '/code/events/js/directives/preo-calendar/preo-calendar.htm',
       scope: {
         datepickerMode: '=?',
         dateDisabled: '&',
         attrRows: '@rows',
-        // dayClick: '&',
         selectedDays: '=',
         ngModel: '=',
         schedules: '='
@@ -598,11 +506,6 @@ angular.module('events')
       controller: 'PreoCalendarController',
       link: function(scope, element, attrs, ctrls) {
         var preoCalendarCtrl = ctrls[0], ngModelCtrl = ctrls[1];
-
-        // if ( ngModelCtrl ) {
-        //   preoCalendarCtrl.init( ngModelCtrl );
-
-        // }
       }
     };
   })

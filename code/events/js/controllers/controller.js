@@ -1,19 +1,21 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('EventsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID', 'Events', 'CollectionSlots', '$AjaxInterceptor', '$modal', '$log', 'TempStorage',
-        function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots, $AjaxInterceptor, $modal, $log, TempStorage) {
+    .controller('EventsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID', 'Events', 'CollectionSlots', '$AjaxInterceptor', '$modal', '$log',
+        function($scope, $rootScope, $timeout, $q, VENUE_ID, Events, CollectionSlots, $AjaxInterceptor, $modal, $log) {
 
         var vm = this,
             submitTime = 0;
 
-        $rootScope.requests = 0;
-        $AjaxInterceptor.start();
-
         function _init() {
+
+            $rootScope.requests = 0;
+            $AjaxInterceptor.start();
 
             _getEvents();
             _getOutletLocations();
+
+            $scope.$on('updateEvent', updateEvent);
         }
 
         function _getEvents() {
@@ -27,8 +29,6 @@
             // get events from the last 7 days (interval)
             Events.get(filter).then(function(result) {
 
-                // $log.log(result);
-
                 var events = result || [],
                     arrPromises = [];
 
@@ -38,7 +38,6 @@
                     var sched = elem.schedules,
                         defer = $q.defer();
 
-                    // console.log(elem)
                     // decode schedule
                     if (sched.length > 0) {
 
@@ -46,7 +45,7 @@
                         elem.starttime = formatTime(sched[0].startDate);
                         elem.endtime = formatTime(sched[0].endDate);
                     }
-
+                    // clousure for getting the slot from the right event
                     (function(_event) {
 
                         // get slots from the event
@@ -87,33 +86,8 @@
 
                     vm.events = events;
 
-                    var tempEvents = TempStorage.get('tempEvents');
-                    tempEvents.forEach(function(evt) {
-
-                        $rootScope.safeApply(function() {
-                            vm.events.push(evt);
-                        });
-                    });
-
                     // Wait to finish ng-repeat
                     $timeout(function() {
-
-                        // //now we add datepicker
-                        // $('.eventTDDate input').fdatepicker({format: 'dd/mm/yyyy'});
-
-                        // //now we add timepicker
-                        // $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-                        // $('.eventTDTime input').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-
-                        // $("input[name^=eTime]").on('changeTime',function() {
-
-                        //     var currTime = $(this).val()+":00";
-                        //     var newTime = extractAMPM("January 01, 2000 "+currTime);
-                        //     $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
-                        //     $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-                        //     $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
-                        //     $(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
-                        // });
 
                         $AjaxInterceptor.complete();
                     }, 0);
@@ -147,11 +121,30 @@
             modalInstance.result.then(function (eventData) {
 
                 // $log.log(eventData);
-                vm.events.push(eventData);
+                var deferred = $q.defer();
+                var data = formatData(angular.copy(eventData));
 
-                var itemsUnsaved = TempStorage.get('tempEvents') || '[]';
-                itemsUnsaved.push(eventData);
-                TempStorage.set('tempEvents', itemsUnsaved);
+                $rootScope.requests = 0;
+                $AjaxInterceptor.start();
+
+                Events.create(data).then(function(result) {
+
+                    console.log('event ok (create) ', result);
+                    // $log.log(result);
+                    configSlots(result, eventData, deferred);
+
+                }, function(result) {
+                    console.error('Error saving event. ');
+                    // $log.log(result);
+                    deferred.resolve(result);
+                });
+
+                deferred.promise.then(function() {
+
+                    // console.log('all done');
+                    vm.events.push(eventData);
+                    $AjaxInterceptor.complete();
+                });
             }, function () {
 
                 // $log.log('Modal dismissed at: ' + new Date());
@@ -159,54 +152,6 @@
             });
 
             $(document.body).css('overflow', 'hidden');
-
-            // var obj = {
-            //     cSlots: [{
-            //         end: '', eventId: '', leadTime: '', name: '', start: '', step: ''
-            //     }]
-            // };
-
-            // vm.events.push(obj);
-
-            // $timeout(function() {
-
-            //     $('.eventTDEdit').last().click();
-
-            //     var $newTab = $('.eventTable').last();
-
-            //     // //now we add datepicker
-            //     $newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}});
-
-            //     // //now we add timepicker
-            //     $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-            //     $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-
-            //     $newTab.find("input[name^=eTime]").on('changeTime',function() {
-
-            //         var currTime = $(this).val()+":00";
-
-            //         var newTime = extractAMPM("January 01, 2000 "+currTime);
-
-            //         $(this).parents('table').find("input[name^=eETime]").timepicker('remove');
-            //         $(this).parents('table').find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-            //         $(this).parents('table').find("input[name^=eETime]").timepicker({ 'minTime': newTime, 'timeFormat': 'H:i', 'step': 15 });
-            //         $(this).parents('table').find("input[name^=eETime]").timepicker('setTime', newTime);
-            //     });
-
-            //     $newTab.css('backgroundColor','#fafafa');
-            //     $newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-            //     $newTab.css('max-width', '100%');
-
-            //     // //hide it so we can animate it!
-            //     // $newTab.css('display','none');
-
-            //     // //insert before section header/before hidden div
-            //     // $(".firstEventDiv").before($newTab);
-            //     // $newTab.slideRow('down');
-
-            //     if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
-            //     $("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
-            // }, 0)
         };
 
         vm.save = function() {
@@ -250,12 +195,11 @@
 
             if((newSubmitTime - submitTime) > 300) {
 
-                vm.isSaving = true;
-
                 var arrPromises = [];
 
-                // $log.log('EVENTS TO SAVE: ', vm.events);
+                vm.isSaving = true;
 
+                // $log.log('EVENTS TO SAVE: ', vm.events);
                 // $log.log('total events: ' + vm.events.length)
 
                 // create/update event
@@ -264,18 +208,13 @@
                     var data = formatData(angular.copy(elem)),
                         deferred = $q.defer();
 
-                    // $log.log(elem)
-
                     // edit old
                     if(elem.id && !String(elem.id).match('/^e.*$/')) {
-
-                        // $log.log(elem)
 
                         // $log.log('EDIT: ' + elem.id, data);
                         Events.update(elem, data).then(function(result) {
 
-                            // $log.log('event ok (update)' + index);
-
+                            // $log.log('event ok (update)');
                             // $log.log(result);
                             configSlots(result, elem, deferred);
 
@@ -291,7 +230,7 @@
                         // $log.log('Create EVENT: ', data);
                         Events.create(data).then(function(result) {
 
-                            // $log.log('event ok (create) ' + index);
+                            // $log.log('event ok (create) ');
                             // $log.log(result);
                             configSlots(result, elem, deferred);
 
@@ -311,19 +250,11 @@
                 $q.all(arrPromises).then(function() {
 
                     // $log.log('All finished')
-
                     vm.isSaving = false;
-
-                    // remove temp items saved
-                    sessionStorage.clear('tempEvents');
-
-                    // $log.log(arguments);
                 }, function() {
 
                     // $log.log('All finished - error')
-
                     vm.isSaving = false;
-                    // $log.log(arguments);
                 });
 
                 // save last submit time
@@ -352,26 +283,37 @@
             if (evt.hasOwnProperty('outletLocationId') && evt.outletLocationId !== 'undefined')
                 data.outletLocationId = evt.outletLocationId;
 
-            // var year = dateToEdit.getUTCFullYear(),
-            //     month = dateToEdit.getUTCMonth(),
-            //     day = dateToEdit.getUTCDate(),
-            //     starttimeStr = evt.starttime.split(':'),
-            //     endtimeStr = evt.endtime.split(':'),
-            //     finalStartTime = new Date(year, month, day, starttimeStr[0], starttimeStr[1]),
-            //     finalEndTime = new Date(year, month, day, endtimeStr[0], endtimeStr[1]);
-
-            // data.duration = getEventDuration(finalStartTime.getTime(), finalEndTime.getTime());
             data.duration = evt.duration;
             data.schedules = evt.schedules;
-            // data.schedules = [
-            //     {
-            //         freq: evt.schedules.freq,
-            //         startDate: year + '-' + pad(String(Number(month) + 1), 2) + '-' + pad(String(day), 2) + 'T' + evt.starttime + ':00',
-            //         endDate: year + '-' + pad(String(Number(month) + 1), 2) + '-' + pad(String(day), 2) + 'T' + evt.endtime + ':00'
-            //     }
-            // ];
 
             return data;
+        }
+
+        function updateEvent(event, data) {
+
+            var deferred = $q.defer();
+            var dataToUpdate = formatData(angular.copy(data.evtData));
+
+            $rootScope.requests = 0;
+            $AjaxInterceptor.start();
+
+            Events.update(data.evtData, dataToUpdate).then(function(result) {
+
+                $log.log('event ok (update)');
+                // $log.log(result);
+                configSlots(result, data.evtData, deferred);
+
+            }, function(result) {
+                console.error('Error saving event. ');
+                // $log.log(result);
+                deferred.resolve(result);
+            });
+
+            deferred.promise.then(function() {
+
+                console.log('all done');
+                $AjaxInterceptor.complete();
+            });
         }
 
         function getEventDuration(startHours, endHours){
