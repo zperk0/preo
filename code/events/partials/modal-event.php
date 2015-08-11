@@ -15,27 +15,28 @@
         <input type="text" ng-model='modal.eventObj.description' placeholder='<?echo _("Click to add a description");?>' maxlength="250" pattern="^.{0,250}$">
         <!-- <small class="error"><?echo _("Please type a description (max 250 chars)");?></small> -->
       </div>
+      <div class='ct-starttime'>
+        <label><?php echo _("Start time:");?></label>
+        <input type="text" ng-model='modal.eventObj.starttime' class='startTime' placeholder='<?php echo _("HH:MM");?>' required>
+        <small ng-show='!modal.eventObj.starttime' class="error priceError"><?echo _("Time?");?></small>
+      </div>
       <div>
+        <label>
+          <?php echo _("Duration:");?>&nbsp;
+          <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("How many days will your event occurs in days, hours and minutes?");?>"></i>
+        </label>
         <div class='duration-fields'>
-          <label><?php echo _("Start time:");?></label>
-          <input type="text" ng-model='modal.eventObj.starttime' class='startTime' placeholder='<?php echo _("HH:MM");?>' required>
-          <small ng-show='!modal.eventObj.starttime' class="error priceError"><?echo _("Time?");?></small>
-        </div>
-        <div class='duration-fields'>
-          <label><?php echo _("Duration (days):");?></label>
           <!-- <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("What's your event duration?");?>"></i> -->
           <input type="text" ng-model='modal.eventObj.days' placeholder='<?php echo _("Days");?>'>
           <small ng-show='!modal.eventObj.days && !modal.eventObj.hours && !modal.eventObj.minutes' class="error priceError"><?echo _("Time?");?></small>
           <small ng-show='modal.isInvalidFormat(modal.eventObj.days)' class="error priceError"><?echo _("Enter a number");?></small>
         </div>
         <div class='duration-fields'>
-          <label><?php echo _("Duration (hours):");?></label>
           <input type="text" ng-model='modal.eventObj.hours' placeholder='<?php echo _("Hours");?>'>
           <small ng-show='!modal.eventObj.days && !modal.eventObj.hours && !modal.eventObj.minutes' class="error priceError"><?echo _("Time?");?></small>
           <small ng-show='modal.isInvalidFormat(modal.eventObj.hours)' class="error priceError"><?echo _("Enter a number");?></small>
         </div>
         <div class='duration-fields'>
-          <label><?php echo _("Duration (minutes):");?></label>
           <input type="text" ng-model='modal.eventObj.minutes' placeholder='<?php echo _("Minutes");?>'>
           <small ng-show='!modal.eventObj.days && !modal.eventObj.hours && !modal.eventObj.minutes' class="error priceError"><?echo _("Time?");?></small>
           <small ng-show='modal.isInvalidFormat(modal.eventObj.minutes)' class="error priceError"><?echo _("Enter a number");?></small>
@@ -69,7 +70,7 @@
           <input type="text" ng-model='modal.schedules.startDate' class='schedStartDate'>
           <small ng-show='modal.schedules.startDate == ""' class="error"><?echo _("Date?");?></small>
         </div>
-        <div class='sched-dates' ng-hide='modal.schedules.freq == "CUSTOM"'>
+        <div class='sched-dates enddate' ng-hide='modal.schedules.freq == "CUSTOM"'>
           <label><?php echo _("Event last occurrence:");?></label>
           <p ng-show='modal.schedules.startDate == ""'><?php echo _("Choose the first occurrence.");?></p>
           <input type="text" ng-model='modal.schedules.endDate' class='schedEndDate' ng-hide='modal.schedules.startDate == ""' ng-disabled='modal.schedules.freq == "ONCE"'>
@@ -112,7 +113,14 @@
     </div>
 
     <div class='slotTab' ng-show="modal.activeTab == 3">
-      <h4><?php echo _("Collection Slot");?></h4>
+      <h4>
+        <?php echo _("Collection Slot");?>&nbsp;
+        <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom"
+          title="<?echo _("Start e End - Interval at which the user can collect the order. Calculated from the event start time. <br>
+                        Step - If your slot is too large, you can break it into smaller intervals from the start time till the end time, divided into steps (eg. Start = 22h, End = 23h, Step = 5 will result in 22h05, 22h10, 22h15. .. 22h55, 23h).<br>
+                        Lead time - The time it takes to prepare your order before the customer can pick it up.<br><br>
+                        In case you define a step, you need to define the slot start and end.");?>"></i>
+      </h4>
       <div class='ct-slots' ng-repeat='slot in modal.slots'>
         <div>
           <label><?php echo _("Slot name");?></label>
@@ -161,7 +169,6 @@
             <small ng-show='(slot.stepError || (slot.step && modal.isInvalidFormat(slot.step)) || (!slot.step && (slot.start || slot.end)))' class="error step"><?echo _("Enter minutes?");?></small>
           </div>
           <span><?php echo _("minutes");?></span>.
-          <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Some help about steps here...");?>"></i>
           <div class='ct-delete' ng-if='$index != 0'>
             <button ng-click='modal.deleteSlot(slot)' type="button" class="delCollSlot secondary" title="Delete this slot"><i class="pd-delete"></i></button>
             <?php echo _("Delete this slot");?>

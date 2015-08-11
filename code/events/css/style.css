@@ -52,6 +52,9 @@
   top: 15px;
   bottom: 15px;
   overflow-y: auto;
+  max-width: 600px;
+  left: 50%;
+  margin-left: -300px;
 }
 
 .ct-modal-event input {
@@ -257,13 +260,17 @@
   width: 100%;
 }
 
+.ct-tabs .ct-starttime input {
+  width: 70px;
+}
+
 .duration-fields {
-  width: 25%;
+  width: 33.3333%;
   float: left;
 }
 
 .duration-fields input {
-  width: 99%;
+  width: 80%;
 }
 
 .slotTab .ui-multiselect {
@@ -292,4 +299,16 @@
 
 .sched-dates input {
   width: 95%;
+}
+
+.sched-dates.enddate input {
+  float: right;
+}
+
+.sched-dates.enddate label {
+  margin-left: 15px;
+}
+
+body.modal-open .tooltip.tip-bottom {
+  width: 25em !important;
 }
