@@ -39,6 +39,11 @@ switch ($lang)
 		$strings = 'fr_FR';
 		break;
 
+	case 'nb':
+		$locale = 'norwegian';
+		$strings = 'nb_NO';
+		break;
+
 	default:
 		$locale = 'english';
 		$strings = 'en_US';
