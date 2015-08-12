@@ -20,7 +20,7 @@ switch ($lang)
 		break;
 
 	case 'de':
-		$locale = 'german';
+		$locale = 'de_DE.utf8';
 		$strings = 'de_DE';
 		break;
 
@@ -35,12 +35,12 @@ switch ($lang)
 		break;
 
 	case 'fr':
-		$locale = 'french';
+		$locale = 'fr_FR.utf8';
 		$strings = 'fr_FR';
 		break;
 
 	case 'nb':
-		$locale = 'norwegian';
+		$locale = 'nb_NO.utf8';
 		$strings = 'nb_NO';
 		break;
 
@@ -57,6 +57,7 @@ setlocale(LC_ALL, $locale);
 
 
 $domain = 'messages';
+require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang_nocache.php');
 bindtextdomain($domain, $_SERVER['DOCUMENT_ROOT'].$_SESSION['path']."/locale");
 bind_textdomain_codeset($domain, "UTF-8");
 textdomain($domain);
