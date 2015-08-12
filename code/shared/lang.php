@@ -38,7 +38,7 @@ switch ($lang)
 		$locale = 'french';
 		$strings = 'fr_FR';
 		break;
-	
+
 	default:
 		$locale = 'english';
 		$strings = 'en_US';
@@ -112,7 +112,7 @@ switch ($lang)
 		$locale = 'russian';
 		$strings = 'ru_RU';
 		break;
-	
+
 	default:
 		$locale = 'english';
 		$strings = 'en_US';
