@@ -50,6 +50,9 @@
 
 	$vCash = $_POST['vCash'];
 	protect($vCash);
+
+	$vPhone = $_POST['vPhone'];
+	protect($vPhone);
 	
 	$vCode = $_POST['vCode'];
 	protect($vCode);
@@ -111,6 +114,8 @@
 		$dataSettings['leadTime']			= $leadtime;
 		$dataSettings['pickupDiscount']   	= $vDiscount;
 		$dataSettings['orderMin']			= $vOrderMin;
+		$dataSettings['requiresPhone']		= $vPhone;
+		$_SESSION['venue_requiresPhone'] 	= $vPhone;
 		
 		$jsonData = json_encode($dataSettings);
 		
@@ -137,6 +142,7 @@
 		$data['leadTime']			= $leadtime;
 		$data['pickupDiscount']   	= $vDiscount;
 		$data['orderMin']			= $vOrderMin;	
+		$dataSettings['requiresPhone']		= $vPhone;
 		
 		$jsonData = json_encode($data);
 		
