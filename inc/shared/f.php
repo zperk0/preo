@@ -117,20 +117,12 @@
 			<!-- Only on /homescreen during edit -->
 			<script type="text/javascript">
 				$(document).ready(function() {
-					var content = $("#aHeading").val();
-					if(content != '') $("#appHeading").html(content);
-					
 					var content = $("#aSubheading").val();
 					if(content != '') $("#subHeading").html(content);
 					
 					<?if(isset($_SESSION['app_textColour'])){?>updateTextColour('<?echo $_SESSION['app_textColour']?>');<?}?>
 					<?if(isset($_SESSION['app_buttonColour'])){?>updateButtonColour('<?echo $_SESSION['app_buttonColour']?>');<?}?>
 					<?if(isset($_SESSION['app_buttonTextColour'])){?>updateButtonTextColour('<?echo $_SESSION['app_buttonTextColour']?>');<?}?>
-					
-					<?if(isset($_SESSION['app_logo']) && !empty($_SESSION['app_logo'])){?>
-						content="<img src='<?echo $lPath.$_SESSION['app_logo']."_thumb.png";?>'/>";
-						$('#appHeading').html(content);
-					<?}?>
 				});
 			</script>
 		<?}?>
