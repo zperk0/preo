@@ -24,10 +24,6 @@
 	$wallPaperID = $_POST['wallPaperID'];
 	protect($wallPaperID);
 	
-	$picFileName = $_POST['picFileName'];
-	protect($picFileName);
-	
-	if(empty($picFileName)) $picFileName = null;
 	
 	$data['heading']			= $aHeading;
 	$data['subHeading']			= $aSubheading;
@@ -35,19 +31,15 @@
 	$data['buttonColour']		= $buttonColour;
 	$data['buttonTextColour']	= $buttonTextColour;
 	$data['wallpaperId']		= $wallPaperID;
-	$data['logoId']				= $picFileName;
 	if(isset($_SERVER['PREO_UPLOAD_PATH']))
 	{
 		$data['wallpaper']		= $_SERVER['PREO_UPLOAD_PATH'].'wallpaper/wall'.$wallPaperID.'.jpg';
-		$data['logo']			= $_SERVER['PREO_UPLOAD_PATH'].'logo/'.$picFileName.'_thumb.png';
 	}
 	else
 	{
 		$data['wallpaper']		= '/tmp/upload/'.'wallpaper/wall'.$wallPaperID.'.jpg';
-		$data['logo']			= '/tmp/upload/'.'logo/'.$picFileName.'_thumb.png';
 	}
 	
-	if(empty($picFileName)) $data['logo']=null;
 	if(preg_match('/^\d$/',$wallPaperID)) $data['wallpaper']=null;
 	
 	$jsonData = json_encode($data);
