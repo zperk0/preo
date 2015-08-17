@@ -1,29 +1,29 @@
-<h3><?echo _("Subscriptions")?></h3>
+<h3 translate>Subscriptions</h3>
 
-	
+
 <section class='historyWrapper'>
-	<header><? echo _("Billing History")?></header>
+	<header translate>Billing History</header>
 	<br/>
-	<div>						
+	<div>
 			<table>
 					<tr>
-						<th><? echo _("Inv no.")?></th>
-						<th><? echo _("Date")?></th>
-						<th><? echo _("Status")?></th>
-						<th><? echo _("Amount")?></th>	
+						<th translate>Inv no.</th>
+						<th translate>Date</th>
+						<th translate>Status</th>
+						<th translate>Amount</th>
 						<th> </th>
 					</tr>
-					<tr ng-repeat="invoice in invoices" >						
+					<tr ng-repeat="invoice in invoices" >
 						<td> {{invoice.id}} </td>
-						<td> {{invoice.issueDate | date:"MMM dd, yyyy" }} </td>				
-						<td class='capitalise'> {{invoice.status}} </td>				
-						<td> &pound;{{invoice.getTotal()}}  </td>				
+						<td> {{invoice.issueDate | date:"MMM dd, yyyy" }} </td>
+						<td class='capitalise'> {{invoice.status}} </td>
+						<td> &pound;{{invoice.getTotal()}}  </td>
 						<td >
-							<form action='{{getExportInvoice(invoice.id)}}' method='GET'>								
-									<button type='submit' class='preodayButton'> <? echo _("DOWNLOAD PDF")?> </button>																
+							<form action='{{getExportInvoice(invoice.id)}}' method='GET'>
+									<button type='submit' class='preodayButton' translate>DOWNLOAD PDF</button>
 							</form>
 						</td>
 					</tr>
-				</table>	
-	</div>	
+				</table>
+	</div>
 </section>

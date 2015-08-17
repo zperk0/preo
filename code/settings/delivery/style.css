@@ -1,0 +1,5 @@
+/*override angular-gettext span wrap*/
+.switch label > span {
+	width: 0 !important;
+    height: 0 !important;
+}

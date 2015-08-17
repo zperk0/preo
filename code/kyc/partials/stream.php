@@ -2,49 +2,49 @@
 	<div class="flip-container topSpacing">
 		<div class="flipper">
 			<div class="front" id="content-list">
-				
-				<div class="header-list overflow">			
-					<span><? echo _("Live Stream")?></span>				
+
+				<div class="header-list overflow">
+					<span translate>Live Stream</span>
 				</div>
 				<div id="content-table">
 					<table class="table table-striped table-list table-stream table-condensed" ng-init="orderBy = 'updated'; direction = true">
 					<thead>
-					  	<tr>					  		
-					  		<th ng-click="orderBy = 'status'; direction=!direction">
-					  			<? echo _("Status")?>
+					  	<tr>
+					  		<th ng-click="orderBy = 'status'; direction=!direction" translate>
+					  			Status
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
+					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'total'; direction=!direction">
-					  			<? echo _("Total")?>
+					  		<th ng-click="orderBy = 'total'; direction=!direction" translate>
+					  			Total
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
+					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'user.firstName'; direction=!direction">
-					  			<? echo _("Customer")?>
+					  		<th ng-click="orderBy = 'user.firstName'; direction=!direction" translate>
+					  			Customer
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>					  	
-					  		<th ng-click="orderBy = 'items'; direction=!direction">
-					  			<? echo _("Order")?>
-					  			<div class="sort pull-right">
-					  				<i class="fa fa-sort-up"></i>
-					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
+					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'updated'; direction=!direction">
-					  			<? echo _("Time")?>
+					  		<th ng-click="orderBy = 'items'; direction=!direction" translate>
+					  			Order
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>					  						  	
+					  			</div>
+					  		</th>
+					  		<th ng-click="orderBy = 'updated'; direction=!direction" translate>
+					  			Time
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>
+					  		</th>
 					  	</tr>
 					  </thead>
 					  <tbody ng-repeat="order in orders | filter:outletFilter | limitTo:25 | orderObjectBy:orderBy:direction" ng-switch on="order.active" >
@@ -75,11 +75,11 @@
 					  						<td width="200">{{ getCurrency()+item.total.toFixed(2) }}</td>
 					  					</tr>
 					  					<tr ng-show="order.discount && order.discount>0" class='streamDiscount'>
-					  						<td colspan="3"><? echo _("Discount")?></td>
+					  						<td colspan="3" translate>Discount</td>
 					  						<td width="200">-{{ getCurrency()+order.discount.toFixed(2) }}</td>
 					  					</tr>
 					  					<tr class='streamTotal'>
-					  						<td colspan="3"><b><? echo _("TOTAL")?></b></td>
+					  						<td colspan="3"><b translate>TOTAL</b></td>
 					  						<td width="200"><b>{{ getCurrency()+order.total.toFixed(2) }}</b></td>
 					  					</tr>
 					  				</tbody>
@@ -87,20 +87,20 @@
 					  		</td>
 					  	</tr>
 					  </tbody>
-					</table>		
+					</table>
 				</div>
 
 			</div>
 
 			<div class="actions-chart back">
 				<div class="header-chart overflow">
-				
+
 					<a href="javascript:void(0)" class="pull-left" ng-click="hideOptions()">
 						<i class="fa fa-arrow-left icon-white"></i>
 					</a>
 
 				</div>
-				
+
 		</div>
 	</div>
 </div>

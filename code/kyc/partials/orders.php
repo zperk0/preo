@@ -5,7 +5,7 @@
 			<div class="front" id="content-list">
 
 				<div class="header-list overflow">
-					<span><? echo _("Orders")?></span>
+					<span translate>Orders</span>
 
 					<a href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
 						<i class="fa fa-plus"></i>
@@ -21,36 +21,36 @@
 							    <label for="all_options"></label>
 							  </div>
 					  		</th>
-					  		<th ng-click="direction=!direction; setOrderBy('dateTimeStamp');">
-                                <? echo _("Date/Time")?>
+					  		<th ng-click="direction=!direction; setOrderBy('dateTimeStamp');" translate>
+                                Date/Time
                                 <div class="sort pull-right">
                                     <i class="fa fa-sort-up"></i>
                                     <i class="fa fa-sort-desc"></i>
                                 </div>
                             </th>
-					  		<th ng-click="direction=!direction; setOrderBy('outletName');" ng-if="$parent.getSelectedOutlets().length > 1 || $parent.getSelectedOutlets().length == 0">
-					  			<? echo _("Outlet")?>
+					  		<th ng-click="direction=!direction; setOrderBy('outletName');" ng-if="$parent.getSelectedOutlets().length > 1 || $parent.getSelectedOutlets().length == 0" translate>
+					  			Outlet
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="direction=!direction; setOrderBy('user.name');">
-					  			<? echo _("Customer")?>
+					  		<th ng-click="direction=!direction; setOrderBy('user.name');" translate>
+					  			Customer
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="direction=!direction; setOrderBy('itemString');" class="colItems">
-					  			<? echo _("Items")?>
+					  		<th ng-click="direction=!direction; setOrderBy('itemString');" class="colItems" translate>
+					  			Items
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="direction=!direction; setOrderBy('total');">
-					  			<? echo _("Order Total")?>
+					  		<th ng-click="direction=!direction; setOrderBy('total');" translate>
+					  			Order Total
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
@@ -107,20 +107,20 @@
 
 
 			<div class="content-actions invisibleBack">
-					<h4><? echo _("Export as...") ?></h4>
+					<h4 translate>Export as...</h4>
 
 
 						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()' class="formLeft">
 							<input name='data' value='{{pdfData}}' type='hidden'/>
-								<button ng-click="exportData('pdf')">
-										<? echo _("PDF") ?>
+								<button ng-click="exportData('pdf')" translate>
+										PDF
 								</button>
 						</form>
 
 						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/csv/report' method='POST' ng-submit='exportCsv()'>
 							<input name='data' value='{{csvData}}' type='hidden'/>
-								<button ng-click="exportData('csv')">
-										<? echo _("CSV") ?>
+								<button ng-click="exportData('csv')" translate>
+										CSV
 								</button>
 						</form>
 
@@ -128,11 +128,11 @@
 							<div class="options optionsExport overflow">
 							  <div class="checkbox checkboxStyle">
 							  	<input type="radio" ng-model="exportAll" name="option" value="1" id="exportAll"/>
-							    <label for="exportAll"><? echo _("All") ?></label>
+							    <label for="exportAll" translate>All</label>
 							  </div>
 							  <div class="checkbox checkboxStyle">
 							  	<input type="radio" ng-model="exportAll" name="option" value="0" id="exportSelected" />
-							    <label for="exportSelected"><? echo _("Selected") ?></label>
+							    <label for="exportSelected" translate>Selected</label>
 							  </div>
 							</div>
 						</div>

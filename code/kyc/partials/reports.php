@@ -1,17 +1,16 @@
 <? session_start();?>
 
 <div class="container-fluid" id="container-search">
-	<div class="row formContainer" >  
+	<div class="row formContainer" >
 	    <form class="navbar-form navbar-left columns large-7 small-12 nopadding custom" role="update">
 	      <div class='row nomargin'>
 
-	          <div class="columns large-12 small-12 nopadding">              
-	              <label>
-	              <? echo _("Choose preset:")?></label>
+	          <div class="columns large-12 small-12 nopadding">
+	              <label translate>Choose preset:</label>
 	              <div class='columns large-12 small-12 nopadding'>
 	                <multi-select
-	                    class="selectOutlet selectReport"    
-	                    input-model="reports"    
+	                    class="selectOutlet selectReport"
+	                    input-model="reports"
 	                    button-label="title"
 	                    item-label="title"
 	                    selection-mode="single"
@@ -19,10 +18,10 @@
 		                  default-label="{{selectedReport.title}}"
 		                  on-close="selectReport()"
 	                ></multi-select>
-	               </div>                 
-	          </div>	        
+	               </div>
+	          </div>
 	      </div>
-	    </form>        
+	    </form>
 	</div>
 </div>
 <div class='row'>
@@ -30,10 +29,10 @@
 		<div class="flip-container flipRelative topSpacing">
 			<div class="flipper reportPage">
 				<div class="front" id="content-list">
-					
-					<div class="header-list overflow">			
-						<span>{{selectedReport.title}}</span> 
-						<i class="icon-question-sign preoTips has-tip tip-bottom" tooltip-placement="bottom" 
+
+					<div class="header-list overflow">
+						<span>{{selectedReport.title}}</span>
+						<i class="icon-question-sign preoTips has-tip tip-bottom" tooltip-placement="bottom"
 						data-selector="tooltip617tigam7vi" tooltip="{{selectedReport.description}}" tooltip-append-to-body='true'
 	tooltip-animation='false'>
 						</i>
@@ -52,16 +51,16 @@
 								  	<input type="checkbox" ng-model="all_options" ng-change="selectAll()" id="all_options" />
 								    <label for="all_options"></label>
 								  </div>
-						  		</th>					  		
+						  		</th>
 						  		<th ng-repeat="title in selectedReport.titles" ng-click="setOrderBy(title);">
 
-						  			<div ng-if="isMarketingTitle(title)" marketing="{{title}}"></div> 
+						  			<div ng-if="isMarketingTitle(title)" marketing="{{title}}"></div>
 						  			<div ng-if="!isMarketingTitle(title)">
 							  			{{getTitle(title)}}
 							  			<div class="sort pull-right">
 							  				<i class="fa fa-sort-up"></i>
 							  				<i class="fa fa-sort-desc"></i>
-							  			</div>		  									  			
+							  			</div>
 						  			</div>
 						  		</th>
 						  	</tr>
@@ -72,7 +71,7 @@
 								  <div class="checkbox checkboxStyle checkboxPartials">
 								  	<input type="checkbox" ng-model="data.$selected" id="check_{{ key }}" />
 								    <label for="check_{{ key }}"></label>
-								  </div>						  			
+								  </div>
 						  		</td>
 						  		<td ng-if='data.timeSlot !== undefined'>{{ data.timeSlot }}</td>
 						  		<td ng-if='data.day !== undefined'>{{ data.day | date:"EEEE" }}</td>
@@ -86,7 +85,7 @@
 						  		<td ng-if='data.totalSpent !== undefined'>{{ data.totalSpent.toFixed(2) }}</td>
 						  		<td ng-if='data.lastOrder !== undefined'>{{ data.lastOrder | date:"dd/MM/yyyy" }}</td>
 						  		<td ng-if='data.dateJoined !== undefined'>{{ data.dateJoined | date:"dd/MM/yyyy" }}</td>
-						  		<td ng-if='data.dateOfOrder !== undefined'>{{ data.dateOfOrder | date:"dd/MM/yyyy" }}</td>						  		
+						  		<td ng-if='data.dateOfOrder !== undefined'>{{ data.dateOfOrder | date:"dd/MM/yyyy" }}</td>
 						  		<td ng-if='data.name !== undefined'>{{ data.name }}</td>
 						  		<td ng-if='data.email !== undefined'>{{ data.email }}</td>
 						  		<td ng-if='data.loyalty !== undefined' class='marketingTd'><img class='marketingOpt' ng-src="{{data.loyalty  | marketing }}"/></td>
@@ -94,55 +93,55 @@
 					  			<td ng-if='data.other !== undefined' class='marketingTd'><img class='marketingOpt' ng-src="{{data.other  | marketing }}"/></td>
 						  	</tr>
 						  </tbody>
-						</table>		
+						</table>
 					</div>
 
 					<div class="align-center">
 						<pagination class="inlineBlock pagination" boundary-links="true" items-per-page="numPerPage" total-items="totalItems" page="currentPage" num-pages="numPages" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
-					</div>						
+					</div>
 
 				</div>
 
 				<div class="actions-chart back">
-				
-				</div>				
+
+				</div>
 			</div>
-				<div class="header-chart overflow invisibleBack">					
+				<div class="header-chart overflow invisibleBack">
 						<a href="javascript:void(0)" class="pull-left" ng-click="hideOptions()">
 							<i class="fa fa-arrow-left icon-white"></i>
 						</a>
 
 					</div>
 					<div class="content-actions invisibleBack">
-						<h4><? echo _("Export as...") ?></h4>
+						<h4 translate>Export as...</h4>
 
 
 							<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()' class="formLeft">
 								<input name='data' value='{{pdfData}}' type='hidden'/>
-									<button ng-click="exportData('pdf')">
-											<? echo _("PDF") ?>
+									<button ng-click="exportData('pdf')" translate>
+											PDF
 									</button>
 							</form>
-							
+
 							<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/csv/report' method='POST' ng-submit='exportCsv()'>
 								<input name='data' value='{{csvData}}' type='hidden'/>
-									<button ng-click="exportData('csv')">
-											<? echo _("CSV") ?>
+									<button ng-click="exportData('csv')" translate>
+											CSV
 									</button>
 							</form>
-												
+
 							<div class="content-optionsExport">
-								<div class="options optionsExport overflow">						
+								<div class="options optionsExport overflow">
 								  <div class="checkbox checkboxStyle">
 								  	<input type="radio" ng-model="exportAll" name="option" value="1" id="exportAll" />
-								    <label for="exportAll"><? echo _("All") ?></label>
-								  </div>					
+								    <label for="exportAll" translate>All</label>
+								  </div>
 								  <div class="checkbox checkboxStyle">
 								  	<input type="radio" ng-model="exportAll" name="option" value="0" id="exportSelected" />
-								    <label for="exportSelected"><? echo _("Selected") ?></label>
-								  </div>					
+								    <label for="exportSelected" translate>Selected</label>
+								  </div>
 								</div>
-							</div>	
+							</div>
 					</div>
 		</div>
 	</div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-12 10:56-0300\n"
+"POT-Creation-Date: 2015-08-12 19:12-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3596,30 +3596,31 @@ msgstr ""
 msgid "French"
 msgstr ""
 
-#: /var/www/webapp/overrides/food4u/regular_footer.php:26
-msgid "info@food4uapp.co.uk"
+#: /var/www/webapp/overrides/food4u/regular_footer.php:13
+#: /var/www/webapp/overrides/preoday/regular_footer.php:13
+msgid "Norwegian"
 msgstr ""
 
 #: /var/www/webapp/overrides/food4u/regular_footer.php:27
+msgid "info@food4uapp.co.uk"
+msgstr ""
+
+#: /var/www/webapp/overrides/food4u/regular_footer.php:28
 #: /var/www/webapp/overrides/food4u/dashboard_footer.php:10
 #: /var/www/webapp/overrides/preoday/regular_footer.php:28
 #: /var/www/webapp/overrides/preoday/dashboard_footer.php:10
 msgid "Legal Statement"
 msgstr ""
 
-#: /var/www/webapp/overrides/food4u/regular_footer.php:28
+#: /var/www/webapp/overrides/food4u/regular_footer.php:29
 #: /var/www/webapp/overrides/food4u/dashboard_footer.php:11
 #: /var/www/webapp/overrides/preoday/regular_footer.php:29
 #: /var/www/webapp/overrides/preoday/dashboard_footer.php:11
 msgid "Privacy + Cookies"
 msgstr ""
 
-#: /var/www/webapp/overrides/food4u/regular_footer.php:29
+#: /var/www/webapp/overrides/food4u/regular_footer.php:30
 msgid "Food4u"
-msgstr ""
-
-#: /var/www/webapp/overrides/preoday/regular_footer.php:13
-msgid "Norwegian"
 msgstr ""
 
 #: /var/www/webapp/overrides/preoday/regular_footer.php:27

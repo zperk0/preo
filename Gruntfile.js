@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-  var yeomanConfig = {  
+  var yeomanConfig = {
     kyc:{
       index:'code/kyc/index.php',
       output:'code/kyc/js/all.min.js',
@@ -23,13 +23,13 @@ module.exports = function(grunt) {
     delivery:{
       index:'code/settings/delivery/delivery-view.php',
       output:'code/settings/delivery/js/all.min.js',
-    }  
+    }
   }
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     yeoman: yeomanConfig,
-    uglify: {      
+    uglify: {
       build: {
         options: {
           beautify: grunt.option('nomin')
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
           beautify: grunt.option('nomin')
         },
         src: ['bower_components/angular/angular.min.js','bower_components/angular-resource/angular-resource.min.js','bower_components/angular-foundation/mm-foundation.min.js',
-              'bower_components/angular-foundation/mm-foundation-tpls.min.js', 'bower_components/angular-route/angular-route.min.js','bower_components/angular-foundation/mm-foundation-tpls.min.js',              
+              'bower_components/angular-foundation/mm-foundation-tpls.min.js', 'bower_components/angular-route/angular-route.min.js','bower_components/angular-foundation/mm-foundation-tpls.min.js',
               'bower_components/angular-sanitize/angular-sanitize.min.js'],
         dest: 'js/angular_all.min.js'
       },
@@ -82,23 +82,23 @@ module.exports = function(grunt) {
       }
     },
     cssmin: {
-      minify: {              
+      minify: {
         src: ['css/normalize.css', 'css/foundation.css', 'css/jquery.gridster.min.css','bower_components/select2/select2.css','css/app.css', 'css/croppic.css'],
-        dest: 'css/all_css.min.css',        
+        dest: 'css/all_css.min.css',
       }
     },
     replace: {
       fonts: {
-        src: ['css/all_css.min.css'],            
+        src: ['css/all_css.min.css'],
         overwrite: true,
         replacements: [{
-          from: 'url(maven',                   
+          from: 'url(maven',
           to: 'url(../fonts/Maven/maven'
-        },{ 
-          from: 'url(fonts/new/',              
+        },{
+          from: 'url(fonts/new/',
           to: 'url(../fonts/helvetica-neue/fonts/new/'
-        },{ 
-          from: 'url(icomoon',                 
+        },{
+          from: 'url(icomoon',
           to: 'url(../fonts/pd-fonts/icomoon'
         }]
       },
@@ -109,10 +109,10 @@ module.exports = function(grunt) {
           from:"jscolor/",
           to: "js/jsColor/"
 
-        }]        
+        }]
       }
     },
-    watch: {      
+    watch: {
       js: {
         files: ['js/**/*.js'],
         tasks: ['minifyjs'],
@@ -168,19 +168,35 @@ module.exports = function(grunt) {
         }
       }
     },
-   clean:{      
+   clean:{
       options:{
         force:true,
       },
       appCss:{
         src:["css/app.css"]
      }
-   }
+   },
+
+  nggettext_extract: {
+    pot: {
+      files: {
+        'locale/angular_gettext.pot': ['**/*.php']
+      }
+    },
+  },
+
+  nggettext_compile: {
+    all: {
+      files: {
+        'locale_angular/translations.js': ['locale_angular/*.po']
+      }
+    },
+  }
 });
 
 
   grunt.registerTask('jstranslate',"Read all js files and extract strings that need to be translated",function(){
-        var usedStrings ={};        
+        var usedStrings ={};
         var file_str = ""+
         ""+
         "<?php session_start();"+
@@ -201,33 +217,33 @@ module.exports = function(grunt) {
         }
         for (var i=0;i<allJs.length;i++){
           var filePath = allJs[i];
-          var data = fs.readFileSync(filePath, {encoding: 'utf-8'})                
-          var regex = /_tr\(.*?\)/g; 
-          var result;          
-          while ( (result = regex.exec(data)) ) {                                                        
-                var str =result[0].slice(5,-2);              
+          var data = fs.readFileSync(filePath, {encoding: 'utf-8'})
+          var regex = /_tr\(.*?\)/g;
+          var result;
+          while ( (result = regex.exec(data)) ) {
+                var str =result[0].slice(5,-2);
                 grunt.log.writeln(str);
-                if (usedStrings[str] ===undefined){              
-                  if (str != ""){                                    
+                if (usedStrings[str] ===undefined){
+                  if (str != ""){
                     file_str+= '\t"'+str+'":<? echo json_encode(_("'+str+'")) ?>,\n'
                     usedStrings[str] = true;
                   }
                 }
-          }      
+          }
         }
         file_str+= "}\n";
-        fs.writeFileSync('code/shared/js_strings.php', file_str);            
+        fs.writeFileSync('code/shared/js_strings.php', file_str);
   })
 
   grunt.registerTask('prepareWatchApp',function(which){
     var yeomanObj = yeomanConfig[which];
     var file = grunt.file.read(yeomanObj.index);
-    var fileBlock = String(file.match(/<!-- BEGIN WATCH[\s\S]*END WATCH -->/));  
+    var fileBlock = String(file.match(/<!-- BEGIN WATCH[\s\S]*END WATCH -->/));
     var files = fileBlock.match(/\/.*js/g)
     for (var i=0;i<files.length;i++){
       if (files[i][0]==="/")
         files[i] = files[i].slice(1);
-    }  
+    }
     console.log('got files',files)
     yeomanObj.files = files;
   });
@@ -238,7 +254,7 @@ module.exports = function(grunt) {
     'prepareWatchApp:accountSettings',
     'prepareWatchApp:delivery',
     ])
-  
+
   grunt.registerTask('watcher',[
       'prepareWatch',
       'build',
@@ -246,8 +262,8 @@ module.exports = function(grunt) {
     ])
 
   grunt.registerTask('minifyjs', ['uglify','replace:jscolor']);
-  grunt.registerTask('minifycss', ['sass','cssmin','clean:appCss','replace:fonts']);  
+  grunt.registerTask('minifycss', ['sass','cssmin','clean:appCss','replace:fonts']);
   grunt.registerTask('build', ['minifyjs','minifycss']);
-  grunt.registerTask('default', ['watcher']);
+  grunt.registerTask('default', ['build']);
 
 };

@@ -1,0 +1,260 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: code/accountSettings/partials/subscription.php:48
+msgid ". Please add a credit card to resubscribe."
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:8
+msgid "ADD PAYMENT METHOD"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:36
+msgid "Address Line 1"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:38
+msgid "Address Line 2"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:40
+msgid "Address Line 3"
+msgstr ""
+
+#: code/accountSettings/partials/billingHistory.php:13
+msgid "Amount"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:35
+msgid "BILLING HISTORY"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:33
+msgid "Billing Address"
+msgstr ""
+
+#: code/accountSettings/index.php:24
+#: code/accountSettings/partials/billingHistory.php:5
+msgid "Billing History"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:4
+msgid "Billing Schedule"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:32
+msgid "Business Name"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:51
+#: code/accountSettings/partials/profile.php:51
+#: code/accountSettings/partials/subscription.php:52
+msgid "CANCEL"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:26
+msgid "CANCEL>"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:19
+#: code/accountSettings/partials/payment.php:21
+msgid "CCV"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:34
+msgid "CHANGE CARD"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:48
+#: code/accountSettings/partials/profile.php:48
+msgid "CHANGE DETAILS"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:44
+msgid "CHANGE PASSWORD"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:5
+msgid "Card Number"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:25
+msgid "Card ending {{card.number}}"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:19
+msgid "Confirm"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:15
+msgid "Credit Card Name"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:8
+msgid "Credit Card Number"
+msgstr ""
+
+#: code/accountSettings/partials/billingHistory.php:23
+msgid "DOWNLOAD PDF"
+msgstr ""
+
+#: code/accountSettings/partials/billingHistory.php:11
+msgid "Date"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:23
+msgid "Email Address"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:25
+msgid "Expires"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:5
+msgid "First Name"
+msgstr ""
+
+#: code/accountSettings/partials/billingHistory.php:10
+msgid "Inv no."
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:14
+msgid "Last Name"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:28
+msgid "MM"
+msgstr ""
+
+#: code/accountSettings/index.php:18
+msgid "My Account"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:40
+msgid "My Subscriptions"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:12
+msgid "Name on card"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:12
+msgid "New Password"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:5
+msgid "Old Password"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:42
+msgid "Password"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:1
+msgid "Payment"
+msgstr ""
+
+#: code/accountSettings/index.php:23
+msgid "Payment Methods"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:7
+msgid "Please add a payment method to keep your account active"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:27
+msgid "Please type a valid email address"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:36
+msgid "Please type your account name.(max 100chars)"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:9
+msgid "Please type your first name.(max 100chars)"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:18
+msgid "Please type your last name.(max 100chars)"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:44
+msgid "Postcode"
+msgstr ""
+
+#: code/accountSettings/index.php:26
+#: code/accountSettings/partials/password.php:1
+#: code/accountSettings/partials/profile.php:1
+msgid "Profile"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:55
+#: code/accountSettings/partials/subscription.php:56
+msgid "RESUBSCRIBE"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:49
+#: code/accountSettings/partials/profile.php:49
+msgid "SAVE"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:25
+msgid "SAVE CHANGES>"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:50
+msgid "SAVING..."
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:50
+msgid "SAVING...\");?>"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:27
+msgid "SAVING...>"
+msgstr ""
+
+#: code/accountSettings/partials/billingHistory.php:12
+msgid "Status"
+msgstr ""
+
+#: code/accountSettings/index.php:22
+#: code/accountSettings/partials/billingHistory.php:1
+#: code/accountSettings/partials/subscription.php:1
+msgid "Subscriptions"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:42
+msgid "Town/City"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:51
+msgid "UPGRADE"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:29
+msgid "YY"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:12
+msgid "You have an outstanding payment!"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:19
+msgid "You have no active subscriptions, your account will not be billed at this time."
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:17
+msgid "Your account will be billed <b class=\"helveticaneueWMedi\">&pound;{{getTotalSubscription()}} (+VAT)</b> <b class=\"helveticaneueWMedi\">{{ account.billingDate | date:\"MMM dd, yyyy\" }}</b>"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:18
+msgid "Your account will be deactivated on  <b class=\"helveticaneueWMedi\">{{ account.billingDate | date:\"MMM dd, yyyy\" }}</b>"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:13
+msgid "_tr(\"Please update your card details within \") + {{ diffInDays }} + _tr(\"days to prevent your account from being deactivated.\")"
+msgstr ""
