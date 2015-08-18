@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-17 18:30-0300\n"
+"POT-Creation-Date: 2015-08-18 12:25-0300\n"
 "PO-Revision-Date: 2014-09-10 16:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,17 +28,14 @@ msgid "Active?"
 msgstr "Aktiv?"
 
 #: code/accountSettings/partials/payment.php:36
-#, fuzzy
 msgid "Address Line 1"
 msgstr "Adresse des Unternehmens"
 
 #: code/accountSettings/partials/payment.php:38
-#, fuzzy
 msgid "Address Line 2"
 msgstr "Adresse des Unternehmens"
 
 #: code/accountSettings/partials/payment.php:40
-#, fuzzy
 msgid "Address Line 3"
 msgstr "Adresse des Unternehmens"
 
@@ -49,7 +46,6 @@ msgid "All"
 msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:13
-#, fuzzy
 msgid "Amount"
 msgstr "Menge?"
 
@@ -58,18 +54,15 @@ msgid "BILLING HISTORY"
 msgstr ""
 
 #: code/accountSettings/partials/payment.php:33
-#, fuzzy
 msgid "Billing Address"
 msgstr "Adresse des Unternehmens"
 
 #: code/accountSettings/index.php:23
 #: code/accountSettings/partials/billingHistory.php:5
-#, fuzzy
 msgid "Billing History"
 msgstr "Unternehmensprofil"
 
 #: code/accountSettings/partials/subscription.php:4
-#, fuzzy
 msgid "Billing Schedule"
 msgstr "Adresse des Unternehmens"
 
@@ -98,7 +91,6 @@ msgstr "SPRACHE ÄNDERN"
 
 #: code/accountSettings/partials/payment.php:48
 #: code/accountSettings/partials/profile.php:48
-#, fuzzy
 msgid "CHANGE DETAILS"
 msgstr "SPRACHE ÄNDERN"
 
@@ -139,12 +131,10 @@ msgstr ""
 
 #: code/kyc/partials/events.php:32 code/kyc/partials/orders.php:39
 #: code/kyc/partials/stream.php:28
-#, fuzzy
 msgid "Customer"
 msgstr "Neue Nutzer"
 
 #: code/kyc/index.php:26 code/kyc/partials/customers.php:8
-#, fuzzy
 msgid "Customers"
 msgstr "Neue Nutzer"
 
@@ -153,17 +143,14 @@ msgid "DOWNLOAD PDF"
 msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:11
-#, fuzzy
 msgid "Date"
 msgstr "Datum?"
 
 #: code/kyc/index.php:62
-#, fuzzy
 msgid "Date Range:"
 msgstr "Datum?"
 
 #: code/kyc/partials/orders.php:25
-#, fuzzy
 msgid "Date/Time"
 msgstr "Anfang"
 
@@ -184,7 +171,6 @@ msgid "Delivery charge"
 msgstr "Zustellgebühr"
 
 #: code/kyc/partials/stream.php:78
-#, fuzzy
 msgid "Discount"
 msgstr "Rabatt-Preis "
 
@@ -193,12 +179,10 @@ msgid "Discount offered for delivery orders (%)"
 msgstr "Rabbatangebot für Lieferbestellungen (%)"
 
 #: code/accountSettings/partials/profile.php:23
-#, fuzzy
 msgid "Email Address"
 msgstr "Adresse des Unternehmens"
 
 #: code/kyc/partials/customers.php:40
-#, fuzzy
 msgid "Email address"
 msgstr "Adresse des Unternehmens"
 
@@ -211,7 +195,6 @@ msgid "Enable delivery services"
 msgstr "Lieferservice aktivieren"
 
 #: code/kyc/partials/events.php:25
-#, fuzzy
 msgid "Event"
 msgstr "Veranstaltungen"
 
@@ -220,7 +203,6 @@ msgid "Events"
 msgstr "Veranstaltungen"
 
 #: code/kyc/index.php:81
-#, fuzzy
 msgid "Events:"
 msgstr "Veranstaltungen"
 
@@ -258,12 +240,10 @@ msgid "Inv no."
 msgstr ""
 
 #: code/kyc/partials/stock.php:26
-#, fuzzy
 msgid "Item"
 msgstr "Nachname"
 
 #: code/kyc/partials/events.php:39 code/kyc/partials/orders.php:46
-#, fuzzy
 msgid "Items"
 msgstr "Nachname"
 
@@ -289,7 +269,6 @@ msgid "MM"
 msgstr ""
 
 #: code/kyc/partials/stock.php:8
-#, fuzzy
 msgid "Menu items"
 msgstr "Angebote"
 
@@ -302,12 +281,10 @@ msgid "Minimum order value to qualify for delivery"
 msgstr "Erforderlicher Mindestbestellwert für Lieferung"
 
 #: code/accountSettings/index.php:18
-#, fuzzy
 msgid "My Account"
 msgstr "Ihr Konto"
 
 #: code/accountSettings/partials/subscription.php:40
-#, fuzzy
 msgid "My Subscriptions"
 msgstr "Beschreibung"
 
@@ -350,22 +327,18 @@ msgid "Order Status Alerts"
 msgstr "Meldung über Bestellstatus"
 
 #: code/kyc/partials/events.php:46 code/kyc/partials/orders.php:53
-#, fuzzy
 msgid "Order Total"
 msgstr "verspätete Bestellung"
 
 #: code/kyc/index.php:30 code/kyc/partials/orders.php:8
-#, fuzzy
 msgid "Orders"
 msgstr "verspätete Bestellung"
 
 #: code/kyc/partials/orders.php:32
-#, fuzzy
 msgid "Outlet"
 msgstr "Standorte"
 
 #: code/kyc/index.php:42
-#, fuzzy
 msgid "Outlet Name:"
 msgstr "Standorte"
 
@@ -436,7 +409,6 @@ msgid "Please type a valid email address"
 msgstr "Bitte geben Sie eine gültige E-Mail Adresse ein"
 
 #: code/accountSettings/partials/profile.php:36
-#, fuzzy
 msgid "Please type your account name.(max 100chars)"
 msgstr "Bitte geben Sie Ihren Nachnamen ein (max. 100 Zeichen). "
 
@@ -449,17 +421,14 @@ msgid "Please type your last name.(max 100chars)"
 msgstr "Bitte geben Sie Ihren Nachnamen ein (max. 100 Zeichen). "
 
 #: code/accountSettings/partials/subscription.php:13
-#, fuzzy
 msgid "Please update your card details within"
 msgstr "Bitte geben Sie Ihre E-Mail ein"
 
 #: code/accountSettings/partials/payment.php:44
-#, fuzzy
 msgid "Postcode"
 msgstr "Postleitzahl des Unternehmens"
 
 #: code/settings/delivery/partials/notifications.php:2
-#, fuzzy
 msgid "Preset Notifications"
 msgstr "Benachrichtigungen"
 
@@ -482,7 +451,6 @@ msgid "Profile"
 msgstr "Profil"
 
 #: code/kyc/partials/stock.php:33
-#, fuzzy
 msgid "Quantity Ordered"
 msgstr "Menge"
 
@@ -496,7 +464,6 @@ msgid "Refresh"
 msgstr ""
 
 #: code/kyc/index.php:27
-#, fuzzy
 msgid "Reports"
 msgstr "Meldung über abgelehnte Bestellung "
 
@@ -507,12 +474,10 @@ msgstr "SPEICHERN"
 
 #: code/settings/delivery/partials/delivery.php:58
 #: code/settings/delivery/partials/notifications.php:76
-#, fuzzy
 msgid "SAVE CHANGES"
 msgstr "ÄNDERUNGEN SPEICHERN"
 
 #: code/accountSettings/partials/password.php:25
-#, fuzzy
 msgid "SAVE CHANGES>"
 msgstr "ÄNDERUNGEN SPEICHERN"
 
@@ -523,19 +488,16 @@ msgid "SAVING..."
 msgstr "SPEICHERN..."
 
 #: code/accountSettings/partials/profile.php:50
-#, fuzzy
 msgid "SAVING...\""
 msgstr "SPEICHERN..."
 
 #: code/accountSettings/partials/password.php:27
-#, fuzzy
 msgid "SAVING...>"
 msgstr "SPEICHERN..."
 
 #: code/kyc/partials/customers.php:110 code/kyc/partials/events.php:123
 #: code/kyc/partials/orders.php:131 code/kyc/partials/reports.php:137
 #: code/kyc/partials/stock.php:96
-#, fuzzy
 msgid "Selected"
 msgstr "Auswahl Angebot"
 
@@ -564,17 +526,14 @@ msgid "TOTAL"
 msgstr ""
 
 #: code/kyc/partials/stream.php:42
-#, fuzzy
 msgid "Time"
 msgstr "Zeit?"
 
 #: code/kyc/partials/stream.php:21
-#, fuzzy
 msgid "Total"
 msgstr "verspätete Bestellung"
 
 #: code/kyc/partials/customers.php:33
-#, fuzzy
 msgid "Total Spent"
 msgstr "Gesamtumsatz"
 
@@ -587,7 +546,6 @@ msgid "UPGRADE"
 msgstr ""
 
 #: code/settings/delivery/partials/notifications.php:8
-#, fuzzy
 msgid "Venue Alerts"
 msgstr "Unternehmensname"
 
@@ -602,12 +560,10 @@ msgid "Yes"
 msgstr "Ja"
 
 #: code/accountSettings/partials/subscription.php:44
-#, fuzzy
 msgid "You are currently subscribed to the"
 msgstr "Ihre App ist zurzeit im "
 
 #: code/accountSettings/partials/subscription.php:12
-#, fuzzy
 msgid "You have an outstanding payment!"
 msgstr "Zahlungsmethode"
 
@@ -618,12 +574,10 @@ msgid ""
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:17
-#, fuzzy
 msgid "Your account will be billed"
 msgstr "Ihr Konto"
 
 #: code/accountSettings/partials/subscription.php:18
-#, fuzzy
 msgid "Your account will be deactivated on"
 msgstr "Ihr Konto"
 
@@ -632,17 +586,14 @@ msgid "Your free trial of this subscription will end at midnight on"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:48
-#, fuzzy
 msgid "Your subscription has been cancelled"
 msgstr "Angebot-Konfigurationen wurden gespeichert!"
 
 #: code/accountSettings/partials/subscription.php:13
-#, fuzzy
 msgid "days to prevent your account from being deactivated."
 msgstr "Ihr Konto"
 
 #: code/settings/delivery/partials/delivery.php:19
-#, fuzzy
 msgid "eg. \\\"NW1, NW2...\\\""
 msgstr "z.B. \"NW1, NW2...\""
 
@@ -657,11 +608,9 @@ msgstr ""
 #~ msgid "Please type your password"
 #~ msgstr "Bitte geben Sie Ihr Passwort ein"
 
-#, fuzzy
 #~ msgid "Sign in"
 #~ msgstr "Anmelden"
 
-#, fuzzy
 #~ msgid "I forgot my password"
 #~ msgstr "Haben Sie Ihr Passwort vergessen?"
 
@@ -686,84 +635,66 @@ msgstr ""
 #~ msgid "An email address is required."
 #~ msgstr "Eine E-Mail Adresse wird benötigt."
 
-#, fuzzy
 #~ msgid "Reset my password"
 #~ msgstr "Passwort zurücksetzen?"
 
-#, fuzzy
 #~ msgid "Sign up with "
 #~ msgstr "Anmelden"
 
-#, fuzzy
 #~ msgid "Basic information"
 #~ msgstr "Unternehmensprofil"
 
-#, fuzzy
 #~ msgid "First name"
 #~ msgstr "Vorname"
 
-#, fuzzy
 #~ msgid "Please type your first name"
 #~ msgstr "Bitte geben Sie Ihren Vornamen ein (max. 100 Zeichen). "
 
-#, fuzzy
 #~ msgid "Surname"
 #~ msgstr "Abkürzung"
 
-#, fuzzy
 #~ msgid "Please type your surname"
 #~ msgstr "Bitte geben Sie Ihre E-Mail ein"
 
-#, fuzzy
 #~ msgid "Create your "
 #~ msgstr "oder erstellen Sie ihren eigenen..."
 
-#, fuzzy
 #~ msgid " account"
 #~ msgstr "Ihr Konto"
 
 #~ msgid "Please type your email"
 #~ msgstr "Bitte geben Sie Ihre E-Mail ein"
 
-#, fuzzy
 #~ msgid "Billing information"
 #~ msgstr "Unternehmensprofil"
 
-#, fuzzy
 #~ msgid "Transaction Details"
 #~ msgstr "Beschreibung"
 
 #~ msgid "Description"
 #~ msgstr "Beschreibung"
 
-#, fuzzy
 #~ msgid "Please type your card number"
 #~ msgstr "Bitte geben Sie Ihre Telefonnummer ein. "
 
-#, fuzzy
 #~ msgid "Please type the name in your card"
 #~ msgstr "Bitte geben Sie Ihr Passwort ein"
 
-#, fuzzy
 #~ msgid "Please type your month/year"
 #~ msgstr "Bitte geben Sie Ihre E-Mail ein"
 
-#, fuzzy
 #~ msgid "Please type your security code"
 #~ msgstr "Bitte geben Sie Ihre E-Mail ein"
 
-#, fuzzy
 #~ msgid "Please type your postcode"
 #~ msgstr "Bitte geben Sie Ihr Passwort ein"
 
 #~ msgid "and"
 #~ msgstr "und"
 
-#, fuzzy
 #~ msgid "privacy policy"
 #~ msgstr "Datenschutzrichtlinien zu."
 
-#, fuzzy
 #~ msgid "Start using my "
 #~ msgstr "Anfang"
 
@@ -779,7 +710,6 @@ msgstr ""
 #~ msgid "Go to Dashboard"
 #~ msgstr "Dashboard"
 
-#, fuzzy
 #~ msgid "Order Screen"
 #~ msgstr "Startansicht"
 
@@ -834,11 +764,9 @@ msgstr ""
 #~ msgid "Help"
 #~ msgstr "Hilfe"
 
-#, fuzzy
 #~ msgid "Getting Started"
 #~ msgstr "Erste Schritte"
 
-#, fuzzy
 #~ msgid "Editing your Menu"
 #~ msgstr "Erstellen Sie Ihr Angebot"
 
@@ -1074,7 +1002,6 @@ msgstr ""
 #~ msgid "Time?"
 #~ msgstr "Zeit?"
 
-#, fuzzy
 #~ msgid "All Locations"
 #~ msgstr "Alle Kategorien"
 
@@ -1409,11 +1336,9 @@ msgstr ""
 #~ msgid "Please provide a minimum value for ordering"
 #~ msgstr "Bitte geben Sie einen Mindestbestellwert an"
 
-#, fuzzy
 #~ msgid "Do you offer a delivery service?"
 #~ msgstr "Lieferservice aktivieren"
 
-#, fuzzy
 #~ msgid "Do you require a phone number?"
 #~ msgstr "Bitte geben Sie Ihre Telefonnummer ein. "
 
@@ -1462,7 +1387,6 @@ msgstr ""
 #~ msgid "This is where you can monitor your takings and reports."
 #~ msgstr "Hier finden Sie eineÜbersicht über Ihre Einnahmen und Meldungen."
 
-#, fuzzy
 #~ msgid "Your online order page is"
 #~ msgstr "Der Shortcode Ihres Unternehmens ist"
 
@@ -1481,7 +1405,6 @@ msgstr ""
 #~ msgid "Returning users"
 #~ msgstr "Wiederkehrende Nutzer"
 
-#, fuzzy
 #~ msgid "Customer Analytics"
 #~ msgstr "Neue Nutzer"
 
@@ -1494,7 +1417,6 @@ msgstr ""
 #~ msgid "Delivery settings"
 #~ msgstr "Liefereinstellungen"
 
-#, fuzzy
 #~ msgid "Preset notifications"
 #~ msgstr "Benachrichtigungen"
 
@@ -1519,7 +1441,6 @@ msgstr ""
 #~ msgid "Change app mode"
 #~ msgstr "App-Modus ändern "
 
-#, fuzzy
 #~ msgid ""
 #~ "LIVE - Your app is visible and is ready to take real orders.<br/><br/"
 #~ ">DEMO - Your app is visible but does not take real orders.<br/><br/"
@@ -1531,14 +1452,12 @@ msgstr ""
 #~ "aufgenommen werden.<br/><br/>OFFLINE: Ihre App ist auf 'My Order "
 #~ "App'nicht verfügbar."
 
-#, fuzzy
 #~ msgid "active"
 #~ msgstr "Aktiv?"
 
 #~ msgid "Venue Title"
 #~ msgstr "Unternehmensname"
 
-#, fuzzy
 #~ msgid "Payment provider is not connected!"
 #~ msgstr "Zahlungsmethode"
 
@@ -1679,7 +1598,6 @@ msgstr ""
 #~ msgid "Move this section"
 #~ msgstr "Diese Kategorie bewegen"
 
-#, fuzzy
 #~ msgid "Collapse this section"
 #~ msgstr "Diese Kategorie bewegen"
 
@@ -1707,7 +1625,6 @@ msgstr ""
 #~ "Hiermit können Sie auswählen, ob Sie diesen Artikel im Angebot aktivieren "
 #~ "wollen oder nicht. "
 
-#, fuzzy
 #~ msgid "Upload image"
 #~ msgstr "Logo Hochladen"
 
@@ -1825,6 +1742,9 @@ msgstr ""
 #~ msgid "App mode"
 #~ msgstr "App-Modus"
 
+#~ msgid "Your app is currently in "
+#~ msgstr "Ihre App ist nun einsatzbereit!"
+
 #~ msgid " mode."
 #~ msgstr " Modus."
 
@@ -1865,48 +1785,39 @@ msgstr ""
 #~ msgid "Payment method was not setup."
 #~ msgstr "Zahlungsmethode"
 
-#, fuzzy
 #~ msgid "Select venue for use webapp"
 #~ msgstr "Auswahl MenÃ¼(s) fÃ¼r diesen Standort"
 
-#, fuzzy
 #~ msgid "Please choose a venue."
 #~ msgstr "Bitte wÃ¤hlen Sie ein Angebot aus. "
 
-#, fuzzy
 #~ msgid "Subtotal"
 #~ msgstr "verspätete Bestellung"
 
 #~ msgid "Monthly charge"
 #~ msgstr "Zustellgebühr"
 
-#, fuzzy
 #~ msgid " months contract"
 #~ msgstr "Dieser Monat"
 
-#, fuzzy
 #~ msgid "Have a discount code?"
 #~ msgstr "Bitte geben Sie einen Standortname ein. "
 
 #~ msgid "Premium Features"
 #~ msgstr "Premium Einstellungen"
 
-#, fuzzy
 #~ msgid "month"
 #~ msgstr "Dieser Monat"
 
-#, fuzzy
 #~ msgid "Features"
 #~ msgstr "Premium Einstellungen"
 
-#, fuzzy
 #~ msgid "Sign in to your Preoday Dashboard"
 #~ msgstr "Dashboard"
 
 #~ msgid "Preoday"
 #~ msgstr "Preoday"
 
-#, fuzzy
 #~ msgid "Sign in to your Dashboard"
 #~ msgstr "Dashboard"
 
@@ -1992,7 +1903,6 @@ msgstr ""
 #~ msgid "Choose a Collection Slot"
 #~ msgstr "Abholzeitraum auswählen"
 
-#, fuzzy
 #~ msgid "Choose Event Location"
 #~ msgstr "Auswahl einer Angebot-Kategorie"
 
@@ -2006,7 +1916,6 @@ msgstr ""
 #~ msgid "Yes, delete this event!"
 #~ msgstr "Ja, diese Veranstaltung löschen!"
 
-#, fuzzy
 #~ msgid "Choose Venue"
 #~ msgstr "Größe auswählen"
 
@@ -2106,123 +2015,95 @@ msgstr ""
 #~ msgid "Select all"
 #~ msgstr "Alles auswählen"
 
-#, fuzzy
 #~ msgid "Your app is now in demo mode!"
 #~ msgstr "Ihre App ist nun im Demo Modus."
 
-#, fuzzy
 #~ msgid "Your app is now offline!"
 #~ msgstr "Ihre App ist nun einsatzbereit!"
 
-#, fuzzy
 #~ msgid "My order app "
 #~ msgstr "Gesamtbestellungen"
 
 #~ msgid "All the fields are required."
 #~ msgstr "Eine E-Mail Adresse wird benötigt."
 
-#, fuzzy
 #~ msgid "Outstanding payment resolved"
 #~ msgstr "Zahlungsmethode"
 
-#, fuzzy
 #~ msgid "Payment method updated succesfully!"
 #~ msgstr "Zahlungsmethode"
 
-#, fuzzy
 #~ msgid "Are you sure you want to cancel?"
 #~ msgstr ""
 #~ "Sind Sie sicher, dass Sie diesen Nutzer löschen möchten? Alle Nutzerdaten "
 #~ "werden bei diesem Vorgang gelöscht!"
 
-#, fuzzy
 #~ msgid "Payment resolved"
 #~ msgstr "Zahlungsmethode"
 
-#, fuzzy
 #~ msgid "Resubscription Details"
 #~ msgstr "Beschreibung"
 
-#, fuzzy
 #~ msgid "Please enter a discount code"
 #~ msgstr "Bitte geben Sie einen Standortname ein. "
 
-#, fuzzy
 #~ msgid "Orders Report"
 #~ msgstr "Meldung über abgelehnte Bestellung "
 
-#, fuzzy
 #~ msgid "Orders By Events"
 #~ msgstr "Veranstaltungen aktualisieren"
 
-#, fuzzy
 #~ msgid "Orders By Outlets"
 #~ msgstr "Meldung über Bestellstatus"
 
-#, fuzzy
 #~ msgid "Select Events..."
 #~ msgstr "Auswahl Angebot"
 
-#, fuzzy
 #~ msgid "Date Range"
 #~ msgstr "Datum?"
 
-#, fuzzy
 #~ msgid "Month"
 #~ msgstr "Dieser Monat"
 
-#, fuzzy
 #~ msgid "3 Months"
 #~ msgstr "Dieser Monat"
 
-#, fuzzy
 #~ msgid "6 Months"
 #~ msgstr "Dieser Monat"
 
-#, fuzzy
 #~ msgid "Total Customers"
 #~ msgstr "Gesamtbestellungen"
 
-#, fuzzy
 #~ msgid "Orders per Customer"
 #~ msgstr "Neue Nutzer"
 
 #~ msgid "Items Ordered"
 #~ msgstr "verspätete Bestellung"
 
-#, fuzzy
 #~ msgid "Orders By Outlet"
 #~ msgstr "Meldung über Bestellstatus"
 
-#, fuzzy
 #~ msgid "Time of Orders Placed"
 #~ msgstr "verspätete Bestellung"
 
-#, fuzzy
 #~ msgid "Returning"
 #~ msgstr "Wiederkehrende Nutzer"
 
-#, fuzzy
 #~ msgid "Customers (Pi"
 #~ msgstr "Neue Nutzer"
 
-#, fuzzy
 #~ msgid "Customers (Ba"
 #~ msgstr "Neue Nutzer"
 
-#, fuzzy
 #~ msgid " orders"
 #~ msgstr "Gesamtbestellungen"
 
-#, fuzzy
 #~ msgid "Number of Orders"
 #~ msgstr "verspätete Bestellung"
 
-#, fuzzy
 #~ msgid "Revenue"
 #~ msgstr "Gesamtumsatz"
 
-#, fuzzy
 #~ msgid "Date Joined"
 #~ msgstr "Datum?"
 
@@ -2232,91 +2113,91 @@ msgstr ""
 #~ msgid "Last Order"
 #~ msgstr "verspätete Bestellung"
 
-#, fuzzy
 #~ msgid "Item Name"
 #~ msgstr "Nachname"
 
-#, fuzzy
 #~ msgid "Quantity Sold"
 #~ msgstr "Menge"
 
-#, fuzzy
 #~ msgid "Day"
 #~ msgstr "PreoDay"
 
-#, fuzzy
 #~ msgid "New Customers"
 #~ msgstr "Neue Nutzer"
 
-#, fuzzy
 #~ msgid "Highest Spending Customers"
 #~ msgstr "Wiederkehrende Nutzer"
 
-#, fuzzy
 #~ msgid "Sleeping Customers"
 #~ msgstr "Wiederkehrende Nutzer"
 
 #, fuzzy
+#~ msgid "Displays top 10 most popular items."
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Highest Grossing Days"
+#~ msgstr "Wiederkehrende Nutzer"
+
+#, fuzzy
+#~ msgid "Display top 10 highest grossing days."
+#~ msgstr "verspätete Bestellung"
+
 #~ msgid "Lowest Grossing Days"
 #~ msgstr "verspätete Bestellung"
 
-#, fuzzy
+#~ msgid "Display top 10 lowest grossing days."
+#~ msgstr "verspätete Bestellung"
+
 #~ msgid "Highest Order Days"
 #~ msgstr "verspätete Bestellung"
 
 #, fuzzy
+#~ msgid "Display top 10 highest order days."
+#~ msgstr "verspätete Bestellung"
+
 #~ msgid "Lowest Order Days"
 #~ msgstr "verspätete Bestellung"
 
 #, fuzzy
+#~ msgid "Display top 10 lowest order days."
+#~ msgstr "verspätete Bestellung"
+
 #~ msgid "Highest Grossing Hours"
 #~ msgstr "Wiederkehrende Nutzer"
 
-#, fuzzy
 #~ msgid "Highest Order Hours"
 #~ msgstr "verspätete Bestellung"
 
-#, fuzzy
 #~ msgid "years ago"
 #~ msgstr "Ihr Konto"
 
-#, fuzzy
 #~ msgid "year ago"
 #~ msgstr "Ihr Konto"
 
-#, fuzzy
 #~ msgid "months ago"
 #~ msgstr "Dieser Monat"
 
-#, fuzzy
 #~ msgid "month ago"
 #~ msgstr "Dieser Monat"
 
-#, fuzzy
 #~ msgid "days ago"
 #~ msgstr "Dieser Monat"
 
-#, fuzzy
 #~ msgid "hours ago"
 #~ msgstr "Ihr Konto"
 
-#, fuzzy
 #~ msgid "hour ago"
 #~ msgstr "Ihr Konto"
 
-#, fuzzy
 #~ msgid "minutes ago"
 #~ msgstr "Dieser Monat"
 
-#, fuzzy
 #~ msgid "minute ago"
 #~ msgstr "Dieser Monat"
 
-#, fuzzy
 #~ msgid "seconds ago"
 #~ msgstr "Dieser Monat"
 
-#, fuzzy
 #~ msgid "second ago"
 #~ msgstr "Dieser Monat"
 
@@ -2357,29 +2238,24 @@ msgstr ""
 #~ msgid "Sorry, Your order has been rejected. Please call us"
 #~ msgstr "Leider wurde Ihre Bestellung abgelehnt. Bitte rufen Sie uns an"
 
-#, fuzzy
 #~ msgid "Your new Premium Feature is now live!"
 #~ msgstr "Ihre App ist nun einsatzbereit!"
 
 #~ msgid "ADD CARD"
 #~ msgstr "SPRACHE ÄNDERN"
 
-#, fuzzy
 #~ msgid "Your card will be charged "
 #~ msgstr "Ihr Konto"
 
-#, fuzzy
 #~ msgid "Venue Code"
 #~ msgstr "Unternehmens-Name "
 
-#, fuzzy
 #~ msgid "Venue Name"
 #~ msgstr "Unternehmens-Name "
 
 #~ msgid "Admin username"
 #~ msgstr "Nutzername hinzufügen"
 
-#, fuzzy
 #~ msgid "SEARCHING..."
 #~ msgstr "SPEICHERN..."
 
@@ -2401,23 +2277,18 @@ msgstr ""
 #~ msgid "support@preoday.com"
 #~ msgstr "support@preoday.com"
 
-#, fuzzy
 #~ msgid "SAVING...\");?>"
 #~ msgstr "SPEICHERN..."
 
-#, fuzzy
 #~ msgid "on"
 #~ msgstr "Mo"
 
-#, fuzzy
 #~ msgid "Active Premium Features"
 #~ msgstr "Premium Einstellungen"
 
-#, fuzzy
 #~ msgid "Available Premium Features"
 #~ msgstr "Premium Einstellungen"
 
-#, fuzzy
 #~ msgid "Deactivated Premium Features"
 #~ msgstr "Premium Einstellungen"
 
@@ -2472,7 +2343,6 @@ msgstr ""
 #~ msgid "Fulfilment App"
 #~ msgstr "Bestellungs-Plattform"
 
-#, fuzzy
 #~ msgid "Account Settings"
 #~ msgstr "Unternehmens-Einstellungen"
 
@@ -2491,7 +2361,6 @@ msgstr ""
 #~ msgid "LOG IN"
 #~ msgstr "EINLOGGEN"
 
-#, fuzzy
 #~ msgid "LOGGING..."
 #~ msgstr "SPEICHERN..."
 
@@ -2548,26 +2417,21 @@ msgstr ""
 #~ msgid "SIGN UP"
 #~ msgstr "ANMELDEN"
 
-#, fuzzy
 #~ msgid "Update"
 #~ msgstr "Veranstaltungen aktualisieren"
 
 #~ msgid "General Settings"
 #~ msgstr "Allgemeine Einstellungen"
 
-#, fuzzy
 #~ msgid "Day of collection"
 #~ msgstr "Abholzeitraum auswÃ¤hlen"
 
-#, fuzzy
 #~ msgid "Before day of collection"
 #~ msgstr "FÃ¼r Lieferung und Abholung"
 
-#, fuzzy
 #~ msgid "RETURN TO STORE"
 #~ msgstr "MIT STRIPE VERBINDEN"
 
-#, fuzzy
 #~ msgid "RETURN TO DASHBOARD"
 #~ msgstr "ZURÃœCK ZUM DASHBOARD"
 
@@ -2577,11 +2441,9 @@ msgstr ""
 #~ msgid "Manage outlets"
 #~ msgstr "Standorte verwalten"
 
-#, fuzzy
 #~ msgid "eg."
 #~ msgstr "z.B. 30"
 
-#, fuzzy
 #~ msgid "Please type a notification (max 200chars)"
 #~ msgstr "Bitte geben Sie eine Beschreibung ein (max. 250 Zeichen)."
 

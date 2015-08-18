@@ -21,7 +21,6 @@ msgstr ""
 #: /var/www/webapp/inc/signin/signin_content.php:13
 #: /var/www/webapp/inc/forgot/forgot_content.php:13
 #: /var/www/webapp/inc/signup/signup_content.php:32
-#, fuzzy
 msgid "Email address"
 msgstr "Adresse de l'endroit"
 
@@ -41,12 +40,10 @@ msgid "Please type your password"
 msgstr "Veuillez tapez votre mot de passe"
 
 #: /var/www/webapp/inc/signin/signin_content.php:31
-#, fuzzy
 msgid "Sign in"
 msgstr "S'inscrire"
 
 #: /var/www/webapp/inc/signin/signin_content.php:39
-#, fuzzy
 msgid "I forgot my password"
 msgstr "Mot de passe oubliÃ© ? "
 
@@ -85,12 +82,10 @@ msgid "An email address is required."
 msgstr "Une adresse mail est requise"
 
 #: /var/www/webapp/inc/forgot/forgot_content.php:22
-#, fuzzy
 msgid "Reset my password"
 msgstr "rÃ©initialiser votre mot de passe?"
 
 #: /var/www/webapp/inc/signup/signup_content.php:4
-#, fuzzy
 msgid "Sign up with "
 msgstr "S'inscrire"
 
@@ -103,37 +98,30 @@ msgid ", you're just a few steps away from going live."
 msgstr ""
 
 #: /var/www/webapp/inc/signup/signup_content.php:10
-#, fuzzy
 msgid "Basic information"
 msgstr "Profil de l'entreprise"
 
 #: /var/www/webapp/inc/signup/signup_content.php:14
-#, fuzzy
 msgid "First name"
 msgstr "PrÃ©nom"
 
 #: /var/www/webapp/inc/signup/signup_content.php:16
-#, fuzzy
 msgid "Please type your first name"
 msgstr "Veuillez taper votre prÃ©nom (max 100 caractÃ¨res)"
 
 #: /var/www/webapp/inc/signup/signup_content.php:21
-#, fuzzy
 msgid "Surname"
 msgstr "PrÃ©nom"
 
 #: /var/www/webapp/inc/signup/signup_content.php:23
-#, fuzzy
 msgid "Please type your surname"
 msgstr "Veuillez taper votre Email"
 
 #: /var/www/webapp/inc/signup/signup_content.php:28
-#, fuzzy
 msgid "Create your "
 msgstr "ou crÃ©ez le vÃ´tre...."
 
 #: /var/www/webapp/inc/signup/signup_content.php:28
-#, fuzzy
 msgid " account"
 msgstr "Votre compte"
 
@@ -142,7 +130,6 @@ msgid "Please type your email"
 msgstr "Veuillez taper votre Email"
 
 #: /var/www/webapp/inc/signup/signup_content.php:46
-#, fuzzy
 msgid "Billing information"
 msgstr "Profil de l'entreprise"
 
@@ -162,7 +149,6 @@ msgid ""
 msgstr ""
 
 #: /var/www/webapp/inc/signup/signup_content.php:53
-#, fuzzy
 msgid "Transaction Details"
 msgstr "Descriptif"
 
@@ -181,7 +167,6 @@ msgstr ""
 # If this is in the sense of quantity it is 'QuantitÃ©?'
 # If it is in the sense of total amount i.e. money it will be 'Somme?'
 #: /var/www/webapp/inc/signup/signup_content.php:60
-#, fuzzy
 msgid "Amount"
 msgstr "Somme ?"
 
@@ -198,7 +183,6 @@ msgid "Why do you need my card details for a free trial?"
 msgstr ""
 
 #: /var/www/webapp/inc/signup/signup_content.php:112
-#, fuzzy
 msgid "Please type your card number"
 msgstr "Veuillez taper un nom de point de vente"
 
@@ -207,7 +191,6 @@ msgid "Name on card"
 msgstr ""
 
 #: /var/www/webapp/inc/signup/signup_content.php:121
-#, fuzzy
 msgid "Please type the name in your card"
 msgstr "Veuillez tapez votre mot de passe"
 
@@ -216,7 +199,6 @@ msgid "Expiry (month/year)"
 msgstr ""
 
 #: /var/www/webapp/inc/signup/signup_content.php:167
-#, fuzzy
 msgid "Please type your month/year"
 msgstr "Veuillez taper votre Email"
 
@@ -225,17 +207,14 @@ msgid "Security code"
 msgstr ""
 
 #: /var/www/webapp/inc/signup/signup_content.php:174
-#, fuzzy
 msgid "Please type your security code"
 msgstr "Veuillez taper votre Email"
 
 #: /var/www/webapp/inc/signup/signup_content.php:179
-#, fuzzy
 msgid "Postcode"
 msgstr "Code postal de l'endroit"
 
 #: /var/www/webapp/inc/signup/signup_content.php:181
-#, fuzzy
 msgid "Please type your postcode"
 msgstr "Veuillez tapez votre mot de passe"
 
@@ -252,7 +231,6 @@ msgid "and"
 msgstr "et"
 
 #: /var/www/webapp/inc/signup/signup_content.php:187
-#, fuzzy
 msgid "privacy policy"
 msgstr "politique de confidentialitÃ©"
 
@@ -269,7 +247,6 @@ msgid " app."
 msgstr ""
 
 #: /var/www/webapp/inc/signup/signup_content.php:194
-#, fuzzy
 msgid "Start using my "
 msgstr "Heure de dÃ©but"
 
@@ -309,7 +286,6 @@ msgstr "Aller sur le Dashboard"
 
 #: /var/www/webapp/inc/shared/h.php:39
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:107
-#, fuzzy
 msgid "Order Screen"
 msgstr "Ecran d'accueil"
 
@@ -323,7 +299,6 @@ msgid "Change Settings"
 msgstr "Modifier les rÃ©glages"
 
 #: /var/www/webapp/inc/shared/h.php:44
-#, fuzzy
 msgid "Delivery Settings"
 msgstr "RÃ©glages du Lieu"
 
@@ -345,7 +320,6 @@ msgid "Opening Hours"
 msgstr "Horaires d'ouverture"
 
 #: /var/www/webapp/inc/shared/h.php:46
-#, fuzzy
 msgid "Preset Notifications"
 msgstr "Notifications"
 
@@ -439,7 +413,6 @@ msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:99
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:164
-#, fuzzy
 msgid "My Account"
 msgstr "Votre compte"
 
@@ -454,13 +427,11 @@ msgstr "Aide"
 
 #: /var/www/webapp/inc/shared/h.php:106
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:171
-#, fuzzy
 msgid "Getting Started"
 msgstr "Commencer"
 
 #: /var/www/webapp/inc/shared/h.php:107
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:172
-#, fuzzy
 msgid "Editing your Menu"
 msgstr "CrÃ©ez votre menu"
 
@@ -716,7 +687,6 @@ msgstr "Bouton couleur nÂ°2"
 #: /var/www/webapp/inc/dashboard/outletConfig.php:88
 #: /var/www/webapp/inc/dashboard/menuConfig.php:412
 #: /var/www/webapp/inc/venue/selectVenue_content.php:19
-#, fuzzy
 msgid "SAVE CHANGES"
 msgstr "ENREGISTRER MODIFICATIONS"
 
@@ -1009,7 +979,6 @@ msgstr "Oui"
 
 #: /var/www/webapp/inc/dashboard/eventConfig.php:110
 #: /var/www/webapp/inc/dashboard/eventConfig.php:199
-#, fuzzy
 msgid "All Locations"
 msgstr "Toutes les sections"
 
@@ -1300,7 +1269,6 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:47
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:77
-#, fuzzy
 msgid "Open "
 msgstr "Ouvre Ã "
 
@@ -1313,25 +1281,21 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:50
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:79
-#, fuzzy
 msgid "For delivery and collection"
 msgstr "Choisir un crÃ©neau de rÃ©cupÃ©ration"
 
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:51
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:80
-#, fuzzy
 msgid "For delivery only"
 msgstr "Choisir un crÃ©neau de rÃ©cupÃ©ration"
 
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:52
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:81
-#, fuzzy
 msgid "For collection only"
 msgstr "Choisir un crÃ©neau de rÃ©cupÃ©ration"
 
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:53
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:82
-#, fuzzy
 msgid "Closed Today"
 msgstr "Ferme Ã "
 
@@ -1387,7 +1351,6 @@ msgid "What type of venue are you?"
 msgstr "Quel type d'entreprise avez vous?"
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:81
-#, fuzzy
 msgid "Restaurant (Cafe, Sandwich Bar, Restaurant, etc)"
 msgstr "Traiteur au dÃ©tail (CafÃ©, Sandwicherie, Bar, Restaurant, etc)"
 
@@ -1463,7 +1426,6 @@ msgid "Discount offered for collection orders (%)"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:123
-#, fuzzy
 msgid "e.g. 10"
 msgstr "ex. 25"
 
@@ -1472,17 +1434,14 @@ msgid "Please provide a discount percentage (between 0 and 100)"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:130
-#, fuzzy
 msgid "Minimum value for orders"
 msgstr "S'il vous plaÃ®t fournir un dÃ©lai de prÃ©paration"
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:131
-#, fuzzy
 msgid "e.g. 5"
 msgstr "ex. 25"
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:132
-#, fuzzy
 msgid "Please provide a minimum value for ordering"
 msgstr "S'il vous plaÃ®t fournir un dÃ©lai de prÃ©paration"
 
@@ -1499,7 +1458,6 @@ msgid "Enable cash payment option?"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:169
-#, fuzzy
 msgid "Do you require a phone number?"
 msgstr "Veuillez taper un nom de point de vente"
 
@@ -1510,7 +1468,6 @@ msgid ""
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:191
-#, fuzzy
 msgid "Address"
 msgstr "Adresse de l'endroit"
 
@@ -1523,12 +1480,10 @@ msgid "Town/City"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:205
-#, fuzzy
 msgid "Please type a Town/City (max 45chars)"
 msgstr "Veuillez inscrire un code postal (max 45 caractÃ¨res)"
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:212
-#, fuzzy
 msgid "Country"
 msgstr "Pays du business"
 
@@ -1537,7 +1492,6 @@ msgid "Please choose a country"
 msgstr "Veuillez choisir un pays"
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:464
-#, fuzzy
 msgid "Post code"
 msgstr "Code postal de l'endroit"
 
@@ -1550,17 +1504,14 @@ msgid "Language"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:477
-#, fuzzy
 msgid "Please select your language"
 msgstr "Veuillez sÃ©lectionner fonctions que vous fallez"
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:483
-#, fuzzy
 msgid "Timezone"
 msgstr "Heure?"
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:491
-#, fuzzy
 msgid "Please select your timezone"
 msgstr "Entrer vos exigences."
 
@@ -1569,7 +1520,6 @@ msgid "Currency"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:503
-#, fuzzy
 msgid "Please select your currency"
 msgstr "Veuillez sÃ©lectionner fonctions que vous fallez"
 
@@ -1583,7 +1533,6 @@ msgstr ""
 "Câ€™est de lÃ  que vous pouvez gÃ©rer vos recettes et rapports de commandes"
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:74
-#, fuzzy
 msgid "Your online order page is"
 msgstr "Votre 'short code' d'entreprise"
 
@@ -1608,7 +1557,6 @@ msgid "Returning users"
 msgstr "Utilisateurs rÃ©currents"
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:113
-#, fuzzy
 msgid "Customer Analytics"
 msgstr "Nouveaux utilisateurs"
 
@@ -1621,17 +1569,14 @@ msgid "Change settings"
 msgstr "Modifier les paramÃ¨tres"
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:133
-#, fuzzy
 msgid "Delivery settings"
 msgstr "RÃ©glages du Lieu"
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:134
-#, fuzzy
 msgid "Preset notifications"
 msgstr "Notifications"
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:136
-#, fuzzy
 msgid "Opening hours"
 msgstr "Horaires d'ouverture"
 
@@ -1656,12 +1601,10 @@ msgid "Add a payment method"
 msgstr "Ajouter un moyen de paiement"
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:189
-#, fuzzy
 msgid "Change app mode"
 msgstr "Changer le statut de l'application"
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:189
-#, fuzzy
 msgid ""
 "LIVE - Your app is visible and is ready to take real orders.<br/><br/>DEMO - "
 "Your app is visible but does not take real orders.<br/><br/>OFFLINE - Your "
@@ -1736,7 +1679,6 @@ msgid "GO TO MY ACCOUNT"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:287
-#, fuzzy
 msgid "Payment provider is not connected!"
 msgstr "Moyen de paiement"
 
@@ -1795,12 +1737,10 @@ msgid "Which menu section does this meal deal belong in?"
 msgstr "Ce Deal repas appartient Ã  quelle section du menu?"
 
 #: /var/www/webapp/inc/dashboard/mdConfig.php:32
-#, fuzzy
 msgid "Total Price "
 msgstr "Prix Total (&euro;)"
 
 #: /var/www/webapp/inc/dashboard/mdConfig.php:33
-#, fuzzy
 msgid "Discount Price "
 msgstr "Prix avec rÃ©duction (&euro;)"
 
@@ -1970,13 +1910,11 @@ msgstr "Bougez cette section"
 
 #: /var/www/webapp/inc/dashboard/menuConfig.php:85
 #: /var/www/webapp/inc/dashboard/menuConfig.php:227
-#, fuzzy
 msgid "Collapse this section"
 msgstr "Bougez cette section"
 
 #: /var/www/webapp/inc/dashboard/menuConfig.php:95
 #: /var/www/webapp/inc/dashboard/menuConfig.php:237
-#, fuzzy
 msgid "Price "
 msgstr "Prix?"
 
@@ -2016,7 +1954,6 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/menuConfig.php:138
 #: /var/www/webapp/inc/dashboard/menuConfig.php:288
-#, fuzzy
 msgid "Upload image"
 msgstr "TÃ©lÃ©chargement logo"
 
@@ -2259,18 +2196,15 @@ msgid "Payment method was not setup."
 msgstr "Moyen de paiement"
 
 #: /var/www/webapp/inc/venue/selectVenue_content.php:4
-#, fuzzy
 msgid "Select venue for use webapp"
 msgstr "SÃ©lectionner des menu pour cet point du vente"
 
 #: /var/www/webapp/inc/venue/selectVenue_content.php:14
-#, fuzzy
 msgid "Please choose a venue."
 msgstr "Veuillez choisir un menu"
 
 #: /var/www/webapp/code/notification/templates/subscriptionpayment.php:11
 #: /var/www/webapp/code/notification/templates/purchase.php:16
-#, fuzzy
 msgid "Subtotal"
 msgstr "RÃ©arranger"
 
@@ -2289,7 +2223,6 @@ msgid "One-off payment"
 msgstr ""
 
 #: /var/www/webapp/code/notification/templates/purchase.php:9
-#, fuzzy
 msgid "Monthly charge"
 msgstr "Ce mois-ci"
 
@@ -2298,17 +2231,14 @@ msgid "*minimum "
 msgstr ""
 
 #: /var/www/webapp/code/notification/templates/purchase.php:11
-#, fuzzy
 msgid " months contract"
 msgstr "Ce mois-ci"
 
 #: /var/www/webapp/code/notification/templates/purchase.php:24
-#, fuzzy
 msgid "Discount"
 msgstr "Prix avec rÃ©duction (&euro;)"
 
 #: /var/www/webapp/code/notification/templates/purchase.php:33
-#, fuzzy
 msgid "Have a discount code?"
 msgstr "Veuillez taper un nom de point de vente"
 
@@ -2361,7 +2291,6 @@ msgid "GET IN TOUCH"
 msgstr ""
 
 #: /var/www/webapp/code/shop/shop.php:41 /var/www/webapp/code/shop/shop.php:70
-#, fuzzy
 msgid "month"
 msgstr "Ce mois-ci"
 
@@ -2399,7 +2328,6 @@ msgid "INSTALLED"
 msgstr ""
 
 #: /var/www/webapp/code/shop/shop.php:108
-#, fuzzy
 msgid "Features"
 msgstr "Fonctions Premium"
 
@@ -2436,7 +2364,6 @@ msgid "Halal"
 msgstr ""
 
 #: /var/www/webapp/code/shared/override_vars.php:13
-#, fuzzy
 msgid "Sign in to your Preoday Dashboard"
 msgstr "Aller sur le Dashboard"
 
@@ -2447,7 +2374,6 @@ msgid "Preoday"
 msgstr "Preoday"
 
 #: /var/www/webapp/code/shared/override_vars.php:37
-#, fuzzy
 msgid "Sign in to your Dashboard"
 msgstr "Aller sur le Dashboard"
 
@@ -2561,7 +2487,6 @@ msgid "Choose a Collection Slot"
 msgstr "Choisir un crÃ©neau de rÃ©cupÃ©ration"
 
 #: /var/www/webapp/code/shared/js_strings.php:34
-#, fuzzy
 msgid "Choose Event Location"
 msgstr "Choisir une section de menu"
 
@@ -2578,7 +2503,6 @@ msgid "Yes, delete this event!"
 msgstr "Oui, supprimer cet Ã©vÃ©nement"
 
 #: /var/www/webapp/code/shared/js_strings.php:37
-#, fuzzy
 msgid "Choose Venue"
 msgstr "Choisir une taille"
 
@@ -2701,12 +2625,10 @@ msgid "Select all"
 msgstr "SÃ©lectionner tout"
 
 #: /var/www/webapp/code/shared/js_strings.php:65
-#, fuzzy
 msgid "Your app is now in demo mode!"
 msgstr "Votre application est maintenant en mode DEMO"
 
 #: /var/www/webapp/code/shared/js_strings.php:66
-#, fuzzy
 msgid "Your app is now offline!"
 msgstr "Votre application fonctionne maintenant !"
 
@@ -2719,7 +2641,6 @@ msgid "You need to subscribe to a package before changing the app mode"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:69
-#, fuzzy
 msgid "My order app "
 msgstr "Total commandes"
 
@@ -2728,7 +2649,6 @@ msgid "Sorry, these password do not match. Please try again."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:71
-#, fuzzy
 msgid "All the fields are required."
 msgstr "Une adresse mail est requise"
 
@@ -2737,7 +2657,6 @@ msgid "Please fill in all the required fields."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:73
-#, fuzzy
 msgid "Outstanding payment resolved"
 msgstr "Moyen de paiement"
 
@@ -2746,7 +2665,6 @@ msgid "Ok"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:75
-#, fuzzy
 msgid "Payment method updated succesfully!"
 msgstr "Moyen de paiement"
 
@@ -2773,7 +2691,6 @@ msgid ""
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:82
-#, fuzzy
 msgid "Are you sure you want to cancel?"
 msgstr ""
 "ÃŠtes-vous sÃ»r de vouloir supprimer cet utilisateur? NB: toutes les "
@@ -2800,22 +2717,18 @@ msgid "To upgrade your account, please contact "
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:87
-#, fuzzy
 msgid "Payment resolved"
 msgstr "Moyen de paiement"
 
 #: /var/www/webapp/code/shared/js_strings.php:88
-#, fuzzy
 msgid "Resubscription Details"
 msgstr "Descriptif"
 
 #: /var/www/webapp/code/shared/js_strings.php:89
-#, fuzzy
 msgid "Please enter a discount code"
 msgstr "Veuillez taper un nom de point de vente"
 
 #: /var/www/webapp/code/shared/js_strings.php:90
-#, fuzzy
 msgid "Welcome to Know Your Customer"
 msgstr "Nouveaux utilisateurs"
 
@@ -2830,12 +2743,10 @@ msgid "GET STARTED"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:93
-#, fuzzy
 msgid "Customers"
 msgstr "Nouveaux utilisateurs"
 
 #: /var/www/webapp/code/shared/js_strings.php:94
-#, fuzzy
 msgid "Reports"
 msgstr "RÃ©arranger"
 
@@ -2844,22 +2755,18 @@ msgid "Stock"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:96
-#, fuzzy
 msgid "Orders Report"
 msgstr "RÃ©arranger"
 
 #: /var/www/webapp/code/shared/js_strings.php:97
-#, fuzzy
 msgid "Orders By Events"
 msgstr "Actualiser vos Ã©vÃ©nements"
 
 #: /var/www/webapp/code/shared/js_strings.php:98
-#, fuzzy
 msgid "Orders By Outlets"
 msgstr "Actualiser vos Ã©vÃ©nements"
 
 #: /var/www/webapp/code/shared/js_strings.php:99
-#, fuzzy
 msgid "Select Events..."
 msgstr "SÃ©lectionner tous les menus("
 
@@ -2868,7 +2775,6 @@ msgid "No events in this period"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:101
-#, fuzzy
 msgid "Date Range"
 msgstr "Date?"
 
@@ -2877,17 +2783,14 @@ msgid "Week"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:103
-#, fuzzy
 msgid "Month"
 msgstr "Ce mois-ci"
 
 #: /var/www/webapp/code/shared/js_strings.php:104
-#, fuzzy
 msgid "3 Months"
 msgstr "Ce mois-ci"
 
 #: /var/www/webapp/code/shared/js_strings.php:105
-#, fuzzy
 msgid "6 Months"
 msgstr "Ce mois-ci"
 
@@ -2896,12 +2799,10 @@ msgid "Year"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:107
-#, fuzzy
 msgid "Total Customers"
 msgstr "Total commandes"
 
 #: /var/www/webapp/code/shared/js_strings.php:108
-#, fuzzy
 msgid "Orders per Customer"
 msgstr "Nouveaux utilisateurs"
 
@@ -2910,12 +2811,10 @@ msgid "Average Order Value"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:110
-#, fuzzy
 msgid "Items Ordered"
 msgstr "QuantitÃ©"
 
 #: /var/www/webapp/code/shared/js_strings.php:111
-#, fuzzy
 msgid "Orders By Outlet"
 msgstr "Actualiser vos Ã©vÃ©nements"
 
@@ -2932,7 +2831,6 @@ msgid "In advance"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:115
-#, fuzzy
 msgid "Time of Orders Placed"
 msgstr "RÃ©arranger"
 
@@ -2945,32 +2843,26 @@ msgid "New"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:118
-#, fuzzy
 msgid "Returning"
 msgstr "Utilisateurs rÃ©currents"
 
 #: /var/www/webapp/code/shared/js_strings.php:119
-#, fuzzy
 msgid "Customers (Pi"
 msgstr "Nouveaux utilisateurs"
 
 #: /var/www/webapp/code/shared/js_strings.php:120
-#, fuzzy
 msgid "Total"
 msgstr "RÃ©arranger"
 
 #: /var/www/webapp/code/shared/js_strings.php:121
-#, fuzzy
 msgid "Customers (Ba"
 msgstr "Nouveaux utilisateurs"
 
 #: /var/www/webapp/code/shared/js_strings.php:122
-#, fuzzy
 msgid " orders"
 msgstr "Total commandes"
 
 #: /var/www/webapp/code/shared/js_strings.php:123
-#, fuzzy
 msgid "Number of Orders"
 msgstr "RÃ©arranger"
 
@@ -2979,17 +2871,14 @@ msgid "Menu Item Popularity"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:125
-#, fuzzy
 msgid "Revenue"
 msgstr "Total chiffre d'affaires"
 
 #: /var/www/webapp/code/shared/js_strings.php:126
-#, fuzzy
 msgid "Date Joined"
 msgstr "Date?"
 
 #: /var/www/webapp/code/shared/js_strings.php:128
-#, fuzzy
 msgid "Email Address"
 msgstr "Adresse de l'endroit"
 
@@ -2998,12 +2887,10 @@ msgid "Marketing"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:130
-#, fuzzy
 msgid "Date of Order"
 msgstr "RÃ©arranger"
 
 #: /var/www/webapp/code/shared/js_strings.php:131
-#, fuzzy
 msgid "Total Spent"
 msgstr "Total chiffre d'affaires"
 
@@ -3016,27 +2903,22 @@ msgid "% Decrease"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:134
-#, fuzzy
 msgid "Last Order"
 msgstr "RÃ©arranger"
 
 #: /var/www/webapp/code/shared/js_strings.php:135
-#, fuzzy
 msgid "Item Name"
 msgstr "Nom de Famille"
 
 #: /var/www/webapp/code/shared/js_strings.php:136
-#, fuzzy
 msgid "Quantity Sold"
 msgstr "QuantitÃ©"
 
 #: /var/www/webapp/code/shared/js_strings.php:137
-#, fuzzy
 msgid "Day"
 msgstr "Preoday"
 
 #: /var/www/webapp/code/shared/js_strings.php:138
-#, fuzzy
 msgid "Date"
 msgstr "Date?"
 
@@ -3057,7 +2939,6 @@ msgid "Value Sold"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:143
-#, fuzzy
 msgid "New Customers"
 msgstr "Nouveaux utilisateurs"
 
@@ -3093,7 +2974,6 @@ msgid "Displays top 50 customers who have placed the most number of orders."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:151
-#, fuzzy
 msgid "Highest Spending Customers"
 msgstr "Utilisateurs rÃ©currents"
 
@@ -3140,7 +3020,6 @@ msgid ""
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:161
-#, fuzzy
 msgid "Sleeping Customers"
 msgstr "Utilisateurs rÃ©currents"
 
@@ -3179,7 +3058,6 @@ msgid "Display top 10 highest grossing days."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:170
-#, fuzzy
 msgid "Lowest Grossing Days"
 msgstr "RÃ©arranger"
 
@@ -3188,7 +3066,6 @@ msgid "Display top 10 lowest grossing days."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:172
-#, fuzzy
 msgid "Highest Order Days"
 msgstr "RÃ©arranger"
 
@@ -3197,7 +3074,6 @@ msgid "Display top 10 highest order days."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:174
-#, fuzzy
 msgid "Lowest Order Days"
 msgstr "RÃ©arranger"
 
@@ -3206,7 +3082,6 @@ msgid "Display top 10 lowest order days."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:176
-#, fuzzy
 msgid "Highest Grossing Hours"
 msgstr "Utilisateurs rÃ©currents"
 
@@ -3216,7 +3091,6 @@ msgid ""
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:178
-#, fuzzy
 msgid "Highest Order Hours"
 msgstr "RÃ©arranger"
 
@@ -3227,27 +3101,22 @@ msgid ""
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:180
-#, fuzzy
 msgid "years ago"
 msgstr "Votre compte"
 
 #: /var/www/webapp/code/shared/js_strings.php:181
-#, fuzzy
 msgid "year ago"
 msgstr "Votre compte"
 
 #: /var/www/webapp/code/shared/js_strings.php:182
-#, fuzzy
 msgid "months ago"
 msgstr "Ce mois-ci"
 
 #: /var/www/webapp/code/shared/js_strings.php:183
-#, fuzzy
 msgid "month ago"
 msgstr "Ce mois-ci"
 
 #: /var/www/webapp/code/shared/js_strings.php:184
-#, fuzzy
 msgid "days ago"
 msgstr "Ce mois-ci"
 
@@ -3256,32 +3125,26 @@ msgid "yesterday"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:186
-#, fuzzy
 msgid "hours ago"
 msgstr "Votre compte"
 
 #: /var/www/webapp/code/shared/js_strings.php:187
-#, fuzzy
 msgid "hour ago"
 msgstr "Votre compte"
 
 #: /var/www/webapp/code/shared/js_strings.php:188
-#, fuzzy
 msgid "minutes ago"
 msgstr "Ce mois-ci"
 
 #: /var/www/webapp/code/shared/js_strings.php:189
-#, fuzzy
 msgid "minute ago"
 msgstr "Ce mois-ci"
 
 #: /var/www/webapp/code/shared/js_strings.php:190
-#, fuzzy
 msgid "seconds ago"
 msgstr "Ce mois-ci"
 
 #: /var/www/webapp/code/shared/js_strings.php:191
-#, fuzzy
 msgid "second ago"
 msgstr "Ce mois-ci"
 
@@ -3310,7 +3173,6 @@ msgid "Your order is running 15 mins late"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:198
-#, fuzzy
 msgid "Late Order"
 msgstr "RÃ©arranger"
 
@@ -3359,7 +3221,6 @@ msgid "START TRIAL"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:211
-#, fuzzy
 msgid "Your new Premium Feature is now live!"
 msgstr "Votre application fonctionne maintenant !"
 
@@ -3377,7 +3238,6 @@ msgid ""
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:214
-#, fuzzy
 msgid "ADD CARD"
 msgstr "CHANGER LA LANGUE"
 
@@ -3394,7 +3254,6 @@ msgid "Buy "
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:218
-#, fuzzy
 msgid "Your card will be charged "
 msgstr "Votre compte"
 
@@ -3409,17 +3268,14 @@ msgid "Search Venue"
 msgstr ""
 
 #: /var/www/webapp/code/settings/switch/switch-view.php:43
-#, fuzzy
 msgid "Venue Code"
 msgstr "Nom de l'endroit"
 
 #: /var/www/webapp/code/settings/switch/switch-view.php:47
-#, fuzzy
 msgid "Venue Name"
 msgstr "Nom de l'endroit"
 
 #: /var/www/webapp/code/settings/switch/switch-view.php:51
-#, fuzzy
 msgid "Admin username"
 msgstr "Ajouter un nom d'utilisateur"
 
@@ -3428,7 +3284,6 @@ msgid "Search"
 msgstr ""
 
 #: /var/www/webapp/code/settings/switch/switch-view.php:59
-#, fuzzy
 msgid "SEARCHING..."
 msgstr "EN COURS DE SAUVEGARDE"
 
@@ -3488,59 +3343,45 @@ msgstr ""
 msgid "support@preoday.com"
 msgstr "support@preoday.com"
 
-#, fuzzy
 #~ msgid "Address Line 1"
 #~ msgstr "Adresse de l'endroit"
 
-#, fuzzy
 #~ msgid "Address Line 2"
 #~ msgstr "Adresse de l'endroit"
 
-#, fuzzy
 #~ msgid "Address Line 3"
 #~ msgstr "Adresse de l'endroit"
 
-#, fuzzy
 #~ msgid "Billing Address"
 #~ msgstr "Adresse de l'endroit"
 
-#, fuzzy
 #~ msgid "Billing History"
 #~ msgstr "Profil de l'entreprise"
 
-#, fuzzy
 #~ msgid "Billing Schedule"
 #~ msgstr "Adresse de l'endroit"
 
-#, fuzzy
 #~ msgid "CHANGE CARD"
 #~ msgstr "CHANGER LA LANGUE"
 
-#, fuzzy
 #~ msgid "CHANGE DETAILS"
 #~ msgstr "CHANGER LA LANGUE"
 
-#, fuzzy
 #~ msgid "CHANGE PASSWORD"
 #~ msgstr "RÃ©initialiser le mot de passe"
 
-#, fuzzy
 #~ msgid "Confirm"
 #~ msgstr "Confirmer votre mot de passe"
 
-#, fuzzy
 #~ msgid "My Subscriptions"
 #~ msgstr "Descriptif"
 
-#, fuzzy
 #~ msgid "Payment"
 #~ msgstr "3. Paiement"
 
-#, fuzzy
 #~ msgid "Payment Methods"
 #~ msgstr "Moyen de paiement"
 
-#, fuzzy
 #~ msgid "Please type your account name.(max 100chars)"
 #~ msgstr "Veuillez taper votre nom (max 100 caractÃ¨res)"
 
@@ -3550,155 +3391,117 @@ msgstr "support@preoday.com"
 #~ msgid "Please type your last name.(max 100chars)"
 #~ msgstr "Veuillez taper votre nom (max 100 caractÃ¨res)"
 
-#, fuzzy
 #~ msgid "SAVING...\");?>"
 #~ msgstr "EN COURS DE SAUVEGARDE"
 
-#, fuzzy
 #~ msgid "SAVING...>"
 #~ msgstr "EN COURS DE SAUVEGARDE"
 
-#, fuzzy
 #~ msgid "Subscriptions"
 #~ msgstr "Descriptif"
 
-#, fuzzy
 #~ msgid "You have an outstanding payment!"
 #~ msgstr "Moyen de paiement"
 
-#, fuzzy
 #~ msgid "Orders"
 #~ msgstr "RÃ©arranger"
 
-#, fuzzy
 #~ msgid "Outlet Name:"
 #~ msgstr "Points de vente"
 
-#, fuzzy
 #~ msgid "Date Range:"
 #~ msgstr "Date?"
 
-#, fuzzy
 #~ msgid "Events: "
 #~ msgstr "EvÃ©nements"
 
-#, fuzzy
 #~ msgid "Date/Time"
 #~ msgstr "Heure de dÃ©but"
 
-#, fuzzy
 #~ msgid "Outlet"
 #~ msgstr "Points de vente"
 
-#, fuzzy
 #~ msgid "Customer"
 #~ msgstr "Nouveaux utilisateurs"
 
-#, fuzzy
 #~ msgid "Order Total"
 #~ msgstr "RÃ©arranger"
 
-#, fuzzy
 #~ msgid "Selected"
 #~ msgstr "SÃ©lectionner tous les menus("
 
-#, fuzzy
 #~ msgid "Order"
 #~ msgstr "RÃ©arranger"
 
-#, fuzzy
 #~ msgid "Time"
 #~ msgstr "Heure?"
 
-#, fuzzy
 #~ msgid "Choose preset:"
 #~ msgstr "Choisir une taille"
 
-#, fuzzy
 #~ msgid "Event"
 #~ msgstr "EvÃ©nements"
 
-#, fuzzy
 #~ msgid "Menu items"
 #~ msgstr "Menus"
 
-#, fuzzy
 #~ msgid "Item"
 #~ msgstr "Nom de Famille"
 
-#, fuzzy
 #~ msgid "Quantity Ordered"
 #~ msgstr "QuantitÃ©"
 
-#, fuzzy
 #~ msgid "Delivery Areas"
 #~ msgstr "RÃ©glages du Lieu"
 
-#, fuzzy
 #~ msgid "Please type a delivery zone (max 200chars)"
 #~ msgstr "Veuillez entrer un nom d'utilisateur (max 200 caractÃ¨res)"
 
-#, fuzzy
 #~ msgid "Please enter a valid telephone number"
 #~ msgstr "Veuillez entrer une adresse email valide"
 
-#, fuzzy
 #~ msgid "Please enter a valid number (e.g. 20.52)"
 #~ msgstr "Veuillez entrer une adresse email valide"
 
-#, fuzzy
 #~ msgid "Delivery charge"
 #~ msgstr "RÃ©glages du Lieu"
 
-#, fuzzy
 #~ msgid "Please enter a valid number (e.g. 3.25)"
 #~ msgstr "Veuillez entrer une adresse email valide"
 
-#, fuzzy
 #~ msgid "Please enter a valid time interval in minutes (e.g. 20)"
 #~ msgstr "Veuillez entrer une adresse email valide"
 
-#, fuzzy
 #~ msgid "Order Status Alerts"
 #~ msgstr "RÃ©arranger"
 
-#, fuzzy
 #~ msgid "Venue Alerts"
 #~ msgstr "Titre du lieu"
 
-#, fuzzy
 #~ msgid "Please update your card details within "
 #~ msgstr "Veuillez taper votre Email"
 
-#, fuzzy
 #~ msgid "Your account will be billed"
 #~ msgstr "Votre compte"
 
-#, fuzzy
 #~ msgid "on"
 #~ msgstr "Lun"
 
-#, fuzzy
 #~ msgid "Your account will be deactivated on "
 #~ msgstr "Votre compte"
 
-#, fuzzy
 #~ msgid "Your subscription has been cancelled"
 #~ msgstr "Configurations du menu ont bien Ã©tÃ© enregistrÃ©es !"
 
-#, fuzzy
 #~ msgid "Active Premium Features"
 #~ msgstr "Fonctions Premium"
 
-#, fuzzy
 #~ msgid "Available Premium Features"
 #~ msgstr "Fonctions Premium"
 
-#, fuzzy
 #~ msgid "Deactivated Premium Features"
 #~ msgstr "Fonctions Premium"
 
-#, fuzzy
 #~ msgid ""
 #~ "Are you sure you want to cancel this Free Trial? This action cannot be "
 #~ "undone?"
@@ -3706,7 +3509,6 @@ msgstr "support@preoday.com"
 #~ "ÃŠtes-vous sÃ»r de vouloir supprimer cette section? NB: tous les articles "
 #~ "et options seront perdus."
 
-#, fuzzy
 #~ msgid "Are you sure you want to reinstall this Premium Feature?"
 #~ msgstr ""
 #~ "ÃŠtes-vous sÃ»r de vouloir supprimer cet utilisateur? NB: toutes les "
@@ -3751,7 +3553,6 @@ msgstr "support@preoday.com"
 #~ msgid "Fulfilment App"
 #~ msgstr "application d'exÃ©cution "
 
-#, fuzzy
 #~ msgid "Account Settings"
 #~ msgstr "RÃ©glages du Lieu"
 
@@ -3788,7 +3589,6 @@ msgstr "support@preoday.com"
 #~ msgid "LOG IN"
 #~ msgstr "SE CONNECTER"
 
-#, fuzzy
 #~ msgid "LOGGING..."
 #~ msgstr "EN COURS DE SAUVEGARDE"
 
@@ -3842,23 +3642,18 @@ msgstr "support@preoday.com"
 #~ msgid "SIGN UP"
 #~ msgstr "S'INSCRIRE"
 
-#, fuzzy
 #~ msgid "Update"
 #~ msgstr "Actualiser vos Ã©vÃ©nements"
 
-#, fuzzy
 #~ msgid "General Settings"
 #~ msgstr "RÃ©glages du Lieu"
 
-#, fuzzy
 #~ msgid "Day of collection"
 #~ msgstr "Choisir un crÃ©neau de rÃ©cupÃ©ration"
 
-#, fuzzy
 #~ msgid "RETURN TO STORE"
 #~ msgstr "SE CONNECTER Ã€ STRIPE"
 
-#, fuzzy
 #~ msgid "RETURN TO DASHBOARD"
 #~ msgstr "RETOURNER AU DASHBOARD"
 

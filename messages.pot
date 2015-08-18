@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-12 19:12-0300\n"
+"POT-Creation-Date: 2015-08-18 12:26-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,19 +20,16 @@ msgstr ""
 #: /var/www/webapp/inc/signin/signin_content.php:13
 #: /var/www/webapp/inc/forgot/forgot_content.php:13
 #: /var/www/webapp/inc/signup/signup_content.php:32
-#: /var/www/webapp/code/kyc/partials/customers.php:40
 msgid "Email address"
 msgstr ""
 
 #: /var/www/webapp/inc/signin/signin_content.php:15
-#: /var/www/webapp/code/accountSettings/partials/profile.php:27
 msgid "Please type a valid email address"
 msgstr ""
 
 #: /var/www/webapp/inc/signin/signin_content.php:22
 #: /var/www/webapp/inc/signup/signup_content.php:39
 #: /var/www/webapp/inc/dashboard/userConfig.php:59
-#: /var/www/webapp/code/accountSettings/partials/profile.php:42
 msgid "Password"
 msgstr ""
 
@@ -164,7 +161,6 @@ msgid "Unit price"
 msgstr ""
 
 #: /var/www/webapp/inc/signup/signup_content.php:60
-#: /var/www/webapp/code/accountSettings/partials/billingHistory.php:13
 msgid "Amount"
 msgstr ""
 
@@ -185,7 +181,6 @@ msgid "Please type your card number"
 msgstr ""
 
 #: /var/www/webapp/inc/signup/signup_content.php:119
-#: /var/www/webapp/code/accountSettings/partials/payment.php:12
 msgid "Name on card"
 msgstr ""
 
@@ -210,7 +205,6 @@ msgid "Please type your security code"
 msgstr ""
 
 #: /var/www/webapp/inc/signup/signup_content.php:179
-#: /var/www/webapp/code/accountSettings/partials/payment.php:44
 msgid "Postcode"
 msgstr ""
 
@@ -293,7 +287,6 @@ msgid "Change Settings"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:44
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:2
 msgid "Delivery Settings"
 msgstr ""
 
@@ -315,7 +308,6 @@ msgid "Opening Hours"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:46
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:2
 msgid "Preset Notifications"
 msgstr ""
 
@@ -376,8 +368,6 @@ msgstr ""
 #: /var/www/webapp/inc/dashboard/menuConfig.php:19
 #: /var/www/webapp/inc/dashboard/menuConfig.php:22
 #: /var/www/webapp/inc/finish/finish_content.php:11
-#: /var/www/webapp/code/kyc/index.php:29
-#: /var/www/webapp/code/kyc/partials/events.php:8
 msgid "Events"
 msgstr ""
 
@@ -411,7 +401,6 @@ msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:99
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:164
-#: /var/www/webapp/code/accountSettings/index.php:18
 msgid "My Account"
 msgstr ""
 
@@ -449,14 +438,10 @@ msgid "Getting started"
 msgstr ""
 
 #: /var/www/webapp/inc/settings/settings_content.php:6
-#: /var/www/webapp/code/accountSettings/index.php:26
-#: /var/www/webapp/code/accountSettings/partials/password.php:1
-#: /var/www/webapp/code/accountSettings/partials/profile.php:1
 msgid "Profile"
 msgstr ""
 
 #: /var/www/webapp/inc/settings/settings_content.php:8
-#: /var/www/webapp/code/accountSettings/partials/profile.php:5
 msgid "First Name"
 msgstr ""
 
@@ -465,7 +450,6 @@ msgid "First Name is required (max 100chars)"
 msgstr ""
 
 #: /var/www/webapp/inc/settings/settings_content.php:13
-#: /var/www/webapp/code/accountSettings/partials/profile.php:14
 msgid "Last Name"
 msgstr ""
 
@@ -483,7 +467,6 @@ msgid "An email address is required"
 msgstr ""
 
 #: /var/www/webapp/inc/settings/settings_content.php:25
-#: /var/www/webapp/code/accountSettings/partials/profile.php:32
 msgid "Business Name"
 msgstr ""
 
@@ -508,7 +491,6 @@ msgid "Change password?"
 msgstr ""
 
 #: /var/www/webapp/inc/settings/settings_content.php:58
-#: /var/www/webapp/code/accountSettings/partials/password.php:5
 msgid "Old Password"
 msgstr ""
 
@@ -519,7 +501,6 @@ msgstr ""
 
 #: /var/www/webapp/inc/settings/settings_content.php:66
 #: /var/www/webapp/inc/reset/reset_content.php:9
-#: /var/www/webapp/code/accountSettings/partials/password.php:12
 msgid "New Password"
 msgstr ""
 
@@ -533,8 +514,6 @@ msgid "Passwords don't match."
 msgstr ""
 
 #: /var/www/webapp/inc/settings/settings_content.php:80
-#: /var/www/webapp/code/accountSettings/partials/payment.php:49
-#: /var/www/webapp/code/accountSettings/partials/profile.php:49
 msgid "SAVE"
 msgstr ""
 
@@ -685,9 +664,6 @@ msgstr ""
 #: /var/www/webapp/inc/dashboard/outletConfig.php:88
 #: /var/www/webapp/inc/dashboard/menuConfig.php:412
 #: /var/www/webapp/inc/venue/selectVenue_content.php:19
-#: /var/www/webapp/code/accountSettings/partials/password.php:25
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:58
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:76
 msgid "SAVE CHANGES"
 msgstr ""
 
@@ -701,11 +677,6 @@ msgstr ""
 #: /var/www/webapp/inc/dashboard/outletConfig.php:89
 #: /var/www/webapp/inc/dashboard/menuConfig.php:414
 #: /var/www/webapp/inc/venue/selectVenue_content.php:20
-#: /var/www/webapp/code/accountSettings/partials/payment.php:50
-#: /var/www/webapp/code/accountSettings/partials/password.php:27
-#: /var/www/webapp/code/accountSettings/partials/profile.php:50
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:59
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:77
 msgid "SAVING..."
 msgstr ""
 
@@ -726,7 +697,6 @@ msgstr ""
 #: /var/www/webapp/inc/dashboard/mdConfig.php:30
 #: /var/www/webapp/inc/dashboard/menuConfig.php:93
 #: /var/www/webapp/inc/dashboard/menuConfig.php:235
-#: /var/www/webapp/code/kyc/partials/customers.php:26
 #: /var/www/webapp/code/shared/js_strings.php:127
 msgid "Name"
 msgstr ""
@@ -961,9 +931,6 @@ msgstr ""
 #: /var/www/webapp/inc/dashboard/menuConfig.php:269
 #: /var/www/webapp/inc/dashboard/menuConfig.php:334
 #: /var/www/webapp/inc/dashboard/menuConfig.php:366
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:6
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:27
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:52
 msgid "No"
 msgstr ""
 
@@ -980,9 +947,6 @@ msgstr ""
 #: /var/www/webapp/inc/dashboard/menuConfig.php:272
 #: /var/www/webapp/inc/dashboard/menuConfig.php:337
 #: /var/www/webapp/inc/dashboard/menuConfig.php:369
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:8
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:29
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:54
 msgid "Yes"
 msgstr ""
 
@@ -1418,7 +1382,6 @@ msgid "e.g. 10"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:124
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:50
 msgid "Please provide a discount percentage (between 0 and 100)"
 msgstr ""
 
@@ -1463,7 +1426,6 @@ msgid "Please type a venue address (max 250chars)"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:203
-#: /var/www/webapp/code/accountSettings/partials/payment.php:42
 msgid "Town/City"
 msgstr ""
 
@@ -1666,10 +1628,6 @@ msgid "CONNECT"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:290
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:52
-#: /var/www/webapp/code/accountSettings/partials/payment.php:51
-#: /var/www/webapp/code/accountSettings/partials/password.php:26
-#: /var/www/webapp/code/accountSettings/partials/profile.php:51
 #: /var/www/webapp/code/shared/js_strings.php:80
 msgid "CANCEL"
 msgstr ""
@@ -2144,7 +2102,6 @@ msgstr ""
 
 #: /var/www/webapp/code/notification/templates/subscriptionpayment.php:21
 #: /var/www/webapp/code/notification/templates/purchase.php:28
-#: /var/www/webapp/code/kyc/partials/stream.php:82
 msgid "TOTAL"
 msgstr ""
 
@@ -2165,7 +2122,6 @@ msgid " months contract"
 msgstr ""
 
 #: /var/www/webapp/code/notification/templates/purchase.php:24
-#: /var/www/webapp/code/kyc/partials/stream.php:78
 msgid "Discount"
 msgstr ""
 
@@ -2185,364 +2141,20 @@ msgstr ""
 msgid "Terms and Conditions"
 msgstr ""
 
-#: /var/www/webapp/code/accountSettings/index.php:22
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:1
-#: /var/www/webapp/code/accountSettings/partials/billingHistory.php:1
-msgid "Subscriptions"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/index.php:23
-msgid "Payment Methods"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/index.php:24
-#: /var/www/webapp/code/accountSettings/partials/billingHistory.php:5
-msgid "Billing History"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:4
-msgid "Billing Schedule"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:7
-msgid "Please add a payment method to keep your account active"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:8
-msgid "ADD PAYMENT METHOD"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:12
-msgid "You have an outstanding payment!"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:13
-msgid "Please update your card details within "
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:13
-msgid " days to prevent your account from being deactivated."
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:17
-msgid "Your account will be billed"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:17
-msgid "on"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:18
-msgid "Your account will be deactivated on "
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:19
-msgid "You have no active subscriptions, your account will not be billed at this time."
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:34
-msgid "CHANGE CARD"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:35
-msgid "BILLING HISTORY"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:40
-msgid "My Subscriptions"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:44
-msgid "You are currently subscribed to the "
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:45
-msgid "Your free trial of this subscription will end at midnight on "
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:48
-msgid "Your subscription has been cancelled"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:48
-msgid ". Please add a credit card to resubscribe."
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:51
-msgid "UPGRADE"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:55
-#: /var/www/webapp/code/accountSettings/partials/subscription.php:56
-msgid "RESUBSCRIBE"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/billingHistory.php:10
-msgid "Inv no."
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/billingHistory.php:11
-#: /var/www/webapp/code/shared/js_strings.php:138
-msgid "Date"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/billingHistory.php:12
-#: /var/www/webapp/code/kyc/partials/stream.php:14
-msgid "Status"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/billingHistory.php:23
-msgid "DOWNLOAD PDF"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:1
-msgid "Payment"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:5
-msgid "Card Number"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:8
-msgid "Credit Card Number"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:15
-msgid "Credit Card Name"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:19
-#: /var/www/webapp/code/accountSettings/partials/payment.php:21
-msgid "CCV"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:25
-msgid "Expires"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:28
-msgid "MM"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:29
-msgid "YY"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:33
-msgid "Billing Address"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:36
-msgid "Address Line 1"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:38
-msgid "Address Line 2"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:40
-msgid "Address Line 3"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/payment.php:48
-#: /var/www/webapp/code/accountSettings/partials/profile.php:48
-msgid "CHANGE DETAILS"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/password.php:19
-msgid "Confirm"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/profile.php:9
-msgid "Please type your first name.(max 100chars)"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/profile.php:18
-msgid "Please type your last name.(max 100chars)"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/profile.php:23
-#: /var/www/webapp/code/shared/js_strings.php:128
-msgid "Email Address"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/profile.php:36
-msgid "Please type your account name.(max 100chars)"
-msgstr ""
-
-#: /var/www/webapp/code/accountSettings/partials/profile.php:44
-msgid "CHANGE PASSWORD"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/index.php:18
-msgid "Know your customers"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/index.php:24
-msgid "Metrics"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/index.php:25
-#: /var/www/webapp/code/shared/js_strings.php:95
-msgid "Stock"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/index.php:26
-#: /var/www/webapp/code/kyc/partials/customers.php:8
-#: /var/www/webapp/code/shared/js_strings.php:93
-msgid "Customers"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/index.php:27
-#: /var/www/webapp/code/shared/js_strings.php:94
-msgid "Reports"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/index.php:28
-msgid "Live stream"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/index.php:30
-#: /var/www/webapp/code/kyc/partials/orders.php:8
-msgid "Orders"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/index.php:43
-msgid "Outlet Name:"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/index.php:55 /var/www/webapp/code/kyc/index.php:74
-#: /var/www/webapp/code/kyc/index.php:96
-msgid "Refresh"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/index.php:63
-msgid "Date Range:"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/index.php:68
-msgid "to"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/index.php:83
-msgid "Events: "
-msgstr ""
-
 #: /var/www/webapp/code/kyc/js/modals/chart.php:22
-#: /var/www/webapp/code/kyc/js/directives/chart/chart.php:21
 msgid "No Data"
 msgstr ""
 
 #: /var/www/webapp/code/kyc/js/modals/chart.php:36
-#: /var/www/webapp/code/kyc/js/directives/chart/chart.php:73
-#: /var/www/webapp/code/kyc/partials/orders.php:110
-#: /var/www/webapp/code/kyc/partials/reports.php:117
-#: /var/www/webapp/code/kyc/partials/events.php:102
-#: /var/www/webapp/code/kyc/partials/customers.php:89
-#: /var/www/webapp/code/kyc/partials/stock.php:75
 msgid "Export as..."
 msgstr ""
 
 #: /var/www/webapp/code/kyc/js/modals/chart.php:42
-#: /var/www/webapp/code/kyc/js/directives/chart/chart.php:79
-#: /var/www/webapp/code/kyc/partials/orders.php:116
-#: /var/www/webapp/code/kyc/partials/reports.php:123
-#: /var/www/webapp/code/kyc/partials/events.php:108
-#: /var/www/webapp/code/kyc/partials/customers.php:95
-#: /var/www/webapp/code/kyc/partials/stock.php:81
 msgid "PDF"
 msgstr ""
 
 #: /var/www/webapp/code/kyc/js/modals/chart.php:48
-#: /var/www/webapp/code/kyc/js/directives/chart/chart.php:85
-#: /var/www/webapp/code/kyc/partials/orders.php:123
-#: /var/www/webapp/code/kyc/partials/reports.php:130
-#: /var/www/webapp/code/kyc/partials/events.php:115
-#: /var/www/webapp/code/kyc/partials/customers.php:102
-#: /var/www/webapp/code/kyc/partials/stock.php:88
 msgid "CSV"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/orders.php:25
-msgid "Date/Time"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/orders.php:32
-msgid "Outlet"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/orders.php:39
-#: /var/www/webapp/code/kyc/partials/stream.php:28
-#: /var/www/webapp/code/kyc/partials/events.php:32
-msgid "Customer"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/orders.php:46
-#: /var/www/webapp/code/kyc/partials/events.php:39
-msgid "Items"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/orders.php:53
-#: /var/www/webapp/code/kyc/partials/events.php:46
-msgid "Order Total"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/orders.php:131
-#: /var/www/webapp/code/kyc/partials/reports.php:138
-#: /var/www/webapp/code/kyc/partials/events.php:123
-#: /var/www/webapp/code/kyc/partials/customers.php:110
-#: /var/www/webapp/code/kyc/partials/stock.php:96
-msgid "All"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/orders.php:135
-#: /var/www/webapp/code/kyc/partials/reports.php:142
-#: /var/www/webapp/code/kyc/partials/events.php:127
-#: /var/www/webapp/code/kyc/partials/customers.php:114
-#: /var/www/webapp/code/kyc/partials/stock.php:100
-msgid "Selected"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/stream.php:7
-msgid "Live Stream"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/stream.php:21
-#: /var/www/webapp/code/shared/js_strings.php:120
-msgid "Total"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/stream.php:35
-msgid "Order"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/stream.php:42
-msgid "Time"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/reports.php:10
-msgid "Choose preset:"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/events.php:25
-msgid "Event"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/customers.php:33
-#: /var/www/webapp/code/shared/js_strings.php:131
-msgid "Total Spent"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/stock.php:8
-msgid "Menu items"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/stock.php:26
-msgid "Item"
-msgstr ""
-
-#: /var/www/webapp/code/kyc/partials/stock.php:33
-msgid "Quantity Ordered"
 msgstr ""
 
 #: /var/www/webapp/code/shop/shop.php:16
@@ -2972,6 +2584,18 @@ msgstr ""
 msgid "GET STARTED"
 msgstr ""
 
+#: /var/www/webapp/code/shared/js_strings.php:93
+msgid "Customers"
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:94
+msgid "Reports"
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:95
+msgid "Stock"
+msgstr ""
+
 #: /var/www/webapp/code/shared/js_strings.php:96
 msgid "Orders Report"
 msgstr ""
@@ -3068,6 +2692,10 @@ msgstr ""
 msgid "Customers (Pi"
 msgstr ""
 
+#: /var/www/webapp/code/shared/js_strings.php:120
+msgid "Total"
+msgstr ""
+
 #: /var/www/webapp/code/shared/js_strings.php:121
 msgid "Customers (Ba"
 msgstr ""
@@ -3092,12 +2720,20 @@ msgstr ""
 msgid "Date Joined"
 msgstr ""
 
+#: /var/www/webapp/code/shared/js_strings.php:128
+msgid "Email Address"
+msgstr ""
+
 #: /var/www/webapp/code/shared/js_strings.php:129
 msgid "Marketing"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:130
 msgid "Date of Order"
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:131
+msgid "Total Spent"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:132
@@ -3122,6 +2758,10 @@ msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:137
 msgid "Day"
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:138
+msgid "Date"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:139
@@ -3442,109 +3082,6 @@ msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:219
 msgid " for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:3
-msgid "Enable delivery services"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:18
-msgid "Delivery Areas"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:19
-msgid "eg. \"NW1, NW2...\""
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:20
-msgid "Please type a delivery zone (max 200chars)"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:23
-msgid "In case of customer queries contact:"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:25
-msgid "Please enter a valid telephone number"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:28
-msgid "Minimum order value to qualify for delivery"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:30
-msgid "Please enter a valid number (e.g. 20.52)"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:33
-msgid "Delivery charge"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:35
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:40
-msgid "Please enter a valid number (e.g. 3.25)"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:38
-msgid "Free delivery for orders above"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:43
-msgid "Default delivery time (minutes)"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:45
-msgid "Please enter a valid time interval in minutes (e.g. 20)"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/delivery.php:48
-msgid "Discount offered for delivery orders (%)"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:6
-msgid "Order Status Alerts"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:7
-msgid "Order Rejection Alerts"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:8
-msgid "Venue Alerts"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:13
-msgid "Preset customer notifications, sent by email and push alert"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:14
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:38
-msgid "Short name"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:15
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:39
-msgid "Active?"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:20
-msgid "Please enter both the notification and a short name."
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:37
-msgid "Preset order rejection notifications, sent by email and push alert"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:45
-msgid "Please enter a message and a short name or remove this notification."
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:63
-msgid "Email address for receiving venue alerts"
-msgstr ""
-
-#: /var/www/webapp/code/settings/delivery/partials/notifications.php:64
-msgid "In addition to the fulfilment app, you can also receive email updates to notify when you have received a new order"
 msgstr ""
 
 #: /var/www/webapp/code/settings/switch/switch-view.php:39

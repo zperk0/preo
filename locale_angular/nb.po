@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-17 18:30-0300\n"
+"POT-Creation-Date: 2015-08-18 12:25-0300\n"
 "PO-Revision-Date: 2015-08-09 18:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -77,7 +77,6 @@ msgid "CANCEL"
 msgstr "AVBRYT"
 
 #: code/accountSettings/partials/password.php:26
-#, fuzzy
 msgid "CANCEL>"
 msgstr "AVBRYT"
 
@@ -204,7 +203,6 @@ msgid "Events"
 msgstr "Arrangementer"
 
 #: code/kyc/index.php:81
-#, fuzzy
 msgid "Events:"
 msgstr "Arrangementer:"
 
@@ -260,7 +258,6 @@ msgid "Last Name"
 msgstr "Etternavn"
 
 #: code/kyc/partials/stream.php:7
-#, fuzzy
 msgid "Live Stream"
 msgstr "Aktivitet"
 
@@ -366,7 +363,6 @@ msgid "Payment Methods"
 msgstr "Betalingsmetoder"
 
 #: code/accountSettings/partials/subscription.php:48
-#, fuzzy
 msgid "Please add a credit card to resubscribe"
 msgstr ". Vennligst legg til et kredittkort for å aktivere abonnementet."
 
@@ -424,7 +420,6 @@ msgid "Please type your last name.(max 100chars)"
 msgstr "Vennligst skriv etternavnet ditt. (Maks 100 bokstaver)"
 
 #: code/accountSettings/partials/subscription.php:13
-#, fuzzy
 msgid "Please update your card details within"
 msgstr "Vennligst oppdater kortdetaljene innen"
 
@@ -477,12 +472,10 @@ msgstr "LAGRE"
 
 #: code/settings/delivery/partials/delivery.php:58
 #: code/settings/delivery/partials/notifications.php:76
-#, fuzzy
 msgid "SAVE CHANGES"
 msgstr "Lagre endringer"
 
 #: code/accountSettings/partials/password.php:25
-#, fuzzy
 msgid "SAVE CHANGES>"
 msgstr "Lagre endringer"
 
@@ -493,12 +486,10 @@ msgid "SAVING..."
 msgstr "LAGRER..."
 
 #: code/accountSettings/partials/profile.php:50
-#, fuzzy
 msgid "SAVING...\""
 msgstr "LAGRER..."
 
 #: code/accountSettings/partials/password.php:27
-#, fuzzy
 msgid "SAVING...>"
 msgstr "LAGRER..."
 
@@ -525,7 +516,6 @@ msgstr "Varebeholdning"
 #: code/accountSettings/index.php:21
 #: code/accountSettings/partials/billingHistory.php:1
 #: code/accountSettings/partials/subscription.php:1
-#, fuzzy
 msgid "Subscriptions"
 msgstr "Mine abonnementer"
 
@@ -568,7 +558,6 @@ msgid "Yes"
 msgstr "Ja"
 
 #: code/accountSettings/partials/subscription.php:44
-#, fuzzy
 msgid "You are currently subscribed to the"
 msgstr "Du abonnerer for øyeblikket på"
 
@@ -589,12 +578,10 @@ msgid "Your account will be billed"
 msgstr "Din konto vil bli fakturert"
 
 #: code/accountSettings/partials/subscription.php:18
-#, fuzzy
 msgid "Your account will be deactivated on"
 msgstr "Din konto vil bli deaktivert den"
 
 #: code/accountSettings/partials/subscription.php:45
-#, fuzzy
 msgid "Your free trial of this subscription will end at midnight on"
 msgstr ""
 "Din gratis prøveversjon av dette abonnementet vil avsluttes ved midnatt"
@@ -604,12 +591,10 @@ msgid "Your subscription has been cancelled"
 msgstr "Abonnementet er kansellert"
 
 #: code/accountSettings/partials/subscription.php:13
-#, fuzzy
 msgid "days to prevent your account from being deactivated."
 msgstr "dager for å hindre at kontoen din blir deaktivert."
 
 #: code/settings/delivery/partials/delivery.php:19
-#, fuzzy
 msgid "eg. \\\"NW1, NW2...\\\""
 msgstr "f.eks. \"0501, 0502 ...\""
 
@@ -915,15 +900,12 @@ msgstr "til"
 #~ msgid "Passwords don't match."
 #~ msgstr "Passordene samsvarer ikke"
 
-#, fuzzy
 #~ msgid "Venue Information"
 #~ msgstr "Fakturainformasjon"
 
-#, fuzzy
 #~ msgid "App Styling 1/2"
 #~ msgstr "Styling"
 
-#, fuzzy
 #~ msgid "App Styling 2/2"
 #~ msgstr "Styling"
 
@@ -2120,7 +2102,6 @@ msgstr "til"
 #~ msgid "Choose a drink"
 #~ msgstr "Velg drikke"
 
-#, fuzzy
 #~ msgid "Choose a curry"
 #~ msgstr "Velg en burger"
 
@@ -2200,7 +2181,6 @@ msgstr "til"
 #~ "Vi trenger fortsatt litt mer informasjon. Ikke glem å fylle ut de "
 #~ "resterende dagene i uken!"
 
-#, fuzzy
 #~ msgid ""
 #~ "Are you sure you want to delete this meal deal? Note: all associated data "
 #~ "will be lost!"
@@ -2208,7 +2188,6 @@ msgstr "til"
 #~ "Er du sikker på at du vil slette dette stedet? Merk: alle data for stedet "
 #~ "vil gå tapt!"
 
-#, fuzzy
 #~ msgid "Yes, delete this meal deal!"
 #~ msgstr "Ja, slett denne menyen!"
 
@@ -2323,7 +2302,6 @@ msgstr "til"
 #~ msgid "Payment resolved"
 #~ msgstr "Utestående betaling godkjent"
 
-#, fuzzy
 #~ msgid "Resubscription Details"
 #~ msgstr "Abonnementer"
 
@@ -2349,7 +2327,6 @@ msgstr "til"
 #~ msgid "Orders By Events"
 #~ msgstr "Ordre Etter Arrangementer"
 
-#, fuzzy
 #~ msgid "Orders By Outlets"
 #~ msgstr "Ordre Etter Arrangementer"
 
@@ -2359,7 +2336,6 @@ msgstr "til"
 #~ msgid "No events in this period"
 #~ msgstr "Ingen arrangementer i denne perioden"
 
-#, fuzzy
 #~ msgid "Date Range"
 #~ msgstr "Datointerval"
 
@@ -2390,7 +2366,6 @@ msgstr "til"
 #~ msgid "Items Ordered"
 #~ msgstr "Varer som er bestilt"
 
-#, fuzzy
 #~ msgid "Orders By Outlet"
 #~ msgstr "Ordre Etter Arrangementer"
 
@@ -2700,7 +2675,6 @@ msgstr "til"
 #~ msgid "START TRIAL"
 #~ msgstr "START PRØVEVERSJON"
 
-#, fuzzy
 #~ msgid "Your new Premium Feature is now live!"
 #~ msgstr "Din app er nå live!"
 
@@ -2784,11 +2758,9 @@ msgstr "til"
 #~ msgid "support@preoday.com"
 #~ msgstr "support@preoday.no"
 
-#, fuzzy
 #~ msgid "Card ending {{card.number}}"
 #~ msgstr "Kredittkortnummer"
 
-#, fuzzy
 #~ msgid "SAVING...\");?>"
 #~ msgstr "LAGRER..."
 

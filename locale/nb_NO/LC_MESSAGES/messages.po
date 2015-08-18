@@ -548,7 +548,6 @@ msgstr "LAGRE"
 #: /var/www/webapp/inc/dashboard/venueConfig.php:18
 #: /var/www/webapp/inc/dashboard/menuConfig.php:14
 #: /var/www/webapp/inc/finish/finish_content.php:7
-#, fuzzy
 msgid "Venue Information"
 msgstr "Fakturainformasjon"
 
@@ -561,7 +560,6 @@ msgstr "Fakturainformasjon"
 #: /var/www/webapp/inc/dashboard/venueConfig.php:22
 #: /var/www/webapp/inc/dashboard/menuConfig.php:15
 #: /var/www/webapp/inc/finish/finish_content.php:8
-#, fuzzy
 msgid "App Styling 1/2"
 msgstr "Styling"
 
@@ -575,7 +573,6 @@ msgstr "Styling"
 #: /var/www/webapp/inc/dashboard/venueConfig.php:27
 #: /var/www/webapp/inc/dashboard/menuConfig.php:16
 #: /var/www/webapp/inc/finish/finish_content.php:9
-#, fuzzy
 msgid "App Styling 2/2"
 msgstr "Styling"
 
@@ -700,7 +697,6 @@ msgstr "Knapp to farge"
 #: /var/www/webapp/inc/dashboard/outletConfig.php:88
 #: /var/www/webapp/inc/dashboard/menuConfig.php:412
 #: /var/www/webapp/inc/venue/selectVenue_content.php:19
-#, fuzzy
 msgid "SAVE CHANGES"
 msgstr "Lagre endringer"
 
@@ -2484,7 +2480,6 @@ msgid "Choose a drink"
 msgstr "Velg drikke"
 
 #: /var/www/webapp/code/shared/js_strings.php:30
-#, fuzzy
 msgid "Choose a curry"
 msgstr "Velg en burger"
 
@@ -2588,7 +2583,6 @@ msgid "Where should this meal deal appear?"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:54
-#, fuzzy
 msgid ""
 "Are you sure you want to delete this meal deal? Note: all associated data "
 "will be lost!"
@@ -2597,7 +2591,6 @@ msgstr ""
 "vil gå tapt!"
 
 #: /var/www/webapp/code/shared/js_strings.php:55
-#, fuzzy
 msgid "Yes, delete this meal deal!"
 msgstr "Ja, slett denne menyen!"
 
@@ -2741,7 +2734,6 @@ msgid "Payment resolved"
 msgstr "Utestående betaling godkjent"
 
 #: /var/www/webapp/code/shared/js_strings.php:88
-#, fuzzy
 msgid "Resubscription Details"
 msgstr "Abonnementer"
 
@@ -2786,7 +2778,6 @@ msgid "Orders By Events"
 msgstr "Ordre Etter Arrangementer"
 
 #: /var/www/webapp/code/shared/js_strings.php:98
-#, fuzzy
 msgid "Orders By Outlets"
 msgstr "Ordre Etter Arrangementer"
 
@@ -2799,7 +2790,6 @@ msgid "No events in this period"
 msgstr "Ingen arrangementer i denne perioden"
 
 #: /var/www/webapp/code/shared/js_strings.php:101
-#, fuzzy
 msgid "Date Range"
 msgstr "Datointerval"
 
@@ -2840,7 +2830,6 @@ msgid "Items Ordered"
 msgstr "Varer som er bestilt"
 
 #: /var/www/webapp/code/shared/js_strings.php:111
-#, fuzzy
 msgid "Orders By Outlet"
 msgstr "Ordre Etter Arrangementer"
 
@@ -3259,7 +3248,6 @@ msgid "START TRIAL"
 msgstr "START PRØVEVERSJON"
 
 #: /var/www/webapp/code/shared/js_strings.php:211
-#, fuzzy
 msgid "Your new Premium Feature is now live!"
 msgstr "Din app er nå live!"
 
@@ -3416,7 +3404,6 @@ msgstr "support@preoday.no"
 #~ msgid "Billing Schedule"
 #~ msgstr "Faktureringsplan"
 
-#, fuzzy
 #~ msgid "CANCEL>"
 #~ msgstr "AVBRYT"
 
@@ -3435,7 +3422,6 @@ msgstr "support@preoday.no"
 #~ msgid "Card Number"
 #~ msgstr "Kortnummer"
 
-#, fuzzy
 #~ msgid "Card ending {{card.number}}"
 #~ msgstr "Kredittkortnummer"
 
@@ -3484,18 +3470,15 @@ msgstr "support@preoday.no"
 #~ msgid "RESUBSCRIBE"
 #~ msgstr "REAKTIVER ABONNEMENT"
 
-#, fuzzy
 #~ msgid "SAVING...\");?>"
 #~ msgstr "LAGRER..."
 
-#, fuzzy
 #~ msgid "SAVING...>"
 #~ msgstr "LAGRER..."
 
 #~ msgid "Status"
 #~ msgstr "Status"
 
-#, fuzzy
 #~ msgid "Subscriptions"
 #~ msgstr "Mine abonnementer"
 
@@ -3563,7 +3546,6 @@ msgstr "support@preoday.no"
 #~ msgid "Selected"
 #~ msgstr "Valgte"
 
-#, fuzzy
 #~ msgid "Live Stream"
 #~ msgstr "Aktivitet"
 
