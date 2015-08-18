@@ -21,29 +21,29 @@
 							    <label for="all_options"></label>
 							  </div>
 					  		</th>
-					  		<th ng-click="$parent.orderBy = 'startDateTimeStampEvent'; $parent.direction=!direction" ng-if="eventsSelected.length > 1 || eventsSelected.length == 0" translate>
-					  			Event
+					  		<th ng-click="$parent.orderBy = 'startDateTimeStampEvent'; $parent.direction=!direction" ng-if="eventsSelected.length > 1 || eventsSelected.length == 0">
+					  			{{"Event" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'user.name'; direction=!direction" translate>
-					  			Customer
+					  		<th ng-click="orderBy = 'user.name'; direction=!direction">
+					  			{{"Customer" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-clck="orderBy = 'itemString'; direction=!direction" class="colItems" translate>
-					  			Items
+					  		<th ng-clck="orderBy = 'itemString'; direction=!direction" class="colItems">
+					  			{{"Items" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'total'; direction=!direction" translate>
-					  			Order Total
+					  		<th ng-click="orderBy = 'total'; direction=!direction">
+					  			{{"Order Total" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
@@ -104,16 +104,12 @@
 
 						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()' class="formLeft">
 							<input name='data' value='{{pdfData}}' type='hidden'/>
-								<button ng-click="exportData('pdf')" translate>
-										PDF
-								</button>
+								<button ng-click="exportData('pdf')" translate>PDF</button>
 						</form>
 
 						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/csv/report' method='POST' ng-submit='exportCsv()'>
 							<input name='data' value='{{csvData}}' type='hidden'/>
-								<button ng-click="exportData('csv')">
-										CSV
-								</button>
+								<button ng-click="exportData('csv')" translate>CSV</button>
 						</form>
 
 						<div class="content-optionsExport">

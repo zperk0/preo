@@ -18,3679 +18,2779 @@ msgstr ""
 "X-Generator: Poedit 1.8.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: /var/www/webapp/inc/signin/signin_content.php:13
-#: /var/www/webapp/inc/forgot/forgot_content.php:13
-#: /var/www/webapp/inc/signup/signup_content.php:32
-msgid "Email address"
-msgstr "E-postadresse"
+#: code/accountSettings/partials/subscription.php:8
+msgid "ADD PAYMENT METHOD"
+msgstr "LEGG TIL BETALINGSMÅTE"
 
-#: /var/www/webapp/inc/signin/signin_content.php:15
-msgid "Please type a valid email address"
-msgstr "Vennligst skriv inn en gyldig e-postadresse"
+#: code/settings/delivery/partials/notifications.php:15
+#: code/settings/delivery/partials/notifications.php:39
+msgid "Active?"
+msgstr "Aktiv?"
 
-#: /var/www/webapp/inc/signin/signin_content.php:22
-#: /var/www/webapp/inc/signup/signup_content.php:39
-#: /var/www/webapp/inc/dashboard/userConfig.php:59
-msgid "Password"
-msgstr "Passord"
+#: code/accountSettings/partials/payment.php:36
+msgid "Address Line 1"
+msgstr "Adresselinje 1"
 
-#: /var/www/webapp/inc/signin/signin_content.php:24
-#: /var/www/webapp/inc/signup/signup_content.php:41
-msgid "Please type your password"
-msgstr "Vennligst skriv inn passordet ditt"
+#: code/accountSettings/partials/payment.php:38
+msgid "Address Line 2"
+msgstr "Adresselinje 2"
 
-#: /var/www/webapp/inc/signin/signin_content.php:31
-msgid "Sign in"
-msgstr "Logg inn"
+#: code/accountSettings/partials/payment.php:40
+msgid "Address Line 3"
+msgstr "Adresselinje 3"
 
-#: /var/www/webapp/inc/signin/signin_content.php:39
-msgid "I forgot my password"
-msgstr "Jeg har glemt passordet mitt"
+#: code/kyc/partials/customers.php:106 code/kyc/partials/events.php:119
+#: code/kyc/partials/orders.php:127 code/kyc/partials/reports.php:133
+#: code/kyc/partials/stock.php:92
+msgid "All"
+msgstr "Alle"
 
-#: /var/www/webapp/inc/404/404_content.php:5
-msgid "Whoops!"
-msgstr ""
-
-#: /var/www/webapp/inc/404/404_content.php:6
-msgid "We can't find the page you're looking for."
-msgstr "Vi kan ikke finne siden du leter etter."
-
-#: /var/www/webapp/inc/404/404_content.php:6
-msgid "Please check out the"
-msgstr "Vennligst ta en titt på"
-
-#: /var/www/webapp/inc/404/404_content.php:6
-msgid "help section"
-msgstr "hjelp seksjonen"
-
-#: /var/www/webapp/inc/404/404_content.php:6
-msgid "or return to the"
-msgstr "eller gå tilbake til"
-
-#: /var/www/webapp/inc/404/404_content.php:6
-#: /var/www/webapp/inc/shared/h.php:35
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:70
-msgid "Dashboard"
-msgstr "Dashbordet"
-
-#: /var/www/webapp/inc/forgot/forgot_content.php:9
-msgid "Enter your email and we’ll send you a link to reset your password"
-msgstr ""
-"Skriv inn din e-post og vi sender deg en link for å tilbakestille passordet "
-"ditt"
-
-#: /var/www/webapp/inc/forgot/forgot_content.php:15
-msgid "An email address is required."
-msgstr "En e-postadresse er påkrevd."
-
-#: /var/www/webapp/inc/forgot/forgot_content.php:22
-msgid "Reset my password"
-msgstr "Tilbakestill passord"
-
-#: /var/www/webapp/inc/signup/signup_content.php:4
-msgid "Sign up with "
-msgstr "Registrer deg med"
-
-#: /var/www/webapp/inc/signup/signup_content.php:5
-msgid "Start receiving mobile orders today"
-msgstr "Begynn å motta mobil bestillinger i dag"
-
-#: /var/www/webapp/inc/signup/signup_content.php:9
-msgid ", you're just a few steps away from going live."
-msgstr ", du er bare noen få skritt unna fra å gå live."
-
-#: /var/www/webapp/inc/signup/signup_content.php:10
-msgid "Basic information"
-msgstr "Grunnleggende informasjon"
-
-#: /var/www/webapp/inc/signup/signup_content.php:14
-msgid "First name"
-msgstr "Fornavn"
-
-#: /var/www/webapp/inc/signup/signup_content.php:16
-msgid "Please type your first name"
-msgstr "Vennligst skriv ditt fornavn"
-
-#: /var/www/webapp/inc/signup/signup_content.php:21
-msgid "Surname"
-msgstr "Etternavn"
-
-#: /var/www/webapp/inc/signup/signup_content.php:23
-msgid "Please type your surname"
-msgstr "Vennligst skriv ditt etternavn"
-
-#: /var/www/webapp/inc/signup/signup_content.php:28
-msgid "Create your "
-msgstr "Opprett din"
-
-#: /var/www/webapp/inc/signup/signup_content.php:28
-msgid " account"
-msgstr "konto"
-
-#: /var/www/webapp/inc/signup/signup_content.php:34
-msgid "Please type your email"
-msgstr "Vennligst skriv inn din e-post"
-
-#: /var/www/webapp/inc/signup/signup_content.php:46
-msgid "Billing information"
-msgstr "Fakturainformasjon"
-
-#: /var/www/webapp/inc/signup/signup_content.php:49
-msgid "Your 14 day free trial will last until midnight on "
-msgstr "Din 14 dagers gratis prøveperiode vil vare frem til midnatt"
-
-#: /var/www/webapp/inc/signup/signup_content.php:50
-msgid "If you choose not to continue using "
-msgstr "Hvis du velger å ikke fortsette å bruke"
-
-#: /var/www/webapp/inc/signup/signup_content.php:50
-msgid ""
-" just cancel before the trail ends and you won’t be charged (we’ll email you "
-"2 days before the trial ends to remind you). You can upgrade, downgrade or "
-"cancel at any time."
-msgstr ""
-" bare kanseller før prøveperioden ender og du vil ikke bli belastet (vi vil "
-"sende deg en e-post 2 dager før prøveperioden er over for å minne deg på "
-"det). Du kan oppgradere, nedgradere eller kansellere når som helst."
-
-#: /var/www/webapp/inc/signup/signup_content.php:53
-msgid "Transaction Details"
-msgstr "Transaksjonsdetaljer"
-
-#: /var/www/webapp/inc/signup/signup_content.php:58
-#: /var/www/webapp/inc/dashboard/eventConfig.php:51
-#: /var/www/webapp/inc/dashboard/menuConfig.php:94
-#: /var/www/webapp/inc/dashboard/menuConfig.php:236
-#: /var/www/webapp/code/shop/shop.php:112
-msgid "Description"
-msgstr "Beskrivelse"
-
-#: /var/www/webapp/inc/signup/signup_content.php:59
-msgid "Unit price"
-msgstr "Enhetspris"
-
-#: /var/www/webapp/inc/signup/signup_content.php:60
+#: code/accountSettings/partials/billingHistory.php:13
 msgid "Amount"
 msgstr "Beløp"
 
-#: /var/www/webapp/inc/signup/signup_content.php:78
-msgid "Remember you can upgrade, downgrade or cancel your package at any time."
-msgstr ""
-"Husk at du kan oppgradere, nedgradere eller avbestille pakken din når som "
-"helst."
+#: code/accountSettings/partials/subscription.php:35
+msgid "BILLING HISTORY"
+msgstr "FAKTURA HISTORIKK"
 
-#: /var/www/webapp/inc/signup/signup_content.php:109
-msgid "Card number"
-msgstr "Kortnummer"
+#: code/accountSettings/partials/payment.php:33
+msgid "Billing Address"
+msgstr "Fakturaadresse"
 
-#: /var/www/webapp/inc/signup/signup_content.php:111
-msgid "Why do you need my card details for a free trial?"
-msgstr "Hvorfor trenger du kortdetaljene mine for en gratis prøveversjon?"
+#: code/accountSettings/index.php:23
+#: code/accountSettings/partials/billingHistory.php:5
+msgid "Billing History"
+msgstr "Tidligere fakturaer "
 
-#: /var/www/webapp/inc/signup/signup_content.php:112
-msgid "Please type your card number"
-msgstr "Vennligst skriv ditt kortnummer"
+#: code/accountSettings/partials/subscription.php:4
+msgid "Billing Schedule"
+msgstr "Faktureringsplan"
 
-#: /var/www/webapp/inc/signup/signup_content.php:119
-msgid "Name on card"
-msgstr "Navn på kort"
-
-#: /var/www/webapp/inc/signup/signup_content.php:121
-msgid "Please type the name in your card"
-msgstr "Vennligst skriv inn navnet som står på kortet ditt"
-
-#: /var/www/webapp/inc/signup/signup_content.php:128
-msgid "Expiry (month/year)"
-msgstr "Utløpsdato (måned/år)"
-
-#: /var/www/webapp/inc/signup/signup_content.php:167
-msgid "Please type your month/year"
-msgstr "Vennligst skriv inn måned/år"
-
-#: /var/www/webapp/inc/signup/signup_content.php:172
-msgid "Security code"
-msgstr "Sikkerhetskode"
-
-#: /var/www/webapp/inc/signup/signup_content.php:174
-msgid "Please type your security code"
-msgstr "Vennligst skriv inn din sikkerhetskode"
-
-#: /var/www/webapp/inc/signup/signup_content.php:179
-msgid "Postcode"
-msgstr "Postnummer"
-
-#: /var/www/webapp/inc/signup/signup_content.php:181
-msgid "Please type your postcode"
-msgstr "Vennligst skriv inn ditt postnummer"
-
-#: /var/www/webapp/inc/signup/signup_content.php:187
-msgid "I have read accept the"
-msgstr "Jeg har lest og aksepterer"
-
-#: /var/www/webapp/inc/signup/signup_content.php:187
-msgid "terms of service"
-msgstr "vilkårene for tjenesten"
-
-#: /var/www/webapp/inc/signup/signup_content.php:187
-msgid "and"
-msgstr "og"
-
-#: /var/www/webapp/inc/signup/signup_content.php:187
-msgid "privacy policy"
-msgstr "personvernpolicy"
-
-#: /var/www/webapp/inc/signup/signup_content.php:187
-msgid ", including the terms regarding cookies"
-msgstr ", inkludert vilkår om cookies"
-
-#: /var/www/webapp/inc/signup/signup_content.php:188
-msgid "Your have accept tems & conditions for start using "
-msgstr "Du har akseptert betingelser og vilkår for å bruke "
-
-#: /var/www/webapp/inc/signup/signup_content.php:188
-msgid " app."
-msgstr " app."
-
-#: /var/www/webapp/inc/signup/signup_content.php:194
-msgid "Start using my "
-msgstr "Begynn å bruke min "
-
-#: /var/www/webapp/inc/signup/signup_content.php:194
-msgid " app"
-msgstr " app"
-
-#: /var/www/webapp/inc/signup/signup_content.php:218
-msgid "Why do you need my credit card for a free trial?"
-msgstr "Hvorfor trenger du kortdetaljene mine for en gratis prøveversjon?"
-
-#: /var/www/webapp/inc/signup/signup_content.php:220
-msgid ""
-"We ask for your credit card to allow your membership to continue after your "
-"free trial, should you choose not to cancel. This also allows us to reduce "
-"fraud and prevent multiple free trials for one person. This helps us deliver "
-"better service for all the honest customers. Remember that we won't bill you "
-"anything during your free trial and that you can cancel at any moment before "
-"your trial ends."
-msgstr ""
-"Vi ber om ditt kredittkort for å tillate medlemskapet å fortsette etter den "
-"gratis prøveperioden hvis du velger å ikke kansellere. Dette for oss også "
-"til å redusere svindel og forhindre at flere gratis prøveversjoner opprettes "
-"for en person. Det hjelper oss å levere en bedre service for alle de "
-"oppriktige kundene. Husk at vi ikke vil fakturere deg noe under den gratis "
-"prøveperioden, og at du kan avbryte når som helst før prøveperioden utløper."
-
-#: /var/www/webapp/inc/shared/h.php:23
-msgid "Menu"
-msgstr "Meny"
-
-#: /var/www/webapp/inc/shared/h.php:31
-msgid "Sign Up"
-msgstr "Registrer deg"
-
-#: /var/www/webapp/inc/shared/h.php:32
-msgid "Login"
-msgstr "Logg inn"
-
-#: /var/www/webapp/inc/shared/h.php:37
-msgid "Go to Dashboard"
-msgstr "Gå til kontrollpanel"
-
-#: /var/www/webapp/inc/shared/h.php:39
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:107
-msgid "Order Screen"
-msgstr "Ordreliste"
-
-#: /var/www/webapp/inc/shared/h.php:41
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:130
-msgid "Venue Settings"
-msgstr "Arena innstillinger"
-
-#: /var/www/webapp/inc/shared/h.php:43
-msgid "Change Settings"
-msgstr "Endre innstillinger"
-
-#: /var/www/webapp/inc/shared/h.php:44
-msgid "Delivery Settings"
-msgstr "Leveringsinnstillinger"
-
-#: /var/www/webapp/inc/shared/h.php:45
-#: /var/www/webapp/inc/dashboard/appConfig2.php:15
-#: /var/www/webapp/inc/dashboard/appConfig2.php:18
-#: /var/www/webapp/inc/dashboard/eventConfig.php:13
-#: /var/www/webapp/inc/dashboard/appConfig1.php:26
-#: /var/www/webapp/inc/dashboard/appConfig1.php:29
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:11
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:11
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:38
-#: /var/www/webapp/inc/dashboard/venueConfig.php:36
-#: /var/www/webapp/inc/dashboard/venueConfig.php:39
-#: /var/www/webapp/inc/dashboard/menuConfig.php:20
-#: /var/www/webapp/inc/dashboard/menuConfig.php:23
-#: /var/www/webapp/inc/finish/finish_content.php:12
-msgid "Opening Hours"
-msgstr "Åpningstider"
-
-#: /var/www/webapp/inc/shared/h.php:46
-msgid "Preset Notifications"
-msgstr "Forhåndsinnstilte Påminnelser"
-
-#: /var/www/webapp/inc/shared/h.php:49
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:141
-msgid "Styling"
-msgstr "Styling"
-
-#: /var/www/webapp/inc/shared/h.php:51
-msgid "Home Screen"
-msgstr "Hjem skjerm"
-
-#: /var/www/webapp/inc/shared/h.php:52
-msgid "Menu Screen"
-msgstr "Meny skjerm"
-
-#: /var/www/webapp/inc/shared/h.php:55
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:117
-msgid "Menus"
-msgstr "Menyer"
-
-#: /var/www/webapp/inc/shared/h.php:66
-#: /var/www/webapp/inc/dashboard/userConfig.php:52
-#: /var/www/webapp/inc/dashboard/userConfig.php:104
-#: /var/www/webapp/inc/dashboard/eventConfig.php:101
-#: /var/www/webapp/inc/dashboard/eventConfig.php:190
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:121
-#: /var/www/webapp/inc/dashboard/mdConfig.php:83
-#: /var/www/webapp/inc/dashboard/mdConfig.php:201
-#: /var/www/webapp/inc/dashboard/outletConfig.php:39
-#: /var/www/webapp/inc/dashboard/outletConfig.php:73
-#: /var/www/webapp/inc/dashboard/menuConfig.php:141
-#: /var/www/webapp/inc/dashboard/menuConfig.php:291
-msgid "Edit"
-msgstr "Rediger"
-
-#: /var/www/webapp/inc/shared/h.php:68
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:126
-#: /var/www/webapp/inc/dashboard/mdConfig.php:5
-msgid "Meal Deals"
-msgstr "Tilbud"
-
-#: /var/www/webapp/inc/shared/h.php:71
-msgid "No menus"
-msgstr "Ingen menyer"
-
-#: /var/www/webapp/inc/shared/h.php:76
-#: /var/www/webapp/inc/dashboard/appConfig2.php:14
-#: /var/www/webapp/inc/dashboard/appConfig2.php:17
-#: /var/www/webapp/inc/dashboard/eventConfig.php:12
-#: /var/www/webapp/inc/dashboard/appConfig1.php:25
-#: /var/www/webapp/inc/dashboard/appConfig1.php:28
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:10
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:10
-#: /var/www/webapp/inc/dashboard/venueConfig.php:35
-#: /var/www/webapp/inc/dashboard/venueConfig.php:38
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:149
-#: /var/www/webapp/inc/dashboard/menuConfig.php:19
-#: /var/www/webapp/inc/dashboard/menuConfig.php:22
-#: /var/www/webapp/inc/finish/finish_content.php:11
-msgid "Events"
-msgstr "Arrangementer"
-
-#: /var/www/webapp/inc/shared/h.php:78
-msgid "Update Events"
-msgstr "Oppdater arrangementer"
-
-#: /var/www/webapp/inc/shared/h.php:82
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:156
-msgid "Advanced Settings"
-msgstr "Avanserte Innstillinger"
-
-#: /var/www/webapp/inc/shared/h.php:84
-msgid "Manage Users"
-msgstr "Administrere brukere"
-
-#: /var/www/webapp/inc/shared/h.php:85
-#: /var/www/webapp/inc/dashboard/venueConfig.php:43
-#: /var/www/webapp/inc/finish/finish_content.php:13
-msgid "Payment Method"
-msgstr "Betalingsmetode"
-
-#: /var/www/webapp/inc/shared/h.php:86
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:160
-msgid "Change my app mode"
-msgstr "Endre min app-modus"
-
-#: /var/www/webapp/inc/shared/h.php:93
-msgid "Switch Venue"
-msgstr "Bytt bedrift"
-
-#: /var/www/webapp/inc/shared/h.php:99
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:164
-msgid "My Account"
-msgstr "Min konto"
-
-#: /var/www/webapp/inc/shared/h.php:100 /var/www/webapp/inc/shared/h.php:117
-msgid "Logout"
-msgstr "Logg ut"
-
-#: /var/www/webapp/inc/shared/h.php:104
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:168
-msgid "Help"
-msgstr "Hjelp"
-
-#: /var/www/webapp/inc/shared/h.php:106
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:171
-msgid "Getting Started"
-msgstr "Kom i gang"
-
-#: /var/www/webapp/inc/shared/h.php:107
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:172
-msgid "Editing your Menu"
-msgstr "Redigere din Meny"
-
-#: /var/www/webapp/inc/shared/h.php:108
-msgid "FAQs"
-msgstr "FAQ"
-
-#: /var/www/webapp/inc/shared/h.php:109 /var/www/webapp/inc/shared/h.php:113
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
-#: /var/www/webapp/inc/more/more_content.php:6
-msgid "Support"
-msgstr "Support"
-
-#: /var/www/webapp/inc/shared/h.php:116
-msgid "Getting started"
-msgstr "Kom igang"
-
-#: /var/www/webapp/inc/settings/settings_content.php:6
-msgid "Profile"
-msgstr "Profil"
-
-#: /var/www/webapp/inc/settings/settings_content.php:8
-msgid "First Name"
-msgstr "Fornavn"
-
-#: /var/www/webapp/inc/settings/settings_content.php:10
-msgid "First Name is required (max 100chars)"
-msgstr "Fornavn er påkrevd (maks 100 bokstaver)"
-
-#: /var/www/webapp/inc/settings/settings_content.php:13
-msgid "Last Name"
-msgstr "Etternavn"
-
-#: /var/www/webapp/inc/settings/settings_content.php:15
-msgid "Last Name is required (max 100chars)"
-msgstr "Etternavn er påkrevd (maks 100 bokstaver)"
-
-#: /var/www/webapp/inc/settings/settings_content.php:20
-#: /var/www/webapp/inc/dashboard/userConfig.php:22
-msgid "Email"
-msgstr "E-post"
-
-#: /var/www/webapp/inc/settings/settings_content.php:22
-msgid "An email address is required"
-msgstr "En e-postadresse er påkrevd"
-
-#: /var/www/webapp/inc/settings/settings_content.php:25
+#: code/accountSettings/partials/profile.php:32
 msgid "Business Name"
 msgstr "Navn på virksomhet"
 
-#: /var/www/webapp/inc/settings/settings_content.php:27
-msgid "A business name is required (max 100chars)"
-msgstr "Et foretaksnavn er påkrevd (maks 100 bokstaver)"
+#: code/accountSettings/partials/payment.php:51
+#: code/accountSettings/partials/profile.php:51
+#: code/accountSettings/partials/subscription.php:52
+msgid "CANCEL"
+msgstr "AVBRYT"
 
-#: /var/www/webapp/inc/settings/settings_content.php:34
-msgid "Notifications"
-msgstr "Varsler"
+#: code/accountSettings/partials/password.php:26
+#, fuzzy
+msgid "CANCEL>"
+msgstr "AVBRYT"
 
-#: /var/www/webapp/inc/settings/settings_content.php:37
-msgid "Off"
-msgstr "Av"
+#: code/accountSettings/partials/payment.php:19
+#: code/accountSettings/partials/payment.php:21
+msgid "CCV"
+msgstr "CCV"
 
-#: /var/www/webapp/inc/settings/settings_content.php:40
-msgid "On"
-msgstr "På"
+#: code/accountSettings/partials/subscription.php:34
+msgid "CHANGE CARD"
+msgstr "ENDRE KORT"
 
-#: /var/www/webapp/inc/settings/settings_content.php:50
-msgid "Change password?"
-msgstr "Endre passordet?"
+#: code/accountSettings/partials/payment.php:48
+#: code/accountSettings/partials/profile.php:48
+msgid "CHANGE DETAILS"
+msgstr "ENDRE INFORMASJON"
 
-#: /var/www/webapp/inc/settings/settings_content.php:58
-msgid "Old Password"
-msgstr "Gammelt passord"
+#: code/accountSettings/partials/profile.php:44
+msgid "CHANGE PASSWORD"
+msgstr "ENDRE PASSORD"
 
-#: /var/www/webapp/inc/settings/settings_content.php:61
-#: /var/www/webapp/inc/settings/settings_content.php:68
-msgid "A password address is required."
-msgstr "En passord adresse er nødvendig."
+#: code/kyc/js/directives/chart/chart.php:80
+#: code/kyc/partials/customers.php:99 code/kyc/partials/events.php:112
+#: code/kyc/partials/orders.php:120 code/kyc/partials/reports.php:126
+#: code/kyc/partials/stock.php:85
+msgid "CSV"
+msgstr "CSV"
 
-#: /var/www/webapp/inc/settings/settings_content.php:66
-#: /var/www/webapp/inc/reset/reset_content.php:9
+#: code/accountSettings/partials/payment.php:5
+msgid "Card Number"
+msgstr "Kortnummer"
+
+#: code/accountSettings/partials/subscription.php:25
+msgid "Card ending"
+msgstr ""
+
+#: code/kyc/partials/reports.php:9
+msgid "Choose preset:"
+msgstr "Velg forhåndsinnstilling:"
+
+#: code/accountSettings/partials/password.php:19
+msgid "Confirm"
+msgstr "Bekreft"
+
+#: code/accountSettings/partials/payment.php:15
+msgid "Credit Card Name"
+msgstr "Kredittkortnummer"
+
+#: code/accountSettings/partials/payment.php:8
+msgid "Credit Card Number"
+msgstr "Kredittkortnummer"
+
+#: code/kyc/partials/events.php:32 code/kyc/partials/orders.php:39
+#: code/kyc/partials/stream.php:28
+msgid "Customer"
+msgstr "Kunde"
+
+#: code/kyc/index.php:26 code/kyc/partials/customers.php:8
+msgid "Customers"
+msgstr "Kunder"
+
+#: code/accountSettings/partials/billingHistory.php:23
+msgid "DOWNLOAD PDF"
+msgstr "LAST NED PDF"
+
+#: code/accountSettings/partials/billingHistory.php:11
+msgid "Date"
+msgstr "Dato"
+
+#: code/kyc/index.php:62
+msgid "Date Range:"
+msgstr "Datointerval"
+
+#: code/kyc/partials/orders.php:25
+msgid "Date/Time"
+msgstr "Dato/tid"
+
+#: code/settings/delivery/partials/delivery.php:43
+msgid "Default delivery time (minutes)"
+msgstr "Standard leveringstid (minutter)"
+
+#: code/settings/delivery/partials/delivery.php:18
+msgid "Delivery Areas"
+msgstr "Leveringsområder"
+
+#: code/settings/delivery/partials/delivery.php:2
+msgid "Delivery Settings"
+msgstr "Leveringsinnstillinger"
+
+#: code/settings/delivery/partials/delivery.php:33
+msgid "Delivery charge"
+msgstr "Leveringskostnad"
+
+#: code/kyc/partials/stream.php:78
+msgid "Discount"
+msgstr "Rabatt"
+
+#: code/settings/delivery/partials/delivery.php:48
+msgid "Discount offered for delivery orders (%)"
+msgstr "Rabatt ved ordre for levering (%)"
+
+#: code/accountSettings/partials/profile.php:23
+msgid "Email Address"
+msgstr "E-postadresse"
+
+#: code/kyc/partials/customers.php:40
+msgid "Email address"
+msgstr "E-postadresse"
+
+#: code/settings/delivery/partials/notifications.php:63
+msgid "Email address for receiving venue alerts"
+msgstr "E-postadresse for å motta bedrifts varsler"
+
+#: code/settings/delivery/partials/delivery.php:3
+msgid "Enable delivery services"
+msgstr "Aktiver leverings tjenester"
+
+#: code/kyc/partials/events.php:25
+msgid "Event"
+msgstr "Arrangement"
+
+#: code/kyc/index.php:29 code/kyc/partials/events.php:8
+msgid "Events"
+msgstr "Arrangementer"
+
+#: code/kyc/index.php:81
+#, fuzzy
+msgid "Events:"
+msgstr "Arrangementer:"
+
+#: code/accountSettings/partials/payment.php:25
+msgid "Expires"
+msgstr "Utløper"
+
+#: code/kyc/js/directives/chart/chart.php:71
+#: code/kyc/partials/customers.php:89 code/kyc/partials/events.php:102
+#: code/kyc/partials/orders.php:110 code/kyc/partials/reports.php:116
+#: code/kyc/partials/stock.php:75
+msgid "Export as..."
+msgstr "Eksport som..."
+
+#: code/accountSettings/partials/profile.php:5
+msgid "First Name"
+msgstr "Fornavn"
+
+#: code/settings/delivery/partials/delivery.php:38
+msgid "Free delivery for orders above"
+msgstr "Gratis levering for ordre over"
+
+#: code/settings/delivery/partials/notifications.php:64
+msgid ""
+"In addition to the fulfilment app, you can also receive email updates to "
+"notify when you have received a new order"
+msgstr ""
+"I tillegg til appen kan du også motta e-postoppdateringer for å varsle når "
+"du har mottatt en ny ordre"
+
+#: code/settings/delivery/partials/delivery.php:23
+msgid "In case of customer queries contact:"
+msgstr "Ved kundehenvendelser kontakt:"
+
+#: code/accountSettings/partials/billingHistory.php:10
+msgid "Inv no."
+msgstr "Faktura nr."
+
+#: code/kyc/partials/stock.php:26
+msgid "Item"
+msgstr "Vare"
+
+#: code/kyc/partials/events.php:39 code/kyc/partials/orders.php:46
+msgid "Items"
+msgstr "Varer"
+
+#: code/kyc/index.php:18
+msgid "Know your customers"
+msgstr "Kjenn dine kunder"
+
+#: code/accountSettings/partials/profile.php:14
+msgid "Last Name"
+msgstr "Etternavn"
+
+#: code/kyc/partials/stream.php:7
+#, fuzzy
+msgid "Live Stream"
+msgstr "Aktivitet"
+
+#: code/kyc/index.php:28
+msgid "Live stream"
+msgstr "Aktivitet"
+
+#: code/accountSettings/partials/payment.php:28
+msgid "MM"
+msgstr "MM"
+
+#: code/kyc/partials/stock.php:8
+msgid "Menu items"
+msgstr "Menyelementer"
+
+#: code/kyc/index.php:24
+msgid "Metrics"
+msgstr "Status"
+
+#: code/settings/delivery/partials/delivery.php:28
+msgid "Minimum order value to qualify for delivery"
+msgstr "Minimumsbeløp for levering"
+
+#: code/accountSettings/index.php:18
+msgid "My Account"
+msgstr "Min konto"
+
+#: code/accountSettings/partials/subscription.php:40
+msgid "My Subscriptions"
+msgstr "Mine abonnementer"
+
+#: code/kyc/partials/customers.php:26
+msgid "Name"
+msgstr "Navn"
+
+#: code/accountSettings/partials/payment.php:12
+msgid "Name on card"
+msgstr "Navn på kort"
+
+#: code/accountSettings/partials/password.php:12
 msgid "New Password"
 msgstr "Nytt passord"
 
-#: /var/www/webapp/inc/settings/settings_content.php:71
-msgid "Confirm New Password"
-msgstr "Bekreft nytt passord"
+#: code/settings/delivery/partials/delivery.php:6
+#: code/settings/delivery/partials/notifications.php:27
+#: code/settings/delivery/partials/notifications.php:52
+msgid "No"
+msgstr "Nei"
 
-#: /var/www/webapp/inc/settings/settings_content.php:73
-#: /var/www/webapp/inc/reset/reset_content.php:17
-msgid "Passwords don't match."
-msgstr "Passordene samsvarer ikke"
+#: code/kyc/js/directives/chart/chart.php:20
+msgid "No Data"
+msgstr "Ingen data"
 
-#: /var/www/webapp/inc/settings/settings_content.php:80
+#: code/accountSettings/partials/password.php:5
+msgid "Old Password"
+msgstr "Gammelt passord"
+
+#: code/kyc/partials/stream.php:35
+msgid "Order"
+msgstr "Orden"
+
+#: code/settings/delivery/partials/notifications.php:7
+msgid "Order Rejection Alerts"
+msgstr "Ordre avvist Alarm"
+
+#: code/settings/delivery/partials/notifications.php:6
+msgid "Order Status Alerts"
+msgstr "Ordrestatus Alarm"
+
+#: code/kyc/partials/events.php:46 code/kyc/partials/orders.php:53
+msgid "Order Total"
+msgstr "Ordre Total"
+
+#: code/kyc/index.php:30 code/kyc/partials/orders.php:8
+msgid "Orders"
+msgstr "Ordre"
+
+#: code/kyc/partials/orders.php:32
+msgid "Outlet"
+msgstr "Utsalgssted"
+
+#: code/kyc/index.php:42
+msgid "Outlet Name:"
+msgstr "Utsalgssted"
+
+#: code/kyc/js/directives/chart/chart.php:76
+#: code/kyc/partials/customers.php:94 code/kyc/partials/events.php:107
+#: code/kyc/partials/orders.php:115 code/kyc/partials/reports.php:121
+#: code/kyc/partials/stock.php:80
+msgid "PDF"
+msgstr "PDF"
+
+#: code/accountSettings/partials/profile.php:42
+msgid "Password"
+msgstr "Passord"
+
+#: code/accountSettings/partials/payment.php:1
+msgid "Payment"
+msgstr "Betaling"
+
+#: code/accountSettings/index.php:22
+msgid "Payment Methods"
+msgstr "Betalingsmetoder"
+
+#: code/accountSettings/partials/subscription.php:48
+#, fuzzy
+msgid "Please add a credit card to resubscribe"
+msgstr ". Vennligst legg til et kredittkort for å aktivere abonnementet."
+
+#: code/accountSettings/partials/subscription.php:7
+msgid "Please add a payment method to keep your account active"
+msgstr "Vennligst legg til en betalingsmåte for å holde kontoen aktiv"
+
+#: code/settings/delivery/partials/notifications.php:45
+msgid "Please enter a message and a short name or remove this notification."
+msgstr "Skriv inn en melding og et kortnavn eller fjern dette varselet."
+
+#: code/settings/delivery/partials/delivery.php:30
+msgid "Please enter a valid number (e.g. 20.52)"
+msgstr "Skriv inn et gyldig nummer (f.eks 200,00)"
+
+#: code/settings/delivery/partials/delivery.php:35
+#: code/settings/delivery/partials/delivery.php:40
+msgid "Please enter a valid number (e.g. 3.25)"
+msgstr "Skriv inn et gyldig nummer (f.eks 45,00)"
+
+#: code/settings/delivery/partials/delivery.php:25
+msgid "Please enter a valid telephone number"
+msgstr "Skriv inn et gyldig telefonnummer"
+
+#: code/settings/delivery/partials/delivery.php:45
+msgid "Please enter a valid time interval in minutes (e.g. 20)"
+msgstr "Skriv inn gyldig tidsintervall i minutter (f.eks 20)"
+
+#: code/settings/delivery/partials/notifications.php:20
+msgid "Please enter both the notification and a short name."
+msgstr "Vennligst oppgi både varsling og et kort navn."
+
+#: code/settings/delivery/partials/delivery.php:50
+msgid "Please provide a discount percentage (between 0 and 100)"
+msgstr "Vennligst oppgi rabatt i prosent (mellom 0 og 100)"
+
+#: code/settings/delivery/partials/delivery.php:20
+msgid "Please type a delivery zone (max 200chars)"
+msgstr "Vennligst skriv inn et leveringsområde (maks 200 bokstaver)"
+
+#: code/accountSettings/partials/profile.php:27
+msgid "Please type a valid email address"
+msgstr "Vennligst skriv inn en gyldig e-postadresse"
+
+#: code/accountSettings/partials/profile.php:36
+msgid "Please type your account name.(max 100chars)"
+msgstr "Vennligst skriv inn kontonavn. (Maks 100 bokstaver)"
+
+#: code/accountSettings/partials/profile.php:9
+msgid "Please type your first name.(max 100chars)"
+msgstr "Vennligst skriv fornavnet ditt. (Maks 100 bokstaver)"
+
+#: code/accountSettings/partials/profile.php:18
+msgid "Please type your last name.(max 100chars)"
+msgstr "Vennligst skriv etternavnet ditt. (Maks 100 bokstaver)"
+
+#: code/accountSettings/partials/subscription.php:13
+#, fuzzy
+msgid "Please update your card details within"
+msgstr "Vennligst oppdater kortdetaljene innen"
+
+#: code/accountSettings/partials/payment.php:44
+msgid "Postcode"
+msgstr "Postnummer"
+
+#: code/settings/delivery/partials/notifications.php:2
+msgid "Preset Notifications"
+msgstr "Forhåndsinnstilte Påminnelser"
+
+#: code/settings/delivery/partials/notifications.php:13
+msgid "Preset customer notifications, sent by email and push alert"
+msgstr ""
+"Forhåndsinnstilte kundemeldinger, som sendes via e-post og push-varsling"
+
+#: code/settings/delivery/partials/notifications.php:37
+msgid "Preset order rejection notifications, sent by email and push alert"
+msgstr ""
+"Forhåndsinnstilte avvisnings meldinger, som sendes via e-post og push-"
+"varsling"
+
+#: code/accountSettings/index.php:25
+#: code/accountSettings/partials/password.php:1
+#: code/accountSettings/partials/profile.php:1
+msgid "Profile"
+msgstr "Profil"
+
+#: code/kyc/partials/stock.php:33
+msgid "Quantity Ordered"
+msgstr "Antall Bestilt"
+
+#: code/accountSettings/partials/subscription.php:55
+#: code/accountSettings/partials/subscription.php:56
+msgid "RESUBSCRIBE"
+msgstr "REAKTIVER ABONNEMENT"
+
+#: code/kyc/index.php:54 code/kyc/index.php:73 code/kyc/index.php:94
+msgid "Refresh"
+msgstr "Oppdater"
+
+#: code/kyc/index.php:27
+msgid "Reports"
+msgstr "Rapporter"
+
+#: code/accountSettings/partials/payment.php:49
+#: code/accountSettings/partials/profile.php:49
 msgid "SAVE"
 msgstr "LAGRE"
 
-#: /var/www/webapp/inc/dashboard/appConfig2.php:5
-#: /var/www/webapp/inc/dashboard/eventConfig.php:8
-#: /var/www/webapp/inc/dashboard/appConfig1.php:12
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:6
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:6
-#: /var/www/webapp/inc/dashboard/venueConfig.php:18
-#: /var/www/webapp/inc/dashboard/menuConfig.php:14
-#: /var/www/webapp/inc/finish/finish_content.php:7
-#, fuzzy
-msgid "Venue Information"
-msgstr "Fakturainformasjon"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:6
-#: /var/www/webapp/inc/dashboard/eventConfig.php:9
-#: /var/www/webapp/inc/dashboard/appConfig1.php:13
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:7
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:7
-#: /var/www/webapp/inc/dashboard/venueConfig.php:20
-#: /var/www/webapp/inc/dashboard/venueConfig.php:22
-#: /var/www/webapp/inc/dashboard/menuConfig.php:15
-#: /var/www/webapp/inc/finish/finish_content.php:8
-#, fuzzy
-msgid "App Styling 1/2"
-msgstr "Styling"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:7
-#: /var/www/webapp/inc/dashboard/eventConfig.php:10
-#: /var/www/webapp/inc/dashboard/appConfig1.php:15
-#: /var/www/webapp/inc/dashboard/appConfig1.php:17
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:8
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:8
-#: /var/www/webapp/inc/dashboard/venueConfig.php:25
-#: /var/www/webapp/inc/dashboard/venueConfig.php:27
-#: /var/www/webapp/inc/dashboard/menuConfig.php:16
-#: /var/www/webapp/inc/finish/finish_content.php:9
-#, fuzzy
-msgid "App Styling 2/2"
-msgstr "Styling"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:9
-#: /var/www/webapp/inc/dashboard/appConfig2.php:11
-#: /var/www/webapp/inc/dashboard/eventConfig.php:11
-#: /var/www/webapp/inc/dashboard/appConfig1.php:20
-#: /var/www/webapp/inc/dashboard/appConfig1.php:22
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:9
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:9
-#: /var/www/webapp/inc/dashboard/venueConfig.php:30
-#: /var/www/webapp/inc/dashboard/venueConfig.php:32
-#: /var/www/webapp/inc/dashboard/menuConfig.php:17
-#: /var/www/webapp/inc/finish/finish_content.php:10
-msgid "Menu Creation"
-msgstr "Opprette meny"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:21
-#: /var/www/webapp/inc/dashboard/eventConfig.php:14
-#: /var/www/webapp/inc/dashboard/appConfig1.php:32
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:12
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:12
-#: /var/www/webapp/inc/dashboard/venueConfig.php:45
-#: /var/www/webapp/inc/dashboard/menuConfig.php:25
-msgid "Add a Payment"
-msgstr "Legg til en betaling"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:23
-#: /var/www/webapp/inc/dashboard/eventConfig.php:16
-#: /var/www/webapp/inc/dashboard/appConfig1.php:34
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:15
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:14
-#: /var/www/webapp/inc/dashboard/venueConfig.php:48
-#: /var/www/webapp/inc/dashboard/menuConfig.php:27
-#: /var/www/webapp/inc/finish/finish_content.php:15
-msgid "Done"
-msgstr "Fullført"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:28
-#: /var/www/webapp/inc/dashboard/appConfig1.php:39
-msgid "Style your app"
-msgstr "Endre utseende for din app"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:28
-msgid "This is where you can brand your menu page"
-msgstr "Her kan du brande din meny side"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:35
-msgid "Add a short venue title"
-msgstr "Kort navn på restaurant"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:35
-msgid ""
-"This is a shorter version of your venue name that will be visible over your "
-"menu."
-msgstr ""
-"Dette er en kortere versjon av stedsnavnet som vil være synlig over menyen."
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:37
-msgid "Please type a venue title <br/>(max 22chars)"
-msgstr "Vennligst skriv en arena tittel <br/> (maks 22t egn)"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:45
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:216
-msgid "BASKET"
-msgstr "HANDLEKURV"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:59
-msgid "Colour scheme"
-msgstr "Fargevalg"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:62
-msgid "Colour one"
-msgstr "Farge en"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:63
-msgid ""
-"This colour is used across section progress buttons and as a highlight "
-"colour."
-msgstr ""
-"Denne fargen blir brukt på fremgangs prosesser og knapper som et høydepunkt "
-"farge."
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:71
-msgid "Button one colour"
-msgstr "Knapp en farge"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:71
-#: /var/www/webapp/inc/dashboard/appConfig2.php:79
-#: /var/www/webapp/inc/dashboard/appConfig2.php:97
-#: /var/www/webapp/inc/dashboard/appConfig2.php:105
-#: /var/www/webapp/inc/dashboard/appConfig1.php:84
-#: /var/www/webapp/inc/dashboard/appConfig1.php:98
-#: /var/www/webapp/inc/dashboard/appConfig1.php:106
-msgid "Enter Hex Colour Code or click to choose your colour."
-msgstr "Skriv inn en hex fargekode eller klikk for å velge farge."
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:79
-#: /var/www/webapp/inc/dashboard/appConfig2.php:105
-#: /var/www/webapp/inc/dashboard/appConfig1.php:106
-msgid "Button text colour"
-msgstr "Velg knappens tekst farge"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:89
-msgid ""
-"This colour is used across item select buttons and as a highlight colour."
-msgstr ""
-"Denne fargen blir brukt på knapper som bruke til produktvalg og som "
-"høydepunkt farge."
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:97
-msgid "Button two colour"
-msgstr "Knapp to farge"
-
-#: /var/www/webapp/inc/dashboard/appConfig2.php:112
-#: /var/www/webapp/inc/dashboard/userConfig.php:120
-#: /var/www/webapp/inc/dashboard/eventConfig.php:261
-#: /var/www/webapp/inc/dashboard/appConfig1.php:218
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:110
-#: /var/www/webapp/inc/dashboard/venueConfig.php:514
-#: /var/www/webapp/inc/dashboard/mdConfig.php:241
-#: /var/www/webapp/inc/dashboard/outletConfig.php:88
-#: /var/www/webapp/inc/dashboard/menuConfig.php:412
-#: /var/www/webapp/inc/venue/selectVenue_content.php:19
+#: code/settings/delivery/partials/delivery.php:58
+#: code/settings/delivery/partials/notifications.php:76
 #, fuzzy
 msgid "SAVE CHANGES"
 msgstr "Lagre endringer"
 
-#: /var/www/webapp/inc/dashboard/appConfig2.php:113
-#: /var/www/webapp/inc/dashboard/userConfig.php:121
-#: /var/www/webapp/inc/dashboard/eventConfig.php:262
-#: /var/www/webapp/inc/dashboard/appConfig1.php:219
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:111
-#: /var/www/webapp/inc/dashboard/venueConfig.php:515
-#: /var/www/webapp/inc/dashboard/mdConfig.php:242
-#: /var/www/webapp/inc/dashboard/outletConfig.php:89
-#: /var/www/webapp/inc/dashboard/menuConfig.php:414
-#: /var/www/webapp/inc/venue/selectVenue_content.php:20
+#: code/accountSettings/partials/password.php:25
+#, fuzzy
+msgid "SAVE CHANGES>"
+msgstr "Lagre endringer"
+
+#: code/accountSettings/partials/payment.php:50
+#: code/settings/delivery/partials/delivery.php:59
+#: code/settings/delivery/partials/notifications.php:77
 msgid "SAVING..."
 msgstr "LAGRER..."
 
-#: /var/www/webapp/inc/dashboard/appConfig2.php:127
-msgid "40&#37 done, a couple more design touches..."
-msgstr "40&#37 ferdig, litt flere design tilpasninger..."
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:6
-msgid "User management"
-msgstr "Brukeradministrasjon"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:14
-msgid "Add a new user"
-msgstr "Legg til en ny bruker"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:21
-#: /var/www/webapp/inc/dashboard/eventConfig.php:50
-#: /var/www/webapp/inc/dashboard/mdConfig.php:30
-#: /var/www/webapp/inc/dashboard/menuConfig.php:93
-#: /var/www/webapp/inc/dashboard/menuConfig.php:235
-#: /var/www/webapp/code/shared/js_strings.php:127
-msgid "Name"
-msgstr "Navn"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:23
-#: /var/www/webapp/code/shared/js_strings.php:38
-msgid "Role"
-msgstr "Rolle"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:23
-msgid "This decides the level of access of your users."
-msgstr "Dette bestemmer tilgangsnivået for brukerne."
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:24
-#: /var/www/webapp/inc/dashboard/eventConfig.php:56
-#: /var/www/webapp/inc/dashboard/mdConfig.php:35
-#: /var/www/webapp/inc/dashboard/menuConfig.php:98
-#: /var/www/webapp/inc/dashboard/menuConfig.php:240
-msgid "Tools"
-msgstr "Verktøy"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:36
-msgid "Add a user name"
-msgstr "Legg til et brukernavn"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:37
-#: /var/www/webapp/inc/dashboard/userConfig.php:89
-msgid "Please type a user name (max 200chars)"
-msgstr "Skriv inn et brukernavn (maks 200 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:40
-#: /var/www/webapp/inc/dashboard/userConfig.php:92
-msgid "Add an email"
-msgstr "Legg til e-post"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:41
-#: /var/www/webapp/inc/dashboard/userConfig.php:93
-msgid "Please type an email"
-msgstr "Vennligst skriv en e-post adresse"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:45
-#: /var/www/webapp/inc/dashboard/userConfig.php:97
-msgid "Staff: can only read account"
-msgstr "Ansatte: kan bare se på kontoen"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:45
-#: /var/www/webapp/inc/dashboard/userConfig.php:97
-msgid "Staff"
-msgstr "Ansatte"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:46
-#: /var/www/webapp/inc/dashboard/userConfig.php:98
-msgid "Admin: can read/write account but cannot close it down"
-msgstr "Admin: kan se og redigere på kontoen, men kan ikke stenge ned"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:46
-#: /var/www/webapp/inc/dashboard/userConfig.php:98
-msgid "Admin"
-msgstr "Admin"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:47
-#: /var/www/webapp/inc/dashboard/userConfig.php:99
-msgid "Owner: can read/write account and close it down"
-msgstr "Eier: kan se og redigere kontoen og stenge den"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:47
-#: /var/www/webapp/inc/dashboard/userConfig.php:99
-msgid "Owner"
-msgstr "Eier"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:51
-#: /var/www/webapp/inc/dashboard/userConfig.php:103
-#: /var/www/webapp/inc/dashboard/eventConfig.php:100
-#: /var/www/webapp/inc/dashboard/eventConfig.php:189
-#: /var/www/webapp/inc/dashboard/mdConfig.php:82
-#: /var/www/webapp/inc/dashboard/mdConfig.php:200
-#: /var/www/webapp/inc/dashboard/outletConfig.php:38
-#: /var/www/webapp/inc/dashboard/outletConfig.php:72
-#: /var/www/webapp/inc/dashboard/menuConfig.php:140
-#: /var/www/webapp/inc/dashboard/menuConfig.php:290
-msgid "Collapse"
-msgstr "Trekk sammen"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:53
-#: /var/www/webapp/inc/dashboard/userConfig.php:105
-#: /var/www/webapp/inc/dashboard/eventConfig.php:102
-#: /var/www/webapp/inc/dashboard/eventConfig.php:191
-#: /var/www/webapp/inc/dashboard/menuConfig.php:143
-#: /var/www/webapp/inc/dashboard/menuConfig.php:191
-#: /var/www/webapp/inc/dashboard/menuConfig.php:293
-#: /var/www/webapp/inc/dashboard/menuConfig.php:343
-#: /var/www/webapp/inc/dashboard/menuConfig.php:375
-msgid "Duplicate"
-msgstr "Dupliser"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:54
-#: /var/www/webapp/inc/dashboard/userConfig.php:106
-#: /var/www/webapp/inc/dashboard/eventConfig.php:103
-#: /var/www/webapp/inc/dashboard/eventConfig.php:192
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:122
-#: /var/www/webapp/inc/dashboard/mdConfig.php:84
-#: /var/www/webapp/inc/dashboard/mdConfig.php:202
-#: /var/www/webapp/inc/dashboard/outletConfig.php:40
-#: /var/www/webapp/inc/dashboard/outletConfig.php:74
-#: /var/www/webapp/inc/dashboard/menuConfig.php:144
-#: /var/www/webapp/inc/dashboard/menuConfig.php:162
-#: /var/www/webapp/inc/dashboard/menuConfig.php:192
-#: /var/www/webapp/inc/dashboard/menuConfig.php:294
-#: /var/www/webapp/inc/dashboard/menuConfig.php:315
-#: /var/www/webapp/inc/dashboard/menuConfig.php:344
-#: /var/www/webapp/inc/dashboard/menuConfig.php:376
-msgid "Delete"
-msgstr "Slett"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:60
-msgid "Assign a password"
-msgstr "Tildele et passord"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:61
-msgid "Provide a Password"
-msgstr "Gi et passord"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:64
-#: /var/www/webapp/inc/reset/reset_content.php:15
-msgid "Confirm Password"
-msgstr "Bekreft passord"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:65
-msgid "Confirm password"
-msgstr "Bekreft passord"
-
-#: /var/www/webapp/inc/dashboard/userConfig.php:66
-msgid "Passwords don't match"
-msgstr "Passordene samsvarer ikke"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:20
-msgid "Your events"
-msgstr "Dine arrangementer"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:20
-msgid ""
-"These show when you are open for ordering, such as performances or matches. "
-"They can be viewed from the front page of your app"
-msgstr ""
-"Disse viser når du har åpent for bestilling, som for eksempel forestillinger "
-"eller kamper. De kan sees fra forsiden av din app"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:43
-msgid "Add a new event"
-msgstr "Legg til nytt arrangement"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:52
-msgid "Start Date"
-msgstr "Start dato"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:53
-msgid "Start Time"
-msgstr "Start tidspunkt"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:54
-msgid "End Time"
-msgstr "Slutt tidspunkt"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:55
-#: /var/www/webapp/inc/dashboard/mdConfig.php:34
-#: /var/www/webapp/inc/dashboard/menuConfig.php:97
-#: /var/www/webapp/inc/dashboard/menuConfig.php:239
-msgid "Visible?"
-msgstr "Synlig?"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:68
-msgid "Click to add an event name"
-msgstr "Klikk for å legge et arrangement navn"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:69
-#: /var/www/webapp/inc/dashboard/eventConfig.php:158
-msgid "Please type an event name (max 100chars)"
-msgstr "Skriv inn et arrangement navn (maks 100 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:72
-#: /var/www/webapp/inc/dashboard/eventConfig.php:161
-msgid "Click to add a description"
-msgstr "Klikk for å legge inn en beskrivelse"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:73
-#: /var/www/webapp/inc/dashboard/eventConfig.php:162
-#: /var/www/webapp/inc/dashboard/menuConfig.php:116
-#: /var/www/webapp/inc/dashboard/menuConfig.php:257
-msgid "Please type a description (max 250chars)"
-msgstr "Skriv inn en beskrivelse (maks 250 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:76
-#: /var/www/webapp/inc/dashboard/eventConfig.php:165
-msgid "DD/MM/YYYY"
-msgstr "DD/MM/ÅÅÅÅ"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:77
-#: /var/www/webapp/inc/dashboard/eventConfig.php:166
-msgid "Date?"
-msgstr "Dato?"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:80
-#: /var/www/webapp/inc/dashboard/eventConfig.php:84
-#: /var/www/webapp/inc/dashboard/eventConfig.php:169
-#: /var/www/webapp/inc/dashboard/eventConfig.php:173
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:58
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:63
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:87
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:92
-msgid "HH:MM"
-msgstr "TT:MM"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:81
-#: /var/www/webapp/inc/dashboard/eventConfig.php:85
-#: /var/www/webapp/inc/dashboard/eventConfig.php:135
-#: /var/www/webapp/inc/dashboard/eventConfig.php:170
-#: /var/www/webapp/inc/dashboard/eventConfig.php:174
-#: /var/www/webapp/inc/dashboard/eventConfig.php:225
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:59
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:64
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:88
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:93
-msgid "Time?"
-msgstr "Tid?"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:91
-#: /var/www/webapp/inc/dashboard/eventConfig.php:180
-#: /var/www/webapp/inc/dashboard/venueConfig.php:95
-#: /var/www/webapp/inc/dashboard/venueConfig.php:141
-#: /var/www/webapp/inc/dashboard/venueConfig.php:157
-#: /var/www/webapp/inc/dashboard/venueConfig.php:172
-#: /var/www/webapp/inc/dashboard/mdConfig.php:73
-#: /var/www/webapp/inc/dashboard/mdConfig.php:191
-#: /var/www/webapp/inc/dashboard/menuConfig.php:129
-#: /var/www/webapp/inc/dashboard/menuConfig.php:182
-#: /var/www/webapp/inc/dashboard/menuConfig.php:269
-#: /var/www/webapp/inc/dashboard/menuConfig.php:334
-#: /var/www/webapp/inc/dashboard/menuConfig.php:366
-msgid "No"
-msgstr "Nei"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:94
-#: /var/www/webapp/inc/dashboard/eventConfig.php:183
-#: /var/www/webapp/inc/dashboard/venueConfig.php:98
-#: /var/www/webapp/inc/dashboard/venueConfig.php:144
-#: /var/www/webapp/inc/dashboard/venueConfig.php:160
-#: /var/www/webapp/inc/dashboard/venueConfig.php:175
-#: /var/www/webapp/inc/dashboard/mdConfig.php:76
-#: /var/www/webapp/inc/dashboard/mdConfig.php:194
-#: /var/www/webapp/inc/dashboard/menuConfig.php:132
-#: /var/www/webapp/inc/dashboard/menuConfig.php:185
-#: /var/www/webapp/inc/dashboard/menuConfig.php:272
-#: /var/www/webapp/inc/dashboard/menuConfig.php:337
-#: /var/www/webapp/inc/dashboard/menuConfig.php:369
-msgid "Yes"
-msgstr "Ja"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:110
-#: /var/www/webapp/inc/dashboard/eventConfig.php:199
-msgid "All Locations"
-msgstr "﻿Alle lokasjoner"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:122
-#: /var/www/webapp/inc/dashboard/eventConfig.php:212
-msgid "Collection Slot: Pre-Show"
-msgstr "Samlingssted: Før show"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:123
-#: /var/www/webapp/inc/dashboard/eventConfig.php:213
-msgid "Collection Slot: Pre-Game"
-msgstr "Samlingssted: Før kamp"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:124
-#: /var/www/webapp/inc/dashboard/eventConfig.php:214
-msgid "Collection Slot: Interval"
-msgstr "Samlingssted: Interval"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:125
-#: /var/www/webapp/inc/dashboard/eventConfig.php:215
-msgid "Collection Slot: Second-Interval"
-msgstr "Samlingssted: Andre interval"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:126
-msgid "Collection Slot: Half-time"
-msgstr "Samlingssted: Halv tid"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:127
-#: /var/www/webapp/inc/dashboard/eventConfig.php:217
-msgid "Collection Slot: Post-Show"
-msgstr "Samlingssted: Etter show"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:128
-#: /var/www/webapp/inc/dashboard/eventConfig.php:218
-msgid "Collection Slot: Post-Game"
-msgstr "Samlingssted: Etter kamp"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:130
-#: /var/www/webapp/inc/dashboard/eventConfig.php:220
-msgid "Please choose a slot."
-msgstr "Velg et sted"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:133
-#: /var/www/webapp/inc/dashboard/eventConfig.php:223
-msgid "Lead Time (mins)"
-msgstr "Ledetid (min)"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:134
-msgid "30"
-msgstr "30"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:138
-#: /var/www/webapp/inc/dashboard/eventConfig.php:231
-msgid "Add another slot"
-msgstr "Legg til nytt sted"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:216
-msgid "Collection Slot: Half-Time"
-msgstr "Samlingssted: Halv tid"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:224
-msgid "eg. 30"
-msgstr "f.eks 30"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:270
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:130
-msgid "75&#37 done, almost there now..."
-msgstr "75&#37 ferdig, nesten i mål nå..."
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:39
-msgid "This is the first screen that your customers will see."
-msgstr "Dette er det første skjermbilde som kundene dine vil se."
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:46
-msgid "Create a main heading"
-msgstr "Lag en hovedoverskrift"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:47
-#: /var/www/webapp/inc/dashboard/appConfig1.php:66
-msgid "Choose one here"
-msgstr "Velg en her"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:49
-msgid "Leave the 4 deep queue to everyone else and pre-order."
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:50
-msgid "Don't miss the game, jump the long queue and pre-order."
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:51
-msgid "Intermission pre-order."
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:52
-msgid "A sparkling fruity alternative to queuing."
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:53
-msgid "Go on, jump the crazy queue and pre-order."
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:54
-msgid "Don't miss the game! Order online and skip the half-time rush"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:55
-msgid "Order interval drinks before the show starts"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:56
-msgid "Stay with friends while the bar prepares your round"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:57
-msgid "Order your coffee and croissant from your table, or from the train."
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:59
-#: /var/www/webapp/inc/dashboard/appConfig1.php:72
-msgid "or create your own..."
-msgstr "eller lage din egen..."
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:60
-msgid "maximum 70 characters"
-msgstr "maksimalt 70 tegn"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:65
-msgid "Create a subheading"
-msgstr "Lag en underoverskrift"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:69
-msgid "Pre-order food and drinks"
-msgstr "Forhåndsbestill mat og drikke"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:70
-msgid "Pre-order drinks+food"
-msgstr "Forhåndsbestill drikke+mat"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:73
-msgid "maximum 30 characters"
-msgstr "maks 30 tegn"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:84
-msgid "Text colour"
-msgstr "Tekst farge"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:92
-msgid "ORDER NOW button"
-msgstr "BESTILL NÅ knappen"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:98
-msgid "Button colour"
-msgstr "Velg knappens farge"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:126
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:208
-msgid "ORDER NOW"
-msgstr "BESTILL NÅ"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:138
-msgid "Select a home-screen background"
-msgstr "Velg en bakgrunn for hjem-skjermen"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:169
-msgid "UPLOAD YOUR OWN BACKGROUND"
-msgstr "LAST OPP DIN EGEN BAKGRUNN"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:176
-msgid "Custom Background Upload"
-msgstr "Last opp egendefinert bakgrunn"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:181
-#: /var/www/webapp/inc/dashboard/appConfig1.php:206
-#: /var/www/webapp/inc/dashboard/menuConfig.php:424
-msgid "UPLOAD"
-msgstr "LAST OPP"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:183
-#: /var/www/webapp/inc/dashboard/appConfig1.php:208
-msgid "RESET"
-msgstr "TILBAKESTILL"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:185
-msgid "Supported types: JPG"
-msgstr "Støttede filtyper: JPG"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:185
-#: /var/www/webapp/inc/dashboard/appConfig1.php:210
-msgid "Max file size: 10MB"
-msgstr "Maks filstørrelse: 10 MB"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:185
-msgid "Dimensions: 1080x1920"
-msgstr "Dimensjoner: 1080x1920"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:194
-msgid "UPLOAD YOUR OWN LOGO"
-msgstr "LAST OPP DIN EGEN LOGO"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:201
-msgid "Logo Upload"
-msgstr "Last opp logo"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:201
-msgid "Note: This will replace your main heading."
-msgstr "Merk: Dette vil erstatte din hovedoverskrift."
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:210
-msgid "Supported types: PNG"
-msgstr "Støttede filtyper: PNG"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:210
-msgid "Dimensions: 100x75"
-msgstr "Dimensjoner: 100x75"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:232
-msgid "30&#37 done, time for the artistic bit..."
-msgstr "30&#37 ferdig, tid for en kunstnerisk del..."
-
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:19
-msgid "Don't forget to get paid"
-msgstr "Ikke glem å ta betalt"
-
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:28
-msgid "CONNECT TO STRIPE"
-msgstr "KOBLE TIL STRIPE"
-
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:31
-msgid "SKIP THIS FOR NOW"
-msgstr "IKKE AKKURAT NÅ"
-
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:35
-msgid "GO TO YOUR STRIPE ACCOUNT"
-msgstr "GÅ TIL DIN STRIPE KONTO"
-
-#: /var/www/webapp/inc/dashboard/paymentConfig.php:45
-msgid "85&#37 done, we've saved the best for last!"
-msgstr "85&#37 ferdig, vi har spart det beste til slutt!"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:18
-msgid "Tell us about your opening times"
-msgstr "Fortell oss om dine åpningstider"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:21
-msgid "Days your venue is open"
-msgstr "Dagene din restaurant er åpen"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:22
-msgid "Mon"
-msgstr "Man"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:23
-msgid "Tue"
-msgstr "Tir"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:24
-msgid "Wed"
-msgstr "Ons"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:25
-msgid "Thu"
-msgstr "Tor"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:26
-msgid "Fri"
-msgstr "Fre"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:27
-msgid "Sat"
-msgstr "Lør"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:28
-msgid "Sun"
-msgstr "Søn"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:38
-msgid "Add another opening hour"
-msgstr "Legg til en annen åpningstid"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:38
-msgid "eg: if you close for lunch and reopen in the evening."
-msgstr "f.eks: hvis du stenger til lunsj og åpner igjen på kvelden."
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:47
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:77
-msgid "Open "
-msgstr "Åpen"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:47
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:77
-msgid ""
-"Let us know if your venue is open for delivery, open for pickup, open for "
-"both or if you are closed today."
-msgstr ""
-"Fortell oss om restauranten er åpen for levering, åpent for henting, åpen "
-"for begge deler eller om du er stengt i dag."
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:50
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:79
-msgid "For delivery and collection"
-msgstr "Levering og henting"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:51
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:80
-msgid "For delivery only"
-msgstr "Kun for levering"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:52
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:81
-msgid "For collection only"
-msgstr "Kun for henting"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:53
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:82
-msgid "Closed Today"
-msgstr "Stengt i dag"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:57
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:86
-msgid "Opens at"
-msgstr "Åpner"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:62
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:91
-msgid "Closes at"
-msgstr "Stenger"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:68
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:97
-msgid "Remove opening hour"
-msgstr "Fjern åpningstid"
-
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:105
-msgid "Apply these times to all days"
-msgstr "Bruk disse tidene på alle dager"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:54
-msgid "Tell us about your venue"
-msgstr "Fortell oss om din bedrift"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:63
-msgid "Venue name"
-msgstr "Restaurant navn"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:65
-msgid "Please type a venue name (max 100chars)"
-msgstr "Skriv inn bedriftens navn (maks 100 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:71
-msgid "Venue description"
-msgstr "Bedriftens beskrivelse"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:71
-msgid ""
-"Please enter a short description about your venue.<br/><br/>This will not "
-"appear on your branded app."
-msgstr ""
-"Skriv en kort beskrivelse av bedriften.<br/><br/>Dette vil ikke vises på din "
-"app."
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:73
-msgid "Please type a venue description (max 250chars)"
-msgstr "Skriv en beskrivelse av bedriften (maks 250 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:79
-msgid "What type of venue are you?"
-msgstr "Hvilken type bedrift har du?"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:81
-msgid "Restaurant (Cafe, Sandwich Bar, Restaurant, etc)"
-msgstr "Restaurant (Kafe, Sandwich Bar, Restaurant, etc)"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:82
-msgid "Sports Arena"
-msgstr "Sports arena"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:83
-msgid "Bars, Pubs and Clubs"
-msgstr "Bar, pub og klubb"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:84
-msgid "Workplace/Education Catering"
-msgstr "Arbeidsplass/Utdanning Catering"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:85
-msgid "Music and Cultural"
-msgstr "Musikk og kultur"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:92
-msgid "Are you primarily an events based business?"
-msgstr "Er du først og fremst et arrangement basert bedrift?"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:92
-msgid ""
-"Does your business revolve around regular events, e.g. football matches, "
-"performances, etc?"
-msgstr ""
-"Har din virksomhet regelmessige arrangementer, for eksempel fotballkamper, "
-"forestillinger, etc?"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:107
-msgid "Collection Slot Duration (mins)"
-msgstr "Samlingssted: Varighet (min)"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:107
-msgid ""
-"This is the number of minutes after opening time and before closing time "
-"when customers are allowed to collect orders."
-msgstr ""
-"Dette er antall minutter etter åpningstid og før stengetid som kundene kan "
-"sende inn bestillinger for henting."
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:108
-msgid "eg: 30"
-msgstr "f.eks 30"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:109
-msgid "Please provide a duration in mins"
-msgstr "Vennligst oppgi en varighet i minutter"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:115
-msgid "Default preparation time for collection orders (mins)"
-msgstr "Standard forberedelse tid for bestillinger som skal hentes (min)"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:115
-msgid ""
-"The time it takes to prepare your order before the customer can pick it up."
-msgstr "Tiden det tar å lage din bestilling før kunden kan hente den."
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:116
-msgid "e.g. 25"
-msgstr "f.eks 25"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:117
-msgid "Please provide a lead time"
-msgstr "Oppgi  leveringstid"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:122
-msgid "Discount offered for collection orders (%)"
-msgstr "Rabatt tilbys på bestillinger med henting (%)"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:123
-msgid "e.g. 10"
-msgstr "f.eks 10"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:124
-msgid "Please provide a discount percentage (between 0 and 100)"
-msgstr "Vennligst oppgi rabatt i prosent (mellom 0 og 100)"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:130
-msgid "Minimum value for orders"
-msgstr "Minimumsverdi for ordre"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:131
-msgid "e.g. 5"
-msgstr "f.eks 5"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:132
-msgid "Please provide a minimum value for ordering"
-msgstr "Vennligst oppgi en minimumsverdi for bestilling"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:138
-msgid "Do you offer a delivery service?"
-msgstr "Tilbyr dere levering?"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:138
-msgid "You can specify your delivery settings from the dashboard"
-msgstr "Du kan angi dine leveringsinnstillinger fra dashbordet"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:154
-msgid "Enable cash payment option?"
-msgstr "Aktivere kontant betaling som et alternativ?"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:169
-msgid "Do you require a phone number?"
-msgstr "Krever du et telefonnummer?"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:169
-msgid ""
-"By default phone numbers are only required for delivery orders, if you "
-"enable this option it will be mandatory for pickup orders as well."
-msgstr ""
-"Som standard er telefonnumre kun nødvendig for utkjøring, hvis du aktiverer "
-"dette alternativet vil det være obligatorisk for bestillinger med henting "
-"også."
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:191
-msgid "Address"
-msgstr "Adresse"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:197
-msgid "Please type a venue address (max 250chars)"
-msgstr "Skriv inn restaurantens adresse (maks 250 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:203
-msgid "Town/City"
-msgstr "Poststed"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:205
-msgid "Please type a Town/City (max 45chars)"
-msgstr "Skriv inn by/poststed (maks 45 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:212
-msgid "Country"
-msgstr "Land"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:459
-msgid "Please choose a country"
-msgstr "Velg et land"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:464
-msgid "Post code"
-msgstr "Postnummer"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:466
-msgid "Please type a post code (max 45chars)"
-msgstr "Skriv inn et postnummer (maks 45 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:472
-msgid "Language"
-msgstr "Språk"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:477
-msgid "Please select your language"
-msgstr "Velg ditt språk"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:483
-msgid "Timezone"
-msgstr "Tidssone"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:491
-msgid "Please select your timezone"
-msgstr "Velg tidssone"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:497
-msgid "Currency"
-msgstr "Valuta"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:503
-msgid "Please select your currency"
-msgstr "Velg valuta"
-
-#: /var/www/webapp/inc/dashboard/venueConfig.php:526
-msgid "15&#37 done, keep going!"
-msgstr "15&#37 ferdig, keep going!"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:70
-msgid "This is where you can monitor your takings and reports."
-msgstr "Her kan du overvåke dine salg og rapporter"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:74
-msgid "Your online order page is"
-msgstr "Din online bestillingsside er"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:83
-msgid "This month"
-msgstr "Denne måneden"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:86
-msgid "Total revenue"
-msgstr "Totale inntekter"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:90
-msgid "Total orders"
-msgstr "Totalt bestillinger"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:94
-msgid "New users"
-msgstr "Nye brukere"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:98
-msgid "Returning users"
-msgstr "Returnerende brukere"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:113
-msgid "Customer Analytics"
-msgstr "Analytics for kunder"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:125
-msgid "Add new menu"
-msgstr "Legg til ny meny"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:132
-msgid "Change settings"
-msgstr "Endre innstillinger"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:133
-msgid "Delivery settings"
-msgstr "Innstillinger for leveranse"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:134
-msgid "Preset notifications"
-msgstr "Forhåndsinnstilte varslinger"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:136
-msgid "Opening hours"
-msgstr "Åpningstider"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:143
-msgid "Home screen"
-msgstr "Hjem skjerm"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:144
-msgid "Menu screen"
-msgstr "Meny skjerm"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:151
-msgid "Update events"
-msgstr "Oppdater arrangementer"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:158
-msgid "Manage users"
-msgstr "Administrere brukere"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:159
-msgid "Add a payment method"
-msgstr "Legg til betalingsmetode"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:189
-msgid "Change app mode"
-msgstr "Endre app-modus"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:189
-msgid ""
-"LIVE - Your app is visible and is ready to take real orders.<br/><br/>DEMO - "
-"Your app is visible but does not take real orders.<br/><br/>OFFLINE - Your "
-"app is not visible."
-msgstr ""
-"LIVE - Din app er synlig og er klar til å ta i mot ordre. <br/><br/> DEMO - "
-"Din app er synlig, men tar ikke reelle ordre. <br/><br/> OFFLINE - Din app "
-"er ikke synlig."
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:192
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:193
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:194
-msgid "active"
-msgstr "aktiv"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:192
-msgid "OFFLINE"
-msgstr "OFFLINE"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:193
-msgid "DEMO"
-msgstr "DEMO"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:194
-msgid "LIVE"
-msgstr "LIVE"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:223
-msgid "Venue Title"
-msgstr "Restaurant tittel"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:257
-msgid ""
-"Your 30 day free trial \tof this Premium Feature has now expired. Would you "
-"like to purchase it?"
-msgstr ""
-"Din 30 dagers gratis prøveversjon av denne Premium funksjonen har nå utløpt. "
-"Vil du kjøpe den?"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:258
-msgid "YES PLEASE"
-msgstr "JA TAKK"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:259
-msgid "NOT RIGHT NOW"
-msgstr "IKKE AKKURAT NÅ"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:273
-msgid " trial"
-msgstr "prøve"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
-msgid "Your free trial expires in "
-msgstr "Din gratis prøveperiode utløper om "
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
-msgid " days."
-msgstr " dager."
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
-msgid ""
-" To continue using your app after the free trial, register your card details "
-"for the "
-msgstr ""
-" For å fortsette å bruke programmet etter prøveperioden kan du registrere "
-"kortdetaljene dine for "
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
-msgid " on the 'My Account' tab located on your dashboard."
-msgstr " på \"Min konto\" fanen som er plassert på dashbordet."
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:282
-msgid "GO TO MY ACCOUNT"
-msgstr "GÅ TIL MIN KONTO"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:287
-msgid "Payment provider is not connected!"
-msgstr "Betalingsløsning er ikke tilkoblet!"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:288
-msgid ""
-"Before taking your app live you need to connect it to a payment provider or "
-"enable cash payments so that you can start accepting payments and start "
-"getting paid!"
-msgstr ""
-"Før du legger ut din app må du koble til en betalingsløsning eller aktivere "
-"kontant betaling, slik at du kan begynne å akseptere betalinger og begynne å "
-"få betalt!"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:289
-msgid "CONNECT"
-msgstr "SAMMENKOBLE"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:290
-#: /var/www/webapp/code/shared/js_strings.php:80
-msgid "CANCEL"
-msgstr "AVBRYT"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:390
-#: /var/www/webapp/code/shared/js_strings.php:64
-msgid "Your app is now live!"
-msgstr "Din app er nå live!"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:399
-msgid "Your app is now in DEMO mode."
-msgstr "Din app er nå i DEMO-modus."
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:408
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:426
-msgid "Your app is now in OFFLINE mode."
-msgstr "Din app er nå i OFFLINE modus."
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:417
-msgid "Your app is now in Demo mode."
-msgstr "Din app er nå i Demo modus!"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:5
-msgid ""
-"This is where you can combine separate food items into one meal combination, "
-"e.g. sandwich, crisps and a drink"
-msgstr ""
-"Her kan du kombinere separate matvarer til ett kombinasjons måltid, f.eks "
-"hamburger, pomfri og drikke"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:8
-msgid "Add a new Meal Deal"
-msgstr "Legg til en ny Meal Deal"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:31
-msgid "Section"
-msgstr "Seksjon"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:31
-msgid "Which menu section does this meal deal belong in?"
-msgstr "Hvilke del av menyen hører dette måltidet hjemme i?"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:32
-msgid "Total Price "
-msgstr "Total Pris "
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:33
-msgid "Discount Price "
-msgstr "Rabattert pris "
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:53
-#: /var/www/webapp/inc/dashboard/mdConfig.php:171
-#: /var/www/webapp/inc/dashboard/menuConfig.php:112
-#: /var/www/webapp/inc/dashboard/menuConfig.php:253
-msgid "Please type an item name (max 100chars)"
-msgstr "Vennligst skriv inn et produktnavn (maks 100 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:61
-#: /var/www/webapp/inc/dashboard/mdConfig.php:102
-#: /var/www/webapp/inc/dashboard/mdConfig.php:179
-#: /var/www/webapp/inc/dashboard/mdConfig.php:219
-msgid "Please choose a section"
-msgstr "Velg en seksjon"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:64
-#: /var/www/webapp/inc/dashboard/mdConfig.php:182
-#: /var/www/webapp/inc/dashboard/mdConfig.php:185
-#: /var/www/webapp/inc/dashboard/menuConfig.php:119
-#: /var/www/webapp/inc/dashboard/menuConfig.php:173
-#: /var/www/webapp/inc/dashboard/menuConfig.php:326
-msgid "0.00"
-msgstr "0,00"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:68
-#: /var/www/webapp/inc/dashboard/mdConfig.php:186
-msgid "Amount?"
-msgstr "Beløp?"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:89
-#: /var/www/webapp/inc/dashboard/mdConfig.php:246
-#: /var/www/webapp/inc/dashboard/menuConfig.php:84
-#: /var/www/webapp/inc/dashboard/menuConfig.php:226
-msgid "Delete this section"
-msgstr "Slett denne delen"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:91
-#: /var/www/webapp/inc/dashboard/mdConfig.php:208
-msgid "Type or pick a selection title"
-msgstr "Skriv inn eller velg en tittel"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:91
-#: /var/www/webapp/inc/dashboard/mdConfig.php:208
-msgid "Eg. Choose a main, Choose a side, Choose a drink, etc"
-msgstr "F.eks. Velg en hovedrett, velg en siderett, Velg drikke, etc"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:92
-#: /var/www/webapp/inc/dashboard/mdConfig.php:209
-msgid "Please type or pick a title (max 100chars)"
-msgstr "Vennligst skriv inn eller velg en tittel (maks 100 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:96
-#: /var/www/webapp/inc/dashboard/mdConfig.php:213
-#: /var/www/webapp/code/shared/js_strings.php:53
-msgid "Choose a menu section"
-msgstr "Velg en meny seksjon"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:100
-#: /var/www/webapp/inc/dashboard/mdConfig.php:217
-msgid "All sections"
-msgstr "Alle seksjoner"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:101
-#: /var/www/webapp/inc/dashboard/mdConfig.php:218
-msgid "Pick a menu section from where you'd like to import items."
-msgstr "Velg en meny seksjon som du ønsker å importere varer fra."
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:114
-#: /var/www/webapp/inc/dashboard/mdConfig.php:231
-msgid "Add this item to the current Meal Deal"
-msgstr "Legge dette produktet til gjeldende Meal Deal"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:122
-#: /var/www/webapp/inc/dashboard/mdConfig.php:206
-msgid "Add a selection to this meal deal"
-msgstr "Lag et utvalg til denne kampanjen"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:170
-msgid "Click to add a Meal Deal name"
-msgstr "Klikk for å legge til et kampanjenavn"
-
-#: /var/www/webapp/inc/dashboard/mdConfig.php:252
-msgid ""
-"You've not created any items! You won't be able to create Meal Deals until "
-"you have some items in your menu."
-msgstr ""
-"Du har ikke opprettet noen retter! Du vil ikke være i stand til å lage "
-"kampanjer før du har noen retter i menyen."
-
-#: /var/www/webapp/inc/dashboard/outletConfig.php:6
-msgid "Outlets"
-msgstr "Utsalgssteder"
-
-#: /var/www/webapp/inc/dashboard/outletConfig.php:14
-msgid "Add a new Outlet"
-msgstr "Legg til nytt utsalgssted"
-
-#: /var/www/webapp/inc/dashboard/outletConfig.php:15
-msgid "Create a new menu"
-msgstr "Opprett en ny meny"
-
-#: /var/www/webapp/inc/dashboard/outletConfig.php:26
-msgid "Add an outlet name"
-msgstr "Legg til nytt sted"
-
-#: /var/www/webapp/inc/dashboard/outletConfig.php:27
-#: /var/www/webapp/inc/dashboard/outletConfig.php:61
-msgid "Please type an outlet name"
-msgstr "Skriv inn navn på utsalgssted"
-
-#: /var/www/webapp/inc/dashboard/outletConfig.php:35
-#: /var/www/webapp/inc/dashboard/outletConfig.php:69
-msgid "Please choose a menu"
-msgstr "Velg en meny"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:32
-msgid "Build your menu"
-msgstr "Bygg din meny"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:32
-msgid "Your menu"
-msgstr "Din meny"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:32
-msgid ""
-"Now it's time to create your menu. We suggest you keep it simple to start "
-"with.<br/><br/>An easy way is to group items, i.e. create separate sections "
-"for food, cold drinks and hot drinks."
-msgstr ""
-"Nå er det på tide å lage menyen din. Vi foreslår at du holder det så enkelt "
-"som mulig til å begynne med. <br/><br/> En enkel måte er å gruppere "
-"produkter, dvs. opprette egne grupper for mat, kald drikke og varm drikke."
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:68
-msgid "Click to add your menu name"
-msgstr "Klikk for å legge inn meny navn"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:69
-msgid "Please type a menu name (max 100chars)"
-msgstr "Vennligst skriv inn et meny navn (maks 100 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:75
-#: /var/www/webapp/inc/dashboard/menuConfig.php:217
-msgid "Click to add a section name"
-msgstr "Klikk for å legge til gruppe navn"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:76
-#: /var/www/webapp/inc/dashboard/menuConfig.php:218
-msgid "Please type a section name (max 100chars)"
-msgstr "Vennligst skriv inn et gruppe navn (maks 100 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:81
-#: /var/www/webapp/inc/dashboard/menuConfig.php:223
-msgid "Add an item to this section"
-msgstr "Legg til et produkt i denne gruppen"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:83
-#: /var/www/webapp/inc/dashboard/menuConfig.php:225
-msgid "Move this section"
-msgstr "Flytt denne gruppen"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:85
-#: /var/www/webapp/inc/dashboard/menuConfig.php:227
-msgid "Collapse this section"
-msgstr "Skjul denne gruppen"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:95
-#: /var/www/webapp/inc/dashboard/menuConfig.php:237
-msgid "Price "
-msgstr "Pris"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:96
-#: /var/www/webapp/inc/dashboard/menuConfig.php:238
-msgid "Quantity"
-msgstr "Antall"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:111
-msgid "Click to add an item name"
-msgstr "Klikk for å legge til produktnavn"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:115
-#: /var/www/webapp/inc/dashboard/menuConfig.php:256
-msgid "Optional description"
-msgstr "Valgfri beskrivelse"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:120
-#: /var/www/webapp/inc/dashboard/menuConfig.php:175
-#: /var/www/webapp/inc/dashboard/menuConfig.php:261
-#: /var/www/webapp/inc/dashboard/menuConfig.php:327
-#: /var/www/webapp/inc/dashboard/menuConfig.php:359
-msgid "Price?"
-msgstr "Pris?"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:124
-#: /var/www/webapp/inc/dashboard/menuConfig.php:264
-msgid "Unlimited"
-msgstr "Ubegrenset"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:127
-#: /var/www/webapp/inc/dashboard/menuConfig.php:267
-msgid "This chooses whether you want to activate this food on the menu or not."
-msgstr "Her velger du om du vil aktivere denne maten på menyen eller ikke."
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:138
-#: /var/www/webapp/inc/dashboard/menuConfig.php:288
-msgid "Upload image"
-msgstr "Last opp bilde"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:139
-#: /var/www/webapp/inc/dashboard/menuConfig.php:289
-msgid "Add tags"
-msgstr "Legg til tags"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:142
-#: /var/www/webapp/inc/dashboard/menuConfig.php:292
-msgid "Reorder"
-msgstr "Endre rekkefølgen"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:148
-#: /var/www/webapp/inc/dashboard/menuConfig.php:301
-msgid "Add a new option to this item"
-msgstr "Legg et nytt alternativ til dette produktet"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:148
-#: /var/www/webapp/inc/dashboard/menuConfig.php:301
-msgid "Add an option"
-msgstr "Legg til et alternativ"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:150
-#: /var/www/webapp/inc/dashboard/menuConfig.php:303
-msgid "Type or pick an option title"
-msgstr "Skriv inn eller velg en alternativ tittel"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:150
-#: /var/www/webapp/inc/dashboard/menuConfig.php:303
-msgid "Eg. Pick a size, Choice of an option, Add some extras, Select a side"
-msgstr ""
-"F.eks. Velg en størrelse, Valg av tillegg, Legg til litt ekstra, Velg en "
-"siderett"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:151
-#: /var/www/webapp/inc/dashboard/menuConfig.php:304
-msgid "Please type or pick a title"
-msgstr "Skriv eller velg en tittel"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:155
-#: /var/www/webapp/inc/dashboard/menuConfig.php:308
-msgid "User must select only one option."
-msgstr "Brukeren må kun velge ett tillegg."
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:155
-#: /var/www/webapp/inc/dashboard/menuConfig.php:308
-msgid "User selects 1 option"
-msgstr "Brukeren velger 1 tillegg"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:156
-#: /var/www/webapp/inc/dashboard/menuConfig.php:309
-msgid "User must select one or more options."
-msgstr "Brukeren må velge ett eller flere tillegg."
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:156
-#: /var/www/webapp/inc/dashboard/menuConfig.php:309
-msgid "User selects 1 or more options"
-msgstr "Brukeren velger 1 eller flere tillegg"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:157
-#: /var/www/webapp/inc/dashboard/menuConfig.php:310
-msgid "User can select zero or more options."
-msgstr "Brukeren kan velge 0 eller flere tillegg."
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:157
-#: /var/www/webapp/inc/dashboard/menuConfig.php:310
-msgid "User selects 0 or more options"
-msgstr "Brukeren velger 0 eller flere tillegg"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:158
-#: /var/www/webapp/inc/dashboard/menuConfig.php:311
-msgid ""
-"Single: When the user must pick only 1 option.<br/><br/>Multiple: When the "
-"user must pick 1 or more options.<br/><br/>Optional: when the user can pick "
-"0 or multiple options."
-msgstr ""
-"Enkel: Når brukeren må velge kun ett tillegg. <br/><br/> Multiple: Når "
-"brukeren må velge ett eller flere tillegg. <br/><br/> Valgfritt: Når "
-"brukeren kan velge 0 eller flere tillegg."
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:159
-#: /var/www/webapp/inc/dashboard/menuConfig.php:312
-msgid "Please choose a type"
-msgstr "Velg en type"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:167
-#: /var/www/webapp/inc/dashboard/menuConfig.php:320
-msgid "Click to add an option name"
-msgstr "Klikk for å legge til et tilleggs navn"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:168
-#: /var/www/webapp/inc/dashboard/menuConfig.php:321
-#: /var/www/webapp/inc/dashboard/menuConfig.php:353
-msgid "Please type an option name (max 100chars)"
-msgstr "Vennligst skriv et tilleggets navn (maks 100 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:174
-#: /var/www/webapp/inc/dashboard/menuConfig.php:326
-#: /var/www/webapp/inc/dashboard/menuConfig.php:358
-msgid ""
-"This will be in addition to the item price. If there is no price difference, "
-"put in 0.00."
-msgstr ""
-"Dette kommer i tillegg til produktprisen. Hvis det ikke er noen "
-"prisforskjell, skriv inn 0,00."
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:196
-#: /var/www/webapp/inc/dashboard/menuConfig.php:384
-msgid "Eg. Toppings, Sizes, Exras, etc"
-msgstr "F.eks. Topping, Størrelser, Tillegg, etc"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:196
-#: /var/www/webapp/inc/dashboard/menuConfig.php:384
-msgid "Add an option category to this item <small>(optional)</small>"
-msgstr ""
-"Legg til en tilleggs kategori til dette produktet <small>(valgfritt)</small>"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:401
-msgid "Add a new menu section"
-msgstr "Legg til en ny meny gruppe"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:407
-msgid "COLLAPSE ALL"
-msgstr "SKJUL ALLE"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:409
-msgid "SAVE & CONTINUE EDITING"
-msgstr "LAGRE & FORTSETT REDIGERING"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:410
-msgid "SAVE & FINISH"
-msgstr "LAGRE ENDRINGER"
-
-#: /var/www/webapp/inc/dashboard/menuConfig.php:496
-msgid "45&#37 done, now for the fun bit!"
-msgstr "45&#37 ferdig, nå kommer den festlige delen!"
-
-#: /var/www/webapp/inc/more/more_content.php:10
-msgid ""
-"If you're stuck let us know what the problem is and a member of our support "
-"team will be in touch shortly"
-msgstr ""
-"Hvis du sitter fast la oss få vite hva problemet er, og et medlem av vårt "
-"support team vil ta kontakt innen kort tid"
-
-#: /var/www/webapp/inc/more/more_content.php:12
-msgid "Please enter your requirement."
-msgstr "Skriv inn din forespørsel."
-
-#: /var/www/webapp/inc/more/more_content.php:18
-msgid "SEND"
-msgstr "SEND"
-
-#: /var/www/webapp/inc/more/more_content.php:23
-msgid "Thank you for your request"
-msgstr "Takk for din forespørsel"
-
-#: /var/www/webapp/inc/more/more_content.php:24
-msgid "We'll be in touch shortly."
-msgstr "Vi tar kontakt innen kort tid."
-
-#: /var/www/webapp/inc/reset/reset_content.php:4
-msgid "Reset your password?"
-msgstr "Tilbakestille passordet ditt?"
-
-#: /var/www/webapp/inc/reset/reset_content.php:12
-msgid "A password is required."
-msgstr "Det kreves et passord."
-
-#: /var/www/webapp/inc/reset/reset_content.php:23
-msgid "RESET PASSWORD"
-msgstr "NULLSTILL PASSORD"
-
-#: /var/www/webapp/inc/reset/reset_content.php:28
-msgid "Sorry. Invalid code."
-msgstr "Beklager. Feil kode."
-
-#: /var/www/webapp/inc/finish/finish_content.php:26
-msgid "The finish line!"
-msgstr "Mållinjen!"
-
-#: /var/www/webapp/inc/finish/finish_content.php:28
-msgid "App mode"
-msgstr "App-modus"
-
-#: /var/www/webapp/inc/finish/finish_content.php:31
-msgid "Your app is currently in "
-msgstr "Din app er nå i "
-
-#: /var/www/webapp/inc/finish/finish_content.php:31
-msgid " mode."
-msgstr " modus."
-
-#: /var/www/webapp/inc/finish/finish_content.php:31
-msgid ""
-"LIVE - Your app is available on My Order App and is ready to take real "
-"orders.<br/><br/>DEMO - Your app is available on My Order App but does not "
-"take real orders.<br/><br/>OFFLINE - Your app is not available on My Order "
-"App."
-msgstr ""
-"LIVE - Din app er tilgjengelig på My Order Appen og er klar til å ta "
-"virkelige bestillinger.<br/><br/>DEMO - Din app er tilgjengelig på My Order "
-"Appen men tar ikke virkelige bestillinger. <br/><br/> OFFLINE - Din app er "
-"ikke tilgjengelig på My Order Appen."
-
-#: /var/www/webapp/inc/finish/finish_content.php:33
-msgid "After you setup a payment method, you can send it into the world!"
-msgstr ""
-"Etter at du har satt opp en betalingsmetode kan du dele det med verden!"
-
-#: /var/www/webapp/inc/finish/finish_content.php:38
-msgid "SETUP PAYMENT"
-msgstr "BETALINGS OPPSETT"
-
-#: /var/www/webapp/inc/finish/finish_content.php:42
-#: /var/www/webapp/inc/finish/finish_content.php:48
-msgid "MAKE MY APP LIVE"
-msgstr "SETT MIN APP TIL LIVE"
-
-#: /var/www/webapp/inc/finish/finish_content.php:45
-msgid "SWITCH TO DEMO MODE"
-msgstr "BYTT TIL DEMO MODUS"
-
-#: /var/www/webapp/inc/finish/finish_content.php:49
-msgid "PUT MY APP IN DEMO MODE"
-msgstr "SETT MIN APP TIL DEMO MODUS"
-
-#: /var/www/webapp/inc/finish/finish_content.php:51
-msgid "TAKE MY APP OFFLINE"
-msgstr "TA MIN APP OFFLINE"
-
-#: /var/www/webapp/inc/finish/finish_content.php:53
-msgid "BACK TO THE DASHBOARD"
-msgstr "TILBAKE TIL KONTROLLPANELET"
-
-#: /var/www/webapp/inc/finish/finish_content.php:74
-msgid "Payment method was not setup."
-msgstr "Betalingsmåte ble ikke satt opp."
-
-#: /var/www/webapp/inc/venue/selectVenue_content.php:4
-msgid "Select venue for use webapp"
-msgstr "Velg bedrift for bruk av webapp"
-
-#: /var/www/webapp/inc/venue/selectVenue_content.php:14
-msgid "Please choose a venue."
-msgstr "Vennligst velg en bedrift."
-
-#: /var/www/webapp/code/notification/templates/subscriptionpayment.php:11
-#: /var/www/webapp/code/notification/templates/purchase.php:16
-msgid "Subtotal"
-msgstr "Delsum"
-
-#: /var/www/webapp/code/notification/templates/subscriptionpayment.php:15
-#: /var/www/webapp/code/notification/templates/purchase.php:20
-msgid "VAT @ 20%"
-msgstr "MVA @ 20%"
-
-#: /var/www/webapp/code/notification/templates/subscriptionpayment.php:21
-#: /var/www/webapp/code/notification/templates/purchase.php:28
-msgid "TOTAL"
-msgstr "TOTALT"
-
-#: /var/www/webapp/code/notification/templates/purchase.php:5
-msgid "One-off payment"
-msgstr "Engangsbetaling"
-
-#: /var/www/webapp/code/notification/templates/purchase.php:9
-msgid "Monthly charge"
-msgstr "Månedlig kostnad"
-
-#: /var/www/webapp/code/notification/templates/purchase.php:11
-msgid "*minimum "
-msgstr "*minimum"
-
-#: /var/www/webapp/code/notification/templates/purchase.php:11
-msgid " months contract"
-msgstr "måneders kontrakt"
-
-#: /var/www/webapp/code/notification/templates/purchase.php:24
-msgid "Discount"
-msgstr "Rabatt"
-
-#: /var/www/webapp/code/notification/templates/purchase.php:33
-msgid "Have a discount code?"
-msgstr "Har du en rabattkode?"
-
-#: /var/www/webapp/code/notification/templates/purchase.php:36
-msgid "APPLY"
-msgstr "BRUK"
-
-#: /var/www/webapp/code/notification/notification.php:12
-msgid "I have read the"
-msgstr "Jeg har lest"
-
-#: /var/www/webapp/code/notification/notification.php:12
-msgid "Terms and Conditions"
-msgstr "Betingelsene"
-
-#: /var/www/webapp/code/kyc/js/modals/chart.php:22
-msgid "No Data"
-msgstr "Ingen data"
-
-#: /var/www/webapp/code/kyc/js/modals/chart.php:36
-msgid "Export as..."
-msgstr "Eksport som..."
-
-#: /var/www/webapp/code/kyc/js/modals/chart.php:42
-msgid "PDF"
-msgstr "PDF"
-
-#: /var/www/webapp/code/kyc/js/modals/chart.php:48
-msgid "CSV"
-msgstr "CSV"
-
-#: /var/www/webapp/code/shop/shop.php:16
-msgid "Premium Features"
-msgstr "Premium Funksjoner"
-
-#: /var/www/webapp/code/shop/shop.php:17
-msgid ""
-"At Preoday we believe that businesses such as yours should not pay to "
-"receive mobile orders. Our business model is simple: we charge no commission "
-"on orders you receive through the app.  Instead, we offer services that "
-"bring new value and insight to your business."
-msgstr ""
-"Preoday har tro på at bedrifter som din ikke skal måtte betale ekstra for å "
-"motta bestillinger via mobil. Vår forretningsmodell er enkel: vi tar ingen "
-"provisjon på bestillinger som du mottar via appen. I stedet kan vi tilby "
-"tjenester som gir ny verdi og innsikt til din bedrift."
-
-#: /var/www/webapp/code/shop/shop.php:33 /var/www/webapp/code/shop/shop.php:80
-msgid "COMING SOON"
-msgstr "KOMMER SNART"
-
-#: /var/www/webapp/code/shop/shop.php:36 /var/www/webapp/code/shop/shop.php:92
-msgid "GET IN TOUCH"
-msgstr "TA KONTAKT"
-
-#: /var/www/webapp/code/shop/shop.php:41 /var/www/webapp/code/shop/shop.php:70
-msgid "month"
-msgstr "måned"
-
-#: /var/www/webapp/code/shop/shop.php:43 /var/www/webapp/code/shop/shop.php:72
-msgid "one-off payment"
-msgstr "engangsbetaling"
-
-#: /var/www/webapp/code/shop/shop.php:43 /var/www/webapp/code/shop/shop.php:73
-msgid "VAT"
-msgstr "MVA"
-
-#: /var/www/webapp/code/shop/shop.php:47 /var/www/webapp/code/shop/shop.php:89
-msgid "FREE"
-msgstr "GRATIS"
-
-#: /var/www/webapp/code/shop/shop.php:47 /var/www/webapp/code/shop/shop.php:89
-msgid "DAY TRIAL"
-msgstr "DAGER GRATIS PRØVE"
-
-#: /var/www/webapp/code/shop/shop.php:48 /var/www/webapp/code/shop/shop.php:95
-msgid "TRIAL EXPIRES IN"
-msgstr "PRØVEPERIODE UTLØPER OM"
-
-#: /var/www/webapp/code/shop/shop.php:48 /var/www/webapp/code/shop/shop.php:95
-msgid "DAYS"
-msgstr "DAGER"
-
-#: /var/www/webapp/code/shop/shop.php:52 /var/www/webapp/code/shop/shop.php:85
-#: /var/www/webapp/code/shared/js_strings.php:208
-msgid "BUY"
-msgstr "KJØP"
-
-#: /var/www/webapp/code/shop/shop.php:55 /var/www/webapp/code/shop/shop.php:86
-msgid "INSTALLED"
-msgstr "INSTALLERT"
-
-#: /var/www/webapp/code/shop/shop.php:108
-msgid "Features"
-msgstr "Funksjoner"
-
-#: /var/www/webapp/code/shared/tags.php:3
-msgid "Medium"
-msgstr "Medium"
-
-#: /var/www/webapp/code/shared/tags.php:4
-msgid "Spicy"
-msgstr ""
-
-#: /var/www/webapp/code/shared/tags.php:5
-msgid "Hot"
-msgstr "Sterk"
-
-#: /var/www/webapp/code/shared/tags.php:6
-msgid "Vegetarian"
-msgstr "Vegitar"
-
-#: /var/www/webapp/code/shared/tags.php:7
-msgid "Vegan"
-msgstr "Vegan"
-
-#: /var/www/webapp/code/shared/tags.php:8
-msgid "Contains nuts"
-msgstr "Inneholder nøtter"
-
-#: /var/www/webapp/code/shared/tags.php:9
-msgid "Gluten free"
-msgstr "Glutenfri"
-
-#: /var/www/webapp/code/shared/tags.php:10
-msgid "Halal"
-msgstr "Halal"
-
-#: /var/www/webapp/code/shared/override_vars.php:13
-msgid "Sign in to your Preoday Dashboard"
-msgstr "Logg på dashbordet Preoday"
-
-#: /var/www/webapp/code/shared/override_vars.php:19
-#: /var/www/webapp/overrides/preoday/regular_footer.php:30
-#: /var/www/webapp/overrides/preoday/dashboard_footer.php:12
-msgid "Preoday"
-msgstr "Preoday"
-
-#: /var/www/webapp/code/shared/override_vars.php:37
-msgid "Sign in to your Dashboard"
-msgstr "Logg inn på Dashboard"
-
-#: /var/www/webapp/code/shared/override_vars.php:44
-msgid "Food 4u"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:9
-msgid "Sorry, but there's been an error processing your request."
-msgstr "Beklager, men det var en feil ved behandling av forespørselen."
-
-#: /var/www/webapp/code/shared/js_strings.php:10
-msgid "Incorrect credentials or account does not exist."
-msgstr "Feil detaljer oppgitt eller konto finnes ikke."
-
-#: /var/www/webapp/code/shared/js_strings.php:11
-msgid "Success! Please check your email for further instructions."
-msgstr "Bra! Vennligst sjekk e-posten din for videre instruksjoner."
-
-#: /var/www/webapp/code/shared/js_strings.php:12
-msgid "Sorry, incorrect code."
-msgstr "Beklager, feil kode."
-
-#: /var/www/webapp/code/shared/js_strings.php:13
-msgid ""
-"Your password has been reset.<br/>You will now be redirected to the login "
-"page."
-msgstr ""
-"Ditt passord er nullstilt. <br/>Du vil nå bli sendt videre til "
-"innloggingssiden."
-
-#: /var/www/webapp/code/shared/js_strings.php:14
-msgid "Venue changes have been saved!"
-msgstr "Endringene har blitt lagret"
-
-#: /var/www/webapp/code/shared/js_strings.php:15
-msgid "Uploaded!"
-msgstr "Lastet opp!"
-
-#: /var/www/webapp/code/shared/js_strings.php:16
-msgid "Error uploading file"
-msgstr "Feil ved opplasting av fil"
-
-#: /var/www/webapp/code/shared/js_strings.php:17
-msgid "Incorrect Image File"
-msgstr "Feil bilde fil"
-
-#: /var/www/webapp/code/shared/js_strings.php:18
-msgid "App changes have been saved!"
-msgstr "Endringene i appen har blitt lagret!"
-
-#: /var/www/webapp/code/shared/js_strings.php:19
-msgid "Choose a size"
-msgstr "Velg en størrelse"
-
-#: /var/www/webapp/code/shared/js_strings.php:20
-msgid "Choose a flavour"
-msgstr "Velg en smak"
-
-#: /var/www/webapp/code/shared/js_strings.php:21
-msgid "Choose a topping"
-msgstr "Velg en topping"
-
-#: /var/www/webapp/code/shared/js_strings.php:22
-msgid "Choose some extras"
-msgstr "Velg noe ekstra"
-
-#: /var/www/webapp/code/shared/js_strings.php:23
-msgid "Choose a side dish"
-msgstr "Velg en siderett"
-
-#: /var/www/webapp/code/shared/js_strings.php:24
-msgid "Pick an option type"
-msgstr "Velg et alternativ"
-
-#: /var/www/webapp/code/shared/js_strings.php:25
-msgid "Yes, delete this section and all its contents!"
-msgstr "Ja, slett denne delen og alt innhold!"
-
-#: /var/www/webapp/code/shared/js_strings.php:26
-msgid "No, go back."
-msgstr "Nei, gå tilbake."
-
-#: /var/www/webapp/code/shared/js_strings.php:27
-msgid "Choose a main"
-msgstr "Velg en hoverett"
-
-#: /var/www/webapp/code/shared/js_strings.php:28
-msgid "Choose a side"
-msgstr "Velg et tillegg"
-
-#: /var/www/webapp/code/shared/js_strings.php:29
-msgid "Choose a drink"
-msgstr "Velg drikke"
-
-#: /var/www/webapp/code/shared/js_strings.php:30
+#: code/accountSettings/partials/profile.php:50
 #, fuzzy
-msgid "Choose a curry"
-msgstr "Velg en burger"
+msgid "SAVING...\""
+msgstr "LAGRER..."
 
-#: /var/www/webapp/code/shared/js_strings.php:31
-msgid "Choose a burger"
-msgstr "Velg en burger"
-
-#: /var/www/webapp/code/shared/js_strings.php:32
-msgid "Menu configuration has been saved!"
-msgstr "Konfigurasjonen er lagret!"
-
-#: /var/www/webapp/code/shared/js_strings.php:33
-msgid "Choose a Collection Slot"
-msgstr "Velg et sted"
-
-#: /var/www/webapp/code/shared/js_strings.php:34
-msgid "Choose Event Location"
-msgstr "Velg Arrangement sted"
-
-#: /var/www/webapp/code/shared/js_strings.php:35
-msgid ""
-"Are you sure you want to delete this event? Note: all event data will be "
-"lost!"
-msgstr ""
-"Er du sikker på at du vil slette denne hendelsen? Merk: alle hendelses data "
-"vil gå tapt!"
-
-#: /var/www/webapp/code/shared/js_strings.php:36
-msgid "Yes, delete this event!"
-msgstr "Ja, slett denne hendelsen!"
-
-#: /var/www/webapp/code/shared/js_strings.php:37
-msgid "Choose Venue"
-msgstr "Velg Restaurant"
-
-#: /var/www/webapp/code/shared/js_strings.php:39
-msgid ""
-"Are you sure you want to delete this user? Note: all user data will be lost!"
-msgstr ""
-"Er du sikker på at du vil slette denne brukeren? Merk: alle brukerdata vil "
-"gå tapt!"
-
-#: /var/www/webapp/code/shared/js_strings.php:40
-msgid "Yes, delete this user!"
-msgstr "Ja, slett denne brukeren!"
-
-#: /var/www/webapp/code/shared/js_strings.php:41
-msgid "Username/email already exists"
-msgstr "Brukernavn/e-post eksisterer allerede"
-
-#: /var/www/webapp/code/shared/js_strings.php:42
-msgid "User configuration has been saved!"
-msgstr "Bruker Konfigurasjonen er lagret!"
-
-#: /var/www/webapp/code/shared/js_strings.php:43
-msgid "Select all menus"
-msgstr "Velg alle menyer"
-
-#: /var/www/webapp/code/shared/js_strings.php:44
-msgid "Unselect all menus"
-msgstr "Velge bort alle menyer"
-
-#: /var/www/webapp/code/shared/js_strings.php:45
-msgid "Select menu("
-msgstr "Velg meny("
-
-#: /var/www/webapp/code/shared/js_strings.php:46
-msgid "# of # selected"
-msgstr "# av # valgt"
-
-#: /var/www/webapp/code/shared/js_strings.php:47
-msgid ""
-"Are you sure you want to delete this outlet? Note: all outlet data will be "
-"lost!"
-msgstr ""
-"Er du sikker på at du vil slette dette stedet? Merk: alle data for stedet "
-"vil gå tapt!"
-
-#: /var/www/webapp/code/shared/js_strings.php:48
-msgid "Yes, delete this outlet!"
-msgstr "Ja, slett stedet!"
-
-#: /var/www/webapp/code/shared/js_strings.php:49
-msgid "Outlet configuration has been saved!"
-msgstr "Oppsettet er lagret!"
-
-#: /var/www/webapp/code/shared/js_strings.php:50
-msgid "These times have been applied to all days!"
-msgstr "Disse tidene er blitt satt på alle dager!"
-
-#: /var/www/webapp/code/shared/js_strings.php:51
-msgid ""
-"We still need some more information. Don't forget to fill out the remaining "
-"days of the week!"
-msgstr ""
-"Vi trenger fortsatt litt mer informasjon. Ikke glem å fylle ut de resterende "
-"dagene i uken!"
-
-#: /var/www/webapp/code/shared/js_strings.php:52
-msgid "Where should this meal deal appear?"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:54
+#: code/accountSettings/partials/password.php:27
 #, fuzzy
-msgid ""
-"Are you sure you want to delete this meal deal? Note: all associated data "
-"will be lost!"
-msgstr ""
-"Er du sikker på at du vil slette dette stedet? Merk: alle data for stedet "
-"vil gå tapt!"
+msgid "SAVING...>"
+msgstr "LAGRER..."
 
-#: /var/www/webapp/code/shared/js_strings.php:55
-#, fuzzy
-msgid "Yes, delete this meal deal!"
-msgstr "Ja, slett denne menyen!"
+#: code/kyc/partials/customers.php:110 code/kyc/partials/events.php:123
+#: code/kyc/partials/orders.php:131 code/kyc/partials/reports.php:137
+#: code/kyc/partials/stock.php:96
+msgid "Selected"
+msgstr "Valgte"
 
-#: /var/www/webapp/code/shared/js_strings.php:56
-msgid "All changes has been saved!"
-msgstr "Alle endringer er lagret!"
+#: code/settings/delivery/partials/notifications.php:14
+#: code/settings/delivery/partials/notifications.php:38
+msgid "Short name"
+msgstr "kort navn"
 
-#: /var/www/webapp/code/shared/js_strings.php:57
-msgid ""
-"Are you sure you want to delete this menu? Note: all menu data will be lost!"
-msgstr ""
-"Er du sikker på at du vil slette denne menyen? Merk: alle meny data vil gå "
-"tapt!"
+#: code/accountSettings/partials/billingHistory.php:12
+#: code/kyc/partials/stream.php:14
+msgid "Status"
+msgstr "Status"
 
-#: /var/www/webapp/code/shared/js_strings.php:58
-msgid "Yes, delete this menu!"
-msgstr "Ja, slett denne menyen!"
-
-#: /var/www/webapp/code/shared/js_strings.php:59
-msgid "Sorry, incorrect password."
-msgstr "Beklager, feil passord."
-
-#: /var/www/webapp/code/shared/js_strings.php:60
-msgid ""
-"Settings and Password has been saved!<br/>You will need to log in again with "
-"your new password to continue."
-msgstr ""
-"Innstillinger og passord har blitt lagret!<br/>Du må logge inn på nytt med "
-"det nye passordet for å fortsette."
-
-#: /var/www/webapp/code/shared/js_strings.php:61
-msgid "Settings have been saved!"
-msgstr "Innstillingene har blitt lagret!"
-
-#: /var/www/webapp/code/shared/js_strings.php:62
-msgid "Please select features you require"
-msgstr "Velg funksjonene du krever"
-
-#: /var/www/webapp/code/shared/js_strings.php:63
-msgid "Select all"
-msgstr "Merk alle"
-
-#: /var/www/webapp/code/shared/js_strings.php:65
-msgid "Your app is now in demo mode!"
-msgstr "Din app er nå i demo-modus!"
-
-#: /var/www/webapp/code/shared/js_strings.php:66
-msgid "Your app is now offline!"
-msgstr "Din app er nå offline!"
-
-#: /var/www/webapp/code/shared/js_strings.php:67
-msgid "You need to accept at least one payment method before going live"
-msgstr "Du må godta minst én betalingsmåte før du går live"
-
-#: /var/www/webapp/code/shared/js_strings.php:68
-msgid "You need to subscribe to a package before changing the app mode"
-msgstr "Du må abonnere på en pakke før du endrer app-modus"
-
-#: /var/www/webapp/code/shared/js_strings.php:69
-msgid "My order app "
-msgstr "Mine ordre app"
-
-#: /var/www/webapp/code/shared/js_strings.php:70
-msgid "Sorry, these password do not match. Please try again."
-msgstr "Beklager, dette passordet samsvarer ikke. Prøv på nytt."
-
-#: /var/www/webapp/code/shared/js_strings.php:71
-msgid "All the fields are required."
-msgstr "Alle felter må fylles ut."
-
-#: /var/www/webapp/code/shared/js_strings.php:72
-msgid "Please fill in all the required fields."
-msgstr "Vennligst fyll inn alle obligatoriske felter"
-
-#: /var/www/webapp/code/shared/js_strings.php:73
-msgid "Outstanding payment resolved"
-msgstr "Utestående betaling godkjent"
-
-#: /var/www/webapp/code/shared/js_strings.php:74
-msgid "Ok"
-msgstr "Ok"
-
-#: /var/www/webapp/code/shared/js_strings.php:75
-msgid "Payment method updated succesfully!"
-msgstr "Betalingsmåte oppdatert vellykket!"
-
-#: /var/www/webapp/code/shared/js_strings.php:76
-msgid "Your outstand payment has been paid. Your card was charged <b>&pound;"
-msgstr "Din utestående betaling er betalt. Kortet ble belastet <b>&pound;"
-
-#: /var/www/webapp/code/shared/js_strings.php:77
-msgid "</b> and your premium features will remain active."
-msgstr "og dine Premium funksjoner vil fortsatt være aktive."
-
-#: /var/www/webapp/code/shared/js_strings.php:78
-msgid "OK"
-msgstr "OK"
-
-#: /var/www/webapp/code/shared/js_strings.php:79
-msgid "CONFIRM"
-msgstr "Bekreft"
-
-#: /var/www/webapp/code/shared/js_strings.php:81
-msgid ""
-"Your venue will be taken offline but you still be able to log in to your "
-"account if you ever want to resubscribe."
-msgstr ""
-"Din butikk vil bli tatt offline, men du kan fortsatt logge deg på kontoen "
-"din hvis du noen gang ønsker å aktivere abonnementet."
-
-#: /var/www/webapp/code/shared/js_strings.php:82
-msgid "Are you sure you want to cancel?"
-msgstr "Er du sikker på at du ønsker å kansellere"
-
-#: /var/www/webapp/code/shared/js_strings.php:83
-msgid ""
-"Your subscription will remain active until the end of the current billing "
-"cycle, you will no longer be billed after this date. Your venue will be "
-"taken offline but you will still be able to log in to account if you ever "
-"want to resubscribe."
-msgstr ""
-"Abonnementet vil forbli aktiv til slutten av den nåværende "
-"faktureringssyklusen, du vil ikke lenger bli fakturert etter denne datoen. "
-"Din butikk vil bli tatt offline, men du vil fortsatt kunne logge inn på "
-"konto hvis du noen gang ønsker å aktivere abonnementet."
-
-#: /var/www/webapp/code/shared/js_strings.php:84
-msgid "Error"
-msgstr "Feil"
-
-#: /var/www/webapp/code/shared/js_strings.php:85
-msgid "PAYMENT METHOD"
-msgstr "BETALINGSMETODE"
-
-#: /var/www/webapp/code/shared/js_strings.php:86
-msgid "To upgrade your account, please contact "
-msgstr "For oppgradering av kontoen din kan du kontakte"
-
-#: /var/www/webapp/code/shared/js_strings.php:87
-msgid "Payment resolved"
-msgstr "Utestående betaling godkjent"
-
-#: /var/www/webapp/code/shared/js_strings.php:88
-#, fuzzy
-msgid "Resubscription Details"
-msgstr "Abonnementer"
-
-#: /var/www/webapp/code/shared/js_strings.php:89
-msgid "Please enter a discount code"
-msgstr "Skriv inn en rabattkode"
-
-#: /var/www/webapp/code/shared/js_strings.php:90
-msgid "Welcome to Know Your Customer"
-msgstr "Velkommen til Know Your Customer"
-
-#: /var/www/webapp/code/shared/js_strings.php:91
-msgid ""
-"From here you can view detailed reports and analytics about your customers "
-"and the transactions they make."
-msgstr ""
-"Her kan du vise detaljerte rapporter og analyser om dine kunder og "
-"transaksjonene de gjør."
-
-#: /var/www/webapp/code/shared/js_strings.php:92
-msgid "GET STARTED"
-msgstr "KOM I GANG"
-
-#: /var/www/webapp/code/shared/js_strings.php:93
-msgid "Customers"
-msgstr "Kunder"
-
-#: /var/www/webapp/code/shared/js_strings.php:94
-msgid "Reports"
-msgstr "Rapporter"
-
-#: /var/www/webapp/code/shared/js_strings.php:95
+#: code/kyc/index.php:25
 msgid "Stock"
 msgstr "Varebeholdning"
 
-#: /var/www/webapp/code/shared/js_strings.php:96
-msgid "Orders Report"
-msgstr "Ordre Rapport"
-
-#: /var/www/webapp/code/shared/js_strings.php:97
-msgid "Orders By Events"
-msgstr "Ordre Etter Arrangementer"
-
-#: /var/www/webapp/code/shared/js_strings.php:98
+#: code/accountSettings/index.php:21
+#: code/accountSettings/partials/billingHistory.php:1
+#: code/accountSettings/partials/subscription.php:1
 #, fuzzy
-msgid "Orders By Outlets"
-msgstr "Ordre Etter Arrangementer"
+msgid "Subscriptions"
+msgstr "Mine abonnementer"
 
-#: /var/www/webapp/code/shared/js_strings.php:99
-msgid "Select Events..."
-msgstr "Velg Arrangementer..."
+#: code/kyc/partials/stream.php:82
+msgid "TOTAL"
+msgstr "TOTALT"
 
-#: /var/www/webapp/code/shared/js_strings.php:100
-msgid "No events in this period"
-msgstr "Ingen arrangementer i denne perioden"
+#: code/kyc/partials/stream.php:42
+msgid "Time"
+msgstr "Tid"
 
-#: /var/www/webapp/code/shared/js_strings.php:101
-#, fuzzy
-msgid "Date Range"
-msgstr "Datointerval"
-
-#: /var/www/webapp/code/shared/js_strings.php:102
-msgid "Week"
-msgstr "Uke"
-
-#: /var/www/webapp/code/shared/js_strings.php:103
-msgid "Month"
-msgstr "Måned"
-
-#: /var/www/webapp/code/shared/js_strings.php:104
-msgid "3 Months"
-msgstr "3 Måneder"
-
-#: /var/www/webapp/code/shared/js_strings.php:105
-msgid "6 Months"
-msgstr "6 Måneder"
-
-#: /var/www/webapp/code/shared/js_strings.php:106
-msgid "Year"
-msgstr "År"
-
-#: /var/www/webapp/code/shared/js_strings.php:107
-msgid "Total Customers"
-msgstr "Total Kunder"
-
-#: /var/www/webapp/code/shared/js_strings.php:108
-msgid "Orders per Customer"
-msgstr "Ordre per Kunde"
-
-#: /var/www/webapp/code/shared/js_strings.php:109
-msgid "Average Order Value"
-msgstr "Gjennomsnittlig Ordre Beløp"
-
-#: /var/www/webapp/code/shared/js_strings.php:110
-msgid "Items Ordered"
-msgstr "Varer som er bestilt"
-
-#: /var/www/webapp/code/shared/js_strings.php:111
-#, fuzzy
-msgid "Orders By Outlet"
-msgstr "Ordre Etter Arrangementer"
-
-#: /var/www/webapp/code/shared/js_strings.php:112
-msgid "Most Popular Items"
-msgstr "Mest populære varer"
-
-#: /var/www/webapp/code/shared/js_strings.php:113
-msgid "On the day"
-msgstr "På dagen"
-
-#: /var/www/webapp/code/shared/js_strings.php:114
-msgid "In advance"
-msgstr "På forhånd"
-
-#: /var/www/webapp/code/shared/js_strings.php:115
-msgid "Time of Orders Placed"
-msgstr "Tidspunkt når ordre ble plassert"
-
-#: /var/www/webapp/code/shared/js_strings.php:116
-msgid "Average order value (are"
-msgstr "Gjennomsnittlig Ordre Beløp (er"
-
-#: /var/www/webapp/code/shared/js_strings.php:117
-msgid "New"
-msgstr "Ny"
-
-#: /var/www/webapp/code/shared/js_strings.php:118
-msgid "Returning"
-msgstr "Eksisterende"
-
-#: /var/www/webapp/code/shared/js_strings.php:119
-msgid "Customers (Pi"
-msgstr "Kunder (Pi"
-
-#: /var/www/webapp/code/shared/js_strings.php:120
+#: code/kyc/partials/stream.php:21
 msgid "Total"
 msgstr "Total"
 
-#: /var/www/webapp/code/shared/js_strings.php:121
-msgid "Customers (Ba"
-msgstr "Kunder (Ba"
-
-#: /var/www/webapp/code/shared/js_strings.php:122
-msgid " orders"
-msgstr " ordre"
-
-#: /var/www/webapp/code/shared/js_strings.php:123
-msgid "Number of Orders"
-msgstr "Antall bestillinger"
-
-#: /var/www/webapp/code/shared/js_strings.php:124
-msgid "Menu Item Popularity"
-msgstr "Menyelement Popularitet"
-
-#: /var/www/webapp/code/shared/js_strings.php:125
-msgid "Revenue"
-msgstr "Inntekt"
-
-#: /var/www/webapp/code/shared/js_strings.php:126
-msgid "Date Joined"
-msgstr "Dato Registrert"
-
-#: /var/www/webapp/code/shared/js_strings.php:128
-msgid "Email Address"
-msgstr "E-postadresse"
-
-#: /var/www/webapp/code/shared/js_strings.php:129
-msgid "Marketing"
-msgstr "Markedsføring"
-
-#: /var/www/webapp/code/shared/js_strings.php:130
-msgid "Date of Order"
-msgstr "Ordredato"
-
-#: /var/www/webapp/code/shared/js_strings.php:131
+#: code/kyc/partials/customers.php:33
 msgid "Total Spent"
 msgstr "Totalt brukt"
 
-#: /var/www/webapp/code/shared/js_strings.php:132
-msgid "% Increase"
-msgstr "% Økning"
-
-#: /var/www/webapp/code/shared/js_strings.php:133
-msgid "% Decrease"
-msgstr "% Reduksjon"
-
-#: /var/www/webapp/code/shared/js_strings.php:134
-msgid "Last Order"
-msgstr "Siste Ordre"
-
-#: /var/www/webapp/code/shared/js_strings.php:135
-msgid "Item Name"
-msgstr "Produkt Navn"
-
-#: /var/www/webapp/code/shared/js_strings.php:136
-msgid "Quantity Sold"
-msgstr "Antall Solgt"
-
-#: /var/www/webapp/code/shared/js_strings.php:137
-msgid "Day"
-msgstr "Dag"
-
-#: /var/www/webapp/code/shared/js_strings.php:138
-msgid "Date"
-msgstr "Dato"
-
-#: /var/www/webapp/code/shared/js_strings.php:139
-msgid "Loyalty"
-msgstr "Lojalitet"
-
-#: /var/www/webapp/code/shared/js_strings.php:140
-msgid "Other"
-msgstr "Annet"
-
-#: /var/www/webapp/code/shared/js_strings.php:141
-msgid "Offers"
-msgstr "Tilbud"
-
-#: /var/www/webapp/code/shared/js_strings.php:142
-msgid "Value Sold"
-msgstr "Verdi Solgt"
-
-#: /var/www/webapp/code/shared/js_strings.php:143
-msgid "New Customers"
-msgstr "Nye kunder"
-
-#: /var/www/webapp/code/shared/js_strings.php:144
-msgid ""
-"Displays all new customers who have signed up, or had their first order, in "
-"the past two weeks."
-msgstr ""
-"Vis alle nye kunder som har registrert seg, eller hadde sin første ordre de "
-"siste to ukene."
-
-#: /var/www/webapp/code/shared/js_strings.php:145
-msgid "Customers with zero orders"
-msgstr "Kunder med null bestillinger"
-
-#: /var/www/webapp/code/shared/js_strings.php:146
-msgid ""
-"Displays all customers who have signed up but have not yet placed any orders."
-msgstr ""
-"Vis alle kunder som har registrert seg, men ennå ikke har lagt inn noen "
-"ordre."
-
-#: /var/www/webapp/code/shared/js_strings.php:147
-msgid "One Time Buyers"
-msgstr "Engang kjøpere"
-
-#: /var/www/webapp/code/shared/js_strings.php:148
-msgid "Displays all customers who have placed only one order."
-msgstr "Viser alle kunder som har plassert kun en ordre."
-
-#: /var/www/webapp/code/shared/js_strings.php:149
-msgid "Most Frequent Buyers"
-msgstr "Kunder med flest bestillinger"
-
-#: /var/www/webapp/code/shared/js_strings.php:150
-msgid "Displays top 50 customers who have placed the most number of orders."
-msgstr "Viser top 50 kunder som har plassert flest antall bestillinger."
-
-#: /var/www/webapp/code/shared/js_strings.php:151
-msgid "Highest Spending Customers"
-msgstr "Kunder med høyest forbruk"
-
-#: /var/www/webapp/code/shared/js_strings.php:152
-msgid "Displays top 50 customers who have the highest transactional spend."
-msgstr "Viser top 50 kunder som har den høyeste transaksjonskostnadene."
-
-#: /var/www/webapp/code/shared/js_strings.php:153
-msgid "Customers Increasing Orders"
-msgstr "Kunder med økende antall bestillinger"
-
-#: /var/www/webapp/code/shared/js_strings.php:154
-msgid ""
-"Displays all customers who placed more orders this month than the previous "
-"month."
-msgstr ""
-"Viser alle kunder som har lagt til flere bestillinger denne måneden enn "
-"forrige måned."
-
-#: /var/www/webapp/code/shared/js_strings.php:155
-msgid "Customers Decreasing Orders"
-msgstr "Kunder med fallende antall bestillinger"
-
-#: /var/www/webapp/code/shared/js_strings.php:156
-msgid ""
-"Displays all customers who placed less orders this month than the previous "
-"month."
-msgstr ""
-"Viser alle kunder som har lagt inn mindre bestillinger denne måneden enn "
-"forrige måned."
-
-#: /var/www/webapp/code/shared/js_strings.php:157
-msgid "Customers Increasing Spend"
-msgstr "Kunder med økende forbruk"
-
-#: /var/www/webapp/code/shared/js_strings.php:158
-msgid ""
-"Displays all customers who spent more this month than the previous month."
-msgstr ""
-"Viser alle kunder som har høyere forbruke denne måneden enn forrige måned."
-
-#: /var/www/webapp/code/shared/js_strings.php:159
-msgid "Customers Decreasing Spend"
-msgstr "Kunder med fallende forbruk"
-
-#: /var/www/webapp/code/shared/js_strings.php:160
-msgid ""
-"Displays all customers who spent less this month than the previous month."
-msgstr ""
-"Viser alle kunder som har brukt mindre denne måneden enn forrige måned."
-
-#: /var/www/webapp/code/shared/js_strings.php:161
-msgid "Sleeping Customers"
-msgstr "Sovende kunder"
-
-#: /var/www/webapp/code/shared/js_strings.php:162
-msgid ""
-"Displays all customers who have previously made at least one order, but "
-"haven't ordered for 3 months."
-msgstr ""
-"Viser alle kunder som tidligere har minst en ordre, men ikke har bestilt på "
-"tre måneder."
-
-#: /var/www/webapp/code/shared/js_strings.php:163
-msgid "Displays top 10 most popular items."
-msgstr "Viser de topp 10 mest populære varene."
-
-#: /var/www/webapp/code/shared/js_strings.php:164
-msgid "Item Popularity Increase"
-msgstr "Varer med økt popularitet"
-
-#: /var/www/webapp/code/shared/js_strings.php:165
-msgid "Displays all items that sold more this month than last month."
-msgstr "Viser alle varer som solgte mer denne måneden enn forrige måned."
-
-#: /var/www/webapp/code/shared/js_strings.php:166
-msgid "Item Popularity Decrease"
-msgstr "Varer med synkende popularitet"
-
-#: /var/www/webapp/code/shared/js_strings.php:167
-msgid "Displays all items that sold less this month than last month"
-msgstr "Viser alle varer som solgte mindre denne måneden enn forrige måned"
-
-#: /var/www/webapp/code/shared/js_strings.php:168
-msgid "Highest Grossing Days"
-msgstr "Mest innbringende dager"
-
-#: /var/www/webapp/code/shared/js_strings.php:169
-msgid "Display top 10 highest grossing days."
-msgstr "Vis de topp 10 mest innbringende dager."
-
-#: /var/www/webapp/code/shared/js_strings.php:170
-msgid "Lowest Grossing Days"
-msgstr "Laveste innbringende dager"
-
-#: /var/www/webapp/code/shared/js_strings.php:171
-msgid "Display top 10 lowest grossing days."
-msgstr "Viser de topp 10 laveste innbringende dager."
-
-#: /var/www/webapp/code/shared/js_strings.php:172
-msgid "Highest Order Days"
-msgstr "Dager med høyest antall ordre"
-
-#: /var/www/webapp/code/shared/js_strings.php:173
-msgid "Display top 10 highest order days."
-msgstr "Vise topp 10 dager med høyest antall ordre"
-
-#: /var/www/webapp/code/shared/js_strings.php:174
-msgid "Lowest Order Days"
-msgstr "Dager med lavest antall ordre"
-
-#: /var/www/webapp/code/shared/js_strings.php:175
-msgid "Display top 10 lowest order days."
-msgstr "Vise de topp 10 dager med laveste antall ordre."
-
-#: /var/www/webapp/code/shared/js_strings.php:176
-msgid "Highest Grossing Hours"
-msgstr "Mest innbringende Timer"
-
-#: /var/www/webapp/code/shared/js_strings.php:177
-msgid ""
-"Displays the accumulative total spent, broken down by 24 x 1 hour time slots."
-msgstr "Viser til sammen brukt, fordelt på 24 x 1 time tidsluker."
-
-#: /var/www/webapp/code/shared/js_strings.php:178
-msgid "Highest Order Hours"
-msgstr "Tidspunkt med høyest antall ordre"
-
-#: /var/www/webapp/code/shared/js_strings.php:179
-msgid ""
-"Displays the accumulative number of orders, broken down by 24 x 1 hour time "
-"slots."
-msgstr "Viser stigende antall bestillinger, fordelt på 24 x 1 time tidsluker."
-
-#: /var/www/webapp/code/shared/js_strings.php:180
-msgid "years ago"
-msgstr "år siden"
-
-#: /var/www/webapp/code/shared/js_strings.php:181
-msgid "year ago"
-msgstr "år siden"
-
-#: /var/www/webapp/code/shared/js_strings.php:182
-msgid "months ago"
-msgstr "måneder siden"
-
-#: /var/www/webapp/code/shared/js_strings.php:183
-msgid "month ago"
-msgstr "måned siden"
-
-#: /var/www/webapp/code/shared/js_strings.php:184
-msgid "days ago"
-msgstr "dager siden"
-
-#: /var/www/webapp/code/shared/js_strings.php:185
-msgid "yesterday"
-msgstr "i går"
-
-#: /var/www/webapp/code/shared/js_strings.php:186
-msgid "hours ago"
-msgstr "timer siden"
-
-#: /var/www/webapp/code/shared/js_strings.php:187
-msgid "hour ago"
-msgstr "time siden"
-
-#: /var/www/webapp/code/shared/js_strings.php:188
-msgid "minutes ago"
-msgstr "minutter siden"
-
-#: /var/www/webapp/code/shared/js_strings.php:189
-msgid "minute ago"
-msgstr "minutt siden"
-
-#: /var/www/webapp/code/shared/js_strings.php:190
-msgid "seconds ago"
-msgstr "sekunder siden"
-
-#: /var/www/webapp/code/shared/js_strings.php:191
-msgid "second ago"
-msgstr "sekund siden"
-
-#: /var/www/webapp/code/shared/js_strings.php:192
-msgid "Contact this customer regarding loyalty programmes"
-msgstr "Kontakt kundeservice om lojalitetsprogrammer"
-
-#: /var/www/webapp/code/shared/js_strings.php:193
-msgid "Contact this customer with discounts and special offers"
-msgstr "Kontakt denne kunden med rabatter og spesialtilbud"
-
-#: /var/www/webapp/code/shared/js_strings.php:194
-msgid "Contact this customer with newsletters, research and marketing emails"
-msgstr "Kontakt denne kunden med nyhetsbrev og markedsførings e-post"
-
-#: /var/www/webapp/code/shared/js_strings.php:195
-msgid "Successfully saved delivery settings."
-msgstr "Innstillinger for leveranse er lagret."
-
-#: /var/www/webapp/code/shared/js_strings.php:196
-msgid "Email is invalid"
-msgstr "E-post er ugyldig"
-
-#: /var/www/webapp/code/shared/js_strings.php:197
-msgid "Your order is running 15 mins late"
-msgstr "Din ordre er 15 minutter forsinket"
-
-#: /var/www/webapp/code/shared/js_strings.php:198
-msgid "Late Order"
-msgstr "Forsinket ordre"
-
-#: /var/www/webapp/code/shared/js_strings.php:199
-msgid "Your order is on its way"
-msgstr "Din bestilling er på vei"
-
-#: /var/www/webapp/code/shared/js_strings.php:200
-msgid "En-route"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:201
-msgid "There is a problem with your order. Please call us"
-msgstr "Det er et problem med din bestilling. Vennligst ring oss"
-
-#: /var/www/webapp/code/shared/js_strings.php:202
-msgid "Call us"
-msgstr "Ring oss"
-
-#: /var/www/webapp/code/shared/js_strings.php:203
-msgid "Your address is out of our delivery zone"
-msgstr "Adressen din er ute av vår leveranse sone"
-
-#: /var/www/webapp/code/shared/js_strings.php:204
-msgid "Out of zone"
-msgstr "Ut av sonen"
-
-#: /var/www/webapp/code/shared/js_strings.php:205
-msgid "Sorry, that item is out of stock"
-msgstr "Beklager, varen er utsolgt"
-
-#: /var/www/webapp/code/shared/js_strings.php:206
-msgid "Out of stock"
-msgstr "Utsolgt"
-
-#: /var/www/webapp/code/shared/js_strings.php:207
-msgid "Sorry, Your order has been rejected. Please call us"
-msgstr "Beklager, bestillingen ble avvist. Vennligst ring oss"
-
-#: /var/www/webapp/code/shared/js_strings.php:209
-msgid " DAY FREE TRIAL"
-msgstr " DAGER GRATIS PRØVE"
-
-#: /var/www/webapp/code/shared/js_strings.php:210
-msgid "START TRIAL"
-msgstr "START PRØVEVERSJON"
-
-#: /var/www/webapp/code/shared/js_strings.php:211
+#: code/accountSettings/partials/payment.php:42
+msgid "Town/City"
+msgstr "Poststed"
+
+#: code/accountSettings/partials/subscription.php:51
+msgid "UPGRADE"
+msgstr "OPPGRADER"
+
+#: code/settings/delivery/partials/notifications.php:8
+msgid "Venue Alerts"
+msgstr "Restaurant Varslig"
+
+#: code/accountSettings/partials/payment.php:29
+msgid "YY"
+msgstr "ÅÅ"
+
+#: code/settings/delivery/partials/delivery.php:8
+#: code/settings/delivery/partials/notifications.php:29
+#: code/settings/delivery/partials/notifications.php:54
+msgid "Yes"
+msgstr "Ja"
+
+#: code/accountSettings/partials/subscription.php:44
 #, fuzzy
-msgid "Your new Premium Feature is now live!"
-msgstr "Din app er nå live!"
+msgid "You are currently subscribed to the"
+msgstr "Du abonnerer for øyeblikket på"
 
-#: /var/www/webapp/code/shared/js_strings.php:212
+#: code/accountSettings/partials/subscription.php:12
+msgid "You have an outstanding payment!"
+msgstr "Du har en utestående betaling!"
+
+#: code/accountSettings/partials/subscription.php:19
 msgid ""
-"You will be contacted shortly by a member of our team. You can manage "
-"subscriptions from your <a href='/accountSettings#/subscription'>account "
-"settings page.</a>"
+"You have no active subscriptions, your account will not be billed at this "
+"time."
 msgstr ""
-"Du vil snart bli kontaktet av et medlem av teamet vårt. Du kan administrere "
-"abonnementene dine fra <a href='/accountSettings#/subscription'>konto "
-"instillinger.</a>"
+"Du har ingen aktive abonnementer, din konto vil ikke bli fakturert på dette "
+"tidspunktet."
 
-#: /var/www/webapp/code/shared/js_strings.php:213
-msgid ""
-"Please add a payment method to your account in order to subscribe to Premium "
-"Features"
-msgstr ""
-"Legg til en betalingsmåte for kontoen om du vil abonnere på Premium-"
-"funksjoner"
+#: code/accountSettings/partials/subscription.php:17
+msgid "Your account will be billed"
+msgstr "Din konto vil bli fakturert"
 
-#: /var/www/webapp/code/shared/js_strings.php:214
-msgid "ADD CARD"
-msgstr "LEGG TIL KORT"
-
-#: /var/www/webapp/code/shared/js_strings.php:215
-msgid "To access this feature you need to have "
-msgstr "For å få tilgang til denne funksjonen må du ha "
-
-#: /var/www/webapp/code/shared/js_strings.php:216
-msgid " installed first "
-msgstr " installert først "
-
-#: /var/www/webapp/code/shared/js_strings.php:217
-msgid "Buy "
-msgstr "Kjøp"
-
-#: /var/www/webapp/code/shared/js_strings.php:218
-msgid "Your card will be charged "
-msgstr "Ditt kort vil bli belastet "
-
-#: /var/www/webapp/code/shared/js_strings.php:219
-msgid ""
-" for this transaction. <br/> You may cancel this Premium Feature at any time "
-"from your account settings page."
-msgstr ""
-" for denne transaksjonen.<br>Du kan avbryte denne Premium-funksjonen når som "
-"helst på siden for innstillinger av kontoen."
-
-#: /var/www/webapp/code/settings/switch/switch-view.php:39
-msgid "Search Venue"
-msgstr "Søk Restaurant"
-
-#: /var/www/webapp/code/settings/switch/switch-view.php:43
-msgid "Venue Code"
-msgstr "Restaurant kode"
-
-#: /var/www/webapp/code/settings/switch/switch-view.php:47
-msgid "Venue Name"
-msgstr "Restaurant navn"
-
-#: /var/www/webapp/code/settings/switch/switch-view.php:51
-msgid "Admin username"
-msgstr "Admin brukernavn"
-
-#: /var/www/webapp/code/settings/switch/switch-view.php:58
-msgid "Search"
-msgstr "Søk"
-
-#: /var/www/webapp/code/settings/switch/switch-view.php:59
-msgid "SEARCHING..."
-msgstr "SØKER..."
-
-#: /var/www/webapp/code/settings/switch/switch-view.php:80
-#: /var/www/webapp/code/settings/switch/switch-view.php:90
-msgid "Switch"
-msgstr "Bytt"
-
-#: /var/www/webapp/overrides/food4u/regular_footer.php:8
-#: /var/www/webapp/overrides/preoday/regular_footer.php:8
-msgid "CHANGE LANGUAGE"
-msgstr "BYTT SPRÅK"
-
-#: /var/www/webapp/overrides/food4u/regular_footer.php:10
-#: /var/www/webapp/overrides/preoday/regular_footer.php:10
-msgid "English"
-msgstr "Engelsk"
-
-#: /var/www/webapp/overrides/food4u/regular_footer.php:11
-#: /var/www/webapp/overrides/preoday/regular_footer.php:11
-msgid "German"
-msgstr "Tysk"
-
-#: /var/www/webapp/overrides/food4u/regular_footer.php:12
-#: /var/www/webapp/overrides/preoday/regular_footer.php:12
-msgid "French"
-msgstr "Fransk"
-
-#: /var/www/webapp/overrides/food4u/regular_footer.php:13
-#: /var/www/webapp/overrides/preoday/regular_footer.php:13
-msgid "Norwegian"
-msgstr ""
-
-#: /var/www/webapp/overrides/food4u/regular_footer.php:27
-msgid "info@food4uapp.co.uk"
-msgstr ""
-
-#: /var/www/webapp/overrides/food4u/regular_footer.php:28
-#: /var/www/webapp/overrides/food4u/dashboard_footer.php:10
-#: /var/www/webapp/overrides/preoday/regular_footer.php:28
-#: /var/www/webapp/overrides/preoday/dashboard_footer.php:10
-msgid "Legal Statement"
-msgstr "Juridisk erklæring"
-
-#: /var/www/webapp/overrides/food4u/regular_footer.php:29
-#: /var/www/webapp/overrides/food4u/dashboard_footer.php:11
-#: /var/www/webapp/overrides/preoday/regular_footer.php:29
-#: /var/www/webapp/overrides/preoday/dashboard_footer.php:11
-msgid "Privacy + Cookies"
-msgstr "Personvern + Cookies"
-
-#: /var/www/webapp/overrides/food4u/regular_footer.php:30
-msgid "Food4u"
-msgstr ""
-
-#: /var/www/webapp/overrides/preoday/regular_footer.php:27
-msgid "support@preoday.com"
-msgstr "support@preoday.no"
-
-#~ msgid ". Please add a credit card to resubscribe."
-#~ msgstr ". Vennligst legg til et kredittkort for å aktivere abonnementet."
-
-#~ msgid "ADD PAYMENT METHOD"
-#~ msgstr "LEGG TIL BETALINGSMÅTE"
-
-#~ msgid "Address Line 1"
-#~ msgstr "Adresselinje 1"
-
-#~ msgid "Address Line 2"
-#~ msgstr "Adresselinje 2"
-
-#~ msgid "Address Line 3"
-#~ msgstr "Adresselinje 3"
-
-#~ msgid "BILLING HISTORY"
-#~ msgstr "FAKTURA HISTORIKK"
-
-#~ msgid "Billing Address"
-#~ msgstr "Fakturaadresse"
-
-#~ msgid "Billing History"
-#~ msgstr "Tidligere fakturaer "
-
-#~ msgid "Billing Schedule"
-#~ msgstr "Faktureringsplan"
-
+#: code/accountSettings/partials/subscription.php:18
 #, fuzzy
-#~ msgid "CANCEL>"
-#~ msgstr "AVBRYT"
+msgid "Your account will be deactivated on"
+msgstr "Din konto vil bli deaktivert den"
 
-#~ msgid "CCV"
-#~ msgstr "CCV"
+#: code/accountSettings/partials/subscription.php:45
+#, fuzzy
+msgid "Your free trial of this subscription will end at midnight on"
+msgstr ""
+"Din gratis prøveversjon av dette abonnementet vil avsluttes ved midnatt"
 
-#~ msgid "CHANGE CARD"
-#~ msgstr "ENDRE KORT"
+#: code/accountSettings/partials/subscription.php:48
+msgid "Your subscription has been cancelled"
+msgstr "Abonnementet er kansellert"
 
-#~ msgid "CHANGE DETAILS"
-#~ msgstr "ENDRE INFORMASJON"
+#: code/accountSettings/partials/subscription.php:13
+#, fuzzy
+msgid "days to prevent your account from being deactivated."
+msgstr "dager for å hindre at kontoen din blir deaktivert."
 
-#~ msgid "CHANGE PASSWORD"
-#~ msgstr "ENDRE PASSORD"
+#: code/settings/delivery/partials/delivery.php:19
+#, fuzzy
+msgid "eg. \\\"NW1, NW2...\\\""
+msgstr "f.eks. \"0501, 0502 ...\""
 
-#~ msgid "Card Number"
+#: code/accountSettings/partials/subscription.php:44
+msgid "package"
+msgstr ""
+
+#: code/kyc/index.php:66
+msgid "to"
+msgstr "til"
+
+#~ msgid "Please type your password"
+#~ msgstr "Vennligst skriv inn passordet ditt"
+
+#~ msgid "Sign in"
+#~ msgstr "Logg inn"
+
+#~ msgid "I forgot my password"
+#~ msgstr "Jeg har glemt passordet mitt"
+
+#~ msgid "We can't find the page you're looking for."
+#~ msgstr "Vi kan ikke finne siden du leter etter."
+
+#~ msgid "Please check out the"
+#~ msgstr "Vennligst ta en titt på"
+
+#~ msgid "help section"
+#~ msgstr "hjelp seksjonen"
+
+#~ msgid "or return to the"
+#~ msgstr "eller gå tilbake til"
+
+#~ msgid "Dashboard"
+#~ msgstr "Dashbordet"
+
+#~ msgid "Enter your email and we’ll send you a link to reset your password"
+#~ msgstr ""
+#~ "Skriv inn din e-post og vi sender deg en link for å tilbakestille "
+#~ "passordet ditt"
+
+#~ msgid "An email address is required."
+#~ msgstr "En e-postadresse er påkrevd."
+
+#~ msgid "Reset my password"
+#~ msgstr "Tilbakestill passord"
+
+#~ msgid "Sign up with "
+#~ msgstr "Registrer deg med"
+
+#~ msgid "Start receiving mobile orders today"
+#~ msgstr "Begynn å motta mobil bestillinger i dag"
+
+#~ msgid ", you're just a few steps away from going live."
+#~ msgstr ", du er bare noen få skritt unna fra å gå live."
+
+#~ msgid "Basic information"
+#~ msgstr "Grunnleggende informasjon"
+
+#~ msgid "First name"
+#~ msgstr "Fornavn"
+
+#~ msgid "Please type your first name"
+#~ msgstr "Vennligst skriv ditt fornavn"
+
+#~ msgid "Surname"
+#~ msgstr "Etternavn"
+
+#~ msgid "Please type your surname"
+#~ msgstr "Vennligst skriv ditt etternavn"
+
+#~ msgid "Create your "
+#~ msgstr "Opprett din"
+
+#~ msgid " account"
+#~ msgstr "konto"
+
+#~ msgid "Please type your email"
+#~ msgstr "Vennligst skriv inn din e-post"
+
+#~ msgid "Billing information"
+#~ msgstr "Fakturainformasjon"
+
+#~ msgid "Your 14 day free trial will last until midnight on "
+#~ msgstr "Din 14 dagers gratis prøveperiode vil vare frem til midnatt"
+
+#~ msgid "If you choose not to continue using "
+#~ msgstr "Hvis du velger å ikke fortsette å bruke"
+
+#~ msgid ""
+#~ " just cancel before the trail ends and you won’t be charged (we’ll email "
+#~ "you 2 days before the trial ends to remind you). You can upgrade, "
+#~ "downgrade or cancel at any time."
+#~ msgstr ""
+#~ " bare kanseller før prøveperioden ender og du vil ikke bli belastet (vi "
+#~ "vil sende deg en e-post 2 dager før prøveperioden er over for å minne deg "
+#~ "på det). Du kan oppgradere, nedgradere eller kansellere når som helst."
+
+#~ msgid "Transaction Details"
+#~ msgstr "Transaksjonsdetaljer"
+
+#~ msgid "Description"
+#~ msgstr "Beskrivelse"
+
+#~ msgid "Unit price"
+#~ msgstr "Enhetspris"
+
+#~ msgid ""
+#~ "Remember you can upgrade, downgrade or cancel your package at any time."
+#~ msgstr ""
+#~ "Husk at du kan oppgradere, nedgradere eller avbestille pakken din når som "
+#~ "helst."
+
+#~ msgid "Card number"
 #~ msgstr "Kortnummer"
+
+#~ msgid "Why do you need my card details for a free trial?"
+#~ msgstr "Hvorfor trenger du kortdetaljene mine for en gratis prøveversjon?"
+
+#~ msgid "Please type your card number"
+#~ msgstr "Vennligst skriv ditt kortnummer"
+
+#~ msgid "Please type the name in your card"
+#~ msgstr "Vennligst skriv inn navnet som står på kortet ditt"
+
+#~ msgid "Expiry (month/year)"
+#~ msgstr "Utløpsdato (måned/år)"
+
+#~ msgid "Please type your month/year"
+#~ msgstr "Vennligst skriv inn måned/år"
+
+#~ msgid "Security code"
+#~ msgstr "Sikkerhetskode"
+
+#~ msgid "Please type your security code"
+#~ msgstr "Vennligst skriv inn din sikkerhetskode"
+
+#~ msgid "Please type your postcode"
+#~ msgstr "Vennligst skriv inn ditt postnummer"
+
+#~ msgid "I have read accept the"
+#~ msgstr "Jeg har lest og aksepterer"
+
+#~ msgid "terms of service"
+#~ msgstr "vilkårene for tjenesten"
+
+#~ msgid "and"
+#~ msgstr "og"
+
+#~ msgid "privacy policy"
+#~ msgstr "personvernpolicy"
+
+#~ msgid ", including the terms regarding cookies"
+#~ msgstr ", inkludert vilkår om cookies"
+
+#~ msgid "Your have accept tems & conditions for start using "
+#~ msgstr "Du har akseptert betingelser og vilkår for å bruke "
+
+#~ msgid " app."
+#~ msgstr " app."
+
+#~ msgid "Start using my "
+#~ msgstr "Begynn å bruke min "
+
+#~ msgid " app"
+#~ msgstr " app"
+
+#~ msgid "Why do you need my credit card for a free trial?"
+#~ msgstr "Hvorfor trenger du kortdetaljene mine for en gratis prøveversjon?"
+
+#~ msgid ""
+#~ "We ask for your credit card to allow your membership to continue after "
+#~ "your free trial, should you choose not to cancel. This also allows us to "
+#~ "reduce fraud and prevent multiple free trials for one person. This helps "
+#~ "us deliver better service for all the honest customers. Remember that we "
+#~ "won't bill you anything during your free trial and that you can cancel at "
+#~ "any moment before your trial ends."
+#~ msgstr ""
+#~ "Vi ber om ditt kredittkort for å tillate medlemskapet å fortsette etter "
+#~ "den gratis prøveperioden hvis du velger å ikke kansellere. Dette for oss "
+#~ "også til å redusere svindel og forhindre at flere gratis prøveversjoner "
+#~ "opprettes for en person. Det hjelper oss å levere en bedre service for "
+#~ "alle de oppriktige kundene. Husk at vi ikke vil fakturere deg noe under "
+#~ "den gratis prøveperioden, og at du kan avbryte når som helst før "
+#~ "prøveperioden utløper."
+
+#~ msgid "Menu"
+#~ msgstr "Meny"
+
+#~ msgid "Sign Up"
+#~ msgstr "Registrer deg"
+
+#~ msgid "Login"
+#~ msgstr "Logg inn"
+
+#~ msgid "Go to Dashboard"
+#~ msgstr "Gå til kontrollpanel"
+
+#~ msgid "Order Screen"
+#~ msgstr "Ordreliste"
+
+#~ msgid "Venue Settings"
+#~ msgstr "Arena innstillinger"
+
+#~ msgid "Change Settings"
+#~ msgstr "Endre innstillinger"
+
+#~ msgid "Opening Hours"
+#~ msgstr "Åpningstider"
+
+#~ msgid "Styling"
+#~ msgstr "Styling"
+
+#~ msgid "Home Screen"
+#~ msgstr "Hjem skjerm"
+
+#~ msgid "Menu Screen"
+#~ msgstr "Meny skjerm"
+
+#~ msgid "Menus"
+#~ msgstr "Menyer"
+
+#~ msgid "Edit"
+#~ msgstr "Rediger"
+
+#~ msgid "Meal Deals"
+#~ msgstr "Tilbud"
+
+#~ msgid "No menus"
+#~ msgstr "Ingen menyer"
+
+#~ msgid "Update Events"
+#~ msgstr "Oppdater arrangementer"
+
+#~ msgid "Advanced Settings"
+#~ msgstr "Avanserte Innstillinger"
+
+#~ msgid "Manage Users"
+#~ msgstr "Administrere brukere"
+
+#~ msgid "Payment Method"
+#~ msgstr "Betalingsmetode"
+
+#~ msgid "Change my app mode"
+#~ msgstr "Endre min app-modus"
+
+#~ msgid "Switch Venue"
+#~ msgstr "Bytt bedrift"
+
+#~ msgid "Logout"
+#~ msgstr "Logg ut"
+
+#~ msgid "Help"
+#~ msgstr "Hjelp"
+
+#~ msgid "Getting Started"
+#~ msgstr "Kom i gang"
+
+#~ msgid "Editing your Menu"
+#~ msgstr "Redigere din Meny"
+
+#~ msgid "FAQs"
+#~ msgstr "FAQ"
+
+#~ msgid "Support"
+#~ msgstr "Support"
+
+#~ msgid "Getting started"
+#~ msgstr "Kom igang"
+
+#~ msgid "First Name is required (max 100chars)"
+#~ msgstr "Fornavn er påkrevd (maks 100 bokstaver)"
+
+#~ msgid "Last Name is required (max 100chars)"
+#~ msgstr "Etternavn er påkrevd (maks 100 bokstaver)"
+
+#~ msgid "Email"
+#~ msgstr "E-post"
+
+#~ msgid "An email address is required"
+#~ msgstr "En e-postadresse er påkrevd"
+
+#~ msgid "A business name is required (max 100chars)"
+#~ msgstr "Et foretaksnavn er påkrevd (maks 100 bokstaver)"
+
+#~ msgid "Notifications"
+#~ msgstr "Varsler"
+
+#~ msgid "Off"
+#~ msgstr "Av"
+
+#~ msgid "On"
+#~ msgstr "På"
+
+#~ msgid "Change password?"
+#~ msgstr "Endre passordet?"
+
+#~ msgid "A password address is required."
+#~ msgstr "En passord adresse er nødvendig."
+
+#~ msgid "Confirm New Password"
+#~ msgstr "Bekreft nytt passord"
+
+#~ msgid "Passwords don't match."
+#~ msgstr "Passordene samsvarer ikke"
+
+#, fuzzy
+#~ msgid "Venue Information"
+#~ msgstr "Fakturainformasjon"
+
+#, fuzzy
+#~ msgid "App Styling 1/2"
+#~ msgstr "Styling"
+
+#, fuzzy
+#~ msgid "App Styling 2/2"
+#~ msgstr "Styling"
+
+#~ msgid "Menu Creation"
+#~ msgstr "Opprette meny"
+
+#~ msgid "Add a Payment"
+#~ msgstr "Legg til en betaling"
+
+#~ msgid "Done"
+#~ msgstr "Fullført"
+
+#~ msgid "Style your app"
+#~ msgstr "Endre utseende for din app"
+
+#~ msgid "This is where you can brand your menu page"
+#~ msgstr "Her kan du brande din meny side"
+
+#~ msgid "Add a short venue title"
+#~ msgstr "Kort navn på restaurant"
+
+#~ msgid ""
+#~ "This is a shorter version of your venue name that will be visible over "
+#~ "your menu."
+#~ msgstr ""
+#~ "Dette er en kortere versjon av stedsnavnet som vil være synlig over "
+#~ "menyen."
+
+#~ msgid "Please type a venue title <br/>(max 22chars)"
+#~ msgstr "Vennligst skriv en arena tittel <br/> (maks 22t egn)"
+
+#~ msgid "BASKET"
+#~ msgstr "HANDLEKURV"
+
+#~ msgid "Colour scheme"
+#~ msgstr "Fargevalg"
+
+#~ msgid "Colour one"
+#~ msgstr "Farge en"
+
+#~ msgid ""
+#~ "This colour is used across section progress buttons and as a highlight "
+#~ "colour."
+#~ msgstr ""
+#~ "Denne fargen blir brukt på fremgangs prosesser og knapper som et "
+#~ "høydepunkt farge."
+
+#~ msgid "Button one colour"
+#~ msgstr "Knapp en farge"
+
+#~ msgid "Enter Hex Colour Code or click to choose your colour."
+#~ msgstr "Skriv inn en hex fargekode eller klikk for å velge farge."
+
+#~ msgid "Button text colour"
+#~ msgstr "Velg knappens tekst farge"
+
+#~ msgid ""
+#~ "This colour is used across item select buttons and as a highlight colour."
+#~ msgstr ""
+#~ "Denne fargen blir brukt på knapper som bruke til produktvalg og som "
+#~ "høydepunkt farge."
+
+#~ msgid "Button two colour"
+#~ msgstr "Knapp to farge"
+
+#~ msgid "40&#37 done, a couple more design touches..."
+#~ msgstr "40&#37 ferdig, litt flere design tilpasninger..."
+
+#~ msgid "User management"
+#~ msgstr "Brukeradministrasjon"
+
+#~ msgid "Add a new user"
+#~ msgstr "Legg til en ny bruker"
+
+#~ msgid "Role"
+#~ msgstr "Rolle"
+
+#~ msgid "This decides the level of access of your users."
+#~ msgstr "Dette bestemmer tilgangsnivået for brukerne."
+
+#~ msgid "Tools"
+#~ msgstr "Verktøy"
+
+#~ msgid "Add a user name"
+#~ msgstr "Legg til et brukernavn"
+
+#~ msgid "Please type a user name (max 200chars)"
+#~ msgstr "Skriv inn et brukernavn (maks 200 bokstaver)"
+
+#~ msgid "Add an email"
+#~ msgstr "Legg til e-post"
+
+#~ msgid "Please type an email"
+#~ msgstr "Vennligst skriv en e-post adresse"
+
+#~ msgid "Staff: can only read account"
+#~ msgstr "Ansatte: kan bare se på kontoen"
+
+#~ msgid "Staff"
+#~ msgstr "Ansatte"
+
+#~ msgid "Admin: can read/write account but cannot close it down"
+#~ msgstr "Admin: kan se og redigere på kontoen, men kan ikke stenge ned"
+
+#~ msgid "Admin"
+#~ msgstr "Admin"
+
+#~ msgid "Owner: can read/write account and close it down"
+#~ msgstr "Eier: kan se og redigere kontoen og stenge den"
+
+#~ msgid "Owner"
+#~ msgstr "Eier"
+
+#~ msgid "Collapse"
+#~ msgstr "Trekk sammen"
+
+#~ msgid "Duplicate"
+#~ msgstr "Dupliser"
+
+#~ msgid "Delete"
+#~ msgstr "Slett"
+
+#~ msgid "Assign a password"
+#~ msgstr "Tildele et passord"
+
+#~ msgid "Provide a Password"
+#~ msgstr "Gi et passord"
+
+#~ msgid "Confirm Password"
+#~ msgstr "Bekreft passord"
+
+#~ msgid "Confirm password"
+#~ msgstr "Bekreft passord"
+
+#~ msgid "Passwords don't match"
+#~ msgstr "Passordene samsvarer ikke"
+
+#~ msgid "Your events"
+#~ msgstr "Dine arrangementer"
+
+#~ msgid ""
+#~ "These show when you are open for ordering, such as performances or "
+#~ "matches. They can be viewed from the front page of your app"
+#~ msgstr ""
+#~ "Disse viser når du har åpent for bestilling, som for eksempel "
+#~ "forestillinger eller kamper. De kan sees fra forsiden av din app"
+
+#~ msgid "Add a new event"
+#~ msgstr "Legg til nytt arrangement"
+
+#~ msgid "Start Date"
+#~ msgstr "Start dato"
+
+#~ msgid "Start Time"
+#~ msgstr "Start tidspunkt"
+
+#~ msgid "End Time"
+#~ msgstr "Slutt tidspunkt"
+
+#~ msgid "Visible?"
+#~ msgstr "Synlig?"
+
+#~ msgid "Click to add an event name"
+#~ msgstr "Klikk for å legge et arrangement navn"
+
+#~ msgid "Please type an event name (max 100chars)"
+#~ msgstr "Skriv inn et arrangement navn (maks 100 bokstaver)"
+
+#~ msgid "Click to add a description"
+#~ msgstr "Klikk for å legge inn en beskrivelse"
+
+#~ msgid "Please type a description (max 250chars)"
+#~ msgstr "Skriv inn en beskrivelse (maks 250 bokstaver)"
+
+#~ msgid "DD/MM/YYYY"
+#~ msgstr "DD/MM/ÅÅÅÅ"
+
+#~ msgid "Date?"
+#~ msgstr "Dato?"
+
+#~ msgid "HH:MM"
+#~ msgstr "TT:MM"
+
+#~ msgid "Time?"
+#~ msgstr "Tid?"
+
+#~ msgid "All Locations"
+#~ msgstr "﻿Alle lokasjoner"
+
+#~ msgid "Collection Slot: Pre-Show"
+#~ msgstr "Samlingssted: Før show"
+
+#~ msgid "Collection Slot: Pre-Game"
+#~ msgstr "Samlingssted: Før kamp"
+
+#~ msgid "Collection Slot: Interval"
+#~ msgstr "Samlingssted: Interval"
+
+#~ msgid "Collection Slot: Second-Interval"
+#~ msgstr "Samlingssted: Andre interval"
+
+#~ msgid "Collection Slot: Half-time"
+#~ msgstr "Samlingssted: Halv tid"
+
+#~ msgid "Collection Slot: Post-Show"
+#~ msgstr "Samlingssted: Etter show"
+
+#~ msgid "Collection Slot: Post-Game"
+#~ msgstr "Samlingssted: Etter kamp"
+
+#~ msgid "Please choose a slot."
+#~ msgstr "Velg et sted"
+
+#~ msgid "Lead Time (mins)"
+#~ msgstr "Ledetid (min)"
+
+#~ msgid "30"
+#~ msgstr "30"
+
+#~ msgid "Add another slot"
+#~ msgstr "Legg til nytt sted"
+
+#~ msgid "Collection Slot: Half-Time"
+#~ msgstr "Samlingssted: Halv tid"
+
+#~ msgid "eg. 30"
+#~ msgstr "f.eks 30"
+
+#~ msgid "75&#37 done, almost there now..."
+#~ msgstr "75&#37 ferdig, nesten i mål nå..."
+
+#~ msgid "This is the first screen that your customers will see."
+#~ msgstr "Dette er det første skjermbilde som kundene dine vil se."
+
+#~ msgid "Create a main heading"
+#~ msgstr "Lag en hovedoverskrift"
+
+#~ msgid "Choose one here"
+#~ msgstr "Velg en her"
+
+#~ msgid "or create your own..."
+#~ msgstr "eller lage din egen..."
+
+#~ msgid "maximum 70 characters"
+#~ msgstr "maksimalt 70 tegn"
+
+#~ msgid "Create a subheading"
+#~ msgstr "Lag en underoverskrift"
+
+#~ msgid "Pre-order food and drinks"
+#~ msgstr "Forhåndsbestill mat og drikke"
+
+#~ msgid "Pre-order drinks+food"
+#~ msgstr "Forhåndsbestill drikke+mat"
+
+#~ msgid "maximum 30 characters"
+#~ msgstr "maks 30 tegn"
+
+#~ msgid "Text colour"
+#~ msgstr "Tekst farge"
+
+#~ msgid "ORDER NOW button"
+#~ msgstr "BESTILL NÅ knappen"
+
+#~ msgid "Button colour"
+#~ msgstr "Velg knappens farge"
+
+#~ msgid "ORDER NOW"
+#~ msgstr "BESTILL NÅ"
+
+#~ msgid "Select a home-screen background"
+#~ msgstr "Velg en bakgrunn for hjem-skjermen"
+
+#~ msgid "UPLOAD YOUR OWN BACKGROUND"
+#~ msgstr "LAST OPP DIN EGEN BAKGRUNN"
+
+#~ msgid "Custom Background Upload"
+#~ msgstr "Last opp egendefinert bakgrunn"
+
+#~ msgid "UPLOAD"
+#~ msgstr "LAST OPP"
+
+#~ msgid "RESET"
+#~ msgstr "TILBAKESTILL"
+
+#~ msgid "Supported types: JPG"
+#~ msgstr "Støttede filtyper: JPG"
+
+#~ msgid "Max file size: 10MB"
+#~ msgstr "Maks filstørrelse: 10 MB"
+
+#~ msgid "Dimensions: 1080x1920"
+#~ msgstr "Dimensjoner: 1080x1920"
+
+#~ msgid "UPLOAD YOUR OWN LOGO"
+#~ msgstr "LAST OPP DIN EGEN LOGO"
+
+#~ msgid "Logo Upload"
+#~ msgstr "Last opp logo"
+
+#~ msgid "Note: This will replace your main heading."
+#~ msgstr "Merk: Dette vil erstatte din hovedoverskrift."
+
+#~ msgid "Supported types: PNG"
+#~ msgstr "Støttede filtyper: PNG"
+
+#~ msgid "Dimensions: 100x75"
+#~ msgstr "Dimensjoner: 100x75"
+
+#~ msgid "30&#37 done, time for the artistic bit..."
+#~ msgstr "30&#37 ferdig, tid for en kunstnerisk del..."
+
+#~ msgid "Don't forget to get paid"
+#~ msgstr "Ikke glem å ta betalt"
+
+#~ msgid "CONNECT TO STRIPE"
+#~ msgstr "KOBLE TIL STRIPE"
+
+#~ msgid "SKIP THIS FOR NOW"
+#~ msgstr "IKKE AKKURAT NÅ"
+
+#~ msgid "GO TO YOUR STRIPE ACCOUNT"
+#~ msgstr "GÅ TIL DIN STRIPE KONTO"
+
+#~ msgid "85&#37 done, we've saved the best for last!"
+#~ msgstr "85&#37 ferdig, vi har spart det beste til slutt!"
+
+#~ msgid "Tell us about your opening times"
+#~ msgstr "Fortell oss om dine åpningstider"
+
+#~ msgid "Days your venue is open"
+#~ msgstr "Dagene din restaurant er åpen"
+
+#~ msgid "Mon"
+#~ msgstr "Man"
+
+#~ msgid "Tue"
+#~ msgstr "Tir"
+
+#~ msgid "Wed"
+#~ msgstr "Ons"
+
+#~ msgid "Thu"
+#~ msgstr "Tor"
+
+#~ msgid "Fri"
+#~ msgstr "Fre"
+
+#~ msgid "Sat"
+#~ msgstr "Lør"
+
+#~ msgid "Sun"
+#~ msgstr "Søn"
+
+#~ msgid "Add another opening hour"
+#~ msgstr "Legg til en annen åpningstid"
+
+#~ msgid "eg: if you close for lunch and reopen in the evening."
+#~ msgstr "f.eks: hvis du stenger til lunsj og åpner igjen på kvelden."
+
+#~ msgid "Open "
+#~ msgstr "Åpen"
+
+#~ msgid ""
+#~ "Let us know if your venue is open for delivery, open for pickup, open for "
+#~ "both or if you are closed today."
+#~ msgstr ""
+#~ "Fortell oss om restauranten er åpen for levering, åpent for henting, åpen "
+#~ "for begge deler eller om du er stengt i dag."
+
+#~ msgid "For delivery and collection"
+#~ msgstr "Levering og henting"
+
+#~ msgid "For delivery only"
+#~ msgstr "Kun for levering"
+
+#~ msgid "For collection only"
+#~ msgstr "Kun for henting"
+
+#~ msgid "Closed Today"
+#~ msgstr "Stengt i dag"
+
+#~ msgid "Opens at"
+#~ msgstr "Åpner"
+
+#~ msgid "Closes at"
+#~ msgstr "Stenger"
+
+#~ msgid "Remove opening hour"
+#~ msgstr "Fjern åpningstid"
+
+#~ msgid "Apply these times to all days"
+#~ msgstr "Bruk disse tidene på alle dager"
+
+#~ msgid "Tell us about your venue"
+#~ msgstr "Fortell oss om din bedrift"
+
+#~ msgid "Venue name"
+#~ msgstr "Restaurant navn"
+
+#~ msgid "Please type a venue name (max 100chars)"
+#~ msgstr "Skriv inn bedriftens navn (maks 100 bokstaver)"
+
+#~ msgid "Venue description"
+#~ msgstr "Bedriftens beskrivelse"
+
+#~ msgid ""
+#~ "Please enter a short description about your venue.<br/><br/>This will not "
+#~ "appear on your branded app."
+#~ msgstr ""
+#~ "Skriv en kort beskrivelse av bedriften.<br/><br/>Dette vil ikke vises på "
+#~ "din app."
+
+#~ msgid "Please type a venue description (max 250chars)"
+#~ msgstr "Skriv en beskrivelse av bedriften (maks 250 bokstaver)"
+
+#~ msgid "What type of venue are you?"
+#~ msgstr "Hvilken type bedrift har du?"
+
+#~ msgid "Restaurant (Cafe, Sandwich Bar, Restaurant, etc)"
+#~ msgstr "Restaurant (Kafe, Sandwich Bar, Restaurant, etc)"
+
+#~ msgid "Sports Arena"
+#~ msgstr "Sports arena"
+
+#~ msgid "Bars, Pubs and Clubs"
+#~ msgstr "Bar, pub og klubb"
+
+#~ msgid "Workplace/Education Catering"
+#~ msgstr "Arbeidsplass/Utdanning Catering"
+
+#~ msgid "Music and Cultural"
+#~ msgstr "Musikk og kultur"
+
+#~ msgid "Are you primarily an events based business?"
+#~ msgstr "Er du først og fremst et arrangement basert bedrift?"
+
+#~ msgid ""
+#~ "Does your business revolve around regular events, e.g. football matches, "
+#~ "performances, etc?"
+#~ msgstr ""
+#~ "Har din virksomhet regelmessige arrangementer, for eksempel "
+#~ "fotballkamper, forestillinger, etc?"
+
+#~ msgid "Collection Slot Duration (mins)"
+#~ msgstr "Samlingssted: Varighet (min)"
+
+#~ msgid ""
+#~ "This is the number of minutes after opening time and before closing time "
+#~ "when customers are allowed to collect orders."
+#~ msgstr ""
+#~ "Dette er antall minutter etter åpningstid og før stengetid som kundene "
+#~ "kan sende inn bestillinger for henting."
+
+#~ msgid "eg: 30"
+#~ msgstr "f.eks 30"
+
+#~ msgid "Please provide a duration in mins"
+#~ msgstr "Vennligst oppgi en varighet i minutter"
+
+#~ msgid "Default preparation time for collection orders (mins)"
+#~ msgstr "Standard forberedelse tid for bestillinger som skal hentes (min)"
+
+#~ msgid ""
+#~ "The time it takes to prepare your order before the customer can pick it "
+#~ "up."
+#~ msgstr "Tiden det tar å lage din bestilling før kunden kan hente den."
+
+#~ msgid "e.g. 25"
+#~ msgstr "f.eks 25"
+
+#~ msgid "Please provide a lead time"
+#~ msgstr "Oppgi  leveringstid"
+
+#~ msgid "Discount offered for collection orders (%)"
+#~ msgstr "Rabatt tilbys på bestillinger med henting (%)"
+
+#~ msgid "e.g. 10"
+#~ msgstr "f.eks 10"
+
+#~ msgid "Minimum value for orders"
+#~ msgstr "Minimumsverdi for ordre"
+
+#~ msgid "e.g. 5"
+#~ msgstr "f.eks 5"
+
+#~ msgid "Please provide a minimum value for ordering"
+#~ msgstr "Vennligst oppgi en minimumsverdi for bestilling"
+
+#~ msgid "Do you offer a delivery service?"
+#~ msgstr "Tilbyr dere levering?"
+
+#~ msgid "You can specify your delivery settings from the dashboard"
+#~ msgstr "Du kan angi dine leveringsinnstillinger fra dashbordet"
+
+#~ msgid "Enable cash payment option?"
+#~ msgstr "Aktivere kontant betaling som et alternativ?"
+
+#~ msgid "Do you require a phone number?"
+#~ msgstr "Krever du et telefonnummer?"
+
+#~ msgid ""
+#~ "By default phone numbers are only required for delivery orders, if you "
+#~ "enable this option it will be mandatory for pickup orders as well."
+#~ msgstr ""
+#~ "Som standard er telefonnumre kun nødvendig for utkjøring, hvis du "
+#~ "aktiverer dette alternativet vil det være obligatorisk for bestillinger "
+#~ "med henting også."
+
+#~ msgid "Address"
+#~ msgstr "Adresse"
+
+#~ msgid "Please type a venue address (max 250chars)"
+#~ msgstr "Skriv inn restaurantens adresse (maks 250 bokstaver)"
+
+#~ msgid "Please type a Town/City (max 45chars)"
+#~ msgstr "Skriv inn by/poststed (maks 45 bokstaver)"
+
+#~ msgid "Country"
+#~ msgstr "Land"
+
+#~ msgid "Please choose a country"
+#~ msgstr "Velg et land"
+
+#~ msgid "Post code"
+#~ msgstr "Postnummer"
+
+#~ msgid "Please type a post code (max 45chars)"
+#~ msgstr "Skriv inn et postnummer (maks 45 bokstaver)"
+
+#~ msgid "Language"
+#~ msgstr "Språk"
+
+#~ msgid "Please select your language"
+#~ msgstr "Velg ditt språk"
+
+#~ msgid "Timezone"
+#~ msgstr "Tidssone"
+
+#~ msgid "Please select your timezone"
+#~ msgstr "Velg tidssone"
+
+#~ msgid "Currency"
+#~ msgstr "Valuta"
+
+#~ msgid "Please select your currency"
+#~ msgstr "Velg valuta"
+
+#~ msgid "15&#37 done, keep going!"
+#~ msgstr "15&#37 ferdig, keep going!"
+
+#~ msgid "This is where you can monitor your takings and reports."
+#~ msgstr "Her kan du overvåke dine salg og rapporter"
+
+#~ msgid "Your online order page is"
+#~ msgstr "Din online bestillingsside er"
+
+#~ msgid "This month"
+#~ msgstr "Denne måneden"
+
+#~ msgid "Total revenue"
+#~ msgstr "Totale inntekter"
+
+#~ msgid "Total orders"
+#~ msgstr "Totalt bestillinger"
+
+#~ msgid "New users"
+#~ msgstr "Nye brukere"
+
+#~ msgid "Returning users"
+#~ msgstr "Returnerende brukere"
+
+#~ msgid "Customer Analytics"
+#~ msgstr "Analytics for kunder"
+
+#~ msgid "Add new menu"
+#~ msgstr "Legg til ny meny"
+
+#~ msgid "Change settings"
+#~ msgstr "Endre innstillinger"
+
+#~ msgid "Delivery settings"
+#~ msgstr "Innstillinger for leveranse"
+
+#~ msgid "Preset notifications"
+#~ msgstr "Forhåndsinnstilte varslinger"
+
+#~ msgid "Opening hours"
+#~ msgstr "Åpningstider"
+
+#~ msgid "Home screen"
+#~ msgstr "Hjem skjerm"
+
+#~ msgid "Menu screen"
+#~ msgstr "Meny skjerm"
+
+#~ msgid "Update events"
+#~ msgstr "Oppdater arrangementer"
+
+#~ msgid "Manage users"
+#~ msgstr "Administrere brukere"
+
+#~ msgid "Add a payment method"
+#~ msgstr "Legg til betalingsmetode"
+
+#~ msgid "Change app mode"
+#~ msgstr "Endre app-modus"
+
+#~ msgid ""
+#~ "LIVE - Your app is visible and is ready to take real orders.<br/><br/"
+#~ ">DEMO - Your app is visible but does not take real orders.<br/><br/"
+#~ ">OFFLINE - Your app is not visible."
+#~ msgstr ""
+#~ "LIVE - Din app er synlig og er klar til å ta i mot ordre. <br/><br/> DEMO "
+#~ "- Din app er synlig, men tar ikke reelle ordre. <br/><br/> OFFLINE - Din "
+#~ "app er ikke synlig."
+
+#~ msgid "active"
+#~ msgstr "aktiv"
+
+#~ msgid "OFFLINE"
+#~ msgstr "OFFLINE"
+
+#~ msgid "DEMO"
+#~ msgstr "DEMO"
+
+#~ msgid "LIVE"
+#~ msgstr "LIVE"
+
+#~ msgid "Venue Title"
+#~ msgstr "Restaurant tittel"
+
+#~ msgid ""
+#~ "Your 30 day free trial \tof this Premium Feature has now expired. Would "
+#~ "you like to purchase it?"
+#~ msgstr ""
+#~ "Din 30 dagers gratis prøveversjon av denne Premium funksjonen har nå "
+#~ "utløpt. Vil du kjøpe den?"
+
+#~ msgid "YES PLEASE"
+#~ msgstr "JA TAKK"
+
+#~ msgid "NOT RIGHT NOW"
+#~ msgstr "IKKE AKKURAT NÅ"
+
+#~ msgid " trial"
+#~ msgstr "prøve"
+
+#~ msgid "Your free trial expires in "
+#~ msgstr "Din gratis prøveperiode utløper om "
+
+#~ msgid " days."
+#~ msgstr " dager."
+
+#~ msgid ""
+#~ " To continue using your app after the free trial, register your card "
+#~ "details for the "
+#~ msgstr ""
+#~ " For å fortsette å bruke programmet etter prøveperioden kan du registrere "
+#~ "kortdetaljene dine for "
+
+#~ msgid " on the 'My Account' tab located on your dashboard."
+#~ msgstr " på \"Min konto\" fanen som er plassert på dashbordet."
+
+#~ msgid "GO TO MY ACCOUNT"
+#~ msgstr "GÅ TIL MIN KONTO"
+
+#~ msgid "Payment provider is not connected!"
+#~ msgstr "Betalingsløsning er ikke tilkoblet!"
+
+#~ msgid ""
+#~ "Before taking your app live you need to connect it to a payment provider "
+#~ "or enable cash payments so that you can start accepting payments and "
+#~ "start getting paid!"
+#~ msgstr ""
+#~ "Før du legger ut din app må du koble til en betalingsløsning eller "
+#~ "aktivere kontant betaling, slik at du kan begynne å akseptere betalinger "
+#~ "og begynne å få betalt!"
+
+#~ msgid "CONNECT"
+#~ msgstr "SAMMENKOBLE"
+
+#~ msgid "Your app is now live!"
+#~ msgstr "Din app er nå live!"
+
+#~ msgid "Your app is now in DEMO mode."
+#~ msgstr "Din app er nå i DEMO-modus."
+
+#~ msgid "Your app is now in OFFLINE mode."
+#~ msgstr "Din app er nå i OFFLINE modus."
+
+#~ msgid "Your app is now in Demo mode."
+#~ msgstr "Din app er nå i Demo modus!"
+
+#~ msgid ""
+#~ "This is where you can combine separate food items into one meal "
+#~ "combination, e.g. sandwich, crisps and a drink"
+#~ msgstr ""
+#~ "Her kan du kombinere separate matvarer til ett kombinasjons måltid, f.eks "
+#~ "hamburger, pomfri og drikke"
+
+#~ msgid "Add a new Meal Deal"
+#~ msgstr "Legg til en ny Meal Deal"
+
+#~ msgid "Section"
+#~ msgstr "Seksjon"
+
+#~ msgid "Which menu section does this meal deal belong in?"
+#~ msgstr "Hvilke del av menyen hører dette måltidet hjemme i?"
+
+#~ msgid "Total Price "
+#~ msgstr "Total Pris "
+
+#~ msgid "Discount Price "
+#~ msgstr "Rabattert pris "
+
+#~ msgid "Please type an item name (max 100chars)"
+#~ msgstr "Vennligst skriv inn et produktnavn (maks 100 bokstaver)"
+
+#~ msgid "Please choose a section"
+#~ msgstr "Velg en seksjon"
+
+#~ msgid "0.00"
+#~ msgstr "0,00"
+
+#~ msgid "Amount?"
+#~ msgstr "Beløp?"
+
+#~ msgid "Delete this section"
+#~ msgstr "Slett denne delen"
+
+#~ msgid "Type or pick a selection title"
+#~ msgstr "Skriv inn eller velg en tittel"
+
+#~ msgid "Eg. Choose a main, Choose a side, Choose a drink, etc"
+#~ msgstr "F.eks. Velg en hovedrett, velg en siderett, Velg drikke, etc"
+
+#~ msgid "Please type or pick a title (max 100chars)"
+#~ msgstr "Vennligst skriv inn eller velg en tittel (maks 100 bokstaver)"
+
+#~ msgid "Choose a menu section"
+#~ msgstr "Velg en meny seksjon"
+
+#~ msgid "All sections"
+#~ msgstr "Alle seksjoner"
+
+#~ msgid "Pick a menu section from where you'd like to import items."
+#~ msgstr "Velg en meny seksjon som du ønsker å importere varer fra."
+
+#~ msgid "Add this item to the current Meal Deal"
+#~ msgstr "Legge dette produktet til gjeldende Meal Deal"
+
+#~ msgid "Add a selection to this meal deal"
+#~ msgstr "Lag et utvalg til denne kampanjen"
+
+#~ msgid "Click to add a Meal Deal name"
+#~ msgstr "Klikk for å legge til et kampanjenavn"
+
+#~ msgid ""
+#~ "You've not created any items! You won't be able to create Meal Deals "
+#~ "until you have some items in your menu."
+#~ msgstr ""
+#~ "Du har ikke opprettet noen retter! Du vil ikke være i stand til å lage "
+#~ "kampanjer før du har noen retter i menyen."
+
+#~ msgid "Outlets"
+#~ msgstr "Utsalgssteder"
+
+#~ msgid "Add a new Outlet"
+#~ msgstr "Legg til nytt utsalgssted"
+
+#~ msgid "Create a new menu"
+#~ msgstr "Opprett en ny meny"
+
+#~ msgid "Add an outlet name"
+#~ msgstr "Legg til nytt sted"
+
+#~ msgid "Please type an outlet name"
+#~ msgstr "Skriv inn navn på utsalgssted"
+
+#~ msgid "Please choose a menu"
+#~ msgstr "Velg en meny"
+
+#~ msgid "Build your menu"
+#~ msgstr "Bygg din meny"
+
+#~ msgid "Your menu"
+#~ msgstr "Din meny"
+
+#~ msgid ""
+#~ "Now it's time to create your menu. We suggest you keep it simple to start "
+#~ "with.<br/><br/>An easy way is to group items, i.e. create separate "
+#~ "sections for food, cold drinks and hot drinks."
+#~ msgstr ""
+#~ "Nå er det på tide å lage menyen din. Vi foreslår at du holder det så "
+#~ "enkelt som mulig til å begynne med. <br/><br/> En enkel måte er å "
+#~ "gruppere produkter, dvs. opprette egne grupper for mat, kald drikke og "
+#~ "varm drikke."
+
+#~ msgid "Click to add your menu name"
+#~ msgstr "Klikk for å legge inn meny navn"
+
+#~ msgid "Please type a menu name (max 100chars)"
+#~ msgstr "Vennligst skriv inn et meny navn (maks 100 bokstaver)"
+
+#~ msgid "Click to add a section name"
+#~ msgstr "Klikk for å legge til gruppe navn"
+
+#~ msgid "Please type a section name (max 100chars)"
+#~ msgstr "Vennligst skriv inn et gruppe navn (maks 100 bokstaver)"
+
+#~ msgid "Add an item to this section"
+#~ msgstr "Legg til et produkt i denne gruppen"
+
+#~ msgid "Move this section"
+#~ msgstr "Flytt denne gruppen"
+
+#~ msgid "Collapse this section"
+#~ msgstr "Skjul denne gruppen"
+
+#~ msgid "Price "
+#~ msgstr "Pris"
+
+#~ msgid "Quantity"
+#~ msgstr "Antall"
+
+#~ msgid "Click to add an item name"
+#~ msgstr "Klikk for å legge til produktnavn"
+
+#~ msgid "Optional description"
+#~ msgstr "Valgfri beskrivelse"
+
+#~ msgid "Price?"
+#~ msgstr "Pris?"
+
+#~ msgid "Unlimited"
+#~ msgstr "Ubegrenset"
+
+#~ msgid ""
+#~ "This chooses whether you want to activate this food on the menu or not."
+#~ msgstr "Her velger du om du vil aktivere denne maten på menyen eller ikke."
+
+#~ msgid "Upload image"
+#~ msgstr "Last opp bilde"
+
+#~ msgid "Add tags"
+#~ msgstr "Legg til tags"
+
+#~ msgid "Reorder"
+#~ msgstr "Endre rekkefølgen"
+
+#~ msgid "Add a new option to this item"
+#~ msgstr "Legg et nytt alternativ til dette produktet"
+
+#~ msgid "Add an option"
+#~ msgstr "Legg til et alternativ"
+
+#~ msgid "Type or pick an option title"
+#~ msgstr "Skriv inn eller velg en alternativ tittel"
+
+#~ msgid "Eg. Pick a size, Choice of an option, Add some extras, Select a side"
+#~ msgstr ""
+#~ "F.eks. Velg en størrelse, Valg av tillegg, Legg til litt ekstra, Velg en "
+#~ "siderett"
+
+#~ msgid "Please type or pick a title"
+#~ msgstr "Skriv eller velg en tittel"
+
+#~ msgid "User must select only one option."
+#~ msgstr "Brukeren må kun velge ett tillegg."
+
+#~ msgid "User selects 1 option"
+#~ msgstr "Brukeren velger 1 tillegg"
+
+#~ msgid "User must select one or more options."
+#~ msgstr "Brukeren må velge ett eller flere tillegg."
+
+#~ msgid "User selects 1 or more options"
+#~ msgstr "Brukeren velger 1 eller flere tillegg"
+
+#~ msgid "User can select zero or more options."
+#~ msgstr "Brukeren kan velge 0 eller flere tillegg."
+
+#~ msgid "User selects 0 or more options"
+#~ msgstr "Brukeren velger 0 eller flere tillegg"
+
+#~ msgid ""
+#~ "Single: When the user must pick only 1 option.<br/><br/>Multiple: When "
+#~ "the user must pick 1 or more options.<br/><br/>Optional: when the user "
+#~ "can pick 0 or multiple options."
+#~ msgstr ""
+#~ "Enkel: Når brukeren må velge kun ett tillegg. <br/><br/> Multiple: Når "
+#~ "brukeren må velge ett eller flere tillegg. <br/><br/> Valgfritt: Når "
+#~ "brukeren kan velge 0 eller flere tillegg."
+
+#~ msgid "Please choose a type"
+#~ msgstr "Velg en type"
+
+#~ msgid "Click to add an option name"
+#~ msgstr "Klikk for å legge til et tilleggs navn"
+
+#~ msgid "Please type an option name (max 100chars)"
+#~ msgstr "Vennligst skriv et tilleggets navn (maks 100 bokstaver)"
+
+#~ msgid ""
+#~ "This will be in addition to the item price. If there is no price "
+#~ "difference, put in 0.00."
+#~ msgstr ""
+#~ "Dette kommer i tillegg til produktprisen. Hvis det ikke er noen "
+#~ "prisforskjell, skriv inn 0,00."
+
+#~ msgid "Eg. Toppings, Sizes, Exras, etc"
+#~ msgstr "F.eks. Topping, Størrelser, Tillegg, etc"
+
+#~ msgid "Add an option category to this item <small>(optional)</small>"
+#~ msgstr ""
+#~ "Legg til en tilleggs kategori til dette produktet <small>(valgfritt)</"
+#~ "small>"
+
+#~ msgid "Add a new menu section"
+#~ msgstr "Legg til en ny meny gruppe"
+
+#~ msgid "COLLAPSE ALL"
+#~ msgstr "SKJUL ALLE"
+
+#~ msgid "SAVE & CONTINUE EDITING"
+#~ msgstr "LAGRE & FORTSETT REDIGERING"
+
+#~ msgid "SAVE & FINISH"
+#~ msgstr "LAGRE ENDRINGER"
+
+#~ msgid "45&#37 done, now for the fun bit!"
+#~ msgstr "45&#37 ferdig, nå kommer den festlige delen!"
+
+#~ msgid ""
+#~ "If you're stuck let us know what the problem is and a member of our "
+#~ "support team will be in touch shortly"
+#~ msgstr ""
+#~ "Hvis du sitter fast la oss få vite hva problemet er, og et medlem av vårt "
+#~ "support team vil ta kontakt innen kort tid"
+
+#~ msgid "Please enter your requirement."
+#~ msgstr "Skriv inn din forespørsel."
+
+#~ msgid "SEND"
+#~ msgstr "SEND"
+
+#~ msgid "Thank you for your request"
+#~ msgstr "Takk for din forespørsel"
+
+#~ msgid "We'll be in touch shortly."
+#~ msgstr "Vi tar kontakt innen kort tid."
+
+#~ msgid "Reset your password?"
+#~ msgstr "Tilbakestille passordet ditt?"
+
+#~ msgid "A password is required."
+#~ msgstr "Det kreves et passord."
+
+#~ msgid "RESET PASSWORD"
+#~ msgstr "NULLSTILL PASSORD"
+
+#~ msgid "Sorry. Invalid code."
+#~ msgstr "Beklager. Feil kode."
+
+#~ msgid "The finish line!"
+#~ msgstr "Mållinjen!"
+
+#~ msgid "App mode"
+#~ msgstr "App-modus"
+
+#~ msgid "Your app is currently in "
+#~ msgstr "Din app er nå i "
+
+#~ msgid " mode."
+#~ msgstr " modus."
+
+#~ msgid ""
+#~ "LIVE - Your app is available on My Order App and is ready to take real "
+#~ "orders.<br/><br/>DEMO - Your app is available on My Order App but does "
+#~ "not take real orders.<br/><br/>OFFLINE - Your app is not available on My "
+#~ "Order App."
+#~ msgstr ""
+#~ "LIVE - Din app er tilgjengelig på My Order Appen og er klar til å ta "
+#~ "virkelige bestillinger.<br/><br/>DEMO - Din app er tilgjengelig på My "
+#~ "Order Appen men tar ikke virkelige bestillinger. <br/><br/> OFFLINE - Din "
+#~ "app er ikke tilgjengelig på My Order Appen."
+
+#~ msgid "After you setup a payment method, you can send it into the world!"
+#~ msgstr ""
+#~ "Etter at du har satt opp en betalingsmetode kan du dele det med verden!"
+
+#~ msgid "SETUP PAYMENT"
+#~ msgstr "BETALINGS OPPSETT"
+
+#~ msgid "MAKE MY APP LIVE"
+#~ msgstr "SETT MIN APP TIL LIVE"
+
+#~ msgid "SWITCH TO DEMO MODE"
+#~ msgstr "BYTT TIL DEMO MODUS"
+
+#~ msgid "PUT MY APP IN DEMO MODE"
+#~ msgstr "SETT MIN APP TIL DEMO MODUS"
+
+#~ msgid "TAKE MY APP OFFLINE"
+#~ msgstr "TA MIN APP OFFLINE"
+
+#~ msgid "BACK TO THE DASHBOARD"
+#~ msgstr "TILBAKE TIL KONTROLLPANELET"
+
+#~ msgid "Payment method was not setup."
+#~ msgstr "Betalingsmåte ble ikke satt opp."
+
+#~ msgid "Select venue for use webapp"
+#~ msgstr "Velg bedrift for bruk av webapp"
+
+#~ msgid "Please choose a venue."
+#~ msgstr "Vennligst velg en bedrift."
+
+#~ msgid "Subtotal"
+#~ msgstr "Delsum"
+
+#~ msgid "VAT @ 20%"
+#~ msgstr "MVA @ 20%"
+
+#~ msgid "One-off payment"
+#~ msgstr "Engangsbetaling"
+
+#~ msgid "Monthly charge"
+#~ msgstr "Månedlig kostnad"
+
+#~ msgid "*minimum "
+#~ msgstr "*minimum"
+
+#~ msgid " months contract"
+#~ msgstr "måneders kontrakt"
+
+#~ msgid "Have a discount code?"
+#~ msgstr "Har du en rabattkode?"
+
+#~ msgid "APPLY"
+#~ msgstr "BRUK"
+
+#~ msgid "I have read the"
+#~ msgstr "Jeg har lest"
+
+#~ msgid "Terms and Conditions"
+#~ msgstr "Betingelsene"
+
+#~ msgid "Premium Features"
+#~ msgstr "Premium Funksjoner"
+
+#~ msgid ""
+#~ "At Preoday we believe that businesses such as yours should not pay to "
+#~ "receive mobile orders. Our business model is simple: we charge no "
+#~ "commission on orders you receive through the app.  Instead, we offer "
+#~ "services that bring new value and insight to your business."
+#~ msgstr ""
+#~ "Preoday har tro på at bedrifter som din ikke skal måtte betale ekstra for "
+#~ "å motta bestillinger via mobil. Vår forretningsmodell er enkel: vi tar "
+#~ "ingen provisjon på bestillinger som du mottar via appen. I stedet kan vi "
+#~ "tilby tjenester som gir ny verdi og innsikt til din bedrift."
+
+#~ msgid "COMING SOON"
+#~ msgstr "KOMMER SNART"
+
+#~ msgid "GET IN TOUCH"
+#~ msgstr "TA KONTAKT"
+
+#~ msgid "month"
+#~ msgstr "måned"
+
+#~ msgid "one-off payment"
+#~ msgstr "engangsbetaling"
+
+#~ msgid "VAT"
+#~ msgstr "MVA"
+
+#~ msgid "FREE"
+#~ msgstr "GRATIS"
+
+#~ msgid "DAY TRIAL"
+#~ msgstr "DAGER GRATIS PRØVE"
+
+#~ msgid "TRIAL EXPIRES IN"
+#~ msgstr "PRØVEPERIODE UTLØPER OM"
+
+#~ msgid "DAYS"
+#~ msgstr "DAGER"
+
+#~ msgid "BUY"
+#~ msgstr "KJØP"
+
+#~ msgid "INSTALLED"
+#~ msgstr "INSTALLERT"
+
+#~ msgid "Features"
+#~ msgstr "Funksjoner"
+
+#~ msgid "Medium"
+#~ msgstr "Medium"
+
+#~ msgid "Hot"
+#~ msgstr "Sterk"
+
+#~ msgid "Vegetarian"
+#~ msgstr "Vegitar"
+
+#~ msgid "Vegan"
+#~ msgstr "Vegan"
+
+#~ msgid "Contains nuts"
+#~ msgstr "Inneholder nøtter"
+
+#~ msgid "Gluten free"
+#~ msgstr "Glutenfri"
+
+#~ msgid "Halal"
+#~ msgstr "Halal"
+
+#~ msgid "Sign in to your Preoday Dashboard"
+#~ msgstr "Logg på dashbordet Preoday"
+
+#~ msgid "Preoday"
+#~ msgstr "Preoday"
+
+#~ msgid "Sign in to your Dashboard"
+#~ msgstr "Logg inn på Dashboard"
+
+#~ msgid "Sorry, but there's been an error processing your request."
+#~ msgstr "Beklager, men det var en feil ved behandling av forespørselen."
+
+#~ msgid "Incorrect credentials or account does not exist."
+#~ msgstr "Feil detaljer oppgitt eller konto finnes ikke."
+
+#~ msgid "Success! Please check your email for further instructions."
+#~ msgstr "Bra! Vennligst sjekk e-posten din for videre instruksjoner."
+
+#~ msgid "Sorry, incorrect code."
+#~ msgstr "Beklager, feil kode."
+
+#~ msgid ""
+#~ "Your password has been reset.<br/>You will now be redirected to the login "
+#~ "page."
+#~ msgstr ""
+#~ "Ditt passord er nullstilt. <br/>Du vil nå bli sendt videre til "
+#~ "innloggingssiden."
+
+#~ msgid "Venue changes have been saved!"
+#~ msgstr "Endringene har blitt lagret"
+
+#~ msgid "Uploaded!"
+#~ msgstr "Lastet opp!"
+
+#~ msgid "Error uploading file"
+#~ msgstr "Feil ved opplasting av fil"
+
+#~ msgid "Incorrect Image File"
+#~ msgstr "Feil bilde fil"
+
+#~ msgid "App changes have been saved!"
+#~ msgstr "Endringene i appen har blitt lagret!"
+
+#~ msgid "Choose a size"
+#~ msgstr "Velg en størrelse"
+
+#~ msgid "Choose a flavour"
+#~ msgstr "Velg en smak"
+
+#~ msgid "Choose a topping"
+#~ msgstr "Velg en topping"
+
+#~ msgid "Choose some extras"
+#~ msgstr "Velg noe ekstra"
+
+#~ msgid "Choose a side dish"
+#~ msgstr "Velg en siderett"
+
+#~ msgid "Pick an option type"
+#~ msgstr "Velg et alternativ"
+
+#~ msgid "Yes, delete this section and all its contents!"
+#~ msgstr "Ja, slett denne delen og alt innhold!"
+
+#~ msgid "No, go back."
+#~ msgstr "Nei, gå tilbake."
+
+#~ msgid "Choose a main"
+#~ msgstr "Velg en hoverett"
+
+#~ msgid "Choose a side"
+#~ msgstr "Velg et tillegg"
+
+#~ msgid "Choose a drink"
+#~ msgstr "Velg drikke"
+
+#, fuzzy
+#~ msgid "Choose a curry"
+#~ msgstr "Velg en burger"
+
+#~ msgid "Choose a burger"
+#~ msgstr "Velg en burger"
+
+#~ msgid "Menu configuration has been saved!"
+#~ msgstr "Konfigurasjonen er lagret!"
+
+#~ msgid "Choose a Collection Slot"
+#~ msgstr "Velg et sted"
+
+#~ msgid "Choose Event Location"
+#~ msgstr "Velg Arrangement sted"
+
+#~ msgid ""
+#~ "Are you sure you want to delete this event? Note: all event data will be "
+#~ "lost!"
+#~ msgstr ""
+#~ "Er du sikker på at du vil slette denne hendelsen? Merk: alle hendelses "
+#~ "data vil gå tapt!"
+
+#~ msgid "Yes, delete this event!"
+#~ msgstr "Ja, slett denne hendelsen!"
+
+#~ msgid "Choose Venue"
+#~ msgstr "Velg Restaurant"
+
+#~ msgid ""
+#~ "Are you sure you want to delete this user? Note: all user data will be "
+#~ "lost!"
+#~ msgstr ""
+#~ "Er du sikker på at du vil slette denne brukeren? Merk: alle brukerdata "
+#~ "vil gå tapt!"
+
+#~ msgid "Yes, delete this user!"
+#~ msgstr "Ja, slett denne brukeren!"
+
+#~ msgid "Username/email already exists"
+#~ msgstr "Brukernavn/e-post eksisterer allerede"
+
+#~ msgid "User configuration has been saved!"
+#~ msgstr "Bruker Konfigurasjonen er lagret!"
+
+#~ msgid "Select all menus"
+#~ msgstr "Velg alle menyer"
+
+#~ msgid "Unselect all menus"
+#~ msgstr "Velge bort alle menyer"
+
+#~ msgid "Select menu("
+#~ msgstr "Velg meny("
+
+#~ msgid "# of # selected"
+#~ msgstr "# av # valgt"
+
+#~ msgid ""
+#~ "Are you sure you want to delete this outlet? Note: all outlet data will "
+#~ "be lost!"
+#~ msgstr ""
+#~ "Er du sikker på at du vil slette dette stedet? Merk: alle data for stedet "
+#~ "vil gå tapt!"
+
+#~ msgid "Yes, delete this outlet!"
+#~ msgstr "Ja, slett stedet!"
+
+#~ msgid "Outlet configuration has been saved!"
+#~ msgstr "Oppsettet er lagret!"
+
+#~ msgid "These times have been applied to all days!"
+#~ msgstr "Disse tidene er blitt satt på alle dager!"
+
+#~ msgid ""
+#~ "We still need some more information. Don't forget to fill out the "
+#~ "remaining days of the week!"
+#~ msgstr ""
+#~ "Vi trenger fortsatt litt mer informasjon. Ikke glem å fylle ut de "
+#~ "resterende dagene i uken!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Are you sure you want to delete this meal deal? Note: all associated data "
+#~ "will be lost!"
+#~ msgstr ""
+#~ "Er du sikker på at du vil slette dette stedet? Merk: alle data for stedet "
+#~ "vil gå tapt!"
+
+#, fuzzy
+#~ msgid "Yes, delete this meal deal!"
+#~ msgstr "Ja, slett denne menyen!"
+
+#~ msgid "All changes has been saved!"
+#~ msgstr "Alle endringer er lagret!"
+
+#~ msgid ""
+#~ "Are you sure you want to delete this menu? Note: all menu data will be "
+#~ "lost!"
+#~ msgstr ""
+#~ "Er du sikker på at du vil slette denne menyen? Merk: alle meny data vil "
+#~ "gå tapt!"
+
+#~ msgid "Yes, delete this menu!"
+#~ msgstr "Ja, slett denne menyen!"
+
+#~ msgid "Sorry, incorrect password."
+#~ msgstr "Beklager, feil passord."
+
+#~ msgid ""
+#~ "Settings and Password has been saved!<br/>You will need to log in again "
+#~ "with your new password to continue."
+#~ msgstr ""
+#~ "Innstillinger og passord har blitt lagret!<br/>Du må logge inn på nytt "
+#~ "med det nye passordet for å fortsette."
+
+#~ msgid "Settings have been saved!"
+#~ msgstr "Innstillingene har blitt lagret!"
+
+#~ msgid "Please select features you require"
+#~ msgstr "Velg funksjonene du krever"
+
+#~ msgid "Select all"
+#~ msgstr "Merk alle"
+
+#~ msgid "Your app is now in demo mode!"
+#~ msgstr "Din app er nå i demo-modus!"
+
+#~ msgid "Your app is now offline!"
+#~ msgstr "Din app er nå offline!"
+
+#~ msgid "You need to accept at least one payment method before going live"
+#~ msgstr "Du må godta minst én betalingsmåte før du går live"
+
+#~ msgid "You need to subscribe to a package before changing the app mode"
+#~ msgstr "Du må abonnere på en pakke før du endrer app-modus"
+
+#~ msgid "My order app "
+#~ msgstr "Mine ordre app"
+
+#~ msgid "Sorry, these password do not match. Please try again."
+#~ msgstr "Beklager, dette passordet samsvarer ikke. Prøv på nytt."
+
+#~ msgid "All the fields are required."
+#~ msgstr "Alle felter må fylles ut."
+
+#~ msgid "Please fill in all the required fields."
+#~ msgstr "Vennligst fyll inn alle obligatoriske felter"
+
+#~ msgid "Outstanding payment resolved"
+#~ msgstr "Utestående betaling godkjent"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+#~ msgid "Payment method updated succesfully!"
+#~ msgstr "Betalingsmåte oppdatert vellykket!"
+
+#~ msgid ""
+#~ "Your outstand payment has been paid. Your card was charged <b>&pound;"
+#~ msgstr "Din utestående betaling er betalt. Kortet ble belastet <b>&pound;"
+
+#~ msgid "</b> and your premium features will remain active."
+#~ msgstr "og dine Premium funksjoner vil fortsatt være aktive."
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "CONFIRM"
+#~ msgstr "Bekreft"
+
+#~ msgid ""
+#~ "Your venue will be taken offline but you still be able to log in to your "
+#~ "account if you ever want to resubscribe."
+#~ msgstr ""
+#~ "Din butikk vil bli tatt offline, men du kan fortsatt logge deg på kontoen "
+#~ "din hvis du noen gang ønsker å aktivere abonnementet."
+
+#~ msgid "Are you sure you want to cancel?"
+#~ msgstr "Er du sikker på at du ønsker å kansellere"
+
+#~ msgid ""
+#~ "Your subscription will remain active until the end of the current billing "
+#~ "cycle, you will no longer be billed after this date. Your venue will be "
+#~ "taken offline but you will still be able to log in to account if you ever "
+#~ "want to resubscribe."
+#~ msgstr ""
+#~ "Abonnementet vil forbli aktiv til slutten av den nåværende "
+#~ "faktureringssyklusen, du vil ikke lenger bli fakturert etter denne "
+#~ "datoen. Din butikk vil bli tatt offline, men du vil fortsatt kunne logge "
+#~ "inn på konto hvis du noen gang ønsker å aktivere abonnementet."
+
+#~ msgid "Error"
+#~ msgstr "Feil"
+
+#~ msgid "PAYMENT METHOD"
+#~ msgstr "BETALINGSMETODE"
+
+#~ msgid "To upgrade your account, please contact "
+#~ msgstr "For oppgradering av kontoen din kan du kontakte"
+
+#~ msgid "Payment resolved"
+#~ msgstr "Utestående betaling godkjent"
+
+#, fuzzy
+#~ msgid "Resubscription Details"
+#~ msgstr "Abonnementer"
+
+#~ msgid "Please enter a discount code"
+#~ msgstr "Skriv inn en rabattkode"
+
+#~ msgid "Welcome to Know Your Customer"
+#~ msgstr "Velkommen til Know Your Customer"
+
+#~ msgid ""
+#~ "From here you can view detailed reports and analytics about your "
+#~ "customers and the transactions they make."
+#~ msgstr ""
+#~ "Her kan du vise detaljerte rapporter og analyser om dine kunder og "
+#~ "transaksjonene de gjør."
+
+#~ msgid "GET STARTED"
+#~ msgstr "KOM I GANG"
+
+#~ msgid "Orders Report"
+#~ msgstr "Ordre Rapport"
+
+#~ msgid "Orders By Events"
+#~ msgstr "Ordre Etter Arrangementer"
+
+#, fuzzy
+#~ msgid "Orders By Outlets"
+#~ msgstr "Ordre Etter Arrangementer"
+
+#~ msgid "Select Events..."
+#~ msgstr "Velg Arrangementer..."
+
+#~ msgid "No events in this period"
+#~ msgstr "Ingen arrangementer i denne perioden"
+
+#, fuzzy
+#~ msgid "Date Range"
+#~ msgstr "Datointerval"
+
+#~ msgid "Week"
+#~ msgstr "Uke"
+
+#~ msgid "Month"
+#~ msgstr "Måned"
+
+#~ msgid "3 Months"
+#~ msgstr "3 Måneder"
+
+#~ msgid "6 Months"
+#~ msgstr "6 Måneder"
+
+#~ msgid "Year"
+#~ msgstr "År"
+
+#~ msgid "Total Customers"
+#~ msgstr "Total Kunder"
+
+#~ msgid "Orders per Customer"
+#~ msgstr "Ordre per Kunde"
+
+#~ msgid "Average Order Value"
+#~ msgstr "Gjennomsnittlig Ordre Beløp"
+
+#~ msgid "Items Ordered"
+#~ msgstr "Varer som er bestilt"
+
+#, fuzzy
+#~ msgid "Orders By Outlet"
+#~ msgstr "Ordre Etter Arrangementer"
+
+#~ msgid "Most Popular Items"
+#~ msgstr "Mest populære varer"
+
+#~ msgid "On the day"
+#~ msgstr "På dagen"
+
+#~ msgid "In advance"
+#~ msgstr "På forhånd"
+
+#~ msgid "Time of Orders Placed"
+#~ msgstr "Tidspunkt når ordre ble plassert"
+
+#~ msgid "Average order value (are"
+#~ msgstr "Gjennomsnittlig Ordre Beløp (er"
+
+#~ msgid "New"
+#~ msgstr "Ny"
+
+#~ msgid "Returning"
+#~ msgstr "Eksisterende"
+
+#~ msgid "Customers (Pi"
+#~ msgstr "Kunder (Pi"
+
+#~ msgid "Customers (Ba"
+#~ msgstr "Kunder (Ba"
+
+#~ msgid " orders"
+#~ msgstr " ordre"
+
+#~ msgid "Number of Orders"
+#~ msgstr "Antall bestillinger"
+
+#~ msgid "Menu Item Popularity"
+#~ msgstr "Menyelement Popularitet"
+
+#~ msgid "Revenue"
+#~ msgstr "Inntekt"
+
+#~ msgid "Date Joined"
+#~ msgstr "Dato Registrert"
+
+#~ msgid "Marketing"
+#~ msgstr "Markedsføring"
+
+#~ msgid "Date of Order"
+#~ msgstr "Ordredato"
+
+#~ msgid "% Increase"
+#~ msgstr "% Økning"
+
+#~ msgid "% Decrease"
+#~ msgstr "% Reduksjon"
+
+#~ msgid "Last Order"
+#~ msgstr "Siste Ordre"
+
+#~ msgid "Item Name"
+#~ msgstr "Produkt Navn"
+
+#~ msgid "Quantity Sold"
+#~ msgstr "Antall Solgt"
+
+#~ msgid "Day"
+#~ msgstr "Dag"
+
+#~ msgid "Loyalty"
+#~ msgstr "Lojalitet"
+
+#~ msgid "Other"
+#~ msgstr "Annet"
+
+#~ msgid "Offers"
+#~ msgstr "Tilbud"
+
+#~ msgid "Value Sold"
+#~ msgstr "Verdi Solgt"
+
+#~ msgid "New Customers"
+#~ msgstr "Nye kunder"
+
+#~ msgid ""
+#~ "Displays all new customers who have signed up, or had their first order, "
+#~ "in the past two weeks."
+#~ msgstr ""
+#~ "Vis alle nye kunder som har registrert seg, eller hadde sin første ordre "
+#~ "de siste to ukene."
+
+#~ msgid "Customers with zero orders"
+#~ msgstr "Kunder med null bestillinger"
+
+#~ msgid ""
+#~ "Displays all customers who have signed up but have not yet placed any "
+#~ "orders."
+#~ msgstr ""
+#~ "Vis alle kunder som har registrert seg, men ennå ikke har lagt inn noen "
+#~ "ordre."
+
+#~ msgid "One Time Buyers"
+#~ msgstr "Engang kjøpere"
+
+#~ msgid "Displays all customers who have placed only one order."
+#~ msgstr "Viser alle kunder som har plassert kun en ordre."
+
+#~ msgid "Most Frequent Buyers"
+#~ msgstr "Kunder med flest bestillinger"
+
+#~ msgid "Displays top 50 customers who have placed the most number of orders."
+#~ msgstr "Viser top 50 kunder som har plassert flest antall bestillinger."
+
+#~ msgid "Highest Spending Customers"
+#~ msgstr "Kunder med høyest forbruk"
+
+#~ msgid "Displays top 50 customers who have the highest transactional spend."
+#~ msgstr "Viser top 50 kunder som har den høyeste transaksjonskostnadene."
+
+#~ msgid "Customers Increasing Orders"
+#~ msgstr "Kunder med økende antall bestillinger"
+
+#~ msgid ""
+#~ "Displays all customers who placed more orders this month than the "
+#~ "previous month."
+#~ msgstr ""
+#~ "Viser alle kunder som har lagt til flere bestillinger denne måneden enn "
+#~ "forrige måned."
+
+#~ msgid "Customers Decreasing Orders"
+#~ msgstr "Kunder med fallende antall bestillinger"
+
+#~ msgid ""
+#~ "Displays all customers who placed less orders this month than the "
+#~ "previous month."
+#~ msgstr ""
+#~ "Viser alle kunder som har lagt inn mindre bestillinger denne måneden enn "
+#~ "forrige måned."
+
+#~ msgid "Customers Increasing Spend"
+#~ msgstr "Kunder med økende forbruk"
+
+#~ msgid ""
+#~ "Displays all customers who spent more this month than the previous month."
+#~ msgstr ""
+#~ "Viser alle kunder som har høyere forbruke denne måneden enn forrige måned."
+
+#~ msgid "Customers Decreasing Spend"
+#~ msgstr "Kunder med fallende forbruk"
+
+#~ msgid ""
+#~ "Displays all customers who spent less this month than the previous month."
+#~ msgstr ""
+#~ "Viser alle kunder som har brukt mindre denne måneden enn forrige måned."
+
+#~ msgid "Sleeping Customers"
+#~ msgstr "Sovende kunder"
+
+#~ msgid ""
+#~ "Displays all customers who have previously made at least one order, but "
+#~ "haven't ordered for 3 months."
+#~ msgstr ""
+#~ "Viser alle kunder som tidligere har minst en ordre, men ikke har bestilt "
+#~ "på tre måneder."
+
+#~ msgid "Displays top 10 most popular items."
+#~ msgstr "Viser de topp 10 mest populære varene."
+
+#~ msgid "Item Popularity Increase"
+#~ msgstr "Varer med økt popularitet"
+
+#~ msgid "Displays all items that sold more this month than last month."
+#~ msgstr "Viser alle varer som solgte mer denne måneden enn forrige måned."
+
+#~ msgid "Item Popularity Decrease"
+#~ msgstr "Varer med synkende popularitet"
+
+#~ msgid "Displays all items that sold less this month than last month"
+#~ msgstr "Viser alle varer som solgte mindre denne måneden enn forrige måned"
+
+#~ msgid "Highest Grossing Days"
+#~ msgstr "Mest innbringende dager"
+
+#~ msgid "Display top 10 highest grossing days."
+#~ msgstr "Vis de topp 10 mest innbringende dager."
+
+#~ msgid "Lowest Grossing Days"
+#~ msgstr "Laveste innbringende dager"
+
+#~ msgid "Display top 10 lowest grossing days."
+#~ msgstr "Viser de topp 10 laveste innbringende dager."
+
+#~ msgid "Highest Order Days"
+#~ msgstr "Dager med høyest antall ordre"
+
+#~ msgid "Display top 10 highest order days."
+#~ msgstr "Vise topp 10 dager med høyest antall ordre"
+
+#~ msgid "Lowest Order Days"
+#~ msgstr "Dager med lavest antall ordre"
+
+#~ msgid "Display top 10 lowest order days."
+#~ msgstr "Vise de topp 10 dager med laveste antall ordre."
+
+#~ msgid "Highest Grossing Hours"
+#~ msgstr "Mest innbringende Timer"
+
+#~ msgid ""
+#~ "Displays the accumulative total spent, broken down by 24 x 1 hour time "
+#~ "slots."
+#~ msgstr "Viser til sammen brukt, fordelt på 24 x 1 time tidsluker."
+
+#~ msgid "Highest Order Hours"
+#~ msgstr "Tidspunkt med høyest antall ordre"
+
+#~ msgid ""
+#~ "Displays the accumulative number of orders, broken down by 24 x 1 hour "
+#~ "time slots."
+#~ msgstr ""
+#~ "Viser stigende antall bestillinger, fordelt på 24 x 1 time tidsluker."
+
+#~ msgid "years ago"
+#~ msgstr "år siden"
+
+#~ msgid "year ago"
+#~ msgstr "år siden"
+
+#~ msgid "months ago"
+#~ msgstr "måneder siden"
+
+#~ msgid "month ago"
+#~ msgstr "måned siden"
+
+#~ msgid "days ago"
+#~ msgstr "dager siden"
+
+#~ msgid "yesterday"
+#~ msgstr "i går"
+
+#~ msgid "hours ago"
+#~ msgstr "timer siden"
+
+#~ msgid "hour ago"
+#~ msgstr "time siden"
+
+#~ msgid "minutes ago"
+#~ msgstr "minutter siden"
+
+#~ msgid "minute ago"
+#~ msgstr "minutt siden"
+
+#~ msgid "seconds ago"
+#~ msgstr "sekunder siden"
+
+#~ msgid "second ago"
+#~ msgstr "sekund siden"
+
+#~ msgid "Contact this customer regarding loyalty programmes"
+#~ msgstr "Kontakt kundeservice om lojalitetsprogrammer"
+
+#~ msgid "Contact this customer with discounts and special offers"
+#~ msgstr "Kontakt denne kunden med rabatter og spesialtilbud"
+
+#~ msgid ""
+#~ "Contact this customer with newsletters, research and marketing emails"
+#~ msgstr "Kontakt denne kunden med nyhetsbrev og markedsførings e-post"
+
+#~ msgid "Successfully saved delivery settings."
+#~ msgstr "Innstillinger for leveranse er lagret."
+
+#~ msgid "Email is invalid"
+#~ msgstr "E-post er ugyldig"
+
+#~ msgid "Your order is running 15 mins late"
+#~ msgstr "Din ordre er 15 minutter forsinket"
+
+#~ msgid "Late Order"
+#~ msgstr "Forsinket ordre"
+
+#~ msgid "Your order is on its way"
+#~ msgstr "Din bestilling er på vei"
+
+#~ msgid "There is a problem with your order. Please call us"
+#~ msgstr "Det er et problem med din bestilling. Vennligst ring oss"
+
+#~ msgid "Call us"
+#~ msgstr "Ring oss"
+
+#~ msgid "Your address is out of our delivery zone"
+#~ msgstr "Adressen din er ute av vår leveranse sone"
+
+#~ msgid "Out of zone"
+#~ msgstr "Ut av sonen"
+
+#~ msgid "Sorry, that item is out of stock"
+#~ msgstr "Beklager, varen er utsolgt"
+
+#~ msgid "Out of stock"
+#~ msgstr "Utsolgt"
+
+#~ msgid "Sorry, Your order has been rejected. Please call us"
+#~ msgstr "Beklager, bestillingen ble avvist. Vennligst ring oss"
+
+#~ msgid " DAY FREE TRIAL"
+#~ msgstr " DAGER GRATIS PRØVE"
+
+#~ msgid "START TRIAL"
+#~ msgstr "START PRØVEVERSJON"
+
+#, fuzzy
+#~ msgid "Your new Premium Feature is now live!"
+#~ msgstr "Din app er nå live!"
+
+#~ msgid ""
+#~ "You will be contacted shortly by a member of our team. You can manage "
+#~ "subscriptions from your <a href='/accountSettings#/subscription'>account "
+#~ "settings page.</a>"
+#~ msgstr ""
+#~ "Du vil snart bli kontaktet av et medlem av teamet vårt. Du kan "
+#~ "administrere abonnementene dine fra <a href='/accountSettings#/"
+#~ "subscription'>konto instillinger.</a>"
+
+#~ msgid ""
+#~ "Please add a payment method to your account in order to subscribe to "
+#~ "Premium Features"
+#~ msgstr ""
+#~ "Legg til en betalingsmåte for kontoen om du vil abonnere på Premium-"
+#~ "funksjoner"
+
+#~ msgid "ADD CARD"
+#~ msgstr "LEGG TIL KORT"
+
+#~ msgid "To access this feature you need to have "
+#~ msgstr "For å få tilgang til denne funksjonen må du ha "
+
+#~ msgid " installed first "
+#~ msgstr " installert først "
+
+#~ msgid "Buy "
+#~ msgstr "Kjøp"
+
+#~ msgid "Your card will be charged "
+#~ msgstr "Ditt kort vil bli belastet "
+
+#~ msgid ""
+#~ " for this transaction. <br/> You may cancel this Premium Feature at any "
+#~ "time from your account settings page."
+#~ msgstr ""
+#~ " for denne transaksjonen.<br>Du kan avbryte denne Premium-funksjonen når "
+#~ "som helst på siden for innstillinger av kontoen."
+
+#~ msgid "Search Venue"
+#~ msgstr "Søk Restaurant"
+
+#~ msgid "Venue Code"
+#~ msgstr "Restaurant kode"
+
+#~ msgid "Venue Name"
+#~ msgstr "Restaurant navn"
+
+#~ msgid "Admin username"
+#~ msgstr "Admin brukernavn"
+
+#~ msgid "Search"
+#~ msgstr "Søk"
+
+#~ msgid "SEARCHING..."
+#~ msgstr "SØKER..."
+
+#~ msgid "Switch"
+#~ msgstr "Bytt"
+
+#~ msgid "CHANGE LANGUAGE"
+#~ msgstr "BYTT SPRÅK"
+
+#~ msgid "English"
+#~ msgstr "Engelsk"
+
+#~ msgid "German"
+#~ msgstr "Tysk"
+
+#~ msgid "French"
+#~ msgstr "Fransk"
+
+#~ msgid "Legal Statement"
+#~ msgstr "Juridisk erklæring"
+
+#~ msgid "Privacy + Cookies"
+#~ msgstr "Personvern + Cookies"
+
+#~ msgid "support@preoday.com"
+#~ msgstr "support@preoday.no"
 
 #, fuzzy
 #~ msgid "Card ending {{card.number}}"
 #~ msgstr "Kredittkortnummer"
 
-#~ msgid "Confirm"
-#~ msgstr "Bekreft"
-
-#~ msgid "Credit Card Name"
-#~ msgstr "Kredittkortnummer"
-
-#~ msgid "Credit Card Number"
-#~ msgstr "Kredittkortnummer"
-
-#~ msgid "DOWNLOAD PDF"
-#~ msgstr "LAST NED PDF"
-
-#~ msgid "Expires"
-#~ msgstr "Utløper"
-
-#~ msgid "Inv no."
-#~ msgstr "Faktura nr."
-
-#~ msgid "MM"
-#~ msgstr "MM"
-
-#~ msgid "My Subscriptions"
-#~ msgstr "Mine abonnementer"
-
-#~ msgid "Payment"
-#~ msgstr "Betaling"
-
-#~ msgid "Payment Methods"
-#~ msgstr "Betalingsmetoder"
-
-#~ msgid "Please add a payment method to keep your account active"
-#~ msgstr "Vennligst legg til en betalingsmåte for å holde kontoen aktiv"
-
-#~ msgid "Please type your account name.(max 100chars)"
-#~ msgstr "Vennligst skriv inn kontonavn. (Maks 100 bokstaver)"
-
-#~ msgid "Please type your first name.(max 100chars)"
-#~ msgstr "Vennligst skriv fornavnet ditt. (Maks 100 bokstaver)"
-
-#~ msgid "Please type your last name.(max 100chars)"
-#~ msgstr "Vennligst skriv etternavnet ditt. (Maks 100 bokstaver)"
-
-#~ msgid "RESUBSCRIBE"
-#~ msgstr "REAKTIVER ABONNEMENT"
-
 #, fuzzy
 #~ msgid "SAVING...\");?>"
 #~ msgstr "LAGRER..."
 
-#, fuzzy
-#~ msgid "SAVING...>"
-#~ msgstr "LAGRER..."
-
-#~ msgid "Status"
-#~ msgstr "Status"
-
-#, fuzzy
-#~ msgid "Subscriptions"
-#~ msgstr "Mine abonnementer"
-
-#~ msgid "UPGRADE"
-#~ msgstr "OPPGRADER"
-
-#~ msgid "YY"
-#~ msgstr "ÅÅ"
-
-#~ msgid "You have an outstanding payment!"
-#~ msgstr "Du har en utestående betaling!"
-
-#~ msgid ""
-#~ "You have no active subscriptions, your account will not be billed at this "
-#~ "time."
-#~ msgstr ""
-#~ "Du har ingen aktive abonnementer, din konto vil ikke bli fakturert på "
-#~ "dette tidspunktet."
-
-#~ msgid "Know your customers"
-#~ msgstr "Kjenn dine kunder"
-
-#~ msgid "Metrics"
-#~ msgstr "Status"
-
-#~ msgid "Live stream"
-#~ msgstr "Aktivitet"
-
-#~ msgid "Orders"
-#~ msgstr "Ordre"
-
-#~ msgid "Outlet Name:"
-#~ msgstr "Utsalgssted"
-
-#~ msgid "Refresh"
-#~ msgstr "Oppdater"
-
-#~ msgid "Date Range:"
-#~ msgstr "Datointerval"
-
-#~ msgid "to"
-#~ msgstr "til"
-
-#~ msgid "Events: "
-#~ msgstr "Arrangementer:"
-
-#~ msgid "Date/Time"
-#~ msgstr "Dato/tid"
-
-#~ msgid "Outlet"
-#~ msgstr "Utsalgssted"
-
-#~ msgid "Customer"
-#~ msgstr "Kunde"
-
-#~ msgid "Items"
-#~ msgstr "Varer"
-
-#~ msgid "Order Total"
-#~ msgstr "Ordre Total"
-
-#~ msgid "All"
-#~ msgstr "Alle"
-
-#~ msgid "Selected"
-#~ msgstr "Valgte"
-
-#, fuzzy
-#~ msgid "Live Stream"
-#~ msgstr "Aktivitet"
-
-#~ msgid "Order"
-#~ msgstr "Orden"
-
-#~ msgid "Time"
-#~ msgstr "Tid"
-
-#~ msgid "Choose preset:"
-#~ msgstr "Velg forhåndsinnstilling:"
-
-#~ msgid "Event"
-#~ msgstr "Arrangement"
-
-#~ msgid "Menu items"
-#~ msgstr "Menyelementer"
-
-#~ msgid "Item"
-#~ msgstr "Vare"
-
-#~ msgid "Quantity Ordered"
-#~ msgstr "Antall Bestilt"
-
-#~ msgid "Enable delivery services"
-#~ msgstr "Aktiver leverings tjenester"
-
-#~ msgid "Delivery Areas"
-#~ msgstr "Leveringsområder"
-
-#~ msgid "eg. \"NW1, NW2...\""
-#~ msgstr "f.eks. \"0501, 0502 ...\""
-
-#~ msgid "Please type a delivery zone (max 200chars)"
-#~ msgstr "Vennligst skriv inn et leveringsområde (maks 200 bokstaver)"
-
-#~ msgid "In case of customer queries contact:"
-#~ msgstr "Ved kundehenvendelser kontakt:"
-
-#~ msgid "Please enter a valid telephone number"
-#~ msgstr "Skriv inn et gyldig telefonnummer"
-
-#~ msgid "Minimum order value to qualify for delivery"
-#~ msgstr "Minimumsbeløp for levering"
-
-#~ msgid "Please enter a valid number (e.g. 20.52)"
-#~ msgstr "Skriv inn et gyldig nummer (f.eks 200,00)"
-
-#~ msgid "Delivery charge"
-#~ msgstr "Leveringskostnad"
-
-#~ msgid "Please enter a valid number (e.g. 3.25)"
-#~ msgstr "Skriv inn et gyldig nummer (f.eks 45,00)"
-
-#~ msgid "Free delivery for orders above"
-#~ msgstr "Gratis levering for ordre over"
-
-#~ msgid "Default delivery time (minutes)"
-#~ msgstr "Standard leveringstid (minutter)"
-
-#~ msgid "Please enter a valid time interval in minutes (e.g. 20)"
-#~ msgstr "Skriv inn gyldig tidsintervall i minutter (f.eks 20)"
-
-#~ msgid "Discount offered for delivery orders (%)"
-#~ msgstr "Rabatt ved ordre for levering (%)"
-
-#~ msgid "Order Status Alerts"
-#~ msgstr "Ordrestatus Alarm"
-
-#~ msgid "Order Rejection Alerts"
-#~ msgstr "Ordre avvist Alarm"
-
-#~ msgid "Venue Alerts"
-#~ msgstr "Restaurant Varslig"
-
-#~ msgid "Preset customer notifications, sent by email and push alert"
-#~ msgstr ""
-#~ "Forhåndsinnstilte kundemeldinger, som sendes via e-post og push-varsling"
-
-#~ msgid "Short name"
-#~ msgstr "kort navn"
-
-#~ msgid "Active?"
-#~ msgstr "Aktiv?"
-
-#~ msgid "Please enter both the notification and a short name."
-#~ msgstr "Vennligst oppgi både varsling og et kort navn."
-
-#~ msgid "Preset order rejection notifications, sent by email and push alert"
-#~ msgstr ""
-#~ "Forhåndsinnstilte avvisnings meldinger, som sendes via e-post og push-"
-#~ "varsling"
-
-#~ msgid "Please enter a message and a short name or remove this notification."
-#~ msgstr "Skriv inn en melding og et kortnavn eller fjern dette varselet."
-
-#~ msgid "Email address for receiving venue alerts"
-#~ msgstr "E-postadresse for å motta bedrifts varsler"
-
-#~ msgid ""
-#~ "In addition to the fulfilment app, you can also receive email updates to "
-#~ "notify when you have received a new order"
-#~ msgstr ""
-#~ "I tillegg til appen kan du også motta e-postoppdateringer for å varsle "
-#~ "når du har mottatt en ny ordre"
-
-#~ msgid "Please update your card details within "
-#~ msgstr "Vennligst oppdater kortdetaljene innen"
-
-#~ msgid " days to prevent your account from being deactivated."
-#~ msgstr "dager for å hindre at kontoen din blir deaktivert."
-
-#~ msgid "Your account will be billed"
-#~ msgstr "Din konto vil bli fakturert"
-
 #~ msgid "on"
 #~ msgstr "den"
-
-#~ msgid "Your account will be deactivated on "
-#~ msgstr "Din konto vil bli deaktivert den"
-
-#~ msgid "You are currently subscribed to the "
-#~ msgstr "Du abonnerer for øyeblikket på"
-
-#~ msgid "Your free trial of this subscription will end at midnight on "
-#~ msgstr ""
-#~ "Din gratis prøveversjon av dette abonnementet vil avsluttes ved midnatt"
-
-#~ msgid "Your subscription has been cancelled"
-#~ msgstr "Abonnementet er kansellert"

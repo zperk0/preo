@@ -4,14 +4,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: code/accountSettings/partials/subscription.php:48
-msgid ". Please add a credit card to resubscribe."
-msgstr ""
-
-#: code/kyc/index.php:18
-msgid "<span class=\"icon-know-customers\"></span>Know your customers"
-msgstr ""
-
 #: code/accountSettings/partials/subscription.php:8
 msgid "ADD PAYMENT METHOD"
 msgstr ""
@@ -33,11 +25,11 @@ msgstr ""
 msgid "Address Line 3"
 msgstr ""
 
-#: code/kyc/partials/customers.php:110
-#: code/kyc/partials/events.php:123
-#: code/kyc/partials/orders.php:131
-#: code/kyc/partials/reports.php:137
-#: code/kyc/partials/stock.php:96
+#: code/kyc/partials/customers.php:106
+#: code/kyc/partials/events.php:119
+#: code/kyc/partials/orders.php:127
+#: code/kyc/partials/reports.php:133
+#: code/kyc/partials/stock.php:92
 msgid "All"
 msgstr ""
 
@@ -94,11 +86,12 @@ msgstr ""
 msgid "CHANGE PASSWORD"
 msgstr ""
 
-#: code/kyc/js/directives/chart/chart.php:84
-#: code/kyc/partials/customers.php:101
-#: code/kyc/partials/orders.php:122
-#: code/kyc/partials/reports.php:128
-#: code/kyc/partials/stock.php:87
+#: code/kyc/js/directives/chart/chart.php:80
+#: code/kyc/partials/customers.php:99
+#: code/kyc/partials/events.php:112
+#: code/kyc/partials/orders.php:120
+#: code/kyc/partials/reports.php:126
+#: code/kyc/partials/stock.php:85
 msgid "CSV"
 msgstr ""
 
@@ -107,7 +100,7 @@ msgid "Card Number"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:25
-msgid "Card ending {{card.number}}"
+msgid "Card ending"
 msgstr ""
 
 #: code/kyc/partials/reports.php:9
@@ -126,23 +119,10 @@ msgstr ""
 msgid "Credit Card Number"
 msgstr ""
 
-#: code/kyc/partials/events.php:31
-#: code/kyc/partials/orders.php:38
-msgid ""
-"Customer\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\n"
-"\t\t\t\t\t  \t\t\t</div>"
-msgstr ""
-
-#: code/kyc/partials/stream.php:27
-msgid ""
-"Customer\r\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/events.php:32
+#: code/kyc/partials/orders.php:39
+#: code/kyc/partials/stream.php:28
+msgid "Customer"
 msgstr ""
 
 #: code/kyc/index.php:26
@@ -162,13 +142,8 @@ msgstr ""
 msgid "Date Range:"
 msgstr ""
 
-#: code/kyc/partials/orders.php:24
-msgid ""
-"Date/Time\n"
-"                                <div class=\"sort pull-right\">\n"
-"                                    <i class=\"fa fa-sort-up\"></i>\n"
-"                                    <i class=\"fa fa-sort-desc\"></i>\n"
-"                                </div>"
+#: code/kyc/partials/orders.php:25
+msgid "Date/Time"
 msgstr ""
 
 #: code/settings/delivery/partials/delivery.php:43
@@ -199,32 +174,20 @@ msgstr ""
 msgid "Email Address"
 msgstr ""
 
-#: code/kyc/partials/customers.php:39
-msgid ""
-"Email address\r\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/customers.php:40
+msgid "Email address"
 msgstr ""
 
-#: code/settings/delivery/partials/notifications.php:62
-msgid ""
-"Email address for receiving venue alerts\r\n"
-"            <i data-tooltip=\"\" class=\"icon-question-sign preoTips has-tip tip-bottom\" title=\"{{'In addition to the fulfilment app, you can also receive email updates to notify when you have received a new order' | translate}}\"></i>"
+#: code/settings/delivery/partials/notifications.php:63
+msgid "Email address for receiving venue alerts"
 msgstr ""
 
 #: code/settings/delivery/partials/delivery.php:3
 msgid "Enable delivery services"
 msgstr ""
 
-#: code/kyc/partials/events.php:24
-msgid ""
-"Event\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/events.php:25
+msgid "Event"
 msgstr ""
 
 #: code/kyc/index.php:29
@@ -240,7 +203,7 @@ msgstr ""
 msgid "Expires"
 msgstr ""
 
-#: code/kyc/js/directives/chart/chart.php:73
+#: code/kyc/js/directives/chart/chart.php:71
 #: code/kyc/partials/customers.php:89
 #: code/kyc/partials/events.php:102
 #: code/kyc/partials/orders.php:110
@@ -269,23 +232,17 @@ msgstr ""
 msgid "Inv no."
 msgstr ""
 
-#: code/kyc/partials/stock.php:25
-msgid ""
-"Item\r\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/stock.php:26
+msgid "Item"
 msgstr ""
 
-#: code/kyc/partials/events.php:38
-#: code/kyc/partials/orders.php:45
-msgid ""
-"Items\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/events.php:39
+#: code/kyc/partials/orders.php:46
+msgid "Items"
+msgstr ""
+
+#: code/kyc/index.php:18
+msgid "Know your customers"
 msgstr ""
 
 #: code/accountSettings/partials/profile.php:14
@@ -324,13 +281,8 @@ msgstr ""
 msgid "My Subscriptions"
 msgstr ""
 
-#: code/kyc/partials/customers.php:25
-msgid ""
-"Name\r\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/customers.php:26
+msgid "Name"
 msgstr ""
 
 #: code/accountSettings/partials/payment.php:12
@@ -355,13 +307,8 @@ msgstr ""
 msgid "Old Password"
 msgstr ""
 
-#: code/kyc/partials/stream.php:34
-msgid ""
-"Order\r\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/stream.php:35
+msgid "Order"
 msgstr ""
 
 #: code/settings/delivery/partials/notifications.php:7
@@ -372,14 +319,9 @@ msgstr ""
 msgid "Order Status Alerts"
 msgstr ""
 
-#: code/kyc/partials/events.php:45
-#: code/kyc/partials/orders.php:52
-msgid ""
-"Order Total\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/events.php:46
+#: code/kyc/partials/orders.php:53
+msgid "Order Total"
 msgstr ""
 
 #: code/kyc/index.php:30
@@ -387,20 +329,15 @@ msgstr ""
 msgid "Orders"
 msgstr ""
 
-#: code/kyc/partials/orders.php:31
-msgid ""
-"Outlet\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/orders.php:32
+msgid "Outlet"
 msgstr ""
 
 #: code/kyc/index.php:42
 msgid "Outlet Name:"
 msgstr ""
 
-#: code/kyc/js/directives/chart/chart.php:78
+#: code/kyc/js/directives/chart/chart.php:76
 #: code/kyc/partials/customers.php:94
 #: code/kyc/partials/events.php:107
 #: code/kyc/partials/orders.php:115
@@ -419,6 +356,10 @@ msgstr ""
 
 #: code/accountSettings/index.php:22
 msgid "Payment Methods"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:48
+msgid "Please add a credit card to resubscribe"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:7
@@ -474,6 +415,10 @@ msgstr ""
 msgid "Please type your last name.(max 100chars)"
 msgstr ""
 
+#: code/accountSettings/partials/subscription.php:13
+msgid "Please update your card details within"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:44
 msgid "Postcode"
 msgstr ""
@@ -496,13 +441,8 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: code/kyc/partials/stock.php:32
-msgid ""
-"Quantity Ordered\r\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/stock.php:33
+msgid "Quantity Ordered"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:55
@@ -548,11 +488,11 @@ msgstr ""
 msgid "SAVING...>"
 msgstr ""
 
-#: code/kyc/partials/customers.php:114
-#: code/kyc/partials/events.php:127
-#: code/kyc/partials/orders.php:135
-#: code/kyc/partials/reports.php:141
-#: code/kyc/partials/stock.php:100
+#: code/kyc/partials/customers.php:110
+#: code/kyc/partials/events.php:123
+#: code/kyc/partials/orders.php:131
+#: code/kyc/partials/reports.php:137
+#: code/kyc/partials/stock.php:96
 msgid "Selected"
 msgstr ""
 
@@ -562,16 +502,8 @@ msgid "Short name"
 msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:12
+#: code/kyc/partials/stream.php:14
 msgid "Status"
-msgstr ""
-
-#: code/kyc/partials/stream.php:13
-msgid ""
-"Status\r\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t</div>"
 msgstr ""
 
 #: code/kyc/index.php:25
@@ -588,31 +520,16 @@ msgstr ""
 msgid "TOTAL"
 msgstr ""
 
-#: code/kyc/partials/stream.php:41
-msgid ""
-"Time\r\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/stream.php:42
+msgid "Time"
 msgstr ""
 
-#: code/kyc/partials/stream.php:20
-msgid ""
-"Total\r\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/stream.php:21
+msgid "Total"
 msgstr ""
 
-#: code/kyc/partials/customers.php:32
-msgid ""
-"Total Spent\r\n"
-"\t\t\t\t\t  \t\t\t<div class=\"sort pull-right\">\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-up\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t\t<i class=\"fa fa-sort-desc\"></i>\r\n"
-"\t\t\t\t\t  \t\t\t</div>"
+#: code/kyc/partials/customers.php:33
+msgid "Total Spent"
 msgstr ""
 
 #: code/accountSettings/partials/payment.php:42
@@ -637,6 +554,10 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
+#: code/accountSettings/partials/subscription.php:44
+msgid "You are currently subscribed to the"
+msgstr ""
+
 #: code/accountSettings/partials/subscription.php:12
 msgid "You have an outstanding payment!"
 msgstr ""
@@ -646,19 +567,31 @@ msgid "You have no active subscriptions, your account will not be billed at this
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:17
-msgid "Your account will be billed <b class=\"helveticaneueWMedi\">&pound;{{getTotalSubscription()}} (+VAT)</b> <b class=\"helveticaneueWMedi\">{{ account.billingDate | date:\"MMM dd, yyyy\" }}</b>"
+msgid "Your account will be billed"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:18
-msgid "Your account will be deactivated on  <b class=\"helveticaneueWMedi\">{{ account.billingDate | date:\"MMM dd, yyyy\" }}</b>"
+msgid "Your account will be deactivated on"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:45
+msgid "Your free trial of this subscription will end at midnight on"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:48
+msgid "Your subscription has been cancelled"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:13
-msgid "_tr(\"Please update your card details within \") + {{ diffInDays }} + _tr(\"days to prevent your account from being deactivated.\")"
+msgid "days to prevent your account from being deactivated."
 msgstr ""
 
 #: code/settings/delivery/partials/delivery.php:19
 msgid "eg. \\\"NW1, NW2...\\\""
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:44
+msgid "package"
 msgstr ""
 
 #: code/kyc/index.php:66

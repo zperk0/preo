@@ -59,8 +59,8 @@
 
   <div ng:show="selected == 3" class='delivery-tab-content'>
      <div class="row messageRow messageRowHeader">
-          <div class='messageCol-1' translate>
-            Email address for receiving venue alerts
+          <div class='messageCol-1'>
+            {{"Email address for receiving venue alerts" | translate}}
             <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="{{'In addition to the fulfilment app, you can also receive email updates to notify when you have received a new order' | translate}}"></i>
           </div>
       </div>

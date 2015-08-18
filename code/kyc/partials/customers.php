@@ -22,22 +22,22 @@
 							    <label for="all_options"></label>
 							  </div>
 					  		</th>
-					  		<th ng-click=" setOrderBy('name');" translate>
-					  			Name
+					  		<th ng-click=" setOrderBy('name');">
+					  			{{"Name" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click=" setOrderBy('totalSpent');" translate>
-					  			Total Spent
+					  		<th ng-click=" setOrderBy('totalSpent');">
+					  			{{"Total Spent" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click=" setOrderBy('emailAddress');" translate>
-					  			Email address
+					  		<th ng-click=" setOrderBy('emailAddress');">
+					  			{{"Email address" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
@@ -91,16 +91,12 @@
 
 						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()' class="formLeft">
 							<input name='data' value='{{pdfData}}' type='hidden'/>
-								<button ng-click="exportData('pdf')" translate>
-										PDF
-								</button>
+								<button ng-click="exportData('pdf')" translate>PDF</button>
 						</form>
 
 						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/csv/report' method='POST' ng-submit='exportCsv()'>
 							<input name='data' value='{{csvData}}' type='hidden'/>
-								<button ng-click="exportData('csv')" translate>
-										CSV
-								</button>
+								<button ng-click="exportData('csv')" translate>CSV</button>
 						</form>
 
 						<div class="content-optionsExport">

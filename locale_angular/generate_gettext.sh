@@ -15,9 +15,6 @@ popd
 echo $ROOT
 
 echo Generating angular-gettext po files
-find $DIR -name \*.po -exec msgmerge -U {} $POT \;
-
-echo Generating angular-gettext mo files
-find $DIR -name \*.po -execdir msgfmt -cvf {} \;
+find $DIR/locale_angular -name \*.po -exec msgmerge -U {} $POT \;
 
 echo ========================END========================

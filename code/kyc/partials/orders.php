@@ -21,36 +21,36 @@
 							    <label for="all_options"></label>
 							  </div>
 					  		</th>
-					  		<th ng-click="direction=!direction; setOrderBy('dateTimeStamp');" translate>
-                                Date/Time
+					  		<th ng-click="direction=!direction; setOrderBy('dateTimeStamp');">
+                                {{"Date/Time" | translate}}
                                 <div class="sort pull-right">
                                     <i class="fa fa-sort-up"></i>
                                     <i class="fa fa-sort-desc"></i>
                                 </div>
                             </th>
-					  		<th ng-click="direction=!direction; setOrderBy('outletName');" ng-if="$parent.getSelectedOutlets().length > 1 || $parent.getSelectedOutlets().length == 0" translate>
-					  			Outlet
+					  		<th ng-click="direction=!direction; setOrderBy('outletName');" ng-if="$parent.getSelectedOutlets().length > 1 || $parent.getSelectedOutlets().length == 0">
+					  			{{"Outlet" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="direction=!direction; setOrderBy('user.name');" translate>
-					  			Customer
+					  		<th ng-click="direction=!direction; setOrderBy('user.name');">
+					  			{{"Customer" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="direction=!direction; setOrderBy('itemString');" class="colItems" translate>
-					  			Items
+					  		<th ng-click="direction=!direction; setOrderBy('itemString');" class="colItems">
+					  			{{"Items" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="direction=!direction; setOrderBy('total');" translate>
-					  			Order Total
+					  		<th ng-click="direction=!direction; setOrderBy('total');">
+					  			{{"Order Total" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
@@ -112,16 +112,12 @@
 
 						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()' class="formLeft">
 							<input name='data' value='{{pdfData}}' type='hidden'/>
-								<button ng-click="exportData('pdf')" translate>
-										PDF
-								</button>
+								<button ng-click="exportData('pdf')" translate>PDF</button>
 						</form>
 
 						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/csv/report' method='POST' ng-submit='exportCsv()'>
 							<input name='data' value='{{csvData}}' type='hidden'/>
-								<button ng-click="exportData('csv')" translate>
-										CSV
-								</button>
+								<button ng-click="exportData('csv')" translate>CSV</button>
 						</form>
 
 						<div class="content-optionsExport">

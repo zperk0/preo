@@ -17,9 +17,7 @@
 			</div>
 
 			<div ng-if='noData'>
-				<div class='noData' translate>
-					No Data
-				</div>
+				<div class='noData' translate>No Data</div>
 			</div>
 			<div ng-if='!noData'>
 
@@ -75,15 +73,11 @@
 				<div class="buttons">
 					<form action="{{ '/api/accounts/' + ACCOUNT_ID + '/exports/pdfs/post' }}" method='POST' ng-submit='exportPdf()'>
 						<input name='data' value='{{pdfData}}' type='hidden'/>
-							<button type='submit' translate>
-								PDF
-							</button>
+							<button type='submit' translate>PDF</button>
 					</form>
 					<form action="{{ '/api/accounts/' + ACCOUNT_ID + '/exports/csv/post' }}" method='POST' ng-submit='exportCsv()'>
 						<input name='data' value='{{csvData}}' type='hidden'/>
-							<button  type='submit' translate>
-								CSV
-							</button>
+							<button  type='submit' translate>CSV</button>
 					</form>
 				</div>
 			</div>

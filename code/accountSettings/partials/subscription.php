@@ -10,19 +10,19 @@
 	<div ng-if='card !== false'>
 			<div ng-if='subscriptionInvoice && subscriptionInvoice.status === "REJECTED" ' class='recurringPaymentFailed'>
 				<p><strong translate>You have an outstanding payment! </strong></p>
-				<p translate>_tr("Please update your card details within ") + {{ diffInDays }} + _tr("days to prevent your account from being deactivated.")</p>
+				<p>{{"Please update your card details within" | translate}} {{ diffInDays }} {{"days to prevent your account from being deactivated." | translate}}</p>
 			</div>
 			<div ng-if='!subscriptionInvoice || subscriptionInvoice.status !== "REJECTED"' class="contentMessageSubscription">
 
-				<p ng-if="account.billingDate !== null && getTotalSubscription()>0" translate>Your account will be billed <b class='helveticaneueWMedi'>&pound;{{getTotalSubscription()}} (+VAT)</b> <b class='helveticaneueWMedi'>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>
-				<p ng-if="account.billingDate !== null && getTotalSubscription()==0" translate>Your account will be deactivated on  <b class='helveticaneueWMedi'>{{ account.billingDate | date:"MMM dd, yyyy" }}</b>  </p>
+				<p ng-if="account.billingDate !== null && getTotalSubscription()>0">{{"Your account will be billed" | translate}} <b class='helveticaneueWMedi'>&pound;{{getTotalSubscription()}} (+VAT)</b> <b class='helveticaneueWMedi'>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>
+				<p ng-if="account.billingDate !== null && getTotalSubscription()==0">{{"Your account will be deactivated on" | translate}}  <b class='helveticaneueWMedi'>{{ account.billingDate | date:"MMM dd, yyyy" }}</b>  </p>
 				<p ng-if="account.billingDate === null" translate>You have no active subscriptions, your account will not be billed at this time. </p>
 			</div>
 			<div class='smallCard'>
 				<img src='/img/credit-card.png' class='left'>
 				<div class='left'>
 					<strong class='helveticaneueWMedi'>{{ card.type }}</strong>
-					<p translate> Card ending {{card.number}}</p>
+					<p> {{"Card ending" | translate}} {{card.number}}</p>
 				</div>
 				<div class='clearfix'></div>
 			</div>
@@ -41,11 +41,11 @@
 
 	<section class='activeFeaturesWrapper'>
 		<div class="blockSubscriptions" ng-if="isInstalled(accountPackage)">
-			<p>{{_tr("You are currently subscribed to the") + accountPackage.preoPackage.name + _tr(" package.") }}</p>
-			<p class="textGreen" ng-if="accountPackage.status == 'TRIAL'">{{_tr("Your free trial of this subscription will end at midnight on") + getTrialPeriod(accountPackage) }}</p>
+			<p>{{"You are currently subscribed to the" | translate}} {{accountPackage.preoPackage.name}} {{"package" | translate }}.</p>
+			<p class="textGreen" ng-if="accountPackage.status == 'TRIAL'">{{"Your free trial of this subscription will end at midnight on" | translate}} {{getTrialPeriod(accountPackage)}}</p>
 		</div>
 		<div class="blockSubscriptions" ng-if="isUninstaled(accountPackage)">
-			<p>{{_tr("Your subscription has been cancelled")}} <span ng-if='!card' translate>. Please add a credit card to resubscribe.</span></p>
+			<p>{{"Your subscription has been cancelled" | translate}} <span ng-if='!card'>. {{"Please add a credit card to resubscribe" | translate}}.</span></p>
 		</div>
 		<div class="buttonsSubscriptions" ng-if="isInstalled(accountPackage)">
 			<button class='preodayButton inlineButton' ng-click="showDialog('updatePackage', accountPackage)" translate>UPGRADE</button>

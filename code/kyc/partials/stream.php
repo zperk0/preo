@@ -10,36 +10,36 @@
 					<table class="table table-striped table-list table-stream table-condensed" ng-init="orderBy = 'updated'; direction = true">
 					<thead>
 					  	<tr>
-					  		<th ng-click="orderBy = 'status'; direction=!direction" translate>
-					  			Status
+					  		<th ng-click="orderBy = 'status'; direction=!direction">
+					  			{{"Status" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'total'; direction=!direction" translate>
-					  			Total
+					  		<th ng-click="orderBy = 'total'; direction=!direction">
+					  			{{"Total" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'user.firstName'; direction=!direction" translate>
-					  			Customer
+					  		<th ng-click="orderBy = 'user.firstName'; direction=!direction">
+					  			{{"Customer" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'items'; direction=!direction" translate>
-					  			Order
+					  		<th ng-click="orderBy = 'items'; direction=!direction">
+					  			{{"Order" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
-					  		<th ng-click="orderBy = 'updated'; direction=!direction" translate>
-					  			Time
+					  		<th ng-click="orderBy = 'updated'; direction=!direction">
+					  			{{"Time" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>

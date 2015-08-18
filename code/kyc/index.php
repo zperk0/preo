@@ -15,7 +15,7 @@
 <div ng-app="kyc" ng-controller='MenuCtrl' ng-init="showDateFilter = true" class='kycWrapper'>
    <div class="container-fluid faixa-orange">
       <div class="row">
-        <h4 class="title-white" translate><span class="icon-know-customers"></span>Know your customers</h4>
+        <h4 class="title-white"><span class="icon-know-customers"></span>{{"Know your customers" | translate}}</h4>
       </div>
     </div>
   <header>
