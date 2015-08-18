@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-17 18:30-0300\n"
+"POT-Creation-Date: 2015-08-18 13:07-0300\n"
 "PO-Revision-Date: 2015-08-09 18:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -690,7 +690,7 @@ msgstr "Knapp to farge"
 #: /var/www/webapp/inc/dashboard/appConfig2.php:112
 #: /var/www/webapp/inc/dashboard/userConfig.php:120
 #: /var/www/webapp/inc/dashboard/eventConfig.php:261
-#: /var/www/webapp/inc/dashboard/appConfig1.php:218
+#: /var/www/webapp/inc/dashboard/appConfig1.php:191
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:110
 #: /var/www/webapp/inc/dashboard/venueConfig.php:514
 #: /var/www/webapp/inc/dashboard/mdConfig.php:241
@@ -703,7 +703,7 @@ msgstr "Lagre endringer"
 #: /var/www/webapp/inc/dashboard/appConfig2.php:113
 #: /var/www/webapp/inc/dashboard/userConfig.php:121
 #: /var/www/webapp/inc/dashboard/eventConfig.php:262
-#: /var/www/webapp/inc/dashboard/appConfig1.php:219
+#: /var/www/webapp/inc/dashboard/appConfig1.php:192
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:111
 #: /var/www/webapp/inc/dashboard/venueConfig.php:515
 #: /var/www/webapp/inc/dashboard/mdConfig.php:242
@@ -1144,68 +1144,45 @@ msgstr "BESTILL NÅ knappen"
 msgid "Button colour"
 msgstr "Velg knappens farge"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:126
+#: /var/www/webapp/inc/dashboard/appConfig1.php:125
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:208
 msgid "ORDER NOW"
 msgstr "BESTILL NÅ"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:138
+#: /var/www/webapp/inc/dashboard/appConfig1.php:137
 msgid "Select a home-screen background"
 msgstr "Velg en bakgrunn for hjem-skjermen"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:169
+#: /var/www/webapp/inc/dashboard/appConfig1.php:168
 msgid "UPLOAD YOUR OWN BACKGROUND"
 msgstr "LAST OPP DIN EGEN BAKGRUNN"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:176
+#: /var/www/webapp/inc/dashboard/appConfig1.php:175
 msgid "Custom Background Upload"
 msgstr "Last opp egendefinert bakgrunn"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:181
-#: /var/www/webapp/inc/dashboard/appConfig1.php:206
+#: /var/www/webapp/inc/dashboard/appConfig1.php:180
 #: /var/www/webapp/inc/dashboard/menuConfig.php:424
 msgid "UPLOAD"
 msgstr "LAST OPP"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:183
-#: /var/www/webapp/inc/dashboard/appConfig1.php:208
+#: /var/www/webapp/inc/dashboard/appConfig1.php:182
 msgid "RESET"
 msgstr "TILBAKESTILL"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:185
+#: /var/www/webapp/inc/dashboard/appConfig1.php:184
 msgid "Supported types: JPG"
 msgstr "Støttede filtyper: JPG"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:185
-#: /var/www/webapp/inc/dashboard/appConfig1.php:210
+#: /var/www/webapp/inc/dashboard/appConfig1.php:184
 msgid "Max file size: 10MB"
 msgstr "Maks filstørrelse: 10 MB"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:185
+#: /var/www/webapp/inc/dashboard/appConfig1.php:184
 msgid "Dimensions: 1080x1920"
 msgstr "Dimensjoner: 1080x1920"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:194
-msgid "UPLOAD YOUR OWN LOGO"
-msgstr "LAST OPP DIN EGEN LOGO"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:201
-msgid "Logo Upload"
-msgstr "Last opp logo"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:201
-msgid "Note: This will replace your main heading."
-msgstr "Merk: Dette vil erstatte din hovedoverskrift."
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:210
-msgid "Supported types: PNG"
-msgstr "Støttede filtyper: PNG"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:210
-msgid "Dimensions: 100x75"
-msgstr "Dimensjoner: 100x75"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:232
+#: /var/www/webapp/inc/dashboard/appConfig1.php:205
 msgid "30&#37 done, time for the artistic bit..."
 msgstr "30&#37 ferdig, tid for en kunstnerisk del..."
 
@@ -1711,21 +1688,21 @@ msgstr "SAMMENKOBLE"
 msgid "CANCEL"
 msgstr "AVBRYT"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:390
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:385
 #: /var/www/webapp/code/shared/js_strings.php:64
 msgid "Your app is now live!"
 msgstr "Din app er nå live!"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:399
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:394
 msgid "Your app is now in DEMO mode."
 msgstr "Din app er nå i DEMO-modus."
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:408
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:426
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:403
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:421
 msgid "Your app is now in OFFLINE mode."
 msgstr "Din app er nå i OFFLINE modus."
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:417
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:412
 msgid "Your app is now in Demo mode."
 msgstr "Din app er nå i Demo modus!"
 
@@ -3376,6 +3353,21 @@ msgstr ""
 #: /var/www/webapp/overrides/preoday/regular_footer.php:27
 msgid "support@preoday.com"
 msgstr "support@preoday.no"
+
+#~ msgid "UPLOAD YOUR OWN LOGO"
+#~ msgstr "LAST OPP DIN EGEN LOGO"
+
+#~ msgid "Logo Upload"
+#~ msgstr "Last opp logo"
+
+#~ msgid "Note: This will replace your main heading."
+#~ msgstr "Merk: Dette vil erstatte din hovedoverskrift."
+
+#~ msgid "Supported types: PNG"
+#~ msgstr "Støttede filtyper: PNG"
+
+#~ msgid "Dimensions: 100x75"
+#~ msgstr "Dimensjoner: 100x75"
 
 #~ msgid ". Please add a credit card to resubscribe."
 #~ msgstr ". Vennligst legg til et kredittkort for å aktivere abonnementet."

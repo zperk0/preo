@@ -8,7 +8,7 @@ angular.module('kyc.resources').
       },
       getItems: {
         method: 'GET',
-        url: '/api/venues/:id/items',
+        url: '/api/venues/:id/order-items',
         isArray: true
       } ,
       getEvents: {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-17 18:30-0300\n"
+"POT-Creation-Date: 2015-08-18 13:07-0300\n"
 "PO-Revision-Date: 2014-09-10 16:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -678,7 +678,7 @@ msgstr "Button 2 Farbe"
 #: /var/www/webapp/inc/dashboard/appConfig2.php:112
 #: /var/www/webapp/inc/dashboard/userConfig.php:120
 #: /var/www/webapp/inc/dashboard/eventConfig.php:261
-#: /var/www/webapp/inc/dashboard/appConfig1.php:218
+#: /var/www/webapp/inc/dashboard/appConfig1.php:191
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:110
 #: /var/www/webapp/inc/dashboard/venueConfig.php:514
 #: /var/www/webapp/inc/dashboard/mdConfig.php:241
@@ -691,7 +691,7 @@ msgstr "ÄNDERUNGEN SPEICHERN"
 #: /var/www/webapp/inc/dashboard/appConfig2.php:113
 #: /var/www/webapp/inc/dashboard/userConfig.php:121
 #: /var/www/webapp/inc/dashboard/eventConfig.php:262
-#: /var/www/webapp/inc/dashboard/appConfig1.php:219
+#: /var/www/webapp/inc/dashboard/appConfig1.php:192
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:111
 #: /var/www/webapp/inc/dashboard/venueConfig.php:515
 #: /var/www/webapp/inc/dashboard/mdConfig.php:242
@@ -1135,68 +1135,45 @@ msgstr "JETZT BESTELLEN button"
 msgid "Button colour"
 msgstr "Button Farbe"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:126
+#: /var/www/webapp/inc/dashboard/appConfig1.php:125
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:208
 msgid "ORDER NOW"
 msgstr "Jetzt Bestellen"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:138
+#: /var/www/webapp/inc/dashboard/appConfig1.php:137
 msgid "Select a home-screen background"
 msgstr "Wählen Sie den Hintergrund für die Startansicht"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:169
+#: /var/www/webapp/inc/dashboard/appConfig1.php:168
 msgid "UPLOAD YOUR OWN BACKGROUND"
 msgstr "Eigenen Hintergrund hochladen"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:176
+#: /var/www/webapp/inc/dashboard/appConfig1.php:175
 msgid "Custom Background Upload"
 msgstr "Benutzerdefinierten Hintergrund hochladen"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:181
-#: /var/www/webapp/inc/dashboard/appConfig1.php:206
+#: /var/www/webapp/inc/dashboard/appConfig1.php:180
 #: /var/www/webapp/inc/dashboard/menuConfig.php:424
 msgid "UPLOAD"
 msgstr "HOCHLADEN"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:183
-#: /var/www/webapp/inc/dashboard/appConfig1.php:208
+#: /var/www/webapp/inc/dashboard/appConfig1.php:182
 msgid "RESET"
 msgstr "ZURÜCKSETZEN"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:185
+#: /var/www/webapp/inc/dashboard/appConfig1.php:184
 msgid "Supported types: JPG"
 msgstr "Unterstütze Formate: JPG"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:185
-#: /var/www/webapp/inc/dashboard/appConfig1.php:210
+#: /var/www/webapp/inc/dashboard/appConfig1.php:184
 msgid "Max file size: 10MB"
 msgstr "Maximale Dateigröße: 10MB"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:185
+#: /var/www/webapp/inc/dashboard/appConfig1.php:184
 msgid "Dimensions: 1080x1920"
 msgstr "Größe: 1080x1920"
 
-#: /var/www/webapp/inc/dashboard/appConfig1.php:194
-msgid "UPLOAD YOUR OWN LOGO"
-msgstr "Eigenes Logo hochladen"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:201
-msgid "Logo Upload"
-msgstr "Logo Hochladen"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:201
-msgid "Note: This will replace your main heading."
-msgstr "Hinweis: das wird Ihre Hauptüberschrift ersetzen."
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:210
-msgid "Supported types: PNG"
-msgstr "Unterstützte Formate: PNG"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:210
-msgid "Dimensions: 100x75"
-msgstr "Größe: 100x75"
-
-#: /var/www/webapp/inc/dashboard/appConfig1.php:232
+#: /var/www/webapp/inc/dashboard/appConfig1.php:205
 msgid "30&#37 done, time for the artistic bit..."
 msgstr "30&#37 geschafft, Zeit für den künstlerischen Teil..."
 
@@ -1696,21 +1673,21 @@ msgstr ""
 msgid "CANCEL"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:390
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:385
 #: /var/www/webapp/code/shared/js_strings.php:64
 msgid "Your app is now live!"
 msgstr "Ihre App ist nun einsatzbereit!"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:399
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:394
 msgid "Your app is now in DEMO mode."
 msgstr "Ihre App ist nun im DEMO Modus."
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:408
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:426
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:403
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:421
 msgid "Your app is now in OFFLINE mode."
 msgstr "Ihre App ist nun im OFFLINE Modus."
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:417
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:412
 msgid "Your app is now in Demo mode."
 msgstr "Ihre App ist nun im Demo Modus."
 
@@ -3334,6 +3311,21 @@ msgstr ""
 #: /var/www/webapp/overrides/preoday/regular_footer.php:27
 msgid "support@preoday.com"
 msgstr "support@preoday.com"
+
+#~ msgid "UPLOAD YOUR OWN LOGO"
+#~ msgstr "Eigenes Logo hochladen"
+
+#~ msgid "Logo Upload"
+#~ msgstr "Logo Hochladen"
+
+#~ msgid "Note: This will replace your main heading."
+#~ msgstr "Hinweis: das wird Ihre Hauptüberschrift ersetzen."
+
+#~ msgid "Supported types: PNG"
+#~ msgstr "Unterstützte Formate: PNG"
+
+#~ msgid "Dimensions: 100x75"
+#~ msgstr "Größe: 100x75"
 
 #~ msgid "Address Line 1"
 #~ msgstr "Adresse des Unternehmens"

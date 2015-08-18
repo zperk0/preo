@@ -250,7 +250,6 @@ msgid "Items"
 msgstr "Nom de Famille"
 
 #: code/kyc/index.php:18
-#, fuzzy
 msgid "Know your customers"
 msgstr "Nouveaux utilisateurs"
 
@@ -499,7 +498,6 @@ msgstr "SÃ©lectionner tous les menus("
 
 #: code/settings/delivery/partials/notifications.php:14
 #: code/settings/delivery/partials/notifications.php:38
-#, fuzzy
 msgid "Short name"
 msgstr "PrÃ©nom"
 
@@ -2107,14 +2105,12 @@ msgstr ""
 #~ msgid "Sleeping Customers"
 #~ msgstr "Utilisateurs rÃ©currents"
 
-#, fuzzy
 #~ msgid "Displays top 10 most popular items."
 #~ msgstr "RÃ©arranger"
 
 #~ msgid "Highest Grossing Days"
 #~ msgstr "Utilisateurs rÃ©currents"
 
-#, fuzzy
 #~ msgid "Display top 10 highest grossing days."
 #~ msgstr "RÃ©arranger"
 
@@ -2127,14 +2123,12 @@ msgstr ""
 #~ msgid "Highest Order Days"
 #~ msgstr "RÃ©arranger"
 
-#, fuzzy
 #~ msgid "Display top 10 highest order days."
 #~ msgstr "RÃ©arranger"
 
 #~ msgid "Lowest Order Days"
 #~ msgstr "RÃ©arranger"
 
-#, fuzzy
 #~ msgid "Display top 10 lowest order days."
 #~ msgstr "RÃ©arranger"
 

@@ -248,7 +248,6 @@ msgid "Items"
 msgstr "Nachname"
 
 #: code/kyc/index.php:18
-#, fuzzy
 msgid "Know your customers"
 msgstr "Neue Nutzer"
 
@@ -2131,14 +2130,12 @@ msgstr ""
 #~ msgid "Sleeping Customers"
 #~ msgstr "Wiederkehrende Nutzer"
 
-#, fuzzy
 #~ msgid "Displays top 10 most popular items."
 #~ msgstr "verspätete Bestellung"
 
 #~ msgid "Highest Grossing Days"
 #~ msgstr "Wiederkehrende Nutzer"
 
-#, fuzzy
 #~ msgid "Display top 10 highest grossing days."
 #~ msgstr "verspätete Bestellung"
 
@@ -2151,14 +2148,12 @@ msgstr ""
 #~ msgid "Highest Order Days"
 #~ msgstr "verspätete Bestellung"
 
-#, fuzzy
 #~ msgid "Display top 10 highest order days."
 #~ msgstr "verspätete Bestellung"
 
 #~ msgid "Lowest Order Days"
 #~ msgstr "verspätete Bestellung"
 
-#, fuzzy
 #~ msgid "Display top 10 lowest order days."
 #~ msgstr "verspätete Bestellung"
 
