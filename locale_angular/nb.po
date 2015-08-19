@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-18 12:25-0300\n"
-"PO-Revision-Date: 2015-08-09 18:50+0200\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2015-08-19 11:24+0100\n"
+"Last-Translator: Nick <na@drweb.no>\n"
 "Language-Team: \n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: code/accountSettings/partials/subscription.php:8
@@ -60,7 +60,7 @@ msgstr "Fakturaadresse"
 #: code/accountSettings/index.php:23
 #: code/accountSettings/partials/billingHistory.php:5
 msgid "Billing History"
-msgstr "Tidligere fakturaer "
+msgstr "Faktura historikk"
 
 #: code/accountSettings/partials/subscription.php:4
 msgid "Billing Schedule"
@@ -78,7 +78,7 @@ msgstr "AVBRYT"
 
 #: code/accountSettings/partials/password.php:26
 msgid "CANCEL>"
-msgstr "AVBRYT"
+msgstr "AVBRYT>"
 
 #: code/accountSettings/partials/payment.php:19
 #: code/accountSettings/partials/payment.php:21
@@ -92,7 +92,7 @@ msgstr "ENDRE KORT"
 #: code/accountSettings/partials/payment.php:48
 #: code/accountSettings/partials/profile.php:48
 msgid "CHANGE DETAILS"
-msgstr "ENDRE INFORMASJON"
+msgstr "ENDRE DETALJER"
 
 #: code/accountSettings/partials/profile.php:44
 msgid "CHANGE PASSWORD"
@@ -111,7 +111,7 @@ msgstr "Kortnummer"
 
 #: code/accountSettings/partials/subscription.php:25
 msgid "Card ending"
-msgstr ""
+msgstr "Siste siffer i kortnummer"
 
 #: code/kyc/partials/reports.php:9
 msgid "Choose preset:"
@@ -188,11 +188,11 @@ msgstr "E-postadresse"
 
 #: code/settings/delivery/partials/notifications.php:63
 msgid "Email address for receiving venue alerts"
-msgstr "E-postadresse for å motta bedrifts varsler"
+msgstr "E-postadresse for å motta butikk varsler"
 
 #: code/settings/delivery/partials/delivery.php:3
 msgid "Enable delivery services"
-msgstr "Aktiver leverings tjenester"
+msgstr "Aktiver leveringstjenester"
 
 #: code/kyc/partials/events.php:25
 msgid "Event"
@@ -215,7 +215,7 @@ msgstr "Utløper"
 #: code/kyc/partials/orders.php:110 code/kyc/partials/reports.php:116
 #: code/kyc/partials/stock.php:75
 msgid "Export as..."
-msgstr "Eksport som..."
+msgstr "Eksporter som..."
 
 #: code/accountSettings/partials/profile.php:5
 msgid "First Name"
@@ -230,8 +230,8 @@ msgid ""
 "In addition to the fulfilment app, you can also receive email updates to "
 "notify when you have received a new order"
 msgstr ""
-"I tillegg til appen kan du også motta e-postoppdateringer for å varsle når "
-"du har mottatt en ny ordre"
+"I tillegg til appen kan du motta varsling på e-post når du har mottatt en ny "
+"ordre"
 
 #: code/settings/delivery/partials/delivery.php:23
 msgid "In case of customer queries contact:"
@@ -251,7 +251,7 @@ msgstr "Varer"
 
 #: code/kyc/index.php:18
 msgid "Know your customers"
-msgstr "Kjenn dine kunder"
+msgstr "Bli kjent med dine kunder"
 
 #: code/accountSettings/partials/profile.php:14
 msgid "Last Name"
@@ -259,11 +259,11 @@ msgstr "Etternavn"
 
 #: code/kyc/partials/stream.php:7
 msgid "Live Stream"
-msgstr "Aktivitet"
+msgstr "Live aktivitet"
 
 #: code/kyc/index.php:28
 msgid "Live stream"
-msgstr "Aktivitet"
+msgstr "Live aktivitet"
 
 #: code/accountSettings/partials/payment.php:28
 msgid "MM"
@@ -275,7 +275,7 @@ msgstr "Menyelementer"
 
 #: code/kyc/index.php:24
 msgid "Metrics"
-msgstr "Status"
+msgstr "Analyser"
 
 #: code/settings/delivery/partials/delivery.php:28
 msgid "Minimum order value to qualify for delivery"
@@ -295,7 +295,7 @@ msgstr "Navn"
 
 #: code/accountSettings/partials/payment.php:12
 msgid "Name on card"
-msgstr "Navn på kort"
+msgstr "Navn på kortet"
 
 #: code/accountSettings/partials/password.php:12
 msgid "New Password"
@@ -317,19 +317,19 @@ msgstr "Gammelt passord"
 
 #: code/kyc/partials/stream.php:35
 msgid "Order"
-msgstr "Orden"
+msgstr "Bestill"
 
 #: code/settings/delivery/partials/notifications.php:7
 msgid "Order Rejection Alerts"
-msgstr "Ordre avvist Alarm"
+msgstr "Varsel for avvist ordre"
 
 #: code/settings/delivery/partials/notifications.php:6
 msgid "Order Status Alerts"
-msgstr "Ordrestatus Alarm"
+msgstr "Varsel for ordrestatus"
 
 #: code/kyc/partials/events.php:46 code/kyc/partials/orders.php:53
 msgid "Order Total"
-msgstr "Ordre Total"
+msgstr "Ordre total"
 
 #: code/kyc/index.php:30 code/kyc/partials/orders.php:8
 msgid "Orders"
@@ -341,7 +341,7 @@ msgstr "Utsalgssted"
 
 #: code/kyc/index.php:42
 msgid "Outlet Name:"
-msgstr "Utsalgssted"
+msgstr "Utsalgsstedets navn:"
 
 #: code/kyc/js/directives/chart/chart.php:76
 #: code/kyc/partials/customers.php:94 code/kyc/partials/events.php:107
@@ -364,15 +364,15 @@ msgstr "Betalingsmetoder"
 
 #: code/accountSettings/partials/subscription.php:48
 msgid "Please add a credit card to resubscribe"
-msgstr ". Vennligst legg til et kredittkort for å aktivere abonnementet."
+msgstr "Vennligst legg til kortdetaljer for å aktivere abonnementet."
 
 #: code/accountSettings/partials/subscription.php:7
 msgid "Please add a payment method to keep your account active"
-msgstr "Vennligst legg til en betalingsmåte for å holde kontoen aktiv"
+msgstr "Vennligst legg til en betalingsmåte for å holde kontoen din aktiv"
 
 #: code/settings/delivery/partials/notifications.php:45
 msgid "Please enter a message and a short name or remove this notification."
-msgstr "Skriv inn en melding og et kortnavn eller fjern dette varselet."
+msgstr "Skriv inn en melding og et kallenavn eller fjern dette varselet."
 
 #: code/settings/delivery/partials/delivery.php:30
 msgid "Please enter a valid number (e.g. 20.52)"
@@ -409,15 +409,15 @@ msgstr "Vennligst skriv inn en gyldig e-postadresse"
 
 #: code/accountSettings/partials/profile.php:36
 msgid "Please type your account name.(max 100chars)"
-msgstr "Vennligst skriv inn kontonavn. (Maks 100 bokstaver)"
+msgstr "Vennligst skriv inn kontonavn. (maks 100 bokstaver)"
 
 #: code/accountSettings/partials/profile.php:9
 msgid "Please type your first name.(max 100chars)"
-msgstr "Vennligst skriv fornavnet ditt. (Maks 100 bokstaver)"
+msgstr "Vennligst skriv fornavnet ditt. (maks 100 bokstaver)"
 
 #: code/accountSettings/partials/profile.php:18
 msgid "Please type your last name.(max 100chars)"
-msgstr "Vennligst skriv etternavnet ditt. (Maks 100 bokstaver)"
+msgstr "Vennligst skriv etternavnet ditt. (maks 100 bokstaver)"
 
 #: code/accountSettings/partials/subscription.php:13
 msgid "Please update your card details within"
@@ -429,7 +429,7 @@ msgstr "Postnummer"
 
 #: code/settings/delivery/partials/notifications.php:2
 msgid "Preset Notifications"
-msgstr "Forhåndsinnstilte Påminnelser"
+msgstr "Forhåndsinnstilte påminnelser"
 
 #: code/settings/delivery/partials/notifications.php:13
 msgid "Preset customer notifications, sent by email and push alert"
@@ -450,7 +450,7 @@ msgstr "Profil"
 
 #: code/kyc/partials/stock.php:33
 msgid "Quantity Ordered"
-msgstr "Antall Bestilt"
+msgstr "Antall bestilt"
 
 #: code/accountSettings/partials/subscription.php:55
 #: code/accountSettings/partials/subscription.php:56
@@ -473,11 +473,11 @@ msgstr "LAGRE"
 #: code/settings/delivery/partials/delivery.php:58
 #: code/settings/delivery/partials/notifications.php:76
 msgid "SAVE CHANGES"
-msgstr "Lagre endringer"
+msgstr "LAGRE ENDRINGER"
 
 #: code/accountSettings/partials/password.php:25
 msgid "SAVE CHANGES>"
-msgstr "Lagre endringer"
+msgstr "LAGRE ENDRINGER>"
 
 #: code/accountSettings/partials/payment.php:50
 #: code/settings/delivery/partials/delivery.php:59
@@ -487,11 +487,11 @@ msgstr "LAGRER..."
 
 #: code/accountSettings/partials/profile.php:50
 msgid "SAVING...\""
-msgstr "LAGRER..."
+msgstr "LAGRER..\""
 
 #: code/accountSettings/partials/password.php:27
 msgid "SAVING...>"
-msgstr "LAGRER..."
+msgstr "LAGRER...>"
 
 #: code/kyc/partials/customers.php:110 code/kyc/partials/events.php:123
 #: code/kyc/partials/orders.php:131 code/kyc/partials/reports.php:137
@@ -502,7 +502,7 @@ msgstr "Valgte"
 #: code/settings/delivery/partials/notifications.php:14
 #: code/settings/delivery/partials/notifications.php:38
 msgid "Short name"
-msgstr "kort navn"
+msgstr "Kallenavn"
 
 #: code/accountSettings/partials/billingHistory.php:12
 #: code/kyc/partials/stream.php:14
@@ -517,7 +517,7 @@ msgstr "Varebeholdning"
 #: code/accountSettings/partials/billingHistory.php:1
 #: code/accountSettings/partials/subscription.php:1
 msgid "Subscriptions"
-msgstr "Mine abonnementer"
+msgstr "Abonnementer"
 
 #: code/kyc/partials/stream.php:82
 msgid "TOTAL"
@@ -545,7 +545,7 @@ msgstr "OPPGRADER"
 
 #: code/settings/delivery/partials/notifications.php:8
 msgid "Venue Alerts"
-msgstr "Restaurant Varslig"
+msgstr "Varsler for utsalgssted"
 
 #: code/accountSettings/partials/payment.php:29
 msgid "YY"
@@ -596,11 +596,11 @@ msgstr "dager for å hindre at kontoen din blir deaktivert."
 
 #: code/settings/delivery/partials/delivery.php:19
 msgid "eg. \\\"NW1, NW2...\\\""
-msgstr "f.eks. \"0501, 0502 ...\""
+msgstr "f.eks. \\\"3210, 3211...\\\""
 
 #: code/accountSettings/partials/subscription.php:44
 msgid "package"
-msgstr ""
+msgstr "pakke"
 
 #: code/kyc/index.php:66
 msgid "to"
