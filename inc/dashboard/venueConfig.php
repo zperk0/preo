@@ -1,4 +1,4 @@
-<? 
+<?
 	function tz_list() {
 	  $zones_array = array();
 	  $timestamp = time();
@@ -38,13 +38,13 @@
 			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="unavailable" href="#"><? echo _("Events");?></a>
 			<?}else{?><a class="unavailable" href="#"><? echo _("Opening Hours");?></a><?}?>
 		<?}?>
-		
+
 		<?if(!$_SESSION['noPaymentFlag']){?>
 			<a href="<?echo $_SESSION['path']?>/payment"><? echo _("Payment Method");?></a>
 		<?}else{?>
 		<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
 		<?}?>
-		
+
 		<a class="unavailable" href="#"><? echo _("Done");?></a>
 	</nav>
 	<?}?>
@@ -56,8 +56,8 @@
 	</div>
 	<div class='large-collumns-wrapper'>
 		<div class="large-6 columns">
-			
-			
+
+
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue name");?></label>
@@ -65,7 +65,7 @@
 					<small class="error"><?echo _("Please type a venue name (max 100chars)");?></small>
 				</div>
 				</div>
-			
+
 						<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Venue description");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Please enter a short description about your venue.<br/><br/>This will not appear on your branded app.");?>"></i></label>
@@ -73,7 +73,7 @@
 					<small class="error"><?echo _("Please type a venue description (max 250chars)");?></small>
 			</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("What type of venue are you?");?></label>
@@ -81,16 +81,16 @@
 						<option value="4"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='4')	{?>selected="selected"<?}?>><? echo _("Restaurant (Cafe, Sandwich Bar, Restaurant, etc)");?></option>
 						<option value="1"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='1')	{?>selected="selected"<?}?>><? echo _("Sports Arena");?></option>
 						<option value="2"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='2')	{?>selected="selected"<?}?>><? echo _("Bars, Pubs and Clubs");?></option>
-						<option value="3"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='3')	{?>selected="selected"<?}?>><? echo _("Workplace/Education Catering");?></option>						
+						<option value="3"	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='3')	{?>selected="selected"<?}?>><? echo _("Workplace/Education Catering");?></option>
 						<option value="5" 	<?if(isset($_SESSION['venue_cat']) && $_SESSION['venue_cat']=='5')	{?>selected="selected"<?}?>><? echo _("Music and Cultural");?></option>
 					</select>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Are you primarily an events based business?");?> &nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("Does your business revolve around regular events, e.g. football matches, performances, etc?");?>"></i></label>
-					<div class="switch small large-2 columns eventFlagNoti"> 
+					<div class="switch small large-2 columns eventFlagNoti">
 						<input name="vEvent" value="0" type="radio" <?if((isset($_SESSION['venue_eventFlag']) && !$_SESSION['venue_eventFlag']) || !isset($_SESSION['venue_eventFlag'])){?>checked<?}?>>
 						<label class="no"><?echo _("No");?></label>
 
@@ -101,7 +101,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="row cSlotDiv hide"><!--<?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">-->
 				<div class="large-12 columns">
 					<label><?echo _("Collection Slot Duration (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is the number of minutes after opening time and before closing time when customers are allowed to collect orders.");?>"></i></label>
@@ -109,7 +109,7 @@
 					<small class="error"><?echo _("Please provide a duration in mins");?></small>
 				</div>
 			</div>
-			
+
 			<div class="row leadTimeDiv nonEventOnly <?if((isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag'])){?>hide<?}?>">
 				<div class="large-12 columns">
 					<label><?echo _("Default preparation time for collection orders (mins)");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("The time it takes to prepare your order before the customer can pick it up.");?>"></i></label>
@@ -136,7 +136,7 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Do you offer a delivery service?");?> &nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("You can specify your delivery settings from the dashboard");?>"></i></label>
-					<div class="switch small large-2 columns"> 
+					<div class="switch small large-2 columns">
 						<input name="vDelivery" class="vDelivery" value="0" type="radio" <?if((isset($_SESSION['venue_deliverFlag']) && !$_SESSION['venue_deliverFlag']) || !isset($_SESSION['venue_deliverFlag'])){?>checked<?}?>>
 						<label class="no"><?echo _("No");?></label>
 
@@ -147,12 +147,12 @@
 					</div>
 				</div>
 			</div>
-			
+
 
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Enable cash payment option?");?></label>
-					<div class="switch small large-2 columns"> 
+					<div class="switch small large-2 columns">
 						<input name="vCash" class="vDelivery" value="0" type="radio" <?if((isset($_SESSION['venue_cashFlag']) && !$_SESSION['venue_cashFlag']) || !isset($_SESSION['venue_cashFlag'])){?>checked<?}?>>
 						<label class="no"><?echo _("No");?></label>
 
@@ -162,12 +162,12 @@
 						<span></span>
 					</div>
 				</div>
-			</div> 
+			</div>
 
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Do you require a phone number?");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("By default phone numbers are only required for delivery orders, if you enable this option it will be mandatory for pickup orders as well.");?>"></i></label>
-					<div class="switch small large-2 columns"> 
+					<div class="switch small large-2 columns">
 						<input name="vPhone" class="vPhone" value="0" type="radio" <?if((isset($_SESSION['venue_requiresPhone']) && !$_SESSION['venue_requiresPhone']) || !isset($_SESSION['venue_requiresPhone'])){?>checked<?}?>>
 						<label class="no"><?echo _("No");?></label>
 
@@ -177,12 +177,12 @@
 						<span></span>
 					</div>
 				</div>
-			</div> 
-			
-			
-			
-		
-			
+			</div>
+
+
+
+
+
 
 		</div>
 		<div class="large-6 columns hide-for-small">
@@ -193,11 +193,11 @@
 					<input type="hidden" name="vCode" id="vCode" value="<?if(isset($_SESSION['venue_latitude']) && isset($_SESSION['venue_longitude']))  echo "(".$_SESSION['venue_latitude'].", ".$_SESSION['venue_longitude'].")"; else echo "(0, 0)";?>">
 		<input type="text" name="vAdd2" id="vAdd2"  tabindex=8 value="<?if(isset($_SESSION['venue_address2'])) echo $_SESSION['venue_address2'];?>" pattern="^.{0,250}$">
 		<input type="text" name="vAdd3" id="vAdd3"  tabindex=9 value="<?if(isset($_SESSION['venue_address3'])) echo $_SESSION['venue_address3'];?>" pattern="^.{0,250}$">
-		
+
 					<small class="error"><?echo _("Please type a venue address (max 250chars)");?></small>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="large-12 columns">
 		<label><?echo _("Town/City");?></label>
@@ -205,7 +205,7 @@
 		<small class="error"><?echo _("Please type a Town/City (max 45chars)");?></small>
 				</div>
 			</div>
-			
+
 
 			<div class="row">
 				<div class="large-12 columns">
@@ -466,13 +466,14 @@
 				<small class="error"><?echo _("Please type a post code (max 45chars)");?></small>
 			</div>
 		</div>
-			
+
 			<div class="row">
 				<div class="large-12 columns">
 						<label><?echo _("Language");?></label>
 						<select id="language" name="language" class="pdDropdown" required tabindex=12>
-							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "en"){?>selected="selected"<?}?> value="en">English</option>												
-							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "de"){?>selected="selected"<?}?> value="de">German</option>									
+							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "en"){?>selected="selected"<?}?> value="en">English</option>
+							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "de"){?>selected="selected"<?}?> value="de">German</option>
+							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "no"){?>selected="selected"<?}?> value="no">Norwegian</option>
 						</select>
 						<small class="error"><?echo _("Please select your language");?></small>
 				</div>
@@ -483,7 +484,7 @@
 						<label><?echo _("Timezone");?></label>
 						<select id="timezone" name="timezone" class="pdDropdown" required tabindex=13>
 						    <?php foreach(tz_list() as $t) {?>
-						     <option value="<?php print $t['zone'] ?>"  <?if(isset($_SESSION['venue_timezone'])) { if ($_SESSION['venue_timezone'] == $t['zone']) {?>selected="selected"<?} } else {if ($t['zone'] == 'Europe/London') {?>selected="selected"<?}}     ?> >						      	
+						     <option value="<?php print $t['zone'] ?>"  <?if(isset($_SESSION['venue_timezone'])) { if ($_SESSION['venue_timezone'] == $t['zone']) {?>selected="selected"<?} } else {if ($t['zone'] == 'Europe/London') {?>selected="selected"<?}}     ?> >
 						        <?php print $t['zone']." - ".$t['diff_from_GMT']?>
 						      </option>
 						    <?php } ?>
@@ -491,23 +492,23 @@
 						<small class="error"><?echo _("Please select your timezone");?></small>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="large-12 columns">
 						<label><?echo _("Currency");?></label>
-						<select id="currency" name="currency" class="pdDropdown" required tabindex=7>		
-						<?foreach(currency_list() as $t) {?>		    
-							<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == $t['code']){?>selected="selected"<?}?> value='<? echo $t["code"] ?>'><? echo $t["name"] ?></option> 							
-						<? } ?>						
+						<select id="currency" name="currency" class="pdDropdown" required tabindex=7>
+						<?foreach(currency_list() as $t) {?>
+							<option <?if(isset($_SESSION['venue_currency']) && $_SESSION['venue_currency'] == $t['code']){?>selected="selected"<?}?> value='<? echo $t["code"] ?>'><? echo $t["name"] ?></option>
+						<? } ?>
 						</select>
 						<small class="error"><?echo _("Please select your currency");?></small>
 					</div>
-				</div>		
+				</div>
 
 		</div>
 		<div class='clearFix'></div>
 		</div>
-	
+
 
 			<div class="row row--space1">
 			<div class="small-12 large-12 columns">
