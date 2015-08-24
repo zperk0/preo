@@ -17,7 +17,7 @@ var app = angular.module('accountSettings', [
 
   $rootScope.requests = 0;
 
-  var lang = 'en_US';
+  var lang = 'en_GB';
 
   switch(LANG) {
     case 'de': lang = 'de_DE'; break;
@@ -25,7 +25,7 @@ var app = angular.module('accountSettings', [
     case 'nb': lang = 'nb_NO'; break;
   }
 
-  if(lang != 'en_US') {
+  if(lang != 'en_GB') {
 
     gettextCatalog.currentLanguage = lang;
     // gettextCatalog.debug = true;
