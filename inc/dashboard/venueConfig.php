@@ -471,9 +471,9 @@
 				<div class="large-12 columns">
 						<label><?echo _("Language");?></label>
 						<select id="language" name="language" class="pdDropdown" required tabindex=12>
-							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "en"){?>selected="selected"<?}?> value="en">English</option>
-							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "de"){?>selected="selected"<?}?> value="de">German</option>
-							<option <?if(isset($_SESSION['venue_language']) && $_SESSION['venue_language'] == "no"){?>selected="selected"<?}?> value="no">Norwegian</option>
+							<option <?if(isset($_SESSION['venue_language']) && substr($_SESSION['venue_language'], 0, strrpos($_SESSION['venue_language'], '-')) == "en"){?>selected="selected"<?}?> value="en">English</option>
+							<option <?if(isset($_SESSION['venue_language']) && substr($_SESSION['venue_language'], 0, strrpos($_SESSION['venue_language'], '-')) == "de"){?>selected="selected"<?}?> value="de">German</option>
+							<option <?if(isset($_SESSION['venue_language']) && substr($_SESSION['venue_language'], 0, strrpos($_SESSION['venue_language'], '-')) == "no"){?>selected="selected"<?}?> value="no">Norwegian</option>
 						</select>
 						<small class="error"><?echo _("Please select your language");?></small>
 				</div>
