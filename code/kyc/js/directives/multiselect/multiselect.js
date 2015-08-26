@@ -31,7 +31,8 @@
  * --------------------------------------------------------------------------------
  */
 
-angular.module( 'kyc.directives').directive( 'multiSelect' , [ '$sce', '$filter', '$timeout', function ( $sce, $filter, $timeout ) {
+//TODO When we can move this to a new file, in a better structure to share between all modules of the app
+angular.module( 'webapp.components',[]).directive( 'multiSelect' , [ '$sce', '$filter', '$timeout', function ( $sce, $filter, $timeout ) {
     return {
         restrict: 
             'AE',
