@@ -35,5 +35,14 @@
         "rounding": 0,
         "code": "NOK",
         "name_plural": "Norwegian Krone"
+    },
+    "GIP": {
+        "symbol": "£",
+        "name": "Gibraltar Pound",
+        "symbol_native": "£",
+        "decimal_digits": 2,
+        "rounding": 0,
+        "code": "GIP",
+        "name_plural": "Gibraltar Pounds"
     }
 }
