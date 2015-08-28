@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('events')
-.directive('slot', ['$timeout', '$log', function($timeout, $log) {
+.directive('slot', ['$timeout', '$log', 'gettextCatalog', function($timeout, $log, gettextCatalog) {
     return {
         templateUrl: '/code/events/js/directives/slot/slot.php',
         restrict: 'A',
@@ -31,7 +31,7 @@ angular.module('events')
                         select.multiselect({
                             multiple: false,
                             header: false,
-                            noneSelectedText: _tr("Choose a Collection Slot"),
+                            noneSelectedText: gettextCatalog.getString("Choose a Collection Slot"),
                             selectedList: 1,
                             minWidth: 342
                         });
@@ -41,13 +41,13 @@ angular.module('events')
                         // autocomplete for slot name
                         inputName.autocomplete({
                             source: [
-                                _tr("Collection Slot: Pre-Show"),
-                                _tr("Collection Slot: Pre-Game"),
-                                _tr("Collection Slot: Interval"),
-                                _tr("Collection Slot: Second-Interval"),
-                                _tr("Collection Slot: Half-Time"),
-                                _tr("Collection Slot: Post-Show"),
-                                _tr("Collection Slot: Post-Game")
+                                gettextCatalog.getString("Collection Slot: Pre-Show"),
+                                gettextCatalog.getString("Collection Slot: Pre-Game"),
+                                gettextCatalog.getString("Collection Slot: Interval"),
+                                gettextCatalog.getString("Collection Slot: Second-Interval"),
+                                gettextCatalog.getString("Collection Slot: Half-Time"),
+                                gettextCatalog.getString("Collection Slot: Post-Show"),
+                                gettextCatalog.getString("Collection Slot: Post-Game")
                             ],
                             delay: 10,
                             minLength: 0,

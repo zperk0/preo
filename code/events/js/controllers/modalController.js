@@ -1,8 +1,8 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('ModalCtrl', ['$scope', '$timeout', 'items', '$rootScope', '$log', 'DateUtils',
-        function($scope, $timeout, items, $rootScope, $log, DateUtils) {
+    .controller('ModalCtrl', ['$scope', '$timeout', 'items', '$rootScope', '$log', 'DateUtils', 'gettextCatalog',
+        function($scope, $timeout, items, $rootScope, $log, DateUtils, gettextCatalog) {
 
             var vm = this,
                 schedInit = false,
@@ -19,6 +19,23 @@
             vm.selectedDays = [];
 
             vm.validation = false;
+
+            vm.frequencies = {
+                once: gettextCatalog.getString('ONCE'),
+                daily: gettextCatalog.getString('DAILY'),
+                weekly: gettextCatalog.getString('WEEKLY'),
+                monthly: gettextCatalog.getString('MONTHLY'),
+                yearly: gettextCatalog.getString('YEARLY'),
+                custom: gettextCatalog.getString('CUSTOM')
+            };
+
+            vm.strings = {
+                after: gettextCatalog.getString('after'),
+                before: gettextCatalog.getString('before'),
+                is: gettextCatalog.getString('is'),
+                is_not: gettextCatalog.getString('is not'),
+                all_locations: gettextCatalog.getString('All Locations')
+            }
 
             for (var i=0; i<=12; i++) {
 
@@ -226,9 +243,9 @@
                 if(sched.freq != 'CUSTOM' && sched.startDate != '' && sched.endDate != '') {
 
                     var strStart = sched.startDate.split('/'),
-                        startDate = moment.utc([strStart[2], strStart[1] - 1, strStart[0], hours, minutes]).format('YYYY-MM-DDThh:mm:ss'),
+                        startDate = moment.utc([strStart[2], strStart[1] - 1, strStart[0], hours, minutes]).format('YYYY-MM-DDTHH:mm:ss'),
                         strEnd = sched.endDate.split('/'),
-                        endDate = moment.utc([strEnd[2], strEnd[1] - 1, strEnd[0], hours, minutes]).format('YYYY-MM-DDThh:mm:ss');
+                        endDate = moment.utc([strEnd[2], strEnd[1] - 1, strEnd[0], hours, minutes]).format('YYYY-MM-DDTHH:mm:ss');
 
                     schedules = [{
                         freq: sched.freq,
@@ -285,13 +302,13 @@
                 $('.ct-slots').find('.slotName').each(function() {
                     $(this).autocomplete({
                         source: [
-                            _tr("Pre-Show"),
-                            _tr("Pre-Game"),
-                            _tr("Interval"),
-                            _tr("Second-Interval"),
-                            _tr("Half-Time"),
-                            _tr("Post-Show"),
-                            _tr("Post-Game")
+                            gettextCatalog.getString("Pre-Show"),
+                            gettextCatalog.getString("Pre-Game"),
+                            gettextCatalog.getString("Interval"),
+                            gettextCatalog.getString("Second-Interval"),
+                            gettextCatalog.getString("Half-Time"),
+                            gettextCatalog.getString("Post-Show"),
+                            gettextCatalog.getString("Post-Game")
                         ],
                         delay: 10,
                         minLength: 0,
@@ -394,9 +411,9 @@
             function refreshCurrentMonth() {
 
                 vm.currentMonth = moment(vm.date).utc().startOf('month').valueOf();
-                $timeout(function() {
-                    $('select.titleMonth').multiselect('refresh');
-                });
+                // $timeout(function() {
+                //     $('select.titleMonth').multiselect('refresh');
+                // });
             }
 
             function _init() {
@@ -405,12 +422,12 @@
                 $('.schedEndDate').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}});
                 $('.startTime').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 
-                $('select.titleMonth').multiselect({
-                    multiple: false,
-                    header: false,
-                    selectedList: 1,
-                    minWidth: 342
-                });
+                // $('select.titleMonth').multiselect({
+                //     multiple: false,
+                //     header: false,
+                //     selectedList: 1,
+                //     minWidth: 342
+                // });
 
                 $('.infoTab select').multiselect({
                     multiple: false,

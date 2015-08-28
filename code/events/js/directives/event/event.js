@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('events')
-.directive('event', ['$timeout', '$q', '$rootScope', 'Events', '$modal', '$log', 'DateUtils',
-    function($timeout, $q, $rootScope, Events, $modal, $log, DateUtils) {
+.directive('event', ['$timeout', '$q', '$rootScope', 'Events', '$modal', '$log', 'DateUtils', 'gettextCatalog',
+    function($timeout, $q, $rootScope, Events, $modal, $log, DateUtils, gettextCatalog) {
 
     return {
         templateUrl: '/code/events/js/directives/event/event.php',
@@ -105,16 +105,16 @@ angular.module('events')
                     noty({
                         layout: 'center',
                         type: 'confirm',
-                        text: _tr('Are you sure you want to delete this event? Note: all event data will be lost!'),
+                        text: gettextCatalog.getString('Are you sure you want to delete this event? Note: all event data will be lost!'),
                         buttons: [
-                        {addClass: 'alert tiny', text: _tr('Yes, delete this event!'), onClick: function($noty) {
+                        {addClass: 'alert tiny', text: gettextCatalog.getString('Yes, delete this event!'), onClick: function($noty) {
 
                             removeEventFromList(eventToDelete);
 
                             $noty.close();
                           }
                         },
-                        {addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
+                        {addClass: 'secondary tiny', text: gettextCatalog.getString('No, go back.'), onClick: function($noty) {
                             $noty.close();
                           }
                         }
@@ -126,9 +126,9 @@ angular.module('events')
                     noty({
                         layout: 'center',
                         type: 'confirm',
-                        text: _tr('Are you sure you want to delete this event? Note: all event data will be lost!'),
+                        text: gettextCatalog.getString('Are you sure you want to delete this event? Note: all event data will be lost!'),
                         buttons: [
-                        {addClass: 'alert tiny', text: _tr('Yes, delete this event!'), onClick: function($noty) {
+                        {addClass: 'alert tiny', text: gettextCatalog.getString('Yes, delete this event!'), onClick: function($noty) {
 
 
                             $log.log('Make api request...')
@@ -141,14 +141,14 @@ angular.module('events')
 
                                     noty({
                                         type: 'error',  layout: 'topCenter',
-                                        text: _tr("Sorry, but there's been an error processing your request.")
+                                        text: gettextCatalog.getString("Sorry, but there's been an error processing your request.")
                                     });
                                 });
 
                             $noty.close();
                           }
                         },
-                        {addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
+                        {addClass: 'secondary tiny', text: gettextCatalog.getString('No, go back.'), onClick: function($noty) {
                             $noty.close();
                           }
                         }

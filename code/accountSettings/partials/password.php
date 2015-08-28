@@ -22,9 +22,9 @@
 			</div>
 		</div>
 		<div class='rowWrapper errorMessage'>{{ errorMessage }}</div>
-		<button ng-show="!isPosting" class='preodayButton' ng-click="saveChanges()" type="submit"  translate>SAVE CHANGES></button>
-		<button ng-show="!isPosting" class='preodayButton secondary' ng-click="cancel()" translate>CANCEL></button>
-		<button ng-show="isPosting" class="secondary" type="button" translate>SAVING...></button>
+		<button ng-show="!isPosting" class='preodayButton' ng-click="saveChanges()" type="submit"  translate>SAVE CHANGES</button>
+		<button ng-show="!isPosting" class='preodayButton secondary' ng-click="cancel()" translate>CANCEL</button>
+		<button ng-show="isPosting" class="secondary" type="button" translate>SAVING...</button>
 	</form>
 
 </div>

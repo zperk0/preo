@@ -45,6 +45,12 @@
 
 
   <!-- BEGIN WATCH
+  <script src="/bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
+  <script src="/locale_angular/translations.js"></script>
+  <script src="/bower_components/moment/moment.js"></script>
+  <script src="/bower_components/moment/lang/de.js"></script>
+  <script src="/bower_components/moment/lang/fr.js"></script>
+  <script src="/bower_components/moment/lang/nb.js"></script>
   <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>
   <script src="/code/events/js/utils/fallbacks.js"></script>
   <script src="/code/loader/ajaxInterceptor.js"></script>

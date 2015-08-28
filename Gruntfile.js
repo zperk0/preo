@@ -199,7 +199,7 @@ module.exports = function(grunt) {
   nggettext_extract: {
     pot: {
       files: {
-        'locale_angular/angular_gettext.pot': ['**/*.php, **/*.js']
+        'locale_angular/angular_gettext.pot': ['code/**/*.php', 'code/**/*.html', 'code/**/*.htm', 'code/**/*.js']
       }
     },
   },

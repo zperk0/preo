@@ -27,6 +27,14 @@ msgstr "LEGG TIL BETALINGSMÅTE"
 msgid "Active?"
 msgstr "Aktiv?"
 
+#: code/events/partials/events.php:9
+msgid "Add a new event"
+msgstr "Legg til nytt arrangement"
+
+#: code/events/partials/modal-event.php:182
+msgid "Add another slot"
+msgstr "Legg til nytt sted"
+
 #: code/accountSettings/partials/payment.php:36
 msgid "Address Line 1"
 msgstr "Adresselinje 1"
@@ -40,14 +48,28 @@ msgid "Address Line 3"
 msgstr "Adresselinje 3"
 
 #: code/kyc/partials/customers.php:106 code/kyc/partials/events.php:119
-#: code/kyc/partials/orders.php:127 code/kyc/partials/reports.php:133
+#: code/kyc/partials/orders.php:135 code/kyc/partials/reports.php:133
 #: code/kyc/partials/stock.php:92
 msgid "All"
 msgstr "Alle"
 
+#: code/events/js/controllers/modalController.js:37
+#: code/events/js/directives/event/event.php:47
+msgid "All Locations"
+msgstr "﻿Alle lokasjoner"
+
 #: code/accountSettings/partials/billingHistory.php:13
 msgid "Amount"
 msgstr "Beløp"
+
+#: code/events/js/directives/event/event.js:108
+#: code/events/js/directives/event/event.js:129
+msgid ""
+"Are you sure you want to delete this event? Note: all event data will be "
+"lost!"
+msgstr ""
+"Er du sikker på at du vil slette denne hendelsen? Merk: alle hendelses data "
+"vil gå tapt!"
 
 #: code/accountSettings/partials/subscription.php:35
 msgid "BILLING HISTORY"
@@ -70,15 +92,12 @@ msgstr "Faktureringsplan"
 msgid "Business Name"
 msgstr "Navn på virksomhet"
 
+#: code/accountSettings/partials/password.php:26
 #: code/accountSettings/partials/payment.php:51
 #: code/accountSettings/partials/profile.php:51
 #: code/accountSettings/partials/subscription.php:52
 msgid "CANCEL"
 msgstr "AVBRYT"
-
-#: code/accountSettings/partials/password.php:26
-msgid "CANCEL>"
-msgstr "AVBRYT>"
 
 #: code/accountSettings/partials/payment.php:19
 #: code/accountSettings/partials/payment.php:21
@@ -100,10 +119,14 @@ msgstr "ENDRE PASSORD"
 
 #: code/kyc/js/directives/chart/chart.php:80
 #: code/kyc/partials/customers.php:99 code/kyc/partials/events.php:112
-#: code/kyc/partials/orders.php:120 code/kyc/partials/reports.php:126
+#: code/kyc/partials/orders.php:128 code/kyc/partials/reports.php:126
 #: code/kyc/partials/stock.php:85
 msgid "CSV"
 msgstr "CSV"
+
+#: code/events/js/controllers/modalController.js:29
+msgid "CUSTOM"
+msgstr ""
 
 #: code/accountSettings/partials/payment.php:5
 msgid "Card Number"
@@ -113,9 +136,63 @@ msgstr "Kortnummer"
 msgid "Card ending"
 msgstr "Siste siffer i kortnummer"
 
+#: code/events/js/directives/slot/slot.js:34
+msgid "Choose a Collection Slot"
+msgstr "Velg et sted"
+
 #: code/kyc/partials/reports.php:9
 msgid "Choose preset:"
 msgstr "Velg forhåndsinnstilling:"
+
+#: code/events/partials/modal-event.php:75
+msgid "Choose the first occurrence."
+msgstr ""
+
+#: code/events/js/directives/event/event.php:10
+#: code/events/partials/modal-event.php:15
+msgid "Click to add a description"
+msgstr "Klikk for å legge inn en beskrivelse"
+
+#: code/events/js/directives/event/event.php:6
+#: code/events/partials/modal-event.php:12
+msgid "Click to add an event name"
+msgstr "Klikk for å legge et arrangement navn"
+
+#: code/events/js/directives/event/event.php:38
+msgid "Collapse"
+msgstr "Trekk sammen"
+
+#: code/events/partials/modal-event.php:117
+msgid "Collection Slot"
+msgstr "Velg et sted"
+
+#: code/events/js/directives/slot/slot.js:48
+msgid "Collection Slot: Half-Time"
+msgstr "Samlingssted: Halv tid"
+
+#: code/events/js/directives/slot/slot.js:46
+msgid "Collection Slot: Interval"
+msgstr "Samlingssted: Interval"
+
+#: code/events/js/directives/slot/slot.js:50
+msgid "Collection Slot: Post-Game"
+msgstr "Samlingssted: Etter kamp"
+
+#: code/events/js/directives/slot/slot.js:49
+msgid "Collection Slot: Post-Show"
+msgstr "Samlingssted: Etter show"
+
+#: code/events/js/directives/slot/slot.js:45
+msgid "Collection Slot: Pre-Game"
+msgstr "Samlingssted: Før kamp"
+
+#: code/events/js/directives/slot/slot.js:44
+msgid "Collection Slot: Pre-Show"
+msgstr "Samlingssted: Før show"
+
+#: code/events/js/directives/slot/slot.js:47
+msgid "Collection Slot: Second-Interval"
+msgstr "Samlingssted: Andre interval"
 
 #: code/accountSettings/partials/password.php:19
 msgid "Confirm"
@@ -138,6 +215,14 @@ msgstr "Kunde"
 msgid "Customers"
 msgstr "Kunder"
 
+#: code/events/js/controllers/modalController.js:25
+msgid "DAILY"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:14
+msgid "DD/MM/YYYY"
+msgstr "DD/MM/ÅÅÅÅ"
+
 #: code/accountSettings/partials/billingHistory.php:23
 msgid "DOWNLOAD PDF"
 msgstr "LAST NED PDF"
@@ -154,9 +239,28 @@ msgstr "Datointerval"
 msgid "Date/Time"
 msgstr "Dato/tid"
 
+#: code/events/js/directives/event/event.php:15
+#: code/events/partials/modal-event.php:71
+#: code/events/partials/modal-event.php:77
+#: code/events/partials/modal-event.php:81
+msgid "Date?"
+msgstr "Dato?"
+
+#: code/events/partials/modal-event.php:30
+msgid "Days"
+msgstr ""
+
 #: code/settings/delivery/partials/delivery.php:43
 msgid "Default delivery time (minutes)"
 msgstr "Standard leveringstid (minutter)"
+
+#: code/events/js/directives/event/event.php:41
+msgid "Delete"
+msgstr "Slett"
+
+#: code/events/partials/modal-event.php:174
+msgid "Delete this slot"
+msgstr "Slett denne delen"
 
 #: code/settings/delivery/partials/delivery.php:18
 msgid "Delivery Areas"
@@ -170,6 +274,10 @@ msgstr "Leveringsinnstillinger"
 msgid "Delivery charge"
 msgstr "Leveringskostnad"
 
+#: code/events/partials/events.php:16
+msgid "Description"
+msgstr "Beskrivelse"
+
 #: code/kyc/partials/stream.php:78
 msgid "Discount"
 msgstr "Rabatt"
@@ -177,6 +285,22 @@ msgstr "Rabatt"
 #: code/settings/delivery/partials/delivery.php:48
 msgid "Discount offered for delivery orders (%)"
 msgstr "Rabatt ved ordre for levering (%)"
+
+#: code/events/partials/modal-event.php:193
+msgid "Done"
+msgstr "Fullført"
+
+#: code/events/js/directives/event/event.php:40
+msgid "Duplicate"
+msgstr "Dupliser"
+
+#: code/events/partials/modal-event.php:25
+msgid "Duration:"
+msgstr "Opprette meny"
+
+#: code/events/js/directives/event/event.php:39
+msgid "Edit"
+msgstr "Rediger"
 
 #: code/accountSettings/partials/profile.php:23
 msgid "Email Address"
@@ -194,9 +318,50 @@ msgstr "E-postadresse for å motta butikk varsler"
 msgid "Enable delivery services"
 msgstr "Aktiver leveringstjenester"
 
+#: code/events/partials/events.php:19
+msgid "End Time"
+msgstr "Slutt tidspunkt"
+
+#: code/events/partials/modal-event.php:127
+msgid "Enter a name for the slot"
+msgstr ""
+
+#: code/events/partials/modal-event.php:32
+#: code/events/partials/modal-event.php:37
+#: code/events/partials/modal-event.php:42
+msgid "Enter a number"
+msgstr "Kortnummer"
+
+#: code/events/partials/modal-event.php:134
+#: code/events/partials/modal-event.php:146
+#: code/events/partials/modal-event.php:157
+#: code/events/partials/modal-event.php:169
+msgid "Enter minutes?"
+msgstr ""
+
 #: code/kyc/partials/events.php:25
 msgid "Event"
 msgstr "Arrangement"
+
+#: code/events/partials/modal-event.php:14
+msgid "Event description:"
+msgstr "Bedriftens beskrivelse"
+
+#: code/events/partials/modal-event.php:69
+msgid "Event first occurrence:"
+msgstr ""
+
+#: code/events/partials/modal-event.php:57
+msgid "Event frequency:"
+msgstr ""
+
+#: code/events/partials/modal-event.php:74
+msgid "Event last occurrence:"
+msgstr ""
+
+#: code/events/partials/modal-event.php:11
+msgid "Event name:"
+msgstr "Arrangementer:"
 
 #: code/kyc/index.php:29 code/kyc/partials/events.php:8
 msgid "Events"
@@ -212,7 +377,7 @@ msgstr "Utløper"
 
 #: code/kyc/js/directives/chart/chart.php:71
 #: code/kyc/partials/customers.php:89 code/kyc/partials/events.php:102
-#: code/kyc/partials/orders.php:110 code/kyc/partials/reports.php:116
+#: code/kyc/partials/orders.php:118 code/kyc/partials/reports.php:116
 #: code/kyc/partials/stock.php:75
 msgid "Export as..."
 msgstr "Eksporter som..."
@@ -225,6 +390,24 @@ msgstr "Fornavn"
 msgid "Free delivery for orders above"
 msgstr "Gratis levering for ordre over"
 
+#: code/events/js/directives/event/event.php:18
+#: code/events/js/directives/event/event.php:22
+#: code/events/partials/modal-event.php:20
+msgid "HH:MM"
+msgstr "TT:MM"
+
+#: code/events/js/controllers/modalController.js:309
+msgid "Half-Time"
+msgstr "Tid"
+
+#: code/events/partials/modal-event.php:35
+msgid "Hours"
+msgstr ""
+
+#: code/events/partials/modal-event.php:26
+msgid "How many days will your event occurs in days, hours and minutes?"
+msgstr ""
+
 #: code/settings/delivery/partials/notifications.php:64
 msgid ""
 "In addition to the fulfilment app, you can also receive email updates to "
@@ -236,6 +419,10 @@ msgstr ""
 #: code/settings/delivery/partials/delivery.php:23
 msgid "In case of customer queries contact:"
 msgstr "Ved kundehenvendelser kontakt:"
+
+#: code/events/js/controllers/modalController.js:307
+msgid "Interval"
+msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:10
 msgid "Inv no."
@@ -269,6 +456,10 @@ msgstr "Live aktivitet"
 msgid "MM"
 msgstr "MM"
 
+#: code/events/js/controllers/modalController.js:27
+msgid "MONTHLY"
+msgstr ""
+
 #: code/kyc/partials/stock.php:8
 msgid "Menu items"
 msgstr "Menyelementer"
@@ -281,6 +472,10 @@ msgstr "Analyser"
 msgid "Minimum order value to qualify for delivery"
 msgstr "Minimumsbeløp for levering"
 
+#: code/events/partials/modal-event.php:40
+msgid "Minutes"
+msgstr "minutter siden"
+
 #: code/accountSettings/index.php:18
 msgid "My Account"
 msgstr "Min konto"
@@ -289,7 +484,7 @@ msgstr "Min konto"
 msgid "My Subscriptions"
 msgstr "Mine abonnementer"
 
-#: code/kyc/partials/customers.php:26
+#: code/events/partials/events.php:15 code/kyc/partials/customers.php:26
 msgid "Name"
 msgstr "Navn"
 
@@ -301,6 +496,15 @@ msgstr "Navn på kortet"
 msgid "New Password"
 msgstr "Nytt passord"
 
+#: code/events/partials/modal-event.php:3
+msgid "New event"
+msgstr "Legg til nytt arrangement"
+
+#: code/events/partials/modal-event.php:192
+msgid "Next"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:33
 #: code/settings/delivery/partials/delivery.php:6
 #: code/settings/delivery/partials/notifications.php:27
 #: code/settings/delivery/partials/notifications.php:52
@@ -310,6 +514,15 @@ msgstr "Nei"
 #: code/kyc/js/directives/chart/chart.php:20
 msgid "No Data"
 msgstr "Ingen data"
+
+#: code/events/js/directives/event/event.js:117
+#: code/events/js/directives/event/event.js:151
+msgid "No, go back."
+msgstr "Nei, gå tilbake."
+
+#: code/events/js/controllers/modalController.js:24
+msgid "ONCE"
+msgstr ""
 
 #: code/accountSettings/partials/password.php:5
 msgid "Old Password"
@@ -327,7 +540,7 @@ msgstr "Varsel for avvist ordre"
 msgid "Order Status Alerts"
 msgstr "Varsel for ordrestatus"
 
-#: code/kyc/partials/events.php:46 code/kyc/partials/orders.php:53
+#: code/kyc/partials/events.php:46 code/kyc/partials/orders.php:60
 msgid "Order Total"
 msgstr "Ordre total"
 
@@ -343,9 +556,13 @@ msgstr "Utsalgssted"
 msgid "Outlet Name:"
 msgstr "Utsalgsstedets navn:"
 
+#: code/events/partials/modal-event.php:46
+msgid "Outlet location:"
+msgstr "Utsalgsstedets navn:"
+
 #: code/kyc/js/directives/chart/chart.php:76
 #: code/kyc/partials/customers.php:94 code/kyc/partials/events.php:107
-#: code/kyc/partials/orders.php:115 code/kyc/partials/reports.php:121
+#: code/kyc/partials/orders.php:123 code/kyc/partials/reports.php:121
 #: code/kyc/partials/stock.php:80
 msgid "PDF"
 msgstr "PDF"
@@ -369,6 +586,10 @@ msgstr "Vennligst legg til kortdetaljer for å aktivere abonnementet."
 #: code/accountSettings/partials/subscription.php:7
 msgid "Please add a payment method to keep your account active"
 msgstr "Vennligst legg til en betalingsmåte for å holde kontoen din aktiv"
+
+#: code/events/partials/modal-event.php:128
+msgid "Please choose a slot."
+msgstr "Velg et sted"
 
 #: code/settings/delivery/partials/notifications.php:45
 msgid "Please enter a message and a short name or remove this notification."
@@ -403,9 +624,21 @@ msgstr "Vennligst oppgi rabatt i prosent (mellom 0 og 100)"
 msgid "Please type a delivery zone (max 200chars)"
 msgstr "Vennligst skriv inn et leveringsområde (maks 200 bokstaver)"
 
+#: code/events/js/directives/event/event.php:11
+msgid "Please type a description (max 250chars)"
+msgstr "Skriv inn en beskrivelse (maks 250 bokstaver)"
+
 #: code/accountSettings/partials/profile.php:27
 msgid "Please type a valid email address"
 msgstr "Vennligst skriv inn en gyldig e-postadresse"
+
+#: code/events/partials/modal-event.php:13
+msgid "Please type an event name (max 100 chars)"
+msgstr "Skriv inn et arrangement navn (maks 100 bokstaver)"
+
+#: code/events/js/directives/event/event.php:7
+msgid "Please type an event name (max 100chars)"
+msgstr "Skriv inn et arrangement navn (maks 100 bokstaver)"
 
 #: code/accountSettings/partials/profile.php:36
 msgid "Please type your account name.(max 100chars)"
@@ -423,9 +656,25 @@ msgstr "Vennligst skriv etternavnet ditt. (maks 100 bokstaver)"
 msgid "Please update your card details within"
 msgstr "Vennligst oppdater kortdetaljene innen"
 
+#: code/events/js/controllers/modalController.js:311
+msgid "Post-Game"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:310
+msgid "Post-Show"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:44
 msgid "Postcode"
 msgstr "Postnummer"
+
+#: code/events/js/controllers/modalController.js:306
+msgid "Pre-Game"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:305
+msgid "Pre-Show"
+msgstr ""
 
 #: code/settings/delivery/partials/notifications.php:2
 msgid "Preset Notifications"
@@ -441,6 +690,10 @@ msgid "Preset order rejection notifications, sent by email and push alert"
 msgstr ""
 "Forhåndsinnstilte avvisnings meldinger, som sendes via e-post og push-"
 "varsling"
+
+#: code/events/partials/modal-event.php:191
+msgid "Previous"
+msgstr ""
 
 #: code/accountSettings/index.php:25
 #: code/accountSettings/partials/password.php:1
@@ -470,15 +723,13 @@ msgstr "Rapporter"
 msgid "SAVE"
 msgstr "LAGRE"
 
+#: code/accountSettings/partials/password.php:25
 #: code/settings/delivery/partials/delivery.php:58
 #: code/settings/delivery/partials/notifications.php:76
 msgid "SAVE CHANGES"
 msgstr "LAGRE ENDRINGER"
 
-#: code/accountSettings/partials/password.php:25
-msgid "SAVE CHANGES>"
-msgstr "LAGRE ENDRINGER>"
-
+#: code/accountSettings/partials/password.php:27
 #: code/accountSettings/partials/payment.php:50
 #: code/settings/delivery/partials/delivery.php:59
 #: code/settings/delivery/partials/notifications.php:77
@@ -489,12 +740,20 @@ msgstr "LAGRER..."
 msgid "SAVING...\""
 msgstr "LAGRER..\""
 
-#: code/accountSettings/partials/password.php:27
-msgid "SAVING...>"
-msgstr "LAGRER...>"
+#: code/events/partials/modal-event.php:55
+msgid "Schedule"
+msgstr "Faktureringsplan"
+
+#: code/events/js/controllers/modalController.js:308
+msgid "Second-Interval"
+msgstr "Samlingssted: Andre interval"
+
+#: code/events/partials/modal-event.php:80
+msgid "Select the days on the calendar below."
+msgstr ""
 
 #: code/kyc/partials/customers.php:110 code/kyc/partials/events.php:123
-#: code/kyc/partials/orders.php:131 code/kyc/partials/reports.php:137
+#: code/kyc/partials/orders.php:139 code/kyc/partials/reports.php:137
 #: code/kyc/partials/stock.php:96
 msgid "Selected"
 msgstr "Valgte"
@@ -503,6 +762,26 @@ msgstr "Valgte"
 #: code/settings/delivery/partials/notifications.php:38
 msgid "Short name"
 msgstr "Kallenavn"
+
+#: code/events/partials/modal-event.php:126
+msgid "Slot name"
+msgstr "Kallenavn"
+
+#: code/events/js/directives/event/event.js:144
+msgid "Sorry, but there's been an error processing your request."
+msgstr "Beklager, men det var en feil ved behandling av forespørselen."
+
+#: code/events/partials/events.php:17
+msgid "Start Date"
+msgstr "Start dato"
+
+#: code/events/partials/events.php:18
+msgid "Start Time"
+msgstr "Start tidspunkt"
+
+#: code/events/partials/modal-event.php:19
+msgid "Start time:"
+msgstr "Start tidspunkt"
 
 #: code/accountSettings/partials/billingHistory.php:12
 #: code/kyc/partials/stream.php:14
@@ -523,9 +802,34 @@ msgstr "Abonnementer"
 msgid "TOTAL"
 msgstr "TOTALT"
 
+#: code/events/partials/events.php:6
+msgid ""
+"These show when you are open for ordering, such as performances or matches. "
+"They can be viewed from the front page of your app"
+msgstr ""
+"Disse viser når du har åpent for bestilling, som for eksempel forestillinger "
+"eller kamper. De kan sees fra forsiden av din app"
+
+#: code/events/partials/modal-event.php:131
+msgid "This slot starts"
+msgstr ""
+
 #: code/kyc/partials/stream.php:42
 msgid "Time"
 msgstr "Tid"
+
+#: code/events/js/directives/event/event.php:19
+#: code/events/js/directives/event/event.php:23
+#: code/events/partials/modal-event.php:21
+#: code/events/partials/modal-event.php:31
+#: code/events/partials/modal-event.php:36
+#: code/events/partials/modal-event.php:41
+msgid "Time?"
+msgstr "Tid?"
+
+#: code/events/partials/events.php:21
+msgid "Tools"
+msgstr "Verktøy"
 
 #: code/kyc/partials/stream.php:21
 msgid "Total"
@@ -547,15 +851,37 @@ msgstr "OPPGRADER"
 msgid "Venue Alerts"
 msgstr "Varsler for utsalgssted"
 
+#: code/events/partials/events.php:20
+msgid "Visible?"
+msgstr "Synlig?"
+
+#: code/events/js/controllers/modalController.js:26
+msgid "WEEKLY"
+msgstr ""
+
+#: code/events/partials/modal-event.php:29
+msgid "What's your event duration?"
+msgstr "Dagene din restaurant er åpen"
+
+#: code/events/js/controllers/modalController.js:28
+msgid "YEARLY"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:29
 msgid "YY"
 msgstr "ÅÅ"
 
+#: code/events/js/directives/event/event.php:30
 #: code/settings/delivery/partials/delivery.php:8
 #: code/settings/delivery/partials/notifications.php:29
 #: code/settings/delivery/partials/notifications.php:54
 msgid "Yes"
 msgstr "Ja"
+
+#: code/events/js/directives/event/event.js:110
+#: code/events/js/directives/event/event.js:131
+msgid "Yes, delete this event!"
+msgstr "Ja, slett denne hendelsen!"
 
 #: code/accountSettings/partials/subscription.php:44
 msgid "You are currently subscribed to the"
@@ -581,6 +907,10 @@ msgstr "Din konto vil bli fakturert"
 msgid "Your account will be deactivated on"
 msgstr "Din konto vil bli deaktivert den"
 
+#: code/events/partials/events.php:6
+msgid "Your events"
+msgstr "Dine arrangementer"
+
 #: code/accountSettings/partials/subscription.php:45
 msgid "Your free trial of this subscription will end at midnight on"
 msgstr ""
@@ -590,6 +920,18 @@ msgstr ""
 msgid "Your subscription has been cancelled"
 msgstr "Abonnementet er kansellert"
 
+#: code/events/js/controllers/modalController.js:33
+msgid "after"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:34
+msgid "before"
+msgstr ""
+
+#: code/events/partials/modal-event.php:164
+msgid "broken down in steps"
+msgstr ""
+
 #: code/accountSettings/partials/subscription.php:13
 msgid "days to prevent your account from being deactivated."
 msgstr "dager for å hindre at kontoen din blir deaktivert."
@@ -598,13 +940,55 @@ msgstr "dager for å hindre at kontoen din blir deaktivert."
 msgid "eg. \\\"NW1, NW2...\\\""
 msgstr "f.eks. \\\"3210, 3211...\\\""
 
+#: code/events/js/controllers/modalController.js:35
+msgid "is"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:36
+msgid "is not"
+msgstr ""
+
+#: code/events/partials/modal-event.php:137
+#: code/events/partials/modal-event.php:148
+#: code/events/partials/modal-event.php:171
+msgid "minutes"
+msgstr "minutter siden"
+
+#: code/events/partials/modal-event.php:159
+msgid "minutes and it"
+msgstr "minutter siden"
+
+#: code/events/partials/modal-event.php:165
+msgid "of"
+msgstr ""
+
 #: code/accountSettings/partials/subscription.php:44
 msgid "package"
 msgstr "pakke"
 
+#: code/events/partials/modal-event.php:153
+msgid "the event start time with a lead time of"
+msgstr ""
+
+#: code/events/partials/modal-event.php:142
+msgid "the event, it ends"
+msgstr ""
+
 #: code/kyc/index.php:66
 msgid "to"
 msgstr "til"
+
+#~ msgid "All Locations\")?>"
+#~ msgstr "﻿Alle lokasjoner"
+
+#~ msgid "CANCEL>"
+#~ msgstr "AVBRYT>"
+
+#~ msgid "SAVE CHANGES>"
+#~ msgstr "LAGRE ENDRINGER>"
+
+#~ msgid "SAVING...>"
+#~ msgstr "LAGRER...>"
 
 #~ msgid "Please type your password"
 #~ msgstr "Vennligst skriv inn passordet ditt"
@@ -695,9 +1079,6 @@ msgstr "til"
 #~ msgid "Transaction Details"
 #~ msgstr "Transaksjonsdetaljer"
 
-#~ msgid "Description"
-#~ msgstr "Beskrivelse"
-
 #~ msgid "Unit price"
 #~ msgstr "Enhetspris"
 
@@ -706,9 +1087,6 @@ msgstr "til"
 #~ msgstr ""
 #~ "Husk at du kan oppgradere, nedgradere eller avbestille pakken din når som "
 #~ "helst."
-
-#~ msgid "Card number"
-#~ msgstr "Kortnummer"
 
 #~ msgid "Why do you need my card details for a free trial?"
 #~ msgstr "Hvorfor trenger du kortdetaljene mine for en gratis prøveversjon?"
@@ -816,9 +1194,6 @@ msgstr "til"
 #~ msgid "Menus"
 #~ msgstr "Menyer"
 
-#~ msgid "Edit"
-#~ msgstr "Rediger"
-
 #~ msgid "Meal Deals"
 #~ msgstr "Tilbud"
 
@@ -909,14 +1284,8 @@ msgstr "til"
 #~ msgid "App Styling 2/2"
 #~ msgstr "Styling"
 
-#~ msgid "Menu Creation"
-#~ msgstr "Opprette meny"
-
 #~ msgid "Add a Payment"
 #~ msgstr "Legg til en betaling"
-
-#~ msgid "Done"
-#~ msgstr "Fullført"
 
 #~ msgid "Style your app"
 #~ msgstr "Endre utseende for din app"
@@ -986,9 +1355,6 @@ msgstr "til"
 #~ msgid "This decides the level of access of your users."
 #~ msgstr "Dette bestemmer tilgangsnivået for brukerne."
 
-#~ msgid "Tools"
-#~ msgstr "Verktøy"
-
 #~ msgid "Add a user name"
 #~ msgstr "Legg til et brukernavn"
 
@@ -1019,15 +1385,6 @@ msgstr "til"
 #~ msgid "Owner"
 #~ msgstr "Eier"
 
-#~ msgid "Collapse"
-#~ msgstr "Trekk sammen"
-
-#~ msgid "Duplicate"
-#~ msgstr "Dupliser"
-
-#~ msgid "Delete"
-#~ msgstr "Slett"
-
 #~ msgid "Assign a password"
 #~ msgstr "Tildele et passord"
 
@@ -1043,93 +1400,14 @@ msgstr "til"
 #~ msgid "Passwords don't match"
 #~ msgstr "Passordene samsvarer ikke"
 
-#~ msgid "Your events"
-#~ msgstr "Dine arrangementer"
-
-#~ msgid ""
-#~ "These show when you are open for ordering, such as performances or "
-#~ "matches. They can be viewed from the front page of your app"
-#~ msgstr ""
-#~ "Disse viser når du har åpent for bestilling, som for eksempel "
-#~ "forestillinger eller kamper. De kan sees fra forsiden av din app"
-
-#~ msgid "Add a new event"
-#~ msgstr "Legg til nytt arrangement"
-
-#~ msgid "Start Date"
-#~ msgstr "Start dato"
-
-#~ msgid "Start Time"
-#~ msgstr "Start tidspunkt"
-
-#~ msgid "End Time"
-#~ msgstr "Slutt tidspunkt"
-
-#~ msgid "Visible?"
-#~ msgstr "Synlig?"
-
-#~ msgid "Click to add an event name"
-#~ msgstr "Klikk for å legge et arrangement navn"
-
-#~ msgid "Please type an event name (max 100chars)"
-#~ msgstr "Skriv inn et arrangement navn (maks 100 bokstaver)"
-
-#~ msgid "Click to add a description"
-#~ msgstr "Klikk for å legge inn en beskrivelse"
-
-#~ msgid "Please type a description (max 250chars)"
-#~ msgstr "Skriv inn en beskrivelse (maks 250 bokstaver)"
-
-#~ msgid "DD/MM/YYYY"
-#~ msgstr "DD/MM/ÅÅÅÅ"
-
-#~ msgid "Date?"
-#~ msgstr "Dato?"
-
-#~ msgid "HH:MM"
-#~ msgstr "TT:MM"
-
-#~ msgid "Time?"
-#~ msgstr "Tid?"
-
-#~ msgid "All Locations"
-#~ msgstr "﻿Alle lokasjoner"
-
-#~ msgid "Collection Slot: Pre-Show"
-#~ msgstr "Samlingssted: Før show"
-
-#~ msgid "Collection Slot: Pre-Game"
-#~ msgstr "Samlingssted: Før kamp"
-
-#~ msgid "Collection Slot: Interval"
-#~ msgstr "Samlingssted: Interval"
-
-#~ msgid "Collection Slot: Second-Interval"
-#~ msgstr "Samlingssted: Andre interval"
-
 #~ msgid "Collection Slot: Half-time"
 #~ msgstr "Samlingssted: Halv tid"
-
-#~ msgid "Collection Slot: Post-Show"
-#~ msgstr "Samlingssted: Etter show"
-
-#~ msgid "Collection Slot: Post-Game"
-#~ msgstr "Samlingssted: Etter kamp"
-
-#~ msgid "Please choose a slot."
-#~ msgstr "Velg et sted"
 
 #~ msgid "Lead Time (mins)"
 #~ msgstr "Ledetid (min)"
 
 #~ msgid "30"
 #~ msgstr "30"
-
-#~ msgid "Add another slot"
-#~ msgstr "Legg til nytt sted"
-
-#~ msgid "Collection Slot: Half-Time"
-#~ msgstr "Samlingssted: Halv tid"
 
 #~ msgid "eg. 30"
 #~ msgstr "f.eks 30"
@@ -1236,9 +1514,6 @@ msgstr "til"
 #~ msgid "Tell us about your opening times"
 #~ msgstr "Fortell oss om dine åpningstider"
 
-#~ msgid "Days your venue is open"
-#~ msgstr "Dagene din restaurant er åpen"
-
 #~ msgid "Mon"
 #~ msgstr "Man"
 
@@ -1308,9 +1583,6 @@ msgstr "til"
 
 #~ msgid "Please type a venue name (max 100chars)"
 #~ msgstr "Skriv inn bedriftens navn (maks 100 bokstaver)"
-
-#~ msgid "Venue description"
-#~ msgstr "Bedriftens beskrivelse"
 
 #~ msgid ""
 #~ "Please enter a short description about your venue.<br/><br/>This will not "
@@ -1633,9 +1905,6 @@ msgstr "til"
 
 #~ msgid "Amount?"
 #~ msgstr "Beløp?"
-
-#~ msgid "Delete this section"
-#~ msgstr "Slett denne delen"
 
 #~ msgid "Type or pick a selection title"
 #~ msgstr "Skriv inn eller velg en tittel"
@@ -2035,9 +2304,6 @@ msgstr "til"
 #~ msgid "Sign in to your Dashboard"
 #~ msgstr "Logg inn på Dashboard"
 
-#~ msgid "Sorry, but there's been an error processing your request."
-#~ msgstr "Beklager, men det var en feil ved behandling av forespørselen."
-
 #~ msgid "Incorrect credentials or account does not exist."
 #~ msgstr "Feil detaljer oppgitt eller konto finnes ikke."
 
@@ -2090,9 +2356,6 @@ msgstr "til"
 #~ msgid "Yes, delete this section and all its contents!"
 #~ msgstr "Ja, slett denne delen og alt innhold!"
 
-#~ msgid "No, go back."
-#~ msgstr "Nei, gå tilbake."
-
 #~ msgid "Choose a main"
 #~ msgstr "Velg en hoverett"
 
@@ -2111,21 +2374,8 @@ msgstr "til"
 #~ msgid "Menu configuration has been saved!"
 #~ msgstr "Konfigurasjonen er lagret!"
 
-#~ msgid "Choose a Collection Slot"
-#~ msgstr "Velg et sted"
-
 #~ msgid "Choose Event Location"
 #~ msgstr "Velg Arrangement sted"
-
-#~ msgid ""
-#~ "Are you sure you want to delete this event? Note: all event data will be "
-#~ "lost!"
-#~ msgstr ""
-#~ "Er du sikker på at du vil slette denne hendelsen? Merk: alle hendelses "
-#~ "data vil gå tapt!"
-
-#~ msgid "Yes, delete this event!"
-#~ msgstr "Ja, slett denne hendelsen!"
 
 #~ msgid "Choose Venue"
 #~ msgstr "Velg Restaurant"
@@ -2610,9 +2860,6 @@ msgstr "til"
 
 #~ msgid "hour ago"
 #~ msgstr "time siden"
-
-#~ msgid "minutes ago"
-#~ msgstr "minutter siden"
 
 #~ msgid "minute ago"
 #~ msgstr "minutt siden"
