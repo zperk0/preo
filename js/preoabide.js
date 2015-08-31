@@ -1,5 +1,5 @@
 /*  PREO-ABIDE
-  //TODO add description here 
+  //TODO add description here
 **/
 
 ;(function ($, window, document, undefined) {
@@ -88,15 +88,18 @@
       this.settings.init = true;
 
 	     //console.log(this.settings);
-	  
       if (!this.settings.live_validate) return;
 
       forms
-        // .find('input, textarea, select')
-        .on('blur change','input, textarea, select', function (e) {
+        .on('blur change', 'input, textarea, select', function (e) {
           self.validate([this], e);
-        });/*
-        .on('keydown', function (e) {
+        });
+
+      // forms
+        // .on('blur change','input, textarea, select', function (e) {
+          // self.validate([this], e);
+        // });
+        /*.on('keydown', function (e) {
           clearTimeout(self.timer);
           self.timer = setTimeout(function () {
             self.validate([this], e);
@@ -111,10 +114,15 @@
 
       while (validation_count--) {
         if (!validations[validation_count] && /submit/.test(e.type)) {
-          if (this.settings.focus_on_invalid) els[validation_count].focus();
-          form.trigger('invalid');
-          $(els[validation_count]).closest('form').attr('data-invalid', '');
-          return false;
+
+          // ignore dummy items validation
+          if($(els[validation_count]).closest('.dummyItem').length == 0) {
+
+            if (this.settings.focus_on_invalid) els[validation_count].focus();
+            form.trigger('invalid');
+            $(els[validation_count]).closest('form').attr('data-invalid', '');
+            return false;
+          }
         }
       }
 
@@ -123,8 +131,6 @@
       }
 
       form.removeAttr('data-invalid');
-
-      //return true;
       return false;
     },
 
