@@ -254,6 +254,10 @@ $(document).ready(function() {
 	//change language ajaxy button
 	$("a.changeLang").on('click', function () {
 		var newLang = $(this).attr('data-new-lang');
+
+		console.log('change language')
+
+		delete XMLHttpRequest.prototype.send;
 		$.post("/code/shared/changeLang.php", 'lang='+newLang, function() {window.location.reload();});
 	});
 
