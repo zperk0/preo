@@ -78,7 +78,15 @@
                         vm.schedules.freq = 'CUSTOM';
 
                         items.eventObj.schedules.forEach(function(elem, index) {
-                            vm.selectedDays.push(elem.startDate);
+                            // var str = elem.startDate.substr(0, elem.startDate.indexOf('T')),
+                            //     splitDate = str.split('-'),
+                            //     date = new Date(splitDate[0], splitDate[1] - 1, splitDate[0]);
+
+                            // date.setHours(0);
+                            // date.setMinutes(0);
+                            var date = new Date(elem.startDate);
+
+                            vm.selectedDays.push(date);
                         });
                     }
                     else {
@@ -261,16 +269,17 @@
 
                     selected.forEach(function(elem, index) {
 
-                        var customDate = new Date(elem).toISOString();
+                        var customDate = moment.utc(elem);
 
                         // set start time
-                        customDate.setHours(hours);
-                        customDate.setMinutes(minutes);
+                        customDate.hours(hours);
+                        customDate.minutes(minutes);
+                        customDate = customDate.format('YYYY-MM-DDTHH:mm:ss');
 
                         schedules.push({
                             freq: 'ONCE',
-                            startDate: customDate.substr(0, customDate.length - 1),
-                            endDate: customDate.substr(0, customDate.length - 1)
+                            startDate: customDate,
+                            endDate: customDate
                         });
                     });
                 }
@@ -411,9 +420,9 @@
             function refreshCurrentMonth() {
 
                 vm.currentMonth = moment(vm.date).utc().startOf('month').valueOf();
-                // $timeout(function() {
-                //     $('select.titleMonth').multiselect('refresh');
-                // });
+                $timeout(function() {
+                    $('select.titleMonth').multiselect('refresh');
+                });
             }
 
             function _init() {
@@ -422,12 +431,12 @@
                 $('.schedEndDate').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}});
                 $('.startTime').timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
 
-                // $('select.titleMonth').multiselect({
-                //     multiple: false,
-                //     header: false,
-                //     selectedList: 1,
-                //     minWidth: 342
-                // });
+                $('select.titleMonth').multiselect({
+                    multiple: false,
+                    header: false,
+                    selectedList: 1,
+                    minWidth: 342
+                });
 
                 $('.infoTab select').multiselect({
                     multiple: false,

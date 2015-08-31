@@ -17,6 +17,9 @@ angular.module('events')
             // Expand options to edit event info
             ng.expandOptions = function(event, eventObj) {
 
+                var eventSelected = $(event.currentTarget).closest('.eventTable'),
+                    eventDateElem = eventSelected.find('.eventTDDate input');
+
                 var modalInstance = $modal.open({
                     templateUrl: '/code/events/partials/modal-event.php',
                     controller: 'ModalCtrl as modal',
@@ -35,7 +38,11 @@ angular.module('events')
                     $log.log(selectedItem);
 
                     $rootScope.$broadcast('updateEvent', {evtData: selectedItem});
-                    // vm.events.push(selectedItem);
+
+                    // update event date after the digest
+                    $timeout(function() {
+                        eventDateElem.val(DateUtils.getStrDate(eventDateElem.val()));
+                    });
                 }, function () {
                     $log.log('Modal dismissed at: ' + new Date());
                     $(document.body).css('overflow', 'auto');

@@ -53,8 +53,8 @@ angular.module('events')
       // first time with endDate defined (edit mode)
       if(!oldValue)
         $scope.schedules.endDate = '';
-
-      $scope.selectedDays = [];
+      else
+        $scope.selectedDays = [];
 
       if(newValue != '' && newValue)
         $scope.select(newValue, oldValue);
@@ -72,7 +72,7 @@ angular.module('events')
 
     $scope.$watch('schedules.freq', function(newValue, oldValue) {
 
-      if(oldValue == 'CUSTOM') {
+      if(oldValue == 'CUSTOM' && newValue != oldValue) {
 
         $scope.selectedDays = [];
         $scope.schedules.startDate = '';
@@ -87,13 +87,20 @@ angular.module('events')
     // change active date (controls current month)
     $scope.$watch('ngModel', function(newValue, oldValue) {
 
-      if(newValue != '' && newValue && newValue != self.activeDate)
+      // console.log('Changed ng model.');
+
+      if((newValue != '' && newValue) && (newValue != self.activeDate)) {
+        console.log('select day from changing model')
         $scope.select({
           activeDate: newValue
         });
+      }
     });
 
     this.updateFrequency = function(freq) {
+
+      // console.log('update frequency...', freq);
+      // console.log('start date...', $scope.schedules.startDate);
 
       if($scope.schedules.startDate && $scope.schedules.startDate != '') {
 
@@ -169,10 +176,14 @@ angular.module('events')
 
       }
       else {
-        if($scope.selectedDays.length > 0)
-          $scope.selectedDays = [$scope.selectedDays[0]];
-        else
-          $scope.selectedDays = [];
+        // first run
+        if($scope.schedules.freq != 'CUSTOM') {
+
+          if($scope.selectedDays.length > 0)
+            $scope.selectedDays = [$scope.selectedDays[0]];
+          else
+            $scope.selectedDays = [];
+        }
       }
 
       // refresh view
@@ -225,6 +236,8 @@ angular.module('events')
 
     $scope.select = function( dateObject, oldDate ) {
 
+      // console.trace('select date...', dateObject, oldDate)
+
       var date, dt = new Date(0, 0, 0, 0, 0, 0, 0), removing = false;
 
       if ( $scope.datepickerMode === self.minMode ) {
@@ -234,7 +247,7 @@ angular.module('events')
           date = dateObject.activeDate ? dateObject.activeDate : dateObject.date ? dateObject.date : dateObject;
           // date = dateObject.date ? dateObject.date : dateObject;
           dt.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());
-          self.activeDate = dt;
+          self.activeDate = date;
           $scope.ngModel = self.activeDate;
 
           // don't push dates from active date control
@@ -287,6 +300,8 @@ angular.module('events')
         self.activeDate = date;
         $scope.datepickerMode = self.modes[ self.modes.indexOf( $scope.datepickerMode ) - 1 ];
       }
+
+      // console.log('result from selecting: selected days',$scope.selectedDays);
     };
 
     $scope.move = function( direction ) {
