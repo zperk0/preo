@@ -36,9 +36,11 @@ var app = angular.module('events', ['ngRoute', 'constants', 'webapp.components',
 
         if (lang != 'en_GB') {
 
+            console.log(moment.locale());
+
             gettextCatalog.currentLanguage = lang;
             // gettextCatalog.debug = true;
-            moment.lang(language);
+            moment.locale(language);
         }
 
     }]);;

@@ -43,7 +43,7 @@ module.exports = function(grunt) {
               'js/foundation/foundation.tooltips.js','js/foundation/foundation.topbar.js','js/foundation/foundation.datepicker.js','js/foundation/foundation.abide.js', 'js/foundation/foundation.orbit.js', 'js/foundation/foundation.clearing.js',
               'js/jquery.noty-full-min.js','js/jsColor/jscolor.js','js/form.js','js/tweet.js','js/timepicker.js','js/jquery-ui.min.js', 'js/croppic.js', 'js/croppicPreoday.js',
               'js/autoNumeric.js','js/multi-select.js','js/tableSlide.js','js/js-actual.js','js/googleplus.js','bower_components/gridster/dist/jquery.gridster.min.js',
-              'bower_components/moment/moment.js','bower_components/highcharts/highcharts.js','js/jquery.shapeshift.js','bower_components/underscore/underscore.js',
+              'bower_components/moment/moment.js', 'bower_components/moment/locale/de.js', 'bower_components/moment/locale/fr.js', 'bower_components/moment/locale/nb.js', 'bower_components/highcharts/highcharts.js','js/jquery.shapeshift.js','bower_components/underscore/underscore.js',
               'js/preoabide.js','js/general.js'],
         dest: 'js/all_scripts.min.js'
       },

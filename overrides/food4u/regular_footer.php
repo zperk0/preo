@@ -7,10 +7,10 @@
 				<div class="large-3 small-2 columns premiumDiv">
 					<a href="#" data-dropdown="langDrop" class="button dropdown small"><? echo _("CHANGE LANGUAGE");?></a>
 					<ul id="langDrop" class="f-dropdown">
-						<li><a href="#" class="changeLang" data-new-lang="en"><? echo _("English");?></a></li>
-						<li><a href="#" class="changeLang" data-new-lang="de"><? echo _("German");?></a></li>
-						<li><a href="#" class="changeLang" data-new-lang="fr"><? echo _("French");?></a></li>
-						<li><a href="#" class="changeLang" data-new-lang="nb"><? echo _("Norwegian");?></a></li>
+						<li><a href="javascript:void(0)" class="changeLang" data-new-lang="en"><? echo _("English");?></a></li>
+						<li><a href="javascript:void(0)" class="changeLang" data-new-lang="de"><? echo _("German");?></a></li>
+						<li><a href="javascript:void(0)" class="changeLang" data-new-lang="fr"><? echo _("French");?></a></li>
+						<li><a href="javascript:void(0)" class="changeLang" data-new-lang="nb"><? echo _("Norwegian");?></a></li>
 					</ul>
 				</div>
 				<!-- <div class="large-offset-4 large-2 small-3 columns left"> -->
