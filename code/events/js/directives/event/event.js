@@ -41,7 +41,7 @@ angular.module('events')
 
                     // update event date after the digest
                     $timeout(function() {
-                        eventDateElem.val(DateUtils.getStrDate(eventDateElem.val()));
+                        eventDateElem.val(DateUtils.getStrDate(selectedItem.date));
                     });
                 }, function () {
                     $log.log('Modal dismissed at: ' + new Date());

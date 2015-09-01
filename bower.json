@@ -22,7 +22,7 @@
     "angular-foundation": "~0.2.2",
     "gridster": "~0.5.1",
     "highcharts": "~3.0.7",
-    "moment": "",
+    "moment": "~2.10.6",
     "underscore": "~1.6.0",
     "select2": "~3.5.1",
     "angular-ui-select2": "~0.0.5",

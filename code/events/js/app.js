@@ -32,11 +32,9 @@ var app = angular.module('events', ['ngRoute', 'constants', 'webapp.components',
 
         language = lang.substr(0, lang.indexOf('_'));
 
-        console.log('webapp language', language);
+        // console.log('webapp language', language);
 
         if (lang != 'en_GB') {
-
-            console.log(moment.locale());
 
             gettextCatalog.currentLanguage = lang;
             // gettextCatalog.debug = true;
