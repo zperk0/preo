@@ -2,7 +2,7 @@
 
 angular.module('events')
 .service('Events',['$http','$q','VENUE_ID', function ($http, $q, VENUE_ID) {
-    
+
     var service = {},
         venueid = VENUE_ID;
 
@@ -17,6 +17,8 @@ angular.module('events')
 
         var deferred = $q.defer();
 
+        // console.log('event to delete' + event)
+
         // clean up slots first
         if(event.cSlots.length > 0)
             event.deleteSlots().then(function() {
@@ -29,7 +31,7 @@ angular.module('events')
 
         function delEvent(e, d) {
 
-            e.delete().then(function(data) {
+            e.remove().then(function(data) {
                 console.log('deleted all')
                 console.log(d)
                 d.resolve(data);
@@ -42,7 +44,7 @@ angular.module('events')
 
         // kill all eb-times items for thie event
         // arrPromises.push($http.delete('/api/events/' + event.id + '/slots'));
-        
+
         //kill event
         // arrPromises.push($http.delete('/api/events/' + event.id));
     };

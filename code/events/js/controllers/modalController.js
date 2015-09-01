@@ -78,12 +78,6 @@
                         vm.schedules.freq = 'CUSTOM';
 
                         items.eventObj.schedules.forEach(function(elem, index) {
-                            // var str = elem.startDate.substr(0, elem.startDate.indexOf('T')),
-                            //     splitDate = str.split('-'),
-                            //     date = new Date(splitDate[0], splitDate[1] - 1, splitDate[0]);
-
-                            // date.setHours(0);
-                            // date.setMinutes(0);
                             var date = new Date(elem.startDate);
 
                             vm.selectedDays.push(date);

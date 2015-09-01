@@ -90,7 +90,6 @@ angular.module('events')
       // console.log('Changed ng model.');
 
       if((newValue != '' && newValue) && (newValue != self.activeDate)) {
-        console.log('select day from changing model')
         $scope.select({
           activeDate: newValue
         });

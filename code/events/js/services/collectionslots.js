@@ -2,7 +2,7 @@
 
 angular.module('events')
 .service('CollectionSlots',['$http','$q','VENUE_ID', function ($http, $q, VENUE_ID) {
-    
+
     var service = {},
         venueid = VENUE_ID;
 
@@ -23,10 +23,10 @@ angular.module('events')
 
     service.delete = function(eventObj) {
 
-        return eventObj.delete();
+        return eventObj.remove();
     };
 
-    
+
 
     return service;
 
