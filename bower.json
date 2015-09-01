@@ -22,7 +22,7 @@
     "angular-foundation": "~0.2.2",
     "gridster": "~0.5.1",
     "highcharts": "~3.0.7",
-    "moment": "~2.7.0",
+    "moment": "",
     "underscore": "~1.6.0",
     "select2": "~3.5.1",
     "angular-ui-select2": "~0.0.5",
@@ -30,5 +30,8 @@
   },
   "resolutions": {
     "select2": "~3.5.1"
+  },
+  "devDependencies": {
+    "angular-gettext": "~2.1.0"
   }
 }
