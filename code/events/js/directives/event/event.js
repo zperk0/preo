@@ -27,7 +27,7 @@ angular.module('events')
                         items: function () {
                             return {
                                 outletLocations: ng.outletLocations,
-                                eventObj: eventObj
+                                eventObj: angular.copy(eventObj)
                             };
                         }
                     }
@@ -37,6 +37,7 @@ angular.module('events')
                     // $scope.selected = selectedItem;
                     $log.log(selectedItem);
 
+                    angular.extend(eventObj, selectedItem);
                     $rootScope.$broadcast('updateEvent', {evtData: selectedItem});
 
                     // update event date after the digest
