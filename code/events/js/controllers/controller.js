@@ -377,10 +377,8 @@
 
         function formatTime(str_time) {
 
-            var date = new Date(str_time),
-                formatted = str_time ? pad(date.getUTCHours(), 2) + ':' + pad(date.getUTCMinutes(), 2) : '';
-
-            return formatted;
+            var date = moment(str_time);
+            return str_time ? date.format('HH:mm') : '';
         };
 
         function _getOutletLocations() {
@@ -425,7 +423,7 @@
 
         function sortLocations(locations) {
 
-            locations.sort(locations, function(a, b) { return a.path < b.path; });
+            locations.sort(function(a, b) { return a.path < b.path; });
 
             var sorted = [];
             locations.forEach(function(elem, index) {
