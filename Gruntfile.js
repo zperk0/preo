@@ -180,7 +180,7 @@ module.exports = function(grunt) {
   nggettext_extract: {
     pot: {
       files: {
-        'locale_angular/angular_gettext.pot': ['**/*.php, **/*.js']
+        'locale_angular/angular_gettext.pot': ['**/*.php', '**/*.js']
       }
     },
   },
@@ -188,7 +188,7 @@ module.exports = function(grunt) {
   nggettext_compile: {
     all: {
       files: {
-        'locale_angular/translations.js': ['locale_angular/*.po']
+        '/locale_angular/translations.js': ['/locale_angular/*.po']
       }
     },
   }
