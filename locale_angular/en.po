@@ -68,14 +68,11 @@ msgstr ""
 msgid "Business Name"
 msgstr ""
 
+#: code/accountSettings/partials/password.php:26
 #: code/accountSettings/partials/payment.php:51
 #: code/accountSettings/partials/profile.php:51
 #: code/accountSettings/partials/subscription.php:52
 msgid "CANCEL"
-msgstr ""
-
-#: code/accountSettings/partials/password.php:26
-msgid "CANCEL>"
 msgstr ""
 
 #: code/accountSettings/partials/payment.php:19
@@ -463,15 +460,13 @@ msgstr ""
 msgid "SAVE"
 msgstr ""
 
+#: code/accountSettings/partials/password.php:25
 #: code/settings/delivery/partials/delivery.php:58
 #: code/settings/delivery/partials/notifications.php:76
 msgid "SAVE CHANGES"
 msgstr ""
 
-#: code/accountSettings/partials/password.php:25
-msgid "SAVE CHANGES>"
-msgstr ""
-
+#: code/accountSettings/partials/password.php:27
 #: code/accountSettings/partials/payment.php:50
 #: code/settings/delivery/partials/delivery.php:59
 #: code/settings/delivery/partials/notifications.php:77
@@ -480,10 +475,6 @@ msgstr ""
 
 #: code/accountSettings/partials/profile.php:50
 msgid "SAVING...\""
-msgstr ""
-
-#: code/accountSettings/partials/password.php:27
-msgid "SAVING...>"
 msgstr ""
 
 #: code/kyc/partials/customers.php:110 code/kyc/partials/events.php:123

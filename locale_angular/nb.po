@@ -69,15 +69,11 @@ msgstr "Faktureringsplan"
 msgid "Business Name"
 msgstr "Navn på virksomhet"
 
+#: code/accountSettings/partials/password.php:26
 #: code/accountSettings/partials/payment.php:51
 #: code/accountSettings/partials/profile.php:51
 #: code/accountSettings/partials/subscription.php:52
 msgid "CANCEL"
-msgstr "AVBRYT"
-
-#: code/accountSettings/partials/password.php:26
-#, fuzzy
-msgid "CANCEL>"
 msgstr "AVBRYT"
 
 #: code/accountSettings/partials/payment.php:19
@@ -470,16 +466,13 @@ msgstr "Rapporter"
 msgid "SAVE"
 msgstr "LAGRE"
 
+#: code/accountSettings/partials/password.php:25
 #: code/settings/delivery/partials/delivery.php:58
 #: code/settings/delivery/partials/notifications.php:76
 msgid "SAVE CHANGES"
 msgstr "LAGRE ENDRINGER"
 
-#: code/accountSettings/partials/password.php:25
-#, fuzzy
-msgid "SAVE CHANGES>"
-msgstr "LAGRE ENDRINGER"
-
+#: code/accountSettings/partials/password.php:27
 #: code/accountSettings/partials/payment.php:50
 #: code/settings/delivery/partials/delivery.php:59
 #: code/settings/delivery/partials/notifications.php:77
@@ -489,11 +482,6 @@ msgstr "LAGRER..."
 #: code/accountSettings/partials/profile.php:50
 msgid "SAVING...\""
 msgstr "LAGRER..\""
-
-#: code/accountSettings/partials/password.php:27
-#, fuzzy
-msgid "SAVING...>"
-msgstr "LAGRER..."
 
 #: code/kyc/partials/customers.php:110 code/kyc/partials/events.php:123
 #: code/kyc/partials/orders.php:131 code/kyc/partials/reports.php:137

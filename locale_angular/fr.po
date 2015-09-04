@@ -72,14 +72,11 @@ msgstr "Adresse de l'endroit"
 msgid "Business Name"
 msgstr "Nom de votre entreprise"
 
+#: code/accountSettings/partials/password.php:26
 #: code/accountSettings/partials/payment.php:51
 #: code/accountSettings/partials/profile.php:51
 #: code/accountSettings/partials/subscription.php:52
 msgid "CANCEL"
-msgstr ""
-
-#: code/accountSettings/partials/password.php:26
-msgid "CANCEL>"
 msgstr ""
 
 #: code/accountSettings/partials/payment.php:19
@@ -467,15 +464,13 @@ msgstr "RÃ©arranger"
 msgid "SAVE"
 msgstr "ENREGISTRER"
 
+#: code/accountSettings/partials/password.php:25
 #: code/settings/delivery/partials/delivery.php:58
 #: code/settings/delivery/partials/notifications.php:76
 msgid "SAVE CHANGES"
 msgstr "ENREGISTRER MODIFICATIONS"
 
-#: code/accountSettings/partials/password.php:25
-msgid "SAVE CHANGES>"
-msgstr "ENREGISTRER MODIFICATIONS"
-
+#: code/accountSettings/partials/password.php:27
 #: code/accountSettings/partials/payment.php:50
 #: code/settings/delivery/partials/delivery.php:59
 #: code/settings/delivery/partials/notifications.php:77
@@ -484,10 +479,6 @@ msgstr "EN COURS DE SAUVEGARDE"
 
 #: code/accountSettings/partials/profile.php:50
 msgid "SAVING...\""
-msgstr "EN COURS DE SAUVEGARDE"
-
-#: code/accountSettings/partials/password.php:27
-msgid "SAVING...>"
 msgstr "EN COURS DE SAUVEGARDE"
 
 #: code/kyc/partials/customers.php:110 code/kyc/partials/events.php:123
@@ -600,6 +591,12 @@ msgstr ""
 #: code/kyc/index.php:66
 msgid "to"
 msgstr ""
+
+#~ msgid "SAVE CHANGES>"
+#~ msgstr "ENREGISTRER MODIFICATIONS"
+
+#~ msgid "SAVING...>"
+#~ msgstr "EN COURS DE SAUVEGARDE"
 
 #~ msgid "Please type your password"
 #~ msgstr "Veuillez tapez votre mot de passe"
