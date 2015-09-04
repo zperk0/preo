@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-18 13:07-0300\n"
+"POT-Creation-Date: 2015-09-04 12:57-0300\n"
 "PO-Revision-Date: 2014-05-12 23:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -682,7 +682,7 @@ msgstr "Bouton couleur nÂ°2"
 #: /var/www/webapp/inc/dashboard/eventConfig.php:261
 #: /var/www/webapp/inc/dashboard/appConfig1.php:191
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:110
-#: /var/www/webapp/inc/dashboard/venueConfig.php:514
+#: /var/www/webapp/inc/dashboard/venueConfig.php:515
 #: /var/www/webapp/inc/dashboard/mdConfig.php:241
 #: /var/www/webapp/inc/dashboard/outletConfig.php:88
 #: /var/www/webapp/inc/dashboard/menuConfig.php:412
@@ -695,7 +695,7 @@ msgstr "ENREGISTRER MODIFICATIONS"
 #: /var/www/webapp/inc/dashboard/eventConfig.php:262
 #: /var/www/webapp/inc/dashboard/appConfig1.php:192
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:111
-#: /var/www/webapp/inc/dashboard/venueConfig.php:515
+#: /var/www/webapp/inc/dashboard/venueConfig.php:516
 #: /var/www/webapp/inc/dashboard/mdConfig.php:242
 #: /var/www/webapp/inc/dashboard/outletConfig.php:89
 #: /var/www/webapp/inc/dashboard/menuConfig.php:414
@@ -1480,27 +1480,27 @@ msgstr "Veuillez inscrire un code postal (max 45 caractÃ¨res)"
 msgid "Language"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:477
+#: /var/www/webapp/inc/dashboard/venueConfig.php:478
 msgid "Please select your language"
 msgstr "Veuillez sÃ©lectionner fonctions que vous fallez"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:483
+#: /var/www/webapp/inc/dashboard/venueConfig.php:484
 msgid "Timezone"
 msgstr "Heure?"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:491
+#: /var/www/webapp/inc/dashboard/venueConfig.php:492
 msgid "Please select your timezone"
 msgstr "Entrer vos exigences."
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:497
+#: /var/www/webapp/inc/dashboard/venueConfig.php:498
 msgid "Currency"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:503
+#: /var/www/webapp/inc/dashboard/venueConfig.php:504
 msgid "Please select your currency"
 msgstr "Veuillez sÃ©lectionner fonctions que vous fallez"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:526
+#: /var/www/webapp/inc/dashboard/venueConfig.php:527
 msgid "15&#37 done, keep going!"
 msgstr "15&#37 fait, continuer!"
 

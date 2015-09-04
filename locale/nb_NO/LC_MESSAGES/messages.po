@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-18 13:07-0300\n"
+"POT-Creation-Date: 2015-09-04 12:57-0300\n"
 "PO-Revision-Date: 2015-08-19 11:19+0100\n"
 "Last-Translator: Nick <na@drweb.no>\n"
 "Language-Team: \n"
@@ -303,7 +303,7 @@ msgstr "Ordreliste"
 #: /var/www/webapp/inc/shared/h.php:41
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:130
 msgid "Venue Settings"
-msgstr "Arena innstillinger"
+msgstr "Arena Innstillinger"
 
 #: /var/www/webapp/inc/shared/h.php:43
 msgid "Change Settings"
@@ -693,7 +693,7 @@ msgstr "Farge for knapp to"
 #: /var/www/webapp/inc/dashboard/eventConfig.php:261
 #: /var/www/webapp/inc/dashboard/appConfig1.php:191
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:110
-#: /var/www/webapp/inc/dashboard/venueConfig.php:514
+#: /var/www/webapp/inc/dashboard/venueConfig.php:515
 #: /var/www/webapp/inc/dashboard/mdConfig.php:241
 #: /var/www/webapp/inc/dashboard/outletConfig.php:88
 #: /var/www/webapp/inc/dashboard/menuConfig.php:412
@@ -706,7 +706,7 @@ msgstr "LAGRE ENDRINGER"
 #: /var/www/webapp/inc/dashboard/eventConfig.php:262
 #: /var/www/webapp/inc/dashboard/appConfig1.php:192
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:111
-#: /var/www/webapp/inc/dashboard/venueConfig.php:515
+#: /var/www/webapp/inc/dashboard/venueConfig.php:516
 #: /var/www/webapp/inc/dashboard/mdConfig.php:242
 #: /var/www/webapp/inc/dashboard/outletConfig.php:89
 #: /var/www/webapp/inc/dashboard/menuConfig.php:414
@@ -1492,27 +1492,27 @@ msgstr "Skriv inn et postnummer (maks 45 bokstaver)"
 msgid "Language"
 msgstr "Språk"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:477
+#: /var/www/webapp/inc/dashboard/venueConfig.php:478
 msgid "Please select your language"
 msgstr "Velg ditt språk"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:483
+#: /var/www/webapp/inc/dashboard/venueConfig.php:484
 msgid "Timezone"
 msgstr "Tidssone"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:491
+#: /var/www/webapp/inc/dashboard/venueConfig.php:492
 msgid "Please select your timezone"
 msgstr "Velg tidssone"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:497
+#: /var/www/webapp/inc/dashboard/venueConfig.php:498
 msgid "Currency"
 msgstr "Valuta"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:503
+#: /var/www/webapp/inc/dashboard/venueConfig.php:504
 msgid "Please select your currency"
 msgstr "Velg valuta"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:526
+#: /var/www/webapp/inc/dashboard/venueConfig.php:527
 msgid "15&#37 done, keep going!"
 msgstr "15&#37 ferdig, bare å fortsette!"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PreoDay\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-18 13:07-0300\n"
+"POT-Creation-Date: 2015-09-04 12:57-0300\n"
 "PO-Revision-Date: 2013-09-11 18:08-0000\n"
 "Last-Translator: Ashish Mehra <ashish@webfire.co.uk>\n"
 "Language-Team: Webfire <ashish@webfire.co.uk>\n"
@@ -672,7 +672,7 @@ msgstr ""
 #: /var/www/webapp/inc/dashboard/eventConfig.php:261
 #: /var/www/webapp/inc/dashboard/appConfig1.php:191
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:110
-#: /var/www/webapp/inc/dashboard/venueConfig.php:514
+#: /var/www/webapp/inc/dashboard/venueConfig.php:515
 #: /var/www/webapp/inc/dashboard/mdConfig.php:241
 #: /var/www/webapp/inc/dashboard/outletConfig.php:88
 #: /var/www/webapp/inc/dashboard/menuConfig.php:412
@@ -685,7 +685,7 @@ msgstr ""
 #: /var/www/webapp/inc/dashboard/eventConfig.php:262
 #: /var/www/webapp/inc/dashboard/appConfig1.php:192
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:111
-#: /var/www/webapp/inc/dashboard/venueConfig.php:515
+#: /var/www/webapp/inc/dashboard/venueConfig.php:516
 #: /var/www/webapp/inc/dashboard/mdConfig.php:242
 #: /var/www/webapp/inc/dashboard/outletConfig.php:89
 #: /var/www/webapp/inc/dashboard/menuConfig.php:414
@@ -1456,27 +1456,27 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:477
+#: /var/www/webapp/inc/dashboard/venueConfig.php:478
 msgid "Please select your language"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:483
+#: /var/www/webapp/inc/dashboard/venueConfig.php:484
 msgid "Timezone"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:491
+#: /var/www/webapp/inc/dashboard/venueConfig.php:492
 msgid "Please select your timezone"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:497
+#: /var/www/webapp/inc/dashboard/venueConfig.php:498
 msgid "Currency"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:503
+#: /var/www/webapp/inc/dashboard/venueConfig.php:504
 msgid "Please select your currency"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:526
+#: /var/www/webapp/inc/dashboard/venueConfig.php:527
 msgid "15&#37 done, keep going!"
 msgstr ""
 
