@@ -468,13 +468,10 @@ msgstr ""
 
 #: code/accountSettings/partials/password.php:27
 #: code/accountSettings/partials/payment.php:50
+#: code/accountSettings/partials/profile.php:50
 #: code/settings/delivery/partials/delivery.php:59
 #: code/settings/delivery/partials/notifications.php:77
 msgid "SAVING..."
-msgstr ""
-
-#: code/accountSettings/partials/profile.php:50
-msgid "SAVING...\""
 msgstr ""
 
 #: code/kyc/partials/customers.php:110 code/kyc/partials/events.php:123

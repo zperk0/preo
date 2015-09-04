@@ -476,13 +476,10 @@ msgstr "ÄNDERUNGEN SPEICHERN"
 
 #: code/accountSettings/partials/password.php:27
 #: code/accountSettings/partials/payment.php:50
+#: code/accountSettings/partials/profile.php:50
 #: code/settings/delivery/partials/delivery.php:59
 #: code/settings/delivery/partials/notifications.php:77
 msgid "SAVING..."
-msgstr "SPEICHERN..."
-
-#: code/accountSettings/partials/profile.php:50
-msgid "SAVING...\""
 msgstr "SPEICHERN..."
 
 #: code/kyc/partials/customers.php:110 code/kyc/partials/events.php:123
@@ -594,6 +591,9 @@ msgstr ""
 #: code/kyc/index.php:66
 msgid "to"
 msgstr ""
+
+#~ msgid "SAVING...\""
+#~ msgstr "SPEICHERN..."
 
 #~ msgid "SAVE CHANGES>"
 #~ msgstr "ÄNDERUNGEN SPEICHERN"
