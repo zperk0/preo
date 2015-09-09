@@ -302,7 +302,7 @@ msgstr "Ordreliste"
 #: /var/www/webapp/inc/shared/h.php:41
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:130
 msgid "Venue Settings"
-msgstr "Arena innstillinger"
+msgstr "Arena Innstillinger"
 
 #: /var/www/webapp/inc/shared/h.php:43
 msgid "Change Settings"
