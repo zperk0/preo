@@ -170,7 +170,7 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   position: absolute;
   left: 0;
   width: 100%;
-  bottom: 20px;
+  bottom: 15px;
 }
 
 #navbar-menu ul li.active span,#navbar-menu ul li:hover span{

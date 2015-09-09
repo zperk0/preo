@@ -30,7 +30,6 @@
 	$curlResult = callAPI('GET', $apiURL."accounts/$accountId/packages", false, $apiAuth);
 	$dataJSON = json_decode($curlResult, true);
 
-	$showKYC = false;
 	$packageTrial = false;
 	if(!empty($dataJSON))
 	{	
@@ -46,18 +45,9 @@
 						$packageTrial = $accountPackage;
 					}
 				}
-
-				if (is_array($accountPackage['preoPackage']['features']) && !$showKYC) {
-					foreach($accountPackage['preoPackage']['features'] as $feature) {
-						if ($feature['id'] == 4 && ($accountPackage['status'] === "INSTALLED" || $accountPackage['status'] === "TRIAL" || $accountPackage['status'] === "UNINSTALLED")) {
-							$showKYC = true;
-							break;
-						}
-					}
-				}
 			}
 
-			if ($showKYC && $packageTrial) {
+			if ($packageTrial) {
 				break;
 			}
 		}
@@ -105,14 +95,10 @@
 					<div class="accordion contentSectionsDashboard" data-options="one_up: false;" data-section="accordion">
 						<section>
 							<h3 data-section-title><a href="<?echo $_SESSION['OVERRIDES']["link_orders"]?>" target="_blank" class="titleDashContent"><span><?echo _("Order Screen");?></span></a> <img src="<?echo $_SESSION['path']?>/img/dashboard/order-icon_small.png"/></h3>
-						</section>
-						<?php 
-						if ($showKYC) {
-						?>						
+						</section>				
 						<section>
 							<h3 data-section-title><a href="/kyc" class="titleDashContent"><?echo _("Customer Analytics");?></a> <img src="<?echo $_SESSION['path']?>/img/dashboard/analytics-icon.png"/></h3>
 						</section>
-						<?php } ?>
 						<section>
 							<h3 data-section-title><span><?echo _("Menus");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/></h3>
 							<div class="content" data-section-content>
