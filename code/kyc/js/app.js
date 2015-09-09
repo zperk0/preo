@@ -28,7 +28,7 @@ angular.module('kyc', [
   'gettext',
   'webapp.components'
 ])
-.run(['$rootScope','ACCOUNT_ID','$http','LANG', 'gettextCatalog', function( $rootScope,ACCOUNT_ID,$http, LANG, gettextCatalog) {
+.run(['$rootScope','ACCOUNT_ID','LANG', 'gettextCatalog', function( $rootScope,ACCOUNT_ID, LANG, gettextCatalog) {
 
   $rootScope.requests = 0;
 
@@ -45,33 +45,6 @@ angular.module('kyc', [
     gettextCatalog.currentLanguage = lang;
     // gettextCatalog.debug = true;
   }
-
-  $http.get("/api/accounts/"+ACCOUNT_ID+"/packages").then(
-    function(result){
-      var found = false;
-      if (result && result.data){
-        for (var i = 0, len = result.data.length; i < len; i++) {
-          var accountPackage = result.data[i];
-          if (accountPackage && accountPackage.preoPackage && accountPackage.preoPackage.features) {
-            for (var j = 0, lenJ = accountPackage.preoPackage.features.length; j < lenJ; j++) {
-              var feature = accountPackage.preoPackage.features[j];
-              //TODO replace the account feature resource with a model and rework the local statuses
-              if (feature.id === 4 && (accountPackage.status === "INSTALLED" || accountPackage.status === "TRIAL" || accountPackage.status === "UNINSTALLED")) {
-                found = true;
-                break;
-              }
-            }
-          }
-
-          if (found) {
-            break;
-          }
-        }
-      }
-      if (!found) {
-        window.location.replace("/dashboard");
-      }
-  })
 }])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {templateUrl: '/code/kyc/partials/dashboard.php', controller: 'DashboardCtrl',

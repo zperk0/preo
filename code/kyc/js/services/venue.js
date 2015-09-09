@@ -7,7 +7,7 @@ angular.module('kyc.services')
 
         var defer = $q.defer();
         var v = new Venue.query({venueId:VENUE_ID},
-        function(result){    
+        function(result){
           if (result && result.length >0)
             venue = result[0];
             defer.resolve(venue);
@@ -42,24 +42,42 @@ angular.module('kyc.services')
             "rounding": 0,
             "code": "USD",
             "name_plural": "US dollars"
+        },
+        "NOK": {
+            "symbol": "Kr",
+            "name": "Norwegian Krone",
+            "symbol_native": "Kr",
+            "decimal_digits": 2,
+            "rounding": 0,
+            "code": "NOK",
+            "name_plural": "Norwegian Krone"
+        },
+        "GIP": {
+            "symbol": "£",
+            "name": "Gibraltar Pound",
+            "symbol_native": "£",
+            "decimal_digits": 2,
+            "rounding": 0,
+            "code": "GIP",
+            "name_plural": "Gibraltar Pounds"
         }
     }
 
-    function getMinDateForQuery(minPaid){     
+    function getMinDateForQuery(minPaid){
       //we need at least two years of data to calculate the area charts,
-      return minPaid === undefined  || minPaid.valueOf() > moment.utc().subtract('year',2).valueOf() ? 
-                moment.utc().subtract('year',2).valueOf() : 
+      return minPaid === undefined  || minPaid.valueOf() > moment.utc().subtract('year',2).valueOf() ?
+                moment.utc().subtract('year',2).valueOf() :
                 minPaid.startOf('day').valueOf();
     }
 
-    function getEvents(minPaid, maxPaid) {                        
+    function getEvents(minPaid, maxPaid) {
          minPaid = minPaid.startOf('day').format('YYYY/M/D HH:mm:ss')
          maxPaid = maxPaid.endOf('day').format('YYYY/M/D HH:mm:ss')
 
-      return Venue.getEvents({id: venue.id, after: minPaid, before: maxPaid}).$promise;            
-    }      
-      
-    function getCurrency(callback){        
+      return Venue.getEvents({id: venue.id, after: minPaid, before: maxPaid}).$promise;
+    }
+
+    function getCurrency(callback){
         if (venue){
           return currencyMap[venue.ccy];
         }
@@ -67,7 +85,7 @@ angular.module('kyc.services')
           return currencyMap["GBP"];
         }
     }
-    
+
     return {
     	getCurrency:getCurrency,
         init:init,
