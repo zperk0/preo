@@ -65,6 +65,10 @@
   width: auto !important;
 }
 
+.slot-name-container .ui-multiselect {
+  width: 100% !important;
+}
+
 .ct-modal-event .ct-btns {
   margin-top: 25px;
 }

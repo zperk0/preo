@@ -29,6 +29,17 @@
                 custom: gettextCatalog.getString('CUSTOM')
             };
 
+            vm.slotTypes = {
+                preshow: gettextCatalog.getString("Pre-Show"),
+                pregame: gettextCatalog.getString("Pre-Game"),
+                interval: gettextCatalog.getString("Interval"),
+                secondInterval: gettextCatalog.getString("Second-Interval"),
+                halftime: gettextCatalog.getString("Half-Time"),
+                postshow: gettextCatalog.getString("Post-Show"),
+                postgame: gettextCatalog.getString("Post-Game"),
+                custom: gettextCatalog.getString("CUSTOM")
+            };
+
             vm.strings = {
                 after: gettextCatalog.getString('after'),
                 before: gettextCatalog.getString('before'),
@@ -59,7 +70,7 @@
 
             vm.eventObj = items.eventObj || {name: '', description: '', starttime: '', days: '', hours: '', minutes: ''};
             vm.schedules = {freq: 'ONCE', startDate: '', endDate: ''};
-            vm.slots = [{eventId: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true'}];
+            vm.slots = [{eventId: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true', $type: 'PRE-SHOW'}];
 
             // configure event data if we are editing an event
             if(items.eventObj) {
@@ -96,14 +107,20 @@
                 if(items.eventObj.cSlots) {
 
                     vm.slots = [];
-                    // vm.slots = items.eventObj.cSlots;
                     items.eventObj.cSlots.forEach(function(slot, index) {
+
+                        var foundType = false;
+
+                        for(var x in vm.slotTypes)
+                            if(vm.slotTypes[x].toUpperCase() === slot.name.toUpperCase())
+                                foundType = true;
 
                         vm.slots.push({
                             end: slot.end != null ? Math.abs(slot.end) : '',
                             eventId: slot.eventId,
                             leadTime: slot.leadTime,
                             name: slot.name,
+                            $type: foundType ? slot.name.toUpperCase() : 'CUSTOM',
                             start: slot.start != null ? Math.abs(slot.start) : '',
                             step: slot.step,
                             startFactor: slot.start < 0 || slot.start == null ? -1 : 1,
@@ -127,7 +144,7 @@
 
                     $timeout(function() {
 
-                        if(vm.activeTab == 2 && !schedInit) {
+                        if(vm.activeTab === 2 && !schedInit) {
 
                             schedInit = true;
 
@@ -139,11 +156,12 @@
                             });
                         }
 
-                        if(vm.activeTab == 3 && !slotInit) {
+                        if(vm.activeTab === 3 && !slotInit) {
 
                             slotInit = true;
-
-                            initUiSlots();
+                            $timeout(function() {
+                                initUiSlots();
+                            });
                         }
 
                     }, 0);
@@ -170,7 +188,7 @@
                 // search for slot to delete
                 vm.slots.some(function(e, i) {
 
-                    if(elem == e) {
+                    if(elem === e) {
 
                         vm.slots.splice(i, 1);
                         return true;
@@ -223,13 +241,19 @@
 
                 slots.forEach(function(elem, index) {
 
-                    cSlots.push({
-                        name: elem.name,
-                        start: !isNaN(elem.start) && elem.start != ''  ?  elem.start * elem.startFactor : '',
-                        end: !isNaN(elem.end) && elem.end != ''  ?  elem.end * elem.endFactor : '',
+                    var slotObj = {
+                        name: elem.$type !== 'CUSTOM' ? elem.$type : elem.name,
                         step: elem.step,
-                        leadTime: elem.leadTime
-                    });
+                        leadTime: elem.leadTime,
+                    };
+
+                    if(!isNaN(elem.start) && elem.start !== '')
+                        slotObj.start = elem.start * elem.startFactor;
+
+                    if(!isNaN(elem.end) && elem.end !== '')
+                        slotObj.end = elem.end * elem.endFactor
+
+                    cSlots.push(slotObj);
                 });
 
                 return cSlots;
@@ -242,7 +266,7 @@
                     minutes = starttime.substr(starttime.indexOf(':') + 1);
 
                 // regular schedules
-                if(sched.freq != 'CUSTOM' && sched.startDate != '' && sched.endDate != '') {
+                if(sched.freq !== 'CUSTOM' && sched.startDate !== '' && sched.endDate !== '') {
 
                     var strStart = sched.startDate.split('/'),
                         startDate = moment.utc([strStart[2], strStart[1] - 1, strStart[0], hours, minutes]).format('YYYY-MM-DDTHH:mm:ss'),
@@ -302,28 +326,28 @@
                     minWidth: 342
                 });
 
-                $('.ct-slots').find('.slotName').each(function() {
-                    $(this).autocomplete({
-                        source: [
-                            gettextCatalog.getString("Pre-Show"),
-                            gettextCatalog.getString("Pre-Game"),
-                            gettextCatalog.getString("Interval"),
-                            gettextCatalog.getString("Second-Interval"),
-                            gettextCatalog.getString("Half-Time"),
-                            gettextCatalog.getString("Post-Show"),
-                            gettextCatalog.getString("Post-Game")
-                        ],
-                        delay: 10,
-                        minLength: 0,
-                        select: function(evt, ui) {
+                // $('.ct-slots').find('.slotName').each(function() {
+                //     $(this).autocomplete({
+                //         source: [
+                //             gettextCatalog.getString("Pre-Show"),
+                //             gettextCatalog.getString("Pre-Game"),
+                //             gettextCatalog.getString("Interval"),
+                //             gettextCatalog.getString("Second-Interval"),
+                //             gettextCatalog.getString("Half-Time"),
+                //             gettextCatalog.getString("Post-Show"),
+                //             gettextCatalog.getString("Post-Game")
+                //         ],
+                //         delay: 10,
+                //         minLength: 0,
+                //         select: function(evt, ui) {
 
-                            // workaround to apply value on model by ui element
-                            vm.slots[evt.target.attributes['data-index'].value].name = ui.item.value;
-                            $scope.$apply();
-                        },
-                        position: { my: "left top", at: "left bottom", collision: "none", of: $(this) }
-                    });
-                });
+                //             // workaround to apply value on model by ui element
+                //             vm.slots[evt.target.attributes['data-index'].value].name = ui.item.value;
+                //             $scope.$apply();
+                //         },
+                //         position: { my: "left top", at: "left bottom", collision: "none", of: $(this) }
+                //     });
+                // });
 
             }
 
@@ -336,7 +360,7 @@
                     case 1:
                         var pattern = /\d\d:\d\d/;
 
-                        if(!vm.eventObj.name || !vm.eventObj.starttime || !pattern.test(vm.eventObj.starttime) || (vm.eventObj.days == '' && vm.eventObj.hours == '' && vm.eventObj.minutes == '') || isNaN(vm.eventObj.days) || isNaN(vm.eventObj.hours) || isNaN(vm.eventObj.minutes)) {
+                        if(!vm.eventObj.name || !vm.eventObj.starttime || !pattern.test(vm.eventObj.starttime) || (vm.eventObj.days === '' && vm.eventObj.hours === '' && vm.eventObj.minutes === '') || isNaN(vm.eventObj.days) || isNaN(vm.eventObj.hours) || isNaN(vm.eventObj.minutes)) {
 
                             isValid = false;
 
@@ -349,7 +373,7 @@
 
                         var pattern = /^\d\d\/\d\d\/\d\d\d\d$/;
 
-                        if(((vm.schedules.startDate == '' || !pattern.test(vm.schedules.startDate) || vm.schedules.endDate == '' || !pattern.test(vm.schedules.endDate)) && vm.schedules.freq != 'CUSTOM') || ((vm.schedules.freq == 'CUSTOM' && vm.selectedDays.length == 0))) {
+                        if(((vm.schedules.startDate === '' || !pattern.test(vm.schedules.startDate) || vm.schedules.endDate === '' || !pattern.test(vm.schedules.endDate)) && vm.schedules.freq !== 'CUSTOM') || ((vm.schedules.freq === 'CUSTOM' && vm.selectedDays.length === 0))) {
 
                             isValid = false;
 
@@ -366,18 +390,28 @@
                         // validate slot fields
                         vm.slots.some(function(slot, index) {
 
-                            if(slot.name && slot.name != '' && (slot.leadTime && slot.leadTime != '' && !vm.isInvalidFormat(slot.leadTime) || slot.leadTime == 0)) {
+                            console.log('slot', slot)
 
-                                if(((slot.start != '' && slot.start != null && !isNaN(slot.start)) && (slot.end != '' && slot.end != null && !isNaN(slot.end)) && (slot.step != '' && slot.step != null && !isNaN(slot.step)))
-                                    || ((slot.start == '' || slot.start == null) && (slot.end == '' || slot.end == null) && (slot.step == '' || slot.step == null)))
+                            if(((slot.$type === 'CUSTOM' && slot.name !== '' && slot.name != null) || slot.$type !== 'CUSTOM') && (slot.leadTime && slot.leadTime != null && slot.leadTime !== '' && !vm.isInvalidFormat(slot.leadTime) || slot.leadTime === 0)) {
+
+                                console.log(slot.start === '' || slot.start == null) && (slot.end === '' || slot.end == null) && (slot.step === '' || slot.step == null)
+
+                                if(((slot.start !== '' && slot.start != null && !isNaN(slot.start)) && (slot.end !== '' && slot.end != null && !isNaN(slot.end)) && (slot.step !== '' && slot.step != null && !isNaN(slot.step)))
+                                    || ((slot.start === '' || slot.start == null) && (slot.end === '' || slot.end == null) && (slot.step === '' || slot.step == null))
+                                    || (slot.end !== '' && slot.end != null && !isNaN(slot.end)) && ((slot.start === '' || slot.start == null) && (slot.step === '' || slot.step == null))) {
+
+                                    console.log('here 2')
                                     isValid = true;
+                                }
                                 else {
 
-                                    if(slot.start == '')
+                                    console.log('here 3')
+
+                                    if(slot.start === '')
                                         slot.startError = true;
-                                    if(slot.end == '')
+                                    if(slot.end === '')
                                         slot.endError = true;
-                                    if(slot.step == '' || slot.step == null) {
+                                    if(slot.step === '' || slot.step == null) {
 
                                         slot.hasSteps = 'true';
                                         slot.stepError = true;
@@ -394,6 +428,8 @@
                             }
                             else {
 
+                                console.log('here 4')
+
                                 isValid = false;
                                 return true;
                             }
@@ -402,6 +438,8 @@
                         });
                     break;
                 }
+
+                console.log(isValid)
 
                 return isValid;
             }
