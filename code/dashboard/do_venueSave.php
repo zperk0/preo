@@ -108,7 +108,7 @@
 	
 	if(isset($_SESSION['venue_edit_on']) && $_SESSION['venue_edit_on'])
 	{
-		$curlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id'], $jsonData, $apiAuth);
+		$venueCurlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id'], $jsonData, $apiAuth);
 		
 		$dataSettings = array();
 		$dataSettings['leadTime']			= $leadtime;
@@ -162,7 +162,5 @@
 
 	}
 
-
-	
 	echo $venueCurlResult; //sending a JSON via ajax
 ?>
