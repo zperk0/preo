@@ -127,7 +127,7 @@
           <input type="text" ng-model='slot.name' class='slotName' data-index='{{$index}}' required placeholder="{{'Enter a name for the slot' | translate}}">
           <small ng-show='slot.name == "" || !slot.name' class="error" translate>Please choose a slot.</small> -->
           <label translate>Slot name</label>
-          <select ng-model='slot.$type'>
+          <select ng-model='slot.$type' ng-change='slot.name = ""'>
             <option ng-selected='slot.$type == modal.slotTypes.preshow.toUpperCase()' value="{{modal.slotTypes.preshow.toUpperCase()}}">{{modal.slotTypes.preshow}}</option>
             <option ng-selected='slot.$type == modal.slotTypes.pregame.toUpperCase()' value="{{modal.slotTypes.pregame.toUpperCase()}}">{{modal.slotTypes.pregame}}</option>
             <option ng-selected='slot.$type == modal.slotTypes.interval.toUpperCase()' value="{{modal.slotTypes.interval.toUpperCase()}}">{{modal.slotTypes.interval}}</option>
@@ -138,10 +138,10 @@
             <option ng-selected='slot.$type == modal.slotTypes.custom.toUpperCase()' value="{{modal.slotTypes.custom.toUpperCase()}}">{{modal.slotTypes.custom}}</option>
           </select>
           <input type="text" ng-model='slot.name' ng-if='slot.$type == "CUSTOM"' class='slotName' data-index='{{$index}}' required placeholder="{{'Enter a name for the slot' | translate}}">
-          <small ng-show='slot.name == "" || !slot.name' class="error" translate>Please choose a slot.</small>
+          <small ng-show='(slot.$type == "CUSTOM" && (slot.name === "" || !slot.name))' class="error" translate>Please choose a slot.</small>
         </div>
 
-        <div class='slot-sentence' ng-if='slot.$type == "CUSTOM"'>
+        <div class='slot-sentence' ng-show='slot.$type == "CUSTOM"'>
           <span translate>This slot starts </span>
           <div class='ct-inputs-sentence'>
             <input type="text" ng-model='slot.start' pattern="^\d+$" ng-change='slot.startError = false'>
@@ -185,11 +185,11 @@
           </div>
         </div>
 
-        <div class='slot-sentence' ng-if='slot.$type != "CUSTOM"'>
+        <div class='slot-sentence' ng-show='slot.$type != "CUSTOM"'>
           <span translate>This slot is available up until</span>
           <div class='ct-inputs-sentence'>
-            <input type="text" ng-model='slot.start' pattern="^\d+$" ng-change='slot.startError = false'>
-            <small ng-show='(slot.startError || (slot.start && modal.isInvalidFormat(slot.start)) || (!slot.start && (slot.step || slot.end)))' class="error start" translate>Enter minutes?</small>
+            <input type="text" ng-model='slot.end' pattern="^\d+$" ng-change='slot.endError = false'>
+            <small ng-show='(slot.endError || (slot.end && modal.isInvalidFormat(slot.end)) || (!slot.end && (slot.step || slot.start)))' class="error end" translate>Enter minutes?</small>
           </div>
           <span translate>minutes</span>
           <select ng-model='slot.startFactor' class='start-select'>

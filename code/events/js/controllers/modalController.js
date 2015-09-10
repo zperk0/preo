@@ -176,7 +176,7 @@
 
             vm.addSlot = function() {
 
-                vm.slots.push({eventId: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true'});
+                vm.slots.push({eventId: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true', $type: 'PRE-SHOW'});
 
                 $timeout(function() {
                     initUiSlots();

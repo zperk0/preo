@@ -35,16 +35,10 @@
                 //get slots and expand schedule
                 events.forEach(function(elem, index) {
 
-                    var sched = elem.schedules,
-                        defer = $q.defer();
+                    var defer = $q.defer();
 
-                    // decode schedule
-                    if (sched.length > 0) {
+                    elem = decodeSchedule(elem);
 
-                        elem.date = sched[0].startDate;
-                        elem.starttime = formatTime(sched[0].startDate);
-                        elem.endtime = formatTime(sched[0].endDate);
-                    }
                     // clousure for getting the slot from the right event
                     (function(_event) {
 
@@ -139,10 +133,11 @@
                     deferred.resolve(result);
                 });
 
-                deferred.promise.then(function() {
+                deferred.promise.then(function(eventObj) {
 
-                    // console.log('all done');
-                    vm.events.push(eventData);
+                    eventObj = decodeSchedule(eventObj);
+                    vm.events.push(eventObj);
+                    console.log('all done', eventObj);
                     $AjaxInterceptor.complete();
                 });
             }, function () {
@@ -262,6 +257,19 @@
             }
         }
 
+        function decodeSchedule(eventObj) {
+
+            var sched = eventObj.schedules;
+            if(sched.length > 0) {
+
+                eventObj.date = sched[0].startDate;
+                eventObj.starttime = formatTime(sched[0].startDate);
+                eventObj.endtime = formatTime(sched[0].endDate);
+            }
+
+            return eventObj;
+        }
+
         function formatData(evt) {
 
             var dateToEdit = null,
@@ -335,6 +343,8 @@
                 // $log.log('event id ' + eventObj.id)
                 // $log.log(elem)
 
+                eventObj.cSlots = [];
+
                 if(elem.cSlots.length > 0) {
 
                     //just add as previous ones are wiped clean by now!
@@ -345,9 +355,11 @@
                         // $log.log('eventObj.id: ' + eventObj.id, e);
                         e.eventId = eventObj.id;
                         // post slots
-                        CollectionSlots.create(e).then(function() {
+                        CollectionSlots.create(e).then(function(slot) {
 
-                            // $log.log('slot ok ' + i);
+                            // console.log('slots result', slot);
+                            eventObj.cSlots.push(slot);
+
                             deferred.resolve();
                         }, function(data) {
 
@@ -361,7 +373,10 @@
                     });
 
                     // all slots posted, resolve the promise
-                    $q.all(slotsPromises).then(defer.resolve);
+                    $q.all(slotsPromises).then(function() {
+                        // console.log('all slots done', eventObj)
+                        defer.resolve(eventObj);
+                    });
                 }
                 else {
                     // $log.log('event slot ok - no slots')
