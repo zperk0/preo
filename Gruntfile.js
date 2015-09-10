@@ -93,6 +93,7 @@ module.exports = function(grunt) {
       }
     },
     cssmin: {
+      options: { restructuring: false },
       minify: {
         src: ['css/normalize.css', 'css/foundation.css', 'css/jquery.gridster.min.css','bower_components/select2/select2.css','css/app.css', 'css/croppic.css'],
         dest: 'css/all_css.min.css',
@@ -282,7 +283,7 @@ module.exports = function(grunt) {
     ])
 
   grunt.registerTask('minifyjs', ['uglify','replace:jscolor']);
-  grunt.registerTask('minifycss', ['sass','cssmin','clean:appCss','replace:fonts']);
+  grunt.registerTask('minifycss', ['sass','cssmin','replace:fonts']);
   grunt.registerTask('build', ['minifyjs','minifycss']);
   grunt.registerTask('default', ['build']);
 
