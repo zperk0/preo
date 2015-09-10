@@ -11,7 +11,7 @@ var app = angular.module('events', ['ngRoute', 'constants', 'webapp.components',
             });
         }
     ])
-    .run(['$rootScope', 'gettextCatalog', 'LANG', function($rootScope, gettextCatalog, LANG) {
+    .run(['$rootScope', 'gettextCatalog', 'LANG', 'CollectionSlots', function($rootScope, gettextCatalog, LANG, CollectionSlots) {
 
         $rootScope.requests = 0;
 
@@ -40,5 +40,7 @@ var app = angular.module('events', ['ngRoute', 'constants', 'webapp.components',
             // gettextCatalog.debug = true;
             moment.locale(language);
         }
+
+        CollectionSlots.checkCustomFeature();
 
     }]);;

@@ -1,12 +1,14 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('ModalCtrl', ['$scope', '$timeout', 'items', '$rootScope', '$log', 'DateUtils', 'gettextCatalog',
-        function($scope, $timeout, items, $rootScope, $log, DateUtils, gettextCatalog) {
+    .controller('ModalCtrl', ['$scope', '$timeout', 'items', '$rootScope', '$log', 'DateUtils', 'gettextCatalog', 'CollectionSlots',
+        function($scope, $timeout, items, $rootScope, $log, DateUtils, gettextCatalog, CollectionSlots) {
 
             var vm = this,
                 schedInit = false,
                 slotInit = false;
+
+            vm.customSlotFeature = CollectionSlots.isCustomFeatureAvailable();
 
             vm.outletLocations = items.outletLocations;
             vm.activeTab = 1;
@@ -29,23 +31,50 @@
                 custom: gettextCatalog.getString('CUSTOM')
             };
 
-            vm.slotTypes = {
-                preshow: gettextCatalog.getString("Pre-Show"),
-                pregame: gettextCatalog.getString("Pre-Game"),
-                interval: gettextCatalog.getString("Interval"),
-                secondInterval: gettextCatalog.getString("Second-Interval"),
-                halftime: gettextCatalog.getString("Half-Time"),
-                postshow: gettextCatalog.getString("Post-Show"),
-                postgame: gettextCatalog.getString("Post-Game"),
-                custom: gettextCatalog.getString("CUSTOM")
-            };
+            vm.slotTypes = [
+                {
+                    value: "PRESHOW",
+                    display: gettextCatalog.getString("Pre-Show")
+                },
+                {
+                    value: "PREGAME",
+                    display: gettextCatalog.getString("Pre-Game")
+                },
+                {
+                    value: "INTERVAL",
+                    display: gettextCatalog.getString("Interval")
+                },
+                {
+                    value: "INTERVAL2",
+                    display: gettextCatalog.getString("Second-Interval")
+                },
+                {
+                    value: "HALFTIME",
+                    display: gettextCatalog.getString("Half-Time")
+                },
+                {
+                    value: "POSTSHOW",
+                    display: gettextCatalog.getString("Post-Show")
+                },
+                {
+                    value: "POSTGAME",
+                    display: gettextCatalog.getString("Post-Game")
+                }
+            ];
+
+            if(vm.customSlotFeature)
+                vm.slotTypes.push({
+                    value: "CUSTOM",
+                    display: gettextCatalog.getString("CUSTOM")
+                });
 
             vm.strings = {
                 after: gettextCatalog.getString('after'),
                 before: gettextCatalog.getString('before'),
                 is: gettextCatalog.getString('is'),
                 is_not: gettextCatalog.getString('is not'),
-                all_locations: gettextCatalog.getString('All Locations')
+                all_locations: gettextCatalog.getString('All Locations'),
+                chooseSlot: gettextCatalog.getString('Choose a Collection Slot')
             }
 
             for (var i=0; i<=12; i++) {
@@ -70,7 +99,9 @@
 
             vm.eventObj = items.eventObj || {name: '', description: '', starttime: '', days: '', hours: '', minutes: ''};
             vm.schedules = {freq: 'ONCE', startDate: '', endDate: ''};
-            vm.slots = [{eventId: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true', $type: 'PRE-SHOW'}];
+            vm.slots = [{eventId: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true', $type: ''}];
+
+            console.log('event obj', items.eventObj);
 
             // configure event data if we are editing an event
             if(items.eventObj) {
@@ -112,7 +143,7 @@
                         var foundType = false;
 
                         for(var x in vm.slotTypes)
-                            if(vm.slotTypes[x].toUpperCase() === slot.name.toUpperCase())
+                            if(vm.slotTypes[x].value === slot.name)
                                 foundType = true;
 
                         vm.slots.push({
@@ -120,7 +151,7 @@
                             eventId: slot.eventId,
                             leadTime: slot.leadTime,
                             name: slot.name,
-                            $type: foundType ? slot.name.toUpperCase() : 'CUSTOM',
+                            $type: foundType ? slot.name : vm.customSlotFeature ? 'CUSTOM': '',
                             start: slot.start != null ? Math.abs(slot.start) : '',
                             step: slot.step,
                             startFactor: slot.start < 0 || slot.start == null ? -1 : 1,
@@ -176,7 +207,7 @@
 
             vm.addSlot = function() {
 
-                vm.slots.push({eventId: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true', $type: 'PRE-SHOW'});
+                vm.slots.push({eventId: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true', $type: ''});
 
                 $timeout(function() {
                     initUiSlots();
@@ -325,30 +356,6 @@
                     selectedList: 1,
                     minWidth: 342
                 });
-
-                // $('.ct-slots').find('.slotName').each(function() {
-                //     $(this).autocomplete({
-                //         source: [
-                //             gettextCatalog.getString("Pre-Show"),
-                //             gettextCatalog.getString("Pre-Game"),
-                //             gettextCatalog.getString("Interval"),
-                //             gettextCatalog.getString("Second-Interval"),
-                //             gettextCatalog.getString("Half-Time"),
-                //             gettextCatalog.getString("Post-Show"),
-                //             gettextCatalog.getString("Post-Game")
-                //         ],
-                //         delay: 10,
-                //         minLength: 0,
-                //         select: function(evt, ui) {
-
-                //             // workaround to apply value on model by ui element
-                //             vm.slots[evt.target.attributes['data-index'].value].name = ui.item.value;
-                //             $scope.$apply();
-                //         },
-                //         position: { my: "left top", at: "left bottom", collision: "none", of: $(this) }
-                //     });
-                // });
-
             }
 
             // validate required fields based on active tab
@@ -390,22 +397,15 @@
                         // validate slot fields
                         vm.slots.some(function(slot, index) {
 
-                            console.log('slot', slot)
-
-                            if(((slot.$type === 'CUSTOM' && slot.name !== '' && slot.name != null) || slot.$type !== 'CUSTOM') && (slot.leadTime && slot.leadTime != null && slot.leadTime !== '' && !vm.isInvalidFormat(slot.leadTime) || slot.leadTime === 0)) {
-
-                                console.log(slot.start === '' || slot.start == null) && (slot.end === '' || slot.end == null) && (slot.step === '' || slot.step == null)
+                            if(((slot.$type === 'CUSTOM' && slot.name !== '' && slot.name != null) || (slot.$type !== 'CUSTOM' && slot.$type !== '' && slot.$type != null)) && (slot.leadTime && slot.leadTime != null && slot.leadTime !== '' && !vm.isInvalidFormat(slot.leadTime) || slot.leadTime === 0)) {
 
                                 if(((slot.start !== '' && slot.start != null && !isNaN(slot.start)) && (slot.end !== '' && slot.end != null && !isNaN(slot.end)) && (slot.step !== '' && slot.step != null && !isNaN(slot.step)))
                                     || ((slot.start === '' || slot.start == null) && (slot.end === '' || slot.end == null) && (slot.step === '' || slot.step == null))
                                     || (slot.end !== '' && slot.end != null && !isNaN(slot.end)) && ((slot.start === '' || slot.start == null) && (slot.step === '' || slot.step == null))) {
 
-                                    console.log('here 2')
                                     isValid = true;
                                 }
                                 else {
-
-                                    console.log('here 3')
 
                                     if(slot.start === '')
                                         slot.startError = true;
@@ -428,8 +428,6 @@
                             }
                             else {
 
-                                console.log('here 4')
-
                                 isValid = false;
                                 return true;
                             }
@@ -439,8 +437,6 @@
                     break;
                 }
 
-                console.log(isValid)
-
                 return isValid;
             }
 
@@ -448,6 +444,15 @@
 
                 return isNaN(data);
             };
+
+            vm.changedSlotName = function(slot) {
+                slot.name = '';
+
+                $timeout(function() {
+
+                    initUiSlots();
+                })
+            }
 
             function refreshCurrentMonth() {
 

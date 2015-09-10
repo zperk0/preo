@@ -69,6 +69,10 @@
   width: 100% !important;
 }
 
+.slot-name-container small.error {
+  margin-top: 15px;
+}
+
 .ct-modal-event .ct-btns {
   margin-top: 25px;
 }
