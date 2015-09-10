@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-01 10:31-0300\n"
+"POT-Creation-Date: 2015-09-10 15:35-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr ""
 
 #: /var/www/webapp/inc/404/404_content.php:6
 #: /var/www/webapp/inc/shared/h.php:35
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:70
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:60
 msgid "Dashboard"
 msgstr ""
 
@@ -272,12 +272,12 @@ msgid "Go to Dashboard"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:39
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:107
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:97
 msgid "Order Screen"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:41
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:130
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:116
 msgid "Venue Settings"
 msgstr ""
 
@@ -310,7 +310,7 @@ msgid "Preset Notifications"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:49
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:141
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:127
 msgid "Styling"
 msgstr ""
 
@@ -323,14 +323,14 @@ msgid "Menu Screen"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:55
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:117
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:103
 msgid "Menus"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:66
 #: /var/www/webapp/inc/dashboard/userConfig.php:52
 #: /var/www/webapp/inc/dashboard/userConfig.php:104
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:121
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:107
 #: /var/www/webapp/inc/dashboard/mdConfig.php:83
 #: /var/www/webapp/inc/dashboard/mdConfig.php:201
 #: /var/www/webapp/inc/dashboard/outletConfig.php:39
@@ -341,7 +341,7 @@ msgid "Edit"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:68
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:126
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:112
 #: /var/www/webapp/inc/dashboard/mdConfig.php:5
 msgid "Meal Deals"
 msgstr ""
@@ -359,7 +359,7 @@ msgstr ""
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:10
 #: /var/www/webapp/inc/dashboard/venueConfig.php:35
 #: /var/www/webapp/inc/dashboard/venueConfig.php:38
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:149
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:135
 #: /var/www/webapp/inc/dashboard/menuConfig.php:19
 #: /var/www/webapp/inc/dashboard/menuConfig.php:22
 #: /var/www/webapp/inc/finish/finish_content.php:11
@@ -371,7 +371,7 @@ msgid "Update Events"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:82
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:156
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:142
 msgid "Advanced Settings"
 msgstr ""
 
@@ -386,7 +386,7 @@ msgid "Payment Method"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:86
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:160
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:146
 msgid "Change my app mode"
 msgstr ""
 
@@ -395,7 +395,7 @@ msgid "Switch Venue"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:99
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:164
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:150
 msgid "My Account"
 msgstr ""
 
@@ -404,17 +404,17 @@ msgid "Logout"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:104
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:168
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:154
 msgid "Help"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:106
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:171
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:157
 msgid "Getting Started"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:107
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:172
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:158
 msgid "Editing your Menu"
 msgstr ""
 
@@ -423,7 +423,7 @@ msgid "FAQs"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:109 /var/www/webapp/inc/shared/h.php:113
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:164
 #: /var/www/webapp/inc/more/more_content.php:6
 msgid "Support"
 msgstr ""
@@ -599,7 +599,7 @@ msgid "Please type a venue title <br/>(max 22chars)"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:45
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:216
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:202
 msgid "BASKET"
 msgstr ""
 
@@ -775,7 +775,7 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:54
 #: /var/www/webapp/inc/dashboard/userConfig.php:106
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:122
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:108
 #: /var/www/webapp/inc/dashboard/mdConfig.php:84
 #: /var/www/webapp/inc/dashboard/mdConfig.php:202
 #: /var/www/webapp/inc/dashboard/outletConfig.php:40
@@ -898,7 +898,7 @@ msgid "Button colour"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig1.php:125
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:208
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:194
 msgid "ORDER NOW"
 msgstr ""
 
@@ -1291,176 +1291,176 @@ msgstr ""
 msgid "15&#37 done, keep going!"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:70
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:60
 msgid "This is where you can monitor your takings and reports."
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:74
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:64
 msgid "Your online order page is"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:83
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:73
 msgid "This month"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:86
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:76
 msgid "Total revenue"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:90
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:80
 msgid "Total orders"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:94
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:84
 msgid "New users"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:98
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:88
 msgid "Returning users"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:113
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:100
 msgid "Customer Analytics"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:125
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:111
 msgid "Add new menu"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:132
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:118
 msgid "Change settings"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:133
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:119
 msgid "Delivery settings"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:134
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:120
 msgid "Preset notifications"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:136
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:122
 msgid "Opening hours"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:143
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:129
 msgid "Home screen"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:144
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:130
 msgid "Menu screen"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:151
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:137
 msgid "Update events"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:158
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:144
 msgid "Manage users"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:159
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:145
 msgid "Add a payment method"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:189
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:175
 msgid "Change app mode"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:189
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:175
 msgid "LIVE - Your app is visible and is ready to take real orders.<br/><br/>DEMO - Your app is visible but does not take real orders.<br/><br/>OFFLINE - Your app is not visible."
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:192
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:193
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:194
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:179
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:180
 msgid "active"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:192
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
 msgid "OFFLINE"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:193
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:179
 msgid "DEMO"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:194
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:180
 msgid "LIVE"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:223
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:209
 msgid "Venue Title"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:257
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:243
 msgid "Your 30 day free trial \tof this Premium Feature has now expired. Would you like to purchase it?"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:258
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:244
 msgid "YES PLEASE"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:259
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:245
 msgid "NOT RIGHT NOW"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:273
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:259
 msgid " trial"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:266
 msgid "Your free trial expires in "
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:266
 msgid " days."
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:266
 msgid " To continue using your app after the free trial, register your card details for the "
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:266
 msgid " on the 'My Account' tab located on your dashboard."
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:282
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:268
 msgid "GO TO MY ACCOUNT"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:287
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:273
 msgid "Payment provider is not connected!"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:288
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:274
 msgid "Before taking your app live you need to connect it to a payment provider or enable cash payments so that you can start accepting payments and start getting paid!"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:289
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:275
 msgid "CONNECT"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:290
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:276
 #: /var/www/webapp/code/shared/js_strings.php:84
 msgid "CANCEL"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:385
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:371
 #: /var/www/webapp/code/shared/js_strings.php:68
 msgid "Your app is now live!"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:394
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:380
 msgid "Your app is now in DEMO mode."
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:403
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:421
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:389
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:407
 msgid "Your app is now in OFFLINE mode."
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:412
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:398
 msgid "Your app is now in Demo mode."
 msgstr ""
 
