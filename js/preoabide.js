@@ -64,7 +64,7 @@
     },
 
     events : function () {
-	  var self = this,
+    var self = this,
           forms = $('form[data-preoabide]', this.scope).attr('novalidate', 'novalidate');
 
       // /* Error Handling */
@@ -87,19 +87,16 @@
 
       this.settings.init = true;
 
-	     //console.log(this.settings);
+       //console.log(this.settings);
+
       if (!this.settings.live_validate) return;
 
       forms
-        .on('blur change', 'input, textarea, select', function (e) {
+        // .find('input, textarea, select')
+        .on('blur change','input, textarea, select', function (e) {
           self.validate([this], e);
-        });
-
-      // forms
-        // .on('blur change','input, textarea, select', function (e) {
-          // self.validate([this], e);
-        // });
-        /*.on('keydown', function (e) {
+        });/*
+        .on('keydown', function (e) {
           clearTimeout(self.timer);
           self.timer = setTimeout(function () {
             self.validate([this], e);
@@ -114,15 +111,10 @@
 
       while (validation_count--) {
         if (!validations[validation_count] && /submit/.test(e.type)) {
-
-          // ignore dummy items validation
-          if($(els[validation_count]).closest('.dummyItem').length == 0) {
-
-            if (this.settings.focus_on_invalid) els[validation_count].focus();
-            form.trigger('invalid');
-            $(els[validation_count]).closest('form').attr('data-invalid', '');
-            return false;
-          }
+          if (this.settings.focus_on_invalid) els[validation_count].focus();
+          form.trigger('invalid');
+          $(els[validation_count]).closest('form').attr('data-invalid', '');
+          return false;
         }
       }
 
@@ -131,6 +123,8 @@
       }
 
       form.removeAttr('data-invalid');
+
+      //return true;
       return false;
     },
 
@@ -174,13 +168,13 @@
         var el = el_patterns[i][0],
             required = el_patterns[i][2],
             value = el.value,
-			is_equal = el.getAttribute('data-equalto'),
+      is_equal = el.getAttribute('data-equalto'),
             is_radio = el.type === "radio",
             valid_length = (required) ? (el.value.length > 0) : true;
 
         if (is_radio && required) {
           validations.push(this.valid_radio(el, required));
-		  } else if (is_equal && required) {
+      } else if (is_equal && required) {
            validations.push(this.valid_equal(el, required));
         } else {
           if (el_patterns[i][1].test(value) && valid_length ||
@@ -216,7 +210,7 @@
       }
 
       return valid;
-	},
+  },
 
     valid_equal: function(el, required) {
         var from  = document.getElementById( el.getAttribute('data-equalto') ).value,

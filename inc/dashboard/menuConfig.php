@@ -104,7 +104,7 @@
 
 			<div class="hide firstItemDiv"></div> <!-- Dummy hook -->
 
-			<table class="menuTable dummyItem" id="item0" style="display:none;"><!-- DUMMY -->
+			<table class="menuTable" id="item0" style="display:none;"><!-- DUMMY -->
 				<tbody>
 					<tr class="menuEdit itemTR">
 						<td class="menuTDName">
@@ -315,7 +315,7 @@
 													<button type="button" class="menuTableButtons secondary optionHeaderDelete" title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
 												</td>
 											</tr>
-											<tr class="menuEdit hide dummyItem" style="display:none;"> <!-- This dummy is required! -->
+											<tr class="menuEdit hide" style="display:none;"> <!-- This dummy is required! -->
 												<td class="menuTDName">
 													<input type="text" name="oName[item<?echo ($iKey+1);?>][m0][0]" data-insert="false" data-edit="false" data-delete="false" data-id="opt0o-item0i" class="menuField noEnterSubmit" value="<?echo _("Click to add an option name");?>" required pattern="^.{0,99}$"/>
 													<small class="error"><?echo _("Please type an option name (max 100chars)");?></small>
