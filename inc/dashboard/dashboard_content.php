@@ -26,43 +26,6 @@
 	if(empty($dataJSON) || !is_array($dataJSON) || !isset($dataJSON['accountId'])) {
 		$accountCard = false;
 	}
-
-	$curlResult = callAPI('GET', $apiURL."accounts/$accountId/packages", false, $apiAuth);
-	$dataJSON = json_decode($curlResult, true);
-
-	$isGroupBookingEnabled = false;
-	$packageTrial = false;
-	if(!empty($dataJSON))
-	{
-		foreach($dataJSON as $accountPackage)
-		{
-			if (isset($accountPackage['preoPackage']) && is_array($accountPackage['preoPackage'])) {
-
-				if ($accountPackage['status'] === "TRIAL") {
-					$endDate = strtotime($accountPackage['endDate']);
-					$endDate = mktime(date("H", $endDate), date("i", $endDate), date("s", $endDate), date("m", $endDate), date("d", $endDate), date("Y", $endDate));
-
-					if ($endDate > time() && !$accountCard) {
-						$packageTrial = $accountPackage;
-					}
-				}
-
-				if (is_array($accountPackage['preoPackage']['features']) && !$isGroupBookingEnabled) {
-					foreach($accountPackage['preoPackage']['features'] as $feature) {
-						if ($feature['id'] == 9 && ($accountPackage['status'] === "INSTALLED" || $accountPackage['status'] === "TRIAL" || $accountPackage['status'] === "UNINSTALLED")) {
-							$isGroupBookingEnabled = true;
-							break;
-						}
-					}
-				}
-			}
-
-			if ($packageTrial && $isGroupBookingEnabled) {
-				break;
-			}
-		}
-	}
-
 ?>
 <div class="row dashContentTop">
 	<div class="topSpacer"></div>
@@ -149,10 +112,11 @@
 						</section>
 						<?}?>
 						<?php
+						// variable from h.php
 						if ($isGroupBookingEnabled) {
 						?>
 						<section>
-							<h3 data-section-title><span><?echo _("Group Booking");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/events_small.png"/></h3>
+							<h3 data-section-title><span><?echo _("Group Booking");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/group-icon.png"/></h3>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/menus"><?echo _("Menus");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/bookings"><?echo _("Bookings");?></a></p>
@@ -274,6 +238,7 @@
 </div>
 
 <?php
+// variable from h.php
 if ($packageTrial) {
 ?>
 <div id="expiredPackageDialog" class="reveal-modal small modal-preoday dashboard" data-reveal>
@@ -307,6 +272,7 @@ if ($packageTrial) {
 		var isShow = Number(window.localStorage.getItem("showDialog")) === 1 && (isShowAgain === null || Number(isShowAgain) === 1);
 
 		<?php
+		// variable from h.php
 		if ($packageTrial) {
 		 ?>
 		var isShowAgainTrial = window.localStorage.getItem("showDialogAgainTrial");
