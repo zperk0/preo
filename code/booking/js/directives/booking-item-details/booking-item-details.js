@@ -20,7 +20,7 @@ angular.module('booking')
 
                 ng.csvData = prepareExportCsvData(ng.booking);
 
-                console.log(ng.csvData);
+                console.log('csvData', ng.csvData);
 
                 // $http({
                 //     method: "post",
@@ -37,18 +37,7 @@ angular.module('booking')
                 var prepData = [[ng.getExportDate()],[title]],
                     arrBooking = [data.promotion, data.clientData.name, data.date, data.time, data.guests, data.ordersPlaced];
 
-                // for(var i in data) {
-
-                //     arrBooking.push(data[i]);
-                // }
-
                 prepData.push(arrBooking);
-
-                // angular.forEach(ng.customers,function(item){
-                //         if (ng.exportAll === "1" || item.selected === true){
-                //             prepData.push([item.name,item.totalSpent.toFixed(2),item.emailAddress,item.loyalty,item.offers,item.other]);
-                //         }
-                // });
 
                 return {
                     data:prepData

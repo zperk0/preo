@@ -471,7 +471,6 @@
         function _init() {
 
             $rootScope.requests = 0;
-            // $AjaxInterceptor.start();
 
             $('.sched-start-date').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}});
             $('.sched-end-date').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}});

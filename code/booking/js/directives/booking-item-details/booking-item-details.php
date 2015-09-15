@@ -3,15 +3,15 @@
 		<div class="client-info clear">
 			<div>
 				<div>
-					<span><b>Client contact:</b></span>
+					<span><b translate>Client contact:</b></span>
 					<span>{{booking.clientData.name}}</span>
 				</div>
 				<div>
-					<span><b>Contact no.:</b></span>
+					<span><b translate>Contact no.:</b></span>
 					<span>{{booking.clientData.phone}}</span>
 				</div>
 				<div>
-					<span><b>Contact email:</b></span>
+					<span><b translate>Contact email:</b></span>
 					<span>{{booking.clientData.email}}</span>
 				</div>
 			</div>
@@ -19,7 +19,7 @@
 				<!-- <button class='btn-print' ng-click='exportCsv()'>PRINT BOOKING</button> -->
 				<form action='{{"/api/accounts/" + account_id + "/exports/csv/report"}}' method='POST' ng-submit='exportCsv()'>
                     <input name='data' value='{{csvData}}' type='hidden'/>
-                    <button class='btn-print' ng-click='exportCsv()'>PRINT BOOKING</button>
+                    <button class='btn-print' ng-click='exportCsv()' translate>PRINT BOOKING</button>
                 </form>
 			</div>
 		</div>

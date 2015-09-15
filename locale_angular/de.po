@@ -66,6 +66,18 @@ msgstr "Unternehmensprofil"
 msgid "Billing Schedule"
 msgstr "Adresse des Unternehmens"
 
+#: code/booking/js/directives/booking-item-details/booking-item-details.js:16
+msgid "Booking"
+msgstr ""
+
+#: code/booking/partials/booking.php:30
+msgid "Booking page"
+msgstr ""
+
+#: code/booking/partials/booking.php:6
+msgid "Bookings"
+msgstr ""
+
 #: code/accountSettings/partials/profile.php:32
 msgid "Business Name"
 msgstr "Geschäftsname"
@@ -114,9 +126,26 @@ msgstr ""
 msgid "Choose preset:"
 msgstr "Größe auswählen"
 
+#: code/booking/partials/booking.php:26
+msgid "Client"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:6
+#, fuzzy
+msgid "Client contact:"
+msgstr "Dieser Monat"
+
 #: code/accountSettings/partials/password.php:19
 msgid "Confirm"
 msgstr "Passwort bestätigen"
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:14
+msgid "Contact email:"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:10
+msgid "Contact no.:"
+msgstr ""
 
 #: code/accountSettings/partials/payment.php:15
 msgid "Credit Card Name"
@@ -140,11 +169,17 @@ msgid "DOWNLOAD PDF"
 msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:11
+#: code/booking/partials/booking.php:27
 msgid "Date"
 msgstr "Datum?"
 
 #: code/kyc/index.php:62
 msgid "Date Range:"
+msgstr "Datum?"
+
+#: code/booking/partials/booking.php:8
+#, fuzzy
+msgid "Date range"
 msgstr "Datum?"
 
 #: code/kyc/partials/orders.php:25
@@ -221,6 +256,14 @@ msgstr "Vorname"
 #: code/settings/delivery/partials/delivery.php:38
 msgid "Free delivery for orders above"
 msgstr "Freie Lieferung für Bestellungen über"
+
+#: code/booking/partials/booking.php:13
+msgid "Generate report"
+msgstr ""
+
+#: code/booking/partials/booking.php:29
+msgid "Guests"
+msgstr ""
 
 #: code/settings/delivery/partials/notifications.php:64
 msgid ""
@@ -306,6 +349,10 @@ msgstr "Nein"
 msgid "No Data"
 msgstr ""
 
+#: code/booking/partials/booking.php:43
+msgid "No bookings at this period."
+msgstr ""
+
 #: code/accountSettings/partials/password.php:5
 msgid "Old Password"
 msgstr "Altes Passwort"
@@ -330,6 +377,11 @@ msgstr "verspätete Bestellung"
 msgid "Orders"
 msgstr "verspätete Bestellung"
 
+#: code/booking/partials/booking.php:31
+#, fuzzy
+msgid "Orders placed"
+msgstr "verspätete Bestellung"
+
 #: code/kyc/partials/orders.php:32
 msgid "Outlet"
 msgstr "Standorte"
@@ -343,6 +395,10 @@ msgstr "Standorte"
 #: code/kyc/partials/orders.php:115 code/kyc/partials/reports.php:121
 #: code/kyc/partials/stock.php:80
 msgid "PDF"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:22
+msgid "PRINT BOOKING"
 msgstr ""
 
 #: code/accountSettings/partials/profile.php:42
@@ -446,6 +502,10 @@ msgstr ""
 msgid "Profile"
 msgstr "Profil"
 
+#: code/booking/partials/booking.php:25
+msgid "Promotion"
+msgstr ""
+
 #: code/kyc/partials/stock.php:33
 msgid "Quantity Ordered"
 msgstr "Menge"
@@ -512,7 +572,7 @@ msgstr "Beschreibung"
 msgid "TOTAL"
 msgstr ""
 
-#: code/kyc/partials/stream.php:42
+#: code/booking/partials/booking.php:28 code/kyc/partials/stream.php:42
 msgid "Time"
 msgstr "Zeit?"
 
@@ -1793,9 +1853,6 @@ msgstr ""
 #~ msgid "Monthly charge"
 #~ msgstr "Zustellgebühr"
 
-#~ msgid " months contract"
-#~ msgstr "Dieser Monat"
-
 #~ msgid "Have a discount code?"
 #~ msgstr "Bitte geben Sie einen Standortname ein. "
 
@@ -2055,9 +2112,6 @@ msgstr ""
 #~ msgid "Select Events..."
 #~ msgstr "Auswahl Angebot"
 
-#~ msgid "Date Range"
-#~ msgstr "Datum?"
-
 #~ msgid "Month"
 #~ msgstr "Dieser Monat"
 
@@ -2078,9 +2132,6 @@ msgstr ""
 
 #~ msgid "Orders By Outlet"
 #~ msgstr "Meldung über Bestellstatus"
-
-#~ msgid "Time of Orders Placed"
-#~ msgstr "verspätete Bestellung"
 
 #~ msgid "Returning"
 #~ msgstr "Wiederkehrende Nutzer"

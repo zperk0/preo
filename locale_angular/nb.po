@@ -65,6 +65,18 @@ msgstr "Faktura historikk"
 msgid "Billing Schedule"
 msgstr "Faktureringsplan"
 
+#: code/booking/js/directives/booking-item-details/booking-item-details.js:16
+msgid "Booking"
+msgstr ""
+
+#: code/booking/partials/booking.php:30
+msgid "Booking page"
+msgstr ""
+
+#: code/booking/partials/booking.php:6
+msgid "Bookings"
+msgstr ""
+
 #: code/accountSettings/partials/profile.php:32
 msgid "Business Name"
 msgstr "Navn på virksomhet"
@@ -113,9 +125,25 @@ msgstr "Siste siffer i kortnummer"
 msgid "Choose preset:"
 msgstr "Velg forhåndsinnstilling:"
 
+#: code/booking/partials/booking.php:26
+msgid "Client"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:6
+msgid "Client contact:"
+msgstr ""
+
 #: code/accountSettings/partials/password.php:19
 msgid "Confirm"
 msgstr "Bekreft"
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:14
+msgid "Contact email:"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:10
+msgid "Contact no.:"
+msgstr ""
 
 #: code/accountSettings/partials/payment.php:15
 msgid "Credit Card Name"
@@ -139,11 +167,17 @@ msgid "DOWNLOAD PDF"
 msgstr "LAST NED PDF"
 
 #: code/accountSettings/partials/billingHistory.php:11
+#: code/booking/partials/booking.php:27
 msgid "Date"
 msgstr "Dato"
 
 #: code/kyc/index.php:62
 msgid "Date Range:"
+msgstr "Datointerval"
+
+#: code/booking/partials/booking.php:8
+#, fuzzy
+msgid "Date range"
 msgstr "Datointerval"
 
 #: code/kyc/partials/orders.php:25
@@ -220,6 +254,14 @@ msgstr "Fornavn"
 #: code/settings/delivery/partials/delivery.php:38
 msgid "Free delivery for orders above"
 msgstr "Gratis levering for ordre over"
+
+#: code/booking/partials/booking.php:13
+msgid "Generate report"
+msgstr ""
+
+#: code/booking/partials/booking.php:29
+msgid "Guests"
+msgstr ""
 
 #: code/settings/delivery/partials/notifications.php:64
 msgid ""
@@ -307,6 +349,10 @@ msgstr "Nei"
 msgid "No Data"
 msgstr "Ingen data"
 
+#: code/booking/partials/booking.php:43
+msgid "No bookings at this period."
+msgstr ""
+
 #: code/accountSettings/partials/password.php:5
 msgid "Old Password"
 msgstr "Gammelt passord"
@@ -331,6 +377,11 @@ msgstr "Ordre total"
 msgid "Orders"
 msgstr "Ordre"
 
+#: code/booking/partials/booking.php:31
+#, fuzzy
+msgid "Orders placed"
+msgstr "Ordre"
+
 #: code/kyc/partials/orders.php:32
 msgid "Outlet"
 msgstr "Utsalgssted"
@@ -345,6 +396,10 @@ msgstr "Utsalgsstedets navn:"
 #: code/kyc/partials/stock.php:80
 msgid "PDF"
 msgstr "PDF"
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:22
+msgid "PRINT BOOKING"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:42
 msgid "Password"
@@ -444,6 +499,10 @@ msgstr ""
 msgid "Profile"
 msgstr "Profil"
 
+#: code/booking/partials/booking.php:25
+msgid "Promotion"
+msgstr ""
+
 #: code/kyc/partials/stock.php:33
 msgid "Quantity Ordered"
 msgstr "Antall bestilt"
@@ -510,7 +569,7 @@ msgstr "Abonnementer"
 msgid "TOTAL"
 msgstr "TOTALT"
 
-#: code/kyc/partials/stream.php:42
+#: code/booking/partials/booking.php:28 code/kyc/partials/stream.php:42
 msgid "Time"
 msgstr "Tid"
 
