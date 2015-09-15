@@ -1,0 +1,213 @@
+.clear {
+	clear: both;
+}
+
+.date-range label {
+	padding: .5em .625em .625em;
+    font-size: 14px;
+    color: #222 !important;
+    text-align: left;
+    font-weight: bold;
+    display: block;
+}
+
+.date-range .sched-start-date, .date-range .sched-end-date {
+	width: 76px !important;
+	float: left;
+	font-size: 12px !important;
+    font-weight: bold;
+    z-index: 100;
+}
+
+.date-range .sched-start-date {
+	margin-left: 10px;
+}
+
+.date-range .separator {
+    padding: 5px;
+    font-weight: bold;
+    float: left;
+    background-color: #fff;
+    margin-top: 2px;
+    margin-left: 1px;
+}
+
+.date-range .calendar {
+	width: 21px;
+	height: 21px;
+	display: block;
+	float: left;
+    background: url(/code/booking/img/calendar.png);
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+.date-range button {
+	height: 40px;
+	margin: 0;
+    line-height: 100%;
+    float: left;
+    margin-left: 10px;
+    margin-top: -4px;
+}
+
+.booking-row {
+	margin-top: 60px;
+}
+
+.booking-container .booking-table thead {
+	border-bottom: 1px solid #B9BBBD;
+	font-size: 14px;
+}
+
+.booking-table thead span {
+	padding-bottom: 10px;
+}
+
+.booking-table {
+	display: table;
+    margin-right: auto!important;
+    width: 101.8%!important;
+    margin-left: auto;
+    margin-bottom: 0!important;
+    margin-top: -1px;
+    max-width: 987px;
+    border: 0;
+    background-color: transparent;
+    color: #48535d;
+}
+
+.booking-table tbody tr {
+	/*border-top: 15px solid transparent;*/
+}
+
+.booking-info {
+	height: 54px;
+	cursor: pointer;
+}
+
+.booking-info td {
+	vertical-align: middle;
+}
+
+.booking-table .client-info {
+	border-top: 1px solid #979797;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	color: black;
+	font-size: 13px;
+}
+
+.booking-table .client-info > div {
+	display: inline-block;
+}
+
+.booking-table .client-info b {
+	width: 90px;
+    display: inline-block;
+}
+
+.booking-table .client-info > div > div {
+	margin-bottom: 5px;
+}
+
+.booking-table .client-info .ct-btn-print {
+	margin-top: 10px;
+}
+
+.booking-table .client-info .btn-print {
+	width: 215px;
+	height: 40px;
+	font-size: 135%;
+}
+
+.booking-table .booking-info, .booking-table .booking-details {
+	background-color: #fff;
+}
+
+.booking-table .booking-details {
+	display: none;
+}
+
+.booking-table .booking-details td {
+	padding-top: 0px;
+}
+
+.booking-table .dish-info {
+	border-top: 1px solid #969696;
+	overflow-y: hidden;
+	overflow-x: auto;
+	white-space: nowrap;
+	font-size: 13px;
+}
+
+.booking-table .dish-info .list-header {
+	background-color: #f3f3f3;
+	padding: 15px 5px;
+	height: 20px;
+	color: #7c7c7c;
+}
+
+.booking-table .dish-info .list-header span {
+	margin-top: -8px;
+}
+
+.booking-table .dish-info .dish-card {
+	width: 22.5%;
+    max-width: 225px;
+    display: inline-block;
+	margin-left: 2%;
+	margin-bottom: 10px;
+	margin-top: 25px;
+}
+
+.booking-table .dish-info .dish-list ul {
+	list-style-type: none;
+	padding: 5px;
+	color: #b0b0b0;
+}
+
+.booking-table .separator-thead {
+	height: 15px;
+	background-color: transparent;
+}
+
+.booking-table .separator {
+	height: 6px;
+	background-color: transparent;
+}
+
+
+
+/*.booking-table .booking-details, .booking-table .booking-details td {
+	width: 100%;
+}*/
+
+/*.booking-name {
+	width: 100px;
+	display: table-cell;
+}
+.booking-client {
+	width: 100px;
+	display: table-cell;
+}
+.booking-date {
+	width: 100px;
+	display: table-cell;
+}
+.booking-time {
+	width: 100px;
+	display: table-cell;
+}
+.booking-guests {
+	width: 100px;
+	display: table-cell;
+}
+.booking-page {
+	width: 100px;
+	display: table-cell;
+}
+.booking-orders {
+	width: 100px;
+	display: table-cell;
+}*/
