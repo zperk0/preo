@@ -1,0 +1,25 @@
+.settings {
+	background: #fff;
+	padding: 30px;
+	color: #6e767e;
+}
+
+.settings input {
+	width: 40px;
+    display: inline-block;
+    margin: 0;
+    background: #f1f0f2;
+}
+
+.settings .reminder-field {
+	margin-bottom: 30px;
+}
+
+.settings label {
+	display: inline-block;
+	color: #6e767e !important;
+}
+
+.settings-container button {
+	margin-top: 35px;
+}

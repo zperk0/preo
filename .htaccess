@@ -70,6 +70,9 @@ RewriteRule ^.*$ nonEventSettings.php [L]
 RewriteCond %{REQUEST_URI} ^/events$ [NC]
 RewriteRule ^.*$ /code/events [L]
 
+RewriteCond %{REQUEST_URI} ^/bookingSettings$ [NC]
+RewriteRule ^.*$ /code/bookingSettings/index.php [L]
+
 RewriteCond %{REQUEST_URI} ^/homescreen$ [NC]
 RewriteRule ^.*$ appSettings1.php [L]
 
