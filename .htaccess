@@ -130,6 +130,9 @@ RewriteRule ^.*$ /code/dashboard/do_menuConfig.php [L]
 RewriteCond %{REQUEST_URI} ^/newMenu$ [NC]
 RewriteRule ^.*$ /newMenu.php [L]
 
+RewriteCond %{REQUEST_URI} ^/newGroupMenu$ [NC]
+RewriteRule ^.*$ /newMenu.php [L]
+
 RewriteCond %{REQUEST_URI} ^/deleteMenu$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_menuDelete.php [L]
 

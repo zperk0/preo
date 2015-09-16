@@ -6,7 +6,7 @@
 </div>
 
 <?if(!isset($_SESSION['menu_edit_on'])) $_SESSION['menu_edit_on']=0;?>
-<form id="menuConfigForm" method="POST" data-preoabide>
+<form id="menuConfigForm" class='<? if($_SESSION["groupMenu"]) echo "groupMenu";?>' method="POST" data-preoabide>
 	<div class="row">
 		<div class="topSpacer"></div>
 		<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
@@ -23,33 +23,34 @@
 				<?}else{?><a class="unavailable" href="#"><? echo _("Opening Hours");?></a><?}?>
 			<?}?>
 			<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
-			
+
 			<a class="unavailable" href="#"><? echo _("Done");?></a>
 		</nav>
 		<?}?>
 		<div class="large-12 columns">
 
+			<?if(!$_SESSION['groupMenu']) { ?>
 			<h1><?if(!$_SESSION['menu_edit_on'] && !isset($menu)) echo _("Build your menu"); else echo _("Your menu");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Now it's time to create your menu. We suggest you keep it simple to start with.<br/><br/>An easy way is to group items, i.e. create separate sections for food, cold drinks and hot drinks.");?>"></i></h1>
-
+			<?}?>
 			<!-- Hidden inputs here keep count of menu items and options -->
 			<input type="hidden" id="sectionCount" 			name="sectionCount"			value="<?if($_SESSION['menu_edit_on']) echo $sectionCount; else echo "0";?>"/>
 			<input type="hidden" id="sectionCountAct" 		name="sectionCountAct"		value="<?if($_SESSION['menu_edit_on']) echo $sectionCount; else echo "0";?>"/>
-			
+
 			<input type="hidden" id="itemCount"				name="itemCount" 			value="<?if($_SESSION['menu_edit_on']) echo $itemCount; else echo "0";?>"/>
 			<input type="hidden" id="itemCountAct" 			name="itemCountAct"			value="<?if($_SESSION['menu_edit_on']) echo $itemCount; else echo "0";?>"/>
-			
+
 			<input type="hidden" id="item0_optionCount" 	name="item0_optionCount"	value="0"/>
 			<input type="hidden" id="item0_optionCountAct" 	name="item0_optionCountAct" value="0"/>
-			
+
 			<input type="hidden" id="item0_modCount" 		name="item0_modCount"	 	value="0"/>
 			<input type="hidden" id="item0_modCountAct" 	name="item0_modCountAct" 	value="0"/>
-			
+
 			<input type="hidden" id="redirectFlag" name="redirectFlag" value="<?echo $redirectFlag?>"/>
-			
+
 			<input type="hidden" id="menuID" 	name="menuID" 		value="<?if(isset($menuID)) echo $menuID; else echo "menu1";?>"/>
 			<input type="hidden" id="venueID" 	name="venueID" 		value="<?if(isset($_SESSION['venue_id'])) echo $_SESSION['venue_id']; else echo "venue1";?>"/>
 			<input type="hidden" id="accountID" name="accountID" 	value="<?if(isset($_SESSION['account_id'])) echo $_SESSION['account_id']; else echo "account1";?>"/>
-			
+
 			<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu))) :
 				foreach($itemModOptArray as $key=>$itemModOption)
 				{
@@ -57,7 +58,7 @@
 					?>
 					<input type="hidden" id="item<?echo ($key+1)?>_optionCount" 	name="item<?echo ($key+1)?>_optionCount"	value="<?echo $itemModOption['optCount'];?>"/>
 					<input type="hidden" id="item<?echo ($key+1)?>_optionCountAct" 	name="item<?echo ($key+1)?>_optionCountAct" value="<?echo $itemModOption['optCount'];?>"/>
-					
+
 					<input type="hidden" id="item<?echo ($key+1)?>_modCount" 		name="item<?echo ($key+1)?>_modCount"	 	value="<?echo $itemModOption['modCount'];?>"/>
 					<input type="hidden" id="item<?echo ($key+1)?>_modCountAct" 	name="item<?echo ($key+1)?>_modCountAct" 	value="<?echo $itemModOption['modCount'];?>"/>
 					<?
@@ -65,9 +66,25 @@
 			endif; ?>
 
 			<div class="row">
-				<input type="text" name="mName" id="mName" data-edit="false" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo _("Click to add your menu name");?>" required tabindex=1 pattern="^.{0,99}$"/>
+				<input type="text" name="mName" id="mName" data-edit="false" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo !$_SESSION['groupMenu'] ? _("Click to add your menu name") : _("Enter menu name");?>" required tabindex=1 pattern="^.{0,99}$"/>
 				<small class="error mNameError"><?echo _("Please type a menu name (max 100chars)");?></small>
+				<?if($_SESSION['groupMenu']) { ?>
+					<input type="text" name="mDescription" id="mDescription" data-edit="false" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo _("Description (optional)");?>" tabindex=2 pattern="^.{0,250}$"/>
+					<small class="error mDescription"><?echo _("Please type a menu name (max 250chars)");?></small>
+
+					<div>
+						<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
+						<select class='promotions-select' data-placeholder="<?echo _('Select some promotions'); ?>" multiple>
+							<option value="1">promotion 1</option>
+							<option value="2">promotion 2</option>
+							<option value="3">promotion 3</option>
+						</select>
+					</div>
+				<?}?>
 			</div>
+
+
+
 
 			<div class="hide" id="menuSectionRow"> <!-- DUMMY -->
 				<div class="row">
@@ -75,6 +92,14 @@
 						<input type="text" name="mSectionName[0]" data-insert="false" data-edit="false" data-delete="false" data-id="section0s" data-md="false" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
 						<small class="error msecError"><?echo _("Please type a section name (max 100chars)");?></small>
 					</div>
+					<?if($_SESSION['groupMenu']) { ?>
+					<div class="large-12 columns minmax-container">
+						<span>User must select</span>
+						<input type="text" name="mSectionMinMax[0]" class="menuField menuSectionField noEnterSubmit minmax" required pattern="^([0-9]+)$"/>
+						<span>item/s per guest from this section</span>
+						<small class="error msecError"><?echo _("Please enter the quantity");?></small>
+					</div>
+					<?}?>
 				</div>
 				<div class="row">
 					<div class="large-12 columns sectionTools">
@@ -101,9 +126,9 @@
 					</table>
 				</div>
 			</div>
-			
+
 			<div class="hide firstItemDiv"></div> <!-- Dummy hook -->
-			
+
 			<table class="menuTable" id="item0" style="display:none;"><!-- DUMMY -->
 				<tbody>
 					<tr class="menuEdit itemTR">
@@ -118,13 +143,13 @@
 						<td class="menuTDPrice">
 							<input type="text" name="iPrice[section0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" pattern="^([0-9]+)(\.[0-9]{1,2})?$"/>
 							<small class="error priceError"><?echo _("Price?");?></small>
-							
+
 							</td>
 						<td class="menuTDQuant hide">
 							<input type="text" name="iQuan[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Unlimited");?>"/>
 						</td>
 						<td class="menuTDVisi">
-							<div class="switch small" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>"> 
+							<div class="switch small" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>">
 								<input name="iVisi[section0][0]" value="0" type="radio">
 								<label class='no'><?echo _("No");?></label>
 
@@ -133,7 +158,7 @@
 
 								<span></span>
 							</div>
-						</td>		
+						</td>
 						<td class="menuTDTools colMenuItems">
 							<button type="button" class="menuTableButtons itemUpload" 		title="<?echo _("Upload image");?>"							><i class="pd-upload"></i></button>
 							<button type="button" class="menuTableButtons itemTags" 		title="<?echo _("Add tags");?>"							><i class="pd-tags"></i></button>
@@ -177,7 +202,7 @@
 						<td class="menuTDQuant hide">
 						</td>
 						<td class="menuTDVisi">
-							<div class="switch small hide"> 
+							<div class="switch small hide">
 								<input name="oVisi[item0][m0][0]" value="0" type="radio">
 								<label class='no'><?echo _("No");?></label>
 
@@ -201,7 +226,7 @@
 	</div>
 
 	<div class="dynamicDataTable"> <!-- This is where the dynamic data goes into -->
-	
+
 	<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu))){
 		$iKey=0; //item number are continuous across sections so we can't use $key in foreach($array as $key=>$var)
 		foreach($menu['sections'] as $sKey=>$section){
@@ -243,7 +268,7 @@
 							</table>
 						</div>
 						<div class="sortWithinDiv">
-						<?foreach($section['items'] as $item){ 
+						<?foreach($section['items'] as $item){
 						//again remember its all 1-indexed thats why we add +1 to the key?>
 							<table class="menuTable tablesection<?echo ($sKey+1);?> <?if($item['mealDeal']){?>neverShow<?}?>" id="item<?echo ($iKey+1)?>" style="background:transparent<?if($item['mealDeal']){?>;display:none !important;visibility:hidden !important;<?}?>">
 								<tbody>
@@ -264,7 +289,7 @@
 											<input type="text" name="iQuan[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" <?if($item['quantity']){?>value="<?echo $item['quantity']?>"<?}else{?>placeholder="<?echo _("Unlimited");}?>"  readonly="readonly"/>
 										</td>
 										<td class="menuTDVisi">
-											<div class="switch small" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>"> 
+											<div class="switch small" title="<?echo _("This chooses whether you want to activate this food on the menu or not.");?>">
 												<input name="iVisi[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" value="0" type="radio" <?if(!$item['visible']){?>checked<?}?>>
 												<label class='no'><?echo _("No");?></label>
 
@@ -276,16 +301,16 @@
 										</td>
 										<td class="menuTDTools colMenuItems">
 											<?php
-												$attr = ''; 
+												$attr = '';
 												if ( isset($item['images']) && count($item['images']) ) {
 													$attr = 'data-image-url = "' . $item['images'][0]['image'] . '"';
-												} 
+												}
 												$attrTags = '';
 												if ( isset($item['tags']) && count($item['tags']) ) {
 													$attrTags = 'data-tags=\'' . json_encode($item['tags']) . '\'';
 												}
 											?>
-											<button type="button" class="menuTableButtons itemUpload" 	<?php echo $attr ?>	title="<?echo _("Upload image");?>"							><i class="pd-upload"></i></button>										
+											<button type="button" class="menuTableButtons itemUpload" 	<?php echo $attr ?>	title="<?echo _("Upload image");?>"							><i class="pd-upload"></i></button>
 											<button type="button" class="menuTableButtons itemTags" 	<?php echo $attrTags ?>	title="<?echo _("Add tags");?>"							><i class="pd-tags"></i></button>
 											<button type="button" class="menuTableButtons itemSave hide"			title="<?echo _("Collapse");?>"							><i class="pd-up"></i></button>
 											<button type="button" class="menuTableButtons itemEdit" 				title="<?echo _("Edit");?>"							><i class="pd-edit"></i></button>
@@ -313,7 +338,7 @@
 												</td>
 												<td class="modifierRow modifierRowDeleteHeader hide menuTDTools">
 													<button type="button" class="menuTableButtons secondary optionHeaderDelete" title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
-												</td>												
+												</td>
 											</tr>
 											<tr class="menuEdit hide" style="display:none;"> <!-- This dummy is required! -->
 												<td class="menuTDName">
@@ -329,7 +354,7 @@
 												<td class="menuTDQuant hide">
 												</td>
 												<td class="menuTDVisi">
-													<div class="switch small hide"> 
+													<div class="switch small hide">
 														<input name="oVisi[item<?echo ($iKey+1);?>][m0][0]" value="0" type="radio">
 														<label class='no'><?echo _("No");?></label>
 
@@ -344,7 +369,7 @@
 													<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
 												</td>
 											</tr>
-											<?foreach($modifier['items'] as $oKey=>$option){ 
+											<?foreach($modifier['items'] as $oKey=>$option){
 												//again remember its all 1-indexed thats why we add +1 to the key
 											?>
 												<tr class="optionTR savedInput" style="display:none;">
@@ -361,7 +386,7 @@
 													<td class="menuTDQuant hide">
 													</td>
 													<td class="menuTDVisi">
-														<div class="switch small hide"> 
+														<div class="switch small hide">
 															<input name="oVisi[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>][<?echo ($oKey+1);?>]" value="0" type="radio" <?if(!$option['visible']){?>checked<?}?>>
 															<label class="no"><?echo _("No");?></label>
 
@@ -401,7 +426,7 @@
 			<h4><button type="button" class="newSection" title="<?echo _("Add a new menu section");?>"><i class="pd-add"></i></button> <?echo _("Add a new menu section");?></h4>
 		</div>
 	</div>
-	
+
 	<div class="row">
 		<div class="small-12 large-4 columns">
 				<button class="collapseAllMenu secondary small" type="button"><?echo _("COLLAPSE ALL");?></button>
@@ -416,17 +441,17 @@
 	</div>
 </form>
 
-<div id="modalImagesCrop" class="reveal-modal modal-preoday xsmall" data-options="closeOnBackgroundClick:false" data-reveal>	
+<div id="modalImagesCrop" class="reveal-modal modal-preoday xsmall" data-options="closeOnBackgroundClick:false" data-reveal>
 	<a class="close-reveal-modal">×</a>
 	<form action="" method="POST" class="formImageMenuItem" enctype="multipart/form-data">
 		<div class="header-modalCrop spacing-modalCrop">
 			<header class="title-notification" id="title-modalCrop">Name of item</header>
 			<button type="button" class="doImageMenuItem preodayButton pull-left" id="addPicture" title="<?echo _("UPLOAD");?>">ADD PICTURE</button>
-			<input type="file" name="picFile[]" accept="image/png;image/jpg;image/jpeg" class="hide picImageMenuItem" />	
+			<input type="file" name="picFile[]" accept="image/png;image/jpg;image/jpeg" class="hide picImageMenuItem" />
 			<p id="descriptionExtensions">JPG, PNG (Max. file size 5mb)</p>
 			<p id="errorMessageImageCrop"></p>
 		</div>
-		
+
 		<div class="content-modal">
 			<div id="croppic"></div>
 			<div class="progressImageCrop">
@@ -434,7 +459,7 @@
 			    <div class="percentImageCrop">0%</div>
 			</div>
 		</div>
-		
+
 		<div class="footer-modalCrop spacing-modalCrop">
 			<button class="preodayButton pull-left" type="button" id="saveChangesModalCrop">SAVE CHANGES</button>
 			<button class="preodayButton pull-left" type="button" id="cancelModalImageCrop">CANCEL</button>
@@ -442,17 +467,17 @@
 	</form>
 </div>
 
-<div id="modalTags" class="reveal-modal modal-preoday xsmall" data-options="closeOnBackgroundClick:false" data-reveal>	
+<div id="modalTags" class="reveal-modal modal-preoday xsmall" data-options="closeOnBackgroundClick:false" data-reveal>
 	<a class="close-reveal-modal">×</a>
 	<form action="" method="POST" class="formTags">
 		<div class="header-modalCrop spacing-modalCrop">
 			<header class="title-notification" id="title-tags"></header>
 		</div>
-		
+
 		<div class="content-modal content-modal-tags">
 			<ul class="listTags"></ul>
 		</div>
-		
+
 		<div class="footer-modalCrop spacing-modalCrop">
 			<button class="preodayButton pull-left" type="button" id="saveChangesTags">SAVE CHANGES</button>
 			<button class="preodayButton pull-left" type="button" id="cancelModalTags">CANCEL</button>
@@ -478,7 +503,7 @@
       <div class="b12 se"></div>
     </div>
   </div>
-</div>  
+</div>
 
 <script type="text/javascript">
 
@@ -496,6 +521,16 @@ $(document).ready(function() {
 	$('.progressIndicator').attr('title', <? echo json_encode(_("45&#37 done, now for the fun bit!")) ?>);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
+});
+</script>
+<?}?>
+
+<?if($_SESSION['groupMenu']){?>
+<script src="/bower_components/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+	$('.promotions-select').chosen();
 });
 </script>
 <?}?>

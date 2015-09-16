@@ -95,7 +95,7 @@ module.exports = function(grunt) {
     cssmin: {
       options: { restructuring: false },
       minify: {
-        src: ['css/normalize.css', 'css/foundation.css', 'css/jquery.gridster.min.css','bower_components/select2/select2.css','css/app.css', 'css/croppic.css'],
+        src: ['css/normalize.css', 'css/foundation.css', 'css/jquery.gridster.min.css', 'bower_components/select2/select2.css', 'bower_components/chosen/chosen.min.css', 'css/app.css', 'css/croppic.css'],
         dest: 'css/all_css.min.css',
       }
     },
