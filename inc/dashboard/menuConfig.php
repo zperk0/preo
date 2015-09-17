@@ -68,10 +68,10 @@
 			<div class="row">
 				<input type="text" name="mName" id="mName" data-edit="false" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo !$_SESSION['groupMenu'] ? _("Click to add your menu name") : _("Enter menu name");?>" required tabindex=1 pattern="^.{0,99}$"/>
 				<small class="error mNameError"><?echo _("Please type a menu name (max 100chars)");?></small>
-				<?if($_SESSION['groupMenu']) { ?>
-					<input type="text" name="mDescription" id="mDescription" data-edit="false" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo _("Description (optional)");?>" tabindex=2 pattern="^.{0,250}$"/>
-					<small class="error mDescription"><?echo _("Please type a menu name (max 250chars)");?></small>
-
+			</div>
+			<?if($_SESSION['groupMenu']) { ?>
+			<div class="row">
+					<input type="text" name="mDescription" id="mDescription" class="menuField" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo _("Description (optional)");?>" tabindex=2 pattern="^.{0,250}$"/>
 					<div>
 						<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
 						<select class='promotions-select' data-placeholder="<?echo _('Select some promotions'); ?>" multiple>
@@ -80,8 +80,8 @@
 							<option value="3">promotion 3</option>
 						</select>
 					</div>
-				<?}?>
 			</div>
+			<?}?>
 
 
 
@@ -95,9 +95,11 @@
 					<?if($_SESSION['groupMenu']) { ?>
 					<div class="large-12 columns minmax-container">
 						<span>User must select</span>
-						<input type="text" name="mSectionMinMax[0]" class="menuField menuSectionField noEnterSubmit minmax" required pattern="^([0-9]+)$"/>
+						<div>
+							<input type="text" name="mSectionMinMax[0]" data-insert="false" data-edit="false" data-delete="false" data-id="section0s" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" required pattern="^\d$"/>
+							<small class="error mminmaxError"><?echo _("Please enter the quantity");?></small>
+						</div>
 						<span>item/s per guest from this section</span>
-						<small class="error msecError"><?echo _("Please enter the quantity");?></small>
 					</div>
 					<?}?>
 				</div>

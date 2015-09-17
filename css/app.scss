@@ -4235,6 +4235,14 @@ p.link-to-video:first-child  {
   margin-top: -3px;
 }
 
+.mNameError, .mDescriptionError {
+  margin-left: 5px;
+}
+
+.msecError {
+  margin-left: -5px;
+}
+
 #mDescription {
   margin-top: 10px;
   margin-bottom: 0;
@@ -4297,6 +4305,10 @@ p.link-to-video:first-child  {
   margin-top: -10px;
 }
 
+.minmax-container > div {
+  display: inline-block;
+}
+
 #menuSectionRow .minmax-container input {
   width: 40px;
   background-color: #fff !important;
@@ -4307,6 +4319,10 @@ p.link-to-video:first-child  {
   color: #000 !important;
   text-align: center;
   font-family: HelveticaNeueW01-45Ligh;
+}
+
+.minmax-container .error input {
+  margin-left: 35px;
 }
 
 #menuSectionRow .minmax-container span {
