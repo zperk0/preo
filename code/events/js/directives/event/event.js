@@ -38,15 +38,26 @@ angular.module('events')
                     $log.log(selectedItem);
 
                     angular.extend(eventObj, selectedItem);
-                    $rootScope.$broadcast('updateEvent', {evtData: selectedItem});
+
+                    if(selectedItem.id === '')
+                        $rootScope.$broadcast('createEvent', {evtData: selectedItem, duplicating: true});
+                    else
+                        $rootScope.$broadcast('updateEvent', {evtData: selectedItem});
 
                     // update event date after the digest
                     $timeout(function() {
                         eventDateElem.val(DateUtils.getStrDate(selectedItem.date));
                     });
                 }, function () {
-                    $log.log('Modal dismissed at: ' + new Date());
+                    console.log('Modal dismissed at: ' + new Date());
                     $(document.body).css('overflow', 'auto');
+
+                    // remove duplicated event if modal was dismissed
+                    if(ng.isDuplicatingEvent) {
+
+                        ng.events.splice((ng.events.length - 1), 1);
+                        ng.isDuplicatingEvent = false;
+                    }
                 });
 
                 $(document.body).css('overflow', 'hidden');
@@ -79,24 +90,13 @@ angular.module('events')
                 newEvent.id = '';
                 ng.events.push(newEvent);
 
+                ng.isDuplicatingEvent = true;
+
                 $timeout(function() {
 
                     $('.eventTDEdit').last().click();
 
                     var $newTab = $('.eventTable').last();
-
-                    // //now we add datepicker
-                    $newTab.find(".eventTDDate input").fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}});
-
-                    // //now we add timepicker
-                    $newTab.find("input[name^=eTime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-                    $newTab.find("input[name^=eETime]").timepicker({'showDuration': true, 'timeFormat': 'H:i', 'step': 15 });
-
-                    $newTab.css('backgroundColor','#fafafa');
-                    $newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-                    $newTab.css('max-width', '100%');
-
-                    if(!$newTab.find('.eventSave').is(':visible')) $newTab.find('.eventTDEdit').trigger('click');
                     $("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
                 }, 0);
             };
@@ -105,8 +105,6 @@ angular.module('events')
             ng.delete = function(eventToDelete) {
 
                 var realEventID = eventToDelete.id; // id from DB
-
-                // $log.log(realEventID);
 
                 // event not saved in DB
                 if(typeof realEventID =='undefined' || realEventID == '' || !String(realEventID).match(/^\d+?$/gi)) {

@@ -16,6 +16,9 @@
             _getOutletLocations();
 
             $scope.$on('updateEvent', updateEvent);
+            $scope.$on('createEvent', function(evt, data) {
+                createEvent(data.evtData, data.duplicating);
+            });
         }
 
         function _getEvents() {
@@ -114,32 +117,7 @@
 
             modalInstance.result.then(function (eventData) {
 
-                // $log.log(eventData);
-                var deferred = $q.defer();
-                var data = formatData(angular.copy(eventData));
-
-                $rootScope.requests = 0;
-                $AjaxInterceptor.start();
-
-                Events.create(data).then(function(result) {
-
-                    console.log('event ok (create) ', result);
-                    // $log.log(result);
-                    configSlots(result, eventData, deferred);
-
-                }, function(result) {
-                    console.error('Error saving event. ');
-                    // $log.log(result);
-                    deferred.resolve(result);
-                });
-
-                deferred.promise.then(function(eventObj) {
-
-                    eventObj = decodeSchedule(eventObj);
-                    vm.events.push(eventObj);
-                    console.log('all done', eventObj);
-                    $AjaxInterceptor.complete();
-                });
+                createEvent(eventData);
             }, function () {
 
                 // $log.log('Modal dismissed at: ' + new Date());
@@ -297,6 +275,41 @@
             return data;
         }
 
+        function createEvent(eventData, duplicating) {
+
+            // console.log(eventData);
+
+            var deferred = $q.defer();
+            var data = formatData(angular.copy(eventData));
+
+            $rootScope.requests = 0;
+            $AjaxInterceptor.start();
+
+            Events.create(data).then(function(result) {
+
+                console.log('event ok (create) ', result);
+                // $log.log(result);
+                configSlots(result, eventData, deferred);
+
+            }, function(result) {
+                console.error('Error saving event. ');
+                // $log.log(result);
+                deferred.resolve(result);
+            });
+
+            deferred.promise.then(function(eventObj) {
+
+                if(!duplicating) {
+
+                    eventObj = decodeSchedule(eventObj);
+                    vm.events.push(eventObj);
+                }
+
+                console.log('all done', eventObj);
+                $AjaxInterceptor.complete();
+            });
+        }
+
         function updateEvent(event, data) {
 
             var deferred = $q.defer();
@@ -401,7 +414,7 @@
             Events.getOutletLocations().then(function(result) {
 
                 var outletLocations = result.data,
-                    sorted = sortLocations(outletLocations);
+                    sorted = outletLocations && outletLocations.length ? sortLocations(outletLocations) : [];
 
                 vm.outletLocations = getOutletLocationSelectOptions(sorted);
             });
