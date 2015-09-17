@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-10 15:35-0300\n"
+"POT-Creation-Date: 2015-09-17 12:15-0300\n"
 "PO-Revision-Date: 2014-09-10 16:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1422,12 +1422,6 @@ msgstr ""
 "Bestellungen aufgenommen werden.<br/><br/>DEMO: Ihre App ist auf 'My Order "
 "App' verfügbar, es können jedoch nicht richtige Bestellungen aufgenommen "
 "werden.<br/><br/>OFFLINE: Ihre App ist auf 'My Order App'nicht verfügbar."
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:179
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:180
-msgid "active"
-msgstr "Aktiv?"
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:178
 msgid "OFFLINE"
@@ -3248,6 +3242,9 @@ msgstr ""
 #: /var/www/webapp/overrides/preoday/regular_footer.php:27
 msgid "support@preoday.com"
 msgstr "support@preoday.com"
+
+#~ msgid "active"
+#~ msgstr "Aktiv?"
 
 #, fuzzy
 #~ msgid "Second-Interval"
