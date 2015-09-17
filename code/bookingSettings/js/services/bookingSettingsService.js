@@ -1,21 +1,24 @@
 (function(window, angular){
 
 angular.module('bookingSettings')
-.service('BookingSettings', function ($http, ACCOUNT_ID) {
+.service('BookingSettings', function ($http, VENUE_ID) {
 
 	var service = {},
-		account_id = ACCOUNT_ID;
+		venue_id = VENUE_ID;
 
-	service.getSettings = function(filter) {
+	service.getSettings = function() {
 
-		// TODO: set endpoint
-		return $http.get('/bookingsSettings?accountid=' + account_id);
+		return $http.get('/api/venues/'+ venue_id +'/booking-settings');
 	};
 
 	service.save = function(data) {
 
-		// TODO: set endpoint
-		return $http.post('/bookingsSettings');
+		return $http.post('/api/venues/'+ venue_id +'/booking-settings', data);
+	};
+
+	service.update = function(data) {
+
+		return $http.put('/api/venues/'+ venue_id +'/booking-settings', data);
 	};
 
 	return service;

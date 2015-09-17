@@ -1,39 +1,76 @@
 (function(window, angular) {
 
     angular.module('bookingSettings')
-    .controller('BookingSettingsCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID','$AjaxInterceptor', 'BookingSettings',
-        function($scope, $rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingSettings) {
+    .controller('BookingSettingsCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$AjaxInterceptor', 'BookingSettings',
+        function($scope, $rootScope, $timeout, $q, $AjaxInterceptor, BookingSettings) {
 
-        var vm = this;
+        var vm = this,
+            noSettingsSaved = false;
+
+        vm.invalidForm = false;
 
         vm.save = function() {
 
             var data = {
-                lockDays: vm.lockDays,
-                reminderDays: vm.reminderDays
+                restaurantName: vm.restaurantName,
+                lockDays: vm.lockDays || '',
+                reminderDays: vm.reminderDays || ''
             };
 
-            // $AjaxInterceptor.start();
-            // TODO: uncomment to get group booking settings from api
-            // BookingSettings.save(data).then(function(result) {
+            if(!validateData()) {
+                vm.invalidForm = true;
+                return;
+            }
 
-            //      $AjaxInterceptor.complete();
-            // });
+            $AjaxInterceptor.start();
+
+            if(noSettingsSaved)
+                BookingSettings.save(data).then(function(result) {
+
+                    $AjaxInterceptor.complete();
+                });
+            else
+                BookingSettings.update(data).then(function(result) {
+
+                    $AjaxInterceptor.complete();
+                });
+        }
+
+        vm.isInvalidNumber = function(input) {
+            return isNaN(input);
+        };
+
+        function validateData() {
+
+            var isValid = true;
+
+            if(vm.isInvalidNumber(vm.reminderDays))
+                isValid = false;
+
+            if(vm.isInvalidNumber(vm.lockDays))
+                isValid = false;
+
+            return isValid;
         }
 
         function _init() {
 
             $rootScope.requests = 0;
-            // $AjaxInterceptor.start();
-            // TODO: uncomment to get group booking settings from api
-            // BookingSettings.getSettings().then(function(result) {
+            $AjaxInterceptor.start();
 
-            //     var data = result.data || {};
+            BookingSettings.getSettings().then(function(result) {
 
-            //     vm.reminderDays = data.reminderDays || '';
-            //     vm.lockDays = data.locakDaysDays || '';
-            //     $AjaxInterceptor.complete();
-            // });
+                var data = result.data || {};
+
+                vm.restaurantName = data.restaurantName || '';
+                vm.reminderDays = data.reminderDays || '';
+                vm.lockDays = data.lockDays || '';
+                $AjaxInterceptor.complete();
+            }, function() {
+
+                noSettingsSaved = true;
+                $AjaxInterceptor.complete();
+            });
         }
 
         $timeout(_init);
