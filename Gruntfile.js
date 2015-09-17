@@ -285,6 +285,6 @@ module.exports = function(grunt) {
   grunt.registerTask('minifyjs', ['uglify','replace:jscolor']);
   grunt.registerTask('minifycss', ['sass','cssmin','replace:fonts']);
   grunt.registerTask('build', ['minifyjs','minifycss']);
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('default', ['prepareWatch','build']);
 
 };

@@ -1884,46 +1884,15 @@ $(document).ready(function() {
 	   selectedList: 1
 	});
 
-    var slots = [
-        {label:_tr("Collection Slot: Pre-Show"),key:'PRESHOW'},
-        {label:_tr("Collection Slot: Pre-Game"),key:'PREGAME'},
-        {label:_tr("Collection Slot: Interval"),key:'INTERVAL'},
-        {label:_tr("Collection Slot: Second-Interval"),key:'INTERVAL2'},
-        {label:_tr("Collection Slot: Half-time"),key:'HALFTIME'},
-        {label:_tr("Collection Slot: Post-Show"),key:'POSTSHOW'},
-        {label:_tr("Collection Slot: Post-Game"),key:'POSTGAME'}
-    ];
 
-	$(".savedInput input[name^=eColl]").autocomplete({
-                    source: slots,
-                    select: function(event,ui){
-                        $(event.target).val(ui.item.key);
-                    }, delay: 10, minLength: 0,position: { my: "left top", at: "left bottom", collision: "none" } });
 	$("input[name^=iMod]").autocomplete({ source: [ _tr("Choose a size"),_tr("Choose a flavour"),_tr("Choose a topping"),_tr("Choose some extras"),_tr("Choose a side dish") ], delay: 10, minLength: 0 });
 	$("input[name^=iMD]").autocomplete({ source: [ _tr("Choose a main"),_tr("Choose a side"),_tr("Choose a drink"),_tr("Choose a curry"),_tr("Choose a burger") ], delay: 10, minLength: 0 });
-
-	$(".dynamicDataTable input[name^=eColl]").each(function(item){
-        var $input = $(this);
-        var slot = $input.data('slot');
-        var item = slots.filter(function(s){
-            return s.key === slot;
-        });
-        if (item.length) {
-            $input.val(item[0].label);
-        } else {
-            $input.val(slot);
-        }
-    });
 
 	$(document).on("click", '.showAChevy', function(){
 		$elem = $(this).prevAll('input:first');
 		$elem.focus();
 		$elem.trigger('click');
 	});
-
-    $(document).on("click", 'input[name^=eColl]', function(){
-        $(this).autocomplete( "search", "C" );
-    });
 
 	$(document).on("click", 'input[name^=iMod], input[name^=iMD]', function(){
 		$(this).parent('.modifierRow').find("input[name^=iMod]").autocomplete( "search", "C" );
@@ -2171,7 +2140,7 @@ $(document).ready(function() {
 							if($inputIPrice.val() == '')
 								menuSectionOneNivelItem['price'] 	= 0;
 							else
-								menuSectionOneNivelItem['price'] 	= $inputIPrice.val();
+								menuSectionOneNivelItem['price'] 	= format_price($inputIPrice.val());
 							menuSectionOneNivelItem['visible'] 		= $tableSectionUnique.find('input[name^=iVisi]:checked').val();
 							menuSectionOneNivelItem['quantity'] 		= 0;
 							menuSectionOneNivelItem['position'] 		= parseInt(itemCounter+1000);
@@ -2290,7 +2259,7 @@ $(document).ready(function() {
 												if($inputOPriceMod.val() == '')
 													menuSectionOneNivelItemModifiersCounterOptions['price'] 	= 0;
 												else
-													menuSectionOneNivelItemModifiersCounterOptions['price'] 	= $inputOPriceMod.val();
+													menuSectionOneNivelItemModifiersCounterOptions['price'] 	= format_price($inputOPriceMod.val());
 												menuSectionOneNivelItemModifiersCounterOptions['visible'] 		= 1;
 												menuSectionOneNivelItemModifiersCounterOptions['position'] 		= optCounter;
 
@@ -2447,6 +2416,10 @@ $(document).ready(function() {
 		submitTime = new Date().getTime();
 		return false; // avoid to execute the actual submit of the form.
 	});
+
+	function format_price(price) {
+		return price.replace(',', '.');
+	}
 
 	$(".eventMenuSingleSelect.selectOutletLocation").multiselect({
 	   multiple: false,
@@ -4298,9 +4271,9 @@ function CurrencyManager(){
 		   	  	//In the worst case, if something really wrong happens we still have gpb.
 		   	  	// we never should end here tho.
 		   	  	"GBP": {
-			        "symbol": "£",
+			        "symbol": "Â£",
 			        "name": "Pound Sterling",
-			        "symbol_native": "£",
+			        "symbol_native": "Â£",
 			        "decimal_digits": 2,
 			        "rounding": 0,
 			        "code": "GBP",
