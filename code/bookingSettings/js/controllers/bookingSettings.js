@@ -1,8 +1,8 @@
 (function(window, angular) {
 
     angular.module('bookingSettings')
-    .controller('BookingSettingsCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$AjaxInterceptor', 'BookingSettings',
-        function($scope, $rootScope, $timeout, $q, $AjaxInterceptor, BookingSettings) {
+    .controller('BookingSettingsCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$AjaxInterceptor', 'BookingSettings', 'gettextCatalog',
+        function($scope, $rootScope, $timeout, $q, $AjaxInterceptor, BookingSettings, gettextCatalog) {
 
         var vm = this,
             noSettingsSaved = false;
@@ -12,7 +12,7 @@
         vm.save = function() {
 
             var data = {
-                restaurantName: vm.restaurantName,
+                restaurantName: vm.restaurantName || '',
                 lockDays: vm.lockDays || '',
                 reminderDays: vm.reminderDays || ''
             };
@@ -28,11 +28,19 @@
                 BookingSettings.save(data).then(function(result) {
 
                     $AjaxInterceptor.complete();
+                }, function() {
+
+                    $AjaxInterceptor.complete();
+                    showErrorMsg();
                 });
             else
                 BookingSettings.update(data).then(function(result) {
 
                     $AjaxInterceptor.complete();
+                }, function() {
+
+                    $AjaxInterceptor.complete();
+                    showErrorMsg();
                 });
         }
 
@@ -53,6 +61,14 @@
             return isValid;
         }
 
+        function showErrorMsg() {
+
+            noty({
+                type: 'error',  layout: 'topCenter',
+                text: gettextCatalog.getString("Sorry, but there's been an error processing your request.")
+            });
+        }
+
         function _init() {
 
             $rootScope.requests = 0;
@@ -66,9 +82,14 @@
                 vm.reminderDays = data.reminderDays || '';
                 vm.lockDays = data.lockDays || '';
                 $AjaxInterceptor.complete();
-            }, function() {
+            }, function(result) {
 
-                noSettingsSaved = true;
+                // no settings saved
+                if(result.status == 404)
+                    noSettingsSaved = true;
+                else
+                    showErrorMsg();
+
                 $AjaxInterceptor.complete();
             });
         }
