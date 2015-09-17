@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-18 13:07-0300\n"
+"POT-Creation-Date: 2015-09-10 15:35-0300\n"
 "PO-Revision-Date: 2015-08-19 11:19+0100\n"
 "Last-Translator: Nick <na@drweb.no>\n"
 "Language-Team: \n"
@@ -69,7 +69,7 @@ msgstr "eller gå tilbake til"
 
 #: /var/www/webapp/inc/404/404_content.php:6
 #: /var/www/webapp/inc/shared/h.php:35
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:70
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:60
 msgid "Dashboard"
 msgstr "Kontrollpanelet"
 
@@ -158,7 +158,6 @@ msgid "Transaction Details"
 msgstr "Transaksjonsdetaljer"
 
 #: /var/www/webapp/inc/signup/signup_content.php:58
-#: /var/www/webapp/inc/dashboard/eventConfig.php:51
 #: /var/www/webapp/inc/dashboard/menuConfig.php:94
 #: /var/www/webapp/inc/dashboard/menuConfig.php:236
 #: /var/www/webapp/code/shop/shop.php:112
@@ -296,14 +295,14 @@ msgid "Go to Dashboard"
 msgstr "Gå til kontrollpanel"
 
 #: /var/www/webapp/inc/shared/h.php:39
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:107
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:97
 msgid "Order Screen"
 msgstr "Ordreliste"
 
 #: /var/www/webapp/inc/shared/h.php:41
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:130
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:116
 msgid "Venue Settings"
-msgstr "Arena innstillinger"
+msgstr "Arena Innstillinger"
 
 #: /var/www/webapp/inc/shared/h.php:43
 msgid "Change Settings"
@@ -316,7 +315,6 @@ msgstr "Leveringsinnstillinger"
 #: /var/www/webapp/inc/shared/h.php:45
 #: /var/www/webapp/inc/dashboard/appConfig2.php:15
 #: /var/www/webapp/inc/dashboard/appConfig2.php:18
-#: /var/www/webapp/inc/dashboard/eventConfig.php:13
 #: /var/www/webapp/inc/dashboard/appConfig1.php:26
 #: /var/www/webapp/inc/dashboard/appConfig1.php:29
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:11
@@ -335,7 +333,7 @@ msgid "Preset Notifications"
 msgstr "Forhåndsinnstilte notifikasjoner"
 
 #: /var/www/webapp/inc/shared/h.php:49
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:141
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:127
 msgid "Styling"
 msgstr "Styling"
 
@@ -348,16 +346,14 @@ msgid "Menu Screen"
 msgstr "Meny skjerm"
 
 #: /var/www/webapp/inc/shared/h.php:55
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:117
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:103
 msgid "Menus"
 msgstr "Menyer"
 
 #: /var/www/webapp/inc/shared/h.php:66
 #: /var/www/webapp/inc/dashboard/userConfig.php:52
 #: /var/www/webapp/inc/dashboard/userConfig.php:104
-#: /var/www/webapp/inc/dashboard/eventConfig.php:101
-#: /var/www/webapp/inc/dashboard/eventConfig.php:190
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:121
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:107
 #: /var/www/webapp/inc/dashboard/mdConfig.php:83
 #: /var/www/webapp/inc/dashboard/mdConfig.php:201
 #: /var/www/webapp/inc/dashboard/outletConfig.php:39
@@ -368,7 +364,7 @@ msgid "Edit"
 msgstr "Rediger"
 
 #: /var/www/webapp/inc/shared/h.php:68
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:126
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:112
 #: /var/www/webapp/inc/dashboard/mdConfig.php:5
 msgid "Meal Deals"
 msgstr "Tilbud"
@@ -380,14 +376,13 @@ msgstr "Ingen menyer"
 #: /var/www/webapp/inc/shared/h.php:76
 #: /var/www/webapp/inc/dashboard/appConfig2.php:14
 #: /var/www/webapp/inc/dashboard/appConfig2.php:17
-#: /var/www/webapp/inc/dashboard/eventConfig.php:12
 #: /var/www/webapp/inc/dashboard/appConfig1.php:25
 #: /var/www/webapp/inc/dashboard/appConfig1.php:28
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:10
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:10
 #: /var/www/webapp/inc/dashboard/venueConfig.php:35
 #: /var/www/webapp/inc/dashboard/venueConfig.php:38
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:149
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:135
 #: /var/www/webapp/inc/dashboard/menuConfig.php:19
 #: /var/www/webapp/inc/dashboard/menuConfig.php:22
 #: /var/www/webapp/inc/finish/finish_content.php:11
@@ -399,7 +394,7 @@ msgid "Update Events"
 msgstr "Oppdater arrangementer"
 
 #: /var/www/webapp/inc/shared/h.php:82
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:156
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:142
 msgid "Advanced Settings"
 msgstr "Avanserte Innstillinger"
 
@@ -414,7 +409,7 @@ msgid "Payment Method"
 msgstr "Betalingsmetode"
 
 #: /var/www/webapp/inc/shared/h.php:86
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:160
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:146
 msgid "Change my app mode"
 msgstr "Endre min app modus"
 
@@ -423,7 +418,7 @@ msgid "Switch Venue"
 msgstr "Bytt bedrift"
 
 #: /var/www/webapp/inc/shared/h.php:99
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:164
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:150
 msgid "My Account"
 msgstr "Min konto"
 
@@ -432,17 +427,17 @@ msgid "Logout"
 msgstr "Logg ut"
 
 #: /var/www/webapp/inc/shared/h.php:104
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:168
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:154
 msgid "Help"
 msgstr "Hjelp"
 
 #: /var/www/webapp/inc/shared/h.php:106
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:171
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:157
 msgid "Getting Started"
 msgstr "Kom i gang"
 
 #: /var/www/webapp/inc/shared/h.php:107
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:172
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:158
 msgid "Editing your Menu"
 msgstr "Redigere din Meny"
 
@@ -451,7 +446,7 @@ msgid "FAQs"
 msgstr "FAQ"
 
 #: /var/www/webapp/inc/shared/h.php:109 /var/www/webapp/inc/shared/h.php:113
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:164
 #: /var/www/webapp/inc/more/more_content.php:6
 msgid "Support"
 msgstr "Support"
@@ -541,7 +536,6 @@ msgid "SAVE"
 msgstr "LAGRE"
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:5
-#: /var/www/webapp/inc/dashboard/eventConfig.php:8
 #: /var/www/webapp/inc/dashboard/appConfig1.php:12
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:6
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:6
@@ -552,7 +546,6 @@ msgid "Venue Information"
 msgstr "Fakturainformasjon"
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:6
-#: /var/www/webapp/inc/dashboard/eventConfig.php:9
 #: /var/www/webapp/inc/dashboard/appConfig1.php:13
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:7
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:7
@@ -564,7 +557,6 @@ msgid "App Styling 1/2"
 msgstr "App styling 1/2"
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:7
-#: /var/www/webapp/inc/dashboard/eventConfig.php:10
 #: /var/www/webapp/inc/dashboard/appConfig1.php:15
 #: /var/www/webapp/inc/dashboard/appConfig1.php:17
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:8
@@ -578,7 +570,6 @@ msgstr "App styling 2/2"
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:9
 #: /var/www/webapp/inc/dashboard/appConfig2.php:11
-#: /var/www/webapp/inc/dashboard/eventConfig.php:11
 #: /var/www/webapp/inc/dashboard/appConfig1.php:20
 #: /var/www/webapp/inc/dashboard/appConfig1.php:22
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:9
@@ -591,7 +582,6 @@ msgid "Menu Creation"
 msgstr "Opprette meny"
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:21
-#: /var/www/webapp/inc/dashboard/eventConfig.php:14
 #: /var/www/webapp/inc/dashboard/appConfig1.php:32
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:12
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:12
@@ -601,7 +591,6 @@ msgid "Add a Payment"
 msgstr "Legg til en betaling"
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:23
-#: /var/www/webapp/inc/dashboard/eventConfig.php:16
 #: /var/www/webapp/inc/dashboard/appConfig1.php:34
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:15
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:14
@@ -637,7 +626,7 @@ msgid "Please type a venue title <br/>(max 22chars)"
 msgstr "Vennligst skriv inn tittel på utsalgssted <br/> (maks 22 tegn)"
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:45
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:216
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:202
 msgid "BASKET"
 msgstr "HANDLEKURV"
 
@@ -690,10 +679,9 @@ msgstr "Farge for knapp to"
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:112
 #: /var/www/webapp/inc/dashboard/userConfig.php:120
-#: /var/www/webapp/inc/dashboard/eventConfig.php:261
 #: /var/www/webapp/inc/dashboard/appConfig1.php:191
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:110
-#: /var/www/webapp/inc/dashboard/venueConfig.php:514
+#: /var/www/webapp/inc/dashboard/venueConfig.php:515
 #: /var/www/webapp/inc/dashboard/mdConfig.php:241
 #: /var/www/webapp/inc/dashboard/outletConfig.php:88
 #: /var/www/webapp/inc/dashboard/menuConfig.php:412
@@ -703,10 +691,9 @@ msgstr "LAGRE ENDRINGER"
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:113
 #: /var/www/webapp/inc/dashboard/userConfig.php:121
-#: /var/www/webapp/inc/dashboard/eventConfig.php:262
 #: /var/www/webapp/inc/dashboard/appConfig1.php:192
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:111
-#: /var/www/webapp/inc/dashboard/venueConfig.php:515
+#: /var/www/webapp/inc/dashboard/venueConfig.php:516
 #: /var/www/webapp/inc/dashboard/mdConfig.php:242
 #: /var/www/webapp/inc/dashboard/outletConfig.php:89
 #: /var/www/webapp/inc/dashboard/menuConfig.php:414
@@ -727,16 +714,15 @@ msgid "Add a new user"
 msgstr "Legg til en ny bruker"
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:21
-#: /var/www/webapp/inc/dashboard/eventConfig.php:50
 #: /var/www/webapp/inc/dashboard/mdConfig.php:30
 #: /var/www/webapp/inc/dashboard/menuConfig.php:93
 #: /var/www/webapp/inc/dashboard/menuConfig.php:235
-#: /var/www/webapp/code/shared/js_strings.php:127
+#: /var/www/webapp/code/shared/js_strings.php:131
 msgid "Name"
 msgstr "Navn"
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:23
-#: /var/www/webapp/code/shared/js_strings.php:38
+#: /var/www/webapp/code/shared/js_strings.php:42
 msgid "Role"
 msgstr "Rolle"
 
@@ -745,7 +731,6 @@ msgid "This decides the level of access of your users."
 msgstr "Dette bestemmer tilgangsnivået for brukerne."
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:24
-#: /var/www/webapp/inc/dashboard/eventConfig.php:56
 #: /var/www/webapp/inc/dashboard/mdConfig.php:35
 #: /var/www/webapp/inc/dashboard/menuConfig.php:98
 #: /var/www/webapp/inc/dashboard/menuConfig.php:240
@@ -803,8 +788,6 @@ msgstr "Eier"
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:51
 #: /var/www/webapp/inc/dashboard/userConfig.php:103
-#: /var/www/webapp/inc/dashboard/eventConfig.php:100
-#: /var/www/webapp/inc/dashboard/eventConfig.php:189
 #: /var/www/webapp/inc/dashboard/mdConfig.php:82
 #: /var/www/webapp/inc/dashboard/mdConfig.php:200
 #: /var/www/webapp/inc/dashboard/outletConfig.php:38
@@ -816,8 +799,6 @@ msgstr "Trekk sammen"
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:53
 #: /var/www/webapp/inc/dashboard/userConfig.php:105
-#: /var/www/webapp/inc/dashboard/eventConfig.php:102
-#: /var/www/webapp/inc/dashboard/eventConfig.php:191
 #: /var/www/webapp/inc/dashboard/menuConfig.php:143
 #: /var/www/webapp/inc/dashboard/menuConfig.php:191
 #: /var/www/webapp/inc/dashboard/menuConfig.php:293
@@ -828,9 +809,7 @@ msgstr "Dupliser"
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:54
 #: /var/www/webapp/inc/dashboard/userConfig.php:106
-#: /var/www/webapp/inc/dashboard/eventConfig.php:103
-#: /var/www/webapp/inc/dashboard/eventConfig.php:192
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:122
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:108
 #: /var/www/webapp/inc/dashboard/mdConfig.php:84
 #: /var/www/webapp/inc/dashboard/mdConfig.php:202
 #: /var/www/webapp/inc/dashboard/outletConfig.php:40
@@ -865,199 +844,6 @@ msgstr "Bekreft passord"
 #: /var/www/webapp/inc/dashboard/userConfig.php:66
 msgid "Passwords don't match"
 msgstr "Passordene samsvarer ikke"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:20
-msgid "Your events"
-msgstr "Dine arrangementer"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:20
-msgid ""
-"These show when you are open for ordering, such as performances or matches. "
-"They can be viewed from the front page of your app"
-msgstr ""
-"Disse viser når du har åpent for bestilling, som for eksempel forestillinger "
-"eller kamper. De kan sees fra forsiden av din app"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:43
-msgid "Add a new event"
-msgstr "Legg til nytt arrangement"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:52
-msgid "Start Date"
-msgstr "Start dato"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:53
-msgid "Start Time"
-msgstr "Start tidspunkt"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:54
-msgid "End Time"
-msgstr "Slutt tidspunkt"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:55
-#: /var/www/webapp/inc/dashboard/mdConfig.php:34
-#: /var/www/webapp/inc/dashboard/menuConfig.php:97
-#: /var/www/webapp/inc/dashboard/menuConfig.php:239
-msgid "Visible?"
-msgstr "Synlig?"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:68
-msgid "Click to add an event name"
-msgstr "Klikk for å legge et arrangement navn"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:69
-#: /var/www/webapp/inc/dashboard/eventConfig.php:158
-msgid "Please type an event name (max 100chars)"
-msgstr "Skriv inn arrangement navn (maks 100 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:72
-#: /var/www/webapp/inc/dashboard/eventConfig.php:161
-msgid "Click to add a description"
-msgstr "Klikk for å legge til en beskrivelse"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:73
-#: /var/www/webapp/inc/dashboard/eventConfig.php:162
-#: /var/www/webapp/inc/dashboard/menuConfig.php:116
-#: /var/www/webapp/inc/dashboard/menuConfig.php:257
-msgid "Please type a description (max 250chars)"
-msgstr "Skriv inn en beskrivelse (maks 250 bokstaver)"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:76
-#: /var/www/webapp/inc/dashboard/eventConfig.php:165
-msgid "DD/MM/YYYY"
-msgstr "DD/MM/ÅÅÅÅ"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:77
-#: /var/www/webapp/inc/dashboard/eventConfig.php:166
-msgid "Date?"
-msgstr "Dato?"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:80
-#: /var/www/webapp/inc/dashboard/eventConfig.php:84
-#: /var/www/webapp/inc/dashboard/eventConfig.php:169
-#: /var/www/webapp/inc/dashboard/eventConfig.php:173
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:58
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:63
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:87
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:92
-msgid "HH:MM"
-msgstr "TT:MM"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:81
-#: /var/www/webapp/inc/dashboard/eventConfig.php:85
-#: /var/www/webapp/inc/dashboard/eventConfig.php:135
-#: /var/www/webapp/inc/dashboard/eventConfig.php:170
-#: /var/www/webapp/inc/dashboard/eventConfig.php:174
-#: /var/www/webapp/inc/dashboard/eventConfig.php:225
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:59
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:64
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:88
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:93
-msgid "Time?"
-msgstr "Tid?"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:91
-#: /var/www/webapp/inc/dashboard/eventConfig.php:180
-#: /var/www/webapp/inc/dashboard/venueConfig.php:95
-#: /var/www/webapp/inc/dashboard/venueConfig.php:141
-#: /var/www/webapp/inc/dashboard/venueConfig.php:157
-#: /var/www/webapp/inc/dashboard/venueConfig.php:172
-#: /var/www/webapp/inc/dashboard/mdConfig.php:73
-#: /var/www/webapp/inc/dashboard/mdConfig.php:191
-#: /var/www/webapp/inc/dashboard/menuConfig.php:129
-#: /var/www/webapp/inc/dashboard/menuConfig.php:182
-#: /var/www/webapp/inc/dashboard/menuConfig.php:269
-#: /var/www/webapp/inc/dashboard/menuConfig.php:334
-#: /var/www/webapp/inc/dashboard/menuConfig.php:366
-msgid "No"
-msgstr "Nei"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:94
-#: /var/www/webapp/inc/dashboard/eventConfig.php:183
-#: /var/www/webapp/inc/dashboard/venueConfig.php:98
-#: /var/www/webapp/inc/dashboard/venueConfig.php:144
-#: /var/www/webapp/inc/dashboard/venueConfig.php:160
-#: /var/www/webapp/inc/dashboard/venueConfig.php:175
-#: /var/www/webapp/inc/dashboard/mdConfig.php:76
-#: /var/www/webapp/inc/dashboard/mdConfig.php:194
-#: /var/www/webapp/inc/dashboard/menuConfig.php:132
-#: /var/www/webapp/inc/dashboard/menuConfig.php:185
-#: /var/www/webapp/inc/dashboard/menuConfig.php:272
-#: /var/www/webapp/inc/dashboard/menuConfig.php:337
-#: /var/www/webapp/inc/dashboard/menuConfig.php:369
-msgid "Yes"
-msgstr "Ja"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:110
-#: /var/www/webapp/inc/dashboard/eventConfig.php:199
-msgid "All Locations"
-msgstr "﻿Alle lokasjoner"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:122
-#: /var/www/webapp/inc/dashboard/eventConfig.php:212
-msgid "Collection Slot: Pre-Show"
-msgstr "Området for henting: Før show"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:123
-#: /var/www/webapp/inc/dashboard/eventConfig.php:213
-msgid "Collection Slot: Pre-Game"
-msgstr "Området for henting: Før kamp"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:124
-#: /var/www/webapp/inc/dashboard/eventConfig.php:214
-msgid "Collection Slot: Interval"
-msgstr "Området for henting: Interval"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:125
-#: /var/www/webapp/inc/dashboard/eventConfig.php:215
-msgid "Collection Slot: Second-Interval"
-msgstr "Området for henting: Andre interval"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:126
-msgid "Collection Slot: Half-time"
-msgstr "Området for henting: Pause"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:127
-#: /var/www/webapp/inc/dashboard/eventConfig.php:217
-msgid "Collection Slot: Post-Show"
-msgstr "Området for henting: Etter show"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:128
-#: /var/www/webapp/inc/dashboard/eventConfig.php:218
-msgid "Collection Slot: Post-Game"
-msgstr "Området for henting: Etter kamp"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:130
-#: /var/www/webapp/inc/dashboard/eventConfig.php:220
-msgid "Please choose a slot."
-msgstr "Vennligst velg et området."
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:133
-#: /var/www/webapp/inc/dashboard/eventConfig.php:223
-msgid "Lead Time (mins)"
-msgstr "Ventetid (min)"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:134
-msgid "30"
-msgstr "30"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:138
-#: /var/www/webapp/inc/dashboard/eventConfig.php:231
-msgid "Add another slot"
-msgstr "Legg til nytt sted"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:216
-msgid "Collection Slot: Half-Time"
-msgstr "Området for henting: Pause"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:224
-msgid "eg. 30"
-msgstr "f.eks 30"
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:270
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:130
-msgid "75&#37 done, almost there now..."
-msgstr "75&#37 ferdig, nesten i mål nå..."
 
 #: /var/www/webapp/inc/dashboard/appConfig1.php:39
 msgid "This is the first screen that your customers will see."
@@ -1148,7 +934,7 @@ msgid "Button colour"
 msgstr "Velg knappens farge"
 
 #: /var/www/webapp/inc/dashboard/appConfig1.php:125
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:208
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:194
 msgid "ORDER NOW"
 msgstr "BESTILL NÅ"
 
@@ -1292,6 +1078,21 @@ msgstr "Stengt i dag"
 msgid "Opens at"
 msgstr "Åpner"
 
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:58
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:63
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:87
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:92
+msgid "HH:MM"
+msgstr "TT:MM"
+
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:59
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:64
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:88
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:93
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:19
+msgid "Time?"
+msgstr "Tid?"
+
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:62
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:91
 msgid "Closes at"
@@ -1305,6 +1106,10 @@ msgstr "Fjern åpningstid"
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:105
 msgid "Apply these times to all days"
 msgstr "Bruk disse tidene på alle dager"
+
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:130
+msgid "75&#37 done, almost there now..."
+msgstr "75&#37 ferdig, nesten i mål nå..."
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:54
 msgid "Tell us about your venue"
@@ -1369,6 +1174,34 @@ msgid ""
 msgstr ""
 "Har din virksomhet regelmessige arrangementer, for eksempel fotballkamper, "
 "forestillinger, etc?"
+
+#: /var/www/webapp/inc/dashboard/venueConfig.php:95
+#: /var/www/webapp/inc/dashboard/venueConfig.php:141
+#: /var/www/webapp/inc/dashboard/venueConfig.php:157
+#: /var/www/webapp/inc/dashboard/venueConfig.php:172
+#: /var/www/webapp/inc/dashboard/mdConfig.php:73
+#: /var/www/webapp/inc/dashboard/mdConfig.php:191
+#: /var/www/webapp/inc/dashboard/menuConfig.php:129
+#: /var/www/webapp/inc/dashboard/menuConfig.php:182
+#: /var/www/webapp/inc/dashboard/menuConfig.php:269
+#: /var/www/webapp/inc/dashboard/menuConfig.php:334
+#: /var/www/webapp/inc/dashboard/menuConfig.php:366
+msgid "No"
+msgstr "Nei"
+
+#: /var/www/webapp/inc/dashboard/venueConfig.php:98
+#: /var/www/webapp/inc/dashboard/venueConfig.php:144
+#: /var/www/webapp/inc/dashboard/venueConfig.php:160
+#: /var/www/webapp/inc/dashboard/venueConfig.php:175
+#: /var/www/webapp/inc/dashboard/mdConfig.php:76
+#: /var/www/webapp/inc/dashboard/mdConfig.php:194
+#: /var/www/webapp/inc/dashboard/menuConfig.php:132
+#: /var/www/webapp/inc/dashboard/menuConfig.php:185
+#: /var/www/webapp/inc/dashboard/menuConfig.php:272
+#: /var/www/webapp/inc/dashboard/menuConfig.php:337
+#: /var/www/webapp/inc/dashboard/menuConfig.php:369
+msgid "Yes"
+msgstr "Ja"
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:107
 msgid "Collection Slot Duration (mins)"
@@ -1492,107 +1325,107 @@ msgstr "Skriv inn et postnummer (maks 45 bokstaver)"
 msgid "Language"
 msgstr "Språk"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:477
+#: /var/www/webapp/inc/dashboard/venueConfig.php:478
 msgid "Please select your language"
 msgstr "Velg ditt språk"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:483
+#: /var/www/webapp/inc/dashboard/venueConfig.php:484
 msgid "Timezone"
 msgstr "Tidssone"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:491
+#: /var/www/webapp/inc/dashboard/venueConfig.php:492
 msgid "Please select your timezone"
 msgstr "Velg tidssone"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:497
+#: /var/www/webapp/inc/dashboard/venueConfig.php:498
 msgid "Currency"
 msgstr "Valuta"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:503
+#: /var/www/webapp/inc/dashboard/venueConfig.php:504
 msgid "Please select your currency"
 msgstr "Velg valuta"
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:526
+#: /var/www/webapp/inc/dashboard/venueConfig.php:527
 msgid "15&#37 done, keep going!"
 msgstr "15&#37 ferdig, bare å fortsette!"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:70
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:60
 msgid "This is where you can monitor your takings and reports."
 msgstr "Her kan du overvåke dine salg og rapporter."
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:74
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:64
 msgid "Your online order page is"
 msgstr "Din online bestillingsside er"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:83
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:73
 msgid "This month"
 msgstr "Denne måneden"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:86
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:76
 msgid "Total revenue"
 msgstr "Totale inntekter"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:90
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:80
 msgid "Total orders"
 msgstr "Totalt bestillinger"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:94
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:84
 msgid "New users"
 msgstr "Nye brukere"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:98
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:88
 msgid "Returning users"
 msgstr "Returnerende brukere"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:113
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:100
 msgid "Customer Analytics"
 msgstr "Analytics for kunder"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:125
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:111
 msgid "Add new menu"
 msgstr "Legg til ny meny"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:132
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:118
 msgid "Change settings"
 msgstr "Endre innstillinger"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:133
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:119
 msgid "Delivery settings"
 msgstr "Innstillinger for leveranse"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:134
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:120
 msgid "Preset notifications"
 msgstr "Forhåndsinnstilte varslinger"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:136
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:122
 msgid "Opening hours"
 msgstr "Åpningstider"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:143
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:129
 msgid "Home screen"
 msgstr "Hjem skjerm"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:144
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:130
 msgid "Menu screen"
 msgstr "Meny skjerm"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:151
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:137
 msgid "Update events"
 msgstr "Oppdater arrangementer"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:158
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:144
 msgid "Manage users"
 msgstr "Administrere brukere"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:159
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:145
 msgid "Add a payment method"
 msgstr "Legg til betalingsmetode"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:189
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:175
 msgid "Change app mode"
 msgstr "Endre app modus"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:189
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:175
 msgid ""
 "LIVE - Your app is visible and is ready to take real orders.<br/><br/>DEMO - "
 "Your app is visible but does not take real orders.<br/><br/>OFFLINE - Your "
@@ -1602,29 +1435,29 @@ msgstr ""
 "Din app er synlig, men tar ikke reelle ordre. <br/><br/> OFFLINE - Din app "
 "er ikke synlig."
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:192
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:193
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:194
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:179
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:180
 msgid "active"
 msgstr "aktiv"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:192
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
 msgid "OFFLINE"
 msgstr "OFFLINE"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:193
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:179
 msgid "DEMO"
 msgstr "DEMO"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:194
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:180
 msgid "LIVE"
 msgstr "LIVE"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:223
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:209
 msgid "Venue Title"
 msgstr "Tittel på utsalgssted"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:257
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:243
 msgid ""
 "Your 30 day free trial \tof this Premium Feature has now expired. Would you "
 "like to purchase it?"
@@ -1632,27 +1465,27 @@ msgstr ""
 "Din 30 dagers gratis prøveversjon av denne Premium funksjonen har nå utløpt. "
 "Vil du kjøpe den?"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:258
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:244
 msgid "YES PLEASE"
 msgstr "JA TAKK"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:259
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:245
 msgid "NOT RIGHT NOW"
 msgstr "IKKE AKKURAT NÅ"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:273
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:259
 msgid " trial"
 msgstr "prøve"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:266
 msgid "Your free trial expires in "
 msgstr "Din gratis prøveperiode utløper om "
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:266
 msgid " days."
 msgstr " dager."
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:266
 msgid ""
 " To continue using your app after the free trial, register your card details "
 "for the "
@@ -1660,19 +1493,19 @@ msgstr ""
 " For å fortsette å bruke programmet etter prøveperioden kan du registrere "
 "kortdetaljene dine for "
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:266
 msgid " on the 'My Account' tab located on your dashboard."
 msgstr " på \"Min konto\" fanen som er plassert på dashbordet."
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:282
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:268
 msgid "GO TO MY ACCOUNT"
 msgstr "GÅ TIL MIN KONTO"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:287
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:273
 msgid "Payment provider is not connected!"
 msgstr "Betalingsløsning er ikke tilkoblet!"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:288
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:274
 msgid ""
 "Before taking your app live you need to connect it to a payment provider or "
 "enable cash payments so that you can start accepting payments and start "
@@ -1682,30 +1515,30 @@ msgstr ""
 "kontant betaling, slik at du kan begynne å akseptere betalinger og begynne å "
 "få betalt!"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:289
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:275
 msgid "CONNECT"
 msgstr "SAMMENKOBLE"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:290
-#: /var/www/webapp/code/shared/js_strings.php:80
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:276
+#: /var/www/webapp/code/shared/js_strings.php:84
 msgid "CANCEL"
 msgstr "AVBRYT"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:385
-#: /var/www/webapp/code/shared/js_strings.php:64
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:371
+#: /var/www/webapp/code/shared/js_strings.php:68
 msgid "Your app is now live!"
 msgstr "Din app er nå live!"
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:394
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:380
 msgid "Your app is now in DEMO mode."
 msgstr "Din app er nå i DEMO modus."
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:403
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:421
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:389
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:407
 msgid "Your app is now in OFFLINE mode."
 msgstr "Din app er nå i OFFLINE modus."
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:412
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:398
 msgid "Your app is now in Demo mode."
 msgstr "Din app er nå i demo modus!"
 
@@ -1736,6 +1569,12 @@ msgstr "Total pris "
 #: /var/www/webapp/inc/dashboard/mdConfig.php:33
 msgid "Discount Price "
 msgstr "Rabattert pris "
+
+#: /var/www/webapp/inc/dashboard/mdConfig.php:34
+#: /var/www/webapp/inc/dashboard/menuConfig.php:97
+#: /var/www/webapp/inc/dashboard/menuConfig.php:239
+msgid "Visible?"
+msgstr "Synlig?"
 
 #: /var/www/webapp/inc/dashboard/mdConfig.php:53
 #: /var/www/webapp/inc/dashboard/mdConfig.php:171
@@ -1789,7 +1628,7 @@ msgstr "Vennligst skriv inn eller velg en tittel (maks 100 bokstaver)"
 
 #: /var/www/webapp/inc/dashboard/mdConfig.php:96
 #: /var/www/webapp/inc/dashboard/mdConfig.php:213
-#: /var/www/webapp/code/shared/js_strings.php:53
+#: /var/www/webapp/code/shared/js_strings.php:57
 msgid "Choose a menu section"
 msgstr "Velg en meny seksjon"
 
@@ -1920,6 +1759,11 @@ msgstr "Klikk for å legge til produktnavn"
 #: /var/www/webapp/inc/dashboard/menuConfig.php:256
 msgid "Optional description"
 msgstr "Valgfri beskrivelse"
+
+#: /var/www/webapp/inc/dashboard/menuConfig.php:116
+#: /var/www/webapp/inc/dashboard/menuConfig.php:257
+msgid "Please type a description (max 250chars)"
+msgstr "Skriv inn en beskrivelse (maks 250 bokstaver)"
 
 #: /var/www/webapp/inc/dashboard/menuConfig.php:120
 #: /var/www/webapp/inc/dashboard/menuConfig.php:175
@@ -2256,6 +2100,110 @@ msgstr "PDF"
 msgid "CSV"
 msgstr "CSV"
 
+#: /var/www/webapp/code/kyc/partials/orders.php:53
+#, fuzzy
+msgid "Discounts & Fees"
+msgstr "Rabatt"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:3
+#, fuzzy
+msgid "Collection Slot"
+msgstr "Velg et sted for henting"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:6
+#: /var/www/webapp/code/shared/js_strings.php:27
+msgid "Collection Slot: Pre-Show"
+msgstr "Området for henting: Før show"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:7
+#: /var/www/webapp/code/shared/js_strings.php:28
+msgid "Collection Slot: Pre-Game"
+msgstr "Området for henting: Før kamp"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:8
+#: /var/www/webapp/code/shared/js_strings.php:29
+msgid "Collection Slot: Interval"
+msgstr "Området for henting: Interval"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:9
+#: /var/www/webapp/code/shared/js_strings.php:30
+msgid "Collection Slot: Second-Interval"
+msgstr "Området for henting: Andre interval"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:10
+msgid "Collection Slot: Half-Time"
+msgstr "Området for henting: Pause"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:11
+#: /var/www/webapp/code/shared/js_strings.php:32
+msgid "Collection Slot: Post-Show"
+msgstr "Området for henting: Etter show"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:12
+#: /var/www/webapp/code/shared/js_strings.php:33
+msgid "Collection Slot: Post-Game"
+msgstr "Området for henting: Etter kamp"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:14
+msgid "Please choose a slot."
+msgstr "Vennligst velg et området."
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:17
+msgid "Lead Time (mins)"
+msgstr "Ventetid (min)"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:17
+#, fuzzy
+msgid "The time it takes to prepare your order before the customer can pick up"
+msgstr "Tiden det tar å lage din bestilling før kunden kan hente den."
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:18
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:23
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:28
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:33
+msgid "eg. 30"
+msgstr "f.eks 30"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:22
+#, fuzzy
+msgid "Start (mins)"
+msgstr "Start tidspunkt"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:22
+msgid ""
+"The time in minutes, from the start of the event, to the start of the pickup "
+"slot"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:24
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:29
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:34
+msgid "Enter minutes?"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:27
+#, fuzzy
+msgid "End (mins)"
+msgstr "Ventetid (min)"
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:27
+msgid ""
+"The time in minutes, from the start of the event, to the end of the pickup "
+"slot"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:32
+msgid "Step (mins)"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:32
+msgid "What is the number of minutes in between each pickup slot step?"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:37
+msgid "Add another slot"
+msgstr "Legg til nytt sted"
+
 #: /var/www/webapp/code/shop/shop.php:16
 msgid "Premium Features"
 msgstr "Premium funksjoner"
@@ -2309,7 +2257,7 @@ msgid "DAYS"
 msgstr "DAGER"
 
 #: /var/www/webapp/code/shop/shop.php:52 /var/www/webapp/code/shop/shop.php:85
-#: /var/www/webapp/code/shared/js_strings.php:208
+#: /var/www/webapp/code/shared/js_strings.php:212
 msgid "BUY"
 msgstr "KJØP"
 
@@ -2447,90 +2395,78 @@ msgstr "Ja, slett denne delen og alt innhold!"
 msgid "No, go back."
 msgstr "Nei, gå tilbake."
 
-#: /var/www/webapp/code/shared/js_strings.php:27
+#: /var/www/webapp/code/shared/js_strings.php:31
+msgid "Collection Slot: Half-time"
+msgstr "Området for henting: Pause"
+
+#: /var/www/webapp/code/shared/js_strings.php:34
 msgid "Choose a main"
 msgstr "Velg en hoverett"
 
-#: /var/www/webapp/code/shared/js_strings.php:28
+#: /var/www/webapp/code/shared/js_strings.php:35
 msgid "Choose a side"
 msgstr "Velg et tillegg"
 
-#: /var/www/webapp/code/shared/js_strings.php:29
+#: /var/www/webapp/code/shared/js_strings.php:36
 msgid "Choose a drink"
 msgstr "Velg drikke"
 
-#: /var/www/webapp/code/shared/js_strings.php:30
+#: /var/www/webapp/code/shared/js_strings.php:37
 msgid "Choose a curry"
 msgstr "Velg en burger"
 
-#: /var/www/webapp/code/shared/js_strings.php:31
+#: /var/www/webapp/code/shared/js_strings.php:38
 msgid "Choose a burger"
 msgstr "Velg en burger"
 
-#: /var/www/webapp/code/shared/js_strings.php:32
+#: /var/www/webapp/code/shared/js_strings.php:39
 msgid "Menu configuration has been saved!"
 msgstr "Konfigurasjonen er lagret!"
 
-#: /var/www/webapp/code/shared/js_strings.php:33
-msgid "Choose a Collection Slot"
-msgstr "Velg et sted for henting"
-
-#: /var/www/webapp/code/shared/js_strings.php:34
+#: /var/www/webapp/code/shared/js_strings.php:40
 msgid "Choose Event Location"
 msgstr "Velg arrangementets lokasjon"
 
-#: /var/www/webapp/code/shared/js_strings.php:35
-msgid ""
-"Are you sure you want to delete this event? Note: all event data will be "
-"lost!"
-msgstr ""
-"Er du sikker på at du vil slette denne hendelsen? Merk: alle hendelses data "
-"vil gå tapt!"
-
-#: /var/www/webapp/code/shared/js_strings.php:36
-msgid "Yes, delete this event!"
-msgstr "Ja, slett denne hendelsen!"
-
-#: /var/www/webapp/code/shared/js_strings.php:37
+#: /var/www/webapp/code/shared/js_strings.php:41
 msgid "Choose Venue"
 msgstr "Velg Restaurant"
 
-#: /var/www/webapp/code/shared/js_strings.php:39
+#: /var/www/webapp/code/shared/js_strings.php:43
 msgid ""
 "Are you sure you want to delete this user? Note: all user data will be lost!"
 msgstr ""
 "Er du sikker på at du vil slette denne brukeren? Merk: alle brukerdata vil "
 "gå tapt!"
 
-#: /var/www/webapp/code/shared/js_strings.php:40
+#: /var/www/webapp/code/shared/js_strings.php:44
 msgid "Yes, delete this user!"
 msgstr "Ja, slett denne brukeren!"
 
-#: /var/www/webapp/code/shared/js_strings.php:41
+#: /var/www/webapp/code/shared/js_strings.php:45
 msgid "Username/email already exists"
 msgstr "Brukernavn/e-post eksisterer allerede"
 
-#: /var/www/webapp/code/shared/js_strings.php:42
+#: /var/www/webapp/code/shared/js_strings.php:46
 msgid "User configuration has been saved!"
 msgstr "Bruker Konfigurasjonen er lagret!"
 
-#: /var/www/webapp/code/shared/js_strings.php:43
+#: /var/www/webapp/code/shared/js_strings.php:47
 msgid "Select all menus"
 msgstr "Velg alle menyer"
 
-#: /var/www/webapp/code/shared/js_strings.php:44
+#: /var/www/webapp/code/shared/js_strings.php:48
 msgid "Unselect all menus"
 msgstr "Velge bort alle menyer"
 
-#: /var/www/webapp/code/shared/js_strings.php:45
+#: /var/www/webapp/code/shared/js_strings.php:49
 msgid "Select menu("
 msgstr "Velg meny("
 
-#: /var/www/webapp/code/shared/js_strings.php:46
+#: /var/www/webapp/code/shared/js_strings.php:50
 msgid "# of # selected"
 msgstr "# av # valgt"
 
-#: /var/www/webapp/code/shared/js_strings.php:47
+#: /var/www/webapp/code/shared/js_strings.php:51
 msgid ""
 "Are you sure you want to delete this outlet? Note: all outlet data will be "
 "lost!"
@@ -2538,19 +2474,19 @@ msgstr ""
 "Er du sikker på at du vil slette dette stedet? Merk: alle data for stedet "
 "vil gå tapt!"
 
-#: /var/www/webapp/code/shared/js_strings.php:48
+#: /var/www/webapp/code/shared/js_strings.php:52
 msgid "Yes, delete this outlet!"
 msgstr "Ja, slett dette utsalgsstedet!"
 
-#: /var/www/webapp/code/shared/js_strings.php:49
+#: /var/www/webapp/code/shared/js_strings.php:53
 msgid "Outlet configuration has been saved!"
 msgstr "Oppsettet er lagret!"
 
-#: /var/www/webapp/code/shared/js_strings.php:50
+#: /var/www/webapp/code/shared/js_strings.php:54
 msgid "These times have been applied to all days!"
 msgstr "Disse tidene er blitt satt på alle dager!"
 
-#: /var/www/webapp/code/shared/js_strings.php:51
+#: /var/www/webapp/code/shared/js_strings.php:55
 msgid ""
 "We still need some more information. Don't forget to fill out the remaining "
 "days of the week!"
@@ -2558,11 +2494,11 @@ msgstr ""
 "Vi trenger fortsatt litt mer informasjon. Ikke glem å fylle ut de resterende "
 "dagene i uken!"
 
-#: /var/www/webapp/code/shared/js_strings.php:52
+#: /var/www/webapp/code/shared/js_strings.php:56
 msgid "Where should this meal deal appear?"
 msgstr "Hvor skal dette meny tilbudet vises?"
 
-#: /var/www/webapp/code/shared/js_strings.php:54
+#: /var/www/webapp/code/shared/js_strings.php:58
 msgid ""
 "Are you sure you want to delete this meal deal? Note: all associated data "
 "will be lost!"
@@ -2570,30 +2506,30 @@ msgstr ""
 "Er du sikker på at du vil slette dette stedet? Merk: alle data for stedet "
 "vil gå tapt!"
 
-#: /var/www/webapp/code/shared/js_strings.php:55
+#: /var/www/webapp/code/shared/js_strings.php:59
 msgid "Yes, delete this meal deal!"
 msgstr "Ja, slett denne menyen!"
 
-#: /var/www/webapp/code/shared/js_strings.php:56
+#: /var/www/webapp/code/shared/js_strings.php:60
 msgid "All changes has been saved!"
 msgstr "Alle endringer er lagret!"
 
-#: /var/www/webapp/code/shared/js_strings.php:57
+#: /var/www/webapp/code/shared/js_strings.php:61
 msgid ""
 "Are you sure you want to delete this menu? Note: all menu data will be lost!"
 msgstr ""
 "Er du sikker på at du vil slette denne menyen? Merk: alle meny data vil gå "
 "tapt!"
 
-#: /var/www/webapp/code/shared/js_strings.php:58
+#: /var/www/webapp/code/shared/js_strings.php:62
 msgid "Yes, delete this menu!"
 msgstr "Ja, slett denne menyen!"
 
-#: /var/www/webapp/code/shared/js_strings.php:59
+#: /var/www/webapp/code/shared/js_strings.php:63
 msgid "Sorry, incorrect password."
 msgstr "Beklager, feil passord."
 
-#: /var/www/webapp/code/shared/js_strings.php:60
+#: /var/www/webapp/code/shared/js_strings.php:64
 msgid ""
 "Settings and Password has been saved!<br/>You will need to log in again with "
 "your new password to continue."
@@ -2601,79 +2537,79 @@ msgstr ""
 "Innstillinger og passord har blitt lagret!<br/>Du må logge inn på nytt med "
 "det nye passordet for å fortsette."
 
-#: /var/www/webapp/code/shared/js_strings.php:61
+#: /var/www/webapp/code/shared/js_strings.php:65
 msgid "Settings have been saved!"
 msgstr "Innstillingene har blitt lagret!"
 
-#: /var/www/webapp/code/shared/js_strings.php:62
+#: /var/www/webapp/code/shared/js_strings.php:66
 msgid "Please select features you require"
 msgstr "Velg funksjonene du krever"
 
-#: /var/www/webapp/code/shared/js_strings.php:63
+#: /var/www/webapp/code/shared/js_strings.php:67
 msgid "Select all"
 msgstr "Merk alle"
 
-#: /var/www/webapp/code/shared/js_strings.php:65
+#: /var/www/webapp/code/shared/js_strings.php:69
 msgid "Your app is now in demo mode!"
 msgstr "Din app er nå i demo-modus!"
 
-#: /var/www/webapp/code/shared/js_strings.php:66
+#: /var/www/webapp/code/shared/js_strings.php:70
 msgid "Your app is now offline!"
 msgstr "Din app er nå offline!"
 
-#: /var/www/webapp/code/shared/js_strings.php:67
+#: /var/www/webapp/code/shared/js_strings.php:71
 msgid "You need to accept at least one payment method before going live"
 msgstr "Du må godta minst én betalingsmåte før du går live"
 
-#: /var/www/webapp/code/shared/js_strings.php:68
+#: /var/www/webapp/code/shared/js_strings.php:72
 msgid "You need to subscribe to a package before changing the app mode"
 msgstr "Du må abonnere på en pakke før du endrer app-modus"
 
-#: /var/www/webapp/code/shared/js_strings.php:69
+#: /var/www/webapp/code/shared/js_strings.php:73
 msgid "My order app "
 msgstr "Mine ordre app"
 
-#: /var/www/webapp/code/shared/js_strings.php:70
+#: /var/www/webapp/code/shared/js_strings.php:74
 msgid "Sorry, these password do not match. Please try again."
 msgstr "Beklager, dette passordet samsvarer ikke. Prøv på nytt."
 
-#: /var/www/webapp/code/shared/js_strings.php:71
+#: /var/www/webapp/code/shared/js_strings.php:75
 msgid "All the fields are required."
 msgstr "Alle felter må fylles ut."
 
-#: /var/www/webapp/code/shared/js_strings.php:72
+#: /var/www/webapp/code/shared/js_strings.php:76
 msgid "Please fill in all the required fields."
 msgstr "Vennligst fyll inn alle obligatoriske felter"
 
-#: /var/www/webapp/code/shared/js_strings.php:73
+#: /var/www/webapp/code/shared/js_strings.php:77
 msgid "Outstanding payment resolved"
 msgstr "Utestående betaling godkjent"
 
-#: /var/www/webapp/code/shared/js_strings.php:74
+#: /var/www/webapp/code/shared/js_strings.php:78
 msgid "Ok"
 msgstr "Ok"
 
-#: /var/www/webapp/code/shared/js_strings.php:75
+#: /var/www/webapp/code/shared/js_strings.php:79
 msgid "Payment method updated succesfully!"
 msgstr "Betalingsmåte oppdatert vellykket!"
 
-#: /var/www/webapp/code/shared/js_strings.php:76
+#: /var/www/webapp/code/shared/js_strings.php:80
 msgid "Your outstand payment has been paid. Your card was charged <b>&pound;"
 msgstr "Din utestående betaling er betalt. Kortet ble belastet <b>&pound;"
 
-#: /var/www/webapp/code/shared/js_strings.php:77
+#: /var/www/webapp/code/shared/js_strings.php:81
 msgid "</b> and your premium features will remain active."
 msgstr "og dine Premium funksjoner vil fortsatt være aktive."
 
-#: /var/www/webapp/code/shared/js_strings.php:78
+#: /var/www/webapp/code/shared/js_strings.php:82
 msgid "OK"
 msgstr "OK"
 
-#: /var/www/webapp/code/shared/js_strings.php:79
+#: /var/www/webapp/code/shared/js_strings.php:83
 msgid "CONFIRM"
 msgstr "Bekreft"
 
-#: /var/www/webapp/code/shared/js_strings.php:81
+#: /var/www/webapp/code/shared/js_strings.php:85
 msgid ""
 "Your venue will be taken offline but you still be able to log in to your "
 "account if you ever want to resubscribe."
@@ -2681,11 +2617,11 @@ msgstr ""
 "Din butikk vil bli tatt offline, men du kan fortsatt logge deg på kontoen "
 "din hvis du noen gang ønsker å aktivere abonnementet."
 
-#: /var/www/webapp/code/shared/js_strings.php:82
+#: /var/www/webapp/code/shared/js_strings.php:86
 msgid "Are you sure you want to cancel?"
 msgstr "Er du sikker på at du ønsker å kansellere"
 
-#: /var/www/webapp/code/shared/js_strings.php:83
+#: /var/www/webapp/code/shared/js_strings.php:87
 msgid ""
 "Your subscription will remain active until the end of the current billing "
 "cycle, you will no longer be billed after this date. Your venue will be "
@@ -2697,35 +2633,35 @@ msgstr ""
 "Din butikk vil bli tatt offline, men du vil fortsatt kunne logge inn på "
 "konto hvis du noen gang ønsker å aktivere abonnementet."
 
-#: /var/www/webapp/code/shared/js_strings.php:84
+#: /var/www/webapp/code/shared/js_strings.php:88
 msgid "Error"
 msgstr "Feil"
 
-#: /var/www/webapp/code/shared/js_strings.php:85
+#: /var/www/webapp/code/shared/js_strings.php:89
 msgid "PAYMENT METHOD"
 msgstr "BETALINGSMETODE"
 
-#: /var/www/webapp/code/shared/js_strings.php:86
+#: /var/www/webapp/code/shared/js_strings.php:90
 msgid "To upgrade your account, please contact "
 msgstr "For oppgradering av kontoen din kan du kontakte"
 
-#: /var/www/webapp/code/shared/js_strings.php:87
+#: /var/www/webapp/code/shared/js_strings.php:91
 msgid "Payment resolved"
 msgstr "Utestående betaling godkjent"
 
-#: /var/www/webapp/code/shared/js_strings.php:88
+#: /var/www/webapp/code/shared/js_strings.php:92
 msgid "Resubscription Details"
 msgstr "Abonnementer"
 
-#: /var/www/webapp/code/shared/js_strings.php:89
+#: /var/www/webapp/code/shared/js_strings.php:93
 msgid "Please enter a discount code"
 msgstr "Skriv inn en rabattkode"
 
-#: /var/www/webapp/code/shared/js_strings.php:90
+#: /var/www/webapp/code/shared/js_strings.php:94
 msgid "Welcome to Know Your Customer"
 msgstr "Velkommen til Kundesenteret"
 
-#: /var/www/webapp/code/shared/js_strings.php:91
+#: /var/www/webapp/code/shared/js_strings.php:95
 msgid ""
 "From here you can view detailed reports and analytics about your customers "
 "and the transactions they make."
@@ -2733,211 +2669,211 @@ msgstr ""
 "Her kan du vise detaljerte rapporter og analyser om dine kunder og "
 "transaksjonene de gjør."
 
-#: /var/www/webapp/code/shared/js_strings.php:92
+#: /var/www/webapp/code/shared/js_strings.php:96
 msgid "GET STARTED"
 msgstr "KOM I GANG"
 
-#: /var/www/webapp/code/shared/js_strings.php:93
+#: /var/www/webapp/code/shared/js_strings.php:97
 msgid "Customers"
 msgstr "Kunder"
 
-#: /var/www/webapp/code/shared/js_strings.php:94
+#: /var/www/webapp/code/shared/js_strings.php:98
 msgid "Reports"
 msgstr "Rapporter"
 
-#: /var/www/webapp/code/shared/js_strings.php:95
+#: /var/www/webapp/code/shared/js_strings.php:99
 msgid "Stock"
 msgstr "Varebeholdning"
 
-#: /var/www/webapp/code/shared/js_strings.php:96
+#: /var/www/webapp/code/shared/js_strings.php:100
 msgid "Orders Report"
 msgstr "Ordre rapport"
 
-#: /var/www/webapp/code/shared/js_strings.php:97
+#: /var/www/webapp/code/shared/js_strings.php:101
 msgid "Orders By Events"
 msgstr "Bestilling per arrangement"
 
-#: /var/www/webapp/code/shared/js_strings.php:98
+#: /var/www/webapp/code/shared/js_strings.php:102
 msgid "Orders By Outlets"
 msgstr "Bestilling per utsalgssted"
 
-#: /var/www/webapp/code/shared/js_strings.php:99
+#: /var/www/webapp/code/shared/js_strings.php:103
 msgid "Select Events..."
 msgstr "Velg Arrangementer..."
 
-#: /var/www/webapp/code/shared/js_strings.php:100
+#: /var/www/webapp/code/shared/js_strings.php:104
 msgid "No events in this period"
 msgstr "Ingen arrangementer i denne perioden"
 
-#: /var/www/webapp/code/shared/js_strings.php:101
+#: /var/www/webapp/code/shared/js_strings.php:105
 msgid "Date Range"
 msgstr "Datointerval"
 
-#: /var/www/webapp/code/shared/js_strings.php:102
+#: /var/www/webapp/code/shared/js_strings.php:106
 msgid "Week"
 msgstr "Uke"
 
-#: /var/www/webapp/code/shared/js_strings.php:103
+#: /var/www/webapp/code/shared/js_strings.php:107
 msgid "Month"
 msgstr "Måned"
 
-#: /var/www/webapp/code/shared/js_strings.php:104
+#: /var/www/webapp/code/shared/js_strings.php:108
 msgid "3 Months"
 msgstr "3 Måneder"
 
-#: /var/www/webapp/code/shared/js_strings.php:105
+#: /var/www/webapp/code/shared/js_strings.php:109
 msgid "6 Months"
 msgstr "6 Måneder"
 
-#: /var/www/webapp/code/shared/js_strings.php:106
+#: /var/www/webapp/code/shared/js_strings.php:110
 msgid "Year"
 msgstr "År"
 
-#: /var/www/webapp/code/shared/js_strings.php:107
+#: /var/www/webapp/code/shared/js_strings.php:111
 msgid "Total Customers"
 msgstr "Totalt antall kunder"
 
-#: /var/www/webapp/code/shared/js_strings.php:108
+#: /var/www/webapp/code/shared/js_strings.php:112
 msgid "Orders per Customer"
 msgstr "Ordre per kunde"
 
-#: /var/www/webapp/code/shared/js_strings.php:109
+#: /var/www/webapp/code/shared/js_strings.php:113
 msgid "Average Order Value"
 msgstr "Gjennomsnittlig ordre beløp"
 
-#: /var/www/webapp/code/shared/js_strings.php:110
+#: /var/www/webapp/code/shared/js_strings.php:114
 msgid "Items Ordered"
 msgstr "Varer bestilt"
 
-#: /var/www/webapp/code/shared/js_strings.php:111
+#: /var/www/webapp/code/shared/js_strings.php:115
 msgid "Orders By Outlet"
 msgstr "Bestillinger per utsalgssted"
 
-#: /var/www/webapp/code/shared/js_strings.php:112
+#: /var/www/webapp/code/shared/js_strings.php:116
 msgid "Most Popular Items"
 msgstr "Mest populære varer"
 
-#: /var/www/webapp/code/shared/js_strings.php:113
+#: /var/www/webapp/code/shared/js_strings.php:117
 msgid "On the day"
 msgstr "På dagen"
 
-#: /var/www/webapp/code/shared/js_strings.php:114
+#: /var/www/webapp/code/shared/js_strings.php:118
 msgid "In advance"
 msgstr "På forhånd"
 
-#: /var/www/webapp/code/shared/js_strings.php:115
+#: /var/www/webapp/code/shared/js_strings.php:119
 msgid "Time of Orders Placed"
 msgstr "Tidspunkt når ordre ble plassert"
 
-#: /var/www/webapp/code/shared/js_strings.php:116
+#: /var/www/webapp/code/shared/js_strings.php:120
 msgid "Average order value (are"
 msgstr "Gjennomsnittlig ordre beløp (er"
 
-#: /var/www/webapp/code/shared/js_strings.php:117
+#: /var/www/webapp/code/shared/js_strings.php:121
 msgid "New"
 msgstr "Ny"
 
-#: /var/www/webapp/code/shared/js_strings.php:118
+#: /var/www/webapp/code/shared/js_strings.php:122
 msgid "Returning"
 msgstr "Eksisterende"
 
-#: /var/www/webapp/code/shared/js_strings.php:119
+#: /var/www/webapp/code/shared/js_strings.php:123
 msgid "Customers (Pi"
 msgstr "Kunder (Pi"
 
-#: /var/www/webapp/code/shared/js_strings.php:120
+#: /var/www/webapp/code/shared/js_strings.php:124
 msgid "Total"
 msgstr "Total"
 
-#: /var/www/webapp/code/shared/js_strings.php:121
+#: /var/www/webapp/code/shared/js_strings.php:125
 msgid "Customers (Ba"
 msgstr "Kunder (Ba"
 
-#: /var/www/webapp/code/shared/js_strings.php:122
+#: /var/www/webapp/code/shared/js_strings.php:126
 msgid " orders"
 msgstr " ordre"
 
-#: /var/www/webapp/code/shared/js_strings.php:123
+#: /var/www/webapp/code/shared/js_strings.php:127
 msgid "Number of Orders"
 msgstr "Antall bestillinger"
 
-#: /var/www/webapp/code/shared/js_strings.php:124
+#: /var/www/webapp/code/shared/js_strings.php:128
 msgid "Menu Item Popularity"
 msgstr "Meny produktets popularitet"
 
-#: /var/www/webapp/code/shared/js_strings.php:125
+#: /var/www/webapp/code/shared/js_strings.php:129
 msgid "Revenue"
 msgstr "Inntekt"
 
-#: /var/www/webapp/code/shared/js_strings.php:126
+#: /var/www/webapp/code/shared/js_strings.php:130
 msgid "Date Joined"
 msgstr "Dato registrert"
 
-#: /var/www/webapp/code/shared/js_strings.php:128
+#: /var/www/webapp/code/shared/js_strings.php:132
 msgid "Email Address"
 msgstr "E-postadresse"
 
-#: /var/www/webapp/code/shared/js_strings.php:129
+#: /var/www/webapp/code/shared/js_strings.php:133
 msgid "Marketing"
 msgstr "Markedsføring"
 
-#: /var/www/webapp/code/shared/js_strings.php:130
+#: /var/www/webapp/code/shared/js_strings.php:134
 msgid "Date of Order"
 msgstr "Ordredato"
 
-#: /var/www/webapp/code/shared/js_strings.php:131
+#: /var/www/webapp/code/shared/js_strings.php:135
 msgid "Total Spent"
 msgstr "Totalt brukt"
 
-#: /var/www/webapp/code/shared/js_strings.php:132
+#: /var/www/webapp/code/shared/js_strings.php:136
 msgid "% Increase"
 msgstr "% Økning"
 
-#: /var/www/webapp/code/shared/js_strings.php:133
+#: /var/www/webapp/code/shared/js_strings.php:137
 msgid "% Decrease"
 msgstr "% Reduksjon"
 
-#: /var/www/webapp/code/shared/js_strings.php:134
+#: /var/www/webapp/code/shared/js_strings.php:138
 msgid "Last Order"
 msgstr "Sist ordre"
 
-#: /var/www/webapp/code/shared/js_strings.php:135
+#: /var/www/webapp/code/shared/js_strings.php:139
 msgid "Item Name"
 msgstr "Produkt navn"
 
-#: /var/www/webapp/code/shared/js_strings.php:136
+#: /var/www/webapp/code/shared/js_strings.php:140
 msgid "Quantity Sold"
 msgstr "Antall solgt"
 
-#: /var/www/webapp/code/shared/js_strings.php:137
+#: /var/www/webapp/code/shared/js_strings.php:141
 msgid "Day"
 msgstr "Dag"
 
-#: /var/www/webapp/code/shared/js_strings.php:138
+#: /var/www/webapp/code/shared/js_strings.php:142
 msgid "Date"
 msgstr "Dato"
 
-#: /var/www/webapp/code/shared/js_strings.php:139
+#: /var/www/webapp/code/shared/js_strings.php:143
 msgid "Loyalty"
 msgstr "Lojalitet"
 
-#: /var/www/webapp/code/shared/js_strings.php:140
+#: /var/www/webapp/code/shared/js_strings.php:144
 msgid "Other"
 msgstr "Annet"
 
-#: /var/www/webapp/code/shared/js_strings.php:141
+#: /var/www/webapp/code/shared/js_strings.php:145
 msgid "Offers"
 msgstr "Tilbud"
 
-#: /var/www/webapp/code/shared/js_strings.php:142
+#: /var/www/webapp/code/shared/js_strings.php:146
 msgid "Value Sold"
 msgstr "Verdi solgt"
 
-#: /var/www/webapp/code/shared/js_strings.php:143
+#: /var/www/webapp/code/shared/js_strings.php:147
 msgid "New Customers"
 msgstr "Nye kunder"
 
-#: /var/www/webapp/code/shared/js_strings.php:144
+#: /var/www/webapp/code/shared/js_strings.php:148
 msgid ""
 "Displays all new customers who have signed up, or had their first order, in "
 "the past two weeks."
@@ -2945,46 +2881,46 @@ msgstr ""
 "Vis alle nye kunder som har registrert seg, eller hadde sin første ordre de "
 "siste to ukene."
 
-#: /var/www/webapp/code/shared/js_strings.php:145
+#: /var/www/webapp/code/shared/js_strings.php:149
 msgid "Customers with zero orders"
 msgstr "Kunder med null bestillinger"
 
-#: /var/www/webapp/code/shared/js_strings.php:146
+#: /var/www/webapp/code/shared/js_strings.php:150
 msgid ""
 "Displays all customers who have signed up but have not yet placed any orders."
 msgstr ""
 "Vis alle kunder som har registrert seg, men ennå ikke har lagt inn noen "
 "ordre."
 
-#: /var/www/webapp/code/shared/js_strings.php:147
+#: /var/www/webapp/code/shared/js_strings.php:151
 msgid "One Time Buyers"
 msgstr "Engang kjøpere"
 
-#: /var/www/webapp/code/shared/js_strings.php:148
+#: /var/www/webapp/code/shared/js_strings.php:152
 msgid "Displays all customers who have placed only one order."
 msgstr "Viser alle kunder som har plassert kun en ordre."
 
-#: /var/www/webapp/code/shared/js_strings.php:149
+#: /var/www/webapp/code/shared/js_strings.php:153
 msgid "Most Frequent Buyers"
 msgstr "Kunder med flest bestillinger"
 
-#: /var/www/webapp/code/shared/js_strings.php:150
+#: /var/www/webapp/code/shared/js_strings.php:154
 msgid "Displays top 50 customers who have placed the most number of orders."
 msgstr "Viser top 50 kunder som har plassert flest antall bestillinger."
 
-#: /var/www/webapp/code/shared/js_strings.php:151
+#: /var/www/webapp/code/shared/js_strings.php:155
 msgid "Highest Spending Customers"
 msgstr "Kunder med høyest forbruk"
 
-#: /var/www/webapp/code/shared/js_strings.php:152
+#: /var/www/webapp/code/shared/js_strings.php:156
 msgid "Displays top 50 customers who have the highest transactional spend."
 msgstr "Viser top 50 kunder som har den høyeste transaksjonskostnadene."
 
-#: /var/www/webapp/code/shared/js_strings.php:153
+#: /var/www/webapp/code/shared/js_strings.php:157
 msgid "Customers Increasing Orders"
 msgstr "Kunder med økende antall bestillinger"
 
-#: /var/www/webapp/code/shared/js_strings.php:154
+#: /var/www/webapp/code/shared/js_strings.php:158
 msgid ""
 "Displays all customers who placed more orders this month than the previous "
 "month."
@@ -2992,11 +2928,11 @@ msgstr ""
 "Viser alle kunder som har lagt til flere bestillinger denne måneden enn "
 "forrige måned."
 
-#: /var/www/webapp/code/shared/js_strings.php:155
+#: /var/www/webapp/code/shared/js_strings.php:159
 msgid "Customers Decreasing Orders"
 msgstr "Kunder med fallende antall bestillinger"
 
-#: /var/www/webapp/code/shared/js_strings.php:156
+#: /var/www/webapp/code/shared/js_strings.php:160
 msgid ""
 "Displays all customers who placed less orders this month than the previous "
 "month."
@@ -3004,31 +2940,31 @@ msgstr ""
 "Viser alle kunder som har lagt inn mindre bestillinger denne måneden enn "
 "forrige måned."
 
-#: /var/www/webapp/code/shared/js_strings.php:157
+#: /var/www/webapp/code/shared/js_strings.php:161
 msgid "Customers Increasing Spend"
 msgstr "Kunder med økende forbruk"
 
-#: /var/www/webapp/code/shared/js_strings.php:158
+#: /var/www/webapp/code/shared/js_strings.php:162
 msgid ""
 "Displays all customers who spent more this month than the previous month."
 msgstr ""
 "Viser alle kunder som har høyere forbruke denne måneden enn forrige måned."
 
-#: /var/www/webapp/code/shared/js_strings.php:159
+#: /var/www/webapp/code/shared/js_strings.php:163
 msgid "Customers Decreasing Spend"
 msgstr "Kunder med fallende forbruk"
 
-#: /var/www/webapp/code/shared/js_strings.php:160
+#: /var/www/webapp/code/shared/js_strings.php:164
 msgid ""
 "Displays all customers who spent less this month than the previous month."
 msgstr ""
 "Viser alle kunder som har brukt mindre denne måneden enn forrige måned."
 
-#: /var/www/webapp/code/shared/js_strings.php:161
+#: /var/www/webapp/code/shared/js_strings.php:165
 msgid "Sleeping Customers"
 msgstr "Sovende kunder"
 
-#: /var/www/webapp/code/shared/js_strings.php:162
+#: /var/www/webapp/code/shared/js_strings.php:166
 msgid ""
 "Displays all customers who have previously made at least one order, but "
 "haven't ordered for 3 months."
@@ -3036,74 +2972,74 @@ msgstr ""
 "Viser alle kunder som tidligere har minst en ordre, men ikke har bestilt på "
 "tre måneder."
 
-#: /var/www/webapp/code/shared/js_strings.php:163
+#: /var/www/webapp/code/shared/js_strings.php:167
 msgid "Displays top 10 most popular items."
 msgstr "Viser de topp 10 mest populære varene."
 
-#: /var/www/webapp/code/shared/js_strings.php:164
+#: /var/www/webapp/code/shared/js_strings.php:168
 msgid "Item Popularity Increase"
 msgstr "Varer med økt popularitet"
 
-#: /var/www/webapp/code/shared/js_strings.php:165
+#: /var/www/webapp/code/shared/js_strings.php:169
 msgid "Displays all items that sold more this month than last month."
 msgstr "Viser alle varer som solgte mer denne måneden enn forrige måned."
 
-#: /var/www/webapp/code/shared/js_strings.php:166
+#: /var/www/webapp/code/shared/js_strings.php:170
 msgid "Item Popularity Decrease"
 msgstr "Varer med synkende popularitet"
 
-#: /var/www/webapp/code/shared/js_strings.php:167
+#: /var/www/webapp/code/shared/js_strings.php:171
 msgid "Displays all items that sold less this month than last month"
 msgstr "Viser alle varer som solgte mindre denne måneden enn forrige måned"
 
-#: /var/www/webapp/code/shared/js_strings.php:168
+#: /var/www/webapp/code/shared/js_strings.php:172
 msgid "Highest Grossing Days"
 msgstr "Mest innbringende dager"
 
-#: /var/www/webapp/code/shared/js_strings.php:169
+#: /var/www/webapp/code/shared/js_strings.php:173
 msgid "Display top 10 highest grossing days."
 msgstr "Vis de topp 10 mest innbringende dager."
 
-#: /var/www/webapp/code/shared/js_strings.php:170
+#: /var/www/webapp/code/shared/js_strings.php:174
 msgid "Lowest Grossing Days"
 msgstr "Laveste innbringende dager"
 
-#: /var/www/webapp/code/shared/js_strings.php:171
+#: /var/www/webapp/code/shared/js_strings.php:175
 msgid "Display top 10 lowest grossing days."
 msgstr "Viser de topp 10 laveste innbringende dager."
 
-#: /var/www/webapp/code/shared/js_strings.php:172
+#: /var/www/webapp/code/shared/js_strings.php:176
 msgid "Highest Order Days"
 msgstr "Dager med høyest antall ordre"
 
-#: /var/www/webapp/code/shared/js_strings.php:173
+#: /var/www/webapp/code/shared/js_strings.php:177
 msgid "Display top 10 highest order days."
 msgstr "Vise topp 10 dager med høyest antall ordre"
 
-#: /var/www/webapp/code/shared/js_strings.php:174
+#: /var/www/webapp/code/shared/js_strings.php:178
 msgid "Lowest Order Days"
 msgstr "Dager med lavest antall ordre"
 
-#: /var/www/webapp/code/shared/js_strings.php:175
+#: /var/www/webapp/code/shared/js_strings.php:179
 msgid "Display top 10 lowest order days."
 msgstr "Vise de topp 10 dager med laveste antall ordre."
 
-#: /var/www/webapp/code/shared/js_strings.php:176
+#: /var/www/webapp/code/shared/js_strings.php:180
 msgid "Highest Grossing Hours"
 msgstr "Tidspunkt med høyest inntekt"
 
-#: /var/www/webapp/code/shared/js_strings.php:177
+#: /var/www/webapp/code/shared/js_strings.php:181
 msgid ""
 "Displays the accumulative total spent, broken down by 24 x 1 hour time slots."
 msgstr ""
 "Viser totalt forbruk i stigende rekkefølge, fordelt på 24 x 1 times "
 "intervaller."
 
-#: /var/www/webapp/code/shared/js_strings.php:178
+#: /var/www/webapp/code/shared/js_strings.php:182
 msgid "Highest Order Hours"
 msgstr "Tidspunkt med høyest antall ordre"
 
-#: /var/www/webapp/code/shared/js_strings.php:179
+#: /var/www/webapp/code/shared/js_strings.php:183
 msgid ""
 "Displays the accumulative number of orders, broken down by 24 x 1 hour time "
 "slots."
@@ -3111,131 +3047,131 @@ msgstr ""
 "Viser antall bestillinger i stigende rekkefølge, fordelt på 24 x 1 times "
 "intervaller."
 
-#: /var/www/webapp/code/shared/js_strings.php:180
+#: /var/www/webapp/code/shared/js_strings.php:184
 msgid "years ago"
 msgstr "år siden"
 
-#: /var/www/webapp/code/shared/js_strings.php:181
+#: /var/www/webapp/code/shared/js_strings.php:185
 msgid "year ago"
 msgstr "år siden"
 
-#: /var/www/webapp/code/shared/js_strings.php:182
+#: /var/www/webapp/code/shared/js_strings.php:186
 msgid "months ago"
 msgstr "måneder siden"
 
-#: /var/www/webapp/code/shared/js_strings.php:183
+#: /var/www/webapp/code/shared/js_strings.php:187
 msgid "month ago"
 msgstr "måned siden"
 
-#: /var/www/webapp/code/shared/js_strings.php:184
+#: /var/www/webapp/code/shared/js_strings.php:188
 msgid "days ago"
 msgstr "dager siden"
 
-#: /var/www/webapp/code/shared/js_strings.php:185
+#: /var/www/webapp/code/shared/js_strings.php:189
 msgid "yesterday"
 msgstr "i går"
 
-#: /var/www/webapp/code/shared/js_strings.php:186
+#: /var/www/webapp/code/shared/js_strings.php:190
 msgid "hours ago"
 msgstr "timer siden"
 
-#: /var/www/webapp/code/shared/js_strings.php:187
+#: /var/www/webapp/code/shared/js_strings.php:191
 msgid "hour ago"
 msgstr "time siden"
 
-#: /var/www/webapp/code/shared/js_strings.php:188
+#: /var/www/webapp/code/shared/js_strings.php:192
 msgid "minutes ago"
 msgstr "minutter siden"
 
-#: /var/www/webapp/code/shared/js_strings.php:189
+#: /var/www/webapp/code/shared/js_strings.php:193
 msgid "minute ago"
 msgstr "minutt siden"
 
-#: /var/www/webapp/code/shared/js_strings.php:190
+#: /var/www/webapp/code/shared/js_strings.php:194
 msgid "seconds ago"
 msgstr "sekunder siden"
 
-#: /var/www/webapp/code/shared/js_strings.php:191
+#: /var/www/webapp/code/shared/js_strings.php:195
 msgid "second ago"
 msgstr "sekund siden"
 
-#: /var/www/webapp/code/shared/js_strings.php:192
+#: /var/www/webapp/code/shared/js_strings.php:196
 msgid "Contact this customer regarding loyalty programmes"
 msgstr "Kontakt kundeservice om lojalitetsprogrammer"
 
-#: /var/www/webapp/code/shared/js_strings.php:193
+#: /var/www/webapp/code/shared/js_strings.php:197
 msgid "Contact this customer with discounts and special offers"
 msgstr "Kontakt denne kunden med rabatter og spesialtilbud"
 
-#: /var/www/webapp/code/shared/js_strings.php:194
+#: /var/www/webapp/code/shared/js_strings.php:198
 msgid "Contact this customer with newsletters, research and marketing emails"
 msgstr "Kontakt denne kunden med nyhetsbrev og markedsførings e-post"
 
-#: /var/www/webapp/code/shared/js_strings.php:195
+#: /var/www/webapp/code/shared/js_strings.php:199
 msgid "Successfully saved delivery settings."
 msgstr "Innstillinger for leveranse er lagret."
 
-#: /var/www/webapp/code/shared/js_strings.php:196
+#: /var/www/webapp/code/shared/js_strings.php:200
 msgid "Email is invalid"
 msgstr "E-post er ugyldig"
 
-#: /var/www/webapp/code/shared/js_strings.php:197
+#: /var/www/webapp/code/shared/js_strings.php:201
 msgid "Your order is running 15 mins late"
 msgstr "Din ordre er 15 minutter forsinket"
 
-#: /var/www/webapp/code/shared/js_strings.php:198
+#: /var/www/webapp/code/shared/js_strings.php:202
 msgid "Late Order"
 msgstr "Forsinket ordre"
 
-#: /var/www/webapp/code/shared/js_strings.php:199
+#: /var/www/webapp/code/shared/js_strings.php:203
 msgid "Your order is on its way"
 msgstr "Din bestilling er på vei"
 
-#: /var/www/webapp/code/shared/js_strings.php:200
+#: /var/www/webapp/code/shared/js_strings.php:204
 msgid "En-route"
 msgstr "Underveis"
 
-#: /var/www/webapp/code/shared/js_strings.php:201
+#: /var/www/webapp/code/shared/js_strings.php:205
 msgid "There is a problem with your order. Please call us"
 msgstr "Det er et problem med din bestilling. Vennligst ring oss"
 
-#: /var/www/webapp/code/shared/js_strings.php:202
+#: /var/www/webapp/code/shared/js_strings.php:206
 msgid "Call us"
 msgstr "Ring oss"
 
-#: /var/www/webapp/code/shared/js_strings.php:203
+#: /var/www/webapp/code/shared/js_strings.php:207
 msgid "Your address is out of our delivery zone"
 msgstr "Din adresse er utenfor leverings området"
 
-#: /var/www/webapp/code/shared/js_strings.php:204
+#: /var/www/webapp/code/shared/js_strings.php:208
 msgid "Out of zone"
 msgstr "Utenfor leverings området"
 
-#: /var/www/webapp/code/shared/js_strings.php:205
+#: /var/www/webapp/code/shared/js_strings.php:209
 msgid "Sorry, that item is out of stock"
 msgstr "Beklager, varen er utsolgt"
 
-#: /var/www/webapp/code/shared/js_strings.php:206
+#: /var/www/webapp/code/shared/js_strings.php:210
 msgid "Out of stock"
 msgstr "Utsolgt"
 
-#: /var/www/webapp/code/shared/js_strings.php:207
+#: /var/www/webapp/code/shared/js_strings.php:211
 msgid "Sorry, Your order has been rejected. Please call us"
 msgstr "Beklager, bestillingen ble avvist. Vennligst ring oss"
 
-#: /var/www/webapp/code/shared/js_strings.php:209
+#: /var/www/webapp/code/shared/js_strings.php:213
 msgid " DAY FREE TRIAL"
 msgstr " DAGER GRATIS PRØVE"
 
-#: /var/www/webapp/code/shared/js_strings.php:210
+#: /var/www/webapp/code/shared/js_strings.php:214
 msgid "START TRIAL"
 msgstr "START PRØVEVERSJON"
 
-#: /var/www/webapp/code/shared/js_strings.php:211
+#: /var/www/webapp/code/shared/js_strings.php:215
 msgid "Your new Premium Feature is now live!"
 msgstr "Din app er nå live!"
 
-#: /var/www/webapp/code/shared/js_strings.php:212
+#: /var/www/webapp/code/shared/js_strings.php:216
 msgid ""
 "You will be contacted shortly by a member of our team. You can manage "
 "subscriptions from your <a href='/accountSettings#/subscription'>account "
@@ -3245,7 +3181,7 @@ msgstr ""
 "abonnementene dine fra <a href='/accountSettings#/subscription'>konto "
 "instillinger.</a>"
 
-#: /var/www/webapp/code/shared/js_strings.php:213
+#: /var/www/webapp/code/shared/js_strings.php:217
 msgid ""
 "Please add a payment method to your account in order to subscribe to Premium "
 "Features"
@@ -3253,27 +3189,27 @@ msgstr ""
 "Legg til en betalingsmåte for kontoen om du vil abonnere på Premium-"
 "funksjoner"
 
-#: /var/www/webapp/code/shared/js_strings.php:214
+#: /var/www/webapp/code/shared/js_strings.php:218
 msgid "ADD CARD"
 msgstr "LEGG TIL KORT"
 
-#: /var/www/webapp/code/shared/js_strings.php:215
+#: /var/www/webapp/code/shared/js_strings.php:219
 msgid "To access this feature you need to have "
 msgstr "For å få tilgang til denne funksjonen må du ha "
 
-#: /var/www/webapp/code/shared/js_strings.php:216
+#: /var/www/webapp/code/shared/js_strings.php:220
 msgid " installed first "
 msgstr " installert først "
 
-#: /var/www/webapp/code/shared/js_strings.php:217
+#: /var/www/webapp/code/shared/js_strings.php:221
 msgid "Buy "
 msgstr "Kjøp"
 
-#: /var/www/webapp/code/shared/js_strings.php:218
+#: /var/www/webapp/code/shared/js_strings.php:222
 msgid "Your card will be charged "
 msgstr "Ditt kort vil bli belastet "
 
-#: /var/www/webapp/code/shared/js_strings.php:219
+#: /var/www/webapp/code/shared/js_strings.php:223
 msgid ""
 " for this transaction. <br/> You may cancel this Premium Feature at any time "
 "from your account settings page."
@@ -3360,6 +3296,67 @@ msgstr "Food4u"
 #: /var/www/webapp/overrides/preoday/regular_footer.php:27
 msgid "support@preoday.com"
 msgstr "support@preoday.no"
+
+#, fuzzy
+#~ msgid "Second-Interval"
+#~ msgstr "Området for henting: Andre interval"
+
+#, fuzzy
+#~ msgid "Half-Time"
+#~ msgstr "Tid"
+
+#~ msgid "Choose a Collection Slot"
+#~ msgstr "Velg et sted for henting"
+
+#~ msgid ""
+#~ "Are you sure you want to delete this event? Note: all event data will be "
+#~ "lost!"
+#~ msgstr ""
+#~ "Er du sikker på at du vil slette denne hendelsen? Merk: alle hendelses "
+#~ "data vil gå tapt!"
+
+#~ msgid "Yes, delete this event!"
+#~ msgstr "Ja, slett denne hendelsen!"
+
+#~ msgid "Your events"
+#~ msgstr "Dine arrangementer"
+
+#~ msgid ""
+#~ "These show when you are open for ordering, such as performances or "
+#~ "matches. They can be viewed from the front page of your app"
+#~ msgstr ""
+#~ "Disse viser når du har åpent for bestilling, som for eksempel "
+#~ "forestillinger eller kamper. De kan sees fra forsiden av din app"
+
+#~ msgid "Add a new event"
+#~ msgstr "Legg til nytt arrangement"
+
+#~ msgid "Start Date"
+#~ msgstr "Start dato"
+
+#~ msgid "End Time"
+#~ msgstr "Slutt tidspunkt"
+
+#~ msgid "Click to add an event name"
+#~ msgstr "Klikk for å legge et arrangement navn"
+
+#~ msgid "Please type an event name (max 100chars)"
+#~ msgstr "Skriv inn arrangement navn (maks 100 bokstaver)"
+
+#~ msgid "Click to add a description"
+#~ msgstr "Klikk for å legge til en beskrivelse"
+
+#~ msgid "DD/MM/YYYY"
+#~ msgstr "DD/MM/ÅÅÅÅ"
+
+#~ msgid "Date?"
+#~ msgstr "Dato?"
+
+#~ msgid "All Locations"
+#~ msgstr "﻿Alle lokasjoner"
+
+#~ msgid "30"
+#~ msgstr "30"
 
 #~ msgid "UPLOAD YOUR OWN LOGO"
 #~ msgstr "LAST OPP DIN EGEN LOGO"
@@ -3550,9 +3547,6 @@ msgstr "support@preoday.no"
 
 #~ msgid "Order"
 #~ msgstr "Orden"
-
-#~ msgid "Time"
-#~ msgstr "Tid"
 
 #~ msgid "Choose preset:"
 #~ msgstr "Velg forhåndsinnstilling:"

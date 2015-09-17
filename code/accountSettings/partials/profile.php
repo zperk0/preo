@@ -47,7 +47,7 @@
 		</div>
 		<button ng-show="!isEditing" class='preodayButton' ng-click="toggleEditUserDetails()" type="button" translate>CHANGE DETAILS</button>
 		<button ng-show="!isPosting && isEditing " class='preodayButton' ng-click="saveChanges()" type="submit" translate>SAVE</button>
-		<button ng-show="isPosting" class="secondary" type="button" translate>SAVING..."</button>
+		<button ng-show="isPosting" class="secondary" type="button" translate>SAVING...</button>
 		<button ng-show="isEditing" class='preodayButton secondary' ng-click="toggleEditUserDetails(true)" translate>CANCEL</button>
  </form>
 </div>

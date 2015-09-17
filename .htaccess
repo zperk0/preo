@@ -68,7 +68,7 @@ RewriteCond %{REQUEST_URI} ^/openinghours$ [NC]
 RewriteRule ^.*$ nonEventSettings.php [L]
 
 RewriteCond %{REQUEST_URI} ^/events$ [NC]
-RewriteRule ^.*$ eventSettings.php [L]
+RewriteRule ^.*$ /code/events [L]
 
 RewriteCond %{REQUEST_URI} ^/homescreen$ [NC]
 RewriteRule ^.*$ appSettings1.php [L]
@@ -142,11 +142,6 @@ RewriteRule ^.*$ /code/dashboard/doUploadMenuItemImage.php [L]
 RewriteCond %{REQUEST_URI} ^/saveHours$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_nonEventConfig.php [L]
 
-RewriteCond %{REQUEST_URI} ^/deleteEvent$ [NC]
-RewriteRule ^.*$ /code/dashboard/do_eventDelete.php [L]
-
-RewriteCond %{REQUEST_URI} ^/saveEvent$ [NC]
-RewriteRule ^.*$ /code/dashboard/do_eventConfig.php [L]
 
 RewriteCond %{REQUEST_URI} ^/deleteUser$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_userDelete.php [L]

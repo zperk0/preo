@@ -37,6 +37,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
                     };
 
                 $scope.orders = $scope.allOrders;
+                console.log('orders view here', $scope.allOrders);
                 $scope.currentPage = 1;
                 $scope.direction = true;
                 $scope.totalItems = $scope.orders.length;
@@ -104,16 +105,50 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
                 arrItems.push(itemString);
             };
 
-            order.total = total;
+            // order.total = total;
 
             return arrItems;
-        }
+        };
+
+        var getDiscountsAndFeedAsString = function (order) {
+            var arrDiscounts = [];
+
+            var discounts = order.discounts;
+            var fees = order.fees;
+            var total = 0;
+
+                var currency = null;
+                if ($scope.currentAction == 'pdf') {
+                    currency = $scope.getCurrencyByAscii();
+                } else {
+                    currency = $scope.getCurrency();
+                }
+
+            for (var i = 0, len = discounts.length; i < len; i++) {
+                var discount = discounts[i];
+                arrDiscounts.push(discount.name + ' -' + currency + discount.discount.toFixed(2));
+            };
+
+            for (var i = 0, len = fees.length; i < len; i++) {
+                var fee = fees[i];
+                arrDiscounts.push(fee.name + ' ' + currency + fee.amount.toFixed(2));
+            };
+
+            return arrDiscounts;
+        };
 
         $scope.getItemsAsString = function (order) {
             if (!order.itemString) {
                 order.itemString = getItemsAsString(order).join('<br />');
             }
             return order.itemString;
+        }
+
+        $scope.getDiscountsAndFees = function (order) {
+            if (!order.discountsAndFees) {
+                order.discountsAndFees = getDiscountsAndFeedAsString(order).join('<br />');
+            }
+            return order.discountsAndFees;
         }
 
         $scope.selectAll = function() {
@@ -177,6 +212,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
                 "Order Time": [],
                 "Customer" :[],
                 "Items":[],
+                "Discounts and Fees":[],
                 "Order Total":[],
                 "Order Status":[]
             });
@@ -196,6 +232,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
 
                     var arrItems = getItemsAsString(order);
                     prepData["Items"].push(arrItems.join('___BR___'));
+                    prepData["Discounts and Fees"].push(getDiscountsAndFeedAsString(order).join('___BR___'));
                     prepData["Order Total"].push($scope.getCurrencyByAscii() + order.total.toFixed(2));
                     prepData["Order Status"].push(order.status);
 
@@ -208,7 +245,8 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             prepData["Order Time"].push('');
             prepData["Customer"].push('');
 
-            prepData["Items"].push('Total');
+            prepData["Items"].push('');
+            prepData["Discounts and Fees"].push('Total');
             prepData["Order Total"].push($scope.getCurrencyByAscii() + total.toFixed(2));
             prepData["Order Status"].push('');
 
@@ -257,6 +295,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             titlesCSV.push("Email");
             titlesCSV.push("Order Time");
             titlesCSV.push("Items");
+            titlesCSV.push("Discounts and Fees");
             titlesCSV.push("Order Total");
             titlesCSV.push("Order Status");
             titlesCSV.push("Loyalty");
@@ -285,6 +324,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
                     arrPrepData.push(order.user.email);
                     arrPrepData.push(moment(order.created).format('DD/MM/YYYY HH:mm'));
                     arrPrepData.push('\"' + arrItems.join(';').replaceAll('\"', '') + '\"');
+                    arrPrepData.push('\"' + getDiscountsAndFeedAsString(order).join(';').replaceAll('\"', '') + '\"');
                     arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
                     arrPrepData.push(order.status);
                     arrPrepData.push(order.user.optinLoyalty);
@@ -298,7 +338,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             })
 
             var totalData = [
-                '', '', '', '', '', 'Total', $scope.getCurrency() + total.toFixed(2), '', '', '', ''
+                '', '', '', '', '', '', 'Total', $scope.getCurrency() + total.toFixed(2), '', '', '', ''
             ];
 
             if (ordersToExport.length > 1) {

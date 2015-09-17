@@ -22,12 +22,16 @@
     "angular-foundation": "~0.2.2",
     "gridster": "~0.5.1",
     "highcharts": "~3.0.7",
-    "moment": "~2.7.0",
+    "moment": "~2.10.6",
     "underscore": "~1.6.0",
     "select2": "~3.5.1",
-    "angular-ui-select2": "~0.0.5"
+    "angular-ui-select2": "~0.0.5",
+    "javascript-core": "git@bitbucket.org:preoday/javascript-core.git"
   },
   "resolutions": {
     "select2": "~3.5.1"
+  },
+  "devDependencies": {
+    "angular-gettext": "~2.1.0"
   }
 }

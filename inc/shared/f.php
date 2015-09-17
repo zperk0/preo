@@ -161,6 +161,9 @@
 				<? } else {?>
 					var SESSION_VENUE_CURRENCY = "GBP"; /*defaults to GBP*/
 				<? } ?>
+
+				// moment default language
+				moment.locale('en');
 			</script>
 	</body>
 </html>

@@ -23,6 +23,10 @@ module.exports = function(grunt) {
     delivery:{
       index:'code/settings/delivery/delivery-view.php',
       output:'code/settings/delivery/js/all.min.js',
+    },
+    events:{
+      index:'code/events/index.php',
+      output:'code/events/all.min.js',
     }
   }
 
@@ -39,7 +43,7 @@ module.exports = function(grunt) {
               'js/foundation/foundation.tooltips.js','js/foundation/foundation.topbar.js','js/foundation/foundation.datepicker.js','js/foundation/foundation.abide.js', 'js/foundation/foundation.orbit.js', 'js/foundation/foundation.clearing.js',
               'js/jquery.noty-full-min.js','js/jsColor/jscolor.js','js/form.js','js/tweet.js','js/timepicker.js','js/jquery-ui.min.js', 'js/croppic.js', 'js/croppicPreoday.js',
               'js/autoNumeric.js','js/multi-select.js','js/tableSlide.js','js/js-actual.js','js/googleplus.js','bower_components/gridster/dist/jquery.gridster.min.js',
-              'bower_components/moment/moment.js','bower_components/highcharts/highcharts.js','js/jquery.shapeshift.js','bower_components/underscore/underscore.js',
+              'bower_components/moment/moment.js', 'bower_components/moment/locale/de.js', 'bower_components/moment/locale/fr.js', 'bower_components/moment/locale/nb.js', 'bower_components/highcharts/highcharts.js','js/jquery.shapeshift.js','bower_components/underscore/underscore.js',
               'js/preoabide.js','js/general.js'],
         dest: 'js/all_scripts.min.js'
       },
@@ -73,6 +77,13 @@ module.exports = function(grunt) {
         src: ["<%= yeoman.shop.files %>"],
         dest: "<%= yeoman.shop.output %>"
       },
+      events:{
+        options: {
+          beautify: grunt.option('nomin'),
+        },
+        src: ["<%= yeoman.events.files %>"],
+        dest: "<%= yeoman.events.output %>"
+      },
       accountSettings:{
         options: {
           beautify: grunt.option('nomin'),
@@ -82,6 +93,7 @@ module.exports = function(grunt) {
       }
     },
     cssmin: {
+      options: { restructuring: false },
       minify: {
         src: ['css/normalize.css', 'css/foundation.css', 'css/jquery.gridster.min.css','bower_components/select2/select2.css','css/app.css', 'css/croppic.css'],
         dest: 'css/all_css.min.css',
@@ -145,6 +157,14 @@ module.exports = function(grunt) {
           livereload: true
         }
       },
+      events:{
+        files: ["<%= yeoman.events.files %>","<%= yeoman.events.index %>"],
+        tasks: ['uglify:accountSettings'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      },
       scss:{
         files: ['css/*.scss'],
         tasks: ['sass','minifycss','clean:appCss'],
@@ -180,7 +200,7 @@ module.exports = function(grunt) {
   nggettext_extract: {
     pot: {
       files: {
-        'locale_angular/angular_gettext.pot': ['**/*.php, **/*.js']
+        'locale_angular/angular_gettext.pot': ['code/**/*.php', 'code/**/*.html', 'code/**/*.htm', 'code/**/*.js']
       }
     },
   },
@@ -253,6 +273,7 @@ module.exports = function(grunt) {
     'prepareWatchApp:shop',
     'prepareWatchApp:accountSettings',
     'prepareWatchApp:delivery',
+    'prepareWatchApp:events'
     ])
 
   grunt.registerTask('watcher',[
@@ -262,8 +283,8 @@ module.exports = function(grunt) {
     ])
 
   grunt.registerTask('minifyjs', ['uglify','replace:jscolor']);
-  grunt.registerTask('minifycss', ['sass','cssmin','clean:appCss','replace:fonts']);
+  grunt.registerTask('minifycss', ['sass','cssmin','replace:fonts']);
   grunt.registerTask('build', ['minifyjs','minifycss']);
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('default', ['prepareWatch','build']);
 
 };

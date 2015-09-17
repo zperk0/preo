@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-18 13:07-0300\n"
+"POT-Creation-Date: 2015-09-10 15:35-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr ""
 
 #: /var/www/webapp/inc/404/404_content.php:6
 #: /var/www/webapp/inc/shared/h.php:35
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:70
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:60
 msgid "Dashboard"
 msgstr ""
 
@@ -149,7 +149,6 @@ msgid "Transaction Details"
 msgstr ""
 
 #: /var/www/webapp/inc/signup/signup_content.php:58
-#: /var/www/webapp/inc/dashboard/eventConfig.php:51
 #: /var/www/webapp/inc/dashboard/menuConfig.php:94
 #: /var/www/webapp/inc/dashboard/menuConfig.php:236
 #: /var/www/webapp/code/shop/shop.php:112
@@ -273,12 +272,12 @@ msgid "Go to Dashboard"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:39
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:107
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:97
 msgid "Order Screen"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:41
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:130
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:116
 msgid "Venue Settings"
 msgstr ""
 
@@ -293,7 +292,6 @@ msgstr ""
 #: /var/www/webapp/inc/shared/h.php:45
 #: /var/www/webapp/inc/dashboard/appConfig2.php:15
 #: /var/www/webapp/inc/dashboard/appConfig2.php:18
-#: /var/www/webapp/inc/dashboard/eventConfig.php:13
 #: /var/www/webapp/inc/dashboard/appConfig1.php:26
 #: /var/www/webapp/inc/dashboard/appConfig1.php:29
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:11
@@ -312,7 +310,7 @@ msgid "Preset Notifications"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:49
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:141
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:127
 msgid "Styling"
 msgstr ""
 
@@ -325,16 +323,14 @@ msgid "Menu Screen"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:55
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:117
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:103
 msgid "Menus"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:66
 #: /var/www/webapp/inc/dashboard/userConfig.php:52
 #: /var/www/webapp/inc/dashboard/userConfig.php:104
-#: /var/www/webapp/inc/dashboard/eventConfig.php:101
-#: /var/www/webapp/inc/dashboard/eventConfig.php:190
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:121
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:107
 #: /var/www/webapp/inc/dashboard/mdConfig.php:83
 #: /var/www/webapp/inc/dashboard/mdConfig.php:201
 #: /var/www/webapp/inc/dashboard/outletConfig.php:39
@@ -345,7 +341,7 @@ msgid "Edit"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:68
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:126
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:112
 #: /var/www/webapp/inc/dashboard/mdConfig.php:5
 msgid "Meal Deals"
 msgstr ""
@@ -357,14 +353,13 @@ msgstr ""
 #: /var/www/webapp/inc/shared/h.php:76
 #: /var/www/webapp/inc/dashboard/appConfig2.php:14
 #: /var/www/webapp/inc/dashboard/appConfig2.php:17
-#: /var/www/webapp/inc/dashboard/eventConfig.php:12
 #: /var/www/webapp/inc/dashboard/appConfig1.php:25
 #: /var/www/webapp/inc/dashboard/appConfig1.php:28
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:10
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:10
 #: /var/www/webapp/inc/dashboard/venueConfig.php:35
 #: /var/www/webapp/inc/dashboard/venueConfig.php:38
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:149
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:135
 #: /var/www/webapp/inc/dashboard/menuConfig.php:19
 #: /var/www/webapp/inc/dashboard/menuConfig.php:22
 #: /var/www/webapp/inc/finish/finish_content.php:11
@@ -376,7 +371,7 @@ msgid "Update Events"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:82
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:156
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:142
 msgid "Advanced Settings"
 msgstr ""
 
@@ -391,7 +386,7 @@ msgid "Payment Method"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:86
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:160
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:146
 msgid "Change my app mode"
 msgstr ""
 
@@ -400,7 +395,7 @@ msgid "Switch Venue"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:99
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:164
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:150
 msgid "My Account"
 msgstr ""
 
@@ -409,17 +404,17 @@ msgid "Logout"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:104
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:168
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:154
 msgid "Help"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:106
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:171
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:157
 msgid "Getting Started"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:107
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:172
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:158
 msgid "Editing your Menu"
 msgstr ""
 
@@ -428,7 +423,7 @@ msgid "FAQs"
 msgstr ""
 
 #: /var/www/webapp/inc/shared/h.php:109 /var/www/webapp/inc/shared/h.php:113
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:164
 #: /var/www/webapp/inc/more/more_content.php:6
 msgid "Support"
 msgstr ""
@@ -518,7 +513,6 @@ msgid "SAVE"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:5
-#: /var/www/webapp/inc/dashboard/eventConfig.php:8
 #: /var/www/webapp/inc/dashboard/appConfig1.php:12
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:6
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:6
@@ -529,7 +523,6 @@ msgid "Venue Information"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:6
-#: /var/www/webapp/inc/dashboard/eventConfig.php:9
 #: /var/www/webapp/inc/dashboard/appConfig1.php:13
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:7
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:7
@@ -541,7 +534,6 @@ msgid "App Styling 1/2"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:7
-#: /var/www/webapp/inc/dashboard/eventConfig.php:10
 #: /var/www/webapp/inc/dashboard/appConfig1.php:15
 #: /var/www/webapp/inc/dashboard/appConfig1.php:17
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:8
@@ -555,7 +547,6 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:9
 #: /var/www/webapp/inc/dashboard/appConfig2.php:11
-#: /var/www/webapp/inc/dashboard/eventConfig.php:11
 #: /var/www/webapp/inc/dashboard/appConfig1.php:20
 #: /var/www/webapp/inc/dashboard/appConfig1.php:22
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:9
@@ -568,7 +559,6 @@ msgid "Menu Creation"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:21
-#: /var/www/webapp/inc/dashboard/eventConfig.php:14
 #: /var/www/webapp/inc/dashboard/appConfig1.php:32
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:12
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:12
@@ -578,7 +568,6 @@ msgid "Add a Payment"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:23
-#: /var/www/webapp/inc/dashboard/eventConfig.php:16
 #: /var/www/webapp/inc/dashboard/appConfig1.php:34
 #: /var/www/webapp/inc/dashboard/paymentConfig.php:15
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:14
@@ -610,7 +599,7 @@ msgid "Please type a venue title <br/>(max 22chars)"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:45
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:216
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:202
 msgid "BASKET"
 msgstr ""
 
@@ -656,10 +645,9 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:112
 #: /var/www/webapp/inc/dashboard/userConfig.php:120
-#: /var/www/webapp/inc/dashboard/eventConfig.php:261
 #: /var/www/webapp/inc/dashboard/appConfig1.php:191
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:110
-#: /var/www/webapp/inc/dashboard/venueConfig.php:514
+#: /var/www/webapp/inc/dashboard/venueConfig.php:515
 #: /var/www/webapp/inc/dashboard/mdConfig.php:241
 #: /var/www/webapp/inc/dashboard/outletConfig.php:88
 #: /var/www/webapp/inc/dashboard/menuConfig.php:412
@@ -669,10 +657,9 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig2.php:113
 #: /var/www/webapp/inc/dashboard/userConfig.php:121
-#: /var/www/webapp/inc/dashboard/eventConfig.php:262
 #: /var/www/webapp/inc/dashboard/appConfig1.php:192
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:111
-#: /var/www/webapp/inc/dashboard/venueConfig.php:515
+#: /var/www/webapp/inc/dashboard/venueConfig.php:516
 #: /var/www/webapp/inc/dashboard/mdConfig.php:242
 #: /var/www/webapp/inc/dashboard/outletConfig.php:89
 #: /var/www/webapp/inc/dashboard/menuConfig.php:414
@@ -693,16 +680,15 @@ msgid "Add a new user"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:21
-#: /var/www/webapp/inc/dashboard/eventConfig.php:50
 #: /var/www/webapp/inc/dashboard/mdConfig.php:30
 #: /var/www/webapp/inc/dashboard/menuConfig.php:93
 #: /var/www/webapp/inc/dashboard/menuConfig.php:235
-#: /var/www/webapp/code/shared/js_strings.php:127
+#: /var/www/webapp/code/shared/js_strings.php:131
 msgid "Name"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:23
-#: /var/www/webapp/code/shared/js_strings.php:38
+#: /var/www/webapp/code/shared/js_strings.php:42
 msgid "Role"
 msgstr ""
 
@@ -711,7 +697,6 @@ msgid "This decides the level of access of your users."
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:24
-#: /var/www/webapp/inc/dashboard/eventConfig.php:56
 #: /var/www/webapp/inc/dashboard/mdConfig.php:35
 #: /var/www/webapp/inc/dashboard/menuConfig.php:98
 #: /var/www/webapp/inc/dashboard/menuConfig.php:240
@@ -769,8 +754,6 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:51
 #: /var/www/webapp/inc/dashboard/userConfig.php:103
-#: /var/www/webapp/inc/dashboard/eventConfig.php:100
-#: /var/www/webapp/inc/dashboard/eventConfig.php:189
 #: /var/www/webapp/inc/dashboard/mdConfig.php:82
 #: /var/www/webapp/inc/dashboard/mdConfig.php:200
 #: /var/www/webapp/inc/dashboard/outletConfig.php:38
@@ -782,8 +765,6 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:53
 #: /var/www/webapp/inc/dashboard/userConfig.php:105
-#: /var/www/webapp/inc/dashboard/eventConfig.php:102
-#: /var/www/webapp/inc/dashboard/eventConfig.php:191
 #: /var/www/webapp/inc/dashboard/menuConfig.php:143
 #: /var/www/webapp/inc/dashboard/menuConfig.php:191
 #: /var/www/webapp/inc/dashboard/menuConfig.php:293
@@ -794,9 +775,7 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:54
 #: /var/www/webapp/inc/dashboard/userConfig.php:106
-#: /var/www/webapp/inc/dashboard/eventConfig.php:103
-#: /var/www/webapp/inc/dashboard/eventConfig.php:192
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:122
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:108
 #: /var/www/webapp/inc/dashboard/mdConfig.php:84
 #: /var/www/webapp/inc/dashboard/mdConfig.php:202
 #: /var/www/webapp/inc/dashboard/outletConfig.php:40
@@ -830,195 +809,6 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/userConfig.php:66
 msgid "Passwords don't match"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:20
-msgid "Your events"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:20
-msgid "These show when you are open for ordering, such as performances or matches. They can be viewed from the front page of your app"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:43
-msgid "Add a new event"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:52
-msgid "Start Date"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:53
-msgid "Start Time"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:54
-msgid "End Time"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:55
-#: /var/www/webapp/inc/dashboard/mdConfig.php:34
-#: /var/www/webapp/inc/dashboard/menuConfig.php:97
-#: /var/www/webapp/inc/dashboard/menuConfig.php:239
-msgid "Visible?"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:68
-msgid "Click to add an event name"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:69
-#: /var/www/webapp/inc/dashboard/eventConfig.php:158
-msgid "Please type an event name (max 100chars)"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:72
-#: /var/www/webapp/inc/dashboard/eventConfig.php:161
-msgid "Click to add a description"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:73
-#: /var/www/webapp/inc/dashboard/eventConfig.php:162
-#: /var/www/webapp/inc/dashboard/menuConfig.php:116
-#: /var/www/webapp/inc/dashboard/menuConfig.php:257
-msgid "Please type a description (max 250chars)"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:76
-#: /var/www/webapp/inc/dashboard/eventConfig.php:165
-msgid "DD/MM/YYYY"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:77
-#: /var/www/webapp/inc/dashboard/eventConfig.php:166
-msgid "Date?"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:80
-#: /var/www/webapp/inc/dashboard/eventConfig.php:84
-#: /var/www/webapp/inc/dashboard/eventConfig.php:169
-#: /var/www/webapp/inc/dashboard/eventConfig.php:173
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:58
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:63
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:87
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:92
-msgid "HH:MM"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:81
-#: /var/www/webapp/inc/dashboard/eventConfig.php:85
-#: /var/www/webapp/inc/dashboard/eventConfig.php:135
-#: /var/www/webapp/inc/dashboard/eventConfig.php:170
-#: /var/www/webapp/inc/dashboard/eventConfig.php:174
-#: /var/www/webapp/inc/dashboard/eventConfig.php:225
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:59
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:64
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:88
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:93
-msgid "Time?"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:91
-#: /var/www/webapp/inc/dashboard/eventConfig.php:180
-#: /var/www/webapp/inc/dashboard/venueConfig.php:95
-#: /var/www/webapp/inc/dashboard/venueConfig.php:141
-#: /var/www/webapp/inc/dashboard/venueConfig.php:157
-#: /var/www/webapp/inc/dashboard/venueConfig.php:172
-#: /var/www/webapp/inc/dashboard/mdConfig.php:73
-#: /var/www/webapp/inc/dashboard/mdConfig.php:191
-#: /var/www/webapp/inc/dashboard/menuConfig.php:129
-#: /var/www/webapp/inc/dashboard/menuConfig.php:182
-#: /var/www/webapp/inc/dashboard/menuConfig.php:269
-#: /var/www/webapp/inc/dashboard/menuConfig.php:334
-#: /var/www/webapp/inc/dashboard/menuConfig.php:366
-msgid "No"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:94
-#: /var/www/webapp/inc/dashboard/eventConfig.php:183
-#: /var/www/webapp/inc/dashboard/venueConfig.php:98
-#: /var/www/webapp/inc/dashboard/venueConfig.php:144
-#: /var/www/webapp/inc/dashboard/venueConfig.php:160
-#: /var/www/webapp/inc/dashboard/venueConfig.php:175
-#: /var/www/webapp/inc/dashboard/mdConfig.php:76
-#: /var/www/webapp/inc/dashboard/mdConfig.php:194
-#: /var/www/webapp/inc/dashboard/menuConfig.php:132
-#: /var/www/webapp/inc/dashboard/menuConfig.php:185
-#: /var/www/webapp/inc/dashboard/menuConfig.php:272
-#: /var/www/webapp/inc/dashboard/menuConfig.php:337
-#: /var/www/webapp/inc/dashboard/menuConfig.php:369
-msgid "Yes"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:110
-#: /var/www/webapp/inc/dashboard/eventConfig.php:199
-msgid "All Locations"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:122
-#: /var/www/webapp/inc/dashboard/eventConfig.php:212
-msgid "Collection Slot: Pre-Show"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:123
-#: /var/www/webapp/inc/dashboard/eventConfig.php:213
-msgid "Collection Slot: Pre-Game"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:124
-#: /var/www/webapp/inc/dashboard/eventConfig.php:214
-msgid "Collection Slot: Interval"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:125
-#: /var/www/webapp/inc/dashboard/eventConfig.php:215
-msgid "Collection Slot: Second-Interval"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:126
-msgid "Collection Slot: Half-time"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:127
-#: /var/www/webapp/inc/dashboard/eventConfig.php:217
-msgid "Collection Slot: Post-Show"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:128
-#: /var/www/webapp/inc/dashboard/eventConfig.php:218
-msgid "Collection Slot: Post-Game"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:130
-#: /var/www/webapp/inc/dashboard/eventConfig.php:220
-msgid "Please choose a slot."
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:133
-#: /var/www/webapp/inc/dashboard/eventConfig.php:223
-msgid "Lead Time (mins)"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:134
-msgid "30"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:138
-#: /var/www/webapp/inc/dashboard/eventConfig.php:231
-msgid "Add another slot"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:216
-msgid "Collection Slot: Half-Time"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:224
-msgid "eg. 30"
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/eventConfig.php:270
-#: /var/www/webapp/inc/dashboard/nonEventConfig.php:130
-msgid "75&#37 done, almost there now..."
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig1.php:39
@@ -1108,7 +898,7 @@ msgid "Button colour"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/appConfig1.php:125
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:208
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:194
 msgid "ORDER NOW"
 msgstr ""
 
@@ -1248,6 +1038,21 @@ msgstr ""
 msgid "Opens at"
 msgstr ""
 
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:58
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:63
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:87
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:92
+msgid "HH:MM"
+msgstr ""
+
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:59
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:64
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:88
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:93
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:19
+msgid "Time?"
+msgstr ""
+
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:62
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:91
 msgid "Closes at"
@@ -1260,6 +1065,10 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/nonEventConfig.php:105
 msgid "Apply these times to all days"
+msgstr ""
+
+#: /var/www/webapp/inc/dashboard/nonEventConfig.php:130
+msgid "75&#37 done, almost there now..."
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:54
@@ -1316,6 +1125,34 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:92
 msgid "Does your business revolve around regular events, e.g. football matches, performances, etc?"
+msgstr ""
+
+#: /var/www/webapp/inc/dashboard/venueConfig.php:95
+#: /var/www/webapp/inc/dashboard/venueConfig.php:141
+#: /var/www/webapp/inc/dashboard/venueConfig.php:157
+#: /var/www/webapp/inc/dashboard/venueConfig.php:172
+#: /var/www/webapp/inc/dashboard/mdConfig.php:73
+#: /var/www/webapp/inc/dashboard/mdConfig.php:191
+#: /var/www/webapp/inc/dashboard/menuConfig.php:129
+#: /var/www/webapp/inc/dashboard/menuConfig.php:182
+#: /var/www/webapp/inc/dashboard/menuConfig.php:269
+#: /var/www/webapp/inc/dashboard/menuConfig.php:334
+#: /var/www/webapp/inc/dashboard/menuConfig.php:366
+msgid "No"
+msgstr ""
+
+#: /var/www/webapp/inc/dashboard/venueConfig.php:98
+#: /var/www/webapp/inc/dashboard/venueConfig.php:144
+#: /var/www/webapp/inc/dashboard/venueConfig.php:160
+#: /var/www/webapp/inc/dashboard/venueConfig.php:175
+#: /var/www/webapp/inc/dashboard/mdConfig.php:76
+#: /var/www/webapp/inc/dashboard/mdConfig.php:194
+#: /var/www/webapp/inc/dashboard/menuConfig.php:132
+#: /var/www/webapp/inc/dashboard/menuConfig.php:185
+#: /var/www/webapp/inc/dashboard/menuConfig.php:272
+#: /var/www/webapp/inc/dashboard/menuConfig.php:337
+#: /var/www/webapp/inc/dashboard/menuConfig.php:369
+msgid "Yes"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/venueConfig.php:107
@@ -1430,200 +1267,200 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:477
+#: /var/www/webapp/inc/dashboard/venueConfig.php:478
 msgid "Please select your language"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:483
+#: /var/www/webapp/inc/dashboard/venueConfig.php:484
 msgid "Timezone"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:491
+#: /var/www/webapp/inc/dashboard/venueConfig.php:492
 msgid "Please select your timezone"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:497
+#: /var/www/webapp/inc/dashboard/venueConfig.php:498
 msgid "Currency"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:503
+#: /var/www/webapp/inc/dashboard/venueConfig.php:504
 msgid "Please select your currency"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/venueConfig.php:526
+#: /var/www/webapp/inc/dashboard/venueConfig.php:527
 msgid "15&#37 done, keep going!"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:70
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:60
 msgid "This is where you can monitor your takings and reports."
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:74
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:64
 msgid "Your online order page is"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:83
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:73
 msgid "This month"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:86
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:76
 msgid "Total revenue"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:90
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:80
 msgid "Total orders"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:94
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:84
 msgid "New users"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:98
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:88
 msgid "Returning users"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:113
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:100
 msgid "Customer Analytics"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:125
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:111
 msgid "Add new menu"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:132
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:118
 msgid "Change settings"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:133
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:119
 msgid "Delivery settings"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:134
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:120
 msgid "Preset notifications"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:136
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:122
 msgid "Opening hours"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:143
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:129
 msgid "Home screen"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:144
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:130
 msgid "Menu screen"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:151
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:137
 msgid "Update events"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:158
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:144
 msgid "Manage users"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:159
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:145
 msgid "Add a payment method"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:189
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:175
 msgid "Change app mode"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:189
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:175
 msgid "LIVE - Your app is visible and is ready to take real orders.<br/><br/>DEMO - Your app is visible but does not take real orders.<br/><br/>OFFLINE - Your app is not visible."
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:192
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:193
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:194
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:179
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:180
 msgid "active"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:192
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
 msgid "OFFLINE"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:193
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:179
 msgid "DEMO"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:194
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:180
 msgid "LIVE"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:223
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:209
 msgid "Venue Title"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:257
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:243
 msgid "Your 30 day free trial \tof this Premium Feature has now expired. Would you like to purchase it?"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:258
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:244
 msgid "YES PLEASE"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:259
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:245
 msgid "NOT RIGHT NOW"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:273
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:259
 msgid " trial"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:266
 msgid "Your free trial expires in "
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:266
 msgid " days."
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:266
 msgid " To continue using your app after the free trial, register your card details for the "
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:280
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:266
 msgid " on the 'My Account' tab located on your dashboard."
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:282
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:268
 msgid "GO TO MY ACCOUNT"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:287
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:273
 msgid "Payment provider is not connected!"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:288
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:274
 msgid "Before taking your app live you need to connect it to a payment provider or enable cash payments so that you can start accepting payments and start getting paid!"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:289
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:275
 msgid "CONNECT"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:290
-#: /var/www/webapp/code/shared/js_strings.php:80
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:276
+#: /var/www/webapp/code/shared/js_strings.php:84
 msgid "CANCEL"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:385
-#: /var/www/webapp/code/shared/js_strings.php:64
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:371
+#: /var/www/webapp/code/shared/js_strings.php:68
 msgid "Your app is now live!"
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:394
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:380
 msgid "Your app is now in DEMO mode."
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:403
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:421
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:389
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:407
 msgid "Your app is now in OFFLINE mode."
 msgstr ""
 
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:412
+#: /var/www/webapp/inc/dashboard/dashboard_content.php:398
 msgid "Your app is now in Demo mode."
 msgstr ""
 
@@ -1649,6 +1486,12 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/mdConfig.php:33
 msgid "Discount Price "
+msgstr ""
+
+#: /var/www/webapp/inc/dashboard/mdConfig.php:34
+#: /var/www/webapp/inc/dashboard/menuConfig.php:97
+#: /var/www/webapp/inc/dashboard/menuConfig.php:239
+msgid "Visible?"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/mdConfig.php:53
@@ -1703,7 +1546,7 @@ msgstr ""
 
 #: /var/www/webapp/inc/dashboard/mdConfig.php:96
 #: /var/www/webapp/inc/dashboard/mdConfig.php:213
-#: /var/www/webapp/code/shared/js_strings.php:53
+#: /var/www/webapp/code/shared/js_strings.php:57
 msgid "Choose a menu section"
 msgstr ""
 
@@ -1823,6 +1666,11 @@ msgstr ""
 #: /var/www/webapp/inc/dashboard/menuConfig.php:115
 #: /var/www/webapp/inc/dashboard/menuConfig.php:256
 msgid "Optional description"
+msgstr ""
+
+#: /var/www/webapp/inc/dashboard/menuConfig.php:116
+#: /var/www/webapp/inc/dashboard/menuConfig.php:257
+msgid "Please type a description (max 250chars)"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/menuConfig.php:120
@@ -2134,6 +1982,101 @@ msgstr ""
 msgid "CSV"
 msgstr ""
 
+#: /var/www/webapp/code/kyc/partials/orders.php:53
+msgid "Discounts & Fees"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:3
+msgid "Collection Slot"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:6
+#: /var/www/webapp/code/shared/js_strings.php:27
+msgid "Collection Slot: Pre-Show"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:7
+#: /var/www/webapp/code/shared/js_strings.php:28
+msgid "Collection Slot: Pre-Game"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:8
+#: /var/www/webapp/code/shared/js_strings.php:29
+msgid "Collection Slot: Interval"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:9
+#: /var/www/webapp/code/shared/js_strings.php:30
+msgid "Collection Slot: Second-Interval"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:10
+msgid "Collection Slot: Half-Time"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:11
+#: /var/www/webapp/code/shared/js_strings.php:32
+msgid "Collection Slot: Post-Show"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:12
+#: /var/www/webapp/code/shared/js_strings.php:33
+msgid "Collection Slot: Post-Game"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:14
+msgid "Please choose a slot."
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:17
+msgid "Lead Time (mins)"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:17
+msgid "The time it takes to prepare your order before the customer can pick up"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:18
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:23
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:28
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:33
+msgid "eg. 30"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:22
+msgid "Start (mins)"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:22
+msgid "The time in minutes, from the start of the event, to the start of the pickup slot"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:24
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:29
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:34
+msgid "Enter minutes?"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:27
+msgid "End (mins)"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:27
+msgid "The time in minutes, from the start of the event, to the end of the pickup slot"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:32
+msgid "Step (mins)"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:32
+msgid "What is the number of minutes in between each pickup slot step?"
+msgstr ""
+
+#: /var/www/webapp/code/events/js/directives/slot/slot.php:37
+msgid "Add another slot"
+msgstr ""
+
 #: /var/www/webapp/code/shop/shop.php:16
 msgid "Premium Features"
 msgstr ""
@@ -2179,7 +2122,7 @@ msgid "DAYS"
 msgstr ""
 
 #: /var/www/webapp/code/shop/shop.php:52 /var/www/webapp/code/shop/shop.php:85
-#: /var/www/webapp/code/shared/js_strings.php:208
+#: /var/www/webapp/code/shared/js_strings.php:212
 msgid "BUY"
 msgstr ""
 
@@ -2313,751 +2256,743 @@ msgstr ""
 msgid "No, go back."
 msgstr ""
 
-#: /var/www/webapp/code/shared/js_strings.php:27
-msgid "Choose a main"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:28
-msgid "Choose a side"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:29
-msgid "Choose a drink"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:30
-msgid "Choose a curry"
-msgstr ""
-
 #: /var/www/webapp/code/shared/js_strings.php:31
-msgid "Choose a burger"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:32
-msgid "Menu configuration has been saved!"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:33
-msgid "Choose a Collection Slot"
+msgid "Collection Slot: Half-time"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:34
-msgid "Choose Event Location"
+msgid "Choose a main"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:35
-msgid "Are you sure you want to delete this event? Note: all event data will be lost!"
+msgid "Choose a side"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:36
-msgid "Yes, delete this event!"
+msgid "Choose a drink"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:37
-msgid "Choose Venue"
+msgid "Choose a curry"
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:38
+msgid "Choose a burger"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:39
-msgid "Are you sure you want to delete this user? Note: all user data will be lost!"
+msgid "Menu configuration has been saved!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:40
-msgid "Yes, delete this user!"
+msgid "Choose Event Location"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:41
-msgid "Username/email already exists"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:42
-msgid "User configuration has been saved!"
+msgid "Choose Venue"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:43
-msgid "Select all menus"
+msgid "Are you sure you want to delete this user? Note: all user data will be lost!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:44
-msgid "Unselect all menus"
+msgid "Yes, delete this user!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:45
-msgid "Select menu("
+msgid "Username/email already exists"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:46
-msgid "# of # selected"
+msgid "User configuration has been saved!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:47
-msgid "Are you sure you want to delete this outlet? Note: all outlet data will be lost!"
+msgid "Select all menus"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:48
-msgid "Yes, delete this outlet!"
+msgid "Unselect all menus"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:49
-msgid "Outlet configuration has been saved!"
+msgid "Select menu("
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:50
-msgid "These times have been applied to all days!"
+msgid "# of # selected"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:51
-msgid "We still need some more information. Don't forget to fill out the remaining days of the week!"
+msgid "Are you sure you want to delete this outlet? Note: all outlet data will be lost!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:52
-msgid "Where should this meal deal appear?"
+msgid "Yes, delete this outlet!"
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:53
+msgid "Outlet configuration has been saved!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:54
-msgid "Are you sure you want to delete this meal deal? Note: all associated data will be lost!"
+msgid "These times have been applied to all days!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:55
-msgid "Yes, delete this meal deal!"
+msgid "We still need some more information. Don't forget to fill out the remaining days of the week!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:56
-msgid "All changes has been saved!"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:57
-msgid "Are you sure you want to delete this menu? Note: all menu data will be lost!"
+msgid "Where should this meal deal appear?"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:58
-msgid "Yes, delete this menu!"
+msgid "Are you sure you want to delete this meal deal? Note: all associated data will be lost!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:59
-msgid "Sorry, incorrect password."
+msgid "Yes, delete this meal deal!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:60
-msgid "Settings and Password has been saved!<br/>You will need to log in again with your new password to continue."
+msgid "All changes has been saved!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:61
-msgid "Settings have been saved!"
+msgid "Are you sure you want to delete this menu? Note: all menu data will be lost!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:62
-msgid "Please select features you require"
+msgid "Yes, delete this menu!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:63
-msgid "Select all"
+msgid "Sorry, incorrect password."
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:64
+msgid "Settings and Password has been saved!<br/>You will need to log in again with your new password to continue."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:65
-msgid "Your app is now in demo mode!"
+msgid "Settings have been saved!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:66
-msgid "Your app is now offline!"
+msgid "Please select features you require"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:67
-msgid "You need to accept at least one payment method before going live"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:68
-msgid "You need to subscribe to a package before changing the app mode"
+msgid "Select all"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:69
-msgid "My order app "
+msgid "Your app is now in demo mode!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:70
-msgid "Sorry, these password do not match. Please try again."
+msgid "Your app is now offline!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:71
-msgid "All the fields are required."
+msgid "You need to accept at least one payment method before going live"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:72
-msgid "Please fill in all the required fields."
+msgid "You need to subscribe to a package before changing the app mode"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:73
-msgid "Outstanding payment resolved"
+msgid "My order app "
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:74
-msgid "Ok"
+msgid "Sorry, these password do not match. Please try again."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:75
-msgid "Payment method updated succesfully!"
+msgid "All the fields are required."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:76
-msgid "Your outstand payment has been paid. Your card was charged <b>&pound;"
+msgid "Please fill in all the required fields."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:77
-msgid "</b> and your premium features will remain active."
+msgid "Outstanding payment resolved"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:78
-msgid "OK"
+msgid "Ok"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:79
-msgid "CONFIRM"
+msgid "Payment method updated succesfully!"
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:80
+msgid "Your outstand payment has been paid. Your card was charged <b>&pound;"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:81
-msgid "Your venue will be taken offline but you still be able to log in to your account if you ever want to resubscribe."
+msgid "</b> and your premium features will remain active."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:82
-msgid "Are you sure you want to cancel?"
+msgid "OK"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:83
-msgid "Your subscription will remain active until the end of the current billing cycle, you will no longer be billed after this date. Your venue will be taken offline but you will still be able to log in to account if you ever want to resubscribe."
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:84
-msgid "Error"
+msgid "CONFIRM"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:85
-msgid "PAYMENT METHOD"
+msgid "Your venue will be taken offline but you still be able to log in to your account if you ever want to resubscribe."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:86
-msgid "To upgrade your account, please contact "
+msgid "Are you sure you want to cancel?"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:87
-msgid "Payment resolved"
+msgid "Your subscription will remain active until the end of the current billing cycle, you will no longer be billed after this date. Your venue will be taken offline but you will still be able to log in to account if you ever want to resubscribe."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:88
-msgid "Resubscription Details"
+msgid "Error"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:89
-msgid "Please enter a discount code"
+msgid "PAYMENT METHOD"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:90
-msgid "Welcome to Know Your Customer"
+msgid "To upgrade your account, please contact "
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:91
-msgid "From here you can view detailed reports and analytics about your customers and the transactions they make."
+msgid "Payment resolved"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:92
-msgid "GET STARTED"
+msgid "Resubscription Details"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:93
-msgid "Customers"
+msgid "Please enter a discount code"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:94
-msgid "Reports"
+msgid "Welcome to Know Your Customer"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:95
-msgid "Stock"
+msgid "From here you can view detailed reports and analytics about your customers and the transactions they make."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:96
-msgid "Orders Report"
+msgid "GET STARTED"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:97
-msgid "Orders By Events"
+msgid "Customers"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:98
-msgid "Orders By Outlets"
+msgid "Reports"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:99
-msgid "Select Events..."
+msgid "Stock"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:100
-msgid "No events in this period"
+msgid "Orders Report"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:101
-msgid "Date Range"
+msgid "Orders By Events"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:102
-msgid "Week"
+msgid "Orders By Outlets"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:103
-msgid "Month"
+msgid "Select Events..."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:104
-msgid "3 Months"
+msgid "No events in this period"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:105
-msgid "6 Months"
+msgid "Date Range"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:106
-msgid "Year"
+msgid "Week"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:107
-msgid "Total Customers"
+msgid "Month"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:108
-msgid "Orders per Customer"
+msgid "3 Months"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:109
-msgid "Average Order Value"
+msgid "6 Months"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:110
-msgid "Items Ordered"
+msgid "Year"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:111
-msgid "Orders By Outlet"
+msgid "Total Customers"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:112
-msgid "Most Popular Items"
+msgid "Orders per Customer"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:113
-msgid "On the day"
+msgid "Average Order Value"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:114
-msgid "In advance"
+msgid "Items Ordered"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:115
-msgid "Time of Orders Placed"
+msgid "Orders By Outlet"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:116
-msgid "Average order value (are"
+msgid "Most Popular Items"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:117
-msgid "New"
+msgid "On the day"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:118
-msgid "Returning"
+msgid "In advance"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:119
-msgid "Customers (Pi"
+msgid "Time of Orders Placed"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:120
-msgid "Total"
+msgid "Average order value (are"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:121
-msgid "Customers (Ba"
+msgid "New"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:122
-msgid " orders"
+msgid "Returning"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:123
-msgid "Number of Orders"
+msgid "Customers (Pi"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:124
-msgid "Menu Item Popularity"
+msgid "Total"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:125
-msgid "Revenue"
+msgid "Customers (Ba"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:126
-msgid "Date Joined"
+msgid " orders"
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:127
+msgid "Number of Orders"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:128
-msgid "Email Address"
+msgid "Menu Item Popularity"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:129
-msgid "Marketing"
+msgid "Revenue"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:130
-msgid "Date of Order"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:131
-msgid "Total Spent"
+msgid "Date Joined"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:132
-msgid "% Increase"
+msgid "Email Address"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:133
-msgid "% Decrease"
+msgid "Marketing"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:134
-msgid "Last Order"
+msgid "Date of Order"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:135
-msgid "Item Name"
+msgid "Total Spent"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:136
-msgid "Quantity Sold"
+msgid "% Increase"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:137
-msgid "Day"
+msgid "% Decrease"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:138
-msgid "Date"
+msgid "Last Order"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:139
-msgid "Loyalty"
+msgid "Item Name"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:140
-msgid "Other"
+msgid "Quantity Sold"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:141
-msgid "Offers"
+msgid "Day"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:142
-msgid "Value Sold"
+msgid "Date"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:143
-msgid "New Customers"
+msgid "Loyalty"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:144
-msgid "Displays all new customers who have signed up, or had their first order, in the past two weeks."
+msgid "Other"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:145
-msgid "Customers with zero orders"
+msgid "Offers"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:146
-msgid "Displays all customers who have signed up but have not yet placed any orders."
+msgid "Value Sold"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:147
-msgid "One Time Buyers"
+msgid "New Customers"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:148
-msgid "Displays all customers who have placed only one order."
+msgid "Displays all new customers who have signed up, or had their first order, in the past two weeks."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:149
-msgid "Most Frequent Buyers"
+msgid "Customers with zero orders"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:150
-msgid "Displays top 50 customers who have placed the most number of orders."
+msgid "Displays all customers who have signed up but have not yet placed any orders."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:151
-msgid "Highest Spending Customers"
+msgid "One Time Buyers"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:152
-msgid "Displays top 50 customers who have the highest transactional spend."
+msgid "Displays all customers who have placed only one order."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:153
-msgid "Customers Increasing Orders"
+msgid "Most Frequent Buyers"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:154
-msgid "Displays all customers who placed more orders this month than the previous month."
+msgid "Displays top 50 customers who have placed the most number of orders."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:155
-msgid "Customers Decreasing Orders"
+msgid "Highest Spending Customers"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:156
-msgid "Displays all customers who placed less orders this month than the previous month."
+msgid "Displays top 50 customers who have the highest transactional spend."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:157
-msgid "Customers Increasing Spend"
+msgid "Customers Increasing Orders"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:158
-msgid "Displays all customers who spent more this month than the previous month."
+msgid "Displays all customers who placed more orders this month than the previous month."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:159
-msgid "Customers Decreasing Spend"
+msgid "Customers Decreasing Orders"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:160
-msgid "Displays all customers who spent less this month than the previous month."
+msgid "Displays all customers who placed less orders this month than the previous month."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:161
-msgid "Sleeping Customers"
+msgid "Customers Increasing Spend"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:162
-msgid "Displays all customers who have previously made at least one order, but haven't ordered for 3 months."
+msgid "Displays all customers who spent more this month than the previous month."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:163
-msgid "Displays top 10 most popular items."
+msgid "Customers Decreasing Spend"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:164
-msgid "Item Popularity Increase"
+msgid "Displays all customers who spent less this month than the previous month."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:165
-msgid "Displays all items that sold more this month than last month."
+msgid "Sleeping Customers"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:166
-msgid "Item Popularity Decrease"
+msgid "Displays all customers who have previously made at least one order, but haven't ordered for 3 months."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:167
-msgid "Displays all items that sold less this month than last month"
+msgid "Displays top 10 most popular items."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:168
-msgid "Highest Grossing Days"
+msgid "Item Popularity Increase"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:169
-msgid "Display top 10 highest grossing days."
+msgid "Displays all items that sold more this month than last month."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:170
-msgid "Lowest Grossing Days"
+msgid "Item Popularity Decrease"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:171
-msgid "Display top 10 lowest grossing days."
+msgid "Displays all items that sold less this month than last month"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:172
-msgid "Highest Order Days"
+msgid "Highest Grossing Days"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:173
-msgid "Display top 10 highest order days."
+msgid "Display top 10 highest grossing days."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:174
-msgid "Lowest Order Days"
+msgid "Lowest Grossing Days"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:175
-msgid "Display top 10 lowest order days."
+msgid "Display top 10 lowest grossing days."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:176
-msgid "Highest Grossing Hours"
+msgid "Highest Order Days"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:177
-msgid "Displays the accumulative total spent, broken down by 24 x 1 hour time slots."
+msgid "Display top 10 highest order days."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:178
-msgid "Highest Order Hours"
+msgid "Lowest Order Days"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:179
-msgid "Displays the accumulative number of orders, broken down by 24 x 1 hour time slots."
+msgid "Display top 10 lowest order days."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:180
-msgid "years ago"
+msgid "Highest Grossing Hours"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:181
-msgid "year ago"
+msgid "Displays the accumulative total spent, broken down by 24 x 1 hour time slots."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:182
-msgid "months ago"
+msgid "Highest Order Hours"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:183
-msgid "month ago"
+msgid "Displays the accumulative number of orders, broken down by 24 x 1 hour time slots."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:184
-msgid "days ago"
+msgid "years ago"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:185
-msgid "yesterday"
+msgid "year ago"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:186
-msgid "hours ago"
+msgid "months ago"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:187
-msgid "hour ago"
+msgid "month ago"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:188
-msgid "minutes ago"
+msgid "days ago"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:189
-msgid "minute ago"
+msgid "yesterday"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:190
-msgid "seconds ago"
+msgid "hours ago"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:191
-msgid "second ago"
+msgid "hour ago"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:192
-msgid "Contact this customer regarding loyalty programmes"
+msgid "minutes ago"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:193
-msgid "Contact this customer with discounts and special offers"
+msgid "minute ago"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:194
-msgid "Contact this customer with newsletters, research and marketing emails"
+msgid "seconds ago"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:195
-msgid "Successfully saved delivery settings."
+msgid "second ago"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:196
-msgid "Email is invalid"
+msgid "Contact this customer regarding loyalty programmes"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:197
-msgid "Your order is running 15 mins late"
+msgid "Contact this customer with discounts and special offers"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:198
-msgid "Late Order"
+msgid "Contact this customer with newsletters, research and marketing emails"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:199
-msgid "Your order is on its way"
+msgid "Successfully saved delivery settings."
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:200
-msgid "En-route"
+msgid "Email is invalid"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:201
-msgid "There is a problem with your order. Please call us"
+msgid "Your order is running 15 mins late"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:202
-msgid "Call us"
+msgid "Late Order"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:203
-msgid "Your address is out of our delivery zone"
+msgid "Your order is on its way"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:204
-msgid "Out of zone"
+msgid "En-route"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:205
-msgid "Sorry, that item is out of stock"
+msgid "There is a problem with your order. Please call us"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:206
-msgid "Out of stock"
+msgid "Call us"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:207
-msgid "Sorry, Your order has been rejected. Please call us"
+msgid "Your address is out of our delivery zone"
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:208
+msgid "Out of zone"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:209
-msgid " DAY FREE TRIAL"
+msgid "Sorry, that item is out of stock"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:210
-msgid "START TRIAL"
+msgid "Out of stock"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:211
-msgid "Your new Premium Feature is now live!"
-msgstr ""
-
-#: /var/www/webapp/code/shared/js_strings.php:212
-msgid "You will be contacted shortly by a member of our team. You can manage subscriptions from your <a href='/accountSettings#/subscription'>account settings page.</a>"
+msgid "Sorry, Your order has been rejected. Please call us"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:213
-msgid "Please add a payment method to your account in order to subscribe to Premium Features"
+msgid " DAY FREE TRIAL"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:214
-msgid "ADD CARD"
+msgid "START TRIAL"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:215
-msgid "To access this feature you need to have "
+msgid "Your new Premium Feature is now live!"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:216
-msgid " installed first "
+msgid "You will be contacted shortly by a member of our team. You can manage subscriptions from your <a href='/accountSettings#/subscription'>account settings page.</a>"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:217
-msgid "Buy "
+msgid "Please add a payment method to your account in order to subscribe to Premium Features"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:218
-msgid "Your card will be charged "
+msgid "ADD CARD"
 msgstr ""
 
 #: /var/www/webapp/code/shared/js_strings.php:219
+msgid "To access this feature you need to have "
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:220
+msgid " installed first "
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:221
+msgid "Buy "
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:222
+msgid "Your card will be charged "
+msgstr ""
+
+#: /var/www/webapp/code/shared/js_strings.php:223
 msgid " for this transaction. <br/> You may cancel this Premium Feature at any time from your account settings page."
 msgstr ""
 

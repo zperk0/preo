@@ -6,6 +6,8 @@ sites
 node_modules
 .DS_Store
 locale/nocache
+locale/**/*.po~
+locale_angular/**/*.po~
 bower_components
 .sass-cache/
 js/.DS_Store
