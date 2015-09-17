@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-10 15:35-0300\n"
+"POT-Creation-Date: 2015-09-17 12:15-0300\n"
 "PO-Revision-Date: 2015-08-19 11:19+0100\n"
 "Last-Translator: Nick <na@drweb.no>\n"
 "Language-Team: \n"
@@ -1434,12 +1434,6 @@ msgstr ""
 "LIVE - Din app er synlig og er klar til å ta i mot ordre. <br/><br/> DEMO - "
 "Din app er synlig, men tar ikke reelle ordre. <br/><br/> OFFLINE - Din app "
 "er ikke synlig."
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:179
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:180
-msgid "active"
-msgstr "aktiv"
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:178
 msgid "OFFLINE"
@@ -3296,6 +3290,9 @@ msgstr "Food4u"
 #: /var/www/webapp/overrides/preoday/regular_footer.php:27
 msgid "support@preoday.com"
 msgstr "support@preoday.no"
+
+#~ msgid "active"
+#~ msgstr "aktiv"
 
 #, fuzzy
 #~ msgid "Second-Interval"

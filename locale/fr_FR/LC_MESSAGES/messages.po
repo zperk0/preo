@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-10 15:35-0300\n"
+"POT-Creation-Date: 2015-09-17 12:15-0300\n"
 "PO-Revision-Date: 2014-05-12 23:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1424,12 +1424,6 @@ msgstr ""
 "prendre de vraies commandes.br/><br/>DEMO- votre application est disponible "
 "sur ‘my order app’ mais ne prend pas encore de vraies commandes.<br/><br/"
 ">OFFLINE- votre application n’est pas disponible sur â€˜my order app’"
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:179
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:180
-msgid "active"
-msgstr ""
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:178
 msgid "OFFLINE"

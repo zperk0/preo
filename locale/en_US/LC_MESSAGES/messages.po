@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PreoDay\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-10 15:35-0300\n"
+"POT-Creation-Date: 2015-09-17 12:15-0300\n"
 "PO-Revision-Date: 2013-09-11 18:08-0000\n"
 "Last-Translator: Ashish Mehra <ashish@webfire.co.uk>\n"
 "Language-Team: Webfire <ashish@webfire.co.uk>\n"
@@ -1396,12 +1396,6 @@ msgid ""
 "LIVE - Your app is visible and is ready to take real orders.<br/><br/>DEMO - "
 "Your app is visible but does not take real orders.<br/><br/>OFFLINE - Your "
 "app is not visible."
-msgstr ""
-
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:178
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:179
-#: /var/www/webapp/inc/dashboard/dashboard_content.php:180
-msgid "active"
 msgstr ""
 
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:178
