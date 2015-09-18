@@ -47,6 +47,8 @@
   <script src="/code/booking/js/directives/booking-item/booking-item.js"></script>
   <script src="/code/booking/js/directives/booking-item-details/booking-item-details.js"></script>
   <script src="/code/booking/js/services/bookingService.js"></script>
+  <script src="/code/booking/js/services/promotionService.js"></script>
+  <script src="/code/booking/js/services/menuService.js"></script>
   <!-- END WATCH -->
 
   <!-- // <script src="/code/booking/all.min.js"></script> -->

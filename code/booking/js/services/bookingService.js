@@ -13,8 +13,6 @@ angular.module('booking')
     	if(filter.startDate) queryParams.after = formatDate(filter.startDate);
     	if(filter.endDate) queryParams.before = formatDate(filter.endDate);
 
-    	console.log(Preoday.Booking)
-
     	return Preoday.Booking.getBookings(venue_id, queryParams);
     };
 

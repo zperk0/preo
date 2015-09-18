@@ -1,6 +1,6 @@
 <tr class="booking-info">
 	<td class="booking-name">
-		<span>{{booking.promotion}}</span>
+		<span>{{booking.$promotionName}}</span>
 	</td>
 	<td class="booking-client">
 		<span>{{booking.user.name}}</span>
@@ -20,6 +20,6 @@
 		</span>
 	</td>
 	<td class="booking-orders">
-		<span>{{booking.ordersPlaced}}</span>
+		<span>{{getOrdensPlaced()}} <span translate>of</span> {{booking.people}}</span>
 	</td>
 </tr>

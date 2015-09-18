@@ -183,6 +183,13 @@
 	color: #7c7c7c;
 }
 
+.booking-table .dish-info .list-header .section-name {
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 85%;
+}
+
 .booking-table .dish-info .list-header span {
 	margin-top: -8px;
 }
@@ -200,6 +207,13 @@
 	list-style-type: none;
 	padding: 5px;
 	color: #b0b0b0;
+}
+
+.booking-table .dish-info .dish-list ul .item-name {
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 85%;
 }
 
 .booking-table .separator-thead {

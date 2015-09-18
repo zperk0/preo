@@ -50,17 +50,7 @@ angular.module('booking')
                 var endDate = moment.utc(ng.endDate);
 
                 return startDate.format("DD-MMM-YYYY") + " - " + endDate.format("DD-MMM-YYYY");
-            }
-
-            ng.getTotalOrders = function(orders) {
-
-                var total = 0;
-
-                for(var i in orders)
-                    total += !isNaN(orders[i].qty) ? orders[i].qty : 0;
-
-                return total;
-            }
+            };
         }
     };
 }]);
