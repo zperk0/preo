@@ -1,437 +1,12 @@
 (function(window, angular) {
 
+'use scrict';
+
     angular.module('booking')
     .controller('BookingCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID','$AjaxInterceptor', 'BookingService',
         function($scope, $rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingService) {
 
         var vm = this;
-
-        var bookingDataTest = [
-            {
-                promotion: 'Christmas dinner',
-                date: '20/12/2015',
-                time: '17:00',
-                guests: 10,
-                page: '',
-                ordersPlaced: '7 of 10',
-                clientData: {
-                    identification: 'Apple',
-                    name: 'Bob Bobson',
-                    phone: '01234 56789',
-                    email: 'bob.bobson@apple.com'
-                },
-                orders: [
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                promotion: 'Christmas dinner',
-                date: '20/12/2015',
-                time: '17:00',
-                guests: 10,
-                page: '',
-                ordersPlaced: '7 of 10',
-                clientData: {
-                    identification: 'Apple',
-                    name: 'Bob Bobson',
-                    phone: '01234 56789',
-                    email: 'bob.bobson@apple.com'
-                },
-                orders: [
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                promotion: 'Christmas dinner',
-                date: '20/12/2015',
-                time: '17:00',
-                guests: 10,
-                page: '',
-                ordersPlaced: '7 of 10',
-                clientData: {
-                    identification: 'Apple',
-                    name: 'Bob Bobson',
-                    phone: '01234 56789',
-                    email: 'bob.bobson@apple.com'
-                },
-                orders: [
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Section name',
-                        dishes: [
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 1
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 5
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 2
-                            },
-                            {
-                                name: 'Dish name',
-                                qty: 3
-                            }
-                        ]
-                    }
-                ]
-            },
-
-        ];
 
         vm.generateReport = function() {
 
@@ -444,19 +19,26 @@
 
             $AjaxInterceptor.start();
 
-            // TODO: uncomment when api is ready
-            // BookingService.getBookings(filter).then(function(result) {
-            //     console.log('result', result);
-            //     vm.bookingData = result.data;
-            // });
+            BookingService.getBookings(filter).then(function(result) {
 
-            vm.bookingData = bookingDataTest;
+                var bookings = result || [];
 
-            $timeout(function() {
+                console.log('bookings', bookings);
 
+                for(var i = 0, totalBookings = bookings.length; i < totalBookings; i++) {
+                    bookings[i].date = moment(bookings[i].date).format('DD/MM/YY');
+                    bookings[i]['time'] = formatTime(bookings[i]['time']);
+                }
+
+                vm.bookingData = bookings;
                 $AjaxInterceptor.complete();
-            }, 500);
+            });
         };
+
+        function formatTime(time) {
+
+            return time.length == 8 ? time.substr(0, time.length - 3) : time;
+        }
 
         vm.toggleDetails = function(index) {
 
@@ -472,21 +54,9 @@
 
             $rootScope.requests = 0;
 
-            $('.sched-start-date').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}});
-            $('.sched-end-date').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() < now.valueOf() ? 'disabled' : '';}});
+            var startDate = $('.sched-start-date').fdatepicker({format:'dd/mm/yyyy'}).on('changeDate', function() { startDate.hide(); $('.sched-end-date').focus(); }).data('datepicker');
+            var endDate = $('.sched-end-date').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() <= startDate.date.valueOf() ? 'disabled' : '';}}).data('datepicker');
         }
-
-        // Utils - angular safe apply
-        $rootScope.safeApply = function(fn) {
-            var phase = this.$root.$$phase;
-            if(phase == '$apply' || phase == '$digest') {
-                if(fn && (typeof(fn) === 'function')) {
-                    fn();
-                }
-            } else {
-                this.$apply(fn);
-            }
-        };
 
         $timeout(_init);
     }]);

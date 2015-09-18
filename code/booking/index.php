@@ -37,6 +37,7 @@
   <script src="/js/angular_all.min.js"></script>
 
   <!-- BEGIN WATCH -->
+  <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>
   <script src="/bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
   <script src="/locale_angular/translations.js"></script>
   <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>

@@ -2,28 +2,35 @@
 	clear: both;
 }
 
+.booking-container h1 {
+	margin-bottom: 8px;
+}
+
 .date-range label {
-	padding: .5em .625em .625em;
+	padding: .5em .125em .625em;
     font-size: 14px;
     color: #222 !important;
     text-align: left;
     font-weight: bold;
     display: block;
+    margin-bottom: 0;
 }
 
 .date-range .sched-start-date, .date-range .sched-end-date {
-	width: 76px !important;
+	width: 72px !important;
 	float: left;
 	font-size: 12px !important;
     font-weight: bold;
     z-index: 100;
+    padding: 16px 5px;
 }
 
 .date-range .sched-start-date {
-	margin-left: 10px;
+	/*margin-left: 10px;*/
 }
 
 .date-range .separator {
+    height: 30px;
     padding: 5px;
     font-weight: bold;
     float: left;
@@ -49,36 +56,58 @@
     float: left;
     margin-left: 10px;
     margin-top: -4px;
+    font-size: 120%;
+    padding: 9px 15px;
 }
 
 .booking-row {
-	margin-top: 60px;
+	margin-top: 44px;
 }
 
 .booking-container .booking-table thead {
 	border-bottom: 1px solid #B9BBBD;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 .booking-table thead span {
 	padding-bottom: 10px;
 }
 
+.booking-table thead .booking-name {
+	width: 25%;
+}
+
+.booking-table thead .booking-client {
+	width: 19%;
+}
+
+.booking-table thead .booking-date {
+	width: 12%;
+}
+
+.booking-table thead .booking-time {
+	width: 9%;
+}
+
+.booking-table thead .booking-guests {
+	width: 11%;
+}
+
+.booking-table thead .booking-page {
+	width: 14%;
+}
+
 .booking-table {
 	display: table;
     margin-right: auto!important;
-    width: 101.8%!important;
-    margin-left: auto;
-    margin-bottom: 0!important;
+    width: 100%!important;
+    margin-left: 4px;
+    margin-bottom: 30px !important;
     margin-top: -1px;
     max-width: 987px;
     border: 0;
     background-color: transparent;
     color: #48535d;
-}
-
-.booking-table tbody tr {
-	/*border-top: 15px solid transparent;*/
 }
 
 .booking-info {
@@ -93,7 +122,7 @@
 .booking-table .client-info {
 	border-top: 1px solid #979797;
 	padding-top: 16px;
-	padding-bottom: 16px;
+	padding-bottom: 8px;
 	color: black;
 	font-size: 13px;
 }
@@ -112,13 +141,19 @@
 }
 
 .booking-table .client-info .ct-btn-print {
-	margin-top: 10px;
+	margin-top: 7px;
+	margin-right: 5px;
+}
+
+.booking-table .client-info .ct-btn-print form {
+	margin: 0;
 }
 
 .booking-table .client-info .btn-print {
 	width: 215px;
 	height: 40px;
-	font-size: 135%;
+	font-size: 150%;
+	margin: 0;
 }
 
 .booking-table .booking-info, .booking-table .booking-details {
@@ -177,37 +212,6 @@
 	background-color: transparent;
 }
 
-
-
-/*.booking-table .booking-details, .booking-table .booking-details td {
-	width: 100%;
-}*/
-
-/*.booking-name {
-	width: 100px;
-	display: table-cell;
+.booking-table .no-bookings {
+	background: #F3F3F3 !important;
 }
-.booking-client {
-	width: 100px;
-	display: table-cell;
-}
-.booking-date {
-	width: 100px;
-	display: table-cell;
-}
-.booking-time {
-	width: 100px;
-	display: table-cell;
-}
-.booking-guests {
-	width: 100px;
-	display: table-cell;
-}
-.booking-page {
-	width: 100px;
-	display: table-cell;
-}
-.booking-orders {
-	width: 100px;
-	display: table-cell;
-}*/
