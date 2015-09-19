@@ -75,9 +75,12 @@
 					<div>
 						<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
 						<select class='promotions-select' data-placeholder="<?echo _('Select some promotions'); ?>" multiple>
-							<option value="1">promotion 1</option>
+							<!-- <option value="1">promotion 1</option>
 							<option value="2">promotion 2</option>
-							<option value="3">promotion 3</option>
+							<option value="3">promotion 3</option> -->
+							<?foreach($promotions as $pKey=>$promotions){?>
+							<option value="<? echo $promotions['Id']; ?>"><? echo $promotions['Name']; ?></option>
+							<?}?>
 						</select>
 					</div>
 			</div>
@@ -96,7 +99,7 @@
 					<div class="large-12 columns minmax-container">
 						<span>User must select</span>
 						<div>
-							<input type="text" name="mSectionMinMax[0]" data-insert="false" data-edit="false" data-delete="false" data-id="section0s" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" required pattern="^\d$"/>
+							<input type="text" name="mSectionMinMax[0]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" require pattern="0*[1-9]\d*"/>
 							<small class="error mminmaxError"><?echo _("Please enter the quantity");?></small>
 						</div>
 						<span>item/s per guest from this section</span>
