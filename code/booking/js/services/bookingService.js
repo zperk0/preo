@@ -8,12 +8,12 @@ angular.module('booking')
 
     service.getBookings = function(filter) {
 
-    	var queryParams = {expand: 'orders,user'};
+    	var queryParams = {expand: 'orders,user', venueId: venue_id};
 
     	if(filter.startDate) queryParams.after = formatDate(filter.startDate);
     	if(filter.endDate) queryParams.before = formatDate(filter.endDate);
 
-    	return Preoday.Booking.getBookings(venue_id, queryParams);
+    	return Preoday.Booking.getBookings(queryParams);
     };
 
     // format to MM/DD/YYYY
