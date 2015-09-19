@@ -24,8 +24,6 @@ angular.module('bookingMenus')
 
 		editProperties(menuData.sections);
 
-		console.log(menuData.sections)
-
 		for(var i = 0, totalSection = menuData.sections.length; i < totalSection; i++) {
 
 			editProperties(menuData.sections[i].items);
@@ -46,13 +44,7 @@ angular.module('bookingMenus')
 	    	}
 	    }
 
-		console.log(menuData);
-
-		// menuData.sections = toObject(menuData.sections);
-
-		// console.log(menuData)
-
-		// menuData.edit = false;
+		// console.log(menuData);
 
 		// call for do_menuConfig.php
 		return $http.post('/saveMenu', menuData);
@@ -61,14 +53,11 @@ angular.module('bookingMenus')
 	service.remove = function(id) {
 
 		// call for do_menuDelete.php
-		return $http({url: '/deleteMenu', method: 'post', data: 'menuID=' + id });
+		return $http({url: '/deleteMenu', method: 'POST', data: 'menuID=' + id, headers: {'Content-Type': 'application/x-www-form-urlencoded'} });
 	};
 
+	// editing properties to fit on the old php logic
 	function editProperties(arr) {
-
-		// var arr = arrayToFormat;
-
-		// console.log(arr)
 
 		for (var i = 0; i < arr.length; ++i) {
 
@@ -79,8 +68,6 @@ angular.module('bookingMenus')
 				arr[i]['edit'] = false;
 			}
 		}
-
-		// return arr;
 	}
 
 	return service;

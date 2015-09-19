@@ -24,14 +24,10 @@ angular.module('bookingMenus')
                 var newMenu = angular.copy(menuItem);
                 newMenu.name = newMenu.name + ' - copy';
 
-                console.log('Make api request...');
-
                 $AjaxInterceptor.start();
 
                 BookingMenusService.save(newMenu).then(
                     function(result) { // success
-
-                        console.log(result.data.menuid);
 
                         newMenu.id = result.data.menuid;
 
@@ -60,18 +56,20 @@ angular.module('bookingMenus')
                     buttons: [
                     {addClass: 'alert tiny', text: gettextCatalog.getString('Yes, delete this menu!'), onClick: function($noty) {
 
-                        console.log('Make api request...')
-                        // BookingMenusService.remove(menuId).then(
-                        //     function() { // success
+                        $AjaxInterceptor.start();
+                        BookingMenusService.remove(menuId).then(
+                            function() { // success
 
-                                    $rootScope.$broadcast('removeItemMenu', menuItem);
-                        //     }, function() { // error
+                                $AjaxInterceptor.complete();
+                                $rootScope.$broadcast('removeItemMenu', menuItem);
+                            }, function() { // error
 
-                        //         noty({
-                        //             type: 'error',  layout: 'topCenter',
-                        //             text: gettextCatalog.getString("Sorry, but there's been an error processing your request.")
-                        //         });
-                        //     });
+                                $AjaxInterceptor.complete();
+                                noty({
+                                    type: 'error',  layout: 'topCenter',
+                                    text: gettextCatalog.getString("Sorry, but there's been an error processing your request.")
+                                });
+                            });
 
 
                         $noty.close();
