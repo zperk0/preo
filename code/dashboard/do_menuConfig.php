@@ -526,6 +526,7 @@
 	$newJSON['result'] 	= json_decode($curlResult,true); //make it an array
 	$newJSON['update']	= $newIDs; //add array of new values
 	$newJSON['images'] 	= $newImages;
+	$newJSON['menuid'] 	= $menu['id'];
 	$newJSON 			= json_encode($newJSON); //back to JSON
 
 	if (isset($_SESSION['noMenuFlag'])) {

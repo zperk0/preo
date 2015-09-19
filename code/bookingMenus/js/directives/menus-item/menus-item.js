@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bookingMenus')
-.directive('menusItem', ['$timeout', '$q', '$rootScope', 'gettextCatalog', 'BookingMenusService',
-    function($timeout, $q, $rootScope, gettextCatalog, BookingMenusService) {
+.directive('menusItem', ['$timeout', '$q', '$rootScope', 'gettextCatalog', 'BookingMenusService', '$AjaxInterceptor',
+    function($timeout, $q, $rootScope, gettextCatalog, BookingMenusService, $AjaxInterceptor) {
 
     return {
         templateUrl: '/code/bookingMenus/js/directives/menus-item/menus-item.php',
@@ -22,15 +22,24 @@ angular.module('bookingMenus')
             ng.duplicateItem = function(menuItem, event) {
 
                 var newMenu = angular.copy(menuItem);
+                newMenu.name = newMenu.name + ' - copy';
 
                 console.log('Make api request...');
 
+                $AjaxInterceptor.start();
+
                 BookingMenusService.save(newMenu).then(
-                    function() { // success
+                    function(result) { // success
+
+                        console.log(result.data.menuid);
+
+                        newMenu.id = result.data.menuid;
 
                         $rootScope.$broadcast('duplicateItemMenu', newMenu);
+                        $AjaxInterceptor.complete();
                     }, function() { // error
 
+                        $AjaxInterceptor.complete();
                         noty({
                             type: 'error',  layout: 'topCenter',
                             text: gettextCatalog.getString("Sorry, but there's been an error processing your request.")
