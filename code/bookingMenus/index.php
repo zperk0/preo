@@ -44,6 +44,7 @@
   <script src="/code/bookingMenus/js/app.js"></script>
   <script src="/code/bookingMenus/js/controllers/menus.js"></script>
   <script src="/code/bookingMenus/js/services/bookingMenusService.js"></script>
+  <script src="/code/bookingMenus/js/services/promotionService.js"></script>
   <script src="/code/bookingMenus/js/directives/menus-item/menus-item.js"></script>
   <!-- END WATCH -->
 

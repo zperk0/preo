@@ -2320,7 +2320,9 @@ $(document).ready(function() {
 
 			menuData = JSON.stringify(menu);
 
+			console.log(menuData);
 
+			return;
 
 			$.ajax({
 			   type: "POST",

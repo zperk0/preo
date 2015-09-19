@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bookingMenus')
-.directive('menusItem', ['$timeout', '$q', '$rootScope', 'gettextCatalog',
-    function($timeout, $q, $rootScope, gettextCatalog) {
+.directive('menusItem', ['$timeout', '$q', '$rootScope', 'gettextCatalog', 'BookingMenusService',
+    function($timeout, $q, $rootScope, gettextCatalog, BookingMenusService) {
 
     return {
         templateUrl: '/code/bookingMenus/js/directives/menus-item/menus-item.php',
@@ -15,29 +15,28 @@ angular.module('bookingMenus')
 
             ng.editItem = function(menuId) {
 
-                window.location.href = '/menus/' + menuId;
+                window.location.href = '/menus/' + ng.menu.id;
             };
 
             // Duplicate event
             ng.duplicateItem = function(menuItem, event) {
 
                 var newMenu = angular.copy(menuItem);
-                newMenu.id = '';
 
                 console.log('Make api request...');
 
-                // BookingMenusService.save(newMenu).then(
-                //     function() { // success
+                BookingMenusService.save(newMenu).then(
+                    function() { // success
 
-                //     }, function() { // error
+                        $rootScope.$broadcast('duplicateItemMenu', newMenu);
+                    }, function() { // error
 
-                //         noty({
-                //             type: 'error',  layout: 'topCenter',
-                //             text: gettextCatalog.getString("Sorry, but there's been an error processing your request.")
-                //         });
-                //     });
+                        noty({
+                            type: 'error',  layout: 'topCenter',
+                            text: gettextCatalog.getString("Sorry, but there's been an error processing your request.")
+                        });
+                    });
 
-                $rootScope.$broadcast('duplicateItemMenu', newMenu);
             };
 
             // Delete event
@@ -56,6 +55,7 @@ angular.module('bookingMenus')
                         // BookingMenusService.remove(menuId).then(
                         //     function() { // success
 
+                                    $rootScope.$broadcast('removeItemMenu', menuItem);
                         //     }, function() { // error
 
                         //         noty({
@@ -64,7 +64,6 @@ angular.module('bookingMenus')
                         //         });
                         //     });
 
-                        $rootScope.$broadcast('removeItemMenu', menuItem);
 
                         $noty.close();
                       }
