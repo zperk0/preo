@@ -70,11 +70,16 @@ RewriteRule ^.*$ nonEventSettings.php [L]
 RewriteCond %{REQUEST_URI} ^/events$ [NC]
 RewriteRule ^.*$ /code/events [L]
 
+<<<<<<< HEAD
 RewriteCond %{REQUEST_URI} ^/groupBookingMenus$ [NC]
 RewriteRule ^.*$ /code/bookingMenus/index.php [L]
 
 RewriteCond %{REQUEST_URI} ^/booking$ [NC]
 RewriteRule ^.*$ /code/booking/index.php [L]
+=======
+RewriteCond %{REQUEST_URI} ^/bookingSettings$ [NC]
+RewriteRule ^.*$ /code/bookingSettings/index.php [L]
+>>>>>>> PWA-470-create-group-booking-settings-sc
 
 RewriteCond %{REQUEST_URI} ^/homescreen$ [NC]
 RewriteRule ^.*$ appSettings1.php [L]
