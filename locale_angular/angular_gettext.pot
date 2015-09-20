@@ -72,6 +72,18 @@ msgstr ""
 msgid "Billing Schedule"
 msgstr ""
 
+#: code/booking/js/directives/booking-item-details/booking-item-details.js:16
+msgid "Booking"
+msgstr ""
+
+#: code/booking/partials/booking.php:30
+msgid "Booking page"
+msgstr ""
+
+#: code/booking/partials/booking.php:6
+msgid "Bookings"
+msgstr ""
+
 #: code/accountSettings/partials/profile.php:32
 msgid "Business Name"
 msgstr ""
@@ -130,6 +142,14 @@ msgstr ""
 msgid "Choose preset:"
 msgstr ""
 
+#: code/booking/partials/booking.php:26
+msgid "Client"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:6
+msgid "Client contact:"
+msgstr ""
+
 #: code/events/partials/modal-event.php:75
 msgid "Choose the first occurrence."
 msgstr ""
@@ -184,6 +204,14 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:14
+msgid "Contact email:"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:10
+msgid "Contact no.:"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:15
 msgid "Credit Card Name"
 msgstr ""
@@ -216,11 +244,16 @@ msgid "DOWNLOAD PDF"
 msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:11
+#: code/booking/partials/booking.php:27
 msgid "Date"
 msgstr ""
 
 #: code/kyc/index.php:62
 msgid "Date Range:"
+msgstr ""
+
+#: code/booking/partials/booking.php:8
+msgid "Date range"
 msgstr ""
 
 #: code/kyc/partials/orders.php:25
@@ -367,7 +400,7 @@ msgstr ""
 #: code/kyc/js/directives/chart/chart.php:71
 #: code/kyc/partials/customers.php:89
 #: code/kyc/partials/events.php:102
-#: code/kyc/partials/orders.php:118
+#: code/kyc/partials/orders.php:110
 #: code/kyc/partials/reports.php:116
 #: code/kyc/partials/stock.php:75
 msgid "Export as..."
@@ -379,6 +412,14 @@ msgstr ""
 
 #: code/settings/delivery/partials/delivery.php:38
 msgid "Free delivery for orders above"
+msgstr ""
+
+#: code/booking/partials/booking.php:13
+msgid "Generate report"
+msgstr ""
+
+#: code/booking/partials/booking.php:29
+msgid "Guests"
 msgstr ""
 
 #: code/events/js/directives/event/event.php:18
@@ -485,15 +526,6 @@ msgstr ""
 msgid "New Password"
 msgstr ""
 
-#: code/events/partials/modal-event.php:3
-msgid "New event"
-msgstr ""
-
-#: code/events/partials/modal-event.php:192
-msgid "Next"
-msgstr ""
-
-#: code/events/js/directives/event/event.php:33
 #: code/settings/delivery/partials/delivery.php:6
 #: code/settings/delivery/partials/notifications.php:27
 #: code/settings/delivery/partials/notifications.php:52
@@ -502,6 +534,10 @@ msgstr ""
 
 #: code/kyc/js/directives/chart/chart.php:20
 msgid "No Data"
+msgstr ""
+
+#: code/booking/partials/booking.php:43
+msgid "No bookings at this period."
 msgstr ""
 
 #: code/events/js/directives/event/event.js:117
@@ -539,6 +575,10 @@ msgstr ""
 msgid "Orders"
 msgstr ""
 
+#: code/booking/partials/booking.php:31
+msgid "Orders placed"
+msgstr ""
+
 #: code/kyc/partials/orders.php:32
 msgid "Outlet"
 msgstr ""
@@ -558,6 +598,10 @@ msgstr ""
 #: code/kyc/partials/reports.php:121
 #: code/kyc/partials/stock.php:80
 msgid "PDF"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:22
+msgid "PRINT BOOKING"
 msgstr ""
 
 #: code/accountSettings/partials/profile.php:42
@@ -691,6 +735,10 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
+#: code/booking/partials/booking.php:25
+msgid "Promotion"
+msgstr ""
+
 #: code/kyc/partials/stock.php:33
 msgid "Quantity Ordered"
 msgstr ""
@@ -796,6 +844,7 @@ msgstr ""
 msgid "TOTAL"
 msgstr ""
 
+#: code/booking/partials/booking.php:28
 #: code/events/partials/events.php:6
 msgid "These show when you are open for ordering, such as performances or matches. They can be viewed from the front page of your app"
 msgstr ""

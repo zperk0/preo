@@ -73,6 +73,9 @@ RewriteRule ^.*$ /code/events [L]
 RewriteCond %{REQUEST_URI} ^/groupBookingMenus$ [NC]
 RewriteRule ^.*$ /code/bookingMenus/index.php [L]
 
+RewriteCond %{REQUEST_URI} ^/booking$ [NC]
+RewriteRule ^.*$ /code/booking/index.php [L]
+
 RewriteCond %{REQUEST_URI} ^/homescreen$ [NC]
 RewriteRule ^.*$ appSettings1.php [L]
 
