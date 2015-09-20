@@ -1765,6 +1765,19 @@ $(document).ready(function() {
 			$(this).data('id', 'section'+newCount+'s');
 		});
 
+		$newSec.find("input[name^=mSectionMinMax]").each(function() {
+			var temp = $(this).val();
+			$(this).val("");
+			// $(this).attr('placeholder', temp);
+			$(this).attr('name', 'mSectionMinMax['+newCount+']');
+
+			//data-attribute
+			$(this).attr('data-insert', true);
+			$(this).data('insert', true);
+			$(this).attr('data-id', 'section'+newCount+'s');
+			$(this).data('id', 'section'+newCount+'s');
+		});
+
 		$newSec.find(".menuSectionField").addClass('section'+newCount);
 
 		//sorting
@@ -2013,7 +2026,7 @@ $(document).ready(function() {
 	  $(this).data('clicked',$(event.target))
 	});
 
-	$("#menuConfigForm").on('invalid', function (event) {
+	$("#menuConfigForm").on('invalid', function () {
 		//open all error areas
 		$("td.error").each(function(){
 			if( !$(this).is(":visible") )
@@ -2045,6 +2058,8 @@ $(document).ready(function() {
 	$("#menuConfigForm").on('valid', function (event) {
 		var newSubmitTime = new Date().getTime();
 
+		console.log('valid form')
+
 		if(  isSubmitForm && (newSubmitTime - submitTime) > 400 && !postImage )
 		{
 
@@ -2066,6 +2081,9 @@ $(document).ready(function() {
 			//MENU
 			menu['id'] 			= $('#menuID').val();
 			menu['name']		= $('#mName').val();
+			menu['description']	= $('#mDescription').val();
+
+			menu['promotions']	= $('.promotions-select').val();
 
 			menu['edit']		= $('#mName').data('edit');
 
@@ -2076,9 +2094,11 @@ $(document).ready(function() {
 			secCounter = 1;
 
 			var $inputsSections = $("input[name^=mSectionName]");
+			var $inputsMinMaxSections = $("input[name^=mSectionMinMax]");
 
 			for (var i = 0, len = $inputsSections.length; i < len; i++) {
 				var $inputSectionIndividual = $( $inputsSections[i] );
+				var $inputSectionIndividualMinMax = $( $inputsMinMaxSections[i] );
 
 				var sID = $inputSectionIndividual.data('id');
 
@@ -2094,6 +2114,7 @@ $(document).ready(function() {
 
 					menuSecionOneNivel['id'] 			= sID.replace(/section/,'');
 					menuSecionOneNivel['name'] 		= $inputSectionIndividual.val();
+					menuSecionOneNivel['min'] 		= $inputSectionIndividualMinMax.val();
 					menuSecionOneNivel['position'] 	= secCounter;
 					menuSecionOneNivel['collapse'] 	= collapse;
 
@@ -2288,10 +2309,6 @@ $(document).ready(function() {
 			};
 
 			menuData = JSON.stringify(menu);
-
-			console.log(menuData);
-
-			return;
 
 			$.ajax({
 			   type: "POST",

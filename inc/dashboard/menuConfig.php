@@ -6,7 +6,7 @@
 </div>
 
 <?if(!isset($_SESSION['menu_edit_on'])) $_SESSION['menu_edit_on']=0;?>
-<form id="menuConfigForm" method="POST" data-preoabide>
+<form id="menuConfigForm" class='<? if($_SESSION["groupMenu"]) echo "groupMenu";?>' method="POST" data-preoabide>
 	<div class="row">
 		<div class="topSpacer"></div>
 		<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
@@ -29,8 +29,9 @@
 		<?}?>
 		<div class="large-12 columns">
 
+			<?if(!$_SESSION['groupMenu']) { ?>
 			<h1><?if(!$_SESSION['menu_edit_on'] && !isset($menu)) echo _("Build your menu"); else echo _("Your menu");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Now it's time to create your menu. We suggest you keep it simple to start with.<br/><br/>An easy way is to group items, i.e. create separate sections for food, cold drinks and hot drinks.");?>"></i></h1>
-
+			<?}?>
 			<!-- Hidden inputs here keep count of menu items and options -->
 			<input type="hidden" id="sectionCount" 			name="sectionCount"			value="<?if($_SESSION['menu_edit_on']) echo $sectionCount; else echo "0";?>"/>
 			<input type="hidden" id="sectionCountAct" 		name="sectionCountAct"		value="<?if($_SESSION['menu_edit_on']) echo $sectionCount; else echo "0";?>"/>
@@ -65,9 +66,28 @@
 			endif; ?>
 
 			<div class="row">
-				<input type="text" name="mName" id="mName" data-edit="false" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo _("Click to add your menu name");?>" required tabindex=1 pattern="^.{0,99}$"/>
+				<input type="text" name="mName" id="mName" data-edit="false" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo !$_SESSION['groupMenu'] ? _("Click to add your menu name") : _("Enter menu name");?>" required tabindex=1 pattern="^.{0,99}$"/>
 				<small class="error mNameError"><?echo _("Please type a menu name (max 100chars)");?></small>
 			</div>
+			<?if($_SESSION['groupMenu']) { ?>
+			<div class="row">
+					<input type="text" name="mDescription" id="mDescription" class="menuField" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo _("Description (optional)");?>" tabindex=2 pattern="^.{0,250}$"/>
+					<div>
+						<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
+						<select class='promotions-select' data-placeholder="<?echo _('Select some promotions'); ?>" multiple>
+							<!-- <option value="1">promotion 1</option>
+							<option value="2">promotion 2</option>
+							<option value="3">promotion 3</option> -->
+							<?foreach($promotions as $pKey=>$promotions){?>
+							<option value="<? echo $promotions['Id']; ?>"><? echo $promotions['Name']; ?></option>
+							<?}?>
+						</select>
+					</div>
+			</div>
+			<?}?>
+
+
+
 
 			<div class="hide" id="menuSectionRow"> <!-- DUMMY -->
 				<div class="row">
@@ -75,6 +95,16 @@
 						<input type="text" name="mSectionName[0]" data-insert="false" data-edit="false" data-delete="false" data-id="section0s" data-md="false" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
 						<small class="error msecError"><?echo _("Please type a section name (max 100chars)");?></small>
 					</div>
+					<?if($_SESSION['groupMenu']) { ?>
+					<div class="large-12 columns minmax-container">
+						<span>User must select</span>
+						<div>
+							<input type="text" name="mSectionMinMax[0]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" require pattern="0*[1-9]\d*"/>
+							<small class="error mminmaxError"><?echo _("Please enter the quantity");?></small>
+						</div>
+						<span>item/s per guest from this section</span>
+					</div>
+					<?}?>
 				</div>
 				<div class="row">
 					<div class="large-12 columns sectionTools">
@@ -496,6 +526,16 @@ $(document).ready(function() {
 	$('.progressIndicator').attr('title', <? echo json_encode(_("45&#37 done, now for the fun bit!")) ?>);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
+});
+</script>
+<?}?>
+
+<?if($_SESSION['groupMenu']){?>
+<script src="/bower_components/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+	$('.promotions-select').chosen();
 });
 </script>
 <?}?>
