@@ -61,6 +61,8 @@ angular.module('booking')
             promotions = data;
             // promotions = fakePromotions;
             defer.resolve(promotions);
+        }, function(result) {
+            defer.reject(result);
         });
 
         return defer.promise;
