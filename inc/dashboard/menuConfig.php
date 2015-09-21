@@ -71,18 +71,15 @@
 			</div>
 			<?if($_SESSION['groupMenu']) { ?>
 			<div class="row">
-					<input type="text" name="mDescription" id="mDescription" class="menuField" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo _("Description (optional)");?>" tabindex=2 pattern="^.{0,250}$"/>
-					<div>
-						<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
-						<select class='promotions-select' data-placeholder="<?echo _('Select some promotions'); ?>" multiple>
-							<!-- <option value="1">promotion 1</option>
-							<option value="2">promotion 2</option>
-							<option value="3">promotion 3</option> -->
-							<?foreach($promotions as $pKey=>$promotions){?>
-							<option value="<? echo $promotions['Id']; ?>"><? echo $promotions['Name']; ?></option>
-							<?}?>
-						</select>
-					</div>
+				<input type="text" name="mDescription" id="mDescription" class="menuField" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo _("Description (optional)");?>" tabindex=2 pattern="^.{0,250}$"/>
+			</div>
+			<div class='row'>
+				<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
+				<div class='promotions-input-container'>
+					<select class='promotions-select allow-custom-input' data-placeholder="<?echo _('Select some promotions'); ?>" required multiple>
+					</select>
+					<small class="error mNameError"><?echo _("Please choose a promotion");?></small>
+				</div>
 			</div>
 			<?}?>
 
@@ -97,12 +94,12 @@
 					</div>
 					<?if($_SESSION['groupMenu']) { ?>
 					<div class="large-12 columns minmax-container">
-						<span>User must select</span>
+						<span><?echo _('User must select'); ?></span>
 						<div>
 							<input type="text" name="mSectionMinMax[0]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" require pattern="0*[1-9]\d*"/>
 							<small class="error mminmaxError"><?echo _("Please enter the quantity");?></small>
 						</div>
-						<span>item/s per guest from this section</span>
+						<span><?echo _('item/s per guest from this section'); ?></span>
 					</div>
 					<?}?>
 				</div>
@@ -247,6 +244,16 @@
 								<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-id="section<?echo $section['id'];?>" data-md="<?echo $mdFlag?>" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo htmlentities($section['name'], ENT_QUOTES);?>" placeholder="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
 								<small class="error msecError"><?echo _("Please type a section name (max 100chars)");?></small>
 							</div>
+							<?if(count($promotions) > 0) { ?>
+							<div class="large-12 columns minmax-container">
+								<span><?echo _('User must select'); ?></span>
+								<div>
+									<input type="text" name="mSectionMinMax[<?echo ($sKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" require pattern="0*[1-9]\d*"/>
+									<small class="error mminmaxError"><?echo _("Please enter the quantity");?></small>
+								</div>
+								<span><?echo _('item/s per guest from this section'); ?></span>
+							</div>
+							<?}?>
 						</div>
 						<div class="row">
 							<div class="large-12 columns sectionTools">
@@ -531,11 +538,43 @@ $(document).ready(function() {
 <?}?>
 
 <?if($_SESSION['groupMenu']){?>
-<!-- <script src="/bower_components/chosen/chosen.jquery.min.js"></script> -->
 <script type="text/javascript">
 $(document).ready(function() {
 
-	$('.promotions-select').chosen();
+	var select, chosen;
+
+	// cache the select element as we'll be using it a few times
+	select = $(".promotions-select");
+
+	// init the chosen plugin
+	select.chosen({'disable_search': true});
+
+	// get the chosen object (any type, single or multiple)
+	chosen = $('.chosen-container');
+
+	// Bind the keyup event to the search box input
+	chosen.find('input').addClass('noEnterSubmit').attr('type', 'number').keyup( function(e) {
+
+	    // if we hit Enter, Space or Comma and the results list is empty (no matches) add the option
+	    if ((e.which == 13 || e.which == 32 || e.which == 188) && (chosen.find('.chosen-results > li').length == chosen.find('.result-selected').length || chosen.find('li.no-results').length > 0))
+	    {
+	    	if(select.find('option[value="' + this.value + '"]').length == 0) {
+
+		    	// if(e.which == 188)
+		    	// 	this.value = this.value.substr(0, this.value.length - 1);
+
+		        var option = $("<option>").val(this.value).text(this.value);
+
+		        // add the new option
+		        select.prepend(option);
+		        // automatically select it
+		        select.find(option).prop('selected', true);
+		        // trigger the update
+		        select.trigger("chosen:updated");
+	    	}
+
+	    }
+	});
 });
 </script>
 <?}?>
