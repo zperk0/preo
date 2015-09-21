@@ -46,7 +46,7 @@
   <script src="/code/bookingSettings/js/services/bookingSettingsService.js"></script>
   <!-- END WATCH -->
 
-  <script src="/code/bookingSettings/all.min.js"></script>
+   <script src="/code/bookingSettings/all.min.js"></script>
 
   <script src="/code/constants/session.php"></script>
 

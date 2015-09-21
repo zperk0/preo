@@ -11,16 +11,16 @@
 
         vm.save = function() {
 
+            if(!validateData()) {
+                vm.invalidForm = true;
+                return;
+            }
+
             var data = {
                 restaurantName: vm.settings.restaurantName || '',
                 lockDays: vm.settings.lockDays || '',
                 reminderDays: vm.settings.reminderDays || ''
             };
-
-            if(!validateData()) {
-                vm.invalidForm = true;
-                return;
-            }
 
             $AjaxInterceptor.start();
 
@@ -56,14 +56,19 @@
 
             var isValid = true;
 
-            if(!vm.settings.restaurantName || vm.settings.restaurantName == '')
-                isValid = false;
+            if(vm.settings) {
 
-            if(vm.isInvalidNumber(vm.settings.reminderDays))
-                isValid = false;
+                if(!vm.settings.restaurantName || vm.settings.restaurantName == '')
+                    isValid = false;
 
-            if(vm.isInvalidNumber(vm.settings.lockDays))
+                if(vm.isInvalidNumber(vm.settings.reminderDays) || vm.settings.restaurantName == '')
+                    isValid = false;
+
+                if(vm.isInvalidNumber(vm.settings.lockDays) || vm.settings.restaurantName == '')
+                    isValid = false;
+            } else {
                 isValid = false;
+            }
 
             return isValid;
         }
