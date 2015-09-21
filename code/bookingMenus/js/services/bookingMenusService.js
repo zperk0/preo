@@ -1,7 +1,7 @@
 (function(window, angular){
 
 angular.module('bookingMenus')
-.service('BookingMenusService', function ($http, VENUE_ID) {
+.service('BookingMenusService', ['$http', 'VENUE_ID', function ($http, VENUE_ID) {
 
 	var service = {},
 		venue_id = VENUE_ID;
@@ -72,6 +72,6 @@ angular.module('bookingMenus')
 
 	return service;
 
-});
+}]);
 
 }(window, angular));

@@ -1,10 +1,10 @@
 (function(window, angular){
 
 angular.module('booking')
-.service('PromotionService', function ($http, VENUE_ID, $q) {
+.service('PromotionService', ['$http', 'VENUE_ID', '$q', function ($http, VENUE_ID, $q) {
 
     var service = {},
-    	venue_id = VENUE_ID,
+        venue_id = VENUE_ID,
         promotions = [];
 
     //TODO: remove fake promotions data when resdiary api is ok
@@ -83,6 +83,6 @@ angular.module('booking')
 
     return service;
 
-});
+}]);
 
 }(window, angular));

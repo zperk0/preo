@@ -531,7 +531,7 @@ $(document).ready(function() {
 <?}?>
 
 <?if($_SESSION['groupMenu']){?>
-<script src="/bower_components/chosen/chosen.jquery.min.js"></script>
+<!-- <script src="/bower_components/chosen/chosen.jquery.min.js"></script> -->
 <script type="text/javascript">
 $(document).ready(function() {
 

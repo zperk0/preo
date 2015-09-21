@@ -36,7 +36,7 @@
 
   <script src="/js/angular_all.min.js"></script>
 
-  <!-- BEGIN WATCH -->
+  <!-- BEGIN WATCH
   <script src="/bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
   <script src="/locale_angular/translations.js"></script>
   <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>
@@ -46,7 +46,7 @@
   <script src="/code/bookingSettings/js/services/bookingSettingsService.js"></script>
   <!-- END WATCH -->
 
-  <!-- // <script src="/code/booking-settings/all.min.js"></script> -->
+  <script src="/code/bookingSettings/all.min.js"></script>
 
   <script src="/code/constants/session.php"></script>
 

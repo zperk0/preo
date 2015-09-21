@@ -1,10 +1,10 @@
 (function(window, angular){
 
 angular.module('booking')
-.service('MenuService', function ($http, VENUE_ID, $q) {
+.service('MenuService', ['$http', 'VENUE_ID', '$q', function ($http, VENUE_ID, $q) {
 
     var service = {},
-    	venue_id = VENUE_ID;
+        venue_id = VENUE_ID;
 
     service.groupItemBySection = function(menus, orders) {
 
@@ -76,6 +76,6 @@ angular.module('booking')
 
     return service;
 
-});
+}]);
 
 }(window, angular));
