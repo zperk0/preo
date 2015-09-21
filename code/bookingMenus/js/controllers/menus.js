@@ -7,7 +7,7 @@
         var vm = this;
 
         vm.createMenu = function() {
-            window.location.href = '/newMenu';
+            window.location.href = '/newGroupMenu';
         }
 
         function duplicateItemMenu(evt, data) {

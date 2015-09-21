@@ -8,7 +8,7 @@ angular.module('booking')
 
     service.groupItemBySection = function(menus, orders) {
 
-        // console.log(menus, orders)
+        // console.log(menus, orders);
 
         var obj = {};
         obj['Unknown'] = [];

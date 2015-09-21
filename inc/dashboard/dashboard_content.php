@@ -118,8 +118,8 @@
 						<section>
 							<h3 data-section-title><span><?echo _("Group Booking");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/group-icon.png"/></h3>
 							<div class="content" data-section-content>
-								<p><a href="<?echo $_SESSION['path']?>/menus"><?echo _("Menus");?></a></p>
-								<p><a href="<?echo $_SESSION['path']?>/bookings"><?echo _("Bookings");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/groupBookingMenus"><?echo _("Menus");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/booking"><?echo _("Bookings");?></a></p>
 								<p><a href="<?echo $_SESSION['path']?>/bookingSettings"><?echo _("Settings");?></a></p>
 							</div>
 						</section>

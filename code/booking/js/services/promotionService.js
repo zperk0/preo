@@ -56,7 +56,7 @@ angular.module('booking')
         // remove when resdiary api is ok
         var defer = $q.defer();
 
-        Preoday.Venue.getPromotions(venue_id).then(function() {
+        Preoday.Venue.getPromotions(venue_id).then(function(data) {
 
             promotions = data;
             // promotions = fakePromotions;

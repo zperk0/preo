@@ -119,7 +119,7 @@
 							<?if($isGroupBookingEnabled){?>
 							<li class="has-dropdown"><a href="#"><?echo _("Group Booking");?></a>
 								<ul class="dropdown">
-									<li><a href="<?echo $_SESSION['path']?>/menus"><?echo _("Menus");?></a></li>
+									<li><a href="<?echo $_SESSION['path']?>/groupBookingMenus"><?echo _("Menus");?></a></li>
 									<li><a href="<?echo $_SESSION['path']?>/booking"><?echo _("Bookings");?></a></li>
 									<li><a href="<?echo $_SESSION['path']?>/bookingSettings"><?echo _("Settings");?></a></li>
 								</ul>
