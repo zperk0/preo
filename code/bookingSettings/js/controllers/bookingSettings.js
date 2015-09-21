@@ -12,9 +12,9 @@
         vm.save = function() {
 
             var data = {
-                restaurantName: vm.restaurantName || '',
-                lockDays: vm.lockDays || '',
-                reminderDays: vm.reminderDays || ''
+                restaurantName: vm.settings.restaurantName || '',
+                lockDays: vm.settings.lockDays || '',
+                reminderDays: vm.settings.reminderDays || ''
             };
 
             if(!validateData()) {
@@ -27,16 +27,20 @@
             if(noSettingsSaved)
                 BookingSettings.save(data).then(function(result) {
 
+                    // bind jscore instance
+                    vm.settings = result;
                     $AjaxInterceptor.complete();
+                    showSuccessMsg();
                 }, function() {
 
                     $AjaxInterceptor.complete();
                     showErrorMsg();
                 });
             else
-                BookingSettings.update(data).then(function(result) {
+                BookingSettings.update(vm.settings, data).then(function(result) {
 
                     $AjaxInterceptor.complete();
+                    showSuccessMsg();
                 }, function() {
 
                     $AjaxInterceptor.complete();
@@ -52,13 +56,24 @@
 
             var isValid = true;
 
-            if(vm.isInvalidNumber(vm.reminderDays))
+            if(!vm.settings.restaurantName || vm.settings.restaurantName == '')
                 isValid = false;
 
-            if(vm.isInvalidNumber(vm.lockDays))
+            if(vm.isInvalidNumber(vm.settings.reminderDays))
+                isValid = false;
+
+            if(vm.isInvalidNumber(vm.settings.lockDays))
                 isValid = false;
 
             return isValid;
+        }
+
+        function showSuccessMsg() {
+
+            noty({
+                type: 'success',
+                text: gettextCatalog.getString('Booking settings has been saved!')
+            });
         }
 
         function showErrorMsg() {
@@ -76,11 +91,9 @@
 
             BookingSettings.getSettings().then(function(result) {
 
-                var data = result.data || {};
+                var data = result || {};
 
-                vm.restaurantName = data.restaurantName || '';
-                vm.reminderDays = data.reminderDays || '';
-                vm.lockDays = data.lockDays || '';
+                vm.settings = data;
                 $AjaxInterceptor.complete();
             }, function(result) {
 

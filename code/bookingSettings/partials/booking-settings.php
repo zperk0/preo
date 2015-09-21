@@ -8,8 +8,9 @@
 					<div>
 						<label translate>Restaurant Name</label>
 					</div>
-					<div>
-						<input type="text" ng-model='bookingSettingsCtrl.restaurantName' class='restaurant-field'>
+					<div class='restaurant-name-container'>
+						<input type="text" ng-model='bookingSettingsCtrl.settings.restaurantName' class='restaurant-field'>
+						<small ng-show='!bookingSettingsCtrl.settings.restaurantName || bookingSettingsCtrl.settings.restaurantName == ""' class="error" translate>Enter a name</small>
 					</div>
 					<div class='reminder-container'>
 						<div>
@@ -18,8 +19,8 @@
 						</div>
 						<div>
 							<div class='reminder-field-container'>
-								<input type="text" ng-model='bookingSettingsCtrl.reminderDays' class='reminder-field'>
-								<small ng-show='bookingSettingsCtrl.isInvalidNumber(bookingSettingsCtrl.reminderDays)' class="error" translate>Enter a number</small>
+								<input type="text" ng-model='bookingSettingsCtrl.settings.reminderDays' class='reminder-field'>
+								<small ng-show='bookingSettingsCtrl.isInvalidNumber(bookingSettingsCtrl.settings.reminderDays)' class="error" translate>Enter a number</small>
 							</div>
 							<span class='reminder-label' translate>Days before the event</span>
 						</div>
@@ -31,8 +32,8 @@
 						</div>
 						<div>
 							<div class='lock-field-container'>
-								<input type="text" ng-model='bookingSettingsCtrl.lockDays' class='lock-ordering-field'>
-								<small ng-show='bookingSettingsCtrl.isInvalidNumber(bookingSettingsCtrl.lockDays)' class="error" translate>Enter a number</small>
+								<input type="text" ng-model='bookingSettingsCtrl.settings.lockDays' class='lock-ordering-field'>
+								<small ng-show='bookingSettingsCtrl.isInvalidNumber(bookingSettingsCtrl.settings.lockDays)' class="error" translate>Enter a number</small>
 							</div>
 							<span class='lock-label' translate>Days before the event</span>
 						</div>

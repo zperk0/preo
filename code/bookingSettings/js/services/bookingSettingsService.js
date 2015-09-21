@@ -8,17 +8,28 @@ angular.module('bookingSettings')
 
 	service.getSettings = function() {
 
-		return $http.get('/api/venues/'+ venue_id +'/booking-settings');
+		return Preoday.Venue.getBookingSettings({venueId: venue_id});
 	};
 
 	service.save = function(data) {
 
-		return $http.post('/api/venues/'+ venue_id +'/booking-settings', data);
+		var settingsData = {
+			venueId: venue_id,
+			settings: data
+		};
+
+		return Preoday.Venue.saveBookingSettings(settingsData);
 	};
 
-	service.update = function(data) {
+	service.update = function(bsettings, data) {
 
-		return $http.put('/api/venues/'+ venue_id +'/booking-settings', data);
+		var settingsData = {
+			venueId: venue_id,
+			settings: data
+		};
+
+		// jscore instance
+		return bsettings.updateSettings(settingsData);
 	};
 
 	return service;
