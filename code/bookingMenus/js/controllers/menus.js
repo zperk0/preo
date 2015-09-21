@@ -1,8 +1,8 @@
 (function(window, angular) {
 
     angular.module('bookingMenus')
-    .controller('MenusCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID','$AjaxInterceptor', 'BookingMenusService', 'PromotionService',
-        function($scope, $rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingMenusService, PromotionService) {
+    .controller('MenusCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID','$AjaxInterceptor', 'BookingMenusService', 'PromotionService', 'gettextCatalog',
+        function($scope, $rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingMenusService, PromotionService, gettextCatalog) {
 
         var vm = this;
 

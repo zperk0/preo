@@ -3,8 +3,8 @@
 'use scrict';
 
     angular.module('booking')
-    .controller('BookingCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID','$AjaxInterceptor', 'BookingService', 'PromotionService', 'MenuService',
-        function($scope, $rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingService, PromotionService, MenuService) {
+    .controller('BookingCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID','$AjaxInterceptor', 'BookingService', 'PromotionService', 'MenuService', 'gettextCatalog',
+        function($scope, $rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingService, PromotionService, MenuService, gettextCatalog) {
 
         var vm = this,
             menu = null,
