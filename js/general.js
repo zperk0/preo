@@ -2058,8 +2058,6 @@ $(document).ready(function() {
 	$("#menuConfigForm").on('valid', function (event) {
 		var newSubmitTime = new Date().getTime();
 
-		console.log('valid form')
-
 		if(  isSubmitForm && (newSubmitTime - submitTime) > 400 && !postImage )
 		{
 

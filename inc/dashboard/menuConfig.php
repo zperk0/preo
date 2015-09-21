@@ -77,6 +77,9 @@
 				<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
 				<div class='promotions-input-container'>
 					<select class='promotions-select allow-custom-input' data-placeholder="<?echo _('Select some promotions'); ?>" required multiple>
+						<?foreach($menu['promotions'] as $pKey=>$promotion){?>
+							<option value="<? echo $promotion; ?>" selected><? echo $promotion; ?></option>
+						<?}?>
 					</select>
 					<small class="error mNameError"><?echo _("Please choose a promotion");?></small>
 				</div>

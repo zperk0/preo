@@ -9,8 +9,14 @@
 	$_SESSION['secondaryMenuFlag']= 1;
 	$_SESSION['groupMenu'] = $_SERVER['REQUEST_URI'] == '/newGroupMenu' ? true : false;
 
-	$curlResult = callAPI('GET', $apiURL."venues/". $_SESSION['venue_id'] ."/promotions", false, $apiAuth);
-	$promotions = json_decode($curlResult,true);
+	// $curlResult = callAPI('GET', $apiURL."venues/". $_SESSION['venue_id'] ."/promotions", false, $apiAuth);
+	// $promotions = json_decode($curlResult,true);
+
+	// if($_SESSION['groupMenu']) {
+
+	// 	$curlResult = callAPI('GET', $apiURL."menus?expand=true&venueId=". $_SESSION['venue_id'] ."&type=booking", false, $apiAuth);
+	// 	$menu = json_decode($curlResult,true);
+	// }
 
 	require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'); //need this for multi-language support
 
