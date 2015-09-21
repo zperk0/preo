@@ -65,6 +65,10 @@
                     vm.bookingData = bookings;
                     $AjaxInterceptor.complete();
                 }
+            }, function() {
+
+                showErrorMsg();
+                $AjaxInterceptor.complete();
             });
         };
 
