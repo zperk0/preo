@@ -83,6 +83,14 @@
             return time.length == 8 ? time.substr(0, time.length - 3) : time;
         }
 
+        function showErrorMsg() {
+
+            noty({
+                type: 'error',  layout: 'topCenter',
+                text: gettextCatalog.getString("Sorry, but there's been an error processing your request.")
+            });
+        }
+
         function _init() {
 
             $rootScope.requests = 0;
@@ -93,6 +101,10 @@
 
             PromotionService.getPromotions().then(function(data) {
 
+                $AjaxInterceptor.complete();
+            }, function() {
+
+                showErrorMsg();
                 $AjaxInterceptor.complete();
             });
         }

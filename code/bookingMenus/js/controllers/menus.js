@@ -28,6 +28,14 @@
             });
         }
 
+        function showErrorMsg() {
+
+            noty({
+                type: 'error',  layout: 'topCenter',
+                text: gettextCatalog.getString("Sorry, but there's been an error processing your request.")
+            });
+        }
+
         function _init() {
 
             $rootScope.requests = 0;
@@ -56,7 +64,15 @@
                     }
 
                     $AjaxInterceptor.complete();
+                }, function() {
+
+                    $AjaxInterceptor.complete();
+                    showErrorMsg();
                 });
+            }, function() {
+
+                $AjaxInterceptor.complete();
+                showErrorMsg();
             });
 
             // vm.menusData = fakeData;
