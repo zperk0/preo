@@ -75,14 +75,19 @@
 						<section>
 							<h3 data-section-title><span><?echo _("Menus");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/></h3>
 							<div class="content" data-section-content>
-								<?foreach($_SESSION['menus'] as $menuL){?>
-									<p id="p-<?echo $menuL['id']?>">
-										<a class="dashMenuIcon" 			href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>" title="<?echo _("Edit")." $menuL[name]";?>"><?echo htmlentities($menuL['name'], ENT_QUOTES)?></a>
-										<!--<a class="dashMenuIcon deleteMenu" 	id="dmi-<?echo $menuL['id']?>"  title="<?echo _("Delete")." $menuL[name]";?>"><i class="fi-x"></i></a>-->
-									</p>
-								<?}?>
+								<?
+									$mDataJSON = $_SESSION['menus'];
+									if(!empty($mDataJSON) && (!isset($mDataJSON['status'])))
+									{
+										// $_SESSION['menus'] = $mDataJSON;
+										foreach($mDataJSON as $menuL){?>
+											<p><a class="dashMenuIcon" href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>" title="<?echo _("Edit")." $menuL[name]";?>"><?echo htmlentities($menuL['name'], ENT_QUOTES)?></a></p>
+										<?}?>
+										<p><a href="<?echo $_SESSION['path']?>/mealdeals"><?echo _("Meal Deals");?></a></p>
+									<?} else {?>
+										<p><a href="#"><?echo _("No menus");?></a></p>
+									<?}?>
 								<!--<p><a href="<?echo $_SESSION['path']?>/newMenu.php"><?echo _("Add new menu");?></a></p>-->
-								<p><a href="<?echo $_SESSION['path']?>/mealdeals"><?echo _("Meal Deals");?></a></p>
 							</div>
 						</section>
 						<section>
