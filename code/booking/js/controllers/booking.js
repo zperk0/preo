@@ -3,8 +3,8 @@
 'use scrict';
 
     angular.module('booking')
-    .controller('BookingCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID','$AjaxInterceptor', 'BookingService', 'PromotionService', 'MenuService', 'gettextCatalog',
-        function($scope, $rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingService, PromotionService, MenuService, gettextCatalog) {
+    .controller('BookingCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID','$AjaxInterceptor', 'BookingService', 'PromotionService', 'MenuService', 'gettextCatalog', 'BookingSettingsService',
+        function($scope, $rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingService, PromotionService, MenuService, gettextCatalog, BookingSettingsService) {
 
         var vm = this,
             menu = null,
@@ -87,11 +87,13 @@
             return time.length == 8 ? time.substr(0, time.length - 3) : time;
         }
 
-        function showErrorMsg() {
+        function showErrorMsg(msg) {
+
+            var errorMsg = msg || gettextCatalog.getString("Sorry, but there's been an error processing your request.");
 
             noty({
                 type: 'error',  layout: 'topCenter',
-                text: gettextCatalog.getString("Sorry, but there's been an error processing your request.")
+                text: errorMsg
             });
         }
 
@@ -100,16 +102,29 @@
             $rootScope.requests = 0;
             $AjaxInterceptor.start();
 
-            var startDate = $('.sched-start-date').fdatepicker({format:'dd/mm/yyyy'}).on('changeDate', function() { startDate.hide(); $('.sched-end-date').focus(); }).data('datepicker');
-            var endDate = $('.sched-end-date').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() <= startDate.date.valueOf() ? 'disabled' : '';}}).data('datepicker');
+            BookingSettingsService.getSettings().then(function() {
 
-            PromotionService.getPromotions().then(function(data) {
+                var startDate = $('.sched-start-date').fdatepicker({format:'dd/mm/yyyy'}).on('changeDate', function() { startDate.hide(); $('.sched-end-date').focus(); }).data('datepicker');
+                var endDate = $('.sched-end-date').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() <= startDate.date.valueOf() ? 'disabled' : '';}}).data('datepicker');
 
-                $AjaxInterceptor.complete();
+                PromotionService.getPromotions().then(function(data) {
+
+                    $AjaxInterceptor.complete();
+                }, function() {
+
+                    showErrorMsg();
+                    $AjaxInterceptor.complete();
+                });
             }, function() {
 
-                showErrorMsg();
+                var noSettingMsg = gettextCatalog.getString('Please, setup the group booking settings first.');
+
                 $AjaxInterceptor.complete();
+                showErrorMsg(noSettingMsg);
+
+                $timeout(function() {
+                    window.location.href = '/bookingSettings'
+                }, 2500);
             });
         }
 

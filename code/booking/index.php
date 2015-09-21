@@ -49,6 +49,7 @@
   <script src="/code/booking/js/services/bookingService.js"></script>
   <script src="/code/booking/js/services/promotionService.js"></script>
   <script src="/code/booking/js/services/menuService.js"></script>
+  <script src="/code/booking/js/services/bookingSettingsService.js"></script>
   <!-- END WATCH -->
 
   <script src="/code/booking/all.min.js"></script>
