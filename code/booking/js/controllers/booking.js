@@ -26,7 +26,7 @@
 
                 var bookings = result || [];
 
-                // console.log('bookings', bookings);
+                console.log('bookings', bookings);
 
                 for(var i = 0, totalBookings = bookings.length; i < totalBookings; i++) {
 
@@ -36,7 +36,7 @@
                     bookings[i].date = moment(bookings[i].date).format('DD/MM/YY');
                     bookings[i]['time'] = formatTime(bookings[i]['time']);
                     // bookings[i].$promotionName = bookingPromotion ? bookingPromotion.Name : '';
-                    bookings[i].$promotionName = bookingPromotion ? bookingPromotion.Id : '';
+                    bookings[i].$promotionName = bookings[i].promotionId;
 
                     (function(defer, bk) {
 
@@ -108,6 +108,7 @@
                 var startDate = $('.sched-start-date').fdatepicker({format:'dd/mm/yyyy'}).on('changeDate', function() { startDate.hide(); $('.sched-end-date').focus(); }).data('datepicker');
                 var endDate = $('.sched-end-date').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() <= startDate.date.valueOf() ? 'disabled' : '';}}).data('datepicker');
 
+                $AjaxInterceptor.complete();
                 // PromotionService.getPromotions().then(function(data) {
 
                 //     $AjaxInterceptor.complete();
