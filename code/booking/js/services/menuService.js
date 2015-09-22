@@ -8,7 +8,7 @@ angular.module('booking')
 
     service.groupItemBySection = function(menus, orders) {
 
-        // console.log(menus, orders);
+        console.log(menus, orders);
 
         var obj = {};
         obj['Unknown'] = [];
@@ -22,48 +22,44 @@ angular.module('booking')
 
                 var orderItem = order.items[j],
                     foundSection = false;
+
                 // console.log('order item', orderItem);
 
-                for(var k = 0, totalMenus = menus.length; k < totalMenus; k++) {
+                for(var l = 0, totalSections = menus.sections.length; l < totalSections; l++) {
 
-                    var menu = menus[k];
-                    // console.log('menu', menu);
+                    var section = menus.sections[l];
+                    // console.log('section', section);
 
-                    for(var l = 0, totalSections = menu.sections.length; l < totalSections; l++) {
+                    for(var m = 0, totalItems = section.items.length; m < totalItems; m++) {
 
-                        var section = menu.sections[l];
-                        // console.log('section', section);
+                        var menuItem = section.items[m];
 
-                        for(var m = 0, totalItems = section.items.length; m < totalItems; m++) {
+                        // console.log('menu item', menuItem)
+                        // console.log('order item', orderItem)
 
-                            var menuItem = section.items[m];
+                        if(orderItem.menuItemId == menuItem.id) {
 
-                            // console.log('menu item', menuItem)
-                            // console.log('order item', orderItem)
+                            if(!obj[section.id])
+                                obj[section.id] = [];
 
-                            if(orderItem.menuItemId == menuItem.id) {
+                            obj[section.id].push({
+                                min: section.min,
+                                sectionName: section.name,
+                                item: orderItem
+                            });
 
-                                if(!obj[section.id])
-                                    obj[section.id] = [];
-
-                                obj[section.id].push({
-                                    min: section.min,
-                                    sectionName: section.name,
-                                    item: orderItem
-                                });
-
-                                foundSection = true;
-                            }
+                            foundSection = true;
                         }
                     }
+                }
 
-                    if(k == totalMenus - 1 && !foundSection) {
+                if(!foundSection) {
 
-                        obj['Unknown'].push({
-                            sectionName: 'Unknown',
-                            item: orderItem
-                        });
-                    }
+                    obj['Unknown'].push({
+                        sectionName: 'Unknown',
+                        item: orderItem,
+                        min: 1
+                    });
                 }
             }
         }
