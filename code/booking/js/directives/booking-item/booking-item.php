@@ -16,7 +16,7 @@
 	</td>
 	<td class="booking-page">
 		<span>
-			<a href="{{'http://menus-demo.preoday.com/' + permalink + '#/booking/' + booking.reference + '/' + booking.user.lastName + '?overrideLock=true'}}" target='_blank'>link</a>
+			<a href="{{'http://menus-demo.preoday.com/' + permalink + '?overrideLock=true#/booking/' + booking.reference + '/' + booking.user.lastName}}" target='_blank'>link</a>
 			<!-- TODO: change url to prod -->
 			<!-- <a href="{{'http://menus-demo.preoday.com/' + permalink + '#/booking/' + booking.reference + '/' + booking.user.lastName}}" target='_blank'>link</a> -->
 		</span>
