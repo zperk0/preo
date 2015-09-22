@@ -37,7 +37,10 @@
                     bookings[i].date = moment(bookings[i].date).format('DD/MM/YY');
                     bookings[i]['time'] = formatTime(bookings[i]['time']);
                     // bookings[i].$promotionName = bookingPromotion ? bookingPromotion.Name : '';
-                    bookings[i].$promotionName = bookings[i].promotionId || 'N/A';
+
+                    // TODO: remove promotionId 23 hardcode
+                    bookings[i].promotionId = bookings[i].promotionId || 23;
+                    bookings[i].$promotionName = bookings[i].promotionId;
 
 
                     if(bookings[i].promotionId) {
