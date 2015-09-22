@@ -4316,6 +4316,7 @@ p.link-to-video:first-child  {
   border-radius: 0;
   font-weight: initial;
   width: 100% !important;
+  -moz-appearance:textfield;
 }
 
 input::-webkit-outer-spin-button,

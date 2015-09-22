@@ -33,9 +33,9 @@
 						{{getTotalItems(section.items)}}
 					</span>
 				</div>
-				<div class='dish-list clear' ng-repeat='item in section.items'>
+				<div class='dish-list clear'>
 					<ul>
-						<li class='clear'>
+						<li class='clear' ng-repeat='item in section.items'>
 							<span class='pull-left item-name'>{{item.name}}</span>
 							<span class='pull-right'>{{item.qty}}</span>
 						</li>

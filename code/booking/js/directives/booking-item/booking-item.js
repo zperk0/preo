@@ -31,7 +31,7 @@ angular.module('booking')
                         minValue = value;
                 }
 
-                return minValue == Infinity ? 'N/A' : minValue;
+                return minValue == Infinity || isNaN(minValue) ? 'N/A' : minValue;
             };
 
             function getTotalItems(items) {
