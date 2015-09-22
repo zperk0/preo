@@ -28,9 +28,9 @@ angular.module('booking')
 
             ng.exportCsv = function(){
 
-                ng.csvData = prepareExportCsvData(ng.booking);
+                // ng.csvData = prepareExportCsvData(ng.booking);
 
-                console.log('csvData', ng.csvData);
+                // console.log('csvData', ng.csvData);
 
                 // $http({
                 //     method: "post",

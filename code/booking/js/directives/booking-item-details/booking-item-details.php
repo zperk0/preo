@@ -16,7 +16,8 @@
 				</div>
 			</div>
 			<div class='pull-right ct-btn-print'>
-				<form action='{{"/api/accounts/" + account_id + "/exports/csv/report"}}' method='POST' ng-submit='exportCsv()'>
+				<!-- <form action='{{"/api/accounts/" + account_id + "/exports/csv/report"}}' method='POST' ng-submit='exportCsv()'> -->
+				<form>
                     <input name='data' value='{{csvData}}' type='hidden'/>
                     <button class='btn-print' ng-click='exportCsv()' translate>PRINT BOOKING</button>
                 </form>
