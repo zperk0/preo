@@ -7,7 +7,6 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/authentication.php');
 
 	$_SESSION['secondaryMenuFlag']= 1;
-	$_SESSION['groupMenu'] = $_SERVER['REQUEST_URI'] == '/newGroupMenu' ? true : false;
 
 	// $curlResult = callAPI('GET', $apiURL."venues/". $_SESSION['venue_id'] ."/promotions", false, $apiAuth);
 	// $promotions = json_decode($curlResult,true);

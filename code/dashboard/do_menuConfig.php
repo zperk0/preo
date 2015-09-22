@@ -51,6 +51,7 @@
 	{
 		$data 					= array();
 		$data['name'] 			= $menu['name'];
+		$data['description']    = $menu['description'];
 		$data['accountId'] 		= $menu['accountId'];
 		if (isset($_SESSION['outlet_id'])){
  			$data['outletId'] 	= $_SESSION['outlet_id']; //secondary menus are non-associated. disabled
@@ -80,9 +81,14 @@
 	{
 		$data 					= array();
 		$data['name'] 			= $menu['name'];
+		$data['description']    = $menu['description'];
 		$data['accountId'] 		= $menu['accountId'];
 		//if(!$_SESSION['secondaryMenuFlag'])
 			$data['outletId'] 	= $_SESSION['outlet_id']; //secondary menus are non-associated. disabled
+
+		if (isset($menu['promotions']) && is_array($menu['promotions']) && count($menu['promotions'])) {
+            $data['promotions'] = $menu['promotions'];
+        }
 
 		$jsonData 	= json_encode($data);
 		$curlResult = callAPI('PUT', $apiURL."menus/$menu_id", $jsonData, $apiAuth); //menu edited
@@ -104,6 +110,8 @@
 		$data['menuId'] 	= $menu_id;
 		$data['position'] 	= $section['position'];
 		$data['collapse'] 	= $section['collapse'];
+		$data['min'] 		= $section['min'];
+		$data['max'] 		= $section['min'];
 
 		if($section['delete']) //delete section
 		{

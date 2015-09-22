@@ -7,7 +7,7 @@
 	</td>
 	<td class="menu-promotions">
 		<div ng-class='{oneline: menu.$promotions.length <= 2}'>
-			<input type="text" size='' readonly='readonly' ng-repeat='promotion in menu.$promotions' value='{{promotion.Name}}'>
+			<input type="text" size='' readonly='readonly' ng-repeat='promotion in menu.$promotions' value='{{promotion}}'>
 		</div>
 	</td>
 	<td class="menu-tools">

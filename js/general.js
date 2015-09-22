@@ -1997,6 +1997,17 @@ $(document).ready(function() {
 		$(this).attr('data-edit',true);
 		$(this).data('edit',true);
 	});
+
+	$(document).on("blur", 'input[name^=mDescription]', function(){
+		$('#mName').attr('data-edit',true);
+		$('#mName').data('edit',true);
+	});
+
+	$(document).on("blur", 'input[name^=mSectionMinMax]', function(){
+		$(this).parents('.moveSecInner').first().find('input[name^=mSectionName]').attr('data-edit',true);
+		$(this).parents('.moveSecInner').first().find('input[name^=mSectionName]').data('edit',true);
+	});
+
 	//dependant entries
 	//item
 	$(document).on("blur", 'input[name^=iDesc], input[name^=iPrice], input[name^=iQuan], input[name^=iVisi]', function(){

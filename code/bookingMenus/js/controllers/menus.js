@@ -45,7 +45,7 @@
 
             BookingSettingsService.getSettings().then(function() {
 
-                PromotionService.getPromotions().then(function() {
+                // PromotionService.getPromotions().then(function() {
 
                     BookingMenusService.getMenus().then(function(data) {
 
@@ -58,14 +58,14 @@
 
                             // console.log(vm.menusData[i]);
 
-                            vm.menusData[i].$promotions = [];
+                            vm.menusData[i].$promotions = vm.menusData[i].promotions;
 
-                            for(var j = 0, totalPromotions = vm.menusData[i].promotions.length; j < totalPromotions; j++) {
+                            // for(var j = 0, totalPromotions = vm.menusData[i].promotions.length; j < totalPromotions; j++) {
 
-                                var promotionid = vm.menusData[i].promotions[j];
+                            //     var promotionid = vm.menusData[i].promotions[j];
 
-                                vm.menusData[i].$promotions.push(PromotionService.getPromotionById(promotionid));
-                            }
+                            //     vm.menusData[i].$promotions.push(PromotionService.getPromotionById(promotionid));
+                            // }
                         }
 
                         $AjaxInterceptor.complete();
@@ -74,11 +74,11 @@
                         $AjaxInterceptor.complete();
                         showErrorMsg();
                     });
-                }, function() {
+                // }, function() {
 
-                    $AjaxInterceptor.complete();
-                    showErrorMsg();
-                });
+                //     $AjaxInterceptor.complete();
+                //     showErrorMsg();
+                // });
 
                 // vm.menusData = fakeData;
 

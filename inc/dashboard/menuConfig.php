@@ -1,3 +1,5 @@
+<? $_SESSION['groupMenu'] = ($_SERVER['REQUEST_URI'] == '/newGroupMenu') || (count($menu['promotions']) > 0) ? true : false; ?>
+
 <div class="loading" id="loadingConfig">
   <div class="background-loading"></div>
   <div class="loading-content">
@@ -71,7 +73,7 @@
 			</div>
 			<?if($_SESSION['groupMenu']) { ?>
 			<div class="row">
-				<input type="text" name="mDescription" id="mDescription" class="menuField" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo _("Description (optional)");?>" tabindex=2 pattern="^.{0,250}$"/>
+				<input type="text" name="mDescription" id="mDescription" class="menuField" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['description'], ENT_QUOTES);?>" placeholder="<?echo _("Description (optional)");?>" tabindex=2 pattern="^.{0,250}$"/>
 			</div>
 			<div class='row'>
 				<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
@@ -99,7 +101,7 @@
 					<div class="large-12 columns minmax-container">
 						<span><?echo _('User must select'); ?></span>
 						<div>
-							<input type="text" name="mSectionMinMax[0]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" require pattern="0*[1-9]\d*"/>
+							<input type="text" name="mSectionMinMax[0]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" require pattern="0*[1-9]\d*" value='<? echo $menu["min"]; ?>'/>
 							<small class="error mminmaxError"><?echo _("Please enter the quantity");?></small>
 						</div>
 						<span><?echo _('item/s per guest from this section'); ?></span>
@@ -247,11 +249,11 @@
 								<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-id="section<?echo $section['id'];?>" data-md="<?echo $mdFlag?>" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo htmlentities($section['name'], ENT_QUOTES);?>" placeholder="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
 								<small class="error msecError"><?echo _("Please type a section name (max 100chars)");?></small>
 							</div>
-							<?if(count($promotions) > 0) { ?>
+							<?if($_SESSION['groupMenu']) { ?>
 							<div class="large-12 columns minmax-container">
 								<span><?echo _('User must select'); ?></span>
 								<div>
-									<input type="text" name="mSectionMinMax[<?echo ($sKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" require pattern="0*[1-9]\d*"/>
+									<input type="text" name="mSectionMinMax[<?echo ($sKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" required pattern="0*[1-9]\d*"  value='<? echo $section["min"]; ?>'/>
 									<small class="error mminmaxError"><?echo _("Please enter the quantity");?></small>
 								</div>
 								<span><?echo _('item/s per guest from this section'); ?></span>
@@ -574,8 +576,10 @@ $(document).ready(function() {
 		        select.find(option).prop('selected', true);
 		        // trigger the update
 		        select.trigger("chosen:updated");
-	    	}
 
+		        $('#mName').attr('data-edit',true);
+				$('#mName').data('edit',true);
+	    	}
 	    }
 	});
 });
