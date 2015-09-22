@@ -32,16 +32,24 @@
 
                     var deferred = $q.defer()/*,
                         bookingPromotion = PromotionService.getPromotionById(bookings[i].promotionId);*/
-                    console.log('promotion id', bookings[i].promotionId);
 
-                    bookings[i].date = moment(bookings[i].date).format('DD/MM/YY');
+                    var dateObj = moment(bookings[i].date).utc(),
+                        timeSplit = bookings[i]['time'] ? bookings[i]['time'].split(':') : [];
+
+                    if(timeSplit.length > 0) {
+
+                        dateObj.hour(timeSplit[0]);
+                        dateObj.minutes(timeSplit[1]);
+                    }
+
+                    bookings[i].date = dateObj.format('DD/MM/YY');
                     bookings[i]['time'] = formatTime(bookings[i]['time']);
-                    // bookings[i].$promotionName = bookingPromotion ? bookingPromotion.Name : '';
+                    bookings[i].$bookingDate = dateObj.valueOf();
 
+                    // bookings[i].$promotionName = bookingPromotion ? bookingPromotion.Name : '';
                     // TODO: remove promotionId 23 hardcode
                     bookings[i].promotionId = bookings[i].promotionId || 23;
                     bookings[i].$promotionName = bookings[i].promotionId;
-
 
                     if(bookings[i].promotionId) {
 
@@ -64,9 +72,6 @@
                         promises.push(deferred.promise);
                     }
                 }
-
-                // console.log(promises);
-                // console.log(bookings);
 
                 if(bookings.length == 0) {
 
@@ -115,13 +120,16 @@
             $rootScope.requests = 0;
             $AjaxInterceptor.start();
 
+            var startDate = $('.sched-start-date').fdatepicker({format:'dd/mm/yyyy'}).on('changeDate', function() { startDate.hide(); $('.sched-end-date').focus(); }).data('datepicker');
+            var endDate = $('.sched-end-date').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() <= startDate.date.valueOf() ? 'disabled' : '';}}).data('datepicker');
+            var daysAhead = moment().add('30', 'days');
+
+            vm.startDate = moment().format('DD/MM/YYYY');
+            vm.endDate = daysAhead.format('DD/MM/YYYY');
+
             BookingSettingsService.getSettings().then(function() {
 
-                var startDate = $('.sched-start-date').fdatepicker({format:'dd/mm/yyyy'}).on('changeDate', function() { startDate.hide(); $('.sched-end-date').focus(); }).data('datepicker');
-                var endDate = $('.sched-end-date').fdatepicker({format:'dd/mm/yyyy', onRender: function(date) {return date.valueOf() <= startDate.date.valueOf() ? 'disabled' : '';}}).data('datepicker');
-
                 $AjaxInterceptor.complete();
-
                 vm.generateReport();
                 // PromotionService.getPromotions().then(function(data) {
 

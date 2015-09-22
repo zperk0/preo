@@ -18,10 +18,10 @@
 			<table class='booking-table'>
 				<thead>
 					<tr>
-						<th class="booking-name" translate>Promotion</th>
-						<th class="booking-client" translate>Client</th>
 						<th class="booking-date" translate>Date</th>
 						<th class="booking-time" translate>Time</th>
+						<th class="booking-client" translate>Client</th>
+						<th class="booking-name" translate>Promotion</th>
 						<th class="booking-guests" translate>Guests</th>
 						<th class="booking-page" translate>Booking page</th>
 						<th class="booking-orders" translate>Orders placed</th>
@@ -30,7 +30,7 @@
 				<tbody>
 					<tr class='separator-thead'></tr>
 
-					<tr booking-item ng-click='bookingCtrl.toggleDetails($index)' ng-repeat-start='booking in bookingCtrl.bookingData' element='booking' startDate='bookingCtrl.startDate' endDate='bookingCtrl.endDate'></tr>
+					<tr booking-item ng-click='bookingCtrl.toggleDetails($index)' ng-repeat-start='booking in bookingCtrl.bookingData | orderBy:"$bookingDate"' element='booking' startDate='bookingCtrl.startDate' endDate='bookingCtrl.endDate'></tr>
 					<tr booking-item-details element='booking'></tr>
 
 					<tr class='separator' ng-repeat-end=''></tr>
