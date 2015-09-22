@@ -24,8 +24,8 @@ angular.module('booking')
                 // we are considering always the min value of orders placed
                 for(var x in sections) {
 
-                    var items = sections[x],
-                        value = Math.floor(getTotalItems(items) / items[0].min);
+                    var items = sections[x].items,
+                        value = Math.floor(getTotalItems(items) / sections[x].min);
 
                     if(value < minValue)
                         minValue = value;
@@ -39,7 +39,7 @@ angular.module('booking')
                 var total = 0;
 
                 for(var i = 0; i < items.length; i++)
-                    total += !isNaN(items[i].item.qty) ? items[i].item.qty : 0;
+                    total += !isNaN(items[i].qty) ? items[i].qty : 0;
 
                 return total;
             };

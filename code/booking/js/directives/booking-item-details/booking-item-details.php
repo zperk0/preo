@@ -24,20 +24,20 @@
 			</div>
 		</div>
 		<div class='dish-info clear'>
-			<div class='dish-card' ng-repeat='section in booking.$sections'>
+			<div class='dish-card' ng-repeat='section in booking.$sections | orderObjectBy:"position"'>
 				<div class='list-header clear'>
 					<span class='pull-left section-name'>
-						{{section[0].sectionName}}
+						{{section.sectionName}}
 					</span>
 					<span class='pull-right'>
-						{{getTotalItems(section)}}
+						{{getTotalItems(section.items)}}
 					</span>
 				</div>
-				<div class='dish-list clear' ng-repeat='item in section'>
+				<div class='dish-list clear' ng-repeat='item in section.items'>
 					<ul>
 						<li class='clear'>
-							<span class='pull-left item-name'>{{item.item.name}}</span>
-							<span class='pull-right'>{{item.item.qty}}</span>
+							<span class='pull-left item-name'>{{item.name}}</span>
+							<span class='pull-right'>{{item.qty}}</span>
 						</li>
 					</ul>
 				</div>

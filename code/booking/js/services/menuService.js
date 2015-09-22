@@ -12,7 +12,7 @@ angular.module('booking')
         // console.log('order', orders);
 
         var obj = {};
-        obj['Unknown'] = [];
+        obj['Unknown'] = {items: []};
 
         for(var i = 0, totalOrders = orders.length; i < totalOrders; i++) {
 
@@ -40,14 +40,15 @@ angular.module('booking')
 
                         if(orderItem.menuItemId == menuItem.id) {
 
-                            if(!obj[section.id])
-                                obj[section.id] = [];
+                            if(!obj[section.id]) {
+                                obj[section.id] = {};
+                                obj[section.id].items = [];
+                            }
 
-                            obj[section.id].push({
-                                min: section.min,
-                                sectionName: section.name,
-                                item: orderItem
-                            });
+                            obj[section.id].sectionName = section.name;
+                            obj[section.id].min = section.min;
+                            obj[section.id].position = section.position;
+                            obj[section.id].items.push(orderItem);
 
                             foundSection = true;
                         }
@@ -56,16 +57,15 @@ angular.module('booking')
 
                 if(!foundSection) {
 
-                    obj['Unknown'].push({
-                        sectionName: 'Unknown',
-                        item: orderItem,
-                        min: 1
-                    });
+                    obj['Unknown'].min = 1;
+                    obj['Unknown'].sectionName = 'Unknown';
+                    obj['Unknown'].position = Infinity;
+                    obj['Unknown'].items.push(orderItem);
                 }
             }
         }
 
-        if(obj['Unknown'].length == 0)
+        if(obj['Unknown'].items.length == 0)
             delete obj.Unknown;
 
         return obj;

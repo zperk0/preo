@@ -21,7 +21,7 @@ angular.module('booking')
                 var total = 0;
 
                 for(var i = 0; i < items.length; i++)
-                    total += !isNaN(items[i].item.qty) ? items[i].item.qty : 0;
+                    total += !isNaN(items[i].qty) ? items[i].qty : 0;
 
                 return total;
             };

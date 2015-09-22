@@ -17,12 +17,14 @@
 }
 
 .date-range .sched-start-date, .date-range .sched-end-date {
-	width: 72px !important;
+	width: 85px !important;
 	float: left;
 	font-size: 12px !important;
     font-weight: bold;
     z-index: 100;
-    padding: 16px 5px;
+    height: 32px;
+    padding: 0;
+    padding-left: 10px;
 }
 
 .date-range .sched-start-date {

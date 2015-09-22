@@ -1,5 +1,5 @@
 var app = angular.module('booking',
-['ngRoute', 'constants', 'loaders', 'mm.foundation', 'gettext'])
+['ngRoute', 'constants', 'loaders', 'mm.foundation', 'gettext', 'ngOrderObjectBy'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.
             when('/', {
