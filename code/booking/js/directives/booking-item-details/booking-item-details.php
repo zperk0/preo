@@ -29,7 +29,7 @@
 						{{section[0].sectionName}}
 					</span>
 					<span class='pull-right'>
-						{{section.length}}
+						{{getTotalItems(section)}}
 					</span>
 				</div>
 				<div class='dish-list clear' ng-repeat='item in section'>
