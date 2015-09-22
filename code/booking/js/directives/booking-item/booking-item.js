@@ -31,7 +31,7 @@ angular.module('booking')
                         minValue = value;
                 }
 
-                return minValue;
+                return minValue == Infinity ? 'N/A' : minValue;
             };
         }
     };

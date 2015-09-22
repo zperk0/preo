@@ -16,7 +16,7 @@
 	</td>
 	<td class="booking-page">
 		<span>
-			<a href="{{'http://menus.preoday.com/' + permalink + '/booking/' + booking.reference + '/' + booking.user.lastName}}" target='_blank'>link</a>
+			<a href="{{'http://menus.preoday.com/' + permalink + '#/booking/' + booking.reference + '/' + booking.user.lastName}}" target='_blank'>link</a>
 		</span>
 	</td>
 	<td class="booking-orders">

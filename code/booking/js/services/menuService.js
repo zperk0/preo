@@ -8,7 +8,8 @@ angular.module('booking')
 
     service.groupItemBySection = function(menus, orders) {
 
-        console.log(menus, orders);
+        // console.log('menu', menus);
+        // console.log('order', orders);
 
         var obj = {};
         obj['Unknown'] = [];
@@ -30,7 +31,7 @@ angular.module('booking')
                     var section = menus.sections[l];
                     // console.log('section', section);
 
-                    for(var m = 0, totalItems = section.items.length; m < totalItems; m++) {
+                    for(var m = 0, mTotalItems = section.items.length; m < mTotalItems; m++) {
 
                         var menuItem = section.items[m];
 
