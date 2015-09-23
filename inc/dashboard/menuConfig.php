@@ -101,7 +101,7 @@
 					<div class="large-12 columns minmax-container">
 						<span><?echo _('User must select'); ?></span>
 						<div>
-							<input type="text" name="mSectionMinMax[0]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" require pattern="0*[1-9]\d*" value='<? echo $menu["min"]; ?>'/>
+							<input type="text" name="mSectionMinMax[0]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" required pattern="^[1-9][0-9]*$" value='10'/>
 							<small class="error mminmaxError"><?echo _("Please enter the quantity");?></small>
 						</div>
 						<span><?echo _('item/s per guest from this section'); ?></span>
@@ -568,7 +568,9 @@ $(document).ready(function() {
 		    	// if(e.which == 188)
 		    	// 	this.value = this.value.substr(0, this.value.length - 1);
 
-		        var option = $("<option>").val(this.value).text(this.value);
+		        var option = $("<option>").val(this.value).text(this.value).attr('selected', true);
+
+		        select.trigger('change');
 
 		        // add the new option
 		        select.prepend(option);

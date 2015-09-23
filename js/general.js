@@ -2389,15 +2389,15 @@ $(document).ready(function() {
 						}
 
 						noty({ type: 'success', text: _tr('Menu configuration has been saved!') });
-						if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 
 						var url = window.location.href;
 
 						// redirect user to menu created
 						if(url.substr(url.lastIndexOf('/')) == '/newGroupMenu')
 							setTimeout(function() {
-								window.location.href = '/menus/' + dataArray.result.id;
+								window.location.href = '/menus/' + dataArray.menuid;
 							}, 1000);
+						else if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
 			 }).done(function() {
