@@ -15,7 +15,7 @@
             vm.menusData.push(data);
 
             // redirect user to edit the menu duplicated with a message
-            window.location.href = '/menus/' + data.id + '?duplicated=true';
+            window.location.href = '/menu/' + data.id + '?duplicated=true';
         }
 
         function removeItemMenu(evt, data) {
