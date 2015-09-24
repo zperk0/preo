@@ -139,10 +139,10 @@ foreach ($sections as $section) {
 
         foreach($item->modifiers as $rowMod => $itemMod) {
 
-        	$cellMName = PHPExcel_Cell::stringFromColumnIndex($column).($row + $rowMod + 12);
-			$cellMQty = PHPExcel_Cell::stringFromColumnIndex($column + 1).($row + $rowMod  + 12);
+        	$cellMName = PHPExcel_Cell::stringFromColumnIndex($column).($row + $rowMod + $totalModifiers + 12);
+			$cellMQty = PHPExcel_Cell::stringFromColumnIndex($column + 1).($row + $rowMod + $totalModifiers + 12);
 
-	        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column, $row + $rowMod + 12, $itemMod->name);
+	        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column, $row + $rowMod + $totalModifiers + 12, $itemMod->name);
 	        $objPHPExcel->getActiveSheet()->getStyle($cellMName)->getFont()->setSize(9);
 	        $objPHPExcel->getActiveSheet()->getStyle($cellMName)->getFont()->setItalic(true);
 	        $objPHPExcel->getActiveSheet()->getStyle($cellMName)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
