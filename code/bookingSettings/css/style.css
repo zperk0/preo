@@ -1,3 +1,7 @@
+.clearAll {
+	clear: both;
+}
+
 .settings {
 	background: #fff;
 	padding: 30px;
@@ -20,8 +24,8 @@
 	width: 100%;
 }
 
-.settings .reminder-field-container, .settings .lock-field-container {
-	display: inline-block;
+.settings .reminder-container, .settings .lock-container {
+	height: 60px;
 }
 
 .settings label {
@@ -31,6 +35,7 @@
 
 .settings .reminder-label, .settings .lock-label {
 	margin-left: 3px;
+	line-height: 40px;
 }
 
 .settings-container button {
@@ -44,4 +49,8 @@
 
 .settings-container.invalid small.error {
 	display: block;
+}
+
+.settings .reminder-field, .settings .lock-ordering-field {
+	text-align: center;
 }

@@ -9,7 +9,7 @@ var app = angular.module('bookingSettings',
                 redirectTo: '/'
             });
     }])
-    .run(['$rootScope', 'gettextCatalog', 'LANG', function($rootScope, gettextCatalog, LANG) {
+    .run(['$rootScope', 'gettextCatalog', 'LANG', '$http', 'ACCOUNT_ID', function($rootScope, gettextCatalog, LANG, $http, ACCOUNT_ID) {
 
         $rootScope.requests = 0;
 
@@ -35,5 +35,32 @@ var app = angular.module('bookingSettings',
             gettextCatalog.currentLanguage = lang;
             moment.locale(language);
         }
+
+        $http.get("/api/accounts/"+ACCOUNT_ID+"/packages").then(
+            function(result){
+              var found = false;
+              if (result && result.data){
+                for (var i = 0, len = result.data.length; i < len; i++) {
+                  var accountPackage = result.data[i];
+                  if (accountPackage && accountPackage.preoPackage && accountPackage.preoPackage.features) {
+                    for (var j = 0, lenJ = accountPackage.preoPackage.features.length; j < lenJ; j++) {
+                      var feature = accountPackage.preoPackage.features[j];
+                      //TODO replace the account feature resource with a model and rework the local statuses
+                      if (feature.id === 9 && (accountPackage.status === "INSTALLED" || accountPackage.status === "TRIAL" || accountPackage.status === "UNINSTALLED")) {
+                        found = true;
+                        break;
+                      }
+                    }
+                  }
+
+                  if (found) {
+                    break;
+                  }
+                }
+              }
+              if (!found) {
+                window.location.replace("/dashboard");
+              }
+          });
 
     }]);

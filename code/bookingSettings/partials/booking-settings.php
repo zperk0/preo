@@ -19,23 +19,23 @@
 						</div>
 						<div>
 							<div class='reminder-field-container'>
-								<input type="text" ng-model='bookingSettingsCtrl.settings.reminderDays' class='reminder-field'>
+								<input type="text" ng-model='bookingSettingsCtrl.settings.reminderDays' class='reminder-field pull-left'>
 								<small ng-show='bookingSettingsCtrl.isInvalidNumber(bookingSettingsCtrl.settings.reminderDays) || !bookingSettingsCtrl.settings' class="error" translate>Enter a number</small>
 							</div>
-							<span class='reminder-label' translate>Days before the event</span>
+							<span class='reminder-label pull-left' translate>Days before the event</span>
 						</div>
 					</div>
 					<div class='lock-container'>
-						<div>
+						<div class='clearAll'>
 							<label translate>Lock ordering page</label>
 							&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="{{'The event organiser can change their orders up until this time' | translate}}"></i>
 						</div>
 						<div>
 							<div class='lock-field-container'>
-								<input type="text" ng-model='bookingSettingsCtrl.settings.lockDays' class='lock-ordering-field'>
+								<input type="text" ng-model='bookingSettingsCtrl.settings.lockDays' class='lock-ordering-field pull-left'>
 								<small ng-show='bookingSettingsCtrl.isInvalidNumber(bookingSettingsCtrl.settings.lockDays) || !bookingSettingsCtrl.settings' class="error" translate>Enter a number</small>
 							</div>
-							<span class='lock-label' translate>Days before the event</span>
+							<span class='lock-label pull-left' translate>Days before the event</span>
 						</div>
 					</div>
 				</div>
