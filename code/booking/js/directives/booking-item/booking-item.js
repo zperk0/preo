@@ -13,7 +13,15 @@ angular.module('booking')
         },
         link: function(ng, elem, attrs) {
 
-            ng.permalink = VENUE_PERMALINK;
+            if (!window.location.origin) {
+              window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+            }
+
+            var hostName = document.location.origin;
+            var lastChar = hostName.substr(hostName.length - 1);
+            if (lastChar !== '/') {
+                hostName += '/';
+            }            
 
             ng.getOrdensPlaced = function() {
 
@@ -32,6 +40,10 @@ angular.module('booking')
                 }
 
                 return minValue == Infinity || isNaN(minValue) ? 'N/A' : minValue;
+            };
+            
+            ng.getWebOrdersUrl = function (booking) {
+                return hostName + 'menus/' + VENUE_PERMALINK + '#/booking/' + booking.reference + '/' + booking.user.lastName;
             };
         }
     };
