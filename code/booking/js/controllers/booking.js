@@ -64,6 +64,9 @@
                                 bk.$sections = MenuService.groupItemBySection(bk.$menus, bk.orders);
                                 console.log('menu', bk.$menus);
 
+                                for(var x in bk.$sections)
+                                    bk.$sections[x].total = getTotalItems(bk.$sections[x].items);
+
                                 defer.resolve();
                             });
                         })(deferred, bookings[i]);
@@ -97,6 +100,16 @@
                 $(details).slideRow('down');
             else
                 $(details).slideRow('up');
+        };
+
+        function getTotalItems(items) {
+
+            var total = 0;
+
+            for(var i = 0; i < items.length; i++)
+                total += !isNaN(items[i].qty) ? items[i].qty : 0;
+
+            return total;
         };
 
         function formatTime(time) {

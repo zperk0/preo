@@ -36,7 +36,7 @@
 					<tr class='separator' ng-repeat-end=''></tr>
 
 					<tr ng-if='bookingCtrl.bookingData.length <= 0'>
-						<td class='no-bookings' translate>No bookings at this period.</td>
+						<td class='no-bookings' translate  colspan='7'>No bookings at this period.</td>
 					</tr>
 				</tbody>
 			</table>

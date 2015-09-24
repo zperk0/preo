@@ -16,38 +16,27 @@ angular.module('booking')
             var title = gettextCatalog.getString("Booking");
             ng.account_id = ACCOUNT_ID;
 
-            ng.getTotalItems = function(items) {
+            ng.exportXLS = function(){
 
-                var total = 0;
-
-                for(var i = 0; i < items.length; i++)
-                    total += !isNaN(items[i].qty) ? items[i].qty : 0;
-
-                return total;
-            };
-
-            ng.exportCsv = function(){
-
-                // ng.csvData = prepareExportCsvData(ng.booking);
-
-                // console.log('csvData', ng.csvData);
-
-                // $http({
-                //     method: "post",
-                //     url: '/api/accounts/' + ACCOUNT_ID + '/exports/csv/report',
-                //     transformRequest: transformRequestAsFormPost,
-                //     data: csvData
-                // }).then(function() {
-                //     console.log(arguments);
-                // })
+                ng.csvData = prepareExportCsvData(ng.booking);
             }
 
             function prepareExportCsvData(data){
 
-                var prepData = [[ng.getExportDate()],[title]],
-                    arrBooking = [data.promotion, data.clientData.name, data.date, data.time, data.guests, data.ordersPlaced];
-
-                prepData.push(arrBooking);
+                var prepData = {
+                    client: {
+                        name: ng.booking.user.name,
+                        phone: ng.booking.user.phone,
+                        email: ng.booking.user.email
+                    },
+                    booking: {
+                        promotion: ng.booking.promotionId,
+                        date: ng.booking.date,
+                        time: ng.booking.time,
+                        guests: ng.booking.people
+                    },
+                    sections: ng.booking.$sections
+                }
 
                 return {
                     data:prepData

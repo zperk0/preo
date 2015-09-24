@@ -16,10 +16,9 @@
 				</div>
 			</div>
 			<div class='pull-right ct-btn-print'>
-				<!-- <form action='{{"/api/accounts/" + account_id + "/exports/csv/report"}}' method='POST' ng-submit='exportCsv()'> -->
-				<form>
+				<form action='/exportXLS' method='POST' ng-submit='exportXLS()'>
                     <input name='data' value='{{csvData}}' type='hidden'/>
-                    <button class='btn-print' ng-click='exportCsv()' translate>PRINT BOOKING</button>
+                    <button class='btn-print' translate>PRINT BOOKING</button>
                 </form>
 			</div>
 		</div>
@@ -30,7 +29,7 @@
 						{{section.sectionName}}
 					</span>
 					<span class='pull-right'>
-						{{getTotalItems(section.items)}}
+						{{section.total}}
 					</span>
 				</div>
 				<div class='dish-list clear'>

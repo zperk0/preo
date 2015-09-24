@@ -228,3 +228,6 @@ RewriteRule ^.*$ selectVenue.php [L]
 
 RewriteCond %{REQUEST_URI} ^/do_selectVenue$ [NC]
 RewriteRule ^.*$ /code/venue/do_venue.php [L]
+
+RewriteCond %{REQUEST_URI} ^/exportXLS$ [NC]
+RewriteRule ^.*$ /code/excel/exportXLS.php [L]

@@ -25,23 +25,13 @@ angular.module('booking')
                 for(var x in sections) {
 
                     var items = sections[x].items,
-                        value = Math.floor(getTotalItems(items) / sections[x].min);
+                        value = Math.floor(sections[x] / sections[x].min);
 
                     if(value < minValue)
                         minValue = value;
                 }
 
                 return minValue == Infinity || isNaN(minValue) ? 'N/A' : minValue;
-            };
-
-            function getTotalItems(items) {
-
-                var total = 0;
-
-                for(var i = 0; i < items.length; i++)
-                    total += !isNaN(items[i].qty) ? items[i].qty : 0;
-
-                return total;
             };
         }
     };
