@@ -25,7 +25,7 @@ angular.module('booking')
                 for(var x in sections) {
 
                     var items = sections[x].items,
-                        value = Math.floor(sections[x] / sections[x].min);
+                        value = Math.floor(sections[x].total / sections[x].min);
 
                     if(value < minValue)
                         minValue = value;
