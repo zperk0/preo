@@ -21,27 +21,41 @@ angular.module('bookingMenus')
             // Duplicate event
             ng.duplicateItem = function(menuItem, event) {
 
-                var newMenu = angular.copy(menuItem);
-                newMenu.name = newMenu.name + ' - copy';
+                noty({
+                    layout: 'center',
+                    type: 'confirm',
+                    text: gettextCatalog.getString('Are you sure you want to duplicate this menu? Note: You\'ll be redirect to edit the menu.'),
+                    buttons: [
+                    {addClass: 'alert tiny', text: gettextCatalog.getString('Yes, duplicate this menu!'), onClick: function($noty) {
 
-                $AjaxInterceptor.start();
+                        var newMenu = angular.copy(menuItem);
 
-                BookingMenusService.save(newMenu).then(
-                    function(result) { // success
+                        $AjaxInterceptor.start();
+                        BookingMenusService.save(newMenu).then(
+                            function(result) { // success
 
-                        newMenu.id = result.data.menuid;
+                                newMenu.id = result.data.menuid;
 
-                        $rootScope.$broadcast('duplicateItemMenu', newMenu);
-                        $AjaxInterceptor.complete();
-                    }, function() { // error
+                                $rootScope.$broadcast('duplicateItemMenu', newMenu);
+                                $AjaxInterceptor.complete();
+                            }, function() { // error
 
-                        $AjaxInterceptor.complete();
-                        noty({
-                            type: 'error',  layout: 'topCenter',
-                            text: gettextCatalog.getString("Sorry, but there's been an error processing your request.")
-                        });
-                    });
+                                $AjaxInterceptor.complete();
+                                noty({
+                                    type: 'error',  layout: 'topCenter',
+                                    text: gettextCatalog.getString("Sorry, but there's been an error processing your request.")
+                                });
+                            });
 
+                        $noty.close();
+                      }
+                    },
+                    {addClass: 'secondary tiny', text: gettextCatalog.getString('No, go back.'), onClick: function($noty) {
+                        $noty.close();
+                      }
+                    }
+                  ]
+                });
             };
 
             // Delete event
