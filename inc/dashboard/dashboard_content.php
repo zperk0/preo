@@ -34,7 +34,7 @@
 		<?php
 		if (isset($_SESSION['venue_permalink']) && $_SESSION['OVERRIDES']['has_web_orders']) {
 		?>
-		<p class="venueCode large-8 small-12"><?echo _("Your online order page is")." <a href='". $_SESSION['OVERRIDES']["site"] . "/menus/" . $_SESSION['venue_permalink']."' target='_blank'><strong>". str_replace("https://", "", str_replace("http://", "", $_SESSION['OVERRIDES']["site"])) . "/menus/" . $_SESSION['venue_permalink']."</strong></a>";?></p>
+		<p class="venueCode large-8 small-12"><?echo _("Your online order page is")." <a href='". $_SESSION['OVERRIDES']["site"] . "/menu/" . $_SESSION['venue_permalink']."' target='_blank'><strong>". str_replace("https://", "", str_replace("http://", "", $_SESSION['OVERRIDES']["site"])) . "/menu/" . $_SESSION['venue_permalink']."</strong></a>";?></p>
 		<?php } ?>
 	</div>
 </div>
@@ -81,7 +81,7 @@
 									{
 										// $_SESSION['menus'] = $mDataJSON;
 										foreach($mDataJSON as $menuL){?>
-											<p><a class="dashMenuIcon" href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>" title="<?echo _("Edit")." $menuL[name]";?>"><?echo htmlentities($menuL['name'], ENT_QUOTES)?></a></p>
+											<p><a class="dashMenuIcon" href="<?echo $_SESSION['path']?>/menu/<?echo $menuL['id'];?>" title="<?echo _("Edit")." $menuL[name]";?>"><?echo htmlentities($menuL['name'], ENT_QUOTES)?></a></p>
 										<?}?>
 										<p><a href="<?echo $_SESSION['path']?>/mealdeals"><?echo _("Meal Deals");?></a></p>
 									<?} else {?>

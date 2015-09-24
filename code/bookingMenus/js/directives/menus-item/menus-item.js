@@ -15,7 +15,7 @@ angular.module('bookingMenus')
 
             ng.editItem = function(menuId) {
 
-                window.location.href = '/menus/' + ng.menu.id;
+                window.location.href = '/menu/' + ng.menu.id;
             };
 
             // Duplicate event
