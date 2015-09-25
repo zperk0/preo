@@ -578,11 +578,15 @@ $(document).ready(function() {
 		        select.find(option).prop('selected', true);
 		        // trigger the update
 		        select.trigger("chosen:updated");
-
-		        $('#mName').attr('data-edit',true);
-				$('#mName').data('edit',true);
 	    	}
 	    }
+	});
+
+	// trigger edit menu when promotions were edited
+	select.change(function() {
+
+		$('#mName').attr('data-edit',true);
+		$('#mName').data('edit',true);
 	});
 
 	if(getParameterByName('duplicated'))
