@@ -203,7 +203,7 @@ RewriteRule ^.*$ /code/settings/delivery/getVenue.php [L]
 RewriteCond %{REQUEST_URI} ^/saveMessages$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_saveMessages.php [L]
 
-RewriteRule ^menu/([^/]*)$ /menuSettings.php?id=$1 [L]
+RewriteRule ^editmenu/([^/]*)$ /menuSettings.php?id=$1 [L]
 
 RewriteCond %{REQUEST_URI} ^/deliverySettings$ [NC]
 RewriteRule ^.*$ /code/settings/delivery/delivery-view.php [L]

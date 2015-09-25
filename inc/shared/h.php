@@ -100,7 +100,7 @@
 										{
 											$_SESSION['menus'] = $mDataJSON;
 											foreach($mDataJSON as $menuL){?>
-												<li><a href="<?echo $_SESSION['path']?>/menu/<?echo $menuL['id'];?>"><?echo _("Edit")." $menuL[name]";?></a></li>
+												<li><a href="<?echo $_SESSION['path']?>/editmenu/<?echo $menuL['id'];?>"><?echo _("Edit")." $menuL[name]";?></a></li>
 											<?}?>
 											<li><a href="<?echo $_SESSION['path']?>/mealdeals"><?echo _("Meal Deals");?></a></li><?
 										}
