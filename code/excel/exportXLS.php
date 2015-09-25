@@ -129,20 +129,21 @@ foreach ($sections as $section) {
 
 	foreach($section->items as $row => $item) {
 
-		$cellIName = PHPExcel_Cell::stringFromColumnIndex($column).($row + 11 + $totalModifiers);
-		$cellIQty = PHPExcel_Cell::stringFromColumnIndex($column + 1).($row + 11 + $totalModifiers);
+		$currentRow = $row + 11 + $totalModifiers;
+		$cellIName = PHPExcel_Cell::stringFromColumnIndex($column).($currentRow);
+		$cellIQty = PHPExcel_Cell::stringFromColumnIndex($column + 1).($currentRow);
 
-        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column, $row + 11 + $totalModifiers, $item->name);
-        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column + 1, $row + 11 + $totalModifiers, $item->qty);
+        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column, $currentRow, $item->name);
+        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column + 1, $currentRow, $item->qty);
         formatBorders($cellIName, $objPHPExcel);
         formatBorders($cellIQty, $objPHPExcel);
 
         foreach($item->modifiers as $rowMod => $itemMod) {
 
-        	$cellMName = PHPExcel_Cell::stringFromColumnIndex($column).($row + $rowMod + $totalModifiers + 12);
-			$cellMQty = PHPExcel_Cell::stringFromColumnIndex($column + 1).($row + $rowMod + $totalModifiers + 12);
+        	$cellMName = PHPExcel_Cell::stringFromColumnIndex($column).($currentRow + $rowMod + 1);
+			$cellMQty = PHPExcel_Cell::stringFromColumnIndex($column + 1).($currentRow + $rowMod + 1);
 
-	        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column, $row + $rowMod + $totalModifiers + 12, $itemMod->name);
+	        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column, $currentRow + $rowMod + 1, $itemMod->name);
 	        $objPHPExcel->getActiveSheet()->getStyle($cellMName)->getFont()->setSize(9);
 	        $objPHPExcel->getActiveSheet()->getStyle($cellMName)->getFont()->setItalic(true);
 	        $objPHPExcel->getActiveSheet()->getStyle($cellMName)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
