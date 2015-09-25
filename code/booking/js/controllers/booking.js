@@ -34,25 +34,23 @@
                     var deferred = $q.defer()/*,
                         bookingPromotion = PromotionService.getPromotionById(bookings[i].promotionId);*/
 
-                    var dateObj = moment(bookings[i].date).utc(),
-                        timeSplit = bookings[i]['time'] ? bookings[i]['time'].split(':') : [];
-
-                    if(timeSplit.length > 0) {
-
-                        dateObj.hour(timeSplit[0]);
-                        dateObj.minutes(timeSplit[1]);
-                    }
-
-                    bookings[i].date = dateObj.format('DD/MM/YY');
-                    bookings[i]['time'] = formatTime(bookings[i]['time']);
-                    bookings[i].$bookingDate = dateObj.valueOf();
-
-                    // bookings[i].$promotionName = bookingPromotion ? bookingPromotion.Name : '';
-                    // TODO: remove promotionId 23 hardcode
-                    bookings[i].promotionId = bookings[i].promotionId || 23;
-                    bookings[i].$promotionName = bookings[i].promotionId;
-
                     if(bookings[i].promotionId) {
+
+                        var dateObj = moment(bookings[i].date).utc(),
+                            timeSplit = bookings[i]['time'] ? bookings[i]['time'].split(':') : [];
+
+                        if(timeSplit.length > 0) {
+
+                            dateObj.hour(timeSplit[0]);
+                            dateObj.minutes(timeSplit[1]);
+                        }
+
+                        bookings[i].date = dateObj.format('DD/MM/YY');
+                        bookings[i]['time'] = formatTime(bookings[i]['time']);
+                        bookings[i].$bookingDate = dateObj.valueOf();
+
+                        // bookings[i].$promotionName = bookingPromotion ? bookingPromotion.Name : '';
+                        bookings[i].$promotionName = bookings[i].promotionId;
 
                         (function(defer, bk) {
 
@@ -82,7 +80,9 @@
                 }
 
                 $q.all(promises).then(function() {
-                    vm.bookingData = bookings;
+
+                    // filter bookings that don't have a promotion id
+                    vm.bookingData = bookings.filter(function(b){return b.promotionId});
                     $AjaxInterceptor.complete();
                 });
             }, function() {
