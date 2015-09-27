@@ -21,9 +21,12 @@
         $headers[] = 'preo-venueid: '.$_SESSION['venue_id'];
     }
 
+        if (!preg_match('/http/', $url)) {
+            $url = 'https://' . $url;
+        }
+
 		curl_setopt($curl, CURLOPT_HTTPHEADER,$headers);   
 		if(preg_match('/https/', $url)){
-			// $url = str_replace('https', 'http', $url);
 			curl_setopt($curl, CURLOPT_CAINFO, $_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/cert.pem'); //required for SSL verfication 
 		}
 
