@@ -43,6 +43,7 @@
   <script src="/locale_angular/translations.js"></script>
   <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>
   <script src="/code/loader/ajaxInterceptor.js"></script>
+  <script src="/code/constants/feature.js"></script>
   <script src="/code/booking/js/app.js"></script>
   <script src="/code/booking/js/controllers/booking.js"></script>
   <script src="/code/booking/js/directives/booking-item/booking-item.js"></script>
