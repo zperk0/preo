@@ -22,12 +22,7 @@
 
             $rootScope.safeApply(function() {
 
-                for(var x in vm.menusData) {
-                    if(vm.menusData[x] == data){
-                        vm.menusData.splice(x, 1);
-                        break;
-                    }
-                }
+                vm.menusData.splice(vm.menusData.indexOf(data), 1);
             });
         }
 

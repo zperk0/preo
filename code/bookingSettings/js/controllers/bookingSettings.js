@@ -24,7 +24,8 @@
 
             $AjaxInterceptor.start();
 
-            if(noSettingsSaved)
+            if(noSettingsSaved) {
+
                 BookingSettings.save(data).then(function(result) {
 
                     // bind jscore instance
@@ -36,7 +37,8 @@
                     $AjaxInterceptor.complete();
                     showErrorMsg();
                 });
-            else
+            } else {
+
                 BookingSettings.update(vm.settings, data).then(function(result) {
 
                     $AjaxInterceptor.complete();
@@ -46,6 +48,7 @@
                     $AjaxInterceptor.complete();
                     showErrorMsg();
                 });
+            }
         }
 
         vm.isInvalidNumber = function(input) {
