@@ -3,16 +3,36 @@
 'use scrict';
 
     angular.module('booking')
-    .controller('BookingCtrl', ['$rootScope', '$timeout', '$q', 'VENUE_ID', '$AjaxInterceptor', 'BookingService', 'MenuService', 'gettextCatalog', 'BookingSettingsService',
-        function($rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingService, MenuService, gettextCatalog, BookingSettingsService) {
+    .controller('BookingCtrl', ['$rootScope', '$timeout', '$q', 'VENUE_ID', '$AjaxInterceptor', 'BookingService', 'MenuService', 'gettextCatalog', 'BookingSettingsService', '$filter',
+        function($rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingService, MenuService, gettextCatalog, BookingSettingsService, $filter) {
 
         var vm = this,
             menu = null,
             promotions = null;
 
-        vm.generateReport = function() {
+        vm.toggleDetails = function(index) {
+
+            var details = $('.booking-details')[index];
+
+            if($(details).css('display') == 'none')
+                $(details).slideRow('down');
+            else
+                $(details).slideRow('up');
+        };
+
+        vm.getBookings = function() {
+
+            fetchData().then(function(data) {
+
+                console.log(data);
+                vm.bookingData = $filter('orderBy')(data, '$bookingDate');
+            });
+        };
+
+        function fetchData() {
 
             var promises = [],
+                reportDeferred = $q.defer(),
                 filter = {
                     startDate: vm.startDate,
                     endDate: vm.endDate
@@ -52,7 +72,7 @@
                             bk.getMenu().then(function(data) {
 
                                 bk.$menus = data;
-                                bk.$sections = MenuService.groupItemBySection(bk.$menus, bk.orders);
+                                bk.sectionsFiltered = MenuService.groupItemBySection(bk.$menus, bk.orders);
 
                                 defer.resolve();
                             });
@@ -64,39 +84,34 @@
 
                 if(bookings.length == 0) {
 
-                    vm.bookingData = bookings;
+                    reportDeferred.resolve(bookings);
                     $AjaxInterceptor.complete();
                 }
 
                 $q.all(promises).then(function() {
 
                     // filter bookings that don't have a promotion id
-                    vm.bookingData = bookings.filter(function(b){return b.promotionId});
+                    var bookingsFiltered = bookings.filter(function(b){return b.promotionId});
+                    reportDeferred.resolve(bookingsFiltered);
+
                     $AjaxInterceptor.complete();
                 }, function() {
 
-                    showErrorMsg();
                     $AjaxInterceptor.complete();
+                    showErrorMsg();
                 });
             }, function() {
 
-                showErrorMsg();
                 $AjaxInterceptor.complete();
+                showErrorMsg();
             });
-        };
 
-        vm.toggleDetails = function(index) {
-
-            var details = $('.booking-details')[index];
-
-            if($(details).css('display') == 'none')
-                $(details).slideRow('down');
-            else
-                $(details).slideRow('up');
-        };
+            return reportDeferred.promise;
+        }
 
         function formatTime(time) {
 
+            // remove miliseconds from the time string
             return time.length == 8 ? time.substr(0, time.length - 3) : time;
         }
 
@@ -125,7 +140,7 @@
             BookingSettingsService.getSettings().then(function() {
 
                 $AjaxInterceptor.complete();
-                vm.generateReport();
+                vm.getBookings();
 
             }, function() {
 

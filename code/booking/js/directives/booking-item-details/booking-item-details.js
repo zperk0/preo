@@ -35,7 +35,7 @@ angular.module('booking')
                         time: ng.booking.time,
                         guests: ng.booking.people
                     },
-                    sections: ng.booking.$sections
+                    sections: ng.booking.sectionsFiltered
                 }
 
                 return {
