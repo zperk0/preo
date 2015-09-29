@@ -36,7 +36,7 @@
 
   <script src="/js/angular_all.min.js"></script>
 
-  <!-- BEGIN WATCH -->
+  <!-- BEGIN WATCH
   <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>
   <script src="/bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
   <script src="/bower_components/angular-order-object-by/src/ng-order-object-by.js"></script>
@@ -49,12 +49,11 @@
   <script src="/code/booking/js/directives/booking-item/booking-item.js"></script>
   <script src="/code/booking/js/directives/booking-item-details/booking-item-details.js"></script>
   <script src="/code/booking/js/services/bookingService.js"></script>
-  <script src="/code/booking/js/services/promotionService.js"></script>
   <script src="/code/booking/js/services/menuService.js"></script>
   <script src="/code/booking/js/services/bookingSettingsService.js"></script>
   <!-- END WATCH -->
 
-  <!-- // <script src="/code/booking/all.min.js"></script> -->
+  <script src="/code/booking/all.min.js"></script>
 
   <script src="/code/constants/session.php"></script>
 
