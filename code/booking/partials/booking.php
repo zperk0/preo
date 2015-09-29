@@ -9,7 +9,7 @@
 				<span class='separator'>-</span>
 				<input type="text" ng-model='bookingCtrl.endDate' class='sched-end-date'>
 				<i class="calendar"></i>
-				<button ng-click='bookingCtrl.getBookings()' type="button" title="{{'Generate report' | translate}}">SUBMIT</button>
+				<button ng-click='bookingCtrl.getBookings()' type="button" title="{{'Submit' | translate}}">SUBMIT</button>
 				<form class='pull-right' action='/bookingsReport' method='POST'>
                     <input name='data' value='{{bookingCtrl.bookingData}}' type='hidden'/>
                     <button title="{{'Generate report' | translate}}">GENERATE REPORT</button>
