@@ -39,7 +39,7 @@ angular.module('booking')
                         minValue = value;
                 }
 
-                return minValue == Infinity || isNaN(minValue) ? 'N/A' : minValue;
+                return minValue == Infinity || isNaN(minValue) ? 0 : minValue;
             };
 
             ng.getWebOrdersUrl = function (booking) {
