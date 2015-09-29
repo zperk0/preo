@@ -112,7 +112,7 @@ foreach ($bookingsGroupedByDate as $bookingDate => $bookings) {
 		$sections = $booking->sectionsFiltered;
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnTime, $currentRow, $booking->time);
 
-		if(empty((array) $sections)) {
+		if(empty(((array) $sections))) {
 
 			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnQty, $currentRow, '0 orders');
 			$currentRow++;
