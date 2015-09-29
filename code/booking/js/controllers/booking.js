@@ -3,8 +3,8 @@
 'use scrict';
 
     angular.module('booking')
-    .controller('BookingCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID','$AjaxInterceptor', 'BookingService', 'PromotionService', 'MenuService', 'gettextCatalog', 'BookingSettingsService',
-        function($scope, $rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingService, PromotionService, MenuService, gettextCatalog, BookingSettingsService) {
+    .controller('BookingCtrl', ['$rootScope', '$timeout', '$q', 'VENUE_ID', '$AjaxInterceptor', 'BookingService', 'MenuService', 'gettextCatalog', 'BookingSettingsService',
+        function($rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingService, MenuService, gettextCatalog, BookingSettingsService) {
 
         var vm = this,
             menu = null,
@@ -99,7 +99,7 @@
             var total = 0;
 
             for(var i = 0; i < items.length; i++)
-                total += !isNaN(items[i].qty) ? items[i].qty : 0;
+                total += !isNaN(items[i].qty) ? +items[i].qty : 0;
 
             return total;
         };

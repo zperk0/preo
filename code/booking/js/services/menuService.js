@@ -43,13 +43,12 @@ angular.module('booking')
                             if(!obj[section.id]) {
                                 obj[section.id] = {};
                                 obj[section.id].items = [];
+                                obj[section.id].sectionName = section.name;
+                                obj[section.id].min = section.min;
+                                obj[section.id].position = section.position;
                             }
 
-                            obj[section.id].sectionName = section.name;
-                            obj[section.id].min = section.min;
-                            obj[section.id].position = section.position;
                             obj[section.id].items.push(orderItem);
-
                             foundSection = true;
                         }
                     }
