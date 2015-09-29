@@ -60,6 +60,14 @@
             $data['promotions'] = $menu['promotions'];
         }
 
+        // menu booking type
+        if (isset($menu['type'])) {
+        	$data['type'] = $menu['type'];
+        } else if($_SESSION['groupMenu']) {
+        	$data['type'] = 'BOOKING';
+        }
+
+
 		$jsonData 	= json_encode($data);
 		$curlResult = callAPI('POST', $apiURL."menus", $jsonData, $apiAuth); //menu created
 		$result 	= json_decode($curlResult,true);
@@ -88,6 +96,13 @@
 
 		if (isset($menu['promotions']) && is_array($menu['promotions']) && count($menu['promotions'])) {
             $data['promotions'] = $menu['promotions'];
+        }
+
+        // menu booking type
+        if (isset($menu['type'])) {
+        	$data['type'] = $menu['type'];
+        } else if($_SESSION['groupMenu']) {
+        	$data['type'] = 'BOOKING';
         }
 
 		$jsonData 	= json_encode($data);
