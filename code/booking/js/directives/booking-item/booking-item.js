@@ -21,11 +21,11 @@ angular.module('booking')
             var lastChar = hostName.substr(hostName.length - 1);
             if (lastChar !== '/') {
                 hostName += '/';
-            }            
+            }
 
             ng.getOrdensPlaced = function() {
 
-                var sections = ng.booking.$sections,
+                var sections = ng.booking.sectionsFiltered,
                     guests = ng.booking.people,
                     minValue = Infinity;
 
@@ -41,7 +41,7 @@ angular.module('booking')
 
                 return minValue == Infinity || isNaN(minValue) ? 'N/A' : minValue;
             };
-            
+
             ng.getWebOrdersUrl = function (booking) {
                 return hostName + 'menus/' + VENUE_PERMALINK + '#/booking/' + booking.reference + '/' + booking.user.lastName;
             };

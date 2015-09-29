@@ -3,16 +3,36 @@
 'use scrict';
 
     angular.module('booking')
-    .controller('BookingCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID','$AjaxInterceptor', 'BookingService', 'PromotionService', 'MenuService', 'gettextCatalog', 'BookingSettingsService',
-        function($scope, $rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingService, PromotionService, MenuService, gettextCatalog, BookingSettingsService) {
+    .controller('BookingCtrl', ['$scope', '$rootScope', '$timeout', '$q', 'VENUE_ID','$AjaxInterceptor', 'BookingService', 'PromotionService', 'MenuService', 'gettextCatalog', 'BookingSettingsService', '$filter',
+        function($scope, $rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingService, PromotionService, MenuService, gettextCatalog, BookingSettingsService, $filter) {
 
         var vm = this,
             menu = null,
             promotions = null;
 
-        vm.generateReport = function() {
+        vm.toggleDetails = function(index) {
+
+            var details = $('.booking-details')[index];
+
+            if($(details).css('display') == 'none')
+                $(details).slideRow('down');
+            else
+                $(details).slideRow('up');
+        };
+
+        vm.getBookings = function() {
+
+            fetchData().then(function(data) {
+
+                console.log(data);
+                vm.bookingData = $filter('orderBy')(data, '$bookingDate');
+            });
+        };
+
+        function fetchData() {
 
             var promises = [],
+                reportDeferred = $q.defer(),
                 filter = {
                     startDate: vm.startDate,
                     endDate: vm.endDate
@@ -52,10 +72,13 @@
                             bk.getMenu().then(function(data) {
 
                                 bk.$menus = data;
-                                bk.$sections = MenuService.groupItemBySection(bk.$menus, bk.orders);
+                                bk.sectionsFiltered = MenuService.groupItemBySection(bk.$menus, bk.orders);
 
-                                for(var x in bk.$sections)
-                                    bk.$sections[x].total = getTotalItems(bk.$sections[x].items);
+                                for(var x in bk.sectionsFiltered)
+                                    bk.sectionsFiltered[x].total = getTotalItems(bk.sectionsFiltered[x].items);
+
+                                defer.resolve();
+                            }, function() {
 
                                 defer.resolve();
                             });
@@ -67,32 +90,30 @@
 
                 if(bookings.length == 0) {
 
-                    vm.bookingData = bookings;
+                    reportDeferred.resolve(bookings);
                     $AjaxInterceptor.complete();
                 }
 
                 $q.all(promises).then(function() {
 
                     // filter bookings that don't have a promotion id
-                    vm.bookingData = bookings.filter(function(b){return b.promotionId});
+                    var bookingsFiltered = bookings.filter(function(b){return b.promotionId});
+                    reportDeferred.resolve(bookingsFiltered);
+
                     $AjaxInterceptor.complete();
+                }, function() {
+
+                    $AjaxInterceptor.complete();
+                    showErrorMsg();
                 });
             }, function() {
 
-                showErrorMsg();
                 $AjaxInterceptor.complete();
+                showErrorMsg();
             });
-        };
 
-        vm.toggleDetails = function(index) {
-
-            var details = $('.booking-details')[index];
-
-            if($(details).css('display') == 'none')
-                $(details).slideRow('down');
-            else
-                $(details).slideRow('up');
-        };
+            return reportDeferred.promise;
+        }
 
         function getTotalItems(items) {
 
@@ -134,7 +155,7 @@
             BookingSettingsService.getSettings().then(function() {
 
                 $AjaxInterceptor.complete();
-                vm.generateReport();
+                vm.getBookings();
 
             }, function() {
 

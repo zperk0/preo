@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class='dish-info clear'>
-			<div class='dish-card' ng-repeat='section in booking.$sections | orderObjectBy:"position"'>
+			<div class='dish-card' ng-repeat='section in booking.sectionsFiltered | orderObjectBy:"position"'>
 				<div class='list-header clear'>
 					<span class='pull-left section-name'>
 						{{section.sectionName}}
