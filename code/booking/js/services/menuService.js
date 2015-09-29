@@ -67,7 +67,21 @@ angular.module('booking')
         if(obj['Unknown'].items.length == 0)
             delete obj.Unknown;
 
+        // add total items per section to the object
+        for(var x in obj)
+            obj[x].total = getTotalItems(obj[x].items);
+
         return obj;
+    }
+
+    function getTotalItems(items) {
+
+        var total = 0;
+
+        for(var i = 0; i < items.length; i++)
+            total += !isNaN(items[i].qty) ? +items[i].qty : 0;
+
+        return total;
     }
 
     return service;
