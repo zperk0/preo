@@ -8,7 +8,8 @@
 
         var vm = this,
             menu = null,
-            promotions = null;
+            promotions = null,
+            cachedMenus = {};
 
         vm.toggleDetails = function(index) {
 
@@ -69,13 +70,22 @@
 
                         (function(defer, bk) {
 
-                            bk.getMenu().then(function(data) {
-
-                                bk.$menus = data;
-                                bk.sectionsFiltered = MenuService.groupItemBySection(bk.$menus, bk.orders);
+                            if(cachedMenus[bk.promotionId]) {
 
                                 defer.resolve();
-                            });
+                            }
+                            else {
+
+                                // flag to know that we are already getting the menu with this promotion id
+                                cachedMenus[bk.promotionId] = true;
+                                bk.getMenu().then(function(menu) {
+
+                                    cachedMenus[bk.promotionId] = menu;
+                                    defer.resolve();
+                                });
+                            }
+
+
                         })(deferred, _booking);
 
                         promises.push(deferred.promise);
@@ -92,6 +102,13 @@
 
                     // filter bookings that don't have a promotion id
                     var bookingsFiltered = bookings.filter(function(b){return b.promotionId});
+
+                    $.each(bookingsFiltered, function(i, obj) {
+
+                        obj.$menus = cachedMenus[obj.promotionId];
+                        obj.sectionsFiltered = MenuService.groupItemBySection(obj.$menus, obj.orders);
+                    });
+
                     reportDeferred.resolve(bookingsFiltered);
 
                     $AjaxInterceptor.complete();

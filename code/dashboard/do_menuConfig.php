@@ -8,6 +8,8 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/SystemStatic.php');
 
 
+	$msgForPromotionsError = 'Those already exists in another menu:';
+
 	function getImagePath(){
 		$path = "";
 			if(isset($_SERVER['PREO_UPLOAD_PATH']))
@@ -72,6 +74,24 @@
 		$curlResult = callAPI('POST', $apiURL."menus", $jsonData, $apiAuth); //menu created
 		$result 	= json_decode($curlResult,true);
 
+		//check for promotion error to handle
+		$msgPromotion = strpos($result['message'], $msgForPromotionsError);
+		if($result['status'] == 400 && $msgPromotion !== false) {
+
+			$promotionsInvalid = substr($result['message'], (strpos($result['message'], 'menu:') + 6));
+
+			$response = array('result' => array());
+			$response['result']['status'] = 400;
+			$response['result']['promotionsInvalid'] = $promotionsInvalid;
+
+			echo json_encode($response);
+			die();
+
+			// header('HTTP/1.1 400');
+			// header('Content-Type: application/json; charset=UTF-8');
+			// die(json_encode(array('message' => $result['message'], 'promotionsInvalid' => $promotionsInvalid )));
+		}
+
 		//save old - new id relationship
 		$newIDs[$menu_id] = $result['id'];
 
@@ -108,6 +128,20 @@
 		$jsonData 	= json_encode($data);
 		$curlResult = callAPI('PUT', $apiURL."menus/$menu_id", $jsonData, $apiAuth); //menu edited
 		$result 	= json_decode($curlResult,true);
+
+		//check for promotion error to handle
+		$msgPromotion = strpos($result['message'], $msgForPromotionsError);
+		if($result['status'] == 400 && $msgPromotion !== false) {
+
+			$promotionsInvalid = substr($result['message'], (strpos($result['message'], 'menu:') + 6));
+
+			$response = array('result' => array());
+			$response['result']['status'] = 400;
+			$response['result']['promotionsInvalid'] = $promotionsInvalid;
+
+			echo json_encode($response);
+			exit;
+		}
 
 		//remove edit tag for the menu!
 		$menu['edit'] = false;
