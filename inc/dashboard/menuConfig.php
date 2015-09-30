@@ -1,4 +1,4 @@
-<? $_SESSION['groupMenu'] = ($_SERVER['REQUEST_URI'] == '/newGroupMenu') || (count($menu['promotions']) > 0) ? true : false; ?>
+<? $_SESSION['groupMenu'] = ($_SERVER['REQUEST_URI'] == '/newGroupMenu') || (strtoupper($menu['type']) == 'BOOKING') ? true : false; ?>
 
 <div class="loading" id="loadingConfig">
   <div class="background-loading"></div>
@@ -78,12 +78,11 @@
 			<div class='row'>
 				<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
 				<div class='promotions-input-container'>
-					<select class='promotions-select allow-custom-input' data-placeholder="<?echo _('Select some promotions'); ?>" required multiple>
+					<select class='promotions-select allow-custom-input' data-placeholder="<?echo _('Select some promotions'); ?>" multiple>
 						<?foreach($menu['promotions'] as $pKey=>$promotion){?>
 							<option value="<? echo $promotion; ?>" selected><? echo $promotion; ?></option>
 						<?}?>
 					</select>
-					<small class="error mNameError"><?echo _("Please choose a promotion");?></small>
 				</div>
 			</div>
 			<?}?>

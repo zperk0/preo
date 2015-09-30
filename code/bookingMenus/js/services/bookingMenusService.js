@@ -18,9 +18,13 @@ angular.module('bookingMenus')
 
 	service.save = function(data) {
 
+		// duplicating the menu
 		var menuData = angular.copy(data);
 
+		// fit into php logic to save menu
 		menuData.id = 'menu1';
+
+		menuData.type = 'BOOKING';
 
 		editProperties(menuData.sections);
 

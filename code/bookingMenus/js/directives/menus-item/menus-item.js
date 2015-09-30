@@ -30,6 +30,9 @@ angular.module('bookingMenus')
 
                         var newMenu = angular.copy(menuItem);
 
+                        // promotion id are limited to 1 menu
+                        newMenu.promotions = [];
+
                         $AjaxInterceptor.start();
                         BookingMenusService.save(newMenu).then(
                             function(result) { // success
