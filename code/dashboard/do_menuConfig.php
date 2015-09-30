@@ -75,21 +75,20 @@
 		$result 	= json_decode($curlResult,true);
 
 		//check for promotion error to handle
-		$msgPromotion = strpos($result['message'], $msgForPromotionsError);
-		if($result['status'] == 400 && $msgPromotion !== false) {
+		if($result['message'] && $result['status']) {
 
-			$promotionsInvalid = substr($result['message'], (strpos($result['message'], 'menu:') + 6));
+			$msgPromotion = strpos($result['message'], $msgForPromotionsError);
+			if($result['status'] == 400 && $msgPromotion !== false) {
 
-			$response = array('result' => array());
-			$response['result']['status'] = 400;
-			$response['result']['promotionsInvalid'] = $promotionsInvalid;
+				$promotionsInvalid = substr($result['message'], (strpos($result['message'], 'menu:') + 6));
 
-			echo json_encode($response);
-			die();
+				$response = array('result' => array());
+				$response['result']['status'] = 400;
+				$response['result']['promotionsInvalid'] = $promotionsInvalid;
 
-			// header('HTTP/1.1 400');
-			// header('Content-Type: application/json; charset=UTF-8');
-			// die(json_encode(array('message' => $result['message'], 'promotionsInvalid' => $promotionsInvalid )));
+				echo json_encode($response);
+				die();
+			}
 		}
 
 		//save old - new id relationship
@@ -130,17 +129,20 @@
 		$result 	= json_decode($curlResult,true);
 
 		//check for promotion error to handle
-		$msgPromotion = strpos($result['message'], $msgForPromotionsError);
-		if($result['status'] == 400 && $msgPromotion !== false) {
+		if($result['message'] && $result['status']) {
 
-			$promotionsInvalid = substr($result['message'], (strpos($result['message'], 'menu:') + 6));
+			$msgPromotion = strpos($result['message'], $msgForPromotionsError);
+			if($result['status'] == 400 && $msgPromotion !== false) {
 
-			$response = array('result' => array());
-			$response['result']['status'] = 400;
-			$response['result']['promotionsInvalid'] = $promotionsInvalid;
+				$promotionsInvalid = substr($result['message'], (strpos($result['message'], 'menu:') + 6));
 
-			echo json_encode($response);
-			exit;
+				$response = array('result' => array());
+				$response['result']['status'] = 400;
+				$response['result']['promotionsInvalid'] = $promotionsInvalid;
+
+				echo json_encode($response);
+				die();
+			}
 		}
 
 		//remove edit tag for the menu!

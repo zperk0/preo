@@ -79,9 +79,11 @@
 				<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
 				<div class='promotions-input-container'>
 					<select class='promotions-select allow-custom-input' data-placeholder="<?echo _('Select some promotions'); ?>" multiple>
-						<?foreach($menu['promotions'] as $pKey=>$promotion){?>
+						<?if(isset($menu)) {
+							foreach($menu['promotions'] as $pKey=>$promotion){?>
 							<option value="<? echo $promotion; ?>" selected><? echo $promotion; ?></option>
-						<?}?>
+						<?}
+						}?>
 					</select>
 				</div>
 			</div>
