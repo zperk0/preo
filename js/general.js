@@ -2350,7 +2350,7 @@ $(document).ready(function() {
 
 							noty({
 								type: 'error',  layout: 'topCenter',
-								text: _tr("Sorry, but those promotions already exists in another menu: " ) + JSON.parse(promotions).toString()
+								text: _tr("Promotions") + " " + JSON.parse(promotions).toString() + " " + _tr("are already assigned to another menu. Each promotion can only be assigned to one menu.")
 							});
 						} else {
 
