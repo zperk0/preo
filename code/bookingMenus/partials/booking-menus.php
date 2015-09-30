@@ -20,7 +20,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr menus-item ng-click='menusCtrl.toggleDetails($index)' ng-repeat='menu in menusCtrl.menusData' element='menu'></tr>
+					<tr menus-item ng-click='menusCtrl.toggleDetails($index)' ng-repeat='menu in menusCtrl.menusData' element='menu' remove-menu='menusCtrl.removeItemMenu' duplicate-menu='menusCtrl.duplicateItemMenu'></tr>
 				</tbody>
 			</table>
 		</div>

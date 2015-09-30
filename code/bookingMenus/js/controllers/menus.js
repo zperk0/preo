@@ -10,7 +10,7 @@
             window.location.href = '/newGroupMenu';
         }
 
-        function duplicateItemMenu(evt, data) {
+        vm.duplicateItemMenu = function(data) {
 
             vm.menusData.push(data);
 
@@ -18,7 +18,7 @@
             window.location.href = '/editmenu/' + data.id + '?duplicated=true';
         }
 
-        function removeItemMenu(evt, data) {
+        vm.removeItemMenu = function(data) {
 
             $rootScope.safeApply(function() {
 
@@ -58,9 +58,6 @@
                     $AjaxInterceptor.complete();
                     showErrorMsg();
                 });
-
-                $scope.$on('duplicateItemMenu', duplicateItemMenu);
-                $scope.$on('removeItemMenu', removeItemMenu);
             }, function() {
 
                 var noSettingMsg = gettextCatalog.getString('Please, setup the group booking settings first.');

@@ -9,7 +9,9 @@ angular.module('bookingMenus')
         restrict: 'A',
         replace: true,
         scope: {
-            menu: '=element'
+            menu: '=element',
+            duplicateMenu: '=',
+            removeMenu: '='
         },
         link: function(ng, elem, attrs) {
 
@@ -38,8 +40,8 @@ angular.module('bookingMenus')
                             function(result) { // success
 
                                 newMenu.id = result.data.menuid;
+                                ng.duplicateMenu(newMenu);
 
-                                $rootScope.$broadcast('duplicateItemMenu', newMenu);
                                 $AjaxInterceptor.complete();
                             }, function() { // error
 
@@ -78,7 +80,7 @@ angular.module('bookingMenus')
                             function() { // success
 
                                 $AjaxInterceptor.complete();
-                                $rootScope.$broadcast('removeItemMenu', menuItem);
+                                ng.removeMenu(menuItem);
                             }, function() { // error
 
                                 $AjaxInterceptor.complete();
