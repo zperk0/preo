@@ -24,9 +24,6 @@ angular.module('bookingMenus')
 		// fit into php logic to save menu
 		menuData.id = 'menu1';
 
-		// promotion id are limited to 1 menu
-		menuData.promotions = [];
-
 		menuData.type = 'BOOKING';
 
 		editProperties(menuData.sections);
