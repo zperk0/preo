@@ -2342,15 +2342,31 @@ $(document).ready(function() {
 						return false;
 					}
 
-					if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
+					if(typeof dataArray['result'] !='undefined' && dataArray['result']['status'] == 400) {
+
+						var promotions = dataArray.result.promotionsInvalid || [];
+
+						if(promotions.length) {
+
+							noty({
+								type: 'error',  layout: 'topCenter',
+								text: _tr("Sorry, but those promotions already exists in another menu: " ) + JSON.parse(promotions).toString()
+							});
+						} else {
+
+							noty({
+							  type: 'error',  layout: 'topCenter',
+							  text: _tr("Sorry, but there's been an error processing your request.") //text: dataArray['message']
+							});
+						}
+					} else if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
 						  text: _tr("Sorry, but there's been an error processing your request.") //text: dataArray['message']
 						});
 
-					}
-					else
+					} else
 					{
 						newIDs = dataArray['update'];
 						var imagesIDS = dataArray['images'];
