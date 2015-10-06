@@ -81,7 +81,7 @@ angular.module('booking')
 
         if(cachedMenus[booking.promotionId]) {
 
-            defer.resolve(cachedMenus[booking.promotionId]);
+            deferred.resolve(cachedMenus[booking.promotionId]);
         }
         else {
 
@@ -89,6 +89,8 @@ angular.module('booking')
             cachedMenus[booking.promotionId] = true;
             // jscore method
             booking.getMenu().then(function(menu) {
+
+                console.log('menu jscore', menu);
 
                 cachedMenus[booking.promotionId] = menu;
                 deferred.resolve(menu);

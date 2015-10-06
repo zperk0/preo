@@ -10,10 +10,12 @@
 				<input type="text" ng-model='bookingCtrl.endDate' class='sched-end-date'>
 				<i class="calendar"></i>
 				<button ng-click='bookingCtrl.getBookings()' type="button" title="{{'Submit' | translate}}">SUBMIT</button>
-				<form class='pull-right' action='/bookingsReport' method='POST'>
-                    <input name='data' value='{{bookingCtrl.bookingData}}' type='hidden'/>
-                    <button title="{{'Generate report' | translate}}">GENERATE REPORT</button>
-                </form>
+				<div class="pull-right">
+					<form submit-form='generateReportTrigger' action='/bookingsReport' method='POST'>
+	                    <input name='data' value='{{bookingCtrl.bookingData}}' type='hidden'/>
+	                </form>
+	                <button title="{{'Generate report' | translate}}" ng-click='bookingCtrl.prepareData()'>GENERATE REPORT</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -34,7 +36,7 @@
 				<tbody>
 					<tr class='separator-thead'></tr>
 
-					<tr booking-item ng-click='bookingCtrl.toggleDetails($index, booking)' ng-repeat-start='booking in bookingCtrl.bookingData' element='booking' startDate='bookingCtrl.startDate' endDate='bookingCtrl.endDate'></tr>
+					<tr booking-item ng-click='bookingCtrl.toggleDetails($index, booking)' ng-repeat-start='booking in bookingCtrl.bookingsToShow' element='booking' startDate='bookingCtrl.startDate' endDate='bookingCtrl.endDate'></tr>
 					<tr booking-item-details element='booking'></tr>
 
 					<tr class='separator' ng-repeat-end=''></tr>
@@ -44,6 +46,17 @@
 					</tr>
 				</tbody>
 			</table>
+			<div class="pagination-container">
+				<pagination
+					total-items='bookingCtrl.bookingData.length'
+					items-per-page='bookingCtrl.maxItemsPerPage'
+					page='bookingCtrl.currentPage'
+					max-size='10'
+					previous-text='{{"Previous" | translate}}'
+					next-text='{{"Next" | translate}}'
+					on-select-page='bookingCtrl.changePage(page)'>
+				</pagination>
+			</div>
 		</div>
 	</div>
 </div>

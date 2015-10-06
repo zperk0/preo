@@ -20,6 +20,6 @@
 		</span>
 	</td>
 	<td class="booking-orders">
-		<span>{{booking.ordensPlaced || 0}} <span translate>of</span> {{booking.people}}</span>
+		<span>{{booking.ordersPlaced || 0}} <span translate>of</span> {{booking.people}}</span>
 	</td>
 </tr>
