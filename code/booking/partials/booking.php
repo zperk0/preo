@@ -34,7 +34,7 @@
 				<tbody>
 					<tr class='separator-thead'></tr>
 
-					<tr booking-item ng-click='bookingCtrl.toggleDetails($index)' ng-repeat-start='booking in bookingCtrl.bookingData' element='booking' startDate='bookingCtrl.startDate' endDate='bookingCtrl.endDate'></tr>
+					<tr booking-item ng-click='bookingCtrl.toggleDetails($index, booking)' ng-repeat-start='booking in bookingCtrl.bookingData' element='booking' startDate='bookingCtrl.startDate' endDate='bookingCtrl.endDate'></tr>
 					<tr booking-item-details element='booking'></tr>
 
 					<tr class='separator' ng-repeat-end=''></tr>

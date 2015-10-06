@@ -23,25 +23,6 @@ angular.module('booking')
                 hostName += '/';
             }
 
-            ng.getOrdensPlaced = function() {
-
-                var sections = ng.booking.sectionsFiltered,
-                    guests = ng.booking.people,
-                    minValue = Infinity;
-
-                // we are considering always the min value of orders placed
-                for(var x in sections) {
-
-                    var items = sections[x].items,
-                        value = Math.floor(sections[x].total / sections[x].min);
-
-                    if(value < minValue)
-                        minValue = value;
-                }
-
-                return minValue == Infinity || isNaN(minValue) ? 0 : minValue;
-            };
-
             ng.getWebOrdersUrl = function (booking) {
                 return hostName + 'menus/' + VENUE_PERMALINK + '#/booking/' + booking.reference + '/' + booking.user.lastName;
             };

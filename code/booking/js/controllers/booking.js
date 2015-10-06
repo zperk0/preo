@@ -8,10 +8,9 @@
 
         var vm = this,
             menu = null,
-            promotions = null,
-            cachedMenus = {};
+            promotions = null;
 
-        vm.toggleDetails = function(index) {
+        vm.toggleDetails = function(index, bookingItem) {
 
             var details = $('.booking-details')[index];
 
@@ -19,6 +18,18 @@
                 $(details).slideRow('down');
             else
                 $(details).slideRow('up');
+
+            if(!bookingItem.$menus) {
+
+                $AjaxInterceptor.start();
+
+                MenuService.loadMenu(bookingItem).then(function(menus) {
+
+                    bookingItem.$menus = menus;
+                    bookingItem.sectionsFiltered = MenuService.groupItemBySection(bookingItem.$menus, bookingItem.orders);
+                    $AjaxInterceptor.complete();
+                });
+            }
         };
 
         vm.getBookings = function() {
@@ -68,25 +79,7 @@
                         _booking.$bookingDate = dateObj.valueOf();
                         _booking.$promotionName = _booking.promotionId;
 
-                        (function(defer, bk) {
-
-                            if(cachedMenus[bk.promotionId]) {
-
-                                defer.resolve();
-                            }
-                            else {
-
-                                // flag to know that we are already getting the menu with this promotion id
-                                cachedMenus[bk.promotionId] = true;
-                                bk.getMenu().then(function(menu) {
-
-                                    cachedMenus[bk.promotionId] = menu;
-                                    defer.resolve();
-                                });
-                            }
-
-
-                        })(deferred, _booking);
+                        deferred.resolve();
 
                         promises.push(deferred.promise);
                     }
@@ -102,12 +95,6 @@
 
                     // filter bookings that don't have a promotion id
                     var bookingsFiltered = bookings.filter(function(b){return b.promotionId});
-
-                    $.each(bookingsFiltered, function(i, obj) {
-
-                        obj.$menus = cachedMenus[obj.promotionId];
-                        obj.sectionsFiltered = MenuService.groupItemBySection(obj.$menus, obj.orders);
-                    });
 
                     reportDeferred.resolve(bookingsFiltered);
 
