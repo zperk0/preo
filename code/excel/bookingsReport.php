@@ -38,6 +38,7 @@ require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
 
 // Create new PHPExcel object
 $objPHPExcel = new PHPExcel();
+$activeSheet = $objPHPExcel->getActiveSheet();
 
 $styleNoBorders = array(
 	  'borders' => array(
@@ -56,29 +57,38 @@ $styleOutlineBorder = array(
   )
 );
 
+$styleAlignCenter = array(
+    'alignment' => array(
+        'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+    )
+);
+
 // Remove all border (color white)
-$objPHPExcel->getActiveSheet()->getStyle('A1:Z100')->applyFromArray($styleNoBorders);
+$activeSheet->getStyle('A1:Z100')->applyFromArray($styleNoBorders);
 
 // set cells auto height
-$objPHPExcel->getActiveSheet()->getRowDimension(1)->setRowHeight(-1);
+$activeSheet->getRowDimension(1)->setRowHeight(-1);
 
 // titles
-$titles = array('A1', 'B1', 'C1', 'D1', 'E1');
+$titles = array('A1', 'B1', 'C1', 'D1', 'E1', 'F1');
 
 // merging title cells
-mergeAndCenter('C1', 'E1', $objPHPExcel);
+mergeAndCenter('C1', 'E1', $objPHPExcel, $styleAlignCenter);
 
-// increase D column width
-$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(15);
-$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
-$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(20);
-$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(15);
+// increase column width
+$activeSheet->getColumnDimension('A')->setWidth(18);
+$activeSheet->getColumnDimension('B')->setWidth(18);
+$activeSheet->getColumnDimension('C')->setWidth(20);
+$activeSheet->getColumnDimension('D')->setWidth(20);
+$activeSheet->getColumnDimension('E')->setWidth(5);
+$activeSheet->getColumnDimension('F')->setWidth(50);
 
 // Titles
 $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('A1', 'DATE')
             ->setCellValue('B1', 'TIME')
-            ->setCellValue('C1', 'ORDERS');
+            ->setCellValue('C1', 'ORDERS')
+            ->setCellValue('F1', 'NOTES');
 
 // data from post
 $post = json_decode($_POST['data']);
@@ -98,24 +108,27 @@ $columnTime = 1;
 $columnSections = 2;
 $columnItems = 3;
 $columnQty = 4;
+$columnNotes = 5;
 $currentRow = 2;
 
 $totalsArray = array();
 
 foreach ($bookingsGroupedByDate as $bookingDate => $bookings) {
 
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnDate, $currentRow, $bookingDate);
+	$activeSheet->setCellValueByColumnAndRow($columnDate, $currentRow, $bookingDate);
 	$bookingStartRowIndex = $currentRow;
 
 	foreach ($bookings as $bookingRow => $booking) {
 
 		$sections = $booking->sectionsFiltered;
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnTime, $currentRow, $booking->time);
+		$activeSheet->setCellValueByColumnAndRow($columnTime, $currentRow, $booking->time);
+		$cellNotes = PHPExcel_Cell::stringFromColumnIndex($columnNotes).($currentRow);
 
 		$tmp = (array) $sections;
 		if(empty($tmp)) {
 
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnQty, $currentRow, '0 orders');
+			$activeSheet->setCellValueByColumnAndRow($columnQty, $currentRow, '0 orders');
+			formatBorders($cellNotes, $objPHPExcel);
 			$currentRow++;
 		} else {
 
@@ -125,17 +138,19 @@ foreach ($bookingsGroupedByDate as $bookingDate => $bookings) {
 				$totalModifiers = 0;
 				$sectionStartRowIndex = $currentRow;
 
-				$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnSections, $currentRow, $section->sectionName);
+				$activeSheet->setCellValueByColumnAndRow($columnSections, $currentRow, $section->sectionName);
 
 				foreach($section->items as $row => $item) {
 
 					$cellIName = PHPExcel_Cell::stringFromColumnIndex($columnItems).($currentRow);
 					$cellIQty = PHPExcel_Cell::stringFromColumnIndex($columnQty).($currentRow);
+					$cellNotes = PHPExcel_Cell::stringFromColumnIndex($columnNotes).($currentRow);
 
-			        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnItems, $currentRow, $item->name);
-			        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnQty, $currentRow, $item->qty);
+			        $activeSheet->setCellValueByColumnAndRow($columnItems, $currentRow, $item->name);
+			        $activeSheet->setCellValueByColumnAndRow($columnQty, $currentRow, $item->qty);
 			        formatBorders($cellIName, $objPHPExcel);
 			        formatBorders($cellIQty, $objPHPExcel);
+			        formatBorders($cellNotes, $objPHPExcel);
 
 			        if(!isset($totalsArray[$item->name])) {
 
@@ -144,36 +159,33 @@ foreach ($bookingsGroupedByDate as $bookingDate => $bookings) {
 
 					$totalsArray[$item->name] += $item->qty;
 
+					// item notes
+					if($item->notes) {
+
+			        	$activeSheet->setCellValueByColumnAndRow($columnNotes, $currentRow, $item->notes);
+			        }
+
 					$currentRow++;
 			        foreach($item->modifiers as $rowMod => $itemMod) {
 
 			        	$cellMName = PHPExcel_Cell::stringFromColumnIndex($columnItems).($currentRow);
+			        	$cellNotes = PHPExcel_Cell::stringFromColumnIndex($columnNotes).($currentRow);
 
-				        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnItems, $currentRow, $itemMod->name);
-				        $objPHPExcel->getActiveSheet()->getStyle($cellMName)->getFont()->setSize(9);
-				        $objPHPExcel->getActiveSheet()->getStyle($cellMName)->getFont()->setItalic(true);
-				        $objPHPExcel->getActiveSheet()->getStyle($cellMName)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
+				        $activeSheet->setCellValueByColumnAndRow($columnItems, $currentRow, $itemMod->name);
+				        $activeSheet->getStyle($cellMName)->getFont()->setSize(9);
+				        $activeSheet->getStyle($cellMName)->getFont()->setItalic(true);
+				        $activeSheet->getStyle($cellMName)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
 				        formatBorders($cellMName, $objPHPExcel);
+			        	formatBorders($cellNotes, $objPHPExcel);
 
 						$currentRow++;
-			        }
-
-			        if($item->notes) {
-
-			        	$cellNotes = PHPExcel_Cell::stringFromColumnIndex($columnItems).($currentRow);
-
-			        	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnItems, $currentRow, $item->notes);
-				        $objPHPExcel->getActiveSheet()->getStyle($cellNotes)->getFont()->setSize(8);
-				        $objPHPExcel->getActiveSheet()->getStyle($cellNotes)->getFont()->setItalic(true);
-				        $objPHPExcel->getActiveSheet()->getStyle($cellNotes)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
-			        	$currentRow++;
 			        }
 				}
 
 				$cellSectionStart = PHPExcel_Cell::stringFromColumnIndex($columnSections).($sectionStartRowIndex);
 				$cellSectionEnd = PHPExcel_Cell::stringFromColumnIndex($columnSections).($currentRow - 1);
 
-				$objPHPExcel->getActiveSheet()->getStyle($cellSectionStart . ':' . $cellSectionEnd)->applyFromArray($styleOutlineBorder);
+				$activeSheet->getStyle($cellSectionStart . ':' . $cellSectionEnd)->applyFromArray($styleOutlineBorder);
 			}
 		}
 
@@ -181,19 +193,20 @@ foreach ($bookingsGroupedByDate as $bookingDate => $bookings) {
 		$cellBookingTimeStart = PHPExcel_Cell::stringFromColumnIndex($columnTime).($bookingStartRowIndex);
 		$cellBookingTimeEnd = PHPExcel_Cell::stringFromColumnIndex($columnTime).($currentRow - 1);
 
-		$objPHPExcel->getActiveSheet()->getStyle($cellBookingTimeStart . ':' . $cellBookingTimeEnd)->applyFromArray($styleOutlineBorder);
+		$activeSheet->getStyle($cellBookingTimeStart . ':' . $cellBookingTimeEnd)->applyFromArray($styleOutlineBorder);
 
 		$currentRow++;
 
+		// booking divisor on the same date
 		if(isset($bookings[$bookingRow + 1])) {
 
 			$cellBookingDivisorStart = PHPExcel_Cell::stringFromColumnIndex($columnTime).($currentRow - 1);
-			$cellBookingDivisorEnd = PHPExcel_Cell::stringFromColumnIndex($columnQty).($currentRow - 1);
+			$cellBookingDivisorEnd = PHPExcel_Cell::stringFromColumnIndex($columnNotes).($currentRow - 1);
 
-			$objPHPExcel->getActiveSheet()->getStyle($cellBookingDivisorStart . ':' . $cellBookingDivisorEnd)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
-			$objPHPExcel->getActiveSheet()->getStyle($cellBookingDivisorStart . ':' . $cellBookingDivisorEnd)->getFill()->getStartColor()->setRGB('eeeeee');
-			$objPHPExcel->getActiveSheet()->getStyle($cellBookingDivisorStart . ':' . $cellBookingDivisorEnd)->applyFromArray($styleOutlineBorder);
-			mergeAndCenter($cellBookingDivisorStart, $cellBookingDivisorEnd, $objPHPExcel);
+			$activeSheet->getStyle($cellBookingDivisorStart . ':' . $cellBookingDivisorEnd)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+			$activeSheet->getStyle($cellBookingDivisorStart . ':' . $cellBookingDivisorEnd)->getFill()->getStartColor()->setRGB('eeeeee');
+			$activeSheet->getStyle($cellBookingDivisorStart . ':' . $cellBookingDivisorEnd)->applyFromArray($styleOutlineBorder);
+			mergeAndCenter($cellBookingDivisorStart, $cellBookingDivisorEnd, $objPHPExcel, $styleAlignCenter);
 		}
 	}
 
@@ -201,19 +214,18 @@ foreach ($bookingsGroupedByDate as $bookingDate => $bookings) {
 	$cellBookingEnd = PHPExcel_Cell::stringFromColumnIndex($columnQty).($currentRow - 2);
 	$cellBookingDate = PHPExcel_Cell::stringFromColumnIndex($columnDate).($currentRow - 2);
 
-	$objPHPExcel->getActiveSheet()->getStyle($cellBookingStart . ':' . $cellBookingEnd)->applyFromArray($styleOutlineBorder);
-	$objPHPExcel->getActiveSheet()->getStyle($cellBookingStart . ':' . $cellBookingDate)->applyFromArray($styleOutlineBorder);
+	$activeSheet->getStyle($cellBookingStart . ':' . $cellBookingEnd)->applyFromArray($styleOutlineBorder);
+	$activeSheet->getStyle($cellBookingStart . ':' . $cellBookingDate)->applyFromArray($styleOutlineBorder);
 
 	$currentRow++;
 }
 
 // TOTALS
-$totalsCellTitle1 = PHPExcel_Cell::stringFromColumnIndex($columnSections).($currentRow);
-$totalsCellTitle2 = PHPExcel_Cell::stringFromColumnIndex($columnItems).($currentRow);
-$totalsCellTitle3 = PHPExcel_Cell::stringFromColumnIndex($columnQty).($currentRow);
+$totalsCellTitle1 = PHPExcel_Cell::stringFromColumnIndex($columnDate).($currentRow);
+$totalsCellTitle2 = PHPExcel_Cell::stringFromColumnIndex($columnTime).($currentRow);
 
 // add totals cells to be formatted as a title
-array_push($titles, $totalsCellTitle1, $totalsCellTitle2, $totalsCellTitle3);
+array_push($titles, $totalsCellTitle1, $totalsCellTitle2);
 
 $objPHPExcel->setActiveSheetIndex(0)->setCellValue($totalsCellTitle1, 'TOTALS');
 
@@ -222,36 +234,28 @@ for ($i = 0; $i < count($titles); $i++) {
 }
 
 // merging totals title cells
-mergeAndCenter($totalsCellTitle1, ('E'.$currentRow), $objPHPExcel);
+mergeAndCenter($totalsCellTitle1, $totalsCellTitle2, $objPHPExcel, $styleAlignCenter);
 
 foreach($totalsArray as $keyName => $itemQty) {
 
 	$currentRow++;
 
-	$cellTName = PHPExcel_Cell::stringFromColumnIndex($columnSections).($currentRow);
-	$cellTQty = PHPExcel_Cell::stringFromColumnIndex($columnItems).($currentRow);
-	$cellTQtyMerge = PHPExcel_Cell::stringFromColumnIndex($columnItems + 1).($currentRow);
+	$cellTName = PHPExcel_Cell::stringFromColumnIndex($columnDate).($currentRow);
+	$cellTQty = PHPExcel_Cell::stringFromColumnIndex($columnTime).($currentRow);
 
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnSections, $currentRow, $keyName);
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($columnItems, $currentRow, $itemQty);
-
-	mergeAndCenter($cellTQty, $cellTQtyMerge, $objPHPExcel);
+	$activeSheet->setCellValueByColumnAndRow($columnDate, $currentRow, $keyName);
+	$activeSheet->setCellValueByColumnAndRow($columnTime, $currentRow, $itemQty);
 
 	formatBorders($cellTName, $objPHPExcel);
 	formatBorders($cellTQty, $objPHPExcel);
-	formatBorders($cellTQtyMerge, $objPHPExcel);
+
+	$activeSheet->getStyle($cellTQty)->applyFromArray($styleAlignCenter);
 }
 
 // Rename worksheet
-$objPHPExcel->getActiveSheet()->setTitle('Report');
+$activeSheet->setTitle('Report');
 
-function mergeAndCenter($cellStart, $cellEnd, $objExcel) {
-
-	$styleAlignCenter = array(
-        'alignment' => array(
-            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-        )
-    );
+function mergeAndCenter($cellStart, $cellEnd, $objExcel, $styleAlignCenter) {
 
 	$objExcel->getActiveSheet()->mergeCells($cellStart.':'.$cellEnd);
 	$objExcel->getActiveSheet()->getStyle($cellStart.':'.$cellEnd)->applyFromArray($styleAlignCenter);

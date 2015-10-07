@@ -38,6 +38,7 @@ require_once dirname(__FILE__) . '/Classes/PHPExcel.php';
 
 // Create new PHPExcel object
 $objPHPExcel = new PHPExcel();
+$activeSheet = $objPHPExcel->getActiveSheet();
 
 $styleArray = array(
 	  'borders' => array(
@@ -47,8 +48,23 @@ $styleArray = array(
             )
 	);
 
+$styleAlignCenter = array(
+        'alignment' => array(
+            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+        )
+    );
+
+$styleOutlineBorder = array(
+  'borders' => array(
+    'outline' => array(
+      'style' => PHPExcel_Style_Border::BORDER_THIN,
+	  'color' => array('argb' => '00000000')
+    )
+  )
+);
+
 // Remove all border (color white)
-$objPHPExcel->getActiveSheet()->getStyle('A1:Z100')->applyFromArray($styleArray);
+$activeSheet->getStyle('A1:Z100')->applyFromArray($styleArray);
 
 $titles = array('A2', 'B2', 'D2', 'E2', 'G2', 'H2', 'J2', 'K2', 'M2', 'N2', 'A6', 'B6', 'D6', 'E6', 'G6', 'H6');
 $values = array('A3', 'B3', 'D3', 'E3', 'G3', 'H3', 'J3', 'K3', 'M3', 'N3', 'A7', 'B7', 'D7', 'E7', 'G7', 'H7');
@@ -71,24 +87,27 @@ $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('J3', $post->booking->time)
             ->setCellValue('M3', $post->booking->guests);
 
-// merging title cells
-$objPHPExcel->getActiveSheet()->mergeCells('A2:B2');
-$objPHPExcel->getActiveSheet()->mergeCells('A3:B3');
-$objPHPExcel->getActiveSheet()->mergeCells('D2:E2');
-$objPHPExcel->getActiveSheet()->mergeCells('D3:E3');
-$objPHPExcel->getActiveSheet()->mergeCells('G2:H2');
-$objPHPExcel->getActiveSheet()->mergeCells('G3:H3');
-$objPHPExcel->getActiveSheet()->mergeCells('J2:K2');
-$objPHPExcel->getActiveSheet()->mergeCells('J3:K3');
-$objPHPExcel->getActiveSheet()->mergeCells('M2:N2');
-$objPHPExcel->getActiveSheet()->mergeCells('M3:N3');
+$activeSheet->getColumnDimension('A')->setWidth(15);
+$activeSheet->getColumnDimension('H')->setWidth(15);
 
-$objPHPExcel->getActiveSheet()->mergeCells('A6:B6');
-$objPHPExcel->getActiveSheet()->mergeCells('A7:B7');
-$objPHPExcel->getActiveSheet()->mergeCells('D6:E6');
-$objPHPExcel->getActiveSheet()->mergeCells('D7:E7');
-$objPHPExcel->getActiveSheet()->mergeCells('G6:H6');
-$objPHPExcel->getActiveSheet()->mergeCells('G7:H7');
+// merging title cells
+mergeAndCenter('A2', 'B2', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('A3', 'B3', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('D2', 'E2', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('D3', 'E3', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('G2', 'H2', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('G3', 'H3', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('J2', 'K2', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('J3', 'K3', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('M2', 'N2', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('M3', 'N3', $objPHPExcel, $styleAlignCenter);
+
+mergeAndCenter('A6', 'B6', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('A7', 'B7', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('D6', 'E6', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('D7', 'E7', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('G6', 'H6', $objPHPExcel, $styleAlignCenter);
+mergeAndCenter('G7', 'H7', $objPHPExcel, $styleAlignCenter);
 
 // client contact
 $objPHPExcel->setActiveSheetIndex(0)
@@ -102,62 +121,103 @@ $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('G7', $post->client->email);
 
 
+// set title styles
 for ($i = 0; $i < count($titles); $i++) {
 	setStyles($titles[$i], $objPHPExcel);
 }
 
+// set values borders
 for ($i = 0; $i < count($values); $i++) {
     formatBorders($values[$i], $objPHPExcel);
 }
 
 $sections = $post->sections;
-$column = 0;
+
+$columnSection = 0;
+$columnQty = 1;
+$columnNotes = 2;
+$columnNotesEnd = 6;
+$currentRow = 10;
 
 // format sections
-foreach ($sections as $section) {
+foreach ($sections as $sectionRow => $section) {
 
-	$totalModifiers = 0;
-	$cellSName = PHPExcel_Cell::stringFromColumnIndex($column).'10';
-	$cellSQty = PHPExcel_Cell::stringFromColumnIndex($column + 1).'10';
+	$cellSName = PHPExcel_Cell::stringFromColumnIndex($columnSection).$currentRow;
+	$cellSQty = PHPExcel_Cell::stringFromColumnIndex($columnQty).$currentRow;
+	$cellSNotes = PHPExcel_Cell::stringFromColumnIndex($columnNotes).$currentRow;
+	$cellSNotesEnd = PHPExcel_Cell::stringFromColumnIndex($columnNotesEnd).$currentRow;
 
-	$objPHPExcel->getActiveSheet()->getStyle($cellSName)->getFont()->setBold(true);
-	$objPHPExcel->getActiveSheet()->getStyle($cellSQty)->getFont()->setBold(true);
+	$activeSheet->getStyle($cellSName)->getFont()->setBold(true);
+	$activeSheet->getStyle($cellSQty)->getFont()->setBold(true);
+	$activeSheet->getStyle($cellSNotes)->getFont()->setBold(true);
 	setStyles($cellSName, $objPHPExcel);
 	setStyles($cellSQty, $objPHPExcel);
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column, 10, $section->sectionName);
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column + 1, 10, $section->total);
+	setStyles($cellSNotes, $objPHPExcel);
+	$activeSheet->setCellValueByColumnAndRow($columnSection, $currentRow, $section->sectionName);
+	$activeSheet->setCellValueByColumnAndRow($columnQty, $currentRow, $section->total);
+	$activeSheet->setCellValueByColumnAndRow($columnNotes, $currentRow, 'NOTES');
 
-	foreach($section->items as $row => $item) {
+	// align qty
+	$activeSheet->getStyle($cellSQty)->applyFromArray($styleAlignCenter);
 
-		$currentRow = $row + 11 + $totalModifiers;
-		$cellIName = PHPExcel_Cell::stringFromColumnIndex($column).($currentRow);
-		$cellIQty = PHPExcel_Cell::stringFromColumnIndex($column + 1).($currentRow);
+    // set notes column borders
+	$activeSheet->mergeCells($cellSNotes.':'.$cellSNotesEnd);
+	setStyles($cellSNotes, $objPHPExcel);
+	setStyles($cellSNotesEnd, $objPHPExcel);
+	$activeSheet->getStyle($cellSNotes . ':' . $cellSNotesEnd)->applyFromArray($styleOutlineBorder);
 
-        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column, $currentRow, $item->name);
-        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column + 1, $currentRow, $item->qty);
+	foreach($section->items as $itemRow => $item) {
+
+		$currentRow++;
+		$cellIName = PHPExcel_Cell::stringFromColumnIndex($columnSection).($currentRow);
+		$cellIQty = PHPExcel_Cell::stringFromColumnIndex($columnQty).($currentRow);
+		$cellINotes = PHPExcel_Cell::stringFromColumnIndex($columnNotes).($currentRow);
+		$cellINotesEnd = PHPExcel_Cell::stringFromColumnIndex($columnNotesEnd).($currentRow);
+
+        $activeSheet->setCellValueByColumnAndRow($columnSection, $currentRow, $item->name);
+        $activeSheet->setCellValueByColumnAndRow($columnQty, $currentRow, $item->qty);
+        $activeSheet->setCellValueByColumnAndRow($columnNotes, $currentRow, $item->notes);
         formatBorders($cellIName, $objPHPExcel);
         formatBorders($cellIQty, $objPHPExcel);
 
+        // align qty
+		$activeSheet->getStyle($cellIQty)->applyFromArray($styleAlignCenter);
+
+        // set notes column borders
+        $activeSheet->mergeCells($cellINotes.':'.$cellINotesEnd);
+        $activeSheet->getStyle($cellINotes . ':' . $cellINotesEnd)->applyFromArray($styleOutlineBorder);
+
         foreach($item->modifiers as $rowMod => $itemMod) {
 
-        	$cellMName = PHPExcel_Cell::stringFromColumnIndex($column).($currentRow + $rowMod + 1);
-			$cellMQty = PHPExcel_Cell::stringFromColumnIndex($column + 1).($currentRow + $rowMod + 1);
+        	$currentRow++;
+        	$cellMName = PHPExcel_Cell::stringFromColumnIndex($columnSection).($currentRow);
+			$cellMQty = PHPExcel_Cell::stringFromColumnIndex($columnQty).($currentRow);
+			$cellMNotes = PHPExcel_Cell::stringFromColumnIndex($columnNotes).($currentRow);
+			$cellMNotesEnd = PHPExcel_Cell::stringFromColumnIndex($columnNotesEnd).($currentRow);
 
-	        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($column, $currentRow + $rowMod + 1, $itemMod->name);
-	        $objPHPExcel->getActiveSheet()->getStyle($cellMName)->getFont()->setSize(9);
-	        $objPHPExcel->getActiveSheet()->getStyle($cellMName)->getFont()->setItalic(true);
-	        $objPHPExcel->getActiveSheet()->getStyle($cellMName)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
+	        $activeSheet->setCellValueByColumnAndRow($columnSection, $currentRow, $itemMod->name);
+	        $activeSheet->getStyle($cellMName)->getFont()->setSize(9);
+	        $activeSheet->getStyle($cellMName)->getFont()->setItalic(true);
+	        $activeSheet->getStyle($cellMName)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
 	        formatBorders($cellMName, $objPHPExcel);
 	        formatBorders($cellMQty, $objPHPExcel);
-			$totalModifiers++;
+
+	        $activeSheet->mergeCells($cellMNotes.':'.$cellMNotesEnd);
+	        $activeSheet->getStyle($cellMNotes . ':' . $cellMNotesEnd)->applyFromArray($styleOutlineBorder);
         }
 	}
 
-	$column += 3;
+	$currentRow += 2;
 }
 
 // Rename worksheet
-$objPHPExcel->getActiveSheet()->setTitle('Booking');
+$activeSheet->setTitle('Booking');
+
+function mergeAndCenter($cellStart, $cellEnd, $objExcel, $styleAlignCenter) {
+
+	$objExcel->getActiveSheet()->mergeCells($cellStart.':'.$cellEnd);
+	$objExcel->getActiveSheet()->getStyle($cellStart.':'.$cellEnd)->applyFromArray($styleAlignCenter);
+}
 
 // title style with background color
 function setStyles($cell, $objExcel) {
