@@ -350,12 +350,32 @@
             // config ui components for adding collection slot
             function initUiSlots() {
 
+                var sortableParams = {
+                    opacity: 0.5,
+                    axis: "y",
+                    cursor: "move",
+                    // containment: ".slotTab",
+                    handle: ".sortSlotHandle",
+                    cancel: "input,textarea,select,option",
+                    placeholder: "sortable-placeholder-sec",
+                    items: "> .ct-slots",
+                    revert: 100,
+                    delay: 100,
+                    update: function(event, ui) {
+
+                        // TODO: set position on slot and save on api
+                    }
+                };
+
                 $('.ct-slots').find('select').multiselect({
                     multiple: false,
                     header: false,
                     selectedList: 1,
                     minWidth: 342
                 });
+
+                $('.slotTab').sortable(sortableParams);
+                $('.slotTab').disableSelection();
             }
 
             // validate required fields based on active tab

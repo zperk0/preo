@@ -716,7 +716,7 @@ input[name^=mSectionName] {
   width: 90%;
   margin-left: -12px; }
 
-.sortSecHandle {
+.sortSecHandle, .sortSlotHandle {
   display: inline;
   padding: 0px 3px;
   font-size: 20px; }
