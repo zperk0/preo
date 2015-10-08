@@ -302,7 +302,7 @@ msgstr "Ordreliste"
 #: /var/www/webapp/inc/shared/h.php:41
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:116
 msgid "Venue Settings"
-msgstr "Arena Innstillinger"
+msgstr "Innstillinger"
 
 #: /var/www/webapp/inc/shared/h.php:43
 msgid "Change Settings"
@@ -330,7 +330,7 @@ msgstr "Åpningstider"
 
 #: /var/www/webapp/inc/shared/h.php:46
 msgid "Preset Notifications"
-msgstr "Forhåndsinnstilte notifikasjoner"
+msgstr "Forhåndsdefinerte meldinger"
 
 #: /var/www/webapp/inc/shared/h.php:49
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:127
@@ -415,7 +415,7 @@ msgstr "Endre min app modus"
 
 #: /var/www/webapp/inc/shared/h.php:93
 msgid "Switch Venue"
-msgstr "Bytt bedrift"
+msgstr "Endre sted"
 
 #: /var/www/webapp/inc/shared/h.php:99
 #: /var/www/webapp/inc/dashboard/dashboard_content.php:150
