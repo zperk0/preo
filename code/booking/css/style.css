@@ -228,3 +228,13 @@
 .booking-table .no-bookings {
 	background: #F3F3F3 !important;
 }
+
+.pagination-container {
+	float: right;
+}
+
+.fi-loop {
+	font-size: 30px;
+	display: block;
+	text-align: center;
+}

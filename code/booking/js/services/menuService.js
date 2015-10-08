@@ -4,7 +4,8 @@ angular.module('booking')
 .service('MenuService', ['$http', 'VENUE_ID', '$q', function ($http, VENUE_ID, $q) {
 
     var service = {},
-        venue_id = VENUE_ID;
+        venue_id = VENUE_ID,
+        cachedMenus = {};
 
     service.groupItemBySection = function(menus, orders) {
 
@@ -73,6 +74,31 @@ angular.module('booking')
 
         return obj;
     }
+
+    service.loadMenu = function(booking) {
+
+        var deferred = $q.defer();
+
+        if(cachedMenus[booking.promotionId]) {
+
+            deferred.resolve(cachedMenus[booking.promotionId]);
+        }
+        else {
+
+            // flag to know that we are already getting the menu with this promotion id, until the data is loaded
+            cachedMenus[booking.promotionId] = true;
+            // jscore method
+            booking.getMenu().then(function(menu) {
+
+                console.log('menu jscore', menu);
+
+                cachedMenus[booking.promotionId] = menu;
+                deferred.resolve(menu);
+            });
+        }
+
+        return deferred.promise;
+    };
 
     function getTotalItems(items) {
 
