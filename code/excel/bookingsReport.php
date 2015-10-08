@@ -80,7 +80,7 @@ $activeSheet->getColumnDimension('A')->setWidth(18);
 $activeSheet->getColumnDimension('B')->setWidth(18);
 $activeSheet->getColumnDimension('C')->setWidth(20);
 $activeSheet->getColumnDimension('D')->setWidth(20);
-$activeSheet->getColumnDimension('E')->setWidth(5);
+$activeSheet->getColumnDimension('E')->setWidth(10);
 $activeSheet->getColumnDimension('F')->setWidth(50);
 
 // Titles
