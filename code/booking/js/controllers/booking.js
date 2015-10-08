@@ -3,15 +3,18 @@
 'use scrict';
 
     angular.module('booking')
-    .controller('BookingCtrl', ['$rootScope', '$timeout', '$q', 'VENUE_ID', '$AjaxInterceptor', 'BookingService', 'MenuService', 'gettextCatalog', 'BookingSettingsService', '$filter',
-        function($rootScope, $timeout, $q, VENUE_ID, $AjaxInterceptor, BookingService, MenuService, gettextCatalog, BookingSettingsService, $filter) {
+    .controller('BookingCtrl', ['$scope', '$rootScope', '$timeout', '$q', '$AjaxInterceptor', 'BookingService', 'MenuService', 'gettextCatalog', 'BookingSettingsService', '$filter',
+        function($scope, $rootScope, $timeout, $q, $AjaxInterceptor, BookingService, MenuService, gettextCatalog, BookingSettingsService, $filter) {
 
         var vm = this,
             menu = null,
-            promotions = null,
-            cachedMenus = {};
+            promotions = null;
 
-        vm.toggleDetails = function(index) {
+        vm.maxItemsPerPage = 25;
+        vm.currentPage = 1;
+        vm.bookingsToShow = [];
+
+        vm.toggleDetails = function(index, bookingItem) {
 
             var details = $('.booking-details')[index];
 
@@ -19,17 +22,98 @@
                 $(details).slideRow('down');
             else
                 $(details).slideRow('up');
+
+            // load menu data, if not loaded yet
+            if(!bookingItem.$menus) {
+
+                $AjaxInterceptor.start();
+                MenuService.loadMenu(bookingItem).then(function(menus) {
+
+                    bookingItem.$menus = menus;
+                    bookingItem.sectionsFiltered = MenuService.groupItemBySection(bookingItem.$menus, bookingItem.orders);
+                    $AjaxInterceptor.complete();
+                });
+            }
         };
 
         vm.getBookings = function() {
 
             fetchData().then(function(data) {
 
-                console.log(data);
+                // console.log('bookings', data);
                 vm.bookingData = $filter('orderBy')(data, '$bookingDate');
+
+                // booking items on the screen
+                vm.bookingsToShow = vm.bookingData.slice(0, vm.maxItemsPerPage);
             });
         };
 
+        // handle booking pagination
+        vm.changePage = function(page) {
+
+            var lastIndexShowed = vm.maxItemsPerPage * (page - 1);
+
+            console.log(page)
+            vm.bookingsToShow = vm.bookingData.slice(lastIndexShowed, vm.maxItemsPerPage * page);
+            vm.currentPage = page;
+        };
+
+        // prepare data to generate booking report
+        vm.prepareData = function() {
+
+            var promises = [];
+
+            if(vm.bookingData.length) {
+
+                $AjaxInterceptor.start();
+
+                // load all menus not loaded yet from the bookings (service cache the values)
+                $.each(vm.bookingData, function(index, booking) {
+
+                    var deferred = $q.defer();
+                    if(!booking.$menus) {
+                        MenuService.loadMenu(booking).then(function(menus) {
+                            deferred.resolve();
+                        }, function() {
+                            deferred.reject();
+                            $AjaxInterceptor.complete();
+                            showErrorMsg();
+                        });
+                    } else {
+                        deferred.resolve();
+                    }
+
+                    promises.push(deferred.promise);
+                });
+
+                $q.all(promises).then(function() {
+
+                    $.each(vm.bookingData, function(index, booking) {
+
+                        // once loaded, service will return cached data
+                        MenuService.loadMenu(booking).then(function(menus) {
+
+                            // set menu data on booking item
+                            booking.$menus = menus;
+                            // set items grouped by section
+                            booking.sectionsFiltered = MenuService.groupItemBySection(booking.$menus, booking.orders);
+                        });
+                    });
+
+                    $AjaxInterceptor.complete();
+                    $timeout(function() {
+
+                        $scope.$broadcast('generateReportTrigger');
+                    });
+                }, function() {
+
+                    $AjaxInterceptor.complete();
+                    showErrorMsg();
+                });
+            }
+        };
+
+        // fetch booking data
         function fetchData() {
 
             var promises = [],
@@ -42,7 +126,6 @@
             // console.log('Getting bookings from ', filter);
 
             $AjaxInterceptor.start();
-
             BookingService.getBookings(filter).then(function(result) {
 
                 var bookings = result || [];
@@ -68,25 +151,7 @@
                         _booking.$bookingDate = dateObj.valueOf();
                         _booking.$promotionName = _booking.promotionId;
 
-                        (function(defer, bk) {
-
-                            if(cachedMenus[bk.promotionId]) {
-
-                                defer.resolve();
-                            }
-                            else {
-
-                                // flag to know that we are already getting the menu with this promotion id
-                                cachedMenus[bk.promotionId] = true;
-                                bk.getMenu().then(function(menu) {
-
-                                    cachedMenus[bk.promotionId] = menu;
-                                    defer.resolve();
-                                });
-                            }
-
-
-                        })(deferred, _booking);
+                        deferred.resolve();
 
                         promises.push(deferred.promise);
                     }
@@ -102,15 +167,7 @@
 
                     // filter bookings that don't have a promotion id
                     var bookingsFiltered = bookings.filter(function(b){return b.promotionId});
-
-                    $.each(bookingsFiltered, function(i, obj) {
-
-                        obj.$menus = cachedMenus[obj.promotionId];
-                        obj.sectionsFiltered = MenuService.groupItemBySection(obj.$menus, obj.orders);
-                    });
-
                     reportDeferred.resolve(bookingsFiltered);
-
                     $AjaxInterceptor.complete();
                 }, function() {
 
