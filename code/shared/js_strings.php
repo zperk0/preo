@@ -29,6 +29,8 @@ var Dictionary = {
 	"Choose a drink":<? echo json_encode(_("Choose a drink")) ?>,
 	"Choose a curry":<? echo json_encode(_("Choose a curry")) ?>,
 	"Choose a burger":<? echo json_encode(_("Choose a burger")) ?>,
+	"Promotions":<? echo json_encode(_("Promotions")) ?>,
+	"are already assigned to another menu. Each promotion can only be assigned to one menu.":<? echo json_encode(_("are already assigned to another menu. Each promotion can only be assigned to one menu.")) ?>,
 	"Menu configuration has been saved!":<? echo json_encode(_("Menu configuration has been saved!")) ?>,
 	"Choose Event Location":<? echo json_encode(_("Choose Event Location")) ?>,
 	"Choose Venue":<? echo json_encode(_("Choose Venue")) ?>,

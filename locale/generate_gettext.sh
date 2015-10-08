@@ -21,7 +21,6 @@ find $ROOT | grep .php > /tmp/listfile.txt
 echo Generating .POT file - $POT
 xgettext -n -L PHP --no-wrap -f /tmp/listfile.txt -o $POT --from-code=UTF-8
 
-
 echo Generating po files
 find $ROOT/locale -name \*.po -exec msgmerge -U {} $POT \;
 

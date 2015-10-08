@@ -27,6 +27,18 @@ module.exports = function(grunt) {
     events:{
       index:'code/events/index.php',
       output:'code/events/all.min.js',
+    },
+    booking:{
+      index:'code/booking/index.php',
+      output:'code/booking/all.min.js',
+    },
+    bookingMenus:{
+      index:'code/bookingMenus/index.php',
+      output:'code/bookingMenus/all.min.js',
+    },
+    bookingSettings:{
+      index:'code/bookingSettings/index.php',
+      output:'code/bookingSettings/all.min.js',
     }
   }
 
@@ -43,7 +55,7 @@ module.exports = function(grunt) {
               'js/foundation/foundation.tooltips.js','js/foundation/foundation.topbar.js','js/foundation/foundation.datepicker.js','js/foundation/foundation.abide.js', 'js/foundation/foundation.orbit.js', 'js/foundation/foundation.clearing.js',
               'js/jquery.noty-full-min.js','js/jsColor/jscolor.js','js/form.js','js/tweet.js','js/timepicker.js','js/jquery-ui.min.js', 'js/croppic.js', 'js/croppicPreoday.js',
               'js/autoNumeric.js','js/multi-select.js','js/tableSlide.js','js/js-actual.js','js/googleplus.js','bower_components/gridster/dist/jquery.gridster.min.js',
-              'bower_components/moment/moment.js', 'bower_components/moment/locale/de.js', 'bower_components/moment/locale/fr.js', 'bower_components/moment/locale/nb.js', 'bower_components/highcharts/highcharts.js','js/jquery.shapeshift.js','bower_components/underscore/underscore.js',
+              'bower_components/moment/moment.js', 'bower_components/moment/locale/de.js', 'bower_components/moment/locale/fr.js', 'bower_components/moment/locale/nb.js', 'bower_components/highcharts/highcharts.js', 'bower_components/chosen/chosen.jquery.min.js', 'js/jquery.shapeshift.js','bower_components/underscore/underscore.js',
               'js/preoabide.js','js/general.js'],
         dest: 'js/all_scripts.min.js'
       },
@@ -90,12 +102,33 @@ module.exports = function(grunt) {
         },
         src: ["<%= yeoman.accountSettings.files %>"],
         dest: "<%= yeoman.accountSettings.output %>"
+      },
+      booking:{
+        options: {
+          beautify: grunt.option('nomin'),
+        },
+        src: ["<%= yeoman.booking.files %>"],
+        dest: "<%= yeoman.booking.output %>"
+      },
+      bookingMenus:{
+        options: {
+          beautify: grunt.option('nomin'),
+        },
+        src: ["<%= yeoman.bookingMenus.files %>"],
+        dest: "<%= yeoman.bookingMenus.output %>"
+      },
+      bookingSettings:{
+        options: {
+          beautify: grunt.option('nomin'),
+        },
+        src: ["<%= yeoman.bookingSettings.files %>"],
+        dest: "<%= yeoman.bookingSettings.output %>"
       }
     },
     cssmin: {
       options: { restructuring: false },
       minify: {
-        src: ['css/normalize.css', 'css/foundation.css', 'css/jquery.gridster.min.css','bower_components/select2/select2.css','css/app.css', 'css/croppic.css'],
+        src: ['css/normalize.css', 'css/foundation.css', 'css/jquery.gridster.min.css', 'bower_components/select2/select2.css', 'bower_components/chosen/chosen.min.css', 'css/app.css', 'css/croppic.css'],
         dest: 'css/all_css.min.css',
       }
     },
@@ -160,6 +193,30 @@ module.exports = function(grunt) {
       events:{
         files: ["<%= yeoman.events.files %>","<%= yeoman.events.index %>"],
         tasks: ['uglify:accountSettings'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      },
+      booking:{
+        files: ["<%= yeoman.booking.files %>","<%= yeoman.booking.index %>"],
+        tasks: ['uglify:booking'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      },
+      bookingMenus:{
+        files: ["<%= yeoman.bookingMenus.files %>","<%= yeoman.bookingMenus.index %>"],
+        tasks: ['uglify:bookingMenus'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      },
+      bookingSettings:{
+        files: ["<%= yeoman.bookingSettings.files %>","<%= yeoman.bookingSettings.index %>"],
+        tasks: ['uglify:bookingSettings'],
         options: {
           spawn: false,
           livereload: true
@@ -273,7 +330,10 @@ module.exports = function(grunt) {
     'prepareWatchApp:shop',
     'prepareWatchApp:accountSettings',
     'prepareWatchApp:delivery',
-    'prepareWatchApp:events'
+    'prepareWatchApp:events',
+    'prepareWatchApp:booking',
+    'prepareWatchApp:bookingMenus',
+    'prepareWatchApp:bookingSettings'
     ])
 
   grunt.registerTask('watcher',[

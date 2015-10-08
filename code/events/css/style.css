@@ -198,27 +198,6 @@
   color: #fff;
 }
 
-/*<<<<<<< HEAD
-=======
-.ct-tabs {
-  width: 100%;
-}
-
-.duration-fields {
-  width: 33.3333%;
-  float: left;
-}
-
-.duration-fields input {
-  width: 95%;
-}
-
-.slotTab .ui-multiselect {
-  margin: 0;
-  margin-bottom: 5px;
-}
-
->>>>>>> develop*/
 .ct-calendar .ui-multiselect, .scheduleTab .ui-multiselect, .infoTab .ui-multiselect {
   margin-top: 0;
   width: 100% !important;

@@ -31,7 +31,7 @@ msgstr ""
 msgid "Add a new event"
 msgstr "Ajouter un nouvel événement "
 
-#: code/events/partials/modal-event.php:182
+#: code/events/partials/modal-event.php:215
 msgid "Add another slot"
 msgstr "Ajouter un autre créneau"
 
@@ -53,7 +53,7 @@ msgstr "Adresse de l'endroit"
 msgid "All"
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:37
+#: code/events/js/controllers/modalController.js:76
 #: code/events/js/directives/event/event.php:47
 msgid "All Locations"
 msgstr "Toutes les sections"
@@ -64,14 +64,38 @@ msgstr "Toutes les sections"
 msgid "Amount"
 msgstr "Somme ?"
 
-#: code/events/js/directives/event/event.js:108
-#: code/events/js/directives/event/event.js:129
+#: code/events/js/directives/event/event.js:114
+#: code/events/js/directives/event/event.js:135
 msgid ""
 "Are you sure you want to delete this event? Note: all event data will be "
 "lost!"
 msgstr ""
-"dÊtes-vous sûr de vouloir supprimer cet événement? NB: toutes les "
-"données de votre événement seront perdues !"
+"dÊtes-vous sûr de vouloir supprimer cet événement? NB: toutes les données de "
+"votre événement seront perdues !"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:69
+msgid ""
+"Are you sure you want to delete this menu? Note: all menu data will be lost!"
+msgstr ""
+"dÊtes-vous sûr de vouloir supprimer ce menu? NB: toutes les données du menu "
+"seront perdues!"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:27
+#, fuzzy
+msgid ""
+"Are you sure you want to duplicate this menu? Note: You'll be redirect to "
+"edit the menu."
+msgstr ""
+"dÊtes-vous sûr de vouloir supprimer ce menu? NB: toutes les données du menu "
+"seront perdues!"
+
+#: code/bookingMenus/partials/booking-menus.php:18
+msgid "Assigned to these promotions"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:17
+msgid "Auto reminder"
+msgstr ""
 
 #: code/accountSettings/partials/subscription.php:35
 msgid "BILLING HISTORY"
@@ -89,6 +113,23 @@ msgstr "Profil de l'entreprise"
 #: code/accountSettings/partials/subscription.php:4
 msgid "Billing Schedule"
 msgstr "Adresse de l'endroit"
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.js:16
+msgid "Booking"
+msgstr ""
+
+#: code/booking/partials/booking.php:26
+msgid "Booking page"
+msgstr ""
+
+#: code/bookingSettings/js/controllers/bookingSettings.js:80
+#, fuzzy
+msgid "Booking settings has been saved!"
+msgstr "Vos réglages ont été bien enregistrés!"
+
+#: code/booking/partials/booking.php:5
+msgid "Bookings"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:32
 msgid "Business Name"
@@ -119,6 +160,10 @@ msgstr "CHANGER LA LANGUE"
 msgid "CHANGE PASSWORD"
 msgstr "Réinitialiser le mot de passe"
 
+#: code/bookingMenus/partials/booking-menus.php:7
+msgid "CREATE NEW MENU"
+msgstr ""
+
 #: code/kyc/js/directives/chart/chart.php:80
 #: code/kyc/partials/customers.php:99 code/kyc/partials/events.php:112
 #: code/kyc/partials/orders.php:128 code/kyc/partials/reports.php:126
@@ -126,7 +171,8 @@ msgstr "Réinitialiser le mot de passe"
 msgid "CSV"
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:29
+#: code/events/js/controllers/modalController.js:31
+#: code/events/js/controllers/modalController.js:68
 msgid "CUSTOM"
 msgstr ""
 
@@ -138,6 +184,7 @@ msgstr ""
 msgid "Card ending"
 msgstr ""
 
+#: code/events/js/controllers/modalController.js:77
 #: code/events/js/directives/slot/slot.js:34
 msgid "Choose a Collection Slot"
 msgstr "Choisir un créneau de récupération"
@@ -159,6 +206,15 @@ msgstr "Cliquer pour ajouter un descriptif"
 #: code/events/partials/modal-event.php:12
 msgid "Click to add an event name"
 msgstr "Cliquer pour ajouter un nom d'événement"
+
+#: code/booking/partials/booking.php:23
+msgid "Client"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:6
+#, fuzzy
+msgid "Client contact:"
+msgstr "Ce mois-ci"
 
 #: code/events/js/directives/event/event.php:38
 msgid "Collapse"
@@ -200,6 +256,19 @@ msgstr "Créneau de Collecte : Deuxième Entracte"
 msgid "Confirm"
 msgstr "Confirmer votre mot de passe"
 
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:14
+msgid "Contact email:"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:10
+msgid "Contact no.:"
+msgstr ""
+
+#: code/bookingMenus/partials/booking-menus.php:7
+#, fuzzy
+msgid "Create new menu"
+msgstr "Créer un nouveau menu"
+
 #: code/accountSettings/partials/payment.php:15
 msgid "Credit Card Name"
 msgstr ""
@@ -217,7 +286,7 @@ msgstr "Nouveaux utilisateurs"
 msgid "Customers"
 msgstr "Nouveaux utilisateurs"
 
-#: code/events/js/controllers/modalController.js:25
+#: code/events/js/controllers/modalController.js:27
 msgid "DAILY"
 msgstr ""
 
@@ -230,11 +299,17 @@ msgid "DOWNLOAD PDF"
 msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:11
+#: code/booking/partials/booking.php:21
 msgid "Date"
 msgstr "Date?"
 
 #: code/kyc/index.php:62
 msgid "Date Range:"
+msgstr "Date?"
+
+#: code/booking/partials/booking.php:7
+#, fuzzy
+msgid "Date range"
 msgstr "Date?"
 
 #: code/kyc/partials/orders.php:25
@@ -252,15 +327,22 @@ msgstr "Date?"
 msgid "Days"
 msgstr ""
 
+#: code/bookingSettings/partials/booking-settings.php:25
+#: code/bookingSettings/partials/booking-settings.php:38
+msgid "Days before the event"
+msgstr ""
+
 #: code/settings/delivery/partials/delivery.php:43
 msgid "Default delivery time (minutes)"
 msgstr ""
 
+#: code/bookingMenus/js/directives/menus-item/menus-item.php:14
 #: code/events/js/directives/event/event.php:41
 msgid "Delete"
 msgstr "Supprimer"
 
-#: code/events/partials/modal-event.php:174
+#: code/events/partials/modal-event.php:181
+#: code/events/partials/modal-event.php:205
 msgid "Delete this slot"
 msgstr "Supprimer cette section"
 
@@ -276,6 +358,7 @@ msgstr "Réglages du Lieu"
 msgid "Delivery charge"
 msgstr "Réglages du Lieu"
 
+#: code/bookingMenus/partials/booking-menus.php:17
 #: code/events/partials/events.php:16
 msgid "Description"
 msgstr "Descriptif"
@@ -288,10 +371,11 @@ msgstr "Prix avec réduction (&euro;)"
 msgid "Discount offered for delivery orders (%)"
 msgstr ""
 
-#: code/events/partials/modal-event.php:193
+#: code/events/partials/modal-event.php:226
 msgid "Done"
 msgstr "Terminer"
 
+#: code/bookingMenus/js/directives/menus-item/menus-item.php:15
 #: code/events/js/directives/event/event.php:40
 msgid "Duplicate"
 msgstr "Dupliquer"
@@ -300,6 +384,7 @@ msgstr "Dupliquer"
 msgid "Duration:"
 msgstr "Création du Menu"
 
+#: code/bookingMenus/js/directives/menus-item/menus-item.php:16
 #: code/events/js/directives/event/event.php:39
 msgid "Edit"
 msgstr "Modifier"
@@ -324,20 +409,30 @@ msgstr ""
 msgid "End Time"
 msgstr "Heure de fin"
 
-#: code/events/partials/modal-event.php:127
+#: code/bookingSettings/partials/booking-settings.php:13
+#, fuzzy
+msgid "Enter a name"
+msgstr "Evénements"
+
+#: code/events/partials/modal-event.php:130
+#: code/events/partials/modal-event.php:137
 msgid "Enter a name for the slot"
 msgstr ""
 
+#: code/bookingSettings/partials/booking-settings.php:23
+#: code/bookingSettings/partials/booking-settings.php:36
 #: code/events/partials/modal-event.php:32
 #: code/events/partials/modal-event.php:37
 #: code/events/partials/modal-event.php:42
 msgid "Enter a number"
 msgstr ""
 
-#: code/events/partials/modal-event.php:134
-#: code/events/partials/modal-event.php:146
-#: code/events/partials/modal-event.php:157
-#: code/events/partials/modal-event.php:169
+#: code/events/partials/modal-event.php:145
+#: code/events/partials/modal-event.php:155
+#: code/events/partials/modal-event.php:165
+#: code/events/partials/modal-event.php:176
+#: code/events/partials/modal-event.php:189
+#: code/events/partials/modal-event.php:200
 msgid "Enter minutes?"
 msgstr ""
 
@@ -392,13 +487,30 @@ msgstr "Prénom"
 msgid "Free delivery for orders above"
 msgstr ""
 
+#: code/booking/partials/booking.php:12
+msgid "Generate report"
+msgstr ""
+
+#: code/bookingMenus/partials/booking-menus.php:5
+msgid "Group Booking Menus"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:6
+#, fuzzy
+msgid "Group Booking Settings"
+msgstr "Réglages du Lieu"
+
+#: code/booking/partials/booking.php:25
+msgid "Guests"
+msgstr ""
+
 #: code/events/js/directives/event/event.php:18
 #: code/events/js/directives/event/event.php:22
 #: code/events/partials/modal-event.php:20
 msgid "HH:MM"
 msgstr "HH:MM"
 
-#: code/events/js/controllers/modalController.js:309
+#: code/events/js/controllers/modalController.js:53
 msgid "Half-Time"
 msgstr "Heure?"
 
@@ -408,6 +520,12 @@ msgstr ""
 
 #: code/events/partials/modal-event.php:26
 msgid "How many days will your event occurs in days, hours and minutes?"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:18
+msgid ""
+"If a booking has outstanding orders, the event organiser will be sent a "
+"reminder"
 msgstr ""
 
 #: code/settings/delivery/partials/notifications.php:64
@@ -420,7 +538,7 @@ msgstr ""
 msgid "In case of customer queries contact:"
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:307
+#: code/events/js/controllers/modalController.js:45
 msgid "Interval"
 msgstr ""
 
@@ -452,11 +570,15 @@ msgstr ""
 msgid "Live stream"
 msgstr ""
 
+#: code/bookingSettings/partials/booking-settings.php:30
+msgid "Lock ordering page"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:28
 msgid "MM"
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:27
+#: code/events/js/controllers/modalController.js:29
 msgid "MONTHLY"
 msgstr ""
 
@@ -484,6 +606,7 @@ msgstr "Votre compte"
 msgid "My Subscriptions"
 msgstr "Descriptif"
 
+#: code/bookingMenus/partials/booking-menus.php:16
 #: code/events/partials/events.php:15 code/kyc/partials/customers.php:26
 msgid "Name"
 msgstr "Nom"
@@ -500,7 +623,7 @@ msgstr "Nouveau mot de passe"
 msgid "New event"
 msgstr "Ajouter un nouvel événement "
 
-#: code/events/partials/modal-event.php:192
+#: code/events/partials/modal-event.php:225
 msgid "Next"
 msgstr ""
 
@@ -515,12 +638,18 @@ msgstr "Non"
 msgid "No Data"
 msgstr ""
 
-#: code/events/js/directives/event/event.js:117
-#: code/events/js/directives/event/event.js:151
+#: code/booking/partials/booking.php:39
+msgid "No bookings at this period."
+msgstr ""
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:53
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:92
+#: code/events/js/directives/event/event.js:123
+#: code/events/js/directives/event/event.js:157
 msgid "No, go back."
 msgstr "Non, revenir"
 
-#: code/events/js/controllers/modalController.js:24
+#: code/events/js/controllers/modalController.js:26
 msgid "ONCE"
 msgstr ""
 
@@ -548,6 +677,11 @@ msgstr "Réarranger"
 msgid "Orders"
 msgstr "Réarranger"
 
+#: code/booking/partials/booking.php:27
+#, fuzzy
+msgid "Orders placed"
+msgstr "Réarranger"
+
 #: code/kyc/partials/orders.php:32
 msgid "Outlet"
 msgstr "Points de vente"
@@ -565,6 +699,10 @@ msgstr "Points de vente"
 #: code/kyc/partials/orders.php:123 code/kyc/partials/reports.php:121
 #: code/kyc/partials/stock.php:80
 msgid "PDF"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:21
+msgid "PRINT BOOKING"
 msgstr ""
 
 #: code/accountSettings/partials/profile.php:42
@@ -587,7 +725,8 @@ msgstr ""
 msgid "Please add a payment method to keep your account active"
 msgstr ""
 
-#: code/events/partials/modal-event.php:128
+#: code/events/partials/modal-event.php:136
+#: code/events/partials/modal-event.php:138
 msgid "Please choose a slot."
 msgstr "Veuillez choisir un créneau. "
 
@@ -656,11 +795,16 @@ msgstr "Veuillez taper votre nom (max 100 caractères)"
 msgid "Please update your card details within"
 msgstr "Veuillez taper votre Email"
 
-#: code/events/js/controllers/modalController.js:311
+#: code/booking/js/controllers/booking.js:156
+#: code/bookingMenus/js/controllers/menus.js:92
+msgid "Please, setup the group booking settings first."
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:61
 msgid "Post-Game"
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:310
+#: code/events/js/controllers/modalController.js:57
 msgid "Post-Show"
 msgstr ""
 
@@ -668,11 +812,11 @@ msgstr ""
 msgid "Postcode"
 msgstr "Code postal de l'endroit"
 
-#: code/events/js/controllers/modalController.js:306
+#: code/events/js/controllers/modalController.js:41
 msgid "Pre-Game"
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:305
+#: code/events/js/controllers/modalController.js:37
 msgid "Pre-Show"
 msgstr ""
 
@@ -688,7 +832,7 @@ msgstr ""
 msgid "Preset order rejection notifications, sent by email and push alert"
 msgstr ""
 
-#: code/events/partials/modal-event.php:191
+#: code/events/partials/modal-event.php:224
 msgid "Previous"
 msgstr ""
 
@@ -697,6 +841,10 @@ msgstr ""
 #: code/accountSettings/partials/profile.php:1
 msgid "Profile"
 msgstr "Profil"
+
+#: code/booking/partials/booking.php:24
+msgid "Promotion"
+msgstr ""
 
 #: code/kyc/partials/stock.php:33
 msgid "Quantity Ordered"
@@ -715,6 +863,10 @@ msgstr ""
 msgid "Reports"
 msgstr "Réarranger"
 
+#: code/bookingSettings/partials/booking-settings.php:9
+msgid "Restaurant Name"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:49
 #: code/accountSettings/partials/profile.php:49
 msgid "SAVE"
@@ -728,20 +880,22 @@ msgstr "ENREGISTRER MODIFICATIONS"
 
 #: code/accountSettings/partials/password.php:27
 #: code/accountSettings/partials/payment.php:50
+#: code/accountSettings/partials/profile.php:50
 #: code/settings/delivery/partials/delivery.php:59
 #: code/settings/delivery/partials/notifications.php:77
 msgid "SAVING..."
 msgstr "EN COURS DE SAUVEGARDE"
 
-#: code/accountSettings/partials/profile.php:50
-msgid "SAVING...\""
-msgstr "EN COURS DE SAUVEGARDE"
+#: code/bookingSettings/partials/booking-settings.php:42
+#, fuzzy
+msgid "Save changes"
+msgstr "Date?"
 
 #: code/events/partials/modal-event.php:55
 msgid "Schedule"
 msgstr "Adresse de l'endroit"
 
-#: code/events/js/controllers/modalController.js:308
+#: code/events/js/controllers/modalController.js:49
 msgid "Second-Interval"
 msgstr "Créneau de Collecte : Deuxième Entracte"
 
@@ -760,11 +914,16 @@ msgstr "Sélectionner tous les menus("
 msgid "Short name"
 msgstr "Prénom"
 
-#: code/events/partials/modal-event.php:126
+#: code/events/partials/modal-event.php:132
 msgid "Slot name"
 msgstr "Prénom"
 
-#: code/events/js/directives/event/event.js:144
+#: code/booking/js/controllers/booking.js:122
+#: code/bookingMenus/js/controllers/menus.js:36
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:46
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:84
+#: code/bookingSettings/js/controllers/bookingSettings.js:88
+#: code/events/js/directives/event/event.js:150
 msgid "Sorry, but there's been an error processing your request."
 msgstr ""
 "Désolés, mais il y a eu une erreur lors du traitement de votre demande."
@@ -800,6 +959,10 @@ msgstr "Descriptif"
 msgid "TOTAL"
 msgstr ""
 
+#: code/bookingSettings/partials/booking-settings.php:31
+msgid "The event organiser can change their orders up until this time"
+msgstr ""
+
 #: code/events/partials/events.php:6
 msgid ""
 "These show when you are open for ordering, such as performances or matches. "
@@ -808,11 +971,15 @@ msgstr ""
 "Il montreront quand vous êtes ouverts, comme pour des matchs ou spectacles. "
 "Ils seront visibles depuis la première page de l’application"
 
-#: code/events/partials/modal-event.php:131
+#: code/events/partials/modal-event.php:186
+msgid "This slot is available up until"
+msgstr ""
+
+#: code/events/partials/modal-event.php:142
 msgid "This slot starts"
 msgstr ""
 
-#: code/kyc/partials/stream.php:42
+#: code/booking/partials/booking.php:22 code/kyc/partials/stream.php:42
 msgid "Time"
 msgstr "Heure?"
 
@@ -825,6 +992,7 @@ msgstr "Heure?"
 msgid "Time?"
 msgstr "Heure?"
 
+#: code/bookingMenus/partials/booking-menus.php:19
 #: code/events/partials/events.php:21
 msgid "Tools"
 msgstr "Outils"
@@ -853,7 +1021,7 @@ msgstr "Titre du lieu"
 msgid "Visible?"
 msgstr "Visible?"
 
-#: code/events/js/controllers/modalController.js:26
+#: code/events/js/controllers/modalController.js:28
 msgid "WEEKLY"
 msgstr ""
 
@@ -861,7 +1029,7 @@ msgstr ""
 msgid "What's your event duration?"
 msgstr "Les jours où vous êtes ouverts"
 
-#: code/events/js/controllers/modalController.js:28
+#: code/events/js/controllers/modalController.js:30
 msgid "YEARLY"
 msgstr ""
 
@@ -876,10 +1044,19 @@ msgstr ""
 msgid "Yes"
 msgstr "Oui"
 
-#: code/events/js/directives/event/event.js:110
-#: code/events/js/directives/event/event.js:131
+#: code/events/js/directives/event/event.js:116
+#: code/events/js/directives/event/event.js:137
 msgid "Yes, delete this event!"
 msgstr "Oui, supprimer cet événement"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:71
+msgid "Yes, delete this menu!"
+msgstr "Oui! Supprimer ce menu"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:29
+#, fuzzy
+msgid "Yes, duplicate this menu!"
+msgstr "Oui! Supprimer ce menu"
 
 # The order of this sentence means that there is no need to translate 'MODE'. Instead the sentence is 'Votre application est actuellement en mode... <ADD STATUS HERE OF THE APPLICATION
 #: code/accountSettings/partials/subscription.php:44
@@ -916,15 +1093,15 @@ msgstr ""
 msgid "Your subscription has been cancelled"
 msgstr "Configurations du menu ont bien été enregistrées !"
 
-#: code/events/js/controllers/modalController.js:33
+#: code/events/js/controllers/modalController.js:72
 msgid "after"
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:34
+#: code/events/js/controllers/modalController.js:73
 msgid "before"
 msgstr ""
 
-#: code/events/partials/modal-event.php:164
+#: code/events/partials/modal-event.php:172
 msgid "broken down in steps"
 msgstr ""
 
@@ -936,25 +1113,28 @@ msgstr "Votre compte"
 msgid "eg. \\\"NW1, NW2...\\\""
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:35
+#: code/events/js/controllers/modalController.js:74
 msgid "is"
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:36
+#: code/events/js/controllers/modalController.js:75
 msgid "is not"
 msgstr ""
 
-#: code/events/partials/modal-event.php:137
-#: code/events/partials/modal-event.php:148
-#: code/events/partials/modal-event.php:171
+#: code/events/partials/modal-event.php:147
+#: code/events/partials/modal-event.php:157
+#: code/events/partials/modal-event.php:178
+#: code/events/partials/modal-event.php:191
+#: code/events/partials/modal-event.php:202
 msgid "minutes"
 msgstr "Ce mois-ci"
 
-#: code/events/partials/modal-event.php:159
+#: code/events/partials/modal-event.php:167
 msgid "minutes and it"
 msgstr "Ce mois-ci"
 
-#: code/events/partials/modal-event.php:165
+#: code/booking/js/directives/booking-item/booking-item.php:25
+#: code/events/partials/modal-event.php:173
 msgid "of"
 msgstr ""
 
@@ -962,17 +1142,28 @@ msgstr ""
 msgid "package"
 msgstr ""
 
-#: code/events/partials/modal-event.php:153
+#: code/events/partials/modal-event.php:196
+msgid "the event start time"
+msgstr ""
+
+#: code/events/partials/modal-event.php:162
 msgid "the event start time with a lead time of"
 msgstr ""
 
-#: code/events/partials/modal-event.php:142
-msgid "the event, it ends"
+#: code/events/partials/modal-event.php:152
+msgid "the event start time, it ends"
 msgstr ""
 
 #: code/kyc/index.php:66
 msgid "to"
 msgstr ""
+
+#: code/events/partials/modal-event.php:197
+msgid "with a lead time of"
+msgstr ""
+
+#~ msgid "SAVING...\""
+#~ msgstr "EN COURS DE SAUVEGARDE"
 
 #~ msgid "All Locations\")?>"
 #~ msgstr "Toutes les sections"
@@ -1222,8 +1413,8 @@ msgstr ""
 #~ "This colour is used across section progress buttons and as a highlight "
 #~ "colour."
 #~ msgstr ""
-#~ "Cette couleur est utilisée pour les boutons ‘en cours de ...’ et "
-#~ "comme couleur de surbrillance."
+#~ "Cette couleur est utilisée pour les boutons ‘en cours de ...’ et comme "
+#~ "couleur de surbrillance."
 
 #~ msgid "Button one colour"
 #~ msgstr "Bouton couleur nÂ°1"
@@ -1518,8 +1709,7 @@ msgstr ""
 #~ "ne va pas apparaddître sur votre application."
 
 #~ msgid "Please type a venue description (max 250chars)"
-#~ msgstr ""
-#~ "Veuillez écrire une description de votre lieu (max 250 caractères)"
+#~ msgstr "Veuillez écrire une description de votre lieu (max 250 caractères)"
 
 #~ msgid "What type of venue are you?"
 #~ msgstr "Quel type d'entreprise avez vous?"
@@ -1546,8 +1736,8 @@ msgstr ""
 #~ "Does your business revolve around regular events, e.g. football matches, "
 #~ "performances, etc?"
 #~ msgstr ""
-#~ "Est-ce que votre business est principalement événementiel? ex. matchs "
-#~ "de foot, shows etc ?"
+#~ "Est-ce que votre business est principalement événementiel? ex. matchs de "
+#~ "foot, shows etc ?"
 
 #~ msgid "Collection Slot Duration (mins)"
 #~ msgstr "Durée du créneau de récupération (mins)"
@@ -1631,8 +1821,7 @@ msgstr ""
 
 #~ msgid "This is where you can monitor your takings and reports."
 #~ msgstr ""
-#~ "C’est de lÃ  que vous pouvez gérer vos recettes et rapports de "
-#~ "commandes"
+#~ "C’est de lÃ  que vous pouvez gérer vos recettes et rapports de commandes"
 
 #~ msgid "Your online order page is"
 #~ msgstr "Votre 'short code' d'entreprise"
@@ -1693,9 +1882,9 @@ msgstr ""
 #~ ">DEMO - Your app is visible but does not take real orders.<br/><br/"
 #~ ">OFFLINE - Your app is not visible."
 #~ msgstr ""
-#~ "LIVE- votre application est disponible sur ‘my order app’ et est "
-#~ "prête Ã  prendre de vraies commandes.br/><br/>DEMO- votre application "
-#~ "est disponible sur ‘my order app’ mais ne prend pas encore de vraies "
+#~ "LIVE- votre application est disponible sur ‘my order app’ et est prête Ã  "
+#~ "prendre de vraies commandes.br/><br/>DEMO- votre application est "
+#~ "disponible sur ‘my order app’ mais ne prend pas encore de vraies "
 #~ "commandes.<br/><br/>OFFLINE- votre application n’est pas disponible sur "
 #~ "‘my order app’"
 
@@ -1721,8 +1910,8 @@ msgstr ""
 #~ "This is where you can combine separate food items into one meal "
 #~ "combination, e.g. sandwich, crisps and a drink"
 #~ msgstr ""
-#~ "C’est lÃ  où vous pourrez combiner des articles de sections "
-#~ "différentes pour faire un ensemble, ex sandwich, frites et une boisson"
+#~ "C’est lÃ  où vous pourrez combiner des articles de sections différentes "
+#~ "pour faire un ensemble, ex sandwich, frites et une boisson"
 
 #~ msgid "Add a new Meal Deal"
 #~ msgstr "Ajouter un nouveau Deal repas"
@@ -1785,17 +1974,14 @@ msgstr ""
 #~ "You've not created any items! You won't be able to create Meal Deals "
 #~ "until you have some items in your menu."
 #~ msgstr ""
-#~ "Vous n'avez pas sélectionné d'articles! Vous n'arriverez pas Ã  créer "
-#~ "de Deals repas"
+#~ "Vous n'avez pas sélectionné d'articles! Vous n'arriverez pas Ã  créer de "
+#~ "Deals repas"
 
 #~ msgid "Outlets"
 #~ msgstr "Points de vente"
 
 #~ msgid "Add a new Outlet"
 #~ msgstr "Ajouter un nouveau point de vente "
-
-#~ msgid "Create a new menu"
-#~ msgstr "Créer un nouveau menu"
 
 #~ msgid "Add an outlet name"
 #~ msgstr "Ajouter un nom de point de vente"
@@ -1817,10 +2003,10 @@ msgstr ""
 #~ "with.<br/><br/>An easy way is to group items, i.e. create separate "
 #~ "sections for food, cold drinks and hot drinks."
 #~ msgstr ""
-#~ "Il est l’heure maintenant de créer votre menu. Nous vous suggérons de "
-#~ "le garder simple pour commencer. <br/><br/> Grouper des articles est "
-#~ "efficace et facile. C’est-Ã -dire, créer des sections séparées pour "
-#~ "les plats, boissons froides et boissons chaudes. "
+#~ "Il est l’heure maintenant de créer votre menu. Nous vous suggérons de le "
+#~ "garder simple pour commencer. <br/><br/> Grouper des articles est "
+#~ "efficace et facile. C’est-Ã -dire, créer des sections séparées pour les "
+#~ "plats, boissons froides et boissons chaudes. "
 
 #~ msgid "Click to add your menu name"
 #~ msgstr "Cliquez pour ajouter un nom Ã  votre menu"
@@ -1930,8 +2116,8 @@ msgstr ""
 #~ "This will be in addition to the item price. If there is no price "
 #~ "difference, put in 0.00."
 #~ msgstr ""
-#~ "Cela sera en plus du prix de l’article. S’il n’y a pas de "
-#~ "différence de prix, veuillez inscrire 0.00 "
+#~ "Cela sera en plus du prix de l’article. S’il n’y a pas de différence de "
+#~ "prix, veuillez inscrire 0.00 "
 
 #~ msgid "Eg. Toppings, Sizes, Exras, etc"
 #~ msgstr "ex. garniture, taille, accompagnements etc"
@@ -1997,9 +2183,9 @@ msgstr ""
 #~ "not take real orders.<br/><br/>OFFLINE - Your app is not available on My "
 #~ "Order App."
 #~ msgstr ""
-#~ "LIVE- votre application est disponible sur ‘my order app’ et est "
-#~ "prête Ã  prendre de vraies commandes.br/><br/>DEMO- votre application "
-#~ "est disponible sur ‘my order app’ mais ne prend pas encore de vraies "
+#~ "LIVE- votre application est disponible sur ‘my order app’ et est prête Ã  "
+#~ "prendre de vraies commandes.br/><br/>DEMO- votre application est "
+#~ "disponible sur ‘my order app’ mais ne prend pas encore de vraies "
 #~ "commandes.<br/><br/>OFFLINE- votre application n’est pas disponible sur "
 #~ "‘my order app’"
 
@@ -2041,9 +2227,6 @@ msgstr ""
 #~ msgid "Monthly charge"
 #~ msgstr "Ce mois-ci"
 
-#~ msgid " months contract"
-#~ msgstr "Ce mois-ci"
-
 #~ msgid "Have a discount code?"
 #~ msgstr "Veuillez taper un nom de point de vente"
 
@@ -2069,8 +2252,7 @@ msgstr ""
 #~ msgstr "Références incorrectes ou compte inexistant. "
 
 #~ msgid "Success! Please check your email for further instructions."
-#~ msgstr ""
-#~ "Réussi! Veuillez vérifier vos emails pour la suite des instructions"
+#~ msgstr "Réussi! Veuillez vérifier vos emails pour la suite des instructions"
 
 #~ msgid "Sorry, incorrect code."
 #~ msgstr "Désolés, code invalide"
@@ -2079,8 +2261,8 @@ msgstr ""
 #~ "Your password has been reset.<br/>You will now be redirected to the login "
 #~ "page."
 #~ msgstr ""
-#~ "Votre mot de passe a été réinitialisé. <BR/> Vous allez maintenant "
-#~ "être redirigé vers la page de connexion."
+#~ "Votre mot de passe a été réinitialisé. <BR/> Vous allez maintenant être "
+#~ "redirigé vers la page de connexion."
 
 #~ msgid "Venue changes have been saved!"
 #~ msgstr "Vos modifications ont bien été enregistrées !"
@@ -2200,24 +2382,14 @@ msgstr ""
 #~ "Are you sure you want to delete this meal deal? Note: all associated data "
 #~ "will be lost!"
 #~ msgstr ""
-#~ "dÊtes-vous sûr de vouloir supprimer ce Meal Deal? NB: toutes les "
-#~ "données associées seront perdues!"
+#~ "dÊtes-vous sûr de vouloir supprimer ce Meal Deal? NB: toutes les données "
+#~ "associées seront perdues!"
 
 #~ msgid "Yes, delete this meal deal!"
 #~ msgstr "Oui, supprimer ce Meal Deal"
 
 #~ msgid "All changes has been saved!"
 #~ msgstr "Tous vos changements ont été bien enregistrés!"
-
-#~ msgid ""
-#~ "Are you sure you want to delete this menu? Note: all menu data will be "
-#~ "lost!"
-#~ msgstr ""
-#~ "dÊtes-vous sûr de vouloir supprimer ce menu? NB: toutes les données du "
-#~ "menu seront perdues!"
-
-#~ msgid "Yes, delete this menu!"
-#~ msgstr "Oui! Supprimer ce menu"
 
 #~ msgid "Sorry, incorrect password."
 #~ msgstr "Désolés, code invalide"
@@ -2226,11 +2398,8 @@ msgstr ""
 #~ "Settings and Password has been saved!<br/>You will need to log in again "
 #~ "with your new password to continue."
 #~ msgstr ""
-#~ "Paramètres et Mot de passe enregistrés ! <br/>> Vous devez vous "
-#~ "connecter Ã  nouveau avec votre nouveau mot de passe pour continuer."
-
-#~ msgid "Settings have been saved!"
-#~ msgstr "Vos réglages ont été bien enregistrés!"
+#~ "Paramètres et Mot de passe enregistrés ! <br/>> Vous devez vous connecter "
+#~ "Ã  nouveau avec votre nouveau mot de passe pour continuer."
 
 #~ msgid "Please select features you require"
 #~ msgstr "Veuillez sélectionner fonctions que vous fallez"
@@ -2282,9 +2451,6 @@ msgstr ""
 #~ msgid "Select Events..."
 #~ msgstr "Sélectionner tous les menus("
 
-#~ msgid "Date Range"
-#~ msgstr "Date?"
-
 #~ msgid "Month"
 #~ msgstr "Ce mois-ci"
 
@@ -2305,9 +2471,6 @@ msgstr ""
 
 #~ msgid "Orders By Outlet"
 #~ msgstr "Actualiser vos événements"
-
-#~ msgid "Time of Orders Placed"
-#~ msgstr "Réarranger"
 
 #~ msgid "Returning"
 #~ msgstr "Utilisateurs récurrents"
@@ -2490,8 +2653,8 @@ msgstr ""
 #~ "This is the code your customers need to use to find your venue on 'My "
 #~ "Order App'"
 #~ msgstr ""
-#~ "C’est le code vos clients devront entrer pour vous trouver sur ‘my "
-#~ "order app’."
+#~ "C’est le code vos clients devront entrer pour vous trouver sur ‘my order "
+#~ "app’."
 
 #~ msgid "Change your app"
 #~ msgstr "Modifier votre application"
@@ -2506,15 +2669,15 @@ msgstr ""
 #~ "Describe your requirement. Include details like like the brand of ePOS "
 #~ "you are using or the number of outlets you require."
 #~ msgstr ""
-#~ "Décrire vos exigences. Inclure les détails comme la marque ePOS que "
-#~ "vous utilisez ou le nombre de points de vente dont vous avez besoin "
+#~ "Décrire vos exigences. Inclure les détails comme la marque ePOS que vous "
+#~ "utilisez ou le nombre de points de vente dont vous avez besoin "
 
 #~ msgid ""
 #~ "Looking for ePOS integration, detailed reporting or the ability to "
 #~ "configure multiple outlets?"
 #~ msgstr ""
-#~ "Vous cherchez Ã  intégrer ePOS, les rapports détaillés ou la capacité "
-#~ "Ã  configurer plusieurs points des ventes?"
+#~ "Vous cherchez Ã  intégrer ePOS, les rapports détaillés ou la capacité Ã  "
+#~ "configurer plusieurs points des ventes?"
 
 #~ msgid "FIND OUT MORE"
 #~ msgstr "EN SAVOIR PLUS"
@@ -2524,9 +2687,6 @@ msgstr ""
 
 #~ msgid "Fulfilment App"
 #~ msgstr "application d'exécution "
-
-#~ msgid "Account Settings"
-#~ msgstr "Réglages du Lieu"
 
 #~ msgid "preoday"
 #~ msgstr "preoday"
@@ -2575,8 +2735,7 @@ msgstr ""
 #~ "Fulfilment App? Click the link at the bottom of this page."
 #~ msgstr ""
 #~ "Désolé, vous n'avez pas de privilèges suffisants. <br/><br/> Vous "
-#~ "cherchez l'application de réalisation? Cliquez le lien au bas de cet "
-#~ "page."
+#~ "cherchez l'application de réalisation? Cliquez le lien au bas de cet page."
 
 #~ msgid "Now, we just need your business name."
 #~ msgstr "Le nom de votre entreprise"

@@ -1,4 +1,4 @@
-<style> 
+<style>
 	@import "<?echo $_SESSION['path']?>/css/dashboard_override.css";
 </style><!-- The dashboard looks slightly different than other pages -->
 <?
@@ -6,19 +6,19 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/global_vars.php');
 	$accountId = $_SESSION['account_id'];
 	$venueId = $_SESSION['venue_id'];
-	$connectedFlag = 0;	
+	$connectedFlag = 0;
 
 	$curlResult = callAPI('GET', $apiURL."venues/$venueId/paymentproviders", false, $apiAuth);
-	$dataJSON = json_decode($curlResult, true);		
+	$dataJSON = json_decode($curlResult, true);
 
 	if(!empty($dataJSON))
-	{	
+	{
 		foreach($dataJSON as $paymentProvider)
 		{
 			if(isset($paymentProvider['type']) && ($paymentProvider['type'] == 'Stripe' || $paymentProvider['type'] == 'CASH'))
 				$connectedFlag = 1;
 		}
-	}	
+	}
 
 	$accountCard = true;
 	$curlResult = callAPI('GET', $apiURL."accounts/$accountId/accountcard", false, $apiAuth);
@@ -26,49 +26,22 @@
 	if(empty($dataJSON) || !is_array($dataJSON) || !isset($dataJSON['accountId'])) {
 		$accountCard = false;
 	}
-
-	$curlResult = callAPI('GET', $apiURL."accounts/$accountId/packages", false, $apiAuth);
-	$dataJSON = json_decode($curlResult, true);
-
-	$packageTrial = false;
-	if(!empty($dataJSON))
-	{	
-		foreach($dataJSON as $accountPackage)
-		{
-			if (isset($accountPackage['preoPackage']) && is_array($accountPackage['preoPackage'])) {
-
-				if ($accountPackage['status'] === "TRIAL") {
-					$endDate = strtotime($accountPackage['endDate']);
-					$endDate = mktime(date("H", $endDate), date("i", $endDate), date("s", $endDate), date("m", $endDate), date("d", $endDate), date("Y", $endDate));
-
-					if ($endDate > time() && !$accountCard) {
-						$packageTrial = $accountPackage;
-					}
-				}
-			}
-
-			if ($packageTrial) {
-				break;
-			}
-		}
-	}
-		
 ?>
 <div class="row dashContentTop">
 	<div class="topSpacer"></div>
 	<div class="large-12 columns">
 		<h1 class=""><? echo _("Dashboard");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
-		<?php 
+		<?php
 		if (isset($_SESSION['venue_permalink']) && $_SESSION['OVERRIDES']['has_web_orders']) {
 		?>
-		<p class="venueCode large-8 small-12"><?echo _("Your online order page is")." <a href='". $_SESSION['OVERRIDES']["site"] . "/menus/" . $_SESSION['venue_permalink']."' target='_blank'><strong>". str_replace("https://", "", str_replace("http://", "", $_SESSION['OVERRIDES']["site"])) . "/menus/" . $_SESSION['venue_permalink']."</strong></a>";?></p>
+		<p class="venueCode large-8 small-12"><?echo _("Your online order page is")." <a href='". $_SESSION['OVERRIDES']["site"] . "/editmenu/" . $_SESSION['venue_permalink']."' target='_blank'><strong>". str_replace("https://", "", str_replace("http://", "", $_SESSION['OVERRIDES']["site"])) . "/editmenu/" . $_SESSION['venue_permalink']."</strong></a>";?></p>
 		<?php } ?>
 	</div>
 </div>
 
 <div class="row row--space1u dashContent">
-	<div class="large-8 small-12 columns innerDashContent">	
-		<div class="large-5 columns dashStats">	
+	<div class="large-8 small-12 columns innerDashContent">
+		<div class="large-5 columns dashStats">
 			<div class="row">
 				<h3><?echo _("This month");?></h3>
 			</div>
@@ -88,30 +61,35 @@
 				<h6><?echo _("Returning users");?></h6>
 				<h1><?echo locale_number_format($_SESSION['venue_report_returningUsers'],0);?></h1>
 			</div>
-		</div>			
-		<div class="large-7 columns dashChangeApp">				
+		</div>
+		<div class="large-7 columns dashChangeApp">
 			<div class="row">
 				<div class="large-12 columns">
 					<div class="accordion contentSectionsDashboard" data-options="one_up: false;" data-section="accordion">
 						<section>
 							<h3 data-section-title><a href="<?echo $_SESSION['OVERRIDES']["link_orders"]?>" target="_blank" class="titleDashContent"><span><?echo _("Order Screen");?></span></a> <img src="<?echo $_SESSION['path']?>/img/dashboard/order-icon_small.png"/></h3>
-						</section>				
+						</section>
 						<section>
 							<h3 data-section-title><a href="/kyc" class="titleDashContent"><?echo _("Customer Analytics");?></a> <img src="<?echo $_SESSION['path']?>/img/dashboard/analytics-icon.png"/></h3>
 						</section>
 						<section>
 							<h3 data-section-title><span><?echo _("Menus");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/menu_small.png"/></h3>
 							<div class="content" data-section-content>
-								<?foreach($_SESSION['menus'] as $menuL){?>
-									<p id="p-<?echo $menuL['id']?>">
-										<a class="dashMenuIcon" 			href="<?echo $_SESSION['path']?>/menus/<?echo $menuL['id'];?>" title="<?echo _("Edit")." $menuL[name]";?>"><?echo htmlentities($menuL['name'], ENT_QUOTES)?></a>
-										<!--<a class="dashMenuIcon deleteMenu" 	id="dmi-<?echo $menuL['id']?>"  title="<?echo _("Delete")." $menuL[name]";?>"><i class="fi-x"></i></a>-->
-									</p>
-								<?}?>
+								<?
+									$mDataJSON = $_SESSION['menus'];
+									if(!empty($mDataJSON) && (!isset($mDataJSON['status'])))
+									{
+										// $_SESSION['menus'] = $mDataJSON;
+										foreach($mDataJSON as $menuL){?>
+											<p><a class="dashMenuIcon" href="<?echo $_SESSION['path']?>/editmenu/<?echo $menuL['id'];?>" title="<?echo _("Edit")." $menuL[name]";?>"><?echo htmlentities($menuL['name'], ENT_QUOTES)?></a></p>
+										<?}?>
+										<p><a href="<?echo $_SESSION['path']?>/mealdeals"><?echo _("Meal Deals");?></a></p>
+									<?} else {?>
+										<p><a href="#"><?echo _("No menus");?></a></p>
+									<?}?>
 								<!--<p><a href="<?echo $_SESSION['path']?>/newMenu.php"><?echo _("Add new menu");?></a></p>-->
-								<p><a href="<?echo $_SESSION['path']?>/mealdeals"><?echo _("Meal Deals");?></a></p>
 							</div>
-						</section>						
+						</section>
 						<section>
 							<h3 data-section-title><span><?echo _("Venue Settings");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/></h3>
 							<div class="content" data-section-content>
@@ -130,14 +108,27 @@
 								<p><a href="<?echo $_SESSION['path']?>/menuscreen"><?echo _("Menu screen");?></a></p>
 							</div>
 						</section>
-						<?if($_SESSION['venue_eventFlag']){?>		
+						<?if($_SESSION['venue_eventFlag']){?>
 						<section>
 							<h3 data-section-title><span><?echo _("Events");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/events_small.png"/></h3>
 							<div class="content" data-section-content>
 								<p><a href="<?echo $_SESSION['path']?>/events"><?echo _("Update events");?></a></p>
 							</div>
 						</section>
-						<?}?>						
+						<?}?>
+						<?php
+						// variable from h.php
+						if ($isGroupBookingEnabled) {
+						?>
+						<section>
+							<h3 data-section-title><span><?echo _("Group Booking");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/group-icon.png"/></h3>
+							<div class="content" data-section-content>
+								<p><a href="<?echo $_SESSION['path']?>/groupBookingMenus"><?echo _("Menus");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/booking"><?echo _("Bookings");?></a></p>
+								<p><a href="<?echo $_SESSION['path']?>/bookingSettings"><?echo _("Settings");?></a></p>
+							</div>
+						</section>
+						<?}?>
 						<section class="premiumSectionBorderBottom">
 							<h3 data-section-title><span><?echo _("Advanced Settings");?></span><img src="<?echo $_SESSION['path']?>/img/dashboard/settings_small.png"/></h3>
 							<div class="content" data-section-content>
@@ -148,12 +139,12 @@
 						</section>
 						<section class="premiumSection">
 							<h3 data-section-title><a href="<?echo $_SESSION['path']?>/accountSettings"><?echo _("My Account");?></a><img src="<?echo $_SESSION['path']?>/img/dashboard/account-icon.png"/></h3>
-						</section>	
+						</section>
 						<section class="premiumSection">
 							<?php if ($_SESSION['OVERRIDES']['help_menu']) { ?>
-							<h3 data-section-title><?echo _("Help");?><img class="noFilter" src="<?echo $_SESSION['path']?>/img/dashboard/help-icon.png"/></h3>							
+							<h3 data-section-title><?echo _("Help");?><img class="noFilter" src="<?echo $_SESSION['path']?>/img/dashboard/help-icon.png"/></h3>
 							<div class="content" data-section-content>
-								<div> 
+								<div>
 									<p class='link-to-video'><span ></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Getting_Started"><?echo _("Getting Started")?></a></p>
 									<p  class='link-to-video'><span></span><a href='javascript:void(0)' target='_blank' class="openVideoModal" data-name="Preoday_-_Editing_your_menu"><?echo _("Editing your Menu")?></a></p>
 									<p><a href="<?echo $_SESSION['OVERRIDES']["link_faq"]?>" target="_blank" class='featureName'>Frequently Asked Questions</a></p>
@@ -236,29 +227,30 @@
       <div class="b12 se"></div>
     </div>
   </div>
-</div>  
+</div>
 
 <div id="expiredDialog" class="reveal-modal medium modal-preoday dashboard" data-reveal>
     <header class="title-notification">Know your customer - 30 DAYS FREE TRIAL</header>
-    <div class="container-modal-confirm"><? echo _("Your 30 day free trial 	of this Premium Feature has now expired. Would you like to purchase it?")?></div>      	    
+    <div class="container-modal-confirm"><? echo _("Your 30 day free trial 	of this Premium Feature has now expired. Would you like to purchase it?")?></div>
     <button class='positiveDismiss preodayButton' ><? echo _("YES PLEASE")?></button>
     <button class='negativeDismiss preodayButton'><? echo _("NOT RIGHT NOW")?></button>
     <p class='modal-term'>
       <label>
-        <input type="checkbox" class='doNotShowAgain'/>  
+        <input type="checkbox" class='doNotShowAgain'/>
           Do not show this message again
       </label>
-    </p>  
+    </p>
 </div>
 
-<?php 
+<?php
+// variable from h.php
 if ($packageTrial) {
 ?>
 <div id="expiredPackageDialog" class="reveal-modal small modal-preoday dashboard" data-reveal>
 	<a class="close-reveal-modal">×</a>
     <header class="title-notification"><?php echo $packageTrial['preoPackage']['name'] . _(" trial"); ?></header>
     <div class="container-modal-confirm">
-	    <?php 
+	    <?php
 	    $start = time(); // or your date as well
 	    $end = strtotime($packageTrial['endDate']);
 	    $days = ceil(abs($end - $start) / 86400);
@@ -273,18 +265,19 @@ if ($packageTrial) {
     <header class="title-notification"><?echo _("Payment provider is not connected!")?></header>
     <div class="container-modal-confirm"><? echo _("Before taking your app live you need to connect it to a payment provider or enable cash payments so that you can start accepting payments and start getting paid!")?></div>
     <button class='positiveDismiss preodayButton' ><? echo _("CONNECT")?></button>
-    <button class='negativeDismiss preodayButton'><? echo _("CANCEL")?></button>    
+    <button class='negativeDismiss preodayButton'><? echo _("CANCEL")?></button>
 </div>
 
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		//TODO replace all this horrible code with the correct angular modules 
-		//----- start horrible code ------ 
+		//TODO replace all this horrible code with the correct angular modules
+		//----- start horrible code ------
 		var isShowAgain = window.localStorage.getItem("showDialogAgain_4");
 		var isShow = Number(window.localStorage.getItem("showDialog")) === 1 && (isShowAgain === null || Number(isShowAgain) === 1);
 
-		<?php 
+		<?php
+		// variable from h.php
 		if ($packageTrial) {
 		 ?>
 		var isShowAgainTrial = window.localStorage.getItem("showDialogAgainTrial");
@@ -295,17 +288,17 @@ if ($packageTrial) {
 		}
 		$('#expiredPackageDialog').foundation('reveal', 'open');
 		 <?php } ?>
-		
+
 		$('.positiveDismiss').on('click',positiveDismiss);
 		$('.negativeDismiss').on('click',negativeDismiss);
-		if (isShow) {		
-			$('#expiredDialog').foundation('reveal', 'open');			
+		if (isShow) {
+			$('#expiredDialog').foundation('reveal', 'open');
 			$('.termsAndConditions').on("change",function(){
 				if ($(this).is(":checked")){
 					$('.secondaryIfNotTermsAndConditions').removeClass("secondary")
 				}
 				else{
-					$('.secondaryIfNotTermsAndConditions').addClass("secondary")	
+					$('.secondaryIfNotTermsAndConditions').addClass("secondary")
 				}
 			})
 		}
@@ -313,12 +306,12 @@ if ($packageTrial) {
 			var dialog = $(this).parent(".modal-preoday");
 			var dialogId = dialog.attr("id");
 			if ($('.doNotShowAgain').is(':checked')) {
-				window.localStorage.setItem("showDialogAgain_4",0) 
-			}				
+				window.localStorage.setItem("showDialogAgain_4",0)
+			}
 			switch (dialogId){
 				case "expiredDialog":
 					window.location.replace("/shop#/feature/4");
-					break;							
+					break;
 				case "noPaymentMethod":
 					window.location.replace("/payment");
 				break;
@@ -333,27 +326,27 @@ if ($packageTrial) {
 				case "expiredDialog":
 					if ($('.doNotShowAgain').is(':checked')) {
 						//TODO add featureId dynamically
-						window.localStorage.setItem("showDialogAgain_4",0) 
+						window.localStorage.setItem("showDialogAgain_4",0)
 					}
 					break;
 				default:
 					break;
-				}								
+				}
 			$('#'+dialogId).foundation('reveal', 'close');
 		}
-		//------  end horible code ------ 
+		//------  end horible code ------
 
 
 		<?if(isset($_SESSION['app_textColour'])){?>updateTextColour('<?echo $_SESSION['app_textColour']?>');<?}?>
 		<?if(isset($_SESSION['app_buttonColour'])){?>updateButtonColour('<?echo $_SESSION['app_buttonColour']?>');<?}?>
 		<?if(isset($_SESSION['app_buttonTextColour'])){?>updateButtonTextColour('<?echo $_SESSION['app_buttonTextColour']?>');<?}?>
-		
+
 		<?if(isset($_SESSION['app_button2Colour'])){?>updateButton2Colour('<?echo $_SESSION['app_button2Colour']?>');<?}?>
 		<?if(isset($_SESSION['app_button2TextColour'])){?>updateButton2TextColour('<?echo $_SESSION['app_button2TextColour']?>');<?}?>
-		
+
 		<?if(isset($_SESSION['app_button3Colour'])){?>updateButton3Colour('<?echo $_SESSION['app_button3Colour']?>');<?}?>
 		<?if(isset($_SESSION['app_button3TextColour'])){?>updateButton3TextColour('<?echo $_SESSION['app_button3TextColour']?>');<?}?>
-		
+
 		<?if(isset($_SESSION['paymentMethodApproved']) && $_SESSION['paymentMethodApproved']=='08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B'){
 			$_SESSION['paymentMethodApproved']=0;?>
 			noty({
@@ -363,7 +356,7 @@ if ($packageTrial) {
 		<?
 			$_SESSION['pmaReply']='';
 		}?>
-		
+
 		<?if(isset($_SESSION['appPublished']) && $_SESSION['appPublished']=='08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B'){
 			$_SESSION['appPublished']=0;?>
 			noty({
@@ -372,7 +365,7 @@ if ($packageTrial) {
 			});
 		<?
 		}?>
-		
+
 		<?if(isset($_SESSION['appUnPublished']) && $_SESSION['appUnPublished']=='08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B'){
 			$_SESSION['appUnPublished']=0;?>
 			noty({
@@ -381,7 +374,7 @@ if ($packageTrial) {
 			});
 		<?
 		}?>
-		
+
 		<?if(isset($_SESSION['appStripeSkipped']) && $_SESSION['appStripeSkipped']=='08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B'){
 			$_SESSION['appStripeSkipped']=0;?>
 			noty({
@@ -390,7 +383,7 @@ if ($packageTrial) {
 			});
 		<?
 		}?>
-		
+
 		<?if(isset($_SESSION['appStripeDemo']) && $_SESSION['appStripeDemo']=='08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B'){
 			$_SESSION['appStripeDemo']=0;?>
 			noty({
@@ -399,7 +392,7 @@ if ($packageTrial) {
 			});
 		<?
 		}?>
-		
+
 		<?if(isset($_SESSION['appOffline']) && $_SESSION['appOffline']=='08C56E86512EAA9F108042253982AB4B7DD4F87BE8D66095D3655BB71F82123B'){
 			$_SESSION['appOffline']=0;?>
 			noty({
