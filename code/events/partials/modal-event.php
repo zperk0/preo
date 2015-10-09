@@ -112,7 +112,7 @@
       </div>
     </div>
 
-    <div class='slotTab' ng-show="modal.activeTab == 3">
+    <div class='slotTab' ng-show="modal.activeTab == 3" dnd-list="modal.slots" dnd-callback='modal.initUiSlots()'>
       <h4>
         {{'Collection Slot' | translate}} &nbsp;
         <i ng-show='modal.customSlotFeature' data-tooltip class="icon-question-sign preoTips has-tip tip-bottom"
@@ -124,8 +124,8 @@
           title="{{'End: This slot is available up until the number of minutes provided, relative to the start time of the event. It will not be available after this period is over. <br>
                         Lead time - The time it takes to prepare your order before the customer can pick it up.<br>"></i>
       </h4>
-      <div class='ct-slots' ng-repeat='slot in modal.slots'>
-        <div>
+      <div class="slots-parent">
+        <div class='ct-slots' ng-repeat='slot in modal.slots' data-index='{{$index}}'>
           <div class='slot-name-container'>
             <label translate>Slot name</label>
             <select ng-model='slot.$type' ng-change='modal.changedSlotName(slot)' ng-options='s.value as s.display for s in modal.slotTypes'>
@@ -137,74 +137,77 @@
           </div>
 
           <div class='slot-sentence' ng-if='slot.$type == "CUSTOM"'>
-            <span translate>This slot starts </span>
-            <div class='ct-inputs-sentence'>
-              <input type="text" ng-model='slot.start' pattern="^\d+$" ng-change='slot.startError = false'>
-              <small ng-show='(slot.startError || (slot.start && modal.isInvalidFormat(slot.start)) || (slot.start == null && slot.step))' class="error start" translate>Enter minutes?</small>
+            <div>
+              <span translate>This slot starts </span>
+              <div class='ct-inputs-sentence'>
+                <input type="text" ng-model='slot.start' pattern="^\d+$" ng-change='slot.startError = false'>
+                <small ng-show='(slot.startError || (slot.start && modal.isInvalidFormat(slot.start)) || (slot.start == null && slot.step))' class="error start" translate>Enter minutes?</small>
+              </div>
+              <span translate>minutes</span>
+              <select ng-model='slot.startFactor' class='start-select'>
+                <option value="-1">{{modal.strings.before}}</option>
+                <option value="1">{{modal.strings.after}}</option>
+              </select>
+              <span translate>the event start time, it ends</span>
+              <div class='ct-inputs-sentence'>
+                <input type="text" ng-model='slot.end' pattern="^\d+$" ng-change='slot.endError = false'>
+                <small ng-show='(slot.endError || (slot.end && modal.isInvalidFormat(slot.end)) || (slot.end == null && (slot.step || slot.start)))' class="error end" translate>Enter minutes?</small>
+              </div>
+              <span translate>minutes</span>
+              <select ng-model='slot.endFactor' class='end-select'>
+                <option value="-1">{{modal.strings.before}}</option>
+                <option value="1">{{modal.strings.after}}</option>
+              </select>
+              <span translate>the event start time with a lead time of</span>
+              <div class='ct-inputs-sentence'>
+                <input type="text" ng-model='slot.leadTime' required pattern="^\d+$">
+                <small ng-show='modal.isInvalidFormat(slot.leadTime) || slot.leadTime === ""' class="error leadtime" translate>Enter minutes?</small>
+              </div>
+              <span translate>minutes and it</span>
+              <select ng-model='slot.hasSteps' class='step-select'>
+                <option value="true">{{modal.strings.is}}</option>
+                <option value="false">{{modal.strings.is_not}}</option>
+              </select>
+              <span translate>broken down in steps</span>
+              <span ng-show='slot.hasSteps'>{{'of' | translate}}
+              <div class='ct-inputs-sentence'>
+                <input type="text" ng-model='slot.step' ng-change='slot.stepError = false'>
+                <small ng-show='(slot.stepError || (slot.step && modal.isInvalidFormat(slot.step)) || (slot.step == null && slot.start))' class="error step" translate>Enter minutes?</small>
+              </div>
+              <span translate>minutes</span>.
             </div>
-            <span translate>minutes</span>
-            <select ng-model='slot.startFactor' class='start-select'>
-              <option value="-1">{{modal.strings.before}}</option>
-              <option value="1">{{modal.strings.after}}</option>
-            </select>
-            <span translate>the event start time, it ends</span>
-            <div class='ct-inputs-sentence'>
-              <input type="text" ng-model='slot.end' pattern="^\d+$" ng-change='slot.endError = false'>
-              <small ng-show='(slot.endError || (slot.end && modal.isInvalidFormat(slot.end)) || (slot.end == null && (slot.step || slot.start)))' class="error end" translate>Enter minutes?</small>
-            </div>
-            <span translate>minutes</span>
-            <select ng-model='slot.endFactor' class='end-select'>
-              <option value="-1">{{modal.strings.before}}</option>
-              <option value="1">{{modal.strings.after}}</option>
-            </select>
-            <span translate>the event start time with a lead time of</span>
-            <div class='ct-inputs-sentence'>
-              <input type="text" ng-model='slot.leadTime' required pattern="^\d+$">
-              <small ng-show='modal.isInvalidFormat(slot.leadTime) || slot.leadTime === ""' class="error leadtime" translate>Enter minutes?</small>
-            </div>
-            <span translate>minutes and it</span>
-            <select ng-model='slot.hasSteps' class='step-select'>
-              <option value="true">{{modal.strings.is}}</option>
-              <option value="false">{{modal.strings.is_not}}</option>
-            </select>
-            <span translate>broken down in steps</span>
-            <span ng-show='slot.hasSteps'>{{'of' | translate}}
-            <div class='ct-inputs-sentence'>
-              <input type="text" ng-model='slot.step' ng-change='slot.stepError = false'>
-              <small ng-show='(slot.stepError || (slot.step && modal.isInvalidFormat(slot.step)) || (slot.step == null && slot.start))' class="error step" translate>Enter minutes?</small>
-            </div>
-            <span translate>minutes</span>.
-            <div class='ct-delete' ng-if='$index != 0'>
-              <button ng-click='modal.deleteSlot(slot)' type="button" class="delCollSlot secondary" title="Delete this slot"><i class="pd-delete"></i></button>
-              {{'Delete this slot' | translate}}
+            <div class='ct-slot-controls' ng-show='modal.slots.length > 1'>
+              <button type="button" class="sortSlotHandle" title="{{'Move this sloSlot' | translate}}"><i class="pd-move"></i></button> {{"Move this slot" | translate}}&nbsp;&nbsp;&nbsp;&nbsp;
+              <button type="button" class="deleteSlot secondary" title="{{'Delete this slot' | translate}}" ng-click='modal.deleteSlot(slot)'><i class="pd-delete"></i></button> {{"Delete this slot" | translate}}
             </div>
           </div>
 
           <div class='slot-sentence' ng-if='slot.$type != "CUSTOM"'>
-            <span translate>This slot is available up until</span>
-            <div class='ct-inputs-sentence'>
-              <input type="text" ng-model='slot.end' pattern="^\d+$" ng-change='slot.endError = false'>
-              <small ng-show='(slot.endError || (slot.end && modal.isInvalidFormat(slot.end)) || (!slot.end && (slot.step || slot.start)))' class="error end" translate>Enter minutes?</small>
+            <div>
+              <span translate>This slot is available up until</span>
+              <div class='ct-inputs-sentence'>
+                <input type="text" ng-model='slot.end' pattern="^\d+$" ng-change='slot.endError = false'>
+                <small ng-show='(slot.endError || (slot.end && modal.isInvalidFormat(slot.end)) || (!slot.end && (slot.step || slot.start)))' class="error end" translate>Enter minutes?</small>
+              </div>
+              <span translate>minutes</span>
+              <select ng-model='slot.startFactor' class='start-select'>
+                <option value="-1">{{modal.strings.before}}</option>
+                <option value="1">{{modal.strings.after}}</option>
+              </select>
+              <span translate>the event start time</span>
+              <span translate>with a lead time of</span>
+              <div class='ct-inputs-sentence'>
+                <input type="text" ng-model='slot.leadTime' required pattern="^\d+$">
+                <small ng-show='modal.isInvalidFormat(slot.leadTime) || slot.leadTime === ""' class="error leadtime" translate>Enter minutes?</small>
+              </div>
+              <span translate>minutes</span>.
             </div>
-            <span translate>minutes</span>
-            <select ng-model='slot.startFactor' class='start-select'>
-              <option value="-1">{{modal.strings.before}}</option>
-              <option value="1">{{modal.strings.after}}</option>
-            </select>
-            <span translate>the event start time</span>
-            <span translate>with a lead time of</span>
-            <div class='ct-inputs-sentence'>
-              <input type="text" ng-model='slot.leadTime' required pattern="^\d+$">
-              <small ng-show='modal.isInvalidFormat(slot.leadTime) || slot.leadTime === ""' class="error leadtime" translate>Enter minutes?</small>
-            </div>
-            <span translate>minutes</span>.
-            <div class='ct-slot-controls'>
-              <button type="button" class="sortSlotHandle" title="{{'Move this section' | translate}}"><i class="pd-move"></i></button> {{"Move this slot" | translate}}&nbsp;&nbsp;&nbsp;&nbsp;
-              <button type="button" class="deleteSection secondary" title="{{'Delete this section' | translate}}" ng-show='slot.position != 0' ng-click='modal.deleteSlot(slot)'><i class="pd-delete" ng-show='slot.position != 0'></i></button> <span ng-show='slot.position != 0'>{{"Delete this slot" | translate}}</span>
+            <div class='ct-slot-controls' ng-show='modal.slots.length > 1'>
+              <button type="button" class="sortSlotHandle" title="{{'Move this slot' | translate}}"><i class="pd-move"></i></button> {{"Move this slot" | translate}}&nbsp;&nbsp;&nbsp;&nbsp;
+              <button type="button" class="deleteSlot secondary" title="{{'Delete this slot' | translate}}" ng-click='modal.deleteSlot(slot)'><i class="pd-delete"></i></button> {{"Delete this slot" | translate}}
             </div>
           </div>
         </div>
-
       </div>
 
       <div>
