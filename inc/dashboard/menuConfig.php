@@ -254,7 +254,7 @@
 							<div class="large-12 columns minmax-container">
 								<span><?echo _('User must select'); ?></span>
 								<div>
-									<input type="text" name="mSectionMinMax[<?echo ($sKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" required pattern="0*[1-9]\d*"  value='<? echo $section["min"]; ?>'/>
+									<input type="text" name="mSectionMinMax[<?echo ($sKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" required pattern="^[1-9][0-9]*$"  value='<? echo $section["min"]; ?>'/>
 									<small class="error mminmaxError"><?echo _("Please enter the quantity");?></small>
 								</div>
 								<span><?echo _('item/s per guest from this section'); ?></span>

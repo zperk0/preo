@@ -1862,7 +1862,7 @@ $(document).ready(function() {
 				});
 
 				//remove required
-				$parentSectionHeader.find("input[name^=mSectionName], input[name^=iName], input[name^=iPrice], input[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
+				$parentSectionHeader.find("input[name^=mSectionName], input[name^=mSectionMinMax], input[name^=iName], input[name^=iPrice], input[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
 					$(this).removeAttr('required');
 				});
 
