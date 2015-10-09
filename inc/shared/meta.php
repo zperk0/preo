@@ -36,7 +36,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/override_
 		<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/foundation.css"/>
 		<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/jquery.gridster.min.css"/>
 		<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/bower_components/select2/select2.css"/>
-		<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/bower_components/chosen/chosen.min.css">
+		<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/chosen.min.css">
 		<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/app.css"/>
 		<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/croppic.css"/>
 		<![endif]-->
