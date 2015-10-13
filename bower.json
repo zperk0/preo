@@ -26,7 +26,9 @@
     "underscore": "~1.6.0",
     "select2": "~3.5.1",
     "angular-ui-select2": "~0.0.5",
-    "javascript-core": "git@bitbucket.org:preoday/javascript-core.git"
+    "javascript-core": "git@bitbucket.org:preoday/javascript-core.git",
+    "chosen": "~1.4.2",
+    "angular-order-object-by": "~1.2.1"
   },
   "resolutions": {
     "select2": "~3.5.1"

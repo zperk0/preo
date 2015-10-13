@@ -1765,6 +1765,19 @@ $(document).ready(function() {
 			$(this).data('id', 'section'+newCount+'s');
 		});
 
+		$newSec.find("input[name^=mSectionMinMax]").each(function() {
+			var temp = $(this).val();
+			$(this).val("");
+			// $(this).attr('placeholder', temp);
+			$(this).attr('name', 'mSectionMinMax['+newCount+']');
+
+			//data-attribute
+			$(this).attr('data-insert', true);
+			$(this).data('insert', true);
+			$(this).attr('data-id', 'section'+newCount+'s');
+			$(this).data('id', 'section'+newCount+'s');
+		});
+
 		$newSec.find(".menuSectionField").addClass('section'+newCount);
 
 		//sorting
@@ -1849,7 +1862,7 @@ $(document).ready(function() {
 				});
 
 				//remove required
-				$parentSectionHeader.find("input[name^=mSectionName], input[name^=iName], input[name^=iPrice], input[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
+				$parentSectionHeader.find("input[name^=mSectionName], input[name^=mSectionMinMax], input[name^=iName], input[name^=iPrice], input[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
 					$(this).removeAttr('required');
 				});
 
@@ -1984,6 +1997,17 @@ $(document).ready(function() {
 		$(this).attr('data-edit',true);
 		$(this).data('edit',true);
 	});
+
+	$(document).on("blur", 'input[name^=mDescription]', function(){
+		$('#mName').attr('data-edit',true);
+		$('#mName').data('edit',true);
+	});
+
+	$(document).on("blur", 'input[name^=mSectionMinMax]', function(){
+		$(this).parents('.moveSecInner').first().find('input[name^=mSectionName]').attr('data-edit',true);
+		$(this).parents('.moveSecInner').first().find('input[name^=mSectionName]').data('edit',true);
+	});
+
 	//dependant entries
 	//item
 	$(document).on("blur", 'input[name^=iDesc], input[name^=iPrice], input[name^=iQuan], input[name^=iVisi]', function(){
@@ -2013,7 +2037,7 @@ $(document).ready(function() {
 	  $(this).data('clicked',$(event.target))
 	});
 
-	$("#menuConfigForm").on('invalid', function (event) {
+	$("#menuConfigForm").on('invalid', function () {
 		//open all error areas
 		$("td.error").each(function(){
 			if( !$(this).is(":visible") )
@@ -2066,6 +2090,9 @@ $(document).ready(function() {
 			//MENU
 			menu['id'] 			= $('#menuID').val();
 			menu['name']		= $('#mName').val();
+			menu['description']	= $('#mDescription').val();
+
+			menu['promotions']	= $('.promotions-select').val();
 
 			menu['edit']		= $('#mName').data('edit');
 
@@ -2076,9 +2103,11 @@ $(document).ready(function() {
 			secCounter = 1;
 
 			var $inputsSections = $("input[name^=mSectionName]");
+			var $inputsMinMaxSections = $("input[name^=mSectionMinMax]");
 
 			for (var i = 0, len = $inputsSections.length; i < len; i++) {
 				var $inputSectionIndividual = $( $inputsSections[i] );
+				var $inputSectionIndividualMinMax = $( $inputsMinMaxSections[i] );
 
 				var sID = $inputSectionIndividual.data('id');
 
@@ -2094,6 +2123,7 @@ $(document).ready(function() {
 
 					menuSecionOneNivel['id'] 			= sID.replace(/section/,'');
 					menuSecionOneNivel['name'] 		= $inputSectionIndividual.val();
+					menuSecionOneNivel['min'] 		= $inputSectionIndividualMinMax.val();
 					menuSecionOneNivel['position'] 	= secCounter;
 					menuSecionOneNivel['collapse'] 	= collapse;
 
@@ -2289,8 +2319,6 @@ $(document).ready(function() {
 
 			menuData = JSON.stringify(menu);
 
-
-
 			$.ajax({
 			   type: "POST",
 			   url: url,
@@ -2314,15 +2342,31 @@ $(document).ready(function() {
 						return false;
 					}
 
-					if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
+					if(typeof dataArray['result'] !='undefined' && dataArray['result']['status'] == 400) {
+
+						var promotions = dataArray.result.promotionsInvalid || [];
+
+						if(promotions.length) {
+
+							noty({
+								type: 'error',  layout: 'topCenter',
+								text: _tr("Promotions") + " " + JSON.parse(promotions).toString() + " " + _tr("are already assigned to another menu. Each promotion can only be assigned to one menu.")
+							});
+						} else {
+
+							noty({
+							  type: 'error',  layout: 'topCenter',
+							  text: _tr("Sorry, but there's been an error processing your request.") //text: dataArray['message']
+							});
+						}
+					} else if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
 						  text: _tr("Sorry, but there's been an error processing your request.") //text: dataArray['message']
 						});
 
-					}
-					else
+					} else
 					{
 						newIDs = dataArray['update'];
 						var imagesIDS = dataArray['images'];
@@ -2361,7 +2405,15 @@ $(document).ready(function() {
 						}
 
 						noty({ type: 'success', text: _tr('Menu configuration has been saved!') });
-						if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
+
+						var url = window.location.href;
+
+						// redirect user to menu created
+						if(url.substr(url.lastIndexOf('/')) == '/newGroupMenu')
+							setTimeout(function() {
+								window.location.href = '/editmenu/' + dataArray.menuid;
+							}, 1000);
+						else if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
 					}
 				}
 			 }).done(function() {
