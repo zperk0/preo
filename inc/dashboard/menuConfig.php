@@ -553,7 +553,7 @@ $(document).ready(function() {
 	select = $(".promotions-select");
 
 	// init the chosen plugin
-	select.chosen({'disable_search': true});
+	select.chosen({'disable_search': true, 'no_results_text': _tr('Press enter, space or comma to assign the promotion: ')});
 
 	// get the chosen object (any type, single or multiple)
 	chosen = $('.chosen-container');
@@ -581,6 +581,11 @@ $(document).ready(function() {
 		        select.trigger("chosen:updated");
 	    	}
 	    }
+	}).blur(function() {
+
+		var e = $.Event('keyup');
+    	e.which = 13;
+		$(this).trigger(e)
 	});
 
 	// trigger edit menu when promotions were edited
