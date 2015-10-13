@@ -6,39 +6,40 @@
 
 		$venues = getVenues( $_SESSION['user_id'] );
 		$accountId = $_SESSION['account_id'];
+		if (isset($accountId)){		
+			$curlResult = callAPI('GET', $apiURL."accounts/$accountId/packages", false, $apiAuth);
+			$dataJSON = json_decode($curlResult, true);
 
-		$curlResult = callAPI('GET', $apiURL."accounts/$accountId/packages", false, $apiAuth);
-		$dataJSON = json_decode($curlResult, true);
-
-		$isGroupBookingEnabled = false;
-		$packageTrial = false;
-		if(!empty($dataJSON))
-		{
-			foreach($dataJSON as $accountPackage)
+			$isGroupBookingEnabled = false;
+			$packageTrial = false;
+			if(!empty($dataJSON))
 			{
-				if (isset($accountPackage['preoPackage']) && is_array($accountPackage['preoPackage'])) {
+				foreach($dataJSON as $accountPackage)
+				{
+					if (isset($accountPackage['preoPackage']) && is_array($accountPackage['preoPackage'])) {
 
-					if ($accountPackage['status'] === "TRIAL") {
-						$endDate = strtotime($accountPackage['endDate']);
-						$endDate = mktime(date("H", $endDate), date("i", $endDate), date("s", $endDate), date("m", $endDate), date("d", $endDate), date("Y", $endDate));
+						if ($accountPackage['status'] === "TRIAL") {
+							$endDate = strtotime($accountPackage['endDate']);
+							$endDate = mktime(date("H", $endDate), date("i", $endDate), date("s", $endDate), date("m", $endDate), date("d", $endDate), date("Y", $endDate));
 
-						if ($endDate > time() && !$accountCard) {
-							$packageTrial = $accountPackage;
+							if ($endDate > time() && !$accountCard) {
+								$packageTrial = $accountPackage;
+							}
 						}
-					}
 
-					if (is_array($accountPackage['preoPackage']['features']) && !$isGroupBookingEnabled) {
-						foreach($accountPackage['preoPackage']['features'] as $feature) {
-							if ($feature['id'] == 9 && ($accountPackage['status'] === "INSTALLED" || $accountPackage['status'] === "TRIAL" || $accountPackage['status'] === "UNINSTALLED")) {
-								$isGroupBookingEnabled = true;
-								break;
+						if (is_array($accountPackage['preoPackage']['features']) && !$isGroupBookingEnabled) {
+							foreach($accountPackage['preoPackage']['features'] as $feature) {
+								if ($feature['id'] == 9 && ($accountPackage['status'] === "INSTALLED" || $accountPackage['status'] === "TRIAL" || $accountPackage['status'] === "UNINSTALLED")) {
+									$isGroupBookingEnabled = true;
+									break;
+								}
 							}
 						}
 					}
-				}
 
-				if ($packageTrial && $isGroupBookingEnabled) {
-					break;
+					if ($packageTrial && $isGroupBookingEnabled) {
+						break;
+					}
 				}
 			}
 		}
