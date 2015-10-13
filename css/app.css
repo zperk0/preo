@@ -716,7 +716,7 @@ input[name^=mSectionName] {
   width: 90%;
   margin-left: -12px; }
 
-.sortSecHandle {
+.sortSecHandle, .sortSlotHandle {
   display: inline;
   padding: 0px 3px;
   font-size: 20px; }
@@ -1135,7 +1135,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
   width: 70px !important;
   padding-top: 10px !important; }
 
-.newItem, .newSection, .deleteSection, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot, .applyTimesAllDays, .addMoreOH, .removeOHDiv {
+.newItem, .newSection, .deleteSection, .deleteSlot, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot, .applyTimesAllDays, .addMoreOH, .removeOHDiv {
   padding: 1px 3px;
   font-size: 20px; }
 
