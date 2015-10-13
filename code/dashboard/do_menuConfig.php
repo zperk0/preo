@@ -55,7 +55,9 @@
 		$data['name'] 			= $menu['name'];
 		$data['description']    = $menu['description'];
 		$data['accountId'] 		= $menu['accountId'];
-		if (isset($_SESSION['outlet_id'])){
+
+		// do not insert a outlet id if it's a group booking menu
+		if (isset($_SESSION['outlet_id']) && !$_SESSION['groupMenu']){
  			$data['outletId'] 	= $_SESSION['outlet_id']; //secondary menus are non-associated. disabled
 		}
 		if (isset($menu['promotions']) && is_array($menu['promotions']) && count($menu['promotions'])) {
@@ -110,8 +112,10 @@
 		$data['name'] 			= $menu['name'];
 		$data['description']    = $menu['description'];
 		$data['accountId'] 		= $menu['accountId'];
-		//if(!$_SESSION['secondaryMenuFlag'])
-			$data['outletId'] 	= $_SESSION['outlet_id']; //secondary menus are non-associated. disabled
+		// do not insert a outlet id if it's a group booking menu
+		if(!$_SESSION['groupMenu']) {
+			$data['outletId'] 	= $_SESSION['outlet_id'];
+		}
 
 		if (isset($menu['promotions']) && is_array($menu['promotions']) && count($menu['promotions'])) {
             $data['promotions'] = $menu['promotions'];
