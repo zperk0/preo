@@ -1,9 +1,9 @@
 angular.module('kyc.charts')
 .factory('MenuItemPopularity',['ChartType','ChartHelper', 'UtilsService', function(ChartType,ChartHelper, UtilsService) {
 
-	var type = ChartType.AREA;	
+	var type = ChartType.AREA;
     var title = _tr('Menu Item Popularity');
-    var menuItems = {}        
+    var menuItems = {}
     var selectedItem = window.sessionStorage.getItem("KYC_SELECTED_ITEM")
     var minDate;
     var maxDate;
@@ -13,14 +13,14 @@ angular.module('kyc.charts')
     items = UtilsService.getItems();
 
 
-	function setData(order,minDate,maxDate){        
-        var timestamp = moment.utc(order.paid).startOf('day').valueOf();
+	function setData(order,minDate,maxDate){
+        var timestamp = moment.utc(order.pickupTime).startOf('day').valueOf();
 
         angular.forEach(order.items,function(item){
-            
+
             if (menuItems[item.menuItemId] === undefined){
-                selectedItem = selectedItem === null ? item.menuItemId : Number(selectedItem);                
-                //items.push({name:item.name,menuItemId:item.menuItemId,callback:selectItem}); 
+                selectedItem = selectedItem === null ? item.menuItemId : Number(selectedItem);
+                //items.push({name:item.name,menuItemId:item.menuItemId,callback:selectItem});
                 menuItems[item.menuItemId] = {}
             }
             if (menuItems[item.menuItemId][timestamp] === undefined){
@@ -28,24 +28,24 @@ angular.module('kyc.charts')
             }
             menuItems[item.menuItemId][timestamp]+=item.qty;
         });
-         
+
 	}
 
     function selectItem(itemId,cb){
         // clearData();
-        selectedItem = itemId;        
+        selectedItem = itemId;
         window.sessionStorage.setItem("KYC_SELECTED_ITEM",itemId);
-        
-        onSetDataComplete(minDate,maxDate);        
+
+        onSetDataComplete(minDate,maxDate);
         cb(getHighChart());
     }
 
     function onSetDataComplete(minDateP,maxDateP){
-        
+
         minDate = minDateP;
-        maxDate = maxDateP;        
+        maxDate = maxDateP;
         prepData = ChartHelper.getPreparedAreaData(menuItems[selectedItem],minDate,maxDate,false);
-    }   
+    }
 
 
 	function getData(){
@@ -53,9 +53,9 @@ angular.module('kyc.charts')
     }
 
     function getType(){
-    	return type; 
+    	return type;
     }
-    
+
 
 
     function getHighChart(){
@@ -76,12 +76,12 @@ angular.module('kyc.charts')
     }
 
     function getCsv(){
-        var data = getData();        
-        var csvData =[[minDate.format("DD-MMM-YYYY") + " - " + maxDate.format("DD-MMM-YYYY")],[getItemName(selectedItem)]];        
+        var data = getData();
+        var csvData =[[minDate.format("DD-MMM-YYYY") + " - " + maxDate.format("DD-MMM-YYYY")],[getItemName(selectedItem)]];
         angular.forEach(data,function(d){
-            csvData.push([ ChartHelper.formatDate(d[0]),d[1] ]) 
+            csvData.push([ ChartHelper.formatDate(d[0]),d[1] ])
         })
-        
+
         return {
             data:csvData
         };
@@ -90,18 +90,18 @@ angular.module('kyc.charts')
     function getPdf(){
         return  {
             type:type,
-            title:title + " - " +getItemName(selectedItem),            
+            title:title + " - " +getItemName(selectedItem),
             startDate: minDate.valueOf(),
-            endDate: maxDate.valueOf(),  
+            endDate: maxDate.valueOf(),
             total: prepData.total,
-            percentage:ChartHelper.getPercentage(prepData.data,prepData.previousSpecifiedData),    
+            percentage:ChartHelper.getPercentage(prepData.data,prepData.previousSpecifiedData),
             dataJson: JSON.stringify(getData())
         }
     }
 
     function clearData(){
         prepData = {};
-        items =[];        
+        items =[];
         menuItems = {};
     }
 
@@ -134,7 +134,7 @@ angular.module('kyc.charts')
             }
     }
 
-    
+
     return {
         getData:getData,
         getType:getType,

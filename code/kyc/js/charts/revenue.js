@@ -1,8 +1,8 @@
 angular.module('kyc.charts')
 .factory('Revenue',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
 
-	var type = ChartType.AREA;	
-    var dailyRevenue = {};    
+	var type = ChartType.AREA;
+    var dailyRevenue = {};
     var title = _tr('Revenue');
     var prepData = {};
     var minTimestamp =0;
@@ -11,44 +11,44 @@ angular.module('kyc.charts')
 
 	function setData(order,minDate,maxDate){
 
-        var timestamp = moment.utc(order.paid).endOf('day').valueOf();
+        var timestamp = moment.utc(order.pickupTime).endOf('day').valueOf();
         if (dailyRevenue[timestamp])
             dailyRevenue[timestamp]+=order.total
         else
-            dailyRevenue[timestamp]=order.total;        
+            dailyRevenue[timestamp]=order.total;
 	}
 
     function onSetDataComplete(minDate,maxDate,currencySymbol){
         currency = currencySymbol;
         minTimestamp = minDate.valueOf();
         maxTimestamp = maxDate.valueOf();
-        prepData = ChartHelper.getPreparedAreaData(dailyRevenue,minDate,maxDate,true);    
-    }   
+        prepData = ChartHelper.getPreparedAreaData(dailyRevenue,minDate,maxDate,true);
+    }
 
-    
+
 	function getData(){
 	   return prepData.data;
     }
 
     function getType(){
-    	return type; 
+    	return type;
     }
 
 
     function getHighChart(){
-        
+
         return {
             type:type,
             title:title,
             data: getData(),
             currency:currency,
             numberLeft:prepData.total,
-            numberRight:ChartHelper.getPercentage(prepData.data,prepData.previousSpecifiedData), 
+            numberRight:ChartHelper.getPercentage(prepData.data,prepData.previousSpecifiedData),
             modal: getModal(),
             getPdf:getPdf,
             getCsv:getCsv,
             tooltipText:decodeURI(currency)
-            
+
         }
     }
 
@@ -56,7 +56,7 @@ angular.module('kyc.charts')
         var data = getData();
         var csvData =[[moment.utc(minTimestamp).format("DD-MMM-YYYY") + " - " + moment.utc(maxTimestamp).format("DD-MMM-YYYY")],[title]]
         angular.forEach(data,function(d){
-            csvData.push([ ChartHelper.formatDate(d[0]),d[1]]) 
+            csvData.push([ ChartHelper.formatDate(d[0]),d[1]])
         })
         return {
             data:csvData
@@ -64,9 +64,9 @@ angular.module('kyc.charts')
     }
 
     function clearData(){
-        
+
         dailyRevenue = {};
-        prepData = {};   
+        prepData = {};
 
     }
 
@@ -75,10 +75,10 @@ angular.module('kyc.charts')
             type:type,
             title:title,
             startDate: minTimestamp,
-            endDate: maxTimestamp,  
+            endDate: maxTimestamp,
             total: prepData.total,
             currency:currency,
-            percentage:ChartHelper.getPercentage(prepData.data,prepData.previousSpecifiedData),    
+            percentage:ChartHelper.getPercentage(prepData.data,prepData.previousSpecifiedData),
             dataJson: JSON.stringify(getData())
         }
     }
@@ -93,7 +93,7 @@ angular.module('kyc.charts')
         }
     }
 
-    
+
     return {
         getData:getData,
         getType:getType,

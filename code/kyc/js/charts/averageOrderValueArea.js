@@ -1,9 +1,9 @@
 angular.module('kyc.charts')
 .factory('AverageOrderValueArea',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
 
-    var type = ChartType.AREA;  
-    var dailyAverageTotal = {};    
-    var dailyAverageOrder = {};    
+    var type = ChartType.AREA;
+    var dailyAverageTotal = {};
+    var dailyAverageOrder = {};
     var title = _tr('Average order value (area)');
     var prepDataTotal = {};
     var prepDataOrder = {};
@@ -13,7 +13,7 @@ angular.module('kyc.charts')
     var currency;
 
     function setData(order,minDate,maxDate){
-        var timestamp = moment.utc(order.paid).endOf('day').valueOf();
+        var timestamp = moment.utc(order.pickupTime).endOf('day').valueOf();
         if (dailyAverageTotal[timestamp]){
             dailyAverageTotal[timestamp] += order.total;
             ++dailyAverageOrder[timestamp];
@@ -28,11 +28,11 @@ angular.module('kyc.charts')
         currency = currencySymbol;
         minTimestamp = minDate.valueOf();
         maxTimestamp = maxDate.valueOf();
-        prepDataTotal = ChartHelper.getPreparedAreaData(dailyAverageTotal,minDate,maxDate,true);    
-        prepDataOrder = ChartHelper.getPreparedAreaData(dailyAverageOrder,minDate,maxDate,true);    
+        prepDataTotal = ChartHelper.getPreparedAreaData(dailyAverageTotal,minDate,maxDate,true);
+        prepDataOrder = ChartHelper.getPreparedAreaData(dailyAverageOrder,minDate,maxDate,true);
 
         prepData = averageData( prepDataTotal, prepDataOrder, minDate, maxDate );
-    }   
+    }
 
     function averageData( prepDataTotal, prepDataOrder, minDate, maxDate ) {
 
@@ -53,7 +53,7 @@ angular.module('kyc.charts')
 
                     if ( valueData[1] > 0 && valuePrepDataOrder > 0 ) {
                         resultNumber = ((valueData[1] / valuePrepDataOrder).toFixed(2)) / 1;
-                    } 
+                    }
 
                     result.push( [valueData[0], resultNumber] );
                 };
@@ -86,18 +86,18 @@ angular.module('kyc.charts')
         }
     }
 
-    
+
     function getData(){
        return prepData.data;
     }
 
     function getType(){
-        return type; 
+        return type;
     }
 
 
     function getHighChart(){
-        
+
         return {
             type:type,
             title:title,
@@ -108,7 +108,7 @@ angular.module('kyc.charts')
             getPdf:getPdf,
             getCsv:getCsv,
             tooltipText:decodeURI(currency)
-            
+
         }
     }
 
@@ -116,7 +116,7 @@ angular.module('kyc.charts')
         var data = getData();
         var csvData =[[moment.utc(minTimestamp).format("DD-MMM-YYYY") + " - " + moment.utc(maxTimestamp).format("DD-MMM-YYYY")],[title]]
         angular.forEach(data,function(d){
-            csvData.push([ ChartHelper.formatDate(d[0]),d[1]]) 
+            csvData.push([ ChartHelper.formatDate(d[0]),d[1]])
         })
         return {
             data:csvData
@@ -124,9 +124,9 @@ angular.module('kyc.charts')
     }
 
     function clearData(){
-        
-        dailyAverageTotal = {};    
-        dailyAverageOrder = {};   
+
+        dailyAverageTotal = {};
+        dailyAverageOrder = {};
         prepDataTotal = {};
         prepDataOrder = {};
         prepData = {};
@@ -138,10 +138,10 @@ angular.module('kyc.charts')
             type:type,
             title:title,
             startDate: minTimestamp,
-            endDate: maxTimestamp,  
+            endDate: maxTimestamp,
             total: prepData.total,
             currency:currency,
-            percentage:ChartHelper.getPercentage(prepData.data,prepData.previousSpecifiedData),    
+            percentage:ChartHelper.getPercentage(prepData.data,prepData.previousSpecifiedData),
             dataJson: JSON.stringify(getData())
         }
     }
@@ -156,7 +156,7 @@ angular.module('kyc.charts')
         }
     }
 
-    
+
     return {
         getData:getData,
         getType:getType,

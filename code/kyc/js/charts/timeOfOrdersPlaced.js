@@ -2,7 +2,7 @@ angular.module('kyc.charts')
 .factory('TimeOfOrdersPlaced',['ChartType','Colors','ChartHelper', function(ChartType,Colors,ChartHelper) {
 
 	var type = ChartType.PIE;
-    var colorIndex = 0;    
+    var colorIndex = 0;
     var title = _tr('Time of Orders Placed');
     var data;
     var minTimestamp = 0;
@@ -15,34 +15,34 @@ angular.module('kyc.charts')
         ]
         colorIndex=0;
     }
-    
+
 	function setData(order,minDate,maxDate){
         minTimestamp = minDate.valueOf();
         maxTimestamp = maxDate.valueOf();
-        var orderData = moment.utc(order.paid);
+        var orderData = moment.utc(order.pickupTime);
         if (orderData >= minDate && orderData <= maxDate){
             if (order.paid !== undefined && order.pickupTime !== undefined){
                 var placed = moment.utc(order.paid).startOf('day').valueOf();
                 var pickup = moment.utc(order.pickupTime).startOf('day').valueOf();
-                if(placed === pickup){
+                if(placed === pickup || (order.paid == null && order.paymentType == 'CASH')){
                     data[0].y++;
                 } else {
                     data[1].y++;
                 }
             }
         }
-                                    
+
 	}
 
     function onSetDataComplete(){
-    
+
     }
 
 	function getData(){
     	return data;
     }
     function getType(){
-    	return type; 
+    	return type;
     }
 
     function getHighChart(){
@@ -59,7 +59,7 @@ angular.module('kyc.charts')
         var data = getData();
         var csvData =[[moment.utc(minTimestamp).format("DD-MMM-YYYY") + " - " + moment.utc(maxTimestamp).format("DD-MMM-YYYY")],[title]]
         angular.forEach(data,function(d){
-            csvData.push([d.name,d.y]) 
+            csvData.push([d.name,d.y])
         })
         return {
             data:csvData
@@ -71,7 +71,7 @@ angular.module('kyc.charts')
             type:type,
             title:title,
             startDate: minTimestamp,
-            endDate: maxTimestamp,            
+            endDate: maxTimestamp,
             dataJson: JSON.stringify(data),
             categories: [_tr('On the day'),_tr('In advance')]
         }

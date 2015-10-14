@@ -6,8 +6,8 @@ angular.module('kyc.charts')
 	var numOfOrders =0;
     var title = _tr("Average Order Value");
 
-	function setData(order,minDate,maxDate){        
-        var orderData = moment.utc(order.paid);
+	function setData(order,minDate,maxDate){
+        var orderData = moment.utc(order.pickupTime);
         if (orderData >= minDate && orderData <= maxDate){
     		numOfOrders++;
     		ordersTotal+=order.total;
@@ -23,9 +23,9 @@ angular.module('kyc.charts')
     	return (ordersTotal/numOfOrders).toFixed(2);
     }
     function getType(){
-    	return type; 
+    	return type;
     }
-    
+
     function getHighChart(){
         return {
             type:type,
