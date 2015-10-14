@@ -1,15 +1,15 @@
 (function(window, angular){
 
 angular.module('bookingMenus')
-.service('BookingMenusService', ['$http', 'VENUE_ID', function ($http, VENUE_ID) {
+.service('BookingMenusService', ['$http', 'ACCOUNT_ID', function ($http, ACCOUNT_ID) {
 
 	var service = {},
-		venue_id = VENUE_ID;
+		account_id = ACCOUNT_ID;
 
 	service.getMenus = function(filter) {
 
 		var data = {
-			venueId: venue_id,
+			accountId: account_id,
 			type: 'booking'
 		}
 

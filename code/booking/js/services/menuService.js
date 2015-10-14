@@ -23,13 +23,14 @@ angular.module('booking')
             for(var j = 0, totalItems = order.items.length; j < totalItems; j++) {
 
                 var orderItem = order.items[j],
-                    foundSection = false;
+                    foundSection = false,
+                    sections = (menus && menus.sections) || [];
 
                 // console.log('order item', orderItem);
 
-                for(var l = 0, totalSections = menus.sections.length; l < totalSections; l++) {
+                for(var l = 0, totalSections = sections.length; l < totalSections; l++) {
 
-                    var section = menus.sections[l];
+                    var section = sections[l];
                     // console.log('section', section);
 
                     for(var m = 0, mTotalItems = section.items.length; m < mTotalItems; m++) {
@@ -90,10 +91,15 @@ angular.module('booking')
             // jscore method
             booking.getMenu().then(function(menu) {
 
-                console.log('menu jscore', menu);
+                if(menu) {
 
-                cachedMenus[booking.promotionId] = menu;
-                deferred.resolve(menu);
+                    cachedMenus[booking.promotionId] = menu;
+                    deferred.resolve(menu);
+                } else {
+
+                    deferred.resolve({});
+                }
+
             });
         }
 

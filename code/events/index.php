@@ -7,9 +7,6 @@
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php');
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
 ?>
-
-<!-- <link rel="stylesheet" type="text/css" href="/code/events/css/foundation.css"> -->
-<!-- <link rel="stylesheet" href="http://cdn.jsdelivr.net/zurb/foundation-apps-1.1.0.css"> -->
 <link rel="stylesheet" type="text/css" href="/code/events/css/style.css">
 
   <div ng-app="events">
@@ -55,6 +52,7 @@
   <script src="/code/events/js/directives/slot/slot.js"></script>
   <script src="/code/events/js/directives/event/event.js"></script>
   <script src="/code/events/js/directives/preo-calendar/preo-calendar.js"></script>
+  <script src="/code/events/js/directives/dndList/dndList.js"></script>
   <script src="/code/events/js/services/collectionslots.js"></script>
   <script src="/code/events/js/services/events.js"></script>
   <script src="/code/events/js/services/date.js"></script>
