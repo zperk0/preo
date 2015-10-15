@@ -222,6 +222,8 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             angular.forEach($scope.allOrders,function(order, key){
                 if ($scope.exportAll === "1" || order.selected === true){
                     if ($scope.getSelectedOutlets().length > 1 || $scope.getSelectedOutlets().length == 0) {
+                        console.log(order.outletName)
+                        // prepData['Outlet'].push(order.outletName || order.outletId);
                         prepData['Outlet'].push(order.outletName || order.outletId);
                     }
                     prepData["Order ID"].push(order.id);
@@ -338,7 +340,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             })
 
             var totalData = [
-                '', '', '', '', '', '', 'Total', $scope.getCurrency() + total.toFixed(2), '', '', '', ''
+                '', '', '', '', '', 'Total', $scope.getCurrency() + total.toFixed(2), '', '', '', '', ''
             ];
 
             if (ordersToExport.length > 1) {
@@ -360,6 +362,9 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             return result;
         }
 
-        _processOrders(OrderService.getOrders());
-        $AjaxInterceptor.complete();
+        $scope.$on('KYC_OUTLETS_LOADED', function() {
+
+            _processOrders(OrderService.getOrders());
+            $AjaxInterceptor.complete();
+        })
     }]);

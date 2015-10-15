@@ -1,6 +1,6 @@
 
 angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','VenueService','$AjaxInterceptor','$location','INITIAL_DATES', 'UtilsService', 'Venue', 'VENUE_ID', '$filter',
-	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location,INITIAL_DATES, UtilsService, Venue, VENUE_ID, $filter) {	
+	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location,INITIAL_DATES, UtilsService, Venue, VENUE_ID, $filter) {
 
 		$scope.currencySymbol = "%C2%A3";
 		$scope.outlets = [];
@@ -44,7 +44,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 				case '$':
 					currencyString += '#36;'
 					break;
-				default: 
+				default:
 					currencyString = currency;
 					break;
 			}
@@ -55,33 +55,34 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 	    Venue.getItems({id: VENUE_ID}).$promise.then(function( data ){
 	        UtilsService.setItems(data);
 	    });
-			
+
 		VenueService.init().then(
-			function(venue){			
+			function(venue){
 				$scope.venue = venue;
 				console.log(venue);
-				$scope.currencySymbol = VenueService.getCurrency().symbol;							
+				$scope.currencySymbol = VenueService.getCurrency().symbol;
 				OutletService.init(function(){
 					$scope.outlets = OutletService.getOutlets();
 					AllCharts.init($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol);
-				})			
+					$scope.$broadcast('KYC_OUTLETS_LOADED');
+				})
 			});
-			
 
-		$scope.update = function(){						
-			$AjaxInterceptor.start();			
+
+		$scope.update = function(){
+			$AjaxInterceptor.start();
 			setTimeout(function(){
-				
+
 				if ($scope.isEventFilter()) {
 					$scope.loadEvents();
 				} else {
 					AllCharts.reloadCharts($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol,$scope.getSelectedOutlets())
 					.then(function(){
-						
-						 $scope.$broadcast('KYC_RELOAD');					 
-					});	
-				}			
-				
+
+						 $scope.$broadcast('KYC_RELOAD');
+					});
+				}
+
 			},500);
 		}
 
@@ -105,14 +106,14 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 				var currentEvent = $scope.events[i];
 				if (currentEvent.selected) {
 					eventsSelected.push(currentEvent);
-				}				
+				}
 			};
 
 			if (eventsSelected.length) {
 				return eventsSelected;
 			}
 
-			return $scope.events;			
+			return $scope.events;
 		}
 
 		$scope.getEventsSelectedIds = function () {
@@ -120,10 +121,10 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			var arr = [];
 
 			for (var i = 0, len = eventsSelected.length; i < len; i++) {
-				arr.push(eventsSelected[i].id);	
+				arr.push(eventsSelected[i].id);
 			};
 
-			return arr;		
+			return arr;
 		}
 
 		$scope.getEventById = function (id) {
@@ -131,7 +132,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 
 			var events = eventsSearch.filter(function (e) {
 				return e.id === id;
-			});	
+			});
 
 			return events.length ? events[0] : {};
 		}
@@ -152,7 +153,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 				}
 
 				$scope.eventsSelected = events;
-				$scope.events = $filter('orderBy')(events, 'startDateTimeStamp', true);			
+				$scope.events = $filter('orderBy')(events, 'startDateTimeStamp', true);
 				loadOrdersEvents(getAllEventsIds());
 			})
 		}
@@ -190,9 +191,9 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 
 			$scope.$broadcast('SELECT_EVENT');
 		};
-			
+
 		$scope.setLocation = function(newLocation){
-				$scope.currentLocation = newLocation;				
+				$scope.currentLocation = newLocation;
 				if ($location.path() !== ("/"+newLocation))
         	$location.path(newLocation);
 		};
@@ -217,7 +218,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			});
 		}
 
-		$scope.getExportDate = function(){			
+		$scope.getExportDate = function(){
 			return $scope.form.start_date.format("DD-MMM-YYYY") + " - " + $scope.form.end_date.format("DD-MMM-YYYY");
 		}
 }])
