@@ -1,10 +1,10 @@
 angular.module('kyc.charts')
 .factory('AllCharts',['$q','OrderService', 'UtilsService', 'Venue', 'VENUE_ID', 'PayingCustomers','OrdersPerCustomer','AverageOrderValue','ItemsOrdered','OrdersByOutlet','MostPopularItems','TimeOfOrdersPlaced',
-												'CustomersPie','CustomersBar','Revenue','NumberOfOrders','MenuItemPopularity', 'AverageOrderValueArea',
+												'CustomersPie','CustomersBar','Revenue','NumberOfOrders','MenuItemPopularity', 'AverageOrderValueArea', 'OrdersPerChannel',
 	function($q,OrderService, UtilsService, Venue, VENUE_ID, PayingCustomers,OrdersPerCustomer,AverageOrderValue,ItemsOrdered,OrdersByOutlet,MostPopularItems,TimeOfOrdersPlaced,
-			CustomersPie,CustomersBar,Revenue,NumberOfOrders,MenuItemPopularity, AverageOrderValueArea) {
+			CustomersPie,CustomersBar,Revenue,NumberOfOrders,MenuItemPopularity, AverageOrderValueArea, OrdersPerChannel) {
     var defer = $q.defer();
-    
+
     var currency;
 	var charts = {
     		payingCustomers:PayingCustomers,
@@ -13,6 +13,7 @@ angular.module('kyc.charts')
     		itemsOrdered:ItemsOrdered,
             revenue:Revenue,
             numberOfOrders:NumberOfOrders,
+            odersPerChannel:OrdersPerChannel,
             mostPopularItems:MostPopularItems,
             menuItemPopularity:MenuItemPopularity,
             averageOrderValueArea: AverageOrderValueArea,
@@ -22,14 +23,14 @@ angular.module('kyc.charts')
   	};
 
 
-    function init(minDate,maxDate,currencySymbol, selectedOutlets){        
-        currency = currencySymbol;        
+    function init(minDate,maxDate,currencySymbol, selectedOutlets){
+        currency = currencySymbol;
         OrderService.load(minDate,maxDate)
         .then(function(orders){
             prepareCharts(orders,minDate,maxDate,selectedOutlets)
         });
     }
-        
+
     function reloadCharts(minDate,maxDate,currencySymbol, selectedOutlets){
         var chartDefer = $q.defer();
         currency = currencySymbol;
@@ -43,11 +44,11 @@ angular.module('kyc.charts')
 
         Venue.getItems({id: VENUE_ID, outletIds: outlets.join(',')}).$promise.then(function( data ){
             UtilsService.setItems(data);
-        });        
+        });
 
         OrderService.load(minDate,maxDate, outlets)
         .then(function(orders){
-            prepareCharts(orders,minDate,maxDate,selectedOutlets);            
+            prepareCharts(orders,minDate,maxDate,selectedOutlets);
             chartDefer.resolve(charts);
         });
         return chartDefer.promise;
@@ -62,33 +63,33 @@ angular.module('kyc.charts')
         return found;
     }
 
-    function prepareCharts(orders,minDate,maxDate,selectedOutlets){        
+    function prepareCharts(orders,minDate,maxDate,selectedOutlets){
         minDate = moment.utc(minDate);
         maxDate = moment.utc(maxDate);
         if (!selectedOutlets)
-            selectedOutlets = [];   
+            selectedOutlets = [];
             angular.forEach(charts,function(chart,key){
                 chart.clearData();
-            });                           
+            });
             angular.forEach(orders,function(order){
-                if ( selectedOutlets.length === 0 || findOutlet(selectedOutlets,order.outletId) ){                    
-                    
+                if ( selectedOutlets.length === 0 || findOutlet(selectedOutlets,order.outletId) ){
+
                     // if (order.paid === null)
                     //     return;
 
                     angular.forEach(charts,function(chart){
                         chart.setData(order,minDate,maxDate);
-                    })  
+                    })
                 }
-                
+
             });
             angular.forEach(charts,function(chart,key){
                 if (chart.onSetDataComplete){
                     chart.onSetDataComplete(minDate,maxDate,currency)
-                }            
-            });  
+                }
+            });
 
-        defer.resolve(charts); 
+        defer.resolve(charts);
     }
 
     function getPreparedCharts(){

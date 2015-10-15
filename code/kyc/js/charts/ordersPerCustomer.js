@@ -14,8 +14,8 @@ angular.module('kyc.charts')
         orders = 0;
     }
 
-	function setData(order,minDate,maxDate){        
-        var orderData = moment.utc(order.paid);
+	function setData(order,minDate,maxDate){
+        var orderData = moment.utc(order.pickupTime);
         if (orderData >= minDate && orderData <= maxDate){
 			orders++;
 			var customerId  = order.userId;
@@ -33,7 +33,7 @@ angular.module('kyc.charts')
     	return (orders/newCustomers.length).toFixed(2);
     }
     function getType(){
-    	return type; 
+    	return type;
     }
 
     function getHighChart(){

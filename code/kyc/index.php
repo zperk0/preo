@@ -178,6 +178,7 @@
   <script src="/code/kyc/js/charts/customersPie.js"></script>
   <script src="/code/kyc/js/charts/customersBar.js"></script>
   <script src="/code/kyc/js/charts/numberOfOrders.js"></script>
+  <script src="/code/kyc/js/charts/ordersPerChannel.js"></script>
   <script src="/code/kyc/js/charts/menuItemPopularity.js"></script>
   <script src="/code/kyc/js/charts/revenue.js"></script>
   <script src="/code/kyc/js/reports/allReports.js"></script>

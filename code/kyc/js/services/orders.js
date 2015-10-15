@@ -27,6 +27,9 @@ angular.module('kyc.services')
 
 
         function load(minPaid,maxPaid,outletIds) {
+
+            var params = {};
+
             minPaid = getMinDateForQuery(minPaid);
 
             if ( outletIds && outletIds.length ) {
@@ -35,23 +38,34 @@ angular.module('kyc.services')
 
             //max paid on the query is always now.
             maxPaid = moment.utc().valueOf();
-            return Order.query({accountId:ACCOUNT_ID, venueId: VENUE_ID, maxPaid:maxPaid,minPaid:minPaid, outletIds: outletIds},function (res){
+
+            params = {accountId:ACCOUNT_ID, venueId: VENUE_ID, maxPaid:maxPaid, minPaid:minPaid, outletIds: outletIds};
+
+            // return Order.query({accountId:ACCOUNT_ID, venueId: VENUE_ID, maxPaid:maxPaid,minPaid:minPaid, outletIds: outletIds},function (res){
+            return fetchOrders(params, function (res){
                 orders = res;
-            }).$promise;
+            });
         }
 
         function loadSince(since, outletIds) {
+
+            var params = {};
 
             if ( outletIds && outletIds.length ) {
                 outletIds = outletIds.join(',');
             }
 
-            return Order.query({accountId:ACCOUNT_ID, since: since, venueId: VENUE_ID, outletIds: outletIds, orderBy: 'updated'},function (res){
+            params = {since: since, outletIds: outletIds, orderBy: 'updated'};
+
+            return fetchOrders(params,function (res){
                 orders = res;
-            }).$promise;
+            });
         }
 
         function getOrdersByEvents(minPaid,maxPaid,eventIds) {
+
+            var params = {};
+
             minPaid = getMinDateForQuery(minPaid);
 
             if ( eventIds && eventIds.length ) {
@@ -60,7 +74,22 @@ angular.module('kyc.services')
 
             //max paid on the query is always now.
             maxPaid = moment.utc().valueOf();
-            return Order.query({accountId:ACCOUNT_ID, venueId: VENUE_ID, maxPaid:maxPaid,minPaid:minPaid, eventIds: eventIds}).$promise;
+
+            params = {maxPaid:maxPaid,minPaid:minPaid, eventIds: eventIds};
+            return fetchOrders(params);
+        }
+
+        function fetchOrders(data, callback) {
+
+            var params = data,
+                cb = callback || (function(){});
+
+            // params need in all cases to fetch orders
+            params.accountId = ACCOUNT_ID;
+            params.venueId = VENUE_ID;
+            params.status = 'NOT_CANCELLED';
+
+            return Order.query(params, cb).$promise;
         }
 
 
