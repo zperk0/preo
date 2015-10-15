@@ -222,8 +222,6 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             angular.forEach($scope.allOrders,function(order, key){
                 if ($scope.exportAll === "1" || order.selected === true){
                     if ($scope.getSelectedOutlets().length > 1 || $scope.getSelectedOutlets().length == 0) {
-                        console.log(order.outletName)
-                        // prepData['Outlet'].push(order.outletName || order.outletId);
                         prepData['Outlet'].push(order.outletName || order.outletId);
                     }
                     prepData["Order ID"].push(order.id);
