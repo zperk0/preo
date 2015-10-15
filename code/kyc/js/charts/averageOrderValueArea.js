@@ -80,7 +80,7 @@ angular.module('kyc.charts')
             previousSixMonthsData: prepDataAverage.previousSixMonthsData,
             yearData: prepDataAverage.yearData,
             previousYearData: prepDataAverage.previousYearData,
-            total: prepDataAverage.total.toFixed(2),
+            total: isNaN(prepDataAverage.total) ? (0).toFixed(2) : prepDataAverage.total.toFixed(2),
             minTimestamp: minDate,
             maxTimestamp: maxDate
         }

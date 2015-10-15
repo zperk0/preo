@@ -2154,7 +2154,7 @@ $(document).ready(function() {
 
 						var iID = $tableSectionUnique.find('input[name^=iName]').data('id');
 
-						if(iID != "item0i")
+						if(iID != "item0i" && iID)
 						{
 							var $inputIPrice = $tableSectionUnique.find('input[name^=iPrice]');
 							var $inputName = $tableSectionUnique.find('input[name^=iName]');

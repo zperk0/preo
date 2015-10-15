@@ -2,7 +2,7 @@
 	<div class="container">
 		<div id="filterDashboard">
 			<ul>
-				<li ng-repeat="value in values" class='columns large-2 nopadding'>
+				<li ng-repeat="value in values" class='columns large-2 nopadding' ng-class='{"large-offset-1": isFirstElementInRow($index), "end": isLastElementInRow($index)}'>
 				  <div class="checkbox checkboxStyle checkboxStyleDashboard">
 				  	<input type="checkbox" ng-change='changeVisibility(value)' ng-model="value.display" id="check_{{ value.num }}" />
 				    <label for="check_{{ value.num }}" ng-class="{disabled: !value.display}">{{ value.title }}</label>
