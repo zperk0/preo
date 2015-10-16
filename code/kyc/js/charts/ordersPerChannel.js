@@ -33,8 +33,10 @@ angular.module('kyc.charts')
         }
     }
 
-    function onSetDataComplete(){
+    function onSetDataComplete(minDate,maxDate){
 
+        minTimestamp = minDate.valueOf();
+        maxTimestamp = maxDate.valueOf();
     }
 
     function getData(){
