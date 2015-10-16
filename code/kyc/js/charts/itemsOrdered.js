@@ -6,7 +6,7 @@ angular.module('kyc.charts')
 	var title = _tr("Items Ordered");
 
 	function setData(order,minDate,maxDate){
-        var orderData = order.paymentType == PaymentType.CASH ? order.pickupTime : order.paid;
+        var orderData = order.paymentType == PaymentType.CASH ? order.created : order.paid;
         orderData = moment.utc(orderData);
         if (orderData >= minDate && orderData <= maxDate){
 			angular.forEach(order.items,function(item){

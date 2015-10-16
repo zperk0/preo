@@ -13,7 +13,7 @@ angular.module('kyc.charts')
     var currency;
 
     function setData(order,minDate,maxDate){
-        var timestamp = order.paymentType == PaymentType.CASH ? order.pickupTime : order.paid;
+        var timestamp = order.paymentType == PaymentType.CASH ? order.created : order.paid;
         timestamp = moment.utc(timestamp).endOf('day').valueOf();
 
         if (dailyAverageTotal[timestamp]){

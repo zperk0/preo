@@ -12,7 +12,7 @@ angular.module('kyc.charts')
     }
 
 	function setData(order,minDate,maxDate){
-        var orderData = order.paymentType == PaymentType.CASH ? order.pickupTime : order.paid;
+        var orderData = order.paymentType == PaymentType.CASH ? order.created : order.paid;
         orderData = moment.utc(orderData).valueOf();
 
         if (orderData >= minDate.valueOf() && orderData <= maxDate.valueOf()){

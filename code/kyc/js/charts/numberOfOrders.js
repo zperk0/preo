@@ -11,7 +11,7 @@ angular.module('kyc.charts')
     var prepData = {};
 
 	function setData(order,minDate,maxDate){
-        var timestamp = order.paymentType == PaymentType.CASH ? order.pickupTime : order.paid;
+        var timestamp = order.paymentType == PaymentType.CASH ? order.created : order.paid;
         timestamp = moment.utc(timestamp).startOf('day').valueOf();
         if (dailyOrders[timestamp])
             dailyOrders[timestamp]++;
