@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('NumberOfOrders',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
+.factory('NumberOfOrders',['ChartType', 'ChartHelper', 'PaymentType', function(ChartType, ChartHelper, PaymentType) {
 
 	var type = ChartType.AREA;
     var dailyOrders = {};
@@ -11,7 +11,8 @@ angular.module('kyc.charts')
     var prepData = {};
 
 	function setData(order,minDate,maxDate){
-        var timestamp = moment.utc(order.pickupTime).startOf('day').valueOf();
+        var timestamp = order.paymentType == PaymentType.CASH ? order.pickupTime : order.paid;
+        timestamp = moment.utc(timestamp).startOf('day').valueOf();
         if (dailyOrders[timestamp])
             dailyOrders[timestamp]++;
         else

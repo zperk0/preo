@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('CustomersBar',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
+.factory('CustomersBar',['ChartType', 'ChartHelper', 'PaymentType', function(ChartType, ChartHelper, PaymentType) {
 
 	var type = ChartType.COLUMN;
     var title = _tr('Customers (Bar)');
@@ -15,7 +15,8 @@ angular.module('kyc.charts')
 	function setData(order,minDate,maxDate){
         minTimestamp = minDate.valueOf();
         maxTimestamp = maxDate.valueOf();
-        var orderData = moment.utc(order.pickupTime);
+        var orderData = order.paymentType == PaymentType.CASH ? order.pickupTime : order.paid;
+        orderData = moment.utc(orderData);
         if (orderData >= minDate && orderData <= maxDate){
             var customerId  = order.userId;
             if (newCustomers.indexOf(customerId) === -1){

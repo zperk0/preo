@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('AverageOrderValueArea',['ChartType','ChartHelper', function(ChartType,ChartHelper) {
+.factory('AverageOrderValueArea',['ChartType', 'ChartHelper', 'PaymentType', function(ChartType, ChartHelper, PaymentType) {
 
     var type = ChartType.AREA;
     var dailyAverageTotal = {};
@@ -13,7 +13,9 @@ angular.module('kyc.charts')
     var currency;
 
     function setData(order,minDate,maxDate){
-        var timestamp = moment.utc(order.pickupTime).endOf('day').valueOf();
+        var timestamp = order.paymentType == PaymentType.CASH ? order.pickupTime : order.paid;
+        timestamp = moment.utc(timestamp).endOf('day').valueOf();
+
         if (dailyAverageTotal[timestamp]){
             dailyAverageTotal[timestamp] += order.total;
             ++dailyAverageOrder[timestamp];

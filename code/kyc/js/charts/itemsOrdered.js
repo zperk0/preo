@@ -1,21 +1,22 @@
 angular.module('kyc.charts')
-.factory('ItemsOrdered',['ChartType', function(ChartType) {
+.factory('ItemsOrdered',['ChartType', 'PaymentType', function(ChartType, PaymentType) {
 
-		var type = ChartType.NUMBER;
-		var itemsOrdered =0;
-		var title = _tr("Items Ordered");
+	var type = ChartType.NUMBER;
+	var itemsOrdered =0;
+	var title = _tr("Items Ordered");
 
-		function setData(order,minDate,maxDate){
-            var orderData = moment.utc(order.pickupTime);
-            if (orderData >= minDate && orderData <= maxDate){
-    			angular.forEach(order.items,function(item){
-    				itemsOrdered+=item.qty;
-    			})
-    		}
+	function setData(order,minDate,maxDate){
+        var orderData = order.paymentType == PaymentType.CASH ? order.pickupTime : order.paid;
+        orderData = moment.utc(orderData);
+        if (orderData >= minDate && orderData <= maxDate){
+			angular.forEach(order.items,function(item){
+				itemsOrdered+=item.qty;
+			})
 		}
+	}
 
-		function getData(){
-    	return itemsOrdered;
+	function getData(){
+	   return itemsOrdered;
     }
     function getType(){
     	return type;

@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('MenuItemPopularity',['ChartType','ChartHelper', 'UtilsService', function(ChartType,ChartHelper, UtilsService) {
+.factory('MenuItemPopularity',['ChartType', 'ChartHelper', 'UtilsService', 'PaymentType', function(ChartType, ChartHelper, UtilsService, PaymentType) {
 
 	var type = ChartType.AREA;
     var title = _tr('Menu Item Popularity');
@@ -14,7 +14,8 @@ angular.module('kyc.charts')
 
 
 	function setData(order,minDate,maxDate){
-        var timestamp = moment.utc(order.pickupTime).startOf('day').valueOf();
+        var timestamp = order.paymentType == PaymentType.CASH ? order.pickupTime : order.paid;
+        timestamp = moment.utc(timestamp).startOf('day').valueOf();
 
         angular.forEach(order.items,function(item){
 
