@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('MostPopularItems',['ChartType','Colors','ChartHelper','UtilsService', function(ChartType,Colors,ChartHelper,UtilsService) {
+.factory('MostPopularItems',['ChartType', 'Colors', 'ChartHelper', 'UtilsService', 'PaymentType', function(ChartType, Colors, ChartHelper, UtilsService, PaymentType) {
 
 	var type = ChartType.PIE;
     var items = {};
@@ -29,7 +29,8 @@ angular.module('kyc.charts')
 	function setData(order,minDate,maxDate){
         minTimestamp = minDate.valueOf();
         maxTimestamp = maxDate.valueOf();
-        var orderData = moment.utc(order.paid);
+        var orderData = order.paymentType == PaymentType.CASH ? order.created : order.paid;
+        orderData = moment.utc(orderData);
         if (orderData >= minDate && orderData <= maxDate){
             angular.forEach(order.items,function(item){
                 if (items[item.menuItemId] !== undefined)

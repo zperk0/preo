@@ -1,12 +1,12 @@
 angular.module('kyc.charts')
-.factory('CustomersPie',['ChartType','Colors','ChartHelper', function(ChartType,Colors,ChartHelper) {
+.factory('CustomersPie',['ChartType', 'Colors', 'ChartHelper', 'PaymentType', function(ChartType, Colors, ChartHelper, PaymentType) {
 
 	var type = ChartType.PIE;
-    var colorIndex = 0;    
+    var colorIndex = 0;
     var title = _tr('Customers (Pie)');
     var data = [
         {name:_tr("New"),y:0,color:Colors[0]},
-        {name:_tr("Returning"),y:0,color:Colors[1]}    
+        {name:_tr("Returning"),y:0,color:Colors[1]}
     ]
     var newCustomers = [];
     var repeatedCustomers = [];
@@ -17,16 +17,17 @@ angular.module('kyc.charts')
         colorIndex =0;
         data = [
             {name:_tr("New"),y:0,color:Colors[0]},
-            {name:_tr("Returning"),y:0,color:Colors[1]}    
+            {name:_tr("Returning"),y:0,color:Colors[1]}
         ]
         newCustomers = [];
         repeatedCustomers = [];
     }
-    
+
 	function setData(order,minDate,maxDate){
         minTimestamp = minDate.valueOf();
         maxTimestamp = maxDate.valueOf();
-        var orderData = moment.utc(order.paid);
+        var orderData = order.paymentType == PaymentType.CASH ? order.created : order.paid;
+        orderData = moment.utc(orderData);
         if (orderData >= minDate && orderData <= maxDate){
             var customerId  = order.userId;
             if (newCustomers.indexOf(customerId) === -1){
@@ -38,7 +39,7 @@ angular.module('kyc.charts')
                     repeatedCustomers.push(customerId);
                     data[1].y++;
                 }
-            }                               
+            }
         }
 	}
 
@@ -47,7 +48,7 @@ angular.module('kyc.charts')
     	return data;
     }
     function getType(){
-    	return type; 
+    	return type;
     }
 
      function getHighChart(){
@@ -64,7 +65,7 @@ angular.module('kyc.charts')
         var data = getData();
         var csvData =[[moment.utc(minTimestamp).format("DD-MMM-YYYY") + " - " + moment.utc(maxTimestamp).format("DD-MMM-YYYY")],[title]]
         angular.forEach(data,function(d){
-            csvData.push([d.name,d.y]) 
+            csvData.push([d.name,d.y])
         })
         return {
             data:csvData
@@ -77,7 +78,7 @@ angular.module('kyc.charts')
             type:type,
             title:title,
             startDate: minTimestamp,
-            endDate: maxTimestamp,            
+            endDate: maxTimestamp,
             dataJson: JSON.stringify(data),
             categories: [data[0].name,data[1].name]
         }

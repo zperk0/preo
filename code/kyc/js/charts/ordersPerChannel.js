@@ -1,49 +1,48 @@
 angular.module('kyc.charts')
-.factory('TimeOfOrdersPlaced',['ChartType', 'Colors', 'ChartHelper', 'PaymentType', function(ChartType, Colors, ChartHelper, PaymentType) {
+.factory('OrdersPerChannel',['ChartType', 'Colors', 'ChartHelper', 'gettextCatalog', 'PaymentType', function(ChartType, Colors, ChartHelper, gettextCatalog, PaymentType) {
 
-	var type = ChartType.PIE;
+    var type = ChartType.PIE;
     var colorIndex = 0;
-    var title = _tr('Time of Orders Placed');
+    var title = gettextCatalog.getString('Orders per channel');
     var data;
     var minTimestamp = 0;
     var maxTimestamp = 0;
 
     function clearData(){
         data = [
-        {name:_tr("On the day"),y:0,color:Colors[0]},
-        {name:_tr("In advance"),y:0,color:Colors[1]}
+        {name:gettextCatalog.getString("Mobile app"),y:0,color:Colors[0]},
+        {name:gettextCatalog.getString("Website"),y:0,color:Colors[1]}
         ]
         colorIndex=0;
     }
 
-	function setData(order,minDate,maxDate){
-        minTimestamp = minDate.valueOf();
-        maxTimestamp = maxDate.valueOf();
+    function setData(order,minDate,maxDate){
         var orderData = order.paymentType == PaymentType.CASH ? order.created : order.paid;
         orderData = moment.utc(orderData);
-        if (orderData >= minDate && orderData <= maxDate){
-            if (order.paid !== undefined && order.pickupTime !== undefined){
-                var placed = moment.utc(order.paid).startOf('day').valueOf();
-                var pickup = moment.utc(order.pickupTime).startOf('day').valueOf();
-                if(placed === pickup || (order.paid == null && order.paymentType == 'CASH')){
-                    data[0].y++;
-                } else {
-                    data[1].y++;
-                }
+
+        if (orderData >= minDate && orderData <= maxDate) {
+
+            if(order.sourceAppId == 1 || order.sourceAppId == 23) {
+
+                data[1].y++;
+            } else {
+
+                data[0].y++;
             }
         }
-
-	}
-
-    function onSetDataComplete(){
-
     }
 
-	function getData(){
-    	return data;
+    function onSetDataComplete(minDate,maxDate){
+
+        minTimestamp = minDate.valueOf();
+        maxTimestamp = maxDate.valueOf();
+    }
+
+    function getData(){
+        return data;
     }
     function getType(){
-    	return type;
+        return type;
     }
 
     function getHighChart(){
@@ -74,7 +73,7 @@ angular.module('kyc.charts')
             startDate: minTimestamp,
             endDate: maxTimestamp,
             dataJson: JSON.stringify(data),
-            categories: [_tr('On the day'),_tr('In advance')]
+            categories: [gettextCatalog.getString('Mobile app'), gettextCatalog.getString('Website')]
         }
     }
 
