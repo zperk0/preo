@@ -42,6 +42,13 @@
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
+					  		<th ng-click="direction=!direction; setOrderBy('discountsAndFees');" class="colItems">
+					  			<? echo _("Discounts & Fees")?>
+					  			<div class="sort pull-right">
+					  				<i class="fa fa-sort-up"></i>
+					  				<i class="fa fa-sort-desc"></i>
+					  			</div>
+					  		</th>
 					  		<th ng-click="orderBy = 'total'; direction=!direction">
 					  			{{"Order Total" | translate}}
 					  			<div class="sort pull-right">
@@ -69,6 +76,7 @@
 					  			{{ order.phone || order.user.phone }}
 					  		</td>
 					  		<td ng-bind-html="getItemsAsString(order)"></td>
+					  		<td ng-bind-html="getDiscountsAndFees(order)"></td>
 					  		<td>{{ getCurrency() + order.total.toFixed(2) }}</td>
 					  		<td class='marketingTd' width="40"><img class='marketingOpt' ng-src="{{order.user.optinLoyalty  | marketing }}"/></td>
 					  		<td class='marketingTd' width="40"><img class='marketingOpt' ng-src="{{order.user.optinOffers  | marketing }}"/></td>

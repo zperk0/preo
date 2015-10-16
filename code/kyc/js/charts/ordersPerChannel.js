@@ -1,5 +1,5 @@
 angular.module('kyc.charts')
-.factory('OrdersPerChannel',['ChartType', 'Colors', 'ChartHelper', 'gettextCatalog', function(ChartType,Colors,ChartHelper, gettextCatalog) {
+.factory('OrdersPerChannel',['ChartType', 'Colors', 'ChartHelper', 'gettextCatalog', 'PaymentType', function(ChartType, Colors, ChartHelper, gettextCatalog, PaymentType) {
 
     var type = ChartType.PIE;
     var colorIndex = 0;
@@ -17,10 +17,9 @@ angular.module('kyc.charts')
     }
 
     function setData(order,minDate,maxDate){
+        var orderData = order.paymentType == PaymentType.CASH ? order.created : order.paid;
+        orderData = moment.utc(orderData);
 
-        minTimestamp = minDate.valueOf();
-        maxTimestamp = maxDate.valueOf();
-        var orderData = moment.utc(order.paid);
         if (orderData >= minDate && orderData <= maxDate) {
 
             if(order.sourceAppId == 1 || order.sourceAppId == 23) {

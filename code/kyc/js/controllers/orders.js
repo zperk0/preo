@@ -338,7 +338,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             })
 
             var totalData = [
-                '', '', '', '', '', '', 'Total', $scope.getCurrency() + total.toFixed(2), '', '', '', ''
+                '', '', '', '', '', 'Total', $scope.getCurrency() + total.toFixed(2), '', '', '', '', ''
             ];
 
             if (ordersToExport.length > 1) {
@@ -360,6 +360,9 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             return result;
         }
 
-        _processOrders(OrderService.getOrders());
-        $AjaxInterceptor.complete();
+        $scope.$on('KYC_OUTLETS_LOADED', function() {
+
+            _processOrders(OrderService.getOrders());
+            $AjaxInterceptor.complete();
+        })
     }]);

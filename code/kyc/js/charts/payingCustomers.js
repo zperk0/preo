@@ -1,21 +1,22 @@
 angular.module('kyc.charts')
-.factory('PayingCustomers',['ChartType', function(ChartType) {
+.factory('PayingCustomers',['ChartType', 'PaymentType', function(ChartType, PaymentType) {
 
 		var type = ChartType.NUMBER;
 		var newCustomers = [];
 		var repeatedCustomers = [];
 		var title = _tr("Total Customers");
-    
+
     function clearData(){
         newCustomers = [];
         repeatedCustomers = [];
     }
 
-	function setData(order,minDate,maxDate){               
-        var orderData = moment.utc(order.paid).valueOf();        
-        
-        if (orderData >= minDate.valueOf() && orderData <= maxDate.valueOf()){                
-            
+	function setData(order,minDate,maxDate){
+        var orderData = order.paymentType == PaymentType.CASH ? order.created : order.paid;
+        orderData = moment.utc(orderData).valueOf();
+
+        if (orderData >= minDate.valueOf() && orderData <= maxDate.valueOf()){
+
     		var customerId  = order.userId;
     		if (newCustomers.indexOf(customerId) === -1){
     			newCustomers.push(customerId);
@@ -25,7 +26,7 @@ angular.module('kyc.charts')
     				repeatedCustomers.push(customerId);
     		}
         }
-        
+
 	}
 
 	function getData(){
@@ -33,7 +34,7 @@ angular.module('kyc.charts')
     	return newCustomers.length;
     }
     function getType(){
-    	return type; 
+    	return type;
     }
 
     function getHighChart(){
