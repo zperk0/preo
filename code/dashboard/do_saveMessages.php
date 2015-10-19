@@ -4,6 +4,15 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	
+	$curlResult = callAPI('GET', $apiURL."venues/" . $_SESSION['venue_id'] . "/messages", false, $apiAuth);		
+	if ($curlResult) {
+		$dataResult = json_decode($curlResult, true);
+
+		if ($dataResult && is_array($dataResult) && count($dataResult) > 0) {
+			exit();
+		}
+	}
+
 	$messages = json_decode(stripslashes($_POST['messages']), true);
 
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
