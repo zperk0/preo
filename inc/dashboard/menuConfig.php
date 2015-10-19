@@ -1,3 +1,5 @@
+<? $_SESSION['groupMenu'] = ($_SERVER['REQUEST_URI'] == '/newGroupMenu') || (strtoupper($menu['type']) == 'BOOKING') ? true : false; ?>
+
 <div class="loading" id="loadingConfig">
   <div class="background-loading"></div>
   <div class="loading-content">
@@ -6,7 +8,7 @@
 </div>
 
 <?if(!isset($_SESSION['menu_edit_on'])) $_SESSION['menu_edit_on']=0;?>
-<form id="menuConfigForm" method="POST" data-preoabide>
+<form id="menuConfigForm" class='<? if($_SESSION["groupMenu"]) echo "groupMenu";?>' method="POST" data-preoabide>
 	<div class="row">
 		<div class="topSpacer"></div>
 		<?if(isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag']){ ?>
@@ -29,8 +31,9 @@
 		<?}?>
 		<div class="large-12 columns">
 
+			<?if(!$_SESSION['groupMenu']) { ?>
 			<h1><?if(!$_SESSION['menu_edit_on'] && !isset($menu)) echo _("Build your menu"); else echo _("Your menu");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Now it's time to create your menu. We suggest you keep it simple to start with.<br/><br/>An easy way is to group items, i.e. create separate sections for food, cold drinks and hot drinks.");?>"></i></h1>
-
+			<?}?>
 			<!-- Hidden inputs here keep count of menu items and options -->
 			<input type="hidden" id="sectionCount" 			name="sectionCount"			value="<?if($_SESSION['menu_edit_on']) echo $sectionCount; else echo "0";?>"/>
 			<input type="hidden" id="sectionCountAct" 		name="sectionCountAct"		value="<?if($_SESSION['menu_edit_on']) echo $sectionCount; else echo "0";?>"/>
@@ -65,9 +68,29 @@
 			endif; ?>
 
 			<div class="row">
-				<input type="text" name="mName" id="mName" data-edit="false" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo _("Click to add your menu name");?>" required tabindex=1 pattern="^.{0,99}$"/>
+				<input type="text" name="mName" id="mName" data-edit="false" class="menuField noEnterSubmit" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['name'], ENT_QUOTES);?>" placeholder="<?echo !$_SESSION['groupMenu'] ? _("Click to add your menu name") : _("Enter menu name");?>" required tabindex=1 pattern="^.{0,99}$"/>
 				<small class="error mNameError"><?echo _("Please type a menu name (max 100chars)");?></small>
 			</div>
+			<?if($_SESSION['groupMenu']) { ?>
+			<div class="row">
+				<input type="text" name="mDescription" id="mDescription" class="menuField" value="<?if($_SESSION['menu_edit_on'] || (isset($menu) && count($menu)) ) echo htmlentities($menu['description'], ENT_QUOTES);?>" placeholder="<?echo _("Description (optional)");?>" tabindex=2 pattern="^.{0,250}$"/>
+			</div>
+			<div class='row'>
+				<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
+				<div class='promotions-input-container'>
+					<select class='promotions-select allow-custom-input' data-placeholder="<?echo _('Select some promotions'); ?>" multiple>
+						<?if(isset($menu)) {
+							foreach($menu['promotions'] as $pKey=>$promotion){?>
+							<option value="<? echo $promotion; ?>" selected><? echo $promotion; ?></option>
+						<?}
+						}?>
+					</select>
+				</div>
+			</div>
+			<?}?>
+
+
+
 
 			<div class="hide" id="menuSectionRow"> <!-- DUMMY -->
 				<div class="row">
@@ -75,6 +98,16 @@
 						<input type="text" name="mSectionName[0]" data-insert="false" data-edit="false" data-delete="false" data-id="section0s" data-md="false" class="menuField menuSectionField noEnterSubmit" value="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
 						<small class="error msecError"><?echo _("Please type a section name (max 100chars)");?></small>
 					</div>
+					<?if($_SESSION['groupMenu']) { ?>
+					<div class="large-12 columns minmax-container">
+						<span><?echo _('User must select'); ?></span>
+						<div>
+							<input type="text" name="mSectionMinMax[0]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" required pattern="^[1-9][0-9]*$" value='10'/>
+							<small class="error mminmaxError"><?echo _("Please enter the quantity");?></small>
+						</div>
+						<span><?echo _('item/s per guest from this section'); ?></span>
+					</div>
+					<?}?>
 				</div>
 				<div class="row">
 					<div class="large-12 columns sectionTools">
@@ -217,6 +250,16 @@
 								<input type="text" name="mSectionName[<?echo ($sKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-id="section<?echo $section['id'];?>" data-md="<?echo $mdFlag?>" class="menuField menuSectionField noEnterSubmit section<?echo ($sKey+1);?>" value="<?echo htmlentities($section['name'], ENT_QUOTES);?>" placeholder="<?echo _("Click to add a section name");?>" required pattern="^.{0,99}$"/>
 								<small class="error msecError"><?echo _("Please type a section name (max 100chars)");?></small>
 							</div>
+							<?if($_SESSION['groupMenu']) { ?>
+							<div class="large-12 columns minmax-container">
+								<span><?echo _('User must select'); ?></span>
+								<div>
+									<input type="text" name="mSectionMinMax[<?echo ($sKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-md="false" class="menuField menuSectionField noEnterSubmit minmax" required pattern="^[1-9][0-9]*$"  value='<? echo $section["min"]; ?>'/>
+									<small class="error mminmaxError"><?echo _("Please enter the quantity");?></small>
+								</div>
+								<span><?echo _('item/s per guest from this section'); ?></span>
+							</div>
+							<?}?>
 						</div>
 						<div class="row">
 							<div class="large-12 columns sectionTools">
@@ -496,6 +539,76 @@ $(document).ready(function() {
 	$('.progressIndicator').attr('title', <? echo json_encode(_("45&#37 done, now for the fun bit!")) ?>);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseover"); }, 1100);
 	setTimeout(function() { $('.progressIndicator').trigger("mouseout"); }, 7500);
+});
+</script>
+<?}?>
+
+<?if($_SESSION['groupMenu']){?>
+<script type="text/javascript">
+$(document).ready(function() {
+
+	var select, chosen;
+
+	// cache the select element as we'll be using it a few times
+	select = $(".promotions-select");
+
+	// init the chosen plugin
+	select.chosen({'disable_search': true, 'no_results_text': _tr('Press enter, space or comma to assign the promotion: ')});
+
+	// get the chosen object (any type, single or multiple)
+	chosen = $('.chosen-container');
+
+	// Bind the keyup event to the search box input
+	chosen.find('input').addClass('noEnterSubmit').attr('type', 'number').keyup( function(e) {
+
+	    // if we hit Enter, Space or Comma and the results list is empty (no matches) add the option
+	    if ((e.which == 13 || e.which == 32 || e.which == 188) && (chosen.find('.chosen-results > li').length == chosen.find('.result-selected').length || chosen.find('li.no-results').length > 0))
+	    {
+	    	if(select.find('option[value="' + this.value + '"]').length == 0) {
+
+		    	// if(e.which == 188)
+		    	// 	this.value = this.value.substr(0, this.value.length - 1);
+
+		        var option = $("<option>").val(this.value).text(this.value).attr('selected', true);
+
+		        select.trigger('change');
+
+		        // add the new option
+		        select.prepend(option);
+		        // automatically select it
+		        select.find(option).prop('selected', true);
+		        // trigger the update
+		        select.trigger("chosen:updated");
+	    	}
+	    }
+	}).blur(function() {
+
+		var e = $.Event('keyup');
+    	e.which = 13;
+		$(this).trigger(e)
+	});
+
+	// trigger edit menu when promotions were edited
+	select.change(function() {
+
+		$('#mName').attr('data-edit',true);
+		$('#mName').data('edit',true);
+	});
+
+	if(getParameterByName('duplicated'))
+		noty({
+            type: 'success',
+            text: _tr('Menu duplicated with success.')
+        });
+
+
+	function getParameterByName(name) {
+		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+			results = regex.exec(location.search);
+		return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+
 });
 </script>
 <?}?>

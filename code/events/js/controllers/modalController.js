@@ -1,12 +1,13 @@
 (function(window, angular) {
 
     angular.module('events')
-    .controller('ModalCtrl', ['$scope', '$timeout', 'items', '$rootScope', '$log', 'DateUtils', 'gettextCatalog', 'CollectionSlots',
-        function($scope, $timeout, items, $rootScope, $log, DateUtils, gettextCatalog, CollectionSlots) {
+    .controller('ModalCtrl', ['$scope', '$timeout', 'items', '$rootScope', '$log', 'DateUtils', 'gettextCatalog', 'CollectionSlots', '$filter',
+        function($scope, $timeout, items, $rootScope, $log, DateUtils, gettextCatalog, CollectionSlots, $filter) {
 
             var vm = this,
                 schedInit = false,
-                slotInit = false;
+                slotInit = false,
+                orderBy = $filter('orderBy');
 
             vm.customSlotFeature = CollectionSlots.isCustomFeatureAvailable();
 
@@ -156,8 +157,11 @@
                             step: slot.step,
                             startFactor: slot.start < 0 || slot.start == null ? -1 : 1,
                             endFactor: slot.end < 0 || slot.end == null ? -1 : 1,
-                            hasSteps: slot.step != null ? 'true' : 'false'
+                            hasSteps: slot.step != null ? 'true' : 'false',
+                            position: slot.position || 0
                         });
+
+                        vm.slots = orderBy(vm.slots, 'position');
                     });
                 }
             }
@@ -191,7 +195,7 @@
 
                             slotInit = true;
                             $timeout(function() {
-                                initUiSlots();
+                                vm.initUiSlots();
                             });
                         }
 
@@ -210,22 +214,14 @@
                 vm.slots.push({eventId: '', startFactor: '-1', endFactor: '-1', hasSteps: 'true', $type: ''});
 
                 $timeout(function() {
-                    initUiSlots();
+                    vm.initUiSlots();
                 });
             };
 
             vm.deleteSlot = function(elem) {
 
                 // search for slot to delete
-                vm.slots.some(function(e, i) {
-
-                    if(elem === e) {
-
-                        vm.slots.splice(i, 1);
-                        return true;
-                    }
-                    return false;
-                });
+                vm.slots.splice(vm.slots.indexOf(elem), 1);
             };
 
             vm.changeMonth = function() {
@@ -276,6 +272,7 @@
                         name: elem.$type !== 'CUSTOM' ? elem.$type : elem.name,
                         step: elem.step,
                         leadTime: elem.leadTime,
+                        position: index
                     };
 
                     if(!isNaN(elem.start) && elem.start !== '')
@@ -348,7 +345,7 @@
             }
 
             // config ui components for adding collection slot
-            function initUiSlots() {
+            vm.initUiSlots = function () {
 
                 $('.ct-slots').find('select').multiselect({
                     multiple: false,
@@ -450,7 +447,7 @@
 
                 $timeout(function() {
 
-                    initUiSlots();
+                    vm.initUiSlots();
                 })
             }
 

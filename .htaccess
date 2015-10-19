@@ -70,6 +70,15 @@ RewriteRule ^.*$ nonEventSettings.php [L]
 RewriteCond %{REQUEST_URI} ^/events$ [NC]
 RewriteRule ^.*$ /code/events [L]
 
+RewriteCond %{REQUEST_URI} ^/groupBookingMenus$ [NC]
+RewriteRule ^.*$ /code/bookingMenus/index.php [L]
+
+RewriteCond %{REQUEST_URI} ^/booking$ [NC]
+RewriteRule ^.*$ /code/booking/index.php [L]
+
+RewriteCond %{REQUEST_URI} ^/bookingSettings$ [NC]
+RewriteRule ^.*$ /code/bookingSettings/index.php [L]
+
 RewriteCond %{REQUEST_URI} ^/homescreen$ [NC]
 RewriteRule ^.*$ appSettings1.php [L]
 
@@ -128,6 +137,9 @@ RewriteCond %{REQUEST_URI} ^/saveMenu$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_menuConfig.php [L]
 
 RewriteCond %{REQUEST_URI} ^/newMenu$ [NC]
+RewriteRule ^.*$ /newMenu.php [L]
+
+RewriteCond %{REQUEST_URI} ^/newGroupMenu$ [NC]
 RewriteRule ^.*$ /newMenu.php [L]
 
 RewriteCond %{REQUEST_URI} ^/deleteMenu$ [NC]
@@ -191,7 +203,7 @@ RewriteRule ^.*$ /code/settings/delivery/getVenue.php [L]
 RewriteCond %{REQUEST_URI} ^/saveMessages$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_saveMessages.php [L]
 
-RewriteRule ^menus/([^/]*)$ /menuSettings.php?id=$1 [L]
+RewriteRule ^editmenu/([^/]*)$ /menuSettings.php?id=$1 [L]
 
 RewriteCond %{REQUEST_URI} ^/deliverySettings$ [NC]
 RewriteRule ^.*$ /code/settings/delivery/delivery-view.php [L]
@@ -216,3 +228,9 @@ RewriteRule ^.*$ selectVenue.php [L]
 
 RewriteCond %{REQUEST_URI} ^/do_selectVenue$ [NC]
 RewriteRule ^.*$ /code/venue/do_venue.php [L]
+
+RewriteCond %{REQUEST_URI} ^/exportXLS$ [NC]
+RewriteRule ^.*$ /code/excel/exportXLS.php [L]
+
+RewriteCond %{REQUEST_URI} ^/bookingsReport$ [NC]
+RewriteRule ^.*$ /code/excel/bookingsReport.php [L]

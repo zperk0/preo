@@ -31,7 +31,7 @@ msgstr "Aktiv?"
 msgid "Add a new event"
 msgstr "Legg til nytt arrangement"
 
-#: code/events/partials/modal-event.php:182
+#: code/events/partials/modal-event.php:215
 msgid "Add another slot"
 msgstr "Legg til nytt sted"
 
@@ -53,7 +53,7 @@ msgstr "Adresselinje 3"
 msgid "All"
 msgstr "Alle"
 
-#: code/events/js/controllers/modalController.js:37
+#: code/events/js/controllers/modalController.js:76
 #: code/events/js/directives/event/event.php:47
 msgid "All Locations"
 msgstr "﻿Alle lokasjoner"
@@ -62,14 +62,38 @@ msgstr "﻿Alle lokasjoner"
 msgid "Amount"
 msgstr "Beløp"
 
-#: code/events/js/directives/event/event.js:108
-#: code/events/js/directives/event/event.js:129
+#: code/events/js/directives/event/event.js:114
+#: code/events/js/directives/event/event.js:135
 msgid ""
 "Are you sure you want to delete this event? Note: all event data will be "
 "lost!"
 msgstr ""
 "Er du sikker på at du vil slette denne hendelsen? Merk: alle hendelses data "
 "vil gå tapt!"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:69
+msgid ""
+"Are you sure you want to delete this menu? Note: all menu data will be lost!"
+msgstr ""
+"Er du sikker på at du vil slette denne menyen? Merk: alle meny data vil gå "
+"tapt!"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:27
+#, fuzzy
+msgid ""
+"Are you sure you want to duplicate this menu? Note: You'll be redirect to "
+"edit the menu."
+msgstr ""
+"Er du sikker på at du vil slette denne menyen? Merk: alle meny data vil gå "
+"tapt!"
+
+#: code/bookingMenus/partials/booking-menus.php:18
+msgid "Assigned to these promotions"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:17
+msgid "Auto reminder"
+msgstr ""
 
 #: code/accountSettings/partials/subscription.php:35
 msgid "BILLING HISTORY"
@@ -87,6 +111,23 @@ msgstr "Faktura historikk"
 #: code/accountSettings/partials/subscription.php:4
 msgid "Billing Schedule"
 msgstr "Faktureringsplan"
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.js:16
+msgid "Booking"
+msgstr ""
+
+#: code/booking/partials/booking.php:26
+msgid "Booking page"
+msgstr ""
+
+#: code/bookingSettings/js/controllers/bookingSettings.js:80
+#, fuzzy
+msgid "Booking settings has been saved!"
+msgstr "Innstillingene har blitt lagret!"
+
+#: code/booking/partials/booking.php:5
+msgid "Bookings"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:32
 msgid "Business Name"
@@ -117,6 +158,10 @@ msgstr "ENDRE DETALJER"
 msgid "CHANGE PASSWORD"
 msgstr "ENDRE PASSORD"
 
+#: code/bookingMenus/partials/booking-menus.php:7
+msgid "CREATE NEW MENU"
+msgstr ""
+
 #: code/kyc/js/directives/chart/chart.php:80
 #: code/kyc/partials/customers.php:99 code/kyc/partials/events.php:112
 #: code/kyc/partials/orders.php:128 code/kyc/partials/reports.php:126
@@ -124,7 +169,8 @@ msgstr "ENDRE PASSORD"
 msgid "CSV"
 msgstr "CSV"
 
-#: code/events/js/controllers/modalController.js:29
+#: code/events/js/controllers/modalController.js:31
+#: code/events/js/controllers/modalController.js:68
 msgid "CUSTOM"
 msgstr ""
 
@@ -136,6 +182,7 @@ msgstr "Kortnummer"
 msgid "Card ending"
 msgstr "Siste siffer i kortnummer"
 
+#: code/events/js/controllers/modalController.js:77
 #: code/events/js/directives/slot/slot.js:34
 msgid "Choose a Collection Slot"
 msgstr "Velg et sted"
@@ -157,6 +204,15 @@ msgstr "Klikk for å legge inn en beskrivelse"
 #: code/events/partials/modal-event.php:12
 msgid "Click to add an event name"
 msgstr "Klikk for å legge et arrangement navn"
+
+#: code/booking/partials/booking.php:23
+msgid "Client"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:6
+#, fuzzy
+msgid "Client contact:"
+msgstr "måneders kontrakt"
 
 #: code/events/js/directives/event/event.php:38
 msgid "Collapse"
@@ -198,6 +254,19 @@ msgstr "Samlingssted: Andre interval"
 msgid "Confirm"
 msgstr "Bekreft"
 
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:14
+msgid "Contact email:"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:10
+msgid "Contact no.:"
+msgstr ""
+
+#: code/bookingMenus/partials/booking-menus.php:7
+#, fuzzy
+msgid "Create new menu"
+msgstr "Opprett en ny meny"
+
 #: code/accountSettings/partials/payment.php:15
 msgid "Credit Card Name"
 msgstr "Kredittkortnummer"
@@ -215,7 +284,7 @@ msgstr "Kunde"
 msgid "Customers"
 msgstr "Kunder"
 
-#: code/events/js/controllers/modalController.js:25
+#: code/events/js/controllers/modalController.js:27
 msgid "DAILY"
 msgstr ""
 
@@ -228,11 +297,17 @@ msgid "DOWNLOAD PDF"
 msgstr "LAST NED PDF"
 
 #: code/accountSettings/partials/billingHistory.php:11
+#: code/booking/partials/booking.php:21
 msgid "Date"
 msgstr "Dato"
 
 #: code/kyc/index.php:62
 msgid "Date Range:"
+msgstr "Datointerval"
+
+#: code/booking/partials/booking.php:7
+#, fuzzy
+msgid "Date range"
 msgstr "Datointerval"
 
 #: code/kyc/partials/orders.php:25
@@ -250,15 +325,22 @@ msgstr "Dato?"
 msgid "Days"
 msgstr ""
 
+#: code/bookingSettings/partials/booking-settings.php:25
+#: code/bookingSettings/partials/booking-settings.php:38
+msgid "Days before the event"
+msgstr ""
+
 #: code/settings/delivery/partials/delivery.php:43
 msgid "Default delivery time (minutes)"
 msgstr "Standard leveringstid (minutter)"
 
+#: code/bookingMenus/js/directives/menus-item/menus-item.php:14
 #: code/events/js/directives/event/event.php:41
 msgid "Delete"
 msgstr "Slett"
 
-#: code/events/partials/modal-event.php:174
+#: code/events/partials/modal-event.php:181
+#: code/events/partials/modal-event.php:205
 msgid "Delete this slot"
 msgstr "Slett denne delen"
 
@@ -274,6 +356,7 @@ msgstr "Leveringsinnstillinger"
 msgid "Delivery charge"
 msgstr "Leveringskostnad"
 
+#: code/bookingMenus/partials/booking-menus.php:17
 #: code/events/partials/events.php:16
 msgid "Description"
 msgstr "Beskrivelse"
@@ -286,10 +369,11 @@ msgstr "Rabatt"
 msgid "Discount offered for delivery orders (%)"
 msgstr "Rabatt ved ordre for levering (%)"
 
-#: code/events/partials/modal-event.php:193
+#: code/events/partials/modal-event.php:226
 msgid "Done"
 msgstr "Fullført"
 
+#: code/bookingMenus/js/directives/menus-item/menus-item.php:15
 #: code/events/js/directives/event/event.php:40
 msgid "Duplicate"
 msgstr "Dupliser"
@@ -298,6 +382,7 @@ msgstr "Dupliser"
 msgid "Duration:"
 msgstr "Opprette meny"
 
+#: code/bookingMenus/js/directives/menus-item/menus-item.php:16
 #: code/events/js/directives/event/event.php:39
 msgid "Edit"
 msgstr "Rediger"
@@ -322,20 +407,30 @@ msgstr "Aktiver leveringstjenester"
 msgid "End Time"
 msgstr "Slutt tidspunkt"
 
-#: code/events/partials/modal-event.php:127
+#: code/bookingSettings/partials/booking-settings.php:13
+#, fuzzy
+msgid "Enter a name"
+msgstr "Kortnummer"
+
+#: code/events/partials/modal-event.php:130
+#: code/events/partials/modal-event.php:137
 msgid "Enter a name for the slot"
 msgstr ""
 
+#: code/bookingSettings/partials/booking-settings.php:23
+#: code/bookingSettings/partials/booking-settings.php:36
 #: code/events/partials/modal-event.php:32
 #: code/events/partials/modal-event.php:37
 #: code/events/partials/modal-event.php:42
 msgid "Enter a number"
 msgstr "Kortnummer"
 
-#: code/events/partials/modal-event.php:134
-#: code/events/partials/modal-event.php:146
-#: code/events/partials/modal-event.php:157
-#: code/events/partials/modal-event.php:169
+#: code/events/partials/modal-event.php:145
+#: code/events/partials/modal-event.php:155
+#: code/events/partials/modal-event.php:165
+#: code/events/partials/modal-event.php:176
+#: code/events/partials/modal-event.php:189
+#: code/events/partials/modal-event.php:200
 msgid "Enter minutes?"
 msgstr ""
 
@@ -390,13 +485,29 @@ msgstr "Fornavn"
 msgid "Free delivery for orders above"
 msgstr "Gratis levering for ordre over"
 
+#: code/booking/partials/booking.php:12
+msgid "Generate report"
+msgstr ""
+
+#: code/bookingMenus/partials/booking-menus.php:5
+msgid "Group Booking Menus"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:6
+msgid "Group Booking Settings"
+msgstr ""
+
+#: code/booking/partials/booking.php:25
+msgid "Guests"
+msgstr ""
+
 #: code/events/js/directives/event/event.php:18
 #: code/events/js/directives/event/event.php:22
 #: code/events/partials/modal-event.php:20
 msgid "HH:MM"
 msgstr "TT:MM"
 
-#: code/events/js/controllers/modalController.js:309
+#: code/events/js/controllers/modalController.js:53
 msgid "Half-Time"
 msgstr "Tid"
 
@@ -406,6 +517,12 @@ msgstr ""
 
 #: code/events/partials/modal-event.php:26
 msgid "How many days will your event occurs in days, hours and minutes?"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:18
+msgid ""
+"If a booking has outstanding orders, the event organiser will be sent a "
+"reminder"
 msgstr ""
 
 #: code/settings/delivery/partials/notifications.php:64
@@ -420,7 +537,7 @@ msgstr ""
 msgid "In case of customer queries contact:"
 msgstr "Ved kundehenvendelser kontakt:"
 
-#: code/events/js/controllers/modalController.js:307
+#: code/events/js/controllers/modalController.js:45
 msgid "Interval"
 msgstr ""
 
@@ -452,11 +569,15 @@ msgstr "Live aktivitet"
 msgid "Live stream"
 msgstr "Live aktivitet"
 
+#: code/bookingSettings/partials/booking-settings.php:30
+msgid "Lock ordering page"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:28
 msgid "MM"
 msgstr "MM"
 
-#: code/events/js/controllers/modalController.js:27
+#: code/events/js/controllers/modalController.js:29
 msgid "MONTHLY"
 msgstr ""
 
@@ -484,6 +605,7 @@ msgstr "Min konto"
 msgid "My Subscriptions"
 msgstr "Mine abonnementer"
 
+#: code/bookingMenus/partials/booking-menus.php:16
 #: code/events/partials/events.php:15 code/kyc/partials/customers.php:26
 msgid "Name"
 msgstr "Navn"
@@ -500,7 +622,7 @@ msgstr "Nytt passord"
 msgid "New event"
 msgstr "Legg til nytt arrangement"
 
-#: code/events/partials/modal-event.php:192
+#: code/events/partials/modal-event.php:225
 msgid "Next"
 msgstr ""
 
@@ -515,12 +637,19 @@ msgstr "Nei"
 msgid "No Data"
 msgstr "Ingen data"
 
-#: code/events/js/directives/event/event.js:117
-#: code/events/js/directives/event/event.js:151
+#: code/booking/partials/booking.php:39
+#, fuzzy
+msgid "No bookings at this period."
+msgstr "Ingen arrangementer i denne perioden"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:53
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:92
+#: code/events/js/directives/event/event.js:123
+#: code/events/js/directives/event/event.js:157
 msgid "No, go back."
 msgstr "Nei, gå tilbake."
 
-#: code/events/js/controllers/modalController.js:24
+#: code/events/js/controllers/modalController.js:26
 msgid "ONCE"
 msgstr ""
 
@@ -548,6 +677,11 @@ msgstr "Ordre total"
 msgid "Orders"
 msgstr "Ordre"
 
+#: code/booking/partials/booking.php:27
+#, fuzzy
+msgid "Orders placed"
+msgstr "Tidspunkt når ordre ble plassert"
+
 #: code/kyc/partials/orders.php:32
 msgid "Outlet"
 msgstr "Utsalgssted"
@@ -566,6 +700,10 @@ msgstr "Utsalgsstedets navn:"
 #: code/kyc/partials/stock.php:80
 msgid "PDF"
 msgstr "PDF"
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:21
+msgid "PRINT BOOKING"
+msgstr ""
 
 #: code/accountSettings/partials/profile.php:42
 msgid "Password"
@@ -587,7 +725,8 @@ msgstr "Vennligst legg til kortdetaljer for å aktivere abonnementet."
 msgid "Please add a payment method to keep your account active"
 msgstr "Vennligst legg til en betalingsmåte for å holde kontoen din aktiv"
 
-#: code/events/partials/modal-event.php:128
+#: code/events/partials/modal-event.php:136
+#: code/events/partials/modal-event.php:138
 msgid "Please choose a slot."
 msgstr "Velg et sted"
 
@@ -656,11 +795,16 @@ msgstr "Vennligst skriv etternavnet ditt. (maks 100 bokstaver)"
 msgid "Please update your card details within"
 msgstr "Vennligst oppdater kortdetaljene innen"
 
-#: code/events/js/controllers/modalController.js:311
+#: code/booking/js/controllers/booking.js:156
+#: code/bookingMenus/js/controllers/menus.js:92
+msgid "Please, setup the group booking settings first."
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:61
 msgid "Post-Game"
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:310
+#: code/events/js/controllers/modalController.js:57
 msgid "Post-Show"
 msgstr ""
 
@@ -668,11 +812,11 @@ msgstr ""
 msgid "Postcode"
 msgstr "Postnummer"
 
-#: code/events/js/controllers/modalController.js:306
+#: code/events/js/controllers/modalController.js:41
 msgid "Pre-Game"
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:305
+#: code/events/js/controllers/modalController.js:37
 msgid "Pre-Show"
 msgstr ""
 
@@ -691,7 +835,7 @@ msgstr ""
 "Forhåndsinnstilte avvisnings meldinger, som sendes via e-post og push-"
 "varsling"
 
-#: code/events/partials/modal-event.php:191
+#: code/events/partials/modal-event.php:224
 msgid "Previous"
 msgstr ""
 
@@ -700,6 +844,10 @@ msgstr ""
 #: code/accountSettings/partials/profile.php:1
 msgid "Profile"
 msgstr "Profil"
+
+#: code/booking/partials/booking.php:24
+msgid "Promotion"
+msgstr ""
 
 #: code/kyc/partials/stock.php:33
 msgid "Quantity Ordered"
@@ -718,6 +866,10 @@ msgstr "Oppdater"
 msgid "Reports"
 msgstr "Rapporter"
 
+#: code/bookingSettings/partials/booking-settings.php:9
+msgid "Restaurant Name"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:49
 #: code/accountSettings/partials/profile.php:49
 msgid "SAVE"
@@ -731,20 +883,22 @@ msgstr "LAGRE ENDRINGER"
 
 #: code/accountSettings/partials/password.php:27
 #: code/accountSettings/partials/payment.php:50
+#: code/accountSettings/partials/profile.php:50
 #: code/settings/delivery/partials/delivery.php:59
 #: code/settings/delivery/partials/notifications.php:77
 msgid "SAVING..."
 msgstr "LAGRER..."
 
-#: code/accountSettings/partials/profile.php:50
-msgid "SAVING...\""
-msgstr "LAGRER..\""
+#: code/bookingSettings/partials/booking-settings.php:42
+#, fuzzy
+msgid "Save changes"
+msgstr "Datointerval"
 
 #: code/events/partials/modal-event.php:55
 msgid "Schedule"
 msgstr "Faktureringsplan"
 
-#: code/events/js/controllers/modalController.js:308
+#: code/events/js/controllers/modalController.js:49
 msgid "Second-Interval"
 msgstr "Samlingssted: Andre interval"
 
@@ -763,11 +917,16 @@ msgstr "Valgte"
 msgid "Short name"
 msgstr "Kallenavn"
 
-#: code/events/partials/modal-event.php:126
+#: code/events/partials/modal-event.php:132
 msgid "Slot name"
 msgstr "Kallenavn"
 
-#: code/events/js/directives/event/event.js:144
+#: code/booking/js/controllers/booking.js:122
+#: code/bookingMenus/js/controllers/menus.js:36
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:46
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:84
+#: code/bookingSettings/js/controllers/bookingSettings.js:88
+#: code/events/js/directives/event/event.js:150
 msgid "Sorry, but there's been an error processing your request."
 msgstr "Beklager, men det var en feil ved behandling av forespørselen."
 
@@ -802,6 +961,10 @@ msgstr "Abonnementer"
 msgid "TOTAL"
 msgstr "TOTALT"
 
+#: code/bookingSettings/partials/booking-settings.php:31
+msgid "The event organiser can change their orders up until this time"
+msgstr ""
+
 #: code/events/partials/events.php:6
 msgid ""
 "These show when you are open for ordering, such as performances or matches. "
@@ -810,11 +973,15 @@ msgstr ""
 "Disse viser når du har åpent for bestilling, som for eksempel forestillinger "
 "eller kamper. De kan sees fra forsiden av din app"
 
-#: code/events/partials/modal-event.php:131
+#: code/events/partials/modal-event.php:186
+msgid "This slot is available up until"
+msgstr ""
+
+#: code/events/partials/modal-event.php:142
 msgid "This slot starts"
 msgstr ""
 
-#: code/kyc/partials/stream.php:42
+#: code/booking/partials/booking.php:22 code/kyc/partials/stream.php:42
 msgid "Time"
 msgstr "Tid"
 
@@ -827,6 +994,7 @@ msgstr "Tid"
 msgid "Time?"
 msgstr "Tid?"
 
+#: code/bookingMenus/partials/booking-menus.php:19
 #: code/events/partials/events.php:21
 msgid "Tools"
 msgstr "Verktøy"
@@ -855,7 +1023,7 @@ msgstr "Varsler for utsalgssted"
 msgid "Visible?"
 msgstr "Synlig?"
 
-#: code/events/js/controllers/modalController.js:26
+#: code/events/js/controllers/modalController.js:28
 msgid "WEEKLY"
 msgstr ""
 
@@ -863,7 +1031,7 @@ msgstr ""
 msgid "What's your event duration?"
 msgstr "Dagene din restaurant er åpen"
 
-#: code/events/js/controllers/modalController.js:28
+#: code/events/js/controllers/modalController.js:30
 msgid "YEARLY"
 msgstr ""
 
@@ -878,10 +1046,19 @@ msgstr "ÅÅ"
 msgid "Yes"
 msgstr "Ja"
 
-#: code/events/js/directives/event/event.js:110
-#: code/events/js/directives/event/event.js:131
+#: code/events/js/directives/event/event.js:116
+#: code/events/js/directives/event/event.js:137
 msgid "Yes, delete this event!"
 msgstr "Ja, slett denne hendelsen!"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:71
+msgid "Yes, delete this menu!"
+msgstr "Ja, slett denne menyen!"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:29
+#, fuzzy
+msgid "Yes, duplicate this menu!"
+msgstr "Ja, slett denne menyen!"
 
 #: code/accountSettings/partials/subscription.php:44
 msgid "You are currently subscribed to the"
@@ -920,15 +1097,15 @@ msgstr ""
 msgid "Your subscription has been cancelled"
 msgstr "Abonnementet er kansellert"
 
-#: code/events/js/controllers/modalController.js:33
+#: code/events/js/controllers/modalController.js:72
 msgid "after"
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:34
+#: code/events/js/controllers/modalController.js:73
 msgid "before"
 msgstr ""
 
-#: code/events/partials/modal-event.php:164
+#: code/events/partials/modal-event.php:172
 msgid "broken down in steps"
 msgstr ""
 
@@ -940,25 +1117,28 @@ msgstr "dager for å hindre at kontoen din blir deaktivert."
 msgid "eg. \\\"NW1, NW2...\\\""
 msgstr "f.eks. \\\"3210, 3211...\\\""
 
-#: code/events/js/controllers/modalController.js:35
+#: code/events/js/controllers/modalController.js:74
 msgid "is"
 msgstr ""
 
-#: code/events/js/controllers/modalController.js:36
+#: code/events/js/controllers/modalController.js:75
 msgid "is not"
 msgstr ""
 
-#: code/events/partials/modal-event.php:137
-#: code/events/partials/modal-event.php:148
-#: code/events/partials/modal-event.php:171
+#: code/events/partials/modal-event.php:147
+#: code/events/partials/modal-event.php:157
+#: code/events/partials/modal-event.php:178
+#: code/events/partials/modal-event.php:191
+#: code/events/partials/modal-event.php:202
 msgid "minutes"
 msgstr "minutter siden"
 
-#: code/events/partials/modal-event.php:159
+#: code/events/partials/modal-event.php:167
 msgid "minutes and it"
 msgstr "minutter siden"
 
-#: code/events/partials/modal-event.php:165
+#: code/booking/js/directives/booking-item/booking-item.php:25
+#: code/events/partials/modal-event.php:173
 msgid "of"
 msgstr ""
 
@@ -966,17 +1146,28 @@ msgstr ""
 msgid "package"
 msgstr "pakke"
 
-#: code/events/partials/modal-event.php:153
+#: code/events/partials/modal-event.php:196
+msgid "the event start time"
+msgstr ""
+
+#: code/events/partials/modal-event.php:162
 msgid "the event start time with a lead time of"
 msgstr ""
 
-#: code/events/partials/modal-event.php:142
-msgid "the event, it ends"
+#: code/events/partials/modal-event.php:152
+msgid "the event start time, it ends"
 msgstr ""
 
 #: code/kyc/index.php:66
 msgid "to"
 msgstr "til"
+
+#: code/events/partials/modal-event.php:197
+msgid "with a lead time of"
+msgstr ""
+
+#~ msgid "SAVING...\""
+#~ msgstr "LAGRER..\""
 
 #~ msgid "All Locations\")?>"
 #~ msgstr "﻿Alle lokasjoner"
@@ -1946,9 +2137,6 @@ msgstr "til"
 #~ msgid "Add a new Outlet"
 #~ msgstr "Legg til nytt utsalgssted"
 
-#~ msgid "Create a new menu"
-#~ msgstr "Opprett en ny meny"
-
 #~ msgid "Add an outlet name"
 #~ msgstr "Legg til nytt sted"
 
@@ -2209,9 +2397,6 @@ msgstr "til"
 #~ msgid "*minimum "
 #~ msgstr "*minimum"
 
-#~ msgid " months contract"
-#~ msgstr "måneders kontrakt"
-
 #~ msgid "Have a discount code?"
 #~ msgstr "Har du en rabattkode?"
 
@@ -2444,16 +2629,6 @@ msgstr "til"
 #~ msgid "All changes has been saved!"
 #~ msgstr "Alle endringer er lagret!"
 
-#~ msgid ""
-#~ "Are you sure you want to delete this menu? Note: all menu data will be "
-#~ "lost!"
-#~ msgstr ""
-#~ "Er du sikker på at du vil slette denne menyen? Merk: alle meny data vil "
-#~ "gå tapt!"
-
-#~ msgid "Yes, delete this menu!"
-#~ msgstr "Ja, slett denne menyen!"
-
 #~ msgid "Sorry, incorrect password."
 #~ msgstr "Beklager, feil passord."
 
@@ -2463,9 +2638,6 @@ msgstr "til"
 #~ msgstr ""
 #~ "Innstillinger og passord har blitt lagret!<br/>Du må logge inn på nytt "
 #~ "med det nye passordet for å fortsette."
-
-#~ msgid "Settings have been saved!"
-#~ msgstr "Innstillingene har blitt lagret!"
 
 #~ msgid "Please select features you require"
 #~ msgstr "Velg funksjonene du krever"
@@ -2583,12 +2755,6 @@ msgstr "til"
 #~ msgid "Select Events..."
 #~ msgstr "Velg Arrangementer..."
 
-#~ msgid "No events in this period"
-#~ msgstr "Ingen arrangementer i denne perioden"
-
-#~ msgid "Date Range"
-#~ msgstr "Datointerval"
-
 #~ msgid "Week"
 #~ msgstr "Uke"
 
@@ -2627,9 +2793,6 @@ msgstr "til"
 
 #~ msgid "In advance"
 #~ msgstr "På forhånd"
-
-#~ msgid "Time of Orders Placed"
-#~ msgstr "Tidspunkt når ordre ble plassert"
 
 #~ msgid "Average order value (are"
 #~ msgstr "Gjennomsnittlig Ordre Beløp (er"
