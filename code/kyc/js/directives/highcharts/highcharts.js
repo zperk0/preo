@@ -208,6 +208,11 @@ angular.module('kyc.directives').factory('highchartsNGUtils', function () {
           if (config.loading) {
             chart.showLoading();
           }
+
+          // force chart reflow after the digest
+          setTimeout(function() {
+            chart.reflow();
+          });
         };
         initChart();
         scope.$watch('config.series', function (newSeries, oldSeries) {
