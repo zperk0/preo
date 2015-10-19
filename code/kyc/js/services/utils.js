@@ -1,9 +1,9 @@
 angular.module('kyc.services')
-.service('UtilsService',[function() {
+.service('UtilsService',['$timeout', function($timeout) {
 
   var items = [];
 
-    
+
   var sliceObject = function( object, begin, end ) {
 
     var i = 0;
@@ -48,7 +48,11 @@ angular.module('kyc.services')
           scope.value.order = index;
       };
 
-      window.sessionStorage.setItem('widgets', angular.toJson(objectValues));    
+      window.sessionStorage.setItem('widgets', angular.toJson(objectValues));
+
+      $timeout(function() {
+        angular.element('#sscontainer').trigger("ss-rearrange");
+      });
   }
 
   var dynamicSort = function (property, desc) {
@@ -61,7 +65,7 @@ angular.module('kyc.services')
         var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
       }
-      
+
   }
 
   var dynamicSortObject = function (obj, property, desc) {
@@ -77,7 +81,7 @@ angular.module('kyc.services')
       index.push(item);
     })
 
-    
+
     // sort the index
     index.sort(function (a, b) {
         var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
@@ -110,7 +114,7 @@ angular.module('kyc.services')
     return newArray.concat( oldArray );
 
   }
-		
+
   return {
     sliceObject: sliceObject,
     reOrderWidgets: reOrderWidgets,
