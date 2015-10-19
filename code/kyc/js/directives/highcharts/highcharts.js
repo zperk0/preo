@@ -42,8 +42,8 @@ angular.module('kyc.directives').factory('highchartsNGUtils', function () {
     }
   };
 }).directive('highchart', [
-  'highchartsNGUtils',
-  function (highchartsNGUtils) {
+  'highchartsNGUtils', '$timeout',
+  function (highchartsNGUtils, $timeout) {
     var seriesId = 0;
     var ensureIds = function (series) {
       var changed = false;
@@ -210,7 +210,7 @@ angular.module('kyc.directives').factory('highchartsNGUtils', function () {
           }
 
           // force chart reflow after the digest
-          setTimeout(function() {
+          $timeout(function() {
             chart.reflow();
           });
         };
