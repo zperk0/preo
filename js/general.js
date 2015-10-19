@@ -497,7 +497,7 @@ $(document).ready(function() {
 						if($('#redirectFlag').val()=='1') { setTimeout(function(){window.location.replace("/homescreen");}, 1000); }
 					}
 				}
-			 }).done(function(){
+			 }).done(function(venueSaved){
 			 	var postMessages = function (messages) {
 			 		$.ajax({
 			 			url: "/saveMessages",
@@ -517,9 +517,21 @@ $(document).ready(function() {
 					setTimeout(window.location.reload(),200);
 			 	};
 
-			 	var valueDelivery = $( "input:radio[name=vDelivery]:checked" ).val();
+				try
+				{
+					venueSaved = jQuery.parseJSON(venueSaved); //parsing JSON
+				}
+				catch(e)
+				{
+					noty({
+					  type: 'error',  layout: 'topCenter',
+					  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
+					});
+					//alert(data);
+					return false;
+				}			 	
 
-			 	if (valueDelivery == '1') {
+			 	if (venueSaved.deliverFlag && !VENUE_OBJECT.deliverFlag) {
 			 		postMessages(messagesAlert.notify.concat(messagesAlert.reject));
 			 	} else {
 			 		redirectPage();

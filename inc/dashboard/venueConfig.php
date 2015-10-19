@@ -519,6 +519,14 @@
 	</form>
 
 <script src="/code/settings/delivery/messages.js"></script>
+<script>
+var VENUE_OBJECT = null;
+(function(){
+	VENUE_OBJECT = {
+		deliverFlag: "<?php echo (isset($_SESSION['venue_deliverFlag']) && $_SESSION['venue_deliverFlag']) ?>"
+	};
+}());
+</script>
 <?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">
