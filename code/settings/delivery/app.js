@@ -11,7 +11,7 @@ angular.module('delivery', [
 ])
 .run(['LANG', 'gettextCatalog', function(LANG, gettextCatalog) {
 
-  var lang = 'en_US';
+  var lang = 'en_GB';
 
   switch(LANG) {
     case 'de': lang = 'de_DE'; break;
@@ -19,7 +19,7 @@ angular.module('delivery', [
     case 'nb': lang = 'nb_NO'; break;
   }
 
-  if(lang != 'en_US') {
+  if(lang != 'en_GB') {
 
     gettextCatalog.currentLanguage = lang;
     // gettextCatalog.debug = true;

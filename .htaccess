@@ -68,7 +68,16 @@ RewriteCond %{REQUEST_URI} ^/openinghours$ [NC]
 RewriteRule ^.*$ nonEventSettings.php [L]
 
 RewriteCond %{REQUEST_URI} ^/events$ [NC]
-RewriteRule ^.*$ eventSettings.php [L]
+RewriteRule ^.*$ /code/events [L]
+
+RewriteCond %{REQUEST_URI} ^/groupBookingMenus$ [NC]
+RewriteRule ^.*$ /code/bookingMenus/index.php [L]
+
+RewriteCond %{REQUEST_URI} ^/booking$ [NC]
+RewriteRule ^.*$ /code/booking/index.php [L]
+
+RewriteCond %{REQUEST_URI} ^/bookingSettings$ [NC]
+RewriteRule ^.*$ /code/bookingSettings/index.php [L]
 
 RewriteCond %{REQUEST_URI} ^/homescreen$ [NC]
 RewriteRule ^.*$ appSettings1.php [L]
@@ -130,6 +139,9 @@ RewriteRule ^.*$ /code/dashboard/do_menuConfig.php [L]
 RewriteCond %{REQUEST_URI} ^/newMenu$ [NC]
 RewriteRule ^.*$ /newMenu.php [L]
 
+RewriteCond %{REQUEST_URI} ^/newGroupMenu$ [NC]
+RewriteRule ^.*$ /newMenu.php [L]
+
 RewriteCond %{REQUEST_URI} ^/deleteMenu$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_menuDelete.php [L]
 
@@ -142,11 +154,6 @@ RewriteRule ^.*$ /code/dashboard/doUploadMenuItemImage.php [L]
 RewriteCond %{REQUEST_URI} ^/saveHours$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_nonEventConfig.php [L]
 
-RewriteCond %{REQUEST_URI} ^/deleteEvent$ [NC]
-RewriteRule ^.*$ /code/dashboard/do_eventDelete.php [L]
-
-RewriteCond %{REQUEST_URI} ^/saveEvent$ [NC]
-RewriteRule ^.*$ /code/dashboard/do_eventConfig.php [L]
 
 RewriteCond %{REQUEST_URI} ^/deleteUser$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_userDelete.php [L]
@@ -196,7 +203,7 @@ RewriteRule ^.*$ /code/settings/delivery/getVenue.php [L]
 RewriteCond %{REQUEST_URI} ^/saveMessages$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_saveMessages.php [L]
 
-RewriteRule ^menus/([^/]*)$ /menuSettings.php?id=$1 [L]
+RewriteRule ^editmenu/([^/]*)$ /menuSettings.php?id=$1 [L]
 
 RewriteCond %{REQUEST_URI} ^/deliverySettings$ [NC]
 RewriteRule ^.*$ /code/settings/delivery/delivery-view.php [L]
@@ -221,3 +228,9 @@ RewriteRule ^.*$ selectVenue.php [L]
 
 RewriteCond %{REQUEST_URI} ^/do_selectVenue$ [NC]
 RewriteRule ^.*$ /code/venue/do_venue.php [L]
+
+RewriteCond %{REQUEST_URI} ^/exportXLS$ [NC]
+RewriteRule ^.*$ /code/excel/exportXLS.php [L]
+
+RewriteCond %{REQUEST_URI} ^/bookingsReport$ [NC]
+RewriteRule ^.*$ /code/excel/bookingsReport.php [L]

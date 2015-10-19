@@ -6,6 +6,7 @@
 	}
 	else
 	{
+		// $apiURL="http://192.168.0.14:8080/v1/";
 		$apiURL="http://localhost:8080/v1/";
 		// $apiURL="https://api-demo.preoday.com/v1/"; // app-demo
 		// $apiURL="https://api-dev.preoday.com/v1/"; // app-dev

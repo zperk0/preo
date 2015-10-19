@@ -13,6 +13,14 @@ msgstr ""
 msgid "Active?"
 msgstr ""
 
+#: code/events/partials/events.php:9
+msgid "Add a new event"
+msgstr ""
+
+#: code/events/partials/modal-event.php:215
+msgid "Add another slot"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:36
 msgid "Address Line 1"
 msgstr ""
@@ -27,14 +35,40 @@ msgstr ""
 
 #: code/kyc/partials/customers.php:106
 #: code/kyc/partials/events.php:119
-#: code/kyc/partials/orders.php:127
+#: code/kyc/partials/orders.php:135
 #: code/kyc/partials/reports.php:133
 #: code/kyc/partials/stock.php:92
 msgid "All"
 msgstr ""
 
+#: code/events/js/controllers/modalController.js:76
+#: code/events/js/directives/event/event.php:47
+msgid "All Locations"
+msgstr ""
+
 #: code/accountSettings/partials/billingHistory.php:13
 msgid "Amount"
+msgstr ""
+
+#: code/events/js/directives/event/event.js:114
+#: code/events/js/directives/event/event.js:135
+msgid "Are you sure you want to delete this event? Note: all event data will be lost!"
+msgstr ""
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:69
+msgid "Are you sure you want to delete this menu? Note: all menu data will be lost!"
+msgstr ""
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:27
+msgid "Are you sure you want to duplicate this menu? Note: You'll be redirect to edit the menu."
+msgstr ""
+
+#: code/bookingMenus/partials/booking-menus.php:18
+msgid "Assigned to these promotions"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:17
+msgid "Auto reminder"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:35
@@ -52,6 +86,22 @@ msgstr ""
 
 #: code/accountSettings/partials/subscription.php:4
 msgid "Billing Schedule"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.js:16
+msgid "Booking"
+msgstr ""
+
+#: code/booking/partials/booking.php:26
+msgid "Booking page"
+msgstr ""
+
+#: code/bookingSettings/js/controllers/bookingSettings.js:80
+msgid "Booking settings has been saved!"
+msgstr ""
+
+#: code/booking/partials/booking.php:5
+msgid "Bookings"
 msgstr ""
 
 #: code/accountSettings/partials/profile.php:32
@@ -83,13 +133,22 @@ msgstr ""
 msgid "CHANGE PASSWORD"
 msgstr ""
 
+#: code/bookingMenus/partials/booking-menus.php:7
+msgid "CREATE NEW MENU"
+msgstr ""
+
 #: code/kyc/js/directives/chart/chart.php:80
 #: code/kyc/partials/customers.php:99
 #: code/kyc/partials/events.php:112
-#: code/kyc/partials/orders.php:120
+#: code/kyc/partials/orders.php:128
 #: code/kyc/partials/reports.php:126
 #: code/kyc/partials/stock.php:85
 msgid "CSV"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:31
+#: code/events/js/controllers/modalController.js:68
+msgid "CUSTOM"
 msgstr ""
 
 #: code/accountSettings/partials/payment.php:5
@@ -100,12 +159,87 @@ msgstr ""
 msgid "Card ending"
 msgstr ""
 
+#: code/events/js/controllers/modalController.js:77
+#: code/events/js/directives/slot/slot.js:34
+msgid "Choose a Collection Slot"
+msgstr ""
+
 #: code/kyc/partials/reports.php:9
 msgid "Choose preset:"
 msgstr ""
 
+#: code/events/partials/modal-event.php:75
+msgid "Choose the first occurrence."
+msgstr ""
+
+#: code/events/js/directives/event/event.php:10
+#: code/events/partials/modal-event.php:15
+msgid "Click to add a description"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:6
+#: code/events/partials/modal-event.php:12
+msgid "Click to add an event name"
+msgstr ""
+
+#: code/booking/partials/booking.php:23
+msgid "Client"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:6
+msgid "Client contact:"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:38
+msgid "Collapse"
+msgstr ""
+
+#: code/events/partials/modal-event.php:117
+msgid "Collection Slot"
+msgstr ""
+
+#: code/events/js/directives/slot/slot.js:48
+msgid "Collection Slot: Half-Time"
+msgstr ""
+
+#: code/events/js/directives/slot/slot.js:46
+msgid "Collection Slot: Interval"
+msgstr ""
+
+#: code/events/js/directives/slot/slot.js:50
+msgid "Collection Slot: Post-Game"
+msgstr ""
+
+#: code/events/js/directives/slot/slot.js:49
+msgid "Collection Slot: Post-Show"
+msgstr ""
+
+#: code/events/js/directives/slot/slot.js:45
+msgid "Collection Slot: Pre-Game"
+msgstr ""
+
+#: code/events/js/directives/slot/slot.js:44
+msgid "Collection Slot: Pre-Show"
+msgstr ""
+
+#: code/events/js/directives/slot/slot.js:47
+msgid "Collection Slot: Second-Interval"
+msgstr ""
+
 #: code/accountSettings/partials/password.php:19
 msgid "Confirm"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:14
+msgid "Contact email:"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:10
+msgid "Contact no.:"
+msgstr ""
+
+#: code/bookingMenus/partials/booking-menus.php:7
+msgid "Create new menu"
 msgstr ""
 
 #: code/accountSettings/partials/payment.php:15
@@ -127,11 +261,20 @@ msgstr ""
 msgid "Customers"
 msgstr ""
 
+#: code/events/js/controllers/modalController.js:27
+msgid "DAILY"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:14
+msgid "DD/MM/YYYY"
+msgstr ""
+
 #: code/accountSettings/partials/billingHistory.php:23
 msgid "DOWNLOAD PDF"
 msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:11
+#: code/booking/partials/booking.php:21
 msgid "Date"
 msgstr ""
 
@@ -139,12 +282,42 @@ msgstr ""
 msgid "Date Range:"
 msgstr ""
 
+#: code/booking/partials/booking.php:7
+msgid "Date range"
+msgstr ""
+
 #: code/kyc/partials/orders.php:25
 msgid "Date/Time"
 msgstr ""
 
+#: code/events/js/directives/event/event.php:15
+#: code/events/partials/modal-event.php:71
+#: code/events/partials/modal-event.php:77
+#: code/events/partials/modal-event.php:81
+msgid "Date?"
+msgstr ""
+
+#: code/events/partials/modal-event.php:30
+msgid "Days"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:25
+#: code/bookingSettings/partials/booking-settings.php:38
+msgid "Days before the event"
+msgstr ""
+
 #: code/settings/delivery/partials/delivery.php:43
 msgid "Default delivery time (minutes)"
+msgstr ""
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.php:14
+#: code/events/js/directives/event/event.php:41
+msgid "Delete"
+msgstr ""
+
+#: code/events/partials/modal-event.php:181
+#: code/events/partials/modal-event.php:205
+msgid "Delete this slot"
 msgstr ""
 
 #: code/settings/delivery/partials/delivery.php:18
@@ -159,12 +332,35 @@ msgstr ""
 msgid "Delivery charge"
 msgstr ""
 
+#: code/bookingMenus/partials/booking-menus.php:17
+#: code/events/partials/events.php:16
+msgid "Description"
+msgstr ""
+
 #: code/kyc/partials/stream.php:78
 msgid "Discount"
 msgstr ""
 
 #: code/settings/delivery/partials/delivery.php:48
 msgid "Discount offered for delivery orders (%)"
+msgstr ""
+
+#: code/events/partials/modal-event.php:226
+msgid "Done"
+msgstr ""
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.php:15
+#: code/events/js/directives/event/event.php:40
+msgid "Duplicate"
+msgstr ""
+
+#: code/events/partials/modal-event.php:25
+msgid "Duration:"
+msgstr ""
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.php:16
+#: code/events/js/directives/event/event.php:39
+msgid "Edit"
 msgstr ""
 
 #: code/accountSettings/partials/profile.php:23
@@ -183,8 +379,58 @@ msgstr ""
 msgid "Enable delivery services"
 msgstr ""
 
+#: code/events/partials/events.php:19
+msgid "End Time"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:13
+msgid "Enter a name"
+msgstr ""
+
+#: code/events/partials/modal-event.php:130
+#: code/events/partials/modal-event.php:137
+msgid "Enter a name for the slot"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:23
+#: code/bookingSettings/partials/booking-settings.php:36
+#: code/events/partials/modal-event.php:32
+#: code/events/partials/modal-event.php:37
+#: code/events/partials/modal-event.php:42
+msgid "Enter a number"
+msgstr ""
+
+#: code/events/partials/modal-event.php:145
+#: code/events/partials/modal-event.php:155
+#: code/events/partials/modal-event.php:165
+#: code/events/partials/modal-event.php:176
+#: code/events/partials/modal-event.php:189
+#: code/events/partials/modal-event.php:200
+msgid "Enter minutes?"
+msgstr ""
+
 #: code/kyc/partials/events.php:25
 msgid "Event"
+msgstr ""
+
+#: code/events/partials/modal-event.php:14
+msgid "Event description:"
+msgstr ""
+
+#: code/events/partials/modal-event.php:69
+msgid "Event first occurrence:"
+msgstr ""
+
+#: code/events/partials/modal-event.php:57
+msgid "Event frequency:"
+msgstr ""
+
+#: code/events/partials/modal-event.php:74
+msgid "Event last occurrence:"
+msgstr ""
+
+#: code/events/partials/modal-event.php:11
+msgid "Event name:"
 msgstr ""
 
 #: code/kyc/index.php:29
@@ -203,7 +449,7 @@ msgstr ""
 #: code/kyc/js/directives/chart/chart.php:71
 #: code/kyc/partials/customers.php:89
 #: code/kyc/partials/events.php:102
-#: code/kyc/partials/orders.php:110
+#: code/kyc/partials/orders.php:118
 #: code/kyc/partials/reports.php:116
 #: code/kyc/partials/stock.php:75
 msgid "Export as..."
@@ -217,12 +463,54 @@ msgstr ""
 msgid "Free delivery for orders above"
 msgstr ""
 
+#: code/booking/partials/booking.php:12
+msgid "Generate report"
+msgstr ""
+
+#: code/bookingMenus/partials/booking-menus.php:5
+msgid "Group Booking Menus"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:6
+msgid "Group Booking Settings"
+msgstr ""
+
+#: code/booking/partials/booking.php:25
+msgid "Guests"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:18
+#: code/events/js/directives/event/event.php:22
+#: code/events/partials/modal-event.php:20
+msgid "HH:MM"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:53
+msgid "Half-Time"
+msgstr ""
+
+#: code/events/partials/modal-event.php:35
+msgid "Hours"
+msgstr ""
+
+#: code/events/partials/modal-event.php:26
+msgid "How many days will your event occurs in days, hours and minutes?"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:18
+msgid "If a booking has outstanding orders, the event organiser will be sent a reminder"
+msgstr ""
+
 #: code/settings/delivery/partials/notifications.php:64
 msgid "In addition to the fulfilment app, you can also receive email updates to notify when you have received a new order"
 msgstr ""
 
 #: code/settings/delivery/partials/delivery.php:23
 msgid "In case of customer queries contact:"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:45
+msgid "Interval"
 msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:10
@@ -254,8 +542,16 @@ msgstr ""
 msgid "Live stream"
 msgstr ""
 
+#: code/bookingSettings/partials/booking-settings.php:30
+msgid "Lock ordering page"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:28
 msgid "MM"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:29
+msgid "MONTHLY"
 msgstr ""
 
 #: code/kyc/partials/stock.php:8
@@ -270,6 +566,10 @@ msgstr ""
 msgid "Minimum order value to qualify for delivery"
 msgstr ""
 
+#: code/events/partials/modal-event.php:40
+msgid "Minutes"
+msgstr ""
+
 #: code/accountSettings/index.php:18
 msgid "My Account"
 msgstr ""
@@ -278,6 +578,8 @@ msgstr ""
 msgid "My Subscriptions"
 msgstr ""
 
+#: code/bookingMenus/partials/booking-menus.php:16
+#: code/events/partials/events.php:15
 #: code/kyc/partials/customers.php:26
 msgid "Name"
 msgstr ""
@@ -290,6 +592,15 @@ msgstr ""
 msgid "New Password"
 msgstr ""
 
+#: code/events/partials/modal-event.php:3
+msgid "New event"
+msgstr ""
+
+#: code/events/partials/modal-event.php:225
+msgid "Next"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:33
 #: code/settings/delivery/partials/delivery.php:6
 #: code/settings/delivery/partials/notifications.php:27
 #: code/settings/delivery/partials/notifications.php:52
@@ -298,6 +609,21 @@ msgstr ""
 
 #: code/kyc/js/directives/chart/chart.php:20
 msgid "No Data"
+msgstr ""
+
+#: code/booking/partials/booking.php:39
+msgid "No bookings at this period."
+msgstr ""
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:53
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:92
+#: code/events/js/directives/event/event.js:123
+#: code/events/js/directives/event/event.js:157
+msgid "No, go back."
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:26
+msgid "ONCE"
 msgstr ""
 
 #: code/accountSettings/partials/password.php:5
@@ -317,13 +643,17 @@ msgid "Order Status Alerts"
 msgstr ""
 
 #: code/kyc/partials/events.php:46
-#: code/kyc/partials/orders.php:53
+#: code/kyc/partials/orders.php:60
 msgid "Order Total"
 msgstr ""
 
 #: code/kyc/index.php:30
 #: code/kyc/partials/orders.php:8
 msgid "Orders"
+msgstr ""
+
+#: code/booking/partials/booking.php:27
+msgid "Orders placed"
 msgstr ""
 
 #: code/kyc/partials/orders.php:32
@@ -334,13 +664,21 @@ msgstr ""
 msgid "Outlet Name:"
 msgstr ""
 
+#: code/events/partials/modal-event.php:46
+msgid "Outlet location:"
+msgstr ""
+
 #: code/kyc/js/directives/chart/chart.php:76
 #: code/kyc/partials/customers.php:94
 #: code/kyc/partials/events.php:107
-#: code/kyc/partials/orders.php:115
+#: code/kyc/partials/orders.php:123
 #: code/kyc/partials/reports.php:121
 #: code/kyc/partials/stock.php:80
 msgid "PDF"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:21
+msgid "PRINT BOOKING"
 msgstr ""
 
 #: code/accountSettings/partials/profile.php:42
@@ -361,6 +699,11 @@ msgstr ""
 
 #: code/accountSettings/partials/subscription.php:7
 msgid "Please add a payment method to keep your account active"
+msgstr ""
+
+#: code/events/partials/modal-event.php:136
+#: code/events/partials/modal-event.php:138
+msgid "Please choose a slot."
 msgstr ""
 
 #: code/settings/delivery/partials/notifications.php:45
@@ -396,8 +739,20 @@ msgstr ""
 msgid "Please type a delivery zone (max 200chars)"
 msgstr ""
 
+#: code/events/js/directives/event/event.php:11
+msgid "Please type a description (max 250chars)"
+msgstr ""
+
 #: code/accountSettings/partials/profile.php:27
 msgid "Please type a valid email address"
+msgstr ""
+
+#: code/events/partials/modal-event.php:13
+msgid "Please type an event name (max 100 chars)"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:7
+msgid "Please type an event name (max 100chars)"
 msgstr ""
 
 #: code/accountSettings/partials/profile.php:36
@@ -416,8 +771,29 @@ msgstr ""
 msgid "Please update your card details within"
 msgstr ""
 
+#: code/booking/js/controllers/booking.js:156
+#: code/bookingMenus/js/controllers/menus.js:92
+msgid "Please, setup the group booking settings first."
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:61
+msgid "Post-Game"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:57
+msgid "Post-Show"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:44
 msgid "Postcode"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:41
+msgid "Pre-Game"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:37
+msgid "Pre-Show"
 msgstr ""
 
 #: code/settings/delivery/partials/notifications.php:2
@@ -432,10 +808,18 @@ msgstr ""
 msgid "Preset order rejection notifications, sent by email and push alert"
 msgstr ""
 
+#: code/events/partials/modal-event.php:224
+msgid "Previous"
+msgstr ""
+
 #: code/accountSettings/index.php:25
 #: code/accountSettings/partials/password.php:1
 #: code/accountSettings/partials/profile.php:1
 msgid "Profile"
+msgstr ""
+
+#: code/booking/partials/booking.php:24
+msgid "Promotion"
 msgstr ""
 
 #: code/kyc/partials/stock.php:33
@@ -457,6 +841,10 @@ msgstr ""
 msgid "Reports"
 msgstr ""
 
+#: code/bookingSettings/partials/booking-settings.php:9
+msgid "Restaurant Name"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:49
 #: code/accountSettings/partials/profile.php:49
 msgid "SAVE"
@@ -476,9 +864,25 @@ msgstr ""
 msgid "SAVING..."
 msgstr ""
 
+#: code/bookingSettings/partials/booking-settings.php:42
+msgid "Save changes"
+msgstr ""
+
+#: code/events/partials/modal-event.php:55
+msgid "Schedule"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:49
+msgid "Second-Interval"
+msgstr ""
+
+#: code/events/partials/modal-event.php:80
+msgid "Select the days on the calendar below."
+msgstr ""
+
 #: code/kyc/partials/customers.php:110
 #: code/kyc/partials/events.php:123
-#: code/kyc/partials/orders.php:131
+#: code/kyc/partials/orders.php:139
 #: code/kyc/partials/reports.php:137
 #: code/kyc/partials/stock.php:96
 msgid "Selected"
@@ -487,6 +891,31 @@ msgstr ""
 #: code/settings/delivery/partials/notifications.php:14
 #: code/settings/delivery/partials/notifications.php:38
 msgid "Short name"
+msgstr ""
+
+#: code/events/partials/modal-event.php:132
+msgid "Slot name"
+msgstr ""
+
+#: code/booking/js/controllers/booking.js:122
+#: code/bookingMenus/js/controllers/menus.js:36
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:46
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:84
+#: code/bookingSettings/js/controllers/bookingSettings.js:88
+#: code/events/js/directives/event/event.js:150
+msgid "Sorry, but there's been an error processing your request."
+msgstr ""
+
+#: code/events/partials/events.php:17
+msgid "Start Date"
+msgstr ""
+
+#: code/events/partials/events.php:18
+msgid "Start Time"
+msgstr ""
+
+#: code/events/partials/modal-event.php:19
+msgid "Start time:"
 msgstr ""
 
 #: code/accountSettings/partials/billingHistory.php:12
@@ -508,8 +937,39 @@ msgstr ""
 msgid "TOTAL"
 msgstr ""
 
+#: code/bookingSettings/partials/booking-settings.php:31
+msgid "The event organiser can change their orders up until this time"
+msgstr ""
+
+#: code/events/partials/events.php:6
+msgid "These show when you are open for ordering, such as performances or matches. They can be viewed from the front page of your app"
+msgstr ""
+
+#: code/events/partials/modal-event.php:186
+msgid "This slot is available up until"
+msgstr ""
+
+#: code/events/partials/modal-event.php:142
+msgid "This slot starts"
+msgstr ""
+
+#: code/booking/partials/booking.php:22
 #: code/kyc/partials/stream.php:42
 msgid "Time"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:19
+#: code/events/js/directives/event/event.php:23
+#: code/events/partials/modal-event.php:21
+#: code/events/partials/modal-event.php:31
+#: code/events/partials/modal-event.php:36
+#: code/events/partials/modal-event.php:41
+msgid "Time?"
+msgstr ""
+
+#: code/bookingMenus/partials/booking-menus.php:19
+#: code/events/partials/events.php:21
+msgid "Tools"
 msgstr ""
 
 #: code/kyc/partials/stream.php:21
@@ -532,14 +992,44 @@ msgstr ""
 msgid "Venue Alerts"
 msgstr ""
 
+#: code/events/partials/events.php:20
+msgid "Visible?"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:28
+msgid "WEEKLY"
+msgstr ""
+
+#: code/events/partials/modal-event.php:29
+msgid "What's your event duration?"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:30
+msgid "YEARLY"
+msgstr ""
+
 #: code/accountSettings/partials/payment.php:29
 msgid "YY"
 msgstr ""
 
+#: code/events/js/directives/event/event.php:30
 #: code/settings/delivery/partials/delivery.php:8
 #: code/settings/delivery/partials/notifications.php:29
 #: code/settings/delivery/partials/notifications.php:54
 msgid "Yes"
+msgstr ""
+
+#: code/events/js/directives/event/event.js:116
+#: code/events/js/directives/event/event.js:137
+msgid "Yes, delete this event!"
+msgstr ""
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:71
+msgid "Yes, delete this menu!"
+msgstr ""
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:29
+msgid "Yes, duplicate this menu!"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:44
@@ -562,12 +1052,28 @@ msgstr ""
 msgid "Your account will be deactivated on"
 msgstr ""
 
+#: code/events/partials/events.php:6
+msgid "Your events"
+msgstr ""
+
 #: code/accountSettings/partials/subscription.php:45
 msgid "Your free trial of this subscription will end at midnight on"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:48
 msgid "Your subscription has been cancelled"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:72
+msgid "after"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:73
+msgid "before"
+msgstr ""
+
+#: code/events/partials/modal-event.php:172
+msgid "broken down in steps"
 msgstr ""
 
 #: code/accountSettings/partials/subscription.php:13
@@ -578,10 +1084,51 @@ msgstr ""
 msgid "eg. \\\"NW1, NW2...\\\""
 msgstr ""
 
+#: code/events/js/controllers/modalController.js:74
+msgid "is"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:75
+msgid "is not"
+msgstr ""
+
+#: code/events/partials/modal-event.php:147
+#: code/events/partials/modal-event.php:157
+#: code/events/partials/modal-event.php:178
+#: code/events/partials/modal-event.php:191
+#: code/events/partials/modal-event.php:202
+msgid "minutes"
+msgstr ""
+
+#: code/events/partials/modal-event.php:167
+msgid "minutes and it"
+msgstr ""
+
+#: code/booking/js/directives/booking-item/booking-item.php:25
+#: code/events/partials/modal-event.php:173
+msgid "of"
+msgstr ""
+
 #: code/accountSettings/partials/subscription.php:44
 msgid "package"
 msgstr ""
 
+#: code/events/partials/modal-event.php:196
+msgid "the event start time"
+msgstr ""
+
+#: code/events/partials/modal-event.php:162
+msgid "the event start time with a lead time of"
+msgstr ""
+
+#: code/events/partials/modal-event.php:152
+msgid "the event start time, it ends"
+msgstr ""
+
 #: code/kyc/index.php:66
 msgid "to"
+msgstr ""
+
+#: code/events/partials/modal-event.php:197
+msgid "with a lead time of"
 msgstr ""
