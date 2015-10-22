@@ -1,5 +1,5 @@
-angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location', 'OrderService','$AjaxInterceptor','UtilsService',
-    function($scope, $location, OrderService,$AjaxInterceptor,UtilsService) {
+angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location', 'OrderService','$AjaxInterceptor','UtilsService', 'OutletService',
+    function($scope, $location, OrderService,$AjaxInterceptor,UtilsService, OutletService) {
 
         if ($scope.venue.eventFlag) {
             $location.path('/dashboard');
@@ -360,9 +360,8 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             return result;
         }
 
-        $scope.$on('KYC_OUTLETS_LOADED', function() {
-
+        OutletService.getOutlets().then(function (outlets) {
             _processOrders(OrderService.getOrders());
             $AjaxInterceptor.complete();
-        })
+        });
     }]);

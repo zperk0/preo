@@ -944,7 +944,7 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
 }
 
 .highcharts-container {
-  width: 100%;
+  width: 100% !important;
 }
 
 .fa{
