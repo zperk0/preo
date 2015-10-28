@@ -463,8 +463,8 @@
 			<div class="row">
 				<div class="large-12 columns">
 					<label><?echo _("Tax id");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("For example VAT number. For display on receipts.");?>"></i></label>
-					<input type="text" name="vTaxId" id="vTaxId" tabindex=6 placeholder="<?echo _("e.g. GB999 9999 73");?>" value="<?if(isset($_SESSION['venue_taxid'])) echo $_SESSION['venue_taxid'];?>">
-					<small class="error"><?echo _("Please provide a minimum value for ordering");?></small>
+					<input type="text" name="vTaxId" id="vTaxId" tabindex=6 placeholder="<?echo _("e.g. GB999 9999 73");?>" value="<?if(isset($_SESSION['venue_taxid'])) echo $_SESSION['venue_taxid'];?>" pattern='^.{0,100}$'>
+					<small class="error"><?echo _("Please type a tax id (max 100chars)");?></small>
 				</div>
 			</div>
 
