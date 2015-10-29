@@ -3930,21 +3930,55 @@ button.preodayButton.noclick{
   display: none;
 }
 
-#modalImagesCrop, #modalTags{
+#modalImagesCrop, #modalTags, #modalMinMaxMod{
   padding: 35px 0;
 }
 
-#modalImagesCrop .content-modal, #modalTags .content-modal{
+#modalImagesCrop .content-modal, #modalTags .content-modal, #modalMinMaxMod .content-modal {
   position: relative;
   padding-top: 1em;
 }
 
-#modalImagesCrop .preodayButton, #modalTags .preodayButton {
+#modalImagesCrop .preodayButton, #modalTags .preodayButton, #modalMinMaxMod .preodayButton {
   font-weight: 400;
   font-size: 90%;
   padding: 0.6em 1em;
   width: 175px;
   margin-bottom: 0px;
+}
+
+#modalMinMaxMod {
+  z-index: 3000;
+}
+
+#modalMinMaxMod .fields-container {
+  text-align: left;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+#modalMinMaxMod .fields-container label, #modalMinMaxMod .fields-container input {
+  display: inline-block;
+}
+
+#modalMinMaxMod .fields-container input {
+  width: 60px;
+  border: 1px solid #ccc !important;
+}
+
+.advanced-modifier-option a {
+  display: block;
+  height: 100%;
+  color: inherit;
+}
+
+.ui-multiselect span:nth-child(2) {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 88%;
+  float: left;
+
 }
 
 .spacing-modalCrop{
@@ -3979,7 +4013,7 @@ button.preodayButton.noclick{
   font-size: 11px;
 }
 
-#saveChangesModalCrop, #saveChangesTags{
+#saveChangesModalCrop, #saveChangesTags, #saveChangesMinMaxMod {
   margin-right: 10px
 }
 
@@ -4137,7 +4171,7 @@ button.preodayButton.noclick{
   }
 }
 
-.formTags{
+.formTags, .formMinMaxMod {
   .title-notification{
     text-align: left;
   }

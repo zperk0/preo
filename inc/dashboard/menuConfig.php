@@ -351,6 +351,7 @@
 														<option value="S" title="<?echo _("User must select only one option.");?>" <?if($modifier['minChoices']==1 && $modifier['maxChoices']==1){?>selected="selected"<?}?> ><?echo _("User selects 1 option");?></option> <!-- min=1,max=1 -->
 														<option value="M" title="<?echo _("User must select one or more options.");?>" <?if($modifier['minChoices']==1 && $modifier['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("User selects 1 or more options");?></option> <!-- min=1,max=-1 -->
 														<option value="O" title="<?echo _("User can select zero or more options.");?>" <?if($modifier['minChoices']==0 && $modifier['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("User selects 0 or more options");?></option> <!-- min=0,max=-1 -->
+														<option value="A" title="<?echo _("Advanced...");?>" class='advanced-modifier-option' <?if($modifier['minChoices'] > 1 || $modifier['maxChoices'] > 1){?>selected="selected"<?}?>><a href='#' data-reveal-id="modalMinMaxMod"><?echo _("Advanced...");?></a></option> <!-- custom -->
 													</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options.");?>"></i>
 													<small class="error"><?echo _("Please choose a type");?></small>
 												</td>
@@ -499,6 +500,33 @@
 		<div class="footer-modalCrop spacing-modalCrop">
 			<button class="preodayButton pull-left" type="button" id="saveChangesTags">SAVE CHANGES</button>
 			<button class="preodayButton pull-left" type="button" id="cancelModalTags">CANCEL</button>
+		</div>
+	</form>
+</div>
+
+<div id="modalMinMaxMod" class="reveal-modal modal-preoday xsmall" data-options="closeOnBackgroundClick:false" data-reveal>
+	<a class="close-reveal-modal">×</a>
+	<form action="" method="POST" class="formMinMaxMod">
+		<div class="header-modalCrop spacing-modalCrop">
+			<header class="title-notification" id="title-tags">Custom options</header>
+		</div>
+
+		<div class="content-modal content-modal-tags">
+			<div class='fields-container'>
+				<label>Min</label>
+				<input type='text' pattern="^[1-9][0-9]*$" name='modMin'>
+				<!-- <small class="error mminmaxError"><?echo _("Please enter the quantity");?></small> -->
+			</div>
+			<div class='fields-container'>
+				<label>Max</label>
+				<input type='text' pattern="^[1-9][0-9]*$" name='modMax'>
+				<!-- <small class="error mminmaxError"><?echo _("Please enter the quantity");?></small> -->
+			</div>
+		</div>
+
+		<div class="footer-modalCrop spacing-modalCrop">
+			<button class="preodayButton pull-left" type="button" id="saveChangesMinMaxMod">SAVE CHANGES</button>
+			<button class="preodayButton pull-left" type="button" id="cancelModalMinMaxMod">CANCEL</button>
 		</div>
 	</form>
 </div>

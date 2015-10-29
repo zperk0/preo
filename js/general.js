@@ -529,7 +529,7 @@ $(document).ready(function() {
 					});
 					//alert(data);
 					return false;
-				}			 	
+				}
 
 			 	if (venueSaved.deliverFlag && !VENUE_OBJECT.deliverFlag) {
 			 		postMessages(messagesAlert.notify.concat(messagesAlert.reject));
@@ -1610,6 +1610,9 @@ $(document).ready(function() {
 
 	$(document).on("click", ".itemEdit, .itemTR input[readonly='readonly']", function() {
 
+		var $modalMinMaxMod = $('#modalMinMaxMod'),
+			$itemMenuSingleSelect = null;
+
 		if($(this).hasClass('itemEdit')) $(this).hide();
 		else $(this).closest('table').find('.itemEdit').hide();
 
@@ -1634,9 +1637,50 @@ $(document).ready(function() {
 				   multiple: false,
 				   header: false,
 				   noneSelectedText: _tr("Pick an option type"),
-				   selectedList: 1
+				   selectedList: 1,
+				   beforeopen: function(evt, ui) {
+				   		// save reference of the select triggered
+				   		$itemMenuSingleSelect = $(evt.target);
+				   }
 				});
 		});
+
+		// wrap advanced option with link to trigger modal
+		$('.advanced-modifier-option > label').wrap('<a href="" data-reveal-id="modalMinMaxMod"></a>')
+
+		$('.advanced-modifier-option a').click(function() {
+
+			// force multiselect to hide
+			$('.ui-multiselect-menu').hide();
+			$modalMinMaxMod.css('top', $(window).scrollTop() + 100);
+		});
+
+		$(document).on('click', '#cancelModalMinMaxMod', function(){
+			$modalMinMaxMod.foundation('reveal', 'close');
+		});
+
+		$(document).on('click', '#saveChangesMinMaxMod', function(){
+			// var $inputs = $listTags.find('input:checked');
+
+			// tagsMenu[idItemForTags] = [];
+
+			// for (var i = 0, len = $inputs.length; i < len; i++) {
+			// 	var $input = $($inputs[i]);
+			// 	tagsMenu[idItemForTags].push($input.val());
+			// };
+
+			// $lastInputName.attr('data-edit', true);
+			// $lastInputName.data('edit', true);
+
+			console.log('item', $itemMenuSingleSelect);
+
+			$('<option selected="true">User selects between 1 and 5 options</option>')
+				.insertBefore($itemMenuSingleSelect.find('option:last-child'))
+
+			$itemMenuSingleSelect.multiselect('refresh');
+
+			$modalMinMaxMod.foundation('reveal', 'close');
+		})
 	});
 
 	var sortableParams = {
