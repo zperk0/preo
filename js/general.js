@@ -1155,6 +1155,13 @@ $(document).ready(function() {
 		$(this).parents("tr:first").hide();
 	});
 
+	// Min Max Choices Modal variables
+	var	$modalMinMaxMod = $('#modalMinMaxMod'),
+		$minInput = $('input[name="modMin"]'),
+		$maxInput = $('input[name="modMax"]'),
+		$iMod = null,
+		$itemMenuSingleSelect = null;
+
 	$(document).on("click", ".xtraOpt", function(event) {
 
 		//get item number
@@ -1265,12 +1272,19 @@ $(document).ready(function() {
 					   multiple: false,
 					   header: false,
 					   noneSelectedText: _tr("Pick an option type"),
-					   selectedList: 1
+					   selectedList: 1,
+					   beforeopen: function(evt, ui) {
+					   		// save reference of the select triggered
+					   		$itemMenuSingleSelect = $(evt.target);
+					   		$iMod = $itemMenuSingleSelect.closest('.menuEdit').find('input[name^=iMod]');
+					   }
 					});
 
 					$(this).attr('required','required');
 				});
 			});
+
+			setModifierAdvancedOption();
 		}
 
 		//replace ids with incremented value and make value = default value (for !dups)
@@ -1479,10 +1493,17 @@ $(document).ready(function() {
 					   multiple: false,
 					   header: false,
 					   noneSelectedText: _tr("Pick an option type"),
-					   selectedList: 1
+					   selectedList: 1,
+					   beforeopen: function(evt, ui) {
+					   		// save reference of the select triggered
+					   		$itemMenuSingleSelect = $(evt.target);
+					   		$iMod = $itemMenuSingleSelect.closest('.menuEdit').find('input[name^=iMod]');
+					   }
 					});
 				});
 			});
+
+			setModifierAdvancedOption();
 		}
 
 		//add data-attribute
@@ -1610,9 +1631,6 @@ $(document).ready(function() {
 
 	$(document).on("click", ".itemEdit, .itemTR input[readonly='readonly']", function() {
 
-		var $modalMinMaxMod = $('#modalMinMaxMod'),
-			$itemMenuSingleSelect = null;
-
 		if($(this).hasClass('itemEdit')) $(this).hide();
 		else $(this).closest('table').find('.itemEdit').hide();
 
@@ -1641,47 +1659,105 @@ $(document).ready(function() {
 				   beforeopen: function(evt, ui) {
 				   		// save reference of the select triggered
 				   		$itemMenuSingleSelect = $(evt.target);
+				   		$iMod = $itemMenuSingleSelect.closest('.menuEdit').find('input[name^=iMod]');
 				   }
 				});
 		});
 
-		// wrap advanced option with link to trigger modal
-		$('.advanced-modifier-option > label').wrap('<a href="" data-reveal-id="modalMinMaxMod"></a>')
+		setModifierAdvancedOption();
+	});
 
-		$('.advanced-modifier-option a').click(function() {
+	function setModifierAdvancedOption() {
 
-			// force multiselect to hide
-			$('.ui-multiselect-menu').hide();
-			$modalMinMaxMod.css('top', $(window).scrollTop() + 100);
-		});
+		addAdvancedOptionEvents();
 
 		$(document).on('click', '#cancelModalMinMaxMod', function(){
 			$modalMinMaxMod.foundation('reveal', 'close');
 		});
 
 		$(document).on('click', '#saveChangesMinMaxMod', function(){
-			// var $inputs = $listTags.find('input:checked');
 
-			// tagsMenu[idItemForTags] = [];
+			var minTest = new RegExp($minInput.attr('pattern')).test($minInput.val()),
+				maxTest = new RegExp($maxInput.attr('pattern')).test($maxInput.val()),
+				error = false;
 
-			// for (var i = 0, len = $inputs.length; i < len; i++) {
-			// 	var $input = $($inputs[i]);
-			// 	tagsMenu[idItemForTags].push($input.val());
-			// };
+			// hide error when inputs are in focus
+			$minInput.focus(hideError);
+			$maxInput.focus(hideError);
 
-			// $lastInputName.attr('data-edit', true);
-			// $lastInputName.data('edit', true);
+			// fields validation
+			if(!minTest) {
 
-			console.log('item', $itemMenuSingleSelect);
+				$('.mMinError').show();
+				error = true;
+			}
+			if(!maxTest) {
 
-			$('<option selected="true">User selects between 1 and 5 options</option>')
-				.insertBefore($itemMenuSingleSelect.find('option:last-child'))
+				$('.mMaxError').show();
+				error = true;
+			}
+			if($minInput.val() > $maxInput.val()) {
 
+				$('.mMinError').show();
+				$('.mMaxError').show();
+				error = true;
+			}
+
+			if(error) {
+				return;
+			}
+
+			// flag to edit modifier on db
+			$iMod.attr('data-edit', true);
+			$iMod.data('edit', true);
+
+			// remove all selected options
+			$itemMenuSingleSelect.find('option').removeAttr('selected');
+
+			// check if the select already has this option
+			var customOption = $itemMenuSingleSelect.find('option[data-minchoices="' + $minInput.val() + '"][data-maxchoices="' + $maxInput.val() + '"]');
+
+			if(!customOption.length) {
+
+				// insert option before the "Advanced" options
+				$('<option value="A" title="' + _tr("Custom choices") + '" data-minchoices="' + $minInput.val() + '" data-maxchoices="' + $maxInput.val() + '" selected="selected">' + _tr('User selects between') + ' ' +  $minInput.val() + ' ' +_tr('and') + ' ' + $maxInput.val() + ' ' + _tr('options') + '</option>')
+					.insertBefore($itemMenuSingleSelect.find('option:last-child'));
+			}
+			else {
+
+				// we already have this option on the select
+				$(customOption).attr('selected', 'selected');
+			}
+
+			// refresh ui component
 			$itemMenuSingleSelect.multiselect('refresh');
+			// we refreshed the ui component, so attach the events again
+			addAdvancedOptionEvents();
 
+			// close modal
 			$modalMinMaxMod.foundation('reveal', 'close');
-		})
-	});
+		});
+
+		function addAdvancedOptionEvents() {
+			// wrap advanced option with link to trigger modal
+			$('.advanced-modifier-option > label').wrap('<a href="" data-reveal-id="modalMinMaxMod"></a>');
+
+			$('.advanced-modifier-option a').click(function() {
+
+				// force multiselect to hide
+				$('.ui-multiselect-menu').hide();
+
+				$modalMinMaxMod.css('top', $(window).scrollTop() + 100);
+				$minInput.val('');
+				$maxInput.val('');
+			});
+		}
+
+		function hideError() {
+			$('.mMinError').hide();
+			$('.mMaxError').hide();
+		}
+	}
 
 	var sortableParams = {
 			opacity: 0.5,
@@ -2293,6 +2369,12 @@ $(document).ready(function() {
 										{
 											menuSectionOneNivelItemModifiersCounter['minChoices'] = "0";
 											menuSectionOneNivelItemModifiersCounter['maxChoices'] = "-1";
+											break;
+										}
+										case 'A':
+										{
+											menuSectionOneNivelItemModifiersCounter['minChoices'] = $($fullItemUnique.find('select[name^=iModType] option[selected="selected"]')).data('minchoices');
+											menuSectionOneNivelItemModifiersCounter['maxChoices'] = $($fullItemUnique.find('select[name^=iModType] option[selected="selected"]')).data('maxchoices');
 											break;
 										}
 										default:

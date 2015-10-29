@@ -3978,7 +3978,10 @@ button.preodayButton.noclick{
   overflow: hidden;
   width: 88%;
   float: left;
+}
 
+.error.mMinError, .error.mMaxError {
+  display: none;
 }
 
 .spacing-modalCrop{

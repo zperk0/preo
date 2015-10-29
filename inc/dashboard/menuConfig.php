@@ -188,6 +188,7 @@
 								<option value="S" title="<?echo _("User must select only one option.");?>"><?echo _("User selects 1 option");?></option> <!-- min=1,max=1 -->
 								<option value="M" title="<?echo _("User must select one or more options.");?>"><?echo _("User selects 1 or more options");?></option> <!-- min=1,max=-1 -->
 								<option value="O" title="<?echo _("User can select zero or more options.");?>"><?echo _("User selects 0 or more options");?></option> <!-- min=0,max=-1 -->
+								<option title="<?echo _("Advanced...");?>" class='advanced-modifier-option'><?echo _("Advanced...");?></option> <!-- custom -->
 							</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options.");?>"></i>
 							<small class="error"><?echo _("Please choose a type");?></small>
 						</td>
@@ -351,7 +352,10 @@
 														<option value="S" title="<?echo _("User must select only one option.");?>" <?if($modifier['minChoices']==1 && $modifier['maxChoices']==1){?>selected="selected"<?}?> ><?echo _("User selects 1 option");?></option> <!-- min=1,max=1 -->
 														<option value="M" title="<?echo _("User must select one or more options.");?>" <?if($modifier['minChoices']==1 && $modifier['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("User selects 1 or more options");?></option> <!-- min=1,max=-1 -->
 														<option value="O" title="<?echo _("User can select zero or more options.");?>" <?if($modifier['minChoices']==0 && $modifier['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("User selects 0 or more options");?></option> <!-- min=0,max=-1 -->
-														<option value="A" title="<?echo _("Advanced...");?>" class='advanced-modifier-option' <?if($modifier['minChoices'] > 1 || $modifier['maxChoices'] > 1){?>selected="selected"<?}?>><a href='#' data-reveal-id="modalMinMaxMod"><?echo _("Advanced...");?></a></option> <!-- custom -->
+														<?if($modifier['minChoices'] > 1 || $modifier['maxChoices'] > 1) { ?>
+															<option value="A" title="<?echo _("Custom choices");?>" selected="selected" data-minchoices="<? echo $modifier['minChoices']; ?>" data-maxchoices="<? echo $modifier['maxChoices']; ?>"><?echo _("User selects between") .' '. $modifier['minChoices'] .' '. _("and") .' '. $modifier['maxChoices'] .' '. _("options");?></option>
+														<?}?>
+														<option title="<?echo _("Advanced...");?>" class='advanced-modifier-option'><?echo _("Advanced...");?></option> <!-- custom -->
 													</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options.");?>"></i>
 													<small class="error"><?echo _("Please choose a type");?></small>
 												</td>
@@ -515,12 +519,12 @@
 			<div class='fields-container'>
 				<label>Min</label>
 				<input type='text' pattern="^[1-9][0-9]*$" name='modMin'>
-				<!-- <small class="error mminmaxError"><?echo _("Please enter the quantity");?></small> -->
+				<small class="error mMinError"><?echo _("Please enter the quantity");?></small>
 			</div>
 			<div class='fields-container'>
 				<label>Max</label>
 				<input type='text' pattern="^[1-9][0-9]*$" name='modMax'>
-				<!-- <small class="error mminmaxError"><?echo _("Please enter the quantity");?></small> -->
+				<small class="error mMaxError"><?echo _("Please enter the quantity");?></small>
 			</div>
 		</div>
 
