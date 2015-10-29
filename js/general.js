@@ -1691,12 +1691,12 @@ $(document).ready(function() {
 				$('.mMinError').show();
 				error = true;
 			}
-			if(!maxTest) {
+			if(!maxTest && $maxInput.val() != -1) {
 
 				$('.mMaxError').show();
 				error = true;
 			}
-			if($minInput.val() > $maxInput.val()) {
+			if(($maxInput.val() != -1) && ($minInput.val() > $maxInput.val())) {
 
 				$('.mMinError').show();
 				$('.mMaxError').show();
@@ -1719,8 +1719,15 @@ $(document).ready(function() {
 
 			if(!customOption.length) {
 
+				var optionText = _tr('User selects between') + ' ' +  $minInput.val() + ' ' + (($maxInput.val() != -1) ? (_tr('and') + ' ' + $maxInput.val()) : _tr('or more')) + ' ' + _tr('options');
+
+				// change text if min and max values are equal
+				if($minInput.val() == $maxInput.val()) {
+					optionText = _tr('User selects') + ' ' +  $minInput.val() + ' ' + _tr('options');
+				}
+
 				// insert option before the "Advanced" options
-				$('<option value="A" title="' + _tr("Custom choices") + '" data-minchoices="' + $minInput.val() + '" data-maxchoices="' + $maxInput.val() + '" selected="selected">' + _tr('User selects between') + ' ' +  $minInput.val() + ' ' +_tr('and') + ' ' + $maxInput.val() + ' ' + _tr('options') + '</option>')
+				$('<option value="A" title="' + _tr("Custom choices") + '" data-minchoices="' + $minInput.val() + '" data-maxchoices="' + $maxInput.val() + '" selected="selected">' + optionText + '</option>')
 					.insertBefore($itemMenuSingleSelect.find('option:last-child'));
 			}
 			else {

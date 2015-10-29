@@ -349,11 +349,21 @@
 												</td>
 												<td class="modifierRow hide">
 													<select class="menuField noEnterSubmit inline itemMenuSingleSelect" style="display:none;" name="iModType[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>]">
-														<option value="S" title="<?echo _("User must select only one option.");?>" <?if($modifier['minChoices']==1 && $modifier['maxChoices']==1){?>selected="selected"<?}?> ><?echo _("User selects 1 option");?></option> <!-- min=1,max=1 -->
-														<option value="M" title="<?echo _("User must select one or more options.");?>" <?if($modifier['minChoices']==1 && $modifier['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("User selects 1 or more options");?></option> <!-- min=1,max=-1 -->
-														<option value="O" title="<?echo _("User can select zero or more options.");?>" <?if($modifier['minChoices']==0 && $modifier['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("User selects 0 or more options");?></option> <!-- min=0,max=-1 -->
-														<?if($modifier['minChoices'] > 1 || $modifier['maxChoices'] > 1) { ?>
-															<option value="A" title="<?echo _("Custom choices");?>" selected="selected" data-minchoices="<? echo $modifier['minChoices']; ?>" data-maxchoices="<? echo $modifier['maxChoices']; ?>"><?echo _("User selects between") .' '. $modifier['minChoices'] .' '. _("and") .' '. $modifier['maxChoices'] .' '. _("options");?></option>
+														<option value="S" title="<?echo _("User must select only one option.");?>" data-minchoices="1" data-maxchoices="1" <?if($modifier['minChoices']==1 && $modifier['maxChoices']==1){?>selected="selected"<?}?> ><?echo _("User selects 1 option");?></option> <!-- min=1,max=1 -->
+														<option value="M" title="<?echo _("User must select one or more options.");?>" data-minchoices="1" data-maxchoices="-1" <?if($modifier['minChoices']==1 && $modifier['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("User selects 1 or more options");?></option> <!-- min=1,max=-1 -->
+														<option value="O" title="<?echo _("User can select zero or more options.");?>" data-minchoices="0" data-maxchoices="-1" <?if($modifier['minChoices']==0 && $modifier['maxChoices']==-1){?>selected="selected"<?}?>><?echo _("User selects 0 or more options");?></option> <!-- min=0,max=-1 -->
+														<?if(!($modifier['minChoices']==1 && $modifier['maxChoices']==1) && !($modifier['minChoices']==1 && $modifier['maxChoices']==-1) && !($modifier['minChoices']==0 && $modifier['maxChoices']==-1)) { ?>
+
+															<?
+																if($modifier['minChoices'] != $modifier['maxChoices']) {
+
+																	$optionText =  _("User selects between") .' '. $modifier['minChoices'] .' '. (($modifier['maxChoices'] != -1) ? (_('and') . ' ' . $modifier['maxChoices']) : _('or more')) .' '. _("options");
+																} else {
+																	$optionText =  _("User selects") .' '. $modifier['minChoices'] .' '. _("options");
+																}
+															?>
+
+															<option value="A" title="<?echo _("Custom choices");?>" selected="selected" data-minchoices="<? echo $modifier['minChoices']; ?>" data-maxchoices="<? echo $modifier['maxChoices']; ?>"><? echo $optionText; ?></option>
 														<?}?>
 														<option title="<?echo _("Advanced...");?>" class='advanced-modifier-option'><?echo _("Advanced...");?></option> <!-- custom -->
 													</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Single: When the user must pick only 1 option.<br/><br/>Multiple: When the user must pick 1 or more options.<br/><br/>Optional: when the user can pick 0 or multiple options.");?>"></i>
@@ -468,10 +478,10 @@
 	<a class="close-reveal-modal">×</a>
 	<form action="" method="POST" class="formImageMenuItem" enctype="multipart/form-data">
 		<div class="header-modalCrop spacing-modalCrop">
-			<header class="title-notification" id="title-modalCrop">Name of item</header>
-			<button type="button" class="doImageMenuItem preodayButton pull-left" id="addPicture" title="<?echo _("UPLOAD");?>">ADD PICTURE</button>
+			<header class="title-notification" id="title-modalCrop"><? echo _("Name of item");?></header>
+			<button type="button" class="doImageMenuItem preodayButton pull-left" id="addPicture" title="<?echo _("UPLOAD");?>"><? echo _("ADD PICTURE"); ?></button>
 			<input type="file" name="picFile[]" accept="image/png;image/jpg;image/jpeg" class="hide picImageMenuItem" />
-			<p id="descriptionExtensions">JPG, PNG (Max. file size 5mb)</p>
+			<p id="descriptionExtensions"><? echo _("JPG, PNG (Max. file size 5mb)");?></p>
 			<p id="errorMessageImageCrop"></p>
 		</div>
 
@@ -484,8 +494,8 @@
 		</div>
 
 		<div class="footer-modalCrop spacing-modalCrop">
-			<button class="preodayButton pull-left" type="button" id="saveChangesModalCrop">SAVE CHANGES</button>
-			<button class="preodayButton pull-left" type="button" id="cancelModalImageCrop">CANCEL</button>
+			<button class="preodayButton pull-left" type="button" id="saveChangesMinMaxMod"><? echo _("SAVE CHANGES");?></button>
+			<button class="preodayButton pull-left" type="button" id="cancelModalMinMaxMod"><? echo _("CANCEL"); ?></button>
 		</div>
 	</form>
 </div>
@@ -502,8 +512,8 @@
 		</div>
 
 		<div class="footer-modalCrop spacing-modalCrop">
-			<button class="preodayButton pull-left" type="button" id="saveChangesTags">SAVE CHANGES</button>
-			<button class="preodayButton pull-left" type="button" id="cancelModalTags">CANCEL</button>
+			<button class="preodayButton pull-left" type="button" id="saveChangesMinMaxMod"><? echo _("SAVE CHANGES");?></button>
+			<button class="preodayButton pull-left" type="button" id="cancelModalMinMaxMod"><? echo _("CANCEL"); ?></button>
 		</div>
 	</form>
 </div>
@@ -511,26 +521,26 @@
 <div id="modalMinMaxMod" class="reveal-modal modal-preoday xsmall" data-options="closeOnBackgroundClick:false" data-reveal>
 	<a class="close-reveal-modal">×</a>
 	<form action="" method="POST" class="formMinMaxMod">
-		<div class="header-modalCrop spacing-modalCrop">
-			<header class="title-notification" id="title-tags">Custom options</header>
+		<div class="spancing-modalMinMaxMod">
+			<header class="title-notification" id="title-tags"><? echo _("Custom options");?></header>
 		</div>
 
-		<div class="content-modal content-modal-tags">
+		<div class="content-modal">
 			<div class='fields-container'>
-				<label>Min</label>
-				<input type='text' pattern="^[1-9][0-9]*$" name='modMin'>
+				<label><? echo _("Min"); ?></label>
+				<input type='text' pattern="^[0-9]*$" name='modMin'>
 				<small class="error mMinError"><?echo _("Please enter the quantity");?></small>
 			</div>
 			<div class='fields-container'>
-				<label>Max</label>
-				<input type='text' pattern="^[1-9][0-9]*$" name='modMax'>
+				<label><? echo _("Max"); ?></label>
+				<input type='text' pattern="^[1-9]*$" name='modMax'>
 				<small class="error mMaxError"><?echo _("Please enter the quantity");?></small>
 			</div>
 		</div>
 
-		<div class="footer-modalCrop spacing-modalCrop">
-			<button class="preodayButton pull-left" type="button" id="saveChangesMinMaxMod">SAVE CHANGES</button>
-			<button class="preodayButton pull-left" type="button" id="cancelModalMinMaxMod">CANCEL</button>
+		<div class="spancing-modalMinMaxMod">
+			<button class="preodayButton pull-left" type="button" id="saveChangesMinMaxMod"><? echo _("SAVE CHANGES");?></button>
+			<button class="preodayButton pull-left" type="button" id="cancelModalMinMaxMod"><? echo _("CANCEL"); ?></button>
 		</div>
 	</form>
 </div>
