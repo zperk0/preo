@@ -17,7 +17,7 @@
 
             $scope.$on('updateEvent', updateEvent);
             $scope.$on('createEvent', function(evt, data) {
-                createEvent(data.evtData, data.duplicating);
+                createEvent(data.evtData);
             });
         }
 
@@ -275,7 +275,7 @@
             return data;
         }
 
-        function createEvent(eventData, duplicating) {
+        function createEvent(eventData) {
 
             // console.log(eventData);
 
@@ -299,11 +299,8 @@
 
             deferred.promise.then(function(eventObj) {
 
-                if(!duplicating) {
-
-                    eventObj = decodeSchedule(eventObj);
-                    vm.events.push(eventObj);
-                }
+                eventObj = decodeSchedule(eventObj);
+                vm.events.push(eventObj);
 
                 console.log('all done', eventObj);
                 $AjaxInterceptor.complete();
