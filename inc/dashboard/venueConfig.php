@@ -459,13 +459,22 @@
 					<small class="error"><?echo _("Please choose a country");?></small>
 				</div>
 			</div>
-		<div class="row">
-			<div class="large-6 columns">
-				<label><?echo _("Post code");?></label>
-				<input type="text" name="vPostal" id="vPostal" required tabindex=11 value="<?if(isset($_SESSION['venue_postcode'])) echo $_SESSION['venue_postcode'];?>" pattern="^.{0,45}$">
-				<small class="error"><?echo _("Please type a post code (max 45chars)");?></small>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<label><?echo _("Tax id");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("For example VAT number. For display on receipts.");?>"></i></label>
+					<input type="text" name="vTaxId" id="vTaxId" tabindex=6 placeholder="<?echo _("e.g. GB999 9999 73");?>" value="<?if(isset($_SESSION['venue_taxid'])) echo $_SESSION['venue_taxid'];?>" pattern='^.{0,100}$'>
+					<small class="error"><?echo _("Please type a tax id (max 100chars)");?></small>
+				</div>
 			</div>
-		</div>
+
+			<div class="row">
+				<div class="large-6 columns">
+					<label><?echo _("Post code");?></label>
+					<input type="text" name="vPostal" id="vPostal" required tabindex=11 value="<?if(isset($_SESSION['venue_postcode'])) echo $_SESSION['venue_postcode'];?>" pattern="^.{0,45}$">
+					<small class="error"><?echo _("Please type a post code (max 45chars)");?></small>
+				</div>
+			</div>
 
 			<div class="row">
 				<div class="large-12 columns">

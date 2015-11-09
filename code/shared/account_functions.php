@@ -22,6 +22,7 @@
 		$_SESSION['venue_address3']  		= $data['address3'];
 		$_SESSION['venue_postcode']			= $data['postcode'];
 		$_SESSION['venue_country']			= $data['country'];
+		$_SESSION['venue_taxid']			= $data['taxId'];
 		$_SESSION['venue_eventFlag']		= $data['eventFlag'];
 		$_SESSION['venue_deliverFlag']		= $data['deliverFlag'];
 
