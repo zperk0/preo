@@ -2,7 +2,7 @@
 angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletService','OrderService','AllCharts','$route','VenueService','$AjaxInterceptor','$location','INITIAL_DATES', 'UtilsService', 'Venue', 'VENUE_ID', '$filter',
 	function($scope,OutletService,OrderService,AllCharts,$route,VenueService,$AjaxInterceptor,$location,INITIAL_DATES, UtilsService, Venue, VENUE_ID, $filter) {
 
-		$scope.currencySymbol = "%C2%A3";
+		$scope.currencySymbol = ""; //default for pound %C2%A3
 		$scope.outlets = [];
 
 		$scope.defaultLabelEvents = _tr('Select Events...');
@@ -27,29 +27,11 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 
 
 	 	$scope.getCurrency = function(){
-			return decodeURI($scope.currencySymbol);
+			return "";
 		}
 
 	 	$scope.getCurrencyByAscii = function(){
-			var currency = decodeURI($scope.currencySymbol);
-			console.log("returning currency",$scope.currencySymbol);
-			var currencyString = '__CURRENCY__';
-			switch(currency) {
-				case '£':
-					currencyString += 'pound;'
-					break;
-				case '€':
-					currencyString += 'euro;'
-					break;
-				case '$':
-					currencyString += '#36;'
-					break;
-				default:
-					currencyString = currency;
-					break;
-			}
-
-			return currencyString;
+			return "";
 		}
 
 	    Venue.getItems({id: VENUE_ID}).$promise.then(function( data ){
@@ -60,11 +42,11 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			function(venue){
 				$scope.venue = venue;
 				console.log(venue);
-				$scope.currencySymbol = VenueService.getCurrency().symbol;
+				$scope.currencySymbol = "";
 				OutletService.init(function(){
 					OutletService.getOutlets().then(function (outlets) {
 						$scope.outlets = outlets;
-					});
+					});					
 					AllCharts.init($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol);
 				})
 			});

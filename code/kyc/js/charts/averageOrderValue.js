@@ -5,8 +5,10 @@ angular.module('kyc.charts')
 	var ordersTotal = 0;
 	var numOfOrders =0;
     var title = _tr("Average Order Value");
+    var currency = '';
 
-	function setData(order,minDate,maxDate){
+	function setData(order,minDate,maxDate,currencySymbol){
+        currency = currencySymbol;
         var orderData = order.paymentType == PaymentType.CASH ? order.created : order.paid;
         orderData = moment.utc(orderData);
 
@@ -33,7 +35,7 @@ angular.module('kyc.charts')
             type:type,
             title:title,
             data:getData(),
-            currency:"£"
+            currency:currency
         }
     }
 

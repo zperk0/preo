@@ -78,7 +78,7 @@ angular.module('kyc.charts')
                     //     return;
 
                     angular.forEach(charts,function(chart){
-                        chart.setData(order,minDate,maxDate);
+                        chart.setData(order,minDate,maxDate,currency);
                     })
                 }
 
