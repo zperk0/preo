@@ -34,19 +34,25 @@ angular.module('events')
                 });
 
                 modalInstance.result.then(function (selectedItem) {
-                    // $scope.selected = selectedItem;
-                    $log.log(selectedItem);
 
                     angular.extend(eventObj, selectedItem);
 
-                    if(selectedItem.id === '')
-                        $rootScope.$broadcast('createEvent', {evtData: selectedItem, duplicating: true});
-                    else
+                    if(selectedItem.id === '') {
+
+                        // remove duplicated event reference from list, real event will be added on list after saving on db
+                        ng.events.splice((ng.events.length - 1), 1);
+                        $rootScope.$broadcast('createEvent', {evtData: selectedItem});
+                    }
+                    else {
+
                         $rootScope.$broadcast('updateEvent', {evtData: selectedItem});
+                    }
 
                     // update event date after the digest
                     $timeout(function() {
+
                         eventDateElem.val(DateUtils.getStrDate(selectedItem.date));
+                        ng.isDuplicatingEvent = false;
                     });
                 }, function () {
                     console.log('Modal dismissed at: ' + new Date());
