@@ -494,8 +494,8 @@
 		</div>
 
 		<div class="footer-modalCrop spacing-modalCrop">
-			<button class="preodayButton pull-left" type="button" id="saveChangesMinMaxMod"><? echo _("SAVE CHANGES");?></button>
-			<button class="preodayButton pull-left" type="button" id="cancelModalMinMaxMod"><? echo _("CANCEL"); ?></button>
+			<button class="preodayButton pull-left" type="button" id="saveChangesModalCrop"><? echo _("SAVE CHANGES");?></button>
+			<button class="preodayButton pull-left" type="button" id="cancelModalImageCrop"><? echo _("CANCEL"); ?></button>
 		</div>
 	</form>
 </div>
@@ -512,8 +512,8 @@
 		</div>
 
 		<div class="footer-modalCrop spacing-modalCrop">
-			<button class="preodayButton pull-left" type="button" id="saveChangesMinMaxMod"><? echo _("SAVE CHANGES");?></button>
-			<button class="preodayButton pull-left" type="button" id="cancelModalMinMaxMod"><? echo _("CANCEL"); ?></button>
+			<button class="preodayButton pull-left" type="button" id="saveChangesTags"><? echo _("SAVE CHANGES");?></button>
+			<button class="preodayButton pull-left" type="button" id="cancelModalTags"><? echo _("CANCEL"); ?></button>
 		</div>
 	</form>
 </div>
