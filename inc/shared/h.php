@@ -99,6 +99,12 @@
 										$mDataJSON = json_decode($mCurlResult,true);
 										if(!empty($mDataJSON) && (!isset($mDataJSON['status'])))
 										{
+											$curlResult = callAPI('GET', $GLOBALS['apiURL']."menus?accountId=$accountID&type=VOUCHER", false, $apiAuth);
+											$dataJSONVoucher = json_decode($curlResult,true);
+											if(is_array($dataJSONVoucher) && count($dataJSONVoucher)) {
+												$mDataJSON = array_merge(array_values($mDataJSON), array_values($dataJSONVoucher));
+											}
+											
 											$_SESSION['menus'] = $mDataJSON;
 											foreach($mDataJSON as $menuL){?>
 												<li><a href="<?echo $_SESSION['path']?>/editmenu/<?echo $menuL['id'];?>"><?echo _("Edit")." $menuL[name]";?></a></li>
