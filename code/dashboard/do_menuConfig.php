@@ -69,6 +69,8 @@
         	$data['type'] = $menu['type'];
         } else if($_SESSION['groupMenu']) {
         	$data['type'] = 'BOOKING';
+        } else {
+        	$data['type'] = 'MENU';
         }
 
 
