@@ -7,8 +7,8 @@
 						<a class="LIFoot" target="_blank" href="http://www.linkedin.com/company/2892744?trk=tyah"><img src="<?echo $_SESSION['path']?>/img/linkedin.png"/></a>
 					</p>
 					<p><a href="mailto:<?php echo $_SESSION['OVERRIDES']["support_email"] ?>"><?echo $_SESSION['OVERRIDES']["support_email"]?></a></p>
-					<p><a href="#" data-reveal-id="termsM"><? echo _("Legal Statement");?></a></p>
-					<p><a href="#" data-reveal-id="privM"><? echo _("Privacy + Cookies");?></a></p>
+					<p><a href="<?php echo $_SESSION['OVERRIDES']["terms"] ?>" target="_blank"><? echo _("Legal Statement");?></a></p>
+					<p><a href="<?php echo $_SESSION['OVERRIDES']["privacy"] ?>" target="_blank"><? echo _("Privacy + Cookies");?></a></p>
 					<p>&copy; <? echo _("Preoday")." ".date('Y');?></p>
 				</div>
 				<div class="large-offset-1 large-4 small-6 columns">
