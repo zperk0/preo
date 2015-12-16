@@ -50,6 +50,10 @@
                     display: gettextCatalog.getString("Interval2")
                 },
                 {
+                    value: gettextCatalog.getString("Second-Interval"),
+                    display: gettextCatalog.getString("Second-Interval")
+                },
+                {
                     value: "HALFTIME",
                     display: gettextCatalog.getString("Half-Time")
                 },
@@ -60,11 +64,8 @@
                 {
                     value: "POSTGAME",
                     display: gettextCatalog.getString("Post-Game")
-                },
-                {
-                    value: gettextCatalog.getString("Second-Interval"),
-                    display: gettextCatalog.getString("Second-Interval")
                 }
+
             ];
 
             if(vm.customSlotFeature)
