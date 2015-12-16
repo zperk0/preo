@@ -139,7 +139,7 @@
 			//////MENU////////////////////////////////////////////////////////////////////////////
 
 			//query to find menus for this venue
-			$curlResult = callAPI('GET', $GLOBALS['apiURL']."menus?accountId=$accountID", false, $apiAuth);
+			$curlResult = callAPI('GET', $GLOBALS['apiURL']."menus?accountId=$accountID&type=MENU", false, $apiAuth);
 
 			$dataJSON = json_decode($curlResult,true);
 

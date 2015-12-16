@@ -95,7 +95,7 @@
 									<?
 										//query to find menus for this venue
 										$accountID = $_SESSION['account_id'];
-										$mCurlResult = callAPI('GET', $apiURL."menus?accountId=$accountID", false, $apiAuth);
+										$mCurlResult = callAPI('GET', $apiURL."menus?accountId=$accountID&type=MENU", false, $apiAuth);
 										$mDataJSON = json_decode($mCurlResult,true);
 										if(!empty($mDataJSON) && (!isset($mDataJSON['status'])))
 										{
