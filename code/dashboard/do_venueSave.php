@@ -78,6 +78,9 @@
 	$vDesc = $_POST['vDesc'];
 	protect($vDesc);
 
+	$vDistance = $_POST['vDistance'];
+	protect($vDistance);
+
 	$data['name']				= $vName;
 	$data['description']		= $vDesc;
 	$data['accountId']			= $_SESSION['account_id'];
@@ -119,6 +122,7 @@
 		$dataSettings['pickupDiscount']   	= $vDiscount;
 		$dataSettings['orderMin']			= $vOrderMin;
 		$dataSettings['requiresPhone']		= $vPhone;
+		$dataSettings['maxDeliveryDistance']		= $vDistance;
 		$_SESSION['venue_requiresPhone'] 	= $vPhone;
 
 		$jsonData = json_encode($dataSettings);
@@ -146,6 +150,7 @@
 		$data['leadTime']			= $leadtime;
 		$data['pickupDiscount']   	= $vDiscount;
 		$data['orderMin']			= $vOrderMin;
+		$data['maxDeliveryDistance']		= $vDistance;
 		$dataSettings['requiresPhone']		= $vPhone;
 
 		$jsonData = json_encode($data);
