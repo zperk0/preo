@@ -46,7 +46,7 @@
                     display: gettextCatalog.getString("Interval")
                 },
                 {
-                    value: "INTERVAL2",
+                    value: gettextCatalog.getString("Second-Interval"),
                     display: gettextCatalog.getString("Second-Interval")
                 },
                 {
