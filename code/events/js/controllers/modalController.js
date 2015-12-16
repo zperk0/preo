@@ -46,8 +46,8 @@
                     display: gettextCatalog.getString("Interval")
                 },
                 {
-                    value: gettextCatalog.getString("Second-Interval"),
-                    display: gettextCatalog.getString("Second-Interval")
+                    value: "INTERVAL2",
+                    display: gettextCatalog.getString("Interval2")
                 },
                 {
                     value: "HALFTIME",
@@ -60,6 +60,10 @@
                 {
                     value: "POSTGAME",
                     display: gettextCatalog.getString("Post-Game")
+                },
+                {
+                    value: gettextCatalog.getString("Second-Interval"),
+                    display: gettextCatalog.getString("Second-Interval")
                 }
             ];
 
