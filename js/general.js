@@ -775,7 +775,7 @@ $(document).ready(function() {
 
 				if (!imagesMenu[idItem] && lastImageUpload && lastImageUpload.url) { //insert and already uploaded a image
 					$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
-				} else {
+				} else if (!cropperInstance || !cropperInstance.removedImage) {
 					$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
 				}
 			}
