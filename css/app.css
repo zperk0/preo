@@ -3256,4 +3256,13 @@ input::-webkit-inner-spin-button {
 .groupMenu .alignNewSection button {
   margin-left: 24px; }
 
+.itemBackgroundImage {
+  text-align: left;
+  margin: 1em 0 0 0; }
+  .itemBackgroundImage input {
+    margin: 0 5px 0 0; }
+  .itemBackgroundImage label {
+    display: inline-block;
+    font-size: 0.9em; }
+
 /*# sourceMappingURL=app.css.map */

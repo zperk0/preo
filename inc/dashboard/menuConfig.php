@@ -322,7 +322,7 @@
 											<?php
 												$attr = '';
 												if ( isset($item['images']) && count($item['images']) ) {
-													$attr = 'data-image-url = "' . $item['images'][0]['image'] . '"';
+													$attr = 'data-image-url = "' . $item['images'][0]['image'] . '" data-image-type = "' . $item['images'][0]['type'] . '" data-image-id="' . $item['images'][0]['id'] . '"';
 												}
 												$attrTags = '';
 												if ( isset($item['tags']) && count($item['tags']) ) {
@@ -491,6 +491,11 @@
 			    <div class="barImageCrop"></div >
 			    <div class="percentImageCrop">0%</div>
 			</div>
+
+			<p class="itemBackgroundImage">
+				<input type="checkbox" name="item_background" id="item_background" />
+				<label for="item_background">Item background</label>
+			</p>
 		</div>
 
 		<div class="footer-modalCrop spacing-modalCrop">

@@ -554,6 +554,8 @@ $(document).ready(function() {
 	var $cancelModalImageCrop = $('#cancelModalImageCrop');
 	var $addPicture = $('#addPicture');
 	var $errorMessageImageCrop = $('#errorMessageImageCrop');
+	var $item_background = $('#item_background');
+	var default_value_image_type = 'DEFAULT';
 
 	var lastImageUpload = {};
 	var cropperInstance = null;
@@ -567,10 +569,13 @@ $(document).ready(function() {
 			$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
 		}
 
+		$item_background.unbind('click');
 		$modalImagesCrop.foundation('reveal', 'close');
 	})
 
 	$modalImagesCrop.on('closed', function(){
+
+		$item_background.unbind('click');
 		cropperInstance.destroy();
 	});
 
@@ -604,14 +609,22 @@ $(document).ready(function() {
 			removeImage();
 		} else {
 			if ( lastImageUpload ) {
-				imagesMenu[lastImageUpload.idItem] = [{
-					cropped: true,
-					url: lastImageUpload.url
-				}]
+				if (!imagesMenu[lastImageUpload.idItem]) {
+					imagesMenu[lastImageUpload.idItem] = [{}];
+				}
+
+				var _current = imagesMenu[lastImageUpload.idItem][0];
+				_current.cropped = true;
+				_current.saved = false;
+				_current.type = lastImageUpload.type;
+				_current.url = lastImageUpload.url;
 			}
 		}
 
+		$item_background.unbind('click');
+
 		$modalImagesCrop.foundation('reveal', 'close');
+		console.log(imagesMenu);
 	})
 
 	$(document).on('click', '.itemUpload', function(){
@@ -620,6 +633,8 @@ $(document).ready(function() {
 		var $input = $table.find('input[name^=iName]');
 
 		var imageUrl = $(this).data('image-url');
+		var imageType = $(this).data('image-type');
+		var imageId = $(this).data('image-id');
 		var idItem = $input.data('id');
 
 		if ( imageUrl ) {
@@ -627,13 +642,18 @@ $(document).ready(function() {
 				imagesMenu[idItem] = [{
 					saved: true,
 					cropped: false,
-					url: imageUrl
+					id: imageId,
+					url: imageUrl,
+					type: imageType
 				}]
 			}
 		}
 
+		console.log('id item here', idItem);
+
 		$modalImagesCrop.css('top', $(window).scrollTop());
 
+		$item_background.attr('checked', false);
 		$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
 
 		$titleModalCrop.text($input.val());
@@ -683,11 +703,15 @@ $(document).ready(function() {
 				// $cancelModalImageCrop.addClass('secondary').attr('disabled', 'disabled');
 			},
 			onAfterImgCrop:		function(){
-				lastImageUpload = {
-					saved: false,
-					idItem: this.idItem,
-					url: this.croppedImg.attr('src')
-				};
+				if (!lastImageUpload) {
+					lastImageUpload = {
+						saved: false,
+						idItem: this.idItem
+					};					
+				}
+
+				lastImageUpload.url = this.croppedImg.attr('src');
+				lastImageUpload.type = $item_background.is(':checked') ? 'BG' : 'DEFAULT';
 
 				$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
 				$cancelModalImageCrop.removeClass('secondary').removeAttr('disabled');
@@ -713,8 +737,49 @@ $(document).ready(function() {
 			cropperInstance.croppedImg = cropperInstance.obj.find('.croppedImg');
 			cropperInstance.init();
 
+			if (imagesMenu[idItem][0].type === 'BG') {
+				$item_background.attr('checked', true);
+			}
+
+			default_value_image_type = imagesMenu[idItem][0].type;
+
 			//$addPicture.addClass('secondary').attr('disabled', 'disabled');
+		} else {
+			default_value_image_type = 'DEFAULT';
 		}
+
+		$item_background.bind('click', function () {
+			
+			var currentType = $(this).is(':checked') ? 'BG' : 'DEFAULT';
+			console.log('current type', currentType, default_value_image_type);
+			if (currentType !== default_value_image_type) {
+				if (!lastImageUpload) {
+					lastImageUpload = {
+						saved: false,
+						idItem: idItem,
+						url: imagesMenu[idItem] && imagesMenu[idItem][0].url
+					};					
+				}
+
+				lastImageUpload.type = currentType;
+
+				if ((imagesMenu[idItem] && imagesMenu[idItem][0].url) || (lastImageUpload && lastImageUpload.url)) {
+					$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
+				}
+			} else {
+				if (lastImageUpload) {
+					if (imagesMenu[idItem] && lastImageUpload.url === imagesMenu[idItem][0].url) {
+						lastImageUpload = null;
+					}
+				}
+
+				if (!imagesMenu[idItem] && lastImageUpload && lastImageUpload.url) { //insert and already uploaded a image
+					$saveChangesModalCrop.removeClass('secondary').removeAttr('disabled');
+				} else {
+					$saveChangesModalCrop.addClass('secondary').attr('disabled', 'disabled');
+				}
+			}
+		})
 
 		$modalImagesCrop.foundation('reveal', 'open');
 	});
@@ -2540,8 +2605,12 @@ $(document).ready(function() {
 											imagesMenu[value[0].id] = [{
 												saved: true,
 												url: imagesMenu[index][0].url,
-												cropped: true
+												id: value[0].realId,
+												cropped: true,
+												type: imagesMenu[index][0].type
 											}]
+										} else if (value[0].hasOwnProperty('realId')){
+											imagesMenu[value[0].id].id = value[0].realId;
 										}
 									}
 									imagesMenu[index][0].saved = true;
