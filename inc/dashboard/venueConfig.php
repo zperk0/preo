@@ -135,6 +135,14 @@
 
 			<div class="row">
 				<div class="large-12 columns">
+					<label><?echo _("Max delivery distance");?> <small><?echo _("(miles)")?></small> </label>
+					<input type="text" name="vDistance" id="vDistance" tabindex=7 placeholder="<?echo _("e.g. 10.5");?>" value="<?if(isset($_SESSION['max_delivery_distance'])) echo $_SESSION['max_delivery_distance'];?>" pattern="^[0-9]+(\.[0-9]{1,2})?$">
+					<small class="error"><?echo _("Please provide a distance in miles");?></small>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
 					<label><?echo _("Do you offer a delivery service?");?> &nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<? echo _("You can specify your delivery settings from the dashboard");?>"></i></label>
 					<div class="switch small large-2 columns">
 						<input name="vDelivery" class="vDelivery" value="0" type="radio" <?if((isset($_SESSION['venue_deliverFlag']) && !$_SESSION['venue_deliverFlag']) || !isset($_SESSION['venue_deliverFlag'])){?>checked<?}?>>
