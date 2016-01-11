@@ -2312,7 +2312,7 @@ $(document).ready(function() {
 								menuSectionOneNivelItem['price'] 	= format_price($inputIPrice.val());
 							menuSectionOneNivelItem['visible'] 		= $tableSectionUnique.find('input[name^=iVisi]:checked').val();
 							menuSectionOneNivelItem['quantity'] 		= 0;
-							menuSectionOneNivelItem['position'] 		= parseInt(itemCounter+1000);
+							menuSectionOneNivelItem['position'] 		= parseInt(itemCounter);
 
 							menuSectionOneNivelItem['insert'] 		= $inputName.data('insert');
 							menuSectionOneNivelItem['edit'] 			= $inputName.data('edit');
@@ -2543,7 +2543,7 @@ $(document).ready(function() {
 												cropped: true
 											}]
 										}
-									}
+									} þ
 									imagesMenu[index][0].saved = true;
 								}
 							})
@@ -2558,7 +2558,7 @@ $(document).ready(function() {
 							setTimeout(function() {
 								window.location.href = '/editmenu/' + dataArray.menuid;
 							}, 1000);
-						else if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");}, 1000);
+						else if($('#redirectFlag').val()=='1' && !editingSkip) setTimeout(function(){window.location.replace("/dashboard");},  );
 					}
 				}
 			 }).done(function() {
