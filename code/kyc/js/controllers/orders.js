@@ -297,10 +297,12 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             titlesCSV.push("Items");
             titlesCSV.push("Discounts and Fees");
             titlesCSV.push("Order Total");
+            titlesCSV.push("Payment Method");
             titlesCSV.push("Order Status");
             titlesCSV.push("Loyalty");
             titlesCSV.push("Offers");
             titlesCSV.push("Other");
+
 
             var statusOrderHide = ['NOSHOW', 'REJECTED', 'CANCELLED', 'PAYMENT_FAILED'];
 
@@ -326,6 +328,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
                     arrPrepData.push('\"' + arrItems.join(';').replaceAll('\"', '') + '\"');
                     arrPrepData.push('\"' + getDiscountsAndFeedAsString(order).join(';').replaceAll('\"', '') + '\"');
                     arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
+                    arrPrepData.push(order.paymentType);
                     arrPrepData.push(order.status);
                     arrPrepData.push(order.user.optinLoyalty);
                     arrPrepData.push(order.user.optinOffers);
