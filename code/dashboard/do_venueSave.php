@@ -57,6 +57,11 @@
 	$vCode = $_POST['vCode'];
 	protect($vCode);
 
+	$vPostVoucher = $_POST['vPostVoucher'];
+	protect($vPostVoucher);
+
+	
+
 	$vDiscount = formatPercentage($_POST['vDiscount']);
 	protect($vDiscount);
 
@@ -91,6 +96,7 @@
 	$data['country']			= $vCountry;
 	$data['taxId']				= $vTaxId;
 	$data['categoryId']			= $vCat;
+	$data['postVoucherFlag']	= $vPostVoucher;
 	$data['eventFlag']			= $vEvent;
 	$data['deliverFlag']		= $vDelivery;
 	$data['cashFlag']		= $vCash;

@@ -62,6 +62,15 @@
 
 	if(isset($venueID)) //if there is no venue set then no App or Menu can be set anyway
 	{	
+
+		$curlResult = callAPI('GET', $apiURL."accounts/$accountID/features/11", false, $apiAuth);
+		$dataJSON = json_decode($curlResult,true);
+		if (!empty($dataJSON)){
+			$_SESSION['has_feature_voucher']=1;		
+		} else {
+			$_SESSION['has_feature_voucher']=0;		
+		}
+
 		$_SESSION['venue_edit_on']=1;
 		
 		if( (!isset($_SESSION['signupWizFlag'])) || (isset($_SESSION['signupWizFlag']) && !$_SESSION['signupWizFlag']) )

@@ -25,6 +25,7 @@
 		$_SESSION['venue_taxid']			= $data['taxId'];
 		$_SESSION['venue_eventFlag']		= $data['eventFlag'];
 		$_SESSION['venue_deliverFlag']		= $data['deliverFlag'];
+		$_SESSION['venue_postVoucherFlag']	= $data['postVoucherFlag'];
 
 		if (isset($data['demoFlag'])){
 			$_SESSION['venue_demoFlag']			= $data['demoFlag'];
