@@ -52,6 +52,7 @@
 		$_SESSION['delivery_lead_time'] 	= $dataJSON["deliveryLeadTime"];
 		$_SESSION['delivery_discount'] 		= formatDisplayPercentage($dataJSON["deliveryDiscount"]);
 		$_SESSION['delivery_phone'] 		= $dataJSON["deliveryPhone"];
+		$_SESSION['max_delivery_distance'] 		= $dataJSON["maxDeliveryDistance"];
 		$_SESSION['venue_discount'] 		= formatDisplayPercentage($dataJSON["pickupDiscount"]);
 	}
 			

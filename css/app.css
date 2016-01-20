@@ -2934,7 +2934,7 @@ button.preodayButton.noclick {
   height: 100%;
   color: inherit; }
 
-.ui-multiselect span:nth-child(2) {
+.modifierRow .ui-multiselect span:nth-child(2) {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

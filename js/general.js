@@ -2377,7 +2377,7 @@ $(document).ready(function() {
 								menuSectionOneNivelItem['price'] 	= format_price($inputIPrice.val());
 							menuSectionOneNivelItem['visible'] 		= $tableSectionUnique.find('input[name^=iVisi]:checked').val();
 							menuSectionOneNivelItem['quantity'] 		= 0;
-							menuSectionOneNivelItem['position'] 		= parseInt(itemCounter+1000);
+							menuSectionOneNivelItem['position'] 		= parseInt(itemCounter);
 
 							menuSectionOneNivelItem['insert'] 		= $inputName.data('insert');
 							menuSectionOneNivelItem['edit'] 			= $inputName.data('edit');
