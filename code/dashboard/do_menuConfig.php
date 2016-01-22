@@ -47,7 +47,7 @@
 	$menu = json_decode(file_get_contents('php://input'),true);
 
 	$menu_id = $menu['id'];
-
+	
 	//create new menu?
 	if(preg_match('/^menu\d+$/',$menu_id))
 	{
@@ -74,7 +74,7 @@
         }
 
 
-		$jsonData 	= json_encode($data);
+		$jsonData 	= json_encode($data);		
 		$curlResult = callAPI('POST', $apiURL."menus", $jsonData, $apiAuth); //menu created
 		$result 	= json_decode($curlResult,true);
 
@@ -110,6 +110,7 @@
 
 	if($menu['edit']) //Edit menu
 	{
+
 		$data 					= array();
 		$data['name'] 			= $menu['name'];
 		$data['description']    = $menu['description'];
@@ -130,7 +131,7 @@
         	$data['type'] = 'BOOKING';
         }
 
-		$jsonData 	= json_encode($data);
+		$jsonData 	= json_encode($data);		
 		$curlResult = callAPI('PUT', $apiURL."menus/$menu_id", $jsonData, $apiAuth); //menu edited
 		$result 	= json_decode($curlResult,true);
 

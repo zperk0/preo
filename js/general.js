@@ -2296,7 +2296,15 @@ $(document).ready(function() {
 			menu['name']		= $('#mName').val();
 			menu['description']	= $('#mDescription').val();
 
-			menu['promotions']	= $('.promotions-select').val();
+			var promotions = $('.promotions-select').val();
+			if (promotions){
+				var emptyPos = promotions.indexOf("");
+				while ( emptyPos != -1){
+					promotions.splice(emptyPos,1);
+					emptyPos = promotions.indexOf("");
+				}
+			}
+			menu['promotions']	= promotions;
 
 			menu['edit']		= $('#mName').data('edit');
 
