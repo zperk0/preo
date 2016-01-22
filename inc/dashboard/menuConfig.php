@@ -78,14 +78,13 @@
 			<div class='row'>
 				<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
 				<div class='promotions-input-container'>
-					<select class='promotions-select allow-custom-input' data-placeholder="<?echo _('Enter promotions'); ?>" required multiple>
+					<select class='promotions-select allow-custom-input' data-placeholder="<?echo _('Enter promotions'); ?>" multiple>
 						<?if(isset($menu)) {
 							foreach($menu['promotions'] as $pKey=>$promotion){?>
 							<option value="<? echo $promotion; ?>" selected><? echo $promotion; ?></option>
 						<?}
 						}?>
-					</select>
-					<small class="error msecError"><?echo _("Please enter at least one promotion");?></small>
+					</select>					
 				</div>
 			</div>
 			<?}?>
