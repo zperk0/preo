@@ -292,7 +292,8 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                         var arrItems = getItemsAsString(order);
 
                         if (events.length > 1) {
-                            prepData['Event'].push($scope.getEventById(order.eventId).fullName);
+                            //Replace is a hack to allow double quotes in event names
+                            prepData['Event'].push($scope.getEventById(order.eventId).fullName.replace('"',"''"));
                         }
                         var notes = order.notes ?  "___BR______BR___  ----- Special Requests -----  ___BR______BR___" + order.notes  : "";
                         console.log('notes',order.notes);
