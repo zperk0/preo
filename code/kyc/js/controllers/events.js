@@ -329,7 +329,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         if (events.length > 1) {
             result.title = _tr("Orders By Events");
         } else {
-            result.title = events[0].name;
+            result.title = events[0].name.replace('"','\\"');
         }
 
         $scope.currentAction = '';
