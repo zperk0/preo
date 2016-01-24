@@ -78,13 +78,13 @@
 			<div class='row'>
 				<label class='assign-promotions-label'><?echo _('Assigned to these promotions'); ?></label>
 				<div class='promotions-input-container'>
-					<select class='promotions-select allow-custom-input' data-placeholder="<?echo _('Select some promotions'); ?>" multiple>
+					<select class='promotions-select allow-custom-input' data-placeholder="<?echo _('Enter promotions'); ?>" multiple>
 						<?if(isset($menu)) {
 							foreach($menu['promotions'] as $pKey=>$promotion){?>
 							<option value="<? echo $promotion; ?>" selected><? echo $promotion; ?></option>
 						<?}
 						}?>
-					</select>
+					</select>					
 				</div>
 			</div>
 			<?}?>
@@ -322,7 +322,7 @@
 											<?php
 												$attr = '';
 												if ( isset($item['images']) && count($item['images']) ) {
-													$attr = 'data-image-url = "' . $item['images'][0]['image'] . '"';
+													$attr = 'data-image-url = "' . $item['images'][0]['image'] . '" data-image-type = "' . $item['images'][0]['type'] . '" data-image-id="' . $item['images'][0]['id'] . '"';
 												}
 												$attrTags = '';
 												if ( isset($item['tags']) && count($item['tags']) ) {
@@ -491,6 +491,11 @@
 			    <div class="barImageCrop"></div >
 			    <div class="percentImageCrop">0%</div>
 			</div>
+
+			<p class="itemBackgroundImage">
+				<input type="checkbox" name="item_background" id="item_background" />
+				<label for="item_background">Item background</label>
+			</p>
 		</div>
 
 		<div class="footer-modalCrop spacing-modalCrop">

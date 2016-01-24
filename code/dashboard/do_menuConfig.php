@@ -47,7 +47,7 @@
 	$menu = json_decode(file_get_contents('php://input'),true);
 
 	$menu_id = $menu['id'];
-
+	
 	//create new menu?
 	if(preg_match('/^menu\d+$/',$menu_id))
 	{
@@ -74,7 +74,7 @@
         }
 
 
-		$jsonData 	= json_encode($data);
+		$jsonData 	= json_encode($data);		
 		$curlResult = callAPI('POST', $apiURL."menus", $jsonData, $apiAuth); //menu created
 		$result 	= json_decode($curlResult,true);
 
@@ -110,6 +110,7 @@
 
 	if($menu['edit']) //Edit menu
 	{
+
 		$data 					= array();
 		$data['name'] 			= $menu['name'];
 		$data['description']    = $menu['description'];
@@ -130,7 +131,7 @@
         	$data['type'] = 'BOOKING';
         }
 
-		$jsonData 	= json_encode($data);
+		$jsonData 	= json_encode($data);		
 		$curlResult = callAPI('PUT', $apiURL."menus/$menu_id", $jsonData, $apiAuth); //menu edited
 		$result 	= json_decode($curlResult,true);
 
@@ -371,10 +372,14 @@
 							$data = array();
 							$data['image'] = getImagePath().'menuitem/fix/' . $newImage;
 							$data['itemId'] = $item_id;
+
+							if (isset($Image['type']) && $Image['type']) {
+								$data['type'] = $Image['type'];
+							}
 							$jsonData 	= json_encode($data);
 							$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
 							$result 	= json_decode($curlResult,true);
-							$newImages['item' . $oldItemId][] = array('id' => 'item' . $item_id, 'replace' => true);
+							$newImages['item' . $oldItemId][] = array('id' => 'item' . $item_id, 'realId' => $result['id'], 'replace' => true);
 						}
 					}
 				}
@@ -420,10 +425,20 @@
 							$data = array();
 							$data['image'] = getImagePath().'menuitem/fix/' . $newImage;
 							$data['itemId'] = $item_id;
+							if (isset($Image['type']) && $Image['type']) {
+								$data['type'] = $Image['type'];
+							}
+
 							$jsonData 	= json_encode($data);
-							$curlResult = callAPI('POST', $apiURL."items/$item_id/images", $jsonData, $apiAuth); //item created
+
+							if (isset($Image['id'])) {
+								$curlResult = callAPI('PUT', $apiURL."itemimages/" . $Image['id'], $jsonData, $apiAuth); //item created
+							} else {
+								$curlResult = callAPI('POST', $apiURL."items/$item_id/images/", $jsonData, $apiAuth); //item created
+							}
+
 							$result 	= json_decode($curlResult,true);
-							$newImages['item' . $item_id][] = $result['id'];
+							$newImages['item' . $item_id][] = array( 'id' => 'item' . $item_id, 'realId' => isset($Image['id']) ? $Image['id'] : $result['id']); 
 						}
 					}
 				}
