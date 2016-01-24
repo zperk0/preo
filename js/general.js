@@ -4182,22 +4182,6 @@ $(document).ready(function() {
 		auto_join_text_url: ""
 	  });
 
-	$(".showNextPhone, .phoneContainer").on('click', function(){
-		if(!$(".phone2").is(':visible'))
-		{
-			$(".phone1").hide();
-			$(".phone2").show();
-		}
-		else
-		{
-			$(".phone2").hide();
-			$(".phone1").show();
-		}
-
-		$(".phone1pager").toggle();
-		$(".phone2pager").toggle();
-	});
-
 	$("#changePassTrigger").on('click', function(e) {
 		if(!$("#passDiv").is(":visible"))
 		{

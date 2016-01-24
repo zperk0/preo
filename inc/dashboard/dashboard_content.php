@@ -187,25 +187,8 @@
 				<!--<p id="venSubHeading"><?echo htmlentities($_SESSION['venue_name'], ENT_QUOTES);?></p>-->
 				<p id="venSubHeading">&nbsp;</p>
 				<p id="subHeading"><?if(isset($_SESSION['app_subHeading'])) echo htmlentities($_SESSION['app_subHeading'], ENT_QUOTES);else echo "";?></p>
-			</div>
-			<div id="frame_iphone5" class="phone2 hide">
-				<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/menuWall.jpg" />
-				<button type="button" class="tiny expand" id="buttonIMG2"><?echo _('BASKET');?></button>
-				<button type="button" class="tiny expand menuMultiButton"><i class="pd-add"></i></button>
-				<button type="button" class="tiny expand menuMultiButton mmb2"><i class="pd-add"></i></button>
-				<button type="button" class="tiny expand menuMultiButton mmb3"><i class="pd-add"></i></button>
-				<button type="button" class="tiny expand menuMultiButton mmb4"><i class="pd-add"></i></button>
-				<button type="button" class="tiny expand menuMultiButton mmb5"><i class="pd-add"></i></button>
-				<button type="button" class="tiny expand menuMultiButton mmb6"><i class="pd-add"></i></button>
-				<p id="venTitle"><?if(isset($_SESSION['app_title'])) echo htmlentities($_SESSION['app_title'], ENT_QUOTES);else echo _("Venue Title");?></p>
-			</div>
-		</div>
-		<div class="pagerRow phone1pager">
-			<i class="icon-circle"></i><a class="showNextPhone"><i class="icon-circle-blank"></i></a>
-		</div>
-		<div class="pagerRow phone2pager hide">
-			<a class="showNextPhone"><i class="icon-circle-blank"></i></a><i class="icon-circle"></i>
-		</div>
+			</div>			
+		</div>	
 	</div>
 </div>
 
