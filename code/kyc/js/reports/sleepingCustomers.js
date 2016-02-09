@@ -6,29 +6,29 @@ angular.module('kyc.reports')
 	var data = {}
 	var titles = [];
 	var dateRange = moment.utc().subtract('month',3);
-	
-	Report.setData = function(reportsData){			
+
+	Report.setData = function(reportsData){
 		data = {};
 		angular.forEach(reportsData.customerOrders,
-			function(customerOrder){											
+			function(customerOrder){
 				if (data[customerOrder.id] === undefined && moment.utc(customerOrder.lastOrder).valueOf() <  dateRange.valueOf()){
-					
+
 					data[customerOrder.id] = {
 						lastOrder: customerOrder.lastOrder,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
-						email:customerOrder.username,
+						email:customerOrder.email,
 						loyalty: customerOrder.optinLoyalty,
 						offers: customerOrder.optinOffers,
 						other: customerOrder.optinOther
-					}				
-					
+					}
+
 			  }
 		});
-		
+
 	}
 
 	Report.orderby = "lastOrder";
-	Report.direction = true;		
+	Report.direction = true;
 	Report.description = _tr("Displays all customers who have previously made at least one order, but haven't ordered for 3 months.")
 
 	Report.getData = function(){
@@ -46,7 +46,7 @@ angular.module('kyc.reports')
 	Report.getTitle = function(){
 		return title;
 	}
-	
+
 
 	return Report;
 

@@ -11,15 +11,15 @@ angular.module('kyc.reports')
 
 	Report.setData = function(reportsData){
 		data = {};
-		angular.forEach(reportsData.customerOrders,function(customerOrder){			
+		angular.forEach(reportsData.customerOrders,function(customerOrder){
 			if (customerOrder.orders === 0)
 				data[customerOrder.id] = {
 						dateJoined:customerOrder.created,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
-						email:customerOrder.username,
+						email:customerOrder.email,
 						loyalty: customerOrder.optinLoyalty,
 						offers: customerOrder.optinOffers,
-						other: customerOrder.optinOther	
+						other: customerOrder.optinOther
 					}
 		})
 	}
@@ -28,10 +28,10 @@ angular.module('kyc.reports')
 	Report.direction = false;
 	Report.description = _tr("Displays all customers who have signed up but have not yet placed any orders.")
 
-	Report.onSetDataComplete = function(){		
+	Report.onSetDataComplete = function(){
 	}
 
-	
+
 	Report.getData = function(){
 		return data;
 	}
@@ -47,7 +47,7 @@ angular.module('kyc.reports')
 	Report.getTitle = function(){
 		return title;
 	}
-	
+
 
 	return Report;
 
