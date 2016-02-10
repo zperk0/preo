@@ -29,7 +29,10 @@ RewriteCond %{REQUEST_URI} ^/register$ [NC]
 RewriteRule ^.*$ signup.php [L]
 
 RewriteCond %{REQUEST_URI} ^/signup$ [NC]
-RewriteRule ^.*$ signup.php [L]
+RewriteRule ^.*$ signup.php?inviteKey=$0 [L]
+
+RewriteCond %{REQUEST_URI} ^/invite/(.*)$ [NC]
+RewriteRule ^.*$ /signup.php?inviteKey=$0 [L]
 
 RewriteCond %{REQUEST_URI} ^/join$ [NC]
 RewriteRule ^.*$ signup.php [L]
@@ -42,6 +45,9 @@ RewriteRule ^.*$ /code/shared/logout.php [L]
 
 RewriteCond %{REQUEST_URI} ^/doSignUp$ [NC]
 RewriteRule ^.*$ /code/signup/do_signup.php [L]
+
+RewriteCond %{REQUEST_URI} ^/doInvite$ [NC]
+RewriteRule ^.*$ /code/signup/do_invite.php [L]
 
 RewriteCond %{REQUEST_URI} ^/doSignIn$ [NC]
 RewriteRule ^.*$ /code/signin/do_signin.php [L]
@@ -222,9 +228,6 @@ RewriteRule ^.*$ /code/kyc/index.php [L]
 
 RewriteCond %{REQUEST_URI} ^/switch$ [NC]
 RewriteRule ^.*$ /code/settings/switch/switch-view.php [L]
-
-RewriteCond %{REQUEST_URI} ^/invite/(.*)$ [NC]
-RewriteRule ^.*$ signup.php?inviteKey=$0 [L]
 
 RewriteCond %{REQUEST_URI} ^/newVenue$ [NC]
 RewriteRule ^.*$ /code/settings/new-venue/new-venue.php [L]

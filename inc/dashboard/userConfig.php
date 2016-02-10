@@ -15,7 +15,7 @@
 					<button id="add_user" 	type="button" class="newUser" title="<?echo _("Add a new user");?>"><i class="pd-add"></i></button> <?echo _("Add a new user");?>
 				</div>
 			</div>
-			
+
 			<table class="headerTable">
 				<thead>
 					<tr>
@@ -47,6 +47,7 @@
 										<!--<option value="ADMIN" title="<?echo _("Admin: can read/write account but cannot close it down")?>"><?echo _("Admin")?></option>-->
 										<option value="OWNER" title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 									</select>
+									<small class="error"><?echo _("Role?");?></small>
 								</td>
 								<td class="userTDTools">
 									<button type="button" class="userTableButtons userSave"					title="<?echo _("Collapse");?>"					><i class="pd-up"></i></button>
@@ -99,6 +100,7 @@
 								<!--<option value="ADMIN" 	<?if($user['role']=='ADMIN'){?>selected="selected"<?}?> title="<?echo _("Admin: can read/write account but cannot close it down")?>"><?echo _("Admin")?></option>-->
 								<option value="OWNER" 	<?if($user['role']=='OWNER'){?>selected="selected"<?}?> title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 							</select>
+							<small class="error"><?echo _("Role?");?></small>
 						</td>
 						<td class="userTDTools">
 							<button type="button" class="userTableButtons userSave hide" title="<?echo _("Collapse");?>"><i class="pd-up"></i></button>
@@ -125,14 +127,14 @@
 			<h1><?echo _("Invited users");?></h1>
 
 			<input type="hidden" id="inviteUserCount"		name="inviteUserCount" 		value="<?if($_SESSION['invite_user_edit_on']) echo $inviteUserCount; else echo "0";?>"/>
-			<input type="hidden" id="inviteUserCountAct" 	name="inviteUserCountAct"		value="<?if($_SESSION['invite_user_edit_on']) echo $inviteUserCount; else echo "0";?>"/>			
+			<input type="hidden" id="inviteUserCountAct" 	name="inviteUserCountAct"		value="<?if($_SESSION['invite_user_edit_on']) echo $inviteUserCount; else echo "0";?>"/>
 
 			<div class="row">
 				<div class="large-12 columns">
 					<button id="invite_user" 	type="button" class="inviteUser" title="<?echo _("Invite new user");?>"><i class="pd-add"></i></button> <?echo _("Invite new user");?>
 				</div>
 			</div>
-			
+
 			<table class="headerTable">
 				<thead>
 					<tr>
@@ -159,7 +161,7 @@
 									<small class="error"><?echo _("Please type an email");?></small>
 								</td>
 								<td class="userTDRole">
-									<select name="iuRole[0]" class="userField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have userMenuSingleSelect -->
+									<select name="iuRole[0]" class="userField noEnterSubmit inline" style="display:none;" required> <!-- Dummy does not have userMenuSingleSelect -->
 										<option value="STAFF" title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
 										<option value="OWNER" title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 									</select>
@@ -171,9 +173,9 @@
 						</tbody>
 					</table>
 				</div>
-			</div> <!-- End row new user -->						
+			</div> <!-- End row new user -->
 		</div>
-	</div>	
+	</div>
 
 	<div class="large-12 columns dynamicDataTable"> <!-- This is where the dynamic data goes into -->
 	<?if($_SESSION['invite_user_edit_on']){
@@ -193,11 +195,12 @@
 							<small class="error"><?echo _("Please type an email");?></small>
 						</td>
 						<td class="userTDRole">
-							<select name="iuRole[<?echo ($uKey+1);?>]" class="userMenuSingleSelect userField noEnterSubmit" style="display:none" readonly="readonly"/>
+							<select name="iuRole[<?echo ($uKey+1);?>]" class="userMenuSingleSelect userField noEnterSubmit" style="display:none" required>
 								<option value="STAFF" 	<?if($user['role']=='STAFF'){?>selected="selected"<?}?> title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
 								<!--<option value="ADMIN" 	<?if($user['role']=='ADMIN'){?>selected="selected"<?}?> title="<?echo _("Admin: can read/write account but cannot close it down")?>"><?echo _("Admin")?></option>-->
 								<option value="OWNER" 	<?if($user['role']=='OWNER'){?>selected="selected"<?}?> title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 							</select>
+							<small class="error"><?echo _("Role?");?></small>
 						</td>
 						<td class="userTDTools">
 							<button type="button" class="userTableButtons secondary inviteUserDelete <?if($_SESSION['user_id'] == $user['id']) echo 'hide';?>" title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
@@ -209,8 +212,8 @@
 			$uKey++;
 		}
 	}?>
-		<div class="hide firstInviteUserDiv"></div> <!-- Dummy hook -->	
-		</div>	
+		<div class="hide firstInviteUserDiv"></div> <!-- Dummy hook -->
+		</div>
 	<div class="row">
 		<div class="small-12 large-4 columns">
 			<button id="userSubButton" type="submit"><?echo _("SAVE CHANGES");?></button>

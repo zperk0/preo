@@ -8,7 +8,7 @@ $(document).ready(function () {
 			noty({
 			  type: 'error',  layout: 'topCenter',
 			  text: _tr("You must accept the terms and conditions to start using your ") + CURRENT_DATA.TITLE + _tr(" app.")
-			});			
+			});
 			return false;
 		}
 
@@ -61,7 +61,7 @@ $(document).ready(function () {
        if (response.error) {
        	$('#loading').hide();
        	$('#errorStripe').html(response.error.message).addClass('active');
-       } else {        
+       } else {
          // token contains id, last4, and card type
         CARD.token = response.id;
         CARD.number = response.card.last4;
@@ -85,24 +85,24 @@ $(document).ready(function () {
 			    "lastName": $('#surname').val(),
 			    "email": $('#email').val(),
 			    "password": $('#password').val()
-			  },  
+			  },
 			  "preoPackageId": queryParams.packageid,
 			  "venueId": queryParams.venueid
 			},
 		   success: function(data)
 		   {
 		   		if (data instanceof Object && data.status == undefined) {
-						$.post("/saveSignUp", 
+						$.post("/saveSignUp",
 						'bName='+queryParams.businessname+'&bID='+data.accountId+'&email='+encodeURIComponent(data.email)+'&fName='+data.firstName+'&lName='+data.lastName+'&id='+data.id,
 						function(response){
 							window.location.href = "/dashboard";
 						})
-						.fail(function(jqxhr) { 							
+						.fail(function(jqxhr) {
 							$('#errorStripe').html(jqxhr.responseText).addClass('active');
 							noty({
 							  type: 'error',  layout: 'topCenter',
 							  text: _tr("Sorry, but there's been an error processing your request.")
-							});							
+							});
 							$('#loading').hide();
 						});
 		   		} else {
@@ -114,7 +114,7 @@ $(document).ready(function () {
 						  type: 'error',  layout: 'topCenter',
 						  text: _tr("Sorry, but there's been an error processing your request.")
 						});
-						return false;		
+						return false;
 		   		}
 			},  error: function (data) {
 				if (data instanceof Object) {
@@ -124,7 +124,7 @@ $(document).ready(function () {
 						notifyAndRedirect('success',_tr("This email address already exists, please sign in to access your dashboard."),2000,'/login');
 					} else {
 						$('#errorStripe').html(data.responseJSON.message).addClass('active');
-					}	
+					}
 				}
 			}
 		 });
@@ -132,26 +132,26 @@ $(document).ready(function () {
 
     function getStripeKey(callback){
         $.get('/api/config/app').
-        success(function(data) {                        
-            Stripe.setPublishableKey(data.stripeKey);                           
+        success(function(data) {
+            Stripe.setPublishableKey(data.stripeKey);
             callback();
-        });        
-    }	
+        });
+    }
 
   function validateVenue(venueId,packageId,callback){
   	$.get("/api/venues/"+venueId)
   	.then(function(data){
-  		if (data.claimed != null){  			
+  		if (data.claimed != null){
   			notifyAndRedirect('success',_tr("This venue has been claimed already, sign in to access your dashboard."),2000,'/login');
   		}else {
-  			$('#loading').hide();  		
-  			$('.venue-name').html(data.name);  			
-  			$.get("/api/packages/package/"+packageId).then(function(preoPackage){  				
+  			$('#loading').hide();
+  			$('.venue-name').html(data.name);
+  			$.get("/api/packages/package/"+packageId).then(function(preoPackage){
   				setPackageInfo(preoPackage);
-  				getStripeKey(callback);  				
+  				getStripeKey(callback);
   			}).fail(function(){
   				notifyAndRedirect('success',_tr("There's a problem with your package, please try again."),3000,claimUrl);
-  			});  			
+  			});
   		}
   	}).fail(function(){
   		  notifyAndRedirect('success',_tr("There's a problem with the selected venue, please try again."),3000,claimUrl);
@@ -159,7 +159,7 @@ $(document).ready(function () {
   	})
   }
 
-  function setPackageInfo(preoPackage){  	
+  function setPackageInfo(preoPackage){
   	if (preoPackage.trialPeriod && preoPackage.trialPeriod > 0) {
 
   		if (preoPackage.id === 4 || preoPackage.id === 5) {
@@ -168,7 +168,7 @@ $(document).ready(function () {
   		}
 
 
-  		$('body').addClass("trial"); 
+  		$('body').addClass("trial");
 
   		$('.textTrialCardNumber').bind('click', function () {
   			$('.modal').addClass('active');
@@ -181,8 +181,8 @@ $(document).ready(function () {
   		$('.end-of-trial').html(d.format("DD/MM/YYYY"));
 
   	} else {
-			$('body').addClass("payment");  
-			$('.package-name').html(preoPackage.name);	
+			$('body').addClass("payment");
+			$('.package-name').html(preoPackage.name);
 			var moreUnitPrice = '';
 			if (preoPackage.id === 3) {
 				moreUnitPrice = ' ' + _tr('(first 12 months upfront)');
@@ -190,7 +190,7 @@ $(document).ready(function () {
 			$('.package-unit-price').html('£'+preoPackage.subscriptionPrice+"/"+_tr("month") + moreUnitPrice);
 			var date = new Date();
 
-			
+
 			var contractMonths = 1;
 			if (preoPackage.contractMonths) {
 				contractMonths = preoPackage.contractMonths;
@@ -210,7 +210,7 @@ $(document).ready(function () {
   	noty({
 				  type: type,  layout: 'topCenter',
 				  text: message
-				});			
+				});
 			setTimeout(function(){
 				window.location.href = destination
 			},duration)
@@ -233,18 +233,18 @@ $(document).ready(function () {
 	    } else {
 	      query_string[pair[0].toLowerCase()].push(pair[1]);
 	    }
-	  } 
+	  }
 	    return query_string;
 	} ();
 
-    
+
 
     if (!queryParams  || !queryParams.packageid || !queryParams.venueid) {
     	window.location.href = claimUrl;
     } else {
-    	validateVenue(queryParams.venueid, queryParams.packageid, function(){    	
+    	validateVenue(queryParams.venueid, queryParams.packageid, function(){
     		$('#firstname').focus();
-    	});    	
+    	});
     }
 
 });

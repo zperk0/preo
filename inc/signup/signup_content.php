@@ -35,7 +35,7 @@
 								</div>
 							</div>
 							<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6">
-								<div class="form-group password">	
+								<div class="form-group password">
 									<label for="password"><?php echo _("Password"); ?></label>
 									<input type="password" name="password" required class="form-control" id="password">
 									<small class="error"><?echo _("Please type your password");?></small>
@@ -94,14 +94,14 @@
 															<tr>
 																<td align="left">Total</td>
 																<td class="total" align="right"></td>
-															</tr>															
+															</tr>
 														</tfoot>
 													</table>
 												</td>
 											</tr>
 										</tbody>
-									</table>									
-							</div>											
+									</table>
+							</div>
 						</div>
 						<div class="row">
 							<div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -209,7 +209,7 @@
 	</script>
 
 	<script type='text/javascript' src='<?echo $_SESSION['path']?>/js/beforeLogin/signup.js'></script>
-	<script type="text/javascript" src="https://js.stripe.com/v2/"></script> 
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 	<div class="modal">
 		<div class="backgroundModal"></div>

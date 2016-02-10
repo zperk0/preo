@@ -515,7 +515,7 @@ $(document).ready(function() {
 					if($('#redirectFlag').val()!='1') $('#venueSave').show();
 					$('#savingButton').hide();
 					//FIXME maybe this can be replaced with a refresh on the ids for the delivery details
-					setTimeout(window.location.reload(),200);
+					setTimeout(window.location.reload,500);
 			 	};
 
 				try
@@ -708,7 +708,7 @@ $(document).ready(function() {
 					lastImageUpload = {
 						saved: false,
 						idItem: this.idItem
-					};					
+					};
 				}
 
 				lastImageUpload.url = this.croppedImg.attr('src');
@@ -750,7 +750,7 @@ $(document).ready(function() {
 		}
 
 		$item_background.bind('click', function () {
-			
+
 			var currentType = $(this).is(':checked') ? 'BG' : 'DEFAULT';
 			console.log('current type', currentType, default_value_image_type);
 			if (currentType !== default_value_image_type) {
@@ -759,7 +759,7 @@ $(document).ready(function() {
 						saved: false,
 						idItem: idItem,
 						url: imagesMenu[idItem] && imagesMenu[idItem][0].url
-					};					
+					};
 				}
 
 				lastImageUpload.type = currentType;
@@ -2784,7 +2784,6 @@ $(document).ready(function() {
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").removeClass('userEdit');
 		$curItem.find("tr").addClass('savedInput');
-		$curItem.find("input").attr("readonly", "readonly");
 		$curItem.find(".userTDEdit").removeClass('hide');
 		$curItem.find(".userTDEdit").show();
 		$curItem.find(".userPassTR").hide();
@@ -2845,18 +2844,7 @@ $(document).ready(function() {
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
-		});
-
-		$newTab.find("input[name^=uPasswordConf]").each(function() {
-			var tempName = $(this).attr('data-equalTo');
-			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
-			$(this).attr('data-equalTo', newName);
-		});
-
-		$newTab.find("input[id^=uPassword]").each(function() {
-			var tempName = $(this).attr('id');
-			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
-			$(this).attr('id', newName);
+			$(this).removeAttr('readonly')
 		});
 
 		$newTab.find(".userTR select").each(function() {
@@ -2868,7 +2856,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: _tr("Role"),
+			   noneSelectedText: _tr("Staff"),
 			   selectedList: 1,
 			   minWidth: 108
 			});
@@ -2880,15 +2868,16 @@ $(document).ready(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
+				$(this).removeAttr('readonly')
 			});
 		}
 
 		//now we fix uID
 		$newTab.find("input[name^=uID]").each(function() {
 			$(this).val("u"+newCount);
+			$(this).removeAttr('readonly')
 		});
 
-		$newTab.find("input[name^=uPass]").attr('required','required');
 		$newTab.find("input[name^=uName]").attr('required','required');
 		$newTab.find("input[name^=uEmail]").attr('required','required');
 
@@ -2907,13 +2896,13 @@ $(document).ready(function() {
 		$newTab.slideRow('down');
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
-	
+
 	$(document).on("click", ".inviteUser", function() {
-		
+
 		//get table user number
 		$curTable = $(this).closest('table');
 		var eventID = $curTable.attr('id');
-		
+
 		//get and update current count
 		var userCount = $("#inviteUserCount").val();
 		var newCount = parseInt(parseInt(userCount) + 1);
@@ -2923,7 +2912,7 @@ $(document).ready(function() {
 		//clone dummy table
 		$newTab = $("#inviteUser0").clone(true);
 		$newTab.attr('id','inviteUser'+newCount);
-		
+
 		//replace ids with incremented value and make value = default value
 		$newTab.find(".inviteUserTR input").each(function() {
 			$(this).val( $(this).prop("defaultValue") );
@@ -2931,49 +2920,49 @@ $(document).ready(function() {
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
 		});
-		
+
 		$newTab.find("input[name^=uPasswordConf]").each(function() {
 			var tempName = $(this).attr('data-equalTo');
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('data-equalTo', newName);
 		});
-		
+
 		$newTab.find(".inviteUserTR select").each(function() {
 			$(this).val( $(this).prop("defaultValue") );
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
-			
+
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: _tr("Role"),
+			   noneSelectedText: _tr("Staff"),
 			   selectedList: 1,
 			   minWidth: 108
-			}); 
+			});
 		});
-		
+
 		//now we fix uID
 		$newTab.find("input[name^=iuID]").each(function() {
 			$(this).val("u"+newCount);
 		});
-		
+
 		$newTab.find("input[name^=iuName]").attr('required','required');
 		$newTab.find("input[name^=iuEmail]").attr('required','required');
-		
+
 		$newTab.css('backgroundColor','#fafafa');
 		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		$newTab.css('max-width', '100%'); 
-		
+		$newTab.css('max-width', '100%');
+
 		//hide it so we can animate it!
 		$newTab.css('display','none');
-		
+
 		//insert before section header/before hidden div
-		$(".firstInviteUserDiv").before($newTab); 
+		$(".firstInviteUserDiv").before($newTab);
 		$newTab.slideRow('down');
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
-	
+
 	$(document).on("click", ".userDelete", function() {
 		//get event number
 		$curTable = $(this).closest('table');
@@ -3061,14 +3050,14 @@ $(document).ready(function() {
 		}
 
 	});
-	
+
 	$(document).on("click", ".inviteUserDelete", function() {
 		//get event number
 		$curTable = $(this).closest('table');
 		userID = $curTable.attr('id');
-		
+
 		realUserID = $curTable.find("input[name^=iuID]").val();
-		
+
 		if(typeof realUserID =='undefined' || realUserID == '' || !realUserID.match(/^\d+?$/gi)) //event not saved in DB
 		{
 			noty({
@@ -3077,15 +3066,15 @@ $(document).ready(function() {
 				text: _tr('Are you sure you want to delete this invite user?'),
 				buttons: [
 				{addClass: 'alert tiny', text: _tr('Yes, delete this user!'), onClick: function($noty) {
-					
+
 					//get and update current count
 					userCount = $("#inviteUserCountAct").val();
 					newCount = parseInt(parseInt(userCount) - 1);
 					$("#inviteUserCountAct").val(newCount);
-					
+
 					//bye-bye
 					$("#"+userID).remove();
-					
+
 					$noty.close();
 				  }
 				},
@@ -3104,7 +3093,7 @@ $(document).ready(function() {
 				text: _tr('Are you sure you want to delete this invite user?'),
 				buttons: [
 				{addClass: 'alert tiny', text: _tr('Yes, delete this invite user!'), onClick: function($noty) {
-					
+
 					var url = "/deleteInviteUser";
 					$.ajax({
 						   type: "POST",
@@ -3122,17 +3111,17 @@ $(document).ready(function() {
 									  type: 'error',  layout: 'topCenter',
 									  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
 									});
-									
+
 									//alert(data);
-									
+
 									return false;
 								}
-									
+
 								//get and update current count
 								userCount = $("#inviteUserCountAct").val();
 								newCount = parseInt(parseInt(userCount) - 1);
 								$("#inviteUserCountAct").val(newCount);
-								
+
 								//bye-bye
 								$("#"+userID).remove();
 							}
@@ -3147,13 +3136,13 @@ $(document).ready(function() {
 			  ]
 			});
 		}
-		
+
 	});
-	
+
 	$(".userMenuSingleSelect").multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Role",
+	   noneSelectedText: "Staff",
 	   selectedList: 1
 	});
 
@@ -3175,6 +3164,21 @@ $(document).ready(function() {
 		var url = "/saveUser";
 
 		var errorFlag = 0;
+
+
+		function userSave($curItem){
+		 		$curItem.find("tr").removeClass('userEdit');
+		 		$curItem.find("tr").addClass('savedInput');
+		 		$curItem.find("input").attr("readonly", "readonly");
+		 		$curItem.find(".userTDEdit").removeClass('hide');
+		 		$curItem.find(".userTDEdit").show();
+		 		$curItem.find(".userPassTR").hide();
+		 		$curItem.find(".userMenuSingleSelect").multiselect("disable");
+		 		$curItem.css('background', 'transparent');
+		 		$curItem.css('box-shadow', '0px 0px 0px');
+				$curItem.css('max-width', '100%');
+			}
+
 
 		$.ajax({
 			   type: "POST",
@@ -3222,8 +3226,9 @@ $(document).ready(function() {
 
 						$('.inviteUserTable').each(function(){
 							userSave($(this));
-						});		
+						});
 						noty({ type: 'success', text: _tr('User configuration has been saved!') });
+						setTimeout(window.location.reload,1000);
 						errorFlag = 0;
 
 						//alert(data);
@@ -3233,14 +3238,7 @@ $(document).ready(function() {
 					$('#userSubButton').show();
 					$('#savingButton').hide();
 					$(".userMenuSingleSelect").multiselect('disable');
-					if(!errorFlag)
-					{
-						$('table').each(function(){
-							if($(this).is(':visible'))
-								$(this).find('.userPassTR').remove(); //now all saved users are in edit mode only
-						});
-						$("input[name^='uEmail']").each(function(){ $(this).addClass("preSaved"); }); //make saved input emails permanently readonly
-					}
+					$(".ui-multiselect").attr('disabled','disabled');
 			 });
 
 		return false; // avoid to execute the actual submit of the form.

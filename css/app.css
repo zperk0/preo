@@ -754,7 +754,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
   font-size: 1.3em !important;
   /* border-bottom: 1px solid #B8B9BC; */ }
 
-.itemTR, .eventTR, .userTR, .mdTR {
+.itemTR, .eventTR, .userTR, .inviteUserTR, .mdTR {
   margin-top: 20px; }
 
 .menuTable td, .eventTable td, .userTable td, .outletTable td, .mdTable td, table.headerTable td {
@@ -1070,7 +1070,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
   padding-right: 0px; }
   .dynamicDataTable tr:first-of-type {
     border-bottom: 1px solid #B9BBBD; }
-  .dynamicDataTable tr.itemTR.menuEdit:first-of-type, .dynamicDataTable tr.userTR.userEdit:first-of-type, .dynamicDataTable tr.eventTR.eventEdit:first-of-type {
+  .dynamicDataTable tr.itemTR.menuEdit:first-of-type, .dynamicDataTable tr.userTR.userEdit:first-of-type, .dynamicDataTable tr.inviteUserTR.userEdit:first-of-type, .dynamicDataTable tr.eventTR.eventEdit:first-of-type {
     border-bottom: 0px !important; }
 
 .menuTable tr, .eventTable tr, .userTable tr, .outletTable tr, table.headerTable tr, .mdTable tr {
@@ -1135,7 +1135,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
   width: 70px !important;
   padding-top: 10px !important; }
 
-.newItem, .newSection, .deleteSection, .deleteSlot, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot, .applyTimesAllDays, .addMoreOH, .removeOHDiv {
+.newItem, .newSection, .deleteSection, .deleteSlot, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot, .applyTimesAllDays, .addMoreOH, .removeOHDiv, .inviteUser {
   padding: 1px 3px;
   font-size: 20px; }
 
@@ -1152,7 +1152,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 .newCollSlot, .delCollSlot {
   margin-top: 36px; }
 
-.newItem, .newEvent, .newUser, .newOutlet, .newmdItem, .addMoreOH {
+.newItem, .newEvent, .newUser, .inviteUser, .newOutlet, .newmdItem, .addMoreOH {
   background: #2e70b7;
   border: #2e70b7; }
 
@@ -2977,6 +2977,10 @@ button.preodayButton.noclick {
   font-size: 12px;
   color: #CE0000;
   display: none; }
+
+.linkMail {
+  font-size: 14px;
+  color: #4F4F4F !important; }
 
 .accordion.contentSectionsDashboard section > h3[data-section-title] {
   width: 100% !important;
