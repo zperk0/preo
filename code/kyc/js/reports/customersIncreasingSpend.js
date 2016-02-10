@@ -6,22 +6,21 @@ angular.module('kyc.reports')
 	var data = {}
 	var titles = [];
 
-	Report.setData = function(reportsData){		
+	Report.setData = function(reportsData){
 		data = {};
 		angular.forEach(reportsData.customerOrders,
-			function(customerOrder){											
+			function(customerOrder){
 				if (data[customerOrder.id] === undefined && !isNaN(customerOrder.totalPercentage) && customerOrder.totalPercentage > 0){
 					data[customerOrder.id] = {
 						percentIncrease: customerOrder.totalPercentage,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
-						email:customerOrder.username,
+						email:customerOrder.email,
 						loyalty: customerOrder.optinLoyalty,
 						offers: customerOrder.optinOffers,
 						other: customerOrder.optinOther
-					}				
+					}
 			  }
 		});
-		console.log('set data',data);			
 	}
 
 	Report.orderby = "percentIncrease";
@@ -43,7 +42,7 @@ angular.module('kyc.reports')
 	Report.getTitle = function(){
 		return title;
 	}
-	
+
 
 	return Report;
 

@@ -4,7 +4,7 @@ angular.module('accountSettings.resources').
     var Invoice = $resource('/api/accounts/:accountId/invoices/:invoiceId',{accountId:"@accountId",invoiceId:"@invoiceId"},{
     		payPending:{
               method:'POST',
-              url:'/api/accounts/:accountId/invoices/payPending'
+              url:'/api/accounts/:accountId/invoices/payPending?isSubscription=0'
           },
         getPending:{
             method:'POST',

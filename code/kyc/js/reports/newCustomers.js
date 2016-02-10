@@ -1,7 +1,7 @@
 angular.module('kyc.reports')
 .factory('NewCustomers',[function(){
 
-	var title = _tr("New Customers");	
+	var title = _tr("New Customers");
 	var Report = {}
 	var data = {}
 	var titles = [];
@@ -9,21 +9,21 @@ angular.module('kyc.reports')
 
 	Report.setData = function(reportsData){
 		data = {};
-		angular.forEach(reportsData.customerOrders,function(customerOrder){				
-			var created = moment.utc(customerOrder.created);		
+		angular.forEach(reportsData.customerOrders,function(customerOrder){
+			var created = moment.utc(customerOrder.created);
 			if (created > dateRange || customerOrder.firstOrder > dateRange){
 				if (data[customerOrder.id] === undefined){
 					data[customerOrder.id] = {
 						dateJoined:customerOrder.created,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
-						email:customerOrder.username,
+						email:customerOrder.email,
 						loyalty: customerOrder.optinLoyalty,
 						offers: customerOrder.optinOffers,
 						other: customerOrder.optinOther
-					}				
+					}
 				}
 			}
-		});		
+		});
 	}
 
 	Report.orderBy = "dateJoined";

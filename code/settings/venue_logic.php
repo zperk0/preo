@@ -1,8 +1,5 @@
 <?php
 
- 	// ini_set('display_errors', 1);
-	// error_reporting(E_ALL ^ E_NOTICE);
-
  	function formatDisplayPercentage($num){
 
  	if ($num > 1 || !((isset($num) && $num))) 		
@@ -14,6 +11,7 @@
 	
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
+	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/account_functions.php');   //API calling function
 
 	//we use the user's token
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
@@ -24,67 +22,55 @@
 	//////VENUE////////////////////////////////////////////////////////////////////////////
 	
 	//query to find venues
-	$curlResult = callAPI('GET', $apiURL."venues?accountId=$accountID", false, $apiAuth);
-	
+
+	if (!isset($_SESSION['venue_id'])) {
+		$curlResult = callAPI('GET', $apiURL."venues?accountId=$accountID", false, $apiAuth);
+		
+		$dataJSON = json_decode($curlResult,true);
+
+		if (!empty($dataJSON)) {
+			$dataJSON[0]['locale'] = explode("-",$dataJSON[0]['locale'])[0];
+			setDataVenue($dataJSON[0]);		
+		}
+	}
+
+	$venueID = $_SESSION['venue_id'];	
+
+	//get settings
+	$curlResult = callAPI('GET', $apiURL."venues/$venueID/settings", false, $apiAuth);
 	$dataJSON = json_decode($curlResult,true);
 	
-	if(!empty($dataJSON)) 
-	{	
-		$_SESSION['venue_id'] 			= $dataJSON[0]['id'];
-		$_SESSION['venue_name'] 		= $dataJSON[0]['name'];
-		if (isset($dataJSON[0]['permalink'])) {
-			$_SESSION['venue_permalink'] 		= $dataJSON[0]['permalink'];
-		}		
-		$_SESSION['venue_desc'] 		= $dataJSON[0]['description'];
-		$_SESSION['venue_cat'] 			= $dataJSON[0]['categoryId'];
-		$_SESSION['venue_address']  	= $dataJSON[0]['address1'];			
-		$_SESSION['venue_latitude']		= $dataJSON[0]['latitude'];	
-		$_SESSION['venue_longitude']	= $dataJSON[0]['longitude'];	
-		$_SESSION['venue_postcode']		= $dataJSON[0]['postcode'];	
-		$_SESSION['venue_country']		= $dataJSON[0]['country'];	
-		$_SESSION['venue_eventFlag']	= $dataJSON[0]['eventFlag'];
-		$_SESSION['venue_deliverFlag']	= $dataJSON[0]['deliverFlag'];	
-		$_SESSION['venue_liveFlag']		= $dataJSON[0]['liveFlag'];
-		$_SESSION['venue_demoFlag']		= $dataJSON[0]['demoFlag'];	
-		$_SESSION['venue_code']			= $dataJSON[0]['code'];	
-		$_SESSION['venue_deliveryFlag']	= $dataJSON[0]['deliverFlag'];			
-		$_SESSION['venue_address2']  	= $dataJSON[0]['address2'];	
-		$_SESSION['venue_address3']  	= $dataJSON[0]['address3'];			
-		$_SESSION['venue_town']  		= $dataJSON[0]['city'];	
-		$_SESSION['venue_language']		= explode("-",$dataJSON[0]['locale'])[0];	 //get the locale code if there is a country code or not.
-		$_SESSION['venue_timezone']		= $dataJSON[0]['timeZone'];	
-		$_SESSION['venue_currency']		= $dataJSON[0]['ccy'];	
-					
-
-		
-		//we get venue id from _SESSION
-		$venueID = $_SESSION['venue_id'];
-		
-		//get settings
-		$curlResult = callAPI('GET', $apiURL."venues/$venueID/settings", false, $apiAuth);
-		$dataJSON = json_decode($curlResult,true);
-		
-		if(!empty($dataJSON))
-		{
-			$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];
-			$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];		
-			$_SESSION['delivery_zone'] 			= $dataJSON["deliveryZone"];
-			$_SESSION['venue_order_min']		= $dataJSON["orderMin"];
-			$_SESSION['delivery_charge'] 		= $dataJSON["deliveryCharge"];
-			$_SESSION['delivery_charge_below']	= $dataJSON["deliveryChargeBelow"];
-			$_SESSION['delivery_order_min'] 	= $dataJSON["deliveryOrderMin"];
-			$_SESSION['delivery_lead_time'] 	= $dataJSON["deliveryLeadTime"];
-			$_SESSION['delivery_discount'] 		= formatDisplayPercentage($dataJSON["deliveryDiscount"]);
-			$_SESSION['delivery_phone'] 		= $dataJSON["deliveryPhone"];
-			$_SESSION['venue_discount'] 		= formatDisplayPercentage($dataJSON["pickupDiscount"]);
-		}
-				
-
-		$redirectFlag = 1;
+	if(!empty($dataJSON))
+	{
+		$_SESSION['venue_leadtime']			= $dataJSON['leadTime'];
+		$_SESSION['venue_collectinterval']	= $dataJSON['collectInterval'];		
+		$_SESSION['delivery_zone'] 			= $dataJSON["deliveryZone"];
+		$_SESSION['venue_order_min']		= $dataJSON["orderMin"];
+		$_SESSION['delivery_charge'] 		= $dataJSON["deliveryCharge"];
+		$_SESSION['delivery_charge_below']	= $dataJSON["deliveryChargeBelow"];
+		$_SESSION['delivery_order_min'] 	= $dataJSON["deliveryOrderMin"];
+		$_SESSION['delivery_lead_time'] 	= $dataJSON["deliveryLeadTime"];
+		$_SESSION['delivery_discount'] 		= formatDisplayPercentage($dataJSON["deliveryDiscount"]);
+		$_SESSION['delivery_phone'] 		= $dataJSON["deliveryPhone"];
+		$_SESSION['max_delivery_distance'] 		= $dataJSON["maxDeliveryDistance"];
+		$_SESSION['venue_discount'] 		= formatDisplayPercentage($dataJSON["pickupDiscount"]);
 	}
+			
+
+	$redirectFlag = 1;
+
 
 	if(isset($venueID)) //if there is no venue set then no App or Menu can be set anyway
 	{	
+
+		$curlResult = callAPI('GET', $apiURL."accounts/$accountID/features/11", false, $apiAuth);
+		$dataJSON = json_decode($curlResult,true);
+		if (!empty($dataJSON)){
+			$_SESSION['has_feature_voucher']=1;		
+		} else {
+			$_SESSION['has_feature_voucher']=0;		
+		}
+
 		$_SESSION['venue_edit_on']=1;
 		
 		if( (!isset($_SESSION['signupWizFlag'])) || (isset($_SESSION['signupWizFlag']) && !$_SESSION['signupWizFlag']) )

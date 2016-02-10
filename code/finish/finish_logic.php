@@ -13,7 +13,7 @@
 	$apiAuth = "PreoDay ".$_SESSION['token']; //we need to send the user's token here
 	
 	//////PAYMENTS////////////////////////////////////////////////////////////////////////////
-	$curlResult = callAPI('GET', $apiURL."accounts/$accountID/paymentproviders", false, $apiAuth);
+	$curlResult = callAPI('GET', $apiURL."venues/$venueID/paymentproviders", false, $apiAuth);
 	$dataJSON = json_decode($curlResult, true);
 	
 	if(!empty($dataJSON))
@@ -21,7 +21,7 @@
 		$connectedFlag = 0;
 		foreach($dataJSON as $paymentProvider)
 		{
-			if(isset($paymentProvider['type']) && $paymentProvider['type'] == 'Stripe')
+			if(isset($paymentProvider['type']) && ($paymentProvider['type'] == 'Stripe' || $paymentProvider['type'] == 'CASH'))
 				$connectedFlag = 1;
 		}
 		$noPaymentFlag = !$connectedFlag;

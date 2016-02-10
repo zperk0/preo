@@ -34,7 +34,6 @@ $(function () {
 
 		var heightLine = 40;
 		var heightBreakLine = 19;
-		console.log(parsedData);
 		$.each(parsedData,function(title,dataArray){
 				var td = "<th>"+title+"</th>"
 				headerRow.push(td);
@@ -101,7 +100,6 @@ $(function () {
 				ui_str += '	</table>';
 				ui_str += '</div>';
 				$('#content').append(ui_str);
-				console.log('appended')
 			return id;
     }
     

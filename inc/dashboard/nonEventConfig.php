@@ -6,7 +6,7 @@
 			<a href="<?echo $_SESSION['path']?>/settings"><? echo _("Venue Information");?></a>
 			<a href="<?echo $_SESSION['path']?>/homescreen"><? echo _("App Styling 1/2");?></a>
 			<a href="<?echo $_SESSION['path']?>/menuscreen"><? echo _("App Styling 2/2");?></a>
-			<a href="<?echo $_SESSION['path']?>/menus/<?echo $_SESSION['menus'][0]['id'];?>?r=1"><? echo _("Menu Creation");?></a>
+			<a href="<?echo $_SESSION['path']?>/editmenu/<?echo $_SESSION['menus'][0]['id'];?>?r=1"><? echo _("Menu Creation");?></a>
 			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="current" href="#"><? echo _("Events");?></a>
 			<?}else{?><a class="current" href="#"><? echo _("Opening Hours");?></a><?}?>
 			<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
@@ -118,7 +118,6 @@
 	$('.<?echo $dow[$i];?>').addClass('hide');
 	
 	if ($('.<?echo $dow[$i];?> .oh-is-open').val() == "c"){
-		console.log('hereeee','.<?echo $dow[$i];?>',$('.<?echo $dow[$i];?> .oh-is-open').val())
 		$('.<?echo $dow[$i];?> .ui-timepicker-input-wrapper').hide();	
 	}
 <?}?>

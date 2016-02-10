@@ -12,18 +12,18 @@ angular.module('kyc.reports')
 			return a.orders - b.orders;
 		})
 
-		angular.forEach(reportsData.customerOrders,function(customerOrder){				
+		angular.forEach(reportsData.customerOrders,function(customerOrder){
 			if (data[customerOrder.id] === undefined){
 					data[customerOrder.id] = {
 						numberOfOrders:customerOrder.orders,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
-						email:customerOrder.username,
+						email:customerOrder.email,
 						loyalty: customerOrder.optinLoyalty,
 						offers: customerOrder.optinOffers,
 						other: customerOrder.optinOther
-					}				
+					}
 			}
-		});			
+		});
 	}
 
 	Report.orderBy = "numberOfOrders";
@@ -45,7 +45,7 @@ angular.module('kyc.reports')
 	Report.getTitle = function(){
 		return title;
 	}
-	
+
 
 	return Report;
 

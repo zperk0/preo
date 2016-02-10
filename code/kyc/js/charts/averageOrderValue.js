@@ -1,13 +1,17 @@
 angular.module('kyc.charts')
-.factory('AverageOrderValue',['ChartType', function(ChartType) {
+.factory('AverageOrderValue',['ChartType', 'PaymentType', function(ChartType, PaymentType) {
 
 	var type = ChartType.NUMBER;
 	var ordersTotal = 0;
 	var numOfOrders =0;
     var title = _tr("Average Order Value");
+    var currency = '';
 
-	function setData(order,minDate,maxDate){        
-        var orderData = moment.utc(order.paid);
+	function setData(order,minDate,maxDate,currencySymbol){
+        currency = currencySymbol;
+        var orderData = order.paymentType == PaymentType.CASH ? order.created : order.paid;
+        orderData = moment.utc(orderData);
+
         if (orderData >= minDate && orderData <= maxDate){
     		numOfOrders++;
     		ordersTotal+=order.total;
@@ -23,15 +27,15 @@ angular.module('kyc.charts')
     	return (ordersTotal/numOfOrders).toFixed(2);
     }
     function getType(){
-    	return type; 
+    	return type;
     }
-    
+
     function getHighChart(){
         return {
             type:type,
             title:title,
             data:getData(),
-            currency:"£"
+            currency:currency
         }
     }
 

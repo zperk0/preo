@@ -11,13 +11,13 @@
 	<nav class="breadcrumbs row--space1d">
 		<a href="<?echo $_SESSION['path']?>/settings"><? echo _("Venue Information");?></a>
 		<a class="current" href="#"><? echo _("App Styling 1/2");?></a>
-		<?if(!$_SESSION['noAppFlag-2']){?>
+		<?if(!isset($_SESSION['noAppFlag-2']) || !$_SESSION['noAppFlag-2']){?>
 			<a href="<?echo $_SESSION['path']?>/menuscreen"><? echo _("App Styling 2/2");?></a>
 		<?}else{?>
 			<a class="unavailable" href="#"><? echo _("App Styling 2/2");?></a>
 		<?}?>
-		<?if(!$_SESSION['noMenuFlag']){?>
-			<a href="<?echo $_SESSION['path']?>/menus/<?echo $_SESSION['menus'][0]['id'];?>?r=1"><? echo _("Menu Creation");?></a>
+		<?if((!isset($_SESSION['noMenuFlag']) || !$_SESSION['noMenuFlag']) && isset($_SESSION['menus'])){?>
+			<a href="<?echo $_SESSION['path']?>/editmenu/<?echo $_SESSION['menus'][0]['id'];?>?r=1"><? echo _("Menu Creation");?></a>
 		<?}else{?>
 			<a class="unavailable" href="#"><? echo _("Menu Creation");?></a>
 		<?}?>
@@ -110,7 +110,6 @@
 						</div>
 				
 						<input type="hidden" id="wallPaperID" name="wallPaperID" value="<?if(isset($_SESSION['app_wallpaperId'])) echo $_SESSION['app_wallpaperId'];else echo "1";?>"/>
-						<input type="hidden" id="picFileName" name="picFileName" value="<?if(isset($_SESSION['app_logo'])) echo $_SESSION['app_logo'];else echo "";?>"/>
 					</div>
 					<div id="iphone5" class="large-4 columns left">
 						<div id="frame_iphone5">
@@ -186,32 +185,6 @@
 								</div>
 							</div>
 						</div>
-					</form>
-					<form id="logoUpForm" method="POST" enctype="multipart/form-data">
-						<div class="visibleUpload">
-							<div class="row">
-								<div class="large-12 small-12 columns">
-									<button type="button" class="secondary small"><?echo _("UPLOAD YOUR OWN LOGO");?></button>
-								</div>
-							</div>
-						</div>
-						<div class="hiddenUpload">
-							<div class="row">
-								<div class="large-12 small-12 columns">
-									<label class="left row--space0-5d"><?echo _("Logo Upload");?></label>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Note: This will replace your main heading.");?>"></i>
-								</div>
-							</div>
-							<div class="row row--space1">
-								<div class="large-8 small-8 columns">
-									<button id="doLogoUp" type="button" class="small"><?echo _("UPLOAD");?></button>
-									<button id="lo-loading" type="button" class="small secondary pdLoading hide" title="Uploading..."><img src="<?echo $_SESSION['path']?>/img/loading.gif"/></button>
-									<button id="logoReset" type="button" class="small secondary"><?echo _("RESET");?></button>
-									<input type="file" id="picFile" name="picFile" accept="image/png" class="hide" />
-									<p><?echo _("Supported types: PNG");?><br/><?echo _("Max file size: 10MB");?><br/><?echo _("Dimensions: 100x75");?></p>
-								</div>
-							</div>
-						</div>
-						
 					</form>
 					<div class="row row--space2u">
 						<div class="large-12 small-12 columns text-right small-centered">

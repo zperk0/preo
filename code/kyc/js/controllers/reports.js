@@ -7,6 +7,8 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	$scope.exportAll="1";	
 	$scope.direction = true;
 	var isPrepared = false;
+
+	$scope.disableEventFilter();
 	
 	
 	$scope.selectAll = function() {
@@ -49,7 +51,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 	var loadReportsByPage = function(){
 	    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
 	    , end = begin + $scope.numPerPage;
-	    // console.log($scope.selectedReport);
 	    if ( $scope.selectedReport && $scope.selectedReport.data ) {    
 	    	$scope.reportsList = $scope.selectedReport.data.slice(begin, end );
 		}	 		
@@ -61,7 +62,6 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 				$scope.direction = direction;		
 		else 
 			$scope.direction = !$scope.direction;
-		console.log('set order by',orderBy,$scope.direction)
 		$scope.orderBy = orderBy;
 		$scope.selectedReport.data = UtilsService.dynamicSortObject($scope.selectedReport.data, orderBy, $scope.direction)
 		loadReportsByPage();
@@ -117,12 +117,7 @@ angular.module('kyc.controllers').controller('ReportsCtrl', ['$scope', '$AjaxInt
 							})							
 					}
 			});
-			console.log('returning:',{
-				title:$scope.selectedReport.title,
-				startDate:$scope.form.start_date.valueOf(),
-				endDate:$scope.form.end_date.valueOf(),
-	      dataJson:angular.toJson(prepData)
-	    })
+			
 			return {
 				title:$scope.selectedReport.title,
 				startDate:$scope.$parent.form.start_date.valueOf(),

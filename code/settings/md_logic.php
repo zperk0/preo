@@ -44,7 +44,7 @@
 		//get sections
 		//query to find menus for this venue  
 		$accID = $_SESSION['account_id'];
-		$mdCurlResult = callAPI('GET', $apiURL."menus?accountId=$accID", false, $apiAuth);
+		$mdCurlResult = callAPI('GET', $apiURL."menus?accountId=$accID&type=MENU", false, $apiAuth);
 		$mdDataJSON = json_decode($mdCurlResult,true);
 		$mdSections = array();
 		$itemSectionArray = array();

@@ -8,19 +8,19 @@ angular.module('kyc.reports')
 
 	Report.setData = function(reportsData){
 		data = {};
-		angular.forEach(reportsData.customerOrders,function(customerOrder){				
-			var created = moment.utc(customerOrder.paid);		
+		angular.forEach(reportsData.customerOrders,function(customerOrder){
+			var created = moment.utc(customerOrder.paid);
 			if (data[customerOrder.id] === undefined){
 					data[customerOrder.id] = {
 						totalSpent: customerOrder.total === null ? 0 : customerOrder.total,
 						name:customerOrder.firstName + " " + customerOrder.lastName,
-						email:customerOrder.username,
+						email:customerOrder.email,
 						loyalty: customerOrder.optinLoyalty,
 						offers: customerOrder.optinOffers,
 						other: customerOrder.optinOther
-					}				
+					}
 			}
-		});			
+		});
 	}
 
 	Report.orderBy = "totalSpent";
@@ -42,7 +42,7 @@ angular.module('kyc.reports')
 	Report.getTitle = function(){
 		return title;
 	}
-	
+
 
 	return Report;
 

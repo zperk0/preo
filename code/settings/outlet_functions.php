@@ -6,7 +6,7 @@
 		$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
 		
 		//get menus
-		$curlResult = callAPI('GET', $apiURL."menus?outletId=$id", false, $apiAuth);
+		$curlResult = callAPI('GET', $apiURL."menus?outletId=$id&type=MENU", false, $apiAuth);
 		
 		return json_decode($curlResult,true);
 	}

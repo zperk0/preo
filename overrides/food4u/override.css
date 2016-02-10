@@ -1,0 +1,12 @@
+/* Go wild with overrides!*/ 
+
+#poweredIMG{
+	display:none;
+}
+
+.no-billing.accountSettings .menu {
+	display:none;
+}
+.no-billing.accountSettings .content{
+	width:100%;
+}

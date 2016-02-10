@@ -1,17 +1,15 @@
 //shop
 var appCtrls = angular.module('shop.controllers',[]);
   
-appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES', 'ACCOUNT_ID', '$notification','$AjaxInterceptor','$location','AccountFeature','USER_ID','VENUE_ID',
-  function($scope, $http, Resources, FEATURES, ACCOUNT_ID, $notification,$AjaxInterceptor,$location,AccountFeature,USER_ID,VENUE_ID) {    
+appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'ACCOUNT_ID', '$notification','$AjaxInterceptor','$location','AccountFeature','USER_ID','VENUE_ID',
+  function($scope, $http, Resources, ACCOUNT_ID, $notification,$AjaxInterceptor,$location,AccountFeature,USER_ID,VENUE_ID) {    
 
     
     function initModalFromPath(){
       if ($location.path() != ''){   
-        var parts = $location.path().split("/");   
-        console.log('parts1',parts[1],parts[1]==='feature');
+        var parts = $location.path().split("/");           
         if (parts[1] === 'feature'){            
             var featureId = Number(parts[2]);
-            console.log('got feature id :',featureId);
             $scope.setSelectedFeature(featureId);
             $('#featureModal').foundation('reveal', 'open');
             $location.path('');
@@ -22,7 +20,6 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     $AjaxInterceptor.start(); 
     
     $scope.currentScreenshot = 0;
-    $scope.PremiumFeatures = FEATURES;
     $scope.accountFeatures = [];
     $scope.finishedLoading = false;      
     getAccountFeatures();
@@ -86,8 +83,6 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     $scope.showNextScreenshot = function(){         
       if ($scope.selectedFeature && $scope.selectedFeature.feature.promoImgs.length-1 > $scope.currentScreenshot){
         $scope.currentScreenshot++;      
-      } else {
-        console.log("else", $scope.selectedFeature);
       }
     }
     $scope.showPreviousScreenshot = function(){
@@ -108,12 +103,9 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
         
     }
 
-    function getFeatureById(id){
-      console.log("lenght:",$scope.PremiumFeatures.length);
-      console.log($scope.PremiumFeatures);      
+    function getFeatureById(id){          
       for (var i=0, len = $scope.PremiumFeatures.length;i<len;i++){        
         var feature = $scope.PremiumFeatures[i]
-        console.log(id,feature);
         if (feature.id === id){
           return feature;
         }
@@ -122,7 +114,6 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
 
     //TODO make this a default modal-preoday
     $scope.dismissAndShowDialog = function(which){
-      console.log('dismissing')
       $('#featureModal').on("closed", function closed() {
         $scope.showDialog(which);
         $(this).off('closed',closed);        
@@ -180,7 +171,6 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
 
     $scope.showDialog = function(which){                   
        var feature = $scope.selectedFeature.feature;  
-       console.log(feature);
        var clickOk;
        var clickCancel;
        var data = null; 
@@ -271,7 +261,6 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
               windowClass:'medium'
             }        
             clickOk = function(){
-              console.log('clicou ok ', $scope.featureDepends[0].id, $scope.featureDepends);
               $scope.setSelectedFeature($scope.featureDepends[0].id);
               $('#featureModal').foundation('reveal', 'open');
             };
@@ -289,7 +278,6 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
     $AjaxInterceptor.start();           
       var feature = $scope.selectedFeature.feature;
       AccountFeature.save({accountId:ACCOUNT_ID,featureId:feature.id},function(accountPayment){        
-        console.log('response:',accountPayment);  
         if (accountPayment.status ===  "SUCCESS"){
           getAccountFeatures();
           $scope.showDialog("success");
@@ -309,7 +297,6 @@ appCtrls.controller('shopController', ['$scope', '$http', 'Resources', 'FEATURES
         Resources.AccountCard.get({accountId:ACCOUNT_ID},
           function(result){                      
             if (result.token && result.token!=null){               
-                console.log('here ho',obj.discountCode,USER_ID);
                 AccountFeature.save({accountId:ACCOUNT_ID,featureId:feature.id,userId:USER_ID,venueId:VENUE_ID,code:obj.discountCode},
                   function(accountPayment){
                     $AjaxInterceptor.complete(); 

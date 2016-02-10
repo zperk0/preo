@@ -8,15 +8,16 @@ angular.module('kyc.controllers')
             $scope.setLocation('dashboard');
 
             $scope.$parent.showDateFilter = true;
+            $scope.disableEventFilter();
 
             var charts = AllCharts.getPreparedCharts();
 
-            $scope.$on('KYC_RELOAD',function(){                
-                charts = AllCharts.getPreparedCharts();                                    
+            $scope.$on('KYC_RELOAD',function(){
+                charts = AllCharts.getPreparedCharts();
                 $scope.values = $grid.populateItems(charts);
-                refreshGrid();                
+                refreshGrid();
             })
-            
+
 
             $scope.changeVisibility = function (value) {
 
@@ -29,8 +30,16 @@ angular.module('kyc.controllers')
 
                     UtilsService.reOrderWidgets( angular.element('#sscontainer') );
                 }
+            };
 
-                angular.element('#sscontainer').trigger("ss-rearrange");
+            // making a 5 column grid
+            $scope.isFirstElementInRow = function(index) {
+                return index == 0 || index == 5 || index == 10;
+            };
+
+            // making a 5 column grid
+            $scope.isLastElementInRow = function(index) {
+                return index == 4 || index == 9;
             };
 
             $scope.shapeshifterConfig = {
@@ -39,8 +48,8 @@ angular.module('kyc.controllers')
                 paddingX: 0,
                 paddingY: 0,
                 minColumns:2
-            };           
-                        
+            };
+
 
             function refreshGrid(){
                $scope.values = $grid.populateItems(charts);
@@ -48,24 +57,24 @@ angular.module('kyc.controllers')
                     var isFirstTime = window.sessionStorage.getItem("firsttime_feature_4") === "1";
                     if (isFirstTime){
                         window.sessionStorage.setItem("firsttime_feature_4",0);
-                        $notification.confirm({               
+                        $notification.confirm({
                           title: _tr("Welcome to Know Your Customer"),
                           content: _tr("From here you can view detailed reports and analytics about your customers and the transactions they make."),
                           showTerm: false,
                           btnOk: false,
-                          btnCancel: _tr('GET STARTED'),            
+                          btnCancel: _tr('GET STARTED'),
                           windowClass:'medium'
                         });
                     }
 
-                    
+
                     $(window).trigger('resize')
                     angular.element('#sscontainer').trigger("ss-rearrange");
-                    
+
                     $AjaxInterceptor.complete();
                 }, 1000)
             }
             refreshGrid();
-           
+
         }
     ]);

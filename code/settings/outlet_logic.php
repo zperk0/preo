@@ -30,7 +30,7 @@
 		$outletCount = count($outlets);
 		
 		//get menus
-		$curlResult = callAPI('GET', $apiURL."menus?accountId=$accountID", false, $apiAuth);
+		$curlResult = callAPI('GET', $apiURL."menus?accountId=$accountID&type=MENU", false, $apiAuth);
 		
 		$menus = json_decode($curlResult,true);
 		

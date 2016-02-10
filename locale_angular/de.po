@@ -1,0 +1,2872 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Preoday Webapp\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-18 12:25-0300\n"
+"PO-Revision-Date: 2014-09-10 16:12+0100\n"
+"Last-Translator: \n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.9\n"
+
+#: code/accountSettings/partials/subscription.php:8
+msgid "ADD PAYMENT METHOD"
+msgstr ""
+
+#: code/settings/delivery/partials/notifications.php:15
+#: code/settings/delivery/partials/notifications.php:39
+msgid "Active?"
+msgstr "Aktiv?"
+
+#: code/events/partials/events.php:9
+msgid "Add a new event"
+msgstr "Neue Veranstaltung hinzufügen"
+
+#: code/events/partials/modal-event.php:215
+msgid "Add another slot"
+msgstr "Zeitraum hinzufügen"
+
+#: code/accountSettings/partials/payment.php:36
+msgid "Address Line 1"
+msgstr "Adresse des Unternehmens"
+
+#: code/accountSettings/partials/payment.php:38
+msgid "Address Line 2"
+msgstr "Adresse des Unternehmens"
+
+#: code/accountSettings/partials/payment.php:40
+msgid "Address Line 3"
+msgstr "Adresse des Unternehmens"
+
+#: code/kyc/partials/customers.php:106 code/kyc/partials/events.php:119
+#: code/kyc/partials/orders.php:135 code/kyc/partials/reports.php:133
+#: code/kyc/partials/stock.php:92
+msgid "All"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:76
+#: code/events/js/directives/event/event.php:47
+msgid "All Locations"
+msgstr "Alle Kategorien"
+
+#: code/accountSettings/partials/billingHistory.php:13
+msgid "Amount"
+msgstr "Menge?"
+
+#: code/events/js/directives/event/event.js:114
+#: code/events/js/directives/event/event.js:135
+msgid ""
+"Are you sure you want to delete this event? Note: all event data will be "
+"lost!"
+msgstr ""
+"Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten? Alle "
+"Veranstaltungsdaten werden bei diesem Vorgang gelöscht!"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:69
+msgid ""
+"Are you sure you want to delete this menu? Note: all menu data will be lost!"
+msgstr ""
+"Sind Sie sicher, dass Sie dieses Angebot löschen möchten? Alle Daten zu "
+"diesem Angebot werden bei diesem Vorgang gelöscht!"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:27
+#, fuzzy
+msgid ""
+"Are you sure you want to duplicate this menu? Note: You'll be redirect to "
+"edit the menu."
+msgstr ""
+"Sind Sie sicher, dass Sie dieses Angebot löschen möchten? Alle Daten zu "
+"diesem Angebot werden bei diesem Vorgang gelöscht!"
+
+#: code/bookingMenus/partials/booking-menus.php:18
+msgid "Assigned to these promotions"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:17
+msgid "Auto reminder"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:35
+msgid "BILLING HISTORY"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:33
+msgid "Billing Address"
+msgstr "Adresse des Unternehmens"
+
+#: code/accountSettings/index.php:23
+#: code/accountSettings/partials/billingHistory.php:5
+msgid "Billing History"
+msgstr "Unternehmensprofil"
+
+#: code/accountSettings/partials/subscription.php:4
+msgid "Billing Schedule"
+msgstr "Adresse des Unternehmens"
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.js:16
+msgid "Booking"
+msgstr ""
+
+#: code/booking/partials/booking.php:26
+msgid "Booking page"
+msgstr ""
+
+#: code/bookingSettings/js/controllers/bookingSettings.js:80
+#, fuzzy
+msgid "Booking settings has been saved!"
+msgstr "Einstellungen wurden gespeichert!"
+
+#: code/booking/partials/booking.php:5
+msgid "Bookings"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:32
+msgid "Business Name"
+msgstr "Geschäftsname"
+
+#: code/accountSettings/partials/password.php:26
+#: code/accountSettings/partials/payment.php:51
+#: code/accountSettings/partials/profile.php:51
+#: code/accountSettings/partials/subscription.php:52
+msgid "CANCEL"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:19
+#: code/accountSettings/partials/payment.php:21
+msgid "CCV"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:34
+msgid "CHANGE CARD"
+msgstr "SPRACHE ÄNDERN"
+
+#: code/accountSettings/partials/payment.php:48
+#: code/accountSettings/partials/profile.php:48
+msgid "CHANGE DETAILS"
+msgstr "SPRACHE ÄNDERN"
+
+#: code/accountSettings/partials/profile.php:44
+msgid "CHANGE PASSWORD"
+msgstr "PASSWORT ZURÜCKSETZEN"
+
+#: code/bookingMenus/partials/booking-menus.php:7
+msgid "CREATE NEW MENU"
+msgstr ""
+
+#: code/kyc/js/directives/chart/chart.php:80
+#: code/kyc/partials/customers.php:99 code/kyc/partials/events.php:112
+#: code/kyc/partials/orders.php:128 code/kyc/partials/reports.php:126
+#: code/kyc/partials/stock.php:85
+msgid "CSV"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:31
+#: code/events/js/controllers/modalController.js:68
+msgid "CUSTOM"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:5
+msgid "Card Number"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:25
+msgid "Card ending"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:77
+#: code/events/js/directives/slot/slot.js:34
+msgid "Choose a Collection Slot"
+msgstr "Abholzeitraum auswählen"
+
+#: code/kyc/partials/reports.php:9
+msgid "Choose preset:"
+msgstr "Größe auswählen"
+
+#: code/events/partials/modal-event.php:75
+msgid "Choose the first occurrence."
+msgstr ""
+
+#: code/events/js/directives/event/event.php:10
+#: code/events/partials/modal-event.php:15
+msgid "Click to add a description"
+msgstr "Klicken, um Beschreibung hinzuzufägen"
+
+#: code/events/js/directives/event/event.php:6
+#: code/events/partials/modal-event.php:12
+msgid "Click to add an event name"
+msgstr "Klicken, um den Veranstaltungsnamen hinzuzufügen"
+
+#: code/booking/partials/booking.php:23
+msgid "Client"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:6
+#, fuzzy
+msgid "Client contact:"
+msgstr "Dieser Monat"
+
+#: code/events/js/directives/event/event.php:38
+msgid "Collapse"
+msgstr "Verkleinern"
+
+#: code/events/partials/modal-event.php:117
+msgid "Collection Slot"
+msgstr "Abholzeitraum auswählen"
+
+#: code/events/js/directives/slot/slot.js:48
+msgid "Collection Slot: Half-Time"
+msgstr "Abholzeitraum: Halbzeit"
+
+#: code/events/js/directives/slot/slot.js:46
+msgid "Collection Slot: Interval"
+msgstr "Abholzeitraum: Pause"
+
+#: code/events/js/directives/slot/slot.js:50
+msgid "Collection Slot: Post-Game"
+msgstr "Abholzeitraum: Nach dem Spiel"
+
+#: code/events/js/directives/slot/slot.js:49
+msgid "Collection Slot: Post-Show"
+msgstr "Abholzeitraum: Nach der Show"
+
+#: code/events/js/directives/slot/slot.js:45
+msgid "Collection Slot: Pre-Game"
+msgstr "Abholzeitraum: Vor dem Spiel"
+
+#: code/events/js/directives/slot/slot.js:44
+msgid "Collection Slot: Pre-Show"
+msgstr "Abholzeitraum: Vor der Show"
+
+#: code/events/js/directives/slot/slot.js:47
+msgid "Collection Slot: Second-Interval"
+msgstr "Abholzeitraum: Zweite Pause"
+
+#: code/accountSettings/partials/password.php:19
+msgid "Confirm"
+msgstr "Passwort bestätigen"
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:14
+msgid "Contact email:"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:10
+msgid "Contact no.:"
+msgstr ""
+
+#: code/bookingMenus/partials/booking-menus.php:7
+#, fuzzy
+msgid "Create new menu"
+msgstr "Neues Angebot erstellen"
+
+#: code/accountSettings/partials/payment.php:15
+msgid "Credit Card Name"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:8
+msgid "Credit Card Number"
+msgstr ""
+
+#: code/kyc/partials/events.php:32 code/kyc/partials/orders.php:39
+#: code/kyc/partials/stream.php:28
+msgid "Customer"
+msgstr "Neue Nutzer"
+
+#: code/kyc/index.php:26 code/kyc/partials/customers.php:8
+msgid "Customers"
+msgstr "Neue Nutzer"
+
+#: code/events/js/controllers/modalController.js:27
+msgid "DAILY"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:14
+msgid "DD/MM/YYYY"
+msgstr "TT/MM/JJJJ"
+
+#: code/accountSettings/partials/billingHistory.php:23
+msgid "DOWNLOAD PDF"
+msgstr ""
+
+#: code/accountSettings/partials/billingHistory.php:11
+#: code/booking/partials/booking.php:21
+msgid "Date"
+msgstr "Datum?"
+
+#: code/kyc/index.php:62
+msgid "Date Range:"
+msgstr "Datum?"
+
+#: code/booking/partials/booking.php:7
+#, fuzzy
+msgid "Date range"
+msgstr "Datum?"
+
+#: code/kyc/partials/orders.php:25
+msgid "Date/Time"
+msgstr "Anfang"
+
+#: code/events/js/directives/event/event.php:15
+#: code/events/partials/modal-event.php:71
+#: code/events/partials/modal-event.php:77
+#: code/events/partials/modal-event.php:81
+msgid "Date?"
+msgstr "Datum?"
+
+#: code/events/partials/modal-event.php:30
+msgid "Days"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:25
+#: code/bookingSettings/partials/booking-settings.php:38
+msgid "Days before the event"
+msgstr ""
+
+#: code/settings/delivery/partials/delivery.php:43
+msgid "Default delivery time (minutes)"
+msgstr "Lieferverzug (in Minuten)"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.php:14
+#: code/events/js/directives/event/event.php:41
+msgid "Delete"
+msgstr "Löschen"
+
+#: code/events/partials/modal-event.php:181
+#: code/events/partials/modal-event.php:205
+msgid "Delete this slot"
+msgstr "Diese Kategorie löschen"
+
+#: code/settings/delivery/partials/delivery.php:18
+msgid "Delivery Areas"
+msgstr "Liefergebiete"
+
+#: code/settings/delivery/partials/delivery.php:2
+msgid "Delivery Settings"
+msgstr "Liefereinstellungen"
+
+#: code/settings/delivery/partials/delivery.php:33
+msgid "Delivery charge"
+msgstr "Zustellgebühr"
+
+#: code/bookingMenus/partials/booking-menus.php:17
+#: code/events/partials/events.php:16
+msgid "Description"
+msgstr "Beschreibung"
+
+#: code/kyc/partials/stream.php:78
+msgid "Discount"
+msgstr "Rabatt-Preis "
+
+#: code/settings/delivery/partials/delivery.php:48
+msgid "Discount offered for delivery orders (%)"
+msgstr "Rabbatangebot für Lieferbestellungen (%)"
+
+#: code/events/partials/modal-event.php:226
+msgid "Done"
+msgstr "Fertig"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.php:15
+#: code/events/js/directives/event/event.php:40
+msgid "Duplicate"
+msgstr "Verdoppeln"
+
+#: code/events/partials/modal-event.php:25
+msgid "Duration:"
+msgstr "Erstellen eines Angebots"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.php:16
+#: code/events/js/directives/event/event.php:39
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: code/accountSettings/partials/profile.php:23
+msgid "Email Address"
+msgstr "Adresse des Unternehmens"
+
+#: code/kyc/partials/customers.php:40
+msgid "Email address"
+msgstr "Adresse des Unternehmens"
+
+#: code/settings/delivery/partials/notifications.php:63
+msgid "Email address for receiving venue alerts"
+msgstr ""
+
+#: code/settings/delivery/partials/delivery.php:3
+msgid "Enable delivery services"
+msgstr "Lieferservice aktivieren"
+
+#: code/events/partials/events.php:19
+msgid "End Time"
+msgstr "Ende"
+
+#: code/bookingSettings/partials/booking-settings.php:13
+#, fuzzy
+msgid "Enter a name"
+msgstr "Veranstaltungen"
+
+#: code/events/partials/modal-event.php:130
+#: code/events/partials/modal-event.php:137
+msgid "Enter a name for the slot"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:23
+#: code/bookingSettings/partials/booking-settings.php:36
+#: code/events/partials/modal-event.php:32
+#: code/events/partials/modal-event.php:37
+#: code/events/partials/modal-event.php:42
+msgid "Enter a number"
+msgstr ""
+
+#: code/events/partials/modal-event.php:145
+#: code/events/partials/modal-event.php:155
+#: code/events/partials/modal-event.php:165
+#: code/events/partials/modal-event.php:176
+#: code/events/partials/modal-event.php:189
+#: code/events/partials/modal-event.php:200
+msgid "Enter minutes?"
+msgstr ""
+
+#: code/kyc/partials/events.php:25
+msgid "Event"
+msgstr "Veranstaltungen"
+
+#: code/events/partials/modal-event.php:14
+msgid "Event description:"
+msgstr "Beschreibung des Unternehmens"
+
+#: code/events/partials/modal-event.php:69
+msgid "Event first occurrence:"
+msgstr ""
+
+#: code/events/partials/modal-event.php:57
+msgid "Event frequency:"
+msgstr ""
+
+#: code/events/partials/modal-event.php:74
+msgid "Event last occurrence:"
+msgstr ""
+
+#: code/events/partials/modal-event.php:11
+msgid "Event name:"
+msgstr "Veranstaltungen"
+
+#: code/kyc/index.php:29 code/kyc/partials/events.php:8
+msgid "Events"
+msgstr "Veranstaltungen"
+
+#: code/kyc/index.php:81
+msgid "Events:"
+msgstr "Veranstaltungen"
+
+#: code/accountSettings/partials/payment.php:25
+msgid "Expires"
+msgstr ""
+
+#: code/kyc/js/directives/chart/chart.php:71
+#: code/kyc/partials/customers.php:89 code/kyc/partials/events.php:102
+#: code/kyc/partials/orders.php:118 code/kyc/partials/reports.php:116
+#: code/kyc/partials/stock.php:75
+msgid "Export as..."
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:5
+msgid "First Name"
+msgstr "Vorname"
+
+#: code/settings/delivery/partials/delivery.php:38
+msgid "Free delivery for orders above"
+msgstr "Freie Lieferung für Bestellungen über"
+
+#: code/booking/partials/booking.php:12
+msgid "Generate report"
+msgstr ""
+
+#: code/bookingMenus/partials/booking-menus.php:5
+msgid "Group Booking Menus"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:6
+#, fuzzy
+msgid "Group Booking Settings"
+msgstr "Unternehmens-Einstellungen"
+
+#: code/booking/partials/booking.php:25
+msgid "Guests"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:18
+#: code/events/js/directives/event/event.php:22
+#: code/events/partials/modal-event.php:20
+msgid "HH:MM"
+msgstr "SS:MM"
+
+#: code/events/js/controllers/modalController.js:53
+msgid "Half-Time"
+msgstr "Zeit?"
+
+#: code/events/partials/modal-event.php:35
+msgid "Hours"
+msgstr ""
+
+#: code/events/partials/modal-event.php:26
+msgid "How many days will your event occurs in days, hours and minutes?"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:18
+msgid ""
+"If a booking has outstanding orders, the event organiser will be sent a "
+"reminder"
+msgstr ""
+
+#: code/settings/delivery/partials/notifications.php:64
+msgid ""
+"In addition to the fulfilment app, you can also receive email updates to "
+"notify when you have received a new order"
+msgstr ""
+
+#: code/settings/delivery/partials/delivery.php:23
+msgid "In case of customer queries contact:"
+msgstr "Bei Kundenanfragen kontaktieren Sie:"
+
+#: code/events/js/controllers/modalController.js:45
+msgid "Interval"
+msgstr ""
+
+#: code/accountSettings/partials/billingHistory.php:10
+msgid "Inv no."
+msgstr ""
+
+#: code/kyc/partials/stock.php:26
+msgid "Item"
+msgstr "Nachname"
+
+#: code/kyc/partials/events.php:39 code/kyc/partials/orders.php:46
+msgid "Items"
+msgstr "Nachname"
+
+#: code/kyc/index.php:18
+msgid "Know your customers"
+msgstr "Neue Nutzer"
+
+#: code/accountSettings/partials/profile.php:14
+msgid "Last Name"
+msgstr "Nachname"
+
+#: code/kyc/partials/stream.php:7
+msgid "Live Stream"
+msgstr ""
+
+#: code/kyc/index.php:28
+msgid "Live stream"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:30
+msgid "Lock ordering page"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:28
+msgid "MM"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:29
+msgid "MONTHLY"
+msgstr ""
+
+#: code/kyc/partials/stock.php:8
+msgid "Menu items"
+msgstr "Angebote"
+
+#: code/kyc/index.php:24
+msgid "Metrics"
+msgstr ""
+
+#: code/settings/delivery/partials/delivery.php:28
+msgid "Minimum order value to qualify for delivery"
+msgstr "Erforderlicher Mindestbestellwert für Lieferung"
+
+#: code/events/partials/modal-event.php:40
+msgid "Minutes"
+msgstr "Dieser Monat"
+
+#: code/accountSettings/index.php:18
+msgid "My Account"
+msgstr "Ihr Konto"
+
+#: code/accountSettings/partials/subscription.php:40
+msgid "My Subscriptions"
+msgstr "Beschreibung"
+
+#: code/bookingMenus/partials/booking-menus.php:16
+#: code/events/partials/events.php:15 code/kyc/partials/customers.php:26
+msgid "Name"
+msgstr "Name"
+
+#: code/accountSettings/partials/payment.php:12
+msgid "Name on card"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:12
+msgid "New Password"
+msgstr "Neues Passwort"
+
+#: code/events/partials/modal-event.php:3
+msgid "New event"
+msgstr "Neue Veranstaltung hinzufügen"
+
+#: code/events/partials/modal-event.php:225
+msgid "Next"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:33
+#: code/settings/delivery/partials/delivery.php:6
+#: code/settings/delivery/partials/notifications.php:27
+#: code/settings/delivery/partials/notifications.php:52
+msgid "No"
+msgstr "Nein"
+
+#: code/kyc/js/directives/chart/chart.php:20
+msgid "No Data"
+msgstr ""
+
+#: code/booking/partials/booking.php:39
+msgid "No bookings at this period."
+msgstr ""
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:53
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:92
+#: code/events/js/directives/event/event.js:123
+#: code/events/js/directives/event/event.js:157
+msgid "No, go back."
+msgstr "Nein, zurück."
+
+#: code/events/js/controllers/modalController.js:26
+msgid "ONCE"
+msgstr ""
+
+#: code/accountSettings/partials/password.php:5
+msgid "Old Password"
+msgstr "Altes Passwort"
+
+#: code/kyc/partials/stream.php:35
+msgid "Order"
+msgstr "verspätete Bestellung"
+
+#: code/settings/delivery/partials/notifications.php:7
+msgid "Order Rejection Alerts"
+msgstr "Meldung über abgelehnte Bestellung "
+
+#: code/settings/delivery/partials/notifications.php:6
+msgid "Order Status Alerts"
+msgstr "Meldung über Bestellstatus"
+
+#: code/kyc/partials/events.php:46 code/kyc/partials/orders.php:60
+msgid "Order Total"
+msgstr "verspätete Bestellung"
+
+#: code/kyc/index.php:30 code/kyc/partials/orders.php:8
+msgid "Orders"
+msgstr "verspätete Bestellung"
+
+#: code/booking/partials/booking.php:27
+#, fuzzy
+msgid "Orders placed"
+msgstr "verspätete Bestellung"
+
+#: code/kyc/partials/orders.php:32
+msgid "Outlet"
+msgstr "Standorte"
+
+#: code/kyc/index.php:42
+msgid "Outlet Name:"
+msgstr "Standorte"
+
+#: code/events/partials/modal-event.php:46
+msgid "Outlet location:"
+msgstr "Standorte"
+
+#: code/kyc/js/directives/chart/chart.php:76
+#: code/kyc/partials/customers.php:94 code/kyc/partials/events.php:107
+#: code/kyc/partials/orders.php:123 code/kyc/partials/reports.php:121
+#: code/kyc/partials/stock.php:80
+msgid "PDF"
+msgstr ""
+
+#: code/booking/js/directives/booking-item-details/booking-item-details.php:21
+msgid "PRINT BOOKING"
+msgstr ""
+
+#: code/accountSettings/partials/profile.php:42
+msgid "Password"
+msgstr "Passwort"
+
+#: code/accountSettings/partials/payment.php:1
+msgid "Payment"
+msgstr "Zahlungsweise Hinzügen"
+
+#: code/accountSettings/index.php:22
+msgid "Payment Methods"
+msgstr "Zahlungsmethode"
+
+#: code/accountSettings/partials/subscription.php:48
+msgid "Please add a credit card to resubscribe"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:7
+msgid "Please add a payment method to keep your account active"
+msgstr ""
+
+#: code/events/partials/modal-event.php:136
+#: code/events/partials/modal-event.php:138
+msgid "Please choose a slot."
+msgstr "Bitte wählen Sie einen Zeitraum aus. "
+
+#: code/settings/delivery/partials/notifications.php:45
+msgid "Please enter a message and a short name or remove this notification."
+msgstr ""
+"Bitte eine Nachricht und eine Abkürzung eingeben oder diese Benachrichtigung "
+"löschen."
+
+#: code/settings/delivery/partials/delivery.php:30
+msgid "Please enter a valid number (e.g. 20.52)"
+msgstr "Bitte eine gültige Nummer eingeben (z.B. 20.52)"
+
+#: code/settings/delivery/partials/delivery.php:35
+#: code/settings/delivery/partials/delivery.php:40
+msgid "Please enter a valid number (e.g. 3.25)"
+msgstr "Bitte eine gültige Nummer eingeben (z.B. 3.25)"
+
+#: code/settings/delivery/partials/delivery.php:25
+msgid "Please enter a valid telephone number"
+msgstr "Bitte geben Sie eine gültige Telefonnummer ein "
+
+#: code/settings/delivery/partials/delivery.php:45
+msgid "Please enter a valid time interval in minutes (e.g. 20)"
+msgstr "Bitte gültigen Zeitraum in Minuten eingeben (z.B. 20)"
+
+#: code/settings/delivery/partials/notifications.php:20
+msgid "Please enter both the notification and a short name."
+msgstr "Bitte Benachrichtigung und Abkürzung eingeben"
+
+#: code/settings/delivery/partials/delivery.php:50
+msgid "Please provide a discount percentage (between 0 and 100)"
+msgstr "Bitte geben Sie den Prozentsatz für Rabatt an (zwischen 0 und 100)"
+
+#: code/settings/delivery/partials/delivery.php:20
+msgid "Please type a delivery zone (max 200chars)"
+msgstr "Bitte geben ein Liefergebiet ein (max. 200 Zeichen). "
+
+#: code/events/js/directives/event/event.php:11
+msgid "Please type a description (max 250chars)"
+msgstr "Bitte geben Sie eine Beschreibung ein (max. 250 Zeichen)."
+
+#: code/accountSettings/partials/profile.php:27
+msgid "Please type a valid email address"
+msgstr "Bitte geben Sie eine gültige E-Mail Adresse ein"
+
+#: code/events/partials/modal-event.php:13
+msgid "Please type an event name (max 100 chars)"
+msgstr "Bitte geben Sie den Veranstaltungsnamen an (max 100 Zeichen)"
+
+#: code/events/js/directives/event/event.php:7
+msgid "Please type an event name (max 100chars)"
+msgstr "Bitte geben Sie den Veranstaltungsnamen an (max 100 Zeichen)"
+
+#: code/accountSettings/partials/profile.php:36
+msgid "Please type your account name.(max 100chars)"
+msgstr "Bitte geben Sie Ihren Nachnamen ein (max. 100 Zeichen). "
+
+#: code/accountSettings/partials/profile.php:9
+msgid "Please type your first name.(max 100chars)"
+msgstr "Bitte geben Sie Ihren Vornamen ein (max. 100 Zeichen). "
+
+#: code/accountSettings/partials/profile.php:18
+msgid "Please type your last name.(max 100chars)"
+msgstr "Bitte geben Sie Ihren Nachnamen ein (max. 100 Zeichen). "
+
+#: code/accountSettings/partials/subscription.php:13
+msgid "Please update your card details within"
+msgstr "Bitte geben Sie Ihre E-Mail ein"
+
+#: code/booking/js/controllers/booking.js:156
+#: code/bookingMenus/js/controllers/menus.js:92
+msgid "Please, setup the group booking settings first."
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:61
+msgid "Post-Game"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:57
+msgid "Post-Show"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:44
+msgid "Postcode"
+msgstr "Postleitzahl des Unternehmens"
+
+#: code/events/js/controllers/modalController.js:41
+msgid "Pre-Game"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:37
+msgid "Pre-Show"
+msgstr ""
+
+#: code/settings/delivery/partials/notifications.php:2
+msgid "Preset Notifications"
+msgstr "Benachrichtigungen"
+
+#: code/settings/delivery/partials/notifications.php:13
+msgid "Preset customer notifications, sent by email and push alert"
+msgstr ""
+"Voreingestellte Benachrichtigungen für Kunden per E-Mail und Push Meldung "
+"versendet"
+
+#: code/settings/delivery/partials/notifications.php:37
+msgid "Preset order rejection notifications, sent by email and push alert"
+msgstr ""
+"Voreingestellte Benachrichtigungen bei abgelehnten Bestellungen per E-Mail "
+"und Push Mitteilung versendet"
+
+#: code/events/partials/modal-event.php:224
+msgid "Previous"
+msgstr ""
+
+#: code/accountSettings/index.php:25
+#: code/accountSettings/partials/password.php:1
+#: code/accountSettings/partials/profile.php:1
+msgid "Profile"
+msgstr "Profil"
+
+#: code/booking/partials/booking.php:24
+msgid "Promotion"
+msgstr ""
+
+#: code/kyc/partials/stock.php:33
+msgid "Quantity Ordered"
+msgstr "Menge"
+
+#: code/accountSettings/partials/subscription.php:55
+#: code/accountSettings/partials/subscription.php:56
+msgid "RESUBSCRIBE"
+msgstr ""
+
+#: code/kyc/index.php:54 code/kyc/index.php:73 code/kyc/index.php:94
+msgid "Refresh"
+msgstr ""
+
+#: code/kyc/index.php:27
+msgid "Reports"
+msgstr "Meldung über abgelehnte Bestellung "
+
+#: code/bookingSettings/partials/booking-settings.php:9
+msgid "Restaurant Name"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:49
+#: code/accountSettings/partials/profile.php:49
+msgid "SAVE"
+msgstr "SPEICHERN"
+
+#: code/accountSettings/partials/password.php:25
+#: code/settings/delivery/partials/delivery.php:58
+#: code/settings/delivery/partials/notifications.php:76
+msgid "SAVE CHANGES"
+msgstr "ÄNDERUNGEN SPEICHERN"
+
+#: code/accountSettings/partials/password.php:27
+#: code/accountSettings/partials/payment.php:50
+#: code/accountSettings/partials/profile.php:50
+#: code/settings/delivery/partials/delivery.php:59
+#: code/settings/delivery/partials/notifications.php:77
+msgid "SAVING..."
+msgstr "SPEICHERN..."
+
+#: code/bookingSettings/partials/booking-settings.php:42
+#, fuzzy
+msgid "Save changes"
+msgstr "Datum?"
+
+#: code/events/partials/modal-event.php:55
+msgid "Schedule"
+msgstr "Adresse des Unternehmens"
+
+#: code/events/js/controllers/modalController.js:49
+msgid "Second-Interval"
+msgstr "Abholzeitraum: Zweite Pause"
+
+#: code/events/partials/modal-event.php:80
+msgid "Select the days on the calendar below."
+msgstr ""
+
+#: code/kyc/partials/customers.php:110 code/kyc/partials/events.php:123
+#: code/kyc/partials/orders.php:139 code/kyc/partials/reports.php:137
+#: code/kyc/partials/stock.php:96
+msgid "Selected"
+msgstr "Auswahl Angebot"
+
+#: code/settings/delivery/partials/notifications.php:14
+#: code/settings/delivery/partials/notifications.php:38
+msgid "Short name"
+msgstr "Abkürzung"
+
+#: code/events/partials/modal-event.php:132
+msgid "Slot name"
+msgstr "Abkürzung"
+
+#: code/booking/js/controllers/booking.js:122
+#: code/bookingMenus/js/controllers/menus.js:36
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:46
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:84
+#: code/bookingSettings/js/controllers/bookingSettings.js:88
+#: code/events/js/directives/event/event.js:150
+msgid "Sorry, but there's been an error processing your request."
+msgstr ""
+"Es ist leider ein Fehler bei der Bearbeitung Ihres Auftrags aufgetreten!"
+
+#: code/events/partials/events.php:17
+msgid "Start Date"
+msgstr "Datum"
+
+#: code/events/partials/events.php:18
+msgid "Start Time"
+msgstr "Anfang"
+
+#: code/events/partials/modal-event.php:19
+msgid "Start time:"
+msgstr "Anfang"
+
+#: code/accountSettings/partials/billingHistory.php:12
+#: code/kyc/partials/stream.php:14
+msgid "Status"
+msgstr ""
+
+#: code/kyc/index.php:25
+msgid "Stock"
+msgstr ""
+
+#: code/accountSettings/index.php:21
+#: code/accountSettings/partials/billingHistory.php:1
+#: code/accountSettings/partials/subscription.php:1
+msgid "Subscriptions"
+msgstr "Beschreibung"
+
+#: code/kyc/partials/stream.php:82
+msgid "TOTAL"
+msgstr ""
+
+#: code/bookingSettings/partials/booking-settings.php:31
+msgid "The event organiser can change their orders up until this time"
+msgstr ""
+
+#: code/events/partials/events.php:6
+msgid ""
+"These show when you are open for ordering, such as performances or matches. "
+"They can be viewed from the front page of your app"
+msgstr ""
+"Diese werden angezeigt, wenn Sie bereit sind Bestellungen aufzunehmen, wie z."
+"B bei Aufführungen oder Spielen. Sie sind auf der Startseite Ihrer App zu "
+"sehen. "
+
+#: code/events/partials/modal-event.php:186
+msgid "This slot is available up until"
+msgstr ""
+
+#: code/events/partials/modal-event.php:142
+msgid "This slot starts"
+msgstr ""
+
+#: code/booking/partials/booking.php:22 code/kyc/partials/stream.php:42
+msgid "Time"
+msgstr "Zeit?"
+
+#: code/events/js/directives/event/event.php:19
+#: code/events/js/directives/event/event.php:23
+#: code/events/partials/modal-event.php:21
+#: code/events/partials/modal-event.php:31
+#: code/events/partials/modal-event.php:36
+#: code/events/partials/modal-event.php:41
+msgid "Time?"
+msgstr "Zeit?"
+
+#: code/bookingMenus/partials/booking-menus.php:19
+#: code/events/partials/events.php:21
+msgid "Tools"
+msgstr "Tools"
+
+#: code/kyc/partials/stream.php:21
+msgid "Total"
+msgstr "verspätete Bestellung"
+
+#: code/kyc/partials/customers.php:33
+msgid "Total Spent"
+msgstr "Gesamtumsatz"
+
+#: code/accountSettings/partials/payment.php:42
+msgid "Town/City"
+msgstr "Stadt"
+
+#: code/accountSettings/partials/subscription.php:51
+msgid "UPGRADE"
+msgstr ""
+
+#: code/settings/delivery/partials/notifications.php:8
+msgid "Venue Alerts"
+msgstr "Unternehmensname"
+
+#: code/events/partials/events.php:20
+msgid "Visible?"
+msgstr "Sichtbar?"
+
+#: code/events/js/controllers/modalController.js:28
+msgid "WEEKLY"
+msgstr ""
+
+#: code/events/partials/modal-event.php:29
+msgid "What's your event duration?"
+msgstr "Tage, an denen Ihr Unternehmen geöffnet hat"
+
+#: code/events/js/controllers/modalController.js:30
+msgid "YEARLY"
+msgstr ""
+
+#: code/accountSettings/partials/payment.php:29
+msgid "YY"
+msgstr ""
+
+#: code/events/js/directives/event/event.php:30
+#: code/settings/delivery/partials/delivery.php:8
+#: code/settings/delivery/partials/notifications.php:29
+#: code/settings/delivery/partials/notifications.php:54
+msgid "Yes"
+msgstr "Ja"
+
+#: code/events/js/directives/event/event.js:116
+#: code/events/js/directives/event/event.js:137
+msgid "Yes, delete this event!"
+msgstr "Ja, diese Veranstaltung löschen!"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:71
+msgid "Yes, delete this menu!"
+msgstr "Ja, dieses Angebot löschen!"
+
+#: code/bookingMenus/js/directives/menus-item/menus-item.js:29
+#, fuzzy
+msgid "Yes, duplicate this menu!"
+msgstr "Ja, dieses Angebot löschen!"
+
+#: code/accountSettings/partials/subscription.php:44
+msgid "You are currently subscribed to the"
+msgstr "Ihre App ist zurzeit im "
+
+#: code/accountSettings/partials/subscription.php:12
+msgid "You have an outstanding payment!"
+msgstr "Zahlungsmethode"
+
+#: code/accountSettings/partials/subscription.php:19
+msgid ""
+"You have no active subscriptions, your account will not be billed at this "
+"time."
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:17
+msgid "Your account will be billed"
+msgstr "Ihr Konto"
+
+#: code/accountSettings/partials/subscription.php:18
+msgid "Your account will be deactivated on"
+msgstr "Ihr Konto"
+
+#: code/events/partials/events.php:6
+msgid "Your events"
+msgstr "Ihre Veranstaltungen"
+
+#: code/accountSettings/partials/subscription.php:45
+msgid "Your free trial of this subscription will end at midnight on"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:48
+msgid "Your subscription has been cancelled"
+msgstr "Angebot-Konfigurationen wurden gespeichert!"
+
+#: code/events/js/controllers/modalController.js:72
+msgid "after"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:73
+msgid "before"
+msgstr ""
+
+#: code/events/partials/modal-event.php:172
+msgid "broken down in steps"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:13
+msgid "days to prevent your account from being deactivated."
+msgstr "Ihr Konto"
+
+#: code/settings/delivery/partials/delivery.php:19
+msgid "eg. \\\"NW1, NW2...\\\""
+msgstr "z.B. \"NW1, NW2...\""
+
+#: code/events/js/controllers/modalController.js:74
+msgid "is"
+msgstr ""
+
+#: code/events/js/controllers/modalController.js:75
+msgid "is not"
+msgstr ""
+
+#: code/events/partials/modal-event.php:147
+#: code/events/partials/modal-event.php:157
+#: code/events/partials/modal-event.php:178
+#: code/events/partials/modal-event.php:191
+#: code/events/partials/modal-event.php:202
+msgid "minutes"
+msgstr "Dieser Monat"
+
+#: code/events/partials/modal-event.php:167
+msgid "minutes and it"
+msgstr "Dieser Monat"
+
+#: code/booking/js/directives/booking-item/booking-item.php:25
+#: code/events/partials/modal-event.php:173
+msgid "of"
+msgstr ""
+
+#: code/accountSettings/partials/subscription.php:44
+msgid "package"
+msgstr ""
+
+#: code/events/partials/modal-event.php:196
+msgid "the event start time"
+msgstr ""
+
+#: code/events/partials/modal-event.php:162
+msgid "the event start time with a lead time of"
+msgstr ""
+
+#: code/events/partials/modal-event.php:152
+msgid "the event start time, it ends"
+msgstr ""
+
+#: code/kyc/index.php:66
+msgid "to"
+msgstr ""
+
+#: code/events/partials/modal-event.php:197
+msgid "with a lead time of"
+msgstr ""
+
+#~ msgid "SAVING...\""
+#~ msgstr "SPEICHERN..."
+
+#~ msgid "All Locations\")?>"
+#~ msgstr "Alle Kategorien"
+
+#~ msgid "SAVE CHANGES>"
+#~ msgstr "ÄNDERUNGEN SPEICHERN"
+
+#~ msgid "SAVING...>"
+#~ msgstr "SPEICHERN..."
+
+#~ msgid "Please type your password"
+#~ msgstr "Bitte geben Sie Ihr Passwort ein"
+
+#~ msgid "Sign in"
+#~ msgstr "Anmelden"
+
+#~ msgid "I forgot my password"
+#~ msgstr "Haben Sie Ihr Passwort vergessen?"
+
+#~ msgid "Whoops!"
+#~ msgstr "Hoppla!"
+
+#~ msgid "We can't find the page you're looking for."
+#~ msgstr "Die Seite, die Sie suchen kann nicht gefunden werden."
+
+#~ msgid "Please check out the"
+#~ msgstr "Bitte gehen Sie zur"
+
+#~ msgid "help section"
+#~ msgstr "Hilfe"
+
+#~ msgid "or return to the"
+#~ msgstr "oder kehren Sie zurück zum"
+
+#~ msgid "Dashboard"
+#~ msgstr "Dashboard"
+
+#~ msgid "An email address is required."
+#~ msgstr "Eine E-Mail Adresse wird benötigt."
+
+#~ msgid "Reset my password"
+#~ msgstr "Passwort zurücksetzen?"
+
+#~ msgid "Sign up with "
+#~ msgstr "Anmelden"
+
+#~ msgid "Basic information"
+#~ msgstr "Unternehmensprofil"
+
+#~ msgid "First name"
+#~ msgstr "Vorname"
+
+#~ msgid "Please type your first name"
+#~ msgstr "Bitte geben Sie Ihren Vornamen ein (max. 100 Zeichen). "
+
+#~ msgid "Surname"
+#~ msgstr "Abkürzung"
+
+#~ msgid "Please type your surname"
+#~ msgstr "Bitte geben Sie Ihre E-Mail ein"
+
+#~ msgid "Create your "
+#~ msgstr "oder erstellen Sie ihren eigenen..."
+
+#~ msgid " account"
+#~ msgstr "Ihr Konto"
+
+#~ msgid "Please type your email"
+#~ msgstr "Bitte geben Sie Ihre E-Mail ein"
+
+#~ msgid "Billing information"
+#~ msgstr "Unternehmensprofil"
+
+#~ msgid "Transaction Details"
+#~ msgstr "Beschreibung"
+
+#~ msgid "Please type your card number"
+#~ msgstr "Bitte geben Sie Ihre Telefonnummer ein. "
+
+#~ msgid "Please type the name in your card"
+#~ msgstr "Bitte geben Sie Ihr Passwort ein"
+
+#~ msgid "Please type your month/year"
+#~ msgstr "Bitte geben Sie Ihre E-Mail ein"
+
+#~ msgid "Please type your security code"
+#~ msgstr "Bitte geben Sie Ihre E-Mail ein"
+
+#~ msgid "Please type your postcode"
+#~ msgstr "Bitte geben Sie Ihr Passwort ein"
+
+#~ msgid "and"
+#~ msgstr "und"
+
+#~ msgid "privacy policy"
+#~ msgstr "Datenschutzrichtlinien zu."
+
+#~ msgid "Start using my "
+#~ msgstr "Anfang"
+
+#~ msgid "Menu"
+#~ msgstr "Angebot"
+
+#~ msgid "Sign Up"
+#~ msgstr "Anmelden"
+
+#~ msgid "Login"
+#~ msgstr "Login"
+
+#~ msgid "Go to Dashboard"
+#~ msgstr "Dashboard"
+
+#~ msgid "Order Screen"
+#~ msgstr "Startansicht"
+
+#~ msgid "Venue Settings"
+#~ msgstr "Unternehmens-Einstellungen"
+
+#~ msgid "Change Settings"
+#~ msgstr "Einstellungen Ändern"
+
+#~ msgid "Opening Hours"
+#~ msgstr "Öffnungszeiten"
+
+#~ msgid "Styling"
+#~ msgstr "Design"
+
+#~ msgid "Home Screen"
+#~ msgstr "Startansicht"
+
+#~ msgid "Menu Screen"
+#~ msgstr "Angebots-Ansicht "
+
+#~ msgid "Menus"
+#~ msgstr "Angebote"
+
+#~ msgid "Meal Deals"
+#~ msgstr "Angebote"
+
+#~ msgid "No menus"
+#~ msgstr "Keine Angebote"
+
+#~ msgid "Update Events"
+#~ msgstr "Veranstaltungen aktualisieren"
+
+#~ msgid "Advanced Settings"
+#~ msgstr "Erweiterte Einstellungen"
+
+#~ msgid "Manage Users"
+#~ msgstr "Nutzer Verwalten"
+
+#~ msgid "Payment Method"
+#~ msgstr "Zahlungsmethode"
+
+#~ msgid "Change my app mode"
+#~ msgstr "App-Modus Ã¤ndern "
+
+#~ msgid "Logout"
+#~ msgstr "Logout"
+
+#~ msgid "Help"
+#~ msgstr "Hilfe"
+
+#~ msgid "Getting Started"
+#~ msgstr "Erste Schritte"
+
+#~ msgid "Editing your Menu"
+#~ msgstr "Erstellen Sie Ihr Angebot"
+
+#~ msgid "Getting started"
+#~ msgstr "Erste Schritte"
+
+#~ msgid "First Name is required (max 100chars)"
+#~ msgstr "Der Vorname wird benötigt (max. 100 Zeichen)"
+
+#~ msgid "Last Name is required (max 100chars)"
+#~ msgstr "Der Nachname wird benötigt (max. 100 Zeichen)"
+
+#~ msgid "Email"
+#~ msgstr "E-Mail"
+
+#~ msgid "An email address is required"
+#~ msgstr "Eine E-Mail Adresse wird benötigt"
+
+#~ msgid "A business name is required (max 100chars)"
+#~ msgstr "Ein Geschäftsname wird benötigt (max. 100 Zeichen)"
+
+#~ msgid "Notifications"
+#~ msgstr "Benachrichtigungen"
+
+#~ msgid "Off"
+#~ msgstr "Aus"
+
+#~ msgid "On"
+#~ msgstr "An"
+
+#~ msgid "Change password?"
+#~ msgstr "Passwort Ãndern?"
+
+#~ msgid "A password address is required."
+#~ msgstr "Eine E-Mail Adresse ist erforderlich. "
+
+#~ msgid "Confirm New Password"
+#~ msgstr "Neues Passwort bestätigen"
+
+#~ msgid "Passwords don't match."
+#~ msgstr "Passwörter stimmen nicht Überein"
+
+#~ msgid "Venue Information"
+#~ msgstr "Unternehmensprofil"
+
+#~ msgid "App Styling 1/2"
+#~ msgstr "App-Gestaltung 1/2"
+
+#~ msgid "App Styling 2/2"
+#~ msgstr "App-Gestaltung 2/2"
+
+#~ msgid "Add a Payment"
+#~ msgstr "Zahlungsweise Hinzufügen"
+
+#~ msgid "Style your app"
+#~ msgstr "Gestalten Sie Ihre App"
+
+#~ msgid "This is where you can brand your menu page"
+#~ msgstr "Hier können Sie Ihre Angebotsseite mit Ihrem Logo gestalten"
+
+#~ msgid "Add a short venue title"
+#~ msgstr "Fügen Sie eine Abkürzung Ihres Unternehmensnamen hinzu"
+
+#~ msgid ""
+#~ "This is a shorter version of your venue name that will be visible over "
+#~ "your menu."
+#~ msgstr ""
+#~ "Dies soll eine Abkürzung Ihres eigentlichen Unternehmensnamens sein und "
+#~ "wird über Ihrem Angebot angezeigt."
+
+#~ msgid "Please type a venue title <br/>(max 22chars)"
+#~ msgstr "Bitte geben Sie einen Unternehmensnamen ein (max. 22 Zeichen)."
+
+#~ msgid "BASKET"
+#~ msgstr "WARENKORB"
+
+#~ msgid "Colour scheme"
+#~ msgstr "Farbgebung"
+
+#~ msgid "Colour one"
+#~ msgstr "Farbe 1"
+
+#~ msgid ""
+#~ "This colour is used across section progress buttons and as a highlight "
+#~ "colour."
+#~ msgstr ""
+#~ "Diese Farbe ist für die Weiter-Buttons der jeweiligen Abschnitte und "
+#~ "dient dem Hervorheben. "
+
+#~ msgid "Button one colour"
+#~ msgstr "Button 1 Farbe "
+
+#~ msgid "Enter Hex Colour Code or click to choose your colour."
+#~ msgstr ""
+#~ "Geben Sie den Hex-Farbcode ein oder klicken Sie um Ihre Farbe auszuwählen"
+
+#~ msgid "Button text colour"
+#~ msgstr "Button Schriftfarbe"
+
+#~ msgid ""
+#~ "This colour is used across item select buttons and as a highlight colour."
+#~ msgstr ""
+#~ "Geben Sie den Hex-Farbcode ein oder klicken Sie um Ihre Farbe auszuwählen."
+
+#~ msgid "Button two colour"
+#~ msgstr "Button 2 Farbe"
+
+#~ msgid "40&#37 done, a couple more design touches..."
+#~ msgstr "40&#37 erledigt, noch ein paar Design-Feinheiten..."
+
+#~ msgid "User management"
+#~ msgstr "Nutzerverwaltung"
+
+#~ msgid "Add a new user"
+#~ msgstr "Neue Nutzer hinzufügen "
+
+#~ msgid "Role"
+#~ msgstr "Funktion"
+
+#~ msgid "This decides the level of access of your users."
+#~ msgstr "Die Funktion entscheidet über die Zugangsberechtigung des Nutzers"
+
+#~ msgid "Add a user name"
+#~ msgstr "Nutzername hinzufügen"
+
+#~ msgid "Please type a user name (max 200chars)"
+#~ msgstr "Bitte geben einen Nutzernamen ein (max. 200 Zeichen). "
+
+#~ msgid "Add an email"
+#~ msgstr "E-Mail hinzufügen"
+
+#~ msgid "Please type an email"
+#~ msgstr "Bitte geben Sie eine E-Mail Adresse ein"
+
+#~ msgid "Staff: can only read account"
+#~ msgstr "Mitarbeiter: kann Konto nur lesen"
+
+#~ msgid "Staff"
+#~ msgstr "Mitarbeiter"
+
+#~ msgid "Admin: can read/write account but cannot close it down"
+#~ msgstr "Administrator: kann Konto lesen/bearbeiten und schließen"
+
+#~ msgid "Admin"
+#~ msgstr "Administrator"
+
+#~ msgid "Owner: can read/write account and close it down"
+#~ msgstr "Inhaber: kann Konto lesen/bearbeiten und schließen"
+
+#~ msgid "Owner"
+#~ msgstr "Inhaber"
+
+#~ msgid "Assign a password"
+#~ msgstr "Passwort vergeben"
+
+#~ msgid "Provide a Password"
+#~ msgstr "Passwort angeben"
+
+#~ msgid "Confirm Password"
+#~ msgstr "Passwort bestätigen"
+
+#~ msgid "Confirm password"
+#~ msgstr "Passwort bestätigen"
+
+#~ msgid "Passwords don't match"
+#~ msgstr "Passwörter stimmen nicht überein"
+
+#~ msgid "Collection Slot: Half-time"
+#~ msgstr "Abholzeitraum: Halbzeit"
+
+#~ msgid "Lead Time (mins)"
+#~ msgstr "Lieferzeit (min)"
+
+#~ msgid "30"
+#~ msgstr "30"
+
+#~ msgid "eg. 30"
+#~ msgstr "z.B. 30"
+
+#~ msgid "75&#37 done, almost there now..."
+#~ msgstr "75&#37 geschafft, fast fertig..."
+
+#~ msgid "This is the first screen that your customers will see."
+#~ msgstr "Dies wird die erste Display-Seite, die Ihre Kunden sehen werden."
+
+#~ msgid "Create a main heading"
+#~ msgstr "Erstellen Sie den Haupttitel"
+
+#~ msgid "Choose one here"
+#~ msgstr "Wählen Sie hier"
+
+#~ msgid "Leave the 4 deep queue to everyone else and pre-order."
+#~ msgstr "Lassen Sie Andere warten und bestellen Sie vor"
+
+#~ msgid "Don't miss the game, jump the long queue and pre-order."
+#~ msgstr "Kein Spiel verpassen wegen Warteschlangen; einfach vorbestellen!"
+
+#~ msgid "Intermission pre-order."
+#~ msgstr "In der Pause vorbestellen."
+
+#~ msgid "A sparkling fruity alternative to queuing."
+#~ msgstr "Die fruchtig-frische Alternative zum faden Anstellen."
+
+#~ msgid "Go on, jump the crazy queue and pre-order."
+#~ msgstr "Los gehts, lass das Warten und bestelle einfach vor."
+
+#~ msgid "Don't miss the game! Order online and skip the half-time rush"
+#~ msgstr ""
+#~ "Das Spiel genießen! Online-Bestellen und den Halbzeit-Ansturm meiden."
+
+#~ msgid "Order interval drinks before the show starts"
+#~ msgstr "Bestellen Sie GetrÃ¤nke zur Pause, noch vor Showbeginn."
+
+#~ msgid "Stay with friends while the bar prepares your round"
+#~ msgstr ""
+#~ "Bleib bei deinen Freunden, während an der Bar die nächste Runde "
+#~ "vorbereitet wird."
+
+#~ msgid "Order your coffee and croissant from your table, or from the train."
+#~ msgstr "Bestellen Sie Kaffee und Croissant vom Sitzplatz aus"
+
+#~ msgid "or create your own..."
+#~ msgstr "oder erstellen Sie ihren eigenen..."
+
+#~ msgid "maximum 70 characters"
+#~ msgstr "max. 70 Zeichen"
+
+#~ msgid "Create a subheading"
+#~ msgstr "Erstellen Sie einen Untertitel"
+
+#~ msgid "Pre-order food and drinks"
+#~ msgstr "Vorbestellen Essen & Getränke"
+
+#~ msgid "Pre-order drinks+food"
+#~ msgstr "Vorbestellung Speisen+Getränke"
+
+#~ msgid "maximum 30 characters"
+#~ msgstr "max. 30 Zeichen"
+
+#~ msgid "Text colour"
+#~ msgstr "Schriftfarbe"
+
+#~ msgid "ORDER NOW button"
+#~ msgstr "JETZT BESTELLEN button"
+
+#~ msgid "Button colour"
+#~ msgstr "Button Farbe"
+
+#~ msgid "ORDER NOW"
+#~ msgstr "Jetzt Bestellen"
+
+#~ msgid "Select a home-screen background"
+#~ msgstr "Wählen Sie den Hintergrund für die Startansicht"
+
+#~ msgid "UPLOAD YOUR OWN BACKGROUND"
+#~ msgstr "Eigenen Hintergrund hochladen"
+
+#~ msgid "Custom Background Upload"
+#~ msgstr "Benutzerdefinierten Hintergrund hochladen"
+
+#~ msgid "UPLOAD"
+#~ msgstr "HOCHLADEN"
+
+#~ msgid "RESET"
+#~ msgstr "ZURÜCKSETZEN"
+
+#~ msgid "Supported types: JPG"
+#~ msgstr "Unterstütze Formate: JPG"
+
+#~ msgid "Max file size: 10MB"
+#~ msgstr "Maximale Dateigröße: 10MB"
+
+#~ msgid "Dimensions: 1080x1920"
+#~ msgstr "Größe: 1080x1920"
+
+#~ msgid "UPLOAD YOUR OWN LOGO"
+#~ msgstr "Eigenes Logo hochladen"
+
+#~ msgid "Logo Upload"
+#~ msgstr "Logo Hochladen"
+
+#~ msgid "Note: This will replace your main heading."
+#~ msgstr "Hinweis: das wird Ihre Hauptüberschrift ersetzen."
+
+#~ msgid "Supported types: PNG"
+#~ msgstr "Unterstützte Formate: PNG"
+
+#~ msgid "Dimensions: 100x75"
+#~ msgstr "Größe: 100x75"
+
+#~ msgid "30&#37 done, time for the artistic bit..."
+#~ msgstr "30&#37 geschafft, Zeit für den künstlerischen Teil..."
+
+#~ msgid "Don't forget to get paid"
+#~ msgstr "Vergessen Sie Ihre Bezahlung nicht"
+
+#~ msgid "CONNECT TO STRIPE"
+#~ msgstr "MIT STRIPE VERBINDEN"
+
+#~ msgid "SKIP THIS FOR NOW"
+#~ msgstr "ÜBERSPRINGEN"
+
+#~ msgid "85&#37 done, we've saved the best for last!"
+#~ msgstr "85&#37 geschafft, das Beste kommt zum Schluss!"
+
+#~ msgid "Tell us about your opening times"
+#~ msgstr "Informieren Sie uns über Ihre Öffnungszeiten."
+
+#~ msgid "Mon"
+#~ msgstr "Mo"
+
+#~ msgid "Tue"
+#~ msgstr "Di"
+
+#~ msgid "Wed"
+#~ msgstr "Mi"
+
+#~ msgid "Thu"
+#~ msgstr "Do"
+
+#~ msgid "Fri"
+#~ msgstr "Fr"
+
+#~ msgid "Sat"
+#~ msgstr "Sa"
+
+#~ msgid "Sun"
+#~ msgstr "So"
+
+#~ msgid "Add another opening hour"
+#~ msgstr "Weitere Öffnungszeiten hinzufügen"
+
+#~ msgid "eg: if you close for lunch and reopen in the evening."
+#~ msgstr ""
+#~ "z.B. wenn Sie in der Mittagszeit schließen und abends wieder öffnen. "
+
+#~ msgid "Open "
+#~ msgstr "Geöffnet um"
+
+#~ msgid ""
+#~ "Let us know if your venue is open for delivery, open for pickup, open for "
+#~ "both or if you are closed today."
+#~ msgstr ""
+#~ "Teilen Sie uns mit, ob Ihr Geschäft heute für Lieferung geöffnet ist, für "
+#~ "Abholungen geöffnet ist, für beides geöffnet ist oder ob Sie heute "
+#~ "geschlossen haben. "
+
+#~ msgid "For delivery and collection"
+#~ msgstr "Für Lieferung und Abholung"
+
+#~ msgid "For delivery only"
+#~ msgstr "Nur für Lieferung"
+
+#~ msgid "For collection only"
+#~ msgstr "Abholzeitraum auswählen"
+
+#~ msgid "Closed Today"
+#~ msgstr "Geschlossen um "
+
+#~ msgid "Opens at"
+#~ msgstr "Geöffnet um"
+
+#~ msgid "Closes at"
+#~ msgstr "Geschlossen um "
+
+#~ msgid "Remove opening hour"
+#~ msgstr "Öffnungszeit entfernen"
+
+#~ msgid "Apply these times to all days"
+#~ msgstr "Diese Zeiten allen Tagen hinzufügen"
+
+#~ msgid "Tell us about your venue"
+#~ msgstr "Erzählen Sie uns über Ihr Unternehmen"
+
+#~ msgid "Venue name"
+#~ msgstr "Unternehmens-Name "
+
+#~ msgid "Please type a venue name (max 100chars)"
+#~ msgstr "Bitte geben Sie den Namen des Unternehmens an (max 100 Zeichen)"
+
+#~ msgid ""
+#~ "Please enter a short description about your venue.<br/><br/>This will not "
+#~ "appear on your branded app."
+#~ msgstr ""
+#~ "Bitte geben Sie eine kurze Beschreibung Ihres Unternehmens ein.<br/><br/"
+#~ ">Diese wird nicht auf ihrer Unternehmens-App erscheinen"
+
+#~ msgid "Please type a venue description (max 250chars)"
+#~ msgstr "Bitte geben Sie eine Unternehmensbeschreibung ein (max 250 Zeichen)"
+
+#~ msgid "What type of venue are you?"
+#~ msgstr "Was für ein Unternehmen sind Sie?"
+
+#~ msgid "Restaurant (Cafe, Sandwich Bar, Restaurant, etc)"
+#~ msgstr "Gastronomiegewerbe (Café, Sandwich Bar, Restaurant, etc)"
+
+#~ msgid "Sports Arena"
+#~ msgstr "Sportarena"
+
+#~ msgid "Bars, Pubs and Clubs"
+#~ msgstr "Bars, Pubs und Clubs"
+
+#~ msgid "Workplace/Education Catering"
+#~ msgstr "Catering für Betriebe/Bildungseinrichtungen"
+
+#~ msgid "Music and Cultural"
+#~ msgstr "Musik und Kultur"
+
+#~ msgid "Are you primarily an events based business?"
+#~ msgstr "Sind Sie hauptsächlich auf Veranstaltungen spezialisiert"
+
+#~ msgid ""
+#~ "Does your business revolve around regular events, e.g. football matches, "
+#~ "performances, etc?"
+#~ msgstr ""
+#~ "Beschäftigt sich Ihr Unternehmen regelmäßig mit Veranstaltungen,wie "
+#~ "Füßballspiele, Aufführungen, etc.?"
+
+#~ msgid "Collection Slot Duration (mins)"
+#~ msgstr "Abholzeitraum Dauer (Minuten)"
+
+#~ msgid ""
+#~ "This is the number of minutes after opening time and before closing time "
+#~ "when customers are allowed to collect orders."
+#~ msgstr ""
+#~ "Das ist die Minutenanzahl nach und vor dem Zeitpunkt, an dem Kunden ihre "
+#~ "Bestellungen abholen dürfen. "
+
+#~ msgid "eg: 30"
+#~ msgstr "z.B.: 30"
+
+#~ msgid "Please provide a duration in mins"
+#~ msgstr "Bitte geben Sie eine Dauer in Minuten an"
+
+#~ msgid "Default preparation time for collection orders (mins)"
+#~ msgstr "Verzögerte Vorbereitungszeit für Abholbestellungen (in Min.)"
+
+#~ msgid ""
+#~ "The time it takes to prepare your order before the customer can pick it "
+#~ "up."
+#~ msgstr ""
+#~ "Die benötigte Zeit für die Vorbereitung der Bestellung, bevor der Kunde "
+#~ "sie abholen darf. "
+
+#~ msgid "e.g. 25"
+#~ msgstr "z.B. 25"
+
+#~ msgid "Please provide a lead time"
+#~ msgstr "Bitte geben Sie eine Lieferzeit an"
+
+#~ msgid "Discount offered for collection orders (%)"
+#~ msgstr "Rabattangebot für Abholbestellungen (in %) "
+
+#~ msgid "e.g. 10"
+#~ msgstr "z.B. 25"
+
+#~ msgid "Minimum value for orders"
+#~ msgstr "Mindestbestellwert für Bestellungen "
+
+#~ msgid "e.g. 5"
+#~ msgstr "z.B. 25"
+
+#~ msgid "Please provide a minimum value for ordering"
+#~ msgstr "Bitte geben Sie einen Mindestbestellwert an"
+
+#~ msgid "Do you offer a delivery service?"
+#~ msgstr "Lieferservice aktivieren"
+
+#~ msgid "Do you require a phone number?"
+#~ msgstr "Bitte geben Sie Ihre Telefonnummer ein. "
+
+#~ msgid "Address"
+#~ msgstr "Adresse des Unternehmens"
+
+#~ msgid "Please type a venue address (max 250chars)"
+#~ msgstr "Bitte geben Sie die Adresse des Unternehmens an (max 250 Zeichen)"
+
+#~ msgid "Please type a Town/City (max 45chars)"
+#~ msgstr "Bitte geben Sie die Postleitzahl an (max 45 Zeichen)"
+
+#~ msgid "Country"
+#~ msgstr "Land"
+
+#~ msgid "Please choose a country"
+#~ msgstr "Bitte Land auswählen"
+
+#~ msgid "Post code"
+#~ msgstr "Postleitzahl des Unternehmens"
+
+#~ msgid "Please type a post code (max 45chars)"
+#~ msgstr "Bitte geben Sie die Postleitzahl an (max 45 Zeichen)"
+
+#~ msgid "Language"
+#~ msgstr "Sprache"
+
+#~ msgid "Please select your language"
+#~ msgstr "Bitte Sprache auswählen"
+
+#~ msgid "Timezone"
+#~ msgstr "Zeit?"
+
+#~ msgid "Please select your timezone"
+#~ msgstr "Bitte Zeitzone auswählen"
+
+#~ msgid "Currency"
+#~ msgstr "Währung"
+
+#~ msgid "Please select your currency"
+#~ msgstr "Bitte Währung auswählen"
+
+#~ msgid "15&#37 done, keep going!"
+#~ msgstr "15&#37 geschafft, weiter so!"
+
+#~ msgid "This is where you can monitor your takings and reports."
+#~ msgstr "Hier finden Sie eineÜbersicht über Ihre Einnahmen und Meldungen."
+
+#~ msgid "Your online order page is"
+#~ msgstr "Der Shortcode Ihres Unternehmens ist"
+
+#~ msgid "This month"
+#~ msgstr "Dieser Monat"
+
+#~ msgid "Total revenue"
+#~ msgstr "Gesamtumsatz"
+
+#~ msgid "Total orders"
+#~ msgstr "Gesamtbestellungen"
+
+#~ msgid "New users"
+#~ msgstr "Neue Nutzer"
+
+#~ msgid "Returning users"
+#~ msgstr "Wiederkehrende Nutzer"
+
+#~ msgid "Customer Analytics"
+#~ msgstr "Neue Nutzer"
+
+#~ msgid "Add new menu"
+#~ msgstr "Neues Angebot hinzufügen"
+
+#~ msgid "Change settings"
+#~ msgstr "Einstellungen Bearbeiten"
+
+#~ msgid "Delivery settings"
+#~ msgstr "Liefereinstellungen"
+
+#~ msgid "Preset notifications"
+#~ msgstr "Benachrichtigungen"
+
+#~ msgid "Opening hours"
+#~ msgstr "Öffnungszeiten"
+
+#~ msgid "Home screen"
+#~ msgstr "Startansicht"
+
+#~ msgid "Menu screen"
+#~ msgstr "Angebot-Ansicht "
+
+#~ msgid "Update events"
+#~ msgstr "Veranstaltungen aktualisieren"
+
+#~ msgid "Manage users"
+#~ msgstr "Nutzer verwalten"
+
+#~ msgid "Add a payment method"
+#~ msgstr "Zahlungsweise hinzufügen"
+
+#~ msgid "Change app mode"
+#~ msgstr "App-Modus ändern "
+
+#~ msgid ""
+#~ "LIVE - Your app is visible and is ready to take real orders.<br/><br/"
+#~ ">DEMO - Your app is visible but does not take real orders.<br/><br/"
+#~ ">OFFLINE - Your app is not visible."
+#~ msgstr ""
+#~ "LIVE: Ihre App ist auf My Order App verfügbar und es können richtige "
+#~ "Bestellungen aufgenommen werden.<br/><br/>DEMO: Ihre App ist auf 'My "
+#~ "Order App' verfügbar, es können jedoch nicht richtige Bestellungen "
+#~ "aufgenommen werden.<br/><br/>OFFLINE: Ihre App ist auf 'My Order "
+#~ "App'nicht verfügbar."
+
+#~ msgid "active"
+#~ msgstr "Aktiv?"
+
+#~ msgid "Venue Title"
+#~ msgstr "Unternehmensname"
+
+#~ msgid "Payment provider is not connected!"
+#~ msgstr "Zahlungsmethode"
+
+#~ msgid "Your app is now live!"
+#~ msgstr "Ihre App ist nun einsatzbereit!"
+
+#~ msgid "Your app is now in DEMO mode."
+#~ msgstr "Ihre App ist nun im DEMO Modus."
+
+#~ msgid "Your app is now in OFFLINE mode."
+#~ msgstr "Ihre App ist nun im OFFLINE Modus."
+
+#~ msgid "Your app is now in Demo mode."
+#~ msgstr "Ihre App ist nun im Demo Modus."
+
+#~ msgid ""
+#~ "This is where you can combine separate food items into one meal "
+#~ "combination, e.g. sandwich, crisps and a drink"
+#~ msgstr ""
+#~ "Hier können einzelne Lebensmittel zu Kombinationen zusammengefasst "
+#~ "werden, z.B. ein Sandwich mit Pommes und ein Getränk."
+
+#~ msgid "Add a new Meal Deal"
+#~ msgstr "neue Angebote hinzufügen"
+
+#~ msgid "Section"
+#~ msgstr "Kategorie"
+
+#~ msgid "Which menu section does this meal deal belong in?"
+#~ msgstr "In welche Angebots-Kategorie gehören diese Angebote?"
+
+#~ msgid "Total Price "
+#~ msgstr "Gesamtpreis "
+
+#~ msgid "Discount Price "
+#~ msgstr "Rabatt-Preis "
+
+#~ msgid "Please type an item name (max 100chars)"
+#~ msgstr "Bitte geben Sie eine Artikelbezeichnung ein (max 100 Zeichen)"
+
+#~ msgid "Please choose a section"
+#~ msgstr "Bitte wählen Sie eine Kategorie aus."
+
+#~ msgid "0.00"
+#~ msgstr "0.00"
+
+#~ msgid "Amount?"
+#~ msgstr "Menge?"
+
+#~ msgid "Type or pick a selection title"
+#~ msgstr "Eingabe oder Auswahl einer Kategorie-Bezeichnung"
+
+#~ msgid "Eg. Choose a main, Choose a side, Choose a drink, etc"
+#~ msgstr "z.B. Auswahl Hauptgericht, Auswahl Beilage, Auswahl Getränk, etc"
+
+#~ msgid "Please type or pick a title (max 100chars)"
+#~ msgstr "Eingabe oder Auswahl einer Bezeichnung (max. 100 Zeichen)"
+
+#~ msgid "Choose a menu section"
+#~ msgstr "Auswahl einer Angebot-Kategorie"
+
+#~ msgid "All sections"
+#~ msgstr "Alle Kategorien"
+
+#~ msgid "Pick a menu section from where you'd like to import items."
+#~ msgstr ""
+#~ "Wählen Sie eine Angebots-Kategorie aus der Sie die Artikel übertragen "
+#~ "wollen"
+
+#~ msgid "Add this item to the current Meal Deal"
+#~ msgstr "Artikel diesem Angebot hinzufügen"
+
+#~ msgid "Add a selection to this meal deal"
+#~ msgstr "Diesem Angebot eine Auswahl hinzufügen"
+
+#~ msgid "Click to add a Meal Deal name"
+#~ msgstr "Klicken um neue Angebotsbezeichnung hinzuzufügen"
+
+#~ msgid ""
+#~ "You've not created any items! You won't be able to create Meal Deals "
+#~ "until you have some items in your menu."
+#~ msgstr ""
+#~ "Sie haben keine Artikel erstellt! Sie werden keine Angebote "
+#~ "zusammenstellen können, wenn Sie keine Artikel Ihrem Angebot hinzufügen.  "
+
+#~ msgid "Outlets"
+#~ msgstr "Standorte"
+
+#~ msgid "Add a new Outlet"
+#~ msgstr "Neuen Standort hinzufügen"
+
+#~ msgid "Add an outlet name"
+#~ msgstr "Standortname hinzufügen"
+
+#~ msgid "Please type an outlet name"
+#~ msgstr "Bitte geben Sie einen Standortname ein. "
+
+#~ msgid "Please choose a menu"
+#~ msgstr "Bitte wÃ¤hlen Sie ein Angebot aus. "
+
+#~ msgid "Build your menu"
+#~ msgstr "Erstellen Sie Ihr Angebot"
+
+#~ msgid "Your menu"
+#~ msgstr "Ihr Angebot"
+
+#~ msgid ""
+#~ "Now it's time to create your menu. We suggest you keep it simple to start "
+#~ "with.<br/><br/>An easy way is to group items, i.e. create separate "
+#~ "sections for food, cold drinks and hot drinks."
+#~ msgstr ""
+#~ "Jetzt können Sie Ihr Angebot erstellen. Wir schlagen vor, dass sie es "
+#~ "erstmal einfach halten. <br/><br/>Ein guter Einstieg ist, die Artikel in "
+#~ "Gruppen einzuteilen, z.B. erstellen Sie separate Kategorien für Speisen, "
+#~ "kalte oder heiße Getränke."
+
+#~ msgid "Click to add your menu name"
+#~ msgstr "Klicken Sie, um die Bezeichnung Ihres Angebots hinzuzufügen"
+
+#~ msgid "Please type a menu name (max 100chars)"
+#~ msgstr "Bitte geben Sie eine Angebotsbezeichnung ein (max. 100 Zeichen)"
+
+#~ msgid "Click to add a section name"
+#~ msgstr "Klicken Sie um den Namen einer Kategorie hinzuzufügen"
+
+#~ msgid "Please type a section name (max 100chars)"
+#~ msgstr "Bitte geben Sie einen Namen ein (max 100 Zeichen)"
+
+#~ msgid "Add an item to this section"
+#~ msgstr "Hier Artikel hinzufügen"
+
+#~ msgid "Move this section"
+#~ msgstr "Diese Kategorie bewegen"
+
+#~ msgid "Collapse this section"
+#~ msgstr "Diese Kategorie bewegen"
+
+#~ msgid "Price "
+#~ msgstr "Preis?"
+
+#~ msgid "Quantity"
+#~ msgstr "Menge"
+
+#~ msgid "Click to add an item name"
+#~ msgstr "Klicken, um Artikelname hinzuzufügen"
+
+#~ msgid "Optional description"
+#~ msgstr "Beschreibung optional"
+
+#~ msgid "Price?"
+#~ msgstr "Preis?"
+
+#~ msgid "Unlimited"
+#~ msgstr "Unbegrenzt"
+
+#~ msgid ""
+#~ "This chooses whether you want to activate this food on the menu or not."
+#~ msgstr ""
+#~ "Hiermit können Sie auswählen, ob Sie diesen Artikel im Angebot aktivieren "
+#~ "wollen oder nicht. "
+
+#~ msgid "Upload image"
+#~ msgstr "Logo Hochladen"
+
+#~ msgid "Reorder"
+#~ msgstr "Neu bestellen"
+
+#~ msgid "Add a new option to this item"
+#~ msgstr "Neue Option diesem Artikel hinzufügen."
+
+#~ msgid "Add an option"
+#~ msgstr "Option hinzufügen"
+
+#~ msgid "Type or pick an option title"
+#~ msgstr "Eingabe oder Auswahl einer Optionsbezeichnung"
+
+#~ msgid "Eg. Pick a size, Choice of an option, Add some extras, Select a side"
+#~ msgstr ""
+#~ "z.B. Größe oder Option auswählen, Extras hinzufügen, Beilage auswählen"
+
+#~ msgid "Please type or pick a title"
+#~ msgstr "Bitte geben Sie eine Bezeichnung ein oder wählen Sie aus."
+
+#~ msgid "User must select only one option."
+#~ msgstr "Nutzer kann nur eine Option auswählen."
+
+#~ msgid "User selects 1 option"
+#~ msgstr "Nutzer wählt 1 Option"
+
+#~ msgid "User must select one or more options."
+#~ msgstr "Nutzer kann eine oder mehr Optionen auswählen."
+
+#~ msgid "User selects 1 or more options"
+#~ msgstr "Nutzer wählt 1 oder mehr Optionen"
+
+#~ msgid "User can select zero or more options."
+#~ msgstr "Nutzer kann null oder mehr Optionen auswählen. "
+
+#~ msgid "User selects 0 or more options"
+#~ msgstr "Nutzer wählt 0 oder mehr Optionen"
+
+#~ msgid ""
+#~ "Single: When the user must pick only 1 option.<br/><br/>Multiple: When "
+#~ "the user must pick 1 or more options.<br/><br/>Optional: when the user "
+#~ "can pick 0 or multiple options."
+#~ msgstr ""
+#~ "Eine: Der Nutzer muss sich nur für eine Option entscheiden.<br/><br/"
+#~ ">Mehrere: Der Nutzer muss sich für eine oder mehr Optionen entscheiden. "
+#~ "Optional: Der Nutzer kann sich zwischen 0 und mehrere Optionen "
+#~ "entscheiden."
+
+#~ msgid "Please choose a type"
+#~ msgstr "Bitte wählen Sie einen Typ aus."
+
+#~ msgid "Click to add an option name"
+#~ msgstr "Klicken, um Optionsbezeichnung hinzuzufügen"
+
+#~ msgid "Please type an option name (max 100chars)"
+#~ msgstr "Bitte geben Sie eine Optionsbezeichnung ein (max 100 Zeichen)."
+
+#~ msgid ""
+#~ "This will be in addition to the item price. If there is no price "
+#~ "difference, put in 0.00."
+#~ msgstr ""
+#~ "Dieser Betrag wird dem Preis des Artikels zusätzlich hinzugerechnet. Wenn "
+#~ "keine Preisdifferenz vorhanden ist, fügen Sie hier 0,00 ein."
+
+#~ msgid "Eg. Toppings, Sizes, Exras, etc"
+#~ msgstr "Z.B. Toppings, Größe, Extras, etc."
+
+#~ msgid "Add an option category to this item <small>(optional)</small>"
+#~ msgstr "Diesem Artikel Option hinzufügen <small>(optional)</small>"
+
+#~ msgid "Add a new menu section"
+#~ msgstr "Neue Angebots-Kategorie hinzufügen"
+
+#~ msgid "COLLAPSE ALL"
+#~ msgstr "VERKLEINERN"
+
+#~ msgid "SAVE & CONTINUE EDITING"
+#~ msgstr "SPEICHERN & WEITERBEARBEITEN"
+
+#~ msgid "SAVE & FINISH"
+#~ msgstr "SPEICHERN & BEENDEN"
+
+#~ msgid "45&#37 done, now for the fun bit!"
+#~ msgstr "45&#37 geschafft und jetzt weiter zum spaßigeren Teil!"
+
+#~ msgid "Please enter your requirement."
+#~ msgstr "Bitte geben Sie an, was Sie benötigen. "
+
+#~ msgid "SEND"
+#~ msgstr "SCHICKEN"
+
+#~ msgid "Thank you for your request"
+#~ msgstr "Vielen Dank für Ihre Anfrage"
+
+#~ msgid "We'll be in touch shortly."
+#~ msgstr "In Kürze werden wir mit Ihnen in Kontakt treten."
+
+#~ msgid "Reset your password?"
+#~ msgstr "Passwort zurücksetzen?"
+
+#~ msgid "A password is required."
+#~ msgstr "Ein Passwort wird benötigt."
+
+#~ msgid "RESET PASSWORD"
+#~ msgstr "PASSWORT ZURÜCKSETZEN"
+
+#~ msgid "Sorry. Invalid code."
+#~ msgstr "Ungültiger Code. "
+
+#~ msgid "The finish line!"
+#~ msgstr "Die Ziellinie! "
+
+#~ msgid "App mode"
+#~ msgstr "App-Modus"
+
+#~ msgid "Your app is currently in "
+#~ msgstr "Ihre App ist nun einsatzbereit!"
+
+#~ msgid " mode."
+#~ msgstr " Modus."
+
+#~ msgid ""
+#~ "LIVE - Your app is available on My Order App and is ready to take real "
+#~ "orders.<br/><br/>DEMO - Your app is available on My Order App but does "
+#~ "not take real orders.<br/><br/>OFFLINE - Your app is not available on My "
+#~ "Order App."
+#~ msgstr ""
+#~ "LIVE: Ihre App ist auf My Order App verfügbar und es können richtige "
+#~ "Bestellungen aufgenommen werden.<br/><br/>DEMO: Ihre App ist auf 'My "
+#~ "Order App' verfügbar, es können jedoch nicht richtige Bestellungen "
+#~ "aufgenommen werden.<br/><br/>OFFLINE: Ihre App ist auf 'My Order "
+#~ "App'nicht verfügbar."
+
+#~ msgid "After you setup a payment method, you can send it into the world!"
+#~ msgstr ""
+#~ "Sobald Sie Ihre Zahlungsmethode festgelegt haben, können Sie durchstarten!"
+
+#~ msgid "SETUP PAYMENT"
+#~ msgstr "ZAHLUNGSWEISE EINRICHTEN"
+
+#~ msgid "MAKE MY APP LIVE"
+#~ msgstr "MEINE APP AKTIVIEREN"
+
+#~ msgid "SWITCH TO DEMO MODE"
+#~ msgstr "ZU DEMO MODUS WECHSELN"
+
+#~ msgid "PUT MY APP IN DEMO MODE"
+#~ msgstr "MEINE APP IN DEMO MODUS WECHSELN"
+
+#~ msgid "TAKE MY APP OFFLINE"
+#~ msgstr "MEINE APP OFFLINE STELLEN"
+
+#~ msgid "BACK TO THE DASHBOARD"
+#~ msgstr "ZURÜCK ZUM DASHBOARD"
+
+#~ msgid "Payment method was not setup."
+#~ msgstr "Zahlungsmethode"
+
+#~ msgid "Select venue for use webapp"
+#~ msgstr "Auswahl MenÃ¼(s) fÃ¼r diesen Standort"
+
+#~ msgid "Please choose a venue."
+#~ msgstr "Bitte wÃ¤hlen Sie ein Angebot aus. "
+
+#~ msgid "Subtotal"
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Monthly charge"
+#~ msgstr "Zustellgebühr"
+
+#~ msgid "Have a discount code?"
+#~ msgstr "Bitte geben Sie einen Standortname ein. "
+
+#~ msgid "Premium Features"
+#~ msgstr "Premium Einstellungen"
+
+#~ msgid "month"
+#~ msgstr "Dieser Monat"
+
+#~ msgid "Features"
+#~ msgstr "Premium Einstellungen"
+
+#~ msgid "Sign in to your Preoday Dashboard"
+#~ msgstr "Dashboard"
+
+#~ msgid "Preoday"
+#~ msgstr "Preoday"
+
+#~ msgid "Sign in to your Dashboard"
+#~ msgstr "Dashboard"
+
+#~ msgid "Incorrect credentials or account does not exist."
+#~ msgstr "Falsche Angaben oder Konto existiert nicht. "
+
+#~ msgid "Success! Please check your email for further instructions."
+#~ msgstr ""
+#~ "Daten wurden gespeichert. Eine E-Mail mit weiteren Anweisungen wurde "
+#~ "versendet. "
+
+#~ msgid "Sorry, incorrect code."
+#~ msgstr "Leider falscher Code. "
+
+#~ msgid ""
+#~ "Your password has been reset.<br/>You will now be redirected to the login "
+#~ "page."
+#~ msgstr ""
+#~ "Ihr Passwort wurde zurückgesetzt. Sie werden nun zum Login "
+#~ "weitergeleitet. "
+
+#~ msgid "Venue changes have been saved!"
+#~ msgstr "Änderungen zum Unternehmen wurden gespeichert!"
+
+#~ msgid "Uploaded!"
+#~ msgstr "Logo Hochladen"
+
+#~ msgid "Error uploading file"
+#~ msgstr "Fehler beim Upload der Datei."
+
+#~ msgid "Incorrect Image File"
+#~ msgstr "Falsche Bilddatei"
+
+#~ msgid "App changes have been saved!"
+#~ msgstr "App-Änderungen wurden gespeichert!"
+
+#~ msgid "Choose a size"
+#~ msgstr "Große a auswählen"
+
+#~ msgid "Choose a flavour"
+#~ msgstr "Aroma auswählen."
+
+#~ msgid "Choose a topping"
+#~ msgstr "Topping auswählen"
+
+#~ msgid "Choose some extras"
+#~ msgstr "Extras auswählen"
+
+#~ msgid "Choose a side dish"
+#~ msgstr "Beilage auswählen"
+
+#~ msgid "Pick an option type"
+#~ msgstr "Eingabe oder Auswahl einer Optionsbezeichnung"
+
+#~ msgid "Yes, delete this section and all its contents!"
+#~ msgstr "Ja, diesen Abschnitt und seinen Inhalt löschen!"
+
+#~ msgid "Choose a main"
+#~ msgstr "Hauptgericht auswählen"
+
+#~ msgid "Choose a side"
+#~ msgstr "Beilage auswählen"
+
+#~ msgid "Choose a drink"
+#~ msgstr "Getränk auswählen"
+
+#~ msgid "Choose a curry"
+#~ msgstr "Bratwurst auswählen"
+
+#~ msgid "Choose a burger"
+#~ msgstr "Burger auswählen"
+
+#~ msgid "Menu configuration has been saved!"
+#~ msgstr "Angebot-Konfigurationen wurden gespeichert!"
+
+#~ msgid "Choose Event Location"
+#~ msgstr "Auswahl einer Angebot-Kategorie"
+
+#~ msgid "Choose Venue"
+#~ msgstr "Größe auswählen"
+
+#~ msgid ""
+#~ "Are you sure you want to delete this user? Note: all user data will be "
+#~ "lost!"
+#~ msgstr ""
+#~ "Sind Sie sicher, dass Sie diesen Nutzer löschen möchten? Alle Nutzerdaten "
+#~ "werden bei diesem Vorgang gelöscht!"
+
+#~ msgid "Yes, delete this user!"
+#~ msgstr "Ja, diesen Nutzer löschen!"
+
+#~ msgid "Username/email already exists"
+#~ msgstr "Nutzername/E-Mail existiert bereits"
+
+#~ msgid "User configuration has been saved!"
+#~ msgstr "Nutzer-Konfigurationen wurden gespeichert!"
+
+#~ msgid "Select all menus"
+#~ msgstr "Auswahl alle Angebote"
+
+#~ msgid "Unselect all menus"
+#~ msgstr "Deselektion alle Angebote"
+
+#~ msgid "Select menu("
+#~ msgstr "Auswahl Angebot"
+
+#~ msgid "# of # selected"
+#~ msgstr "# von # ausgewählt"
+
+#~ msgid ""
+#~ "Are you sure you want to delete this outlet? Note: all outlet data will "
+#~ "be lost!"
+#~ msgstr ""
+#~ "Sind Sie sicher, dass sie diesen Standort löschen möchten? Alle "
+#~ "Standortdaten werden bei diesem Vorgang gelöscht!"
+
+#~ msgid "Yes, delete this outlet!"
+#~ msgstr "Ja, diesen Standort löschen!"
+
+#~ msgid "Outlet configuration has been saved!"
+#~ msgstr "Standort-Konfigurationen wurden gespeichert!"
+
+#~ msgid "These times have been applied to all days!"
+#~ msgstr "Diese Zeiten wurden allen Tagen zugeordnet!"
+
+#~ msgid ""
+#~ "We still need some more information. Don't forget to fill out the "
+#~ "remaining days of the week!"
+#~ msgstr ""
+#~ "Wir benötigen noch weitere Informationen. Vergessen Sie nicht, die "
+#~ "weiteren Wochentage auszufüllen!"
+
+#~ msgid "Where should this meal deal appear?"
+#~ msgstr "Wo sollen diese Angebote erscheinen?"
+
+#~ msgid ""
+#~ "Are you sure you want to delete this meal deal? Note: all associated data "
+#~ "will be lost!"
+#~ msgstr ""
+#~ "Sind Sie sicher, dass Sie dieses Angebot löschen möchten? Alle "
+#~ "dazugehörigen Daten werden bei diesem Vorgang gelöscht!"
+
+#~ msgid "Yes, delete this meal deal!"
+#~ msgstr "Ja, dieses Angebot löschen!"
+
+#~ msgid "All changes has been saved!"
+#~ msgstr "Alle Änderungen wurden gespeichert!"
+
+#~ msgid "Sorry, incorrect password."
+#~ msgstr "Leider falscher Code. "
+
+#~ msgid ""
+#~ "Settings and Password has been saved!<br/>You will need to log in again "
+#~ "with your new password to continue."
+#~ msgstr ""
+#~ "Einstellungen und Passwort wurde gespeichert! Sie müssen mit sich mit "
+#~ "Ihrem neuen Passwort einlochen um fortfahren zu können."
+
+#~ msgid "Please select features you require"
+#~ msgstr "Bitte, wählen Sie die Features aus, die Sie benötigen"
+
+#~ msgid "Select all"
+#~ msgstr "Alles auswählen"
+
+#~ msgid "Your app is now in demo mode!"
+#~ msgstr "Ihre App ist nun im Demo Modus."
+
+#~ msgid "Your app is now offline!"
+#~ msgstr "Ihre App ist nun einsatzbereit!"
+
+#~ msgid "My order app "
+#~ msgstr "Gesamtbestellungen"
+
+#~ msgid "All the fields are required."
+#~ msgstr "Eine E-Mail Adresse wird benötigt."
+
+#~ msgid "Outstanding payment resolved"
+#~ msgstr "Zahlungsmethode"
+
+#~ msgid "Payment method updated succesfully!"
+#~ msgstr "Zahlungsmethode"
+
+#~ msgid "Are you sure you want to cancel?"
+#~ msgstr ""
+#~ "Sind Sie sicher, dass Sie diesen Nutzer löschen möchten? Alle Nutzerdaten "
+#~ "werden bei diesem Vorgang gelöscht!"
+
+#~ msgid "Payment resolved"
+#~ msgstr "Zahlungsmethode"
+
+#~ msgid "Resubscription Details"
+#~ msgstr "Beschreibung"
+
+#~ msgid "Please enter a discount code"
+#~ msgstr "Bitte geben Sie einen Standortname ein. "
+
+#~ msgid "Orders Report"
+#~ msgstr "Meldung über abgelehnte Bestellung "
+
+#~ msgid "Orders By Events"
+#~ msgstr "Veranstaltungen aktualisieren"
+
+#~ msgid "Orders By Outlets"
+#~ msgstr "Meldung über Bestellstatus"
+
+#~ msgid "Select Events..."
+#~ msgstr "Auswahl Angebot"
+
+#~ msgid "Month"
+#~ msgstr "Dieser Monat"
+
+#~ msgid "3 Months"
+#~ msgstr "Dieser Monat"
+
+#~ msgid "6 Months"
+#~ msgstr "Dieser Monat"
+
+#~ msgid "Total Customers"
+#~ msgstr "Gesamtbestellungen"
+
+#~ msgid "Orders per Customer"
+#~ msgstr "Neue Nutzer"
+
+#~ msgid "Items Ordered"
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Orders By Outlet"
+#~ msgstr "Meldung über Bestellstatus"
+
+#~ msgid "Returning"
+#~ msgstr "Wiederkehrende Nutzer"
+
+#~ msgid "Customers (Pi"
+#~ msgstr "Neue Nutzer"
+
+#~ msgid "Customers (Ba"
+#~ msgstr "Neue Nutzer"
+
+#~ msgid " orders"
+#~ msgstr "Gesamtbestellungen"
+
+#~ msgid "Number of Orders"
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Revenue"
+#~ msgstr "Gesamtumsatz"
+
+#~ msgid "Date Joined"
+#~ msgstr "Datum?"
+
+#~ msgid "Date of Order"
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Last Order"
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Item Name"
+#~ msgstr "Nachname"
+
+#~ msgid "Quantity Sold"
+#~ msgstr "Menge"
+
+#~ msgid "Day"
+#~ msgstr "PreoDay"
+
+#~ msgid "New Customers"
+#~ msgstr "Neue Nutzer"
+
+#~ msgid "Highest Spending Customers"
+#~ msgstr "Wiederkehrende Nutzer"
+
+#~ msgid "Sleeping Customers"
+#~ msgstr "Wiederkehrende Nutzer"
+
+#~ msgid "Displays top 10 most popular items."
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Highest Grossing Days"
+#~ msgstr "Wiederkehrende Nutzer"
+
+#~ msgid "Display top 10 highest grossing days."
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Lowest Grossing Days"
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Display top 10 lowest grossing days."
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Highest Order Days"
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Display top 10 highest order days."
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Lowest Order Days"
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Display top 10 lowest order days."
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Highest Grossing Hours"
+#~ msgstr "Wiederkehrende Nutzer"
+
+#~ msgid "Highest Order Hours"
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "years ago"
+#~ msgstr "Ihr Konto"
+
+#~ msgid "year ago"
+#~ msgstr "Ihr Konto"
+
+#~ msgid "months ago"
+#~ msgstr "Dieser Monat"
+
+#~ msgid "month ago"
+#~ msgstr "Dieser Monat"
+
+#~ msgid "days ago"
+#~ msgstr "Dieser Monat"
+
+#~ msgid "hours ago"
+#~ msgstr "Ihr Konto"
+
+#~ msgid "hour ago"
+#~ msgstr "Ihr Konto"
+
+#~ msgid "minute ago"
+#~ msgstr "Dieser Monat"
+
+#~ msgid "seconds ago"
+#~ msgstr "Dieser Monat"
+
+#~ msgid "second ago"
+#~ msgstr "Dieser Monat"
+
+#~ msgid "Successfully saved delivery settings."
+#~ msgstr "Liefereinstellungen wurden erfolgreich gespeichert. "
+
+#~ msgid "Your order is running 15 mins late"
+#~ msgstr "Ihre Bestellung ist um 15 Min. im Verzug"
+
+#~ msgid "Late Order"
+#~ msgstr "verspätete Bestellung"
+
+#~ msgid "Your order is on its way"
+#~ msgstr "Ihre Bestellung ist auf dem Weg"
+
+#~ msgid "En-route"
+#~ msgstr "Unterwegs"
+
+#~ msgid "There is a problem with your order. Please call us"
+#~ msgstr ""
+#~ "Bei Ihrer Bestellung ist ein Problem aufgetreten. Bitte rufen Sie uns an"
+
+#~ msgid "Call us"
+#~ msgstr "Bitte anrufen"
+
+#~ msgid "Your address is out of our delivery zone"
+#~ msgstr "Ihre Adresse ist außerhalb unseres Liefergebiets "
+
+#~ msgid "Out of zone"
+#~ msgstr "Außerhalb des Liefergebiets"
+
+#~ msgid "Sorry, that item is out of stock"
+#~ msgstr "Leider ist dieser Artikel nicht vorrätig"
+
+#~ msgid "Out of stock"
+#~ msgstr "Nicht vorrätig"
+
+#~ msgid "Sorry, Your order has been rejected. Please call us"
+#~ msgstr "Leider wurde Ihre Bestellung abgelehnt. Bitte rufen Sie uns an"
+
+#~ msgid "Your new Premium Feature is now live!"
+#~ msgstr "Ihre App ist nun einsatzbereit!"
+
+#~ msgid "ADD CARD"
+#~ msgstr "SPRACHE ÄNDERN"
+
+#~ msgid "Your card will be charged "
+#~ msgstr "Ihr Konto"
+
+#~ msgid "Venue Code"
+#~ msgstr "Unternehmens-Name "
+
+#~ msgid "Venue Name"
+#~ msgstr "Unternehmens-Name "
+
+#~ msgid "Admin username"
+#~ msgstr "Nutzername hinzufügen"
+
+#~ msgid "SEARCHING..."
+#~ msgstr "SPEICHERN..."
+
+#~ msgid "CHANGE LANGUAGE"
+#~ msgstr "SPRACHE ÄNDERN"
+
+#~ msgid "English"
+#~ msgstr "Englisch"
+
+#~ msgid "German"
+#~ msgstr "Deutsch"
+
+#~ msgid "Legal Statement"
+#~ msgstr "Impressum"
+
+#~ msgid "Privacy + Cookies"
+#~ msgstr "Datenschutz + Cookies"
+
+#~ msgid "support@preoday.com"
+#~ msgstr "support@preoday.com"
+
+#~ msgid "SAVING...\");?>"
+#~ msgstr "SPEICHERN..."
+
+#~ msgid "on"
+#~ msgstr "Mo"
+
+#~ msgid "Active Premium Features"
+#~ msgstr "Premium Einstellungen"
+
+#~ msgid "Available Premium Features"
+#~ msgstr "Premium Einstellungen"
+
+#~ msgid "Deactivated Premium Features"
+#~ msgstr "Premium Einstellungen"
+
+#~ msgid ""
+#~ "Are you sure you want to cancel this Free Trial? This action cannot be "
+#~ "undone?"
+#~ msgstr ""
+#~ "Sind Sie sicher, dass sie diesen Abschnitt löschen möchten? Alle Artikel "
+#~ "und Optionen werden bei diesem Vorgang gelöscht. "
+
+#~ msgid "Are you sure you want to reinstall this Premium Feature?"
+#~ msgstr ""
+#~ "Sind Sie sicher, dass Sie diesen Nutzer löschen möchten? Alle Nutzerdaten "
+#~ "werden bei diesem Vorgang gelöscht!"
+
+#~ msgid ""
+#~ "This is the code your customers need to use to find your venue on 'My "
+#~ "Order App'"
+#~ msgstr "Ihre Kunden können Sie mit diesem Code auf My Order App finden."
+
+#~ msgid "Change your app"
+#~ msgstr "Bearbeiten Sie Ihre App"
+
+#~ msgid "Find out more"
+#~ msgstr "Erfahren Sie Mehr"
+
+#~ msgid "Please select at least one feature"
+#~ msgstr "Bitte wählen Sie mindestens ein Feature aus"
+
+#~ msgid ""
+#~ "Describe your requirement. Include details like like the brand of ePOS "
+#~ "you are using or the number of outlets you require."
+#~ msgstr ""
+#~ "Erläutern Sie, was Sie benötigen. Fügen Sie Informationen hinzu, wie z.B. "
+#~ "welchen EPOS-Anbieter Sie nutzen oder wie viele Verkaufsstellen Sie "
+#~ "benötigen."
+
+#~ msgid ""
+#~ "Looking for ePOS integration, detailed reporting or the ability to "
+#~ "configure multiple outlets?"
+#~ msgstr ""
+#~ "Interessieren Sie sich für elektronische Zahlungsmethoden (EPOS), "
+#~ "ausführliche Berichte oder die Möglichkeit mehrere Verkaufsstellen zu "
+#~ "konfigurieren?"
+
+#~ msgid "FIND OUT MORE"
+#~ msgstr "Erfahren Sie Mehr"
+
+#~ msgid "PreoDay"
+#~ msgstr "PreoDay"
+
+#~ msgid "Fulfilment App"
+#~ msgstr "Bestellungs-Plattform"
+
+#~ msgid "preoday"
+#~ msgstr "preoday"
+
+#~ msgid "Email: "
+#~ msgstr "E-Mail: "
+
+#~ msgid "Login using Facebook"
+#~ msgstr "Login mit Facebook"
+
+#~ msgid "Login using Google+"
+#~ msgstr "Login mit Google+"
+
+#~ msgid "LOG IN"
+#~ msgstr "EINLOGGEN"
+
+#~ msgid "LOGGING..."
+#~ msgstr "SPEICHERN..."
+
+#~ msgid "Looking for the Fulfilment App?"
+#~ msgstr "Suchen Sie die Bestellungs-Plattform"
+
+#~ msgid "  Click here"
+#~ msgstr "Hier Klicken"
+
+#~ msgid ""
+#~ "Sorry, you don't have sufficient privileges.<br/><br/>Looking for the "
+#~ "Fulfilment App? Click the link at the bottom of this page."
+#~ msgstr ""
+#~ "Leider verfügen Sie nicht über die richtigen Zugriffsrechte. <br/><br/> "
+#~ "Auf der Suche nach der Bestellungs-Plattform? Sie finden den Link am "
+#~ "Seitenende. "
+
+#~ msgid "Now, we just need your business name."
+#~ msgstr "Jetzt, müssen wir nur noch den Namen Ihres Geschäfts erfahren. "
+
+#~ msgid "Get started"
+#~ msgstr "Durchstarten"
+
+#~ msgid "Signup using Facebook"
+#~ msgstr "Anmelden mit Facebook"
+
+#~ msgid "Signup using Google+"
+#~ msgstr "Anmelden mit Google+"
+
+#~ msgid "Your email"
+#~ msgstr "Ihre E-Mail"
+
+#~ msgid "Create a password"
+#~ msgstr "Passwort erstellen"
+
+#~ msgid "Please type a password."
+#~ msgstr "Bitte geben Sie ein Passwort ein."
+
+#~ msgid "Your business name"
+#~ msgstr "Ihr Geschäftsname"
+
+#~ msgid "Please type your business name (max 100chars)"
+#~ msgstr "Bitte geben Sie Ihren Geschäftsnamen ein. "
+
+#~ msgid "Telephone Number"
+#~ msgstr "Telefonnummer "
+
+#~ msgid "By clicking 'Sign Up' you agree to our"
+#~ msgstr "Indem Sie 'Anmelden' anklicken, stimmen Sie unseren"
+
+#~ msgid "Terms"
+#~ msgstr "Allgemeinen Geschäftsbedingungen "
+
+#~ msgid "SIGN UP"
+#~ msgstr "ANMELDEN"
+
+#~ msgid "Update"
+#~ msgstr "Veranstaltungen aktualisieren"
+
+#~ msgid "General Settings"
+#~ msgstr "Allgemeine Einstellungen"
+
+#~ msgid "Day of collection"
+#~ msgstr "Abholzeitraum auswÃ¤hlen"
+
+#~ msgid "Before day of collection"
+#~ msgstr "FÃ¼r Lieferung und Abholung"
+
+#~ msgid "RETURN TO STORE"
+#~ msgstr "MIT STRIPE VERBINDEN"
+
+#~ msgid "RETURN TO DASHBOARD"
+#~ msgstr "ZURÃœCK ZUM DASHBOARD"
+
+#~ msgid "YOU'RE ALREADY CONNECTED"
+#~ msgstr "SIE SIND BEREITS VERBUNDEN"
+
+#~ msgid "Manage outlets"
+#~ msgstr "Standorte verwalten"
+
+#~ msgid "eg."
+#~ msgstr "z.B. 30"
+
+#~ msgid "Please type a notification (max 200chars)"
+#~ msgstr "Bitte geben Sie eine Beschreibung ein (max. 250 Zeichen)."
+
+#~ msgid "eg.Late order"
+#~ msgstr "Neu bestellen"
+
+#~ msgid "Price (&pound;)"
+#~ msgstr "Preis (&euro;)"
+
+#~ msgid "Venue lookup"
+#~ msgstr "Suche Unternehmen"
+
+#~ msgid "Start typing a venue name..."
+#~ msgstr "Geben Sie den Namen des Unternehmens einâ€¦"
+
+#~ msgid "Sorry, but there\\'s been an error processing your request."
+#~ msgstr ""
+#~ "Es ist leider ein Fehler bei der Bearbeitung Ihres Auftrags aufgetreten!"
+
+#~ msgid "Event configuration has been saved!"
+#~ msgstr "Veranstaltungs-Konfigurationen wurden gelÃ¶scht."

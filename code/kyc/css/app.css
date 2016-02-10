@@ -16,7 +16,7 @@
 body{
   background-color: #EFEFEF;
   font-family: "Co Text W01 Regular","Co Text W01 Light";
-  font-weight: normal;  
+  font-weight: normal;
 }
 
 #wrap{
@@ -68,8 +68,8 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
 /**********Navbar************/
 .kycWrapper header{
   background-color: #56666d !important;
-  border: none;  
-  height: 135px;  
+  border: none;
+  height: 135px;
 }
 
 .kycWrapper header nav, .kycWrapper header ul, .kycWrapper header li{
@@ -80,11 +80,15 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   border-right: 1px solid #333E46;
   width:20%;
   float:left;
-  display:block;  
+  display:block;
   background-position:center 35%;
   background-repeat:no-repeat;
   text-align:center;
   position:relative;
+}
+
+#navbar-menu.withEvents ul li {
+  width: 16.6%;
 }
 
 #navbar-menu ul li.metrics{
@@ -126,6 +130,25 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
 #navbar-menu ul li.live-stream.active, #navbar-menu ul li.live-stream:hover{
   background-image: url('/code/kyc/images/icons/live-stream-icon-white.png');
 }
+
+#navbar-menu ul li.events{
+  background-image: url('/code/kyc/images/icons/events-icon-grey.png');
+  background-size: 43px;
+}
+
+#navbar-menu ul li.events.active, #navbar-menu ul li.events:hover{
+  background-image: url('/code/kyc/images/icons/events-icon-white.png');
+}
+
+#navbar-menu ul li.orders{
+    background-image: url('/code/kyc/images/icons/events-icon-grey.png');
+    background-size: 43px;
+}
+
+#navbar-menu ul li.orders.active, #navbar-menu ul li.orders:hover{
+    background-image: url('/code/kyc/images/icons/events-icon-white.png');
+}
+
 #navbar-menu ul > li:first-child{
     border-left: 1px solid #333E46;
 }
@@ -143,11 +166,11 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
 }
 
 #navbar-menu ul li span {
-  color:#333f47;  
+  color:#333f47;
   position: absolute;
   left: 0;
   width: 100%;
-  bottom: 20px;
+  bottom: 15px;
 }
 
 #navbar-menu ul li.active span,#navbar-menu ul li:hover span{
@@ -211,10 +234,10 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   min-height:35px;
 }
 
-.header-widget span {  
+.header-widget span {
   width:100%;
   font-weight: 400;
-  font-size: 15px;  
+  font-size: 15px;
   display:block;
   position:absolute;
   left:0;
@@ -232,7 +255,7 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   font-weight: 400;
   font-size: 15px;
   line-height:20px;
-  
+
 }
 
 .widget .flipper, .widget .front, .widget .flip-container{
@@ -317,12 +340,13 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
 #filterDashboard{
   background-color: #fff;
   padding: 2%;
-  margin: 30px auto 20px;  
+  margin: 30px auto 20px;
 }
 
 #filterDashboard li{
   margin-bottom: 5px;
   list-style: none;
+  height: 35px;
 }
 
 #filterDashboard ul{
@@ -335,7 +359,7 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
 }
 
 .block-status{
-  width: 105px; 
+  width: 105px;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -402,7 +426,7 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   -webkit-perspective: 1000;
   -moz-perspective: 1000;
   -ms-perspective: 1000;
-  -o-perspective: 1000;  
+  -o-perspective: 1000;
 }
 
 .content-chart{
@@ -416,6 +440,14 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
     -moz-transform: rotateY(180deg);
     -ms-transform: rotateY(180deg);
     -o-transform: rotateY(180deg);
+  }
+
+  .flip-container.active {
+    min-height: 300px;
+  }
+
+  .flip-container.active .back {
+    min-height: 300px;
   }
 
 .reportPage .flipper, .reportPage .front{
@@ -434,7 +466,7 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
-  -o-transform-style: preserve-3d;      
+  -o-transform-style: preserve-3d;
   position: relative;
   margin-bottom:100px;
   backface-visibility: hidden !important;
@@ -447,7 +479,7 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
-  -o-backface-visibility: hidden;  
+  -o-backface-visibility: hidden;
 
   position: absolute;
   top: 0;
@@ -469,7 +501,7 @@ form label, label, .multiSelect .button, .navbar-form input, .current{
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -ms-transform: rotateY(180deg);
-  -o-transform: rotateY(180deg);  
+  -o-transform: rotateY(180deg);
 }
 
 /****** End Flip Effect *******/
@@ -510,8 +542,8 @@ table .sort i{
 
 .table-striped{
   border-collapse: separate !important;
-  border-radius: 5px;  
-  border: 1px solid #b4b6b8; 
+  border-radius: 5px;
+  border: 1px solid #b4b6b8;
 
 }
 
@@ -530,8 +562,8 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
 .table-striped td,.table-striped th{
   font-family:"Co Text W01 Light";
   color: #6d6e71;
-  border-top: 1px solid #b4b6b8; 
-  border-right:1px solid #b4b6b8; 
+  border-top: 1px solid #b4b6b8;
+  border-right:1px solid #b4b6b8;
 }
 
 .table-striped th{
@@ -544,7 +576,7 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
 .table-striped thead tr th{
   padding: 15px;
   background-color: #F3F4F4;
-  
+
   font-weight: 400;
 }
 
@@ -610,7 +642,7 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
   position:relative;
 }
 .modal-chart .options-modal{
- margin-top: 30px; 
+ margin-top: 30px;
  background-color: #fff;
  padding: 1.875em;
 }
@@ -655,7 +687,7 @@ table tr.alt, table tr.even, table tr:nth-of-type(even), table tbody:nth-of-type
 .button-option{
   text-align: center;
   background-color: #DBDBD9;
-  padding: 12px 0;  
+  padding: 12px 0;
   font-weight: 600;
   color: #46535D;
   cursor: pointer;
@@ -681,7 +713,7 @@ span.multiSelect{
 }
 .options label + label{
   position:relative;
-  left:20px;  
+  left:20px;
 }
 
 .content-optionsExport{
@@ -771,7 +803,7 @@ span.multiSelect{
   -moz-appearance: checkbox;
   -ms-appearance: checkbox;
   -o-appearance: checkbox;
-} 
+}
 
 .icon-know-customers{
   background: url("/img/KYC-icon-white-reverse.png") left center no-repeat;
@@ -781,7 +813,7 @@ span.multiSelect{
   top: 50%;
   margin-top: -15px;
   height: 30px;
-} 
+}
 
 .table-striped td.streamPrice{
   font-family: "Co Text W01 Bold";
@@ -809,14 +841,14 @@ span.multiSelect{
 
 
 .sscontainer {
-    position: relative;    
+    position: relative;
 }
 
 .highchartsItem{
   z-index: 10;
 }
 
-.widget {    
+.widget {
     /*overflow: hidden;  */
     height: 160px;
     position: absolute;
@@ -824,9 +856,9 @@ span.multiSelect{
     text-align:center;
 }
 
-.widget[data-ss-colspan='2'] { 
+.widget[data-ss-colspan='2'] {
   width: 490px;
-  height:310px; 
+  height:310px;
 }
 
 .sscontainer .ss-placeholder-child {
@@ -848,7 +880,7 @@ form.custom .custom.dropdown{
 
 form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   width:100%;
-  left:0 !important;  
+  left:0 !important;
   max-width:100% !important;
 }
 
@@ -858,9 +890,9 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
     top: 1px;
     right: 0;
     margin: 0;
-    background: url("/img/arrowOutlet.jpg") left top no-repeat;  
-    width:33px;          
-    height:99%; 
+    background: url("/img/arrowOutlet.jpg") left top no-repeat;
+    width:33px;
+    height:99%;
 
 }
 
@@ -903,12 +935,16 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   padding: 0;
   background: #fff;
   border: solid 1px #ccc;
-  font-size: 16p
+  font-size: 16px;
 }
 
 .highcharts-content:hover .chart_AREA {
   opacity:0.5;
   cursor:pointer;
+}
+
+.highcharts-container {
+  width: 100% !important;
 }
 
 .fa{
@@ -961,7 +997,7 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   font-size: 13px;
   font-weight: 400;
   line-height: 32px;
-  color: #333 !important;     
+  color: #333 !important;
 
 }
 
@@ -1021,18 +1057,18 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   font-size: 13px;
 }
 
-.select2-input{  
+.select2-input{
     font-size: 13px !important;
     font-weight: 400;
 }
 
 .select2-results .select2-highlighted .select2-result-label{
-  color: #fff !important; 
+  color: #fff !important;
 }
 
 .select2-drop-active{
- border: 1px solid #aaa; 
- border-top: none; 
+ border: 1px solid #aaa;
+ border-top: none;
 }
 
 
@@ -1075,7 +1111,7 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
   z-index: 1000;
   opacity:1;
 } */
- 
+
 .align-center{
   text-align: center;
 }
@@ -1083,7 +1119,7 @@ form.custom .customDropdown ul.f-dropdown ,form.custom .customDropdown li{
 
 
 .invisibleBack{
-  opacity:0; 
+  opacity:0;
   z-index:-1;
 }
 
@@ -1152,4 +1188,12 @@ margin-left: -12px;
 
 .marketingOpt{
   width:15px;
+}
+
+.colItems {
+  width: 240px;
+}
+
+.select2Events {
+  width: 100%;
 }

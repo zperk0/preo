@@ -45,9 +45,12 @@ angular.module('notification', ['ngSanitize'])
             return $sce.trustAsHtml(html || '');
         }
 
-        $scope.showTerm = data.showTerm || false;        
+        $scope.showTerm = data.showTerm || false;
 
         $scope.acceptTerm = false;
+
+        $scope.contentClass = data.contentClass || '';
+        $scope.modifyPositionButtons = data.modifyPositionButtons || false;
 
         if (data.btnOk === false){
             $scope.btnOk = false;

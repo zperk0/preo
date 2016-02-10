@@ -3,9 +3,9 @@
 	<div class="flip-container flipRelative topSpacing">
 		<div class="flipper reportPage">
 			<div class="front" id="content-list">
-				
-				<div class="header-list overflow">			
-					<span ><? echo _("Customers") ?></span>
+
+				<div class="header-list overflow">
+					<span translate>Customers</span>
 
 					<a href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
 						<i class="fa fa-plus"></i>
@@ -23,26 +23,26 @@
 							  </div>
 					  		</th>
 					  		<th ng-click=" setOrderBy('name');">
-					  			<? echo _("Name")?>
+					  			{{"Name" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
 					  			</div>
 					  		</th>
 					  		<th ng-click=" setOrderBy('totalSpent');">
-					  			<? echo _("Total Spent")?>
+					  			{{"Total Spent" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
+					  			</div>
 					  		</th>
 					  		<th ng-click=" setOrderBy('emailAddress');">
-					  			<? echo _("Email address")?>
+					  			{{"Email address" | translate}}
 					  			<div class="sort pull-right">
 					  				<i class="fa fa-sort-up"></i>
 					  				<i class="fa fa-sort-desc"></i>
-					  			</div>		  			
-					  		</th>					  		
+					  			</div>
+					  		</th>
 					  		<th > <div marketing='loyalty'></div></th>
 					  		<th><div marketing='offers'></div></th>
 					  		<th ><div marketing='other'></div></th>
@@ -54,7 +54,7 @@
 							  <div class="checkbox checkboxStyle checkboxPartials">
 							  	<input type="checkbox" ng-model="customer.selected" id="check_{{ key }}" />
 							    <label for="check_{{ key }}"></label>
-							  </div>					  		
+							  </div>
 					  		</td>
 					  		<td>{{ customer.name }}</td>
 					  		<td>{{ getCurrency()+customer.totalSpent.toFixed(2) }}</td>
@@ -64,21 +64,21 @@
 					  		<td class='marketingTd'><img class='marketingOpt' ng-src="{{customer.other  | marketing }}"/></td>
 					  	</tr>
 					  </tbody>
-					</table>		
+					</table>
 				</div>
 
 				<div class="align-center">
 					<pagination class="inlineBlock pagination" boundary-links="true" items-per-page="numPerPage" total-items="totalItems" page="currentPage" num-pages="numPages" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
-				</div>				
+				</div>
 
 			</div>
 
 			<div class="actions-chart back">
-				
+
 		</div>
 	</div>
 	<div class="header-chart overflow invisibleBack">
-				
+
 					<a href="javascript:void(0)" class="pull-left" ng-click="hideOptions()">
 						<i class="fa fa-arrow-left icon-white"></i>
 					</a>
@@ -86,35 +86,31 @@
 				</div>
 
 							<div class="content-actions invisibleBack">
-					<h4><? echo _("Export as...") ?></h4>
+					<h4 translate>Export as...</h4>
 
 
 						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/pdfs/report' method='POST' ng-submit='exportPdf()' class="formLeft">
 							<input name='data' value='{{pdfData}}' type='hidden'/>
-								<button ng-click="exportData('pdf')">
-										<? echo _("PDF") ?>
-								</button>
+								<button ng-click="exportData('pdf')" translate>PDF</button>
 						</form>
-						
+
 						<form action='/api/accounts/<? echo $_SESSION['account_id']?>/exports/csv/report' method='POST' ng-submit='exportCsv()'>
 							<input name='data' value='{{csvData}}' type='hidden'/>
-								<button ng-click="exportData('csv')">
-										<? echo _("CSV") ?>
-								</button>
+								<button ng-click="exportData('csv')" translate>CSV</button>
 						</form>
-											
+
 						<div class="content-optionsExport">
-							<div class="options optionsExport overflow">						
+							<div class="options optionsExport overflow">
 							  <div class="checkbox checkboxStyle">
 							  	<input type="radio" ng-model="exportAll" name="option" value="1" id="exportAll" />
-							    <label for="exportAll"><? echo _("All") ?></label>
-							  </div>					
+							    <label for="exportAll" translate>All</label>
+							  </div>
 							  <div class="checkbox checkboxStyle">
 							  	<input type="radio" ng-model="exportAll" name="option" value="0" id="exportSelected" />
-							    <label for="exportSelected"><? echo _("Selected") ?></label>
-							  </div>					
+							    <label for="exportSelected" translate>Selected</label>
+							  </div>
 							</div>
-						</div>	
+						</div>
 				</div>
 			</div>
 </div>

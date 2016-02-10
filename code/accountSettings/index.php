@@ -1,27 +1,28 @@
 <?  session_start();
   require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'); //need this for multi-language support
-  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/authentication.php');  
+  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/authentication.php');
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
-  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
-  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
-?> 
+  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php');
+  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
+?>
 
-  <div ng-app="accountSettings"  class='accountSettings row'>
-    <div ng-controller="MenuCtrl">      
+  <div ng-app="accountSettings"  class='accountSettings row <?php  echo $_SESSION["OVERRIDES"]["billing"] ? "" : "no-billing" ?>'>
+    <div ng-controller="MenuCtrl">
     	<div class='content'>
     		<div ng-view> </div>
         <div class='bottomSpacer'></div>
     	</div>
     	<div class='menu'>
-  		<h3>Account Settings</h3>
-
-  		<ul>  			
-  			<li ng-class="{'selected':currentView == Views.subscription}" ng-click="setSelected(Views.subscription)">  <a href="#/subscription"><?echo _("Subscriptions") ?></a></li>
-  			<li ng-class="{'selected':currentView == Views.paymentMethod}" ng-click="setSelected(Views.paymentMethod)">  <a href="#/paymentMethod"><?echo _("Payment Methods") ?></a></li>
-  			<li ng-class="{'selected':currentView == Views.billingHistory}" ng-click="setSelected(Views.billingHistory)">  <a href="#/billingHistory"><?echo _("Billing History") ?></a></li>
-        <li ng-class="{'selected':currentView == Views.profile}" ng-click="setSelected(Views.profile)"> <a href="#/profile"><?echo _("Profile") ?></a></li>
+  		<h3 translate>My Account</h3>
+  		<ul>
+      <? if ($_SESSION['OVERRIDES']['billing']) { ?>
+  			<li ng-class="{'selected':currentView == Views.subscription}" ng-click="setSelected(Views.subscription)">  <a href="#/subscription" translate>Subscriptions</a></li>
+  			<li ng-class="{'selected':currentView == Views.paymentMethod}" ng-click="setSelected(Views.paymentMethod)">  <a href="#/paymentMethod" translate>Payment Methods</a></li>
+  			<li ng-class="{'selected':currentView == Views.billingHistory}" ng-click="setSelected(Views.billingHistory)">  <a href="#/billingHistory" translate>Billing History</a></li>
+      <? } ?>
+        <li ng-class="{'selected':currentView == Views.profile}" ng-click="setSelected(Views.profile)"> <a href="#/profile" translate>Profile</a></li>
 
   		</ul>
     	</div>
@@ -47,22 +48,26 @@
             <div class="b12 se"></div>
           </div>
         </div>
-      </div>  
+      </div>
   </div>
-    
 
 
-  <script src="/js/angular_all.min.js"></script>  
 
-  <script type="text/javascript" src="https://js.stripe.com/v2/"></script> 
-  <!-- BEGIN WATCH 
-  <script src="/code/accountSettings/app.js"></script>  
+  <script src="/js/angular_all.min.js"></script>
+
+
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <!-- BEGIN WATCH
+  <script src="/bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
+  <script src="/locale_angular/translations.js"></script>
+  <script src="/code/accountSettings/app.js"></script>
   <script src="/code/accountSettings/directives/equals.js"></script>
   <script src="/code/accountSettings/resources/user.js"></script>
   <script src="/code/accountSettings/resources/account.js"></script>
   <script src="/code/accountSettings/resources/accountCard.js"></script>
-  <script src="/code/accountSettings/resources/accountFeature.js"></script>  
-  <script src="/code/accountSettings/resources/accountInvoice.js"></script>  
+  <script src="/code/accountSettings/resources/accountFeature.js"></script>
+  <script src="/code/accountSettings/resources/accountInvoice.js"></script>
+  <script src="/code/accountSettings/resources/accountPackages.js"></script>
   <script src="/code/accountSettings/controllers/billingCtrl.js"></script>
   <script src="/code/accountSettings/controllers/profileCtrl.js"></script>
   <script src="/code/accountSettings/controllers/passwordCtrl.js"></script>
@@ -70,13 +75,19 @@
   <script src="/code/accountSettings/controllers/subscriptionCtrl.js"></script>
   <script src="/code/accountSettings/controllers/menuCtrl.js"></script>
   <script src="/code/loader/ajaxInterceptor.js"></script>
-  <script src="/code/models/AccountFeature.js"></script>
-  <script src="/code/notification/notification.js"></script>  
+  <script src="/code/models/accountFeature.js"></script>
+  <script src="/code/notification/notification.js"></script>
   <!-- END WATCH -->
 
   <script src="/code/accountSettings/js/all.min.js"></script>
-  <script src="/code/constants/session.php"></script>  
+  <script src="/code/constants/session.php"></script>
+  <script>
+  var HAS_BILLING = <?php echo $_SESSION['OVERRIDES']['billing']  == true  ? "true" : "false" ?>;
+  var EMAILS = {
+    SUPPORT: "<?php echo $_SESSION['OVERRIDES']['support_email'] ?>"
+  }
+  </script>
 
-<? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
+<? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
 
 

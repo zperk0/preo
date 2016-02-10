@@ -20,7 +20,7 @@ switch ($lang)
 		break;
 
 	case 'de':
-		$locale = 'german';
+		$locale = 'de_DE.utf8';
 		$strings = 'de_DE';
 		break;
 
@@ -35,10 +35,15 @@ switch ($lang)
 		break;
 
 	case 'fr':
-		$locale = 'french';
+		$locale = 'fr_FR.utf8';
 		$strings = 'fr_FR';
 		break;
-	
+
+	case 'nb':
+		$locale = 'nb_NO.utf8';
+		$strings = 'nb_NO';
+		break;
+
 	default:
 		$locale = 'english';
 		$strings = 'en_US';
@@ -112,7 +117,7 @@ switch ($lang)
 		$locale = 'russian';
 		$strings = 'ru_RU';
 		break;
-	
+
 	default:
 		$locale = 'english';
 		$strings = 'en_US';

@@ -1,26 +1,28 @@
-<h3><?echo _("Subscriptions")?></h3>
+<h3 translate>Subscriptions</h3>
 
 <section class='scheduleWrapper' >
-	<header><? echo _("Billing Schedule")?></header>
-	<br/>	
-	<div ng-if='card === false && (!subscriptionInvoice || subscriptionInvoice.status !== "REJECTED")'>				
-		<p><? echo _("Please add a payment method in order to subscribe to premium features")?></p>
-		<button class='preodayButton' ng-click='navigateTo("/accountSettings#/paymentMethod")'><? echo _("ADD PAYMENT METHOD") ?></button>
-	</div>		
-	<div ng-if='card !== false'>						
+	<header translate>Billing Schedule</header>
+	<br/>
+	<div ng-if='card === false'>
+		<p translate>Please add a payment method to keep your account active</p>
+		<button class='preodayButton' ng-click='navigateTo("/accountSettings#/paymentMethod")' translate>ADD PAYMENT METHOD</button>
+	</div>
+	<div ng-if='card !== false'>
 			<div ng-if='subscriptionInvoice && subscriptionInvoice.status === "REJECTED" ' class='recurringPaymentFailed'>
-				<p><strong><? echo _("You have an outstanding payment!")?> </strong></p>	
-				<p><? echo _("Please update your card details within ")?> {{ diffInDays }}  <? echo _(" days to prevent your Premium Features from being deactivated.")?> </p>					
+				<p><strong translate>You have an outstanding payment! </strong></p>
+				<p>{{"Please update your card details within" | translate}} {{ diffInDays }} {{"days to prevent your account from being deactivated." | translate}}</p>
 			</div>
-			<div ng-if='!subscriptionInvoice || subscriptionInvoice.status !== "REJECTED"' class="contentMessageSubscription">			
-				<p ng-if="account.billingDate !== null"  ><? echo _("Your account will be billed")?> <b class='helveticaneueWMedi'>&pound;{{getTotalSubscription()}}</b> <? echo _("on") ?> <b class='helveticaneueWMedi'>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>			
-				<p ng-if="account.billingDate === null"><? echo _("You have no active subscriptions, your account will not be billed at this time.")?> </p>										
+			<div ng-if='!subscriptionInvoice || subscriptionInvoice.status !== "REJECTED"' class="contentMessageSubscription">
+
+				<p ng-if="account.billingDate !== null && getTotalSubscription()>0">{{"Your account will be billed" | translate}} <b class='helveticaneueWMedi'>&pound;{{getTotalSubscription()}} (+VAT)</b> <b class='helveticaneueWMedi'>{{ account.billingDate | date:"MMM dd, yyyy" }}</b> </p>
+				<p ng-if="account.billingDate !== null && getTotalSubscription()==0">{{"Your account will be deactivated on" | translate}}  <b class='helveticaneueWMedi'>{{ account.billingDate | date:"MMM dd, yyyy" }}</b>  </p>
+				<p ng-if="account.billingDate === null" translate>You have no active subscriptions, your account will not be billed at this time. </p>
 			</div>
 			<div class='smallCard'>
-				<img src='/img/credit-card.png' class='left'> 
+				<img src='/img/credit-card.png' class='left'>
 				<div class='left'>
 					<strong class='helveticaneueWMedi'>{{ card.type }}</strong>
-					<p> Card ending {{card.number}}</p>
+					<p> {{"Card ending" | translate}} {{card.number}}</p>
 				</div>
 				<div class='clearfix'></div>
 			</div>
@@ -29,70 +31,30 @@
 				<div class='day'>{{ account.billingDate | date:"d" }}</div>
 			</div>
 			<div class='clearfix'></div>
-			<button class='preodayButton inlineButton' ng-click="navigateTo('/accountSettings#/paymentMethod')"><? echo _("CHANGE CARD") ?></button>
-				<button class='preodayButton inlineButton' ng-click="navigateTo('/accountSettings#/billingHistory')"><? echo _("BILLING HISTORY") ?></button>
-	</div>	
+			<button class='preodayButton inlineButton' ng-click="navigateTo('/accountSettings#/paymentMethod')" translate>CHANGE CARD</button>
+				<button class='preodayButton inlineButton' ng-click="navigateTo('/accountSettings#/billingHistory')" translate>BILLING HISTORY</button>
+	</div>
 </section>
 
-<section class='activeFeaturesWrapper'>
-	<header><? echo _("Active Premium Features")?></header>
-	<br/>
-	<div ng-show='activeFeaturesCount == 0' >		
-		<p><? echo _("You currently don't have any active Premium Features on your account.")?></p>		
-		<p class='marginBottom100'><? echo _("Why not check out our")?> <a href='/shop' class='premiumFeatureColor'>  <? echo _("Available Premium Features")?> </a> <? echo _("and discover how they can start 
-			adding further value to your business, today?")?></p>			
-	</div >
-			<table ng-if='activeFeaturesCount >= 1'>
-				<tr ng-repeat="accountFeature in accountFeatures | filter:isInstalled " ng-class='{"disabled":accountFeature.status === "UNINSTALLED" }'>
-						<td > <img ng-src="{{accountFeature.feature.icon}}" /> </td>
-						<td class='featureTitle'> <span class='featureAppTitle' ng-show="accountFeature.feature.showAppTitle"> my order app </span> 
-							<a ng-if='accountFeature.getLink()' ng-href='{{accountFeature.getLink()}}'> 
-								{{accountFeature.feature.name}} 
-							</a>
-							<div ng-if='!accountFeature.getLink()'>{{accountFeature.feature.name}} </div>
-						</td>
-						<td ng-if="accountFeature.status === 'INSTALLED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
-						<td ng-if="accountFeature.status === 'TRIAL'" class='errorColor'> Free trial expires in {{getExpiryDate(accountFeature)}} days </td>				
-						<td ng-if="accountFeature.status === 'UNINSTALLED'">  <? echo _("Pending removal") ?> </td>				
-						<td ng-switch='accountFeature.status'>
-								<span ng-switch-when="INSTALLED"  > 
-									<span ng-click='openConfirmDialog(accountFeature)' ng-if="!accountFeature.isInContractPeriod()" class='positiveButton'>
-										<? echo _("Uninstall")?>
-									</span>
-									<span ng-if="accountFeature.isInContractPeriod()" class='disabled'
-									tooltip-animation='false' tooltip="<? echo _('Contract ends on') ?> {{accountFeature.getContractEnd() | date:'dd/MM/yyyy' }} "   tooltip-append-to-body='true'>
-										<? echo _("Uninstall")?>
-									</span>
+<section class='activeFeaturesWrapper' ng-repeat="accountPackage in accountPackages">
+	<header translate>My Subscriptions</header>
 
-								</span>
-								<span ng-switch-when="TRIAL" ng-click='openConfirmDialog(accountFeature)' class='positiveButton'> <? echo _("Uninstall")?></span>
-								<span ng-switch-when="UNINSTALLED" ng-click='updateStatus(accountFeature,"INSTALLED")' class='negativeButton'> <? echo _("Cancel")?></span>
-						</td>
-				</tr>
-			</table>
-			<button class='preodayButton premium inlineButton' ng-click="navigateTo('/shop')"><? echo _("STORE") ?></button>
-	<div>
-		
-	</div>		
-</section>
-
-	<section class='deactivatedFeaturesWrapper' ng-if="hasCancelledFeatures()">
-			<header><? echo _("Deactivated Premium Features")?></header>
-			<br/>
-			<div>
-				<table>
-					<tr ng-repeat="accountFeature in accountFeatures | filter:isCanceled" class="disabled" >
-						<td > <img ng-src="{{accountFeature.feature.icon}}" /> </td>
-						<td class='featureTitle'> {{accountFeature.feature.name}} </td>						
-						<td ng-if="accountFeature.status === 'CANCELED'"> &pound;{{accountFeature.feature.subscriptionPrice}}/month </td>				
-						<td ng-if="accountFeature.status === 'EXPIRED'"> <? echo _("Trial has expired")?> </td>				
-						<td >
-								<span ng-click='reinstallAccountFeature(accountFeature)' class='positiveButton'> <? echo _("Reinstall")?> </span>&nbsp;
-								<span ng-click='removeAccountFeature(accountFeature)' class='negativeButton'> <? echo _("Remove")?> </span>
-						</td>
-					</tr>
-				</table>	
-			</div>
-
+	<section class='activeFeaturesWrapper'>
+		<div class="blockSubscriptions" ng-if="isInstalled(accountPackage)">
+			<p>{{"You are currently subscribed to the" | translate}} {{accountPackage.preoPackage.name}} {{"package" | translate }}.</p>
+			<p class="textGreen" ng-if="accountPackage.status == 'TRIAL'">{{"Your free trial of this subscription will end at midnight on" | translate}} {{getTrialPeriod(accountPackage)}}</p>
+		</div>
+		<div class="blockSubscriptions" ng-if="isUninstaled(accountPackage)">
+			<p>{{"Your subscription has been cancelled" | translate}} <span ng-if='!card'>. {{"Please add a credit card to resubscribe" | translate}}.</span></p>
+		</div>
+		<div class="buttonsSubscriptions" ng-if="isInstalled(accountPackage)">
+			<button class='preodayButton inlineButton' ng-click="showDialog('updatePackage', accountPackage)" translate>UPGRADE</button>
+			<button class='preodayButton inlineButton' ng-click="showDialog('cancelPackage', accountPackage)" translate>CANCEL</button>
+		</div>
+		<div class="buttonsSubscriptions" ng-if="isUninstaled(accountPackage)">
+			<button class='preodayButton inlineButton' ng-if="card" ng-click="resubscribePackage(accountPackage)" translate>RESUBSCRIBE</button>
+			<button class='preodayButton inlineButton disabled' ng-if="!card" translate>RESUBSCRIBE</button>
+		</div>
 	</section>
+</section>
 </div>

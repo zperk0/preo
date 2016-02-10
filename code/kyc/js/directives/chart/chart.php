@@ -7,19 +7,17 @@
 				<a href="javascript:void(0)" id="removable_{{ chart.num }}" class="pull-left" ng-click="removeGrid(chart, $event)">
 					<i class="fa fa-remove-kyc"></i>
 				</a>
-					
+
 				<span>{{ chart.title }}</span>
-		
+
 				<a ng-if="chart.showChart && !noData" href="javascript:void(0)" class="pull-right" ng-click="showOptions()">
 					<i class="fa fa-plus-kyc"></i>
 				</a>
 
 			</div>
-			
+
 			<div ng-if='noData'>
-				<div class='noData'>
-					<? echo _("No Data")?>
-				</div>
+				<div class='noData' translate>No Data</div>
 			</div>
 			<div ng-if='!noData'>
 
@@ -29,7 +27,7 @@
 						<div class="pull-left numberLeft" ng-if="chart.value.numberLeft !== undefined">
 							{{ getText(chart) }}
 						</div>
-						
+
 					</div>
 
 					<div class="highcharts-content">
@@ -37,10 +35,10 @@
 					</div>
 
 					<div ng-if="chart.value.items" class="containerMultiSelect">
-						<select ui-select2 ng-model="chart.value.selectedItemId" ng-change="changeItem()" 						
+						<select ui-select2 ng-model="chart.value.selectedItemId" ng-change="changeItem()"
 						data-placeholder="{{chart.value.selectedItemId}}" class="dropdown pdDropdown multiSelectChart selectOutlet select2Preoday">
 						    <option value=""></option>
-						    <option ng-repeat="item in chart.value.items | orderBy:'name'" value="{{ item.id }}">{{item.name}}</option>
+						    <option ng-repeat="item in chart.value.items | orderBy:'name'" value="{{ item.menuItemId }}">{{item.name}}</option>
 						</select>
 <!-- 		              <multi-select
 						class="dropdown pdDropdown multiSelectChart selectOutlet"
@@ -51,7 +49,7 @@
 					    default-label="{{chart.value.selectedItem}}"
 					    selection-mode="single"
 					    on-change="changeItem()"
-					></multi-select>	 -->					
+					></multi-select>	 -->
 					</div>
 
 				</div>
@@ -61,29 +59,25 @@
 				</div>
 			</div>
 		</div>
-		<div class="actions-chart back">			
+		<div class="actions-chart back">
 		</div>
 	</div>
-	<div class="header-chart overflow invisibleBack">			
+	<div class="header-chart overflow invisibleBack">
 				<a href="javascript:void(0)" class="pull-left" ng-click="hideOptions()">
 					<i class="fa fa-arrow-left-kyc icon-white"></i>
 				</a>
-	</div>			
+	</div>
 	<div class="content-actions invisibleBack">
-				<h4><? echo _("Export as...") ?></h4>
+				<h4 translate>Export as...</h4>
 
-				<div class="buttons"> 
+				<div class="buttons">
 					<form action="{{ '/api/accounts/' + ACCOUNT_ID + '/exports/pdfs/post' }}" method='POST' ng-submit='exportPdf()'>
 						<input name='data' value='{{pdfData}}' type='hidden'/>
-							<button  type='submit'>
-								<? echo _("PDF")?>
-							</button>
+							<button type='submit' translate>PDF</button>
 					</form>
-					<form action="{{ '/api/accounts/' + ACCOUNT_ID + '/exports/csv/post' }}" method='POST' ng-submit='exportCsv()'>						
+					<form action="{{ '/api/accounts/' + ACCOUNT_ID + '/exports/csv/post' }}" method='POST' ng-submit='exportCsv()'>
 						<input name='data' value='{{csvData}}' type='hidden'/>
-							<button  type='submit'>
-								<? echo _("CSV")?>
-							</button>
+							<button  type='submit' translate>CSV</button>
 					</form>
 				</div>
 			</div>

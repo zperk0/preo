@@ -18,7 +18,7 @@ angular.module('kyc.directives').
 
             if ( ng.compareStart ) {
 
-              var isBeforeStart = date.valueOf() < ng.compareStart.valueOf() || date.valueOf() >= moment.utc().endOf('day').valueOf();
+              var isBeforeStart = date.valueOf() < ng.compareStart.valueOf();
 
               return isBeforeStart ? 'disabled' : '' ;  
             } else if ( ng.compareEnd ) {

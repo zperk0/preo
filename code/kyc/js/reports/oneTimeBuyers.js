@@ -14,11 +14,11 @@ angular.module('kyc.reports')
 					dateJoined:customerOrder.created,
 					dateOfOrder:customerOrder.firstOrder,
 					name:customerOrder.firstName + " " + customerOrder.lastName,
-					email:customerOrder.username,
+					email:customerOrder.email,
 					loyalty: customerOrder.optinLoyalty,
 					offers: customerOrder.optinOffers,
 					other: customerOrder.optinOther
-				} 			
+				}
 			}
 		})
 	}
@@ -42,7 +42,7 @@ angular.module('kyc.reports')
 	Report.getTitle = function(){
 		return title;
 	}
-	
+
 
 	return Report;
 

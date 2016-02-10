@@ -1,5 +1,5 @@
 /*  PREO-ABIDE
-  //TODO add description here 
+  //TODO add description here
 **/
 
 ;(function ($, window, document, undefined) {
@@ -64,7 +64,7 @@
     },
 
     events : function () {
-	  var self = this,
+    var self = this,
           forms = $('form[data-preoabide]', this.scope).attr('novalidate', 'novalidate');
 
       // /* Error Handling */
@@ -80,7 +80,6 @@
       // [data-preoabide] span.error, [data-preoabide] small.error {
       //   display: none; }
 
-      console.log('f,scope',forms,this.scope)
       forms
         .on('submit validate', function (e) {
           return self.validate($(this).find('input, textarea, select').get(), e);
@@ -88,8 +87,8 @@
 
       this.settings.init = true;
 
-	     //console.log(this.settings);
-	  
+       //console.log(this.settings);
+
       if (!this.settings.live_validate) return;
 
       forms
@@ -169,13 +168,13 @@
         var el = el_patterns[i][0],
             required = el_patterns[i][2],
             value = el.value,
-			is_equal = el.getAttribute('data-equalto'),
+      is_equal = el.getAttribute('data-equalto'),
             is_radio = el.type === "radio",
             valid_length = (required) ? (el.value.length > 0) : true;
 
         if (is_radio && required) {
           validations.push(this.valid_radio(el, required));
-		  } else if (is_equal && required) {
+      } else if (is_equal && required) {
            validations.push(this.valid_equal(el, required));
         } else {
           if (el_patterns[i][1].test(value) && valid_length ||
@@ -211,7 +210,7 @@
       }
 
       return valid;
-	},
+  },
 
     valid_equal: function(el, required) {
         var from  = document.getElementById( el.getAttribute('data-equalto') ).value,

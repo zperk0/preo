@@ -24,12 +24,10 @@ angular.module('accountSettings.controllers')
     	
     	$scope.$watch("user.firstName",function(newVal,oldVal){
     		$scope.user.name = newVal + " " + $scope.user.lastName;
-    		console.log($scope.user.name)
 		})
 
 		$scope.$watch("user.lastName",function(newVal,oldVal){			
     		$scope.user.name = $scope.user.firstName + " " + newVal;
-    		console.log($scope.user.name)
 
 		})
         $scope.finishLoading();
