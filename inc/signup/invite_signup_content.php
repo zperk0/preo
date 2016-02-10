@@ -42,7 +42,7 @@
 						<hr>
 						<div class="form-group accept">
 							<label class="checkbox-inline accept">
-								<input type="checkbox" required name="accept" id="termsConditions" value="Y"><?php echo _("I have read accept the"); ?>  <a href="<?php echo $_SESSION['OVERRIDES']["terms"] ?>" target="_blank"><?php echo _("terms of service"); ?></a> <?php echo _("and"); ?> <a href="<?php echo $_SESSION['OVERRIDES']["privacy"] ?>" target="_blank"><?php echo _("privacy policy"); ?></a><?php echo _(", including the terms regarding cookies"); ?>
+								<input type="checkbox" required name="accept" id="termsConditions" ><?php echo _("I have read accept the"); ?>  <a href="<?php echo $_SESSION['OVERRIDES']["terms"] ?>" target="_blank"><?php echo _("terms of service"); ?></a> <?php echo _("and"); ?> <a href="<?php echo $_SESSION['OVERRIDES']["privacy"] ?>" target="_blank"><?php echo _("privacy policy"); ?></a><?php echo _(", including the terms regarding cookies"); ?>
 								<small class="error"><?echo _("Your have accept tems & conditions for start using ") . $_SESSION['OVERRIDES']['title'] . _(" app.");?></small>
 							</label>
 						</div>
@@ -60,6 +60,14 @@
 
 <script>
 	$("#signUpForm").on('valid', function () {
+
+		if (!$('#termsConditions').is(':checked')) {
+			noty({
+			  type: 'error',  layout: 'topCenter',
+			  text: _tr("You must accept the terms and conditions")
+			});
+			return false;
+		}
 		$('#loading').show();
 		var url = "/doInvite";
 		console.log("posting")

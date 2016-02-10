@@ -10,11 +10,6 @@
 			<input type="hidden" id="userCount"		name="userCount" 		value="<?if($_SESSION['user_edit_on']) echo $userCount; else echo "0";?>"/>
 			<input type="hidden" id="userCountAct" 	name="userCountAct"		value="<?if($_SESSION['user_edit_on']) echo $userCount; else echo "0";?>"/>
 
-			<div class="row">
-				<div class="large-12 columns">
-					<button id="add_user" 	type="button" class="newUser" title="<?echo _("Add a new user");?>"><i class="pd-add"></i></button> <?echo _("Add a new user");?>
-				</div>
-			</div>
 
 			<table class="headerTable">
 				<thead>
