@@ -163,6 +163,7 @@
 								</td>
 								<td class="userTDTools">
 									<button type="button" class="userTableButtons secondary inviteUserDelete" 	title="<?echo _("Delete");?>"				><i class="pd-delete"></i></button>
+									<button type="button" class="userTableButtons secondary inviteUserResend pd-envelope" 	title="<?echo _("Resend Invitation");?>"></button>
 								</td>
 							</tr>
 						</tbody>
@@ -199,6 +200,7 @@
 						</td>
 						<td class="userTDTools">
 							<button type="button" class="userTableButtons secondary inviteUserDelete <?if($_SESSION['user_id'] == $user['id']) echo 'hide';?>" title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
+							<button type="button" class="userTableButtons secondary inviteUserResend pd-envelope" 	title="<?echo _("Resend Invitation");?>"></button>
 						</td>
 					</tr>
 				</tbody>

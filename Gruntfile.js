@@ -160,7 +160,7 @@ module.exports = function(grunt) {
     watch: {
       js: {
         files: ['js/**/*.js'],
-        tasks: ['minifyjs'],
+        tasks: ['uglify:build'],
         options: {
           spawn: false,
           livereload: true

@@ -2793,17 +2793,15 @@ $(document).ready(function() {
 		$curItem.css('max-width', '100%');
 	});
 
-	$(document).on("click", ".userTDEdit, .userTR input[readonly='readonly']", function() {
+	$(document).on("click", ".userTDEdit",function() {
 		if($(this).hasClass('userTDEdit')) $(this).hide();
 		else $(this).closest('table').find('.userTDEdit').hide();
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").addClass('userEdit');
 		$curItem.find("tr").removeClass('savedInput');
-		$curItem.find("input").removeAttr("readonly");
 		$curItem.find("input[name^='uEmail']").each(function(){ if($(this).hasClass('preSaved')) $(this).attr("readonly", "readonly"); });
 		$curItem.find(".userSave").removeClass('hide');
 		$curItem.find(".userSave").show();
-		$curItem.find(".userPassTR").show();
 		$curItem.find(".userMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
@@ -3051,6 +3049,53 @@ $(document).ready(function() {
 
 	});
 
+	$(document).on("click", ".inviteUserResend", function() {
+		//get event number
+		$curTable = $(this).closest('table');
+		userID = $curTable.attr('id');
+
+		realUserID = $curTable.find("input[name^=iuID]").val();
+		console.log("found userId:" + realUserID)
+		noty({
+			layout: 'center',
+			type: 'confirm',
+			text: _tr('Resend confirmation email?'),
+			buttons: [
+			{addClass: 'alert tiny', text: _tr('Yes'), onClick: function($noty) {
+
+				var url = "/resendInvite";
+						$.ajax({
+							   type: "POST",
+							   url: url,
+							   data: 'inviteId='+realUserID, // serializes the form's elements.
+							   success: function(data)
+							   {
+									try
+									{
+										noty({ type: 'success', text: _tr('New email has been sent!') });
+									}
+									catch(e)
+									{
+										noty({
+										  type: 'error',  layout: 'topCenter',
+										  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
+										});
+										return false;
+									}
+								}
+							 });
+
+				$noty.close();
+			  }
+			},
+			{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
+				$noty.close();
+			  }
+			}
+		  ]
+		});
+	});
+
 	$(document).on("click", ".inviteUserDelete", function() {
 		//get event number
 		$curTable = $(this).closest('table');
@@ -3224,8 +3269,10 @@ $(document).ready(function() {
 							});
 						}
 
-						$('.inviteUserTable').each(function(){
-							userSave($(this));
+						$('.inviteUserTable').each(function(index){
+							// 0 is dummy
+							if (index>0)
+								userSave($(this));
 						});
 						noty({ type: 'success', text: _tr('User configuration has been saved!') });
 						setTimeout(window.location.reload,1000);

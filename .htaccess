@@ -49,6 +49,9 @@ RewriteRule ^.*$ /code/signup/do_signup.php [L]
 RewriteCond %{REQUEST_URI} ^/doInvite$ [NC]
 RewriteRule ^.*$ /code/signup/do_invite.php [L]
 
+RewriteCond %{REQUEST_URI} ^/resendInvite$ [NC]
+RewriteRule ^.*$ /code/signup/resend_invite.php [L]
+
 RewriteCond %{REQUEST_URI} ^/doSignIn$ [NC]
 RewriteRule ^.*$ /code/signin/do_signin.php [L]
 

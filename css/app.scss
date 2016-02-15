@@ -132,7 +132,7 @@ input[readonly] {
 }
 
 .itemTR input[readonly], .userTR input[readonly], .eventTR input[readonly] {
-  cursor: pointer;
+  cursor: disabled;
 }
 
 /* Chrome autofill colour replacement */
@@ -3891,6 +3891,14 @@ button.preodayButton.noclick{
   background: url('/img/icon-tags.png') left top no-repeat;
   width: 25px;
   height: 25px;
+}
+.pd-envelope{
+     background: url(/img/envelope.png) center no-repeat;
+    width: 28px;
+    height: 27px;
+    background-size: 20px;
+    float: left;
+    margin-right: 5px;
 }
 
 .footer-modalCrop, .header-modalCrop{
