@@ -192,7 +192,7 @@ module.exports = function(grunt) {
       },
       events:{
         files: ["<%= yeoman.events.files %>","<%= yeoman.events.index %>"],
-        tasks: ['uglify:accountSettings'],
+        tasks: ['uglify:events'],
         options: {
           spawn: false,
           livereload: true

@@ -40,32 +40,16 @@
                 moment.locale(language);
             }
 
-            $http.get("/api/accounts/"+ACCOUNT_ID+"/packages").then(
-                function(result){
-                  var found = false;
-                  if (result && result.data){
-                    for (var i = 0, len = result.data.length; i < len; i++) {
-                      var accountPackage = result.data[i];
-                      if (accountPackage && accountPackage.preoPackage && accountPackage.preoPackage.features) {
-                        for (var j = 0, lenJ = accountPackage.preoPackage.features.length; j < lenJ; j++) {
-                          var feature = accountPackage.preoPackage.features[j];
-                          //TODO replace the account feature resource with a model and rework the local statuses
-                          if (feature.id === FEATURES.BOOKING && (accountPackage.status === FEATURE_STATUS.INSTALLED || accountPackage.status === FEATURE_STATUS.TRIAL || accountPackage.status === FEATURE_STATUS.UNINSTALLED)) {
-                            found = true;
-                            break;
-                          }
-                        }
-                      }
-
-                      if (found) {
-                        break;
-                      }
-                    }
+                 $http.get("/api/accounts/"+ACCOUNT_ID+"/features/"+ FEATURES.BOOKING).then(
+              function(result){
+                var found = false;
+                  if (result && result.data && (result.data.status === "INSTALLED" || result.data.status === "TRIAL" || result.data.status === "UNINSTALLED")) {
+                      found = true;
                   }
-                  if (!found) {
-                    window.location.replace("/dashboard");
-                  }
-              });
+                if (!found) {
+                  window.location.replace("/dashboard");
+                }
+            });
 
         }]);
 })();

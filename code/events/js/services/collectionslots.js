@@ -31,26 +31,10 @@ angular.module('events')
 
     service.checkCustomFeature = function(eventObj) {
 
-        $http.get("/api/accounts/" + ACCOUNT_ID + "/packages").then(function(result) {
+        $http.get("/api/accounts/" + ACCOUNT_ID + "/features/" + CUSTOM_FEATURE_ID).then(function(result) {
 
-            if (result && result.data) {
-                for (var i = 0, len = result.data.length; i < len; i++) {
-                    var accountPackage = result.data[i];
-                    if (accountPackage && accountPackage.preoPackage && accountPackage.preoPackage.features) {
-                        for (var j = 0, lenJ = accountPackage.preoPackage.features.length; j < lenJ; j++) {
-                            var feature = accountPackage.preoPackage.features[j];
-                            //TODO replace the account feature resource with a model and rework the local statuses
-                            if (feature.id === CUSTOM_FEATURE_ID && (accountPackage.status === "INSTALLED" || accountPackage.status === "TRIAL" || accountPackage.status === "UNINSTALLED")) {
-                                customFeatureAvailable = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (customFeatureAvailable) {
-                        break;
-                    }
-                }
+            if (result && result.data && (result.data.status === "INSTALLED" || result.data.status === "TRIAL" || result.data.status === "UNINSTALLED")) {
+                customFeatureAvailable = true;
             }
         });
     };

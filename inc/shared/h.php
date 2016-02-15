@@ -6,7 +6,7 @@
 
 		$venues = getVenues( $_SESSION['user_id'] );
 		$accountId = $_SESSION['account_id'];
-		if (isset($accountId)){		
+		if (isset($accountId)){
 			$curlResult = callAPI('GET', $apiURL."accounts/$accountId/packages", false, $apiAuth);
 			$dataJSON = json_decode($curlResult, true);
 
@@ -26,20 +26,17 @@
 								$packageTrial = $accountPackage;
 							}
 						}
-
-						if (is_array($accountPackage['preoPackage']['features']) && !$isGroupBookingEnabled) {
-							foreach($accountPackage['preoPackage']['features'] as $feature) {
-								if ($feature['id'] == 9 && ($accountPackage['status'] === "INSTALLED" || $accountPackage['status'] === "TRIAL" || $accountPackage['status'] === "UNINSTALLED")) {
-									$isGroupBookingEnabled = true;
-									break;
-								}
-							}
-						}
 					}
-
-					if ($packageTrial && $isGroupBookingEnabled) {
+					if ($packageTrial) {
 						break;
 					}
+				}
+			}
+			$curlResult = callAPI('GET', $apiURL."accounts/$accountId/features/9", false, $apiAuth);
+			if ($curlResult){
+				$dataJSON = json_decode($curlResult, true);
+				if ($dataJSON['status'] === "INSTALLED" || $dataJSON['status'] === "TRIAL" || $dataJSON['status'] === "UNINSTALLED"){
+					$isGroupBookingEnabled = true;
 				}
 			}
 		}
@@ -104,7 +101,7 @@
 											if(is_array($dataJSONVoucher) && count($dataJSONVoucher)) {
 												$mDataJSON = array_merge(array_values($mDataJSON), array_values($dataJSONVoucher));
 											}
-											
+
 											$_SESSION['menus'] = $mDataJSON;
 											foreach($mDataJSON as $menuL){?>
 												<li><a href="<?echo $_SESSION['path']?>/editmenu/<?echo $menuL['id'];?>"><?echo _("Edit")." $menuL[name]";?></a></li>
