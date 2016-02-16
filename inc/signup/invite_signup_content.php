@@ -3,13 +3,13 @@
 			<div class="col col-lg-12">
 				<h1 class="text-center"><?php echo _("Sign up with ") . $_SESSION['OVERRIDES']['title'] ?></h1>
 				<div class="bs-callout">
-					<form class="form text-left" role="form" id="signUpForm" data-abide enctype="multipart/form-data" data-inviteid="<?php echo $User['id']?>">
+					<form class="form text-left" role="form" id="signUpForm" data-abide enctype="multipart/form-data" data-inviteid="<?php echo $User->id?>">
 						<h3><span class="no-icon no-1"></span><?php echo _("Basic information"); ?></h3>
 						<div class="row">
 							<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6">
 								<div class="form-group firstname">
 									<label for="firstname"><?php echo _("First name"); ?></label>
-									<input type="text" name="firstname" required class="form-control" id="firstname" value="<?php echo $User['name']?>" >
+									<input type="text" name="firstname" required class="form-control" id="firstname" value="<?php echo $User->name?>" >
 									<small class="error"><?echo _("Please type your first name");?></small>
 								</div>
 							</div>
@@ -27,7 +27,7 @@
 							<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6">
 								<div class="form-group emailaddress">
 									<label for="emailaddress"><?php echo _("Email address"); ?></label>
-									<input type="text" name="emailaddress" value="<?php echo $User['email']?>"  required class="form-control" pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' id="email">
+									<input type="text" name="emailaddress" value="<?php echo $User->email ?>"  required class="form-control" pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' id="email">
 									<small class="error"><?echo _("Please type your email");?></small>
 								</div>
 							</div>

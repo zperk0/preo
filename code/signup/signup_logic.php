@@ -5,39 +5,21 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/signup/signup_functions.php');
 
-	/* Requesting Facebook Fields */
-
-
 	$User = null;
 	$Account = null;
 
-
-
-
 if ( isset($_GET['inviteKey']) ) {
-		$inviteKey = $_GET['inviteKey'];
-
-		$inviteKey = explode('/', $inviteKey);
-
-		if (is_array($inviteKey)){
-		  if (count($inviteKey) === 2) {
-				$inviteKey = $inviteKey[1];
+				$inviteKey = $_GET['inviteKey'];
 				protect($inviteKey);
 
 				$data = [];
 
 				$jsonData = json_encode($data);
 
-				$curlResult = callAPI('GET', $apiURL."invite/key/" . $inviteKey, false, $apiAuth);
-				$User 	= json_decode($curlResult,true);
-
-				if(empty($User) || (isset($User['status']) && $User['status']=404)){
+				$User = getInviteUserByKey($inviteKey);
+				if(empty($User) || is_array($User)){
 					redirectPage('login');
 				}
-			}
-		} else {
-			redirectPage($_SESSION['path']);
-		}
 	}
 
 ?>

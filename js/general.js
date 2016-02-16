@@ -123,7 +123,7 @@ $(document).ready(function() {
 						//alert(data);
 						return false;
 					}
-
+					console.log(dataArray,'dataArray');
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
@@ -3247,8 +3247,8 @@ $(document).ready(function() {
 						//alert(data);
 						return false;
 					}
-
-					if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
+					console.log("data array",dataArray);
+					if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['message'] != 'undefined') ) //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',

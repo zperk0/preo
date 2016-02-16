@@ -29,10 +29,10 @@ RewriteCond %{REQUEST_URI} ^/register$ [NC]
 RewriteRule ^.*$ signup.php [L]
 
 RewriteCond %{REQUEST_URI} ^/signup$ [NC]
-RewriteRule ^.*$ signup.php?inviteKey=$0 [L]
+RewriteRule ^.*$ signup.php [L]
 
 RewriteCond %{REQUEST_URI} ^/invite/(.*)$ [NC]
-RewriteRule ^.*$ /signup.php?inviteKey=$0 [L]
+RewriteRule ^.*$ invite.php?inviteKey=$0 [L]
 
 RewriteCond %{REQUEST_URI} ^/join$ [NC]
 RewriteRule ^.*$ signup.php [L]
