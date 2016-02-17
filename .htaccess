@@ -61,6 +61,9 @@ RewriteRule ^.*$ /code/shared/logout.php [L]
 RewriteCond %{REQUEST_URI} ^/404$ [NC]
 RewriteRule ^.*$ 404.php [L]
 
+RewriteCond %{REQUEST_URI} ^/staff$ [NC]
+RewriteRule ^.*$ staff.php [L]
+
 RewriteCond %{REQUEST_URI} ^/profile$ [NC]
 RewriteRule ^.*$ settings.php [L]
 

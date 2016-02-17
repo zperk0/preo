@@ -4,18 +4,13 @@
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
 	require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/signup/signup_functions.php');
-
-	$accountCard = $_POST['accountCard'];
-	protectArray($accountCard);
-
+	require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/invite/invite_shared.php');
 
 	$inviteId = $_POST['inviteId'];
-  protect($inviteId);
 
 	$jsonData = json_encode($_POST['user']);
 
-	$curlResult = callAPI('POST', $apiURL."invite/$inviteId", $jsonData, $apiAuth); //user created
-	$user = json_decode($curlResult,true);
+	$user = doInvite($inviteId,$jsonData);
 
 	if(isset($user)) $_SESSION['token']=$user['token']; //otherwise its an error!
 
@@ -27,7 +22,7 @@
 		'user' => $user
 	]);
 
-	echo $curlResult;
+	echo json_encode($user);
 	//DEBUG
 	//$decodedCurl = json_decode($curlResult,true);
 	//if($curlResult) echo "Success!";

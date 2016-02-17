@@ -10,6 +10,7 @@
 		$curlResult = callAPI('POST', $apiURL."invite/$inviteId", $jsonData, $apiAuth); //user created
 		$user = json_decode($curlResult,true);
 		if ($user) {
+			$_SESSION['welcomeMsg'] = 'invite';
 			return $user;
 		}
 		return null;

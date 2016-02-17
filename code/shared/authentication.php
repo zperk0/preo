@@ -11,4 +11,9 @@ if ( !isset($_SESSION['venue_id']) && (!isset($_SESSION['noVenueFlag']) || $_SES
 	header("location:".$_SESSION['path'].'/selectVenue');
 	exit;
 }
+
+if ($_SESSION['user_role'] == 'STAFF') {
+	header("location:".$_SESSION['path'].'/staff');
+	exit();
+}
 ?>

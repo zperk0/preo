@@ -6,7 +6,7 @@
 
 		$venues = getVenues( $_SESSION['user_id'] );
 		$accountId = $_SESSION['account_id'];
-		if (isset($accountId)){		
+		if (isset($accountId)){
 			$curlResult = callAPI('GET', $apiURL."accounts/$accountId/packages", false, $apiAuth);
 			$dataJSON = json_decode($curlResult, true);
 
@@ -65,8 +65,9 @@
 		<section class="top-bar-section">
 			<!-- Right Nav Section -->
 			<ul class="left pretendRight">
-				<?php if(!isset($_SESSION['logged'])) { ?>
-					<li><a href="<?echo $_SESSION['path']?>/signup"									><? echo _("Sign Up");?></a></li>
+			  <?php if(!isset($_SESSION['user_role'])) { ?>
+					<li><a href="<?echo $_SESSION['path']?>/logout"><? echo _("Logout");?></a></li>
+				<?php } else if(!isset($_SESSION['logged'])) { ?>
 					<li><a href="<?echo $_SESSION['path']?>/signin"	class="activated"				><? echo _("Login");?></a></li>
 				<?php } else {
 						if(!isset($_SESSION['signupWizFlag']) || !$_SESSION['signupWizFlag']){ ?>
@@ -104,7 +105,7 @@
 											if(is_array($dataJSONVoucher) && count($dataJSONVoucher)) {
 												$mDataJSON = array_merge(array_values($mDataJSON), array_values($dataJSONVoucher));
 											}
-											
+
 											$_SESSION['menus'] = $mDataJSON;
 											foreach($mDataJSON as $menuL){?>
 												<li><a href="<?echo $_SESSION['path']?>/editmenu/<?echo $menuL['id'];?>"><?echo _("Edit")." $menuL[name]";?></a></li>
