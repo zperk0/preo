@@ -2722,6 +2722,7 @@ $(document).ready(function() {
 					try
 					{
 						var dataArray = jQuery.parseJSON(data); //parsing JSON
+						setTimeout(function(){ window.location.href = "/dashboard"; },2000);
 					}
 					catch(e)
 					{
