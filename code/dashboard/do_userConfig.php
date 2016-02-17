@@ -146,7 +146,7 @@
 
 		$data 				= array();
 		$data['name']		= $user['name'];
-		$data['inviteId']		= $_SESSION['user_id'];
+		$data['createdBy']		= $_SESSION['user_id'];
 		$data['accountId']		= $_SESSION['account_id'];
 		$data['email']		= $user['email'];
 		$data['role']		= $user['role'];
