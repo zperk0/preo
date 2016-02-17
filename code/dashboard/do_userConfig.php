@@ -19,11 +19,14 @@
 
 	$users = array(); //initialising user
 
+	$curlResult = true;
+
 	//remember everything is 1-indexed. 0 is dummy data
 	$i = $j = 1;
 	while($i <= $userCountAct && $j <= $userCount) //$i should break it faster unless linear == actual  -- creating new user here
 	{
-		if(isset($_POST['uName'][$j]) && $_POST['uName'][$j])
+
+		if(isset($_POST['uName'][$j]) && $_POST['uName'][$j] && isset($_POST['uAlter'][$j]) && $_POST['uAlter'][$j]==1)
 		{
 
 			$users[$i]['id']	= $_POST['uID'][$j];
@@ -85,54 +88,6 @@
 			$roleData['accountId'] = $accountId;
 			$jsonRoleData = json_encode($roleData);
 			$curlResult = callAPI('PUT', $apiURL."users/$userID/role?accountId=$accountId&role=$role", $jsonRoleData, $userApiAuth); //user role updated
-		}
-		else //create new user/role relation
-		{
-			echo "in else";
-			echo json_encode($user);
-			die();
-			$data 				= array();
-			$data['name']		= $user['name'];
-			$data['username']	= $user['email'];
-			$data['email']		= $user['email'];
-			$data['password'] 	= $user['password'];
-
-			$jsonData = json_encode($data);
-
-			//appToken here is the web-apps token and not the user's
-
-			$curlResult = callAPI('POST', $apiURL."users", $jsonData, $userApiAuth); //user created
-
-			$dataJSON = json_decode($curlResult,true);
-
-			if(isset($dataJSON['id'])) //if no duplicate user
-			{
-				$userID = $dataJSON['id'];
-				$newUsers[$user['id']] = $dataJSON['id'];
-
-				//now we update this user with correct owner - this needs a fix via Scott
-				$role		= strtoupper($user['role']);
-				$accountId	= $_SESSION['account_id'];
-
-				$curlResult = callAPI('POST', $apiURL."users/$userID/role?accountId=$accountId&role=$role", false, $userApiAuth); //user role created
-			}
-			else //if duplicate user
-			{
-				//POST to accounts/{id}/users and it will create a new role automatically (needs user object)
-				$data = array();
-				$data['email'] 		= $user['email'];
-				$data['username'] 	= $user['email'];
-				$data['role'] 		= strtoupper($user['role']);
-
-				$jsonData = json_encode($data);
-
-				$accountId	= $_SESSION['account_id'];
-
-				$curlResult = callAPI('POST', $apiURL."accounts/$accountId/users", $jsonData, $userApiAuth); //user role created
-				$dataJSON = json_decode($curlResult,true);
-
-				if(isset($dataJSON['userId'])) $newUsers[$user['id']] = $dataJSON['userId'];
-			}
 		}
 	}
 

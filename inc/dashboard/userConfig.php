@@ -28,6 +28,7 @@
 						<tbody>
 							<tr class="userEdit userTR">
 								<td class="userTDName">
+								  <input type="hidden" name="uAlter[0]" value="0" />
 									<input type="hidden" name="uID[0]" value="u0" />
 									<input type="text" name="uName[0]" class="userField noEnterSubmit" value="<?echo _("Add a user name");?>"  pattern="^.{0,199}$"/>
 									<small class="error"><?echo _("Please type a user name (max 200chars)");?></small>
@@ -81,8 +82,9 @@
 				<tbody>
 					<tr class="savedInput userTR">
 						<td class="userTDName">
+							<input type="hidden" name="uAlter[<?echo ($uKey+1);?>]" value="0" />
 							<input type="hidden" name="uID[<?echo ($uKey+1);?>]" value="<?echo $user['id'];?>" />
-							<input type="text" name="uName[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo htmlentities($user['firstName'] . $user['lastName'], ENT_QUOTES);?>" required readonly="readonly"  pattern="^.{0,199}$"/>
+							<input type="text" name="uName[<?echo ($uKey+1);?>]" class="userField noEnterSubmit" value="<?echo htmlentities($user['firstName'] .' '.$user['lastName'], ENT_QUOTES);?>" required readonly="readonly"  pattern="^.{0,199}$"/>
 							<small class="error"><?echo _("Please type a user name (max 200chars)");?></small>
 						</td>
 						<td class="userTDEmail">

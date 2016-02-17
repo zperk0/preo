@@ -8,6 +8,7 @@
 	$inviteId = $_POST['inviteId'];
   protect($inviteId);
 
+	$apiAuth = "PreoDay ".$_SESSION['token'];
 	$curlResult = callAPI('POST', $apiURL."invite/$inviteId/resend", null, $apiAuth); //user created
 
 	echo $curlResult;

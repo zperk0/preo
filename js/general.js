@@ -2798,6 +2798,7 @@ $(document).ready(function() {
 		if($(this).hasClass('userTDEdit')) $(this).hide();
 		else $(this).closest('table').find('.userTDEdit').hide();
 		$curItem = $(this).closest('table');
+		$curItem.find("input[name^='uAlter']").val(1);
 		$curItem.find("tr").addClass('userEdit');
 		$curItem.find("tr").removeClass('savedInput');
 		$curItem.find("input[name^='uEmail']").each(function(){ if($(this).hasClass('preSaved')) $(this).attr("readonly", "readonly"); });
@@ -2855,7 +2856,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: _tr("Staff"),
+			   noneSelectedText: _tr("Owner"),
 			   selectedList: 1,
 			   minWidth: 108
 			});
@@ -2935,7 +2936,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: _tr("Staff"),
+			   noneSelectedText: _tr("Owner"),
 			   selectedList: 1,
 			   minWidth: 108
 			});
@@ -3188,7 +3189,7 @@ $(document).ready(function() {
 	$(".userMenuSingleSelect").multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Staff",
+	   noneSelectedText: "Owner",
 	   selectedList: 1
 	});
 
