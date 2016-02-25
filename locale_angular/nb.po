@@ -1,69 +1,43 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+"Language: nb_NO\n"
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-18 12:25-0300\n"
-"PO-Revision-Date: 2015-08-19 11:24+0100\n"
-"Last-Translator: Nick <na@drweb.no>\n"
-"Language-Team: \n"
-"Language: nb_NO\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.1\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: \n"
+"Content-Type: text/plain; charset=UTF-8"
 
-#: code/accountSettings/partials/subscription.php:8
-msgid "ADD PAYMENT METHOD"
-msgstr "LEGG TIL BETALINGSMÅTE"
-
-#: code/settings/delivery/partials/notifications.php:15
-#: code/settings/delivery/partials/notifications.php:39
 msgid "Active?"
 msgstr "Aktiv?"
 
-#: code/events/partials/events.php:9
 msgid "Add a new event"
 msgstr "Legg til nytt arrangement"
 
-#: code/events/partials/modal-event.php:215
 msgid "Add another slot"
 msgstr "Legg til nytt sted"
 
-#: code/accountSettings/partials/payment.php:36
+msgid "ADD PAYMENT METHOD"
+msgstr "LEGG TIL BETALINGSMÅTE"
+
 msgid "Address Line 1"
 msgstr "Adresselinje 1"
 
-#: code/accountSettings/partials/payment.php:38
 msgid "Address Line 2"
 msgstr "Adresselinje 2"
 
-#: code/accountSettings/partials/payment.php:40
 msgid "Address Line 3"
 msgstr "Adresselinje 3"
 
-#: code/kyc/partials/customers.php:106 code/kyc/partials/events.php:119
-#: code/kyc/partials/orders.php:135 code/kyc/partials/reports.php:133
-#: code/kyc/partials/stock.php:92
+msgid "after"
+msgstr "etter"
+
 msgid "All"
 msgstr "Alle"
 
-#: code/events/js/controllers/modalController.js:76
-#: code/events/js/directives/event/event.php:47
 msgid "All Locations"
 msgstr "﻿Alle lokasjoner"
 
-#: code/accountSettings/partials/billingHistory.php:13
 msgid "Amount"
 msgstr "Beløp"
 
-#: code/events/js/directives/event/event.js:114
-#: code/events/js/directives/event/event.js:135
 msgid ""
 "Are you sure you want to delete this event? Note: all event data will be "
 "lost!"
@@ -71,461 +45,329 @@ msgstr ""
 "Er du sikker på at du vil slette denne hendelsen? Merk: alle hendelses data "
 "vil gå tapt!"
 
-#: code/bookingMenus/js/directives/menus-item/menus-item.js:69
 msgid ""
 "Are you sure you want to delete this menu? Note: all menu data will be lost!"
 msgstr ""
-"Er du sikker på at du vil slette denne menyen? Merk: alle meny data vil gå "
-"tapt!"
+"Er du sikker på at du vil slette denne menyen? Obs: all data fra menyen vil "
+"bli tapt!"
 
-#: code/bookingMenus/js/directives/menus-item/menus-item.js:27
-#, fuzzy
 msgid ""
 "Are you sure you want to duplicate this menu? Note: You'll be redirect to "
 "edit the menu."
 msgstr ""
-"Er du sikker på at du vil slette denne menyen? Merk: alle meny data vil gå "
-"tapt!"
+"Er du sikker på at du vil kopiere denne menyen? Obs: du vil bli videresendt "
+"til redigering av denne menyen."
 
-#: code/bookingMenus/partials/booking-menus.php:18
 msgid "Assigned to these promotions"
-msgstr ""
+msgstr "Tildelt til disse kampanjene"
 
-#: code/bookingSettings/partials/booking-settings.php:17
 msgid "Auto reminder"
-msgstr ""
+msgstr "Automatisk påmindelse"
 
-#: code/accountSettings/partials/subscription.php:35
-msgid "BILLING HISTORY"
-msgstr "FAKTURA HISTORIKK"
+msgid "before"
+msgstr "før"
 
-#: code/accountSettings/partials/payment.php:33
 msgid "Billing Address"
 msgstr "Fakturaadresse"
 
-#: code/accountSettings/index.php:23
-#: code/accountSettings/partials/billingHistory.php:5
 msgid "Billing History"
 msgstr "Faktura historikk"
 
-#: code/accountSettings/partials/subscription.php:4
+msgid "BILLING HISTORY"
+msgstr "FAKTURA HISTORIKK"
+
 msgid "Billing Schedule"
 msgstr "Faktureringsplan"
 
-#: code/booking/js/directives/booking-item-details/booking-item-details.js:16
 msgid "Booking"
-msgstr ""
+msgstr "Booking"
 
-#: code/booking/partials/booking.php:26
 msgid "Booking page"
-msgstr ""
+msgstr "Booking side"
 
-#: code/bookingSettings/js/controllers/bookingSettings.js:80
-#, fuzzy
 msgid "Booking settings has been saved!"
-msgstr "Innstillingene har blitt lagret!"
+msgstr "Innstillinger for booking er lagret!"
 
-#: code/booking/partials/booking.php:5
 msgid "Bookings"
-msgstr ""
+msgstr "Bookinger"
 
-#: code/accountSettings/partials/profile.php:32
+msgid "broken down in steps"
+msgstr "brutt ned i detaljer"
+
 msgid "Business Name"
 msgstr "Navn på virksomhet"
 
-#: code/accountSettings/partials/password.php:26
-#: code/accountSettings/partials/payment.php:51
-#: code/accountSettings/partials/profile.php:51
-#: code/accountSettings/partials/subscription.php:52
 msgid "CANCEL"
 msgstr "AVBRYT"
 
-#: code/accountSettings/partials/payment.php:19
-#: code/accountSettings/partials/payment.php:21
-msgid "CCV"
-msgstr "CCV"
-
-#: code/accountSettings/partials/subscription.php:34
-msgid "CHANGE CARD"
-msgstr "ENDRE KORT"
-
-#: code/accountSettings/partials/payment.php:48
-#: code/accountSettings/partials/profile.php:48
-msgid "CHANGE DETAILS"
-msgstr "ENDRE DETALJER"
-
-#: code/accountSettings/partials/profile.php:44
-msgid "CHANGE PASSWORD"
-msgstr "ENDRE PASSORD"
-
-#: code/bookingMenus/partials/booking-menus.php:7
-msgid "CREATE NEW MENU"
-msgstr ""
-
-#: code/kyc/js/directives/chart/chart.php:80
-#: code/kyc/partials/customers.php:99 code/kyc/partials/events.php:112
-#: code/kyc/partials/orders.php:128 code/kyc/partials/reports.php:126
-#: code/kyc/partials/stock.php:85
-msgid "CSV"
-msgstr "CSV"
-
-#: code/events/js/controllers/modalController.js:31
-#: code/events/js/controllers/modalController.js:68
-msgid "CUSTOM"
-msgstr ""
-
-#: code/accountSettings/partials/payment.php:5
-msgid "Card Number"
-msgstr "Kortnummer"
-
-#: code/accountSettings/partials/subscription.php:25
 msgid "Card ending"
 msgstr "Siste siffer i kortnummer"
 
-#: code/events/js/controllers/modalController.js:77
-#: code/events/js/directives/slot/slot.js:34
+msgid "Card Number"
+msgstr "Kortnummer"
+
+msgid "CCV"
+msgstr "CCV"
+
+msgid "CHANGE CARD"
+msgstr "ENDRE KORT"
+
+msgid "CHANGE DETAILS"
+msgstr "ENDRE DETALJER"
+
+msgid "CHANGE PASSWORD"
+msgstr "ENDRE PASSORD"
+
 msgid "Choose a Collection Slot"
 msgstr "Velg et sted"
 
-#: code/kyc/partials/reports.php:9
 msgid "Choose preset:"
 msgstr "Velg forhåndsinnstilling:"
 
-#: code/events/partials/modal-event.php:75
 msgid "Choose the first occurrence."
-msgstr ""
+msgstr "Velg den første forekomsten."
 
-#: code/events/js/directives/event/event.php:10
-#: code/events/partials/modal-event.php:15
 msgid "Click to add a description"
-msgstr "Klikk for å legge inn en beskrivelse"
+msgstr "Klikk for å legge til en beskrivelse"
 
-#: code/events/js/directives/event/event.php:6
-#: code/events/partials/modal-event.php:12
 msgid "Click to add an event name"
-msgstr "Klikk for å legge et arrangement navn"
+msgstr "Klikk for å legge til navn på arrangementet"
 
-#: code/booking/partials/booking.php:23
 msgid "Client"
-msgstr ""
+msgstr "Klient"
 
-#: code/booking/js/directives/booking-item-details/booking-item-details.php:6
-#, fuzzy
 msgid "Client contact:"
-msgstr "måneders kontrakt"
+msgstr "Klient kontakt:"
 
-#: code/events/js/directives/event/event.php:38
 msgid "Collapse"
 msgstr "Trekk sammen"
 
-#: code/events/partials/modal-event.php:117
 msgid "Collection Slot"
 msgstr "Velg et sted"
 
-#: code/events/js/directives/slot/slot.js:48
 msgid "Collection Slot: Half-Time"
-msgstr "Samlingssted: Halv tid"
+msgstr "Samlingssted: Pausen"
 
-#: code/events/js/directives/slot/slot.js:46
 msgid "Collection Slot: Interval"
 msgstr "Samlingssted: Interval"
 
-#: code/events/js/directives/slot/slot.js:50
 msgid "Collection Slot: Post-Game"
 msgstr "Samlingssted: Etter kamp"
 
-#: code/events/js/directives/slot/slot.js:49
 msgid "Collection Slot: Post-Show"
 msgstr "Samlingssted: Etter show"
 
-#: code/events/js/directives/slot/slot.js:45
 msgid "Collection Slot: Pre-Game"
 msgstr "Samlingssted: Før kamp"
 
-#: code/events/js/directives/slot/slot.js:44
 msgid "Collection Slot: Pre-Show"
 msgstr "Samlingssted: Før show"
 
-#: code/events/js/directives/slot/slot.js:47
 msgid "Collection Slot: Second-Interval"
 msgstr "Samlingssted: Andre interval"
 
-#: code/accountSettings/partials/password.php:19
 msgid "Confirm"
 msgstr "Bekreft"
 
-#: code/booking/js/directives/booking-item-details/booking-item-details.php:14
 msgid "Contact email:"
-msgstr ""
+msgstr "Kontakt e-post:"
 
-#: code/booking/js/directives/booking-item-details/booking-item-details.php:10
 msgid "Contact no.:"
-msgstr ""
+msgstr "Kontakt nr.:"
 
-#: code/bookingMenus/partials/booking-menus.php:7
-#, fuzzy
 msgid "Create new menu"
-msgstr "Opprett en ny meny"
+msgstr "Opprett ny meny"
 
-#: code/accountSettings/partials/payment.php:15
+msgid "CREATE NEW MENU"
+msgstr "OPPRETT NY MENY"
+
 msgid "Credit Card Name"
-msgstr "Kredittkortnummer"
+msgstr "Navn på kortet"
 
-#: code/accountSettings/partials/payment.php:8
 msgid "Credit Card Number"
-msgstr "Kredittkortnummer"
+msgstr "Kortnummer"
 
-#: code/kyc/partials/events.php:32 code/kyc/partials/orders.php:39
-#: code/kyc/partials/stream.php:28
+msgid "CSV"
+msgstr "CSV"
+
+msgid "CUSTOM"
+msgstr "SPESIAL"
+
 msgid "Customer"
 msgstr "Kunde"
 
-#: code/kyc/index.php:26 code/kyc/partials/customers.php:8
 msgid "Customers"
 msgstr "Kunder"
 
-#: code/events/js/controllers/modalController.js:27
 msgid "DAILY"
-msgstr ""
+msgstr "DAGLIG"
 
-#: code/events/js/directives/event/event.php:14
-msgid "DD/MM/YYYY"
-msgstr "DD/MM/ÅÅÅÅ"
-
-#: code/accountSettings/partials/billingHistory.php:23
-msgid "DOWNLOAD PDF"
-msgstr "LAST NED PDF"
-
-#: code/accountSettings/partials/billingHistory.php:11
-#: code/booking/partials/booking.php:21
 msgid "Date"
 msgstr "Dato"
 
-#: code/kyc/index.php:62
-msgid "Date Range:"
-msgstr "Datointerval"
-
-#: code/booking/partials/booking.php:7
-#, fuzzy
 msgid "Date range"
-msgstr "Datointerval"
+msgstr "Datointervall"
 
-#: code/kyc/partials/orders.php:25
-msgid "Date/Time"
-msgstr "Dato/tid"
+msgid "Date Range:"
+msgstr "Datointerval:"
 
-#: code/events/js/directives/event/event.php:15
-#: code/events/partials/modal-event.php:71
-#: code/events/partials/modal-event.php:77
-#: code/events/partials/modal-event.php:81
 msgid "Date?"
 msgstr "Dato?"
 
-#: code/events/partials/modal-event.php:30
+msgid "Date/Time"
+msgstr "Dato/tid"
+
 msgid "Days"
-msgstr ""
+msgstr "Dager"
 
-#: code/bookingSettings/partials/booking-settings.php:25
-#: code/bookingSettings/partials/booking-settings.php:38
 msgid "Days before the event"
-msgstr ""
+msgstr "Dager før arrangement"
 
-#: code/settings/delivery/partials/delivery.php:43
+msgid "days to prevent your account from being deactivated."
+msgstr "dager for å hindre at kontoen din blir deaktivert."
+
+msgid "DD/MM/YYYY"
+msgstr "DD/MM/ÅÅÅÅ"
+
 msgid "Default delivery time (minutes)"
 msgstr "Standard leveringstid (minutter)"
 
-#: code/bookingMenus/js/directives/menus-item/menus-item.php:14
-#: code/events/js/directives/event/event.php:41
 msgid "Delete"
 msgstr "Slett"
 
-#: code/events/partials/modal-event.php:181
-#: code/events/partials/modal-event.php:205
 msgid "Delete this slot"
 msgstr "Slett denne delen"
 
-#: code/settings/delivery/partials/delivery.php:18
 msgid "Delivery Areas"
 msgstr "Leveringsområder"
 
-#: code/settings/delivery/partials/delivery.php:2
-msgid "Delivery Settings"
-msgstr "Leveringsinnstillinger"
-
-#: code/settings/delivery/partials/delivery.php:33
 msgid "Delivery charge"
 msgstr "Leveringskostnad"
 
-#: code/bookingMenus/partials/booking-menus.php:17
-#: code/events/partials/events.php:16
+msgid "Delivery Settings"
+msgstr "Leveringsinnstillinger"
+
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: code/kyc/partials/stream.php:78
 msgid "Discount"
 msgstr "Rabatt"
 
-#: code/settings/delivery/partials/delivery.php:48
 msgid "Discount offered for delivery orders (%)"
 msgstr "Rabatt ved ordre for levering (%)"
 
-#: code/events/partials/modal-event.php:226
 msgid "Done"
 msgstr "Fullført"
 
-#: code/bookingMenus/js/directives/menus-item/menus-item.php:15
-#: code/events/js/directives/event/event.php:40
+msgid "DOWNLOAD PDF"
+msgstr "LAST NED PDF"
+
 msgid "Duplicate"
 msgstr "Dupliser"
 
-#: code/events/partials/modal-event.php:25
 msgid "Duration:"
-msgstr "Opprette meny"
+msgstr "Varighet:"
 
-#: code/bookingMenus/js/directives/menus-item/menus-item.php:16
-#: code/events/js/directives/event/event.php:39
 msgid "Edit"
 msgstr "Rediger"
 
-#: code/accountSettings/partials/profile.php:23
-msgid "Email Address"
-msgstr "E-postadresse"
+msgid "eg. \\\"NW1, NW2...\\\""
+msgstr "f.eks. \\\"3210, 3211...\\\""
 
-#: code/kyc/partials/customers.php:40
 msgid "Email address"
 msgstr "E-postadresse"
 
-#: code/settings/delivery/partials/notifications.php:63
-msgid "Email address for receiving venue alerts"
-msgstr "E-postadresse for å motta butikk varsler"
+msgid "Email Address"
+msgstr "E-postadresse"
 
-#: code/settings/delivery/partials/delivery.php:3
+msgid "Email address for receiving venue alerts"
+msgstr "E-postadresse for å motta varsler fra utsagssted"
+
 msgid "Enable delivery services"
 msgstr "Aktiver leveringstjenester"
 
-#: code/events/partials/events.php:19
 msgid "End Time"
 msgstr "Slutt tidspunkt"
 
-#: code/bookingSettings/partials/booking-settings.php:13
-#, fuzzy
 msgid "Enter a name"
-msgstr "Kortnummer"
+msgstr "Skriv inn et navn"
 
-#: code/events/partials/modal-event.php:130
-#: code/events/partials/modal-event.php:137
 msgid "Enter a name for the slot"
-msgstr ""
+msgstr "Navn på sted"
 
-#: code/bookingSettings/partials/booking-settings.php:23
-#: code/bookingSettings/partials/booking-settings.php:36
-#: code/events/partials/modal-event.php:32
-#: code/events/partials/modal-event.php:37
-#: code/events/partials/modal-event.php:42
 msgid "Enter a number"
 msgstr "Kortnummer"
 
-#: code/events/partials/modal-event.php:145
-#: code/events/partials/modal-event.php:155
-#: code/events/partials/modal-event.php:165
-#: code/events/partials/modal-event.php:176
-#: code/events/partials/modal-event.php:189
-#: code/events/partials/modal-event.php:200
 msgid "Enter minutes?"
-msgstr ""
+msgstr "Legge til minutter?"
 
-#: code/kyc/partials/events.php:25
 msgid "Event"
 msgstr "Arrangement"
 
-#: code/events/partials/modal-event.php:14
 msgid "Event description:"
-msgstr "Bedriftens beskrivelse"
+msgstr "Beskrivelse av arrangement:"
 
-#: code/events/partials/modal-event.php:69
 msgid "Event first occurrence:"
-msgstr ""
+msgstr "Førstegang for arrangement:"
 
-#: code/events/partials/modal-event.php:57
 msgid "Event frequency:"
-msgstr ""
+msgstr "Arrangementets frekvens:"
 
-#: code/events/partials/modal-event.php:74
 msgid "Event last occurrence:"
-msgstr ""
+msgstr "Arrangementets siste forekomst:"
 
-#: code/events/partials/modal-event.php:11
 msgid "Event name:"
-msgstr "Arrangementer:"
+msgstr "Arrangement navn:"
 
-#: code/kyc/index.php:29 code/kyc/partials/events.php:8
 msgid "Events"
 msgstr "Arrangementer"
 
-#: code/kyc/index.php:81
 msgid "Events:"
 msgstr "Arrangementer:"
 
-#: code/accountSettings/partials/payment.php:25
 msgid "Expires"
 msgstr "Utløper"
 
-#: code/kyc/js/directives/chart/chart.php:71
-#: code/kyc/partials/customers.php:89 code/kyc/partials/events.php:102
-#: code/kyc/partials/orders.php:118 code/kyc/partials/reports.php:116
-#: code/kyc/partials/stock.php:75
 msgid "Export as..."
 msgstr "Eksporter som..."
 
-#: code/accountSettings/partials/profile.php:5
 msgid "First Name"
 msgstr "Fornavn"
 
-#: code/settings/delivery/partials/delivery.php:38
 msgid "Free delivery for orders above"
 msgstr "Gratis levering for ordre over"
 
-#: code/booking/partials/booking.php:12
 msgid "Generate report"
-msgstr ""
+msgstr "Generer rapport"
 
-#: code/bookingMenus/partials/booking-menus.php:5
 msgid "Group Booking Menus"
-msgstr ""
+msgstr "Menyer for gruppe booking"
 
-#: code/bookingSettings/partials/booking-settings.php:6
 msgid "Group Booking Settings"
-msgstr ""
+msgstr "Innstillinger for gruppe booking"
 
-#: code/booking/partials/booking.php:25
 msgid "Guests"
-msgstr ""
+msgstr "Gjester"
 
-#: code/events/js/directives/event/event.php:18
-#: code/events/js/directives/event/event.php:22
-#: code/events/partials/modal-event.php:20
+msgid "Half-Time"
+msgstr "Pause"
+
 msgid "HH:MM"
 msgstr "TT:MM"
 
-#: code/events/js/controllers/modalController.js:53
-msgid "Half-Time"
-msgstr "Tid"
-
-#: code/events/partials/modal-event.php:35
 msgid "Hours"
-msgstr ""
+msgstr "Timer"
 
-#: code/events/partials/modal-event.php:26
 msgid "How many days will your event occurs in days, hours and minutes?"
-msgstr ""
+msgstr "Hvor mange dager vil arrangementet være, i dager, timer og minutter?"
 
-#: code/bookingSettings/partials/booking-settings.php:18
 msgid ""
 "If a booking has outstanding orders, the event organiser will be sent a "
 "reminder"
 msgstr ""
+"Hvis en booking har mangler betillinger, vil arrangøren få tilsendt en "
+"påminnelse"
 
-#: code/settings/delivery/partials/notifications.php:64
 msgid ""
 "In addition to the fulfilment app, you can also receive email updates to "
 "notify when you have received a new order"
@@ -533,439 +375,346 @@ msgstr ""
 "I tillegg til appen kan du motta varsling på e-post når du har mottatt en ny "
 "ordre"
 
-#: code/settings/delivery/partials/delivery.php:23
 msgid "In case of customer queries contact:"
 msgstr "Ved kundehenvendelser kontakt:"
 
-#: code/events/js/controllers/modalController.js:45
 msgid "Interval"
-msgstr ""
+msgstr "Intervall"
 
-#: code/accountSettings/partials/billingHistory.php:10
+msgid "Interval2"
+msgstr "Interval"
+
 msgid "Inv no."
 msgstr "Faktura nr."
 
-#: code/kyc/partials/stock.php:26
+msgid "is"
+msgstr "er"
+
+msgid "is not"
+msgstr "er ikke"
+
 msgid "Item"
 msgstr "Vare"
 
-#: code/kyc/partials/events.php:39 code/kyc/partials/orders.php:46
 msgid "Items"
 msgstr "Varer"
 
-#: code/kyc/index.php:18
 msgid "Know your customers"
 msgstr "Bli kjent med dine kunder"
 
-#: code/accountSettings/partials/profile.php:14
 msgid "Last Name"
 msgstr "Etternavn"
 
-#: code/kyc/partials/stream.php:7
-msgid "Live Stream"
-msgstr "Live aktivitet"
-
-#: code/kyc/index.php:28
 msgid "Live stream"
 msgstr "Live aktivitet"
 
-#: code/bookingSettings/partials/booking-settings.php:30
+msgid "Live Stream"
+msgstr "Live aktivitet"
+
 msgid "Lock ordering page"
-msgstr ""
+msgstr "Lås siden for bestilling"
 
-#: code/accountSettings/partials/payment.php:28
-msgid "MM"
-msgstr "MM"
-
-#: code/events/js/controllers/modalController.js:29
-msgid "MONTHLY"
-msgstr ""
-
-#: code/kyc/partials/stock.php:8
 msgid "Menu items"
 msgstr "Menyelementer"
 
-#: code/kyc/index.php:24
 msgid "Metrics"
 msgstr "Analyser"
 
-#: code/settings/delivery/partials/delivery.php:28
 msgid "Minimum order value to qualify for delivery"
 msgstr "Minimumsbeløp for levering"
 
-#: code/events/partials/modal-event.php:40
-msgid "Minutes"
-msgstr "minutter siden"
+msgid "minutes"
+msgstr "minutter"
 
-#: code/accountSettings/index.php:18
+msgid "Minutes"
+msgstr "Minutter"
+
+msgid "minutes and it"
+msgstr "minutter og det"
+
+msgid "MM"
+msgstr "MM"
+
+msgid "Mobile app"
+msgstr "Mobil app"
+
+msgid "MONTHLY"
+msgstr "MÅNEDLIG"
+
+msgid "Move this sloSlot"
+msgstr "Flytt denne plassen"
+
+msgid "Move this slot"
+msgstr "Flytt denne plassen"
+
 msgid "My Account"
 msgstr "Min konto"
 
-#: code/accountSettings/partials/subscription.php:40
 msgid "My Subscriptions"
 msgstr "Mine abonnementer"
 
-#: code/bookingMenus/partials/booking-menus.php:16
-#: code/events/partials/events.php:15 code/kyc/partials/customers.php:26
 msgid "Name"
 msgstr "Navn"
 
-#: code/accountSettings/partials/payment.php:12
 msgid "Name on card"
 msgstr "Navn på kortet"
 
-#: code/accountSettings/partials/password.php:12
+msgid "New event"
+msgstr "Nytt arrangement"
+
 msgid "New Password"
 msgstr "Nytt passord"
 
-#: code/events/partials/modal-event.php:3
-msgid "New event"
-msgstr "Legg til nytt arrangement"
-
-#: code/events/partials/modal-event.php:225
 msgid "Next"
-msgstr ""
+msgstr "Neste"
 
-#: code/events/js/directives/event/event.php:33
-#: code/settings/delivery/partials/delivery.php:6
-#: code/settings/delivery/partials/notifications.php:27
-#: code/settings/delivery/partials/notifications.php:52
 msgid "No"
 msgstr "Nei"
 
-#: code/kyc/js/directives/chart/chart.php:20
+msgid "No bookings at this period."
+msgstr "Ingen bookinger denne perioden."
+
 msgid "No Data"
 msgstr "Ingen data"
 
-#: code/booking/partials/booking.php:39
-#, fuzzy
-msgid "No bookings at this period."
-msgstr "Ingen arrangementer i denne perioden"
-
-#: code/bookingMenus/js/directives/menus-item/menus-item.js:53
-#: code/bookingMenus/js/directives/menus-item/menus-item.js:92
-#: code/events/js/directives/event/event.js:123
-#: code/events/js/directives/event/event.js:157
 msgid "No, go back."
 msgstr "Nei, gå tilbake."
 
-#: code/events/js/controllers/modalController.js:26
-msgid "ONCE"
-msgstr ""
+msgid "of"
+msgstr "av"
 
-#: code/accountSettings/partials/password.php:5
 msgid "Old Password"
 msgstr "Gammelt passord"
 
-#: code/kyc/partials/stream.php:35
+msgid "ONCE"
+msgstr "EN GANG"
+
 msgid "Order"
 msgstr "Bestill"
 
-#: code/settings/delivery/partials/notifications.php:7
 msgid "Order Rejection Alerts"
 msgstr "Varsel for avvist ordre"
 
-#: code/settings/delivery/partials/notifications.php:6
 msgid "Order Status Alerts"
 msgstr "Varsel for ordrestatus"
 
-#: code/kyc/partials/events.php:46 code/kyc/partials/orders.php:60
 msgid "Order Total"
 msgstr "Ordre total"
 
-#: code/kyc/index.php:30 code/kyc/partials/orders.php:8
 msgid "Orders"
 msgstr "Ordre"
 
-#: code/booking/partials/booking.php:27
-#, fuzzy
-msgid "Orders placed"
-msgstr "Tidspunkt når ordre ble plassert"
+msgid "Orders per channel"
+msgstr "Bestillinger per kanal"
 
-#: code/kyc/partials/orders.php:32
+msgid "Orders placed"
+msgstr "Bestillinger"
+
 msgid "Outlet"
 msgstr "Utsalgssted"
 
-#: code/kyc/index.php:42
+msgid "Outlet location:"
+msgstr "Utsalgsstedets lokasjon:"
+
 msgid "Outlet Name:"
 msgstr "Utsalgsstedets navn:"
 
-#: code/events/partials/modal-event.php:46
-msgid "Outlet location:"
-msgstr "Utsalgsstedets navn:"
+msgid "package"
+msgstr "pakke"
 
-#: code/kyc/js/directives/chart/chart.php:76
-#: code/kyc/partials/customers.php:94 code/kyc/partials/events.php:107
-#: code/kyc/partials/orders.php:123 code/kyc/partials/reports.php:121
-#: code/kyc/partials/stock.php:80
-msgid "PDF"
-msgstr "PDF"
-
-#: code/booking/js/directives/booking-item-details/booking-item-details.php:21
-msgid "PRINT BOOKING"
-msgstr ""
-
-#: code/accountSettings/partials/profile.php:42
 msgid "Password"
 msgstr "Passord"
 
-#: code/accountSettings/partials/payment.php:1
 msgid "Payment"
 msgstr "Betaling"
 
-#: code/accountSettings/index.php:22
 msgid "Payment Methods"
 msgstr "Betalingsmetoder"
 
-#: code/accountSettings/partials/subscription.php:48
-msgid "Please add a credit card to resubscribe"
-msgstr "Vennligst legg til kortdetaljer for å aktivere abonnementet."
+msgid "PDF"
+msgstr "PDF"
 
-#: code/accountSettings/partials/subscription.php:7
+msgid "Please add a credit card to resubscribe"
+msgstr "Vennligst legg til kortinformasjon for å aktivere abonnementet."
+
 msgid "Please add a payment method to keep your account active"
 msgstr "Vennligst legg til en betalingsmåte for å holde kontoen din aktiv"
 
-#: code/events/partials/modal-event.php:136
-#: code/events/partials/modal-event.php:138
 msgid "Please choose a slot."
-msgstr "Velg et sted"
+msgstr "Velg et sted."
 
-#: code/settings/delivery/partials/notifications.php:45
 msgid "Please enter a message and a short name or remove this notification."
 msgstr "Skriv inn en melding og et kallenavn eller fjern dette varselet."
 
-#: code/settings/delivery/partials/delivery.php:30
 msgid "Please enter a valid number (e.g. 20.52)"
-msgstr "Skriv inn et gyldig nummer (f.eks 200,00)"
+msgstr "Skriv inn et gyldig nummer (f.eks 200.00)"
 
-#: code/settings/delivery/partials/delivery.php:35
-#: code/settings/delivery/partials/delivery.php:40
 msgid "Please enter a valid number (e.g. 3.25)"
-msgstr "Skriv inn et gyldig nummer (f.eks 45,00)"
+msgstr "Skriv inn et gyldig nummer (f.eks 45.00)"
 
-#: code/settings/delivery/partials/delivery.php:25
 msgid "Please enter a valid telephone number"
 msgstr "Skriv inn et gyldig telefonnummer"
 
-#: code/settings/delivery/partials/delivery.php:45
 msgid "Please enter a valid time interval in minutes (e.g. 20)"
 msgstr "Skriv inn gyldig tidsintervall i minutter (f.eks 20)"
 
-#: code/settings/delivery/partials/notifications.php:20
 msgid "Please enter both the notification and a short name."
-msgstr "Vennligst oppgi både varsling og et kort navn."
+msgstr "Vennligst oppgi både varslingen og et kallenavn."
 
-#: code/settings/delivery/partials/delivery.php:50
 msgid "Please provide a discount percentage (between 0 and 100)"
 msgstr "Vennligst oppgi rabatt i prosent (mellom 0 og 100)"
 
-#: code/settings/delivery/partials/delivery.php:20
 msgid "Please type a delivery zone (max 200chars)"
 msgstr "Vennligst skriv inn et leveringsområde (maks 200 bokstaver)"
 
-#: code/events/js/directives/event/event.php:11
 msgid "Please type a description (max 250chars)"
 msgstr "Skriv inn en beskrivelse (maks 250 bokstaver)"
 
-#: code/accountSettings/partials/profile.php:27
 msgid "Please type a valid email address"
 msgstr "Vennligst skriv inn en gyldig e-postadresse"
 
-#: code/events/partials/modal-event.php:13
 msgid "Please type an event name (max 100 chars)"
-msgstr "Skriv inn et arrangement navn (maks 100 bokstaver)"
+msgstr "Skriv inn et arrangement navn (maks 100 tegn)"
 
-#: code/events/js/directives/event/event.php:7
 msgid "Please type an event name (max 100chars)"
-msgstr "Skriv inn et arrangement navn (maks 100 bokstaver)"
+msgstr "Skriv inn et arrangement navn (maks 100 tegn)"
 
-#: code/accountSettings/partials/profile.php:36
 msgid "Please type your account name.(max 100chars)"
-msgstr "Vennligst skriv inn kontonavn. (maks 100 bokstaver)"
+msgstr "Vennligst skriv inn kontonavn. (maks 100 tegn)"
 
-#: code/accountSettings/partials/profile.php:9
 msgid "Please type your first name.(max 100chars)"
-msgstr "Vennligst skriv fornavnet ditt. (maks 100 bokstaver)"
+msgstr "Vennligst oppgi fornavnet ditt. (maks 100 tegn)"
 
-#: code/accountSettings/partials/profile.php:18
 msgid "Please type your last name.(max 100chars)"
-msgstr "Vennligst skriv etternavnet ditt. (maks 100 bokstaver)"
+msgstr "Vennligst oppgi etternavnet ditt. (maks 100 tegn)"
 
-#: code/accountSettings/partials/subscription.php:13
 msgid "Please update your card details within"
 msgstr "Vennligst oppdater kortdetaljene innen"
 
-#: code/booking/js/controllers/booking.js:156
-#: code/bookingMenus/js/controllers/menus.js:92
 msgid "Please, setup the group booking settings first."
-msgstr ""
+msgstr "Vennligst set innstillinger for gruppe booking først."
 
-#: code/events/js/controllers/modalController.js:61
 msgid "Post-Game"
-msgstr ""
+msgstr "Etter kampen"
 
-#: code/events/js/controllers/modalController.js:57
 msgid "Post-Show"
-msgstr ""
+msgstr "Etter arrangement"
 
-#: code/accountSettings/partials/payment.php:44
 msgid "Postcode"
 msgstr "Postnummer"
 
-#: code/events/js/controllers/modalController.js:41
 msgid "Pre-Game"
-msgstr ""
+msgstr "Før kampen"
 
-#: code/events/js/controllers/modalController.js:37
 msgid "Pre-Show"
-msgstr ""
+msgstr "Før showet"
 
-#: code/settings/delivery/partials/notifications.php:2
-msgid "Preset Notifications"
-msgstr "Forhåndsinnstilte påminnelser"
-
-#: code/settings/delivery/partials/notifications.php:13
 msgid "Preset customer notifications, sent by email and push alert"
 msgstr ""
-"Forhåndsinnstilte kundemeldinger, som sendes via e-post og push-varsling"
+"Forhåndsdefinerte kundemeldinger, som sendes via e-post og push-varsling"
 
-#: code/settings/delivery/partials/notifications.php:37
+msgid "Preset Notifications"
+msgstr "Forhåndsdefinerte meldinger"
+
 msgid "Preset order rejection notifications, sent by email and push alert"
 msgstr ""
-"Forhåndsinnstilte avvisnings meldinger, som sendes via e-post og push-"
+"Forhåndsdefinerte (ikke godkjent) meldinger, som sendes via e-post og push-"
 "varsling"
 
-#: code/events/partials/modal-event.php:224
 msgid "Previous"
-msgstr ""
+msgstr "Forrige"
 
-#: code/accountSettings/index.php:25
-#: code/accountSettings/partials/password.php:1
-#: code/accountSettings/partials/profile.php:1
+msgid "PRINT BOOKING"
+msgstr "SKRIV UT BOOKING"
+
 msgid "Profile"
 msgstr "Profil"
 
-#: code/booking/partials/booking.php:24
 msgid "Promotion"
-msgstr ""
+msgstr "Kampanje"
 
-#: code/kyc/partials/stock.php:33
 msgid "Quantity Ordered"
 msgstr "Antall bestilt"
 
-#: code/accountSettings/partials/subscription.php:55
-#: code/accountSettings/partials/subscription.php:56
-msgid "RESUBSCRIBE"
-msgstr "REAKTIVER ABONNEMENT"
-
-#: code/kyc/index.php:54 code/kyc/index.php:73 code/kyc/index.php:94
 msgid "Refresh"
 msgstr "Oppdater"
 
-#: code/kyc/index.php:27
 msgid "Reports"
 msgstr "Rapporter"
 
-#: code/bookingSettings/partials/booking-settings.php:9
 msgid "Restaurant Name"
-msgstr ""
+msgstr "Restaurantens navn"
 
-#: code/accountSettings/partials/payment.php:49
-#: code/accountSettings/partials/profile.php:49
+msgid "RESUBSCRIBE"
+msgstr "REAKTIVER ABONNEMENT"
+
 msgid "SAVE"
 msgstr "LAGRE"
 
-#: code/accountSettings/partials/password.php:25
-#: code/settings/delivery/partials/delivery.php:58
-#: code/settings/delivery/partials/notifications.php:76
+msgid "Save changes"
+msgstr "Lagre endringer"
+
 msgid "SAVE CHANGES"
 msgstr "LAGRE ENDRINGER"
 
-#: code/accountSettings/partials/password.php:27
-#: code/accountSettings/partials/payment.php:50
-#: code/accountSettings/partials/profile.php:50
-#: code/settings/delivery/partials/delivery.php:59
-#: code/settings/delivery/partials/notifications.php:77
 msgid "SAVING..."
 msgstr "LAGRER..."
 
-#: code/bookingSettings/partials/booking-settings.php:42
-#, fuzzy
-msgid "Save changes"
-msgstr "Datointerval"
-
-#: code/events/partials/modal-event.php:55
 msgid "Schedule"
 msgstr "Faktureringsplan"
 
-#: code/events/js/controllers/modalController.js:49
 msgid "Second-Interval"
 msgstr "Samlingssted: Andre interval"
 
-#: code/events/partials/modal-event.php:80
 msgid "Select the days on the calendar below."
-msgstr ""
+msgstr "Velg dager i kalenderen under."
 
-#: code/kyc/partials/customers.php:110 code/kyc/partials/events.php:123
-#: code/kyc/partials/orders.php:139 code/kyc/partials/reports.php:137
-#: code/kyc/partials/stock.php:96
 msgid "Selected"
 msgstr "Valgte"
 
-#: code/settings/delivery/partials/notifications.php:14
-#: code/settings/delivery/partials/notifications.php:38
 msgid "Short name"
 msgstr "Kallenavn"
 
-#: code/events/partials/modal-event.php:132
 msgid "Slot name"
-msgstr "Kallenavn"
+msgstr "Område navn"
 
-#: code/booking/js/controllers/booking.js:122
-#: code/bookingMenus/js/controllers/menus.js:36
-#: code/bookingMenus/js/directives/menus-item/menus-item.js:46
-#: code/bookingMenus/js/directives/menus-item/menus-item.js:84
-#: code/bookingSettings/js/controllers/bookingSettings.js:88
-#: code/events/js/directives/event/event.js:150
 msgid "Sorry, but there's been an error processing your request."
 msgstr "Beklager, men det var en feil ved behandling av forespørselen."
 
-#: code/events/partials/events.php:17
 msgid "Start Date"
 msgstr "Start dato"
 
-#: code/events/partials/events.php:18
 msgid "Start Time"
 msgstr "Start tidspunkt"
 
-#: code/events/partials/modal-event.php:19
 msgid "Start time:"
-msgstr "Start tidspunkt"
+msgstr "Start tidspunkt:"
 
-#: code/accountSettings/partials/billingHistory.php:12
-#: code/kyc/partials/stream.php:14
 msgid "Status"
 msgstr "Status"
 
-#: code/kyc/index.php:25
 msgid "Stock"
 msgstr "Varebeholdning"
 
-#: code/accountSettings/index.php:21
-#: code/accountSettings/partials/billingHistory.php:1
-#: code/accountSettings/partials/subscription.php:1
+msgid "Submit"
+msgstr "Send"
+
 msgid "Subscriptions"
 msgstr "Abonnementer"
 
-#: code/kyc/partials/stream.php:82
-msgid "TOTAL"
-msgstr "TOTALT"
-
-#: code/bookingSettings/partials/booking-settings.php:31
 msgid "The event organiser can change their orders up until this time"
 msgstr ""
+"Arrangement ansvarlig kan endre på bestillingen frem til dette tidspunktet"
 
-#: code/events/partials/events.php:6
+msgid "the event start time"
+msgstr "arrangementets start tidspunkt"
+
+msgid "the event start time with a lead time of"
+msgstr "arrangementets starttid med en ledetid på"
+
+msgid "the event start time, it ends"
+msgstr "arrangementets start tidspunkt, det er ferdig"
+
 msgid ""
 "These show when you are open for ordering, such as performances or matches. "
 "They can be viewed from the front page of your app"
@@ -973,102 +722,78 @@ msgstr ""
 "Disse viser når du har åpent for bestilling, som for eksempel forestillinger "
 "eller kamper. De kan sees fra forsiden av din app"
 
-#: code/events/partials/modal-event.php:186
 msgid "This slot is available up until"
-msgstr ""
+msgstr "Denne plassen er tilgjengelig frem til"
 
-#: code/events/partials/modal-event.php:142
 msgid "This slot starts"
-msgstr ""
+msgstr "Dette område åpner"
 
-#: code/booking/partials/booking.php:22 code/kyc/partials/stream.php:42
 msgid "Time"
 msgstr "Tid"
 
-#: code/events/js/directives/event/event.php:19
-#: code/events/js/directives/event/event.php:23
-#: code/events/partials/modal-event.php:21
-#: code/events/partials/modal-event.php:31
-#: code/events/partials/modal-event.php:36
-#: code/events/partials/modal-event.php:41
 msgid "Time?"
 msgstr "Tid?"
 
-#: code/bookingMenus/partials/booking-menus.php:19
-#: code/events/partials/events.php:21
+msgid "to"
+msgstr "til"
+
 msgid "Tools"
 msgstr "Verktøy"
 
-#: code/kyc/partials/stream.php:21
 msgid "Total"
-msgstr "Total"
+msgstr "Totalt"
 
-#: code/kyc/partials/customers.php:33
+msgid "TOTAL"
+msgstr "TOTALT"
+
 msgid "Total Spent"
 msgstr "Totalt brukt"
 
-#: code/accountSettings/partials/payment.php:42
 msgid "Town/City"
 msgstr "Poststed"
 
-#: code/accountSettings/partials/subscription.php:51
 msgid "UPGRADE"
 msgstr "OPPGRADER"
 
-#: code/settings/delivery/partials/notifications.php:8
 msgid "Venue Alerts"
 msgstr "Varsler for utsalgssted"
 
-#: code/events/partials/events.php:20
 msgid "Visible?"
 msgstr "Synlig?"
 
-#: code/events/js/controllers/modalController.js:28
+msgid "Website"
+msgstr "Webside"
+
 msgid "WEEKLY"
-msgstr ""
+msgstr "UKENTLIG"
 
-#: code/events/partials/modal-event.php:29
 msgid "What's your event duration?"
-msgstr "Dagene din restaurant er åpen"
+msgstr "Varigheten på ditt arrangement?"
 
-#: code/events/js/controllers/modalController.js:30
+msgid "with a lead time of"
+msgstr "med en ledetid på"
+
 msgid "YEARLY"
-msgstr ""
+msgstr "ÅRLIG"
 
-#: code/accountSettings/partials/payment.php:29
-msgid "YY"
-msgstr "ÅÅ"
-
-#: code/events/js/directives/event/event.php:30
-#: code/settings/delivery/partials/delivery.php:8
-#: code/settings/delivery/partials/notifications.php:29
-#: code/settings/delivery/partials/notifications.php:54
 msgid "Yes"
 msgstr "Ja"
 
-#: code/events/js/directives/event/event.js:116
-#: code/events/js/directives/event/event.js:137
 msgid "Yes, delete this event!"
-msgstr "Ja, slett denne hendelsen!"
+msgstr "Ja, slett dette arrangementet!"
 
-#: code/bookingMenus/js/directives/menus-item/menus-item.js:71
 msgid "Yes, delete this menu!"
 msgstr "Ja, slett denne menyen!"
 
-#: code/bookingMenus/js/directives/menus-item/menus-item.js:29
-#, fuzzy
 msgid "Yes, duplicate this menu!"
-msgstr "Ja, slett denne menyen!"
+msgstr "Ja, kopier denne menyen!"
 
-#: code/accountSettings/partials/subscription.php:44
 msgid "You are currently subscribed to the"
 msgstr "Du abonnerer for øyeblikket på"
 
-#: code/accountSettings/partials/subscription.php:12
 msgid "You have an outstanding payment!"
 msgstr "Du har en utestående betaling!"
 
-#: code/accountSettings/partials/subscription.php:19
 msgid ""
 "You have no active subscriptions, your account will not be billed at this "
 "time."
@@ -1076,2103 +801,21 @@ msgstr ""
 "Du har ingen aktive abonnementer, din konto vil ikke bli fakturert på dette "
 "tidspunktet."
 
-#: code/accountSettings/partials/subscription.php:17
 msgid "Your account will be billed"
 msgstr "Din konto vil bli fakturert"
 
-#: code/accountSettings/partials/subscription.php:18
 msgid "Your account will be deactivated on"
 msgstr "Din konto vil bli deaktivert den"
 
-#: code/events/partials/events.php:6
 msgid "Your events"
 msgstr "Dine arrangementer"
 
-#: code/accountSettings/partials/subscription.php:45
 msgid "Your free trial of this subscription will end at midnight on"
 msgstr ""
-"Din gratis prøveversjon av dette abonnementet vil avsluttes ved midnatt"
+"Din gratis prøveversjon av dette abonnementet vil avsluttes ved midnatt den"
 
-#: code/accountSettings/partials/subscription.php:48
 msgid "Your subscription has been cancelled"
 msgstr "Abonnementet er kansellert"
 
-#: code/events/js/controllers/modalController.js:72
-msgid "after"
-msgstr ""
-
-#: code/events/js/controllers/modalController.js:73
-msgid "before"
-msgstr ""
-
-#: code/events/partials/modal-event.php:172
-msgid "broken down in steps"
-msgstr ""
-
-#: code/accountSettings/partials/subscription.php:13
-msgid "days to prevent your account from being deactivated."
-msgstr "dager for å hindre at kontoen din blir deaktivert."
-
-#: code/settings/delivery/partials/delivery.php:19
-msgid "eg. \\\"NW1, NW2...\\\""
-msgstr "f.eks. \\\"3210, 3211...\\\""
-
-#: code/events/js/controllers/modalController.js:74
-msgid "is"
-msgstr ""
-
-#: code/events/js/controllers/modalController.js:75
-msgid "is not"
-msgstr ""
-
-#: code/events/partials/modal-event.php:147
-#: code/events/partials/modal-event.php:157
-#: code/events/partials/modal-event.php:178
-#: code/events/partials/modal-event.php:191
-#: code/events/partials/modal-event.php:202
-msgid "minutes"
-msgstr "minutter siden"
-
-#: code/events/partials/modal-event.php:167
-msgid "minutes and it"
-msgstr "minutter siden"
-
-#: code/booking/js/directives/booking-item/booking-item.php:25
-#: code/events/partials/modal-event.php:173
-msgid "of"
-msgstr ""
-
-#: code/accountSettings/partials/subscription.php:44
-msgid "package"
-msgstr "pakke"
-
-#: code/events/partials/modal-event.php:196
-msgid "the event start time"
-msgstr ""
-
-#: code/events/partials/modal-event.php:162
-msgid "the event start time with a lead time of"
-msgstr ""
-
-#: code/events/partials/modal-event.php:152
-msgid "the event start time, it ends"
-msgstr ""
-
-#: code/kyc/index.php:66
-msgid "to"
-msgstr "til"
-
-#: code/events/partials/modal-event.php:197
-msgid "with a lead time of"
-msgstr ""
-
-#~ msgid "SAVING...\""
-#~ msgstr "LAGRER..\""
-
-#~ msgid "All Locations\")?>"
-#~ msgstr "﻿Alle lokasjoner"
-
-#~ msgid "CANCEL>"
-#~ msgstr "AVBRYT>"
-
-#~ msgid "SAVE CHANGES>"
-#~ msgstr "LAGRE ENDRINGER>"
-
-#~ msgid "SAVING...>"
-#~ msgstr "LAGRER...>"
-
-#~ msgid "Please type your password"
-#~ msgstr "Vennligst skriv inn passordet ditt"
-
-#~ msgid "Sign in"
-#~ msgstr "Logg inn"
-
-#~ msgid "I forgot my password"
-#~ msgstr "Jeg har glemt passordet mitt"
-
-#~ msgid "We can't find the page you're looking for."
-#~ msgstr "Vi kan ikke finne siden du leter etter."
-
-#~ msgid "Please check out the"
-#~ msgstr "Vennligst ta en titt på"
-
-#~ msgid "help section"
-#~ msgstr "hjelp seksjonen"
-
-#~ msgid "or return to the"
-#~ msgstr "eller gå tilbake til"
-
-#~ msgid "Dashboard"
-#~ msgstr "Dashbordet"
-
-#~ msgid "Enter your email and we’ll send you a link to reset your password"
-#~ msgstr ""
-#~ "Skriv inn din e-post og vi sender deg en link for å tilbakestille "
-#~ "passordet ditt"
-
-#~ msgid "An email address is required."
-#~ msgstr "En e-postadresse er påkrevd."
-
-#~ msgid "Reset my password"
-#~ msgstr "Tilbakestill passord"
-
-#~ msgid "Sign up with "
-#~ msgstr "Registrer deg med"
-
-#~ msgid "Start receiving mobile orders today"
-#~ msgstr "Begynn å motta mobil bestillinger i dag"
-
-#~ msgid ", you're just a few steps away from going live."
-#~ msgstr ", du er bare noen få skritt unna fra å gå live."
-
-#~ msgid "Basic information"
-#~ msgstr "Grunnleggende informasjon"
-
-#~ msgid "First name"
-#~ msgstr "Fornavn"
-
-#~ msgid "Please type your first name"
-#~ msgstr "Vennligst skriv ditt fornavn"
-
-#~ msgid "Surname"
-#~ msgstr "Etternavn"
-
-#~ msgid "Please type your surname"
-#~ msgstr "Vennligst skriv ditt etternavn"
-
-#~ msgid "Create your "
-#~ msgstr "Opprett din"
-
-#~ msgid " account"
-#~ msgstr "konto"
-
-#~ msgid "Please type your email"
-#~ msgstr "Vennligst skriv inn din e-post"
-
-#~ msgid "Billing information"
-#~ msgstr "Fakturainformasjon"
-
-#~ msgid "Your 14 day free trial will last until midnight on "
-#~ msgstr "Din 14 dagers gratis prøveperiode vil vare frem til midnatt"
-
-#~ msgid "If you choose not to continue using "
-#~ msgstr "Hvis du velger å ikke fortsette å bruke"
-
-#~ msgid ""
-#~ " just cancel before the trail ends and you won’t be charged (we’ll email "
-#~ "you 2 days before the trial ends to remind you). You can upgrade, "
-#~ "downgrade or cancel at any time."
-#~ msgstr ""
-#~ " bare kanseller før prøveperioden ender og du vil ikke bli belastet (vi "
-#~ "vil sende deg en e-post 2 dager før prøveperioden er over for å minne deg "
-#~ "på det). Du kan oppgradere, nedgradere eller kansellere når som helst."
-
-#~ msgid "Transaction Details"
-#~ msgstr "Transaksjonsdetaljer"
-
-#~ msgid "Unit price"
-#~ msgstr "Enhetspris"
-
-#~ msgid ""
-#~ "Remember you can upgrade, downgrade or cancel your package at any time."
-#~ msgstr ""
-#~ "Husk at du kan oppgradere, nedgradere eller avbestille pakken din når som "
-#~ "helst."
-
-#~ msgid "Why do you need my card details for a free trial?"
-#~ msgstr "Hvorfor trenger du kortdetaljene mine for en gratis prøveversjon?"
-
-#~ msgid "Please type your card number"
-#~ msgstr "Vennligst skriv ditt kortnummer"
-
-#~ msgid "Please type the name in your card"
-#~ msgstr "Vennligst skriv inn navnet som står på kortet ditt"
-
-#~ msgid "Expiry (month/year)"
-#~ msgstr "Utløpsdato (måned/år)"
-
-#~ msgid "Please type your month/year"
-#~ msgstr "Vennligst skriv inn måned/år"
-
-#~ msgid "Security code"
-#~ msgstr "Sikkerhetskode"
-
-#~ msgid "Please type your security code"
-#~ msgstr "Vennligst skriv inn din sikkerhetskode"
-
-#~ msgid "Please type your postcode"
-#~ msgstr "Vennligst skriv inn ditt postnummer"
-
-#~ msgid "I have read accept the"
-#~ msgstr "Jeg har lest og aksepterer"
-
-#~ msgid "terms of service"
-#~ msgstr "vilkårene for tjenesten"
-
-#~ msgid "and"
-#~ msgstr "og"
-
-#~ msgid "privacy policy"
-#~ msgstr "personvernpolicy"
-
-#~ msgid ", including the terms regarding cookies"
-#~ msgstr ", inkludert vilkår om cookies"
-
-#~ msgid "Your have accept tems & conditions for start using "
-#~ msgstr "Du har akseptert betingelser og vilkår for å bruke "
-
-#~ msgid " app."
-#~ msgstr " app."
-
-#~ msgid "Start using my "
-#~ msgstr "Begynn å bruke min "
-
-#~ msgid " app"
-#~ msgstr " app"
-
-#~ msgid "Why do you need my credit card for a free trial?"
-#~ msgstr "Hvorfor trenger du kortdetaljene mine for en gratis prøveversjon?"
-
-#~ msgid ""
-#~ "We ask for your credit card to allow your membership to continue after "
-#~ "your free trial, should you choose not to cancel. This also allows us to "
-#~ "reduce fraud and prevent multiple free trials for one person. This helps "
-#~ "us deliver better service for all the honest customers. Remember that we "
-#~ "won't bill you anything during your free trial and that you can cancel at "
-#~ "any moment before your trial ends."
-#~ msgstr ""
-#~ "Vi ber om ditt kredittkort for å tillate medlemskapet å fortsette etter "
-#~ "den gratis prøveperioden hvis du velger å ikke kansellere. Dette for oss "
-#~ "også til å redusere svindel og forhindre at flere gratis prøveversjoner "
-#~ "opprettes for en person. Det hjelper oss å levere en bedre service for "
-#~ "alle de oppriktige kundene. Husk at vi ikke vil fakturere deg noe under "
-#~ "den gratis prøveperioden, og at du kan avbryte når som helst før "
-#~ "prøveperioden utløper."
-
-#~ msgid "Menu"
-#~ msgstr "Meny"
-
-#~ msgid "Sign Up"
-#~ msgstr "Registrer deg"
-
-#~ msgid "Login"
-#~ msgstr "Logg inn"
-
-#~ msgid "Go to Dashboard"
-#~ msgstr "Gå til kontrollpanel"
-
-#~ msgid "Order Screen"
-#~ msgstr "Ordreliste"
-
-#~ msgid "Venue Settings"
-#~ msgstr "Arena innstillinger"
-
-#~ msgid "Change Settings"
-#~ msgstr "Endre innstillinger"
-
-#~ msgid "Opening Hours"
-#~ msgstr "Åpningstider"
-
-#~ msgid "Styling"
-#~ msgstr "Styling"
-
-#~ msgid "Home Screen"
-#~ msgstr "Hjem skjerm"
-
-#~ msgid "Menu Screen"
-#~ msgstr "Meny skjerm"
-
-#~ msgid "Menus"
-#~ msgstr "Menyer"
-
-#~ msgid "Meal Deals"
-#~ msgstr "Tilbud"
-
-#~ msgid "No menus"
-#~ msgstr "Ingen menyer"
-
-#~ msgid "Update Events"
-#~ msgstr "Oppdater arrangementer"
-
-#~ msgid "Advanced Settings"
-#~ msgstr "Avanserte Innstillinger"
-
-#~ msgid "Manage Users"
-#~ msgstr "Administrere brukere"
-
-#~ msgid "Payment Method"
-#~ msgstr "Betalingsmetode"
-
-#~ msgid "Change my app mode"
-#~ msgstr "Endre min app-modus"
-
-#~ msgid "Switch Venue"
-#~ msgstr "Bytt bedrift"
-
-#~ msgid "Logout"
-#~ msgstr "Logg ut"
-
-#~ msgid "Help"
-#~ msgstr "Hjelp"
-
-#~ msgid "Getting Started"
-#~ msgstr "Kom i gang"
-
-#~ msgid "Editing your Menu"
-#~ msgstr "Redigere din Meny"
-
-#~ msgid "FAQs"
-#~ msgstr "FAQ"
-
-#~ msgid "Support"
-#~ msgstr "Support"
-
-#~ msgid "Getting started"
-#~ msgstr "Kom igang"
-
-#~ msgid "First Name is required (max 100chars)"
-#~ msgstr "Fornavn er påkrevd (maks 100 bokstaver)"
-
-#~ msgid "Last Name is required (max 100chars)"
-#~ msgstr "Etternavn er påkrevd (maks 100 bokstaver)"
-
-#~ msgid "Email"
-#~ msgstr "E-post"
-
-#~ msgid "An email address is required"
-#~ msgstr "En e-postadresse er påkrevd"
-
-#~ msgid "A business name is required (max 100chars)"
-#~ msgstr "Et foretaksnavn er påkrevd (maks 100 bokstaver)"
-
-#~ msgid "Notifications"
-#~ msgstr "Varsler"
-
-#~ msgid "Off"
-#~ msgstr "Av"
-
-#~ msgid "On"
-#~ msgstr "På"
-
-#~ msgid "Change password?"
-#~ msgstr "Endre passordet?"
-
-#~ msgid "A password address is required."
-#~ msgstr "En passord adresse er nødvendig."
-
-#~ msgid "Confirm New Password"
-#~ msgstr "Bekreft nytt passord"
-
-#~ msgid "Passwords don't match."
-#~ msgstr "Passordene samsvarer ikke"
-
-#~ msgid "Venue Information"
-#~ msgstr "Fakturainformasjon"
-
-#~ msgid "App Styling 1/2"
-#~ msgstr "Styling"
-
-#~ msgid "App Styling 2/2"
-#~ msgstr "Styling"
-
-#~ msgid "Add a Payment"
-#~ msgstr "Legg til en betaling"
-
-#~ msgid "Style your app"
-#~ msgstr "Endre utseende for din app"
-
-#~ msgid "This is where you can brand your menu page"
-#~ msgstr "Her kan du brande din meny side"
-
-#~ msgid "Add a short venue title"
-#~ msgstr "Kort navn på restaurant"
-
-#~ msgid ""
-#~ "This is a shorter version of your venue name that will be visible over "
-#~ "your menu."
-#~ msgstr ""
-#~ "Dette er en kortere versjon av stedsnavnet som vil være synlig over "
-#~ "menyen."
-
-#~ msgid "Please type a venue title <br/>(max 22chars)"
-#~ msgstr "Vennligst skriv en arena tittel <br/> (maks 22t egn)"
-
-#~ msgid "BASKET"
-#~ msgstr "HANDLEKURV"
-
-#~ msgid "Colour scheme"
-#~ msgstr "Fargevalg"
-
-#~ msgid "Colour one"
-#~ msgstr "Farge en"
-
-#~ msgid ""
-#~ "This colour is used across section progress buttons and as a highlight "
-#~ "colour."
-#~ msgstr ""
-#~ "Denne fargen blir brukt på fremgangs prosesser og knapper som et "
-#~ "høydepunkt farge."
-
-#~ msgid "Button one colour"
-#~ msgstr "Knapp en farge"
-
-#~ msgid "Enter Hex Colour Code or click to choose your colour."
-#~ msgstr "Skriv inn en hex fargekode eller klikk for å velge farge."
-
-#~ msgid "Button text colour"
-#~ msgstr "Velg knappens tekst farge"
-
-#~ msgid ""
-#~ "This colour is used across item select buttons and as a highlight colour."
-#~ msgstr ""
-#~ "Denne fargen blir brukt på knapper som bruke til produktvalg og som "
-#~ "høydepunkt farge."
-
-#~ msgid "Button two colour"
-#~ msgstr "Knapp to farge"
-
-#~ msgid "40&#37 done, a couple more design touches..."
-#~ msgstr "40&#37 ferdig, litt flere design tilpasninger..."
-
-#~ msgid "User management"
-#~ msgstr "Brukeradministrasjon"
-
-#~ msgid "Add a new user"
-#~ msgstr "Legg til en ny bruker"
-
-#~ msgid "Role"
-#~ msgstr "Rolle"
-
-#~ msgid "This decides the level of access of your users."
-#~ msgstr "Dette bestemmer tilgangsnivået for brukerne."
-
-#~ msgid "Add a user name"
-#~ msgstr "Legg til et brukernavn"
-
-#~ msgid "Please type a user name (max 200chars)"
-#~ msgstr "Skriv inn et brukernavn (maks 200 bokstaver)"
-
-#~ msgid "Add an email"
-#~ msgstr "Legg til e-post"
-
-#~ msgid "Please type an email"
-#~ msgstr "Vennligst skriv en e-post adresse"
-
-#~ msgid "Staff: can only read account"
-#~ msgstr "Ansatte: kan bare se på kontoen"
-
-#~ msgid "Staff"
-#~ msgstr "Ansatte"
-
-#~ msgid "Admin: can read/write account but cannot close it down"
-#~ msgstr "Admin: kan se og redigere på kontoen, men kan ikke stenge ned"
-
-#~ msgid "Admin"
-#~ msgstr "Admin"
-
-#~ msgid "Owner: can read/write account and close it down"
-#~ msgstr "Eier: kan se og redigere kontoen og stenge den"
-
-#~ msgid "Owner"
-#~ msgstr "Eier"
-
-#~ msgid "Assign a password"
-#~ msgstr "Tildele et passord"
-
-#~ msgid "Provide a Password"
-#~ msgstr "Gi et passord"
-
-#~ msgid "Confirm Password"
-#~ msgstr "Bekreft passord"
-
-#~ msgid "Confirm password"
-#~ msgstr "Bekreft passord"
-
-#~ msgid "Passwords don't match"
-#~ msgstr "Passordene samsvarer ikke"
-
-#~ msgid "Collection Slot: Half-time"
-#~ msgstr "Samlingssted: Halv tid"
-
-#~ msgid "Lead Time (mins)"
-#~ msgstr "Ledetid (min)"
-
-#~ msgid "30"
-#~ msgstr "30"
-
-#~ msgid "eg. 30"
-#~ msgstr "f.eks 30"
-
-#~ msgid "75&#37 done, almost there now..."
-#~ msgstr "75&#37 ferdig, nesten i mål nå..."
-
-#~ msgid "This is the first screen that your customers will see."
-#~ msgstr "Dette er det første skjermbilde som kundene dine vil se."
-
-#~ msgid "Create a main heading"
-#~ msgstr "Lag en hovedoverskrift"
-
-#~ msgid "Choose one here"
-#~ msgstr "Velg en her"
-
-#~ msgid "or create your own..."
-#~ msgstr "eller lage din egen..."
-
-#~ msgid "maximum 70 characters"
-#~ msgstr "maksimalt 70 tegn"
-
-#~ msgid "Create a subheading"
-#~ msgstr "Lag en underoverskrift"
-
-#~ msgid "Pre-order food and drinks"
-#~ msgstr "Forhåndsbestill mat og drikke"
-
-#~ msgid "Pre-order drinks+food"
-#~ msgstr "Forhåndsbestill drikke+mat"
-
-#~ msgid "maximum 30 characters"
-#~ msgstr "maks 30 tegn"
-
-#~ msgid "Text colour"
-#~ msgstr "Tekst farge"
-
-#~ msgid "ORDER NOW button"
-#~ msgstr "BESTILL NÅ knappen"
-
-#~ msgid "Button colour"
-#~ msgstr "Velg knappens farge"
-
-#~ msgid "ORDER NOW"
-#~ msgstr "BESTILL NÅ"
-
-#~ msgid "Select a home-screen background"
-#~ msgstr "Velg en bakgrunn for hjem-skjermen"
-
-#~ msgid "UPLOAD YOUR OWN BACKGROUND"
-#~ msgstr "LAST OPP DIN EGEN BAKGRUNN"
-
-#~ msgid "Custom Background Upload"
-#~ msgstr "Last opp egendefinert bakgrunn"
-
-#~ msgid "UPLOAD"
-#~ msgstr "LAST OPP"
-
-#~ msgid "RESET"
-#~ msgstr "TILBAKESTILL"
-
-#~ msgid "Supported types: JPG"
-#~ msgstr "Støttede filtyper: JPG"
-
-#~ msgid "Max file size: 10MB"
-#~ msgstr "Maks filstørrelse: 10 MB"
-
-#~ msgid "Dimensions: 1080x1920"
-#~ msgstr "Dimensjoner: 1080x1920"
-
-#~ msgid "UPLOAD YOUR OWN LOGO"
-#~ msgstr "LAST OPP DIN EGEN LOGO"
-
-#~ msgid "Logo Upload"
-#~ msgstr "Last opp logo"
-
-#~ msgid "Note: This will replace your main heading."
-#~ msgstr "Merk: Dette vil erstatte din hovedoverskrift."
-
-#~ msgid "Supported types: PNG"
-#~ msgstr "Støttede filtyper: PNG"
-
-#~ msgid "Dimensions: 100x75"
-#~ msgstr "Dimensjoner: 100x75"
-
-#~ msgid "30&#37 done, time for the artistic bit..."
-#~ msgstr "30&#37 ferdig, tid for en kunstnerisk del..."
-
-#~ msgid "Don't forget to get paid"
-#~ msgstr "Ikke glem å ta betalt"
-
-#~ msgid "CONNECT TO STRIPE"
-#~ msgstr "KOBLE TIL STRIPE"
-
-#~ msgid "SKIP THIS FOR NOW"
-#~ msgstr "IKKE AKKURAT NÅ"
-
-#~ msgid "GO TO YOUR STRIPE ACCOUNT"
-#~ msgstr "GÅ TIL DIN STRIPE KONTO"
-
-#~ msgid "85&#37 done, we've saved the best for last!"
-#~ msgstr "85&#37 ferdig, vi har spart det beste til slutt!"
-
-#~ msgid "Tell us about your opening times"
-#~ msgstr "Fortell oss om dine åpningstider"
-
-#~ msgid "Mon"
-#~ msgstr "Man"
-
-#~ msgid "Tue"
-#~ msgstr "Tir"
-
-#~ msgid "Wed"
-#~ msgstr "Ons"
-
-#~ msgid "Thu"
-#~ msgstr "Tor"
-
-#~ msgid "Fri"
-#~ msgstr "Fre"
-
-#~ msgid "Sat"
-#~ msgstr "Lør"
-
-#~ msgid "Sun"
-#~ msgstr "Søn"
-
-#~ msgid "Add another opening hour"
-#~ msgstr "Legg til en annen åpningstid"
-
-#~ msgid "eg: if you close for lunch and reopen in the evening."
-#~ msgstr "f.eks: hvis du stenger til lunsj og åpner igjen på kvelden."
-
-#~ msgid "Open "
-#~ msgstr "Åpen"
-
-#~ msgid ""
-#~ "Let us know if your venue is open for delivery, open for pickup, open for "
-#~ "both or if you are closed today."
-#~ msgstr ""
-#~ "Fortell oss om restauranten er åpen for levering, åpent for henting, åpen "
-#~ "for begge deler eller om du er stengt i dag."
-
-#~ msgid "For delivery and collection"
-#~ msgstr "Levering og henting"
-
-#~ msgid "For delivery only"
-#~ msgstr "Kun for levering"
-
-#~ msgid "For collection only"
-#~ msgstr "Kun for henting"
-
-#~ msgid "Closed Today"
-#~ msgstr "Stengt i dag"
-
-#~ msgid "Opens at"
-#~ msgstr "Åpner"
-
-#~ msgid "Closes at"
-#~ msgstr "Stenger"
-
-#~ msgid "Remove opening hour"
-#~ msgstr "Fjern åpningstid"
-
-#~ msgid "Apply these times to all days"
-#~ msgstr "Bruk disse tidene på alle dager"
-
-#~ msgid "Tell us about your venue"
-#~ msgstr "Fortell oss om din bedrift"
-
-#~ msgid "Venue name"
-#~ msgstr "Restaurant navn"
-
-#~ msgid "Please type a venue name (max 100chars)"
-#~ msgstr "Skriv inn bedriftens navn (maks 100 bokstaver)"
-
-#~ msgid ""
-#~ "Please enter a short description about your venue.<br/><br/>This will not "
-#~ "appear on your branded app."
-#~ msgstr ""
-#~ "Skriv en kort beskrivelse av bedriften.<br/><br/>Dette vil ikke vises på "
-#~ "din app."
-
-#~ msgid "Please type a venue description (max 250chars)"
-#~ msgstr "Skriv en beskrivelse av bedriften (maks 250 bokstaver)"
-
-#~ msgid "What type of venue are you?"
-#~ msgstr "Hvilken type bedrift har du?"
-
-#~ msgid "Restaurant (Cafe, Sandwich Bar, Restaurant, etc)"
-#~ msgstr "Restaurant (Kafe, Sandwich Bar, Restaurant, etc)"
-
-#~ msgid "Sports Arena"
-#~ msgstr "Sports arena"
-
-#~ msgid "Bars, Pubs and Clubs"
-#~ msgstr "Bar, pub og klubb"
-
-#~ msgid "Workplace/Education Catering"
-#~ msgstr "Arbeidsplass/Utdanning Catering"
-
-#~ msgid "Music and Cultural"
-#~ msgstr "Musikk og kultur"
-
-#~ msgid "Are you primarily an events based business?"
-#~ msgstr "Er du først og fremst et arrangement basert bedrift?"
-
-#~ msgid ""
-#~ "Does your business revolve around regular events, e.g. football matches, "
-#~ "performances, etc?"
-#~ msgstr ""
-#~ "Har din virksomhet regelmessige arrangementer, for eksempel "
-#~ "fotballkamper, forestillinger, etc?"
-
-#~ msgid "Collection Slot Duration (mins)"
-#~ msgstr "Samlingssted: Varighet (min)"
-
-#~ msgid ""
-#~ "This is the number of minutes after opening time and before closing time "
-#~ "when customers are allowed to collect orders."
-#~ msgstr ""
-#~ "Dette er antall minutter etter åpningstid og før stengetid som kundene "
-#~ "kan sende inn bestillinger for henting."
-
-#~ msgid "eg: 30"
-#~ msgstr "f.eks 30"
-
-#~ msgid "Please provide a duration in mins"
-#~ msgstr "Vennligst oppgi en varighet i minutter"
-
-#~ msgid "Default preparation time for collection orders (mins)"
-#~ msgstr "Standard forberedelse tid for bestillinger som skal hentes (min)"
-
-#~ msgid ""
-#~ "The time it takes to prepare your order before the customer can pick it "
-#~ "up."
-#~ msgstr "Tiden det tar å lage din bestilling før kunden kan hente den."
-
-#~ msgid "e.g. 25"
-#~ msgstr "f.eks 25"
-
-#~ msgid "Please provide a lead time"
-#~ msgstr "Oppgi  leveringstid"
-
-#~ msgid "Discount offered for collection orders (%)"
-#~ msgstr "Rabatt tilbys på bestillinger med henting (%)"
-
-#~ msgid "e.g. 10"
-#~ msgstr "f.eks 10"
-
-#~ msgid "Minimum value for orders"
-#~ msgstr "Minimumsverdi for ordre"
-
-#~ msgid "e.g. 5"
-#~ msgstr "f.eks 5"
-
-#~ msgid "Please provide a minimum value for ordering"
-#~ msgstr "Vennligst oppgi en minimumsverdi for bestilling"
-
-#~ msgid "Do you offer a delivery service?"
-#~ msgstr "Tilbyr dere levering?"
-
-#~ msgid "You can specify your delivery settings from the dashboard"
-#~ msgstr "Du kan angi dine leveringsinnstillinger fra dashbordet"
-
-#~ msgid "Enable cash payment option?"
-#~ msgstr "Aktivere kontant betaling som et alternativ?"
-
-#~ msgid "Do you require a phone number?"
-#~ msgstr "Krever du et telefonnummer?"
-
-#~ msgid ""
-#~ "By default phone numbers are only required for delivery orders, if you "
-#~ "enable this option it will be mandatory for pickup orders as well."
-#~ msgstr ""
-#~ "Som standard er telefonnumre kun nødvendig for utkjøring, hvis du "
-#~ "aktiverer dette alternativet vil det være obligatorisk for bestillinger "
-#~ "med henting også."
-
-#~ msgid "Address"
-#~ msgstr "Adresse"
-
-#~ msgid "Please type a venue address (max 250chars)"
-#~ msgstr "Skriv inn restaurantens adresse (maks 250 bokstaver)"
-
-#~ msgid "Please type a Town/City (max 45chars)"
-#~ msgstr "Skriv inn by/poststed (maks 45 bokstaver)"
-
-#~ msgid "Country"
-#~ msgstr "Land"
-
-#~ msgid "Please choose a country"
-#~ msgstr "Velg et land"
-
-#~ msgid "Post code"
-#~ msgstr "Postnummer"
-
-#~ msgid "Please type a post code (max 45chars)"
-#~ msgstr "Skriv inn et postnummer (maks 45 bokstaver)"
-
-#~ msgid "Language"
-#~ msgstr "Språk"
-
-#~ msgid "Please select your language"
-#~ msgstr "Velg ditt språk"
-
-#~ msgid "Timezone"
-#~ msgstr "Tidssone"
-
-#~ msgid "Please select your timezone"
-#~ msgstr "Velg tidssone"
-
-#~ msgid "Currency"
-#~ msgstr "Valuta"
-
-#~ msgid "Please select your currency"
-#~ msgstr "Velg valuta"
-
-#~ msgid "15&#37 done, keep going!"
-#~ msgstr "15&#37 ferdig, keep going!"
-
-#~ msgid "This is where you can monitor your takings and reports."
-#~ msgstr "Her kan du overvåke dine salg og rapporter"
-
-#~ msgid "Your online order page is"
-#~ msgstr "Din online bestillingsside er"
-
-#~ msgid "This month"
-#~ msgstr "Denne måneden"
-
-#~ msgid "Total revenue"
-#~ msgstr "Totale inntekter"
-
-#~ msgid "Total orders"
-#~ msgstr "Totalt bestillinger"
-
-#~ msgid "New users"
-#~ msgstr "Nye brukere"
-
-#~ msgid "Returning users"
-#~ msgstr "Returnerende brukere"
-
-#~ msgid "Customer Analytics"
-#~ msgstr "Analytics for kunder"
-
-#~ msgid "Add new menu"
-#~ msgstr "Legg til ny meny"
-
-#~ msgid "Change settings"
-#~ msgstr "Endre innstillinger"
-
-#~ msgid "Delivery settings"
-#~ msgstr "Innstillinger for leveranse"
-
-#~ msgid "Preset notifications"
-#~ msgstr "Forhåndsinnstilte varslinger"
-
-#~ msgid "Opening hours"
-#~ msgstr "Åpningstider"
-
-#~ msgid "Home screen"
-#~ msgstr "Hjem skjerm"
-
-#~ msgid "Menu screen"
-#~ msgstr "Meny skjerm"
-
-#~ msgid "Update events"
-#~ msgstr "Oppdater arrangementer"
-
-#~ msgid "Manage users"
-#~ msgstr "Administrere brukere"
-
-#~ msgid "Add a payment method"
-#~ msgstr "Legg til betalingsmetode"
-
-#~ msgid "Change app mode"
-#~ msgstr "Endre app-modus"
-
-#~ msgid ""
-#~ "LIVE - Your app is visible and is ready to take real orders.<br/><br/"
-#~ ">DEMO - Your app is visible but does not take real orders.<br/><br/"
-#~ ">OFFLINE - Your app is not visible."
-#~ msgstr ""
-#~ "LIVE - Din app er synlig og er klar til å ta i mot ordre. <br/><br/> DEMO "
-#~ "- Din app er synlig, men tar ikke reelle ordre. <br/><br/> OFFLINE - Din "
-#~ "app er ikke synlig."
-
-#~ msgid "active"
-#~ msgstr "aktiv"
-
-#~ msgid "OFFLINE"
-#~ msgstr "OFFLINE"
-
-#~ msgid "DEMO"
-#~ msgstr "DEMO"
-
-#~ msgid "LIVE"
-#~ msgstr "LIVE"
-
-#~ msgid "Venue Title"
-#~ msgstr "Restaurant tittel"
-
-#~ msgid ""
-#~ "Your 30 day free trial \tof this Premium Feature has now expired. Would "
-#~ "you like to purchase it?"
-#~ msgstr ""
-#~ "Din 30 dagers gratis prøveversjon av denne Premium funksjonen har nå "
-#~ "utløpt. Vil du kjøpe den?"
-
-#~ msgid "YES PLEASE"
-#~ msgstr "JA TAKK"
-
-#~ msgid "NOT RIGHT NOW"
-#~ msgstr "IKKE AKKURAT NÅ"
-
-#~ msgid " trial"
-#~ msgstr "prøve"
-
-#~ msgid "Your free trial expires in "
-#~ msgstr "Din gratis prøveperiode utløper om "
-
-#~ msgid " days."
-#~ msgstr " dager."
-
-#~ msgid ""
-#~ " To continue using your app after the free trial, register your card "
-#~ "details for the "
-#~ msgstr ""
-#~ " For å fortsette å bruke programmet etter prøveperioden kan du registrere "
-#~ "kortdetaljene dine for "
-
-#~ msgid " on the 'My Account' tab located on your dashboard."
-#~ msgstr " på \"Min konto\" fanen som er plassert på dashbordet."
-
-#~ msgid "GO TO MY ACCOUNT"
-#~ msgstr "GÅ TIL MIN KONTO"
-
-#~ msgid "Payment provider is not connected!"
-#~ msgstr "Betalingsløsning er ikke tilkoblet!"
-
-#~ msgid ""
-#~ "Before taking your app live you need to connect it to a payment provider "
-#~ "or enable cash payments so that you can start accepting payments and "
-#~ "start getting paid!"
-#~ msgstr ""
-#~ "Før du legger ut din app må du koble til en betalingsløsning eller "
-#~ "aktivere kontant betaling, slik at du kan begynne å akseptere betalinger "
-#~ "og begynne å få betalt!"
-
-#~ msgid "CONNECT"
-#~ msgstr "SAMMENKOBLE"
-
-#~ msgid "Your app is now live!"
-#~ msgstr "Din app er nå live!"
-
-#~ msgid "Your app is now in DEMO mode."
-#~ msgstr "Din app er nå i DEMO-modus."
-
-#~ msgid "Your app is now in OFFLINE mode."
-#~ msgstr "Din app er nå i OFFLINE modus."
-
-#~ msgid "Your app is now in Demo mode."
-#~ msgstr "Din app er nå i Demo modus!"
-
-#~ msgid ""
-#~ "This is where you can combine separate food items into one meal "
-#~ "combination, e.g. sandwich, crisps and a drink"
-#~ msgstr ""
-#~ "Her kan du kombinere separate matvarer til ett kombinasjons måltid, f.eks "
-#~ "hamburger, pomfri og drikke"
-
-#~ msgid "Add a new Meal Deal"
-#~ msgstr "Legg til en ny Meal Deal"
-
-#~ msgid "Section"
-#~ msgstr "Seksjon"
-
-#~ msgid "Which menu section does this meal deal belong in?"
-#~ msgstr "Hvilke del av menyen hører dette måltidet hjemme i?"
-
-#~ msgid "Total Price "
-#~ msgstr "Total Pris "
-
-#~ msgid "Discount Price "
-#~ msgstr "Rabattert pris "
-
-#~ msgid "Please type an item name (max 100chars)"
-#~ msgstr "Vennligst skriv inn et produktnavn (maks 100 bokstaver)"
-
-#~ msgid "Please choose a section"
-#~ msgstr "Velg en seksjon"
-
-#~ msgid "0.00"
-#~ msgstr "0,00"
-
-#~ msgid "Amount?"
-#~ msgstr "Beløp?"
-
-#~ msgid "Type or pick a selection title"
-#~ msgstr "Skriv inn eller velg en tittel"
-
-#~ msgid "Eg. Choose a main, Choose a side, Choose a drink, etc"
-#~ msgstr "F.eks. Velg en hovedrett, velg en siderett, Velg drikke, etc"
-
-#~ msgid "Please type or pick a title (max 100chars)"
-#~ msgstr "Vennligst skriv inn eller velg en tittel (maks 100 bokstaver)"
-
-#~ msgid "Choose a menu section"
-#~ msgstr "Velg en meny seksjon"
-
-#~ msgid "All sections"
-#~ msgstr "Alle seksjoner"
-
-#~ msgid "Pick a menu section from where you'd like to import items."
-#~ msgstr "Velg en meny seksjon som du ønsker å importere varer fra."
-
-#~ msgid "Add this item to the current Meal Deal"
-#~ msgstr "Legge dette produktet til gjeldende Meal Deal"
-
-#~ msgid "Add a selection to this meal deal"
-#~ msgstr "Lag et utvalg til denne kampanjen"
-
-#~ msgid "Click to add a Meal Deal name"
-#~ msgstr "Klikk for å legge til et kampanjenavn"
-
-#~ msgid ""
-#~ "You've not created any items! You won't be able to create Meal Deals "
-#~ "until you have some items in your menu."
-#~ msgstr ""
-#~ "Du har ikke opprettet noen retter! Du vil ikke være i stand til å lage "
-#~ "kampanjer før du har noen retter i menyen."
-
-#~ msgid "Outlets"
-#~ msgstr "Utsalgssteder"
-
-#~ msgid "Add a new Outlet"
-#~ msgstr "Legg til nytt utsalgssted"
-
-#~ msgid "Add an outlet name"
-#~ msgstr "Legg til nytt sted"
-
-#~ msgid "Please type an outlet name"
-#~ msgstr "Skriv inn navn på utsalgssted"
-
-#~ msgid "Please choose a menu"
-#~ msgstr "Velg en meny"
-
-#~ msgid "Build your menu"
-#~ msgstr "Bygg din meny"
-
-#~ msgid "Your menu"
-#~ msgstr "Din meny"
-
-#~ msgid ""
-#~ "Now it's time to create your menu. We suggest you keep it simple to start "
-#~ "with.<br/><br/>An easy way is to group items, i.e. create separate "
-#~ "sections for food, cold drinks and hot drinks."
-#~ msgstr ""
-#~ "Nå er det på tide å lage menyen din. Vi foreslår at du holder det så "
-#~ "enkelt som mulig til å begynne med. <br/><br/> En enkel måte er å "
-#~ "gruppere produkter, dvs. opprette egne grupper for mat, kald drikke og "
-#~ "varm drikke."
-
-#~ msgid "Click to add your menu name"
-#~ msgstr "Klikk for å legge inn meny navn"
-
-#~ msgid "Please type a menu name (max 100chars)"
-#~ msgstr "Vennligst skriv inn et meny navn (maks 100 bokstaver)"
-
-#~ msgid "Click to add a section name"
-#~ msgstr "Klikk for å legge til gruppe navn"
-
-#~ msgid "Please type a section name (max 100chars)"
-#~ msgstr "Vennligst skriv inn et gruppe navn (maks 100 bokstaver)"
-
-#~ msgid "Add an item to this section"
-#~ msgstr "Legg til et produkt i denne gruppen"
-
-#~ msgid "Move this section"
-#~ msgstr "Flytt denne gruppen"
-
-#~ msgid "Collapse this section"
-#~ msgstr "Skjul denne gruppen"
-
-#~ msgid "Price "
-#~ msgstr "Pris"
-
-#~ msgid "Quantity"
-#~ msgstr "Antall"
-
-#~ msgid "Click to add an item name"
-#~ msgstr "Klikk for å legge til produktnavn"
-
-#~ msgid "Optional description"
-#~ msgstr "Valgfri beskrivelse"
-
-#~ msgid "Price?"
-#~ msgstr "Pris?"
-
-#~ msgid "Unlimited"
-#~ msgstr "Ubegrenset"
-
-#~ msgid ""
-#~ "This chooses whether you want to activate this food on the menu or not."
-#~ msgstr "Her velger du om du vil aktivere denne maten på menyen eller ikke."
-
-#~ msgid "Upload image"
-#~ msgstr "Last opp bilde"
-
-#~ msgid "Add tags"
-#~ msgstr "Legg til tags"
-
-#~ msgid "Reorder"
-#~ msgstr "Endre rekkefølgen"
-
-#~ msgid "Add a new option to this item"
-#~ msgstr "Legg et nytt alternativ til dette produktet"
-
-#~ msgid "Add an option"
-#~ msgstr "Legg til et alternativ"
-
-#~ msgid "Type or pick an option title"
-#~ msgstr "Skriv inn eller velg en alternativ tittel"
-
-#~ msgid "Eg. Pick a size, Choice of an option, Add some extras, Select a side"
-#~ msgstr ""
-#~ "F.eks. Velg en størrelse, Valg av tillegg, Legg til litt ekstra, Velg en "
-#~ "siderett"
-
-#~ msgid "Please type or pick a title"
-#~ msgstr "Skriv eller velg en tittel"
-
-#~ msgid "User must select only one option."
-#~ msgstr "Brukeren må kun velge ett tillegg."
-
-#~ msgid "User selects 1 option"
-#~ msgstr "Brukeren velger 1 tillegg"
-
-#~ msgid "User must select one or more options."
-#~ msgstr "Brukeren må velge ett eller flere tillegg."
-
-#~ msgid "User selects 1 or more options"
-#~ msgstr "Brukeren velger 1 eller flere tillegg"
-
-#~ msgid "User can select zero or more options."
-#~ msgstr "Brukeren kan velge 0 eller flere tillegg."
-
-#~ msgid "User selects 0 or more options"
-#~ msgstr "Brukeren velger 0 eller flere tillegg"
-
-#~ msgid ""
-#~ "Single: When the user must pick only 1 option.<br/><br/>Multiple: When "
-#~ "the user must pick 1 or more options.<br/><br/>Optional: when the user "
-#~ "can pick 0 or multiple options."
-#~ msgstr ""
-#~ "Enkel: Når brukeren må velge kun ett tillegg. <br/><br/> Multiple: Når "
-#~ "brukeren må velge ett eller flere tillegg. <br/><br/> Valgfritt: Når "
-#~ "brukeren kan velge 0 eller flere tillegg."
-
-#~ msgid "Please choose a type"
-#~ msgstr "Velg en type"
-
-#~ msgid "Click to add an option name"
-#~ msgstr "Klikk for å legge til et tilleggs navn"
-
-#~ msgid "Please type an option name (max 100chars)"
-#~ msgstr "Vennligst skriv et tilleggets navn (maks 100 bokstaver)"
-
-#~ msgid ""
-#~ "This will be in addition to the item price. If there is no price "
-#~ "difference, put in 0.00."
-#~ msgstr ""
-#~ "Dette kommer i tillegg til produktprisen. Hvis det ikke er noen "
-#~ "prisforskjell, skriv inn 0,00."
-
-#~ msgid "Eg. Toppings, Sizes, Exras, etc"
-#~ msgstr "F.eks. Topping, Størrelser, Tillegg, etc"
-
-#~ msgid "Add an option category to this item <small>(optional)</small>"
-#~ msgstr ""
-#~ "Legg til en tilleggs kategori til dette produktet <small>(valgfritt)</"
-#~ "small>"
-
-#~ msgid "Add a new menu section"
-#~ msgstr "Legg til en ny meny gruppe"
-
-#~ msgid "COLLAPSE ALL"
-#~ msgstr "SKJUL ALLE"
-
-#~ msgid "SAVE & CONTINUE EDITING"
-#~ msgstr "LAGRE & FORTSETT REDIGERING"
-
-#~ msgid "SAVE & FINISH"
-#~ msgstr "LAGRE ENDRINGER"
-
-#~ msgid "45&#37 done, now for the fun bit!"
-#~ msgstr "45&#37 ferdig, nå kommer den festlige delen!"
-
-#~ msgid ""
-#~ "If you're stuck let us know what the problem is and a member of our "
-#~ "support team will be in touch shortly"
-#~ msgstr ""
-#~ "Hvis du sitter fast la oss få vite hva problemet er, og et medlem av vårt "
-#~ "support team vil ta kontakt innen kort tid"
-
-#~ msgid "Please enter your requirement."
-#~ msgstr "Skriv inn din forespørsel."
-
-#~ msgid "SEND"
-#~ msgstr "SEND"
-
-#~ msgid "Thank you for your request"
-#~ msgstr "Takk for din forespørsel"
-
-#~ msgid "We'll be in touch shortly."
-#~ msgstr "Vi tar kontakt innen kort tid."
-
-#~ msgid "Reset your password?"
-#~ msgstr "Tilbakestille passordet ditt?"
-
-#~ msgid "A password is required."
-#~ msgstr "Det kreves et passord."
-
-#~ msgid "RESET PASSWORD"
-#~ msgstr "NULLSTILL PASSORD"
-
-#~ msgid "Sorry. Invalid code."
-#~ msgstr "Beklager. Feil kode."
-
-#~ msgid "The finish line!"
-#~ msgstr "Mållinjen!"
-
-#~ msgid "App mode"
-#~ msgstr "App-modus"
-
-#~ msgid "Your app is currently in "
-#~ msgstr "Din app er nå i "
-
-#~ msgid " mode."
-#~ msgstr " modus."
-
-#~ msgid ""
-#~ "LIVE - Your app is available on My Order App and is ready to take real "
-#~ "orders.<br/><br/>DEMO - Your app is available on My Order App but does "
-#~ "not take real orders.<br/><br/>OFFLINE - Your app is not available on My "
-#~ "Order App."
-#~ msgstr ""
-#~ "LIVE - Din app er tilgjengelig på My Order Appen og er klar til å ta "
-#~ "virkelige bestillinger.<br/><br/>DEMO - Din app er tilgjengelig på My "
-#~ "Order Appen men tar ikke virkelige bestillinger. <br/><br/> OFFLINE - Din "
-#~ "app er ikke tilgjengelig på My Order Appen."
-
-#~ msgid "After you setup a payment method, you can send it into the world!"
-#~ msgstr ""
-#~ "Etter at du har satt opp en betalingsmetode kan du dele det med verden!"
-
-#~ msgid "SETUP PAYMENT"
-#~ msgstr "BETALINGS OPPSETT"
-
-#~ msgid "MAKE MY APP LIVE"
-#~ msgstr "SETT MIN APP TIL LIVE"
-
-#~ msgid "SWITCH TO DEMO MODE"
-#~ msgstr "BYTT TIL DEMO MODUS"
-
-#~ msgid "PUT MY APP IN DEMO MODE"
-#~ msgstr "SETT MIN APP TIL DEMO MODUS"
-
-#~ msgid "TAKE MY APP OFFLINE"
-#~ msgstr "TA MIN APP OFFLINE"
-
-#~ msgid "BACK TO THE DASHBOARD"
-#~ msgstr "TILBAKE TIL KONTROLLPANELET"
-
-#~ msgid "Payment method was not setup."
-#~ msgstr "Betalingsmåte ble ikke satt opp."
-
-#~ msgid "Select venue for use webapp"
-#~ msgstr "Velg bedrift for bruk av webapp"
-
-#~ msgid "Please choose a venue."
-#~ msgstr "Vennligst velg en bedrift."
-
-#~ msgid "Subtotal"
-#~ msgstr "Delsum"
-
-#~ msgid "VAT @ 20%"
-#~ msgstr "MVA @ 20%"
-
-#~ msgid "One-off payment"
-#~ msgstr "Engangsbetaling"
-
-#~ msgid "Monthly charge"
-#~ msgstr "Månedlig kostnad"
-
-#~ msgid "*minimum "
-#~ msgstr "*minimum"
-
-#~ msgid "Have a discount code?"
-#~ msgstr "Har du en rabattkode?"
-
-#~ msgid "APPLY"
-#~ msgstr "BRUK"
-
-#~ msgid "I have read the"
-#~ msgstr "Jeg har lest"
-
-#~ msgid "Terms and Conditions"
-#~ msgstr "Betingelsene"
-
-#~ msgid "Premium Features"
-#~ msgstr "Premium Funksjoner"
-
-#~ msgid ""
-#~ "At Preoday we believe that businesses such as yours should not pay to "
-#~ "receive mobile orders. Our business model is simple: we charge no "
-#~ "commission on orders you receive through the app.  Instead, we offer "
-#~ "services that bring new value and insight to your business."
-#~ msgstr ""
-#~ "Preoday har tro på at bedrifter som din ikke skal måtte betale ekstra for "
-#~ "å motta bestillinger via mobil. Vår forretningsmodell er enkel: vi tar "
-#~ "ingen provisjon på bestillinger som du mottar via appen. I stedet kan vi "
-#~ "tilby tjenester som gir ny verdi og innsikt til din bedrift."
-
-#~ msgid "COMING SOON"
-#~ msgstr "KOMMER SNART"
-
-#~ msgid "GET IN TOUCH"
-#~ msgstr "TA KONTAKT"
-
-#~ msgid "month"
-#~ msgstr "måned"
-
-#~ msgid "one-off payment"
-#~ msgstr "engangsbetaling"
-
-#~ msgid "VAT"
-#~ msgstr "MVA"
-
-#~ msgid "FREE"
-#~ msgstr "GRATIS"
-
-#~ msgid "DAY TRIAL"
-#~ msgstr "DAGER GRATIS PRØVE"
-
-#~ msgid "TRIAL EXPIRES IN"
-#~ msgstr "PRØVEPERIODE UTLØPER OM"
-
-#~ msgid "DAYS"
-#~ msgstr "DAGER"
-
-#~ msgid "BUY"
-#~ msgstr "KJØP"
-
-#~ msgid "INSTALLED"
-#~ msgstr "INSTALLERT"
-
-#~ msgid "Features"
-#~ msgstr "Funksjoner"
-
-#~ msgid "Medium"
-#~ msgstr "Medium"
-
-#~ msgid "Hot"
-#~ msgstr "Sterk"
-
-#~ msgid "Vegetarian"
-#~ msgstr "Vegitar"
-
-#~ msgid "Vegan"
-#~ msgstr "Vegan"
-
-#~ msgid "Contains nuts"
-#~ msgstr "Inneholder nøtter"
-
-#~ msgid "Gluten free"
-#~ msgstr "Glutenfri"
-
-#~ msgid "Halal"
-#~ msgstr "Halal"
-
-#~ msgid "Sign in to your Preoday Dashboard"
-#~ msgstr "Logg på dashbordet Preoday"
-
-#~ msgid "Preoday"
-#~ msgstr "Preoday"
-
-#~ msgid "Sign in to your Dashboard"
-#~ msgstr "Logg inn på Dashboard"
-
-#~ msgid "Incorrect credentials or account does not exist."
-#~ msgstr "Feil detaljer oppgitt eller konto finnes ikke."
-
-#~ msgid "Success! Please check your email for further instructions."
-#~ msgstr "Bra! Vennligst sjekk e-posten din for videre instruksjoner."
-
-#~ msgid "Sorry, incorrect code."
-#~ msgstr "Beklager, feil kode."
-
-#~ msgid ""
-#~ "Your password has been reset.<br/>You will now be redirected to the login "
-#~ "page."
-#~ msgstr ""
-#~ "Ditt passord er nullstilt. <br/>Du vil nå bli sendt videre til "
-#~ "innloggingssiden."
-
-#~ msgid "Venue changes have been saved!"
-#~ msgstr "Endringene har blitt lagret"
-
-#~ msgid "Uploaded!"
-#~ msgstr "Lastet opp!"
-
-#~ msgid "Error uploading file"
-#~ msgstr "Feil ved opplasting av fil"
-
-#~ msgid "Incorrect Image File"
-#~ msgstr "Feil bilde fil"
-
-#~ msgid "App changes have been saved!"
-#~ msgstr "Endringene i appen har blitt lagret!"
-
-#~ msgid "Choose a size"
-#~ msgstr "Velg en størrelse"
-
-#~ msgid "Choose a flavour"
-#~ msgstr "Velg en smak"
-
-#~ msgid "Choose a topping"
-#~ msgstr "Velg en topping"
-
-#~ msgid "Choose some extras"
-#~ msgstr "Velg noe ekstra"
-
-#~ msgid "Choose a side dish"
-#~ msgstr "Velg en siderett"
-
-#~ msgid "Pick an option type"
-#~ msgstr "Velg et alternativ"
-
-#~ msgid "Yes, delete this section and all its contents!"
-#~ msgstr "Ja, slett denne delen og alt innhold!"
-
-#~ msgid "Choose a main"
-#~ msgstr "Velg en hoverett"
-
-#~ msgid "Choose a side"
-#~ msgstr "Velg et tillegg"
-
-#~ msgid "Choose a drink"
-#~ msgstr "Velg drikke"
-
-#~ msgid "Choose a curry"
-#~ msgstr "Velg en burger"
-
-#~ msgid "Choose a burger"
-#~ msgstr "Velg en burger"
-
-#~ msgid "Menu configuration has been saved!"
-#~ msgstr "Konfigurasjonen er lagret!"
-
-#~ msgid "Choose Event Location"
-#~ msgstr "Velg Arrangement sted"
-
-#~ msgid "Choose Venue"
-#~ msgstr "Velg Restaurant"
-
-#~ msgid ""
-#~ "Are you sure you want to delete this user? Note: all user data will be "
-#~ "lost!"
-#~ msgstr ""
-#~ "Er du sikker på at du vil slette denne brukeren? Merk: alle brukerdata "
-#~ "vil gå tapt!"
-
-#~ msgid "Yes, delete this user!"
-#~ msgstr "Ja, slett denne brukeren!"
-
-#~ msgid "Username/email already exists"
-#~ msgstr "Brukernavn/e-post eksisterer allerede"
-
-#~ msgid "User configuration has been saved!"
-#~ msgstr "Bruker Konfigurasjonen er lagret!"
-
-#~ msgid "Select all menus"
-#~ msgstr "Velg alle menyer"
-
-#~ msgid "Unselect all menus"
-#~ msgstr "Velge bort alle menyer"
-
-#~ msgid "Select menu("
-#~ msgstr "Velg meny("
-
-#~ msgid "# of # selected"
-#~ msgstr "# av # valgt"
-
-#~ msgid ""
-#~ "Are you sure you want to delete this outlet? Note: all outlet data will "
-#~ "be lost!"
-#~ msgstr ""
-#~ "Er du sikker på at du vil slette dette stedet? Merk: alle data for stedet "
-#~ "vil gå tapt!"
-
-#~ msgid "Yes, delete this outlet!"
-#~ msgstr "Ja, slett stedet!"
-
-#~ msgid "Outlet configuration has been saved!"
-#~ msgstr "Oppsettet er lagret!"
-
-#~ msgid "These times have been applied to all days!"
-#~ msgstr "Disse tidene er blitt satt på alle dager!"
-
-#~ msgid ""
-#~ "We still need some more information. Don't forget to fill out the "
-#~ "remaining days of the week!"
-#~ msgstr ""
-#~ "Vi trenger fortsatt litt mer informasjon. Ikke glem å fylle ut de "
-#~ "resterende dagene i uken!"
-
-#~ msgid ""
-#~ "Are you sure you want to delete this meal deal? Note: all associated data "
-#~ "will be lost!"
-#~ msgstr ""
-#~ "Er du sikker på at du vil slette dette stedet? Merk: alle data for stedet "
-#~ "vil gå tapt!"
-
-#~ msgid "Yes, delete this meal deal!"
-#~ msgstr "Ja, slett denne menyen!"
-
-#~ msgid "All changes has been saved!"
-#~ msgstr "Alle endringer er lagret!"
-
-#~ msgid "Sorry, incorrect password."
-#~ msgstr "Beklager, feil passord."
-
-#~ msgid ""
-#~ "Settings and Password has been saved!<br/>You will need to log in again "
-#~ "with your new password to continue."
-#~ msgstr ""
-#~ "Innstillinger og passord har blitt lagret!<br/>Du må logge inn på nytt "
-#~ "med det nye passordet for å fortsette."
-
-#~ msgid "Please select features you require"
-#~ msgstr "Velg funksjonene du krever"
-
-#~ msgid "Select all"
-#~ msgstr "Merk alle"
-
-#~ msgid "Your app is now in demo mode!"
-#~ msgstr "Din app er nå i demo-modus!"
-
-#~ msgid "Your app is now offline!"
-#~ msgstr "Din app er nå offline!"
-
-#~ msgid "You need to accept at least one payment method before going live"
-#~ msgstr "Du må godta minst én betalingsmåte før du går live"
-
-#~ msgid "You need to subscribe to a package before changing the app mode"
-#~ msgstr "Du må abonnere på en pakke før du endrer app-modus"
-
-#~ msgid "My order app "
-#~ msgstr "Mine ordre app"
-
-#~ msgid "Sorry, these password do not match. Please try again."
-#~ msgstr "Beklager, dette passordet samsvarer ikke. Prøv på nytt."
-
-#~ msgid "All the fields are required."
-#~ msgstr "Alle felter må fylles ut."
-
-#~ msgid "Please fill in all the required fields."
-#~ msgstr "Vennligst fyll inn alle obligatoriske felter"
-
-#~ msgid "Outstanding payment resolved"
-#~ msgstr "Utestående betaling godkjent"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "Payment method updated succesfully!"
-#~ msgstr "Betalingsmåte oppdatert vellykket!"
-
-#~ msgid ""
-#~ "Your outstand payment has been paid. Your card was charged <b>&pound;"
-#~ msgstr "Din utestående betaling er betalt. Kortet ble belastet <b>&pound;"
-
-#~ msgid "</b> and your premium features will remain active."
-#~ msgstr "og dine Premium funksjoner vil fortsatt være aktive."
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "CONFIRM"
-#~ msgstr "Bekreft"
-
-#~ msgid ""
-#~ "Your venue will be taken offline but you still be able to log in to your "
-#~ "account if you ever want to resubscribe."
-#~ msgstr ""
-#~ "Din butikk vil bli tatt offline, men du kan fortsatt logge deg på kontoen "
-#~ "din hvis du noen gang ønsker å aktivere abonnementet."
-
-#~ msgid "Are you sure you want to cancel?"
-#~ msgstr "Er du sikker på at du ønsker å kansellere"
-
-#~ msgid ""
-#~ "Your subscription will remain active until the end of the current billing "
-#~ "cycle, you will no longer be billed after this date. Your venue will be "
-#~ "taken offline but you will still be able to log in to account if you ever "
-#~ "want to resubscribe."
-#~ msgstr ""
-#~ "Abonnementet vil forbli aktiv til slutten av den nåværende "
-#~ "faktureringssyklusen, du vil ikke lenger bli fakturert etter denne "
-#~ "datoen. Din butikk vil bli tatt offline, men du vil fortsatt kunne logge "
-#~ "inn på konto hvis du noen gang ønsker å aktivere abonnementet."
-
-#~ msgid "Error"
-#~ msgstr "Feil"
-
-#~ msgid "PAYMENT METHOD"
-#~ msgstr "BETALINGSMETODE"
-
-#~ msgid "To upgrade your account, please contact "
-#~ msgstr "For oppgradering av kontoen din kan du kontakte"
-
-#~ msgid "Payment resolved"
-#~ msgstr "Utestående betaling godkjent"
-
-#~ msgid "Resubscription Details"
-#~ msgstr "Abonnementer"
-
-#~ msgid "Please enter a discount code"
-#~ msgstr "Skriv inn en rabattkode"
-
-#~ msgid "Welcome to Know Your Customer"
-#~ msgstr "Velkommen til Know Your Customer"
-
-#~ msgid ""
-#~ "From here you can view detailed reports and analytics about your "
-#~ "customers and the transactions they make."
-#~ msgstr ""
-#~ "Her kan du vise detaljerte rapporter og analyser om dine kunder og "
-#~ "transaksjonene de gjør."
-
-#~ msgid "GET STARTED"
-#~ msgstr "KOM I GANG"
-
-#~ msgid "Orders Report"
-#~ msgstr "Ordre Rapport"
-
-#~ msgid "Orders By Events"
-#~ msgstr "Ordre Etter Arrangementer"
-
-#~ msgid "Orders By Outlets"
-#~ msgstr "Ordre Etter Arrangementer"
-
-#~ msgid "Select Events..."
-#~ msgstr "Velg Arrangementer..."
-
-#~ msgid "Week"
-#~ msgstr "Uke"
-
-#~ msgid "Month"
-#~ msgstr "Måned"
-
-#~ msgid "3 Months"
-#~ msgstr "3 Måneder"
-
-#~ msgid "6 Months"
-#~ msgstr "6 Måneder"
-
-#~ msgid "Year"
-#~ msgstr "År"
-
-#~ msgid "Total Customers"
-#~ msgstr "Total Kunder"
-
-#~ msgid "Orders per Customer"
-#~ msgstr "Ordre per Kunde"
-
-#~ msgid "Average Order Value"
-#~ msgstr "Gjennomsnittlig Ordre Beløp"
-
-#~ msgid "Items Ordered"
-#~ msgstr "Varer som er bestilt"
-
-#~ msgid "Orders By Outlet"
-#~ msgstr "Ordre Etter Arrangementer"
-
-#~ msgid "Most Popular Items"
-#~ msgstr "Mest populære varer"
-
-#~ msgid "On the day"
-#~ msgstr "På dagen"
-
-#~ msgid "In advance"
-#~ msgstr "På forhånd"
-
-#~ msgid "Average order value (are"
-#~ msgstr "Gjennomsnittlig Ordre Beløp (er"
-
-#~ msgid "New"
-#~ msgstr "Ny"
-
-#~ msgid "Returning"
-#~ msgstr "Eksisterende"
-
-#~ msgid "Customers (Pi"
-#~ msgstr "Kunder (Pi"
-
-#~ msgid "Customers (Ba"
-#~ msgstr "Kunder (Ba"
-
-#~ msgid " orders"
-#~ msgstr " ordre"
-
-#~ msgid "Number of Orders"
-#~ msgstr "Antall bestillinger"
-
-#~ msgid "Menu Item Popularity"
-#~ msgstr "Menyelement Popularitet"
-
-#~ msgid "Revenue"
-#~ msgstr "Inntekt"
-
-#~ msgid "Date Joined"
-#~ msgstr "Dato Registrert"
-
-#~ msgid "Marketing"
-#~ msgstr "Markedsføring"
-
-#~ msgid "Date of Order"
-#~ msgstr "Ordredato"
-
-#~ msgid "% Increase"
-#~ msgstr "% Økning"
-
-#~ msgid "% Decrease"
-#~ msgstr "% Reduksjon"
-
-#~ msgid "Last Order"
-#~ msgstr "Siste Ordre"
-
-#~ msgid "Item Name"
-#~ msgstr "Produkt Navn"
-
-#~ msgid "Quantity Sold"
-#~ msgstr "Antall Solgt"
-
-#~ msgid "Day"
-#~ msgstr "Dag"
-
-#~ msgid "Loyalty"
-#~ msgstr "Lojalitet"
-
-#~ msgid "Other"
-#~ msgstr "Annet"
-
-#~ msgid "Offers"
-#~ msgstr "Tilbud"
-
-#~ msgid "Value Sold"
-#~ msgstr "Verdi Solgt"
-
-#~ msgid "New Customers"
-#~ msgstr "Nye kunder"
-
-#~ msgid ""
-#~ "Displays all new customers who have signed up, or had their first order, "
-#~ "in the past two weeks."
-#~ msgstr ""
-#~ "Vis alle nye kunder som har registrert seg, eller hadde sin første ordre "
-#~ "de siste to ukene."
-
-#~ msgid "Customers with zero orders"
-#~ msgstr "Kunder med null bestillinger"
-
-#~ msgid ""
-#~ "Displays all customers who have signed up but have not yet placed any "
-#~ "orders."
-#~ msgstr ""
-#~ "Vis alle kunder som har registrert seg, men ennå ikke har lagt inn noen "
-#~ "ordre."
-
-#~ msgid "One Time Buyers"
-#~ msgstr "Engang kjøpere"
-
-#~ msgid "Displays all customers who have placed only one order."
-#~ msgstr "Viser alle kunder som har plassert kun en ordre."
-
-#~ msgid "Most Frequent Buyers"
-#~ msgstr "Kunder med flest bestillinger"
-
-#~ msgid "Displays top 50 customers who have placed the most number of orders."
-#~ msgstr "Viser top 50 kunder som har plassert flest antall bestillinger."
-
-#~ msgid "Highest Spending Customers"
-#~ msgstr "Kunder med høyest forbruk"
-
-#~ msgid "Displays top 50 customers who have the highest transactional spend."
-#~ msgstr "Viser top 50 kunder som har den høyeste transaksjonskostnadene."
-
-#~ msgid "Customers Increasing Orders"
-#~ msgstr "Kunder med økende antall bestillinger"
-
-#~ msgid ""
-#~ "Displays all customers who placed more orders this month than the "
-#~ "previous month."
-#~ msgstr ""
-#~ "Viser alle kunder som har lagt til flere bestillinger denne måneden enn "
-#~ "forrige måned."
-
-#~ msgid "Customers Decreasing Orders"
-#~ msgstr "Kunder med fallende antall bestillinger"
-
-#~ msgid ""
-#~ "Displays all customers who placed less orders this month than the "
-#~ "previous month."
-#~ msgstr ""
-#~ "Viser alle kunder som har lagt inn mindre bestillinger denne måneden enn "
-#~ "forrige måned."
-
-#~ msgid "Customers Increasing Spend"
-#~ msgstr "Kunder med økende forbruk"
-
-#~ msgid ""
-#~ "Displays all customers who spent more this month than the previous month."
-#~ msgstr ""
-#~ "Viser alle kunder som har høyere forbruke denne måneden enn forrige måned."
-
-#~ msgid "Customers Decreasing Spend"
-#~ msgstr "Kunder med fallende forbruk"
-
-#~ msgid ""
-#~ "Displays all customers who spent less this month than the previous month."
-#~ msgstr ""
-#~ "Viser alle kunder som har brukt mindre denne måneden enn forrige måned."
-
-#~ msgid "Sleeping Customers"
-#~ msgstr "Sovende kunder"
-
-#~ msgid ""
-#~ "Displays all customers who have previously made at least one order, but "
-#~ "haven't ordered for 3 months."
-#~ msgstr ""
-#~ "Viser alle kunder som tidligere har minst en ordre, men ikke har bestilt "
-#~ "på tre måneder."
-
-#~ msgid "Displays top 10 most popular items."
-#~ msgstr "Viser de topp 10 mest populære varene."
-
-#~ msgid "Item Popularity Increase"
-#~ msgstr "Varer med økt popularitet"
-
-#~ msgid "Displays all items that sold more this month than last month."
-#~ msgstr "Viser alle varer som solgte mer denne måneden enn forrige måned."
-
-#~ msgid "Item Popularity Decrease"
-#~ msgstr "Varer med synkende popularitet"
-
-#~ msgid "Displays all items that sold less this month than last month"
-#~ msgstr "Viser alle varer som solgte mindre denne måneden enn forrige måned"
-
-#~ msgid "Highest Grossing Days"
-#~ msgstr "Mest innbringende dager"
-
-#~ msgid "Display top 10 highest grossing days."
-#~ msgstr "Vis de topp 10 mest innbringende dager."
-
-#~ msgid "Lowest Grossing Days"
-#~ msgstr "Laveste innbringende dager"
-
-#~ msgid "Display top 10 lowest grossing days."
-#~ msgstr "Viser de topp 10 laveste innbringende dager."
-
-#~ msgid "Highest Order Days"
-#~ msgstr "Dager med høyest antall ordre"
-
-#~ msgid "Display top 10 highest order days."
-#~ msgstr "Vise topp 10 dager med høyest antall ordre"
-
-#~ msgid "Lowest Order Days"
-#~ msgstr "Dager med lavest antall ordre"
-
-#~ msgid "Display top 10 lowest order days."
-#~ msgstr "Vise de topp 10 dager med laveste antall ordre."
-
-#~ msgid "Highest Grossing Hours"
-#~ msgstr "Mest innbringende Timer"
-
-#~ msgid ""
-#~ "Displays the accumulative total spent, broken down by 24 x 1 hour time "
-#~ "slots."
-#~ msgstr "Viser til sammen brukt, fordelt på 24 x 1 time tidsluker."
-
-#~ msgid "Highest Order Hours"
-#~ msgstr "Tidspunkt med høyest antall ordre"
-
-#~ msgid ""
-#~ "Displays the accumulative number of orders, broken down by 24 x 1 hour "
-#~ "time slots."
-#~ msgstr ""
-#~ "Viser stigende antall bestillinger, fordelt på 24 x 1 time tidsluker."
-
-#~ msgid "years ago"
-#~ msgstr "år siden"
-
-#~ msgid "year ago"
-#~ msgstr "år siden"
-
-#~ msgid "months ago"
-#~ msgstr "måneder siden"
-
-#~ msgid "month ago"
-#~ msgstr "måned siden"
-
-#~ msgid "days ago"
-#~ msgstr "dager siden"
-
-#~ msgid "yesterday"
-#~ msgstr "i går"
-
-#~ msgid "hours ago"
-#~ msgstr "timer siden"
-
-#~ msgid "hour ago"
-#~ msgstr "time siden"
-
-#~ msgid "minute ago"
-#~ msgstr "minutt siden"
-
-#~ msgid "seconds ago"
-#~ msgstr "sekunder siden"
-
-#~ msgid "second ago"
-#~ msgstr "sekund siden"
-
-#~ msgid "Contact this customer regarding loyalty programmes"
-#~ msgstr "Kontakt kundeservice om lojalitetsprogrammer"
-
-#~ msgid "Contact this customer with discounts and special offers"
-#~ msgstr "Kontakt denne kunden med rabatter og spesialtilbud"
-
-#~ msgid ""
-#~ "Contact this customer with newsletters, research and marketing emails"
-#~ msgstr "Kontakt denne kunden med nyhetsbrev og markedsførings e-post"
-
-#~ msgid "Successfully saved delivery settings."
-#~ msgstr "Innstillinger for leveranse er lagret."
-
-#~ msgid "Email is invalid"
-#~ msgstr "E-post er ugyldig"
-
-#~ msgid "Your order is running 15 mins late"
-#~ msgstr "Din ordre er 15 minutter forsinket"
-
-#~ msgid "Late Order"
-#~ msgstr "Forsinket ordre"
-
-#~ msgid "Your order is on its way"
-#~ msgstr "Din bestilling er på vei"
-
-#~ msgid "There is a problem with your order. Please call us"
-#~ msgstr "Det er et problem med din bestilling. Vennligst ring oss"
-
-#~ msgid "Call us"
-#~ msgstr "Ring oss"
-
-#~ msgid "Your address is out of our delivery zone"
-#~ msgstr "Adressen din er ute av vår leveranse sone"
-
-#~ msgid "Out of zone"
-#~ msgstr "Ut av sonen"
-
-#~ msgid "Sorry, that item is out of stock"
-#~ msgstr "Beklager, varen er utsolgt"
-
-#~ msgid "Out of stock"
-#~ msgstr "Utsolgt"
-
-#~ msgid "Sorry, Your order has been rejected. Please call us"
-#~ msgstr "Beklager, bestillingen ble avvist. Vennligst ring oss"
-
-#~ msgid " DAY FREE TRIAL"
-#~ msgstr " DAGER GRATIS PRØVE"
-
-#~ msgid "START TRIAL"
-#~ msgstr "START PRØVEVERSJON"
-
-#~ msgid "Your new Premium Feature is now live!"
-#~ msgstr "Din app er nå live!"
-
-#~ msgid ""
-#~ "You will be contacted shortly by a member of our team. You can manage "
-#~ "subscriptions from your <a href='/accountSettings#/subscription'>account "
-#~ "settings page.</a>"
-#~ msgstr ""
-#~ "Du vil snart bli kontaktet av et medlem av teamet vårt. Du kan "
-#~ "administrere abonnementene dine fra <a href='/accountSettings#/"
-#~ "subscription'>konto instillinger.</a>"
-
-#~ msgid ""
-#~ "Please add a payment method to your account in order to subscribe to "
-#~ "Premium Features"
-#~ msgstr ""
-#~ "Legg til en betalingsmåte for kontoen om du vil abonnere på Premium-"
-#~ "funksjoner"
-
-#~ msgid "ADD CARD"
-#~ msgstr "LEGG TIL KORT"
-
-#~ msgid "To access this feature you need to have "
-#~ msgstr "For å få tilgang til denne funksjonen må du ha "
-
-#~ msgid " installed first "
-#~ msgstr " installert først "
-
-#~ msgid "Buy "
-#~ msgstr "Kjøp"
-
-#~ msgid "Your card will be charged "
-#~ msgstr "Ditt kort vil bli belastet "
-
-#~ msgid ""
-#~ " for this transaction. <br/> You may cancel this Premium Feature at any "
-#~ "time from your account settings page."
-#~ msgstr ""
-#~ " for denne transaksjonen.<br>Du kan avbryte denne Premium-funksjonen når "
-#~ "som helst på siden for innstillinger av kontoen."
-
-#~ msgid "Search Venue"
-#~ msgstr "Søk Restaurant"
-
-#~ msgid "Venue Code"
-#~ msgstr "Restaurant kode"
-
-#~ msgid "Venue Name"
-#~ msgstr "Restaurant navn"
-
-#~ msgid "Admin username"
-#~ msgstr "Admin brukernavn"
-
-#~ msgid "Search"
-#~ msgstr "Søk"
-
-#~ msgid "SEARCHING..."
-#~ msgstr "SØKER..."
-
-#~ msgid "Switch"
-#~ msgstr "Bytt"
-
-#~ msgid "CHANGE LANGUAGE"
-#~ msgstr "BYTT SPRÅK"
-
-#~ msgid "English"
-#~ msgstr "Engelsk"
-
-#~ msgid "German"
-#~ msgstr "Tysk"
-
-#~ msgid "French"
-#~ msgstr "Fransk"
-
-#~ msgid "Legal Statement"
-#~ msgstr "Juridisk erklæring"
-
-#~ msgid "Privacy + Cookies"
-#~ msgstr "Personvern + Cookies"
-
-#~ msgid "support@preoday.com"
-#~ msgstr "support@preoday.no"
-
-#~ msgid "Card ending {{card.number}}"
-#~ msgstr "Kredittkortnummer"
-
-#~ msgid "SAVING...\");?>"
-#~ msgstr "LAGRER..."
-
-#~ msgid "on"
-#~ msgstr "den"
+msgid "YY"
+msgstr "ÅÅ"
