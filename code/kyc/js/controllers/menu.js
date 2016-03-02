@@ -41,12 +41,11 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		VenueService.init().then(
 			function(venue){
 				$scope.venue = venue;
-				console.log(venue);
 				$scope.currencySymbol = "";
 				OutletService.init(function(){
 					OutletService.getOutlets().then(function (outlets) {
 						$scope.outlets = outlets;
-					});					
+					});
 					AllCharts.init($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol);
 				})
 			});
@@ -96,7 +95,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 				return eventsSelected;
 			}
 
-			return $scope.events;
+			return [];
 		}
 
 		$scope.getEventsSelectedIds = function () {
@@ -110,11 +109,11 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			return arr;
 		}
 
-		$scope.getEventById = function (id) {
-			var eventsSearch = $scope.eventsSelected;
+		$scope.getEventByOrder = function (order) {
+			var eventsSearch = $scope.events;
 
 			var events = eventsSearch.filter(function (e) {
-				return e.id === id;
+				return (e.id === order.eventId && e.time === order.eventTime);
 			});
 
 			return events.length ? events[0] : {};
@@ -122,21 +121,28 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 
 		$scope.loadEvents = function () {
 			VenueService.getEvents($scope.form.start_date, $scope.form.end_date).then(function (events) {
+				var allEvents= [];
 				if (events.length) {
 					$scope.defaultLabelEvents = _tr('Select Events...');
 					for (var i = events.length - 1; i >= 0; i--) {
 						var current = events[i];
-						var startDate = moment(current.schedules[0].startDate);
+						for (var j=0; j<current.times.length; j++){
+							var ev = angular.copy(current, {});
+							var time  = current.times[j];
+							var startDate = moment(time);
+							ev.time = time;
+							ev.startDateTimeStamp = startDate.valueOf();
+							ev.fullName = startDate.format('DD/MM/YYYY HH:mm') + ' - ' + current.name;
+							allEvents.push(ev);
+						}
 
-						current.startDateTimeStamp = startDate.valueOf();
-						current.fullName = startDate.format('DD/MM/YYYY HH:mm') + ' - ' + current.name;
 					};
 				} else {
 					$scope.defaultLabelEvents = _tr('No events in this period');
 				}
 
-				$scope.eventsSelected = events;
-				$scope.events = $filter('orderBy')(events, 'startDateTimeStamp', true);
+				$scope.eventsSelected = [];
+				$scope.events = $filter('orderBy')(allEvents, 'startDateTimeStamp', true);
 				loadOrdersEvents(getAllEventsIds());
 			})
 		}
@@ -146,17 +152,20 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 		var loadOrdersEvents = function (events) {
 			if (events.length) {
 				OrderService.getOrdersByEvents($scope.form.start_date, $scope.form.end_date, events).then(function (orders) {
-
+					var allOrders = [];
 					for (var i = orders.length - 1; i >= 0; i--) {
-						var order = orders[i];
-
-			            order.eventName = $scope.getEventById(order.eventId).fullName;
-			            order.startDateTimeStampEvent = $scope.getEventById(order.eventId).startDateTimeStamp;
+						  var order = orders[i];
+						  var event = $scope.getEventByOrder(order);
+						  if (!event.id){
+						  	continue;
+						  }
+	            order.eventName = event.fullName;
+	            order.startDateTimeStampEvent = event.startDateTimeStamp;
+	            allOrders.push(order);
 					};
+					allOrders = $filter('orderBy')(allOrders, 'startDateTimeStampEvent', true);
 
-					orders = $filter('orderBy')(orders, 'startDateTimeStampEvent', true);
-
-					$scope.$broadcast('ORDERS_EVENTS_LOADED', { orders: orders });
+					$scope.$broadcast('ORDERS_EVENTS_LOADED', { orders: allOrders });
 					$AjaxInterceptor.complete();
 				}, function () {
 					// body...

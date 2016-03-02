@@ -17,10 +17,19 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
     var title = '';
 
     var processOrders = function (data) {
-        $scope.allOrders = data.orders;
-        $scope.orders = data.orders;
 
-        $scope.totalItems = $scope.orders.length;
+        var allOrders = [];
+        var selectedTimes = _.pluck($scope.eventsSelected, 'time');
+        if (data.orders){
+            allOrders = _.filter(data.orders,function(order){
+                return (selectedTimes.length === 0 || selectedTimes.indexOf(order.eventTime) !== -1);
+            })
+        }
+
+        $scope.allOrders = allOrders;
+        $scope.orders = allOrders;
+
+        $scope.totalItems = $scope.orders ? $scope.orders.length : 0;
 
         $AjaxInterceptor.complete();
     }
@@ -33,11 +42,10 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
     $scope.$on('SELECT_EVENT', function () {
         var eventIds = $scope.getEventsSelectedIds();
         var newOrders = [];
-
         for (var i = 0, len = $scope.ordersLoaded.length; i < len; i++) {
             var order = $scope.ordersLoaded[i];
 
-            if (eventIds.indexOf(order.eventId) !== -1) {
+            if (eventIds.length === 0 || eventIds.indexOf(order.eventId) !== -1) {
                 newOrders.push(order);
             }
         };
@@ -75,7 +83,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         var events = $scope.getEventsSelected();
 
         if (events.length > 1) {
-            return moment($scope.getEventById(orderEach[orderEach.length - 1].eventId).schedules[0].startDate).format("DD-MMM-YYYY") + ' - ' + moment($scope.getEventById(orderEach[0].eventId).schedules[0].endDate).format("DD-MMM-YYYY");
+            return moment($scope.getEventByOrder(orderEach[orderEach.length - 1]).schedules[0].startDate).format("DD-MMM-YYYY") + ' - ' + moment($scope.getEventByOrder(orderEach[0]).schedules[0].endDate).format("DD-MMM-YYYY");
         }
 
         return $scope.form.start_date.format("DD-MMM-YYYY") + " - " + $scope.form.end_date.format("DD-MMM-YYYY");
@@ -125,9 +133,8 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
                         var arrItems = getItemsAsString(order);
                         if (events.length > 1) {
-                            arrPrepData.push('\"' + $scope.getEventById(order.eventId).fullName + '\"');
+                            arrPrepData.push('\"' + $scope.getEventByOrder(order).fullName + '\"');
                         }
-                        console.log("each",order);
                         arrPrepData.push($scope.getOutletById(order.outletId).name || order.outletId);
                         arrPrepData.push(order.user.name);
                         arrPrepData.push(order.user.email);
@@ -280,9 +287,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
             return statusOrderHide.indexOf(order.status) === -1;
         })
 
-        console.log('before for each');
         angular.forEach(orderEach,function(order, key){
-            console.log('in for each')
                 if ($scope.exportAll === "1" || order.selected === true){
                         prepData["Order ID"].push(order.id);
                         prepData["Outlet"].push(order.address ? order.address : ($scope.getOutletById(order.outletId).name || order.outletId));
@@ -293,10 +298,9 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
                         if (events.length > 1) {
                             //Replace is a hack to allow double quotes in event names
-                            prepData['Event'].push($scope.getEventById(order.eventId).fullName.replace('"',"''"));
+                            prepData['Event'].push($scope.getEventByOrder(order).fullName.replace('"',"''"));
                         }
                         var notes = order.notes ?  "___BR______BR___  ----- Special Requests -----  ___BR______BR___" + order.notes  : "";
-                        console.log('notes',order.notes);
                         prepData["Items"].push(arrItems.join('___BR___') + notes);
                         prepData["Discounts and Fees"].push(getDiscountsAndFeedAsString(order).join('___BR___'));
                         prepData["Order Total"].push($scope.getCurrencyByAscii() + order.total.toFixed(2));
@@ -318,7 +322,6 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         prepData["Discounts and Fees"].push('Total');
         prepData["Order Total"].push($scope.getCurrencyByAscii() + total.toFixed(2));
         prepData["Collection"].push('');
-        console.log('pushing ',JSON.stringify(prepData));
         var result = {
             startDate:$scope.form.start_date.valueOf(),
             endDate:$scope.form.end_date.valueOf(),

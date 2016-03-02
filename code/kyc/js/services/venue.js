@@ -74,7 +74,7 @@ angular.module('kyc.services')
          minPaid = minPaid.startOf('day').format('YYYY/M/D HH:mm:ss')
          maxPaid = maxPaid.endOf('day').format('YYYY/M/D HH:mm:ss')
 
-      return Venue.getEvents({id: venue.id, after: minPaid, before: maxPaid}).$promise;
+      return Venue.getEvents({id: venue.id, after: minPaid, before: maxPaid, expand:'times' }).$promise;
     }
 
     function getCurrency(callback){
