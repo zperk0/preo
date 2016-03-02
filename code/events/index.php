@@ -40,7 +40,7 @@
 
 
 
-  <!-- BEGIN WATCH
+  <!-- BEGIN WATCH -->
   <script src="/bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
   <script src="/locale_angular/translations.js"></script>
   <script src="/bower_components/javascript-core/preoday/preoday.min.js"></script>
@@ -60,7 +60,7 @@
   <script src="/code/notification/notification.js"></script>
   <!-- END WATCH -->
 
-  <script src="/code/events/all.min.js"></script>
+  <!-- <script src="/code/events/all.min.js"></script> -->
 
   <script src="/code/constants/session.php"></script>
 

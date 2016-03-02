@@ -235,7 +235,7 @@ angular.module('events')
 
     $scope.select = function( dateObject, oldDate ) {
 
-      // console.trace('select date...', dateObject, oldDate)
+      console.trace('select date...', dateObject, oldDate)
 
       var date, dt = new Date(0, 0, 0, 0, 0, 0, 0), removing = false;
 
@@ -438,14 +438,13 @@ angular.module('events')
         };
 
         ctrl.isSelected = function(date1) {
-
-          var dateOne = new Date( date1.getFullYear(), date1.getMonth(), date1.getDate() );
+          var d1 = moment.utc( date1);
           var isSelected = false;
 
           scope.selectedDays.forEach(function(elem, index) {
 
-            var dateTwo = new Date( elem.getFullYear(), elem.getMonth(), elem.getDate() );
-            if(dateOne.getTime() === dateTwo.getTime()) {
+            var d2 = moment.utc(elem);
+            if(d1.isSame(d2,'day')) {
 
               isSelected = true;
               return true;
