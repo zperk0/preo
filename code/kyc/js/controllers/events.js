@@ -80,7 +80,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
       }
 
       $scope.getExportDateForEvent = function (orderEach) {
-        var events = $scope.getEventsSelected();
+        var events = $scope.getEventsSelected() || $scope.events;
 
         if (events.length > 1) {
             return moment($scope.getEventByOrder(orderEach[orderEach.length - 1]).schedules[0].startDate).format("DD-MMM-YYYY") + ' - ' + moment($scope.getEventByOrder(orderEach[0]).schedules[0].endDate).format("DD-MMM-YYYY");
@@ -91,6 +91,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
     function prepareExportCsvData(){
         var events = $scope.getEventsSelected();
+        events = events.length  === 0 ? $scope.events : events;
 
         if (events.length == 1) {
             title = events[0].name;
@@ -265,6 +266,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         };
 
         var events = $scope.getEventsSelected();
+        events = events.length  === 0 ? $scope.events : events;
 
         if (events.length > 1) {
             prepData['Event'] = [];
