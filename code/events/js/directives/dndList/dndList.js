@@ -56,8 +56,6 @@ angular.module('events')
                     }
                 });
 
-                // disable selection to improve usability
-                container.disableSelection();
             }
         }
     });
