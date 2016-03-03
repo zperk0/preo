@@ -303,6 +303,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                             prepData['Event'].push($scope.getEventByOrder(order).fullName.replace('"',"''"));
                         }
                         var notes = order.notes ?  "___BR______BR___  ----- Special Requests -----  ___BR______BR___" + order.notes  : "";
+                        notes = notes.replace(/\\n/g,"___BR___");
                         prepData["Items"].push(arrItems.join('___BR___') + notes);
                         prepData["Discounts and Fees"].push(getDiscountsAndFeedAsString(order).join('___BR___'));
                         prepData["Order Total"].push($scope.getCurrencyByAscii() + order.total.toFixed(2));
