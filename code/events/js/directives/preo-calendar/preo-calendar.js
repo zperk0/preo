@@ -206,10 +206,6 @@ angular.module('events')
     this.createDateObject = function(date, format) {
       var selected = this.isSelected(date);
 
-      date.setHours(0);
-      date.setMinutes(0);
-      date.setSeconds(0);
-
       return {
         date: date,
         label: dateFilter(date, format),
@@ -245,7 +241,7 @@ angular.module('events')
 
           date = dateObject.activeDate ? dateObject.activeDate : dateObject.date ? dateObject.date : dateObject;
           // date = dateObject.date ? dateObject.date : dateObject;
-          dt.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());
+          dt = moment.utc(date)
           self.activeDate = date;
           $scope.ngModel = self.activeDate;
 
@@ -253,8 +249,8 @@ angular.module('events')
           if($scope.schedules.freq == 'CUSTOM' && !dateObject.hasOwnProperty('activeDate')) {
 
             $scope.selectedDays.some(function(elem, index) {
-
-              if(dt.getTime() == elem.getTime()) {
+              var elDate = moment.utc(elem);
+              if(dt.isSame(elDate,'day')) {
 
                 $scope.selectedDays.splice(index, 1);
                 removing = true;
@@ -264,7 +260,7 @@ angular.module('events')
             });
 
             if(!removing)
-              $scope.selectedDays.push(dt);
+              $scope.selectedDays.push(dt.toDate());
           }
 
         }
@@ -273,18 +269,19 @@ angular.module('events')
         else if(typeof dateObject == 'string') {
 
           date = DateUtils.getDateObj(dateObject);
-          dt.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());
+          dt = moment.utc(date.getFullYear(), date.getMonth(), date.getDate())
 
           // remove old date
           if(oldDate) {
 
             var strOldDt = oldDate.split('/');
-            var oldDtObj = new Date(strOldDt[2], strOldDt[1] - 1, strOldDt[0]);
+            var oldDtObj = moment.utc(strOldDt[2] +"-"+ strOldDt[1] +"-"+strOldDt[0]);
 
             $scope.selectedDays.some(function(elem, index) {
-              if(elem.getTime() == oldDtObj.getTime()) {
+               var elDate = moment.utc(elem);
+                if(oldDtObj.isSame(elDate,'day')) {
                 $scope.selectedDays.splice(index, 1);
-                return true;
+                removing = true;
               }
             });
           }
