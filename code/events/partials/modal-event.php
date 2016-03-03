@@ -190,7 +190,7 @@
                 <small ng-show='(slot.endError || (slot.end && modal.isInvalidFormat(slot.end)) || (!slot.end && (slot.step || slot.start)))' class="error end" translate>Enter minutes?</small>
               </div>
               <span translate>minutes</span>
-              <select ng-model='slot.startFactor' class='start-select'>
+              <select ng-model='slot.endFactor' class='end-select'>
                 <option value="-1">{{modal.strings.before}}</option>
                 <option value="1">{{modal.strings.after}}</option>
               </select>

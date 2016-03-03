@@ -269,7 +269,7 @@ angular.module('events')
         else if(typeof dateObject == 'string') {
 
           date = DateUtils.getDateObj(dateObject);
-          dt = moment.utc(date.getFullYear(), date.getMonth(), date.getDate())
+          dt = moment.utc(date)
 
           // remove old date
           if(oldDate) {
