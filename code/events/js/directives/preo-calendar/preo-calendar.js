@@ -231,7 +231,7 @@ angular.module('events')
 
     $scope.select = function( dateObject, oldDate ) {
 
-      console.trace('select date...', dateObject, oldDate)
+      // console.trace('select date...', dateObject, oldDate)
 
       var date, dt = new Date(0, 0, 0, 0, 0, 0, 0), removing = false;
 
