@@ -39,9 +39,8 @@
 								</td>
 								<td class="userTDRole">
 									<select name="uRole[0]" class="userField noEnterSubmit inline" style="display:none;" /> <!-- Dummy does not have userMenuSingleSelect -->
+									  <option value="OWNER" title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 										<option value="STAFF" title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
-										<!--<option value="ADMIN" title="<?echo _("Admin: can read/write account but cannot close it down")?>"><?echo _("Admin")?></option>-->
-										<option value="OWNER" title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 									</select>
 									<small class="error"><?echo _("Role?");?></small>
 								</td>
@@ -93,9 +92,8 @@
 						</td>
 						<td class="userTDRole">
 							<select name="uRole[<?echo ($uKey+1);?>]" class="userMenuSingleSelect userField noEnterSubmit" style="display:none" readonly="readonly"/>
+							<option value="OWNER" 	<?if($user['role']=='OWNER'){?>selected="selected"<?}?> title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 								<option value="STAFF" 	<?if($user['role']=='STAFF'){?>selected="selected"<?}?> title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
-								<!--<option value="ADMIN" 	<?if($user['role']=='ADMIN'){?>selected="selected"<?}?> title="<?echo _("Admin: can read/write account but cannot close it down")?>"><?echo _("Admin")?></option>-->
-								<option value="OWNER" 	<?if($user['role']=='OWNER'){?>selected="selected"<?}?> title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 							</select>
 							<small class="error"><?echo _("Role?");?></small>
 						</td>
@@ -158,9 +156,9 @@
 									<small class="error"><?echo _("Please type an email");?></small>
 								</td>
 								<td class="userTDRole">
-									<select name="iuRole[0]" class="userField noEnterSubmit inline" style="display:none;" required> <!-- Dummy does not have userMenuSingleSelect -->
-										<option value="STAFF" title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
+									<select value="OWNER" name="iuRole[0]" class="userField noEnterSubmit inline" style="display:none;" required> <!-- Dummy does not have userMenuSingleSelect -->
 										<option value="OWNER" title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
+										<option value="STAFF" title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
 									</select>
 								</td>
 								<td class="userTDTools">
@@ -193,9 +191,8 @@
 						</td>
 						<td class="userTDRole">
 							<select name="iuRole[<?echo ($uKey+1);?>]" class="userMenuSingleSelect userField noEnterSubmit" style="display:none" required>
+							  <option value="OWNER" 	<?if($user['role']=='OWNER'){?>selected="selected"<?}?> title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 								<option value="STAFF" 	<?if($user['role']=='STAFF'){?>selected="selected"<?}?> title="<?echo _("Staff: can only read account")?>"><?echo _("Staff")?></option>
-								<!--<option value="ADMIN" 	<?if($user['role']=='ADMIN'){?>selected="selected"<?}?> title="<?echo _("Admin: can read/write account but cannot close it down")?>"><?echo _("Admin")?></option>-->
-								<option value="OWNER" 	<?if($user['role']=='OWNER'){?>selected="selected"<?}?> title="<?echo _("Owner: can read/write account and close it down")?>"><?echo _("Owner")?></option>
 							</select>
 							<small class="error"><?echo _("Role?");?></small>
 						</td>

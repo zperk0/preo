@@ -2940,6 +2940,7 @@ $(document).ready(function() {
 			   selectedList: 1,
 			   minWidth: 108
 			});
+			$(this).val( "OWNER" );
 		});
 
 		//now we fix uID
