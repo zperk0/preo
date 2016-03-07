@@ -187,8 +187,8 @@
 				<!--<p id="venSubHeading"><?echo htmlentities($_SESSION['venue_name'], ENT_QUOTES);?></p>-->
 				<p id="venSubHeading">&nbsp;</p>
 				<p id="subHeading"><?if(isset($_SESSION['app_subHeading'])) echo htmlentities($_SESSION['app_subHeading'], ENT_QUOTES);else echo "";?></p>
-			</div>			
-		</div>	
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -250,6 +250,31 @@ if ($packageTrial) {
     <button class='positiveDismiss preodayButton' ><? echo _("CONNECT")?></button>
     <button class='negativeDismiss preodayButton'><? echo _("CANCEL")?></button>
 </div>
+
+<?php
+	echo $_SESSION['welcomeMsg'].'waaa';
+ 		if (isset($_SESSION['welcomeMsg'])) {
+		$msgs =  array(
+				invite => "You now have access to ".$_SESSION['venue_name']." dashboard"
+			);
+		$msg = $msgs[$_SESSION['welcomeMsg']];
+		unset($_SESSION['welcomeMsg']);
+	?>
+	<div id="welcomeMessage" class="reveal-modal medium modal-preoday dashboard" data-reveal>
+    <header class="title-notification"><?echo _("Welcome") ?></header>
+    <div class="container-modal-confirm"><? echo $msg ?></div>
+    <button class='positiveDismiss preodayButton' ><? echo _("OK")?></button>
+</div>
+
+	<script>
+		$(document).ready(function() {
+			$('#welcomeMessage').foundation('reveal', 'open');
+			$('#welcomeMessage .positiveDismiss').on('click',function (){
+				$('#welcomeMessage').foundation('reveal', 'close');
+			});
+		});
+	</script>
+<? } ?>
 
 <script type="text/javascript">
 	$(document).ready(function() {

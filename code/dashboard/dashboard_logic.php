@@ -39,8 +39,8 @@
 	{
 			$result = getCurrentlyUserRole();
 		  if ( isset($result['status']) && $result['status'] == 403 ) {
-			$_SESSION['privLogout'] = 1;
-			header("location:".$_SESSION['path'].'/logout');
+			// $_SESSION['privLogout'] = 1;
+			header("location:".$_SESSION['path'].'/staff');
 			exit;
 		  }
 

@@ -62,8 +62,9 @@
 		<section class="top-bar-section">
 			<!-- Right Nav Section -->
 			<ul class="left pretendRight">
-				<?php if(!isset($_SESSION['logged'])) { ?>
-					<li><a href="<?echo $_SESSION['path']?>/signup"									><? echo _("Sign Up");?></a></li>
+			  <?php if(!isset($_SESSION['user_role'])) { ?>
+					<li><a href="<?echo $_SESSION['path']?>/logout"><? echo _("Logout");?></a></li>
+				<?php } else if(!isset($_SESSION['logged'])) { ?>
 					<li><a href="<?echo $_SESSION['path']?>/signin"	class="activated"				><? echo _("Login");?></a></li>
 				<?php } else {
 						if(!isset($_SESSION['signupWizFlag']) || !$_SESSION['signupWizFlag']){ ?>

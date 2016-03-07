@@ -132,7 +132,7 @@ input[readonly] {
 }
 
 .itemTR input[readonly], .userTR input[readonly], .eventTR input[readonly] {
-  cursor: pointer;
+  cursor: disabled;
 }
 
 /* Chrome autofill colour replacement */
@@ -1001,7 +1001,7 @@ table {
   /* border-bottom: 1px solid #B8B9BC; */
 }
 
-.itemTR, .eventTR, .userTR, .mdTR {
+.itemTR, .eventTR, .userTR, .inviteUserTR, .mdTR {
   margin-top: 20px;
 }
 
@@ -1433,7 +1433,7 @@ table {
     &:first-of-type {
       border-bottom: 1px solid #B9BBBD;
     }
-    &.itemTR.menuEdit:first-of-type, &.userTR.userEdit:first-of-type, &.eventTR.eventEdit:first-of-type {
+    &.itemTR.menuEdit:first-of-type, &.userTR.userEdit:first-of-type, &.inviteUserTR.userEdit:first-of-type, &.eventTR.eventEdit:first-of-type {
       border-bottom: 0px !important;
     }
   }
@@ -1522,7 +1522,7 @@ table {
   padding-top: 10px !important;
 }
 
-.newItem, .newSection, .deleteSection, .deleteSlot, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot, .applyTimesAllDays, .addMoreOH, .removeOHDiv {
+.newItem, .newSection, .deleteSection, .deleteSlot, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot, .applyTimesAllDays, .addMoreOH, .removeOHDiv, .inviteUser {
   padding: 1px 3px;
   font-size: 20px;
 }
@@ -1543,7 +1543,7 @@ table {
   margin-top: 36px;
 }
 
-.newItem, .newEvent, .newUser, .newOutlet, .newmdItem, .addMoreOH {
+.newItem, .newEvent, .newUser, .inviteUser, .newOutlet, .newmdItem, .addMoreOH {
   background: $mainDark;
   border: $mainDark;
 }
@@ -3920,6 +3920,14 @@ button.preodayButton.noclick{
   width: 25px;
   height: 25px;
 }
+.pd-envelope{
+     background: url(/img/envelope.png) center no-repeat;
+    width: 28px;
+    height: 27px;
+    background-size: 20px;
+    float: left;
+    margin-right: 5px;
+}
 
 .footer-modalCrop, .header-modalCrop{
   overflow: hidden;
@@ -4052,6 +4060,12 @@ button.preodayButton.noclick{
   font-size: 12px;
   color: #CE0000;
   display: none;
+}
+
+
+.linkMail{
+  font-size: 14px;
+  color: #4F4F4F !important;
 }
 
 .accordion.contentSectionsDashboard section > h3[data-section-title]{
@@ -4447,4 +4461,8 @@ input::-webkit-inner-spin-button {
     display: inline-block;
     font-size: 0.9em;
   }
+}
+
+#welcomeMessage {
+  padding: 40px;
 }
