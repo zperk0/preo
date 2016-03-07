@@ -1,5 +1,7 @@
 <? $_SESSION['groupMenu'] = ($_SERVER['REQUEST_URI'] == '/newGroupMenu') || (strtoupper($menu['type']) == 'BOOKING') ? true : false; ?>
 
+<? $isVoucherMenu = ($menu['type']==='VOUCHER') ?>
+
 <div class="loading" id="loadingConfig">
   <div class="background-loading"></div>
   <div class="loading-content">
@@ -84,7 +86,7 @@
 							<option value="<? echo $promotion; ?>" selected><? echo $promotion; ?></option>
 						<?}
 						}?>
-					</select>					
+					</select>
 				</div>
 			</div>
 			<?}?>
@@ -226,6 +228,19 @@
 							<button type="button" class="menuTableButtons secondary optionRowDelete" 	title="<?echo _("Delete");?>"><i class="pd-delete"></i></button>
 						</td>
 					</tr>
+					<? if  ($isVoucherMenu) { ?>
+					<tr class="menuEdit hide" >
+						<td class="menuTDValue">
+								<input type="text" name="iValue[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional value... (ex: 19.99)") ?>" pattern="^([0-9]+)([\.,][0-9]{1,2})?$"/>
+								<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("The real value of the voucher the customer will be able to redeem. The customer will be charged the total set in Price.");?>"></i>
+								<small class="error priceError"><?echo _("Value?");?></small>
+						</td>
+						<td class="menuTDAditionalInfo">
+								<input type="text" name="iInfo[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional Additional info...") ?>" pattern="^.{0,149}$"/>
+								<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("Aditional info displayed in the footer of the eVoucher (Max 150 chars)");?>"></i>
+								<small class="error"><?echo _("Max 150 chars");?></small>
+						</td>
+					<? } ?>
 					<tr class="menuEdit xtraModTR">
 						<td class="xtraModTD"><h6><button type="button" class="xtraOpt" title="<?echo _("Eg. Toppings, Sizes, Exras, etc");?>"><i class="pd-add"></i></button> <?echo _("Add an option category to this item <small>(optional)</small>");?> </h6></td>
 					</tr>
@@ -339,6 +354,19 @@
 
 										</td>
 									</tr>
+									<? if  ($isVoucherMenu) { ?>
+										<tr class="savedInput hide editOnly" >
+											<td class="menuTDValue">
+													<input type="text" name="iValue[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional value... (ex: 19.99)") ?>" pattern="^([0-9]+)([\.,][0-9]{1,2})?$" <?if($item['value']){?>value="<?echo $item['value']; }?>"/>
+													<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("The real value of the voucher the customer will be able to redeem. The customer will be charged the total set in Price.");?>"></i>
+													<small class="error priceError"><?echo _("Value?");?></small>
+											</td>
+											<td class="menuTDAditionalInfo">
+													<input type="text" name="iInfo[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional Additional info...") ?>" pattern="^.{0,149}$" <?if($item['additionalInfo']){?>value="<?echo $item['additionalInfo'];}?>"/>
+													<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("Aditional info displayed in the footer of the eVoucher (Max 150 chars)");?>"></i>
+													<small class="error"><?echo _("Max 150 chars");?></small>
+											</td>
+										<? } ?>
 									<?if(isset($item['modifiers']) && count($item['modifiers'])){
 										foreach($item['modifiers'] as $modiKey=>$modifier){ ?>
 											<tr class="menuEdit subHeaderTR">

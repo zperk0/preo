@@ -1009,6 +1009,26 @@ table {
   width: 20%;
   padding-top: 0;
   padding-bottom: 0;
+  position:relative;
+  overflow:hidden;
+
+   &.menuTDValue{
+    width:5%;
+
+   }
+
+   .preoTips.absolute{
+      position: absolute;
+      transition: right 0.3s ease-in-out;
+      right:-100px;
+      top: 10px;
+   }
+
+   &:hover {
+    .preoTips.absolute{
+      right: 20px;
+    }
+   }
 }
 
 .menuTable input, .eventTable input, .userTable input, .outletTable input, .mdTable input {
@@ -1428,6 +1448,10 @@ table {
   margin-left: auto !important;
   margin-right: auto !important;
   min-width: 950px;
+
+  &.editOnly {
+    display:none;
+  }
 }
 
 #mealDealConfigForm .headerTable {
@@ -2017,6 +2041,10 @@ table.sortable-placeholder {
 tbody tr {
   &.menuEdit, &.userEdit, &.eventEdit, &.mdEdit {
     background: transparent !important;
+
+    &.editOnly {
+      display:table;
+    }
   }
 }
 

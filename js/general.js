@@ -707,7 +707,7 @@ $(document).ready(function() {
 					lastImageUpload = {
 						saved: false,
 						idItem: this.idItem
-					};					
+					};
 				}
 
 				lastImageUpload.url = this.croppedImg.attr('src');
@@ -749,7 +749,7 @@ $(document).ready(function() {
 		}
 
 		$item_background.bind('click', function () {
-			
+
 			var currentType = $(this).is(':checked') ? 'BG' : 'DEFAULT';
 			console.log('current type', currentType, default_value_image_type);
 			if (currentType !== default_value_image_type) {
@@ -758,7 +758,7 @@ $(document).ready(function() {
 						saved: false,
 						idItem: idItem,
 						url: imagesMenu[idItem] && imagesMenu[idItem][0].url
-					};					
+					};
 				}
 
 				lastImageUpload.type = currentType;
@@ -2384,6 +2384,8 @@ $(document).ready(function() {
 							else
 								menuSectionOneNivelItem['price'] 	= format_price($inputIPrice.val());
 							menuSectionOneNivelItem['visible'] 		= $tableSectionUnique.find('input[name^=iVisi]:checked').val();
+							menuSectionOneNivelItem['value']	= $tableSectionUnique.find('input[name^=iValue]').val();
+							menuSectionOneNivelItem['additionalInfo']	= $tableSectionUnique.find('input[name^=iInfo]').val();
 							menuSectionOneNivelItem['quantity'] 		= 0;
 							menuSectionOneNivelItem['position'] 		= parseInt(itemCounter);
 
