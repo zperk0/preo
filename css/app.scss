@@ -1022,7 +1022,7 @@ tr {
   }
 }
 
-.menuEdit input, .eventEdit input, .userEdit input, .outletEdit input, .mdEdit input {
+.menuEdit input, .eventEdit input, .userEdit input, .outletEdit input, .mdEdit input, .menuEdit textarea{
   background: $dashboardPremiumLight !important;
   color: #48535D !important;
 }
@@ -1240,7 +1240,7 @@ tr {
   width: 35%;
 }
 
-.menuTDName input, .menuTDDesc input {
+.menuTDName input, .menuTDDesc textarea {
   -o-text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
