@@ -1657,7 +1657,7 @@ $(document).ready(function() {
 				});
 
 				//remove required
-				$curTable.find("input[name^=iName], input[name^=iPrice], input[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
+				$curTable.find("input[name^=iName], input[name^=iPrice], textarea[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
 					$(this).removeAttr('required');
 				});
 
@@ -1695,7 +1695,7 @@ $(document).ready(function() {
 		$curItem.css('max-width', '100%');
 	});
 
-	$(document).on("click", ".itemEdit, .itemTR input[readonly='readonly']", function() {
+	$(document).on("click", ".itemEdit, .itemTR input[readonly='readonly'], .itemTR textarea[readonly='readonly']", function() {
 
 		if($(this).hasClass('itemEdit')) $(this).hide();
 		else $(this).closest('table').find('.itemEdit').hide();
@@ -1707,6 +1707,7 @@ $(document).ready(function() {
 		$curItem.find("tr").addClass('menuEdit');
 		$curItem.find("tr").removeClass('savedInput');
 		$curItem.find("input").removeAttr("readonly");
+		$curItem.find("textarea").removeAttr("readonly");
 		$curItem.find(".itemSave").slideRow('down');
 		if(count) $curItem.find(".optionTR").slideRow('down');
 		$curItem.find(".itemSubheader").slideRow('down');
@@ -2067,7 +2068,7 @@ $(document).ready(function() {
 				});
 
 				//remove required
-				$parentSectionHeader.find("input[name^=mSectionName], input[name^=mSectionMinMax], input[name^=iName], input[name^=iPrice], input[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
+				$parentSectionHeader.find("input[name^=mSectionName], input[name^=mSectionMinMax], input[name^=iName], input[name^=iPrice], textarea[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
 					$(this).removeAttr('required');
 				});
 
@@ -2152,7 +2153,7 @@ $(document).ready(function() {
 						$(this).attr('name', newName);
 					});//update name
 
-					$(this).find("input[name^=iDesc]").each(function(){
+					$(this).find("textarea[name^=iDesc]").each(function(){
 						tempName = $(this).attr('name');
 						newName = tempName.replace(/\[section\d+\]/gi, "[section"+section+"]");
 						$(this).attr('name', newName);
@@ -2215,7 +2216,7 @@ $(document).ready(function() {
 
 	//dependant entries
 	//item
-	$(document).on("blur", 'input[name^=iDesc], input[name^=iPrice], input[name^=iQuan], input[name^=iVisi]', function(){
+	$(document).on("blur", 'textarea[name^=iDesc], input[name^=iPrice], input[name^=iQuan], input[name^=iVisi]', function(){
 		$(this).parents('.itemTR').first().find('input[name^=iName]').attr('data-edit',true);
 		$(this).parents('.itemTR').first().find('input[name^=iName]').data('edit',true);
 	});
@@ -2379,7 +2380,7 @@ $(document).ready(function() {
 
 							menuSectionOneNivelItem['id'] 			= iID.replace(/item/,'');
 							menuSectionOneNivelItem['name'] 			= $tableSectionUnique.find('input[name^=iName]').val();
-							menuSectionOneNivelItem['description']	= $tableSectionUnique.find('input[name^=iDesc]').val();
+							menuSectionOneNivelItem['description']	= $tableSectionUnique.find('textarea[name^=iDesc]').val();
 							if($inputIPrice.val() == '')
 								menuSectionOneNivelItem['price'] 	= 0;
 							else

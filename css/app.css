@@ -780,7 +780,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit {
   background: #fafafa !important; }
 
-.menuEdit input, .eventEdit input, .userEdit input, .outletEdit input, .mdEdit input {
+.menuEdit input, .eventEdit input, .userEdit input, .outletEdit input, .mdEdit input, .menuEdit textarea {
   background: #f1f0f2 !important;
   color: #48535D !important; }
 
@@ -946,7 +946,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit {
   font-weight: bold !important;
   width: 35%; }
 
-.menuTDName input, .menuTDDesc input {
+.menuTDName input, .menuTDDesc textarea {
   -o-text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis; }
