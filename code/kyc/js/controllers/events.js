@@ -128,6 +128,8 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
         var prepData = [[$scope.getExportDateForEvent(orderEach)],[title], titlesCSV];
         var total = 0;
+        var subTotal = 0;
+        var discountsAndFees = 0;
 
             angular.forEach(orderEach,function(order){
                     if ($scope.exportAll === "1" || order.selected === true){
@@ -144,7 +146,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                         arrPrepData.push('\"' + arrItems.join(';').replaceAll('\"', '') + '\"');
                         arrPrepData.push(order.notes);
                         arrPrepData.push($scope.getCurrency() + order.subTotal.toFixed(2));
-                        arrPrepData.push('\"' + getDiscountsAndFeedAsString(order).join(';').replaceAll('\"', '') + '\"');
+                        arrPrepData.push('\"' + getDiscountsAndFeesAs(order, 'string').join(';').replaceAll('\"', '') + '\"');
                         arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
                         arrPrepData.push(order.status);
                         arrPrepData.push(order.user.optinLoyalty);
@@ -154,12 +156,14 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
                         prepData.push(arrPrepData);
 
+                        subTotal += order.subTotal;
+                        discountsAndFees += getDiscountsAndFeesAs(order, 'total');
                         total += order.total;
                     }
             })
 
         var totalData = [
-            '', '', '', '', '', '', '', '','Total', $scope.getCurrency() + total.toFixed(2), '', ''
+            '', '', '', '', '', '', '', '','Total', $scope.getCurrency() + subTotal.toFixed(2), $scope.getCurrency() + discountsAndFees.toFixed(2), $scope.getCurrency() + total.toFixed(2)
         ];
 
         if (events.length > 1) {
@@ -221,7 +225,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         return arrItems;
     }
 
-    var getDiscountsAndFeedAsString = function (order) {
+    var getDiscountsAndFeesAs = function (order, as) {
         var arrDiscounts = [];
 
         var discounts = order.discounts;
@@ -238,14 +242,23 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         for (var i = 0, len = discounts.length; i < len; i++) {
             var discount = discounts[i];
             arrDiscounts.push(discount.name + ' -' + currency + discount.discount.toFixed(2));
+            total-=discount.discount;
         };
 
         for (var i = 0, len = fees.length; i < len; i++) {
             var fee = fees[i];
             arrDiscounts.push(fee.name + ' ' + currency + fee.amount.toFixed(2));
+            total+=fee.amount;
         };
 
-        return arrDiscounts;
+        switch(as) {
+                case 'total':
+                    return total;
+                    break;
+                default:
+                    return arrDiscounts;
+                    break;
+            }
     };
 
     $scope.getItemsAsString = function (order) {
@@ -257,7 +270,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
 
     $scope.getDiscountsAndFees = function (order) {
         if (!order.discountsAndFees) {
-            order.discountsAndFees = getDiscountsAndFeedAsString(order).join('<br />');
+            order.discountsAndFees = getDiscountsAndFeesAs(order,'string').join('<br />');
         }
         return order.discountsAndFees;
     }
@@ -285,6 +298,8 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         });
 
         var total = 0;
+        var subTotal = 0;
+        var discountsAndFees = 0;
 
         var statusOrderHide = ['NOSHOW', 'REJECTED', 'CANCELLED', 'PAYMENT_FAILED'];
 
@@ -309,10 +324,12 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                         notes = notes.replace(/\\n/g,"___BR___");
                         prepData["Items"].push(arrItems.join('___BR___') + notes);
                         prepData["Subtotal"].push(order.subTotal.toFixed(2));
-                        prepData["Discounts and Fees"].push(getDiscountsAndFeedAsString(order).join('___BR___'));
+                        prepData["Discounts and Fees"].push(getDiscountsAndFeesAs(order, 'string').join('___BR___'));
                         prepData["Order Total"].push($scope.getCurrencyByAscii() + order.total.toFixed(2));
                         prepData["Collection"].push(order.pickupSlot);
 
+                        subTotal += order.subTotal;
+                        discountsAndFees += getDiscountsAndFeesAs(order, 'total');
                         total += order.total;
                 }
         })
@@ -325,9 +342,9 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
             prepData['Event'].push('');
         }
 
-        prepData["Items"].push(' ');
-        prepData["Subtotal"].push(' ');
-        prepData["Discounts and Fees"].push('Total');
+        prepData["Items"].push('Total');
+        prepData["Subtotal"].push($scope.getCurrencyByAscii() + subTotal.toFixed(2));
+        prepData["Discounts and Fees"].push($scope.getCurrencyByAscii() + discountsAndFees.toFixed(2));
         prepData["Order Total"].push($scope.getCurrencyByAscii() + total.toFixed(2));
         prepData["Collection"].push('');
         var result = {

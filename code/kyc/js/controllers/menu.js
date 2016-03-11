@@ -45,6 +45,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 				OutletService.init(function(){
 					OutletService.getOutlets().then(function (outlets) {
 						$scope.outlets = outlets;
+						$scope.$broadcast('OUTLETS_LOADED');
 					});
 					AllCharts.init($scope.form.start_date,$scope.form.end_date,$scope.currencySymbol);
 				})
