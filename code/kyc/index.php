@@ -125,7 +125,7 @@
 
   <script src="//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" type="text/javascript"></script>
   <script src="/js/angular_all.min.js"></script>
-  <!-- BEGIN WATCH
+  <!-- BEGIN WATCH -->
   <script src="/bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
   <script src="/locale_angular/translations.js"></script>
   <script src="/bower_components/select2/select2.js"></script>
@@ -208,7 +208,7 @@
   <!-- END WATCH -->
 
 
-  <script src="/code/kyc/js/all.min.js"></script>
+  <!-- <script src="/code/kyc/js/all.min.js"></script> -->
   <script src="/code/constants/session.php"></script>
   <script type="text/javascript">
   //always on session after login
