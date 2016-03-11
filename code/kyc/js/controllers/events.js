@@ -111,6 +111,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         titlesCSV.push("Order Time");
         titlesCSV.push("Items");
         titlesCSV.push("Special Request");
+        titlesCSV.push("Subtotal");
         titlesCSV.push("Discounts and Fees");
         titlesCSV.push("Order Total");
         titlesCSV.push("Order Status");
@@ -142,6 +143,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                         arrPrepData.push(moment(order.created).format('DD/MM/YYYY HH:mm'));
                         arrPrepData.push('\"' + arrItems.join(';').replaceAll('\"', '') + '\"');
                         arrPrepData.push(order.notes);
+                        arrPrepData.push($scope.getCurrency() + order.subTotal.toFixed(2));
                         arrPrepData.push('\"' + getDiscountsAndFeedAsString(order).join(';').replaceAll('\"', '') + '\"');
                         arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
                         arrPrepData.push(order.status);
@@ -157,7 +159,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
             })
 
         var totalData = [
-            '', '', '', '', '', '', '', 'Total', $scope.getCurrency() + total.toFixed(2), '', ''
+            '', '', '', '', '', '', '', '','Total', $scope.getCurrency() + total.toFixed(2), '', ''
         ];
 
         if (events.length > 1) {
@@ -214,7 +216,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
             arrItems.push(itemString);
         };
 
-        order.total = total;
+        order.subTotal = total;
 
         return arrItems;
     }
@@ -277,6 +279,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
             "Collection": [],
             "Customer" :[],
             "Items":[],
+            "Subtotal":[],
             "Discounts and Fees":[],
             "Order Total":[]
         });
@@ -305,6 +308,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
                         var notes = order.notes ?  "___BR______BR___  ----- Special Requests -----  ___BR______BR___" + order.notes  : "";
                         notes = notes.replace(/\\n/g,"___BR___");
                         prepData["Items"].push(arrItems.join('___BR___') + notes);
+                        prepData["Subtotal"].push(order.subTotal.toFixed(2));
                         prepData["Discounts and Fees"].push(getDiscountsAndFeedAsString(order).join('___BR___'));
                         prepData["Order Total"].push($scope.getCurrencyByAscii() + order.total.toFixed(2));
                         prepData["Collection"].push(order.pickupSlot);
@@ -322,6 +326,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         }
 
         prepData["Items"].push(' ');
+        prepData["Subtotal"].push(' ');
         prepData["Discounts and Fees"].push('Total');
         prepData["Order Total"].push($scope.getCurrencyByAscii() + total.toFixed(2));
         prepData["Collection"].push('');

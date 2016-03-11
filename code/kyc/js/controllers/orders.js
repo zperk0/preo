@@ -105,7 +105,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
                 arrItems.push(itemString);
             };
 
-            // order.total = total;
+            order.subTotal = total;
 
             return arrItems;
         };
@@ -212,6 +212,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
                 "Order Time": [],
                 "Customer" :[],
                 "Items":[],
+                "Subtotal":[],
                 "Discounts and Fees":[],
                 "Order Total":[],
                 "Order Status":[]
@@ -232,6 +233,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
 
                     var arrItems = getItemsAsString(order);
                     prepData["Items"].push(arrItems.join('___BR___'));
+                    prepData["Subtotal"].push(order.subTotal.toFixed(2));
                     prepData["Discounts and Fees"].push(getDiscountsAndFeedAsString(order).join('___BR___'));
                     prepData["Order Total"].push($scope.getCurrencyByAscii() + order.total.toFixed(2));
                     prepData["Order Status"].push(order.status);
@@ -246,6 +248,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             prepData["Customer"].push('');
 
             prepData["Items"].push('');
+            prepData["Subtotal"].push('');
             prepData["Discounts and Fees"].push('Total');
             prepData["Order Total"].push($scope.getCurrencyByAscii() + total.toFixed(2));
             prepData["Order Status"].push('');
@@ -295,6 +298,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             titlesCSV.push("Email");
             titlesCSV.push("Order Time");
             titlesCSV.push("Items");
+            titlesCSV.push("Subtotal");
             titlesCSV.push("Discounts and Fees");
             titlesCSV.push("Order Total");
             titlesCSV.push("Payment Method");
@@ -326,6 +330,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
                     arrPrepData.push(order.user.email);
                     arrPrepData.push(moment(order.created).format('DD/MM/YYYY HH:mm'));
                     arrPrepData.push('\"' + arrItems.join(';').replaceAll('\"', '') + '\"');
+                    arrPrepData.push(order.subTotal);
                     arrPrepData.push('\"' + getDiscountsAndFeedAsString(order).join(';').replaceAll('\"', '') + '\"');
                     arrPrepData.push($scope.getCurrency() + order.total.toFixed(2));
                     arrPrepData.push(order.paymentType);
