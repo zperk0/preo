@@ -1047,6 +1047,14 @@ tr {
   color: #48535D !important;
 }
 
+.menuEdit textarea{
+  transition:height 0.3s ease-in-out;
+}
+
+.menuEdit textarea:focus {
+  height:160px !important;
+}
+
 .menuTable .menuField, .eventTable .eventField, .userTable .userField, .outletTable .outletField,
 .mdTable .mdField, #advanced-setting input, .delivery-tab-content input {
   font-family: HelveticaNeueW01-45Ligh !important;

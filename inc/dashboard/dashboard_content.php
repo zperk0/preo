@@ -252,7 +252,6 @@ if ($packageTrial) {
 </div>
 
 <?php
-	echo $_SESSION['welcomeMsg'].'waaa';
  		if (isset($_SESSION['welcomeMsg'])) {
 		$msgs =  array(
 				invite => "You now have access to ".$_SESSION['venue_name']." dashboard"
