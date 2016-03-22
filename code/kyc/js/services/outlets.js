@@ -13,8 +13,8 @@ angular.module('kyc.services')
         }, function () {
             deferred.reject();
         });
-    }    
-    
+    }
+
     this.getOutlets = function(){
         if (outlets) {
             return $q.when(outlets);
@@ -27,7 +27,7 @@ angular.module('kyc.services')
         return deferred.promise;
     }
 
-    this.getOutletName = function(outletId){    	
+    this.getOutletName = function(outletId){
     	var found = false;
     		angular.forEach(outlets,function(outlet){
     			if (outlet.id == outletId){

@@ -1684,6 +1684,7 @@ $(document).ready(function() {
 		$curItem.find("tr").removeClass('menuEdit');
 		$curItem.find("tr").addClass('savedInput');
 		$curItem.find("input").attr("readonly", "readonly");
+		$curItem.find("textarea").attr("readonly", "readonly");
 		$curItem.find(".itemEdit").slideRow('down');
 		if(count) $curItem.find(".optionTR").slideRow('up');
 		$curItem.find(".itemSubheader").slideRow('up');
@@ -3280,8 +3281,8 @@ $(document).ready(function() {
 							if (index>0)
 								userSave($(this));
 						});
-						noty({ type: 'success', text: _tr('User configuration has been saved!') });
-						setTimeout(window.location.reload,1000);
+						noty({ type: 'success', text: _tr('Invitations have been sent') });
+						setTimeout(window.location.reload.bind(window.location),1000);
 						errorFlag = 0;
 
 						//alert(data);

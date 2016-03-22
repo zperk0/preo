@@ -119,7 +119,7 @@
 	<div class="row">
 		<div class="topSpacer"></div>
 		<div class="large-12 columns">
-			<h1><?echo _("Invited users");?></h1>
+			<h1><?echo _("Pending Invitations");?> <i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Users added below will receive an email and be granted Owner or Staff access to this account");?>"></i></h1>
 
 			<input type="hidden" id="inviteUserCount"		name="inviteUserCount" 		value="<?if($_SESSION['invite_user_edit_on']) echo $inviteUserCount; else echo "0";?>"/>
 			<input type="hidden" id="inviteUserCountAct" 	name="inviteUserCountAct"		value="<?if($_SESSION['invite_user_edit_on']) echo $inviteUserCount; else echo "0";?>"/>
@@ -148,11 +148,11 @@
 							<tr class="userEdit inviteUserTR">
 								<td class="userTDName">
 									<input type="hidden" name="iuID[0]" value="u0" />
-									<input type="text" name="iuName[0]" class="userField noEnterSubmit" placeholder="<?echo _("Add a user name");?>"  pattern="^.{0,199}$"/>
+									<input type="text" name="iuName[0]" class="userField noEnterSubmit" placeholder="<?echo _("First and last name");?>"  pattern="^.{0,199}$"/>
 									<small class="error"><?echo _("Please type a user name (max 200chars)");?></small>
 								</td>
 								<td class="userTDEmail">
-									<input type="email" name="iuEmail[0]" class="userField noEnterSubmit" placeholder="<?echo _("Add an email");?>"/>
+									<input type="email" name="iuEmail[0]" class="userField noEnterSubmit" placeholder="<?echo _("Email");?>"/>
 									<small class="error"><?echo _("Please type an email");?></small>
 								</td>
 								<td class="userTDRole">

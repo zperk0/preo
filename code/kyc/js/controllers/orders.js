@@ -16,6 +16,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
         $scope.exportAll="1";
 
         function _processOrders (orders) {
+            console.log('processing', orders);
             if ( orders.length ) {
                 $scope.allOrders = [];
                 $scope.orders = [];
@@ -375,4 +376,7 @@ angular.module('kyc.controllers').controller('OrdersCtrl', ['$scope', '$location
             $AjaxInterceptor.complete();
         });
 
+        if ($scope.outlets.length > 0 ) {
+            _processOrders(OrderService.getOrders());
+        }
     }]);
