@@ -20,6 +20,17 @@ if ( isset($_GET['inviteKey']) ) {
 				if(empty($User) || is_array($User)){
 					redirectPage('login');
 				}
+				$spaces = substr_count($User->name, " ");
+
+
+				if ($spaces > 0){
+					$exp = explode(" ",$User->name);
+					$User->name = $exp[0];
+					$User->lastName = $exp[1];
+					for ($i = 2; $i <= $spaces; $i++) {
+					    $User->lastName.=" ".$exp[$i];
+					}
+				}
 	}
 
 ?>

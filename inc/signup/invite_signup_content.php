@@ -16,7 +16,7 @@
 							<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6">
 								<div class="form-group surname">
 									<label for="surname"><?php echo _("Surname"); ?></label>
-									<input type="text" name="surname" required class="form-control" id="surname">
+									<input type="text" name="surname" required class="form-control" id="surname" value="<?php echo $User->lastName?>">
 									<small class="error"><?echo _("Please type your surname");?></small>
 								</div>
 							</div>
