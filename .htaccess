@@ -31,6 +31,9 @@ RewriteRule ^.*$ signup.php [L]
 RewriteCond %{REQUEST_URI} ^/signup$ [NC]
 RewriteRule ^.*$ signup.php [L]
 
+RewriteCond %{REQUEST_URI} ^/invite/(.*)$ [NC]
+RewriteRule ^.*$ invite.php?inviteKey=$0 [L]
+
 RewriteCond %{REQUEST_URI} ^/join$ [NC]
 RewriteRule ^.*$ signup.php [L]
 
@@ -43,6 +46,12 @@ RewriteRule ^.*$ /code/shared/logout.php [L]
 RewriteCond %{REQUEST_URI} ^/doSignUp$ [NC]
 RewriteRule ^.*$ /code/signup/do_signup.php [L]
 
+RewriteCond %{REQUEST_URI} ^/doInvite$ [NC]
+RewriteRule ^.*$ /code/signup/do_invite.php [L]
+
+RewriteCond %{REQUEST_URI} ^/resendInvite$ [NC]
+RewriteRule ^.*$ /code/signup/resend_invite.php [L]
+
 RewriteCond %{REQUEST_URI} ^/doSignIn$ [NC]
 RewriteRule ^.*$ /code/signin/do_signin.php [L]
 
@@ -51,6 +60,9 @@ RewriteRule ^.*$ /code/shared/logout.php [L]
 
 RewriteCond %{REQUEST_URI} ^/404$ [NC]
 RewriteRule ^.*$ 404.php [L]
+
+RewriteCond %{REQUEST_URI} ^/staff$ [NC]
+RewriteRule ^.*$ staff.php [L]
 
 RewriteCond %{REQUEST_URI} ^/profile$ [NC]
 RewriteRule ^.*$ settings.php [L]
@@ -157,6 +169,9 @@ RewriteRule ^.*$ /code/dashboard/do_nonEventConfig.php [L]
 
 RewriteCond %{REQUEST_URI} ^/deleteUser$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_userDelete.php [L]
+
+RewriteCond %{REQUEST_URI} ^/deleteInviteUser$ [NC]
+RewriteRule ^.*$ /code/dashboard/do_inviteUserDelete.php [L]
 
 RewriteCond %{REQUEST_URI} ^/saveUser$ [NC]
 RewriteRule ^.*$ /code/dashboard/do_userConfig.php [L]

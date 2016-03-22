@@ -8,10 +8,13 @@
 						<h3><?echo $_SESSION['OVERRIDES']['sign_in_message'];?></h3>
 						<form class="form" method="POST" role="form" id="signinForm" data-abide>
 						  	<div class="row">
+						  	<? if($inviteUser->id){ ?>
+						  	 <input type="hidden" name="inviteid" value="<?php echo $inviteUser->id?>" />
+						  	<? } ?>
 								<div class="col col-xs-12 text-left">
 								  	<div class="form-group emailaddress">
 								  		<label for="emailaddress"><?echo _("Email address");?></label>
-								    	<input type="text" name="email" required class="form-control" id="email" pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' />
+								    	<input type="text" name="email" value="<?php echo $inviteUser->email?>" required class="form-control" id="email" pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' />
 								    	<small class="error"><?echo _("Please type a valid email address");?></small>
 									</div>
 								</div>

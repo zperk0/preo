@@ -17,9 +17,9 @@
 			<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?><a class="unavailable" href="#"><? echo _("Events");?></a>
 			<?}else{?><a class="unavailable" href="#"><? echo _("Opening Hours");?></a><?}?>
 		<?}?>
-		
+
 		<a class="unavailable" href="#"><? echo _("Add a Payment");?></a>
-		
+
 		<a class="unavailable" href="#"><? echo _("Done");?></a>
 	</nav>
 	<?}?>
@@ -38,7 +38,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div id="iphone5" class="large-4 columns left">
 						<div id="frame_iphone5">
 							<img id="phoneWallpaper" src="<?echo $_SESSION['path']?>/img/wallpapers/menuWall.jpg" />
@@ -52,7 +52,7 @@
 							<p id="venTitle"><?echo htmlentities($_SESSION['venue_name'], ENT_QUOTES);?></p>
 						</div>
 					</div>
-				
+
 					<div class="large-4 columns right">
 						<div class="row">
 							<div class="large-11 columns">
@@ -85,7 +85,7 @@
 							<div class="large-11 columns">
 								<div class="row">
 									<div class="large-11 columns">
-										<h6 class="row--space0d">Colour two</h6>
+										<h6 class="row--space0d"><? echo _("Colour two") ?></h6>
 										<p><?echo _("This colour is used across item select buttons and as a highlight colour.");?></p>
 									</div>
 								</div>
@@ -118,7 +118,7 @@
 			</div>
 		</div>
 	</div>
-</div>	
+</div>
 <?if((isset($_SESSION['signupWizFlag']) && $_SESSION['signupWizFlag'])){?>
 <!-- Now we update progressBar tooltip, width and trigger mouseover -->
 <script type="text/javascript">

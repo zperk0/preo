@@ -123,7 +123,7 @@ $(document).ready(function() {
 						//alert(data);
 						return false;
 					}
-
+					console.log(dataArray,'dataArray');
 					if(typeof dataArray['status'] !='undefined') //error
 					{
 						noty({
@@ -250,6 +250,7 @@ $(document).ready(function() {
 		return false; // avoid to execute the actual submit of the form.
 	});
 	///////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 	//change language ajaxy button
 	$("a.changeLang").on('click', function () {
@@ -514,7 +515,7 @@ $(document).ready(function() {
 					if($('#redirectFlag').val()!='1') $('#venueSave').show();
 					$('#savingButton').hide();
 					//FIXME maybe this can be replaced with a refresh on the ids for the delivery details
-					setTimeout(window.location.reload(),200);
+					setTimeout(window.location.reload,500);
 			 	};
 
 				try
@@ -707,7 +708,7 @@ $(document).ready(function() {
 					lastImageUpload = {
 						saved: false,
 						idItem: this.idItem
-					};					
+					};
 				}
 
 				lastImageUpload.url = this.croppedImg.attr('src');
@@ -749,7 +750,7 @@ $(document).ready(function() {
 		}
 
 		$item_background.bind('click', function () {
-			
+
 			var currentType = $(this).is(':checked') ? 'BG' : 'DEFAULT';
 			console.log('current type', currentType, default_value_image_type);
 			if (currentType !== default_value_image_type) {
@@ -758,7 +759,7 @@ $(document).ready(function() {
 						saved: false,
 						idItem: idItem,
 						url: imagesMenu[idItem] && imagesMenu[idItem][0].url
-					};					
+					};
 				}
 
 				lastImageUpload.type = currentType;
@@ -1656,7 +1657,7 @@ $(document).ready(function() {
 				});
 
 				//remove required
-				$curTable.find("input[name^=iName], input[name^=iPrice], input[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
+				$curTable.find("input[name^=iName], input[name^=iPrice], textarea[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
 					$(this).removeAttr('required');
 				});
 
@@ -1694,7 +1695,7 @@ $(document).ready(function() {
 		$curItem.css('max-width', '100%');
 	});
 
-	$(document).on("click", ".itemEdit, .itemTR input[readonly='readonly']", function() {
+	$(document).on("click", ".itemEdit, .itemTR input[readonly='readonly'], .itemTR textarea[readonly='readonly']", function() {
 
 		if($(this).hasClass('itemEdit')) $(this).hide();
 		else $(this).closest('table').find('.itemEdit').hide();
@@ -1706,6 +1707,7 @@ $(document).ready(function() {
 		$curItem.find("tr").addClass('menuEdit');
 		$curItem.find("tr").removeClass('savedInput');
 		$curItem.find("input").removeAttr("readonly");
+		$curItem.find("textarea").removeAttr("readonly");
 		$curItem.find(".itemSave").slideRow('down');
 		if(count) $curItem.find(".optionTR").slideRow('down');
 		$curItem.find(".itemSubheader").slideRow('down');
@@ -2066,7 +2068,7 @@ $(document).ready(function() {
 				});
 
 				//remove required
-				$parentSectionHeader.find("input[name^=mSectionName], input[name^=mSectionMinMax], input[name^=iName], input[name^=iPrice], input[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
+				$parentSectionHeader.find("input[name^=mSectionName], input[name^=mSectionMinMax], input[name^=iName], input[name^=iPrice], textarea[name^=iDesc], input[name^=iQuan], input[name^=iVisi], input[name^=iMod], select[name^=iModType], input[name^=oName], input[name^=oPrice], input[name^=oVisi]").each(function() {
 					$(this).removeAttr('required');
 				});
 
@@ -2151,7 +2153,7 @@ $(document).ready(function() {
 						$(this).attr('name', newName);
 					});//update name
 
-					$(this).find("input[name^=iDesc]").each(function(){
+					$(this).find("textarea[name^=iDesc]").each(function(){
 						tempName = $(this).attr('name');
 						newName = tempName.replace(/\[section\d+\]/gi, "[section"+section+"]");
 						$(this).attr('name', newName);
@@ -2214,7 +2216,7 @@ $(document).ready(function() {
 
 	//dependant entries
 	//item
-	$(document).on("blur", 'input[name^=iDesc], input[name^=iPrice], input[name^=iQuan], input[name^=iVisi]', function(){
+	$(document).on("blur", 'textarea[name^=iDesc], input[name^=iPrice], input[name^=iQuan], input[name^=iVisi]', function(){
 		$(this).parents('.itemTR').first().find('input[name^=iName]').attr('data-edit',true);
 		$(this).parents('.itemTR').first().find('input[name^=iName]').data('edit',true);
 	});
@@ -2378,12 +2380,14 @@ $(document).ready(function() {
 
 							menuSectionOneNivelItem['id'] 			= iID.replace(/item/,'');
 							menuSectionOneNivelItem['name'] 			= $tableSectionUnique.find('input[name^=iName]').val();
-							menuSectionOneNivelItem['description']	= $tableSectionUnique.find('input[name^=iDesc]').val();
+							menuSectionOneNivelItem['description']	= $tableSectionUnique.find('textarea[name^=iDesc]').val();
 							if($inputIPrice.val() == '')
 								menuSectionOneNivelItem['price'] 	= 0;
 							else
 								menuSectionOneNivelItem['price'] 	= format_price($inputIPrice.val());
 							menuSectionOneNivelItem['visible'] 		= $tableSectionUnique.find('input[name^=iVisi]:checked').val();
+							menuSectionOneNivelItem['value']	= $tableSectionUnique.find('input[name^=iValue]').val();
+							menuSectionOneNivelItem['additionalInfo']	= $tableSectionUnique.find('input[name^=iInfo]').val();
 							menuSectionOneNivelItem['quantity'] 		= 0;
 							menuSectionOneNivelItem['position'] 		= parseInt(itemCounter);
 
@@ -2721,6 +2725,7 @@ $(document).ready(function() {
 					try
 					{
 						var dataArray = jQuery.parseJSON(data); //parsing JSON
+						setTimeout(function(){ window.location.href = "/dashboard"; },2000);
 					}
 					catch(e)
 					{
@@ -2783,7 +2788,6 @@ $(document).ready(function() {
 		$curItem = $(this).closest('table');
 		$curItem.find("tr").removeClass('userEdit');
 		$curItem.find("tr").addClass('savedInput');
-		$curItem.find("input").attr("readonly", "readonly");
 		$curItem.find(".userTDEdit").removeClass('hide');
 		$curItem.find(".userTDEdit").show();
 		$curItem.find(".userPassTR").hide();
@@ -2793,17 +2797,16 @@ $(document).ready(function() {
 		$curItem.css('max-width', '100%');
 	});
 
-	$(document).on("click", ".userTDEdit, .userTR input[readonly='readonly']", function() {
+	$(document).on("click", ".userTDEdit",function() {
 		if($(this).hasClass('userTDEdit')) $(this).hide();
 		else $(this).closest('table').find('.userTDEdit').hide();
 		$curItem = $(this).closest('table');
+		$curItem.find("input[name^='uAlter']").val(1);
 		$curItem.find("tr").addClass('userEdit');
 		$curItem.find("tr").removeClass('savedInput');
-		$curItem.find("input").removeAttr("readonly");
 		$curItem.find("input[name^='uEmail']").each(function(){ if($(this).hasClass('preSaved')) $(this).attr("readonly", "readonly"); });
 		$curItem.find(".userSave").removeClass('hide');
 		$curItem.find(".userSave").show();
-		$curItem.find(".userPassTR").show();
 		$curItem.find(".userMenuSingleSelect").multiselect("enable");
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
@@ -2844,18 +2847,7 @@ $(document).ready(function() {
 			var tempName = $(this).attr('name');
 			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
 			$(this).attr('name', newName);
-		});
-
-		$newTab.find("input[name^=uPasswordConf]").each(function() {
-			var tempName = $(this).attr('data-equalTo');
-			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
-			$(this).attr('data-equalTo', newName);
-		});
-
-		$newTab.find("input[id^=uPassword]").each(function() {
-			var tempName = $(this).attr('id');
-			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
-			$(this).attr('id', newName);
+			$(this).removeAttr('readonly')
 		});
 
 		$newTab.find(".userTR select").each(function() {
@@ -2867,7 +2859,7 @@ $(document).ready(function() {
 			$(this).multiselect({
 			   multiple: false,
 			   header: false,
-			   noneSelectedText: _tr("Role"),
+			   noneSelectedText: _tr("Owner"),
 			   selectedList: 1,
 			   minWidth: 108
 			});
@@ -2879,15 +2871,16 @@ $(document).ready(function() {
 				var temp = $(this).val();
 				$(this).val("");
 				$(this).attr('placeholder', temp);
+				$(this).removeAttr('readonly')
 			});
 		}
 
 		//now we fix uID
 		$newTab.find("input[name^=uID]").each(function() {
 			$(this).val("u"+newCount);
+			$(this).removeAttr('readonly')
 		});
 
-		$newTab.find("input[name^=uPass]").attr('required','required');
 		$newTab.find("input[name^=uName]").attr('required','required');
 		$newTab.find("input[name^=uEmail]").attr('required','required');
 
@@ -2903,6 +2896,73 @@ $(document).ready(function() {
 
 		//insert before section header/before hidden div
 		$(".firstUserDiv").before($newTab);
+		$newTab.slideRow('down');
+		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
+	});
+
+	$(document).on("click", ".inviteUser", function() {
+
+		//get table user number
+		$curTable = $(this).closest('table');
+		var eventID = $curTable.attr('id');
+
+		//get and update current count
+		var userCount = $("#inviteUserCount").val();
+		var newCount = parseInt(parseInt(userCount) + 1);
+		$("#inviteUserCount").val(newCount);
+		$("#inviteUserCountAct").val(parseInt($("#inviteUserCountAct").val())+1);
+
+		//clone dummy table
+		$newTab = $("#inviteUser0").clone(true);
+		$newTab.attr('id','inviteUser'+newCount);
+
+		//replace ids with incremented value and make value = default value
+		$newTab.find(".inviteUserTR input").each(function() {
+			$(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+		});
+
+		$newTab.find("input[name^=uPasswordConf]").each(function() {
+			var tempName = $(this).attr('data-equalTo');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('data-equalTo', newName);
+		});
+
+		$newTab.find(".inviteUserTR select").each(function() {
+			$(this).val( $(this).prop("defaultValue") );
+			var tempName = $(this).attr('name');
+			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
+			$(this).attr('name', newName);
+
+			$(this).multiselect({
+			   multiple: false,
+			   header: false,
+			   noneSelectedText: _tr("Owner"),
+			   selectedList: 1,
+			   minWidth: 108
+			});
+			$(this).val( "OWNER" );
+		});
+
+		//now we fix uID
+		$newTab.find("input[name^=iuID]").each(function() {
+			$(this).val("u"+newCount);
+		});
+
+		$newTab.find("input[name^=iuName]").attr('required','required');
+		$newTab.find("input[name^=iuEmail]").attr('required','required');
+
+		$newTab.css('backgroundColor','#fafafa');
+		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
+		$newTab.css('max-width', '100%');
+
+		//hide it so we can animate it!
+		$newTab.css('display','none');
+
+		//insert before section header/before hidden div
+		$(".firstInviteUserDiv").before($newTab);
 		$newTab.slideRow('down');
 		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
 	});
@@ -2995,10 +3055,145 @@ $(document).ready(function() {
 
 	});
 
+	$(document).on("click", ".inviteUserResend", function() {
+		//get event number
+		$curTable = $(this).closest('table');
+		userID = $curTable.attr('id');
+
+		realUserID = $curTable.find("input[name^=iuID]").val();
+		console.log("found userId:" + realUserID)
+		noty({
+			layout: 'center',
+			type: 'confirm',
+			text: _tr('Resend confirmation email?'),
+			buttons: [
+			{addClass: 'alert tiny', text: _tr('Yes'), onClick: function($noty) {
+
+				var url = "/resendInvite";
+						$.ajax({
+							   type: "POST",
+							   url: url,
+							   data: 'inviteId='+realUserID, // serializes the form's elements.
+							   success: function(data)
+							   {
+									try
+									{
+										noty({ type: 'success', text: _tr('New email has been sent!') });
+									}
+									catch(e)
+									{
+										noty({
+										  type: 'error',  layout: 'topCenter',
+										  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
+										});
+										return false;
+									}
+								}
+							 });
+
+				$noty.close();
+			  }
+			},
+			{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
+				$noty.close();
+			  }
+			}
+		  ]
+		});
+	});
+
+	$(document).on("click", ".inviteUserDelete", function() {
+		//get event number
+		$curTable = $(this).closest('table');
+		userID = $curTable.attr('id');
+
+		realUserID = $curTable.find("input[name^=iuID]").val();
+
+		if(typeof realUserID =='undefined' || realUserID == '' || !realUserID.match(/^\d+?$/gi)) //event not saved in DB
+		{
+			noty({
+				layout: 'center',
+				type: 'confirm',
+				text: _tr('Are you sure you want to delete this invite user?'),
+				buttons: [
+				{addClass: 'alert tiny', text: _tr('Yes, delete this user!'), onClick: function($noty) {
+
+					//get and update current count
+					userCount = $("#inviteUserCountAct").val();
+					newCount = parseInt(parseInt(userCount) - 1);
+					$("#inviteUserCountAct").val(newCount);
+
+					//bye-bye
+					$("#"+userID).remove();
+
+					$noty.close();
+				  }
+				},
+				{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
+					$noty.close();
+				  }
+				}
+			  ]
+			});
+		}
+		else //event in DB
+		{
+			noty({
+				layout: 'center',
+				type: 'confirm',
+				text: _tr('Are you sure you want to delete this invite user?'),
+				buttons: [
+				{addClass: 'alert tiny', text: _tr('Yes, delete this invite user!'), onClick: function($noty) {
+
+					var url = "/deleteInviteUser";
+					$.ajax({
+						   type: "POST",
+						   url: url,
+						   data: 'inviteID='+realUserID, // serializes the form's elements.
+						   success: function(data)
+						   {
+								try
+								{
+									var dataArray = jQuery.parseJSON(data); //parsing JSON
+								}
+								catch(e)
+								{
+									noty({
+									  type: 'error',  layout: 'topCenter',
+									  text: _tr("Sorry, but there's been an error processing your request.") /*text: 'Connection Error! Check API endpoint.'*/
+									});
+
+									//alert(data);
+
+									return false;
+								}
+
+								//get and update current count
+								userCount = $("#inviteUserCountAct").val();
+								newCount = parseInt(parseInt(userCount) - 1);
+								$("#inviteUserCountAct").val(newCount);
+
+								//bye-bye
+								$("#"+userID).remove();
+							}
+						 });
+					$noty.close();
+				  }
+				},
+				{addClass: 'secondary tiny', text: _tr('No, go back.'), onClick: function($noty) {
+					$noty.close();
+				  }
+				}
+			  ]
+			});
+		}
+
+	});
+
 	$(".userMenuSingleSelect").multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Role",
+	   noneSelectedText: "Owner",
 	   selectedList: 1
 	});
 
@@ -3020,6 +3215,21 @@ $(document).ready(function() {
 		var url = "/saveUser";
 
 		var errorFlag = 0;
+
+
+		function userSave($curItem){
+		 		$curItem.find("tr").removeClass('userEdit');
+		 		$curItem.find("tr").addClass('savedInput');
+		 		$curItem.find("input").attr("readonly", "readonly");
+		 		$curItem.find(".userTDEdit").removeClass('hide');
+		 		$curItem.find(".userTDEdit").show();
+		 		$curItem.find(".userPassTR").hide();
+		 		$curItem.find(".userMenuSingleSelect").multiselect("disable");
+		 		$curItem.css('background', 'transparent');
+		 		$curItem.css('box-shadow', '0px 0px 0px');
+				$curItem.css('max-width', '100%');
+			}
+
 
 		$.ajax({
 			   type: "POST",
@@ -3043,8 +3253,8 @@ $(document).ready(function() {
 						//alert(data);
 						return false;
 					}
-
-					if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['status'] !='undefined') ) //error
+					console.log("data array",dataArray);
+					if( typeof dataArray['status'] !='undefined' || (typeof dataArray['result'] !='undefined' && typeof dataArray['result']['message'] != 'undefined') ) //error
 					{
 						noty({
 						  type: 'error',  layout: 'topCenter',
@@ -3064,7 +3274,14 @@ $(document).ready(function() {
 							  $('input[value='+index+']').val(value); //find by value and update!
 							});
 						}
+
+						$('.inviteUserTable').each(function(index){
+							// 0 is dummy
+							if (index>0)
+								userSave($(this));
+						});
 						noty({ type: 'success', text: _tr('User configuration has been saved!') });
+						setTimeout(window.location.reload,1000);
 						errorFlag = 0;
 
 						//alert(data);
@@ -3074,14 +3291,7 @@ $(document).ready(function() {
 					$('#userSubButton').show();
 					$('#savingButton').hide();
 					$(".userMenuSingleSelect").multiselect('disable');
-					if(!errorFlag)
-					{
-						$('table').each(function(){
-							if($(this).is(':visible'))
-								$(this).find('.userPassTR').remove(); //now all saved users are in edit mode only
-						});
-						$("input[name^='uEmail']").each(function(){ $(this).addClass("preSaved"); }); //make saved input emails permanently readonly
-					}
+					$(".ui-multiselect").attr('disabled','disabled');
 			 });
 
 		return false; // avoid to execute the actual submit of the form.

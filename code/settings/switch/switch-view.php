@@ -1,17 +1,16 @@
 <?
   session_start();
   require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'); //need this for multi-language support
-  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/authentication.php');  
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
-  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/account_functions.php'); 
+  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/account_functions.php');
 
   $result = getCurrentlyUserRole();
 
-  if ( isset($result['status']) && $result['status'] == 403 ) { 
+  if ( isset($result['status']) && $result['status'] == 403 ) {
     // Send a 404 only admins should see this
-    header("HTTP/1.0 404 Not Found");  
+    header("HTTP/1.0 404 Not Found");
     require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php');
     require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
     require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/404/404_content.php');
@@ -23,8 +22,8 @@
   }
 
   // We have permission so lets show the search form
-  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php'); 
-  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); 
+  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php');
+  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
 
 ?>
 
@@ -33,11 +32,11 @@
   </div>
   <div class="large-12 columns row--space1u">
     <div  ng-app="switch" ng-controller="switchController" ng-cloak>
-      <div class='loader' ng-show="!finishedLoading">      
+      <div class='loader' ng-show="!finishedLoading">
         <img src='/img/spinner.gif'/>
       </div>
       <div class='row deliveryHeader'> <h1 class="alignHeader"><?echo _("Search Venue")?></h1></div>
-      <form name="switchForm" id="switchForm" ng-submit="processForm()" novalidate ng-show="finishedLoading">  
+      <form name="switchForm" id="switchForm" ng-submit="processForm()" novalidate ng-show="finishedLoading">
           <div class="row">
             <div class="large-12 columns">
               <label><?echo _("Venue Code");?></label>
@@ -100,6 +99,6 @@
   <script type="text/javascript" src="<?echo $_SESSION['path']?>/code/settings/switch/app.js"></script>
 
 
-<? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?> 
+<? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
 
 

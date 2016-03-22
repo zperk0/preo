@@ -86,7 +86,7 @@ input[readonly] {
   cursor: no-drop; }
 
 .itemTR input[readonly], .userTR input[readonly], .eventTR input[readonly] {
-  cursor: pointer; }
+  cursor: disabled; }
 
 /* Chrome autofill colour replacement */
 input:-webkit-autofill {
@@ -754,13 +754,24 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
   font-size: 1.3em !important;
   /* border-bottom: 1px solid #B8B9BC; */ }
 
-.itemTR, .eventTR, .userTR, .mdTR {
+.itemTR, .eventTR, .userTR, .inviteUserTR, .mdTR {
   margin-top: 20px; }
 
 .menuTable td, .eventTable td, .userTable td, .outletTable td, .mdTable td, table.headerTable td {
   width: 20%;
   padding-top: 0;
-  padding-bottom: 0; }
+  padding-bottom: 0;
+  position: relative;
+  overflow: hidden; }
+  .menuTable td.menuTDValue, .eventTable td.menuTDValue, .userTable td.menuTDValue, .outletTable td.menuTDValue, .mdTable td.menuTDValue, table.headerTable td.menuTDValue {
+    width: 5%; }
+  .menuTable td .preoTips.absolute, .eventTable td .preoTips.absolute, .userTable td .preoTips.absolute, .outletTable td .preoTips.absolute, .mdTable td .preoTips.absolute, table.headerTable td .preoTips.absolute {
+    position: absolute;
+    transition: right 0.3s ease-in-out;
+    right: -100px;
+    top: 10px; }
+  .menuTable td:hover .preoTips.absolute, .eventTable td:hover .preoTips.absolute, .userTable td:hover .preoTips.absolute, .outletTable td:hover .preoTips.absolute, .mdTable td:hover .preoTips.absolute, table.headerTable td:hover .preoTips.absolute {
+    right: 20px; }
 
 .menuTable input, .eventTable input, .userTable input, .outletTable input, .mdTable input {
   padding: 1px !important;
@@ -769,7 +780,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit {
   background: #fafafa !important; }
 
-.menuEdit input, .eventEdit input, .userEdit input, .outletEdit input, .mdEdit input {
+.menuEdit input, .eventEdit input, .userEdit input, .outletEdit input, .mdEdit input, .menuEdit textarea {
   background: #f1f0f2 !important;
   color: #48535D !important; }
 
@@ -935,7 +946,7 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit {
   font-weight: bold !important;
   width: 35%; }
 
-.menuTDName input, .menuTDDesc input {
+.menuTDName input, .menuTDDesc textarea {
   -o-text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis; }
@@ -1070,7 +1081,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
   padding-right: 0px; }
   .dynamicDataTable tr:first-of-type {
     border-bottom: 1px solid #B9BBBD; }
-  .dynamicDataTable tr.itemTR.menuEdit:first-of-type, .dynamicDataTable tr.userTR.userEdit:first-of-type, .dynamicDataTable tr.eventTR.eventEdit:first-of-type {
+  .dynamicDataTable tr.itemTR.menuEdit:first-of-type, .dynamicDataTable tr.userTR.userEdit:first-of-type, .dynamicDataTable tr.inviteUserTR.userEdit:first-of-type, .dynamicDataTable tr.eventTR.eventEdit:first-of-type {
     border-bottom: 0px !important; }
 
 .menuTable tr, .eventTable tr, .userTable tr, .outletTable tr, table.headerTable tr, .mdTable tr {
@@ -1079,6 +1090,8 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
   margin-left: auto !important;
   margin-right: auto !important;
   min-width: 950px; }
+  .menuTable tr.editOnly, .eventTable tr.editOnly, .userTable tr.editOnly, .outletTable tr.editOnly, table.headerTable tr.editOnly, .mdTable tr.editOnly {
+    display: none; }
 
 #mealDealConfigForm .headerTable {
   width: 950px !important; }
@@ -1135,7 +1148,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
   width: 70px !important;
   padding-top: 10px !important; }
 
-.newItem, .newSection, .deleteSection, .deleteSlot, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot, .applyTimesAllDays, .addMoreOH, .removeOHDiv {
+.newItem, .newSection, .deleteSection, .deleteSlot, .newEvent, .newUser, .newOutlet, .newMenu, .newMD, .newmdItem, .newCollSlot, .delCollSlot, .applyTimesAllDays, .addMoreOH, .removeOHDiv, .inviteUser {
   padding: 1px 3px;
   font-size: 20px; }
 
@@ -1152,7 +1165,7 @@ table.menuTable, table.eventTable, table.userTable, table.outletTable, table.mdT
 .newCollSlot, .delCollSlot {
   margin-top: 36px; }
 
-.newItem, .newEvent, .newUser, .newOutlet, .newmdItem, .addMoreOH {
+.newItem, .newEvent, .newUser, .inviteUser, .newOutlet, .newmdItem, .addMoreOH {
   background: #2e70b7;
   border: #2e70b7; }
 
@@ -1503,6 +1516,8 @@ table.sortable-placeholder {
 
 tbody tr.menuEdit, tbody tr.userEdit, tbody tr.eventEdit, tbody tr.mdEdit {
   background: transparent !important; }
+  tbody tr.menuEdit.editOnly, tbody tr.userEdit.editOnly, tbody tr.eventEdit.editOnly, tbody tr.mdEdit.editOnly {
+    display: table; }
 
 table.sortable-placeholder tbody, table.sortable-placeholder tr, table.sortable-placeholder td {
   border: none !important; }
@@ -2868,6 +2883,14 @@ button.preodayButton.noclick {
   width: 25px;
   height: 25px; }
 
+.pd-envelope {
+  background: url(/img/envelope.png) center no-repeat;
+  width: 28px;
+  height: 27px;
+  background-size: 20px;
+  float: left;
+  margin-right: 5px; }
+
 .footer-modalCrop, .header-modalCrop {
   overflow: hidden; }
 
@@ -2977,6 +3000,10 @@ button.preodayButton.noclick {
   font-size: 12px;
   color: #CE0000;
   display: none; }
+
+.linkMail {
+  font-size: 14px;
+  color: #4F4F4F !important; }
 
 .accordion.contentSectionsDashboard section > h3[data-section-title] {
   width: 100% !important;
@@ -3264,5 +3291,8 @@ input::-webkit-inner-spin-button {
   .itemBackgroundImage label {
     display: inline-block;
     font-size: 0.9em; }
+
+#welcomeMessage {
+  padding: 40px; }
 
 /*# sourceMappingURL=app.css.map */

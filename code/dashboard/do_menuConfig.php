@@ -47,7 +47,7 @@
 	$menu = json_decode(file_get_contents('php://input'),true);
 
 	$menu_id = $menu['id'];
-	
+
 	//create new menu?
 	if(preg_match('/^menu\d+$/',$menu_id))
 	{
@@ -74,7 +74,7 @@
         }
 
 
-		$jsonData 	= json_encode($data);		
+		$jsonData 	= json_encode($data);
 		$curlResult = callAPI('POST', $apiURL."menus", $jsonData, $apiAuth); //menu created
 		$result 	= json_decode($curlResult,true);
 
@@ -131,7 +131,7 @@
         	$data['type'] = 'BOOKING';
         }
 
-		$jsonData 	= json_encode($data);		
+		$jsonData 	= json_encode($data);
 		$curlResult = callAPI('PUT', $apiURL."menus/$menu_id", $jsonData, $apiAuth); //menu edited
 		$result 	= json_decode($curlResult,true);
 
@@ -275,6 +275,8 @@
 			$data['price'] 			= $item['price'];
 			$data['quantity'] 		= $item['quantity'];
 			$data['visible'] 		= $item['visible'];
+			$data['additionalInfo'] 		= $item['additionalInfo'];
+			$data['value'] 		= $item['value'];
 
 			$data['menuId'] 		= $menu_id;
 			$data['sectionId'] 		= $section_id;
@@ -438,7 +440,7 @@
 							}
 
 							$result 	= json_decode($curlResult,true);
-							$newImages['item' . $item_id][] = array( 'id' => 'item' . $item_id, 'realId' => isset($Image['id']) ? $Image['id'] : $result['id']); 
+							$newImages['item' . $item_id][] = array( 'id' => 'item' . $item_id, 'realId' => isset($Image['id']) ? $Image['id'] : $result['id']);
 						}
 					}
 				}
