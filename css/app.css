@@ -727,8 +727,9 @@ input[name^=mSectionName] {
 .smallesterror {
   width: 50%; }
 
-.priceError {
-  width: 64px; }
+.menuTDPrice .error.priceError {
+  width: 64px;
+  margin-left: 3px; }
 
 .msecError {
   width: 873px;
@@ -880,9 +881,6 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit {
   margin-top: -2px; }
   .userPassTR label {
     font-size: 14px; }
-
-.menuTable .menuTDPrice input {
-  text-align: left; }
 
 .mdTable .mdTDPrice input, .mdTable .mdTDTPrice input {
   text-align: left; }
@@ -1041,7 +1039,21 @@ tr.menuEdit, tr.eventEdit, tr.userEdit, tr.outletEdit, tr.mdEdit {
 .userTableButtons, .mdTableButtons {
   margin-top: 5px; }
 
-.menuTDPrice input, .eventTDTime input, .userTDPassword input {
+.menuTDPrice {
+  text-align: left; }
+
+.menuTDPrice input {
+  width: 99%;
+  margin: 0 auto; }
+
+.menuTDPrice input[name^="oPrice"] {
+  width: 64px; }
+
+.menuTDPrice .error {
+  width: 100%;
+  text-align: left; }
+
+.eventTDTime input, .userTDPassword input {
   display: inline !important;
   padding: 0;
   width: 64px; }

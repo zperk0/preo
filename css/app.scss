@@ -965,8 +965,9 @@ input[name^=mSectionName] {
   width: 50%;
 }
 
-.priceError {
+.menuTDPrice .error.priceError {
   width: 64px;
+  margin-left:3px;
 }
 
 .msecError {
@@ -1172,9 +1173,7 @@ tr {
   }
 }
 
-.menuTable .menuTDPrice input {
-  text-align: left;
-}
+
 
 .mdTable {
   .mdTDPrice input, .mdTDTPrice input {
@@ -1384,7 +1383,26 @@ tr {
   margin-top: 5px;
 }
 
-.menuTDPrice input, .eventTDTime input, .userTDPassword input {
+.menuTDPrice{
+  text-align: left;
+}
+
+.menuTDPrice input {
+  width:99%;
+  margin:0 auto;
+
+}
+
+.menuTDPrice input[name^="oPrice"] {
+  width:64px;
+}
+
+.menuTDPrice .error {
+  width: 100%;
+  text-align: left;
+}
+
+.eventTDTime input, .userTDPassword input {
   display: inline!important;
   padding: 0;
   width: 64px;

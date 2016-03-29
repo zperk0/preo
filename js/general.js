@@ -1608,7 +1608,6 @@ $(document).ready(function() {
 
 		//add autocomplete
 		$newTab.find("input[name^=iMod]").autocomplete({ source: [ _tr("Choose a size"),_tr("Choose a flavour"),_tr("Choose a topping"),_tr("Choose some extras"),_tr("Choose a side dish") ], delay: 10, minLength: 0, position: { my: "left top", at: "left bottom", collision: "none", of: $newTab.find("input[name^=iMod]") } });
-
 		$newTab.css('backgroundColor','#fafafa');
 		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
 		$newTab.css('max-width', '100%');
@@ -2115,8 +2114,8 @@ $(document).ready(function() {
 	});
 
 	$(document).on("click", 'input[name^=iMod], input[name^=iMD]', function(){
-		$(this).parent('.modifierRow').find("input[name^=iMod]").autocomplete( "search", "C" );
-		$(this).parent('.modifierRow').find("input[name^=iMD]").autocomplete( "search", "C" );
+		$(this).parent('.modifierRow').find("input[name^=iMod]").autocomplete( "search", "" );
+		$(this).parent('.modifierRow').find("input[name^=iMD]").autocomplete( "search", "" );
 	});
 
 	if($("#mName").length > 0)
@@ -4892,5 +4891,3 @@ $(window).resize(function(){
 			else map.setCenter( new google.maps.LatLng(mapDefaultCenterLat,mapDefaultCenterLong) );
 	}
 });
-
-

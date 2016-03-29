@@ -208,7 +208,7 @@
 						<td class="menuTDPrice">
 							<input type="text" name="oPrice[item0][m0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" pattern="^([0-9]+)([\.,][0-9]{1,2})?$"/>
 							&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
-							<small class="error smallesterror"><?echo _("Price?");?></small>
+							<small class="error priceError"><?echo _("Price?");?></small>
 						</td>
 						<td class="menuTDQuant hide">
 						</td>
@@ -410,7 +410,7 @@
 												</td>
 												<td class="menuTDPrice">
 													<input type="text" name="oPrice[item<?echo ($iKey+1);?>][m0][0]" class="menuField noEnterSubmit" value="<?echo _("0.00");?>" pattern="^([0-9]+)([\.,][0-9]{1,2})?$"/>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
-													<small class="error smallesterror"><?echo _("Price?");?></small>
+													<small class="error priceError"><?echo _("Price?");?></small>
 												</td>
 												<td class="menuTDQuant hide">
 												</td>
@@ -442,7 +442,7 @@
 													</td>
 													<td class="menuTDPrice">
 														<input type="text" name="oPrice[item<?echo ($iKey+1);?>][m<?echo ($modiKey+1);?>][<?echo ($oKey+1);?>]" class="menuField noEnterSubmit" value="<?echo locale_number_format($option['price'],2,'.','');?>" pattern="^([0-9]+)([\.,][0-9]{1,2})?$" readonly="readonly"/>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This will be in addition to the item price. If there is no price difference, put in 0.00.");?>"></i>
-														<small class="error smallesterror"><?echo _("Price?");?></small>
+														<small class="error priceError"><?echo _("Price?");?></small>
 													</td>
 													<td class="menuTDQuant hide">
 													</td>
