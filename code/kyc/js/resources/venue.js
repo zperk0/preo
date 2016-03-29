@@ -1,6 +1,6 @@
 angular.module('kyc.resources').
   factory('Venue',['$resource', function($resource) {
-    
+
     var Venue = $resource('/api/venues/:id', {}, {
       query: {
         method: 'GET',
@@ -14,9 +14,12 @@ angular.module('kyc.resources').
       getEvents: {
         method: 'GET',
         url: '/api/venues/:id/events',
-        isArray: true
-      }      
-    });    
+        isArray: true,
+        params: {
+          onlyWithSlots:0
+        }
+      }
+    });
 
     return Venue;
 
