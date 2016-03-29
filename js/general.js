@@ -2813,102 +2813,18 @@ $(document).ready(function() {
 		$curItem.css('max-width', '100%');
 	});
 
-	$(document).on("click", ".newUser", function() {
-		//new item or duplicate?
-		var dup = 0;
-		if($(this).hasClass("userDuplicate")) dup = 1;
-
-		//get table user number
-		$curTable = $(this).closest('table');
-		var eventID = $curTable.attr('id');
-
-		//get and update current count
-		var userCount = $("#userCount").val();
-		var newCount = parseInt(parseInt(userCount) + 1);
-		$("#userCount").val(newCount);
-		$("#userCountAct").val(parseInt($("#userCountAct").val())+1);
-
-		if(dup) //clone an existing row
-		{
-			//clone specific table
-			$newTab = $("#"+eventID).clone(false);
-			$newTab.attr('id','user'+newCount);
-		}
-		else //clone a dummy row
-		{
-			//clone dummy table
-			$newTab = $("#user0").clone(true);
-			$newTab.attr('id','user'+newCount);
-		}
-
-		//replace ids with incremented value and make value = default value
-		$newTab.find(".userTR input").each(function() {
-			if(!dup) $(this).val( $(this).prop("defaultValue") );
-			var tempName = $(this).attr('name');
-			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
-			$(this).attr('name', newName);
-			$(this).removeAttr('readonly')
-		});
-
-		$newTab.find(".userTR select").each(function() {
-			if(!dup) $(this).val( $(this).prop("defaultValue") );
-			var tempName = $(this).attr('name');
-			var newName = tempName.replace(/\[\d+\]/gi, "["+newCount+"]");
-			$(this).attr('name', newName);
-
-			$(this).multiselect({
-			   multiple: false,
-			   header: false,
-			   noneSelectedText: _tr("Owner"),
-			   selectedList: 1,
-			   minWidth: 108
-			});
-		});
-
-		if(!dup){
-			//now we fix placeholder
-			$newTab.find("input[name^=uName]").each(function() {
-				var temp = $(this).val();
-				$(this).val("");
-				$(this).attr('placeholder', temp);
-				$(this).removeAttr('readonly')
-			});
-		}
-
-		//now we fix uID
-		$newTab.find("input[name^=uID]").each(function() {
-			$(this).val("u"+newCount);
-			$(this).removeAttr('readonly')
-		});
-
-		$newTab.find("input[name^=uName]").attr('required','required');
-		$newTab.find("input[name^=uEmail]").attr('required','required');
-
-		//now we give the item id to the duplicate button
-		$newTab.find(".userDuplicate").attr('id',"dup"+newCount);
-
-		$newTab.css('backgroundColor','#fafafa');
-		$newTab.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
-		$newTab.css('max-width', '100%');
-
-		//hide it so we can animate it!
-		$newTab.css('display','none');
-
-		//insert before section header/before hidden div
-		$(".firstUserDiv").before($newTab);
-		$newTab.slideRow('down');
-		$("html, body").animate({scrollTop: $($newTab).offset().top - ( $(window).height() - $($newTab).outerHeight(true) ) / 2}, 200);
-	});
 
 	$(document).on("click", ".inviteUser", function() {
 
+
+		$('#userSendButton').removeClass("hide");
+
 		//get table user number
 		$curTable = $(this).closest('table');
 		var eventID = $curTable.attr('id');
 
 		//get and update current count
-		var userCount = $("#inviteUserCount").val();
-		var newCount = parseInt(parseInt(userCount) + 1);
+		var newCount = $('.inviteUserTR').length;
 		$("#inviteUserCount").val(newCount);
 		$("#inviteUserCountAct").val(parseInt($("#inviteUserCountAct").val())+1);
 
@@ -3103,6 +3019,8 @@ $(document).ready(function() {
 	});
 
 	$(document).on("click", ".inviteUserDelete", function() {
+
+
 		//get event number
 		$curTable = $(this).closest('table');
 		userID = $curTable.attr('id');
@@ -3122,7 +3040,9 @@ $(document).ready(function() {
 					userCount = $("#inviteUserCountAct").val();
 					newCount = parseInt(parseInt(userCount) - 1);
 					$("#inviteUserCountAct").val(newCount);
-
+					if (newCount === 0 ){
+						$('#userSendButton').addClass("hide");
+					}
 					//bye-bye
 					$("#"+userID).remove();
 

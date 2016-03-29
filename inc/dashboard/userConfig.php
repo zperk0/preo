@@ -210,9 +210,16 @@
 		<div class="hide firstInviteUserDiv"></div> <!-- Dummy hook -->
 		</div>
 	<div class="row">
-		<div class="small-12 large-4 columns">
+		<div class="small-12 large-6 columns">
 			<button id="userSubButton" type="submit"><?echo _("SAVE CHANGES");?></button>
+			<button id="userSendButton" type="submit" class="hide"><?echo _("SEND INVITES");?></button>
 			<button id="savingButton" class="hide secondary" type="button"><?echo _("SAVING...");?></button>
 		</div>
 	</div>
 </form>
+
+
+<script>
+	$('')
+
+</script>
