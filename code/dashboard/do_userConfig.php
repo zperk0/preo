@@ -15,11 +15,12 @@
 	protect($userCount);
 
 	$inviteUserCountAct = $_POST['inviteUserCountAct']; //actual count -user
-	protect($userCountAct);
+	protect($inviteUserCountAct);
 
 	$users = array(); //initialising user
 
 	$curlResult = true;
+
 
 	//remember everything is 1-indexed. 0 is dummy data
 	$i = $j = 1;
@@ -45,27 +46,26 @@
 
 	$inviteUsers = array(); //initialising user
 	//remember everything is 1-indexed. 0 is dummy data
-	$i = $j = 1;
-	while($i <= $inviteUserCountAct && $j <= $inviteUserCount) //$i should break it faster unless linear == actual  -- creating new user here
+	$i = $inviteUserCountAct;
+	while($i <= $inviteUserCount) //$i should break it faster unless linear == actual  -- creating new user here
 	{
-		if(isset($_POST['iuName'][$j]) && $_POST['iuName'][$j])
+		if(isset($_POST['iuName'][$i]) && $_POST['iuName'][$i])
 		{
 			try {
-				$inviteUsers[$i]['id']	= $_POST['iuID'][$j];
+				$inviteUsers[$i]['id']	= $_POST['iuID'][$i];
 			}
 			catch(Exception $e){ /*nothing*/ }
 
-			$inviteUsers[$i]['name'] 		= $_POST['iuName'][$j];
-			$inviteUsers[$i]['email'] 	= $_POST['iuEmail'][$j];
-			$inviteUsers[$i]['role'] 		= strtoupper($_POST['iuRole'][$j]);
+			$inviteUsers[$i]['name'] 		= $_POST['iuName'][$i];
+			$inviteUsers[$i]['email'] 	= $_POST['iuEmail'][$i];
+			$inviteUsers[$i]['role'] 		= strtoupper($_POST['iuRole'][$i]);
 
 			//protect
 			protect($inviteUsers[$i]['name']);
 			protect($inviteUsers[$i]['email']);
 
-			$i++;
 		}
-		$j++;
+		$i++;
 	}
 
 	$newUsers = array();
@@ -97,8 +97,6 @@
 	foreach($inviteUsers as $user)
 	{
 		//create/edit user
-		$data 					= array();
-
 		$data 				= array();
 		$data['name']		= $user['name'];
 		$data['createdBy']		= $_SESSION['user_id'];
