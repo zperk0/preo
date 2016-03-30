@@ -6,6 +6,7 @@
 
 		$venues = getVenues( $_SESSION['user_id'] );
 		$accountId = $_SESSION['account_id'];
+
 		if (isset($accountId)){
 			$curlResult = callAPI('GET', $apiURL."accounts/$accountId/packages", false, $apiAuth);
 			$dataJSON = json_decode($curlResult, true);
@@ -32,6 +33,7 @@
 					}
 				}
 			}
+
 			$curlResult = callAPI('GET', $apiURL."accounts/$accountId/features/9", false, $apiAuth);
 			if ($curlResult){
 				$dataJSON = json_decode($curlResult, true);
@@ -91,27 +93,14 @@
 							<li class="has-dropdown"><a href="#"><?echo _("Menus");?></a>
 								<ul class="dropdown">
 									<?
-										//query to find menus for this venue
-										$accountID = $_SESSION['account_id'];
-										$mCurlResult = callAPI('GET', $apiURL."menus?accountId=$accountID&type=MENU", false, $apiAuth);
-										$mDataJSON = json_decode($mCurlResult,true);
-										if(!empty($mDataJSON) && (!isset($mDataJSON['status'])))
-										{
-											$curlResult = callAPI('GET', $GLOBALS['apiURL']."menus?accountId=$accountID&type=VOUCHER", false, $apiAuth);
-											$dataJSONVoucher = json_decode($curlResult,true);
-											if(is_array($dataJSONVoucher) && count($dataJSONVoucher)) {
-												$mDataJSON = array_merge(array_values($mDataJSON), array_values($dataJSONVoucher));
-											}
-
-											$_SESSION['menus'] = $mDataJSON;
-											foreach($mDataJSON as $menuL){?>
-												<li><a href="<?echo $_SESSION['path']?>/editmenu/<?echo $menuL['id'];?>"><?echo _("Edit")." $menuL[name]";?></a></li>
-											<?}?>
-											<li><a href="<?echo $_SESSION['path']?>/mealdeals"><?echo _("Meal Deals");?></a></li><?
-										}
-										else {?>
+										if (empty($_SESSION['menus'])) {?>
 											<li><a href="#"><?echo _("No menus");?></a></li>
-										<?}?>
+										<?} else {
+												foreach($_SESSION['menus'] as $menuL){?>
+												<li><a href="<?echo $_SESSION['path']?>/editmenu/<?echo $menuL['id'];?>"><?echo _("Edit")." $menuL[name]";?></a></li>
+											<? } ?>
+											<li><a href="<?echo $_SESSION['path']?>/mealdeals"><?echo _("Meal Deals");?></a></li>
+										<? } ?>
 								</ul>
 							</li>
 							<?if(isset($_SESSION['venue_eventFlag']) && $_SESSION['venue_eventFlag']){?>

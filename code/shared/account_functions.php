@@ -139,12 +139,26 @@
 
 			//////MENU////////////////////////////////////////////////////////////////////////////
 
+
 			//query to find menus for this venue
 			$curlResult = callAPI('GET', $GLOBALS['apiURL']."menus?accountId=$accountID&type=MENU", false, $apiAuth);
 
-			$dataJSON = json_decode($curlResult,true);
+			$mDataJSON = json_decode($curlResult,true);
 
-			if(empty($dataJSON) || (isset($dataJSON['status']) && $dataJSON['status']==404))
+			$curlResult = callAPI('GET', $GLOBALS['apiURL']."accounts/$accountID/features/11", false, $apiAuth);
+			$dataJSON = json_decode($curlResult,true);
+			if (!empty($dataJSON)){
+				$curlResult = callAPI('GET', $GLOBALS['apiURL']."menus?accountId=$accountID&type=VOUCHER", false, $apiAuth);
+				$dataJSONVoucher = json_decode($curlResult,true);
+				if(is_array($dataJSONVoucher) && count($dataJSONVoucher)) {
+					$mDataJSON = array_merge(array_values($mDataJSON), array_values($dataJSONVoucher));
+					$_SESSION['has_feature_voucher']=1;
+				} else {
+					$_SESSION['has_feature_voucher']=0;
+				}
+			}
+
+			if(empty($mDataJSON) || (isset($mDataJSON['status']) && $mDataJSON['status']==404))
 			{
 				$_SESSION['noMenuFlag']=1;
 
@@ -157,9 +171,9 @@
 			else
 			{
 				$_SESSION['noMenuFlag']=0;
-				$_SESSION['menus']	= $dataJSON;
-				if($dataJSON[0]['outletId'])
-					$_SESSION['outlet_id'] 	= $dataJSON[0]['outletId'];
+				$_SESSION['menus']	= $mDataJSON;
+				if($mDataJSON[0]['outletId'])
+					$_SESSION['outlet_id'] 	= $mDataJSON[0]['outletId'];
 				else {
 					$curlResult = callAPI('GET', $GLOBALS['apiURL']."outlets?accountId=$accountID", false, $apiAuth);
 					$result = json_decode($curlResult, true);

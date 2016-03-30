@@ -53,6 +53,10 @@
 
 	$venueID = isset($_SESSION['venue_id']) ? $_SESSION['venue_id'] : 0;
 
+	if ($venueID > 0) {
+		loggedVenue($venueID);
+	}
+
 	//we get account id from _SESSION
 	$accountID = $_SESSION['account_id'];
 
@@ -85,9 +89,6 @@
 	if((!isset($_SESSION['noVenueFlag']) || !$_SESSION['noVenueFlag']) && (!isset($_SESSION['noAppFlag-1']) || !$_SESSION['noAppFlag-1']) && (!isset($_SESSION['noAppFlag-2']) || !$_SESSION['noAppFlag-2']) && (!isset($_SESSION['noMenuFlag']) || !$_SESSION['noMenuFlag']) && (!isset($_SESSION['noEHFlag']) || !$_SESSION['noEHFlag'])) /*User has given data for all 5 already*/
 	{
 
-		if (!isset($_SESSION['venue_code']) && $venueID > 0) {
-			loggedVenue($venueID);
-		}
 		//going to the dashboard!
 
 		//+d($_SESSION);

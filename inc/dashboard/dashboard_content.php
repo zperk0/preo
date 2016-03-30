@@ -32,10 +32,15 @@
 	<div class="large-12 columns">
 		<h1 class=""><? echo _("Dashboard");?>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("This is where you can monitor your takings and reports.");?>"></i></h1>
 		<?php
-		if (isset($_SESSION['venue_permalink']) && $_SESSION['OVERRIDES']['has_web_orders']) {
+		if (isset($_SESSION['venue_permalink'])) {
+			$webordersLink = "/menus/";
+			if ($_SESSION['has_feature_voucher']==1){
+				$webordersLink = "/voucher/";
+			}
 		?>
-		<p class="venueCode large-8 small-12"><?echo _("Your online order page is")." <a href='". $_SESSION['OVERRIDES']["site"] . "/menus/" . $_SESSION['venue_permalink']."' target='_blank'><strong>". str_replace("https://", "", str_replace("http://", "", $_SESSION['OVERRIDES']["site"])) . "/menus/" . $_SESSION['venue_permalink']."</strong></a>";?></p>
+		<p class="venueCode large-8 small-12"><?echo _("Your online order page is")." <a href='". $_SESSION['OVERRIDES']["site"] . $webordersLink. $_SESSION['venue_permalink']."' target='_blank'><strong>". str_replace("https://", "", str_replace("http://", "", $_SESSION['OVERRIDES']["site"])) . $webordersLink . $_SESSION['venue_permalink']."</strong></a>";?></p>
 		<?php } ?>
+
 	</div>
 </div>
 
