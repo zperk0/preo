@@ -69,7 +69,7 @@ angular.module('kyc.services')
             minPaid = getMinDateForQuery(minPaid);
 
             if ( eventIds && eventIds.length ) {
-                eventIds = eventIds.join(',');
+                eventIds = _.uniq(eventIds).join(',');
             }
 
             //max paid on the query is always now.
