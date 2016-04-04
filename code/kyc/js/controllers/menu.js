@@ -114,7 +114,7 @@ angular.module('kyc.controllers').controller('MenuCtrl', ['$scope','OutletServic
 			var eventsSearch = $scope.events;
 
 			var events = eventsSearch.filter(function (e) {
-				return (e.id === order.eventId && e.time === order.eventTime);
+				return (e.id === order.eventId && (!order.eventTime || e.time === order.eventTime));
 			});
 
 			return events.length ? events[0] : {};
