@@ -46,11 +46,12 @@
 
 	$inviteUsers = array(); //initialising user
 	//remember everything is 1-indexed. 0 is dummy data
-	$i = $inviteUserCountAct;
+	$i = 1;
 	while($i <= $inviteUserCount) //$i should break it faster unless linear == actual  -- creating new user here
 	{
-		if(isset($_POST['iuName'][$i]) && $_POST['iuName'][$i])
+		if(isset($_POST['iuName'][$i]) && $_POST['iuName'][$i] && substr($_POST['iuID'][$i],0,1)==='u')
 		{
+
 			try {
 				$inviteUsers[$i]['id']	= $_POST['iuID'][$i];
 			}
