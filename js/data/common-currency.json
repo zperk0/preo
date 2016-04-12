@@ -44,5 +44,42 @@
         "rounding": 0,
         "code": "GIP",
         "name_plural": "Gibraltar Pounds"
+    },
+    "AUD": {
+        "symbol": "AU$",
+        "name": "Australian Dollar",
+        "symbol_native": "$",
+        "decimal_digits": 2,
+        "rounding": 0,
+        "code": "AUD",
+        "name_plural": "Australian dollars"
+    },
+    "NZD": {
+        "symbol": "NZ$",
+        "name": "New Zealand Dollar",
+        "symbol_native": "$",
+        "decimal_digits": 2,
+        "rounding": 0,
+        "code": "NZD",
+        "name_plural": "New Zealand dollars"
+    },
+    "SEK": {
+        "symbol": "Skr",
+        "name": "Swedish Krona",
+        "symbol_native": "kr",
+        "decimal_digits": 2,
+        "rounding": 0,
+        "code": "SEK",
+        "name_plural": "Swedish kronor"
+    },
+    "DKK": {
+        "symbol": "Dkr",
+        "name": "Danish Krone",
+        "symbol_native": "kr",
+        "decimal_digits": 2,
+        "rounding": 0,
+        "code": "DKK",
+        "name_plural": "Danish kroner"
     }
+
 }
