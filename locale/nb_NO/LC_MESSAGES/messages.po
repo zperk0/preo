@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-25 20:29-0300\n"
+"POT-Creation-Date: 2016-04-12 09:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -284,35 +284,35 @@ msgid "Pick an option type"
 msgstr "Velg et alternativ"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:25
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:360
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:388
 msgid "User selects between"
 msgstr "Bruker velger mellom"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:26
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:360
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:388
 #: /Users/caio1/Workspace/preoday/webapp/inc/signup/invite_signup_content.php:45
 #: /Users/caio1/Workspace/preoday/webapp/inc/signup/signup_content.php:187
 msgid "and"
 msgstr "og"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:27
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:360
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:388
 msgid "or more"
 msgstr "eller flere"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:28
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:360
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:362
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:388
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:390
 msgid "options"
 msgstr "valg"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:29
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:362
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:390
 msgid "User selects"
 msgstr "Bruker velger"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:30
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:366
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:394
 msgid "Custom choices"
 msgstr "Tilpassede alternativer"
 
@@ -369,10 +369,10 @@ msgid "Choose Venue"
 msgstr "Velg sted"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:43
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:44
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:98
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:163
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:198
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:42
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:95
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:160
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:194
 msgid "Owner"
 msgstr "Eier"
 
@@ -394,11 +394,11 @@ msgstr "Send bekreftelses e-post på nytt?"
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:47
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:76
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:194
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:165
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:219
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:316
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:395
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:427
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:167
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:221
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:331
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:423
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:455
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:98
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:152
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:168
@@ -424,8 +424,8 @@ msgid "Username/email already exists"
 msgstr "Brukernavn/e-post eksisterer allerede"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:52
-msgid "User configuration has been saved!"
-msgstr "Konfigurasjonen er lagret!"
+msgid "Invitations have been sent"
+msgstr "Invitasjon sendt"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:53
 msgid "Select all menus"
@@ -533,7 +533,7 @@ msgid "Select all"
 msgstr "Merk alle"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:74
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:372
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:376
 msgid "Your app is now live!"
 msgstr "Din app er nå live!"
 
@@ -590,7 +590,7 @@ msgid "</b> and your premium features will remain active."
 msgstr "<br/> og dine Premium funksjoner vil fortsatt være aktive."
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:88
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:266
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:270
 msgid "OK"
 msgstr "OK"
 
@@ -599,10 +599,10 @@ msgid "CONFIRM"
 msgstr "Bekreft"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:90
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:251
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:503
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:521
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:548
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:256
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:531
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:549
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:576
 msgid "CANCEL"
 msgstr "AVBRYT"
 
@@ -808,10 +808,10 @@ msgstr "Dato registrert"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:137
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:30
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:126
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:279
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:128
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:294
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:17
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:138
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:136
 msgid "Name"
 msgstr "Navn"
 
@@ -1349,8 +1349,8 @@ msgid "Features"
 msgstr "Funksjoner"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shop/shop.php:112
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:127
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:280
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:129
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:295
 #: /Users/caio1/Workspace/preoday/webapp/inc/signup/signup_content.php:58
 msgid "Description"
 msgstr "Beskrivelse"
@@ -1384,13 +1384,13 @@ msgstr "eller gå tilbake til"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/404/404_content.php:6
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:33
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:74
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:73
 msgid "Dashboard"
 msgstr "Kontrollpanel"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:12
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:5
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:16
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:18
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:6
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/paymentConfig.php:6
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:18
@@ -1400,7 +1400,7 @@ msgstr "Informasjon om stedet"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:13
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:6
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:17
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:19
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:7
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/paymentConfig.php:7
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:20
@@ -1412,7 +1412,7 @@ msgstr "App design 1/2"
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:15
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:17
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:7
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:18
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:20
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:8
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/paymentConfig.php:8
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:25
@@ -1425,7 +1425,7 @@ msgstr "App design 2/2"
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:22
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:9
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:11
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:19
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:21
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:9
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/paymentConfig.php:9
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:30
@@ -1438,15 +1438,15 @@ msgstr "Opprett meny"
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:28
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:14
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:17
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:113
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:21
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:24
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:118
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:23
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:26
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:10
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/paymentConfig.php:10
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:35
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:38
 #: /Users/caio1/Workspace/preoday/webapp/inc/finish/finish_content.php:11
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:121
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:107
 msgid "Events"
 msgstr "Arrangement"
 
@@ -1454,21 +1454,21 @@ msgstr "Arrangement"
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:29
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:15
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:18
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:22
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:25
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:24
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:27
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:11
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:38
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/paymentConfig.php:11
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:36
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:39
 #: /Users/caio1/Workspace/preoday/webapp/inc/finish/finish_content.php:12
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:84
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:83
 msgid "Opening Hours"
 msgstr "Åpningstider"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:32
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:21
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:27
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:29
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:12
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/paymentConfig.php:12
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:45
@@ -1477,7 +1477,7 @@ msgstr "Legg til en betaling"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:34
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:23
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:29
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:31
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:14
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/paymentConfig.php:15
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:48
@@ -1492,7 +1492,7 @@ msgstr "Endre utseende for din app"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:39
 msgid "This is the first screen that your customers will see."
-msgstr "Dette er det første skjermbilde som kundene dine vil se."
+msgstr "Dette er det første bilde som kundene dine vil se."
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:46
 msgid "Create a main heading"
@@ -1595,13 +1595,13 @@ msgid "Button text colour"
 msgstr "Velg farge på knappens tekst"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:125
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:185
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:190
 msgid "ORDER NOW"
 msgstr "BESTILL NÅ"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:137
 msgid "Select a home-screen background"
-msgstr "Velg en bakgrunn for hjem-skjermen"
+msgstr "Velg bakgrunn for hjem skjerm"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:168
 msgid "UPLOAD YOUR OWN BACKGROUND"
@@ -1612,7 +1612,7 @@ msgid "Custom Background Upload"
 msgstr "Last opp din egen bakgrunn"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:180
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:482
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:510
 msgid "UPLOAD"
 msgstr "LAST OPP"
 
@@ -1635,13 +1635,13 @@ msgstr "Dimensjon: 1080x1920"
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:191
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:112
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:241
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:470
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:502
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:520
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:547
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:498
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:530
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:548
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:575
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:110
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/outletConfig.php:88
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:217
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:215
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:548
 #: /Users/caio1/Workspace/preoday/webapp/inc/venue/selectVenue_content.php:19
 msgid "SAVE CHANGES"
@@ -1650,10 +1650,10 @@ msgstr "LAGRE ENDRINGER"
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig1.php:192
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/appConfig2.php:113
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:242
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:472
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:500
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:111
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/outletConfig.php:89
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:218
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:216
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:549
 #: /Users/caio1/Workspace/preoday/webapp/inc/venue/selectVenue_content.php:20
 msgid "SAVING..."
@@ -1729,177 +1729,177 @@ msgstr "40&#37 ferdig, litt flere design tilpasninger..."
 msgid "This is where you can monitor your takings and reports."
 msgstr "Her kan du overvåke dine salg og rapporter."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:37
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:41
 msgid "Your online order page is"
 msgstr "Lenke til din side for online bestilling er"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:46
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:51
 msgid "This month"
 msgstr "Denne måneden"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:49
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:54
 msgid "Total revenue"
 msgstr "Omsetning totalt"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:53
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:58
 msgid "Total orders"
 msgstr "Bestillinger totalt"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:57
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:62
 msgid "New users"
 msgstr "Nye brukere"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:61
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:66
 msgid "Returning users"
-msgstr "Gjentagend brukere"
+msgstr "Gjentagende brukere"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:70
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:78
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:75
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:77
 msgid "Order Screen"
 msgstr "Ordreliste"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:73
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:78
 msgid "Customer Analytics"
 msgstr "Kundeanalyse"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:76
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:126
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:94
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:130
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:81
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:131
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:93
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:116
 msgid "Menus"
 msgstr "Menyer"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:84
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:89
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:83
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:201
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:174
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:335
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:176
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:350
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/outletConfig.php:39
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/outletConfig.php:73
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:50
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:104
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:111
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:49
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:102
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:100
 msgid "Edit"
 msgstr "Rediger"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:86
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:91
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:5
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:113
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:102
 msgid "Meal Deals"
 msgstr "Menytilbud"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:88
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:116
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:93
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:97
 msgid "No menus"
 msgstr "Ingen menyer"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:90
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:95
 msgid "Add new menu"
 msgstr "Legg til ny meny"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:94
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:80
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:99
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:79
 msgid "Venue Settings"
 msgstr "Innstillinger"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:96
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:101
 msgid "Change settings"
 msgstr "Endre innstillinger"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:97
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:102
 msgid "Delivery settings"
 msgstr "Innstillinger for levering"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:98
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:103
 msgid "Preset notifications"
 msgstr "Forhåndsdefinerte meldinger"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:100
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:105
 msgid "Opening hours"
 msgstr "Åpningstider"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:105
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:88
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:110
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:87
 msgid "Styling"
 msgstr "Design"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:107
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:112
 msgid "Home screen"
-msgstr "Hjem skjermen"
+msgstr "Hjem skjerm"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:108
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:113
 msgid "Menu screen"
-msgstr "Meny skjermen"
+msgstr "Meny skjerm"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:115
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:120
 msgid "Update events"
 msgstr "Oppdater arrangementer"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:124
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:128
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:129
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:114
 msgid "Group Booking"
 msgstr "Gruppe booking"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:127
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:131
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:132
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:117
 msgid "Bookings"
 msgstr "Bookinger"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:128
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:132
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:133
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:118
 msgid "Settings"
 msgstr "Innstillinger"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:133
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:136
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:138
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:122
 msgid "Advanced Settings"
 msgstr "Avanserte innstillinger"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:135
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:140
 msgid "Manage users"
 msgstr "Administrere brukere"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:136
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:141
 msgid "Add a payment method"
 msgstr "Legg til betalingsmåte"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:137
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:140
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:142
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:126
 msgid "Change my app mode"
 msgstr "Endre app modus"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:141
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:153
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:146
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:139
 msgid "My Account"
 msgstr "Min konto"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:145
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:158
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:150
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:144
 msgid "Help"
 msgstr "Hjelp"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:148
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:160
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:153
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:146
 msgid "Getting Started"
 msgstr "Kom i gang"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:149
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:161
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:154
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:147
 msgid "Editing your Menu"
 msgstr "Rediger menyen"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:155
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:160
 #: /Users/caio1/Workspace/preoday/webapp/inc/more/more_content.php:6
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:163
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:167
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:149
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:153
 msgid "Support"
 msgstr "Support"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:166
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:171
 msgid "Change app mode"
 msgstr "Endre app modus"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:166
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:171
 msgid ""
 "LIVE - Your app is visible and is ready to take real orders.<br/><br/>DEMO - "
 "Your app is visible but does not take real orders.<br/><br/>OFFLINE - Your "
@@ -1909,19 +1909,19 @@ msgstr ""
 "Din app er synlig, men tar ikke reelle ordre. <br/><br/> OFFLINE - Din app "
 "er ikke synlig."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:169
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:174
 msgid "OFFLINE"
 msgstr "OFFLINE"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:170
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:175
 msgid "DEMO"
 msgstr "DEMO"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:171
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:176
 msgid "LIVE"
 msgstr "LIVE"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:217
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:222
 msgid ""
 "Your 30 day free trial \tof this Premium Feature has now expired. Would you "
 "like to purchase it?"
@@ -1929,27 +1929,27 @@ msgstr ""
 "Din 30 dagers gratis prøveversjon av denne Premium funksjonen har nå utløpt. "
 "Vil du kjøpe den?"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:218
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:223
 msgid "YES PLEASE"
 msgstr "JA TAKK"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:219
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:224
 msgid "NOT RIGHT NOW"
 msgstr "IKKE AKKURAT NÅ"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:234
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:239
 msgid " trial"
 msgstr "prøve"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:241
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:246
 msgid "Your free trial expires in "
 msgstr "Din gratis prøveperiode utløper om "
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:241
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:246
 msgid " days."
 msgstr " dager."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:241
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:246
 msgid ""
 " To continue using your app after the free trial, register your card details "
 "for the "
@@ -1957,19 +1957,19 @@ msgstr ""
 " For å fortsette å bruke programmet etter prøveperioden kan du registrere "
 "kortdetaljene dine for "
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:241
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:246
 msgid " on the 'My Account' tab located on your dashboard."
 msgstr " på \"Min konto\" fanen som er plassert i kontrollpanelet"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:243
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:248
 msgid "GO TO MY ACCOUNT"
 msgstr "GÅ TIL MIN KONTO"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:248
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:253
 msgid "Payment provider is not connected!"
 msgstr "Betalingsløsningn er ikke tilkoblet!"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:249
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:254
 msgid ""
 "Before taking your app live you need to connect it to a payment provider or "
 "enable cash payments so that you can start accepting payments and start "
@@ -1979,24 +1979,24 @@ msgstr ""
 "aktivere kontant betaling, slik at du kan begynne å akseptere betalinger og "
 "begynne å få betalt!"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:250
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:255
 msgid "CONNECT"
 msgstr "KOBLE TIL"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:264
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:268
 msgid "Welcome"
 msgstr "Velkommen"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:381
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:385
 msgid "Your app is now in DEMO mode."
 msgstr "Din app er nå i DEMO modus."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:390
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:408
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:394
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:412
 msgid "Your app is now in OFFLINE mode."
 msgstr "Din app er nå i OFFLINE modus."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:399
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:403
 msgid "Your app is now in Demo mode."
 msgstr "Din app er nå i demo modus!"
 
@@ -2029,23 +2029,23 @@ msgid "Discount Price "
 msgstr "Rabattert pris "
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:34
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:130
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:283
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:132
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:298
 msgid "Visible?"
 msgstr "Synlig?"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:35
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:131
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:284
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:133
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:299
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:20
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:141
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:139
 msgid "Tools"
 msgstr "Verktøy"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:53
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:171
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:145
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:297
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:147
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:312
 msgid "Please type an item name (max 100chars)"
 msgstr "Vennligst skriv inn et produktnavn (maks 100 tegn)"
 
@@ -2059,9 +2059,9 @@ msgstr "Velg en gruppe"
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:64
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:182
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:185
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:152
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:207
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:384
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:154
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:209
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:412
 msgid "0.00"
 msgstr "0,00"
 
@@ -2072,11 +2072,11 @@ msgstr "Beløp?"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:73
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:191
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:162
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:216
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:313
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:392
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:424
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:164
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:218
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:328
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:420
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:452
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:95
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:149
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:165
@@ -2087,37 +2087,37 @@ msgstr "Nei"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:82
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:200
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:173
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:334
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:175
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:349
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/outletConfig.php:38
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/outletConfig.php:72
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:49
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:103
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:48
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:101
 msgid "Collapse"
 msgstr "Trekk sammen"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:84
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:202
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:177
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:196
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:226
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:338
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:373
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:402
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:434
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:179
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:198
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:228
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:353
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:401
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:430
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:462
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/outletConfig.php:40
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/outletConfig.php:74
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:52
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:106
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:167
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:203
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:51
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:104
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:165
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:200
 msgid "Delete"
 msgstr "Slett"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:89
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/mdConfig.php:246
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:117
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:270
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:119
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:285
 msgid "Delete this section"
 msgstr "Slett denne gruppen"
 
@@ -2168,15 +2168,15 @@ msgstr ""
 "Du har ikke opprettet noen retter! Du vil ikke være i stand til å lage "
 "kampanjer før du har noen retter i menyen."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:35
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:37
 msgid "Build your menu"
 msgstr "Bygg din meny"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:35
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:37
 msgid "Your menu"
 msgstr "Din meny"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:35
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:37
 msgid ""
 "Now it's time to create your menu. We suggest you keep it simple to start "
 "with.<br/><br/>An easy way is to group items, i.e. create separate sections "
@@ -2186,203 +2186,203 @@ msgstr ""
 "som mulig til å begynne med. <br/><br/> En enkel måte er å gruppere "
 "produkter, dvs. opprette egne grupper for mat, kald drikke og varm drikke."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:71
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:73
 msgid "Click to add your menu name"
 msgstr "Klikk for å legge inn menynavn"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:71
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:73
 msgid "Enter menu name"
 msgstr "Skriv navn på meny"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:72
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:74
 msgid "Please type a menu name (max 100chars)"
 msgstr "Vennligst skriv inn et menynavn (maks 100 tegn)"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:76
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:78
 msgid "Description (optional)"
 msgstr "Beskrivelse (valgfritt)"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:79
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:81
 msgid "Assigned to these promotions"
 msgstr "Tilordnet disse kampanjene"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:81
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:83
 msgid "Enter promotions"
 msgstr "Skriv inn kampanjer"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:98
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:251
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:100
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:266
 msgid "Click to add a section name"
 msgstr "Klikk for å legge til et gruppenavn"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:99
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:252
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:101
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:267
 msgid "Please type a section name (max 100chars)"
 msgstr "Vennligst skriv inn et gruppenavn (maks 100 tegn)"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:103
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:256
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:105
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:271
 msgid "User must select"
 msgstr "Brukeren må velge"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:106
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:259
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:537
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:542
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:108
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:274
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:565
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:570
 msgid "Please enter the quantity"
 msgstr "Vennligst skriv inn antall"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:108
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:261
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:110
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:276
 msgid "item/s per guest from this section"
 msgstr "enheter pr gjest fra denne seksjonen"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:114
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:267
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:116
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:282
 msgid "Add an item to this section"
 msgstr "Legg til et produkt i denne gruppen"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:116
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:269
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:118
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:284
 msgid "Move this section"
 msgstr "Flytt denne gruppen"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:118
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:271
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:120
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:286
 msgid "Collapse this section"
 msgstr "Skjul denne gruppen"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:128
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:281
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:130
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:296
 msgid "Price "
 msgstr "Pris"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:129
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:282
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:131
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:297
 msgid "Quantity"
 msgstr "Antall"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:144
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:146
 msgid "Click to add an item name"
 msgstr "Klikk for å legge til produktnavn"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:148
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:300
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:150
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:315
 msgid "Optional description"
 msgstr "Valgfri beskrivelse"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:149
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:301
-msgid "Please type a description (max 250chars)"
-msgstr "Skriv inn en beskrivelse (maks 250 tegn)"
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:151
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:316
+msgid "Please type a description (max 1000chars)"
+msgstr "Skriv inn en beskrivelse (maks 1000 tegn)"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:153
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:209
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:305
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:385
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:417
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:155
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:211
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:320
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:413
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:445
 msgid "Price?"
 msgstr "Pris?"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:157
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:308
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:159
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:323
 msgid "Unlimited"
 msgstr "Ubegrenset"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:160
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:311
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:162
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:326
 msgid "This chooses whether you want to activate this food on the menu or not."
 msgstr "Her velger du om du vil aktivere denne retten på menyen eller ikke."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:171
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:332
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:173
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:347
 msgid "Upload image"
 msgstr "Last opp bilde"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:172
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:333
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:174
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:348
 msgid "Add tags"
 msgstr "Legg til tags"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:175
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:336
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:177
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:351
 msgid "Reorder"
 msgstr "Endre rekkefølgen"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:176
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:225
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:337
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:401
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:433
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:51
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:105
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:178
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:227
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:352
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:429
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:461
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:50
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:103
 msgid "Duplicate"
 msgstr "Kopier"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:181
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:345
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:183
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:373
 msgid "Add a new option to this item"
 msgstr "Legg til et nytt alternativ til dette produktet"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:181
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:345
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:183
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:373
 msgid "Add an option"
 msgstr "Legg til et alternativ"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:183
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:347
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:185
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:375
 msgid "Type or pick an option title"
-msgstr "Skriv inn eller velg en alternativ tittel"
+msgstr "Skriv eller velg en tittel"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:183
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:347
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:185
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:375
 msgid "Eg. Pick a size, Choice of an option, Add some extras, Select a side"
 msgstr ""
 "F.eks. Velg en størrelse, velg et tillegg, legg til litt ekstra, velg "
 "en siderett"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:184
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:348
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:186
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:376
 msgid "Please type or pick a title"
 msgstr "Skriv eller velg en tittel"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:188
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:352
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:190
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:380
 msgid "User must select only one option."
 msgstr "Brukeren må kun velge ett tillegg."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:188
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:352
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:190
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:380
 msgid "User selects 1 option"
 msgstr "Brukeren velger 1 tillegg"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:189
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:353
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:191
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:381
 msgid "User must select one or more options."
 msgstr "Brukeren må velge ett eller flere tillegg."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:189
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:353
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:191
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:381
 msgid "User selects 1 or more options"
 msgstr "Brukeren velger 1 eller flere tillegg"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:190
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:354
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:192
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:382
 msgid "User can select zero or more options."
 msgstr "Brukeren kan velge 0 eller flere tillegg."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:190
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:354
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:192
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:382
 msgid "User selects 0 or more options"
 msgstr "Brukeren velger 0 eller flere tillegg"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:191
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:368
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:193
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:396
 msgid "Advanced..."
 msgstr "Avansert.."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:192
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:369
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:194
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:397
 msgid ""
 "Single: When the user must pick only 1 option.<br/><br/>Multiple: When the "
 "user must pick 1 or more options.<br/><br/>Optional: when the user can pick "
@@ -2392,25 +2392,25 @@ msgstr ""
 "brukeren må velge ett eller flere tillegg. <br/><br/> Valgfritt: Når "
 "brukeren kan velge 0 eller flere tillegg."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:193
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:370
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:195
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:398
 msgid "Please choose a type"
 msgstr "Velg en type"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:201
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:378
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:203
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:406
 msgid "Click to add an option name"
 msgstr "Klikk for å legge til et tilleggs navn"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:202
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:379
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:411
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:204
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:407
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:439
 msgid "Please type an option name (max 100chars)"
 msgstr "Vennligst skriv tilleggets navn (maks 100 tegn)"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:208
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:384
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:416
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:210
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:412
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:444
 msgid ""
 "This will be in addition to the item price. If there is no price difference, "
 "put in 0.00."
@@ -2418,58 +2418,93 @@ msgstr ""
 "Dette kommer i tillegg til produktprisen. Hvis det ikke er prisforskjell, "
 "skriv inn 0,00."
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:230
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:442
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:234
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:360
+msgid "Optional value... (ex: 19.99)"
+msgstr "Valgfri verdi... (f.eks: 199)"
+
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:235
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:361
+msgid ""
+"The real value of the voucher the customer will be able to redeem. The "
+"customer will be charged the total set in Price."
+msgstr ""
+"Verdien på gavekortet som kunden kan innfri. Kunden blir belastet med den "
+"totale prisen."
+
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:236
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:362
+msgid "Value?"
+msgstr "Verdi?"
+
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:239
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:365
+msgid "Optional Additional info..."
+msgstr "Ytterligere informasjon (valgfri)."
+
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:240
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:366
+msgid "Aditional info displayed in the footer of the eVoucher (Max 150 chars)"
+msgstr ""
+"Ytterligere informasjon som vises i bunnteksten på gavekortet (Maks 150 tegn)"
+
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:241
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:367
+msgid "Max 150 chars"
+msgstr "Maks 150 tegn"
+
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:245
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:470
 msgid "Eg. Toppings, Sizes, Exras, etc"
 msgstr "F.eks. Topping, størrelser, tillegg, osv"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:230
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:442
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:245
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:470
 msgid "Add an option category to this item <small>(optional)</small>"
 msgstr ""
 "Legg til en tilleggskategori til dette produktet <small>(valgfritt)</small>"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:459
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:487
 msgid "Add a new menu section"
 msgstr "Legg til en ny menygruppe"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:465
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:493
 msgid "COLLAPSE ALL"
 msgstr "SKJUL ALLE"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:467
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:495
 msgid "SAVE & CONTINUE EDITING"
 msgstr "LAGRE & FORTSETT REDIGERING"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:468
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:496
 msgid "SAVE & FINISH"
 msgstr "LAGRE"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:481
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:509
 msgid "Name of item"
 msgstr "Navn på enhet"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:482
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:510
 msgid "ADD PICTURE"
 msgstr "LEGG TIL BILDE"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:484
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:512
 msgid "JPG, PNG (Max. file size 5mb)"
 msgstr "JPG, PNG (Maks. fil størrelse 5mb)"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:530
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:558
 msgid "Custom options"
 msgstr "Tilpassede alternativer"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:535
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:563
 msgid "Min"
 msgstr "Min"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:540
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:568
 msgid "Max"
 msgstr "Maks"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:586
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:614
 msgid "45&#37 done, now for the fun bit!"
 msgstr "45&#37 ferdig, nå kommer den festlige delen!"
 
@@ -2632,129 +2667,132 @@ msgid "User management"
 msgstr "Brukeradministrasjon"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:18
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:139
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:137
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:155
 #: /Users/caio1/Workspace/preoday/webapp/inc/settings/settings_content.php:20
 msgid "Email"
 msgstr "E-post"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:19
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:140
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:138
 msgid "Role"
 msgstr "Rolle"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:19
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:140
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:138
 msgid "This decides the level of access of your users."
 msgstr "Dette bestemmer tilgangsnivået for brukerne."
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:33
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:153
 msgid "Add a user name"
 msgstr "Legg til et brukernavn"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:34
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:88
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:154
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:188
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:87
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:152
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:186
 msgid "Please type a user name (max 200chars)"
 msgstr "Skriv inn et brukernavn (maks 200 tegn)"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:37
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:91
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:157
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:191
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:90
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:189
 msgid "Add an email"
 msgstr "Legg til e-post"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:38
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:92
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:158
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:192
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:91
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:156
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:190
 msgid "Please type an email"
 msgstr "Vennligst skriv en e-post adresse"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:42
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:96
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:162
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:196
-msgid "Staff: can only read account"
-msgstr "Ansatte: kan bare se"
-
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:42
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:96
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:162
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:196
-msgid "Staff"
-msgstr "Ansatte"
-
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:43
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:97
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:197
-msgid "Admin: can read/write account but cannot close it down"
-msgstr "Admin: kan se og redigere, men kan ikke stenge"
-
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:43
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:97
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:197
-msgid "Admin"
-msgstr "Admin"
-
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:44
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:98
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:163
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:198
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:95
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:160
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:194
 msgid "Owner: can read/write account and close it down"
 msgstr "Eier: kan se, redigere og stenge kontoen"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:46
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:100
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:200
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:43
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:96
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:161
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:195
+msgid "Staff: can only read account"
+msgstr "Ansatte: kan bare se"
+
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:43
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:96
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:161
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:195
+msgid "Staff"
+msgstr "Ansatte"
+
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:45
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:98
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:197
 msgid "Role?"
 msgstr "Rolle?"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:57
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:56
 #: /Users/caio1/Workspace/preoday/webapp/inc/signin/signin_content.php:25
 #: /Users/caio1/Workspace/preoday/webapp/inc/signup/invite_signup_content.php:36
 #: /Users/caio1/Workspace/preoday/webapp/inc/signup/signup_content.php:39
 msgid "Password"
 msgstr "Passord"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:58
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:57
 msgid "Assign a password"
 msgstr "Angi et passord"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:59
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:58
 msgid "Provide a Password"
 msgstr "Oppgi et passord"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:62
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:61
 #: /Users/caio1/Workspace/preoday/webapp/inc/reset/reset_content.php:15
 msgid "Confirm Password"
 msgstr "Bekreft passord"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:63
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:62
 msgid "Confirm password"
 msgstr "Bekreft passord"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:64
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:63
 msgid "Passwords don't match"
 msgstr "Passordene samsvarer ikke"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:124
-msgid "Invited users"
-msgstr "Inviterte brukere"
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:122
+msgid "Pending Invitations"
+msgstr "Ventende invitasjoner"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:131
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:122
+msgid ""
+"Users added below will receive an email and be granted Owner or Staff access "
+"to this account"
+msgstr ""
+"Brukere som er lagt til her vil motta en e-post og få tilgang til denne "
+"kontoen"
+
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:129
 msgid "Invite new user"
 msgstr "Inviter ny bruker"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:204
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:151
+msgid "First and last name"
+msgstr "Fornavn og etternavn"
+
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:201
 msgid "Resend Invitation"
 msgstr "Send invitasjon på nytt"
 
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:214
+msgid "SEND INVITES"
+msgstr "SEND INVITASJON"
+
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:43
 #: /Users/caio1/Workspace/preoday/webapp/inc/finish/finish_content.php:13
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:139
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:125
 msgid "Payment Method"
 msgstr "Betalingsmåte"
 
@@ -3216,61 +3254,61 @@ msgstr "Bekreft nytt passord"
 msgid "SAVE"
 msgstr "LAGRE"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:61
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:60
 msgid "Menu"
 msgstr "Meny"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:69
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:154
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:171
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:68
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:140
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:157
 msgid "Logout"
 msgstr "Logg ut"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:71
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:70
 msgid "Login"
 msgstr "Logg inn"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:76
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:75
 msgid "Go to Dashboard"
 msgstr "Gå til kontrollpanel"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:82
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:81
 msgid "Change Settings"
 msgstr "Innstillinger"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:83
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:82
 msgid "Delivery Settings"
 msgstr "Leveringsinnstillinger"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:85
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:84
 msgid "Preset Notifications"
 msgstr "Forhåndsdefinerte meldinger"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:90
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:89
 msgid "Home Screen"
 msgstr "Forside"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:91
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:90
 msgid "Menu Screen"
 msgstr "Meny"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:123
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:109
 msgid "Update Events"
 msgstr "Oppdater arrangement"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:138
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:124
 msgid "Manage Users"
 msgstr "Administrere brukere"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:147
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:133
 msgid "Switch Venue"
 msgstr "Bytt sted"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:162
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:148
 msgid "FAQs"
 msgstr "FAQ"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:170
+#: /Users/caio1/Workspace/preoday/webapp/inc/shared/h.php:156
 msgid "Getting started"
 msgstr "Kom igang"
 

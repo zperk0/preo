@@ -49,7 +49,7 @@ var Dictionary = {
 	"Are you sure you want to delete this invite user?":<? echo json_encode(_("Are you sure you want to delete this invite user?")) ?>,
 	"Yes, delete this invite user!":<? echo json_encode(_("Yes, delete this invite user!")) ?>,
 	"Username/email already exists":<? echo json_encode(_("Username/email already exists")) ?>,
-	"User configuration has been saved!":<? echo json_encode(_("User configuration has been saved!")) ?>,
+	"Invitations have been sent":<? echo json_encode(_("Invitations have been sent")) ?>,
 	"Select all menus":<? echo json_encode(_("Select all menus")) ?>,
 	"Unselect all menus":<? echo json_encode(_("Unselect all menus")) ?>,
 	"Select menu(":<? echo json_encode(_("Select menu(")) ?>,
