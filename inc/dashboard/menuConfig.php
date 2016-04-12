@@ -236,9 +236,9 @@
 								<small class="error priceError"><?echo _("Value?");?></small>
 						</td>
 						<td class="menuTDAditionalInfo">
-								<input type="text" name="iInfo[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional Additional info...") ?>" pattern="^.{0,149}$"/>
-								<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("Aditional info displayed in the footer of the eVoucher (Max 150 chars)");?>"></i>
-								<small class="error"><?echo _("Max 150 chars");?></small>
+								<input type="text" name="iInfo[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional Additional info...") ?>" pattern="^.{0,999}$"/>
+								<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("Aditional info displayed in the footer of the eVoucher (Max 1000 chars)");?>"></i>
+								<small class="error"><?echo _("Max 1000 chars");?></small>
 						</td>
 					<? } ?>
 					<tr class="menuEdit xtraModTR">
@@ -362,9 +362,9 @@
 													<small class="error priceError"><?echo _("Value?");?></small>
 											</td>
 											<td class="menuTDAditionalInfo">
-													<input type="text" name="iInfo[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional Additional info...") ?>" pattern="^.{0,149}$" <?if($item['additionalInfo']){?>value="<?echo $item['additionalInfo'];}?>"/>
-													<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("Aditional info displayed in the footer of the eVoucher (Max 150 chars)");?>"></i>
-													<small class="error"><?echo _("Max 150 chars");?></small>
+													<input type="text" name="iInfo[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional Additional info...") ?>" pattern="^.{0,999}$" <?if($item['additionalInfo']){?>value="<?echo $item['additionalInfo'];}?>"/>
+													<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("Aditional info displayed in the footer of the eVoucher (Max 1000 chars)");?>"></i>
+													<small class="error"><?echo _("Max 1000 chars");?></small>
 											</td>
 										<? } ?>
 									<?if(isset($item['modifiers']) && count($item['modifiers'])){
