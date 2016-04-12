@@ -11,6 +11,8 @@
 						<li><a href="javascript:void(0)" class="changeLang" data-new-lang="de"><? echo _("German");?></a></li>
 						<li><a href="javascript:void(0)" class="changeLang" data-new-lang="fr"><? echo _("French");?></a></li>
 						<li><a href="javascript:void(0)" class="changeLang" data-new-lang="nb"><? echo _("Norwegian");?></a></li>
+						<li><a href="javascript:void(0)" class="changeLang" data-new-lang="sv"><? echo _("Swedish");?></a></li>
+						<li><a href="javascript:void(0)" class="changeLang" data-new-lang="fi"><? echo _("Finnish");?></a></li>
 					</ul>
 				</div>
 				<!-- <div class="large-offset-4 large-2 small-3 columns left"> -->

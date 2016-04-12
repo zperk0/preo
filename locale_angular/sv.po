@@ -1,0 +1,818 @@
+"Language: sv_SV\n"
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"Content-Type: text/plain; charset=UTF-8"
+
+msgid "Active?"
+msgstr "Aktiv?"
+
+msgid "Add a new event"
+msgstr "Lägg till ett nytt evenemang"
+
+msgid "Add another slot"
+msgstr "Lägg till ytterligare plats"
+
+msgid "ADD PAYMENT METHOD"
+msgstr "LÄGG TILL BETALNINGSSÄTT"
+
+msgid "Address Line 1"
+msgstr "Adressrad 1"
+
+msgid "Address Line 2"
+msgstr "Adressrad 2"
+
+msgid "Address Line 3"
+msgstr "Adressrad 3"
+
+msgid "after"
+msgstr "efter"
+
+msgid "All"
+msgstr "Alla"
+
+msgid "All Locations"
+msgstr "Alla platser"
+
+msgid "Amount"
+msgstr "Summa"
+
+msgid ""
+"Are you sure you want to delete this event? Note: all event data will be "
+"lost!"
+msgstr ""
+"Är du säker på att du vill ta bort eventet? Obs: all evenemangsdata kommer "
+"att försvinna!"
+
+msgid ""
+"Are you sure you want to delete this menu? Note: all menu data will be lost!"
+msgstr ""
+"Är du säker på att du vill ta bort denna meny? Obs: all meny data kommer att "
+"förloras!"
+
+msgid ""
+"Are you sure you want to duplicate this menu? Note: You'll be redirect to "
+"edit the menu."
+msgstr ""
+"Är du säker på att du vill kopiera denna meny? Du kommer att bli omdirigerad "
+"till inställningarna av menyn."
+
+msgid "Assigned to these promotions"
+msgstr "Tilldelad dessa kampanjer"
+
+msgid "Auto reminder"
+msgstr "Automatisk påminnelse"
+
+msgid "before"
+msgstr "före"
+
+msgid "Billing Address"
+msgstr "Faktureringsadress"
+
+msgid "Billing History"
+msgstr "Faktureringshistorik"
+
+msgid "BILLING HISTORY"
+msgstr "FAKTURERINGSHISTORIK"
+
+msgid "Billing Schedule"
+msgstr "Faktureringsschema"
+
+msgid "Booking"
+msgstr "Bokning"
+
+msgid "Booking page"
+msgstr "Bokningssida"
+
+msgid "Booking settings has been saved!"
+msgstr "Bokningsinställningarna har sparats!"
+
+msgid "Bookings"
+msgstr "Bokningar"
+
+msgid "broken down in steps"
+msgstr "nedbruten i steg"
+
+msgid "Business Name"
+msgstr "Företagsnamn"
+
+msgid "CANCEL"
+msgstr "AVBRYT"
+
+msgid "Card ending"
+msgstr "Kort slut"
+
+msgid "Card Number"
+msgstr "Kortnummer"
+
+msgid "CCV"
+msgstr "CCV"
+
+msgid "CHANGE CARD"
+msgstr "BYT KORT"
+
+msgid "CHANGE DETAILS"
+msgstr "ÄNDRA INFORMATION"
+
+msgid "CHANGE PASSWORD"
+msgstr "BYT LÖSENORD"
+
+msgid "Choose a Collection Slot"
+msgstr "Välj en upphämtningsplats"
+
+msgid "Choose preset:"
+msgstr "Välj förinställd:"
+
+msgid "Choose the first occurrence."
+msgstr "Välj den första händelsen."
+
+msgid "Click to add a description"
+msgstr "Klicka för att lägga till en beskrivning"
+
+msgid "Click to add an event name"
+msgstr "Klicka för att lägga till ett evenemangsnamn"
+
+msgid "Client"
+msgstr "Kund"
+
+msgid "Client contact:"
+msgstr "Kund kontakt:"
+
+msgid "Collapse"
+msgstr "Stäng"
+
+msgid "Collection Slot"
+msgstr "Upphämtningsplats"
+
+msgid "Collection Slot: Half-Time"
+msgstr "Hämtningsplats: Halvtid"
+
+msgid "Collection Slot: Interval"
+msgstr "Hämtningsplats: Paus"
+
+msgid "Collection Slot: Post-Game"
+msgstr "Hämtningsplats: Efter match"
+
+msgid "Collection Slot: Post-Show"
+msgstr "Hämtningsplats: Efter show"
+
+msgid "Collection Slot: Pre-Game"
+msgstr "Hämtningsplats: Före match"
+
+msgid "Collection Slot: Pre-Show"
+msgstr "Hämtningsplats: Före show"
+
+msgid "Collection Slot: Second-Interval"
+msgstr "Hämtningsplats: Andra pausen"
+
+msgid "Confirm"
+msgstr "Bekräfta"
+
+msgid "Contact email:"
+msgstr "Kontakt mail: "
+
+msgid "Contact no.:"
+msgstr "Kontakt nummer: "
+
+msgid "Create new menu"
+msgstr "Skapa ny meny"
+
+msgid "CREATE NEW MENU"
+msgstr "SKAPA NY MENY"
+
+msgid "Credit Card Name"
+msgstr "Kreditkortsnamn"
+
+msgid "Credit Card Number"
+msgstr "Kreditkortsnummer"
+
+msgid "CSV"
+msgstr "CSV"
+
+msgid "CUSTOM"
+msgstr "ANPASSAD"
+
+msgid "Customer"
+msgstr "Konsument"
+
+msgid "Customers"
+msgstr "Konsumenter"
+
+msgid "DAILY"
+msgstr "DAGLIG"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Date range"
+msgstr "Datumintervall"
+
+msgid "Date Range:"
+msgstr "Datumintervall"
+
+msgid "Date?"
+msgstr "Datum?"
+
+msgid "Date/Time"
+msgstr "Datum/Tid"
+
+msgid "Days"
+msgstr "Dagar"
+
+msgid "Days before the event"
+msgstr "Dagar innan eventet"
+
+msgid "days to prevent your account from being deactivated."
+msgstr "dagar att förhindra att ditt konto blir avaktiverat."
+
+msgid "DD/MM/YYYY"
+msgstr "DD/MM/ÅÅÅÅ"
+
+msgid "Default delivery time (minutes)"
+msgstr "Standard leveranstid (minuter)"
+
+msgid "Delete"
+msgstr "Ta bort"
+
+msgid "Delete this slot"
+msgstr "Ta bort denna plats"
+
+msgid "Delivery Areas"
+msgstr "Leveransområden"
+
+msgid "Delivery charge"
+msgstr "Leveranskostnad"
+
+msgid "Delivery Settings"
+msgstr "Leveransinställningar"
+
+msgid "Description"
+msgstr "Beskrivning"
+
+msgid "Discount"
+msgstr "Rabatt"
+
+msgid "Discount offered for delivery orders (%)"
+msgstr "Rabatt erbjuden för leveransbeställningar (%)"
+
+msgid "Done"
+msgstr "Klar"
+
+msgid "DOWNLOAD PDF"
+msgstr "LADDA NER PDF"
+
+msgid "Duplicate"
+msgstr "Kopiera"
+
+msgid "Duration:"
+msgstr "Varaktighet:"
+
+msgid "Edit"
+msgstr "Ändra"
+
+msgid "eg. \\\"NW1, NW2...\\\""
+msgstr "t.ex. \\\"NW1, NW2...\\\""
+
+msgid "Email address"
+msgstr "Mailadress"
+
+msgid "Email Address"
+msgstr "Mailadress"
+
+msgid "Email address for receiving venue alerts"
+msgstr "Mailadress för att få arena meddelanden"
+
+msgid "Enable delivery services"
+msgstr "Aktivera leveranstjänst"
+
+msgid "End Time"
+msgstr "Slut tid"
+
+msgid "Enter a name"
+msgstr "Ange ett namn"
+
+msgid "Enter a name for the slot"
+msgstr "Ange ett namn för platsen"
+
+msgid "Enter a number"
+msgstr "Ange ett nummer"
+
+msgid "Enter minutes?"
+msgstr "Ange minuter? "
+
+msgid "Event"
+msgstr "Evenemang"
+
+msgid "Event description:"
+msgstr "Evenemangsbeskrivning:"
+
+msgid "Event first occurrence:"
+msgstr "Evenemangets första gång "
+
+msgid "Event frequency:"
+msgstr "Evenemangets frekvens:"
+
+msgid "Event last occurrence:"
+msgstr "Evenemangets senaste förekomst:"
+
+msgid "Event name:"
+msgstr "Evenemangsnamn:"
+
+msgid "Events"
+msgstr "Evenemang"
+
+msgid "Events:"
+msgstr "Evenemang:"
+
+msgid "Expires"
+msgstr "Utgår"
+
+msgid "Export as..."
+msgstr "Exportera som..."
+
+msgid "First Name"
+msgstr "Förnamn"
+
+msgid "Free delivery for orders above"
+msgstr "Gratis leverans for beställningarna ovan"
+
+msgid "Generate report"
+msgstr "Skapa rapport"
+
+msgid "Group Booking Menus"
+msgstr "Menyer för gruppbokning"
+
+msgid "Group Booking Settings"
+msgstr "Inställningar för gruppbokning"
+
+msgid "Guests"
+msgstr "Gäster"
+
+msgid "Half-Time"
+msgstr "Halvtid"
+
+msgid "HH:MM"
+msgstr "HH:MM"
+
+msgid "Hours"
+msgstr "Timmar"
+
+msgid "How many days will your event occurs in days, hours and minutes?"
+msgstr "Hur lång tid varar ditt event i dagar, timmar och minuter? "
+
+msgid ""
+"If a booking has outstanding orders, the event organiser will be sent a "
+"reminder"
+msgstr ""
+"Om en bokning har utestående beställningar kommer arrangören att få en "
+"påminnelse"
+
+msgid ""
+"In addition to the fulfilment app, you can also receive email updates to "
+"notify when you have received a new order"
+msgstr ""
+"Du kan även ta emot uppdateringar via mail för att meddela när du har fått "
+"en ny beställning."
+
+msgid "In case of customer queries contact:"
+msgstr "Vid frågor från kunder, kontakta: "
+
+msgid "Interval"
+msgstr "Paus"
+
+msgid "Interval2"
+msgstr "Paus2"
+
+msgid "Inv no."
+msgstr "Inbjudan nr"
+
+msgid "is"
+msgstr "är"
+
+msgid "is not"
+msgstr "är inte"
+
+msgid "Item"
+msgstr "Produkt"
+
+msgid "Items"
+msgstr "Produkter"
+
+msgid "Know your customers"
+msgstr "Känn dina kunder"
+
+msgid "Last Name"
+msgstr "Efternamn"
+
+msgid "Live stream"
+msgstr "Live stream"
+
+msgid "Live Stream"
+msgstr "Live stream"
+
+msgid "Lock ordering page"
+msgstr "Lås beställningssida"
+
+msgid "Menu items"
+msgstr "Menyprodukter"
+
+msgid "Metrics"
+msgstr "Statistik"
+
+msgid "Minimum order value to qualify for delivery"
+msgstr "Lägsta ordervärde att få leverans"
+
+msgid "minutes"
+msgstr "minuter"
+
+msgid "Minutes"
+msgstr "Minuter"
+
+msgid "minutes and it"
+msgstr "minuter och det"
+
+msgid "MM"
+msgstr "MM"
+
+msgid "Mobile app"
+msgstr "Mobil app"
+
+msgid "MONTHLY"
+msgstr "MÅNADSVIS"
+
+msgid "Move this sloSlot"
+msgstr "Flytta denna plats"
+
+msgid "Move this slot"
+msgstr "Flytta denna plats"
+
+msgid "My Account"
+msgstr "Mitt konto"
+
+msgid "My Subscriptions"
+msgstr "Mina prenumerationer"
+
+msgid "Name"
+msgstr "Namn"
+
+msgid "Name on card"
+msgstr "Namn på kort"
+
+msgid "New event"
+msgstr "Nytt evenemang"
+
+msgid "New Password"
+msgstr "Nytt lösenord"
+
+msgid "Next"
+msgstr "Nästa"
+
+msgid "No"
+msgstr "Nej"
+
+msgid "No bookings at this period."
+msgstr "Inga bokningar för tillfället."
+
+msgid "No Data"
+msgstr "Ingen data"
+
+msgid "No, go back."
+msgstr "Nej, gå tillbaka."
+
+msgid "of"
+msgstr "av"
+
+msgid "Old Password"
+msgstr "Gammalt lösenord"
+
+msgid "ONCE"
+msgstr "EN GÅNG"
+
+msgid "Order"
+msgstr "Beställning"
+
+msgid "Order Rejection Alerts"
+msgstr "Avbokningsmeddelande"
+
+msgid "Order Status Alerts"
+msgstr "Orderstatus meddelande"
+
+msgid "Order Total"
+msgstr "Order total"
+
+msgid "Orders"
+msgstr "Beställningar"
+
+msgid "Orders per channel"
+msgstr "Beställningar per kanal"
+
+msgid "Orders placed"
+msgstr "Lagda ordrar"
+
+msgid "Outlet"
+msgstr "Butik"
+
+msgid "Outlet location:"
+msgstr "Butikens plats:"
+
+msgid "Outlet Name:"
+msgstr "Butikens namn:"
+
+msgid "package"
+msgstr "paket"
+
+msgid "Password"
+msgstr "Lösenord"
+
+msgid "Payment"
+msgstr "Betalning"
+
+msgid "Payment Methods"
+msgstr "Betalningssätt"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "Please add a credit card to resubscribe"
+msgstr "Lägg till ett kredigkort för att prenumerera"
+
+msgid "Please add a payment method to keep your account active"
+msgstr ""
+"Lägg till ett betalningssätt för att ditt konto ska fortsätta vara aktivt"
+
+msgid "Please choose a slot."
+msgstr "Ange en plats."
+
+msgid "Please enter a message and a short name or remove this notification."
+msgstr "Ange ett meddelande och ett kort namn eller ta bort denna notis."
+
+msgid "Please enter a valid number (e.g. 20.52)"
+msgstr "Ange ett giltigt nummer (t.ex. 20.52)"
+
+msgid "Please enter a valid number (e.g. 3.25)"
+msgstr "Ange ett giltigt nummer (t.ex. 3.25)"
+
+msgid "Please enter a valid telephone number"
+msgstr "Ange ett giltigt telefonnummer"
+
+msgid "Please enter a valid time interval in minutes (e.g. 20)"
+msgstr "Ange en giltigt tidsintervall i minuter (t.ex. 20)"
+
+msgid "Please enter both the notification and a short name."
+msgstr "Ange både notisen och ett kort namn."
+
+msgid "Please provide a discount percentage (between 0 and 100)"
+msgstr "Ange en rabattsats (mellan 0 och 100)"
+
+msgid "Please type a delivery zone (max 200chars)"
+msgstr "Ange ett leveransområde (max 200 tecken)"
+
+msgid "Please type a description (max 250chars)"
+msgstr "Ange en beskrivning (max 250 tecken)"
+
+msgid "Please type a valid email address"
+msgstr "Var vänlig och ange en giltig mailadress"
+
+msgid "Please type an event name (max 100 chars)"
+msgstr "Ange ett evenemangsnamn (max 100 tecken)"
+
+msgid "Please type an event name (max 100chars)"
+msgstr "Ange ett evenemangsnamn (max 100 tecken)"
+
+msgid "Please type your account name.(max 100chars)"
+msgstr "Ange ditt medlemsnamn (max 100 tecken)"
+
+msgid "Please type your first name.(max 100chars)"
+msgstr "Ange ditt förnamn (max 100 tecken)"
+
+msgid "Please type your last name.(max 100chars)"
+msgstr "Ange ditt efternamn (max 100 tecken)"
+
+msgid "Please update your card details within"
+msgstr "Uppdatera informationen om ditt bankkort inom"
+
+msgid "Please, setup the group booking settings first."
+msgstr "Var vänlig och gör inställningarna för gruppbokningar först."
+
+msgid "Post-Game"
+msgstr "Efter match"
+
+msgid "Post-Show"
+msgstr "Efter show"
+
+msgid "Postcode"
+msgstr "Postnummer"
+
+msgid "Pre-Game"
+msgstr "Före match"
+
+msgid "Pre-Show"
+msgstr "Före show"
+
+msgid "Preset customer notifications, sent by email and push alert"
+msgstr "Förinställda kundmeddelanden, skickade med mail och notis"
+
+msgid "Preset Notifications"
+msgstr "Förinställda notiser"
+
+msgid "Preset order rejection notifications, sent by email and push alert"
+msgstr "Förinställda avbokningsmeddelanden, skickade med mail och notis"
+
+msgid "Previous"
+msgstr "Föregående"
+
+msgid "PRINT BOOKING"
+msgstr "SKRIV UT BOKNING"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Promotion"
+msgstr "Kampanj"
+
+msgid "Quantity Ordered"
+msgstr "Antal beställda"
+
+msgid "Refresh"
+msgstr "Uppdatera"
+
+msgid "Reports"
+msgstr "Rapporter"
+
+msgid "Restaurant Name"
+msgstr "Restaurangens namn"
+
+msgid "RESUBSCRIBE"
+msgstr "PRENUMERERA"
+
+msgid "SAVE"
+msgstr "SPARA"
+
+msgid "Save changes"
+msgstr "Spara ändringar"
+
+msgid "SAVE CHANGES"
+msgstr "SPARA ÄNDRINGAR"
+
+msgid "SAVING..."
+msgstr "SPARAR..."
+
+msgid "Schedule"
+msgstr "Planera"
+
+msgid "Second-Interval"
+msgstr "Andra paus"
+
+msgid "Select the days on the calendar below."
+msgstr "Välj dagarna i kalendern nedan."
+
+msgid "Selected"
+msgstr "Valda"
+
+msgid "Short name"
+msgstr "Kort namn"
+
+msgid "Slot name"
+msgstr "Namn på plats"
+
+msgid "Sorry, but there's been an error processing your request."
+msgstr ""
+"Beklagar, det har uppkommit ett problem med att bearbeta din förfrågan."
+
+msgid "Start Date"
+msgstr "Start datum"
+
+msgid "Start Time"
+msgstr "Start tid"
+
+msgid "Start time:"
+msgstr "Start tid: "
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Stock"
+msgstr "Lager"
+
+msgid "Submit"
+msgstr "Lämna in"
+
+msgid "Subscriptions"
+msgstr "Prenumerationer"
+
+msgid "The event organiser can change their orders up until this time"
+msgstr "Arrangören kan ändra deras beställningar fram tills"
+
+msgid "the event start time"
+msgstr "evenemangets start tid"
+
+msgid "the event start time with a lead time of"
+msgstr "evenemangets starttid med en ledtid på "
+
+msgid "the event start time, it ends"
+msgstr "evenemangets start tid, det slutar"
+
+msgid ""
+"These show when you are open for ordering, such as performances or matches. "
+"They can be viewed from the front page of your app"
+msgstr ""
+"Dessa visas när du har öppet för beställning, som t.ex. vid föreställningar "
+"eller matcher. De kan visas från startsidan i din app"
+
+msgid "This slot is available up until"
+msgstr "Denna plats är tillgänglig tills"
+
+msgid "This slot starts"
+msgstr "Denna plats startar"
+
+msgid "Time"
+msgstr "Tid"
+
+msgid "Time?"
+msgstr "Tid?"
+
+msgid "to"
+msgstr "till"
+
+msgid "Tools"
+msgstr "Verktyg"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "TOTAL"
+msgstr "TOTAL"
+
+msgid "Total Spent"
+msgstr "Totalt spenderat"
+
+msgid "Town/City"
+msgstr "Stad"
+
+msgid "UPGRADE"
+msgstr "UPPGRADERA"
+
+msgid "Venue Alerts"
+msgstr "Arena notiser"
+
+msgid "Visible?"
+msgstr "Synlig?"
+
+msgid "Website"
+msgstr "Webbsida"
+
+msgid "WEEKLY"
+msgstr "VECKOVIS"
+
+msgid "What's your event duration?"
+msgstr "Hur länge varar ditt event?"
+
+msgid "with a lead time of"
+msgstr "med en ledtid på"
+
+msgid "YEARLY"
+msgstr "ÅRLIG"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "Yes, delete this event!"
+msgstr "Ja, ta bort detta evenemang!"
+
+msgid "Yes, delete this menu!"
+msgstr "Ja, ta bort menyn!"
+
+msgid "Yes, duplicate this menu!"
+msgstr "Ja, kopiera denna meny!"
+
+msgid "You are currently subscribed to the"
+msgstr "Du prenumererar för tillfället på"
+
+msgid "You have an outstanding payment!"
+msgstr "Du har en utestående betalning!"
+
+msgid ""
+"You have no active subscriptions, your account will not be billed at this "
+"time."
+msgstr ""
+"Du har inga aktiva prenumerationer, ditt konto kommer inte att faktureras i "
+"nuläget."
+
+msgid "Your account will be billed"
+msgstr "Ditt konto kommer att faktureras"
+
+msgid "Your account will be deactivated on"
+msgstr "Ditt konto kommer att bli avaktiverat på"
+
+msgid "Your events"
+msgstr "Dina evenemang"
+
+msgid "Your free trial of this subscription will end at midnight on"
+msgstr "din kostnadsfria testperiod av prenumerationen upphör midnatt den"
+
+msgid "Your subscription has been cancelled"
+msgstr "Din prenumeration har sagts upp"
+
+msgid "YY"
+msgstr "ÅÅ"

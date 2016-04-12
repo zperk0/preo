@@ -39,9 +39,19 @@ switch ($lang)
 		$strings = 'fr_FR';
 		break;
 
+	case 'fi':
+		$locale = 'fi_FI';
+		$strings = 'fi_FI';
+		break;
+
 	case 'nb':
 		$locale = 'nb_NO.utf8';
 		$strings = 'nb_NO';
+		break;
+
+	case 'sv':
+		$locale = 'sv_SV';
+		$strings = 'sv_SV';
 		break;
 
 	default:
