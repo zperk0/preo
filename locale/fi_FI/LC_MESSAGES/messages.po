@@ -4,12 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-12 22:58+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2016-04-12 23:14+0100\n"
 "Language: fi_FI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -463,8 +459,7 @@ msgid ""
 "We still need some more information. Don't forget to fill out the remaining "
 "days of the week!"
 msgstr ""
-"Tarvitsemme vielä hieman lisätietoa. Muista täyttää loppuviikon päivät.\n"
-"\n"
+"Tarvitsemme vielä hieman lisätietoa. Muista täyttää loppuviikon päivät."
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:62
 msgid "Where should this meal deal appear?"
@@ -1187,7 +1182,7 @@ msgid ""
 "settings page.</a>"
 msgstr ""
 "Henkilökuntamme on kohta sinuun yhteydessä.  Voit muokata tiliäsi <a href='/"
-"accountSettings#/subscription'>tästä.</a> \n"
+"accountSettings#/subscription'>tästä.</a>"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:223
 msgid ""
@@ -1228,7 +1223,7 @@ msgstr "Kirjaudu sisään Preoday valikkoon"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/override_vars.php:19
 #: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/dashboard_footer.php:12
-#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:30
+#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:32
 msgid "Preoday"
 msgstr "Preoday"
 
@@ -1632,7 +1627,7 @@ msgstr "Koko: 1080x1920"
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:110
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/outletConfig.php:88
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:215
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:548
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:550
 #: /Users/caio1/Workspace/preoday/webapp/inc/venue/selectVenue_content.php:19
 msgid "SAVE CHANGES"
 msgstr "TALLENNA MUUTOKSET"
@@ -1644,7 +1639,7 @@ msgstr "TALLENNA MUUTOKSET"
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:111
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/outletConfig.php:89
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:216
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:549
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:551
 #: /Users/caio1/Workspace/preoday/webapp/inc/venue/selectVenue_content.php:20
 msgid "SAVING..."
 msgstr "TALLENTAA..."
@@ -1893,8 +1888,7 @@ msgid ""
 msgstr ""
 "LIVE - Sovellus on näkyvissä ja sen kautta voi tehdä tilauksia<br/><br/>DEMO "
 "- Näkyvissä, mutta oikeita tilauksia ei voi tehdä<br/><br/>OFFLINE - "
-"Sovellus ei näy.\n"
-"\n"
+"Sovellus ei näy."
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:174
 msgid "OFFLINE"
@@ -1913,7 +1907,7 @@ msgid ""
 "Your 30 day free trial \tof this Premium Feature has now expired. Would you "
 "like to purchase it?"
 msgstr ""
-"30 päivän ilmainen kokeilujakso on nyt päättynyt. Haluaisitko ostaa sen? \n"
+"30 päivän ilmainen kokeilujakso on nyt päättynyt. Haluaisitko ostaa sen?"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:223
 msgid "YES PLEASE"
@@ -1962,8 +1956,7 @@ msgid ""
 "getting paid!"
 msgstr ""
 "Ennen käyttöönottoa sinun pitää liittää sovellus maksupalveluun tai "
-"aktivoida käteismaksut.\n"
-"\n"
+"aktivoida käteismaksut."
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/dashboard_content.php:255
 msgid "CONNECT"
@@ -2412,7 +2405,7 @@ msgid ""
 "customer will be charged the total set in Price."
 msgstr ""
 "Kupongin oikea arvo, jonka asiakas voi käyttää. Asiakasta veloitetaan "
-"hinnassa määritetty kokonaissumma. \n"
+"hinnassa määritetty kokonaissumma."
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:236
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:362
@@ -2471,7 +2464,7 @@ msgstr "LISÄÄ KUVA"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:512
 msgid "JPG, PNG (Max. file size 5mb)"
-msgstr "JPG, PNG (Max. file size 5mb)\n"
+msgstr "JPG, PNG (Max. file size 5mb)"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:558
 msgid "Custom options"
@@ -3004,27 +2997,27 @@ msgstr "Kirjoita postinumero"
 msgid "Language"
 msgstr "Kieli"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:511
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:513
 msgid "Please select your language"
 msgstr "Valitse kielesi"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:517
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:519
 msgid "Timezone"
 msgstr "Aikavyöhyke"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:525
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:527
 msgid "Please select your timezone"
 msgstr "Valitse aikavyöhykkeesi"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:531
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:533
 msgid "Currency"
 msgstr "Valuutta"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:537
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:539
 msgid "Please select your currency"
 msgstr "Valitse valuutta"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:568
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:570
 msgid "15&#37 done, keep going!"
 msgstr "15&#37 tehty, vielä muutama kysymys"
 
@@ -3054,8 +3047,7 @@ msgstr ""
 "LIVE - Sovellus on saatavilla My Order Appista ja sen kautta voi tehdä "
 "tilauksia<br/><br/>DEMO - Saatavilla my Order Appista, mutta oikeita "
 "tilauksia ei voi tehdä<br/><br/>OFFLINE - Sovellus ei satavilla My Order "
-"Appsista.\n"
-"\n"
+"Appsista."
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/finish/finish_content.php:33
 msgid "After you setup a payment method, you can send it into the world!"
@@ -3505,16 +3497,16 @@ msgid "Please choose a venue."
 msgstr "Valitse tapahtumapaikka"
 
 #: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/dashboard_footer.php:10
-#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:28
+#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:30
 #: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/dashboard_footer.php:10
-#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:28
+#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:30
 msgid "Legal Statement"
 msgstr "Ehdot"
 
 #: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/dashboard_footer.php:11
-#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:29
+#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:31
 #: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/dashboard_footer.php:11
-#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:29
+#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:31
 msgid "Privacy + Cookies"
 msgstr "Yksityisyysasetukset & Evästeet"
 
@@ -3543,15 +3535,25 @@ msgstr "Ranska"
 msgid "Norwegian"
 msgstr "Norja"
 
-#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:27
+#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:14
+#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:14
+msgid "Swedish"
+msgstr ""
+
+#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:15
+#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:15
+msgid "Finnish"
+msgstr ""
+
+#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:29
 msgid "info@food4uapp.co.uk"
 msgstr "info@food4uapp.co.uk"
 
-#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:30
+#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:32
 msgid "Food4u"
 msgstr "Food4u"
 
-#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:27
+#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:29
 msgid "support@preoday.com"
 msgstr "support@preoday.com"
 

@@ -507,6 +507,8 @@
 							<option <?if(isset($_SESSION['venue_language']) && substr($_SESSION['venue_language'], 0, strrpos($_SESSION['venue_language'], '-')) == "en"){?>selected="selected"<?}?> value="en">English</option>
 							<option <?if(isset($_SESSION['venue_language']) && substr($_SESSION['venue_language'], 0, strrpos($_SESSION['venue_language'], '-')) == "de"){?>selected="selected"<?}?> value="de">German</option>
 							<option <?if(isset($_SESSION['venue_language']) && substr($_SESSION['venue_language'], 0, strrpos($_SESSION['venue_language'], '-')) == "no"){?>selected="selected"<?}?> value="no">Norwegian</option>
+							<option <?if(isset($_SESSION['venue_language']) && substr($_SESSION['venue_language'], 0, strrpos($_SESSION['venue_language'], '-')) == "no"){?>selected="selected"<?}?> value="sv">Swedish</option>
+							<option <?if(isset($_SESSION['venue_language']) && substr($_SESSION['venue_language'], 0, strrpos($_SESSION['venue_language'], '-')) == "no"){?>selected="selected"<?}?> value="fi">Finnish</option>
 						</select>
 						<small class="error"><?echo _("Please select your language");?></small>
 				</div>

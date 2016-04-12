@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-12 22:58+0100\n"
+"POT-Creation-Date: 2016-04-12 23:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: sv_SV\n"
+"Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1230,7 +1230,7 @@ msgstr "Logga in till din Preoday kontrollpanel"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/override_vars.php:19
 #: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/dashboard_footer.php:12
-#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:30
+#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:32
 msgid "Preoday"
 msgstr "Preoday"
 
@@ -1636,7 +1636,7 @@ msgstr "Storlek: 1080x1920"
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:110
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/outletConfig.php:88
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:215
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:548
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:550
 #: /Users/caio1/Workspace/preoday/webapp/inc/venue/selectVenue_content.php:19
 msgid "SAVE CHANGES"
 msgstr "SPARA ÄNDRINGAR"
@@ -1648,7 +1648,7 @@ msgstr "SPARA ÄNDRINGAR"
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/nonEventConfig.php:111
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/outletConfig.php:89
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/userConfig.php:216
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:549
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:551
 #: /Users/caio1/Workspace/preoday/webapp/inc/venue/selectVenue_content.php:20
 msgid "SAVING..."
 msgstr "SPARAR..."
@@ -3013,27 +3013,27 @@ msgstr "Ange ett postnummer (max 45 tecken)"
 msgid "Language"
 msgstr "Språk"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:511
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:513
 msgid "Please select your language"
 msgstr "Ange ditt språk"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:517
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:519
 msgid "Timezone"
 msgstr "Tidszon"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:525
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:527
 msgid "Please select your timezone"
 msgstr "Ange din tidszon"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:531
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:533
 msgid "Currency"
 msgstr "Valuta"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:537
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:539
 msgid "Please select your currency"
 msgstr "Ange din valuta"
 
-#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:568
+#: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/venueConfig.php:570
 msgid "15&#37 done, keep going!"
 msgstr "15&#37 klar, fortsätt!"
 
@@ -3521,16 +3521,16 @@ msgid "Please choose a venue."
 msgstr "Välj en arena."
 
 #: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/dashboard_footer.php:10
-#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:28
+#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:30
 #: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/dashboard_footer.php:10
-#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:28
+#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:30
 msgid "Legal Statement"
 msgstr "Enligt lag"
 
 #: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/dashboard_footer.php:11
-#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:29
+#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:31
 #: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/dashboard_footer.php:11
-#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:29
+#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:31
 msgid "Privacy + Cookies"
 msgstr "Privat + cookies"
 
@@ -3559,15 +3559,25 @@ msgstr "Franska"
 msgid "Norwegian"
 msgstr "Norska"
 
-#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:27
+#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:14
+#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:14
+msgid "Swedish"
+msgstr ""
+
+#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:15
+#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:15
+msgid "Finnish"
+msgstr ""
+
+#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:29
 msgid "info@food4uapp.co.uk"
 msgstr "info@food4uapp.co.uk"
 
-#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:30
+#: /Users/caio1/Workspace/preoday/webapp/overrides/food4u/regular_footer.php:32
 msgid "Food4u"
 msgstr "Food4u"
 
-#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:27
+#: /Users/caio1/Workspace/preoday/webapp/overrides/preoday/regular_footer.php:29
 msgid "support@preoday.com"
 msgstr "support@preoday.com"
 

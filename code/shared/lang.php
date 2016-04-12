@@ -50,8 +50,8 @@ switch ($lang)
 		break;
 
 	case 'sv':
-		$locale = 'sv_SV';
-		$strings = 'sv_SV';
+		$locale = 'sv_SE';
+		$strings = 'sv_SE';
 		break;
 
 	default:
