@@ -1,4 +1,4 @@
-"Language: sv_SV\n"
+"Language: sv_SE\n"
 msgid ""
 msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
