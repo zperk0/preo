@@ -60,7 +60,7 @@
 	$vPostVoucher = $_POST['vPostVoucher'];
 	protect($vPostVoucher);
 
-	
+
 
 	$vDiscount = formatPercentage($_POST['vDiscount']);
 	protect($vDiscount);
@@ -119,7 +119,7 @@
 	if($vEvent) $_SESSION['venue_eventFlag'] = 1;
 	else $_SESSION['venue_eventFlag'] = 0;
 
-	if(isset($_SESSION['venue_edit_on']) && $_SESSION['venue_edit_on'])
+	if(!$_GET['skipUser'])
 	{
 		$venueCurlResult = callAPI('PATCH', $apiURL."venues/".$_SESSION['venue_id'], $jsonData, $apiAuth);
 
