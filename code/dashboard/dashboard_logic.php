@@ -12,8 +12,12 @@
 	$_SESSION['dashboardFlag']=0;
 
 	//ROLE TEST
-	if( !isset($_SESSION['user_role']) && isset($_SESSION['account_id']) )
+	if( !isset($_SESSION['user_role']) || (!$_SESSION['user_role']) )
 	{
+
+		if (!isset($_SESSION['account_id'])){
+				header("location:".$_SESSION['path'].'/logout'); exit();
+		}
 		// Get the user role from the account
 		// we use the user's token
 		$apiAuth = "PreoDay ".$_SESSION['token']; //we need to add "PreoDay ". to user tokens
@@ -35,7 +39,11 @@
 		}
 	}
 
-	if( !isset($_SESSION['user_role']) || ($_SESSION['user_role'] != 'OWNER' && $_SESSION['user_role'] != 'ADMIN') )
+	if (!isset($_SESSION['user_role'])){
+			header("location:".$_SESSION['path'].'/logout'); exit();
+	}
+
+	if(($_SESSION['user_role'] != 'OWNER' && $_SESSION['user_role'] != 'ADMIN') )
 	{
 			$result = getCurrentlyUserRole();
 		  if ( isset($result['status']) && $result['status'] == 403 ) {
@@ -44,7 +52,7 @@
 			exit;
 		  }
 
-		  header("location:".$_SESSION['path'].'/switch'); exit();
+		  header("location:".$_SESSION['path'].'/logout'); exit();
 	}
 
 
