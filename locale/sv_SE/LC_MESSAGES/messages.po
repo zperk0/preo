@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-12 23:14+0100\n"
+"POT-Creation-Date: 2016-04-25 13:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -436,8 +436,9 @@ msgid "Unselect all menus"
 msgstr "Avmarkera alla menyer"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:55
-msgid "Select menu("
-msgstr "Välj meny("
+#, fuzzy
+msgid "Select menu(s) for this outlet"
+msgstr "Ja, ta bort den här butiken!"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:56
 msgid "# of # selected"
@@ -763,7 +764,8 @@ msgid "Time of Orders Placed"
 msgstr "Tid för gjorda beställningar"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:126
-msgid "Average order value (are"
+#, fuzzy
+msgid "Average order value (area)"
 msgstr "Genomsnittligt order värde (är"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:127
@@ -775,7 +777,8 @@ msgid "Returning"
 msgstr "Återkommande"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:129
-msgid "Customers (Pi"
+#, fuzzy
+msgid "Customers (Pie)"
 msgstr "Kunder (Pi"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:130
@@ -783,7 +786,8 @@ msgid "Total"
 msgstr "Total"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:131
-msgid "Customers (Ba"
+#, fuzzy
+msgid "Customers (Bar)"
 msgstr "Kunder (Ba"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:132
@@ -2432,12 +2436,14 @@ msgstr "Valfritt tilläggsinfo"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:240
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:366
-msgid "Aditional info displayed in the footer of the eVoucher (Max 150 chars)"
+#, fuzzy
+msgid "Aditional info displayed in the footer of the eVoucher (Max 1000 chars)"
 msgstr "Tilläggsinfo visas i sidfoten på e-kupongen (Max 150 tecken)"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:241
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:367
-msgid "Max 150 chars"
+#, fuzzy
+msgid "Max 1000 chars"
 msgstr "Max 150 tecken"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:245
@@ -3588,3 +3594,6 @@ msgid ""
 msgstr ""
 "Du har inte behörighet att se panelen. <br/> Om du tror att detta inte "
 "stämmer kontakta din systemadministratör"
+
+#~ msgid "Select menu("
+#~ msgstr "Välj meny("

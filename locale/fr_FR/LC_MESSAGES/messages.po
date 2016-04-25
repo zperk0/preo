@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Preoday Webapp\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-12 23:14+0100\n"
+"POT-Creation-Date: 2016-04-25 13:46+0100\n"
 "PO-Revision-Date: 2014-05-12 23:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -453,8 +453,9 @@ msgid "Unselect all menus"
 msgstr "Désélectionner tous les menus"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:55
-msgid "Select menu("
-msgstr "Sélectionner tous les menus("
+#, fuzzy
+msgid "Select menu(s) for this outlet"
+msgstr "Sélectionner des menu pour cet point du vente"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:56
 msgid "# of # selected"
@@ -774,7 +775,7 @@ msgid "Time of Orders Placed"
 msgstr "Réarranger"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:126
-msgid "Average order value (are"
+msgid "Average order value (area)"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:127
@@ -786,7 +787,8 @@ msgid "Returning"
 msgstr "Utilisateurs récurrents"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:129
-msgid "Customers (Pi"
+#, fuzzy
+msgid "Customers (Pie)"
 msgstr "Nouveaux utilisateurs"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:130
@@ -794,7 +796,8 @@ msgid "Total"
 msgstr "Réarranger"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:131
-msgid "Customers (Ba"
+#, fuzzy
+msgid "Customers (Bar)"
 msgstr "Nouveaux utilisateurs"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:132
@@ -2440,12 +2443,12 @@ msgstr "Description optionnelle"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:240
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:366
-msgid "Aditional info displayed in the footer of the eVoucher (Max 150 chars)"
+msgid "Aditional info displayed in the footer of the eVoucher (Max 1000 chars)"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:241
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:367
-msgid "Max 150 chars"
+msgid "Max 1000 chars"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:245
@@ -3592,6 +3595,9 @@ msgid ""
 "a mistake please contact your account's administrator."
 msgstr ""
 
+#~ msgid "Select menu("
+#~ msgstr "Sélectionner tous les menus("
+
 #~ msgid "User configuration has been saved!"
 #~ msgstr "Les configurations d'utilisateur ont bien été enregistrées !"
 
@@ -3610,9 +3616,6 @@ msgstr ""
 
 #~ msgid "Venue Title"
 #~ msgstr "Titre du lieu"
-
-#~ msgid "Select venue for use webapp"
-#~ msgstr "Sélectionner des menu pour cet point du vente"
 
 #, fuzzy
 #~ msgid "Please choose a promotion"

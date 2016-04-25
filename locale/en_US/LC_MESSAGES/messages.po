@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PreoDay\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-12 23:14+0100\n"
+"POT-Creation-Date: 2016-04-25 13:46+0100\n"
 "PO-Revision-Date: 2013-09-11 18:08-0000\n"
 "Last-Translator: Ashish Mehra <ashish@webfire.co.uk>\n"
 "Language-Team: Webfire <ashish@webfire.co.uk>\n"
@@ -429,7 +429,7 @@ msgid "Unselect all menus"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:55
-msgid "Select menu("
+msgid "Select menu(s) for this outlet"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:56
@@ -738,7 +738,7 @@ msgid "Time of Orders Placed"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:126
-msgid "Average order value (are"
+msgid "Average order value (area)"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:127
@@ -750,7 +750,7 @@ msgid "Returning"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:129
-msgid "Customers (Pi"
+msgid "Customers (Pie)"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:130
@@ -758,7 +758,7 @@ msgid "Total"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:131
-msgid "Customers (Ba"
+msgid "Customers (Bar)"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:132
@@ -2360,12 +2360,12 @@ msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:240
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:366
-msgid "Aditional info displayed in the footer of the eVoucher (Max 150 chars)"
+msgid "Aditional info displayed in the footer of the eVoucher (Max 1000 chars)"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:241
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:367
-msgid "Max 150 chars"
+msgid "Max 1000 chars"
 msgstr ""
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:245

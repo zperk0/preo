@@ -295,7 +295,7 @@ module.exports = function(grunt) {
         for (var i=0;i<allJs.length;i++){
           var filePath = allJs[i];
           var data = fs.readFileSync(filePath, {encoding: 'utf-8'})
-          var regex = /_tr\(.*?\)/g;
+          var regex = /_tr\(.*?['"]\)/g;
           var result;
           while ( (result = regex.exec(data)) ) {
                 var str =result[0].slice(5,-2);

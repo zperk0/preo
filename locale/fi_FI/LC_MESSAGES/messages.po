@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-12 23:14+0100\n"
+"POT-Creation-Date: 2016-04-25 13:46+0100\n"
 "Language: fi_FI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -427,8 +427,9 @@ msgid "Unselect all menus"
 msgstr "Poista valikkojen valinta"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:55
-msgid "Select menu("
-msgstr "Valitse menu("
+#, fuzzy
+msgid "Select menu(s) for this outlet"
+msgstr "Kyllä. Poista tämä myyntipiste!"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:56
 msgid "# of # selected"
@@ -750,7 +751,8 @@ msgid "Time of Orders Placed"
 msgstr "Tilausten aika"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:126
-msgid "Average order value (are"
+#, fuzzy
+msgid "Average order value (area)"
 msgstr "Tilausten keskiarvo"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:127
@@ -762,7 +764,8 @@ msgid "Returning"
 msgstr "Vanha"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:129
-msgid "Customers (Pi"
+#, fuzzy
+msgid "Customers (Pie)"
 msgstr "Asiakkaat"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:130
@@ -770,7 +773,8 @@ msgid "Total"
 msgstr "Yhteensä"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:131
-msgid "Customers (Ba"
+#, fuzzy
+msgid "Customers (Bar)"
 msgstr "Asiakkaat"
 
 #: /Users/caio1/Workspace/preoday/webapp/code/shared/js_strings.php:132
@@ -2419,12 +2423,14 @@ msgstr "Lisätietoa..."
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:240
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:366
-msgid "Aditional info displayed in the footer of the eVoucher (Max 150 chars)"
+#, fuzzy
+msgid "Aditional info displayed in the footer of the eVoucher (Max 1000 chars)"
 msgstr "Lisätieto kupongin alaosaan (enintään 150 merkkiä)"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:241
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:367
-msgid "Max 150 chars"
+#, fuzzy
+msgid "Max 1000 chars"
 msgstr "Enintään 150 merkkiä"
 
 #: /Users/caio1/Workspace/preoday/webapp/inc/dashboard/menuConfig.php:245
@@ -3562,3 +3568,6 @@ msgid ""
 "You do not have permission to view the dashboard.<br/> If you think this is "
 "a mistake please contact your account's administrator."
 msgstr "Tunnuksellasi ei ole oikeutta kojelautaan."
+
+#~ msgid "Select menu("
+#~ msgstr "Valitse menu("
