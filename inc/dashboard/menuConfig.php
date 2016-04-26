@@ -235,11 +235,30 @@
 								<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("The real value of the voucher the customer will be able to redeem. The customer will be charged the total set in Price.");?>"></i>
 								<small class="error priceError"><?echo _("Value?");?></small>
 						</td>
+						<td class="menuTDHasMessage">
+							<select class="menuField noEnterSubmit inline itemMenuHasMessage" name="iHasMessage[section0][0]">
+								<option value="-1" title="<?echo _("Auto");?>" selected><?echo _("Auto");?></option>
+								<option value="1" title="<?echo _("Yes");?>"><?echo _("Yes");?></option>
+								<option value="0" title="<?echo _("No");?>"><?echo _("No");?></option>
+							</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Selects wether the user can enter a custom message in this voucher. AUTO: yes for e-vouchers, no for post vouchers");?>"></i>
+							<small class="error"><?echo _("Choose option");?></small>
+						</td>
+						<td class="menuTDVoucherType">
+							<select class="menuField noEnterSubmit inline itemMenuVoucherType" name="iVoucherType[section0][0]">
+								<option value="ALL" title="<?echo _("Any");?>" selected><?echo _("Any");?></option>
+								<option value="EMAIL" title="<?echo _("E-Voucher Only");?>"><?echo _("E-voucher Only");?></option>
+								<option value="POST" title="<?echo _("Post Voucher Only");?>"><?echo _("Post Voucher Only");?></option>
+							</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Selects wether this voucher is an E-Voucher only, a Post voucher only, or ANY to let the customer decide how he wants to receive it");?>"></i>
+							<small class="error"><?echo _("Choose option");?></small>
+						</td>
+					</tr>
+					<tr class="menuEdit hide" >
 						<td class="menuTDAditionalInfo">
 								<input type="text" name="iInfo[section0][0]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional Additional info...") ?>" pattern="^.{0,999}$"/>
 								<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("Aditional info displayed in the footer of the eVoucher (Max 1000 chars)");?>"></i>
 								<small class="error"><?echo _("Max 1000 chars");?></small>
 						</td>
+					</tr>
 					<? } ?>
 					<tr class="menuEdit xtraModTR">
 						<td class="xtraModTD"><h6><button type="button" class="xtraOpt" title="<?echo _("Eg. Toppings, Sizes, Exras, etc");?>"><i class="pd-add"></i></button> <?echo _("Add an option category to this item <small>(optional)</small>");?> </h6></td>
@@ -361,11 +380,30 @@
 													<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("The real value of the voucher the customer will be able to redeem. The customer will be charged the total set in Price.");?>"></i>
 													<small class="error priceError"><?echo _("Value?");?></small>
 											</td>
-											<td class="menuTDAditionalInfo">
-													<input type="text" name="iInfo[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional Additional info...") ?>" pattern="^.{0,999}$" <?if($item['additionalInfo']){?>value="<?echo $item['additionalInfo'];}?>"/>
-													<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("Aditional info displayed in the footer of the eVoucher (Max 1000 chars)");?>"></i>
-													<small class="error"><?echo _("Max 1000 chars");?></small>
+											<td class="menuTDHasMessage">
+												<select class="menuField noEnterSubmit inline itemMenuHasMessage" name="iHasMessage[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]">
+													<option value="-1" title="<?echo _("Auto");?>" <? if (is_null($item['hasMessage'])) { ?> selected="selected" <? } ?>><?echo _("Auto");?></option>
+													<option value="1" title="<?echo _("Yes");?>" <? if ($item['hasMessage'] === 1) { ?> selected="selected" <? } ?> ><?echo _("Yes");?></option>
+													<option value="0" title="<?echo _("No");?>" <? if ($item['hasMessage'] === 0) { ?> selected="selected" <? } ?>><?echo _("No");?></option>
+												</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Selects wether the user can enter a custom message in this voucher. AUTO: yes for e-vouchers, no for post vouchers");?>"></i>
+												<small class="error"><?echo _("Choose option");?></small>
 											</td>
+											<td class="menuTDVoucherType">
+												<select class="menuField noEnterSubmit inline itemMenuVoucherType" name="iVoucherType[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]">
+													<option value="ALL" title="<?echo _("Any");?>" <? if ($item['voucherType'] == 'ALL') { ?> selected="selected" <? } ?> ><?echo _("Any");?></option>
+													<option value="EMAIL" title="<?echo _("E-Voucher Only");?>" <? if ($item['voucherType'] == 'EMAIL') { ?> selected="selected" <? } ?>><?echo _("E-voucher Only");?></option>
+													<option value="POST" title="<?echo _("Post Voucher Only");?>" <? if ($item['voucherType'] == 'POST') { ?> selected="selected" <? } ?>><?echo _("Post Voucher Only");?></option>
+												</select>&nbsp;<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom" title="<?echo _("Selects wether this voucher is an E-Voucher only, a Post voucher only, or ANY to let the customer decide how he wants to receive it");?>"></i>
+												<small class="error"><?echo _("Choose option");?></small>
+											</td>
+										</tr>
+										<tr class="savedInput hide editOnly">
+											<td class="menuTDAdditionalInfo">
+												<input type="text" name="iInfo[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" class="menuField noEnterSubmit" placeholder="<?echo _("Optional Additional info...") ?>" pattern="^.{0,999}$" <?if($item['additionalInfo']){?>value="<?echo $item['additionalInfo'];}?>"/>
+												<i data-tooltip class="icon-question-sign preoTips has-tip tip-bottom absolute" title="<?echo _("Aditional info displayed in the footer of the eVoucher (Max 1000 chars)");?>"></i>
+												<small class="error"><?echo _("Max 1000 chars");?></small>
+											</td>
+										</tr>
 										<? } ?>
 									<?if(isset($item['modifiers']) && count($item['modifiers'])){
 										foreach($item['modifiers'] as $modiKey=>$modifier){ ?>

@@ -277,7 +277,8 @@
 			$data['visible'] 		= $item['visible'];
 			$data['additionalInfo'] 		= $item['additionalInfo'];
 			$data['value'] 		= $item['value'];
-
+			$data['hasMessage'] 		= $item['hasMessage'];
+			$data['voucherType'] 		= $item['voucherType'];
 			$data['menuId'] 		= $menu_id;
 			$data['sectionId'] 		= $section_id;
 			$data['position'] 		= $item['position'];

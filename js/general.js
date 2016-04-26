@@ -1498,6 +1498,15 @@ $(document).ready(function() {
 			//remove dummy modifier as we add it later manually :)
 			$newTab.find('.subHeaderTR').remove();
 			$newTab.find('.optionTR').remove();
+			$newTab.find(".ui-multiselect").remove();
+			$newTab.find('select').each(function(){ //reinitialize to get the right width
+				$(this).multiselect({
+					   multiple: false,
+					   header: false,
+					   noneSelectedText: _tr("Pick an option type"),
+					   selectedList: 1
+					});
+			});
 		}
 			$newTab.addClass('table'+section);
 
@@ -1717,7 +1726,7 @@ $(document).ready(function() {
 		$curItem.css('background', '#fafafa');
 		$curItem.css('box-shadow', 'rgba(70, 83, 93, 0.54902) 0px 0px 6px inset');
 		$curItem.css('max-width', '100%');
-		$curItem.find('select[name^=iModType]').each(function(){ //reinitialize to get the right width
+		$curItem.find('select').each(function(){ //reinitialize to get the right width
 			$(this).multiselect({
 				   multiple: false,
 				   header: false,
@@ -2099,7 +2108,21 @@ $(document).ready(function() {
 	$(".itemMenuSingleSelect").multiselect({
 	   multiple: false,
 	   header: false,
-	   noneSelectedText: "Pick an option type",
+	   noneSelectedText: _tr("Pick an option type"),
+	   selectedList: 1
+	});
+
+	$(".itemMenuVoucherType").multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: _tr("Voucher Type"),
+	   selectedList: 1
+	});
+
+	$(".itemMenuHasMessage").multiselect({
+	   multiple: false,
+	   header: false,
+	   noneSelectedText: _tr("Custom Message"),
 	   selectedList: 1
 	});
 
@@ -2377,7 +2400,6 @@ $(document).ready(function() {
 							menu['sections'][secCounter]['items'][itemCounter] = {};
 
 							var menuSectionOneNivelItem = menuSecionOneNivel['items'][itemCounter];
-
 							menuSectionOneNivelItem['id'] 			= iID.replace(/item/,'');
 							menuSectionOneNivelItem['name'] 			= $tableSectionUnique.find('input[name^=iName]').val();
 							menuSectionOneNivelItem['description']	= $tableSectionUnique.find('textarea[name^=iDesc]').val();
@@ -2387,6 +2409,11 @@ $(document).ready(function() {
 								menuSectionOneNivelItem['price'] 	= format_price($inputIPrice.val());
 							menuSectionOneNivelItem['visible'] 		= $tableSectionUnique.find('input[name^=iVisi]:checked').val();
 							menuSectionOneNivelItem['value']	= $tableSectionUnique.find('input[name^=iValue]').val();
+							menuSectionOneNivelItem['hasMessage']	= $tableSectionUnique.find('select[name^=iHasMessage]').val();
+							if (menuSectionOneNivelItem['hasMessage'] == -1) {
+								menuSectionOneNivelItem['hasMessage'] = null;
+							}
+							menuSectionOneNivelItem['voucherType']	= $tableSectionUnique.find('select[name^=iVoucherType]').val();
 							menuSectionOneNivelItem['additionalInfo']	= $tableSectionUnique.find('input[name^=iInfo]').val();
 							menuSectionOneNivelItem['quantity'] 		= 0;
 							menuSectionOneNivelItem['position'] 		= parseInt(itemCounter);
