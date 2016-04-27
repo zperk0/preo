@@ -2413,7 +2413,11 @@ $(document).ready(function() {
 							if (menuSectionOneNivelItem['hasMessage'] == -1) {
 								menuSectionOneNivelItem['hasMessage'] = null;
 							}
-							menuSectionOneNivelItem['voucherType']	= $tableSectionUnique.find('select[name^=iVoucherType]').val();
+
+							var voucherType = $tableSectionUnique.find('select[name^=iVoucherType]').val();
+							if (voucherType){
+								menuSectionOneNivelItem['voucherType']	= voucherType;
+							}
 							menuSectionOneNivelItem['additionalInfo']	= $tableSectionUnique.find('input[name^=iInfo]').val();
 							menuSectionOneNivelItem['quantity'] 		= 0;
 							menuSectionOneNivelItem['position'] 		= parseInt(itemCounter);
