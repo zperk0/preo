@@ -179,7 +179,8 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
         if (events.length > 1) {
             result.nameOfFile = _tr("Orders Report") + ' (' + $scope.form.start_date.format("DD-MM-YY") + "-" + $scope.form.end_date.format("DD-MM-YY") + ')';
         } else {
-            result.nameOfFile = events[0].name;
+            result.nameOfFile = events[0].name.replace('"','\\"');
+            result.nameOfFile = result.nameOfFile.replace('/','');
         }
 
         return result;
@@ -359,6 +360,7 @@ angular.module('kyc.controllers').controller('EventsCtrl', ['$scope', '$location
             result.title = _tr("Orders By Events");
         } else {
             result.title = events[0].name.replace('"','\\"');
+            result.title = result.title.replace('/','');
         }
 
         $scope.currentAction = '';
