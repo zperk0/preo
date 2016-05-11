@@ -278,6 +278,9 @@
 			$data['additionalInfo'] 		= $item['additionalInfo'];
 			$data['value'] 		= $item['value'];
 			$data['hasMessage'] 		= $item['hasMessage'];
+			$data['plu'] 		= $item['plu'];
+			$data['externalId'] 		= $item['externalId'];
+			// $data['url'] 		= $item['url'];
 			if (isset($item['voucherType'])){
 				$data['voucherType'] 		= $item['voucherType'];
 			}

@@ -2400,8 +2400,18 @@ $(document).ready(function() {
 							menu['sections'][secCounter]['items'][itemCounter] = {};
 
 							var menuSectionOneNivelItem = menuSecionOneNivel['items'][itemCounter];
+							var $iNameInputItem = $tableSectionUnique.find('input[name^=iName]');
 							menuSectionOneNivelItem['id'] 			= iID.replace(/item/,'');
-							menuSectionOneNivelItem['name'] 			= $tableSectionUnique.find('input[name^=iName]').val();
+							menuSectionOneNivelItem['name'] 			= $iNameInputItem.val();
+
+							if ($iNameInputItem.data('item-plu')) {
+								menuSectionOneNivelItem['plu'] = $iNameInputItem.data('item-plu');
+							}
+
+							if ($iNameInputItem.data('item-externalid')) {
+								menuSectionOneNivelItem['externalId'] = $iNameInputItem.data('item-externalid');
+							}
+
 							menuSectionOneNivelItem['description']	= $tableSectionUnique.find('textarea[name^=iDesc]').val();
 							if($inputIPrice.val() == '')
 								menuSectionOneNivelItem['price'] 	= 0;

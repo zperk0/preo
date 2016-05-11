@@ -327,7 +327,11 @@
 								<tbody>
 									<tr class="savedInput itemTR">
 										<td class="menuTDName">
-											<input type="text" name="iName[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]" data-insert="false" data-edit="false" data-delete="false" data-id="item<?echo $item['id'];?>" <?if($item['mealDeal']){?>data-md="true"<?}?>  <?if(in_array($item['id'],$mealDealItemArray)){?>data-mdi="true"<?}else{?>data-mdi="false"<?}?> class="menuField noEnterSubmit" value="<?echo htmlentities($item['name'], ENT_QUOTES);?>" required readonly="readonly" pattern="^.{0,99}$"/>
+											<input type="text" name="iName[section<?echo ($sKey+1);?>][<?echo ($iKey+1);?>]"
+											data-item-plu="<?php echo $item['plu'] ?>"
+											data-item-externalId="<?php echo $item['externalId'] ?>"
+											data-insert="false" 
+											data-edit="false" data-delete="false" data-id="item<?echo $item['id'];?>" <?if($item['mealDeal']){?>data-md="true"<?}?>  <?if(in_array($item['id'],$mealDealItemArray)){?>data-mdi="true"<?}else{?>data-mdi="false"<?}?> class="menuField noEnterSubmit" value="<?echo htmlentities($item['name'], ENT_QUOTES);?>" required readonly="readonly" pattern="^.{0,99}$"/>
 											<small class="error"><?echo _("Please type an item name (max 100chars)");?></small>
 										</td>
 										<td class="menuTDDesc">
