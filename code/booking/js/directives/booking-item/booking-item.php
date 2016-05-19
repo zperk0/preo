@@ -15,11 +15,12 @@
 		<span>{{booking.people}}</span>
 	</td>
 	<td class="booking-page">
-		<span>
+		<span ng-if="!booking.cancelled">
 			<a href="{{ getWebOrdersUrl(booking) }}" target='_blank'>link</a>
 		</span>
 	</td>
 	<td class="booking-orders">
-		<span>{{booking.ordersPlaced || 0}} <span translate>of</span> {{booking.people}}</span>
+		<span ng-if="!booking.cancelled">{{booking.ordersPlaced || 0}} <span translate>of</span> {{booking.people}}</span>
+		<span ng-if="booking.cancelled" class="booking-cancelled">cancelled</span>
 	</td>
 </tr>

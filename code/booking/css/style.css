@@ -238,3 +238,8 @@
 	display: block;
 	text-align: center;
 }
+
+
+.booking-cancelled {
+ color: #f30f0d;
+}
