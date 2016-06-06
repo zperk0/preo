@@ -1,0 +1,12 @@
+
+export default class venueSettingsController {
+  static get UID(){
+    return "venueSettingsController";
+  }
+
+  /* @ngInject */
+  constructor() {
+    'ngInject';
+
+  }
+}

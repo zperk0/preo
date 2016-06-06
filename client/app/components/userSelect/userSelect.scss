@@ -1,0 +1,16 @@
+@import '../../shared/styles/variables';
+
+.user-select{
+  width:$widthUserSelect;
+  overflow: hidden;
+
+  &>md-menu {
+      &>button{
+        max-width: 100%;
+          &>span{
+            float:left;
+            text-transform: none;
+          }
+      }
+  }
+}

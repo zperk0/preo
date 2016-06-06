@@ -1,0 +1,41 @@
+@import './shared/styles/variables';
+@import './shared/styles/material';
+@import './shared/styles/reset';
+@import './shared/styles/roboto';
+
+
+* {
+  box-sizing: border-box;
+  font-family: Roboto;
+  -webkit-font-smoothing: antialiased;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+html{
+  min-width: $paddedContentWidth;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.maxHeightScreen{
+  height:100vh;
+  &.minus-toolbar{
+    height: $heightScreen;
+  }
+}
+
+.ellipsis{
+  text-overflow:ellipsis;
+  max-width: 90%;
+  overflow: hidden;
+  white-space:no-wrap;
+}
+
+/** 1024 + 16px scrollbar **/
+
+@media (max-width: 1280px) {
+  @import './shared/styles/responsive/1024-1280';
+}

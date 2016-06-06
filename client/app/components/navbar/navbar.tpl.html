@@ -1,0 +1,29 @@
+  <md-sidenav
+      class="md-sidenav-left"
+      md-component-id="left"
+      md-is-locked-open="true"
+      md-disable-backdrop
+      md-whiteframe="5"
+      layout="column"
+      ng-class="{expanded:vm.$expanded}">
+      <md-list flex>
+        <md-list-item ng-repeat="item in vm.menu" path-selected="{{item.id}}" layout="column" ng-class="{expanded:item.$expanded}">
+          <md-button layout="row" layout-align="center center" ng-click="vm.handleClick(item)" title="{{item.name}}" aria-label="{{item.name}}">
+            <icon>{{item.icon}}</icon>
+            <span flex>{{item.name}}</span>
+            <icon ng-if="vm.$expanded && item.children.length" flex="10">{{ item.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
+          </md-button>
+          <div layout="column" layout-align="start center" class='children' ng-if="item.children.length">
+              <md-button ng-repeat="child in item.children" layout="row" layout-align="start center" ng-click="vm.handleClick(child, item)" title="{{child.name}}" aria-label="{{child.name}}"  path-selected="{{child.id}}">
+                <span  flex>{{child.name}}</span>
+            </md-button>
+          </div>
+        </md-list-item>
+      </md-list>
+      <md-divider></md-divider>
+      <div class="close-menu">
+        <md-button class="md-icon-button" ng-click="vm.toggleMenu()">
+            <icon>{{ vm.$expanded ? 'arrow_back' : 'arrow_forward' }}</icon>
+        </md-button>
+      </div>
+  </md-sidenav>

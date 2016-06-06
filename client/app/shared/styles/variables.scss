@@ -1,0 +1,20 @@
+@import 'mixins.scss';
+
+/**************** TOOLBAR ****************/
+$heightToolbar:64px;
+$widthVenueSelect: 320px;
+$widthUserSelect: 286px;
+$borderToolbar: 1px solid #fafafa;
+
+
+/**************** Navbar ****************/
+
+$colorSelected:#ffab00;
+$borderSelected: 5px solid $colorSelected;
+
+/**************** GLOBAL ****************/
+
+$paddedContentWidth: 1024px;
+$fontSizeButton:14px;
+
+$heightScreen:calc(100vh - #{$heightToolbar});

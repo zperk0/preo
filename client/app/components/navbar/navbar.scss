@@ -1,0 +1,79 @@
+@import '../../shared/styles/variables';
+
+.md-sidenav-left{
+  transition:width 0.2s linear;
+
+  span{
+    transition:max-width 0.2s linear;
+  }
+
+  &:not(.expanded){
+    width:72px;
+    .close-menu{
+      text-align: center;
+    }
+    span{
+      max-width:0;
+      overflow: hidden;
+    }
+    md-list-item{
+      padding-left: 15px;
+    }
+  }
+
+  button {
+    text-transform: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .close-menu{
+    transition:text-align 0.2s linear;
+    text-align: right;
+  }
+  md-list{
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  md-list-item{
+
+    & > button{
+      border-left: 5px solid transparent;
+      width: 100%;
+      text-align: left;
+      margin:0;
+      padding: 8px 8px 8px 16px;
+      &> span{
+        padding-left:24px;
+      }
+    }
+
+    &.expanded{
+      .children{
+        max-height:none;
+      }
+    }
+  }
+
+  md-list-item.selected{
+    &>button{
+      border-left:$borderSelected;
+    }
+  }
+
+  .children {
+    max-height:0;
+    overflow: hidden;
+
+    button {
+      width:100%;
+    }
+    span{
+      text-align: left;
+    }
+    .selected {
+      color:$colorSelected;
+    }
+  }
+}

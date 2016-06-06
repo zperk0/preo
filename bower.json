@@ -1,11 +1,13 @@
 {
   "name": "webapp",
-  "version": "0.1.3",
+  "description": "",
+  "main": "./client/app/app.js",
   "authors": [
-    "Caio <caio.ricci@gdcommunity.co.uk>"
+    "Aleksander Herforth Rendtslev <aleksanderhr@live.com>"
   ],
-  "license": "private",
-  "private": true,
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -13,27 +15,5 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "jquery": "~2.1.1",
-    "angular": "~1.2.19",
-    "angular-resource": "~1.2.19",
-    "angular-route": "~1.2.19",
-    "angular-sanitize": "~1.2.19",
-    "angular-foundation": "~0.2.2",
-    "gridster": "~0.5.1",
-    "highcharts": "~3.0.7",
-    "moment": "~2.10.6",
-    "underscore": "~1.6.0",
-    "select2": "~3.5.1",
-    "angular-ui-select2": "~0.0.5",
-    "javascript-core": "git@bitbucket.org:preoday/javascript-core.git",
-    "chosen": "~1.4.2",
-    "angular-order-object-by": "~1.2.1"
-  },
-  "resolutions": {
-    "select2": "~3.5.1"
-  },
-  "devDependencies": {
-    "angular-gettext": "~2.1.0"
-  }
+  "dependencies": {}
 }

@@ -1,0 +1,22 @@
+<div class='user-select' layout="row" layout-align="center">
+  <md-menu>
+    <md-button aria-label="Open profile interactions menu" ng-click="vm.openMenu($mdOpenMenu, $event)">
+      <span md-menu-origin class="ellipsis">{{vm.user.name}}</span>
+      <icon>arrow_drop_down</icon>
+    </md-button>
+    <md-menu-content width="4">
+      <md-menu-item>
+        <md-button href="#/profile">
+          <icon>person</icon>
+          <span translate> My Profile </span>
+        </md-button>
+      </md-menu-item>
+      <md-menu-divider></md-menu-divider>
+      <md-menu-item>
+        <md-button>
+          Some other thing here
+        </md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+</div>
