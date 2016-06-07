@@ -16,15 +16,13 @@
       max-width:0;
       overflow: hidden;
     }
-    md-list-item{
-      padding-left: 15px;
-    }
   }
 
   button {
     text-transform: none;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    font-weight: normal;
   }
 
   .close-menu{
@@ -37,43 +35,55 @@
   }
 
   md-list-item{
-
-    & > button{
-      border-left: 5px solid transparent;
-      width: 100%;
-      text-align: left;
-      margin:0;
-      padding: 8px 8px 8px 16px;
-      &> span{
-        padding-left:24px;
+    md-menu {
+      padding:0;
+      &> div{
+        & > button{
+          border-left: 5px solid transparent;
+          width: 100%;
+          text-align: left;
+          margin:0;
+          padding: 8px 8px 8px 16px;
+          &> span{
+            padding-left:24px;
+          }
+        }
       }
     }
 
-    &.expanded{
-      .children{
-        max-height:none;
+      &.expanded{
+        .children{
+          max-height:none;
+        }
       }
-    }
+
   }
 
-  md-list-item.selected{
-    &>button{
-      border-left:$borderSelected;
+  md-list-item.selected, md-list-item.open{
+    md-menu > div{
+      &>button{
+        border-left:$borderSelected;
+        background: $colorBackgroundFocusButtonMaterial;
+      }
     }
   }
 
   .children {
     max-height:0;
     overflow: hidden;
-
-    button {
-      width:100%;
-    }
+    @include selected();
     span{
       text-align: left;
     }
-    .selected {
-      color:$colorSelected;
-    }
+  }
+}
+
+
+.navbar-menu-content{
+  padding:0;
+
+  md-menu-item {
+    @include selected();
+    height:52px;
   }
 }

@@ -13,6 +13,7 @@ export default class venueSelectController {
 
   /* @ngInject */
   constructor() {
+    'ngInject';
     this.venues = [
       {name:"Bob's Brilliant BBQ Burgerzzz"},
       {name:"Venue #2 with a really really but really long time"},

@@ -7,17 +7,31 @@
       layout="column"
       ng-class="{expanded:vm.$expanded}">
       <md-list flex>
-        <md-list-item ng-repeat="item in vm.menu" path-selected="{{item.id}}" layout="column" ng-class="{expanded:item.$expanded}">
-          <md-button layout="row" layout-align="center center" ng-click="vm.handleClick(item)" title="{{item.name}}" aria-label="{{item.name}}">
-            <icon>{{item.icon}}</icon>
-            <span flex>{{item.name}}</span>
-            <icon ng-if="vm.$expanded && item.children.length" flex="10">{{ item.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
-          </md-button>
-          <div layout="column" layout-align="start center" class='children' ng-if="item.children.length">
-              <md-button ng-repeat="child in item.children" layout="row" layout-align="start center" ng-click="vm.handleClick(child, item)" title="{{child.name}}" aria-label="{{child.name}}"  path-selected="{{child.id}}">
-                <span  flex>{{child.name}}</span>
-            </md-button>
-          </div>
+        <md-list-item ng-repeat="item in vm.menu" path-selected="item" layout-align="start none" layout="column" ng-class="{expanded:item.$expanded, open:item.$menuOpen}">
+          <md-menu  md-offset="72 0">
+            <div>
+              <!-- button itself -->
+              <md-button md-menu-origin  layout="row" layout-align="center center" ng-mouseover="vm.handleMouseOver(item, $mdOpenMenu, $event)" ng-click="vm.handleClick(item)" title="{{item.name}}" aria-label="Open {{item.name}} interactions menu">
+                <icon>{{item.icon}}</icon>
+                <span flex>{{item.name}}</span>
+                <icon ng-if="vm.$expanded && item.children.length" flex="10">{{ item.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
+              </md-button>
+              <!-- Children -->
+              <div layout="column" layout-align="start stretch" class='children' ng-if="item.children.length">
+                  <md-button flex-offset="35"  ng-repeat="child in item.children" layout="row" layout-align="start center" ng-click="vm.handleClick(child, item)" title="{{child.name}}" aria-label="{{child.name}}"  path-selected="child">
+                    <span flex>{{child.name}}</span>
+                </md-button>
+              </div>
+            </div>
+            <!-- Hover menu -->
+            <md-menu-content  class='navbar-menu-content' ng-mouseleave="vm.handleMouseLeave(item, $mdOpenMenu, $event)" width="4" >
+              <md-menu-item ng-repeat="child in item.children">
+               <md-button layout="row" layout-align="start center" ng-click="vm.handleClick(child, item)" title="{{child.name}}" aria-label="{{child.name}}"  path-selected="id">
+                  <span  flex>{{child.name}}</span>
+                </md-button>
+               </md-menu-item>
+            </md-menu-content>
+          </md-menu>
         </md-list-item>
       </md-list>
       <md-divider></md-divider>

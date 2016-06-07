@@ -10,7 +10,6 @@ export default function routes($stateProvider) {
   'ngInject';
   $stateProvider.state("main.dashboard.styling", {
     url: "/styling",
-    abstract:true,
     template: require("./styling.tpl.html"),
     controller: controller.UID,
     controllerAs: "vm"

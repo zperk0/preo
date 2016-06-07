@@ -4,9 +4,19 @@ export default class mainController {
     return "mainController";
   }
 
-  /* @ngInject */
-  constructor() {
-    'ngInject';
+  setVenue(v){
+    console.log("got venue", v);
+  }
 
+  handleError(err){
+    this.err = err;
+  }
+
+  /* @ngInject */
+  constructor($stateParams) {
+    'ngInject';
+    Preoday.Venue.get($stateParams.venueId)
+      .then(this.setVenue.bind(this))
+      .catch(this.handleError.bind(this));
   }
 }

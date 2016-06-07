@@ -1,4 +1,12 @@
 /**** MIXINS ***/
+
+@mixin selected() {
+  .selected {
+    color:$colorSelected;
+  }
+}
+
+
 @mixin noselect() {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */

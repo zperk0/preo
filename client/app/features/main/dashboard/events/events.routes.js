@@ -7,6 +7,7 @@ import controller from './events.controller';
  */
 /* @ngInject */
 export default function routes($stateProvider) {
+  'ngInject';
   $stateProvider.state("main.dashboard.events", {
     url: "/events",
     template: require("./events.tpl.html"),

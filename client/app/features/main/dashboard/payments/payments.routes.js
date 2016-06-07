@@ -7,6 +7,7 @@ import controller from './payments.controller';
  */
 /* @ngInject */
 export default function routes($stateProvider) {
+  'ngInject';
   $stateProvider.state("main.dashboard.payments", {
     url: "/payments",
     template: require("./payments.tpl.html"),

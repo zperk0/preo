@@ -1,4 +1,7 @@
 // Import Style
+
+require('jscore/preoday/preoday.min.js');
+
 import './app.scss';
 import 'angular-material/angular-material.min.css';
 

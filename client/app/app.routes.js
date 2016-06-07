@@ -1,4 +1,5 @@
 /* @ngInject */
 export default function routes($urlRouterProvider){
-  $urlRouterProvider.otherwise('/main/dashboard');
+  'ngInject';
+  $urlRouterProvider.otherwise('/9/main/dashboard');
 }
