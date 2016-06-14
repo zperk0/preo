@@ -111,27 +111,67 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularMaterial2 = _interopRequireDefault(_angularMaterial);
 
-	var _app = __webpack_require__(17);
+	var _angularMessages = __webpack_require__(17);
+
+	var _angularMessages2 = _interopRequireDefault(_angularMessages);
+
+	var _angularDragAndDropLists = __webpack_require__(19);
+
+	var _angularDragAndDropLists2 = _interopRequireDefault(_angularDragAndDropLists);
+
+	var _app = __webpack_require__(20);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _app3 = __webpack_require__(18);
+	var _app3 = __webpack_require__(21);
 
 	var _app4 = _interopRequireDefault(_app3);
 
-	var _appConstants = __webpack_require__(19);
+	var _app5 = __webpack_require__(22);
+
+	var _app6 = _interopRequireDefault(_app5);
+
+	var _appConstants = __webpack_require__(23);
 
 	var _appConstants2 = _interopRequireDefault(_appConstants);
 
-	var _main = __webpack_require__(20);
+	var _appBroadcastEvents = __webpack_require__(24);
+
+	var _appBroadcastEvents2 = _interopRequireDefault(_appBroadcastEvents);
+
+	var _shared = __webpack_require__(25);
+
+	var _shared2 = _interopRequireDefault(_shared);
+
+	var _main = __webpack_require__(29);
 
 	var _main2 = _interopRequireDefault(_main);
+
+	var _error = __webpack_require__(234);
+
+	var _error2 = _interopRequireDefault(_error);
+
+	var _auth = __webpack_require__(241);
+
+	var _auth2 = _interopRequireDefault(_auth);
+
+	var _notFound = __webpack_require__(253);
+
+	var _notFound2 = _interopRequireDefault(_notFound);
+
+	var _dialog = __webpack_require__(259);
+
+	var _dialog2 = _interopRequireDefault(_dialog);
+
+	var _snack = __webpack_require__(264);
+
+	var _snack2 = _interopRequireDefault(_snack);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// Import Style
 
-	__webpack_require__(183);
+	__webpack_require__(270);
 
 	// Import base modules
 
@@ -139,13 +179,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import internal modules
 
 
+	// Import global components
+
+
 	//Issue with ES6 Import, change this when it's fixed https://github.com/moment/moment/issues/2608
-	window.moment = __webpack_require__(186);
+	window.moment = __webpack_require__(271);
 
 	exports.default = _angular2.default.module('webapp', [
-	/* external */_angularUiRouter2.default, _angularTranslate2.default, _angularAnimate2.default, _angularMaterial2.default, _angularAria2.default,
-	/* directives */
-	/* internal */_main2.default]).config(_app2.default).config(_app4.default).constant("AppConstants", _appConstants2.default).name;
+	/* external */_angularUiRouter2.default, _angularTranslate2.default, _angularAnimate2.default, _angularMaterial2.default, _angularAria2.default, _angularMessages2.default, 'dndLists',
+	/* directives */_dialog2.default, _snack2.default,
+	/* internal */_shared2.default, _main2.default, _error2.default, _auth2.default, _notFound2.default]).config(_app2.default).run(_app4.default).config(_app6.default).constant("AppConstants", _appConstants2.default).constant("BroadcastEvents", _appBroadcastEvents2.default).name;
 
 /***/ },
 /* 1 */
@@ -182,7 +225,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n@font-face {\n  font-family: 'Material Icons';\n  font-style: normal;\n  font-weight: 400;\n  src: url(/fonts/material.ttf) format(\"truetype\"), url(/fonts/material.svg) format(\"svg\"), url(/fonts/material.woff2) format(\"woff2\"); }\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 24px;\n  line-height: 1;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n  -webkit-touch-callout: none;\n  /* iOS Safari */\n  -webkit-user-select: none;\n  /* Chrome/Safari/Opera */\n  -khtml-user-select: none;\n  /* Konqueror */\n  -moz-user-select: none;\n  /* Firefox */\n  -ms-user-select: none;\n  /* Internet Explorer/Edge */\n  user-select: none;\n  /* Non-prefixed version, currently\n                                  not supported by any browser */ }\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.no-select {\n  -webkit-tap-highlight-color: transparent;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Regular.ttf); }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Medium.ttf);\n  font-weight: 500; }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Light.ttf);\n  font-weight: 300; }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Bold.ttf);\n  font-weight: 700; }\n\n* {\n  box-sizing: border-box;\n  font-family: Roboto;\n  -webkit-font-smoothing: antialiased; }\n  *:focus {\n    outline: none; }\n\nhtml {\n  min-width: 1024px;\n  max-height: 100%;\n  overflow-y: hidden;\n  overflow-x: auto; }\n\n.maxHeightScreen {\n  height: 100vh; }\n  .maxHeightScreen.minus-toolbar {\n    height: calc(100vh - 64px); }\n\n.ellipsis {\n  text-overflow: ellipsis;\n  max-width: 90%;\n  overflow: hidden;\n  white-space: no-wrap; }\n\n/** 1024 + 16px scrollbar **/\n@media (max-width: 1280px) {\n  .user-select {\n    max-width: 250px; }\n  md-sidenav {\n    max-width: 278px; } }\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n@font-face {\n  font-family: 'Material Icons';\n  font-style: normal;\n  font-weight: 400;\n  src: url(/fonts/material.ttf) format(\"truetype\"), url(/fonts/material.svg) format(\"svg\"), url(/fonts/material.woff2) format(\"woff2\"); }\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 24px;\n  line-height: 1;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n  -webkit-touch-callout: none;\n  /* iOS Safari */\n  -webkit-user-select: none;\n  /* Chrome/Safari/Opera */\n  -khtml-user-select: none;\n  /* Konqueror */\n  -moz-user-select: none;\n  /* Firefox */\n  -ms-user-select: none;\n  /* Internet Explorer/Edge */\n  user-select: none;\n  /* Non-prefixed version, currently\n                                  not supported by any browser */ }\n\nmd-dialog {\n  width: 300px; }\n  md-dialog md-dialog-content {\n    padding: 24px; }\n  md-dialog .md-title {\n    font-weight: 500;\n    font-size: 20;\n    color: #000000;\n    margin-bottom: 16px; }\n  md-dialog .md-dialog-content-body {\n    color: #000000;\n    font-size: 16px; }\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.no-select {\n  -webkit-tap-highlight-color: transparent;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Regular.ttf); }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Medium.ttf);\n  font-weight: 500; }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Light.ttf);\n  font-weight: 300; }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Bold.ttf);\n  font-weight: 700; }\n\n* {\n  box-sizing: border-box;\n  font-family: Roboto;\n  -webkit-font-smoothing: antialiased; }\n  *:focus {\n    outline: none; }\n\nhtml {\n  min-width: 1024px;\n  max-height: 100%;\n  overflow-y: hidden;\n  overflow-x: auto; }\n\n.maxHeightScreen {\n  height: 100vh; }\n  .maxHeightScreen.minus-toolbar {\n    height: calc(100vh - 64px); }\n\n.ellipsis {\n  text-overflow: ellipsis;\n  max-width: 90%;\n  overflow: hidden;\n  white-space: no-wrap; }\n\n@media (max-width: 1280px) {\n  html .user-select {\n    max-width: 250px; }\n  html md-sidenav {\n    max-width: 278px; } }\n\n@media (max-width: 1024px) {\n  html .menu .main-content-right .contextual-right-menu {\n    position: relative; } }\n", ""]);
 
 	// exports
 
@@ -71421,6 +71464,1340 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(18);
+	module.exports = 'ngMessages';
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	/**
+	 * @license AngularJS v1.5.6
+	 * (c) 2010-2016 Google, Inc. http://angularjs.org
+	 * License: MIT
+	 */
+	(function(window, angular) {'use strict';
+
+	/* jshint ignore:start */
+	// this code is in the core, but not in angular-messages.js
+	var isArray = angular.isArray;
+	var forEach = angular.forEach;
+	var isString = angular.isString;
+	var jqLite = angular.element;
+	/* jshint ignore:end */
+
+	/**
+	 * @ngdoc module
+	 * @name ngMessages
+	 * @description
+	 *
+	 * The `ngMessages` module provides enhanced support for displaying messages within templates
+	 * (typically within forms or when rendering message objects that return key/value data).
+	 * Instead of relying on JavaScript code and/or complex ng-if statements within your form template to
+	 * show and hide error messages specific to the state of an input field, the `ngMessages` and
+	 * `ngMessage` directives are designed to handle the complexity, inheritance and priority
+	 * sequencing based on the order of how the messages are defined in the template.
+	 *
+	 * Currently, the ngMessages module only contains the code for the `ngMessages`, `ngMessagesInclude`
+	 * `ngMessage` and `ngMessageExp` directives.
+	 *
+	 * # Usage
+	 * The `ngMessages` directive allows keys in a key/value collection to be associated with a child element
+	 * (or 'message') that will show or hide based on the truthiness of that key's value in the collection. A common use
+	 * case for `ngMessages` is to display error messages for inputs using the `$error` object exposed by the
+	 * {@link ngModel ngModel} directive.
+	 *
+	 * The child elements of the `ngMessages` directive are matched to the collection keys by a `ngMessage` or
+	 * `ngMessageExp` directive. The value of these attributes must match a key in the collection that is provided by
+	 * the `ngMessages` directive.
+	 *
+	 * Consider the following example, which illustrates a typical use case of `ngMessages`. Within the form `myForm` we
+	 * have a text input named `myField` which is bound to the scope variable `field` using the {@link ngModel ngModel}
+	 * directive.
+	 *
+	 * The `myField` field is a required input of type `email` with a maximum length of 15 characters.
+	 *
+	 * ```html
+	 * <form name="myForm">
+	 *   <label>
+	 *     Enter text:
+	 *     <input type="email" ng-model="field" name="myField" required maxlength="15" />
+	 *   </label>
+	 *   <div ng-messages="myForm.myField.$error" role="alert">
+	 *     <div ng-message="required">Please enter a value for this field.</div>
+	 *     <div ng-message="email">This field must be a valid email address.</div>
+	 *     <div ng-message="maxlength">This field can be at most 15 characters long.</div>
+	 *   </div>
+	 * </form>
+	 * ```
+	 *
+	 * In order to show error messages corresponding to `myField` we first create an element with an `ngMessages` attribute
+	 * set to the `$error` object owned by the `myField` input in our `myForm` form.
+	 *
+	 * Within this element we then create separate elements for each of the possible errors that `myField` could have.
+	 * The `ngMessage` attribute is used to declare which element(s) will appear for which error - for example,
+	 * setting `ng-message="required"` specifies that this particular element should be displayed when there
+	 * is no value present for the required field `myField` (because the key `required` will be `true` in the object
+	 * `myForm.myField.$error`).
+	 *
+	 * ### Message order
+	 *
+	 * By default, `ngMessages` will only display one message for a particular key/value collection at any time. If more
+	 * than one message (or error) key is currently true, then which message is shown is determined by the order of messages
+	 * in the HTML template code (messages declared first are prioritised). This mechanism means the developer does not have
+	 * to prioritise messages using custom JavaScript code.
+	 *
+	 * Given the following error object for our example (which informs us that the field `myField` currently has both the
+	 * `required` and `email` errors):
+	 *
+	 * ```javascript
+	 * <!-- keep in mind that ngModel automatically sets these error flags -->
+	 * myField.$error = { required : true, email: true, maxlength: false };
+	 * ```
+	 * The `required` message will be displayed to the user since it appears before the `email` message in the DOM.
+	 * Once the user types a single character, the `required` message will disappear (since the field now has a value)
+	 * but the `email` message will be visible because it is still applicable.
+	 *
+	 * ### Displaying multiple messages at the same time
+	 *
+	 * While `ngMessages` will by default only display one error element at a time, the `ng-messages-multiple` attribute can
+	 * be applied to the `ngMessages` container element to cause it to display all applicable error messages at once:
+	 *
+	 * ```html
+	 * <!-- attribute-style usage -->
+	 * <div ng-messages="myForm.myField.$error" ng-messages-multiple>...</div>
+	 *
+	 * <!-- element-style usage -->
+	 * <ng-messages for="myForm.myField.$error" multiple>...</ng-messages>
+	 * ```
+	 *
+	 * ## Reusing and Overriding Messages
+	 * In addition to prioritization, ngMessages also allows for including messages from a remote or an inline
+	 * template. This allows for generic collection of messages to be reused across multiple parts of an
+	 * application.
+	 *
+	 * ```html
+	 * <script type="text/ng-template" id="error-messages">
+	 *   <div ng-message="required">This field is required</div>
+	 *   <div ng-message="minlength">This field is too short</div>
+	 * </script>
+	 *
+	 * <div ng-messages="myForm.myField.$error" role="alert">
+	 *   <div ng-messages-include="error-messages"></div>
+	 * </div>
+	 * ```
+	 *
+	 * However, including generic messages may not be useful enough to match all input fields, therefore,
+	 * `ngMessages` provides the ability to override messages defined in the remote template by redefining
+	 * them within the directive container.
+	 *
+	 * ```html
+	 * <!-- a generic template of error messages known as "my-custom-messages" -->
+	 * <script type="text/ng-template" id="my-custom-messages">
+	 *   <div ng-message="required">This field is required</div>
+	 *   <div ng-message="minlength">This field is too short</div>
+	 * </script>
+	 *
+	 * <form name="myForm">
+	 *   <label>
+	 *     Email address
+	 *     <input type="email"
+	 *            id="email"
+	 *            name="myEmail"
+	 *            ng-model="email"
+	 *            minlength="5"
+	 *            required />
+	 *   </label>
+	 *   <!-- any ng-message elements that appear BEFORE the ng-messages-include will
+	 *        override the messages present in the ng-messages-include template -->
+	 *   <div ng-messages="myForm.myEmail.$error" role="alert">
+	 *     <!-- this required message has overridden the template message -->
+	 *     <div ng-message="required">You did not enter your email address</div>
+	 *
+	 *     <!-- this is a brand new message and will appear last in the prioritization -->
+	 *     <div ng-message="email">Your email address is invalid</div>
+	 *
+	 *     <!-- and here are the generic error messages -->
+	 *     <div ng-messages-include="my-custom-messages"></div>
+	 *   </div>
+	 * </form>
+	 * ```
+	 *
+	 * In the example HTML code above the message that is set on required will override the corresponding
+	 * required message defined within the remote template. Therefore, with particular input fields (such
+	 * email addresses, date fields, autocomplete inputs, etc...), specialized error messages can be applied
+	 * while more generic messages can be used to handle other, more general input errors.
+	 *
+	 * ## Dynamic Messaging
+	 * ngMessages also supports using expressions to dynamically change key values. Using arrays and
+	 * repeaters to list messages is also supported. This means that the code below will be able to
+	 * fully adapt itself and display the appropriate message when any of the expression data changes:
+	 *
+	 * ```html
+	 * <form name="myForm">
+	 *   <label>
+	 *     Email address
+	 *     <input type="email"
+	 *            name="myEmail"
+	 *            ng-model="email"
+	 *            minlength="5"
+	 *            required />
+	 *   </label>
+	 *   <div ng-messages="myForm.myEmail.$error" role="alert">
+	 *     <div ng-message="required">You did not enter your email address</div>
+	 *     <div ng-repeat="errorMessage in errorMessages">
+	 *       <!-- use ng-message-exp for a message whose key is given by an expression -->
+	 *       <div ng-message-exp="errorMessage.type">{{ errorMessage.text }}</div>
+	 *     </div>
+	 *   </div>
+	 * </form>
+	 * ```
+	 *
+	 * The `errorMessage.type` expression can be a string value or it can be an array so
+	 * that multiple errors can be associated with a single error message:
+	 *
+	 * ```html
+	 *   <label>
+	 *     Email address
+	 *     <input type="email"
+	 *            ng-model="data.email"
+	 *            name="myEmail"
+	 *            ng-minlength="5"
+	 *            ng-maxlength="100"
+	 *            required />
+	 *   </label>
+	 *   <div ng-messages="myForm.myEmail.$error" role="alert">
+	 *     <div ng-message-exp="'required'">You did not enter your email address</div>
+	 *     <div ng-message-exp="['minlength', 'maxlength']">
+	 *       Your email must be between 5 and 100 characters long
+	 *     </div>
+	 *   </div>
+	 * ```
+	 *
+	 * Feel free to use other structural directives such as ng-if and ng-switch to further control
+	 * what messages are active and when. Be careful, if you place ng-message on the same element
+	 * as these structural directives, Angular may not be able to determine if a message is active
+	 * or not. Therefore it is best to place the ng-message on a child element of the structural
+	 * directive.
+	 *
+	 * ```html
+	 * <div ng-messages="myForm.myEmail.$error" role="alert">
+	 *   <div ng-if="showRequiredError">
+	 *     <div ng-message="required">Please enter something</div>
+	 *   </div>
+	 * </div>
+	 * ```
+	 *
+	 * ## Animations
+	 * If the `ngAnimate` module is active within the application then the `ngMessages`, `ngMessage` and
+	 * `ngMessageExp` directives will trigger animations whenever any messages are added and removed from
+	 * the DOM by the `ngMessages` directive.
+	 *
+	 * Whenever the `ngMessages` directive contains one or more visible messages then the `.ng-active` CSS
+	 * class will be added to the element. The `.ng-inactive` CSS class will be applied when there are no
+	 * messages present. Therefore, CSS transitions and keyframes as well as JavaScript animations can
+	 * hook into the animations whenever these classes are added/removed.
+	 *
+	 * Let's say that our HTML code for our messages container looks like so:
+	 *
+	 * ```html
+	 * <div ng-messages="myMessages" class="my-messages" role="alert">
+	 *   <div ng-message="alert" class="some-message">...</div>
+	 *   <div ng-message="fail" class="some-message">...</div>
+	 * </div>
+	 * ```
+	 *
+	 * Then the CSS animation code for the message container looks like so:
+	 *
+	 * ```css
+	 * .my-messages {
+	 *   transition:1s linear all;
+	 * }
+	 * .my-messages.ng-active {
+	 *   // messages are visible
+	 * }
+	 * .my-messages.ng-inactive {
+	 *   // messages are hidden
+	 * }
+	 * ```
+	 *
+	 * Whenever an inner message is attached (becomes visible) or removed (becomes hidden) then the enter
+	 * and leave animation is triggered for each particular element bound to the `ngMessage` directive.
+	 *
+	 * Therefore, the CSS code for the inner messages looks like so:
+	 *
+	 * ```css
+	 * .some-message {
+	 *   transition:1s linear all;
+	 * }
+	 *
+	 * .some-message.ng-enter {}
+	 * .some-message.ng-enter.ng-enter-active {}
+	 *
+	 * .some-message.ng-leave {}
+	 * .some-message.ng-leave.ng-leave-active {}
+	 * ```
+	 *
+	 * {@link ngAnimate Click here} to learn how to use JavaScript animations or to learn more about ngAnimate.
+	 */
+	angular.module('ngMessages', [])
+
+	   /**
+	    * @ngdoc directive
+	    * @module ngMessages
+	    * @name ngMessages
+	    * @restrict AE
+	    *
+	    * @description
+	    * `ngMessages` is a directive that is designed to show and hide messages based on the state
+	    * of a key/value object that it listens on. The directive itself complements error message
+	    * reporting with the `ngModel` $error object (which stores a key/value state of validation errors).
+	    *
+	    * `ngMessages` manages the state of internal messages within its container element. The internal
+	    * messages use the `ngMessage` directive and will be inserted/removed from the page depending
+	    * on if they're present within the key/value object. By default, only one message will be displayed
+	    * at a time and this depends on the prioritization of the messages within the template. (This can
+	    * be changed by using the `ng-messages-multiple` or `multiple` attribute on the directive container.)
+	    *
+	    * A remote template can also be used to promote message reusability and messages can also be
+	    * overridden.
+	    *
+	    * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
+	    *
+	    * @usage
+	    * ```html
+	    * <!-- using attribute directives -->
+	    * <ANY ng-messages="expression" role="alert">
+	    *   <ANY ng-message="stringValue">...</ANY>
+	    *   <ANY ng-message="stringValue1, stringValue2, ...">...</ANY>
+	    *   <ANY ng-message-exp="expressionValue">...</ANY>
+	    * </ANY>
+	    *
+	    * <!-- or by using element directives -->
+	    * <ng-messages for="expression" role="alert">
+	    *   <ng-message when="stringValue">...</ng-message>
+	    *   <ng-message when="stringValue1, stringValue2, ...">...</ng-message>
+	    *   <ng-message when-exp="expressionValue">...</ng-message>
+	    * </ng-messages>
+	    * ```
+	    *
+	    * @param {string} ngMessages an angular expression evaluating to a key/value object
+	    *                 (this is typically the $error object on an ngModel instance).
+	    * @param {string=} ngMessagesMultiple|multiple when set, all messages will be displayed with true
+	    *
+	    * @example
+	    * <example name="ngMessages-directive" module="ngMessagesExample"
+	    *          deps="angular-messages.js"
+	    *          animations="true" fixBase="true">
+	    *   <file name="index.html">
+	    *     <form name="myForm">
+	    *       <label>
+	    *         Enter your name:
+	    *         <input type="text"
+	    *                name="myName"
+	    *                ng-model="name"
+	    *                ng-minlength="5"
+	    *                ng-maxlength="20"
+	    *                required />
+	    *       </label>
+	    *       <pre>myForm.myName.$error = {{ myForm.myName.$error | json }}</pre>
+	    *
+	    *       <div ng-messages="myForm.myName.$error" style="color:maroon" role="alert">
+	    *         <div ng-message="required">You did not enter a field</div>
+	    *         <div ng-message="minlength">Your field is too short</div>
+	    *         <div ng-message="maxlength">Your field is too long</div>
+	    *       </div>
+	    *     </form>
+	    *   </file>
+	    *   <file name="script.js">
+	    *     angular.module('ngMessagesExample', ['ngMessages']);
+	    *   </file>
+	    * </example>
+	    */
+	   .directive('ngMessages', ['$animate', function($animate) {
+	     var ACTIVE_CLASS = 'ng-active';
+	     var INACTIVE_CLASS = 'ng-inactive';
+
+	     return {
+	       require: 'ngMessages',
+	       restrict: 'AE',
+	       controller: ['$element', '$scope', '$attrs', function($element, $scope, $attrs) {
+	         var ctrl = this;
+	         var latestKey = 0;
+	         var nextAttachId = 0;
+
+	         this.getAttachId = function getAttachId() { return nextAttachId++; };
+
+	         var messages = this.messages = {};
+	         var renderLater, cachedCollection;
+
+	         this.render = function(collection) {
+	           collection = collection || {};
+
+	           renderLater = false;
+	           cachedCollection = collection;
+
+	           // this is true if the attribute is empty or if the attribute value is truthy
+	           var multiple = isAttrTruthy($scope, $attrs.ngMessagesMultiple) ||
+	                          isAttrTruthy($scope, $attrs.multiple);
+
+	           var unmatchedMessages = [];
+	           var matchedKeys = {};
+	           var messageItem = ctrl.head;
+	           var messageFound = false;
+	           var totalMessages = 0;
+
+	           // we use != instead of !== to allow for both undefined and null values
+	           while (messageItem != null) {
+	             totalMessages++;
+	             var messageCtrl = messageItem.message;
+
+	             var messageUsed = false;
+	             if (!messageFound) {
+	               forEach(collection, function(value, key) {
+	                 if (!messageUsed && truthy(value) && messageCtrl.test(key)) {
+	                   // this is to prevent the same error name from showing up twice
+	                   if (matchedKeys[key]) return;
+	                   matchedKeys[key] = true;
+
+	                   messageUsed = true;
+	                   messageCtrl.attach();
+	                 }
+	               });
+	             }
+
+	             if (messageUsed) {
+	               // unless we want to display multiple messages then we should
+	               // set a flag here to avoid displaying the next message in the list
+	               messageFound = !multiple;
+	             } else {
+	               unmatchedMessages.push(messageCtrl);
+	             }
+
+	             messageItem = messageItem.next;
+	           }
+
+	           forEach(unmatchedMessages, function(messageCtrl) {
+	             messageCtrl.detach();
+	           });
+
+	           unmatchedMessages.length !== totalMessages
+	              ? $animate.setClass($element, ACTIVE_CLASS, INACTIVE_CLASS)
+	              : $animate.setClass($element, INACTIVE_CLASS, ACTIVE_CLASS);
+	         };
+
+	         $scope.$watchCollection($attrs.ngMessages || $attrs['for'], ctrl.render);
+
+	         // If the element is destroyed, proactively destroy all the currently visible messages
+	         $element.on('$destroy', function() {
+	           forEach(messages, function(item) {
+	             item.message.detach();
+	           });
+	         });
+
+	         this.reRender = function() {
+	           if (!renderLater) {
+	             renderLater = true;
+	             $scope.$evalAsync(function() {
+	               if (renderLater) {
+	                 cachedCollection && ctrl.render(cachedCollection);
+	               }
+	             });
+	           }
+	         };
+
+	         this.register = function(comment, messageCtrl) {
+	           var nextKey = latestKey.toString();
+	           messages[nextKey] = {
+	             message: messageCtrl
+	           };
+	           insertMessageNode($element[0], comment, nextKey);
+	           comment.$$ngMessageNode = nextKey;
+	           latestKey++;
+
+	           ctrl.reRender();
+	         };
+
+	         this.deregister = function(comment) {
+	           var key = comment.$$ngMessageNode;
+	           delete comment.$$ngMessageNode;
+	           removeMessageNode($element[0], comment, key);
+	           delete messages[key];
+	           ctrl.reRender();
+	         };
+
+	         function findPreviousMessage(parent, comment) {
+	           var prevNode = comment;
+	           var parentLookup = [];
+
+	           while (prevNode && prevNode !== parent) {
+	             var prevKey = prevNode.$$ngMessageNode;
+	             if (prevKey && prevKey.length) {
+	               return messages[prevKey];
+	             }
+
+	             // dive deeper into the DOM and examine its children for any ngMessage
+	             // comments that may be in an element that appears deeper in the list
+	             if (prevNode.childNodes.length && parentLookup.indexOf(prevNode) == -1) {
+	               parentLookup.push(prevNode);
+	               prevNode = prevNode.childNodes[prevNode.childNodes.length - 1];
+	             } else if (prevNode.previousSibling) {
+	               prevNode = prevNode.previousSibling;
+	             } else {
+	               prevNode = prevNode.parentNode;
+	               parentLookup.push(prevNode);
+	             }
+	           }
+	         }
+
+	         function insertMessageNode(parent, comment, key) {
+	           var messageNode = messages[key];
+	           if (!ctrl.head) {
+	             ctrl.head = messageNode;
+	           } else {
+	             var match = findPreviousMessage(parent, comment);
+	             if (match) {
+	               messageNode.next = match.next;
+	               match.next = messageNode;
+	             } else {
+	               messageNode.next = ctrl.head;
+	               ctrl.head = messageNode;
+	             }
+	           }
+	         }
+
+	         function removeMessageNode(parent, comment, key) {
+	           var messageNode = messages[key];
+
+	           var match = findPreviousMessage(parent, comment);
+	           if (match) {
+	             match.next = messageNode.next;
+	           } else {
+	             ctrl.head = messageNode.next;
+	           }
+	         }
+	       }]
+	     };
+
+	     function isAttrTruthy(scope, attr) {
+	      return (isString(attr) && attr.length === 0) || //empty attribute
+	             truthy(scope.$eval(attr));
+	     }
+
+	     function truthy(val) {
+	       return isString(val) ? val.length : !!val;
+	     }
+	   }])
+
+	   /**
+	    * @ngdoc directive
+	    * @name ngMessagesInclude
+	    * @restrict AE
+	    * @scope
+	    *
+	    * @description
+	    * `ngMessagesInclude` is a directive with the purpose to import existing ngMessage template
+	    * code from a remote template and place the downloaded template code into the exact spot
+	    * that the ngMessagesInclude directive is placed within the ngMessages container. This allows
+	    * for a series of pre-defined messages to be reused and also allows for the developer to
+	    * determine what messages are overridden due to the placement of the ngMessagesInclude directive.
+	    *
+	    * @usage
+	    * ```html
+	    * <!-- using attribute directives -->
+	    * <ANY ng-messages="expression" role="alert">
+	    *   <ANY ng-messages-include="remoteTplString">...</ANY>
+	    * </ANY>
+	    *
+	    * <!-- or by using element directives -->
+	    * <ng-messages for="expression" role="alert">
+	    *   <ng-messages-include src="expressionValue1">...</ng-messages-include>
+	    * </ng-messages>
+	    * ```
+	    *
+	    * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
+	    *
+	    * @param {string} ngMessagesInclude|src a string value corresponding to the remote template.
+	    */
+	   .directive('ngMessagesInclude',
+	     ['$templateRequest', '$document', '$compile', function($templateRequest, $document, $compile) {
+
+	     return {
+	       restrict: 'AE',
+	       require: '^^ngMessages', // we only require this for validation sake
+	       link: function($scope, element, attrs) {
+	         var src = attrs.ngMessagesInclude || attrs.src;
+	         $templateRequest(src).then(function(html) {
+	           if ($scope.$$destroyed) return;
+
+	           $compile(html)($scope, function(contents) {
+	             element.after(contents);
+
+	             // the anchor is placed for debugging purposes
+	             var comment = $compile.$$createComment ?
+	                 $compile.$$createComment('ngMessagesInclude', src) :
+	                 $document[0].createComment(' ngMessagesInclude: ' + src + ' ');
+	             var anchor = jqLite(comment);
+	             element.after(anchor);
+
+	             // we don't want to pollute the DOM anymore by keeping an empty directive element
+	             element.remove();
+	           });
+	         });
+	       }
+	     };
+	   }])
+
+	   /**
+	    * @ngdoc directive
+	    * @name ngMessage
+	    * @restrict AE
+	    * @scope
+	    *
+	    * @description
+	    * `ngMessage` is a directive with the purpose to show and hide a particular message.
+	    * For `ngMessage` to operate, a parent `ngMessages` directive on a parent DOM element
+	    * must be situated since it determines which messages are visible based on the state
+	    * of the provided key/value map that `ngMessages` listens on.
+	    *
+	    * More information about using `ngMessage` can be found in the
+	    * {@link module:ngMessages `ngMessages` module documentation}.
+	    *
+	    * @usage
+	    * ```html
+	    * <!-- using attribute directives -->
+	    * <ANY ng-messages="expression" role="alert">
+	    *   <ANY ng-message="stringValue">...</ANY>
+	    *   <ANY ng-message="stringValue1, stringValue2, ...">...</ANY>
+	    * </ANY>
+	    *
+	    * <!-- or by using element directives -->
+	    * <ng-messages for="expression" role="alert">
+	    *   <ng-message when="stringValue">...</ng-message>
+	    *   <ng-message when="stringValue1, stringValue2, ...">...</ng-message>
+	    * </ng-messages>
+	    * ```
+	    *
+	    * @param {expression} ngMessage|when a string value corresponding to the message key.
+	    */
+	  .directive('ngMessage', ngMessageDirectiveFactory())
+
+
+	   /**
+	    * @ngdoc directive
+	    * @name ngMessageExp
+	    * @restrict AE
+	    * @priority 1
+	    * @scope
+	    *
+	    * @description
+	    * `ngMessageExp` is a directive with the purpose to show and hide a particular message.
+	    * For `ngMessageExp` to operate, a parent `ngMessages` directive on a parent DOM element
+	    * must be situated since it determines which messages are visible based on the state
+	    * of the provided key/value map that `ngMessages` listens on.
+	    *
+	    * @usage
+	    * ```html
+	    * <!-- using attribute directives -->
+	    * <ANY ng-messages="expression">
+	    *   <ANY ng-message-exp="expressionValue">...</ANY>
+	    * </ANY>
+	    *
+	    * <!-- or by using element directives -->
+	    * <ng-messages for="expression">
+	    *   <ng-message when-exp="expressionValue">...</ng-message>
+	    * </ng-messages>
+	    * ```
+	    *
+	    * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
+	    *
+	    * @param {expression} ngMessageExp|whenExp an expression value corresponding to the message key.
+	    */
+	  .directive('ngMessageExp', ngMessageDirectiveFactory());
+
+	function ngMessageDirectiveFactory() {
+	  return ['$animate', function($animate) {
+	    return {
+	      restrict: 'AE',
+	      transclude: 'element',
+	      priority: 1, // must run before ngBind, otherwise the text is set on the comment
+	      terminal: true,
+	      require: '^^ngMessages',
+	      link: function(scope, element, attrs, ngMessagesCtrl, $transclude) {
+	        var commentNode = element[0];
+
+	        var records;
+	        var staticExp = attrs.ngMessage || attrs.when;
+	        var dynamicExp = attrs.ngMessageExp || attrs.whenExp;
+	        var assignRecords = function(items) {
+	          records = items
+	              ? (isArray(items)
+	                    ? items
+	                    : items.split(/[\s,]+/))
+	              : null;
+	          ngMessagesCtrl.reRender();
+	        };
+
+	        if (dynamicExp) {
+	          assignRecords(scope.$eval(dynamicExp));
+	          scope.$watchCollection(dynamicExp, assignRecords);
+	        } else {
+	          assignRecords(staticExp);
+	        }
+
+	        var currentElement, messageCtrl;
+	        ngMessagesCtrl.register(commentNode, messageCtrl = {
+	          test: function(name) {
+	            return contains(records, name);
+	          },
+	          attach: function() {
+	            if (!currentElement) {
+	              $transclude(scope, function(elm) {
+	                $animate.enter(elm, null, element);
+	                currentElement = elm;
+
+	                // Each time we attach this node to a message we get a new id that we can match
+	                // when we are destroying the node later.
+	                var $$attachId = currentElement.$$attachId = ngMessagesCtrl.getAttachId();
+
+	                // in the event that the element or a parent element is destroyed
+	                // by another structural directive then it's time
+	                // to deregister the message from the controller
+	                currentElement.on('$destroy', function() {
+	                  if (currentElement && currentElement.$$attachId === $$attachId) {
+	                    ngMessagesCtrl.deregister(commentNode);
+	                    messageCtrl.detach();
+	                  }
+	                });
+	              });
+	            }
+	          },
+	          detach: function() {
+	            if (currentElement) {
+	              var elm = currentElement;
+	              currentElement = null;
+	              $animate.leave(elm);
+	            }
+	          }
+	        });
+	      }
+	    };
+	  }];
+
+	  function contains(collection, key) {
+	    if (collection) {
+	      return isArray(collection)
+	          ? collection.indexOf(key) >= 0
+	          : collection.hasOwnProperty(key);
+	    }
+	  }
+	}
+
+
+	})(window, window.angular);
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	/**
+	 * angular-drag-and-drop-lists v1.4.0
+	 *
+	 * Copyright (c) 2014 Marcel Juenemann marcel@juenemann.cc
+	 * Copyright (c) 2014-2016 Google Inc.
+	 * https://github.com/marceljuenemann/angular-drag-and-drop-lists
+	 *
+	 * License: MIT
+	 */
+	angular.module('dndLists', [])
+
+	  /**
+	   * Use the dnd-draggable attribute to make your element draggable
+	   *
+	   * Attributes:
+	   * - dnd-draggable      Required attribute. The value has to be an object that represents the data
+	   *                      of the element. In case of a drag and drop operation the object will be
+	   *                      serialized and unserialized on the receiving end.
+	   * - dnd-selected       Callback that is invoked when the element was clicked but not dragged.
+	   *                      The original click event will be provided in the local event variable.
+	   * - dnd-effect-allowed Use this attribute to limit the operations that can be performed. Options:
+	   *                      - "move": The drag operation will move the element. This is the default.
+	   *                      - "copy": The drag operation will copy the element. Shows a copy cursor.
+	   *                      - "copyMove": The user can choose between copy and move by pressing the
+	   *                        ctrl or shift key. *Not supported in IE:* In Internet Explorer this
+	   *                        option will be the same as "copy". *Not fully supported in Chrome on
+	   *                        Windows:* In the Windows version of Chrome the cursor will always be the
+	   *                        move cursor. However, when the user drops an element and has the ctrl
+	   *                        key pressed, we will perform a copy anyways.
+	   *                      - HTML5 also specifies the "link" option, but this library does not
+	   *                        actively support it yet, so use it at your own risk.
+	   * - dnd-moved          Callback that is invoked when the element was moved. Usually you will
+	   *                      remove your element from the original list in this callback, since the
+	   *                      directive is not doing that for you automatically. The original dragend
+	   *                      event will be provided in the local event variable.
+	   * - dnd-canceled       Callback that is invoked if the element was dragged, but the operation was
+	   *                      canceled and the element was not dropped. The original dragend event will
+	   *                      be provided in the local event variable.
+	   * - dnd-copied         Same as dnd-moved, just that it is called when the element was copied
+	   *                      instead of moved. The original dragend event will be provided in the local
+	   *                      event variable.
+	   * - dnd-dragstart      Callback that is invoked when the element was dragged. The original
+	   *                      dragstart event will be provided in the local event variable.
+	   * - dnd-dragend        Callback that is invoked when the drag operation ended. Available local
+	   *                      variables are event and dropEffect.
+	   * - dnd-type           Use this attribute if you have different kinds of items in your
+	   *                      application and you want to limit which items can be dropped into which
+	   *                      lists. Combine with dnd-allowed-types on the dnd-list(s). This attribute
+	   *                      should evaluate to a string, although this restriction is not enforced.
+	   * - dnd-disable-if     You can use this attribute to dynamically disable the draggability of the
+	   *                      element. This is useful if you have certain list items that you don't want
+	   *                      to be draggable, or if you want to disable drag & drop completely without
+	   *                      having two different code branches (e.g. only allow for admins).
+	   *                      **Note**: If your element is not draggable, the user is probably able to
+	   *                      select text or images inside of it. Since a selection is always draggable,
+	   *                      this breaks your UI. You most likely want to disable user selection via
+	   *                      CSS (see user-select).
+	   *
+	   * CSS classes:
+	   * - dndDragging        This class will be added to the element while the element is being
+	   *                      dragged. It will affect both the element you see while dragging and the
+	   *                      source element that stays at it's position. Do not try to hide the source
+	   *                      element with this class, because that will abort the drag operation.
+	   * - dndDraggingSource  This class will be added to the element after the drag operation was
+	   *                      started, meaning it only affects the original element that is still at
+	   *                      it's source position, and not the "element" that the user is dragging with
+	   *                      his mouse pointer.
+	   */
+	  .directive('dndDraggable', ['$parse', '$timeout', 'dndDropEffectWorkaround', 'dndDragTypeWorkaround',
+	                      function($parse,   $timeout,   dndDropEffectWorkaround,   dndDragTypeWorkaround) {
+	    return function(scope, element, attr) {
+	      // Set the HTML5 draggable attribute on the element
+	      element.attr("draggable", "true");
+
+	      // If the dnd-disable-if attribute is set, we have to watch that
+	      if (attr.dndDisableIf) {
+	        scope.$watch(attr.dndDisableIf, function(disabled) {
+	          element.attr("draggable", !disabled);
+	        });
+	      }
+
+	      /**
+	       * When the drag operation is started we have to prepare the dataTransfer object,
+	       * which is the primary way we communicate with the target element
+	       */
+	      element.on('dragstart', function(event) {
+	        event = event.originalEvent || event;
+
+	        // Check whether the element is draggable, since dragstart might be triggered on a child.
+	        if (element.attr('draggable') == 'false') return true;
+
+	        // Serialize the data associated with this element. IE only supports the Text drag type
+	        event.dataTransfer.setData("Text", angular.toJson(scope.$eval(attr.dndDraggable)));
+
+	        // Only allow actions specified in dnd-effect-allowed attribute
+	        event.dataTransfer.effectAllowed = attr.dndEffectAllowed || "move";
+
+	        // Add CSS classes. See documentation above
+	        element.addClass("dndDragging");
+	        $timeout(function() { element.addClass("dndDraggingSource"); }, 0);
+
+	        // Workarounds for stupid browsers, see description below
+	        dndDropEffectWorkaround.dropEffect = "none";
+	        dndDragTypeWorkaround.isDragging = true;
+
+	        // Save type of item in global state. Usually, this would go into the dataTransfer
+	        // typename, but we have to use "Text" there to support IE
+	        dndDragTypeWorkaround.dragType = attr.dndType ? scope.$eval(attr.dndType) : undefined;
+
+	        // Try setting a proper drag image if triggered on a dnd-handle (won't work in IE).
+	        if (event._dndHandle && event.dataTransfer.setDragImage) {
+	          event.dataTransfer.setDragImage(element[0], 0, 0);
+	        }
+
+	        // Invoke callback
+	        $parse(attr.dndDragstart)(scope, {event: event});
+
+	        event.stopPropagation();
+	      });
+
+	      /**
+	       * The dragend event is triggered when the element was dropped or when the drag
+	       * operation was aborted (e.g. hit escape button). Depending on the executed action
+	       * we will invoke the callbacks specified with the dnd-moved or dnd-copied attribute.
+	       */
+	      element.on('dragend', function(event) {
+	        event = event.originalEvent || event;
+
+	        // Invoke callbacks. Usually we would use event.dataTransfer.dropEffect to determine
+	        // the used effect, but Chrome has not implemented that field correctly. On Windows
+	        // it always sets it to 'none', while Chrome on Linux sometimes sets it to something
+	        // else when it's supposed to send 'none' (drag operation aborted).
+	        var dropEffect = dndDropEffectWorkaround.dropEffect;
+	        scope.$apply(function() {
+	          switch (dropEffect) {
+	            case "move":
+	              $parse(attr.dndMoved)(scope, {event: event});
+	              break;
+	            case "copy":
+	              $parse(attr.dndCopied)(scope, {event: event});
+	              break;
+	            case "none":
+	              $parse(attr.dndCanceled)(scope, {event: event});
+	              break;
+	          }
+	          $parse(attr.dndDragend)(scope, {event: event, dropEffect: dropEffect});
+	        });
+
+	        // Clean up
+	        element.removeClass("dndDragging");
+	        $timeout(function() { element.removeClass("dndDraggingSource"); }, 0);
+	        dndDragTypeWorkaround.isDragging = false;
+	        event.stopPropagation();
+	      });
+
+	      /**
+	       * When the element is clicked we invoke the callback function
+	       * specified with the dnd-selected attribute.
+	       */
+	      element.on('click', function(event) {
+	        if (!attr.dndSelected) return;
+
+	        event = event.originalEvent || event;
+	        scope.$apply(function() {
+	          $parse(attr.dndSelected)(scope, {event: event});
+	        });
+
+	        // Prevent triggering dndSelected in parent elements.
+	        event.stopPropagation();
+	      });
+
+	      /**
+	       * Workaround to make element draggable in IE9
+	       */
+	      element.on('selectstart', function() {
+	        if (this.dragDrop) this.dragDrop();
+	      });
+	    };
+	  }])
+
+	  /**
+	   * Use the dnd-list attribute to make your list element a dropzone. Usually you will add a single
+	   * li element as child with the ng-repeat directive. If you don't do that, we will not be able to
+	   * position the dropped element correctly. If you want your list to be sortable, also add the
+	   * dnd-draggable directive to your li element(s). Both the dnd-list and it's direct children must
+	   * have position: relative CSS style, otherwise the positioning algorithm will not be able to
+	   * determine the correct placeholder position in all browsers.
+	   *
+	   * Attributes:
+	   * - dnd-list             Required attribute. The value has to be the array in which the data of
+	   *                        the dropped element should be inserted.
+	   * - dnd-allowed-types    Optional array of allowed item types. When used, only items that had a
+	   *                        matching dnd-type attribute will be dropable.
+	   * - dnd-disable-if       Optional boolean expresssion. When it evaluates to true, no dropping
+	   *                        into the list is possible. Note that this also disables rearranging
+	   *                        items inside the list.
+	   * - dnd-horizontal-list  Optional boolean expresssion. When it evaluates to true, the positioning
+	   *                        algorithm will use the left and right halfs of the list items instead of
+	   *                        the upper and lower halfs.
+	   * - dnd-dragover         Optional expression that is invoked when an element is dragged over the
+	   *                        list. If the expression is set, but does not return true, the element is
+	   *                        not allowed to be dropped. The following variables will be available:
+	   *                        - event: The original dragover event sent by the browser.
+	   *                        - index: The position in the list at which the element would be dropped.
+	   *                        - type: The dnd-type set on the dnd-draggable, or undefined if unset.
+	   *                        - external: Whether the element was dragged from an external source.
+	   * - dnd-drop             Optional expression that is invoked when an element is dropped on the
+	   *                        list. The following variables will be available:
+	   *                        - event: The original drop event sent by the browser.
+	   *                        - index: The position in the list at which the element would be dropped.
+	   *                        - item: The transferred object.
+	   *                        - type: The dnd-type set on the dnd-draggable, or undefined if unset.
+	   *                        - external: Whether the element was dragged from an external source.
+	   *                        The return value determines the further handling of the drop:
+	   *                        - false: The drop will be canceled and the element won't be inserted.
+	   *                        - true: Signalises that the drop is allowed, but the dnd-drop
+	   *                          callback already took care of inserting the element.
+	   *                        - otherwise: All other return values will be treated as the object to
+	   *                          insert into the array. In most cases you want to simply return the
+	   *                          item parameter, but there are no restrictions on what you can return.
+	   * - dnd-inserted         Optional expression that is invoked after a drop if the element was
+	   *                        actually inserted into the list. The same local variables as for
+	   *                        dnd-drop will be available. Note that for reorderings inside the same
+	   *                        list the old element will still be in the list due to the fact that
+	   *                        dnd-moved was not called yet.
+	   * - dnd-external-sources Optional boolean expression. When it evaluates to true, the list accepts
+	   *                        drops from sources outside of the current browser tab. This allows to
+	   *                        drag and drop accross different browser tabs. Note that this will allow
+	   *                        to drop arbitrary text into the list, thus it is highly recommended to
+	   *                        implement the dnd-drop callback to check the incoming element for
+	   *                        sanity. Furthermore, the dnd-type of external sources can not be
+	   *                        determined, therefore do not rely on restrictions of dnd-allowed-type.
+	   *
+	   * CSS classes:
+	   * - dndPlaceholder       When an element is dragged over the list, a new placeholder child
+	   *                        element will be added. This element is of type li and has the class
+	   *                        dndPlaceholder set. Alternatively, you can define your own placeholder
+	   *                        by creating a child element with dndPlaceholder class.
+	   * - dndDragover          Will be added to the list while an element is dragged over the list.
+	   */
+	  .directive('dndList', ['$parse', '$timeout', 'dndDropEffectWorkaround', 'dndDragTypeWorkaround',
+	                 function($parse,   $timeout,   dndDropEffectWorkaround,   dndDragTypeWorkaround) {
+	    return function(scope, element, attr) {
+	      // While an element is dragged over the list, this placeholder element is inserted
+	      // at the location where the element would be inserted after dropping
+	      var placeholder = getPlaceholderElement();
+	      var placeholderNode = placeholder[0];
+	      var listNode = element[0];
+	      placeholder.remove();
+
+	      var horizontal = attr.dndHorizontalList && scope.$eval(attr.dndHorizontalList);
+	      var externalSources = attr.dndExternalSources && scope.$eval(attr.dndExternalSources);
+
+	      /**
+	       * The dragenter event is fired when a dragged element or text selection enters a valid drop
+	       * target. According to the spec, we either need to have a dropzone attribute or listen on
+	       * dragenter events and call preventDefault(). It should be noted though that no browser seems
+	       * to enforce this behaviour.
+	       */
+	      element.on('dragenter', function (event) {
+	        event = event.originalEvent || event;
+	        if (!isDropAllowed(event)) return true;
+	        event.preventDefault();
+	      });
+
+	      /**
+	       * The dragover event is triggered "every few hundred milliseconds" while an element
+	       * is being dragged over our list, or over an child element.
+	       */
+	      element.on('dragover', function(event) {
+	        event = event.originalEvent || event;
+
+	        if (!isDropAllowed(event)) return true;
+
+	        // First of all, make sure that the placeholder is shown
+	        // This is especially important if the list is empty
+	        if (placeholderNode.parentNode != listNode) {
+	          element.append(placeholder);
+	        }
+
+	        if (event.target !== listNode) {
+	          // Try to find the node direct directly below the list node.
+	          var listItemNode = event.target;
+	          while (listItemNode.parentNode !== listNode && listItemNode.parentNode) {
+	            listItemNode = listItemNode.parentNode;
+	          }
+
+	          if (listItemNode.parentNode === listNode && listItemNode !== placeholderNode) {
+	            // If the mouse pointer is in the upper half of the child element,
+	            // we place it before the child element, otherwise below it.
+	            if (isMouseInFirstHalf(event, listItemNode)) {
+	              listNode.insertBefore(placeholderNode, listItemNode);
+	            } else {
+	              listNode.insertBefore(placeholderNode, listItemNode.nextSibling);
+	            }
+	          }
+	        } else {
+	          // This branch is reached when we are dragging directly over the list element.
+	          // Usually we wouldn't need to do anything here, but the IE does not fire it's
+	          // events for the child element, only for the list directly. Therefore, we repeat
+	          // the positioning algorithm for IE here.
+	          if (isMouseInFirstHalf(event, placeholderNode, true)) {
+	            // Check if we should move the placeholder element one spot towards the top.
+	            // Note that display none elements will have offsetTop and offsetHeight set to
+	            // zero, therefore we need a special check for them.
+	            while (placeholderNode.previousElementSibling
+	                 && (isMouseInFirstHalf(event, placeholderNode.previousElementSibling, true)
+	                 || placeholderNode.previousElementSibling.offsetHeight === 0)) {
+	              listNode.insertBefore(placeholderNode, placeholderNode.previousElementSibling);
+	            }
+	          } else {
+	            // Check if we should move the placeholder element one spot towards the bottom
+	            while (placeholderNode.nextElementSibling &&
+	                 !isMouseInFirstHalf(event, placeholderNode.nextElementSibling, true)) {
+	              listNode.insertBefore(placeholderNode,
+	                  placeholderNode.nextElementSibling.nextElementSibling);
+	            }
+	          }
+	        }
+
+	        // At this point we invoke the callback, which still can disallow the drop.
+	        // We can't do this earlier because we want to pass the index of the placeholder.
+	        if (attr.dndDragover && !invokeCallback(attr.dndDragover, event, getPlaceholderIndex())) {
+	          return stopDragover();
+	        }
+
+	        element.addClass("dndDragover");
+	        event.preventDefault();
+	        event.stopPropagation();
+	        return false;
+	      });
+
+	      /**
+	       * When the element is dropped, we use the position of the placeholder element as the
+	       * position where we insert the transferred data. This assumes that the list has exactly
+	       * one child element per array element.
+	       */
+	      element.on('drop', function(event) {
+	        event = event.originalEvent || event;
+
+	        if (!isDropAllowed(event)) return true;
+
+	        // The default behavior in Firefox is to interpret the dropped element as URL and
+	        // forward to it. We want to prevent that even if our drop is aborted.
+	        event.preventDefault();
+
+	        // Unserialize the data that was serialized in dragstart. According to the HTML5 specs,
+	        // the "Text" drag type will be converted to text/plain, but IE does not do that.
+	        var data = event.dataTransfer.getData("Text") || event.dataTransfer.getData("text/plain");
+	        var transferredObject;
+	        try {
+	          transferredObject = JSON.parse(data);
+	        } catch(e) {
+	          return stopDragover();
+	        }
+
+	        // Invoke the callback, which can transform the transferredObject and even abort the drop.
+	        var index = getPlaceholderIndex();
+	        if (attr.dndDrop) {
+	          transferredObject = invokeCallback(attr.dndDrop, event, index, transferredObject);
+	          if (!transferredObject) {
+	            return stopDragover();
+	          }
+	        }
+
+	        // Insert the object into the array, unless dnd-drop took care of that (returned true).
+	        if (transferredObject !== true) {
+	          scope.$apply(function() {
+	            scope.$eval(attr.dndList).splice(index, 0, transferredObject);
+	          });
+	        }
+	        invokeCallback(attr.dndInserted, event, index, transferredObject);
+
+	        // In Chrome on Windows the dropEffect will always be none...
+	        // We have to determine the actual effect manually from the allowed effects
+	        if (event.dataTransfer.dropEffect === "none") {
+	          if (event.dataTransfer.effectAllowed === "copy" ||
+	              event.dataTransfer.effectAllowed === "move") {
+	            dndDropEffectWorkaround.dropEffect = event.dataTransfer.effectAllowed;
+	          } else {
+	            dndDropEffectWorkaround.dropEffect = event.ctrlKey ? "copy" : "move";
+	          }
+	        } else {
+	          dndDropEffectWorkaround.dropEffect = event.dataTransfer.dropEffect;
+	        }
+
+	        // Clean up
+	        stopDragover();
+	        event.stopPropagation();
+	        return false;
+	      });
+
+	      /**
+	       * We have to remove the placeholder when the element is no longer dragged over our list. The
+	       * problem is that the dragleave event is not only fired when the element leaves our list,
+	       * but also when it leaves a child element -- so practically it's fired all the time. As a
+	       * workaround we wait a few milliseconds and then check if the dndDragover class was added
+	       * again. If it is there, dragover must have been called in the meantime, i.e. the element
+	       * is still dragging over the list. If you know a better way of doing this, please tell me!
+	       */
+	      element.on('dragleave', function(event) {
+	        event = event.originalEvent || event;
+
+	        element.removeClass("dndDragover");
+	        $timeout(function() {
+	          if (!element.hasClass("dndDragover")) {
+	            placeholder.remove();
+	          }
+	        }, 100);
+	      });
+
+	      /**
+	       * Checks whether the mouse pointer is in the first half of the given target element.
+	       *
+	       * In Chrome we can just use offsetY, but in Firefox we have to use layerY, which only
+	       * works if the child element has position relative. In IE the events are only triggered
+	       * on the listNode instead of the listNodeItem, therefore the mouse positions are
+	       * relative to the parent element of targetNode.
+	       */
+	      function isMouseInFirstHalf(event, targetNode, relativeToParent) {
+	        var mousePointer = horizontal ? (event.offsetX || event.layerX)
+	                                      : (event.offsetY || event.layerY);
+	        var targetSize = horizontal ? targetNode.offsetWidth : targetNode.offsetHeight;
+	        var targetPosition = horizontal ? targetNode.offsetLeft : targetNode.offsetTop;
+	        targetPosition = relativeToParent ? targetPosition : 0;
+	        return mousePointer < targetPosition + targetSize / 2;
+	      }
+
+	      /**
+	       * Tries to find a child element that has the dndPlaceholder class set. If none was found, a
+	       * new li element is created.
+	       */
+	      function getPlaceholderElement() {
+	        var placeholder;
+	        angular.forEach(element.children(), function(childNode) {
+	          var child = angular.element(childNode);
+	          if (child.hasClass('dndPlaceholder')) {
+	            placeholder = child;
+	          }
+	        });
+	        return placeholder || angular.element("<li class='dndPlaceholder'></li>");
+	      }
+
+	      /**
+	       * We use the position of the placeholder node to determine at which position of the array the
+	       * object needs to be inserted
+	       */
+	      function getPlaceholderIndex() {
+	        return Array.prototype.indexOf.call(listNode.children, placeholderNode);
+	      }
+
+	      /**
+	       * Checks various conditions that must be fulfilled for a drop to be allowed
+	       */
+	      function isDropAllowed(event) {
+	        // Disallow drop from external source unless it's allowed explicitly.
+	        if (!dndDragTypeWorkaround.isDragging && !externalSources) return false;
+
+	        // Check mimetype. Usually we would use a custom drag type instead of Text, but IE doesn't
+	        // support that.
+	        if (!hasTextMimetype(event.dataTransfer.types)) return false;
+
+	        // Now check the dnd-allowed-types against the type of the incoming element. For drops from
+	        // external sources we don't know the type, so it will need to be checked via dnd-drop.
+	        if (attr.dndAllowedTypes && dndDragTypeWorkaround.isDragging) {
+	          var allowed = scope.$eval(attr.dndAllowedTypes);
+	          if (angular.isArray(allowed) && allowed.indexOf(dndDragTypeWorkaround.dragType) === -1) {
+	            return false;
+	          }
+	        }
+
+	        // Check whether droping is disabled completely
+	        if (attr.dndDisableIf && scope.$eval(attr.dndDisableIf)) return false;
+
+	        return true;
+	      }
+
+	      /**
+	       * Small helper function that cleans up if we aborted a drop.
+	       */
+	      function stopDragover() {
+	        placeholder.remove();
+	        element.removeClass("dndDragover");
+	        return true;
+	      }
+
+	      /**
+	       * Invokes a callback with some interesting parameters and returns the callbacks return value.
+	       */
+	      function invokeCallback(expression, event, index, item) {
+	        return $parse(expression)(scope, {
+	          event: event,
+	          index: index,
+	          item: item || undefined,
+	          external: !dndDragTypeWorkaround.isDragging,
+	          type: dndDragTypeWorkaround.isDragging ? dndDragTypeWorkaround.dragType : undefined
+	        });
+	      }
+
+	      /**
+	       * Check if the dataTransfer object contains a drag type that we can handle. In old versions
+	       * of IE the types collection will not even be there, so we just assume a drop is possible.
+	       */
+	      function hasTextMimetype(types) {
+	        if (!types) return true;
+	        for (var i = 0; i < types.length; i++) {
+	          if (types[i] === "Text" || types[i] === "text/plain") return true;
+	        }
+
+	        return false;
+	      }
+	    };
+	  }])
+
+	  /**
+	   * Use the dnd-nodrag attribute inside of dnd-draggable elements to prevent them from starting
+	   * drag operations. This is especially useful if you want to use input elements inside of
+	   * dnd-draggable elements or create specific handle elements. Note: This directive does not work
+	   * in Internet Explorer 9.
+	   */
+	  .directive('dndNodrag', function() {
+	    return function(scope, element, attr) {
+	      // Set as draggable so that we can cancel the events explicitly
+	      element.attr("draggable", "true");
+
+	      /**
+	       * Since the element is draggable, the browser's default operation is to drag it on dragstart.
+	       * We will prevent that and also stop the event from bubbling up.
+	       */
+	      element.on('dragstart', function(event) {
+	        event = event.originalEvent || event;
+
+	        if (!event._dndHandle) {
+	          // If a child element already reacted to dragstart and set a dataTransfer object, we will
+	          // allow that. For example, this is the case for user selections inside of input elements.
+	          if (!(event.dataTransfer.types && event.dataTransfer.types.length)) {
+	            event.preventDefault();
+	          }
+	          event.stopPropagation();
+	        }
+	      });
+
+	      /**
+	       * Stop propagation of dragend events, otherwise dnd-moved might be triggered and the element
+	       * would be removed.
+	       */
+	      element.on('dragend', function(event) {
+	        event = event.originalEvent || event;
+	        if (!event._dndHandle) {
+	          event.stopPropagation();
+	        }
+	      });
+	    };
+	  })
+
+	  /**
+	   * Use the dnd-handle directive within a dnd-nodrag element in order to allow dragging with that
+	   * element after all. Therefore, by combining dnd-nodrag and dnd-handle you can allow
+	   * dnd-draggable elements to only be dragged via specific "handle" elements. Note that Internet
+	   * Explorer will show the handle element as drag image instead of the dnd-draggable element. You
+	   * can work around this by styling the handle element differently when it is being dragged. Use
+	   * the CSS selector .dndDragging:not(.dndDraggingSource) [dnd-handle] for that.
+	   */
+	  .directive('dndHandle', function() {
+	    return function(scope, element, attr) {
+	      element.attr("draggable", "true");
+
+	      element.on('dragstart dragend', function(event) {
+	        event = event.originalEvent || event;
+	        event._dndHandle = true;
+	      });
+	    };
+	  })
+
+	  /**
+	   * This workaround handles the fact that Internet Explorer does not support drag types other than
+	   * "Text" and "URL". That means we can not know whether the data comes from one of our elements or
+	   * is just some other data like a text selection. As a workaround we save the isDragging flag in
+	   * here. When a dropover event occurs, we only allow the drop if we are already dragging, because
+	   * that means the element is ours.
+	   */
+	  .factory('dndDragTypeWorkaround', function(){ return {} })
+
+	  /**
+	   * Chrome on Windows does not set the dropEffect field, which we need in dragend to determine
+	   * whether a drag operation was successful. Therefore we have to maintain it in this global
+	   * variable. The bug report for that has been open for years:
+	   * https://code.google.com/p/chromium/issues/detail?id=39399
+	   */
+	  .factory('dndDropEffectWorkaround', function(){ return {} });
+
+
+/***/ },
+/* 20 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -71438,7 +72815,66 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 18 */
+/* 21 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = config;
+	function config(UserService, $rootScope, BroadcastEvents, VenueService, $state, ErrorService, UtilsService) {
+	  'ngInject';
+
+	  function setupChangeEvent() {
+	    $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
+	      var notRequiresUser = ['auth.signin', 'error'];
+	      if (notRequiresUser.indexOf(toState.name) === -1 && !UserService.user) {
+	        $state.go("auth.signin");
+	        event.preventDefault();
+	        return false;
+	      }
+	      return true;
+	    });
+	  }
+
+	  function redirectSignin() {
+	    $state.go("auth.signin");
+	    setupChangeEvent();
+	  }
+
+	  $rootScope.$on(BroadcastEvents._ON_USER_AUTH, function (event, user) {
+	    console.log("User is auth, fetch venues", user);
+	    VenueService.fetchUserVenues(user).then(function (venues) {
+	      if (venues.length === 0) {
+	        //TODO GET VENUES THAT I'M STAFF, if there's at least one show staff errro
+	        // if (venuesStaff.length){
+	        //ErrorService.showError("STAFF");
+	        // }
+	        return $state.go("notFound");
+	      }
+
+	      if ($state.current.name.indexOf("main") === -1) {
+	        var venueId = venues[0].id;
+	        $state.go("main.dashboard", { venueId: venueId });
+	      }
+	    }, function () {
+	      ErrorService.showError('FAILED_LOADING_VENUES');
+	    });
+	  });
+
+	  Preoday.Api.headers({
+	    'X-Session-Token': UtilsService.getCookie('PHPSESSID'),
+	    'preo-appid': 'weborders'
+	  });
+
+	  //Set up the stateChange event only after this first call to prevent multiple redirects to /auth/signup
+	  UserService.auth().then(setupChangeEvent, redirectSignin);
+	}
+
+/***/ },
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -71451,12 +72887,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	function routes($urlRouterProvider) {
 	  'ngInject';
 
-	  $urlRouterProvider.otherwise('/9/main/dashboard');
+	  $urlRouterProvider.otherwise('/auth/signin');
 	}
 	routes.$inject = ["$urlRouterProvider"];
 
 /***/ },
-/* 19 */
+/* 23 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -71469,7 +72905,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 20 */
+/* 24 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  _PREO_DO_VENUE_SELECT: '_PREO_DO_VENUE_SELECT',
+	  _ON_USER_AUTH: '_ON_USER_AUTH',
+	  _ON_FETCH_VENUES: '_ON_FETCH_VENUES',
+	  _ON_CLOSE_CONTEXTUAL_MENU: '_ON_CLOSE_CONTEXTUAL_MENU'
+	};
+
+/***/ },
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71478,7 +72930,243 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(21);
+	var _user = __webpack_require__(26);
+
+	var _user2 = _interopRequireDefault(_user);
+
+	var _venue = __webpack_require__(27);
+
+	var _venue2 = _interopRequireDefault(_venue);
+
+	var _utils = __webpack_require__(28);
+
+	var _utils2 = _interopRequireDefault(_utils);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = angular.module("PreodayServices", []).service(_user2.default.UID, _user2.default).service(_venue2.default.UID, _venue2.default).service(_utils2.default.UID, _utils2.default).name;
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var UserService = function () {
+	  _createClass(UserService, [{
+	    key: "auth",
+	    value: function auth(data) {
+	      var _this = this;
+
+	      return this.$q(function (resolve, reject) {
+	        Preoday.User.auth(data).then(function (user) {
+	          _this.user = user;
+	          _this.$rootScope.$broadcast(_this.BroadcastEvents._ON_USER_AUTH, user);
+	          resolve(user);
+	        }, reject);
+	      });
+	    }
+	  }, {
+	    key: "signout",
+	    value: function signout() {
+	      Preoday.User.signout();
+	      window.location.reload();
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
+	    key: "UID",
+	    get: function get() {
+	      return "UserService";
+	    }
+	  }]);
+
+	  function UserService($q, $rootScope, BroadcastEvents) {
+	    "ngInject";
+
+	    _classCallCheck(this, UserService);
+
+	    this.$q = $q;
+	    this.$rootScope = $rootScope;
+	    this.BroadcastEvents = BroadcastEvents;
+	  }
+
+	  return UserService;
+	}();
+
+	exports.default = UserService;
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var VenueService = function () {
+	  _createClass(VenueService, [{
+	    key: "fetchById",
+	    value: function fetchById(venueId) {
+	      var _this = this;
+
+	      return this.$q(function (resolve, reject) {
+	        //If i have a list, try to find it in the cached list
+	        if (_this.venues) {
+	          var filtered = _this.venues.filter(function (v) {
+	            return v.id === venueId;
+	          });
+	          if (filtered.length) {
+	            return resolve(filtered[0]);
+	          }
+	          //Else try to get the venue if i'm super admin, or redirect to 404
+	          _this.$state.go("notFound");
+	        }
+	      });
+	    }
+	  }, {
+	    key: "fetchUserVenues",
+	    value: function fetchUserVenues(user) {
+	      var _this2 = this;
+
+	      return this.$q(function (resolve, reject) {
+	        Preoday.Venue.fetch({ adminId: user.id, roles: "admin,owner" }).then(function (venues) {
+	          console.log("got venues", venues);
+	          if (venues && venues.length) {
+	            _this2.venues = venues;
+	            if (_this2.$stateParams.venueId) {
+	              return _this2.fetchById(Number(_this2.$stateParams.venueId)).then(function (venue) {
+	                _this2.currentVenue = venue;
+	                _this2.$rootScope.$broadcast(_this2.BroadcastEvents._ON_FETCH_VENUES, venues);
+	                resolve(venues);
+	                console.log("3");
+	              }, reject);
+	            }
+	            _this2.currentVenue = venues[0];
+	            _this2.$rootScope.$broadcast(_this2.BroadcastEvents._ON_FETCH_VENUES, venues);
+	          }
+	          resolve(venues);
+	        }, reject);
+	      });
+	    }
+	  }, {
+	    key: "signout",
+	    value: function signout() {
+	      Preoday.User.signout();
+	      window.location.reload();
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
+	    key: "UID",
+	    get: function get() {
+	      return "VenueService";
+	    }
+	  }]);
+
+	  function VenueService($q, $state, $rootScope, BroadcastEvents, $stateParams) {
+	    "ngInject";
+
+	    _classCallCheck(this, VenueService);
+
+	    this.$q = $q;
+	    this.$state = $state;
+	    this.$stateParams = $stateParams;
+	    this.$rootScope = $rootScope;
+	    this.BroadcastEvents = BroadcastEvents;
+	  }
+
+	  return VenueService;
+	}();
+
+	exports.default = VenueService;
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var UtilsService = function () {
+	  _createClass(UtilsService, [{
+	    key: "getImagePath",
+	    value: function getImagePath(imgUrl) {
+	      var outputUrl = window._PREO_DATA._CDNROOT;
+
+	      if (/^https?:\/\//.test(imgUrl)) {
+	        return imgUrl;
+	      }
+
+	      if (imgUrl[0] === "/" && outputUrl[outputUrl.length - 1] === "/") {
+	        imgUrl = imgUrl.substring(1);
+	      }
+
+	      return outputUrl + imgUrl;
+	    }
+	  }, {
+	    key: "getCookie",
+	    value: function getCookie(name) {
+
+	      var match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+	      if (match) return match[1];
+	      return false;
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
+	    key: "UID",
+	    get: function get() {
+	      return "UtilsService";
+	    }
+	  }]);
+
+	  function UtilsService() {
+	    "ngInject";
+
+	    _classCallCheck(this, UtilsService);
+	  }
+
+	  return UtilsService;
+	}();
+
+	exports.default = UtilsService;
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(30);
 
 	var _angular = __webpack_require__(7);
 
@@ -71488,49 +73176,51 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _main = __webpack_require__(23);
+	var _main = __webpack_require__(32);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _main3 = __webpack_require__(24);
+	var _main3 = __webpack_require__(33);
 
 	var _main4 = _interopRequireDefault(_main3);
 
-	var _dashboard = __webpack_require__(26);
+	var _dashboard = __webpack_require__(35);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
-	var _analytics = __webpack_require__(140);
+	var _analytics = __webpack_require__(180);
 
 	var _analytics2 = _interopRequireDefault(_analytics);
 
-	var _account = __webpack_require__(146);
+	var _account = __webpack_require__(186);
 
 	var _account2 = _interopRequireDefault(_account);
 
-	var _navbar = __webpack_require__(152);
+	var _navbar = __webpack_require__(192);
 
 	var _navbar2 = _interopRequireDefault(_navbar);
 
-	var _toolbar = __webpack_require__(158);
+	var _toolbar = __webpack_require__(203);
 
 	var _toolbar2 = _interopRequireDefault(_toolbar);
 
+	var _contextualMenu = __webpack_require__(228);
+
+	var _contextualMenu2 = _interopRequireDefault(_contextualMenu);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// Import Style
-	exports.default = _angular2.default.module("main", [_angularUiRouter2.default, _dashboard2.default, _analytics2.default, _account2.default, _navbar2.default, _toolbar2.default]).config(_main4.default).controller(_main2.default.UID, _main2.default).name;
-
 	// Import internal modules
+	exports.default = _angular2.default.module("main", [_angularUiRouter2.default, _dashboard2.default, _analytics2.default, _account2.default, _navbar2.default, _toolbar2.default, _contextualMenu2.default]).config(_main4.default).controller(_main2.default.UID, _main2.default).name; // Import Style
 
 /***/ },
-/* 21 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(22);
+	var content = __webpack_require__(31);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -71550,7 +73240,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 22 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -71558,13 +73248,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.content-holder {\n  background: #fafafa; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 23 */
+/* 32 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -71580,13 +73270,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	var mainController = function () {
 	  _createClass(mainController, [{
 	    key: "setVenue",
-	    value: function setVenue(v) {
-	      console.log("got venue", v);
+	    value: function setVenue(venueId) {
+	      this.VenueService.fetchById(venueId).then(this.handleFinishLoading.bind(this), this.handleError.bind(this, "VENUE_NOT_FOUND")).catch(this.handleError.bind(this));
 	    }
 	  }, {
 	    key: "handleError",
 	    value: function handleError(err) {
-	      this.err = err;
+	      this.ErrorService.showError(err);
+	    }
+	  }, {
+	    key: "handleFinishLoading",
+	    value: function handleFinishLoading() {
+	      this.$rootScope.$on(this.BroadcastEvents._PREO_ON_VENUE_SELECTED, this.setVenue);
+	      console.log("loaded main");
 	    }
 
 	    /* @ngInject */
@@ -71598,12 +73294,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }]);
 
-	  function mainController($stateParams) {
+	  function mainController($rootScope, $stateParams, ErrorService, BroadcastEvents, UserService, VenueService) {
 	    'ngInject';
 
 	    _classCallCheck(this, mainController);
 
-	    Preoday.Venue.get($stateParams.venueId).then(this.setVenue.bind(this)).catch(this.handleError.bind(this));
+	    this.VenueService = VenueService;
+	    this.ErrorService = ErrorService;
+	    this.$rootScope = $rootScope;
+	    this.BroadcastEvents = BroadcastEvents;
+	    this.setVenue(Number($stateParams.venueId));
+	    $rootScope.$on(BroadcastEvents._PREO_DO_VENUE_SELECT, this.setVenue);
 	  }
 
 	  return mainController;
@@ -71612,7 +73313,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = mainController;
 
 /***/ },
-/* 24 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71622,7 +73323,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _main = __webpack_require__(23);
+	var _main = __webpack_require__(32);
 
 	var _main2 = _interopRequireDefault(_main);
 
@@ -71639,7 +73340,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  $stateProvider.state("main", {
 	    url: "/:venueId/main",
 	    abstract: true,
-	    template: __webpack_require__(25),
+	    template: __webpack_require__(34),
 	    controller: _main2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -71647,13 +73348,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 25 */
+/* 34 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class='main'>\n  <toolbar></toolbar>\n  <section layout=\"row\" layout-align=\"start stretch\" class='maxHeightScreen minus-toolbar'>\n    <navbar></navbar>\n    <!-- <div class='content'></div> -->\n    <ui-view></ui-view>\n  </section>\n  <div ng-if=\"vm.error\">\n      {{vm.error}}\n  </div>\n</div>\n"
+	module.exports = "<div class='main'>\n  <toolbar></toolbar>\n  <section layout=\"row\" layout-align=\"start stretch\" class='maxHeightScreen minus-toolbar'>\n    <navbar></navbar>\n      <ui-view  flex class='content-holder'></ui-view>\n  </section>\n</div>\n"
 
 /***/ },
-/* 26 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71662,7 +73363,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(27);
+	__webpack_require__(36);
 
 	var _angular = __webpack_require__(7);
 
@@ -71672,51 +73373,51 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _dashboard = __webpack_require__(29);
+	var _dashboard = __webpack_require__(38);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
-	var _dashboard3 = __webpack_require__(30);
+	var _dashboard3 = __webpack_require__(39);
 
 	var _dashboard4 = _interopRequireDefault(_dashboard3);
 
-	var _bookings = __webpack_require__(32);
+	var _bookings = __webpack_require__(41);
 
 	var _bookings2 = _interopRequireDefault(_bookings);
 
-	var _events = __webpack_require__(56);
+	var _events = __webpack_require__(65);
 
 	var _events2 = _interopRequireDefault(_events);
 
-	var _menus = __webpack_require__(62);
+	var _menus = __webpack_require__(71);
 
 	var _menus2 = _interopRequireDefault(_menus);
 
-	var _notifications = __webpack_require__(68);
+	var _notifications = __webpack_require__(108);
 
 	var _notifications2 = _interopRequireDefault(_notifications);
 
-	var _outlets = __webpack_require__(74);
+	var _outlets = __webpack_require__(114);
 
 	var _outlets2 = _interopRequireDefault(_outlets);
 
-	var _payments = __webpack_require__(80);
+	var _payments = __webpack_require__(120);
 
 	var _payments2 = _interopRequireDefault(_payments);
 
-	var _promotions = __webpack_require__(98);
+	var _promotions = __webpack_require__(138);
 
 	var _promotions2 = _interopRequireDefault(_promotions);
 
-	var _styling = __webpack_require__(104);
+	var _styling = __webpack_require__(144);
 
 	var _styling2 = _interopRequireDefault(_styling);
 
-	var _venueSettings = __webpack_require__(128);
+	var _venueSettings = __webpack_require__(168);
 
 	var _venueSettings2 = _interopRequireDefault(_venueSettings);
 
-	var _vouchers = __webpack_require__(134);
+	var _vouchers = __webpack_require__(174);
 
 	var _vouchers2 = _interopRequireDefault(_vouchers);
 
@@ -71728,13 +73429,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("dashboard", [_angularUiRouter2.default, _bookings2.default, _events2.default, _menus2.default, _notifications2.default, _outlets2.default, _payments2.default, _promotions2.default, _styling2.default, _venueSettings2.default, _vouchers2.default]).config(_dashboard4.default).controller(_dashboard2.default.UID, _dashboard2.default).name; // Import Style
 
 /***/ },
-/* 27 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(28);
+	var content = __webpack_require__(37);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -71754,7 +73455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 28 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -71762,13 +73463,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".dashboard {\n  max-height: 100%; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 29 */
+/* 38 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -71804,7 +73505,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = dashboardController;
 
 /***/ },
-/* 30 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71814,7 +73515,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _dashboard = __webpack_require__(29);
+	var _dashboard = __webpack_require__(38);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
@@ -71830,7 +73531,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard", {
 	    url: "/dashboard",
-	    template: __webpack_require__(31),
+	    template: __webpack_require__(40),
 	    controller: _dashboard2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -71838,13 +73539,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 31 */
+/* 40 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class='dashboard'>\n  In dashboard\n  <ui-view></ui-view>\n</div>\n"
+	module.exports = "<div class='dashboard' layout=\"row\" layout-align=\"stretch stretch\">\n  <ui-view flex></ui-view>\n</div>\n"
 
 /***/ },
-/* 32 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71853,7 +73554,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(33);
+	__webpack_require__(42);
 
 	var _angular = __webpack_require__(7);
 
@@ -71863,23 +73564,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _bookings = __webpack_require__(35);
+	var _bookings = __webpack_require__(44);
 
 	var _bookings2 = _interopRequireDefault(_bookings);
 
-	var _bookings3 = __webpack_require__(36);
+	var _bookings3 = __webpack_require__(45);
 
 	var _bookings4 = _interopRequireDefault(_bookings3);
 
-	var _bookingList = __webpack_require__(38);
+	var _bookingList = __webpack_require__(47);
 
 	var _bookingList2 = _interopRequireDefault(_bookingList);
 
-	var _bookingMenus = __webpack_require__(44);
+	var _bookingMenus = __webpack_require__(53);
 
 	var _bookingMenus2 = _interopRequireDefault(_bookingMenus);
 
-	var _bookingSettings = __webpack_require__(50);
+	var _bookingSettings = __webpack_require__(59);
 
 	var _bookingSettings2 = _interopRequireDefault(_bookingSettings);
 
@@ -71891,13 +73592,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import internal modules
 
 /***/ },
-/* 33 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(34);
+	var content = __webpack_require__(43);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -71917,7 +73618,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 34 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -71931,7 +73632,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 35 */
+/* 44 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -71967,7 +73668,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = bookingsController;
 
 /***/ },
-/* 36 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71977,7 +73678,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _bookings = __webpack_require__(35);
+	var _bookings = __webpack_require__(44);
 
 	var _bookings2 = _interopRequireDefault(_bookings);
 
@@ -71993,7 +73694,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.bookings", {
 	    url: "/bookings",
-	    template: __webpack_require__(37),
+	    template: __webpack_require__(46),
 	    controller: _bookings2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -72001,13 +73702,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 37 */
+/* 46 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  bookings\n  <ui-view></ui-view>\n</div>\n"
 
 /***/ },
-/* 38 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72016,7 +73717,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(39);
+	__webpack_require__(48);
 
 	var _angular = __webpack_require__(7);
 
@@ -72026,11 +73727,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _bookingList = __webpack_require__(41);
+	var _bookingList = __webpack_require__(50);
 
 	var _bookingList2 = _interopRequireDefault(_bookingList);
 
-	var _bookingList3 = __webpack_require__(42);
+	var _bookingList3 = __webpack_require__(51);
 
 	var _bookingList4 = _interopRequireDefault(_bookingList3);
 
@@ -72040,13 +73741,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("bookingList", [_angularUiRouter2.default]).config(_bookingList4.default).controller(_bookingList2.default.UID, _bookingList2.default).name; // Import Style
 
 /***/ },
-/* 39 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(40);
+	var content = __webpack_require__(49);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -72066,7 +73767,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 40 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -72080,7 +73781,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 41 */
+/* 50 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -72116,7 +73817,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = bookingListController;
 
 /***/ },
-/* 42 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72126,7 +73827,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _bookingList = __webpack_require__(41);
+	var _bookingList = __webpack_require__(50);
 
 	var _bookingList2 = _interopRequireDefault(_bookingList);
 
@@ -72142,7 +73843,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.bookings.bookingList", {
 	    url: "/bookingList",
-	    template: __webpack_require__(43),
+	    template: __webpack_require__(52),
 	    controller: _bookingList2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -72150,13 +73851,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 43 */
+/* 52 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  bookingList\n</div>\n"
 
 /***/ },
-/* 44 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72165,7 +73866,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(45);
+	__webpack_require__(54);
 
 	var _angular = __webpack_require__(7);
 
@@ -72175,11 +73876,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _bookingMenus = __webpack_require__(47);
+	var _bookingMenus = __webpack_require__(56);
 
 	var _bookingMenus2 = _interopRequireDefault(_bookingMenus);
 
-	var _bookingMenus3 = __webpack_require__(48);
+	var _bookingMenus3 = __webpack_require__(57);
 
 	var _bookingMenus4 = _interopRequireDefault(_bookingMenus3);
 
@@ -72189,13 +73890,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("bookingMenus", [_angularUiRouter2.default]).config(_bookingMenus4.default).controller(_bookingMenus2.default.UID, _bookingMenus2.default).name; // Import Style
 
 /***/ },
-/* 45 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(46);
+	var content = __webpack_require__(55);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -72215,9 +73916,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 46 */
-40,
-/* 47 */
+/* 55 */
+49,
+/* 56 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -72253,7 +73954,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = bookingMenusController;
 
 /***/ },
-/* 48 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72263,7 +73964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _bookingMenus = __webpack_require__(47);
+	var _bookingMenus = __webpack_require__(56);
 
 	var _bookingMenus2 = _interopRequireDefault(_bookingMenus);
 
@@ -72279,7 +73980,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.bookings.bookingMenus", {
 	    url: "/bookingMenus",
-	    template: __webpack_require__(49),
+	    template: __webpack_require__(58),
 	    controller: _bookingMenus2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -72287,13 +73988,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 49 */
+/* 58 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  bookingMenus\n</div>\n"
 
 /***/ },
-/* 50 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72302,7 +74003,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(51);
+	__webpack_require__(60);
 
 	var _angular = __webpack_require__(7);
 
@@ -72312,11 +74013,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _bookingSettings = __webpack_require__(53);
+	var _bookingSettings = __webpack_require__(62);
 
 	var _bookingSettings2 = _interopRequireDefault(_bookingSettings);
 
-	var _bookingSettings3 = __webpack_require__(54);
+	var _bookingSettings3 = __webpack_require__(63);
 
 	var _bookingSettings4 = _interopRequireDefault(_bookingSettings3);
 
@@ -72326,13 +74027,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("bookingSettings", [_angularUiRouter2.default]).config(_bookingSettings4.default).controller(_bookingSettings2.default.UID, _bookingSettings2.default).name; // Import Style
 
 /***/ },
-/* 51 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(52);
+	var content = __webpack_require__(61);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -72352,9 +74053,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 52 */
-40,
-/* 53 */
+/* 61 */
+49,
+/* 62 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -72390,7 +74091,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = bookingSettingsController;
 
 /***/ },
-/* 54 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72400,7 +74101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _bookingSettings = __webpack_require__(53);
+	var _bookingSettings = __webpack_require__(62);
 
 	var _bookingSettings2 = _interopRequireDefault(_bookingSettings);
 
@@ -72416,7 +74117,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.bookings.bookingSettings", {
 	    url: "/bookingSettings",
-	    template: __webpack_require__(55),
+	    template: __webpack_require__(64),
 	    controller: _bookingSettings2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -72424,13 +74125,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 55 */
+/* 64 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  bookingSettings\n</div>\n"
 
 /***/ },
-/* 56 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72439,7 +74140,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(57);
+	__webpack_require__(66);
 
 	var _angular = __webpack_require__(7);
 
@@ -72449,11 +74150,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _events = __webpack_require__(59);
+	var _events = __webpack_require__(68);
 
 	var _events2 = _interopRequireDefault(_events);
 
-	var _events3 = __webpack_require__(60);
+	var _events3 = __webpack_require__(69);
 
 	var _events4 = _interopRequireDefault(_events3);
 
@@ -72463,13 +74164,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("events", [_angularUiRouter2.default]).config(_events4.default).controller(_events2.default.UID, _events2.default).name; // Import Style
 
 /***/ },
-/* 57 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(58);
+	var content = __webpack_require__(67);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -72489,9 +74190,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 58 */
-34,
-/* 59 */
+/* 67 */
+43,
+/* 68 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -72527,7 +74228,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = eventsController;
 
 /***/ },
-/* 60 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72537,7 +74238,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _events = __webpack_require__(59);
+	var _events = __webpack_require__(68);
 
 	var _events2 = _interopRequireDefault(_events);
 
@@ -72553,7 +74254,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.events", {
 	    url: "/events",
-	    template: __webpack_require__(61),
+	    template: __webpack_require__(70),
 	    controller: _events2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -72561,13 +74262,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 61 */
+/* 70 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  events\n</div>\n"
 
 /***/ },
-/* 62 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72576,7 +74277,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(63);
+	__webpack_require__(72);
 
 	var _angular = __webpack_require__(7);
 
@@ -72586,27 +74287,41 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _menus = __webpack_require__(65);
+	var _menus = __webpack_require__(74);
 
 	var _menus2 = _interopRequireDefault(_menus);
 
-	var _menus3 = __webpack_require__(66);
+	var _menus3 = __webpack_require__(75);
 
 	var _menus4 = _interopRequireDefault(_menus3);
 
+	var _menu = __webpack_require__(77);
+
+	var _menu2 = _interopRequireDefault(_menu);
+
+	var _menuList = __webpack_require__(83);
+
+	var _menuList2 = _interopRequireDefault(_menuList);
+
+	var _menuSection = __webpack_require__(89);
+
+	var _menuSection2 = _interopRequireDefault(_menuSection);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// Import Style
+	exports.default = _angular2.default.module("menus", [_angularUiRouter2.default, _menu2.default, _menuList2.default, _menuSection2.default]).config(_menus4.default).controller(_menus2.default.UID, _menus2.default).name;
+
 	// Import internal modules
-	exports.default = _angular2.default.module("menus", [_angularUiRouter2.default]).config(_menus4.default).controller(_menus2.default.UID, _menus2.default).name; // Import Style
 
 /***/ },
-/* 63 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(64);
+	var content = __webpack_require__(73);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -72626,9 +74341,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 64 */
-34,
-/* 65 */
+/* 73 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".menus {\n  max-height: 100%; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 74 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -72652,11 +74379,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  }]);
 
-	  function menusController() {
+	  function menusController($stateParams, ErrorService) {
 	    'ngInject';
 
 	    _classCallCheck(this, menusController);
 	  }
+	  menusController.$inject = ["$stateParams", "ErrorService"];
 
 	  return menusController;
 	}();
@@ -72664,7 +74392,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = menusController;
 
 /***/ },
-/* 66 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72674,7 +74402,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _menus = __webpack_require__(65);
+	var _menus = __webpack_require__(74);
 
 	var _menus2 = _interopRequireDefault(_menus);
 
@@ -72690,7 +74418,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.menus", {
 	    url: "/menus",
-	    template: __webpack_require__(67),
+	    abstract: true,
+	    template: __webpack_require__(76),
 	    controller: _menus2.default.UID,
 	    controllerAs: "menus"
 	  });
@@ -72698,13 +74427,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 67 */
+/* 76 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n  menus\n</div>\n"
+	module.exports = "<div class='menus' layout='row'>\n  <ui-view flex name=\"menuContent\"></ui-view>\n</div>\n"
 
 /***/ },
-/* 68 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72713,7 +74442,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(69);
+	__webpack_require__(78);
 
 	var _angular = __webpack_require__(7);
 
@@ -72723,11 +74452,1026 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _notifications = __webpack_require__(71);
+	var _menu = __webpack_require__(80);
+
+	var _menu2 = _interopRequireDefault(_menu);
+
+	var _menu3 = __webpack_require__(81);
+
+	var _menu4 = _interopRequireDefault(_menu3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Import internal modules
+	exports.default = _angular2.default.module("menu", [_angularUiRouter2.default]).config(_menu4.default).controller(_menu2.default.UID, _menu2.default).name; // Import Style
+
+/***/ },
+/* 78 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(79);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../../../node_modules/css-loader/index.js!./../../../../../../../node_modules/sass-loader/index.js!./menu.scss", function() {
+				var newContent = require("!!./../../../../../../../node_modules/css-loader/index.js!./../../../../../../../node_modules/sass-loader/index.js!./menu.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 79 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.menu {\n  max-height: 100%; }\n  .menu .menu-toolbar {\n    background: #EEEEEE;\n    border-bottom: 1px solid #CCCCCC;\n    min-height: 50px;\n    width: 100%;\n    font-size: 16px; }\n    .menu .menu-toolbar .menu-name {\n      padding-left: 24px; }\n    .menu .menu-toolbar button {\n      margin-right: 18px; }\n  .menu .menu-content {\n    overflow: auto; }\n  .menu .main-content-right {\n    margin: 24px 16px 24px 4px; }\n  .menu .main-content-left {\n    margin: 24px 4px 24px 16px; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 80 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var menuController = function () {
+	  _createClass(menuController, [{
+	    key: "onSectionMoved",
+
+
+	    //this library copies the object but doesn't keep the type, we still need the prototype methods
+	    value: function onSectionMoved($index) {
+	      var originalSection = this.menu.sections[$index];
+	      var sectionNewIndex = -1;
+
+	      //find the new section index by comparing ids, first match with a different $index is the new position of the section
+	      this.menu.sections.forEach(function (s, index) {
+	        if (sectionNewIndex === -1 && s.id === originalSection.id && index !== $index) {
+	          sectionNewIndex = index;
+	        }
+	      });
+
+	      // Remove Section from array to be repositioned
+	      this.menu.sections.splice($index, 1);
+
+	      // we changed the array, if the Object is after the Section, we just changed the index of the section by one, removing one fixes that
+	      if (sectionNewIndex > $index) {
+	        sectionNewIndex -= 1;
+	      }
+
+	      // Remove Object created by library and position section in it's place
+	      this.menu.sections.splice(sectionNewIndex, 1, originalSection);
+
+	      //update all sections
+	      this.menu.sections.forEach(function (s, index) {
+	        console.log("s", s);
+	        s.position = index * 1000;
+	        s.update();
+	      });
+	    }
+	  }, {
+	    key: "toggleContextualMenu",
+	    value: function toggleContextualMenu(entity, type, onSubmit, onCancel) {
+	      if (entity) {
+	        this.showingContextualMenu = type;
+	        this.contextualEntity = entity;
+	        this.contextualSubmit = onSubmit;
+	        this.contextualCancel = onCancel;
+	      } else {
+	        delete this.showingContextualMenu;
+	        delete this.contextualEntity;
+	        delete this.contextualSubmit;
+	        delete this.contextualCancel;
+	      }
+	    }
+	  }, {
+	    key: "createSection",
+	    value: function createSection(newSection) {
+	      this.menu.sections.push(newSection);
+	    }
+	  }, {
+	    key: "deleteSection",
+	    value: function deleteSection(section) {
+	      this.menu.sections = this.menu.sections.filter(function (s) {
+	        return section.id !== s.id;
+	      });
+	    }
+	  }, {
+	    key: "selectSection",
+	    value: function selectSection(section) {
+	      this.menu.sections.forEach(function (s, index) {
+	        if (s.id === section.id) {
+	          s.$selected = true;
+	        } else {
+	          s.$selected = false;
+	        }
+	      });
+	    }
+	  }, {
+	    key: "duplicateSection",
+	    value: function duplicateSection(section) {
+	      console.log("duplicating section", section, this);
+	      //TODO duplicate section
+	    }
+	  }, {
+	    key: "setMenu",
+	    value: function setMenu(menuId) {
+	      console.log("set menu", menuId);
+	      Preoday.Menu.get(menuId).then(this.handleFinishLoading.bind(this), this.handleError.bind(this, "FAILED_LOADING_MENU")).catch(function (err) {
+	        return console.log("err", err);
+	      });
+	    }
+	  }, {
+	    key: "handleError",
+	    value: function handleError(error) {
+	      console.log("got error", error);
+	      this.error = this.ErrorService[error];
+	    }
+	  }, {
+	    key: "handleFinishLoading",
+	    value: function handleFinishLoading(dataMenu) {
+	      var _this = this;
+
+	      console.log("got data ", dataMenu);
+	      this.$timeout(function () {
+	        _this.menu = dataMenu;
+	      });
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
+	    key: "UID",
+	    get: function get() {
+	      return "menuController";
+	    }
+	  }]);
+
+	  function menuController($stateParams, $timeout, DialogService, $mdToast, $rootScope, BroadcastEvents, Snack) {
+	    'ngInject';
+
+	    var _this2 = this;
+
+	    _classCallCheck(this, menuController);
+
+	    console.log("state", $stateParams.menuId);
+	    this.DialogService = DialogService;
+	    this.Snack = Snack;
+	    this.$mdToast = $mdToast;
+	    this.setMenu($stateParams.menuId);
+	    this.$timeout = $timeout;
+	    this.showingContextualMenu = false;
+	    $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU, function () {
+	      _this2.toggleContextualMenu();
+	    });
+	  }
+
+	  return menuController;
+	}();
+
+	exports.default = menuController;
+
+/***/ },
+/* 81 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = routes;
+
+	var _menu = __webpack_require__(80);
+
+	var _menu2 = _interopRequireDefault(_menu);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Routing function for menu
+	 * @param  $stateProvider
+	 */
+	/* @ngInject */
+	function routes($stateProvider) {
+	  'ngInject';
+
+	  $stateProvider.state("main.dashboard.menus.menu", {
+	    url: "/:menuId",
+	    views: {
+	      menuContent: {
+	        template: __webpack_require__(82),
+	        controller: _menu2.default.UID,
+	        controllerAs: "vm"
+	      }
+	    }
+	  });
+	}
+	routes.$inject = ["$stateProvider"];
+
+/***/ },
+/* 82 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class='menu' layout=\"column\">\n  <div class=\"menu-toolbar\" layout=\"row\" layout-align=\"start center\">\n    <div flex class='menu-name'>{{vm.menu.name}}</div>\n    <md-button translate>Show modifiers</md-button>\n  </div>\n  <div flex layout=\"row\" layout-align=\"start stretch\">\n    <div class=\"menu-content\" flex=\"60\">\n      <div class='main-content-left' dnd-list=\"vm.menu.sections\">\n        <menu-section\n          ng-repeat=\"section in vm.menu.sections\"\n          section=\"section\"\n          dnd-draggable=\"section\"\n          dnd-moved=\"vm.onSectionMoved($index)\"\n          dnd-effect-allowed=\"move\"\n          ></menu-section>\n        <menu-section menu-id=\"vm.menu.id\"></menu-section>\n      </div>\n    </div>\n    <div flex=\"40\" class='main-content-right'>\n      <contextual-menu on-submit=\"vm.contextualSubmit\" type=\"vm.showingContextualMenu\" ng-if=\"vm.showingContextualMenu\" entity=\"vm.contextualEntity\"></contextual-menu>\n    </div>\n  </div>\n</div>\n"
+
+/***/ },
+/* 83 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(84);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _angularUiRouter = __webpack_require__(9);
+
+	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
+
+	var _menuList = __webpack_require__(86);
+
+	var _menuList2 = _interopRequireDefault(_menuList);
+
+	var _menuList3 = __webpack_require__(87);
+
+	var _menuList4 = _interopRequireDefault(_menuList3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Import internal modules
+	exports.default = _angular2.default.module("menuList", [_angularUiRouter2.default]).config(_menuList4.default).controller(_menuList2.default.UID, _menuList2.default).name; // Import Style
+
+/***/ },
+/* 84 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(85);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../../../node_modules/css-loader/index.js!./../../../../../../../node_modules/sass-loader/index.js!./menuList.scss", function() {
+				var newContent = require("!!./../../../../../../../node_modules/css-loader/index.js!./../../../../../../../node_modules/sass-loader/index.js!./menuList.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 85 */
+49,
+/* 86 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var menuListController = function () {
+	  _createClass(menuListController, [{
+	    key: "showMenu",
+	    value: function showMenu(menu) {
+	      this.$state.go("main.dashboard.menus.menu", { menuId: menu.id });
+	    }
+	  }, {
+	    key: "setMenus",
+	    value: function setMenus(venueId) {
+	      var noExpand = true;
+	      Preoday.Menu.get({ venueId: venueId, noExpand: noExpand }).then(this.handleFinishLoading.bind(this), this.handleError.bind(this, "FAILED_LOADING_MENUS"));
+	    }
+	  }, {
+	    key: "handleError",
+	    value: function handleError(error) {
+	      this.error = this.ErrorService[error];
+	    }
+	  }, {
+	    key: "handleFinishLoading",
+	    value: function handleFinishLoading(dataMenus) {
+	      this.menus = dataMenus;
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
+	    key: "UID",
+	    get: function get() {
+	      return "menuListController";
+	    }
+	  }]);
+
+	  function menuListController($state, $stateParams, ErrorService) {
+	    'ngInject';
+
+	    _classCallCheck(this, menuListController);
+
+	    this.$state = $state;
+	    this.setMenus($stateParams.venueId);
+	    this.ErrorService = ErrorService;
+	  }
+
+	  return menuListController;
+	}();
+
+	exports.default = menuListController;
+
+/***/ },
+/* 87 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = routes;
+
+	var _menuList = __webpack_require__(86);
+
+	var _menuList2 = _interopRequireDefault(_menuList);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Routing function for menuList
+	 * @param  $stateProvider
+	 */
+	/* @ngInject */
+	function routes($stateProvider) {
+	  'ngInject';
+
+	  $stateProvider.state("main.dashboard.menus.list", {
+	    url: "",
+	    views: {
+	      menuContent: {
+	        template: __webpack_require__(88),
+	        controller: _menuList2.default.UID,
+	        controllerAs: "vm"
+	      }
+	    }
+	  });
+	}
+	routes.$inject = ["$stateProvider"];
+
+/***/ },
+/* 88 */
+/***/ function(module, exports) {
+
+	module.exports = "<div>\n  <div class='menus-content'>\n   <div ng-repeat=\"menu in vm.menus\">\n      <div ng-click=\"vm.showMenu(menu)\">{{menu.name}}</div>\n   </div>\n  </div>\n</div>\n"
+
+/***/ },
+/* 89 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(90);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _menuSection = __webpack_require__(92);
+
+	var _menuSection2 = _interopRequireDefault(_menuSection);
+
+	var _menuSection3 = __webpack_require__(93);
+
+	var _menuSection4 = _interopRequireDefault(_menuSection3);
+
+	var _menuItem = __webpack_require__(96);
+
+	var _menuItem2 = _interopRequireDefault(_menuItem);
+
+	var _cardActions = __webpack_require__(102);
+
+	var _cardActions2 = _interopRequireDefault(_cardActions);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Import internal modules
+	// Import Style
+	exports.default = _angular2.default.module("menuSection", [_menuItem2.default, _cardActions2.default]).controller(_menuSection2.default.UID, _menuSection2.default).directive("menuSection", _menuSection4.default).name;
+
+/***/ },
+/* 90 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(91);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./menuSection.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./menuSection.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 91 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.menu-section {\n  border: 1px solid #eeeeee;\n  position: relative; }\n  .menu-section > md-card-title {\n    padding: 16px 0 16px 16px; }\n    .menu-section > md-card-title:hover .arrow-icon {\n      opacity: 1; }\n    .menu-section > md-card-title button {\n      margin-right: -16px; }\n    .menu-section > md-card-title .arrow-icon {\n      opacity: 0; }\n    .menu-section > md-card-title > div {\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis; }\n    .menu-section > md-card-title .visibility {\n      margin-right: 16px;\n      position: relative;\n      top: -2px; }\n  .menu-section > .card-actions-holder > md-card-actions {\n    position: absolute;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    background: rgba(255, 255, 255, 0.9); }\n    .menu-section > .card-actions-holder > md-card-actions:hover {\n      cursor: pointer; }\n  .menu-section.selected {\n    background-color: #E1F5FE; }\n  .menu-section:not(.selected) {\n    box-shadow: none; }\n  .menu-section.hidden > md-card-title {\n    color: #757575; }\n\n.menu-section-new {\n  position: relative;\n  min-height: 80px;\n  border: 1px dotted #BDBDBD; }\n  .menu-section-new button {\n    position: absolute;\n    bottom: -20px;\n    left: 20px; }\n\nmd-card.card-outline-only {\n  background: transparent;\n  box-shadow: none; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 92 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var menuSectionController = function () {
+	  _createClass(menuSectionController, [{
+	    key: "createSection",
+	    value: function createSection() {
+	      var _this = this;
+
+	      var newData = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
+
+	      return this.$q(function (resolve, reject) {
+	        Preoday.Section.save(newData || _this.section).then(function (section) {
+	          _this.Snack.show('Section created');
+	          console.log("created section", section);
+	          _this.menuCtrl.createSection(section);
+	          if (!newData) {
+	            delete _this.section;
+	          }
+	          resolve();
+	        }, function () {
+	          reject();
+	          _this.Snack.showError('Error saving section');
+	        });
+	      });
+	    }
+	  }, {
+	    key: "showCreateSection",
+	    value: function showCreateSection($event) {
+	      if (!this.section || !this.section.id) {
+	        this.section = {
+	          id: -1,
+	          menuId: this.menuId,
+	          $selected: true,
+	          position: this.menuCtrl.menu.sections.length * 1000
+	        };
+	      }
+	      this.menuCtrl.selectSection(this.section);
+	      this.menuCtrl.toggleContextualMenu(this.section, this.type, this.createSection.bind(this));
+	      this.toggleCardActions($event);
+	      $event.stopPropagation();
+	    }
+	  }, {
+	    key: "saveSection",
+	    value: function saveSection() {
+	      var _this2 = this;
+
+	      return this.$q(function (resolve, reject) {
+	        _this2.section.update().then(function () {
+	          _this2.Snack.show('Section updated');
+	          resolve();
+	        }, function () {
+	          reject();
+	          _this2.Snack.showError('Error saving section');
+	        });
+
+	        console.log("resolved");
+	      });
+	    }
+	  }, {
+	    key: "onVisibility",
+	    value: function onVisibility(newStatus, $event) {
+	      this.section.visible = newStatus ? 1 : 0;
+	      this.saveSection();
+	      $event.stopPropagation();
+	    }
+	  }, {
+	    key: "onClone",
+	    value: function onClone($event) {
+	      var newSectionData = angular.copy(this.section);
+	      newSectionData.position = this.menuCtrl.menu.sections.length * 1000;
+	      this.createSection(newSectionData); //will create a new section with this section as data
+	      $event.stopPropagation();
+	    }
+	  }, {
+	    key: "onDelete",
+	    value: function onDelete($event) {
+	      var _this3 = this;
+
+	      this.DialogService.delete("Delete section?", "Are you sure you want to delete this section? The items in this section will not be deleted.").then(function () {
+	        console.log("this.section delete", _this3.section);
+	        _this3.section.delete().then(function () {
+	          _this3.Snack.show('Section deleted');
+	          _this3.menuCtrl.deleteSection(_this3.section);
+	        }, function () {
+	          console.log("error deleting section");
+	          _this3.Snack.showError('Error deleting section');
+	        });
+	      });
+	      $event.stopPropagation();
+	    }
+	  }, {
+	    key: "onEdit",
+	    value: function onEdit($event) {
+	      this.menuCtrl.selectSection(this.section);
+	      this.menuCtrl.toggleContextualMenu(this.section, this.type, this.saveSection.bind(this));
+	      this.toggleCardActions($event);
+	      $event.stopPropagation();
+	    }
+	  }, {
+	    key: "toggleCardActions",
+	    value: function toggleCardActions($event) {
+	      this.showCardActions = !this.showCardActions;
+	      $event.stopPropagation();
+	    }
+	  }, {
+	    key: "toggleExpanded",
+	    value: function toggleExpanded() {
+	      this.expanded = !this.expanded;
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
+	    key: "UID",
+	    get: function get() {
+	      return "menuSectionController";
+	    }
+	  }]);
+
+	  function menuSectionController($rootScope, $q, BroadcastEvents, DialogService, Snack) {
+	    'ngInject';
+
+	    var _this4 = this;
+
+	    _classCallCheck(this, menuSectionController);
+
+	    this.$q = $q;
+	    this.Snack = Snack;
+	    this.DialogService = DialogService;
+	    this.type = 'menuSection'; //type for contextual menu
+	    this.showCardActions = false;
+	    this.expanded = false;
+	    this.$selected = false;
+	    $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU, function (event, entity, type) {
+	      if (_this4.section) {
+	        if (entity && type === _this4.type && entity.id === _this4.section.id) {
+	          _this4.section = entity;
+	        }
+	        _this4.section.$selected = false;
+	      }
+	    });
+	  }
+
+	  return menuSectionController;
+	}();
+
+	exports.default = menuSectionController;
+
+/***/ },
+/* 93 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = menuSection;
+
+	var _menuSection = __webpack_require__(92);
+
+	var _menuSection2 = _interopRequireDefault(_menuSection);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function menuSection($compile) {
+	  'ngInject';
+
+	  return {
+	    restrict: 'E',
+	    scope: {
+	      section: "=?",
+	      menuId: "=?"
+	    },
+	    template: __webpack_require__(94),
+	    controller: _menuSection2.default.UID,
+	    controllerAs: "vm",
+	    bindToController: true,
+	    replace: true,
+	    link: function link(scope, el, attr, ctrl) {
+	      ctrl.menuCtrl = el.parent().controller();
+	      if (!ctrl.section || ctrl.section.id === -1) {
+	        var newEl = angular.element(__webpack_require__(95));
+	        angular.element(el[0]).replaceWith(newEl);
+	        $compile(newEl)(scope).scope();
+	      }
+	    }
+	  };
+	}
+
+/***/ },
+/* 94 */
+/***/ function(module, exports) {
+
+	module.exports = "<md-card class='menu-section'  md-whiteframe=\"3\" ng-class=\"{selected:vm.section.$selected, hidden:!vm.section.visible}\">\n  <md-card-title ng-click=\"vm.toggleExpanded()\" layout=\"row\" layout-align=\"start center\">\n      <div flex> <icon class='visibility' ng-if=\"!vm.section.visible\">visibility_off</icon> <span>{{vm.section.name}}</span> <icon class='arrow-icon'>arrow_drop_down</icon></div>\n        <md-button class=\"md-icon-button\" ng-click=\"vm.toggleCardActions($event)\">\n          <icon>more_horiz</icon>\n        </md-button>\n  </md-card-title>\n  <card-actions vm=\"vm\" entity=\"vm.section\"></card-actions>\n  <menu-item ng-if=\"vm.expanded\" ng-repeat=\"item in vm.section.items\" item=\"item\"></menu-item>\n</md-card >"
+
+/***/ },
+/* 95 */
+/***/ function(module, exports) {
+
+	module.exports = "<md-card class='menu-section menu-section-new card-outline-only' ng-class=\"{selected:vm.section.$selected}\">\n  <md-card-title layout=\"row\" layout-align=\"start center\" ng-if=\"vm.section.name\">\n      <div flex> <span>{{vm.section.name}}</span> </div>\n  </md-card-title>\n  <md-card-actions>\n    <md-button class=\"md-fab md-mini md-primary\" aria-label=\"Add Section\" ng-click=\"vm.showCreateSection($event)\">\n      <icon>add</icon>\n    </md-button>\n  </md-card-actions>\n</md-card>"
+
+/***/ },
+/* 96 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(97);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _menuItem = __webpack_require__(99);
+
+	var _menuItem2 = _interopRequireDefault(_menuItem);
+
+	var _menuItem3 = __webpack_require__(100);
+
+	var _menuItem4 = _interopRequireDefault(_menuItem3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Import internal modules
+	// Import Style
+	exports.default = _angular2.default.module("menuItem", []).controller(_menuItem2.default.UID, _menuItem2.default).directive("menuItem", _menuItem4.default).name;
+
+/***/ },
+/* 97 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(98);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./menuItem.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./menuItem.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 98 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 99 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var menuItemController = function () {
+	  _createClass(menuItemController, null, [{
+	    key: "UID",
+	    get: function get() {
+	      return "menuItemController";
+	    }
+
+	    /* @ngInject */
+
+	  }]);
+
+	  function menuItemController() {
+	    'ngInject';
+
+	    _classCallCheck(this, menuItemController);
+
+	    this.title = "I am a menuItem component";
+	  }
+
+	  return menuItemController;
+	}();
+
+	exports.default = menuItemController;
+
+/***/ },
+/* 100 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = menuItem;
+
+	var _menuItem = __webpack_require__(99);
+
+	var _menuItem2 = _interopRequireDefault(_menuItem);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function menuItem() {
+	  'ngInject';
+
+	  return {
+	    restrict: 'E',
+	    scope: {
+	      item: "="
+	    },
+	    template: __webpack_require__(101),
+	    controller: _menuItem2.default.UID,
+	    controllerAs: "vm",
+	    bindToController: true,
+	    replace: true,
+	    link: function link(scope, el, attr, ctrl) {}
+	  };
+	}
+
+/***/ },
+/* 101 */
+/***/ function(module, exports) {
+
+	module.exports = "<md-card  class='menu-item'>\n  <md-card-title>\n    {{vm.item.name}}\n  </md-card-title>\n</md-card >"
+
+/***/ },
+/* 102 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(103);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _cardActions = __webpack_require__(105);
+
+	var _cardActions2 = _interopRequireDefault(_cardActions);
+
+	var _cardActions3 = __webpack_require__(106);
+
+	var _cardActions4 = _interopRequireDefault(_cardActions3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Import internal modules
+	// Import Style
+	exports.default = _angular2.default.module("cardActions", []).controller(_cardActions2.default.UID, _cardActions2.default).directive("cardActions", _cardActions4.default).name;
+
+/***/ },
+/* 103 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(104);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./cardActions.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./cardActions.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 104 */
+98,
+/* 105 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var cardActionsController = function () {
+	  _createClass(cardActionsController, [{
+	    key: "doClose",
+	    value: function doClose() {
+	      console.log("doing close");
+	      this.onClose();
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
+	    key: "UID",
+	    get: function get() {
+	      return "cardActionsController";
+	    }
+	  }]);
+
+	  function cardActionsController() {
+	    _classCallCheck(this, cardActionsController);
+
+	    console.log("cardactions", this);
+	  }
+
+	  return cardActionsController;
+	}();
+
+	exports.default = cardActionsController;
+
+/***/ },
+/* 106 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = cardActions;
+
+	var _cardActions = __webpack_require__(105);
+
+	var _cardActions2 = _interopRequireDefault(_cardActions);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function cardActions() {
+	  return {
+	    restrict: 'E',
+	    scope: {
+	      vm: "=",
+	      entity: "="
+	    },
+	    template: __webpack_require__(107),
+	    replace: true,
+	    link: function link(scope, el, attr) {
+	      // scope.isVisible = scope.entity.visible;
+	      // scope.$watch("entity.visible",(newValue)=>{
+	      //   scope.isVisible = newValue;
+	      // });
+	    }
+	  };
+	}
+
+/***/ },
+/* 107 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class='card-actions-holder'>\n  <md-card-actions ng-if=\"vm.showCardActions\" class=\"hidden-card-actions\" layout=\"row\" layout-align=\"end center\" ng-click=\"vm.toggleCardActions($event)\">\n    <md-button class=\"md-icon-button\" ng-click=\"vm.onEdit($event)\">\n      <icon>edit</icon>\n      <md-tooltip md-direction=\"bottom\">\n        Edit\n      </md-tooltip>\n    </md-button>\n    <md-button class=\"md-icon-button\" ng-click=\"vm.onClone($event)\">\n      <icon>content_copy</icon>\n      <md-tooltip md-direction=\"bottom\">\n        Duplicate\n      </md-tooltip>\n    </md-button>\n    <md-button ng-if=\"entity.visible\" class=\"md-icon-button\" ng-click=\"vm.onVisibility(false, $event)\">\n      <icon>visibility_off</icon> <!-- visibility_off -->\n      <md-tooltip md-direction=\"bottom\">\n        Hide from menu\n      </md-tooltip>\n    </md-button>\n    <md-button ng-if=\"!entity.visible\" class=\"md-icon-button\" ng-click=\"vm.onVisibility(true, $event)\">\n      <icon>visibility</icon> <!-- visibility_off -->\n      <md-tooltip md-direction=\"bottom\">\n        Show on menu\n      </md-tooltip>\n    </md-button>\n    <md-button class=\"md-icon-button\" ng-click=\"vm.onDelete($event)\">\n      <icon>delete</icon>\n      <md-tooltip md-direction=\"bottom\">\n        Delete\n      </md-tooltip>\n    </md-button>\n  </md-card-actions>\n</div>"
+
+/***/ },
+/* 108 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(109);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _angularUiRouter = __webpack_require__(9);
+
+	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
+
+	var _notifications = __webpack_require__(111);
 
 	var _notifications2 = _interopRequireDefault(_notifications);
 
-	var _notifications3 = __webpack_require__(72);
+	var _notifications3 = __webpack_require__(112);
 
 	var _notifications4 = _interopRequireDefault(_notifications3);
 
@@ -72737,13 +75481,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("notifications", [_angularUiRouter2.default]).config(_notifications4.default).controller(_notifications2.default.UID, _notifications2.default).name; // Import Style
 
 /***/ },
-/* 69 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(70);
+	var content = __webpack_require__(110);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -72763,9 +75507,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 70 */
-34,
-/* 71 */
+/* 110 */
+43,
+/* 111 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -72801,7 +75545,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = notificationsController;
 
 /***/ },
-/* 72 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72811,7 +75555,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _notifications = __webpack_require__(71);
+	var _notifications = __webpack_require__(111);
 
 	var _notifications2 = _interopRequireDefault(_notifications);
 
@@ -72827,7 +75571,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.notifications", {
 	    url: "/notifications",
-	    template: __webpack_require__(73),
+	    template: __webpack_require__(113),
 	    controller: _notifications2.default.UID,
 	    controllerAs: "notifications"
 	  });
@@ -72835,13 +75579,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 73 */
+/* 113 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  notifications\n</div>\n"
 
 /***/ },
-/* 74 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72850,7 +75594,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(75);
+	__webpack_require__(115);
 
 	var _angular = __webpack_require__(7);
 
@@ -72860,11 +75604,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _outlets = __webpack_require__(77);
+	var _outlets = __webpack_require__(117);
 
 	var _outlets2 = _interopRequireDefault(_outlets);
 
-	var _outlets3 = __webpack_require__(78);
+	var _outlets3 = __webpack_require__(118);
 
 	var _outlets4 = _interopRequireDefault(_outlets3);
 
@@ -72874,13 +75618,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("outlets", [_angularUiRouter2.default]).config(_outlets4.default).controller(_outlets2.default.UID, _outlets2.default).name; // Import Style
 
 /***/ },
-/* 75 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(76);
+	var content = __webpack_require__(116);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -72900,9 +75644,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 76 */
-34,
-/* 77 */
+/* 116 */
+43,
+/* 117 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -72938,7 +75682,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = outletsController;
 
 /***/ },
-/* 78 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72948,7 +75692,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _outlets = __webpack_require__(77);
+	var _outlets = __webpack_require__(117);
 
 	var _outlets2 = _interopRequireDefault(_outlets);
 
@@ -72964,7 +75708,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.outlets", {
 	    url: "/outlets",
-	    template: __webpack_require__(79),
+	    template: __webpack_require__(119),
 	    controller: _outlets2.default.UID,
 	    controllerAs: "outlets"
 	  });
@@ -72972,13 +75716,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 79 */
+/* 119 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  outlets\n</div>\n"
 
 /***/ },
-/* 80 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72987,7 +75731,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(81);
+	__webpack_require__(121);
 
 	var _angular = __webpack_require__(7);
 
@@ -72997,19 +75741,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _payments = __webpack_require__(83);
+	var _payments = __webpack_require__(123);
 
 	var _payments2 = _interopRequireDefault(_payments);
 
-	var _payments3 = __webpack_require__(84);
+	var _payments3 = __webpack_require__(124);
 
 	var _payments4 = _interopRequireDefault(_payments3);
 
-	var _appMode = __webpack_require__(86);
+	var _appMode = __webpack_require__(126);
 
 	var _appMode2 = _interopRequireDefault(_appMode);
 
-	var _paymentMethods = __webpack_require__(92);
+	var _paymentMethods = __webpack_require__(132);
 
 	var _paymentMethods2 = _interopRequireDefault(_paymentMethods);
 
@@ -73019,13 +75763,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("payments", [_angularUiRouter2.default, _appMode2.default, _paymentMethods2.default]).config(_payments4.default).controller(_payments2.default.UID, _payments2.default).name; // Import Style
 
 /***/ },
-/* 81 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(82);
+	var content = __webpack_require__(122);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -73045,9 +75789,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 82 */
-34,
-/* 83 */
+/* 122 */
+43,
+/* 123 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -73083,7 +75827,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = paymentsController;
 
 /***/ },
-/* 84 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73093,7 +75837,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _payments = __webpack_require__(83);
+	var _payments = __webpack_require__(123);
 
 	var _payments2 = _interopRequireDefault(_payments);
 
@@ -73109,7 +75853,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.payments", {
 	    url: "/payments",
-	    template: __webpack_require__(85),
+	    template: __webpack_require__(125),
 	    controller: _payments2.default.UID,
 	    controllerAs: "payments"
 	  });
@@ -73117,13 +75861,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 85 */
+/* 125 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  payments\n</div>\n"
 
 /***/ },
-/* 86 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73132,7 +75876,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(87);
+	__webpack_require__(127);
 
 	var _angular = __webpack_require__(7);
 
@@ -73142,11 +75886,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _appMode = __webpack_require__(89);
+	var _appMode = __webpack_require__(129);
 
 	var _appMode2 = _interopRequireDefault(_appMode);
 
-	var _appMode3 = __webpack_require__(90);
+	var _appMode3 = __webpack_require__(130);
 
 	var _appMode4 = _interopRequireDefault(_appMode3);
 
@@ -73156,13 +75900,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("appMode", [_angularUiRouter2.default]).config(_appMode4.default).controller(_appMode2.default.UID, _appMode2.default).name; // Import Style
 
 /***/ },
-/* 87 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(88);
+	var content = __webpack_require__(128);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -73182,9 +75926,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 88 */
-40,
-/* 89 */
+/* 128 */
+49,
+/* 129 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -73220,7 +75964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = appModeController;
 
 /***/ },
-/* 90 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73230,7 +75974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _appMode = __webpack_require__(89);
+	var _appMode = __webpack_require__(129);
 
 	var _appMode2 = _interopRequireDefault(_appMode);
 
@@ -73246,7 +75990,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.payments.appMode", {
 	    url: "/appMode",
-	    template: __webpack_require__(91),
+	    template: __webpack_require__(131),
 	    controller: _appMode2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -73254,13 +75998,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 91 */
+/* 131 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  appMode\n</div>\n"
 
 /***/ },
-/* 92 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73269,7 +76013,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(93);
+	__webpack_require__(133);
 
 	var _angular = __webpack_require__(7);
 
@@ -73279,11 +76023,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _paymentMethods = __webpack_require__(95);
+	var _paymentMethods = __webpack_require__(135);
 
 	var _paymentMethods2 = _interopRequireDefault(_paymentMethods);
 
-	var _paymentMethods3 = __webpack_require__(96);
+	var _paymentMethods3 = __webpack_require__(136);
 
 	var _paymentMethods4 = _interopRequireDefault(_paymentMethods3);
 
@@ -73293,13 +76037,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("paymentMethods", [_angularUiRouter2.default]).config(_paymentMethods4.default).controller(_paymentMethods2.default.UID, _paymentMethods2.default).name; // Import Style
 
 /***/ },
-/* 93 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(94);
+	var content = __webpack_require__(134);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -73319,9 +76063,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 94 */
-40,
-/* 95 */
+/* 134 */
+49,
+/* 135 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -73357,7 +76101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = paymentMethodsController;
 
 /***/ },
-/* 96 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73367,7 +76111,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _paymentMethods = __webpack_require__(95);
+	var _paymentMethods = __webpack_require__(135);
 
 	var _paymentMethods2 = _interopRequireDefault(_paymentMethods);
 
@@ -73383,7 +76127,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.payments.paymentMethods", {
 	    url: "/paymentMethods",
-	    template: __webpack_require__(97),
+	    template: __webpack_require__(137),
 	    controller: _paymentMethods2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -73391,13 +76135,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 97 */
+/* 137 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  paymentMethods\n</div>\n"
 
 /***/ },
-/* 98 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73406,7 +76150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(99);
+	__webpack_require__(139);
 
 	var _angular = __webpack_require__(7);
 
@@ -73416,11 +76160,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _promotions = __webpack_require__(101);
+	var _promotions = __webpack_require__(141);
 
 	var _promotions2 = _interopRequireDefault(_promotions);
 
-	var _promotions3 = __webpack_require__(102);
+	var _promotions3 = __webpack_require__(142);
 
 	var _promotions4 = _interopRequireDefault(_promotions3);
 
@@ -73430,13 +76174,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("promotions", [_angularUiRouter2.default]).config(_promotions4.default).controller(_promotions2.default.UID, _promotions2.default).name; // Import Style
 
 /***/ },
-/* 99 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(100);
+	var content = __webpack_require__(140);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -73456,9 +76200,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 100 */
-34,
-/* 101 */
+/* 140 */
+43,
+/* 141 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -73494,7 +76238,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = promotionsController;
 
 /***/ },
-/* 102 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73504,7 +76248,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _promotions = __webpack_require__(101);
+	var _promotions = __webpack_require__(141);
 
 	var _promotions2 = _interopRequireDefault(_promotions);
 
@@ -73520,7 +76264,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.promotions", {
 	    url: "/promotions",
-	    template: __webpack_require__(103),
+	    template: __webpack_require__(143),
 	    controller: _promotions2.default.UID,
 	    controllerAs: "promotions"
 	  });
@@ -73528,13 +76272,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 103 */
+/* 143 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  promotions\n</div>\n"
 
 /***/ },
-/* 104 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73543,7 +76287,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(105);
+	__webpack_require__(145);
 
 	var _angular = __webpack_require__(7);
 
@@ -73553,23 +76297,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _styling = __webpack_require__(107);
+	var _styling = __webpack_require__(147);
 
 	var _styling2 = _interopRequireDefault(_styling);
 
-	var _styling3 = __webpack_require__(108);
+	var _styling3 = __webpack_require__(148);
 
 	var _styling4 = _interopRequireDefault(_styling3);
 
-	var _mobile = __webpack_require__(110);
+	var _mobile = __webpack_require__(150);
 
 	var _mobile2 = _interopRequireDefault(_mobile);
 
-	var _emails = __webpack_require__(116);
+	var _emails = __webpack_require__(156);
 
 	var _emails2 = _interopRequireDefault(_emails);
 
-	var _weborders = __webpack_require__(122);
+	var _weborders = __webpack_require__(162);
 
 	var _weborders2 = _interopRequireDefault(_weborders);
 
@@ -73581,13 +76325,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import internal modules
 
 /***/ },
-/* 105 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(106);
+	var content = __webpack_require__(146);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -73607,9 +76351,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 106 */
-34,
-/* 107 */
+/* 146 */
+43,
+/* 147 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -73645,7 +76389,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = stylingController;
 
 /***/ },
-/* 108 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73655,7 +76399,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _styling = __webpack_require__(107);
+	var _styling = __webpack_require__(147);
 
 	var _styling2 = _interopRequireDefault(_styling);
 
@@ -73671,7 +76415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.styling", {
 	    url: "/styling",
-	    template: __webpack_require__(109),
+	    template: __webpack_require__(149),
 	    controller: _styling2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -73679,13 +76423,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 109 */
+/* 149 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  styling\n  <ui-view></ui-view>\n</div>\n"
 
 /***/ },
-/* 110 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73694,7 +76438,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(111);
+	__webpack_require__(151);
 
 	var _angular = __webpack_require__(7);
 
@@ -73704,11 +76448,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _mobile = __webpack_require__(113);
+	var _mobile = __webpack_require__(153);
 
 	var _mobile2 = _interopRequireDefault(_mobile);
 
-	var _mobile3 = __webpack_require__(114);
+	var _mobile3 = __webpack_require__(154);
 
 	var _mobile4 = _interopRequireDefault(_mobile3);
 
@@ -73718,13 +76462,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("mobile", [_angularUiRouter2.default]).config(_mobile4.default).controller(_mobile2.default.UID, _mobile2.default).name; // Import Style
 
 /***/ },
-/* 111 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(112);
+	var content = __webpack_require__(152);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -73744,9 +76488,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 112 */
-40,
-/* 113 */
+/* 152 */
+49,
+/* 153 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -73782,7 +76526,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = mobileController;
 
 /***/ },
-/* 114 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73792,7 +76536,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _mobile = __webpack_require__(113);
+	var _mobile = __webpack_require__(153);
 
 	var _mobile2 = _interopRequireDefault(_mobile);
 
@@ -73808,7 +76552,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.styling.mobile", {
 	    url: "/mobile",
-	    template: __webpack_require__(115),
+	    template: __webpack_require__(155),
 	    controller: _mobile2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -73816,13 +76560,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 115 */
+/* 155 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  mobile\n</div>\n"
 
 /***/ },
-/* 116 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73831,7 +76575,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(117);
+	__webpack_require__(157);
 
 	var _angular = __webpack_require__(7);
 
@@ -73841,11 +76585,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _emails = __webpack_require__(119);
+	var _emails = __webpack_require__(159);
 
 	var _emails2 = _interopRequireDefault(_emails);
 
-	var _emails3 = __webpack_require__(120);
+	var _emails3 = __webpack_require__(160);
 
 	var _emails4 = _interopRequireDefault(_emails3);
 
@@ -73855,13 +76599,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("emails", [_angularUiRouter2.default]).config(_emails4.default).controller(_emails2.default.UID, _emails2.default).name; // Import Style
 
 /***/ },
-/* 117 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(118);
+	var content = __webpack_require__(158);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -73881,9 +76625,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 118 */
-40,
-/* 119 */
+/* 158 */
+49,
+/* 159 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -73919,7 +76663,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = emailsController;
 
 /***/ },
-/* 120 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73929,7 +76673,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _emails = __webpack_require__(119);
+	var _emails = __webpack_require__(159);
 
 	var _emails2 = _interopRequireDefault(_emails);
 
@@ -73945,7 +76689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.styling.emails", {
 	    url: "/emails",
-	    template: __webpack_require__(121),
+	    template: __webpack_require__(161),
 	    controller: _emails2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -73953,13 +76697,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 121 */
+/* 161 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  emails\n</div>\n"
 
 /***/ },
-/* 122 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73968,7 +76712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(123);
+	__webpack_require__(163);
 
 	var _angular = __webpack_require__(7);
 
@@ -73978,11 +76722,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _weborders = __webpack_require__(125);
+	var _weborders = __webpack_require__(165);
 
 	var _weborders2 = _interopRequireDefault(_weborders);
 
-	var _weborders3 = __webpack_require__(126);
+	var _weborders3 = __webpack_require__(166);
 
 	var _weborders4 = _interopRequireDefault(_weborders3);
 
@@ -73992,13 +76736,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("weborders", [_angularUiRouter2.default]).config(_weborders4.default).controller(_weborders2.default.UID, _weborders2.default).name; // Import Style
 
 /***/ },
-/* 123 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(124);
+	var content = __webpack_require__(164);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74018,9 +76762,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 124 */
-40,
-/* 125 */
+/* 164 */
+49,
+/* 165 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74056,7 +76800,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = webordersController;
 
 /***/ },
-/* 126 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74066,7 +76810,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _weborders = __webpack_require__(125);
+	var _weborders = __webpack_require__(165);
 
 	var _weborders2 = _interopRequireDefault(_weborders);
 
@@ -74082,7 +76826,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.styling.weborders", {
 	    url: "/weborders",
-	    template: __webpack_require__(127),
+	    template: __webpack_require__(167),
 	    controller: _weborders2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -74090,13 +76834,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 127 */
+/* 167 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  weborders\n</div>\n"
 
 /***/ },
-/* 128 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74105,7 +76849,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(129);
+	__webpack_require__(169);
 
 	var _angular = __webpack_require__(7);
 
@@ -74115,11 +76859,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _venueSettings = __webpack_require__(131);
+	var _venueSettings = __webpack_require__(171);
 
 	var _venueSettings2 = _interopRequireDefault(_venueSettings);
 
-	var _venueSettings3 = __webpack_require__(132);
+	var _venueSettings3 = __webpack_require__(172);
 
 	var _venueSettings4 = _interopRequireDefault(_venueSettings3);
 
@@ -74129,13 +76873,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("venueSettings", [_angularUiRouter2.default]).config(_venueSettings4.default).controller(_venueSettings2.default.UID, _venueSettings2.default).name; // Import Style
 
 /***/ },
-/* 129 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(130);
+	var content = __webpack_require__(170);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74155,9 +76899,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 130 */
-34,
-/* 131 */
+/* 170 */
+43,
+/* 171 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74193,7 +76937,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = venueSettingsController;
 
 /***/ },
-/* 132 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74203,7 +76947,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _venueSettings = __webpack_require__(131);
+	var _venueSettings = __webpack_require__(171);
 
 	var _venueSettings2 = _interopRequireDefault(_venueSettings);
 
@@ -74219,7 +76963,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.venueSettings", {
 	    url: "/venueSettings",
-	    template: __webpack_require__(133),
+	    template: __webpack_require__(173),
 	    controller: _venueSettings2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -74227,13 +76971,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 133 */
+/* 173 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  venueSettings\n</div>\n"
 
 /***/ },
-/* 134 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74242,7 +76986,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(135);
+	__webpack_require__(175);
 
 	var _angular = __webpack_require__(7);
 
@@ -74252,11 +76996,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _vouchers = __webpack_require__(137);
+	var _vouchers = __webpack_require__(177);
 
 	var _vouchers2 = _interopRequireDefault(_vouchers);
 
-	var _vouchers3 = __webpack_require__(138);
+	var _vouchers3 = __webpack_require__(178);
 
 	var _vouchers4 = _interopRequireDefault(_vouchers3);
 
@@ -74266,13 +77010,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("vouchers", [_angularUiRouter2.default]).config(_vouchers4.default).controller(_vouchers2.default.UID, _vouchers2.default).name; // Import Style
 
 /***/ },
-/* 135 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(136);
+	var content = __webpack_require__(176);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74292,9 +77036,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 136 */
-34,
-/* 137 */
+/* 176 */
+43,
+/* 177 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74330,7 +77074,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = vouchersController;
 
 /***/ },
-/* 138 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74340,7 +77084,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _vouchers = __webpack_require__(137);
+	var _vouchers = __webpack_require__(177);
 
 	var _vouchers2 = _interopRequireDefault(_vouchers);
 
@@ -74356,7 +77100,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.vouchers", {
 	    url: "/vouchers",
-	    template: __webpack_require__(139),
+	    template: __webpack_require__(179),
 	    controller: _vouchers2.default.UID,
 	    controllerAs: "vouchers"
 	  });
@@ -74364,13 +77108,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 139 */
+/* 179 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  vouchers\n</div>\n"
 
 /***/ },
-/* 140 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74379,7 +77123,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(141);
+	__webpack_require__(181);
 
 	var _angular = __webpack_require__(7);
 
@@ -74389,11 +77133,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _analytics = __webpack_require__(143);
+	var _analytics = __webpack_require__(183);
 
 	var _analytics2 = _interopRequireDefault(_analytics);
 
-	var _analytics3 = __webpack_require__(144);
+	var _analytics3 = __webpack_require__(184);
 
 	var _analytics4 = _interopRequireDefault(_analytics3);
 
@@ -74403,13 +77147,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("analytics", [_angularUiRouter2.default]).config(_analytics4.default).controller(_analytics2.default.UID, _analytics2.default).name; // Import Style
 
 /***/ },
-/* 141 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(142);
+	var content = __webpack_require__(182);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74429,9 +77173,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 142 */
-28,
-/* 143 */
+/* 182 */
+98,
+/* 183 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74467,7 +77211,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = analyticsController;
 
 /***/ },
-/* 144 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74477,7 +77221,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _analytics = __webpack_require__(143);
+	var _analytics = __webpack_require__(183);
 
 	var _analytics2 = _interopRequireDefault(_analytics);
 
@@ -74493,7 +77237,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.analytics", {
 	    url: "/analytics",
-	    template: __webpack_require__(145),
+	    template: __webpack_require__(185),
 	    controller: _analytics2.default.UID,
 	    controllerAs: "analytics"
 	  });
@@ -74501,13 +77245,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 145 */
+/* 185 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  analytics\n</div>\n"
 
 /***/ },
-/* 146 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74516,7 +77260,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(147);
+	__webpack_require__(187);
 
 	var _angular = __webpack_require__(7);
 
@@ -74526,11 +77270,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _account = __webpack_require__(149);
+	var _account = __webpack_require__(189);
 
 	var _account2 = _interopRequireDefault(_account);
 
-	var _account3 = __webpack_require__(150);
+	var _account3 = __webpack_require__(190);
 
 	var _account4 = _interopRequireDefault(_account3);
 
@@ -74540,13 +77284,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("account", [_angularUiRouter2.default]).config(_account4.default).controller(_account2.default.UID, _account2.default).name; // Import Style
 
 /***/ },
-/* 147 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(148);
+	var content = __webpack_require__(188);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74566,9 +77310,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 148 */
-28,
-/* 149 */
+/* 188 */
+98,
+/* 189 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74604,7 +77348,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = accountController;
 
 /***/ },
-/* 150 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74614,7 +77358,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _account = __webpack_require__(149);
+	var _account = __webpack_require__(189);
 
 	var _account2 = _interopRequireDefault(_account);
 
@@ -74630,7 +77374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.account", {
 	    url: "/account",
-	    template: __webpack_require__(151),
+	    template: __webpack_require__(191),
 	    controller: _account2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -74638,13 +77382,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 151 */
+/* 191 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  account\n</div>\n"
 
 /***/ },
-/* 152 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74653,34 +77397,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(153);
+	__webpack_require__(193);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _navbar = __webpack_require__(155);
+	var _navbar = __webpack_require__(195);
 
 	var _navbar2 = _interopRequireDefault(_navbar);
 
-	var _navbar3 = __webpack_require__(156);
+	var _navbar3 = __webpack_require__(196);
 
 	var _navbar4 = _interopRequireDefault(_navbar3);
 
+	var _navbarItem = __webpack_require__(198);
+
+	var _navbarItem2 = _interopRequireDefault(_navbarItem);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _angular2.default.module("navbar", [_navbarItem2.default]).controller(_navbar2.default.UID, _navbar2.default).directive("navbar", _navbar4.default).name;
 
 	// Import internal modules
 	// Import Style
-	exports.default = _angular2.default.module("navbar", []).controller(_navbar2.default.UID, _navbar2.default).directive("navbar", _navbar4.default).name;
 
 /***/ },
-/* 153 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(154);
+	var content = __webpack_require__(194);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74700,7 +77449,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 154 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -74708,13 +77457,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.md-sidenav-left {\n  transition: width 0.2s linear; }\n  .md-sidenav-left span {\n    transition: max-width 0.2s linear; }\n  .md-sidenav-left:not(.expanded) {\n    width: 72px; }\n    .md-sidenav-left:not(.expanded) .close-menu {\n      text-align: center; }\n    .md-sidenav-left:not(.expanded) span {\n      max-width: 0;\n      overflow: hidden; }\n  .md-sidenav-left button {\n    text-transform: none;\n    border-top-left-radius: 0;\n    border-bottom-left-radius: 0;\n    font-weight: normal; }\n  .md-sidenav-left .close-menu {\n    transition: text-align 0.2s linear;\n    text-align: right; }\n  .md-sidenav-left md-list {\n    overflow-y: auto;\n    overflow-x: hidden; }\n  .md-sidenav-left md-list-item md-menu {\n    padding: 0; }\n    .md-sidenav-left md-list-item md-menu > div > button {\n      border-left: 5px solid transparent;\n      width: 100%;\n      text-align: left;\n      margin: 0;\n      padding: 8px 8px 8px 16px; }\n      .md-sidenav-left md-list-item md-menu > div > button > span {\n        padding-left: 24px; }\n  .md-sidenav-left md-list-item.expanded .children {\n    max-height: none; }\n  .md-sidenav-left md-list-item.selected md-menu > div > button, .md-sidenav-left md-list-item.open md-menu > div > button {\n    border-left: 5px solid #ffab00;\n    background: rgba(158, 158, 158, 0.2); }\n  .md-sidenav-left .children {\n    max-height: 0;\n    overflow: hidden; }\n    .md-sidenav-left .children .selected {\n      color: #ffab00; }\n    .md-sidenav-left .children span {\n      text-align: left; }\n\n.navbar-menu-content {\n  padding: 0; }\n  .navbar-menu-content md-menu-item {\n    height: 52px; }\n    .navbar-menu-content md-menu-item .selected {\n      color: #ffab00; }\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.md-sidenav-left {\n  transition: width 0.2s linear; }\n  .md-sidenav-left span {\n    transition: max-width 0.2s linear;\n    font-weight: 500; }\n  .md-sidenav-left:not(.expanded) {\n    width: 72px; }\n    .md-sidenav-left:not(.expanded) .close-menu {\n      text-align: center; }\n    .md-sidenav-left:not(.expanded) span {\n      max-width: 0;\n      overflow: hidden; }\n  .md-sidenav-left button {\n    text-transform: none;\n    border-top-left-radius: 0;\n    border-bottom-left-radius: 0;\n    font-weight: normal; }\n  .md-sidenav-left .close-menu {\n    transition: text-align 0.2s linear;\n    text-align: right; }\n  .md-sidenav-left md-list {\n    overflow-y: auto;\n    overflow-x: hidden; }\n\n.navbar-menu-content {\n  padding: 0; }\n  .navbar-menu-content md-menu-item {\n    height: 52px; }\n    .navbar-menu-content md-menu-item .selected {\n      color: #ffab00; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 155 */
+/* 195 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74743,54 +77492,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
-	    key: "handleMouseOver",
-	    value: function handleMouseOver(item, $mdOpenMenu, $event) {
-	      // must do this or when the user clicks in trap to hide menu the class is not hidden
+	    key: "closeAllMenus",
+	    value: function closeAllMenus() {
 	      this.menu.forEach(function (i) {
 	        i.$menuOpen = false;
 	      });
-	      if (!this.$expanded && item.children) {
-	        item.$menuOpen = true;
-	        $mdOpenMenu($event);
-	      }
-	    }
-	  }, {
-	    key: "handleMouseLeave",
-	    value: function handleMouseLeave(item, $mdOpenMenu, $event) {
-	      if (!this.$expanded && item.children && item.$menuOpen) {
-	        this.$mdMenu.hide();
-	        item.$menuOpen = false;
-	      }
-	      console.log("$event", $event);
-	    }
-	  }, {
-	    key: "handleClick",
-	    value: function handleClick(item) {
-	      var parent = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
-
-	      var _this = this;
-
-	      var $mdOpenMenu = arguments[2];
-	      var $event = arguments[3];
-
-	      var _handleChildrenExpanded = function _handleChildrenExpanded() {
-	        _this.toggleExpanded(item);
-	      };
-	      var _handleChildrenCollapsed = function _handleChildrenCollapsed() {
-	        $mdOpenMenu($event);
-	      };
-
-	      if (item.children) {
-	        return this.$expanded ? _handleChildrenExpanded() : _handleChildrenCollapsed();
-	      }
-
-	      if (item.id) {
-	        var prefix = this.DESTINATION_PREFIX;
-	        if (parent) {
-	          prefix += parent.id + ".";
-	        }
-	        this.$state.go(prefix + item.id);
-	      }
 	    }
 	  }, {
 	    key: "toggleMenu",
@@ -74808,17 +77514,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }]);
 
-	  function navbarController($state, $mdMenu) {
+	  function navbarController($state) {
 	    'ngInject';
 
 	    _classCallCheck(this, navbarController);
 
-	    console.log("$mdMenu", $mdMenu);
-	    this.$mdMenu = $mdMenu;
 	    this.DESTINATION_PREFIX = "main.dashboard.";
 	    this.$state = $state;
 	    this.$expanded = true;
-	    this.menu = [{ name: "Venue Settings", icon: "store", id: "venueSettings" }, { name: "Menus", icon: "list", id: "menus" }, { name: "Styling", id: "styling", icon: "color_lens", children: [{ name: "Styling", id: "mobile" }, { name: "Web Orders", id: "weborders" }, { name: "Emails", id: "emails" }] }, { name: "Events", icon: "event", id: "events" }, { name: "Outlets", icon: "pin_drop", id: "outlets" }, { name: "Promotions", icon: "star", id: "promotions" }, { name: "Notifications", icon: "chat", id: "notifications" }, { name: "Payments", icon: "credit_card", id: "payments", children: [{ name: "Payment Methods", id: "paymentMethods" }, { name: "App mode", id: "appMode" }] }, { name: "Group Bookings", icon: "people", id: "bookings", children: [{ name: "Settings", id: "bookingSettings" }, { name: "Menus", id: "bookingMenus" }, { name: "Bookings", id: "bookingList" }] }, { name: "Gift vouchers", icon: "label", id: "vouchers" }];
+	    //name: label to be displayed in navbar
+	    //icon: icon to be displayed before label
+	    //id: route that will define destination on click. it's appended on DESTINATION_PREFIX, and if it's a child it's appended after it's parent's id
+	    //is also used for path-select to decide if .selected should be added or not to that particular item for dynamic class
+	    //destination: if given, will be used as a destination instead of the id, useful when parent is abstract, with a default view (like menus and menus.list)
+	    this.menu = [{ name: "Venue Settings", icon: "store", id: "venueSettings" }, { name: "Menus", icon: "list", id: "menus", destination: "menus.list" }, { name: "Styling", id: "styling", icon: "color_lens", children: [{ name: "Styling", id: "mobile" }, { name: "Web Orders", id: "weborders" }, { name: "Emails", id: "emails" }] }, { name: "Events", icon: "event", id: "events" }, { name: "Outlets", icon: "pin_drop", id: "outlets" }, { name: "Promotions", icon: "star", id: "promotions" }, { name: "Notifications", icon: "chat", id: "notifications" }, { name: "Payments", icon: "credit_card", id: "payments", children: [{ name: "Payment Methods", id: "paymentMethods" }, { name: "App mode", id: "appMode" }] }, { name: "Group Bookings", icon: "people", id: "bookings", children: [{ name: "Settings", id: "bookingSettings" }, { name: "Menus", id: "bookingMenus" }, { name: "Bookings", id: "bookingList" }] }, { name: "Gift vouchers", icon: "label", id: "vouchers" }];
 	  }
 
 	  return navbarController;
@@ -74827,7 +77536,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = navbarController;
 
 /***/ },
-/* 156 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74837,7 +77546,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = navbar;
 
-	var _navbar = __webpack_require__(155);
+	var _navbar = __webpack_require__(195);
 
 	var _navbar2 = _interopRequireDefault(_navbar);
 
@@ -74848,7 +77557,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  return {
 	    restrict: 'E',
-	    template: __webpack_require__(157),
+	    template: __webpack_require__(197),
 	    controller: _navbar2.default.UID,
 	    controllerAs: "vm",
 	    bindToController: true,
@@ -74858,13 +77567,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 157 */
+/* 197 */
 /***/ function(module, exports) {
 
-	module.exports = "  <md-sidenav\n      class=\"md-sidenav-left\"\n      md-component-id=\"left\"\n      md-is-locked-open=\"true\"\n      md-disable-backdrop\n      md-whiteframe=\"5\"\n      layout=\"column\"\n      ng-class=\"{expanded:vm.$expanded}\">\n      <md-list flex>\n        <md-list-item ng-repeat=\"item in vm.menu\" path-selected=\"item\" layout-align=\"start none\" layout=\"column\" ng-class=\"{expanded:item.$expanded, open:item.$menuOpen}\">\n          <md-menu  md-offset=\"72 0\">\n            <div>\n              <!-- button itself -->\n              <md-button md-menu-origin  layout=\"row\" layout-align=\"center center\" ng-mouseover=\"vm.handleMouseOver(item, $mdOpenMenu, $event)\" ng-click=\"vm.handleClick(item)\" title=\"{{item.name}}\" aria-label=\"Open {{item.name}} interactions menu\">\n                <icon>{{item.icon}}</icon>\n                <span flex>{{item.name}}</span>\n                <icon ng-if=\"vm.$expanded && item.children.length\" flex=\"10\">{{ item.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>\n              </md-button>\n              <!-- Children -->\n              <div layout=\"column\" layout-align=\"start stretch\" class='children' ng-if=\"item.children.length\">\n                  <md-button flex-offset=\"35\"  ng-repeat=\"child in item.children\" layout=\"row\" layout-align=\"start center\" ng-click=\"vm.handleClick(child, item)\" title=\"{{child.name}}\" aria-label=\"{{child.name}}\"  path-selected=\"child\">\n                    <span flex>{{child.name}}</span>\n                </md-button>\n              </div>\n            </div>\n            <!-- Hover menu -->\n            <md-menu-content  class='navbar-menu-content' ng-mouseleave=\"vm.handleMouseLeave(item, $mdOpenMenu, $event)\" width=\"4\" >\n              <md-menu-item ng-repeat=\"child in item.children\">\n               <md-button layout=\"row\" layout-align=\"start center\" ng-click=\"vm.handleClick(child, item)\" title=\"{{child.name}}\" aria-label=\"{{child.name}}\"  path-selected=\"id\">\n                  <span  flex>{{child.name}}</span>\n                </md-button>\n               </md-menu-item>\n            </md-menu-content>\n          </md-menu>\n        </md-list-item>\n      </md-list>\n      <md-divider></md-divider>\n      <div class=\"close-menu\">\n        <md-button class=\"md-icon-button\" ng-click=\"vm.toggleMenu()\">\n            <icon>{{ vm.$expanded ? 'arrow_back' : 'arrow_forward' }}</icon>\n        </md-button>\n      </div>\n  </md-sidenav>\n"
+	module.exports = "  <md-sidenav\n      class=\"md-sidenav-left\"\n      md-component-id=\"left\"\n      md-is-locked-open=\"true\"\n      md-disable-backdrop\n      md-whiteframe=\"5\"\n      layout=\"column\"\n      ng-class=\"{expanded:vm.$expanded}\">\n      <md-list flex>\n        <navbar-item ng-repeat=\"item in vm.menu\" item=\"item\">{{item}} </navbar-item>\n      </md-list>\n      <md-divider></md-divider>\n      <div class=\"close-menu\">\n        <md-button class=\"md-icon-button\" ng-click=\"vm.toggleMenu()\">\n            <icon>{{ vm.$expanded ? 'arrow_back' : 'arrow_forward' }}</icon>\n        </md-button>\n      </div>\n  </md-sidenav>\n"
 
 /***/ },
-/* 158 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74873,33 +77582,170 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(159);
+	__webpack_require__(199);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _toolbar = __webpack_require__(161);
+	var _navbarItem = __webpack_require__(201);
+
+	var _navbarItem2 = _interopRequireDefault(_navbarItem);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _angular2.default.module("navbar-item", []).directive("navbarItem", _navbarItem2.default).name;
+
+	// Import internal modules
+	// Import Style
+
+/***/ },
+/* 199 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(200);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./navbarItem.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./navbarItem.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.md-sidenav-left md-list-item md-menu {\n  padding: 0; }\n  .md-sidenav-left md-list-item md-menu > div > button {\n    border-left: 5px solid transparent;\n    width: 100%;\n    text-align: left;\n    margin: 0;\n    padding: 8px 8px 8px 16px; }\n    .md-sidenav-left md-list-item md-menu > div > button > span {\n      padding-left: 24px; }\n\n.md-sidenav-left md-list-item.expanded .children {\n  max-height: none; }\n\n.md-sidenav-left md-list-item.selected md-menu > div > button, .md-sidenav-left md-list-item.open md-menu > div > button {\n  border-left: 5px solid #ffab00;\n  background: rgba(158, 158, 158, 0.2); }\n\n.md-sidenav-left md-list-item .children {\n  max-height: 0;\n  overflow: hidden; }\n  .md-sidenav-left md-list-item .children .selected {\n    color: #ffab00; }\n  .md-sidenav-left md-list-item .children span {\n    text-align: left;\n    font-size: 13px;\n    font-weight: normal; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 201 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = navbarItem;
+	function navbarItem($mdMenu) {
+	  return {
+	    restrict: 'E',
+	    scope: {
+	      item: "="
+	    },
+	    template: __webpack_require__(202),
+	    require: "^navbar",
+	    link: function link(scope, el, attr, navbarCtrl) {
+	      scope.vm = navbarCtrl;
+
+	      scope.handleMouseOver = function (item, $mdOpenMenu, $event) {
+	        // must do this or when the user clicks in trap to hide menu the class is not hidden
+	        navbarCtrl.closeAllMenus();
+	        if (!navbarCtrl.$expanded && item.children) {
+	          item.$menuOpen = true;
+	          $mdOpenMenu($event);
+	        }
+	      };
+	      scope.handleMouseLeave = function (item, $mdOpenMenu, $event) {
+	        if (!navbarCtrl.$expanded && item.children && item.$menuOpen) {
+	          $mdMenu.hide();
+	          item.$menuOpen = false;
+	        }
+	      };
+
+	      scope.handleClick = function (item) {
+	        var parent = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+	        var $mdOpenMenu = arguments[2];
+	        var $event = arguments[3];
+
+	        var _handleChildrenExpanded = function _handleChildrenExpanded() {
+	          navbarCtrl.toggleExpanded(item);
+	        };
+	        var _handleChildrenCollapsed = function _handleChildrenCollapsed() {
+	          $mdOpenMenu($event);
+	        };
+
+	        if (item.children) {
+	          return navbarCtrl.$expanded ? _handleChildrenExpanded() : _handleChildrenCollapsed();
+	        }
+
+	        if (item.id) {
+	          var prefix = navbarCtrl.DESTINATION_PREFIX;
+	          if (parent) {
+	            prefix += parent.id + ".";
+	          }
+	          navbarCtrl.$state.go(prefix + (item.destination || item.id));
+	        }
+	      };
+	    }
+	  };
+	}
+
+/***/ },
+/* 202 */
+/***/ function(module, exports) {
+
+	module.exports = " <md-list-item path-selected=\"item\" layout-align=\"start none\" layout=\"column\" ng-class=\"{expanded:item.$expanded, open:item.$menuOpen}\">\n  <md-menu  md-offset=\"72 0\">\n    <div>\n      <!-- button itself -->\n      <md-button md-menu-origin  layout=\"row\" layout-align=\"center center\" ng-mouseover=\"handleMouseOver(item, $mdOpenMenu, $event)\" ng-click=\"handleClick(item)\" title=\"{{item.name}}\" aria-label=\"Open {{item.name}} interactions menu\">\n        <icon>{{item.icon}}</icon>\n        <span flex>{{item.name}}</span>\n        <icon ng-if=\"vm.$expanded && item.children.length\" flex=\"10\">{{ item.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>\n      </md-button>\n      <!-- Children -->\n      <div layout=\"column\" layout-align=\"start stretch\" class='children' ng-if=\"item.children.length\">\n          <md-button flex-offset=\"35\"  ng-repeat=\"child in item.children\" layout=\"row\" layout-align=\"start center\" ng-click=\"handleClick(child, item)\" title=\"{{child.name}}\" aria-label=\"{{child.name}}\"  path-selected=\"child\">\n            <span flex>{{child.name}}</span>\n        </md-button>\n      </div>\n    </div>\n    <!-- Hover menu -->\n    <md-menu-content  class='navbar-menu-content' ng-mouseleave=\"handleMouseLeave(item, $mdOpenMenu, $event)\" width=\"4\" >\n      <md-menu-item ng-repeat=\"child in item.children\">\n       <md-button layout=\"row\" layout-align=\"start center\" ng-click=\"handleClick(child, item)\" title=\"{{child.name}}\" aria-label=\"{{child.name}}\"  path-selected=\"child\">\n          <span  flex>{{child.name}}</span>\n        </md-button>\n       </md-menu-item>\n    </md-menu-content>\n  </md-menu>\n</md-list-item>"
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(204);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _toolbar = __webpack_require__(206);
 
 	var _toolbar2 = _interopRequireDefault(_toolbar);
 
-	var _toolbar3 = __webpack_require__(162);
+	var _toolbar3 = __webpack_require__(207);
 
 	var _toolbar4 = _interopRequireDefault(_toolbar3);
 
-	var _icon = __webpack_require__(164);
+	var _icon = __webpack_require__(209);
 
 	var _icon2 = _interopRequireDefault(_icon);
 
-	var _userSelect = __webpack_require__(167);
+	var _userSelect = __webpack_require__(212);
 
 	var _userSelect2 = _interopRequireDefault(_userSelect);
 
-	var _venueSelect = __webpack_require__(173);
+	var _venueSelect = __webpack_require__(218);
 
 	var _venueSelect2 = _interopRequireDefault(_venueSelect);
 
-	var _pathSelected = __webpack_require__(179);
+	var _pathSelected = __webpack_require__(224);
 
 	var _pathSelected2 = _interopRequireDefault(_pathSelected);
 
@@ -74910,13 +77756,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("toolbar", [_icon2.default, _userSelect2.default, _venueSelect2.default, _pathSelected2.default]).controller(_toolbar2.default.UID, _toolbar2.default).directive("toolbar", _toolbar4.default).name;
 
 /***/ },
-/* 159 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(160);
+	var content = __webpack_require__(205);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74936,7 +77782,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 160 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -74944,13 +77790,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\nmd-toolbar {\n  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);\n  height: 64px !important; }\n  md-toolbar > section {\n    padding-left: 16px; }\n  md-toolbar .message button {\n    min-width: 40px; }\n  md-toolbar button span, md-toolbar a span {\n    text-transform: none; }\n  md-toolbar .toolbar-nav {\n    border-right: 1px solid #fafafa; }\n    md-toolbar .toolbar-nav .selected span {\n      color: #ffab00; }\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\nmd-toolbar {\n  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);\n  height: 64px !important; }\n  md-toolbar > section {\n    padding-left: 16px; }\n  md-toolbar .message button {\n    min-width: 40px; }\n  md-toolbar button > span, md-toolbar a > span {\n    text-transform: none;\n    font-size: 15px;\n    font-weight: 500; }\n  md-toolbar .toolbar-nav {\n    border-right: 1px solid #fafafa; }\n    md-toolbar .toolbar-nav .selected span {\n      color: #ffab00; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 161 */
+/* 206 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74964,22 +77810,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var toolbarController = function () {
-	  _createClass(toolbarController, null, [{
-	    key: "UID",
-	    get: function get() {
-	      return "toolbarController";
+	  _createClass(toolbarController, [{
+	    key: "getVenues",
+	    value: function getVenues() {
+	      return this.VenueService.venues;
+	    }
+	  }, {
+	    key: "getVenues",
+	    value: function getVenues() {
+	      return this.UserService.user;
 	    }
 
 	    /* @ngInject */
 
+	  }], [{
+	    key: "UID",
+	    get: function get() {
+	      return "toolbarController";
+	    }
 	  }]);
 
-	  function toolbarController() {
+	  function toolbarController(VenueService, UserService) {
 	    'ngInject';
 
 	    _classCallCheck(this, toolbarController);
 
-	    this.title = "I am a toolbar component";
+	    this.UserService = UserService;
+	    this.VenueService = VenueService;
 	  }
 
 	  return toolbarController;
@@ -74988,7 +77845,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = toolbarController;
 
 /***/ },
-/* 162 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74998,7 +77855,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = toolbar;
 
-	var _toolbar = __webpack_require__(161);
+	var _toolbar = __webpack_require__(206);
 
 	var _toolbar2 = _interopRequireDefault(_toolbar);
 
@@ -75010,7 +77867,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return {
 	    restrict: 'E',
 	    scope: {},
-	    template: __webpack_require__(163),
+	    template: __webpack_require__(208),
 	    controller: _toolbar2.default.UID,
 	    controllerAs: "vm",
 	    bindToController: true,
@@ -75020,13 +77877,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 163 */
+/* 208 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-toolbar class=\"md-hue-2\" layout=\"row\" layout-align=\"center stretch\">\n    <venue-select ></venue-select>\n      <section flex layout=\"row\" layout-align=\"start center\" class=\"toolbar-nav\">\n        <md-button path-selected=\"dashboard\" href=\"#/main/dashboard\" title=\"Dashboard\" aria-label=\"Dashboard\">\n            <icon>settings</icon>\n            <span translate>Dashboard</span>\n        </md-button>\n        <md-button path-selected=\"analytics\" href=\"#/main/analytics\" title=\"Analytics\" aria-label=\"Analytics\">\n            <icon>equalizer</icon>\n            <span translate>Analytics</span>\n        </md-button>\n        <md-button path-selected=\"account\" href=\"#/main/account\" title=\"My Account\" aria-label=\"My Account\">\n            <icon>person</icon>\n            <span translate>My Account</span>\n        </md-button>\n        <div flex layout=\"row\" layout-align=\"end center\" class=\"message\">\n          <md-button ng-click=\"vm.openMessages()\" title=\"Messages\" aria-label=\"Messages\">\n              <icon>email</icon>\n          </md-button>\n        </div>\n      </section>\n    <user-select ></user-select>\n</md-toolbar>"
+	module.exports = "<md-toolbar class=\"md-hue-2\" layout=\"row\" layout-align=\"center stretch\">\n    <venue-select></venue-select>\n      <section flex layout=\"row\" layout-align=\"start center\" class=\"toolbar-nav\">\n        <md-button path-selected=\"dashboard\" href=\"#/main/dashboard\" title=\"Dashboard\" aria-label=\"Dashboard\">\n            <icon>settings</icon>\n            <span translate>Dashboard</span>\n        </md-button>\n        <md-button path-selected=\"analytics\" href=\"#/main/analytics\" title=\"Analytics\" aria-label=\"Analytics\">\n            <icon>equalizer</icon>\n            <span translate>Analytics</span>\n        </md-button>\n        <md-button path-selected=\"account\" href=\"#/main/account\" title=\"My Account\" aria-label=\"My Account\">\n            <icon>person</icon>\n            <span translate>My Account</span>\n        </md-button>\n        <div flex layout=\"row\" layout-align=\"end center\" class=\"message\">\n          <md-button ng-click=\"vm.openMessages()\" title=\"Messages\" aria-label=\"Messages\" class=\"md-icon-button\">\n              <icon>email</icon>\n          </md-button>\n        </div>\n      </section>\n    <user-select></user-select>\n</md-toolbar>"
 
 /***/ },
-/* 164 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75039,7 +77896,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _icon = __webpack_require__(165);
+	var _icon = __webpack_require__(210);
 
 	var _icon2 = _interopRequireDefault(_icon);
 
@@ -75050,7 +77907,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("icon", []).directive("icon", _icon2.default).name;
 
 /***/ },
-/* 165 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75064,20 +77921,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  return {
 	    restrict: 'E',
-	    template: __webpack_require__(166),
+	    template: __webpack_require__(211),
 	    replace: true,
 	    transclude: true
 	  };
 	}
 
 /***/ },
-/* 166 */
+/* 211 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-icon md-font-library=\"material-icons\" ng-transclude></md-icon>"
 
 /***/ },
-/* 167 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75086,21 +77943,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(168);
+	__webpack_require__(213);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _userSelect = __webpack_require__(170);
+	var _userSelect = __webpack_require__(215);
 
 	var _userSelect2 = _interopRequireDefault(_userSelect);
 
-	var _userSelect3 = __webpack_require__(171);
+	var _userSelect3 = __webpack_require__(216);
 
 	var _userSelect4 = _interopRequireDefault(_userSelect3);
 
-	var _icon = __webpack_require__(164);
+	var _icon = __webpack_require__(209);
 
 	var _icon2 = _interopRequireDefault(_icon);
 
@@ -75112,13 +77969,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import Style
 
 /***/ },
-/* 168 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(169);
+	var content = __webpack_require__(214);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -75138,7 +77995,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 169 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -75146,13 +78003,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.user-select {\n  width: 286px;\n  overflow: hidden; }\n  .user-select > md-menu > button {\n    max-width: 100%; }\n    .user-select > md-menu > button > span {\n      float: left;\n      text-transform: none; }\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.user-select {\n  max-width: 286px;\n  overflow: hidden; }\n  .user-select > md-menu > button {\n    max-width: 100%; }\n    .user-select > md-menu > button > span {\n      float: left;\n      text-transform: none;\n      font-size: 14px;\n      font-weight: 500; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 170 */
+/* 215 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -75166,7 +78023,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var userSelectController = function () {
-	  _createClass(userSelectController, null, [{
+	  _createClass(userSelectController, [{
+	    key: "signout",
+	    value: function signout() {
+	      this.UserService.signout();
+	    }
+	  }], [{
 	    key: "UID",
 	    get: function get() {
 	      return "userSelectController";
@@ -75175,8 +78037,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  /* @ngInject */
 
-	  function userSelectController() {
+	  function userSelectController(UserService, $rootScope, BroadcastEvents) {
 	    'ngInject';
+
+	    var _this = this;
 
 	    _classCallCheck(this, userSelectController);
 
@@ -75184,11 +78048,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      $mdOpenMenu(ev);
 	    };
 
-	    this.title = "I am a userSelect component";
-	    this.user = {
-	      name: "Baron Von Jimmy McLong-Name"
-	    };
+	    this.UserService = UserService;
+	    this.user = UserService.user;
+
+	    $rootScope.$on(BroadcastEvents._ON_USER_AUTH, function (event, user) {
+	      _this.user = user;
+	    });
 	  }
+	  userSelectController.$inject = ["UserService", "$rootScope", "BroadcastEvents"];
 
 	  return userSelectController;
 	}();
@@ -75196,7 +78063,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = userSelectController;
 
 /***/ },
-/* 171 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75206,7 +78073,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = userSelect;
 
-	var _userSelect = __webpack_require__(170);
+	var _userSelect = __webpack_require__(215);
 
 	var _userSelect2 = _interopRequireDefault(_userSelect);
 
@@ -75217,7 +78084,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  return {
 	    restrict: 'E',
-	    template: __webpack_require__(172),
+	    template: __webpack_require__(217),
 	    controller: _userSelect2.default.UID,
 	    controllerAs: "vm",
 	    bindToController: true,
@@ -75227,13 +78094,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 172 */
+/* 217 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class='user-select' layout=\"row\" layout-align=\"center\">\n  <md-menu>\n    <md-button aria-label=\"Open profile interactions menu\" ng-click=\"vm.openMenu($mdOpenMenu, $event)\">\n      <span md-menu-origin class=\"ellipsis\">{{vm.user.name}}</span>\n      <icon>arrow_drop_down</icon>\n    </md-button>\n    <md-menu-content width=\"4\">\n      <md-menu-item>\n        <md-button href=\"#/profile\">\n          <icon>person</icon>\n          <span translate> My Profile </span>\n        </md-button>\n      </md-menu-item>\n      <md-menu-divider></md-menu-divider>\n      <md-menu-item>\n        <md-button>\n          Some other thing here\n        </md-button>\n      </md-menu-item>\n    </md-menu-content>\n  </md-menu>\n</div>\n"
+	module.exports = "<div class='user-select' layout=\"row\" layout-align=\"center\">\n  <md-menu>\n    <md-button aria-label=\"Open profile interactions menu\" ng-click=\"vm.openMenu($mdOpenMenu, $event)\">\n      <span md-menu-origin class=\"ellipsis\">{{vm.user.name}}</span>\n      <icon>arrow_drop_down</icon>\n    </md-button>\n    <md-menu-content width=\"4\">\n      <md-menu-item>\n        <md-button href=\"#/profile\">\n          <icon>person</icon>\n          <span translate> My Profile </span>\n        </md-button>\n      </md-menu-item>\n      <md-menu-divider></md-menu-divider>\n      <md-menu-item>\n        <md-button ng-click=\"vm.signout()\" translate>\n          Signout\n        </md-button>\n      </md-menu-item>\n    </md-menu-content>\n  </md-menu>\n</div>\n"
 
 /***/ },
-/* 173 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75242,17 +78109,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(174);
+	__webpack_require__(219);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _venueSelect = __webpack_require__(176);
+	var _venueSelect = __webpack_require__(221);
 
 	var _venueSelect2 = _interopRequireDefault(_venueSelect);
 
-	var _venueSelect3 = __webpack_require__(177);
+	var _venueSelect3 = __webpack_require__(222);
 
 	var _venueSelect4 = _interopRequireDefault(_venueSelect3);
 
@@ -75263,13 +78130,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("venueSelect", []).controller(_venueSelect2.default.UID, _venueSelect2.default).directive("venueSelect", _venueSelect4.default).name;
 
 /***/ },
-/* 174 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(175);
+	var content = __webpack_require__(220);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -75289,7 +78156,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 175 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -75297,13 +78164,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.venue-select {\n  width: 320px;\n  overflow: hidden;\n  background: rgba(255, 255, 255, 0.1); }\n  .venue-select > md-menu > button {\n    max-width: 100%; }\n    .venue-select > md-menu > button > span {\n      float: left;\n      text-transform: none; }\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.venue-select {\n  width: 320px;\n  overflow: hidden;\n  background: rgba(255, 255, 255, 0.1); }\n  .venue-select > md-menu > button {\n    max-width: 100%; }\n    .venue-select > md-menu > button > span {\n      float: left;\n      text-transform: none;\n      font-size: 15px;\n      font-weight: 500; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 176 */
+/* 221 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -75317,19 +78184,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var venueSelectController = function () {
-	  _createClass(venueSelectController, null, [{
+	  _createClass(venueSelectController, [{
+	    key: "setVenue",
+	    value: function setVenue() {
+	      var _this = this;
+
+	      console.log("set venue");
+	      this.$timeout(function () {
+	        _this.venues = _this.VenueService.venues;
+	        _this.venue = _this.VenueService.currentVenue;
+	      });
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
 	    key: "UID",
 	    get: function get() {
 	      return "venueSelectController";
 	    }
 	  }]);
 
-	  /* @ngInject */
-
-	  function venueSelectController() {
+	  function venueSelectController($rootScope, BroadcastEvents, $timeout, VenueService, $stateParams, $state) {
 	    'ngInject';
 
-	    var _this = this;
+	    var _this2 = this;
 
 	    _classCallCheck(this, venueSelectController);
 
@@ -75338,11 +78217,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    this.switchVenue = function (venue) {
-	      _this.venue = venue;
+	      var venueId = venue.id;
+	      _this2.$state.go("main.dashboard", { venueId: venueId });
+	      window.location.reload();
 	    };
 
-	    this.venues = [{ name: "Bob's Brilliant BBQ Burgerzzz" }, { name: "Venue #2 with a really really but really long time" }];
-	    this.venue = this.venues[0];
+	    this.$timeout = $timeout;
+	    this.VenueService = VenueService;
+	    this.$state = $state;
+	    $rootScope.$on(BroadcastEvents._ON_FETCH_VENUES, function (event, venues) {
+	      _this2.setVenue();
+	    });
+
+	    this.setVenue();
 	  }
 
 	  return venueSelectController;
@@ -75351,7 +78238,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = venueSelectController;
 
 /***/ },
-/* 177 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75361,7 +78248,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = venueSelect;
 
-	var _venueSelect = __webpack_require__(176);
+	var _venueSelect = __webpack_require__(221);
 
 	var _venueSelect2 = _interopRequireDefault(_venueSelect);
 
@@ -75372,8 +78259,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  return {
 	    restrict: 'E',
-	    scope: {},
-	    template: __webpack_require__(178),
+	    scope: {
+	      venueId: "="
+	    },
+	    template: __webpack_require__(223),
 	    controller: _venueSelect2.default.UID,
 	    controllerAs: "vm",
 	    bindToController: true,
@@ -75383,13 +78272,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 178 */
+/* 223 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class='venue-select' layout=\"row\" layout-align=\"start center\">\n  <md-menu>\n    <md-button aria-label=\"Open phone interactions menu\" ng-click=\"vm.openMenu($mdOpenMenu, $event)\">\n      <span class='ellipsis' md-menu-origin>{{vm.venue.name}}</span>\n      <icon>arrow_drop_down</icon>\n    </md-button>\n    <md-menu-content width=\"4\">\n      <md-menu-item ng-repeat=\"venue in vm.venues\">\n        <md-button ng-click=\"vm.switchVenue(venue)\">\n          <span> {{venue.name}} </span>\n        </md-button>\n      </md-menu-item>\n      <md-menu-divider></md-menu-divider>\n      <md-menu-item>\n        <md-button>\n          Some other thing here\n        </md-button>\n      </md-menu-item>\n    </md-menu-content>\n  </md-menu>\n</div>\n"
 
 /***/ },
-/* 179 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75398,13 +78287,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(180);
+	__webpack_require__(225);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _pathSelected = __webpack_require__(182);
+	var _pathSelected = __webpack_require__(227);
 
 	var _pathSelected2 = _interopRequireDefault(_pathSelected);
 
@@ -75416,13 +78305,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import Style
 
 /***/ },
-/* 180 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(181);
+	var content = __webpack_require__(226);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -75442,7 +78331,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 181 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -75456,7 +78345,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 182 */
+/* 227 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75498,101 +78387,1061 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 183 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var require;/* WEBPACK VAR INJECTION */(function(setImmediate) {!function(a){if(true)module.exports=a();else if("function"==typeof define&&define.amd)define([],a);else{var b;b="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,(b.preodaypreoday||(b.preodaypreoday={})).js=a()}}(function(){var a;return function b(a,c,d){function e(g,h){if(!c[g]){if(!a[g]){var i="function"==typeof require&&require;if(!h&&i)return require(g,!0);if(f)return f(g,!0);var j=new Error("Cannot find module '"+g+"'");throw j.code="MODULE_NOT_FOUND",j}var k=c[g]={exports:{}};a[g][0].call(k.exports,function(b){var c=a[g][1][b];return e(c?c:b)},k,k.exports,b,a,c,d)}return c[g].exports}for(var f="function"==typeof require&&require,g=0;g<d.length;g++)e(d[g]);return e}({1:[function(a,b,c){function d(){k&&h&&(k=!1,h.length?j=h.concat(j):l=-1,j.length&&e())}function e(){if(!k){var a=setTimeout(d);k=!0;for(var b=j.length;b;){for(h=j,j=[];++l<b;)h&&h[l].run();l=-1,b=j.length}h=null,k=!1,clearTimeout(a)}}function f(a,b){this.fun=a,this.array=b}function g(){}var h,i=b.exports={},j=[],k=!1,l=-1;i.nextTick=function(a){var b=new Array(arguments.length-1);if(arguments.length>1)for(var c=1;c<arguments.length;c++)b[c-1]=arguments[c];j.push(new f(a,b)),1!==j.length||k||setTimeout(e,0)},f.prototype.run=function(){this.fun.apply(null,this.array)},i.title="browser",i.browser=!0,i.env={},i.argv=[],i.version="",i.versions={},i.on=g,i.addListener=g,i.once=g,i.off=g,i.removeListener=g,i.removeAllListeners=g,i.emit=g,i.binding=function(a){throw new Error("process.binding is not supported")},i.cwd=function(){return"/"},i.chdir=function(a){throw new Error("process.chdir is not supported")},i.umask=function(){return 0}},{}],2:[function(b,c,d){(function(b){!function(b){"use strict";if("function"==typeof bootstrap)bootstrap("promise",b);else if("object"==typeof d&&"object"==typeof c)c.exports=b();else if("function"==typeof a&&a.amd)a(b);else if("undefined"!=typeof ses){if(!ses.ok())return;ses.makeQ=b}else{if("undefined"==typeof window&&"undefined"==typeof self)throw new Error("This environment was not anticipated by Q. Please file a bug.");var e="undefined"!=typeof window?window:self,f=e.Q;e.Q=b(),e.Q.noConflict=function(){return e.Q=f,this}}}(function(){"use strict";function a(a){return function(){return X.apply(a,arguments)}}function c(a){return a===Object(a)}function d(a){return"[object StopIteration]"===da(a)||a instanceof T}function e(a,b){if(Q&&b.stack&&"object"==typeof a&&null!==a&&a.stack&&-1===a.stack.indexOf(ea)){for(var c=[],d=b;d;d=d.source)d.stack&&c.unshift(d.stack);c.unshift(a.stack);var e=c.join("\n"+ea+"\n");a.stack=f(e)}}function f(a){for(var b=a.split("\n"),c=[],d=0;d<b.length;++d){var e=b[d];i(e)||g(e)||!e||c.push(e)}return c.join("\n")}function g(a){return-1!==a.indexOf("(module.js:")||-1!==a.indexOf("(node.js:")}function h(a){var b=/at .+ \((.+):(\d+):(?:\d+)\)$/.exec(a);if(b)return[b[1],Number(b[2])];var c=/at ([^ ]+):(\d+):(?:\d+)$/.exec(a);if(c)return[c[1],Number(c[2])];var d=/.*@(.+):(\d+)$/.exec(a);return d?[d[1],Number(d[2])]:void 0}function i(a){var b=h(a);if(!b)return!1;var c=b[0],d=b[1];return c===S&&d>=U&&ja>=d}function j(){if(Q)try{throw new Error}catch(a){var b=a.stack.split("\n"),c=b[0].indexOf("@")>0?b[1]:b[2],d=h(c);if(!d)return;return S=d[0],d[1]}}function k(a,b,c){return function(){return"undefined"!=typeof console&&"function"==typeof console.warn&&console.warn(b+" is deprecated, use "+c+" instead.",new Error("").stack),a.apply(a,arguments)}}function l(a){return a instanceof p?a:t(a)?C(a):B(a)}function m(){function a(a){b=a,f.source=a,Z(c,function(b,c){l.nextTick(function(){a.promiseDispatch.apply(a,c)})},void 0),c=void 0,d=void 0}var b,c=[],d=[],e=aa(m.prototype),f=aa(p.prototype);if(f.promiseDispatch=function(a,e,f){var g=Y(arguments);c?(c.push(g),"when"===e&&f[1]&&d.push(f[1])):l.nextTick(function(){b.promiseDispatch.apply(b,g)})},f.valueOf=function(){if(c)return f;var a=r(b);return s(a)&&(b=a),a},f.inspect=function(){return b?b.inspect():{state:"pending"}},l.longStackSupport&&Q)try{throw new Error}catch(g){f.stack=g.stack.substring(g.stack.indexOf("\n")+1)}return e.promise=f,e.resolve=function(c){b||a(l(c))},e.fulfill=function(c){b||a(B(c))},e.reject=function(c){b||a(A(c))},e.notify=function(a){b||Z(d,function(b,c){l.nextTick(function(){c(a)})},void 0)},e}function n(a){if("function"!=typeof a)throw new TypeError("resolver must be a function.");var b=m();try{a(b.resolve,b.reject,b.notify)}catch(c){b.reject(c)}return b.promise}function o(a){return n(function(b,c){for(var d=0,e=a.length;e>d;d++)l(a[d]).then(b,c)})}function p(a,b,c){void 0===b&&(b=function(a){return A(new Error("Promise does not support operation: "+a))}),void 0===c&&(c=function(){return{state:"unknown"}});var d=aa(p.prototype);if(d.promiseDispatch=function(c,e,f){var g;try{g=a[e]?a[e].apply(d,f):b.call(d,e,f)}catch(h){g=A(h)}c&&c(g)},d.inspect=c,c){var e=c();"rejected"===e.state&&(d.exception=e.reason),d.valueOf=function(){var a=c();return"pending"===a.state||"rejected"===a.state?d:a.value}}return d}function q(a,b,c,d){return l(a).then(b,c,d)}function r(a){if(s(a)){var b=a.inspect();if("fulfilled"===b.state)return b.value}return a}function s(a){return a instanceof p}function t(a){return c(a)&&"function"==typeof a.then}function u(a){return s(a)&&"pending"===a.inspect().state}function v(a){return!s(a)||"fulfilled"===a.inspect().state}function w(a){return s(a)&&"rejected"===a.inspect().state}function x(){fa.length=0,ga.length=0,ia||(ia=!0)}function y(a,c){ia&&("object"==typeof b&&"function"==typeof b.emit&&l.nextTick.runAfter(function(){-1!==$(ga,a)&&(b.emit("unhandledRejection",c,a),ha.push(a))}),ga.push(a),c&&"undefined"!=typeof c.stack?fa.push(c.stack):fa.push("(no stack) "+c))}function z(a){if(ia){var c=$(ga,a);-1!==c&&("object"==typeof b&&"function"==typeof b.emit&&l.nextTick.runAfter(function(){var d=$(ha,a);-1!==d&&(b.emit("rejectionHandled",fa[c],a),ha.splice(d,1))}),ga.splice(c,1),fa.splice(c,1))}}function A(a){var b=p({when:function(b){return b&&z(this),b?b(a):this}},function(){return this},function(){return{state:"rejected",reason:a}});return y(b,a),b}function B(a){return p({when:function(){return a},get:function(b){return a[b]},set:function(b,c){a[b]=c},"delete":function(b){delete a[b]},post:function(b,c){return null===b||void 0===b?a.apply(void 0,c):a[b].apply(a,c)},apply:function(b,c){return a.apply(b,c)},keys:function(){return ca(a)}},void 0,function(){return{state:"fulfilled",value:a}})}function C(a){var b=m();return l.nextTick(function(){try{a.then(b.resolve,b.reject,b.notify)}catch(c){b.reject(c)}}),b.promise}function D(a){return p({isDef:function(){}},function(b,c){return J(a,b,c)},function(){return l(a).inspect()})}function E(a,b,c){return l(a).spread(b,c)}function F(a){return function(){function b(a,b){var g;if("undefined"==typeof StopIteration){try{g=c[a](b)}catch(h){return A(h)}return g.done?l(g.value):q(g.value,e,f)}try{g=c[a](b)}catch(h){return d(h)?l(h.value):A(h)}return q(g,e,f)}var c=a.apply(this,arguments),e=b.bind(b,"next"),f=b.bind(b,"throw");return e()}}function G(a){l.done(l.async(a)())}function H(a){throw new T(a)}function I(a){return function(){return E([this,K(arguments)],function(b,c){return a.apply(b,c)})}}function J(a,b,c){return l(a).dispatch(b,c)}function K(a){return q(a,function(a){var b=0,c=m();return Z(a,function(d,e,f){var g;s(e)&&"fulfilled"===(g=e.inspect()).state?a[f]=g.value:(++b,q(e,function(d){a[f]=d,0===--b&&c.resolve(a)},c.reject,function(a){c.notify({index:f,value:a})}))},void 0),0===b&&c.resolve(a),c.promise})}function L(a){if(0===a.length)return l.resolve();var b=l.defer(),c=0;return Z(a,function(d,e,f){function g(a){b.resolve(a)}function h(){c--,0===c&&b.reject(new Error("Can't get fulfillment value from any promise, all promises were rejected."))}function i(a){b.notify({index:f,value:a})}var j=a[f];c++,q(j,g,h,i)},void 0),b.promise}function M(a){return q(a,function(a){return a=_(a,l),q(K(_(a,function(a){return q(a,V,V)})),function(){return a})})}function N(a){return l(a).allSettled()}function O(a,b){return l(a).then(void 0,void 0,b)}function P(a,b){return l(a).nodeify(b)}var Q=!1;try{throw new Error}catch(R){Q=!!R.stack}var S,T,U=j(),V=function(){},W=function(){function a(){for(var a,b;d.next;)d=d.next,a=d.task,d.task=void 0,b=d.domain,b&&(d.domain=void 0,b.enter()),c(a,b);for(;i.length;)a=i.pop(),c(a);f=!1}function c(b,c){try{b()}catch(d){if(h)throw c&&c.exit(),setTimeout(a,0),c&&c.enter(),d;setTimeout(function(){throw d},0)}c&&c.exit()}var d={task:void 0,next:null},e=d,f=!1,g=void 0,h=!1,i=[];if(W=function(a){e=e.next={task:a,domain:h&&b.domain,next:null},f||(f=!0,g())},"object"==typeof b&&"[object process]"===b.toString()&&b.nextTick)h=!0,g=function(){b.nextTick(a)};else if("function"==typeof setImmediate)g="undefined"!=typeof window?setImmediate.bind(window,a):function(){setImmediate(a)};else if("undefined"!=typeof MessageChannel){var j=new MessageChannel;j.port1.onmessage=function(){g=k,j.port1.onmessage=a,a()};var k=function(){j.port2.postMessage(0)};g=function(){setTimeout(a,0),k()}}else g=function(){setTimeout(a,0)};return W.runAfter=function(a){i.push(a),f||(f=!0,g())},W}(),X=Function.call,Y=a(Array.prototype.slice),Z=a(Array.prototype.reduce||function(a,b){var c=0,d=this.length;if(1===arguments.length)for(;;){if(c in this){b=this[c++];break}if(++c>=d)throw new TypeError}for(;d>c;c++)c in this&&(b=a(b,this[c],c));return b}),$=a(Array.prototype.indexOf||function(a){for(var b=0;b<this.length;b++)if(this[b]===a)return b;return-1}),_=a(Array.prototype.map||function(a,b){var c=this,d=[];return Z(c,function(e,f,g){d.push(a.call(b,f,g,c))},void 0),d}),aa=Object.create||function(a){function b(){}return b.prototype=a,new b},ba=a(Object.prototype.hasOwnProperty),ca=Object.keys||function(a){var b=[];for(var c in a)ba(a,c)&&b.push(c);return b},da=a(Object.prototype.toString);T="undefined"!=typeof ReturnValue?ReturnValue:function(a){this.value=a};var ea="From previous event:";l.resolve=l,l.nextTick=W,l.longStackSupport=!1,"object"==typeof b&&b&&b.env&&b.env.Q_DEBUG&&(l.longStackSupport=!0),l.defer=m,m.prototype.makeNodeResolver=function(){var a=this;return function(b,c){b?a.reject(b):arguments.length>2?a.resolve(Y(arguments,1)):a.resolve(c)}},l.Promise=n,l.promise=n,n.race=o,n.all=K,n.reject=A,n.resolve=l,l.passByCopy=function(a){return a},p.prototype.passByCopy=function(){return this},l.join=function(a,b){return l(a).join(b)},p.prototype.join=function(a){return l([this,a]).spread(function(a,b){if(a===b)return a;throw new Error("Can't join: not the same: "+a+" "+b)})},l.race=o,p.prototype.race=function(){return this.then(l.race)},l.makePromise=p,p.prototype.toString=function(){return"[object Promise]"},p.prototype.then=function(a,b,c){function d(b){try{return"function"==typeof a?a(b):b}catch(c){return A(c)}}function f(a){if("function"==typeof b){e(a,h);try{return b(a)}catch(c){return A(c)}}return A(a)}function g(a){return"function"==typeof c?c(a):a}var h=this,i=m(),j=!1;return l.nextTick(function(){h.promiseDispatch(function(a){j||(j=!0,i.resolve(d(a)))},"when",[function(a){j||(j=!0,i.resolve(f(a)))}])}),h.promiseDispatch(void 0,"when",[void 0,function(a){var b,c=!1;try{b=g(a)}catch(d){if(c=!0,!l.onerror)throw d;l.onerror(d)}c||i.notify(b)}]),i.promise},l.tap=function(a,b){return l(a).tap(b)},p.prototype.tap=function(a){return a=l(a),this.then(function(b){return a.fcall(b).thenResolve(b)})},l.when=q,p.prototype.thenResolve=function(a){return this.then(function(){return a})},l.thenResolve=function(a,b){return l(a).thenResolve(b)},p.prototype.thenReject=function(a){return this.then(function(){throw a})},l.thenReject=function(a,b){return l(a).thenReject(b)},l.nearer=r,l.isPromise=s,l.isPromiseAlike=t,l.isPending=u,p.prototype.isPending=function(){return"pending"===this.inspect().state},l.isFulfilled=v,p.prototype.isFulfilled=function(){return"fulfilled"===this.inspect().state},l.isRejected=w,p.prototype.isRejected=function(){return"rejected"===this.inspect().state};var fa=[],ga=[],ha=[],ia=!0;l.resetUnhandledRejections=x,l.getUnhandledReasons=function(){return fa.slice()},l.stopUnhandledRejectionTracking=function(){x(),ia=!1},x(),l.reject=A,l.fulfill=B,l.master=D,l.spread=E,p.prototype.spread=function(a,b){return this.all().then(function(b){return a.apply(void 0,b)},b)},l.async=F,l.spawn=G,l["return"]=H,l.promised=I,l.dispatch=J,p.prototype.dispatch=function(a,b){var c=this,d=m();return l.nextTick(function(){c.promiseDispatch(d.resolve,a,b)}),d.promise},l.get=function(a,b){return l(a).dispatch("get",[b])},p.prototype.get=function(a){return this.dispatch("get",[a])},l.set=function(a,b,c){return l(a).dispatch("set",[b,c])},p.prototype.set=function(a,b){return this.dispatch("set",[a,b])},l.del=l["delete"]=function(a,b){return l(a).dispatch("delete",[b])},p.prototype.del=p.prototype["delete"]=function(a){return this.dispatch("delete",[a])},l.mapply=l.post=function(a,b,c){return l(a).dispatch("post",[b,c])},p.prototype.mapply=p.prototype.post=function(a,b){return this.dispatch("post",[a,b])},l.send=l.mcall=l.invoke=function(a,b){return l(a).dispatch("post",[b,Y(arguments,2)])},p.prototype.send=p.prototype.mcall=p.prototype.invoke=function(a){return this.dispatch("post",[a,Y(arguments,1)])},l.fapply=function(a,b){return l(a).dispatch("apply",[void 0,b])},p.prototype.fapply=function(a){return this.dispatch("apply",[void 0,a])},l["try"]=l.fcall=function(a){return l(a).dispatch("apply",[void 0,Y(arguments,1)])},p.prototype.fcall=function(){return this.dispatch("apply",[void 0,Y(arguments)])},l.fbind=function(a){var b=l(a),c=Y(arguments,1);return function(){return b.dispatch("apply",[this,c.concat(Y(arguments))])}},p.prototype.fbind=function(){var a=this,b=Y(arguments);return function(){return a.dispatch("apply",[this,b.concat(Y(arguments))])}},l.keys=function(a){return l(a).dispatch("keys",[])},p.prototype.keys=function(){return this.dispatch("keys",[])},l.all=K,p.prototype.all=function(){return K(this)},l.any=L,p.prototype.any=function(){return L(this)},l.allResolved=k(M,"allResolved","allSettled"),p.prototype.allResolved=function(){return M(this)},l.allSettled=N,p.prototype.allSettled=function(){return this.then(function(a){return K(_(a,function(a){function b(){return a.inspect()}return a=l(a),a.then(b,b)}))})},l.fail=l["catch"]=function(a,b){return l(a).then(void 0,b)},p.prototype.fail=p.prototype["catch"]=function(a){return this.then(void 0,a)},l.progress=O,p.prototype.progress=function(a){return this.then(void 0,void 0,a)},l.fin=l["finally"]=function(a,b){return l(a)["finally"](b)},p.prototype.fin=p.prototype["finally"]=function(a){return a=l(a),this.then(function(b){return a.fcall().then(function(){return b})},function(b){return a.fcall().then(function(){throw b})})},l.done=function(a,b,c,d){return l(a).done(b,c,d)},p.prototype.done=function(a,c,d){var f=function(a){l.nextTick(function(){if(e(a,g),!l.onerror)throw a;l.onerror(a)})},g=a||c||d?this.then(a,c,d):this;"object"==typeof b&&b&&b.domain&&(f=b.domain.bind(f)),g.then(void 0,f)},l.timeout=function(a,b,c){return l(a).timeout(b,c)},p.prototype.timeout=function(a,b){var c=m(),d=setTimeout(function(){b&&"string"!=typeof b||(b=new Error(b||"Timed out after "+a+" ms"),b.code="ETIMEDOUT"),c.reject(b)},a);return this.then(function(a){clearTimeout(d),c.resolve(a)},function(a){clearTimeout(d),c.reject(a)},c.notify),c.promise},l.delay=function(a,b){return void 0===b&&(b=a,a=void 0),l(a).delay(b)},p.prototype.delay=function(a){return this.then(function(b){var c=m();return setTimeout(function(){c.resolve(b)},a),c.promise})},l.nfapply=function(a,b){return l(a).nfapply(b)},p.prototype.nfapply=function(a){var b=m(),c=Y(a);return c.push(b.makeNodeResolver()),this.fapply(c).fail(b.reject),b.promise},l.nfcall=function(a){var b=Y(arguments,1);return l(a).nfapply(b)},p.prototype.nfcall=function(){var a=Y(arguments),b=m();return a.push(b.makeNodeResolver()),this.fapply(a).fail(b.reject),b.promise},l.nfbind=l.denodeify=function(a){var b=Y(arguments,1);return function(){var c=b.concat(Y(arguments)),d=m();return c.push(d.makeNodeResolver()),l(a).fapply(c).fail(d.reject),d.promise}},p.prototype.nfbind=p.prototype.denodeify=function(){var a=Y(arguments);return a.unshift(this),l.denodeify.apply(void 0,a)},l.nbind=function(a,b){var c=Y(arguments,2);return function(){function d(){return a.apply(b,arguments)}var e=c.concat(Y(arguments)),f=m();return e.push(f.makeNodeResolver()),l(d).fapply(e).fail(f.reject),f.promise}},p.prototype.nbind=function(){var a=Y(arguments,0);return a.unshift(this),l.nbind.apply(void 0,a)},l.nmapply=l.npost=function(a,b,c){return l(a).npost(b,c)},p.prototype.nmapply=p.prototype.npost=function(a,b){var c=Y(b||[]),d=m();return c.push(d.makeNodeResolver()),this.dispatch("post",[a,c]).fail(d.reject),d.promise},l.nsend=l.nmcall=l.ninvoke=function(a,b){var c=Y(arguments,2),d=m();return c.push(d.makeNodeResolver()),l(a).dispatch("post",[b,c]).fail(d.reject),d.promise},p.prototype.nsend=p.prototype.nmcall=p.prototype.ninvoke=function(a){var b=Y(arguments,1),c=m();return b.push(c.makeNodeResolver()),this.dispatch("post",[a,b]).fail(c.reject),c.promise},l.nodeify=P,p.prototype.nodeify=function(a){return a?void this.then(function(b){l.nextTick(function(){a(null,b)})},function(b){l.nextTick(function(){a(b)})}):this},l.noConflict=function(){throw new Error("Q.noConflict only works when Q is used as a global")};var ja=j();return l})}).call(this,b("_process"))},{_process:1}],3:[function(a,b,c){b.exports={VOUCHER:11,BOOKING:9}},{}],4:[function(a,b,c){b.exports={INSTALLED:"INSTALLED",TRIAL:"TRIAL",UNINSTALLED:"UNINSTALLED"}},{}],5:[function(a,b,c){b.exports={DEFAULT:"DEFAULT",BG:"BG"}},{}],6:[function(a,b,c){b.exports={DELIVERY:"DELIVERY",SEAT:"SEAT",PICKUP:"PICKUP",BOOKING:"BOOKING",VOUCHER:"VOUCHER"}},{}],7:[function(a,b,c){b.exports={CASH:"CASH",CARD:"CARD"}},{}],8:[function(a,b,c){b.exports={TIME:"TIME"}},{}],9:[function(a,b,c){b.exports={PENDING:"PENDING",ISSUED:"ISSUED",REDEEMED:"REDEEMED",EXPIRED:"EXPIRED",REJECTED:"REJECTED"}},{}],10:[function(a,b,c){b.exports={EMAIL:"EMAIL",POST:"POST"}},{}],11:[function(b,c,d){!function(b,e){"function"==typeof a&&a.amd?a(e):"object"==typeof d?c.exports=e:b.atomic=e(b)}(this,function(a){"use strict";function c(a){var b=function(a){for(var c in a)if(a.hasOwnProperty(c))if("$"===c.charAt(0))a[c]=void 0;else if(null!=a[c])if(a[c]instanceof Object)b(a[c]);else if(a[c].constructor==Array)for(var d=0;d<a[c].length;d++)b(a[c][d])},c=a.send;a.send=function(a){for(var d in e)e.hasOwnProperty(d)&&this.setRequestHeader(d,e[d]);a instanceof Object&&(a=f.clone(a),b(a)),c.call(this,JSON.stringify(a))}}var d={},e={},f=b("../services/util"),g=function(a){var b;try{b=JSON.parse(a.responseText)}catch(c){b=a.responseText}return[b,a]},h=function(b,d,e){var f={success:function(){},error:function(){}},h=a.XMLHttpRequest||ActiveXObject,i=new h("MSXML2.XMLHTTP.3.0");return c(i),i.open(b,d,!0),i.setRequestHeader("Content-type","application/json"),i.onreadystatechange=function(){4===i.readyState&&(i.status<300?f.success.apply(f,g(i)):f.error.apply(f,g(i)))},i.send(e),{success:function(a){return f.success=a,this},error:function(a){return f.error=a,this}}};return d.get=function(a){return h("GET",a)},d.put=function(a,b){return h("PUT",a,b)},d.patch=function(a,b){return h("PATCH",a,b)},d.post=function(a,b){return h("POST",a,b)},d["delete"]=function(a){return h("DELETE",a)},d.headers=function(a,b){return b?e[a]=b:a instanceof Object&&(e=f.extend(e,a)),e},d})},{"../services/util":42}],12:[function(b,c,d){(function(){var b,d,e,f,g,h={}.hasOwnProperty,i=function(a,b){function c(){this.constructor=a}for(var d in b)h.call(b,d)&&(a[d]=b[d]);return c.prototype=b.prototype,a.prototype=new c,a.__super__=b.prototype,a},j=this;for(this.Stripe=function(){function a(){}return a.version=2,a.endpoint="https://api.stripe.com/v1",a.setPublishableKey=function(b){a.key=b},a.complete=function(b){return function(c,d,e){var f;return"success"!==c?(f=Math.round((new Date).getTime()/1e3),(new Image).src="https://q.stripe.com?event=stripejs-error&type="+c+"&key="+a.key+"&timestamp="+f,"function"==typeof b?b(500,{error:{code:c,type:c,message:"An unexpected error has occurred submitting your credit\ncard to our secure credit card processor. This may be\ndue to network connectivity issues, so you should try\nagain (you won't be charged twice). If this problem\npersists, please let us know!"}}):void 0):void 0}},a}.call(this),b=this.Stripe,this.Stripe.token=function(){function a(){}return a.validate=function(a,b){if(!a)throw b+" required";if("object"!=typeof a)throw b+" invalid"},a.formatData=function(a,c){return b.utils.isElement(a)&&(a=b.utils.paramsFromForm(a,c)),b.utils.underscoreKeys(a),a},a.create=function(a,c){return a.key||(a.key=b.key||b.publishableKey),b.utils.validateKey(a.key),b.ajaxJSONP({url:""+b.endpoint+"/tokens",data:a,method:"POST",success:function(a,b){return"function"==typeof c?c(b,a):void 0},complete:b.complete(c),timeout:4e4})},a.get=function(a,c){if(!a)throw"token required";return b.utils.validateKey(b.key),b.ajaxJSONP({url:""+b.endpoint+"/tokens/"+a,data:{key:b.key},success:function(a,b){return"function"==typeof c?c(b,a):void 0},complete:b.complete(c),timeout:4e4})},a}.call(this),this.Stripe.card=function(a){function c(){return c.__super__.constructor.apply(this,arguments)}return i(c,a),c.tokenName="card",c.whitelistedAttrs=["number","cvc","exp_month","exp_year","name","address_line1","address_line2","address_city","address_state","address_zip","address_country"],c.createToken=function(a,d,e){var f;return null==d&&(d={}),b.token.validate(a,"card"),"function"==typeof d?(e=d,d={}):"object"!=typeof d&&(f=parseInt(d,10),d={},f>0&&(d.amount=f)),d[c.tokenName]=b.token.formatData(a,c.whitelistedAttrs),b.token.create(d,e)},c.getToken=function(a,c){return b.token.get(a,c)},c.validateCardNumber=function(a){return a=(a+"").replace(/\s+|-/g,""),a.length>=10&&a.length<=16&&c.luhnCheck(a)},c.validateCVC=function(a){return a=b.utils.trim(a),/^\d+$/.test(a)&&a.length>=3&&a.length<=4},c.validateExpiry=function(a,c){var d,e;return a=b.utils.trim(a),c=b.utils.trim(c),/^\d+$/.test(a)&&/^\d+$/.test(c)&&parseInt(a,10)<=12?(e=new Date(c,a),d=new Date,e.setMonth(e.getMonth()-1),e.setMonth(e.getMonth()+1,1),e>d):!1},c.luhnCheck=function(a){var b,c,d,e,f,g;for(d=!0,e=0,c=(a+"").split("").reverse(),f=0,g=c.length;g>f;f++)b=c[f],b=parseInt(b,10),(d=!d)&&(b*=2),b>9&&(b-=9),e+=b;return e%10===0},c.cardType=function(a){return c.cardTypes[a.slice(0,2)]||"Unknown"},c.cardTypes=function(){var a,b,c,d;for(b={},a=c=40;49>=c;a=++c)b[a]="Visa";for(a=d=50;59>=d;a=++d)b[a]="MasterCard";return b[34]=b[37]="American Express",b[60]=b[62]=b[64]=b[65]="Discover",b[35]="JCB",b[30]=b[36]=b[38]=b[39]="Diners Club",b}(),c}.call(this,this.Stripe.token),this.Stripe.bankAccount=function(a){function c(){return c.__super__.constructor.apply(this,arguments)}return i(c,a),c.tokenName="bank_account",c.whitelistedAttrs=["country","routing_number","account_number"],c.createToken=function(a,d,e){return null==d&&(d={}),b.token.validate(a,"bank account"),"function"==typeof d&&(e=d,d={}),d[c.tokenName]=b.token.formatData(a,c.whitelistedAttrs),b.token.create(d,e)},c.getToken=function(a,c){return b.token.get(a,c)},c.validateRoutingNumber=function(a,d){switch(a=b.utils.trim(a),d){case"US":return/^\d+$/.test(a)&&9===a.length&&c.routingChecksum(a);case"CA":return/\d{5}\-\d{3}/.test(a)&&9===a.length;default:return!0}},c.validateAccountNumber=function(a,c){switch(a=b.utils.trim(a),c){case"US":return/^\d+$/.test(a)&&a.length>=1&&a.length<=17;default:return!0}},c.routingChecksum=function(a){var b,c,d,e,f,g;for(d=0,b=(a+"").split(""),g=[0,3,6],e=0,f=g.length;f>e;e++)c=g[e],d+=3*parseInt(b[c]),d+=7*parseInt(b[c+1]),d+=parseInt(b[c+2]);return 0!==d&&d%10===0},c}.call(this,this.Stripe.token),d=["createToken","getToken","cardType","validateExpiry","validateCVC","validateCardNumber"],f=0,g=d.length;g>f;f++)e=d[f],this.Stripe[e]=this.Stripe.card[e];"undefined"!=typeof c&&null!==c&&(c.exports=this.Stripe),"function"==typeof a&&a("stripe",[],function(){return j.Stripe})}).call(this),function(){var a,b,c,d=[].slice;a=encodeURIComponent,b=(new Date).getTime(),c=function(b,d,e){var f,g;null==d&&(d=[]);for(f in b)g=b[f],e&&(f=""+e+"["+f+"]"),"object"==typeof g?c(g,d,f):d.push(""+f+"="+a(g));return d.join("&").replace(/%20/g,"+")},this.Stripe.ajaxJSONP=function(a){var e,f,g,h,i,j;return null==a&&(a={}),g="sjsonp"+ ++b,i=document.createElement("script"),f=null,e=function(b){var c;return null==b&&(b="abort"),clearTimeout(f),null!=(c=i.parentNode)&&c.removeChild(i),g in window&&(window[g]=function(){}),"function"==typeof a.complete?a.complete(b,j,a):void 0},j={abort:e},i.onerror=function(){return j.abort(),"function"==typeof a.error?a.error(j,a):void 0},window[g]=function(){var b;b=1<=arguments.length?d.call(arguments,0):[],clearTimeout(f),i.parentNode.removeChild(i);try{delete window[g]}catch(c){window[g]=void 0}return"function"==typeof a.success&&a.success.apply(a,b),"function"==typeof a.complete?a.complete("success",j,a):void 0},a.data||(a.data={}),a.data.callback=g,a.method&&(a.data._method=a.method),i.src=a.url+"?"+c(a.data),h=document.getElementsByTagName("head")[0],h.appendChild(i),a.timeout>0&&(f=setTimeout(function(){return j.abort("timeout")},a.timeout)),j}}.call(this),function(){var a=[].indexOf||function(a){for(var b=0,c=this.length;c>b;b++)if(b in this&&this[b]===a)return b;return-1};this.Stripe.utils=function(){function b(){}return b.trim=function(a){return(a+"").replace(/^\s+|\s+$/g,"")},b.underscore=function(a){return(a+"").replace(/([A-Z])/g,function(a){return"_"+a.toLowerCase()}).replace(/-/g,"_")},b.underscoreKeys=function(a){var b,c,d;d=[];for(b in a)c=a[b],delete a[b],d.push(a[this.underscore(b)]=c);return d},b.isElement=function(a){return"object"!=typeof a?!1:"undefined"!=typeof jQuery&&null!==jQuery&&a instanceof jQuery?!0:1===a.nodeType},b.paramsFromForm=function(b,c){var d,e,f,g,h,i,j,k,l,m;for(null==c&&(c=[]),"undefined"!=typeof jQuery&&null!==jQuery&&b instanceof jQuery&&(b=b[0]),f=b.getElementsByTagName("input"),h=b.getElementsByTagName("select"),i={},j=0,l=f.length;l>j;j++)e=f[j],d=this.underscore(e.getAttribute("data-stripe")),a.call(c,d)<0||(i[d]=e.value);for(k=0,m=h.length;m>k;k++)g=h[k],d=this.underscore(g.getAttribute("data-stripe")),a.call(c,d)<0||null!=g.selectedIndex&&(i[d]=g.options[g.selectedIndex].value);return i},b.validateKey=function(a){if(!a||"string"!=typeof a)throw new Error("You did not set a valid publishable key. Call Stripe.setPublishableKey() with your publishable key. For more info, see https://stripe.com/docs/stripe.js");if(/\s/g.test(a))throw new Error("Your key is invalid, as it contains whitespace. For more info, see https://stripe.com/docs/stripe.js");if(/^sk_/.test(a))throw new Error("You are using a secret key with Stripe.js, instead of the publishable one. For more info, see https://stripe.com/docs/stripe.js")},b}()}.call(this),function(){var a=[].indexOf||function(a){for(var b=0,c=this.length;c>b;b++)if(b in this&&this[b]===a)return b;return-1};this.Stripe.validator={"boolean":function(a,b){return"true"!==b&&"false"!==b?"Enter a boolean string (true or false)":void 0},integer:function(a,b){return/^\d+$/.test(b)?void 0:"Enter an integer"},positive:function(a,b){return!this.integer(a,b)&&parseInt(b,10)>0?void 0:"Enter a positive value"},range:function(b,c){var d;return d=parseInt(c,10),a.call(b,d)<0?"Needs to be between "+b[0]+" and "+b[b.length-1]:void 0},required:function(a,b){return!a||null!=b&&""!==b?void 0:"Required"},year:function(a,b){return/^\d{4}$/.test(b)?void 0:"Enter a 4-digit year"},birthYear:function(a,b){var c;return c=this.year(a,b),c?c:parseInt(b,10)>2e3?"You must be over 18":parseInt(b,10)<1900?"Enter your birth year":void 0},month:function(a,b){return this.integer(a,b)?"Please enter a month":this.range([1,2,3,4,5,6,7,8,9,10,11,12],b)?"Needs to be between 1 and 12":void 0},choices:function(b,c){return a.call(b,c)<0?"Not an acceptable value for this field":void 0},email:function(a,b){return/^[^@<\s>]+@[^@<\s>]+$/.test(b)?void 0:"That doesn't look like an email address"},url:function(a,b){return/^https?:\/\/.+\..+/.test(b)?void 0:"Not a valid url"},usTaxID:function(a,b){return/^\d{2}-?\d{1}-?\d{2}-?\d{4}$/.test(b)?void 0:"Not a valid tax ID"},ein:function(a,b){return/^\d{2}-?\d{7}$/.test(b)?void 0:"Not a valid EIN"},ssnLast4:function(a,b){return/^\d{4}$/.test(b)?void 0:"Not a valid last 4 digits for an SSN"},ownerPersonalID:function(a,b){var c;return c=function(){switch(a){case"CA":return/^\d{3}-?\d{3}-?\d{3}$/.test(b);case"US":return!0}}(),c?void 0:"Not a valid ID"},bizTaxID:function(a,b){var c,d,e,f,g,h,i,j;if(h={CA:["Tax ID",[/^\d{9}$/]],US:["EIN",[/^\d{2}-?\d{7}$/]]},g=h[a],null!=g){for(c=g[0],f=g[1],d=!1,i=0,j=f.length;j>i;i++)if(e=f[i],e.test(b)){d=!0;break}if(!d)return"Not a valid "+c}},zip:function(a,b){var c;return c=function(){switch(a.toUpperCase()){case"CA":return/^[\d\w]{6}$/.test(null!=b?b.replace(/\s+/g,""):void 0);case"US":return/^\d{5}$/.test(b)||/^\d{9}$/.test(b)}}(),c?void 0:"Not a valid zip"},bankAccountNumber:function(a,b){return/^\d{1,17}$/.test(b)?void 0:"Invalid bank account number"},usRoutingNumber:function(a){var b,c,d,e,f,g,h;if(!/^\d{9}$/.test(a))return"Routing number must have 9 digits";for(f=0,b=g=0,h=a.length-1;h>=g;b=g+=3)c=3*parseInt(a.charAt(b),10),d=7*parseInt(a.charAt(b+1),10),e=parseInt(a.charAt(b+2),10),f+=c+d+e;return 0===f||f%10!==0?"Invalid routing number":void 0},caRoutingNumber:function(a){return/^\d{5}\-\d{3}$/.test(a)?void 0:"Invalid transit number"},routingNumber:function(a,b){switch(a.toUpperCase()){case"CA":return this.caRoutingNumber(b);case"US":return this.usRoutingNumber(b)}},phoneNumber:function(a,b){var c;return c=b.replace(/[^0-9]/g,""),10!==c.length?"Invalid phone number":void 0},bizDBA:function(a,b){return/^.{1,23}$/.test(b)?void 0:"Statement descriptors can only have up to 23 characters"},nameLength:function(a,b){return 1===b.length?"Names need to be longer than one character":void 0}}}.call(this)},{}],13:[function(a,b,c){"use strict";function d(a){a&&g.extend(this,a)}var e=a("q"),f=a("../services/api"),g=a("../services/util"),h=a("../constants/feature"),i=a("./accountFeature");d.prototype.hasFeature=function(a,b){if(!a)return console.log("account id required"),e.reject({message:"Accout id is required"});if(!g.hasObjectValue(h,b))return console.log("feature invalid",h,b),e.reject({message:"Feature invalid"});var c=e.defer();return f.get("accounts/"+a+"/features/"+b).then(function(a){if(!a)return void c.reject();var b=new i(a);b.isValid()?c.resolve():c.reject()},function(a){c.reject(a)}),c.promise},b.exports=d},{"../constants/feature":3,"../services/api":40,"../services/util":42,"./accountFeature":14,q:2}],14:[function(a,b,c){"use strict";function d(a){a&&e.extend(this,a)}var e=(a("q"),a("../services/api"),a("../services/util")),f=a("../constants/featureStatus");d.prototype.isValid=function(){return this.status?this.status===f.INSTALLED||this.status===f.TRIAL:!1},b.exports=d},{"../constants/featureStatus":4,"../services/api":40,"../services/util":42,q:2}],15:[function(a,b,c){"use strict";function d(a){a&&(h.extend(this,a),this.$name=a.address1)}function e(a){var b=this;a&&(b=a);var c=[];return b.address1&&c.push(b.address1),b.address2&&c.push(b.address2),b.address3&&c.push(b.address3),b.city&&c.push(b.city),b.county&&c.push(b.county),c.join(", ")}var f=a("q"),g=a("../services/api"),h=a("../services/util"),i=a("./user"),j=a("./venue");d.prototype.getAll=function(a){if(!i.isLogged())return f.reject({message:"User not logged"});var b=i.getCurrent(),c=f.defer();return g.get("users/"+b.id+"/addresses").then(function(a){b.addresses=a.map(function(a){return new d(a)}),c.resolve(b.addresses)},function(a){c.reject(a)}),c.promise},d.prototype.save=function(a){if(!i.isLogged())return f.reject({message:"User not logged"});if(!j.getCurrent())return f.reject({message:"Venue not logged"});if(!(a instanceof Object))return f.reject({
-	message:"Incorrect addresses parameter"});a.country=a.country||"UK";var b=f.defer(),c=i.getCurrent();return h.extend(a,{userId:c.id}),g.post("users/"+c.id+"/addresses",a).then(function(a){var e=new d(a);c.addresses.push(e),b.resolve(e)},function(a){b.reject(a)}),b.promise},d.prototype.update=function(a){if(!i.isLogged())return f.reject({message:"User not logged"});if(!j.getCurrent())return f.reject({message:"Venue not logged"});if(!(a instanceof Object&&a.id))return f.reject({message:"Incorrect address parameter"});var b=f.defer(),c=i.getCurrent();return h.extend(a,{userId:c.id}),g.put("users/"+c.id+"/addresses/"+a.id,a).then(function(a){var e=new d(a);c.updateAddress(e),b.resolve(e)},function(a){b.reject(a)}),b.promise},d.prototype["delete"]=function(a){if(!i.isLogged())return f.reject({message:"User not logged"});if(!(a instanceof Object&&a.id))return f.reject({message:"Incorrect address parameter"});var b=f.defer(),c=i.getCurrent();return g["delete"]("users/"+c.id+"/addresses/"+a.id).then(function(){i.getCurrent().removeAddress(a),b.resolve()},function(a){b.reject(a)}),b.promise},d.prototype.stringify=e,d.stringify=e,b.exports=d},{"../services/api":40,"../services/util":42,"./user":36,"./venue":37,q:2}],16:[function(a,b,c){"use strict";function d(){V={total:0}}function e(){T={i:[],n:null},W=!1,X=!1,d()}function f(a){var b=L.getCurrent();if(!b)return null;var c=b.sections.filter(function(b){return b.id===a});return c.length?c[0]:null}function g(){for(var a={},b=0,c=T.i.length;c>b;b++){var d=T.i[b],e=d.$sectionId;a[e]||(a[e]={section:f(e),items:[]}),a[e].items.push(T.i[b])}return a}function h(a){var b=U.filter(function(b){return b.id===a});return b.length?b[0]:f(a)}function i(a){var b=f(a.sectionId);b&&U.push(b)}function j(a){for(var b=0,c=T.i.filter(function(b){return b.$sectionId===a}),d=c.length-1;d>=0;d--)b+=+c[d].q;return b}function k(a){var b=h(a);if(b){var c=j(a);return{total:c,section:b}}return null}function l(a,b,c,d,e){return d||0===d||(d=0),!a.max||a.max*e>=b-d+c}function m(a){console.log("adding item .... ",a,I),d();var b=!1;W||(b=o(a)),b?b.increment(a.item.quantity||1):(i(a.item),T.i.push(new I({item:a.item,modifiers:a.modifiers,mealDeals:a.mealDeals})),a.item.voucher&&(W=!0,a.item.voucher.type===S.POST&&(X||a.item.voucher.address||(X=!0))))}function n(a){console.log("updating item .... ",a,I),d();var b=T.i.filter(function(b){return b.$_id===a.item.$_id})[0];H.extend(b,new I({item:a.item,modifiers:a.modifiers,mealDeals:a.mealDeals}))}function o(a){var b=T.i.filter(function(b){return b.i===a.item.id}),c="",d="";a.item.isMealDeal()?(c="mealDeals",d="md"):(d="m",c="modifiers");var e=null;if(b.length)if(a[c]&&a[c].length)for(var f=a[c].map(function(a){return a instanceof J?a.i:a.id}),g=0,h=b.length;h>g;g++){var i=b[g][d].filter(function(a){return-1!==f.indexOf(a.i)});if(i.length&&i.length===f.length&&H.compareObjects(b[g].v,a.item.voucher)){e=b[g];break}}else for(var g=0,h=b.length;h>g;g++)if(!b[g][d].length&&H.compareObjects(b[g].v,a.item.voucher)){e=b[g];break}return e||!1}function p(a){var b=a;return a.item&&(b=o(a)),b?(d(),T.i.splice(T.i.indexOf(b),1),F.resolve()):F.reject({message:"Item not found"})}function q(){for(;T.i.length>0;)T.i.pop();d()}function r(){return V&&V.total?V.total:s()}function s(){for(var a=0,b=0,c=T.i.length;c>b;b++)a+=+T.i[b].getPrice();return a.toFixed(2)}function t(a){for(var b=0,c=T.i.length-1;c>=0;c--)b=Math.max(b,T.i[c].leadTime||a);return b}function u(a){for(var b=Date.now(),c=Date.now(),d=T.i.length-1;d>=0;d--){var e=T.i[d],f=e.leadDays,g=e.leadDaysTime||0;if(f>0){var h=new Date,i=h.getDay()+1,j=N.getCloseTime(a,i);if(j){var k=j.split(":");h.setHours(k[0],k[1],0,0),h.setMinutes(h.getMinutes()-g),c>h.getTime()&&(j=!1)}if(!j)for(d=0;7>d&&(h.setDate(h.getDate()+1),!(j=N.getCloseTime(a,h.getDay()+1)));d++);h.setDate(h.getDate()+f),h.setHours(0,0,0,0),b=Math.max(b,h.getTime())}}return b}function v(a){var b=K.getCurrent();if(!b)return F.reject({message:"Venue not found"});a=a||{},W?a.orderType=R.VOUCHER:b.isDelivery()&&a.orderType||(a.orderType=R.PICKUP);var c=L.getCurrent();c&&c.type===R.BOOKING&&(a.orderType=R.BOOKING);var d="";a.expand&&(d="?expand="+a.expand);var e=F.defer();return G.post("orders/basket"+d,{v:b.id,ot:a.orderType,i:T.i,e:a.eventId||void 0,pt:a.pickupTime||void 0,ptype:a.paymentType||void 0}).then(function(a){V=a,a.availableSlots&&(V.availableSlots=V.availableSlots.map(function(a){return new P(a)})),e.resolve(a)},function(a){e.reject(a)}),e.promise}function w(){return V?V.fees:[]}function x(){return V?V.discounts:[]}function y(){return V?V.availableSlots:[]}function z(){var a=K.getCurrent();if(!a)return{};var b=a.settings||{},c=r(),d=c-(V.fee||0),e=b.deliveryOrderMin||0,f=b.orderMin||0,g={total:c||0,deliveryCharge:b.deliveryCharge||0,deliveryOrderMin:e,deliveryDifference:Math.max(0,e-d),orderMin:f,orderDifference:Math.max(0,f-d)};return g}function A(){return V}function B(a){function b(){a.address&&(c=O.stringify(a.address),d=a.address.postcode)}if(!(a instanceof Object))return F.reject({message:"Invalid parameter. Expected Object"});var c=null,d=null,e=null,f=null,g=function(a){return[a.getFullYear(),a.getMonth()+1,a.getDate()].join("-")+"T"+[a.getHours(),a.getMinutes(),"00"].join(":")+".000"};a.deliveryState||a.orderType===R.DELIVERY?(b(),K.getCurrent().isDelivery()&&!a.orderType&&(a.orderType=R.DELIVERY)):(W?b():c=a.deliveryAddress,a.orderType||(a.outletLocation&&a.outletLocation.toSeatFlag?a.orderType=R.SEAT:a.bookingId?a.orderType=R.BOOKING:W?a.orderType=R.VOUCHER:a.orderType=R.PICKUP));var h=null,i=null;if(a.event){var j=H.getLocalDate(a.event.date),k=a.event.schedules?j:null;if(h=a.pickupSlot,null!==k){if(a.pickupTime){var l=a.pickupTime.split(":");k.setHours(l[0]),k.setMinutes(l[1])}e=g(k)}f=a.event.id,i=a.event.date}else e=a.pickupSlot&&a.pickupTime?a.pickupSlot+"T"+a.pickupTime+":00.000":a.pickupTime;a.paymentType===Q.CASH&&(a.paymentMethod=null),W&&C(c,d);var m={o:a.outletId,ot:a.orderType,da:c,dp:d,i:T.i,t:r(),pm:a.paymentMethod,n:a.notes,ptype:a.paymentType};return e&&(m.pt=e),h&&(m.ps=h),f&&(m.e=f),i&&(m.et=i),a.bookingId&&(m.b=a.bookingId),M.save(m)}function C(a,b){for(var c=T.i.length-1;c>=0;c--)T.i[c].v&&T.i[c].v.populate(a,b)}function D(a){return M.updateBookingOrder(a,{i:T.i,t:r(),ot:R.BOOKING})}function E(){e()}var F=a("q"),G=a("../services/api"),H=a("../services/util"),I=a("./basketItem"),J=a("./basketModifierItem"),K=a("./venue"),L=a("./menu"),M=a("./order"),N=(a("./user"),a("./hour")),O=a("./addresses"),P=a("./pickupSlot"),Q=a("../constants/paymentMethods"),R=a("../constants/orderType"),S=a("../constants/voucherType"),T={},U=[],V=null,W=!1,X=!1;e(),b.exports={addItem:m,isAvailableAddItemInSectionPerPeople:l,getSectionAndTotalItems:k,updateItem:n,removeItem:p,removeAll:q,total:r,totalCore:s,getSlots:y,getCostDetails:z,getDiscounts:x,getFees:w,getOrderDetail:A,maxLeadTime:t,maxPickupTime:u,checkDiscount:v,processOrder:B,updateBookingOrder:D,clear:E,isVoucher:function(){return W},shouldAddVoucherAddress:function(){return X},getItems:function(){return T.i},getItemsGroupBySection:g}},{"../constants/orderType":6,"../constants/paymentMethods":7,"../constants/voucherType":10,"../services/api":40,"../services/util":42,"./addresses":15,"./basketItem":17,"./basketModifierItem":18,"./hour":22,"./menu":25,"./order":28,"./pickupSlot":33,"./user":36,"./venue":37,q:2}],17:[function(a,b,c){"use strict";function d(a){a.item&&f.call(this,a)}function e(){var a=function(){return(65536*(1+Math.random())|0).toString(16).substring(1)};return a()+a()+"-"+a()+"-"+a()+"-"+a()+"-"+a()+a()+a()}function f(a){var b=a.item;this.i=b.id,this.plu=b.plu,this.n=b.name,this.p=b.price,this.q=b.quantity||b.qty||1,this.nt=b.notes,this.m=[],this.md=[],this.$sectionId=b.sectionId,this.$_id=e(),console.log("id generated ",this.$_id),a.modifiers&&a.modifiers.length&&g.call(this,a.modifiers),a.mealDeals&&a.mealDeals.length&&h.call(this,a.mealDeals),b.voucher&&(this.v=new l(b.voucher),this.v.total=this.getPrice())}function g(a){for(var b=0,c=a.length;c>b;b++)this.m.push(new k(a[b]))}function h(a){for(var b=0,c=a.length;c>b;b++)this.md.push(new d({item:a[b]}))}function i(){for(var a=0,b=this.m.length-1;b>=0;b--)a+=+this.m[b].p||0;return a}function j(){for(var a=0,b=this.md.length-1;b>=0;b--)a+=+this.md[b].p||0;return a}var k=a("./basketModifierItem"),l=a("./voucher");d.prototype.increment=function(a){this.q+=a},d.prototype.decrement=function(){this.q&&--this.q},d.prototype.getPrice=function(){var a=0;return this.m&&this.m.length&&(a+=i.call(this)),this.md&&this.md.length&&(a+=j.call(this)),((+a+ +this.p)*+this.q).toFixed(2)},b.exports=d},{"./basketModifierItem":18,"./voucher":38}],18:[function(a,b,c){"use strict";function d(a){a&&e.call(this,a)}function e(a){this.i=a.id,this.n=a.name,this.p=a.price,a.qty&&(this.q=a.qty)}b.exports=d},{}],19:[function(a,b,c){"use strict";function d(a){a&&(i.extend(this,a),e.call(this))}function e(){this.orders&&this.orders.length&&(this.orders=this.orders.map(function(a){return new k(a)}))}function f(a){if(a.orders&&a.orders.length)for(var b=a.orders[0],c=0,d=b.items.length;d>c;c++)b.items[c].addToBasket()}var g=a("q"),h=a("../services/api"),i=a("../services/util"),j=a("./menu"),k=a("./order");d.prototype.save=function(b){var c=g.defer(),d=a("./basket");return this.orders&&this.orders.length?d.updateBookingOrder(this.orders[0].id).then(function(a){c.resolve(a)},function(){c.reject("Error updating booking order")}):d.processOrder({bookingId:this.id,notes:b}).then(function(a){c.resolve(a)},function(){c.reject("Error creating booking order")}),c.promise},d.prototype.loadBookingOrders=function(){var b=a("./basket");if(this.orders&&this.orders.length)for(var c=this.orders[0].items,d=0,e=c.length;e>d;d++){var f=i.clone(c[d]),g=allItems.filter(function(a){return a.id===f.menuItemId});f.id=f.menuItemId,g.length&&(f.sectionId=g[0].sectionId);var h={item:f};f.modifiers&&f.modifiers.length&&(h.modifiers=f.modifiers.map(function(a){return a.id=a.modifierItemId,a})),f.mealDealItems&&f.mealDealItems.length&&(h.mealDeals=f.mealDealItems.map(function(a){return a.id=a.mealDealItemId,a})),b.addItem(h)}},d.prototype.getBookings=function(a){if(!a||!a.venueId&&!a.permalink)return g.reject({message:"Venue identifier is required"});var b=g.defer(),c=a?i.serialize(a):"";return h.get("bookings?"+c).then(function(a){a=a.map(function(a){return new d(a)}),b.resolve(a)},function(a){b.reject(a)}),b.promise},d.prototype.getMenu=function(){var a=g.defer(),b=this;return j.prototype.get({promotionId:this.promotionId}).then(function(c){c&&c.length?(f(b),a.resolve(c[0])):a.resolve()},function(b){a.reject(b)}),a.promise},d.prototype.validate=function(a,b,c){if(!c)return g.reject({message:"Invalid parameters"});if(!c.venueId&&!c.permalink)return g.reject({message:"Venue identifier is required"});if(!a)return g.reject({message:"Booking reference is required"});if(!b)return g.reject({message:"Organiser last name is required"});c.expand="orders";var e=g.defer(),f=c?i.serialize(c):"";return h.post("bookings/"+a+"/validate/"+b+"?"+f).then(function(a){e.resolve(new d(a))},function(a){e.reject(a)}),e.promise},b.exports=d},{"../services/api":40,"../services/util":42,"./basket":16,"./menu":25,"./order":28,q:2}],20:[function(a,b,c){"use strict";function d(a){a&&g.extend(this,a)}var e=a("q"),f=a("../services/api"),g=a("../services/util");d.prototype.getSettings=function(a){if(!a||!a.venueId)return e.reject({message:"Venue identifier is required"});var b=e.defer(),c=a.venueId;return f.get("venues/"+c+"/booking-settings").then(function(a){b.resolve(new d(a))},function(a){b.reject(a)}),b.promise},d.prototype.updateSettings=function(a){if(!a||!a.venueId)return e.reject({message:"Venue identifier is required"});if(!a||!a.settings)return e.reject({message:"Settings data cannot be null"});var b=e.defer(),c=a.venueId,g=a.settings;return f.put("venues/"+c+"/booking-settings",g).then(function(a){b.resolve(new d(a))},function(a){b.reject(a)}),b.promise},d.prototype.saveSettings=function(a){if(!a||!a.venueId)return e.reject({message:"Venue identifier is required"});if(!a||!a.settings)return e.reject({message:"Settings data cannot be null"});var b=e.defer(),c=a.venueId,g=a.settings;return f.post("venues/"+c+"/booking-settings",g).then(function(a){b.resolve(new d(a))},function(a){b.reject(a)}),b.promise},b.exports=d},{"../services/api":40,"../services/util":42,q:2}],21:[function(a,b,c){"use strict";function d(a){a&&g.extend(this,a)}var e=a("q"),f=a("../services/api"),g=a("../services/util"),h=a("./venue");d.prototype.getAll=function(a,b){var c=h.getCurrent(),i=a||c&&c.id,j=b?g.serialize(b):"";if(!i)return e.reject({message:"Venue not found"});var k=e.defer();return f.get("venues/"+i+"/events?"+j).then(function(a){var b=a.map(function(a){return new d(a)});k.resolve(b)},function(a){k.reject(a)}),k.promise},d.prototype.create=function(a,b){if(!b||!b.name)return e.reject({message:"Malformed data to save."});var c=e.defer();return f.post("venues/"+a+"/events",b).then(function(a){c.resolve(new d(a))},function(a){c.reject(a)}),c.promise},d.prototype.save=function(a){if(!a||!a.name)return e.reject({message:"Malformed data to update."});var b=e.defer(),c=this.id;return f.put("events/"+c,a).then(function(a){b.resolve(new d(a))},function(a){b.reject(a)}),b.promise},d.prototype.remove=function(){if(!this.id)return e.reject({message:"Malformed event, did you run the constructor?"});var a=e.defer();return f["delete"]("events/"+this.id).then(function(b){a.resolve(b)},function(b){a.reject(b)}),a.promise},d.prototype.deleteSlots=function(){if(!this.id)return e.reject({message:"Malformed event, did you run the constructor?"});var a=e.defer();return f["delete"]("events/"+this.id+"/slots").then(function(b){a.resolve(b)},function(b){a.reject(b)}),a.promise},b.exports=d},{"../services/api":40,"../services/util":42,"./venue":37,q:2}],22:[function(a,b,c){"use strict";function d(a){a&&l.extend(this,a)}function e(a,b){return b=b||[h(a)],{name:f(a),value:g(a),slots:b}}function f(a){a=new Date(new Date(a).setHours(0,0,0,0));var b=new Date((new Date).setHours(0,0,0,0)),c=Math.abs(b.getTime()-a.getTime()),d=Math.ceil(c/864e5);return 0==d?"Today":1==d?"Tomorrow":a.toDateString()}function g(a){var a=[a.getFullYear(),l.pad(a.getMonth()+1),l.pad(a.getDate())].join("-");return a}function h(a){var a=[l.pad(a.getHours()),l.pad(a.getMinutes())].join(":");return a}function i(a,b){var c=m.getCurrent();return c.hours=b.map(function(a){return new d(a)}),b&&b instanceof Object&&b.groupBy?j.resolve(this.groupByDay(b)):j.resolve(c.hours)}var j=a("q"),k=a("../services/api"),l=a("../services/util"),m=a("./venue"),n=a("./basket"),o=30,p=15;d.prototype.getSlotTimes=function(a){if(!~["delivery","pickup"].indexOf(a))throw"Please ensure the type is either 'pickup' or 'delivery'.";var b=m.getCurrent();if(!b)throw"Venue not logged";var c=b.hours;if(c&&c.length){var d=b.settings,e=d&&d.collectInterval||p;if("pickup"==a)var f=d&&d.leadTime||o;else var f=d&&d.deliveryLeadTime||o;f=n.maxLeadTime(f);var g=n.maxPickupTime(c);return g=Math.max(g,Date.now()+60*f*1e3),this.getTimes(4,c,e,f,new Date(g),a)}},d.prototype.getTimes=function(a,b,c,d,f,g){if(!~["delivery","pickup"].indexOf(g))throw new Error("Please ensure the type is either 'pickup' or 'delivery'.");for(var h=[],i=new Date,j=i.getDay()+1,k=0;7>k;k++){for(var m=b.filter(function(a){return a.day===j}),n=[],o=0,p=m.length;p>o;o++){var q=m[o];if(q[g]){var r=new l.TimeRange(q.open,q.close);[].push.apply(n,r.getValues(c,d,0==k?f:!1))}}if(n.length>0&&h.push(e(i,n)),h.length==a)break;i.setDate(i.getDate()+1),j=j>6?1:j+1}return h},d.prototype.getAll=function(a){var b=m.getCurrent();if(!b)return j.reject({message:"Venue not found"});var c=j.defer();return k.get("venues/"+b.id+"/hours").then(function(b){i.apply(this,[a,b]).then(function(a){c.resolve(a)})},function(a){c.reject(a)}),c.promise},d.prototype.groupByDay=function(a){for(var b=[],c=0,d=0;7>d;d++){c=6>d?d+2:1;var e=a.filter(function(a){return a.day===c});b.push({day:d,hours:[]});for(var f=0,g=e.length;g>f;f++)b[d].hours.push({open:e[f].open.slice(0,5),close:e[f].close.slice(0,5)})}return b},d.getCloseTime=function(a,b){for(var a=a.filter(function(a){return a.day==b}),c=null,d=a.length-1;d>=0;d--){var e=a[d].close;null===c?c=e:e>c&&(c=e)}return c},b.exports=d},{"../services/api":40,"../services/util":42,"./basket":16,"./venue":37,q:2}],23:[function(a,b,c){"use strict";function d(a){a&&(h.extend(this,a),f.call(this),e.call(this),this.mealDeal&&g.call(this))}function e(){this.tags=this.tags.map(function(a){return new k(a)})}function f(){this.modifiers=this.modifiers.map(function(a){return new j(a)})}function g(){this.mealDealSections=this.mealDealSections.map(function(a){return new l(a)})}var h=a("../services/util"),i=a("../constants/menuItemImageType"),j=a("./modifier"),k=a("./tag"),l=a("./mealDealSection");d.prototype.isMealDeal=function(){return 1===this.mealDeal},d.prototype.hasFromPrice=function(){for(var a in this.modifiers){var b=this.modifiers[a];for(var c in b.items)if(b.items[c].price)return!0}},d.prototype.getFromPrice=function(){var a=this.price||0;for(var b in this.modifiers){var c=this.modifiers[b],d=1/0;if(c.minChoices>0){for(var e in c.items){var f=c.items[e].price||0;d>f&&(d=f)}d!==1/0&&(a+=d)}}return a},d.prototype.hasBGImage=function(){return this.images.filter(function(a){return a.type===i.BG}).length},d.prototype.getRandomBGImage=function(){var a=this.images.filter(function(a){return a.type===i.BG});if(!a.length)return null;var b=a[Math.floor(Math.random()*a.length)];return b.imageThumb||b.image},d.prototype.hasDefaultImage=function(){return this.images.filter(function(a){return a.type===i.DEFAULT}).length},d.prototype.getRandomDefaultImage=function(){var a=this.images.filter(function(a){return a.type===i.DEFAULT});if(!a.length)return null;var b=a[Math.floor(Math.random()*a.length)];return b.imageThumb||b.image},b.exports=d},{"../constants/menuItemImageType":5,"../services/util":42,"./mealDealSection":24,"./modifier":26,"./tag":35}],24:[function(a,b,c){"use strict";function d(a){a&&e.extend(this,a)}var e=a("../services/util");b.exports=d},{"../services/util":42}],25:[function(a,b,c){function d(a){a&&(g.extend(this,a),e.call(this))}function e(){this.sections=this.sections.map(function(a){return new i(a)})}var f=a("q"),g=a("../services/util"),h=a("../services/api"),i=a("./section"),j=null;d.getCurrent=function(){return j},d.prototype.get=function(a){var b=f.defer();a.type=a.type?a.type:"MENU";var c="menus?expand=true";return a.outletId?c+="&outletId="+a.outletId:a.venueId?c+="&venueId="+a.venueId:a.promotionId?c+="&promotionId="+a.promotionId:a.accountId&&(c+="&accountId="+a.accountId),a.type&&(c+="&type="+a.type),h.get(c).then(function(a){if(""===a)return b.reject(a);var c=a.map(function(a){return new d(a)});j=c.length?c[0]:null,b.resolve(c)},function(a){b.reject(a)}),b.promise},d.prototype.getItemById=function(a){for(var b=this.sections,c=null,d=b.length-1;d>=0&&!(c=b[d].getItemById(a));d--);return c},b.exports=d},{"../services/api":40,"../services/util":42,"./section":34,q:2}],26:[function(a,b,c){"use strict";function d(a){a&&(f.extend(this,a),e.call(this))}function e(){this.items=this.items.map(function(a){return new g(a)})}var f=a("../services/util"),g=a("./modifierItem");b.exports=d},{"../services/util":42,"./modifierItem":27}],27:[function(a,b,c){"use strict";function d(a){a&&e.extend(this,a)}var e=a("../services/util");b.exports=d},{"../services/util":42}],28:[function(a,b,c){"use strict";function d(a){a&&(k.extend(this,a),e.call(this))}function e(){this.items=this.items.map(function(a){return new m(a)})}function f(a,b){var c=i.defer();return a.status=b,a.update().then(function(){c.resolve()},function(){c.reject()}),c.promise}function g(b){var c=a("./venue"),e=l.getCurrent(),f=c.getCurrent();if(!l.isLogged())return i.reject({message:"User not logged"});if(!f)return i.reject({message:"Venue not logged"});var g=i.defer();return k.extend(b,{v:f.id,u:e.id,ph:e.phone}),j.post("orders",b).then(function(a){g.resolve(new d(a))},function(a){g.reject(a)}),g.promise}function h(b,c){var e=a("./venue"),f=l.getCurrent(),g=e.getCurrent();if(!b)return i.reject({message:"OrderId is required"});if(!l.isLogged())return i.reject({message:"User not logged"});if(!g)return i.reject({message:"Venue not logged"});var h=i.defer();return k.extend(c,{v:g.id,u:f.id,ph:f.phone}),j.put("orders/"+b+"/booking",c).then(function(a){h.resolve(new d(a))},function(a){h.reject(a)}),h.promise}var i=a("q"),j=a("../services/api"),k=a("../services/util"),l=a("./user"),m=a("./orderItem");d.prototype.getOrdersByUser=function(){var b=a("./venue"),c=l.getCurrent(),e=b.getCurrent();if(!c)return i.reject({message:"User not logged"});if(!e)return i.reject({message:"Venue not logged"});var f=i.defer();return j.get("orders?userId="+c.id+"&venueId="+e.id).then(function(a){a=a.map(function(a){return new d(a)}),f.resolve(a)},function(a){f.reject(a)}),f.promise},d.prototype.get=function(a){if(!a)return i.reject({message:"Id is required"});var b=i.defer();return j.get("orders/"+a).then(function(a){b.resolve(new d(a))},function(a){b.reject(a)}),b.promise},d.prototype.fetch=function(a){var b=i.defer(),c=k.serialize(a);return j.get("orders"+(c?"?"+c:null)).then(function(a){a=a.map(function(a){return new d(a)}),b.resolve(a)},function(a){b.reject(a)}),b.promise},d.prototype.read=function(a){var b=null;if(this.id)b=this.id;else{if(!a)return i.reject({message:"Id is required"});b=a}var c=i.defer(),d=this;return j.post("orders/"+b+"/read").then(function(){d.viewed=new Date,c.resolve()},function(a){c.reject(a)}),c.promise},d.prototype.charge=function(a){var b=null;if(this.id)b=this.id;else{if(!a)return i.reject({message:"Id is required"});b=a}var c=i.defer();return j.post("orders/"+b+"/charge").then(function(a){c.resolve(a)},function(a){c.reject(a)}),c.promise},d.prototype.notify=function(a){if(!this.id)return i.reject({message:"Invalid order"});var b=i.defer();return j.post("orders/"+this.id+"/notify",{content:a}).then(function(a){b.resolve(a)},function(a){b.reject(a)}),b.promise},d.prototype.reject=function(a){if(!this.id)return i.reject({message:"Invalid order"});var b=i.defer();return j.post("orders/"+this.id+"/reject",{content:a}).then(function(a){b.resolve(a)},function(a){b.reject(a)}),b.promise},d.prototype.noShow=function(){return f(this,"NOSHOW")},d.prototype.complete=function(a){var b=null;return a?(b=new d,b.id=a):b=this,f(b,"COMPLETED")},d.prototype.preparing=function(){return f(this,"PREPARING")},d.prototype.ready=function(){return f(this,"READY")},d.prototype.delivering=function(){return f(this,"DELIVERING")},d.prototype.save=g,d.save=g,d.prototype.updateBookingOrder=h,d.updateBookingOrder=h,d.prototype.update=function(){l.getCurrent();if(!l.isLogged())return i.reject({message:"User not logged"});var a=i.defer();return j.put("orders/"+this.id,this).then(function(b){a.resolve(b)},function(b){a.reject(b)}),a.promise},b.exports=d},{"../services/api":40,"../services/util":42,"./orderItem":29,"./user":36,"./venue":37,q:2}],29:[function(a,b,c){"use strict";function d(a){a&&e.extend(this,a)}var e=a("../services/util"),f=a("./menu");d.prototype.isMealDeal=function(){return this.mealDealItems.length>0},d.prototype.addToBasket=function(){var b=a("./basket"),c=f.getCurrent().getItemById(this.menuItemId),e=new d(this);e.id=this.menuItemId,c&&(e.sectionId=c.sectionId);var g={item:e};this.modifiers&&this.modifiers.length&&(g.modifiers=this.modifiers.map(function(a){return a.id=a.modifierItemId,a})),this.mealDealItems&&this.mealDealItems.length&&(g.mealDeals=this.mealDealItems.map(function(a){return a.id=a.mealDealItemId,a})),b.addItem(g)},b.exports=d},{"../services/util":42,"./basket":16,"./menu":25}],30:[function(a,b,c){"use strict";function d(a,b){a&&(i.extend(this,a),b&&b.length&&(k[a.id]=b.map(function(a){return new d(a,e(a.id))})))}function e(a){var b=l.filter(function(b){return b.id===a});if(b=b&&b.length&&b[0]||null,b&&b.seatStart&&b.seatEnd){for(var c=[],e=b.seatStart;e<=b.seatEnd;e++){var f=i.clone(b);f.id=b.id+"-"+e,f.name=e,c.push(new d(f))}return c}return l.filter(function(b){return b.parent===a})}function f(a,b){var c=j.getCurrent();l=a,k={};var f=null;f=b?e(b):a.filter(function(a){return!a.parent}),c.outlets=[];for(var g=0,h=f.length;h>g;g++)c.outlets.push(new d(f[g],e(f[g].id)))}var g=a("q"),h=a("../services/api"),i=a("../services/util"),j=a("./venue"),k={},l=null;d.prototype.getAll=function(a){var b=j.getCurrent();if(!b)return g.reject({message:"Venue not found"});var c=g.defer(),d="venues/"+b.id+"/outletlocations",e=null;a instanceof Object&&a.outletLocationId&&(e=a.outletLocationId,d+="?root="+a.outletLocationId);var i=this;return h.get(d).then(function(a){f.call(i,a,e),c.resolve(b.outlets)},function(a){c.reject(a)}),c.promise},d.prototype.get=function(a){var b=g.defer(),c="outlets/"+a;return h.get(c).then(function(a){b.resolve(new d(a))},function(a){b.reject(a)}),b.promise},d.prototype.getChildrens=function(){return k[this.id]},b.exports=d},{"../services/api":40,"../services/util":42,"./venue":37,q:2}],31:[function(a,b,c){"use strict";function d(a){a&&h.extend(this,a)}var e=a("q"),f=a("../lib/stripe.min"),g=a("../services/api"),h=a("../services/util"),i=a("../services/settings"),j=a("./user"),k=a("./venue");d.prototype.getAll=function(a){if(!j.isLogged())return e.reject({message:"User not logged"});var b=j.getCurrent(),c=e.defer();return g.get("users/"+b.id+"/paymentmethods").then(function(a){b.paymentMethods=a.map(function(a){return new d(a)}),c.resolve(b.paymentMethods)},function(a){c.reject(a)}),c.promise},d.prototype.validate=function(a){var b=e.defer();return f.setPublishableKey(i.getSettings().stripeKey),f.createToken(a,function(a,c){c.error?b.reject({message:c.error.message}):b.resolve({token:c.id,name:c.card.name,type:c.card.type||c.card.brand,expMonth:c.card.exp_month,expYear:c.card.exp_year,number:c.card.last4})}),b.promise},d.prototype.save=function(a){if(!j.isLogged())return e.reject({message:"User not logged"});if(!k.getCurrent())return e.reject({message:"Venue not logged"});if(!(a instanceof Object))return e.reject({message:"Incorrect Payment Method parameter"});var b=e.defer(),c=j.getCurrent();return this.validate(a).then(function(a){angular.extend(a,{userId:c.id,venueId:k.getCurrent().id}),g.post("users/"+c.id+"/paymentmethods",a).then(function(a){var e=new d(a);c.paymentMethods.push(e),b.resolve(e)},function(a){b.reject(a)})},function(a){b.reject(a)}),b.promise},d.prototype["delete"]=function(a){if(!j.isLogged())return e.reject({message:"User not logged"});if(!(a instanceof Object&&a.id))return e.reject({message:"Incorrect Payment Method parameter"});var b=e.defer(),c=j.getCurrent();return g["delete"]("users/"+c.id+"/paymentmethods/"+a.id).then(function(){j.getCurrent().removePaymentMethod(a),b.resolve()},function(a){b.reject(a)}),b.promise},b.exports=d},{"../lib/stripe.min":12,"../services/api":40,"../services/settings":41,"../services/util":42,"./user":36,"./venue":37,q:2}],32:[function(a,b,c){"use strict";function d(a){a&&g.extend(this,a)}var e=a("q"),f=a("../services/api"),g=a("../services/util"),h=a("./venue");d.prototype.getPaymentProvidersByVenue=function(){var a=h.getCurrent();if(!a)return e.reject({message:"Venue not found"});var b=e.defer();return f.get("venues/"+a.id+"/paymentproviders").then(function(c){a.paymentProviders=c.map(function(a){return new d(a)}),b.resolve(a.paymentProviders)},function(a){b.reject(a)}),b.promise},b.exports=d},{"../services/api":40,"../services/util":42,"./venue":37,q:2}],33:[function(a,b,c){"use strict";function d(a){a&&(g.extend(this,a),this.slots&&(this.slots=this.slots.map(function(a){return new d(a)})))}var e=a("q"),f=a("../services/api"),g=a("../services/util"),h=a("../constants/pickupSlotType");d.prototype.getAll=function(a){if(!a||!a.id)return e.reject({message:"Invalid event param"});var b=e.defer();return f.get("events/"+a.id+"/slots/slotConfig").then(function(a){var a=a.map(function(a){return new d(a)});b.resolve(a)},function(a){b.reject(a)}),b.promise},d.prototype.create=function(a){if(!a||!a.name||!a.eventId)return e.reject({message:"Malformed pickup slot, did you run the constructor?"});var b=e.defer();return f.post("events/"+a.eventId+"/slots",a).then(function(a){b.resolve(new d(a))},function(a){b.reject(a)}),b.promise},d.prototype.save=function(){if(void 0==this.id||void 0==this.eventId)return e.reject({message:"Malformed pickup slot, did you run the constructor?"});var a=e.defer();return f.put("events/"+this.eventId+"/slots/"+this.id,this).then(function(b){var b=b.map(function(a){return new d(a)});a.resolve(b)},function(b){a.reject(b)}),a.promise},d.prototype.remove=function(){this.id?"post":"put";if(!this.name||!this.eventId)return e.reject({message:"Malformed pickup slot, did you run the constructor?"});var a=e.defer();return this.id?f["delete"]("events/"+this.eventId+"/slots/"+this.id).then(function(b){var b=b.map(function(a){return new d(a)});a.resolve(b)},function(b){a.reject(b)}):a.resolve({message:"No slots to delete"}),a.promise},d.prototype.processSlotChild=function(){var a=[];for(var b in this.slots)if(this.slots[b].step&&this.slots[b].isTime())for(var c=new g.getLocalDate(this.slots[b].value||this.slots[b].name),e=0;e<=this.slots[b].repeat;e++)a.push(new d(g.extend(this.slots[b],{$timestamp:c.getTime()}))),c=g.addMinutes(c,this.slots[b].step);else a.push(this.slots[b]);return a},d.prototype.isTime=function(){return this.type===h.TIME},b.exports=d},{"../constants/pickupSlotType":8,"../services/api":40,"../services/util":42,q:2}],34:[function(a,b,c){"use strict";function d(a){a&&(f.extend(this,a),e.call(this))}function e(){this.items=this.items.map(function(a){return new g(a)})}var f=a("../services/util"),g=a("./item");d.prototype.getItemById=function(a){var b=this.items.filter(function(b){return b.id===a});return b.length&&b[0]},b.exports=d},{"../services/util":42,"./item":23}],35:[function(a,b,c){"use strict";function d(a){a&&(a=e.extend(this,this.getFromCode(a.code)))}var e=a("../services/util");d.prototype.getFromCode=function(a){var b=this.getAll().filter(function(b){return b.code===a});return b.length?b[0]:(console.error("Invalid tag code: "+a),!1)},d.prototype.getAll=function(){return[{"short":"C",fullName:"Celery",code:"cel"},{"short":"G",fullName:"Gluten",code:"glt"},{"short":"CR",fullName:"Crustaceans",code:"cru"},{"short":"E",fullName:"Eggs",code:"egg"},{"short":"F",fullName:"Fish",code:"fis"},{"short":"L",fullName:"Lupin",code:"lup"},{"short":"MI",fullName:"Milk",code:"mik"},{"short":"MO",fullName:"Molluscs",code:"mol"},{"short":"MU",fullName:"Mustard",code:"mus"},{"short":"N",fullName:"Nuts",code:"cont"},{"short":"P",fullName:"Peanuts",code:"pea"},{"short":"S",fullName:"Shellfish",code:"she"},{"short":"SO",fullName:"Soya",code:"soy"},{"short":"SU",fullName:"Sulphur Dioxide",code:"sul"},{"short":"GF",fullName:"Gluten Free",code:"glu"},{"short":"V",fullName:"Vegetarian",code:"vet"},{"short":"VG",fullName:"Vegan",code:"veg"},{"short":"MILD",fullName:"Mild",code:"mil"},{"short":"HOT",fullName:"Hot",code:"spi"},{"short":"H",fullName:"Halal",code:"hal"},{"short":"VERY HOT",fullName:"Very Hot",code:"hot"},{"short":"MED",fullName:"Medium",code:"med"}]},b.exports=d},{"../services/util":42}],36:[function(a,b,c){"use strict";function d(a){a&&(k.extend(this,a),e.call(this),f.call(this))}function e(){if(this.addresses){var b=a("./addresses");this.addresses=this.addresses.map(function(a){return new b(a)})}else this.addresses=[]}function f(){if(this.paymentMethods){var b=a("./paymentMethod");this.paymentMethods=this.paymentMethods.map(function(a){return new b(a)})}else this.paymentMethods=[]}function g(){return l}function h(){return null!==l}var i=a("q"),j=a("../services/api"),k=a("../services/util"),l=null;d.prototype.signout=function(){var a=i.defer();return j["delete"]("users/auth").then(function(){a.resolve()},function(b){a.reject(b)}),a.promise},d.prototype.auth=function(a){
-	var b=i.defer();return a&&a.password?j.post("users/auth",a).then(function(a){l=new d(a),b.resolve(l)},function(a){b.reject(a)}):j.get("users/auth").then(function(a){l=new d(a),b.resolve(l)},function(a){b.reject(a)}),b.promise},d.prototype.forgotPassword=function(a){if(!a.email)return i.reject({message:"Email is required"});var b=i.defer();return j.post("users/auth/forgot",a).then(function(){b.resolve()},function(a){b.reject(a)}),b.promise},d.prototype.isAdmin=function(){var a=i.defer();return j.get("users/auth/roles/admin").then(function(){a.resolve()},function(b){a.reject(b)}),a.promise},d.prototype.save=function(a){if(d.isLogged())return i.reject({message:"User already logged"});if(!a.firstName)return i.reject({message:"First name is required"});if(!a.lastName)return i.reject({message:"Last name is required"});if(!a.email)return i.reject({message:"Email is required"});if(!a.password)return i.reject({message:"Password is required"});var b=i.defer();return j.post("users",a).then(function(a){l=new d(a),b.resolve(l)},function(a){b.reject(a)}),b.promise},d.prototype.update=function(a){if(!d.isLogged())return i.reject({message:"User not logged"});if(!a.firstName)return i.reject({message:"First name is required"});if(!a.lastName)return i.reject({message:"Last name is required"});if(!a.email)return i.reject({message:"Email is required"});var b=d.getCurrent(),c=i.defer();return j.patch("users/"+b.id,{firstName:a.firstName,lastName:a.lastName,email:a.email,username:a.username,phone:a.phone}).then(function(a){a.token=b.token,l=new d(a),c.resolve(l)},function(a){c.reject(a)}),c.promise},d.getCurrent=g,d.prototype.getCurrent=g,d.isLogged=h,d.prototype.isLogged=h,d.prototype.setUser=function(a){l=a},d.prototype.removePaymentMethod=function(a){var b=this.paymentMethods.map(function(a){return a.id}).indexOf(a.id);this.paymentMethods.splice(b,1)},d.prototype.updateAddress=function(a){var b=this.addresses.map(function(a){return a.id}).indexOf(a.id);this.addresses[b]=a},d.prototype.removeAddress=function(a){var b=this.addresses.map(function(a){return a.id}).indexOf(a.id);this.addresses.splice(b,1)},b.exports=d},{"../services/api":40,"../services/util":42,"./addresses":15,"./paymentMethod":31,q:2}],37:[function(a,b,c){"use strict";function d(a){a&&g.extend(this,a)}var e=a("q"),f=a("../services/api"),g=a("../services/util"),h=a("./booking"),i=a("./bookingSettings"),j=null;d.prototype.get=function(a){if(!a)return e.reject({message:"Venue identifier is required"});var b=e.defer();return this.fetch(a).then(function(a){j=a[0],b.resolve(a[0])},function(a){b.reject(a)}),b.promise},d.prototype.fetch=function(a){var b=e.defer(),c="venues",h="settings,hours";return a.venueId||a.permalink&&(delete a.venueId,c+="/permalink"),a.expand&&(h+=","+a.expand,delete a.expand),c+="?expand="+h+"&"+g.serialize(a),f.get(c).then(function(a){void 0===a.length&&(a=[a]);var c=a.map(function(a){return new d(a)});b.resolve(c)},function(a){b.reject(a)}),b.promise},d.prototype.getMessages=function(a){var b=null;if(this.id)b=this.id;else{if(!a)return e.reject({message:"Id is required"});b=a}var c=e.defer();return f.get("venues/"+b+"/messages").then(function(a){c.resolve(a)},function(a){c.reject(a)}),c.promise},d.prototype.getPromotions=function(a){var b=null;if(this.id)b=this.id;else{if(!a)return e.reject({message:"Id is required"});b=a}var c=e.defer();return f.get("venues/"+b+"/promotions").then(function(a){c.resolve(a)},function(a){c.reject(a)}),c.promise},d.prototype.getHours=function(){return j=this,Preoday.Hour.getAll()},d.prototype.getPaymentProviders=function(){return j=this,Preoday.PaymentProvider.getPaymentProvidersByVenue()},d.getCurrent=function(){return j},d.prototype.getBookings=function(a){return a||(a={}),a.venueId=this.id,h.prototype.getBookings(a)},d.prototype.getBookingSettings=function(a){return a||(a={}),i.prototype.getSettings(a)},d.prototype.saveBookingSettings=function(a){return a||(a={}),i.prototype.saveSettings(a)},d.prototype.isEvent=function(){return this.eventFlag},d.prototype.isDelivery=function(){return this.deliverFlag},d.prototype.isPickup=function(){return this.pickupFlag},d.prototype.isOffline=function(){return 0===this.liveFlag},d.prototype.isDemo=function(){return 1===this.demoFlag},d.prototype.isCashPaymentEnable=function(){return this.paymentProviders&&this.paymentProviders.filter(function(a){return"CASH"===a.type}).length},d.prototype.isCardPaymentEnable=function(){return this.paymentProviders&&this.paymentProviders.filter(function(a){return"Stripe"===a.type}).length},d.prototype.isOwner=function(a){var b=e.defer();return f.get("venues/"+a+"/owner").then(function(a){b.resolve(a)},function(a){b.reject(a)}),b.promise},d.prototype.setAsCurrent=function(){j=this},b.exports=d},{"../services/api":40,"../services/util":42,"./booking":19,"./bookingSettings":20,q:2}],38:[function(a,b,c){"use strict";function d(a){if(a&&(e.extend(this,a),this.issuedBy||(this.issuedBy="Online"),void 0===a.venueId)){var b=h.getCurrent();this.venueId=b&&b.id}}var e=a("../services/util"),f=a("q"),g=a("../services/api"),h=a("./venue"),i=a("./user"),j=a("../constants/voucherType");d.prototype.get=function(a){if(!a)throw"Voucher id is required";var b=f.defer(),c="vouchers";return a&&(c+="/"+a),g.get(c).then(function(a){new d(a);b.resolve(a)},function(a){b.reject(a)}),b.promise},d.prototype.fetch=function(a){if(!a||!a.venueId)throw"Venue id is required";var b=f.defer(),c="vouchers";return c+="?"+e.serialize(a),g.get(c).then(function(a){var c=a.map(function(a){return new d(a)});b.resolve(c)},function(a){b.reject(a)}),b.promise},d.prototype.create=function(a){if(!a)throw"Voucher id is required";var b=f.defer(),c="vouchers";return a&&(c+="/"+a),g.get(c).then(function(a){b.resolve(new d(a))},function(a){b.reject(a)}),b.promise},d.prototype.save=function(a){if(console.log("on save",this,a),!a)throw"Voucher is required";var b="vouchers",c=f.defer();return g.post(b,a).then(function(a){var b=new d(a);c.resolve(b)},function(a){c.reject(a)}),c.promise},d.prototype.update=function(a){if(console.log("before updating",a),!a)throw"Voucher is required";var b="vouchers";a&&(b+="/"+a.id);var c=f.defer();return console.log("updating",a),g.put(b,a).then(function(a){var b=new d(a);c.resolve(b)},function(a){c.reject(a)}),c.promise},d.prototype.resendMail=function(a){if(!a)throw"Voucher is required";var b="vouchers";a&&(b+="/"+a.id+"/sendemail");var c=f.defer();return g.post(b).then(function(){c.resolve()},function(a){c.reject(a)}),c.promise},d.prototype.populate=function(a,b){this.type===j.EMAIL?this.email||(this.email=i.getCurrent().email):this.type===j.POST&&(this.address||(this.address=a,this.postcode=b))},b.exports=d},{"../constants/voucherType":10,"../services/api":40,"../services/util":42,"./user":36,"./venue":37,q:2}],39:[function(a,b,c){"use strict";window.Preoday={Menu:new(a("./modules/menu")),Venue:new(a("./modules/venue")),Event:new(a("./modules/event")),PickupSlot:new(a("./modules/pickupSlot")),Outlet:new(a("./modules/outlet")),Hour:new(a("./modules/hour")),User:new(a("./modules/user")),PaymentMethod:new(a("./modules/paymentMethod")),PaymentProvider:new(a("./modules/paymentProvider")),Addresses:new(a("./modules/addresses")),Order:new(a("./modules/order")),Api:a("./services/api"),Basket:a("./modules/basket"),BasketItem:a("./modules/basketItem"),Booking:new(a("./modules/booking")),Voucher:new(a("./modules/voucher")),Account:new(a("./modules/account")),Tag:new(a("./modules/tag")),constants:{VoucherType:a("./constants/voucherType"),VoucherStatus:a("./constants/voucherStatus"),PaymentType:a("./constants/paymentMethods"),Feature:a("./constants/feature"),FeatureStatus:a("./constants/featureStatus"),MenuItemImageType:a("./constants/menuItemImageType"),OrderType:a("./constants/orderType")}};var d=a("./services/settings");d.loadConfig()},{"./constants/feature":3,"./constants/featureStatus":4,"./constants/menuItemImageType":5,"./constants/orderType":6,"./constants/paymentMethods":7,"./constants/voucherStatus":9,"./constants/voucherType":10,"./modules/account":13,"./modules/addresses":15,"./modules/basket":16,"./modules/basketItem":17,"./modules/booking":19,"./modules/event":21,"./modules/hour":22,"./modules/menu":25,"./modules/order":28,"./modules/outlet":30,"./modules/paymentMethod":31,"./modules/paymentProvider":32,"./modules/pickupSlot":33,"./modules/tag":35,"./modules/user":36,"./modules/venue":37,"./modules/voucher":38,"./services/api":40,"./services/settings":41}],40:[function(a,b,c){"use strict";function d(a){j();var b=k.defer();return m.get(l+a).success(function(a){b.resolve(a)}).error(function(a){b.reject(a)}),b.promise}function e(a,b){j();var c=k.defer();return m.post(l+a,b).success(function(a){c.resolve(a)}).error(function(a){c.reject(a)}),c.promise}function f(a,b){j();var c=k.defer();return m.put(l+a,b).success(function(a){c.resolve(a)}).error(function(a){c.reject(a)}),c.promise}function g(a,b){j();var c=k.defer();return m.patch(l+a,b).success(function(a){c.resolve(a)}).error(function(a){c.reject(a)}),c.promise}function h(a){j();var b=k.defer();return m["delete"](l+a).success(function(a){b.resolve(a)}).error(function(a){b.reject(a)}),b.promise}function i(a){return m.headers(a)}function j(){var b=a("../modules/venue"),c=b.getCurrent();return c?m.headers("preo-venueid",c.id):void 0}var k=a("q"),l=(a("./util"),"/api/"),m=new(a("../lib/atomic"))(window);b.exports={get:d,post:e,put:f,patch:g,headers:i,"delete":h,setUrlBase:function(a){l=a}}},{"../lib/atomic":11,"../modules/venue":37,"./util":42,q:2}],41:[function(a,b,c){"use strict";function d(){var a=e.defer();return f.get("config/app").then(function(b){g=b,a.resolve()},function(b){a.reject(b)}),a.promise}var e=a("q"),f=a("./api"),g=(a("./util"),null);b.exports={loadConfig:d,getSettings:function(){return g}}},{"./api":40,"./util":42,q:2}],42:[function(a,b,c){"use strict";function d(a){return 10>a?"0"+a:a}a("q");b.exports={extend:function(a,b){for(var c in b)b.hasOwnProperty(c)&&(a[c]=b[c]);return a},pad:d,TimeRange:function(a,b){this.start=a,this.end=b.replace(/^00:00/,"23:59");var c=this.start.split(":"),e=this.end.split(":");this.getValues=function(a,b,f){console.log("start here",f);var g=[],h=new Date;h.setHours(parseInt(c[0],10)),h.setMinutes(parseInt(c[1],10)+b);var i=new Date;i.setHours(parseInt(e[0],10)),i.setMinutes(parseInt(e[1],10)),i.setDate(h.getDate());var j=i.getTime();if(h.getTime()<j)for(;h.getTime()<=j;)(!f||h.getTime()>=f.getTime())&&g.push(d(h.getHours())+":"+d(h.getMinutes())),h.setMinutes(h.getMinutes()+a);return g}},serialize:function(a){var b=[];for(var c in a)a.hasOwnProperty(c)&&b.push(encodeURIComponent(c)+"="+encodeURIComponent(a[c]));return b.join("&")},clone:function(a){return JSON.parse(JSON.stringify(a))},addMinutes:function(a,b){return new Date(a.getTime()+6e4*b)},getLocalDate:function(a){function b(a){var b=a?new Date(a):new Date,c=b.getTimezoneOffset(),d=Math.abs(c);return(0>c?"+":"-")+("00"+Math.floor(d/60)).slice(-2)+":"+("00"+d%60).slice(-2)}if("string"==typeof a){if(a.match(/(Z|([\+-]\d\d:?\d\d))$/))return new Date(a);var c=b(a);return new Date(a+c)}throw"Date param must be a valid ISO string"},compareObjects:function(a,b){if(!a&&!b)return!0;if(!a&&b||!b&&a)return!1;for(var c in a)if(a.hasOwnProperty(c)&&a[c]!==b[c])return!1;for(var c in b)if(b.hasOwnProperty(c)&&a[c]!==b[c])return!1;return!0},hasObjectValue:function(a,b){for(var c in a)if(a.hasOwnProperty(c)&&a[c]===b)return!0;return!1}}},{q:2}]},{},[39])(39)});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(184).setImmediate))
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(229);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _contextualMenu = __webpack_require__(231);
+
+	var _contextualMenu2 = _interopRequireDefault(_contextualMenu);
+
+	var _contextualMenu3 = __webpack_require__(232);
+
+	var _contextualMenu4 = _interopRequireDefault(_contextualMenu3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Import internal modules
+	// Import Style
+	exports.default = _angular2.default.module("contextualMenu", []).controller(_contextualMenu2.default.UID, _contextualMenu2.default).directive("contextualMenu", _contextualMenu4.default).name;
 
 /***/ },
-/* 184 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(185).nextTick;
-	var apply = Function.prototype.apply;
-	var slice = Array.prototype.slice;
-	var immediateIds = {};
-	var nextImmediateId = 0;
+	// style-loader: Adds some css to the DOM by adding a <style> tag
 
-	// DOM APIs, for completeness
-
-	exports.setTimeout = function() {
-	  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
-	};
-	exports.setInterval = function() {
-	  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
-	};
-	exports.clearTimeout =
-	exports.clearInterval = function(timeout) { timeout.close(); };
-
-	function Timeout(id, clearFn) {
-	  this._id = id;
-	  this._clearFn = clearFn;
+	// load the styles
+	var content = __webpack_require__(230);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./contextualMenu.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./contextualMenu.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
 	}
-	Timeout.prototype.unref = Timeout.prototype.ref = function() {};
-	Timeout.prototype.close = function() {
-	  this._clearFn.call(window, this._id);
-	};
-
-	// Does not start the time, just sets up the members needed.
-	exports.enroll = function(item, msecs) {
-	  clearTimeout(item._idleTimeoutId);
-	  item._idleTimeout = msecs;
-	};
-
-	exports.unenroll = function(item) {
-	  clearTimeout(item._idleTimeoutId);
-	  item._idleTimeout = -1;
-	};
-
-	exports._unrefActive = exports.active = function(item) {
-	  clearTimeout(item._idleTimeoutId);
-
-	  var msecs = item._idleTimeout;
-	  if (msecs >= 0) {
-	    item._idleTimeoutId = setTimeout(function onTimeout() {
-	      if (item._onTimeout)
-	        item._onTimeout();
-	    }, msecs);
-	  }
-	};
-
-	// That's not how node.js implements it but the exposed api is the same.
-	exports.setImmediate = typeof setImmediate === "function" ? setImmediate : function(fn) {
-	  var id = nextImmediateId++;
-	  var args = arguments.length < 2 ? false : slice.call(arguments, 1);
-
-	  immediateIds[id] = true;
-
-	  nextTick(function onNextTick() {
-	    if (immediateIds[id]) {
-	      // fn.call() is faster so we optimize for the common use-case
-	      // @see http://jsperf.com/call-apply-segu
-	      if (args) {
-	        fn.apply(null, args);
-	      } else {
-	        fn.call(null);
-	      }
-	      // Prevent ids from leaking
-	      exports.clearImmediate(id);
-	    }
-	  });
-
-	  return id;
-	};
-
-	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
-	  delete immediateIds[id];
-	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(184).setImmediate, __webpack_require__(184).clearImmediate))
 
 /***/ },
-/* 185 */
+/* 230 */
+226,
+/* 231 */
 /***/ function(module, exports) {
 
-	// shim for using process in browser
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var contextualMenuController = function () {
+	  _createClass(contextualMenuController, [{
+	    key: "onCancel",
+
+
+	    //restore original state if user cancels
+	    value: function onCancel() {
+	      this.$rootScope.$broadcast(this.BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU, this.originalEntity, this.type);
+	    }
+	  }, {
+	    key: "doSubmit",
+	    value: function doSubmit() {
+	      var _this = this;
+
+	      this.onSubmit().then(function () {
+	        console.log("on resolved contextual submit");
+	        _this.$rootScope.$broadcast(_this.BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU);
+	      }, function () {
+	        console.log("Contextual submit failed");
+	      });
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
+	    key: "UID",
+	    get: function get() {
+	      return "contextualMenuController";
+	    }
+	  }]);
+
+	  function contextualMenuController($rootScope, BroadcastEvents) {
+	    'ngInject';
+
+	    _classCallCheck(this, contextualMenuController);
+
+	    console.log("Showing conextual menu ", this.entity, this.type);
+	    this.originalEntity = angular.copy(this.entity);
+	    this.$rootScope = $rootScope;
+	    this.BroadcastEvents = BroadcastEvents;
+	  }
+
+	  return contextualMenuController;
+	}();
+
+	exports.default = contextualMenuController;
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = contextualMenu;
+
+	var _contextualMenu = __webpack_require__(231);
+
+	var _contextualMenu2 = _interopRequireDefault(_contextualMenu);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function contextualMenu() {
+	  return {
+	    restrict: 'E',
+	    template: __webpack_require__(233),
+	    scope: {
+	      entity: "=",
+	      type: "=",
+	      onSubmit: "="
+	    },
+	    controller: _contextualMenu2.default.UID,
+	    controllerAs: "vm",
+	    bindToController: true,
+	    replace: true,
+	    link: function link(scope, el, attr, ctrl) {}
+	  };
+	}
+
+/***/ },
+/* 233 */
+/***/ function(module, exports) {
+
+	module.exports = "<md-card class='contextual-right-menu'>\n  <form name=\"contextualForm\" ng-submit=\"vm.doSubmit()\" no-validate>\n    <md-card-content>\n       <md-input-container class=\"md-block\">\n          <label translate>Section name</label>\n          <input type=\"text\" required name=\"entityName\" ng-model=\"vm.entity.name\">\n          <div ng-messages=\"contextualForm.entityName.$error\">\n            <div ng-message=\"required\" translate>This is required.</div>\n          </div>\n      </md-input-container>\n    </md-card-content>\n      <md-card-actions layout=\"row\" layout-align=\"end center\">\n        <md-button ng-click=\"vm.onCancel()\" translate>\n          Cancel\n      </md-button>\n      <md-button type=\"submit\" class='md-raised' translate>\n          Done\n      </md-button>\n    </md-card-actions>\n  </form>\n</md-card>"
+
+/***/ },
+/* 234 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(235);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _angularUiRouter = __webpack_require__(9);
+
+	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
+
+	var _error = __webpack_require__(237);
+
+	var _error2 = _interopRequireDefault(_error);
+
+	var _error3 = __webpack_require__(238);
+
+	var _error4 = _interopRequireDefault(_error3);
+
+	var _error5 = __webpack_require__(239);
+
+	var _error6 = _interopRequireDefault(_error5);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Import Style
+	exports.default = _angular2.default.module("error", [_angularUiRouter2.default]).config(_error6.default).controller(_error2.default.UID, _error2.default).service(_error4.default.UID, _error4.default).name;
+
+	// Import internal modules
+
+/***/ },
+/* 235 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(236);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./error.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./error.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 236 */
+226,
+/* 237 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var errorController = function () {
+	  _createClass(errorController, null, [{
+	    key: "UID",
+	    get: function get() {
+	      return "errorController";
+	    }
+
+	    /* @ngInject */
+
+	  }]);
+
+	  function errorController($stateParams, ErrorService) {
+	    'ngInject';
+
+	    _classCallCheck(this, errorController);
+
+	    this.code = $stateParams.code;
+	    this.error = ErrorService[this.code] || ErrorService.DEFAULT;
+	  }
+	  errorController.$inject = ["$stateParams", "ErrorService"];
+
+	  return errorController;
+	}();
+
+	exports.default = errorController;
+
+/***/ },
+/* 238 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var ErrorsService = function () {
+	  _createClass(ErrorsService, [{
+	    key: 'showError',
+	    value: function showError(error) {
+	      this.$state.go('error', { code: error });
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
+	    key: 'UID',
+	    get: function get() {
+	      return "ErrorService";
+	    }
+	  }]);
+
+	  function ErrorsService($translate, $state) {
+	    'ngInject';
+
+	    _classCallCheck(this, ErrorsService);
+
+	    this.$state = $state;
+
+	    //VENUE
+	    this.VENUE_NOT_FOUND = { code: 'VENUE_NOT_FOUND', message: $translate.instant("Venue not found") };
+	    this.FAILED_LOADING_VENUES = { code: 'FAILED_LOADING_VENUES', message: $translate.instant("An unexpected error occurred while loading your venues") };
+	    this.STAFF = { code: 'STAFF', message: $translate.instant("You do not have the necessary permissions to view this dashboard, please contact your administrator") };
+
+	    //MENUS
+	    this.FAILED_LOADING_MENUS = { code: 'FAILED_LOADING_MENUS', message: $translate.instant("An unexpected error occurred while loading menus") };
+
+	    //DEFAULT
+	    this.DEFAULT = { code: 'DEFAULT', message: $translate.instant("An unexpected error occurred") };
+	  }
+
+	  return ErrorsService;
+	}();
+
+	exports.default = ErrorsService;
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = routes;
+
+	var _error = __webpack_require__(237);
+
+	var _error2 = _interopRequireDefault(_error);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Routing function for error
+	 * @param  $stateProvider
+	 */
+	/* @ngInject */
+	function routes($stateProvider) {
+	  'ngInject';
+
+	  $stateProvider.state("error", {
+	    url: "/error/:code",
+	    template: __webpack_require__(240),
+	    controller: _error2.default.UID,
+	    controllerAs: "vm"
+	  });
+	}
+	routes.$inject = ["$stateProvider"];
+
+/***/ },
+/* 240 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class='error'>\n  {{vm.error.message || vm.error.code}}\n</div>\n"
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(242);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _angularUiRouter = __webpack_require__(9);
+
+	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
+
+	var _auth = __webpack_require__(244);
+
+	var _auth2 = _interopRequireDefault(_auth);
+
+	var _auth3 = __webpack_require__(245);
+
+	var _auth4 = _interopRequireDefault(_auth3);
+
+	var _signin = __webpack_require__(247);
+
+	var _signin2 = _interopRequireDefault(_signin);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Import Style
+	exports.default = _angular2.default.module("auth", [_angularUiRouter2.default, _signin2.default]).config(_auth4.default).controller(_auth2.default.UID, _auth2.default).name;
+
+	// Import internal modules
+
+/***/ },
+/* 242 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(243);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./auth.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./auth.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 243 */
+226,
+/* 244 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var authController = function () {
+	  _createClass(authController, null, [{
+	    key: "UID",
+	    get: function get() {
+	      return "authController";
+	    }
+
+	    /* @ngInject */
+
+	  }]);
+
+	  function authController() {
+	    'ngInject;';
+
+	    _classCallCheck(this, authController);
+	  }
+
+	  return authController;
+	}();
+
+	exports.default = authController;
+
+/***/ },
+/* 245 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = routes;
+
+	var _auth = __webpack_require__(244);
+
+	var _auth2 = _interopRequireDefault(_auth);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Routing function for auth
+	 * @param  $stateProvider
+	 */
+	/* @ngInject */
+	function routes($stateProvider) {
+	  'ngInject';
+
+	  $stateProvider.state("auth", {
+	    url: "/auth",
+	    abstract: true,
+	    template: __webpack_require__(246),
+	    controller: _auth2.default.UID,
+	    controllerAs: "vm"
+	  });
+	}
+	routes.$inject = ["$stateProvider"];
+
+/***/ },
+/* 246 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class='auth'>\n  <ui-view></ui-view>\n</div>\n"
+
+/***/ },
+/* 247 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(248);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _angularUiRouter = __webpack_require__(9);
+
+	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
+
+	var _signin = __webpack_require__(250);
+
+	var _signin2 = _interopRequireDefault(_signin);
+
+	var _signin3 = __webpack_require__(251);
+
+	var _signin4 = _interopRequireDefault(_signin3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Import internal modules
+	exports.default = _angular2.default.module("signin", [_angularUiRouter2.default]).config(_signin4.default).controller(_signin2.default.UID, _signin2.default).name; // Import Style
+
+/***/ },
+/* 248 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(249);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./signin.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./signin.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 249 */
+98,
+/* 250 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var signinController = function () {
+	  _createClass(signinController, [{
+	    key: "doSignin",
+	    value: function doSignin() {
+	      this.UserService.auth(this.user);
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
+	    key: "UID",
+	    get: function get() {
+	      return "signinController";
+	    }
+	  }]);
+
+	  function signinController(UserService) {
+	    'ngInject';
+
+	    _classCallCheck(this, signinController);
+
+	    this.UserService = UserService;
+	    if (UserService.user) {
+	      UserService.signout();
+	    }
+	    this.user = {
+	      username: "caio.ricci@gdcommunity.co.uk",
+	      password: "a"
+	    };
+	  }
+
+	  return signinController;
+	}();
+
+	exports.default = signinController;
+
+/***/ },
+/* 251 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = routes;
+
+	var _signin = __webpack_require__(250);
+
+	var _signin2 = _interopRequireDefault(_signin);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Routing function for signin
+	 * @param  $stateProvider
+	 */
+	/* @ngInject */
+	function routes($stateProvider) {
+	  'ngInject';
+
+	  $stateProvider.state("auth.signin", {
+	    url: "/signin",
+	    template: __webpack_require__(252),
+	    controller: _signin2.default.UID,
+	    controllerAs: "vm"
+	  });
+	}
+	routes.$inject = ["$stateProvider"];
+
+/***/ },
+/* 252 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class='signin'>\n  <form name='signin' ng-submit='vm.doSignin()' novalidate>\n    <md-input-container class=\"md-block\">\n      <label>Username</label>\n      <input type=\"email\" autocomplete=\"email\" required name=\"username\" ng-model=\"vm.user.username\">\n      <div ng-messages=\"projectForm.username.$error\">\n        <div ng-message=\"required\">This is required.</div>\n      </div>\n    </md-input-container>\n    <md-input-container class=\"md-block\">\n      <label>Password</label>\n      <input type=\"password\" autocomplete=\"password\" required name=\"password\" ng-model=\"vm.user.password\">\n      <div ng-messages=\"projectForm.password.$error\">\n        <div ng-message=\"required\">This is required.</div>\n      </div>\n    </md-input-container>\n    <md-button type='submit'>Sign In</md-button>\n  </form>\n</div>\n"
+
+/***/ },
+/* 253 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(254);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _angularUiRouter = __webpack_require__(9);
+
+	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
+
+	var _notFound = __webpack_require__(256);
+
+	var _notFound2 = _interopRequireDefault(_notFound);
+
+	var _notFound3 = __webpack_require__(257);
+
+	var _notFound4 = _interopRequireDefault(_notFound3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Import internal modules
+	exports.default = _angular2.default.module("notFound", [_angularUiRouter2.default]).config(_notFound4.default).controller(_notFound2.default.UID, _notFound2.default).name; // Import Style
+
+/***/ },
+/* 254 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(255);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./notFound.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./notFound.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 255 */
+226,
+/* 256 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var notFoundController = function () {
+	  _createClass(notFoundController, null, [{
+	    key: "UID",
+	    get: function get() {
+	      return "notFoundController";
+	    }
+
+	    /* @ngInject */
+
+	  }]);
+
+	  function notFoundController() {
+	    _classCallCheck(this, notFoundController);
+	  }
+
+	  return notFoundController;
+	}();
+
+	exports.default = notFoundController;
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = routes;
+
+	var _notFound = __webpack_require__(256);
+
+	var _notFound2 = _interopRequireDefault(_notFound);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Routing function for notFound
+	 * @param  $stateProvider
+	 */
+	/* @ngInject */
+	function routes($stateProvider) {
+	  $stateProvider.state("notFound", {
+	    url: "/404",
+	    template: __webpack_require__(258),
+	    controller: _notFound2.default.UID,
+	    controllerAs: "vm"
+	  });
+	}
+	routes.$inject = ["$stateProvider"];
+
+/***/ },
+/* 258 */
+/***/ function(module, exports) {
+
+	module.exports = "<div>\n  404 - Page Not Found\n</div>\n"
+
+/***/ },
+/* 259 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(260);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _dialog = __webpack_require__(262);
+
+	var _dialog2 = _interopRequireDefault(_dialog);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _angular2.default.module("dialog", []).service(_dialog2.default.UID, _dialog2.default).name;
+
+	// Import internal modules
+	// Import Style
+
+/***/ },
+/* 260 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(261);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./dialog.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./dialog.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 261 */
+226,
+/* 262 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var DialogService = function () {
+	  _createClass(DialogService, [{
+	    key: 'delete',
+	    value: function _delete(title, content) {
+
+	      function DeleteController($scope, $mdDialog) {
+	        'ngInject';
+
+	        $scope.cancel = function () {
+	          $mdDialog.cancel();
+	        };
+	        $scope.confirm = function () {
+	          $mdDialog.hide(true);
+	        };
+	      }
+	      var newScope = this.$rootScope.$new();
+	      newScope.title = title;
+	      newScope.content = content;
+	      newScope.hasCancel = true;
+	      return this.$mdDialog.show({
+	        template: __webpack_require__(263),
+	        scope: newScope,
+	        controller: DeleteController
+	      });
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
+	    key: 'UID',
+	    get: function get() {
+	      return "DialogService";
+	    }
+	  }]);
+
+	  function DialogService($rootScope, $q, $mdDialog) {
+	    "ngInject";
+
+	    _classCallCheck(this, DialogService);
+
+	    this.$mdDialog = $mdDialog;
+	    this.$q = $q;
+	    this.$rootScope = $rootScope;
+	  }
+
+	  return DialogService;
+	}();
+
+	exports.default = DialogService;
+
+/***/ },
+/* 263 */
+/***/ function(module, exports) {
+
+	module.exports = "<md-dialog aria-label=\"Delete dialog\">\n  <md-dialog-content>\n    <h2 class=\"md-title\">{{title}}</h2>\n    <div class=\"md-dialog-content-body\">\n      <p>{{content}}</p>\n    </div>\n  </md-dialog-content>\n  <md-dialog-actions>\n    <md-button ng-click=\"cancel()\" class=\"md-primary\" ng-if=\"hasCancel\" translate>Cancel</md-button>\n    <md-button ng-click=\"confirm()\" class=\"md-primary\" translate>Delete</md-button>\n  </md-dialog-actions>\n</md-dialog>"
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	__webpack_require__(265);
+
+	var _angular = __webpack_require__(7);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _snack = __webpack_require__(267);
+
+	var _snack2 = _interopRequireDefault(_snack);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _angular2.default.module("snack", []).service(_snack2.default.UID, _snack2.default).name;
+
+	// Import internal modules
+	// Import Style
+
+/***/ },
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(266);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./snack.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./snack.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 266 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "md-toast {\n  position: fixed;\n  top: 60px !important;\n  left: 50% !important;\n  bottom: auto !important;\n  transform: translateX(-50%);\n  -webkit-transform: translateX(-50%);\n  -moz-transform: translateX(-50%);\n  -o-transform: translateX(-50%);\n  -ms-transform: translateX(-50%); }\n  md-toast.error-snack md-toast-content {\n    background: red; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Snack = function () {
+	  _createClass(Snack, [{
+	    key: "show",
+	    value: function show(content) {
+	      var scope = this.$rootScope.$new();
+	      scope.text = content;
+	      this.$mdToast.show({
+	        template: __webpack_require__(268),
+	        scope: scope
+	      });
+	    }
+	  }, {
+	    key: "showError",
+	    value: function showError(content) {
+	      var scope = this.$rootScope.$new();
+	      scope.text = content;
+	      this.$mdToast.show({
+	        template: __webpack_require__(269),
+	        scope: scope
+	      });
+	    }
+
+	    /* @ngInject */
+
+	  }], [{
+	    key: "UID",
+	    get: function get() {
+	      return "Snack";
+	    }
+	  }]);
+
+	  function Snack($mdToast, $rootScope) {
+	    "ngInject";
+
+	    _classCallCheck(this, Snack);
+
+	    this.$mdToast = $mdToast;
+	    this.$rootScope = $rootScope;
+	  }
+
+	  return Snack;
+	}();
+
+	exports.default = Snack;
+
+/***/ },
+/* 268 */
+/***/ function(module, exports) {
+
+	module.exports = "<md-toast>\n  <span flex>\n    {{text}}\n  </span>\n</md-toast>\n"
+
+/***/ },
+/* 269 */
+/***/ function(module, exports) {
+
+	module.exports = "<md-toast class='error-snack'>\n  <span flex>\n    {{text}}\n  </span>\n</md-toast>\n"
+
+/***/ },
+/* 270 */
+/***/ function(module, exports) {
+
+	(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}(g.preodaypreoday || (g.preodaypreoday = {})).js = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
 	var process = module.exports = {};
 	var queue = [];
@@ -75601,9 +79450,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var queueIndex = -1;
 
 	function cleanUpNextTick() {
-	    if (!draining || !currentQueue) {
-	        return;
-	    }
 	    draining = false;
 	    if (currentQueue.length) {
 	        queue = currentQueue.concat(queue);
@@ -75627,9 +79473,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        currentQueue = queue;
 	        queue = [];
 	        while (++queueIndex < len) {
-	            if (currentQueue) {
-	                currentQueue[queueIndex].run();
-	            }
+	            currentQueue[queueIndex].run();
 	        }
 	        queueIndex = -1;
 	        len = queue.length;
@@ -75651,8 +79495,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        setTimeout(drainQueue, 0);
 	    }
 	};
-
-	// v8 likes predictible objects
 	function Item(fun, array) {
 	    this.fun = fun;
 	    this.array = array;
@@ -75680,16 +79522,5352 @@ return /******/ (function(modules) { // webpackBootstrap
 	process.binding = function (name) {
 	    throw new Error('process.binding is not supported');
 	};
-
 	process.cwd = function () { return '/' };
 	process.chdir = function (dir) {
 	    throw new Error('process.chdir is not supported');
 	};
 	process.umask = function() { return 0; };
 
+	},{}],2:[function(require,module,exports){
+	(function (process){
+	/*!
+	 *
+	 * Copyright 2009-2012 Kris Kowal under the terms of the MIT
+	 * license found at http://github.com/kriskowal/q/raw/master/LICENSE
+	 *
+	 * With parts by Tyler Close
+	 * Copyright 2007-2009 Tyler Close under the terms of the MIT X license found
+	 * at http://www.opensource.org/licenses/mit-license.html
+	 * Forked at ref_send.js version: 2009-05-11
+	 *
+	 * With parts by Mark Miller
+	 * Copyright (C) 2011 Google Inc.
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software
+	 * distributed under the License is distributed on an "AS IS" BASIS,
+	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 * See the License for the specific language governing permissions and
+	 * limitations under the License.
+	 *
+	 */
+
+	(function (definition) {
+	    "use strict";
+	    if (typeof bootstrap === "function") {
+	        bootstrap("promise", definition);
+	    } else if (typeof exports === "object" && typeof module === "object") {
+	        module.exports = definition();
+	    } else if (typeof define === "function" && define.amd) {
+	        define(definition);
+	    } else if (typeof ses !== "undefined") {
+	        if (!ses.ok()) {
+	            return;
+	        } else {
+	            ses.makeQ = definition;
+	        }
+	    } else if (typeof window !== "undefined" || typeof self !== "undefined") {
+	        var global = typeof window !== "undefined" ? window : self;
+	        var previousQ = global.Q;
+	        global.Q = definition();
+	        global.Q.noConflict = function () {
+	            global.Q = previousQ;
+	            return this;
+	        };
+
+	    } else {
+	        throw new Error("This environment was not anticipated by Q. Please file a bug.");
+	    }
+
+	})(function () {
+	"use strict";
+
+	var hasStacks = false;
+	try {
+	    throw new Error();
+	} catch (e) {
+	    hasStacks = !!e.stack;
+	}
+	var qStartingLine = captureLine();
+	var qFileName;
+	var noop = function () {};
+	var nextTick =(function () {
+	    var head = {task: void 0, next: null};
+	    var tail = head;
+	    var flushing = false;
+	    var requestTick = void 0;
+	    var isNodeJS = false;
+	    var laterQueue = [];
+
+	    function flush() {
+	        /* jshint loopfunc: true */
+	        var task, domain;
+
+	        while (head.next) {
+	            head = head.next;
+	            task = head.task;
+	            head.task = void 0;
+	            domain = head.domain;
+
+	            if (domain) {
+	                head.domain = void 0;
+	                domain.enter();
+	            }
+	            runSingle(task, domain);
+
+	        }
+	        while (laterQueue.length) {
+	            task = laterQueue.pop();
+	            runSingle(task);
+	        }
+	        flushing = false;
+	    }
+	    function runSingle(task, domain) {
+	        try {
+	            task();
+
+	        } catch (e) {
+	            if (isNodeJS) {
+	                if (domain) {
+	                    domain.exit();
+	                }
+	                setTimeout(flush, 0);
+	                if (domain) {
+	                    domain.enter();
+	                }
+
+	                throw e;
+
+	            } else {
+	                setTimeout(function () {
+	                    throw e;
+	                }, 0);
+	            }
+	        }
+
+	        if (domain) {
+	            domain.exit();
+	        }
+	    }
+
+	    nextTick = function (task) {
+	        tail = tail.next = {
+	            task: task,
+	            domain: isNodeJS && process.domain,
+	            next: null
+	        };
+
+	        if (!flushing) {
+	            flushing = true;
+	            requestTick();
+	        }
+	    };
+
+	    if (typeof process === "object" &&
+	        process.toString() === "[object process]" && process.nextTick) {
+	        isNodeJS = true;
+
+	        requestTick = function () {
+	            process.nextTick(flush);
+	        };
+
+	    } else if (typeof setImmediate === "function") {
+	        if (typeof window !== "undefined") {
+	            requestTick = setImmediate.bind(window, flush);
+	        } else {
+	            requestTick = function () {
+	                setImmediate(flush);
+	            };
+	        }
+
+	    } else if (typeof MessageChannel !== "undefined") {
+	        var channel = new MessageChannel();
+	        channel.port1.onmessage = function () {
+	            requestTick = requestPortTick;
+	            channel.port1.onmessage = flush;
+	            flush();
+	        };
+	        var requestPortTick = function () {
+	            channel.port2.postMessage(0);
+	        };
+	        requestTick = function () {
+	            setTimeout(flush, 0);
+	            requestPortTick();
+	        };
+
+	    } else {
+	        requestTick = function () {
+	            setTimeout(flush, 0);
+	        };
+	    }
+	    nextTick.runAfter = function (task) {
+	        laterQueue.push(task);
+	        if (!flushing) {
+	            flushing = true;
+	            requestTick();
+	        }
+	    };
+	    return nextTick;
+	})();
+	var call = Function.call;
+	function uncurryThis(f) {
+	    return function () {
+	        return call.apply(f, arguments);
+	    };
+	}
+
+	var array_slice = uncurryThis(Array.prototype.slice);
+
+	var array_reduce = uncurryThis(
+	    Array.prototype.reduce || function (callback, basis) {
+	        var index = 0,
+	            length = this.length;
+	        if (arguments.length === 1) {
+	            do {
+	                if (index in this) {
+	                    basis = this[index++];
+	                    break;
+	                }
+	                if (++index >= length) {
+	                    throw new TypeError();
+	                }
+	            } while (1);
+	        }
+	        for (; index < length; index++) {
+	            if (index in this) {
+	                basis = callback(basis, this[index], index);
+	            }
+	        }
+	        return basis;
+	    }
+	);
+
+	var array_indexOf = uncurryThis(
+	    Array.prototype.indexOf || function (value) {
+	        for (var i = 0; i < this.length; i++) {
+	            if (this[i] === value) {
+	                return i;
+	            }
+	        }
+	        return -1;
+	    }
+	);
+
+	var array_map = uncurryThis(
+	    Array.prototype.map || function (callback, thisp) {
+	        var self = this;
+	        var collect = [];
+	        array_reduce(self, function (undefined, value, index) {
+	            collect.push(callback.call(thisp, value, index, self));
+	        }, void 0);
+	        return collect;
+	    }
+	);
+
+	var object_create = Object.create || function (prototype) {
+	    function Type() { }
+	    Type.prototype = prototype;
+	    return new Type();
+	};
+
+	var object_hasOwnProperty = uncurryThis(Object.prototype.hasOwnProperty);
+
+	var object_keys = Object.keys || function (object) {
+	    var keys = [];
+	    for (var key in object) {
+	        if (object_hasOwnProperty(object, key)) {
+	            keys.push(key);
+	        }
+	    }
+	    return keys;
+	};
+
+	var object_toString = uncurryThis(Object.prototype.toString);
+
+	function isObject(value) {
+	    return value === Object(value);
+	}
+	function isStopIteration(exception) {
+	    return (
+	        object_toString(exception) === "[object StopIteration]" ||
+	        exception instanceof QReturnValue
+	    );
+	}
+	var QReturnValue;
+	if (typeof ReturnValue !== "undefined") {
+	    QReturnValue = ReturnValue;
+	} else {
+	    QReturnValue = function (value) {
+	        this.value = value;
+	    };
+	}
+
+	var STACK_JUMP_SEPARATOR = "From previous event:";
+
+	function makeStackTraceLong(error, promise) {
+	    if (hasStacks &&
+	        promise.stack &&
+	        typeof error === "object" &&
+	        error !== null &&
+	        error.stack &&
+	        error.stack.indexOf(STACK_JUMP_SEPARATOR) === -1
+	    ) {
+	        var stacks = [];
+	        for (var p = promise; !!p; p = p.source) {
+	            if (p.stack) {
+	                stacks.unshift(p.stack);
+	            }
+	        }
+	        stacks.unshift(error.stack);
+
+	        var concatedStacks = stacks.join("\n" + STACK_JUMP_SEPARATOR + "\n");
+	        error.stack = filterStackString(concatedStacks);
+	    }
+	}
+
+	function filterStackString(stackString) {
+	    var lines = stackString.split("\n");
+	    var desiredLines = [];
+	    for (var i = 0; i < lines.length; ++i) {
+	        var line = lines[i];
+
+	        if (!isInternalFrame(line) && !isNodeFrame(line) && line) {
+	            desiredLines.push(line);
+	        }
+	    }
+	    return desiredLines.join("\n");
+	}
+
+	function isNodeFrame(stackLine) {
+	    return stackLine.indexOf("(module.js:") !== -1 ||
+	           stackLine.indexOf("(node.js:") !== -1;
+	}
+
+	function getFileNameAndLineNumber(stackLine) {
+	    var attempt1 = /at .+ \((.+):(\d+):(?:\d+)\)$/.exec(stackLine);
+	    if (attempt1) {
+	        return [attempt1[1], Number(attempt1[2])];
+	    }
+	    var attempt2 = /at ([^ ]+):(\d+):(?:\d+)$/.exec(stackLine);
+	    if (attempt2) {
+	        return [attempt2[1], Number(attempt2[2])];
+	    }
+	    var attempt3 = /.*@(.+):(\d+)$/.exec(stackLine);
+	    if (attempt3) {
+	        return [attempt3[1], Number(attempt3[2])];
+	    }
+	}
+
+	function isInternalFrame(stackLine) {
+	    var fileNameAndLineNumber = getFileNameAndLineNumber(stackLine);
+
+	    if (!fileNameAndLineNumber) {
+	        return false;
+	    }
+
+	    var fileName = fileNameAndLineNumber[0];
+	    var lineNumber = fileNameAndLineNumber[1];
+
+	    return fileName === qFileName &&
+	        lineNumber >= qStartingLine &&
+	        lineNumber <= qEndingLine;
+	}
+	function captureLine() {
+	    if (!hasStacks) {
+	        return;
+	    }
+
+	    try {
+	        throw new Error();
+	    } catch (e) {
+	        var lines = e.stack.split("\n");
+	        var firstLine = lines[0].indexOf("@") > 0 ? lines[1] : lines[2];
+	        var fileNameAndLineNumber = getFileNameAndLineNumber(firstLine);
+	        if (!fileNameAndLineNumber) {
+	            return;
+	        }
+
+	        qFileName = fileNameAndLineNumber[0];
+	        return fileNameAndLineNumber[1];
+	    }
+	}
+
+	function deprecate(callback, name, alternative) {
+	    return function () {
+	        if (typeof console !== "undefined" &&
+	            typeof console.warn === "function") {
+	            console.warn(name + " is deprecated, use " + alternative +
+	                         " instead.", new Error("").stack);
+	        }
+	        return callback.apply(callback, arguments);
+	    };
+	}
+
+	function Q(value) {
+	    if (value instanceof Promise) {
+	        return value;
+	    }
+	    if (isPromiseAlike(value)) {
+	        return coerce(value);
+	    } else {
+	        return fulfill(value);
+	    }
+	}
+	Q.resolve = Q;
+
+	Q.nextTick = nextTick;
+
+	Q.longStackSupport = false;
+	if (typeof process === "object" && process && process.env && process.env.Q_DEBUG) {
+	    Q.longStackSupport = true;
+	}
+
+	Q.defer = defer;
+	function defer() {
+	    var messages = [], progressListeners = [], resolvedPromise;
+
+	    var deferred = object_create(defer.prototype);
+	    var promise = object_create(Promise.prototype);
+
+	    promise.promiseDispatch = function (resolve, op, operands) {
+	        var args = array_slice(arguments);
+	        if (messages) {
+	            messages.push(args);
+	            if (op === "when" && operands[1]) { // progress operand
+	                progressListeners.push(operands[1]);
+	            }
+	        } else {
+	            Q.nextTick(function () {
+	                resolvedPromise.promiseDispatch.apply(resolvedPromise, args);
+	            });
+	        }
+	    };
+	    promise.valueOf = function () {
+	        if (messages) {
+	            return promise;
+	        }
+	        var nearerValue = nearer(resolvedPromise);
+	        if (isPromise(nearerValue)) {
+	            resolvedPromise = nearerValue; // shorten chain
+	        }
+	        return nearerValue;
+	    };
+
+	    promise.inspect = function () {
+	        if (!resolvedPromise) {
+	            return { state: "pending" };
+	        }
+	        return resolvedPromise.inspect();
+	    };
+
+	    if (Q.longStackSupport && hasStacks) {
+	        try {
+	            throw new Error();
+	        } catch (e) {
+	            promise.stack = e.stack.substring(e.stack.indexOf("\n") + 1);
+	        }
+	    }
+
+	    function become(newPromise) {
+	        resolvedPromise = newPromise;
+	        promise.source = newPromise;
+
+	        array_reduce(messages, function (undefined, message) {
+	            Q.nextTick(function () {
+	                newPromise.promiseDispatch.apply(newPromise, message);
+	            });
+	        }, void 0);
+
+	        messages = void 0;
+	        progressListeners = void 0;
+	    }
+
+	    deferred.promise = promise;
+	    deferred.resolve = function (value) {
+	        if (resolvedPromise) {
+	            return;
+	        }
+
+	        become(Q(value));
+	    };
+
+	    deferred.fulfill = function (value) {
+	        if (resolvedPromise) {
+	            return;
+	        }
+
+	        become(fulfill(value));
+	    };
+	    deferred.reject = function (reason) {
+	        if (resolvedPromise) {
+	            return;
+	        }
+
+	        become(reject(reason));
+	    };
+	    deferred.notify = function (progress) {
+	        if (resolvedPromise) {
+	            return;
+	        }
+
+	        array_reduce(progressListeners, function (undefined, progressListener) {
+	            Q.nextTick(function () {
+	                progressListener(progress);
+	            });
+	        }, void 0);
+	    };
+
+	    return deferred;
+	}
+
+	defer.prototype.makeNodeResolver = function () {
+	    var self = this;
+	    return function (error, value) {
+	        if (error) {
+	            self.reject(error);
+	        } else if (arguments.length > 2) {
+	            self.resolve(array_slice(arguments, 1));
+	        } else {
+	            self.resolve(value);
+	        }
+	    };
+	};
+
+	Q.Promise = promise; // ES6
+	Q.promise = promise;
+	function promise(resolver) {
+	    if (typeof resolver !== "function") {
+	        throw new TypeError("resolver must be a function.");
+	    }
+	    var deferred = defer();
+	    try {
+	        resolver(deferred.resolve, deferred.reject, deferred.notify);
+	    } catch (reason) {
+	        deferred.reject(reason);
+	    }
+	    return deferred.promise;
+	}
+
+	promise.race = race; // ES6
+	promise.all = all; // ES6
+	promise.reject = reject; // ES6
+	promise.resolve = Q; // ES6
+	Q.passByCopy = function (object) {
+	    return object;
+	};
+
+	Promise.prototype.passByCopy = function () {
+	    return this;
+	};
+
+	Q.join = function (x, y) {
+	    return Q(x).join(y);
+	};
+
+	Promise.prototype.join = function (that) {
+	    return Q([this, that]).spread(function (x, y) {
+	        if (x === y) {
+	            return x;
+	        } else {
+	            throw new Error("Can't join: not the same: " + x + " " + y);
+	        }
+	    });
+	};
+
+	Q.race = race;
+	function race(answerPs) {
+	    return promise(function (resolve, reject) {
+	        for (var i = 0, len = answerPs.length; i < len; i++) {
+	            Q(answerPs[i]).then(resolve, reject);
+	        }
+	    });
+	}
+
+	Promise.prototype.race = function () {
+	    return this.then(Q.race);
+	};
+
+	Q.makePromise = Promise;
+	function Promise(descriptor, fallback, inspect) {
+	    if (fallback === void 0) {
+	        fallback = function (op) {
+	            return reject(new Error(
+	                "Promise does not support operation: " + op
+	            ));
+	        };
+	    }
+	    if (inspect === void 0) {
+	        inspect = function () {
+	            return {state: "unknown"};
+	        };
+	    }
+
+	    var promise = object_create(Promise.prototype);
+
+	    promise.promiseDispatch = function (resolve, op, args) {
+	        var result;
+	        try {
+	            if (descriptor[op]) {
+	                result = descriptor[op].apply(promise, args);
+	            } else {
+	                result = fallback.call(promise, op, args);
+	            }
+	        } catch (exception) {
+	            result = reject(exception);
+	        }
+	        if (resolve) {
+	            resolve(result);
+	        }
+	    };
+
+	    promise.inspect = inspect;
+	    if (inspect) {
+	        var inspected = inspect();
+	        if (inspected.state === "rejected") {
+	            promise.exception = inspected.reason;
+	        }
+
+	        promise.valueOf = function () {
+	            var inspected = inspect();
+	            if (inspected.state === "pending" ||
+	                inspected.state === "rejected") {
+	                return promise;
+	            }
+	            return inspected.value;
+	        };
+	    }
+
+	    return promise;
+	}
+
+	Promise.prototype.toString = function () {
+	    return "[object Promise]";
+	};
+
+	Promise.prototype.then = function (fulfilled, rejected, progressed) {
+	    var self = this;
+	    var deferred = defer();
+	    var done = false;   // ensure the untrusted promise makes at most a
+
+	    function _fulfilled(value) {
+	        try {
+	            return typeof fulfilled === "function" ? fulfilled(value) : value;
+	        } catch (exception) {
+	            return reject(exception);
+	        }
+	    }
+
+	    function _rejected(exception) {
+	        if (typeof rejected === "function") {
+	            makeStackTraceLong(exception, self);
+	            try {
+	                return rejected(exception);
+	            } catch (newException) {
+	                return reject(newException);
+	            }
+	        }
+	        return reject(exception);
+	    }
+
+	    function _progressed(value) {
+	        return typeof progressed === "function" ? progressed(value) : value;
+	    }
+
+	    Q.nextTick(function () {
+	        self.promiseDispatch(function (value) {
+	            if (done) {
+	                return;
+	            }
+	            done = true;
+
+	            deferred.resolve(_fulfilled(value));
+	        }, "when", [function (exception) {
+	            if (done) {
+	                return;
+	            }
+	            done = true;
+
+	            deferred.resolve(_rejected(exception));
+	        }]);
+	    });
+	    self.promiseDispatch(void 0, "when", [void 0, function (value) {
+	        var newValue;
+	        var threw = false;
+	        try {
+	            newValue = _progressed(value);
+	        } catch (e) {
+	            threw = true;
+	            if (Q.onerror) {
+	                Q.onerror(e);
+	            } else {
+	                throw e;
+	            }
+	        }
+
+	        if (!threw) {
+	            deferred.notify(newValue);
+	        }
+	    }]);
+
+	    return deferred.promise;
+	};
+
+	Q.tap = function (promise, callback) {
+	    return Q(promise).tap(callback);
+	};
+
+	Promise.prototype.tap = function (callback) {
+	    callback = Q(callback);
+
+	    return this.then(function (value) {
+	        return callback.fcall(value).thenResolve(value);
+	    });
+	};
+
+	Q.when = when;
+	function when(value, fulfilled, rejected, progressed) {
+	    return Q(value).then(fulfilled, rejected, progressed);
+	}
+
+	Promise.prototype.thenResolve = function (value) {
+	    return this.then(function () { return value; });
+	};
+
+	Q.thenResolve = function (promise, value) {
+	    return Q(promise).thenResolve(value);
+	};
+
+	Promise.prototype.thenReject = function (reason) {
+	    return this.then(function () { throw reason; });
+	};
+
+	Q.thenReject = function (promise, reason) {
+	    return Q(promise).thenReject(reason);
+	};
+	Q.nearer = nearer;
+	function nearer(value) {
+	    if (isPromise(value)) {
+	        var inspected = value.inspect();
+	        if (inspected.state === "fulfilled") {
+	            return inspected.value;
+	        }
+	    }
+	    return value;
+	}
+
+	Q.isPromise = isPromise;
+	function isPromise(object) {
+	    return object instanceof Promise;
+	}
+
+	Q.isPromiseAlike = isPromiseAlike;
+	function isPromiseAlike(object) {
+	    return isObject(object) && typeof object.then === "function";
+	}
+
+	Q.isPending = isPending;
+	function isPending(object) {
+	    return isPromise(object) && object.inspect().state === "pending";
+	}
+
+	Promise.prototype.isPending = function () {
+	    return this.inspect().state === "pending";
+	};
+
+	Q.isFulfilled = isFulfilled;
+	function isFulfilled(object) {
+	    return !isPromise(object) || object.inspect().state === "fulfilled";
+	}
+
+	Promise.prototype.isFulfilled = function () {
+	    return this.inspect().state === "fulfilled";
+	};
+
+	Q.isRejected = isRejected;
+	function isRejected(object) {
+	    return isPromise(object) && object.inspect().state === "rejected";
+	}
+
+	Promise.prototype.isRejected = function () {
+	    return this.inspect().state === "rejected";
+	};
+	var unhandledReasons = [];
+	var unhandledRejections = [];
+	var reportedUnhandledRejections = [];
+	var trackUnhandledRejections = true;
+
+	function resetUnhandledRejections() {
+	    unhandledReasons.length = 0;
+	    unhandledRejections.length = 0;
+
+	    if (!trackUnhandledRejections) {
+	        trackUnhandledRejections = true;
+	    }
+	}
+
+	function trackRejection(promise, reason) {
+	    if (!trackUnhandledRejections) {
+	        return;
+	    }
+	    if (typeof process === "object" && typeof process.emit === "function") {
+	        Q.nextTick.runAfter(function () {
+	            if (array_indexOf(unhandledRejections, promise) !== -1) {
+	                process.emit("unhandledRejection", reason, promise);
+	                reportedUnhandledRejections.push(promise);
+	            }
+	        });
+	    }
+
+	    unhandledRejections.push(promise);
+	    if (reason && typeof reason.stack !== "undefined") {
+	        unhandledReasons.push(reason.stack);
+	    } else {
+	        unhandledReasons.push("(no stack) " + reason);
+	    }
+	}
+
+	function untrackRejection(promise) {
+	    if (!trackUnhandledRejections) {
+	        return;
+	    }
+
+	    var at = array_indexOf(unhandledRejections, promise);
+	    if (at !== -1) {
+	        if (typeof process === "object" && typeof process.emit === "function") {
+	            Q.nextTick.runAfter(function () {
+	                var atReport = array_indexOf(reportedUnhandledRejections, promise);
+	                if (atReport !== -1) {
+	                    process.emit("rejectionHandled", unhandledReasons[at], promise);
+	                    reportedUnhandledRejections.splice(atReport, 1);
+	                }
+	            });
+	        }
+	        unhandledRejections.splice(at, 1);
+	        unhandledReasons.splice(at, 1);
+	    }
+	}
+
+	Q.resetUnhandledRejections = resetUnhandledRejections;
+
+	Q.getUnhandledReasons = function () {
+	    return unhandledReasons.slice();
+	};
+
+	Q.stopUnhandledRejectionTracking = function () {
+	    resetUnhandledRejections();
+	    trackUnhandledRejections = false;
+	};
+
+	resetUnhandledRejections();
+
+	Q.reject = reject;
+	function reject(reason) {
+	    var rejection = Promise({
+	        "when": function (rejected) {
+	            if (rejected) {
+	                untrackRejection(this);
+	            }
+	            return rejected ? rejected(reason) : this;
+	        }
+	    }, function fallback() {
+	        return this;
+	    }, function inspect() {
+	        return { state: "rejected", reason: reason };
+	    });
+	    trackRejection(rejection, reason);
+
+	    return rejection;
+	}
+
+	Q.fulfill = fulfill;
+	function fulfill(value) {
+	    return Promise({
+	        "when": function () {
+	            return value;
+	        },
+	        "get": function (name) {
+	            return value[name];
+	        },
+	        "set": function (name, rhs) {
+	            value[name] = rhs;
+	        },
+	        "delete": function (name) {
+	            delete value[name];
+	        },
+	        "post": function (name, args) {
+	            if (name === null || name === void 0) {
+	                return value.apply(void 0, args);
+	            } else {
+	                return value[name].apply(value, args);
+	            }
+	        },
+	        "apply": function (thisp, args) {
+	            return value.apply(thisp, args);
+	        },
+	        "keys": function () {
+	            return object_keys(value);
+	        }
+	    }, void 0, function inspect() {
+	        return { state: "fulfilled", value: value };
+	    });
+	}
+
+	function coerce(promise) {
+	    var deferred = defer();
+	    Q.nextTick(function () {
+	        try {
+	            promise.then(deferred.resolve, deferred.reject, deferred.notify);
+	        } catch (exception) {
+	            deferred.reject(exception);
+	        }
+	    });
+	    return deferred.promise;
+	}
+
+	Q.master = master;
+	function master(object) {
+	    return Promise({
+	        "isDef": function () {}
+	    }, function fallback(op, args) {
+	        return dispatch(object, op, args);
+	    }, function () {
+	        return Q(object).inspect();
+	    });
+	}
+
+	Q.spread = spread;
+	function spread(value, fulfilled, rejected) {
+	    return Q(value).spread(fulfilled, rejected);
+	}
+
+	Promise.prototype.spread = function (fulfilled, rejected) {
+	    return this.all().then(function (array) {
+	        return fulfilled.apply(void 0, array);
+	    }, rejected);
+	};
+
+	Q.async = async;
+	function async(makeGenerator) {
+	    return function () {
+	        function continuer(verb, arg) {
+	            var result;
+
+	            if (typeof StopIteration === "undefined") {
+	                try {
+	                    result = generator[verb](arg);
+	                } catch (exception) {
+	                    return reject(exception);
+	                }
+	                if (result.done) {
+	                    return Q(result.value);
+	                } else {
+	                    return when(result.value, callback, errback);
+	                }
+	            } else {
+	                try {
+	                    result = generator[verb](arg);
+	                } catch (exception) {
+	                    if (isStopIteration(exception)) {
+	                        return Q(exception.value);
+	                    } else {
+	                        return reject(exception);
+	                    }
+	                }
+	                return when(result, callback, errback);
+	            }
+	        }
+	        var generator = makeGenerator.apply(this, arguments);
+	        var callback = continuer.bind(continuer, "next");
+	        var errback = continuer.bind(continuer, "throw");
+	        return callback();
+	    };
+	}
+
+	Q.spawn = spawn;
+	function spawn(makeGenerator) {
+	    Q.done(Q.async(makeGenerator)());
+	}
+	Q["return"] = _return;
+	function _return(value) {
+	    throw new QReturnValue(value);
+	}
+
+	Q.promised = promised;
+	function promised(callback) {
+	    return function () {
+	        return spread([this, all(arguments)], function (self, args) {
+	            return callback.apply(self, args);
+	        });
+	    };
+	}
+
+	Q.dispatch = dispatch;
+	function dispatch(object, op, args) {
+	    return Q(object).dispatch(op, args);
+	}
+
+	Promise.prototype.dispatch = function (op, args) {
+	    var self = this;
+	    var deferred = defer();
+	    Q.nextTick(function () {
+	        self.promiseDispatch(deferred.resolve, op, args);
+	    });
+	    return deferred.promise;
+	};
+
+	Q.get = function (object, key) {
+	    return Q(object).dispatch("get", [key]);
+	};
+
+	Promise.prototype.get = function (key) {
+	    return this.dispatch("get", [key]);
+	};
+
+	Q.set = function (object, key, value) {
+	    return Q(object).dispatch("set", [key, value]);
+	};
+
+	Promise.prototype.set = function (key, value) {
+	    return this.dispatch("set", [key, value]);
+	};
+
+	Q.del = // XXX legacy
+	Q["delete"] = function (object, key) {
+	    return Q(object).dispatch("delete", [key]);
+	};
+
+	Promise.prototype.del = // XXX legacy
+	Promise.prototype["delete"] = function (key) {
+	    return this.dispatch("delete", [key]);
+	};
+	Q.mapply = // XXX As proposed by "Redsandro"
+	Q.post = function (object, name, args) {
+	    return Q(object).dispatch("post", [name, args]);
+	};
+
+	Promise.prototype.mapply = // XXX As proposed by "Redsandro"
+	Promise.prototype.post = function (name, args) {
+	    return this.dispatch("post", [name, args]);
+	};
+
+	Q.send = // XXX Mark Miller's proposed parlance
+	Q.mcall = // XXX As proposed by "Redsandro"
+	Q.invoke = function (object, name /*...args*/) {
+	    return Q(object).dispatch("post", [name, array_slice(arguments, 2)]);
+	};
+
+	Promise.prototype.send = // XXX Mark Miller's proposed parlance
+	Promise.prototype.mcall = // XXX As proposed by "Redsandro"
+	Promise.prototype.invoke = function (name /*...args*/) {
+	    return this.dispatch("post", [name, array_slice(arguments, 1)]);
+	};
+
+	Q.fapply = function (object, args) {
+	    return Q(object).dispatch("apply", [void 0, args]);
+	};
+
+	Promise.prototype.fapply = function (args) {
+	    return this.dispatch("apply", [void 0, args]);
+	};
+
+	Q["try"] =
+	Q.fcall = function (object /* ...args*/) {
+	    return Q(object).dispatch("apply", [void 0, array_slice(arguments, 1)]);
+	};
+
+	Promise.prototype.fcall = function (/*...args*/) {
+	    return this.dispatch("apply", [void 0, array_slice(arguments)]);
+	};
+
+	Q.fbind = function (object /*...args*/) {
+	    var promise = Q(object);
+	    var args = array_slice(arguments, 1);
+	    return function fbound() {
+	        return promise.dispatch("apply", [
+	            this,
+	            args.concat(array_slice(arguments))
+	        ]);
+	    };
+	};
+	Promise.prototype.fbind = function (/*...args*/) {
+	    var promise = this;
+	    var args = array_slice(arguments);
+	    return function fbound() {
+	        return promise.dispatch("apply", [
+	            this,
+	            args.concat(array_slice(arguments))
+	        ]);
+	    };
+	};
+
+	Q.keys = function (object) {
+	    return Q(object).dispatch("keys", []);
+	};
+
+	Promise.prototype.keys = function () {
+	    return this.dispatch("keys", []);
+	};
+	Q.all = all;
+	function all(promises) {
+	    return when(promises, function (promises) {
+	        var pendingCount = 0;
+	        var deferred = defer();
+	        array_reduce(promises, function (undefined, promise, index) {
+	            var snapshot;
+	            if (
+	                isPromise(promise) &&
+	                (snapshot = promise.inspect()).state === "fulfilled"
+	            ) {
+	                promises[index] = snapshot.value;
+	            } else {
+	                ++pendingCount;
+	                when(
+	                    promise,
+	                    function (value) {
+	                        promises[index] = value;
+	                        if (--pendingCount === 0) {
+	                            deferred.resolve(promises);
+	                        }
+	                    },
+	                    deferred.reject,
+	                    function (progress) {
+	                        deferred.notify({ index: index, value: progress });
+	                    }
+	                );
+	            }
+	        }, void 0);
+	        if (pendingCount === 0) {
+	            deferred.resolve(promises);
+	        }
+	        return deferred.promise;
+	    });
+	}
+
+	Promise.prototype.all = function () {
+	    return all(this);
+	};
+
+	Q.any = any;
+
+	function any(promises) {
+	    if (promises.length === 0) {
+	        return Q.resolve();
+	    }
+
+	    var deferred = Q.defer();
+	    var pendingCount = 0;
+	    array_reduce(promises, function (prev, current, index) {
+	        var promise = promises[index];
+
+	        pendingCount++;
+
+	        when(promise, onFulfilled, onRejected, onProgress);
+	        function onFulfilled(result) {
+	            deferred.resolve(result);
+	        }
+	        function onRejected() {
+	            pendingCount--;
+	            if (pendingCount === 0) {
+	                deferred.reject(new Error(
+	                    "Can't get fulfillment value from any promise, all " +
+	                    "promises were rejected."
+	                ));
+	            }
+	        }
+	        function onProgress(progress) {
+	            deferred.notify({
+	                index: index,
+	                value: progress
+	            });
+	        }
+	    }, undefined);
+
+	    return deferred.promise;
+	}
+
+	Promise.prototype.any = function () {
+	    return any(this);
+	};
+
+	Q.allResolved = deprecate(allResolved, "allResolved", "allSettled");
+	function allResolved(promises) {
+	    return when(promises, function (promises) {
+	        promises = array_map(promises, Q);
+	        return when(all(array_map(promises, function (promise) {
+	            return when(promise, noop, noop);
+	        })), function () {
+	            return promises;
+	        });
+	    });
+	}
+
+	Promise.prototype.allResolved = function () {
+	    return allResolved(this);
+	};
+
+	Q.allSettled = allSettled;
+	function allSettled(promises) {
+	    return Q(promises).allSettled();
+	}
+
+	Promise.prototype.allSettled = function () {
+	    return this.then(function (promises) {
+	        return all(array_map(promises, function (promise) {
+	            promise = Q(promise);
+	            function regardless() {
+	                return promise.inspect();
+	            }
+	            return promise.then(regardless, regardless);
+	        }));
+	    });
+	};
+
+	Q.fail = // XXX legacy
+	Q["catch"] = function (object, rejected) {
+	    return Q(object).then(void 0, rejected);
+	};
+
+	Promise.prototype.fail = // XXX legacy
+	Promise.prototype["catch"] = function (rejected) {
+	    return this.then(void 0, rejected);
+	};
+
+	Q.progress = progress;
+	function progress(object, progressed) {
+	    return Q(object).then(void 0, void 0, progressed);
+	}
+
+	Promise.prototype.progress = function (progressed) {
+	    return this.then(void 0, void 0, progressed);
+	};
+
+	Q.fin = // XXX legacy
+	Q["finally"] = function (object, callback) {
+	    return Q(object)["finally"](callback);
+	};
+
+	Promise.prototype.fin = // XXX legacy
+	Promise.prototype["finally"] = function (callback) {
+	    callback = Q(callback);
+	    return this.then(function (value) {
+	        return callback.fcall().then(function () {
+	            return value;
+	        });
+	    }, function (reason) {
+	        return callback.fcall().then(function () {
+	            throw reason;
+	        });
+	    });
+	};
+
+	Q.done = function (object, fulfilled, rejected, progress) {
+	    return Q(object).done(fulfilled, rejected, progress);
+	};
+
+	Promise.prototype.done = function (fulfilled, rejected, progress) {
+	    var onUnhandledError = function (error) {
+	        Q.nextTick(function () {
+	            makeStackTraceLong(error, promise);
+	            if (Q.onerror) {
+	                Q.onerror(error);
+	            } else {
+	                throw error;
+	            }
+	        });
+	    };
+	    var promise = fulfilled || rejected || progress ?
+	        this.then(fulfilled, rejected, progress) :
+	        this;
+
+	    if (typeof process === "object" && process && process.domain) {
+	        onUnhandledError = process.domain.bind(onUnhandledError);
+	    }
+
+	    promise.then(void 0, onUnhandledError);
+	};
+
+	Q.timeout = function (object, ms, error) {
+	    return Q(object).timeout(ms, error);
+	};
+
+	Promise.prototype.timeout = function (ms, error) {
+	    var deferred = defer();
+	    var timeoutId = setTimeout(function () {
+	        if (!error || "string" === typeof error) {
+	            error = new Error(error || "Timed out after " + ms + " ms");
+	            error.code = "ETIMEDOUT";
+	        }
+	        deferred.reject(error);
+	    }, ms);
+
+	    this.then(function (value) {
+	        clearTimeout(timeoutId);
+	        deferred.resolve(value);
+	    }, function (exception) {
+	        clearTimeout(timeoutId);
+	        deferred.reject(exception);
+	    }, deferred.notify);
+
+	    return deferred.promise;
+	};
+
+	Q.delay = function (object, timeout) {
+	    if (timeout === void 0) {
+	        timeout = object;
+	        object = void 0;
+	    }
+	    return Q(object).delay(timeout);
+	};
+
+	Promise.prototype.delay = function (timeout) {
+	    return this.then(function (value) {
+	        var deferred = defer();
+	        setTimeout(function () {
+	            deferred.resolve(value);
+	        }, timeout);
+	        return deferred.promise;
+	    });
+	};
+
+	Q.nfapply = function (callback, args) {
+	    return Q(callback).nfapply(args);
+	};
+
+	Promise.prototype.nfapply = function (args) {
+	    var deferred = defer();
+	    var nodeArgs = array_slice(args);
+	    nodeArgs.push(deferred.makeNodeResolver());
+	    this.fapply(nodeArgs).fail(deferred.reject);
+	    return deferred.promise;
+	};
+
+	Q.nfcall = function (callback /*...args*/) {
+	    var args = array_slice(arguments, 1);
+	    return Q(callback).nfapply(args);
+	};
+
+	Promise.prototype.nfcall = function (/*...args*/) {
+	    var nodeArgs = array_slice(arguments);
+	    var deferred = defer();
+	    nodeArgs.push(deferred.makeNodeResolver());
+	    this.fapply(nodeArgs).fail(deferred.reject);
+	    return deferred.promise;
+	};
+
+	Q.nfbind =
+	Q.denodeify = function (callback /*...args*/) {
+	    var baseArgs = array_slice(arguments, 1);
+	    return function () {
+	        var nodeArgs = baseArgs.concat(array_slice(arguments));
+	        var deferred = defer();
+	        nodeArgs.push(deferred.makeNodeResolver());
+	        Q(callback).fapply(nodeArgs).fail(deferred.reject);
+	        return deferred.promise;
+	    };
+	};
+
+	Promise.prototype.nfbind =
+	Promise.prototype.denodeify = function (/*...args*/) {
+	    var args = array_slice(arguments);
+	    args.unshift(this);
+	    return Q.denodeify.apply(void 0, args);
+	};
+
+	Q.nbind = function (callback, thisp /*...args*/) {
+	    var baseArgs = array_slice(arguments, 2);
+	    return function () {
+	        var nodeArgs = baseArgs.concat(array_slice(arguments));
+	        var deferred = defer();
+	        nodeArgs.push(deferred.makeNodeResolver());
+	        function bound() {
+	            return callback.apply(thisp, arguments);
+	        }
+	        Q(bound).fapply(nodeArgs).fail(deferred.reject);
+	        return deferred.promise;
+	    };
+	};
+
+	Promise.prototype.nbind = function (/*thisp, ...args*/) {
+	    var args = array_slice(arguments, 0);
+	    args.unshift(this);
+	    return Q.nbind.apply(void 0, args);
+	};
+
+	Q.nmapply = // XXX As proposed by "Redsandro"
+	Q.npost = function (object, name, args) {
+	    return Q(object).npost(name, args);
+	};
+
+	Promise.prototype.nmapply = // XXX As proposed by "Redsandro"
+	Promise.prototype.npost = function (name, args) {
+	    var nodeArgs = array_slice(args || []);
+	    var deferred = defer();
+	    nodeArgs.push(deferred.makeNodeResolver());
+	    this.dispatch("post", [name, nodeArgs]).fail(deferred.reject);
+	    return deferred.promise;
+	};
+
+	Q.nsend = // XXX Based on Mark Miller's proposed "send"
+	Q.nmcall = // XXX Based on "Redsandro's" proposal
+	Q.ninvoke = function (object, name /*...args*/) {
+	    var nodeArgs = array_slice(arguments, 2);
+	    var deferred = defer();
+	    nodeArgs.push(deferred.makeNodeResolver());
+	    Q(object).dispatch("post", [name, nodeArgs]).fail(deferred.reject);
+	    return deferred.promise;
+	};
+
+	Promise.prototype.nsend = // XXX Based on Mark Miller's proposed "send"
+	Promise.prototype.nmcall = // XXX Based on "Redsandro's" proposal
+	Promise.prototype.ninvoke = function (name /*...args*/) {
+	    var nodeArgs = array_slice(arguments, 1);
+	    var deferred = defer();
+	    nodeArgs.push(deferred.makeNodeResolver());
+	    this.dispatch("post", [name, nodeArgs]).fail(deferred.reject);
+	    return deferred.promise;
+	};
+
+	Q.nodeify = nodeify;
+	function nodeify(object, nodeback) {
+	    return Q(object).nodeify(nodeback);
+	}
+
+	Promise.prototype.nodeify = function (nodeback) {
+	    if (nodeback) {
+	        this.then(function (value) {
+	            Q.nextTick(function () {
+	                nodeback(null, value);
+	            });
+	        }, function (error) {
+	            Q.nextTick(function () {
+	                nodeback(error);
+	            });
+	        });
+	    } else {
+	        return this;
+	    }
+	};
+
+	Q.noConflict = function() {
+	    throw new Error("Q.noConflict only works when Q is used as a global");
+	};
+	var qEndingLine = captureLine();
+
+	return Q;
+
+	});
+
+	}).call(this,require('_process'))
+
+	},{"_process":1}],3:[function(require,module,exports){
+	module.exports = {
+		'VOUCHER': 11,
+		'BOOKING': 9,
+	};
+	},{}],4:[function(require,module,exports){
+	module.exports = {
+		'INSTALLED': 'INSTALLED',
+		'TRIAL': 'TRIAL',
+		'UNINSTALLED': 'UNINSTALLED'
+	};
+	},{}],5:[function(require,module,exports){
+	module.exports = {
+		'DEFAULT': 'DEFAULT',
+		'BG': 'BG'
+	};
+	},{}],6:[function(require,module,exports){
+	module.exports = {
+		'DELIVERY': 'DELIVERY',
+		'SEAT': 'SEAT',
+		'PICKUP': 'PICKUP',
+		'BOOKING': 'BOOKING',
+		'VOUCHER': 'VOUCHER'
+	};
+	},{}],7:[function(require,module,exports){
+	module.exports = {
+		'CASH': 'CASH',
+		'CARD': 'CARD'
+	};
+	},{}],8:[function(require,module,exports){
+	module.exports = {
+		'TIME': 'TIME'
+	};
+	},{}],9:[function(require,module,exports){
+	module.exports = {
+		'PENDING': 'PENDING',
+		'ISSUED': 'ISSUED',
+		'REDEEMED': 'REDEEMED',
+		'EXPIRED': 'EXPIRED',
+		'REJECTED': 'REJECTED'
+	};
+	},{}],10:[function(require,module,exports){
+	module.exports = {
+		'EMAIL': 'EMAIL',
+		'POST': 'POST'
+	};
+	},{}],11:[function(require,module,exports){
+	(function (root, factory) {
+	  if (typeof define === 'function' && define.amd) {
+	    define(factory);
+	  } else if (typeof exports === 'object') {
+	    module.exports = factory;
+	  } else {
+	    root.atomic = factory(root);
+	  }
+	})(this, function (root) {
+
+	  'use strict';
+
+	  var exports = {};
+	  var Headers = {};
+
+	  var UtilsService = require('../services/util');
+
+	  var parse = function (req) {
+	    var result;
+	    try {
+	      result = JSON.parse(req.responseText);
+	    } catch (e) {
+	      result = req.responseText;
+	    }
+	    return [result, req];
+	  };
+
+	  function _changeDefaultSend(_request) {
+	    var _validateParameters = function (obj) {
+	        for (var property in obj) {
+	          if (obj.hasOwnProperty(property)) {
+	            if (property.charAt(0) === '$') {
+	              obj[property] = undefined;
+	            } else if (obj[property] != null) {
+	                  if (obj[property] instanceof Object) {
+	                      _validateParameters(obj[property]);
+	                  } else if (obj[property].constructor == Array) {
+	                      for (var i = 0; i < obj[property].length; i++) {
+	                          _validateParameters(obj[property][i]);
+	                      }
+	                  }
+	              }
+	          }
+	        }
+	    };
+
+	    var xhrSend = _request.send;
+	    _request.send = function(body) {     
+	      for (var key in Headers) {      
+	        if (Headers.hasOwnProperty(key)) {
+	          this.setRequestHeader(key, Headers[key]);
+	        }
+	      } 
+
+	      if (body instanceof Object) {
+	        body = UtilsService.clone(body);
+	        _validateParameters(body);
+	      }
+
+	      xhrSend.call(this, JSON.stringify(body));
+	    };
+	  };
+
+	  var xhr = function (type, url, data) {
+	    var methods = {
+	      success: function () {},
+	      error: function () {}
+	    };
+	    var XHR = root.XMLHttpRequest || ActiveXObject;
+	    var request = new XHR('MSXML2.XMLHTTP.3.0');
+	    _changeDefaultSend(request);
+	    request.open(type, url, true);
+	    request.setRequestHeader('Content-type', 'application/json');
+	    request.onreadystatechange = function () {
+	      if (request.readyState === 4) {
+	        if (request.status < 300) {
+	          methods.success.apply(methods, parse(request));
+	        } else {
+	          methods.error.apply(methods, parse(request));
+	        }
+	      }
+	    };
+	    request.send(data);
+	    return {
+	      success: function (callback) {
+	        methods.success = callback;
+	        return this;
+	      },
+	      error: function (callback) {
+	        methods.error = callback;
+	        return this;
+	      }
+	    };
+	  };
+
+	  exports['get'] = function (src) {
+	    return xhr('GET', src);
+	  };
+
+	  exports['put'] = function (url, data) {
+	    return xhr('PUT', url, data);
+	  };
+
+	  exports['patch'] = function (url, data) {
+	    return xhr('PATCH', url, data);
+	  };
+
+	  exports['post'] = function (url, data) {
+	    return xhr('POST', url, data);
+	  };
+
+	  exports['delete'] = function (url) {
+	    return xhr('DELETE', url);
+	  };
+
+	  exports['headers'] = function (newHeaders, value) {
+	    if (value) {
+	      Headers[newHeaders] = value;
+	    } else if (newHeaders instanceof Object){
+	      Headers = UtilsService.extend(Headers, newHeaders);
+	    } 
+	    return Headers; 
+	  };
+
+	  return exports;
+
+	});
+	},{"../services/util":42}],12:[function(require,module,exports){
+	(function(){var e,t,n,r,i,s={}.hasOwnProperty,o=function(e,t){function r(){this.constructor=e}for(var n in t)s.call(t,n)&&(e[n]=t[n]);return r.prototype=t.prototype,e.prototype=new r,e.__super__=t.prototype,e},u=this;this.Stripe=function(){function e(){}return e.version=2,e.endpoint="https://api.stripe.com/v1",e.setPublishableKey=function(t){e.key=t},e.complete=function(t){return function(n,r,i){var s;if(n!=="success")return s=Math.round((new Date).getTime()/1e3),(new Image).src="https://q.stripe.com?event=stripejs-error&type="+n+"&key="+e.key+"&timestamp="+s,typeof t=="function"?t(500,{error:{code:n,type:n,message:"An unexpected error has occurred submitting your credit\ncard to our secure credit card processor. This may be\ndue to network connectivity issues, so you should try\nagain (you won't be charged twice). If this problem\npersists, please let us know!"}}):void 0}},e}.call(this),e=this.Stripe,this.Stripe.token=function(){function t(){}return t.validate=function(e,t){if(!e)throw t+" required";if(typeof e!="object")throw t+" invalid"},t.formatData=function(t,n){return e.utils.isElement(t)&&(t=e.utils.paramsFromForm(t,n)),e.utils.underscoreKeys(t),t},t.create=function(t,n){return t.key||(t.key=e.key||e.publishableKey),e.utils.validateKey(t.key),e.ajaxJSONP({url:""+e.endpoint+"/tokens",data:t,method:"POST",success:function(e,t){return typeof n=="function"?n(t,e):void 0},complete:e.complete(n),timeout:4e4})},t.get=function(t,n){if(!t)throw"token required";return e.utils.validateKey(e.key),e.ajaxJSONP({url:""+e.endpoint+"/tokens/"+t,data:{key:e.key},success:function(e,t){return typeof n=="function"?n(t,e):void 0},complete:e.complete(n),timeout:4e4})},t}.call(this),this.Stripe.card=function(t){function n(){return n.__super__.constructor.apply(this,arguments)}return o(n,t),n.tokenName="card",n.whitelistedAttrs=["number","cvc","exp_month","exp_year","name","address_line1","address_line2","address_city","address_state","address_zip","address_country"],n.createToken=function(t,r,i){var s;return r==null&&(r={}),e.token.validate(t,"card"),typeof r=="function"?(i=r,r={}):typeof r!="object"&&(s=parseInt(r,10),r={},s>0&&(r.amount=s)),r[n.tokenName]=e.token.formatData(t,n.whitelistedAttrs),e.token.create(r,i)},n.getToken=function(t,n){return e.token.get(t,n)},n.validateCardNumber=function(e){return e=(e+"").replace(/\s+|-/g,""),e.length>=10&&e.length<=16&&n.luhnCheck(e)},n.validateCVC=function(t){return t=e.utils.trim(t),/^\d+$/.test(t)&&t.length>=3&&t.length<=4},n.validateExpiry=function(t,n){var r,i;return t=e.utils.trim(t),n=e.utils.trim(n),/^\d+$/.test(t)?/^\d+$/.test(n)?parseInt(t,10)<=12?(i=new Date(n,t),r=new Date,i.setMonth(i.getMonth()-1),i.setMonth(i.getMonth()+1,1),i>r):!1:!1:!1},n.luhnCheck=function(e){var t,n,r,i,s,o;r=!0,i=0,n=(e+"").split("").reverse();for(s=0,o=n.length;s<o;s++){t=n[s],t=parseInt(t,10);if(r=!r)t*=2;t>9&&(t-=9),i+=t}return i%10===0},n.cardType=function(e){return n.cardTypes[e.slice(0,2)]||"Unknown"},n.cardTypes=function(){var e,t,n,r;t={};for(e=n=40;n<=49;e=++n)t[e]="Visa";for(e=r=50;r<=59;e=++r)t[e]="MasterCard";return t[34]=t[37]="American Express",t[60]=t[62]=t[64]=t[65]="Discover",t[35]="JCB",t[30]=t[36]=t[38]=t[39]="Diners Club",t}(),n}.call(this,this.Stripe.token),this.Stripe.bankAccount=function(t){function n(){return n.__super__.constructor.apply(this,arguments)}return o(n,t),n.tokenName="bank_account",n.whitelistedAttrs=["country","routing_number","account_number"],n.createToken=function(t,r,i){return r==null&&(r={}),e.token.validate(t,"bank account"),typeof r=="function"&&(i=r,r={}),r[n.tokenName]=e.token.formatData(t,n.whitelistedAttrs),e.token.create(r,i)},n.getToken=function(t,n){return e.token.get(t,n)},n.validateRoutingNumber=function(t,r){t=e.utils.trim(t);switch(r){case"US":return/^\d+$/.test(t)&&t.length===9&&n.routingChecksum(t);case"CA":return/\d{5}\-\d{3}/.test(t)&&t.length===9;default:return!0}},n.validateAccountNumber=function(t,n){t=e.utils.trim(t);switch(n){case"US":return/^\d+$/.test(t)&&t.length>=1&&t.length<=17;default:return!0}},n.routingChecksum=function(e){var t,n,r,i,s,o;r=0,t=(e+"").split(""),o=[0,3,6];for(i=0,s=o.length;i<s;i++)n=o[i],r+=parseInt(t[n])*3,r+=parseInt(t[n+1])*7,r+=parseInt(t[n+2]);return r!==0&&r%10===0},n}.call(this,this.Stripe.token),t=["createToken","getToken","cardType","validateExpiry","validateCVC","validateCardNumber"];for(r=0,i=t.length;r<i;r++)n=t[r],this.Stripe[n]=this.Stripe.card[n];typeof module!="undefined"&&module!==null&&(module.exports=this.Stripe),typeof define=="function"&&define("stripe",[],function(){return u.Stripe})}).call(this),function(){var e,t,n,r=[].slice;e=encodeURIComponent,t=(new Date).getTime(),n=function(t,r,i){var s,o;r==null&&(r=[]);for(s in t)o=t[s],i&&(s=""+i+"["+s+"]"),typeof o=="object"?n(o,r,s):r.push(""+s+"="+e(o));return r.join("&").replace(/%20/g,"+")},this.Stripe.ajaxJSONP=function(e){var i,s,o,u,a,f;return e==null&&(e={}),o="sjsonp"+ ++t,a=document.createElement("script"),s=null,i=function(t){var n;return t==null&&(t="abort"),clearTimeout(s),(n=a.parentNode)!=null&&n.removeChild(a),o in window&&(window[o]=function(){}),typeof e.complete=="function"?e.complete(t,f,e):void 0},f={abort:i},a.onerror=function(){return f.abort(),typeof e.error=="function"?e.error(f,e):void 0},window[o]=function(){var t;t=1<=arguments.length?r.call(arguments,0):[],clearTimeout(s),a.parentNode.removeChild(a);try{delete window[o]}catch(n){window[o]=void 0}return typeof e.success=="function"&&e.success.apply(e,t),typeof e.complete=="function"?e.complete("success",f,e):void 0},e.data||(e.data={}),e.data.callback=o,e.method&&(e.data._method=e.method),a.src=e.url+"?"+n(e.data),u=document.getElementsByTagName("head")[0],u.appendChild(a),e.timeout>0&&(s=setTimeout(function(){return f.abort("timeout")},e.timeout)),f}}.call(this),function(){var e=[].indexOf||function(e){for(var t=0,n=this.length;t<n;t++)if(t in this&&this[t]===e)return t;return-1};this.Stripe.utils=function(){function t(){}return t.trim=function(e){return(e+"").replace(/^\s+|\s+$/g,"")},t.underscore=function(e){return(e+"").replace(/([A-Z])/g,function(e){return"_"+e.toLowerCase()}).replace(/-/g,"_")},t.underscoreKeys=function(e){var t,n,r;r=[];for(t in e)n=e[t],delete e[t],r.push(e[this.underscore(t)]=n);return r},t.isElement=function(e){return typeof e!="object"?!1:typeof jQuery!="undefined"&&jQuery!==null&&e instanceof jQuery?!0:e.nodeType===1},t.paramsFromForm=function(t,n){var r,i,s,o,u,a,f,l,c,h;n==null&&(n=[]),typeof jQuery!="undefined"&&jQuery!==null&&t instanceof jQuery&&(t=t[0]),s=t.getElementsByTagName("input"),u=t.getElementsByTagName("select"),a={};for(f=0,c=s.length;f<c;f++){i=s[f],r=this.underscore(i.getAttribute("data-stripe"));if(e.call(n,r)<0)continue;a[r]=i.value}for(l=0,h=u.length;l<h;l++){o=u[l],r=this.underscore(o.getAttribute("data-stripe"));if(e.call(n,r)<0)continue;o.selectedIndex!=null&&(a[r]=o.options[o.selectedIndex].value)}return a},t.validateKey=function(e){if(!e||typeof e!="string")throw new Error("You did not set a valid publishable key. Call Stripe.setPublishableKey() with your publishable key. For more info, see https://stripe.com/docs/stripe.js");if(/\s/g.test(e))throw new Error("Your key is invalid, as it contains whitespace. For more info, see https://stripe.com/docs/stripe.js");if(/^sk_/.test(e))throw new Error("You are using a secret key with Stripe.js, instead of the publishable one. For more info, see https://stripe.com/docs/stripe.js")},t}()}.call(this),function(){var e=[].indexOf||function(e){for(var t=0,n=this.length;t<n;t++)if(t in this&&this[t]===e)return t;return-1};this.Stripe.validator={"boolean":function(e,t){if(t!=="true"&&t!=="false")return"Enter a boolean string (true or false)"},integer:function(e,t){if(!/^\d+$/.test(t))return"Enter an integer"},positive:function(e,t){if(!(!this.integer(e,t)&&parseInt(t,10)>0))return"Enter a positive value"},range:function(t,n){var r;if(r=parseInt(n,10),e.call(t,r)<0)return"Needs to be between "+t[0]+" and "+t[t.length-1]},required:function(e,t){if(e&&(t==null||t===""))return"Required"},year:function(e,t){if(!/^\d{4}$/.test(t))return"Enter a 4-digit year"},birthYear:function(e,t){var n;n=this.year(e,t);if(n)return n;if(parseInt(t,10)>2e3)return"You must be over 18";if(parseInt(t,10)<1900)return"Enter your birth year"},month:function(e,t){if(this.integer(e,t))return"Please enter a month";if(this.range([1,2,3,4,5,6,7,8,9,10,11,12],t))return"Needs to be between 1 and 12"},choices:function(t,n){if(e.call(t,n)<0)return"Not an acceptable value for this field"},email:function(e,t){if(!/^[^@<\s>]+@[^@<\s>]+$/.test(t))return"That doesn't look like an email address"},url:function(e,t){if(!/^https?:\/\/.+\..+/.test(t))return"Not a valid url"},usTaxID:function(e,t){if(!/^\d{2}-?\d{1}-?\d{2}-?\d{4}$/.test(t))return"Not a valid tax ID"},ein:function(e,t){if(!/^\d{2}-?\d{7}$/.test(t))return"Not a valid EIN"},ssnLast4:function(e,t){if(!/^\d{4}$/.test(t))return"Not a valid last 4 digits for an SSN"},ownerPersonalID:function(e,t){var n;n=function(){switch(e){case"CA":return/^\d{3}-?\d{3}-?\d{3}$/.test(t);case"US":return!0}}();if(!n)return"Not a valid ID"},bizTaxID:function(e,t){var n,r,i,s,o,u,a,f;u={CA:["Tax ID",[/^\d{9}$/]],US:["EIN",[/^\d{2}-?\d{7}$/]]},o=u[e];if(o!=null){n=o[0],s=o[1],r=!1;for(a=0,f=s.length;a<f;a++){i=s[a];if(i.test(t)){r=!0;break}}if(!r)return"Not a valid "+n}},zip:function(e,t){var n;n=function(){switch(e.toUpperCase()){case"CA":return/^[\d\w]{6}$/.test(t!=null?t.replace(/\s+/g,""):void 0);case"US":return/^\d{5}$/.test(t)||/^\d{9}$/.test(t)}}();if(!n)return"Not a valid zip"},bankAccountNumber:function(e,t){if(!/^\d{1,17}$/.test(t))return"Invalid bank account number"},usRoutingNumber:function(e){var t,n,r,i,s,o,u;if(!/^\d{9}$/.test(e))return"Routing number must have 9 digits";s=0;for(t=o=0,u=e.length-1;o<=u;t=o+=3)n=parseInt(e.charAt(t),10)*3,r=parseInt(e.charAt(t+1),10)*7,i=parseInt(e.charAt(t+2),10),s+=n+r+i;if(s===0||s%10!==0)return"Invalid routing number"},caRoutingNumber:function(e){if(!/^\d{5}\-\d{3}$/.test(e))return"Invalid transit number"},routingNumber:function(e,t){switch(e.toUpperCase()){case"CA":return this.caRoutingNumber(t);case"US":return this.usRoutingNumber(t)}},phoneNumber:function(e,t){var n;n=t.replace(/[^0-9]/g,"");if(n.length!==10)return"Invalid phone number"},bizDBA:function(e,t){if(!/^.{1,23}$/.test(t))return"Statement descriptors can only have up to 23 characters"},nameLength:function(e,t){if(t.length===1)return"Names need to be longer than one character"}}}.call(this);
+	},{}],13:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var Feature = require('../constants/feature');
+	var AccountFeature = require('./accountFeature');
+
+	function Account( account ) {
+		if (account) {
+			UtilsService.extend(this, account);
+		}
+	};
+
+	Account.prototype.hasFeature = function( accountId, _feature ) {
+		if (!accountId) {
+			console.log('account id required');
+			return Promise.reject({
+				message: 'Accout id is required'
+			});
+		}
+
+		if (!UtilsService.hasObjectValue(Feature, _feature)) {
+			console.log('feature invalid', Feature, _feature);
+			return Promise.reject({
+				message: 'Feature invalid'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		Api.get('accounts/' + accountId + '/features/' + _feature).then(function(data){
+
+			if (!data) {
+				deferred.reject();
+				return;
+			}
+
+			var _feature = new AccountFeature(data);
+			if ( _feature.isValid() ) {
+				deferred.resolve();
+			} else {
+				deferred.reject();
+			}
+		}, function(data) {
+			deferred.reject(data);
+		});
+
+		return deferred.promise;
+	};
+
+	module.exports = Account;
+	},{"../constants/feature":3,"../services/api":40,"../services/util":42,"./accountFeature":14,"q":2}],14:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var FeatureStatus = require('../constants/featureStatus');
+
+	function AccountFeature( accountFeature ) {
+		if (accountFeature) {
+			UtilsService.extend(this, accountFeature);
+		}
+	};
+
+	AccountFeature.prototype.isValid = function( ) {
+		if (!this.status) {
+			return false;
+		}
+
+		if (this.status === FeatureStatus.INSTALLED || this.status === FeatureStatus.TRIAL) {
+			return true;
+		}
+
+		return false;
+	};
+
+	module.exports = AccountFeature;
+	},{"../constants/featureStatus":4,"../services/api":40,"../services/util":42,"q":2}],15:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var User = require('./user');
+	var Venue = require('./venue');
+
+	function Addresses(addresses) {
+		if (addresses) {
+			UtilsService.extend(this, addresses);
+			this.$name = addresses.address1;
+		}
+	};
+
+	Addresses.prototype.getAll = function(userId) {
+		if (!User.isLogged()) {
+			return Promise.reject({
+				message: 'User not logged'
+			});
+		}
+
+		var currentUser = User.getCurrent();
+
+		var deferred = Promise.defer();
+
+		Api.get('users/' + currentUser.id + '/addresses').then(function(data){
+			currentUser.addresses = data.map(function(ad){
+				return new Addresses(ad);
+			});
+			deferred.resolve(currentUser.addresses);
+		}, function(data) {
+			deferred.reject(data);
+		});
+
+		return deferred.promise;
+	};
+
+	Addresses.prototype.save = function(addresses) {
+
+		if (!User.isLogged()) {
+			return Promise.reject({
+				message: 'User not logged'
+			});
+		}
+
+		if (!Venue.getCurrent()) {
+			return Promise.reject({
+				message: 'Venue not logged'
+			});
+		}
+
+		if (!(addresses instanceof Object)) {
+			return Promise.reject({
+				message: 'Incorrect addresses parameter'
+			});
+		}
+
+		addresses.country = addresses.country || 'UK';
+
+		var deferred = Promise.defer();
+		var currentUser = User.getCurrent();
+
+		UtilsService.extend(addresses, {
+		    userId: currentUser.id
+		});
+
+		Api.post('users/' + currentUser.id + '/addresses', addresses).then(function(data){
+			var address = new Addresses(data);
+			currentUser.addresses.push(address);
+
+			deferred.resolve(address);
+		}, function(data) {
+			deferred.reject(data);
+		});
+
+		return deferred.promise;
+	};
+
+	Addresses.prototype.update = function(addresses) {
+
+		if (!User.isLogged()) {
+			return Promise.reject({
+				message: 'User not logged'
+			});
+		}
+
+		if (!Venue.getCurrent()) {
+			return Promise.reject({
+				message: 'Venue not logged'
+			});
+		}
+
+		if (!(addresses instanceof Object) || !addresses.id) {
+			return Promise.reject({
+				message: 'Incorrect address parameter'
+			});
+		}
+
+		var deferred = Promise.defer();
+		var currentUser = User.getCurrent();
+
+		UtilsService.extend(addresses, {
+		    userId: currentUser.id
+		});
+
+		Api.put('users/' + currentUser.id + '/addresses/' + addresses.id, addresses).then(function(data){
+			var address = new Addresses(data);
+			currentUser.updateAddress(address);
+
+			deferred.resolve(address);
+		}, function(data) {
+			deferred.reject(data);
+		});
+
+		return deferred.promise;
+	};
+
+	Addresses.prototype['delete'] = function(addresses) {
+		if (!User.isLogged()) {
+			return Promise.reject({
+				message: 'User not logged'
+			});
+		}
+
+		if (!(addresses instanceof Object) || !addresses.id) {
+			return Promise.reject({
+				message: 'Incorrect address parameter'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		var currentUser = User.getCurrent();
+
+		Api['delete']('users/' + currentUser.id + '/addresses/' + addresses.id).then(function(){
+			User.getCurrent().removeAddress(addresses);
+			deferred.resolve();
+		}, function(data) {
+			deferred.reject(data);
+		});
+
+		return deferred.promise;
+	};
+
+	function stringify(address) {
+		var current = this;
+		if (address) {
+			current = address;
+		};
+		var toJoin = [];
+		if (current.address1){
+			toJoin.push(current.address1);
+		}
+		if (current.address2){
+			toJoin.push(current.address2);
+		}
+		if (current.address3){
+			toJoin.push(current.address3);
+		}
+		if (current.city){
+			toJoin.push(current.city);
+		}
+		if (current.county){
+			toJoin.push(current.county);
+		}
+
+		return toJoin.join(', ');
+	};
+
+	Addresses.prototype.stringify = stringify;
+	Addresses.stringify = stringify;
+
+	module.exports = Addresses;
+	},{"../services/api":40,"../services/util":42,"./user":36,"./venue":37,"q":2}],16:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var BasketItem = require('./basketItem');
+	var BasketModifierItem = require('./basketModifierItem');
+	var Venue = require('./venue');
+	var Menu = require('./menu');
+	var Order = require('./order');
+	var User = require('./user');
+	var Hour = require('./hour');
+	var Address = require('./addresses');
+	var PickupSlot = require('./pickupSlot');
+	var PaymentMethods = require('../constants/paymentMethods');
+	var OrderType = require('../constants/orderType');
+	var VoucherType = require('../constants/voucherType');
+
+	var basket = {};
+
+	var basketSections = [];
+	var basketType = null;
+
+	var memTotal = null;
+	var isBasketVoucher = false;
+	var _shouldAddVoucherAddress = false;
+
+	function _resetMemTotal() {
+	    memTotal = {
+	    	total: 0
+	    };
+	}
+
+	function _init() {
+		basket = {
+			i: [],
+			n: null
+		};
+
+		isBasketVoucher = false;
+		_shouldAddVoucherAddress = false;
+
+		_resetMemTotal();
+	}
+
+	_init();
+
+	function _getSection(sectionId) {
+		var currentMenu = Menu.getCurrent();
+
+		if (!currentMenu) {
+			return null;
+		}
+
+		var section = currentMenu.sections.filter(function (s) {
+			return s.id === sectionId;
+		});
+
+		if (section.length) {
+			return section[0];
+		}
+
+		return null;
+	}
+
+	function getItemsGroupBySection() {
+		var sections = {};
+		for (var k = 0, len = basket.i.length; k < len; k++) {
+			var item = basket.i[k];
+			var sectionId = item['$sectionId'];
+			if (!sections[sectionId]) {
+				sections[sectionId] = {
+					section: _getSection(sectionId),
+					items: []
+				}
+			}
+
+			sections[sectionId].items.push(basket.i[k]);
+		};
+
+		return sections;
+	}
+
+	function _getSectionInBasket(sectionId) {
+		var _section = basketSections.filter(function (s) {
+			return s.id === sectionId;
+		});
+
+		if (_section.length) {
+			return _section[0];
+		}
+
+		return _getSection(sectionId);
+	}
+
+	function _addSection(item) {
+		var section = _getSection(item.sectionId);
+		if (section) {
+			basketSections.push(section);
+		}
+	}
+
+	function _getTotalItemsWithQuantityFromSection(sectionId) {
+		var total = 0;
+		var _items = basket.i.filter(function (it) {
+			return it['$sectionId'] === sectionId;
+		});
+
+		for (var i = _items.length - 1; i >= 0; i--) {
+			total += +_items[i].q;
+		};
+
+		return total;
+	}
+
+	function getSectionAndTotalItems(sectionId) {
+		var _currentSection = _getSectionInBasket(sectionId);
+		if (_currentSection) {
+			var total = _getTotalItemsWithQuantityFromSection(sectionId);
+			return {
+				total: total,
+				section: _currentSection
+			};
+		}
+
+		return null;
+	}
+
+	function isAvailableAddItemInSectionPerPeople(section, total, quantity, originalBasketItemQuantity, peopleQuantity) {
+		if (!originalBasketItemQuantity && originalBasketItemQuantity !== 0) {
+			originalBasketItemQuantity = 0;
+		}
+		if (!section.max || (section.max * peopleQuantity) >= (total + quantity)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	function addItem (data) {
+		console.log('adding item .... ', data, BasketItem);
+		_resetMemTotal();
+		var exists = false;
+
+		if (!isBasketVoucher) {
+			exists = _find(data);
+		}
+
+		if (exists) {
+			exists.increment(data.item.quantity || 1);
+		} else {
+			_addSection(data.item);
+			basket.i.push(new BasketItem({
+				item: data.item,
+				modifiers: data.modifiers,
+				mealDeals: data.mealDeals
+			}));
+
+			if (data.item.voucher) {
+				isBasketVoucher = true;
+
+				if (data.item.voucher.type === VoucherType.POST) {
+					if (!_shouldAddVoucherAddress && !data.item.voucher.address) {
+						_shouldAddVoucherAddress = true;
+					}
+				}
+			}
+		}
+	};
+
+	function updateItem(data) {
+		console.log('updating item .... ', data, BasketItem);
+		_resetMemTotal();
+		var _current = basket.i.filter(function(it) {
+			return it['$_id'] === data.item['$_id'];
+		})[0];
+
+		UtilsService.extend(_current, new BasketItem({
+			item: data.item,
+			modifiers: data.modifiers,
+			mealDeals: data.mealDeals
+		}));
+	}
+
+	function _find(data) {
+		var items = basket.i.filter(function(it) {
+			return it.i === data.item.id;
+		});
+
+		var propertyData = '';
+		var propertyBasketItem = '';
+		if (data.item.isMealDeal()) {
+			propertyData = 'mealDeals';
+			propertyBasketItem = 'md';
+		} else {
+			propertyBasketItem = 'm';
+			propertyData = 'modifiers';
+		}
+
+	    var current = null;
+
+		if (items.length) {
+			if (data[propertyData] && data[propertyData].length) {
+				var modMealsIds = data[propertyData].map(function(m) {
+					return m instanceof BasketModifierItem ? m.i : m.id;
+				});
+
+		        for (var k = 0, len = items.length; k < len; k++) {
+		            var modMeals = items[k][propertyBasketItem].filter(function(m) {
+		                return modMealsIds.indexOf(m.i) !== -1;
+		            });
+
+		            if (modMeals.length
+		            	&& modMeals.length === modMealsIds.length
+		            	&& UtilsService.compareObjects(items[k].v, data.item.voucher)) {
+		                current = items[k];
+		                break;
+		            }
+		        };
+			} else {
+		        for (var k = 0, len = items.length; k < len; k++) {
+		            if (!items[k][propertyBasketItem].length
+		            	&& UtilsService.compareObjects(items[k].v, data.item.voucher)) {
+		                current = items[k];
+		                break;
+		            }
+		        };
+			}
+		}
+
+		return current || false;
+	}
+
+	function removeItem  (data) {
+		var item = data;
+		if (data.item){
+			item = _find(data);
+		}
+
+		if (!item) {
+			return Promise.reject({
+				message: 'Item not found'
+			});
+		}
+		_resetMemTotal();
+
+		basket.i.splice(basket.i.indexOf(item), 1);
+
+		return Promise.resolve();
+	};
+
+	function removeAll () {
+		while (basket.i.length > 0) {
+			basket.i.pop();
+		}
+		_resetMemTotal();
+	};
+
+	function total () {
+		if (memTotal && memTotal.total) {
+			return memTotal.total;
+		}
+
+		return totalCore();
+	};
+
+	function totalCore() {
+		var total = 0;
+
+		for (var i = 0, len = basket.i.length; i < len; i++) {
+			total += +basket.i[i].getPrice();
+		};
+
+		return total.toFixed(2);
+	};
+	function itemPickupTime () {
+		var minItem = 0;
+
+		for (var i = basket.i.length - 1; i >= 0; i--) {
+			minItem = Math.min(minItem, (basket.i[i].pickupTime || 0));
+		};
+
+		return new Date(minItem);
+	};
+
+	function maxLeadTime (leadTime) {
+		var maxItem = 0;
+
+		for (var i = basket.i.length - 1; i >= 0; i--) {
+			maxItem = Math.max(maxItem, (basket.i[i].leadTime || leadTime));
+		};
+
+		return maxItem;
+	};
+
+	function maxPickupTime (hours) {
+		var maxItem = Date.now();
+		var now = Date.now();
+		for (var i = basket.i.length - 1; i >= 0; i--) {
+			var item = basket.i[i],
+			    leadDays = item.leadDays,
+			    leadDaysTime = item.leadDaysTime || 0;
+			if ( leadDays > 0 ) {
+			  var s = new Date(),
+			      day = s.getDay()+1; // Javascript day is zero based
+			  var close = Hour.getCloseTime(hours, day);
+			  if ( close ) {
+			    var closeSplit = close.split(':');
+			    s.setHours(closeSplit[0], closeSplit[1], 0, 0);
+			    s.setMinutes(s.getMinutes() - leadDaysTime);
+			    if ( now > s.getTime() ) {
+			      close = false;
+			    }
+			  }
+
+			  if ( !close ) {
+			    for ( i=0; i<7; i++ ) {
+			      s.setDate(s.getDate() + 1);
+			      close = Hour.getCloseTime(hours, s.getDay()+1);
+			      if ( close ) break;
+			    }
+			  }
+			  s.setDate(s.getDate() + leadDays);
+			  s.setHours(0,0,0,0);
+
+			  maxItem = Math.max(maxItem, s.getTime());
+			}
+		};
+
+		return maxItem;
+	};
+
+	function checkDiscount (data) {
+
+		var currentVenue = Venue.getCurrent();
+
+		if (!currentVenue) {
+			return Promise.reject({
+				message: 'Venue not found'
+			});
+		}
+
+		data = data || {};
+
+		if (isBasketVoucher) {
+			data.orderType = OrderType.VOUCHER;
+		} else if (!currentVenue.isDelivery() || !data.orderType) {
+			data.orderType = OrderType.PICKUP;
+		}
+
+	  var currentMenu = Menu.getCurrent();
+	  if (currentMenu && currentMenu.type === OrderType.BOOKING) {
+	    data.orderType = OrderType.BOOKING;
+	  }
+
+		var expand = '';
+		if (data.expand) {
+			expand = '?expand=' + data.expand;
+		}
+
+		var deferred = Promise.defer();
+
+		Api.post('orders/basket' + expand, {
+	      v: currentVenue.id,
+	      ot: data.orderType,
+	      i: basket.i,
+	      e: data.eventId || undefined,
+	      pt: data.pickupTime || undefined,
+	      ptype:data.paymentType || undefined
+	    }).then(function(data){
+			memTotal = data;
+			if (data.availableSlots){
+				memTotal.availableSlots = memTotal.availableSlots.map(function(item) {
+					return new PickupSlot(item);
+				});
+			}
+			deferred.resolve(data)
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+	  	return deferred.promise;
+	};
+
+	function getFees() {
+		if (memTotal) {
+			return memTotal.fees;
+		}
+
+		return [];
+	};
+
+	function getDiscounts() {
+		if (memTotal) {
+			return memTotal.discounts;
+		}
+
+		return [];
+	};
+
+	function getSlots() {
+		if (memTotal) {
+			return memTotal.availableSlots;
+		}
+
+		return [];
+	};
+
+	function getCostDetails () {
+		var currentVenue = Venue.getCurrent();
+
+		if (!currentVenue) {
+			return {};
+		}
+
+	    var settings = currentVenue.settings || {};
+	    var costTotal = total();
+	    var totalLessFees = costTotal - (memTotal.fee || 0);
+	    var deliveryOrderMin = settings.deliveryOrderMin || 0;
+	    var orderMin = settings.orderMin || 0;
+	    var details = {
+	    	total: costTotal || 0,
+	    	deliveryCharge: settings.deliveryCharge || 0,
+	    	deliveryOrderMin: deliveryOrderMin,
+	    	deliveryDifference: Math.max(0, deliveryOrderMin - totalLessFees),
+	    	orderMin: orderMin,
+	    	orderDifference: Math.max(0, orderMin - totalLessFees),
+	    };
+
+	    return details;
+	};
+
+	function getOrderDetail() {
+		return memTotal;
+	}
+
+	function processOrder (data) {
+		if (!(data instanceof Object)) {
+			return Promise.reject({
+				message: 'Invalid parameter. Expected Object'
+			});
+		};
+
+		var orderType = '';
+		var address = null;
+		var postcode = null;
+		var pickupTime = null;
+		var eventParam = null;
+		var formatDate = function (pickupDate) {
+			return [pickupDate.getFullYear(), (pickupDate.getMonth()+1), pickupDate.getDate()].join('-') + 'T' + [pickupDate.getHours(), pickupDate.getMinutes(), '00'].join(':') + '.000';
+		}
+
+		function _setAddressFromData() {
+			if (!data.address) {
+				return;
+			}
+
+			address = Address.stringify(data.address);
+			postcode = data.address.postcode;
+		}
+
+
+		if (data.deliveryState || data.orderType === OrderType.DELIVERY) {
+			_setAddressFromData();
+
+			if (Venue.getCurrent().isDelivery() && !data.orderType) {
+				data.orderType = OrderType.DELIVERY;
+			}
+		} else {
+			if (isBasketVoucher) {
+				_setAddressFromData();
+			} else {
+				address = data.deliveryAddress;
+			}
+
+			if (!data.orderType) {
+				if (data.outletLocation && data.outletLocation.toSeatFlag) {
+					data.orderType = OrderType.SEAT;
+				} else if (data.bookingId)  {
+					data.orderType = OrderType.BOOKING;
+				} else if (isBasketVoucher) {
+					data.orderType = OrderType.VOUCHER;
+				} else {
+					data.orderType = OrderType.PICKUP;
+				}
+			}
+		}
+
+		var pickupSlot = null;
+		var eventTime = null;
+
+		if (data.event) {
+			var eventDate = UtilsService.getLocalDate(data.event.date);
+			var pickupDate = data.event.schedules ? eventDate : null;
+			pickupSlot = data.pickupSlot;
+			if (pickupDate !== null) {
+				if (data.pickupTime) {
+		            var split = data.pickupTime.split(":");
+		            pickupDate.setHours(split[0]);
+		            pickupDate.setMinutes(split[1]);
+				}
+				pickupTime = formatDate(pickupDate);
+			}
+			eventParam = data.event.id;
+			eventTime = data.event.date;
+		} else if(data.pickupSlot && data.pickupTime) {
+			pickupTime = data.pickupSlot + 'T' + data.pickupTime + ':00.000';
+		} else {
+			pickupTime = data.pickupTime;
+		}
+
+		if (data.paymentType === PaymentMethods.CASH) {
+			data.paymentMethod = null;
+		}
+
+		if (isBasketVoucher) {
+			_populateVouchers(address, postcode);
+		}
+
+		var newData = {
+			o: data.outletId,
+			ot: data.orderType,
+			da: address,
+			dp: postcode,
+			i: basket.i,
+			t: total(),
+			pm: data.paymentMethod,
+			n: data.notes,
+			ptype: data.paymentType
+		};
+
+		if(pickupTime) newData.pt = pickupTime;
+		if(pickupSlot) newData.ps = pickupSlot;
+		if(eventParam) newData.e = eventParam;
+		if(eventTime) newData.et = eventTime;
+
+		if (data.bookingId) newData.b = data.bookingId;
+
+
+		return Order.save(newData);
+	};
+
+	function _populateVouchers(address, postcode) {
+		for (var i = basket.i.length - 1; i >= 0; i--) {
+			if (basket.i[i].v) {
+				basket.i[i].v.populate(address, postcode);
+			}
+		};
+	}
+
+	function updateBookingOrder(orderId) {
+		return Order.updateBookingOrder(orderId, {
+			i: basket.i,
+			t: total(),
+			ot: OrderType.BOOKING
+		});
+	}
+
+	function clear () {
+		_init();
+	}
+
+	module.exports = {
+		addItem: addItem,
+		isAvailableAddItemInSectionPerPeople: isAvailableAddItemInSectionPerPeople,
+		getSectionAndTotalItems: getSectionAndTotalItems,
+		updateItem: updateItem,
+		removeItem: removeItem,
+		removeAll: removeAll,
+		total: total,
+		totalCore: totalCore,
+		getSlots: getSlots,
+		getCostDetails: getCostDetails,
+		getDiscounts: getDiscounts,
+		getFees: getFees,
+		getOrderDetail: getOrderDetail,
+		maxLeadTime: maxLeadTime,
+		maxPickupTime: maxPickupTime,
+		checkDiscount: checkDiscount,
+		processOrder: processOrder,
+		updateBookingOrder: updateBookingOrder,
+		clear: clear,
+		isVoucher: function () {
+			return isBasketVoucher;
+		},
+		shouldAddVoucherAddress: function () {
+			return _shouldAddVoucherAddress;
+		},
+		getItems: function() {
+			return basket.i;
+		},
+		getItemsGroupBySection: getItemsGroupBySection
+	};
+
+	},{"../constants/orderType":6,"../constants/paymentMethods":7,"../constants/voucherType":10,"../services/api":40,"../services/util":42,"./addresses":15,"./basketItem":17,"./basketModifierItem":18,"./hour":22,"./menu":25,"./order":28,"./pickupSlot":33,"./user":36,"./venue":37,"q":2}],17:[function(require,module,exports){
+	'use strict';
+
+	var BasketModifierItem = require('./basketModifierItem');
+	var Voucher = require('./voucher');
+	var Menu = require('./menu');
+	var Booking = require('./booking');
+
+	function BasketItem(data) {
+		if (data.item) {
+			_convertMenuItemToBasketItem.call(this, data);
+		}
+	}
+
+	function generateId() {
+	    var S4 = function() {
+	       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+	    };
+	    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+	}
+
+	function _convertMenuItemToBasketItem(data) {
+		var basketItem = data.item;
+
+		this.i = basketItem.id;
+		this.plu = basketItem.plu;
+		this.n = basketItem.name;
+		this.p = basketItem.price;
+		this.q = basketItem.quantity || basketItem.qty || 1;
+		this.nt = basketItem.notes;
+		this.m = [];
+		this.md = [];
+
+		this['$sectionId'] = basketItem.sectionId;
+		this['$_id'] = generateId();
+
+	  var originalQuantity = this.q;
+
+		console.log('id generated ', this['$_id']);
+
+		if (data.modifiers && data.modifiers.length) {
+			_addModifierItems.call(this, data.modifiers);
+		}
+
+		if (data.mealDeals && data.mealDeals.length) {
+			_addMealDeals.call(this, data.mealDeals);
+		}
+
+		if (basketItem.voucher) {
+			this.v = new Voucher(basketItem.voucher);
+			this.v.total = this.getPrice();
+		}
+
+	  this.getOriginalQuantity = function () {
+
+	    return originalQuantity;
+	  };
+	}
+
+	function _addModifierItems(modifierItems) {
+		for (var i = 0, len = modifierItems.length; i < len; i++) {
+			this.m.push(new BasketModifierItem(modifierItems[i]));
+		};
+	}
+
+	function _addMealDeals(mealDeals) {
+		for (var i = 0, len = mealDeals.length; i < len; i++) {
+			this.md.push(new BasketItem({
+				item: mealDeals[i]
+			}));
+		};
+	}
+
+	function getPriceModifiers() {
+		var price = 0;
+		for (var i = this.m.length - 1; i >= 0; i--) {
+			price += +this.m[i].p || 0;
+		};
+
+		return price;
+	}
+
+	function getPriceMealDeals() {
+		var price = 0;
+		for (var i = this.md.length - 1; i >= 0; i--) {
+			price += +this.md[i].p || 0
+		};
+
+		return price;
+	}
+
+	BasketItem.prototype.increment = function(value) {
+	  if (this.canAdd(value)) {
+	    this.q += value;
+	  }
+	};
+
+	BasketItem.prototype.decrement = function() {
+		if (this.q) {
+			--this.q;
+		}
+	};
+
+	BasketItem.prototype.getPrice = function() {
+		var price = 0;
+
+		if (this.m && this.m.length) {
+			price += getPriceModifiers.call(this);
+		}
+
+		if (this.md && this.md.length) {
+			price += getPriceMealDeals.call(this);
+		}
+
+		return ((+price + +this.p) * +this.q).toFixed(2);
+	};
+
+	BasketItem.prototype.canAdd = function(quantity) {
+
+	  if (!Menu.getCurrent().isBookingMenu()) {
+	    return true;
+	  }
+
+	  var Basket = require('./basket');
+
+	  var newQuantity = this.q + quantity;
+	  var originalQuantity = this.getOriginalQuantity();
+
+	  var sectionData = Basket.getSectionAndTotalItems(this['$sectionId']);
+	  console.log('section data', sectionData, quantity);
+	  if (sectionData != null) {
+	    if (Basket.isAvailableAddItemInSectionPerPeople(sectionData.section, sectionData.total, quantity, originalQuantity, Booking.getCurrent().people)) {
+	      return true;
+	    } else {
+	      return false;
+	    }
+	  }
+
+	  return true;
+	};
+
+	module.exports = BasketItem;
+
+	},{"./basket":16,"./basketModifierItem":18,"./booking":19,"./menu":25,"./voucher":38}],18:[function(require,module,exports){
+	'use strict';
+
+	function BasketModifierItem(basketModifierItem) {
+		if (basketModifierItem) {
+			_addModifierItem.call(this, basketModifierItem);
+		}
+	}
+
+	function _addModifierItem(basketModifierItem) {
+		this.i = basketModifierItem.id;
+		this.n = basketModifierItem.name;
+		this.p = basketModifierItem.price;
+	  if (basketModifierItem.qty) {
+	    this.q = basketModifierItem.qty;
+	  }
+	}
+
+	module.exports = BasketModifierItem;
+	},{}],19:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var Menu = require('./menu');
+	var Order = require('./order');
+
+	var currentBooking = null;
+
+	function Booking(booking) {
+	    if (booking) {
+	        UtilsService.extend(this, booking);
+
+	        _populateOrders.call(this);
+	    }
+	}
+
+	function _populateOrders() {
+	    if (this.orders && this.orders.length) {
+	        this.orders = this.orders.map(function (o) {
+	            return new Order(o);
+	        });
+	    }
+	}
+
+	Booking.prototype.save = function (notes) {
+	    var deferred = Promise.defer();
+	    var Basket = require('./basket');''
+	    if (this.orders && this.orders.length) {
+	        Basket.updateBookingOrder(this.orders[0].id)
+	          .then(function (order) {
+	            deferred.resolve(order);
+	        }, function () {
+	            deferred.reject("Error updating booking order");
+	        });
+	      } else {
+	        Basket.processOrder({
+	          bookingId: this.id,
+	          notes: notes
+	        }).then(function(order) {
+	          deferred.resolve(order);
+	        }, function () {
+	            deferred.reject("Error creating booking order");
+	        });
+	      }
+	    return deferred.promise;
+	}
+
+
+	Booking.prototype.getBookings = function(params) {
+	    if (!params || (!params.venueId && !params.permalink)) {
+	        return Promise.reject({
+	            message: 'Venue identifier is required'
+	        });
+	    }
+
+	    var deferred = Promise.defer(),
+	        query = params ? UtilsService.serialize(params) : '';
+
+	    Api.get('bookings?' + query).then(function(data){
+	        data = data.map(function (it) {
+	            return new Booking(it);
+	        });
+	        deferred.resolve(data);
+	    }, function(data) {
+	        deferred.reject(data)
+	    });
+
+	    return deferred.promise;
+	};
+
+	Booking.prototype.getMenu = function() {
+	    var deferred = Promise.defer();
+	    var that = this;
+
+	    Menu.prototype.get({
+	        promotionId: this.promotionId
+	    }).then(function (data) {
+	        if (data && data.length) {
+	          _addOrderItemsToBasket(that);
+	          deferred.resolve(new Menu(data[0]));
+	        } else {
+	            deferred.resolve();
+	        }
+	    }, function (data) {
+	        deferred.reject(data);
+	    });
+
+	    return deferred.promise;
+	};
+
+	Booking.prototype.validate = function(bookingRef, organiserLastName, params) {
+	    if (!params) {
+	        return Promise.reject({
+	            message: 'Invalid parameters'
+	        });
+	    }
+
+	    if (!params.venueId && !params.permalink) {
+	        return Promise.reject({
+	            message: 'Venue identifier is required'
+	        });
+	    }
+
+	    if (!bookingRef) {
+	        return Promise.reject({
+	            message: 'Booking reference is required'
+	        });
+	    }
+
+	    if (!organiserLastName) {
+	        return Promise.reject({
+	            message: 'Organiser last name is required'
+	        });
+	    }
+
+	    params.expand = 'orders';
+
+	    var deferred = Promise.defer(),
+	        query = params ? UtilsService.serialize(params) : '';
+
+	    Api.post('bookings/' + bookingRef + '/validate/' + organiserLastName + '?' + query).then(function(data){
+
+	      currentBooking = new Booking(data);
+	      deferred.resolve(currentBooking);
+	    }, function(data) {
+	        deferred.reject(data)
+	    });
+
+	    return deferred.promise;
+	};
+
+	Booking.getCurrent = function() {
+
+	  return currentBooking;
+	};
+
+	function _addOrderItemsToBasket(booking) {
+
+	  if (booking.orders && booking.orders.length) {
+	    var order = booking.orders[0];
+	    for (var i = 0, len = order.items.length; i < len; i++) {
+	      order.items[i].addToBasket();
+	    }
+	  }
+	}
+
+
+	module.exports = Booking;
+
+	},{"../services/api":40,"../services/util":42,"./basket":16,"./menu":25,"./order":28,"q":2}],20:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+
+	function BookingSettings(bookingSettings) {
+
+	    if (bookingSettings) {
+	        UtilsService.extend(this, bookingSettings);
+	    }
+	}
+
+	BookingSettings.prototype.getSettings = function(params) {
+
+	    if (!params || (!params.venueId)) {
+	        return Promise.reject({
+	            message: 'Venue identifier is required'
+	        });
+	    }
+
+	    var deferred = Promise.defer(),
+	        venue_id = params.venueId;
+
+	    Api.get('venues/' + venue_id + '/booking-settings').then(function(data){;
+
+	        deferred.resolve(new BookingSettings(data));
+	    }, function(data) {
+
+	        deferred.reject(data)
+	    });
+
+	    return deferred.promise;
+	};
+
+	BookingSettings.prototype.updateSettings = function(params) {
+
+	    if (!params || (!params.venueId)) {
+	        return Promise.reject({
+	            message: 'Venue identifier is required'
+	        });
+	    }
+
+	    if (!params || (!params.settings)) {
+	        return Promise.reject({
+	            message: 'Settings data cannot be null'
+	        });
+	    }
+
+	    var deferred = Promise.defer(),
+	        venue_id = params.venueId,
+	        settingsData = params.settings;
+
+	    Api.put('venues/' + venue_id + '/booking-settings', settingsData).then(function(data){
+
+	        deferred.resolve(new BookingSettings(data));
+	    }, function(data) {
+
+	        deferred.reject(data)
+	    });
+
+	    return deferred.promise;
+	};
+
+	BookingSettings.prototype.saveSettings = function(params) {
+
+	    if (!params || (!params.venueId)) {
+	        return Promise.reject({
+	            message: 'Venue identifier is required'
+	        });
+	    }
+
+	    if (!params || (!params.settings)) {
+	        return Promise.reject({
+	            message: 'Settings data cannot be null'
+	        });
+	    }
+
+	    var deferred = Promise.defer(),
+	        venue_id = params.venueId,
+	        settingsData = params.settings;
+
+	    Api.post('venues/' + venue_id + '/booking-settings', settingsData).then(function(data){
+
+	        deferred.resolve(new BookingSettings(data));
+	    }, function(data) {
+
+	        deferred.reject(data)
+	    });
+
+	    return deferred.promise;
+	};
+
+
+	module.exports = BookingSettings;
+	},{"../services/api":40,"../services/util":42,"q":2}],21:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var Venue = require('./venue');
+
+	function Event(eventObj) {
+	  if (eventObj) {
+	    UtilsService.extend(this, eventObj);
+	  }
+	}
+
+	/*
+	* Get events
+	* @params:  venue_id  [Number] - Venue id
+	*           params    [Object] - request params
+	*/
+	Event.prototype.getAll = function(venue_id, params) {
+	  var currentVenue = Venue.getCurrent();
+	  var currentVenueId = venue_id || (currentVenue  && currentVenue.id),
+	      query = params ? UtilsService.serialize(params) : '';
+
+	  if (!currentVenueId) {
+	    return Promise.reject({
+	      message: 'Venue not found'
+	    });
+	  }
+
+	  var deferred = Promise.defer();
+
+	  Api.get('venues/' + currentVenueId + '/events?' + query).then(function(data){
+	    var events = data.map(function(e){
+	      return new Event(e);
+	    });
+	    deferred.resolve(events);
+	  }, function(data) {
+	    deferred.reject(data)
+	  })
+
+	  return deferred.promise;
+	};
+
+	/*
+	* Create event
+	* @params:  venue_id  [Number] - Venue id
+	*           eventData [Object] - Data to send
+	*/
+	Event.prototype.create = function(venueid, eventData) {
+
+	  if (!eventData || !eventData.name) {
+	    return Promise.reject({
+	      message: 'Malformed data to save.'
+	    });
+	  }
+
+	    var deferred = Promise.defer();
+
+	    Api.post("venues/" + venueid + "/events", eventData).then(function(result) {
+
+	      deferred.resolve(new Event(result));
+	    }, function(result) {
+	      deferred.reject(result);
+	    });
+
+	  return deferred.promise;
+	};
+
+	/*
+	* Update event
+	* @params: eventData [Object] - Data to send
+	*/
+	Event.prototype.save = function(eventData) {
+
+	  if (!eventData || !eventData.name) {
+	    return Promise.reject({
+	      message: 'Malformed data to update.'
+	    });
+	  }
+
+	  var deferred = Promise.defer(),
+	      eventID = this.id;
+
+	  Api.put("events/" + eventID, eventData).then(function(result) {
+
+	    deferred.resolve(new Event(result));
+	  }, function(result) {
+	    deferred.reject(result);
+	  });
+
+	  return deferred.promise;
+	};
+
+	/*
+	* Delete event
+	*/
+	Event.prototype.remove = function() {
+
+	  if (!this.id) {
+	    return Promise.reject({
+	      message: 'Malformed event, did you run the constructor?'
+	    });
+	  }
+
+	  var deferred = Promise.defer();
+
+	  Api['delete']('events/' + this.id).then(function(result) {
+	    deferred.resolve(result);
+	  },function(result) {
+	    deferred.reject(result);
+	  });
+
+	  return deferred.promise;
+	};
+
+	/*
+	* Delete event
+	*/
+	Event.prototype.deleteSlots = function() {
+
+	  if (!this.id) {
+	    return Promise.reject({
+	      message: 'Malformed event, did you run the constructor?'
+	    });
+	  }
+
+	  var deferred = Promise.defer();
+
+	  Api['delete']('events/' + this.id + '/slots').then(function(result) {
+	    deferred.resolve(result);
+	  },function(result) {
+	    deferred.reject(result);
+	  });
+
+	  return deferred.promise;
+	};
+
+	module.exports = Event;
+
+	},{"../services/api":40,"../services/util":42,"./venue":37,"q":2}],22:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var Venue = require('./venue');
+	var Basket = require('./basket');
+
+	var defaultLeadTime = 30;
+	var defaultCollectInterval = 15;
+
+	function Hour(hour) {
+		if (hour) {
+			UtilsService.extend(this, hour);
+		}
+	}
+
+	Hour.prototype.getSlotTimes = function(type) {
+	    if (!~["delivery", "pickup"].indexOf(type)){
+	        throw ("Please ensure the type is either 'pickup' or 'delivery'.");
+	    }
+
+	 var currentVenue = Venue.getCurrent();
+
+	 if (!currentVenue) {
+	   throw ('Venue not logged');
+	 }
+
+	    var hours = currentVenue.hours;
+	    if (hours && hours.length){
+	        var settings = currentVenue.settings;
+	        var increment = settings && settings.collectInterval || defaultCollectInterval
+
+	        if (type == "pickup"){
+	            var lead = settings && settings.leadTime || defaultLeadTime;
+	        }else{
+	            var lead = settings && settings.deliveryLeadTime || defaultLeadTime;
+	        }
+	        lead = Basket.maxLeadTime(lead);
+	        var minPickupTimeStamp = Basket.maxPickupTime(hours);
+	        minPickupTimeStamp = Math.max(minPickupTimeStamp, Date.now() + (lead * 60 * 1000));
+
+	        return this.getTimes(4, hours, increment, lead, new Date(minPickupTimeStamp), type);
+	    }
+	};
+
+	function _createPickup(date, slots) {
+	    slots = slots || [_formatHour(date)];
+	    return {
+	        name: _formatDay(date),
+	        value: _formatDate(date),
+	        slots: slots
+	    };
+	};
+
+	function _formatDay(date) {
+	 date = new Date(new Date(date).setHours(0,0,0,0));
+
+	 var now = new Date(new Date().setHours(0,0,0,0));
+
+	 var timeDiff = Math.abs(now.getTime() - date.getTime());
+	 var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+	 return diffDays == 0 ? 'Today' :
+	     diffDays == 1 ? 'Tomorrow' :
+	         date.toDateString();
+	};
+
+	function _formatDate(date) {
+	 var date = [date.getFullYear(), UtilsService.pad(date.getMonth()+1), UtilsService.pad(date.getDate())].join('-');
+	 return date;
+	};
+
+	function _formatHour(date) {
+	    var date = [UtilsService.pad(date.getHours()), UtilsService.pad(date.getMinutes())].join(':');
+	    return date;
+	};
+
+	Hour.prototype.getTimes = function(numDays, hours, interval, leadTime, minPickupDate, type) {
+	    if (!~["delivery", "pickup"].indexOf(type)){
+	        throw new Error("Please ensure the type is either 'pickup' or 'delivery'.");
+	    }
+
+	    var pickups = [];
+	    var now = new Date();
+	    var today = now.getDay()+1; // Javascript day is zero based
+
+	    for (var i=0; i<7; i++) {
+	        var hoursToday = hours.filter(function(o) {
+	         return o.day === today;
+	        });
+
+	        var slots = [];
+
+	                for (var k = 0, len = hoursToday.length; k < len; k++) {
+	         var hour = hoursToday[k];
+	            if (hour[type]){
+	                var range = new UtilsService.TimeRange(hour.open, hour.close); // "HH:MM:SS"
+	                [].push.apply(slots, range.getValues(interval, leadTime, i==0 ? minPickupDate : false));
+	            }
+	        };
+
+	        if ( slots.length > 0 ) {
+	            pickups.push(_createPickup(now, slots));
+	        }
+	        if ( pickups.length == numDays ) {
+	            break;
+	        }
+
+	        now.setDate(now.getDate() + 1);
+	        today = today > 6 ? 1 : today + 1;
+	    }
+	    return pickups;
+	};
+
+	Hour.prototype.getAll = function(params) {
+		var currentVenue = Venue.getCurrent();
+
+		if (!currentVenue) {
+			return Promise.reject({
+				message: 'Venue not found'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		Api.get('venues/' + currentVenue.id + '/hours').then(function(data){
+			_populateHours.apply(this, [params, data]).then(function (hours) {
+	            deferred.resolve(hours);
+	        });
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	function _populateHours(params, data) {
+	    var currentVenue = Venue.getCurrent();
+
+	    currentVenue.hours = data.map(function(o){
+	        return new Hour(o);
+	    });
+
+	    if (data && data instanceof Object && data.groupBy) {
+	        return Promise.resolve(this.groupByDay(data));
+	    }
+
+	    return Promise.resolve(currentVenue.hours);
+	}
+
+	Hour.prototype.groupByDay = function(hours) {
+	  var openingTimes = [];
+	  var day = 0;
+	  for(var d=0;d<7;d++) {
+	    day = d < 6 ? d + 2 : 1;
+	    var filteredByDay = hours.filter(function (item) {
+	      return item.day === day
+	    });
+	    openingTimes.push({day: d, hours: []});
+	    for (var i = 0, len = filteredByDay.length; i < len; i++) {
+	      openingTimes[d].hours.push({
+	        open: filteredByDay[i].open.slice(0,5),
+	        close: filteredByDay[i].close.slice(0,5)
+	      });
+	    }
+	  };
+
+	  return openingTimes;
+	};
+
+
+	Hour.getCloseTime = function(hours, day) {
+	    var hours = hours.filter(function(h) {
+	    	return h.day == day;
+	    });
+
+	    var maxTime = null;
+
+	    for (var i = hours.length - 1; i >= 0; i--) {
+	    	var close = hours[i].close;
+
+	    	if (maxTime === null) {
+	    		maxTime = close;
+	    	} else if (close > maxTime){
+	    		maxTime = close;
+	    	}
+	    };
+
+	    return maxTime;
+	}
+
+	module.exports = Hour;
+	},{"../services/api":40,"../services/util":42,"./basket":16,"./venue":37,"q":2}],23:[function(require,module,exports){
+	'use strict';
+
+	var UtilsService = require('../services/util');
+	var MenuItemImageType = require('../constants/menuItemImageType');
+	var Modifier = require('./modifier');
+	var Tag = require('./tag');
+	var MealDealSection = require('./mealDealSection');
+
+	function Item(item) {
+		if (item) {
+			UtilsService.extend(this, item);
+
+			_addModifiers.call(this);
+	    _setTags.call(this);
+			if (this.mealDeal) {
+				_addMealDealSections.call(this);
+			}
+		}
+	}
+
+	function _setTags() {
+	  this.tags = this.tags.map(function(tag) {
+	    return new Tag(tag);
+	  });
+	}
+
+	function _addModifiers() {
+		this.modifiers = this.modifiers.map(function(m) {
+			return new Modifier(m);
+		});
+	}
+
+	function _addMealDealSections() {
+		this.mealDealSections = this.mealDealSections.map(function(md){
+			return new MealDealSection(md);
+		});
+	}
+
+
+	Item.prototype.isMealDeal = function() {
+		return this.mealDeal === 1;
+	};
+
+	Item.prototype.hasFromPrice = function(){
+
+		for(var x in this.modifiers) {
+			var mod = this.modifiers[x];
+			for(var y in mod.items) {
+				if (mod.items[y].price)
+					return true;
+			}
+		}
+
+	}
+
+	Item.prototype.getFromPrice = function(){
+
+		var price = this.price || 0;
+
+		for(var x in this.modifiers) {
+
+			var mod = this.modifiers[x],
+				smallerPrice = Infinity;
+
+			if(mod.minChoices > 0) {
+
+				for(var y in mod.items) {
+
+					var itemPrice = mod.items[y].price || 0;
+					if(itemPrice < smallerPrice) {
+						smallerPrice = itemPrice;
+					}
+				}
+
+				if(smallerPrice !== Infinity)
+					price += smallerPrice;
+			}
+		}
+
+		return price;
+	};
+
+	Item.prototype.hasBGImage = function() {
+	      return this.images.filter(function (image) {
+	        return image.type === MenuItemImageType.BG;
+	      }).length;
+	};
+
+	Item.prototype.getRandomBGImage = function() {
+	      var images = this.images.filter(function (image) {
+	        return image.type === MenuItemImageType.BG;
+	      });
+
+	      if (!images.length) {
+	      	return null;
+	      }
+
+	      var item = images[Math.floor(Math.random() * images.length)];
+
+	      return item.imageThumb || item.image;
+	};
+
+	Item.prototype.hasDefaultImage = function() {
+	      return this.images.filter(function (image) {
+	        return image.type === MenuItemImageType.DEFAULT;
+	      }).length;
+	};
+
+	Item.prototype.getRandomDefaultImage = function() {
+	      var images = this.images.filter(function (image) {
+	        return image.type === MenuItemImageType.DEFAULT;
+	      });
+
+	      if (!images.length) {
+	      	return null;
+	      }
+
+	      var item = images[Math.floor(Math.random() * images.length)];
+
+	      return item.imageThumb || item.image;
+	};
+
+	module.exports = Item;
+	},{"../constants/menuItemImageType":5,"../services/util":42,"./mealDealSection":24,"./modifier":26,"./tag":35}],24:[function(require,module,exports){
+	'use strict';
+
+	var UtilsService = require('../services/util');
+
+	function MealDealSection(mealDealSection) {
+		if (mealDealSection) {
+			UtilsService.extend(this, mealDealSection);
+		}
+	}
+
+	module.exports = MealDealSection;
+	},{"../services/util":42}],25:[function(require,module,exports){
+	var Promise = require('q');
+	var UtilsService = require('../services/util');
+	'use strict';
+
+	var Api = require('../services/api');
+	var Section = require('./section');
+	var OrderType = require('../constants/orderType');
+	var currentMenu = null;
+
+	function Menu(menu) {
+		if (menu) {
+			UtilsService.extend(this, menu);
+			_populateSections.call(this);
+		}
+	}
+
+	function _populateSections() {
+		this.sections = this.sections.map(function(s) {
+			return new Section(s);
+		});
+	}
+
+	Menu.getCurrent = function () {
+		return currentMenu;
+	};
+
+	Menu.prototype.get = function(data) {
+		var deferred = Promise.defer();
+
+	  if (!data){
+	    return Promise.reject({
+	      message: 'Menu identifier is required'
+	    });
+	  }
+
+	  var url = 'menus';
+	  if (typeof data === 'object'){
+	    data.type = data.type ? data.type : 'MENU';
+	    url += '?type=' + data.type;
+	    if (!data.noExpand){
+	      url+='&expand=true';
+	    }
+	    if (data.outletId) {
+	      url += '&outletId=' + data.outletId;
+	    } else if (data.venueId) {
+	      url += '&venueId=' + data.venueId;
+	    } else if (data.promotionId) {
+	      url += '&promotionId=' + data.promotionId;
+	    } else if (data.accountId) {
+	      url += '&accountId=' + data.accountId;
+	    }
+	  } else if (!isNaN(data)){
+	    url+="/"+data;
+	  } else {
+	    return Promise.reject({
+	      message: 'Invalid menu identifier. Must be menuId or one of the following {outletId,venueId,promotionId,accountId}'
+	    });
+	  }
+
+	  Api.get(url).then(function(data){
+	    if (data === ""){
+	      return deferred.reject(data)
+	    }
+	    var menus;
+	    if (data instanceof Array) {
+	        menus = data.map(function(m) {
+	            return new Menu(m);
+	        });
+	        if (menus.length) {
+	            currentMenu = menus[0];
+	        } else {
+	            currentMenu = null;
+	        }
+	    } else if (data instanceof Object) {
+	        currentMenu = new Menu(data);
+	        menus = currentMenu;
+	    } else {
+	        return deferred.reject(data)
+	    }
+	    deferred.resolve(menus)
+	  }, function(data) {
+	    deferred.reject(data)
+	  })
+
+		return deferred.promise;
+	};
+
+	Menu.prototype.getItemById = function (itemId) {
+
+	  var sections = this.sections;
+	  var item = null;
+
+	  for (var i = sections.length - 1; i >= 0; i--) {
+	    item = sections[i].getItemById(itemId);
+
+	    if (item) {
+	      break;
+	    }
+	  }
+
+	  return item;
+	}
+
+	Menu.prototype.isBookingMenu = function () {
+
+	  if (this.type === OrderType.BOOKING) {
+	    return true;
+	  }
+
+	  return false;
+	}
+
+	module.exports = Menu;
+
+	},{"../constants/orderType":6,"../services/api":40,"../services/util":42,"./section":34,"q":2}],26:[function(require,module,exports){
+	'use strict';
+
+	var UtilsService = require('../services/util');
+	var ModifierItem = require('./modifierItem');
+
+	function Modifier(modifier) {
+		if (modifier) {
+			UtilsService.extend(this, modifier);
+
+			_addItems.call(this);
+		}
+	}
+
+	function _addItems() {
+		this.items = this.items.map(function(it) {
+			return new ModifierItem(it);
+		});
+	}
+
+	module.exports = Modifier;
+	},{"../services/util":42,"./modifierItem":27}],27:[function(require,module,exports){
+	'use strict';
+
+	var UtilsService = require('../services/util');
+
+	function ModifierItem(modifierItem) {
+		if (modifierItem) {
+			UtilsService.extend(this, modifierItem);
+		}
+	}
+
+	module.exports = ModifierItem;
+	},{"../services/util":42}],28:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var User = require('./user');
+	var OrderItem = require('./orderItem');
+
+	function Order(order) {
+		if (order) {
+			UtilsService.extend(this, order);
+
+			_populateItems.call(this);
+		}
+	}
+
+	function _populateItems() {
+		this.items = this.items.map(function(it) {
+			return new OrderItem(it);
+		});
+	}
+
+	Order.prototype.getOrdersByUser = function() {
+		var Venue = require('./venue');
+
+		var currentUser = User.getCurrent();
+		var currentVenue = Venue.getCurrent();
+
+		if (!currentUser) {
+			return Promise.reject({
+				message: 'User not logged'
+			});
+		}
+
+		if (!currentVenue) {
+			return Promise.reject({
+				message: 'Venue not logged'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		Api.get('orders?userId=' + currentUser.id + '&venueId=' + currentVenue.id).then(function(data){
+			data = data.map(function(o) {
+				return new Order(o);
+			});
+			deferred.resolve(data);
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Order.prototype.get = function(id) {
+		if (!id) {
+			return Promise.reject({
+				message: 'Id is required'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		Api.get('orders/' + id).then(function(order){
+			deferred.resolve(new Order(order));
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Order.prototype.fetch = function(orderObject) {
+		var deferred = Promise.defer();
+
+		var queryString = UtilsService.serialize(orderObject);
+
+		Api.get('orders' + (queryString ? '?' + queryString : null)).then(function(data){
+			data = data.map(function(o) {
+				return new Order(o);
+			});
+			deferred.resolve(data);
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Order.prototype.read = function(id) {
+		var currentId = null;
+		if (this.id) {
+			currentId = this.id;
+		} else if (!id) {
+			return Promise.reject({
+				message: 'Id is required'
+			});
+		} else {
+			currentId = id;
+		}
+
+		var deferred = Promise.defer();
+		var _this = this;
+
+		Api.post('orders/' + currentId + '/read').then(function(){
+			_this.viewed = new Date();
+			deferred.resolve();
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Order.prototype.charge = function(id) {
+		var currentId = null;
+		if (this.id) {
+			currentId = this.id;
+		} else if (!id) {
+			return Promise.reject({
+				message: 'Id is required'
+			});
+		} else {
+			currentId = id;
+		}
+
+		var deferred = Promise.defer();
+
+		Api.post('orders/' + currentId + '/charge').then(function(data){
+			deferred.resolve(data);
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Order.prototype.notify = function(content) {
+		if (!this.id) {
+			return Promise.reject({
+				message: 'Invalid order'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		Api.post('orders/' + this.id + '/notify', {
+			content: content
+		}).then(function(data){
+			deferred.resolve(data);
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Order.prototype.reject = function(content) {
+		if (!this.id) {
+			return Promise.reject({
+				message: 'Invalid order'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		Api.post('orders/' + this.id + '/reject', {
+			content: content
+		}).then(function(data){
+			deferred.resolve(data);
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	function _setStatus(order, status) {
+		var deferred = Promise.defer();
+
+		order.status = status;
+		order.update().then(function () {
+			deferred.resolve();
+		}, function () {
+			deferred.reject();
+		});
+
+		return deferred.promise;
+	};
+
+	Order.prototype.noShow = function() {
+	  return _setStatus(this, 'NOSHOW');
+	};
+
+	Order.prototype.complete = function(id) {
+		var _order = null;
+		if (id) {
+			_order = new Order();
+			_order.id = id;
+		} else {
+			_order = this;
+		}
+
+		return _setStatus(_order, 'COMPLETED');
+	};
+
+	Order.prototype.preparing = function() {
+	  return _setStatus(this, 'PREPARING');
+	};
+
+	Order.prototype.ready = function() {
+	  return _setStatus(this, 'READY');
+	};
+
+	Order.prototype.delivering = function() {
+	  return _setStatus(this, 'DELIVERING');
+	};
+
+	function save(order) {
+		var Venue = require('./venue');
+
+		var currentUser = User.getCurrent();
+		var currentVenue = Venue.getCurrent();
+
+		if (!User.isLogged()) {
+			return Promise.reject({
+				message: 'User not logged'
+			});
+		}
+
+		if (!currentVenue) {
+			return Promise.reject({
+				message: 'Venue not logged'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		UtilsService.extend(order, {
+			v: currentVenue.id,
+			u: currentUser.id,
+			ph: currentUser.phone
+		});
+
+		Api.post('orders', order).then(function(data){
+			deferred.resolve(new Order(data));
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Order.prototype.save = save;
+	Order.save = save;
+
+
+	function updateBookingOrder(orderId, order) {
+		var Venue = require('./venue');
+
+		var currentUser = User.getCurrent();
+		var currentVenue = Venue.getCurrent();
+
+		if (!orderId) {
+			return Promise.reject({
+				message: 'OrderId is required'
+			});
+		}
+
+		if (!User.isLogged()) {
+			return Promise.reject({
+				message: 'User not logged'
+			});
+		}
+
+		if (!currentVenue) {
+			return Promise.reject({
+				message: 'Venue not logged'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		UtilsService.extend(order, {
+			v: currentVenue.id,
+			u: currentUser.id,
+			ph: currentUser.phone
+		});
+
+		Api.put('orders/' + orderId + '/booking', order).then(function(data){
+			deferred.resolve(new Order(data));
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	}
+
+	Order.prototype.updateBookingOrder = updateBookingOrder;
+	Order.updateBookingOrder = updateBookingOrder;
+
+
+	Order.prototype.update = function() {
+		var currentUser = User.getCurrent();
+
+		if (!User.isLogged()) {
+			return Promise.reject({
+				message: 'User not logged'
+			});
+		}
+
+
+		var deferred = Promise.defer();
+
+		Api.put('orders/' + this.id, this).then(function(data){
+			deferred.resolve(data);
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	module.exports = Order;
+	},{"../services/api":40,"../services/util":42,"./orderItem":29,"./user":36,"./venue":37,"q":2}],29:[function(require,module,exports){
+	'use strict';
+
+	var UtilsService = require('../services/util');
+
+	var Menu = require('./menu');
+
+	function OrderItem(item) {
+		if (item) {
+			UtilsService.extend(this, item);
+		}
+	}
+
+	OrderItem.prototype.isMealDeal = function() {
+		return this.mealDealItems.length > 0;
+	};
+
+	OrderItem.prototype.addToBasket = function () {
+
+	  var Basket = require('./basket');
+
+	  var menuItem = Menu.getCurrent().getItemById(this.menuItemId);
+	  var clonedItem = new OrderItem(this); // this is to force to lose reference
+
+	  clonedItem.id = this.menuItemId;
+
+	  if (menuItem) {
+	    clonedItem.sectionId = menuItem.sectionId;
+	  }
+
+	  var basketItem = {
+	    item: clonedItem
+	  };
+
+	  if (this.modifiers && this.modifiers.length) {
+	    basketItem.modifiers = this.modifiers.map(function (m) {
+	      m.id = m.modifierItemId;
+	      return m;
+	    });
+	  }
+	  if (this.mealDealItems && this.mealDealItems.length) {
+	    basketItem.mealDeals = this.mealDealItems.map(function(m){
+	      m.id = m.mealDealItemId;
+	      return m;
+	    });
+	  }
+
+	  Basket.addItem(basketItem);
+	}
+
+
+	module.exports = OrderItem;
+
+	},{"../services/util":42,"./basket":16,"./menu":25}],30:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var Venue = require('./venue');
+	var outletsChildren = {};
+	var currentOutlets = null;
+
+	function Outlet(outlet, childrens) {
+		if (outlet) {
+			UtilsService.extend(this, outlet);
+
+			if (childrens && childrens.length) {
+				outletsChildren[outlet.id] = childrens.map(function(c) {
+					return new Outlet(c, _getOutletsByParent(c.id));
+				});
+			}
+		}
+	};
+
+	function _getOutletsByParent(parent) {
+		var outlet = currentOutlets.filter(function(o) {
+			return o.id === parent;
+		});
+
+		outlet = outlet && outlet.length && outlet[0] || null;
+
+		if (outlet && outlet.seatStart && outlet.seatEnd) {
+			var childrens = [];
+
+			for (var s = outlet.seatStart; s <= outlet.seatEnd; s++) {
+				var seat = UtilsService.clone(outlet);
+				seat.id = outlet.id + "-" + s;
+				seat.name = s;
+
+				childrens.push( new Outlet(seat) );
+			}
+
+			return childrens;
+		} else {
+			return currentOutlets.filter(function(o) {
+				return o.parent === parent;
+			});
+		}
+	}
+
+	function _processOutlets(outlets, outletLocationId) {
+		var currentVenue = Venue.getCurrent();
+
+		currentOutlets = outlets;
+		outletsChildren = {};
+
+		var outletsLocal = null;
+		if (outletLocationId) {
+			outletsLocal = _getOutletsByParent(outletLocationId);
+		} else {
+			outletsLocal = outlets.filter(function(o) {
+				return !o.parent;
+			});
+		}
+
+		currentVenue.outlets = [];
+
+		for (var i = 0, len = outletsLocal.length; i < len; i++) {
+			currentVenue.outlets.push(new Outlet(outletsLocal[i], _getOutletsByParent(outletsLocal[i].id)));
+		};
+	}
+
+	Outlet.prototype.getAll = function(data) {
+		var currentVenue = Venue.getCurrent();
+
+		if (!currentVenue) {
+			return Promise.reject({
+				message: 'Venue not found'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		var url = 'venues/' + currentVenue.id + '/outletlocations';
+		var outletLocationId = null;
+		if (data instanceof Object && data.outletLocationId) {
+			outletLocationId = data.outletLocationId;
+			url += '?root=' + data.outletLocationId;
+		}
+		var _this = this;
+		Api.get(url).then(function(outlets){
+			_processOutlets.call(_this, outlets, outletLocationId);
+			deferred.resolve(currentVenue.outlets)
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Outlet.prototype.get = function(id) {
+		var deferred = Promise.defer();
+
+		var url = 'outlets/' + id;
+		Api.get(url).then(function(outlet){
+			deferred.resolve(new Outlet(outlet))
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Outlet.prototype.getChildrens = function() {
+		return outletsChildren[this.id];
+	};
+
+	module.exports = Outlet;
+	},{"../services/api":40,"../services/util":42,"./venue":37,"q":2}],31:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Stripe = require('../lib/stripe.min');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var SettingsService = require('../services/settings');
+	var User = require('./user');
+	var Venue = require('./venue');
+
+	function PaymentMethod(paymentMethod) {
+		if (paymentMethod) {
+			UtilsService.extend(this, paymentMethod);
+		}
+	};
+
+	PaymentMethod.prototype.getAll = function(userId) {
+		if (!User.isLogged()) {
+			return Promise.reject({
+				message: 'User not logged'
+			});
+		}
+
+		var currentUser = User.getCurrent();
+
+		var deferred = Promise.defer();
+
+		Api.get('users/' + currentUser.id + '/paymentmethods').then(function(data){
+			currentUser.paymentMethods = data.map(function(pm){
+				return new PaymentMethod(pm);
+			});
+			deferred.resolve(currentUser.paymentMethods);
+		}, function(data) {
+			deferred.reject(data);
+		});
+
+		return deferred.promise;
+	};
+
+	PaymentMethod.prototype.validate = function(paymentMethod) {
+		var deferred = Promise.defer();
+
+	    Stripe.setPublishableKey(SettingsService.getSettings().stripeKey);
+	    Stripe.createToken(paymentMethod, function (status, resp) {
+	        if (resp.error) {
+	        	deferred.reject({
+	        		message: resp.error.message
+	        	});
+	        } else {
+				deferred.resolve({
+	                token: resp.id,
+	                name: resp.card.name,
+	                type: resp.card.type || resp.card.brand,
+	                expMonth: resp.card.exp_month,
+	                expYear: resp.card.exp_year,
+	                number: resp.card.last4
+	            });
+	        }
+	    });
+
+	    return deferred.promise;
+	};
+
+	PaymentMethod.prototype.save = function(paymentMethod) {
+
+		if (!User.isLogged()) {
+			return Promise.reject({
+				message: 'User not logged'
+			});
+		}
+
+		if (!Venue.getCurrent()) {
+			return Promise.reject({
+				message: 'Venue not logged'
+			});
+		}
+
+		if (!(paymentMethod instanceof Object)) {
+			return Promise.reject({
+				message: 'Incorrect Payment Method parameter'
+			});
+		}
+
+		var deferred = Promise.defer();
+		var currentUser = User.getCurrent();
+
+		this.validate(paymentMethod).then(function(card) {
+	        angular.extend(card, {
+	            userId: currentUser.id,
+	            venueId: Venue.getCurrent().id
+	        });
+
+			Api.post('users/' + currentUser.id + '/paymentmethods', card).then(function(data){
+				var payment = new PaymentMethod(data);
+				currentUser.paymentMethods.push(payment);
+				deferred.resolve(payment);
+			}, function(data) {
+				deferred.reject(data);
+			});
+		}, function(err) {
+			deferred.reject(err);
+		})
+
+		return deferred.promise;
+	};
+
+	PaymentMethod.prototype['delete'] = function(paymentMethod) {
+		if (!User.isLogged()) {
+			return Promise.reject({
+				message: 'User not logged'
+			});
+		}
+
+		if (!(paymentMethod instanceof Object) || !paymentMethod.id) {
+			return Promise.reject({
+				message: 'Incorrect Payment Method parameter'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		var currentUser = User.getCurrent();
+
+		Api['delete']('users/' + currentUser.id + '/paymentmethods/' + paymentMethod.id).then(function(){
+			User.getCurrent().removePaymentMethod(paymentMethod);
+			deferred.resolve();
+		}, function(data) {
+			deferred.reject(data);
+		});
+
+		return deferred.promise;
+	};
+
+	module.exports = PaymentMethod;
+	},{"../lib/stripe.min":12,"../services/api":40,"../services/settings":41,"../services/util":42,"./user":36,"./venue":37,"q":2}],32:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var Venue = require('./venue');
+
+	function PaymentProvider(paymentProvider) {
+		if (paymentProvider) {
+			UtilsService.extend(this, paymentProvider);
+		}
+	};
+
+	PaymentProvider.prototype.getPaymentProvidersByVenue = function() {
+		var currentVenue = Venue.getCurrent();
+
+		if (!currentVenue) {
+			return Promise.reject({
+				message: 'Venue not found'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		Api.get('venues/' + currentVenue.id + '/paymentproviders').then(function(data){
+			currentVenue.paymentProviders = data.map(function(pp){
+				return new PaymentProvider(pp);
+			});
+			deferred.resolve(currentVenue.paymentProviders);
+		}, function(data) {
+			deferred.reject(data);
+		});
+
+		return deferred.promise;
+	};
+
+	module.exports = PaymentProvider;
+	},{"../services/api":40,"../services/util":42,"./venue":37,"q":2}],33:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var PickupSlotType = require('../constants/pickupSlotType');
+
+
+	function PickupSlot(pickupSlot) {
+	  if (pickupSlot) {
+	    UtilsService.extend(this, pickupSlot);
+
+	    if(this.slots) {
+	      this.slots = this.slots.map(function(item) {
+	        return new PickupSlot(item);
+	      });
+	    }
+	  }
+	}
+
+	PickupSlot.prototype.getAll = function(eventObj) {
+	  if (!eventObj || !eventObj.id) {
+	    return Promise.reject({
+	      message: 'Invalid event param'
+	    });
+	  }
+
+	  var deferred = Promise.defer();
+
+	  Api.get('events/' + eventObj.id + '/slots/slotConfig').then(function(data){
+	    var data = data.map(function(pk){
+	      return new PickupSlot(pk);
+	    });
+	    deferred.resolve(data)
+	  }, function(data) {
+	    deferred.reject(data)
+	  })
+
+	  return deferred.promise;
+	};
+
+	PickupSlot.prototype.create = function(newSlot){
+	  if (!newSlot || !newSlot.name || !newSlot.eventId) {
+	    return Promise.reject({
+	      message: 'Malformed pickup slot, did you run the constructor?'
+	    });
+	  }
+	  var deferred = Promise.defer();
+
+	  Api.post('events/' + newSlot.eventId + '/slots',newSlot).then(function(data){
+	    deferred.resolve(new PickupSlot(data))
+	  }, function(data) {
+	    deferred.reject(data)
+	  })
+
+	  return deferred.promise;
+	}
+
+	PickupSlot.prototype.save = function() {
+
+	  if (this.id == undefined || this.eventId == undefined) {
+
+	    return Promise.reject({
+	      message: 'Malformed pickup slot, did you run the constructor?'
+	    });
+	  }
+	  var deferred = Promise.defer();
+	  Api.put('events/' + this.eventId + '/slots/' + this.id,this).then(function(data){
+	    var data = data.map(function(pk){
+	      return new PickupSlot(pk);
+	    });
+	    deferred.resolve(data)
+	  }, function(data) {
+	    deferred.reject(data)
+	  })
+
+	  return deferred.promise;
+	};
+
+	PickupSlot.prototype.remove = function() {
+	  var method = this.id ? 'post' : 'put';
+	  if (!this.name || !this.eventId) {
+	    return Promise.reject({
+	      message: 'Malformed pickup slot, did you run the constructor?'
+	    });
+	  }
+
+	  var deferred = Promise.defer();
+
+	  if(this.id) {
+	    Api['delete']('events/' + this.eventId + '/slots/' + this.id ).then(function(data){
+	      var data = data.map(function(pk){
+	        return new PickupSlot(pk);
+	      });
+	      deferred.resolve(data)
+	    }, function(data) {
+	      deferred.reject(data)
+	    });
+	  }
+	  else
+	    deferred.resolve({
+	      message: 'No slots to delete'
+	    });
+
+	  return deferred.promise;
+	};
+
+
+	PickupSlot.prototype.processSlotChild = function() {
+
+	  var arrSlotTime = [];
+
+	  for(var y in this.slots) {
+
+	    if (this.slots[y].step && this.slots[y].isTime()) {
+
+	      var value = new UtilsService.getLocalDate(this.slots[y].value || this.slots[y].name);
+
+
+	      for (var i = 0 ; i <= this.slots[y].repeat; i++) {
+
+	        arrSlotTime.push(new PickupSlot(UtilsService.extend(this.slots[y], {
+	          $timestamp: value.getTime()
+	        })));
+
+	        value = UtilsService.addMinutes(value, this.slots[y].step);
+	      }
+	    } else {
+	      arrSlotTime.push(this.slots[y]);
+	    }
+	  }
+
+	  return arrSlotTime;
+	}
+
+	PickupSlot.prototype.isTime = function() {
+
+	  return this.type === PickupSlotType.TIME;
+	};
+
+
+	module.exports = PickupSlot;
+
+	},{"../constants/pickupSlotType":8,"../services/api":40,"../services/util":42,"q":2}],34:[function(require,module,exports){
+	'use strict';
+
+	var UtilsService = require('../services/util');
+	var Item = require('./item');
+	var Api = require('../services/api');
+	var Promise = require('q');
+
+	function Section(section) {
+	  function _populateItems() {
+	    this.items = this.items.map(function(it) {
+	      return new Item(it);
+	    })
+	  }
+
+		if (section) {
+			UtilsService.extend(this, section);
+			_populateItems.call(this);
+		}
+	}
+
+	function _getItemById(itemId) {
+
+	  var filtered = this.items.filter(function (it) {
+
+	    return it.id === itemId;
+	  });
+
+	  return filtered.length && filtered[0];
+	};
+
+
+	function _save(section) {
+	  var deferred = Promise.defer();
+
+	  if (!(section instanceof Object) || !section.name || !section.menuId) {
+	    return Promise.reject({
+	      message: 'Invalid section data'
+	    });
+	  }
+
+	  Api.post('sections', section).then(function(data){
+	    var section = new Section(data);
+	    deferred.resolve(section);
+	  }, function(data) {
+	    deferred.reject(data);
+	  });
+
+	  return deferred.promise;
+	};
+
+	function _update() {
+	  var deferred = Promise.defer();
+
+	  if (!this.id || !this.menuId || !this.name) {
+	    return Promise.reject({
+	      message: 'Invalid section data'
+	    });
+	  }
+
+	  Api.put('sections/'+this.id, this).then(function(data){
+	    var section = new Section(data);
+	    deferred.resolve(section);
+	  }, function(data) {
+	    deferred.reject(data);
+	  });
+
+	  return deferred.promise;
+	};
+
+	function _delete() {
+	  var deferred = Promise.defer();
+
+	  if (!this.id || !this.menuId || !this.name) {
+	    return Promise.reject({
+	      message: 'Invalid section data'
+	    });
+	  }
+
+	  Api['delete']('sections/'+this.id).then(function(result){
+	    deferred.resolve(result);
+	  }, function(data) {
+	    deferred.reject(data);
+	  });
+
+	  return deferred.promise;
+	};
+	Section.save = _save;
+	Section.prototype.getItemById = _getItemById;
+	Section.prototype.update = _update;
+	Section.prototype['delete'] = _delete;
+
+	module.exports = Section;
+
+	},{"../services/api":40,"../services/util":42,"./item":23,"q":2}],35:[function(require,module,exports){
+	'use strict';
+
+	var UtilsService = require('../services/util');
+
+	function Tag(tag) {
+	  if (tag) {
+	    tag = UtilsService.extend(this, this.getFromCode(tag.code));
+	  }
+	}
+
+	Tag.prototype.getFromCode = function (code) {
+	  var matches =  this.getAll().filter(function (t) {
+	    return t.code === code
+	  })
+	  if (!matches.length) {
+	    console.error("Invalid tag code: " + code);
+	    return false;
+	  }
+	  return matches[0];
+	}
+
+	Tag.prototype.getAll = function () {
+	  return [
+	      { short:'C', fullName:'Celery', code:'cel'},
+	      { short:'G', fullName:'Gluten', code:'glt'},
+	      { short:'CR', fullName:'Crustaceans', code:'cru'},
+	      { short:'E', fullName:'Eggs', code:'egg'},
+	      { short:'F', fullName:'Fish', code:'fis'},
+	      { short:'L', fullName:'Lupin', code:'lup'},
+	      { short:'MI', fullName:'Milk', code:'mik'},
+	      { short:'MO', fullName:'Molluscs', code:'mol'},
+	      { short:'MU', fullName:'Mustard', code:'mus'},
+	      { short:'N', fullName:'Nuts', code:'cont'},
+	      { short:'P', fullName:'Peanuts', code:'pea'},
+	      { short:'S', fullName:'Shellfish', code:'she'},
+	      { short:'SO', fullName:'Soya', code:'soy'},
+	      { short:'SU', fullName:'Sulphur Dioxide', code:'sul'},
+	      { short:'GF', fullName:'Gluten Free', code:'glu'},
+	      { short:'V', fullName:'Vegetarian', code:'vet'},
+	      { short:'VG', fullName:'Vegan', code:'veg'},
+	      { short:'MILD', fullName:'Mild', code:'mil'},
+	      { short:'HOT', fullName:'Hot', code:'spi'},
+	      { short:'H', fullName:'Halal', code:'hal'},
+	      { short:'VERY HOT', fullName:'Very Hot', code:'hot'},
+	      { short:'MED', fullName:'Medium', code:'med'},
+	  ]
+	};
+
+	module.exports = Tag;
+
+	},{"../services/util":42}],36:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+
+	var currentUser = null;
+
+	function User(user) {
+		if (user) {
+			UtilsService.extend(this, user);
+
+			_populateAddresses.call(this);
+			_populatePaymentMethods.call(this);
+		}
+	}
+
+	function _populateAddresses() {
+		if (this.addresses) {
+			var Addresses = require('./addresses');
+
+			this.addresses = this.addresses.map(function(ad) {
+				return new Addresses(ad);
+			});
+		} else {
+			this.addresses = [];
+		}
+	}
+
+	function _populatePaymentMethods() {
+		if (this.paymentMethods) {
+			var PaymentMethod = require('./paymentMethod');
+
+			this.paymentMethods = this.paymentMethods.map(function(pm) {
+				return new PaymentMethod(pm);
+			});
+		} else {
+			this.paymentMethods = [];
+		}
+	}
+
+	User.prototype.signout = function () {
+
+		var deferred = Promise.defer();
+	  Api.delete('users/auth').then(function(){
+	      deferred.resolve();
+	  }, function(data) {
+	      deferred.reject(data);
+	  })
+		return deferred.promise;
+	};
+
+	User.prototype.auth = function (data) {
+
+		var deferred = Promise.defer();
+	  if (data && data.password){
+	      Api.post('users/auth', data).then(function(data){
+	          currentUser = new User(data);
+	          deferred.resolve(currentUser);
+	      }, function(data) {
+	          deferred.reject(data);
+	      })
+	  } else {
+	      Api.get('users/auth').then(function(data){
+	          currentUser = new User(data);
+	          deferred.resolve(currentUser);
+	      }, function(data) {
+	          deferred.reject(data);
+	      })
+	  }
+
+		return deferred.promise;
+	};
+
+	User.prototype.forgotPassword = function (data) {
+		if (!data.email) {
+			return Promise.reject({
+				message: 'Email is required'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		Api.post('users/auth/forgot', data).then(function(){
+			deferred.resolve();
+		}, function(data) {
+			deferred.reject(data);
+		})
+
+		return deferred.promise;
+	};
+
+	User.prototype.isAdmin = function () {
+		var deferred = Promise.defer();
+
+		Api.get('users/auth/roles/admin').then(function(){
+			deferred.resolve();
+		}, function(data) {
+			deferred.reject(data);
+		})
+
+		return deferred.promise;
+	};
+
+	User.prototype.save = function(user) {
+		if (User.isLogged()) {
+			return Promise.reject({
+				message: 'User already logged'
+			});
+		}
+
+		if (!user.firstName) {
+			return Promise.reject({
+				message: 'First name is required'
+			});
+		}
+
+		if (!user.lastName) {
+			return Promise.reject({
+				message: 'Last name is required'
+			});
+		}
+
+		if (!user.email) {
+			return Promise.reject({
+				message: 'Email is required'
+			});
+		}
+
+		if (!user.password) {
+			return Promise.reject({
+				message: 'Password is required'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		Api.post('users', user).then(function(data){
+			currentUser = new User(data);
+			deferred.resolve(currentUser);
+		}, function(data) {
+			deferred.reject(data);
+		})
+
+		return deferred.promise;
+	};
+
+	User.prototype.update = function (data) {
+		if (!User.isLogged()) {
+			return Promise.reject({
+				message: 'User not logged'
+			});
+		}
+
+		if (!data.firstName) {
+			return Promise.reject({
+				message: 'First name is required'
+			});
+		}
+
+		if (!data.lastName) {
+			return Promise.reject({
+				message: 'Last name is required'
+			});
+		}
+
+		if (!data.email) {
+			return Promise.reject({
+				message: 'Email is required'
+			});
+		}
+
+		var current = User.getCurrent();
+		var deferred = Promise.defer();
+
+		Api.patch('users/' + current.id, {
+			firstName: data.firstName,
+			lastName: data.lastName,
+			email: data.email,
+			username: data.username,
+			phone: data.phone
+		}).then(function(data){
+			data.token = current.token;
+			currentUser = new User(data);
+			deferred.resolve(currentUser);
+		}, function(data) {
+			deferred.reject(data);
+		})
+
+		return deferred.promise;
+	};
+
+	function getCurrent () {
+		return currentUser;
+	};
+
+	function isLogged () {
+		return currentUser !== null;
+	};
+
+
+	User.getCurrent = getCurrent;
+	User.prototype.getCurrent = getCurrent;
+
+	User.isLogged = isLogged;
+	User.prototype.isLogged = isLogged;
+	User.prototype.setUser = function(user) {
+		currentUser = user;
+	};
+
+	User.prototype.removePaymentMethod = function(paymentMethod) {
+		var index = this.paymentMethods.map(function(pm) { return pm.id; }).indexOf(paymentMethod.id);
+
+		this.paymentMethods.splice(index, 1);
+	};
+
+	User.prototype.updateAddress = function(address) {
+		var index = this.addresses.map(function(ad) { return ad.id; }).indexOf(address.id);
+		this.addresses[index] = address;
+	};
+
+	User.prototype.removeAddress = function(address) {
+		var index = this.addresses.map(function(ad) { return ad.id; }).indexOf(address.id);
+
+		this.addresses.splice(index, 1);
+	};
+
+	module.exports = User;
+	},{"../services/api":40,"../services/util":42,"./addresses":15,"./paymentMethod":31,"q":2}],37:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var UtilsService = require('../services/util');
+	var Booking = require('./booking');
+	var BookingSettings = require('./bookingSettings');
+
+	var currentVenue = null;
+
+	function Venue(venue) {
+		if (venue) {
+			UtilsService.extend(this, venue);
+		}
+	}
+	Venue.prototype.get = function(identifiers) {
+
+		if (!identifiers) {
+			return Promise.reject({
+				message: 'Venue identifier is required'
+			});
+		}
+
+		var deferred = Promise.defer();
+
+		this.fetch(identifiers).then(function(venues) {
+			if (venues.length === 0){
+				deferred.reject();
+			}
+			currentVenue = venues[0];
+			deferred.resolve(venues[0]);
+		}, function(err) {
+			deferred.reject(err);
+		});
+
+		return deferred.promise;
+	};
+
+	Venue.prototype.fetch = function(venueObject) {
+		var deferred = Promise.defer();
+		var url = 'venues';
+		var expand = 'settings,hours';
+		if (venueObject.permalink){
+			delete venueObject.venueId;
+			url+='/permalink'
+		}
+
+		if (venueObject.expand) {
+			expand += ',' + venueObject.expand;
+			delete venueObject.expand;
+		}
+
+		url+= '?expand=' + expand + '&' + UtilsService.serialize(venueObject);
+		Api.get(url).then(function(data){
+			if (data.length === undefined){
+				data = [data];
+			}
+			var venues = data.map(function(v) {
+				return new Venue(v);
+			});
+			deferred.resolve(venues);
+		}, function(data) {
+			deferred.reject(data);
+		})
+
+		return deferred.promise;
+	};
+
+	Venue.prototype.getMessages = function(id) {
+		var currentId = null;
+		if (this.id) {
+			currentId = this.id;
+		} else if (!id) {
+			return Promise.reject({
+				message: 'Id is required'
+			});
+		} else {
+			currentId = id;
+		}
+
+		var deferred = Promise.defer();
+
+		Api.get('venues/' + currentId + '/messages').then(function(data){
+			deferred.resolve(data);
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Venue.prototype.getPromotions = function(id) {
+		var currentId = null;
+		if (this.id) {
+			currentId = this.id;
+		} else if (!id) {
+			return Promise.reject({
+				message: 'Id is required'
+			});
+		} else {
+			currentId = id;
+		}
+
+		var deferred = Promise.defer();
+
+		Api.get('venues/' + currentId + '/promotions').then(function(data){
+			deferred.resolve(data);
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Venue.prototype.getHours = function() {
+		currentVenue = this;
+		return Preoday.Hour.getAll();
+	};
+
+	Venue.prototype.getPaymentProviders = function() {
+		currentVenue = this;
+		return Preoday.PaymentProvider.getPaymentProvidersByVenue();
+	};
+
+	Venue.getCurrent = function() {
+		return currentVenue;
+	};
+
+	Venue.prototype.getBookings = function(params) {
+		if (!params) {
+			params = {};
+		}
+		params.venueId = this.id;
+		return Booking.prototype.getBookings(params);
+	};
+
+	Venue.prototype.getBookingSettings = function(params) {
+		if (!params) {
+			params = {};
+		}
+		return BookingSettings.prototype.getSettings(params);
+	};
+
+	Venue.prototype.saveBookingSettings = function(params) {
+		if (!params) {
+			params = {};
+		}
+		return BookingSettings.prototype.saveSettings(params);
+	};
+
+	Venue.prototype.isEvent = function() {
+		return this.eventFlag;
+	};
+
+	Venue.prototype.isDelivery = function() {
+	  return this.deliverFlag;
+	};
+
+	Venue.prototype.isPickup = function() {
+		return this.pickupFlag;
+	};
+
+	Venue.prototype.isOffline = function() {
+	  return this.liveFlag === 0;
+	};
+
+	Venue.prototype.isDemo = function() {
+	  return this.demoFlag === 1;
+	};
+
+	Venue.prototype.isCashPaymentEnable = function() {
+		return this.paymentProviders && this.paymentProviders.filter(function  (p) {
+			return p.type === 'CASH';
+		}).length;
+	};
+
+	Venue.prototype.isCardPaymentEnable = function() {
+		return this.paymentProviders && this.paymentProviders.filter(function  (p) {
+			return p.type === 'Stripe';
+		}).length;
+	};
+
+	Venue.prototype.isOwner = function(venueId) {
+	    var deferred = Promise.defer();
+
+	    Api.get('venues/' + venueId + '/owner').then(function(data){
+	        deferred.resolve(data);
+	    }, function(err) {
+	        deferred.reject(err);
+	    });
+
+	    return deferred.promise;
+	};
+
+	Venue.prototype.setAsCurrent = function() {
+	  currentVenue = this;
+	};
+
+	module.exports = Venue;
+
+	},{"../services/api":40,"../services/util":42,"./booking":19,"./bookingSettings":20,"q":2}],38:[function(require,module,exports){
+	'use strict';
+
+	var UtilsService = require('../services/util');
+	var Promise = require('q');
+	var Api = require('../services/api');
+	var Venue = require('./venue');
+	var User = require('./user');
+	var VoucherType = require('../constants/voucherType');
+
+	function Voucher(v) {
+		if (v) {
+			UtilsService.extend(this, v);
+
+			if (!this.issuedBy) {
+				this.issuedBy = 'Online';
+			}
+			if (v.venueId === undefined){
+				var _currentVenue = Venue.getCurrent();
+				this.venueId = _currentVenue && _currentVenue.id;
+			}
+		}
+	}
+
+	Voucher.prototype.get = function(id) {
+		if(!id){
+			throw "Voucher id is required";
+		}
+		var deferred = Promise.defer();
+		var url = 'vouchers';
+		if(id){
+			url+="/"+id;
+		}
+
+		Api.get(url).then(function(data){
+			var v = new Voucher(data)
+			deferred.resolve(data);
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Voucher.prototype.fetch = function( data ) {
+		if( !data || !data.venueId ){
+			throw "Venue id is required";
+		}
+		var deferred = Promise.defer();
+		var url = 'vouchers';
+		url += "?" + UtilsService.serialize(data);
+
+		Api.get(url).then(function(data){
+			var vouchers = data.map(function(v) {
+				return new Voucher(v);
+			});
+			deferred.resolve(vouchers);
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Voucher.prototype.create = function(id) {
+		if(!id){
+			throw "Voucher id is required";
+		}
+		var deferred = Promise.defer();
+		var url = 'vouchers';
+		if(id){
+			url+="/"+id;
+		}
+		Api.get(url).then(function(data){
+			deferred.resolve(new Voucher(data));
+		}, function(data) {
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	Voucher.prototype.save = function(voucher) {
+		console.log("on save",this,voucher);
+		if (!voucher){
+			throw "Voucher is required";
+		}
+		var url = 'vouchers';
+
+		var deferred = Promise.defer();
+
+		Api.post(url, voucher).then(function(data){
+			var v = new Voucher(data);
+			deferred.resolve(v);
+		}, function(data) {
+			deferred.reject(data);
+		});
+
+		return deferred.promise;
+	};
+
+
+	Voucher.prototype.update= function(voucher) {
+		console.log("before updating",voucher);
+		if (!voucher){
+			throw "Voucher is required";
+		}
+		var url = 'vouchers';
+		if(voucher){
+			url+="/"+voucher.id;
+		}
+		var deferred = Promise.defer();
+
+		console.log("updating",voucher);
+		Api.put(url, voucher).then(function(data){
+			var v = new Voucher(data);
+			deferred.resolve(v);
+		}, function(data) {
+			deferred.reject(data);
+		});
+
+		return deferred.promise;
+	};
+
+	Voucher.prototype.resendMail= function(voucher) {
+		if (!voucher){
+			throw "Voucher is required";
+		}
+		var url = 'vouchers';
+		if(voucher){
+			url+="/"+voucher.id+"/sendemail";
+		}
+		var deferred = Promise.defer();
+
+		Api.post(url).then(function(){
+			deferred.resolve();
+		}, function(data) {
+			deferred.reject(data);
+		});
+
+		return deferred.promise;
+	};
+
+	Voucher.prototype.populate = function(address, postcode) {
+		if (this.type === VoucherType.EMAIL) {
+			if (!this.email) {
+				this.email = User.getCurrent().email;
+			}
+		} else if (this.type === VoucherType.POST) {
+			if (!this.address) {
+				this.address = address;
+				this.postcode = postcode;
+			}
+		}
+	};
+
+	module.exports = Voucher;
+	},{"../constants/voucherType":10,"../services/api":40,"../services/util":42,"./user":36,"./venue":37,"q":2}],39:[function(require,module,exports){
+	'use strict';
+
+	window.Preoday = {
+		Menu: new (require('./modules/menu'))(),
+		Section: require('./modules/section'),
+		Venue: new (require('./modules/venue'))(),
+		Event: new (require('./modules/event'))(),
+		PickupSlot: new (require('./modules/pickupSlot'))(),
+		Outlet: new (require('./modules/outlet'))(),
+		Hour: new (require('./modules/hour'))(),
+		User: new (require('./modules/user'))(),
+		PaymentMethod: new (require('./modules/paymentMethod'))(),
+		PaymentProvider: new (require('./modules/paymentProvider'))(),
+		Addresses: new (require('./modules/addresses'))(),
+		Order: new (require('./modules/order'))(),
+		Api: require('./services/api'),
+		Basket: require('./modules/basket'),
+		BasketItem: require('./modules/basketItem'),
+		Booking: new (require('./modules/booking'))(),
+		Voucher: new (require('./modules/voucher'))(),
+		Account: new (require('./modules/account'))(),
+		Tag: new (require('./modules/tag'))(),
+		constants: {
+			VoucherType: require('./constants/voucherType'),
+			VoucherStatus: require('./constants/voucherStatus'),
+			PaymentType: require('./constants/paymentMethods'),
+			Feature: require('./constants/feature'),
+			FeatureStatus: require('./constants/featureStatus'),
+	    MenuItemImageType: require('./constants/menuItemImageType'),
+			OrderType: require('./constants/orderType'),
+		}
+	};
+
+	var Settings = require('./services/settings');
+	Settings.loadConfig();
+
+	},{"./constants/feature":3,"./constants/featureStatus":4,"./constants/menuItemImageType":5,"./constants/orderType":6,"./constants/paymentMethods":7,"./constants/voucherStatus":9,"./constants/voucherType":10,"./modules/account":13,"./modules/addresses":15,"./modules/basket":16,"./modules/basketItem":17,"./modules/booking":19,"./modules/event":21,"./modules/hour":22,"./modules/menu":25,"./modules/order":28,"./modules/outlet":30,"./modules/paymentMethod":31,"./modules/paymentProvider":32,"./modules/pickupSlot":33,"./modules/section":34,"./modules/tag":35,"./modules/user":36,"./modules/venue":37,"./modules/voucher":38,"./services/api":40,"./services/settings":41}],40:[function(require,module,exports){
+	'use strict';
+
+
+	var Promise = require('q');
+	var UtilsService = require('./util');
+	var url_base = '/api/';
+	var atomic = new (require('../lib/atomic'))(window);
+
+
+	function _serializeObject(data) {
+	 	var str = [];
+	  	for(var p in data) {
+	    	if (data.hasOwnProperty(p)) {
+	    	  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(data[p]));
+	    	}
+	    }
+
+		return Promise.resolve(str.join("&"));
+	}
+
+	function get (url) {
+		setDefaultheaders();
+
+		var deferred = Promise.defer();
+		atomic.get(url_base + url).success(function(data) {
+			deferred.resolve(data);
+		}).error(function(data){
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	function post (url, data) {
+		setDefaultheaders();
+
+		var deferred = Promise.defer();
+
+		atomic.post(url_base + url, data).success(function(data) {
+			deferred.resolve(data);
+		}).error(function(data){
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	function put (url, data) {
+		setDefaultheaders();
+
+		var deferred = Promise.defer();
+
+		atomic.put(url_base + url, data).success(function(data) {
+			deferred.resolve(data);
+		}).error(function(data){
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	function patch (url, data) {
+		setDefaultheaders();
+
+		var deferred = Promise.defer();
+
+		atomic.patch(url_base + url, data).success(function(data) {
+			deferred.resolve(data);
+		}).error(function(data){
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	function deleteMethod (url) {
+		setDefaultheaders();
+
+		var deferred = Promise.defer();
+
+		atomic['delete'](url_base + url).success(function(data) {
+			deferred.resolve(data);
+		}).error(function(data){
+			deferred.reject(data)
+		})
+
+		return deferred.promise;
+	};
+
+	function headers(newHeaders){
+		return atomic.headers(newHeaders);
+	}
+
+	function setDefaultheaders() {
+		var Venue = require('../modules/venue');
+		var currentVenue = Venue.getCurrent();
+		if ( currentVenue ) {
+		  return atomic.headers('preo-venueid', currentVenue.id);
+		}
+	}
+
+	module.exports = {
+		get: get,
+		post: post,
+		put: put,
+		patch: patch,
+		headers: headers,
+		'delete': deleteMethod,
+		setUrlBase: function (url) {
+			url_base = url
+		}
+	};
+	},{"../lib/atomic":11,"../modules/venue":37,"./util":42,"q":2}],41:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+	var Api = require('./api');
+	var UtilsService = require('./util');
+
+	var currentSettings = null;
+
+	function loadConfig () {
+		var deferred = Promise.defer();
+
+		Api.get('config/app').then(function(data){
+			currentSettings = data;
+			deferred.resolve();
+		}, function(data) {
+			deferred.reject(data)
+		});
+
+		return deferred.promise;
+	};
+
+	module.exports = {
+		loadConfig: loadConfig,
+		getSettings: function() {
+			return currentSettings;
+		}
+	};
+	},{"./api":40,"./util":42,"q":2}],42:[function(require,module,exports){
+	'use strict';
+
+	var Promise = require('q');
+
+	function pad(val) {
+		return val < 10 ? "0" + val : val;
+	};
+
+	module.exports = {
+		extend: function (source, destination) {
+		   for (var i in destination) {
+		      if (destination.hasOwnProperty(i)) {
+		         source[i] = destination[i];
+		      }
+		   }
+
+		   return source;
+		},
+		pad: pad,
+		TimeRange: function(start, end) {
+			this.start = start;
+			this.end = end.replace(/^00:00/, '23:59');
+
+			var splitStart = this.start.split(':');
+			var splitEnd = this.end.split(':');
+
+			this.getValues = function(incr, lead, start) {
+				console.log('start here', start);
+				var values = [];
+
+	            var dateOne = new Date();
+	            dateOne.setHours(parseInt(splitStart[0], 10))
+	            dateOne.setMinutes(parseInt(splitStart[1], 10) + lead)
+
+	            var dateTwo = new Date();
+	            dateTwo.setHours(parseInt(splitEnd[0], 10))
+	            dateTwo.setMinutes(parseInt(splitEnd[1], 10))
+	            dateTwo.setDate( dateOne.getDate() )
+
+	            var dateTime = dateTwo.getTime();
+
+	            if (dateOne.getTime() < dateTime) {
+	                while ( dateOne.getTime() <= dateTime ) {
+	                	if (!start || dateOne.getTime() >= start.getTime()) {
+	                		values.push( pad(dateOne.getHours()) + ":" + pad(dateOne.getMinutes()) );
+	                	}
+	                    dateOne.setMinutes( dateOne.getMinutes() + incr );
+	                };
+	            }
+
+				return values;
+			};
+		},
+		serialize: function(obj) {
+		  var str = [];
+		  for(var p in obj)
+		    if (obj.hasOwnProperty(p)) {
+		      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+		    }
+		  return str.join("&");
+		},
+		clone: function( obj ) {
+			return JSON.parse( JSON.stringify( obj ) );
+		},
+		addMinutes: function(date, minutes) {
+	    	return new Date(date.getTime() + minutes*60000);
+		},
+		getLocalDate:function(d){
+	        function getLocalTimezone(d){
+	        	var date = d ? new Date(d) : new Date();
+	            var offset = date.getTimezoneOffset(), o = Math.abs(offset);
+	            return (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2)
+	        };
+	        if (typeof d ==="string"){
+	        	if (d.match(/(Z|([\+-]\d\d:?\d\d))$/)){
+	        		return new Date(d);
+	        	}
+	        	var timezone = getLocalTimezone(d);
+	            return new Date(d+timezone)
+	        } else{
+	            throw "Date param must be a valid ISO string";
+	        }
+
+	    },
+		compareObjects: function(o1, o2){
+			if (!o1 && !o2) {
+				return true;
+			}
+
+			if ((!o1 && o2) || (!o2 && o1)) {
+				return false;
+			}
+
+		    for(var p in o1){
+		        if(o1.hasOwnProperty(p)){
+		            if(o1[p] !== o2[p]){
+		                return false;
+		            }
+		        }
+		    }
+		    for(var p in o2){
+		        if(o2.hasOwnProperty(p)){
+		            if(o1[p] !== o2[p]){
+		                return false;
+		            }
+		        }
+		    }
+		    return true;
+		},
+		hasObjectValue: function ( data, value ) {
+
+		    for(var p in data){
+		        if(data.hasOwnProperty(p)){
+		           if (data[p] === value) {
+		           		return true;
+		           }
+		        }
+		    }
+
+		    return false;
+		}
+	};
+	},{"q":2}]},{},[39])(39)
+	});
+
 
 /***/ },
-/* 186 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -76090,7 +85268,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                module && module.exports) {
 	            try {
 	                oldLocale = globalLocale._abbr;
-	                __webpack_require__(188)("./" + name);
+	                __webpack_require__(273)("./" + name);
 	                // because defineLocale currently also sets the global locale, we
 	                // want to undo that for lazy loaded locales
 	                locale_locales__getSetGlobalLocale(oldLocale);
@@ -79732,10 +88910,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _moment;
 
 	}));
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(187)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(272)(module)))
 
 /***/ },
-/* 187 */
+/* 272 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -79751,210 +88929,210 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 188 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 189,
-		"./af.js": 189,
-		"./ar": 190,
-		"./ar-ma": 191,
-		"./ar-ma.js": 191,
-		"./ar-sa": 192,
-		"./ar-sa.js": 192,
-		"./ar-tn": 193,
-		"./ar-tn.js": 193,
-		"./ar.js": 190,
-		"./az": 194,
-		"./az.js": 194,
-		"./be": 195,
-		"./be.js": 195,
-		"./bg": 196,
-		"./bg.js": 196,
-		"./bn": 197,
-		"./bn.js": 197,
-		"./bo": 198,
-		"./bo.js": 198,
-		"./br": 199,
-		"./br.js": 199,
-		"./bs": 200,
-		"./bs.js": 200,
-		"./ca": 201,
-		"./ca.js": 201,
-		"./cs": 202,
-		"./cs.js": 202,
-		"./cv": 203,
-		"./cv.js": 203,
-		"./cy": 204,
-		"./cy.js": 204,
-		"./da": 205,
-		"./da.js": 205,
-		"./de": 206,
-		"./de-at": 207,
-		"./de-at.js": 207,
-		"./de.js": 206,
-		"./dv": 208,
-		"./dv.js": 208,
-		"./el": 209,
-		"./el.js": 209,
-		"./en-au": 210,
-		"./en-au.js": 210,
-		"./en-ca": 211,
-		"./en-ca.js": 211,
-		"./en-gb": 212,
-		"./en-gb.js": 212,
-		"./en-ie": 213,
-		"./en-ie.js": 213,
-		"./en-nz": 214,
-		"./en-nz.js": 214,
-		"./eo": 215,
-		"./eo.js": 215,
-		"./es": 216,
-		"./es.js": 216,
-		"./et": 217,
-		"./et.js": 217,
-		"./eu": 218,
-		"./eu.js": 218,
-		"./fa": 219,
-		"./fa.js": 219,
-		"./fi": 220,
-		"./fi.js": 220,
-		"./fo": 221,
-		"./fo.js": 221,
-		"./fr": 222,
-		"./fr-ca": 223,
-		"./fr-ca.js": 223,
-		"./fr-ch": 224,
-		"./fr-ch.js": 224,
-		"./fr.js": 222,
-		"./fy": 225,
-		"./fy.js": 225,
-		"./gd": 226,
-		"./gd.js": 226,
-		"./gl": 227,
-		"./gl.js": 227,
-		"./he": 228,
-		"./he.js": 228,
-		"./hi": 229,
-		"./hi.js": 229,
-		"./hr": 230,
-		"./hr.js": 230,
-		"./hu": 231,
-		"./hu.js": 231,
-		"./hy-am": 232,
-		"./hy-am.js": 232,
-		"./id": 233,
-		"./id.js": 233,
-		"./is": 234,
-		"./is.js": 234,
-		"./it": 235,
-		"./it.js": 235,
-		"./ja": 236,
-		"./ja.js": 236,
-		"./jv": 237,
-		"./jv.js": 237,
-		"./ka": 238,
-		"./ka.js": 238,
-		"./kk": 239,
-		"./kk.js": 239,
-		"./km": 240,
-		"./km.js": 240,
-		"./ko": 241,
-		"./ko.js": 241,
-		"./ky": 242,
-		"./ky.js": 242,
-		"./lb": 243,
-		"./lb.js": 243,
-		"./lo": 244,
-		"./lo.js": 244,
-		"./lt": 245,
-		"./lt.js": 245,
-		"./lv": 246,
-		"./lv.js": 246,
-		"./me": 247,
-		"./me.js": 247,
-		"./mk": 248,
-		"./mk.js": 248,
-		"./ml": 249,
-		"./ml.js": 249,
-		"./mr": 250,
-		"./mr.js": 250,
-		"./ms": 251,
-		"./ms-my": 252,
-		"./ms-my.js": 252,
-		"./ms.js": 251,
-		"./my": 253,
-		"./my.js": 253,
-		"./nb": 254,
-		"./nb.js": 254,
-		"./ne": 255,
-		"./ne.js": 255,
-		"./nl": 256,
-		"./nl.js": 256,
-		"./nn": 257,
-		"./nn.js": 257,
-		"./pa-in": 258,
-		"./pa-in.js": 258,
-		"./pl": 259,
-		"./pl.js": 259,
-		"./pt": 260,
-		"./pt-br": 261,
-		"./pt-br.js": 261,
-		"./pt.js": 260,
-		"./ro": 262,
-		"./ro.js": 262,
-		"./ru": 263,
-		"./ru.js": 263,
-		"./se": 264,
-		"./se.js": 264,
-		"./si": 265,
-		"./si.js": 265,
-		"./sk": 266,
-		"./sk.js": 266,
-		"./sl": 267,
-		"./sl.js": 267,
-		"./sq": 268,
-		"./sq.js": 268,
-		"./sr": 269,
-		"./sr-cyrl": 270,
-		"./sr-cyrl.js": 270,
-		"./sr.js": 269,
-		"./ss": 271,
-		"./ss.js": 271,
-		"./sv": 272,
-		"./sv.js": 272,
-		"./sw": 273,
-		"./sw.js": 273,
-		"./ta": 274,
-		"./ta.js": 274,
-		"./te": 275,
-		"./te.js": 275,
-		"./th": 276,
-		"./th.js": 276,
-		"./tl-ph": 277,
-		"./tl-ph.js": 277,
-		"./tlh": 278,
-		"./tlh.js": 278,
-		"./tr": 279,
-		"./tr.js": 279,
-		"./tzl": 280,
-		"./tzl.js": 280,
-		"./tzm": 281,
-		"./tzm-latn": 282,
-		"./tzm-latn.js": 282,
-		"./tzm.js": 281,
-		"./uk": 283,
-		"./uk.js": 283,
-		"./uz": 284,
-		"./uz.js": 284,
-		"./vi": 285,
-		"./vi.js": 285,
-		"./x-pseudo": 286,
-		"./x-pseudo.js": 286,
-		"./zh-cn": 287,
-		"./zh-cn.js": 287,
-		"./zh-tw": 288,
-		"./zh-tw.js": 288
+		"./af": 274,
+		"./af.js": 274,
+		"./ar": 275,
+		"./ar-ma": 276,
+		"./ar-ma.js": 276,
+		"./ar-sa": 277,
+		"./ar-sa.js": 277,
+		"./ar-tn": 278,
+		"./ar-tn.js": 278,
+		"./ar.js": 275,
+		"./az": 279,
+		"./az.js": 279,
+		"./be": 280,
+		"./be.js": 280,
+		"./bg": 281,
+		"./bg.js": 281,
+		"./bn": 282,
+		"./bn.js": 282,
+		"./bo": 283,
+		"./bo.js": 283,
+		"./br": 284,
+		"./br.js": 284,
+		"./bs": 285,
+		"./bs.js": 285,
+		"./ca": 286,
+		"./ca.js": 286,
+		"./cs": 287,
+		"./cs.js": 287,
+		"./cv": 288,
+		"./cv.js": 288,
+		"./cy": 289,
+		"./cy.js": 289,
+		"./da": 290,
+		"./da.js": 290,
+		"./de": 291,
+		"./de-at": 292,
+		"./de-at.js": 292,
+		"./de.js": 291,
+		"./dv": 293,
+		"./dv.js": 293,
+		"./el": 294,
+		"./el.js": 294,
+		"./en-au": 295,
+		"./en-au.js": 295,
+		"./en-ca": 296,
+		"./en-ca.js": 296,
+		"./en-gb": 297,
+		"./en-gb.js": 297,
+		"./en-ie": 298,
+		"./en-ie.js": 298,
+		"./en-nz": 299,
+		"./en-nz.js": 299,
+		"./eo": 300,
+		"./eo.js": 300,
+		"./es": 301,
+		"./es.js": 301,
+		"./et": 302,
+		"./et.js": 302,
+		"./eu": 303,
+		"./eu.js": 303,
+		"./fa": 304,
+		"./fa.js": 304,
+		"./fi": 305,
+		"./fi.js": 305,
+		"./fo": 306,
+		"./fo.js": 306,
+		"./fr": 307,
+		"./fr-ca": 308,
+		"./fr-ca.js": 308,
+		"./fr-ch": 309,
+		"./fr-ch.js": 309,
+		"./fr.js": 307,
+		"./fy": 310,
+		"./fy.js": 310,
+		"./gd": 311,
+		"./gd.js": 311,
+		"./gl": 312,
+		"./gl.js": 312,
+		"./he": 313,
+		"./he.js": 313,
+		"./hi": 314,
+		"./hi.js": 314,
+		"./hr": 315,
+		"./hr.js": 315,
+		"./hu": 316,
+		"./hu.js": 316,
+		"./hy-am": 317,
+		"./hy-am.js": 317,
+		"./id": 318,
+		"./id.js": 318,
+		"./is": 319,
+		"./is.js": 319,
+		"./it": 320,
+		"./it.js": 320,
+		"./ja": 321,
+		"./ja.js": 321,
+		"./jv": 322,
+		"./jv.js": 322,
+		"./ka": 323,
+		"./ka.js": 323,
+		"./kk": 324,
+		"./kk.js": 324,
+		"./km": 325,
+		"./km.js": 325,
+		"./ko": 326,
+		"./ko.js": 326,
+		"./ky": 327,
+		"./ky.js": 327,
+		"./lb": 328,
+		"./lb.js": 328,
+		"./lo": 329,
+		"./lo.js": 329,
+		"./lt": 330,
+		"./lt.js": 330,
+		"./lv": 331,
+		"./lv.js": 331,
+		"./me": 332,
+		"./me.js": 332,
+		"./mk": 333,
+		"./mk.js": 333,
+		"./ml": 334,
+		"./ml.js": 334,
+		"./mr": 335,
+		"./mr.js": 335,
+		"./ms": 336,
+		"./ms-my": 337,
+		"./ms-my.js": 337,
+		"./ms.js": 336,
+		"./my": 338,
+		"./my.js": 338,
+		"./nb": 339,
+		"./nb.js": 339,
+		"./ne": 340,
+		"./ne.js": 340,
+		"./nl": 341,
+		"./nl.js": 341,
+		"./nn": 342,
+		"./nn.js": 342,
+		"./pa-in": 343,
+		"./pa-in.js": 343,
+		"./pl": 344,
+		"./pl.js": 344,
+		"./pt": 345,
+		"./pt-br": 346,
+		"./pt-br.js": 346,
+		"./pt.js": 345,
+		"./ro": 347,
+		"./ro.js": 347,
+		"./ru": 348,
+		"./ru.js": 348,
+		"./se": 349,
+		"./se.js": 349,
+		"./si": 350,
+		"./si.js": 350,
+		"./sk": 351,
+		"./sk.js": 351,
+		"./sl": 352,
+		"./sl.js": 352,
+		"./sq": 353,
+		"./sq.js": 353,
+		"./sr": 354,
+		"./sr-cyrl": 355,
+		"./sr-cyrl.js": 355,
+		"./sr.js": 354,
+		"./ss": 356,
+		"./ss.js": 356,
+		"./sv": 357,
+		"./sv.js": 357,
+		"./sw": 358,
+		"./sw.js": 358,
+		"./ta": 359,
+		"./ta.js": 359,
+		"./te": 360,
+		"./te.js": 360,
+		"./th": 361,
+		"./th.js": 361,
+		"./tl-ph": 362,
+		"./tl-ph.js": 362,
+		"./tlh": 363,
+		"./tlh.js": 363,
+		"./tr": 364,
+		"./tr.js": 364,
+		"./tzl": 365,
+		"./tzl.js": 365,
+		"./tzm": 366,
+		"./tzm-latn": 367,
+		"./tzm-latn.js": 367,
+		"./tzm.js": 366,
+		"./uk": 368,
+		"./uk.js": 368,
+		"./uz": 369,
+		"./uz.js": 369,
+		"./vi": 370,
+		"./vi.js": 370,
+		"./x-pseudo": 371,
+		"./x-pseudo.js": 371,
+		"./zh-cn": 372,
+		"./zh-cn.js": 372,
+		"./zh-tw": 373,
+		"./zh-tw.js": 373
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -79967,11 +89145,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 188;
+	webpackContext.id = 273;
 
 
 /***/ },
-/* 189 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -79979,7 +89157,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Werner Mollentze : https://github.com/wernerm
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -80048,7 +89226,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 190 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -80058,7 +89236,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Native plural forms: forabi https://github.com/forabi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -80189,7 +89367,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 191 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -80198,7 +89376,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -80253,7 +89431,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 192 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -80261,7 +89439,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -80361,14 +89539,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 193 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale  : Tunisian Arabic (ar-tn)
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -80423,7 +89601,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 194 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -80431,7 +89609,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : topchiyev : https://github.com/topchiyev
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -80532,7 +89710,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 195 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -80542,7 +89720,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -80670,7 +89848,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 196 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -80678,7 +89856,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Krasen Borisov : https://github.com/kraz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -80764,7 +89942,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 197 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -80772,7 +89950,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -80887,7 +90065,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 198 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -80895,7 +90073,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -81010,7 +90188,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 199 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -81018,7 +90196,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -81122,7 +90300,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 200 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -81131,7 +90309,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on (hr) translation by Bojan Marković
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -81269,7 +90447,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 201 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -81277,7 +90455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -81354,7 +90532,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 202 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -81362,7 +90540,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -81529,7 +90707,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 203 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -81537,7 +90715,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -81596,7 +90774,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 204 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -81604,7 +90782,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robert Allen
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -81680,7 +90858,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 205 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -81688,7 +90866,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -81744,7 +90922,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 206 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -81754,7 +90932,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -81826,7 +91004,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 207 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -81837,7 +91015,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -81909,7 +91087,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 208 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -81917,7 +91095,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jawish Hameed : https://github.com/jawish
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -82012,7 +91190,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 209 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -82020,7 +91198,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Aggelos Karalias : https://github.com/mehiel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -82114,14 +91292,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 210 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : australian english (en-au)
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -82184,7 +91362,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 211 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -82192,7 +91370,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -82251,7 +91429,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 212 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -82259,7 +91437,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -82322,7 +91500,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 213 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -82330,7 +91508,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Cartlidge : https://github.com/chriscartlidge
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -82393,14 +91571,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 214 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : New Zealand english (en-nz)
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -82463,7 +91641,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 215 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -82473,7 +91651,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -82540,7 +91718,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 216 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -82548,7 +91726,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Julio Napurí : https://github.com/julionc
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -82625,7 +91803,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 217 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -82634,7 +91812,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -82709,7 +91887,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 218 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -82717,7 +91895,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -82779,7 +91957,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 219 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -82787,7 +91965,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -82889,7 +92067,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 220 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -82897,7 +92075,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -83000,7 +92178,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 221 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -83008,7 +92186,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -83064,7 +92242,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 222 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -83072,7 +92250,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : John Fischer : https://github.com/jfroffice
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -83132,7 +92310,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 223 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -83140,7 +92318,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -83196,7 +92374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 224 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -83204,7 +92382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Gaspard Bucher : https://github.com/gaspard
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -83264,7 +92442,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 225 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -83272,7 +92450,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -83341,7 +92519,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 226 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -83349,7 +92527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jon Ashdown : https://github.com/jonashdown
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -83421,7 +92599,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 227 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -83429,7 +92607,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -83502,7 +92680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 228 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -83512,7 +92690,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tal Ater : https://github.com/TalAter
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -83605,7 +92783,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 229 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -83613,7 +92791,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -83733,7 +92911,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 230 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -83741,7 +92919,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Bojan Marković : https://github.com/bmarkovic
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -83882,7 +93060,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 231 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -83890,7 +93068,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Adam Brunner : https://github.com/adambrunner
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -83995,7 +93173,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 232 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -84003,7 +93181,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Armendarabyan : https://github.com/armendarabyan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -84094,7 +93272,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 233 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -84103,7 +93281,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -84181,7 +93359,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 234 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -84189,7 +93367,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -84312,7 +93490,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 235 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -84321,7 +93499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -84386,7 +93564,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 236 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -84394,7 +93572,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : LI Long : https://github.com/baryon
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -84466,7 +93644,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 237 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -84475,7 +93653,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -84553,7 +93731,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 238 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -84561,7 +93739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -84646,7 +93824,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 239 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -84654,7 +93832,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! authors : Nurlan Rakhimzhanov : https://github.com/nurlan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -84737,7 +93915,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 240 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -84745,7 +93923,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -84799,7 +93977,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 241 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -84811,7 +93989,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! - Jeeeyul Lee <jeeeyul@gmail.com>
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -84871,7 +94049,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 242 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -84879,7 +94057,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chyngyz Arystan uulu : https://github.com/chyngyz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -84963,7 +94141,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 243 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -84971,7 +94149,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : mweimerskirch : https://github.com/mweimerskirch, David Raison : https://github.com/kwisatz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -85103,7 +94281,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 244 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -85111,7 +94289,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ryan Hart : https://github.com/ryanhart2
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -85177,7 +94355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 245 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -85185,7 +94363,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -85297,7 +94475,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 246 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -85306,7 +94484,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jānis Elmeris : https://github.com/JanisE
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -85398,7 +94576,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 247 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -85406,7 +94584,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -85513,7 +94691,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 248 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -85521,7 +94699,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Borislav Mickov : https://github.com/B0k0
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -85607,7 +94785,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 249 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -85615,7 +94793,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Floyd Pink : https://github.com/floydpink
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -85692,7 +94870,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 250 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -85701,7 +94879,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Vivek Athalye : https://github.com/vnathalye
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -85855,7 +95033,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 251 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -85863,7 +95041,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -85941,7 +95119,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 252 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -85949,7 +95127,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -86027,7 +95205,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 253 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -86035,7 +95213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Squar team, mysquar.com
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -86124,7 +95302,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 254 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -86133,7 +95311,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -86191,7 +95369,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 255 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -86199,7 +95377,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : suvash : https://github.com/suvash
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -86318,7 +95496,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 256 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -86326,7 +95504,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Joris Röling : https://github.com/jjupiter
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -86395,7 +95573,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 257 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -86403,7 +95581,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : https://github.com/mechuwind
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -86459,7 +95637,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 258 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -86467,7 +95645,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Harpreet Singh : https://github.com/harpreetkhalsagtbit
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -86587,7 +95765,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 259 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -86595,7 +95773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Rafal Hirsz : https://github.com/evoL
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -86696,7 +95874,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 260 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -86704,7 +95882,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jefferson : https://github.com/jalex79
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -86765,7 +95943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 261 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -86773,7 +95951,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -86830,7 +96008,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 262 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -86839,7 +96017,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Valentin Agachi : https://github.com/avaly
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -86909,7 +96087,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 263 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -86919,7 +96097,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Коренберг Марк : https://github.com/socketpair
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -87088,7 +96266,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 264 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -87096,7 +96274,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! authors : Bård Rolstad Henriksen : https://github.com/karamell
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -87153,7 +96331,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 265 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -87161,7 +96339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -87228,7 +96406,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 266 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -87237,7 +96415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on work of petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -87382,7 +96560,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 267 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -87390,7 +96568,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -87548,7 +96726,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 268 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -87558,7 +96736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Oerd Cukalla : https://github.com/oerd (fixes)
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -87622,7 +96800,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 269 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -87630,7 +96808,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -87736,7 +96914,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 270 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -87744,7 +96922,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -87850,7 +97028,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 271 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -87858,7 +97036,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Nicolai Davies<mail@nicolai.io> : https://github.com/nicolaidavies
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -87943,7 +97121,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 272 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -87951,7 +97129,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jens Alm : https://github.com/ulmus
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -88016,7 +97194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 273 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -88024,7 +97202,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Fahad Kassim : https://github.com/fadsel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -88079,7 +97257,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 274 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -88087,7 +97265,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -88212,7 +97390,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 275 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -88220,7 +97398,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Krishna Chaitanya Thota : https://github.com/kcthota
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -88305,7 +97483,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 276 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -88313,7 +97491,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -88376,7 +97554,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 277 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -88384,7 +97562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Dan Hagman
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -88442,7 +97620,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 278 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -88450,7 +97628,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Dominika Kruk : https://github.com/amaranthrose
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -88566,7 +97744,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 279 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -88575,7 +97753,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -88660,7 +97838,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 280 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -88668,7 +97846,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v with the help of Iustì Canun
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -88755,7 +97933,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 281 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -88763,7 +97941,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -88817,7 +97995,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 282 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -88825,7 +98003,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -88879,7 +98057,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 283 */
+/* 368 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -88888,7 +98066,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -89029,7 +98207,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 284 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -89037,7 +98215,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Sardor Muminov : https://github.com/muminoff
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -89091,7 +98269,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 285 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -89099,7 +98277,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Bang Nguyen : https://github.com/bangnk
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -89174,7 +98352,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 286 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -89182,7 +98360,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Andrew Hood : https://github.com/andrewhood125
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -89246,7 +98424,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 287 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -89255,7 +98433,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Zeno Zeng : https://github.com/zenozeng
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -89377,7 +98555,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 288 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -89385,7 +98563,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ben : https://github.com/ben-lin
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(271)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';

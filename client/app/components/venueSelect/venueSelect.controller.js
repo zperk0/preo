@@ -8,16 +8,30 @@ export default class venueSelectController {
   };
 
   switchVenue = (venue) => {
-    this.venue = venue;
+    let venueId = venue.id;
+    this.$state.go("main.dashboard",{venueId});
+    window.location.reload();
+  }
+
+  setVenue(){
+    console.log("set venue");
+    this.$timeout(()=>{
+      this.venues = this.VenueService.venues;
+      this.venue = this.VenueService.currentVenue;
+    });
   }
 
   /* @ngInject */
-  constructor() {
+  constructor($rootScope, BroadcastEvents, $timeout, VenueService, $stateParams, $state) {
     'ngInject';
-    this.venues = [
-      {name:"Bob's Brilliant BBQ Burgerzzz"},
-      {name:"Venue #2 with a really really but really long time"},
-    ];
-    this.venue = this.venues[0];
+    this.$timeout = $timeout;
+    this.VenueService = VenueService;
+    this.$state = $state;
+    $rootScope.$on(BroadcastEvents._ON_FETCH_VENUES,(event,venues)=>{
+      this.setVenue();
+    });
+
+    this.setVenue();
+
   }
 }

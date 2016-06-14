@@ -89,6 +89,7 @@ module.exports = function(ENV, options) {
      * This handles most of the magic responsible for converting modules
      */
     module: {
+      noParse: /node_modules\/jscore\/preoday\/preoday.min.js/,
       preloaders: [],
       loaders: [{
         // JS LOADER
@@ -152,7 +153,7 @@ module.exports = function(ENV, options) {
         // other ng-annotate options here
       }),
       new CopyWebpackPlugin([
-        { from: 'client/assets' }
+        { from: 'client/assets' },
       ]),
       new webpack.ResolverPlugin(
         new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(

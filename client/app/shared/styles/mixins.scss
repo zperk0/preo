@@ -6,6 +6,12 @@
   }
 }
 
+@mixin ellipsis(){
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
 
 @mixin noselect() {
   -webkit-touch-callout: none; /* iOS Safari */

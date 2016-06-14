@@ -3,9 +3,18 @@ export default class toolbarController {
     return "toolbarController";
   }
 
+  getVenues(){
+    return this.VenueService.venues;
+  }
+
+  getVenues(){
+    return this.UserService.user;
+  }
+
   /* @ngInject */
-  constructor() {
+  constructor(VenueService, UserService) {
     'ngInject';
-    this.title = "I am a toolbar component";
+    this.UserService=UserService;
+    this.VenueService=VenueService;
   }
 }

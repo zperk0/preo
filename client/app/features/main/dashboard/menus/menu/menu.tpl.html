@@ -1,0 +1,23 @@
+<div class='menu' layout="column">
+  <div class="menu-toolbar" layout="row" layout-align="start center">
+    <div flex class='menu-name'>{{vm.menu.name}}</div>
+    <md-button translate>Show modifiers</md-button>
+  </div>
+  <div flex layout="row" layout-align="start stretch">
+    <div class="menu-content" flex="60">
+      <div class='main-content-left' dnd-list="vm.menu.sections">
+        <menu-section
+          ng-repeat="section in vm.menu.sections"
+          section="section"
+          dnd-draggable="section"
+          dnd-moved="vm.onSectionMoved($index)"
+          dnd-effect-allowed="move"
+          ></menu-section>
+        <menu-section menu-id="vm.menu.id"></menu-section>
+      </div>
+    </div>
+    <div flex="40" class='main-content-right'>
+      <contextual-menu on-submit="vm.contextualSubmit" type="vm.showingContextualMenu" ng-if="vm.showingContextualMenu" entity="vm.contextualEntity"></contextual-menu>
+    </div>
+  </div>
+</div>

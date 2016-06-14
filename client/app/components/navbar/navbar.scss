@@ -5,6 +5,7 @@
 
   span{
     transition:max-width 0.2s linear;
+    font-weight: 500;
   }
 
   &:not(.expanded){
@@ -34,48 +35,6 @@
     overflow-x: hidden;
   }
 
-  md-list-item{
-    md-menu {
-      padding:0;
-      &> div{
-        & > button{
-          border-left: 5px solid transparent;
-          width: 100%;
-          text-align: left;
-          margin:0;
-          padding: 8px 8px 8px 16px;
-          &> span{
-            padding-left:24px;
-          }
-        }
-      }
-    }
-
-      &.expanded{
-        .children{
-          max-height:none;
-        }
-      }
-
-  }
-
-  md-list-item.selected, md-list-item.open{
-    md-menu > div{
-      &>button{
-        border-left:$borderSelected;
-        background: $colorBackgroundFocusButtonMaterial;
-      }
-    }
-  }
-
-  .children {
-    max-height:0;
-    overflow: hidden;
-    @include selected();
-    span{
-      text-align: left;
-    }
-  }
 }
 
 

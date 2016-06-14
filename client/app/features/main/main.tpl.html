@@ -2,10 +2,6 @@
   <toolbar></toolbar>
   <section layout="row" layout-align="start stretch" class='maxHeightScreen minus-toolbar'>
     <navbar></navbar>
-    <!-- <div class='content'></div> -->
-    <ui-view></ui-view>
+      <ui-view  flex class='content-holder'></ui-view>
   </section>
-  <div ng-if="vm.error">
-      {{vm.error}}
-  </div>
 </div>

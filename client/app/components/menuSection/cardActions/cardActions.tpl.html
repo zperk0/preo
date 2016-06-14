@@ -1,0 +1,34 @@
+<div class='card-actions-holder'>
+  <md-card-actions ng-if="vm.showCardActions" class="hidden-card-actions" layout="row" layout-align="end center" ng-click="vm.toggleCardActions($event)">
+    <md-button class="md-icon-button" ng-click="vm.onEdit($event)">
+      <icon>edit</icon>
+      <md-tooltip md-direction="bottom">
+        Edit
+      </md-tooltip>
+    </md-button>
+    <md-button class="md-icon-button" ng-click="vm.onClone($event)">
+      <icon>content_copy</icon>
+      <md-tooltip md-direction="bottom">
+        Duplicate
+      </md-tooltip>
+    </md-button>
+    <md-button ng-if="entity.visible" class="md-icon-button" ng-click="vm.onVisibility(false, $event)">
+      <icon>visibility_off</icon> <!-- visibility_off -->
+      <md-tooltip md-direction="bottom">
+        Hide from menu
+      </md-tooltip>
+    </md-button>
+    <md-button ng-if="!entity.visible" class="md-icon-button" ng-click="vm.onVisibility(true, $event)">
+      <icon>visibility</icon> <!-- visibility_off -->
+      <md-tooltip md-direction="bottom">
+        Show on menu
+      </md-tooltip>
+    </md-button>
+    <md-button class="md-icon-button" ng-click="vm.onDelete($event)">
+      <icon>delete</icon>
+      <md-tooltip md-direction="bottom">
+        Delete
+      </md-tooltip>
+    </md-button>
+  </md-card-actions>
+</div>

@@ -14,44 +14,10 @@ export default class navbarController {
     }
   }
 
-  handleMouseOver (item, $mdOpenMenu, $event) {
-    // must do this or when the user clicks in trap to hide menu the class is not hidden
+  closeAllMenus(){
     this.menu.forEach((i)=>{
-        i.$menuOpen = false;
-    });
-    if(!this.$expanded && item.children){
-      item.$menuOpen = true;
-      $mdOpenMenu($event);
-    }
-  }
-  handleMouseLeave (item, $mdOpenMenu, $event) {
-    if(!this.$expanded && item.children && item.$menuOpen){
-      this.$mdMenu.hide();
-      item.$menuOpen = false;
-    }
-  console.log("$event", $event);
-  }
-
-  handleClick(item, parent = false, $mdOpenMenu, $event){
-    const _handleChildrenExpanded = () => {
-      this.toggleExpanded(item);
-    };
-    const _handleChildrenCollapsed = () => {
-      $mdOpenMenu($event);
-    };
-
-    if (item.children){
-      return this.$expanded ? _handleChildrenExpanded() : _handleChildrenCollapsed();
-    }
-
-    if (item.id){
-      let prefix = this.DESTINATION_PREFIX;
-      if (parent){
-        prefix+= parent.id +".";
-      }
-      this.$state.go(prefix + item.id);
-    }
-
+            i.$menuOpen = false;
+        });
   }
 
   toggleMenu() {
@@ -60,16 +26,19 @@ export default class navbarController {
   }
 
   /* @ngInject */
-  constructor($state,$mdMenu) {
+  constructor($state) {
     'ngInject';
-    console.log("$mdMenu", $mdMenu);
-    this.$mdMenu=$mdMenu;
     this.DESTINATION_PREFIX = "main.dashboard.";
     this.$state = $state;
     this.$expanded = true;
+    //name: label to be displayed in navbar
+    //icon: icon to be displayed before label
+    //id: route that will define destination on click. it's appended on DESTINATION_PREFIX, and if it's a child it's appended after it's parent's id
+    //is also used for path-select to decide if .selected should be added or not to that particular item for dynamic class
+    //destination: if given, will be used as a destination instead of the id, useful when parent is abstract, with a default view (like menus and menus.list)
     this.menu=[
       {name:"Venue Settings", icon:"store", id:"venueSettings"},
-      {name:"Menus", icon:"list", id:"menus"},
+      {name:"Menus", icon:"list", id:"menus", destination:"menus.list"},
       {name:"Styling", id:"styling", icon:"color_lens", children:[
         {name:"Styling", id:"mobile"},
         {name:"Web Orders", id:"weborders"},

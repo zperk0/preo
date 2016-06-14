@@ -4,19 +4,28 @@ export default class mainController {
     return "mainController";
   }
 
-  setVenue(v){
-    console.log("got venue", v);
+  setVenue(venueId){
+    this.VenueService.fetchById(venueId)
+      .then(this.handleFinishLoading.bind(this), this.handleError.bind(this,"VENUE_NOT_FOUND"))
+      .catch(this.handleError.bind(this));
   }
 
   handleError(err){
-    this.err = err;
+    this.ErrorService.showError(err);
+  }
+  handleFinishLoading(){
+    this.$rootScope.$on(this.BroadcastEvents._PREO_ON_VENUE_SELECTED,this.setVenue);
+    console.log("loaded main");
   }
 
   /* @ngInject */
-  constructor($stateParams) {
+  constructor($rootScope, $stateParams, ErrorService, BroadcastEvents, UserService, VenueService) {
     'ngInject';
-    Preoday.Venue.get($stateParams.venueId)
-      .then(this.setVenue.bind(this))
-      .catch(this.handleError.bind(this));
+    this.VenueService=VenueService;
+    this.ErrorService = ErrorService;
+    this.$rootScope = $rootScope;
+    this.BroadcastEvents = BroadcastEvents;
+    this.setVenue(Number($stateParams.venueId));
+    $rootScope.$on(BroadcastEvents._PREO_DO_VENUE_SELECT,this.setVenue);
   }
 }

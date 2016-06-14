@@ -1,0 +1,46 @@
+@import '../../../shared/styles/variables';
+
+.md-sidenav-left {
+    md-list-item{
+      md-menu {
+        padding:0;
+        &> div{
+          & > button{
+            border-left: 5px solid transparent;
+            width: 100%;
+            text-align: left;
+            margin:0;
+            padding: 8px 8px 8px 16px;
+            &> span{
+              padding-left:24px;
+            }
+          }
+        }
+      }
+
+        &.expanded{
+          .children{
+            max-height:none;
+          }
+        }
+
+    &.selected, &.open{
+      md-menu > div{
+        &>button{
+          border-left:$borderSelected;
+          background: $colorBackgroundFocusButtonMaterial;
+        }
+      }
+    }
+    .children {
+      max-height:0;
+      overflow: hidden;
+      @include selected();
+      span{
+        text-align: left;
+        font-size:13px;
+        font-weight: normal;
+      }
+    }
+  }
+}

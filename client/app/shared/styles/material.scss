@@ -29,6 +29,21 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
   @include noselect;
+}
 
-
+md-dialog {
+  width:300px;
+  md-dialog-content{
+    padding:24px;
+  }
+  .md-title{
+    font-weight: 500;
+    font-size: 20;
+    color:#000000;
+    margin-bottom:16px;
+  }
+  .md-dialog-content-body {
+    color:#000000;
+    font-size:16px;
+  }
 }

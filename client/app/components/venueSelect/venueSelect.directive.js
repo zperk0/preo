@@ -5,7 +5,7 @@ export default function venueSelect(){
   return {
     restrict: 'E',
     scope: {
-
+      venueId:"="
     },
     template: require("./venueSelect.tpl.html"),
     controller: controller.UID,
@@ -13,7 +13,6 @@ export default function venueSelect(){
     bindToController: true,
     replace:true,
     link: (scope, el, attr, ctrl) => {
-
     }
   };
 }

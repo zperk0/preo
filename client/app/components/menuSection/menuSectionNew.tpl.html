@@ -1,0 +1,10 @@
+<md-card class='menu-section menu-section-new card-outline-only' ng-class="{selected:vm.section.$selected}">
+  <md-card-title layout="row" layout-align="start center" ng-if="vm.section.name">
+      <div flex> <span>{{vm.section.name}}</span> </div>
+  </md-card-title>
+  <md-card-actions>
+    <md-button class="md-fab md-mini md-primary" aria-label="Add Section" ng-click="vm.showCreateSection($event)">
+      <icon>add</icon>
+    </md-button>
+  </md-card-actions>
+</md-card>

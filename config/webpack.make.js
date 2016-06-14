@@ -17,7 +17,7 @@ module.exports = function makeWebpackConfig(options) {
   var TYPE = options.TYPE;
   var ENV = options.ENVIRONMENT;
   var configOptions = {
-    devServerPort: 3200
+    devServerPort: 3201
   };
 
   // Prepare config object

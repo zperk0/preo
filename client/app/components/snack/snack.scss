@@ -1,0 +1,17 @@
+md-toast{
+  position: fixed;
+  top: 60px !important;
+  left: 50% !important;
+  bottom:auto !important;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+
+  &.error-snack{
+    md-toast-content{
+      background: red;
+    }
+  }
+}

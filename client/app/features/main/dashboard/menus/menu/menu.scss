@@ -1,0 +1,30 @@
+@import '../../../../../shared/styles/variables';
+
+.menu{
+  max-height: 100%;
+  .menu-toolbar{
+    background: #EEEEEE;
+    border-bottom:1px solid #CCCCCC;
+    min-height:50px;
+    width: 100%;
+    font-size:16px;
+
+    .menu-name{
+      padding-left:24px;
+    }
+
+    button{
+      margin-right:18px;
+    }
+  }
+  .menu-content{
+    overflow: auto;
+  }
+  .main-content-right{
+    margin:24px 16px 24px 4px;
+  }
+
+  .main-content-left{
+    margin:24px 4px 24px 16px;
+  }
+}

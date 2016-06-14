@@ -1,0 +1,21 @@
+<md-card class='contextual-right-menu'>
+  <form name="contextualForm" ng-submit="vm.doSubmit()" no-validate>
+    <md-card-content>
+       <md-input-container class="md-block">
+          <label translate>Section name</label>
+          <input type="text" required name="entityName" ng-model="vm.entity.name">
+          <div ng-messages="contextualForm.entityName.$error">
+            <div ng-message="required" translate>This is required.</div>
+          </div>
+      </md-input-container>
+    </md-card-content>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="vm.onCancel()" translate>
+          Cancel
+      </md-button>
+      <md-button type="submit" class='md-raised' translate>
+          Done
+      </md-button>
+    </md-card-actions>
+  </form>
+</md-card>

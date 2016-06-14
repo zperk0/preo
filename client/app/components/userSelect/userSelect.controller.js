@@ -3,16 +3,22 @@ export default class userSelectController {
     return "userSelectController";
   }
 
+  signout(){
+    this.UserService.signout();
+  }
+
   openMenu = ($mdOpenMenu, ev) => {
     $mdOpenMenu(ev);
   };
 
   /* @ngInject */
-  constructor() {
+  constructor(UserService, $rootScope, BroadcastEvents) {
     'ngInject';
-    this.title = "I am a userSelect component";
-    this.user = {
-      name:"Baron Von Jimmy McLong-Name"
-    };
+    this.UserService =UserService;
+    this.user = UserService.user;
+
+    $rootScope.$on(BroadcastEvents._ON_USER_AUTH,(event,user)=>{
+      this.user=user;
+    });
   }
 }

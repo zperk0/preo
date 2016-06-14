@@ -15,8 +15,9 @@ import v2Account from './account';
 
 import navbar from '../../components/navbar';
 import toolbar from '../../components/toolbar';
+import contextualMenu from '../../components/contextualMenu';
 
-export default angular.module("main" , [uirouter, v2Dashboard, v2Analytics, v2Account, navbar, toolbar])
+export default angular.module("main" , [uirouter, v2Dashboard, v2Analytics, v2Account, navbar, toolbar, contextualMenu])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

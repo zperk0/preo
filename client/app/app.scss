@@ -35,8 +35,15 @@ html{
   white-space:no-wrap;
 }
 
-/** 1024 + 16px scrollbar **/
 
 @media (max-width: 1280px) {
   @import './shared/styles/responsive/1024-1280';
+}
+
+@media (max-width: 1024px) {
+  @import './shared/styles/responsive/1024';
+}
+
+@media (min-width: 1280px) {
+  @import './shared/styles/responsive/1280-1600';
 }

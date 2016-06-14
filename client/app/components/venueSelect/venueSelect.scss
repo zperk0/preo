@@ -5,12 +5,15 @@
   overflow: hidden;
   background: rgba(255, 255, 255, 0.1);
 
+
   &>md-menu {
       &>button{
         max-width: 100%;
           &>span{
             float:left;
             text-transform: none;
+            font-size:15px;
+            font-weight: 500;
           }
       }
   }
