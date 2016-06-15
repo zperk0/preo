@@ -31,19 +31,28 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
   @include noselect;
 }
 
-md-dialog {
-  width:300px;
-  md-dialog-content{
-    padding:24px;
+
+.md-button {
+
+  &.md-primary {
+    color:#0288D1;
+
+    &.md-fab {
+      background-color:#0288D1;
+      md-icon{
+        span{
+          color:white;
+        }
+      }
+      &:not([disabled]):hover{
+        background-color:#0288FF;
+      }
+    }
   }
-  .md-title{
-    font-weight: 500;
-    font-size: 20;
-    color:#000000;
-    margin-bottom:16px;
+
+  &.md-raised{
+     background-color:#0288D1;
+     color:white;
   }
-  .md-dialog-content-body {
-    color:#000000;
-    font-size:16px;
-  }
+
 }

@@ -17,7 +17,7 @@ export default class menuSectionController {
       },()=>{
           reject();
         this.Snack.showError('Error saving section');
-      })
+      });
     });
   }
 
@@ -28,7 +28,7 @@ export default class menuSectionController {
         menuId:this.menuId,
         $selected:true,
         position:this.menuCtrl.menu.sections.length * 1000
-      }
+      };
     }
     this.menuCtrl.selectSection(this.section);
     this.menuCtrl.toggleContextualMenu(this.section,this.type, this.createSection.bind(this));
@@ -45,7 +45,7 @@ export default class menuSectionController {
       },()=>{
         reject();
         this.Snack.showError('Error saving section');
-      })
+      });
 
       console.log("resolved");
     });
