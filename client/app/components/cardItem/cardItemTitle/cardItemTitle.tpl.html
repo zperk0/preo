@@ -1,7 +1,7 @@
 <md-card-title layout="row" layout-align="start center" >
     <div flex>
       <icon class='visibility' ng-if="hasVisible && showVisible()">visibility_off</icon>
-      <span ng-transclude></span>
+      <span ng-transclude flex></span>
       <icon class='arrow-icon' ng-if="showDropdown">arrow_drop_down</icon>
     </div>
     <md-button class="md-icon-button" ng-if="vm.cardItemActions" ng-click="vm.toggleCardActions($event)">

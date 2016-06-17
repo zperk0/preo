@@ -36,10 +36,14 @@ export default class menuController {
 
   toggleContextualMenu(entity, type, onSubmit, onCancel){
     if (entity){
+      this.$rootScope.$broadcast(this.BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU);
       this.showingContextualMenu = type;
       this.contextualEntity = entity;
       this.contextualSubmit = onSubmit;
       this.contextualCancel = onCancel;
+      this.$timeout(()=>{
+        entity.$selected = true;
+      })
     } else {
       delete this.showingContextualMenu;
       delete this.contextualEntity;
@@ -57,7 +61,6 @@ export default class menuController {
   }
 
   selectSection(section){
-    console.log("selecting section", section, this.menu.sections)
     this.menu.sections.forEach((s, index)=>{
       if (s.id === section.id){
         s.$selected = true;
@@ -112,6 +115,11 @@ export default class menuController {
     this.initialExpandedSection = $stateParams.sectionId && Number($stateParams.sectionId);
     this.$timeout = $timeout;
     this.showingContextualMenu = false;
+    //types for drag and drop list
+    this.menuSectionType = 'menuSection';
+    this.allowedDropTypes = [this.menuSectionType];
+    this.$rootScope = $rootScope;
+    this.BroadcastEvents = BroadcastEvents;
     $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU,()=>{
       this.toggleContextualMenu();
     })

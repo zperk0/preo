@@ -7,14 +7,15 @@ export default function cardItem(){
     controller: controller.UID,
     scope:{
       cardItemActions:"=?",
-      selected:"=?"
+      selected:"=?",
+      draggable:"=?",
+      allowedTypes:"=?"
     },
     controllerAs: "vm",
     bindToController: true,
     transclude:true,
     replace:true,
     link: (scope, el, attr, ctrl) => {
-
     }
   }
 }

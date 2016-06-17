@@ -3,6 +3,54 @@ export default class menuSectionController {
     return "menuSectionController";
   }
 
+    selectItem(item){
+      this.section.items.forEach((i, index)=>{
+        if (i.id === item.id){
+          i.$selected = true;
+        } else{
+          i.$selected=false;
+        }
+      });
+    }
+
+
+  onItemMoved($index){
+    console.log("this", this.section)
+    let originalItem = this.section.items[$index];
+    let sectionNewIndex = -1;
+
+    //find the new section index by comparing ids, first match with a different $index is the new position of the section
+    this.section.items.forEach((s,index)=>{
+      if (sectionNewIndex === -1 && s.id === originalItem.id && index !== $index){
+        sectionNewIndex = index;
+      }
+    })
+
+    // Remove Section from array to be repositioned
+    this.section.items.splice($index, 1);
+
+    // we changed the array, if the Object is after the Section, we just changed the index of the section by one, removing one fixes that
+    if (sectionNewIndex > $index){
+      sectionNewIndex-=1;
+    }
+
+    // Remove Object created by library and position section in it's place
+    this.section.items.splice(sectionNewIndex, 1, originalItem);
+
+    //update all sections
+    this.section.items.forEach((i, index)=>{
+      i.position=index*1000;
+      i.update();
+    });
+  }
+
+  deleteItem(item){
+    this.section.items = this.section.items.filter((i)=>item.id !== i.id);
+  }
+  createItem(newItem){
+    this.section.items.push(newItem);
+  }
+
   createSection(newData = false){
     return this.$q((resolve, reject)=>{
       Preoday.Section.save(newData || this.section)
@@ -30,7 +78,6 @@ export default class menuSectionController {
         position:this.menuCtrl.menu.sections.length * 1000
       };
     }
-    this.menuCtrl.selectSection(this.section);
     this.menuCtrl.toggleContextualMenu(this.section,this.type, this.createSection.bind(this));
     $event.stopPropagation();
   }
@@ -50,42 +97,45 @@ export default class menuSectionController {
     });
   }
 
-  onVisibility(newStatus, $event){
-    this.section.visible = newStatus ? 1 : 0;
-    this.saveSection();
-    $event.stopPropagation();
-  }
-
-  onClone($event){
-    const newSectionData = angular.copy(this.section);
-    newSectionData.position = this.menuCtrl.menu.sections.length * 1000;
-    this.createSection(newSectionData); //will create a new section with this section as data
-  }
-
-  onDelete($event){
-    this.DialogService.delete("Delete section?", "Are you sure you want to delete this section? The items in this section will not be deleted.")
-      .then(()=>{
-        this.section.delete()
-          .then(()=>{
-            this.Snack.show('Section deleted');
-            this.menuCtrl.deleteSection(this.section);
-          }, ()=>{
-            console.log("error deleting section");
-            this.Snack.showError('Error deleting section');
-          })
-
-    })
-    $event.stopPropagation();
-  }
-
-  onEdit($event){
-    this.menuCtrl.selectSection(this.section);
-    this.menuCtrl.toggleContextualMenu(this.section,this.type, this.saveSection.bind(this));
-  }
-
   toggleExpanded(){
     this.section.$expanded=!this.section.$expanded;
     this.$stateParams.sectionId = this.section.id;
+  }
+
+  //sets action callbacks for <card-item-actions>
+  setCardActions(){
+    const that = this;
+    this.cardItemActions={
+      onClone: ($event) => {
+        const newSectionData = angular.copy(that.section);
+        newSectionData.position = that.menuCtrl.menu.sections.length * 1000;
+        that.createSection(newSectionData); //will create a new section with this section as data
+      },
+      onEdit: ($event) => {
+        that.menuCtrl.selectSection(that.section);
+        that.menuCtrl.toggleContextualMenu(that.section,that.type, that.saveSection.bind(that));
+      },
+      onDelete: ($event)=>{
+        that.DialogService.delete("Delete section?", "Are you sure you want to delete this section? The items in this section will not be deleted.")
+          .then(()=>{
+            that.section.delete()
+              .then(()=>{
+                that.Snack.show('Section deleted');
+                that.menuCtrl.deleteSection(that.section);
+              }, ()=>{
+                console.log("error deleting section");
+                that.Snack.showError('Error deleting section');
+              })
+
+        })
+        $event.stopPropagation();
+      },
+      onVisibility:(newStatus, $event)=>{
+        that.section.visible = newStatus ? 1 : 0;
+        that.saveSection();
+        $event.stopPropagation();
+      }
+    }
   }
 
   /* @ngInject */
@@ -96,12 +146,16 @@ export default class menuSectionController {
     this.$stateParams = $stateParams;
     this.DialogService =DialogService;
     this.type = 'menuSection'; //type for contextual menu
+    this.setCardActions();
+    this.menuItemType = 'menuItem';
+    this.allowedDropTypes = [this.menuItemType];
+
     $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU,(event, entity, type)=>{
       if (this.section){
         if(entity && type=== this.type && entity.id === this.section.id){
           this.section = entity;
         }
-        this.section.$selected = false;
+      this.section.$selected = false;
       }
     });
   }

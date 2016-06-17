@@ -1,3 +1,5 @@
+@import '../../shared/styles/variables';
+
 md-dialog {
   width:300px;
   md-dialog-content {
@@ -10,7 +12,7 @@ md-dialog {
     margin-bottom:16px;
   }
   .md-dialog-content-body {
-    color:#000000;
+    color:$colorLight;
     font-size:16px;
     p {
       line-height:1.2em;

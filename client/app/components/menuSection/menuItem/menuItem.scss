@@ -1,3 +1,15 @@
 .menu-item {
+  .price {
+    float: right;
+    padding-top: 6px;
+  }
 
+  md-card-title{
+    max-height: 48px;
+    min-height: auto;
+
+    .name, .price{
+      font-size:13px;
+    }
+  }
 }

@@ -1,19 +1,28 @@
 import controller from './menuItem.controller';
 
-export default function menuItem(){
+export default function menuItem($compile){
   'ngInject';
   return {
     restrict: 'E',
     scope: {
-      item:"=",
+      item:"=?",
+      sectionController:"=?"
     },
     template: require("./menuItem.tpl.html"),
     controller: controller.UID,
     controllerAs: "vm",
     bindToController: true,
     replace:true,
-    link: (scope, el, attr, ctrl) => {
-
+    require:["^menuSection", "menuItem"],
+    link: (scope, el, attr, ctrls) => {
+      scope.vm = ctrls[1];
+      scope.vm.menuSectionCtrl = ctrls[0]
+      scope.vm.menuCtrl = ctrls[0].menuCtrl;
+      if (!scope.vm.item || scope.vm.item.id === -1){
+        const newEl = angular.element(require("./menuItemNew.tpl.html"));
+        angular.element(el[0]).replaceWith(newEl);
+        $compile(newEl)(scope).scope();
+      }
     }
   };
 }

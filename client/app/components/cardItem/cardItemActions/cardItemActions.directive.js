@@ -1,5 +1,8 @@
 export default function cardItemActions(){
   'ngInject';
+
+  //will display item actions based on the callbacks set in cardItem.cardItemActions
+  // ex: if you pass onClone clone action will be visible, if you don't it'll be hidden
   return {
     restrict: 'E',
     scope: {

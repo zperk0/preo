@@ -17,6 +17,9 @@ $borderSelected: 5px solid $colorSelected;
 $paddedContentWidth: 1024px;
 $fontSizeButton:14px;
 $colorBackgroundFocusButtonMaterial: rgba(158,158,158,0.2);
+$colorLight: rgba(0,0,0,0.5);
+$colorPrimary: #0288D1;
+$colorPrimaryDarker: #0288FF;
 
 
 $heightScreen:calc(100vh - #{$heightToolbar});

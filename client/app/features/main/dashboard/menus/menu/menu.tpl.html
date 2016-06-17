@@ -5,13 +5,14 @@
   </div>
   <div flex layout="row" layout-align="start stretch">
     <div class="menu-content" flex="60">
-      <div class='main-content-left' dnd-list="vm.menu.sections">
+      <div class='main-content-left' dnd-list="vm.menu.sections" dnd-allowed-types="vm.allowedDropTypes">
         <menu-section
           ng-repeat="section in vm.menu.sections"
           section="section"
           dnd-draggable="section"
           dnd-moved="vm.onSectionMoved($index)"
           dnd-effect-allowed="move"
+          dnd-type="vm.menuSectionType"
           ng-attr-data-id="{{section.id}}"
           ></menu-section>
         <menu-section menu-id="vm.menu.id"></menu-section>

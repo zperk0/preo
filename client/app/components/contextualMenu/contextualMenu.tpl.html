@@ -1,6 +1,6 @@
 <md-card class='contextual-right-menu'>
-  <form name="contextualForm" ng-submit="vm.doSubmit()" no-validate>
-    <md-card-content>
+  <form name="contextualForm" ng-submit="vm.doSubmit()" novalidate>
+    <md-card-content ng-if="vm.type==='menuSection'">
        <md-input-container class="md-block">
           <label translate>Section name</label>
           <input type="text" required name="entityName" ng-model="vm.entity.name">
@@ -9,6 +9,47 @@
           </div>
       </md-input-container>
     </md-card-content>
+
+    <div ng-if="vm.type==='menuItem'">
+      <md-tabs md-dynamic-height md-stretch-tabs="always">
+        <md-tab label="Basics">
+        <md-card-content>
+           <md-input-container class="md-block">
+              <label translate>Item name</label>
+              <input type="text" required name="entityName" ng-model="vm.entity.name">
+              <div ng-messages="contextualForm.entityName.$error">
+                <div ng-message="required" translate>This is required.</div>
+              </div>
+          </md-input-container>
+          <md-input-container class="md-block">
+              <label translate>Description</label>
+              <input type="text" name="entityDescription" ng-model="vm.entity.description">
+          </md-input-container>
+          <md-radio-group class='size' ng-model="vm.entity.$size">
+            <md-radio-button value="0" class="md-primary md-hue-2">Single Size</md-radio-button>
+            <md-radio-button value="1" class="md-primary md-hue-2"> Multiple Sizes </md-radio-button>
+          </md-radio-group>
+          <div class='price' layout="row" layout-align="start center">
+            <md-input-container flex>
+                <label translate>Price</label>
+                <input flex type="text" required name="entityPrice" ng-model="vm.entity.price">
+                <div ng-messages="contextualForm.entityPrice.$error">
+                  <div ng-message="required" translate>This is required.</div>
+                </div>
+            </md-input-container>
+            <venue-currency class='currency'> GBP </venue-currency>
+          </div>
+        </md-card-content>
+        </md-tab>
+        <md-tab label="Image">
+            TODO image content
+        </md-tab>
+        <md-tab label="Labels">
+          TODO labels content
+        </md-tab>
+      </md-tabs>
+    </div>
+
       <md-card-actions layout="row" layout-align="end center">
         <md-button class='md-primary'  ng-click="vm.onCancel()" translate>
           Cancel

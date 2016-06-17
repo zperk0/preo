@@ -12,8 +12,8 @@ export default class contextualMenuController {
     this.onSubmit().then(()=>{
       console.log("on resolved contextual submit")
       this.$rootScope.$broadcast(this.BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU);
-    }, ()=>{
-      console.log("Contextual submit failed");
+    }, (err)=>{
+      console.log("Contextual submit failed", err);
     });
   }
 

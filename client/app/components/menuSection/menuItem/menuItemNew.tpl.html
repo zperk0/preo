@@ -1,0 +1,10 @@
+<md-card class='menu-item card-item card-item-new' ng-class="{selected:vm.item.$selected}">
+  <md-card-title layout="row" layout-align="start center" ng-if="vm.item.name">
+      <div flex> <span>{{vm.item.name}}</span> </div>
+  </md-card-title>
+  <md-card-actions>
+    <md-button class="md-fab md-mini md-primary" aria-label="Add Item" ng-click="vm.showCreateItem($event)">
+      <icon>add</icon>
+    </md-button>
+  </md-card-actions>
+</md-card>
