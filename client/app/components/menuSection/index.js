@@ -9,10 +9,10 @@ import controller from './menuSection.controller';
 import directive from './menuSection.directive';
 
 import menuItem from './menuItem';
-import cardActions from './cardActions';
+import cardItem from '../cardItem';
 
 
-export default angular.module("menuSection" , [menuItem,cardActions])
+export default angular.module("menuSection" , [menuItem,cardItem])
 
 
   .controller(controller.UID, controller)

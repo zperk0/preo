@@ -1,0 +1,81 @@
+// COLORS
+@import '../../shared/styles/variables.scss';
+
+.card-item{
+  border:1px solid #eeeeee;
+  position: relative;
+
+  &.card-item-new {
+    position: relative;
+    min-height: 60px;
+    border:1px dotted #BDBDBD;
+    background: transparent;
+    box-shadow: none;
+
+    md-card-actions{
+      margin:0;
+    }
+
+
+    button{
+      position: absolute;
+      bottom: -20px;
+      left: 20px;
+    }
+  }
+
+  &:not(.selected){
+    box-shadow: none;
+  }
+
+  md-card-content{
+    padding:0;
+
+    & > md-card-title{
+      min-height: 60px;
+      &:hover{
+        .arrow-icon{
+          opacity: 1;
+        }
+      }
+      padding:10px 0 10px 16px;
+      button{
+        margin-right:-16px
+      }
+      .arrow-icon{
+        opacity: 0;
+      }
+
+      &>div{
+        @include ellipsis();
+      }
+      .visibility{
+        margin-right: 16px;
+        position: relative;
+        top:-2px;
+      }
+    }
+    & > .card-item-actions > md-card-actions{
+
+      &:hover{
+        cursor: pointer;
+      }
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      background: rgba(255,255,255,0.9);
+    }
+  }
+
+  &.selected{
+    background-color:#E1F5FE;
+  }
+
+  &.hidden{
+    &>md-card-title{
+      color:#757575;
+    }
+  }
+}

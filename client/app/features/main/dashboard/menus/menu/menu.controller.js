@@ -29,7 +29,6 @@ export default class menuController {
 
     //update all sections
     this.menu.sections.forEach((s, index)=>{
-      console.log("s",s);
       s.position=index*1000;
       s.update();
     });
@@ -58,9 +57,11 @@ export default class menuController {
   }
 
   selectSection(section){
+    console.log("selecting section", section, this.menu.sections)
     this.menu.sections.forEach((s, index)=>{
       if (s.id === section.id){
         s.$selected = true;
+        console.log("selected", s);
       } else{
         s.$selected=false;
       }

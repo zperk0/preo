@@ -1,10 +1,10 @@
-<md-card class='menu-section card-item'  md-whiteframe="3" ng-class="{selected:vm.section.$selected, hidden:!vm.section.visible}">
-  <md-card-title ng-click="vm.toggleExpanded()" layout="row" layout-align="start center">
-      <div flex> <icon class='visibility' ng-if="!vm.section.visible">visibility_off</icon> <span>{{vm.section.name}}</span> <icon class='arrow-icon'>arrow_drop_down</icon></div>
-        <md-button class="md-icon-button" ng-click="vm.toggleCardActions($event)">
-          <icon>more_horiz</icon>
-        </md-button>
-  </md-card-title>
-  <card-actions vm="vm" entity="vm.section"></card-actions>
-  <menu-item ng-if="vm.section.$expanded" ng-repeat="item in vm.section.items" item="item"></menu-item>
-</md-card >
+<div class='menu-section'>
+  <card-item card-item-actions="vm" selected="vm.section.$selected">
+    <card-item-title ng-click="vm.toggleExpanded()"
+                    has-visible="true"
+                    show-visible="!vm.section.visible"
+                    show-dropdown="true">{{vm.section.name}}</card-item-title>
+    <menu-item ng-if="vm.section.$expanded" ng-repeat="item in vm.section.items" item="item"></menu-item>
+    <card-item-actions is-visible="vm.section.visible"></card-item-actions>
+  </card-item>
+</div>

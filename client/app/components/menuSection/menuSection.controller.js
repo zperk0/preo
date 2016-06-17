@@ -32,7 +32,6 @@ export default class menuSectionController {
     }
     this.menuCtrl.selectSection(this.section);
     this.menuCtrl.toggleContextualMenu(this.section,this.type, this.createSection.bind(this));
-    this.toggleCardActions($event);
     $event.stopPropagation();
   }
 
@@ -61,13 +60,11 @@ export default class menuSectionController {
     const newSectionData = angular.copy(this.section);
     newSectionData.position = this.menuCtrl.menu.sections.length * 1000;
     this.createSection(newSectionData); //will create a new section with this section as data
-    $event.stopPropagation();
   }
 
   onDelete($event){
     this.DialogService.delete("Delete section?", "Are you sure you want to delete this section? The items in this section will not be deleted.")
       .then(()=>{
-        console.log("this.section delete", this.section)
         this.section.delete()
           .then(()=>{
             this.Snack.show('Section deleted');
@@ -84,13 +81,6 @@ export default class menuSectionController {
   onEdit($event){
     this.menuCtrl.selectSection(this.section);
     this.menuCtrl.toggleContextualMenu(this.section,this.type, this.saveSection.bind(this));
-    this.toggleCardActions($event);
-    $event.stopPropagation();
-  }
-
-  toggleCardActions($event){
-    this.showCardActions=!this.showCardActions;
-    $event.stopPropagation();
   }
 
   toggleExpanded(){
@@ -106,8 +96,6 @@ export default class menuSectionController {
     this.$stateParams = $stateParams;
     this.DialogService =DialogService;
     this.type = 'menuSection'; //type for contextual menu
-    this.showCardActions = false;
-    this.$selected = false;
     $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU,(event, entity, type)=>{
       if (this.section){
         if(entity && type=== this.type && entity.id === this.section.id){
