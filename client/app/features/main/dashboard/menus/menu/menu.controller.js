@@ -85,7 +85,15 @@ export default class menuController {
   }
 
   handleFinishLoading(dataMenu){
-    console.log("got data ",dataMenu);
+    if (dataMenu && this.initialExpandedSection){
+      console.log("in here", this.initialExpandedSection)
+      dataMenu.sections.forEach((s)=>{
+        if (s.id === this.initialExpandedSection){
+          s.$expanded = true;
+          console.log("epxanded", s);
+        }
+      })
+    }
     this.$timeout(()=>{
       this.menu = dataMenu;
     });
@@ -100,6 +108,7 @@ export default class menuController {
     this.Snack = Snack;
     this.$mdToast = $mdToast;
     this.setMenu($stateParams.menuId);
+    this.initialExpandedSection = $stateParams.sectionId && Number($stateParams.sectionId);
     this.$timeout = $timeout;
     this.showingContextualMenu = false;
     $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU,()=>{

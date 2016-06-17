@@ -94,18 +94,19 @@ export default class menuSectionController {
   }
 
   toggleExpanded(){
-    this.expanded=!this.expanded;
+    this.section.$expanded=!this.section.$expanded;
+    this.$stateParams.sectionId = this.section.id;
   }
 
   /* @ngInject */
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack) {
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams) {
     'ngInject';
     this.$q =$q;
     this.Snack = Snack;
+    this.$stateParams = $stateParams;
     this.DialogService =DialogService;
     this.type = 'menuSection'; //type for contextual menu
     this.showCardActions = false;
-    this.expanded = false;
     this.$selected = false;
     $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU,(event, entity, type)=>{
       if (this.section){
