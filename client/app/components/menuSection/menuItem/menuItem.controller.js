@@ -8,8 +8,10 @@ export default class menuItemController {
       this.item = {
         id:-1,
         menuId:this.menuSectionCtrl.section.menuId,
-        sectionid:this.menuSectionCtrl.section.id,
+        sectionId:this.menuSectionCtrl.section.id,
         $selected:true,
+        quantity:1,
+        venueId:this.$stateParams.venueId,
         position:this.menuSectionCtrl.section.items.length * 1000
       };
     }
@@ -34,8 +36,8 @@ export default class menuItemController {
             delete this.item;
           }
           resolve();
-      },()=>{
-          reject();
+      },(err)=>{
+        reject(err);
         this.Snack.showError('Error saving item');
       });
     });
@@ -72,10 +74,10 @@ export default class menuItemController {
         const msg = isInSection ? "Are you sure you want to remove this item from this section?" : "Are you sure you want to permanently delete this item?";
 
         // call Preoday.Item or Preoday.Section method to delete item or remove from section
-        const deleteAction = isInSection ? that.menuSectionCtrl.section.removeItem.bind(that.menuSectionCtrl.section) : that.item.delete.bind(item);
+        const deleteAction = isInSection ? that.menuSectionCtrl.section.removeItems.bind(that.menuSectionCtrl.section) : that.item.delete.bind(item);
         that.DialogService.delete("Delete item?", msg)
           .then(()=>{
-            that.menuSectionCtrl.section.removeItem(this.item.id)
+            deleteAction([that.item.id])
               .then(()=>{
                 that.Snack.show('Item deleted');
                 if (isInSection){
@@ -98,13 +100,14 @@ export default class menuItemController {
   }
 
   /* @ngInject */
-  constructor($q, Snack, DialogService, BroadcastEvents, $rootScope) {
+  constructor($q, Snack, DialogService, BroadcastEvents, $rootScope, $stateParams) {
     'ngInject';
     this.$q =$q;
     this.Snack = Snack;
     this.DialogService = DialogService;
     this.type="menuItem";
     this.setCardActions();
+    this.$stateParams = $stateParams;
 
 
     $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU,(event, entity, type)=>{
