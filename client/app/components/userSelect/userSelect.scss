@@ -5,6 +5,9 @@
   overflow: hidden;
 
   &>md-menu {
+     span{
+        color: #FAFAFA;
+      }
       &>button{
         max-width: 100%;
           &>span{

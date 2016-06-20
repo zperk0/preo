@@ -2,8 +2,12 @@
 @import '../../shared/styles/variables.scss';
 
 .card-item{
-  border:1px solid #eeeeee;
+  border:1px solid #E0E0E0;
   position: relative;
+
+  &:hover{
+    cursor: pointer;
+  }
 
   &.card-item-new {
     position: relative;
@@ -34,6 +38,11 @@
     & > md-card-title{
       min-height: 60px;
       &:hover{
+
+        .item-actions{
+          display: block;
+        }
+
         .arrow-icon{
           opacity: 1;
         }
@@ -41,6 +50,9 @@
       padding:10px 0 10px 16px;
       button{
         margin-right:-16px
+      }
+      .item-actions{
+        display: none;
       }
       .arrow-icon{
         opacity: 0;

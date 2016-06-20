@@ -20,9 +20,13 @@
   }
   .menu-content{
     overflow: auto;
+    padding-right:40%;
+  }
+  .main-content-right ~ .menu-content {
+    padding-right:0;
   }
   .main-content-right{
-    margin:24px 16px 24px 4px;
+    margin:24px 16px;
   }
 
   .main-content-left{

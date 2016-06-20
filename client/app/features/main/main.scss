@@ -1,6 +1,10 @@
 @import '../../shared/styles/variables';
 
 .content-holder{
-   background: #fafafa;
+   background: #f5f5f5;
 }
 
+
+.row-reverse{
+  flex-direction: row-reverse !important;
+}

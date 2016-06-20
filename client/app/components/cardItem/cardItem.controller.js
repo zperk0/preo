@@ -3,8 +3,8 @@ export default class cardItemController {
     return "cardItemController";
   }
 
-  toggleCardActions($event){
-    this.showCardActions=!this.showCardActions;
+  toggleCardActions($event, newStatus){
+    this.showCardActions= newStatus !== undefined ? newStatus : !this.showCardActions;
     $event.stopPropagation();
   }
 

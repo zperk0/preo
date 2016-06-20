@@ -7,10 +7,16 @@
 
 
   &>md-menu {
+    width: 100%;
+      span{
+        color: #FAFAFA;
+      }
       &>button{
-        max-width: 100%;
-          &>span{
-            float:left;
+        margin: 0;
+        padding: 0 14px;
+        width: 100%;
+        text-align: left;
+        &>span{
             text-transform: none;
             font-size:15px;
             font-weight: 500;

@@ -1,8 +1,13 @@
 html {
 
+  md-sidenav{
+    max-width:248px;
+  }
+
   .menu {
     .main-content-right .contextual-right-menu {
       position: relative;
+      margin:0;
     }
   }
 }

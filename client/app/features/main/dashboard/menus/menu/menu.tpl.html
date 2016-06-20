@@ -3,8 +3,11 @@
     <div flex class='menu-name'>{{vm.menu.name}}</div>
     <md-button class="md-primary" translate>Show modifiers</md-button>
   </div>
-  <div flex layout="row" layout-align="start stretch">
-    <div class="menu-content" flex="60">
+  <div class="row-reverse" flex layout="row" layout-align="start stretch">
+    <div flex="40" class='main-content-right' ng-if="vm.showingContextualMenu">
+      <contextual-menu on-submit="vm.contextualSubmit" type="vm.showingContextualMenu"  entity="vm.contextualEntity"></contextual-menu>
+    </div>
+    <div flex class="menu-content" ng-class="{'flex-60':vm.showingContextualMenu}">
       <div class='main-content-left' dnd-list="vm.menu.sections" dnd-allowed-types="vm.allowedDropTypes">
         <menu-section
           ng-repeat="section in vm.menu.sections"
@@ -17,9 +20,6 @@
           ></menu-section>
         <menu-section menu-id="vm.menu.id"></menu-section>
       </div>
-    </div>
-    <div flex="40" class='main-content-right'>
-      <contextual-menu on-submit="vm.contextualSubmit" type="vm.showingContextualMenu" ng-if="vm.showingContextualMenu" entity="vm.contextualEntity"></contextual-menu>
     </div>
   </div>
 </div>

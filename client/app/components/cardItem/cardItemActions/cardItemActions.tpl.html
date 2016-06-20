@@ -1,5 +1,5 @@
 <div class='card-item-actions'>
-  <md-card-actions ng-if="vm.showCardActions" class="hidden-card-actions" layout="row" layout-align="end center" ng-click="vm.toggleCardActions($event)">
+  <md-card-actions ng-if="vm.showCardActions" class="hidden-card-actions" layout="row" layout-align="end center" ng-click="vm.toggleCardActions($event)" ng-mouseleave="onMouseLeave($event)">
     <md-button ng-if="vm.cardItemActions.onEdit" class="md-icon-button" ng-click="vm.cardItemActions.onEdit($event)">
       <icon>edit</icon>
       <md-tooltip md-direction="bottom">

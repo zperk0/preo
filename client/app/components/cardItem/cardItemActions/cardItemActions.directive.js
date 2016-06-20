@@ -13,6 +13,11 @@ export default function cardItemActions(){
     require:"^cardItem",
     link: (scope, el, attr, cardItemCtrl) => {
       scope.vm = cardItemCtrl;
+
+      scope.onMouseLeave = ($event)=>{
+        console.log(" on mouse leaving")
+        cardItemCtrl.toggleCardActions($event, false);
+      }
     }
   };
 }
