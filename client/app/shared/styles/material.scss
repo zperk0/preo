@@ -32,27 +32,59 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
 }
 
 
-.md-button {
+//override material
 
-  &.md-primary {
-    color:$colorPrimary;
+#webappv2{
 
-    &.md-fab {
-      background-color:$colorPrimary;
-      md-icon{
-        span{
-          color:white;
+  .md-button {
+
+    &.md-primary {
+      color:$colorPrimary;
+
+      &.md-fab {
+        background-color:$colorPrimary;
+        md-icon{
+          span{
+            color:white;
+          }
+        }
+        &:not([disabled]):hover{
+          background-color:$colorPrimaryDarker;
         }
       }
-      &:not([disabled]):hover{
-        background-color:$colorPrimaryDarker;
+    }
+
+    &.md-raised{
+       background-color:$colorPrimary;
+       color:white;
+    }
+
+  }
+
+
+  md-input-container {
+    label{
+      @include transition(0.2s);
+    }
+
+    &.md-input-has-value, &.md-input-focused{
+      label{
+        &:not(md-no-float){
+          font-size:75%;
+          transform:translate3d(0,6px,0);
+        }
+      }
+    }
+
+    &:not(.md-input-invalid) {
+      &.md-input-focused {
+        label{
+          color:$colorPrimary;
+        }
+        .md-input{
+          border-color:$colorPrimary;
+        }
       }
     }
   }
-
-  &.md-raised{
-     background-color:$colorPrimary;
-     color:white;
-  }
-
 }

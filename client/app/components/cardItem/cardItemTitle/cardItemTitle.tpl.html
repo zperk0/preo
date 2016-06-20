@@ -1,8 +1,8 @@
-<md-card-title layout="row" layout-align="start center" >
+<md-card-title layout="row" layout-align="start center" ng-class="{invisible:hasVisible && showVisible()}" >
     <div flex>
       <icon class='visibility' ng-if="hasVisible && showVisible()">visibility_off</icon>
       <span ng-transclude flex></span>
-      <icon class='arrow-icon' ng-if="showDropdown">arrow_drop_down</icon>
+      <icon class='arrow-icon' ng-if="showDropdown">{{vm.expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
     </div>
     <md-button class="md-icon-button item-actions" ng-if="vm.cardItemActions" ng-click="vm.toggleCardActions($event)">
       <icon>more_horiz</icon>

@@ -98,7 +98,7 @@ export default class menuSectionController {
   }
 
   toggleExpanded(){
-    this.section.$expanded=!this.section.$expanded;
+    this.menuCtrl.expandSection(this.section);
     this.$stateParams.sectionId = this.section.id;
   }
 
@@ -116,7 +116,7 @@ export default class menuSectionController {
         that.menuCtrl.toggleContextualMenu(that.section,that.type, that.saveSection.bind(that));
       },
       onDelete: ($event)=>{
-        that.DialogService.delete("Delete section?", "Are you sure you want to delete this section? The items in this section will not be deleted.")
+        that.DialogService.delete(that.LabelService.TITLE_DELETE_SECTION, that.LabelService.CONTENT_DELETE_SECTION)
           .then(()=>{
             that.section.delete()
               .then(()=>{
@@ -139,12 +139,13 @@ export default class menuSectionController {
   }
 
   /* @ngInject */
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams) {
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService) {
     'ngInject';
     this.$q =$q;
     this.Snack = Snack;
     this.$stateParams = $stateParams;
-    this.DialogService =DialogService;
+    this.DialogService = DialogService;
+    this.LabelService = LabelService;
     this.type = 'menuSection'; //type for contextual menu
     this.setCardActions();
     this.menuItemType = 'menuItem';

@@ -2,8 +2,8 @@
 
 require('jscore/preoday/preoday.min.js');
 
-import './app.scss';
 import 'angular-material/angular-material.min.css';
+import './app.scss';
 
 import angular from 'angular';
 import uirouter from 'angular-ui-router';

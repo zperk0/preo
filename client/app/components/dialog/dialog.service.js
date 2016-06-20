@@ -22,6 +22,7 @@ export default class DialogService {
     return this.$mdDialog.show({
       template:require('./dialog.tpl.html'),
       scope:newScope,
+      focusOnOpen:false,
       controller: DeleteController
     });
   }

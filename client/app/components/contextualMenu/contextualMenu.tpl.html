@@ -3,7 +3,7 @@
     <md-card-content ng-if="vm.type==='menuSection'">
        <md-input-container class="md-block">
           <label translate>Section name</label>
-          <input type="text" required name="entityName" ng-model="vm.entity.name">
+          <input type="text" required name="entityName" ng-model="vm.entity.name" md-maxlength="100">
           <div ng-messages="contextualForm.entityName.$error">
             <div ng-message="required" translate>This is required.</div>
           </div>
@@ -16,14 +16,14 @@
         <md-card-content>
            <md-input-container class="md-block">
               <label translate>Item name</label>
-              <input type="text" required name="entityName" ng-model="vm.entity.name">
+              <input type="text" required name="entityName" ng-model="vm.entity.name" md-maxlength="100">
               <div ng-messages="contextualForm.entityName.$error">
                 <div ng-message="required" translate>This is required.</div>
               </div>
           </md-input-container>
           <md-input-container class="md-block">
               <label translate>Description</label>
-              <input type="text" name="entityDescription" ng-model="vm.entity.description">
+              <textarea type="text" name="entityDescription" md-maxlength="1000" ng-model="vm.entity.description"></textarea>
           </md-input-container>
           <md-radio-group class='size' ng-model="vm.entity.$size">
             <md-radio-button value="0" class="md-primary md-hue-2">Single Size</md-radio-button>

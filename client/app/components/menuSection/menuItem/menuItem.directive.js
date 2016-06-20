@@ -20,7 +20,8 @@ export default function menuItem($compile){
       scope.vm.menuCtrl = ctrls[0].menuCtrl;
       if (!scope.vm.item || scope.vm.item.id === -1){
         const newEl = angular.element(require("./menuItemNew.tpl.html"));
-        angular.element(el[0]).replaceWith(newEl);
+        el.empty();
+        el.append(newEl);
         $compile(newEl)(scope).scope();
       }
     }

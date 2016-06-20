@@ -71,11 +71,11 @@ export default class menuItemController {
       },
       onDelete: ($event)=>{
         const isInSection = that.menuSectionCtrl ? true : false;
-        const msg = isInSection ? "Are you sure you want to remove this item from this section?" : "Are you sure you want to permanently delete this item?";
+        const msg = isInSection ? that.LabelService.CONTENT_DELETE_ITEM_SECTION : that.LabelService.CONTENT_DELETE_ITEM;
 
         // call Preoday.Item or Preoday.Section method to delete item or remove from section
         const deleteAction = isInSection ? that.menuSectionCtrl.section.removeItems.bind(that.menuSectionCtrl.section) : that.item.delete.bind(item);
-        that.DialogService.delete("Delete item?", msg)
+        that.DialogService.delete(that.LabelService.TITLE_DELETE_ITEM, msg)
           .then(()=>{
             deleteAction([that.item.id])
               .then(()=>{
@@ -100,11 +100,12 @@ export default class menuItemController {
   }
 
   /* @ngInject */
-  constructor($q, Snack, DialogService, BroadcastEvents, $rootScope, $stateParams) {
+  constructor($q, Snack, DialogService, BroadcastEvents, $rootScope, $stateParams, LabelService) {
     'ngInject';
     this.$q =$q;
     this.Snack = Snack;
     this.DialogService = DialogService;
+    this.LabelService = LabelService;
     this.type="menuItem";
     this.setCardActions();
     this.$stateParams = $stateParams;

@@ -88,6 +88,17 @@ export default class menuController {
     this.error = this.ErrorService[error];
   }
 
+  expandSection(section){
+    this.menu.sections.forEach((s)=>{
+      if (s.id === section.id){
+        s.$expanded = !s.$expanded;
+      } else {
+        s.$expanded = false;
+      }
+
+    });
+  }
+
   handleFinishLoading(dataMenu){
     if (dataMenu && this.initialExpandedSection){
       console.log("in here", this.initialExpandedSection)

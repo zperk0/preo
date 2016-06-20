@@ -15,8 +15,7 @@ export default function cardItemActions(){
       scope.vm = cardItemCtrl;
 
       scope.onMouseLeave = ($event)=>{
-        console.log(" on mouse leaving")
-        cardItemCtrl.toggleCardActions($event, false);
+        // cardItemCtrl.toggleCardActions($event, false);
       }
     }
   };

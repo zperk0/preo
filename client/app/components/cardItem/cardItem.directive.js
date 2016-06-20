@@ -8,6 +8,7 @@ export default function cardItem(){
     scope:{
       cardItemActions:"=?",
       selected:"=?",
+      expanded:"=?",
       draggable:"=?",
       allowedTypes:"=?"
     },

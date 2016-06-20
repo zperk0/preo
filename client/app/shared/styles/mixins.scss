@@ -22,3 +22,19 @@
   user-select: none;           /* Non-prefixed version, currently
                                   not supported by any browser */
 }
+
+@mixin transition($time:0.3s){
+  transition: all $time linear;
+  -webkit-transition: all $time linear;
+  -o-transition: all $time linear;
+  -ms-transition: all $time linear;
+  -moz-transition: all $time linear;
+}
+
+@mixin materialRaisedShadow(){
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.26), 0px 2px 10px 0px rgba(0,0,0,0.16);
+}
+
+@mixin materialRaisedShadow2(){
+  box-shadow: 0px 8px 17px 0px rgba(0,0,0,0.20), 0px 6px 20px 0px rgba(0,0,0,0.19);
+}

@@ -2,6 +2,8 @@
 
 .contextual-right-menu {
   margin:0;
+  @include materialRaisedShadow();
+  border-radius: 2px;
 
   md-card-actions{
     border-top:1px solid #E0E0E0;
@@ -15,7 +17,7 @@
 
     md-tab-item{
       span{
-        color: #000000;
+        color: #424242;
       }
 
       &.md-active{

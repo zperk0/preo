@@ -17,7 +17,8 @@ export default function menuSection($compile){
       ctrl.menuCtrl = el.parent().controller();
       if (!ctrl.section || ctrl.section.id === -1){
         const newEl = angular.element(require("./menuSectionNew.tpl.html"));
-        angular.element(el[0]).replaceWith(newEl);
+        el.empty();
+        el.append(newEl);
         $compile(newEl)(scope).scope();
       }
 

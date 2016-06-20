@@ -1,15 +1,38 @@
+$heightMenuItemCard:48px;
+
 .menu-item {
-  .price {
-    float: right;
-    padding-top: 6px;
-  }
+  margin: 0 14px;
+  .card-item {
+    margin-top:0;
+    &:not(.expanded){
+      max-height: 48px;
+      .hidden-card-actions{
+        padding-top:0;
+      }
+    }
 
-  md-card-title{
-    max-height: 48px;
-    min-height: auto;
+    &.expanded{
+      .hidden-card-actions{
+        align-items: flex-start;
+        padding-top: 6px;
+      }
+    }
+    md-card-title{
+      max-height: $heightMenuItemCard;
+      min-height: auto;
 
-    .name, .price{
-      font-size:13px;
+      .price {
+        float: right;
+        padding-top: 6px;
+      }
+
+      .name, .price{
+        font-size:13px;
+      }
+    }
+    &.card-item-new{
+
+      min-height:$heightMenuItemCard;
     }
   }
 }
