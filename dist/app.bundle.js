@@ -75964,7 +75964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      scope.vm = cardItemCtrl;
 
 	      scope.onMouseLeave = function ($event) {
-	        // cardItemCtrl.toggleCardActions($event, false);
+	        cardItemCtrl.toggleCardActions($event, false);
 	      };
 	    }
 	  };
