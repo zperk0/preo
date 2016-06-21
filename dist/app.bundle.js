@@ -81612,12 +81612,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    var xhrSend = _request.send;
-	    _request.send = function(body) {     
-	      for (var key in Headers) {      
+	    _request.send = function(body) {
+	      for (var key in Headers) {
 	        if (Headers.hasOwnProperty(key)) {
 	          this.setRequestHeader(key, Headers[key]);
 	        }
-	      } 
+	      }
 
 	      if (body instanceof Object) {
 	        body = UtilsService.clone(body);
@@ -81685,8 +81685,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      Headers[newHeaders] = value;
 	    } else if (newHeaders instanceof Object){
 	      Headers = UtilsService.extend(Headers, newHeaders);
-	    } 
-	    return Headers; 
+	    }
+	    return Headers;
 	  };
 
 	  return exports;
@@ -83326,7 +83326,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			UtilsService.extend(this, item);
 
 			_addModifiers.call(this);
-	    _setTags.call(this);
+	    // _setTags.call(this);
 			if (this.mealDeal) {
 				_addMealDealSections.call(this);
 			}
