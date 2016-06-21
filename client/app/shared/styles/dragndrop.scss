@@ -1,21 +1,20 @@
 // COLORS
 @import 'variables.scss';
 
-
-//lement that's being dragged now
-.dndDragging{
-  //TODO need to apply box shadow here :(
-}
-
-//original element being dragged
-.dndDraggingSource{
-  display: none;
-}
-
 //destination before drop
-.dndPlaceholder{
-  display: block;
+.sv-placeholder{
   background-color: #D1D1D1;
   min-height: 60px;
-  max-width: 100%;
+  margin: 8px;
+}
+
+.sv-helper{
+  @include materialRaisedShadow(2);
+}
+
+.sv-long-pressing{
+  transition: box-shadow 0.3s linear;
+  @include materialRaisedShadow(2);
+  cursor: move !important;
+
 }

@@ -4,30 +4,17 @@ export default class menuController {
     return "menuController";
   }
 
-  //this library copies the object but doesn't keep the type, we still need the prototype methods
-  onSectionMoved($index){
-    let originalSection = this.menu.sections[$index];
-    let sectionNewIndex = -1;
+  onSectionMoveStart(){
+    console.log("start arguments", arguments);
+  }
+  onSectionMoveStop($item, $part, $index){
+    console.log("stop arguments", console.log($index, $part[$index]));
+    return false;
+  }
 
-    //find the new section index by comparing ids, first match with a different $index is the new position of the section
-    this.menu.sections.forEach((s,index)=>{
-      if (sectionNewIndex === -1 && s.id === originalSection.id && index !== $index){
-        sectionNewIndex = index;
-      }
-    })
-
-    // Remove Section from array to be repositioned
-    this.menu.sections.splice($index, 1);
-
-    // we changed the array, if the Object is after the Section, we just changed the index of the section by one, removing one fixes that
-    if (sectionNewIndex > $index){
-      sectionNewIndex-=1;
-    }
-
-    // Remove Object created by library and position section in it's place
-    this.menu.sections.splice(sectionNewIndex, 1, originalSection);
-
+  onSectionMoved($item, $partFrom, $partTo, $indexFrom, $indexTo){
     //update all sections
+    console.log("on section moved, updating");
     this.menu.sections.forEach((s, index)=>{
       s.position=index*1000;
       s.update();

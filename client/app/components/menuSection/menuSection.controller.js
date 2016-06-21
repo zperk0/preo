@@ -15,28 +15,6 @@ export default class menuSectionController {
 
 
   onItemMoved($index){
-    console.log("this", this.section)
-    let originalItem = this.section.items[$index];
-    let sectionNewIndex = -1;
-
-    //find the new section index by comparing ids, first match with a different $index is the new position of the section
-    this.section.items.forEach((s,index)=>{
-      if (sectionNewIndex === -1 && s.id === originalItem.id && index !== $index){
-        sectionNewIndex = index;
-      }
-    })
-
-    // Remove Section from array to be repositioned
-    this.section.items.splice($index, 1);
-
-    // we changed the array, if the Object is after the Section, we just changed the index of the section by one, removing one fixes that
-    if (sectionNewIndex > $index){
-      sectionNewIndex-=1;
-    }
-
-    // Remove Object created by library and position section in it's place
-    this.section.items.splice(sectionNewIndex, 1, originalItem);
-
     //update all sections
     this.section.items.forEach((i, index)=>{
       i.position=index*1000;

@@ -1,5 +1,15 @@
 @import '../../shared/styles/variables';
 
 .menu-section{
+  position: relative;
+  margin:8px;
+  transition: box-shadow 0.3s linear;
 
+  &>md-card{
+    margin:0;
+  }
+
+  .sv-placeholder{
+    margin:8px 22px;
+  }
 }

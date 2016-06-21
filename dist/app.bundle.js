@@ -115,9 +115,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularMessages2 = _interopRequireDefault(_angularMessages);
 
-	var _angularDragAndDropLists = __webpack_require__(19);
+	var _angularSortableView = __webpack_require__(19);
 
-	var _angularDragAndDropLists2 = _interopRequireDefault(_angularDragAndDropLists);
+	var _angularSortableView2 = _interopRequireDefault(_angularSortableView);
 
 	var _app = __webpack_require__(20);
 
@@ -143,27 +143,27 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _shared2 = _interopRequireDefault(_shared);
 
-	var _main = __webpack_require__(29);
+	var _main = __webpack_require__(30);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _error = __webpack_require__(245);
+	var _error = __webpack_require__(246);
 
 	var _error2 = _interopRequireDefault(_error);
 
-	var _auth = __webpack_require__(252);
+	var _auth = __webpack_require__(253);
 
 	var _auth2 = _interopRequireDefault(_auth);
 
-	var _notFound = __webpack_require__(264);
+	var _notFound = __webpack_require__(265);
 
 	var _notFound2 = _interopRequireDefault(_notFound);
 
-	var _dialog = __webpack_require__(270);
+	var _dialog = __webpack_require__(271);
 
 	var _dialog2 = _interopRequireDefault(_dialog);
 
-	var _snack = __webpack_require__(275);
+	var _snack = __webpack_require__(276);
 
 	var _snack2 = _interopRequireDefault(_snack);
 
@@ -171,7 +171,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// Import Style
 
-	__webpack_require__(281);
+	__webpack_require__(282);
 
 	// Import base modules
 
@@ -183,54 +183,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	//Issue with ES6 Import, change this when it's fixed https://github.com/moment/moment/issues/2608
-	window.moment = __webpack_require__(282);
+	window.moment = __webpack_require__(283);
 
 	exports.default = _angular2.default.module('webapp', [
-	/* external */_angularUiRouter2.default, _angularTranslate2.default, _angularAnimate2.default, _angularMaterial2.default, _angularAria2.default, _angularMessages2.default, 'dndLists',
+	/* external */_angularUiRouter2.default, _angularTranslate2.default, _angularAnimate2.default, _angularMaterial2.default, _angularAria2.default, _angularMessages2.default, 'angular-sortable-view',
 	/* directives */_dialog2.default, _snack2.default,
 	/* internal */_shared2.default, _main2.default, _error2.default, _auth2.default, _notFound2.default]).config(_app2.default).run(_app4.default).config(_app6.default).constant("AppConstants", _appConstants2.default).constant("BroadcastEvents", _appBroadcastEvents2.default).name;
 
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(2);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(4)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./app.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./app.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
+	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(3)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n@font-face {\n  font-family: 'Material Icons';\n  font-style: normal;\n  font-weight: 400;\n  src: url(/fonts/material.ttf) format(\"truetype\"), url(/fonts/material.svg) format(\"svg\"), url(/fonts/material.woff2) format(\"woff2\"); }\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 24px;\n  line-height: 1;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n  -webkit-touch-callout: none;\n  /* iOS Safari */\n  -webkit-user-select: none;\n  /* Chrome/Safari/Opera */\n  -khtml-user-select: none;\n  /* Konqueror */\n  -moz-user-select: none;\n  /* Firefox */\n  -ms-user-select: none;\n  /* Internet Explorer/Edge */\n  user-select: none;\n  /* Non-prefixed version, currently\n                                  not supported by any browser */ }\n\n.md-button.md-primary {\n  color: #0288D1; }\n  .md-button.md-primary.md-fab {\n    background-color: #0288D1; }\n    .md-button.md-primary.md-fab md-icon span {\n      color: white; }\n    .md-button.md-primary.md-fab:not([disabled]):hover {\n      background-color: #0288FF; }\n\n.md-button.md-raised {\n  background-color: #0288D1;\n  color: white; }\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.no-select {\n  -webkit-tap-highlight-color: transparent;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Regular.ttf); }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Medium.ttf);\n  font-weight: 500; }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Light.ttf);\n  font-weight: 300; }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Bold.ttf);\n  font-weight: 700; }\n\n/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.dndDraggingSource {\n  display: none; }\n\n.dndPlaceholder {\n  display: block;\n  background-color: #D1D1D1;\n  min-height: 60px;\n  max-width: 100%; }\n\n* {\n  box-sizing: border-box;\n  font-family: Roboto;\n  -webkit-font-smoothing: antialiased; }\n  *:focus {\n    outline: none; }\n\nhtml {\n  min-width: 1024px;\n  max-height: 100%;\n  overflow-y: hidden;\n  overflow-x: auto; }\n\n.maxHeightScreen {\n  height: 100vh; }\n  .maxHeightScreen.minus-toolbar {\n    height: calc(100vh - 64px); }\n\n.ellipsis {\n  text-overflow: ellipsis;\n  max-width: 90%;\n  overflow: hidden;\n  white-space: no-wrap; }\n\n@media (max-width: 1280px) {\n  html .user-select {\n    max-width: 250px; }\n  html md-sidenav {\n    max-width: 278px; } }\n\n@media (max-width: 1024px) {\n  html .menu .main-content-right .contextual-right-menu {\n    position: relative; } }\n", ""]);
-
-	// exports
-
-
-/***/ },
+/* 2 */,
 /* 3 */
 /***/ function(module, exports) {
 
@@ -540,12 +507,45 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 5 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(6);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./app.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./app.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
-/* 6 */,
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n@font-face {\n  font-family: 'Material Icons';\n  font-style: normal;\n  font-weight: 400;\n  src: url(/fonts/material.ttf) format(\"truetype\"), url(/fonts/material.svg) format(\"svg\"), url(/fonts/material.woff2) format(\"woff2\"); }\n\n.material-icons {\n  font-family: 'Material Icons';\n  font-weight: normal;\n  font-style: normal;\n  font-size: 24px;\n  line-height: 1;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-feature-settings: 'liga';\n  -webkit-font-smoothing: antialiased;\n  -webkit-touch-callout: none;\n  /* iOS Safari */\n  -webkit-user-select: none;\n  /* Chrome/Safari/Opera */\n  -khtml-user-select: none;\n  /* Konqueror */\n  -moz-user-select: none;\n  /* Firefox */\n  -ms-user-select: none;\n  /* Internet Explorer/Edge */\n  user-select: none;\n  /* Non-prefixed version, currently\n                                  not supported by any browser */ }\n\n#webappv2 .md-button.md-primary {\n  color: #0288D1; }\n  #webappv2 .md-button.md-primary.md-fab {\n    background-color: #0288D1; }\n    #webappv2 .md-button.md-primary.md-fab md-icon span {\n      color: white; }\n    #webappv2 .md-button.md-primary.md-fab:not([disabled]):hover {\n      background-color: #0288FF; }\n\n#webappv2 .md-button.md-raised {\n  background-color: #0288D1;\n  color: white; }\n\n#webappv2 md-input-container label {\n  transition: all 0.2s linear;\n  -webkit-transition: all 0.2s linear;\n  -o-transition: all 0.2s linear;\n  -ms-transition: all 0.2s linear;\n  -moz-transition: all 0.2s linear; }\n\n#webappv2 md-input-container.md-input-has-value label:not(md-no-float), #webappv2 md-input-container.md-input-focused label:not(md-no-float) {\n  font-size: 75%;\n  transform: translate3d(0, 6px, 0); }\n\n#webappv2 md-input-container:not(.md-input-invalid).md-input-focused label {\n  color: #0288D1; }\n\n#webappv2 md-input-container:not(.md-input-invalid).md-input-focused .md-input {\n  border-color: #0288D1; }\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.no-select {\n  -webkit-tap-highlight-color: transparent;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Regular.ttf); }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Medium.ttf);\n  font-weight: 500; }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Light.ttf);\n  font-weight: 300; }\n\n@font-face {\n  font-family: Roboto;\n  src: url(/fonts/Roboto-Bold.ttf);\n  font-weight: 700; }\n\n/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.sv-placeholder {\n  background-color: #D1D1D1;\n  min-height: 60px;\n  margin: 8px; }\n\n.sv-helper {\n  box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19); }\n\n.sv-long-pressing {\n  transition: box-shadow 0.3s linear;\n  box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);\n  cursor: move !important; }\n\n* {\n  box-sizing: border-box;\n  font-family: Roboto;\n  -webkit-font-smoothing: antialiased; }\n  *:focus {\n    outline: none; }\n\nhtml {\n  min-width: 1024px;\n  max-height: 100%;\n  overflow-y: hidden;\n  overflow-x: auto; }\n\n.maxHeightScreen {\n  height: 100vh; }\n  .maxHeightScreen.minus-toolbar {\n    height: calc(100vh - 64px); }\n\n.ellipsis {\n  text-overflow: ellipsis;\n  max-width: 90%;\n  overflow: hidden;\n  white-space: no-wrap; }\n\n@media (max-width: 1280px) {\n  html .user-select {\n    max-width: 250px; }\n  html md-sidenav {\n    max-width: 248px; } }\n\n@media (max-width: 1024px) {\n  html md-sidenav {\n    max-width: 248px; }\n  html .menu .main-content-right .contextual-right-menu {\n    position: relative;\n    margin: 0; } }\n", ""]);
+
+	// exports
+
+
+/***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -72204,597 +72204,682 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 19 */
 /***/ function(module, exports) {
 
-	/**
-	 * angular-drag-and-drop-lists v1.4.0
-	 *
-	 * Copyright (c) 2014 Marcel Juenemann marcel@juenemann.cc
-	 * Copyright (c) 2014-2016 Google Inc.
-	 * https://github.com/marceljuenemann/angular-drag-and-drop-lists
-	 *
-	 * License: MIT
-	 */
-	angular.module('dndLists', [])
+	//
+	// Copyright Kamil Pękala http://github.com/kamilkp
+	// angular-sortable-view v0.0.15 2015/01/18
+	//
 
-	  /**
-	   * Use the dnd-draggable attribute to make your element draggable
-	   *
-	   * Attributes:
-	   * - dnd-draggable      Required attribute. The value has to be an object that represents the data
-	   *                      of the element. In case of a drag and drop operation the object will be
-	   *                      serialized and unserialized on the receiving end.
-	   * - dnd-selected       Callback that is invoked when the element was clicked but not dragged.
-	   *                      The original click event will be provided in the local event variable.
-	   * - dnd-effect-allowed Use this attribute to limit the operations that can be performed. Options:
-	   *                      - "move": The drag operation will move the element. This is the default.
-	   *                      - "copy": The drag operation will copy the element. Shows a copy cursor.
-	   *                      - "copyMove": The user can choose between copy and move by pressing the
-	   *                        ctrl or shift key. *Not supported in IE:* In Internet Explorer this
-	   *                        option will be the same as "copy". *Not fully supported in Chrome on
-	   *                        Windows:* In the Windows version of Chrome the cursor will always be the
-	   *                        move cursor. However, when the user drops an element and has the ctrl
-	   *                        key pressed, we will perform a copy anyways.
-	   *                      - HTML5 also specifies the "link" option, but this library does not
-	   *                        actively support it yet, so use it at your own risk.
-	   * - dnd-moved          Callback that is invoked when the element was moved. Usually you will
-	   *                      remove your element from the original list in this callback, since the
-	   *                      directive is not doing that for you automatically. The original dragend
-	   *                      event will be provided in the local event variable.
-	   * - dnd-canceled       Callback that is invoked if the element was dragged, but the operation was
-	   *                      canceled and the element was not dropped. The original dragend event will
-	   *                      be provided in the local event variable.
-	   * - dnd-copied         Same as dnd-moved, just that it is called when the element was copied
-	   *                      instead of moved. The original dragend event will be provided in the local
-	   *                      event variable.
-	   * - dnd-dragstart      Callback that is invoked when the element was dragged. The original
-	   *                      dragstart event will be provided in the local event variable.
-	   * - dnd-dragend        Callback that is invoked when the drag operation ended. Available local
-	   *                      variables are event and dropEffect.
-	   * - dnd-type           Use this attribute if you have different kinds of items in your
-	   *                      application and you want to limit which items can be dropped into which
-	   *                      lists. Combine with dnd-allowed-types on the dnd-list(s). This attribute
-	   *                      should evaluate to a string, although this restriction is not enforced.
-	   * - dnd-disable-if     You can use this attribute to dynamically disable the draggability of the
-	   *                      element. This is useful if you have certain list items that you don't want
-	   *                      to be draggable, or if you want to disable drag & drop completely without
-	   *                      having two different code branches (e.g. only allow for admins).
-	   *                      **Note**: If your element is not draggable, the user is probably able to
-	   *                      select text or images inside of it. Since a selection is always draggable,
-	   *                      this breaks your UI. You most likely want to disable user selection via
-	   *                      CSS (see user-select).
-	   *
-	   * CSS classes:
-	   * - dndDragging        This class will be added to the element while the element is being
-	   *                      dragged. It will affect both the element you see while dragging and the
-	   *                      source element that stays at it's position. Do not try to hide the source
-	   *                      element with this class, because that will abort the drag operation.
-	   * - dndDraggingSource  This class will be added to the element after the drag operation was
-	   *                      started, meaning it only affects the original element that is still at
-	   *                      it's source position, and not the "element" that the user is dragging with
-	   *                      his mouse pointer.
-	   */
-	  .directive('dndDraggable', ['$parse', '$timeout', 'dndDropEffectWorkaround', 'dndDragTypeWorkaround',
-	                      function($parse,   $timeout,   dndDropEffectWorkaround,   dndDragTypeWorkaround) {
-	    return function(scope, element, attr) {
-	      // Set the HTML5 draggable attribute on the element
-	      element.attr("draggable", "true");
+	;(function(window, angular){
+		'use strict';
+		/* jshint eqnull:true */
+		/* jshint -W041 */
+		/* jshint -W030 */
 
-	      // If the dnd-disable-if attribute is set, we have to watch that
-	      if (attr.dndDisableIf) {
-	        scope.$watch(attr.dndDisableIf, function(disabled) {
-	          element.attr("draggable", !disabled);
-	        });
-	      }
+		var module = angular.module('angular-sortable-view', []);
+		module.directive('svRoot', [function(){
+			function shouldBeAfter(elem, pointer, isGrid){
+				return isGrid ? elem.x - pointer.x < 0 : elem.y - pointer.y < 0;
+			}
+			function getSortableElements(key){
+				return ROOTS_MAP[key];
+			}
+			function removeSortableElements(key){
+				delete ROOTS_MAP[key];
+			}
 
-	      /**
-	       * When the drag operation is started we have to prepare the dataTransfer object,
-	       * which is the primary way we communicate with the target element
-	       */
-	      element.on('dragstart', function(event) {
-	        event = event.originalEvent || event;
+			var sortingInProgress;
+			var ROOTS_MAP = Object.create(null);
+			// window.ROOTS_MAP = ROOTS_MAP; // for debug purposes
 
-	        // Check whether the element is draggable, since dragstart might be triggered on a child.
-	        if (element.attr('draggable') == 'false') return true;
+			return {
+				restrict: 'A',
+				controller: ['$scope', '$attrs', '$interpolate', '$parse', function($scope, $attrs, $interpolate, $parse){
+					var mapKey = $interpolate($attrs.svRoot)($scope) || $scope.$id;
+					if(!ROOTS_MAP[mapKey]) ROOTS_MAP[mapKey] = [];
 
-	        // Serialize the data associated with this element. IE only supports the Text drag type
-	        event.dataTransfer.setData("Text", angular.toJson(scope.$eval(attr.dndDraggable)));
+					var that         = this;
+					var candidates;  // set of possible destinations
+					var $placeholder;// placeholder element
+					var options;     // sortable options
+					var $helper;     // helper element - the one thats being dragged around with the mouse pointer
+					var $original;   // original element
+					var $target;     // last best candidate
+					var isGrid       = false;
+					var isDisabled   = false;
+					var onSort       = $parse($attrs.svOnSort);
 
-	        // Only allow actions specified in dnd-effect-allowed attribute
-	        event.dataTransfer.effectAllowed = attr.dndEffectAllowed || "move";
+					$scope.$watch($parse($attrs.svDisabled), function(newVal, oldVal) {
+	 					isDisabled = newVal;
+	 				})
 
-	        // Add CSS classes. See documentation above
-	        element.addClass("dndDragging");
-	        $timeout(function() { element.addClass("dndDraggingSource"); }, 0);
+					// ----- hack due to https://github.com/angular/angular.js/issues/8044
+					$attrs.svOnStart = $attrs.$$element[0].attributes['sv-on-start'];
+					$attrs.svOnStart = $attrs.svOnStart && $attrs.svOnStart.value;
 
-	        // Workarounds for stupid browsers, see description below
-	        dndDropEffectWorkaround.dropEffect = "none";
-	        dndDragTypeWorkaround.isDragging = true;
+					$attrs.svOnStop = $attrs.$$element[0].attributes['sv-on-stop'];
+					$attrs.svOnStop = $attrs.svOnStop && $attrs.svOnStop.value;
+					// -------------------------------------------------------------------
 
-	        // Save type of item in global state. Usually, this would go into the dataTransfer
-	        // typename, but we have to use "Text" there to support IE
-	        dndDragTypeWorkaround.dragType = attr.dndType ? scope.$eval(attr.dndType) : undefined;
+					var onStart = $parse($attrs.svOnStart);
+					var onStop = $parse($attrs.svOnStop);
 
-	        // Try setting a proper drag image if triggered on a dnd-handle (won't work in IE).
-	        if (event._dndHandle && event.dataTransfer.setDragImage) {
-	          event.dataTransfer.setDragImage(element[0], 0, 0);
-	        }
+					this.sortingInProgress = function(){
+						return sortingInProgress;
+					};
 
-	        // Invoke callback
-	        $parse(attr.dndDragstart)(scope, {event: event});
+					this.sortingDisabled = function() {
+	 					return isDisabled;
+	 				};
 
-	        event.stopPropagation();
-	      });
+					if($attrs.svGrid){ // sv-grid determined explicite
+						isGrid = $attrs.svGrid === "true" ? true : $attrs.svGrid === "false" ? false : null;
+						if(isGrid === null)
+							throw 'Invalid value of sv-grid attribute';
+					}
+					else{
+						// check if at least one of the lists have a grid like layout
+						$scope.$watchCollection(function(){
+							return getSortableElements(mapKey);
+						}, function(collection){
+							isGrid = false;
+							var array = collection.filter(function(item){
+								return !item.container;
+							}).map(function(item){
+								return {
+									part: item.getPart().id,
+									y: item.element[0].getBoundingClientRect().top
+								};
+							});
+							var dict = Object.create(null);
+							array.forEach(function(item){
+								if(dict[item.part])
+									dict[item.part].push(item.y);
+								else
+									dict[item.part] = [item.y];
+							});
+							Object.keys(dict).forEach(function(key){
+								dict[key].sort();
+								dict[key].forEach(function(item, index){
+									if(index < dict[key].length - 1){
+										if(item > 0 && item === dict[key][index + 1]){
+											isGrid = true;
+										}
+									}
+								});
+							});
+						});
+					}
 
-	      /**
-	       * The dragend event is triggered when the element was dropped or when the drag
-	       * operation was aborted (e.g. hit escape button). Depending on the executed action
-	       * we will invoke the callbacks specified with the dnd-moved or dnd-copied attribute.
-	       */
-	      element.on('dragend', function(event) {
-	        event = event.originalEvent || event;
+					this.$moveUpdate = function(opts, mouse, svElement, svOriginal, svPlaceholder, originatingPart, originatingIndex){
+						var svRect = svElement[0].getBoundingClientRect();
+						if(opts.tolerance === 'element')
+							mouse = {
+								x: ~~(svRect.left + svRect.width/2),
+								y: ~~(svRect.top + svRect.height/2)
+							};
 
-	        // Invoke callbacks. Usually we would use event.dataTransfer.dropEffect to determine
-	        // the used effect, but Chrome has not implemented that field correctly. On Windows
-	        // it always sets it to 'none', while Chrome on Linux sometimes sets it to something
-	        // else when it's supposed to send 'none' (drag operation aborted).
-	        var dropEffect = dndDropEffectWorkaround.dropEffect;
-	        scope.$apply(function() {
-	          switch (dropEffect) {
-	            case "move":
-	              $parse(attr.dndMoved)(scope, {event: event});
-	              break;
-	            case "copy":
-	              $parse(attr.dndCopied)(scope, {event: event});
-	              break;
-	            case "none":
-	              $parse(attr.dndCanceled)(scope, {event: event});
-	              break;
-	          }
-	          $parse(attr.dndDragend)(scope, {event: event, dropEffect: dropEffect});
-	        });
+						sortingInProgress = true;
+						candidates = [];
+						if(!$placeholder){
+							if(svPlaceholder){ // custom placeholder
+								$placeholder = svPlaceholder.clone();
+								$placeholder.removeClass('ng-hide');
+							}
+							else{ // default placeholder
+								$placeholder = svOriginal.clone();
+								$placeholder.addClass('sv-visibility-hidden');
+								$placeholder.addClass('sv-placeholder');
+								$placeholder.css({
+									'height': svRect.height + 'px',
+									'width': svRect.width + 'px'
+								});
+							}
 
-	        // Clean up
-	        element.removeClass("dndDragging");
-	        $timeout(function() { element.removeClass("dndDraggingSource"); }, 0);
-	        dndDragTypeWorkaround.isDragging = false;
-	        event.stopPropagation();
-	      });
+							svOriginal.after($placeholder);
+							svOriginal.addClass('ng-hide');
 
-	      /**
-	       * When the element is clicked we invoke the callback function
-	       * specified with the dnd-selected attribute.
-	       */
-	      element.on('click', function(event) {
-	        if (!attr.dndSelected) return;
+							// cache options, helper and original element reference
+							$original = svOriginal;
+							options = opts;
+							$helper = svElement;
 
-	        event = event.originalEvent || event;
-	        scope.$apply(function() {
-	          $parse(attr.dndSelected)(scope, {event: event});
-	        });
+							onStart($scope, {
+								$helper: {element: $helper},
+								$part: originatingPart.model(originatingPart.scope),
+								$index: originatingIndex,
+								$item: originatingPart.model(originatingPart.scope)[originatingIndex]
+							});
+							$scope.$root && $scope.$root.$$phase || $scope.$apply();
+						}
 
-	        // Prevent triggering dndSelected in parent elements.
-	        event.stopPropagation();
-	      });
+						// ----- move the element
+						$helper[0].reposition({
+							x: mouse.x + document.body.scrollLeft - mouse.offset.x*svRect.width,
+							y: mouse.y + document.body.scrollTop - mouse.offset.y*svRect.height
+						});
 
-	      /**
-	       * Workaround to make element draggable in IE9
-	       */
-	      element.on('selectstart', function() {
-	        if (this.dragDrop) this.dragDrop();
-	      });
-	    };
-	  }])
+						// ----- manage candidates
+						getSortableElements(mapKey).forEach(function(se, index){
+							if(opts.containment != null){
+								// TODO: optimize this since it could be calculated only once when the moving begins
+								if(
+									!elementMatchesSelector(se.element, opts.containment) &&
+									!elementMatchesSelector(se.element, opts.containment + ' *')
+								) return; // element is not within allowed containment
+							}
 
-	  /**
-	   * Use the dnd-list attribute to make your list element a dropzone. Usually you will add a single
-	   * li element as child with the ng-repeat directive. If you don't do that, we will not be able to
-	   * position the dropped element correctly. If you want your list to be sortable, also add the
-	   * dnd-draggable directive to your li element(s). Both the dnd-list and it's direct children must
-	   * have position: relative CSS style, otherwise the positioning algorithm will not be able to
-	   * determine the correct placeholder position in all browsers.
-	   *
-	   * Attributes:
-	   * - dnd-list             Required attribute. The value has to be the array in which the data of
-	   *                        the dropped element should be inserted.
-	   * - dnd-allowed-types    Optional array of allowed item types. When used, only items that had a
-	   *                        matching dnd-type attribute will be dropable.
-	   * - dnd-disable-if       Optional boolean expresssion. When it evaluates to true, no dropping
-	   *                        into the list is possible. Note that this also disables rearranging
-	   *                        items inside the list.
-	   * - dnd-horizontal-list  Optional boolean expresssion. When it evaluates to true, the positioning
-	   *                        algorithm will use the left and right halfs of the list items instead of
-	   *                        the upper and lower halfs.
-	   * - dnd-dragover         Optional expression that is invoked when an element is dragged over the
-	   *                        list. If the expression is set, but does not return true, the element is
-	   *                        not allowed to be dropped. The following variables will be available:
-	   *                        - event: The original dragover event sent by the browser.
-	   *                        - index: The position in the list at which the element would be dropped.
-	   *                        - type: The dnd-type set on the dnd-draggable, or undefined if unset.
-	   *                        - external: Whether the element was dragged from an external source.
-	   * - dnd-drop             Optional expression that is invoked when an element is dropped on the
-	   *                        list. The following variables will be available:
-	   *                        - event: The original drop event sent by the browser.
-	   *                        - index: The position in the list at which the element would be dropped.
-	   *                        - item: The transferred object.
-	   *                        - type: The dnd-type set on the dnd-draggable, or undefined if unset.
-	   *                        - external: Whether the element was dragged from an external source.
-	   *                        The return value determines the further handling of the drop:
-	   *                        - false: The drop will be canceled and the element won't be inserted.
-	   *                        - true: Signalises that the drop is allowed, but the dnd-drop
-	   *                          callback already took care of inserting the element.
-	   *                        - otherwise: All other return values will be treated as the object to
-	   *                          insert into the array. In most cases you want to simply return the
-	   *                          item parameter, but there are no restrictions on what you can return.
-	   * - dnd-inserted         Optional expression that is invoked after a drop if the element was
-	   *                        actually inserted into the list. The same local variables as for
-	   *                        dnd-drop will be available. Note that for reorderings inside the same
-	   *                        list the old element will still be in the list due to the fact that
-	   *                        dnd-moved was not called yet.
-	   * - dnd-external-sources Optional boolean expression. When it evaluates to true, the list accepts
-	   *                        drops from sources outside of the current browser tab. This allows to
-	   *                        drag and drop accross different browser tabs. Note that this will allow
-	   *                        to drop arbitrary text into the list, thus it is highly recommended to
-	   *                        implement the dnd-drop callback to check the incoming element for
-	   *                        sanity. Furthermore, the dnd-type of external sources can not be
-	   *                        determined, therefore do not rely on restrictions of dnd-allowed-type.
-	   *
-	   * CSS classes:
-	   * - dndPlaceholder       When an element is dragged over the list, a new placeholder child
-	   *                        element will be added. This element is of type li and has the class
-	   *                        dndPlaceholder set. Alternatively, you can define your own placeholder
-	   *                        by creating a child element with dndPlaceholder class.
-	   * - dndDragover          Will be added to the list while an element is dragged over the list.
-	   */
-	  .directive('dndList', ['$parse', '$timeout', 'dndDropEffectWorkaround', 'dndDragTypeWorkaround',
-	                 function($parse,   $timeout,   dndDropEffectWorkaround,   dndDragTypeWorkaround) {
-	    return function(scope, element, attr) {
-	      // While an element is dragged over the list, this placeholder element is inserted
-	      // at the location where the element would be inserted after dropping
-	      var placeholder = getPlaceholderElement();
-	      var placeholderNode = placeholder[0];
-	      var listNode = element[0];
-	      placeholder.remove();
+							var rect = se.element[0].getBoundingClientRect();
+							var center = {
+								x: ~~(rect.left + rect.width/2),
+								y: ~~(rect.top + rect.height/2)
+							};
+							if(!se.container && // not the container element
+								(se.element[0].scrollHeight || se.element[0].scrollWidth)){ // element is visible
+								candidates.push({
+									element: se.element,
+									q: (center.x - mouse.x)*(center.x - mouse.x) + (center.y - mouse.y)*(center.y - mouse.y),
+									view: se.getPart(),
+									targetIndex: se.getIndex(),
+									after: shouldBeAfter(center, mouse, isGrid)
+								});
+							}
+							if(se.container && !se.element[0].querySelector('[sv-element]:not(.sv-placeholder):not(.sv-source)')){ // empty container
+								candidates.push({
+									element: se.element,
+									q: (center.x - mouse.x)*(center.x - mouse.x) + (center.y - mouse.y)*(center.y - mouse.y),
+									view: se.getPart(),
+									targetIndex: 0,
+									container: true
+								});
+							}
+						});
+						var pRect = $placeholder[0].getBoundingClientRect();
+						var pCenter = {
+							x: ~~(pRect.left + pRect.width/2),
+							y: ~~(pRect.top + pRect.height/2)
+						};
+						candidates.push({
+							q: (pCenter.x - mouse.x)*(pCenter.x - mouse.x) + (pCenter.y - mouse.y)*(pCenter.y - mouse.y),
+							element: $placeholder,
+							placeholder: true
+						});
+						candidates.sort(function(a, b){
+							return a.q - b.q;
+						});
 
-	      var horizontal = attr.dndHorizontalList && scope.$eval(attr.dndHorizontalList);
-	      var externalSources = attr.dndExternalSources && scope.$eval(attr.dndExternalSources);
+						candidates.forEach(function(cand, index){
+							if(index === 0 && !cand.placeholder && !cand.container){
+								$target = cand;
+								cand.element.addClass('sv-candidate');
+								if(cand.after)
+									cand.element.after($placeholder);
+								else
+									insertElementBefore(cand.element, $placeholder);
+							}
+							else if(index === 0 && cand.container){
+								$target = cand;
+								cand.element.append($placeholder);
+							}
+							else
+								cand.element.removeClass('sv-candidate');
+						});
+					};
 
-	      /**
-	       * The dragenter event is fired when a dragged element or text selection enters a valid drop
-	       * target. According to the spec, we either need to have a dropzone attribute or listen on
-	       * dragenter events and call preventDefault(). It should be noted though that no browser seems
-	       * to enforce this behaviour.
-	       */
-	      element.on('dragenter', function (event) {
-	        event = event.originalEvent || event;
-	        if (!isDropAllowed(event)) return true;
-	        event.preventDefault();
-	      });
+					this.$drop = function(originatingPart, index, options){
+						if(!$placeholder) return;
 
-	      /**
-	       * The dragover event is triggered "every few hundred milliseconds" while an element
-	       * is being dragged over our list, or over an child element.
-	       */
-	      element.on('dragover', function(event) {
-	        event = event.originalEvent || event;
+						if(options.revert){
+							var placeholderRect = $placeholder[0].getBoundingClientRect();
+							var helperRect = $helper[0].getBoundingClientRect();
+							var distance = Math.sqrt(
+								Math.pow(helperRect.top - placeholderRect.top, 2) +
+								Math.pow(helperRect.left - placeholderRect.left, 2)
+							);
 
-	        if (!isDropAllowed(event)) return true;
+							var duration = +options.revert*distance/200; // constant speed: duration depends on distance
+							duration = Math.min(duration, +options.revert); // however it's not longer that options.revert
 
-	        // First of all, make sure that the placeholder is shown
-	        // This is especially important if the list is empty
-	        if (placeholderNode.parentNode != listNode) {
-	          element.append(placeholder);
-	        }
+							['-webkit-', '-moz-', '-ms-', '-o-', ''].forEach(function(prefix){
+								if(typeof $helper[0].style[prefix + 'transition'] !== "undefined")
+									$helper[0].style[prefix + 'transition'] = 'all ' + duration + 'ms ease';
+							});
+							setTimeout(afterRevert, duration);
+							$helper.css({
+								'top': placeholderRect.top + document.body.scrollTop + 'px',
+								'left': placeholderRect.left + document.body.scrollLeft + 'px'
+							});
+						}
+						else
+							afterRevert();
 
-	        if (event.target !== listNode) {
-	          // Try to find the node direct directly below the list node.
-	          var listItemNode = event.target;
-	          while (listItemNode.parentNode !== listNode && listItemNode.parentNode) {
-	            listItemNode = listItemNode.parentNode;
-	          }
+						function afterRevert(){
+							sortingInProgress = false;
+							$placeholder.remove();
+							$helper.remove();
+							$original.removeClass('ng-hide');
 
-	          if (listItemNode.parentNode === listNode && listItemNode !== placeholderNode) {
-	            // If the mouse pointer is in the upper half of the child element,
-	            // we place it before the child element, otherwise below it.
-	            if (isMouseInFirstHalf(event, listItemNode)) {
-	              listNode.insertBefore(placeholderNode, listItemNode);
-	            } else {
-	              listNode.insertBefore(placeholderNode, listItemNode.nextSibling);
-	            }
-	          }
-	        } else {
-	          // This branch is reached when we are dragging directly over the list element.
-	          // Usually we wouldn't need to do anything here, but the IE does not fire it's
-	          // events for the child element, only for the list directly. Therefore, we repeat
-	          // the positioning algorithm for IE here.
-	          if (isMouseInFirstHalf(event, placeholderNode, true)) {
-	            // Check if we should move the placeholder element one spot towards the top.
-	            // Note that display none elements will have offsetTop and offsetHeight set to
-	            // zero, therefore we need a special check for them.
-	            while (placeholderNode.previousElementSibling
-	                 && (isMouseInFirstHalf(event, placeholderNode.previousElementSibling, true)
-	                 || placeholderNode.previousElementSibling.offsetHeight === 0)) {
-	              listNode.insertBefore(placeholderNode, placeholderNode.previousElementSibling);
-	            }
-	          } else {
-	            // Check if we should move the placeholder element one spot towards the bottom
-	            while (placeholderNode.nextElementSibling &&
-	                 !isMouseInFirstHalf(event, placeholderNode.nextElementSibling, true)) {
-	              listNode.insertBefore(placeholderNode,
-	                  placeholderNode.nextElementSibling.nextElementSibling);
-	            }
-	          }
-	        }
+							candidates = void 0;
+							$placeholder = void 0;
+							options = void 0;
+							$helper = void 0;
+							$original = void 0;
 
-	        // At this point we invoke the callback, which still can disallow the drop.
-	        // We can't do this earlier because we want to pass the index of the placeholder.
-	        if (attr.dndDragover && !invokeCallback(attr.dndDragover, event, getPlaceholderIndex())) {
-	          return stopDragover();
-	        }
+							// sv-on-stop callback
+							onStop($scope, {
+								$part: originatingPart.model(originatingPart.scope),
+								$index: index,
+								$item: originatingPart.model(originatingPart.scope)[index]
+							});
 
-	        element.addClass("dndDragover");
-	        event.preventDefault();
-	        event.stopPropagation();
-	        return false;
-	      });
+							if($target){
+								$target.element.removeClass('sv-candidate');
+								var spliced = originatingPart.model(originatingPart.scope).splice(index, 1);
+								var targetIndex = $target.targetIndex;
+								if($target.view === originatingPart && $target.targetIndex > index)
+									targetIndex--;
+								if($target.after)
+									targetIndex++;
+								$target.view.model($target.view.scope).splice(targetIndex, 0, spliced[0]);
 
-	      /**
-	       * When the element is dropped, we use the position of the placeholder element as the
-	       * position where we insert the transferred data. This assumes that the list has exactly
-	       * one child element per array element.
-	       */
-	      element.on('drop', function(event) {
-	        event = event.originalEvent || event;
+								// sv-on-sort callback
+								if($target.view !== originatingPart || index !== targetIndex)
+									onSort($scope, {
+										$partTo: $target.view.model($target.view.scope),
+										$partFrom: originatingPart.model(originatingPart.scope),
+										$item: spliced[0],
+										$indexTo: targetIndex,
+										$indexFrom: index
+									});
 
-	        if (!isDropAllowed(event)) return true;
+							}
+							$target = void 0;
 
-	        // The default behavior in Firefox is to interpret the dropped element as URL and
-	        // forward to it. We want to prevent that even if our drop is aborted.
-	        event.preventDefault();
+							$scope.$root && $scope.$root.$$phase || $scope.$apply();
+						}
+					};
 
-	        // Unserialize the data that was serialized in dragstart. According to the HTML5 specs,
-	        // the "Text" drag type will be converted to text/plain, but IE does not do that.
-	        var data = event.dataTransfer.getData("Text") || event.dataTransfer.getData("text/plain");
-	        var transferredObject;
-	        try {
-	          transferredObject = JSON.parse(data);
-	        } catch(e) {
-	          return stopDragover();
-	        }
+					this.addToSortableElements = function(se){
+						getSortableElements(mapKey).push(se);
+					};
+					this.removeFromSortableElements = function(se){
+						var elems = getSortableElements(mapKey);
+						var index = elems.indexOf(se);
+						if(index > -1){
+							elems.splice(index, 1);
+							if(elems.length === 0)
+								removeSortableElements(mapKey);
+						}
+					};
+				}]
+			};
+		}]);
 
-	        // Invoke the callback, which can transform the transferredObject and even abort the drop.
-	        var index = getPlaceholderIndex();
-	        if (attr.dndDrop) {
-	          transferredObject = invokeCallback(attr.dndDrop, event, index, transferredObject);
-	          if (!transferredObject) {
-	            return stopDragover();
-	          }
-	        }
+		module.directive('svPart', ['$parse', function($parse){
+			return {
+				restrict: 'A',
+				require: '^svRoot',
+				controller: ['$scope', function($scope){
+					$scope.$ctrl = this;
+					this.getPart = function(){
+						return $scope.part;
+					};
+					this.$drop = function(index, options){
+						$scope.$sortableRoot.$drop($scope.part, index, options);
+					};
+				}],
+				scope: true,
+				link: function($scope, $element, $attrs, $sortable){
+					if(!$attrs.svPart) throw new Error('no model provided');
+					var model = $parse($attrs.svPart);
+					if(!model.assign) throw new Error('model not assignable');
 
-	        // Insert the object into the array, unless dnd-drop took care of that (returned true).
-	        if (transferredObject !== true) {
-	          scope.$apply(function() {
-	            scope.$eval(attr.dndList).splice(index, 0, transferredObject);
-	          });
-	        }
-	        invokeCallback(attr.dndInserted, event, index, transferredObject);
+					$scope.part = {
+						id: $scope.$id,
+						element: $element,
+						model: model,
+						scope: $scope
+					};
+					$scope.$sortableRoot = $sortable;
 
-	        // In Chrome on Windows the dropEffect will always be none...
-	        // We have to determine the actual effect manually from the allowed effects
-	        if (event.dataTransfer.dropEffect === "none") {
-	          if (event.dataTransfer.effectAllowed === "copy" ||
-	              event.dataTransfer.effectAllowed === "move") {
-	            dndDropEffectWorkaround.dropEffect = event.dataTransfer.effectAllowed;
-	          } else {
-	            dndDropEffectWorkaround.dropEffect = event.ctrlKey ? "copy" : "move";
-	          }
-	        } else {
-	          dndDropEffectWorkaround.dropEffect = event.dataTransfer.dropEffect;
-	        }
+					var sortablePart = {
+						element: $element,
+						getPart: $scope.$ctrl.getPart,
+						container: true
+					};
+					$sortable.addToSortableElements(sortablePart);
+					$scope.$on('$destroy', function(){
+						$sortable.removeFromSortableElements(sortablePart);
+					});
+				}
+			};
+		}]);
 
-	        // Clean up
-	        stopDragover();
-	        event.stopPropagation();
-	        return false;
-	      });
+		module.directive('svElement', ['$parse', function($parse){
+			return {
+				restrict: 'A',
+				require: ['^svPart', '^svRoot'],
+				controller: ['$scope', function($scope){
+					$scope.$ctrl = this;
+				}],
+				link: function($scope, $element, $attrs, $controllers){
 
-	      /**
-	       * We have to remove the placeholder when the element is no longer dragged over our list. The
-	       * problem is that the dragleave event is not only fired when the element leaves our list,
-	       * but also when it leaves a child element -- so practically it's fired all the time. As a
-	       * workaround we wait a few milliseconds and then check if the dndDragover class was added
-	       * again. If it is there, dragover must have been called in the meantime, i.e. the element
-	       * is still dragging over the list. If you know a better way of doing this, please tell me!
-	       */
-	      element.on('dragleave', function(event) {
-	        event = event.originalEvent || event;
 
-	        element.removeClass("dndDragover");
-	        $timeout(function() {
-	          if (!element.hasClass("dndDragover")) {
-	            placeholder.remove();
-	          }
-	        }, 100);
-	      });
 
-	      /**
-	       * Checks whether the mouse pointer is in the first half of the given target element.
-	       *
-	       * In Chrome we can just use offsetY, but in Firefox we have to use layerY, which only
-	       * works if the child element has position relative. In IE the events are only triggered
-	       * on the listNode instead of the listNodeItem, therefore the mouse positions are
-	       * relative to the parent element of targetNode.
-	       */
-	      function isMouseInFirstHalf(event, targetNode, relativeToParent) {
-	        var mousePointer = horizontal ? (event.offsetX || event.layerX)
-	                                      : (event.offsetY || event.layerY);
-	        var targetSize = horizontal ? targetNode.offsetWidth : targetNode.offsetHeight;
-	        var targetPosition = horizontal ? targetNode.offsetLeft : targetNode.offsetTop;
-	        targetPosition = relativeToParent ? targetPosition : 0;
-	        return mousePointer < targetPosition + targetSize / 2;
-	      }
+					var sortableElement = {
+						element: $element,
+						getPart: $controllers[0].getPart,
+						getIndex: function(){
+							return $scope.$index;
+						}
+					};
+					$controllers[1].addToSortableElements(sortableElement);
+					$scope.$on('$destroy', function(){
+						$controllers[1].removeFromSortableElements(sortableElement);
+					});
 
-	      /**
-	       * Tries to find a child element that has the dndPlaceholder class set. If none was found, a
-	       * new li element is created.
-	       */
-	      function getPlaceholderElement() {
-	        var placeholder;
-	        angular.forEach(element.children(), function(childNode) {
-	          var child = angular.element(childNode);
-	          if (child.hasClass('dndPlaceholder')) {
-	            placeholder = child;
-	          }
-	        });
-	        return placeholder || angular.element("<li class='dndPlaceholder'></li>");
-	      }
+					// assume every element is draggable unless specified
+					$scope.$watch($parse($attrs.svElementDisabled), function(newVal, oldVal) {
+						if (newVal){
+							resetOnStartEvent(false);
+						} else {
+							resetOnStartEvent($element);
+						}
 
-	      /**
-	       * We use the position of the placeholder node to determine at which position of the array the
-	       * object needs to be inserted
-	       */
-	      function getPlaceholderIndex() {
-	        return Array.prototype.indexOf.call(listNode.children, placeholderNode);
-	      }
+	 				})
 
-	      /**
-	       * Checks various conditions that must be fulfilled for a drop to be allowed
-	       */
-	      function isDropAllowed(event) {
-	        // Disallow drop from external source unless it's allowed explicitly.
-	        if (!dndDragTypeWorkaround.isDragging && !externalSources) return false;
+					var handle = $element;
+					handle.on('mousedown touchstart', onMousedown);
+					$scope.$watch('$ctrl.handle', function(customHandle){
+						if(customHandle){
+							resetOnStartEvent(customHandle)
+						}
+					});
 
-	        // Check mimetype. Usually we would use a custom drag type instead of Text, but IE doesn't
-	        // support that.
-	        if (!hasTextMimetype(event.dataTransfer.types)) return false;
+					var helper;
+					$scope.$watch('$ctrl.helper', function(customHelper){
+						if(customHelper){
+							helper = customHelper;
+						}
+					});
 
-	        // Now check the dnd-allowed-types against the type of the incoming element. For drops from
-	        // external sources we don't know the type, so it will need to be checked via dnd-drop.
-	        if (attr.dndAllowedTypes && dndDragTypeWorkaround.isDragging) {
-	          var allowed = scope.$eval(attr.dndAllowedTypes);
-	          if (angular.isArray(allowed) && allowed.indexOf(dndDragTypeWorkaround.dragType) === -1) {
-	            return false;
-	          }
-	        }
+					var placeholder;
+					$scope.$watch('$ctrl.placeholder', function(customPlaceholder){
+						if(customPlaceholder){
+							placeholder = customPlaceholder;
+						}
+					});
 
-	        // Check whether droping is disabled completely
-	        if (attr.dndDisableIf && scope.$eval(attr.dndDisableIf)) return false;
+					var body = angular.element(document.body);
+					var html = angular.element(document.documentElement);
 
-	        return true;
-	      }
+					var moveExecuted;
 
-	      /**
-	       * Small helper function that cleans up if we aborted a drop.
-	       */
-	      function stopDragover() {
-	        placeholder.remove();
-	        element.removeClass("dndDragover");
-	        return true;
-	      }
 
-	      /**
-	       * Invokes a callback with some interesting parameters and returns the callbacks return value.
-	       */
-	      function invokeCallback(expression, event, index, item) {
-	        return $parse(expression)(scope, {
-	          event: event,
-	          index: index,
-	          item: item || undefined,
-	          external: !dndDragTypeWorkaround.isDragging,
-	          type: dndDragTypeWorkaround.isDragging ? dndDragTypeWorkaround.dragType : undefined
-	        });
-	      }
+					function resetOnStartEvent(newHandle){
+						if (newHandle){
+							if (newHandle !== handle){
+								handle.off('mousedown touchstart', onMousedown);
+								handle = newHandle;
+								handle.on('mousedown touchstart', onMousedown);
+								return;
+							}
+						} else {
+							handle.off('mousedown touchstart', onMousedown);
+						}
+					}
 
-	      /**
-	       * Check if the dataTransfer object contains a drag type that we can handle. In old versions
-	       * of IE the types collection will not even be there, so we just assume a drop is possible.
-	       */
-	      function hasTextMimetype(types) {
-	        if (!types) return true;
-	        for (var i = 0; i < types.length; i++) {
-	          if (types[i] === "Text" || types[i] === "text/plain") return true;
-	        }
+					function onMousedown(e){
+						touchFix(e);
 
-	        return false;
-	      }
-	    };
-	  }])
+						if($controllers[1].sortingInProgress()) return;
+						if($controllers[1].sortingDisabled()) return;
+						if(e.button != 0 && e.type === 'mousedown') return;
 
-	  /**
-	   * Use the dnd-nodrag attribute inside of dnd-draggable elements to prevent them from starting
-	   * drag operations. This is especially useful if you want to use input elements inside of
-	   * dnd-draggable elements or create specific handle elements. Note: This directive does not work
-	   * in Internet Explorer 9.
-	   */
-	  .directive('dndNodrag', function() {
-	    return function(scope, element, attr) {
-	      // Set as draggable so that we can cancel the events explicitly
-	      element.attr("draggable", "true");
+						moveExecuted = false;
+						var opts = $parse($attrs.svElement)($scope);
+						opts = angular.extend({}, {
+							tolerance: 'pointer',
+							revert: 200,
+							containment: 'html'
+						}, opts);
+						if(opts.containment){
+							var containmentRect = closestElement.call($element, opts.containment)[0].getBoundingClientRect();
+						}
 
-	      /**
-	       * Since the element is draggable, the browser's default operation is to drag it on dragstart.
-	       * We will prevent that and also stop the event from bubbling up.
-	       */
-	      element.on('dragstart', function(event) {
-	        event = event.originalEvent || event;
+						var target = $element;
+						var clientRect = $element[0].getBoundingClientRect();
+						var clone;
 
-	        if (!event._dndHandle) {
-	          // If a child element already reacted to dragstart and set a dataTransfer object, we will
-	          // allow that. For example, this is the case for user selections inside of input elements.
-	          if (!(event.dataTransfer.types && event.dataTransfer.types.length)) {
-	            event.preventDefault();
-	          }
-	          event.stopPropagation();
-	        }
-	      });
+						if(!helper) helper = $controllers[0].helper;
+						if(!placeholder) placeholder = $controllers[0].placeholder;
+						if(helper){
+							clone = helper.clone();
+							clone.removeClass('ng-hide');
+							clone.css({
+								'left': clientRect.left + document.body.scrollLeft + 'px',
+								'top': clientRect.top + document.body.scrollTop + 'px'
+							});
+							target.addClass('sv-visibility-hidden');
+						}
+						else{
+							target.addClass('sv-long-pressing');
+							clone = target.clone();
+							clone.addClass('sv-helper').css({
+								'left': clientRect.left + document.body.scrollLeft + 'px',
+								'top': clientRect.top + document.body.scrollTop + 'px',
+								'width': clientRect.width + 'px'
+							});
+						}
 
-	      /**
-	       * Stop propagation of dragend events, otherwise dnd-moved might be triggered and the element
-	       * would be removed.
-	       */
-	      element.on('dragend', function(event) {
-	        event = event.originalEvent || event;
-	        if (!event._dndHandle) {
-	          event.stopPropagation();
-	        }
-	      });
-	    };
-	  })
+						clone[0].reposition = function(coords){
+							var targetLeft = coords.x;
+							var targetTop = coords.y;
+							var helperRect = clone[0].getBoundingClientRect();
 
-	  /**
-	   * Use the dnd-handle directive within a dnd-nodrag element in order to allow dragging with that
-	   * element after all. Therefore, by combining dnd-nodrag and dnd-handle you can allow
-	   * dnd-draggable elements to only be dragged via specific "handle" elements. Note that Internet
-	   * Explorer will show the handle element as drag image instead of the dnd-draggable element. You
-	   * can work around this by styling the handle element differently when it is being dragged. Use
-	   * the CSS selector .dndDragging:not(.dndDraggingSource) [dnd-handle] for that.
-	   */
-	  .directive('dndHandle', function() {
-	    return function(scope, element, attr) {
-	      element.attr("draggable", "true");
+							var body = document.body;
 
-	      element.on('dragstart dragend', function(event) {
-	        event = event.originalEvent || event;
-	        event._dndHandle = true;
-	      });
-	    };
-	  })
+							if(containmentRect){
+								if(targetTop < containmentRect.top + body.scrollTop) // top boundary
+									targetTop = containmentRect.top + body.scrollTop;
+								if(targetTop + helperRect.height > containmentRect.top + body.scrollTop + containmentRect.height) // bottom boundary
+									targetTop = containmentRect.top + body.scrollTop + containmentRect.height - helperRect.height;
+								if(targetLeft < containmentRect.left + body.scrollLeft) // left boundary
+									targetLeft = containmentRect.left + body.scrollLeft;
+								if(targetLeft + helperRect.width > containmentRect.left + body.scrollLeft + containmentRect.width) // right boundary
+									targetLeft = containmentRect.left + body.scrollLeft + containmentRect.width - helperRect.width;
+							}
+							this.style.left = targetLeft - body.scrollLeft + 'px';
+							this.style.top = targetTop - body.scrollTop + 'px';
+						};
 
-	  /**
-	   * This workaround handles the fact that Internet Explorer does not support drag types other than
-	   * "Text" and "URL". That means we can not know whether the data comes from one of our elements or
-	   * is just some other data like a text selection. As a workaround we save the isDragging flag in
-	   * here. When a dropover event occurs, we only allow the drop if we are already dragging, because
-	   * that means the element is ours.
-	   */
-	  .factory('dndDragTypeWorkaround', function(){ return {} })
+						var pointerOffset = {
+							x: (e.clientX - clientRect.left)/clientRect.width,
+							y: (e.clientY - clientRect.top)/clientRect.height
+						};
+						html.addClass('sv-sorting-in-progress');
+						html.on('mousemove touchmove', onMousemove).on('mouseup touchend touchcancel', function mouseup(e){
+							html.off('mousemove touchmove', onMousemove);
+							html.off('mouseup touchend', mouseup);
+							html.removeClass('sv-sorting-in-progress');
+							if(moveExecuted){
+								$controllers[0].$drop($scope.$index, opts);
+							}
+							$element.removeClass('sv-visibility-hidden');
+							target.removeClass('sv-long-pressing');
+						});
 
-	  /**
-	   * Chrome on Windows does not set the dropEffect field, which we need in dragend to determine
-	   * whether a drag operation was successful. Therefore we have to maintain it in this global
-	   * variable. The bug report for that has been open for years:
-	   * https://code.google.com/p/chromium/issues/detail?id=39399
-	   */
-	  .factory('dndDropEffectWorkaround', function(){ return {} });
+						// onMousemove(e);
+						function onMousemove(e){
+							touchFix(e);
+							if(!moveExecuted){
+								$element.parent().prepend(clone);
+								moveExecuted = true;
+							}
+							$controllers[1].$moveUpdate(opts, {
+								x: e.clientX,
+								y: e.clientY,
+								offset: pointerOffset
+							}, clone, $element, placeholder, $controllers[0].getPart(), $scope.$index);
+						}
+					}
+				}
+			};
+		}]);
 
+		module.directive('svHandle', function(){
+			return {
+				require: '?^svElement',
+				link: function($scope, $element, $attrs, $ctrl){
+					if($ctrl)
+						$ctrl.handle = $element.add($ctrl.handle); // support multiple handles
+				}
+			};
+		});
+
+		module.directive('svHelper', function(){
+			return {
+				require: ['?^svPart', '?^svElement'],
+				link: function($scope, $element, $attrs, $ctrl){
+					$element.addClass('sv-helper').addClass('ng-hide');
+					if($ctrl[1])
+						$ctrl[1].helper = $element;
+					else if($ctrl[0])
+						$ctrl[0].helper = $element;
+				}
+			};
+		});
+
+		module.directive('svPlaceholder', function(){
+			return {
+				require: ['?^svPart', '?^svElement'],
+				link: function($scope, $element, $attrs, $ctrl){
+					$element.addClass('sv-placeholder').addClass('ng-hide');
+					if ($ctrl[1] && $ctrl[0]){
+						//find closest svPart or svElement and set placeholder in the correct place
+						var p = $element.parent();
+						while (p.length > 0) {
+						  if (p[0].hasAttribute('sv-element')){
+						  	$ctrl[1].placeholder = $element;
+						  	return;
+						  } else if (p[0].hasAttribute('sv-part')){
+						  	$ctrl[0].placeholder = $element;
+						  	return;
+						  }
+						  p = p.parent();
+						}
+					} else if($ctrl[1])
+						$ctrl[1].placeholder = $element;
+					else if($ctrl[0])
+						$ctrl[0].placeholder = $element;
+				}
+			};
+		});
+
+		angular.element(document.head).append([
+			'<style>' +
+			'.sv-helper{' +
+				'position: fixed !important;' +
+				'z-index: 99999;' +
+				'margin: 0 !important;' +
+			'}' +
+			'.sv-candidate{' +
+			'}' +
+			'.sv-placeholder{' +
+				// 'opacity: 0;' +
+			'}' +
+			'.sv-sorting-in-progress{' +
+				'-webkit-user-select: none;' +
+				'-moz-user-select: none;' +
+				'-ms-user-select: none;' +
+				'user-select: none;' +
+			'}' +
+			'.sv-visibility-hidden{' +
+				'visibility: hidden !important;' +
+				'opacity: 0 !important;' +
+			'}' +
+			'</style>'
+		].join(''));
+
+		function touchFix(e){
+			if(!('clientX' in e) && !('clientY' in e)) {
+				var touches = e.touches || e.originalEvent.touches;
+				if(touches && touches.length) {
+					e.clientX = touches[0].clientX;
+					e.clientY = touches[0].clientY;
+				}
+				e.preventDefault();
+			}
+		}
+
+		function getPreviousSibling(element){
+			element = element[0];
+			if(element.previousElementSibling)
+				return angular.element(element.previousElementSibling);
+			else{
+				var sib = element.previousSibling;
+				while(sib != null && sib.nodeType != 1)
+					sib = sib.previousSibling;
+				return angular.element(sib);
+			}
+		}
+
+		function insertElementBefore(element, newElement){
+			var prevSibl = getPreviousSibling(element);
+			if(prevSibl.length > 0){
+				prevSibl.after(newElement);
+			}
+			else{
+				element.parent().prepend(newElement);
+			}
+		}
+
+		var dde = document.documentElement,
+		matchingFunction = dde.matches ? 'matches' :
+							dde.matchesSelector ? 'matchesSelector' :
+							dde.webkitMatches ? 'webkitMatches' :
+							dde.webkitMatchesSelector ? 'webkitMatchesSelector' :
+							dde.msMatches ? 'msMatches' :
+							dde.msMatchesSelector ? 'msMatchesSelector' :
+							dde.mozMatches ? 'mozMatches' :
+							dde.mozMatchesSelector ? 'mozMatchesSelector' : null;
+		if(matchingFunction == null)
+			throw 'This browser doesn\'t support the HTMLElement.matches method';
+
+		function elementMatchesSelector(element, selector){
+			if(element instanceof angular.element) element = element[0];
+			if(matchingFunction !== null)
+				return element[matchingFunction](selector);
+		}
+
+		var closestElement = angular.element.prototype.closest || function (selector){
+			var el = this[0].parentNode;
+			while(el !== document.documentElement && !el[matchingFunction](selector))
+				el = el.parentNode;
+
+			if(el[matchingFunction](selector))
+				return angular.element(el);
+			else
+				return angular.element();
+		};
+
+		/*
+			Simple implementation of jQuery's .add method
+		 */
+		if(typeof angular.element.prototype.add !== 'function'){
+			angular.element.prototype.add = function(elem){
+				var i, res = angular.element();
+				elem = angular.element(elem);
+				for(i=0;i<this.length;i++){
+					res.push(this[i]);
+				}
+				for(i=0;i<elem.length;i++){
+					res.push(elem[i]);
+				}
+				return res;
+			};
+		}
+
+	})(window, window.angular);
 
 /***/ },
 /* 20 */
@@ -72942,9 +73027,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utils2 = _interopRequireDefault(_utils);
 
+	var _label = __webpack_require__(29);
+
+	var _label2 = _interopRequireDefault(_label);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = angular.module("PreodayServices", []).service(_user2.default.UID, _user2.default).service(_venue2.default.UID, _venue2.default).service(_utils2.default.UID, _utils2.default).name;
+	exports.default = angular.module("PreodayServices", []).service(_user2.default.UID, _user2.default).service(_venue2.default.UID, _venue2.default).service(_utils2.default.UID, _utils2.default).service(_label2.default.UID, _label2.default).name;
 
 /***/ },
 /* 26 */
@@ -73158,6 +73247,49 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 29 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var LabelService = function () {
+	  _createClass(LabelService, null, [{
+	    key: "UID",
+	    get: function get() {
+	      return "LabelService";
+	    }
+	    /* @ngInject */
+
+	  }]);
+
+	  function LabelService($translate) {
+	    "ngInject";
+
+	    _classCallCheck(this, LabelService);
+
+	    this.TITLE_DELETE_SECTION = $translate.instant("Delete section?");
+	    this.CONTENT_DELETE_SECTION = $translate.instant("Are you sure you want to delete this section?");
+
+	    this.TITLE_DELETE_ITEM = $translate.instant("Delete item?");
+	    this.CONTENT_DELETE_ITEM = $translate.instant("Are you sure you want to permanently delete this item?");
+	    this.CONTENT_DELETE_ITEM_SECTION = $translate.instant("Are you sure you want to remove this item from the section?");
+	  }
+	  LabelService.$inject = ["$translate"];
+
+	  return LabelService;
+	}();
+
+	exports.default = LabelService;
+
+/***/ },
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73166,7 +73298,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(30);
+	__webpack_require__(31);
 
 	var _angular = __webpack_require__(7);
 
@@ -73176,35 +73308,35 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _main = __webpack_require__(32);
+	var _main = __webpack_require__(33);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _main3 = __webpack_require__(33);
+	var _main3 = __webpack_require__(34);
 
 	var _main4 = _interopRequireDefault(_main3);
 
-	var _dashboard = __webpack_require__(35);
+	var _dashboard = __webpack_require__(36);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
-	var _analytics = __webpack_require__(191);
+	var _analytics = __webpack_require__(192);
 
 	var _analytics2 = _interopRequireDefault(_analytics);
 
-	var _account = __webpack_require__(197);
+	var _account = __webpack_require__(198);
 
 	var _account2 = _interopRequireDefault(_account);
 
-	var _navbar = __webpack_require__(203);
+	var _navbar = __webpack_require__(204);
 
 	var _navbar2 = _interopRequireDefault(_navbar);
 
-	var _toolbar = __webpack_require__(214);
+	var _toolbar = __webpack_require__(215);
 
 	var _toolbar2 = _interopRequireDefault(_toolbar);
 
-	var _contextualMenu = __webpack_require__(239);
+	var _contextualMenu = __webpack_require__(240);
 
 	var _contextualMenu2 = _interopRequireDefault(_contextualMenu);
 
@@ -73214,13 +73346,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("main", [_angularUiRouter2.default, _dashboard2.default, _analytics2.default, _account2.default, _navbar2.default, _toolbar2.default, _contextualMenu2.default]).config(_main4.default).controller(_main2.default.UID, _main2.default).name; // Import Style
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(31);
+	var content = __webpack_require__(32);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -73240,7 +73372,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -73248,13 +73380,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.content-holder {\n  background: #fafafa; }\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.content-holder {\n  background: #f5f5f5; }\n\n.row-reverse {\n  flex-direction: row-reverse !important; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -73313,7 +73445,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = mainController;
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73323,7 +73455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _main = __webpack_require__(32);
+	var _main = __webpack_require__(33);
 
 	var _main2 = _interopRequireDefault(_main);
 
@@ -73340,7 +73472,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  $stateProvider.state("main", {
 	    url: "/:venueId/main",
 	    abstract: true,
-	    template: __webpack_require__(34),
+	    template: __webpack_require__(35),
 	    controller: _main2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -73348,13 +73480,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class='main'>\n  <toolbar></toolbar>\n  <section layout=\"row\" layout-align=\"start stretch\" class='maxHeightScreen minus-toolbar'>\n    <navbar></navbar>\n      <ui-view  flex class='content-holder'></ui-view>\n  </section>\n</div>\n"
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73363,7 +73495,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(36);
+	__webpack_require__(37);
 
 	var _angular = __webpack_require__(7);
 
@@ -73373,51 +73505,51 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _dashboard = __webpack_require__(38);
+	var _dashboard = __webpack_require__(39);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
-	var _dashboard3 = __webpack_require__(39);
+	var _dashboard3 = __webpack_require__(40);
 
 	var _dashboard4 = _interopRequireDefault(_dashboard3);
 
-	var _bookings = __webpack_require__(41);
+	var _bookings = __webpack_require__(42);
 
 	var _bookings2 = _interopRequireDefault(_bookings);
 
-	var _events = __webpack_require__(65);
+	var _events = __webpack_require__(66);
 
 	var _events2 = _interopRequireDefault(_events);
 
-	var _menus = __webpack_require__(71);
+	var _menus = __webpack_require__(72);
 
 	var _menus2 = _interopRequireDefault(_menus);
 
-	var _notifications = __webpack_require__(119);
+	var _notifications = __webpack_require__(120);
 
 	var _notifications2 = _interopRequireDefault(_notifications);
 
-	var _outlets = __webpack_require__(125);
+	var _outlets = __webpack_require__(126);
 
 	var _outlets2 = _interopRequireDefault(_outlets);
 
-	var _payments = __webpack_require__(131);
+	var _payments = __webpack_require__(132);
 
 	var _payments2 = _interopRequireDefault(_payments);
 
-	var _promotions = __webpack_require__(149);
+	var _promotions = __webpack_require__(150);
 
 	var _promotions2 = _interopRequireDefault(_promotions);
 
-	var _styling = __webpack_require__(155);
+	var _styling = __webpack_require__(156);
 
 	var _styling2 = _interopRequireDefault(_styling);
 
-	var _venueSettings = __webpack_require__(179);
+	var _venueSettings = __webpack_require__(180);
 
 	var _venueSettings2 = _interopRequireDefault(_venueSettings);
 
-	var _vouchers = __webpack_require__(185);
+	var _vouchers = __webpack_require__(186);
 
 	var _vouchers2 = _interopRequireDefault(_vouchers);
 
@@ -73429,13 +73561,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("dashboard", [_angularUiRouter2.default, _bookings2.default, _events2.default, _menus2.default, _notifications2.default, _outlets2.default, _payments2.default, _promotions2.default, _styling2.default, _venueSettings2.default, _vouchers2.default]).config(_dashboard4.default).controller(_dashboard2.default.UID, _dashboard2.default).name; // Import Style
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(37);
+	var content = __webpack_require__(38);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -73455,7 +73587,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -73469,7 +73601,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -73505,7 +73637,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = dashboardController;
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73515,7 +73647,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _dashboard = __webpack_require__(38);
+	var _dashboard = __webpack_require__(39);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
@@ -73531,7 +73663,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard", {
 	    url: "/dashboard",
-	    template: __webpack_require__(40),
+	    template: __webpack_require__(41),
 	    controller: _dashboard2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -73539,13 +73671,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class='dashboard' layout=\"row\" layout-align=\"stretch stretch\">\n  <ui-view flex></ui-view>\n</div>\n"
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73554,7 +73686,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(42);
+	__webpack_require__(43);
 
 	var _angular = __webpack_require__(7);
 
@@ -73564,23 +73696,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _bookings = __webpack_require__(44);
+	var _bookings = __webpack_require__(45);
 
 	var _bookings2 = _interopRequireDefault(_bookings);
 
-	var _bookings3 = __webpack_require__(45);
+	var _bookings3 = __webpack_require__(46);
 
 	var _bookings4 = _interopRequireDefault(_bookings3);
 
-	var _bookingList = __webpack_require__(47);
+	var _bookingList = __webpack_require__(48);
 
 	var _bookingList2 = _interopRequireDefault(_bookingList);
 
-	var _bookingMenus = __webpack_require__(53);
+	var _bookingMenus = __webpack_require__(54);
 
 	var _bookingMenus2 = _interopRequireDefault(_bookingMenus);
 
-	var _bookingSettings = __webpack_require__(59);
+	var _bookingSettings = __webpack_require__(60);
 
 	var _bookingSettings2 = _interopRequireDefault(_bookingSettings);
 
@@ -73592,13 +73724,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import internal modules
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(43);
+	var content = __webpack_require__(44);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -73618,7 +73750,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -73632,7 +73764,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -73668,7 +73800,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = bookingsController;
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73678,7 +73810,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _bookings = __webpack_require__(44);
+	var _bookings = __webpack_require__(45);
 
 	var _bookings2 = _interopRequireDefault(_bookings);
 
@@ -73694,7 +73826,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.bookings", {
 	    url: "/bookings",
-	    template: __webpack_require__(46),
+	    template: __webpack_require__(47),
 	    controller: _bookings2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -73702,13 +73834,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  bookings\n  <ui-view></ui-view>\n</div>\n"
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73717,7 +73849,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(48);
+	__webpack_require__(49);
 
 	var _angular = __webpack_require__(7);
 
@@ -73727,11 +73859,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _bookingList = __webpack_require__(50);
+	var _bookingList = __webpack_require__(51);
 
 	var _bookingList2 = _interopRequireDefault(_bookingList);
 
-	var _bookingList3 = __webpack_require__(51);
+	var _bookingList3 = __webpack_require__(52);
 
 	var _bookingList4 = _interopRequireDefault(_bookingList3);
 
@@ -73741,13 +73873,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("bookingList", [_angularUiRouter2.default]).config(_bookingList4.default).controller(_bookingList2.default.UID, _bookingList2.default).name; // Import Style
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(49);
+	var content = __webpack_require__(50);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -73767,7 +73899,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -73781,7 +73913,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -73817,7 +73949,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = bookingListController;
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73827,7 +73959,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _bookingList = __webpack_require__(50);
+	var _bookingList = __webpack_require__(51);
 
 	var _bookingList2 = _interopRequireDefault(_bookingList);
 
@@ -73843,7 +73975,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.bookings.bookingList", {
 	    url: "/bookingList",
-	    template: __webpack_require__(52),
+	    template: __webpack_require__(53),
 	    controller: _bookingList2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -73851,13 +73983,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  bookingList\n</div>\n"
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73866,7 +73998,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(54);
+	__webpack_require__(55);
 
 	var _angular = __webpack_require__(7);
 
@@ -73876,11 +74008,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _bookingMenus = __webpack_require__(56);
+	var _bookingMenus = __webpack_require__(57);
 
 	var _bookingMenus2 = _interopRequireDefault(_bookingMenus);
 
-	var _bookingMenus3 = __webpack_require__(57);
+	var _bookingMenus3 = __webpack_require__(58);
 
 	var _bookingMenus4 = _interopRequireDefault(_bookingMenus3);
 
@@ -73890,13 +74022,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("bookingMenus", [_angularUiRouter2.default]).config(_bookingMenus4.default).controller(_bookingMenus2.default.UID, _bookingMenus2.default).name; // Import Style
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(55);
+	var content = __webpack_require__(56);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -73916,9 +74048,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 55 */
-49,
 /* 56 */
+50,
+/* 57 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -73954,7 +74086,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = bookingMenusController;
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73964,7 +74096,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _bookingMenus = __webpack_require__(56);
+	var _bookingMenus = __webpack_require__(57);
 
 	var _bookingMenus2 = _interopRequireDefault(_bookingMenus);
 
@@ -73980,7 +74112,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.bookings.bookingMenus", {
 	    url: "/bookingMenus",
-	    template: __webpack_require__(58),
+	    template: __webpack_require__(59),
 	    controller: _bookingMenus2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -73988,13 +74120,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  bookingMenus\n</div>\n"
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74003,7 +74135,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(60);
+	__webpack_require__(61);
 
 	var _angular = __webpack_require__(7);
 
@@ -74013,11 +74145,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _bookingSettings = __webpack_require__(62);
+	var _bookingSettings = __webpack_require__(63);
 
 	var _bookingSettings2 = _interopRequireDefault(_bookingSettings);
 
-	var _bookingSettings3 = __webpack_require__(63);
+	var _bookingSettings3 = __webpack_require__(64);
 
 	var _bookingSettings4 = _interopRequireDefault(_bookingSettings3);
 
@@ -74027,13 +74159,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("bookingSettings", [_angularUiRouter2.default]).config(_bookingSettings4.default).controller(_bookingSettings2.default.UID, _bookingSettings2.default).name; // Import Style
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(61);
+	var content = __webpack_require__(62);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74053,9 +74185,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 61 */
-49,
 /* 62 */
+50,
+/* 63 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74091,7 +74223,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = bookingSettingsController;
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74101,7 +74233,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _bookingSettings = __webpack_require__(62);
+	var _bookingSettings = __webpack_require__(63);
 
 	var _bookingSettings2 = _interopRequireDefault(_bookingSettings);
 
@@ -74117,7 +74249,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.bookings.bookingSettings", {
 	    url: "/bookingSettings",
-	    template: __webpack_require__(64),
+	    template: __webpack_require__(65),
 	    controller: _bookingSettings2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -74125,13 +74257,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  bookingSettings\n</div>\n"
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74140,7 +74272,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(66);
+	__webpack_require__(67);
 
 	var _angular = __webpack_require__(7);
 
@@ -74150,11 +74282,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _events = __webpack_require__(68);
+	var _events = __webpack_require__(69);
 
 	var _events2 = _interopRequireDefault(_events);
 
-	var _events3 = __webpack_require__(69);
+	var _events3 = __webpack_require__(70);
 
 	var _events4 = _interopRequireDefault(_events3);
 
@@ -74164,13 +74296,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("events", [_angularUiRouter2.default]).config(_events4.default).controller(_events2.default.UID, _events2.default).name; // Import Style
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(67);
+	var content = __webpack_require__(68);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74190,9 +74322,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 67 */
-43,
 /* 68 */
+44,
+/* 69 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74228,7 +74360,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = eventsController;
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74238,7 +74370,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _events = __webpack_require__(68);
+	var _events = __webpack_require__(69);
 
 	var _events2 = _interopRequireDefault(_events);
 
@@ -74254,7 +74386,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.events", {
 	    url: "/events",
-	    template: __webpack_require__(70),
+	    template: __webpack_require__(71),
 	    controller: _events2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -74262,13 +74394,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  events\n</div>\n"
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74277,7 +74409,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(72);
+	__webpack_require__(73);
 
 	var _angular = __webpack_require__(7);
 
@@ -74287,23 +74419,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _menus = __webpack_require__(74);
+	var _menus = __webpack_require__(75);
 
 	var _menus2 = _interopRequireDefault(_menus);
 
-	var _menus3 = __webpack_require__(75);
+	var _menus3 = __webpack_require__(76);
 
 	var _menus4 = _interopRequireDefault(_menus3);
 
-	var _menu = __webpack_require__(77);
+	var _menu = __webpack_require__(78);
 
 	var _menu2 = _interopRequireDefault(_menu);
 
-	var _menuList = __webpack_require__(83);
+	var _menuList = __webpack_require__(84);
 
 	var _menuList2 = _interopRequireDefault(_menuList);
 
-	var _menuSection = __webpack_require__(89);
+	var _menuSection = __webpack_require__(90);
 
 	var _menuSection2 = _interopRequireDefault(_menuSection);
 
@@ -74315,13 +74447,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import internal modules
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(73);
+	var content = __webpack_require__(74);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74341,7 +74473,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -74355,7 +74487,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74392,7 +74524,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = menusController;
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74402,7 +74534,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _menus = __webpack_require__(74);
+	var _menus = __webpack_require__(75);
 
 	var _menus2 = _interopRequireDefault(_menus);
 
@@ -74419,7 +74551,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  $stateProvider.state("main.dashboard.menus", {
 	    url: "/menus",
 	    abstract: true,
-	    template: __webpack_require__(76),
+	    template: __webpack_require__(77),
 	    controller: _menus2.default.UID,
 	    controllerAs: "menus"
 	  });
@@ -74427,13 +74559,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class='menus' layout='row'>\n  <ui-view flex name=\"menuContent\"></ui-view>\n</div>\n"
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74442,7 +74574,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(78);
+	__webpack_require__(79);
 
 	var _angular = __webpack_require__(7);
 
@@ -74452,11 +74584,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _menu = __webpack_require__(80);
+	var _menu = __webpack_require__(81);
 
 	var _menu2 = _interopRequireDefault(_menu);
 
-	var _menu3 = __webpack_require__(81);
+	var _menu3 = __webpack_require__(82);
 
 	var _menu4 = _interopRequireDefault(_menu3);
 
@@ -74466,13 +74598,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("menu", [_angularUiRouter2.default]).config(_menu4.default).controller(_menu2.default.UID, _menu2.default).name; // Import Style
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(79);
+	var content = __webpack_require__(80);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74492,7 +74624,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -74500,13 +74632,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.menu {\n  max-height: 100%; }\n  .menu .menu-toolbar {\n    background: #EEEEEE;\n    border-bottom: 1px solid #CCCCCC;\n    min-height: 50px;\n    width: 100%;\n    font-size: 16px; }\n    .menu .menu-toolbar .menu-name {\n      padding-left: 24px; }\n    .menu .menu-toolbar button {\n      margin-right: 18px; }\n  .menu .menu-content {\n    overflow: auto; }\n  .menu .main-content-right {\n    margin: 24px 16px 24px 4px; }\n  .menu .main-content-left {\n    margin: 24px 4px 24px 16px; }\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.menu {\n  max-height: 100%; }\n  .menu .menu-toolbar {\n    background: #EEEEEE;\n    border-bottom: 1px solid #CCCCCC;\n    min-height: 50px;\n    width: 100%;\n    font-size: 16px; }\n    .menu .menu-toolbar .menu-name {\n      padding-left: 24px; }\n    .menu .menu-toolbar button {\n      margin-right: 18px; }\n  .menu .menu-content {\n    overflow: auto;\n    padding-right: 40%; }\n  .menu .main-content-right ~ .menu-content {\n    padding-right: 0; }\n  .menu .main-content-right {\n    padding: 24px 16px;\n    overflow: auto; }\n  .menu .main-content-left {\n    margin: 24px 4px 24px 16px;\n    position: relative; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74521,33 +74653,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var menuController = function () {
 	  _createClass(menuController, [{
+	    key: "onSectionMoveStart",
+	    value: function onSectionMoveStart() {
+	      console.log("start arguments", arguments);
+	    }
+	  }, {
+	    key: "onSectionMoveStop",
+	    value: function onSectionMoveStop($item, $part, $index) {
+	      console.log("stop arguments", console.log($index, $part[$index]));
+	      return false;
+	    }
+	  }, {
 	    key: "onSectionMoved",
-
-
-	    //this library copies the object but doesn't keep the type, we still need the prototype methods
-	    value: function onSectionMoved($index) {
-	      var originalSection = this.menu.sections[$index];
-	      var sectionNewIndex = -1;
-
-	      //find the new section index by comparing ids, first match with a different $index is the new position of the section
-	      this.menu.sections.forEach(function (s, index) {
-	        if (sectionNewIndex === -1 && s.id === originalSection.id && index !== $index) {
-	          sectionNewIndex = index;
-	        }
-	      });
-
-	      // Remove Section from array to be repositioned
-	      this.menu.sections.splice($index, 1);
-
-	      // we changed the array, if the Object is after the Section, we just changed the index of the section by one, removing one fixes that
-	      if (sectionNewIndex > $index) {
-	        sectionNewIndex -= 1;
-	      }
-
-	      // Remove Object created by library and position section in it's place
-	      this.menu.sections.splice(sectionNewIndex, 1, originalSection);
-
+	    value: function onSectionMoved($item, $partFrom, $partTo, $indexFrom, $indexTo) {
 	      //update all sections
+	      console.log("on section moved, updating");
 	      this.menu.sections.forEach(function (s, index) {
 	        s.position = index * 1000;
 	        s.update();
@@ -74617,6 +74737,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.error = this.ErrorService[error];
 	    }
 	  }, {
+	    key: "expandSection",
+	    value: function expandSection(section) {
+	      this.menu.sections.forEach(function (s) {
+	        if (s.id === section.id) {
+	          s.$expanded = !s.$expanded;
+	        } else {
+	          s.$expanded = false;
+	        }
+	      });
+	    }
+	  }, {
 	    key: "handleFinishLoading",
 	    value: function handleFinishLoading(dataMenu) {
 	      var _this = this;
@@ -74675,7 +74806,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = menuController;
 
 /***/ },
-/* 81 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74685,7 +74816,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _menu = __webpack_require__(80);
+	var _menu = __webpack_require__(81);
 
 	var _menu2 = _interopRequireDefault(_menu);
 
@@ -74703,7 +74834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    url: "/:menuId/:sectionId?/:itemId?",
 	    views: {
 	      menuContent: {
-	        template: __webpack_require__(82),
+	        template: __webpack_require__(83),
 	        controller: _menu2.default.UID,
 	        controllerAs: "vm"
 	      }
@@ -74713,13 +74844,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 82 */
+/* 83 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class='menu' layout=\"column\">\n  <div class=\"menu-toolbar\" layout=\"row\" layout-align=\"start center\">\n    <div flex class='menu-name'>{{vm.menu.name}}</div>\n    <md-button class=\"md-primary\" translate>Show modifiers</md-button>\n  </div>\n  <div flex layout=\"row\" layout-align=\"start stretch\">\n    <div class=\"menu-content\" flex=\"60\">\n      <div class='main-content-left' dnd-list=\"vm.menu.sections\" dnd-allowed-types=\"vm.allowedDropTypes\">\n        <menu-section\n          ng-repeat=\"section in vm.menu.sections\"\n          section=\"section\"\n          dnd-draggable=\"section\"\n          dnd-moved=\"vm.onSectionMoved($index)\"\n          dnd-effect-allowed=\"move\"\n          dnd-type=\"vm.menuSectionType\"\n          ng-attr-data-id=\"{{section.id}}\"\n          ></menu-section>\n        <menu-section menu-id=\"vm.menu.id\"></menu-section>\n      </div>\n    </div>\n    <div flex=\"40\" class='main-content-right'>\n      <contextual-menu on-submit=\"vm.contextualSubmit\" type=\"vm.showingContextualMenu\" ng-if=\"vm.showingContextualMenu\" entity=\"vm.contextualEntity\"></contextual-menu>\n    </div>\n  </div>\n</div>\n"
+	module.exports = "<div class='menu' layout=\"column\">\n  <div class=\"menu-toolbar\" layout=\"row\" layout-align=\"start center\">\n    <div flex class='menu-name'>{{vm.menu.name}}</div>\n    <md-button class=\"md-primary md-hue-2\" translate>Show modifiers</md-button>\n  </div>\n  <div class=\"row-reverse\" flex layout=\"row\" layout-align=\"start stretch\">\n    <div flex=\"40\" class='main-content-right' ng-if=\"vm.showingContextualMenu\">\n      <contextual-menu\n              on-submit=\"vm.contextualSubmit\"\n              type=\"vm.showingContextualMenu\"\n              entity=\"vm.contextualEntity\">\n      </contextual-menu>\n    </div>\n    <div flex class=\"menu-content\" ng-class=\"{'flex-60':vm.showingContextualMenu}\">\n      <div class='main-content-left'\n            sv-root\n            sv-on-start=\"vm.onSectionMoveStart($item, $part, $index, $helper)\"\n            sv-on-stop=\"vm.onSectionMoveStop($item, $part, $index)\"\n            sv-on-sort=\"vm.onSectionMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)\"\n            sv-part=\"vm.menu.sections\">\n        <menu-section\n          ng-repeat=\"section in vm.menu.sections\"\n          ng-class=\"{dragging:section.$dragging}\"\n          section=\"section\"\n          draggable=\"false\"\n          long-press\n          sv-element=\"{{section.$expanded ? undefined : true}}\"\n          sv-element-disabled=\"section.$expanded\"\n          ng-attr-data-id=\"{{section.id}}\">\n        </menu-section>\n        <menu-section\n          menu-id=\"vm.menu.id\">\n        </menu-section>\n        <div sv-placeholder></div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
-/* 83 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74728,7 +74859,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(84);
+	__webpack_require__(85);
 
 	var _angular = __webpack_require__(7);
 
@@ -74738,11 +74869,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _menuList = __webpack_require__(86);
+	var _menuList = __webpack_require__(87);
 
 	var _menuList2 = _interopRequireDefault(_menuList);
 
-	var _menuList3 = __webpack_require__(87);
+	var _menuList3 = __webpack_require__(88);
 
 	var _menuList4 = _interopRequireDefault(_menuList3);
 
@@ -74752,13 +74883,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("menuList", [_angularUiRouter2.default]).config(_menuList4.default).controller(_menuList2.default.UID, _menuList2.default).name; // Import Style
 
 /***/ },
-/* 84 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(85);
+	var content = __webpack_require__(86);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74778,9 +74909,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 85 */
-49,
 /* 86 */
+50,
+/* 87 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74841,7 +74972,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = menuListController;
 
 /***/ },
-/* 87 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74851,7 +74982,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _menuList = __webpack_require__(86);
+	var _menuList = __webpack_require__(87);
 
 	var _menuList2 = _interopRequireDefault(_menuList);
 
@@ -74869,7 +75000,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    url: "",
 	    views: {
 	      menuContent: {
-	        template: __webpack_require__(88),
+	        template: __webpack_require__(89),
 	        controller: _menuList2.default.UID,
 	        controllerAs: "vm"
 	      }
@@ -74879,13 +75010,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  <div class='menus-content'>\n   <div ng-repeat=\"menu in vm.menus\">\n      <div ng-click=\"vm.showMenu(menu)\">{{menu.name}}</div>\n   </div>\n  </div>\n</div>\n"
 
 /***/ },
-/* 89 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74894,25 +75025,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(90);
+	__webpack_require__(91);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _menuSection = __webpack_require__(92);
+	var _menuSection = __webpack_require__(93);
 
 	var _menuSection2 = _interopRequireDefault(_menuSection);
 
-	var _menuSection3 = __webpack_require__(93);
+	var _menuSection3 = __webpack_require__(94);
 
 	var _menuSection4 = _interopRequireDefault(_menuSection3);
 
-	var _menuItem = __webpack_require__(96);
+	var _menuItem = __webpack_require__(97);
 
 	var _menuItem2 = _interopRequireDefault(_menuItem);
 
-	var _cardItem = __webpack_require__(103);
+	var _cardItem = __webpack_require__(104);
 
 	var _cardItem2 = _interopRequireDefault(_cardItem);
 
@@ -74923,13 +75054,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("menuSection", [_menuItem2.default, _cardItem2.default]).controller(_menuSection2.default.UID, _menuSection2.default).directive("menuSection", _menuSection4.default).name;
 
 /***/ },
-/* 90 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(91);
+	var content = __webpack_require__(92);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -74949,7 +75080,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 91 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -74957,13 +75088,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.menu-section {\n  position: relative;\n  margin: 8px;\n  transition: box-shadow 0.3s linear; }\n  .menu-section > md-card {\n    margin: 0; }\n  .menu-section .sv-placeholder {\n    margin: 8px 22px; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 92 */
+/* 93 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -74991,28 +75122,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "onItemMoved",
 	    value: function onItemMoved($index) {
-	      console.log("this", this.section);
-	      var originalItem = this.section.items[$index];
-	      var sectionNewIndex = -1;
-
-	      //find the new section index by comparing ids, first match with a different $index is the new position of the section
-	      this.section.items.forEach(function (s, index) {
-	        if (sectionNewIndex === -1 && s.id === originalItem.id && index !== $index) {
-	          sectionNewIndex = index;
-	        }
-	      });
-
-	      // Remove Section from array to be repositioned
-	      this.section.items.splice($index, 1);
-
-	      // we changed the array, if the Object is after the Section, we just changed the index of the section by one, removing one fixes that
-	      if (sectionNewIndex > $index) {
-	        sectionNewIndex -= 1;
-	      }
-
-	      // Remove Object created by library and position section in it's place
-	      this.section.items.splice(sectionNewIndex, 1, originalItem);
-
 	      //update all sections
 	      this.section.items.forEach(function (i, index) {
 	        i.position = index * 1000;
@@ -75087,7 +75196,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "toggleExpanded",
 	    value: function toggleExpanded() {
-	      this.section.$expanded = !this.section.$expanded;
+	      this.menuCtrl.expandSection(this.section);
 	      this.$stateParams.sectionId = this.section.id;
 	    }
 
@@ -75108,7 +75217,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          that.menuCtrl.toggleContextualMenu(that.section, that.type, that.saveSection.bind(that));
 	        },
 	        onDelete: function onDelete($event) {
-	          that.DialogService.delete("Delete section?", "Are you sure you want to delete this section? The items in this section will not be deleted.").then(function () {
+	          that.DialogService.delete(that.LabelService.TITLE_DELETE_SECTION, that.LabelService.CONTENT_DELETE_SECTION).then(function () {
 	            that.section.delete().then(function () {
 	              that.Snack.show('Section deleted');
 	              that.menuCtrl.deleteSection(that.section);
@@ -75136,7 +75245,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }]);
 
-	  function menuSectionController($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams) {
+	  function menuSectionController($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService) {
 	    'ngInject';
 
 	    var _this3 = this;
@@ -75147,6 +75256,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.Snack = Snack;
 	    this.$stateParams = $stateParams;
 	    this.DialogService = DialogService;
+	    this.LabelService = LabelService;
 	    this.type = 'menuSection'; //type for contextual menu
 	    this.setCardActions();
 	    this.menuItemType = 'menuItem';
@@ -75168,7 +75278,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = menuSectionController;
 
 /***/ },
-/* 93 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75178,7 +75288,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = menuSection;
 
-	var _menuSection = __webpack_require__(92);
+	var _menuSection = __webpack_require__(93);
 
 	var _menuSection2 = _interopRequireDefault(_menuSection);
 
@@ -75193,7 +75303,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      section: "=?",
 	      menuId: "=?"
 	    },
-	    template: __webpack_require__(94),
+	    template: __webpack_require__(95),
 	    controller: _menuSection2.default.UID,
 	    controllerAs: "vm",
 	    bindToController: true,
@@ -75201,8 +75311,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    link: function link(scope, el, attr, ctrl) {
 	      ctrl.menuCtrl = el.parent().controller();
 	      if (!ctrl.section || ctrl.section.id === -1) {
-	        var newEl = angular.element(__webpack_require__(95));
-	        angular.element(el[0]).replaceWith(newEl);
+	        var newEl = angular.element(__webpack_require__(96));
+	        el.empty();
+	        el.append(newEl);
 	        $compile(newEl)(scope).scope();
 	      }
 	    }
@@ -75210,19 +75321,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 94 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class='menu-section'>\n  <card-item card-item-actions=\"vm.cardItemActions\"\n              selected=\"vm.section.$selected\"\n              dnd-list=\"vm.section.items\"\n              dnd-allowed-types=\"vm.allowedDropTypes\"\n              dnd-disable-if=\"!vm.section.$expanded\">\n    <card-item-title ng-click=\"vm.toggleExpanded()\"\n                    has-visible=\"true\"\n                    show-visible=\"!vm.section.visible\"\n                    show-dropdown=\"true\">{{vm.section.name}}</card-item-title>\n    <menu-item ng-if=\"vm.section.$expanded\"\n               ng-repeat=\"item in vm.section.items\"\n               item=\"item\"\n               ng-attr-data-id=\"{{item.id}}\"\n               dnd-draggable=\"item\"\n               dnd-moved=\"vm.onItemMoved($index)\"\n               dnd-effect-allowed=\"move\"\n               dnd-type=\"vm.menuItemType\"\n          ></menu-item>\n    <menu-item ng-if=\"vm.section.$expanded\"></menu-item>\n    <card-item-actions is-visible=\"vm.section.visible\"></card-item-actions>\n  </card-item>\n</div>"
-
-/***/ },
 /* 95 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-card class='menu-section card-item card-item-new' ng-class=\"{selected:vm.section.$selected}\">\n  <md-card-title layout=\"row\" layout-align=\"start center\" ng-if=\"vm.section.name\">\n      <div flex> <span>{{vm.section.name}}</span> </div>\n  </md-card-title>\n  <md-card-actions>\n    <md-button class=\"md-fab md-mini md-primary\" aria-label=\"Add Section\" ng-click=\"vm.showCreateSection($event)\">\n      <icon>add</icon>\n    </md-button>\n  </md-card-actions>\n</md-card>"
+	module.exports = "<div class='menu-section'>\n  <card-item card-item-actions=\"vm.cardItemActions\"\n              selected=\"vm.section.$selected\"\n              expanded=\"vm.section.$expanded\"\n              >\n    <card-item-title ng-click=\"vm.toggleExpanded()\"\n                    has-visible=\"true\"\n                    show-visible=\"!vm.section.visible\"\n                    show-dropdown=\"true\">{{vm.section.name}}</card-item-title>\n    <div  class='repeat-holder'\n          ng-if=\"vm.section.$expanded\"\n          sv-root\n          sv-on-start=\"vm.onItemMoveStart($item, $part, $index, $helper)\"\n          sv-on-stop=\"vm.onItemMoveStop($item, $part, $index)\"\n          sv-on-sort=\"vm.onItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)\"\n          sv-part=\"vm.section.items\">\n         <div sv-placeholder></div>\n      <menu-item\n             ng-repeat=\"item in vm.section.items\"\n             item=\"item\"\n             ng-attr-data-id=\"{{item.id}}\"\n             sv-element=\"item\"\n       ></menu-item>\n\n    </div>\n    <menu-item ng-if=\"vm.section.$expanded\"></menu-item>\n    <card-item-actions is-visible=\"vm.section.visible\"></card-item-actions>\n  </card-item>\n</div>"
 
 /***/ },
 /* 96 */
+/***/ function(module, exports) {
+
+	module.exports = "<md-card class='menu-section card-item card-item-new' ng-class=\"{selected:vm.section.$selected}\">\n  <md-card-title layout=\"row\" layout-align=\"start center\" ng-if=\"vm.section.name\">\n      <div flex> <span>{{vm.section.name}}</span> </div>\n  </md-card-title>\n  <md-card-actions>\n    <md-button class=\"md-fab md-mini md-primary\" aria-label=\"Add Section\" ng-click=\"vm.showCreateSection($event)\">\n      <icon>add</icon>\n    </md-button>\n  </md-card-actions>\n</md-card>\n"
+
+/***/ },
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75231,17 +75342,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(97);
+	__webpack_require__(98);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _menuItem = __webpack_require__(99);
+	var _menuItem = __webpack_require__(100);
 
 	var _menuItem2 = _interopRequireDefault(_menuItem);
 
-	var _menuItem3 = __webpack_require__(100);
+	var _menuItem3 = __webpack_require__(101);
 
 	var _menuItem4 = _interopRequireDefault(_menuItem3);
 
@@ -75252,13 +75363,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("menuItem", []).controller(_menuItem2.default.UID, _menuItem2.default).directive("menuItem", _menuItem4.default).name;
 
 /***/ },
-/* 97 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(98);
+	var content = __webpack_require__(99);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -75278,7 +75389,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 98 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -75286,13 +75397,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, ".menu-item .price {\n  float: right;\n  padding-top: 6px; }\n\n.menu-item md-card-title {\n  max-height: 48px;\n  min-height: auto; }\n  .menu-item md-card-title .name, .menu-item md-card-title .price {\n    font-size: 13px; }\n", ""]);
+	exports.push([module.id, ".menu-item {\n  margin: 0px 22px 8px; }\n  .menu-item .card-item {\n    margin: 0; }\n    .menu-item .card-item:not(.expanded) {\n      max-height: 48px; }\n      .menu-item .card-item:not(.expanded) .hidden-card-actions {\n        padding-top: 0; }\n    .menu-item .card-item.expanded .hidden-card-actions {\n      align-items: flex-start;\n      padding-top: 6px; }\n    .menu-item .card-item md-card-title {\n      max-height: 48px;\n      min-height: auto; }\n      .menu-item .card-item md-card-title .price {\n        float: right;\n        padding-top: 6px; }\n      .menu-item .card-item md-card-title .name, .menu-item .card-item md-card-title .price {\n        font-size: 13px; }\n    .menu-item .card-item.card-item-new {\n      margin-bottom: 32px;\n      min-height: 48px; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 99 */
+/* 100 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75384,11 +75495,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 	        onDelete: function onDelete($event) {
 	          var isInSection = that.menuSectionCtrl ? true : false;
-	          var msg = isInSection ? "Are you sure you want to remove this item from this section?" : "Are you sure you want to permanently delete this item?";
+	          var msg = isInSection ? that.LabelService.CONTENT_DELETE_ITEM_SECTION : that.LabelService.CONTENT_DELETE_ITEM;
 
 	          // call Preoday.Item or Preoday.Section method to delete item or remove from section
 	          var deleteAction = isInSection ? that.menuSectionCtrl.section.removeItems.bind(that.menuSectionCtrl.section) : that.item.delete.bind(item);
-	          that.DialogService.delete("Delete item?", msg).then(function () {
+	          that.DialogService.delete(that.LabelService.TITLE_DELETE_ITEM, msg).then(function () {
 	            deleteAction([that.item.id]).then(function () {
 	              that.Snack.show('Item deleted');
 	              if (isInSection) {
@@ -75418,7 +75529,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }]);
 
-	  function menuItemController($q, Snack, DialogService, BroadcastEvents, $rootScope, $stateParams) {
+	  function menuItemController($q, Snack, DialogService, BroadcastEvents, $rootScope, $stateParams, LabelService) {
 	    'ngInject';
 
 	    var _this3 = this;
@@ -75428,6 +75539,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.$q = $q;
 	    this.Snack = Snack;
 	    this.DialogService = DialogService;
+	    this.LabelService = LabelService;
 	    this.type = "menuItem";
 	    this.setCardActions();
 	    this.$stateParams = $stateParams;
@@ -75448,7 +75560,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = menuItemController;
 
 /***/ },
-/* 100 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75458,7 +75570,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = menuItem;
 
-	var _menuItem = __webpack_require__(99);
+	var _menuItem = __webpack_require__(100);
 
 	var _menuItem2 = _interopRequireDefault(_menuItem);
 
@@ -75473,7 +75585,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      item: "=?",
 	      sectionController: "=?"
 	    },
-	    template: __webpack_require__(101),
+	    template: __webpack_require__(102),
 	    controller: _menuItem2.default.UID,
 	    controllerAs: "vm",
 	    bindToController: true,
@@ -75484,8 +75596,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      scope.vm.menuSectionCtrl = ctrls[0];
 	      scope.vm.menuCtrl = ctrls[0].menuCtrl;
 	      if (!scope.vm.item || scope.vm.item.id === -1) {
-	        var newEl = angular.element(__webpack_require__(102));
-	        angular.element(el[0]).replaceWith(newEl);
+	        var newEl = angular.element(__webpack_require__(103));
+	        el.empty();
+	        el.append(newEl);
 	        $compile(newEl)(scope).scope();
 	      }
 	    }
@@ -75493,19 +75606,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 101 */
+/* 102 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class='menu-item'>\n    <card-item card-item-actions=\"vm.cardItemActions\" selected=\"vm.item.$selected\">\n    <card-item-title ng-click=\"vm.toggleExpanded()\"\n                    has-visible=\"true\"\n                    show-visible=\"!vm.item.visible\"\n                    show-dropdown=\"true\"> <span class='name' flex> {{vm.item.name}} </span> <span class='price'> {{vm.item.price | currency:\"£\"}}</span></card-item-title>\n    <card-item-actions is-visible=\"vm.item.visible\"></card-item-actions>\n  </card-item>\n</div>"
+	module.exports = "<div class='menu-item'>\n    <card-item card-item-actions=\"vm.cardItemActions\"\n              selected=\"vm.item.$selected\"\n              expanded=\"vm.item.$expanded\">\n    <card-item-title ng-click=\"vm.toggleExpanded()\"\n                    has-visible=\"true\"\n                    show-visible=\"!vm.item.visible\"\n                    show-dropdown=\"true\"> <span class='name' flex> {{vm.item.name}} </span> <span class='price'> {{vm.item.price | currency:\"£\"}}</span></card-item-title>\n    <card-item-actions is-visible=\"vm.item.visible\"></card-item-actions>\n  </card-item>\n</div>"
 
 /***/ },
-/* 102 */
+/* 103 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-card class='menu-item card-item card-item-new' ng-class=\"{selected:vm.item.$selected}\">\n  <md-card-title layout=\"row\" layout-align=\"start center\" ng-if=\"vm.item.name\">\n      <div flex> <span>{{vm.item.name}}</span> </div>\n  </md-card-title>\n  <md-card-actions>\n    <md-button class=\"md-fab md-mini md-primary\" aria-label=\"Add Item\" ng-click=\"vm.showCreateItem($event)\">\n      <icon>add</icon>\n    </md-button>\n  </md-card-actions>\n</md-card>"
 
 /***/ },
-/* 103 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75514,25 +75627,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(104);
+	__webpack_require__(105);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _cardItem = __webpack_require__(106);
+	var _cardItem = __webpack_require__(107);
 
 	var _cardItem2 = _interopRequireDefault(_cardItem);
 
-	var _cardItem3 = __webpack_require__(107);
+	var _cardItem3 = __webpack_require__(108);
 
 	var _cardItem4 = _interopRequireDefault(_cardItem3);
 
-	var _cardItemTitle = __webpack_require__(109);
+	var _cardItemTitle = __webpack_require__(110);
 
 	var _cardItemTitle2 = _interopRequireDefault(_cardItemTitle);
 
-	var _cardItemActions = __webpack_require__(114);
+	var _cardItemActions = __webpack_require__(115);
 
 	var _cardItemActions2 = _interopRequireDefault(_cardItemActions);
 
@@ -75543,13 +75656,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("cardItem", [_cardItemTitle2.default, _cardItemActions2.default]).controller(_cardItem2.default.UID, _cardItem2.default).directive("cardItem", _cardItem4.default).name;
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(105);
+	var content = __webpack_require__(106);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -75569,7 +75682,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -75577,13 +75690,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.card-item {\n  border: 1px solid #eeeeee;\n  position: relative; }\n  .card-item.card-item-new {\n    position: relative;\n    min-height: 60px;\n    border: 1px dotted #BDBDBD;\n    background: transparent;\n    box-shadow: none; }\n    .card-item.card-item-new md-card-actions {\n      margin: 0; }\n    .card-item.card-item-new button {\n      position: absolute;\n      bottom: -20px;\n      left: 20px; }\n  .card-item:not(.selected) {\n    box-shadow: none; }\n  .card-item > md-card-title {\n    min-height: 60px;\n    padding: 10px 0 10px 16px; }\n    .card-item > md-card-title:hover .arrow-icon {\n      opacity: 1; }\n    .card-item > md-card-title button {\n      margin-right: -16px; }\n    .card-item > md-card-title .arrow-icon {\n      opacity: 0; }\n    .card-item > md-card-title > div {\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis; }\n    .card-item > md-card-title .visibility {\n      margin-right: 16px;\n      position: relative;\n      top: -2px; }\n  .card-item > .card-item-actions > md-card-actions {\n    position: absolute;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    background: rgba(255, 255, 255, 0.9); }\n    .card-item > .card-item-actions > md-card-actions:hover {\n      cursor: pointer; }\n  .card-item.selected {\n    background-color: #E1F5FE; }\n  .card-item.hidden > md-card-title {\n    color: #757575; }\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.card-item {\n  border: 1px solid #E0E0E0;\n  position: relative; }\n  .card-item:not(.expanded) {\n    max-height: 60px; }\n    .card-item:not(.expanded) md-card-title {\n      padding-bottom: 22px; }\n  .card-item.expanded .hidden-card-actions {\n    align-items: flex-start;\n    padding-top: 15px; }\n  .card-item:hover {\n    cursor: pointer; }\n  .card-item.card-item-new {\n    position: relative;\n    min-height: 60px;\n    border: 1px dotted #BDBDBD;\n    background: transparent;\n    box-shadow: none;\n    margin-bottom: 32px; }\n    .card-item.card-item-new md-card-actions {\n      margin: 0; }\n    .card-item.card-item-new button {\n      position: absolute;\n      bottom: -20px;\n      left: 20px; }\n  .card-item:not(.selected) {\n    box-shadow: none; }\n  .card-item > md-card-title {\n    padding: 22px 0px 16px 22px; }\n    .card-item > md-card-title > span {\n      color: #424242; }\n    .card-item > md-card-title:hover .item-actions, .card-item > md-card-title:hover .arrow-icon {\n      opacity: 1; }\n    .card-item > md-card-title button {\n      margin-right: -16px; }\n    .card-item > md-card-title .arrow-icon, .card-item > md-card-title .item-actions {\n      opacity: 0;\n      transition: all 0.3s linear;\n      -webkit-transition: all 0.3s linear;\n      -o-transition: all 0.3s linear;\n      -ms-transition: all 0.3s linear;\n      -moz-transition: all 0.3s linear; }\n    .card-item > md-card-title > div {\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis; }\n    .card-item > md-card-title .visibility {\n      margin-right: 16px;\n      position: relative;\n      top: -2px; }\n    .card-item > md-card-title.invisible span {\n      color: #757575; }\n    .card-item > md-card-title.invisible .visibility span {\n      color: #D1D1D1; }\n  .card-item > .card-item-actions > md-card-actions {\n    position: absolute;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    background: rgba(255, 255, 255, 0.9); }\n    .card-item > .card-item-actions > md-card-actions:hover {\n      cursor: pointer; }\n  .card-item.selected {\n    background-color: #E1F5FE;\n    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26), 0px 2px 10px 0px rgba(0, 0, 0, 0.16); }\n  .card-item.hidden > md-card-title {\n    color: #757575; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 106 */
+/* 107 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -75599,8 +75712,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var cardItemController = function () {
 	  _createClass(cardItemController, [{
 	    key: "toggleCardActions",
-	    value: function toggleCardActions($event) {
-	      this.showCardActions = !this.showCardActions;
+	    value: function toggleCardActions($event, newStatus) {
+	      this.showCardActions = newStatus !== undefined ? newStatus : !this.showCardActions;
 	      $event.stopPropagation();
 	    }
 
@@ -75625,7 +75738,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = cardItemController;
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75635,22 +75748,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = cardItem;
 
-	var _cardItem = __webpack_require__(106);
+	var _cardItem = __webpack_require__(107);
 
 	var _cardItem2 = _interopRequireDefault(_cardItem);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function cardItem() {
+	function cardItem($parse) {
+	  'ngInject';
+
 	  return {
 	    restrict: 'E',
-	    template: __webpack_require__(108),
+	    template: __webpack_require__(109),
 	    controller: _cardItem2.default.UID,
 	    scope: {
 	      cardItemActions: "=?",
 	      selected: "=?",
-	      draggable: "=?",
-	      allowedTypes: "=?"
+	      expanded: "=?"
 	    },
 	    controllerAs: "vm",
 	    bindToController: true,
@@ -75661,13 +75775,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 108 */
+/* 109 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-card class='card-item' ng-class=\"{selected:vm.selected}\" flex ng-transclude>\n</md-card>\n"
+	module.exports = "<md-card class='card-item' ng-class=\"{selected:vm.selected, expanded:vm.expanded}\" flex ng-transclude>\n</md-card>\n"
 
 /***/ },
-/* 109 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75676,13 +75790,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(110);
+	__webpack_require__(111);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _cardItemTitle = __webpack_require__(112);
+	var _cardItemTitle = __webpack_require__(113);
 
 	var _cardItemTitle2 = _interopRequireDefault(_cardItemTitle);
 
@@ -75694,13 +75808,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import Style
 
 /***/ },
-/* 110 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(111);
+	var content = __webpack_require__(112);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -75720,7 +75834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 111 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -75734,7 +75848,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 112 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75746,7 +75860,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function cardItemTitle() {
 	  return {
 	    restrict: 'E',
-	    template: __webpack_require__(113),
+	    template: __webpack_require__(114),
 	    scope: {
 	      showVisible: "&?",
 	      hasVisible: "=?",
@@ -75762,13 +75876,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 113 */
+/* 114 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-card-title layout=\"row\" layout-align=\"start center\" >\n    <div flex>\n      <icon class='visibility' ng-if=\"hasVisible && showVisible()\">visibility_off</icon>\n      <span ng-transclude flex></span>\n      <icon class='arrow-icon' ng-if=\"showDropdown\">arrow_drop_down</icon>\n    </div>\n    <md-button class=\"md-icon-button\" ng-if=\"vm.cardItemActions\" ng-click=\"vm.toggleCardActions($event)\">\n      <icon>more_horiz</icon>\n    </md-button>\n</md-card-title>"
+	module.exports = "<md-card-title layout=\"row\" layout-align=\"start center\" ng-class=\"{invisible:hasVisible && showVisible()}\" >\n    <div flex>\n      <icon class='visibility' ng-if=\"hasVisible && showVisible()\">visibility_off</icon>\n      <span ng-transclude flex></span>\n      <icon class='arrow-icon' ng-if=\"showDropdown\">{{vm.expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>\n    </div>\n    <md-button class=\"md-icon-button item-actions\" ng-if=\"vm.cardItemActions\" ng-click=\"vm.toggleCardActions($event)\">\n      <icon>more_horiz</icon>\n    </md-button>\n</md-card-title>"
 
 /***/ },
-/* 114 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75777,13 +75891,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(115);
+	__webpack_require__(116);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _cardItemActions = __webpack_require__(117);
+	var _cardItemActions = __webpack_require__(118);
 
 	var _cardItemActions2 = _interopRequireDefault(_cardItemActions);
 
@@ -75795,13 +75909,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import Style
 
 /***/ },
-/* 115 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(116);
+	var content = __webpack_require__(117);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -75821,9 +75935,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 116 */
-111,
 /* 117 */
+112,
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75843,23 +75957,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	    scope: {
 	      isVisible: "="
 	    },
-	    template: __webpack_require__(118),
+	    template: __webpack_require__(119),
 	    replace: true,
 	    require: "^cardItem",
 	    link: function link(scope, el, attr, cardItemCtrl) {
 	      scope.vm = cardItemCtrl;
+
+	      scope.onMouseLeave = function ($event) {
+	        // cardItemCtrl.toggleCardActions($event, false);
+	      };
 	    }
 	  };
 	}
 
 /***/ },
-/* 118 */
+/* 119 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class='card-item-actions'>\n  <md-card-actions ng-if=\"vm.showCardActions\" class=\"hidden-card-actions\" layout=\"row\" layout-align=\"end center\" ng-click=\"vm.toggleCardActions($event)\">\n    <md-button ng-if=\"vm.cardItemActions.onEdit\" class=\"md-icon-button\" ng-click=\"vm.cardItemActions.onEdit($event)\">\n      <icon>edit</icon>\n      <md-tooltip md-direction=\"bottom\">\n        Edit\n      </md-tooltip>\n    </md-button>\n    <md-button ng-if=\"vm.cardItemActions.onClone\" class=\"md-icon-button\" ng-click=\"vm.cardItemActions.onClone($event)\">\n      <icon>content_copy</icon>\n      <md-tooltip md-direction=\"bottom\">\n        Duplicate\n      </md-tooltip>\n    </md-button>\n    <md-button ng-if=\"vm.cardItemActions.onVisibility\" ng-show=\"isVisible\" class=\"md-icon-button\" ng-click=\"vm.cardItemActions.onVisibility(false, $event)\">\n      <icon>visibility_off</icon> <!-- visibility_off -->\n      <md-tooltip md-direction=\"bottom\">\n        Hide from menu\n      </md-tooltip>\n    </md-button>\n    <md-button ng-if=\"vm.cardItemActions.onVisibility\" ng-show=\"!isVisible\" class=\"md-icon-button\" ng-click=\"vm.cardItemActions.onVisibility(true, $event)\">\n      <icon>visibility</icon> <!-- visibility_off -->\n      <md-tooltip md-direction=\"bottom\">\n        Show on menu\n      </md-tooltip>\n    </md-button>\n    <md-button ng-if=\"vm.cardItemActions.onDelete\" class=\"md-icon-button\" ng-click=\"vm.cardItemActions.onDelete($event)\">\n      <icon>delete</icon>\n      <md-tooltip md-direction=\"bottom\">\n        Delete\n      </md-tooltip>\n    </md-button>\n  </md-card-actions>\n</div>"
+	module.exports = "<div class='card-item-actions'>\n  <md-card-actions ng-if=\"vm.showCardActions\" class=\"hidden-card-actions\" layout=\"row\" layout-align=\"end center\" ng-click=\"vm.toggleCardActions($event)\" ng-mouseleave=\"onMouseLeave($event)\">\n    <md-button ng-if=\"vm.cardItemActions.onEdit\" class=\"md-icon-button\" ng-click=\"vm.cardItemActions.onEdit($event)\">\n      <icon>edit</icon>\n      <md-tooltip md-direction=\"bottom\">\n        Edit\n      </md-tooltip>\n    </md-button>\n    <md-button ng-if=\"vm.cardItemActions.onClone\" class=\"md-icon-button\" ng-click=\"vm.cardItemActions.onClone($event)\">\n      <icon>content_copy</icon>\n      <md-tooltip md-direction=\"bottom\">\n        Duplicate\n      </md-tooltip>\n    </md-button>\n    <md-button ng-if=\"vm.cardItemActions.onVisibility\" ng-show=\"isVisible\" class=\"md-icon-button\" ng-click=\"vm.cardItemActions.onVisibility(false, $event)\">\n      <icon>visibility_off</icon> <!-- visibility_off -->\n      <md-tooltip md-direction=\"bottom\">\n        Hide from menu\n      </md-tooltip>\n    </md-button>\n    <md-button ng-if=\"vm.cardItemActions.onVisibility\" ng-show=\"!isVisible\" class=\"md-icon-button\" ng-click=\"vm.cardItemActions.onVisibility(true, $event)\">\n      <icon>visibility</icon> <!-- visibility_off -->\n      <md-tooltip md-direction=\"bottom\">\n        Show on menu\n      </md-tooltip>\n    </md-button>\n    <md-button ng-if=\"vm.cardItemActions.onDelete\" class=\"md-icon-button\" ng-click=\"vm.cardItemActions.onDelete($event)\">\n      <icon>delete</icon>\n      <md-tooltip md-direction=\"bottom\">\n        Delete\n      </md-tooltip>\n    </md-button>\n  </md-card-actions>\n</div>"
 
 /***/ },
-/* 119 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75868,7 +75986,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(120);
+	__webpack_require__(121);
 
 	var _angular = __webpack_require__(7);
 
@@ -75878,11 +75996,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _notifications = __webpack_require__(122);
+	var _notifications = __webpack_require__(123);
 
 	var _notifications2 = _interopRequireDefault(_notifications);
 
-	var _notifications3 = __webpack_require__(123);
+	var _notifications3 = __webpack_require__(124);
 
 	var _notifications4 = _interopRequireDefault(_notifications3);
 
@@ -75892,13 +76010,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("notifications", [_angularUiRouter2.default]).config(_notifications4.default).controller(_notifications2.default.UID, _notifications2.default).name; // Import Style
 
 /***/ },
-/* 120 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(121);
+	var content = __webpack_require__(122);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -75918,9 +76036,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 121 */
-43,
 /* 122 */
+44,
+/* 123 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -75956,7 +76074,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = notificationsController;
 
 /***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75966,7 +76084,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _notifications = __webpack_require__(122);
+	var _notifications = __webpack_require__(123);
 
 	var _notifications2 = _interopRequireDefault(_notifications);
 
@@ -75982,7 +76100,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.notifications", {
 	    url: "/notifications",
-	    template: __webpack_require__(124),
+	    template: __webpack_require__(125),
 	    controller: _notifications2.default.UID,
 	    controllerAs: "notifications"
 	  });
@@ -75990,13 +76108,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 124 */
+/* 125 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  notifications\n</div>\n"
 
 /***/ },
-/* 125 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76005,7 +76123,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(126);
+	__webpack_require__(127);
 
 	var _angular = __webpack_require__(7);
 
@@ -76015,11 +76133,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _outlets = __webpack_require__(128);
+	var _outlets = __webpack_require__(129);
 
 	var _outlets2 = _interopRequireDefault(_outlets);
 
-	var _outlets3 = __webpack_require__(129);
+	var _outlets3 = __webpack_require__(130);
 
 	var _outlets4 = _interopRequireDefault(_outlets3);
 
@@ -76029,13 +76147,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("outlets", [_angularUiRouter2.default]).config(_outlets4.default).controller(_outlets2.default.UID, _outlets2.default).name; // Import Style
 
 /***/ },
-/* 126 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(127);
+	var content = __webpack_require__(128);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -76055,9 +76173,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 127 */
-43,
 /* 128 */
+44,
+/* 129 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -76093,7 +76211,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = outletsController;
 
 /***/ },
-/* 129 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76103,7 +76221,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _outlets = __webpack_require__(128);
+	var _outlets = __webpack_require__(129);
 
 	var _outlets2 = _interopRequireDefault(_outlets);
 
@@ -76119,7 +76237,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.outlets", {
 	    url: "/outlets",
-	    template: __webpack_require__(130),
+	    template: __webpack_require__(131),
 	    controller: _outlets2.default.UID,
 	    controllerAs: "outlets"
 	  });
@@ -76127,13 +76245,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 130 */
+/* 131 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  outlets\n</div>\n"
 
 /***/ },
-/* 131 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76142,7 +76260,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(132);
+	__webpack_require__(133);
 
 	var _angular = __webpack_require__(7);
 
@@ -76152,19 +76270,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _payments = __webpack_require__(134);
+	var _payments = __webpack_require__(135);
 
 	var _payments2 = _interopRequireDefault(_payments);
 
-	var _payments3 = __webpack_require__(135);
+	var _payments3 = __webpack_require__(136);
 
 	var _payments4 = _interopRequireDefault(_payments3);
 
-	var _appMode = __webpack_require__(137);
+	var _appMode = __webpack_require__(138);
 
 	var _appMode2 = _interopRequireDefault(_appMode);
 
-	var _paymentMethods = __webpack_require__(143);
+	var _paymentMethods = __webpack_require__(144);
 
 	var _paymentMethods2 = _interopRequireDefault(_paymentMethods);
 
@@ -76174,13 +76292,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("payments", [_angularUiRouter2.default, _appMode2.default, _paymentMethods2.default]).config(_payments4.default).controller(_payments2.default.UID, _payments2.default).name; // Import Style
 
 /***/ },
-/* 132 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(133);
+	var content = __webpack_require__(134);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -76200,9 +76318,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 133 */
-43,
 /* 134 */
+44,
+/* 135 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -76238,7 +76356,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = paymentsController;
 
 /***/ },
-/* 135 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76248,7 +76366,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _payments = __webpack_require__(134);
+	var _payments = __webpack_require__(135);
 
 	var _payments2 = _interopRequireDefault(_payments);
 
@@ -76264,7 +76382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.payments", {
 	    url: "/payments",
-	    template: __webpack_require__(136),
+	    template: __webpack_require__(137),
 	    controller: _payments2.default.UID,
 	    controllerAs: "payments"
 	  });
@@ -76272,13 +76390,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 136 */
+/* 137 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  payments\n</div>\n"
 
 /***/ },
-/* 137 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76287,7 +76405,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(138);
+	__webpack_require__(139);
 
 	var _angular = __webpack_require__(7);
 
@@ -76297,11 +76415,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _appMode = __webpack_require__(140);
+	var _appMode = __webpack_require__(141);
 
 	var _appMode2 = _interopRequireDefault(_appMode);
 
-	var _appMode3 = __webpack_require__(141);
+	var _appMode3 = __webpack_require__(142);
 
 	var _appMode4 = _interopRequireDefault(_appMode3);
 
@@ -76311,13 +76429,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("appMode", [_angularUiRouter2.default]).config(_appMode4.default).controller(_appMode2.default.UID, _appMode2.default).name; // Import Style
 
 /***/ },
-/* 138 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(139);
+	var content = __webpack_require__(140);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -76337,9 +76455,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 139 */
-49,
 /* 140 */
+50,
+/* 141 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -76375,7 +76493,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = appModeController;
 
 /***/ },
-/* 141 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76385,7 +76503,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _appMode = __webpack_require__(140);
+	var _appMode = __webpack_require__(141);
 
 	var _appMode2 = _interopRequireDefault(_appMode);
 
@@ -76401,7 +76519,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.payments.appMode", {
 	    url: "/appMode",
-	    template: __webpack_require__(142),
+	    template: __webpack_require__(143),
 	    controller: _appMode2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -76409,13 +76527,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 142 */
+/* 143 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  appMode\n</div>\n"
 
 /***/ },
-/* 143 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76424,7 +76542,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(144);
+	__webpack_require__(145);
 
 	var _angular = __webpack_require__(7);
 
@@ -76434,11 +76552,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _paymentMethods = __webpack_require__(146);
+	var _paymentMethods = __webpack_require__(147);
 
 	var _paymentMethods2 = _interopRequireDefault(_paymentMethods);
 
-	var _paymentMethods3 = __webpack_require__(147);
+	var _paymentMethods3 = __webpack_require__(148);
 
 	var _paymentMethods4 = _interopRequireDefault(_paymentMethods3);
 
@@ -76448,13 +76566,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("paymentMethods", [_angularUiRouter2.default]).config(_paymentMethods4.default).controller(_paymentMethods2.default.UID, _paymentMethods2.default).name; // Import Style
 
 /***/ },
-/* 144 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(145);
+	var content = __webpack_require__(146);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -76474,9 +76592,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 145 */
-49,
 /* 146 */
+50,
+/* 147 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -76512,7 +76630,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = paymentMethodsController;
 
 /***/ },
-/* 147 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76522,7 +76640,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _paymentMethods = __webpack_require__(146);
+	var _paymentMethods = __webpack_require__(147);
 
 	var _paymentMethods2 = _interopRequireDefault(_paymentMethods);
 
@@ -76538,7 +76656,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.payments.paymentMethods", {
 	    url: "/paymentMethods",
-	    template: __webpack_require__(148),
+	    template: __webpack_require__(149),
 	    controller: _paymentMethods2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -76546,13 +76664,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 148 */
+/* 149 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  paymentMethods\n</div>\n"
 
 /***/ },
-/* 149 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76561,7 +76679,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(150);
+	__webpack_require__(151);
 
 	var _angular = __webpack_require__(7);
 
@@ -76571,11 +76689,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _promotions = __webpack_require__(152);
+	var _promotions = __webpack_require__(153);
 
 	var _promotions2 = _interopRequireDefault(_promotions);
 
-	var _promotions3 = __webpack_require__(153);
+	var _promotions3 = __webpack_require__(154);
 
 	var _promotions4 = _interopRequireDefault(_promotions3);
 
@@ -76585,13 +76703,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("promotions", [_angularUiRouter2.default]).config(_promotions4.default).controller(_promotions2.default.UID, _promotions2.default).name; // Import Style
 
 /***/ },
-/* 150 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(151);
+	var content = __webpack_require__(152);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -76611,9 +76729,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 151 */
-43,
 /* 152 */
+44,
+/* 153 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -76649,7 +76767,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = promotionsController;
 
 /***/ },
-/* 153 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76659,7 +76777,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _promotions = __webpack_require__(152);
+	var _promotions = __webpack_require__(153);
 
 	var _promotions2 = _interopRequireDefault(_promotions);
 
@@ -76675,7 +76793,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.promotions", {
 	    url: "/promotions",
-	    template: __webpack_require__(154),
+	    template: __webpack_require__(155),
 	    controller: _promotions2.default.UID,
 	    controllerAs: "promotions"
 	  });
@@ -76683,13 +76801,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 154 */
+/* 155 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  promotions\n</div>\n"
 
 /***/ },
-/* 155 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76698,7 +76816,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(156);
+	__webpack_require__(157);
 
 	var _angular = __webpack_require__(7);
 
@@ -76708,23 +76826,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _styling = __webpack_require__(158);
+	var _styling = __webpack_require__(159);
 
 	var _styling2 = _interopRequireDefault(_styling);
 
-	var _styling3 = __webpack_require__(159);
+	var _styling3 = __webpack_require__(160);
 
 	var _styling4 = _interopRequireDefault(_styling3);
 
-	var _mobile = __webpack_require__(161);
+	var _mobile = __webpack_require__(162);
 
 	var _mobile2 = _interopRequireDefault(_mobile);
 
-	var _emails = __webpack_require__(167);
+	var _emails = __webpack_require__(168);
 
 	var _emails2 = _interopRequireDefault(_emails);
 
-	var _weborders = __webpack_require__(173);
+	var _weborders = __webpack_require__(174);
 
 	var _weborders2 = _interopRequireDefault(_weborders);
 
@@ -76736,13 +76854,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import internal modules
 
 /***/ },
-/* 156 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(157);
+	var content = __webpack_require__(158);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -76762,9 +76880,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 157 */
-43,
 /* 158 */
+44,
+/* 159 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -76800,7 +76918,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = stylingController;
 
 /***/ },
-/* 159 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76810,7 +76928,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _styling = __webpack_require__(158);
+	var _styling = __webpack_require__(159);
 
 	var _styling2 = _interopRequireDefault(_styling);
 
@@ -76826,7 +76944,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.styling", {
 	    url: "/styling",
-	    template: __webpack_require__(160),
+	    template: __webpack_require__(161),
 	    controller: _styling2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -76834,13 +76952,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 160 */
+/* 161 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  styling\n  <ui-view></ui-view>\n</div>\n"
 
 /***/ },
-/* 161 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76849,7 +76967,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(162);
+	__webpack_require__(163);
 
 	var _angular = __webpack_require__(7);
 
@@ -76859,11 +76977,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _mobile = __webpack_require__(164);
+	var _mobile = __webpack_require__(165);
 
 	var _mobile2 = _interopRequireDefault(_mobile);
 
-	var _mobile3 = __webpack_require__(165);
+	var _mobile3 = __webpack_require__(166);
 
 	var _mobile4 = _interopRequireDefault(_mobile3);
 
@@ -76873,13 +76991,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("mobile", [_angularUiRouter2.default]).config(_mobile4.default).controller(_mobile2.default.UID, _mobile2.default).name; // Import Style
 
 /***/ },
-/* 162 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(163);
+	var content = __webpack_require__(164);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -76899,9 +77017,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 163 */
-49,
 /* 164 */
+50,
+/* 165 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -76937,7 +77055,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = mobileController;
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76947,7 +77065,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _mobile = __webpack_require__(164);
+	var _mobile = __webpack_require__(165);
 
 	var _mobile2 = _interopRequireDefault(_mobile);
 
@@ -76963,7 +77081,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.styling.mobile", {
 	    url: "/mobile",
-	    template: __webpack_require__(166),
+	    template: __webpack_require__(167),
 	    controller: _mobile2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -76971,13 +77089,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  mobile\n</div>\n"
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76986,7 +77104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(168);
+	__webpack_require__(169);
 
 	var _angular = __webpack_require__(7);
 
@@ -76996,11 +77114,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _emails = __webpack_require__(170);
+	var _emails = __webpack_require__(171);
 
 	var _emails2 = _interopRequireDefault(_emails);
 
-	var _emails3 = __webpack_require__(171);
+	var _emails3 = __webpack_require__(172);
 
 	var _emails4 = _interopRequireDefault(_emails3);
 
@@ -77010,13 +77128,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("emails", [_angularUiRouter2.default]).config(_emails4.default).controller(_emails2.default.UID, _emails2.default).name; // Import Style
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(169);
+	var content = __webpack_require__(170);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -77036,9 +77154,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 169 */
-49,
 /* 170 */
+50,
+/* 171 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -77074,7 +77192,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = emailsController;
 
 /***/ },
-/* 171 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77084,7 +77202,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _emails = __webpack_require__(170);
+	var _emails = __webpack_require__(171);
 
 	var _emails2 = _interopRequireDefault(_emails);
 
@@ -77100,7 +77218,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.styling.emails", {
 	    url: "/emails",
-	    template: __webpack_require__(172),
+	    template: __webpack_require__(173),
 	    controller: _emails2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -77108,13 +77226,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 172 */
+/* 173 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  emails\n</div>\n"
 
 /***/ },
-/* 173 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77123,7 +77241,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(174);
+	__webpack_require__(175);
 
 	var _angular = __webpack_require__(7);
 
@@ -77133,11 +77251,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _weborders = __webpack_require__(176);
+	var _weborders = __webpack_require__(177);
 
 	var _weborders2 = _interopRequireDefault(_weborders);
 
-	var _weborders3 = __webpack_require__(177);
+	var _weborders3 = __webpack_require__(178);
 
 	var _weborders4 = _interopRequireDefault(_weborders3);
 
@@ -77147,13 +77265,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("weborders", [_angularUiRouter2.default]).config(_weborders4.default).controller(_weborders2.default.UID, _weborders2.default).name; // Import Style
 
 /***/ },
-/* 174 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(175);
+	var content = __webpack_require__(176);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -77173,9 +77291,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 175 */
-49,
 /* 176 */
+50,
+/* 177 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -77211,7 +77329,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = webordersController;
 
 /***/ },
-/* 177 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77221,7 +77339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _weborders = __webpack_require__(176);
+	var _weborders = __webpack_require__(177);
 
 	var _weborders2 = _interopRequireDefault(_weborders);
 
@@ -77237,7 +77355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.styling.weborders", {
 	    url: "/weborders",
-	    template: __webpack_require__(178),
+	    template: __webpack_require__(179),
 	    controller: _weborders2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -77245,13 +77363,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  weborders\n</div>\n"
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77260,7 +77378,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(180);
+	__webpack_require__(181);
 
 	var _angular = __webpack_require__(7);
 
@@ -77270,11 +77388,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _venueSettings = __webpack_require__(182);
+	var _venueSettings = __webpack_require__(183);
 
 	var _venueSettings2 = _interopRequireDefault(_venueSettings);
 
-	var _venueSettings3 = __webpack_require__(183);
+	var _venueSettings3 = __webpack_require__(184);
 
 	var _venueSettings4 = _interopRequireDefault(_venueSettings3);
 
@@ -77284,13 +77402,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("venueSettings", [_angularUiRouter2.default]).config(_venueSettings4.default).controller(_venueSettings2.default.UID, _venueSettings2.default).name; // Import Style
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(181);
+	var content = __webpack_require__(182);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -77310,9 +77428,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 181 */
-43,
 /* 182 */
+44,
+/* 183 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -77348,7 +77466,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = venueSettingsController;
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77358,7 +77476,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _venueSettings = __webpack_require__(182);
+	var _venueSettings = __webpack_require__(183);
 
 	var _venueSettings2 = _interopRequireDefault(_venueSettings);
 
@@ -77374,7 +77492,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.venueSettings", {
 	    url: "/venueSettings",
-	    template: __webpack_require__(184),
+	    template: __webpack_require__(185),
 	    controller: _venueSettings2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -77382,13 +77500,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  venueSettings\n</div>\n"
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77397,7 +77515,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(186);
+	__webpack_require__(187);
 
 	var _angular = __webpack_require__(7);
 
@@ -77407,11 +77525,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _vouchers = __webpack_require__(188);
+	var _vouchers = __webpack_require__(189);
 
 	var _vouchers2 = _interopRequireDefault(_vouchers);
 
-	var _vouchers3 = __webpack_require__(189);
+	var _vouchers3 = __webpack_require__(190);
 
 	var _vouchers4 = _interopRequireDefault(_vouchers3);
 
@@ -77421,13 +77539,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("vouchers", [_angularUiRouter2.default]).config(_vouchers4.default).controller(_vouchers2.default.UID, _vouchers2.default).name; // Import Style
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(187);
+	var content = __webpack_require__(188);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -77447,9 +77565,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 187 */
-43,
 /* 188 */
+44,
+/* 189 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -77485,7 +77603,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = vouchersController;
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77495,7 +77613,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _vouchers = __webpack_require__(188);
+	var _vouchers = __webpack_require__(189);
 
 	var _vouchers2 = _interopRequireDefault(_vouchers);
 
@@ -77511,7 +77629,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.dashboard.vouchers", {
 	    url: "/vouchers",
-	    template: __webpack_require__(190),
+	    template: __webpack_require__(191),
 	    controller: _vouchers2.default.UID,
 	    controllerAs: "vouchers"
 	  });
@@ -77519,13 +77637,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  vouchers\n</div>\n"
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77534,7 +77652,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(192);
+	__webpack_require__(193);
 
 	var _angular = __webpack_require__(7);
 
@@ -77544,11 +77662,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _analytics = __webpack_require__(194);
+	var _analytics = __webpack_require__(195);
 
 	var _analytics2 = _interopRequireDefault(_analytics);
 
-	var _analytics3 = __webpack_require__(195);
+	var _analytics3 = __webpack_require__(196);
 
 	var _analytics4 = _interopRequireDefault(_analytics3);
 
@@ -77558,13 +77676,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("analytics", [_angularUiRouter2.default]).config(_analytics4.default).controller(_analytics2.default.UID, _analytics2.default).name; // Import Style
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(193);
+	var content = __webpack_require__(194);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -77584,9 +77702,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 193 */
-111,
 /* 194 */
+112,
+/* 195 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -77622,7 +77740,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = analyticsController;
 
 /***/ },
-/* 195 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77632,7 +77750,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _analytics = __webpack_require__(194);
+	var _analytics = __webpack_require__(195);
 
 	var _analytics2 = _interopRequireDefault(_analytics);
 
@@ -77648,7 +77766,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.analytics", {
 	    url: "/analytics",
-	    template: __webpack_require__(196),
+	    template: __webpack_require__(197),
 	    controller: _analytics2.default.UID,
 	    controllerAs: "analytics"
 	  });
@@ -77656,13 +77774,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 196 */
+/* 197 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  analytics\n</div>\n"
 
 /***/ },
-/* 197 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77671,7 +77789,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(198);
+	__webpack_require__(199);
 
 	var _angular = __webpack_require__(7);
 
@@ -77681,11 +77799,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _account = __webpack_require__(200);
+	var _account = __webpack_require__(201);
 
 	var _account2 = _interopRequireDefault(_account);
 
-	var _account3 = __webpack_require__(201);
+	var _account3 = __webpack_require__(202);
 
 	var _account4 = _interopRequireDefault(_account3);
 
@@ -77695,13 +77813,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("account", [_angularUiRouter2.default]).config(_account4.default).controller(_account2.default.UID, _account2.default).name; // Import Style
 
 /***/ },
-/* 198 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(199);
+	var content = __webpack_require__(200);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -77721,9 +77839,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 199 */
-111,
 /* 200 */
+112,
+/* 201 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -77759,7 +77877,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = accountController;
 
 /***/ },
-/* 201 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77769,7 +77887,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _account = __webpack_require__(200);
+	var _account = __webpack_require__(201);
 
 	var _account2 = _interopRequireDefault(_account);
 
@@ -77785,7 +77903,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("main.account", {
 	    url: "/account",
-	    template: __webpack_require__(202),
+	    template: __webpack_require__(203),
 	    controller: _account2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -77793,13 +77911,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 202 */
+/* 203 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  account\n</div>\n"
 
 /***/ },
-/* 203 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77808,21 +77926,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(204);
+	__webpack_require__(205);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _navbar = __webpack_require__(206);
+	var _navbar = __webpack_require__(207);
 
 	var _navbar2 = _interopRequireDefault(_navbar);
 
-	var _navbar3 = __webpack_require__(207);
+	var _navbar3 = __webpack_require__(208);
 
 	var _navbar4 = _interopRequireDefault(_navbar3);
 
-	var _navbarItem = __webpack_require__(209);
+	var _navbarItem = __webpack_require__(210);
 
 	var _navbarItem2 = _interopRequireDefault(_navbarItem);
 
@@ -77834,13 +77952,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import Style
 
 /***/ },
-/* 204 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(205);
+	var content = __webpack_require__(206);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -77860,7 +77978,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 205 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -77874,7 +77992,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 206 */
+/* 207 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -77947,7 +78065,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = navbarController;
 
 /***/ },
-/* 207 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77957,7 +78075,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = navbar;
 
-	var _navbar = __webpack_require__(206);
+	var _navbar = __webpack_require__(207);
 
 	var _navbar2 = _interopRequireDefault(_navbar);
 
@@ -77968,7 +78086,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  return {
 	    restrict: 'E',
-	    template: __webpack_require__(208),
+	    template: __webpack_require__(209),
 	    controller: _navbar2.default.UID,
 	    controllerAs: "vm",
 	    bindToController: true,
@@ -77978,13 +78096,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 208 */
+/* 209 */
 /***/ function(module, exports) {
 
 	module.exports = "  <md-sidenav\n      class=\"md-sidenav-left\"\n      md-component-id=\"left\"\n      md-is-locked-open=\"true\"\n      md-disable-backdrop\n      md-whiteframe=\"5\"\n      layout=\"column\"\n      ng-class=\"{expanded:vm.$expanded}\">\n      <md-list flex>\n        <navbar-item ng-repeat=\"item in vm.menu\" item=\"item\">{{item}} </navbar-item>\n      </md-list>\n      <md-divider></md-divider>\n      <div class=\"close-menu\">\n        <md-button class=\"md-icon-button\" ng-click=\"vm.toggleMenu()\">\n            <icon>{{ vm.$expanded ? 'arrow_back' : 'arrow_forward' }}</icon>\n        </md-button>\n      </div>\n  </md-sidenav>\n"
 
 /***/ },
-/* 209 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77993,13 +78111,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(210);
+	__webpack_require__(211);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _navbarItem = __webpack_require__(212);
+	var _navbarItem = __webpack_require__(213);
 
 	var _navbarItem2 = _interopRequireDefault(_navbarItem);
 
@@ -78011,13 +78129,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import Style
 
 /***/ },
-/* 210 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(211);
+	var content = __webpack_require__(212);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -78037,7 +78155,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 211 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -78051,7 +78169,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 212 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -78066,7 +78184,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    scope: {
 	      item: "="
 	    },
-	    template: __webpack_require__(213),
+	    template: __webpack_require__(214),
 	    require: "^navbar",
 	    link: function link(scope, el, attr, navbarCtrl) {
 	      scope.vm = navbarCtrl;
@@ -78115,13 +78233,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 213 */
+/* 214 */
 /***/ function(module, exports) {
 
 	module.exports = " <md-list-item path-selected=\"item\" layout-align=\"start none\" layout=\"column\" ng-class=\"{expanded:item.$expanded, open:item.$menuOpen}\">\n  <md-menu  md-offset=\"72 0\">\n    <div>\n      <!-- button itself -->\n      <md-button md-menu-origin  layout=\"row\" layout-align=\"center center\" ng-mouseover=\"handleMouseOver(item, $mdOpenMenu, $event)\" ng-click=\"handleClick(item)\" title=\"{{item.name}}\" aria-label=\"Open {{item.name}} interactions menu\">\n        <icon>{{item.icon}}</icon>\n        <span flex>{{item.name}}</span>\n        <icon ng-if=\"vm.$expanded && item.children.length\" flex=\"10\">{{ item.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>\n      </md-button>\n      <!-- Children -->\n      <div layout=\"column\" layout-align=\"start stretch\" class='children' ng-if=\"item.children.length\">\n          <md-button flex-offset=\"35\"  ng-repeat=\"child in item.children\" layout=\"row\" layout-align=\"start center\" ng-click=\"handleClick(child, item)\" title=\"{{child.name}}\" aria-label=\"{{child.name}}\"  path-selected=\"child\">\n            <span flex>{{child.name}}</span>\n        </md-button>\n      </div>\n    </div>\n    <!-- Hover menu -->\n    <md-menu-content  class='navbar-menu-content' ng-mouseleave=\"handleMouseLeave(item, $mdOpenMenu, $event)\" width=\"4\" >\n      <md-menu-item ng-repeat=\"child in item.children\">\n       <md-button layout=\"row\" layout-align=\"start center\" ng-click=\"handleClick(child, item)\" title=\"{{child.name}}\" aria-label=\"{{child.name}}\"  path-selected=\"child\">\n          <span  flex>{{child.name}}</span>\n        </md-button>\n       </md-menu-item>\n    </md-menu-content>\n  </md-menu>\n</md-list-item>"
 
 /***/ },
-/* 214 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78130,33 +78248,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(215);
+	__webpack_require__(216);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _toolbar = __webpack_require__(217);
+	var _toolbar = __webpack_require__(218);
 
 	var _toolbar2 = _interopRequireDefault(_toolbar);
 
-	var _toolbar3 = __webpack_require__(218);
+	var _toolbar3 = __webpack_require__(219);
 
 	var _toolbar4 = _interopRequireDefault(_toolbar3);
 
-	var _icon = __webpack_require__(220);
+	var _icon = __webpack_require__(221);
 
 	var _icon2 = _interopRequireDefault(_icon);
 
-	var _userSelect = __webpack_require__(223);
+	var _userSelect = __webpack_require__(224);
 
 	var _userSelect2 = _interopRequireDefault(_userSelect);
 
-	var _venueSelect = __webpack_require__(229);
+	var _venueSelect = __webpack_require__(230);
 
 	var _venueSelect2 = _interopRequireDefault(_venueSelect);
 
-	var _pathSelected = __webpack_require__(235);
+	var _pathSelected = __webpack_require__(236);
 
 	var _pathSelected2 = _interopRequireDefault(_pathSelected);
 
@@ -78167,13 +78285,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("toolbar", [_icon2.default, _userSelect2.default, _venueSelect2.default, _pathSelected2.default]).controller(_toolbar2.default.UID, _toolbar2.default).directive("toolbar", _toolbar4.default).name;
 
 /***/ },
-/* 215 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(216);
+	var content = __webpack_require__(217);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -78193,7 +78311,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 216 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -78207,7 +78325,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 217 */
+/* 218 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -78256,7 +78374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = toolbarController;
 
 /***/ },
-/* 218 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78266,7 +78384,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = toolbar;
 
-	var _toolbar = __webpack_require__(217);
+	var _toolbar = __webpack_require__(218);
 
 	var _toolbar2 = _interopRequireDefault(_toolbar);
 
@@ -78278,7 +78396,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return {
 	    restrict: 'E',
 	    scope: {},
-	    template: __webpack_require__(219),
+	    template: __webpack_require__(220),
 	    controller: _toolbar2.default.UID,
 	    controllerAs: "vm",
 	    bindToController: true,
@@ -78288,13 +78406,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 219 */
+/* 220 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-toolbar class=\"md-hue-2\" layout=\"row\" layout-align=\"center stretch\">\n    <venue-select></venue-select>\n      <section flex layout=\"row\" layout-align=\"start center\" class=\"toolbar-nav\">\n        <md-button path-selected=\"dashboard\" href=\"#/main/dashboard\" title=\"Dashboard\" aria-label=\"Dashboard\">\n            <icon>settings</icon>\n            <span translate>Dashboard</span>\n        </md-button>\n        <md-button path-selected=\"analytics\" href=\"#/main/analytics\" title=\"Analytics\" aria-label=\"Analytics\">\n            <icon>equalizer</icon>\n            <span translate>Analytics</span>\n        </md-button>\n        <md-button path-selected=\"account\" href=\"#/main/account\" title=\"My Account\" aria-label=\"My Account\">\n            <icon>person</icon>\n            <span translate>My Account</span>\n        </md-button>\n        <div flex layout=\"row\" layout-align=\"end center\" class=\"message\">\n          <md-button ng-click=\"vm.openMessages()\" title=\"Messages\" aria-label=\"Messages\" class=\"md-icon-button\">\n              <icon>email</icon>\n          </md-button>\n        </div>\n      </section>\n    <user-select></user-select>\n</md-toolbar>"
 
 /***/ },
-/* 220 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78307,7 +78425,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _icon = __webpack_require__(221);
+	var _icon = __webpack_require__(222);
 
 	var _icon2 = _interopRequireDefault(_icon);
 
@@ -78318,7 +78436,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("icon", []).directive("icon", _icon2.default).name;
 
 /***/ },
-/* 221 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78332,20 +78450,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  return {
 	    restrict: 'E',
-	    template: __webpack_require__(222),
+	    template: __webpack_require__(223),
 	    replace: true,
 	    transclude: true
 	  };
 	}
 
 /***/ },
-/* 222 */
+/* 223 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-icon md-font-library=\"material-icons\" ng-transclude></md-icon>"
 
 /***/ },
-/* 223 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78354,21 +78472,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(224);
+	__webpack_require__(225);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _userSelect = __webpack_require__(226);
+	var _userSelect = __webpack_require__(227);
 
 	var _userSelect2 = _interopRequireDefault(_userSelect);
 
-	var _userSelect3 = __webpack_require__(227);
+	var _userSelect3 = __webpack_require__(228);
 
 	var _userSelect4 = _interopRequireDefault(_userSelect3);
 
-	var _icon = __webpack_require__(220);
+	var _icon = __webpack_require__(221);
 
 	var _icon2 = _interopRequireDefault(_icon);
 
@@ -78380,13 +78498,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import Style
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(225);
+	var content = __webpack_require__(226);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -78406,7 +78524,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -78414,13 +78532,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.user-select {\n  max-width: 286px;\n  overflow: hidden; }\n  .user-select > md-menu > button {\n    max-width: 100%; }\n    .user-select > md-menu > button > span {\n      float: left;\n      text-transform: none;\n      font-size: 14px;\n      font-weight: 500; }\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.user-select {\n  max-width: 286px;\n  overflow: hidden; }\n  .user-select > md-menu span {\n    color: #FAFAFA; }\n  .user-select > md-menu > button {\n    max-width: 100%; }\n    .user-select > md-menu > button > span {\n      float: left;\n      text-transform: none;\n      font-size: 14px;\n      font-weight: 500; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 226 */
+/* 227 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -78474,7 +78592,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = userSelectController;
 
 /***/ },
-/* 227 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78484,7 +78602,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = userSelect;
 
-	var _userSelect = __webpack_require__(226);
+	var _userSelect = __webpack_require__(227);
 
 	var _userSelect2 = _interopRequireDefault(_userSelect);
 
@@ -78495,7 +78613,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  return {
 	    restrict: 'E',
-	    template: __webpack_require__(228),
+	    template: __webpack_require__(229),
 	    controller: _userSelect2.default.UID,
 	    controllerAs: "vm",
 	    bindToController: true,
@@ -78505,13 +78623,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 228 */
+/* 229 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class='user-select' layout=\"row\" layout-align=\"center\">\n  <md-menu>\n    <md-button aria-label=\"Open profile interactions menu\" ng-click=\"vm.openMenu($mdOpenMenu, $event)\">\n      <span md-menu-origin class=\"ellipsis\">{{vm.user.name}}</span>\n      <icon>arrow_drop_down</icon>\n    </md-button>\n    <md-menu-content width=\"4\">\n      <md-menu-item>\n        <md-button href=\"#/profile\">\n          <icon>person</icon>\n          <span translate> My Profile </span>\n        </md-button>\n      </md-menu-item>\n      <md-menu-divider></md-menu-divider>\n      <md-menu-item>\n        <md-button ng-click=\"vm.signout()\" translate>\n          Signout\n        </md-button>\n      </md-menu-item>\n    </md-menu-content>\n  </md-menu>\n</div>\n"
 
 /***/ },
-/* 229 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78520,17 +78638,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(230);
+	__webpack_require__(231);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _venueSelect = __webpack_require__(232);
+	var _venueSelect = __webpack_require__(233);
 
 	var _venueSelect2 = _interopRequireDefault(_venueSelect);
 
-	var _venueSelect3 = __webpack_require__(233);
+	var _venueSelect3 = __webpack_require__(234);
 
 	var _venueSelect4 = _interopRequireDefault(_venueSelect3);
 
@@ -78541,13 +78659,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("venueSelect", []).controller(_venueSelect2.default.UID, _venueSelect2.default).directive("venueSelect", _venueSelect4.default).name;
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(231);
+	var content = __webpack_require__(232);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -78567,7 +78685,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 231 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -78575,13 +78693,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.venue-select {\n  width: 320px;\n  overflow: hidden;\n  background: rgba(255, 255, 255, 0.1); }\n  .venue-select > md-menu > button {\n    max-width: 100%; }\n    .venue-select > md-menu > button > span {\n      float: left;\n      text-transform: none;\n      font-size: 15px;\n      font-weight: 500; }\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.venue-select {\n  width: 320px;\n  overflow: hidden;\n  background: rgba(255, 255, 255, 0.1); }\n  .venue-select > md-menu {\n    width: 100%; }\n    .venue-select > md-menu span {\n      color: #FAFAFA; }\n    .venue-select > md-menu > button {\n      margin: 0;\n      padding: 0 14px;\n      width: 100%;\n      text-align: left; }\n      .venue-select > md-menu > button > span {\n        text-transform: none;\n        font-size: 15px;\n        font-weight: 500; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 232 */
+/* 233 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -78649,7 +78767,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = venueSelectController;
 
 /***/ },
-/* 233 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78659,7 +78777,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = venueSelect;
 
-	var _venueSelect = __webpack_require__(232);
+	var _venueSelect = __webpack_require__(233);
 
 	var _venueSelect2 = _interopRequireDefault(_venueSelect);
 
@@ -78673,7 +78791,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    scope: {
 	      venueId: "="
 	    },
-	    template: __webpack_require__(234),
+	    template: __webpack_require__(235),
 	    controller: _venueSelect2.default.UID,
 	    controllerAs: "vm",
 	    bindToController: true,
@@ -78683,13 +78801,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 234 */
+/* 235 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class='venue-select' layout=\"row\" layout-align=\"start center\">\n  <md-menu>\n    <md-button aria-label=\"Open phone interactions menu\" ng-click=\"vm.openMenu($mdOpenMenu, $event)\">\n      <span class='ellipsis' md-menu-origin>{{vm.venue.name}}</span>\n      <icon>arrow_drop_down</icon>\n    </md-button>\n    <md-menu-content width=\"4\">\n      <md-menu-item ng-repeat=\"venue in vm.venues\">\n        <md-button ng-click=\"vm.switchVenue(venue)\">\n          <span> {{venue.name}} </span>\n        </md-button>\n      </md-menu-item>\n      <md-menu-divider></md-menu-divider>\n      <md-menu-item>\n        <md-button>\n          Some other thing here\n        </md-button>\n      </md-menu-item>\n    </md-menu-content>\n  </md-menu>\n</div>\n"
+	module.exports = "<div class='venue-select' layout=\"row\" layout-align=\"start center\">\n  <md-menu>\n    <md-button layout=\"row\" aria-label=\"Open phone interactions menu\" ng-click=\"vm.openMenu($mdOpenMenu, $event)\">\n      <span flex class='ellipsis' md-menu-origin>{{vm.venue.name}}</span>\n      <icon>arrow_drop_down</icon>\n    </md-button>\n    <md-menu-content width=\"4\">\n      <md-menu-item ng-repeat=\"venue in vm.venues\">\n        <md-button ng-click=\"vm.switchVenue(venue)\">\n          <span> {{venue.name}} </span>\n        </md-button>\n      </md-menu-item>\n      <md-menu-divider></md-menu-divider>\n      <md-menu-item>\n        <md-button>\n          Some other thing here\n        </md-button>\n      </md-menu-item>\n    </md-menu-content>\n  </md-menu>\n</div>\n"
 
 /***/ },
-/* 235 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78698,13 +78816,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(236);
+	__webpack_require__(237);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _pathSelected = __webpack_require__(238);
+	var _pathSelected = __webpack_require__(239);
 
 	var _pathSelected2 = _interopRequireDefault(_pathSelected);
 
@@ -78716,13 +78834,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import Style
 
 /***/ },
-/* 236 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(237);
+	var content = __webpack_require__(238);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -78742,7 +78860,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -78756,7 +78874,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -78798,7 +78916,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 239 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78807,17 +78925,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(240);
+	__webpack_require__(241);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _contextualMenu = __webpack_require__(242);
+	var _contextualMenu = __webpack_require__(243);
 
 	var _contextualMenu2 = _interopRequireDefault(_contextualMenu);
 
-	var _contextualMenu3 = __webpack_require__(243);
+	var _contextualMenu3 = __webpack_require__(244);
 
 	var _contextualMenu4 = _interopRequireDefault(_contextualMenu3);
 
@@ -78828,13 +78946,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("contextualMenu", []).controller(_contextualMenu2.default.UID, _contextualMenu2.default).directive("contextualMenu", _contextualMenu4.default).name;
 
 /***/ },
-/* 240 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(241);
+	var content = __webpack_require__(242);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -78854,7 +78972,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -78862,13 +78980,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.contextual-right-menu {\n  margin-top: 0; }\n  .contextual-right-menu md-card-actions {\n    border-top: 1px solid #E0E0E0;\n    background: #F5F5F5;\n    margin: 0;\n    padding: 16px; }\n  .contextual-right-menu md-tabs-wrapper {\n    background: #F5F5F5; }\n    .contextual-right-menu md-tabs-wrapper md-tab-item span {\n      color: #000000; }\n    .contextual-right-menu md-tabs-wrapper md-tab-item.md-active span {\n      color: #0288D1; }\n    .contextual-right-menu md-tabs-wrapper md-ink-bar {\n      color: #0288D1;\n      background-color: #0288D1; }\n  .contextual-right-menu .price {\n    color: rgba(0, 0, 0, 0.5); }\n    .contextual-right-menu .price md-input-container {\n      margin-right: 10px; }\n  .contextual-right-menu .currency {\n    margin-top: -10px; }\n  .contextual-right-menu .size {\n    display: block;\n    margin: 18px 0; }\n    .contextual-right-menu .size md-radio-button {\n      display: inline-block; }\n      .contextual-right-menu .size md-radio-button span {\n        color: rgba(0, 0, 0, 0.5); }\n      .contextual-right-menu .size md-radio-button + md-radio-button {\n        margin-left: 24px; }\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\n.contextual-right-menu {\n  margin: 0;\n  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26), 0px 2px 10px 0px rgba(0, 0, 0, 0.16);\n  border-radius: 2px; }\n  .contextual-right-menu md-card-actions {\n    border-top: 1px solid #E0E0E0;\n    background: #F5F5F5;\n    margin: 0;\n    padding: 16px; }\n  .contextual-right-menu md-tabs-wrapper {\n    background: #F5F5F5; }\n    .contextual-right-menu md-tabs-wrapper md-tab-item span {\n      color: #424242; }\n    .contextual-right-menu md-tabs-wrapper md-tab-item.md-active span {\n      color: #0288D1; }\n    .contextual-right-menu md-tabs-wrapper md-ink-bar {\n      color: #0288D1;\n      background-color: #0288D1; }\n  .contextual-right-menu .price {\n    color: rgba(0, 0, 0, 0.5); }\n    .contextual-right-menu .price md-input-container {\n      margin-right: 10px; }\n  .contextual-right-menu .currency {\n    margin-top: -10px; }\n  .contextual-right-menu .size {\n    display: block;\n    margin: 18px 0; }\n    .contextual-right-menu .size md-radio-button {\n      display: inline-block; }\n      .contextual-right-menu .size md-radio-button span {\n        color: rgba(0, 0, 0, 0.5); }\n      .contextual-right-menu .size md-radio-button + md-radio-button {\n        margin-left: 24px; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 242 */
+/* 243 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -78929,7 +79047,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = contextualMenuController;
 
 /***/ },
-/* 243 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78939,7 +79057,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = contextualMenu;
 
-	var _contextualMenu = __webpack_require__(242);
+	var _contextualMenu = __webpack_require__(243);
 
 	var _contextualMenu2 = _interopRequireDefault(_contextualMenu);
 
@@ -78948,7 +79066,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function contextualMenu() {
 	  return {
 	    restrict: 'E',
-	    template: __webpack_require__(244),
+	    template: __webpack_require__(245),
 	    scope: {
 	      entity: "=",
 	      type: "=",
@@ -78963,13 +79081,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-card class='contextual-right-menu'>\n  <form name=\"contextualForm\" ng-submit=\"vm.doSubmit()\" novalidate>\n    <md-card-content ng-if=\"vm.type==='menuSection'\">\n       <md-input-container class=\"md-block\">\n          <label translate>Section name</label>\n          <input type=\"text\" required name=\"entityName\" ng-model=\"vm.entity.name\">\n          <div ng-messages=\"contextualForm.entityName.$error\">\n            <div ng-message=\"required\" translate>This is required.</div>\n          </div>\n      </md-input-container>\n    </md-card-content>\n\n    <div ng-if=\"vm.type==='menuItem'\">\n      <md-tabs md-dynamic-height md-stretch-tabs=\"always\">\n        <md-tab label=\"Basics\">\n        <md-card-content>\n           <md-input-container class=\"md-block\">\n              <label translate>Item name</label>\n              <input type=\"text\" required name=\"entityName\" ng-model=\"vm.entity.name\">\n              <div ng-messages=\"contextualForm.entityName.$error\">\n                <div ng-message=\"required\" translate>This is required.</div>\n              </div>\n          </md-input-container>\n          <md-input-container class=\"md-block\">\n              <label translate>Description</label>\n              <input type=\"text\" name=\"entityDescription\" ng-model=\"vm.entity.description\">\n          </md-input-container>\n          <md-radio-group class='size' ng-model=\"vm.entity.$size\">\n            <md-radio-button value=\"0\" class=\"md-primary md-hue-2\">Single Size</md-radio-button>\n            <md-radio-button value=\"1\" class=\"md-primary md-hue-2\"> Multiple Sizes </md-radio-button>\n          </md-radio-group>\n          <div class='price' layout=\"row\" layout-align=\"start center\">\n            <md-input-container flex>\n                <label translate>Price</label>\n                <input flex type=\"text\" required name=\"entityPrice\" ng-model=\"vm.entity.price\">\n                <div ng-messages=\"contextualForm.entityPrice.$error\">\n                  <div ng-message=\"required\" translate>This is required.</div>\n                </div>\n            </md-input-container>\n            <venue-currency class='currency'> GBP </venue-currency>\n          </div>\n        </md-card-content>\n        </md-tab>\n        <md-tab label=\"Image\">\n            TODO image content\n        </md-tab>\n        <md-tab label=\"Labels\">\n          TODO labels content\n        </md-tab>\n      </md-tabs>\n    </div>\n\n      <md-card-actions layout=\"row\" layout-align=\"end center\">\n        <md-button class='md-primary'  ng-click=\"vm.onCancel()\" translate>\n          Cancel\n      </md-button>\n      <md-button type=\"submit\" class='md-raised' translate>\n          Done\n      </md-button>\n    </md-card-actions>\n  </form>\n</md-card>"
+	module.exports = "<md-card class='contextual-right-menu'>\n  <form name=\"contextualForm\" ng-submit=\"vm.doSubmit()\" novalidate>\n    <md-card-content ng-if=\"vm.type==='menuSection'\">\n       <md-input-container class=\"md-block\">\n          <label translate>Section name</label>\n          <input type=\"text\" required name=\"entityName\" ng-model=\"vm.entity.name\" md-maxlength=\"100\">\n          <div ng-messages=\"contextualForm.entityName.$error\">\n            <div ng-message=\"required\" translate>This is required.</div>\n          </div>\n      </md-input-container>\n    </md-card-content>\n\n    <div ng-if=\"vm.type==='menuItem'\">\n      <md-tabs md-dynamic-height md-stretch-tabs=\"always\">\n        <md-tab label=\"Basics\">\n        <md-card-content>\n           <md-input-container class=\"md-block\">\n              <label translate>Item name</label>\n              <input type=\"text\" required name=\"entityName\" ng-model=\"vm.entity.name\" md-maxlength=\"100\">\n              <div ng-messages=\"contextualForm.entityName.$error\">\n                <div ng-message=\"required\" translate>This is required.</div>\n              </div>\n          </md-input-container>\n          <md-input-container class=\"md-block\">\n              <label translate>Description</label>\n              <textarea type=\"text\" name=\"entityDescription\" md-maxlength=\"1000\" ng-model=\"vm.entity.description\"></textarea>\n          </md-input-container>\n          <md-radio-group class='size' ng-model=\"vm.entity.$size\">\n            <md-radio-button value=\"0\" class=\"md-primary md-hue-2\">Single Size</md-radio-button>\n            <md-radio-button value=\"1\" class=\"md-primary md-hue-2\"> Multiple Sizes </md-radio-button>\n          </md-radio-group>\n          <div class='price' layout=\"row\" layout-align=\"start center\">\n            <md-input-container flex>\n                <label translate>Price</label>\n                <input flex type=\"text\" required name=\"entityPrice\" ng-model=\"vm.entity.price\">\n                <div ng-messages=\"contextualForm.entityPrice.$error\">\n                  <div ng-message=\"required\" translate>This is required.</div>\n                </div>\n            </md-input-container>\n            <venue-currency class='currency'> GBP </venue-currency>\n          </div>\n        </md-card-content>\n        </md-tab>\n        <md-tab label=\"Image\">\n            TODO image content\n        </md-tab>\n        <md-tab label=\"Labels\">\n          TODO labels content\n        </md-tab>\n      </md-tabs>\n    </div>\n\n      <md-card-actions layout=\"row\" layout-align=\"end center\">\n        <md-button class='md-primary'  ng-click=\"vm.onCancel()\" translate>\n          Cancel\n      </md-button>\n      <md-button type=\"submit\" class='md-raised' translate>\n          Done\n      </md-button>\n    </md-card-actions>\n  </form>\n</md-card>"
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78978,7 +79096,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(246);
+	__webpack_require__(247);
 
 	var _angular = __webpack_require__(7);
 
@@ -78988,15 +79106,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _error = __webpack_require__(248);
+	var _error = __webpack_require__(249);
 
 	var _error2 = _interopRequireDefault(_error);
 
-	var _error3 = __webpack_require__(249);
+	var _error3 = __webpack_require__(250);
 
 	var _error4 = _interopRequireDefault(_error3);
 
-	var _error5 = __webpack_require__(250);
+	var _error5 = __webpack_require__(251);
 
 	var _error6 = _interopRequireDefault(_error5);
 
@@ -79008,13 +79126,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import internal modules
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(247);
+	var content = __webpack_require__(248);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -79034,9 +79152,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 247 */
-237,
 /* 248 */
+238,
+/* 249 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -79076,7 +79194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = errorController;
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -79130,7 +79248,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ErrorsService;
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -79140,7 +79258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _error = __webpack_require__(248);
+	var _error = __webpack_require__(249);
 
 	var _error2 = _interopRequireDefault(_error);
 
@@ -79156,7 +79274,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("error", {
 	    url: "/error/:code",
-	    template: __webpack_require__(251),
+	    template: __webpack_require__(252),
 	    controller: _error2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -79164,13 +79282,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class='error'>\n  {{vm.error.message || vm.error.code}}\n</div>\n"
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -79179,7 +79297,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(253);
+	__webpack_require__(254);
 
 	var _angular = __webpack_require__(7);
 
@@ -79189,15 +79307,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _auth = __webpack_require__(255);
+	var _auth = __webpack_require__(256);
 
 	var _auth2 = _interopRequireDefault(_auth);
 
-	var _auth3 = __webpack_require__(256);
+	var _auth3 = __webpack_require__(257);
 
 	var _auth4 = _interopRequireDefault(_auth3);
 
-	var _signin = __webpack_require__(258);
+	var _signin = __webpack_require__(259);
 
 	var _signin2 = _interopRequireDefault(_signin);
 
@@ -79209,13 +79327,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import internal modules
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(254);
+	var content = __webpack_require__(255);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -79235,9 +79353,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 254 */
-237,
 /* 255 */
+238,
+/* 256 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -79273,7 +79391,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = authController;
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -79283,7 +79401,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _auth = __webpack_require__(255);
+	var _auth = __webpack_require__(256);
 
 	var _auth2 = _interopRequireDefault(_auth);
 
@@ -79300,7 +79418,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  $stateProvider.state("auth", {
 	    url: "/auth",
 	    abstract: true,
-	    template: __webpack_require__(257),
+	    template: __webpack_require__(258),
 	    controller: _auth2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -79308,13 +79426,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class='auth'>\n  <ui-view></ui-view>\n</div>\n"
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -79323,7 +79441,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(259);
+	__webpack_require__(260);
 
 	var _angular = __webpack_require__(7);
 
@@ -79333,11 +79451,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _signin = __webpack_require__(261);
+	var _signin = __webpack_require__(262);
 
 	var _signin2 = _interopRequireDefault(_signin);
 
-	var _signin3 = __webpack_require__(262);
+	var _signin3 = __webpack_require__(263);
 
 	var _signin4 = _interopRequireDefault(_signin3);
 
@@ -79347,13 +79465,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("signin", [_angularUiRouter2.default]).config(_signin4.default).controller(_signin2.default.UID, _signin2.default).name; // Import Style
 
 /***/ },
-/* 259 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(260);
+	var content = __webpack_require__(261);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -79373,9 +79491,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 260 */
-111,
 /* 261 */
+112,
+/* 262 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -79425,7 +79543,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = signinController;
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -79435,7 +79553,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _signin = __webpack_require__(261);
+	var _signin = __webpack_require__(262);
 
 	var _signin2 = _interopRequireDefault(_signin);
 
@@ -79451,7 +79569,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  $stateProvider.state("auth.signin", {
 	    url: "/signin",
-	    template: __webpack_require__(263),
+	    template: __webpack_require__(264),
 	    controller: _signin2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -79459,13 +79577,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class='signin'>\n  <form name='signin' ng-submit='vm.doSignin()' novalidate>\n    <md-input-container class=\"md-block\">\n      <label>Username</label>\n      <input type=\"email\" autocomplete=\"email\" required name=\"username\" ng-model=\"vm.user.username\">\n      <div ng-messages=\"projectForm.username.$error\">\n        <div ng-message=\"required\">This is required.</div>\n      </div>\n    </md-input-container>\n    <md-input-container class=\"md-block\">\n      <label>Password</label>\n      <input type=\"password\" autocomplete=\"password\" required name=\"password\" ng-model=\"vm.user.password\">\n      <div ng-messages=\"projectForm.password.$error\">\n        <div ng-message=\"required\">This is required.</div>\n      </div>\n    </md-input-container>\n    <md-button type='submit'>Sign In</md-button>\n  </form>\n</div>\n"
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -79474,7 +79592,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(265);
+	__webpack_require__(266);
 
 	var _angular = __webpack_require__(7);
 
@@ -79484,11 +79602,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _notFound = __webpack_require__(267);
+	var _notFound = __webpack_require__(268);
 
 	var _notFound2 = _interopRequireDefault(_notFound);
 
-	var _notFound3 = __webpack_require__(268);
+	var _notFound3 = __webpack_require__(269);
 
 	var _notFound4 = _interopRequireDefault(_notFound3);
 
@@ -79498,13 +79616,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = _angular2.default.module("notFound", [_angularUiRouter2.default]).config(_notFound4.default).controller(_notFound2.default.UID, _notFound2.default).name; // Import Style
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(266);
+	var content = __webpack_require__(267);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -79524,9 +79642,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 266 */
-237,
 /* 267 */
+238,
+/* 268 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -79560,7 +79678,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = notFoundController;
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -79570,7 +79688,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = routes;
 
-	var _notFound = __webpack_require__(267);
+	var _notFound = __webpack_require__(268);
 
 	var _notFound2 = _interopRequireDefault(_notFound);
 
@@ -79584,7 +79702,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function routes($stateProvider) {
 	  $stateProvider.state("notFound", {
 	    url: "/404",
-	    template: __webpack_require__(269),
+	    template: __webpack_require__(270),
 	    controller: _notFound2.default.UID,
 	    controllerAs: "vm"
 	  });
@@ -79592,13 +79710,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	routes.$inject = ["$stateProvider"];
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n  404 - Page Not Found\n</div>\n"
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -79607,13 +79725,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(271);
+	__webpack_require__(272);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _dialog = __webpack_require__(273);
+	var _dialog = __webpack_require__(274);
 
 	var _dialog2 = _interopRequireDefault(_dialog);
 
@@ -79625,13 +79743,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import Style
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(272);
+	var content = __webpack_require__(273);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -79651,7 +79769,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -79659,13 +79777,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\nmd-dialog {\n  width: 300px; }\n  md-dialog md-dialog-content {\n    padding: 24px; }\n  md-dialog .md-title {\n    font-weight: 500;\n    font-size: 20;\n    color: #000000;\n    margin-bottom: 16px; }\n  md-dialog .md-dialog-content-body {\n    color: rgba(0, 0, 0, 0.5);\n    font-size: 16px; }\n    md-dialog .md-dialog-content-body p {\n      line-height: 1.2em; }\n", ""]);
+	exports.push([module.id, "/**** MIXINS ***/\n/**************** TOOLBAR ****************/\n/**************** Navbar ****************/\n/**************** GLOBAL ****************/\nmd-dialog {\n  width: 300px; }\n  md-dialog md-dialog-content {\n    padding: 24px; }\n  md-dialog .md-title {\n    font-weight: 500;\n    font-size: 20;\n    color: #000000;\n    margin-bottom: 16px; }\n  md-dialog .md-dialog-content-body {\n    color: rgba(0, 0, 0, 0.5);\n    font-size: 16px; }\n    md-dialog .md-dialog-content-body p {\n      line-height: 1.5em; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -79698,8 +79816,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      newScope.content = content;
 	      newScope.hasCancel = true;
 	      return this.$mdDialog.show({
-	        template: __webpack_require__(274),
+	        template: __webpack_require__(275),
 	        scope: newScope,
+	        focusOnOpen: false,
 	        controller: DeleteController
 	      });
 	    }
@@ -79729,13 +79848,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = DialogService;
 
 /***/ },
-/* 274 */
+/* 275 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-dialog aria-label=\"Delete dialog\">\n  <md-dialog-content>\n    <h2 class=\"md-title\">{{title}}</h2>\n    <div class=\"md-dialog-content-body\">\n      <p>{{content}}</p>\n    </div>\n  </md-dialog-content>\n  <md-dialog-actions>\n    <md-button ng-click=\"cancel()\" class=\"md-primary\" ng-if=\"hasCancel\" translate>Cancel</md-button>\n    <md-button ng-click=\"confirm()\" class=\"md-primary\" translate>Delete</md-button>\n  </md-dialog-actions>\n</md-dialog>"
 
 /***/ },
-/* 275 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -79744,13 +79863,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	__webpack_require__(276);
+	__webpack_require__(277);
 
 	var _angular = __webpack_require__(7);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _snack = __webpack_require__(278);
+	var _snack = __webpack_require__(279);
 
 	var _snack2 = _interopRequireDefault(_snack);
 
@@ -79762,13 +79881,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Import Style
 
 /***/ },
-/* 276 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(277);
+	var content = __webpack_require__(278);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -79788,7 +79907,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 277 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -79802,7 +79921,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 278 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -79822,7 +79941,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var scope = this.$rootScope.$new();
 	      scope.text = content;
 	      this.$mdToast.show({
-	        template: __webpack_require__(279),
+	        template: __webpack_require__(280),
 	        scope: scope
 	      });
 	    }
@@ -79832,7 +79951,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var scope = this.$rootScope.$new();
 	      scope.text = content;
 	      this.$mdToast.show({
-	        template: __webpack_require__(280),
+	        template: __webpack_require__(281),
 	        scope: scope
 	      });
 	    }
@@ -79861,19 +79980,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = Snack;
 
 /***/ },
-/* 279 */
+/* 280 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-toast>\n  <span flex>\n    {{text}}\n  </span>\n</md-toast>\n"
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports) {
 
 	module.exports = "<md-toast class='error-snack'>\n  <span flex>\n    {{text}}\n  </span>\n</md-toast>\n"
 
 /***/ },
-/* 281 */
+/* 282 */
 /***/ function(module, exports) {
 
 	(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}(g.preodaypreoday || (g.preodaypreoday = {})).js = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
@@ -83181,6 +83300,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Promise = require('q');
 
 	function Item(item) {
+	  function _setSize(){
+	    this.$size = 0;
+	  }
+
 	  function _setTags() {
 	    this.tags = this.tags.map(function(tag) {
 	      return new Tag(tag);
@@ -83207,6 +83330,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			if (this.mealDeal) {
 				_addMealDealSections.call(this);
 			}
+	    _setSize.call(this);
 		}
 	}
 
@@ -85396,7 +85520,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -85797,7 +85921,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                module && module.exports) {
 	            try {
 	                oldLocale = globalLocale._abbr;
-	                __webpack_require__(284)("./" + name);
+	                __webpack_require__(285)("./" + name);
 	                // because defineLocale currently also sets the global locale, we
 	                // want to undo that for lazy loaded locales
 	                locale_locales__getSetGlobalLocale(oldLocale);
@@ -89439,10 +89563,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _moment;
 
 	}));
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(283)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(284)(module)))
 
 /***/ },
-/* 283 */
+/* 284 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -89458,210 +89582,210 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 284 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 285,
-		"./af.js": 285,
-		"./ar": 286,
-		"./ar-ma": 287,
-		"./ar-ma.js": 287,
-		"./ar-sa": 288,
-		"./ar-sa.js": 288,
-		"./ar-tn": 289,
-		"./ar-tn.js": 289,
-		"./ar.js": 286,
-		"./az": 290,
-		"./az.js": 290,
-		"./be": 291,
-		"./be.js": 291,
-		"./bg": 292,
-		"./bg.js": 292,
-		"./bn": 293,
-		"./bn.js": 293,
-		"./bo": 294,
-		"./bo.js": 294,
-		"./br": 295,
-		"./br.js": 295,
-		"./bs": 296,
-		"./bs.js": 296,
-		"./ca": 297,
-		"./ca.js": 297,
-		"./cs": 298,
-		"./cs.js": 298,
-		"./cv": 299,
-		"./cv.js": 299,
-		"./cy": 300,
-		"./cy.js": 300,
-		"./da": 301,
-		"./da.js": 301,
-		"./de": 302,
-		"./de-at": 303,
-		"./de-at.js": 303,
-		"./de.js": 302,
-		"./dv": 304,
-		"./dv.js": 304,
-		"./el": 305,
-		"./el.js": 305,
-		"./en-au": 306,
-		"./en-au.js": 306,
-		"./en-ca": 307,
-		"./en-ca.js": 307,
-		"./en-gb": 308,
-		"./en-gb.js": 308,
-		"./en-ie": 309,
-		"./en-ie.js": 309,
-		"./en-nz": 310,
-		"./en-nz.js": 310,
-		"./eo": 311,
-		"./eo.js": 311,
-		"./es": 312,
-		"./es.js": 312,
-		"./et": 313,
-		"./et.js": 313,
-		"./eu": 314,
-		"./eu.js": 314,
-		"./fa": 315,
-		"./fa.js": 315,
-		"./fi": 316,
-		"./fi.js": 316,
-		"./fo": 317,
-		"./fo.js": 317,
-		"./fr": 318,
-		"./fr-ca": 319,
-		"./fr-ca.js": 319,
-		"./fr-ch": 320,
-		"./fr-ch.js": 320,
-		"./fr.js": 318,
-		"./fy": 321,
-		"./fy.js": 321,
-		"./gd": 322,
-		"./gd.js": 322,
-		"./gl": 323,
-		"./gl.js": 323,
-		"./he": 324,
-		"./he.js": 324,
-		"./hi": 325,
-		"./hi.js": 325,
-		"./hr": 326,
-		"./hr.js": 326,
-		"./hu": 327,
-		"./hu.js": 327,
-		"./hy-am": 328,
-		"./hy-am.js": 328,
-		"./id": 329,
-		"./id.js": 329,
-		"./is": 330,
-		"./is.js": 330,
-		"./it": 331,
-		"./it.js": 331,
-		"./ja": 332,
-		"./ja.js": 332,
-		"./jv": 333,
-		"./jv.js": 333,
-		"./ka": 334,
-		"./ka.js": 334,
-		"./kk": 335,
-		"./kk.js": 335,
-		"./km": 336,
-		"./km.js": 336,
-		"./ko": 337,
-		"./ko.js": 337,
-		"./ky": 338,
-		"./ky.js": 338,
-		"./lb": 339,
-		"./lb.js": 339,
-		"./lo": 340,
-		"./lo.js": 340,
-		"./lt": 341,
-		"./lt.js": 341,
-		"./lv": 342,
-		"./lv.js": 342,
-		"./me": 343,
-		"./me.js": 343,
-		"./mk": 344,
-		"./mk.js": 344,
-		"./ml": 345,
-		"./ml.js": 345,
-		"./mr": 346,
-		"./mr.js": 346,
-		"./ms": 347,
-		"./ms-my": 348,
-		"./ms-my.js": 348,
-		"./ms.js": 347,
-		"./my": 349,
-		"./my.js": 349,
-		"./nb": 350,
-		"./nb.js": 350,
-		"./ne": 351,
-		"./ne.js": 351,
-		"./nl": 352,
-		"./nl.js": 352,
-		"./nn": 353,
-		"./nn.js": 353,
-		"./pa-in": 354,
-		"./pa-in.js": 354,
-		"./pl": 355,
-		"./pl.js": 355,
-		"./pt": 356,
-		"./pt-br": 357,
-		"./pt-br.js": 357,
-		"./pt.js": 356,
-		"./ro": 358,
-		"./ro.js": 358,
-		"./ru": 359,
-		"./ru.js": 359,
-		"./se": 360,
-		"./se.js": 360,
-		"./si": 361,
-		"./si.js": 361,
-		"./sk": 362,
-		"./sk.js": 362,
-		"./sl": 363,
-		"./sl.js": 363,
-		"./sq": 364,
-		"./sq.js": 364,
-		"./sr": 365,
-		"./sr-cyrl": 366,
-		"./sr-cyrl.js": 366,
-		"./sr.js": 365,
-		"./ss": 367,
-		"./ss.js": 367,
-		"./sv": 368,
-		"./sv.js": 368,
-		"./sw": 369,
-		"./sw.js": 369,
-		"./ta": 370,
-		"./ta.js": 370,
-		"./te": 371,
-		"./te.js": 371,
-		"./th": 372,
-		"./th.js": 372,
-		"./tl-ph": 373,
-		"./tl-ph.js": 373,
-		"./tlh": 374,
-		"./tlh.js": 374,
-		"./tr": 375,
-		"./tr.js": 375,
-		"./tzl": 376,
-		"./tzl.js": 376,
-		"./tzm": 377,
-		"./tzm-latn": 378,
-		"./tzm-latn.js": 378,
-		"./tzm.js": 377,
-		"./uk": 379,
-		"./uk.js": 379,
-		"./uz": 380,
-		"./uz.js": 380,
-		"./vi": 381,
-		"./vi.js": 381,
-		"./x-pseudo": 382,
-		"./x-pseudo.js": 382,
-		"./zh-cn": 383,
-		"./zh-cn.js": 383,
-		"./zh-tw": 384,
-		"./zh-tw.js": 384
+		"./af": 286,
+		"./af.js": 286,
+		"./ar": 287,
+		"./ar-ma": 288,
+		"./ar-ma.js": 288,
+		"./ar-sa": 289,
+		"./ar-sa.js": 289,
+		"./ar-tn": 290,
+		"./ar-tn.js": 290,
+		"./ar.js": 287,
+		"./az": 291,
+		"./az.js": 291,
+		"./be": 292,
+		"./be.js": 292,
+		"./bg": 293,
+		"./bg.js": 293,
+		"./bn": 294,
+		"./bn.js": 294,
+		"./bo": 295,
+		"./bo.js": 295,
+		"./br": 296,
+		"./br.js": 296,
+		"./bs": 297,
+		"./bs.js": 297,
+		"./ca": 298,
+		"./ca.js": 298,
+		"./cs": 299,
+		"./cs.js": 299,
+		"./cv": 300,
+		"./cv.js": 300,
+		"./cy": 301,
+		"./cy.js": 301,
+		"./da": 302,
+		"./da.js": 302,
+		"./de": 303,
+		"./de-at": 304,
+		"./de-at.js": 304,
+		"./de.js": 303,
+		"./dv": 305,
+		"./dv.js": 305,
+		"./el": 306,
+		"./el.js": 306,
+		"./en-au": 307,
+		"./en-au.js": 307,
+		"./en-ca": 308,
+		"./en-ca.js": 308,
+		"./en-gb": 309,
+		"./en-gb.js": 309,
+		"./en-ie": 310,
+		"./en-ie.js": 310,
+		"./en-nz": 311,
+		"./en-nz.js": 311,
+		"./eo": 312,
+		"./eo.js": 312,
+		"./es": 313,
+		"./es.js": 313,
+		"./et": 314,
+		"./et.js": 314,
+		"./eu": 315,
+		"./eu.js": 315,
+		"./fa": 316,
+		"./fa.js": 316,
+		"./fi": 317,
+		"./fi.js": 317,
+		"./fo": 318,
+		"./fo.js": 318,
+		"./fr": 319,
+		"./fr-ca": 320,
+		"./fr-ca.js": 320,
+		"./fr-ch": 321,
+		"./fr-ch.js": 321,
+		"./fr.js": 319,
+		"./fy": 322,
+		"./fy.js": 322,
+		"./gd": 323,
+		"./gd.js": 323,
+		"./gl": 324,
+		"./gl.js": 324,
+		"./he": 325,
+		"./he.js": 325,
+		"./hi": 326,
+		"./hi.js": 326,
+		"./hr": 327,
+		"./hr.js": 327,
+		"./hu": 328,
+		"./hu.js": 328,
+		"./hy-am": 329,
+		"./hy-am.js": 329,
+		"./id": 330,
+		"./id.js": 330,
+		"./is": 331,
+		"./is.js": 331,
+		"./it": 332,
+		"./it.js": 332,
+		"./ja": 333,
+		"./ja.js": 333,
+		"./jv": 334,
+		"./jv.js": 334,
+		"./ka": 335,
+		"./ka.js": 335,
+		"./kk": 336,
+		"./kk.js": 336,
+		"./km": 337,
+		"./km.js": 337,
+		"./ko": 338,
+		"./ko.js": 338,
+		"./ky": 339,
+		"./ky.js": 339,
+		"./lb": 340,
+		"./lb.js": 340,
+		"./lo": 341,
+		"./lo.js": 341,
+		"./lt": 342,
+		"./lt.js": 342,
+		"./lv": 343,
+		"./lv.js": 343,
+		"./me": 344,
+		"./me.js": 344,
+		"./mk": 345,
+		"./mk.js": 345,
+		"./ml": 346,
+		"./ml.js": 346,
+		"./mr": 347,
+		"./mr.js": 347,
+		"./ms": 348,
+		"./ms-my": 349,
+		"./ms-my.js": 349,
+		"./ms.js": 348,
+		"./my": 350,
+		"./my.js": 350,
+		"./nb": 351,
+		"./nb.js": 351,
+		"./ne": 352,
+		"./ne.js": 352,
+		"./nl": 353,
+		"./nl.js": 353,
+		"./nn": 354,
+		"./nn.js": 354,
+		"./pa-in": 355,
+		"./pa-in.js": 355,
+		"./pl": 356,
+		"./pl.js": 356,
+		"./pt": 357,
+		"./pt-br": 358,
+		"./pt-br.js": 358,
+		"./pt.js": 357,
+		"./ro": 359,
+		"./ro.js": 359,
+		"./ru": 360,
+		"./ru.js": 360,
+		"./se": 361,
+		"./se.js": 361,
+		"./si": 362,
+		"./si.js": 362,
+		"./sk": 363,
+		"./sk.js": 363,
+		"./sl": 364,
+		"./sl.js": 364,
+		"./sq": 365,
+		"./sq.js": 365,
+		"./sr": 366,
+		"./sr-cyrl": 367,
+		"./sr-cyrl.js": 367,
+		"./sr.js": 366,
+		"./ss": 368,
+		"./ss.js": 368,
+		"./sv": 369,
+		"./sv.js": 369,
+		"./sw": 370,
+		"./sw.js": 370,
+		"./ta": 371,
+		"./ta.js": 371,
+		"./te": 372,
+		"./te.js": 372,
+		"./th": 373,
+		"./th.js": 373,
+		"./tl-ph": 374,
+		"./tl-ph.js": 374,
+		"./tlh": 375,
+		"./tlh.js": 375,
+		"./tr": 376,
+		"./tr.js": 376,
+		"./tzl": 377,
+		"./tzl.js": 377,
+		"./tzm": 378,
+		"./tzm-latn": 379,
+		"./tzm-latn.js": 379,
+		"./tzm.js": 378,
+		"./uk": 380,
+		"./uk.js": 380,
+		"./uz": 381,
+		"./uz.js": 381,
+		"./vi": 382,
+		"./vi.js": 382,
+		"./x-pseudo": 383,
+		"./x-pseudo.js": 383,
+		"./zh-cn": 384,
+		"./zh-cn.js": 384,
+		"./zh-tw": 385,
+		"./zh-tw.js": 385
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -89674,11 +89798,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 284;
+	webpackContext.id = 285;
 
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -89686,7 +89810,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Werner Mollentze : https://github.com/wernerm
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -89755,7 +89879,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 286 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -89765,7 +89889,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Native plural forms: forabi https://github.com/forabi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -89896,7 +90020,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 287 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -89905,7 +90029,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -89960,7 +90084,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 288 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -89968,7 +90092,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -90068,14 +90192,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 289 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale  : Tunisian Arabic (ar-tn)
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -90130,7 +90254,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 290 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -90138,7 +90262,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : topchiyev : https://github.com/topchiyev
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -90239,7 +90363,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 291 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -90249,7 +90373,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -90377,7 +90501,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -90385,7 +90509,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Krasen Borisov : https://github.com/kraz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -90471,7 +90595,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -90479,7 +90603,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -90594,7 +90718,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 294 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -90602,7 +90726,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -90717,7 +90841,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -90725,7 +90849,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -90829,7 +90953,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -90838,7 +90962,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on (hr) translation by Bojan Marković
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -90976,7 +91100,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -90984,7 +91108,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -91061,7 +91185,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -91069,7 +91193,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -91236,7 +91360,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -91244,7 +91368,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -91303,7 +91427,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -91311,7 +91435,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robert Allen
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -91387,7 +91511,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -91395,7 +91519,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -91451,7 +91575,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -91461,7 +91585,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -91533,7 +91657,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -91544,7 +91668,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -91616,7 +91740,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -91624,7 +91748,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jawish Hameed : https://github.com/jawish
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -91719,7 +91843,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -91727,7 +91851,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Aggelos Karalias : https://github.com/mehiel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -91821,14 +91945,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : australian english (en-au)
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -91891,7 +92015,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -91899,7 +92023,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -91958,7 +92082,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -91966,7 +92090,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92029,7 +92153,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -92037,7 +92161,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Cartlidge : https://github.com/chriscartlidge
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92100,14 +92224,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : New Zealand english (en-nz)
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92170,7 +92294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -92180,7 +92304,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92247,7 +92371,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -92255,7 +92379,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Julio Napurí : https://github.com/julionc
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92332,7 +92456,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -92341,7 +92465,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92416,7 +92540,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -92424,7 +92548,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92486,7 +92610,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 315 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -92494,7 +92618,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92596,7 +92720,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 316 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -92604,7 +92728,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92707,7 +92831,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 317 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -92715,7 +92839,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92771,7 +92895,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 318 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -92779,7 +92903,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : John Fischer : https://github.com/jfroffice
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92839,7 +92963,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 319 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -92847,7 +92971,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92903,7 +93027,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 320 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -92911,7 +93035,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Gaspard Bucher : https://github.com/gaspard
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -92971,7 +93095,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 321 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -92979,7 +93103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -93048,7 +93172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 322 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -93056,7 +93180,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jon Ashdown : https://github.com/jonashdown
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -93128,7 +93252,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 323 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -93136,7 +93260,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -93209,7 +93333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 324 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -93219,7 +93343,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tal Ater : https://github.com/TalAter
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -93312,7 +93436,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 325 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -93320,7 +93444,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -93440,7 +93564,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 326 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -93448,7 +93572,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Bojan Marković : https://github.com/bmarkovic
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -93589,7 +93713,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 327 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -93597,7 +93721,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Adam Brunner : https://github.com/adambrunner
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -93702,7 +93826,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 328 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -93710,7 +93834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Armendarabyan : https://github.com/armendarabyan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -93801,7 +93925,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 329 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -93810,7 +93934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -93888,7 +94012,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 330 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -93896,7 +94020,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -94019,7 +94143,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 331 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -94028,7 +94152,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -94093,7 +94217,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 332 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -94101,7 +94225,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : LI Long : https://github.com/baryon
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -94173,7 +94297,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 333 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -94182,7 +94306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -94260,7 +94384,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 334 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -94268,7 +94392,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -94353,7 +94477,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 335 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -94361,7 +94485,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! authors : Nurlan Rakhimzhanov : https://github.com/nurlan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -94444,7 +94568,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 336 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -94452,7 +94576,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -94506,7 +94630,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 337 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -94518,7 +94642,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! - Jeeeyul Lee <jeeeyul@gmail.com>
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -94578,7 +94702,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 338 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -94586,7 +94710,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chyngyz Arystan uulu : https://github.com/chyngyz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -94670,7 +94794,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 339 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -94678,7 +94802,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : mweimerskirch : https://github.com/mweimerskirch, David Raison : https://github.com/kwisatz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -94810,7 +94934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 340 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -94818,7 +94942,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ryan Hart : https://github.com/ryanhart2
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -94884,7 +95008,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 341 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -94892,7 +95016,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -95004,7 +95128,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 342 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -95013,7 +95137,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jānis Elmeris : https://github.com/JanisE
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -95105,7 +95229,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 343 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -95113,7 +95237,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -95220,7 +95344,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 344 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -95228,7 +95352,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Borislav Mickov : https://github.com/B0k0
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -95314,7 +95438,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 345 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -95322,7 +95446,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Floyd Pink : https://github.com/floydpink
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -95399,7 +95523,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 346 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -95408,7 +95532,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Vivek Athalye : https://github.com/vnathalye
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -95562,7 +95686,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 347 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -95570,7 +95694,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -95648,7 +95772,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 348 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -95656,7 +95780,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -95734,7 +95858,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 349 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -95742,7 +95866,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Squar team, mysquar.com
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -95831,7 +95955,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 350 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -95840,7 +95964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -95898,7 +96022,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 351 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -95906,7 +96030,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : suvash : https://github.com/suvash
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -96025,7 +96149,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 352 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -96033,7 +96157,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Joris Röling : https://github.com/jjupiter
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -96102,7 +96226,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 353 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -96110,7 +96234,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : https://github.com/mechuwind
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -96166,7 +96290,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 354 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -96174,7 +96298,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Harpreet Singh : https://github.com/harpreetkhalsagtbit
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -96294,7 +96418,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 355 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -96302,7 +96426,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Rafal Hirsz : https://github.com/evoL
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -96403,7 +96527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 356 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -96411,7 +96535,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jefferson : https://github.com/jalex79
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -96472,7 +96596,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 357 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -96480,7 +96604,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -96537,7 +96661,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 358 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -96546,7 +96670,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Valentin Agachi : https://github.com/avaly
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -96616,7 +96740,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 359 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -96626,7 +96750,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Коренберг Марк : https://github.com/socketpair
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -96795,7 +96919,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 360 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -96803,7 +96927,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! authors : Bård Rolstad Henriksen : https://github.com/karamell
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -96860,7 +96984,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 361 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -96868,7 +96992,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -96935,7 +97059,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 362 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -96944,7 +97068,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on work of petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -97089,7 +97213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 363 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -97097,7 +97221,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -97255,7 +97379,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 364 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -97265,7 +97389,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Oerd Cukalla : https://github.com/oerd (fixes)
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -97329,7 +97453,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 365 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -97337,7 +97461,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -97443,7 +97567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 366 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -97451,7 +97575,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -97557,7 +97681,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 367 */
+/* 368 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -97565,7 +97689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Nicolai Davies<mail@nicolai.io> : https://github.com/nicolaidavies
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -97650,7 +97774,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 368 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -97658,7 +97782,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jens Alm : https://github.com/ulmus
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -97723,7 +97847,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 369 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -97731,7 +97855,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Fahad Kassim : https://github.com/fadsel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -97786,7 +97910,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 370 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -97794,7 +97918,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -97919,7 +98043,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 371 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -97927,7 +98051,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Krishna Chaitanya Thota : https://github.com/kcthota
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -98012,7 +98136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 372 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -98020,7 +98144,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -98083,7 +98207,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 373 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -98091,7 +98215,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Dan Hagman
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -98149,7 +98273,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 374 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -98157,7 +98281,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Dominika Kruk : https://github.com/amaranthrose
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -98273,7 +98397,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 375 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -98282,7 +98406,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -98367,7 +98491,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 376 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -98375,7 +98499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v with the help of Iustì Canun
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -98462,7 +98586,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 377 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -98470,7 +98594,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -98524,7 +98648,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 378 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -98532,7 +98656,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -98586,7 +98710,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 379 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -98595,7 +98719,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -98736,7 +98860,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 380 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -98744,7 +98868,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Sardor Muminov : https://github.com/muminoff
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -98798,7 +98922,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 381 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -98806,7 +98930,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Bang Nguyen : https://github.com/bangnk
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -98881,7 +99005,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 382 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -98889,7 +99013,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Andrew Hood : https://github.com/andrewhood125
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -98953,7 +99077,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 383 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -98962,7 +99086,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Zeno Zeng : https://github.com/zenozeng
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -99084,7 +99208,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}));
 
 /***/ },
-/* 384 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -99092,7 +99216,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ben : https://github.com/ben-lin
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(282)) :
+	    true ? factory(__webpack_require__(283)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';

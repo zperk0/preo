@@ -1,6 +1,7 @@
 import controller from './cardItem.controller'
 
-export default function cardItem(){
+export default function cardItem($parse){
+  'ngInject';
   return {
     restrict: 'E',
     template: require("./cardItem.tpl.html"),
@@ -8,15 +9,14 @@ export default function cardItem(){
     scope:{
       cardItemActions:"=?",
       selected:"=?",
-      expanded:"=?",
-      draggable:"=?",
-      allowedTypes:"=?"
+      expanded:"=?"
     },
     controllerAs: "vm",
     bindToController: true,
     transclude:true,
     replace:true,
     link: (scope, el, attr, ctrl) => {
+
     }
   }
 }

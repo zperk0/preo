@@ -12,7 +12,7 @@ import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';
 import angularMaterial from 'angular-material';
 import angularMessages from 'angular-messages';
-import dndLists from 'angular-drag-and-drop-lists';
+import angularSortableView from 'angular-sortable-view';
 
 // Import base modules
 import config from './app.config';
@@ -40,7 +40,7 @@ window.moment = require('moment/moment.js');
 
 
 export default angular.module('webapp', [
-  /* external */ uirouter, angularTranslate, angularAnimate, angularMaterial, angularAria, angularMessages,'dndLists',
+  /* external */ uirouter, angularTranslate, angularAnimate, angularMaterial, angularAria, angularMessages,'angular-sortable-view',
   /* directives */ dialog, snack,
   /* internal */ PreodayServices, v2Main, v2Error, v2Auth, v2NotFound
   ])

@@ -31,10 +31,12 @@
   -moz-transition: all $time linear;
 }
 
-@mixin materialRaisedShadow(){
-  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.26), 0px 2px 10px 0px rgba(0,0,0,0.16);
-}
+@mixin materialRaisedShadow($depth: 1){
 
-@mixin materialRaisedShadow2(){
-  box-shadow: 0px 8px 17px 0px rgba(0,0,0,0.20), 0px 6px 20px 0px rgba(0,0,0,0.19);
+  @if $depth  == 1 {
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.26), 0px 2px 10px 0px rgba(0,0,0,0.16);
+  }
+  @if $depth  == 2 {
+    box-shadow: 0px 8px 17px 0px rgba(0,0,0,0.20), 0px 6px 20px 0px rgba(0,0,0,0.19);
+  }
 }

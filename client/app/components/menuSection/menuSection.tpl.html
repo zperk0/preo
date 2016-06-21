@@ -2,22 +2,27 @@
   <card-item card-item-actions="vm.cardItemActions"
               selected="vm.section.$selected"
               expanded="vm.section.$expanded"
-              dnd-list="vm.section.items"
-              dnd-allowed-types="vm.allowedDropTypes"
-              dnd-disable-if="!vm.section.$expanded">
+              >
     <card-item-title ng-click="vm.toggleExpanded()"
                     has-visible="true"
                     show-visible="!vm.section.visible"
                     show-dropdown="true">{{vm.section.name}}</card-item-title>
-    <menu-item ng-if="vm.section.$expanded"
-               ng-repeat="item in vm.section.items"
-               item="item"
-               ng-attr-data-id="{{item.id}}"
-               dnd-draggable="item"
-               dnd-moved="vm.onItemMoved($index)"
-               dnd-effect-allowed="move"
-               dnd-type="vm.menuItemType"
-          ></menu-item>
+    <div  class='repeat-holder'
+          ng-if="vm.section.$expanded"
+          sv-root
+          sv-on-start="vm.onItemMoveStart($item, $part, $index, $helper)"
+          sv-on-stop="vm.onItemMoveStop($item, $part, $index)"
+          sv-on-sort="vm.onItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)"
+          sv-part="vm.section.items">
+         <div sv-placeholder></div>
+      <menu-item
+             ng-repeat="item in vm.section.items"
+             item="item"
+             ng-attr-data-id="{{item.id}}"
+             sv-element="item"
+       ></menu-item>
+
+    </div>
     <menu-item ng-if="vm.section.$expanded"></menu-item>
     <card-item-actions is-visible="vm.section.visible"></card-item-actions>
   </card-item>
