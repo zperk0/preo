@@ -3,9 +3,20 @@
     return "menuSectionController";
   }
 
+  clearPossibleNewItem(){
+    // remove item with id -1, (possible new item)
+    this.deleteItem({id:-1});
+    console.log("deleted -1 item")
+  }
+
+  addNewItem(item){
+     this.clearPossibleNewItem();
+     this.section.items.push(item);
+  }
+
     selectItem(item){
       this.section.items.forEach((i, index)=>{
-        if (i.id === item.id){
+        if (item && i.id === item.id){
           i.$selected = true;
         } else{
           i.$selected=false;
@@ -25,8 +36,20 @@
   deleteItem(item){
     this.section.items = this.section.items.filter((i)=>item.id !== i.id);
   }
-  createItem(newItem){
+  showCreateItem($event){
+    let newItem = {
+        id:-1,
+        menuId:this.section.menuId,
+        sectionId:this.section.id,
+        $selected:true,
+        quantity:1,
+        $size:0,
+        visible:1,
+        venueId:this.$stateParams.venueId,
+        position:(this.section.items[this.section.items.length-1]).position + 1000
+    };
     this.section.items.push(newItem);
+    $event.stopPropagation();
   }
 
   createSection(newData = false){
@@ -35,32 +58,17 @@
       Preoday.Section.save(newData || this.section)
         .then((section)=>{
           this.Snack.show('Section created');
-          console.log("created section", section);
-          this.menuCtrl.createSection(section);
           if(!newData){
-            delete this.section;
+            this.menuCtrl.addNewSection(section);
           }
           resolve();
       },()=>{
-          reject();
+        reject();
         this.Snack.showError('Error saving section');
       }).then(()=>{
         this.Spinner.hide("section-create");
       })
     });
-  }
-
-  showCreateSection($event){
-    if (!this.section || !this.section.id){
-      this.section = {
-        id:-1,
-        menuId:this.menuId,
-        $selected:true,
-        position:this.menuCtrl.menu.sections.length * 1000
-      };
-    }
-    this.menuCtrl.toggleContextualMenu(this.section,this.type, this.createSection.bind(this));
-    $event.stopPropagation();
   }
 
   saveSection(){
@@ -86,6 +94,7 @@
     this.section.delete()
       .then(()=>{
         this.Snack.show('Section deleted');
+        console.log("deleting", this.menuCtrl.menu.sections, this.section);
         this.menuCtrl.deleteSection(this.section);
       }, ()=>{
         console.log("error deleting section");
@@ -110,8 +119,9 @@
         that.createSection(newSectionData); //will create a new section with this section as data
       },
       onEdit: ($event) => {
+        that.originalSection = angular.copy(this.section);
         that.menuCtrl.selectSection(that.section);
-        that.menuCtrl.toggleContextualMenu(that.section,that.type, that.saveSection.bind(that));
+        that.menuCtrl.showContextualMenu(that.section,that.type, that.saveSection.bind(that));
       },
       onDelete: ($event)=>{
         that.DialogService.delete(that.LabelService.TITLE_DELETE_SECTION, that.LabelService.CONTENT_DELETE_SECTION)
@@ -128,7 +138,25 @@
     }
   }
 
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner) {
+  handleCloseContextualMenuCancel(event, entity, type){
+    if (this.originalSection){
+      this.section = this.originalSection;
+      this.originalSection = false;
+    }
+    this.section.$selected = false;
+    this.selectItem();
+    this.clearPossibleNewItem();
+  }
+  handleCloseContextualMenuSuccess(event, entity, type){
+    if (this.section){
+      if(entity && type=== this.type && entity.id === this.section.id){
+          this.section = entity;
+      }
+      this.section.$selected = false;
+    }
+  }
+
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
@@ -141,13 +169,14 @@
     this.menuItemType = 'menuItem';
     this.allowedDropTypes = [this.menuItemType];
 
-    $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU,(event, entity, type)=>{
-      if (this.section){
-        if(entity && type=== this.type && entity.id === this.section.id){
-          this.section = entity;
-        }
-      this.section.$selected = false;
-      }
-    });
+    //if it's a new section we toggle the context menu to edit this
+    if (this.section && this.section.id === -1) {
+      $timeout(()=>{
+        this.menuCtrl.showContextualMenu(this.section,this.type, this.createSection.bind(this));
+      })
+    }
+
+    this.onSuccessCleanup = $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU_SUCCESS,this.handleCloseContextualMenuSuccess.bind(this));
+    this.onCancelCleanup = $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU_CANCEL,this.handleCloseContextualMenuCancel.bind(this));
   }
 }

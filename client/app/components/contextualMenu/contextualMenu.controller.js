@@ -5,16 +5,17 @@ export default class contextualMenuController {
 
   //restore original state if user cancels
   onCancel(){
-    this.$rootScope.$broadcast(this.BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU, this.originalEntity, this.type);
+    this.$rootScope.$broadcast(this.BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU_CANCEL);
   }
 
-  doSubmit(){
-    this.onSubmit().then(()=>{
-      console.log("on resolved contextual submit")
-      this.$rootScope.$broadcast(this.BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU);
-    }, (err)=>{
-      console.log("Contextual submit failed", err);
-    });
+  doSubmit(contextualForm){
+    if (contextualForm.$valid){
+      this.onSubmit().then((response)=>{
+        this.$rootScope.$broadcast(this.BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU_SUCCESS);
+      }, (err)=>{
+        console.log("Contextual submit failed", err);
+      });
+    }
   }
 
 

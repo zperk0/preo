@@ -3,22 +3,6 @@ export default class menuItemController {
     return "menuItemController";
   }
 
-  showCreateItem($event){
-     if (!this.item || !this.item.id){
-      this.item = {
-        id:-1,
-        menuId:this.menuSectionCtrl.section.menuId,
-        sectionId:this.menuSectionCtrl.section.id,
-        $selected:true,
-        quantity:1,
-        venueId:this.$stateParams.venueId,
-        position:this.menuSectionCtrl.section.items.length * 1000
-      };
-    }
-    this.menuCtrl.toggleContextualMenu(this.item,this.type, this.createItem.bind(this));
-    $event.stopPropagation();
-  }
-
   createItem(newData = false){
     if (newData && this.menuSectionCtrl){
       newData.sectionId= this.menuSectionCtrl.section.id;
@@ -30,12 +14,7 @@ export default class menuItemController {
       Preoday.Item.save(newData || this.item)
         .then((item)=>{
           this.Snack.show('Item created');
-          if (this.menuSectionCtrl){
-            this.menuSectionCtrl.createItem(item);
-          }
-          if(!newData){
-            delete this.item;
-          }
+          this.menuSectionCtrl.addNewItem(item);
           resolve();
       },(err)=>{
         reject(err);
@@ -90,8 +69,9 @@ export default class menuItemController {
         that.createItem(newItemData); //will create a new item with this item as data
       },
       onEdit: ($event) => {
+        that.originalItem  = angular.copy(that.item);
         that.menuSectionCtrl.selectItem(that.item);
-        that.menuCtrl.toggleContextualMenu(that.item,that.type, that.saveItem.bind(that));
+        that.menuCtrl.showContextualMenu(that.item,that.type, that.saveItem.bind(that));
       },
       onDelete: ($event)=>{
         const isInSection = that.menuSectionCtrl ? true : false;
@@ -110,8 +90,25 @@ export default class menuItemController {
     }
   }
 
+  handleCloseContextualMenuSuccess (event, entity, type) {
+    if (this.item){
+      if(entity && type=== this.type && entity.id === this.item.id){
+        this.item = entity;
+      }
+    this.item.$selected = false;
+    }
+  }
 
-  constructor($q, Snack, DialogService, BroadcastEvents, $rootScope, $stateParams, LabelService, Spinner) {
+  handleCloseContextualMenuCancel(event, entity, type){
+    if (this.originalItem){
+      this.item = this.originalItem;
+      this.originalItem = false;
+    }
+    this.item.$selected = false;
+  }
+
+
+  constructor($q, Snack, DialogService, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
@@ -120,16 +117,15 @@ export default class menuItemController {
     this.LabelService = LabelService;
     this.type="menuItem";
     this.setCardActions();
-    this.$stateParams = $stateParams;
 
+    //if it's a new item we toggle the context menu to edit this
+    if (this.item && this.item.id === -1) {
+      $timeout(()=>{
+        this.menuCtrl.showContextualMenu(this.item,this.type, this.createItem.bind(this));
+      })
+    }
 
-    $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU,(event, entity, type)=>{
-      if (this.item){
-        if(entity && type=== this.type && entity.id === this.item.id){
-          this.item = entity;
-        }
-      this.item.$selected = false;
-      }
-    });
+    this.onSuccessCleanup = $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU_SUCCESS, this.handleCloseContextualMenuSuccess.bind(this));
+    this.onCancelCleanup = $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU_CANCEL, this.handleCloseContextualMenuCancel.bind(this));
   }
 }

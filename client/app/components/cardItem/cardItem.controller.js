@@ -4,6 +4,7 @@ export default class cardItemController {
   }
 
   toggleCardActions($event, newStatus){
+    console.log("toggling")
     this.showCardActions= newStatus !== undefined ? newStatus : !this.showCardActions;
     $event.stopPropagation();
   }

@@ -15,7 +15,7 @@ export default class VenueService {
           return resolve(filtered[0]);
         }
         //Else try to get the venue if i'm super admin, or redirect to 404
-        this.$state.go("notFound");
+        //this.$state.go("notFound");
       } else {
         reject();
       }

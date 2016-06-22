@@ -1,5 +1,5 @@
 <md-card class='contextual-right-menu'>
-  <form name="contextualForm" ng-submit="vm.doSubmit()" novalidate>
+  <form name="contextualForm" ng-submit="vm.doSubmit(contextualForm)" novalidate>
     <md-card-content ng-if="vm.type==='menuSection'">
        <md-input-container class="md-block">
           <label translate>Section name</label>
@@ -32,7 +32,7 @@
           <div class='price' layout="row" layout-align="start center">
             <md-input-container flex>
                 <label translate>Price</label>
-                <input flex type="text" required name="entityPrice" ng-model="vm.entity.price">
+                <input flex type="number" required name="entityPrice" ng-model="vm.entity.price">
                 <div ng-messages="contextualForm.entityPrice.$error">
                   <div ng-message="required" translate>This is required.</div>
                 </div>

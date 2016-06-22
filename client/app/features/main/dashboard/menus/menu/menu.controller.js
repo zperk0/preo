@@ -29,26 +29,45 @@ export default class menuController {
     });
   }
 
-  toggleContextualMenu(entity, type, onSubmit, onCancel){
-    if (entity){
-      this.$rootScope.$broadcast(this.BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU);
-      this.showingContextualMenu = type;
-      this.contextualEntity = entity;
-      this.contextualSubmit = onSubmit;
-      this.contextualCancel = onCancel;
-      this.$timeout(()=>{
-        entity.$selected = true;
-      })
-    } else {
+  showContextualMenu(entity, type, onSubmit, onCancel){
+    this.showingContextualMenu = type;
+    this.contextualEntity = entity;
+    this.contextualSubmit = onSubmit;
+    this.contextualCancel = onCancel;
+  }
+
+  closeContextualMenu(isSuccess){
       delete this.showingContextualMenu;
       delete this.contextualEntity;
       delete this.contextualSubmit;
       delete this.contextualCancel;
-    }
+      this.selectSection();
+      if (!isSuccess){
+        this.clearPossibleNewSection();
+      }
   }
 
-  createSection(newSection){
-    this.menu.sections.push(newSection);
+  clearPossibleNewSection(){
+    // remove section with id -1, (possible new section)
+    this.deleteSection({id:-1});
+    console.log("deleted -1 section")
+  }
+
+  addNewSection(section){
+     this.clearPossibleNewSection();
+     this.menu.sections.push(section);
+  }
+
+  showCreateSection($event){
+    let section = {
+      id:-1,
+      menuId:this.menu.id,
+      $selected:true,
+      visible:1,
+      position:(this.menu.sections[this.menu.sections.length-1]).position + 1000
+    };
+    this.menu.sections.push(section);
+    $event.stopPropagation();
   }
 
   deleteSection(section){
@@ -56,10 +75,10 @@ export default class menuController {
   }
 
   selectSection(section){
+    this.clearPossibleNewSection();
     this.menu.sections.forEach((s, index)=>{
-      if (s.id === section.id){
+      if (section && s.id === section.id){
         s.$selected = true;
-        console.log("selected", s);
       } else{
         s.$selected=false;
       }
@@ -130,8 +149,7 @@ export default class menuController {
     this.allowedDropTypes = [this.menuSectionType];
     this.$rootScope = $rootScope;
     this.BroadcastEvents = BroadcastEvents;
-    $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU,()=>{
-      this.toggleContextualMenu();
-    })
+    $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU_SUCCESS, this.closeContextualMenu.bind(this, true))
+    $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU_CANCEL, this.closeContextualMenu.bind(this,false))
   }
 }
