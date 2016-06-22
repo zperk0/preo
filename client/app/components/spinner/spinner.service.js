@@ -12,16 +12,20 @@ export default class SpinnerService {
 
 
   show(code){
-    this.debug && console.log("showing spinner", code)
+    this.DEBUG && console.log("showing spinner", code)
     this.visibleCodes.push(code);
     this.updateIsVisible();
   }
 
+  empty(){
+    this.visibleCodes = [];
+    this.updateIsVisible();
+  }
+
   hide(code){
-    this.debug && console.log("hiding spinner", code)
+    this.DEBUG && console.log("hiding spinner", code)
     let index = this.visibleCodes.indexOf(code);
     if (index > -1) {
-      this.DEBUG && console.log("got index");
       this.visibleCodes.splice(index, 1);
       this.updateIsVisible();
     }

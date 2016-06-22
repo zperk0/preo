@@ -24,7 +24,6 @@ export default class mainController {
   }
   handleFinishLoading(){
     console.log("handle finished");
-    this.$rootScope.$on(this.BroadcastEvents._PREO_ON_VENUE_SELECTED,this.setVenue.bind(this));
     this.hideSpinner();
 
   }
@@ -37,7 +36,12 @@ export default class mainController {
     this.$rootScope = $rootScope;
     this.Spinner = Spinner;
     this.BroadcastEvents = BroadcastEvents;
-    this.showSpinner();
     $rootScope.$on(BroadcastEvents._PREO_DO_VENUE_SELECT,this.setVenue.bind(this));
+    if (UserService.isAuth){
+      VenueService.fetchById($stateParams.venueId).then((venue)=>{
+        this.setVenue(null,venue)
+      })
+    }
+
   }
 }

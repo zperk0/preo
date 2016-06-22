@@ -4,6 +4,10 @@ export default class UserService {
     return "UserService";
   }
 
+  isAuth (){
+    return this.user ? true : false;
+  }
+
   auth (data) {
     return this.$q((resolve, reject)=>{
         Preoday.User.auth(data).then((user) => {

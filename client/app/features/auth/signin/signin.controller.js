@@ -6,14 +6,12 @@ export default class signinController {
 
   hideSpinner(){
     this.$timeout(()=>{
-      console.log("hiding");
       this.Spinner.hide("signin");
     },1000)
 
   }
 
   showSpinner(){
-    console.log("showing");
     this.Spinner.show("signin")
   }
 

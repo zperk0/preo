@@ -1,5 +1,5 @@
 
-export default function config(UserService, $rootScope, BroadcastEvents, VenueService, $state, ErrorService, UtilsService, $stateParams){
+export default function config(UserService, $rootScope, BroadcastEvents, VenueService, $state, ErrorService, UtilsService, $stateParams, Spinner){
   "ngInject";
   function setupChangeEvent(){
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
@@ -16,6 +16,7 @@ export default function config(UserService, $rootScope, BroadcastEvents, VenueSe
   function redirectSignin(){
     $state.go("auth.signin");
     setupChangeEvent();
+    Spinner.empty();
   }
 
   $rootScope.$on(BroadcastEvents._ON_USER_AUTH,(event,user)=>{
