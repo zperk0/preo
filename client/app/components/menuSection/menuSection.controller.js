@@ -30,6 +30,7 @@
   }
 
   createSection(newData = false){
+    this.Spinner.show("section-create");
     return this.$q((resolve, reject)=>{
       Preoday.Section.save(newData || this.section)
         .then((section)=>{
@@ -43,7 +44,9 @@
       },()=>{
           reject();
         this.Snack.showError('Error saving section');
-      });
+      }).then(()=>{
+        this.Spinner.hide("section-create");
+      })
     });
   }
 
@@ -61,6 +64,7 @@
   }
 
   saveSection(){
+    this.Spinner.show("section-save");
     return this.$q((resolve, reject)=>{
       this.section.update()
         .then(()=>{
@@ -69,10 +73,26 @@
       },()=>{
         reject();
         this.Snack.showError('Error saving section');
-      });
+      }).then(()=>{
+        this.Spinner.hide("section-save");
+      })
 
       console.log("resolved");
     });
+  }
+
+  deleteSection(){
+    this.Spinner.show("section-delete");
+    this.section.delete()
+      .then(()=>{
+        this.Snack.show('Section deleted');
+        this.menuCtrl.deleteSection(this.section);
+      }, ()=>{
+        console.log("error deleting section");
+        this.Snack.showError('Error deleting section');
+      }).then(()=>{
+        this.Spinner.hide("section-delete");
+      })
   }
 
   toggleExpanded(){
@@ -96,15 +116,7 @@
       onDelete: ($event)=>{
         that.DialogService.delete(that.LabelService.TITLE_DELETE_SECTION, that.LabelService.CONTENT_DELETE_SECTION)
           .then(()=>{
-            that.section.delete()
-              .then(()=>{
-                that.Snack.show('Section deleted');
-                that.menuCtrl.deleteSection(that.section);
-              }, ()=>{
-                console.log("error deleting section");
-                that.Snack.showError('Error deleting section');
-              })
-
+            that.deleteSection();
         })
         $event.stopPropagation();
       },
@@ -116,10 +128,11 @@
     }
   }
 
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService) {
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
+    this.Spinner = Spinner;
     this.$stateParams = $stateParams;
     this.DialogService = DialogService;
     this.LabelService = LabelService;

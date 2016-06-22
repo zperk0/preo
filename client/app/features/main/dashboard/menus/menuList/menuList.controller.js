@@ -4,6 +4,14 @@ export default class menuListController {
     return "menuListController";
   }
 
+  showSpinner(){
+    this.Spinner.show("menu-list");
+  }
+
+  hideSpinner(){
+    this.Spinner.hide("menu-list");
+  }
+
   showMenu(menu){
     this.$state.go("main.dashboard.menus.menu",{menuId:menu.id});
   }
@@ -16,17 +24,23 @@ export default class menuListController {
 
   handleError (error) {
     this.error = this.ErrorService[error];
+    this.hideSpinner();
   }
 
   handleFinishLoading(dataMenus){
     this.menus = dataMenus;
+    this.hideSpinner();
   }
 
 
-  constructor($state,$stateParams,ErrorService) {
+  constructor($state,$stateParams,ErrorService, Spinner) {
     "ngInject";
+    this.Spinner = Spinner;
+    this.showSpinner();
     this.$state=$state;
     this.setMenus($stateParams.venueId);
     this.ErrorService = ErrorService;
+
+
   }
 }

@@ -4,6 +4,14 @@ export default class menuController {
     return "menuController";
   }
 
+  showSpinner(){
+    this.Spinner.show("menu");
+  }
+
+  hideSpinner(){
+    this.Spinner.hide("menu");
+  }
+
   onSectionMoveStart(){
     console.log("start arguments", arguments);
   }
@@ -73,6 +81,7 @@ export default class menuController {
   handleError (error) {
     console.log("got error", error);
     this.error = this.ErrorService[error];
+    this.hideSpinner();
   }
 
   expandSection(section){
@@ -98,16 +107,19 @@ export default class menuController {
     }
     this.$timeout(()=>{
       this.menu = dataMenu;
+      this.hideSpinner();
     });
   }
 
 
 
-  constructor($stateParams, $timeout, DialogService, $mdToast, $rootScope, BroadcastEvents, Snack) {
+  constructor($stateParams, $timeout, DialogService, $mdToast, $rootScope, BroadcastEvents, Snack, Spinner) {
     "ngInject";
     console.log("state", $stateParams.menuId);
     this.DialogService = DialogService;
     this.Snack = Snack;
+    this.Spinner = Spinner;
+    this.showSpinner();
     this.$mdToast = $mdToast;
     this.setMenu($stateParams.menuId);
     this.initialExpandedSection = $stateParams.sectionId && Number($stateParams.sectionId);

@@ -4,18 +4,21 @@ export default class SpinnerService {
   }
 
   updateIsVisible(){
-    this.isVisible = this.visibleCodes.length > 0;
-    this.DEBUG && console.log("updated visible", this.isVisible);
+    this.$timeout(()=>{
+      this.isVisible = this.visibleCodes.length > 0;
+      this.DEBUG && console.log("updated visible", this.isVisible);
+    })
   }
 
 
   show(code){
+    this.debug && console.log("showing spinner", code)
     this.visibleCodes.push(code);
     this.updateIsVisible();
   }
 
   hide(code){
-    console.log("hiding code")
+    this.debug && console.log("hiding spinner", code)
     let index = this.visibleCodes.indexOf(code);
     if (index > -1) {
       this.DEBUG && console.log("got index");
@@ -24,11 +27,12 @@ export default class SpinnerService {
     }
   }
 
-  constructor() {
+  constructor($timeout) {
     'ngInject';
     this.DEBUG = true;
     this.isVisible=false;
     this.visibleCodes=[];
+    this.$timeout = $timeout;
 
   }
 }

@@ -26,6 +26,7 @@ export default class menuItemController {
       newData.position = this.menuSectionCtrl.section.items.length * 1000;
     }
     return this.$q((resolve, reject)=>{
+      this.Spinner.show("item-create");
       Preoday.Item.save(newData || this.item)
         .then((item)=>{
           this.Snack.show('Item created');
@@ -39,12 +40,15 @@ export default class menuItemController {
       },(err)=>{
         reject(err);
         this.Snack.showError('Error saving item');
-      });
+      }).then(()=>{
+        this.Spinner.hide("item-create");
+      })
     });
   }
 
 
   saveItem(){
+    this.Spinner.show("item-save");
     return this.$q((resolve, reject)=>{
       this.item.update()
         .then(()=>{
@@ -53,8 +57,28 @@ export default class menuItemController {
       },()=>{
         reject();
         this.Snack.showError('Error saving item');
-      });
+      }).then(()=>{
+        this.Spinner.hide("item-save");
+      })
     });
+  }
+
+  deleteItem(isInSection){
+    // call Preoday.Item or Preoday.Section method to delete item or remove from section
+    this.Spinner.show("item-delete");
+    const deleteAction = isInSection ? this.menuSectionCtrl.section.removeItems.bind(this.menuSectionCtrl.section) : this.item.delete.bind(item);
+    deleteAction([this.item.id])
+      .then(()=>{
+        this.Snack.show('Item deleted');
+        if (isInSection){
+          this.menuSectionCtrl.deleteItem(this.item);
+        }
+      }, ()=>{
+        console.log("error deleting item");
+        this.Snack.showError('Error deleting item');
+      }).then(()=>{
+        this.Spinner.hide("item-delete");
+      })
   }
 
   //sets action callbacks for <card-item-actions>
@@ -72,23 +96,10 @@ export default class menuItemController {
       onDelete: ($event)=>{
         const isInSection = that.menuSectionCtrl ? true : false;
         const msg = isInSection ? that.LabelService.CONTENT_DELETE_ITEM_SECTION : that.LabelService.CONTENT_DELETE_ITEM;
-
-        // call Preoday.Item or Preoday.Section method to delete item or remove from section
-        const deleteAction = isInSection ? that.menuSectionCtrl.section.removeItems.bind(that.menuSectionCtrl.section) : that.item.delete.bind(item);
         that.DialogService.delete(that.LabelService.TITLE_DELETE_ITEM, msg)
           .then(()=>{
-            deleteAction([that.item.id])
-              .then(()=>{
-                that.Snack.show('Item deleted');
-                if (isInSection){
-                  that.menuSectionCtrl.deleteItem(that.item);
-                }
-              }, ()=>{
-                console.log("error deleting item");
-                that.Snack.showError('Error deleting item');
-              })
-
-        })
+            that.deleteItem(isInSection);
+          })
         $event.stopPropagation();
       },
       onVisibility:(newStatus, $event)=>{
@@ -100,10 +111,11 @@ export default class menuItemController {
   }
 
 
-  constructor($q, Snack, DialogService, BroadcastEvents, $rootScope, $stateParams, LabelService) {
+  constructor($q, Snack, DialogService, BroadcastEvents, $rootScope, $stateParams, LabelService, Spinner) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
+    this.Spinner = Spinner;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.type="menuItem";
