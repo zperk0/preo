@@ -1,5 +1,5 @@
 export default function pathSelected($state, $rootScope){
-  'ngInject';
+  "ngInject";
   return {
     restrict: 'A',
     scope:{

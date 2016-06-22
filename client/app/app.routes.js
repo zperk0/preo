@@ -1,5 +1,5 @@
-/* @ngInject */
+
 export default function routes($urlRouterProvider){
-  'ngInject';
+  "ngInject";
   $urlRouterProvider.otherwise('/auth/signin');
 }

@@ -4,8 +4,8 @@ export default class webordersController {
     return "webordersController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
   }
 }

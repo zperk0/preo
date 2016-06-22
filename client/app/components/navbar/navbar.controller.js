@@ -25,9 +25,9 @@ export default class navbarController {
     this.$expanded = !this.$expanded;
   }
 
-  /* @ngInject */
+
   constructor($state) {
-    'ngInject';
+    "ngInject";
     this.DESTINATION_PREFIX = "main.dashboard.";
     this.$state = $state;
     this.$expanded = true;

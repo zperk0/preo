@@ -3,7 +3,7 @@ export default class LabelService {
 	static get UID(){
     return "LabelService"
   }
-  /* @ngInject */
+
   constructor($translate) {
     "ngInject";
 

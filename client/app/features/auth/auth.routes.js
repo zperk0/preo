@@ -5,9 +5,9 @@ import controller from './auth.controller';
  * Routing function for auth
  * @param  $stateProvider
  */
-/* @ngInject */
+
 export default function routes($stateProvider) {
-  'ngInject';
+  "ngInject";
   $stateProvider.state("auth", {
     url: "/auth",
     abstract:true,

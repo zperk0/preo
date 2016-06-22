@@ -1,4 +1,4 @@
-export default class ErrorsService {
+export default class ErrorService {
 
   static get UID(){
     return "ErrorService";
@@ -8,9 +8,9 @@ export default class ErrorsService {
     this.$state.go('error',{code:error});
   }
 
-  /* @ngInject */
+
   constructor($translate, $state) {
-    'ngInject';
+    "ngInject";
     this.$state = $state;
 
     //VENUE

@@ -7,7 +7,7 @@ export default class DialogService {
   delete (title, content) {
 
     function DeleteController($scope, $mdDialog) {
-      'ngInject';
+      "ngInject";
       $scope.cancel = function() {
         $mdDialog.cancel();
       };
@@ -27,7 +27,7 @@ export default class DialogService {
     });
   }
 
-    /* @ngInject */
+
   constructor($rootScope, $q, $mdDialog) {
     "ngInject";
     this.$mdDialog = $mdDialog;

@@ -19,7 +19,7 @@ export default class UserService {
     window.location.reload();
   }
 
-  /* @ngInject */
+
   constructor($q, $rootScope, BroadcastEvents) {
     "ngInject";
     this.$q = $q;

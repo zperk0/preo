@@ -1,7 +1,7 @@
 import controller from './navbar.controller';
 
 export default function navbar(){
-  'ngInject';
+  "ngInject";
   return {
     restrict: 'E',
     template: require("./navbar.tpl.html"),

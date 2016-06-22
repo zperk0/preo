@@ -4,8 +4,8 @@ export default class promotionsController {
     return "promotionsController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
   }
 }

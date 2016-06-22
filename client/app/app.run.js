@@ -1,6 +1,6 @@
 
 export default function config(UserService, $rootScope, BroadcastEvents, VenueService, $state, ErrorService, UtilsService){
-  'ngInject';
+  "ngInject";
   function setupChangeEvent(){
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
       const notRequiresUser= ['auth.signin','error'];

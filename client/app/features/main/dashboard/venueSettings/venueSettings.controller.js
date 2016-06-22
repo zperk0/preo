@@ -4,9 +4,9 @@ export default class venueSettingsController {
     return "venueSettingsController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
 
   }
 }

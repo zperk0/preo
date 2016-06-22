@@ -4,9 +4,9 @@ export default class outletsController {
     return "outletsController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
 
   }
 }

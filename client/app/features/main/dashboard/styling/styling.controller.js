@@ -4,9 +4,9 @@ export default class stylingController {
     return "stylingController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
 
   }
 }

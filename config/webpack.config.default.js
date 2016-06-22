@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var path = require("path");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+// var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = function(ENV, options) {
@@ -95,7 +95,7 @@ module.exports = function(ENV, options) {
         // JS LOADER
         // Reference: https://github.com/babel/babel-loader
         test: /\.(js|jsx)$/,
-        loader: 'babel',
+        loaders: ['ng-annotate','babel'],
         exclude: [/node_modules/, /bower_components/]
       },
       {
@@ -148,10 +148,10 @@ module.exports = function(ENV, options) {
     // Disabled when in test mode or not in build mode
       new ExtractTextPlugin('[name].css', {
       }),
-      new ngAnnotatePlugin({
-        add: true,
-        // other ng-annotate options here
-      }),
+      // new ngAnnotatePlugin({
+      //   add: true,
+      //   // other ng-annotate options here
+      // }),
       new CopyWebpackPlugin([
         { from: 'client/assets' },
       ]),

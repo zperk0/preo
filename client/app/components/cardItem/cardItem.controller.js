@@ -8,8 +8,9 @@ export default class cardItemController {
     $event.stopPropagation();
   }
 
-  /* @ngInject */
+
   constructor() {
+    "ngInject";
     this.showCardActions = false;
   }
 }

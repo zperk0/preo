@@ -1,6 +1,6 @@
 
 export default function config($mdThemingProvider, $locationProvider){
-  'ngInject';
+  "ngInject";
 
   $locationProvider.html5Mode(false);
 

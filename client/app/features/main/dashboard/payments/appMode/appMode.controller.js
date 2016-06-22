@@ -4,9 +4,9 @@ export default class appModeController {
     return "appModeController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
 
   }
 }

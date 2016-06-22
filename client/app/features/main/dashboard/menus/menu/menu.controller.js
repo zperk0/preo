@@ -102,9 +102,9 @@ export default class menuController {
   }
 
 
-  /* @ngInject */
+
   constructor($stateParams, $timeout, DialogService, $mdToast, $rootScope, BroadcastEvents, Snack) {
-    'ngInject';
+    "ngInject";
     console.log("state", $stateParams.menuId);
     this.DialogService = DialogService;
     this.Snack = Snack;

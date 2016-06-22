@@ -4,9 +4,9 @@ export default class authController {
     return "authController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject;';
+    "ngInject";
 
   }
 }

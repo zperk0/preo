@@ -21,9 +21,9 @@ export default class venueSelectController {
     });
   }
 
-  /* @ngInject */
+
   constructor($rootScope, BroadcastEvents, $timeout, VenueService, $stateParams, $state) {
-    'ngInject';
+    "ngInject";
     this.$timeout = $timeout;
     this.VenueService = VenueService;
     this.$state = $state;

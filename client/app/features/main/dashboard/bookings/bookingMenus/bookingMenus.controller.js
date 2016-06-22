@@ -4,9 +4,9 @@ export default class bookingMenusController {
     return "bookingMenusController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
 
   }
 }

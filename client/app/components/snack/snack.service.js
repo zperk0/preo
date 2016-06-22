@@ -22,7 +22,7 @@ export default class Snack {
     });
   }
 
-    /* @ngInject */
+
   constructor( $mdToast, $rootScope) {
     "ngInject";
     this.$mdToast = $mdToast;

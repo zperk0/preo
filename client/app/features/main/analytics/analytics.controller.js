@@ -4,8 +4,8 @@ export default class analyticsController {
     return "analyticsController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
   }
 }

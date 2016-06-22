@@ -49,8 +49,7 @@ export default class VenueService {
     window.location.reload();
   }
 
-  /* @ngInject */
-  constructor($q,$state, $rootScope, BroadcastEvents,$stateParams) {
+  constructor($q, $state, $stateParams, $rootScope, BroadcastEvents) {
     "ngInject";
     this.$q = $q;
     this.$state = $state;

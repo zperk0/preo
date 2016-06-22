@@ -26,7 +26,7 @@ export default class UtilsService {
     return false;
   }
 
-  /* @ngInject */
+
   constructor() {
     "ngInject";
 

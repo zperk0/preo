@@ -1,5 +1,5 @@
 export default function icon(){
-  'ngInject';
+  "ngInject";
   return {
     restrict: 'E',
     template: require("./icon.tpl.html"),

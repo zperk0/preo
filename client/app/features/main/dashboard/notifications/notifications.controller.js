@@ -4,9 +4,9 @@ export default class notificationsController {
     return "notificationsController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
 
   }
 }

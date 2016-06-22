@@ -5,9 +5,9 @@ import controller from './bookingSettings.controller';
  * Routing function for bookingSettings
  * @param  $stateProvider
  */
-/* @ngInject */
+
 export default function routes($stateProvider) {
-  'ngInject';
+  "ngInject";
   $stateProvider.state("main.dashboard.bookings.bookingSettings", {
     url: "/bookingSettings",
     template: require("./bookingSettings.tpl.html"),

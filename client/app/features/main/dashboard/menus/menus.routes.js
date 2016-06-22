@@ -4,9 +4,9 @@
  * Routing function for menus
  * @param  $stateProvider
  */
-/* @ngInject */
+
 export default function routes($stateProvider) {
-  'ngInject';
+  "ngInject";
   $stateProvider.state("main.dashboard.menus", {
     url: "/menus",
     abstract:true,

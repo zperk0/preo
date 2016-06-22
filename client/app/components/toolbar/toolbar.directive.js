@@ -1,7 +1,7 @@
 import controller from './toolbar.controller';
 
 export default function toolbar(){
-  'ngInject';
+  "ngInject";
   return {
     restrict: 'E',
     scope: {

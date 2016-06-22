@@ -1,5 +1,6 @@
 
 export default function cardItemTitle(){
+  "ngInject";
   return {
     restrict: 'E',
     template: require("./cardItemTitle.tpl.html"),

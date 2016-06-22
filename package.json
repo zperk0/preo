@@ -58,7 +58,7 @@
     "karma-webpack": "^1.7.0",
     "lodash": "^3.10.1",
     "matchdep": "^1.0.0",
-    "ng-annotate-webpack-plugin": "^0.1.2",
+    "ng-annotate-loader": "^0.1.0",
     "node-libs-browser": "^0.5.3",
     "node-sass": "^3.4.2",
     "null-loader": "^0.1.1",

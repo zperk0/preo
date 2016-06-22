@@ -17,9 +17,9 @@ export default class contextualMenuController {
     });
   }
 
-  /* @ngInject */
+
   constructor($rootScope, BroadcastEvents) {
-    'ngInject';
+    "ngInject";
     console.log("Showing conextual menu ", this.entity, this.type);
     this.originalEntity = angular.copy(this.entity);
     this.$rootScope = $rootScope;

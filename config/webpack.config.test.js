@@ -12,10 +12,7 @@ module.exports = function(ENV, options) {
      * Make bower_components available for the resolvers
      */
     resolve: {
-      root: [path.join(__dirname, "./bower_components")],
-      alias: {
-        appConstants: "./" + ENV + ".constants.js"
-      }
+      root: [path.join(__dirname, "./bower_components")]
     },
     /**
      * Entry

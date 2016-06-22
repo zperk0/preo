@@ -4,9 +4,9 @@ export default class errorController {
     return "errorController";
   }
 
-  /* @ngInject */
+
   constructor($stateParams, ErrorService) {
-    'ngInject';
+    "ngInject";
     this.code = $stateParams.code;
     this.error = ErrorService[this.code] || ErrorService.DEFAULT;
   }

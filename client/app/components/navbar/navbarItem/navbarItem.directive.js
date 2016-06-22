@@ -1,5 +1,6 @@
 
 export default function navbarItem($mdMenu){
+  "ngInject";
   return {
     restrict: 'E',
     scope: {

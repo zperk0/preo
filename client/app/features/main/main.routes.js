@@ -5,9 +5,9 @@ import controller from './main.controller';
  * Routing function for main
  * @param  $stateProvider
  */
-/* @ngInject */
+
 export default function routes($stateProvider) {
-  'ngInject';
+  "ngInject";
   $stateProvider.state("main", {
     url: "/:venueId/main",
     abstract: true,

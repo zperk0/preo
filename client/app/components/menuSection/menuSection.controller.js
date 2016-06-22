@@ -1,4 +1,4 @@
-export default class menuSectionController {
+  export default class menuSectionController {
   static get UID(){
     return "menuSectionController";
   }
@@ -116,9 +116,8 @@ export default class menuSectionController {
     }
   }
 
-  /* @ngInject */
   constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService) {
-    'ngInject';
+    "ngInject";
     this.$q =$q;
     this.Snack = Snack;
     this.$stateParams = $stateParams;

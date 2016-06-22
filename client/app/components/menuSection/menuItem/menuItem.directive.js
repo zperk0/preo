@@ -1,7 +1,7 @@
 import controller from './menuItem.controller';
 
 export default function menuItem($compile){
-  'ngInject';
+  "ngInject";
   return {
     restrict: 'E',
     scope: {

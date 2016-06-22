@@ -8,9 +8,9 @@ export default class signinController {
     this.UserService.auth(this.user);
   }
 
-  /* @ngInject */
+
   constructor(UserService) {
-    'ngInject';
+    "ngInject";
     this.UserService = UserService;
     if (UserService.user){
       UserService.signout();

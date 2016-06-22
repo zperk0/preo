@@ -1,7 +1,7 @@
 import controller from './venueSelect.controller';
 
 export default function venueSelect(){
-  'ngInject';
+  "ngInject";
   return {
     restrict: 'E',
     scope: {

@@ -18,7 +18,6 @@ import angularSortableView from 'angular-sortable-view';
 import config from './app.config';
 import run from './app.run';
 import routes from './app.routes';
-import appConstants from 'appConstants';
 import broadcastEvents from './app.broadcastEvents.constants';
 import PreodayServices from './shared';
 
@@ -40,13 +39,26 @@ window.moment = require('moment/moment.js');
 
 
 export default angular.module('webapp', [
-  /* external */ uirouter, angularTranslate, angularAnimate, angularMaterial, angularAria, angularMessages,'angular-sortable-view',
-  /* directives */ dialog, snack,
-  /* internal */ PreodayServices, v2Main, v2Error, v2Auth, v2NotFound
+  /* external */
+  uirouter,
+  angularMaterial,
+  angularTranslate,
+  angularAnimate,
+  angularAria,
+  angularMessages,
+  'angular-sortable-view',
+  /* directives */
+  dialog,
+  snack,
+  // /* internal */
+  PreodayServices,
+  v2Main,
+  v2Error,
+  v2Auth,
+  v2NotFound
   ])
   .config(config)
   .run(run)
   .config(routes)
-  .constant("AppConstants", appConstants)
   .constant("BroadcastEvents", broadcastEvents)
   .name;

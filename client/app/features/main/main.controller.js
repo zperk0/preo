@@ -18,9 +18,9 @@ export default class mainController {
     console.log("loaded main");
   }
 
-  /* @ngInject */
+
   constructor($rootScope, $stateParams, ErrorService, BroadcastEvents, UserService, VenueService) {
-    'ngInject';
+    "ngInject";
     this.VenueService=VenueService;
     this.ErrorService = ErrorService;
     this.$rootScope = $rootScope;

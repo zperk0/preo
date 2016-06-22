@@ -1,6 +1,7 @@
 import controller from './contextualMenu.controller'
 
 export default function contextualMenu(){
+  "ngInject";
   return {
     restrict: 'E',
     template: require("./contextualMenu.tpl.html"),

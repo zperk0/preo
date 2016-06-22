@@ -1,7 +1,7 @@
 import controller from './userSelect.controller';
 
 export default function userSelect(){
-  'ngInject';
+  "ngInject";
   return {
     restrict: 'E',
     template: require("./userSelect.tpl.html"),

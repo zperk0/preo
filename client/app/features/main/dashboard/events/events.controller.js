@@ -4,9 +4,9 @@ export default class eventsController {
     return "eventsController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
 
   }
 }

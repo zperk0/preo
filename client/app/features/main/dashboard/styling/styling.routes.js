@@ -5,9 +5,9 @@ import controller from './styling.controller';
  * Routing function for styling
  * @param  $stateProvider
  */
-/* @ngInject */
+
 export default function routes($stateProvider) {
-  'ngInject';
+  "ngInject";
   $stateProvider.state("main.dashboard.styling", {
     url: "/styling",
     template: require("./styling.tpl.html"),

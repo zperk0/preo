@@ -4,8 +4,8 @@ export default class voucherSettingsController {
     return "voucherSettingsController"
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
   }
 }

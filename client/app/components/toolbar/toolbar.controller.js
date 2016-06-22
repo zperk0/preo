@@ -11,9 +11,9 @@ export default class toolbarController {
     return this.UserService.user;
   }
 
-  /* @ngInject */
+
   constructor(VenueService, UserService) {
-    'ngInject';
+    "ngInject";
     this.UserService=UserService;
     this.VenueService=VenueService;
   }

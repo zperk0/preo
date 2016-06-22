@@ -4,8 +4,8 @@ export default class menusController {
     return "menusController";
   }
 
-  /* @ngInject */
+
   constructor($stateParams, ErrorService) {
-    'ngInject';
+    "ngInject";
   }
 }

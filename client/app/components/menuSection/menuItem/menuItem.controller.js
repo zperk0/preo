@@ -99,9 +99,9 @@ export default class menuItemController {
     }
   }
 
-  /* @ngInject */
+
   constructor($q, Snack, DialogService, BroadcastEvents, $rootScope, $stateParams, LabelService) {
-    'ngInject';
+    "ngInject";
     this.$q =$q;
     this.Snack = Snack;
     this.DialogService = DialogService;

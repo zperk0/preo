@@ -4,9 +4,9 @@ export default class paymentMethodsController {
     return "paymentMethodsController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
 
   }
 }

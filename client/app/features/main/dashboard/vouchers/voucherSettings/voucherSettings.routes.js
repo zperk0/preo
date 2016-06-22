@@ -5,9 +5,9 @@ import controller from './voucherSettings.controller'
  * Routing function for voucherSettings
  * @param  $stateProvider
  */
-/* @ngInject */
+
 export default function routes($stateProvider) {
-  'ngInject';
+  "ngInject";
   $stateProvider.state("voucherSettings", {
     url: "/voucherSettings",
     template: require("./voucherSettings.tpl.html"),

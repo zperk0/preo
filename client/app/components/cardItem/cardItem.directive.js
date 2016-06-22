@@ -1,7 +1,7 @@
 import controller from './cardItem.controller'
 
 export default function cardItem($parse){
-  'ngInject';
+  "ngInject";
   return {
     restrict: 'E',
     template: require("./cardItem.tpl.html"),

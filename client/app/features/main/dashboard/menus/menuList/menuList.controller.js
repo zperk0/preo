@@ -22,9 +22,9 @@ export default class menuListController {
     this.menus = dataMenus;
   }
 
-  /* @ngInject */
+
   constructor($state,$stateParams,ErrorService) {
-    'ngInject';
+    "ngInject";
     this.$state=$state;
     this.setMenus($stateParams.venueId);
     this.ErrorService = ErrorService;

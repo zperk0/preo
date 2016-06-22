@@ -4,8 +4,8 @@ export default class dashboardController {
     return "dashboardController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
   }
 }

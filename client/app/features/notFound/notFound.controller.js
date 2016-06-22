@@ -4,8 +4,9 @@ export default class notFoundController {
     return "notFoundController";
   }
 
-  /* @ngInject */
+
   constructor() {
+    "ngInject";
 
   }
 }

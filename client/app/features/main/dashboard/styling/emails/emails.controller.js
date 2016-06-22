@@ -4,9 +4,9 @@ export default class emailsController {
     return "emailsController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
 
   }
 }

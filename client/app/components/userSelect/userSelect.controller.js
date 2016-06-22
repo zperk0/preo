@@ -11,9 +11,9 @@ export default class userSelectController {
     $mdOpenMenu(ev);
   };
 
-  /* @ngInject */
+
   constructor(UserService, $rootScope, BroadcastEvents) {
-    'ngInject';
+    "ngInject";
     this.UserService =UserService;
     this.user = UserService.user;
 

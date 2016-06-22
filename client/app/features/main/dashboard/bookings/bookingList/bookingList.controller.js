@@ -4,8 +4,8 @@ export default class bookingListController {
     return "bookingListController";
   }
 
-  /* @ngInject */
+
   constructor() {
-    'ngInject';
+    "ngInject";
   }
 }
