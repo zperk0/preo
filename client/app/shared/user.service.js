@@ -10,7 +10,10 @@ export default class UserService {
         this.user = user;
         this.$rootScope.$broadcast(this.BroadcastEvents._ON_USER_AUTH,user);
         resolve(user);
-      }, reject);
+      }, (error)=>{
+        console.log("rejecting");
+        reject(error);
+      });
     });
   }
 

@@ -1,5 +1,5 @@
 
-export default function config(UserService, $rootScope, BroadcastEvents, VenueService, $state, ErrorService, UtilsService){
+export default function config(UserService, $rootScope, BroadcastEvents, VenueService, $state, ErrorService, UtilsService, $stateParams){
   "ngInject";
   function setupChangeEvent(){
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
@@ -30,7 +30,9 @@ export default function config(UserService, $rootScope, BroadcastEvents, VenueSe
           return $state.go("notFound");
         }
 
-        if ($state.current.name.indexOf("main") === -1){
+        if ($stateParams.venueId){
+          $rootScope.$broadcast(BroadcastEvents._PREO_DO_VENUE_SELECT,$stateParams.venueId)
+        } else {
           let venueId = venues[0].id;
           $state.go("main.dashboard", {venueId});
         }

@@ -36,6 +36,21 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
 
 #webappv2{
 
+  .md-spinner-wrapper{
+    .md-left {
+      .md-half-circle{
+        border-left-color:$colorPrimary !important;
+        border-top-color:$colorPrimary !important;
+      }
+    }
+    .md-right {
+      .md-half-circle{
+        border-right-color:$colorPrimary !important;
+        border-top-color:$colorPrimary !important;
+      }
+    }
+  }
+
   .md-button {
 
     &.md-primary {

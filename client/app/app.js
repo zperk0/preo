@@ -31,6 +31,7 @@ import v2NotFound from './features/notFound';
 // Import global components
 import dialog from './components/dialog';
 import snack from './components/snack';
+import spinner from './components/spinner';
 
 
 
@@ -50,6 +51,7 @@ export default angular.module('webapp', [
   /* directives */
   dialog,
   snack,
+  spinner,
   // /* internal */
   PreodayServices,
   v2Main,
