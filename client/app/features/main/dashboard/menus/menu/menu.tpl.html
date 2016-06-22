@@ -3,15 +3,7 @@
     <div flex class='menu-name'>{{vm.menu.name}}</div>
     <md-button class="md-primary md-hue-2" translate>Show modifiers</md-button>
   </div>
-  <div class="row-reverse" flex layout="row" layout-align="start stretch">
-    <div flex="40" class='main-content-right' ng-if="vm.showingContextualMenu">
-      <contextual-menu
-              on-submit="vm.contextualSubmit"
-              type="vm.showingContextualMenu"
-              entity="vm.contextualEntity">
-      </contextual-menu>
-    </div>
-    <div flex class="menu-content" ng-class="{'flex-60':vm.showingContextualMenu}">
+    <sticky-scroll class="menu-content">
       <div class='main-content-left'
             sv-root
             sv-on-start="vm.onSectionMoveStart($item, $part, $index, $helper)"
@@ -32,6 +24,12 @@
         </menu-section-new>
         <div sv-placeholder></div>
       </div>
-    </div>
-  </div>
+      <div class='main-content-right' sticky ng-if="vm.showingContextualMenu">
+        <contextual-menu
+                on-submit="vm.contextualSubmit"
+                type="vm.showingContextualMenu"
+                entity="vm.contextualEntity">
+        </contextual-menu>
+      </div>
+  </sticky-scroll>
 </div>

@@ -36,7 +36,9 @@
   }
 
   deleteItem(item){
-    this.section.items = this.section.items.filter((i)=>item.id !== i.id);
+    if (this.section.items){
+      this.section.items = this.section.items.filter((i)=>item.id !== i.id);
+    }
   }
   showCreateItem($event){
     let newItem = {

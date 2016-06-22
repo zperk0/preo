@@ -33,6 +33,9 @@ import dialog from './components/dialog';
 import snack from './components/snack';
 import spinner from './components/spinner';
 
+//TODO convert this to ES6
+require('./components/sticky/sticky.directive.js');
+
 
 
 //Issue with ES6 Import, change this when it's fixed https://github.com/moment/moment/issues/2608
@@ -52,6 +55,7 @@ export default angular.module('webapp', [
   dialog,
   snack,
   spinner,
+  'sticky',
   // /* internal */
   PreodayServices,
   v2Main,
