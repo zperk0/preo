@@ -99,11 +99,18 @@ export default class menuItemController {
     }
   }
 
-  handleCloseContextualMenuCancel(event, entity, type){
+  restoreOriginalValues(){
     if (this.originalItem){
-      this.item = this.originalItem;
+      this.item.name = this.originalItem.name;
+      this.item.description = this.originalItem.description;
+      this.item.price = this.originalItem.price;
+      this.item.$size = this.originalItem.$size;
       this.originalItem = false;
     }
+  }
+
+  handleCloseContextualMenuCancel(event, entity, type){
+    this.restoreOriginalValues()
     this.item.$selected = false;
   }
 

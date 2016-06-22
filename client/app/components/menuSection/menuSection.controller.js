@@ -14,7 +14,8 @@
      this.section.items.push(item);
   }
 
-    selectItem(item){
+  selectItem(item){
+    if (this.section.items){
       this.section.items.forEach((i, index)=>{
         if (item && i.id === item.id){
           i.$selected = true;
@@ -23,6 +24,7 @@
         }
       });
     }
+  }
 
 
   onItemMoved($index){
@@ -58,9 +60,7 @@
       Preoday.Section.save(newData || this.section)
         .then((section)=>{
           this.Snack.show('Section created');
-          if(!newData){
-            this.menuCtrl.addNewSection(section);
-          }
+          this.menuCtrl.addNewSection(section);
           resolve();
       },()=>{
         reject();
@@ -107,6 +107,8 @@
   toggleExpanded(){
     this.menuCtrl.expandSection(this.section);
     this.$stateParams.sectionId = this.section.id;
+    this.menuCtrl.closeContextualMenu();
+    this.selectItem();
   }
 
   //sets action callbacks for <card-item-actions>
@@ -138,11 +140,15 @@
     }
   }
 
-  handleCloseContextualMenuCancel(event, entity, type){
+  restoreOriginalValues(){
     if (this.originalSection){
-      this.section = this.originalSection;
+      this.section.name = this.originalSection.name;
       this.originalSection = false;
     }
+  }
+
+  handleCloseContextualMenuCancel(event, entity, type){
+    this.restoreOriginalValues();
     this.section.$selected = false;
     this.selectItem();
     this.clearPossibleNewItem();
