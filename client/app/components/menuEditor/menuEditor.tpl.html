@@ -1,0 +1,12 @@
+<sticky-scroll class="menu-content">
+    <div class='main-content-left'>
+      <menu-section-list ng-if="vm.menu.sections" sections="vm.menu.sections"></menu-section-list>
+    </div>
+    <div class='main-content-right' sticky ng-if="vm.showingContextualMenu">
+      <contextual-menu
+              on-submit="vm.contextualSubmit"
+              type="vm.showingContextualMenu"
+              entity="vm.contextualEntity">
+      </contextual-menu>
+    </div>
+</sticky-scroll>

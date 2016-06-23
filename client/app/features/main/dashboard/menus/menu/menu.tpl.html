@@ -3,33 +3,5 @@
     <div flex class='menu-name'>{{vm.menu.name}}</div>
     <md-button class="md-primary md-hue-2" translate>Show modifiers</md-button>
   </div>
-    <sticky-scroll class="menu-content">
-      <div class='main-content-left'
-            sv-root
-            sv-on-start="vm.onSectionMoveStart($item, $part, $index, $helper)"
-            sv-on-stop="vm.onSectionMoveStop($item, $part, $index)"
-            sv-on-sort="vm.onSectionMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)"
-            sv-part="vm.menu.sections">
-        <menu-section
-          ng-repeat="section in vm.menu.sections"
-          ng-class="{dragging:section.$dragging}"
-          section="section"
-          draggable="false"
-          long-press
-          sv-element="{{section.$expanded ? undefined : true}}"
-          sv-element-disabled="section.$expanded"
-          ng-attr-data-id="{{section.id}}">
-        </menu-section>
-        <menu-section-new>
-        </menu-section-new>
-        <div sv-placeholder></div>
-      </div>
-      <div class='main-content-right' sticky ng-if="vm.showingContextualMenu">
-        <contextual-menu
-                on-submit="vm.contextualSubmit"
-                type="vm.showingContextualMenu"
-                entity="vm.contextualEntity">
-        </contextual-menu>
-      </div>
-  </sticky-scroll>
+  <menu-editor ng-if="vm.menu" menu="vm.menu"></menu-editor>
 </div>

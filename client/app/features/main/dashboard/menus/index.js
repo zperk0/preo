@@ -11,7 +11,7 @@ import routes from './menus.routes';
 import v2Menu from './menu';
 import v2MenuList from './menuList';
 
-import menuSection from '../../../../components/menuSection';
+import menuSection from '../../../../components/menuEditor';
 
 export default angular.module("menus" , [uirouter, v2Menu, v2MenuList, menuSection])
   .config(routes)

@@ -10,7 +10,7 @@ import directive from './menuSection.directive';
 import directiveNew from './menuSectionNew.directive';
 
 import menuItem from './menuItem';
-import cardItem from '../cardItem';
+import cardItem from '../../../cardItem';
 
 
 export default angular.module("menuSection" , [menuItem,cardItem])

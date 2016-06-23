@@ -1,25 +1,24 @@
-import controller from './menuSection.controller';
+import controller from './menuEditor.controller'
 
-export default function menuSection(){
-  "ngInject";
+export default function menuEditor(){
+  'ngInject';
   return {
     restrict: 'E',
-    scope: {
-      section:"=?",
-      menuId:"=?"
+    template: require("./menuEditor.tpl.html"),
+    scope:{
+      menu:"="
     },
-    template: require("./menuSection.tpl.html"),
     controller: controller.UID,
     controllerAs: "vm",
     bindToController: true,
     replace:true,
     link: (scope, el, attr, ctrl) => {
-      ctrl.menuCtrl = el.parent().controller();
 
       scope.$on('$destroy',()=>{
         ctrl.onSuccessCleanup();
         ctrl.onCancelCleanup();
       })
+
     }
-  };
+  }
 }

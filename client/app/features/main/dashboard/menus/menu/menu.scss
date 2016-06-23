@@ -1,8 +1,8 @@
 @import '../../../../../shared/styles/variables';
 
 .menu{
-
   max-height: 100%;
+
   .menu-toolbar{
     background: #EEEEEE;
     border-bottom:1px solid #CCCCCC;
@@ -17,26 +17,5 @@
     button{
       margin-right:18px;
     }
-  }
-  .menu-content{
-    overflow-y:auto;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-around;
-  }
-
-  .main-content-right{
-    padding:24px 16px;
-    display: inline-block;
-    width:50%;
-    position: absolute;
-  }
-
-  .main-content-left{
-    padding:16px 4px 24px 16px;
-    position: relative;
-    display: inline-block;
-    width: 50%;
   }
 }

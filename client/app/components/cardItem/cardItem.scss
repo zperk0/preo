@@ -22,6 +22,7 @@
 
   &:hover{
     cursor: pointer;
+    border: 1px solid #757575;
   }
 
   &.card-item-new {
@@ -31,6 +32,10 @@
     background: transparent;
     box-shadow: none;
     margin-bottom:32px;
+
+    &:hover{
+      cursor: default;
+    }
 
     md-card-actions{
       margin:0;
@@ -53,6 +58,8 @@
 
     & > md-card-title{
 
+      padding: 22px 0px 22px 22px;
+      max-height:58px;
       & > span{
         color: #424242;
       }
@@ -63,8 +70,6 @@
           opacity: 1;
         }
       }
-
-      padding: 22px 0px 16px 22px;
 
       button{
         margin-right:-16px

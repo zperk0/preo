@@ -56,23 +56,6 @@
     $event.stopPropagation();
   }
 
-  createSection(newData = false){
-    this.Spinner.show("section-create");
-    return this.$q((resolve, reject)=>{
-      Preoday.Section.save(newData || this.section)
-        .then((section)=>{
-          this.Snack.show('Section created');
-          this.menuCtrl.addNewSection(section);
-          resolve();
-      },()=>{
-        reject();
-        this.Snack.showError('Error saving section');
-      }).then(()=>{
-        this.Spinner.hide("section-create");
-      })
-    });
-  }
-
   saveSection(){
     this.Spinner.show("section-save");
     return this.$q((resolve, reject)=>{
@@ -91,23 +74,9 @@
     });
   }
 
-  deleteSection(){
-    this.Spinner.show("section-delete");
-    this.section.delete()
-      .then(()=>{
-        this.Snack.show('Section deleted');
-        console.log("deleting", this.menuCtrl.menu.sections, this.section);
-        this.menuCtrl.deleteSection(this.section);
-      }, ()=>{
-        console.log("error deleting section");
-        this.Snack.showError('Error deleting section');
-      }).then(()=>{
-        this.Spinner.hide("section-delete");
-      })
-  }
 
   toggleExpanded(){
-    this.menuCtrl.expandSection(this.section);
+    this.menuSectionListCtrl.expandSection(this.section);
     this.$stateParams.sectionId = this.section.id;
     this.menuCtrl.closeContextualMenu();
     this.selectItem();
@@ -118,20 +87,19 @@
     const that = this;
     this.cardItemActions={
       onClone: ($event) => {
-        const newSectionData = angular.copy(that.section);
-        newSectionData.position = that.menuCtrl.menu.sections.length * 1000;
-        that.createSection(newSectionData); //will create a new section with this section as data
+        that.menuSectionListCtrl.cloneSection(this.section); //will create a new section with this section as data
       },
       onEdit: ($event) => {
+        console.log("cpp")
         that.originalSection = angular.copy(this.section);
-        that.menuCtrl.selectSection(that.section);
+        that.menuSectionListCtrl.selectSection(that.section);
         that.menuCtrl.showContextualMenu(that.section,that.type, that.saveSection.bind(that));
       },
       onDelete: ($event)=>{
         that.DialogService.delete(that.LabelService.TITLE_DELETE_SECTION, that.LabelService.CONTENT_DELETE_SECTION)
           .then(()=>{
-            that.deleteSection();
-        })
+            this.menuSectionListCtrl.deleteSection(this.section)
+          })
         $event.stopPropagation();
       },
       onVisibility:(newStatus, $event)=>{
@@ -180,7 +148,7 @@
     //if it's a new section we toggle the context menu to edit this
     if (this.section && this.section.id === -1) {
       $timeout(()=>{
-        this.menuCtrl.showContextualMenu(this.section,this.type, this.createSection.bind(this));
+        this.menuSectionListCtrl.showContextualMenu(this.section,this.type, this.menuSectionListCtrl.bind(this.menuSectionListCtrl));
       })
     }
 
