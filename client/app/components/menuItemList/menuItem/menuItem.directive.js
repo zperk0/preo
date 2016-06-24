@@ -6,24 +6,16 @@ export default function menuItem(){
     restrict: 'E',
     scope: {
       item:"=?",
-      sectionController:"=?"
+      section:"=?"
     },
     template: require("./menuItem.tpl.html"),
     controller: controller.UID,
     controllerAs: "vm",
     bindToController: true,
     replace:true,
-    require:["^menuSection", "menuItem"],
+    require:["^menuItemList", "menuItem"],
     link: (scope, el, attr, ctrls) => {
-      scope.vm = ctrls[1];
-      scope.vm.menuSectionCtrl = ctrls[0]
-      scope.vm.menuCtrl = ctrls[0].menuCtrl;
-
-      scope.$on('$destroy',()=>{
-        scope.vm.onSuccessCleanup();
-        scope.vm.onCancelCleanup();
-      })
-
+      ctrls[1].menuItemListCtrl = ctrls[0]
     }
   };
 }

@@ -5,7 +5,7 @@
     <card-item-title ng-click="vm.toggleExpanded()"
                     has-visible="true"
                     show-visible="!vm.item.visible"
-                    show-dropdown="true"> <span class='name' flex> {{vm.item.name}} </span> <span class='price'> {{vm.item.price | currency:"£"}}</span></card-item-title>
+                    show-dropdown="true"> <span class='name' flex> {{vm.item.position}}-{{vm.item.name}} </span> <span class='price'> {{vm.item.price | currency:"£"}}</span></card-item-title>
     <card-item-actions is-visible="vm.item.visible"></card-item-actions>
   </card-item>
 </div>

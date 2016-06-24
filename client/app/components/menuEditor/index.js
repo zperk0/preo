@@ -10,7 +10,6 @@ import directive from './menuEditor.directive';
 
 import sectionList from './menuSectionList'
 
-
 export default angular.module("menuEditor" , [sectionList])
 
 
