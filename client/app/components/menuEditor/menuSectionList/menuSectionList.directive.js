@@ -4,7 +4,8 @@ export default function menuSectionList(){
   return {
     restrict: 'E',
     scope: {
-      sections:"="
+      sections:"=",
+      menu:"="
     },
     template: require("./menuSectionList.tpl.html"),
     controller: controller.UID,

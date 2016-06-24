@@ -67,7 +67,7 @@ export default class menuSectionListController {
         indexBefore = index;
       }
     })
-    this.sections.splice(indexBefore, 0, section);
+    this.sections.splice(indexBefore+1, 0, section);
   }
 
   createSection(newData){
@@ -89,6 +89,7 @@ export default class menuSectionListController {
   }
 
   showCreateSection($event){
+    console.log("showing craete")
     let section = {
       id:-1,
       menuId:this.menu.id,
@@ -139,5 +140,6 @@ export default class menuSectionListController {
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$q = $q;
+    this.ho="ho";
   }
 }

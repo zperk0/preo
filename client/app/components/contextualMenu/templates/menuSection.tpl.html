@@ -1,0 +1,9 @@
+<md-card-content>
+   <md-input-container class="md-block">
+      <label translate>Section name</label>
+      <input type="text" required name="entityName" ng-model="vm.entity.name" md-maxlength="100">
+      <div ng-messages="contextualForm.entityName.$error">
+        <div ng-message="required" translate>This is required.</div>
+      </div>
+  </md-input-container>
+</md-card-content>

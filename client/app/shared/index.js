@@ -2,8 +2,9 @@ import User from './user.service';
 import Venue from './venue.service';
 import Utils from './utils.service';
 import Labels from './label.service';
+import Filters from './filters';
 
-export default angular.module("PreodayServices" , [])
+export default angular.module("PreodayServices" , [Filters])
   .service(User.UID, User)
   .service(Venue.UID, Venue)
   .service(Utils.UID, Utils)

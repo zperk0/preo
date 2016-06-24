@@ -14,11 +14,6 @@ export default function menuEditor(){
     replace:true,
     link: (scope, el, attr, ctrl) => {
 
-      scope.$on('$destroy',()=>{
-        ctrl.onSuccessCleanup();
-        ctrl.onCancelCleanup();
-      })
-
     }
   }
 }

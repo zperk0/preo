@@ -5,25 +5,21 @@ export default class contextualMenuController {
 
   //restore original state if user cancels
   onCancel(){
-    this.$rootScope.$broadcast(this.BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU_CANCEL);
+    this.ContextualMenu.reject();
   }
 
   doSubmit(contextualForm){
     if (contextualForm.$valid){
-      this.onSubmit().then((response)=>{
-        this.$rootScope.$broadcast(this.BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU_SUCCESS);
-      }, (err)=>{
-        console.log("Contextual submit failed", err);
-      });
+      this.ContextualMenu.resolve(this.entity);
     }
   }
 
-
-  constructor($rootScope, BroadcastEvents) {
+  constructor($rootScope, BroadcastEvents, ContextualMenu) {
     "ngInject";
     console.log("Showing conextual menu ", this.entity, this.type);
     this.originalEntity = angular.copy(this.entity);
     this.$rootScope = $rootScope;
+    this.ContextualMenu = ContextualMenu;
     this.BroadcastEvents = BroadcastEvents;
   }
 }

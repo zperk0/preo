@@ -30,7 +30,7 @@ export default class menuItemController {
       onEdit: ($event) => {
         that.originalItem  = angular.copy(that.item);
         that.menuItemListCtrl.selectItem(that.item);
-        that.menuCtrl.showContextualMenu(that.item,that.type, that.saveItem.bind(that));
+        that.ContextualMenu.show("menuItem", that.item, this.handleSuccess.bind(this), this.handleCancel.bind(this));
       },
       onDelete: ($event)=>{
         const msg = this.section ? that.LabelService.CONTENT_DELETE_ITEM_SECTION : that.LabelService.CONTENT_DELETE_ITEM;
@@ -48,12 +48,10 @@ export default class menuItemController {
     }
   }
 
-  handleCloseContextualMenuSuccess (event, entity, type) {
-    if (this.item){
-      if(entity && type=== this.type && entity.id === this.item.id){
-        this.item = entity;
-      }
-    this.item.$selected = false;
+  handleSuccess (event, entity, type) {
+    if (this.item && entity){
+      this.item = entity;
+      this.item.$selected = false;
     }
   }
 
@@ -67,16 +65,17 @@ export default class menuItemController {
     }
   }
 
-  handleCloseContextualMenuCancel(event, entity, type){
+  handleCancel(event, entity, type){
     this.restoreOriginalValues()
     this.item.$selected = false;
   }
 
 
-  constructor($q, Snack, DialogService, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout) {
+  constructor($q, Snack, DialogService, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, ContextualMenu) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
+    this.ContextualMenu = ContextualMenu;
     this.Spinner = Spinner;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
@@ -89,8 +88,5 @@ export default class menuItemController {
         this.menuCtrl.showContextualMenu(this.item,this.type, this.createItem.bind(this));
       })
     }
-
-    this.onSuccessCleanup = $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU_SUCCESS, this.handleCloseContextualMenuSuccess.bind(this));
-    this.onCancelCleanup = $rootScope.$on(BroadcastEvents._ON_CLOSE_CONTEXTUAL_MENU_CANCEL, this.handleCloseContextualMenuCancel.bind(this));
   }
 }

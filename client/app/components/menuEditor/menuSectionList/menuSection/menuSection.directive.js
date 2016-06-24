@@ -18,10 +18,6 @@ export default function menuSection(){
       ctrls[2].menuCtrl = ctrls[0];
       ctrls[2].menuSectionListCtrl = ctrls[1];
 
-      scope.$on('$destroy',()=>{
-        ctrls[2].onSuccessCleanup();
-        ctrls[2].onCancelCleanup();
-      })
     }
   };
 }

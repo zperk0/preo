@@ -5,9 +5,10 @@ export default function menuSectionNew(){
     restrict: 'E',
     template: require("./menuSectionNew.tpl.html"),
     replace:true,
-    require:["^menuEditor"],
-    link: (scope, el, attr, ctrl) => {
-      scope.menuEditorCtrl = ctrl;
+    scope:{
+      ngClick:"&"
+    },
+    link: (scope, el, attr) => {
     }
   };
 }
