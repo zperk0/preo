@@ -1,6 +1,6 @@
 import controller from './contextualMenu.controller'
 
-export default function contextualMenu($compile){
+export default function contextualMenu($compile, $timeout, $animate){
   "ngInject";
   return {
     restrict: 'E',
@@ -15,7 +15,11 @@ export default function contextualMenu($compile){
     replace:true,
     link: (scope, el, attr, ctrl) => {
       let $templateEl = $compile(ctrl.template)(scope);
-      angular.element(el[0].querySelector("form")).prepend($templateEl);
+      let wrapper = angular.element(el[0].querySelector(".form-content"));
+      wrapper.prepend($templateEl);
+      $timeout(()=>{
+        $animate.addClass(el, 'rendered');
+      })
     }
   }
 }

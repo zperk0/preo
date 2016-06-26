@@ -4,9 +4,8 @@
       sv-part="vm.sections">
     <menu-section
       ng-repeat="section in vm.sections"
-      ng-class="{dragging:section.$dragging}"
+      ng-class="{expanded:section.$expanded}"
       section="section"
-      draggable="false"
       long-press
       sv-element="{{section.$expanded ? undefined : true}}"
       sv-element-disabled="section.$expanded"

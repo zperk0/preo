@@ -1,0 +1,13 @@
+@import '../../shared/styles/variables';
+
+.contextual-menu {
+  opacity: 0;
+  transition: all ease-in-out 0.4s;
+  transform: scale(0,0);
+  transform-origin: 50%;
+
+  &.rendered {
+    opacity: 1;
+    transform: scale(1,1);
+  }
+}

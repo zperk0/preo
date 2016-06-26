@@ -12,7 +12,7 @@ export default function menuItem(){
     controller: controller.UID,
     controllerAs: "vm",
     bindToController: true,
-    replace:true,
+    // replace:true,
     require:["^menuItemList", "menuItem"],
     link: (scope, el, attr, ctrls) => {
       ctrls[1].menuItemListCtrl = ctrls[0]
