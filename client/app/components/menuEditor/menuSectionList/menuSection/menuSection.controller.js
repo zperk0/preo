@@ -40,6 +40,7 @@
         this.originalSection = angular.copy(this.section);
         this.menuSectionListCtrl.selectSection(this.section);
         this.ContextualMenu.show(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+        this.section.$expanded = false;
       },
       onDelete: ($event)=>{
         this.DialogService.delete(this.LabelService.TITLE_DELETE_SECTION, this.LabelService.CONTENT_DELETE_SECTION)

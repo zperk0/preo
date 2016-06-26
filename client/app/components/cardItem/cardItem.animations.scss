@@ -1,0 +1,55 @@
+// COLORS
+@import '../../shared/styles/variables.scss';
+
+@mixin from(){
+  transform:translate(0,-100%);
+}
+@mixin to(){
+  transform:translate(0,0);
+}
+
+.card-item{
+
+    & > .card-item-actions > md-card-actions{
+      transition:transform 0.5s ease-in-out;
+
+      button {
+        transition:transform 0.3s linear;
+
+        &.ng-hide-add, &.ng-hide-remove {
+          transition: none !important;
+        }
+
+        & + button{
+          transition:transform 0.3s linear;
+          & + button{
+            transition:transform 0.35s linear;
+            & + button{
+              transition:transform 0.4s linear;
+              & + button{
+                transition:transform 0.45s linear;
+              }
+            }
+          }
+
+        }
+
+        &.ng-enter, &.ng-leave.ng-leave-active {
+          @include from();
+
+        }
+        &.ng-leave, &.ng-enter.ng-enter-active {
+          @include to();
+        }
+      }
+
+      &.ng-enter, &.ng-leave.ng-leave-active {
+        @include from();
+      }
+      &.ng-leave, &.ng-enter.ng-enter-active {
+        @include to();
+      }
+
+    }
+
+}

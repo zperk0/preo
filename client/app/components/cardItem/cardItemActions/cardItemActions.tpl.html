@@ -1,30 +1,30 @@
 <div class='card-item-actions'>
-  <md-card-actions ng-if="vm.showCardActions" class="hidden-card-actions" layout="row" layout-align="end center" ng-click="vm.toggleCardActions($event)" ng-mouseleave="onMouseLeave($event)">
-    <md-button ng-if="vm.cardItemActions.onVisibility" ng-show="isVisible" class="md-icon-button" ng-click="vm.cardItemActions.onVisibility(false, $event)">
+  <md-card-actions ng-animate-children ng-if="vm.showCardActions" class="hidden-card-actions" layout="row" layout-align="end center" ng-click="vm.toggleCardActions($event)" ng-mouseleave="onMouseLeave($event)">
+    <md-button ng-if="vm.showCardActions && vm.cardItemActions.onVisibility" ng-show="isVisible" class="md-icon-button" ng-click="vm.cardItemActions.onVisibility(false, $event)">
       <icon>visibility_off</icon> <!-- visibility_off -->
       <md-tooltip md-direction="bottom">
         Hide from menu
       </md-tooltip>
     </md-button>
-    <md-button ng-if="vm.cardItemActions.onVisibility" ng-show="!isVisible" class="md-icon-button" ng-click="vm.cardItemActions.onVisibility(true, $event)">
+    <md-button ng-if="vm.showCardActions && vm.cardItemActions.onVisibility" ng-show="!isVisible" class="md-icon-button" ng-click="vm.cardItemActions.onVisibility(true, $event)">
       <icon>visibility</icon> <!-- visibility_off -->
       <md-tooltip md-direction="bottom">
         Show on menu
       </md-tooltip>
     </md-button>
-    <md-button ng-if="vm.cardItemActions.onClone" class="md-icon-button" ng-click="vm.cardItemActions.onClone($event)">
+    <md-button ng-if="vm.showCardActions && vm.cardItemActions.onClone" class="md-icon-button" ng-click="vm.cardItemActions.onClone($event)">
       <icon>content_copy</icon>
       <md-tooltip md-direction="bottom">
         Duplicate
       </md-tooltip>
     </md-button>
-    <md-button ng-if="vm.cardItemActions.onDelete" class="md-icon-button" ng-click="vm.cardItemActions.onDelete($event)">
+    <md-button ng-if="vm.showCardActions && vm.cardItemActions.onDelete" class="md-icon-button" ng-click="vm.cardItemActions.onDelete($event)">
       <icon>delete</icon>
       <md-tooltip md-direction="bottom">
         Delete
       </md-tooltip>
     </md-button>
-     <md-button ng-if="vm.cardItemActions.onEdit" class="md-icon-button" ng-click="vm.cardItemActions.onEdit($event)">
+     <md-button ng-if="vm.showCardActions && vm.cardItemActions.onEdit" class="md-icon-button" ng-click="vm.cardItemActions.onEdit($event)">
       <icon>edit</icon>
       <md-tooltip md-direction="bottom">
         Edit

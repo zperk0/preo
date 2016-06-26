@@ -1,9 +1,12 @@
+
 // COLORS
 @import '../../shared/styles/variables.scss';
+@import './cardItem.animations.scss';
 
 .card-item{
   border:1px solid #E0E0E0;
   position: relative;
+  overflow: hidden;
 
   &:not(.expanded){
     max-height: 60px;
@@ -21,6 +24,7 @@
   }
 
   &:hover{
+    transition:border 0.3s linear;
     cursor: pointer;
     border: 1px solid #757575;
   }
@@ -32,6 +36,7 @@
     background: transparent;
     box-shadow: none;
     margin-bottom:32px;
+    overflow: visible;
 
     &:hover{
       cursor: default;
@@ -66,7 +71,7 @@
 
 
       &:hover{
-        .item-actions, .arrow-icon{
+        .arrow-icon{
           opacity: 1;
         }
       }
@@ -75,7 +80,7 @@
         margin-right:-16px
       }
 
-      .arrow-icon, .item-actions{
+      .arrow-icon{
         opacity: 0;
         @include transition();
       }
@@ -102,9 +107,6 @@
     }
     & > .card-item-actions > md-card-actions{
 
-      &:hover{
-        cursor: pointer;
-      }
       position: absolute;
       top: 0;
       width: 100%;
@@ -113,11 +115,16 @@
       background: rgba(255,255,255,0.9);
       z-index:21; //1 more than material FAB buttons
     }
-  // }
+
+
+
 
   &.selected{
     background-color:#E1F5FE;
     @include materialRaisedShadow();
+    .item-actions{
+      visibility: hidden;
+    }
   }
 
   &.hidden{
