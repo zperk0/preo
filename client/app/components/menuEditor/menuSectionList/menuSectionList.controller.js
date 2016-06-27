@@ -75,13 +75,11 @@ export default class menuSectionListController {
     return this.$q((resolve, reject)=>{
       Preoday.Section.save(newData)
         .then((section)=>{
-          // this.Snack.show('Section created');
           this.clearPossibleNewSection();
           this.addSectionInPosition(section);
           resolve();
       },()=>{
         reject();
-        // this.Snack.showError('Error saving section');
       }).then(()=>{
         this.Spinner.hide("section-create");
       })
@@ -89,7 +87,17 @@ export default class menuSectionListController {
   }
 
   showCreateSection($event){
-    console.log("showing craete")
+    let isCreating = false;
+    this.sections.forEach((s, index)=>{
+      if (s.id === -1){
+        isCreating = true;
+      }
+    });
+    if (isCreating){
+      console.log("Not showing section new, already showing")
+      return;
+    }
+    console.log("Showing section new")
     let section = {
       id:-1,
       menuId:this.menu.id,

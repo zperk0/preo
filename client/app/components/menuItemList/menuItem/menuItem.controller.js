@@ -7,14 +7,9 @@ export default class menuItemController {
     this.Spinner.show("item-save");
     return this.$q((resolve, reject)=>{
       this.item.update()
+        .then(resolve,reject)
         .then(()=>{
-          this.Snack.show('Item updated');
-          resolve();
-      },()=>{
-        reject();
-        this.Snack.showError('Error saving item');
-      }).then(()=>{
-        this.Spinner.hide("item-save");
+          this.Spinner.hide("item-save");
       })
     });
   }
@@ -30,13 +25,13 @@ export default class menuItemController {
       onEdit: ($event) => {
         that.originalItem  = angular.copy(that.item);
         that.menuItemListCtrl.selectItem(that.item);
-        that.ContextualMenu.show("menuItem", that.item, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+        that.ContextualMenu.show(that.type, that.item, that.handleSuccess.bind(that), that.handleCancel.bind(that));
       },
       onDelete: ($event)=>{
-        const msg = this.section ? that.LabelService.CONTENT_DELETE_ITEM_SECTION : that.LabelService.CONTENT_DELETE_ITEM;
+        const msg = that.section ? that.LabelService.CONTENT_DELETE_ITEM_SECTION : that.LabelService.CONTENT_DELETE_ITEM;
         that.DialogService.delete(that.LabelService.TITLE_DELETE_ITEM, msg)
           .then(()=>{
-            that.menuItemListCtrl.deleteItem(this.item);
+            that.menuItemListCtrl.deleteItem(that.item);
           })
         $event.stopPropagation();
       },
@@ -48,10 +43,25 @@ export default class menuItemController {
     }
   }
 
-  handleSuccess (event, entity, type) {
+    handleSuccess(entity){
     if (this.item && entity){
       this.item = entity;
-      this.item.$selected = false;
+
+      if (this.item.id === -1){
+        this.menuItemListCtrl.createItem(this.item)
+          .then(()=>{
+            this.ContextualMenu.hide();
+            this.Snack.show('Item created');
+          }, ()=>{
+            this.Snack.showError('Error saving item');
+          })
+
+      } else {
+        this.saveItem().then(()=>{
+          this.ContextualMenu.hide();
+          this.item.$selected = false;
+        })
+      }
     }
   }
 
@@ -85,7 +95,7 @@ export default class menuItemController {
     //if it's a new item we toggle the context menu to edit this
     if (this.item && this.item.id === -1) {
       $timeout(()=>{
-        this.menuCtrl.showContextualMenu(this.item,this.type, this.createItem.bind(this));
+        this.ContextualMenu.show(this.type, this.item, this.handleSuccess.bind(this), this.handleCancel.bind(this));
       })
     }
   }

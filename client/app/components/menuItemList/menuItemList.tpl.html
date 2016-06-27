@@ -1,6 +1,6 @@
 <div class='menu-item-list'>
   <div  class='repeat-holder'
-          sv-root
+          sv-root='item'
           sv-on-start="vm.onItemMoveStart($item, $part, $index, $helper)"
           sv-on-stop="vm.onItemMoveStop($item, $part, $index)"
           sv-on-sort="vm.onItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)"
@@ -13,6 +13,6 @@
              sv-element="item"
              section="vm.section"
        ></menu-item>
-
-    </div>
+  </div>
+  <menu-item-new ng-if="vm.section.$expanded" ng-click="vm.showCreateItem($event)"></menu-item-new>
 </div>

@@ -59,13 +59,11 @@ export default class menuItemListController {
           item.menuId = newItem.menuId;
           item.sectionId = newItem.sectionId;
           item.position = newItem.position;
-
-          this.Snack.show('Item created');
           this.addItemInPosition(item);
+          this.clearPossibleNewItem();
           resolve();
       },(err)=>{
         reject(err);
-        this.Snack.showError('Error saving item');
       }).then(()=>{
         this.Spinner.hide("item-create");
       })
@@ -119,6 +117,7 @@ export default class menuItemListController {
   }
 
   showCreateItem($event){
+    console.log("creating item")
     let newItem = {
         id:-1,
         menuId:this.section.menuId,
@@ -134,9 +133,10 @@ export default class menuItemListController {
     $event.stopPropagation();
   }
 
-  constructor($q, Snack, Spinner) {
+  constructor($q, Snack, Spinner, $stateParams) {
     'ngInject';
     this.Snack = Snack;
+    this.$stateParams = $stateParams;
     this.Spinner = Spinner;
     this.$q = $q;
 

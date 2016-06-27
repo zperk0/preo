@@ -33,10 +33,14 @@
     const that = this;
     this.cardItemActions={
       onClone: ($event) => {
-        this.menuSectionListCtrl.cloneSection(this.section); //will create a new section with this section as data
+         //will create a new section with this section as data
+        this.menuSectionListCtrl.cloneSection(this.section).then(()=>{
+            this.Snack.show('Section duplicated');
+          }, ()=>{
+            this.Snack.showError('Error duplicating section');
+          })
       },
       onEdit: ($event) => {
-        console.log("cpp")
         this.originalSection = angular.copy(this.section);
         this.menuSectionListCtrl.selectSection(this.section);
         this.ContextualMenu.show(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
@@ -75,11 +79,22 @@
   handleSuccess(entity){
     if (this.section && entity){
       this.section = entity;
-      console.log("on success", this.section, entity)
-      this.saveSection().then(()=>{
-        this.ContextualMenu.hide();
-        this.section.$selected = false;
-      })
+
+      if (this.section.id === -1){
+        this.menuSectionListCtrl.createSection(this.section)
+          .then(()=>{
+            this.ContextualMenu.hide();
+            this.Snack.show('Section created');
+          }, ()=>{
+            this.Snack.showError('Error saving section');
+          })
+
+      } else {
+        this.saveSection().then(()=>{
+          this.ContextualMenu.hide();
+          this.section.$selected = false;
+        })
+      }
     }
   }
 

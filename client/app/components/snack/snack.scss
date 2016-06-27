@@ -9,9 +9,15 @@ md-toast{
   -o-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
 
-  &.error-snack{
-    md-toast-content{
-      background: red;
+  &.success{
+    .md-toast-content{
+      background-color: #259B24;
+    }
+  }
+
+  &.error{
+    .md-toast-content{
+      background-color: #E62A10;
     }
   }
 }
