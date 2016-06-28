@@ -94,10 +94,15 @@ export default class menuItemListController {
 
   onItemMoved($index){
     //update all items
+    this.Spinner.show("item-move");
+    const promises = [];
     this.items.forEach((i, index)=>{
       i.position=index*1000;
-      i.update();
+      promises.push(i.update());
     });
+    this.$q.all(promises).then(()=>{
+      this.Spinner.hide("item-move");
+    })
   }
 
   deleteItem(item){

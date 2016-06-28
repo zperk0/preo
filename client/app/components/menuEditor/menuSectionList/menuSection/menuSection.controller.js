@@ -3,6 +3,23 @@
     return "menuSectionController";
   }
 
+  onNewItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo) {
+    // move new item always to the beggining of new section
+    const originalPos = $item.position;
+    $item.position = 0;
+    if ($item){
+      this.section.moveItem($item).then((newItem)=>{
+        this.Snack.show("Item moved to section")
+        this.section.items.splice(0,0,newItem)
+      }, ()=>{
+        //restore item to original position
+        $item.position = originalPos;
+        $partFrom.splice($indexFrom,0,$item);
+        this.Snack.showError("Error moving item to section")
+      })
+    }
+  }
+
   saveSection(){
     this.Spinner.show("section-save");
     return this.$q((resolve, reject)=>{
@@ -112,6 +129,7 @@
     this.setCardActions();
     this.menuItemType = 'menuItem';
     this.allowedDropTypes = [this.menuItemType];
+    this.newItems = [];
 
     //if it's a new section we toggle the context menu to edit this
     if (this.section && this.section.id === -1) {

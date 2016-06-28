@@ -1,6 +1,40 @@
 // COLORS
 @import 'variables.scss';
 
+.sv-sorting-in-progress{
+
+  &.sv-sorting-item{
+
+    .sv-dropzone-item{
+      display: block;
+      .sv-placeholder{
+        border: 1px solid #757575;
+      }
+    }
+
+  }
+}
+
+.sv-dropzone{
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+
+  .sv-placeholder{
+    background: transparent;
+    margin:0 !important;
+    border:1px solid transparent;
+    transition:border 0.5s linear;
+    transition-delay:0.5s;
+    border-radius: 2px;
+    height:100%;
+    min-height: 0;
+  }
+}
+
 //destination before drop
 .sv-placeholder{
   background-color: #D1D1D1;

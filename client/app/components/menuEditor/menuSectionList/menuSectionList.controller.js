@@ -33,11 +33,17 @@ export default class menuSectionListController {
 
   onSectionMoved($item, $partFrom, $partTo, $indexFrom, $indexTo){
     //update all sections
+    this.Spinner.show("section-move");
     console.log("on section moved, updating");
+    const promises = [];
     this.sections.forEach((s, index)=>{
       s.position=index*1000;
-      s.update();
+      promises.push(s.update());
+
     });
+    this.$q.all(promises).then(()=>{
+      this.Spinner.hide("section-move");
+    })
   }
 
   clearPossibleNewSection(){
@@ -148,6 +154,5 @@ export default class menuSectionListController {
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$q = $q;
-    this.ho="ho";
   }
 }

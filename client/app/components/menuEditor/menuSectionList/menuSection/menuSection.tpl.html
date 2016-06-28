@@ -5,8 +5,14 @@
               >
     <card-item-title ng-click="vm.toggleExpanded()"
                     has-visible="true"
+                    sv-root="item"
                     show-visible="!vm.section.visible"
-                    show-dropdown="true">{{vm.section.name}}</card-item-title>
+                    show-dropdown="true">
+                      <div class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-sort="vm.onNewItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)">
+                        <div sv-placeholder></div>
+                      </div>
+                      {{vm.section.name}}
+                    </span></card-item-title>
     <menu-item-list ng-if="vm.section.$expanded" items="vm.section.items" section="vm.section"></menu-item-list>
     <card-item-actions is-visible="vm.section.visible"></card-item-actions>
   </card-item>
