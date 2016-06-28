@@ -9,9 +9,11 @@
 
   &.expanded{
 
-    .hidden-card-actions{
-      align-items: flex-start;
-      padding-top: 15px;
+    &> .card-item-actions {
+      .hidden-card-actions{
+        align-items: flex-start;
+        padding-top: 15px;
+      }
     }
   }
 
