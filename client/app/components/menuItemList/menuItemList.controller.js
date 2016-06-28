@@ -122,6 +122,16 @@ export default class menuItemListController {
   }
 
   showCreateItem($event){
+    let isCreating = false;
+    this.items.forEach((s, index)=>{
+      if (s.id === -1){
+        isCreating = true;
+      }
+    });
+    if (isCreating){
+      console.log("Not showing section new, already showing")
+      return;
+    }
     console.log("creating item")
     let newItem = {
         id:-1,
@@ -132,7 +142,7 @@ export default class menuItemListController {
         $size:0,
         visible:1,
         venueId:this.$stateParams.venueId,
-        position:(this.items[this.items.length-1]).position + 1000
+        position: this.items.length ? (this.items[this.items.length-1]).position + 1000 : 0
     };
     this.items.push(newItem);
     $event.stopPropagation();

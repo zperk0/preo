@@ -78,6 +78,9 @@ export default class menuItemController {
   handleCancel(event, entity, type){
     this.restoreOriginalValues()
     this.item.$selected = false;
+    if (this.item.id === -1){
+      this.menuItemListCtrl.clearPossibleNewItem();
+    }
   }
 
 
