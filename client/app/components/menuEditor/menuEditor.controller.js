@@ -5,6 +5,6 @@ export default class menuEditorController {
 
   /* @ngInject */
   constructor() {
-    'ngInject';
+    "ngInject";
   }
 }

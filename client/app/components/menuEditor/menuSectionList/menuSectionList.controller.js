@@ -151,6 +151,7 @@ export default class menuSectionListController {
 
   /* @ngInject */
   constructor($q, Spinner, Snack) {
+    "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$q = $q;

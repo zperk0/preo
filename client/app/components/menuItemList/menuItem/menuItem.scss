@@ -2,15 +2,10 @@ $heightMenuItemCard:48px;
 
 .menu-item {
   margin: 0px 22px 8px;
+
   .card-item {
     margin:0;
-
-    &:not(.expanded){
-      max-height: 48px;
-      .hidden-card-actions{
-        padding-top:0;
-      }
-    }
+    max-height: 48px;
 
     &.expanded{
       .hidden-card-actions{
@@ -18,7 +13,7 @@ $heightMenuItemCard:48px;
         padding-top: 6px;
       }
     }
-    md-card-title{
+    .card-title{
       max-height: $heightMenuItemCard;
       min-height: auto;
 

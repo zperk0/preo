@@ -149,7 +149,7 @@ export default class menuItemListController {
   }
 
   constructor($q, Snack, Spinner, $stateParams) {
-    'ngInject';
+    "ngInject";
     this.Snack = Snack;
     this.$stateParams = $stateParams;
     this.Spinner = Spinner;

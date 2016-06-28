@@ -1,7 +1,7 @@
 import controller from './menuEditor.controller'
 
 export default function menuEditor(){
-  'ngInject';
+  "ngInject";
   return {
     restrict: 'E',
     template: require("./menuEditor.tpl.html"),

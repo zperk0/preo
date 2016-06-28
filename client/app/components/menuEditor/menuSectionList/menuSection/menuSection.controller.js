@@ -8,6 +8,7 @@
     const originalPos = $item.position;
     $item.position = 0;
     if ($item){
+      this.Spinner.show("moving-section-item");
       this.section.moveItem($item).then((newItem)=>{
         this.Snack.show("Item moved to section")
         this.section.items.splice(0,0,newItem)
@@ -17,6 +18,9 @@
         $partFrom.splice($indexFrom,0,$item);
         this.Snack.showError("Error moving item to section")
       })
+      .then(()=>{
+        this.Spinner.hide("moving-section-item");
+      });
     }
   }
 

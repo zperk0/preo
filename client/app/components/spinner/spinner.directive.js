@@ -1,5 +1,5 @@
 export default function spinner(Spinner){
-  'ngInject';
+  "ngInject";
   return {
     restrict: 'E',
     scope: {

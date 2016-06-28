@@ -52,7 +52,7 @@ export default class contextualMenuService {
   }
 
   constructor($compile, $rootScope, $q) {
-    'ngInject';
+    "ngInject";
     this.$compile = $compile;
     this.$rootScope = $rootScope;
     this.$q = $q;

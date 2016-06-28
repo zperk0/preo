@@ -1,4 +1,4 @@
-<md-card-title layout="row" layout-align="start center" ng-class="{invisible:hasVisible && showVisible()}">
+<div class='card-title' layout="row" layout-align="start center" ng-class="{invisible:hasVisible && showVisible()}">
     <div flex>
       <icon class='visibility' ng-if="hasVisible && showVisible()">visibility_off</icon>
       <span ng-transclude flex></span>
@@ -7,4 +7,4 @@
     <md-button class="md-icon-button item-actions" ng-if="vm.cardItemActions" ng-mouseenter="vm.toggleCardActions($event)">
       <icon>more_horiz</icon>
     </md-button>
-</md-card-title>
+</div>

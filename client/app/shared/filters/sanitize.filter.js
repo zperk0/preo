@@ -1,5 +1,5 @@
 export default function sanitize($sce){
-  'ngInject';
+  "ngInject";
 
  return function(val) {
     return $sce.trustAsHtml(val);

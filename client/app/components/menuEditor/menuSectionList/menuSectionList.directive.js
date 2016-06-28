@@ -1,6 +1,7 @@
 import controller from './menuSectionList.controller'
 
 export default function menuSectionList(){
+  "ngInject";
   return {
     restrict: 'E',
     scope: {

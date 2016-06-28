@@ -6,7 +6,6 @@
       ng-repeat="section in vm.sections"
       ng-class="{expanded:section.$expanded}"
       section="section"
-      long-press
       sv-element="{{section.$expanded ? undefined : true}}"
       sv-element-disabled="section.$expanded"
       ng-attr-data-id="{{section.id}}">
