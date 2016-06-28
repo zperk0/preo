@@ -23,6 +23,7 @@
     "angular-sortable-view": "git://github.com/caiocpricci2/angular-sortable-view.git",
     "angular-translate": "^2.11.0",
     "angular-ui-router": "^0.2.15",
+    "croppie": "^2.2.0",
     "jscore": "git+ssh://git@bitbucket.org/preoday/javascript-core.git",
     "moment": "^2.12.0"
   },

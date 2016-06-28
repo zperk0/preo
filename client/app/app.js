@@ -3,8 +3,10 @@
 require('jscore/preoday/preoday.min.js');
 
 import 'angular-material/angular-material.min.css';
+import 'croppie/croppie.css';
 import './app.scss';
 
+// node_modules and bower_components are pre-loaded by webpack
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import angularTranslate from 'angular-translate';
@@ -13,6 +15,9 @@ import angularAria from 'angular-aria';
 import angularMaterial from 'angular-material';
 import angularMessages from 'angular-messages';
 import angularSortableView from 'angular-sortable-view';
+import croppie from 'croppie';
+
+
 
 // Import base modules
 import config from './app.config';
@@ -32,6 +37,7 @@ import v2NotFound from './features/notFound';
 import dialog from './components/dialog';
 import snack from './components/snack';
 import spinner from './components/spinner';
+import croppic from './components/croppic';
 
 //TODO convert this to ES6
 require('./components/sticky/sticky.directive.js');
@@ -56,6 +62,7 @@ export default angular.module('webapp', [
   snack,
   spinner,
   'sticky',
+  croppic,
   // /* internal */
   PreodayServices,
   v2Main,

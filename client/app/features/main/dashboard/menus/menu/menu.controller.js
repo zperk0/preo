@@ -29,7 +29,9 @@ export default class menuController {
     if (dataMenu && this.initialExpandedSection){
       dataMenu.sections.forEach((s)=>{
         if (s.id === this.initialExpandedSection){
-          s.$expanded = true;
+          this.$timeout(()=>{
+            s.$expanded = true;
+          },1000)
         }
       })
     }

@@ -153,7 +153,7 @@ module.exports = function(ENV, options) {
       //   // other ng-annotate options here
       // }),
       new CopyWebpackPlugin([
-        { from: 'client/assets' },
+        { from: 'client/assets'}
       ]),
       new webpack.ResolverPlugin(
         new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(

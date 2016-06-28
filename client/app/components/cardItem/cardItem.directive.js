@@ -1,6 +1,6 @@
 import controller from './cardItem.controller'
 
-export default function cardItem($parse){
+export default function cardItem(){
   "ngInject";
   return {
     restrict: 'E',

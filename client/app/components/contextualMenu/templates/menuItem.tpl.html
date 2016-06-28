@@ -30,7 +30,25 @@
     </md-card-content>
     </md-tab>
     <md-tab label="Image">
-        TODO image content
+      <div class='image-holder'>
+        <croppic ng-if="vm.inputImage"
+                  src="vm.inputImage"
+                  ng-model='vm.outputImage'
+                  update='vm.onUpdate'
+                  boundry="{w: 800, h: 600}"
+                  viewport="{w: 600, h:400}"
+                  mousezoom="false"
+                  zoom="false"
+        ></croppic>
+      <label class="import-file" for='imagefile'>
+        <input type="file" id="imagefile" name='imagefile' custom-on-change="vm.fileChange($event)">
+        <md-button class="md-fab md-mini md-primary" aria-label="Add Section">
+          <icon>add</icon>
+        </md-button>
+        <div class='target'></div>
+      </label>
+    </div>
+
     </md-tab>
     <md-tab label="Labels">
       TODO labels content
