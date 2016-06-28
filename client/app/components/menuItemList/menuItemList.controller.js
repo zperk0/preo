@@ -101,6 +101,10 @@ export default class menuItemListController {
       promises.push(i.update());
     });
     this.$q.all(promises).then(()=>{
+      this.Snack.show('Item moved');
+    }, ()=>{
+      this.Snack.showError('Error moving item');
+    }).then(()=>{
       this.Spinner.hide("item-move");
     })
   }

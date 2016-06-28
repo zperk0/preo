@@ -42,6 +42,10 @@ export default class menuSectionListController {
 
     });
     this.$q.all(promises).then(()=>{
+      this.Snack.show('Section moved');
+    }, ()=>{
+      this.Snack.showError('Error moving section');
+    }).then(()=>{
       this.Spinner.hide("section-move");
     })
   }
