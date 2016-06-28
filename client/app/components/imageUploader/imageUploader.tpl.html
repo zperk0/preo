@@ -1,0 +1,23 @@
+<div class='image-uploader'>
+  <div class='image-wrapper placeholder' ng-if="!vm.ngModel.$viewValue">
+  </div>
+  <div class='image-wrapper' ng-if="vm.ngModel.$viewValue">
+   <img ng-src='{{vm.ngModel.$viewValue}}'>
+  </div>
+  <div class='upload-specs'>
+    <icon>info</icon>
+    <span class='text' translate>Upload specs</span>
+      <md-tooltip md-direction="bottom">
+        Dimensions: 590 x 333px <br/>
+        Max file size: 5mb <br/>
+        File type: jpg, png
+      </md-tooltip>
+  </div>
+  <label class="import-file" for='imagefile'>
+    <input type="file" id="imagefile" name='imagefile' custom-on-change="vm.fileChange($event)">
+    <md-button class="md-fab md-mini md-primary" aria-label="Add Section">
+      <icon>add</icon>
+    </md-button>
+    <div class='target'></div>
+  </label>
+</div>

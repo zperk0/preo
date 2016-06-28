@@ -37,7 +37,7 @@ import v2NotFound from './features/notFound';
 import dialog from './components/dialog';
 import snack from './components/snack';
 import spinner from './components/spinner';
-import croppic from './components/croppic';
+import imageUploader from './components/imageUploader';
 
 //TODO convert this to ES6
 require('./components/sticky/sticky.directive.js');
@@ -62,7 +62,7 @@ export default angular.module('webapp', [
   snack,
   spinner,
   'sticky',
-  croppic,
+  imageUploader,
   // /* internal */
   PreodayServices,
   v2Main,

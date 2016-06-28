@@ -45,7 +45,6 @@
 
   toggleExpanded(){
     this.menuSectionListCtrl.expandSection(this.section);
-    this.$stateParams.sectionId = this.section.id;
     this.ContextualMenu.close();
   }
 
@@ -134,7 +133,12 @@
     this.menuItemType = 'menuItem';
     this.allowedDropTypes = [this.menuItemType];
     this.newItems = [];
-
+    console.log("ho");
+    if (this.section && $stateParams.sectionId && this.section.id === Number($stateParams.sectionId)){
+      $timeout(()=>{
+        this.section.$expanded=true;
+      })
+    }
     //if it's a new section we toggle the context menu to edit this
     if (this.section && this.section.id === -1) {
         console.log("here ho");

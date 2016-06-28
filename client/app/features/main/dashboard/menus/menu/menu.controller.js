@@ -26,15 +26,6 @@ export default class menuController {
   }
 
   handleFinishLoading(dataMenu){
-    if (dataMenu && this.initialExpandedSection){
-      dataMenu.sections.forEach((s)=>{
-        if (s.id === this.initialExpandedSection){
-          this.$timeout(()=>{
-            s.$expanded = true;
-          },1000)
-        }
-      })
-    }
     this.$timeout(()=>{
       this.menu = dataMenu;
       console.log("this menu", this.menu)
@@ -45,11 +36,10 @@ export default class menuController {
 
   constructor($stateParams, $timeout, $rootScope, Spinner) {
     "ngInject";
-    console.log("state", $stateParams.menuId);
+    console.log("state", $stateParams.menuId, this.menu && this.menu.id);
     this.Spinner = Spinner;
     this.showSpinner();
     this.setMenu($stateParams.menuId);
-    this.initialExpandedSection = $stateParams.sectionId && Number($stateParams.sectionId);
     this.$timeout = $timeout;
     this.showingContextualMenu = false;
     //types for drag and drop list

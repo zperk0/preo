@@ -14,16 +14,6 @@ export default class contextualMenuController {
     }
   }
 
-  fileChange(event){
-    var reader = new FileReader();
-    reader.onload = (evt) => {
-      this.$timeout(()=>{
-        this.inputImage = evt.target.result;
-      });
-    };
-    reader.readAsDataURL(event.currentTarget.files[0]);
-  }
-
   constructor($rootScope, BroadcastEvents, ContextualMenu, $timeout) {
     "ngInject";
     console.log("Showing conextual menu ", this.entity, this.type);

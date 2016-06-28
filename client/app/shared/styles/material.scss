@@ -36,6 +36,16 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
 
 #webappv2{
 
+
+  //Allow multiline tooltip
+  md-tooltip ._md-content {
+    height: auto;
+  }
+  md-tooltip .md-content {
+    height: auto;
+  }
+
+
   .md-spinner-wrapper{
     .md-left {
       .md-half-circle{

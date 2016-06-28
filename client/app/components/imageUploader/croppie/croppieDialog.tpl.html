@@ -1,0 +1,14 @@
+<md-dialog class='croppie-dialog' aria-label="Image Selector"  ng-cloak>
+    <md-dialog-content>
+     <croppie ng-if="vm.src"
+              src="vm.src"
+              update='vm.onUpdate(img)'
+              boundry="{w: 700, h:500}",
+              viewport="{w: 600, h:400}"
+     ></croppie>
+    </md-dialog-content>
+    <md-dialog-actions>
+      <md-button ng-click="vm.cancel()" class="md-primary" translate>Cancel</md-button>
+      <md-button ng-click="vm.confirm()" class="md-primary" translate>Save</md-button>
+    </md-dialog-actions>
+</md-dialog>

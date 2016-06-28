@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require("path");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = function(ENV) {
@@ -41,6 +42,10 @@ module.exports = function(ENV) {
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
       // Only emit files when there are no errors
       new webpack.NoErrorsPlugin(),
+      new CopyWebpackPlugin([
+        { from: 'client/index.php'},
+        { from: 'client/.htaccess'}
+      ]),
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
       // Dedupe modules in the output
