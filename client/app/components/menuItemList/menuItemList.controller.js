@@ -50,22 +50,46 @@ export default class menuItemListController {
     });
   }
 
+  saveItemImage(){
+
+  }
+
   createItem(newItem){
+    console.log("creating new", newItem.id, newItem.$image !== undefined)
     return this.$q((resolve, reject)=>{
       this.Spinner.show("item-create");
+      //save item
       Preoday.Item.save(newItem)
         .then((item)=>{
           //restore needed items here
           item.menuId = newItem.menuId;
           item.sectionId = newItem.sectionId;
           item.position = newItem.position;
+          newItem.id = item.id;
           this.addItemInPosition(item);
           this.clearPossibleNewItem();
-          resolve();
-      },(err)=>{
-        reject(err);
-      }).then(()=>{
+      },() => {
+        this.Snack.showError('Error saving item');
+        throw "failed to save item";
+      })
+      .then(()=>{
+        if (newItem.$image){
+          return Preoday.ItemImage.saveToCdn(newItem.$image, newItem.id, this.$stateParams.venueId)
+        }
+      })
+      .then((itemImage)=>{
+        if (itemImage) {
+          return Preoday.ItemImage.save(itemImage);
+        }
+      })
+      .then(()=>{
+        resolve();
         this.Spinner.hide("item-create");
+      })
+      .catch(()=>{
+        console.log("on catch");
+        this.Spinner.hide("item-create");
+        reject();
       })
     });
   }
