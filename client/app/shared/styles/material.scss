@@ -36,6 +36,23 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
 
 #webappv2{
 
+  md-checkbox{
+    .md-ink-ripple{
+      color:$colorPrimary;
+    }
+    .md-icon{
+
+      &:after{
+        border-color:white;
+      }
+    }
+    &.md-checked{
+      .md-icon{
+        background-color: $colorPrimary;
+      }
+    }
+  }
+
 
   //Allow multiline tooltip
   md-tooltip ._md-content {

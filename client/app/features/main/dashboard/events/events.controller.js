@@ -7,6 +7,12 @@ export default class eventsController {
 
   constructor() {
     "ngInject";
-
+    this.tags = [{
+      menuItemId:1,
+      code:'cont'
+    }, {
+      menuItemId:1,
+      code:'mil'
+    }];
   }
 }

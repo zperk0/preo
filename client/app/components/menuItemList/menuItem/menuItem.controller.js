@@ -32,6 +32,9 @@ export default class menuItemController {
           }
         })
         .then(()=>{
+            return that.item.updateTags();
+        })
+        .then(()=>{
           console.log("in then");
           resolve();
           that.Spinner.hide("item-save");

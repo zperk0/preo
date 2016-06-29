@@ -55,6 +55,6 @@ html{
   @import './shared/styles/responsive/1024';
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1280px) and (max-width: 1600px) {
   @import './shared/styles/responsive/1280-1600';
 }

@@ -38,6 +38,7 @@ import dialog from './components/dialog';
 import snack from './components/snack';
 import spinner from './components/spinner';
 import imageUploader from './components/imageUploader';
+import tagList from './components/tagList';
 
 //TODO convert this to ES6
 require('./components/sticky/sticky.directive.js');
@@ -63,6 +64,7 @@ export default angular.module('webapp', [
   spinner,
   'sticky',
   imageUploader,
+  tagList,
   // /* internal */
   PreodayServices,
   v2Main,
