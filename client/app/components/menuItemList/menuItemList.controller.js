@@ -34,12 +34,35 @@ export default class menuItemListController {
     return (this.items[this.items.length-1]).position + 1000
   }
 
+  getItemImage(newItemData){
+    return this.$q((resolve,reject)=>{
+      console.log("before get", newItemData)
+      if (!newItemData.$image && newItemData.images.length){
+        console.log("before b64", newItemData)
+        this.UtilsService.getBase64Image(newItemData.images[0].image)
+          .then((base64img)=>{
+            newItemData.$image = base64img;
+            newItemData.images = [];
+            console.log("got b64", newItemData)
+            resolve();
+          },reject);
+      } else {
+        resolve();
+      }
+    });
+  }
+
 
   cloneItem(itemToClone){
     const newItemData = angular.copy(itemToClone);
     newItemData.position = this.calculateNewItemPos(itemToClone);
+    // create new $image ref for upload
+
     return this.$q((resolve, reject)=>{
-      this.createItem(newItemData)
+      this.getItemImage(newItemData)
+        .then(()=>{
+          return this.createItem(newItemData)
+        })
         .then(()=>{
           this.Snack.show('Item duplicated');
           resolve();
@@ -50,12 +73,61 @@ export default class menuItemListController {
     });
   }
 
-  saveItemImage(){
+  saveItemExtensions(item, venueId){
+    return item.updateTags()
+      .then(()=>{
+        console.log("saving image");
+        if (item.$image){
+          console.log("saving imga really");
+          return Preoday.ItemImage.saveToCdn(item.$image, item.id, venueId)
+        }
+      })
+      .then((itemImage)=>{
+        if (itemImage) {
+          console.log("got image from cdn");
+          if (item.images && item.images.length){
+            console.log("updating", itemImage, item.images[0])
+            item.images[0].image = itemImage.image;
+            return item.images[0].update();
+          } else {
+            console.log("saving image to api")
+            return Preoday.ItemImage.save(itemImage);
+          }
+        }
+      })
+  }
 
+  saveItem(updatedItem){
+    this.Spinner.show("item-save");
+    return this.$q((resolve, reject)=>{
+      updatedItem.update()
+        .then((item) => {
+          item.images = updatedItem.images;
+          item.tags = updatedItem.tags;
+          item.$image = updatedItem.$image;
+          updatedItem = item;
+          return updatedItem;
+        })
+        .then(()=>{
+          return this.saveItemExtensions(updatedItem, this.$stateParams.venueId)
+        })
+        .then(()=>{
+          resolve();
+          this.Spinner.hide("item-save");
+        },(err)=>{
+          console.log("rejecting", err)
+          this.Spinner.hide("item-save");
+          reject();
+        })
+        .catch(()=>{
+          console.log("on catch");
+          this.Spinner.hide("item-save");
+          reject();
+        })
+    });
   }
 
   createItem(newItem){
-    console.log("creating new", newItem.id, newItem.$image !== undefined)
     return this.$q((resolve, reject)=>{
       this.Spinner.show("item-create");
       //save item
@@ -65,29 +137,24 @@ export default class menuItemListController {
           item.menuId = newItem.menuId;
           item.sectionId = newItem.sectionId;
           item.position = newItem.position;
+          item.images = newItem.images;
+          item.tags = newItem.tags;
+          item.$image = newItem.$image;
+
           this.addItemInPosition(item);
           this.clearPossibleNewItem();
           return item;
-      },() => {
-        this.Snack.showError('Error saving item');
-        throw "failed to save item";
-      })
-      .then((item)=>{
-        if (newItem.$image){
-          return Preoday.ItemImage.saveToCdn(newItem.$image, item.id, this.$stateParams.venueId)
-        }
-      })
-      .then((itemImage)=>{
-        if (itemImage) {
-          return Preoday.ItemImage.save(itemImage);
-        }
+      }).then((item)=>{
+          this.saveItemExtensions(item, this.$stateParams.venueId)
       })
       .then(()=>{
         resolve();
-        this.Spinner.hide("item-create");
+        this.Spinner.hide("item-create")
+      }, (err) => {
+        console.log("Failed to save item", err);
+        throw "failed to save item";
       })
       .catch(()=>{
-        console.log("on catch");
         this.Spinner.hide("item-create");
         reject();
       })
@@ -169,6 +236,7 @@ export default class menuItemListController {
         quantity:1,
         $size:0,
         visible:1,
+        tags:[],
         venueId:this.$stateParams.venueId,
         position: this.items.length ? (this.items[this.items.length-1]).position + 1000 : 0
     };
@@ -176,11 +244,12 @@ export default class menuItemListController {
     $event.stopPropagation();
   }
 
-  constructor($q, Snack, Spinner, $stateParams) {
+  constructor($q, Snack, Spinner, $stateParams, UtilsService) {
     "ngInject";
     this.Snack = Snack;
     this.$stateParams = $stateParams;
     this.Spinner = Spinner;
+    this.UtilsService = UtilsService;
     this.$q = $q;
 
   }

@@ -1,7 +1,7 @@
 <div class='image-uploader'>
-  <div class='image-wrapper placeholder' ng-if="!vm.initialValue && !vm.ngModel.$viewValue">
+  <div class='image-wrapper placeholder' ng-if="!vm.initialValue && !vm.ngModel.$viewValue.length">
   </div>
-  <div class='image-wrapper' ng-if="vm.initialValue || vm.ngModel.$viewValue">
+  <div class='image-wrapper' ng-if="vm.initialValue || vm.ngModel.$viewValue.length">
    <img ng-src='{{vm.ngModel.$viewValue || vm.initialValue}}'>
   </div>
   <div class='upload-specs'>

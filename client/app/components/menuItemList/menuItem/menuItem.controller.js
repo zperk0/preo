@@ -3,53 +3,6 @@ export default class menuItemController {
     return "menuItemController";
   }
 
-  saveItem(newItem = false){
-    if (!newItem){
-      newItem=this.item;
-    }
-    const that = this;
-    this.Spinner.show("item-save");
-    return this.$q((resolve, reject)=>{
-      newItem.update()
-        .then(()=>{
-          // images and tags are not returned in the request
-          newItem.images = that.item.images;
-          newItem.tags = that.item.tags;
-          that.item = newItem;
-          if (that.item.$image){
-            return Preoday.ItemImage.saveToCdn(that.item.$image, that.item.id, that.$stateParams.venueId)
-          }
-        })
-        .then((itemImage)=>{
-          if (itemImage) {
-            if (that.item.images && that.item.images.length){
-              console.log("updating", itemImage, that.item.images[0])
-              that.item.images[0].image = itemImage.image;
-              return that.item.images[0].update();
-            } else {
-              return Preoday.ItemImage.save(itemImage);
-            }
-          }
-        })
-        .then(()=>{
-            return that.item.updateTags();
-        })
-        .then(()=>{
-          console.log("in then");
-          resolve();
-          that.Spinner.hide("item-save");
-        },(err)=>{
-          console.log("rejecting", err)
-        })
-        .catch(()=>{
-          console.log("on catch");
-          that.Spinner.hide("item-save");
-          reject();
-        })
-    });
-  }
-
-
   //sets action callbacks for <card-item-actions>
   setCardActions(){
     const that = this;
@@ -72,11 +25,11 @@ export default class menuItemController {
       },
       onVisibility:(newStatus, $event)=>{
         that.item.visible = newStatus ? 1 : 0;
-        that.saveItem()
+        that.menuItemListCtrl.saveItem(that.item)
           .then(()=>{
             this.Snack.show('Item updated');
           }, ()=>{
-            this.Snack.show('Error updating item');
+            this.Snack.showError('Error updating item');
           })
         $event.stopPropagation();
       }
@@ -97,12 +50,13 @@ export default class menuItemController {
           })
 
       } else {
-        this.saveItem(entity).then(()=>{
+
+        this.menuItemListCtrl.saveItem(entity).then(()=>{
             this.Snack.show('Item updated');
             this.ContextualMenu.hide();
             this.item.$selected = false;
         }, ()=>{
-          this.Snack.show('Error updating item');
+          this.Snack.showError('Error updating item');
         })
       }
     }
