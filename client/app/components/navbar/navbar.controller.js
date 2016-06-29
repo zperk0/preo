@@ -38,7 +38,11 @@ export default class navbarController {
     //destination: if given, will be used as a destination instead of the id, useful when parent is abstract, with a default view (like menus and menus.list)
     this.menu=[
       {name:"Venue Settings", icon:"store", id:"venueSettings"},
-      {name:"Menus", icon:"list", id:"menus", destination:"menus.list"},
+      {name:"Menus", icon:"list", id:"menus", children:[
+        {name:"My menus", id:"list"},
+        {name:"Items", id:"itemList"},
+        {name:"Modifiers", id:"modifierList"},
+      ]},
       {name:"Styling", id:"styling", icon:"color_lens", children:[
         {name:"Styling", id:"mobile"},
         {name:"Web Orders", id:"weborders"},
