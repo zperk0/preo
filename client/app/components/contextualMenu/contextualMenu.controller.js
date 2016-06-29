@@ -14,10 +14,19 @@ export default class contextualMenuController {
     }
   }
 
-  constructor($rootScope, BroadcastEvents, ContextualMenu, $timeout) {
+  getImage(){
+    if (this.entity && this.entity.images && this.entity.images.length){
+      var path = this.UtilsService.getImagePath(this.entity.images[0].image)
+      return path;
+    }
+    return false;
+  }
+
+  constructor($rootScope, BroadcastEvents, UtilsService, ContextualMenu, $timeout) {
     "ngInject";
     console.log("Showing conextual menu ", this.entity, this.type);
     this.$timeout = $timeout;
+    this.UtilsService = UtilsService;
     this.originalEntity = angular.copy(this.entity);
     this.$rootScope = $rootScope;
     this.ContextualMenu = ContextualMenu;

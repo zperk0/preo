@@ -3,14 +3,46 @@ export default class menuItemController {
     return "menuItemController";
   }
 
-  saveItem(){
+  saveItem(newItem = false){
+    if (!newItem){
+      newItem=this.item;
+    }
+    const that = this;
     this.Spinner.show("item-save");
     return this.$q((resolve, reject)=>{
-      this.item.update()
-        .then(resolve,reject)
+      newItem.update()
         .then(()=>{
-          this.Spinner.hide("item-save");
-      })
+          // images and tags are not returned in the request
+          newItem.images = that.item.images;
+          newItem.tags = that.item.tags;
+          that.item = newItem;
+          if (that.item.$image){
+            return Preoday.ItemImage.saveToCdn(that.item.$image, that.item.id, that.$stateParams.venueId)
+          }
+        })
+        .then((itemImage)=>{
+          if (itemImage) {
+            if (that.item.images && that.item.images.length){
+              console.log("updating", itemImage, that.item.images[0])
+              that.item.images[0].image = itemImage.image;
+              return that.item.images[0].update();
+            } else {
+              return Preoday.ItemImage.save(itemImage);
+            }
+          }
+        })
+        .then(()=>{
+          console.log("in then");
+          resolve();
+          that.Spinner.hide("item-save");
+        },(err)=>{
+          console.log("rejecting", err)
+        })
+        .catch(()=>{
+          console.log("on catch");
+          that.Spinner.hide("item-save");
+          reject();
+        })
     });
   }
 
@@ -37,17 +69,22 @@ export default class menuItemController {
       },
       onVisibility:(newStatus, $event)=>{
         that.item.visible = newStatus ? 1 : 0;
-        that.saveItem();
+        that.saveItem()
+          .then(()=>{
+            this.Snack.show('Item updated');
+          }, ()=>{
+            this.Snack.show('Error updating item');
+          })
         $event.stopPropagation();
       }
     }
   }
 
-    handleSuccess(entity){
+  handleSuccess(entity){
     if (this.item && entity){
-      this.item = entity;
 
-      if (this.item.id === -1){
+      if (entity.id === -1){
+        this.item = entity;
         this.menuItemListCtrl.createItem(this.item)
           .then(()=>{
             this.ContextualMenu.hide();
@@ -57,9 +94,12 @@ export default class menuItemController {
           })
 
       } else {
-        this.saveItem().then(()=>{
-          this.ContextualMenu.hide();
-          this.item.$selected = false;
+        this.saveItem(entity).then(()=>{
+            this.Snack.show('Item updated');
+            this.ContextualMenu.hide();
+            this.item.$selected = false;
+        }, ()=>{
+          this.Snack.show('Error updating item');
         })
       }
     }
@@ -84,7 +124,7 @@ export default class menuItemController {
   }
 
 
-  constructor($q, Snack, DialogService, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, ContextualMenu) {
+  constructor($q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, ContextualMenu) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
@@ -93,6 +133,7 @@ export default class menuItemController {
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.type="menuItem";
+    this.$stateParams=$stateParams;
     this.setCardActions();
 
     //if it's a new item we toggle the context menu to edit this

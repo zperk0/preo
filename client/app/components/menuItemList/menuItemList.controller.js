@@ -65,16 +65,16 @@ export default class menuItemListController {
           item.menuId = newItem.menuId;
           item.sectionId = newItem.sectionId;
           item.position = newItem.position;
-          newItem.id = item.id;
           this.addItemInPosition(item);
           this.clearPossibleNewItem();
+          return item;
       },() => {
         this.Snack.showError('Error saving item');
         throw "failed to save item";
       })
-      .then(()=>{
+      .then((item)=>{
         if (newItem.$image){
-          return Preoday.ItemImage.saveToCdn(newItem.$image, newItem.id, this.$stateParams.venueId)
+          return Preoday.ItemImage.saveToCdn(newItem.$image, item.id, this.$stateParams.venueId)
         }
       })
       .then((itemImage)=>{

@@ -30,7 +30,8 @@
     </md-card-content>
     </md-tab>
     <md-tab label="Image">
-      <image-uploader ng-model="vm.entity.$image"></image-uploader>
+    {{vm.entity.$image}}}}
+      <image-uploader initial-value="vm.getImage()" ng-model="vm.entity.$image"></image-uploader>
     </md-tab>
     <md-tab label="Labels">
       TODO labels content

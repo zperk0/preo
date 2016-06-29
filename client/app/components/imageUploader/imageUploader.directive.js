@@ -5,7 +5,7 @@ export default function imageUploader(){
   return {
     restrict: 'E',
     scope: {
-
+      initialValue:"=?"
     },
     template: require("./imageUploader.tpl.html"),
     controller: controller.UID,
