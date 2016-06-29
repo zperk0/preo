@@ -9,7 +9,7 @@ import controller from './menuList.controller';
 export default function routes($stateProvider) {
   "ngInject";
   $stateProvider.state("main.dashboard.menus.list", {
-    url: "",
+    url: "/menu",
     views:{
       menuContent:{
         template: require("./menuList.tpl.html"),

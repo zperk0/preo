@@ -39,7 +39,7 @@ export default class navbarController {
     this.menu=[
       {name:"Venue Settings", icon:"store", id:"venueSettings"},
       {name:"Menus", icon:"list", id:"menus", children:[
-        {name:"My menus", id:"list"},
+        {name:"My menus", id:"menus", destination:"list", exclusions:["itemList","modifierList"]},
         {name:"Items", id:"itemList"},
         {name:"Modifiers", id:"modifierList"},
       ]},

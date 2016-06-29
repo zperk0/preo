@@ -7,8 +7,20 @@ export default function pathSelected($state, $rootScope){
     },
     link: (scope, el, attr) => {
       const pathName = scope.pathSelected ? scope.pathSelected.id : attr.pathSelected;
+      const exclusions = scope.pathSelected ? scope.pathSelected.exclusions : false;
       const setSelected = (state) => {
-        let isSelected = state.name.indexOf(pathName) !== -1;
+        var re = new RegExp("\\."+pathName+"(\\.|$)");
+        var matches = state.name.match(re)
+        let isSelected = matches && matches.length>0;
+        if (isSelected && exclusions){
+          var re = new RegExp("\\.("+exclusions.join("|")+")(\\.|$)");
+          var matches = state.name.match(re)
+          let isExcluded = matches && matches.length>0;
+          if (isExcluded){
+            isSelected = false;
+          }
+        }
+        console.log("is selected", isSelected);
         if (isSelected) {
           el.addClass("selected");
           if (scope.pathSelected){
