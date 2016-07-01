@@ -1,9 +1,15 @@
 <div class='menu-item'>
   <md-card class='menu-item card-item card-item-new'>
     <md-card-actions>
-      <md-button class="md-fab md-mini md-primary" aria-label="Add Item" ng-click="ngClick({$event:$event})">
+    <md-menu>
+      <md-button class="md-fab md-mini md-primary" aria-label="Add Item" ng-click="handleClick($event, $mdOpenMenu)">
         <icon>add</icon>
       </md-button>
+       <md-menu-content>
+         <md-menu-item><md-button ng-click="onClick({$event:$event,isImport:false})" > <span translate>Create new item</span></md-button></md-menu-item>
+         <md-menu-item><md-button ng-click="onClick({$event:$event,isImport:true})"><span translate>Import existing item</span></md-button></md-menu-item>
+       </md-menu-content>
+    </md-menu>
     </md-card-actions>
   </md-card>
 </div>

@@ -216,7 +216,8 @@ export default class menuItemListController {
       })
   }
 
-  showCreateItem($event){
+  showCreateItem($event, isImport){
+    console.log("show creating", $event, isImport);
     let isCreating = false;
     this.items.forEach((s, index)=>{
       if (s.id === -1){
@@ -224,23 +225,30 @@ export default class menuItemListController {
       }
     });
     if (isCreating){
-      console.log("Not showing section new, already showing")
       return;
     }
-    console.log("creating item")
+
     let newItem = {
         id:-1,
-        menuId:this.section.menuId,
-        sectionId:this.section.id,
         $selected:true,
         quantity:1,
         $size:0,
         visible:1,
         tags:[],
-        venueId:this.$stateParams.venueId,
-        position: this.items.length ? (this.items[this.items.length-1]).position + 1000 : 0
+        venueId:this.$stateParams.venueId
     };
-    this.items.push(newItem);
+
+    if(!isImport){
+      if (this.section && this.section.id) {
+        newItem.menuId = this.section.menuId;
+        newItem.sectionId = this.section.id;
+      }
+      newItem.position = this.items.length ? (this.items[this.items.length-1]).position + 1000 : 0;
+      this.items.push(newItem);
+    } else {
+      console.log("//TODO open drawer");
+    }
+
     $event.stopPropagation();
   }
 

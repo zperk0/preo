@@ -5,11 +5,20 @@ export default function menuItem(){
   return {
     restrict: 'E',
     scope: {
-      item:"=?",
+      onClick:"&",
+      section:"=?",
     },
     template: require("./menuItemNew.tpl.html"),
     replace:true,
     link: (scope, el, attr, ctrls) => {
+
+      scope.handleClick = ($event,$mdOpenMenu) => {
+        if (scope.section && scope.section.id){
+          $mdOpenMenu()
+        } else{
+          scope.onClick({$event:$event, isImport:false});
+        }
+      }
     }
   };
 }
