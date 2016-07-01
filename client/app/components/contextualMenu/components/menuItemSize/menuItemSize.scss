@@ -1,0 +1,28 @@
+.menu-item-size{
+  .button-position{
+    position: relative;
+    left: -18px;
+  }
+
+  md-input-container{
+    margin:0;
+  }
+
+  .prices {
+
+
+
+    venue-currency{
+      text-align: center;
+    }
+
+    .icon-clear{
+      position: relative;
+      top: -5px;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+
+}

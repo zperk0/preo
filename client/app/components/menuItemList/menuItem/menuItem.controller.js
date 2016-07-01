@@ -92,9 +92,13 @@ export default class menuItemController {
     this.type="menuItem";
     this.$stateParams=$stateParams;
     this.setCardActions();
-
+    let inParam = false;
+    if (this.item.id === Number($stateParams.itemId)){
+      inParam = true;
+      this.item.$selected = true;
+    }
     //if it's a new item we toggle the context menu to edit this
-    if (this.item && this.item.id === -1) {
+    if (this.item && this.item.id === -1 || inParam) {
       $timeout(()=>{
         this.ContextualMenu.show(this.type, this.item, this.handleSuccess.bind(this), this.handleCancel.bind(this));
       })

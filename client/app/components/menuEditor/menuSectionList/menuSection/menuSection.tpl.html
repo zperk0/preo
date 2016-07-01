@@ -13,7 +13,7 @@
                       </div>
                       {{vm.section.name}}
                     </span></card-item-title>
-    <menu-item-list ng-if="vm.section.$expanded" items="vm.section.items" section="vm.section"></menu-item-list>
+    <menu-item-list ng-if="vm.section.$expanded" has-new="vm.section.$expanded" items="vm.section.items" section="vm.section"></menu-item-list>
     <card-item-actions is-visible="vm.section.visible"></card-item-actions>
   </card-item>
 </div>

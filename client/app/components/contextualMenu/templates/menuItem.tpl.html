@@ -13,20 +13,7 @@
           <label translate>Description</label>
           <textarea type="text" name="entityDescription" ng-maxlength="1000" ng-model="vm.entity.description"></textarea>
       </md-input-container>
-      <md-radio-group class='size' ng-model="vm.entity.$size">
-        <md-radio-button value="0" class="md-primary md-hue-2">Single Size</md-radio-button>
-        <md-radio-button value="1" class="md-primary md-hue-2"> Multiple Sizes </md-radio-button>
-      </md-radio-group>
-      <div class='price' layout="row" layout-align="start center">
-        <md-input-container flex>
-            <label translate>Price</label>
-            <input flex type="number" required name="entityPrice" ng-model="vm.entity.price">
-            <div ng-messages="contextualForm.entityPrice.$error">
-              <div ng-message="required" translate>This is required.</div>
-            </div>
-        </md-input-container>
-        <venue-currency class='currency'> GBP </venue-currency>
-      </div>
+    <menu-item-size ng-model="vm.entity.$sizes"></menu-item-size>
     </md-card-content>
     </md-tab>
     <md-tab label="Image">

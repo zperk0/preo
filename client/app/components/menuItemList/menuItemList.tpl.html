@@ -14,5 +14,5 @@
              section="vm.section"
        ></menu-item>
   </div>
-  <menu-item-new ng-if="vm.section.$expanded" ng-click="vm.showCreateItem($event)"></menu-item-new>
+  <menu-item-new ng-if="vm.hasNew" ng-click="vm.showCreateItem($event)"></menu-item-new>
 </div>

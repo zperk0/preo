@@ -2,9 +2,16 @@
 @import './contextualMenu.animations.scss';
 
 .contextual-menu {
+  max-height: calc(100vh - 64px - 50px - 5vh); //100% - toolbar - optional dashboard toolbar - extra spacing for bottom padding
   margin:0;
   @include materialRaisedShadow();
   border-radius: 2px;
+
+  .form-content{
+    max-height: calc(100vh - 64px - 50px - 69px - 30px ); //100% - toolbar - optional dashboard toolbar - bottom buttons - extra spacing for bottom padding
+    overflow-y:auto;
+
+  }
 
   md-card-actions{
     border-top:1px solid #E0E0E0;

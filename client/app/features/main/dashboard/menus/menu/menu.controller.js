@@ -39,6 +39,7 @@ export default class menuController {
     console.log("state", $stateParams.menuId, this.menu && this.menu.id);
     this.Spinner = Spinner;
     this.showSpinner();
+    console.log("state", $stateParams);
     this.setMenu($stateParams.menuId);
     this.$timeout = $timeout;
     this.showingContextualMenu = false;

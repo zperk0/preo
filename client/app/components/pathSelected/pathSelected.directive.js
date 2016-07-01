@@ -20,7 +20,6 @@ export default function pathSelected($state, $rootScope){
             isSelected = false;
           }
         }
-        console.log("is selected", isSelected);
         if (isSelected) {
           el.addClass("selected");
           if (scope.pathSelected){

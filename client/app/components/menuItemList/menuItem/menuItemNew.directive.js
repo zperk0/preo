@@ -6,13 +6,10 @@ export default function menuItem(){
     restrict: 'E',
     scope: {
       item:"=?",
-      sectionController:"=?"
     },
     template: require("./menuItemNew.tpl.html"),
     replace:true,
-    require:["^menuSection"],
     link: (scope, el, attr, ctrls) => {
-      scope.menuSectionCtrl = ctrls[0]
     }
   };
 }

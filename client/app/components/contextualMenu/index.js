@@ -10,9 +10,10 @@ import service from './contextualMenu.service';
 import directive from './contextualMenu.directive';
 import holderDirective from './contextualMenuHolder.directive';
 
+import menuItemSize from './components/menuItemSize';
 
 
-export default angular.module("contextualMenu" , [])
+export default angular.module("contextualMenu" , [menuItemSize])
 
 
   .controller(controller.UID, controller)

@@ -9,7 +9,7 @@ import controller from './menu.controller';
 export default function routes($stateProvider) {
   "ngInject";
   $stateProvider.state("main.dashboard.menus.menu", {
-    url: "/:menuId/:sectionId?/:itemId?/",
+    url: "/{menuId:[0-9]*}/:sectionId?/:itemId?/",
     views:{
       menuContent:{
         template: require("./menu.tpl.html"),
