@@ -10,8 +10,9 @@ import directive from './cardItem.directive';
 
 import cardItemTitle from './cardItemTitle';
 import cardItemActions from './cardItemActions';
+import cardItemChild from './cardItemChild';
 
-export default angular.module("cardItem" , [cardItemTitle, cardItemActions])
+export default angular.module("cardItem" , [cardItemTitle, cardItemActions, cardItemChild])
 
   .controller(controller.UID, controller)
   .directive("cardItem", directive)

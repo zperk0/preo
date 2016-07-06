@@ -3,46 +3,51 @@ export default class menuItemSizeController {
     return "menuItemSizeController"
   }
 
+
   deleteSize(size){
-    console.log("deleting size", size);
-    this.ngModel.options = this.ngModel.options.filter((o)=>o.id !== size.id);
+    this.ngModel.$deletedItems = this.ngModel.$deletedItems.concat(this.ngModel.items.filter((o)=>o.id === size.id));
+    this.ngModel.items = this.ngModel.items.filter((o)=>o.id !== size.id);
   }
 
   getEmptySize(){
-    this.emptyOption.id--;
-    return angular.copy(this.emptyOption);
+    let opt = angular.copy(this.emptyOption);
+    opt.position = this.ngModel.items.length * 1000;
+    return opt;
   }
 
   addSize(){
-    this.ngModel.options.push(this.getEmptySize());
+    this.ngModel.items.push(this.getEmptySize());
   }
 
   onOptionMoved(){
-    this.ngModel.options.forEach((o, index)=>{
+    this.ngModel.items.forEach((o, index)=>{
       o.position=index*1000;
     });
   }
 
   /* @ngInject */
-  constructor() {
+  constructor($scope, $stateParams) {
     'ngInject';
     // this.ngModel
     this.emptyOption = {
-      id:0
+      visible:1
     }
-    if (this.ngModel && this.ngModel.length){
-      this.isMultiple = true;
+    if (this.ngModel && this.ngModel.id){
+      this.ngModel.$isMultiple = true;
+      this.ngModel.$deletedItems = [];
     } else {
-      this.isMultiple = false;
       this.ngModel = {
+        $deletedItems :[],
+        $isMultiple:false,
+        position:0,
+        variant:1,
+        venueId:$stateParams.venueId,
         name:"Choose a size",
-        options:[
-          this.getEmptySize(),
-          this.getEmptySize()
+        items:[
         ]
       }
+      this.ngModel.items.push(this.getEmptySize());
+      this.ngModel.items.push(this.getEmptySize());
     }
-
-
   }
 }

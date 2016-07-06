@@ -16,11 +16,11 @@ export default function menuItemList($animate, $timeout){
     replace:true,
     link: (scope, el, attr, ctrl) => {
         //(children + new) * children height + margin + safety value. This doesn't really need to be exact.
-        var maxHeight = (ctrl.items.length+1) * (48 + 16) + 200;
+        ctrl.element = el;
         $animate.on('enter', el,
          (element, phase) =>{
             $timeout(()=>{
-              element.css({"max-height":maxHeight+"px"});
+              ctrl.setMaxHeight();
             })
          });
         $animate.on('leave', el,

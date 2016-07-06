@@ -91,7 +91,7 @@
   handleCancel(){
     this.restoreOriginalValues();
     this.section.$selected = false;
-    if (this.section.id === -1){
+    if (!this.section.id){
       this.menuSectionListCtrl.clearPossibleNewSection();
     }
   }
@@ -100,7 +100,7 @@
     if (this.section && entity){
       this.section = entity;
 
-      if (this.section.id === -1){
+      if (!this.section.id){
         this.menuSectionListCtrl.createSection(this.section)
           .then(()=>{
             this.ContextualMenu.hide();
@@ -140,7 +140,7 @@
       })
     }
     //if it's a new section we toggle the context menu to edit this
-    if (this.section && this.section.id === -1) {
+    if (this.section && !this.section.id) {
         console.log("here ho");
         this.ContextualMenu.show(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
     }

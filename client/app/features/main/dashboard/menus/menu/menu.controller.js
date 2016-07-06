@@ -13,17 +13,14 @@ export default class menuController {
   }
 
   setMenu(menuId){
-    console.log("set menu", menuId);
     Preoday.Menu.get(menuId)
-      .then(this.handleFinishLoading.bind(this), this.handleError.bind(this,"FAILED_LOADING_MENU"))
-      .catch((err)=>console.log("err",err));
+      .then(this.handleFinishLoading.bind(this))
+      .catch((err)=>{
+        this.hideSpinner();
+        console.log("err",err)
+      });
   }
 
-  handleError (error) {
-    console.log("got error", error);
-    this.error = this.ErrorService[error];
-    this.hideSpinner();
-  }
 
   handleFinishLoading(dataMenu){
     this.$timeout(()=>{

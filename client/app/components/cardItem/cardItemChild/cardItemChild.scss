@@ -1,0 +1,14 @@
+.card-item-child{
+  margin: 0 14px;
+  border-top: 1px solid #CCCCCC;
+  padding:14px 12px;
+
+  &:first-child{
+    border-top:none;
+  }
+
+  span{
+    color: #8C8C8C;
+    font-size:13px;
+  }
+}

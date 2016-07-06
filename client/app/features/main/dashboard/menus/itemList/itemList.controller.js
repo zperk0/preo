@@ -4,17 +4,16 @@ export default class itemListController {
     return "itemListController"
   }
 
-  setItems(){
-     Preoday.Menu.get(142)
+  setItems(venueId){
+    Preoday.Item.getAll({venueId:venueId})
       .then(this.handleFinishLoading.bind(this), this.handleError.bind(this,"FAILED_LOADING_MENU_ITEMS"))
       .catch((err)=>console.log("err",err));
 
   }
 
-  handleFinishLoading(menu){
+  handleFinishLoading(items){
     this.$timeout(()=>{
-      this.items = menu.sections[0].items;
-      console.log("this items", this.items)
+      this.items = items
     })
 
   }

@@ -1,19 +1,20 @@
 <div class='menu-item-size'>
-  <md-radio-group class='size' ng-model="vm.isMultiple">
+  <md-radio-group class='size' ng-model="vm.ngModel.$isMultiple">
       <md-radio-button ng-value="false" class="md-primary md-hue-2">Single Size</md-radio-button>
       <md-radio-button ng-value="true" class="md-primary md-hue-2"> Multiple Sizes </md-radio-button>
   </md-radio-group>
-  <div ng-if="!vm.isMultiple" class='price' layout="row" layout-align="start center">
+  <div ng-if="!vm.ngModel.$isMultiple" class='price' layout="row" layout-align="start center">
     <md-input-container flex>
         <label translate>Price</label>
-        <input flex type="number" required name="entityPrice" ng-model="vm.entity.price">
+        <input flex type="number" required name="entityPrice" ng-model="vm.ngPriceModel">
         <div ng-messages="contextualForm.entityPrice.$error">
           <div ng-message="required" translate>This is required.</div>
         </div>
     </md-input-container>
     <venue-currency class='currency'> GBP </venue-currency>
   </div>
-  <div class='multi-size' ng-if="vm.isMultiple" layout="column">
+  <div class='multi-size' ng-if="vm.ngModel.$isMultiple" layout="column">
+
     <md-input-container>
         <label translate>Variant Name</label>
         <input flex type="text" required name="sizeName" ng-model="vm.ngModel.name">
@@ -24,8 +25,8 @@
     <div class='prices' layout="column"
         sv-root="size"
         sv-on-sort="vm.onOptionMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)"
-        sv-part="vm.ngModel.options">
-      <ng-form class='price' layout="row" layout-align="start center" name="sizeForm" ng-repeat="size in vm.ngModel.options" sv-element>
+        sv-part="vm.ngModel.items">
+      <ng-form class='price' layout="row" layout-align="start center" name="sizeForm" ng-repeat="size in vm.ngModel.items" sv-element>
         <span class='handle' sv-handle><icon>drag_handle</icon></span>
         <md-input-container flex>
             <label translate>Name</label>
@@ -42,7 +43,7 @@
             </div>
         </md-input-container>
         <venue-currency flex="10" class='currency'> GBP </venue-currency>
-        <icon class='icon-clear' ng-if="vm.ngModel.options.length>2" ng-click="vm.deleteSize(size)" flex="5">clear</icon>
+        <icon class='icon-clear' ng-if="vm.ngModel.items.length>2" ng-click="vm.deleteSize(size)" flex="5">clear</icon>
       </ng-form>
       <div sv-placeholder></div>
       <div class='button-position'>

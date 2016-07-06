@@ -39,7 +39,7 @@ export default class menuItemController {
   handleSuccess(entity){
     if (this.item && entity){
 
-      if (entity.id === -1){
+      if (!entity.id){
         this.item = entity;
         this.menuItemListCtrl.createItem(this.item)
           .then(()=>{
@@ -51,9 +51,10 @@ export default class menuItemController {
 
       } else {
 
-        this.menuItemListCtrl.saveItem(entity).then(()=>{
+        this.menuItemListCtrl.saveItem(entity).then((item)=>{
             this.Snack.show('Item updated');
             this.ContextualMenu.hide();
+            this.item = item;
             this.item.$selected = false;
         }, ()=>{
           this.Snack.showError('Error updating item');
@@ -75,7 +76,7 @@ export default class menuItemController {
   handleCancel(event, entity, type){
     this.restoreOriginalValues()
     this.item.$selected = false;
-    if (this.item.id === -1){
+    if (!this.item.id){
       this.menuItemListCtrl.clearPossibleNewItem();
     }
   }
@@ -98,7 +99,7 @@ export default class menuItemController {
       this.item.$selected = true;
     }
     //if it's a new item we toggle the context menu to edit this
-    if (this.item && this.item.id === -1 || inParam) {
+    if (this.item && !this.item.id || inParam) {
       $timeout(()=>{
         this.ContextualMenu.show(this.type, this.item, this.handleSuccess.bind(this), this.handleCancel.bind(this));
       })

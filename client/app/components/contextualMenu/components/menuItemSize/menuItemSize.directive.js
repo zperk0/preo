@@ -6,13 +6,15 @@ export default function menuItemSize(){
     template: require("./menuItemSize.tpl.html"),
     controller: controller.UID,
     scope:{
-      ngModel:"="
+      ngModel:"=",
+      ngPriceModel:"=",
     },
     controllerAs: "vm",
     bindToController: true,
     require:['menuItemSize', '^contextualMenu'],
     link: (scope, el, attr, ctrls) => {
       ctrls[0].contextualMenuCtrl = ctrls[1];
+
     }
   }
 }

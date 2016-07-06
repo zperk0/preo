@@ -52,7 +52,7 @@ export default class menuSectionListController {
 
   clearPossibleNewSection(){
     // remove section with id -1, (possible new section)
-    this.sections = this.sections.filter((s)=>s.id !== -1)
+    this.sections = this.sections.filter((s)=>s.id !== undefined)
   }
 
   cloneSection(sectionToClone){
@@ -99,7 +99,7 @@ export default class menuSectionListController {
   showCreateSection($event){
     let isCreating = false;
     this.sections.forEach((s, index)=>{
-      if (s.id === -1){
+      if (s.id === undefined){
         isCreating = true;
       }
     });
@@ -109,7 +109,6 @@ export default class menuSectionListController {
     }
     console.log("Showing section new")
     let section = {
-      id:-1,
       menuId:this.menu.id,
       $selected:true,
       visible:1,

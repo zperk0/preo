@@ -5,7 +5,6 @@ $heightMenuItemCard:48px;
 
   .card-item {
     margin:0;
-    max-height: 48px;
 
     &.expanded{
       .hidden-card-actions{
@@ -28,6 +27,7 @@ $heightMenuItemCard:48px;
     }
     &.card-item-new{
       margin-bottom: 32px;
+      max-height: 48px;
       min-height:$heightMenuItemCard;
     }
   }
