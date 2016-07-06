@@ -13,7 +13,7 @@ export default class menuItemController {
       onEdit: ($event) => {
         that.originalItem  = angular.copy(that.item);
         that.menuItemListCtrl.selectItem(that.item);
-        that.ContextualMenu.show(that.type, that.item, that.handleSuccess.bind(that), that.handleCancel.bind(that));
+        that.contextual.showMenu(that.type, that.item, that.handleSuccess.bind(that), that.handleCancel.bind(that));
       },
       onDelete: ($event)=>{
         const msg = that.section ? that.LabelService.CONTENT_DELETE_ITEM_SECTION : that.LabelService.CONTENT_DELETE_ITEM;
@@ -43,7 +43,7 @@ export default class menuItemController {
         this.item = entity;
         this.menuItemListCtrl.createItem(this.item)
           .then(()=>{
-            this.ContextualMenu.hide();
+            this.contextualMenu.hide();
             this.Snack.show('Item created');
           }, ()=>{
             this.Snack.showError('Error saving item');
@@ -53,7 +53,7 @@ export default class menuItemController {
 
         this.menuItemListCtrl.saveItem(entity).then((item)=>{
             this.Snack.show('Item updated');
-            this.ContextualMenu.hide();
+            this.contextualMenu.hide();
             this.item = item;
             this.item.$selected = false;
         }, ()=>{
@@ -82,17 +82,18 @@ export default class menuItemController {
   }
 
 
-  constructor($q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, ContextualMenu) {
+  constructor($q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
-    this.ContextualMenu = ContextualMenu;
+    this.contextualMenu = contextualMenu;
     this.Spinner = Spinner;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.type="menuItem";
     this.$stateParams=$stateParams;
     this.setCardActions();
+    this.contextual = contextual;
     let inParam = false;
     if (this.item.id === Number($stateParams.itemId)){
       inParam = true;
@@ -101,7 +102,7 @@ export default class menuItemController {
     //if it's a new item we toggle the context menu to edit this
     if (this.item && !this.item.id || inParam) {
       $timeout(()=>{
-        this.ContextualMenu.show(this.type, this.item, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+        this.contextual.showMenu(this.type, this.item, this.handleSuccess.bind(this), this.handleCancel.bind(this));
       })
     }
   }

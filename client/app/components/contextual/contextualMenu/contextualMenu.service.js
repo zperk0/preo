@@ -1,6 +1,6 @@
 export default class contextualMenuService {
   static get UID(){
-    return "ContextualMenu";
+    return "contextualMenu";
   }
 
   resolve(res){
@@ -32,6 +32,7 @@ export default class contextualMenuService {
     this.hide();
   }
 
+  //DO NOT CALL THIS METHOD DIRECTLY, use the contextual service;
   show(template, entity, onSuccess, onError){
     if (this.$el){
       this.close();

@@ -46,7 +46,7 @@
 
   toggleExpanded(){
     this.menuSectionListCtrl.expandSection(this.section);
-    this.ContextualMenu.close();
+    this.contextualMenu.close();
   }
 
   //sets action callbacks for <card-item-actions>
@@ -64,7 +64,7 @@
       onEdit: ($event) => {
         this.originalSection = angular.copy(this.section);
         this.menuSectionListCtrl.selectSection(this.section);
-        this.ContextualMenu.show(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+        this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
         this.section.$expanded = false;
       },
       onDelete: ($event)=>{
@@ -104,7 +104,7 @@
       if (!this.section.id){
         this.menuSectionListCtrl.createSection(this.section)
           .then(()=>{
-            this.ContextualMenu.hide();
+            this.contextualMenu.hide();
             this.Snack.show('Section created');
           }, ()=>{
             this.Snack.showError('Error saving section');
@@ -112,14 +112,14 @@
 
       } else {
         this.saveSection().then(()=>{
-          this.ContextualMenu.hide();
+          this.contextualMenu.hide();
           this.section.$selected = false;
         })
       }
     }
   }
 
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, ContextualMenu) {
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
@@ -128,7 +128,8 @@
     this.$timeout = $timeout;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
-    this.ContextualMenu = ContextualMenu;
+    this.contextualMenu = contextualMenu;
+    this.contextual = contextual;
     this.type = 'menuSection'; //type for contextual menu
     this.setCardActions();
     this.menuItemType = 'menuItem';
@@ -143,7 +144,7 @@
     //if it's a new section we toggle the context menu to edit this
     if (this.section && !this.section.id) {
         console.log("here ho");
-        this.ContextualMenu.show(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+        this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
     }
   }
 }

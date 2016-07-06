@@ -5,12 +5,12 @@ export default class contextualMenuController {
 
   //restore original state if user cancels
   onCancel(){
-    this.ContextualMenu.reject();
+    this.contextualMenu.reject();
   }
 
   doSubmit(contextualForm){
     if (contextualForm.$valid){
-      this.ContextualMenu.resolve(this.entity);
+      this.contextualMenu.resolve(this.entity);
     }
   }
 
@@ -22,12 +22,12 @@ export default class contextualMenuController {
     return false;
   }
 
-  constructor($scope, UtilsService, ContextualMenu, $timeout) {
+  constructor($scope, UtilsService, contextualMenu, $timeout) {
     "ngInject";
     console.log("Showing conextual menu ", this.entity, this.type);
     this.$timeout = $timeout;
     this.UtilsService = UtilsService;
     this.originalEntity = angular.copy(this.entity);
-    this.ContextualMenu = ContextualMenu;
+    this.contextualMenu = contextualMenu;
   }
 }

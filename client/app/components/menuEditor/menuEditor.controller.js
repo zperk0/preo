@@ -3,13 +3,13 @@ export default class menuEditorController {
     return "menuEditorController";
   }
 
-  toggleSideNav(){
-    this.contextualDrawer.show('items');
+  toggleDrawer(id){
+    this.contextual.showDrawer(id);
   }
 
   /* @ngInject */
-  constructor(contextualDrawer) {
+  constructor(contextual) {
     "ngInject";
-    this.contextualDrawer = contextualDrawer;
+    this.contextual = contextual;
   }
 }

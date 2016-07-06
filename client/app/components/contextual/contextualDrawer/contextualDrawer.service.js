@@ -12,6 +12,7 @@ export default class contextualDrawerService {
     }
   }
 
+  //DO NOT CALL THIS METHOD DIRECTLY, use the contextual service;
   show(id){
     if (this.id){
       this.close();

@@ -308,15 +308,6 @@ export default class menuItemListController {
 
   showCreateItem($event, isImport){
     console.log("show creating", $event, isImport);
-    let isCreating = false;
-    this.items.forEach((s, index)=>{
-      if (!s.id){
-        isCreating = true;
-      }
-    });
-    if (isCreating){
-      return;
-    }
 
     let newItem = {
         $selected:true,
@@ -328,6 +319,15 @@ export default class menuItemListController {
     };
 
     if(!isImport){
+      let isCreating = false;
+        this.items.forEach((s, index)=>{
+          if (!s.id){
+            isCreating = true;
+          }
+        });
+        if (isCreating){
+          return;
+        }
       if (this.section && this.section.id) {
         newItem.menuId = this.section.menuId;
         newItem.sectionId = this.section.id;
@@ -335,7 +335,7 @@ export default class menuItemListController {
       newItem.position = this.items.length ? (this.items[this.items.length-1]).position + 1000 : 0;
       this.items.push(newItem);
     } else {
-      console.log("//TODO open drawer");
+      this.contextual.showDrawer('items');
     }
 
     $event.stopPropagation();
@@ -350,7 +350,7 @@ export default class menuItemListController {
     this.element.css({"max-height":+maxHeight+"px"});
   }
 
-  constructor($scope, $q, Snack, Spinner, $stateParams, UtilsService) {
+  constructor($scope, $q, Snack, Spinner, $stateParams, UtilsService, contextual) {
     "ngInject";
     this.Snack = Snack;
     this.$stateParams = $stateParams;
@@ -358,6 +358,7 @@ export default class menuItemListController {
     this.UtilsService = UtilsService;
     this.$q = $q;
     this.items = this.items === undefined ? [] : this.items;
+    this.contextual = contextual;
 
   }
 }
