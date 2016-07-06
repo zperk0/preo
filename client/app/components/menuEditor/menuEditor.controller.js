@@ -4,7 +4,7 @@ export default class menuEditorController {
   }
 
   toggleSideNav(){
-    this.contextualDrawer.show();
+    this.contextualDrawer.show('items');
   }
 
   /* @ngInject */

@@ -4,8 +4,7 @@
   </div>
   <sticky-scroll flex class="menu-content">
     <div class='main-content-left'>
-        <menu-item-list ng-if="vm.items && vm.items.length" has-new="true" items="vm.items"></menu-item-list>
-        <!-- <menu-item-new ng-click="vm.showCreateItem($event)"></menu-item-new> -->
+        <menu-item-list sv-disabled="true" ng-if="vm.items && vm.items.length" has-new="true" items="vm.items"></menu-item-list>
       </div>
     <div class='main-content-right' sticky contextual-menu-holder></div>
   </sticky-scroll>

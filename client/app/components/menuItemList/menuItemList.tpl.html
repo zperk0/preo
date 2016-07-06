@@ -4,8 +4,11 @@
           sv-on-start="vm.onItemMoveStart($item, $part, $index, $helper)"
           sv-on-stop="vm.onItemMoveStop($item, $part, $index)"
           sv-on-sort="vm.onItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)"
+          sv-is-dropzone="vm.isDropzone"
+          sv-disabled="vm.svDisabled"
           sv-part="vm.items">
          <div sv-placeholder></div>
+         {{vm.svElementDisabled}}
       <menu-item
              ng-repeat="item in vm.items"
              item="item"

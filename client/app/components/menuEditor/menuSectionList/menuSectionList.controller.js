@@ -28,7 +28,7 @@ export default class menuSectionListController {
       }
     }
     //default is last section size + 1000
-    return (this.sections[this.sections.length-1]).position + 1000
+    return  this.sections && this.sections.length ? (this.sections[this.sections.length-1]).position + 1000 : 0;
   }
 
   onSectionMoved($item, $partFrom, $partTo, $indexFrom, $indexTo){
@@ -52,7 +52,9 @@ export default class menuSectionListController {
 
   clearPossibleNewSection(){
     // remove section with id -1, (possible new section)
-    this.sections = this.sections.filter((s)=>s.id !== undefined)
+    if (this.sections){
+      this.sections = this.sections.filter((s)=>s.id !== undefined)
+    }
   }
 
   cloneSection(sectionToClone){
@@ -123,7 +125,9 @@ export default class menuSectionListController {
     section.delete()
       .then(()=>{
         this.Snack.show('Section deleted');
-        this.sections = this.sections.filter((s)=>section.id !== s.id);
+        if (this.sections){
+          this.sections = this.sections.filter((s)=>section.id !== s.id);
+        }
       }, ()=>{
         this.Snack.showError('Error deleting section');
       }).then(()=>{

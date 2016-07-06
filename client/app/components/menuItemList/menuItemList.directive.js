@@ -7,6 +7,8 @@ export default function menuItemList($animate, $timeout){
     scope: {
       items:"=",
       hasNew:"=",
+      isDropzone:"=",
+      svDisabled:"=?",
       section:"=?"
     },
     template: require("./menuItemList.tpl.html"),

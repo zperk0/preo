@@ -3,25 +3,21 @@ export default class contextualDrawerService {
     return "contextualDrawer";
   }
 
-  resolve(res){
-    if (this.onSuccess) {
-      this.onSuccess(res);
-    }
-  }
-
-  reject(err){
-    this.close(err);
-  }
 
   //same as close but doesn't call error callback
-  hide(){
-    if (this.$el){
-      this.$el.remove();
+  close(){
+    if (this.id){
+      this.$mdSidenav(this.id).close();
+      this.id = false;
     }
   }
 
-  show(template, entity, onSuccess, onError){
-    this.$mdSidenav('right')
+  show(id){
+    if (this.id){
+      this.close();
+    }
+    this.id = id;
+    this.$mdSidenav(id)
       .toggle()
       .then(function () {
         console.log("on then");

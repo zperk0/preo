@@ -5,7 +5,7 @@ export default class itemListController {
   }
 
   setItems(venueId){
-    Preoday.Item.getAll({venueId:venueId})
+    this.ItemService.getItems(venueId, 'modifiers,images,tags')
       .then(this.handleFinishLoading.bind(this), this.handleError.bind(this,"FAILED_LOADING_MENU_ITEMS"))
       .catch((err)=>console.log("err",err));
 
@@ -21,9 +21,10 @@ export default class itemListController {
     //TODO handle error
   }
 
-  constructor($stateParams,$timeout) {
+  constructor($stateParams,$timeout, ItemService) {
     "ngInject";
-    this.setItems($stateParams.venueId);
     this.$timeout= $timeout;
+    this.ItemService =ItemService;
+    this.setItems($stateParams.venueId);
   }
 }

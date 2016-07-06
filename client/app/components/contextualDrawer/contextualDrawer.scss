@@ -1,0 +1,21 @@
+@import '../../shared/styles/variables';
+
+.contextual-drawer {
+  width:657px;
+  max-width: 657px;
+
+  md-content{
+    max-height: calc(100% - 81px); // 100% - footer cards
+  }
+
+  md-card-actions{
+    border-top:1px solid #E0E0E0;
+    background:#F5F5F5;
+    margin: 0;
+    padding: 16px;
+  }
+
+  .card-title{
+    height: 48px;
+  }
+}

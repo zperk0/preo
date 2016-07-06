@@ -1,0 +1,19 @@
+ <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="items">
+    <md-content layout-padding>
+    <div class='contextual-list'>
+      <menu-item-list is-dropzone="false" items="drawerCtrl.items"></menu-item-list>
+      <!-- <div class='menu-item' ng-repeat="item in drawerCtrl.items">
+        <card-item card-item-actions="drawerCtrl.cardItemActions">
+            <card-item-title>
+                <span class='name' flex>{{item.name}} </span> <span class='price'> {{item.price | currency:"£"}}</span></card-item-title>
+          </card-item>
+        </div>
+        -->
+      </div>
+    </md-content>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button ng-click="drawerCtrl.close()" class='md-raised' translate>
+          Done
+      </md-button>
+    </md-card-actions>
+</md-sidenav>

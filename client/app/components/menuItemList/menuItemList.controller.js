@@ -5,7 +5,9 @@ export default class menuItemListController {
 
    clearPossibleNewItem(){
     // remove item with id -1, (possible new item)
-    this.items = this.items.filter((i)=>i.id);
+    if (this.items){
+      this.items = this.items.filter((i)=>i.id);
+    }
   }
 
   calculateNewItemPos(itemBefore){
@@ -230,21 +232,63 @@ export default class menuItemListController {
     }
   }
 
-  onItemMoved($index){
-    //update all items
-    this.Spinner.show("item-move");
-    const promises = [];
-    this.items.forEach((i, index)=>{
-      i.position=index*1000;
-      promises.push(i.update());
-    });
-    this.$q.all(promises).then(()=>{
-      this.Snack.show('Item moved');
-    }, ()=>{
-      this.Snack.showError('Error moving item');
-    }).then(()=>{
-      this.Spinner.hide("item-move");
-    })
+  updateItemsPositions(){
+      //update all items
+      const promises = [];
+      this.items.forEach((i, index)=>{
+        i.position=index*1000;
+        promises.push(i.update());
+      });
+      return this.$q.all(promises);
+  }
+
+  onItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo){
+
+    if (!$item.sectionId){
+      //only idd items that are not in the list yet
+      if ($item.id){
+        let found = 0;
+        this.items.forEach((i)=>{
+          console.log("i", i.id, $item.id);
+          if (i.id === $item.id){
+            found++;
+          }
+        })
+        // sort list adds the item in the new list, if we find it we must remove it
+        if (found>1){
+          this.Snack.showError('Item is already in section');
+          $partTo.splice($indexTo,1);
+          return;
+        }
+      }
+      this.Spinner.show("item-move");
+      $item.position = this.calculateNewItemPos($item);
+      $item.menuId = this.section.menuId;
+      this.section.moveItem($item)
+        .then(()=>{
+          return this.updateItemsPositions()
+        }).then(()=>{
+          this.Snack.show('Item added');
+        }, (err)=>{
+          console.log("error", err);
+          this.Snack.showError('Error adding item');
+        }).then(()=>{
+        this.Spinner.hide("item-move");
+      })
+    } else {
+      this.Spinner.show("item-move");
+      updateItemsPositions().then(()=>{
+        this.Snack.show('Item moved');
+      }, ()=>{
+        this.Snack.showError('Error moving item');
+      }).then(()=>{
+        this.Spinner.hide("item-move");
+      })
+    }
+
+
+
+
   }
 
   deleteItem(item){
@@ -299,7 +343,7 @@ export default class menuItemListController {
   }
 
   setMaxHeight(){
-    var maxHeight = 200;
+    var maxHeight = 1200;
     this.items.forEach((i)=>{
       maxHeight += 48 + 16 + (i.$size && i.$size.items ? i.$size.items.length * 35 : 0)
     })
@@ -314,10 +358,7 @@ export default class menuItemListController {
     this.Spinner = Spinner;
     this.UtilsService = UtilsService;
     this.$q = $q;
-
-    $scope.$watch('vm.items',(newVal)=>{
-      console.log("watching items",newVal);
-    })
+    this.items = this.items === undefined ? [] : this.items;
 
   }
 }
