@@ -243,20 +243,19 @@ export default class menuItemListController {
   }
 
   onItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo){
-
+    const that = this;
     if (!$item.sectionId){
       //only idd items that are not in the list yet
       if ($item.id){
         let found = 0;
-        this.items.forEach((i)=>{
-          console.log("i", i.id, $item.id);
+        that.items.forEach((i)=>{
           if (i.id === $item.id){
             found++;
           }
         })
         // sort list adds the item in the new list, if we find it we must remove it
         if (found>1){
-          this.Snack.showError('Item is already in section');
+          that.Snack.showError('Item is already in section');
           $partTo.splice($indexTo,1);
           return;
         }

@@ -8,6 +8,7 @@
     const originalPos = $item.position;
     $item.position = 0;
     if ($item){
+      $item.menuId = this.section.menuId;
       this.Spinner.show("moving-section-item");
       this.section.moveItem($item).then((newItem)=>{
         this.Snack.show("Item moved to section")
