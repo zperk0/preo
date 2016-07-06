@@ -2,5 +2,10 @@
     <div class='main-content-left'>
       <menu-section-list ng-if="vm.menu.sections" menu="vm.menu" sections="vm.menu.sections"></menu-section-list>
     </div>
+    <div class='floating-right-buttons'>
+      <md-button ng-click="vm.toggleSideNav()" class="md-primary md-hue-2" translate>Show modifiers</md-button>
+      <br/>
+      <md-button ng-click="vm.toggleSideNav()" class="md-primary md-hue-2" translate>Show Items</md-button>
+    </div>
     <div class='main-content-right' sticky contextual-menu-holder></div>
 </sticky-scroll>

@@ -11,6 +11,13 @@
     align-content: space-around;
     min-height:2600px;
   }
+  .floating-right-buttons{
+    position: absolute;
+    margin-top:30px;
+    right: 10px;
+    text-align: right;
+
+  }
 
   .main-content-right{
     padding:24px 16px;

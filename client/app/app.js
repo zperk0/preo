@@ -39,6 +39,7 @@ import snack from './components/snack';
 import spinner from './components/spinner';
 import imageUploader from './components/imageUploader';
 import tagList from './components/tagList';
+import contextualDrawer from './components/contextualDrawer';
 
 //TODO convert this to ES6
 require('./components/sticky/sticky.directive.js');
@@ -65,6 +66,7 @@ export default angular.module('webapp', [
   'sticky',
   imageUploader,
   tagList,
+  contextualDrawer,
   // /* internal */
   PreodayServices,
   v2Main,
