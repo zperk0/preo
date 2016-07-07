@@ -1,4 +1,4 @@
-import sanitize from './sanitize.filter';
+import sanitize from './sanitize/sanitize.filter';
 
 export default angular.module("filters" , [])
  .filter("sanitize", sanitize)
