@@ -17,5 +17,8 @@ export default class LabelService {
     this.TITLE_DELETE_IMAGE = $translate.instant("Delete image?");
     this.CONTENT_DELETE_IMAGE = $translate.instant("Are you sure you want to delete this image?");
 
+    this.TITLE_MULTIPLE_INSTANCES = $translate.instant("Multiple instances found");
+    this.CONTENT_MULTIPLE_INSTANCES = $translate.instant("You have edited an item that is in more than one menu. Where would you like to apply the changes?");
+
   }
 }

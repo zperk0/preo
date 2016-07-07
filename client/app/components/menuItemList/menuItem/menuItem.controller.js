@@ -50,15 +50,18 @@ export default class menuItemController {
           })
 
       } else {
-
-        this.menuItemListCtrl.saveItem(entity).then((item)=>{
-            this.Snack.show('Item updated');
-            this.contextualMenu.hide();
-            this.item = item;
-            this.item.$selected = false;
-        }, ()=>{
-          this.Snack.showError('Error updating item');
-        })
+        //is item in more than one menu? if not save
+        return this.menuItemListCtrl.saveItem(entity)
+          .then((item)=>{
+              this.Snack.show('Item updated');
+              this.contextualMenu.hide();
+              this.item = item;
+              this.item.$selected = false;
+          })
+          .catch(()=>{
+            console.log("on last catch")
+            this.Snack.showError('Error updating item');
+          })
       }
     }
   }

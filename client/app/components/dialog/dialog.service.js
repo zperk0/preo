@@ -20,10 +20,34 @@ export default class DialogService {
     newScope.content = content;
     newScope.hasCancel = true;
     return this.$mdDialog.show({
-      template:require('./dialog.tpl.html'),
+      template:require('./dialog.delete.tpl.html'),
       scope:newScope,
       focusOnOpen:false,
       controller: DeleteController
+    });
+  }
+
+  //tittle, content and array of buttons with {text:'confirm', id:1}. id will be returned on promise success
+  show (title, content, buttons) {
+
+    function DialogController($scope, $mdDialog) {
+      "ngInject";
+      $scope.cancel = function() {
+        $mdDialog.cancel();
+      };
+      $scope.confirm = function(buttonId) {
+        $mdDialog.hide(buttonId);
+      };
+    }
+    const newScope = this.$rootScope.$new();
+    newScope.title=title;
+    newScope.content = content;
+    newScope.buttons = buttons;
+    return this.$mdDialog.show({
+      template:require('./dialog.tpl.html'),
+      scope:newScope,
+      focusOnOpen:false,
+      controller: DialogController
     });
   }
 

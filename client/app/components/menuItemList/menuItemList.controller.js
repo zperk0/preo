@@ -147,10 +147,26 @@ export default class menuItemListController {
   }
 
   saveItem(updatedItem){
-    this.Spinner.show("item-save");
     return this.$q((resolve, reject)=>{
-      updatedItem.update()
-        .then((item) => {
+     updatedItem.getMenus()
+      .then((menus)=>{
+          if (menus && menus.length>1){
+            const buttons = [{name:'All menus', id:1}, {name:'Just this menu', id:2}]
+            return this.DialogService.show(this.LabelService.TITLE_MULTIPLE_INSTANCES, this.LabelService.CONTENT_MULTIPLE_INSTANCES, buttons)
+              .then((response)=>{
+                console.log("got response id", response)
+                if (response.id === 1 ){
+                  return updatedItem;
+                } else {
+                  alert('not yet implemented');
+                  return this.$q.reject();
+                  //clone item, remove this item from menu, add new item to this menu
+                }
+              })
+          }
+      }).then(()=>{
+        return updatedItem.update()
+      }).then((item) => {
           item.images = updatedItem.images;
           item.tags = updatedItem.tags;
           item.$size = updatedItem.$size;
@@ -352,7 +368,7 @@ export default class menuItemListController {
     this.element.css({"max-height":+maxHeight+"px"});
   }
 
-  constructor($scope, $q, Snack, Spinner, $stateParams, UtilsService, contextual) {
+  constructor($scope, $q, Snack, Spinner, $stateParams, UtilsService, contextual, DialogService, LabelService) {
     "ngInject";
     this.Snack = Snack;
     this.$stateParams = $stateParams;
@@ -361,6 +377,8 @@ export default class menuItemListController {
     this.$q = $q;
     this.items = this.items === undefined ? [] : this.items;
     this.contextual = contextual;
+    this.LabelService = LabelService;
+    this.DialogService = DialogService;
 
   }
 }
