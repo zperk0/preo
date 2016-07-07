@@ -276,7 +276,7 @@ export default class menuItemListController {
       })
     } else {
       this.Spinner.show("item-move");
-      updateItemsPositions().then(()=>{
+      this.updateItemsPositions().then(()=>{
         this.Snack.show('Item moved');
       }, ()=>{
         this.Snack.showError('Error moving item');
