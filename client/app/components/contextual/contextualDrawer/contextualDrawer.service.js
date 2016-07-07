@@ -20,9 +20,7 @@ export default class contextualDrawerService {
     this.id = id;
     this.$mdSidenav(id)
       .toggle()
-      .then(function () {
-        console.log("on then");
-      });
+
   }
 
   constructor($compile, $rootScope, $q, $mdSidenav) {

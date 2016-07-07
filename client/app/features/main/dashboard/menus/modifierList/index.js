@@ -9,6 +9,8 @@ import uirouter from 'angular-ui-router';
 import controller from './modifierList.controller';
 import routes from './modifierList.routes';
 
+import '../../../../../components/cardItemList';
+
 
 export default angular.module("modifierList" , [uirouter])
   .config(routes)

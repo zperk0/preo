@@ -1,0 +1,8 @@
+<div class='card-item-list'>
+  <card-item ng-repeat="item in vm.collection">
+    <card-item-title>
+      {{item.name}}
+    </card-item-title>
+    <card-item-actions is-visible="item.visible"></card-item-actions>
+  </card-item>
+</div>

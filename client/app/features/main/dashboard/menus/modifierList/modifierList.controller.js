@@ -3,9 +3,13 @@ export default class modifierListController {
   static get UID(){
     return "modifierListController"
   }
-  
-  /* @ngInject */
-  constructor() {
+
+  constructor(ModifierService, $stateParams) {
+    "ngInject";
+
+    ModifierService.getModifiers($stateParams.venueId,'modifiers').then((modifiers)=>{
+      this.modifiers = modifiers;
+    })
 
   }
 }
