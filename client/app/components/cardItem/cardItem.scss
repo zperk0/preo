@@ -7,13 +7,10 @@
   overflow: hidden;
   transition:all 0.3s linear;
 
-  &.expanded{
-
-    &> .card-item-actions {
-      .hidden-card-actions{
-        align-items: flex-start;
-        padding-top: 15px;
-      }
+  &> .card-item-actions {
+    .hidden-card-actions{
+      align-items: flex-start;
+      padding-top: 10px;
     }
   }
 

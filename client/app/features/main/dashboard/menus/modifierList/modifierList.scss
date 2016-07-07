@@ -1,3 +1,21 @@
 .modifier-list {
   height: 100%;
+
+
+    md-input-container.search{
+      top: 55px;
+      margin-left: 16px;
+      min-width:400px;
+
+      md-icon{
+        padding: 8px;
+      }
+
+      input{
+        padding-left:0;
+      }
+      label{
+        top:auto;
+      }
+    }
 }

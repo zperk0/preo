@@ -14,7 +14,9 @@ export default class ModifierService {
   deleteModifier(modifier){
     return modifier.delete()
       .then(()=>{
-        this.modifiers = this.modifiers.filter((m)=>m.id!==modifier.id)
+        if (this.modifiers){
+          this.modifiers = this.modifiers.filter((m)=>m.id!==modifier.id)
+        }
       })
   }
 

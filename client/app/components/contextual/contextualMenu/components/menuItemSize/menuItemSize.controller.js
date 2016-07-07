@@ -5,7 +5,7 @@ export default class menuItemSizeController {
 
 
   deleteSize(size){
-    this.ngModel.$deletedItems = this.ngModel.$deletedItems.concat(this.ngModel.items.filter((o)=>o.id === size.id));
+    this.ngModel.$deletedItems = this.ngModel.$deletedItems.concat(this.ngModel.items.filter((o)=> o == size));
     this.ngModel.items = this.ngModel.items.filter((o)=>o.id !== size.id);
   }
 
@@ -25,10 +25,31 @@ export default class menuItemSizeController {
     });
   }
 
+  onSizeSelect(){
+    console.log("size selected", arguments, this.ngModel.$isMultiple)
+    if (this.ngModel.$isMultiple && !this.ngModel.items.length){
+      this.$timeout(()=>{
+        this.ngModel = {
+          $deletedItems :[],
+          $isMultiple:true,
+          position:0,
+          variant:1,
+          venueId:this.$stateParams.venueId,
+          name:"Choose a size",
+          items:[
+          ]
+        }
+        this.ngModel.items.push(this.getEmptySize());
+        this.ngModel.items.push(this.getEmptySize());
+      })
+    }
+  }
+
   /* @ngInject */
-  constructor($scope, $stateParams) {
+  constructor($scope, $stateParams, $timeout) {
     'ngInject';
-    // this.ngModel
+    this.$stateParams = $stateParams;
+    this.$timeout = $timeout;
     this.emptyOption = {
       visible:1
     }
@@ -37,17 +58,9 @@ export default class menuItemSizeController {
       this.ngModel.$deletedItems = [];
     } else {
       this.ngModel = {
-        $deletedItems :[],
         $isMultiple:false,
-        position:0,
-        variant:1,
-        venueId:$stateParams.venueId,
-        name:"Choose a size",
-        items:[
-        ]
+        items:[]
       }
-      this.ngModel.items.push(this.getEmptySize());
-      this.ngModel.items.push(this.getEmptySize());
     }
   }
 }

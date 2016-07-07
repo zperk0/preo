@@ -2,12 +2,21 @@ html {
 
   md-sidenav{
     max-width:248px;
-  }
+
+
+ }
+
+ .menus .floating-right-buttons{
+  position: absolute;
+ }
 
   .menu {
     .main-content-right .contextual-right-menu {
       position: relative;
       margin:0;
     }
+  }
+  .contextual-drawer {
+    max-width: 334px;
   }
 }

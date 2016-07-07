@@ -3,6 +3,16 @@
     height:333px;
     margin:24px auto 100px;
     position: relative;
+
+  .delete-icon{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: white;
+    &:hover{
+      cursor: pointer;
+    }
+  }
   .image-wrapper{
     width: 100%;
     height:100%;

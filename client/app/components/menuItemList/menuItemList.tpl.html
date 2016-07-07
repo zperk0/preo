@@ -4,6 +4,7 @@
     <label translate>Search items</label>
     <input flex name="search" ng-model="vm.searchText.name">
   </md-input-container>
+
   <div  class='repeat-holder'
           sv-root='item'
           sv-on-start="vm.onItemMoveStart($item, $part, $index, $helper)"
@@ -21,7 +22,7 @@
              sv-element="item"
              section="vm.section"
        ></menu-item>
-       <div class='no-results' ng-if="results.length===0" translate>No results...</div>
+       <div class='no-results' ng-if="vm.items.length > 0 && results.length===0" translate>No results...</div>
   </div>
   <menu-item-new ng-if="vm.hasNew" section="vm.section" on-click="vm.showCreateItem($event,isImport)"></menu-item-new>
 </div>

@@ -4,6 +4,10 @@ export default class itemListController {
     return "itemListController"
   }
 
+  toggleDrawer(id){
+    this.contextual.showDrawer(id);
+  }
+
   setItems(venueId){
     this.ItemService.getItems(venueId, 'modifiers,images,tags')
       .then(this.handleFinishLoading.bind(this), this.handleError.bind(this,"FAILED_LOADING_MENU_ITEMS"))
@@ -21,10 +25,11 @@ export default class itemListController {
     //TODO handle error
   }
 
-  constructor($stateParams,$timeout, ItemService) {
+  constructor($stateParams,$timeout, ItemService, contextual) {
     "ngInject";
     this.$timeout= $timeout;
     this.ItemService =ItemService;
     this.setItems($stateParams.venueId);
+    this.contextual =contextual;
   }
 }

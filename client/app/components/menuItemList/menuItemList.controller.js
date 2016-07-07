@@ -38,14 +38,13 @@ export default class menuItemListController {
 
   getItemImage(newItemData){
     return this.$q((resolve,reject)=>{
-      console.log("before get", newItemData)
-      if (!newItemData.$image && newItemData.images.length){
-        console.log("before b64", newItemData)
+      if (newItemData.images.length && !newItemData.images[0].$save){
         this.UtilsService.getBase64Image(newItemData.images[0].image)
           .then((base64img)=>{
-            newItemData.$image = base64img;
-            newItemData.images = [];
-            console.log("got b64", newItemData)
+            newItemData.images = [{
+              $image:base64img,
+              $save:true
+            }];
             resolve();
           },reject);
       } else {
@@ -88,21 +87,26 @@ export default class menuItemListController {
     return item.updateTags()
     //save item images
       .then(()=>{
-        console.log("saving image");
-        if (item.$image){
-          console.log("saving imga really");
-          return Preoday.ItemImage.saveToCdn(item.$image, item.id, venueId)
-        }
-      })
-      .then((itemImage)=>{
-        if (itemImage) {
-          if (item.images && item.images.length){
-            console.log("updating", itemImage, item.images[0])
-            item.images[0].image = itemImage.image;
-            return item.images[0].update();
-          } else {
-            console.log("saving image to api")
-            return Preoday.ItemImage.save(itemImage);
+        if (item.images && item.images.length){
+          let img = item.images[0];
+          if (img.$save){
+            return Preoday.ItemImage.saveToCdn(img.$image, item.id, venueId)
+            .then((itemImage)=>{
+              if (itemImage) {
+                if (img.id){
+                  console.log("Item already had image, so update record");
+                  img.image = itemImage.image;
+                  return img.update();
+                } else {
+                  return Preoday.ItemImage.save(itemImage);
+                }
+              }
+            })
+          } else if (img.$delete){
+              // if we have a $image and it's a real image in the list delete it
+              return img.delete().then(()=>{
+                item.images = [];
+              })
           }
         }
       })
@@ -149,7 +153,6 @@ export default class menuItemListController {
         .then((item) => {
           item.images = updatedItem.images;
           item.tags = updatedItem.tags;
-          item.$image = updatedItem.$image;
           item.$size = updatedItem.$size;
           updatedItem = item;
           return updatedItem;
@@ -187,7 +190,6 @@ export default class menuItemListController {
           item.position = newItem.position;
           item.images = newItem.images;
           item.tags = newItem.tags;
-          item.$image = newItem.$image;
           item.$size = newItem.$size;
 
           this.addItemInPosition(item);

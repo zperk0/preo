@@ -145,7 +145,6 @@
            * Determine if the element should be sticking or not.
            */
           var checkIfShouldStick = function() {
-            console.log("checkimg stick");
             if ($scope.disabled === true || mediaQueryMatches()) {
               if (isSticking) unStickElement();
               return false;
@@ -154,7 +153,6 @@
             // What's the document client top for?
             var scrollbarPosition = scrollbarYPos();
             var shouldStick;
-            console.log("got scroll position", scrollbarPosition, stickyLine)
             if (anchor === 'top') {
               if (confine === true) {
                 shouldStick = scrollbarPosition > stickyLine && scrollbarPosition <= stickyBottomLine;
@@ -164,7 +162,6 @@
             } else {
               shouldStick = scrollbarPosition <= stickyLine;
             }
-            console.log("should stick ", shouldStick);
             // Switch the sticky mode if the element crosses the sticky line
             // $attrs.stickLimit - when it's equal to true it enables the user
             // to turn off the sticky function when the elem height is
@@ -189,7 +186,6 @@
           function deriveScrollingViewport(stickyNode) {
             // derive relevant scrolling by ascending the DOM tree
             var match =findAncestorTag (scrollableNodeTagName, stickyNode);
-            console.log("found match", match);
             return (match.length === 1) ? match[0] : $window;
           }
 
@@ -366,7 +362,6 @@
            * Triggered on change
            */
           var onChange = function (newVal, oldVal) {
-            console.log("on change", newVal, oldVal);
             /**
              * Indicate if the DOM element is showed, or not
              * @type {boolean}

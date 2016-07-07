@@ -44,7 +44,17 @@
   }
 
 
-  toggleExpanded(){
+  toggleExpanded($event){
+    if ($event){
+      var el = angular.element($event.target);
+      while (el[0]) {
+        el = angular.element(el);
+        if (el.hasClass('sv-long-pressing')){
+          return;
+        }
+        el = el.parent();
+      }
+    }
     this.menuSectionListCtrl.expandSection(this.section);
     this.contextualMenu.close();
   }
@@ -53,14 +63,15 @@
   setCardActions(){
     const that = this;
     this.cardItemActions={
-      onClone: ($event) => {
-         //will create a new section with this section as data
-        this.menuSectionListCtrl.cloneSection(this.section).then(()=>{
-            this.Snack.show('Section duplicated');
-          }, ()=>{
-            this.Snack.showError('Error duplicating section');
-          })
-      },
+      //disabled until we have a better use case for this
+      // onClone: ($event) => {
+      //    //will create a new section with this section as data
+      //   this.menuSectionListCtrl.cloneSection(this.section).then(()=>{
+      //       this.Snack.show('Section duplicated');
+      //     }, ()=>{
+      //       this.Snack.showError('Error duplicating section');
+      //     })
+      // },
       onEdit: ($event) => {
         this.originalSection = angular.copy(this.section);
         this.menuSectionListCtrl.selectSection(this.section);

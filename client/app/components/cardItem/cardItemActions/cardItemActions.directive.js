@@ -13,7 +13,6 @@ export default function cardItemActions(){
     require:"^cardItem",
     link: (scope, el, attr, cardItemCtrl) => {
       scope.vm = cardItemCtrl;
-
       scope.onMouseLeave = ($event)=>{
         cardItemCtrl.toggleCardActions($event, false);
       }

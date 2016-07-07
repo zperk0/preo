@@ -1,11 +1,14 @@
 <div class='item-list' layout="column">
   <div class="menu-toolbar" layout="row" layout-align="start center">
-    <div flex class='menu-name' translate>Item database</div>
+    <!-- <div flex class='menu-name' translate>Item database</div> -->
   </div>
   <sticky-scroll flex class="menu-content">
     <div class='main-content-left'>
-        <menu-item-list sv-disabled="true" ng-if="vm.items && vm.items.length" has-new="true" items="vm.items"></menu-item-list>
+        <menu-item-list has-search="true"  sv-disabled="true" ng-if="vm.items && vm.items.length" has-new="true" items="vm.items"></menu-item-list>
       </div>
+      <div class='floating-right-buttons'>
+      <md-button ng-click="vm.toggleDrawer('modifiers')" class="md-primary md-hue-2" translate>Show modifiers</md-button>
+    </div>
     <div class='main-content-right' sticky contextual-menu-holder></div>
   </sticky-scroll>
 </div>

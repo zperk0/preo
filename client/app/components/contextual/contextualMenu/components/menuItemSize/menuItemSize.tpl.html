@@ -1,5 +1,6 @@
 <div class='menu-item-size'>
-  <md-radio-group class='size' ng-model="vm.ngModel.$isMultiple">
+{{vm.ngModel}}
+  <md-radio-group class='size' ng-change="vm.onSizeSelect()" ng-model="vm.ngModel.$isMultiple">
       <md-radio-button ng-value="false" class="md-primary md-hue-2">Single Size</md-radio-button>
       <md-radio-button ng-value="true" class="md-primary md-hue-2"> Multiple Sizes </md-radio-button>
   </md-radio-group>
@@ -15,7 +16,7 @@
   </div>
   <div class='multi-size' ng-if="vm.ngModel.$isMultiple" layout="column">
 
-    <md-input-container>
+    <md-input-container class='variant-container'>
         <label translate>Variant Name</label>
         <input flex type="text" required name="sizeName" ng-model="vm.ngModel.name">
         <div ng-messages="sizeForm.sizeName.$error">

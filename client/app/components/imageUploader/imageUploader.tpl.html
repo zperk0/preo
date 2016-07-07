@@ -1,8 +1,10 @@
 <div class='image-uploader'>
-  <div class='image-wrapper placeholder' ng-if="!vm.initialValue && !vm.ngModel.$viewValue.length">
+{{vm.ngModel.$image}}
+  <div class='image-wrapper placeholder' ng-if="!vm.ngModel.length || !vm.ngModel[0].$image">
   </div>
-  <div class='image-wrapper' ng-if="vm.initialValue || vm.ngModel.$viewValue.length">
-   <img ng-src='{{vm.ngModel.$viewValue || vm.initialValue}}'>
+  <div class='image-wrapper' ng-if="vm.ngModel.length && vm.ngModel[0].$image">
+   <img ng-src='{{vm.ngModel[0].$image}}'>
+   <icon class='delete-icon' ng-click="vm.deleteImage($event)">delete</icon>
   </div>
   <div class='upload-specs'>
     <icon>info</icon>

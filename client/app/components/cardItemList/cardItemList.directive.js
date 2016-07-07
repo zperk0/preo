@@ -5,7 +5,8 @@ export default function cardItemList(){
   return {
     restrict: 'E',
     scope: {
-      collection:"="
+      collection:"=",
+      hasSearch:"=?"
     },
     template: require("./cardItemList.tpl.html"),
     controller: controller.UID,

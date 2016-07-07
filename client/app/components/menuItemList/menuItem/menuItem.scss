@@ -6,12 +6,11 @@ $heightMenuItemCard:48px;
   .card-item {
     margin:0;
 
-    &.expanded{
       .hidden-card-actions{
         align-items: flex-start;
         padding-top: 6px;
       }
-    }
+
     .card-title{
       max-height: $heightMenuItemCard;
       min-height: auto;

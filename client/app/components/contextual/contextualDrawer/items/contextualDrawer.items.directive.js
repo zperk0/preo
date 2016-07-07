@@ -6,7 +6,7 @@ export default function contextualMenu($compile, $timeout, $animate){
     restrict: 'E',
     template: require("./contextualDrawer.items.tpl.html"),
     controller: controller.UID,
-    controllerAs: "drawerCtrl",
+    controllerAs: "drawerItemsCtrl",
     bindToController: true,
     replace:true,
     link: (scope, el, attr, ctrl) => {

@@ -1,0 +1,22 @@
+.card-item-list{
+  .search{
+    position: fixed;
+    z-index: 1;
+    md-icon{
+      padding: 16px;
+      font-size: 18px;
+      color: #757575;
+    }
+    label{
+      top: -4px;
+    }
+
+    input{
+      padding-left:48px;
+    }
+
+    .md-errors-spacer{
+      display: none;
+    }
+  }
+}

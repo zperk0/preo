@@ -8,7 +8,7 @@
   border-radius: 2px;
 
   .form-content{
-    max-height: calc(100vh - 64px - 50px - 69px - 30px ); //100% - toolbar - optional dashboard toolbar - bottom buttons - extra spacing for bottom padding
+    max-height: calc(100vh - 64px - 50px - 90px - 30px ); //100% - toolbar - optional dashboard toolbar - bottom buttons - extra spacing for bottom padding
     overflow-y:auto;
 
   }

@@ -6,14 +6,14 @@
 
   .contextual-list{
     overflow-y: auto;
-    height: calc(100% - 81px); // 100% - footer cards
+    height: calc(100% - 49px); // 100% - footer cards
   }
 
   md-card-actions{
     border-top:1px solid #E0E0E0;
     background:#F5F5F5;
     margin: 0;
-    padding: 16px;
+    padding: 0px;
   }
 
   .card-title{
@@ -21,32 +21,22 @@
   }
 
   .search{
-    position: fixed;
     width: calc(100% - 15px); //100% - scroll bar width
     background: white;
-    z-index: 1;
     margin:0;
     padding:20px 0 0 0;
+    top:0;
 
-    md-icon{
-      padding: 16px;
-      font-size: 18px;
-      color: #757575;
-    }
-    label{
-      top: -4px;
-    }
-
-    input{
-      padding-left:48px;
-    }
-
-    .md-errors-spacer{
-      display: none;
+    &+.repeat-holder{
+      padding-top: 70px;
     }
   }
 
   .no-results{
     padding: 16px;
   }
+  .item-actions{
+    display: none;
+  }
+
 }

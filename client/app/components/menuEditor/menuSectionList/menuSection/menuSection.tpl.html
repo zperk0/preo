@@ -3,7 +3,7 @@
               selected="vm.section.$selected"
               expanded="vm.section.$expanded"
               >
-    <card-item-title ng-click="vm.toggleExpanded()"
+    <card-item-title ng-click="vm.toggleExpanded($event)"
                     has-visible="true"
                     sv-root="item"
                     show-visible="!vm.section.visible"
