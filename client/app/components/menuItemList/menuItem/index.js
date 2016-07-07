@@ -10,10 +10,11 @@ import directive from './menuItem.directive';
 import directiveNew from './menuItemNew.directive';
 
 import cardItem from '../../cardItem';
+import modifierChips from './modifierChips';
 
 
 
-export default angular.module("menuItem" , [cardItem])
+export default angular.module("menuItem" , [cardItem, modifierChips])
 
 
   .controller(controller.UID, controller)

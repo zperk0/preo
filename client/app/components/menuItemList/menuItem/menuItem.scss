@@ -15,6 +15,7 @@ $heightMenuItemCard:48px;
     .card-title{
       max-height: $heightMenuItemCard;
       min-height: auto;
+      padding:10px 14px;
 
       .price {
         float: right;
