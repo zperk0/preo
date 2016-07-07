@@ -2,4 +2,12 @@
   max-height:0px;
   overflow: hidden;
   transition:all 0.3s linear;
+
+  .search{
+
+    &+.repeat-holder{
+      padding-top: 70px;
+    }
+  }
+
 }

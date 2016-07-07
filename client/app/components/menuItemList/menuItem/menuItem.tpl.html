@@ -8,7 +8,7 @@
                     ng-attr-data-id="{{vm.item.id}}"
                     show-dropdown="true"> <span class='name' flex>{{vm.item.name}} </span> <span class='price'> {{vm.item.price | currency:"£"}}</span></card-item-title>
     <modifier-chips modifiers="vm.item.modifiers" item="vm.item"></modifier-chips>
-    <div class='size-wrapper' ng-if="!vm.item.$selected || vm.item.$size.$isMultiple">
+    <div class='size-wrapper' ng-if="vm.item.$size.items[0].id || vm.item.$selected || vm.item.$size.$isMultiple">
       <card-item-child ng-repeat="size in vm.item.$size.items" size="size"></card-item-child>
     </div>
     <card-item-actions is-visible="vm.item.visible"></card-item-actions>

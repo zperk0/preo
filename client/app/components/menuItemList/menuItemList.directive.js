@@ -10,7 +10,8 @@ export default function menuItemList($animate, $timeout){
       isDropzone:"=",
       svDisabled:"=?",
       svKeepInList:"=?",
-      section:"=?"
+      section:"=?",
+      hasSearch:"=?"
     },
     template: require("./menuItemList.tpl.html"),
     controller: controller.UID,

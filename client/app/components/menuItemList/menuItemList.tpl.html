@@ -1,4 +1,9 @@
 <div class='menu-item-list'>
+ <md-input-container class='search search-item' ng-if="vm.hasSearch">
+    <icon>search</icon>
+    <label translate>Search items</label>
+    <input flex name="search" ng-model="vm.searchText.name">
+  </md-input-container>
   <div  class='repeat-holder'
           sv-root='item'
           sv-on-start="vm.onItemMoveStart($item, $part, $index, $helper)"
@@ -10,13 +15,13 @@
           sv-part="vm.items">
          <div sv-placeholder></div>
       <menu-item
-             ng-repeat="item in vm.items"
+             ng-repeat="item in vm.items | filter:vm.searchText:strict as results"
              item="item"
              ng-attr-data-id="{{item.id}}"
              sv-element="item"
              section="vm.section"
        ></menu-item>
-
+       <div class='no-results' ng-if="results.length===0" translate>No results...</div>
   </div>
   <menu-item-new ng-if="vm.hasNew" section="vm.section" on-click="vm.showCreateItem($event,isImport)"></menu-item-new>
 </div>
