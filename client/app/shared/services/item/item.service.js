@@ -22,25 +22,20 @@ export default class ItemService {
 
 
   checkMultipleOccurrences(item){
-    //only try to prompt if action came from somewhere section related
-    if (item.sectionId){
-      const buttons = [{name:'All menus', id:'all'}, {name:'Just this menu', id:'single'}]
-      return item.getMenus()
-        .then((menus)=>{
-          if (item.sectionId && menus && menus.length>1){
-            return this.DialogService.show(this.LabelService.TITLE_MULTIPLE_INSTANCES, this.LabelService.CONTENT_MULTIPLE_INSTANCES, buttons)
-              .then((response)=>{
-                return response.id;
-              },()=>{
-                //if the user pressed escape
-                throw "Escape pressed, cancelling update";
-            })
-          }
-          return 'all'
-        })
-    }
-    //if not section related, we came from the item database, skip menu check
-    return this.$q.resolve('all');
+    const buttons = [{name:'All menus', id:'all'}, {name:'Just this menu', id:'single'}]
+    return item.getMenus()
+      .then((menus)=>{
+        if (menus && menus.length>1){
+          return this.DialogService.show(this.LabelService.TITLE_MULTIPLE_INSTANCES, this.LabelService.CONTENT_MULTIPLE_INSTANCES, buttons)
+            .then((response)=>{
+              return response.id;
+            },()=>{
+              //if the user pressed escape
+              throw "Escape pressed, cancelling update";
+          })
+        }
+        return 'all'
+      })
   }
 
   _saveItemImages(item){
@@ -129,17 +124,17 @@ export default class ItemService {
     return item;
   }
 
-  doSingleEdit(item){
-    return this.cloneItem(item)
+  doSingleEdit(item, sectionId){
+    return this.cloneItem(item, sectionId)
       .then((newItem)=>{
-        this.deleteItem(item)
+        this.removeFromSection(item, sectionId)
         return newItem;
       })
   }
 
 
 
-  cloneItem(item){
+  cloneItem(item, sectionId){
     const newItemData = angular.copy(item);
     //remove ids from all necesasry entities to duplicate them. We'll not clone Modifiers but will clone sizes. Images are handled below
     if (newItemData.$size){
@@ -162,15 +157,13 @@ export default class ItemService {
         newItemData.images = images;
         return newItemData
       })
-      .then(this.createItem.bind(this));
+      .then((newItem)=>{
+        return this.createItem(newItem, sectionId)
+      });
   }
 
-  updateItem(item,action = 'all', skipExtensions = false){
-    this.DEBUG && console.log("updating item", item, action, skipExtensions);
-    if (action === 'single'){
-      //at this point, item param is already with the new data in it so we do a single edit and nothing else is required.
-      return this.doSingleEdit(item);
-    }
+  updateItem(item, skipExtensions = false){
+    this.DEBUG && console.log("updating item", item, skipExtensions);
     return item.update()
       .then((updatedItem)=>{
         this.DEBUG && console.log("updated item", updatedItem);
@@ -197,9 +190,9 @@ export default class ItemService {
       //TODO update item modifiers
   }
 
-  createItem(item){
-    this.DEBUG && console.log("creating item", item);
-    return Preoday.Item.save(item)
+  createItem(item, sectionId){
+    this.DEBUG && console.log("creating item", item, sectionId);
+    return Preoday.Item.save(item, sectionId)
       .then((newItem)=>{
         this.DEBUG && console.log("created item", newItem);
         return newItem;
@@ -210,22 +203,22 @@ export default class ItemService {
       //TODO save item modifiers
       .then((newItem)=>{
         //if this item was created in the menu section editor the list is not going to be refreshed automagically
-        if (newItem.sectionId){
+        if (sectionId){
           this.data.items.push(newItem)
         }
         return newItem;
       })
   }
 
+  removeFromSection(item, sectionId){
+      return Preoday.Section.removeItems([item.id],sectionId)
+  }
+
   deleteItem(item){
-    if (item.sectionId){
-      return Preoday.Section.removeItems([item.id],item.sectionId)
-    }
     return item.delete()
       .then(()=>{
         this.data.items = this.data.items.filter((i)=>i.id!==item.id)
       })
-    //delete from list
   }
 
 

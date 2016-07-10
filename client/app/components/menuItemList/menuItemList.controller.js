@@ -73,30 +73,44 @@ export default class menuItemListController {
       return this.$q.all(promises);
   }
 
-  onItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo){
-    const that = this;
-    if (!$item.sectionId){
-      //only idd items that are not in the list yet
-      if ($item.id){
-        let found = 0;
-        that.items.forEach((i)=>{
-          if (i.id === $item.id){
-            found++;
-          }
-        })
+  isItemDuplicated(item){
+   let found = 0;
+    for (let i=0;i<this.items.length;i++){
+      if (this.items[i].id === item.id){
+        found++;
         // sort list adds the item in the new list, if we find it we must remove it
         if (found>1){
-          that.Snack.showError('Item is already in section');
-          $partTo.splice($indexTo,1);
-          return;
+          return true;
         }
       }
+    }
+  }
+
+  onItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo){
+
+    if ($partFrom == $partTo){
+
+      this.Spinner.show("item-move");
+      this.updateItemsPositions().then(()=>{
+        this.Snack.show('Item moved');
+      }, ()=>{
+        this.Snack.showError('Error moving item');
+      }).then(()=>{
+        this.Spinner.hide("item-move");
+      })
+    } else {
+       //must check because library appends the item in the array before calling callback
+      if (this.isItemDuplicated($item)){
+        this.Snack.showError('Item is already in section');
+        $partTo.splice($indexTo,1);
+        return;
+      }
+       //only idd items that are not in the list yet
       this.Spinner.show("item-move");
       $item.position = this.calculateNewItemPos($item);
       $item.menuId = this.section.menuId;
       this.section.moveItem($item)
         .then((item)=>{
-          $item.sectionId = item.sectionId;
           return this.updateItemsPositions()
         }).then(()=>{
           this.Snack.show('Item added');
@@ -104,15 +118,6 @@ export default class menuItemListController {
           console.log("error", err);
           this.Snack.showError('Error adding item');
         }).then(()=>{
-        this.Spinner.hide("item-move");
-      })
-    } else {
-      this.Spinner.show("item-move");
-      this.updateItemsPositions().then(()=>{
-        this.Snack.show('Item moved');
-      }, ()=>{
-        this.Snack.showError('Error moving item');
-      }).then(()=>{
         this.Spinner.hide("item-move");
       })
     }
@@ -146,10 +151,6 @@ export default class menuItemListController {
         if (isCreating){
           return;
         }
-      if (this.section && this.section.id) {
-        newItem.menuId = this.section.menuId;
-        newItem.sectionId = this.section.id;
-      }
       newItem.position = this.items.length ? (this.items[this.items.length-1]).position + 1000 : 0;
       this.items.push(newItem);
     } else {

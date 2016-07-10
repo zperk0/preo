@@ -27,20 +27,17 @@ export default class menuItemController {
   }
 
   toggleVisibility(newStatus){
-    this.ItemService.checkMultipleOccurrences(this.item)
-    .then((updateAction)=>{
-      this.item.visible = newStatus ? 1 : 0;
-       return this.ItemService.updateItem(this.item, updateAction, true)
-    })
-    .catch(()=>{
-          this.item.visible = !this.item.visible;
+    let updates = angular.copy(this.item);
+    updates.visible = newStatus ? 1 : 0;
+    this.updateItem(updates, true) //skip extensions
+      .catch(()=>{
           this.Snack.showError('Item visibility not changed');
-    })
+      })
   }
 
   cloneItem(){
     this.Spinner.show("item-clone")
-    this.ItemService.cloneItem(this.item)
+    this.ItemService.cloneItem(this.item, this.sectionId)
       .then((createdItem)=>{
         this.Spinner.hide("item-clone")
         this.Snack.show('Item duplicated');
@@ -55,7 +52,7 @@ export default class menuItemController {
 
   createItem(){
     this.Spinner.show("item-create")
-    this.ItemService.createItem(this.item)
+    this.ItemService.createItem(this.item, this.sectionId)
       .then((createdItem)=>{
         this.item = createdItem;
         this.Spinner.hide("item-create")
@@ -69,14 +66,19 @@ export default class menuItemController {
       })
   }
 
-  updateItem(updates){
-    this.ItemService.checkMultipleOccurrences(updates)
+  updateItem(updates, skipExtensions = false){
+    return this.checkMultipleOccurrences(updates)
     .then((updateAction)=>{
       this.Spinner.show("item-updated")
-      return this.ItemService.updateItem(updates, updateAction)
+      if (updateAction === 'all'){
+        return this.ItemService.updateItem(updates, skipExtensions)
+          .then((updatedItem)=>{
+            this.item = updatedItem;
+          })
+      }
+      return this.ItemService.doSingleEdit(updates, this.sectionId)
     })
-    .then((updatedItem)=>{
-        this.item = updatedItem;
+    .then(()=>{
         this.Spinner.hide("item-updated")
         this.Snack.show('Item updated');
         this.contextualMenu.hide();
@@ -115,22 +117,35 @@ export default class menuItemController {
   }
 
   deleteItem(){
-    const msg = this.item.sectionId ? this.LabelService.CONTENT_DELETE_ITEM_SECTION : this.LabelService.CONTENT_DELETE_ITEM;
+    const msg = this.sectionId ? this.LabelService.CONTENT_DELETE_ITEM_SECTION : this.LabelService.CONTENT_DELETE_ITEM;
     this.DialogService.delete(this.LabelService.TITLE_DELETE_ITEM, msg)
       .then(()=>{
           this.Spinner.show("item-delete");
-          this.ItemService.deleteItem(this.item)
-            .then(()=>{
-              this.Snack.show('Item deleted');
-              this.onItemDeleted({item:this.item});
-              this.Spinner.hide("item-delete");
-            })
-            .catch((err)=>{
-              console.log("Failed deleting item", err)
-              this.Spinner.hide("item-delete")
-              this.Snack.showError('Item not deleted');
-            })
+          if (this.sectionId){
+            return this.ItemService.removeFromSection(this.item, this.sectionId)
+          }
+          else {
+            return this.ItemService.deleteItem(this.item)
+          }
       })
+      .then(()=>{
+          this.Snack.show('Item deleted');
+          this.onItemDeleted({item:this.item});
+          this.Spinner.hide("item-delete");
+      })
+      .catch((err)=>{
+        console.log("Failed deleting item", err)
+        this.Spinner.hide("item-delete")
+        this.Snack.showError('Item not deleted');
+      })
+  }
+
+  //check if we have multiple occurrences before updating but only if we're in a section
+  checkMultipleOccurrences(updates){
+    if (this.sectionId){
+      return this.ItemService.checkMultipleOccurrences(updates || this.item)
+    }
+    return this.$q.resolve(updates || this.item)
   }
 
 

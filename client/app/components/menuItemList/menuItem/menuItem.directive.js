@@ -6,6 +6,7 @@ export default function menuItem(){
     restrict: 'E',
     scope: {
       item:"=",
+      sectionId:"=?",
       onItemCreated:"&",
       onItemDeleted:"&"
     },
