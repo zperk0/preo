@@ -66,20 +66,36 @@ export default class modifierItemController {
     }
 
     contextualMenuSuccess(updates){
-        if (!this.modifier.id){
-          this.createModifier();
-        }
-        else {
-          this.updateModifier(updates);
-        }
+      if (!this.modifier.id){
+        this.createModifier();
       }
+      else {
+        this.updateModifier(updates);
+      }
+    }
 
-      restoreOriginalValues(){
-        if (this.originalItem){
-          this.modifier = this.originalItem;
-          this.originalItem = false;
-        }
+    restoreOriginalValues(){
+      if (this.originalItem){
+        this.modifier = this.originalItem;
+        this.originalItem = false;
       }
+    }
+
+  cloneModifier(){
+    this.Spinner.show("modifier-clone")
+    this.ModifierService.cloneModifier(this.modifier)
+      .then((createdItem)=>{
+        this.Spinner.hide("modifier-clone")
+        this.Snack.show('Modifier duplicated');
+        if (this.onItemCreated){
+          this.onItemCreated({item:createdItem});
+        }
+      }, (err)=>{
+        console.log("failed duplicating modifier", err)
+        this.Spinner.hide("modifier-clone")
+        this.Snack.showError('Failed duplicating modifier');
+    })
+  }
 
   contextualMenuCancel(event, entity, type){
     this.restoreOriginalValues()

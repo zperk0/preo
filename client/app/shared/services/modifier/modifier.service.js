@@ -30,6 +30,24 @@ export default class ModifierService {
     this.data.modifiers.push(newModifier);
   }
 
+  cloneModifier(modifier){
+    const newModifierData = angular.copy(modifier);
+    //remove ids from all necesasry entities to duplicate them. We'll not clone Modifiers but will clone sizes. Images are handled below
+    delete newModifierData.id;
+    if (newModifierData.items && newModifierData.items.length){
+      newModifierData.items.forEach((modifierItem)=>{
+        delete modifierItem.id;
+        delete modifierItem.modifierId;
+      })
+    }
+    // Cloning an image is more complicated, we need to get the base64 from the current image and repost it
+    return this.createModifier(newModifierData)
+      .then((newModifierData)=>{
+        this.data.modifiers.push(newModifierData);
+        return newModifierData;
+      })
+  }
+
   createModifier(modifier){
     return Preoday.Modifier.save(modifier)
   }
@@ -66,6 +84,7 @@ export default class ModifierService {
         Preoday.Modifier.getAll({venueId:venueId, expand:expand})
         .then((modifiers)=>{
           this.data.modifiers = modifiers.filter((m)=>m.variant===0);
+          this.data.modifiers.sort((a,b)=>a.id-b.id)
           resolve(this.data);
         },(err)=>{
           console.log("Error fetching modifiers", err);

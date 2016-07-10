@@ -8,7 +8,7 @@
       <card-item-title>
         {{vm.modifier.id +" -- " | debug}}{{vm.modifier.name}}
       </card-item-title>
-      <card-item-actions on-clone="vm.onClone()"
+      <card-item-actions on-clone="vm.cloneModifier()"
                          on-delete="vm.deleteModifier()"
                          on-edit="vm.onEdit()"></card-item-actions>
     </card-item>
