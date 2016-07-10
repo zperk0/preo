@@ -37,7 +37,7 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
 #webappv2{
 
   //sidenav right should not show backdrop, property disable backdrop isnt working there
-  md-backdrop{
+  .md-sidenav-backdrop{
     display: none;
   }
 

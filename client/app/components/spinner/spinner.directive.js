@@ -11,7 +11,6 @@ export default function spinner(Spinner){
       scope.service=Spinner;
       scope.$watch('service.isVisible', (newVal) =>{
         scope.isVisible = newVal;
-        console.log("set new val", scope.isVisible)
       });
 
     }

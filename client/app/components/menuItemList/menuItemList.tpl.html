@@ -21,6 +21,8 @@
              ng-attr-data-id="{{item.id}}"
              sv-element="item"
              section="vm.section"
+             on-item-created="vm.onItemCreated(item)"
+             on-item-deleted="vm.onItemDeleted(item)"
        ></menu-item>
        <div class='no-results' ng-if="vm.items.length > 0 && results.length===0" translate>No results...</div>
   </div>

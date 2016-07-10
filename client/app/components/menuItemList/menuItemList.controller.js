@@ -36,196 +36,9 @@ export default class menuItemListController {
     return (this.items[this.items.length-1]).position + 1000
   }
 
-  getItemImage(newItemData){
-    return this.$q((resolve,reject)=>{
-      if (newItemData.images.length && !newItemData.images[0].$save){
-        this.UtilsService.getBase64Image(newItemData.images[0].image)
-          .then((base64img)=>{
-            newItemData.images = [{
-              $image:base64img,
-              $save:true
-            }];
-            resolve();
-          },reject);
-      } else {
-        resolve();
-      }
-    });
-  }
-
-
-  cloneItem(itemToClone){
-    const newItemData = angular.copy(itemToClone);
-    newItemData.position = this.calculateNewItemPos(itemToClone);
-    if (newItemData.$size){
-      delete newItemData.$size.id;
-      delete newItemData.$size.itemId;
-      newItemData.$size.$isMultiple = newItemData.$size.items && newItemData.$size.items.length > 0;
-      newItemData.$size.items.forEach((modifierItem)=>{
-        delete modifierItem.id;
-        delete modifierItem.modifierId;
-      })
-    }
-
-    return this.$q((resolve, reject)=>{
-      this.getItemImage(newItemData)
-        .then(()=>{
-          return this.createItem(newItemData)
-        })
-        .then(()=>{
-          this.Snack.show('Item duplicated');
-          resolve();
-        }, ()=>{
-          this.Snack.showError('Error duplicating item');
-          reject();
-        });
-    });
-  }
-
-  saveItemExtensions(item, venueId){
-    // save item tags
-    return item.updateTags()
-    //save item images
-      .then(()=>{
-        if (item.images && item.images.length){
-          let img = item.images[0];
-          if (img.$save){
-            return Preoday.ItemImage.saveToCdn(img.$image, item.id, venueId)
-            .then((itemImage)=>{
-              if (itemImage) {
-                if (img.id){
-                  console.log("Item already had image, so update record");
-                  img.image = itemImage.image;
-                  return img.update();
-                } else {
-                  return Preoday.ItemImage.save(itemImage);
-                }
-              }
-            })
-          } else if (img.$delete){
-              // if we have a $image and it's a real image in the list delete it
-              return img.delete().then(()=>{
-                item.images = [];
-              })
-          }
-        }
-      })
-      // save item sizes
-      .then(()=>{
-        //if we have an item size:
-        if (item.$size){
-          // if it's not to multiple we need to delete if it exists, the user has chosen a SINGLE item checkbox
-          if (!item.$size.$isMultiple){
-            if (item.$size.id){
-              return item.$size.delete().then(()=>{
-                item.$size = false;
-              })
-            }
-          }  // else if it is set to multiple we check if it has an id and update it or if it doesnt we create a new one
-          else if (!item.$size.id){
-            item.$size.itemId=item.id;
-            return Preoday.Modifier.save(item.$size).then((mod)=>{
-              item.$size = mod;
-            })
-          } else {
-            //if it's to be updated we should also check if it has any deleted items
-            var promises = [];
-            if (item.$size.$deletedItems && item.$size.$deletedItems.length){
-              item.$size.$deletedItems.forEach((modifierItem)=>{
-                  promises.push(modifierItem.delete());
-              });
-            }
-            return this.$q.all(promises)
-              .then(item.$size.update.bind(item.$size))
-              .then((mod)=>{
-                item.$size = mod;
-              })
-          }
-        }
-      })
-      //save item modifiers
-  }
-
-  saveItem(updatedItem){
-    return this.$q((resolve, reject)=>{
-     updatedItem.getMenus()
-      .then((menus)=>{
-          if (menus && menus.length>1){
-            const buttons = [{name:'All menus', id:1}, {name:'Just this menu', id:2}]
-            return this.DialogService.show(this.LabelService.TITLE_MULTIPLE_INSTANCES, this.LabelService.CONTENT_MULTIPLE_INSTANCES, buttons)
-              .then((response)=>{
-                console.log("got response id", response)
-                if (response.id === 1 ){
-                  return updatedItem;
-                } else {
-                  alert('not yet implemented');
-                  return this.$q.reject();
-                  //clone item, remove this item from menu, add new item to this menu
-                }
-              })
-          }
-      }).then(()=>{
-        return updatedItem.update()
-      }).then((item) => {
-          item.images = updatedItem.images;
-          item.tags = updatedItem.tags;
-          item.$size = updatedItem.$size;
-          updatedItem = item;
-          return updatedItem;
-        })
-        .then(()=>{
-          return this.saveItemExtensions(updatedItem, this.$stateParams.venueId)
-        })
-        .then(()=>{
-          console.log("resolving update item", updatedItem)
-          resolve(updatedItem);
-          this.Spinner.hide("item-save");
-        },(err)=>{
-          console.log("rejecting", err)
-          this.Spinner.hide("item-save");
-          reject();
-        })
-        .catch(()=>{
-          console.log("on catch");
-          this.Spinner.hide("item-save");
-          reject();
-        })
-    });
-  }
-
-  createItem(newItem){
-    console.log("creating item", newItem);
-    return this.$q((resolve, reject)=>{
-      this.Spinner.show("item-create");
-      //save item
-      Preoday.Item.save(newItem)
-        .then((item)=>{
-          //restore needed items here
-          item.menuId = newItem.menuId;
-          item.sectionId = newItem.sectionId;
-          item.position = newItem.position;
-          item.images = newItem.images;
-          item.tags = newItem.tags;
-          item.$size = newItem.$size;
-
-          this.addItemInPosition(item);
-          this.clearPossibleNewItem();
-          return item;
-      }).then((item)=>{
-          this.saveItemExtensions(item, this.$stateParams.venueId)
-      })
-      .then(()=>{
-        resolve();
-        this.Spinner.hide("item-create")
-      }, (err) => {
-        console.log("Failed to save item", err);
-        throw "failed to save item";
-      })
-      .catch(()=>{
-        this.Spinner.hide("item-create");
-        reject();
-      })
-    });
+  onItemCreated(newItem){
+    this.addItemInPosition(newItem);
+    this.clearPossibleNewItem();
   }
 
   addItemInPosition(item){
@@ -282,7 +95,8 @@ export default class menuItemListController {
       $item.position = this.calculateNewItemPos($item);
       $item.menuId = this.section.menuId;
       this.section.moveItem($item)
-        .then(()=>{
+        .then((item)=>{
+          $item.sectionId = item.sectionId;
           return this.updateItemsPositions()
         }).then(()=>{
           this.Snack.show('Item added');
@@ -303,25 +117,10 @@ export default class menuItemListController {
       })
     }
 
-
-
-
   }
 
-  deleteItem(item){
-    // call Preoday.Item or Preoday.Section method to delete item or remove from section
-    this.Spinner.show("item-delete");
-    const deleteAction = this.section ? this.section.removeItems.bind(this.section) : item.delete.bind(item);
-    deleteAction([item.id])
-      .then(()=>{
-        this.Snack.show('Item deleted');
-        this.items = this.items.filter((i)=>item.id !== i.id);
-      }, ()=>{
-        console.log("error deleting item");
-        this.Snack.showError('Error deleting item');
-      }).then(()=>{
-        this.Spinner.hide("item-delete");
-      })
+  onItemDeleted(item){
+    this.items = this.items.filter((i)=>item.id !== i.id);
   }
 
   showCreateItem($event, isImport){
@@ -333,6 +132,7 @@ export default class menuItemListController {
         $size:0,
         visible:1,
         tags:[],
+        images:[],
         venueId:this.$stateParams.venueId
     };
 
@@ -368,7 +168,7 @@ export default class menuItemListController {
     this.element.css({"max-height":+maxHeight+"px"});
   }
 
-  constructor($scope, $q, Snack, Spinner, $stateParams, UtilsService, contextual, DialogService, LabelService) {
+  constructor($scope, $q, Snack, Spinner, $stateParams, UtilsService, contextual, DialogService, LabelService, ItemService) {
     "ngInject";
     this.Snack = Snack;
     this.$stateParams = $stateParams;
@@ -379,6 +179,7 @@ export default class menuItemListController {
     this.contextual = contextual;
     this.LabelService = LabelService;
     this.DialogService = DialogService;
+    this.ItemService = ItemService;
 
   }
 }

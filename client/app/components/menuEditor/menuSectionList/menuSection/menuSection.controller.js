@@ -146,7 +146,6 @@
     this.menuItemType = 'menuItem';
     this.allowedDropTypes = [this.menuItemType];
     this.newItems = [];
-    console.log("ho");
     if (this.section && $stateParams.sectionId && this.section.id === Number($stateParams.sectionId)){
       $timeout(()=>{
         this.section.$expanded=true;

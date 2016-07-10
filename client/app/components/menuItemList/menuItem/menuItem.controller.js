@@ -8,61 +8,91 @@ export default class menuItemController {
     const that = this;
     this.cardItemActions={
       onClone: ($event) => {
-        that.menuItemListCtrl.cloneItem(this.item); //will create a new item with this item as data
+        that.cloneItem();
       },
       onEdit: ($event) => {
         that.originalItem  = angular.copy(that.item);
         that.menuItemListCtrl.selectItem(that.item);
-        that.contextual.showMenu(that.type, that.item, that.handleSuccess.bind(that), that.handleCancel.bind(that));
+        that.contextual.showMenu(that.type, that.item, that.contextualMenuSuccess.bind(that), that.contextualMenuCancel.bind(that));
       },
       onDelete: ($event)=>{
-        const msg = that.section ? that.LabelService.CONTENT_DELETE_ITEM_SECTION : that.LabelService.CONTENT_DELETE_ITEM;
-        that.DialogService.delete(that.LabelService.TITLE_DELETE_ITEM, msg)
-          .then(()=>{
-            that.menuItemListCtrl.deleteItem(that.item);
-          })
+        that.deleteItem();
         $event.stopPropagation();
       },
       onVisibility:(newStatus, $event)=>{
-        that.item.visible = newStatus ? 1 : 0;
-        that.menuItemListCtrl.saveItem(that.item)
-          .then(()=>{
-            this.Snack.show('Item updated');
-          }, ()=>{
-            this.Snack.showError('Error updating item');
-          })
+        that.toggleVisibility(newStatus)
         $event.stopPropagation();
       }
     }
   }
 
-  handleSuccess(entity){
-    if (this.item && entity){
+  toggleVisibility(newStatus){
+    this.ItemService.checkMultipleOccurrences(this.item)
+    .then((updateAction)=>{
+      this.item.visible = newStatus ? 1 : 0;
+       return this.ItemService.updateItem(this.item, updateAction, true)
+    })
+    .catch(()=>{
+          this.item.visible = !this.item.visible;
+          this.Snack.showError('Item visibility not changed');
+    })
+  }
 
-      if (!entity.id){
-        this.item = entity;
-        this.menuItemListCtrl.createItem(this.item)
-          .then(()=>{
-            this.contextualMenu.hide();
-            this.Snack.show('Item created');
-          }, ()=>{
-            this.Snack.showError('Error saving item');
-          })
+  cloneItem(){
+    this.Spinner.show("item-clone")
+    this.ItemService.cloneItem(this.item)
+      .then((createdItem)=>{
+        this.Spinner.hide("item-clone")
+        this.Snack.show('Item duplicated');
+        this.onItemCreated({item:createdItem});
+      }, (err)=>{
+        console.log("failed creating item", err)
+        this.Spinner.hide("item-clone")
+        this.Snack.showError('Failed duplicating item');
+    })
+  }
 
-      } else {
-        //is item in more than one menu? if not save
-        return this.menuItemListCtrl.saveItem(entity)
-          .then((item)=>{
-              this.Snack.show('Item updated');
-              this.contextualMenu.hide();
-              this.item = item;
-              this.item.$selected = false;
-          })
-          .catch(()=>{
-            console.log("on last catch")
-            this.Snack.showError('Error updating item');
-          })
-      }
+
+  createItem(){
+    this.Spinner.show("item-create")
+    this.ItemService.createItem(this.item)
+      .then((createdItem)=>{
+        this.item = createdItem;
+        this.Spinner.hide("item-create")
+        this.Snack.show('Item created');
+        this.contextualMenu.hide();
+        this.onItemCreated({item:this.item});
+      }, (err)=>{
+        console.log("failed creating item", err)
+        this.Spinner.hide("item-create")
+        this.Snack.showError('Failed creating item');
+      })
+  }
+
+  updateItem(updates){
+    this.ItemService.checkMultipleOccurrences(updates)
+    .then((updateAction)=>{
+      this.Spinner.show("item-updated")
+      return this.ItemService.updateItem(updates, updateAction)
+    })
+    .then((updatedItem)=>{
+        this.item = updatedItem;
+        this.Spinner.hide("item-updated")
+        this.Snack.show('Item updated');
+        this.contextualMenu.hide();
+    }, (err)=>{
+      console.log("Failed updating item", err)
+      this.Spinner.hide("item-updated")
+      this.Snack.showError('Item not updated');
+    })
+  }
+
+  contextualMenuSuccess(updates){
+    if (!this.item.id){
+      this.createItem();
+    }
+    else {
+      this.updateItem(updates);
     }
   }
 
@@ -76,7 +106,7 @@ export default class menuItemController {
     }
   }
 
-  handleCancel(event, entity, type){
+  contextualMenuCancel(event, entity, type){
     this.restoreOriginalValues()
     this.item.$selected = false;
     if (!this.item.id){
@@ -84,8 +114,27 @@ export default class menuItemController {
     }
   }
 
+  deleteItem(){
+    const msg = this.item.sectionId ? this.LabelService.CONTENT_DELETE_ITEM_SECTION : this.LabelService.CONTENT_DELETE_ITEM;
+    this.DialogService.delete(this.LabelService.TITLE_DELETE_ITEM, msg)
+      .then(()=>{
+          this.Spinner.show("item-delete");
+          this.ItemService.deleteItem(this.item)
+            .then(()=>{
+              this.Snack.show('Item deleted');
+              this.onItemDeleted({item:this.item});
+              this.Spinner.hide("item-delete");
+            })
+            .catch((err)=>{
+              console.log("Failed deleting item", err)
+              this.Spinner.hide("item-delete")
+              this.Snack.showError('Item not deleted');
+            })
+      })
+  }
 
-  constructor($q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu) {
+
+  constructor($q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
@@ -97,6 +146,7 @@ export default class menuItemController {
     this.$stateParams=$stateParams;
     this.setCardActions();
     this.contextual = contextual;
+    this.ItemService = ItemService;
     let inParam = false;
     if (this.item.id === Number($stateParams.itemId)){
       inParam = true;
@@ -105,7 +155,7 @@ export default class menuItemController {
     //if it's a new item we toggle the context menu to edit this
     if (this.item && !this.item.id || inParam) {
       $timeout(()=>{
-        this.contextual.showMenu(this.type, this.item, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+        this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
       })
     }
   }

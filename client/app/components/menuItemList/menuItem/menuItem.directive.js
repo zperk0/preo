@@ -5,8 +5,9 @@ export default function menuItem(){
   return {
     restrict: 'E',
     scope: {
-      item:"=?",
-      section:"=?"
+      item:"=",
+      onItemCreated:"&",
+      onItemDeleted:"&"
     },
     template: require("./menuItem.tpl.html"),
     controller: controller.UID,

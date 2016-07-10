@@ -79,3 +79,5 @@ export default angular.module('webapp', [
   .config(routes)
   .constant("BroadcastEvents", broadcastEvents)
   .name;
+
+window.DEBUG = true;
