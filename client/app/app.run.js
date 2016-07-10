@@ -21,7 +21,6 @@ export default function config(UserService, $rootScope, BroadcastEvents, VenueSe
   }
 
   $rootScope.$on(BroadcastEvents._ON_USER_AUTH,(event,user)=>{
-    console.log("User is auth, fetch venues", user);
     VenueService.fetchUserVenues(user)
       .then((venues)=>{
         if (venues.length === 0 ){

@@ -14,7 +14,6 @@ export default class venueSelectController {
   }
 
   setVenue(){
-    console.log("set venue");
     this.$timeout(()=>{
       this.venues = this.VenueService.venues;
       this.venue = this.VenueService.currentVenue;

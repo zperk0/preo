@@ -33,7 +33,6 @@ export default class VenueService {
               this.currentVenue = venue;
               this.$rootScope.$broadcast(this.BroadcastEvents._ON_FETCH_VENUES, venues);
               resolve(venues);
-              console.log("3");
             },reject);
           }
           this.currentVenue=venues[0];

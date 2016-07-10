@@ -11,19 +11,16 @@ export default class mainController {
     this.Spinner.hide("main");
   }
   setVenue($event, venueId){
-    console.log("setting venue", $event, venueId);
     this.VenueService.fetchById(venueId)
       .then(this.handleFinishLoading.bind(this), this.handleError.bind(this,"VENUE_NOT_FOUND"))
       .catch(this.handleError.bind(this));
   }
 
   handleError(err){
-    console.log("handle error");
     this.ErrorService.showError(err);
     this.hideSpinner();
   }
   handleFinishLoading(){
-    console.log("handle finished");
     this.hideSpinner();
 
   }

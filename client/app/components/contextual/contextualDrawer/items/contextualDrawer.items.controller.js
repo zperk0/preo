@@ -23,7 +23,6 @@ export default class contextualDrawerItemController {
 
 
     ItemService.getItems($stateParams.venueId,'images,tags,modifiers').then((data)=>{
-      console.log("got data", data);
       this.data = data;
     })
   }

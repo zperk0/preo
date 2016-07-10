@@ -16,7 +16,6 @@ export default class itemListController {
   }
 
   handleFinishLoading(data){
-    console.log("got data", data);
     this.$timeout(()=>{
       this.data = data
     })
