@@ -5,7 +5,10 @@ export default class ItemService {
   }
 
   getItemImage(item){
-    if (item.images && item.images.length){
+    if (item.images && item.images.length && !item.images[0].$delete){
+      if (item.images[0].$image){
+        return this.$q.resolve(item.images);
+      }
       return this.UtilsService.getBase64Image(item.images[0].image)
         .then((base64img)=>{
           return [{
@@ -33,7 +36,7 @@ export default class ItemService {
                 throw "Escape pressed, cancelling update";
             })
           }
-          return 'all'
+          return 'single'
         })
     }
     //if not section related, we came from the item database, skip menu check
@@ -126,16 +129,12 @@ export default class ItemService {
     return item;
   }
 
-  cloneAndUpdate(item,action){
-    if (action === 'all'){
-      return this.$q.resolve(item);
-    } else {
-      return this.cloneItem(item)
-        .then((newItem)=>{
-          this.deleteItem(item)
-          return newItem;
-        })
-    }
+  doSingleEdit(item){
+    return this.cloneItem(item)
+      .then((newItem)=>{
+        this.deleteItem(item)
+        return newItem;
+      })
   }
 
 
@@ -144,13 +143,18 @@ export default class ItemService {
     const newItemData = angular.copy(item);
     //remove ids from all necesasry entities to duplicate them. We'll not clone Modifiers but will clone sizes. Images are handled below
     if (newItemData.$size){
-      delete newItemData.$size.id;
-      delete newItemData.$size.itemId;
-      newItemData.$size.$isMultiple = newItemData.$size.items && newItemData.$size.items.length > 0;
-      newItemData.$size.items.forEach((modifierItem)=>{
-        delete modifierItem.id;
-        delete modifierItem.modifierId;
-      })
+      //if we explicitly marked this item as single before cloning, we don't clone sizes;
+      if (newItemData.$size.$isMultiple === false){
+        newItemData.$size  = false;
+      } else{
+        delete newItemData.$size.id;
+        delete newItemData.$size.itemId;
+        newItemData.$size.$isMultiple = newItemData.$size.items && newItemData.$size.items.length > 0;
+        newItemData.$size.items.forEach((modifierItem)=>{
+          delete modifierItem.id;
+          delete modifierItem.modifierId;
+        })
+      }
     }
     // Cloning an image is more complicated, we need to get the base64 from the current image and repost it
     return this.getItemImage(newItemData)
@@ -162,9 +166,12 @@ export default class ItemService {
   }
 
   updateItem(item,action = 'all', skipExtensions = false){
-    this.DEBUG && console.log("updating item", item);
-    return this.cloneAndUpdate(item,action)
-      .then(item.update.bind(item))
+    this.DEBUG && console.log("updating item", item, action, skipExtensions);
+    if (action === 'single'){
+      //at this point, item param is already with the new data in it so we do a single edit and nothing else is required.
+      return this.doSingleEdit(item);
+    }
+    return item.update()
       .then((updatedItem)=>{
         this.DEBUG && console.log("updated item", updatedItem);
         return updatedItem;
