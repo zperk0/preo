@@ -15,9 +15,10 @@ export default class itemListController {
 
   }
 
-  handleFinishLoading(items){
+  handleFinishLoading(data){
+    console.log("got data", data);
     this.$timeout(()=>{
-      this.items = items
+      this.data = data
     })
 
   }
@@ -27,6 +28,7 @@ export default class itemListController {
 
   constructor($stateParams,$timeout, ItemService, contextual) {
     "ngInject";
+    this.data = {items:[]}
     this.$timeout= $timeout;
     this.ItemService =ItemService;
     this.setItems($stateParams.venueId);

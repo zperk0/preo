@@ -10,11 +10,21 @@ export default class contextualDrawerItemController {
 
   }
 
+  onDestroy(){
+    this.listener();
+  }
+
+
   constructor($scope, ItemService, $stateParams,$mdSidenav) {
     "ngInject";
+    this.data = {items:[]};
     this.$mdSidenav = $mdSidenav;
-    ItemService.getItems($stateParams.venueId,'images,tags,modifiers').then((items)=>{
-      this.items = items;
+    this.$scope = $scope;
+
+
+    ItemService.getItems($stateParams.venueId,'images,tags,modifiers').then((data)=>{
+      console.log("got data", data);
+      this.data = data;
     })
   }
 }

@@ -36,7 +36,7 @@ export default class ItemService {
                 throw "Escape pressed, cancelling update";
             })
           }
-          return 'single'
+          return 'all'
         })
     }
     //if not section related, we came from the item database, skip menu check
@@ -71,7 +71,7 @@ export default class ItemService {
       }
     }
     this.DEBUG && console.log("Item does not have images")
-    return item;
+    return this.$q.resolve(item);
   }
 
   _saveItemTags(item){
@@ -83,7 +83,7 @@ export default class ItemService {
         })
     }
     this.DEBUG && console.log("New item does not have tags")
-    return item;
+    return this.$q.resolve(item);
   }
 
   _saveItemSize(item){
@@ -184,6 +184,16 @@ export default class ItemService {
         .then(this._saveItemImages.bind(this))
         .then(this._saveItemSize.bind(this))
       })
+      .then((item)=>{
+        //update the list of items with this new record
+        for (let i=0;i<this.data.items.length;i++){
+          if (this.data.items[i].id === item.id){
+            this.data.items[i] = item;
+            break;
+          }
+        }
+        return item;
+      })
       //TODO update item modifiers
   }
 
@@ -199,7 +209,10 @@ export default class ItemService {
       .then(this._saveItemSize.bind(this))
       //TODO save item modifiers
       .then((newItem)=>{
-        this.items.push(newItem)
+        //if this item was created in the menu section editor the list is not going to be refreshed automagically
+        if (newItem.sectionId){
+          this.data.items.push(newItem)
+        }
         return newItem;
       })
   }
@@ -210,8 +223,7 @@ export default class ItemService {
     }
     return item.delete()
       .then(()=>{
-        debugger;
-        this.items = this.items.filter((i)=>i.id!==item.id)
+        this.data.items = this.data.items.filter((i)=>i.id!==item.id)
       })
     //delete from list
   }
@@ -220,13 +232,13 @@ export default class ItemService {
   getItems(venueId, expand){
     return this.$q((resolve, reject)=>{
 
-      if (this.items){
-        resolve(this.items);
+      if (this.data.items){
+        resolve(this.data);
       } else {
         Preoday.Item.getAll({venueId:venueId, expand:expand})
         .then((items)=>{
-          this.items = items;
-          resolve(items);
+          this.data.items = items;
+          resolve(this.data);
         },(err)=>{
           console.log("Error fetching items", err);
           reject(err);
@@ -243,11 +255,13 @@ export default class ItemService {
 
   constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService) {
     "ngInject";
+    this.data = {};
     this.$q =$q;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.UtilsService = UtilsService;
     this.DEBUG = window.DEBUG || $location.search().debug;
+
 
   }
 }
