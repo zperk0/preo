@@ -5,14 +5,14 @@ export default function modifierChips(){
   return {
     restrict: 'E',
     scope: {
-      modifiers:"="
+      modifiers:"=",
+      item:'='
     },
     template: require("./modifierChips.tpl.html"),
     controller: controller.UID,
     controllerAs: "vm",
     bindToController: true,
     link: (scope, el, attr, ctrl) => {
-
     }
   }
 }

@@ -3,8 +3,12 @@ export default class modifierChipController {
     return "modifierChipController"
   }
 
-  /* @ngInject */
-  constructor() {
+  removeFromItem(){
+    this.ModifierService.removeFromItem(this.modifier,this.item)
+  }
+
+  constructor(ModifierService) {
     "ngInject";
+    this.ModifierService = ModifierService;
   }
 }

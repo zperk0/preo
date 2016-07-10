@@ -64,6 +64,14 @@ export default class ModifierService {
       .then(modifier.update.bind(modifier))
   }
 
+  removeFromItem(modifier, item){
+    debugger;
+    return modifier.delete(item.id)
+      .then(()=>{
+        item.modifiers = item.modifiers.filter((m)=>modifier.id !== m.id);
+      })
+  }
+
 
   deleteModifier(modifier){
     return modifier.delete()

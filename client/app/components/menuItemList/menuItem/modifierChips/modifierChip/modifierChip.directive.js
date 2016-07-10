@@ -6,6 +6,7 @@ export default function modifierChip(){
     restrict: 'E',
     scope: {
       modifier:"=",
+      item:"="
     },
     template: require("./modifierChip.tpl.html"),
     controller: controller.UID,
@@ -13,7 +14,6 @@ export default function modifierChip(){
     bindToController: true,
     require:["^^modifierChips","modifierChip"],
     link: (scope, el, attr, ctrl) => {
-
     }
   }
 }
