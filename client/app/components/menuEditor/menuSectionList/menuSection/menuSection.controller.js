@@ -7,7 +7,7 @@
     // move new item always to the beggining of new section
     const originalPos = $item.position;
     $item.position = 0;
-    if ($item){
+    if ($item && $item.sectionId != this.section.id){
       $item.menuId = this.section.menuId;
       this.Spinner.show("moving-section-item");
       this.section.moveItem($item).then((newItem)=>{
@@ -22,6 +22,9 @@
       .then(()=>{
         this.Spinner.hide("moving-section-item");
       });
+    } else {
+      //revert move
+      $partFrom.push($item);
     }
   }
 

@@ -4,13 +4,24 @@
     <label translate>Search modifiers</label>
     <input flex name="search" ng-model="vm.searchText.name">
   </md-input-container>
-  <div class='repeat-holder'>
-    <card-item ng-repeat="item in vm.collection | filter:vm.searchText:strict as results">
+  <div class='repeat-holder'
+        sv-root='modifier'
+        sv-on-sort="vm.onItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)"
+        sv-disabled="vm.svDisabled"
+        sv-keep-in-list="vm.svKeepInList"
+        sv-is-dropzone="vm.svIsDropzone"
+        sv-part="results">
+        <div sv-placeholder></div>
+    <card-item ng-repeat="item in vm.collection | filter:vm.searchText:strict as results"
+        ng-attr-data-id="{{item.id}}"
+        item="item"
+        sv-element="item">
       <card-item-title>
         {{item.name}}
       </card-item-title>
-      <card-item-actions is-visible="item.visible"></card-item-actions>
+      <card-item-actions ></card-item-actions>
     </card-item>
+    <card-item-new ng-if="vm.onClickNew" on-click="vm.clickNew()"></card-item-new>
   </div>
   <div class='no-results' ng-if="vm.collection.length > 0 && results.length===0" translate>No results...</div>
 </div>

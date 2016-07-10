@@ -8,6 +8,7 @@ export default function cardItem(){
     controller: controller.UID,
     scope:{
       cardItemActions:"=?",
+      item:"=",
       selected:"=?",
       expanded:"=?"
     },

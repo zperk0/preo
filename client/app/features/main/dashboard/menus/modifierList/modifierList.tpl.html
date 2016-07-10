@@ -4,7 +4,11 @@
   </div>
    <sticky-scroll flex class="menu-content">
     <div class='main-content-left'>
-        <card-item-list collection="vm.modifiers" has-search="true"></card-item-list>
+        <card-item-list
+          collection="vm.data.modifiers"
+          sv-disabled="true"
+          on-click-new="vm.onClickNew()"
+          has-search="true"></card-item-list>
       </div>
     <div class='main-content-right' sticky contextual-menu-holder></div>
   </sticky-scroll>

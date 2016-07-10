@@ -4,18 +4,44 @@ export default class ModifierService {
     return "ModifierService";
   }
 
+   showCreateModifier(){
+
+    let newModifier = {
+        $selected:true,
+        position:0,
+        variant:0,
+        minChoices:0,
+        maxChoices:0,
+        description:"",
+        name:"",
+        items:[],
+        venueId:this.$stateParams.venueId
+    };
+
+    let isCreating = false;
+      this.data.modifiers.forEach((s, index)=>{
+        if (!s.id){
+          isCreating = true;
+        }
+      });
+      if (isCreating){
+        return;
+    }
+    this.data.modifiers.push(newModifier);
+  }
+
   createModifier(modifier){
     return Preoday.Modifier.save(modifier)
       .then((mod)=>{
-        this.modifiers.push(mod)
+        this.data.modifiers.push(mod)
       })
   }
 
   deleteModifier(modifier){
     return modifier.delete()
       .then(()=>{
-        if (this.modifiers){
-          this.modifiers = this.modifiers.filter((m)=>m.id!==modifier.id)
+        if (this.data.modifiers){
+          this.data.modifiers = this.data.modifiers.filter((m)=>m.id!==modifier.id)
         }
       })
   }
@@ -24,13 +50,13 @@ export default class ModifierService {
   getModifiers(venueId, expand){
     return this.$q((resolve, reject)=>{
 
-      if (this.modifiers){
-        resolve(this.modifiers);
+      if (this.data.modifiers){
+        resolve(this.data);
       } else {
         Preoday.Modifier.getAll({venueId:venueId, expand:expand})
         .then((modifiers)=>{
-          this.modifiers = modifiers.filter((m)=>m.variant===0);
-          resolve(modifiers);
+          this.data.modifiers = modifiers.filter((m)=>m.variant===0);
+          resolve(this.data);
         },(err)=>{
           console.log("Error fetching modifiers", err);
           reject(err);
@@ -45,9 +71,11 @@ export default class ModifierService {
 
 
 
-  constructor($q, $rootScope) {
+  constructor($q, $rootScope, $stateParams) {
     "ngInject";
+    this.$stateParams = $stateParams;
     this.$q =$q;
+    this.data={};
 
   }
 }

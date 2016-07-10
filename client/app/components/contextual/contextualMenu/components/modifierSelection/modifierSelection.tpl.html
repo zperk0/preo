@@ -1,0 +1,20 @@
+<div class='modifier-selection'>
+  <md-radio-group class='selection' ng-model="vm.modifier.$isOptional">
+    <md-radio-button ng-value="false" class="md-primary md-hue-2">Optional</md-radio-button>
+    <md-radio-button ng-value="true" class="md-primary md-hue-2">Mandatory</md-radio-button>
+  </md-radio-group>
+    <md-input-container flex>
+        <label translate>Minimum Selection</label>
+        <input flex type="number" required name="minChoices" ng-model="vm.modifier.minChoices">
+        <div ng-messages="contextualForm.minChoices.$error">
+          <div ng-message="required" translate>This is required.</div>
+        </div>
+    </md-input-container>
+    <md-input-container flex>
+        <label translate>Maximum Selection</label>
+        <input flex type="number" required name="maxChoices" ng-model="vm.modifier.maxChoices">
+        <div ng-messages="contextualForm.maxChoices.$error">
+          <div ng-message="required" translate>This is required.</div>
+        </div>
+    </md-input-container>
+</div>

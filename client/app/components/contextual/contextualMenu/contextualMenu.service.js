@@ -49,6 +49,7 @@ export default class contextualMenuService {
     this.directiveHtml ='<contextual-menu template="template" entity="entity"></contextual-menu>';
 
     this.$el = this.$compile(this.directiveHtml)(newScope);
+    console.log("appending", this.$el);
     this.parent.append(this.$el);
   }
 

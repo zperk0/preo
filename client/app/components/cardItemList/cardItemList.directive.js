@@ -6,6 +6,10 @@ export default function cardItemList(){
     restrict: 'E',
     scope: {
       collection:"=",
+      svDisabled:"=",
+      svKeepInList:"=?",
+      svIsDropzone:"=?",
+      onClickNew:"&?",
       hasSearch:"=?"
     },
     template: require("./cardItemList.tpl.html"),

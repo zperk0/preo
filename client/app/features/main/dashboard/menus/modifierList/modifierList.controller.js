@@ -4,11 +4,16 @@ export default class modifierListController {
     return "modifierListController"
   }
 
+  onClickNew(){
+    this.ModifierService.showCreateModifier();
+  }
+
   constructor(ModifierService, $stateParams) {
     "ngInject";
-
-    ModifierService.getModifiers($stateParams.venueId,'modifiers').then((modifiers)=>{
-      this.modifiers = modifiers;
+    this.ModifierService =ModifierService;
+    ModifierService.getModifiers($stateParams.venueId,'modifiers').then((data)=>{
+      console.log("got data", data)
+      this.data = data;
     })
 
   }

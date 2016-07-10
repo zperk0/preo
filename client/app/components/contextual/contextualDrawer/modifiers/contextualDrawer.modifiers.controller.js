@@ -13,8 +13,8 @@ export default class contextualDrawerItemController {
   constructor($scope, ModifierService, $stateParams,$mdSidenav) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
-    ModifierService.getModifiers($stateParams.venueId,'items').then((modifiers)=>{
-      this.modifiers = modifiers;
+    ModifierService.getModifiers($stateParams.venueId,'items').then((data)=>{
+      this.data = data;
     })
   }
 }
