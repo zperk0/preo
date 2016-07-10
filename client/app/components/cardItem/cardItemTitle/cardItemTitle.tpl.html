@@ -4,7 +4,7 @@
       <span ng-transclude flex></span>
       <icon class='arrow-icon' ng-if="showDropdown">{{vm.expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
     </div>
-    <md-button class="md-icon-button item-actions" ng-if="vm.cardItemActions" ng-mouseenter="vm.toggleCardActions($event)">
+    <md-button class="md-icon-button item-actions" ng-if="vm.hasActions" ng-mouseenter="vm.toggleCardActions($event)">
       <icon>more_horiz</icon>
     </md-button>
 </div>

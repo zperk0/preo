@@ -1,3 +1,4 @@
+import controller from './cardItemActions.controller';
 export default function cardItemActions(){
   "ngInject";
 
@@ -6,15 +7,22 @@ export default function cardItemActions(){
   return {
     restrict: 'E',
     scope: {
-      isVisible:"="
+      isVisible:"=",
+      onClone:'&?',
+      onDelete:'&?',
+      onEdit:'&?',
+      onVisibility:'&?',
     },
     template: require("./cardItemActions.tpl.html"),
     replace:true,
-    require:"^cardItem",
-    link: (scope, el, attr, cardItemCtrl) => {
-      scope.vm = cardItemCtrl;
+    controller: controller.UID,
+    controllerAs: "vm",
+    bindToController: true,
+    require:["^cardItem", "cardItemActions"],
+    link: (scope, el, attr, ctrls) => {
+      scope.cardItem = ctrls[0];
       scope.onMouseLeave = ($event)=>{
-        cardItemCtrl.toggleCardActions($event, false);
+        ctrls[0].toggleCardActions($event, false);
       }
     }
   };

@@ -1,5 +1,5 @@
 <div class='menu-section'>
-  <card-item card-item-actions="vm.cardItemActions"
+  <card-item  has-actions="true"
               selected="vm.section.$selected"
               expanded="vm.section.$expanded"
               >
@@ -14,6 +14,10 @@
                       {{vm.section.id + "--" | debug}}{{vm.section.name}}
                     </span></card-item-title>
     <menu-item-list ng-if="vm.section.$expanded" has-new="vm.section.$expanded" items="vm.section.items" section="vm.section"></menu-item-list>
-    <card-item-actions is-visible="vm.section.visible"></card-item-actions>
+    <card-item-actions is-visible="vm.section.visible"
+                       on-delete="vm.onDelete()"
+                       on-edit="vm.onEdit()"
+                       on-visibility="vm.onVisibility(newStatus)"
+                        ></card-item-actions>
   </card-item>
 </div>

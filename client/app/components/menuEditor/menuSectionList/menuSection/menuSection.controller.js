@@ -62,39 +62,25 @@
     this.contextualMenu.close();
   }
 
-  //sets action callbacks for <card-item-actions>
-  setCardActions(){
-    const that = this;
-    this.cardItemActions={
-      //disabled until we have a better use case for this
-      // onClone: ($event) => {
-      //    //will create a new section with this section as data
-      //   this.menuSectionListCtrl.cloneSection(this.section).then(()=>{
-      //       this.Snack.show('Section duplicated');
-      //     }, ()=>{
-      //       this.Snack.showError('Error duplicating section');
-      //     })
-      // },
-      onEdit: ($event) => {
-        this.originalSection = angular.copy(this.section);
-        this.menuSectionListCtrl.selectSection(this.section);
-        this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
-        this.section.$expanded = false;
-      },
-      onDelete: ($event)=>{
-        this.DialogService.delete(this.LabelService.TITLE_DELETE_SECTION, this.LabelService.CONTENT_DELETE_SECTION)
-          .then(()=>{
-            this.menuSectionListCtrl.deleteSection(this.section)
-          })
-        $event.stopPropagation();
-      },
-      onVisibility:(newStatus, $event)=>{
-        this.section.visible = newStatus ? 1 : 0;
-        this.saveSection();
-        $event.stopPropagation();
-      }
-    }
+
+  onEdit($event){
+    this.originalSection = angular.copy(this.section);
+    this.menuSectionListCtrl.selectSection(this.section);
+    this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+    this.section.$expanded = false;
   }
+  onDelete(){
+    this.DialogService.delete(this.LabelService.TITLE_DELETE_SECTION, this.LabelService.CONTENT_DELETE_SECTION)
+      .then(()=>{
+        this.menuSectionListCtrl.deleteSection(this.section)
+      })
+  }
+
+  onVisibility(newStatus){
+    this.section.visible = newStatus ? 1 : 0;
+    this.saveSection();
+  }
+
 
   restoreOriginalValues(){
     if (this.originalSection){
@@ -145,7 +131,6 @@
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.type = 'menuSection'; //type for contextual menu
-    this.setCardActions();
     this.menuItemType = 'menuItem';
     this.allowedDropTypes = [this.menuItemType];
     this.newItems = [];

@@ -7,7 +7,7 @@ export default function cardItem(){
     template: require("./cardItem.tpl.html"),
     controller: controller.UID,
     scope:{
-      cardItemActions:"=?",
+      hasActions:"=?",
       item:"=",
       selected:"=?",
       expanded:"=?"
