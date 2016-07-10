@@ -3,6 +3,13 @@ export default class modifierItemController {
     return "modifierItemController"
   }
 
+  onEdit(){
+    console.log("On edit");
+    this.originalItem  = angular.copy(this.modifier);
+    this.list.selectItem(this.modifier);
+    this.contextual.showMenu(this.type, this.modifier, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+  }
+
     deleteModifier(){
       this.DialogService.delete(this.LabelService.TITLE_DELETE_MODIFIER, this.LabelService.CONTENT_DELETE_MODIFIER)
         .then(()=>{
@@ -69,7 +76,7 @@ export default class modifierItemController {
 
       restoreOriginalValues(){
         if (this.originalItem){
-          this.modifier = originalitem;
+          this.modifier = this.originalItem;
           this.originalItem = false;
         }
       }
@@ -89,6 +96,7 @@ export default class modifierItemController {
       this.Spinner = Spinner;
       this.Snack = Snack;
       this.contextualMenu = contextualMenu;
+      this.contextual = contextual;
       this.LabelService = LabelService
       this.DialogService = DialogService
       this.ModifierService = ModifierService;

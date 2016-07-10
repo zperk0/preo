@@ -33,12 +33,18 @@ export default class ModifierService {
   createModifier(modifier){
     return Preoday.Modifier.save(modifier)
   }
-  // updateModifier(modifier){
-  //   return Preoday.Modifier.save(modifier)
-  //     .then((mod)=>{
-  //       this.data.modifiers.push(mod)
-  //     })
-  // }
+  updateModifier(modifier){
+    var promises = [];
+    //delete each of the individual modifier items
+    if (modifier.$deletedItems && modifier.$deletedItems.length){
+        modifier.$deletedItems.forEach((modifierItem)=>{
+            promises.push(modifierItem.delete());
+        });
+      }
+    //once they're all deleted, update the modifier to change values and create new options
+    return this.$q.all(promises)
+      .then(modifier.update.bind(modifier))
+  }
 
 
   deleteModifier(modifier){
