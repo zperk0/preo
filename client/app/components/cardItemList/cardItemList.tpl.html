@@ -13,13 +13,17 @@
         sv-part="results">
         <div sv-placeholder></div>
     <card-item ng-repeat="item in vm.collection | filter:vm.searchText:strict as results"
-        ng-attr-data-id="{{item.id}}"
-        item="item"
-        sv-element="item">
+                ng-attr-data-id="{{item.id}}"
+                has-actions="true"
+                item="item"
+                selected="item.$selected"
+                sv-element="item">
       <card-item-title>
-        {{item.name}}
+        {{item.id | debug}}{{item.name}}
       </card-item-title>
-      <card-item-actions ></card-item-actions>
+      <card-item-actions on-clone="vm.onClone()"
+                         on-delete="vm.onDelete()"
+                         on-edit="vm.onEdit()"></card-item-actions>
     </card-item>
     <card-item-new ng-if="vm.onClickNew" on-click="vm.clickNew()"></card-item-new>
   </div>

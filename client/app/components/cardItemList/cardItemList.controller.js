@@ -3,6 +3,16 @@ export default class cardItemListController {
     return "cardItemListController"
   }
 
+  selectItem(item){
+    this.collection.forEach((i)=>{
+      if (item && i.id===item.id){
+        item.$selected = true;
+      } else {
+        item.$selected = false
+      }
+    })
+  }
+
   onClone(){
     console.log("cloning item");
   }
