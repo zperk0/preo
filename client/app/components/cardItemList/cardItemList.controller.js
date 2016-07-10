@@ -3,34 +3,15 @@ export default class cardItemListController {
     return "cardItemListController"
   }
 
-    //sets action callbacks for <card-item-actions>
-  setCardActions(){
-    const that = this;
-    this.cardItemActions={
-      onClone: ($event) => {
-        that.cloneItem();
-      },
-      onEdit: ($event) => {
-        that.originalItem  = angular.copy(that.item);
-        that.menuItemListCtrl.selectItem(that.item);
-        that.contextual.showMenu(that.type, that.item, that.contextualMenuSuccess.bind(that), that.contextualMenuCancel.bind(that));
-      },
-      onDelete: ($event)=>{
-        that.deleteItem();
-        $event.stopPropagation();
-      }
-    }
-  }
-
-  cloneItem(){
+  onClone(){
     console.log("cloning item");
   }
 
-  editItem(){
+  onEdit(){
     console.log("edit item");
   }
 
-  deleteItem(){
+  onDelete(){
    console.log("delete item");
   }
 
@@ -43,6 +24,5 @@ export default class cardItemListController {
 
   constructor() {
     "ngInject";
-    this.setCardActions();
   }
 }

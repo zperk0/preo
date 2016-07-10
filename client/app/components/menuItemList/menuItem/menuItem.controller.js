@@ -3,33 +3,28 @@ export default class menuItemController {
     return "menuItemController";
   }
 
-  //sets action callbacks for <card-item-actions>
-  setCardActions(){
-    const that = this;
-    this.cardItemActions={
-      onClone: ($event) => {
-        that.cloneItem();
-      },
-      onEdit: ($event) => {
-        that.originalItem  = angular.copy(that.item);
-        that.menuItemListCtrl.selectItem(that.item);
-        that.contextual.showMenu(that.type, that.item, that.contextualMenuSuccess.bind(that), that.contextualMenuCancel.bind(that));
-      },
-      onDelete: ($event)=>{
-        that.deleteItem();
-        $event.stopPropagation();
-      },
-      onVisibility:(newStatus, $event)=>{
-        that.toggleVisibility(newStatus)
-        $event.stopPropagation();
-      }
-    }
+  onClone ($event){
+      this.cloneItem();
+  }
+  onEdit ($event){
+    this.originalItem  = angular.copy(this.item);
+    this.menuItemListCtrl.selectItem(this.item);
+    this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+  }
+  onDelete ($event){
+    this.deleteItem();
+  }
+  onVisibility (newStatus){
+    this.toggleVisibility(newStatus)
   }
 
   toggleVisibility(newStatus){
     let updates = angular.copy(this.item);
     updates.visible = newStatus ? 1 : 0;
     this.updateItem(updates, true) //skip extensions
+      .then(()=>{
+        this.menuItemListCtrl.selectItem();
+      })
       .catch(()=>{
           this.Snack.showError('Item visibility not changed');
       })
@@ -114,6 +109,8 @@ export default class menuItemController {
     if (!this.item.id){
       this.menuItemListCtrl.clearPossibleNewItem();
     }
+    //clear selection
+    this.menuItemListCtrl.selectItem();
   }
 
   deleteItem(){
@@ -159,7 +156,6 @@ export default class menuItemController {
     this.LabelService = LabelService;
     this.type="menuItem";
     this.$stateParams=$stateParams;
-    this.setCardActions();
     this.contextual = contextual;
     this.ItemService = ItemService;
     let inParam = false;

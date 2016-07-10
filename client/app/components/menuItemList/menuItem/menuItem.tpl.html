@@ -1,5 +1,5 @@
 <div class='menu-item'>
-    <card-item card-item-actions="vm.cardItemActions"
+    <card-item has-actions="true"
               selected="vm.item.$selected"
               expanded="vm.item.$expanded">
     <card-item-title
@@ -11,6 +11,10 @@
     <div class='size-wrapper' ng-if="!(vm.item.$size.$isMultiple === false) && vm.item.$size.items.length">
       <card-item-child ng-repeat="size in vm.item.$size.items" size="size"></card-item-child>
     </div>
-    <card-item-actions is-visible="vm.item.visible"></card-item-actions>
+    <card-item-actions is-visible="vm.item.visible"
+                       on-clone="vm.onClone()"
+                       on-delete="vm.onDelete()"
+                       on-edit="vm.onEdit()"
+                       on-visibility="vm.onVisibility(newStatus)"></card-item-actions>
   </card-item>
 </div>
