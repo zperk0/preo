@@ -16,7 +16,9 @@ export default function cardItem(){
     bindToController: true,
     transclude:true,
     replace:true,
+    require:["^?cardItemList","cardItem"],
     link: (scope, el, attr, ctrl) => {
+      ctrl[1].list = ctrl[0];
 
     }
   }

@@ -3,26 +3,24 @@ export default class cardItemListController {
     return "cardItemListController"
   }
 
+
+  clearPossibleNewItem(){
+    console.log("clearing possible");
+    if (this.collection){
+      this.collection = this.collection.filter((s)=>s.id !== undefined)
+    }
+  }
+
+
   selectItem(item){
+    this.clearPossibleNewItem();
     this.collection.forEach((i)=>{
       if (item && i.id===item.id){
-        item.$selected = true;
+        i.$selected = true;
       } else {
-        item.$selected = false
+        i.$selected = false
       }
     })
-  }
-
-  onClone(){
-    console.log("cloning item");
-  }
-
-  onEdit(){
-    console.log("edit item");
-  }
-
-  onDelete(){
-   console.log("delete item");
   }
 
   clickNew(){

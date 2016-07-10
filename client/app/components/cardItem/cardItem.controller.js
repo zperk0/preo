@@ -8,24 +8,9 @@ export default class cardItemController {
     $event.stopPropagation();
   }
 
-  contextualMenuSuccess(){
 
-  }
-
-  contextualMenuCancel(){
-
-  }
-
-
-  constructor($timeout, contextual) {
+  constructor($timeout, contextual, contextualMenu, LabelService, Spinner, Snack, ModifierService) {
     "ngInject";
-    this.showCardActions = false;
-    this.type="modifier";
 
-    if (this.item && !this.item.id) {
-      $timeout(()=>{
-        contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
-      })
-    }
   }
 }

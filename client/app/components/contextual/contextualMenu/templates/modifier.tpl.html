@@ -1,12 +1,10 @@
 <md-card-content>
-   <md-input-container class="md-block">
+  {{vm.entity | debug}}
+   <md-input-container class="md-block no-spacer">
       <label translate>Modifier name</label>
       <input type="text" required name="entityName" ng-model="vm.entity.name" ng-maxlength="100">
-      <div ng-messages="contextualForm.entityName.$error">
-        <div ng-message="required" translate>This is required.</div>
-      </div>
-      <modifier-selection modifier="vm.entity"></modifier-selection>
-      <modifier-items items="vm.entity.items"></modifier-items>
   </md-input-container>
+  <modifier-selection modifier="vm.entity"></modifier-selection>
+  <modifier-items modifier="vm.entity"></modifier-items>
 </md-card-content>
 

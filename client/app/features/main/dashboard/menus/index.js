@@ -11,7 +11,7 @@ import routes from './menus.routes';
 import v2Menu from './menu';
 import v2MenuList from './menuList';
 import v2ItemList from './itemList';
-import v2ModifierList from './modifierList';
+import v2ModifierList from './modifiers';
 
 import menuSection from '../../../../components/menuEditor';
 

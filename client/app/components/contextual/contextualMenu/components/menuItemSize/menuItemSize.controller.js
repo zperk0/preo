@@ -6,11 +6,13 @@ export default class menuItemSizeController {
 
   deleteSize(size){
     this.ngModel.$deletedItems = this.ngModel.$deletedItems.concat(this.ngModel.items.filter((o)=> o == size));
-    this.ngModel.items = this.ngModel.items.filter((o)=>o.id !== size.id);
+    this.ngModel.items = this.ngModel.items.filter((o)=>o != size);
   }
 
   getEmptySize(){
-    let opt = angular.copy(this.emptyOption);
+    let opt = {
+      visible:1
+    }
     opt.position = this.ngModel.items.length * 1000;
     return opt;
   }
@@ -50,9 +52,6 @@ export default class menuItemSizeController {
     'ngInject';
     this.$stateParams = $stateParams;
     this.$timeout = $timeout;
-    this.emptyOption = {
-      visible:1
-    }
     if (this.ngModel && this.ngModel.id){
       this.ngModel.$isMultiple = true;
       this.ngModel.$deletedItems = [];

@@ -1,0 +1,28 @@
+.modifier-selection{
+  color:#808080;
+  font-size:  16px;
+  md-radio-button{
+    display: inline-block;
+
+    &+md-radio-button{
+      margin-left:24px;
+    }
+  }
+  .inline-input {
+    display: block;
+
+    md-input-container{
+      margin:0 0 8px;
+    }
+    label{
+      color:#9E9E9E;
+      min-width: 150px;
+      display: inline-block;
+    }
+    input{
+      color:#757575;
+      width: 85px;
+      text-align: center;
+    }
+  }
+}

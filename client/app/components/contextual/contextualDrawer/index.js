@@ -13,10 +13,11 @@ import modController from './modifiers/contextualDrawer.modifiers.controller';
 import modDirective from './modifiers/contextualDrawer.modifiers.directive';
 
 import cardItemList from '../../cardItemList';
+import modifierItem from '../../modifierItem';
 
 
 
-export default angular.module("contextualDrawer" , [cardItemList])
+export default angular.module("contextualDrawer" , [cardItemList, modifierItem])
   .service(service.UID, service)
 
   .controller(controller.UID, controller)

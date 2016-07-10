@@ -1,0 +1,15 @@
+<div class='modifier-item'>
+  <card-item
+        ng-attr-data-id="{{vm.modifier.id}}"
+        has-actions="true"
+        item="vm.modifier"
+        selected="vm.modifier.$selected"
+        sv-element="vm.modifier">
+      <card-item-title>
+        {{vm.modifier.id +" -- " | debug}}{{vm.modifier.name}}
+      </card-item-title>
+      <card-item-actions on-clone="vm.onClone()"
+                         on-delete="vm.deleteModifier()"
+                         on-edit="vm.onEdit()"></card-item-actions>
+    </card-item>
+</div>

@@ -1,10 +1,11 @@
 
-export default class modifierListController {
+export default class modifiersController {
   static get UID(){
-    return "modifierListController"
+    return "modifiersController"
   }
 
   onClickNew(){
+    console.log("on click showing created")
     this.ModifierService.showCreateModifier();
   }
 

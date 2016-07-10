@@ -18,6 +18,7 @@ export default class contextualMenuService {
     if (this.$el){
       this.$el.remove();
     }
+    delete this.type;
     delete this.onSuccess;
     delete this.onError;
     delete this.entity;
@@ -34,9 +35,16 @@ export default class contextualMenuService {
 
   //DO NOT CALL THIS METHOD DIRECTLY, use the contextual service;
   show(template, entity, onSuccess, onError){
+    //FIXME hack for double call because of drawer and list. instead of doing this here we should not call showMenu when new items are added to the drawer.
+    if (this.type && this.entity && this.type === template && this.entity === entity){
+      return;
+    }
+
     if (this.$el){
       this.close();
     }
+
+    this.type = template;
     this.onSuccess = onSuccess;
     this.onError = onError;
     this.entity = entity;
@@ -47,9 +55,7 @@ export default class contextualMenuService {
     newScope.entity = entity;
 
     this.directiveHtml ='<contextual-menu template="template" entity="entity"></contextual-menu>';
-
     this.$el = this.$compile(this.directiveHtml)(newScope);
-    console.log("appending", this.$el);
     this.parent.append(this.$el);
   }
 

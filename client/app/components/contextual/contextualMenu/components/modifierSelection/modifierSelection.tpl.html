@@ -1,20 +1,19 @@
 <div class='modifier-selection'>
-  <md-radio-group class='selection' ng-model="vm.modifier.$isOptional">
-    <md-radio-button ng-value="false" class="md-primary md-hue-2">Optional</md-radio-button>
-    <md-radio-button ng-value="true" class="md-primary md-hue-2">Mandatory</md-radio-button>
+  <md-radio-group class='selection' ng-change="vm.onSelectionSelect()" ng-model="vm.modifier.$isOptional">
+    <md-radio-button ng-value="true" class="md-primary md-hue-2">Optional</md-radio-button>
+    <md-radio-button ng-value="false" class="md-primary md-hue-2">Mandatory</md-radio-button>
   </md-radio-group>
-    <md-input-container flex>
-        <label translate>Minimum Selection</label>
-        <input flex type="number" required name="minChoices" ng-model="vm.modifier.minChoices">
-        <div ng-messages="contextualForm.minChoices.$error">
-          <div ng-message="required" translate>This is required.</div>
-        </div>
-    </md-input-container>
-    <md-input-container flex>
-        <label translate>Maximum Selection</label>
-        <input flex type="number" required name="maxChoices" ng-model="vm.modifier.maxChoices">
-        <div ng-messages="contextualForm.maxChoices.$error">
-          <div ng-message="required" translate>This is required.</div>
-        </div>
-    </md-input-container>
+    <div class='inline-input' ng-if="!vm.modifier.$isOptional">
+      <label for="maxChoices" translate>Minimum Selection</label>
+      <md-input-container>
+          <input type="number" min="1" max="{{vm.modifier.maxChoices}}" id="minChoices" name="minChoices" ng-model="vm.modifier.minChoices">
+      </md-input-container>
+    </div>
+    <div class='inline-input'>
+      <label for="maxChoices" translate>Maximum Selection</label>
+      <md-input-container>
+          <input type="number" min="{{vm.modifier.minChoices || 1}}" id="maxChoices" name="maxChoices" ng-model="vm.modifier.maxChoices">
+      </md-input-container>
+    </div>
+
 </div>

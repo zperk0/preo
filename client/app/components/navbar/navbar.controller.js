@@ -39,9 +39,9 @@ export default class navbarController {
     this.menu=[
       {name:"Venue Settings", icon:"store", id:"venueSettings"},
       {name:"Menus", icon:"list", id:"menus", children:[
-        {name:"My menus", id:"menus", destination:"list", exclusions:["itemList","modifierList"]},
+        {name:"My menus", id:"menus", destination:"list", exclusions:["itemList","modifiers"]},
         {name:"Items", id:"itemList"},
-        {name:"Modifiers", id:"modifierList"},
+        {name:"Modifiers", id:"modifiers"},
       ]},
       {name:"Styling", id:"styling", icon:"color_lens", children:[
         {name:"Styling", id:"mobile"},

@@ -14,6 +14,9 @@ export default class LabelService {
     this.CONTENT_DELETE_ITEM = $translate.instant("Are you sure you want to permanently delete this item?");
     this.CONTENT_DELETE_ITEM_SECTION = $translate.instant("Are you sure you want to remove this item from the section?");
 
+    this.TITLE_DELETE_MODIFIER  = $translate.instant("Delete modifier?");
+    this.CONTENT_DELETE_MODIFIER = $translate.instant("This will delete the modifier from all menus.");
+
     this.TITLE_DELETE_IMAGE = $translate.instant("Delete image?");
     this.CONTENT_DELETE_IMAGE = $translate.instant("Are you sure you want to delete this image?");
 

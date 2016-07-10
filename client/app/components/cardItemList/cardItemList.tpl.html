@@ -1,4 +1,5 @@
 <div class='card-item-list'>
+  {{vm.collection.length | debug}}
   <md-input-container class='search search-item' ng-if="vm.hasSearch">
     <icon>search</icon>
     <label translate>Search modifiers</label>
@@ -12,19 +13,7 @@
         sv-is-dropzone="vm.svIsDropzone"
         sv-part="results">
         <div sv-placeholder></div>
-    <card-item ng-repeat="item in vm.collection | filter:vm.searchText:strict as results"
-                ng-attr-data-id="{{item.id}}"
-                has-actions="true"
-                item="item"
-                selected="item.$selected"
-                sv-element="item">
-      <card-item-title>
-        {{item.id | debug}}{{item.name}}
-      </card-item-title>
-      <card-item-actions on-clone="vm.onClone()"
-                         on-delete="vm.onDelete()"
-                         on-edit="vm.onEdit()"></card-item-actions>
-    </card-item>
+    <modifier-item ng-repeat="item in vm.collection | filter:vm.searchText:strict as results" modifier="item"></modifier-item>
     <card-item-new ng-if="vm.onClickNew" on-click="vm.clickNew()"></card-item-new>
   </div>
   <div class='no-results' ng-if="vm.collection.length > 0 && results.length===0" translate>No results...</div>

@@ -2,9 +2,9 @@ import controller from './modifierItems.controller'
 
 export default function modifierItems(){
   return {
-    restrict: 'EA',
+    restrict: 'E',
     scope: {
-
+      modifier:"="
     },
     template: require("./modifierItems.tpl.html"),
     controller: controller.UID,

@@ -1,3 +1,23 @@
-<div>
-  {{vm.title}}
+<div class='modifier-items' layout="column">
+    <ng-form class='price' layout="row" layout-align="start center" name="itemForm" ng-repeat="item in vm.modifier.items">
+      <md-input-container flex>
+          <label translate>Option</label>
+          <input flex type="text" required name="itemName" ng-model="item.name">
+          <div ng-messages="itemForm.itemName.$error">
+            <div ng-message="required" translate>This is required.</div>
+          </div>
+      </md-input-container>
+      <md-input-container flex="25">
+          <label translate>Price</label>
+          <input flex type="number" required name="itemPrice" ng-model="item.price">
+          <div ng-messages="itemForm.itemPrice.$error">
+            <div ng-message="required" translate>This is required.</div>
+          </div>
+      </md-input-container>
+      <venue-currency flex="10" class='currency'> GBP </venue-currency>
+      <icon class='icon-clear' ng-click="vm.deleteItem(item)" flex="5">clear</icon>
+    </ng-form>
+    <div class='button-position'>
+      <md-button class='md-primary' ng-click="vm.addOption()">Add option</md-button>
+    </div>
 </div>

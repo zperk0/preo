@@ -3,8 +3,14 @@ export default class modifierSelectionController {
     return "modifierSelectionController"
   }
 
-  /* @ngInject */
+  onSelectionSelect(){
+    this.modifier.minChoices = this.modifier.$isOptional ? 0 : 1;
+    this.modifier.maxChoices = 1;
+  }
+
   constructor() {
-    this.title = "I am a modifierSelection component"
+    "ngInject";
+    console.log(this.modifier.minChoices,"min choices")
+    this.modifier.$isOptional = this.modifier.minChoices === 0 ;
   }
 }

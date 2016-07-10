@@ -114,6 +114,12 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
 
 
   md-input-container {
+
+    &.no-spacer{
+      .md-errors-spacer{
+        display: none;
+      }
+    }
     label{
       @include transition(0.2s);
     }

@@ -11,7 +11,7 @@ export default class ModifierService {
         position:0,
         variant:0,
         minChoices:0,
-        maxChoices:0,
+        maxChoices:1,
         description:"",
         name:"",
         items:[],
@@ -32,10 +32,14 @@ export default class ModifierService {
 
   createModifier(modifier){
     return Preoday.Modifier.save(modifier)
-      .then((mod)=>{
-        this.data.modifiers.push(mod)
-      })
   }
+  // updateModifier(modifier){
+  //   return Preoday.Modifier.save(modifier)
+  //     .then((mod)=>{
+  //       this.data.modifiers.push(mod)
+  //     })
+  // }
+
 
   deleteModifier(modifier){
     return modifier.delete()
