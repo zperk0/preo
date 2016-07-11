@@ -2,6 +2,9 @@
 
 .main-ui-view{
   transition:0.2s padding-left linear;
+  max-height: 100%;
+  overflow-y: scroll;
+  padding-top: 64px;
 }
 
 .md-sidenav-right{
@@ -19,11 +22,6 @@ md-sidenav {
     padding-left:320px;
   }
 
-}
-
-.main{
-  padding-top: 64px;
-  position: relative;
 }
 
 .content-holder{

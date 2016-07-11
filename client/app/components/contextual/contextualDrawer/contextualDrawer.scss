@@ -38,7 +38,9 @@
   .item-actions{
     display: none;
   }
-  .sv-dropzone{
-    display: none !important;
+  .card-item{
+    .sv-dropzone{
+      display: none !important;
+    }
   }
 }

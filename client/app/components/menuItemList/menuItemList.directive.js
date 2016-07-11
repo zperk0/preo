@@ -10,6 +10,7 @@ export default function menuItemList($animate, $timeout){
       isDropzone:"=",
       svDisabled:"=?",
       svKeepInList:"=?",
+      svMultiSelect:"=?",
       section:"=?",
       hasSearch:"=?"
     },

@@ -4,7 +4,7 @@ export default function cardItemChild(){
   return {
     restrict: 'E',
     scope: {
-      size:"=",
+      option:"=",
     },
     template: require("./cardItemChild.tpl.html"),
     controller: controller.UID,

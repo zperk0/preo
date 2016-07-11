@@ -8,9 +8,10 @@
   <div  class='repeat-holder'
           sv-root='item'
           sv-is-dropzone="vm.isDropzone"
-          sv-on-sort="vm.onItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)"
+          sv-on-sort="vm.onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
           sv-disabled="vm.svDisabled"
           sv-keep-in-list="vm.svKeepInList"
+          sv-multi-select="vm.svMultiSelect"
           sv-part="results">
          <div sv-placeholder></div>
       <menu-item

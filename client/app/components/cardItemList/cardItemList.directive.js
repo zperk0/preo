@@ -9,6 +9,7 @@ export default function cardItemList(){
       svDisabled:"=",
       svKeepInList:"=?",
       svIsDropzone:"=?",
+      svMultiSelect:"=?",
       onClickNew:"&?",
       hasSearch:"=?"
     },

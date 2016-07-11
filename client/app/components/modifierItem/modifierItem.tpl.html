@@ -5,13 +5,18 @@
         item="vm.modifier"
         selected="vm.modifier.$selected"
         sv-element="vm.modifier">
-      <card-item-title
-          sv-root="modifier">
+      <card-item-title>
         {{vm.modifier.id +" -- " | debug}}{{vm.modifier.name}}
-         <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-sort="vm.onNewModifierMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)">
-          <div sv-placeholder></div>
+         <div sv-root="modifier" class='modifier-title-dropzone'>
+           <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-sort="vm.onNewModifierMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)">
+            <div sv-placeholder></div>
+           </div>
          </div>
       </card-item-title>
+      <!-- <modifier-chips ng-if="vm.item.modifiers.length" modifiers="vm.item.modifiers" item="vm.item"></modifier-chips> -->
+      <div class='size-wrapper' ng-if="vm.modifier.items.length">
+        <card-item-child ng-repeat="option in vm.modifier.items" option="option"></card-item-child>
+      </div>
       <card-item-actions on-clone="vm.cloneModifier()"
                          on-delete="vm.deleteModifier()"
                          on-edit="vm.onEdit()"></card-item-actions>

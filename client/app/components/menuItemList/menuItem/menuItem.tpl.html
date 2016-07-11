@@ -14,7 +14,7 @@
                     </card-item-title>
     <modifier-chips ng-if="vm.item.modifiers.length" modifiers="vm.item.modifiers" item="vm.item"></modifier-chips>
     <div class='size-wrapper' ng-if="!(vm.item.$size.$isMultiple === false) && vm.item.$size.items.length">
-      <card-item-child ng-repeat="size in vm.item.$size.items" size="size"></card-item-child>
+      <card-item-child ng-repeat="size in vm.item.$size.items" option="size"></card-item-child>
     </div>
     <card-item-actions is-visible="vm.item.visible"
                        on-clone="vm.onClone()"

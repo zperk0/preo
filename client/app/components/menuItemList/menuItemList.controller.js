@@ -73,23 +73,24 @@ export default class menuItemListController {
       return this.$q.all(promises);
   }
 
-  isItemDuplicated(item){
-   let found = 0;
-    for (let i=0;i<this.items.length;i++){
-      if (this.items[i].id === item.id){
-        found++;
-        // sort list adds the item in the new list, if we find it we must remove it
-        if (found>1){
-          return true;
+  isItemDuplicated(items){
+
+   for (let j=0;j<items.length;j++){
+     let found = 0;
+      for (let i=0;i<this.items.length;i++){
+        if (this.items[i].id === items[j].id){
+          found++;
+          // sort list adds the item in the new list, if we find it we must remove it
+          if (found>1){
+            return true;
+          }
         }
       }
     }
   }
 
-  onItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo){
-
+  onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
     if ($partFrom == $partTo){
-
       this.Spinner.show("item-move");
       this.updateItemsPositions().then(()=>{
         this.Snack.show('Item moved');
@@ -99,28 +100,32 @@ export default class menuItemListController {
         this.Spinner.hide("item-move");
       })
     } else {
-       //must check because library appends the item in the array before calling callback
-      if (this.isItemDuplicated($item)){
-        this.Snack.showError('Item is already in section');
-        $partTo.splice($indexTo,1);
-        return;
+         //must check because library appends the item in the array before calling callback
+        if (this.isItemDuplicated($items)){
+          this.Snack.showError('One or more items are already in section');
+          $partTo.splice($indexTo,$items.length);
+          return;
+        }
+        let promises = [];
+        this.Spinner.show("item-move");
+        $items.forEach(($item)=>{
+          //only idd items that are not in the list yet
+          $item.position = this.calculateNewItemPos($item);
+          $item.menuId = this.section.menuId;
+          promises.push(this.section.moveItem($item));
+        })
+        this.$q.all(promises).then((item)=>{
+            return this.updateItemsPositions()
+          }).then(()=>{
+            this.Snack.show('Items added');
+            this.Spinner.hide("item-move");
+          })
+          .catch((err)=>{
+            console.log("error", err);
+            this.Snack.showError('Error adding item');
+            this.Spinner.hide("item-move");
+          })
       }
-       //only idd items that are not in the list yet
-      this.Spinner.show("item-move");
-      $item.position = this.calculateNewItemPos($item);
-      $item.menuId = this.section.menuId;
-      this.section.moveItem($item)
-        .then((item)=>{
-          return this.updateItemsPositions()
-        }).then(()=>{
-          this.Snack.show('Item added');
-        }, (err)=>{
-          console.log("error", err);
-          this.Snack.showError('Error adding item');
-        }).then(()=>{
-        this.Spinner.hide("item-move");
-      })
-    }
 
   }
 

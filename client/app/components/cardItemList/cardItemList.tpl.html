@@ -11,7 +11,8 @@
         sv-disabled="vm.svDisabled"
         sv-keep-in-list="vm.svKeepInList"
         sv-is-dropzone="vm.svIsDropzone"
-        sv-part="results">
+        sv-part="results"
+        sv-multi-select="vm.svMultiSelect">
         <div sv-placeholder></div>
     <modifier-item ng-repeat="item in vm.collection | filter:vm.searchText:strict as results" modifier="item"></modifier-item>
     <card-item-new ng-if="vm.onClickNew" on-click="vm.clickNew()"></card-item-new>
