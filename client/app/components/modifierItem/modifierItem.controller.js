@@ -3,6 +3,10 @@ export default class modifierItemController {
     return "modifierItemController"
   }
 
+  onNewModifierMoved($modifier, $partFrom, $partTo, $indexFrom, $indexTo){
+    console.log("moved", $modifier)
+  }
+
   onEdit(){
     console.log("On edit");
     this.originalItem  = angular.copy(this.modifier);
@@ -118,6 +122,7 @@ export default class modifierItemController {
       this.ModifierService = ModifierService;
       this.showCardActions = false;
       this.type="modifier";
+      this.newModifiers = [];
 
       if (this.modifier && !this.modifier.id) {
         console.log("in constructor calling")

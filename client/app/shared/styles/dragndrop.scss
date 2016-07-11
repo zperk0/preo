@@ -8,6 +8,11 @@
       display: block;
     }
   }
+  &.sv-sorting-modifier{
+    .sv-dropzone-modifier{
+      display: block;
+    }
+  }
 }
 
 //custom dropzones
@@ -19,7 +24,7 @@
   left: 0;
   height: 100%;
 
-  &.sv-dropzone-item{
+  &.sv-dropzone-item, &.sv-dropzone-modifier{
     &.sv-dropped{
       background-color:rgba(225,245,254,0.3);
     }
@@ -53,7 +58,7 @@
 }
 
 // on long press
-.sv-long-pressing{
+#webappv2 .sv-long-pressing{
   transition: box-shadow 0.3s linear;
   @include materialRaisedShadow(2);
   cursor: move !important;
