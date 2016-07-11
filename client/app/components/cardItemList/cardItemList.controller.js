@@ -3,6 +3,10 @@ export default class cardItemListController {
     return "cardItemListController"
   }
 
+  onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
+    console.log("modifier moveds", $items);
+  }
+
 
   clearPossibleNewItem(){
     console.log("clearing possible");

@@ -3,8 +3,8 @@ export default class menuItemController {
     return "menuItemController";
   }
 
-  onNewModifierMoved($modifier, $partFrom, $partTo, $indexFrom, $indexTo){
-    this.Snack.show("moving modifier to item");
+  onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo){
+    this.Snack.show("moving modifier to item", $modifiers);
   }
 
 

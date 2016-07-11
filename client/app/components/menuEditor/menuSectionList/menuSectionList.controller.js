@@ -31,7 +31,7 @@ export default class menuSectionListController {
     return  this.sections && this.sections.length ? (this.sections[this.sections.length-1]).position + 1000 : 0;
   }
 
-  onSectionMoved($item, $partFrom, $partTo, $indexFrom, $indexTo){
+  onSectionMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
     //update all sections
     this.Spinner.show("section-move");
     console.log("on section moved, updating");

@@ -3,8 +3,8 @@ export default class modifierItemController {
     return "modifierItemController"
   }
 
-  onNewModifierMoved($modifier, $partFrom, $partTo, $indexFrom, $indexTo){
-    console.log("moved", $modifier)
+  onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo){
+    console.log("moved", $modifiers)
     this.Snack.show("moving modifier to modifier");
   }
 

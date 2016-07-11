@@ -2,53 +2,61 @@
   static get UID(){
     return "menuSectionController";
   }
-  onNewModifierMoved($item, $partFrom, $partTo, $indexFrom, $indexTo) {
-    console.log("new modifier", $item);
-    this.Snack.show("moving modifier to section");
+  onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo) {
+    console.log("new modifier", $modifiers);
+    this.Snack.show("moving modifiers to section");
   }
 
-  isItemDuplicated(item){
-   let found = 0;
-    for (let i=0;i<this.section.items.length;i++){
-      if (this.section.items[i].id === item.id){
-        found++;
-        // sort list adds the item in the new list, if we find it we must remove it
-        if (found){
-          return true;
+  isItemDuplicated(items){
+   for (let j=0;j<items.length;j++){
+     let found = 0;
+      for (let i=0;i<this.section.items.length;i++){
+        if (this.section.items[i].id === items[j].id){
+          found++;
+          // sort list adds the item in the new list, if we find it we must remove it
+          if (found){
+            return true;
+          }
         }
       }
     }
   }
 
-  onNewItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo) {
-    // move new item always to the beggining of new section
-    const originalPos = $item.position;
-    $item.position = 0;
-    if ($item && $item.sectionId != this.section.id){
-      debugger;
-       if (this.isItemDuplicated($item)){
-        this.Snack.showError('Item is already in section');
-        $partTo.splice($indexTo,1);
+  onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo) {
+
+     if (this.isItemDuplicated($items)){
+        this.Snack.showError('One or more items already in section');
+        $partTo.splice($indexTo,$items.length);
         return;
       }
-      $item.menuId = this.section.menuId;
-      this.Spinner.show("moving-section-item");
-      this.section.moveItem($item).then((newItem)=>{
-        this.Snack.show("Item moved to section")
-        this.section.items.splice(0,0,newItem)
-      }, ()=>{
-        //restore item to original position
-        $item.position = originalPos;
-        $partFrom.splice($indexFrom,0,$item);
-        this.Snack.showError("Error moving item to section")
-      })
-      .then(()=>{
-        this.Spinner.hide("moving-section-item");
-      });
-    } else {
-      //revert move
-      $partFrom.push($item);
-    }
+
+    this.Spinner.show("moving-section-item");
+    let promises = [];
+    $items.forEach(($item)=>{
+        // move new item always to the beggining of new section
+        const originalPos = $item.position;
+        $item.position = 0;
+        if ($item && $item.sectionId != this.section.id){
+          $item.menuId = this.section.menuId;
+          let p = this.section.moveItem($item).then((newItem)=>{
+            this.section.items.splice(0,0,newItem)
+          }, ()=>{
+            //restore item to original position
+            $item.position = originalPos;
+            $partFrom.splice($indexFrom,0,$item);
+            this.Snack.showError("Error moving items to section")
+          })
+          promises.push(p);
+        } else {
+          $partFrom.push($item);
+          return this.$q.resolve()
+        }
+    })
+    this.$q.all(promises).then(()=>{
+      this.Snack.show("Items moved to section")
+      this.Spinner.hide("moving-section-item");
+    })
+
   }
 
   saveSection(){

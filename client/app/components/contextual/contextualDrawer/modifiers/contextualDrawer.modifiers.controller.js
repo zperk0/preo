@@ -3,7 +3,7 @@ export default class contextualDrawerItemController {
     return "ContextualDrawerModifier";
   }
 
-  onNewModifierMoved($item, $partFrom, $partTo, $indexFrom, $indexTo){
+  onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
     console.log("on cancel move"); //dont need to do anything here, just want to cancel the move
   }
 

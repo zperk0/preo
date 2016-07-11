@@ -8,13 +8,13 @@
                     sv-root="item"
                     show-visible="!vm.section.visible"
                     show-dropdown="true">
-                      <div class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-sort="vm.onNewItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)">
+                      <div class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                         <div sv-placeholder></div>
                       </div>
                       <span>{{vm.section.id + "--" | debug}}{{vm.section.name}}</span>
                     </card-item-title>
                       <div  sv-root="modifier">
-                        <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-sort="vm.onNewModifierMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)">
+                        <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                           <div sv-placeholder></div>
                         </div>
                       </div>

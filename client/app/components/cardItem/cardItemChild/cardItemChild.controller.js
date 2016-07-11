@@ -3,7 +3,7 @@ export default class cardItemChildController {
     return "cardItemChildController";
   }
 
-  onNewModifierMoved($modifier){
+  onNewModifierMoved($modifiers){
     this.Snack.show("moving modifier to size");
   }
 
