@@ -4,12 +4,12 @@
   position: relative;
 
   .menu-content{
-    overflow-y:auto;
+    // overflow-y:auto;
     position: relative;
     display: flex;
     flex-wrap: wrap;
     align-content: space-around;
-    height: calc(100vh - 64px - 48px);
+    // height: calc(100vh - 64px - 48px);
   }
   .floating-right-buttons{
     position: fixed;
@@ -39,6 +39,8 @@
     min-height:50px;
     width: 100%;
     font-size:16px;
+    position: fixed;
+    z-index:1;
 
     .menu-name{
       padding-left:24px;
@@ -46,6 +48,10 @@
 
     button{
       margin-right:18px;
+    }
+
+    &+.menu-content{
+      padding-top:50px;
     }
   }
 }

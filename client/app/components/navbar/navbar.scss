@@ -1,7 +1,10 @@
 @import '../../shared/styles/variables';
 
-.md-sidenav-left{
+#webappv2 .md-sidenav-left.md-locked-open{
   transition:width 0.2s linear;
+  position: fixed;
+  top: 64px;
+  bottom: 0px;
 
   span{
     transition:max-width 0.2s linear;

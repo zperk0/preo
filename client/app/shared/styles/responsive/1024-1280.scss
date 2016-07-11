@@ -1,5 +1,9 @@
 html{
 
+  md-sidenav.expanded + .main-ui-view{
+    padding-left:250px;
+  }
+
   .user-select{
     max-width: 250px;
   }

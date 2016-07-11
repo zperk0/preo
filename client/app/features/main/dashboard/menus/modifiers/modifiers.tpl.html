@@ -2,14 +2,15 @@
   <div class="menu-toolbar" layout="row" layout-align="start center">
     <!-- <div flex class='menu-name' translate>Modifier database</div> -->
   </div>
-   <sticky-scroll flex class="menu-content">
+   <div flex class="menu-content">
     <div class='main-content-left'>
         <card-item-list
           collection="vm.data.modifiers"
-          sv-disabled="true"
+          sv-disabled="false"
+          sv-is-dropzone="false"
           on-click-new="vm.onClickNew()"
           has-search="true"></card-item-list>
       </div>
-    <div class='main-content-right' sticky contextual-menu-holder></div>
-  </sticky-scroll>
+    <div class='main-content-right' sticky offset="110" contextual-menu-holder></div>
+  </div>
 </div>
