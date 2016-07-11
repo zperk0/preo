@@ -1,3 +1,8 @@
 <div class='card-item-child' layout="row">
+  <div  sv-root="modifier">
+    <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-sort="vm.onNewModifierMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)">
+      <div sv-placeholder></div>
+    </div>
+  </div>
   <span class='name' flex>{{vm.size.name}} </span> <span class='price'> {{vm.size.price | currency:"£"}}</span>
 </div>

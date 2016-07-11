@@ -11,8 +11,13 @@
                       <div class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-sort="vm.onNewItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)">
                         <div sv-placeholder></div>
                       </div>
-                      {{vm.section.id + "--" | debug}}{{vm.section.name}}
-                    </span></card-item-title>
+                      <span>{{vm.section.id + "--" | debug}}{{vm.section.name}}</span>
+                    </card-item-title>
+                      <div  sv-root="modifier">
+                        <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-sort="vm.onNewModifierMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)">
+                          <div sv-placeholder></div>
+                        </div>
+                      </div>
     <menu-item-list ng-if="vm.section.$expanded" has-new="vm.section.$expanded" items="vm.section.items" section="vm.section"></menu-item-list>
     <card-item-actions is-visible="vm.section.visible"
                        on-delete="vm.onDelete()"

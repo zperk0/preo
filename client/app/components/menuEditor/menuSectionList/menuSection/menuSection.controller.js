@@ -2,12 +2,35 @@
   static get UID(){
     return "menuSectionController";
   }
+  onNewModifierMoved($item, $partFrom, $partTo, $indexFrom, $indexTo) {
+    console.log("new modifier", $item);
+    this.Snack.show("moving modifier to section");
+  }
+
+  isItemDuplicated(item){
+   let found = 0;
+    for (let i=0;i<this.section.items.length;i++){
+      if (this.section.items[i].id === item.id){
+        found++;
+        // sort list adds the item in the new list, if we find it we must remove it
+        if (found){
+          return true;
+        }
+      }
+    }
+  }
 
   onNewItemMoved($item, $partFrom, $partTo, $indexFrom, $indexTo) {
     // move new item always to the beggining of new section
     const originalPos = $item.position;
     $item.position = 0;
     if ($item && $item.sectionId != this.section.id){
+      debugger;
+       if (this.isItemDuplicated($item)){
+        this.Snack.showError('Item is already in section');
+        $partTo.splice($indexTo,1);
+        return;
+      }
       $item.menuId = this.section.menuId;
       this.Spinner.show("moving-section-item");
       this.section.moveItem($item).then((newItem)=>{
@@ -134,6 +157,7 @@
     this.menuItemType = 'menuItem';
     this.allowedDropTypes = [this.menuItemType];
     this.newItems = [];
+    this.newModifiers = [];
     if (this.section && $stateParams.sectionId && this.section.id === Number($stateParams.sectionId)){
       $timeout(()=>{
         this.section.$expanded=true;

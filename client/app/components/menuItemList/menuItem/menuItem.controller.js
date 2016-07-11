@@ -3,6 +3,11 @@ export default class menuItemController {
     return "menuItemController";
   }
 
+  onNewModifierMoved($modifier, $partFrom, $partTo, $indexFrom, $indexTo){
+    this.Snack.show("moving modifier to item");
+  }
+
+
   onClone ($event){
       this.cloneItem();
   }
@@ -158,6 +163,8 @@ export default class menuItemController {
     this.$stateParams=$stateParams;
     this.contextual = contextual;
     this.ItemService = ItemService;
+    this.newModifiers = [];
+
     let inParam = false;
     if (this.item.id === Number($stateParams.itemId)){
       inParam = true;

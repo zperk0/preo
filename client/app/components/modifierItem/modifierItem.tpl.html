@@ -9,6 +9,7 @@
           sv-root="modifier">
         {{vm.modifier.id +" -- " | debug}}{{vm.modifier.name}}
          <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-sort="vm.onNewModifierMoved($item, $partFrom, $partTo, $indexFrom, $indexTo)">
+          <div sv-placeholder></div>
          </div>
       </card-item-title>
       <card-item-actions on-clone="vm.cloneModifier()"

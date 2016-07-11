@@ -5,6 +5,7 @@ export default class modifierItemController {
 
   onNewModifierMoved($modifier, $partFrom, $partTo, $indexFrom, $indexTo){
     console.log("moved", $modifier)
+    this.Snack.show("moving modifier to modifier");
   }
 
   onEdit(){
