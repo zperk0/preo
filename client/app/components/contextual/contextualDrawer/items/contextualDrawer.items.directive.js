@@ -10,10 +10,6 @@ export default function contextualMenu($compile, $timeout, $animate){
     bindToController: true,
     replace:true,
     link: (scope, el, attr, ctrl) => {
-
-      el.on('$destroy',()=>{
-        ctrl.onDestroy();
-      })
     }
   }
 }
