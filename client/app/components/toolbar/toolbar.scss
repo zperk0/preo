@@ -2,7 +2,7 @@
 
 
 md-toolbar{
-  position: fixed;
+  position: absolute;
   box-shadow:0px 3px 3px 0px rgba(0,0,0,0.20);
   height: $heightToolbar !important; //Override angular material mobile res
   &>section{

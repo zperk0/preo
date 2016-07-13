@@ -1,6 +1,7 @@
 @import '../../../shared/styles/variables';
 
 .md-sidenav-left {
+  min-width: auto;
     md-list-item{
       md-menu {
         padding:0;
