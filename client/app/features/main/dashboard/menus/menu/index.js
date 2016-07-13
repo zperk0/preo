@@ -9,7 +9,9 @@ import uirouter from 'angular-ui-router';
 import controller from './menu.controller';
 import routes from './menu.routes';
 
-export default angular.module("menu" , [uirouter])
+import menuSectionList from '../menuSectionList';
+
+export default angular.module("menu" , [uirouter, menuSectionList])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

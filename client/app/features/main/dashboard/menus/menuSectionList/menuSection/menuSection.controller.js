@@ -89,14 +89,14 @@
         el = el.parent();
       }
     }
-    this.menuSectionListCtrl.expandSection(this.section);
+    this.cardItemList.expandItem(this.section);
     this.contextualMenu.close();
   }
 
 
   onEdit($event){
     this.originalSection = angular.copy(this.section);
-    this.menuSectionListCtrl.selectSection(this.section);
+    this.cardItemList.selectItem(this.section);
     this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
     this.section.$expanded = false;
   }
@@ -123,7 +123,7 @@
   handleCancel(){
     this.restoreOriginalValues();
     this.section.$selected = false;
-    this.menuSectionListCtrl.clearPossibleNewSection();
+    this.cardItemList.clearPossibleNewItem();
   }
 
   handleSuccess(entity){

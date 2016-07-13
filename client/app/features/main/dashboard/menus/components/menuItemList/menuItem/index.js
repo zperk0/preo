@@ -9,7 +9,7 @@ import controller from './menuItem.controller';
 import directive from './menuItem.directive';
 import directiveNew from './menuItemNew.directive';
 
-import cardItem from '../../cardItem';
+import cardItem from '../../../../../../../components/cardItem';
 import modifierChips from './modifierChips';
 
 

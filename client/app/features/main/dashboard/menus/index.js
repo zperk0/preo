@@ -13,9 +13,7 @@ import v2MenuList from './menuList';
 import v2ItemList from './itemList';
 import v2ModifierList from './modifiers';
 
-import menuSection from '../../../../components/menuEditor';
-
-export default angular.module("menus" , [uirouter, v2Menu, v2MenuList, v2ItemList, v2ModifierList, menuSection])
+export default angular.module("menus" , [uirouter, v2Menu, v2MenuList, v2ItemList, v2ModifierList])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

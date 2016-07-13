@@ -4,6 +4,11 @@ export default class menuController {
     return "menuController";
   }
 
+  toggleDrawer(id){
+    this.contextual.showDrawer(id);
+  }
+
+
   showSpinner(){
     this.Spinner.show("menu");
   }
@@ -31,18 +36,13 @@ export default class menuController {
   }
 
 
-  constructor($stateParams, $timeout, $rootScope, Spinner) {
+  constructor($stateParams, $timeout,Spinner, contextual) {
     "ngInject";
-    console.log("state", $stateParams.menuId, this.menu && this.menu.id);
     this.Spinner = Spinner;
     this.showSpinner();
-    console.log("state", $stateParams);
     this.setMenu($stateParams.menuId);
     this.$timeout = $timeout;
-    this.showingContextualMenu = false;
+    this.contextual = contextual;
     //types for drag and drop list
-    this.menuSectionType = 'menuSection';
-    this.allowedDropTypes = [this.menuSectionType];
-    this.$rootScope = $rootScope;
   }
 }

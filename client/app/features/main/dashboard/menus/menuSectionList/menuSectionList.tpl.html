@@ -1,0 +1,17 @@
+<div class="menu-section-list">
+  <div sv-root
+      sv-on-sort="vm.onSectionMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+    <card-item-list
+        collection="vm.sections"
+        on-click-new="vm.showCreateSection($event)">
+    <div class='sort-holder' sv-part="vm.sections">
+      <menu-section
+        sv-element="section"
+        ng-repeat="section in vm.sections"
+        section="section">
+      </menu-section>
+      <div sv-placeholder></div>
+    </div>
+    </card-item-list>
+  </div>
+</div>

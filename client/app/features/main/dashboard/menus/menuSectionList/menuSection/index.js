@@ -9,8 +9,8 @@ import controller from './menuSection.controller';
 import directive from './menuSection.directive';
 import directiveNew from './menuSectionNew.directive';
 
-import cardItem from '../../../cardItem';
-import itemList from '../../../menuItemList';
+import cardItem from '../../../../../../components/cardItem';
+import itemList from '../../components/menuItemList';
 
 
 export default angular.module("menuSection" , [cardItem, itemList])

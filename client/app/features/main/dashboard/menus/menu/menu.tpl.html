@@ -2,5 +2,14 @@
   <div class="menu-toolbar" layout="row" layout-align="start center">
     <div flex class='menu-name'>{{vm.menu.name}}</div>
   </div>
-  <menu-editor ng-if="vm.menu" menu="vm.menu"></menu-editor>
+  <div class="menu-content">
+    <div class='main-content-left'>
+      <menu-section-list ng-if="vm.menu.sections" menu="vm.menu" sections="vm.menu.sections">
+      </menu-section-list>
+    </div>
+    <div class='floating-right-buttons'>
+      <md-button ng-click="vm.toggleDrawer('modifiers')" class="md-primary md-hue-2" translate>Show modifiers</md-button>
+    </div>
+    <div class='main-content-right' sticky offset="110" contextual-menu-holder></div>
+  </div>
 </div>

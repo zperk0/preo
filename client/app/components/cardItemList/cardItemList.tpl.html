@@ -1,21 +1,21 @@
 <div class='card-item-list'>
   {{vm.collection.length | debug}}
-  <md-input-container class='search search-item' ng-if="vm.hasSearch">
+  <md-input-container class='search search-item' ng-if="vm.searchLabel">
     <icon>search</icon>
-    <label translate>Search modifiers</label>
+    <label translate>Search {{vm.searchLabel}}</label>
     <input flex name="search" ng-model="vm.searchText.name">
   </md-input-container>
-  <div class='repeat-holder'
-        sv-root='modifier'
-        sv-on-sort="vm.onModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
-        sv-disabled="vm.svDisabled"
-        sv-keep-in-list="vm.svKeepInList"
-        sv-is-dropzone="vm.svIsDropzone"
-        sv-part="results"
-        sv-multi-select="vm.svMultiSelect">
-        <div sv-placeholder></div>
-    <modifier-item ng-repeat="item in vm.collection | filter:vm.searchText:strict as results" modifier="item"></modifier-item>
-    <card-item-new ng-if="vm.onClickNew" on-click="vm.clickNew()"></card-item-new>
+  <!-- <div sv-placeholder></div> -->
+  <div class='repeat-holder' ng-transclude>
   </div>
+  <card-item-new ng-if="vm.onClickNew" on-click="vm.clickNew()"></card-item-new>
   <div class='no-results' ng-if="vm.collection.length > 0 && results.length===0" translate>No results...</div>
 </div>
+
+
+<!-- sv-root='modifier'
+sv-on-sort="vm.onModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
+sv-disabled="vm.svDisabled"
+sv-keep-in-list="vm.svKeepInList"
+sv-is-dropzone="vm.svIsDropzone"
+sv-multi-select="vm.svMultiSelect" -->

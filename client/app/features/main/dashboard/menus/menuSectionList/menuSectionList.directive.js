@@ -13,7 +13,6 @@ export default function menuSectionList(){
     controllerAs: "vm",
     bindToController: true,
     replace:true,
-    require:["^menuEditor", "menuSectionList"],
     link: (scope, el, attr, ctrls) => {
 
     }

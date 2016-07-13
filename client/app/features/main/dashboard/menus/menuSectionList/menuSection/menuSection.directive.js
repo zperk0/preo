@@ -13,9 +13,9 @@ export default function menuSection(){
     controllerAs: "vm",
     bindToController: true,
     replace:true,
-    require:["^menuEditor","^menuSectionList", "menuSection"],
+    require:["^cardItemList", "^menuSectionList", "menuSection"],
     link: (scope, el, attr, ctrls) => {
-      ctrls[2].menuCtrl = ctrls[0];
+      ctrls[2].cardItemList = ctrls[0];
       ctrls[2].menuSectionListCtrl = ctrls[1];
 
     }
