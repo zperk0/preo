@@ -5,6 +5,7 @@ md-toolbar{
   position: absolute;
   box-shadow:0px 3px 3px 0px rgba(0,0,0,0.20);
   height: $heightToolbar !important; //Override angular material mobile res
+  z-index:21;
   &>section{
     padding-left:16px;
   }

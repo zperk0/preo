@@ -223,8 +223,8 @@ export default class ItemService {
 
 
   getItems(venueId, expand){
+    console.log("gettimg items", venueId, expand)
     return this.$q((resolve, reject)=>{
-
       if (this.data.items){
         resolve(this.data);
       } else {

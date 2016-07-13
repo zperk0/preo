@@ -1,6 +1,8 @@
 <div class="menu-section-list">
-  <div sv-root
+  <div class='sv-root-holder'
+      sv-root
       sv-on-sort="vm.onSectionMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+
     <card-item-list
         collection="vm.sections"
         on-click-new="vm.showCreateSection($event)">

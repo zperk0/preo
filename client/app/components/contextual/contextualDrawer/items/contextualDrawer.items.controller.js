@@ -22,7 +22,6 @@ export default class contextualDrawerItemController {
     this.$scope = $scope;
     this.cancelledItems = [];
 
-
     ItemService.getItems($stateParams.venueId,'images,tags,modifiers').then((data)=>{
       this.data = data;
     })

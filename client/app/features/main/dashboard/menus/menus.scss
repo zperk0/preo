@@ -19,10 +19,10 @@
   }
 
   .main-content-right{
-    padding:24px 16px;
     display: inline-block;
     width:50%;
     position: absolute;
+    margin-top:24px;
   }
 
   .main-content-left{
@@ -39,7 +39,7 @@
     width: 100%;
     font-size:16px;
     position: fixed;
-    z-index:1;
+    z-index:21;
     top:64px;
 
     .menu-name{

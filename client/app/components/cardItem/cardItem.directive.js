@@ -10,6 +10,7 @@ export default function cardItem(){
       hasActions:"=?",
       item:"=",
       selected:"=?",
+      deleted:"=?",
       expanded:"=?"
     },
     controllerAs: "vm",

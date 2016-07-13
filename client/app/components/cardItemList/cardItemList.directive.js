@@ -6,22 +6,21 @@ export default function cardItemList(){
     restrict: 'E',
     scope: {
       collection:"=",
-      // svDisabled:"=",
-      // svKeepInList:"=?",
-      // svIsDropzone:"=?",
-      // svMultiSelect:"=?",
+      searchFilter:"=",
       onClickNew:"&?",
-      searchLabel:"=?"
+      searchLabel:"@"
     },
     template: require("./cardItemList.tpl.html"),
     controller: controller.UID,
     controllerAs: "vm",
     bindToController: true,
     transclude:true,
-    require:['?^^menuSectionList','cardItemList'],
+    require:['?^^menuItemList', '?^^menuSectionList','cardItemList'],
     link: (scope, el, attr, ctrl) => {
       if (ctrl[0]){
-        ctrl[0].cardItemList = ctrl[1];
+        ctrl[0].cardItemList = ctrl[2];
+      } else if (ctrl[1]){
+        ctrl[1].cardItemList = ctrl[2];
       }
     }
   }

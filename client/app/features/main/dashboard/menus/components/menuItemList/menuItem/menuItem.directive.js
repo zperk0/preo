@@ -15,9 +15,10 @@ export default function menuItem(){
     controllerAs: "vm",
     bindToController: true,
     replace:true,
-    require:["^menuItemList", "menuItem"],
+    require:["^cardItemList", "^menuItemList", "menuItem"],
     link: (scope, el, attr, ctrls) => {
-      ctrls[1].menuItemListCtrl = ctrls[0]
+      ctrls[2].menuItemListCtrl = ctrls[1]
+      ctrls[2].cardItemList = ctrls[0]
     }
   };
 }

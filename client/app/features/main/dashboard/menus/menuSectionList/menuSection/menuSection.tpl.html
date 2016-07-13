@@ -1,7 +1,8 @@
 <div class='menu-section'
-      ng-class="{expanded:vm.section.$expanded,deleted:vm.section.$deleted}"
+      ng-class="{expanded:vm.section.$expanded}"
       ng-attr-data-id="{{vm.section.id}}">
   <card-item  has-actions="true"
+              deleted="vm.section.$deleted"
               selected="vm.section.$selected"
               expanded="vm.section.$expanded"
               >
@@ -20,7 +21,12 @@
                           <div sv-placeholder></div>
                         </div>
                       </div>
-    <menu-item-list ng-if="vm.section.$expanded" has-new="vm.section.$expanded" items="vm.section.items" section="vm.section"></menu-item-list>
+        <menu-item-list
+              ng-if="vm.section.$expanded"
+              has-new="vm.section.$expanded"
+              items="vm.section.items"
+              section="vm.section">
+         </menu-item-list>
     <card-item-actions is-visible="vm.section.visible"
                        on-delete="vm.onDelete()"
                        on-edit="vm.onEdit()"

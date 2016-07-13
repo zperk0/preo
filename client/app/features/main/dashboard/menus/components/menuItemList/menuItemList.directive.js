@@ -7,12 +7,11 @@ export default function menuItemList($animate, $timeout){
     scope: {
       items:"=",
       hasNew:"=",
-      isDropzone:"=",
-      svDisabled:"=?",
-      svKeepInList:"=?",
-      svMultiSelect:"=?",
       section:"=?",
-      hasSearch:"=?"
+      hasSearch:"=?",
+      svMultiSelect:"=?",
+      svKeepInList:"=?",
+      svIsDropzone:"=?"
     },
     template: require("./menuItemList.tpl.html"),
     controller: controller.UID,

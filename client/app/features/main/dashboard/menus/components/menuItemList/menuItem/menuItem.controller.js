@@ -13,7 +13,7 @@ export default class menuItemController {
   }
   onEdit ($event){
     this.originalItem  = angular.copy(this.item);
-    this.menuItemListCtrl.selectItem(this.item);
+    this.cardItemList.selectItem(this.item);
     this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
   }
   onDelete ($event){
@@ -28,7 +28,7 @@ export default class menuItemController {
     updates.visible = newStatus ? 1 : 0;
     this.updateItem(updates, true) //skip extensions
       .then(()=>{
-        this.menuItemListCtrl.selectItem();
+        this.cardItemList.selectItem();
       })
       .catch(()=>{
           this.Snack.showError('Item visibility not changed');
@@ -112,10 +112,10 @@ export default class menuItemController {
     this.restoreOriginalValues()
     this.item.$selected = false;
     if (!this.item.id){
-      this.menuItemListCtrl.clearPossibleNewItem();
+      this.cardItemList.clearPossibleNewItem();
     }
     //clear selection
-    this.menuItemListCtrl.selectItem();
+    this.cardItemList.selectItem();
   }
 
   deleteItem(){

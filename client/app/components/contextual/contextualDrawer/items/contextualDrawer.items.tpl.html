@@ -1,12 +1,17 @@
  <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="items">
-      <div  sv-root="item">
+    <div  sv-root="item">
         <div class='sv-dropzone sv-dropzone-item' sv-part="vm.cancelledItems" sv-on-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
         <div sv-placeholder></div>
       </div>
      </div>
     <div class='contextual-list'>
-      <menu-item-list sv-multi-select="true" has-search="true" sv-keep-in-list="true" is-dropzone="false" items="drawerItemsCtrl.data.items"></menu-item-list>
-      </div>
+      <menu-item-list has-search="true"
+                      sv-multi-select="true"
+                      sv-keep-in-list="true"
+                      sv-is-dropzone="false"
+                      items="drawerItemsCtrl.data.items">
+                      </menu-item-list>
+    </div>
     <md-card-actions layout="row" layout-align="end center">
       <md-button ng-click="drawerItemsCtrl.close()" class='md-raised' translate>
           Done

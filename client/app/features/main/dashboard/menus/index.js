@@ -13,7 +13,9 @@ import v2MenuList from './menuList';
 import v2ItemList from './itemList';
 import v2ModifierList from './modifiers';
 
-export default angular.module("menus" , [uirouter, v2Menu, v2MenuList, v2ItemList, v2ModifierList])
+import menuItemList from './components/menuItemList'; //required for drawer
+
+export default angular.module("menus" , [uirouter, v2Menu, v2MenuList, v2ItemList, v2ModifierList, menuItemList])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

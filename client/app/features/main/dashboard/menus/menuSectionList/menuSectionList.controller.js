@@ -44,18 +44,13 @@ export default class menuSectionListController {
 
   createSection(newData){
     this.Spinner.show("section-create");
-    return this.$q((resolve, reject)=>{
-      Preoday.Section.save(newData)
+    return Preoday.Section.save(newData)
         .then((section)=>{
           this.cardItemList.clearPossibleNewItem();
-          this.addSectionInPosition(section);
-          resolve();
-      },()=>{
-        reject();
-      }).then(()=>{
-        this.Spinner.hide("section-create");
+          this.addSectionInPosition(section)
+          this.Spinner.hide("section-create");
+          return section;
       })
-    });
   }
 
   showCreateSection(){

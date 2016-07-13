@@ -16,9 +16,9 @@
   </div>
   <label class="import-file" for='imagefile'>
     <input type="file" id="imagefile" name='imagefile' custom-on-change="vm.fileChange($event)">
-    <md-button class="md-fab md-mini md-primary" aria-label="Add Section">
+    <md-button ng-click="vm.target()" class="md-fab md-mini md-primary" aria-label="Add Section">
       <icon>add</icon>
     </md-button>
-    <div class='target'></div>
+    <!-- <div class='target'></div> -->
   </label>
 </div>

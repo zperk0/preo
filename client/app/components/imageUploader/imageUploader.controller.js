@@ -2,6 +2,9 @@ export default class imageUploaderController {
   static get UID(){
     return "imageUploaderController"
   }
+  target(){
+    document.querySelector("#imagefile").click();
+  }
 
   deleteImage($event){
     //if it's a tmp image delete it, otherwise mark it to be deleted when DONE is clicked

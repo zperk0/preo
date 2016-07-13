@@ -7,6 +7,11 @@
   overflow: hidden;
   transition:border 0.3s ease-in-out;
 
+  &.deleted{
+    display: none;
+  }
+
+
   &:hover{
     cursor: pointer;
     border: 1px solid #757575;

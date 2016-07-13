@@ -3,42 +3,9 @@ export default class menuItemListController {
     return "menuItemListController"
   }
 
-   clearPossibleNewItem(){
-    // remove item with id -1, (possible new item)
-    if (this.items){
-      this.items = this.items.filter((i)=>i.id);
-    }
-  }
-
-  calculateNewItemPos(itemBefore){
-    var pos = -1;
-    //if we have a item before, we should add it after this item
-    if (itemBefore){
-      this.items.forEach((i,index)=>{
-        if (i.id === itemBefore.id){
-          pos = itemBefore.position;
-          let itemAfter = this.items[index+1];
-          if (!itemAfter) {
-            //if we don't get a item after we're in the last item, just add 1000
-            pos+=1000;
-          } else {
-            //else new item pos is the middle of item after and item before
-            pos += (itemAfter.position - pos)/2
-          }
-        }
-      })
-      if (pos !== -1) {
-        //if we have a pos return it
-        return pos;
-      }
-    }
-    //default is last item size + 1000
-    return (this.items[this.items.length-1]).position + 1000
-  }
-
   onItemCreated(newItem){
+    this.cardItemList.clearPossibleNewItem();
     this.addItemInPosition(newItem);
-    this.clearPossibleNewItem();
   }
 
   addItemInPosition(item){
@@ -51,81 +18,47 @@ export default class menuItemListController {
     this.items.splice(indexBefore+1, 0, item);
   }
 
-  selectItem(item){
-    if (this.items){
-      this.items.forEach((i, index)=>{
-        if (item && i.id === item.id){
-          i.$selected = true;
-        } else{
-          i.$selected=false;
-        }
-      });
-    }
-  }
-
-  updateItemsPositions(){
-      //update all items
-      const promises = [];
-      this.items.forEach((i, index)=>{
-        i.position=index*1000;
-        promises.push(i.update());
-      });
-      return this.$q.all(promises);
-  }
-
-  isItemDuplicated(items){
-
-   for (let j=0;j<items.length;j++){
-     let found = 0;
-      for (let i=0;i<this.items.length;i++){
-        if (this.items[i].id === items[j].id){
-          found++;
-          // sort list adds the item in the new list, if we find it we must remove it
-          if (found>1){
-            return true;
-          }
-        }
+  onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
+    console.log("on external moved");
+       //must check because library appends the item in the array before calling callback
+      if (this.cardItemList.isItemDuplicated($items, 1)){
+        this.Snack.showError('One or more items are already in section');
+        $partTo.splice($indexTo,$items.length);
+        return;
       }
-    }
+      let promises = [];
+      this.Spinner.show("item-move");
+      $items.forEach(($item)=>{
+        //only idd items that are not in the list yet
+        $item.position = this.cardItemList.calculateNewItemPos($item);
+        $item.menuId = this.section.menuId;
+        promises.push(this.section.moveItem($item));
+      })
+      this.$q.all(promises).then((item)=>{
+          return this.cardItemList.onSimpleSort()
+        }).then(()=>{
+          this.Snack.show('Items added');
+          this.Spinner.hide("item-move");
+        })
+        .catch((err)=>{
+          console.log("error", err);
+          this.Snack.showError('Error adding item');
+          this.Spinner.hide("item-move");
+        })
   }
 
   onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
+    console.log("on item moved");
     if ($partFrom == $partTo){
       this.Spinner.show("item-move");
-      this.updateItemsPositions().then(()=>{
+      this.cardItemList.onSimpleSort().then(()=>{
         this.Snack.show('Item moved');
       }, ()=>{
         this.Snack.showError('Error moving item');
       }).then(()=>{
         this.Spinner.hide("item-move");
       })
-    } else {
-         //must check because library appends the item in the array before calling callback
-        if (this.isItemDuplicated($items)){
-          this.Snack.showError('One or more items are already in section');
-          $partTo.splice($indexTo,$items.length);
-          return;
-        }
-        let promises = [];
-        this.Spinner.show("item-move");
-        $items.forEach(($item)=>{
-          //only idd items that are not in the list yet
-          $item.position = this.calculateNewItemPos($item);
-          $item.menuId = this.section.menuId;
-          promises.push(this.section.moveItem($item));
-        })
-        this.$q.all(promises).then((item)=>{
-            return this.updateItemsPositions()
-          }).then(()=>{
-            this.Snack.show('Items added');
-            this.Spinner.hide("item-move");
-          })
-          .catch((err)=>{
-            console.log("error", err);
-            this.Snack.showError('Error adding item');
-            this.Spinner.hide("item-move");
-          })
-      }
+    }
 
   }
 

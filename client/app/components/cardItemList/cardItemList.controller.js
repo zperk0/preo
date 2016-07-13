@@ -7,6 +7,21 @@ export default class cardItemListController {
     console.log("modifier moveds", $items);
   }
 
+  isItemDuplicated(items, qty){
+   for (let j=0;j<items.length;j++){
+     let found = 0;
+      for (let i=0;i<this.collection.length;i++){
+        if (this.collection[i].id === items[j].id){
+          found++;
+          // sort list adds the item in the new list, if we find it we must remove it
+          if (found>qty){
+            return true;
+          }
+        }
+      }
+    }
+  }
+
   expandItem(item){
     this.collection.forEach((s)=>{
       if (s.id === item.id){
@@ -47,6 +62,7 @@ export default class cardItemListController {
     const promises = [];
     this.collection.forEach((s, index)=>{
       s.position=index*1000;
+      console.log("s",s);
       promises.push(s.update());
     });
     return this.$q.all(promises)
@@ -62,6 +78,7 @@ export default class cardItemListController {
           deletedIndex = i;
         }
       })
+
       if (deletedIndex > -1){
         this.$timeout(()=>{
           console.log("spliced", deletedIndex)
@@ -94,8 +111,9 @@ export default class cardItemListController {
     }
   }
 
-  constructor($timeout, $q) {
+  constructor($scope, $timeout, $q) {
     "ngInject";
+    this.$scope = $scope;
     this.$timeout = $timeout;
     this.$q = $q;
   }

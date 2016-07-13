@@ -9,6 +9,13 @@
     height: calc(100% - 49px); // 100% - footer cards
   }
 
+  .repeat-holder{
+    .sort-holder{
+      padding-top:30px;
+      min-height: calc(100vh - 49px - 30px);
+    }
+  }
+
   md-card-actions{
     border-top:1px solid #E0E0E0;
     background:#F5F5F5;
@@ -28,7 +35,10 @@
     top:0;
 
     &+.repeat-holder{
-      padding-top: 70px;
+      .sort-holder{
+        padding-top: 70px;
+        min-height: calc(100vh - 49px - 72px);
+      }
     }
   }
 

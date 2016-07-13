@@ -1,29 +1,29 @@
 <div class='menu-item-list'>
- <md-input-container class='search search-item' ng-if="vm.hasSearch">
-    <icon>search</icon>
-    <label translate>Search items</label>
-    <input flex name="search" ng-model="vm.searchText.name">
-  </md-input-container>
-
-  <div  class='repeat-holder'
-          sv-root='item'
-          sv-is-dropzone="vm.isDropzone"
-          sv-on-sort="vm.onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
-          sv-disabled="vm.svDisabled"
-          sv-keep-in-list="vm.svKeepInList"
-          sv-multi-select="vm.svMultiSelect"
-          sv-part="results">
-         <div sv-placeholder></div>
-      <menu-item
-             ng-repeat="item in vm.items | filter:vm.searchText:strict as results"
-             item="item"
-             ng-attr-data-id="{{item.id}}"
-             sv-element="item"
-             section-id="vm.section && vm.section.id"
-             on-item-created="vm.onItemCreated(item)"
-             on-item-deleted="vm.onItemDeleted(item)"
-       ></menu-item>
-       <div class='no-results' ng-if="vm.items.length > 0 && results.length===0" translate>No results...</div>
+  <div class='sv-root-holder'
+    sv-root='item'
+    sv-on-sort="vm.onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+  <card-item-list
+        collection="vm.items"
+        search-filter="vm.searchText"
+        search-label="{{vm.hasSearch ? 'items' : ''}}">
+        <div class='sort-holder'
+          sv-part="results"
+          sv-multi-select='vm.svMultiSelect'
+          sv-keep-in-list='vm.svKeepInList'
+          sv-on-external-sort="vm.onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
+          sv-is-dropzone='vm.svIsDropzone'>
+           <menu-item
+               ng-repeat="item in vm.items | filter:vm.searchText:strict as results"
+               item="item"
+               ng-attr-data-id="{{item.id}}"
+               sv-element="item"
+               section-id="vm.section && vm.section.id"
+               on-item-created="vm.onItemCreated(item)"
+               on-item-deleted="vm.onItemDeleted(item)">
+             </menu-item>
+             <div sv-placeholder></div>
+         </div>
+  </card-item-list>
   </div>
   <menu-item-new ng-if="vm.hasNew" section="vm.section" on-click="vm.showCreateItem($event,isImport)"></menu-item-new>
 </div>

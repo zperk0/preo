@@ -132,7 +132,7 @@
 
       if (!this.section.id){
         this.menuSectionListCtrl.createSection(this.section)
-          .then(()=>{
+          .then((section)=>{
             this.contextualMenu.hide();
             this.Snack.show('Section created');
           }, ()=>{
