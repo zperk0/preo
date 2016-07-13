@@ -1,10 +1,11 @@
-.modifier-list {
+.modifiers{
   height: 100%;
 
-
-    md-input-container.search{
+  .modifier-list{
+    .search{
       top: 52px;
       margin-left: 16px;
       min-width:400px;
     }
+  }
 }

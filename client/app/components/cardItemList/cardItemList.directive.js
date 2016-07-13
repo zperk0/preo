@@ -7,6 +7,7 @@ export default function cardItemList(){
     scope: {
       collection:"=",
       searchFilter:"=",
+      hasNew:"=?",
       onClickNew:"&?",
       searchLabel:"@"
     },
@@ -15,12 +16,14 @@ export default function cardItemList(){
     controllerAs: "vm",
     bindToController: true,
     transclude:true,
-    require:['?^^menuItemList', '?^^menuSectionList','cardItemList'],
+    require:['cardItemList', '?^^menuItemList', '?^^menuSectionList', '?^^modifierList'],
     link: (scope, el, attr, ctrl) => {
-      if (ctrl[0]){
-        ctrl[0].cardItemList = ctrl[2];
-      } else if (ctrl[1]){
-        ctrl[1].cardItemList = ctrl[2];
+      if (ctrl[1]){
+        ctrl[1].cardItemList = ctrl[0];
+      } else if (ctrl[2]){
+        ctrl[2].cardItemList = ctrl[0];
+      } else if (ctrl[3]){
+        ctrl[3].cardItemList = ctrl[0];
       }
     }
   }

@@ -6,7 +6,7 @@
     <div class='inline-input' ng-if="!vm.modifier.$isOptional">
       <label for="maxChoices" translate>Minimum Selection</label>
       <md-input-container>
-          <input type="number" min="1" max="{{vm.modifier.maxChoices}}" id="minChoices" name="minChoices" ng-model="vm.modifier.minChoices">
+          <input type="number" min="1" max="{{vm.modifier.items.length < vm.modifier.maxChoices ? vm.modifier.items.length : vm.modifier.maxChoices }}" id="minChoices" name="minChoices" ng-model="vm.modifier.minChoices">
       </md-input-container>
     </div>
     <div class='inline-input'>

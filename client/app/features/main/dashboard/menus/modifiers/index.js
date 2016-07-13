@@ -9,10 +9,9 @@ import uirouter from 'angular-ui-router';
 import controller from './modifiers.controller';
 import routes from './modifiers.routes';
 
-import cardItemList from '../../../../../components/cardItemList';
-import modifierItem from '../components/modifierItem';
+import modifierList from '../components/modifierList';
 
-export default angular.module("modifiers" , [uirouter, cardItemList, modifierItem])
+export default angular.module("modifiers" , [uirouter, modifierList])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

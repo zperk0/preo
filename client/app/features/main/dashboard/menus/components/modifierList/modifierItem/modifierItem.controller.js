@@ -11,7 +11,7 @@ export default class modifierItemController {
   onEdit(){
     console.log("On edit");
     this.originalItem  = angular.copy(this.modifier);
-    this.list.selectItem(this.modifier);
+    this.cardItemList.selectItem(this.modifier);
     this.contextual.showMenu(this.type, this.modifier, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
   }
 
@@ -22,9 +22,7 @@ export default class modifierItemController {
             return this.ModifierService.deleteModifier(this.modifier)
         })
         .then(()=>{
-            if(this.onItemDeleted){
-              this.onItemDeleted({item:this.modifier});
-            }
+            this.cardItemList.onItemDeleted(this.modifier);
             this.Snack.show('Item deleted');
             this.Spinner.hide("modifier-delete");
         })
@@ -40,12 +38,10 @@ export default class modifierItemController {
       this.ModifierService.createModifier(this.modifier)
         .then((createdModifier)=>{
           this.modifier = createdModifier;
+          this.cardItemList.onItemCreated(this.modifier);
           this.Spinner.hide("modifier-create")
           this.Snack.show('Modifier created');
           this.contextualMenu.hide();
-          if (this.onItemCreated){
-            this.onItemCreated({item:this.modifier});
-          }
         }, (err)=>{
           console.log("failed creating item", err)
           this.Spinner.hide("modifier-create")
@@ -63,6 +59,7 @@ export default class modifierItemController {
           this.Spinner.hide("modifier-update")
           this.Snack.show('Modifier updated');
           this.contextualMenu.hide();
+          this.cardItemList.onItemUpdated(this.modifier);
       }, (err)=>{
         console.log("Failed updating Modifier", err)
         this.Spinner.hide("modifier-update")
@@ -92,9 +89,7 @@ export default class modifierItemController {
       .then((createdItem)=>{
         this.Spinner.hide("modifier-clone")
         this.Snack.show('Modifier duplicated');
-        if (this.onItemCreated){
-          this.onItemCreated({item:createdItem});
-        }
+        this.cardItemList.onItemCreated(createdItem);
       }, (err)=>{
         console.log("failed duplicating modifier", err)
         this.Spinner.hide("modifier-clone")
@@ -106,14 +101,14 @@ export default class modifierItemController {
     this.restoreOriginalValues()
     this.modifier.$selected = false;
     if (!this.modifier.id){
-      this.list.clearPossibleNewItem();
+      this.cardItemList.clearPossibleNewItem();
     }
     //clear selection
-    this.list.selectItem();
+    this.cardItemList.selectItem();
   }
 
     constructor($timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService) {
-      "ngInject";
+      console.log("on ctrl");
       this.Spinner = Spinner;
       this.Snack = Snack;
       this.contextualMenu = contextualMenu;

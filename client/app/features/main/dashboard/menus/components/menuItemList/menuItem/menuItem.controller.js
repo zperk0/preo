@@ -41,7 +41,7 @@ export default class menuItemController {
       .then((createdItem)=>{
         this.Spinner.hide("item-clone")
         this.Snack.show('Item duplicated');
-        this.onItemCreated({item:createdItem});
+        this.cardItemList.onItemCreated(createdItem);
       }, (err)=>{
         console.log("failed creating item", err)
         this.Spinner.hide("item-clone")
@@ -58,7 +58,7 @@ export default class menuItemController {
         this.Spinner.hide("item-create")
         this.Snack.show('Item created');
         this.contextualMenu.hide();
-        this.onItemCreated({item:this.item});
+        this.cardItemList.onItemCreated(this.item);
       }, (err)=>{
         console.log("failed creating item", err)
         this.Spinner.hide("item-create")
@@ -82,6 +82,7 @@ export default class menuItemController {
         this.Spinner.hide("item-updated")
         this.Snack.show('Item updated');
         this.contextualMenu.hide();
+        this.cardItemList.onItemUpdated(this.item);
     }, (err)=>{
       console.log("Failed updating item", err)
       this.Spinner.hide("item-updated")
@@ -131,8 +132,8 @@ export default class menuItemController {
           }
       })
       .then(()=>{
+          this.cardItemList.onItemDeleted(this.item);
           this.Snack.show('Item deleted');
-          this.onItemDeleted({item:this.item});
           this.Spinner.hide("item-delete");
       })
       .catch((err)=>{

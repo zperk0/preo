@@ -3,21 +3,6 @@ export default class menuItemListController {
     return "menuItemListController"
   }
 
-  onItemCreated(newItem){
-    this.cardItemList.clearPossibleNewItem();
-    this.addItemInPosition(newItem);
-  }
-
-  addItemInPosition(item){
-    let indexBefore = -1;
-    this.items.forEach((i, index)=>{
-      if (i.position <= item.position){
-        indexBefore = index;
-      }
-    })
-    this.items.splice(indexBefore+1, 0, item);
-  }
-
   onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
     console.log("on external moved");
        //must check because library appends the item in the array before calling callback
@@ -62,10 +47,6 @@ export default class menuItemListController {
 
   }
 
-  onItemDeleted(item){
-    this.items = this.items.filter((i)=>item.id !== i.id);
-  }
-
   showCreateItem($event, isImport){
     console.log("show creating", $event, isImport);
 
@@ -89,7 +70,7 @@ export default class menuItemListController {
         if (isCreating){
           return;
         }
-      newItem.position = this.items.length ? (this.items[this.items.length-1]).position + 1000 : 0;
+      newItem.position = Math.max.apply(Math,this.items.map(function(o){return o.position;})) + 1000
       this.items.push(newItem);
     } else {
       this.contextual.showDrawer('items');

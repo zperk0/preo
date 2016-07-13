@@ -48,6 +48,13 @@
   }
 }
 
+.sv-dropzone-modifier{
+  & > .sv-placeholder{
+    max-height:48px;
+  }
+}
+
+
 .card-item-child {
   .sv-dropzone{
     .sv-placeholder{

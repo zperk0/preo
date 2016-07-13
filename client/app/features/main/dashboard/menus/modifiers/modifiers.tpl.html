@@ -1,15 +1,14 @@
-<div class='modifier-list' layout="column">
+<div class='modifiers' layout="column">
   <div class="menu-toolbar" layout="row" layout-align="start center">
     <!-- <div flex class='menu-name' translate>Modifier database</div> -->
   </div>
    <div flex class="menu-content">
     <div class='main-content-left'>
-        <card-item-list
-          collection="vm.data.modifiers"
-          sv-disabled="false"
-          sv-is-dropzone="false"
-          on-click-new="vm.onClickNew()"
-          has-search="true"></card-item-list>
+        <modifier-list has-search="true"
+                       has-new="true"
+                       sv-disabled="false"
+                       ng-if="vm.data.modifiers && vm.data.modifiers.length"
+                       modifiers="vm.data.modifiers"></modifier-list>
       </div>
     <div class='main-content-right' sticky offset="134" contextual-menu-holder></div>
   </div>

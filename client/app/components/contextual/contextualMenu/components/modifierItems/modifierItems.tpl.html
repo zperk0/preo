@@ -15,7 +15,7 @@
           </div>
       </md-input-container>
       <venue-currency flex="10" class='currency'> GBP </venue-currency>
-      <icon class='icon-clear' ng-click="vm.deleteItem(item)" flex="5">clear</icon>
+      <icon class='icon-clear' ng-if="vm.modifier.items.length>1" ng-click="vm.deleteItem(item)" flex="5">clear</icon>
     </ng-form>
     <div class='button-position'>
       <md-button class='md-primary' ng-click="vm.addOption()">Add option</md-button>

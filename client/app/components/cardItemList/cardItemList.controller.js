@@ -3,6 +3,36 @@ export default class cardItemListController {
     return "cardItemListController"
   }
 
+  onItemCreated(newItem){
+    console.log("card item created")
+    this.$timeout(()=>{
+      this.clearPossibleNewItem();
+      this.addItemInPosition(newItem);
+    })
+  }
+
+  onItemUpdated(){
+    console.log("card item updated")
+    this.$timeout(()=>{
+      this.clearPossibleNewItem();
+      this.selectItem();
+    });
+  }
+
+  addItemInPosition(item){
+    let indexBefore = -1;
+    this.collection.forEach((i, index)=>{
+      if (i.position <= item.position){
+        indexBefore = index;
+      }
+    })
+    this.collection.splice(indexBefore+1, 0, item);
+  }
+
+  onItemDeleted(item){
+    this.deleteItem(item)
+  }
+
   onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
     console.log("modifier moveds", $items);
   }
@@ -78,7 +108,6 @@ export default class cardItemListController {
           deletedIndex = i;
         }
       })
-
       if (deletedIndex > -1){
         this.$timeout(()=>{
           console.log("spliced", deletedIndex)
@@ -88,6 +117,7 @@ export default class cardItemListController {
     }
   }
   deleteItem(item){
+    debugger;
     if (this.collection){
       this.collection = this.collection.filter((s)=>item.id !== s.id);
     }

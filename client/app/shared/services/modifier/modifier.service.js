@@ -8,17 +8,24 @@ export default class ModifierService {
 
     let newModifier = {
         $selected:true,
-        position:0,
+        position:Math.max.apply(Math,this.data.modifiers.map(function(o){return o.position;})) + 1000,
         variant:0,
         minChoices:0,
         maxChoices:1,
         description:"",
         name:"",
-        items:[],
+        items:[
+        {
+          visible:1,
+          price:0,
+          position:0
+        }
+        ],
         venueId:this.$stateParams.venueId
     };
 
     let isCreating = false;
+    debugger;
       this.data.modifiers.forEach((s, index)=>{
         if (!s.id){
           isCreating = true;

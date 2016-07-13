@@ -12,7 +12,7 @@ export default function modifierItem(){
     bindToController: true,
     require:['^?cardItemList','modifierItem'],
     link: (scope, el, attr, ctrl) => {
-      ctrl[1].list = ctrl[0];
+      ctrl[1].cardItemList = ctrl[0];
     }
   }
 }

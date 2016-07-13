@@ -8,7 +8,7 @@
   <!-- <div sv-placeholder></div> -->
   <div class='repeat-holder' ng-transclude>
   </div>
-  <card-item-new ng-if="vm.onClickNew" on-click="vm.clickNew()"></card-item-new>
+  <card-item-new ng-if="vm.hasNew" on-click="vm.clickNew()"></card-item-new>
   <div class='no-results' ng-if="vm.collection.length > 0 && results.length===0" translate>No results...</div>
 </div>
 
