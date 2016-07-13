@@ -1,6 +1,7 @@
 <div class='menu-item-list'>
   <div class='sv-root-holder'
     sv-root='item'
+    sv-disabled="vm.svDisabled"
     sv-on-sort="vm.onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
   <card-item-list
         collection="vm.items"
@@ -10,6 +11,7 @@
           sv-part="results"
           sv-multi-select='vm.svMultiSelect'
           sv-keep-in-list='vm.svKeepInList'
+
           sv-on-external-sort="vm.onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
           sv-is-dropzone='vm.svIsDropzone'>
            <menu-item

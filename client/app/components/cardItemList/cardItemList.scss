@@ -1,18 +1,24 @@
 .card-item-list{
+
   .search{
     position: fixed;
-    z-index: 1;
+    z-index: 21;
+
     md-icon{
-      padding: 16px;
-      font-size: 18px;
       color: #757575;
+      top:6px;
     }
-    label{
-      top: -4px;
+
+    &:not(.md-input-invalid).md-input-focused label{
+      display: none;
+    }
+
+    &:not(.md-input-invalid).md-input-has-value label{
+      display: none;
     }
 
     input{
-      padding-left:48px;
+      border:none;
     }
 
     .md-errors-spacer{
