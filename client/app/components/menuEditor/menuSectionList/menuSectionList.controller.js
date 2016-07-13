@@ -53,7 +53,18 @@ export default class menuSectionListController {
   clearPossibleNewSection(){
     // remove section with id -1, (possible new section)
     if (this.sections){
-      this.sections = this.sections.filter((s)=>s.id !== undefined)
+      let deletedIndex = -1;
+      this.sections.forEach((s,i)=>{
+        if (s.id === undefined){
+          s.$deleted = true;
+          deletedIndex = i;
+        }
+      })
+      if (deletedIndex > -1){
+        this.$timeout(()=>{
+          this.sections.splice(deletedIndex,1);
+        },1000)
+      }
     }
   }
 
@@ -131,12 +142,14 @@ export default class menuSectionListController {
       }, ()=>{
         this.Snack.showError('Error deleting section');
       }).then(()=>{
-        this.Spinner.hide("section-delete");
+        this.$timeout(()=>{
+          this.Spinner.hide("section-delete");
+        })
       })
   }
 
   selectSection(section){
-    this.clearPossibleNewSection();
+    // this.clearPossibleNewSection();
     this.sections.forEach((s, index)=>{
       if (section && s.id === section.id){
         s.$selected = true;
@@ -157,10 +170,11 @@ export default class menuSectionListController {
   }
 
   /* @ngInject */
-  constructor($q, Spinner, Snack) {
+  constructor($timeout, $q, Spinner, Snack) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$q = $q;
+    this.$timeout = $timeout;
   }
 }

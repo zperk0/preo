@@ -123,9 +123,7 @@
   handleCancel(){
     this.restoreOriginalValues();
     this.section.$selected = false;
-    if (!this.section.id){
-      this.menuSectionListCtrl.clearPossibleNewSection();
-    }
+    this.menuSectionListCtrl.clearPossibleNewSection();
   }
 
   handleSuccess(entity){

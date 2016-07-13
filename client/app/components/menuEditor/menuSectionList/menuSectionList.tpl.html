@@ -4,11 +4,7 @@
       sv-part="vm.sections">
     <menu-section
       ng-repeat="section in vm.sections"
-      ng-class="{expanded:section.$expanded}"
-      section="section"
-      sv-element="{{section.$expanded ? undefined : true}}"
-
-      ng-attr-data-id="{{section.id}}">
+      section="section">
     </menu-section>
     <menu-section-new ng-click="vm.showCreateSection($event)">
     </menu-section-new>

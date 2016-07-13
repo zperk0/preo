@@ -1,4 +1,7 @@
-<div class='menu-section'>
+<div class='menu-section'
+      ng-class="{expanded:vm.section.$expanded,deleted:vm.section.$deleted}"
+      sv-element="{{vm.section.$expanded ? undefined : true}}"
+      ng-attr-data-id="{{vm.section.id}}">
   <card-item  has-actions="true"
               selected="vm.section.$selected"
               expanded="vm.section.$expanded"

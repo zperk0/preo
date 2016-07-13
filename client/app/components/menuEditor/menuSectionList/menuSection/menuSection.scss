@@ -5,6 +5,10 @@
   margin:8px;
   transition: box-shadow 0.3s linear;
 
+  &.deleted{
+    display: none;
+  }
+
 
   &>md-card{
     margin:0;
