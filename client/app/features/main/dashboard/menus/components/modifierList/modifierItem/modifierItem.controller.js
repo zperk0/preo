@@ -108,7 +108,7 @@ export default class modifierItemController {
   }
 
     constructor($timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService) {
-      console.log("on ctrl");
+      'ngInject';
       this.Spinner = Spinner;
       this.Snack = Snack;
       this.contextualMenu = contextualMenu;
