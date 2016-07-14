@@ -26,8 +26,8 @@
         sv-root="size"
         sv-on-sort="vm.onOptionMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
         sv-part="vm.ngModel.items">
-      <ng-form class='price' layout="row" layout-align="start center" name="sizeForm" ng-repeat="size in vm.ngModel.items" sv-element>
-        <span class='handle' sv-handle><icon>drag_handle</icon></span>
+      <ng-form class='menu-item-size-form' class='price' layout="row" layout-align="start center" name="sizeForm" ng-repeat="size in vm.ngModel.items" sv-element>
+        <span class='handle' sv-handle><icon>arrow_drop_up</icon><icon>arrow_drop_down</icon></span>
         <md-input-container flex>
             <label translate>Name</label>
             <input flex type="text" required name="sizeName" ng-model="size.name">

@@ -8,16 +8,26 @@
     left: -18px;
   }
 
-  md-input-container{
-    margin:0;
-  }
-
   .prices {
 
 
 
     venue-currency{
       text-align: center;
+    }
+
+    .handle{
+      position: relative;
+
+      md-icon:first-child{
+        position: absolute;
+        top: -10px;
+      }
+      cursor:move;
+      cursor:grab;
+      cursor:-moz-grab;
+      cursor:grab;
+
     }
 
     .icon-clear{
@@ -29,4 +39,13 @@
     }
   }
 
+}
+
+.menu-item-size-form{
+  &.sv-long-pressing{
+    background: white;
+  }
+  md-input-container{
+    margin:0;
+  }
 }
