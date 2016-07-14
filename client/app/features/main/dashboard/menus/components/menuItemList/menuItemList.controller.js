@@ -61,6 +61,7 @@ export default class menuItemListController {
         visible:1,
         tags:[],
         images:[],
+        position:0,
         venueId:this.$stateParams.venueId
     };
 
@@ -74,7 +75,9 @@ export default class menuItemListController {
         if (isCreating){
           return;
         }
-      newItem.position = Math.max.apply(Math,this.items.map(function(o){return o.position;})) + 1000
+      if (this.items && this.items.length){
+        newItem.position = Math.max.apply(Math,this.items.map(function(o){return o.position;})) + 1000
+      }
       this.items.push(newItem);
     } else {
       this.contextual.showDrawer('items');
