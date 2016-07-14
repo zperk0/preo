@@ -6,6 +6,7 @@ export default function cardItemList(){
     restrict: 'E',
     scope: {
       collection:"=",
+      collectionResults:"=",
       searchFilter:"=",
       hasNew:"=?",
       onClickNew:"&?",

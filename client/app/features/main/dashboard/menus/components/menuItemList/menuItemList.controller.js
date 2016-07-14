@@ -3,10 +3,11 @@ export default class menuItemListController {
     return "menuItemListController"
   }
 
+
   onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
     console.log("on external moved");
        //must check because library appends the item in the array before calling callback
-      if (this.cardItemList.isItemDuplicated($items, 1)){
+      if (this.cardItemList.isItemDuplicated($items, 0)){
         this.Snack.showError('One or more items are already in section');
         $partTo.splice($indexTo,$items.length);
         return;
@@ -14,12 +15,15 @@ export default class menuItemListController {
       let promises = [];
       this.Spinner.show("item-move");
       $items.forEach(($item)=>{
+        let $i = angular.copy($item);
         //only idd items that are not in the list yet
-        $item.position = this.cardItemList.calculateNewItemPos($item);
-        $item.menuId = this.section.menuId;
-        promises.push(this.section.moveItem($item));
+        $i.position = this.cardItemList.calculateNewItemPos($item);
+        $i.menuId = this.section.menuId;
+        promises.push(this.section.moveItem($i));
       })
-      this.$q.all(promises).then((item)=>{
+      this.$q.all(promises).then((items)=>{
+          // this is needed because of $scope.results array on search. drag an drop list must use results so end array is not updated
+          this.items.splice($indexTo,0,...items);
           return this.cardItemList.onSimpleSort()
         }).then(()=>{
           this.Snack.show('Items added');
@@ -36,7 +40,7 @@ export default class menuItemListController {
     console.log("on item moved");
     if ($partFrom == $partTo){
       this.Spinner.show("item-move");
-      this.cardItemList.onSimpleSort().then(()=>{
+      this.cardItemList.onItemsMoved($items, $indexFrom, $indexTo).then(()=>{
         this.Snack.show('Item moved');
       }, ()=>{
         this.Snack.showError('Error moving item');
@@ -90,6 +94,7 @@ export default class menuItemListController {
 
   constructor($scope, $q, Snack, Spinner, $stateParams, UtilsService, contextual, DialogService, LabelService, ItemService) {
     "ngInject";
+    this.$scope = $scope;
     this.Snack = Snack;
     this.$stateParams = $stateParams;
     this.Spinner = Spinner;

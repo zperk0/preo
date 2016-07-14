@@ -33,8 +33,10 @@ export default class cardItemListController {
     this.deleteItem(item)
   }
 
-  onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
-    console.log("modifier moveds", $items);
+
+  onItemsMoved($items, $indexFrom, $indexTo){
+    this.collection.splice($indexTo, 0, ...this.collection.splice($indexFrom, $items.length));
+    return this.onSimpleSort()
   }
 
   isItemDuplicated(items, qty){
@@ -117,9 +119,12 @@ export default class cardItemListController {
     }
   }
   deleteItem(item){
-    debugger;
     if (this.collection){
       this.collection = this.collection.filter((s)=>item.id !== s.id);
+    }
+    //FIXME have to to this twice because of the searchable lists
+    if (this.collectionResults){
+      this.collectionResults = this.collectionResults.filter((s)=>item.id !== s.id);
     }
   }
 
