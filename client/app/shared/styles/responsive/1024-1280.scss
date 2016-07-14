@@ -15,6 +15,17 @@ html{
   .image-uploader{
     width: 262px;
     height: 147px;
+
+    .image-not-found{
+       font-size:16px;
+      md-icon{
+        font-size:24px;
+        height: 24px;
+        width: 24px;
+        margin-top: 32px;
+        margin-bottom: 8px;
+      }
+    }
   }
 
   .contextual-drawer {

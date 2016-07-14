@@ -125,3 +125,15 @@
     top: 4px;
   }
 }
+
+.sv-multi-selected {
+  .sv-element-multi-selected{
+    .card-item, &.card-item{
+      background-color:#E1F5FE;
+      @include materialRaisedShadow();
+      .item-actions{
+        visibility: hidden;
+      }
+    }
+  }
+}

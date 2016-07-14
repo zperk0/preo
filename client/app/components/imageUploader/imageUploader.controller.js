@@ -20,6 +20,7 @@ export default class imageUploaderController {
         this.ngModel[0].$delete = true;
         delete this.ngModel[0].$image;
       }
+    angular.element(document.querySelector(".image-wrapper.not-found")).removeClass("not-found");
     $event.stopPropagation();
   }
 
@@ -39,6 +40,7 @@ export default class imageUploaderController {
             }
             this.ngModel[0].$delete = false;
             this.ngModel[0].$save = true;
+            angular.element(document.querySelector(".image-wrapper.not-found")).removeClass("not-found");
           }, ()=>{
             console.log("cancelling img dialog")
           })

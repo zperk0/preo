@@ -2,8 +2,19 @@ html{
 
 
   .image-uploader{
-      width: 430px;
-      height: 242px;
+    width: 430px;
+    height: 242px;
+
+   .image-not-found{
+    font-size:20px;
+      md-icon{
+        margin-top: 64px;
+        font-size: 45px;
+        width: 45px;
+        height: 45px;
+        margin-bottom: 8px;
+      }
+    }
   }
 
   .contextual-drawer {

@@ -75,4 +75,29 @@
     }
   }
 
+  .not-found{
+    .image-not-found{
+      display: block;
+    }
+  }
+  .image-not-found{
+    display: none;
+    background: #D1D1D1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size:24px;
+    text-align: center;
+    color:#757575;
+    md-icon{
+        display: block;
+        margin-top: 80px;
+        margin-bottom: 12px;
+        font-size: 45px;
+        width: 45px;
+        height: 45px;
+    }
+  }
 }

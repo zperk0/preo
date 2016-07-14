@@ -2,7 +2,12 @@
   <div class='image-wrapper placeholder' ng-if="!vm.ngModel.length || !vm.ngModel[0].$image">
   </div>
   <div class='image-wrapper' ng-if="vm.ngModel.length && vm.ngModel[0].$image">
-   <img ng-src='{{vm.ngModel[0].$image}}'>
+   <img ng-src='{{vm.ngModel[0].$image}}' onerror="this.parentElement.className += ' not-found'";
+}" >
+   <div class='image-not-found'>
+        <icon>not_interested</icon>
+        <span translate>Image not found</span>
+   </div>
    <icon class='delete-icon' ng-click="vm.deleteImage($event)">delete</icon>
   </div>
   <div class='upload-specs'>

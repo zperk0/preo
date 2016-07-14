@@ -45,7 +45,6 @@ import contextual from './components/contextual';
 require('./components/sticky/sticky.directive.js');
 
 
-
 //Issue with ES6 Import, change this when it's fixed https://github.com/moment/moment/issues/2608
 window.moment = require('moment/moment.js');
 
