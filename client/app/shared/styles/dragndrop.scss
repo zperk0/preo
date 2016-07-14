@@ -13,6 +13,12 @@
       display: block;
     }
   }
+
+  &.sv-multi-selected{
+    #sv-multi-helper{
+      display: block;
+    }
+  }
 }
 
 //custom dropzones
@@ -83,10 +89,39 @@
 
 }
 
-// .modifier-title-dropzone{
-//   background: rgba(255,0,0,0.5);
-//   width:100%;
-//   min-height: 40px;
-//   position: absolute;
-//   top:0;
-// }
+#sv-multi-helper{
+  position: relative;
+  margin: 8px;
+  display: none;
+  .card-item{
+    position: relative;
+    margin:0;
+  }
+  .badge{
+    position: absolute;
+    top: -11px;
+    left: -11px;
+    background: #616161;
+    width: 22px;
+    height: 22px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 22px;
+    color: white;
+    border-radius: 2px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    font-family: roboto;
+  }
+  &:before{
+    content: '';
+    background: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 2px;
+    position: absolute;
+    bottom: 10;
+    right: -4px;
+    bottom: -4px;
+    left: 4px;
+    top: 4px;
+  }
+}
