@@ -9,7 +9,7 @@ import './app.scss';
 // node_modules and bower_components are pre-loaded by webpack
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
-import angularTranslate from 'angular-translate';
+import angularGettext from 'angular-gettext';
 import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';
 import angularMaterial from 'angular-material';
@@ -23,6 +23,7 @@ import croppie from 'croppie';
 import config from './app.config';
 import run from './app.run';
 import routes from './app.routes';
+import translations from './app.translations';
 import broadcastEvents from './app.broadcastEvents.constants';
 import PreodayServices from './shared';
 
@@ -53,7 +54,7 @@ export default angular.module('webapp', [
   /* external */
   uirouter,
   angularMaterial,
-  angularTranslate,
+  'gettext',
   angularAnimate,
   angularAria,
   angularMessages,

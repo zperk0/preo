@@ -7,7 +7,7 @@ export default class userSelectController {
     this.UserService.signout();
   }
 
-  openMenu = ($mdOpenMenu, ev) => {
+  openMenu ($mdOpenMenu, ev) {
     $mdOpenMenu(ev);
   };
 

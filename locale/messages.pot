@@ -1,0 +1,389 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: ./client/app/features/notFound/notFound.tpl.html:2
+msgid "404 - Page Not Found"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:5
+msgid "Add Item"
+msgstr ""
+
+#: ./client/app/components/cardItem/cardItemNew/cardItemNew.tpl.html:3
+msgid "Add New"
+msgstr ""
+
+#: ./client/app/components/imageUploader/imageUploader.tpl.html:24
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSectionNew.tpl.html:3
+msgid "Add Section"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:21
+msgid "Add option"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:50
+msgid "Add size"
+msgstr ""
+
+#: ./client/app/shared/services/item/item.service.js:25
+msgid "All menus"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:26
+msgid "An unexpected error occurred"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:22
+msgid "An unexpected error occurred while loading menus"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:18
+msgid "An unexpected error occurred while loading your venues"
+msgstr ""
+
+#: ./client/app/components/toolbar/toolbar.tpl.html:10
+#: ./client/app/components/toolbar/toolbar.tpl.html:8
+msgid "Analytics"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:57
+msgid "App mode"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:21
+msgid "Are you sure you want to delete this image?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:11
+msgid "Are you sure you want to delete this section?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:14
+msgid "Are you sure you want to permanently delete this item?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:15
+msgid "Are you sure you want to remove this item from the section?"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:62
+msgid "Bookings"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/contextualMenu.tpl.html:5
+#: ./client/app/components/dialog/dialog.delete.tpl.html:9
+#: ./client/app/components/dialog/dialog.tpl.html:9
+#: ./client/app/components/imageUploader/croppie/croppieDialog.tpl.html:11
+msgid "Cancel"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:9
+msgid "Create new item"
+msgstr ""
+
+#: ./client/app/components/toolbar/toolbar.tpl.html:4
+#: ./client/app/components/toolbar/toolbar.tpl.html:6
+msgid "Dashboard"
+msgstr ""
+
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:25
+#: ./client/app/components/dialog/dialog.delete.tpl.html:10
+msgid "Delete"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:20
+msgid "Delete image?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:13
+msgid "Delete item?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:17
+msgid "Delete modifier?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:10
+msgid "Delete section?"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:13
+msgid "Description"
+msgstr ""
+
+#: ./client/app/components/imageUploader/imageUploader.tpl.html:17
+msgid "Dimensions"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/items/contextualDrawer.items.tpl.html:16
+#: ./client/app/components/contextual/contextualDrawer/modifiers/contextualDrawer.modifiers.tpl.html:18
+#: ./client/app/components/contextual/contextualMenu/contextualMenu.tpl.html:8
+msgid "Done"
+msgstr ""
+
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:19
+msgid "Duplicate"
+msgstr ""
+
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:31
+msgid "Edit"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:49
+msgid "Emails"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:51
+msgid "Events"
+msgstr ""
+
+#: ./client/app/components/imageUploader/imageUploader.tpl.html:19
+msgid "File type"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:64
+msgid "Gift vouchers"
+msgstr ""
+
+#: ./client/app/features/notFound/notFound.tpl.html:4
+msgid "Go to Signin"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:59
+msgid "Group Bookings"
+msgstr ""
+
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:7
+msgid "Hide from menu"
+msgstr ""
+
+#: ./client/app/components/imageUploader/imageUploader.tpl.html:9
+msgid "Image not found"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:10
+msgid "Import existing item"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:6
+msgid "Item name"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:43
+msgid "Items"
+msgstr ""
+
+#: ./client/app/shared/services/item/item.service.js:25
+msgid "Just this menu"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:4
+msgid "Mandatory"
+msgstr ""
+
+#: ./client/app/components/imageUploader/imageUploader.tpl.html:18
+msgid "Max file size"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:13
+msgid "Maximum Selection"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:41
+#: ./client/app/components/navbar/navbar.controller.js:61
+msgid "Menus"
+msgstr ""
+
+#: ./client/app/components/toolbar/toolbar.tpl.html:17
+msgid "Messages"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:7
+msgid "Minimum Selection"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:4
+msgid "Modifier name"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:44
+msgid "Modifiers"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:4
+msgid "Multiple Sizes"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:23
+msgid "Multiple instances found"
+msgstr ""
+
+#: ./client/app/components/toolbar/toolbar.tpl.html:12
+#: ./client/app/components/toolbar/toolbar.tpl.html:14
+msgid "My Account"
+msgstr ""
+
+#: ./client/app/components/toolbar/userSelect/userSelect.tpl.html:11
+msgid "My Profile"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:42
+msgid "My menus"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:32
+msgid "Name"
+msgstr ""
+
+#: ./client/app/components/cardItemList/cardItemList.tpl.html:12
+msgid "No results..."
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:54
+msgid "Notifications"
+msgstr ""
+
+#: ./client/app/components/toolbar/venueSelect/venueSelect.tpl.html:3
+msgid "Open phone interactions menu"
+msgstr ""
+
+#: ./client/app/components/toolbar/userSelect/userSelect.tpl.html:3
+msgid "Open profile interactions menu"
+msgstr ""
+
+#: ./client/app/components/navbar/navbarItem/navbarItem.directive.js:54
+msgid "Open {{ name }} interactions menu"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:4
+msgid "Option"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:3
+msgid "Optional"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:52
+msgid "Outlets"
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.tpl.html:11
+msgid "Password"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:56
+msgid "Payment Methods"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:55
+msgid "Payments"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:39
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:8
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:11
+msgid "Price"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:53
+msgid "Promotions"
+msgstr ""
+
+#: ./client/app/components/imageUploader/croppie/croppieDialog.tpl.html:12
+msgid "Save"
+msgstr ""
+
+#: ./client/app/components/cardItemList/cardItemList.tpl.html:5
+msgid "Search {{vm.searchLabel}}"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/menuSection.tpl.html:3
+msgid "Section name"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:60
+msgid "Settings"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/menus/itemList/itemList.tpl.html:10
+#: ./client/app/features/main/dashboard/menus/menu/menu.tpl.html:11
+msgid "Show modifiers"
+msgstr ""
+
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:13
+msgid "Show on menu"
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.tpl.html:17
+msgid "Sign In"
+msgstr ""
+
+#: ./client/app/components/toolbar/userSelect/userSelect.tpl.html:16
+msgid "Signout"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:3
+msgid "Single Size"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:46
+#: ./client/app/components/navbar/navbar.controller.js:47
+msgid "Styling"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:11
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:22
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:35
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:42
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:14
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:7
+#: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:9
+#: ./client/app/components/contextual/contextualMenu/templates/menuSection.tpl.html:6
+#: ./client/app/features/auth/signin/signin.tpl.html:14
+#: ./client/app/features/auth/signin/signin.tpl.html:7
+msgid "This is required."
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:18
+msgid "This will delete the modifier from all menus."
+msgstr ""
+
+#: ./client/app/components/imageUploader/imageUploader.tpl.html:15
+msgid "Upload specs"
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.tpl.html:4
+msgid "Username"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:19
+msgid "Variant Name"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:40
+msgid "Venue Settings"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:17
+msgid "Venue not found"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:48
+msgid "Web Orders"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:19
+msgid "You do not have the necessary permissions to view this dashboard, please contact your administrator"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:24
+msgid "You have edited an item that is in more than one menu. Where would you like to apply the changes?"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/venueSettings/venueSettings.tpl.html:3
+msgid "save"
+msgstr ""

@@ -7,6 +7,6 @@
   </md-dialog-content>
   <md-dialog-actions>
     <md-button ng-click="cancel()" class="md-primary" ng-if="hasCancel" translate>Cancel</md-button>
-    <md-button  ng-repeat="button in buttons" ng-click="confirm(button)"  class="md-primary" translate>{{button.name}}</md-button>
+    <md-button  ng-repeat="button in buttons" ng-click="confirm(button)"  class="md-primary">{{button.name}}</md-button>
   </md-dialog-actions>
 </md-dialog>

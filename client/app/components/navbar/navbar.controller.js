@@ -26,7 +26,7 @@ export default class navbarController {
   }
 
 
-  constructor($state) {
+  constructor($state, gettextCatalog) {
     "ngInject";
     this.DESTINATION_PREFIX = "main.dashboard.";
     this.$state = $state;
@@ -37,31 +37,31 @@ export default class navbarController {
     //is also used for path-select to decide if .selected should be added or not to that particular item for dynamic class
     //destination: if given, will be used as a destination instead of the id, useful when parent is abstract, with a default view (like menus and menus.list)
     this.menu=[
-      {name:"Venue Settings", icon:"store", id:"venueSettings"},
-      {name:"Menus", icon:"list", id:"menus", children:[
-        {name:"My menus", id:"menus", destination:"list", exclusions:["itemList","modifiers"]},
-        {name:"Items", id:"itemList"},
-        {name:"Modifiers", id:"modifiers"},
+      {name: gettextCatalog.getString("Venue Settings"), icon:"store", id:"venueSettings"},
+      {name: gettextCatalog.getString("Menus"), icon:"list", id:"menus", children:[
+        {name: gettextCatalog.getString("My menus"), id:"menus", destination:"list", exclusions:["itemList","modifiers"]},
+        {name: gettextCatalog.getString("Items"), id:"itemList"},
+        {name: gettextCatalog.getString("Modifiers"), id:"modifiers"},
       ]},
-      {name:"Styling", id:"styling", icon:"color_lens", children:[
-        {name:"Styling", id:"mobile"},
-        {name:"Web Orders", id:"weborders"},
-        {name:"Emails", id:"emails"}
+      {name: gettextCatalog.getString("Styling"), id:"styling", icon:"color_lens", children:[
+        {name: gettextCatalog.getString("Styling"), id:"mobile"},
+        {name: gettextCatalog.getString("Web Orders"), id:"weborders"},
+        {name: gettextCatalog.getString("Emails"), id:"emails"}
       ]},
-      {name:"Events", icon:"event", id:"events"},
-      {name:"Outlets", icon:"pin_drop", id:"outlets"},
-      {name:"Promotions", icon:"star", id:"promotions"},
-      {name:"Notifications", icon:"chat", id:"notifications"},
-      {name:"Payments", icon:"credit_card", id:"payments", children:[
-        {name:"Payment Methods", id:"paymentMethods"},
-        {name:"App mode", id:"appMode"}
+      {name: gettextCatalog.getString("Events"), icon:"event", id:"events"},
+      {name: gettextCatalog.getString("Outlets"), icon:"pin_drop", id:"outlets"},
+      {name: gettextCatalog.getString("Promotions"), icon:"star", id:"promotions"},
+      {name: gettextCatalog.getString("Notifications"), icon:"chat", id:"notifications"},
+      {name: gettextCatalog.getString("Payments"), icon:"credit_card", id:"payments", children:[
+        {name: gettextCatalog.getString("Payment Methods"), id:"paymentMethods"},
+        {name: gettextCatalog.getString("App mode"), id:"appMode"}
       ]},
-      {name:"Group Bookings", icon:"people", id:"bookings", children:[
-        {name:"Settings", id:"bookingSettings"},
-        {name:"Menus", id:"bookingMenus"},
-        {name:"Bookings", id:"bookingList"}
+      {name: gettextCatalog.getString("Group Bookings"), icon:"people", id:"bookings", children:[
+        {name: gettextCatalog.getString("Settings"), id:"bookingSettings"},
+        {name: gettextCatalog.getString("Menus"), id:"bookingMenus"},
+        {name: gettextCatalog.getString("Bookings"), id:"bookingList"}
       ]},
-      {name:"Gift vouchers", icon:"label", id:"vouchers"}
+      {name: gettextCatalog.getString("Gift vouchers"), icon:"label", id:"vouchers"}
     ];
   }
 }

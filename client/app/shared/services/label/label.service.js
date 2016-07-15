@@ -4,24 +4,24 @@ export default class LabelService {
     return "LabelService"
   }
 
-  constructor($translate) {
+  constructor(gettextCatalog) {
     "ngInject";
 
-    this.TITLE_DELETE_SECTION = $translate.instant("Delete section?");
-    this.CONTENT_DELETE_SECTION = $translate.instant("Are you sure you want to delete this section?");
+    this.TITLE_DELETE_SECTION = gettextCatalog.getString("Delete section?");
+    this.CONTENT_DELETE_SECTION = gettextCatalog.getString("Are you sure you want to delete this section?");
 
-    this.TITLE_DELETE_ITEM  = $translate.instant("Delete item?");
-    this.CONTENT_DELETE_ITEM = $translate.instant("Are you sure you want to permanently delete this item?");
-    this.CONTENT_DELETE_ITEM_SECTION = $translate.instant("Are you sure you want to remove this item from the section?");
+    this.TITLE_DELETE_ITEM  = gettextCatalog.getString("Delete item?");
+    this.CONTENT_DELETE_ITEM = gettextCatalog.getString("Are you sure you want to permanently delete this item?");
+    this.CONTENT_DELETE_ITEM_SECTION = gettextCatalog.getString("Are you sure you want to remove this item from the section?");
 
-    this.TITLE_DELETE_MODIFIER  = $translate.instant("Delete modifier?");
-    this.CONTENT_DELETE_MODIFIER = $translate.instant("This will delete the modifier from all menus.");
+    this.TITLE_DELETE_MODIFIER  = gettextCatalog.getString("Delete modifier?");
+    this.CONTENT_DELETE_MODIFIER = gettextCatalog.getString("This will delete the modifier from all menus.");
 
-    this.TITLE_DELETE_IMAGE = $translate.instant("Delete image?");
-    this.CONTENT_DELETE_IMAGE = $translate.instant("Are you sure you want to delete this image?");
+    this.TITLE_DELETE_IMAGE = gettextCatalog.getString("Delete image?");
+    this.CONTENT_DELETE_IMAGE = gettextCatalog.getString("Are you sure you want to delete this image?");
 
-    this.TITLE_MULTIPLE_INSTANCES = $translate.instant("Multiple instances found");
-    this.CONTENT_MULTIPLE_INSTANCES = $translate.instant("You have edited an item that is in more than one menu. Where would you like to apply the changes?");
+    this.TITLE_MULTIPLE_INSTANCES = gettextCatalog.getString("Multiple instances found");
+    this.CONTENT_MULTIPLE_INSTANCES = gettextCatalog.getString("You have edited an item that is in more than one menu. Where would you like to apply the changes?");
 
   }
 }

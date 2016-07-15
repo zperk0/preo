@@ -1,7 +1,7 @@
 <div class='menu-item-size'>
   <md-radio-group class='size' ng-change="vm.onSizeSelect()" ng-model="vm.ngModel.$isMultiple">
-      <md-radio-button ng-value="false" class="md-primary md-hue-2">Single Size</md-radio-button>
-      <md-radio-button ng-value="true" class="md-primary md-hue-2"> Multiple Sizes </md-radio-button>
+      <md-radio-button ng-value="false" class="md-primary md-hue-2">{{'Single Size' | translate}}</md-radio-button>
+      <md-radio-button ng-value="true" class="md-primary md-hue-2"> {{'Multiple Sizes' | translate}} </md-radio-button>
   </md-radio-group>
   <div ng-if="!vm.ngModel.$isMultiple" class='price' layout="row" layout-align="start center">
     <md-input-container flex>
@@ -11,7 +11,7 @@
           <div ng-message="required" translate>This is required.</div>
         </div>
     </md-input-container>
-    <venue-currency class='currency'> GBP </venue-currency>
+    <venue-currency class='currency'>GBP</venue-currency>
   </div>
   <div class='multi-size' ng-if="vm.ngModel.$isMultiple" layout="column">
 
@@ -47,7 +47,7 @@
       </ng-form>
       <div sv-placeholder></div>
       <div class='button-position'>
-        <md-button class='md-primary' ng-click="vm.addSize()">Add size</md-button>
+        <md-button class='md-primary' ng-click="vm.addSize()" translate>Add size</md-button>
       </div>
     </div>
   </div>

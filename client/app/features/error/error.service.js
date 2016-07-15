@@ -9,21 +9,21 @@ export default class ErrorService {
   }
 
 
-  constructor($translate, $state) {
+  constructor(gettextCatalog, $state) {
     "ngInject";
     this.$state = $state;
 
     //VENUE
-    this.VENUE_NOT_FOUND = {code:'VENUE_NOT_FOUND', message:$translate.instant("Venue not found")};
-    this.FAILED_LOADING_VENUES = {code:'FAILED_LOADING_VENUES', message:$translate.instant("An unexpected error occurred while loading your venues")};
-    this.STAFF = {code:'STAFF', message:$translate.instant("You do not have the necessary permissions to view this dashboard, please contact your administrator")};
+    this.VENUE_NOT_FOUND = {code:'VENUE_NOT_FOUND', message:gettextCatalog.getString("Venue not found")};
+    this.FAILED_LOADING_VENUES = {code:'FAILED_LOADING_VENUES', message:gettextCatalog.getString("An unexpected error occurred while loading your venues")};
+    this.STAFF = {code:'STAFF', message:gettextCatalog.getString("You do not have the necessary permissions to view this dashboard, please contact your administrator")};
 
     //MENUS
-    this.FAILED_LOADING_MENUS = {code:'FAILED_LOADING_MENUS', message:$translate.instant("An unexpected error occurred while loading menus")};
+    this.FAILED_LOADING_MENUS = {code:'FAILED_LOADING_MENUS', message:gettextCatalog.getString("An unexpected error occurred while loading menus")};
 
 
     //DEFAULT
-    this.DEFAULT = {code:'DEFAULT', message:$translate.instant("An unexpected error occurred")};
+    this.DEFAULT = {code:'DEFAULT', message:gettextCatalog.getString("An unexpected error occurred")};
 
   }
 }

@@ -30,12 +30,12 @@ export default class VenueService {
           this.venues = venues;
           if (this.$stateParams.venueId){
             return this.fetchById(Number(this.$stateParams.venueId)).then((venue)=>{
-              this.currentVenue = venue;
+              this.setCurrentVenue(venue);
               this.$rootScope.$broadcast(this.BroadcastEvents._ON_FETCH_VENUES, venues);
               resolve(venues);
             },reject);
           }
-          this.currentVenue=venues[0];
+          this.setCurrentVenue(venues[0]);
           this.$rootScope.$broadcast(this.BroadcastEvents._ON_FETCH_VENUES, venues);
 
         }
@@ -44,17 +44,23 @@ export default class VenueService {
     });
   }
 
+  setCurrentVenue (venue) {
+
+    this.currentVenue = venue;
+  }
+
   signout() {
     Preoday.User.signout();
     window.location.reload();
   }
 
-  constructor($q, $state, $stateParams, $rootScope, BroadcastEvents) {
+  constructor($q, $state, $stateParams, $rootScope, BroadcastEvents, gettextCatalog) {
     "ngInject";
     this.$q = $q;
     this.$state = $state;
     this.$stateParams = $stateParams;
     this.$rootScope = $rootScope;
     this.BroadcastEvents = BroadcastEvents;
+    this.gettextCatalog = gettextCatalog;
   }
 }

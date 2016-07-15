@@ -10,22 +10,26 @@
     "serve:prod": "webpack-dev-server --env prod --type serve --inline",
     "test": "karma start --type test",
     "test:live": "karma start --type test --auto-watch --no-single-run",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "gettext:compile": "angular-gettext-cli --compile --files './locale/*.po' --dest client/app/app.translations.js --format javascript --module gettext",
+    "gettext:extract": "angular-gettext-cli --files \"./client/**/*.+(js|html)\" --dest ./locale/messages.pot --marker-name i18n"
   },
   "license": "MIT",
   "dependencies": {
     "angular": "^1.4.8",
     "angular-animate": "^1.5.3",
     "angular-aria": "^1.5.6",
+    "angular-gettext": "^2.3.4",
+    "angular-gettext-cli": "git+https://bitbucket.org/preoday/angular-gettext-cli.git",
     "angular-material": "^1.0.9",
     "angular-messages": "^1.5.6",
     "angular-scroll": "^1.0.0",
     "angular-sortable-view": "git://github.com/caiocpricci2/angular-sortable-view.git",
-    "angular-translate": "^2.11.0",
     "angular-ui-router": "^0.2.15",
     "croppie": "^2.2.0",
     "jscore": "git+ssh://git@bitbucket.org/preoday/javascript-core.git",
-    "moment": "^2.12.0"
+    "moment": "^2.12.0",
+    "ng-annotate-webpack-plugin": "^0.1.3"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.8",

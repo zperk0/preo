@@ -4,31 +4,31 @@
       <md-button ng-if="cardItem.showCardActions && vm.onVisibility" ng-show="vm.isVisible" class="md-icon-button" ng-click="vm.onVisibility({newStatus:false})">
         <icon>visibility_off</icon> <!-- visibility_off -->
         <md-tooltip md-direction="bottom">
-          Hide from menu
+          {{ 'Hide from menu' | translate }}
         </md-tooltip>
       </md-button>
       <md-button ng-if="cardItem.showCardActions && vm.onVisibility" ng-show="!vm.isVisible" class="md-icon-button" ng-click="vm.onVisibility({newStatus:true})">
         <icon>visibility</icon> <!-- visibility_off -->
         <md-tooltip md-direction="bottom">
-          Show on menu
+          {{'Show on menu' | translate}}
         </md-tooltip>
       </md-button>
       <md-button ng-if="cardItem.showCardActions && vm.onClone" class="md-icon-button" ng-click="vm.onClone()">
         <icon>content_copy</icon>
         <md-tooltip md-direction="bottom">
-          Duplicate
+          {{'Duplicate' | translate}}
         </md-tooltip>
       </md-button>
       <md-button ng-if="cardItem.showCardActions && vm.onDelete" class="md-icon-button" ng-click="vm.onDelete()">
         <icon>delete</icon>
         <md-tooltip md-direction="bottom">
-          Delete
+          {{'Delete' | translate}}
         </md-tooltip>
       </md-button>
        <md-button ng-if="cardItem.showCardActions && vm.onEdit" class="md-icon-button" ng-click="vm.onEdit()">
         <icon>edit</icon>
         <md-tooltip md-direction="bottom">
-          Edit
+          {{'Edit' | translate}}
         </md-tooltip>
       </md-button>
     </div>

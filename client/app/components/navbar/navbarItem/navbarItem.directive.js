@@ -1,5 +1,5 @@
 
-export default function navbarItem($mdMenu){
+export default function navbarItem($mdMenu, gettextCatalog){
   "ngInject";
   return {
     restrict: 'E',
@@ -46,6 +46,15 @@ export default function navbarItem($mdMenu){
           navbarCtrl.$state.go(prefix + (item.destination || item.id));
         }
       };
+
+      scope.getItemMouseHoverText = _getItemMouseHoverText;
+
+      function _getItemMouseHoverText(item) {
+
+        return gettextCatalog.getString('Open {{ name }} interactions menu', {
+          name: item.name
+        });
+      }
     }
   };
 }
