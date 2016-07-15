@@ -3,7 +3,6 @@ var webpack = require('webpack');
 var path = require("path");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 module.exports = function(ENV, options) {
   return {
@@ -96,10 +95,6 @@ module.exports = function(ENV, options) {
      * List: http://webpack.github.io/docs/list-of-plugins.html
      */
     plugins: [
-      new ngAnnotatePlugin({
-        add: true,
-        // other ng-annotate options here
-      }),
       new webpack.ResolverPlugin(
         new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(
           "../bower.json", ["main"])
