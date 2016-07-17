@@ -21,49 +21,6 @@
     box-shadow: none;
   }
 
-    & > .card-title{
-
-      padding: 10px 22px;
-      & > span{
-        color: #424242;
-      }
-
-
-      &:hover{
-        .arrow-icon{
-          opacity: 1;
-        }
-      }
-
-      button{
-        margin-right:-16px
-      }
-
-      .arrow-icon{
-        opacity: 0;
-        @include transition();
-      }
-
-      &>div{
-        @include ellipsis();
-      }
-      .visibility{
-        margin-right: 16px;
-        position: relative;
-        top:-2px;
-      }
-
-      &.invisible{
-        span{
-          color:#757575;
-        }
-        .visibility{
-          span{
-            color:#D1D1D1;
-          }
-        }
-      }
-    }
 
     & > .card-item-actions > md-card-actions{
       position: absolute;

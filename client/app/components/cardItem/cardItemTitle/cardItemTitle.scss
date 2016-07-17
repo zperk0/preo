@@ -1,3 +1,48 @@
-.card-title{
-  min-height: 48px;
+@import '../../../shared/styles/variables.scss';
+
+.card-item{
+     & > .card-title{
+      min-height: 48px;
+      padding: 0px 22px;
+      & > span{
+        color: #424242;
+      }
+
+
+      &:hover{
+        .arrow-icon{
+          opacity: 1;
+        }
+      }
+
+      button{
+        margin-right:-16px
+      }
+
+      .arrow-icon{
+        opacity: 0;
+        @include transition();
+      }
+
+      &>div{
+        @include ellipsis();
+      }
+      .visibility{
+        margin-right: 16px;
+      }
+
+      &.invisible{
+        span{
+          color:#757575;
+        }
+        .visibility{
+          span{
+            color:#D1D1D1;
+          }
+        }
+      }
+      .card-title-text{
+        line-height: 48px;
+      }
+    }
 }

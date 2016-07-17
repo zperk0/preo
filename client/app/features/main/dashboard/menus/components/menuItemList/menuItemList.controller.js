@@ -86,16 +86,14 @@ export default class menuItemListController {
     $event.stopPropagation();
   }
 
-  setMaxHeight(){
-    var maxHeight = 1200;
-    this.items.forEach((i)=>{
-      maxHeight += 48 + 16 + (i.$size && i.$size.items ? i.$size.items.length * 35 : 0)
-    })
-     maxHeight+=48 + 16;
-    this.element.css({"max-height":+maxHeight+"px"});
+  repeatReady(){
+    console.log("true 1")
+    this.section.$expanding = true;
+    this.el[0].style.maxHeight = (this.items.length+1) * 80 + "px";
   }
 
-  constructor($scope, $q, Snack, Spinner, $stateParams, UtilsService, contextual, DialogService, LabelService, ItemService) {
+
+  constructor($scope, $q, Snack, Spinner, $stateParams, UtilsService, contextual, DialogService, LabelService, ItemService, $timeout) {
     "ngInject";
     this.$scope = $scope;
     this.Snack = Snack;
@@ -108,6 +106,35 @@ export default class menuItemListController {
     this.LabelService = LabelService;
     this.DialogService = DialogService;
     this.ItemService = ItemService;
+    this.itemsDisplayed = [];
+    this.$timeout = $timeout;
+    this.timeoutClear;
+    if (!this.section){
+      this.section = {};
+    }
+    this.section.$expanding = false;
+
+    $scope.$watch('vm.section.$expanded',(newVal, oldVal)=>{
+
+      if(newVal){
+        this.itemsDisplayed = this.items;
+        if (this.itemsDisplayed.length === 0){
+          this.repeatReady();
+        }
+      } else {
+        this.el[0].style.maxHeight = 0;
+        if (newVal !== undefined && oldVal !== undefined){
+          console.log("in watch", this.section, newVal, oldVal)
+          this.section.$expanding = true;
+        } else {
+          this.section.$expanding = false;
+        }
+        $timeout(()=>{
+          this.itemsDisplayed = [];
+        }, 1000)
+
+      }
+    })
 
   }
 }

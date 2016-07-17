@@ -79,6 +79,10 @@
 
 
   toggleExpanded($event){
+    console.log("this sec", this.section, this.section.$expanding)
+    if (this.section.$expanding){
+      return;
+    }
     if ($event){
       var el = angular.element($event.target);
       while (el[0]) {

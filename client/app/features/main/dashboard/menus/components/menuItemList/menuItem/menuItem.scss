@@ -1,7 +1,9 @@
 $heightMenuItemCard:48px;
 
 .menu-item {
-  margin: 0px 22px 8px;
+  margin: 8px;
+  position: relative;
+    // transition:all 0.8s linear;
 
   .card-item {
     margin:0;
@@ -30,9 +32,25 @@ $heightMenuItemCard:48px;
       padding-bottom: 5px;
     }
     &.card-item-new{
-      margin-bottom: 32px;
+      margin:0 0 32px 0;
       max-height: 48px;
       min-height:$heightMenuItemCard;
     }
   }
+
 }
+
+
+
+.menu-section {
+  .menu-item{
+    margin: 0px 22px 8px;
+
+      &.menu-item-new{
+        transition:all 0.8s linear;
+        margin-bottom:38px;
+      }
+  }
+
+}
+

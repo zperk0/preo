@@ -1,6 +1,6 @@
 import controller from './menuItem.controller';
 
-export default function menuItem(){
+export default function menuItem($timeout){
   "ngInject";
   return {
     restrict: 'E',
@@ -17,6 +17,18 @@ export default function menuItem(){
     link: (scope, el, attr, ctrls) => {
       ctrls[2].menuItemListCtrl = ctrls[1]
       ctrls[2].cardItemList = ctrls[0]
+      // console.log("scope", scope)
+      // if (scope.$last){
+      //   console.log("is last");
+      //   $timeout(()=>{
+      //     menuItemList.repeatReady();
+      //   })
+      // }
+
+      // el.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
+      //   console.log("transition end", el, e.propertyName, el.prop('offsetHeight'));
+      //   el[0].style.minHeight = el.prop('offsetHeight')+'px';
+      // })
     }
   };
 }

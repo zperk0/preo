@@ -20,18 +20,16 @@ export default function menuItemList($animate, $timeout){
     bindToController: true,
     replace:true,
     link: (scope, el, attr, ctrl) => {
-        //(children + new) * children height + margin + safety value. This doesn't really need to be exact.
-        ctrl.element = el;
-        $animate.on('enter', el,
-         (element, phase) =>{
-            $timeout(()=>{
-              ctrl.setMaxHeight();
-            })
-         });
-        $animate.on('leave', el,
-         (element, phase) =>{
-           element.css({"max-height":"0px"})
-         });
+      ctrl.el = el;
+
+      el.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
+        console.log("transition end", el, e.propertyName, el.prop('offsetHeight'));
+        if (e.propertyName === 'max-height'){
+          ctrl.section.$expanding = false;
+        }
+
+      })
+
 
     }
   }
