@@ -4,7 +4,7 @@
     sv-disabled="vm.svDisabled"
     sv-on-sort="vm.onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
   <card-item-list
-        collection="vm.items"
+        collection="vm.itemsDisplayed"
         collection-results="results"
         search-filter="vm.searchText"
         search-label="{{vm.hasSearch ? 'items' : ''}}">

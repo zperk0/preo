@@ -77,6 +77,10 @@ export default class menuItemController {
           })
       }
       return this.ItemService.doSingleEdit(updates, this.sectionId)
+        .then((newItem)=>{
+          this.cardItemList.onItemDeleted(this.item)
+          this.cardItemList.onItemCreated(newItem);
+        })
     })
     .then(()=>{
         this.Spinner.hide("item-updated")
