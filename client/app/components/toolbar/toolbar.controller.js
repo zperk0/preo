@@ -7,7 +7,7 @@ export default class toolbarController {
     return this.VenueService.venues;
   }
 
-  getVenues(){
+  getUser(){
     return this.UserService.user;
   }
 

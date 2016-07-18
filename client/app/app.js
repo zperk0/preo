@@ -9,10 +9,8 @@ import './app.scss';
 // node_modules and bower_components are pre-loaded by webpack
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
-import angularGettext from 'angular-gettext';
 import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';
-import angularMaterial from 'angular-material';
 import angularMessages from 'angular-messages';
 import angularSortableView from 'angular-sortable-view';
 import croppie from 'croppie';
@@ -23,8 +21,6 @@ import croppie from 'croppie';
 import config from './app.config';
 import run from './app.run';
 import routes from './app.routes';
-import translations from './app.translations';
-import broadcastEvents from './app.broadcastEvents.constants';
 import PreodayServices from './shared';
 
 
@@ -42,6 +38,8 @@ import imageUploader from './components/imageUploader';
 import tagList from './components/tagList';
 import contextual from './components/contextual';
 
+import base from './app.base';
+
 //TODO convert this to ES6
 require('./components/sticky/sticky.directive.js');
 
@@ -53,8 +51,6 @@ window.moment = require('moment/moment.js');
 export default angular.module('webapp', [
   /* external */
   uirouter,
-  angularMaterial,
-  'gettext',
   angularAnimate,
   angularAria,
   angularMessages,
@@ -68,6 +64,7 @@ export default angular.module('webapp', [
   tagList,
   contextual,
   // /* internal */
+  base,
   PreodayServices,
   v2Main,
   v2Error,
@@ -77,7 +74,6 @@ export default angular.module('webapp', [
   .config(config)
   .run(run)
   .config(routes)
-  .constant("BroadcastEvents", broadcastEvents)
   .name;
 
 window.DEBUG = true;

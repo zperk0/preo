@@ -29,6 +29,8 @@ module.exports = function karmaConfig (config) {
       // Grab all files in the app folder that contain .spec.
       //
       './node_modules/phantomjs-polyfill/bind-polyfill.js',
+      './node_modules/jscore/preoday/preoday.min.js',
+      './node_modules/sinon/pkg/sinon.js',
       './config/webpack.tests.js'
     ],
 

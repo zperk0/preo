@@ -8,7 +8,7 @@
     "serve": "webpack-dev-server --inline --type serve",
     "serve:dev": "webpack-dev-server --env dev --type serve --inline",
     "serve:prod": "webpack-dev-server --env prod --type serve --inline",
-    "test": "karma start --type test",
+    "test": "karma start --type test --log-level=DEBUG",
     "test:live": "karma start --type test --auto-watch --no-single-run",
     "prepublish": "npm run build",
     "gettext:compile": "angular-gettext-cli --compile --files './locale/*.po' --dest client/app/app.translations.js --format javascript --module gettext",
@@ -72,6 +72,7 @@
     "postcss-loader": "^0.7.0",
     "raw-loader": "^0.5.1",
     "sass-loader": "^3.1.2",
+    "sinon": "^1.17.4",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
