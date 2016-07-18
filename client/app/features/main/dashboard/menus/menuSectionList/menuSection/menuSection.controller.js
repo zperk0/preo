@@ -3,8 +3,31 @@
     return "menuSectionController";
   }
   onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo) {
-    console.log("new modifier", $modifiers);
-    this.Snack.show("moving modifiers to section");
+
+    if (this.isModifierDuplicated($modifiers)){
+      this.Snack.showError('One or more modifiers already in section');
+      return;
+    }
+
+
+    this.Spinner.show("moving-section-modifiers");
+    let promises = [];
+    $modifiers.forEach((modifier)=>{
+      let modClone = angular.copy(modifier);
+      modClone.position = (this.section.modifiers && this.section.modifiers.length ? this.section.modifiers[this.section.modifiers.length-1].position : 0 ) + 1000
+      promises.push(this.section.saveModifier(modClone).then((mod)=>{
+        this.section.modifiers.push(mod);
+      }))
+
+    })
+    this.$q.all(promises).then(()=>{
+      this.Snack.show("Added modifiers to section");
+    },()=>{
+      this.Snack.showError("Error adding modifiers to section");
+    })
+    .then(()=>{
+      this.Spinner.hide("moving-section-modifiers");
+    })
   }
 
   isItemDuplicated(items){
@@ -12,6 +35,21 @@
      let found = 0;
       for (let i=0;i<this.section.items.length;i++){
         if (this.section.items[i].id === items[j].id){
+          found++;
+          // sort list adds the item in the new list, if we find it we must remove it
+          if (found){
+            return true;
+          }
+        }
+      }
+    }
+  }
+
+  isModifierDuplicated(modifiers){
+   for (let j=0;j<modifiers.length;j++){
+     let found = 0;
+      for (let i=0;i<this.section.modifiers.length;i++){
+        if (this.section.modifiers[i].id === modifiers[j].id){
           found++;
           // sort list adds the item in the new list, if we find it we must remove it
           if (found){

@@ -13,6 +13,7 @@ export default function modifierItem(){
     require:['^?cardItemList','modifierItem'],
     link: (scope, el, attr, ctrl) => {
       ctrl[1].cardItemList = ctrl[0];
+      scope.$index = scope.$parent.$index;
     }
   }
 }

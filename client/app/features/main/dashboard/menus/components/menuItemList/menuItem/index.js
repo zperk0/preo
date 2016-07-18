@@ -10,7 +10,7 @@ import directive from './menuItem.directive';
 import directiveNew from './menuItemNew.directive';
 
 import cardItem from '../../../../../../../components/cardItem';
-import modifierChips from './modifierChips';
+import modifierChips from '../../modifierChips';
 
 
 

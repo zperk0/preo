@@ -5,6 +5,7 @@
     sv-on-sort="vm.onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
   <card-item-list
         collection="vm.modifiers"
+        collection-results="results"
         has-new="vm.hasNew"
         on-click-new="vm.onClickNew()"
         search-filter="vm.searchText"
@@ -16,7 +17,7 @@
           sv-on-external-sort="vm.onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
           sv-is-dropzone='false'>
            <modifier-item
-               ng-repeat="modifier in vm.modifiers | filter:vm.searchText:strict | orderBy: ['!!position','position'] as results"
+               ng-repeat="modifier in vm.modifiers | filter:vm.searchText:strict | orderBy:id as results"
                modifier="modifier"
                ng-attr-data-id="{{modifier.id}}"
                sv-element="modifier"

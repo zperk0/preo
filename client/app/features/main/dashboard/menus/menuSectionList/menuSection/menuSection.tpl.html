@@ -11,16 +11,17 @@
                     sv-root="item"
                     show-visible="!vm.section.visible"
                     show-dropdown="true">
-                      <div class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+                      <div class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-external-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                         <div sv-placeholder></div>
                       </div>
                       <span>{{vm.section.id + "--" | debug}}{{vm.section.name}} </span>
                     </card-item-title>
                       <div  sv-root="modifier">
-                        <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+                        <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                           <div sv-placeholder></div>
                         </div>
                       </div>
+    <modifier-chips ng-if="vm.section.modifiers.length" modifiers="vm.section.modifiers" section="vm.section"></modifier-chips>
         <menu-item-list
               has-new="vm.section.$expanded"
               items="vm.section.items"

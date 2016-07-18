@@ -114,31 +114,37 @@ export default class menuItemListController {
     this.$timeout = $timeout;
     this.timeoutClear;
     if (!this.section){
+      console.log("recreating items displayed")
       this.section = {};
+      this.itemsDisplayed = this.items;
     }
     this.section.$expanding = false;
 
-    $scope.$watch('vm.section.$expanded',(newVal, oldVal)=>{
+    if (this.section.id){
+      $scope.$watch('vm.section.$expanded',(newVal, oldVal)=>{
 
-      if(newVal){
-        this.itemsDisplayed = this.items;
-        if (this.itemsDisplayed.length === 0){
-          this.repeatReady();
-        }
-      } else {
-        this.el[0].style.maxHeight = 0;
-        if (newVal !== undefined && oldVal !== undefined){
-          console.log("in watch", this.section, newVal, oldVal)
-          this.section.$expanding = true;
-        } else {
-          this.section.$expanding = false;
-        }
-        $timeout(()=>{
-          this.itemsDisplayed = [];
-        }, 1000)
+        if(newVal){
+          this.itemsDisplayed = this.items;
+          if (this.itemsDisplayed.length === 0){
+            this.repeatReady();
+          }
+        } else{
+          this.el[0].style.maxHeight = 0;
+          if (newVal !== undefined && oldVal !== undefined){
+            this.section.$expanding = true;
+          } else {
+            this.section.$expanding = false;
+          }
+          $timeout(()=>{
+            if (this.section.id){
+              console.log("on timeout", this.section)
+              this.itemsDisplayed = [];
+            }
+          }, 1000)
 
-      }
-    })
+        }
+      })
+    }
 
   }
 }

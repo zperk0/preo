@@ -11,9 +11,10 @@ import directiveNew from './menuSectionNew.directive';
 
 import cardItem from '../../../../../../components/cardItem';
 import itemList from '../../components/menuItemList';
+import modifierChips from '../../components/menuItemList';
 
 
-export default angular.module("menuSection" , [cardItem, itemList])
+export default angular.module("menuSection" , [cardItem, itemList, modifierChips])
 
 
   .controller(controller.UID, controller)

@@ -25,7 +25,6 @@ export default class ModifierService {
     };
 
     let isCreating = false;
-    debugger;
       this.data.modifiers.forEach((s, index)=>{
         if (!s.id){
           isCreating = true;
@@ -72,10 +71,16 @@ export default class ModifierService {
   }
 
   removeFromItem(modifier, item){
-    debugger;
-    return modifier.delete(item.id)
+    return modifier.delete({itemId:item.id})
       .then(()=>{
         item.modifiers = item.modifiers.filter((m)=>modifier.id !== m.id);
+      })
+  }
+
+  removeFromSection(modifier, section){
+    return modifier.delete({sectionId:section.id})
+      .then(()=>{
+        section.modifiers = section.modifiers.filter((m)=>modifier.id !== m.id);
       })
   }
 

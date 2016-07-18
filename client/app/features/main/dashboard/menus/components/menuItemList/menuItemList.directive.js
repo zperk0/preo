@@ -7,6 +7,7 @@ export default function menuItemList($animate, $timeout){
     scope: {
       items:"=",
       hasNew:"=",
+      animate:"=?",
       section:"=?",
       hasSearch:"=?",
       svDisabled:"=",
