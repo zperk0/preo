@@ -89,7 +89,11 @@ export default class menuItemListController {
   repeatReady(){
     console.log("true 1")
     this.section.$expanding = true;
-    this.el[0].style.maxHeight = (this.items.length+1) * 80 + "px";
+    let maxHeight = 0;
+    this.items.forEach((i)=>{
+     maxHeight += 48 + 42 + 16 +(i.$size && i.$size.items ? i.$size.items.length * 35 : 0)
+    })
+    this.el[0].style.maxHeight = maxHeight+80 + "px";
   }
 
 
