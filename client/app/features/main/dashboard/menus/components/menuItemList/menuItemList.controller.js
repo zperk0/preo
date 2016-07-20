@@ -53,6 +53,14 @@ export default class menuItemListController {
 
   }
 
+  onItemCreated(){
+    this.recalculateHeight();
+  }
+
+  onItemCloned(){
+    this.recalculateHeight();
+  }
+
   showCreateItem($event, isImport){
     console.log("show creating", $event, isImport);
 
