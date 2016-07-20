@@ -1,3 +1,3 @@
 <div class='modifier-chips'>
-  <modifier-chip ng-repeat="modifier in vm.modifiers | filter:{ variant:0 }" modifier="modifier" item="vm.item" section="vm.section"></modifier-chip>
+  <modifier-chip ng-repeat="modifier in vm.getModifiers() | filter:{ variant:0 }" modifier="modifier" parent="vm.parent" modifier-item="vm.modifierItem" item="vm.item" section="vm.section"></modifier-chip>
 </div>

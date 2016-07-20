@@ -1,8 +1,10 @@
 <div class='card-item-child' layout="row">
   <div  sv-root="modifier">
-    <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+    <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
       <div sv-placeholder></div>
     </div>
   </div>
-  <span class='name' flex>{{vm.option.name}} </span> <span class='price'> {{vm.option.price | currency:"£"}}</span>
+  <span class='name-wrapper' layout="row" flex><span class='name' layout="column" layout-align="center start">{{vm.option.name}} </span> <modifier-chips flex ng-if="vm.option.modifiers.length" modifiers="vm.option.modifiers" modifier-item="vm.option"></modifier-chips></span>
+  <span class='price'> {{vm.option.price | currency:"£"}}</span>
+
 </div>

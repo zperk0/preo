@@ -3,7 +3,12 @@ export default class modifierChipsController {
     return "modifierChipsController"
   }
 
-  constructor() {
+  getModifiers(){
+    return this.ModifierService.getByIds(this.modifiers.map((m)=>m.id));
+  }
+
+  constructor(ModifierService) {
     "ngInject";
+    this.ModifierService = ModifierService;
   }
 }

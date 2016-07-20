@@ -108,7 +108,9 @@ export default class ItemService {
         //delete each of the individual modifier items
         if (item.$size.$deletedItems && item.$size.$deletedItems.length){
           item.$size.$deletedItems.forEach((modifierItem)=>{
-              promises.push(modifierItem.delete());
+              if (modifierItem.id){
+                promises.push(modifierItem.delete());
+              }
           });
         }
         //once they're all deleted, update the modifier to change values and create new options
@@ -187,7 +189,6 @@ export default class ItemService {
         }
         return item;
       })
-      //TODO update item modifiers
   }
 
   createItem(item, sectionId){
@@ -200,7 +201,6 @@ export default class ItemService {
       .then(this._saveItemTags.bind(this))
       .then(this._saveItemImages.bind(this))
       .then(this._saveItemSize.bind(this))
-      //TODO save item modifiers
       .then((newItem)=>{
         //if this item was created in the menu section editor the list is not going to be refreshed automagically
         if (sectionId){

@@ -5,7 +5,7 @@ export default class modifiersController {
   }
   constructor(ModifierService, $stateParams) {
     "ngInject";
-    ModifierService.getModifiers($stateParams.venueId,'modifiers').then((data)=>{
+    ModifierService.getModifiers($stateParams.venueId).then((data)=>{
       console.log("got data", data)
       this.data = data;
     })

@@ -7,6 +7,8 @@ export default function modifierChip(){
     scope: {
       modifier:"=",
       item:"=?",
+      parent:"=?",
+      modifierItem:"=?",
       section:'=?',
     },
     template: require("./modifierChip.tpl.html"),

@@ -8,8 +8,12 @@
     border-top:none;
   }
 
-  span{
+  &>span{
     color: #8C8C8C;
     font-size:13px;
+  }
+
+  .modifier-chips{
+    padding-bottom:0;
   }
 }

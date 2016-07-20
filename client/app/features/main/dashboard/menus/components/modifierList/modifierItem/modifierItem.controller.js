@@ -4,8 +4,50 @@ export default class modifierItemController {
   }
 
   onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo){
-    console.log("moved", $modifiers)
-    this.Snack.show("moving modifier to modifier");
+    var isDup = this.isModifierDuplicated($modifiers)
+    if (isDup){
+      if (typeof isDup === 'string'){
+        this.Snack.showError(isDup);
+      }
+      return;
+    }
+
+    this.Spinner.show("moving-modifier-modifiers");
+    let promises = [];
+    $modifiers.forEach((modifier)=>{
+      let modClone = angular.copy(modifier);
+      modClone.position = (this.modifier.modifiers && this.modifier.modifiers.length ? this.modifier.modifiers[this.modifier.modifiers.length-1].position : 0 ) + 1000
+      promises.push(this.modifier.saveModifier(modClone).then((mod)=>{
+        this.modifier.modifiers.push(mod);
+      }))
+    })
+    this.$q.all(promises).then(()=>{
+      this.Snack.show("Added modifiers to modifier");
+    },()=>{
+      this.Snack.showError("Error adding modifiers to modifier");
+    })
+    .then(()=>{
+      this.Spinner.hide("moving-modifier-modifiers");
+    })
+  }
+
+
+  isModifierDuplicated(modifiers){
+   for (let j=0;j<modifiers.length;j++){
+     let found = 0;
+     if (this.modifier.id === modifiers[j].id){
+      return true;
+     }
+      for (let i=0;i<this.modifier.modifiers.length;i++){
+        if (this.modifier.modifiers[i].id === modifiers[j].id){
+          found++;
+          // sort list adds the item in the new list, if we find it we must remove it
+          if (found){
+            return 'One or more modifiers already in item';
+          }
+        }
+      }
+    }
   }
 
   onEdit(){
@@ -53,7 +95,7 @@ export default class modifierItemController {
       this.Spinner.show("modifier-update")
       return this.ModifierService.updateModifier(updates)
         .then((updatedModifier)=>{
-          this.modifier = updatedModifier;
+          this.restoreValues(updatedModifier);
         })
       .then(()=>{
           this.Spinner.hide("modifier-update")
@@ -76,9 +118,17 @@ export default class modifierItemController {
       }
     }
 
-    restoreOriginalValues(){
+    //we do this by hand so we don't lose the reference to the modifier
+    restoreValues(newValues = false){
+      if(newValues){
+        this.originalItem = newValues;
+      }
       if (this.originalItem){
-        this.modifier = this.originalItem;
+        for (var property in this.originalItem) {
+        if (this.originalItem.hasOwnProperty(property)) {
+          this.modifier[property] = this.originalItem[property];
+          }
+        }
         this.originalItem = false;
       }
     }
@@ -98,7 +148,7 @@ export default class modifierItemController {
   }
 
   contextualMenuCancel(event, entity, type){
-    this.restoreOriginalValues()
+    this.restoreValues()
     this.modifier.$selected = false;
     if (!this.modifier.id){
       this.cardItemList.clearPossibleNewItem();
@@ -107,9 +157,10 @@ export default class modifierItemController {
     this.cardItemList.selectItem();
   }
 
-    constructor($timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService) {
+    constructor($q, $timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService) {
       'ngInject';
       this.Spinner = Spinner;
+      this.$q = $q;
       this.Snack = Snack;
       this.contextualMenu = contextualMenu;
       this.contextual = contextual;

@@ -3,13 +3,58 @@ export default class cardItemChildController {
     return "cardItemChildController";
   }
 
-  onNewModifierMoved($modifiers){
-    this.Snack.show("moving modifier to size");
+  onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo){
+    var isDup = this.isModifierDuplicated($modifiers)
+    if (isDup){
+      if (typeof isDup === 'string'){
+        this.Snack.showError(isDup);
+      }
+      return;
+    }
+
+    this.Spinner.show("moving-modifier-option");
+    let promises = [];
+    $modifiers.forEach((modifier)=>{
+      let modClone = angular.copy(modifier);
+      modClone.position = (this.option.modifiers && this.option.modifiers.length ? this.option.modifiers[this.option.modifiers.length-1].position : 0 ) + 1000
+      promises.push(this.option.saveModifier(modClone).then((mod)=>{
+        this.option.modifiers.push(mod);
+      }))
+    })
+    this.$q.all(promises).then(()=>{
+      this.Snack.show("Added modifiers to option");
+    },()=>{
+      this.Snack.showError("Error adding modifiers to option");
+    })
+    .then(()=>{
+      this.Spinner.hide("moving-modifier-option");
+    })
   }
 
-  constructor(Snack) {
+
+  isModifierDuplicated(modifiers){
+   for (let j=0;j<modifiers.length;j++){
+    if (this.option.modifierId === modifiers[j].id){
+      return true;
+     }
+     let found = 0;
+      for (let i=0;i<this.option.modifiers.length;i++){
+        if (this.option.modifiers[i].id === modifiers[j].id){
+          found++;
+          // sort list adds the item in the new list, if we find it we must remove it
+          if (found){
+            return "One or more modifiers already in option";
+          }
+        }
+      }
+    }
+  }
+
+  constructor(Snack, Spinner, $q) {
     'ngInject';
     this.Snack = Snack;
+    this.Spinner = Spinner;
+    this.$q = $q;
     this.newModifiers=[];
   }
 }

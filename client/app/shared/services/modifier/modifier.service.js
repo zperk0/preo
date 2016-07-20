@@ -62,7 +62,9 @@ export default class ModifierService {
     //delete each of the individual modifier items
     if (modifier.$deletedItems && modifier.$deletedItems.length){
         modifier.$deletedItems.forEach((modifierItem)=>{
+          if (modifierItem.id){
             promises.push(modifierItem.delete());
+          }
         });
       }
     //once they're all deleted, update the modifier to change values and create new options
@@ -74,6 +76,20 @@ export default class ModifierService {
     return modifier.delete({itemId:item.id})
       .then(()=>{
         item.modifiers = item.modifiers.filter((m)=>modifier.id !== m.id);
+      })
+  }
+
+  removeFromModifierItem(modifier, modifierItem){
+    return modifier.delete({modifierItemId:modifierItem.id})
+      .then(()=>{
+        modifierItem.modifiers = modifierItem.modifiers.filter((m)=>modifier.id !== m.id);
+      })
+  }
+
+  removeFromParent(modifier, parent){
+    return modifier.delete({parentId:parent.id})
+      .then(()=>{
+        parent.modifiers = parent.modifiers.filter((m)=>modifier.id !== m.id);
       })
   }
 
@@ -94,17 +110,62 @@ export default class ModifierService {
       })
   }
 
+  //this method will replace  the retrieved modifier with a reference of the parent modifier in the list
+  //we do this for two reasons, eventually we'll replace the child list with ids only so we don't have to return everything
+  //also it'll force an update by reference if we change any of the values
+  populateModifiers(index, m = false, arr = []){
+    let mod;
+    if (m === false){
+      mod = this.data.modifiers[index];
+    } else{
+      mod = arr[m];
+    }
 
-  getModifiers(venueId, expand){
-    return this.$q((resolve, reject)=>{
+    if (mod.modifiers && mod.modifiers.length){
+      for (let i=0;i<mod.modifiers.length;i++){
+        console.log("calling in child", mod.modifiers[i]);
+        this.populateModifiers(false, i, mod.modifiers)
+      }
+    }
+    if (mod.items && mod.items.length){
+      for (let i=0;i<mod.items.length;i++){
+        for (let j=0;j<mod.items[i].modifiers.length;j++){
+          this.populateModifiers(false, j, mod.items[i].modifiers)
+        }
+      }
+    }
+    // little clue as to why assigning to mod doesn't work when it's an array
+    if (m === false){
+      mod = this.data.modifiers.filter((m)=>mod.id===m.id)[0];
+    } else {
+      arr[m] = this.data.modifiers.filter((m)=>mod.id===m.id)[0];
+    }
+    if(index !== false && index <this.data.modifiers.length-1){
+      index++;
+      this.populateModifiers(index)
+    }
 
-      if (this.data.modifiers){
-        resolve(this.data);
-      } else {
-        Preoday.Modifier.getAll({venueId:venueId, expand:expand})
+  }
+
+  getById(id){
+    return this.data.modifiers.filter((m)=>id===m.id)[0];
+  }
+  getByIds(ids){
+    return this.data.modifiers.filter((m)=>ids.indexOf(m.id)>-1);
+  }
+
+
+  getModifiers(venueId, expand='items,modifiers'){
+    if (this.data.modifiers){
+      return this.$q.resolve(this.data);
+    } else if ( this.p){
+      return this.p;
+    }
+    this.p = this.$q((resolve, reject)=>{
+      Preoday.Modifier.getAll({venueId:venueId, expand:expand})
         .then((modifiers)=>{
           this.data.modifiers = modifiers.filter((m)=>m.variant===0);
-          this.data.modifiers.sort((a,b)=>a.id-b.id)
+          this.populateModifiers(0);
           resolve(this.data);
         },(err)=>{
           console.log("Error fetching modifiers", err);
@@ -114,8 +175,8 @@ export default class ModifierService {
           console.log("Error fetching modifiers", err);
           reject(err);
         });
-      }
     })
+    return this.p;
   }
 
 
