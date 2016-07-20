@@ -24,7 +24,6 @@ export default function menuItemList($animate, $timeout){
       ctrl.el = el;
 
       el.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
-        console.log("transition end", el, e.propertyName, el.prop('offsetHeight'));
         if (e.propertyName === 'max-height'){
           ctrl.section.$expanding = false;
         }

@@ -16,7 +16,7 @@
           sv-is-dropzone='vm.svIsDropzone'>
            <menu-item
                ng-repeat="item in vm.itemsDisplayed | filter:vm.searchText:strict | orderBy: vm.sort ? ['!!'+vm.sort,vm.sort] : id as results"
-               ng-init="$last && vm.repeatReady()"
+               ng-init="$last && vm.recalculateHeight()"
                item="item"
                ng-attr-data-id="{{item.id}}"
                sv-element="item"

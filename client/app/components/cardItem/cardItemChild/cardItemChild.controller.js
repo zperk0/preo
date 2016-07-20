@@ -38,12 +38,14 @@ export default class cardItemChildController {
       return true;
      }
      let found = 0;
-      for (let i=0;i<this.option.modifiers.length;i++){
-        if (this.option.modifiers[i].id === modifiers[j].id){
-          found++;
-          // sort list adds the item in the new list, if we find it we must remove it
-          if (found){
-            return "One or more modifiers already in option";
+     if (this.option.modifiers){
+        for (let i=0;i<this.option.modifiers.length;i++){
+          if (this.option.modifiers[i].id === modifiers[j].id){
+            found++;
+            // sort list adds the item in the new list, if we find it we must remove it
+            if (found){
+              return "One or more modifiers already in option";
+            }
           }
         }
       }

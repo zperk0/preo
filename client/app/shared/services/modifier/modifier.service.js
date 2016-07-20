@@ -72,6 +72,7 @@ export default class ModifierService {
       .then(modifier.update.bind(modifier))
   }
 
+
   removeFromItem(modifier, item){
     return modifier.delete({itemId:item.id})
       .then(()=>{
@@ -123,7 +124,6 @@ export default class ModifierService {
 
     if (mod.modifiers && mod.modifiers.length){
       for (let i=0;i<mod.modifiers.length;i++){
-        console.log("calling in child", mod.modifiers[i]);
         this.populateModifiers(false, i, mod.modifiers)
       }
     }
@@ -151,7 +151,8 @@ export default class ModifierService {
     return this.data.modifiers.filter((m)=>id===m.id)[0];
   }
   getByIds(ids){
-    return this.data.modifiers.filter((m)=>ids.indexOf(m.id)>-1);
+
+    return this.data.modifiers ? this.data.modifiers.filter((m)=>ids.indexOf(m.id)>-1) : [];
   }
 
 

@@ -3,20 +3,35 @@ export default class modifierChipController {
     return "modifierChipController"
   }
 
-  removeFromParent(){
+  doRemove(){
     if (this.item){
-      this.ModifierService.removeFromItem(this.modifier,this.item)
+      return this.ModifierService.removeFromItem(this.modifier,this.item)
     } else if (this.section){
-      this.ModifierService.removeFromSection(this.modifier,this.section)
+      return this.ModifierService.removeFromSection(this.modifier,this.section)
     } else if (this.parent){
-      this.ModifierService.removeFromParent(this.modifier,this.parent)
+      return this.ModifierService.removeFromParent(this.modifier,this.parent)
     } else if (this.modifierItem){
-      this.ModifierService.removeFromModifierItem(this.modifier,this.modifierItem)
+      return this.ModifierService.removeFromModifierItem(this.modifier,this.modifierItem)
     }
   }
 
-  constructor(ModifierService) {
+  removeFromParent(){
+    this.Spinner.show("removing-modifier-chip");
+    this.doRemove()
+      .then(()=>{
+        this.Snack.show("Modifier removed");
+        this.Spinner.hide("removing-modifier-chip");
+      },()=>{
+        this.Snack.showError("Error removing modifier");
+        this.Spinner.hide("removing-modifier-chip");
+      })
+
+  }
+
+  constructor(ModifierService, Spinner, Snack) {
     "ngInject";
     this.ModifierService = ModifierService;
+    this.Snack = Snack;
+    this.Spinner = Spinner;
   }
 }

@@ -36,6 +36,7 @@ export default class menuItemListController {
         })
   }
 
+
   onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
     console.log("on item moved");
     if ($partFrom == $partTo){
@@ -46,6 +47,7 @@ export default class menuItemListController {
         this.Snack.showError('Error moving item');
       }).then(()=>{
         this.Spinner.hide("item-move");
+        this.recalculateHeight();
       })
     }
 
@@ -86,8 +88,7 @@ export default class menuItemListController {
     $event.stopPropagation();
   }
 
-  repeatReady(){
-    console.log("true 1")
+  recalculateHeight(){
     this.section.$expanding = true;
     let maxHeight = 0;
     this.items.forEach((i)=>{
@@ -114,19 +115,19 @@ export default class menuItemListController {
     this.$timeout = $timeout;
     this.timeoutClear;
     if (!this.section){
-      console.log("recreating items displayed")
       this.section = {};
       this.itemsDisplayed = this.items;
     }
     this.section.$expanding = false;
 
+    //watch for animation only if we're in a section
     if (this.section.id){
       $scope.$watch('vm.section.$expanded',(newVal, oldVal)=>{
 
         if(newVal){
           this.itemsDisplayed = this.items;
           if (this.itemsDisplayed.length === 0){
-            this.repeatReady();
+            this.recalculateHeight();
           }
         } else{
           this.el[0].style.maxHeight = 0;
@@ -137,7 +138,6 @@ export default class menuItemListController {
           }
           $timeout(()=>{
             if (this.section.id){
-              console.log("on timeout", this.section)
               this.itemsDisplayed = [];
             }
           }, 1000)
