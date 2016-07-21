@@ -1,5 +1,5 @@
 
-export default function config(UserService, $rootScope, BroadcastEvents, VenueService, $state, ErrorService, UtilsService, $stateParams, Spinner, contextualDrawer){
+export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, ErrorService, UtilsService, $stateParams, Spinner, contextualDrawer, gettextCatalog){
   "ngInject";
   function setupChangeEvent(){
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
@@ -42,6 +42,12 @@ export default function config(UserService, $rootScope, BroadcastEvents, VenueSe
       });
   });
 
+  let language = window.localStorage.getItem('preo-webapp-language');
+
+  if (language) {
+    gettextCatalog.setCurrentLanguage(language);
+  }
+
   Preoday.Api.headers({
     'X-Session-Token': UtilsService.getCookie('PHPSESSID'),
     'preo-appid': 'weborders'
@@ -50,5 +56,4 @@ export default function config(UserService, $rootScope, BroadcastEvents, VenueSe
   //Set up the stateChange event only after this first call to prevent multiple redirects to /auth/signup
   UserService.auth()
    .then(setupChangeEvent,redirectSignin);
-
 }

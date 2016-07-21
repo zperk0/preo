@@ -22,7 +22,7 @@ export default class ItemService {
 
 
   checkMultipleOccurrences(item){
-    const buttons = [{name:'All menus', id:'all'}, {name:'Just this menu', id:'single'}]
+    const buttons = [{name: this.gettextCatalog.getString('All menus'), id:'all'}, {name: this.gettextCatalog.getString('Just this menu'), id:'single'}]
     return item.getMenus()
       .then((menus)=>{
         if (menus && menus.length>1){
@@ -246,13 +246,14 @@ export default class ItemService {
 
 
 
-  constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService) {
+  constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService, gettextCatalog) {
     "ngInject";
     this.data = {};
     this.$q =$q;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.UtilsService = UtilsService;
+    this.gettextCatalog = gettextCatalog;
     this.DEBUG = window.DEBUG || $location.search().debug;
 
 

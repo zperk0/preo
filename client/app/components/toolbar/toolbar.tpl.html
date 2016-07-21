@@ -1,20 +1,20 @@
 <md-toolbar class="md-hue-2" layout="row" layout-align="center stretch">
     <venue-select></venue-select>
       <section flex layout="row" layout-align="start center" class="toolbar-nav">
-        <md-button path-selected="dashboard" href="#/main/dashboard" title="Dashboard" aria-label="Dashboard">
+        <md-button path-selected="dashboard" href="#/main/dashboard" title="{{'Dashboard' | translate}}" aria-label="{{'Dashboard' | translate}}">
             <icon>settings</icon>
             <span translate>Dashboard</span>
         </md-button>
-        <md-button path-selected="analytics" href="#/main/analytics" title="Analytics" aria-label="Analytics">
+        <md-button path-selected="analytics" href="#/main/analytics" title="{{'Analytics' | translate}}" aria-label="{{'Analytics' | translate}}">
             <icon>equalizer</icon>
             <span translate>Analytics</span>
         </md-button>
-        <md-button path-selected="account" href="#/main/account" title="My Account" aria-label="My Account">
+        <md-button path-selected="account" href="#/main/account" title="{{'My Account' | translate}}" aria-label="{{'My Account' | translate}}">
             <icon>person</icon>
             <span translate>My Account</span>
         </md-button>
         <div flex layout="row" layout-align="end center" class="message">
-          <md-button ng-click="vm.openMessages()" title="Messages" aria-label="Messages" class="md-icon-button">
+          <md-button ng-click="vm.openMessages()" title="{{ 'Messages' | translate }}" aria-label="{{ 'Messages' | translate }}" class="md-icon-button">
               <icon>email</icon>
           </md-button>
         </div>

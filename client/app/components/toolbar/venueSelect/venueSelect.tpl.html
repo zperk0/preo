@@ -1,6 +1,6 @@
 <div class='venue-select' layout="row" layout-align="start center">
   <md-menu>
-    <md-button layout="row" aria-label="Open phone interactions menu" ng-click="vm.openMenu($mdOpenMenu, $event)">
+    <md-button layout="row" aria-label="{{'Open phone interactions menu' | translate}}" ng-click="vm.openMenu($mdOpenMenu, $event)">
       <span flex class='ellipsis' md-menu-origin>{{vm.venue.name}}</span>
       <icon>arrow_drop_down</icon>
     </md-button>
@@ -12,7 +12,7 @@
       </md-menu-item>
       <md-menu-divider></md-menu-divider>
       <md-menu-item>
-        <md-button>
+        <md-button traslate>
           Some other thing here
         </md-button>
       </md-menu-item>

@@ -14,14 +14,14 @@
     <icon>info</icon>
     <span class='text' translate>Upload specs</span>
       <md-tooltip md-direction="bottom">
-        Dimensions: 590 x 333px <br/>
-        Max file size: 5mb <br/>
-        File type: jpg, png
+        {{'Dimensions' | translate}}: 590 x 333px <br/>
+        {{'Max file size' | translate}}: 5mb <br/>
+        {{'File type' | translate}}: jpg, png
       </md-tooltip>
   </div>
   <label class="import-file" for='imagefile'>
     <input type="file" id="imagefile" name='imagefile' custom-on-change="vm.fileChange($event)">
-    <md-button ng-click="vm.target()" class="md-fab md-mini md-primary" aria-label="Add Section">
+    <md-button ng-click="vm.target()" class="md-fab md-mini md-primary" aria-label="{{'Add Section' | translate}}">
       <icon>add</icon>
     </md-button>
     <!-- <div class='target'></div> -->

@@ -2,7 +2,7 @@
   <md-menu  md-offset="72 0">
     <div>
       <!-- button itself -->
-      <md-button md-menu-origin  layout="row" layout-align="center center" ng-mouseover="handleMouseOver(item, $mdOpenMenu, $event)" ng-click="handleClick(item)" title="{{item.name}}" aria-label="Open {{item.name}} interactions menu">
+      <md-button md-menu-origin  layout="row" layout-align="center center" ng-mouseover="handleMouseOver(item, $mdOpenMenu, $event)" ng-click="handleClick(item)" title="{{item.name}}" aria-label="{{ getItemMouseHoverText(item) }}">
         <icon>{{item.icon}}</icon>
         <span flex>{{item.name}}</span>
         <icon ng-if="vm.$expanded && item.children.length" flex="10">{{ item.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>

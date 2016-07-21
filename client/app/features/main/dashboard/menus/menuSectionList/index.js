@@ -10,9 +10,10 @@ import directive from './menuSectionList.directive';
 import menuSection from './menuSection'
 import cardItemList from '../../../../../components/cardItemList'
 
+import snack from '../../../../../components/snack';
 
 
-export default angular.module("menuSectionList" , [menuSection, cardItemList])
+export default angular.module("menuSectionList" , [menuSection, cardItemList, snack])
 
 
   .controller(controller.UID, controller)

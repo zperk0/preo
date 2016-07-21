@@ -3,11 +3,11 @@ export default class venueSelectController {
     return "venueSelectController";
   }
 
-  openMenu = ($mdOpenMenu, ev) => {
+  openMenu ($mdOpenMenu, ev) {
     $mdOpenMenu(ev);
   };
 
-  switchVenue = (venue) => {
+  switchVenue (venue) {
     let venueId = venue.id;
     this.$state.go("main.dashboard",{venueId});
     window.location.reload();
