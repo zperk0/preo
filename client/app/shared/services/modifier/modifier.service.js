@@ -4,6 +4,29 @@ export default class ModifierService {
     return "ModifierService";
   }
 
+  // takes a list of modifiers and a jscore modifier parent object with a saveModifier method
+  addModifiersToParent($modifiers, parent){
+    let promises  = [];
+    $modifiers.forEach((modifier)=>{
+      let modClone = angular.copy(modifier);
+      modClone.position = (parent.modifiers && parent.modifiers.length ? parent.modifiers[parent.modifiers.length-1].position : 0 ) + 1000
+      promises.push(parent.saveModifier(modClone).then((mod)=>{
+        mod.modifiers = modClone.modifiers;
+        parent.modifiers.push(mod);
+      }))
+    })
+    return promises;
+  }
+
+  isModifiersDuplicated($modifiers, parent){
+    let $modIds = $modifiers.map((m)=>m.id);
+    let $parentModIds = parent.modifiers.map((m)=>m.id);
+    let dupes = $modIds.filter(function(id) {
+      return $parentModIds.indexOf(id) !== -1;
+    });
+    return dupes.length > 0;
+  }
+
   canAddModifier(parent, $modifiers){
     var found = false;
     let modIds = []
