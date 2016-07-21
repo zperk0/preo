@@ -4,11 +4,19 @@ export default class modifierItemController {
   }
 
   onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo){
+
+
+
     var isDup = this.isModifierDuplicated($modifiers)
     if (isDup){
       if (typeof isDup === 'string'){
         this.Snack.showError(isDup);
       }
+      return;
+    }
+    var isCyclic = this.ModifierService.canAddModifier(this.modifier, $modifiers);
+    if (isCyclic){
+      this.Snack.showError("Cannot create cyclic set of modifiers");
       return;
     }
 
@@ -18,6 +26,7 @@ export default class modifierItemController {
       let modClone = angular.copy(modifier);
       modClone.position = (this.modifier.modifiers && this.modifier.modifiers.length ? this.modifier.modifiers[this.modifier.modifiers.length-1].position : 0 ) + 1000
       promises.push(this.modifier.saveModifier(modClone).then((mod)=>{
+        mod.modifiers = modClone.modifiers;
         this.modifier.modifiers.push(mod);
       }))
     })

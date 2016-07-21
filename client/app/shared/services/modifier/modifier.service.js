@@ -4,6 +4,45 @@ export default class ModifierService {
     return "ModifierService";
   }
 
+  canAddModifier(parent, $modifiers){
+    var found = false;
+    let modIds = []
+    function getAllIds(mod, depth){
+      if (depth === 0){
+        modIds.push(mod.id);
+      }
+
+      if (mod.modifiers && mod.modifiers.length){
+        for (let i=0;i<mod.modifiers.length;i++){
+          getAllIds(mod.modifiers[i],depth+1)
+        }
+      }
+      if (mod.items && mod.items.length){
+        for (let i=0;i<mod.items.length;i++){
+          for (let j=0;j<mod.items[i].modifiers.length;j++){
+            getAllIds(mod.items[i].modifiers[j],depth+1)
+          }
+        }
+      }
+      let thisModModIds = mod.modifiers.map((m)=>m.id);
+      for (let k=0;k<thisModModIds.length;k++){
+        if (modIds.indexOf(thisModModIds[k]) > -1){
+          found = thisModModIds[k];
+        }
+      }
+
+      modIds.splice(-1,0,...thisModModIds)
+    }
+
+    let parentClone = angular.copy(parent);
+    parentClone.modifiers.splice(-1,0,...$modifiers);
+    //loop through all modifier children and try to find matching ids, if we find a duplication this is a cyclic object and its not allowed
+    getAllIds(parentClone, 0);
+    console.log( 'modIds' ,modIds, found);
+    return found ? true : false;
+
+  }
+
    showCreateModifier(){
 
     let newModifier = {

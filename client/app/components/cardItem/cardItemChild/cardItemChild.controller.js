@@ -4,11 +4,19 @@ export default class cardItemChildController {
   }
 
   onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo){
+
+    //item has modifier?
     var isDup = this.isModifierDuplicated($modifiers)
     if (isDup){
       if (typeof isDup === 'string'){
         this.Snack.showError(isDup);
       }
+      return;
+    }
+
+    var isCyclic = this.ModifierService.canAddModifier(this.modifier, $modifiers);
+    if (isCyclic){
+      this.Snack.showError("Cannot create cyclic set of modifiers");
       return;
     }
 
@@ -52,8 +60,9 @@ export default class cardItemChildController {
     }
   }
 
-  constructor(Snack, Spinner, $q) {
+  constructor(Snack, Spinner, $q, ModifierService) {
     'ngInject';
+    this.ModifierService=ModifierService;
     this.Snack = Snack;
     this.Spinner = Spinner;
     this.$q = $q;

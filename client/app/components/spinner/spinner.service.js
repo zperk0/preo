@@ -33,7 +33,7 @@ export default class SpinnerService {
 
   constructor($timeout) {
     "ngInject";
-    this.DEBUG = window.DEBUG || false;
+    this.DEBUG = false;
     this.isVisible=false;
     this.visibleCodes=[];
     this.$timeout = $timeout;
