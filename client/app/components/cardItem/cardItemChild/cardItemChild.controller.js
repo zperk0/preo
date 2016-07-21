@@ -15,7 +15,7 @@ export default class cardItemChildController {
     }
 
     //is cyclic reference?
-    if (this.ModifierService.canAddModifier(this.modifier, $modifiers)){
+    if (this.ModifierService.canAddModifiers($modifiers, this.modifier)){
       return this.Snack.showError("Cannot create cyclic set of modifiers");
     }
 

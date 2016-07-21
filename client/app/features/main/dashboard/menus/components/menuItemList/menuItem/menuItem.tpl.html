@@ -7,8 +7,8 @@
                     sv-root="modifier"
                     has-visible="true"
                     show-visible="!vm.item.visible"
-                    ng-attr-data-id="{{vm.item.id}}"
-                    show-dropdown="false"> <span class='name' flex>{{vm.item.id + "--" + vm.item.position + "--" | debug}} {{vm.item.name}} </span> <span class='price'> {{vm.item.price | currency:"£"}}</span>
+                    ng-attr-data-id="{{vm.item.id}}">
+                    <span class='name' flex>{{vm.item.id + "--" + vm.item.position + "--" | debug}} {{vm.item.name}} </span> <span class='price'> {{vm.item.price | currency:"£"}}</span>
                     <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                       <div sv-placeholder></div>
                     </div>

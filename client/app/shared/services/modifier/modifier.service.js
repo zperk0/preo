@@ -27,7 +27,7 @@ export default class ModifierService {
     return dupes.length > 0;
   }
 
-  canAddModifier(parent, $modifiers){
+  canAddModifiers($modifiers, parent){
     var found = false;
     let modIds = []
     function getAllIds(mod, depth){

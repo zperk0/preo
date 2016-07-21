@@ -4,32 +4,23 @@ export default class modifierItemController {
   }
 
   onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo){
-
-
-
-    var isDup = this.isModifierDuplicated($modifiers)
-    if (isDup){
-      if (typeof isDup === 'string'){
-        this.Snack.showError(isDup);
-      }
+    //is Adding to self?
+    if ($modifiers.map((m)=>m.id).indexOf(this.modifier.id)>-1){
       return;
     }
-    var isCyclic = this.ModifierService.canAddModifier(this.modifier, $modifiers);
-    if (isCyclic){
-      this.Snack.showError("Cannot create cyclic set of modifiers");
-      return;
+
+    //has modifier?
+    if (this.ModifierService.isModifiersDuplicated($modifiers, this.modifier)){
+      return this.Snack.showError("One or more modifiers already in modifier");
+    }
+
+    //is cyclic reference?
+    if (this.ModifierService.canAddModifiers($modifiers, this.modifier)){
+      return this.Snack.showError("Cannot create cyclic set of modifiers");
     }
 
     this.Spinner.show("moving-modifier-modifiers");
-    let promises = [];
-    $modifiers.forEach((modifier)=>{
-      let modClone = angular.copy(modifier);
-      modClone.position = (this.modifier.modifiers && this.modifier.modifiers.length ? this.modifier.modifiers[this.modifier.modifiers.length-1].position : 0 ) + 1000
-      promises.push(this.modifier.saveModifier(modClone).then((mod)=>{
-        mod.modifiers = modClone.modifiers;
-        this.modifier.modifiers.push(mod);
-      }))
-    })
+    let promises = this.ModifierService.addModifiersToParent($modifiers, this.modifier);
     this.$q.all(promises).then(()=>{
       this.Snack.show("Added modifiers to modifier");
     },()=>{

@@ -4,20 +4,15 @@ export default class menuItemController {
   }
 
   onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo){
-    if (this.isModifierDuplicated($modifiers)){
-      this.Snack.showError('One or more modifiers already in item');
-      return;
+    //item has modifier?
+    if (this.ModifierService.isModifiersDuplicated($modifiers, this.item)){
+      return this.Snack.showError("One or more modifiers already in item");
     }
 
     this.Spinner.show("moving-item-modifiers");
-    let promises = [];
-    $modifiers.forEach((modifier)=>{
-      let modClone = angular.copy(modifier);
-      modClone.position = (this.item.modifiers && this.item.modifiers.length ? this.item.modifiers[this.item.modifiers.length-1].position : 0 ) + 1000
-      promises.push(this.item.saveModifier(modClone).then((mod)=>{
-        this.item.modifiers.push(mod);
-      }))
-    })
+
+    let promises = this.ModifierService.addModifiersToParent($modifiers, this.item);
+
     this.$q.all(promises).then(()=>{
       this.Snack.show("Added modifiers to item");
     },()=>{
@@ -27,24 +22,6 @@ export default class menuItemController {
       this.Spinner.hide("moving-item-modifiers");
     })
   }
-
-
-  isModifierDuplicated(modifiers){
-   for (let j=0;j<modifiers.length;j++){
-     let found = 0;
-      for (let i=0;i<this.item.modifiers.length;i++){
-        if (this.item.modifiers[i].id === modifiers[j].id){
-          found++;
-          // sort list adds the item in the new list, if we find it we must remove it
-          if (found){
-            return true;
-          }
-        }
-      }
-    }
-  }
-
-
 
   onClone ($event){
       this.cloneItem();
@@ -194,13 +171,14 @@ export default class menuItemController {
   }
 
 
-  constructor($q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService) {
+  constructor($q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService, ModifierService) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
     this.contextualMenu = contextualMenu;
     this.Spinner = Spinner;
     this.DialogService = DialogService;
+    this.ModifierService = ModifierService;
     this.LabelService = LabelService;
     this.type="menuItem";
     this.$stateParams=$stateParams;
