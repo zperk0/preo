@@ -33,12 +33,6 @@ export default class cardItemListController {
     this.deleteItem(item)
   }
 
-
-  onItemsMoved($items, $indexFrom, $indexTo){
-    this.collection.splice($indexTo, 0, ...this.collection.splice($indexFrom, $items.length));
-    return this.onSimpleSort()
-  }
-
   isItemDuplicated(items, qty){
    for (let j=0;j<items.length;j++){
      let found = 0;
@@ -64,24 +58,12 @@ export default class cardItemListController {
     });
   }
 
-  calculateNewItemPos(newIndex){
-    var pos = -1;
-    //if we have a item before, we should add it after this item
-    if (newIndex && this.collection && this.collection.length-1 > newIndex){
-      var prevPos = this.collection[newIndex].position;
-      var afterPos = this.collection[newIndex+1].position;
-      return prevPos + (afterPos - prevPos)/2;
-    }
-    //default is last item size + 1000
-     return  this.collection && this.collection.length ? (this.collection[this.collection.length-1]).position + 1000 : 0;
-  }
-
   onSimpleSort(){
     const promises = [];
     this.collection.forEach((s, index)=>{
-      s.position=index*1000;
-      console.log("s",s);
-      promises.push(s.update());
+      let clone = angular.copy(s);
+      clone.position=index*1000;
+      promises.push(clone.update());
     });
     return this.$q.all(promises)
   }

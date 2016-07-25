@@ -6,7 +6,10 @@ export default function menuItem($timeout){
     restrict: 'E',
     scope: {
       item:"=",
-      sectionId:"=?"
+      sectionId:"=?",
+      onItemCreated:"&?",
+      onItemDeleted:"&?",
+      onItemUpdated:"&?",
     },
     template: require("./menuItem.tpl.html"),
     controller: controller.UID,

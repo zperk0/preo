@@ -49,13 +49,13 @@ export default class menuSectionListController {
       console.log("Not showing section new, already showing")
       return;
     }
-    console.log("Showing section new")
     let section = {
       menuId:this.menu.id,
       $selected:true,
       visible:1,
-      position:this.cardItemList.calculateNewItemPos()
+      position: this.sections && this.sections.length ? (this.sections[this.sections.length-1]).position + 1000 : 0
     };
+
     this.sections.push(section);
   }
 

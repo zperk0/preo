@@ -7,7 +7,6 @@ export default class menuItemController {
 
     function _doAddModifier(newItem = this.item){
       this.Spinner.show("moving-item-modifiers");
-      debugger;
       let promises = this.ModifierService.addModifiersToParent($modifiers, newItem);
 
       return this.$q.all(promises).then(()=>{
@@ -33,7 +32,13 @@ export default class menuItemController {
           .then(_doAddModifier.bind(this))
           .then((newItem)=>{
             this.cardItemList.onItemDeleted(this.item)
+            if (this.onItemDeleted){
+              this.onItemDeleted(this.item);
+            }
             this.cardItemList.onItemCreated(newItem);
+            if (this.onItemCreated){
+              this.onItemCreated(newItem);
+            }
           })
       }
 
@@ -80,6 +85,9 @@ export default class menuItemController {
         this.Spinner.hide("item-clone")
         this.Snack.show('Item duplicated');
         this.cardItemList.onItemCreated(createdItem);
+        if (this.onItemCreated){
+          this.onItemCreated(createdItem);
+        }
       }, (err)=>{
         console.log("failed creating item", err)
         this.Spinner.hide("item-clone")
@@ -97,6 +105,9 @@ export default class menuItemController {
         this.Snack.show('Item created');
         this.contextualMenu.hide();
         this.cardItemList.onItemCreated(this.item);
+        if (this.onItemCreated){
+          this.onItemCreated(this.item);
+        }
       }, (err)=>{
         console.log("failed creating item", err)
         this.Spinner.hide("item-create")
@@ -117,7 +128,13 @@ export default class menuItemController {
       return this.ItemService.doSingleEdit(updates, this.sectionId)
         .then((newItem)=>{
           this.cardItemList.onItemDeleted(this.item)
+          if (this.onItemDeleted){
+            this.onItemDeleted(this.item);
+          }
           this.cardItemList.onItemCreated(newItem);
+          if (this.onItemCreated){
+            this.onItemCreated(createdItem);
+          }
         })
     })
     .then(()=>{
@@ -125,6 +142,9 @@ export default class menuItemController {
         this.Snack.show('Item updated');
         this.contextualMenu.hide();
         this.cardItemList.onItemUpdated(this.item);
+        if (this.onItemUpdated){
+          this.onItemUpdated(this.item);
+        }
     }, (err)=>{
       console.log("Failed updating item", err)
       this.Spinner.hide("item-updated")
@@ -141,15 +161,16 @@ export default class menuItemController {
     }
   }
 
-  restoreValues(updatedItem){
-    if (updatedItem){
-      this.originalItem = updatedItem;
+  restoreValues(newValues = false){
+    if(newValues){
+      this.originalItem = newValues;
     }
     if (this.originalItem){
-      this.item.name = this.originalItem.name;
-      this.item.description = this.originalItem.description;
-      this.item.price = this.originalItem.price;
-      this.item.$size = this.originalItem.$size;
+      for (var property in this.originalItem) {
+      if (this.originalItem.hasOwnProperty(property)) {
+        this.item[property] = this.originalItem[property];
+        }
+      }
       this.originalItem = false;
     }
   }
@@ -178,6 +199,9 @@ export default class menuItemController {
       })
       .then(()=>{
           this.cardItemList.onItemDeleted(this.item);
+          if (this.onItemDeleted){
+            this.onItemDeleted(this.item);
+          }
           this.Snack.show('Item deleted');
           this.Spinner.hide("item-delete");
       })
@@ -193,7 +217,7 @@ export default class menuItemController {
     if (this.sectionId){
       return this.ItemService.checkMultipleOccurrences(updates || this.item)
     }
-    return this.$q.resolve(updates || this.item)
+    return this.$q.resolve('all');
   }
 
 
@@ -213,7 +237,7 @@ export default class menuItemController {
     this.newModifiers = [];
 
     let inParam = false;
-    if (this.item.id === Number($stateParams.itemId)){
+    if (this.item && this.item.id === Number($stateParams.itemId)){
       inParam = true;
       this.item.$selected = true;
     }

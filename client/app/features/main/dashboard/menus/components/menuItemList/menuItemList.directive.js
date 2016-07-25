@@ -1,5 +1,6 @@
 import controller from './menuItemList.controller'
 
+//refactor to not need section
 export default function menuItemList($animate, $timeout){
   "ngInject";
   return {
@@ -9,6 +10,7 @@ export default function menuItemList($animate, $timeout){
       hasNew:"=",
       animate:"=?",
       section:"=?",
+      sort:"=?",
       hasSearch:"=?",
       svDisabled:"=",
       svMultiSelect:"=?",

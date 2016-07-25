@@ -16,33 +16,42 @@ export default class menuItemListController {
       $items.forEach(($item)=>{
         let $i = angular.copy($item);
         //only idd items that are not in the list yet
-        $i.position = $indexTo === 0 ? 0 : this.cardItemList.calculateNewItemPos($indexTo-1);
+        $i.position = 0;
+        $i.sectionId = this.section.id;
         $i.menuId = this.section.menuId;
         promises.push(this.section.moveItem($i));
       })
       this.$q.all(promises).then((items)=>{
-          // this is needed because of $scope.results array on search. drag an drop list must use results so end array is not updated
-          // this.items.splice($indexTo,0,...items);
-
-          items.forEach((newItem)=>{
-            this.cardItemList.onItemCreated(this.ItemService.getById(newItem.id));
-          })
-        }).then(()=>{
-          this.Snack.show('Items added');
-          this.Spinner.hide("item-move");
+        // this is needed because of $scope.results array on search. drag an drop list must use results so end array is not updated
+        // this.items.splice($indexTo,0,...items);
+        items.forEach((newItem)=>{
+          this.onItemCreated(newItem);
+          this.cardItemList.onItemCreated(this.ItemService.getById(newItem.id));
         })
-        .catch((err)=>{
-          console.log("error", err);
-          this.Snack.showError('Error adding item');
-          this.Spinner.hide("item-move");
-        })
+      }).then(()=>{
+        this.Snack.show('Items added');
+        this.Spinner.hide("item-move");
+      })
+      .catch((err)=>{
+        console.log("error", err);
+        this.Snack.showError('Error adding item');
+        this.Spinner.hide("item-move");
+      })
   }
-
 
   onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
     if ($partFrom == $partTo){
       this.Spinner.show("item-move");
-      this.cardItemList.onItemsMoved($items, $indexFrom, $indexTo).then(()=>{
+      let promises = [];
+      $partTo.forEach(($item, index)=>{
+        let copy = angular.copy($item);
+        copy.sectionId = this.section.id;
+        copy.position=index*1000;
+        this.sort.filter((s)=>s.id===copy.id)[0].position=copy.position;
+        copy.menuId = this.section.menuId;
+        promises.push(copy.update());
+      });
+      this.$q.all(promises).then(()=>{
         this.Snack.show('Item moved');
       }, ()=>{
         this.Snack.showError('Error moving item');
@@ -54,7 +63,14 @@ export default class menuItemListController {
 
   }
 
-  onItemCreated(){
+  onItemCreated(newItem){
+    if (this.sort){
+      this.sort.push({id:newItem.id, position:newItem.position})
+    }
+    this.recalculateHeight();
+  }
+
+  onItemUpdated(){
     this.recalculateHeight();
   }
 
@@ -62,8 +78,11 @@ export default class menuItemListController {
     this.recalculateHeight();
   }
 
+  onItemDeleted(){
+    console.log("deleted");
+  }
+
   showCreateItem($event, isImport){
-    console.log("show creating", $event, isImport);
 
     let newItem = {
         $selected:true,
@@ -86,8 +105,8 @@ export default class menuItemListController {
         if (isCreating){
           return;
         }
-      if (this.items && this.items.length){
-        newItem.position = Math.max.apply(Math,this.items.map(function(o){return o.position;})) + 1000
+      if (this.sort){
+        newItem.position = Math.max.apply(Math,this.sort.map(function(o){return o.position;})) + 1000
       }
       this.items.push(newItem);
     } else {
@@ -101,9 +120,9 @@ export default class menuItemListController {
     this.section.$expanding = true;
     let maxHeight = 0;
     this.items.forEach((i)=>{
-     maxHeight += 48 + 42 + 16 +(i.$size && i.$size.items ? i.$size.items.length * 35 : 0)
+     maxHeight += 48 + 42 + 16 + (i.$size && i.$size.items ? i.$size.items.length * 35 : 0)
     })
-    this.el[0].style.maxHeight = maxHeight+80 + "px";
+    this.el[0].style.maxHeight = maxHeight + (80 + 35*5) + "px";
   }
 
 
@@ -122,7 +141,7 @@ export default class menuItemListController {
     this.ItemService = ItemService;
     this.itemsDisplayed = [];
     this.$timeout = $timeout;
-    this.timeoutClear;
+
     if (!this.section){
       this.section = {};
       this.itemsDisplayed = this.items;
