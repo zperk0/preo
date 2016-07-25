@@ -6,7 +6,7 @@ export default class menuItemListController {
 
   onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
        //must check because library appends the item in the array before calling callback
-      if (this.cardItemList.isItemDuplicated($items, 0)){
+      if (this.cardItemList.isItemDuplicated($items, 1)){
         this.Snack.showError('One or more items are already in section');
         $partTo.splice($indexTo,$items.length);
         return;
@@ -16,7 +16,7 @@ export default class menuItemListController {
       $items.forEach(($item)=>{
         let $i = angular.copy($item);
         //only idd items that are not in the list yet
-        $i.position = 0;
+        $i.position = 0
         $i.sectionId = this.section.id;
         $i.menuId = this.section.menuId;
         promises.push(this.section.moveItem($i));
@@ -25,10 +25,13 @@ export default class menuItemListController {
         // this is needed because of $scope.results array on search. drag an drop list must use results so end array is not updated
         // this.items.splice($indexTo,0,...items);
         items.forEach((newItem)=>{
-          this.onItemCreated(newItem);
+          this.onItemCreated(newItem, true);
           this.cardItemList.onItemCreated(this.ItemService.getById(newItem.id));
         })
+        let promises = this.doSimpleSort($partTo);
+        return this.$q.all(promises);
       }).then(()=>{
+        this.sortData();
         this.Snack.show('Items added');
         this.Spinner.hide("item-move");
       })
@@ -39,18 +42,23 @@ export default class menuItemListController {
       })
   }
 
+  doSimpleSort($items){
+   let promises = [];
+    $items.forEach(($item, index)=>{
+      let copy = angular.copy($item);
+      copy.sectionId = this.section.id;
+      copy.position=index*1000;
+      this.sort.filter((s)=>s.id===copy.id)[0].position=copy.position;
+      copy.menuId = this.section.menuId;
+      promises.push(copy.update());
+    });
+    return promises;
+  }
+
   onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
     if ($partFrom == $partTo){
       this.Spinner.show("item-move");
-      let promises = [];
-      $partTo.forEach(($item, index)=>{
-        let copy = angular.copy($item);
-        copy.sectionId = this.section.id;
-        copy.position=index*1000;
-        this.sort.filter((s)=>s.id===copy.id)[0].position=copy.position;
-        copy.menuId = this.section.menuId;
-        promises.push(copy.update());
-      });
+      let promises = this.doSimpleSort($partTo);
       this.$q.all(promises).then(()=>{
         this.Snack.show('Item moved');
       }, ()=>{
@@ -63,23 +71,26 @@ export default class menuItemListController {
 
   }
 
-  onItemCreated(newItem){
-    if (this.sort){
+  onItemCreated(newItem, skipSort = false){
+    if (this.sort && this.sort.filter((i)=>i.id===newItem.id).length === 0){
       this.sort.push({id:newItem.id, position:newItem.position})
     }
     this.recalculateHeight();
+    if(!skipSort)
+      this.sortData();
   }
 
   onItemUpdated(){
     this.recalculateHeight();
   }
 
-  onItemCloned(){
-    this.recalculateHeight();
+  onItemDeleted(deletedItem){
+    console.log("deleted");
+    this.sortData();
   }
 
-  onItemDeleted(){
-    console.log("deleted");
+  getPosition(item){
+    return item.position || this.sort ? this.sort.filter((i)=>item.id===i.id)[0].position : 0;
   }
 
   showCreateItem($event, isImport){
@@ -116,6 +127,18 @@ export default class menuItemListController {
     $event.stopPropagation();
   }
 
+  sortData(){
+      if (!this.sort || !this.sort.length || !this.itemsDisplayed || !this.itemsDisplayed.length){
+        return;
+      }
+
+      this.itemsDisplayed.sort((a,b)=> {
+        var a1 = this.sort.filter((i)=>i.id===a.id)[0]
+        var b1 = this.sort.filter((i)=>i.id===b.id)[0]
+        return a1 && b1 && (a1.position-b1.position === 0 ? a1.id-b1.id : a1.position-b1.position);
+      })
+  }
+
   recalculateHeight(){
     this.section.$expanding = true;
     let maxHeight = 0;
@@ -147,13 +170,13 @@ export default class menuItemListController {
       this.itemsDisplayed = this.items;
     }
     this.section.$expanding = false;
-
     //watch for animation only if we're in a section
     if (this.section.id){
       $scope.$watch('vm.section.$expanded',(newVal, oldVal)=>{
 
         if(newVal){
           this.itemsDisplayed = this.items;
+            this.sortData();
           if (this.itemsDisplayed.length === 0){
             this.recalculateHeight();
           }

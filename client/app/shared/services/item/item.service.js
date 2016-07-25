@@ -126,8 +126,8 @@ export default class ItemService {
     return item;
   }
 
-  doSingleEdit(item, sectionId){
-    return this.cloneItem(item, sectionId)
+  doSingleEdit(item, sectionId, position){
+    return this.cloneItem(item, sectionId, position)
       .then((newItem)=>{
         this.removeFromSection(item, sectionId)
         return newItem;
@@ -136,8 +136,9 @@ export default class ItemService {
 
 
 
-  cloneItem(item, sectionId){
+  cloneItem(item, sectionId, position){
     const newItemData = angular.copy(item);
+    newItemData.position = position;
     //remove ids from all necesasry entities to duplicate them. We'll not clone Modifiers but will clone sizes. Images are handled below
     if (newItemData.$size){
       //if we explicitly marked this item as single before cloning, we don't clone sizes;

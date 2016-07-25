@@ -15,7 +15,7 @@
           sv-on-external-sort="vm.onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
           sv-is-dropzone='vm.svIsDropzone'>
            <menu-item
-               ng-repeat="item in vm.itemsDisplayed | filter:vm.searchText:strict | orderByPosition:vm.sort as results"
+               ng-repeat="item in vm.itemsDisplayed | filter:vm.searchText:strict as results"
                ng-init="$last && vm.recalculateHeight()"
                item="item"
                ng-attr-data-id="{{item.id}}"

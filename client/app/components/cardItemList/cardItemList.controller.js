@@ -4,11 +4,8 @@ export default class cardItemListController {
   }
 
   onItemCreated(newItem){
-    console.log("card item created")
-    this.$timeout(()=>{
-      this.clearPossibleNewItem();
-      this.addItemInPosition(newItem);
-    })
+    this.clearPossibleNewItem();
+    this.addItemInPosition(newItem);
   }
 
   onItemUpdated(){
@@ -20,6 +17,8 @@ export default class cardItemListController {
   }
 
   addItemInPosition(item){
+    if (this.collection.filter((i)=>i.id===item.id).length)
+      return;
     let indexBefore = -1;
     this.collection.forEach((i, index)=>{
       if (i.position <= item.position){

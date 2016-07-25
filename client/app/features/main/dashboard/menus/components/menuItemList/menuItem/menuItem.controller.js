@@ -28,16 +28,17 @@ export default class menuItemController {
       if (updateAction === 'all'){
         return _doAddModifier.call(this);
       } else {
-        return this.ItemService.doSingleEdit(this.item, this.sectionId)
+        let clonePosition = this.menuItemListCtrl.getPosition(this.item);
+        return this.ItemService.doSingleEdit(this.item, this.sectionId, clonePosition)
           .then(_doAddModifier.bind(this))
           .then((newItem)=>{
             this.cardItemList.onItemDeleted(this.item)
             if (this.onItemDeleted){
-              this.onItemDeleted(this.item);
+              this.onItemDeleted({item:this.item});
             }
             this.cardItemList.onItemCreated(newItem);
             if (this.onItemCreated){
-              this.onItemCreated(newItem);
+              this.onItemCreated({item:newItem});
             }
           })
       }
@@ -80,13 +81,15 @@ export default class menuItemController {
 
   cloneItem(){
     this.Spinner.show("item-clone")
-    this.ItemService.cloneItem(this.item, this.sectionId)
+    let clonePosition = this.menuItemListCtrl.getPosition(this.item);
+    this.ItemService.cloneItem(this.item, this.sectionId, clonePosition)
       .then((createdItem)=>{
         this.Spinner.hide("item-clone")
         this.Snack.show('Item duplicated');
+        console.log("cloned", createdItem, this.item);
         this.cardItemList.onItemCreated(createdItem);
         if (this.onItemCreated){
-          this.onItemCreated(createdItem);
+          this.onItemCreated({item:createdItem});
         }
       }, (err)=>{
         console.log("failed creating item", err)
@@ -106,7 +109,7 @@ export default class menuItemController {
         this.contextualMenu.hide();
         this.cardItemList.onItemCreated(this.item);
         if (this.onItemCreated){
-          this.onItemCreated(this.item);
+          this.onItemCreated({item:this.item});
         }
       }, (err)=>{
         console.log("failed creating item", err)
@@ -125,7 +128,8 @@ export default class menuItemController {
             this.restoreValues(updatedItem);
           })
       }
-      return this.ItemService.doSingleEdit(updates, this.sectionId)
+      let clonePosition = this.menuItemListCtrl.getPosition(this.item);
+      return this.ItemService.doSingleEdit(updates, this.sectionId, clonePosition)
         .then((newItem)=>{
           this.cardItemList.onItemDeleted(this.item)
           if (this.onItemDeleted){
@@ -133,7 +137,7 @@ export default class menuItemController {
           }
           this.cardItemList.onItemCreated(newItem);
           if (this.onItemCreated){
-            this.onItemCreated(createdItem);
+            this.onItemCreated({item:newItem});
           }
         })
     })
@@ -200,7 +204,7 @@ export default class menuItemController {
       .then(()=>{
           this.cardItemList.onItemDeleted(this.item);
           if (this.onItemDeleted){
-            this.onItemDeleted(this.item);
+            this.onItemDeleted({item:this.item});
           }
           this.Snack.show('Item deleted');
           this.Spinner.hide("item-delete");
