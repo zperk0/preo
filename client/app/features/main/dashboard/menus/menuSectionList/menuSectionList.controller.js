@@ -17,21 +17,6 @@ export default class menuSectionListController {
   }
 
 
-  cloneSection(sectionToClone){
-    const newSectionData = angular.copy(sectionToClone);
-    newSectionData.position = this.cardItemList.calculateNewItemPos(sectionToClone);
-    return this.$q((resolve, reject)=>{
-      this.createSection(newSectionData)
-        .then(()=>{
-          this.Snack.show('Section duplicated');
-          resolve();
-        }, ()=>{
-          this.Snack.showError('Error duplicating section');
-          reject();
-        });
-    });
-  }
-
   addSectionInPosition(section){
     let indexBefore = -1;
     this.sections.forEach((s, index)=>{

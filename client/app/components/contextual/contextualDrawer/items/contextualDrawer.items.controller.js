@@ -3,16 +3,8 @@ export default class contextualDrawerItemController {
     return "ContextualDrawerItem";
   }
 
-  onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
-    console.log("on cancel move"); //dont need to do anything here, just want to cancel the move
-  }
-
   close(){
-    this.$mdSidenav('items').close()
-      .then(function () {
-        console.log("close ITEMS is done");
-      });
-
+    return this.$mdSidenav('items').close()
   }
 
   constructor($scope, ItemService, $stateParams,$mdSidenav) {
@@ -22,7 +14,7 @@ export default class contextualDrawerItemController {
     this.$scope = $scope;
     this.cancelledItems = [];
 
-    ItemService.getItems($stateParams.venueId,'images,tags,modifiers').then((data)=>{
+    ItemService.getItems($stateParams.venueId).then((data)=>{
       this.data = data;
     })
   }

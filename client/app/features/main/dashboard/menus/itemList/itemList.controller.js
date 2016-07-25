@@ -9,7 +9,7 @@ export default class itemListController {
   }
 
   setItems(venueId){
-    this.ItemService.getItems(venueId, 'modifiers,images,tags')
+    this.ItemService.getItems(venueId)
       .then(this.handleFinishLoading.bind(this), this.handleError.bind(this,"FAILED_LOADING_MENU_ITEMS"))
       .catch((err)=>console.log("err",err));
 

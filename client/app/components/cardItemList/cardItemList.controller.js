@@ -64,27 +64,13 @@ export default class cardItemListController {
     });
   }
 
-  calculateNewItemPos(itemBefore){
+  calculateNewItemPos(newIndex){
     var pos = -1;
     //if we have a item before, we should add it after this item
-    if (itemBefore){
-      this.collection.forEach((i,index)=>{
-        if (i.id === itemBefore.id){
-          pos = itemBefore.position;
-          let itemAfter = this.collection[index+1];
-          if (!itemAfter) {
-            //if we don't get a item after we're in the last item, just add 1000
-            pos+=1000;
-          } else {
-            //else new item pos is the middle of item after and item before
-            pos += (itemAfter.position - pos)/2
-          }
-        }
-      })
-      if (pos !== -1) {
-        //if we have a pos return it
-        return pos;
-      }
+    if (newIndex && this.collection && this.collection.length-1 > newIndex){
+      var prevPos = this.collection[newIndex].position;
+      var afterPos = this.collection[newIndex+1].position;
+      return prevPos + (afterPos - prevPos)/2;
     }
     //default is last item size + 1000
      return  this.collection && this.collection.length ? (this.collection[this.collection.length-1]).position + 1000 : 0;

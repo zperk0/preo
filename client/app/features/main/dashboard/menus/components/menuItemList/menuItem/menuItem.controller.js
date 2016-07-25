@@ -4,23 +4,46 @@ export default class menuItemController {
   }
 
   onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo){
+
+    function _doAddModifier(newItem = this.item){
+      this.Spinner.show("moving-item-modifiers");
+      debugger;
+      let promises = this.ModifierService.addModifiersToParent($modifiers, newItem);
+
+      return this.$q.all(promises).then(()=>{
+        this.Snack.show("Added modifiers to item");
+      })
+      .then(()=>{
+        this.Spinner.hide("moving-item-modifiers");
+        return newItem;
+      })
+    }
+
     //item has modifier?
     if (this.ModifierService.isModifiersDuplicated($modifiers, this.item)){
       return this.Snack.showError("One or more modifiers already in item");
     }
 
-    this.Spinner.show("moving-item-modifiers");
+    return this.checkMultipleOccurrences(this.item)
+    .then((updateAction)=>{
+      if (updateAction === 'all'){
+        return _doAddModifier.call(this);
+      } else {
+        return this.ItemService.doSingleEdit(this.item, this.sectionId)
+          .then(_doAddModifier.bind(this))
+          .then((newItem)=>{
+            this.cardItemList.onItemDeleted(this.item)
+            this.cardItemList.onItemCreated(newItem);
+          })
+      }
 
-    let promises = this.ModifierService.addModifiersToParent($modifiers, this.item);
+    })
+    .catch((err)=>{
+       console.log("error", err);
+        this.Snack.showError("Error adding modifiers to item");
+    })
 
-    this.$q.all(promises).then(()=>{
-      this.Snack.show("Added modifiers to item");
-    },()=>{
-      this.Snack.showError("Error adding modifiers to item");
-    })
-    .then(()=>{
-      this.Spinner.hide("moving-item-modifiers");
-    })
+
   }
 
   onClone ($event){
@@ -69,7 +92,7 @@ export default class menuItemController {
     this.Spinner.show("item-create")
     this.ItemService.createItem(this.item, this.sectionId)
       .then((createdItem)=>{
-        this.item = createdItem;
+        this.restoreValues(createdItem);
         this.Spinner.hide("item-create")
         this.Snack.show('Item created');
         this.contextualMenu.hide();
@@ -88,7 +111,7 @@ export default class menuItemController {
       if (updateAction === 'all'){
         return this.ItemService.updateItem(updates, skipExtensions)
           .then((updatedItem)=>{
-            this.item = updatedItem;
+            this.restoreValues(updatedItem);
           })
       }
       return this.ItemService.doSingleEdit(updates, this.sectionId)
@@ -118,7 +141,10 @@ export default class menuItemController {
     }
   }
 
-  restoreOriginalValues(){
+  restoreValues(updatedItem){
+    if (updatedItem){
+      this.originalItem = updatedItem;
+    }
     if (this.originalItem){
       this.item.name = this.originalItem.name;
       this.item.description = this.originalItem.description;
@@ -129,7 +155,7 @@ export default class menuItemController {
   }
 
   contextualMenuCancel(event, entity, type){
-    this.restoreOriginalValues()
+    this.restoreValues()
     this.item.$selected = false;
     if (!this.item.id){
       this.cardItemList.clearPossibleNewItem();

@@ -221,9 +221,21 @@ export default class ItemService {
       })
   }
 
+  getByIds(ids){
+    return this.data.items.filter((i)=>ids.indexOf(i.id)>-1)
+  }
+  getById(id){
+    return this.data.items.filter((i)=>id===i.id)[0];
+  }
 
-  getItems(venueId, expand){
-    console.log("gettimg items", venueId, expand)
+  populateModifiers(modifiers){
+    this.data.items.forEach((i)=>{
+      i.modifiers = this.ModifierService.getByIds(i.modifiers.map((m)=>m.id));
+    })
+  }
+
+
+  getItems(venueId, expand='images,tags,modifiers'){
     return this.$q((resolve, reject)=>{
       if (this.data.items){
         resolve(this.data);
@@ -231,10 +243,11 @@ export default class ItemService {
         Preoday.Item.getAll({venueId:venueId, expand:expand})
         .then((items)=>{
           this.data.items = items;
-          resolve(this.data);
-        },(err)=>{
-          console.log("Error fetching items", err);
-          reject(err);
+          return this.ModifierService.getModifiers(venueId)
+        })
+        .then((modifiers)=>{
+          this.populateModifiers(modifiers);
+          resolve(this.data)
         })
         .catch((err)=>{
           console.log("Error fetching items", err);
@@ -246,7 +259,7 @@ export default class ItemService {
 
 
 
-  constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService, gettextCatalog) {
+  constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService, gettextCatalog, ModifierService) {
     "ngInject";
     this.data = {};
     this.$q =$q;
@@ -255,6 +268,7 @@ export default class ItemService {
     this.UtilsService = UtilsService;
     this.gettextCatalog = gettextCatalog;
     this.DEBUG = window.DEBUG || $location.search().debug;
+    this.ModifierService = ModifierService;
 
 
   }

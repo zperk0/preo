@@ -53,7 +53,7 @@
         if ($item && $item.sectionId != this.section.id){
           $item.menuId = this.section.menuId;
           let p = this.section.moveItem($item).then((newItem)=>{
-            this.section.items.splice(0,0,newItem)
+            this.section.items.splice(0,0,this.ItemService.getById(newItem.id))
           }, ()=>{
             //restore item to original position
             $item.position = originalPos;
@@ -166,13 +166,14 @@
     }
   }
 
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ModifierService) {
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ItemService, ModifierService) {
     "ngInject";
     this.$q =$q;
     this.Snack = Snack;
     this.Spinner = Spinner;
     this.$stateParams = $stateParams;
     this.ModifierService =ModifierService;
+    this.ItemService =ItemService;
     this.$timeout = $timeout;
     this.DialogService = DialogService;
     this.LabelService = LabelService;

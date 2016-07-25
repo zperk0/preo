@@ -27,41 +27,48 @@ export default class ModifierService {
     return dupes.length > 0;
   }
 
+  //this method loops through all modifiers nested inside a given parent modifier and find matches from an array of modifiers, if any is found there is cyclic referencing
   canAddModifiers($modifiers, parent){
     var found = false;
-    let modIds = []
-    function getAllIds(mod, depth){
-      if (depth === 0){
-        modIds.push(mod.id);
-      }
+    var i=-1;
+    let parentModIds = []
+    function getAllIds(mod, modIds = []){
+      i++
+      //add mod to array
+      modIds.push(mod.id);
 
       if (mod.modifiers && mod.modifiers.length){
         for (let i=0;i<mod.modifiers.length;i++){
-          getAllIds(mod.modifiers[i],depth+1)
+          getAllIds(mod.modifiers[i], [...modIds])
         }
       }
       if (mod.items && mod.items.length){
         for (let i=0;i<mod.items.length;i++){
           for (let j=0;j<mod.items[i].modifiers.length;j++){
-            getAllIds(mod.items[i].modifiers[j],depth+1)
+            getAllIds(mod.items[i].modifiers[j], [...modIds])
           }
         }
       }
+
+      //try to find repetittions
       let thisModModIds = mod.modifiers.map((m)=>m.id);
+      thisModModIds.push(mod.id);
       for (let k=0;k<thisModModIds.length;k++){
-        if (modIds.indexOf(thisModModIds[k]) > -1){
+        let occurrences = modIds.reduce(function(n, val) {
+           return n + (val === thisModModIds[k]);
+        }, 0);
+        //if theres more than one occurence of something in the "arrayed" tree we have a cyclic reference
+        if (occurrences > 1){
           found = thisModModIds[k];
         }
       }
 
-      modIds.splice(-1,0,...thisModModIds)
     }
 
     let parentClone = angular.copy(parent);
     parentClone.modifiers.splice(-1,0,...$modifiers);
-    //loop through all modifier children and try to find matching ids, if we find a duplication this is a cyclic object and its not allowed
-    getAllIds(parentClone, 0);
-    console.log( 'modIds' ,modIds, found);
+    getAllIds(parentClone);
+    console.log("found:", found);
     return found ? true : false;
 
   }

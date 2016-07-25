@@ -28,21 +28,24 @@ export default class menuController {
 
 
   handleFinishLoading(dataMenu){
-    this.$timeout(()=>{
-      this.menu = dataMenu;
-      console.log("this menu", this.menu)
-      this.hideSpinner();
-    });
+    dataMenu.sections.forEach((s)=>{
+      s.$positions = s.items.map((i)=>({id:i.id,position:i.position}));
+      s.items = this.ItemService.getByIds(s.items.map((i)=>i.id));
+    })
+    this.menu = dataMenu;
+    this.hideSpinner();
   }
 
 
-  constructor($stateParams, $timeout,Spinner, contextual) {
+  constructor($stateParams, $timeout,Spinner, contextual, ItemService) {
     "ngInject";
     this.Spinner = Spinner;
     this.showSpinner();
-    this.setMenu($stateParams.menuId);
+    this.ItemService = ItemService;
     this.$timeout = $timeout;
     this.contextual = contextual;
-    //types for drag and drop list
+    ItemService.getItems($stateParams.venueId).then(()=>{
+      this.setMenu($stateParams.menuId);
+    });
   }
 }
