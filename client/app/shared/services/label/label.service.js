@@ -17,6 +17,9 @@ export default class LabelService {
     this.TITLE_DELETE_MODIFIER  = gettextCatalog.getString("Delete modifier?");
     this.CONTENT_DELETE_MODIFIER = gettextCatalog.getString("This will delete the modifier from all menus.");
 
+    this.TITLE_DELETE_MENU = gettextCatalog.getString("Delete menu?");
+    this.CONTENT_DELETE_MENU = gettextCatalog.getString("This will delete all section and item configurations for this menu. Are you sure?");
+
     this.TITLE_DELETE_IMAGE = gettextCatalog.getString("Delete image?");
     this.CONTENT_DELETE_IMAGE = gettextCatalog.getString("Are you sure you want to delete this image?");
 

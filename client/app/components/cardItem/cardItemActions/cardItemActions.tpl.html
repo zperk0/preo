@@ -13,19 +13,19 @@
           {{'Show on menu' | translate}}
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItem.showCardActions && vm.onClone" class="md-icon-button" ng-click="vm.onClone()">
+      <md-button ng-if="cardItem.showCardActions && vm.onClone" class="md-icon-button" ng-click="vm.onClone({$event:$event})">
         <icon>content_copy</icon>
         <md-tooltip md-direction="bottom">
           {{'Duplicate' | translate}}
         </md-tooltip>
       </md-button>
-      <md-button ng-if="cardItem.showCardActions && vm.onDelete" class="md-icon-button" ng-click="vm.onDelete()">
+      <md-button ng-if="cardItem.showCardActions && vm.onDelete" class="md-icon-button" ng-click="vm.onDelete({$event:$event})">
         <icon>delete</icon>
         <md-tooltip md-direction="bottom">
           {{'Delete' | translate}}
         </md-tooltip>
       </md-button>
-       <md-button ng-if="cardItem.showCardActions && vm.onEdit" class="md-icon-button" ng-click="vm.onEdit()">
+       <md-button ng-if="cardItem.showCardActions && vm.onEdit" class="md-icon-button" ng-click="vm.onEdit({$event:$event})">
         <icon>edit</icon>
         <md-tooltip md-direction="bottom">
           {{'Edit' | translate}}

@@ -1,0 +1,13 @@
+<div class='menu-card-list'>
+  <card-item-list
+      collection="vm.menus"
+      has-new="true"
+      on-click-new="vm.showCreateMenu($event)"
+      collection-results="vm.menus">
+        <menu-card-item
+            ng-repeat="menu in vm.menus"
+            ng-click="vm.showMenu(menu)"
+            menu="menu">
+        </menu-card-item>
+  </card-item-list>
+</div>

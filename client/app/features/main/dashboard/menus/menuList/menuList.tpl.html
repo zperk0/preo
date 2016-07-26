@@ -1,7 +1,8 @@
-<div>
-  <div class='menus-content'>
-   <div ng-repeat="menu in vm.menus">
-      <div ng-click="vm.showMenu(menu)">{{menu.name}}</div>
-   </div>
+<div class='menu-list'>
+  <div class='main-content-left'>
+    <div class='menus-content'>
+      <menu-card-list menus="vm.menus"></menu-card-list>
+    </div>
   </div>
+  <div class='main-content-right' sticky offset="88" contextual-menu-holder></div>
 </div>

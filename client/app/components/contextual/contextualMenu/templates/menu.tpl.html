@@ -1,0 +1,8 @@
+<md-card-content>
+  {{vm.entity | debug}}
+   <md-input-container class="md-block no-spacer">
+      <label translate>Menu name</label>
+      <input type="text" required name="entityName" ng-model="vm.entity.name" ng-maxlength="100">
+  </md-input-container>
+</md-card-content>
+

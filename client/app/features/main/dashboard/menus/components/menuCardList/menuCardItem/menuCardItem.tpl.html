@@ -1,0 +1,17 @@
+<div class='menu-card-item ng-enter'>
+  <card-item
+       item="vm.menu"
+       selected="vm.menu.$selected"
+       deleted="vm.menu.$deleted"
+       has-actions="true"
+       ng-attr-data-id="{{vm.menu.id}}">
+         <card-item-title>
+              <span class='name'> {{vm.menu.name}}</span>
+          </card-item-title>
+          <card-item-actions
+                 on-clone="vm.onClone($event)"
+                 on-delete="vm.onDelete($event)"
+                 on-edit="vm.onEdit($event)"
+                 ></card-item-actions>
+   </card-item>
+</div>

@@ -12,10 +12,6 @@ export default class menuListController {
     this.Spinner.hide("menu-list");
   }
 
-  showMenu(menu){
-    this.$state.go("main.dashboard.menus.menu",{menuId:menu.id});
-  }
-
   setMenus(venueId){
     const noExpand = true;
     Preoday.Menu.get({venueId,noExpand})
@@ -33,11 +29,10 @@ export default class menuListController {
   }
 
 
-  constructor($state,$stateParams,ErrorService, Spinner) {
+  constructor($stateParams,ErrorService, Spinner) {
     "ngInject";
     this.Spinner = Spinner;
     this.showSpinner();
-    this.$state=$state;
     this.setMenus($stateParams.venueId);
     this.ErrorService = ErrorService;
 
