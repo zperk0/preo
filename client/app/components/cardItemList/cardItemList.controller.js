@@ -10,16 +10,14 @@ export default class cardItemListController {
 
   onItemUpdated(){
     console.log("card item updated")
-    this.$timeout(()=>{
-      this.clearPossibleNewItem();
-      this.selectItem();
-    });
+    this.clearPossibleNewItem();
+    this.selectItem();
   }
 
   addItemInPosition(item, isLast=false){
     if (this.collection.filter((i)=>i.id===item.id).length)
       return;
-    let indexBefore = -2; //force add to last wiht splice(-1,...);
+    let indexBefore = this.collection.length-1; //force add to last wiht splice(-1,...);
     if (!isLast){
       indexBefore = -1;
       this.collection.forEach((i, index)=>{
@@ -82,6 +80,7 @@ export default class cardItemListController {
       })
       if (deletedIndex > -1){
         this.$timeout(()=>{
+          debugger;
           console.log("spliced", deletedIndex)
           this.collection.splice(deletedIndex,1);
         },1000)

@@ -24,12 +24,13 @@ export default class menuListController {
   }
 
   handleFinishLoading(dataMenus){
-    this.menus = dataMenus;
-    this.hideSpinner();
     //skip to first menu if we didn't load this page or if we didn't come from inside the menu
     if (dataMenus.length === 1 && this.$rootScope.previousState && this.$rootScope.previousState !== 'main.dashboard.menus.menu'){
       this.$state.go("main.dashboard.menus.menu",{menuId:dataMenus[0].id})
+    } else {
+      this.menus = dataMenus;
     }
+    this.hideSpinner();
   }
 
 

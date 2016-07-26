@@ -10,8 +10,10 @@ export default class menuCardItemController {
     else {
       this.updateMenu(updates);
     }
-    //clear selections
-    this.cardItemList.clearPossibleNewItem();
+    if (!this.item.id){
+      this.cardItemList.clearPossibleNewItem();
+    }
+    //clear selection
     this.cardItemList.selectItem();
   }
 
@@ -97,7 +99,7 @@ export default class menuCardItemController {
   }
 
   onDelete ($event){
-    this.DialogService.delete(this.LabelService.TITLE_DELETE_ITEM, this.LabelService.CONTENT_DELETE_ITEM_SECTION)
+    this.DialogService.delete(this.LabelService.TITLE_DELETE_MENU, this.LabelService.CONTENT_DELETE_MENU)
       .then(()=>{
           this.Spinner.show("menu-delete");
           return this.menu.delete();

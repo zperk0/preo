@@ -1,6 +1,8 @@
 .menu-card-item {
   &>.card-item{
-    min-height: 60px;
+    .card-title{
+      min-height: 60px;
+    }
     .card-title-text{
       line-height: 60px;
     }
