@@ -10,11 +10,6 @@ export default class menuCardItemController {
     else {
       this.updateMenu(updates);
     }
-    if (!this.menu.id){
-      this.cardItemList.clearPossibleNewItem();
-    }
-    //clear selection
-    this.cardItemList.selectItem();
   }
 
   contextualMenuCancel(){
