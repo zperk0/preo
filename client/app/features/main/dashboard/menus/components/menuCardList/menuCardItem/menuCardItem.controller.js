@@ -41,7 +41,7 @@ export default class menuCardItemController {
     this.Spinner.show("menu-clone")
     Preoday.Menu.clone(this.menu.id)
       .then((newMenu)=>{
-        this.cardItemList.onItemCreated(newMenu);
+        this.cardItemList.onItemCreated(newMenu, true);
         if (this.onItemCreated){
           this.onItemCreated({item:newMenu});
         }
@@ -66,14 +66,13 @@ export default class menuCardItemController {
     this.Spinner.show("menu-create")
     Preoday.Menu.save(this.menu)
       .then((newMenu)=>{
-        this.restoreValues(newMenu);
+        this.cardItemList.onItemCreated(newMenu, true);
+        if (this.onItemCreated){
+          this.onItemCreated({item:newMenu});
+        }
         this.Spinner.hide("menu-create")
         this.Snack.show('Menu created');
         this.contextualMenu.hide();
-        this.cardItemList.onItemCreated(this.menu);
-        if (this.onItemCreated){
-          this.onItemCreated({item:this.menu});
-        }
       }, (err)=>{
         console.log("failed creating menu", err)
         this.Spinner.hide("menu-create")

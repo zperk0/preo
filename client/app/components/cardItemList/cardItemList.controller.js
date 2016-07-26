@@ -3,9 +3,9 @@ export default class cardItemListController {
     return "cardItemListController"
   }
 
-  onItemCreated(newItem){
+  onItemCreated(newItem, isLast){
     this.clearPossibleNewItem();
-    this.addItemInPosition(newItem);
+    this.addItemInPosition(newItem, isLast);
   }
 
   onItemUpdated(){
@@ -16,15 +16,18 @@ export default class cardItemListController {
     });
   }
 
-  addItemInPosition(item){
+  addItemInPosition(item, isLast=false){
     if (this.collection.filter((i)=>i.id===item.id).length)
       return;
-    let indexBefore = -1;
-    this.collection.forEach((i, index)=>{
-      if (i.position <= item.position){
-        indexBefore = index;
-      }
-    })
+    let indexBefore = -2; //force add to last wiht splice(-1,...);
+    if (!isLast){
+      indexBefore = -1;
+      this.collection.forEach((i, index)=>{
+        if (i.position <= item.position){
+          indexBefore = index;
+        }
+      })
+    }
     this.collection.splice(indexBefore+1, 0, item);
   }
 
