@@ -32,6 +32,7 @@ import v2NotFound from './features/notFound';
 
 // Import global components
 import dialog from './components/dialog';
+import icon from './components/icon';
 import snack from './components/snack';
 import spinner from './components/spinner';
 import imageUploader from './components/imageUploader';
@@ -57,6 +58,7 @@ export default angular.module('webapp', [
   'angular-sortable-view',
   /* directives */
   dialog,
+  icon,
   snack,
   spinner,
   'sticky',

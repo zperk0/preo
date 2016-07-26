@@ -5,6 +5,7 @@ import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
 import spinner from '../../../../../components/spinner';
+import breadcrumb from '../../../../../components/breadcrumb';
 import contextual from '../../../../../components/contextual';
 
 // Import internal modules
@@ -17,7 +18,8 @@ export default angular.module("menu" , [
   uirouter,
   menuSectionList,
   spinner,
-  contextual
+  contextual,
+  breadcrumb
 ])
   .config(routes)
   .controller(controller.UID, controller)

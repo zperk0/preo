@@ -7,10 +7,9 @@ import angular from 'angular';
 // Import internal modules
 import controller from './userSelect.controller';
 import directive from './userSelect.directive';
-import icon from '../../icon';
 
 
-export default angular.module("userSelect" , [icon])
+export default angular.module("userSelect" , [])
 
   .controller(controller.UID, controller)
   .directive("userSelect", directive)

@@ -12,6 +12,10 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
       }
       return true;
     });
+    $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+        $rootScope.previousState = from.name;
+        $rootScope.currentState = to.name;
+    });
   }
 
   function redirectSignin(){
@@ -53,6 +57,8 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
     'preo-appid': 'weborders'
   });
 
+  $rootScope.previousState = false;
+  $rootScope.currentState = false;
   //Set up the stateChange event only after this first call to prevent multiple redirects to /auth/signup
   UserService.auth()
    .then(setupChangeEvent,redirectSignin);

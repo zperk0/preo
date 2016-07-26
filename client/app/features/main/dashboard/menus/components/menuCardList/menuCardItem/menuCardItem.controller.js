@@ -41,14 +41,13 @@ export default class menuCardItemController {
     this.Spinner.show("menu-clone")
     Preoday.Menu.clone(this.menu.id)
       .then((newMenu)=>{
-        this.restoreValues(newMenu);
-        this.Spinner.hide("menu-clone")
-        this.Snack.show('Menu created');
-        this.contextualMenu.hide();
         this.cardItemList.onItemCreated(newMenu);
         if (this.onItemCreated){
           this.onItemCreated({item:newMenu});
         }
+        this.Spinner.hide("menu-clone")
+        this.Snack.show('Menu created');
+        this.contextualMenu.hide();
       }, (err)=>{
         console.log("failed duplicating menu", err)
         this.Spinner.hide("menu-clone")

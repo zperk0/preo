@@ -1,0 +1,19 @@
+// COLORS
+
+.breadcrumb{
+  color:#757575;
+  a{
+    color:#757575;
+  }
+  &:last-child{
+    color:#333333;
+    a{
+      color:#333333;
+    }
+
+    md-icon{
+      display: none;
+    }
+  }
+
+}

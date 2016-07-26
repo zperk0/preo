@@ -1,6 +1,7 @@
 <div class='menu' layout="column">
   <div class="menu-toolbar" layout="row" layout-align="start center">
-    <div flex class='menu-name'>{{vm.menu.name}}</div>
+    <breadcrumb><a ui-sref='main.dashboard.menus.list' translate>My menus</a></breadcrumb>
+    <breadcrumb>{{vm.menu.name}}</breadcrumb>
   </div>
   <div class="menu-content">
     <div class='main-content-left'>
