@@ -26,5 +26,8 @@ export default class LabelService {
     this.TITLE_MULTIPLE_INSTANCES = gettextCatalog.getString("Multiple instances found");
     this.CONTENT_MULTIPLE_INSTANCES = gettextCatalog.getString("You have edited an item that is in more than one menu. Where would you like to apply the changes?");
 
+    this.TITLE_DELETE_OUTLET_LOCATION = gettextCatalog.getString("Delete outlet location?");
+    this.CONTENT_DELETE_OUTLET_LOCATION = gettextCatalog.getString("Are you sure you want to delete this outlet location?");
+
   }
 }

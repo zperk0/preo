@@ -1,0 +1,30 @@
+.layout-left-right{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  padding-top:45px;
+}
+
+.floating-right-buttons{
+  position: fixed;
+  margin-top:16px;
+  right: 16px;
+  text-align: right;
+
+}
+
+.main-content-right{
+  display: inline-block;
+  width: calc(50% - 32px);
+  position: absolute;
+  margin-top:24px;
+  margin-left: 8px;
+}
+
+.main-content-left{
+  padding:16px 4px 24px 16px;
+  position: relative;
+  display: inline-block;
+  width: 50%;
+}

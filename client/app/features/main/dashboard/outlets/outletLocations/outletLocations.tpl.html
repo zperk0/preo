@@ -1,0 +1,13 @@
+<div class='outletLocation' layout='row'>
+  <div flex class="layout-left-right">
+    <div class='main-content-left'>
+      <outlet-location-list ng-if="outletLocationsCtrl.outletLocations" outlet-locations="outletLocationsCtrl.outletLocations">
+    	</outlet-location-list>
+     </div>
+    <div class='floating-right-buttons'>
+    	<md-button ng-click="outletLocationsCtrl.toggleDrawer('outlets')" class="md-primary md-hue-2" translate>Add outlets</md-button>
+  	</div>
+  	<div class='main-content-right' sticky offset="88" contextual-menu-holder></div>
+  </div>
+	<contextual-drawer-outlets></contextual-drawer-outlets>
+</div>

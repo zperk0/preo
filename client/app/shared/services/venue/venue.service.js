@@ -47,6 +47,14 @@ export default class VenueService {
   setCurrentVenue (venue) {
 
     this.currentVenue = venue;
+    venue.setAsCurrent();
+
+    this.$rootScope.$broadcast(this.BroadcastEvents.ON_CURRENT_VENUE, venue);
+  }
+
+  hasVenueSet () {
+
+    return this.currentVenue && this.currentVenue.id > 0;
   }
 
   signout() {

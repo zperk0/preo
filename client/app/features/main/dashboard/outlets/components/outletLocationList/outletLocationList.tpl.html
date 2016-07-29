@@ -1,0 +1,21 @@
+<div class="menu-section-list">
+  <div class='sv-root-holder'
+      sv-root
+      sv-on-sort="vm.onOutletLocationMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+
+    <card-item-list
+        collection="vm.outletLocations"
+        has-new="true"
+        on-click-new="vm.showCreateOutletLocation()"
+        >
+    <div class='sort-holder' sv-part="vm.outletLocations">
+      <outlet-location
+        sv-element="outletLocation"
+        ng-repeat="outletLocation in vm.outletLocations"
+        outlet-location="outletLocation">
+      </outlet-location>
+      <div sv-placeholder></div>
+    </div>
+    </card-item-list>
+  </div>
+</div>

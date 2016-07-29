@@ -80,10 +80,11 @@ export default class cardItemListController {
       })
       if (deletedIndex > -1){
         this.$timeout(()=>{
-          debugger;
+          // debugger;
           console.log("spliced", deletedIndex)
           this.collection.splice(deletedIndex,1);
-        },1000)
+        // },1000)
+        });
       }
     }
   }

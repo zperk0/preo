@@ -1,0 +1,37 @@
+<div class='menu-section'
+      ng-class="{expanded:vm.outletLocation.$expanded}"
+      ng-attr-data-id="{{vm.outletLocation.id}}">
+
+  <card-item  has-actions="true"
+              deleted="vm.outletLocation.$deleted"
+              selected="vm.outletLocation.$selected"
+              expanded="vm.outletLocation.$expanded"
+              >
+    <card-item-title ng-click="vm.toggleExpanded($event)"
+                    has-visible="true"
+                    sv-root="item">
+                      <div ng-if="!vm.outletLocation.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-external-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+                        <div sv-placeholder></div>
+                      </div>
+                      <span>{{vm.section.id + "--" | debug}}{{vm.outletLocation.name}} </span><icon class='arrow-icon' flex>{{outletLocation.section.expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
+                      <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
+                        <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+                          <div sv-placeholder></div>
+                        </div>
+                      </div>
+                    </card-item-title>
+<!--         <menu-item-list
+              has-new="vm.section.$expanded"
+              items="vm.section.items"
+              sort="vm.section.$positions"
+              section="vm.section">
+         </menu-item-list> -->
+    <card-item-actions is-visible="vm.outletLocation.visible"
+                       on-move="vm.onMove()"
+                       on-clone="vm.onClone($event)"
+                       on-delete="vm.onDelete(createdOutlet)"
+                       on-edit="vm.onEdit($event)"
+                       on-add="vm.onAddSUbGroup()"
+                        ></card-item-actions>
+  </card-item>
+</div>

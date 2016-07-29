@@ -12,6 +12,8 @@ export default function cardItemActions(){
       onDelete:'&?',
       onEdit:'&?',
       onVisibility:'&?',
+      onMove:'&?',
+      onAdd:'&?',
     },
     template: require("./cardItemActions.tpl.html"),
     replace:true,
