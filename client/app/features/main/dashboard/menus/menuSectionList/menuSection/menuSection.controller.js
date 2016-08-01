@@ -140,7 +140,9 @@
   handleCancel(){
     this.restoreOriginalValues();
     this.section.$selected = false;
-    this.cardItemList.deleteItem(this.section);
+    if (this.section && !this.section.id) {
+      this.cardItemList.deleteItem(this.section);
+    }
   }
 
   handleSuccess(entity){

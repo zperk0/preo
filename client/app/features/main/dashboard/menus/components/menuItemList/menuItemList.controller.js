@@ -28,10 +28,8 @@ export default class menuItemListController {
           this.onItemCreated(newItem, true);
           this.cardItemList.onItemCreated(this.ItemService.getById(newItem.id));
         })
-        let promises = this.doSimpleSort($partTo);
-        return this.$q.all(promises);
+        return this.doSimpleSort($partTo);
       }).then(()=>{
-        this.sortData();
         this.Snack.show('Items added');
         this.Spinner.hide("item-move");
       })
@@ -45,21 +43,20 @@ export default class menuItemListController {
   doSimpleSort($items){
    let promises = [];
     $items.forEach(($item, index)=>{
-      let copy = angular.copy($item);
+      let copy = angular.copy($item.item);
       copy.sectionId = this.section.id;
       copy.position=index*1000;
-      this.sort.filter((s)=>s.id===copy.id)[0].position=copy.position;
       copy.menuId = this.section.menuId;
+      $item.position = copy.position;
       promises.push(copy.update());
     });
-    return promises;
+    return this.$q.all(promises)
   }
 
   onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
     if ($partFrom == $partTo){
       this.Spinner.show("item-move");
-      let promises = this.doSimpleSort($partTo);
-      this.$q.all(promises).then(()=>{
+      this.doSimpleSort($partTo).then(()=>{
         this.Snack.show('Item moved');
       }, ()=>{
         this.Snack.showError('Error moving item');
@@ -71,13 +68,8 @@ export default class menuItemListController {
 
   }
 
-  onItemCreated(newItem, skipSort = false){
-    if (this.sort && this.sort.filter((i)=>i.id===newItem.id).length === 0){
-      this.sort.push({id:newItem.id, position:newItem.position})
-    }
+  onItemCreated(newItem){
     this.recalculateHeight();
-    if(!skipSort)
-      this.sortData();
   }
 
   onItemUpdated(){
@@ -90,25 +82,27 @@ export default class menuItemListController {
 
   onItemDeleted(deletedItem){
     console.log("deleted");
-    this.sortData();
   }
 
   getPosition(item){
-    return item.position || this.sort ? this.sort.filter((i)=>item.id===i.id)[0].position : 0;
+    return this.items.filter((i)=>i.item.id===item.id)[0].position;
   }
 
   showCreateItem($event, isImport){
 
     let newItem = {
-        $selected:true,
-        quantity:1,
-        $size:0,
+        position: 0,
         $show:true,
-        visible:1,
-        tags:[],
-        images:[],
-        position:0,
-        venueId:this.$stateParams.venueId
+        $selected:true,
+        item:{
+          quantity:1,
+          $size:0,
+          visible:1,
+          tags:[],
+          images:[],
+          position:0,
+          venueId:this.$stateParams.venueId
+        }
     };
 
     if(!isImport){
@@ -121,8 +115,9 @@ export default class menuItemListController {
         if (isCreating){
           return;
         }
-      if (this.sort && this.sort.length){
-        newItem.position = Math.max.apply(Math,this.sort.map(function(o){return o.position;})) + 1000
+      if (this.items && this.items.length && this.section.id){
+        newItem.position = Math.max.apply(Math,this.items.map(function(o){return o.position;})) + 1000
+        newItem.item.position = newItem.position;
       }
       this.items.push(newItem);
     } else {
@@ -130,18 +125,6 @@ export default class menuItemListController {
     }
 
     $event.stopPropagation();
-  }
-
-  sortData(){
-      if (!this.sort || !this.sort.length || !this.items || !this.items.length){
-        return;
-      }
-
-      this.items.sort((a,b)=> {
-        var a1 = this.sort.filter((i)=>i.id===a.id)[0]
-        var b1 = this.sort.filter((i)=>i.id===b.id)[0]
-        return a1 && b1 && (a1.position-b1.position === 0 ? a1.id-b1.id : a1.position-b1.position);
-      })
   }
 
   recalculateHeight(){
@@ -180,7 +163,6 @@ export default class menuItemListController {
       $scope.$watch('vm.section.$expanded',(newVal, oldVal)=>{
         if(newVal){ // if expanded = true;
           this.items.forEach((i)=>i.$show = true)
-          this.sortData();
           if (this.items.length === 0){
             this.recalculateHeight();
           }

@@ -5,7 +5,7 @@ export default class menuItemController {
 
   onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo){
 
-    function _doAddModifier(newItem = this.item){
+    function _doAddModifier(newItem = this.item.item){
       this.Spinner.show("moving-item-modifiers");
       let promises = this.ModifierService.addModifiersToParent($modifiers, newItem);
 
@@ -19,22 +19,22 @@ export default class menuItemController {
     }
 
     //item has modifier?
-    if (this.ModifierService.isModifiersDuplicated($modifiers, this.item)){
+    if (this.ModifierService.isModifiersDuplicated($modifiers, this.item.item)){
       return this.Snack.showError("One or more modifiers already in item");
     }
 
-    return this.checkMultipleOccurrences(this.item)
+    return this.checkMultipleOccurrences(this.item.item)
     .then((updateAction)=>{
       if (updateAction === 'all'){
         return _doAddModifier.call(this);
       } else {
-        let clonePosition = this.menuItemListCtrl.getPosition(this.item);
-        return this.ItemService.doSingleEdit(this.item, this.sectionId, clonePosition)
+        let clonePosition = this.menuItemListCtrl.getPosition(this.item.item);
+        return this.ItemService.doSingleEdit(this.item.item, this.sectionId, clonePosition)
           .then(_doAddModifier.bind(this))
           .then((newItem)=>{
-            this.cardItemList.onItemDeleted(this.item)
+            this.cardItemList.onItemDeleted(this.item.item)
             if (this.onItemDeleted){
-              this.onItemDeleted({item:this.item});
+              this.onItemDeleted({item:this.item.item});
             }
             this.cardItemList.onItemCreated(newItem);
             if (this.onItemCreated){
@@ -56,9 +56,9 @@ export default class menuItemController {
       this.cloneItem();
   }
   onEdit ($event){
-    this.originalItem  = angular.copy(this.item);
-    this.cardItemList.selectItem(this.item);
-    this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+    this.originalItem  = angular.copy(this.item.item);
+    this.cardItemList.selectItem(this.item.item);
+    this.contextual.showMenu(this.type, this.item.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
   }
   onDelete ($event){
     this.deleteItem();
@@ -68,7 +68,7 @@ export default class menuItemController {
   }
 
   toggleVisibility(newStatus){
-    let updates = angular.copy(this.item);
+    let updates = angular.copy(this.item.item);
     updates.visible = newStatus ? 1 : 0;
     this.updateItem(updates, true) //skip extensions
       .then(()=>{
@@ -81,13 +81,13 @@ export default class menuItemController {
 
   cloneItem(){
     this.Spinner.show("item-clone")
-    let clonePosition = this.menuItemListCtrl.getPosition(this.item);
-    this.ItemService.cloneItem(this.item, this.sectionId, clonePosition)
+    let clonePosition = this.menuItemListCtrl.getPosition(this.item.item);
+    this.ItemService.cloneItem(this.item.item, this.sectionId, clonePosition)
       .then((createdItem)=>{
         createdItem.$show = true; //need show for animation
         this.Spinner.hide("item-clone")
         this.Snack.show('Item duplicated');
-        console.log("cloned", createdItem, this.item);
+        console.log("cloned", createdItem, this.item.item);
         this.cardItemList.onItemCreated(createdItem);
         if (this.onItemCreated){
           this.onItemCreated({item:createdItem});
@@ -102,10 +102,10 @@ export default class menuItemController {
 
   createItem(){
     this.Spinner.show("item-create")
-    this.ItemService.createItem(this.item, this.sectionId)
+    this.ItemService.createItem(this.item.item, this.sectionId)
       .then((createdItem)=>{
         createdItem.$show = true;  //need show for animation
-        this.menuItemListCtrl.deleteItem(this.item);
+        this.menuItemListCtrl.deleteItem(this.item.item);
         this.contextualMenu.hide();
         this.cardItemList.onItemCreated(createdItem);
         if (this.onItemCreated){
@@ -130,12 +130,12 @@ export default class menuItemController {
             this.restoreValues(updatedItem);
           })
       }
-      let clonePosition = this.menuItemListCtrl.getPosition(this.item);
+      let clonePosition = this.menuItemListCtrl.getPosition(this.item.item);
       return this.ItemService.doSingleEdit(updates, this.sectionId, clonePosition)
         .then((newItem)=>{
-          this.cardItemList.onItemDeleted(this.item)
+          this.cardItemList.onItemDeleted(this.item.item)
           if (this.onItemDeleted){
-            this.onItemDeleted(this.item);
+            this.onItemDeleted(this.item.item);
           }
           this.cardItemList.onItemCreated(newItem);
           if (this.onItemCreated){
@@ -147,9 +147,9 @@ export default class menuItemController {
         this.Spinner.hide("item-updated")
         this.Snack.show('Item updated');
         this.contextualMenu.hide();
-        this.cardItemList.onItemUpdated(this.item);
+        this.cardItemList.onItemUpdated(this.item.item);
         if (this.onItemUpdated){
-          this.onItemUpdated(this.item);
+          this.onItemUpdated(this.item.item);
         }
     }, (err)=>{
       console.log("Failed updating item", err)
@@ -159,7 +159,7 @@ export default class menuItemController {
   }
 
   contextualMenuSuccess(updates){
-    if (!this.item.id){
+    if (!this.item.item.id){
       this.createItem();
     }
     else {
@@ -174,7 +174,7 @@ export default class menuItemController {
     if (this.originalItem){
       for (var property in this.originalItem) {
       if (this.originalItem.hasOwnProperty(property)) {
-        this.item[property] = this.originalItem[property];
+        this.item.item[property] = this.originalItem[property];
         }
       }
       this.originalItem = false;
@@ -184,7 +184,10 @@ export default class menuItemController {
   contextualMenuCancel(event, entity, type){
     this.restoreValues()
     this.item.$selected = false;
-    this.menuItemListCtrl.deleteItem(this.item);
+    if (this.item && !this.item.id) {
+      this.item.$deleted = true;
+      this.menuItemListCtrl.deleteItem(this.item.item);
+    }
   }
 
   deleteItem(){
@@ -193,16 +196,16 @@ export default class menuItemController {
       .then(()=>{
           this.Spinner.show("item-delete");
           if (this.sectionId){
-            return this.ItemService.removeFromSection(this.item, this.sectionId)
+            return this.ItemService.removeFromSection(this.item.item, this.sectionId)
           }
           else {
-            return this.ItemService.deleteItem(this.item)
+            return this.ItemService.deleteItem(this.item.item)
           }
       })
       .then(()=>{
-          this.cardItemList.onItemDeleted(this.item);
+          this.cardItemList.onItemDeleted(this.item.item);
           if (this.onItemDeleted){
-            this.onItemDeleted({item:this.item});
+            this.onItemDeleted({item:this.item.item});
           }
           this.Snack.show('Item deleted');
           this.Spinner.hide("item-delete");
@@ -217,7 +220,7 @@ export default class menuItemController {
   //check if we have multiple occurrences before updating but only if we're in a section
   checkMultipleOccurrences(updates){
     if (this.sectionId){
-      return this.ItemService.checkMultipleOccurrences(updates || this.item)
+      return this.ItemService.checkMultipleOccurrences(updates || this.item.item)
     }
     return this.$q.resolve('all');
   }
@@ -240,14 +243,14 @@ export default class menuItemController {
     this.newModifiers = [];
 
     let inParam = false;
-    if (this.item && this.item.id === Number($stateParams.itemId)){
+    if (this.item.item && this.item.item.id === Number($stateParams.itemId)){
       inParam = true;
       this.item.$selected = true;
     }
     //if it's a new item we toggle the context menu to edit this
-    if (this.item && !this.item.id || inParam) {
+    if (this.item.item && !this.item.item.id || inParam) {
       $timeout(()=>{
-        this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+        this.contextual.showMenu(this.type, this.item.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
       })
     }
   }

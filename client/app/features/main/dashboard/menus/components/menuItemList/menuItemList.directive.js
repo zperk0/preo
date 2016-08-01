@@ -10,7 +10,6 @@ export default function menuItemList($animate, $timeout){
       hasNew:"=",
       animate:"=?",
       section:"=?",
-      sort:"=?",
       hasSearch:"=?",
       svDisabled:"=",
       svMultiSelect:"=?",

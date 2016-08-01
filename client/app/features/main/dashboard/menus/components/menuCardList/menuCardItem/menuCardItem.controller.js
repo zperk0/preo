@@ -14,7 +14,10 @@ export default class menuCardItemController {
 
   contextualMenuCancel(){
     this.restoreValues()
-    this.cardItemList.deleteItem(this.menu);
+    this.menu.$selected =false;
+    if (this.menu && !this.menu.id){
+      this.cardItemList.deleteItem(this.menu);
+    }
   }
 
   restoreValues(newValues = false){
@@ -79,6 +82,7 @@ export default class menuCardItemController {
     updates.update()
       .then((updatedMenu)=>{
         this.restoreValues(updatedMenu);
+        this.menu.$selected =false;
         this.Snack.show('Menu saved');
         this.Spinner.hide("menu-updated")
         this.contextualMenu.hide();
