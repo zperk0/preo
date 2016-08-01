@@ -13,8 +13,8 @@ export default class outletLocationListController {
 
     this.OutletLocationService.save(newData)
         .then((outletLocation)=>{
-          this.cardItemList.clearPossibleNewItem();
-          this.addOutletLocationInPosition(outletLocation)
+          // this.cardItemList.clearPossibleNewItem();
+          // this.addOutletLocationInPosition(newData, outletLocation)
           this.Spinner.hide("outlet-location-create");
           
           deferred.resolve(outletLocation);
@@ -26,14 +26,17 @@ export default class outletLocationListController {
     return deferred.promise;
   }  
 
-  addOutletLocationInPosition(outletLocation){
-    let indexBefore = -1;
-    this.outletLocations.forEach((s, index)=>{
-      if (s.position <= outletLocation.position){
-        indexBefore = index;
-      }
-    })
-    this.outletLocations.splice(indexBefore+1, 0, outletLocation);
+  addOutletLocationInPosition(oldValue, outletLocation){
+    // let indexBefore = -1;
+
+    // this.outletLocations.forEach((s, index)=>{
+    //   if (s.position <= outletLocation.position){
+    //     indexBefore = index;
+    //   }
+    // })
+    // this.outletLocations.splice(indexBefore+1, 0, outletLocation);
+
+    // this.outletLocationGroup.addChild(outletLocation);
   }
 
   showCreateOutletLocation(){
@@ -47,22 +50,23 @@ export default class outletLocationListController {
       console.log("Not showing outlet location new, already showing")
       return;
     }
-    let outletLocation = {
+    
+    let outletLocation = new Preoday.OutletLocation({
       venueId: this.venueId,
+      parent: this.outletLocationGroup.id,
+      label: this.outletLocationGroup.label,
+      path: this.outletLocationGroup.path,
       $selected:true,
-      // position: this.outletLocations && this.outletLocations.length ? (this.outletLocations[this.outletLocations.length-1]).position + 1000 : 0
-    };
-
-    this.outletLocations.push(outletLocation);
+      position: this.outletLocations && this.outletLocations.length ? (this.outletLocations[this.outletLocations.length-1]).position + 1000 : 0
+    });
   }  
 
   deleteOutletLocation(outletLocation){
-    
+
     this.Spinner.show("outlet-location-delete");
     outletLocation.delete()
       .then(()=>{
         this.Snack.show('Outlet location deleted');
-        return this.cardItemList.deleteItem(outletLocation)
       }).then(()=>{
         this.Spinner.hide("outlet-location-delete");
       }).catch(()=>{
@@ -72,7 +76,7 @@ export default class outletLocationListController {
   }
 
   getPosition(outletLocation){
-    return outletLocation.position || this.sort ? this.sort.filter((i)=>outletLocation.id===i.id)[0].position : 0;
+    return outletLocation.position || this.outletLocations ? this.outletLocations.filter((i)=>outletLocation.id===i.id)[0].position : 0;
   }  
 
   /* @ngInject */

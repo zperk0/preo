@@ -5,15 +5,17 @@ export default function outletLocationList(){
   return {
     restrict: 'E',
     scope: {
-      outletLocations:"="
+      outletLocations:"=",
+      outletLocationGroup: '=group'
     },
     template: require("./outletLocationList.tpl.html"),
     controller: controller.UID,
     controllerAs: "vm",
     bindToController: true,
     replace:true,
+    require:["^outletLocationGroup", 'outletLocationList'],
     link: (scope, el, attr, ctrls) => {
-
+      ctrls[1].outletLocationGroup = ctrls[0];
     }
   }
 }

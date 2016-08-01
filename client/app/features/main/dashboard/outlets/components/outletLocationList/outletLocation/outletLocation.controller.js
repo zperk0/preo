@@ -23,6 +23,8 @@ export default class outletLocationController {
       if (!this.outletLocation.id){
         this.outletLocationListCtrl.createOutletLocation(this.outletLocation)
           .then((_outletLocation)=>{
+
+            this.outletLocation.$selected = false;
             this.contextualMenu.hide();
             this.Snack.show('Outlet location created');
           }, (err)=>{
@@ -70,12 +72,14 @@ export default class outletLocationController {
 
     this.Spinner.show("outlet-location-clone")
     let clonePosition = this.outletLocationListCtrl.getPosition(this.outletLocation);
-    this.OutletLocationService.cloneOutletLocation(this.outletLocation, clonePosition)
+    this.outletLocation.clone({
+      position: clonePosition
+    })
       .then((createdOutlet)=>{
         this.Spinner.hide("outlet-location-clone")
         this.Snack.show('Outlet location duplicated');
         console.log("cloned", createdOutlet, this.outletLocation);
-        this.cardItemList.onItemCreated(createdOutlet);
+        // this.cardItemList.onItemCreated(createdOutlet);
         // if (this.onItemCreated){
         //   this.onItemCreated({item:createdItem});
         // }
@@ -94,6 +98,11 @@ export default class outletLocationController {
         this.outletLocationListCtrl.deleteOutletLocation(this.outletLocation)
       })
   }
+
+  showSubGroup () {
+    console.log('should show sub group here');
+  }
+
   constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, OutletLocationService) {
     "ngInject";
 

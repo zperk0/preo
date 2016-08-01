@@ -3,17 +3,7 @@ export default class OutletLocationService {
   static get UID(){
     return "OutletLocationService";
   }
-
-  cloneOutletLocation (outletLocation, position) {
-
-    var newOutlet = angular.extend({}, outletLocation);
-
-    newOutlet.id = null;
-    newOutlet.position = position;
-
-    return this.save(outletLocation);
-  }
-
+  
   save(newData) {
 
     let deferred = this.$q.defer();

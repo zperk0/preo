@@ -18,9 +18,15 @@ export default class outletLocationsController {
 
       this.outletLocations = data.outletLocations;
 
+      if (this.outletLocations && this.outletLocations.length) {
+        this.outletGroup = this.outletLocations[0].getGroup();
+
+        console.log('group here', this.outletGroup);
+      }
+
       console.log('this.outletLocations', this.outletLocations);
     }, (err) => {
-
+console.log('errrrr', err);
       this.outletLocations = [];
     });    
   }

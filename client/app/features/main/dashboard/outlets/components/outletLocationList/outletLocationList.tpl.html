@@ -1,4 +1,4 @@
-<div class="menu-section-list">
+<div class="menu-section-list outlet-location-list">
   <div class='sv-root-holder'
       sv-root
       sv-on-sort="vm.onOutletLocationMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
@@ -11,7 +11,7 @@
     <div class='sort-holder' sv-part="vm.outletLocations">
       <outlet-location
         sv-element="outletLocation"
-        ng-repeat="outletLocation in vm.outletLocations"
+        ng-repeat="outletLocation in vm.outletLocations track by $index"
         outlet-location="outletLocation">
       </outlet-location>
       <div sv-placeholder></div>
