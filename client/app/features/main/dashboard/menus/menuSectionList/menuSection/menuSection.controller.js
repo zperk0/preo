@@ -93,7 +93,6 @@
 
 
   toggleExpanded($event){
-    console.log("this sec", this.section, this.section.$expanding)
     if (this.section.$expanding){
       return;
     }
@@ -141,7 +140,7 @@
   handleCancel(){
     this.restoreOriginalValues();
     this.section.$selected = false;
-    this.cardItemList.clearPossibleNewItem();
+    this.cardItemList.deleteItem(this.section);
   }
 
   handleSuccess(entity){
@@ -149,10 +148,16 @@
       this.section = entity;
 
       if (!this.section.id){
-        this.menuSectionListCtrl.createSection(this.section)
-          .then((section)=>{
-            this.contextualMenu.hide();
-            this.Snack.show('Section created');
+        this.Spinner.show("section-create");
+        Preoday.Section.save(this.section)
+        .then((section)=>{
+            this.section.$deleted = true;
+            this.$timeout(()=>{
+              this.cardItemList.onItemCreated(section);
+              this.contextualMenu.hide();
+              this.Spinner.hide("section-create");
+              this.Snack.show('Section created');
+            })
           }, ()=>{
             this.Snack.showError('Error saving section');
           })

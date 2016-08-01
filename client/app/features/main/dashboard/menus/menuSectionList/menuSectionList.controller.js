@@ -27,16 +27,6 @@ export default class menuSectionListController {
     this.sections.splice(indexBefore+1, 0, section);
   }
 
-  createSection(newData){
-    this.Spinner.show("section-create");
-    return Preoday.Section.save(newData)
-        .then((section)=>{
-          this.cardItemList.clearPossibleNewItem();
-          this.addSectionInPosition(section)
-          this.Spinner.hide("section-create");
-          return section;
-      })
-  }
 
   showCreateSection(){
     let isCreating = false;
@@ -72,6 +62,12 @@ export default class menuSectionListController {
         this.Spinner.hide("section-delete");
       })
   }
+  repeatDone(){
+    this.$timeout(()=>{
+      this.Spinner.hide("section-loading");
+    },1000)
+
+  }
 
   /* @ngInject */
   constructor($timeout, $q, Spinner, Snack) {
@@ -80,5 +76,9 @@ export default class menuSectionListController {
     this.Snack = Snack;
     this.$q = $q;
     this.$timeout = $timeout;
+    if (this.sections && this.sections.length){
+      this.sections.forEach((s)=>s.$expanded = false)
+      this.Spinner.show("section-loading");
+    }
   }
 }

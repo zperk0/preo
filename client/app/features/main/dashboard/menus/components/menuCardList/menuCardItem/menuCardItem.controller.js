@@ -14,10 +14,7 @@ export default class menuCardItemController {
 
   contextualMenuCancel(){
     this.restoreValues()
-    this.menu.$selected = false;
-    //clear selections
-    this.cardItemList.clearPossibleNewItem();
-    this.cardItemList.selectItem();
+    this.cardItemList.deleteItem(this.menu);
   }
 
   restoreValues(newValues = false){

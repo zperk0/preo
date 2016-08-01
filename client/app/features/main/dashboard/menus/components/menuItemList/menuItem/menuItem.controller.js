@@ -84,6 +84,7 @@ export default class menuItemController {
     let clonePosition = this.menuItemListCtrl.getPosition(this.item);
     this.ItemService.cloneItem(this.item, this.sectionId, clonePosition)
       .then((createdItem)=>{
+        createdItem.$show = true; //need show for animation
         this.Spinner.hide("item-clone")
         this.Snack.show('Item duplicated');
         console.log("cloned", createdItem, this.item);
@@ -103,14 +104,15 @@ export default class menuItemController {
     this.Spinner.show("item-create")
     this.ItemService.createItem(this.item, this.sectionId)
       .then((createdItem)=>{
-        this.restoreValues(createdItem);
+        createdItem.$show = true;  //need show for animation
+        this.menuItemListCtrl.deleteItem(this.item);
+        this.contextualMenu.hide();
+        this.cardItemList.onItemCreated(createdItem);
+        if (this.onItemCreated){
+          this.onItemCreated({item:createdItem});
+        }
         this.Spinner.hide("item-create")
         this.Snack.show('Item created');
-        this.contextualMenu.hide();
-        this.cardItemList.onItemCreated(this.item);
-        if (this.onItemCreated){
-          this.onItemCreated({item:this.item});
-        }
       }, (err)=>{
         console.log("failed creating item", err)
         this.Spinner.hide("item-create")
@@ -182,11 +184,7 @@ export default class menuItemController {
   contextualMenuCancel(event, entity, type){
     this.restoreValues()
     this.item.$selected = false;
-    if (!this.item.id){
-      this.cardItemList.clearPossibleNewItem();
-    }
-    //clear selection
-    this.cardItemList.selectItem();
+    this.menuItemListCtrl.deleteItem(this.item);
   }
 
   deleteItem(){
@@ -225,9 +223,10 @@ export default class menuItemController {
   }
 
 
-  constructor($q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService, ModifierService) {
+  constructor($scope, $q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService, ModifierService) {
     "ngInject";
     this.$q =$q;
+    this.$scope =$scope;
     this.Snack = Snack;
     this.contextualMenu = contextualMenu;
     this.Spinner = Spinner;

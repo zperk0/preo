@@ -4,14 +4,13 @@ export default class cardItemListController {
   }
 
   onItemCreated(newItem, isLast){
-    this.clearPossibleNewItem();
     this.addItemInPosition(newItem, isLast);
+    this.deleteItem({});
   }
 
   onItemUpdated(){
-    console.log("card item updated")
-    this.clearPossibleNewItem();
     this.selectItem();
+    this.deleteItem({});
   }
 
   addItemInPosition(item, isLast=false){
@@ -68,25 +67,6 @@ export default class cardItemListController {
     return this.$q.all(promises)
   }
 
-  clearPossibleNewItem(){
-    console.log("clearing possible");
-     if (this.collection){
-      let deletedIndex = -1;
-      this.collection.forEach((s,i)=>{
-        if (s.id === undefined){
-          s.$deleted = true;
-          deletedIndex = i;
-        }
-      })
-      if (deletedIndex > -1){
-        this.$timeout(()=>{
-          debugger;
-          console.log("spliced", deletedIndex)
-          this.collection.splice(deletedIndex,1);
-        },1000)
-      }
-    }
-  }
   deleteItem(item){
     if (this.collection){
       this.collection = this.collection.filter((s)=>item.id !== s.id);
@@ -98,7 +78,6 @@ export default class cardItemListController {
   }
 
   selectItem(item){
-    this.clearPossibleNewItem();
     this.collection.forEach((i)=>{
       if (item && i.id===item.id){
         i.$selected = true;

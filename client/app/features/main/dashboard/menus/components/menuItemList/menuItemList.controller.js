@@ -84,6 +84,10 @@ export default class menuItemListController {
     this.recalculateHeight();
   }
 
+  deleteItem(item){
+    this.cardItemList.deleteItem(item);
+  }
+
   onItemDeleted(deletedItem){
     console.log("deleted");
     this.sortData();
@@ -99,6 +103,7 @@ export default class menuItemListController {
         $selected:true,
         quantity:1,
         $size:0,
+        $show:true,
         visible:1,
         tags:[],
         images:[],
@@ -116,7 +121,7 @@ export default class menuItemListController {
         if (isCreating){
           return;
         }
-      if (this.sort){
+      if (this.sort && this.sort.length){
         newItem.position = Math.max.apply(Math,this.sort.map(function(o){return o.position;})) + 1000
       }
       this.items.push(newItem);
@@ -128,11 +133,11 @@ export default class menuItemListController {
   }
 
   sortData(){
-      if (!this.sort || !this.sort.length || !this.itemsDisplayed || !this.itemsDisplayed.length){
+      if (!this.sort || !this.sort.length || !this.items || !this.items.length){
         return;
       }
 
-      this.itemsDisplayed.sort((a,b)=> {
+      this.items.sort((a,b)=> {
         var a1 = this.sort.filter((i)=>i.id===a.id)[0]
         var b1 = this.sort.filter((i)=>i.id===b.id)[0]
         return a1 && b1 && (a1.position-b1.position === 0 ? a1.id-b1.id : a1.position-b1.position);
@@ -162,35 +167,29 @@ export default class menuItemListController {
     this.LabelService = LabelService;
     this.DialogService = DialogService;
     this.ItemService = ItemService;
-    this.itemsDisplayed = [];
     this.$timeout = $timeout;
-
     if (!this.section){
       this.section = {};
-      this.itemsDisplayed = this.items;
+      this.items.forEach((i)=>i.$show = true)
+    } else {
+      this.items.forEach((i)=>i.$show = false)
     }
     this.section.$expanding = false;
     //watch for animation only if we're in a section
     if (this.section.id){
       $scope.$watch('vm.section.$expanded',(newVal, oldVal)=>{
-
-        if(newVal){
-          this.itemsDisplayed = this.items;
-            this.sortData();
-          if (this.itemsDisplayed.length === 0){
+        if(newVal){ // if expanded = true;
+          this.items.forEach((i)=>i.$show = true)
+          this.sortData();
+          if (this.items.length === 0){
             this.recalculateHeight();
           }
-        } else{
+        } else if (oldVal){ //if expanded = false and it was true
           this.el[0].style.maxHeight = 0;
-          if (newVal !== undefined && oldVal !== undefined){
-            this.section.$expanding = true;
-          } else {
-            this.section.$expanding = false;
-          }
+          this.section.$expanding = true;
           $timeout(()=>{
-            if (this.section.id){
-              this.itemsDisplayed = [];
-            }
+            this.items.forEach((i)=>i.$show = false)
+            this.section.$expanding = false;
           }, 1000)
 
         }

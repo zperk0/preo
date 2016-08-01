@@ -4,7 +4,7 @@
     sv-disabled="vm.svDisabled"
     sv-on-sort="vm.onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
   <card-item-list
-        collection="vm.itemsDisplayed"
+        collection="vm.items"
         collection-results="results"
         search-filter="vm.searchText"
         search-label="{{vm.hasSearch ? 'items' : ''}}">
@@ -15,7 +15,8 @@
           sv-on-external-sort="vm.onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
           sv-is-dropzone='vm.svIsDropzone'>
            <menu-item
-               ng-repeat="item in vm.itemsDisplayed | filter:vm.searchText:strict as results"
+               ng-repeat="item in vm.items | filter:vm.searchText:strict as results"
+               ng-if="!vm.section.id || item.$show"
                ng-init="$last && vm.recalculateHeight()"
                item="item"
                ng-attr-data-id="{{item.id}}"

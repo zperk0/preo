@@ -30,8 +30,8 @@ export default class signinController {
       UserService.signout();
     }
     this.user = {
-      username:"caio.ricci@gdcommunity.co.uk",
-      password:"asdasda"
+      username:"",
+      password:""
     };
   }
 }

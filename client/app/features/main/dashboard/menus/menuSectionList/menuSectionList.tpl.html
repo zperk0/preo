@@ -11,6 +11,7 @@
       <menu-section
         sv-element="section"
         ng-repeat="section in vm.sections"
+        ng-init="$last && vm.repeatDone()"
         section="section">
       </menu-section>
       <div sv-placeholder></div>

@@ -150,11 +150,8 @@ export default class modifierItemController {
   contextualMenuCancel(event, entity, type){
     this.restoreValues()
     this.modifier.$selected = false;
-    if (!this.modifier.id){
-      this.cardItemList.clearPossibleNewItem();
-    }
-    //clear selection
-    this.cardItemList.selectItem();
+    this.modifier.$deleted = true;
+    this.cardItemList.deleteItem(this.modifier);
   }
 
     constructor($q, $timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService) {

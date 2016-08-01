@@ -1,5 +1,6 @@
 <div class='menu-section'
       ng-class="{expanded:vm.section.$expanded}"
+      ng-cloak
       ng-attr-data-id="{{vm.section.id}}">
   <card-item  has-actions="true"
               deleted="vm.section.$deleted"
@@ -13,7 +14,7 @@
                       <div ng-if="!vm.section.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-external-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                         <div sv-placeholder></div>
                       </div>
-                      <span>{{vm.section.id + "--" | debug}}{{vm.section.name}} </span><icon class='arrow-icon' flex>{{vm.section.expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
+                      <span>{{vm.section.id + "--" | debug}}{{vm.section.name}}</span><icon class='arrow-icon' flex>{{vm.section.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
                       <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
                         <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                           <div sv-placeholder></div>

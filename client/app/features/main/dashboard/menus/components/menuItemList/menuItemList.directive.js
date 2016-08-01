@@ -24,15 +24,15 @@ export default function menuItemList($animate, $timeout){
     replace:true,
     link: (scope, el, attr, ctrl) => {
       ctrl.el = el;
-
+      el[0].style.maxHeight = 0;
+      console.log("el", ctrl.el);
       el.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
         if (e.propertyName === 'max-height'){
-          ctrl.section.$expanding = false;
+          $timeout(()=>{
+            ctrl.section.$expanding = false;
+          })
         }
-
       })
-
-
     }
   }
 }
