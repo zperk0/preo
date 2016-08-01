@@ -6,17 +6,27 @@ export default class menuItemListController {
 
   onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
        //must check because library appends the item in the array before calling callback
-      if (this.cardItemList.isItemDuplicated($items, 1)){
+      if (this.cardItemList.isItemDuplicated($items, 0)){
         this.Snack.showError('One or more items are already in section');
         $partTo.splice($indexTo,$items.length);
         return;
       }
       let promises = [];
       this.Spinner.show("item-move");
+      let position = 0;
+      if ($indexTo > 0){
+        position = $partTo[$indexTo-1].position;
+        if ($partTo.length > $indexTo + $items.length){
+          position+= ($partTo[$indexTo+$items.length].position - position)/2;
+        } else {
+          position+=1000;
+        }
+      }
       $items.forEach(($item)=>{
-        let $i = angular.copy($item);
+        $item.position = position;
+        let $i = angular.copy($item.item);
         //only idd items that are not in the list yet
-        $i.position = 0
+        $i.position = position;
         $i.sectionId = this.section.id;
         $i.menuId = this.section.menuId;
         promises.push(this.section.moveItem($i));
@@ -25,8 +35,9 @@ export default class menuItemListController {
         // this is needed because of $scope.results array on search. drag an drop list must use results so end array is not updated
         // this.items.splice($indexTo,0,...items);
         items.forEach((newItem)=>{
+          // this.items.push({item:newItem, id:newItem.id, position:newItem.position})
           this.onItemCreated(newItem, true);
-          this.cardItemList.onItemCreated(this.ItemService.getById(newItem.id));
+          this.cardItemList.onItemCreated({item:this.ItemService.getById(newItem.id), $show:true, id:newItem.id, position:newItem.position});
         })
         return this.doSimpleSort($partTo);
       }).then(()=>{
