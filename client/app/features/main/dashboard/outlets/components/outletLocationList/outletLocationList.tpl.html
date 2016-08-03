@@ -1,11 +1,11 @@
 <div class="menu-section-list outlet-location-list">
   <div class='sv-root-holder'
-      sv-root
+      sv-root="outletLocation"
       sv-on-sort="vm.onOutletLocationMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
 
     <card-item-list
         collection="vm.outletLocations"
-        has-new="true"
+        has-new="vm.outletLocationGroup.$expanded"
         on-click-new="vm.showCreateOutletLocation()"
         >
     <div class='sort-holder' sv-part="vm.outletLocations">

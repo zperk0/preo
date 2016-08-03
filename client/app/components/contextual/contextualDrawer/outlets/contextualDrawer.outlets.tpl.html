@@ -1,12 +1,12 @@
  <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="outlets">
-       <div sv-root="outlet" sv-part="vm.cancelledOutlets">
-        <div class='sv-dropzone sv-dropzone-outlet' sv-part="vm.cancelledOutlets" sv-on-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+    <div sv-root="outlet" sv-part="drawerOutletsCtrl.data.outlets">
+        <div class='sv-dropzone sv-dropzone-outlet' sv-part="drawerOutletsCtrl.data.outlets" >
         <div sv-placeholder></div>
       </div>
-     </div>
+    </div>
     <div class='contextual-list'>
       <outlet-list has-search="true"
-         sv-multi-select="true"
+         sv-multi-select="false"
          sv-keep-in-list="true"
          sv-is-dropzone="false"
          has-new="false"

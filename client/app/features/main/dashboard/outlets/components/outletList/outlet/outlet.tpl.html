@@ -13,19 +13,14 @@
                       <div ng-if="!vm.outlet.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-external-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                         <div sv-placeholder></div>
                       </div>
-                      <span>{{vm.section.id + "--" | debug}}{{vm.outlet.name}} </span><icon class='arrow-icon' flex>{{outlet.section.expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
-                      <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
+                      <span>{{vm.outlet.name}} </span>
+<!--                       <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
                         <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                           <div sv-placeholder></div>
                         </div>
-                      </div>
+                      </div> -->
                     </card-item-title>
-<!--         <menu-item-list
-              has-new="vm.section.$expanded"
-              items="vm.section.items"
-              sort="vm.section.$positions"
-              section="vm.section">
-         </menu-item-list> -->
+
     <card-item-actions is-visible="vm.outletLocation.visible"
                        on-move="vm.onMove()"
                        on-clone="vm.onClone()"

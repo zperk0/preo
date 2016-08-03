@@ -2,26 +2,26 @@
       ng-class="{expanded:vm.outletLocationGroup.$expanded}"
       ng-attr-data-id="{{vm.outletLocationGroup.id}}">
 
-  <card-item  has-actions="true"
+  <card-item  has-actions="vm.outletLocationGroup.$expanded"
               deleted="vm.outletLocationGroup.$deleted"
               selected="vm.outletLocationGroup.$selected"
               expanded="vm.outletLocationGroup.$expanded"
               >
-    <card-item-title ng-click="vm.toggleExpanded($event)"
+    <card-item-title
 	    has-visible="true"
 	    sv-root="item">
-	      <div ng-if="!vm.outletLocationGroup.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-external-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+<!-- 	      <div ng-if="!vm.outletLocationGroup.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-external-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
 	        <div sv-placeholder></div>
-	      </div>
-	      <span>{{vm.outletLocationGroup.label}} </span>
-	      <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
+	      </div> -->
+	      <span>{{vm.outletLocationGroup.label || 'Group label' | translate}} </span>
+<!-- 	      <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
 	        <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
 	          <div sv-placeholder></div>
 	        </div>
-	      </div>
+	      </div> -->
 	   </card-item-title>
     <outlet-location-list
-          has-new="vm.outletLocationGroup.$expanded"
+    			ng-if="vm.outletLocationGroup.$expanded"
           group="vm.outletLocationGroup"
           outlet-locations="vm.outletLocationGroup.outletLocations">
     </outlet-location-list>

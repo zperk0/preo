@@ -12,10 +12,11 @@ export default function outletLocation(){
     controllerAs: "vm",
     bindToController: true,
     replace:true,
-    require:["^cardItemList", "^outletLocationList", "outletLocation"],
+    require:["^cardItemList", "^outletLocationList", "^outletLocationGroup", "outletLocation"],
     link: (scope, el, attr, ctrls) => {
-      ctrls[2].cardItemList = ctrls[0];
-      ctrls[2].outletLocationListCtrl = ctrls[1];
+      ctrls[3].cardItemList = ctrls[0];
+      ctrls[3].outletLocationListCtrl = ctrls[1];
+      ctrls[3].outletLocationGroupCtrl = ctrls[2];
 
     }
   };

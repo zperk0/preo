@@ -13,6 +13,11 @@
       display: block;
     }
   }
+  &.sv-sorting-outlet{
+    .sv-dropzone-outlet{
+      display: block;
+    }
+  }
 
   &.sv-multi-selected{
     #sv-multi-helper{
@@ -35,7 +40,7 @@
   // background-color:rgba(250,0,0,0.3);
   z-index:1000;
 
-  &.sv-dropzone-item, &.sv-dropzone-modifier{
+  &.sv-dropzone-item, &.sv-dropzone-modifier, &.sv-dropzone-outlet{
     &.sv-dropped{
       background-color:rgba(225,245,254,0.3);
     }

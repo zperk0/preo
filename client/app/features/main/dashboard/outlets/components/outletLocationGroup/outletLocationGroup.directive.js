@@ -4,7 +4,7 @@ export default function outletLocationGroup(){
   return {
     restrict: 'E',
     scope: {
-        outletLocationGroup: '=ngModel'
+        outletLocationGroup: '='
     },
     template: require("./outletLocationGroup.tpl.html"),
     controller: controller.UID,

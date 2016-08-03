@@ -3,21 +3,21 @@ export default class OutletLocationService {
   static get UID(){
     return "OutletLocationService";
   }
-  
+
   save(newData) {
 
-    let deferred = this.$q.defer();
+    // let deferred = this.$q.defer();
 
-    Preoday.OutletLocation.save(newData)
-        .then((outletLocation)=>{
+    return Preoday.OutletLocation.save(newData);
+      //   .then((outletLocation)=>{
           
-        deferred.resolve(outletLocation);
-      }, (err) => {
+      //   deferred.resolve(outletLocation);
+      // }, (err) => {
 
-        deferred.reject(err);
-      });   
+      //   deferred.reject(err);
+      // });   
 
-    return deferred.promise; 
+    // return deferred.promise; 
   }  
 
   getOutletLocations(data){

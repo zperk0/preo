@@ -3,6 +3,23 @@ export default class outletLocationListController {
     return "outletLocationListController"
   }
 
+  onOutletLocationMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
+    
+    // rerorder outletLocation list. Just it
+    console.log($items, $partFrom, $partTo, $indexFrom, $indexTo);
+
+
+    // this.Spinner.show("section-move");
+    // console.log("on section moved, updating");
+    // this.cardItemList.onSimpleSort().then(()=>{
+    //   this.Snack.show('Section moved');
+    // }, ()=>{
+    //   this.Snack.showError('Error moving section');
+    // }).then(()=>{
+    //   this.Spinner.hide("section-move");
+    // })
+  }
+
   createOutletLocation(newData){
 
     let deferred = this.$q.defer();

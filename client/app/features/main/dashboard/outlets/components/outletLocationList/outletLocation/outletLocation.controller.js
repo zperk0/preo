@@ -3,6 +3,27 @@ export default class outletLocationController {
     return "outletLocationController";
   }
 
+  onNewOutletMoved ($outlets, $partFrom, $partTo, $indexFrom, $indexTo) {
+
+    console.log('onNewOutletMoved', $outlets, $partFrom, $partTo, $indexFrom, $indexTo, this.outletLocation);
+
+    //  if (this.ModifierService.isModifiersDuplicated($modifiers, this.section)){
+    //   return this.Snack.showError("One or more modifiers already in section");
+    // }
+
+    // this.Spinner.show("moving-section-modifiers");
+    // let promises = this.ModifierService.addModifiersToParent($modifiers, this.section);
+
+    // this.$q.all(promises).then(()=>{
+    //   this.Snack.show("Added modifiers to section");
+    // },()=>{
+    //   this.Snack.showError("Error adding modifiers to section");
+    // })
+    // .then(()=>{
+    //   this.Spinner.hide("moving-section-modifiers");
+    // })
+  }
+
   restoreOriginalValues(){
     if (this.originalOutletLocation){
       angular.extend(this.outletLocation, this.originalOutletLocation)
@@ -68,6 +89,13 @@ export default class outletLocationController {
     $event.stopPropagation();
   }
 
+  onAddSubGroup ($event) {
+
+    this.outletLocationGroupCtrl.changeGroup(this.outletLocation.createGroup());
+
+    $event.stopPropagation(); 
+  }
+
   onClone($event){
 
     this.Spinner.show("outlet-location-clone")
@@ -100,7 +128,8 @@ export default class outletLocationController {
   }
 
   showSubGroup () {
-    console.log('should show sub group here');
+    
+    this.outletLocationGroupCtrl.changeGroup(this.outletLocation.createGroup());
   }
 
   constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, OutletLocationService) {
@@ -117,6 +146,8 @@ export default class outletLocationController {
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.type = 'outletLocation'; //type for contextual menu
+
+    this.newModifiers = []
 
     //if it's a new outlet location we toggle the context menu to edit this
     if (this.outletLocation && !this.outletLocation.id) {

@@ -9,7 +9,7 @@ import controller from './outletLocations.controller';
 export default function routes($stateProvider) {
   "ngInject";
   $stateProvider.state("main.dashboard.outlets.location", {
-    url: "/outletlocations",
+    url: "/outletlocations/{outletLocation:.*}",
     views:{
       outletContent:{
         template: require("./outletLocations.tpl.html"),

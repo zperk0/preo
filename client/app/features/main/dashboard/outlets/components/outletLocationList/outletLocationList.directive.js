@@ -15,7 +15,7 @@ export default function outletLocationList(){
     replace:true,
     require:["^outletLocationGroup", 'outletLocationList'],
     link: (scope, el, attr, ctrls) => {
-      ctrls[1].outletLocationGroup = ctrls[0];
+      ctrls[1].outletLocationGroupCtrl = ctrls[0];
     }
   }
 }

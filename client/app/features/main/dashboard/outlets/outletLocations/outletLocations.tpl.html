@@ -1,10 +1,17 @@
-<div class='outletLocation' layout='row'>
+<div class='outlet-location-view' layout='column'>
+  <div class="outlet-location-toolbar" layout="row" layout-align="start center">
+    <breadcrumb ng-repeat="breadcumb in outletLocationsCtrl.breadcumbs">
+      <a ng-href="{{ breadcumb.url }}" ng-if="!breadcumb.isLast" translate>{{ breadcumb.group.label }}</a>
+
+      <span ng-if="breadcumb.isLast">{{ breadcumb.group.label || 'Location label' | translate }}</span>
+    </breadcrumb>
+  </div>
   <div flex class="layout-left-right">
     <div class='main-content-left'>
   <!--     <outlet-location-list ng-if="outletLocationsCtrl.outletLocations" outlet-locations="outletLocationsCtrl.outletLocations">
     	</outlet-location-list> -->
 
-      <outlet-location-group ng-model="outletLocationsCtrl.outletGroup"></outlet-location-group>
+      <outlet-location-group ng-if="outletLocationsCtrl.outletGroup" outlet-location-group="outletLocationsCtrl.outletGroup"></outlet-location-group>
      </div>
     <div class='floating-right-buttons'>
     	<md-button ng-click="outletLocationsCtrl.toggleDrawer('outlets')" class="md-primary md-hue-2" translate>Add outlets</md-button>
