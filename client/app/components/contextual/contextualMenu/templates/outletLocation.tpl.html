@@ -7,7 +7,7 @@
       </div>
   </md-input-container>
    <md-input-container class="md-block">
-      <md-checkbox md-no-ink aria-label="{{'Individially numbered locations' | translate}}" ng-model="vm.entity.toSeatFlag" ng-true-value="1" ng-false-value="0">
+      <md-checkbox ng-disabled="vm.entity.hasChildren() && !vm.entity.toSeatFlag && !vm.entity.isSeat()" aria-label="{{'Individially numbered locations' | translate}}" ng-model="vm.entity.toSeatFlag" ng-true-value="1" ng-false-value="0">
         {{'Individially numbered locations' | translate}}
       </md-checkbox>
   </md-input-container>

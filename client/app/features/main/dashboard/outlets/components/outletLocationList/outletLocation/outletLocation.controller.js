@@ -121,6 +121,7 @@ export default class outletLocationController {
   }  
 
   onDelete(){
+    
     this.DialogService.delete(this.LabelService.TITLE_DELETE_OUTLET_LOCATION, this.LabelService.CONTENT_DELETE_OUTLET_LOCATION)
       .then(()=>{
         this.outletLocationListCtrl.deleteOutletLocation(this.outletLocation)

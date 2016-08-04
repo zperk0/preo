@@ -5,7 +5,13 @@ export default function outletList(){
   return {
     restrict: 'E',
     scope: {
-      outlets:"="
+      outlets:"=",
+      hasNew:"=",
+      hasSearch:"=?",
+      svDisabled:"=",
+      svMultiSelect:"=?",
+      svKeepInList:"=?",
+      svIsDropzone:"=?"      
     },
     template: require("./outletList.tpl.html"),
     controller: controller.UID,

@@ -10,15 +10,7 @@
     <card-item-title
 	    has-visible="true"
 	    sv-root="item">
-<!-- 	      <div ng-if="!vm.outletLocationGroup.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-external-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
-	        <div sv-placeholder></div>
-	      </div> -->
 	      <span>{{vm.outletLocationGroup.label || 'Group label' | translate}} </span>
-<!-- 	      <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
-	        <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
-	          <div sv-placeholder></div>
-	        </div>
-	      </div> -->
 	   </card-item-title>
     <outlet-location-list
     			ng-if="vm.outletLocationGroup.$expanded"
@@ -26,7 +18,7 @@
           outlet-locations="vm.outletLocationGroup.outletLocations">
     </outlet-location-list>
     <card-item-actions is-visible="vm.outletLocationGroup.visible"
-                       on-delete="vm.onDelete(createdOutlet)"
+                       on-delete="vm.onDelete()"
                        on-edit="vm.onEdit($event)"
                         ></card-item-actions>
   </card-item>

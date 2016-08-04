@@ -65,23 +65,27 @@ console.log('state parameter here', this.$stateParams);
     this.outletGroup = Preoday.OutletLocationGroup.getGroupById(breadcumbs[breadcumbs.length - 1].group.id);
 
     if (!this.outletGroup) {
-      this.outletGroup = this.outletLocations[0].getGroup();
-console.log(this.outletGroup, breadcumbs);
-      let breadcumbGroup = breadcumbs.filter((item) => {
-        
-        return item.group.id === this.outletGroup.id;
-      });
-console.log('breadcumbGroup', breadcumbGroup);
-      if (breadcumbGroup.length) {
-        alert('redirect 1')
-        this.$location.path(breadcumbGroup[0].url.replace('#/', ''));
-        // this.$state.reload();
-        return;
+      if (this.outletLocations.length) {
+        this.outletGroup = this.outletLocations[0].getGroup();
+  console.log(this.outletGroup, breadcumbs);
+        let breadcumbGroup = breadcumbs.filter((item) => {
+          
+          return item.group.id === this.outletGroup.id;
+        });
+  console.log('breadcumbGroup', breadcumbGroup);
+        if (breadcumbGroup.length) {
+          alert('redirect 1')
+          this.$location.path(breadcumbGroup[0].url.replace('#/', ''));
+          // this.$state.reload();
+          return;
+        } else {
+          alert('redirect 2')
+          this.$location.path(breadcumbs[0].url.replace('#/', ''));
+          // this.$state.reload();
+          return;        
+        }
       } else {
-        alert('redirect 2')
-        this.$location.path(breadcumbs[0].url.replace('#/', ''));
-        // this.$state.reload();
-        return;        
+        this.createEmptyGroup();
       }
     }
 
@@ -97,7 +101,33 @@ console.log('breadcumbGroup', breadcumbGroup);
         // this.$state.reload();
         return;         
       }
+
+      this.loaded = true;
     });
+  }
+
+  createEmptyGroup() {
+
+    this.outletGroup = null;
+
+    // this.$timeout(() => {
+    //   this.outletGroup = Preoday.OutletLocationGroup.createGroupByOutletLocation({
+    //     id: null,
+    //     venueId: this.$stateParams.venueId
+    //   });    
+
+    //   console.log('empty group created...', this.outletGroup);
+    // });
+  }
+
+  groupDeleted () {
+console.log('on deleted callback here', this.breadcumbs);
+    if (this.breadcumbs.length > 1) {
+      console.log('going to ', this.breadcumbs[this.breadcumbs.length - 2].url.replace('#/', ''));
+      this.$location.path(this.breadcumbs[this.breadcumbs.length - 2].url.replace('#/', ''));
+    } else {
+      this.createEmptyGroup();
+    }
   }
 
 
@@ -111,6 +141,7 @@ console.log('breadcumbGroup', breadcumbGroup);
     this.contextual = contextual;
     this.VenueService = VenueService;
     this.OutletLocationService = OutletLocationService;
+    this.loaded = false;
 
     if (VenueService.hasVenueSet()) {
       this.fetchOutlets();

@@ -23,12 +23,12 @@
                        on-delete="vm.onDelete(createdOutlet)"
                        on-edit="vm.onEdit($event)"
                        on-add="vm.onAddSubGroup($event)"
-                       disable-add="vm.outletLocation.hasChildren()"
+                       disable-add="vm.outletLocation.isSeat() || vm.outletLocation.hasChildren()"
                         ></card-item-actions>
   </card-item>
   
 
-  <md-button ng-if="vm.outletLocation.hasChildren()" class="md-icon-button btn-view-sub-group" ng-click="vm.showSubGroup()">
+  <md-button ng-if="!vm.outletLocation.isSeat() && vm.outletLocation.hasChildren()" class="md-icon-button btn-view-sub-group" ng-click="vm.showSubGroup()">
     <icon>keyboard_arrow_right</icon> <!-- visibility_off -->
 <!--     <md-tooltip md-direction="bottom">
       {{ 'Hide from menu' | translate }}

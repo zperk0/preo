@@ -8,10 +8,7 @@
   </div>
   <div flex class="layout-left-right">
     <div class='main-content-left'>
-  <!--     <outlet-location-list ng-if="outletLocationsCtrl.outletLocations" outlet-locations="outletLocationsCtrl.outletLocations">
-    	</outlet-location-list> -->
-
-      <outlet-location-group ng-if="outletLocationsCtrl.outletGroup" outlet-location-group="outletLocationsCtrl.outletGroup"></outlet-location-group>
+      <outlet-location-group-list ng-if="outletLocationsCtrl.loaded" outlet-location-group="outletLocationsCtrl.outletGroup" on-group-deleted="outletLocationsCtrl.groupDeleted()"></outlet-location-group-list>
      </div>
     <div class='floating-right-buttons'>
     	<md-button ng-click="outletLocationsCtrl.toggleDrawer('outlets')" class="md-primary md-hue-2" translate>Add outlets</md-button>
