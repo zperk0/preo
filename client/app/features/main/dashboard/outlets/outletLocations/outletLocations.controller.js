@@ -28,7 +28,7 @@ console.log('errrrr', err);
   }
 
   buildUri () {
-console.log('state parameter here', this.$stateParams);
+// console.log('state parameter here', this.$stateParams);
     let _outletLocations = this.$stateParams.outletLocation && this.$stateParams.outletLocation.split('/') || [];
     let breadcumbs = [{
       group: {
@@ -40,7 +40,7 @@ console.log('state parameter here', this.$stateParams);
       }).replace(/~2F/g, "/")
     }];
 
-    console.log('all outlets splitted', _outletLocations);
+    // console.log('all outlets splitted', _outletLocations);
 
     for (var i = 0, len = _outletLocations.length; i < len; i++) {
       // get name by id _outletLocations[i]
@@ -57,7 +57,7 @@ console.log('state parameter here', this.$stateParams);
       }
     }
 
-    console.log('all breadcambs', breadcumbs);
+    // console.log('all breadcambs', breadcumbs);
 
     breadcumbs[breadcumbs.length - 1].isLast = true;
     this.breadcumbs = breadcumbs;
@@ -67,19 +67,17 @@ console.log('state parameter here', this.$stateParams);
     if (!this.outletGroup) {
       if (this.outletLocations.length) {
         this.outletGroup = this.outletLocations[0].getGroup();
-  console.log(this.outletGroup, breadcumbs);
+  // console.log(this.outletGroup, breadcumbs);
         let breadcumbGroup = breadcumbs.filter((item) => {
           
           return item.group.id === this.outletGroup.id;
         });
-  console.log('breadcumbGroup', breadcumbGroup);
+  // console.log('breadcumbGroup', breadcumbGroup);
         if (breadcumbGroup.length) {
-          alert('redirect 1')
           this.$location.path(breadcumbGroup[0].url.replace('#/', ''));
           // this.$state.reload();
           return;
         } else {
-          alert('redirect 2')
           this.$location.path(breadcumbs[0].url.replace('#/', ''));
           // this.$state.reload();
           return;        
@@ -95,8 +93,7 @@ console.log('state parameter here', this.$stateParams);
       let browserUrl = window.location.hash.replace(/~2F/g, "/");
 
       if (breadcumbs[breadcumbs.length - 1].url !== browserUrl) {
-        alert('redirect 3')
-        console.log('redirecting here', breadcumbs[0].url, breadcumbs[breadcumbs.length - 1].url, browserUrl);
+        // console.log('redirecting here', breadcumbs[0].url, breadcumbs[breadcumbs.length - 1].url, browserUrl);
         this.$location.path(breadcumbs[0].url.replace('#/', ''));
         // this.$state.reload();
         return;         
@@ -109,21 +106,11 @@ console.log('state parameter here', this.$stateParams);
   createEmptyGroup() {
 
     this.outletGroup = null;
-
-    // this.$timeout(() => {
-    //   this.outletGroup = Preoday.OutletLocationGroup.createGroupByOutletLocation({
-    //     id: null,
-    //     venueId: this.$stateParams.venueId
-    //   });    
-
-    //   console.log('empty group created...', this.outletGroup);
-    // });
   }
 
   groupDeleted () {
-console.log('on deleted callback here', this.breadcumbs);
+
     if (this.breadcumbs.length > 1) {
-      console.log('going to ', this.breadcumbs[this.breadcumbs.length - 2].url.replace('#/', ''));
       this.$location.path(this.breadcumbs[this.breadcumbs.length - 2].url.replace('#/', ''));
     } else {
       this.createEmptyGroup();
@@ -142,6 +129,11 @@ console.log('on deleted callback here', this.breadcumbs);
     this.VenueService = VenueService;
     this.OutletLocationService = OutletLocationService;
     this.loaded = false;
+
+    $timeout(() => {
+
+      this.contextual.showDrawer('outletLocations');
+    });
 
     if (VenueService.hasVenueSet()) {
       this.fetchOutlets();

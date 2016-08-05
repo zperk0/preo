@@ -89,6 +89,16 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
 
   .md-button {
 
+    &.disabled {
+      background-color: transparent;
+      color: rgba(0,0,0,0.26) !important;
+      cursor: default;
+
+      md-icon {
+        color: rgba(0,0,0,0.26);
+      }
+    }
+
     &.md-primary {
       color:$colorPrimary;
 
@@ -99,7 +109,7 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
             color:white;
           }
         }
-        &:not([disabled]):hover{
+        &:not([disabled]):hover, &:not(.disabled):hover{
           background-color:$colorPrimaryDarker;
         }
       }
@@ -108,7 +118,7 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
     &.md-raised{
        background-color:$colorPrimary;
        color:white;
-       &:not([disabled]):hover{
+       &:not([disabled]):hover, &:not(.disabled):hover{
           background-color:$colorPrimaryDarker;
         }
     }

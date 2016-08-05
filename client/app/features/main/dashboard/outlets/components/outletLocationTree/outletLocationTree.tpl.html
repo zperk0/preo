@@ -1,0 +1,8 @@
+<div class="outlet-location-tree">
+	<h3 class="outlet-location-group-name" ng-if="outletLocations.length">
+		{{ group.label || 'Outlet configuration' | translate }}
+	</h3>
+	<div>
+		<outlet-location-tree-item ng-repeat='outletLocation in outletLocations' outlet-location='outletLocation'></outlet-location-tree-item>
+	</div>
+</div>

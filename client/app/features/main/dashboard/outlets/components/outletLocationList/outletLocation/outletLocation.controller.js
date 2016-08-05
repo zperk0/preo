@@ -5,23 +5,31 @@ export default class outletLocationController {
 
   onNewOutletMoved ($outlets, $partFrom, $partTo, $indexFrom, $indexTo) {
 
-    console.log('onNewOutletMoved', $outlets, $partFrom, $partTo, $indexFrom, $indexTo, this.outletLocation);
+    if ($outlets && $outlets.length) {
 
-    //  if (this.ModifierService.isModifiersDuplicated($modifiers, this.section)){
-    //   return this.Snack.showError("One or more modifiers already in section");
-    // }
+      if (this.outletLocation.outletId) {
+        this.Snack.showError(this.ErrorService.OUTLET_LOCATION_ALREADY_OUTLET.message);
+        return;
+      }
 
-    // this.Spinner.show("moving-section-modifiers");
-    // let promises = this.ModifierService.addModifiersToParent($modifiers, this.section);
+      if (!this.outletLocation.isSeat() && this.outletLocation.hasChildren()) {
+        this.Snack.showError(this.ErrorService.OUTLET_LOCATION_LAST_CHILD.message);
+        return;
+      }
 
-    // this.$q.all(promises).then(()=>{
-    //   this.Snack.show("Added modifiers to section");
-    // },()=>{
-    //   this.Snack.showError("Error adding modifiers to section");
-    // })
-    // .then(()=>{
-    //   this.Spinner.hide("moving-section-modifiers");
-    // })
+      this.Spinner.show("moving-outlet-to-location");
+
+      this.outletLocation.outletId = $outlets[0].id;
+      this.outletLocation.update()
+        .then(() => {
+
+          this.Spinner.hide("moving-outlet-to-location");
+        }, () => {
+
+          this.Snack.showError("Error adding outlet to outlet location");
+          this.Spinner.hide("moving-outlet-to-location");
+        });
+    }
   }
 
   restoreOriginalValues(){
@@ -91,6 +99,21 @@ export default class outletLocationController {
 
   onAddSubGroup ($event) {
 
+    if (this.outletLocation.isSeat()) {
+      this.Snack.showError(this.ErrorService.OUTLET_LOCATION_SUB_GROUP_SEAT.message);
+      return;
+    }
+
+    if (this.outletLocation.hasChildren()) {
+      this.Snack.showError(this.ErrorService.OUTLET_LOCATION_SUB_GROUP_CHILDREN.message);
+      return;
+    }
+
+    if (this.outletLocation.outletId) {
+      this.Snack.showError(this.ErrorService.OUTLET_LOCATION_SUB_GROUP_OUTLET.message);
+      return;
+    }
+
     this.outletLocationGroupCtrl.changeGroup(this.outletLocation.createGroup());
 
     $event.stopPropagation(); 
@@ -133,7 +156,22 @@ export default class outletLocationController {
     this.outletLocationGroupCtrl.changeGroup(this.outletLocation.createGroup());
   }
 
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, OutletLocationService) {
+  removeOutlet () {
+
+    this.Spinner.show("outlet-location-remove-outlet")
+
+    this.outletLocation.outletId = null;
+    this.outletLocation.update()
+      .then(()=>{
+        this.Spinner.hide("outlet-location-remove-outlet")
+      }, (err)=>{
+        this.Spinner.hide("outlet-location-remove-outlet")
+        this.Snack.showError('Failed to remove outlet');
+        console.log(err);
+    });    
+  }
+
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, ErrorService, Spinner, $timeout, contextualMenu, contextual, OutletLocationService) {
     "ngInject";
 
     this.$q =$q;
@@ -143,10 +181,15 @@ export default class outletLocationController {
     this.$timeout = $timeout;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
+    this.ErrorService = ErrorService;
     this.OutletLocationService = OutletLocationService;
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.type = 'outletLocation'; //type for contextual menu
+
+    this.outlets = [{
+      name: 'Outlet name'
+    }];
 
     this.newModifiers = []
 

@@ -1,0 +1,15 @@
+ <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-outlet-locations md-whiteframe-4dp" md-component-id="outletLocations">
+    <div class='contextual-list'>
+      <outlet-location-tree has-search="true"
+         ng-if="drawerOutletLocationsCtrl.data.outletLocations && drawerOutletLocationsCtrl.data.outletLocations.length"
+         outlet-locations="drawerOutletLocationsCtrl.data.outletLocations"></outlet-location-tree>
+    </div>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button ng-click="drawerOutletLocationsCtrl.close()" class='md-primary' translate>
+          Cancel
+      </md-button>
+      <md-button ng-click="drawerOutletLocationsCtrl.close()" class='md-raised' translate>
+          Move
+      </md-button>
+    </md-card-actions>
+</md-sidenav>

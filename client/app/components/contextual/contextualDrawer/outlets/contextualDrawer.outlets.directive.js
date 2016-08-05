@@ -1,6 +1,6 @@
 import controller from './contextualDrawer.outlets.controller'
 
-export default function contextualMenu($compile, $timeout, $animate){
+export default function contextualOutlets($compile, $timeout, $animate){
   "ngInject";
   return {
     restrict: 'E',

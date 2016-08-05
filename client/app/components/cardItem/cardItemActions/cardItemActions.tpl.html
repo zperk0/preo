@@ -39,7 +39,7 @@
           {{'Edit' | translate}}
         </md-tooltip>
       </md-button>
-       <md-button ng-if="cardItem.showCardActions && vm.onAdd" class="md-icon-button" ng-click="vm.onAdd({$event:$event})" ng-disabled="vm.disableAdd">
+       <md-button ng-if="cardItem.showCardActions && vm.onAdd" class="md-icon-button" ng-click="vm.onAdd({$event:$event})" ng-class="{'disabled': vm.disableAdd}">
         <icon>add</icon>
         <md-tooltip md-direction="bottom">
           {{'Add sub group' | translate}}

@@ -4,6 +4,12 @@
   width:657px;
   max-width: 657px;
 
+  &.contextual-drawer-outlet-locations {
+    .contextual-list {
+      padding: 24px;
+    }
+  }
+
   .contextual-list{
     overflow-y: auto;
     height: calc(100% - 49px); // 100% - footer cards

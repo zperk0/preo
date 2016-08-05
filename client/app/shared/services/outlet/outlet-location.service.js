@@ -21,6 +21,7 @@ export default class OutletLocationService {
   }  
 
   getOutletLocations(data){
+
     if (this.data.outletLocations){
       return this.$q.resolve(this.data);
     } else if ( this.p){
@@ -50,6 +51,5 @@ export default class OutletLocationService {
     this.$stateParams = $stateParams;
     this.$q =$q;
     this.data={};
-
   }
 }
