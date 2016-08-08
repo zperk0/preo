@@ -61,11 +61,11 @@ export default class outletLocationGroupController {
               this.Spinner.hide("outlet-location-group-delete");
               this.onDeletedCallback && this.onDeletedCallback();
             });
-console.log('success on delete', this.onDeletedCallback);
+// console.log('success on delete', this.onDeletedCallback);
           }, (err) => {
 
             this.$timeout(() => {
-console.log('error on delete', err);
+// console.log('error on delete', err);
               this.Spinner.hide("outlet-location-group-delete");
               this.Snack.showError('Failed to delete the group');            
             });
@@ -92,7 +92,7 @@ console.log('going to', urlToRedirect);
 
   checkExpanded() {
 console.log('checking expanded', this.outletLocationGroup);
-    if (this.outletLocationGroup.label) {
+    if (this.outletLocationGroup.label || (this.outletLocationGroup.outletLocations && this.outletLocationGroup.outletLocations.length)) {
     	this.outletLocationGroup.$expanded = true;
     } else {
     	this.outletLocationGroup.$expanded = false;

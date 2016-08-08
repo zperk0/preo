@@ -4,11 +4,8 @@ export default class contextualDrawerOutletLocationsController {
   }
 
   close(){
-    this.$mdSidenav('outletLocationss').close()
-      .then(function () {
-        console.log("close Modifiers is done");
-      });
 
+    this.contextualDrawer.cancel();
   }
 
   fetchOutletLocations() {
@@ -28,11 +25,37 @@ console.log('errrrr', err);
     });        
   }
 
-  constructor($scope, OutletLocationService, VenueService, BroadcastEvents, $stateParams,$mdSidenav) {
+  selectOutletLocation (outletLocation) {
+
+    let outletLocationToMove = this.OutletLocationService.getOutletLocationToMove();
+    
+    if (outletLocationToMove.id === outletLocation.id) {
+      this.Snack.showError('You need select a different outlet location destination');
+      return;
+    }
+
+    this.selectedOutletLocation = outletLocation;
+  }
+
+  move () {
+
+    let groupToMove = null;
+
+    if (this.selectedOutletLocation.isGroup) {
+      groupToMove = Preoday.OutletLocationGroup.getGroupById(null);
+    } else {
+      groupToMove = this.selectedOutletLocation.createGroup();
+    }
+
+    this.contextualDrawer.success(groupToMove);
+  }
+
+  constructor($scope, OutletLocationService, VenueService, BroadcastEvents, $stateParams,contextualDrawer, Snack) {
     "ngInject";
-    this.$mdSidenav = $mdSidenav;  
     this.OutletLocationService = OutletLocationService;  
     this.VenueService = VenueService;  
+    this.contextualDrawer = contextualDrawer;  
+    this.Snack = Snack;  
 
     if (VenueService.hasVenueSet()) {
       this.fetchOutletLocations();

@@ -130,11 +130,6 @@ console.log('errrrr', err);
     this.OutletLocationService = OutletLocationService;
     this.loaded = false;
 
-    $timeout(() => {
-
-      this.contextual.showDrawer('outletLocations');
-    });
-
     if (VenueService.hasVenueSet()) {
       this.fetchOutlets();
     } else {

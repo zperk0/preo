@@ -44,12 +44,21 @@ export default class OutletLocationService {
     return this.p;
   }
 
+  setOutletLocationToMove (outletLocation) {
 
+    this.outletLocationToMove = outletLocation;
+  }
+
+  getOutletLocationToMove () {
+
+    return this.outletLocationToMove;
+  }
 
   constructor($q, $rootScope, $stateParams) {
     "ngInject";
     this.$stateParams = $stateParams;
     this.$q =$q;
     this.data={};
+    this.outletLocationToMove = {};
   }
 }

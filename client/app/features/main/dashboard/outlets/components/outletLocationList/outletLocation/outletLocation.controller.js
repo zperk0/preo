@@ -171,6 +171,38 @@ export default class outletLocationController {
     });    
   }
 
+  onMove () {
+
+    this.OutletLocationService.setOutletLocationToMove(this.outletLocation);
+    this.contextual.showDrawer('outletLocations')
+      .then((groupToMove) => {
+
+        this.Spinner.show("outlet-location-move");
+
+        console.log('moving to...', this.outletLocation, groupToMove);
+
+        if (groupToMove.id === this.outletLocation.parent) {
+          this.Spinner.hide("outlet-location-move");
+          return;
+        }
+        
+        this.outletLocation.move(groupToMove)
+          .then(() => {
+
+            this.Spinner.hide("outlet-location-move");
+            this.Snack.show('Outlet location moved');
+          }, () => {
+
+            this.Spinner.hide("outlet-location-move");
+            this.Snack.showError('Failed to move outlet location');
+          });
+        
+      }, (err) => {
+        
+        console.log('err to move', err);
+      });
+  }
+
   constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, ErrorService, Spinner, $timeout, contextualMenu, contextual, OutletLocationService) {
     "ngInject";
 

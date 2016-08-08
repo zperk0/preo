@@ -3,6 +3,17 @@
 		font-size: 13px;
 		color: #333333;
 
-		margin-bottom: 14px;
+		padding-bottom: 14px;
+		padding-left: 24px;
+		padding-top: 12px;
+
+		&.allow-select {
+			cursor: pointer;
+
+		}
+
+		&.selected {
+			background-color: #eeefee;
+		}		
 	}
 }

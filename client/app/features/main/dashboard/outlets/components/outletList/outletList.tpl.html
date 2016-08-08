@@ -13,7 +13,7 @@
       sv-part="vm.outlets">
       <outlet
         sv-element="outlet"
-        ng-repeat="outlet in vm.outlets"
+        ng-repeat="outlet in vm.outlets | orderBy:'name'"
         outlet="outlet">
       </outlet>
       <div sv-placeholder></div>
