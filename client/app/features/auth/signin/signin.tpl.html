@@ -1,19 +1,22 @@
 <div class='signin'>
   <form name='signin' ng-submit='vm.doSignin()' novalidate>
+    <div class='md-title' translate>Sign in</div>
     <md-input-container class="md-block">
       <label translate>Username</label>
       <input type="email" autocomplete="email" required name="username" ng-model="vm.user.username">
-      <div ng-messages="projectForm.username.$error">
+      <div ng-messages="signin.username.$error">
         <div ng-message="required">{{'This is required.' | translate}}</div>
       </div>
     </md-input-container>
     <md-input-container class="md-block">
       <label translate>Password</label>
       <input type="password" autocomplete="password" required name="password" ng-model="vm.user.password">
-      <div ng-messages="projectForm.password.$error">
+      <div ng-messages="signin.password.$error">
         <div ng-message="required">{{'This is required.' | translate}}</div>
       </div>
     </md-input-container>
-    <md-button type='submit' translate>Sign In</md-button>
+      <md-button  type='submit' class='md-raised md-block' translate>
+          Sign In
+      </md-button>
   </form>
 </div>

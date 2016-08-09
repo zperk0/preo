@@ -7,6 +7,8 @@ export default class LabelService {
   constructor(gettextCatalog) {
     "ngInject";
 
+    this.SNACK_WRONG_CREDENTIALS = gettextCatalog.getString("Invalid username and/or password");
+
     this.TITLE_DELETE_SECTION = gettextCatalog.getString("Delete section?");
     this.CONTENT_DELETE_SECTION = gettextCatalog.getString("Are you sure you want to delete this section?");
 

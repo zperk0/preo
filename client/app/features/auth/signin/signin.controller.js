@@ -4,10 +4,11 @@ export default class signinController {
     return "signinController";
   }
 
-  hideSpinner(){
+  hideSpinner(timeout=100){
+    console.log("hiding spinner")
     this.$timeout(()=>{
       this.Spinner.hide("signin");
-    },1000)
+    },timeout)
 
   }
 
@@ -15,15 +16,29 @@ export default class signinController {
     this.Spinner.show("signin")
   }
 
-  doSignin(Spinner){
-    this.showSpinner();
-    this.UserService.auth(this.user)
-    .then(this.hideSpinner.bind(this),this.hideSpinner.bind(this))
+  handleSuccess(){
+    this.hideSpinner(2000);
+
   }
 
-  constructor(UserService, Spinner,$timeout) {
+  handleError(){
+    this.Snack.showError(this.LabelService.SNACK_WRONG_CREDENTIALS)
+    this.hideSpinner();
+    console.log("hosing")
+  }
+
+  doSignin(Spinner){
+    console.log("showing spinner");
+    this.showSpinner();
+    this.UserService.auth(this.user)
+    .then(this.handleSuccess.bind(this),this.handleError.bind(this))
+  }
+
+  constructor(UserService, Spinner, Snack, $timeout, LabelService) {
     "ngInject";
     this.Spinner = Spinner;
+    this.Snack = Snack;
+    this.LabelService = LabelService;
     this.$timeout = $timeout;
     this.UserService = UserService;
     if (UserService.user){

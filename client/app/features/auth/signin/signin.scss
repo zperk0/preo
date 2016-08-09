@@ -3,7 +3,32 @@
     top: 0;
     left: 0;
     z-index: 1001;
-    background: #f5f5f5;
+    background: #ffffff;
     bottom: 0;
     right: 0;
+
+    form{
+      width: 298px;
+      margin: 0 auto;
+      background-color: #FAFAFA;
+      border: 1px solid #E2E2E2;
+      padding:24px;
+      margin-top:250px;
+
+      md-input-container{
+        margin-bottom: 8px;
+        margin-top: 24px;
+        &+md-input-container{
+          margin-top: 0;
+        }
+      }
+
+      button {
+        width: calc(100% - 16px);
+      }
+    }
+    .md-title{
+      color:  #000;
+      font-weight: 500;
+    }
 }
