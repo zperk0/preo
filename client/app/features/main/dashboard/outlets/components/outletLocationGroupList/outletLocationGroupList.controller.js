@@ -42,7 +42,6 @@ export default class outletLocationGroupListController {
     }
   }
 
-  /* @ngInject */
   constructor($timeout, $stateParams, $q, contextual, contextualMenu, Spinner, Snack, OutletLocationService) {
     "ngInject";
     this.Spinner = Spinner;

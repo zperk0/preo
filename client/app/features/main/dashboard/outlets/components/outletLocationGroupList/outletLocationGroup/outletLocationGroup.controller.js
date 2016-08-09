@@ -105,8 +105,8 @@ console.log('checking expanded', this.outletLocationGroup);
   	}    
   }
 
-  /* @ngInject */
   constructor($scope, $state, $stateParams, $timeout, Snack, Spinner, DialogService, LabelService, contextual, contextualMenu) {
+    "ngInject";
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.$scope = $scope;

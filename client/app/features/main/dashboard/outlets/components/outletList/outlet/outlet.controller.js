@@ -5,6 +5,7 @@ export default class outletController {
 
   /* @ngInject */
   constructor() {
+  	"ngInject";
     this.title = "I am a outlet component"
   }
 }
