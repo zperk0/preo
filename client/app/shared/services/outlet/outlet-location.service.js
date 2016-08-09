@@ -73,6 +73,13 @@ export default class OutletLocationService {
     });      
   }
 
+  resetGroups () {
+
+    this.data.rootGroup = null;
+    Preoday.OutletLocationGroup.resetGroups();
+    Preoday.OutletLocation.resetOutlets();
+  }
+
   constructor($q, $rootScope, $stateParams, VenueService) {
     "ngInject";
     this.$stateParams = $stateParams;

@@ -14,6 +14,11 @@ export default class contextualService {
     return this.contextualDrawer.show(id);
   }
 
+  hide() {
+    this.contextualMenu.close();
+    this.contextualDrawer.close();
+  }
+
   constructor(contextualMenu, contextualDrawer) {
     "ngInject";
     this.contextualMenu = contextualMenu;

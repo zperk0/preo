@@ -21,14 +21,12 @@ export default class outletLocationsController {
           venueId: this.VenueService.currentVenue.id
         })        
       ]).then((results) => {
-        console.log('results here', results);
+        
         this.data = results[0];
         
         this.buildUri();
-
-        console.log('this.outletLocations', this.outletLocations);        
       }, (err) => {
-console.log('errrrr', err);
+
       this.outletLocations = [];
     });   
   }
@@ -46,8 +44,6 @@ console.log('errrrr', err);
       }).replace(/~2F/g, "/")
     }];
 
-    // console.log('all outlets splitted', _outletLocations);
-
     for (var i = 0, len = _outletLocations.length; i < len; i++) {
       // get name by id _outletLocations[i]
       console.log(_outletLocations.slice(0, i+1), _outletLocations.slice(0, i).join('/'));
@@ -63,8 +59,6 @@ console.log('errrrr', err);
       }
     }
 
-    // console.log('all breadcambs', breadcumbs);
-
     breadcumbs[breadcumbs.length - 1].isLast = true;
     this.breadcumbs = breadcumbs;
 
@@ -73,19 +67,17 @@ console.log('errrrr', err);
     if (!this.outletGroup) {
       if (this.data.rootGroup && this.data.rootGroup.outletLocations.length) {
         this.outletGroup = this.data.rootGroup.outletLocations[0].getGroup();
-  // console.log(this.outletGroup, breadcumbs);
+
         let breadcumbGroup = breadcumbs.filter((item) => {
           
           return item.group.id === this.outletGroup.id;
         });
-  // console.log('breadcumbGroup', breadcumbGroup);
+
         if (breadcumbGroup.length) {
           this.$location.path(breadcumbGroup[0].url.replace('#/', ''));
-          // this.$state.reload();
           return;
         } else {
           this.$location.path(breadcumbs[0].url.replace('#/', ''));
-          // this.$state.reload();
           return;        
         }
       } else {
@@ -101,9 +93,7 @@ console.log('errrrr', err);
       let browserUrl = window.location.hash.replace(/~2F/g, "/");
 
       if (breadcumbs[breadcumbs.length - 1].url !== browserUrl) {
-        // console.log('redirecting here', breadcumbs[0].url, breadcumbs[breadcumbs.length - 1].url, browserUrl);
         this.$location.path(breadcumbs[0].url.replace('#/', ''));
-        // this.$state.reload();
         return;         
       }
 

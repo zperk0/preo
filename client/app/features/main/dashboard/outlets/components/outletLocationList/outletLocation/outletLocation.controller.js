@@ -49,7 +49,7 @@ export default class outletLocationController {
   }
 
   contextualMenuSuccess(entity){
-    if (this.outletLocation && entity){
+    if (this.outletLocation && entity && entity.name){
       this.outletLocation = entity;
 
       if (!this.outletLocation.id){
@@ -74,7 +74,7 @@ export default class outletLocationController {
   }  
 
   updateOutletLocation(){
-    this.Spinner.show("outlet-location-save");
+    this.Spinner.show("outlet-location-update");
     return this.$q((resolve, reject)=>{
       this.outletLocation.update()
         .then((o)=>{
@@ -84,10 +84,8 @@ export default class outletLocationController {
         reject();
         this.Snack.showError('Error saving outlet location');
       }).then(()=>{
-        this.Spinner.hide("outlet-location-save");
+        this.Spinner.hide("outlet-location-update");
       })
-
-      console.log("resolved");
     });
   }
 
@@ -130,15 +128,12 @@ export default class outletLocationController {
       position: clonePosition
     })
       .then((createdOutlet)=>{
+
         this.Spinner.hide("outlet-location-clone")
         this.Snack.show('Outlet location duplicated');
-        console.log("cloned", createdOutlet, this.outletLocation);
-        // this.cardItemList.onItemCreated(createdOutlet);
-        // if (this.onItemCreated){
-        //   this.onItemCreated({item:createdItem});
-        // }
       }, (err)=>{
-        console.log("failed creating outlet location", err)
+
+        console.log("failed cloning outlet location", err)
         this.Spinner.hide("outlet-location-clone")
         this.Snack.showError('Failed duplicating outlet location');
     });
@@ -150,7 +145,8 @@ export default class outletLocationController {
     
     this.DialogService.delete(this.LabelService.TITLE_DELETE_OUTLET_LOCATION, this.LabelService.CONTENT_DELETE_OUTLET_LOCATION)
       .then(()=>{
-        this.outletLocationListCtrl.deleteOutletLocation(this.outletLocation)
+        this.contextual.hide();
+        this.outletLocationListCtrl.deleteOutletLocation(this.outletLocation);
       })
   }
 
@@ -200,8 +196,8 @@ export default class outletLocationController {
             this.Spinner.hide("outlet-location-move");
             this.Snack.showError('Failed to move outlet location');
           }).catch((err)=>{
-          console.log(err);
-        });
+            console.log(err);
+          });
         
       }, (err) => {
         
@@ -228,13 +224,12 @@ export default class outletLocationController {
     return fullName.join('');
   }
 
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, ErrorService, Spinner, $timeout, contextualMenu, contextual, OutletLocationService, OutletService) {
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, LabelService, ErrorService, Spinner, $timeout, contextualMenu, contextual, OutletLocationService, OutletService) {
     "ngInject";
 
     this.$q =$q;
     this.Snack = Snack;
     this.Spinner = Spinner;
-    this.$stateParams = $stateParams;
     this.$timeout = $timeout;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
@@ -244,6 +239,7 @@ export default class outletLocationController {
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.type = 'outletLocation'; //type for contextual menu
+    this.outlets = [];
 
     this.newModifiers = [];
 
@@ -251,10 +247,8 @@ export default class outletLocationController {
       this.buildOutlet();
     }
 
-    console.log('new outlet location', this.outletLocation);
     //if it's a new outlet location we toggle the context menu to edit this
     if (this.outletLocation && !this.outletLocation.id) {
-        console.log("here ho");
         this.contextual.showMenu(this.type, this.outletLocation, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
     }
   }

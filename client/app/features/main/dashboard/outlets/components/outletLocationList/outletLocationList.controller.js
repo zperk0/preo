@@ -4,19 +4,14 @@ export default class outletLocationListController {
   }
 
   onOutletLocationMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
-    
-    // rerorder outletLocation list. Just it
-    console.log($items, $partFrom, $partTo, $indexFrom, $indexTo);
 
     this.Spinner.show("outlet-location-move");
-    console.log("on outlet location moved, updating");
     this.cardItemList.onSimpleSort(true).then((outletLocationsUpdated)=>{
 
       outletLocationsUpdated.forEach((item, index) => {
         this.outletLocations[index].position = item.position;
       });
 
-      console.log('updated =====', this.outletLocations);
       this.Snack.show('Outlet location moved');
     }, ()=>{
       this.Snack.showError('Error moving outlet location');
@@ -31,48 +26,34 @@ export default class outletLocationListController {
 
     this.Spinner.show("outlet-location-create");
 
-    console.log('saving...', newData);
     if (this.outletLocations.length > 1) {
-      newData.position = (this.outletLocations[this.outletLocations.length - 1].position || 0) + 1000;
+      newData.position = this.getNewOutletLocationPosition();
     } else {
       newData.position = 0;
     }
 
     this.OutletLocationService.save(newData)
         .then((outletLocation)=>{
-          // this.cardItemList.clearPossibleNewItem();
-          // this.addOutletLocationInPosition(newData, outletLocation)
+
           this.Spinner.hide("outlet-location-create");
           
           deferred.resolve(outletLocation);
       }, (err) => {
+        console.log('fail outlet location saved', err);
         this.Spinner.hide("outlet-location-create");
         deferred.reject(err);
       });
 
     return deferred.promise;
-  }  
-
-  addOutletLocationInPosition(oldValue, outletLocation){
-    // let indexBefore = -1;
-
-    // this.outletLocations.forEach((s, index)=>{
-    //   if (s.position <= outletLocation.position){
-    //     indexBefore = index;
-    //   }
-    // })
-    // this.outletLocations.splice(indexBefore+1, 0, outletLocation);
-
-    // this.outletLocationGroup.addChild(outletLocation);
-  }
+  } 
 
   showCreateOutletLocation(){
-    let isCreating = false;
-    this.outletLocations.forEach((s, index)=>{
-      if (s.id === undefined){
-        isCreating = true;
-      }
-    });
+
+    let isCreating = this.outletLocations.filter(function (item) {
+
+      return item.id === undefined;
+    }).length;
+    
     if (isCreating){
       console.log("Not showing outlet location new, already showing")
       return;
@@ -84,7 +65,6 @@ export default class outletLocationListController {
       label: this.outletLocationGroup.label,
       path: this.outletLocationGroup.path,
       $selected:true,
-      // position: this.outletLocations && this.outletLocations.length ? (this.outletLocations[this.outletLocations.length-1]).position + 1000 : 0
     });
   }  
 
@@ -104,7 +84,12 @@ export default class outletLocationListController {
 
   getPosition(outletLocation){
     return outletLocation.position || this.outletLocations ? this.outletLocations.filter((i)=>outletLocation.id===i.id)[0].position : 0;
-  }  
+  } 
+
+  getNewOutletLocationPosition () {
+
+    return Math.max.apply(Math, this.outletLocations.map(function(o){return o.position || 0;})) + 1000;
+  } 
 
   /* @ngInject */
   constructor($timeout, $stateParams, $q, Spinner, Snack, OutletLocationService) {

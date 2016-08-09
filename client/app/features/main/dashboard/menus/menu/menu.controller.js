@@ -18,6 +18,8 @@ export default class menuController {
   }
 
   setMenu(menuId){
+
+    console.log('setting menu', menuId);
     Preoday.Menu.get(menuId)
       .then(this.handleFinishLoading.bind(this))
       .catch((err)=>{
@@ -28,10 +30,13 @@ export default class menuController {
 
 
   handleFinishLoading(dataMenu){
-    dataMenu.sections.forEach((s)=>{
-      s.$positions = s.items.map((i)=>({id:i.id,position:i.position}));
-      s.items = this.ItemService.getByIds(s.items.map((i)=>i.id));
-    })
+    console.log('fetch success', dataMenu);
+    if (dataMenu.sections && dataMenu.sections.length) {
+      dataMenu.sections.forEach((s)=>{
+        s.$positions = s.items.map((i)=>({id:i.id,position:i.position}));
+        s.items = this.ItemService.getByIds(s.items.map((i)=>i.id));
+      });
+    }
     this.menu = dataMenu;
     this.hideSpinner();
   }

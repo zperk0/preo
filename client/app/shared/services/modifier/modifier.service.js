@@ -235,7 +235,10 @@ export default class ModifierService {
       Preoday.Modifier.getAll({venueId:venueId, expand:expand})
         .then((modifiers)=>{
           this.data.modifiers = modifiers.filter((m)=>m.variant===0);
-          this.populateModifiers(0);
+
+          if (modifiers.length){
+            this.populateModifiers(0);
+          }
           resolve(this.data);
         },(err)=>{
           console.log("Error fetching modifiers", err);
