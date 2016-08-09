@@ -12,14 +12,37 @@ export default class contextualDrawerService {
     }
   }
 
+  //same as close but doesn't call error callback
+  cancel(err){
+
+    this.close();
+    this.deferred && this.deferred.reject(err);
+  }
+
+  //same as close but doesn't call error callback
+  success(data){
+
+    this.close();
+    this.deferred && this.deferred.resolve(data);
+  }
+
   //DO NOT CALL THIS METHOD DIRECTLY, use the contextual service;
   show(id){
     if (this.id){
-      this.close();
+      this.cancel();
     }
+
+    this.deferred = this.$q.defer();
+
     this.id = id;
     this.$mdSidenav(id)
       .toggle()
+      .then(function (argument) {
+        
+        console.log(arguments);
+      })
+
+    return this.deferred.promise
 
   }
 
@@ -29,6 +52,8 @@ export default class contextualDrawerService {
     this.$rootScope = $rootScope;
     this.$q = $q;
     this.$mdSidenav =$mdSidenav;
+
+    this.deferred = null;
 
   }
 }

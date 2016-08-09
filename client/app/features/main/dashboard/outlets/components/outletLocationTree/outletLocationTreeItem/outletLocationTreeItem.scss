@@ -1,0 +1,52 @@
+.outlet-location-tree-item {
+
+	&:last-child {
+		margin-bottom: 0px;
+	}
+
+	.outlet-location-name {
+		font-size: 13px;
+		color: #757575;
+		cursor: pointer;
+		padding: 4px 0 4px 24px;
+
+		md-icon {
+			cursor: pointer;
+			margin-right: 12px;
+		}
+	}
+
+	.outlet-location-tree {
+		// padding: 12px 0 0 0;
+		padding: 0px;
+
+		.outlet-location-group-name {
+			padding-left: 61px;
+		}
+
+		.outlet-location-tree-item {
+			padding-left: 37px;
+		}
+	}
+
+	.outlet-location-tree-content {
+		// display: none;
+		max-height: 0px;
+		overflow: hidden;
+		transition: max-height 0.3s ease;
+	}
+
+	&.expanded {
+		&>.outlet-location-tree-content {
+			transition: max-height 1s ease;
+			display: block;
+			max-height: 1000px;
+		}
+	}
+
+	&.selected {
+		&>.outlet-location-name {
+			background-color: #eeefee;
+		}
+	}
+}

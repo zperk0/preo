@@ -11,7 +11,12 @@ export default class contextualService {
 
   showDrawer(id){
     this.contextualMenu.close();
-    this.contextualDrawer.show(id);
+    return this.contextualDrawer.show(id);
+  }
+
+  hide() {
+    this.contextualMenu.close();
+    this.contextualDrawer.close();
   }
 
   constructor(contextualMenu, contextualDrawer) {

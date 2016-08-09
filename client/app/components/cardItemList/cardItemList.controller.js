@@ -57,16 +57,16 @@ export default class cardItemListController {
     });
   }
 
-  onSimpleSort(){
+  onSimpleSort(data){
     const promises = [];
     this.collection.forEach((s, index)=>{
       let clone = angular.copy(s);
       clone.position=index*1000;
-      promises.push(clone.update());
+      promises.push(clone.update(data));
     });
     return this.$q.all(promises)
   }
-
+  
   deleteItem(item){
     if (this.collection){
       this.collection = this.collection.filter((s)=>item.id !== s.id);

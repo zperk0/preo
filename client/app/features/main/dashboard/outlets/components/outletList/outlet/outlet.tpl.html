@@ -1,0 +1,32 @@
+<div class='menu-section'
+      ng-class="{expanded:vm.outlet.$expanded}"
+      ng-attr-data-id="{{vm.outlet.id}}">
+
+  <card-item  has-actions="true"
+              deleted="vm.outlet.$deleted"
+              selected="vm.outlet.$selected"
+              expanded="vm.outlet.$expanded"
+              >
+    <card-item-title ng-click="vm.toggleExpanded($event)"
+                    has-visible="true"
+                    sv-root="item">
+                      <div ng-if="!vm.outlet.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-external-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+                        <div sv-placeholder></div>
+                      </div>
+                      <span>{{vm.outlet.name}} </span>
+<!--                       <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
+                        <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+                          <div sv-placeholder></div>
+                        </div>
+                      </div> -->
+                    </card-item-title>
+
+    <card-item-actions is-visible="vm.outletLocation.visible"
+                       on-move="vm.onMove()"
+                       on-clone="vm.onClone()"
+                       on-delete="vm.onDelete()"
+                       on-edit="vm.onEdit()"
+                       on-add="vm.onAddSUbGroup()"
+                        ></card-item-actions>
+  </card-item>
+</div>

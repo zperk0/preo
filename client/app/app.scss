@@ -3,6 +3,7 @@
 @import './shared/styles/reset';
 @import './shared/styles/roboto';
 @import './shared/styles/dragndrop';
+@import './shared/styles/layout-left-right';
 
 
 input[type='number'] {
@@ -49,6 +50,22 @@ body{
   max-width: 90%;
   overflow: hidden;
   white-space:no-wrap;
+}
+
+.md-input-container-with-no-float {
+  .input-label {
+    float: left;
+    display: inline-block;
+    margin-top: 9px;
+    text-align: left;
+    width: 40%;
+  }
+
+  input {
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+  }
 }
 
 

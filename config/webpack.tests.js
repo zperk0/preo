@@ -5,4 +5,5 @@ import 'angular';
 import 'angular-mocks/angular-mocks';
 
 var testsContext = require.context("../client/app", true, /.test.js$/);
+// var testsContext = require.context("../client/app/features/main/dashboard/outlets", true, /.test.js$/);
 testsContext.keys().forEach(testsContext);

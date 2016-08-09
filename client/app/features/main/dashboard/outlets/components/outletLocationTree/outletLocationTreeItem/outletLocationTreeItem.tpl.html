@@ -1,0 +1,13 @@
+<div class="outlet-location-tree-item" ng-init="outletLocation.$expanded = false;" 
+		ng-class="{'expanded': outletLocation.$expanded, 'selected': isSelected()}">
+	<div class="outlet-location-name" ng-click="selectItem($event)">
+		<icon ng-click="toggleExpand()">{{ outletLocation.$expanded  ? 'remove' : 'add' }}</icon>
+		<span>{{ getOutletLocationName() }}</span>
+	</div>
+	<div ng-if="!outletLocation.isSeat() && outletLocation.hasChildren()" class="outlet-location-tree-content">
+		<outlet-location-tree outlet-locations='outletLocation.getChildren()' 
+				on-select-item="onSelect({outletLocation: outletLocation})" 
+				selected="selected">		
+			</outlet-location-tree>
+	</div>
+</div>

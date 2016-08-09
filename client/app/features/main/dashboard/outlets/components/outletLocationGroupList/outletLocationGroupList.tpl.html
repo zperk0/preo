@@ -1,0 +1,14 @@
+<div class="menu-section-list outlet-location-group-list">
+
+  <card-item-list
+      collection="vm.outletLocationGroups"
+      has-new="!vm.outletLocationGroups.length"
+      on-click-new="vm.showCreateOutletLocationGroup()"
+      >
+    <outlet-location-group
+      on-deleted="vm.onGroupDeleted()"
+      ng-repeat="outletLocationGroup in vm.outletLocationGroups track by $index"
+      outlet-location-group="outletLocationGroup">
+    </outlet-location-group>
+  </card-item-list>
+</div>

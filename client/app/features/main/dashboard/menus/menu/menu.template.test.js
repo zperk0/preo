@@ -1,83 +1,79 @@
-'use strict';
+// 'use strict';
 
-import menu from './';
+// import menu from './';
 
-describe('Menu Template', function () {
+// describe('Menu Template', function () {
 
-    let
-      MenuCtrl,
-      $rootScope,
-      $scope,
-      $compile,
-      $controller,
-      _template = null;
+//     let
+//       MenuCtrl,
+//       $rootScope,
+//       $scope,
+//       $compile,
+//       $controller,
+//       _template = null;
 
-    beforeEach(angular.mock.module(menu));
+//     beforeEach(angular.mock.module(menu));
 
-    // beforeEach(angular.mock.module(function ($provide) {
-    //     $provide.constant('initialTodos', []);
-    // }));
+//     beforeEach(angular.mock.inject(function ($injector) {
 
-    beforeEach(angular.mock.inject(function ($injector) {
+//       $controller = $injector.get('$controller');
+//       $rootScope = $injector.get('$rootScope');
+//       $compile = $injector.get('$compile');
+//       $scope = $rootScope.$new();
 
-      $controller = $injector.get('$controller');
-      $rootScope = $injector.get('$rootScope');
-      $compile = $injector.get('$compile');
-      $scope = $rootScope.$new();
+//       _template = require('./menu.tpl.html');
+//     }));
 
-      _template = require('./menu.tpl.html');
-    }));
+//     afterEach(function() {
 
-    afterEach(function() {
+//       _template = null;
+//     });
 
-      _template = null;
-    });
+//     function _startController() {
 
-    function _startController() {
+//       MenuCtrl = $controller('menuController', {
+//         '$scope': $scope,
+//       });
 
-      MenuCtrl = $controller('menuController', {
-        '$scope': $scope,
-      });
+//       $scope.vm = MenuCtrl;
+//     }
 
-      $scope.vm = MenuCtrl;
-    }
+//     function getMockedMenu() {
 
-    function getMockedMenu() {
+//       return new Preoday.Menu.constructor({
+//         name: 'Test menu',
+//         sections: [{
+//           id: 1,
+//           name: 'Test section',
+//           items: []
+//         }]
+//       });
+//     }
 
-      return new Preoday.Menu.constructor({
-        name: 'Test menu',
-        sections: [{
-          id: 1,
-          name: 'Test section',
-          items: []
-        }]
-      });
-    }
+//     function _getElementData(nativeElement) {
 
-    function _getElementData(nativeElement) {
+//       let sectionList = nativeElement.querySelectorAll('.menu-section-list');
 
-      let sectionList = nativeElement.querySelectorAll('.menu-section-list');
+//       return {
+//         name: nativeElement.querySelectorAll('.menu-name')[0].innerText,
+//         sectionList: sectionList.length ? sectionList[0] : undefined
+//       };
+//     }
 
-      return {
-        name: nativeElement.querySelectorAll('.menu-name')[0].innerText,
-        sectionList: sectionList.length ? sectionList[0] : undefined
-      };
-    }
+//     it("Should initalize template with a menu", function() {
 
-    it("Should initalize template with a menu", function() {
+//       _startController();
 
-      _startController();
+//       MenuCtrl.menu = getMockedMenu();
 
-      MenuCtrl.menu = getMockedMenu();
+//       var element = $compile(_template)($scope);
 
-      var element = $compile(_template)($scope);
+//       $scope.$digest();
 
-      $scope.$digest();
+//       var elemData = _getElementData(element[0]);
 
-      var elemData = _getElementData(element[0]);
-
-      expect(elemData.name).toEqual(MenuCtrl.menu.name);
-      expect(elemData.sectionList).toBeDefined();
-      expect(elemData.sectionList.querySelectorAll('.menu-section').length).toBe(MenuCtrl.menu.sections.length);
-    });
-});
+//       expect(elemData.name).toEqual(MenuCtrl.menu.name);
+//       expect(elemData.sectionList).toBeDefined();
+//       expect(elemData.sectionList.querySelectorAll('.menu-section').length).toBe(MenuCtrl.menu.sections.length);
+//     });
+// });

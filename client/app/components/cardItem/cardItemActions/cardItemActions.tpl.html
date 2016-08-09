@@ -1,6 +1,14 @@
 <div class='card-item-actions'>
   <md-card-actions ng-animate-children ng-if="cardItem.showCardActions" class="hidden-card-actions" layout="row"  layout-align="end center" ng-click="vm.toggleCardActions($event)">
     <div class='card-actions-leave-trap' ng-mouseleave="onMouseLeave($event)"  layout="row" layout-align="end center">
+      <md-button ng-if="cardItem.showCardActions && vm.onMove" class="md-icon-button" ng-click="vm.onMove({newStatus:false})">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="#777777" d="M21,11L14,4V8C7,9 4,14 3,19C5.5,15.5 9,13.9 14,13.9V18L21,11Z" />
+        </svg>
+        <md-tooltip md-direction="bottom">
+          {{ 'Move' | translate }}
+        </md-tooltip>
+      </md-button>
       <md-button ng-if="cardItem.showCardActions && vm.onVisibility" ng-show="vm.isVisible" class="md-icon-button" ng-click="vm.onVisibility({newStatus:false})">
         <icon>visibility_off</icon> <!-- visibility_off -->
         <md-tooltip md-direction="bottom">
@@ -29,6 +37,12 @@
         <icon>edit</icon>
         <md-tooltip md-direction="bottom">
           {{'Edit' | translate}}
+        </md-tooltip>
+      </md-button>
+       <md-button ng-if="cardItem.showCardActions && vm.onAdd" class="md-icon-button" ng-click="vm.onAdd({$event:$event})" ng-class="{'disabled': vm.disableAdd}">
+        <icon>add</icon>
+        <md-tooltip md-direction="bottom">
+          {{'Add sub group' | translate}}
         </md-tooltip>
       </md-button>
     </div>

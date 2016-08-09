@@ -12,6 +12,12 @@ import directive from './items/contextualDrawer.items.directive';
 import modController from './modifiers/contextualDrawer.modifiers.controller';
 import modDirective from './modifiers/contextualDrawer.modifiers.directive';
 
+import outletsController from './outlets/contextualDrawer.outlets.controller';
+import outletsDirective from './outlets/contextualDrawer.outlets.directive';
+
+import outletLocationsController from './outletLocations/contextualDrawer.outletLocations.controller';
+import outletLocationsDirective from './outletLocations/contextualDrawer.outletLocations.directive';
+
 import cardItemList from '../../cardItemList';
 
 import base from '../../../app.base';
@@ -26,4 +32,10 @@ export default angular.module("contextualDrawer" , [cardItemList, base])
 
   .controller(modController.UID, modController)
   .directive("contextualDrawerModifier", modDirective)
+
+  .controller(outletsController.UID, outletsController)
+  .directive("contextualDrawerOutlets", outletsDirective)
+
+  .controller(outletLocationsController.UID, outletLocationsController)
+  .directive("contextualDrawerOutletLocations", outletLocationsDirective)
   .name;

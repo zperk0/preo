@@ -1,0 +1,25 @@
+<div class='menu-section outlet-location-group'
+      ng-class="{expanded:vm.outletLocationGroup.$expanded}"
+      ng-attr-data-id="{{vm.outletLocationGroup.id}}">
+
+  <card-item  has-actions="vm.outletLocationGroup.$expanded"
+              deleted="vm.outletLocationGroup.$deleted"
+              selected="vm.outletLocationGroup.$selected"
+              expanded="vm.outletLocationGroup.$expanded"
+              >
+    <card-item-title
+	    has-visible="true"
+	    sv-root="item">
+	      <span>{{vm.outletLocationGroup.label || 'Group label' | translate}} </span>
+	   </card-item-title>
+    <outlet-location-list
+    			ng-if="vm.outletLocationGroup.$expanded"
+          group="vm.outletLocationGroup"
+          outlet-locations="vm.outletLocationGroup.outletLocations">
+    </outlet-location-list>
+    <card-item-actions is-visible="vm.outletLocationGroup.visible"
+                       on-delete="vm.onDelete()"
+                       on-edit="vm.onEdit($event)"
+                        ></card-item-actions>
+  </card-item>
+</div>

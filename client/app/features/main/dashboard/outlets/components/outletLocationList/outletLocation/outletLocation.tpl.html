@@ -1,0 +1,37 @@
+<div class='menu-section outlet-location'
+      ng-class="{expanded:vm.outletLocation.$expanded}"
+      ng-attr-data-id="{{vm.outletLocation.id}}">
+
+  <card-item  has-actions="true"
+              deleted="vm.outletLocation.$deleted"
+              selected="vm.outletLocation.$selected"
+              >
+    <card-item-title ng-click="vm.toggleExpanded($event)"
+                    has-visible="true"
+                    sv-root="item">
+                      <span>{{ vm.getOutletLocationName() }} </span>
+                    </card-item-title>
+
+    <div class='sv-dropzone sv-dropzone-outlet' sv-root="outlet">
+      <div class='sv-dropzone sv-dropzone-outlet' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewOutletMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+        <div sv-placeholder></div>
+      </div>
+    </div>    
+
+    <item-chips ng-if="vm.outletLocation.outletId && vm.outlets.length" items="vm.outlets" on-remove="vm.removeOutlet(item)"></item-chips>
+
+    <card-item-actions is-visible="vm.outletLocation.visible"
+                       on-move="vm.onMove()"
+                       on-clone="vm.onClone($event)"
+                       on-delete="vm.onDelete(createdOutlet)"
+                       on-edit="vm.onEdit($event)"
+                       on-add="vm.onAddSubGroup($event)"
+                       disable-add="vm.outletLocation.isSeat() || vm.outletLocation.hasChildren() || vm.outletLocation.outletId"
+                        ></card-item-actions>
+  </card-item>
+  
+
+  <md-button ng-if="!vm.outletLocation.isSeat() && vm.outletLocation.hasChildren()" class="md-icon-button btn-view-sub-group" ng-click="vm.showSubGroup()">
+    <icon>keyboard_arrow_right</icon>
+  </md-button>  
+</div>
