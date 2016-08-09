@@ -5,6 +5,7 @@ export default class contextualDrawerOutletLocationsController {
 
   close(){
 
+    this.selectedOutletLocation = null;
     this.contextualDrawer.cancel();
   }
 
@@ -14,9 +15,7 @@ export default class contextualDrawerOutletLocationsController {
       venueId: this.VenueService.currentVenue.id
     }).then((data) => {
 
-      this.data = {
-        outletLocations: Preoday.OutletLocationGroup.getGroupById(null).outletLocations
-      };
+      this.data = data;
 
       console.log('this.outletLocations in drawer', this.data);
     }, (err) => {
@@ -33,6 +32,16 @@ console.log('errrrr', err);
       this.Snack.showError('You need select a different outlet location destination');
       return;
     }
+    
+    if (outletLocation.path && outletLocation.path.indexOf('/' + outletLocationToMove.id + '/') !== -1) {
+      this.Snack.showError('You need select a different outlet location destination');
+      return;
+    }
+
+    if (!outletLocation.isGroup && outletLocation.isSeat()) {
+      this.Snack.showError('You can not add children for seat outlet location');
+      return;      
+    }
 
     this.selectedOutletLocation = outletLocation;
   }
@@ -47,6 +56,7 @@ console.log('errrrr', err);
       groupToMove = this.selectedOutletLocation.createGroup();
     }
 
+    this.selectedOutletLocation = null;
     this.contextualDrawer.success(groupToMove);
   }
 
@@ -56,6 +66,7 @@ console.log('errrrr', err);
     this.VenueService = VenueService;  
     this.contextualDrawer = contextualDrawer;  
     this.Snack = Snack;  
+    this.selectedOutletLocation = null;
 
     if (VenueService.hasVenueSet()) {
       this.fetchOutletLocations();

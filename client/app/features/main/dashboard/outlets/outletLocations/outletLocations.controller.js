@@ -12,19 +12,25 @@ export default class outletLocationsController {
 
   fetchOutlets() {
 
-    this.OutletLocationService.getOutletLocations({
-      venueId: this.VenueService.currentVenue.id
-    }).then((data) => {
 
-      this.outletLocations = data.outletLocations;
+    this.$q.all([
+        this.OutletLocationService.getOutletLocations({
+          venueId: this.VenueService.currentVenue.id
+        }),
+        this.OutletService.getOutlets({
+          venueId: this.VenueService.currentVenue.id
+        })        
+      ]).then((results) => {
+        console.log('results here', results);
+        this.data = results[0];
+        
+        this.buildUri();
 
-      this.buildUri();
-
-      console.log('this.outletLocations', this.outletLocations);
-    }, (err) => {
+        console.log('this.outletLocations', this.outletLocations);        
+      }, (err) => {
 console.log('errrrr', err);
       this.outletLocations = [];
-    });    
+    });   
   }
 
   buildUri () {
@@ -65,8 +71,8 @@ console.log('errrrr', err);
     this.outletGroup = Preoday.OutletLocationGroup.getGroupById(breadcumbs[breadcumbs.length - 1].group.id);
 
     if (!this.outletGroup) {
-      if (this.outletLocations.length) {
-        this.outletGroup = this.outletLocations[0].getGroup();
+      if (this.data.rootGroup && this.data.rootGroup.outletLocations.length) {
+        this.outletGroup = this.data.rootGroup.outletLocations[0].getGroup();
   // console.log(this.outletGroup, breadcumbs);
         let breadcumbGroup = breadcumbs.filter((item) => {
           
@@ -85,6 +91,8 @@ console.log('errrrr', err);
       } else {
         this.createEmptyGroup();
       }
+    } else if (!this.outletGroup.id && (!this.data.rootGroup || !this.data.rootGroup.outletLocations.length)) {
+      this.createEmptyGroup();
     }
 
 
@@ -105,7 +113,7 @@ console.log('errrrr', err);
 
   createEmptyGroup() {
 
-    this.outletGroup = null;
+    delete this.outletGroup;
   }
 
   groupDeleted () {
@@ -114,13 +122,16 @@ console.log('errrrr', err);
       this.$location.path(this.breadcumbs[this.breadcumbs.length - 2].url.replace('#/', ''));
     } else {
       this.createEmptyGroup();
+
+      this.data.rootGroup = null;
     }
   }
 
 
-  constructor(contextual, $scope, $timeout, $state, $location, $stateParams, BroadcastEvents, VenueService, OutletLocationService) {
+  constructor(contextual, $scope, $timeout, $q, $state, $location, $stateParams, BroadcastEvents, VenueService, OutletLocationService, OutletService) {
     "ngInject";
 
+    this.$q = $q;
     this.$timeout = $timeout;
     this.$state = $state;
     this.$location = $location;
@@ -128,6 +139,7 @@ console.log('errrrr', err);
     this.contextual = contextual;
     this.VenueService = VenueService;
     this.OutletLocationService = OutletLocationService;
+    this.OutletService = OutletService;
     this.loaded = false;
 
     if (VenueService.hasVenueSet()) {

@@ -1,8 +1,8 @@
  <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-outlet-locations md-whiteframe-4dp" md-component-id="outletLocations">
     <div class='contextual-list'>
       <outlet-location-tree has-search="true"
-         ng-if="drawerOutletLocationsCtrl.data.outletLocations && drawerOutletLocationsCtrl.data.outletLocations.length"
-         outlet-locations="drawerOutletLocationsCtrl.data.outletLocations"
+         ng-if="drawerOutletLocationsCtrl.data.rootGroup.outletLocations && drawerOutletLocationsCtrl.data.rootGroup.outletLocations.length"
+         outlet-locations="drawerOutletLocationsCtrl.data.rootGroup.outletLocations"
          on-select-item="drawerOutletLocationsCtrl.selectOutletLocation(outletLocation)"
          selected="drawerOutletLocationsCtrl.selectedOutletLocation"
          allow-select-group="true"

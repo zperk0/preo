@@ -6,31 +6,28 @@ export default class OutletLocationService {
 
   save(newData) {
 
-    // let deferred = this.$q.defer();
-
     return Preoday.OutletLocation.save(newData);
-      //   .then((outletLocation)=>{
-          
-      //   deferred.resolve(outletLocation);
-      // }, (err) => {
-
-      //   deferred.reject(err);
-      // });   
-
-    // return deferred.promise; 
   }  
 
   getOutletLocations(data){
 
-    if (this.data.outletLocations){
+    if (this.data.rootGroup && this.data.rootGroup.outletLocations){
       return this.$q.resolve(this.data);
     } else if ( this.p){
       return this.p;
     }
+
+    if (!data) {
+      data = {};
+    }
+
+    data.onlyOutletLocations = true;
+
     this.p = this.$q((resolve, reject)=>{
       Preoday.OutletLocation.getAll(data)
         .then((outletLocations)=>{
-          this.data.outletLocations = outletLocations;
+
+          this.buildRootGroup();
           resolve(this.data);
         },(err)=>{
           console.log("Error fetching outletLocations", err);
@@ -54,11 +51,36 @@ export default class OutletLocationService {
     return this.outletLocationToMove;
   }
 
-  constructor($q, $rootScope, $stateParams) {
+  getRootGroup() {
+
+    if (this.data.rootGroup) {
+      return this.data.rootGroup;
+    }
+
+    this.data.rootGroup = Preoday.OutletLocationGroup.createGroupByOutletLocation({
+      id: null,
+      venueId: this.venueId
+    });
+
+    return this.data.rootGroup;
+  }
+
+  buildRootGroup () {
+
+    this.data.rootGroup = Preoday.OutletLocationGroup.createGroupByOutletLocation({
+      id: null,
+      venueId: this.VenueService.currentVenue.id
+    });      
+  }
+
+  constructor($q, $rootScope, $stateParams, VenueService) {
     "ngInject";
     this.$stateParams = $stateParams;
+    this.VenueService = VenueService;
     this.$q =$q;
-    this.data={};
+    this.data={
+      rootGroup: null
+    };
     this.outletLocationToMove = {};
   }
 }

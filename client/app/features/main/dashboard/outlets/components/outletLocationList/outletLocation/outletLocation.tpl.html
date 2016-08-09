@@ -9,7 +9,7 @@
     <card-item-title ng-click="vm.toggleExpanded($event)"
                     has-visible="true"
                     sv-root="item">
-                      <span>{{vm.outletLocation.name}} </span>
+                      <span>{{ vm.getOutletLocationName() }} </span>
                     </card-item-title>
 
     <div class='sv-dropzone sv-dropzone-outlet' sv-root="outlet">
@@ -18,7 +18,7 @@
       </div>
     </div>    
 
-    <item-chips ng-if="vm.outletLocation.outletId" items="vm.outlets" on-remove="vm.removeOutlet(item)"></item-chips>
+    <item-chips ng-if="vm.outletLocation.outletId && vm.outlets.length" items="vm.outlets" on-remove="vm.removeOutlet(item)"></item-chips>
 
     <card-item-actions is-visible="vm.outletLocation.visible"
                        on-move="vm.onMove()"
@@ -32,9 +32,6 @@
   
 
   <md-button ng-if="!vm.outletLocation.isSeat() && vm.outletLocation.hasChildren()" class="md-icon-button btn-view-sub-group" ng-click="vm.showSubGroup()">
-    <icon>keyboard_arrow_right</icon> <!-- visibility_off -->
-<!--     <md-tooltip md-direction="bottom">
-      {{ 'Hide from menu' | translate }}
-    </md-tooltip> -->
+    <icon>keyboard_arrow_right</icon>
   </md-button>  
 </div>

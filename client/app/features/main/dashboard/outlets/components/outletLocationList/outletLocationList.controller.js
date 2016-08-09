@@ -8,16 +8,21 @@ export default class outletLocationListController {
     // rerorder outletLocation list. Just it
     console.log($items, $partFrom, $partTo, $indexFrom, $indexTo);
 
+    this.Spinner.show("outlet-location-move");
+    console.log("on outlet location moved, updating");
+    this.cardItemList.onSimpleSort(true).then((outletLocationsUpdated)=>{
 
-    // this.Spinner.show("section-move");
-    // console.log("on section moved, updating");
-    // this.cardItemList.onSimpleSort().then(()=>{
-    //   this.Snack.show('Section moved');
-    // }, ()=>{
-    //   this.Snack.showError('Error moving section');
-    // }).then(()=>{
-    //   this.Spinner.hide("section-move");
-    // })
+      outletLocationsUpdated.forEach((item, index) => {
+        this.outletLocations[index].position = item.position;
+      });
+
+      console.log('updated =====', this.outletLocations);
+      this.Snack.show('Outlet location moved');
+    }, ()=>{
+      this.Snack.showError('Error moving outlet location');
+    }).then(()=>{
+      this.Spinner.hide("outlet-location-move");
+    })
   }
 
   createOutletLocation(newData){
@@ -27,6 +32,11 @@ export default class outletLocationListController {
     this.Spinner.show("outlet-location-create");
 
     console.log('saving...', newData);
+    if (this.outletLocations.length > 1) {
+      newData.position = (this.outletLocations[this.outletLocations.length - 1].position || 0) + 1000;
+    } else {
+      newData.position = 0;
+    }
 
     this.OutletLocationService.save(newData)
         .then((outletLocation)=>{
@@ -74,7 +84,7 @@ export default class outletLocationListController {
       label: this.outletLocationGroup.label,
       path: this.outletLocationGroup.path,
       $selected:true,
-      position: this.outletLocations && this.outletLocations.length ? (this.outletLocations[this.outletLocations.length-1]).position + 1000 : 0
+      // position: this.outletLocations && this.outletLocations.length ? (this.outletLocations[this.outletLocations.length-1]).position + 1000 : 0
     });
   }  
 

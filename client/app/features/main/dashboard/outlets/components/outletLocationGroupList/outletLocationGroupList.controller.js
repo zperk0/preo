@@ -16,10 +16,7 @@ export default class outletLocationGroupListController {
       return;
     }
 
-    this.outletLocationGroup = Preoday.OutletLocationGroup.createGroupByOutletLocation({
-      id: null,
-      venueId: this.venueId
-    });      
+    this.outletLocationGroup = this.OutletLocationService.getRootGroup();
 
     this.outletLocationGroup.$fromList = true;
 

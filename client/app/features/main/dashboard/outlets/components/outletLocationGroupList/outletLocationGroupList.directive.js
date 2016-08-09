@@ -15,6 +15,20 @@ export default function outletLocationGroupList(){
     replace:true,
     link: (scope, el, attr) => {
 
+      let unRegisterWatch = scope.$watch(() => {
+
+        return scope.vm.outletLocationGroup;
+      }, () => {
+        
+        if (!scope.vm.outletLocationGroup) {
+          scope.vm.outletLocationGroups = [];
+        }
+      });
+
+      scope.$on('$destroy', () => {
+
+        unRegisterWatch && unRegisterWatch();
+      });
     }
   }
 }

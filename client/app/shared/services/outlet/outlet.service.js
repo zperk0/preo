@@ -27,7 +27,14 @@ export default class OutletService {
     return this.p;
   }
 
+  findById (id) {
 
+    let item = this.data.outlets.filter(function (o) {
+      return o.id === id;
+    });
+
+    return item && item.length ? item[0] : null;
+  }
 
   constructor($q, $rootScope, $stateParams) {
     "ngInject";

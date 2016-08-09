@@ -17,12 +17,15 @@ export default class outletLocationController {
         return;
       }
 
+      console.log('moving here...', $outlets);
+
       this.Spinner.show("moving-outlet-to-location");
 
       this.outletLocation.outletId = $outlets[0].id;
       this.outletLocation.update()
         .then(() => {
 
+          this.buildOutlet();
           this.Spinner.hide("moving-outlet-to-location");
         }, () => {
 
@@ -135,7 +138,7 @@ export default class outletLocationController {
         //   this.onItemCreated({item:createdItem});
         // }
       }, (err)=>{
-        console.log("failed creating item", err)
+        console.log("failed creating outlet location", err)
         this.Spinner.hide("outlet-location-clone")
         this.Snack.showError('Failed duplicating outlet location');
     });
@@ -163,6 +166,7 @@ export default class outletLocationController {
     this.outletLocation.outletId = null;
     this.outletLocation.update()
       .then(()=>{
+        this.outlets = [];
         this.Spinner.hide("outlet-location-remove-outlet")
       }, (err)=>{
         this.Spinner.hide("outlet-location-remove-outlet")
@@ -195,7 +199,9 @@ export default class outletLocationController {
 
             this.Spinner.hide("outlet-location-move");
             this.Snack.showError('Failed to move outlet location');
-          });
+          }).catch((err)=>{
+          console.log(err);
+        });
         
       }, (err) => {
         
@@ -203,7 +209,26 @@ export default class outletLocationController {
       });
   }
 
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, ErrorService, Spinner, $timeout, contextualMenu, contextual, OutletLocationService) {
+  buildOutlet() {
+
+    this.outlets = [this.OutletService.findById(this.outletLocation.outletId)];
+  }
+
+  getOutletLocationName () {
+
+    let fullName = [this.outletLocation.name];
+
+    if (this.outletLocation.isSeat()) {
+      fullName.push(' : ');
+      fullName.push(this.outletLocation.seatStart);
+      fullName.push('-');
+      fullName.push(this.outletLocation.seatEnd);
+    }
+
+    return fullName.join('');
+  }
+
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, ErrorService, Spinner, $timeout, contextualMenu, contextual, OutletLocationService, OutletService) {
     "ngInject";
 
     this.$q =$q;
@@ -215,16 +240,18 @@ export default class outletLocationController {
     this.LabelService = LabelService;
     this.ErrorService = ErrorService;
     this.OutletLocationService = OutletLocationService;
+    this.OutletService = OutletService;
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
     this.type = 'outletLocation'; //type for contextual menu
 
-    this.outlets = [{
-      name: 'Outlet name'
-    }];
+    this.newModifiers = [];
 
-    this.newModifiers = []
+    if (this.outletLocation && this.outletLocation.outletId) {
+      this.buildOutlet();
+    }
 
+    console.log('new outlet location', this.outletLocation);
     //if it's a new outlet location we toggle the context menu to edit this
     if (this.outletLocation && !this.outletLocation.id) {
         console.log("here ho");

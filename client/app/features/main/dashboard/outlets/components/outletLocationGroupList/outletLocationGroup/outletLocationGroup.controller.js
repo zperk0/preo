@@ -20,6 +20,7 @@ export default class outletLocationGroupController {
   }
 
   contextualMenuSuccess(entity){
+    console.log('entity', entity, this.outletLocationGroup);
     if (this.outletLocationGroup && entity && entity.label){
       this.outletLocationGroup = entity;
 

@@ -15,6 +15,7 @@ export default function outletLocationTreeItem(){
       scope.toggleExpand = _toggleExpand;
       scope.selectItem = _selectItem;
       scope.isSelected = _isSelected;
+      scope.getOutletLocationName = _getOutletLocationName;
 
       function _toggleExpand() {
 
@@ -36,6 +37,20 @@ export default function outletLocationTreeItem(){
 
         return scope.selected && scope.selected.id === scope.outletLocation.id;
       }
+
+      function _getOutletLocationName () {
+
+        let fullName = [scope.outletLocation.name];
+
+        if (scope.outletLocation.isSeat()) {
+          fullName.push(' : ');
+          fullName.push(scope.outletLocation.seatStart);
+          fullName.push('-');
+          fullName.push(scope.outletLocation.seatEnd);
+        }
+
+        return fullName.join('');
+      }      
     }
   }
 }
