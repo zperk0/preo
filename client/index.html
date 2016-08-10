@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="webapp" id="webappv2" lang="en">
+<html  id="webappv2" lang="en">
 <head>
   <meta charset="UTF-8">
   <title>webapp</title>
@@ -8,9 +8,12 @@
   <!-- @@ANALYTICS -->
 </head>
 <body>
-  <toolbar></toolbar>
-  <navbar></navbar>
-  <div class='main-ui-view' ui-view></div>
-  <spinner></spinner>
+  <div ng-app="webapp" class='webapp'>
+    <toolbar></toolbar>
+    <navbar></navbar>
+    <div class='main-ui-view' ui-view></div>
+    <spinner></spinner>
+  </div>
+    <div data-preo-venue="9"  id="webordersv2"></div>
 </body>
 </html>
