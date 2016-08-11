@@ -13,6 +13,7 @@ export default function imageUploader(){
     controllerAs: "vm",
     bindToController: true,
     link: (scope, el, attr, ctrl) => {
+      ctrl.el = el;
       el.on('$destroy',()=>{
         ctrl.onDestroy();
       })

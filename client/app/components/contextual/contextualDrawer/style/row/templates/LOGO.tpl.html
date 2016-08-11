@@ -1,0 +1,9 @@
+<md-radio-group ng-init="radioChoice='text'" class='size' ng-model="radioChoice">
+  <md-radio-button value="text" class="md-primary md-hue-2">{{'Text' | translate}}</md-radio-button>
+  <md-radio-button value="image" class="md-primary md-hue-2"> {{'Image' | translate}} </md-radio-button>
+</md-radio-group>
+<md-input-container ng-show="radioChoice==='text'" >
+    <label translate>Venue name</label>
+    <input flex name="search" ng-model="model.bannerText">
+</md-input-container>
+  <image-uploader ng-show="radioChoice==='image'" ng-model="model.$images.logoImage"></image-uploader>

@@ -3,7 +3,7 @@ export default class imageUploaderController {
     return "imageUploaderController"
   }
   target(){
-    document.querySelector("#imagefile").click();
+    this.el[0].querySelector(".imagefile").click();
   }
 
   deleteImage($event){
@@ -20,7 +20,7 @@ export default class imageUploaderController {
         this.ngModel[0].$delete = true;
         delete this.ngModel[0].$image;
       }
-    angular.element(document.querySelector(".image-wrapper.not-found")).removeClass("not-found");
+    angular.element(this.el[0].querySelector(".image-wrapper.not-found")).removeClass("not-found");
     $event.stopPropagation();
   }
 
@@ -40,7 +40,7 @@ export default class imageUploaderController {
             }
             this.ngModel[0].$delete = false;
             this.ngModel[0].$save = true;
-            angular.element(document.querySelector(".image-wrapper.not-found")).removeClass("not-found");
+            angular.element(this.el[0].querySelector(".image-wrapper.not-found")).removeClass("not-found");
           }, ()=>{
             console.log("cancelling img dialog")
           })
@@ -74,6 +74,7 @@ export default class imageUploaderController {
     this.$timeout = $timeout;
     this.CroppieService = CroppieService;
     this.Snack = Snack;
+    console.log("constrcut")
     if (this.ngModel && this.ngModel.length && !this.ngModel[0].$image && this.ngModel[0].image){
       this.ngModel[0].$image = this.UtilsService.getImagePath(this.ngModel[0].image);
       console.log("have length", this.ngModel[0].$image)

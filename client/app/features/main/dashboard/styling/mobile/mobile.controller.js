@@ -5,7 +5,9 @@ export default class mobileController {
   }
 
 
-  constructor() {
+  constructor(contextual, $location) {
     "ngInject";
+    $location.search('drawer-style','LOGO')
+    contextual.showDrawer('style');
   }
 }

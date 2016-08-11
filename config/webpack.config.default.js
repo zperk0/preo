@@ -133,7 +133,9 @@ module.exports = function(ENV, options) {
         test: /\.js$/,
         loader: "eslint-loader",
         exclude: [/node_modules/, /bower_components/]
-      }]
+      },
+      { test: require.resolve("tinycolor2"), loader: "expose?tinycolor" }
+      ]
     },
     /**
      * Plugins

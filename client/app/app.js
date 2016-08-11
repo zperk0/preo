@@ -16,7 +16,6 @@ import angularSortableView from 'angular-sortable-view';
 import croppie from 'croppie';
 
 
-
 // Import base modules
 import config from './app.config';
 import run from './app.run';

@@ -1,8 +1,15 @@
  <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="style">
-  <div translate>Navigation</div>
-  <div translate>Header</div>
-  <div translate>Logo</div>
-  <div translate>Buttons and Section names</div>
-  <div translate>Button Background</div>
-  <div translate>Page Background</div>
+  <div class='contextual-list'>
+
+    <drawer-style-row ng-if="drawerStyleCtrl.model" ng-repeat="style in drawerStyleCtrl.styles" model="drawerStyleCtrl.model" entity="style"></drawer-style-row>
+
+  </div>
+  <md-card-actions layout="row" layout-align="end center">
+      <md-button ng-click="drawerStyleCtrl.close()" translate>
+          Cancel
+      </md-button>
+      <md-button ng-click="drawerStyleCtrl.saveAndClose()" class='md-raised' translate>
+          Done
+      </md-button>
+  </md-card-actions>
 </md-sidenav>

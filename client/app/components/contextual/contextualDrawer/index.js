@@ -20,6 +20,7 @@ import outletLocationsDirective from './outletLocations/contextualDrawer.outletL
 
 import styleController from './style/contextualDrawer.style.controller';
 import styleDirective from './style/contextualDrawer.style.directive';
+import styleRowDirective from './style/row/contextualDrawer.style-row.directive';
 
 import cardItemList from '../../cardItemList';
 
@@ -44,4 +45,5 @@ export default angular.module("contextualDrawer" , [cardItemList, base])
 
   .controller(styleController.UID, styleController)
   .directive("contextualDrawerStyle", styleDirective)
+  .directive("drawerStyleRow", styleRowDirective)
   .name;

@@ -1,7 +1,7 @@
 <div class='styling-weborders' layout="column">
   <div class="sub-toolbar" layout="row" layout-align="start center">
-    <span translate>View:</span> <md-button ng-click="vm.increaseZoom()"><icon>add_circle</icon></md-button> <span class='zoom-level'>{{vm.zoomLevel}}</span> <md-button><icon ng-click="vm.decreaseZoom()">remove_circle</icon></md-button>
+    <span translate>View:</span> <md-button ng-click="vm.increaseZoom()"><icon>add_circle</icon></md-button> <span class='zoom-level'>{{vm.zoomLevel | percent:0}}</span> <md-button><icon ng-click="vm.decreaseZoom()">remove_circle</icon></md-button>
     <md-button flex class='weborders-link md-primary md-hue-2' target='_blank' href="https://menus-demo.preoday.com/jasons-cafe"  translate>Show modifiers</md-button>
   </div>
-  <iframe id='web-orders-iframe' src='http://localhost:3000?editor=true'>
+  <iframe class='zoom-level-{{(vm.zoomLevel*100).toFixed()}}' id='web-orders-iframe' src='http://localhost:3000?editor=true'>
 </div>

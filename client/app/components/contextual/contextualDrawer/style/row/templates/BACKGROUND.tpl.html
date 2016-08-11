@@ -1,0 +1,14 @@
+<md-radio-group ng-init="radioChoice='color'" class='size' ng-model="radioChoice">
+  <md-radio-button value="color" class="md-primary md-hue-2">{{'Colour' | translate}}</md-radio-button>
+  <md-radio-button value="image" class="md-primary md-hue-2"> {{'Image' | translate}} </md-radio-button>
+</md-radio-group>
+<div ng-show="radioChoice==='color'"  md-color-picker
+                 label="{{'Choose a colour' | translate}}"
+                 ng-model="model.backgroundColour"
+                 md-color-alpha-channel="false"
+                 md-color-history="false"
+                 md-color-material-palette="false"
+                 md-color-generic-palette="false"
+                 md-color-sliders="false"
+                 ></div>
+<image-uploader ng-show="radioChoice==='image'"  ng-model="model.$images.backgroundImage"></image-uploader>

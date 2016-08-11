@@ -3,6 +3,21 @@ export default class contextualDrawerService {
     return "contextualDrawer";
   }
 
+  isOpen(id){
+    if (this.id === id){
+      return true;
+    }
+    return false;
+  }
+
+  //remove
+  clearLocationParam(){
+    angular.forEach(this.$location.search(),(i,k)=>{
+     if (k.indexOf("drawer") === 0){
+        this.$location.search(k,null)
+      }
+    })
+  }
 
   //same as close but doesn't call error callback
   close(){
@@ -10,16 +25,15 @@ export default class contextualDrawerService {
       this.$mdSidenav(this.id).close();
       this.id = false;
     }
+    this.clearLocationParam();
   }
 
-  //same as close but doesn't call error callback
   cancel(err){
 
     this.close();
     this.deferred && this.deferred.reject(err);
   }
 
-  //same as close but doesn't call error callback
   success(data){
 
     this.close();
@@ -38,7 +52,7 @@ export default class contextualDrawerService {
     this.$mdSidenav(id)
       .toggle()
       .then(function (argument) {
-        
+
         console.log(arguments);
       })
 
@@ -46,8 +60,9 @@ export default class contextualDrawerService {
 
   }
 
-  constructor($compile, $rootScope, $q, $mdSidenav) {
+  constructor($compile, $rootScope, $q, $mdSidenav, $location) {
     "ngInject";
+    this.$location = $location;
     this.$compile = $compile;
     this.$rootScope = $rootScope;
     this.$q = $q;
