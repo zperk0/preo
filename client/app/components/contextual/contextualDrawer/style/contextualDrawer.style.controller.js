@@ -35,7 +35,7 @@ export default class contextualDrawerStyleController {
   }
 
   saveSettings(){
-
+  this.Spinner.show('style-saving');
   return this._saveImages()
     .then(()=>{
           if (this.model.venueId){
@@ -54,7 +54,12 @@ export default class contextualDrawerStyleController {
 
   saveAndClose(){
     return this.saveSettings().then(()=>{
+      this.Spinner.hide('style-saving');
+      this.Snack.show(this.LabelService.SNACK_WEBSETTINGS_SUCCESS)
       return this.close();
+    }).catch(()=> {
+      this.Spinner.hide('style-saving');
+      this.Snack.showError(this.LabelService.SNACK_WEBSETTINGS_ERROR)
     });
   }
 
@@ -95,9 +100,10 @@ export default class contextualDrawerStyleController {
 
 
 
-  constructor($q, $scope, $mdSidenav, Spinner, $stateParams, contextualDrawer, $location, $timeout, gettextCatalog, $rootScope) {
+  constructor($q, $scope, $mdSidenav, Spinner, Snack, $stateParams, contextualDrawer, $location, $timeout, gettextCatalog, $rootScope, LabelService) {
     "ngInject";
     this.$q = $q;
+    this.LabelService = LabelService;
     this.contextualDrawer = contextualDrawer;
     Spinner.show('style-drawer');
     this.$stateParams = $stateParams;
@@ -108,6 +114,7 @@ export default class contextualDrawerStyleController {
     this.$location = $location;
     this.$timeout = $timeout;
     this.Spinner = Spinner;
+    this.Snack = Snack;
 
     this.styles = [
     {
