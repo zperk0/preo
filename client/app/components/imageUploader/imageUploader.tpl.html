@@ -2,8 +2,7 @@
   <div class='image-wrapper placeholder' ng-if="!vm.ngModel.length || !vm.ngModel[0].$image">
   </div>
   <div class='image-wrapper' ng-if="vm.ngModel.length && vm.ngModel[0].$image">
-   <img ng-src='{{vm.ngModel[0].$image}}' onerror="this.parentElement.className += ' not-found'";
-}" >
+   <img ng-src='{{vm.ngModel[0].$image}}' onerror="this.parentElement.className += ' not-found'";>
    <div class='image-not-found'>
         <icon>not_interested</icon>
         <span translate>Image not found</span>
@@ -14,7 +13,7 @@
     <icon>info</icon>
     <span class='text' translate>Upload specs</span>
       <md-tooltip md-direction="bottom">
-        {{'Dimensions' | translate}}: 590 x 333px <br/>
+        {{'Dimensions' | translate}}:{{vm.dimensions}} <br/>
         {{'Max file size' | translate}}: 5mb <br/>
         {{'File type' | translate}}: jpg, png
       </md-tooltip>

@@ -6,7 +6,8 @@ export default function imageUploader(){
     restrict: 'E',
     scope: {
       initialValue:"=?",
-      ngModel:"="
+      ngModel:"=",
+      dimensions:"@"
     },
     template: require("./imageUploader.tpl.html"),
     controller: controller.UID,

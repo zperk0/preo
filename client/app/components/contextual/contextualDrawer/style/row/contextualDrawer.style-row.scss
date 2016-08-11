@@ -1,5 +1,10 @@
 .style-row{
   border-bottom:1px solid #CCCCCC;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
   .header{
     padding:16px 24px;
     background: #F5F5F5;
@@ -16,6 +21,50 @@
     .header{
       background: #616161;
       color:#FFFFFF;
+    }
+  }
+
+  .form-style{
+    padding:8px 24px 0;
+
+    .md-color-picker-input-container{
+      position: relative;
+      top: 12px;
+    }
+
+    md-radio-button{
+      display: inline-block;
+      margin-right:16px;
+      margin-bottom: 24px;
+
+    }
+    md-input-container{
+      display: block;
+      margin-top:0;
+    }
+
+    [md-color-picker] .md-color-picker-input-container .md-color-picker-preview, md-color-picker .md-color-picker-input-container .md-color-picker-preview {
+      top:4px;
+      left:-6px;
+    }
+
+    .venue-name{
+      margin-bottom: 0;
+      position: relative;
+      top: 8px;
+    }
+
+    &.HEADER .image-uploader{
+      width: 100%;
+      height: 70px;
+    }
+    &.LOGO .image-uploader{
+      width: 100%;
+      height: 110px;
+    }
+    &.BACKGROUND .image-uploader{
+      width: 100%;
+      height: 175px;
     }
   }
 }

@@ -2,7 +2,7 @@
   <md-radio-button value="text" class="md-primary md-hue-2">{{'Text' | translate}}</md-radio-button>
   <md-radio-button value="image" class="md-primary md-hue-2"> {{'Image' | translate}} </md-radio-button>
 </md-radio-group>
-<md-input-container ng-show="radioChoice==='text'" >
+<md-input-container class='venue-name' ng-show="radioChoice==='text'" >
     <label translate>Venue name</label>
     <input flex name="search" ng-model="model.bannerText">
 </md-input-container>
@@ -15,4 +15,4 @@
      md-color-generic-palette="false"
      md-color-sliders="false"
       ></div>
-  <image-uploader ng-show="radioChoice==='image'" ng-model="model.$images.logoImage"></image-uploader>
+  <image-uploader dimensions="270 x 104 px" ng-show="radioChoice==='image'" ng-model="model.$images.logoImage"></image-uploader>
