@@ -83,14 +83,14 @@ export default class contextualDrawerStyleController {
     let match =  this.styles.filter((i)=> i.id === style.id)[0];
 
     if (match && !match.expanded){
+      // this.styles.forEach((i)=>{ //collapse all
+      //   i.expanded = false;
+      // })
+      // this.$timeout(()=>{ //timeout for animation
       this.styles.forEach((i)=>{ //collapse all
-        i.expanded = false;
+        i.expanded = i.id === style.id;
       })
-      this.$timeout(()=>{ //timeout for animation
-        this.styles.forEach((i)=>{ //collapse all
-          i.expanded = i.id === style.id;
-        })
-      },300)
+      // })
     }
 
   }
