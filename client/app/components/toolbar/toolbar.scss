@@ -33,3 +33,15 @@ md-toolbar{
     }
   }
 }
+
+.sub-toolbar{
+  background: #EEEEEE;
+  border-bottom:1px solid #CCCCCC;
+  min-height:50px;
+  width: 100%;
+  font-size:14px;
+  position: fixed;
+  z-index:21;
+  top:64px;
+  padding-left:24px;
+}
