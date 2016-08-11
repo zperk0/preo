@@ -15,7 +15,7 @@ export default class webordersController {
   openDrawer(el){
     this.$location.search('drawer-style',el);
     this.$scope.$apply(); //apply to immediatelly change the location ,not only on next digest cycle
-
+    console.log("$scope applied");
 
   }
 
@@ -50,14 +50,14 @@ export default class webordersController {
     if (!window.hasListener){
       window.addEventListener("message", this.receiveMessage.bind(this), false);
       window.hasListener = true;
-    }
 
-    $rootScope.$on('$locationChangeSuccess', (event)=>{
-      console.log("location change success", $location, $location.search());
-      if (!this.contextualDrawer.isOpen('style') && this.$location.search()['drawer-style']){
-        this.contextual.showDrawer('style');
-      }
-    })
+      $rootScope.$on('$locationChangeSuccess', (event)=>{
+        console.log("location change success", $location, $location.search());
+        if (!this.contextualDrawer.isOpen('style') && this.$location.search()['drawer-style']){
+          this.contextual.showDrawer('style');
+        }
+      })
+    }
 
 
     Spinner.show('iframe');
