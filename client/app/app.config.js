@@ -4,7 +4,9 @@ export default function config($mdThemingProvider, $locationProvider){
 
   if (!window._PREO_DATA){
     window._PREO_DATA = {
-      _CDNROOT : 'http://cdn-local.preoday.com'
+      _CDNROOT : 'http://cdn-local.preoday.com',
+      _WEBORDERS : 'http://local.menus-v2.preoday.com/',
+      _ORDERSAPP : 'http://local.orders.preoday.com/',
     }
   }
 

@@ -21,7 +21,10 @@ export default class webordersController {
 
   receiveMessage(event){
       var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
-      if (origin !== "http://localhost:3000"){
+      if (origin[origin.length-1] !=='/')
+          origin+="/";
+      if (origin !== window._PREO_DATA._WEBORDERS){
+        console.log("received message from origin", origin);
         return;
       }
       console.log("got event", event);
@@ -37,8 +40,12 @@ export default class webordersController {
   }
 
 
-  constructor($scope, Spinner, contextual, $location, contextualDrawer, $rootScope) {
+  constructor($scope, $stateParams, Spinner, contextual, $location, contextualDrawer, $rootScope) {
     "ngInject";
+    this.webordersUrl = window._PREO_DATA._WEBORDERS+'?venueId='+$stateParams.venueId;
+    this.webordersEditUrl = this.webordersUrl+'&editor=true'
+    console.log(this.webordersUrl);
+
     this.$scope = $scope;
     if (!window.hasListener){
       window.addEventListener("message", this.receiveMessage.bind(this), false);

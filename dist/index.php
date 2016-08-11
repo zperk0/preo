@@ -2,11 +2,23 @@
 session_start();
 
 $cdnRoot = "https://cdn-demo.preoday.com/";
+$ordersapp = "https://orders-demo.preoday.com/";
+$weborders = "https://menus-v2-demo.preoday.com/";
 $analytics = '';
 
 if(isset($_SERVER["PREO_CDN"]))
 {
     $cdnRoot = $_SERVER["PREO_CDN"];
+}
+
+if(isset($_SERVER["PREO_WEBORDERS"]))
+{
+    $weborders = $_SERVER["PREO_WEBORDERS"];
+}
+
+if(isset($_SERVER["PREO_ORDERSAPP"]))
+{
+    $ordersapp = $_SERVER["PREO_ORDERSAPP"];
 }
 
 if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
@@ -28,6 +40,8 @@ $contentsIndexHTML = file_get_contents($pathIndexHTML);
 $overrides = "<script>";
 $overrides .= "window._PREO_DATA={};";
 $overrides .= "window._PREO_DATA._CDNROOT='$cdnRoot';";
+$overrides .= "window._PREO_DATA._ORDERSAPP='$ordersapp';";
+$overrides .= "window._PREO_DATA._WEBORDERS='$weborders';";
 $overrides .= "</script>";
 
 $contentsIndexHTML = str_replace("<!-- @@OVERRIDES -->",$overrides,$contentsIndexHTML);
