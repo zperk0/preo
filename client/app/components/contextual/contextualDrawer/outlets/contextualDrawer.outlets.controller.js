@@ -14,6 +14,7 @@ export default class contextualDrawerOutletsController {
   constructor($scope, OutletService, $stateParams,$mdSidenav) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
+    this.cancelledOutlets = [];
 
     OutletService.getOutlets({
       venueId: $stateParams.venueId

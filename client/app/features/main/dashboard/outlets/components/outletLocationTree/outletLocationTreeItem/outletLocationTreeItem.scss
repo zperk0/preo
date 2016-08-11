@@ -4,15 +4,30 @@
 		margin-bottom: 0px;
 	}
 
+
+
 	.outlet-location-name {
 		font-size: 13px;
 		color: #757575;
 		cursor: pointer;
 		padding: 4px 0 4px 24px;
+		overflow: hidden;
+		width: 100%;
 
 		md-icon {
 			cursor: pointer;
-			margin-right: 12px;
+		}
+
+		.content-icon {
+			display: inline-block;
+			vertical-align: middle;
+	    height: 24px;
+	    width: 24px;
+	    margin-right: 12px;		
+		}		
+
+		.name {
+			vertical-align: middle;
 		}
 	}
 

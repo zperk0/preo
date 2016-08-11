@@ -6,12 +6,20 @@
 
   &.contextual-drawer-outlet-locations {
     .contextual-list {
-      padding-top: 24px;
+      padding-top: 11px;
     }
 
     .md-button {
       &[disabled] {
         background-color: #e3e3e3 !important;
+      }
+    }
+  }
+
+  &.contextual-drawer-outlets {
+    .repeat-holder{
+      .sort-holder{    
+        padding-top: 22px;
       }
     }
   }
@@ -82,5 +90,9 @@
   }
   .modifier-item{
    margin: 0px 22px 8px;
+  }
+
+  .outlet-list {
+    padding: 0 22px;
   }
 }

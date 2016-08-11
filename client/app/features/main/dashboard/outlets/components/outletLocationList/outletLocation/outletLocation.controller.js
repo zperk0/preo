@@ -103,18 +103,10 @@ export default class outletLocationController {
 
   onAddSubGroup ($event) {
 
-    if (this.outletLocation.isSeat()) {
-      this.Snack.showError(this.ErrorService.OUTLET_LOCATION_SUB_GROUP_SEAT.message);
-      return;
-    }
+    if (this.outletLocation.isSeat()
+        || this.outletLocation.hasChildren()
+        || this.outletLocation.outletId) {
 
-    if (this.outletLocation.hasChildren()) {
-      this.Snack.showError(this.ErrorService.OUTLET_LOCATION_SUB_GROUP_CHILDREN.message);
-      return;
-    }
-
-    if (this.outletLocation.outletId) {
-      this.Snack.showError(this.ErrorService.OUTLET_LOCATION_SUB_GROUP_OUTLET.message);
       return;
     }
 
@@ -227,7 +219,24 @@ export default class outletLocationController {
     return fullName.join('');
   }
 
-  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, LabelService, ErrorService, Spinner, $timeout, contextualMenu, contextual, OutletLocationService, OutletService) {
+  getAddSubGroupMessage () {
+
+    if (this.outletLocation.isSeat()) {
+      return this.ErrorService.OUTLET_LOCATION_SUB_GROUP_SEAT.message;
+    }
+
+    if (this.outletLocation.hasChildren()) {
+      return this.ErrorService.OUTLET_LOCATION_SUB_GROUP_CHILDREN.message;
+    }
+
+    if (this.outletLocation.outletId) {
+      return this.ErrorService.OUTLET_LOCATION_SUB_GROUP_OUTLET.message;
+    }    
+
+    return this.gettextCatalog.getString('Add sub group');
+  }
+
+  constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, LabelService, ErrorService, Spinner, $timeout, contextualMenu, contextual, gettextCatalog, OutletLocationService, OutletService) {
     "ngInject";
 
     this.$q =$q;
@@ -241,6 +250,7 @@ export default class outletLocationController {
     this.OutletService = OutletService;
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
+    this.gettextCatalog = gettextCatalog;
     this.type = 'outletLocation'; //type for contextual menu
     this.outlets = [];
 

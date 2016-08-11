@@ -9,6 +9,7 @@ export default function outlet(){
     template: require("./outlet.tpl.html"),
     controller: controller.UID,
     controllerAs: "vm",
+    replace: true,
     bindToController: true,
     link: (scope, el, attr, ctrl) => {
 
