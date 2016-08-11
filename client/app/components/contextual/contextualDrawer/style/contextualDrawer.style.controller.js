@@ -85,9 +85,8 @@ export default class contextualDrawerStyleController {
           console.log("this model", this.model)
         })
       },()=>{ //api returns 404 if not found
-        this.model = {
-          $logoImages:[]
-        }
+        this.model = {}
+        this._restoreImages()
         this.Spinner.hide('style-drawer');
       }).catch((err)=>{
         console.log("err", err)
