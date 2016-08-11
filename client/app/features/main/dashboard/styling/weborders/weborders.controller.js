@@ -21,10 +21,10 @@ export default class webordersController {
 
   receiveMessage(event){
       var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
-      if (origin[origin.length-1] !=='/')
-          origin+="/";
-      if (origin !== window._PREO_DATA._WEBORDERS){
-        console.log("received message from origin", origin);
+      let originToCompare = origin.split("//")[1].split("/")[0]
+      let webordersOrigin = window._PREO_DATA._WEBORDERS.split("//")[1].split("/")[0];
+      console.log("received message from origin", origin, originToCompare, webordersOrigin);
+      if (originToCompare !== webordersOrigin){
         return;
       }
       console.log("got event", event);
