@@ -6,6 +6,13 @@ export default class imageUploaderController {
     this.el[0].querySelector(".imagefile").click();
   }
 
+  callOnChange(){
+    console.log("calling on change", this.onChange)
+    if (this.onChange){
+      this.onChange({image:this.ngModel[0]});
+    }
+  }
+
   deleteImage($event){
     //if it's a tmp image delete it, otherwise mark it to be deleted when DONE is clicked
       if (this.ngModel[0].$save){
@@ -20,6 +27,7 @@ export default class imageUploaderController {
         this.ngModel[0].$delete = true;
         delete this.ngModel[0].$image;
       }
+    this.callOnChange();
     angular.element(this.el[0].querySelector(".image-wrapper.not-found")).removeClass("not-found");
     $event.stopPropagation();
   }
@@ -40,6 +48,7 @@ export default class imageUploaderController {
             }
             this.ngModel[0].$delete = false;
             this.ngModel[0].$save = true;
+            this.callOnChange();
             angular.element(this.el[0].querySelector(".image-wrapper.not-found")).removeClass("not-found");
           }, ()=>{
             console.log("cancelling img dialog")

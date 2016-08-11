@@ -12,4 +12,4 @@
      md-color-generic-palette="false"
      md-color-sliders="false"
       ></div>
-<image-uploader dimensions="1600 x 152 px"  ng-show="radioChoice==='image'" ng-model="model.$images.bannerImage"></image-uploader>
+<image-uploader on-change="onChange('bannerImage', image)" dimensions="1600 x 152 px"  ng-show="radioChoice==='image'" ng-model="model.$images.bannerImage"></image-uploader>

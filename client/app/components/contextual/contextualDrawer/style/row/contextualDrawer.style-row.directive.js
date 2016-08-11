@@ -18,8 +18,10 @@ export default function contextualMenu($compile){
       let $templateEl = $compile($template)(scope);
       let wrapper = angular.element(el[0].querySelector(".form-style"));
       wrapper.prepend($templateEl);
-      console.log("wrapper", wrapper, $templateEl)
 
+      scope.onChange = (key, imageModel)=>{
+        ctrl.onImageUpload(key, imageModel)
+      }
     }
   }
 }

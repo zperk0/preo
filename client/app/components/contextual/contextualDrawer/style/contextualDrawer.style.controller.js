@@ -34,6 +34,16 @@ export default class contextualDrawerStyleController {
     return this.$q.all(promises);
   }
 
+  onImageUpload(key, image){
+    if (key && image){
+      if (image.$delete || !image.$image){
+        this.model[key] = '';
+      } else if (image.$image){
+        this.model[key] = image.$image;
+      }
+    }
+  }
+
   saveSettings(){
   this.Spinner.show('style-saving');
   return this._saveImages()
@@ -56,6 +66,7 @@ export default class contextualDrawerStyleController {
     return this.saveSettings().then(()=>{
       this.Spinner.hide('style-saving');
       this.Snack.show(this.LabelService.SNACK_WEBSETTINGS_SUCCESS)
+      this.originalModel = angular.copy(this.model);
       return this.close();
     }).catch(()=> {
       this.Spinner.hide('style-saving');
@@ -64,13 +75,24 @@ export default class contextualDrawerStyleController {
   }
 
   close(){
+    this.model = this.originalModel;
     return this.contextualDrawer.close();
   }
 
   toggleExpanded(style){
-    this.styles.forEach((i)=>{
-      i.expanded = i.id === style.id;
-    })
+    let match =  this.styles.filter((i)=> i.id === style.id)[0];
+
+    if (match && !match.expanded){
+      this.styles.forEach((i)=>{ //collapse all
+        i.expanded = false;
+      })
+      this.$timeout(()=>{ //timeout for animation
+        this.styles.forEach((i)=>{ //collapse all
+          i.expanded = i.id === style.id;
+        })
+      },300)
+    }
+
   }
 
   restoreSearch(){
@@ -81,14 +103,10 @@ export default class contextualDrawerStyleController {
   }
 
   getWebSettings(){
-    Preoday.VenueWebSettings.get(this.$stateParams.venueId)
+    return Preoday.VenueWebSettings.get(this.$stateParams.venueId)
       .then((webSettings)=>{
-        this.$timeout(()=>{
-          this.model = webSettings;
-          this._restoreImages();
-          this.Spinner.hide('style-drawer');
-          console.log("this model", this.model)
-        })
+        this.model = webSettings;
+        this.Spinner.hide('style-drawer');
       },()=>{ //api returns 404 if not found
         this.model = {}
         this._restoreImages()
@@ -96,6 +114,11 @@ export default class contextualDrawerStyleController {
       }).catch((err)=>{
         console.log("err", err)
       })
+  }
+
+  dispatchChange(){
+    console.log("dispatching change", this.model,window._PREO_DATA._WEBORDERS)
+    document.querySelector('iframe').contentWindow.postMessage(this.model,window._PREO_DATA._WEBORDERS)
   }
 
 
@@ -108,13 +131,25 @@ export default class contextualDrawerStyleController {
     Spinner.show('style-drawer');
     this.$stateParams = $stateParams;
 
-    this.getWebSettings();
+    this.getWebSettings().then(()=>{
+      this._restoreImages();
+      this.originalModel = angular.copy(this.model);
+      $scope.$watch('drawerStyleCtrl.model',(value)=>{
+        this.dispatchChange();
+      }, true);
+
+      $scope.$watch('drawerStyleCtrl.model.$images',(value)=>{
+        this.dispatchChange();
+      }, true);
+    })
     this.$mdSidenav = $mdSidenav;
     this.$scope = $scope;
     this.$location = $location;
     this.$timeout = $timeout;
     this.Spinner = Spinner;
     this.Snack = Snack;
+
+
 
     this.styles = [
     {
