@@ -1,4 +1,4 @@
-<div class='menu-section outlet-location'
+<div class='outlet-location'
       ng-class="{expanded:vm.outletLocation.$expanded}"
       ng-attr-data-id="{{vm.outletLocation.id}}">
 
@@ -27,6 +27,7 @@
                        on-edit="vm.onEdit($event)"
                        on-add="vm.onAddSubGroup($event)"
                        disable-add="vm.outletLocation.isSeat() || vm.outletLocation.hasChildren() || vm.outletLocation.outletId"
+                       add-message="vm.getAddSubGroupMessage()"
                         ></card-item-actions>
   </card-item>
   

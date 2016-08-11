@@ -1,4 +1,4 @@
-<div class="menu-section-list">
+<div class="outlet-list">
   <div class='sv-root-holder'
       sv-root="outlet"
       sv-disabled="vm.svDisabled"
@@ -6,18 +6,18 @@
 
     <card-item-list
         collection="vm.outlets">
-    <div class='sort-holder' 
-      sv-multi-select='vm.svMultiSelect'
-      sv-keep-in-list='vm.svKeepInList' 
-      sv-is-dropzone='false'   
-      sv-part="vm.outlets">
-      <outlet
-        sv-element="outlet"
-        ng-repeat="outlet in vm.outlets"
-        outlet="outlet">
-      </outlet>
-      <div sv-placeholder></div>
-    </div>
+      <div class='sort-holder' 
+        sv-multi-select='vm.svMultiSelect'
+        sv-keep-in-list='vm.svKeepInList' 
+        sv-is-dropzone='false'   
+        sv-part="vm.outlets">
+        <outlet
+          sv-element="outlet"
+          ng-repeat="outlet in vm.outlets"
+          outlet="outlet">
+        </outlet>
+        <div sv-placeholder></div>
+      </div>
     </card-item-list>
   </div>
 </div>

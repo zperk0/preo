@@ -1,4 +1,4 @@
-<md-card-content>
+<md-card-content class="contextual-menu-outlet-location">
    <md-input-container class="md-block">
       <label translate>Location name</label>
       <input type="text" required name="entityName" ng-model="vm.entity.name" ng-maxlength="100">
@@ -6,7 +6,7 @@
         <div ng-message="required" translate>This is required.</div>
       </div>
   </md-input-container>
-   <md-input-container class="md-block">
+   <md-input-container class="md-block input-label">
       <md-checkbox ng-disabled="vm.entity.hasChildren() && !vm.entity.toSeatFlag && !vm.entity.isSeat()" aria-label="{{'Individially numbered locations' | translate}}" ng-model="vm.entity.toSeatFlag" ng-true-value="1" ng-false-value="0">
         {{'Individially numbered locations' | translate}}
       </md-checkbox>
