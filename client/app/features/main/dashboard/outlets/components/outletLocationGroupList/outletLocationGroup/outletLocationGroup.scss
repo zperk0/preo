@@ -1,5 +1,22 @@
 .outlet-location-group {
 	.outlet-location-list {
 		margin: 0 22px;
+
+		.outlet-location {
+			margin-left: 0px;
+			margin-right: 0px;	
+
+			.item-chips {
+    		padding: 0 14px 16px;
+			}
+		}
+	}
+
+	&>md-card {
+		&>.card-title {
+			.card-title-text {
+				line-height: 60px;
+			}
+		}
 	}
 }

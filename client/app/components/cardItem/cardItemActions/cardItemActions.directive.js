@@ -15,6 +15,7 @@ export default function cardItemActions(){
       onMove:'&?',
       onAdd:'&?',
       disableAdd:'=?',
+      addMessage: '=?'
     },
     template: require("./cardItemActions.tpl.html"),
     replace:true,

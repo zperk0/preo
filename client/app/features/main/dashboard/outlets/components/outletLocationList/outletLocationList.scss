@@ -1,0 +1,25 @@
+$heightMenuItemCard:48px;
+
+.outlet-location-list {
+	.sv-placeholder {
+		min-height: $heightMenuItemCard !important;
+		margin: 0px;
+	}		
+
+	.outlet-location {
+		margin: 8px;
+	}
+
+  .card-item {
+    &:not(.card-item-new) {
+    	margin:0;
+    }
+
+    &.card-item-new{
+			margin-left: 0px;
+			margin-right: 0px;		    	
+      max-height: 48px;
+      min-height:$heightMenuItemCard;
+    }    
+  }	
+}

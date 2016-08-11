@@ -50,7 +50,7 @@ export default class navbarController {
       ]},
       {name: gettextCatalog.getString("Events"), icon:"event", id:"events"},
       {name: gettextCatalog.getString("Outlets"), icon:"pin_drop", id:"outlets", children: [
-        {name: gettextCatalog.getString("My Outlets"), destination:"list", id:"outlets"},
+        {name: gettextCatalog.getString("My Outlets"), id:"list"},
         {name: gettextCatalog.getString("Outlet Locations"), id:"location"},
       ]},
       {name: gettextCatalog.getString("Promotions"), icon:"star", id:"promotions"},

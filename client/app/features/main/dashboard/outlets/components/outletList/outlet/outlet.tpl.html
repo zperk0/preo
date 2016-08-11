@@ -1,8 +1,8 @@
-<div class='menu-section'
+<div class='outlet-item'
       ng-class="{expanded:vm.outlet.$expanded}"
       ng-attr-data-id="{{vm.outlet.id}}">
 
-  <card-item  has-actions="true"
+  <card-item  has-actions="false"
               deleted="vm.outlet.$deleted"
               selected="vm.outlet.$selected"
               expanded="vm.outlet.$expanded"
@@ -14,11 +14,6 @@
                         <div sv-placeholder></div>
                       </div>
                       <span>{{vm.outlet.name}} </span>
-<!--                       <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
-                        <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
-                          <div sv-placeholder></div>
-                        </div>
-                      </div> -->
                     </card-item-title>
 
     <card-item-actions is-visible="vm.outletLocation.visible"
