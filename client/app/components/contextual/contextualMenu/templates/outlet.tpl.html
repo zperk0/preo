@@ -1,0 +1,23 @@
+<md-card-content class="contextual-menu-outlet">
+   <md-input-container class="md-block">
+      <label translate>Outlet name</label>
+      <input type="text" required name="entityName" ng-model="vm.entity.name" ng-maxlength="100">
+      <div ng-messages="contextualForm.entityName.$error">
+        <div ng-message="required" translate>This is required.</div>
+      </div>
+  </md-input-container>
+   <md-input-container class="md-block">
+      <label translate>Description</label>
+      <input type="text" name="entityDescription" ng-model="vm.entity.description" ng-maxlength="255">
+  </md-input-container>
+   <md-input-container class="md-block">
+      <label translate>Directions</label>
+      <input type="text" name="entityDirections" ng-model="vm.entity.location" ng-maxlength="255">
+  </md-input-container>
+   <md-input-container class="md-block">
+      <label translate>Instructions</label>
+      <input type="text" name="entityInstructions" ng-model="vm.entity.instructions" ng-maxlength="512">
+  </md-input-container>
+
+  <menus-select ng-model="vm.entity.$menuId"></menus-select>
+</md-card-content>

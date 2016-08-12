@@ -83,4 +83,20 @@
     }
   }
 
+  .contextual-menu-outlet {
+    md-input-container {
+      height: 35px;
+      margin-bottom: 16px;
+    }
+
+    md-radio-group {
+      display: block;
+      margin-top: 24px;
+    }
+
+    md-radio-button {
+      color:rgba(0,0,0,0.50);      
+    }
+  }
+
 }

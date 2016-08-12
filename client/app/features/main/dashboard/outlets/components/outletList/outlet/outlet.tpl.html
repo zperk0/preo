@@ -2,7 +2,7 @@
       ng-class="{expanded:vm.outlet.$expanded}"
       ng-attr-data-id="{{vm.outlet.id}}">
 
-  <card-item  has-actions="false"
+  <card-item  has-actions="vm.hasActions"
               deleted="vm.outlet.$deleted"
               selected="vm.outlet.$selected"
               expanded="vm.outlet.$expanded"
@@ -17,11 +17,8 @@
                     </card-item-title>
 
     <card-item-actions is-visible="vm.outletLocation.visible"
-                       on-move="vm.onMove()"
-                       on-clone="vm.onClone()"
                        on-delete="vm.onDelete()"
                        on-edit="vm.onEdit()"
-                       on-add="vm.onAddSUbGroup()"
                         ></card-item-actions>
   </card-item>
 </div>

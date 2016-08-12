@@ -4,6 +4,11 @@ export default class OutletService {
     return "OutletService";
   }
 
+  save(newData) {
+
+    return Preoday.Outlet.save(newData);
+  }  
+
   getOutlets(data){
     if (this.data.outlets){
       return this.$q.resolve(this.data);

@@ -1,0 +1,15 @@
+<div class='outlet-view' layout='column'>
+  <div flex class="layout-left-right">
+    <div class='main-content-left'>
+      <outlet-list has-search="true"
+         sv-multi-select="false"
+         sv-keep-in-list="true"
+         sv-is-dropzone="true"
+         has-new="true"
+         has-actions="true"
+         ng-if="outletListCtrl.data.outlets && outletListCtrl.data.outlets.length"
+         outlets="outletListCtrl.data.outlets"></outlet-list>
+     </div>
+  	<div class='main-content-right' sticky offset="88" contextual-menu-holder></div>
+  </div>
+</div>

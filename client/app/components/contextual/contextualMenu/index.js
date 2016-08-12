@@ -13,9 +13,12 @@ import holderDirective from './contextualMenuHolder.directive';
 import menuItemSize from './components/menuItemSize';
 import modifierItems from './components/modifierItems';
 import modifierSelection from './components/modifierSelection';
+import menusSelect from './components/menusSelect';
+
+import services from '../../../shared';
 
 
-export default angular.module("contextualMenu" , [menuItemSize, modifierItems, modifierSelection])
+export default angular.module("contextualMenu" , [menuItemSize, menusSelect, modifierItems, modifierSelection, services])
 
 
   .controller(controller.UID, controller)
