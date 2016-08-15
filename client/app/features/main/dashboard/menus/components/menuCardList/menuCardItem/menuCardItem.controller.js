@@ -109,14 +109,18 @@ export default class menuCardItemController {
           this.Spinner.hide("menu-delete");
       })
       .catch((err)=>{
-        console.log("Failed deleting menu", err)
         this.Spinner.hide("menu-delete")
-        this.Snack.showError('Menu not deleted');
+        
+        if (err && err instanceof Object && err.message.indexOf('outlet') !== -1) {
+          this.Snack.showError('An outlet is using this menu. You need remove it before');
+        } else {
+          this.Snack.showError('Menu not deleted');
+        }        
       })
       $event.stopPropagation();
   }
 
-  constructor(LabelService, DialogService, Spinner, contextual, contextualMenu, $stateParams, Snack, $timeout) {
+  constructor($scope, LabelService, DialogService, Spinner, contextual, contextualMenu, $stateParams, Snack, $timeout) {
     "ngInject";
     this.DialogService=DialogService;
     this.LabelService=LabelService;
@@ -132,5 +136,10 @@ export default class menuCardItemController {
         this.contextual.showMenu(this.type, this.menu, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
       })
     }
+
+    $scope.$on('$destroy', () => {
+
+      this.contextualMenuCancel();
+    })
   }
 }

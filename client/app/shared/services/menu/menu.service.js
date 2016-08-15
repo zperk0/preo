@@ -34,6 +34,20 @@ export default class MenuService {
     return this.p;
   }
 
+  getMenuById (id) {
+
+  	if (!this.data || !this.data.menus) {
+  		return null;
+  	}
+
+  	let menu = this.data.menus.filter((item) => {
+
+  		return item.id == id;
+  	});
+
+  	return menu.length && menu[0] || null;
+  }
+
   constructor($q, $rootScope) {
     "ngInject";
     this.data = {};

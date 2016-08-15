@@ -15,6 +15,14 @@ export default class menusSelectController {
     })
   }
 
+  getFilteredMenus() {
+
+    return this.data.menus.filter(function (item) {
+      
+      return item.id;
+    });
+  }
+
   constructor($stateParams, MenuService) {
     "ngInject";
     

@@ -1,10 +1,11 @@
 
-export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, ErrorService, UtilsService, $stateParams, Spinner, contextualDrawer, gettextCatalog){
+export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, ErrorService, UtilsService, $stateParams, Spinner, contextualMenu, contextualDrawer, gettextCatalog){
   "ngInject";
   function setupChangeEvent(){
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
       const notRequiresUser= ['auth.signin','error'];
       contextualDrawer.close();
+      contextualMenu.close();
       if (notRequiresUser.indexOf(toState.name) === -1 && !UserService.user){
         $state.go("auth.signin");
         event.preventDefault();

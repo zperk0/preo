@@ -16,7 +16,7 @@
         <outlet
           has-actions="vm.hasActions"
           sv-element="outlet"
-          ng-repeat="outlet in vm.outlets track by $index"
+          ng-repeat="outlet in vm.getValidOutlets() track by $index"
           outlet="outlet">
         </outlet>
         <div sv-placeholder></div>

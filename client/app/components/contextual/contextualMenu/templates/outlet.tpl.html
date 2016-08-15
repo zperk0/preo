@@ -19,5 +19,5 @@
       <input type="text" name="entityInstructions" ng-model="vm.entity.instructions" ng-maxlength="512">
   </md-input-container>
 
-  <menus-select ng-model="vm.entity.$menuId"></menus-select>
+  <menus-select ng-if="vm.isShowing('outlet')" ng-model="vm.entity.$menuId"></menus-select>
 </md-card-content>

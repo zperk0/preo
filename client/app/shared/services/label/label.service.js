@@ -37,5 +37,8 @@ export default class LabelService {
     this.TITLE_DELETE_OUTLET_LOCATION_GROUP = gettextCatalog.getString("Delete group?");
     this.CONTENT_DELETE_OUTLET_LOCATION_GROUP = gettextCatalog.getString("This will delete the configuration of all sub-groups. Are you sure?");
 
+    this.TITLE_DELETE_OUTLET = gettextCatalog.getString("Delete outlet?");
+    this.CONTENT_DELETE_OUTLET = gettextCatalog.getString("Are you sure you want to delete this outlet?");    
+
   }
 }

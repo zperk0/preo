@@ -29,7 +29,7 @@ export default class menuListController {
     if (data.menus.length === 1 && this.$rootScope.previousState && this.$rootScope.previousState !== 'main.dashboard.menus.menu'){
       this.$state.go("main.dashboard.menus.menu",{menuId: data.menus[0].id})
     } else {
-      this.menus = data.menus;
+      this.data = data;
     }
     this.hideSpinner();
   }

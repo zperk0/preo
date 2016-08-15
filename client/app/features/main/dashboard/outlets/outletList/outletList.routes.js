@@ -9,7 +9,7 @@ import controller from './outletList.controller'
 export default function routes($stateProvider) {
 	"ngInject";
 
-  $stateProvider.state("main.dashboard.outlets.list", {
+  $stateProvider.state("main.dashboard.outlets.outletList", {
     url: "/list",
     views:{
       outletContent:{

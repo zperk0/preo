@@ -15,6 +15,9 @@ export default class OutletService {
     } else if ( this.p){
       return this.p;
     }
+
+    data.expand = 'menus';
+
     this.p = this.$q((resolve, reject)=>{
       Preoday.Outlet.getAll(data)
         .then((outlets)=>{
