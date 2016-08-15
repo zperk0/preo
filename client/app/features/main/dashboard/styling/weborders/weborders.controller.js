@@ -13,16 +13,15 @@ export default class webordersController {
   }
 
   openDrawer(el){
-    this.$location.search('drawer-style',el);
-    this.$scope.$apply(); //apply to immediatelly change the location ,not only on next digest cycle
-    console.log("$scope applied");
-
+    this.$timeout(()=>{
+      this.$location.search('drawer-style',el);
+    })
   }
 
   receiveMessage(event){
       var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
       let originToCompare = origin.split("//")[1].split("/")[0]
-      let webordersOrigin = window._PREO_DATA._WEBORDERS.split("//")[1].split("/")[0];
+      let webordersOrigin = this.$window._PREO_DATA._WEBORDERS.split("//")[1].split("/")[0];
       console.log("received message from origin", origin, originToCompare, webordersOrigin);
       if (originToCompare !== webordersOrigin){
         return;
@@ -40,16 +39,18 @@ export default class webordersController {
   }
 
 
-  constructor($scope, $stateParams, Spinner, contextual, $location, contextualDrawer, $rootScope) {
+  constructor($scope, $stateParams, Spinner, contextual, $location, contextualDrawer, $rootScope, $window, $timeout) {
     "ngInject";
-    this.webordersUrl = window._PREO_DATA._WEBORDERS+'?venueId='+$stateParams.venueId;
+    this.$timeout = $timeout;
+    this.$window=$window;
+    this.webordersUrl = $window._PREO_DATA._WEBORDERS+'?venueId='+$stateParams.venueId;
     this.webordersEditUrl = this.webordersUrl+'&editor=true'
     console.log(this.webordersUrl);
 
     this.$scope = $scope;
-    if (!window.hasListener){
-      window.addEventListener("message", this.receiveMessage.bind(this), false);
-      window.hasListener = true;
+    if (!$window.hasListener){
+      $window.addEventListener("message", this.receiveMessage.bind(this), false);
+      $window.hasListener = true;
 
       $rootScope.$on('$locationChangeSuccess', (event)=>{
         console.log("location change success", $location, $location.search());
