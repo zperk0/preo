@@ -20,7 +20,7 @@ export default class outletController {
   }
 
   contextualMenuSuccess(entity){
-    if (this.outlet && entity && entity.name){
+    if (this.outlet && entity && entity.name && entity.$menuId){
       this.outlet = entity;
 
       if (this.outlet.$menuId) {
