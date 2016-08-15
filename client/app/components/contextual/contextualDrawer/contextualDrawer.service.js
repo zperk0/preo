@@ -21,7 +21,7 @@ export default class contextualDrawerService {
 
   //same as close but doesn't call error callback
   close(){
-    if (this.id){
+    if (this.id && this.$mdSidenav(this.id).isOpen()){
       this.$mdSidenav(this.id).close();
       this.id = false;
     }

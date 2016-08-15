@@ -1,0 +1,5 @@
+<div class="menus-select">
+  <md-radio-group ng-model="vm.ngModel" ng-if="vm.data.menus.length">
+    <md-radio-button ng-repeat="menu in vm.getFilteredMenus()" ng-value="{{ menu.id }}" class="md-primary">{{ menu.name }}</md-radio-button>
+  </md-radio-group>  	
+</div>

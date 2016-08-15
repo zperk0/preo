@@ -8,6 +8,7 @@ import Item from './item/item.service';
 import Modifier from './modifier/modifier.service';
 import Outlet from './outlet/outlet.service';
 import OutletLocation from './outlet/outlet-location.service';
+import Menu from './menu/menu.service';
 
 import uirouter from 'angular-ui-router';
 
@@ -20,4 +21,5 @@ export default angular.module("Services" , [base, uirouter])
   .service(Modifier.UID, Modifier)
   .service(Outlet.UID, Outlet)
   .service(OutletLocation.UID, OutletLocation)
+  .service(Menu.UID, Menu)
   .name;

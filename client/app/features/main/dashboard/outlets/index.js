@@ -18,8 +18,9 @@ import outletLocationTree from './components/outletLocationTree'; //required for
 
 
 import outletLocations from './outletLocations'; //required for drawer
+import outletListView from './outletList'; //required for drawer
 
-export default angular.module("outlets" , [uirouter, outletList, outletLocationList, outletLocationGroupList, outletLocationTree, outletLocationGroup, outletLocation, outletLocations])
+export default angular.module("outlets" , [uirouter, outletList, outletLocationList, outletLocationGroupList, outletLocationTree, outletLocationGroup, outletLocation, outletLocations, outletListView])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

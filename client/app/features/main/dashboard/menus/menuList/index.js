@@ -11,7 +11,9 @@ import routes from './menuList.routes';
 
 import menuCardList from '../components/menuCardList';
 
-export default angular.module("menuList" , [uirouter, menuCardList])
+import services from '../../../../../shared';
+
+export default angular.module("menuList" , [uirouter, menuCardList, services])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

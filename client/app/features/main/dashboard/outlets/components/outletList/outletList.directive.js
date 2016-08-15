@@ -6,6 +6,7 @@ export default function outletList(){
     restrict: 'E',
     scope: {
       outlets:"=",
+      hasActions: '=?',
       hasNew:"=",
       hasSearch:"=?",
       svDisabled:"=",
@@ -18,7 +19,7 @@ export default function outletList(){
     controllerAs: "vm",
     bindToController: true,
     replace:true,
-    link: (scope, el, attr, ctrls) => {
+    link: (scope, el, attr) => {
 
     }
   }

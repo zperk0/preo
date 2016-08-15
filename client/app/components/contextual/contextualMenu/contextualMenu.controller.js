@@ -23,12 +23,19 @@ export default class contextualMenuController {
     return false;
   }
 
-  constructor($scope, UtilsService, contextualMenu, $timeout) {
+  isShowing(type) {
+
+    return this.contextualMenu.type === type;
+  }
+
+  constructor($scope, $stateParams, UtilsService, contextualMenu, MenuService, $timeout) {
     "ngInject";
     console.log("Showing conextual menu ", this.entity, this.type);
     this.$timeout = $timeout;
+    this.$stateParams = $stateParams;
     this.UtilsService = UtilsService;
     this.originalEntity = angular.copy(this.entity);
     this.contextualMenu = contextualMenu;
+    this.MenuService = MenuService;
   }
 }

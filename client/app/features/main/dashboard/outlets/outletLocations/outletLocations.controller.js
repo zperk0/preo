@@ -10,6 +10,11 @@ export default class outletLocationsController {
     this.contextual.showDrawer(id);
   }  
 
+  hideSpinner () {
+
+    this.Spinner.hide("outletLocations");
+  }
+
   fetchOutlets() {
 
 
@@ -28,6 +33,7 @@ export default class outletLocationsController {
       }, (err) => {
 
       this.outletLocations = [];
+      this.hideSpinner();
     });   
   }
 
@@ -98,6 +104,8 @@ export default class outletLocationsController {
       }
 
       this.loaded = true;
+
+      this.hideSpinner();
     });
   }
 
@@ -118,7 +126,7 @@ export default class outletLocationsController {
   }
 
 
-  constructor(contextual, $scope, $timeout, $q, $state, $location, $stateParams, BroadcastEvents, VenueService, OutletLocationService, OutletService) {
+  constructor(contextual, Spinner, $scope, $timeout, $q, $state, $location, $stateParams, BroadcastEvents, VenueService, OutletLocationService, OutletService) {
     "ngInject";
 
     this.$q = $q;
@@ -130,7 +138,10 @@ export default class outletLocationsController {
     this.VenueService = VenueService;
     this.OutletLocationService = OutletLocationService;
     this.OutletService = OutletService;
+    this.Spinner = Spinner;
     this.loaded = false;
+
+    this.Spinner.show("outletLocations");
 
     if (VenueService.hasVenueSet()) {
       this.fetchOutlets();

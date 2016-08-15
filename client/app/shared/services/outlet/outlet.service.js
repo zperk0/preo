@@ -4,12 +4,20 @@ export default class OutletService {
     return "OutletService";
   }
 
+  save(newData) {
+
+    return Preoday.Outlet.save(newData);
+  }  
+
   getOutlets(data){
     if (this.data.outlets){
       return this.$q.resolve(this.data);
     } else if ( this.p){
       return this.p;
     }
+
+    data.expand = 'menus';
+
     this.p = this.$q((resolve, reject)=>{
       Preoday.Outlet.getAll(data)
         .then((outlets)=>{
