@@ -40,3 +40,15 @@
     box-shadow: 0px 8px 17px 0px rgba(0,0,0,0.20), 0px 6px 20px 0px rgba(0,0,0,0.19);
   }
 }
+
+@mixin _calc($property, $variable, $operation, $value, $fallback: false, $additional: '') {
+  @if $fallback {
+    #{$property}: $fallback #{$additional}; //for browsers that don't support calc function
+  }
+
+  #{$property}: -moz-calc(#{$variable} #{$operation} #{$value}) #{$additional};
+  #{$property}: -o-calc(#{$variable} #{$operation} #{$value}) #{$additional};
+  #{$property}: -webkit-calc(#{$variable} #{$operation} #{$value}) #{$additional};
+  #{$property}: -ms-calc(#{$variable} #{$operation} #{$value}) #{$additional};
+  #{$property}: calc(#{$variable} #{$operation} #{$value}) #{$additional};
+}

@@ -1,10 +1,12 @@
 @import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
 
 .main-ui-view{
   transition:0.2s padding-left linear;
-  max-height: 100%;
   overflow-y: scroll;
   padding-top: 64px;
+
+  @include _calc(max-height, 100vh, '+', 4px, 100%);
 }
 
 .md-sidenav-right{
