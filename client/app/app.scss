@@ -39,6 +39,10 @@ body{
   overflow: visible !important;
 }
 
+.webapp {
+  height: 100%;
+}
+
 .maxHeightScreen{
   height:100vh;
   &.minus-toolbar{
