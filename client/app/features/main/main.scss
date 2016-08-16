@@ -5,8 +5,7 @@
   transition:0.2s padding-left linear;
   overflow-y: scroll;
   padding-top: 64px;
-
-  @include _calc(max-height, 100vh, '+', 4px, 100%);
+  max-height: 100%;
 }
 
 .md-sidenav-right{
