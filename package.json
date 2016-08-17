@@ -11,6 +11,7 @@
     "test": "karma start --type test --log-level=DEBUG",
     "test:live": "karma start --type test --auto-watch --no-single-run",
     "prepublish": "npm run build",
+    "release": "npm run build && remove-console-logs --io './dist/app.bundle.js'",
     "gettext:compile": "angular-gettext-cli --compile --files './locale/*.po' --dest client/app/app.translations.js --format javascript --module gettext",
     "gettext:extract": "angular-gettext-cli --files \"./client/**/*.+(js|html)\" --dest ./locale/messages.pot --marker-name i18n"
   },
@@ -78,6 +79,7 @@
     "sinon": "^1.17.4",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-server": "^1.14.0",
+    "remove-console-logs": "0.0.3"
   }
 }
