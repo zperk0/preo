@@ -11,4 +11,10 @@
                  md-color-generic-palette="false"
                  md-color-sliders="false"
                  ></div>
-<image-uploader on-change="onChange('backgroundImage', image)" dimensions="1800 x 1100 px" ng-show="radioChoice==='image'"  ng-model="model.$images.backgroundImage"></image-uploader>
+<image-uploader
+    on-change="onChange('backgroundImage', image)"
+    viewport="{w:1800,h:1100}"
+    boundry="{w:2000,h:1300}"
+    dimensions="1800 x 1100 px"
+    ng-show="radioChoice==='image'"
+    ng-model="model.$images.backgroundImage"></image-uploader>

@@ -48,7 +48,7 @@ export default class MenuService {
   	return menu.length && menu[0] || null;
   }
 
-  constructor($q, $rootScope) {
+  constructor($q, $rootScope, $location) {
     "ngInject";
     this.data = {};
     this.$q =$q;
