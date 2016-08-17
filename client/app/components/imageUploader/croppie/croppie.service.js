@@ -6,7 +6,14 @@ export default class CroppieService {
     return "CroppieService"
   }
 
-  show(src){
+  show(src, boundry, vp){
+    if (!boundry){
+      boundry= {w: 700, h:500};
+    }
+    if (!vp){
+      vp={w: 590, h:333};
+    }
+
     return this.$mdDialog.show({
       controller: controller,
       template: require('./croppieDialog.tpl.html'),
@@ -14,7 +21,9 @@ export default class CroppieService {
       bindToController:true,
       controllerAs:'vm',
       locals:{
-        src:src
+        src:src,
+        boundry:boundry,
+        vp:vp
       }
     });
   }

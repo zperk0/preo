@@ -33,12 +33,15 @@ export default class imageUploaderController {
   }
 
   fileChange(event){
+    console.log("on file change");
     let allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
     var reader = new FileReader();
     reader.onload = (evt) => {
+      console.log("got result - loading dialog");
       if (evt.target.result){
-        var p = this.CroppieService.show(evt.target.result, event)
+        var p = this.CroppieService.show(evt.target.result,this.boundry, this.viewport)
           .then((img)=>{
+            console.log("uploading img dialog");
             if (this.ngModel.length){
               this.ngModel[0].$image = img;
             } else {
@@ -83,7 +86,7 @@ export default class imageUploaderController {
     this.$timeout = $timeout;
     this.CroppieService = CroppieService;
     this.Snack = Snack;
-    console.log("constrcut")
+    console.log("constrcut", this.ngModel)
     if (this.ngModel && this.ngModel.length && !this.ngModel[0].$image && this.ngModel[0].image){
       this.ngModel[0].$image = this.UtilsService.getImagePath(this.ngModel[0].image);
       console.log("have length", this.ngModel[0].$image)

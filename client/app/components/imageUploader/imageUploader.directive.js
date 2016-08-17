@@ -7,6 +7,8 @@ export default function imageUploader(){
     scope: {
       initialValue:"=?",
       ngModel:"=",
+      boundry:'=?',
+      viewport:'=?',
       dimensions:"@",
       onChange:"&?"
     },

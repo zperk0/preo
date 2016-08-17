@@ -38,6 +38,11 @@ export default class webordersController {
 
   }
 
+  toggleDrawer(){
+    if (!this.contextualDrawer.isOpen('style') && this.$location.search()['drawer-style']){
+      this.contextual.showDrawer('style');
+    }
+  }
 
   constructor($scope, $stateParams, Spinner, contextual, $location, contextualDrawer, $rootScope, $window, $timeout) {
     "ngInject";
@@ -52,12 +57,7 @@ export default class webordersController {
       $window.addEventListener("message", this.receiveMessage.bind(this), false);
       $window.hasListener = true;
 
-      $rootScope.$on('$locationChangeSuccess', (event)=>{
-        console.log("location change success", $location, $location.search());
-        if (!this.contextualDrawer.isOpen('style') && this.$location.search()['drawer-style']){
-          this.contextual.showDrawer('style');
-        }
-      })
+      $rootScope.$on('$locationChangeSuccess', this.toggleDrawer.bind(this))
     }
 
 
@@ -68,5 +68,6 @@ export default class webordersController {
     this.contextualDrawer = contextualDrawer;
     this.zoomLevel = 1;
     this.zoomInterval = 0.05;
+    this.toggleDrawer();
   }
 }

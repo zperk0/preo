@@ -29,7 +29,6 @@ export default function croppie($compile, $timeout){
                       }
                   });
                 }
-
                                 // define options
                 var options =  {
                     viewport: {
@@ -49,7 +48,6 @@ export default function croppie($compile, $timeout){
 
                 // create new croppie and settime for updates
                 var c = new Croppie(el[0], options);
-
                 // respond to changes in src
                 scope.$watch('src', function(newValue, oldValue) {
                   if(scope.src != undefined){

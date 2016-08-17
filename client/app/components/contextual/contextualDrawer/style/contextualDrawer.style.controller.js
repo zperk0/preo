@@ -75,22 +75,31 @@ export default class contextualDrawerStyleController {
   }
 
   close(){
+    this.$timeout(this.toggleExpanded.bind(this));
     this.model = this.originalModel;
     return this.contextualDrawer.close();
   }
 
   toggleExpanded(style){
+    if (!style){
+      this.styles.forEach((i)=>{ //collapse all
+        i.expanded = false;
+      })
+      return;
+    }
     let match =  this.styles.filter((i)=> i.id === style.id)[0];
 
     if (match && !match.expanded){
       // this.styles.forEach((i)=>{ //collapse all
       //   i.expanded = false;
       // })
-      // this.$timeout(()=>{ //timeout for animation
-      this.styles.forEach((i)=>{ //collapse all
-        i.expanded = i.id === style.id;
-      })
-      // })
+      // console.log("all false");
+      // this.$timeout(()=>{
+        this.styles.forEach((i)=>{ //collapse all
+          i.expanded = i.id === style.id;
+        })
+        // console.log("all false, one true");
+      // },300);
     }
 
   }
@@ -158,22 +167,37 @@ export default class contextualDrawerStyleController {
     this.styles = [
     {
       id:"NAVBAR",
-      name:gettextCatalog.getString("Navigation")
+      name:gettextCatalog.getString("Navigation"),
+      height: '76px'
     },{
       id:"HEADER",
-      name:gettextCatalog.getString("Header")
+      name:gettextCatalog.getString("Header"),
+      height: {
+        color:'153px',
+        image:'339px',
+      }
     },{
       id:"LOGO",
-      name:gettextCatalog.getString("Logo")
+      name:gettextCatalog.getString("Logo"),
+      height:{
+        text:'229px',
+        image:'422px'
+      }
     },{
       id:"PRIMARY",
-      name:gettextCatalog.getString("Buttons and section names")
+      name:gettextCatalog.getString("Buttons and section names"),
+      height:'76px'
     },{
       id:"SECTIONS",
-      name:gettextCatalog.getString("Buttons Background")
+      name:gettextCatalog.getString("Buttons Background"),
+      height:'76px'
     },{
       id:"BACKGROUND",
-      name:gettextCatalog.getString("Page Background")
+      name:gettextCatalog.getString("Page Background"),
+      height:{
+        color:'153px',
+        image:'561px'
+      }
     }]
 
     $rootScope.$on('$locationChangeSuccess', (event)=>{

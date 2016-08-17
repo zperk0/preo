@@ -31,4 +31,27 @@ html{
   .contextual-drawer {
     max-width: 334px;
   }
+
+  .style-row {
+    .form-style{
+      &.HEADER{
+        .image-uploader{
+          width: 283px;
+          height: 70px;
+        }
+      }
+      &.LOGO{
+        .image-uploader{
+          width: 270px;
+          height: 104px;
+        }
+      }
+      &.BACKGROUND{
+        .image-uploader{
+          width: 270px;
+          height: 165px;
+        }
+      }
+    }
+  }
 }

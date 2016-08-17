@@ -1,10 +1,12 @@
 <md-dialog class='croppie-dialog' aria-label="Image Selector"  ng-cloak>
     <md-dialog-content>
+    {{vm.boundry}}
+    {{vm.vp}}
      <croppie ng-if="vm.src"
               src="vm.src"
               update='vm.onUpdate(img)'
-              boundry="{w: 700, h:500}",
-              viewport="{w: 590, h:333}"
+              boundry="vm.boundry"
+              viewport="vm.vp"
      ></croppie>
     </md-dialog-content>
     <md-dialog-actions>

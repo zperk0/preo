@@ -5,8 +5,11 @@ export default function($parse) {
     restrict: 'A',
     link: (scope, element, attrs) => {
       var onChangeHandler = $parse(attrs.customOnChange);
-      console.log("bound", onChangeHandler, onChangeHandler());
+      element.bind('click', function(){
+        this.value = '';
+      })
       element.bind('change', (event) => {
+        console.log("on change", element.value, event);
         onChangeHandler(scope,{$event:event});
       });
     }

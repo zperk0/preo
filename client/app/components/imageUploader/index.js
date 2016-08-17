@@ -9,9 +9,10 @@ import controller from './imageUploader.controller';
 import directive from './imageUploader.directive';
 import croppie from './croppie';
 import changeDirective from './customOnChange.directive';
+import PreodayServices from '../../shared/services';
 
 
-export default angular.module("imageUploader" , [croppie])
+export default angular.module("imageUploader" , [croppie, PreodayServices])
 
 
   .controller(controller.UID, controller)

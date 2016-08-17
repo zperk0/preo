@@ -14,13 +14,12 @@ import angularAria from 'angular-aria';
 import angularMessages from 'angular-messages';
 import angularSortableView from 'angular-sortable-view';
 import croppie from 'croppie';
-
+import PreodayServices from './shared/services';
 
 // Import base modules
 import config from './app.config';
 import run from './app.run';
 import routes from './app.routes';
-import PreodayServices from './shared';
 
 
 // Import internal modules
@@ -30,12 +29,7 @@ import v2Auth from './features/auth';
 import v2NotFound from './features/notFound';
 
 // Import global components
-import dialog from './components/dialog';
-import icon from './components/icon';
-import snack from './components/snack';
-import spinner from './components/spinner';
 import imageUploader from './components/imageUploader';
-import tagList from './components/tagList';
 import contextual from './components/contextual';
 
 import base from './app.base';
@@ -56,13 +50,8 @@ export default angular.module('webapp', [
   angularMessages,
   'angular-sortable-view',
   /* directives */
-  dialog,
-  icon,
-  snack,
-  spinner,
   'sticky',
   imageUploader,
-  tagList,
   contextual,
   // /* internal */
   base,

@@ -20,4 +20,29 @@ html{
   .contextual-drawer {
     max-width: 450px;
   }
+
+  .style-row {
+    .form-style{
+      &.HEADER{
+        .image-uploader{
+          width: 402px;
+          height: 99px;
+        }
+      }
+
+      &.LOGO{
+        .image-uploader{
+          width: 402px;
+          height: 154px;
+        }
+      }
+
+      &.BACKGROUND{
+        .image-uploader{
+          width: 402px;
+          height: 245px;
+        }
+      }
+    }
+  }
 }
