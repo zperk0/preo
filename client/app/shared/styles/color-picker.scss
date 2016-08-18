@@ -1,3 +1,9 @@
+.md-color-picker-preview{
+  &:hover{
+    cursor: pointer;
+  }
+}
+
 md-dialog.md-color-picker-dialog{
   width: auto;
   .md-color-picker-result .md-color-picker-tabs{
