@@ -12,7 +12,7 @@ export default class SpinnerService {
 
 
   show(code){
-    this.DEBUG && console.log("showing spinner", code)
+    this.DEBUG && console.log("SPINNER - showing spinner", code)
     this.visibleCodes.push(code);
     this.updateIsVisible();
   }
@@ -23,7 +23,7 @@ export default class SpinnerService {
   }
 
   hide(code){
-    this.DEBUG && console.log("hiding spinner", code)
+    this.DEBUG && console.log("SPINNER - hiding spinner", code)
     let index = this.visibleCodes.indexOf(code);
     if (index > -1) {
       this.visibleCodes.splice(index, 1);
@@ -33,7 +33,7 @@ export default class SpinnerService {
 
   constructor($timeout) {
     "ngInject";
-    this.DEBUG = false;
+    this.DEBUG = true;
     this.isVisible=false;
     this.visibleCodes=[];
     this.$timeout = $timeout;

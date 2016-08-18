@@ -28,11 +28,28 @@ export default class webordersController {
       }
       console.log("got event", event);
       switch(event.data) {
-        case "LOADED":
+        case "__LOADED__":
           this.Spinner.hide('iframe');
           break;
-        default:
+        case "NAVBAR":
           this.openDrawer(event.data);
+          break;
+        case "LOGO":
+          this.openDrawer(event.data);
+          break;
+        case "HEADER":
+          this.openDrawer(event.data);
+          break;
+        case "PRIMARY":
+          this.openDrawer(event.data);
+          break;
+        case "SECTIONS":
+          this.openDrawer(event.data);
+          break;
+        case "BACKGROUND":
+          this.openDrawer(event.data);
+          break;
+        default:
           break;
       }
 

@@ -115,10 +115,12 @@ export default class contextualDrawerStyleController {
     return Preoday.VenueWebSettings.get(this.$stateParams.venueId)
       .then((webSettings)=>{
         this.model = webSettings;
+        console.log("got spinner")
         this.Spinner.hide('style-drawer');
       },()=>{ //api returns 404 if not found
         this.model = {}
         this._restoreImages()
+        console.log("got spinner")
         this.Spinner.hide('style-drawer');
       }).catch((err)=>{
         console.log("err", err)
@@ -174,14 +176,14 @@ export default class contextualDrawerStyleController {
       name:gettextCatalog.getString("Header"),
       height: {
         color:'153px',
-        image:'339px',
+        image:'219px',
       }
     },{
       id:"LOGO",
       name:gettextCatalog.getString("Logo"),
       height:{
         text:'229px',
-        image:'422px'
+        image:'380px'
       }
     },{
       id:"PRIMARY",
@@ -196,7 +198,7 @@ export default class contextualDrawerStyleController {
       name:gettextCatalog.getString("Page Background"),
       height:{
         color:'153px',
-        image:'561px'
+        image:'541px'
       }
     }]
 
