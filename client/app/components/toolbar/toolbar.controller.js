@@ -11,10 +11,23 @@ export default class toolbarController {
     return this.UserService.user;
   }
 
+  getStateAsUrl (stateName) {
 
-  constructor(VenueService, UserService) {
+    return this.hasVenueSet() && this.$state.href(stateName, {
+      venueId: this.VenueService.currentVenue.id
+    });
+  }
+
+  hasVenueSet() {
+
+    return this.VenueService.hasVenueSet();
+  }
+
+
+  constructor(VenueService, UserService, $state) {
     "ngInject";
     this.UserService=UserService;
     this.VenueService=VenueService;
+    this.$state=$state;
   }
 }

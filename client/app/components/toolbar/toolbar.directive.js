@@ -9,7 +9,7 @@ export default function toolbar(){
     },
     template: require("./toolbar.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "toolbarCtrl",
     bindToController: true,
     replace:true,
     link: (scope, el, attr, ctrl) => {

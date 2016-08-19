@@ -1,0 +1,43 @@
+<div class="user-email">
+  <md-card md-theme="default">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Email address</span>
+      </md-card-title-text>
+    </md-card-title>
+    <form name="userEmailCtrl.userEmailForm" ng-submit="userEmailCtrl.submit()" novalidate>
+	    <md-card-content layout="row" layout-align="space-between">
+	    	<div ng-show="userEmailCtrl.shouldShowForm()" class="content-form">
+				  <md-input-container class="md-block">
+				      <label translate>New email address</label>
+				      <input type="email" required name="email" ng-model="userEmailCtrl.data.email" ng-maxlength="100">
+				      <div ng-show="userEmailCtrl.userEmailForm.$submitted">
+					      <div ng-messages="userEmailCtrl.userEmailForm.email.$error">
+					        <div ng-message="required" translate>This is required.</div>
+					        <div ng-message="email" translate>Write a value email address.</div>
+					      </div>
+				      </div>
+				  </md-input-container>	  
+				   <md-input-container class="md-block">
+				      <label translate>Password</label>
+				      <input type="password" required name="password" ng-model="userEmailCtrl.data.password" ng-maxlength="100">
+				      <div ng-show="userEmailCtrl.userEmailForm.$submitted">
+					      <div ng-messages="userEmailCtrl.userEmailForm.password.$error">
+					        <div ng-message="required" translate>This is required.</div>
+					      </div>
+				      </div>
+				  </md-input-container>	    
+			  </div>
+			  <div ng-show="!userEmailCtrl.shouldShowForm()" class="content-form">
+		    	<div class="email-address">address@preoday.com</div>
+		    	<div class="pending-confirmation-message">Pending confirmation</div>
+	    	</div>
+	    </md-card-content>
+	    <md-card-actions layout="row" layout-align="end center">
+	      <md-button type="button" class='md-primary' ng-click="userEmailCtrl.showForm()" ng-show="!userEmailCtrl.shouldShowForm()">Change email address</md-button>
+	      <md-button type="button" class='md-primary' ng-show="userEmailCtrl.shouldShowForm()" ng-click="userEmailCtrl.cancel()">Cancel</md-button>
+	      <md-button type="submit" class='md-primary' ng-show="userEmailCtrl.shouldShowForm()">Send confirmation</md-button>
+	    </md-card-actions>
+    </form>
+  </md-card>
+</div>

@@ -14,7 +14,9 @@ export default class outletLocationGroupController {
     this.restoreOriginalValues();
     this.outletLocationGroup.$selected = false;
 
-    if (!this.outletLocationGroup.label && !this.outletLocationGroup.$fromList) {
+    if (!this.outletLocationGroup.label 
+        && !this.outletLocationGroup.$fromList
+        && (!this.outletLocationGroup.outletLocations || !this.outletLocationGroup.outletLocations.length)) {
       this.onDeletedCallback && this.onDeletedCallback();
     }
   }

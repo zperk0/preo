@@ -9,7 +9,14 @@ import uirouter from 'angular-ui-router';
 import controller from './account.controller';
 import routes from './account.routes';
 
-export default angular.module("account" , [uirouter])
+import userEmail from './components/userEmail';
+import userPassword from './components/userPassword';
+
+export default angular.module("account" , [
+	uirouter,
+	userEmail,
+	userPassword
+])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
