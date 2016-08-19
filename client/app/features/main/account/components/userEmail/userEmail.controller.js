@@ -33,15 +33,21 @@ export default class userEmailController {
       
       this.Spinner.hide('user-email');     
       this.cancel(); 
+
+      this.Snack.show(this.gettextCatalog.getString('An activation link has been sent to {{email}}', {
+        email: this.data.email
+      }));
     }, 1500);
   }
 
   /* @ngInject */
-  constructor($timeout, Spinner) {
+  constructor($timeout, Spinner, Snack, gettextCatalog) {
   	'ngInject';
 
     this.$timeout = $timeout;
     this.Spinner = Spinner;
+    this.Snack = Snack;
+    this.gettextCatalog = gettextCatalog;
     
     this._showForm = false;
   }

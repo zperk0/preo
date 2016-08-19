@@ -42,7 +42,7 @@ export default class outletLocationGroupListController {
     }
   }
 
-  constructor($timeout, $stateParams, $q, contextual, contextualMenu, Spinner, Snack, OutletLocationService) {
+  constructor($timeout, $stateParams, $q, contextual, contextualMenu, Spinner, Snack, OutletLocationService, gettextCatalog) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -51,6 +51,7 @@ export default class outletLocationGroupListController {
     this.$timeout = $timeout;
     this.contextual = contextual;
     this.contextualMenu = contextualMenu;
+    this.gettextCatalog = gettextCatalog;
     this.venueId = $stateParams.venueId;
     this.type = 'outletLocationGroup'; //type for contextual menu
 

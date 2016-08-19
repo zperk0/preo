@@ -17,9 +17,9 @@ export default class outletListController {
         this.outlets[index].position = item.position;
       });
 
-      this.Snack.show('Outlet moved');
+      this.Snack.show(this.gettextCatalog.getString('Outlet moved'));
     }, ()=>{
-      this.Snack.showError('Error moving outlet');
+      this.Snack.showError(this.gettextCatalog.getString('Error moving outlet'));
     }).then(()=>{
       this.Spinner.hide("outlet-move");
     })
@@ -72,7 +72,7 @@ export default class outletListController {
     this.Spinner.show("outlet-delete");
     outlet.delete()
       .then(()=>{
-        this.Snack.show('Outlet deleted');
+        this.Snack.show(this.gettextCatalog.getString('Outlet deleted'));
 
         return this.cardItemList.deleteItem(outlet);
       }).then(()=>{
@@ -81,9 +81,9 @@ export default class outletListController {
         this.Spinner.hide("outlet-delete");
 
         if (err && err instanceof Object && err.message.indexOf('outletLocation') !== -1) {
-          this.Snack.showError('An outlet location is using this outlet. You need remove it before');
+          this.Snack.showError(this.gettextCatalog.getString('An outlet location is using this outlet. You need remove it before'));
         } else {
-          this.Snack.showError('Error deleting outlet');
+          this.Snack.showError(this.gettextCatalog.getString('Error deleting outlet'));
         }
       })
   }
@@ -107,13 +107,14 @@ export default class outletListController {
   }
 
   /* @ngInject */
-  constructor($timeout, $q, $stateParams, Spinner, OutletService, Snack) {
+  constructor($timeout, $q, $stateParams, Spinner, OutletService, Snack, gettextCatalog) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$q = $q;
     this.$timeout = $timeout;
     this.OutletService = OutletService;
+    this.gettextCatalog = gettextCatalog;
 
     this.venueId = $stateParams.venueId;
   }

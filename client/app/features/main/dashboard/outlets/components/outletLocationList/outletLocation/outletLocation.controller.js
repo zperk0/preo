@@ -29,7 +29,7 @@ export default class outletLocationController {
           this.Spinner.hide("moving-outlet-to-location");
         }, () => {
 
-          this.Snack.showError("Error adding outlet to outlet location");
+          this.Snack.showError(this.gettextCatalog.getString("Error adding outlet to outlet location"));
           this.Spinner.hide("moving-outlet-to-location");
         });
     }
@@ -61,10 +61,10 @@ export default class outletLocationController {
 
             this.outletLocation.$selected = false;
             this.contextualMenu.hide();
-            this.Snack.show('Outlet location created');
+            this.Snack.show(this.gettextCatalog.getString('Outlet location created'));
           }, (err)=>{
             console.log('error on save outlet location', err);
-            this.Snack.showError('Error saving outlet location');
+            this.Snack.showError(this.gettextCatalog.getString('Error saving outlet location'));
           })
 
       } else {
@@ -81,11 +81,11 @@ export default class outletLocationController {
     return this.$q((resolve, reject)=>{
       this.outletLocation.update()
         .then((o)=>{
-          this.Snack.show('Outlet location updated');
+          this.Snack.show(this.gettextCatalog.getString('Outlet location updated'));
           resolve(o);
       },()=>{
         reject();
-        this.Snack.showError('Error saving outlet location');
+        this.Snack.showError(this.gettextCatalog.getString('Error saving outlet location'));
       }).then(()=>{
         this.Spinner.hide("outlet-location-update");
       })
@@ -125,12 +125,12 @@ export default class outletLocationController {
       .then((createdOutlet)=>{
 
         this.Spinner.hide("outlet-location-clone")
-        this.Snack.show('Outlet location duplicated');
+        this.Snack.show(this.gettextCatalog.getString('Outlet location duplicated'));
       }, (err)=>{
 
         console.log("failed cloning outlet location", err)
         this.Spinner.hide("outlet-location-clone")
-        this.Snack.showError('Failed duplicating outlet location');
+        this.Snack.showError(this.gettextCatalog.getString('Failed duplicating outlet location'));
     });
 
     $event.stopPropagation();
@@ -161,7 +161,7 @@ export default class outletLocationController {
         this.Spinner.hide("outlet-location-remove-outlet")
       }, (err)=>{
         this.Spinner.hide("outlet-location-remove-outlet")
-        this.Snack.showError('Failed to remove outlet');
+        this.Snack.showError(this.gettextCatalog.getString('Failed to remove outlet'));
         console.log(err);
     });    
   }
@@ -185,11 +185,11 @@ export default class outletLocationController {
           .then(() => {
 
             this.Spinner.hide("outlet-location-move");
-            this.Snack.show('Outlet location moved');
+            this.Snack.show(this.gettextCatalog.getString('Outlet location moved'));
           }, () => {
 
             this.Spinner.hide("outlet-location-move");
-            this.Snack.showError('Failed to move outlet location');
+            this.Snack.showError(this.gettextCatalog.getString('Failed to move outlet location'));
           }).catch((err)=>{
             console.log(err);
           });

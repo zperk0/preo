@@ -38,7 +38,7 @@ export default class outletLocationGroupController {
         }, () => {
 
           this.Spinner.hide("outlet-location-group-update");
-          this.Snack.showError('Failed to update the group');
+          this.Snack.showError(this.gettextCatalog.getString('Failed to update the group'));
         });
     }
   }  
@@ -70,7 +70,7 @@ export default class outletLocationGroupController {
             this.$timeout(() => {
 // console.log('error on delete', err);
               this.Spinner.hide("outlet-location-group-delete");
-              this.Snack.showError('Failed to delete the group');            
+              this.Snack.showError(this.gettextCatalog.getString('Failed to delete the group'));            
             });
           });
       });
@@ -107,7 +107,7 @@ console.log('checking expanded', this.outletLocationGroup);
   	}    
   }
 
-  constructor($scope, $state, $stateParams, $timeout, Snack, Spinner, DialogService, LabelService, contextual, contextualMenu) {
+  constructor($scope, $state, $stateParams, $timeout, Snack, Spinner, DialogService, LabelService, contextual, contextualMenu, gettextCatalog) {
     "ngInject";
     this.contextualMenu = contextualMenu;
     this.contextual = contextual;
@@ -119,6 +119,7 @@ console.log('checking expanded', this.outletLocationGroup);
     this.Spinner = Spinner;
     this.DialogService = DialogService;
     this.LabelService = LabelService;
+    this.gettextCatalog = gettextCatalog;
 
     this.type = 'outletLocationGroup'; //type for contextual menu
 

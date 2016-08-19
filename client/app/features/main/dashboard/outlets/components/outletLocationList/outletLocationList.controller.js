@@ -12,9 +12,9 @@ export default class outletLocationListController {
         this.outletLocations[index].position = item.position;
       });
 
-      this.Snack.show('Outlet location moved');
+      this.Snack.show(this.gettextCatalog.getString('Outlet location moved'));
     }, ()=>{
-      this.Snack.showError('Error moving outlet location');
+      this.Snack.showError(this.gettextCatalog.getString('Error moving outlet location'));
     }).then(()=>{
       this.Spinner.hide("outlet-location-move");
     })
@@ -73,11 +73,11 @@ export default class outletLocationListController {
     this.Spinner.show("outlet-location-delete");
     outletLocation.delete()
       .then(()=>{
-        this.Snack.show('Outlet location deleted');
+        this.Snack.show(this.gettextCatalog.getString('Outlet location deleted'));
       }).then(()=>{
         this.Spinner.hide("outlet-location-delete");
       }).catch(()=>{
-        this.Snack.showError('Error deleting outlet location');
+        this.Snack.showError(this.gettextCatalog.getString('Error deleting outlet location'));
         this.Spinner.hide("outlet-location-delete");
       })
   }
@@ -92,13 +92,14 @@ export default class outletLocationListController {
   } 
 
   /* @ngInject */
-  constructor($timeout, $stateParams, $q, Spinner, Snack, OutletLocationService) {
+  constructor($timeout, $stateParams, $q, Spinner, Snack, OutletLocationService, gettextCatalog) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.OutletLocationService = OutletLocationService;
     this.$q = $q;
     this.$timeout = $timeout;
+    this.gettextCatalog = gettextCatalog;
     this.venueId = $stateParams.venueId;
   }
 }

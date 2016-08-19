@@ -42,8 +42,6 @@ export default class userPasswordController {
   toggleShowPasswordInput(input) {
 
     input.$showPassword = !!!input.$showPassword;
-
-    console.log(input);
   }
 
   submit () {
@@ -67,15 +65,19 @@ export default class userPasswordController {
       
       this.Spinner.hide('user-password');     
       this.cancel(); 
+
+      this.Snack.show(this.gettextCatalog.getString('Your password has been changed'));
     }, 1500);
   }  
 
   /* @ngInject */
-  constructor(Spinner, $timeout) {
+  constructor(Spinner, Snack, $timeout, gettextCatalog) {
   	'ngInject';
     
     this.Spinner = Spinner;
+    this.Snack = Snack;
     this.$timeout = $timeout;
+    this.gettextCatalog = gettextCatalog;
 
     this._showForm = false;
   }

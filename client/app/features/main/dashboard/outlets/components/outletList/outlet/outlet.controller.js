@@ -42,12 +42,12 @@ export default class outletController {
               this.cardItemList.onItemCreated(_outlet);
               this.contextualMenu.hide();
               this.Spinner.hide("outlet-create");
-              this.Snack.show('Outlet created');              
+              this.Snack.show(this.gettextCatalog.getString('Outlet created'));              
             });
           }, (err)=>{
             console.log('error on save outlet', err);
             this.Spinner.hide("outlet-create");
-            this.Snack.showError('Error saving outlet');
+            this.Snack.showError(this.gettextCatalog.getString('Error saving outlet'));
           })
 
       } else {
@@ -65,11 +65,11 @@ export default class outletController {
     return this.$q((resolve, reject)=>{
       this.outlet.update()
         .then((o)=>{
-          this.Snack.show('Outlet updated');
+          this.Snack.show(this.gettextCatalog.getString('Outlet updated'));
           resolve(o);
       },()=>{
         reject();
-        this.Snack.showError('Error saving outlet');
+        this.Snack.showError(this.gettextCatalog.getString('Error saving outlet'));
       }).then(()=>{
         this.Spinner.hide("outlet-update");
       })
@@ -97,7 +97,7 @@ export default class outletController {
       })
   }  
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, gettextCatalog) {
   	"ngInject";
 
     this.$q = $q;
@@ -108,7 +108,8 @@ export default class outletController {
   	this.contextual = contextual;
   	this.DialogService = DialogService;
   	this.LabelService = LabelService;
-  	this.MenuService = MenuService;
+    this.MenuService = MenuService;
+  	this.gettextCatalog = gettextCatalog;
 
   	this.type = 'outlet';
 
