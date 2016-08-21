@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build-debug": "webpack --bail --type build  --env prod --progress",
-    "build": "webpack --bail -p --type build  --env prod --progress",
+    "build": "rm -rf dist && webpack --bail -p --type build  --env prod --progress",
     "serve": "webpack-dev-server --inline --type serve",
     "serve:dev": "webpack-dev-server --env dev --type serve --inline",
     "serve:prod": "webpack-dev-server --env prod --type serve --inline",

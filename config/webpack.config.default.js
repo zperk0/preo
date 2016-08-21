@@ -169,30 +169,22 @@ module.exports = function(ENV, options) {
       ),
       new HtmlWebpackPlugin({
         template:'./client/index.html',
-        hash:true,
         chunksSortMode: function(ca,cb){
-          console.log("sorting", ca.names[0],cb.names[0]);
           if (ca.names[0] == 'vendor'){
-            console.log("sort -1");
             return -1
           }
           if (cb.names[0] == 'vendor'){
-            console.log("sort 1");
             return 1
           }
            if (ca.names[0] == 'app'){
-            console.log("sort -1");
             return 1
           }
           if (cb.names[0] == 'app'){
-            console.log("sort 1");
             return -1
           }
           if ( ca.names[0] < cb.names[0]){
-            console.log("sort not vendor -1");
             return -1
           } else {
-            console.log("sort not vendor 1");
             return 1;
           }
 

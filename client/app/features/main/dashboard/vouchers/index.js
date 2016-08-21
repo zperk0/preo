@@ -6,9 +6,9 @@ import './vouchers.scss';
 import controller from './vouchers.controller';
 import routes from './vouchers.routes';
 
-export default function(){
-  return angular.module("vouchers" , ['ui.router'])
+require.ensure('angular',function(){
+  return angular.module("webapp.vouchers" , ['ui.router'])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
-}
+});
