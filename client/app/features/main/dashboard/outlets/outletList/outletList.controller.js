@@ -8,8 +8,8 @@ export default class outletListViewController {
 
     this.Spinner.hide('outlets');
   }
-  
-  
+
+
   constructor($stateParams, Spinner, OutletService) {
   	"ngInject";
 
@@ -33,6 +33,6 @@ export default class outletListViewController {
       this.loaded = true;
 
       this.hideSpinner();
-    })    	
+    })
   }
 }

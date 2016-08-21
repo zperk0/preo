@@ -1,25 +1,25 @@
 // Import Style
 
-require('jscore/preoday/preoday.min.js');
-
-import 'angular-material/angular-material.min.css';
-import 'croppie/croppie.css';
 import './app.scss';
 
 // node_modules and bower_components are pre-loaded by webpack
-import angular from 'angular';
-import uirouter from 'angular-ui-router';
-import angularAnimate from 'angular-animate';
-import angularAria from 'angular-aria';
-import angularMessages from 'angular-messages';
-import angularSortableView from 'angular-sortable-view';
-import croppie from 'croppie';
 import PreodayServices from './shared/services';
 
 // Import base modules
-import config from './app.config';
 import run from './app.run';
 import routes from './app.routes';
+
+//old base
+import constants from './app.constants';
+import config from './app.config';
+import gettext from 'angular-gettext';
+import translations from './app.translations';
+import dialog from './components/dialog';
+import icon from './components/icon';
+import snack from './components/snack';
+import spinner from './components/spinner';
+import tagList from './components/tagList';
+import itemChips from './components/itemChips';
 
 
 // Import internal modules
@@ -38,24 +38,27 @@ import base from './app.base';
 require('./components/sticky/sticky.directive.js');
 
 
-//Issue with ES6 Import, change this when it's fixed https://github.com/moment/moment/issues/2608
-window.moment = require('moment/moment.js');
-
-
-export default angular.module('webapp', [
+require.ensure('angular',function(){
+  angular.module('webapp', [
   /* external */
-  uirouter,
-  angularAnimate,
-  angularAria,
-  angularMessages,
-  'angular-sortable-view',
+  'webapp.vendors',
   /* directives */
   'sticky',
   imageUploader,
+  icon,
+  tagList,
+  itemChips,
+  dialog,
   contextual,
+  snack,
+  spinner,
   // /* internal */
-  base,
+  constants,
+  config,
+  'gettext',
+  /* Global services */
   PreodayServices,
+  /* Base Features */
   v2Main,
   v2Error,
   v2Auth,
@@ -66,4 +69,9 @@ export default angular.module('webapp', [
   .config(routes)
   .name;
 
-window.DEBUG = true;
+  (function _init(){
+    let v2 = document.getElementById("webappv2");
+    angular.bootstrap( v2, ['webapp']);
+  })()
+},'angular-1.js')
+

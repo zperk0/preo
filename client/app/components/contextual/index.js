@@ -1,7 +1,5 @@
 // Import Style
 
-import angular from 'angular';
-
 // Import internal modules
 import contextualMenu from './contextualMenu';
 import contextualDrawer from './contextualDrawer';

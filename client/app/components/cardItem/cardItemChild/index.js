@@ -1,9 +1,6 @@
 // Import Style
 import './cardItemChild.scss';
 
-
-import angular from 'angular';
-
 // Import internal modules
 import controller from './cardItemChild.controller';
 import directive from './cardItemChild.directive';

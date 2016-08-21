@@ -2,14 +2,19 @@
 import './venueSettings.scss';
 
 
-import angular from 'angular';
-import uirouter from 'angular-ui-router';
 
 // Import internal modules
 import controller from './venueSettings.controller';
 import routes from './venueSettings.routes';
 
-export default angular.module("venueSettings" , [uirouter])
-  .config(routes)
-  .controller(controller.UID, controller)
-  .name;
+
+require.ensure(['angular'],function(){
+  // if (!window.angular){
+  //   console.log ("no anuglar req2");
+  // //   window.angular = require('angular');
+  // }
+  angular.module("webapp.venueSettings" , ['ui.router'])
+    .config(routes)
+    .controller(controller.UID, controller)
+    .name;
+});

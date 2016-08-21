@@ -2,8 +2,6 @@
 import './imageUploader.scss';
 
 
-import angular from 'angular';
-
 // Import internal modules
 import controller from './imageUploader.controller';
 import directive from './imageUploader.directive';

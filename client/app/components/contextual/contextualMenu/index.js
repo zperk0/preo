@@ -2,8 +2,6 @@
 import './contextualMenu.scss';
 
 
-import angular from 'angular';
-
 // Import internal modules
 import controller from './contextualMenu.controller';
 import service from './contextualMenu.service';

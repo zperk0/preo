@@ -1,5 +1,3 @@
-import angularMaterial from 'angular-material';
-
 import constants from './app.constants';
 import config from './app.config';
 import gettext from 'angular-gettext';
@@ -12,14 +10,6 @@ import tagList from './components/tagList';
 
 
 export default angular.module('webapp.base', [
-    angularMaterial,
-    constants,
-    config,
-    dialog,
-    icon,
-    snack,
-    tagList,
-    spinner,
-    'gettext'
+
   ])
   .name;

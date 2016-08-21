@@ -24,7 +24,18 @@ module.exports = function(ENV, options) {
      * Karma will set this when it's a test build
      */
     entry: {
-      app: './client/app/app.js'
+      app: './client/app/app.js',
+      outlets: './client/app/features/main/dashboard/outlets/index.js',
+      menus: './client/app/features/main/dashboard/menus/index.js',
+      bookings: './client/app/features/main/dashboard/bookings/index.js',
+      events: './client/app/features/main/dashboard/events/index.js',
+      notifications: './client/app/features/main/dashboard/notifications/index.js',
+      payments: './client/app/features/main/dashboard/payments/index.js',
+      promotions: './client/app/features/main/dashboard/promotions/index.js',
+      styling: './client/app/features/main/dashboard/styling/index.js',
+      venueSettings: './client/app/features/main/dashboard/venueSettings/index.js',
+      vouchers: './client/app/features/main/dashboard/vouchers/index.js',
+      vendor: './client/app/vendor.js'
     },
     /**
      * ESLint
@@ -158,8 +169,47 @@ module.exports = function(ENV, options) {
       ),
       new HtmlWebpackPlugin({
         template:'./client/index.html',
-        inject: 'body'
+        hash:true,
+        chunksSortMode: function(ca,cb){
+          console.log("sorting", ca.names[0],cb.names[0]);
+          if (ca.names[0] == 'vendor'){
+            console.log("sort -1");
+            return -1
+          }
+          if (cb.names[0] == 'vendor'){
+            console.log("sort 1");
+            return 1
+          }
+           if (ca.names[0] == 'app'){
+            console.log("sort -1");
+            return 1
+          }
+          if (cb.names[0] == 'app'){
+            console.log("sort 1");
+            return -1
+          }
+          if ( ca.names[0] < cb.names[0]){
+            console.log("sort not vendor -1");
+            return -1
+          } else {
+            console.log("sort not vendor 1");
+            return 1;
+          }
+
+        },
+        chunks:['bookings', 'events', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','app','vendor'],
+        // chunks:['outlets','app','vendor'],
+        filename:'index.html'
+      }),
+
+
+      new HtmlWebpackPlugin({
+        template:'./client/index.html',
+        chunks:['outlets','app','vendor'],
+        filename:'outlets/index.html'
       })
     ]
   }
 }
+
+

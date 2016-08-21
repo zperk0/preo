@@ -2,8 +2,6 @@
 import './modifierItems.scss';
 
 
-import angular from 'angular';
-
 // Import internal modules
 import controller from './modifierItems.controller';
 import directive from './modifierItems.directive';

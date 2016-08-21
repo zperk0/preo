@@ -2,8 +2,6 @@
 import './navbar.scss';
 
 
-import angular from 'angular';
-
 // Import internal modules
 import controller from './navbar.controller';
 import directive from './navbar.directive';

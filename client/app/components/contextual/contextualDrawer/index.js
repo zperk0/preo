@@ -1,7 +1,6 @@
 // Import Style
 
 import './contextualDrawer.scss';
-import angular from 'angular';
 
 // Import internal modules
 import service from './contextualDrawer.service';

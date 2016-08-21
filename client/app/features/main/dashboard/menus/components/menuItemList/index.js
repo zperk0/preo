@@ -2,8 +2,6 @@
 import './menuItemList.scss';
 
 
-import angular from 'angular';
-
 // Import internal modules
 import controller from './menuItemList.controller';
 import directive from './menuItemList.directive';
