@@ -40,15 +40,21 @@ export default class userEmailController {
     }, 1500);
   }
 
+  getEmail () {
+
+    return this.UserService.user && this.UserService.user.email;
+  }
+
   /* @ngInject */
-  constructor($timeout, Spinner, Snack, gettextCatalog) {
+  constructor($timeout, Spinner, Snack, gettextCatalog, UserService) {
   	'ngInject';
 
     this.$timeout = $timeout;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.gettextCatalog = gettextCatalog;
-    
+    this.UserService = UserService;
+
     this._showForm = false;
   }
 }

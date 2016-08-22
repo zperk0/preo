@@ -1,0 +1,27 @@
+.email-success-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+	.content {
+		display: inline-block;
+		max-width: 327px;
+	}
+	.title-message {
+		font-family:Roboto-Regular;
+		font-size:16px;
+		color:#424242;
+		line-height:16px;
+		text-align:center;
+		margin-bottom: 14px;
+	}
+
+	.message {
+		font-family:Roboto-Regular;
+		font-size:13px;
+		color:#757575;
+		line-height:18px;
+		text-align:center;		
+	}
+}

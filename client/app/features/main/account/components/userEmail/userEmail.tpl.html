@@ -2,7 +2,7 @@
   <md-card md-theme="default">
     <md-card-title>
       <md-card-title-text>
-        <span class="md-headline">Email address</span>
+        <span class="md-headline" ttanslate>Email address</span>
       </md-card-title-text>
     </md-card-title>
     <form name="userEmailCtrl.userEmailForm" ng-submit="userEmailCtrl.submit()" novalidate>
@@ -29,14 +29,14 @@
 				  </md-input-container>	    
 			  </div>
 			  <div ng-show="!userEmailCtrl.shouldShowForm()" class="content-form">
-		    	<div class="email-address">address@preoday.com</div>
-		    	<div class="pending-confirmation-message">Pending confirmation</div>
+		    	<div class="email-address">{{ userEmailCtrl.getEmail() }}</div>
+		    	<div class="pending-confirmation-message" ttanslate>Pending confirmation</div>
 	    	</div>
 	    </md-card-content>
 	    <md-card-actions layout="row" layout-align="end center">
-	      <md-button type="button" class='md-primary' ng-click="userEmailCtrl.showForm()" ng-show="!userEmailCtrl.shouldShowForm()">Change email address</md-button>
-	      <md-button type="button" class='md-primary' ng-show="userEmailCtrl.shouldShowForm()" ng-click="userEmailCtrl.cancel()">Cancel</md-button>
-	      <md-button type="submit" class='md-primary' ng-show="userEmailCtrl.shouldShowForm()">Send confirmation</md-button>
+	      <md-button type="button" class='md-primary' ng-click="userEmailCtrl.showForm()" ng-show="!userEmailCtrl.shouldShowForm()" ttanslate>Change email address</md-button>
+	      <md-button type="button" class='md-primary' ng-show="userEmailCtrl.shouldShowForm()" ng-click="userEmailCtrl.cancel()" ttanslate>Cancel</md-button>
+	      <md-button type="submit" class='md-primary' ng-show="userEmailCtrl.shouldShowForm()" ttanslate>Send confirmation</md-button>
 	    </md-card-actions>
     </form>
   </md-card>

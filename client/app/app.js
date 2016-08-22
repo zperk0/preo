@@ -27,6 +27,7 @@ import v2Main from './features/main';
 import v2Error from './features/error';
 import v2Auth from './features/auth';
 import v2NotFound from './features/notFound';
+import v2EmailSuccess from './features/emailSuccess';
 
 // Import global components
 import imageUploader from './components/imageUploader';
@@ -59,7 +60,8 @@ export default angular.module('webapp', [
   v2Main,
   v2Error,
   v2Auth,
-  v2NotFound
+  v2NotFound,
+  v2EmailSuccess
   ])
   .config(config)
   .run(run)
