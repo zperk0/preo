@@ -13,6 +13,6 @@ export default function routes($stateProvider) {
     abstract: true,
     template: require("./main.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm"
+    controllerAs: "vm",
   });
 }

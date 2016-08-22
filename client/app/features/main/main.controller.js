@@ -34,10 +34,15 @@ export default class mainController {
     this.Spinner = Spinner;
     this.BroadcastEvents = BroadcastEvents;
     $rootScope.$on(BroadcastEvents._PREO_DO_VENUE_SELECT,this.setVenue.bind(this));
-    if (UserService.isAuth){
-      VenueService.fetchById($stateParams.venueId).then((venue)=>{
-        this.setVenue(null,venue)
-      })
+    if (UserService.isAuth()){
+
+      if (Number($stateParams.venueId) > 0) {
+        VenueService.fetchById($stateParams.venueId).then((venue)=>{
+          this.setVenue(null,venue)
+        });
+      } else {
+        VenueService.selectVenue();
+      }
     }
 
   }

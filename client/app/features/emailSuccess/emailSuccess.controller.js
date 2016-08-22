@@ -12,12 +12,34 @@ export default class emailSuccessController {
   resendEmail() {
   	
   }
+
+  getStateToRedirect() {
+
+  	if (this.UserService.isLogged()) {
+
+  		let venueId = 0;
+
+			if (this.VenueService.venues
+  			&& this.VenueService.venues.length) {
+
+				venueId = this.VenueService.venues[0].id;
+			}
+
+  		return this.$state.href("main.dashboard", {
+  			venueId: venueId
+  		});
+  	}
+
+  	return this.$state.href('auth.signin');
+  }
   
-  /* @ngInject */
-  constructor(UtilsService) {
+  constructor(UtilsService, UserService, VenueService, $state) {
   	'ngInject';
 
   	this.UtilsService = UtilsService;
+  	this.UserService = UserService;
+  	this.VenueService = VenueService;
+  	this.$state = $state;
 
   	this.eventIconPath = '/images/email-sent-icon.svg';
   }

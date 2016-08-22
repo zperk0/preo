@@ -8,7 +8,7 @@ import controller from './notFound.controller';
 
 export default function routes($stateProvider) {
   "ngInject";
-  $stateProvider.state("notFound", {
+  $stateProvider.state("main.notFound", {
     url: "/404",
     template: require("./notFound.tpl.html"),
     controller: controller.UID,

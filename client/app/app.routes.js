@@ -1,5 +1,5 @@
 
 export default function routes($urlRouterProvider){
   "ngInject";
-  $urlRouterProvider.otherwise('/404');
+  $urlRouterProvider.otherwise('/0/main/404');
 }

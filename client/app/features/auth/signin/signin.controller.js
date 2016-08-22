@@ -17,7 +17,13 @@ export default class signinController {
   }
 
   handleSuccess(){
-    this.hideSpinner(2000);
+
+    this.VenueService.selectVenue()
+      .then(() => {
+        this.hideSpinner(2000);
+      }, () => {
+        this.hideSpinner(2000);
+      });
 
   }
 
@@ -34,13 +40,14 @@ export default class signinController {
     .then(this.handleSuccess.bind(this),this.handleError.bind(this))
   }
 
-  constructor(UserService, Spinner, Snack, $timeout, LabelService) {
+  constructor(UserService, Spinner, Snack, $timeout, LabelService, VenueService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.LabelService = LabelService;
     this.$timeout = $timeout;
     this.UserService = UserService;
+    this.VenueService = VenueService;
     if (UserService.user){
       UserService.signout();
     }
