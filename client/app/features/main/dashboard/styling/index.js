@@ -14,9 +14,7 @@ import mobile from './mobile';
 import emails from './emails';
 import weborders from './weborders';
 
-require.ensure('angular',function(){
-  return angular.module("styling" , ['ui.router', mobile, emails, weborders, 'mdColorPicker'])
+angular.module("styling" , ['ui.router', mobile, emails, weborders, 'mdColorPicker'])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
-});

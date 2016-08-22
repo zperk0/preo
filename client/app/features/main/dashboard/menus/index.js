@@ -13,9 +13,7 @@ import v2ModifierList from './modifiers';
 import menuItemList from './components/menuItemList'; //required for drawer
 import modifierList from './components/modifierList'; //required for drawer
 
-require.ensure('angular',function(){
-  return angular.module("webapp.menus" , ['ui.router', v2Menu, v2MenuList, v2ItemList, v2ModifierList, menuItemList, modifierList])
+angular.module("webapp.menus" , ['ui.router', v2Menu, v2MenuList, v2ItemList, v2ModifierList, menuItemList, modifierList])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
-});

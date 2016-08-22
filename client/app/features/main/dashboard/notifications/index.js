@@ -7,9 +7,7 @@ import controller from './notifications.controller';
 import routes from './notifications.routes';
 
 
-require.ensure('angular',function(){
-  return angular.module("notifications" , ['ui.router'])
+angular.module("notifications" , ['ui.router'])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
-});

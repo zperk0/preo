@@ -38,7 +38,6 @@ import contextual from './components/contextual';
 require('./components/sticky/sticky.directive.js');
 
 
-require.ensure('angular',function(){
   angular.module('webapp', [
   /* external */
   'webapp.vendors',
@@ -75,5 +74,4 @@ require.ensure('angular',function(){
     let v2 = document.getElementById("webappv2");
     angular.bootstrap( v2, ['webapp']);
   })()
-},'angular.js')
 

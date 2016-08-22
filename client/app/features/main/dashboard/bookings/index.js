@@ -11,10 +11,7 @@ import v2BookingMenus from './bookingMenus';
 import v2BookingSettings from './bookingSettings';
 
 
-require.ensure('angular',function(){
-  console.log("running bookings")
   angular.module("webapp.bookings" , ['ui.router', v2BookingList, v2BookingMenus, v2BookingSettings])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
-});

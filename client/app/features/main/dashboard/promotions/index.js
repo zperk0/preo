@@ -6,9 +6,7 @@ import './promotions.scss';
 import controller from './promotions.controller';
 import routes from './promotions.routes';
 
-require.ensure('angular',function(){
-  return angular.module("promotions" , ['ui.router'])
+angular.module("promotions" , ['ui.router'])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
-});

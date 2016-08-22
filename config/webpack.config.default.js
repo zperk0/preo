@@ -24,6 +24,7 @@ module.exports = function(ENV, options) {
      * Karma will set this when it's a test build
      */
     entry: {
+      angular:'angular',
       app: './client/app/app.js',
       outlets: './client/app/features/main/dashboard/outlets/index.js',
       menus: './client/app/features/main/dashboard/menus/index.js',
@@ -170,6 +171,12 @@ module.exports = function(ENV, options) {
       new HtmlWebpackPlugin({
         template:'./client/index.html',
         chunksSortMode: function(ca,cb){
+          if (ca.names[0] == 'angular'){
+            return -1
+          }
+          if (cb.names[0] == 'angular'){
+            return 1
+          }
           if (ca.names[0] == 'vendor'){
             return -1
           }
@@ -189,7 +196,7 @@ module.exports = function(ENV, options) {
           }
 
         },
-        chunks:['bookings', 'events', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','app','vendor'],
+        chunks:['bookings', 'events', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','app','vendor', 'angular'],
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
       }),

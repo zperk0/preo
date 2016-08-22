@@ -9,9 +9,7 @@ import routes from './payments.routes';
 import v2AppMode from './appMode';
 import v2PaymentMethods from './paymentMethods';
 
-require.ensure('angular',function(){
-  return angular.module("payments" , ['ui.router', v2AppMode, v2PaymentMethods])
+angular.module("payments" , ['ui.router', v2AppMode, v2PaymentMethods])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
-});

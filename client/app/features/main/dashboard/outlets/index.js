@@ -17,9 +17,7 @@ import outletLocationTree from './components/outletLocationTree'; //required for
 import outletLocations from './outletLocations'; //required for drawer
 import outletListView from './outletList'; //required for drawer
 
-require.ensure('angular',function(){
   angular.module("webapp.outlets" , ['ui.router', 'breadcrumb', outletList, outletLocationList, outletLocationGroupList, outletLocationTree, outletLocationGroup, outletLocation, outletLocations, outletListView])
     .config(routes)
     .controller(controller.UID, controller)
     .name;
-},'outlets-1.js')

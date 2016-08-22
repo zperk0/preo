@@ -11,7 +11,6 @@ import outlets from './outlets';
 //
 //Directives
 
-require.ensure('angular',function(){
     angular.module("dashboard" , ['ui.router',
         // 'webapp.bookings',
         // 'webapp.events',
@@ -27,4 +26,3 @@ require.ensure('angular',function(){
         .config(routes)
         .controller(controller.UID, controller)
         .name;
-});
