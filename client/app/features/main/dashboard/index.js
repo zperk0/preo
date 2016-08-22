@@ -9,14 +9,14 @@ import routes from './dashboard.routes';
 //Directives
 
 angular.module("dashboard" , ['ui.router',
-    'webapp.bookings',
-    'webapp.events',
+    // 'webapp.bookings',
+    // 'webapp.events',
     // 'webapp.notifications',
     // 'webapp.payments',
     // 'webapp.promotions',
     // 'webapp.styling',
-    'webapp.venueSettings',
-    'webapp.vouchers',
+    // 'webapp.venueSettings',
+    // 'webapp.vouchers',
     'webapp.menus',
     'webapp.outlets'
     ])

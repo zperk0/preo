@@ -20,6 +20,7 @@ import snack from './components/snack';
 import spinner from './components/spinner';
 import tagList from './components/tagList';
 import itemChips from './components/itemChips';
+import breadcrumb from './components/breadcrumb';
 
 
 // Import internal modules
@@ -31,8 +32,6 @@ import v2NotFound from './features/notFound';
 // Import global components
 import imageUploader from './components/imageUploader';
 import contextual from './components/contextual';
-
-import base from './app.base';
 
 //TODO convert this to ES6
 require('./components/sticky/sticky.directive.js');
@@ -52,6 +51,7 @@ require.ensure('angular',function(){
   contextual,
   snack,
   spinner,
+  breadcrumb,
   // /* internal */
   constants,
   config,
@@ -73,5 +73,5 @@ require.ensure('angular',function(){
     let v2 = document.getElementById("webappv2");
     angular.bootstrap( v2, ['webapp']);
   })()
-},'angular-1.js')
+},'angular.js')
 

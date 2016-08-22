@@ -193,12 +193,11 @@ module.exports = function(ENV, options) {
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
       }),
-
-
       new HtmlWebpackPlugin({
-        template:'./client/index.html',
+        template:'./client/v1/outlets.php',
         chunks:['outlets','app','vendor'],
-        filename:'outlets/index.html'
+        inject:false,
+        filename:'outlets/index.php'
       })
     ]
   }
