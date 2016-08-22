@@ -2,8 +2,6 @@
 import './menusSelect.scss';
 
 
-import angular from 'angular';
-
 // Import internal modules
 import controller from './menusSelect.controller';
 import directive from './menusSelect.directive';

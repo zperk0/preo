@@ -2,8 +2,6 @@
 import './account.scss';
 
 
-import angular from 'angular';
-import uirouter from 'angular-ui-router';
 
 // Import internal modules
 import controller from './account.controller';
@@ -13,7 +11,7 @@ import userEmail from './components/userEmail';
 import userPassword from './components/userPassword';
 
 export default angular.module("account" , [
-	uirouter,
+	'ui.router',
 	userEmail,
 	userPassword
 ])

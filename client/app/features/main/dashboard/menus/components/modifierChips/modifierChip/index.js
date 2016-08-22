@@ -2,7 +2,6 @@
 import './modifierChip.scss';
 
 
-import angular from 'angular';
 
 // Import internal modules
 import controller from './modifierChip.controller';

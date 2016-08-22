@@ -8,7 +8,7 @@ export default class outletLocationsController {
 
   	console.log('here');
     this.contextual.showDrawer(id);
-  }  
+  }
 
   hideSpinner () {
 
@@ -24,17 +24,17 @@ export default class outletLocationsController {
         }),
         this.OutletService.getOutlets({
           venueId: this.VenueService.currentVenue.id
-        })        
+        })
       ]).then((results) => {
-        
+
         this.data = results[0];
-        
+
         this.buildUri();
       }, (err) => {
 
       this.outletLocations = [];
       this.hideSpinner();
-    });   
+    });
   }
 
   buildUri () {
@@ -75,7 +75,7 @@ export default class outletLocationsController {
         this.outletGroup = this.data.rootGroup.outletLocations[0].getGroup();
 
         let breadcumbGroup = breadcumbs.filter((item) => {
-          
+
           return item.group.id === this.outletGroup.id;
         });
 
@@ -84,7 +84,7 @@ export default class outletLocationsController {
           return;
         } else {
           this.$location.path(breadcumbs[0].url.replace('#/', ''));
-          return;        
+          return;
         }
       } else {
         this.createEmptyGroup();
@@ -100,7 +100,7 @@ export default class outletLocationsController {
 
       if (breadcumbs[breadcumbs.length - 1].url !== browserUrl) {
         this.$location.path(breadcumbs[0].url.replace('#/', ''));
-        return;         
+        return;
       }
 
       this.loaded = true;
@@ -147,7 +147,7 @@ export default class outletLocationsController {
       this.fetchOutlets();
     } else {
       $scope.$on(BroadcastEvents.ON_CURRENT_VENUE, (event, venue) => {
-        
+
         this.fetchOutlets();
       });
     }

@@ -2,8 +2,6 @@
 import './userPassword.scss';
 
 
-import angular from 'angular';
-
 // Import internal modules
 import controller from './userPassword.controller';
 import directive from './userPassword.directive';

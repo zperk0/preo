@@ -2,14 +2,13 @@
 import './promotions.scss';
 
 
-import angular from 'angular';
-import uirouter from 'angular-ui-router';
-
 // Import internal modules
 import controller from './promotions.controller';
 import routes from './promotions.routes';
 
-export default angular.module("promotions" , [uirouter])
+require.ensure('angular',function(){
+  return angular.module("promotions" , ['ui.router'])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
+});

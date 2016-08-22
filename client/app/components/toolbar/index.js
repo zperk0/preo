@@ -1,8 +1,6 @@
 // Import Style
 import './toolbar.scss';
 
-import angular from 'angular';
-
 import services from '../../shared';
 
 // Import internal modules

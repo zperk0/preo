@@ -22,10 +22,8 @@ module.exports = function(ENV) {
       // Absolute output directory
       path: __dirname + '/../dist',
       publicPath: '/',
-      filename: '[name].bundle.js',
-      chunkFilename: '[name].bundle.js',
-      libraryTarget: 'umd',
-      library: '[name]'
+      filename: '[name].bundle.[chunkhash].js',
+      chunkFilename: '[name].bundle.[chunkhash].js'
     },
     /**
      * Devtool settings

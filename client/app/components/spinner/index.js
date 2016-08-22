@@ -2,8 +2,6 @@
 import './spinner.scss';
 
 
-import angular from 'angular';
-
 // Import internal modules
 import directive from './spinner.directive';
 import service from './spinner.service';

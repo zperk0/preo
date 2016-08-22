@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build-debug": "webpack --bail --type build  --env prod --progress",
-    "build": "webpack --bail -p --type build  --env prod --progress",
+    "build": "rm -rf dist && webpack --bail -p --type build  --env prod --progress",
     "serve": "webpack-dev-server --inline --type serve",
     "serve:dev": "webpack-dev-server --env dev --type serve --inline",
     "serve:prod": "webpack-dev-server --env prod --type serve --inline",
@@ -55,7 +55,7 @@
     "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.5",
-    "html-webpack-plugin": "^1.6.2",
+    "html-webpack-plugin": "^2.0.0",
     "isparta-instrumenter-loader": "^1.0.0",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.14",

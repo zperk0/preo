@@ -2,9 +2,6 @@
 import './outlets.scss';
 
 
-import angular from 'angular';
-import uirouter from 'angular-ui-router';
-
 // Import internal modules
 import controller from './outlets.controller';
 import routes from './outlets.routes';
@@ -20,7 +17,9 @@ import outletLocationTree from './components/outletLocationTree'; //required for
 import outletLocations from './outletLocations'; //required for drawer
 import outletListView from './outletList'; //required for drawer
 
-export default angular.module("outlets" , [uirouter, outletList, outletLocationList, outletLocationGroupList, outletLocationTree, outletLocationGroup, outletLocation, outletLocations, outletListView])
-  .config(routes)
-  .controller(controller.UID, controller)
-  .name;
+require.ensure('angular',function(){
+  angular.module("webapp.outlets" , ['ui.router', 'breadcrumb', outletList, outletLocationList, outletLocationGroupList, outletLocationTree, outletLocationGroup, outletLocation, outletLocations, outletListView])
+    .config(routes)
+    .controller(controller.UID, controller)
+    .name;
+},'outlets-1.js')

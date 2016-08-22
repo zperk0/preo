@@ -1,8 +1,6 @@
 // Import Style
 import './navbarItem.scss';
 
-import angular from 'angular';
-
 // Import internal modules
 import directive from './navbarItem.directive';
 

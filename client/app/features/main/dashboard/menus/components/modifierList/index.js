@@ -2,7 +2,6 @@
 import './modifierList.scss';
 
 
-import angular from 'angular';
 
 // Import internal modules
 import controller from './modifierList.controller';

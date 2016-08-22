@@ -2,9 +2,6 @@
 import './menus.scss';
 
 
-import angular from 'angular';
-import uirouter from 'angular-ui-router';
-
 // Import internal modules
 import controller from './menus.controller';
 import routes from './menus.routes';
@@ -16,7 +13,9 @@ import v2ModifierList from './modifiers';
 import menuItemList from './components/menuItemList'; //required for drawer
 import modifierList from './components/modifierList'; //required for drawer
 
-export default angular.module("menus" , [uirouter, v2Menu, v2MenuList, v2ItemList, v2ModifierList, menuItemList, modifierList])
+require.ensure('angular',function(){
+  return angular.module("webapp.menus" , ['ui.router', v2Menu, v2MenuList, v2ItemList, v2ModifierList, menuItemList, modifierList])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
+});

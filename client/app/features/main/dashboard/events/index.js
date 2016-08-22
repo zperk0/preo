@@ -2,14 +2,14 @@
 import './events.scss';
 
 
-import angular from 'angular';
-import uirouter from 'angular-ui-router';
 
 // Import internal modules
 import controller from './events.controller';
 import routes from './events.routes';
 
-export default angular.module("events" , [uirouter])
+require.ensure('angular',function(){
+  return angular.module("webapp.events" , ['ui.router'])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
+});

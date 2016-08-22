@@ -2,15 +2,14 @@
 import './notifications.scss';
 
 
-import angular from 'angular';
-import uirouter from 'angular-ui-router';
-
 // Import internal modules
 import controller from './notifications.controller';
 import routes from './notifications.routes';
 
 
-export default angular.module("notifications" , [uirouter])
+require.ensure('angular',function(){
+  return angular.module("notifications" , ['ui.router'])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
+});

@@ -2,8 +2,6 @@
 import './outletLocationTree.scss';
 
 
-import angular from 'angular';
-
 // Import internal modules
 import directive from './outletLocationTree.directive';
 

@@ -1,8 +1,6 @@
 // Import Style
 import './dialog.scss';
 
-import angular from 'angular';
-
 // Import internal modules
 import service from './dialog.service';
 

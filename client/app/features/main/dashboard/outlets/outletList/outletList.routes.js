@@ -17,6 +17,6 @@ export default function routes($stateProvider) {
         controller: controller.UID,
         controllerAs: "outletListCtrl",
       }
-    }    
+    }
   });
 }

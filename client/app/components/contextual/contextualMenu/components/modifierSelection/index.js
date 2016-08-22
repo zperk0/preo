@@ -2,8 +2,6 @@
 import './modifierSelection.scss';
 
 
-import angular from 'angular';
-
 // Import internal modules
 import controller from './modifierSelection.controller';
 import directive from './modifierSelection.directive';
