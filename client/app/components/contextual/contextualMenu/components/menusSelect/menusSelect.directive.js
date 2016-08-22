@@ -7,6 +7,7 @@ export default function menusSelect(){
       ngModel: '='
     },
     template: require("./menusSelect.tpl.html"),
+    replace: true,
     controller: controller.UID,
     controllerAs: "vm",
     bindToController: true,

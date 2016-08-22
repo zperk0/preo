@@ -20,6 +20,9 @@
   </md-input-container>
 
   <div class="error" ng-if="contextualForm.$submitted && !vm.entity.$menuId" translate>Menu is required.</div>
-
-  <menus-select ng-if="vm.isShowing('outlet')" ng-model="vm.entity.$menuId"></menus-select>
+  
+  <div class="menus-select-content" ng-if="vm.isShowing('outlet')">
+    <label translate>Outlet menu:</label>
+    <menus-select ng-model="vm.entity.$menuId"></menus-select>
+  </div>
 </md-card-content>
