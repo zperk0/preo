@@ -4,6 +4,8 @@ var path = require("path");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
+
 
 module.exports = function(ENV, options) {
   return {
@@ -24,7 +26,7 @@ module.exports = function(ENV, options) {
      * Karma will set this when it's a test build
      */
     entry: {
-      angular:'angular',
+      angular:['angular'],
       app: './client/app/app.js',
       outlets: './client/app/features/main/dashboard/outlets/index.js',
       menus: './client/app/features/main/dashboard/menus/index.js',
