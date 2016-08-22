@@ -35,9 +35,10 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php');
 ?>
 
-<script type="text/javascript" src="/code/v2/vendor.bundle.c85d9bee67e370eff047.js"></script>
-<script type="text/javascript" src="/code/v2/outlets.bundle.157d173413a702e80e2b.js"></script>
-<script type="text/javascript" src="/code/v2/app.bundle.bc6858584e96e8c84a91.js"></script>
+<script type="text/javascript" src="/code/v2/angular.bundle.d9320684376e6e288da3.js"></script>
+<script type="text/javascript" src="/code/v2/vendor.bundle.c05bd1f57fdf86007daa.js"></script>
+<script type="text/javascript" src="/code/v2/outlets.bundle.d55c4f432b4c85f6348d.js"></script>
+<script type="text/javascript" src="/code/v2/app.bundle.2a9bc16c53e21306a881.js"></script>
 <script>
   (function (){
     angular.module('webapp.bookings',[]);

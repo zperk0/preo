@@ -80,10 +80,10 @@ export default class outletLocationsController {
         });
 
         if (breadcumbGroup.length) {
-          this.$location.path(breadcumbGroup[0].url.replace('#/', ''));
+          this.setPath(breadcumbGroup[0].url.replace('#/', ''));
           return;
         } else {
-          this.$location.path(breadcumbs[0].url.replace('#/', ''));
+          this.setPath(breadcumbs[0].url.replace('#/', ''));
           return;
         }
       } else {
@@ -99,7 +99,7 @@ export default class outletLocationsController {
       let browserUrl = window.location.hash.replace(/~2F/g, "/");
 
       if (breadcumbs[breadcumbs.length - 1].url !== browserUrl) {
-        this.$location.path(breadcumbs[0].url.replace('#/', ''));
+        this.setPath(breadcumbs[0].url.replace('#/', ''));
         return;
       }
 
@@ -117,7 +117,7 @@ export default class outletLocationsController {
   groupDeleted () {
 
     if (this.breadcumbs.length > 1) {
-      this.$location.path(this.breadcumbs[this.breadcumbs.length - 2].url.replace('#/', ''));
+      this.setPath(this.breadcumbs[this.breadcumbs.length - 2].url.replace('#/', ''));
     } else {
       this.createEmptyGroup();
 
@@ -125,6 +125,13 @@ export default class outletLocationsController {
     }
   }
 
+  setPath(path){
+    this.$location.path(path);
+  }
+
+  getUrl(url){
+    return window.location.pathname+url;
+  }
 
   constructor(contextual, Spinner, $scope, $timeout, $q, $state, $location, $stateParams, BroadcastEvents, VenueService, OutletLocationService, OutletService) {
     "ngInject";
