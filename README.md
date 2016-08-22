@@ -1,3 +1,10 @@
+#Preoday:
+
+-- To export for v1
+
+outlets: run build and update by hand the js file hashes in v1 outputs
+
+
 # Angular-Webpack-Babel Generator
 
 [![Dependency Status](https://david-dm.org/Foxandxss/angular-webpack-workflow/status.svg)](https://david-dm.org/Foxandxss/angular-webpack-workflow#info=dependencies) [![devDependency Status](https://david-dm.org/Foxandxss/angular-webpack-workflow/dev-status.svg)](https://david-dm.org/Foxandxss/angular-webpack-workflow#info=devDependencies)
@@ -150,3 +157,5 @@ It's generally a good introctory read: [angular-tips](http://angular-tips.com/bl
 ## License
 
 The license of this workflow is MIT.
+
+
