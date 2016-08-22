@@ -23,5 +23,18 @@
 		color:#757575;
 		line-height:18px;
 		text-align:center;		
+
+		a {
+			color:#757575;
+		}
+	}
+
+	.image {
+		width:108px;
+		height:76px;
+		margin: 0 auto 23px;
+		background-size: cover;
+		background-repeat: no-repeat;		
+		background-position: center center;
 	}
 }

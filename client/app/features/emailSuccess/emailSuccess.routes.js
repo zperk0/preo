@@ -11,6 +11,6 @@ export default function routes($stateProvider) {
     url: "/email-success/:token",
     template: require("./emailSuccess.tpl.html"),
     controller: controller.UID,
-    controllerAs: "emailSuccess"
+    controllerAs: "emailSuccessCtrl"
   });
 }

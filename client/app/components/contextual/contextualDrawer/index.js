@@ -23,11 +23,8 @@ import styleRowDirective from './style/row/contextualDrawer.style-row.directive'
 
 import cardItemList from '../../cardItemList';
 
-import base from '../../../app.base';
 
-
-
-export default angular.module("contextualDrawer" , [cardItemList, base])
+export default angular.module("contextualDrawer" , [cardItemList])
   .service(service.UID, service)
 
   .controller(controller.UID, controller)
