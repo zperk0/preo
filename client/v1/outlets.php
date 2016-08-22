@@ -4,8 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/api_vars.php');  //API config file
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/callAPI.php');   //API calling function
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/kint/Kint.class.php');   //kint
-  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php');
-  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php');
+  // require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/meta.php');
 ?>
 
 <!doctype html>
@@ -16,21 +15,29 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   <base href="/">
   <!-- @@OVERRIDES -->
   <!-- @@ANALYTICS -->
+<script src="<? echo $_SESSION['path']?>/js/modernizr_and_jquery1.10.2_min.js"></script>
+<?php require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); ?>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/normalize.css" />
+<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/foundation.css"/>
+<link href="<? echo $_SESSION['path']?>/css/header-footer.css" rel="stylesheet"></head>
 <link href="/code/v2/vendor.css" rel="stylesheet"></head>
 <body>
-  <div id="webappv2" class='webapp'>
-    <toolbar></toolbar>
-    <navbar></navbar>
-    <div class='main-ui-view' ui-view></div>
-    <spinner></spinner>
+  <div id="wrap">
+    <div id="webappv2" class='webapp'>
+      <toolbar></toolbar>
+      <navbar></navbar>
+      <div class='main-ui-view' ui-view></div>
+      <spinner></spinner>
+    </div>
   </div>
-
 <?php
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php');
 ?>
-<script type="text/javascript" src="/code/v2/vendor.bundle.f42d9957d2a618e65783.js"></script>
-<script type="text/javascript" src="/code/v2/outlets.bundle.51311bcc6238ebf3a6c1.js"></script>
-<script type="text/javascript" src="/code/v2/app.bundle.6ea168797f0ee2d28a89.js"></script>
+
+<script type="text/javascript" src="/code/v2/vendor.bundle.c85d9bee67e370eff047.js"></script>
+<script type="text/javascript" src="/code/v2/outlets.bundle.157d173413a702e80e2b.js"></script>
+<script type="text/javascript" src="/code/v2/app.bundle.bc6858584e96e8c84a91.js"></script>
 <script>
   (function (){
     angular.module('webapp.bookings',[]);
@@ -38,6 +45,12 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
     angular.module('webapp.venueSettings',[]);
     angular.module('webapp.vouchers',[]);
     angular.module('webapp.menus',[]);
+    angular.module('webapp.notifications',[]);
+    angular.module('webapp.payments',[]);
+    angular.module('webapp.promotions',[]);
+    angular.module('webapp.styling',[]);
+    angular.module('webapp.venueSettings',[]);
+    angular.module('webapp.vouchers',[]);
   })();
 </script>
 <style>
@@ -51,9 +64,14 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
     overflow: auto !important;
   }
   #wrap{
+    background:transparent url(../img/bg.jpg) repeat!important;
     min-height: calc(100vh - 200px);
     margin: 0 auto;
     padding:0;
+  }
+
+  #webappv2{
+    min-height: calc(100vh - 220px - 66px);
   }
   #webappv2 > md-toolbar{
     display: none;
@@ -93,7 +111,19 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
     top:0;
     position: relative;
   }
+  #webappv2 form{
+    margin-bottom: 0;
+  }
+
+  #webappv2 .main-content-right{
+    left: auto !important;
+    right:16px;
+  }
+
+  #webappv2 md-input-container label{
+    font-weight: normal;
+    font-size: 16px;
+  }
 </style>
 </body>
 </html>
-
