@@ -14,16 +14,22 @@
   <div ng-if="vm.entity.toSeatFlag">
     <md-input-container class="md-block md-input-container-with-no-float md-input-container-seat-number" md-no-float>
       <span class="input-label" translate>Start number</span>
-      <input type="number" aria-label="{{ 'Start number' | translate }}" required name="seatStart" ng-model="vm.entity.seatStart">
-      <div ng-messages="contextualForm.seatStart.$error">
-        <div ng-message="required" translate>This is required.</div>
+      <input type="text" aria-label="{{ 'Start number' | translate }}" name="seatStart" ng-model="vm.entity.seatStart" valid-number max-integer-value compare-number="vm.entity.seatEnd" required />
+
+      <div ng-messages="contextualForm.seatStart.$error" ng-show="contextualForm.seatStart.$dirty">
+        <div ng-message="required" translate ng-class="{'activated': contextualForm.seatStart.$error.required}">This is required.</div>
+        <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualForm.seatStart.$error.maxIntegerValue}">Max value is 2147483647.</div>
+        <div ng-message="compareNumber" translate ng-class="{'activated': contextualForm.seatStart.$error.compareNumber}">Start number need to be smaller than end number</div>
       </div>
     </md-input-container>   
     <md-input-container class="md-block md-input-container-with-no-float md-input-container-seat-number" md-no-float>
       <span class="input-label" translate>End number</span>
-      <input type="number" aria-label="{{ 'End number' | translate }}" required name="seatEnd" ng-model="vm.entity.seatEnd" ng-maxlength="100">
-      <div ng-messages="contextualForm.seatEnd.$error">
-        <div ng-message="required" translate>This is required.</div>
+      <input type="text" aria-label="{{ 'End number' | translate }}" name="seatEnd" ng-model="vm.entity.seatEnd" valid-number max-integer-value compare-number="vm.entity.seatStart" bigger required />
+
+      <div ng-messages="contextualForm.seatEnd.$error" ng-show="contextualForm.seatEnd.$dirty">
+        <div ng-message="required" translate ng-class="{'activated': contextualForm.seatEnd.$error.required && !vm.entity.seatEnd}">This is required.</div>
+        <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualForm.seatEnd.$error.maxIntegerValue}">Max value is 2147483647.</div>
+        <div ng-message="compareNumber" translate ng-class="{'activated': contextualForm.seatEnd.$error.compareNumber}">End number need to be bigger than start number</div>
       </div>
     </md-input-container>  	
   </div>

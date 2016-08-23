@@ -113,4 +113,28 @@
     color: #fc3339;
   }
 
+  .md-input-message-animation {
+    &.activated, &.ng-enter-active {
+      opacity: 1 !important;
+      margin-top: 0px !important; 
+    }      
+
+    // // &.active {
+    //   &:not(.ng-animate), &:not(.ng-leave) {
+    //     opacity: 0 !important;
+    //     margin-top: -100px !important;
+    //   }
+    // // }
+
+    // &.ng-enter-active, &.ng-enter {
+    //     opacity: 1 !important;
+    //     margin-top: 0px !important;      
+    // }
+
+    &.active-remove, &.ng-leave-active {
+      opacity: 0 !important;
+      margin-top: -100px !important;
+    }
+  }
+
 }
