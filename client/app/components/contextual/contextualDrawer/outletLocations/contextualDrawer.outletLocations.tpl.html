@@ -3,6 +3,7 @@
       <outlet-location-tree has-search="true"
          ng-if="drawerOutletLocationsCtrl.data.rootGroup.outletLocations && drawerOutletLocationsCtrl.data.rootGroup.outletLocations.length"
          outlet-locations="drawerOutletLocationsCtrl.data.rootGroup.outletLocations"
+         outlet-group="drawerOutletLocationsCtrl.data.rootGroup"
          on-select-item="drawerOutletLocationsCtrl.selectOutletLocation(outletLocation)"
          selected="drawerOutletLocationsCtrl.selectedOutletLocation"
          allow-select-group="true"
