@@ -7,7 +7,9 @@
 		<span class="name">{{ getOutletLocationName() }}</span>
 	</div>
 	<div ng-if="!outletLocation.isSeat() && outletLocation.hasChildren()" class="outlet-location-tree-content">
-		<outlet-location-tree outlet-locations='outletLocation.getChildren()' 
+		<outlet-location-tree 
+				outlet-locations='outletLocation.getChildren()' 
+				outlet-group='outletLocation.createGroup()' 
 				on-select-item="onSelect({outletLocation: outletLocation})" 
 				selected="selected">		
 			</outlet-location-tree>

@@ -5,6 +5,7 @@ export default function outletLocationTree(gettextCatalog){
     restrict: 'E',
     scope: {
       outletLocations:"=",
+      outletGroup:"=",
       selected: '=?',
       onSelectItem: '&?',
       allowSelectGroup: '@?'
@@ -21,8 +22,12 @@ export default function outletLocationTree(gettextCatalog){
 
       function _getGroupName() {
 
-        if (scope.outletLocations && scope.outletLocations.length) {
-          return scope.outletLocations[0].getGroup().label || gettextCatalog.getString('Location label');
+        // if (scope.outletLocations && scope.outletLocations.length) {
+        //   return scope.outletLocations[0].getGroup().label || gettextCatalog.getString('Location label');
+        // }
+
+        if (scope.outletGroup) {
+          return scope.outletGroup.label || gettextCatalog.getString('Location label');
         }
 
         return 'Location label';
@@ -32,7 +37,7 @@ export default function outletLocationTree(gettextCatalog){
 
         if (scope.allowSelectGroup) {
           scope.onSelectItem && scope.onSelectItem({
-            outletLocation: angular.extend(scope.outletLocations[0].getGroup(), {
+            outletLocation: angular.extend(scope.outletGroup, {
               isGroup: true
             })
           });          

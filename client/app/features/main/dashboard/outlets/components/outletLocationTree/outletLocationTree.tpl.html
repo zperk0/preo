@@ -6,7 +6,7 @@
 		{{ getGroupName() }}
 	</h3>
 	<div>
-		<outlet-location-tree-item ng-repeat='outletLocation in outletLocations' 
+		<outlet-location-tree-item ng-repeat='outletLocation in outletGroup.outletLocations' 
 			outlet-location='outletLocation' 
 			on-select="onSelectItem({outletLocation: outletLocation})"
 			selected="selected"
