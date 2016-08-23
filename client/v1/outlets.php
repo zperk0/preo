@@ -56,38 +56,43 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
 <style>
   html{
     overflow: hidden;
-    height: auto;
-    min-height: 100vh;
+    /*height: auto;
+    min-height: 100vh;*/
   }
   body{
-    max-height: 100vh;
-    overflow: auto !important;
+    /*max-height: 100vh;*/
+    /*overflow: auto !important;*/
+    overflow: hidden !important;
   }
   #wrap{
-    background:transparent url(../img/bg.jpg) repeat!important;
-    min-height: calc(100vh - 200px);
+    background: transparent url(../img/bg.jpg) repeat!important;
+    height: calc(100vh - 117px);
     margin: 0 auto;
-    padding:0;
+    top: 117px;
+    position: relative;
+    overflow: auto;
+    padding: 0;
+    min-height: 0;
   }
 
   #webappv2{
-    min-height: calc(100vh - 220px - 66px);
+    /*min-height: calc(100vh - 66px);*/
   }
-  #webappv2 > md-toolbar{
+  #webappv2 .md-sidenav-left{
     display: none;
   }
 
-  #webappv2 > md-toolbar + md-sidenav{
+  #webappv2  md-toolbar{
     display: none;
   }
 
   #webappv2  .main-ui-view {
     padding: 0 !important;
-    overflow: visible !important;
+    overflow: auto !important;
   }
 
-  #webappv2 .dashboard{
-    min-height: 0;
+  #webappv2 .floating-right-buttons{
+    top:120px;
   }
 
   input[type=date]:focus, input[type=datetime-local]:focus, input[type=datetime]:focus, input[type=email]:focus, input[type=month]:focus, input[type=number]:focus, input[type=password]:focus, input[type=search]:focus, input[type=tel]:focus, input[type=text]:focus, input[type=time]:focus, input[type=url]:focus, input[type=week]:focus, textarea:focus {
@@ -96,7 +101,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
     -webkit-box-shadow:none;
     -moz-box-shadow:none;
   }
-  #webappv2 input[type=text]{
+  #webappv2 input{
     outline: none ;
     box-shadow: none;
     margin:0;
@@ -108,14 +113,16 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
     padding-top:0;
   }
   #webappv2 .outlet-location-view .outlet-location-toolbar{
-    top:0;
-    position: relative;
+    top:67px;
+    /*position: relative;*/
   }
   #webappv2 form{
     margin-bottom: 0;
   }
 
   #webappv2 .main-content-right{
+    position: fixed !important;
+    top:120px !important;
     left: auto !important;
     right:16px;
   }
@@ -123,6 +130,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   #webappv2 md-input-container label{
     font-weight: normal;
     font-size: 16px;
+  }
+  .contain-to-grid{
+    position: fixed;
   }
 </style>
 </body>
