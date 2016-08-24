@@ -14,8 +14,14 @@ export default class contextualDrawerItemController {
     this.$scope = $scope;
     this.cancelledItems = [];
 
-    ItemService.getItems($stateParams.venueId).then((data)=>{
-      this.data = {items:data.items.map((i)=>({id:i.id,item:i}))}
-    })
+    $scope.$watch(()=>{
+      return ItemService.data;
+    },(newVal,oldVal)=>{
+      if (newVal && newVal.items && newVal.items.length){
+        this.data = {items:newVal.items.map((i)=>({id:i.id,item:i}))};
+      }
+    }, true)
+
+    ItemService.getItems($stateParams.venueId);
   }
 }

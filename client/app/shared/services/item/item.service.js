@@ -203,12 +203,12 @@ export default class ItemService {
       .then(this._saveItemImages.bind(this))
       .then(this._saveItemSize.bind(this))
       .then((newItem)=>{
-        newItem = {item:newItem, id:newItem.id, position:newItem.position};
+        let positionedItem =  {item:newItem, id:newItem.id, position:newItem.position};
         //if this item was created in the menu section editor the list is not going to be refreshed automagically
         if (sectionId){
           this.data.items.push(newItem)
         }
-        return newItem;
+        return positionedItem;
       })
   }
 
