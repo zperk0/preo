@@ -150,6 +150,8 @@ export default class menuItemListController {
 
   constructor($scope, $q, Snack, Spinner, $stateParams, UtilsService, contextual, DialogService, LabelService, ItemService, $timeout) {
     "ngInject";
+
+    $scope.results = this.items
     this.$scope = $scope;
     this.Snack = Snack;
     this.$stateParams = $stateParams;
