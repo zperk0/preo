@@ -14,10 +14,6 @@
       <label translate>Directions</label>
       <input type="text" name="entityDirections" ng-model="vm.entity.location" ng-maxlength="255">
   </md-input-container>
-   <md-input-container class="md-block">
-      <label translate>Instructions</label>
-      <input type="text" name="entityInstructions" ng-model="vm.entity.instructions" ng-maxlength="512">
-  </md-input-container>
 
   <div class="error" ng-if="contextualForm.$submitted && !vm.entity.$menuId" translate>Menu is required.</div>
   
