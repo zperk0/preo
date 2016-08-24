@@ -32,7 +32,8 @@ export default function compareNumber(){
 
         var valid = validate(value);
 
-        return valid ? value : undefined;
+        return value;
+        // return valid ? value : undefined;
       });
 
       //For model -> DOM validation
