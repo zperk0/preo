@@ -1,7 +1,7 @@
 <md-card-content class="contextual-menu-outlet">
    <md-input-container class="md-block">
       <label translate>Outlet name</label>
-      <input type="text" required name="entityName" ng-model="vm.entity.name" ng-maxlength="100">
+      <input type="text" name="entityName" ng-model="vm.entity.name" ng-maxlength="100" required />
       <div ng-messages="contextualForm.entityName.$error">
         <div ng-message="required" translate>This is required.</div>
       </div>

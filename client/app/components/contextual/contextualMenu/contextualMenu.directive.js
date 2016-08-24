@@ -19,6 +19,8 @@ export default function contextualMenu($compile, $timeout, $animate){
       wrapper.prepend($templateEl);
       $timeout(()=>{
         $animate.addClass(el, 'rendered');
+
+        scope.rendered = true;
       })
     }
   }
