@@ -66,7 +66,7 @@ export default class cardItemListController {
     });
     return this.$q.all(promises)
   }
-  
+
   deleteItem(item){
     if (this.collection){
       this.collection = this.collection.filter((s)=>item.id !== s.id);

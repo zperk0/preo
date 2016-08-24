@@ -2,6 +2,9 @@
   <md-card-actions>
     <md-button class="md-fab md-mini md-primary" aria-label="{{ 'Add New' | translate }}" ng-click="onClick({$event:$event})">
       <icon>add</icon>
+      <md-tooltip md-direction="top">
+        {{ tooltip }}
+      </md-tooltip>
     </md-button>
   </md-card-actions>
 </md-card>

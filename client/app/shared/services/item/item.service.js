@@ -244,7 +244,7 @@ export default class ItemService {
       } else {
         Preoday.Item.getAll({venueId:venueId, expand:expand})
         .then((items)=>{
-          this.data.items = items;
+          this.data.items = items || [];
           return this.ModifierService.getModifiers(venueId)
         })
         .then((modifiers)=>{

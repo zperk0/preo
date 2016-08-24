@@ -86,7 +86,7 @@ export default class ModifierService {
         items:[
         {
           visible:1,
-          price:0,
+          price:'',
           position:0
         }
         ],
@@ -234,8 +234,9 @@ export default class ModifierService {
     this.p = this.$q((resolve, reject)=>{
       Preoday.Modifier.getAll({venueId:venueId, expand:expand})
         .then((modifiers)=>{
-          this.data.modifiers = modifiers.filter((m)=>m.variant===0);
-
+          console.log("got modifiers", modifiers)
+          this.data.modifiers = modifiers.filter((m)=>m.variant===0) || [];
+          console.log("this data", this.data.modifiers);
           if (modifiers.length){
             this.populateModifiers(0);
           }

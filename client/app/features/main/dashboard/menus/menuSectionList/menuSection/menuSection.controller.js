@@ -24,8 +24,8 @@
   isItemDuplicated(items){
    for (let j=0;j<items.length;j++){
      let found = 0;
-      for (let i=0;i<this.section.items.length;i++){
-        if (this.section.items[i].id === items[j].id){
+      for (let i=0;i<this.section.$positionedItems.length;i++){
+        if (this.section.$positionedItems[i].id === items[j].id){
           found++;
           // sort list adds the item in the new list, if we find it we must remove it
           if (found){
@@ -49,16 +49,18 @@
     $items.forEach(($item)=>{
         // move new item always to the beggining of new section
         const originalPos = $item.position;
-        $item.position = 0;
-        if ($item && $item.sectionId != this.section.id){
-          $item.menuId = this.section.menuId;
-          let p = this.section.moveItem($item).then((newItem)=>{
-            this.section.items.splice(0,0,this.ItemService.getById(newItem.id))
-          }, ()=>{
-            //restore item to original position
+        $item.item.position = 0;
+        if ($item && $item.item.sectionId != this.section.id){
+          $item.item.menuId = this.section.menuId;
+          $item.item.sectionId = this.section.id;
+          let p = this.section.moveItem($item.item).then((newItem)=>{
+            let cachedItem = this.ItemService.getById(newItem.id);
+            this.section.$positionedItems.splice(0,0, {id:cachedItem.id,position:newItem.position, item:cachedItem})
+          }).catch((err)=>{
             $item.position = originalPos;
             $partFrom.splice($indexFrom,0,$item);
             this.Snack.showError("Error moving items to section")
+            console.log("Error moving items to section", err);
           })
           promises.push(p);
         } else {

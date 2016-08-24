@@ -11,17 +11,22 @@
 .card-item{
 
   button {
-        transition:transform 0.3s linear;
+        transition:transform 0.3s ease-out;
         // transition-delay:0.2s;
-
           & + button{
-            transition-duration:0.25s;
+            transition-duration:0.4s;
             & + button{
-              transition-duration:0.3s;
+              transition-duration:0.5s;
               & + button{
-                transition-duration:0.35s;
+                transition-duration:0.6s;
                 & + button{
-                  transition-duration:0.4s;
+                  transition-duration:0.7s;
+                  & + button{
+                    transition-duration:0.8s;
+                    & + button{
+                      transition-duration:0.9s;
+                    }
+                  }
                 }
               }
             }

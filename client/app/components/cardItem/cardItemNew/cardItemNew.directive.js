@@ -4,6 +4,7 @@ export default function cardItemNew(){
   return {
     restrict: 'E',
     scope:{
+      tooltip:"@",
       onClick:"&"
     },
     template: require("./cardItemNew.tpl.html"),
