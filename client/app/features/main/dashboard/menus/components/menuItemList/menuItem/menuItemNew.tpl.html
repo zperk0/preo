@@ -4,6 +4,9 @@
     <md-menu>
       <md-button class="md-fab md-mini md-primary" aria-label="{{'Add Item' | translate}}" ng-click="handleClick($event, $mdOpenMenu)">
         <icon>add</icon>
+        <md-tooltip md-direction="top">
+          {{ 'Add item' | translate }}
+        </md-tooltip>
       </md-button>
        <md-menu-content>
          <md-menu-item><md-button ng-click="onClick({$event:$event,isImport:false})" > <span translate>Create new item</span></md-button></md-menu-item>

@@ -9,6 +9,7 @@ export default function cardItemList(){
       collectionResults:"=",
       searchFilter:"=",
       hasNew:"=?",
+      tooltip:"@",
       onClickNew:"&?",
       searchLabel:"@"
     },
