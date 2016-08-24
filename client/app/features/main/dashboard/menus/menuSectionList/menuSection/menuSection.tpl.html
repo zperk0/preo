@@ -23,9 +23,9 @@
                     </card-item-title>
     <modifier-chips ng-if="vm.section.modifiers.length" modifiers="vm.section.modifiers" section="vm.section"></modifier-chips>
         <menu-item-list
+              sv-is-dropzone="vm.section.$expanded"
               has-new="vm.section.$expanded"
               items="vm.section.$positionedItems"
-              sv-keep-in-list="false"
               section="vm.section">
          </menu-item-list>
     <card-item-actions is-visible="vm.section.visible"

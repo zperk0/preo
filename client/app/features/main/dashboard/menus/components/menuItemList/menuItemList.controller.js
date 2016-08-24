@@ -102,7 +102,7 @@ export default class menuItemListController {
   showCreateItem($event, isImport){
 
     let newItem = {
-        position: 0,
+        $id:-1,
         $show:true,
         $selected:true,
         item:{
