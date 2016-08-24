@@ -37,17 +37,31 @@ export default class outletLocationsController {
     });
   }
 
+  getBreadcumbTitle (breadcumb) {
+    if (!breadcumb.group.id) {
+      if (breadcumb.group.label) {
+        return breadcumb.group.label;
+      }
+
+      return this.gettextCatalog.getString('Outlet configuration');
+    }
+
+    if (breadcumb.group.owner) {
+      return breadcumb.group.owner.name;
+    }
+
+    return breadcumb.group.label || this.gettextCatalog.getString('Location label');
+  }
+
   buildUri () {
 // console.log('state parameter here', this.$stateParams);
     let _outletLocations = this.$stateParams.outletLocation && this.$stateParams.outletLocation.split('/') || [];
     let breadcumbs = [{
-      group: {
-        id: null,
-        label: 'Outlet configuration',
-      },
+      group: this.data.rootGroup,
       url: this.$state.href('main.dashboard.outlets.location', {
         outletLocation: ''
-      }).replace(/~2F/g, "/")
+      }).replace(/~2F/g, "/"),
+      stateParams: ''
     }];
 
     for (var i = 0, len = _outletLocations.length; i < len; i++) {
@@ -60,7 +74,8 @@ export default class outletLocationsController {
           group: group,
           url: this.$state.href('main.dashboard.outlets.location', {
             outletLocation: _outletLocations.slice(0, i+1).join('/')
-          }).replace(/~2F/g, "/")
+          }).replace(/~2F/g, "/"),
+          stateParams: _outletLocations.slice(0, i+1).join('/')
         });
       }
     }
@@ -81,9 +96,11 @@ export default class outletLocationsController {
 
         if (breadcumbGroup.length) {
           this.setPath(breadcumbGroup[0].url.replace('#/', ''));
+          this.hideSpinner();
           return;
         } else {
           this.setPath(breadcumbs[0].url.replace('#/', ''));
+          this.hideSpinner();
           return;
         }
       } else {
@@ -100,6 +117,7 @@ export default class outletLocationsController {
 
       if (breadcumbs[breadcumbs.length - 1].url !== browserUrl) {
         this.setPath(breadcumbs[0].url.replace('#/', ''));
+        this.hideSpinner();
         return;
       }
 
@@ -125,7 +143,8 @@ export default class outletLocationsController {
     }
   }
 
-  setPath(path){
+  setPath(path) {
+
     this.$location.path(path);
   }
 
@@ -133,7 +152,7 @@ export default class outletLocationsController {
     return window.location.pathname+url;
   }
 
-  constructor(contextual, Spinner, $scope, $timeout, $q, $state, $location, $stateParams, BroadcastEvents, VenueService, OutletLocationService, OutletService) {
+  constructor(contextual, Spinner, $scope, $timeout, $q, $state, $location, $stateParams, BroadcastEvents, VenueService, OutletLocationService, OutletService, gettextCatalog) {
     "ngInject";
 
     this.$q = $q;
@@ -146,6 +165,7 @@ export default class outletLocationsController {
     this.OutletLocationService = OutletLocationService;
     this.OutletService = OutletService;
     this.Spinner = Spinner;
+    this.gettextCatalog = gettextCatalog;
     this.loaded = false;
 
     this.Spinner.show("outletLocations");

@@ -1,7 +1,7 @@
 <div class='outlet-location-view' layout='column'>
   <div class="outlet-location-toolbar" layout="row" layout-align="start center">
     <breadcrumb ng-repeat="breadcumb in outletLocationsCtrl.breadcumbs">
-      <a ng-href="{{outletLocationsCtrl.getUrl(breadcumb.url)}}" ng-if="!breadcumb.isLast" translate>{{ breadcumb.group.label || 'Location label' }}</a>
+      <a ui-sref="main.dashboard.outlets.location({outletLocation: breadcumb.stateParams})" ng-if="!breadcumb.isLast" translate>{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}</a>
 
       <span ng-if="breadcumb.isLast">{{ breadcumb.group.label || 'Location label' | translate }}</span>
     </breadcrumb>
