@@ -6,7 +6,7 @@
   <div ng-if="!vm.ngModel.$isMultiple" class='price' layout="row" layout-align="start center">
     <md-input-container flex>
         <label translate>Price</label>
-        <input flex type="number" required name="entityPrice" ng-model="vm.ngPriceModel">
+        <input flex type="text" required name="entityPrice" ng-model="vm.ngPriceModel" valid-price />
         <div ng-messages="contextualForm.entityPrice.$error">
           <div ng-message="required" translate>This is required.</div>
         </div>
@@ -37,7 +37,7 @@
         </md-input-container>
         <md-input-container flex="35">
             <label translate>Price</label>
-            <input flex type="number" required name="sizePrice" ng-model="size.price">
+            <input flex type="text" required name="sizePrice" ng-model="size.price" valid-price />
             <div ng-messages="sizeForm.sizePrice.$error">
               <div ng-message="required" translate>This is required.</div>
             </div>

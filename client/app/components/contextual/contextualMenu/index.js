@@ -15,12 +15,22 @@ import menusSelect from './components/menusSelect';
 
 import services from '../../../shared';
 import validNumber from '../../../components/validNumber';
+import validPrice from '../../../components/validPrice';
 import maxIntegerValue from '../../../components/maxIntegerValue';
 import compareNumber from '../../../components/compareNumber';
 
 
-export default angular.module("contextualMenu" , [menuItemSize, menusSelect, modifierItems, modifierSelection, services, validNumber, maxIntegerValue, compareNumber])
-
+export default angular.module("contextualMenu" , [
+	menuItemSize, 
+	menusSelect, 
+	modifierItems, 
+	modifierSelection, 
+	services, 
+	validNumber, 
+	validPrice, 
+	maxIntegerValue, 
+	compareNumber
+])
 
   .controller(controller.UID, controller)
   .service(service.UID, service)
