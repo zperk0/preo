@@ -6,13 +6,23 @@
     <div class='inline-input' ng-if="!vm.modifier.$isOptional">
       <label for="maxChoices" translate>Minimum Selection</label>
       <md-input-container>
-          <input type="number" min="1" max="{{vm.modifier.items.length < vm.modifier.maxChoices ? vm.modifier.items.length : vm.modifier.maxChoices }}" id="minChoices" name="minChoices" ng-model="vm.modifier.minChoices">
+          <input type="text" min="1" max="{{vm.modifier.items.length < vm.modifier.maxChoices ? vm.modifier.items.length : vm.modifier.maxChoices }}" id="minChoices" name="minChoices" ng-model="vm.modifier.minChoices" valid-number max-integer-value compare-number="vm.modifier.maxChoices" />
       </md-input-container>
+
+      <div ng-messages="contextualForm.minChoices.$error" ng-show="contextualForm.minChoices.$dirty">        
+        <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualForm.minChoices.$error.maxIntegerValue}">Max value is 2147483647.</div> =
+        <div ng-message="compareNumber" translate ng-class="{'activated': contextualForm.minChoices.$error.compareNumber}">Minimum selection need to be smaller than maximum selection</div>        
+      </div>         
     </div>
     <div class='inline-input'>
       <label for="maxChoices" translate>Maximum Selection</label>
       <md-input-container>
-          <input type="number" min="{{vm.modifier.minChoices || 1}}" id="maxChoices" name="maxChoices" ng-model="vm.modifier.maxChoices">
+          <input type="text" min="{{vm.modifier.minChoices || 1}}" id="maxChoices" name="maxChoices" ng-model="vm.modifier.maxChoices" valid-number max-integer-value compare-number="vm.modifier.minChoices" bigger />
       </md-input-container>
-    </div>
+
+      <div ng-messages="contextualForm.maxChoices.$error" ng-show="contextualForm.maxChoices.$dirty">
+        <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualForm.maxChoices.$error.maxIntegerValue}">Max value is 2147483647.</div>
+        <div ng-message="compareNumber" translate ng-class="{'activated': contextualForm.maxChoices.$error.compareNumber}">Minimum selection need to be smaller than maximum selection</div>
+      </div>       
+    </div>   
 </div>
