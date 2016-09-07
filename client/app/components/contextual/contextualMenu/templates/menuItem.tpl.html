@@ -4,23 +4,23 @@
     <md-card-content>
        <md-input-container class="md-block">
           <label translate>Item name</label>
-          <input type="text" autocomplete="off"  required name="entityName" ng-model="vm.entity.name" ng-maxlength="100">
-          <div ng-messages="contextualForm.entityName.$error">
+          <input type="text" autocomplete="off"  required name="entityName" ng-model="contextualMenuCtrl.entity.name" ng-maxlength="100">
+          <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
             <div ng-message="required" translate>This is required.</div>
           </div>
       </md-input-container>
       <md-input-container class="md-block">
           <label translate>Description</label>
-          <textarea type="text" name="entityDescription" ng-maxlength="1000" ng-model="vm.entity.description"></textarea>
+          <textarea type="text" name="entityDescription" ng-maxlength="1000" ng-model="contextualMenuCtrl.entity.description"></textarea>
       </md-input-container>
-    <menu-item-size ng-price-model="vm.entity.price" ng-model="vm.entity.$size"></menu-item-size>
+    <menu-item-size ng-price-model="contextualMenuCtrl.entity.price" ng-model="contextualMenuCtrl.entity.$size"></menu-item-size>
     </md-card-content>
     </md-tab>
     <md-tab label="Image">
-      <image-uploader dimensions="590 x 333px" ng-model="vm.entity.images"></image-uploader>
+      <image-uploader dimensions="590 x 333px" ng-model="contextualMenuCtrl.entity.images"></image-uploader>
     </md-tab>
     <md-tab label="Labels">
-      <tag-list ng-model="vm.entity.tags"></tag-list>
+      <tag-list ng-model="contextualMenuCtrl.entity.tags"></tag-list>
     </md-tab>
   </md-tabs>
 </div>
