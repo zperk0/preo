@@ -9,8 +9,8 @@ export default class contextualMenuController {
     this.contextualMenu.reject();
   }
 
-  doSubmit(contextualForm){
-    if (contextualForm.$valid){
+  doSubmit(){
+    if (this.contextualForm.$valid){
       this.contextualMenu.resolve(this.entity);
     }
   }

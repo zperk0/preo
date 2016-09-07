@@ -19,10 +19,21 @@
       min-width: 150px;
       display: inline-block;
     }
+
+  }
+
+  md-input-container {
+    margin:0 0 8px;
+    
+    .input-label {
+      min-width: 150px;
+      color:#9E9E9E;
+    }
+
     input{
       color:#757575;
-      width: 85px;
+      width: 85px !important;
       text-align: center;
-    }
+    }    
   }
 }

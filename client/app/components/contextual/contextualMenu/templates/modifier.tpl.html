@@ -1,10 +1,15 @@
 <md-card-content>
-  {{vm.entity | debug}}
+  {{contextualMenuCtrl.entity | debug}}
    <md-input-container class="md-block no-spacer">
       <label translate>Modifier name</label>
-      <input type="text" required name="entityName" ng-model="vm.entity.name" ng-maxlength="100">
+      <input type="text" required name="entityName" ng-model="contextualMenuCtrl.entity.name" ng-maxlength="100">
+
+      <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error" ng-show="contextualMenuCtrl.contextualForm.entityName.$dirty">        
+        <div ng-message="required" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.required}">This field is required.</div>
+        <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
+      </div>          
   </md-input-container>
-  <modifier-selection modifier="vm.entity"></modifier-selection>
-  <modifier-items modifier="vm.entity"></modifier-items>
+  <modifier-selection modifier="contextualMenuCtrl.entity"></modifier-selection>
+  <modifier-items modifier="contextualMenuCtrl.entity"></modifier-items>
 </md-card-content>
 
