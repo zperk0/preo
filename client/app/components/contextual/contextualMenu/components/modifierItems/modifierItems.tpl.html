@@ -9,7 +9,7 @@
       </md-input-container>
       <md-input-container flex="25">
           <label translate>Price</label>
-          <input flex type="number" required name="itemPrice" ng-model="item.price">
+          <input flex type="text" required name="itemPrice" ng-model="item.price" valid-price />
           <div ng-messages="itemForm.itemPrice.$error">
             <div ng-message="required" translate>This is required.</div>
           </div>

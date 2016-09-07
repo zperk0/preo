@@ -8,10 +8,12 @@ export default function modifierSelection(){
     },
     template: require("./modifierSelection.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "modifierSelectionCtrl",
     bindToController: true,
-    link: (scope, el, attr, ctrl) => {
+    require: ['^form', 'modifierSelection'],
+    link: (scope, el, attr, ctrls) => {
 
+      ctrls[1].contextualForm = ctrls[0];
     }
   }
 }

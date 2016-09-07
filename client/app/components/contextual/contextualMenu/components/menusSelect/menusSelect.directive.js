@@ -9,7 +9,7 @@ export default function menusSelect(){
     template: require("./menusSelect.tpl.html"),
     replace: true,
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "menusSelectCtrl",
     bindToController: true,
     link: (scope, el, attr, ctrl) => {
 

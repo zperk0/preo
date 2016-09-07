@@ -1,18 +1,26 @@
 <div class='modifier-selection'>
-  <md-radio-group class='selection' ng-change="vm.onSelectionSelect()" ng-model="vm.modifier.$isOptional">
+  <md-radio-group class='selection' ng-change="modifierSelectionCtrl.onSelectionSelect()" ng-model="modifierSelectionCtrl.modifier.$isOptional">
     <md-radio-button ng-value="true" class="md-primary md-hue-2" >{{ 'Optional' | translate }}</md-radio-button>
     <md-radio-button ng-value="false" class="md-primary md-hue-2" >{{ 'Mandatory' | translate }}</md-radio-button>
   </md-radio-group>
-    <div class='inline-input' ng-if="!vm.modifier.$isOptional">
-      <label for="maxChoices" translate>Minimum Selection</label>
-      <md-input-container>
-          <input type="number" min="1" max="{{vm.modifier.items.length < vm.modifier.maxChoices ? vm.modifier.items.length : vm.modifier.maxChoices }}" id="minChoices" name="minChoices" ng-model="vm.modifier.minChoices">
-      </md-input-container>
-    </div>
-    <div class='inline-input'>
-      <label for="maxChoices" translate>Maximum Selection</label>
-      <md-input-container>
-          <input type="number" min="{{vm.modifier.minChoices || 1}}" id="maxChoices" name="maxChoices" ng-model="vm.modifier.maxChoices">
-      </md-input-container>
-    </div>
+    <md-input-container class="md-block md-input-container-with-no-float md-input-container-seat-number" md-no-float ng-if="!modifierSelectionCtrl.modifier.$isOptional">
+
+      <span class="input-label" for="minChoices" translate>Minimum Selection</span>
+      <input type="text" id="minChoices" name="minChoices" ng-model="modifierSelectionCtrl.modifier.minChoices" valid-number max-integer-value compare-number="modifierSelectionCtrl.modifier.maxChoices" allow-equals />
+
+      <div ng-messages="modifierSelectionCtrl.contextualForm.minChoices.$error" ng-show="modifierSelectionCtrl.contextualForm.minChoices.$dirty">        
+        <div ng-message="maxIntegerValue" translate ng-class="{'activated': modifierSelectionCtrl.contextualForm.minChoices.$error.maxIntegerValue}">Max value is 2147483647.</div>
+        <div ng-message="compareNumber" translate ng-class="{'activated': modifierSelectionCtrl.contextualForm.minChoices.$error.compareNumber}">Minimum selection needs to be equal or smaller than maximum selection</div>        
+      </div>         
+    </md-input-container>
+    <md-input-container class="md-block md-input-container-with-no-float md-input-container-seat-number" md-no-float>
+
+      <span class="input-label" for="maxChoices" translate>Maximum Selection</span>
+      <input type="text" id="maxChoices" name="maxChoices" ng-model="modifierSelectionCtrl.modifier.maxChoices" valid-number max-integer-value compare-number="modifierSelectionCtrl.modifier.minChoices" bigger allow-equals />
+
+      <div ng-messages="modifierSelectionCtrl.contextualForm.maxChoices.$error" ng-show="modifierSelectionCtrl.contextualForm.maxChoices.$dirty">
+        <div ng-message="maxIntegerValue" translate ng-class="{'activated': modifierSelectionCtrl.contextualForm.maxChoices.$error.maxIntegerValue}">Max value is 2147483647.</div>
+        <div ng-message="compareNumber" translate ng-class="{'activated': modifierSelectionCtrl.contextualForm.maxChoices.$error.compareNumber}">Maximum selection needs to be equal or bigger than minimum selection</div>
+      </div>       
+    </md-input-container>
 </div>

@@ -1,32 +1,32 @@
 <div class='menu-item-size'>
-  <md-radio-group class='size' ng-change="vm.onSizeSelect()" ng-model="vm.ngModel.$isMultiple">
+  <md-radio-group class='size' ng-change="menuItemSizeCtrl.onSizeSelect()" ng-model="menuItemSizeCtrl.ngModel.$isMultiple">
       <md-radio-button ng-value="false" class="md-primary md-hue-2">{{'Single Size' | translate}}</md-radio-button>
       <md-radio-button ng-value="true" class="md-primary md-hue-2"> {{'Multiple Sizes' | translate}} </md-radio-button>
   </md-radio-group>
-  <div ng-if="!vm.ngModel.$isMultiple" class='price' layout="row" layout-align="start center">
+  <div ng-if="!menuItemSizeCtrl.ngModel.$isMultiple" class='price' layout="row" layout-align="start center">
     <md-input-container flex>
         <label translate>Price</label>
-        <input flex type="text" required name="entityPrice" ng-model="vm.ngPriceModel" valid-price />
+        <input flex type="text" required name="entityPrice" ng-model="menuItemSizeCtrl.ngPriceModel" valid-price />
         <div ng-messages="contextualForm.entityPrice.$error">
           <div ng-message="required" translate>This is required.</div>
         </div>
     </md-input-container>
     <venue-currency class='currency'>GBP</venue-currency>
   </div>
-  <div class='multi-size' ng-if="vm.ngModel.$isMultiple" layout="column">
+  <div class='multi-size' ng-if="menuItemSizeCtrl.ngModel.$isMultiple" layout="column">
 
     <md-input-container class='variant-container'>
         <label translate>Variant Name</label>
-        <input flex type="text" required name="sizeName" ng-model="vm.ngModel.name">
+        <input flex type="text" required name="sizeName" ng-model="menuItemSizeCtrl.ngModel.name">
         <div ng-messages="sizeForm.sizeName.$error">
           <div ng-message="required" translate>This is required.</div>
         </div>
     </md-input-container>
     <div class='prices' layout="column"
         sv-root="size"
-        sv-on-sort="vm.onOptionMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
-        sv-part="vm.ngModel.items">
-      <ng-form class='menu-item-size-form' class='price' layout="row" layout-align="start center" name="sizeForm" ng-repeat="size in vm.ngModel.items" sv-element>
+        sv-on-sort="menuItemSizeCtrl.onOptionMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
+        sv-part="menuItemSizeCtrl.ngModel.items">
+      <ng-form class='menu-item-size-form' class='price' layout="row" layout-align="start center" name="sizeForm" ng-repeat="size in menuItemSizeCtrl.ngModel.items" sv-element>
         <span class='handle' sv-handle><icon>arrow_drop_up</icon><icon>arrow_drop_down</icon></span>
         <md-input-container flex>
             <label translate>Name</label>
@@ -43,11 +43,11 @@
             </div>
         </md-input-container>
         <venue-currency flex="10" class='currency'> GBP </venue-currency>
-        <icon class='icon-clear' ng-if="vm.ngModel.items.length>2" ng-click="vm.deleteSize(size)" flex="5">clear</icon>
+        <icon class='icon-clear' ng-if="menuItemSizeCtrl.ngModel.items.length>2" ng-click="menuItemSizeCtrl.deleteSize(size)" flex="5">clear</icon>
       </ng-form>
       <div sv-placeholder></div>
       <div class='button-position'>
-        <md-button class='md-primary' ng-click="vm.addSize()" translate>Add size</md-button>
+        <md-button class='md-primary' ng-click="menuItemSizeCtrl.addSize()" translate>Add size</md-button>
       </div>
     </div>
   </div>

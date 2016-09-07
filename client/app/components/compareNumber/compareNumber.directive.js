@@ -10,16 +10,25 @@ export default function compareNumber(){
     link: (scope, element, attrs, ngModelCtrl) => {
 
       var isBigger = attrs.hasOwnProperty('bigger');
+      var allowEquals = attrs.hasOwnProperty('allowEquals');
 
 
       function validate(value) {
 
         var valid = false;
 
-        if (isBigger) {
-          valid = !scope.compareValue || isNaN(parseInt(value)) || value > scope.compareValue;
-        } else {
-          valid = !scope.compareValue || isNaN(parseInt(value)) || value < scope.compareValue;
+        if (allowEquals) {
+          if (value == scope.compareValue) {
+            valid = true;
+          }
+        } 
+
+        if (!valid) {
+          if (isBigger) {
+            valid = !scope.compareValue || isNaN(parseInt(value)) || value > scope.compareValue;
+          } else {
+            valid = !scope.compareValue || isNaN(parseInt(value)) || value < scope.compareValue;
+          }
         }
 
         ngModelCtrl.$setValidity('compareNumber', valid);        

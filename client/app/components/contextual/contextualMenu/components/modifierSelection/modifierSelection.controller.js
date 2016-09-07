@@ -5,7 +5,10 @@ export default class modifierSelectionController {
 
   onSelectionSelect(){
     this.modifier.minChoices = this.modifier.$isOptional ? 0 : 1;
-    this.modifier.maxChoices = 1;
+
+    if (!this.modifier.maxChoices) {
+      this.modifier.maxChoices = 1;
+    }
   }
 
   constructor() {
