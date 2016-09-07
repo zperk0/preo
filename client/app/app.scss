@@ -73,6 +73,14 @@ body{
   }
 }
 
+md-input-container {
+  &.md-input-invalid {
+    [ng-messages] {
+      display: block !important;
+    }
+  }
+}
+
 
 @media (max-width: 1280px) {
   @import './shared/styles/responsive/1024-1280';
