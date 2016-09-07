@@ -9,7 +9,7 @@ export default function menuItemSize(){
       ngModel:"=",
       ngPriceModel:"=",
     },
-    controllerAs: "vm",
+    controllerAs: "menuItemSizeCtrl",
     bindToController: true,
     require:['menuItemSize', '^contextualMenu'],
     link: (scope, el, attr, ctrls) => {
