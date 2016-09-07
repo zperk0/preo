@@ -1,9 +1,11 @@
 <md-card-content>
    <md-input-container class="md-block">
       <label translate>Group label</label>
-      <input type="text" required name="entityName" ng-model="vm.entity.label" ng-maxlength="100">
-      <div ng-messages="contextualForm.entityName.$error">
-        <div ng-message="required" translate>This is required.</div>
-      </div>
+      <input type="text" required name="entityName" ng-model="contextualMenuCtrl.entity.label" ng-maxlength="100">
+      
+      <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error" ng-show="contextualMenuCtrl.contextualForm.entityName.$dirty">        
+        <div ng-message="required" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.required}">This field is required.</div>
+        <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
+      </div> 
   </md-input-container>
 </md-card-content>
