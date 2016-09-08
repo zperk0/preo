@@ -15,5 +15,7 @@ export default class modifierSelectionController {
     "ngInject";
     console.log(this.modifier.minChoices,"min choices")
     this.modifier.$isOptional = this.modifier.minChoices === 0 ;
+
+    this.maxIntegerValue = 32766;
   }
 }
