@@ -22,6 +22,7 @@ export default class menuItemListController {
           position+=1000;
         }
       }
+
       $items.forEach(($item)=>{
         $item.position = position;
         let $i = angular.copy($item.item);

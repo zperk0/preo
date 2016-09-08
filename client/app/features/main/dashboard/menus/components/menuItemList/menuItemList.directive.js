@@ -14,7 +14,8 @@ export default function menuItemList($animate, $timeout){
       svDisabled:"=",
       svMultiSelect:"=?",
       svKeepInList:"=?",
-      svIsDropzone:"=?"
+      svIsDropzone:"=?",
+      svIsDropzoneDisabled:"=?"
     },
     template: require("./menuItemList.tpl.html"),
     controller: controller.UID,

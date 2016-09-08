@@ -46,6 +46,10 @@
 
     this.Spinner.show("moving-section-item");
     let promises = [];
+
+
+    console.log('on new item moved', $items, $partFrom);
+
     $items.forEach(($item)=>{
         // move new item always to the beggining of new section
         var copy = angular.copy($item.item)
