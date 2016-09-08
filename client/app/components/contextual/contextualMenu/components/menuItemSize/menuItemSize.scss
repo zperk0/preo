@@ -10,43 +10,61 @@
 
   .prices {
 
-
-
-    venue-currency{
-      text-align: center;
-    }
-
-    .handle{
-      position: relative;
-      cursor:move;
-      cursor:grab;
-      cursor:-moz-grab;
-      cursor:grab;
-      top:-4px;
-
-      md-icon:first-child{
-        position: absolute;
-        top: -8px;
-      }
-
-    }
-
-    .icon-clear{
-      position: relative;
-      top: -5px;
-      &:hover{
-        cursor: pointer;
-      }
-    }
   }
 
 }
 
 .menu-item-size-form{
+  padding-top: 12px;
+  padding-bottom: 6px;
+
   &.sv-long-pressing{
     background: white;
   }
   md-input-container{
     margin:0;
+    align-self: flex-start;
+
+    &.md-input-has-value, &.md-input-focused {
+      label {
+        &:not(md-no-float) {
+          font-size: 75%;
+          transform: translate3d(0, 6px, 0);
+        }
+      }
+    }
   }
+
+  .handle{
+    position: relative;
+    cursor:move;
+    cursor:grab;
+    cursor:-moz-grab;
+    cursor:grab;
+    top:11px;
+    align-self: flex-start;
+
+    md-icon:first-child{
+      position: absolute;
+      top: -8px;
+    }
+  }  
+
+  venue-currency{
+    align-self: flex-start !important;
+    text-align: center !important;
+    margin-top: 15px !important;
+  }
+
+  .icon-clear{
+    position: relative;
+    top: -5px;
+    &:hover{
+      cursor: pointer;
+    }
+  } 
+
+  .md-errors-spacer {
+    display: none;
+  } 
 }
