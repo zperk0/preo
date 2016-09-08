@@ -20,7 +20,7 @@
 
       <div ng-messages="contextualMenuCtrl.contextualForm.seatStart.$error" ng-show="contextualMenuCtrl.contextualForm.seatStart.$dirty">
         <div ng-message="required" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatStart.$error.required}">This is required.</div>
-        <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatStart.$error.maxIntegerValue}">Max value is 2147483647.</div>
+        <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatStart.$error.maxIntegerValue}">Max value is 2147483646.</div>
         <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatStart.$error.compareNumber}">Start number need to be smaller than end number</div>
       </div>
     </md-input-container>   
@@ -30,7 +30,7 @@
 
       <div ng-messages="contextualMenuCtrl.contextualForm.seatEnd.$error" ng-show="contextualMenuCtrl.contextualForm.seatEnd.$dirty">
         <div ng-message="required" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatEnd.$error.required && !contextualMenuCtrl.entity.seatEnd}">This is required.</div>
-        <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatEnd.$error.maxIntegerValue}">Max value is 2147483647.</div>
+        <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatEnd.$error.maxIntegerValue}">Max value is 2147483646.</div>
         <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatEnd.$error.compareNumber}">End number need to be bigger than start number</div>
       </div>
     </md-input-container>  	

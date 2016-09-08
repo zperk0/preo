@@ -6,7 +6,7 @@ export default function maxIntegerValue(){
     require: '?ngModel',
     link: (scope, element, attr, ngModelCtrl) => {
 
-      var MAX_VALUE = 2147483647;
+      var MAX_VALUE = 2147483646;
 
       //For DOM -> model validation
       ngModelCtrl.$parsers.unshift(function(value) {
