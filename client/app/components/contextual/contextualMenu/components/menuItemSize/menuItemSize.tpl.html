@@ -7,8 +7,9 @@
     <md-input-container flex>
         <label translate>Price</label>
         <input flex type="text" required name="entityPrice" ng-model="menuItemSizeCtrl.ngPriceModel" valid-price />
-        <div ng-messages="contextualForm.entityPrice.$error">
+        <div ng-messages="menuItemSizeCtrl.contextualMenuCtrl.contextualForm.entityPrice.$error">
           <div ng-message="required" translate>This is required.</div>
+          <div ng-message="maxDecimalValue" translate>Max value is 99999999.99.</div>
         </div>
     </md-input-container>
     <venue-currency class='currency'>GBP</venue-currency>
@@ -37,9 +38,10 @@
         </md-input-container>
         <md-input-container flex="35">
             <label translate>Price</label>
-            <input flex type="text" required name="sizePrice" ng-model="size.price" valid-price />
+            <input flex type="text" required name="sizePrice" ng-model="size.price" valid-price max-integer-value />
             <div ng-messages="sizeForm.sizePrice.$error">
               <div ng-message="required" translate>This is required.</div>
+              <div ng-message="maxDecimalValue" translate>Max value is 99999999.99.</div>
             </div>
         </md-input-container>
         <venue-currency flex="10" class='currency'> GBP </venue-currency>

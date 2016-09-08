@@ -1,7 +1,14 @@
 .modifier-items{
 
+  ng-form {
+    &.price {
+      padding-bottom: 15px;
+    }
+  }
+
   md-input-container{
     margin:0;
+    align-self: flex-start;
   }
 
   .button-position{
@@ -10,15 +17,23 @@
   }
 
   venue-currency{
-    text-align: center;
+    align-self: flex-start !important;
+    text-align: center !important;
+    margin-top: 15px !important;
   }
 
   .icon-clear{
     position: relative;
-    top: -5px;
+    top: 10px;
+    margin: 0px;
+    align-self: flex-start !important;
+
     &:hover{
       cursor: pointer;
     }
   }
 
+  .md-errors-spacer {
+    display: none;
+  }
 }

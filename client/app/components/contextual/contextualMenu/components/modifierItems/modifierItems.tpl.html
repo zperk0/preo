@@ -12,6 +12,7 @@
           <input flex type="text" required name="itemPrice" ng-model="item.price" valid-price />
           <div ng-messages="itemForm.itemPrice.$error">
             <div ng-message="required" translate>This is required.</div>
+            <div ng-message="maxDecimalValue" translate>Max value is 99999999.99.</div>
           </div>
       </md-input-container>
       <venue-currency flex="10" class='currency'> GBP </venue-currency>

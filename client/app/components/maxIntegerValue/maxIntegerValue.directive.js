@@ -10,6 +10,7 @@ export default function maxIntegerValue(){
 
       //For DOM -> model validation
       ngModelCtrl.$parsers.unshift(function(value) {
+
         var valid = isNaN(value) || value < MAX_VALUE;
         ngModelCtrl.$setValidity('maxIntegerValue', valid);
 

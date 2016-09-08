@@ -6,6 +6,8 @@ export default function validPrice($timeout){
     require: '?ngModel',
     link: (scope, element, attrs, ngModel) => {
 
+      var MAX_DIGITS = 11;
+
       attrs.$set('ngTrim', "false");
       
       var formatter = function(str, isNum) {
@@ -31,7 +33,11 @@ export default function validPrice($timeout){
         if (modelString !== valString)
             updateView(viewVal);
 
-        return (Number(newVal) / 100) || 0;
+        newVal = (Number(newVal) / 100) || 0;
+
+        ngModel.$setValidity('maxDecimalValue', newVal.toString().length <= MAX_DIGITS);
+
+        return newVal;
       }
       var formatNumber = function(val) {
           if (val) {
