@@ -1,17 +1,21 @@
 
-export default function maxIntegerValue(){
+export default function maxIntegerValue($parse){
   "ngInject";
   return {
     restrict: 'A',
     require: '?ngModel',
-    link: (scope, element, attr, ngModelCtrl) => {
+    link: (scope, element, attrs, ngModelCtrl) => {
 
       var MAX_VALUE = 2147483646;
+
+      if (attrs.maxIntegerValue) {
+        MAX_VALUE = $parse(attrs.maxIntegerValue)(scope);
+      }
 
       //For DOM -> model validation
       ngModelCtrl.$parsers.unshift(function(value) {
 
-        var valid = isNaN(value) || value < MAX_VALUE;
+        var valid = isNaN(value) || value <= MAX_VALUE;
         ngModelCtrl.$setValidity('maxIntegerValue', valid);
 
         return value;
@@ -20,7 +24,7 @@ export default function maxIntegerValue(){
 
       //For model -> DOM validation
       ngModelCtrl.$formatters.unshift(function(value) {
-         ngModelCtrl.$setValidity('maxIntegerValue', isNaN(value) || value < MAX_VALUE);
+         ngModelCtrl.$setValidity('maxIntegerValue', isNaN(value) || value <= MAX_VALUE);
 
          return value;
       });
