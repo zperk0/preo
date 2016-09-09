@@ -11,6 +11,10 @@ export default class menuItemListController {
         $partTo.splice($indexTo,$items.length);
         return;
       }
+
+
+      console.log('on external item moved here', $items, $partFrom, $partTo, $indexFrom, $indexTo);
+
       let promises = [];
       this.Spinner.show("item-move");
       let position = 0;
@@ -119,16 +123,18 @@ export default class menuItemListController {
 
     if(!isImport){
       let isCreating = false;
-        this.items.forEach((s, index)=>{
-          if (!s.id){
-            isCreating = true;
-          }
-        });
-        if (isCreating){
-          return;
+      this.items.forEach((s, index)=>{
+        if (!s.id){
+          isCreating = true;
         }
+      });
+      if (isCreating){
+        return;
+      }
+
+      newItem.position = Math.max.apply(Math,this.items.map(function(o){return o.position;})) + 1000
+
       if (this.items && this.items.length && this.section.id){
-        newItem.position = Math.max.apply(Math,this.items.map(function(o){return o.position;})) + 1000
         newItem.item.position = newItem.position;
       }
       this.items.push(newItem);
