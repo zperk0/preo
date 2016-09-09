@@ -14,7 +14,7 @@ import mobile from './mobile';
 import emails from './emails';
 import weborders from './weborders';
 
-angular.module("styling" , ['ui.router', mobile, emails, weborders, 'mdColorPicker'])
+angular.module("webapp.styling" , ['ui.router', mobile, emails, weborders, 'mdColorPicker'])
   .config(routes)
   .controller(controller.UID, controller)
   .name;

@@ -29,6 +29,7 @@ export default class webordersController {
       console.log("got event", event);
       switch(event.data) {
         case "__LOADED__":
+          this.$timeout.cancel(this.iframeError)
           this.Spinner.hide('iframe');
           break;
         case "NAVBAR":
@@ -61,13 +62,16 @@ export default class webordersController {
     }
   }
 
+  reload(){
+    window.location.reload();
+  }
+
   constructor($scope, $stateParams, Spinner, contextual, $location, contextualDrawer, $rootScope, $window, $timeout) {
     "ngInject";
     this.$timeout = $timeout;
     this.$window=$window;
     this.webordersUrl = $window._PREO_DATA._WEBORDERS+'?venueId='+$stateParams.venueId;
     this.webordersEditUrl = this.webordersUrl+'&editor=true'
-    console.log(this.webordersUrl);
 
     this.$scope = $scope;
     if (!$window.hasListener){
@@ -86,5 +90,9 @@ export default class webordersController {
     this.zoomLevel = 1;
     this.zoomInterval = 0.05;
     this.toggleDrawer();
+    this.iframeError = $timeout(()=>{
+      this.iframeFailed = true;
+      this.Spinner.hide('iframe');
+    },5000);
   }
 }

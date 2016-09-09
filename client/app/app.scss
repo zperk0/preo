@@ -39,6 +39,7 @@ body{
   overflow: visible !important;
 }
 
+
 .webapp, .webapp-wrapper {
   height: 100%;
 }
@@ -48,6 +49,12 @@ body{
   &.minus-toolbar{
     height: $heightScreen;
   }
+}
+
+.fake-link{
+  color:$colorPrimary;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .ellipsis{
