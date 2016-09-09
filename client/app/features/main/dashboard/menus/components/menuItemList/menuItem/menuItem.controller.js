@@ -105,6 +105,9 @@ export default class menuItemController {
     this.ItemService.createItem(this.item.item, this.sectionId)
       .then((createdItem)=>{
         createdItem.$show = true;  //need show for animation
+
+        createdItem.position = this.item.position;
+
         this.menuItemListCtrl.deleteItem(this.item.item);
         this.contextualMenu.hide();
         this.cardItemList.onItemCreated(createdItem);

@@ -81,6 +81,10 @@ md-input-container {
   }
 }
 
+.view-content {
+  overflow: visible !important;
+}
+
 
 @media (max-width: 1280px) {
   @import './shared/styles/responsive/1024-1280';
