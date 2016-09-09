@@ -17,7 +17,7 @@ export default class itemListController {
 
   handleFinishLoading(data){
     this.$timeout(()=>{
-      this.data = {items:data.items.map((i, index)=>({id:i.id, position: i.position || (index + 1) + 1000, item:i}))}
+      this.data = {items:data.items.map((i, index)=>({id:i.id, item:i}))}
     })
 
   }
