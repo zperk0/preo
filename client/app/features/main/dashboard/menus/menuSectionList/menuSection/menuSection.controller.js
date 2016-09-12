@@ -36,7 +36,7 @@
     }
   }
 
-  onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo) {
+  onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo, $removeFromOrigin) {
 
      if (this.isItemDuplicated($items)){
         this.Snack.showError('One or more items already in section');
@@ -63,7 +63,7 @@
           let p = this.section.moveItem(copy).then((newItem)=>{
 
             let cachedItem = this.ItemService.getById(newItem.id);
-            
+
             // console.log('after item moved', newItem, cachedItem);
 
             this.section.$positionedItems.splice(0,0, {id:cachedItem.id, sectionId: newItem.sectionId, position:newItem.position, item:cachedItem})
@@ -79,6 +79,8 @@
         }
     })
     this.$q.all(promises).then(()=>{
+      $removeFromOrigin && $removeFromOrigin();
+
       this.Snack.show("Items moved to section")
       this.Spinner.hide("moving-section-item");
     })
