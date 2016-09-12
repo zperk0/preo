@@ -22,6 +22,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/foundation.css"/>
 <link href="<? echo $_SESSION['path']?>/css/header-footer.css" rel="stylesheet"><link href="/styling.css" rel="stylesheet"><link href="/vendor.css" rel="stylesheet"></head>
 <link href="/code/v2/vendor.css" rel="stylesheet"></head>
+<link href="/code/v2/styling.css" rel="stylesheet"></head>
 <body>
   <div id="wrap">
     <div id="webappv2" class='webapp'>
@@ -31,9 +32,6 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
       <spinner></spinner>
     </div>
   </div>
-<?php
-  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php');
-?>
 
 <script>
   (function (){
@@ -130,11 +128,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   }
   .contain-to-grid{
     position: fixed;
-    z-index: 123;
-  }
-  footer{
-    display: none;
   }
 </style>
-<script type="text/javascript" src="/angular.bundle.d9320684376e6e288da3.js"></script><script type="text/javascript" src="/styling.bundle.dd6495c8567a206ef753.js"></script><script type="text/javascript" src="/vendor.bundle.08a9fdc456a716eeba87.js"></script><script type="text/javascript" src="/app.bundle.5504fd03a60580265bb2.js"></script></body>
+<script type="text/javascript" src="/angular.bundle.2a7ca4570ec1fb1d4c61.js"></script><script type="text/javascript" src="/styling.bundle.dc8586e268faf0189186.js"></script><script type="text/javascript" src="/vendor.bundle.9010a1e5d0a8a8d1d91f.js"></script><script type="text/javascript" src="/app.bundle.d5f6a110e33c32fb3db8.js"></script></body>
 </html>
