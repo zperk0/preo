@@ -19,7 +19,6 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
   }
 
   Preoday.Api.headers({
-    'X-Session-Token': UtilsService.getCookie('PHPSESSID'),
     'preo-appid': 'weborders'
   });
 
