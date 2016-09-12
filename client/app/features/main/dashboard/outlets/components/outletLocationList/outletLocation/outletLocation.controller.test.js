@@ -52,7 +52,7 @@ describe('OutletLocation item Controller', function () {
         name: 'First outlet to mock test'
       })];
 
-      server.respondWith('GET', '/api/venues/' + currentVenue.id + '/outletlocations?venueId=' + currentVenue.id + '&onlyOutletLocations=true', [200, {"Content-Type": "application/json"}, JSON.stringify(outletLocations)]);
+      server.respondWith('GET', '/api/venues/' + currentVenue.id + '/outletlocations?venueId=' + currentVenue.id + '&outlets=false', [200, {"Content-Type": "application/json"}, JSON.stringify(outletLocations)]);
 
       OutletLocationService.getOutletLocations({
         venueId: currentVenue.id
