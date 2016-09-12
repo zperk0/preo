@@ -64,6 +64,7 @@ export default class menuItemListController {
       copy.position=index*1000;
       copy.menuId = this.section.menuId;
       $item.position = copy.position;
+
       promises.push(copy.update());
     });
     return this.$q.all(promises)
@@ -132,9 +133,8 @@ export default class menuItemListController {
         return;
       }
 
-      newItem.position = Math.max.apply(Math,this.items.map(function(o){return o.position;})) + 1000
-
       if (this.items && this.items.length && this.section.id){
+        newItem.position = Math.max.apply(Math,this.items.map(function(o){return o.position;})) + 1000;
         newItem.item.position = newItem.position;
       }
       this.items.push(newItem);
@@ -180,7 +180,7 @@ export default class menuItemListController {
     this.section.$expanding = false;
     //watch for animation only if we're in a section
     if (this.section.id){
-      $scope.$watch('vm.section.$expanded',(newVal, oldVal)=>{
+      $scope.$watch('menuItemListCtrl.section.$expanded',(newVal, oldVal)=>{
         if(newVal){ // if expanded = true;
           this.items.forEach((i)=>i.$show = true)
           if (this.items.length === 0){

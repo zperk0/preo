@@ -11,7 +11,7 @@
                     has-visible="true"
                     sv-root="item"
                     show-visible="!vm.section.visible">
-                      <div ng-if="!vm.section.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-external-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+                      <div ng-if="!vm.section.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-external-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo, $removeFromOrigin)">
                         <div sv-placeholder></div>
                       </div>
                       <span>{{vm.section.id + "--" | debug}}{{vm.section.name}}</span><icon class='arrow-icon' flex>{{vm.section.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
