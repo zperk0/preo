@@ -204,9 +204,15 @@ module.exports = function(ENV, options) {
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/outlets.php',
-        chunks:['outlets','app','vendor'],
-        inject:false,
+        chunks:['outlets','app','vendor', 'angular'],
+        inject:true,
         filename:'outlets/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/styling.php',
+        chunks:['styling','app','vendor', 'angular'],
+        inject:true,
+        filename:'styling/index.php'
       })
     ]
   }

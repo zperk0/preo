@@ -20,7 +20,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/normalize.css" />
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/foundation.css"/>
-<link href="<? echo $_SESSION['path']?>/css/header-footer.css" rel="stylesheet"></head>
+<link href="<? echo $_SESSION['path']?>/css/header-footer.css" rel="stylesheet"><link href="/vendor.css" rel="stylesheet"></head>
 <link href="/code/v2/vendor.css" rel="stylesheet"></head>
 <body>
   <div id="wrap">
@@ -35,9 +35,6 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php');
 ?>
 
-<script type="text/javascript" src="/code/v2/vendor.bundle.c85d9bee67e370eff047.js"></script>
-<script type="text/javascript" src="/code/v2/outlets.bundle.157d173413a702e80e2b.js"></script>
-<script type="text/javascript" src="/code/v2/app.bundle.bc6858584e96e8c84a91.js"></script>
 <script>
   (function (){
     angular.module('webapp.bookings',[]);
@@ -133,7 +130,11 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   }
   .contain-to-grid{
     position: fixed;
+    z-index: 123;
+  }
+  footer{
+    display: none;
   }
 </style>
-</body>
+<script type="text/javascript" src="/angular.bundle.d9320684376e6e288da3.js"></script><script type="text/javascript" src="/outlets.bundle.47c0430e4462750aeb65.js"></script><script type="text/javascript" src="/vendor.bundle.08a9fdc456a716eeba87.js"></script><script type="text/javascript" src="/app.bundle.5504fd03a60580265bb2.js"></script></body>
 </html>

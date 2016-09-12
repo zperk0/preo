@@ -31,13 +31,6 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
       <spinner></spinner>
     </div>
   </div>
-<?php
-  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php');
-?>
-
-<script type="text/javascript" src="/code/v2/vendor.bundle.c85d9bee67e370eff047.js"></script>
-<script type="text/javascript" src="/code/v2/outlets.bundle.157d173413a702e80e2b.js"></script>
-<script type="text/javascript" src="/code/v2/app.bundle.bc6858584e96e8c84a91.js"></script>
 <script>
   (function (){
     angular.module('webapp.bookings',[]);
