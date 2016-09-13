@@ -50,7 +50,6 @@ export default class FeatureService {
 
         VenueService
             .currentVenue
-            .getAccount()
             .hasFeature(featureId)
             .then((feature) => {
                 
