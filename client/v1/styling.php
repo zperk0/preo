@@ -49,7 +49,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   })();
 </script>
 <style>
-  html{
+   html{
     overflow: hidden;
     /*height: auto;
     min-height: 100vh;*/
@@ -122,13 +122,32 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
     right:16px;
   }
 
-  #webappv2 md-input-container label{
+   #webappv2 md-input-container label{
     font-weight: normal;
     font-size: 16px;
   }
+    #webappv2 .md-sidenav-right.contextual-drawer{
+    z-index:124;
+  }
+  #webappv2 md-backdrop{
+    height: 979px;
+    top: 0;
+    position: fixed ! important;
+    z-index: 125 !important;
+  }
+
+  #webappv2 .md-dialog-container{
+    top: -50px !important;
+    z-index: 126 !important;
+  }
   .contain-to-grid{
     position: fixed;
+    z-index: 123;
+  }
+  footer{
+    display: none;
   }
 </style>
+<? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
 </body>
 </html>
