@@ -21,7 +21,7 @@ export default class OutletLocationService {
       data = {};
     }
 
-    data.onlyOutletLocations = true;
+    data.outlets = false;
 
     this.p = this.$q((resolve, reject)=>{
       Preoday.OutletLocation.getAll(data)

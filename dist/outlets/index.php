@@ -31,10 +31,6 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
       <spinner></spinner>
     </div>
   </div>
-<?php
-  require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php');
-?>
-
 <script>
   (function (){
     angular.module('webapp.bookings',[]);
@@ -130,11 +126,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   }
   .contain-to-grid{
     position: fixed;
-    z-index: 123;
-  }
-  footer{
-    display: none;
   }
 </style>
-<script type="text/javascript" src="/angular.bundle.d9320684376e6e288da3.js"></script><script type="text/javascript" src="/outlets.bundle.47c0430e4462750aeb65.js"></script><script type="text/javascript" src="/vendor.bundle.08a9fdc456a716eeba87.js"></script><script type="text/javascript" src="/app.bundle.5504fd03a60580265bb2.js"></script></body>
+<script type="text/javascript" src="/angular.bundle.2a7ca4570ec1fb1d4c61.js"></script><script type="text/javascript" src="/outlets.bundle.b86f4ac3ffec2296b56f.js"></script><script type="text/javascript" src="/vendor.bundle.9010a1e5d0a8a8d1d91f.js"></script><script type="text/javascript" src="/app.bundle.6d77d02799b3a8a6d587.js"></script></body>
 </html>

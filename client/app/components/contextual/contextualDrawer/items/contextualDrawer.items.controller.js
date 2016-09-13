@@ -18,7 +18,7 @@ export default class contextualDrawerItemController {
       return ItemService.data;
     },(newVal,oldVal)=>{
       if (newVal && newVal.items && newVal.items.length){
-        this.data = {items:newVal.items.map((i, index)=>({id:i.id, position: i.position || (index + 1) + 1000, item:i}))};
+        this.data = {items:newVal.items.map((i, index)=>({id:i.id, item:i}))};
       }
     }, true)
 
