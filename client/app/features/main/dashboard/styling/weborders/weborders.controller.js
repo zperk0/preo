@@ -93,6 +93,6 @@ export default class webordersController {
     this.iframeError = $timeout(()=>{
       this.iframeFailed = true;
       this.Spinner.hide('iframe');
-    },5000);
+    },25000);
   }
 }
