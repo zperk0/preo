@@ -8,6 +8,7 @@ export default function imageUploader(){
       initialValue:"=?",
       ngModel:"=",
       boundry:'=?',
+      output:'=?',
       viewport:'=?',
       dimensions:"@",
       onChange:"&?"

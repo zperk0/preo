@@ -5,6 +5,7 @@ export default function croppie($compile, $timeout){
 	restrict: 'E',
 		scope: {
 			src: '=',
+      output:'=',
 	    viewport: '=',
 	    boundry: '=',
 	    update: '&?',
@@ -20,7 +21,10 @@ export default function croppie($compile, $timeout){
                 scope.onUpdate = ()=> {
                   c.result({
                     type:'canvas',
-                    size:'viewport',
+                    size: {
+                      width:scope.output.w,
+                      height:scope.output.h
+                    },
                     quality:0.9,
                   }).then(function(img){
                       scope.ngModel = img

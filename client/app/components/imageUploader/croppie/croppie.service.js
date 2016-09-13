@@ -6,7 +6,7 @@ export default class CroppieService {
     return "CroppieService"
   }
 
-  show(src, boundry, vp){
+  show(src, boundry, vp, output){
     if (!boundry){
       boundry= {w: 700, h:500};
     }
@@ -23,6 +23,7 @@ export default class CroppieService {
       locals:{
         src:src,
         boundry:boundry,
+        output:output,
         vp:vp
       }
     });

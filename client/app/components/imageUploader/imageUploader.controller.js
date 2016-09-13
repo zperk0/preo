@@ -39,7 +39,7 @@ export default class imageUploaderController {
     reader.onload = (evt) => {
       console.log("got result - loading dialog");
       if (evt.target.result){
-        var p = this.CroppieService.show(evt.target.result,this.boundry, this.viewport)
+        var p = this.CroppieService.show(evt.target.result,this.boundry, this.viewport, this.output)
           .then((img)=>{
             console.log("uploading img dialog");
             if (this.ngModel.length){

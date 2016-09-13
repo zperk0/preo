@@ -16,8 +16,9 @@
     <input flex name="search" ng-model="model.bannerText">
 </md-input-container>
   <image-uploader on-change="onChange('logoImage', image)"
-                  viewport="{w:270,h:104}"
-                  boundry="{w:400,h:200}"
+                  viewport="{w:135,h:52}"
+                  boundry="{w:202.5,h:78}"
+                  output="{w:270,h:104}"
                   dimensions="270 x 104 px"
                   ng-show="radioChoice==='image'"
                   ng-model="model.$images.logoImage"></image-uploader>

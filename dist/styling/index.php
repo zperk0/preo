@@ -122,6 +122,21 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
     right:16px;
   }
 
+    #webappv2 .md-sidenav-right.contextual-drawer{
+    z-index:124;
+  }
+  #webappv2 md-backdrop{
+    height: 979px;
+    top: 0;
+    position: fixed ! important;
+    z-index: 125 !important;
+  }
+
+  #webappv2 .md-dialog-container{
+    top: -50px !important;
+    z-index: 126 !important;
+  }
+
   #webappv2 md-input-container label{
     font-weight: normal;
     font-size: 16px;
