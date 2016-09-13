@@ -17,11 +17,8 @@ export default class UserService {
     this.authDeferred = this.$q.defer();
 
     Preoday.User.auth(data).then((user) => {
-      this.user = user;
-      this.$rootScope.$broadcast(this.BroadcastEvents._ON_USER_AUTH,user);
-      this.authDeferred.resolve(user);
 
-      this.unsetAuthDeferred();
+      this.checkAdmin(user);
     }, (error)=>{
       console.log("rejecting");
       this.authDeferred.reject(error);
@@ -30,6 +27,29 @@ export default class UserService {
     });
 
     return this.authDeferred.promise;
+  }
+
+  checkAdmin (user) {
+
+    user.isAdmin()
+      .then(() => {
+        
+        this.isUserAdmin = true;
+        this.setCurrentUser(user);
+      }, () => {
+        
+        this.isUserAdmin = false;
+        this.setCurrentUser(user);
+      });
+  }
+
+  setCurrentUser (user) {
+
+    this.user = user;
+    this.$rootScope.$broadcast(this.BroadcastEvents._ON_USER_AUTH,user);
+    this.authDeferred.resolve(user);
+
+    this.unsetAuthDeferred();    
   }
 
   signout() {
@@ -52,6 +72,11 @@ export default class UserService {
     this.authDeferred = null;
   }
 
+  isAdmin () {
+
+    return this.isUserAdmin;
+  }
+
   constructor($q, $rootScope, BroadcastEvents) {
     "ngInject";
     this.$q = $q;
@@ -59,5 +84,7 @@ export default class UserService {
     this.BroadcastEvents = BroadcastEvents;
 
     this.authDeferred = null;
+
+    this.isUserAdmin = false;
   }
 }

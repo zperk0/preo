@@ -7,7 +7,7 @@
       layout="column"
       ng-class="{expanded:vm.$expanded}">
       <md-list flex>
-        <navbar-item ng-repeat="item in vm.menu" item="item">{{item}} </navbar-item>
+        <navbar-item ng-repeat="item in vm.menu" item="item" ng-if="!item.hasOwnProperty('shouldShow') || item.shouldShow()">{{item}} </navbar-item>
       </md-list>
       <md-divider></md-divider>
       <div class="close-menu">
