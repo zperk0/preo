@@ -1,7 +1,5 @@
 'use strict';
 
-import services from '../';
-
 describe('Venue Service', function () {
 
     let
@@ -10,11 +8,7 @@ describe('Venue Service', function () {
       BroadcastEvents,
       server;
 
-    beforeEach(angular.mock.module(services));
-
-    // beforeEach(angular.mock.module(function ($provide) {
-    //     $provide.constant('initialTodos', []);
-    // }));
+    beforeEach(angular.mock.module('webapp'));
 
     beforeEach(angular.mock.inject(function ($injector) {
 

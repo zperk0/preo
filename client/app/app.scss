@@ -1,3 +1,6 @@
+@import "../../node_modules/angular-material/angular-material.min.css";
+@import "../../node_modules/croppie/croppie.css";
+
 @import './shared/styles/variables';
 @import './shared/styles/material';
 @import './shared/styles/reset';
@@ -5,7 +8,6 @@
 @import './shared/styles/dragndrop';
 @import './shared/styles/layout-left-right';
 @import './shared/styles/color-picker';
-
 
 input[type='number'] {
     -moz-appearance:textfield;

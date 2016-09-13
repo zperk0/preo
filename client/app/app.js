@@ -22,6 +22,7 @@ import tagList from './components/tagList';
 import itemChips from './components/itemChips';
 import breadcrumb from './components/breadcrumb';
 
+import mocks from './app.modules.mock';
 
 // Import internal modules
 import v2Main from './features/main';

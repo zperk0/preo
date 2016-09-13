@@ -1,7 +1,5 @@
 'use strict';
 
-import imageUploader from './';
-
 describe('ImageUploader Controller', function () {
 
     let
@@ -18,7 +16,7 @@ describe('ImageUploader Controller', function () {
       Snack,
       UtilsService;
 
-    beforeEach(angular.mock.module(imageUploader));
+    beforeEach(angular.mock.module('webapp'));
 
     beforeEach(angular.mock.inject(function ($injector) {
 

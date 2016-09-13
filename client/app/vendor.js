@@ -1,8 +1,6 @@
 // Import Style
 
 require('jscore/preoday/preoday.min.js');
-import 'angular-material/angular-material.min.css';
-import 'croppie/croppie.css';
 import uirouter from 'angular-ui-router';
 import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';

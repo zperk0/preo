@@ -15,7 +15,7 @@ export default function routes($stateProvider) {
     controller: controller.UID,
     controllerAs: "vm",
     resolve: {
-    	authenticated: function ($q, $stateParams, $timeout, UserService, VenueService) {
+    	authenticated: function ($q, $state, $stateParams, $timeout, UserService, VenueService) {
     		
     		// this is needed because the $stateParams is empty in a service inside of a resolve function
     		VenueService.venueId = $stateParams.venueId;
