@@ -130,5 +130,5 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
     position: fixed;
   }
 </style>
-<script type="text/javascript" src="/angular.bundle.2a7ca4570ec1fb1d4c61.js"></script><script type="text/javascript" src="/styling.bundle.dc8586e268faf0189186.js"></script><script type="text/javascript" src="/vendor.bundle.9010a1e5d0a8a8d1d91f.js"></script><script type="text/javascript" src="/app.bundle.6d77d02799b3a8a6d587.js"></script></body>
+<script type="text/javascript" src="/angular.bundle.d9320684376e6e288da3.js"></script><script type="text/javascript" src="/styling.bundle.fc40cecca6450a2dac42.js"></script><script type="text/javascript" src="/vendor.bundle.438036ab4fb1bc230051.js"></script><script type="text/javascript" src="/app.bundle.2e56b56270ed79e1216e.js"></script></body>
 </html>
