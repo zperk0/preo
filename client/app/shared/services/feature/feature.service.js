@@ -62,7 +62,6 @@ export default class FeatureService {
   clearLocalFeatures () {
 
     this.localFeatures = [];
-    this.tryedToLoad = [];
   }
 
   constructor($q, $injector, UserService) {
@@ -73,6 +72,5 @@ export default class FeatureService {
     this.UserService = UserService;
 
     this.localFeatures = [];
-    this.tryedToLoad = [];
   }  
 }

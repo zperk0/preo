@@ -4,6 +4,7 @@ describe('Venue Service', function () {
 
     let
       VenueService,
+      FeatureService,
       $rootScope,
       BroadcastEvents,
       server;
@@ -13,6 +14,7 @@ describe('Venue Service', function () {
     beforeEach(angular.mock.inject(function ($injector) {
 
       VenueService = $injector.get('VenueService');
+      FeatureService = $injector.get('FeatureService');
       $rootScope = $injector.get('$rootScope');
       BroadcastEvents = $injector.get('BroadcastEvents');
 
@@ -103,6 +105,32 @@ describe('Venue Service', function () {
         expect(reject).toHaveBeenCalled();
         expect(VenueService.setCurrentVenue).not.toHaveBeenCalledWith(venues[0]);
         expect($rootScope.$broadcast).not.toHaveBeenCalledWith(BroadcastEvents._ON_FETCH_VENUES, venues);
+
+        done();
+      });
+    });
+
+    it("Should set the current venue", function(done) {
+
+      spyOn(FeatureService, 'clearLocalFeatures').and.callThrough();
+      spyOn(FeatureService, 'hasFeatureForInit').and.callThrough();
+      spyOn(VenueService, 'checkFeatures').and.callThrough();
+
+      let resolve = jasmine.createSpy('resolve');
+      let reject = jasmine.createSpy('reject');
+
+      let currentVenue = new Preoday.Venue.constructor({id: 1});
+
+      VenueService.setCurrentVenue(currentVenue)
+        .then(resolve, reject);
+
+      setTimeout(function () {
+
+        expect(currentVenue.id).toBe(VenueService.currentVenue.id);
+        expect(VenueService.checkFeatures).toHaveBeenCalled();
+        expect(FeatureService.clearLocalFeatures).toHaveBeenCalled();
+        expect(FeatureService.hasFeatureForInit).toHaveBeenCalledWith(Preoday.constants.Feature.OUTLET);
+        expect(FeatureService.hasFeatureForInit).toHaveBeenCalledWith(Preoday.constants.Feature.NESTED_MODIFIER);
 
         done();
       });

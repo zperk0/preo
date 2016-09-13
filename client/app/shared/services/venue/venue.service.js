@@ -189,6 +189,13 @@ export default class VenueService {
     return this.venueId || this.$stateParams.venueId;
   }
 
+  restore () {
+
+    this.venuesDeferred = null;
+    this.venues = null;
+    this.hasSelectedVenues = false;    
+  }
+
   constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, gettextCatalog, UserService, ErrorService) {
     "ngInject";
     this.$q = $q;
