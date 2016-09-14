@@ -21,6 +21,8 @@ export default class signinController {
     this.VenueService.selectVenue()
       .then(() => {
         this.hideSpinner(2000);
+
+        this.$state.go('main.dashboard');
       }, () => {
         this.hideSpinner(2000);
       });
@@ -40,12 +42,13 @@ export default class signinController {
     .then(this.handleSuccess.bind(this),this.handleError.bind(this))
   }
 
-  constructor(UserService, Spinner, Snack, $timeout, LabelService, VenueService) {
+  constructor($state, UserService, Spinner, Snack, $timeout, LabelService, VenueService) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.LabelService = LabelService;
     this.$timeout = $timeout;
+    this.$state = $state;
     this.UserService = UserService;
     this.VenueService = VenueService;
     if (UserService.user){
