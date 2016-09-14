@@ -47,11 +47,18 @@ export default class menuItemSizeController {
     }
   }
 
+  hasNestedModifierFeature () {
+
+    return this.FeatureService.hasNestedModifierFeature();
+  }  
+
   /* @ngInject */
-  constructor($scope, $stateParams, $timeout) {
+  constructor($scope, $stateParams, $timeout, FeatureService) {
     'ngInject';
     this.$stateParams = $stateParams;
     this.$timeout = $timeout;
+    this.FeatureService = FeatureService;
+
     if (this.ngModel && this.ngModel.id){
       this.ngModel.$isMultiple = true;
       this.ngModel.$deletedItems = [];
@@ -60,6 +67,10 @@ export default class menuItemSizeController {
         $isMultiple:false,
         items:[]
       }
+    }
+
+    if (this.ngModel.$isMultiple && !this.hasNestedModifierFeature()) {
+      this.ngModel.$isMultiple = false;
     }
   }
 }
