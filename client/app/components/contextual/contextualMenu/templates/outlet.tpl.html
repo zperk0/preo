@@ -24,7 +24,7 @@
       </div>       
   </md-input-container>
 
-  <div class="error" ng-if="contextualForm.$submitted && !contextualMenuCtrl.entity.$menuId" translate>Menu is required.</div>
+  <div class="error" ng-if="contextualMenuCtrl.contextualForm.$submitted && !contextualMenuCtrl.entity.$menuId" translate>Menu is required.</div>
   
   <div class="menus-select-content" ng-if="contextualMenuCtrl.isShowing('outlet')">
     <label translate>Outlet menu:</label>
