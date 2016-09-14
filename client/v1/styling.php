@@ -13,8 +13,51 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   <meta charset="UTF-8">
   <title>webapp</title>
   <base href="/">
-  <!-- @@OVERRIDES -->
-  <!-- @@ANALYTICS -->
+  <?
+
+$cdnRoot = "https://cdn-demo.preoday.com/";
+$ordersapp = "https://orders-demo.preoday.com/";
+$weborders = "https://menus-v2-demo.preoday.com/";
+$analytics = '';
+
+if(isset($_SERVER["PREO_CDN"]))
+{
+    $cdnRoot = $_SERVER["PREO_CDN"];
+}
+
+if(isset($_SERVER["PREO_WEBORDERS"]))
+{
+    $weborders = $_SERVER["PREO_WEBORDERS"];
+}
+
+if(isset($_SERVER["PREO_ORDERSAPP"]))
+{
+    $ordersapp = $_SERVER["PREO_ORDERSAPP"];
+}
+
+if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
+    $analytics .=" <script>";
+    $analytics .="   window.hasOwnProperty = window.hasOwnProperty || Object.prototype.hasOwnProperty;";
+    $analytics .="   !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){";
+    $analytics .="     (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),";
+    $analytics .="     r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)";
+    $analytics .="   }(window,document,'script','//www.google-analytics.com/analytics.js','ga');";
+    $analytics .="   ga('create', '".$_SERVER['PREO_PWO_ANALYTICS_UA']."');";
+    $analytics .="   ga('send', 'pageview');";
+    $analytics .=" </script>";
+}
+
+$overrides = "<script>";
+$overrides .= "window._PREO_DATA={};";
+$overrides .= "window._PREO_DATA._CDNROOT='$cdnRoot';";
+$overrides .= "window._PREO_DATA._ORDERSAPP='$ordersapp';";
+$overrides .= "window._PREO_DATA._WEBORDERS='$weborders';";
+$overrides .= "</script>";
+
+echo $overrides;
+
+?>
+
 <script src="<? echo $_SESSION['path']?>/js/modernizr_and_jquery1.10.2_min.js"></script>
 <?php require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); ?>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -143,6 +186,10 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   .contain-to-grid{
     position: fixed;
     z-index: 123;
+  }
+
+  body md-tooltip {
+   z-index:200;
   }
   footer{
     display: none;
