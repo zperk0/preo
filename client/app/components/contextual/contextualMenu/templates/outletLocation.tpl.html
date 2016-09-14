@@ -16,21 +16,21 @@
   <div ng-if="contextualMenuCtrl.entity.toSeatFlag">
     <md-input-container class="md-block md-input-container-with-no-float md-input-container-seat-number" md-no-float>
       <span class="input-label" translate>Start number</span>
-      <input type="text" aria-label="{{ 'Start number' | translate }}" name="seatStart" ng-model="contextualMenuCtrl.entity.seatStart" valid-number max-integer-value compare-number="contextualMenuCtrl.entity.seatEnd" required />
+      <input type="text" aria-label="{{ 'Start number' | translate }}" name="seatStart" ng-model="contextualMenuCtrl.entity.seatStart" valid-number max-integer-value="1000" compare-number="contextualMenuCtrl.entity.seatEnd" required />
 
       <div ng-messages="contextualMenuCtrl.contextualForm.seatStart.$error" ng-show="contextualMenuCtrl.contextualForm.seatStart.$dirty">
         <div ng-message="required" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatStart.$error.required}">This is required.</div>
-        <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatStart.$error.maxIntegerValue}">Max value is 2147483646.</div>
+        <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatStart.$error.maxIntegerValue}">Max value is 1000.</div>
         <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatStart.$error.compareNumber}">Start number need to be smaller than end number</div>
       </div>
     </md-input-container>   
     <md-input-container class="md-block md-input-container-with-no-float md-input-container-seat-number" md-no-float>
       <span class="input-label" translate>End number</span>
-      <input type="text" aria-label="{{ 'End number' | translate }}" name="seatEnd" ng-model="contextualMenuCtrl.entity.seatEnd" valid-number max-integer-value compare-number="contextualMenuCtrl.entity.seatStart" bigger required />
+      <input type="text" aria-label="{{ 'End number' | translate }}" name="seatEnd" ng-model="contextualMenuCtrl.entity.seatEnd" valid-number max-integer-value="1000" compare-number="contextualMenuCtrl.entity.seatStart" bigger required />
 
       <div ng-messages="contextualMenuCtrl.contextualForm.seatEnd.$error" ng-show="contextualMenuCtrl.contextualForm.seatEnd.$dirty">
         <div ng-message="required" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatEnd.$error.required && !contextualMenuCtrl.entity.seatEnd}">This is required.</div>
-        <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatEnd.$error.maxIntegerValue}">Max value is 2147483646.</div>
+        <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatEnd.$error.maxIntegerValue}">Max value is 1000.</div>
         <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seatEnd.$error.compareNumber}">End number need to be bigger than start number</div>
       </div>
     </md-input-container>  	

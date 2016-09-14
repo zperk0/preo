@@ -25,9 +25,9 @@ export default function compareNumber(){
 
         if (!valid) {
           if (isBigger) {
-            valid = !scope.compareValue || isNaN(parseInt(value)) || value > scope.compareValue;
+            valid = !scope.compareValue || isNaN(parseInt(value)) || +value > +scope.compareValue;
           } else {
-            valid = !scope.compareValue || isNaN(parseInt(value)) || value < scope.compareValue;
+            valid = !scope.compareValue || isNaN(parseInt(value)) || +value < +scope.compareValue;
           }
         }
 
