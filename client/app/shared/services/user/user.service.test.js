@@ -46,10 +46,13 @@ describe('User Service', function () {
       server.respondWith('POST', urlAuth, [200, {"Content-Type": "application/json"}, JSON.stringify(userLogged)]);
       server.respondWith('GET', urlAdmin, [400, {"Content-Type": "application/json"}, '']);
 
+      // this is because the auth method is called on main.run
+      UserService.restore();
+
       UserService.auth({
         username: 'tester@test.com',
         password: '123'
-      }, true);
+      });
 
       server.respond();
       $rootScope.$digest();
@@ -89,10 +92,13 @@ describe('User Service', function () {
       server.respondWith('POST', urlAuth, [200, {"Content-Type": "application/json"}, JSON.stringify(userLogged)]);
       server.respondWith('GET', urlAdmin, [200, {"Content-Type": "application/json"}, '']);
 
+      // this is because the auth method is called on main.run
+      UserService.restore();
+
       UserService.auth({
         username: 'tester@test.com',
         password: '123'
-      }, true);
+      });
 
       server.respond();
       $rootScope.$digest();

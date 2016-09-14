@@ -8,11 +8,9 @@ export default class UserService {
     return this.user ? true : false;
   }
 
-  auth (data, forceCreateNewDeferred) {
-
-    // forceCreateNewDeferred - this is because it was causing a bug in tests
-
-    if (this.authDeferred && !forceCreateNewDeferred) {
+  auth (data) {
+    
+    if (this.authDeferred) {
       return this.authDeferred.promise;
     }
 
