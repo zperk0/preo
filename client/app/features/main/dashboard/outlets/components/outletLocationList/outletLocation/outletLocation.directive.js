@@ -9,7 +9,7 @@ export default function outletLocation(){
     },
     template: require("./outletLocation.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "outletLocationCtrl",
     bindToController: true,
     replace:true,
     require:["^cardItemList", "^outletLocationList", "^outletLocationGroup", "outletLocation"],
