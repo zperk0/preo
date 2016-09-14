@@ -25,12 +25,15 @@ export default class itemListController {
     //TODO handle error
   }
 
-  constructor($stateParams,$timeout, ItemService, contextual) {
+  constructor($stateParams,$timeout, ItemService, contextual, FeatureService) {
     "ngInject";
+
     this.data = {items:[]}
     this.$timeout= $timeout;
     this.ItemService =ItemService;
     this.setItems($stateParams.venueId);
     this.contextual =contextual;
+
+    FeatureService.hasFeature(Preoday.constants.Feature.NESTED_MODIFIER);    
   }
 }
