@@ -4,6 +4,7 @@ export default class modifierItemController {
   }
 
   onNewModifierMoved($modifiers, $partFrom, $partTo, $indexFrom, $indexTo){
+
     //is Adding to self?
     if ($modifiers.map((m)=>m.id).indexOf(this.modifier.id)>-1){
       return;
@@ -79,6 +80,7 @@ export default class modifierItemController {
       this.Spinner.show("modifier-create")
       this.ModifierService.createModifier(this.modifier)
         .then((createdModifier)=>{
+          this.cardItemList.deleteItem(this.modifier);
           this.modifier = createdModifier;
           this.cardItemList.onItemCreated(this.modifier);
           this.Spinner.hide("modifier-create")
