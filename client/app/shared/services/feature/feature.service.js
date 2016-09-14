@@ -6,6 +6,10 @@ export default class FeatureService {
 
   hasOutletFeature () {
 
+    if (this.UserService.isAdmin()) {
+      return true;
+    }    
+
     return this.getLocalFeature(Preoday.constants.Feature.OUTLET);
   }
 
@@ -15,10 +19,6 @@ export default class FeatureService {
   }
 
   getLocalFeature (featureId) {
-
-    if (this.UserService.isAdmin()) {
-        return true;
-    }
 
     let index = this.localFeatures.map(function(item){
         return +item.featureId;
