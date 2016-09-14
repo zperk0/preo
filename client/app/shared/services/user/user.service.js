@@ -17,10 +17,8 @@ export default class UserService {
     this.authDeferred = this.$q.defer();
 
     Preoday.User.auth(data).then((user) => {
-      console.log('going to check admin', user);
       this.checkAdmin(user);
     }, (error)=>{
-      console.log("rejecting here", error);
       this.authDeferred.reject(error);
 
       this.unsetAuthDeferred();
@@ -33,11 +31,9 @@ export default class UserService {
 
     user.isAdmin()
       .then(() => {
-        console.log('admin checked success');
         this.isUserAdmin = true;
         this.setCurrentUser(user);
       }, () => {
-        console.log('admin checked false');
         this.isUserAdmin = false;
         this.setCurrentUser(user);
       });
@@ -47,8 +43,7 @@ export default class UserService {
 
     this.user = user;
     this.$rootScope.$broadcast(this.BroadcastEvents._ON_USER_AUTH,user);
-
-    console.log('resolving deferred ---- ', user);
+    
     this.authDeferred.resolve(user);
 
     this.unsetAuthDeferred();    

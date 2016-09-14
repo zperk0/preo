@@ -1,9 +1,11 @@
 <div class='outlet-location-view' layout='column'>
   <div class="outlet-location-toolbar" layout="row" layout-align="start center">
-    <breadcrumb ng-repeat="breadcumb in outletLocationsCtrl.breadcumbs">
-      <a ui-sref="main.dashboard.outlets.location({outletLocation: breadcumb.stateParams})" ng-if="!breadcumb.isLast" translate>{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}</a>
-
-      <span ng-if="breadcumb.isLast">{{ breadcumb.group.label || 'Location label' | translate }}</span>
+    <breadcrumb ng-if="outletLocationsCtrl.breadcumbs.length > 1" ng-repeat="breadcumb in outletLocationsCtrl.breadcumbs">
+      <a ui-sref="main.dashboard.outlets.location({outletLocation: breadcumb.stateParams})" translate>{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}</a>
+    </breadcrumb>
+    
+    <breadcrumb>
+      <span>{{ outletLocationsCtrl.breadcumbs[outletLocationsCtrl.breadcumbs.length - 1].group.label || 'Location label' | translate }}</span>
     </breadcrumb>
   </div>
   <div flex class="layout-left-right">
