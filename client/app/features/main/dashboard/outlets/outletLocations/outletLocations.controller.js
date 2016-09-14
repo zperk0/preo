@@ -83,6 +83,8 @@ export default class outletLocationsController {
     breadcumbs[breadcumbs.length - 1].isLast = true;
     this.breadcumbs = breadcumbs;
 
+    console.log('breadcumbs', breadcumbs);
+
     this.outletGroup = Preoday.OutletLocationGroup.getGroupById(breadcumbs[breadcumbs.length - 1].group.id);
 
     if (!this.outletGroup) {

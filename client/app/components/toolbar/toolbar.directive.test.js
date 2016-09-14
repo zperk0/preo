@@ -1,7 +1,5 @@
 'use strict';
 
-import toolbar from './';
-
 describe('Toolbar Directive', function () {
 
     let
@@ -14,11 +12,7 @@ describe('Toolbar Directive', function () {
       VenueService,
       element = null;
 
-    beforeEach(angular.mock.module(toolbar));
-
-    // beforeEach(angular.mock.module(function ($provide) {
-    //     $provide.constant('initialTodos', []);
-    // }));
+    beforeEach(angular.mock.module('webapp'));
 
     beforeEach(angular.mock.inject(function ($injector) {
 

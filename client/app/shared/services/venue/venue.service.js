@@ -1,3 +1,5 @@
+'use strict';
+
 export default class VenueService {
 
   static get UID(){
@@ -23,33 +25,84 @@ export default class VenueService {
   }
 
   fetchUserVenues (user) {
+
     return this.$q((resolve,reject)=>{
+
+      function _resolvePromise(data) {
+
+        this.$rootScope.$broadcast(this.BroadcastEvents._ON_FETCH_VENUES, data);
+        resolve(data);        
+      }
+
       Preoday.Venue.fetch({adminId:user.id,roles:"admin,owner"})
       .then((venues)=>{
+
         if (venues && venues.length){
           this.venues = venues;
-          if (this.$stateParams.venueId && Number(this.$stateParams.venueId) > 0){
-            return this.fetchById(Number(this.$stateParams.venueId)).then((venue)=>{
-              this.setCurrentVenue(venue);
-              this.$rootScope.$broadcast(this.BroadcastEvents._ON_FETCH_VENUES, venues);
-              resolve(venues);
+
+          let venueId = this.getVenueIdParameter();
+
+          if (venueId && Number(venueId) > 0){
+
+            return this.fetchById(Number(venueId)).then((venue)=>{
+              this.setCurrentVenue(venue)
+                .then(() => {
+
+                  _resolvePromise.bind(this)(venues);
+                }, () => {
+
+                  _resolvePromise.bind(this)(venues);
+                });
             },reject);
           }
-          this.setCurrentVenue(venues[0]);
-          this.$rootScope.$broadcast(this.BroadcastEvents._ON_FETCH_VENUES, venues);
 
+          this.setCurrentVenue(venues[0])
+            .then(() => {
+
+              _resolvePromise.bind(this)(venues);
+            }, () => {
+
+              _resolvePromise.bind(this)(venues);
+            });
+
+        } else {
+          _resolvePromise.bind(this)(venues);
         }
-        resolve(venues);
       }, reject);
     });
   }
 
   setCurrentVenue (venue) {
 
+    let deferred = this.$q.defer();
+
     this.currentVenue = venue;
     venue.setAsCurrent();
 
-    this.$rootScope.$broadcast(this.BroadcastEvents.ON_CURRENT_VENUE, venue);
+    this.checkFeatures(venue)
+      .then(() => {
+
+        this.$rootScope.$broadcast(this.BroadcastEvents.ON_CURRENT_VENUE, venue);
+        deferred.resolve();
+      }, () => {
+
+        this.$rootScope.$broadcast(this.BroadcastEvents.ON_CURRENT_VENUE, venue);
+        deferred.resolve();
+      });
+
+    return deferred.promise;
+  }
+
+  checkFeatures () {
+
+    let FeatureService = this.$injector.get('FeatureService');
+
+    FeatureService.clearLocalFeatures();
+
+    return this.$q.all([
+        FeatureService.hasFeatureForInit(Preoday.constants.Feature.OUTLET),
+        FeatureService.hasFeatureForInit(Preoday.constants.Feature.NESTED_MODIFIER),
+      ]);
   }
 
   hasVenueSet () {
@@ -74,10 +127,12 @@ export default class VenueService {
       return this.$state.go("notFound");
     }
 
-    if (this.$stateParams.venueId && Number(this.$stateParams.venueId) > 0){
+    let venueId = this.getVenueIdParameter();
+
+    if (venueId && Number(venueId) > 0){
       this.$rootScope.$broadcast(this.BroadcastEvents._PREO_DO_VENUE_SELECT,this.$stateParams.venueId)
     } else {
-      let venueId = this.venues[0].id;
+      venueId = this.venues[0].id;
       this.$state.go("main.dashboard", {venueId});
     }
 
@@ -129,7 +184,19 @@ export default class VenueService {
     this.venuesDeferred = null;
   }
 
-  constructor($q, $state, $stateParams, $rootScope, $timeout, BroadcastEvents, gettextCatalog, UserService, ErrorService) {
+  getVenueIdParameter() {
+
+    return this.venueId || this.$stateParams.venueId;
+  }
+
+  restore () {
+
+    this.venuesDeferred = null;
+    this.venues = null;
+    this.hasSelectedVenues = false;    
+  }
+
+  constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, gettextCatalog, UserService, ErrorService) {
     "ngInject";
     this.$q = $q;
     this.$state = $state;
@@ -137,6 +204,7 @@ export default class VenueService {
     this.$rootScope = $rootScope;
     this.$state = $state;
     this.$timeout = $timeout;
+    this.$injector = $injector;
     this.BroadcastEvents = BroadcastEvents;
     this.gettextCatalog = gettextCatalog;
     this.UserService = UserService;

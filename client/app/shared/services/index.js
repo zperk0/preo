@@ -7,6 +7,7 @@ import Modifier from './modifier/modifier.service';
 import Outlet from './outlet/outlet.service';
 import OutletLocation from './outlet/outlet-location.service';
 import Menu from './menu/menu.service';
+import Feature from './feature/feature.service';
 
 export default angular.module("Services" , ['ui.router'])
   .service(User.UID, User)
@@ -18,4 +19,5 @@ export default angular.module("Services" , ['ui.router'])
   .service(Outlet.UID, Outlet)
   .service(OutletLocation.UID, OutletLocation)
   .service(Menu.UID, Menu)
+  .service(Feature.UID, Feature)
   .name;

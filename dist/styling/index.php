@@ -13,14 +13,57 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   <meta charset="UTF-8">
   <title>webapp</title>
   <base href="/">
-  <!-- @@OVERRIDES -->
-  <!-- @@ANALYTICS -->
+  <?
+
+$cdnRoot = "https://cdn-demo.preoday.com/";
+$ordersapp = "https://orders-demo.preoday.com/";
+$weborders = "https://menus-v2-demo.preoday.com/";
+$analytics = '';
+
+if(isset($_SERVER["PREO_CDN"]))
+{
+    $cdnRoot = $_SERVER["PREO_CDN"];
+}
+
+if(isset($_SERVER["PREO_WEBORDERS"]))
+{
+    $weborders = $_SERVER["PREO_WEBORDERS"];
+}
+
+if(isset($_SERVER["PREO_ORDERSAPP"]))
+{
+    $ordersapp = $_SERVER["PREO_ORDERSAPP"];
+}
+
+if (isset($_SERVER["PREO_PWA_ANALYTICS_UA"])){
+    $analytics .=" <script>";
+    $analytics .="   window.hasOwnProperty = window.hasOwnProperty || Object.prototype.hasOwnProperty;";
+    $analytics .="   !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){";
+    $analytics .="     (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),";
+    $analytics .="     r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)";
+    $analytics .="   }(window,document,'script','//www.google-analytics.com/analytics.js','ga');";
+    $analytics .="   ga('create', '".$_SERVER['PREO_PWO_ANALYTICS_UA']."');";
+    $analytics .="   ga('send', 'pageview');";
+    $analytics .=" </script>";
+}
+
+$overrides = "<script>";
+$overrides .= "window._PREO_DATA={};";
+$overrides .= "window._PREO_DATA._CDNROOT='$cdnRoot';";
+$overrides .= "window._PREO_DATA._ORDERSAPP='$ordersapp';";
+$overrides .= "window._PREO_DATA._WEBORDERS='$weborders';";
+$overrides .= "</script>";
+
+echo $overrides;
+
+?>
+
 <script src="<? echo $_SESSION['path']?>/js/modernizr_and_jquery1.10.2_min.js"></script>
 <?php require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/h.php'); ?>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/normalize.css" />
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/foundation.css"/>
-<link href="<? echo $_SESSION['path']?>/css/header-footer.css" rel="stylesheet"><link href="/styling.css" rel="stylesheet"><link href="/vendor.css" rel="stylesheet"></head>
+<link href="<? echo $_SESSION['path']?>/css/header-footer.css" rel="stylesheet"><link href="/styling.css" rel="stylesheet"></head>
 <link href="/code/v2/vendor.css" rel="stylesheet"></head>
 <link href="/code/v2/styling.css" rel="stylesheet"></head>
 <body>
@@ -49,7 +92,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
   })();
 </script>
 <style>
-  html{
+   html{
     overflow: hidden;
     /*height: auto;
     min-height: 100vh;*/
@@ -122,13 +165,36 @@ require_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/code/shared/lang.php'
     right:16px;
   }
 
-  #webappv2 md-input-container label{
+   #webappv2 md-input-container label{
     font-weight: normal;
     font-size: 16px;
   }
+    #webappv2 .md-sidenav-right.contextual-drawer{
+    z-index:124;
+  }
+  #webappv2 md-backdrop{
+    height: 979px;
+    top: 0;
+    position: fixed ! important;
+    z-index: 125 !important;
+  }
+
+  #webappv2 .md-dialog-container{
+    top: -50px !important;
+    z-index: 126 !important;
+  }
   .contain-to-grid{
     position: fixed;
+    z-index: 123;
+  }
+
+  body md-tooltip {
+   z-index:200;
+  }
+  footer{
+    display: none;
   }
 </style>
-<script type="text/javascript" src="/angular.bundle.d9320684376e6e288da3.js"></script><script type="text/javascript" src="/styling.bundle.fc40cecca6450a2dac42.js"></script><script type="text/javascript" src="/vendor.bundle.438036ab4fb1bc230051.js"></script><script type="text/javascript" src="/app.bundle.255962ec2c32b7b6d41a.js"></script></body>
+<? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
+<script type="text/javascript" src="/angular.bundle.2a7ca4570ec1fb1d4c61.js"></script><script type="text/javascript" src="/styling.bundle.d0c98b0d7e98478c984d.js"></script><script type="text/javascript" src="/vendor.bundle.b4c480df56c961571deb.js"></script><script type="text/javascript" src="/app.bundle.2253d89166d507f18af7.js"></script></body>
 </html>

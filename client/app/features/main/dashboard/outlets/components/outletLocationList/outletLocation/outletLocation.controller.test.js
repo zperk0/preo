@@ -21,6 +21,7 @@ describe('OutletLocation item Controller', function () {
       outletLocations,
       outletLocationMock;
 
+    beforeEach(angular.mock.module('webapp'));
     beforeEach(angular.mock.module(outletLocation));
 
     beforeEach(angular.mock.inject(function ($injector) {

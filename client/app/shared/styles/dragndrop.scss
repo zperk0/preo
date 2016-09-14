@@ -1,6 +1,12 @@
 // COLORS
 @import 'variables.scss';
 
+#sv-multi-helper {
+  &:not(.sv-helper) {
+    display: none !important;
+  }
+}
+
 // when sorting is happening
 .sv-sorting-in-progress{
   &.sv-sorting-item{

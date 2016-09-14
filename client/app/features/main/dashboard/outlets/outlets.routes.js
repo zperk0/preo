@@ -12,6 +12,25 @@ export default function routes($stateProvider) {
     url: "/outlets",
     template: require("./outlets.tpl.html"),
     controller: controller.UID,
-    controllerAs: "outlets"
+    controllerAs: "outlets",
+    resolve: {
+
+    	// authenticated -> this is from main.routes.js
+    	hasFeature: function ($q, $state, $stateParams, $timeout, authenticated, FeatureService) {
+
+    		if (FeatureService.hasOutletFeature()) {
+
+    			return $q.when()
+    		} else {
+
+    			$timeout(() => {
+
+    				$state.go('main.dashboard');
+    			});
+
+    			return $q.reject();
+    		}
+    	}
+    }
   });
 }

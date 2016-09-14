@@ -8,14 +8,16 @@ export default function menuItemList($location){
       filtered.push(item);
     });
 
-    filtered.sort(function (a, b) {    
+    if (property !== '$index') {
+        filtered.sort(function (a, b) {    
 
-    	if (!property) {
-    		property = 'position';
-    	}
+            if (!property) {
+                property = 'position';
+            }
 
-    	return a[property] > b[property];
-    });
+            return a[property] > b[property];
+        });
+    }
 
     return filtered;
  };
