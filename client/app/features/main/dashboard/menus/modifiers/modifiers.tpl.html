@@ -6,7 +6,7 @@
     <div class='main-content-left'>
         <modifier-list has-search="true"
                        has-new="true"
-                       sv-disabled="false"
+                       sv-disabled="!vm.hasNestedModifierFeature()"
                        sv-keep-in-list="true"
                        modifiers="vm.data.modifiers"></modifier-list>
       </div>

@@ -9,6 +9,11 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.OUTLET);
   }
 
+  hasNestedModifierFeature () {
+
+    return this.getLocalFeature(Preoday.constants.Feature.NESTED_MODIFIER);
+  }
+
   getLocalFeature (featureId) {
 
     if (this.UserService.isAdmin()) {
