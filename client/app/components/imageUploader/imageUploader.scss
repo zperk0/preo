@@ -8,7 +8,9 @@
     position: absolute;
     top: 5px;
     right: 5px;
-    color: white;
+    color: rgb(110,110,110);
+    background: white;
+
     &:hover{
       cursor: pointer;
     }
@@ -18,6 +20,7 @@
     height:100%;
     margin-bottom: 12px;
     img{
+      border: 1px dashed #E0E0E0;
       width: 100%;
       height:100%;
     }
