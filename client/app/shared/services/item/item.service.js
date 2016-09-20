@@ -155,7 +155,9 @@ export default class ItemService {
 
   updateItem(item, skipExtensions = false){
     this.DEBUG && console.log("updating item", item, skipExtensions);
-    return item.update()
+
+    return (skipExtensions ? $q.when() : this._saveItemImages(item))
+      .then(item.update.bind(item))
       .then((updatedItem)=>{
         this.DEBUG && console.log("updated item", updatedItem);
         return updatedItem;
@@ -164,8 +166,7 @@ export default class ItemService {
         if(skipExtensions){
           return item;
         }
-       return this._saveItemImages(item)
-        .then(this._saveItemSize.bind(this))
+        return this._saveItemSize(item);
       })
       .then((item)=>{
         //update the list of items with this new record
@@ -176,7 +177,7 @@ export default class ItemService {
           }
         }
         return item;
-      })
+      });
   }
 
   createItem(item, sectionId){
