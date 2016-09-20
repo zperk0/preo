@@ -69,18 +69,6 @@ export default class ItemService {
     return this.$q.resolve(item);
   }
 
-  _saveItemTags(item){
-    if (item.tags && item.tags.length){
-      this.DEBUG && console.log("Saving new item tags", item.tags)
-      return item.updateTags()
-        .then((tags)=>{
-          return item;
-        })
-    }
-    this.DEBUG && console.log("New item does not have tags")
-    return this.$q.resolve(item);
-  }
-
   _saveItemSize(item){
     //if we have sizes save or update
     if (item.$size){
@@ -176,8 +164,7 @@ export default class ItemService {
         if(skipExtensions){
           return item;
         }
-       return this._saveItemTags(item)
-        .then(this._saveItemImages.bind(this))
+       return this._saveItemImages(item)
         .then(this._saveItemSize.bind(this))
       })
       .then((item)=>{
@@ -199,7 +186,6 @@ export default class ItemService {
         this.DEBUG && console.log("created item", newItem);
         return newItem;
       })
-      .then(this._saveItemTags.bind(this))
       .then(this._saveItemImages.bind(this))
       .then(this._saveItemSize.bind(this))
       .then((newItem)=>{
