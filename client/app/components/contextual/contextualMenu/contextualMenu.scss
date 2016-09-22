@@ -116,7 +116,25 @@
       &.has-error {
         margin-bottom: 10px;
       }
-    }
+    }  
+      
+    .md-input-container-slot {
+      margin-top: 5px;
+      margin-bottom: 10px !important;
+
+      span, input {
+        float: none;
+        display: inline-block;
+      }
+
+      .input-label {
+        width: auto;
+      }
+
+      .slot-end-label {
+        margin-right: 10px;
+      }
+    }       
 
     md-card-content {
       padding: 25px;
@@ -191,24 +209,6 @@
     &.active-remove, &.ng-leave-active {
       opacity: 0 !important;
       margin-top: -100px !important;
-    }
-  }
-
-  .md-input-container-slot {
-    margin-top: 5px;
-    margin-bottom: 10px !important;
-
-    span, input {
-      float: none;
-      display: inline-block;
-    }
-
-    .input-label {
-      width: auto;
-    }
-
-    .slot-end-label {
-      margin-right: 10px;
     }
   }
 

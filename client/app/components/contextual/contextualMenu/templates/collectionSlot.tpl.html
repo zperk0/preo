@@ -6,7 +6,9 @@
       </md-card-content>
     </md-tab>
     <md-tab label="Advanced">
-      <image-uploader dimensions="590 x 333px" ng-model="contextualMenuCtrl.entity.images"></image-uploader>
+      <md-card-content>
+        <collection-slot-advanced ng-model="contextualMenuCtrl.entity"></collection-slot-advanced>
+      </md-card-content>
     </md-tab>
   </md-tabs>
 </div>
