@@ -12,6 +12,7 @@ import menuItemSize from './components/menuItemSize';
 import modifierItems from './components/modifierItems';
 import modifierSelection from './components/modifierSelection';
 import menusSelect from './components/menusSelect';
+import collectionSlotBasic from './components/collectionSlotBasic';
 
 import services from '../../../shared';
 import validNumber from '../../../components/validNumber';
@@ -25,6 +26,7 @@ export default angular.module("contextualMenu" , [
 	menusSelect, 
 	modifierItems, 
 	modifierSelection, 
+	collectionSlotBasic, 
 	services, 
 	validNumber, 
 	validPrice, 

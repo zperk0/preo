@@ -69,14 +69,57 @@
   .contextual-menu-collection-slot {
     .md-block-lead-time {
       input {
-        width: 25%;
+        width: 100px;
+        margin-right: 12px;
       }
     }
 
     .lead-time-label {
       margin-top: 9px;
-      margin-left: 12px;
       display: inline-block;
+    }
+
+    .md-errors-spacer {
+      display: none;
+    }    
+
+    .content-slot-end-radio {
+      padding-left: 42px;
+
+      md-radio-group {
+        margin-top: 18px;  
+
+        md-radio-button {
+          margin-bottom: 18px;
+
+          &:last-child {
+            margin-bottom: 0px;
+          }            
+        }
+      }
+    }
+
+    .content-input-slot-end {
+      display: inline-block;
+      vertical-align: top;  
+      width: 50px;
+      margin-right: 10px;
+
+      input {
+        width: 100%;
+      }    
+
+      .md-input-messages-animation {
+        position: absolute;
+      }
+
+      &.has-error {
+        margin-bottom: 10px;
+      }
+    }
+
+    md-card-content {
+      padding: 25px;
     }
   }
 
@@ -152,6 +195,9 @@
   }
 
   .md-input-container-slot {
+    margin-top: 5px;
+    margin-bottom: 10px !important;
+
     span, input {
       float: none;
       display: inline-block;
