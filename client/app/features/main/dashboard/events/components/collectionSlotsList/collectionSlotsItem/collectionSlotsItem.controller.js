@@ -80,17 +80,40 @@ export default class collectionSlotsItemController {
     $event.stopPropagation();
   }    
 
+  showCannotDeleteSlotDialog () {
+
+    this.DialogService.show(this.ErrorService.COLLECTION_SLOT_EVENTS.title, this.ErrorService.COLLECTION_SLOT_EVENTS.message, [{
+        name: this.gettextCatalog.getString('OK')
+      }]);    
+  }
+
   onDelete(){
-    
+
     this.DialogService.delete(this.LabelService.TITLE_DELETE_COLLECTION_SLOT, this.LabelService.CONTENT_DELETE_COLLECTION_SLOT)
       .then(()=>{
-
-        this.contextual.hide();
-        this.collectionSlotsListCtrl.deleteCollectionSlot(this.collectionSlot);
+          this.Spinner.show("collection-slot-delete");
+          return this.collectionSlot.delete();
       })
+      .then(()=>{
+          this.cardItemList.onItemDeleted(this.menu);
+          if (this.onItemDeleted){
+            this.onItemDeleted({item:this.menu});
+          }
+          this.Snack.show('Collection Slot deleted');
+          this.Spinner.hide("collection-slot-delete");
+      })
+      .catch((err)=>{
+        this.Spinner.hide("collection-slot-delete")
+        
+        if (err && err instanceof Object && err.message.indexOf('events') !== -1) {
+          this.showCannotDeleteSlotDialog();
+        } else {
+          this.Snack.showError('Collection slot not deleted');
+        }
+      });
   }  
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, gettextCatalog) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, gettextCatalog) {
   	"ngInject";
 
     this.$q = $q;
@@ -100,7 +123,8 @@ export default class collectionSlotsItemController {
   	this.contextualMenu = contextualMenu;
   	this.contextual = contextual;
   	this.DialogService = DialogService;
-  	this.LabelService = LabelService;
+    this.LabelService = LabelService;
+  	this.ErrorService = ErrorService;
   	this.gettextCatalog = gettextCatalog;
 
   	this.type = 'collectionSlot';

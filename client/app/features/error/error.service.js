@@ -32,5 +32,8 @@ export default class ErrorService {
     this.OUTLET_LOCATION_ALREADY_OUTLET = {code:'OUTLET_LOCATION_ALREADY_OUTLET', message:gettextCatalog.getString("This outlet location already have an outlet")};
     this.OUTLET_LOCATION_LAST_CHILD = {code:'OUTLET_LOCATION_LAST_CHILD', message:gettextCatalog.getString("You only can add an outlet for the last child")};
 
+    // COLLECTION SLOT
+    this.COLLECTION_SLOT_EVENTS = {code:'COLLECTION_SLOT_EVENTS', message:gettextCatalog.getString("This slot is atill assigned to some events. You must remove all instances before deleting."), title: gettextCatalog.getString('Cannot delete slot')};
+
   }
 }
