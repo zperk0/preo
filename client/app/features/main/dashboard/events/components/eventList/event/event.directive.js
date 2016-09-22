@@ -2,7 +2,8 @@ import controller from './event.controller'
 
 export default function event(){
   return {
-    restrict: 'EA',
+    restrict: 'E',
+    replace: true,
     scope: {
 
     },

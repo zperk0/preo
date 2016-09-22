@@ -1,0 +1,35 @@
+.collection-slot-item {
+  position: relative;
+  margin:8px;
+  transition: box-shadow 0.3s linear;
+
+  &>md-card{
+    margin:0;
+
+    &>.card-title{
+      min-height: 46px;
+      height: 46px;
+      font-size: 13px;
+
+      .card-title-text{
+        line-height: 60px;
+      }
+
+      .visibility{
+        top: -2px;
+        position: relative;
+      }
+
+    }
+  }
+
+  .sv-placeholder{
+    margin:8px 22px;
+  }	
+
+  .card-item-actions {
+    md-card-actions {
+      padding-top: 5px;
+    }
+  }  
+}

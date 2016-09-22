@@ -2,9 +2,17 @@ import controller from './collectionSlotsList.controller'
 
 export default function collectionSlotsList(){
   return {
-    restrict: 'EA',
+    restrict: 'E',
+    replace: true,
     scope: {
-
+        collectionSlots: '=',
+        hasActions: '=?',
+        hasNew:"=",
+        hasSearch:"=?",
+        svDisabled:"=",
+        svMultiSelect:"=?",
+        svKeepInList:"=?",
+        svIsDropzone:"=?"          
     },
     template: require("./collectionSlotsList.tpl.html"),
     controller: controller.UID,

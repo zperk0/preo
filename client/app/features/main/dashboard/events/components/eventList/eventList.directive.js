@@ -2,7 +2,8 @@ import controller from './eventList.controller'
 
 export default function eventList(){
   return {
-    restrict: 'EA',
+    restrict: 'E',
+    replace: true,
     scope: {
 
     },

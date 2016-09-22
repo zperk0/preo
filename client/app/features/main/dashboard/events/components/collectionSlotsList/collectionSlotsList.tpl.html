@@ -1,3 +1,27 @@
-<div>
-  {{vm.title}}
+<div class="collection-slots-list">
+  <div class='sv-root-holder'
+      sv-root="collectionSlot"
+      sv-disabled="collectionSlotsCtrl.svDisabled"
+      sv-on-sort="collectionSlotsCtrl.onCollectionSlotMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+
+    <card-item-list
+        has-new="collectionSlotsCtrl.hasNew"
+        tooltip="{{ 'Add new collection slot' | translate }}"
+        on-click-new="collectionSlotsCtrl.showCreateOutlet()"
+        collection="collectionSlotsCtrl.collectionSlots">
+      <div class='sort-holder' 
+        sv-multi-select='collectionSlotsCtrl.svMultiSelect'
+        sv-keep-in-list='collectionSlotsCtrl.svKeepInList' 
+        sv-is-dropzone='collectionSlotsCtrl.svIsDropzone'   
+        sv-part="collectionSlotsCtrl.collectionSlots">
+        <collection-slots-item
+          has-actions="collectionSlotsCtrl.hasActions"
+          sv-element="collectionSlot"
+          ng-repeat="collectionSlot in collectionSlotsCtrl.collectionSlots track by $index"
+          collection-slot="collectionSlot">
+        </collection-slots-item>
+        <div sv-placeholder></div>
+      </div>
+    </card-item-list>
+  </div>
 </div>
