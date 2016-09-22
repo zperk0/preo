@@ -1,3 +1,27 @@
-<div>
-  {{vm.title}}
+<div class="events-list">
+  <div class='sv-root-holder'
+      sv-root="events"
+      sv-disabled="eventListCtrl.svDisabled"
+      sv-on-sort="eventListCtrl.onEventMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+
+    <card-item-list
+        has-new="eventListCtrl.hasNew"
+        tooltip="{{ 'Add new event' | translate }}"
+        on-click-new="eventListCtrl.showCreateOutlet()"
+        collection="eventListCtrl.collectionSlots">
+      <div class='sort-holder' 
+        sv-multi-select='eventListCtrl.svMultiSelect'
+        sv-keep-in-list='eventListCtrl.svKeepInList' 
+        sv-is-dropzone='eventListCtrl.svIsDropzone'   
+        sv-part="eventListCtrl.collectionSlots">
+        <event
+          has-actions="eventListCtrl.hasActions"
+          sv-element="event"
+          ng-repeat="event in eventListCtrl.events track by $index"
+          event="event">
+        </event>
+        <div sv-placeholder></div>
+      </div>
+    </card-item-list>
+  </div>
 </div>

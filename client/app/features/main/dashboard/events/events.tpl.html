@@ -1,3 +1,15 @@
-<div class='events' layout='row'>
-  <ui-view flex name="eventContent"></ui-view>
+<div class='events-view' layout='column'>
+  <div flex class="layout-left-right">
+    <div class='main-content-left'>
+      <event-list has-search="true"
+         sv-multi-select="false"
+         sv-keep-in-list="false"
+         sv-is-dropzone="true"
+         has-new="true"
+         has-actions="true"
+         ng-if="eventsViewCtrl.data.events && eventsViewCtrl.data.events.length"
+         events="eventsViewCtrl.data.events"></event-list>
+     </div>
+  	<div class='main-content-right' sticky offset="88" contextual-menu-holder></div>
+  </div>
 </div>

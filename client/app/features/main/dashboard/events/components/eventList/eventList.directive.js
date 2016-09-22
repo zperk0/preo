@@ -5,7 +5,14 @@ export default function eventList(){
     restrict: 'E',
     replace: true,
     scope: {
-
+        events: '=',
+        hasActions: '=?',
+        hasNew:"=",
+        hasSearch:"=?",
+        svDisabled:"=",
+        svMultiSelect:"=?",
+        svKeepInList:"=?",
+        svIsDropzone:"=?"  
     },
     template: require("./eventList.tpl.html"),
     controller: controller.UID,

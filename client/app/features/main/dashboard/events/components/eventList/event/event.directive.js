@@ -5,7 +5,8 @@ export default function event(){
     restrict: 'E',
     replace: true,
     scope: {
-
+        event: '=',
+        hasActions: '=?'
     },
     template: require("./event.tpl.html"),
     controller: controller.UID,
