@@ -1,0 +1,31 @@
+<div class="contextual-menu-collection-slot">
+  <md-tabs md-dynamic-height md-stretch-tabs="always">
+    <md-tab label="Basic">
+      <md-card-content>
+         <md-input-container class="md-block">
+            <label translate>Slot name</label>
+            <input type="text" autocomplete="off"  required name="entityName" ng-model="contextualMenuCtrl.entity.name" ng-maxlength="100" />
+            <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
+              <div ng-message="required" translate>This field is required.</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label translate>Display name</label>
+            <input type="text" autocomplete="off"  required name="entityDisplayName" ng-model="contextualMenuCtrl.entity.displayName" ng-maxlength="100" />
+        </md-input-container>
+        <md-input-container class="md-input-container-with-no-float md-input-container-slot">
+            <span class="input-label slot-end-label">{{ 'Slot ends' | translate }}</span>
+            <input type="text" autocomplete="off"  required name="entityEnd" ng-model="contextualMenuCtrl.entity.end" ng-maxlength="100" />
+            <span class="input-label lead-time-label">{{ 'mins' | translate }}</span>
+        </md-input-container>
+        <md-input-container class="md-block md-block-lead-time">
+            <label translate>Lead time</label>
+            <input type="text" autocomplete="off"  required name="entityLeadTime" ng-model="contextualMenuCtrl.entity.leadTime" ng-maxlength="100" /> <span class="input-label lead-time-label">{{ 'mins' | translate }}</span>
+        </md-input-container>
+      </md-card-content>
+    </md-tab>
+    <md-tab label="Advanced">
+      <image-uploader dimensions="590 x 333px" ng-model="contextualMenuCtrl.entity.images"></image-uploader>
+    </md-tab>
+  </md-tabs>
+</div>

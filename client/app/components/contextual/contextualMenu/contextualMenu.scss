@@ -66,6 +66,20 @@
     }
   }
 
+  .contextual-menu-collection-slot {
+    .md-block-lead-time {
+      input {
+        width: 25%;
+      }
+    }
+
+    .lead-time-label {
+      margin-top: 9px;
+      margin-left: 12px;
+      display: inline-block;
+    }
+  }
+
   .md-input-container-seat-number {
     .input-label {
       width: 120px;
@@ -76,14 +90,14 @@
     }
   }
 
-  .contextual-menu-outlet-location {
+  .contextual-menu-outlet-location, .contextual-menu-collection-slot {
     .input-label {
       color:rgba(0,0,0,0.50);
       font-size:16px;
     }
   }
 
-  .contextual-menu-outlet {
+  .contextual-menu-outlet, .contextual-menu-collection-slot {
     md-input-container {
       // height: 35px;
       margin-bottom: 16px;
@@ -134,6 +148,21 @@
     &.active-remove, &.ng-leave-active {
       opacity: 0 !important;
       margin-top: -100px !important;
+    }
+  }
+
+  .md-input-container-slot {
+    span, input {
+      float: none;
+      display: inline-block;
+    }
+
+    .input-label {
+      width: auto;
+    }
+
+    .slot-end-label {
+      margin-right: 10px;
     }
   }
 

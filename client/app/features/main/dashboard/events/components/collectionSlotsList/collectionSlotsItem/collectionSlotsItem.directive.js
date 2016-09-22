@@ -12,8 +12,11 @@ export default function collectionSlotsItem(){
     controller: controller.UID,
     controllerAs: "collectionSlotsItemCtrl",
     bindToController: true,
-    link: (scope, el, attr, ctrl) => {
+    require:["^cardItemList", "^collectionSlotsList", "collectionSlotsItem"],
+    link: (scope, el, attr, ctrls) => {
 
+      ctrls[2].cardItemList = ctrls[0];
+      ctrls[2].collectionSlotsListCtrl = ctrls[1];
     }
   }
 }
