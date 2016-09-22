@@ -62,7 +62,7 @@ echo $overrides;
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/normalize.css" />
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/foundation.css"/>
-<link href="<? echo $_SESSION['path']?>/css/header-footer.css" rel="stylesheet"></head>
+<link href="<? echo $_SESSION['path']?>/css/header-footer.css" rel="stylesheet">
 <link href="/code/v2/vendor.css" rel="stylesheet"></head>
 <body>
   <div id="wrap">
