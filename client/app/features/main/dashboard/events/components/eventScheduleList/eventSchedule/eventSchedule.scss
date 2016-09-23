@@ -1,0 +1,30 @@
+$heightMenuItemCard:48px;
+
+.event-schedule {
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+
+  .card-item {
+  	margin: 0;
+
+    .hidden-card-actions{
+      align-items: flex-start;
+      padding-top: 6px;
+    }
+
+    .card-title{
+      max-height: $heightMenuItemCard;
+      min-height: auto;
+      padding:10px 14px;
+
+      .card-title-text{
+        font-size:13px;
+      }
+    }
+
+    .size-wrapper{
+      padding-bottom: 5px;
+    }
+  }			
+}

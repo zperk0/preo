@@ -11,6 +11,24 @@ export default class eventController {
     }
   }  
 
+  toggleExpanded($event){
+    if (this.event.$expanding){
+      return;
+    }
+    if ($event){
+      var el = angular.element($event.target);
+      while (el[0]) {
+        el = angular.element(el);
+        if (el.hasClass('sv-long-pressing')){
+          return;
+        }
+        el = el.parent();
+      }
+    }
+    this.cardItemList.expandItem(this.event);
+    this.contextualMenu.close();
+  }  
+
   contextualMenuCancel() {
 
     this.restoreOriginalValues();

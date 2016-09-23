@@ -16,6 +16,11 @@
                       <span>{{eventCtrl.event.name}} </span>
                     </card-item-title>
 
+    <event-schedule-list
+          ng-if="eventCtrl.event.$expanded"
+          schedules="eventCtrl.event.schedules">
+    </event-schedule-list>
+
     <card-item-actions is-visible="eventCtrl.event.visible"
                        on-delete="eventCtrl.onDelete()"
                        on-edit="eventCtrl.onEdit($event)"
