@@ -14,6 +14,8 @@ import modifierSelection from './components/modifierSelection';
 import menusSelect from './components/menusSelect';
 import collectionSlotBasic from './components/collectionSlotBasic';
 import collectionSlotAdvanced from './components/collectionSlotAdvanced';
+import eventBasic from './components/eventBasic';
+import eventScheduleForm from './components/eventScheduleForm';
 
 import services from '../../../shared';
 import validNumber from '../../../components/validNumber';
@@ -29,6 +31,8 @@ export default angular.module("contextualMenu" , [
 	modifierSelection, 
 	collectionSlotBasic, 
 	collectionSlotAdvanced, 
+	eventBasic, 
+	eventScheduleForm, 
 	services, 
 	validNumber, 
 	validPrice, 

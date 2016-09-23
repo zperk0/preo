@@ -1,0 +1,30 @@
+<div class="collection-slot-basic">
+    <md-input-container class="md-block">
+        <label translate>Event name</label>
+        <input type="text" autocomplete="off"  required name="entityName" ng-model="eventBasicCtrl.event.name" ng-maxlength="100" />
+        <div ng-messages="eventBasicCtrl.contextualForm.entityName.$error" ng-show="eventBasicCtrl.contextualForm.entityName.$dirty">
+          <div ng-message="required" translate  ng-class="{'activated': eventBasicCtrl.contextualForm.entityName.$error.required}">This field is required.</div>
+          <div ng-message="maxlength" translate ng-class="{'activated': eventBasicCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
+        </div>
+    </md-input-container>
+    <md-input-container class="md-block">
+        <label translate>Description</label>
+        <input type="text" autocomplete="off"  required name="entityDescription" ng-model="eventBasicCtrl.event.description" ng-maxlength="255" />
+        <div ng-messages="eventBasicCtrl.contextualForm.entityDescription.$error" ng-show="eventBasicCtrl.contextualForm.entityDescription.$dirty">
+          <div ng-message="required" translate  ng-class="{'activated': eventBasicCtrl.contextualForm.entityDescription.$error.required}">This field is required.</div>
+          <div ng-message="maxlength" translate ng-class="{'activated': eventBasicCtrl.contextualForm.entityDescription.$error.maxlength}">Max length is 255.</div>
+        </div>
+    </md-input-container>
+    <md-input-container class="md-block">
+        <label translate>Outlet configuration</label>
+        <md-select ng-model="eventBasicCtrl.event.outletLocationId">
+          <md-option ng-value="state.abbrev">
+            Test
+          </md-option>
+        </md-select>
+        <div ng-messages="eventBasicCtrl.contextualForm.entityDescription.$error" ng-show="eventBasicCtrl.contextualForm.entityDescription.$dirty">
+          <div ng-message="required" translate  ng-class="{'activated': eventBasicCtrl.contextualForm.entityDescription.$error.required}">This field is required.</div>
+          <div ng-message="maxlength" translate ng-class="{'activated': eventBasicCtrl.contextualForm.entityDescription.$error.maxlength}">Max length is 255.</div>
+        </div>
+    </md-input-container>
+</div>

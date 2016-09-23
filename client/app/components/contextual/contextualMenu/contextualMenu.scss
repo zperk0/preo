@@ -66,6 +66,16 @@
     }
   }
 
+  .contextual-menu-event, .contextual-menu-collection-slot {
+    .md-errors-spacer {
+      display: none;
+    }    
+
+    md-card-content {
+      padding: 25px;
+    }    
+  }
+
   .contextual-menu-collection-slot {
     .md-block-lead-time {
       input {
@@ -78,10 +88,6 @@
       margin-top: 9px;
       display: inline-block;
     }
-
-    .md-errors-spacer {
-      display: none;
-    }    
 
     .content-slot-end-radio {
       padding-left: 42px;
@@ -135,10 +141,6 @@
         margin-right: 10px;
       }
     }       
-
-    md-card-content {
-      padding: 25px;
-    }
   }
 
   .md-input-container-seat-number {
