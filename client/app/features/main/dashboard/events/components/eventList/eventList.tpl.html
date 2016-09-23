@@ -7,13 +7,13 @@
     <card-item-list
         has-new="eventListCtrl.hasNew"
         tooltip="{{ 'Add new event' | translate }}"
-        on-click-new="eventListCtrl.showCreateOutlet()"
-        collection="eventListCtrl.collectionSlots">
+        on-click-new="eventListCtrl.showCreateEvent()"
+        collection="eventListCtrl.events">
       <div class='sort-holder' 
         sv-multi-select='eventListCtrl.svMultiSelect'
         sv-keep-in-list='eventListCtrl.svKeepInList' 
         sv-is-dropzone='eventListCtrl.svIsDropzone'   
-        sv-part="eventListCtrl.collectionSlots">
+        sv-part="eventListCtrl.events">
         <event
           has-actions="eventListCtrl.hasActions"
           sv-element="event"

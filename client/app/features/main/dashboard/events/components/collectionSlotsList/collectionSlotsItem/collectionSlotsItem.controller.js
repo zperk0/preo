@@ -95,9 +95,9 @@ export default class collectionSlotsItemController {
           return this.collectionSlot.delete();
       })
       .then(()=>{
-          this.cardItemList.onItemDeleted(this.menu);
+          this.cardItemList.onItemDeleted(this.collectionSlot);
           if (this.onItemDeleted){
-            this.onItemDeleted({item:this.menu});
+            this.onItemDeleted({item:this.collectionSlot});
           }
           this.Snack.show('Collection Slot deleted');
           this.Spinner.hide("collection-slot-delete");

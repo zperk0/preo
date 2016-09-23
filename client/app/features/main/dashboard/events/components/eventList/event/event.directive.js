@@ -12,8 +12,11 @@ export default function event(){
     controller: controller.UID,
     controllerAs: "eventCtrl",
     bindToController: true,
-    link: (scope, el, attr, ctrl) => {
+    require:["^cardItemList", "^eventList", "event"],
+    link: (scope, el, attr, ctrls) => {
 
+        ctrls[2].cardItemList = ctrls[0];
+        ctrls[2].collectionSlotsListCtrl = ctrls[1];
     }
   }
 }
