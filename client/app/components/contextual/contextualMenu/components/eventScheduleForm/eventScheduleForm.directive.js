@@ -10,10 +10,11 @@ export default function eventScheduleFormDirective(){
     },
     controllerAs: "eventScheduleFormCtrl",
     bindToController: true,
-    require: ['^form', 'eventScheduleForm'],
+    require: ['^form', '^contextualMenu', 'eventScheduleForm'],
     link: (scope, el, attr, ctrls) => {
 
-      ctrls[1].contextualForm = ctrls[0];
+      ctrls[2].contextualForm = ctrls[0];
+      ctrls[2].contextualMenuCtrl = ctrls[1];
     }
   }
 }

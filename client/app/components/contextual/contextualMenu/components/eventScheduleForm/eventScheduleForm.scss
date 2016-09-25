@@ -30,9 +30,13 @@
   .collection-slots-select-content {
     margin-top: 24px;
 
-    label {
-      color: rgba(0, 0, 0, 0.5);
+    .label-title {
+      color: #424242;
       font-size: 16px;
+    }
+
+    .collection-slots-select {
+      margin-top: 12px;
     }
   }
 
@@ -53,11 +57,28 @@
   .schedule-datepicker {
   	.md-datepicker-input-container {
   		width: 83px;
+
+	  	.md-datepicker-input {
+	  		min-width: 83px;
+	  		font-size: 15px;
+
+  			&::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+					color: rgba(0,0,0,0.26);
+  			}	
+	  	}  		
   	}
   }
 
   .md-input-container-frequency {
   	margin-bottom: 0px;
+  }
+
+  .md-block-datepicker-multiple {
+    md-datepicker {
+      &:first-child {
+        margin-right: 24px;
+      }
+    }
   }
 }
 

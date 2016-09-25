@@ -14,10 +14,14 @@
   <div class="md-block">
     <md-datepicker class="schedule-datepicker" ng-model="eventScheduleFormCtrl.schedule.date" md-placeholder="{{ 'Date' }}" auto-open-calendar></md-datepicker>
   </div>
+  <div class="md-block md-block-datepicker-multiple">
+    <md-datepicker class="schedule-datepicker" ng-model="eventScheduleFormCtrl.schedule.date" md-placeholder="{{ 'Start date' }}" auto-open-calendar></md-datepicker>
+    <md-datepicker class="schedule-datepicker" ng-model="eventScheduleFormCtrl.schedule.date" md-placeholder="{{ 'End date' }}" auto-open-calendar></md-datepicker>
+  </div>
 
 
-  <div class="collection-slots-select-content" ng-if="contextualMenuCtrl.isShowing('event') || contextualMenuCtrl.isShowing('eventSchedule')">
-    <label translate>Choose collection slots:</label>
+  <div class="collection-slots-select-content" ng-if="eventScheduleFormCtrl.contextualMenuCtrl.isShowing('event') || eventScheduleFormCtrl.contextualMenuCtrl.isShowing('eventSchedule')">
+    <label class="label-title" translate>Choose collection slots:</label>
     <collection-slots-select></collection-slots-select>
   </div>
 </div>
