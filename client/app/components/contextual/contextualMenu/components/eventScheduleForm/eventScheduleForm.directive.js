@@ -6,7 +6,7 @@ export default function eventScheduleFormDirective(){
     template: require("./eventScheduleForm.tpl.html"),
     controller: controller.UID,
     scope:{
-      collectionSlot: "=ngModel",
+      schedule: "=ngModel",
     },
     controllerAs: "eventScheduleFormCtrl",
     bindToController: true,

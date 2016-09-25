@@ -1,2 +1,23 @@
 <div class="event-schedule-form">
+  <md-input-container class="md-block md-input-container-with-no-float md-input-container-frequency" md-no-float>
+    <span class="input-label" translate>Frequency:</span>
+    <md-select ng-model="eventScheduleFormCtrl.schedule.frequency">
+      <md-option ng-value="state.abbrev">
+        Test
+      </md-option>
+    </md-select>
+  </md-input-container>  
+
+  <div class="md-block">
+    <mdp-time-picker mdp-auto-switch="true" mdp-placeholder="{{ 'Start time' | translate }}" ng-model="eventScheduleFormCtrl.schedule.time"></mdp-time-picker>
+  </div>  
+  <div class="md-block">
+    <md-datepicker class="schedule-datepicker" ng-model="eventScheduleFormCtrl.schedule.date" md-placeholder="{{ 'Date' }}" auto-open-calendar></md-datepicker>
+  </div>
+
+
+  <div class="collection-slots-select-content" ng-if="contextualMenuCtrl.isShowing('event') || contextualMenuCtrl.isShowing('eventSchedule')">
+    <label translate>Choose collection slots:</label>
+    <collection-slots-select></collection-slots-select>
+  </div>
 </div>

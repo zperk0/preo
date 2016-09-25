@@ -137,7 +137,14 @@ export default class eventController {
   	this.type = 'event';
 
     if (this.event && !this.event.id) {
-        this.contextual.showMenu(this.type, this.event, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
-    }    
+      this.contextual.showMenu(this.type, this.event, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+    } 
+
+    if (this.event.id === 1) {
+      $timeout(() => {
+      this.toggleExpanded();
+      this.event.schedules.push({})   
+      })
+    }
   }
 }
