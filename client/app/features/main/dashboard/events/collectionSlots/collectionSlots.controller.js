@@ -23,19 +23,7 @@ export default class collectionSlotsController {
 
       console.log('collection slot service data here', data);
 
-      // this.data = data;
-    this.data = {
-    	collectionSlots: [{
-        id: 1,
-    		name: 'Test'
-    	}, {
-        id: 2,
-        name: 'Test 2'
-      }, {
-        id: 3,
-    		name: 'Test 43'
-    	}]
-    };      
+      this.data = data;   
       this.loaded = true;
 
       this.hideSpinner();

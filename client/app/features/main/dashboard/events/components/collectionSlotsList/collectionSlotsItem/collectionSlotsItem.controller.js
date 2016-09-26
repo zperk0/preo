@@ -21,9 +21,19 @@ export default class collectionSlotsItemController {
     }    
   }
 
+  isValidEntity (entity) {
+
+    return entity && entity.name;
+  }
+
+  buildEntityToCollectionSlot (entity) {
+
+    this.collectionSlot = entity;
+  }
+
   contextualMenuSuccess(entity){
-    if (this.collectionSlot && entity && entity.name){
-      this.collectionSlot = entity;
+    if (this.collectionSlot && this.isValidEntity(entity)){
+      this.buildEntityToCollectionSlot(entity);
 
       if (!this.collectionSlot.id){
         this.Spinner.show("collection-slot-create");

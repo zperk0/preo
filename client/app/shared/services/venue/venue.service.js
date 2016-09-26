@@ -36,7 +36,7 @@ export default class VenueService {
 
       Preoday.Venue.fetch({
         adminId: user.id,
-        roles:"admin,owner",
+        roles: "admin,owner",
         expand: 'features'
       }).then((venues)=>{
 

@@ -6,6 +6,7 @@ describe('Venue Service', function () {
       VenueService,
       FeatureService,
       $rootScope,
+      $timeout,
       BroadcastEvents,
       server;
 
@@ -16,6 +17,7 @@ describe('Venue Service', function () {
       VenueService = $injector.get('VenueService');
       FeatureService = $injector.get('FeatureService');
       $rootScope = $injector.get('$rootScope');
+      $timeout = $injector.get('$timeout');
       BroadcastEvents = $injector.get('BroadcastEvents');
 
       server = sinon.fakeServer.create();
@@ -40,11 +42,21 @@ describe('Venue Service', function () {
         new Preoday.Venue.constructor({id: 2,}),
       ];
 
+      spyOn(FeatureService, 'hasFeature').and.callFake(function () {
+        
+        return {
+          then: function (callbackSuccess, callbackError) {
+
+            callbackError();
+          }
+        }
+      });
+
       let user = {
         id: 1
       };
 
-      server.respondWith('GET', '/api/venues?expand=settings,hours&adminId=1&roles=admin%2Cowner', [200, {"Content-Type": "application/json"}, JSON.stringify(venues)]);
+      server.respondWith('GET', '/api/venues?expand=settings,hours,features&adminId=1&roles=admin%2Cowner', [200, {"Content-Type": "application/json"}, JSON.stringify(venues)]);
 
       VenueService.fetchUserVenues(user)
         .then(resolve, reject);
@@ -61,10 +73,12 @@ describe('Venue Service', function () {
         }));
         expect(resolve).toHaveBeenCalled();
         expect(reject).not.toHaveBeenCalled();
-        expect(VenueService.setCurrentVenue).toHaveBeenCalledWith(venues[0]);
+        expect(VenueService.setCurrentVenue).toHaveBeenCalledWith(jasmine.objectContaining({
+          id: venues[0].id
+        }));
         expect($rootScope.$broadcast).toHaveBeenCalledWith(BroadcastEvents._ON_FETCH_VENUES, venues);
 
-        done();
+        done();               
       });
     });
 
@@ -81,6 +95,16 @@ describe('Venue Service', function () {
         new Preoday.Venue.constructor({id: 1,}),
         new Preoday.Venue.constructor({id: 2,}),
       ];
+
+      spyOn(FeatureService, 'hasFeature').and.callFake(function () {
+        
+        return {
+          then: function (callbackSuccess, callbackError) {
+
+            callbackError();
+          }
+        }
+      });
 
       let user = {
         id: 1
