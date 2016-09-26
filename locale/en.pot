@@ -3,6 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
+"Language: en\n"
 
 #: ./client/app/features/notFound/notFound.tpl.html:2
 msgid "404 - Page Not Found"
