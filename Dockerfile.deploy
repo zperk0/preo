@@ -1,0 +1,21 @@
+FROM node:5.12.0
+
+MAINTAINER Marcelo Soares <marcelorss.soares@preoday.com>
+
+RUN apt-get update && apt-get upgrade -y && apt-get install -y ruby-full apache2 php5 php5-curl
+
+RUN npm install -g bower
+
+RUN gem install sass compass --no-ri --no-rdoc
+
+# Enable rewrite apache2 module
+RUN a2enmod rewrite && ls -al /etc/apache2/mods-enabled/rewrite.load
+
+RUN mkdir /root/.ssh/
+# Create known_hosts
+RUN touch /root/.ssh/known_hosts
+# Add bitbuckets key
+RUN ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts
+
+EXPOSE 80
+
