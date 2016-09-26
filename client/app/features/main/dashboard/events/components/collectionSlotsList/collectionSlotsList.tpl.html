@@ -17,7 +17,7 @@
         <collection-slots-item
           has-actions="collectionSlotsCtrl.hasActions"
           sv-element="collectionSlot"
-          ng-repeat="collectionSlot in collectionSlotsCtrl.collectionSlots track by $index"
+          ng-repeat="collectionSlot in collectionSlotsCtrl.collectionSlots | orderBy: 'id' track by collectionSlot.id"
           collection-slot="collectionSlot">
         </collection-slots-item>
         <div sv-placeholder></div>

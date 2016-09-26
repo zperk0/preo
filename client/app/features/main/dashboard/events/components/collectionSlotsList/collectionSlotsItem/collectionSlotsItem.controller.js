@@ -92,7 +92,7 @@ export default class collectionSlotsItemController {
 
   showCannotDeleteSlotDialog () {
 
-    this.DialogService.show(this.ErrorService.COLLECTION_SLOT_EVENTS.title, this.ErrorService.COLLECTION_SLOT_EVENTS.message, [{
+    this.DialogService.show(this.ErrorService.COLLECTION_SLOT_SCHEDULE.title, this.ErrorService.COLLECTION_SLOT_SCHEDULE.message, [{
         name: this.gettextCatalog.getString('OK')
       }]);    
   }
@@ -102,7 +102,7 @@ export default class collectionSlotsItemController {
     this.DialogService.delete(this.LabelService.TITLE_DELETE_COLLECTION_SLOT, this.LabelService.CONTENT_DELETE_COLLECTION_SLOT)
       .then(()=>{
           this.Spinner.show("collection-slot-delete");
-          return this.collectionSlot.delete();
+          return this.collectionSlot.remove();
       })
       .then(()=>{
           this.cardItemList.onItemDeleted(this.collectionSlot);
@@ -115,7 +115,7 @@ export default class collectionSlotsItemController {
       .catch((err)=>{
         this.Spinner.hide("collection-slot-delete")
         
-        if (err && err instanceof Object && err.message.indexOf('events') !== -1) {
+        if (err && err instanceof Object && err.message.indexOf('schedule') !== -1) {
           this.showCannotDeleteSlotDialog();
         } else {
           this.Snack.showError('Collection slot not deleted');

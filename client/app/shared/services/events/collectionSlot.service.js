@@ -45,6 +45,14 @@ export default class CollectionSlotsService {
     return item && item.length ? item[0] : null;
   }
 
+  save (data) {
+
+    data.start = data.$start * data.$startFactor;
+    data.end = data.$end * data.$endFactor;
+
+    return Preoday.PickupSlot.create(data);
+  }
+
   constructor($q, $rootScope, $stateParams) {
     "ngInject";
 

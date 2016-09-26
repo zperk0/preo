@@ -20,6 +20,6 @@ export default class collectionSlotAdvancedController {
     this.collectionSlot.$startFactor = this.getStartFactor();
 
     this.collectionSlot.$start = this.collectionSlot.start != null ? Math.abs(this.collectionSlot.start) : '';
-    this.collectionSlot.$hasSteps = this.collectionSlot !== null;
+    this.collectionSlot.$hasSteps = !isNaN(parseInt(this.collectionSlot.step));
   }
 }
