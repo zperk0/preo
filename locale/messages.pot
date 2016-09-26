@@ -16,21 +16,64 @@ msgstr ""
 msgid "Add New"
 msgstr ""
 
-#: ./client/app/components/imageUploader/imageUploader.tpl.html:24
-#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSection/menuSectionNew.tpl.html:3
+#: ./client/app/components/imageUploader/imageUploader.tpl.html:23
 msgid "Add Section"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:21
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:8
+msgid "Add item"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/menus/components/menuCardList/menuCardList.tpl.html:5
+msgid "Add menu"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/menus/components/modifierList/modifierList.tpl.html:10
+msgid "Add modifier"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationGroupList/outletLocationGroupList.tpl.html:5
+msgid "Add new group"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletList/outletList.tpl.html:9
+msgid "Add new outlet"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.tpl.html:9
+msgid "Add new outlet location"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:22
 msgid "Add option"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:50
+#: ./client/app/features/main/dashboard/outlets/outletLocations/outletLocations.tpl.html:19
+msgid "Add outlets"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/menus/menuSectionList/menuSectionList.tpl.html:9
+msgid "Add section"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:52
 msgid "Add size"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:236
+msgid "Add sub group"
 msgstr ""
 
 #: ./client/app/shared/services/item/item.service.js:25
 msgid "All menus"
+msgstr ""
+
+#: ./client/app/features/main/account/components/userEmail/userEmail.controller.js:37
+msgid "An activation link has been sent to {{email}}"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletList/outletList.controller.js:84
+msgid "An outlet location is using this outlet. You need remove it before"
 msgstr ""
 
 #: ./client/app/features/error/error.service.js:26
@@ -50,38 +93,78 @@ msgstr ""
 msgid "Analytics"
 msgstr ""
 
-#: ./client/app/components/navbar/navbar.controller.js:57
+#: ./client/app/components/navbar/navbar.controller.js:65
 msgid "App mode"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:21
+#: ./client/app/shared/services/label/label.service.js:29
 msgid "Are you sure you want to delete this image?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:11
+#: ./client/app/shared/services/label/label.service.js:35
+msgid "Are you sure you want to delete this outlet location?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:41
+msgid "Are you sure you want to delete this outlet?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:16
 msgid "Are you sure you want to delete this section?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:14
+#: ./client/app/shared/services/label/label.service.js:19
 msgid "Are you sure you want to permanently delete this item?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:15
+#: ./client/app/shared/services/label/label.service.js:20
 msgid "Are you sure you want to remove this item from the section?"
 msgstr ""
 
-#: ./client/app/components/navbar/navbar.controller.js:62
+#: ./client/app/components/navbar/navbar.controller.js:70
 msgid "Bookings"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.controller.js:194
+msgid "Buttons Background"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.controller.js:190
+msgid "Buttons and section names"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/outletLocations/contextualDrawer.outletLocations.tpl.html:13
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.tpl.html:8
 #: ./client/app/components/contextual/contextualMenu/contextualMenu.tpl.html:5
 #: ./client/app/components/dialog/dialog.delete.tpl.html:9
 #: ./client/app/components/dialog/dialog.tpl.html:9
-#: ./client/app/components/imageUploader/croppie/croppieDialog.tpl.html:11
+#: ./client/app/components/imageUploader/croppie/croppieDialog.tpl.html:12
 msgid "Cancel"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:9
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/BACKGROUND.tpl.html:6
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/HEADER.tpl.html:7
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/LOGO.tpl.html:6
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/NAVBAR.tpl.html:2
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/PRIMARY.tpl.html:2
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/SECTIONS.tpl.html:2
+msgid "Choose a colour"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/BACKGROUND.tpl.html:2
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/HEADER.tpl.html:3
+msgid "Colour"
+msgstr ""
+
+#: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:41
+msgid "Confirm new password"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:12
+msgid "Could not save weborders style"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:12
 msgid "Create new item"
 msgstr ""
 
@@ -90,46 +173,69 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:25
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:33
 #: ./client/app/components/dialog/dialog.delete.tpl.html:10
 msgid "Delete"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:20
+#: ./client/app/shared/services/label/label.service.js:37
+msgid "Delete group?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:28
 msgid "Delete image?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:13
+#: ./client/app/shared/services/label/label.service.js:18
 msgid "Delete item?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:17
+#: ./client/app/shared/services/label/label.service.js:25
+msgid "Delete menu?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:22
 msgid "Delete modifier?"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:10
+#: ./client/app/shared/services/label/label.service.js:34
+msgid "Delete outlet location?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:40
+msgid "Delete outlet?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:15
 msgid "Delete section?"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:13
+#: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:11
 msgid "Description"
 msgstr ""
 
-#: ./client/app/components/imageUploader/imageUploader.tpl.html:17
+#: ./client/app/components/imageUploader/imageUploader.tpl.html:16
 msgid "Dimensions"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualDrawer/items/contextualDrawer.items.tpl.html:16
-#: ./client/app/components/contextual/contextualDrawer/modifiers/contextualDrawer.modifiers.tpl.html:18
+#: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:19
+msgid "Directions"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/items/contextualDrawer.items.tpl.html:18
+#: ./client/app/components/contextual/contextualDrawer/modifiers/contextualDrawer.modifiers.tpl.html:17
+#: ./client/app/components/contextual/contextualDrawer/outlets/contextualDrawer.outlets.tpl.html:17
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.tpl.html:11
 #: ./client/app/components/contextual/contextualMenu/contextualMenu.tpl.html:8
 msgid "Done"
 msgstr ""
 
-#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:19
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:27
 msgid "Duplicate"
 msgstr ""
 
-#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:31
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:39
 msgid "Edit"
 msgstr ""
 
@@ -137,15 +243,74 @@ msgstr ""
 msgid "Emails"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:28
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:29
+msgid "End number"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:34
+msgid "End number need to be bigger than start number"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:32
+msgid "Error adding outlet to outlet location"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletList/outletList.controller.js:86
+msgid "Error deleting outlet"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:80
+msgid "Error deleting outlet location"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletList/outletList.controller.js:22
+msgid "Error moving outlet"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:17
+msgid "Error moving outlet location"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletList/outlet/outlet.controller.js:50
+#: ./client/app/features/main/dashboard/outlets/components/outletList/outlet/outlet.controller.js:72
+msgid "Error saving outlet"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:67
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:88
+msgid "Error saving outlet location"
+msgstr ""
+
 #: ./client/app/components/navbar/navbar.controller.js:51
 msgid "Events"
 msgstr ""
 
-#: ./client/app/components/imageUploader/imageUploader.tpl.html:19
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:133
+msgid "Failed duplicating outlet location"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationGroupList/outletLocationGroup/outletLocationGroup.controller.js:73
+msgid "Failed to delete the group"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:192
+msgid "Failed to move outlet location"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:164
+msgid "Failed to remove outlet"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationGroupList/outletLocationGroup/outletLocationGroup.controller.js:41
+msgid "Failed to update the group"
+msgstr ""
+
+#: ./client/app/components/imageUploader/imageUploader.tpl.html:18
 msgid "File type"
 msgstr ""
 
-#: ./client/app/components/navbar/navbar.controller.js:64
+#: ./client/app/components/navbar/navbar.controller.js:72
 msgid "Gift vouchers"
 msgstr ""
 
@@ -153,20 +318,43 @@ msgstr ""
 msgid "Go to Signin"
 msgstr ""
 
-#: ./client/app/components/navbar/navbar.controller.js:59
+#: ./client/app/components/navbar/navbar.controller.js:67
 msgid "Group Bookings"
 msgstr ""
 
-#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:7
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocationGroup.tpl.html:3
+msgid "Group label"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.controller.js:176
+msgid "Header"
+msgstr ""
+
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:15
 msgid "Hide from menu"
 msgstr ""
 
-#: ./client/app/components/imageUploader/imageUploader.tpl.html:9
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/BACKGROUND.tpl.html:3
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/HEADER.tpl.html:4
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/LOGO.tpl.html:3
+msgid "Image"
+msgstr ""
+
+#: ./client/app/components/imageUploader/imageUploader.tpl.html:8
 msgid "Image not found"
 msgstr ""
 
-#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:10
+#: ./client/app/features/main/dashboard/menus/components/menuItemList/menuItem/menuItemNew.tpl.html:13
 msgid "Import existing item"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:12
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:13
+msgid "Individially numbered locations"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:10
+msgid "Invalid username and/or password"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:6
@@ -181,20 +369,75 @@ msgstr ""
 msgid "Just this menu"
 msgstr ""
 
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationTree/outletLocationTree.directive.js:30
+#: ./client/app/features/main/dashboard/outlets/outletLocations/outletLocations.controller.js:53
+msgid "Location label"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:3
+msgid "Location name"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.controller.js:183
+msgid "Logo"
+msgstr ""
+
 #: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:4
 msgid "Mandatory"
 msgstr ""
 
-#: ./client/app/components/imageUploader/imageUploader.tpl.html:18
+#: ./client/app/components/imageUploader/imageUploader.tpl.html:17
 msgid "Max file size"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:13
+#: ./client/app/components/contextual/contextualMenu/templates/menu.tpl.html:9
+#: ./client/app/components/contextual/contextualMenu/templates/menuSection.tpl.html:7
+#: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:9
+#: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:7
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:8
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocationGroup.tpl.html:8
+msgid "Max length is 100."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:15
+#: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:23
+msgid "Max length is 255."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:23
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:33
+msgid "Max value is 1000."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:12
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:44
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:15
+msgid "Max value is 99999999.99."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:12
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:22
+msgid "Max value is {{ modifierSelectionCtrl.maxIntegerValue }}."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:18
 msgid "Maximum Selection"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:23
+msgid "Maximum selection needs to be equal or bigger than minimum selection"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:27
+msgid "Menu is required."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/menu.tpl.html:4
+msgid "Menu name"
+msgstr ""
+
 #: ./client/app/components/navbar/navbar.controller.js:41
-#: ./client/app/components/navbar/navbar.controller.js:61
+#: ./client/app/components/navbar/navbar.controller.js:69
 msgid "Menus"
 msgstr ""
 
@@ -202,8 +445,12 @@ msgstr ""
 msgid "Messages"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:7
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:8
 msgid "Minimum Selection"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/modifierSelection/modifierSelection.tpl.html:13
+msgid "Minimum selection needs to be equal or smaller than maximum selection"
 msgstr ""
 
 #: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:4
@@ -214,11 +461,16 @@ msgstr ""
 msgid "Modifiers"
 msgstr ""
 
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:9
+#: ./client/app/components/contextual/contextualDrawer/outletLocations/contextualDrawer.outletLocations.tpl.html:16
+msgid "Move"
+msgstr ""
+
 #: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:4
 msgid "Multiple Sizes"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:23
+#: ./client/app/shared/services/label/label.service.js:31
 msgid "Multiple instances found"
 msgstr ""
 
@@ -227,24 +479,41 @@ msgstr ""
 msgid "My Account"
 msgstr ""
 
-#: ./client/app/components/toolbar/userSelect/userSelect.tpl.html:11
-msgid "My Profile"
+#: ./client/app/components/navbar/navbar.controller.js:54
+msgid "My Outlets"
 msgstr ""
 
 #: ./client/app/components/navbar/navbar.controller.js:42
+#: ./client/app/features/main/dashboard/menus/menu/menu.tpl.html:3
 msgid "My menus"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:32
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:33
 msgid "Name"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.controller.js:172
+msgid "Navigation"
+msgstr ""
+
+#: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:12
+msgid "New email address"
+msgstr ""
+
+#: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:22
+msgid "New password"
 msgstr ""
 
 #: ./client/app/components/cardItemList/cardItemList.tpl.html:12
 msgid "No results..."
 msgstr ""
 
-#: ./client/app/components/navbar/navbar.controller.js:54
+#: ./client/app/components/navbar/navbar.controller.js:62
 msgid "Notifications"
+msgstr ""
+
+#: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:12
+msgid "Old password"
 msgstr ""
 
 #: ./client/app/components/toolbar/venueSelect/venueSelect.tpl.html:3
@@ -267,34 +536,104 @@ msgstr ""
 msgid "Optional"
 msgstr ""
 
-#: ./client/app/components/navbar/navbar.controller.js:52
+#: ./client/app/components/navbar/navbar.controller.js:55
+msgid "Outlet Locations"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/outletLocations/outletLocations.controller.js:46
+msgid "Outlet configuration"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletList/outlet/outlet.controller.js:45
+msgid "Outlet created"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletList/outletList.controller.js:75
+msgid "Outlet deleted"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:64
+msgid "Outlet location created"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:76
+msgid "Outlet location deleted"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:128
+msgid "Outlet location duplicated"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:188
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocationList.controller.js:15
+msgid "Outlet location moved"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletLocationList/outletLocation/outletLocation.controller.js:84
+msgid "Outlet location updated"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:30
+msgid "Outlet menu:"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletList/outletList.controller.js:20
+msgid "Outlet moved"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:3
+msgid "Outlet name"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/components/outletList/outlet/outlet.controller.js:68
+msgid "Outlet updated"
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:53
 msgid "Outlets"
 msgstr ""
 
-#: ./client/app/features/auth/signin/signin.tpl.html:11
+#: ./client/app/components/contextual/contextualDrawer/style/contextualDrawer.style.controller.js:198
+msgid "Page Background"
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.tpl.html:12
+#: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:22
 msgid "Password"
 msgstr ""
 
-#: ./client/app/components/navbar/navbar.controller.js:56
+#: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:55
+msgid "Password doesn't match."
+msgstr ""
+
+#: ./client/app/components/navbar/navbar.controller.js:64
 msgid "Payment Methods"
 msgstr ""
 
-#: ./client/app/components/navbar/navbar.controller.js:55
+#: ./client/app/components/navbar/navbar.controller.js:63
 msgid "Payments"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:39
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:40
 #: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:8
 #: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:11
 msgid "Price"
 msgstr ""
 
-#: ./client/app/components/navbar/navbar.controller.js:53
+#: ./client/app/components/navbar/navbar.controller.js:61
 msgid "Promotions"
 msgstr ""
 
-#: ./client/app/components/imageUploader/croppie/croppieDialog.tpl.html:12
+#: ./client/app/features/main/dashboard/styling/weborders/weborders.tpl.html:7
+msgid "Retry"
+msgstr ""
+
+#: ./client/app/components/imageUploader/croppie/croppieDialog.tpl.html:13
 msgid "Save"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:13
+msgid "Saved weborders style"
 msgstr ""
 
 #: ./client/app/components/cardItemList/cardItemList.tpl.html:5
@@ -305,24 +644,32 @@ msgstr ""
 msgid "Section name"
 msgstr ""
 
-#: ./client/app/components/navbar/navbar.controller.js:60
+#: ./client/app/components/navbar/navbar.controller.js:68
 msgid "Settings"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/menus/itemList/itemList.tpl.html:10
-#: ./client/app/features/main/dashboard/menus/menu/menu.tpl.html:11
+#: ./client/app/features/main/dashboard/menus/menu/menu.tpl.html:12
 msgid "Show modifiers"
 msgstr ""
 
-#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:13
+#: ./client/app/components/cardItem/cardItemActions/cardItemActions.tpl.html:21
 msgid "Show on menu"
 msgstr ""
 
-#: ./client/app/features/auth/signin/signin.tpl.html:17
+#: ./client/app/features/main/dashboard/styling/weborders/weborders.tpl.html:4
+msgid "Show weborders"
+msgstr ""
+
+#: ./client/app/features/auth/signin/signin.tpl.html:18
 msgid "Sign In"
 msgstr ""
 
-#: ./client/app/components/toolbar/userSelect/userSelect.tpl.html:16
+#: ./client/app/features/auth/signin/signin.tpl.html:3
+msgid "Sign in"
+msgstr ""
+
+#: ./client/app/components/toolbar/userSelect/userSelect.tpl.html:9
 msgid "Signout"
 msgstr ""
 
@@ -330,37 +677,81 @@ msgstr ""
 msgid "Single Size"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:18
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:19
+msgid "Start number"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:24
+msgid "Start number need to be smaller than end number"
+msgstr ""
+
 #: ./client/app/components/navbar/navbar.controller.js:46
 #: ./client/app/components/navbar/navbar.controller.js:47
 msgid "Styling"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:11
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:22
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:35
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:42
-#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:14
-#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:7
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/LOGO.tpl.html:2
+msgid "Text"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/styling/weborders/weborders.tpl.html:7
+msgid "There was a problem loading this page. <span class=\"fake-link\" ng-click=\"vm.reload()\" translate=\"\">Retry</span>"
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/templates/menu.tpl.html:8
 #: ./client/app/components/contextual/contextualMenu/templates/menuItem.tpl.html:9
 #: ./client/app/components/contextual/contextualMenu/templates/menuSection.tpl.html:6
-#: ./client/app/features/auth/signin/signin.tpl.html:14
-#: ./client/app/features/auth/signin/signin.tpl.html:7
+#: ./client/app/components/contextual/contextualMenu/templates/modifier.tpl.html:8
+#: ./client/app/components/contextual/contextualMenu/templates/outlet.tpl.html:6
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocationGroup.tpl.html:7
+msgid "This field is required."
+msgstr ""
+
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:11
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:23
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:36
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:43
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:14
+#: ./client/app/components/contextual/contextualMenu/components/modifierItems/modifierItems.tpl.html:7
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:22
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:32
+#: ./client/app/components/contextual/contextualMenu/templates/outletLocation.tpl.html:7
+#: ./client/app/features/auth/signin/signin.tpl.html:15
+#: ./client/app/features/auth/signin/signin.tpl.html:8
+#: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:16
+#: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:26
+#: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:16
+#: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:35
+#: ./client/app/features/main/account/components/userPassword/userPassword.tpl.html:54
 msgid "This is required."
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:18
+#: ./client/app/features/error/error.service.js:32
+msgid "This outlet location already have an outlet"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:26
+msgid "This will delete all section and item configurations for this menu. Are you sure?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:38
+msgid "This will delete the configuration of all sub-groups. Are you sure?"
+msgstr ""
+
+#: ./client/app/shared/services/label/label.service.js:23
 msgid "This will delete the modifier from all menus."
 msgstr ""
 
-#: ./client/app/components/imageUploader/imageUploader.tpl.html:15
+#: ./client/app/components/imageUploader/imageUploader.tpl.html:14
 msgid "Upload specs"
 msgstr ""
 
-#: ./client/app/features/auth/signin/signin.tpl.html:4
+#: ./client/app/features/auth/signin/signin.tpl.html:5
 msgid "Username"
 msgstr ""
 
-#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:19
+#: ./client/app/components/contextual/contextualMenu/components/menuItemSize/menuItemSize.tpl.html:20
 msgid "Variant Name"
 msgstr ""
 
@@ -368,22 +759,66 @@ msgstr ""
 msgid "Venue Settings"
 msgstr ""
 
+#: ./client/app/components/contextual/contextualDrawer/style/row/templates/LOGO.tpl.html:15
+msgid "Venue name"
+msgstr ""
+
 #: ./client/app/features/error/error.service.js:17
 msgid "Venue not found"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/styling/weborders/weborders.tpl.html:3
+msgid "View:"
 msgstr ""
 
 #: ./client/app/components/navbar/navbar.controller.js:48
 msgid "Web Orders"
 msgstr ""
 
+#: ./client/app/features/main/account/components/userEmail/userEmail.tpl.html:17
+msgid "Write a value email address."
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:30
+msgid "You can not add a sub group because this outlet location already have one"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:29
+msgid "You can not add a sub group because this outlet location have an outlet"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:31
+msgid "You can not add a sub group because this outlet location is for seat"
+msgstr ""
+
 #: ./client/app/features/error/error.service.js:19
 msgid "You do not have the necessary permissions to view this dashboard, please contact your administrator"
 msgstr ""
 
-#: ./client/app/shared/services/label/label.service.js:24
+#: ./client/app/shared/services/label/label.service.js:32
 msgid "You have edited an item that is in more than one menu. Where would you like to apply the changes?"
+msgstr ""
+
+#: ./client/app/features/error/error.service.js:33
+msgid "You only can add an outlet for the last child"
+msgstr ""
+
+#: ./client/app/features/emailSuccess/emailSuccess.tpl.html:6
+msgid "Your email address was changed successfully"
+msgstr ""
+
+#: ./client/app/features/main/account/components/userPassword/userPassword.controller.js:69
+msgid "Your password has been changed"
+msgstr ""
+
+#: ./client/app/features/emailSuccess/emailSuccess.tpl.html:8
+msgid "click here"
 msgstr ""
 
 #: ./client/app/features/main/dashboard/venueSettings/venueSettings.tpl.html:3
 msgid "save"
+msgstr ""
+
+#: ./client/app/features/main/dashboard/outlets/outletLocations/outletLocations.tpl.html:4
+msgid "{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}"
 msgstr ""
