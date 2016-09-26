@@ -69,18 +69,6 @@ export default class ItemService {
     return this.$q.resolve(item);
   }
 
-  _saveItemTags(item){
-    if (item.tags && item.tags.length){
-      this.DEBUG && console.log("Saving new item tags", item.tags)
-      return item.updateTags()
-        .then((tags)=>{
-          return item;
-        })
-    }
-    this.DEBUG && console.log("New item does not have tags")
-    return this.$q.resolve(item);
-  }
-
   _saveItemSize(item){
     //if we have sizes save or update
     if (item.$size){
@@ -167,7 +155,9 @@ export default class ItemService {
 
   updateItem(item, skipExtensions = false){
     this.DEBUG && console.log("updating item", item, skipExtensions);
-    return item.update()
+
+    return (skipExtensions ? $q.when() : this._saveItemImages(item))
+      .then(item.update.bind(item))
       .then((updatedItem)=>{
         this.DEBUG && console.log("updated item", updatedItem);
         return updatedItem;
@@ -176,9 +166,7 @@ export default class ItemService {
         if(skipExtensions){
           return item;
         }
-       return this._saveItemTags(item)
-        .then(this._saveItemImages.bind(this))
-        .then(this._saveItemSize.bind(this))
+        return this._saveItemSize(item);
       })
       .then((item)=>{
         //update the list of items with this new record
@@ -189,7 +177,7 @@ export default class ItemService {
           }
         }
         return item;
-      })
+      });
   }
 
   createItem(item, sectionId){
@@ -199,7 +187,6 @@ export default class ItemService {
         this.DEBUG && console.log("created item", newItem);
         return newItem;
       })
-      .then(this._saveItemTags.bind(this))
       .then(this._saveItemImages.bind(this))
       .then(this._saveItemSize.bind(this))
       .then((newItem)=>{
