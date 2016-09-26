@@ -63,9 +63,9 @@ echo $overrides;
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/normalize.css" />
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/foundation.css"/>
-<link href="<? echo $_SESSION['path']?>/css/header-footer.css" rel="stylesheet"><link href="/styling.css" rel="stylesheet"></head>
-<link href="/code/v2/vendor.css" rel="stylesheet"></head>
-<link href="/code/v2/styling.css" rel="stylesheet"></head>
+<link href="<? echo $_SESSION['path']?>/css/header-footer.css" rel="stylesheet">
+<link href="/code/v2/vendor.css" rel="stylesheet">
+<link href="/code/v2/styling.css" rel="stylesheet"><link href="/styling.css" rel="stylesheet"></head>
 <body>
   <div id="wrap">
     <div id="webappv2" class='webapp'>
@@ -196,5 +196,5 @@ echo $overrides;
   }
 </style>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
-<script type="text/javascript" src="/angular.bundle.2a7ca4570ec1fb1d4c61.js"></script><script type="text/javascript" src="/styling.bundle.d0c98b0d7e98478c984d.js"></script><script type="text/javascript" src="/vendor.bundle.2b113e169634b01e2a2e.js"></script><script type="text/javascript" src="/app.bundle.f25710a0696b578fcb27.js"></script></body>
+<script type="text/javascript" src="/angular.bundle.2a7ca4570ec1fb1d4c61.js"></script><script type="text/javascript" src="/styling.bundle.d0c98b0d7e98478c984d.js"></script><script type="text/javascript" src="/vendor.bundle.950f0aa97b13a3218b73.js"></script><script type="text/javascript" src="/app.bundle.f25710a0696b578fcb27.js"></script></body>
 </html>
