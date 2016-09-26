@@ -34,8 +34,11 @@ export default class VenueService {
         resolve(data);        
       }
 
-      Preoday.Venue.fetch({adminId:user.id,roles:"admin,owner"})
-      .then((venues)=>{
+      Preoday.Venue.fetch({
+        adminId: user.id,
+        roles:"admin,owner",
+        expand: 'features'
+      }).then((venues)=>{
 
         if (venues && venues.length){
           this.venues = venues;

@@ -21,7 +21,7 @@ export default class FeatureService {
   getLocalFeature (featureId) {
 
     let index = this.localFeatures.map(function(item){
-        return +item.featureId;
+        return +item.id;
     }).indexOf(+featureId);
 
     return index === -1 ? false : this.localFeatures[index];
