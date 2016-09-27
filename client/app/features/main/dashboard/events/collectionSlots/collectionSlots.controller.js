@@ -36,6 +36,6 @@ export default class collectionSlotsController {
       this.loaded = true;
 
       this.hideSpinner();
-    })
+    });
   }
 }

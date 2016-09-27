@@ -1,11 +1,41 @@
 
-export default class eventListController {
+export default class eventListViewController {
   static get UID(){
-    return "eventListController"
+    return "eventListViewController"
   }
   
-  /* @ngInject */
-  constructor() {
+  hideSpinner() {
 
+    this.Spinner.hide('events');
+  }
+
+  /* @ngInject */
+  constructor($stateParams, Spinner, EventService) {
+  	'ngInject';
+
+    this.Spinner = Spinner;
+  	this.loaded = false;
+
+    this.Spinner.show('events');
+
+    EventService.getEvents($stateParams.venueId)
+    	.then((data)=>{
+
+	      console.log('collection events data here', data);
+
+	      this.data = data;   
+	      this.loaded = true;
+
+	      this.hideSpinner();
+	    }, () => {
+
+	      this.data = {
+	        events: []
+	      };
+	      console.log('error events service');
+	      this.loaded = true;
+
+	      this.hideSpinner();
+	    });
   }
 }
