@@ -105,6 +105,7 @@ export default class collectionSlotsItemController {
           return this.collectionSlot.remove();
       })
       .then(()=>{
+        console.log('resr he');
           this.cardItemList.onItemDeleted(this.collectionSlot);
           if (this.onItemDeleted){
             this.onItemDeleted({item:this.collectionSlot});
@@ -113,9 +114,10 @@ export default class collectionSlotsItemController {
           this.Spinner.hide("collection-slot-delete");
       })
       .catch((err)=>{
+        console.log('error on delete,', err);
         this.Spinner.hide("collection-slot-delete")
         
-        if (err && err instanceof Object && err.message.indexOf('schedule') !== -1) {
+        if (err && err instanceof Object && err.message && err.message.indexOf('schedule') !== -1) {
           this.showCannotDeleteSlotDialog();
         } else {
           this.Snack.showError('Collection slot not deleted');

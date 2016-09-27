@@ -7,6 +7,7 @@ describe('CollectionSlots item Controller', function () {
     let
       CollectionSlotsItemCtrl,
       CollectionSlotsListCtrl,
+      CardItemListCtrl,
       $rootScope,
       $scope,
       $controller,
@@ -14,7 +15,9 @@ describe('CollectionSlots item Controller', function () {
       CollectionSlotsService,
       VenueService,
       Spinner,
+      Snack,
       $timeout,
+      $q,
       server,
       currentVenue,
       collectionSlots,
@@ -31,7 +34,9 @@ describe('CollectionSlots item Controller', function () {
       CollectionSlotsService = $injector.get('CollectionSlotsService');
       VenueService = $injector.get('VenueService');
       Spinner = $injector.get('Spinner');
+      Snack = $injector.get('Snack');
       $timeout = $injector.get('$timeout');
+      $q = $injector.get('$q');
       $scope = $rootScope.$new();
 
       server = sinon.fakeServer.create();
@@ -53,6 +58,7 @@ describe('CollectionSlots item Controller', function () {
 
       server.restore();
       collectionSlotMock = null;
+      CardItemListCtrl = null;
     });
 
     function _mockCollectionSlot (data) {
@@ -62,7 +68,8 @@ describe('CollectionSlots item Controller', function () {
       }
 
       collectionSlotMock = new Preoday.PickupSlot(angular.extend({
-        id: 1
+        id: 1,
+        name: "Test"
       }, data));
     }
 
@@ -77,6 +84,13 @@ describe('CollectionSlots item Controller', function () {
       }, true);
     }
 
+    function _startCardItemListController() {
+
+      CardItemListCtrl = $controller('cardItemListController', {
+        '$scope': $scope,
+      }, true);
+    }
+
     function _startCollectionSlotsListController() {
 
       CollectionSlotsListCtrl = $controller('collectionSlotsListController', {
@@ -85,6 +99,8 @@ describe('CollectionSlots item Controller', function () {
     }
 
     it("Should initialize the controller", function() {
+
+      spyOn(contextual, 'showMenu').and.callThrough();
 
       _mockCollectionSlot();
       _startController();
@@ -103,6 +119,164 @@ describe('CollectionSlots item Controller', function () {
       expect(CollectionSlotsItemCtrl.buildEntityToCollectionSlot).toEqual(jasmine.any(Function));
       expect(CollectionSlotsItemCtrl.isValidEntity).toEqual(jasmine.any(Function));
       expect(CollectionSlotsItemCtrl.restoreOriginalValues).toEqual(jasmine.any(Function));
+      expect(contextual.showMenu).not.toHaveBeenCalled();
+    });
+
+    it("Should open drawer because doenst have an id", function() {
+
+      spyOn(contextual, 'showMenu').and.callThrough();
+
+      _mockCollectionSlot();
+      _startController();
+
+      collectionSlotMock.id = null;
+
+      CollectionSlotsItemCtrl.instance.collectionSlot = collectionSlotMock;
+      CollectionSlotsItemCtrl = CollectionSlotsItemCtrl();
+
+      expect(contextual.showMenu).toHaveBeenCalledWith(CollectionSlotsItemCtrl.type, CollectionSlotsItemCtrl.collectionSlot, jasmine.any(Function), jasmine.any(Function));
+    });
+
+    it("Should delete a collection slot", function(done) {
+
+      _mockCollectionSlot();
+      _startCardItemListController();
+      _startController();
+
+      CollectionSlotsItemCtrl.instance.collectionSlot = collectionSlotMock;
+      CollectionSlotsItemCtrl.instance.cardItemList = CardItemListCtrl();
+      CollectionSlotsItemCtrl = CollectionSlotsItemCtrl();
+
+      spyOn(CollectionSlotsItemCtrl.Spinner, 'show').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.Spinner, 'hide').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.Snack, 'show').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.Snack, 'showError').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.cardItemList, 'onItemDeleted').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl, 'showCannotDeleteSlotDialog').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.DialogService, 'delete').and.callFake(function () {
+        
+        return $q.resolve();
+      });
+
+      server.respondWith('DELETE', '/api/slots/' + collectionSlotMock.id, [200, {"Content-Type": "application/json"}, JSON.stringify({})]);
+
+      CollectionSlotsItemCtrl.onDelete();
+      $rootScope.$digest();
+
+      setTimeout(function () {
+
+        server.respond();
+
+        setTimeout(function () {
+          
+          $rootScope.$digest();
+
+          expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.Snack.show).toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.showCannotDeleteSlotDialog).not.toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.Snack.showError).not.toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.cardItemList.onItemDeleted).toHaveBeenCalledWith(CollectionSlotsItemCtrl.collectionSlot);
+
+          done();          
+        });
+      });
+    });
+
+    it("Should show conflict error on delete collection slot", function(done) {
+
+      _mockCollectionSlot();
+      _startCardItemListController();
+      _startController();
+
+      CollectionSlotsItemCtrl.instance.collectionSlot = collectionSlotMock;
+      CollectionSlotsItemCtrl.instance.cardItemList = CardItemListCtrl();
+      CollectionSlotsItemCtrl = CollectionSlotsItemCtrl();
+
+      spyOn(CollectionSlotsItemCtrl.Spinner, 'show').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.Spinner, 'hide').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.Snack, 'show').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.Snack, 'showError').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.cardItemList, 'onItemDeleted').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl, 'showCannotDeleteSlotDialog').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.DialogService, 'delete').and.callFake(function () {
+        
+        return $q.resolve();
+      });
+
+      server.respondWith('DELETE', '/api/slots/' + collectionSlotMock.id, [400, {"Content-Type": "application/json"}, JSON.stringify({
+        message: 'This pickup slot is used for a schedule'
+      })]);
+
+      CollectionSlotsItemCtrl.onDelete();
+      $rootScope.$digest();
+
+      setTimeout(function () {
+
+        server.respond();
+
+        setTimeout(function () {
+          
+          $rootScope.$digest();
+
+          expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.Snack.show).not.toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.showCannotDeleteSlotDialog).toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.Snack.showError).not.toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.cardItemList.onItemDeleted).not.toHaveBeenCalled();
+
+          done();          
+        });
+      });
+    });
+
+    it("Should show default error message on delete collection slot", function(done) {
+
+      _mockCollectionSlot();
+      _startCardItemListController();
+      _startController();
+
+      CollectionSlotsItemCtrl.instance.collectionSlot = collectionSlotMock;
+      CollectionSlotsItemCtrl.instance.cardItemList = CardItemListCtrl();
+      CollectionSlotsItemCtrl = CollectionSlotsItemCtrl();
+
+      spyOn(CollectionSlotsItemCtrl.Spinner, 'show').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.Spinner, 'hide').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.Snack, 'show').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.Snack, 'showError').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.cardItemList, 'onItemDeleted').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl, 'showCannotDeleteSlotDialog').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl.DialogService, 'delete').and.callFake(function () {
+        
+        return $q.resolve();
+      });
+
+      server.respondWith('DELETE', '/api/slots/' + collectionSlotMock.id, [400, {"Content-Type": "application/json"}, JSON.stringify({
+        message: ''
+      })]);
+
+      CollectionSlotsItemCtrl.onDelete();
+      $rootScope.$digest();
+
+      setTimeout(function () {
+
+        server.respond();
+
+        setTimeout(function () {
+          
+          $rootScope.$digest();
+
+          expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.Snack.show).not.toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.showCannotDeleteSlotDialog).not.toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.Snack.showError).toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.cardItemList.onItemDeleted).not.toHaveBeenCalled();
+
+          done();          
+        });
+      });
     });
 
 });
