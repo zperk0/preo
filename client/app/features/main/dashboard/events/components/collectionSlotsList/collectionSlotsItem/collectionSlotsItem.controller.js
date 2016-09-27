@@ -29,6 +29,8 @@ export default class collectionSlotsItemController {
   buildEntityToCollectionSlot (entity) {
 
     this.collectionSlot = entity;
+    this.collectionSlot.start = entity.$start * entity.$startFactor;
+    this.collectionSlot.end = entity.$end * entity.$endFactor;
   }
 
   contextualMenuSuccess(entity){

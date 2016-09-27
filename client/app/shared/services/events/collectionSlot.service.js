@@ -7,13 +7,11 @@ export default class CollectionSlotsService {
 
   getCollectionSlots(data) {
 
-    if (this.data.outlets){
+    if (this.data.collectionSlots){
       return this.$q.resolve(this.data);
     } else if ( this.p){
       return this.p;
     }
-
-    data.expand = 'menus';
 
     this.p = this.$q((resolve, reject)=>{
 
@@ -47,9 +45,6 @@ export default class CollectionSlotsService {
 
   save (data) {
 
-    data.start = data.$start * data.$startFactor;
-    data.end = data.$end * data.$endFactor;
-
     return Preoday.PickupSlot.create(data);
   }
 
@@ -57,7 +52,7 @@ export default class CollectionSlotsService {
     "ngInject";
 
     this.$stateParams = $stateParams;
-    this.$q =$q;
-    this.data={};
+    this.$q = $q;
+    this.data = {};
   }
 }

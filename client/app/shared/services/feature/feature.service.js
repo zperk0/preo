@@ -13,6 +13,11 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.OUTLET);
   }
 
+  hasCustomPickupSlotsFeature () {
+
+    return this.getLocalFeature(Preoday.constants.Feature.CUSTOM_PICKUP_SLOTS);
+  }
+
   hasNestedModifierFeature () {
 
     return this.getLocalFeature(Preoday.constants.Feature.NESTED_MODIFIER);

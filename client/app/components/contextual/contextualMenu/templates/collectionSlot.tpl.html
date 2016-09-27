@@ -1,5 +1,5 @@
 <div class="contextual-menu-collection-slot">
-  <md-tabs md-dynamic-height md-stretch-tabs="always">
+  <md-tabs md-dynamic-height md-stretch-tabs="always" ng-if="contextualMenuCtrl.FeatureService.hasCustomPickupSlotsFeature()">
     <md-tab label="Basic">
       <md-card-content>
         <collection-slot-basic ng-model="contextualMenuCtrl.entity"></collection-slot-basic>
@@ -11,4 +11,8 @@
       </md-card-content>
     </md-tab>
   </md-tabs>
+  
+  <md-card-content ng-if="!contextualMenuCtrl.FeatureService.hasCustomPickupSlotsFeature()">
+    <collection-slot-basic ng-model="contextualMenuCtrl.entity" ></collection-slot-basic>
+  </md-card-content>
 </div>

@@ -105,6 +105,7 @@ export default class VenueService {
     return this.$q.all([
         FeatureService.hasFeatureForInit(Preoday.constants.Feature.OUTLET),
         FeatureService.hasFeatureForInit(Preoday.constants.Feature.NESTED_MODIFIER),
+        FeatureService.hasFeatureForInit(Preoday.constants.Feature.CUSTOM_PICKUP_SLOTS),
       ]);
   }
 

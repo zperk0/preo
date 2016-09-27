@@ -28,6 +28,10 @@ export default class collectionSlotsController {
 
       this.hideSpinner();
     }, () => {
+
+      this.data = {
+        collectionSlots: []
+      };
       console.log('error collection slot service');
       this.loaded = true;
 
