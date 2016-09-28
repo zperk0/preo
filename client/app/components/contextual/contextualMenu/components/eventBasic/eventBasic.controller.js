@@ -28,12 +28,12 @@ export default class eventBasicController {
 
     var formattedChild = {
           id: outletLocation.id,
-          name: this.UtilsService.str_repeat("--", indent) + ' ' + outletLocation.name
+          name: this.UtilsService.str_repeat("--", indent) + ' ' + this.getOutletLocationName(outletLocation)
         };
 
     output.push(formattedChild);
 
-    if (outletLocation.hasChildren()) {
+    if (!outletLocation.isSeat() && outletLocation.hasChildren()) {
     	var children = outletLocation.getChildren();
 	    children.forEach((elem, index) => {
 
@@ -41,6 +41,20 @@ export default class eventBasicController {
 	    }); 
     } 	
   }
+
+  getOutletLocationName (outletLocation) {
+
+    let fullName = [outletLocation.name];
+
+    if (outletLocation.isSeat()) {
+      fullName.push(' : ');
+      fullName.push(outletLocation.seatStart);
+      fullName.push('-');
+      fullName.push(outletLocation.seatEnd);
+    }
+
+    return fullName.join('');
+  }  
 
   /* @ngInject */
   constructor($scope, OutletLocationService, UtilsService) {

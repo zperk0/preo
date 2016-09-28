@@ -12,6 +12,25 @@ export default function routes($stateProvider) {
     url: "/events",
     template: require("./events.tpl.html"),
     controller: controller.UID,
-    controllerAs: "eventsViewCtrl"
+    controllerAs: "eventsViewCtrl",
+    resolve: {
+
+    	// authenticated -> this is from main.routes.js
+    	isEvent: function ($q, $state, $stateParams, $timeout, authenticated, VenueService) {
+
+    		if (VenueService.hasVenueSet() && VenueService.currentVenue.isEvent()) {
+
+    			return $q.when();
+    		} else {
+
+    			$timeout(() => {
+
+    				$state.go('main.dashboard');
+    			});
+
+    			return $q.reject();
+    		}
+    	}
+    }    
   });
 }
