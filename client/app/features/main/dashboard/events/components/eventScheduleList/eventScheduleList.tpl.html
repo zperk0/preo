@@ -1,0 +1,22 @@
+<div class="event-schedule-list">
+  <div class='sv-root-holder'
+      sv-root="eventSchedule"
+      sv-on-sort="eventScheduleListCtrl.onScheduleMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+
+    <card-item-list
+        collection="eventScheduleListCtrl.schedules"
+        has-new="true"
+        tooltip="{{ 'Add new schedule' | translate }}"
+        on-click-new="eventScheduleListCtrl.showCreateSchedule()"
+        >
+    <div class='sort-holder' sv-part="eventScheduleListCtrl.schedules">
+      <event-schedule
+        sv-element="schedule"
+        ng-repeat="schedule in eventScheduleListCtrl.schedules"
+        schedule="schedule">
+      </event-schedule>
+      <div sv-placeholder></div>
+    </div>
+    </card-item-list>
+  </div>
+</div>

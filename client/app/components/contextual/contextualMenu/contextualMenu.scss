@@ -66,6 +66,83 @@
     }
   }
 
+  .contextual-menu-event, .contextual-menu-collection-slot, .contextual-menu-event-schedule {
+    .md-errors-spacer {
+      display: none;
+    }    
+
+    md-card-content {
+      padding: 25px;
+    }    
+  }
+
+  .contextual-menu-collection-slot {
+    .md-block-lead-time {
+      input {
+        width: 100px;
+        margin-right: 12px;
+      }
+    }
+
+    .lead-time-label {
+      margin-top: 9px;
+      display: inline-block;
+    }
+
+    .content-slot-end-radio {
+      padding-left: 42px;
+
+      md-radio-group {
+        margin-top: 18px;  
+
+        md-radio-button {
+          margin-bottom: 18px;
+
+          &:last-child {
+            margin-bottom: 0px;
+          }            
+        }
+      }
+    }
+
+    .content-input-slot-end {
+      display: inline-block;
+      vertical-align: top;  
+      width: 50px;
+      margin-right: 10px;
+
+      input {
+        width: 100%;
+      }    
+
+      .md-input-messages-animation {
+        position: absolute;
+      }
+
+      &.has-error {
+        margin-bottom: 10px;
+      }
+    }  
+      
+    .md-input-container-slot {
+      margin-top: 5px;
+      margin-bottom: 10px !important;
+
+      span, input {
+        float: none;
+        display: inline-block;
+      }
+
+      .input-label {
+        width: auto;
+      }
+
+      .slot-end-label {
+        margin-right: 10px;
+      }
+    }       
+  }
+
   .md-input-container-seat-number {
     .input-label {
       width: 120px;
@@ -76,14 +153,14 @@
     }
   }
 
-  .contextual-menu-outlet-location {
+  .contextual-menu-outlet-location, .contextual-menu-collection-slot {
     .input-label {
       color:rgba(0,0,0,0.50);
       font-size:16px;
     }
   }
 
-  .contextual-menu-outlet {
+  .contextual-menu-outlet, .contextual-menu-collection-slot {
     md-input-container {
       // height: 35px;
       margin-bottom: 16px;

@@ -34,8 +34,11 @@ export default class VenueService {
         resolve(data);        
       }
 
-      Preoday.Venue.fetch({adminId:user.id,roles:"admin,owner"})
-      .then((venues)=>{
+      Preoday.Venue.fetch({
+        adminId: user.id,
+        roles: "admin,owner",
+        expand: 'features'
+      }).then((venues)=>{
 
         if (venues && venues.length){
           this.venues = venues;
@@ -102,6 +105,7 @@ export default class VenueService {
     return this.$q.all([
         FeatureService.hasFeatureForInit(Preoday.constants.Feature.OUTLET),
         FeatureService.hasFeatureForInit(Preoday.constants.Feature.NESTED_MODIFIER),
+        FeatureService.hasFeatureForInit(Preoday.constants.Feature.CUSTOM_PICKUP_SLOTS),
       ]);
   }
 

@@ -1,0 +1,24 @@
+<div class='collection-slot-item'
+      ng-class="{expanded: collectionSlotsItemCtrl.collectionSlot.$expanded}"
+      ng-attr-data-id="{{collectionSlotsItemCtrl.collectionSlot.id}}">
+
+  <card-item  has-actions="collectionSlotsItemCtrl.hasActions"
+              deleted="collectionSlotsItemCtrl.collectionSlot.$deleted"
+              selected="collectionSlotsItemCtrl.collectionSlot.$selected"
+              expanded="collectionSlotsItemCtrl.collectionSlot.$expanded"
+              >
+    <card-item-title ng-click="collectionSlotsItemCtrl.toggleExpanded($event)"
+                    has-visible="true"
+                    sv-root="collectionSlot">
+                      <div ng-if="!collectionSlotsItemCtrl.collectionSlot.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="collectionSlotsItemCtrl.newItems" sv-on-external-sort="collectionSlotsItemCtrl.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+                        <div sv-placeholder></div>
+                      </div>
+                      <span>{{collectionSlotsItemCtrl.collectionSlot.slotName}} </span>
+                    </card-item-title>
+
+    <card-item-actions is-visible="collectionSlotsItemCtrl.collectionSlot.visible"
+                       on-delete="collectionSlotsItemCtrl.onDelete()"
+                       on-edit="collectionSlotsItemCtrl.onEdit($event)"
+                        ></card-item-actions>
+  </card-item>
+</div>

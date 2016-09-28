@@ -1,6 +1,8 @@
 // Import Style
 
 require('jscore/preoday/preoday.min.js');
+require('mdPickers/dist/mdPickers.js');
+
 import uirouter from 'angular-ui-router';
 import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';
@@ -20,4 +22,5 @@ export default angular.module('webapp.vendors', [
     'ngMessages',
     'ngMaterial',
     'angular-sortable-view',
+    'mdPickers',
   ]);

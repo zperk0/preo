@@ -12,6 +12,6 @@ export default function routes($stateProvider) {
     url: "/events",
     template: require("./events.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm"
+    controllerAs: "eventsViewCtrl"
   });
 }

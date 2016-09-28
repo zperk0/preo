@@ -8,6 +8,8 @@ import Outlet from './outlet/outlet.service';
 import OutletLocation from './outlet/outlet-location.service';
 import Menu from './menu/menu.service';
 import Feature from './feature/feature.service';
+import CollectionSlot from './events/collectionSlot.service';
+import Event from './events/event.service';
 
 export default angular.module("Services" , ['ui.router'])
   .service(User.UID, User)
@@ -20,4 +22,6 @@ export default angular.module("Services" , ['ui.router'])
   .service(OutletLocation.UID, OutletLocation)
   .service(Menu.UID, Menu)
   .service(Feature.UID, Feature)
+  .service(CollectionSlot.UID, CollectionSlot)
+  .service(Event.UID, Event)
   .name;

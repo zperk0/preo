@@ -1,0 +1,34 @@
+<div class="collection-slot-advanced">
+    <md-input-container class="md-input-container-with-no-float md-input-container-slot">
+        <span class="input-label slot-end-label">{{ 'Slot starts' | translate }}</span>
+        <div class="content-input-slot-end" ng-class="{'has-error': (collectionSlotAdvancedCtrl.contextualForm.entityStart.$dirty || collectionSlotAdvancedCtrl.contextualForm.entityStart.$touched) &&collectionSlotAdvancedCtrl.hasObjectError(collectionSlotAdvancedCtrl.contextualForm.entityStart.$error)}">
+          <input type="text" autocomplete="off"  required name="entityStart" ng-model="collectionSlotAdvancedCtrl.collectionSlot.$start" valid-number max-integer-value />
+
+          <div ng-messages="collectionSlotAdvancedCtrl.contextualForm.entityStart.$error" ng-show="collectionSlotAdvancedCtrl.contextualForm.entityStart.$dirty">
+            <div ng-message="required" translate ng-class="{'activated': collectionSlotAdvancedCtrl.contextualForm.entityStart.$error.required}">This is required.</div>
+            <div ng-message="maxIntegerValue" translate ng-class="{'activated': collectionSlotAdvancedCtrl.contextualForm.entityStart.$error.maxIntegerValue}">Max value is 2147483646.</div>
+          </div>               
+        </div>
+        <span class="input-label lead-time-label">{{ 'mins' | translate }}</span>    
+        <div class="content-slot-end-radio">
+          <md-radio-group ng-model="collectionSlotAdvancedCtrl.collectionSlot.$startFactor">
+            <md-radio-button ng-value="-1" class="md-primary">{{'Before event start time' | translate}}</md-radio-button>
+            <md-radio-button ng-value="1" class="md-primary">{{'After event start time' | translate}}</md-radio-button>
+          </md-radio-group>
+        </div> 
+    </md-input-container>
+    <md-input-container class="md-block input-label md-block-split-time">
+      <md-checkbox aria-label="{{'Split slot into segments' | translate}}" ng-model="collectionSlotAdvancedCtrl.collectionSlot.$hasSteps">
+        {{'Split slot into segments' | translate}}
+      </md-checkbox>
+    </md-input-container>
+    <md-input-container class="md-block md-block-lead-time md-block-segment-time" ng-if="collectionSlotAdvancedCtrl.collectionSlot.$hasSteps">
+        <label translate>Segment time</label>
+        <input type="text" autocomplete="off"  required name="entityStep" ng-model="collectionSlotAdvancedCtrl.collectionSlot.step" valid-number max-integer-value /> <span class="input-label lead-time-label">{{ 'mins' | translate }}</span>
+
+        <div ng-messages="collectionSlotAdvancedCtrl.contextualForm.entityStep.$error" ng-show="collectionSlotAdvancedCtrl.contextualForm.entityStep.$dirty">
+          <div ng-message="required" translate ng-class="{'activated': collectionSlotAdvancedCtrl.contextualForm.entityStep.$error.required}">This is required.</div>
+          <div ng-message="maxIntegerValue" translate ng-class="{'activated': collectionSlotAdvancedCtrl.contextualForm.entityStep.$error.maxIntegerValue}">Max value is 2147483646.</div>
+        </div>              
+    </md-input-container>   
+</div>

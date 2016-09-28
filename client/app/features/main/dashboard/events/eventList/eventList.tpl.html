@@ -1,0 +1,18 @@
+<div class='events-view' layout='column'>
+  <div class="events-toolbar" layout="row" layout-align="start center">
+		<md-button class='md-primary' translate><icon class="material-icons">insert_invitation</icon>View Calendar</md-button>
+  </div>
+  <div flex class="layout-left-right">
+    <div class='main-content-left'>
+      <event-list has-search="true"
+         sv-multi-select="false"
+         sv-keep-in-list="false"
+         sv-is-dropzone="true"
+         has-new="true"
+         has-actions="true"
+         ng-if="eventListViewCtrl.data.events && eventListViewCtrl.data.events.length"
+         events="eventListViewCtrl.data.events"></event-list>
+     </div>
+  	<div class='main-content-right' sticky offset="134" contextual-menu-holder></div>
+  </div>
+</div>

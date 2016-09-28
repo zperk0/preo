@@ -1,0 +1,29 @@
+<div class='event'
+      ng-class="{expanded: eventCtrl.event.$expanded}"
+      ng-attr-data-id="{{eventCtrl.event.id}}">
+
+  <card-item  has-actions="eventCtrl.hasActions"
+              deleted="eventCtrl.event.$deleted"
+              selected="eventCtrl.event.$selected"
+              expanded="eventCtrl.event.$expanded"
+              >
+    <card-item-title ng-click="eventCtrl.toggleExpanded($event)"
+                    has-visible="true"
+                    sv-root="event">
+                      <div ng-if="!eventCtrl.event.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="eventCtrl.newItems" sv-on-external-sort="eventCtrl.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+                        <div sv-placeholder></div>
+                      </div>
+                      <span>{{eventCtrl.event.name}} </span>
+                    </card-item-title>
+
+    <event-schedule-list
+          ng-if="eventCtrl.event.$expanded"
+          schedules="eventCtrl.event.schedules">
+    </event-schedule-list>
+
+    <card-item-actions is-visible="eventCtrl.event.visible"
+                       on-delete="eventCtrl.onDelete()"
+                       on-edit="eventCtrl.onEdit($event)"
+                        ></card-item-actions>
+  </card-item>
+</div>
