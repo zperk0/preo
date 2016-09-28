@@ -5,7 +5,7 @@ export default class EventService {
     return "EventService";
   }
 
-  getEvents(data) {
+  getEvents(venueId) {
 
     if (this.data.events){
       return this.$q.resolve(this.data);
@@ -15,21 +15,22 @@ export default class EventService {
 
     this.p = this.$q((resolve, reject)=>{
 
-      Preoday.Event.getAll(data)
-        .then((events)=> {
+      Preoday.Event.getAll(venueId, {
+        expand: 'schedules'
+      }).then((events)=> {
 
-          this.data.events = events;
-          resolve(this.data);
-        },(err)=>{
+        this.data.events = events;
+        resolve(this.data);
+      },(err)=>{
 
-          console.log("Error fetching events", err);
-          reject(err);
-        })
-        .catch((err)=>{
-          
-          console.log("Error fetching events", err);
-          reject(err);
-        });
+        console.log("Error fetching events", err);
+        reject(err);
+      })
+      .catch((err)=>{
+        
+        console.log("Error fetching events", err);
+        reject(err);
+      });
     })
     return this.p;
   }
