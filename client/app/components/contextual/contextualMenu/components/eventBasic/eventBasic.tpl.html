@@ -14,11 +14,11 @@
           <div ng-message="maxlength" translate ng-class="{'activated': eventBasicCtrl.contextualForm.entityDescription.$error.maxlength}">Max length is 255.</div>
         </div>
     </md-input-container>
-    <md-input-container class="md-block">
+    <md-input-container class="md-block" ng-if="eventBasicCtrl.outletLocationTree">
         <label translate>Outlet configuration</label>
         <md-select ng-model="eventBasicCtrl.event.outletLocationId">
-          <md-option ng-value="state.abbrev">
-            Test
+          <md-option ng-value="outletLocation.id" ng-repeat="outletLocation in eventBasicCtrl.outletLocationTree">
+            {{ outletLocation.name }}
           </md-option>
         </md-select>
         <div ng-messages="eventBasicCtrl.contextualForm.entityDescription.$error" ng-show="eventBasicCtrl.contextualForm.entityDescription.$dirty">

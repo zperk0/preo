@@ -10,13 +10,15 @@ export default class eventListViewController {
   }
 
   /* @ngInject */
-  constructor($stateParams, Spinner, EventService) {
+  constructor($stateParams, Spinner, EventService, OutletLocationService) {
   	'ngInject';
 
     this.Spinner = Spinner;
   	this.loaded = false;
 
     this.Spinner.show('events');
+
+    OutletLocationService.getOutletLocations();
 
     EventService.getEvents($stateParams.venueId)
     	.then((data)=>{
