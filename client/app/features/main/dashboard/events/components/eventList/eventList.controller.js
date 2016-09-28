@@ -17,6 +17,7 @@ export default class eventListController {
 
     let event = new Preoday.Event({
       venueId: this.VenueService.currentVenue.id,
+      visible: 1,
       $images: [],
       $selected: true,
     });
@@ -32,10 +33,10 @@ export default class eventListController {
 
     this.EventService.save(newData)
         .then((event)=>{
-          
+
         deferred.resolve(event);
       }, (err) => {
-        console.log('fail event saved', err);
+        
         deferred.reject(err);
       });
 
@@ -43,10 +44,11 @@ export default class eventListController {
   }  
 
   /* @ngInject */
-  constructor(VenueService, EventService) {
+  constructor(VenueService, EventService, $q) {
   	'ngInject';
     
     this.VenueService = VenueService;
     this.EventService = EventService;
+    this.$q = $q;
   }
 }

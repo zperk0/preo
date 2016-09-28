@@ -8,9 +8,10 @@ import angular from 'angular';
 import controller from './event.controller';
 import directive from './event.directive';
 
+import eventList from '../';
 
 
-export default angular.module("event" , [])
+export default angular.module("event" , [eventList])
 
 
   .controller(controller.UID, controller)

@@ -65,7 +65,7 @@ export default class EventService {
             .then(deferred.resolve, deferred.reject);
         }, deferred.reject);
     } else {
-      Preoday.Event.create(data)
+      Preoday.Event.create(this.VenueService.currentVenue.id, data)
             .then(deferred.resolve, deferred.reject);
     }
 

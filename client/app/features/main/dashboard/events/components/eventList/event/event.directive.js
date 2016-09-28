@@ -16,7 +16,7 @@ export default function event(){
     link: (scope, el, attr, ctrls) => {
 
         ctrls[2].cardItemList = ctrls[0];
-        ctrls[2].collectionSlotsListCtrl = ctrls[1];
+        ctrls[2].eventListCtrl = ctrls[1];
     }
   }
 }
