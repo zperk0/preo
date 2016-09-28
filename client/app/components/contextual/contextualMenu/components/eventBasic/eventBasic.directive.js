@@ -6,7 +6,7 @@ export default function eventBasic(){
     template: require("./eventBasic.tpl.html"),
     controller: controller.UID,
     scope:{
-      collectionSlot: "=ngModel",
+      event: "=ngModel",
     },
     controllerAs: "eventBasicCtrl",
     bindToController: true,

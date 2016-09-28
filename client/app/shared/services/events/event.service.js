@@ -45,14 +45,67 @@ export default class EventService {
 
   save (data) {
 
-    return Preoday.Event.create(data);
+    var imageToCdn = null;
+
+    if (data.$images && data.$images.length) {
+      imageToCdn = data.$images[0].$image;
+    }
+
+    data.image = null;
+
+    var deferred = this.$q.defer();
+
+    if (imageToCdn) {
+      Preoday.Event.saveImageToCdn(imageToCdn, this.VenueService.currentVenue.id)
+        .then((imagePath) => {
+
+          data.image = imagePath;
+
+          Preoday.Event.create(data)
+            .then(deferred.resolve, deferred.reject);
+        }, deferred.reject);
+    } else {
+      Preoday.Event.create(data)
+            .then(deferred.resolve, deferred.reject);
+    }
+
+    return deferred.promise;
   }
 
-  constructor($q, $rootScope, $stateParams) {
+  update (event) {
+
+    var imageToCdn = null;
+
+    if (event.$images && event.$images.length) {
+      imageToCdn = event.$images[0].$image;
+    }
+
+    var deferred = this.$q.defer();
+
+    if (imageToCdn && imageToCdn !== event.image) {
+      Preoday.Event.saveImageToCdn(imageToCdn, this.VenueService.currentVenue.id)
+        .then((imagePath) => {
+
+          event.image = imagePath;
+
+          event.update()
+            .then(deferred.resolve, deferred.reject);
+        }, deferred.reject);
+    } else {
+      event.update()
+            .then(deferred.resolve, deferred.reject);
+    }
+
+    return deferred.promise;
+  }
+
+  constructor($q, $rootScope, $stateParams, VenueService) {
     "ngInject";
 
     this.$stateParams = $stateParams;
     this.$q = $q;
     this.data = {};
+
+    this.VenueService = VenueService;
   }
 }

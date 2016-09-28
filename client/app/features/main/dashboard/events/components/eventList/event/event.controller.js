@@ -77,7 +77,7 @@ export default class eventController {
 
     this.Spinner.show("event-update");
     return this.$q((resolve, reject)=>{
-      this.event.update()
+      this.EventService.update(this.event)
         .then((_event)=>{
           this.Snack.show(this.gettextCatalog.getString('Event updated'));
           resolve(_event);
@@ -91,6 +91,14 @@ export default class eventController {
   }
 
   onEdit ($event) {
+
+    this.event.$images = [];
+
+    if (this.event.image) {
+      this.event.$images.push({
+        $image: this.event.image
+      });
+    }
 
     this.originalEvent  = angular.copy(this.event);
     this.cardItemList.selectItem(this.event);
@@ -120,7 +128,7 @@ export default class eventController {
       });
   }  
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, gettextCatalog) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, EventService, gettextCatalog) {
   	"ngInject";
 
     this.$q = $q;
@@ -132,6 +140,7 @@ export default class eventController {
   	this.DialogService = DialogService;
     this.LabelService = LabelService;
   	this.ErrorService = ErrorService;
+    this.EventService = EventService;
   	this.gettextCatalog = gettextCatalog;
 
   	this.type = 'event';
@@ -139,12 +148,5 @@ export default class eventController {
     if (this.event && !this.event.id) {
       this.contextual.showMenu(this.type, this.event, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
     } 
-
-    if (this.event.id === 1) {
-      $timeout(() => {
-      this.toggleExpanded();
-      this.event.schedules.push({})   
-      })
-    }
   }
 }
