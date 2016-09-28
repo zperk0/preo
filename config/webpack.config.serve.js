@@ -8,11 +8,6 @@ module.exports = function(ENV, options) {
         '/api/*': {
           changeOrigin: true,
           target: 'http://local.app.preoday.com/'
-        },
-        '/cdn/*': {
-          changeOrigin: true,
-          target: 'http://cdn-local.preoday.com/',
-          pathRewrite: {'^/cdn/' : '/'}
         }
       }
     },

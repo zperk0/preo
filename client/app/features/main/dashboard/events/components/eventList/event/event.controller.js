@@ -96,7 +96,7 @@ export default class eventController {
 
     if (this.event.image) {
       this.event.$images.push({
-        $image: this.event.image
+        image: this.event.image
       });
     }
 

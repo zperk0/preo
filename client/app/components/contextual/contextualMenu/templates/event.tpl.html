@@ -6,7 +6,13 @@
       </md-card-content>
     </md-tab>
     <md-tab label="Image">
-       <image-uploader dimensions="412 x 232px" ng-model="contextualMenuCtrl.entity.$images"></image-uploader>
+       <image-uploader 
+          viewport="{w:412,h:232}"
+          boundry="{w:618,h:348}"
+          output="{w:412,h:232}"
+          dimensions="412 x 232px"       
+          ng-model="contextualMenuCtrl.entity.$images">          
+        </image-uploader>
     </md-tab>
   </md-tabs>
 </div>

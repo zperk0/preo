@@ -47,7 +47,7 @@ export default class EventService {
 
     var imageToCdn = null;
 
-    if (data.$images && data.$images.length) {
+    if (data.$images && data.$images.length && data.$images[0].$save) {
       imageToCdn = data.$images[0].$image;
     }
 
