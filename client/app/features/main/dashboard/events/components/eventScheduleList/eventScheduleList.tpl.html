@@ -13,7 +13,10 @@
       <event-schedule
         sv-element="schedule"
         ng-repeat="schedule in eventScheduleListCtrl.schedules"
-        schedule="schedule">
+        schedule="schedule"
+        ng-if="schedule.$show"
+        ng-init="$last && eventScheduleListCtrl.recalculateHeight()"
+        >
       </event-schedule>
       <div sv-placeholder></div>
     </div>

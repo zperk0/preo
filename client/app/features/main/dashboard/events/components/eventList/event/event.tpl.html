@@ -17,8 +17,9 @@
                     </card-item-title>
 
     <event-schedule-list
-          ng-if="eventCtrl.event.$expanded"
-          schedules="eventCtrl.event.schedules">
+          schedules="eventCtrl.event.schedules"
+          event="eventCtrl.event"
+        >
     </event-schedule-list>
 
     <card-item-actions is-visible="eventCtrl.event.visible"

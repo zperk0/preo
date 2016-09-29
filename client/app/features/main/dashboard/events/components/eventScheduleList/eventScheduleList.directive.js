@@ -1,21 +1,29 @@
 import controller from './eventScheduleList.controller'
 
-export default function eventScheduleList(){
+export default function eventScheduleList($timeout){
   "ngInject";
   return {
     restrict: 'E',
     scope: {
-      schedules: "="
+      schedules: "=",
+      event: '='
     },
     template: require("./eventScheduleList.tpl.html"),
     controller: controller.UID,
     controllerAs: "eventScheduleListCtrl",
     bindToController: true,
-    replace:true,
-    require: ['^event', 'eventScheduleList'],
-    link: (scope, el, attr, ctrls) => {
+    replace: true,
+    link: (scope, el, attr, ctrl) => {
 
-      ctrls[1].eventCtrl = ctrls[0];
+      ctrl.el = el;
+      el[0].style.maxHeight = 0;
+      el.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
+        if (e.propertyName === 'max-height'){
+          $timeout(()=>{
+            ctrl.event.$expanding = false;
+          })
+        }
+      })      
     }
   }
 }
