@@ -214,4 +214,49 @@
     }
   }
 
+  .md-tabs-with-errors {
+    &.has-error {
+      md-ink-bar {
+        color: $redDefault;
+        background-color: $redDefault;
+      }
+    }
+
+    md-tab-item {
+      padding: 0px;
+
+      .md-tab-label {
+        padding: 12px 24px;
+        position: relative;
+
+        &.has-error {
+          span {
+            color: $redDefault;
+          }
+        }     
+      }
+
+      &.md-active {
+        .md-tab-label {
+          &.has-error {
+
+            &:after {
+              border-color: $redDefault;
+            }
+          }
+
+          &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            border-bottom: 2px solid #0288D1;
+            z-index: 1;
+          }             
+        }        
+      }
+    }
+  }
+
 }
