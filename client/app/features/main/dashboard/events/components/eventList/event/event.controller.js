@@ -111,7 +111,9 @@ export default class eventController {
     this.DialogService.delete(this.LabelService.TITLE_DELETE_EVENT, this.LabelService.CONTENT_DELETE_EVENT)
       .then(()=>{
           this.Spinner.show("event-delete");
-          return this.event.remove();
+
+          this.event.visible = 0;
+          return this.event.update();
       })
       .then(()=>{
           this.cardItemList.onItemDeleted(this.event);

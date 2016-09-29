@@ -158,7 +158,7 @@ describe('Event item Controller', function () {
         return $q.resolve();
       });
 
-      server.respondWith('DELETE', '/api/events/' + eventMock.id, [200, {"Content-Type": "application/json"}, JSON.stringify({})]);
+      server.respondWith('PUT', '/api/events/' + eventMock.id, [200, {"Content-Type": "application/json"}, JSON.stringify({})]);
 
       EventCtrl.onDelete();
       $rootScope.$digest();
@@ -203,7 +203,7 @@ describe('Event item Controller', function () {
         return $q.resolve();
       });
 
-      server.respondWith('DELETE', '/api/events/' + eventMock.id, [400, {"Content-Type": "application/json"}, JSON.stringify({
+      server.respondWith('PUT', '/api/events/' + eventMock.id, [400, {"Content-Type": "application/json"}, JSON.stringify({
         message: ''
       })]);
 
