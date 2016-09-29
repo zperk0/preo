@@ -233,13 +233,34 @@
           span {
             color: $redDefault;
           }
+
+          &+.md-ripple-container {
+            &[style] {
+              background-color: rgba(221,44,0, 0.0980392) !important;
+            }    
+                      
+            .md-ripple-placed {
+              background: $redDefault !important;
+              border-color: $redDefault !important;
+            }
+          }          
         }     
+
+        &+.md-ripple-container {
+          &[style] {
+            background-color: rgba(2,136,209, 0.0980392) !important;
+          }
+
+          .md-ripple-placed {
+            background: #0288D1 !important;
+            border-color: #0288D1 !important;
+          }
+        }        
       }
 
       &.md-active {
         .md-tab-label {
           &.has-error {
-
             &:after {
               border-color: $redDefault;
             }
