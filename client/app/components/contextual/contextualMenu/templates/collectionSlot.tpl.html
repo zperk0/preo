@@ -1,14 +1,29 @@
 <div class="contextual-menu-collection-slot">
-  <md-tabs md-dynamic-height md-stretch-tabs="always" ng-if="contextualMenuCtrl.FeatureService.hasCustomPickupSlotsFeature()">
-    <md-tab label="Basic">
-      <md-card-content>
-        <collection-slot-basic ng-model="contextualMenuCtrl.entity"></collection-slot-basic>
-      </md-card-content>
+  <md-tabs md-dynamic-height md-stretch-tabs="always" ng-if="contextualMenuCtrl.FeatureService.hasCustomPickupSlotsFeature()" class="md-tabs-with-errors"
+  ng-class="{'has-error': contextualMenuCtrl.contextualForm.$submitted && contextualMenuCtrl.contextualForm.$invalid}">
+    <md-tab>
+      <md-tab-label>
+        <div ng-class="{'has-error': contextualMenuCtrl.CollectionSlotsService.hasBasicTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity)}" class="md-tab-label">
+          <span>{{ 'Basic' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
+        <md-card-content>
+          <collection-slot-basic ng-model="contextualMenuCtrl.entity"></collection-slot-basic>
+        </md-card-content>
+      </md-tab-body>
     </md-tab>
-    <md-tab label="Advanced">
+    <md-tab>
+      <md-tab-label>
+        <div ng-class="{'has-error': contextualMenuCtrl.CollectionSlotsService.hasAdvancedTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity)}" class="md-tab-label">
+          <span>{{ 'Advanced' | translate }}</span>
+        </div>
+      </md-tab-label>
+      <md-tab-body>
       <md-card-content>
         <collection-slot-advanced ng-model="contextualMenuCtrl.entity"></collection-slot-advanced>
       </md-card-content>
+      </md-tab-body>      
     </md-tab>
   </md-tabs>
   

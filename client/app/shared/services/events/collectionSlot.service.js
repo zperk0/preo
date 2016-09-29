@@ -48,6 +48,30 @@ export default class CollectionSlotsService {
     return Preoday.PickupSlot.create(data);
   }
 
+  hasBasicTabErrors (contextualForm, entity) {
+
+    return  contextualForm
+            && contextualForm.$submitted
+            && 
+            (
+              contextualForm.entityName.$invalid
+              || contextualForm.entityDisplayName.$invalid
+              || contextualForm.entityEnd.$invalid
+              || contextualForm.entityLeadTime.$invalid
+            );
+  }
+
+  hasAdvancedTabErrors (contextualForm, entity) {
+
+    return  contextualForm
+            && contextualForm.$submitted
+            && 
+            (
+              contextualForm.entityStart.$invalid
+              || (entity.$hasSteps && contextualForm.entityStep.$invalid)
+            );
+  }
+
   constructor($q, $rootScope, $stateParams) {
     "ngInject";
 
