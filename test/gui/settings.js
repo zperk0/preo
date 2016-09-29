@@ -11,7 +11,7 @@ var Settings = function() {
 	this.password;
 
 	if (browser.params.env == 'local') {
-		this.mainUrl = 'http://localhost';
+		this.mainUrl = 'http://localhost:8088';
 		this.username = 'marcelo.soares@preoday.com';
 		this.password = 'm!@#qwe3';
 	} else if (browser.params.env == 'demo'){
