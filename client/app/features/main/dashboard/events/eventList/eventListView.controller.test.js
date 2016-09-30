@@ -11,6 +11,7 @@ describe('EventList View Controller', function () {
       $stateParams,
       $controller,
       EventService,
+      OutletLocationService,
       VenueService,
       Spinner,
       Snack,
@@ -28,6 +29,7 @@ describe('EventList View Controller', function () {
       $rootScope = $injector.get('$rootScope');
       $stateParams = $injector.get('$stateParams');
       EventService = $injector.get('EventService');
+      OutletLocationService = $injector.get('OutletLocationService');
       VenueService = $injector.get('VenueService');
       Spinner = $injector.get('Spinner');
       Snack = $injector.get('Snack');
@@ -38,7 +40,7 @@ describe('EventList View Controller', function () {
       server = sinon.fakeServer.create();
 
       currentVenue = new Preoday.Venue.constructor({
-        id: 9,
+        id: 5,
       });
       currentVenue.setAsCurrent();
 
@@ -73,19 +75,22 @@ describe('EventList View Controller', function () {
 
     it("Should initialize the controller and fetch events", function(done) {
 
+      spyOn(OutletLocationService, 'getOutletLocations').and.callThrough();
       spyOn(EventService, 'getEvents').and.callThrough();
       spyOn(Spinner, 'show').and.callThrough();
-
-      var venueId = 5;
-
-      $stateParams.venueId = venueId;
 
       var events = [{
         id: 1,
         name: 'test'
       }];
 
-      server.respondWith('GET', '/api/venues/' + venueId + '/events?expand=schedules', [200, {"Content-Type": "application/json"}, JSON.stringify(events)]);
+      var outletLocations = [{
+        id: 1,
+        name: 'test'
+      }];
+
+      server.respondWith('GET', '/api/venues/' + currentVenue.id + '/events?expand=schedules', [200, {"Content-Type": "application/json"}, JSON.stringify(events)]);
+      server.respondWith('GET', '/api/venues/' + currentVenue.id + '/outletlocations?outlets=false', [200, {"Content-Type": "application/json"}, JSON.stringify(outletLocations)]);
 
       _startController();
 
@@ -94,6 +99,7 @@ describe('EventList View Controller', function () {
       setTimeout(function () {
         
         server.respond();
+        
         $rootScope.$digest();
 
         setTimeout(function() {
@@ -102,7 +108,8 @@ describe('EventList View Controller', function () {
 
           expect($scope.eventListViewCtrl.loaded).toBe(true);
           expect(Spinner.show).toHaveBeenCalledWith('events');
-          expect(EventService.getEvents).toHaveBeenCalledWith(venueId);
+          expect(EventService.getEvents).toHaveBeenCalledWith(currentVenue.id);
+          expect(OutletLocationService.getOutletLocations).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.hideSpinner).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.data.events.length).toBe(events.length);
 
@@ -113,19 +120,22 @@ describe('EventList View Controller', function () {
 
     it("Should initialize the controller and failt on fetch events", function(done) {
 
+      spyOn(OutletLocationService, 'getOutletLocations').and.callThrough();
       spyOn(EventService, 'getEvents').and.callThrough();
       spyOn(Spinner, 'show').and.callThrough();
-
-      var venueId = 5;
-
-      $stateParams.venueId = venueId;
 
       var events = [{
         id: 1,
         name: 'test'
       }];
 
-      server.respondWith('GET', '/api/venues/' + venueId + '/events?', [400, {"Content-Type": "application/json"}, JSON.stringify(events)]);
+      var outletLocations = [{
+        id: 1,
+        name: 'test'
+      }];      
+
+      server.respondWith('GET', '/api/venues/' + currentVenue.id + '/events?', [400, {"Content-Type": "application/json"}, JSON.stringify(events)]);
+      server.respondWith('GET', '/api/venues/' + currentVenue.id + '/outletlocations?outlets=false', [200, {"Content-Type": "application/json"}, JSON.stringify(outletLocations)]);
 
       _startController();
 
@@ -142,7 +152,8 @@ describe('EventList View Controller', function () {
 
           expect($scope.eventListViewCtrl.loaded).toBe(true);
           expect(Spinner.show).toHaveBeenCalledWith('events');
-          expect(EventService.getEvents).toHaveBeenCalledWith(venueId);
+          expect(EventService.getEvents).toHaveBeenCalledWith(currentVenue.id);
+          expect(OutletLocationService.getOutletLocations).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.hideSpinner).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.data.events.length).toBe(0);
 

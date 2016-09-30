@@ -16,6 +16,9 @@
                       <span>{{eventCtrl.event.name}} </span>
                     </card-item-title>
 
+
+    <item-chips ng-if="eventCtrl.event.outletLocationId && eventCtrl.outletLocations.length" items="eventCtrl.outletLocations" on-remove="eventCtrl.removeOutletLocation(item)"></item-chips>
+
     <event-schedule-list
           schedules="eventCtrl.event.schedules"
           event="eventCtrl.event"
@@ -25,6 +28,7 @@
     <card-item-actions is-visible="eventCtrl.event.visible"
                        on-delete="eventCtrl.onDelete()"
                        on-edit="eventCtrl.onEdit($event)"
+                       on-add="eventCtrl.onAddOutletLocation($event)"
                         ></card-item-actions>
   </card-item>
 </div>

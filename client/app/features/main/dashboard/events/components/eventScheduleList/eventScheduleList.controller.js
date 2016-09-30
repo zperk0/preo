@@ -30,7 +30,6 @@ export default class eventScheduleListController {
     this.schedules.forEach((i)=>{
      maxHeight += 50 + 16;
     })
-    console.log('recalculating height... ', maxHeight);
 
     // (button + height + margin-top + margin-bottom)
     this.el[0].style.maxHeight = maxHeight + (50 + 8 + 32) + "px";
@@ -39,8 +38,6 @@ export default class eventScheduleListController {
   /* @ngInject */
   constructor($scope, $timeout, $q, Spinner, Snack, gettextCatalog) {
     "ngInject";
-
-    // console.log('schedules here');
 
     this.Spinner = Spinner;
     this.Snack = Snack;
@@ -57,8 +54,6 @@ export default class eventScheduleListController {
       // 
 
       $scope.$watch('eventScheduleListCtrl.event.$expanded',(newVal, oldVal)=>{
-
-        // console.log('watcher herre', newVal, oldVal);
 
         if(newVal){ // if expanded = true;
           this.schedules.forEach((i)=>i.$show = true)

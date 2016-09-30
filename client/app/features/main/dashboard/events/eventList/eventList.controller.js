@@ -10,7 +10,7 @@ export default class eventListViewController {
   }
 
   /* @ngInject */
-  constructor($stateParams, Spinner, EventService, OutletLocationService) {
+  constructor($q, Spinner, EventService, VenueService, OutletLocationService) {
   	'ngInject';
 
     this.Spinner = Spinner;
@@ -18,26 +18,24 @@ export default class eventListViewController {
 
     this.Spinner.show('events');
 
-    OutletLocationService.getOutletLocations();
+    $q.all([
+        EventService.getEvents(VenueService.currentVenue.id),
+        OutletLocationService.getOutletLocations()
+      ]).then((results) => {
 
-    EventService.getEvents($stateParams.venueId)
-    	.then((data)=>{
+        this.data = results[0];
 
-	      console.log('collection events data here', data);
+        this.loaded = true;
+        this.hideSpinner();
+      }, (err) => {
 
-	      this.data = data;   
-	      this.loaded = true;
+        this.data = {
+          events: []
+        };
+        console.log('error events service');
+        this.loaded = true;
 
-	      this.hideSpinner();
-	    }, () => {
-
-	      this.data = {
-	        events: []
-	      };
-	      console.log('error events service');
-	      this.loaded = true;
-
-	      this.hideSpinner();
-	    });
+        this.hideSpinner();
+      });
   }
 }
