@@ -13,6 +13,7 @@ describe('Event item Controller', function () {
       $controller,
       contextual,
       EventService,
+      OutletLocationService,
       VenueService,
       contextualMenu,
       Spinner,
@@ -33,6 +34,7 @@ describe('Event item Controller', function () {
       $rootScope = $injector.get('$rootScope');
       contextual = $injector.get('contextual');
       EventService = $injector.get('EventService');
+      OutletLocationService = $injector.get('OutletLocationService');
       VenueService = $injector.get('VenueService');
       contextualMenu = $injector.get('contextualMenu');
       Spinner = $injector.get('Spinner');
@@ -104,6 +106,7 @@ describe('Event item Controller', function () {
     it("Should initialize the controller", function() {
 
       spyOn(contextual, 'showMenu').and.callThrough();
+      spyOn(OutletLocationService, 'findById').and.callThrough();
 
       _mockEvent();
       _startController();
@@ -121,6 +124,8 @@ describe('Event item Controller', function () {
       expect(EventCtrl.contextualMenuCancel).toEqual(jasmine.any(Function));
       expect(EventCtrl.restoreOriginalValues).toEqual(jasmine.any(Function));
       expect(contextual.showMenu).not.toHaveBeenCalled();
+      expect(OutletLocationService.findById).not.toHaveBeenCalled();
+      expect(EventCtrl.outletLocations.length).toBe(0);      
     });
 
     it("Should open drawer because doenst have an id", function() {
@@ -158,7 +163,7 @@ describe('Event item Controller', function () {
         return $q.resolve();
       });
 
-      server.respondWith('DELETE', '/api/events/' + eventMock.id, [200, {"Content-Type": "application/json"}, JSON.stringify({})]);
+      server.respondWith('PUT', '/api/events/' + eventMock.id, [200, {"Content-Type": "application/json"}, JSON.stringify({})]);
 
       EventCtrl.onDelete();
       $rootScope.$digest();
@@ -203,7 +208,7 @@ describe('Event item Controller', function () {
         return $q.resolve();
       });
 
-      server.respondWith('DELETE', '/api/events/' + eventMock.id, [400, {"Content-Type": "application/json"}, JSON.stringify({
+      server.respondWith('PUT', '/api/events/' + eventMock.id, [400, {"Content-Type": "application/json"}, JSON.stringify({
         message: ''
       })]);
 
@@ -267,6 +272,187 @@ describe('Event item Controller', function () {
 
           done();          
         });
+      });
+    });
+
+    it("Should build the event with outletLocation", function() {
+
+      _mockEvent();
+      _startCardItemListController();
+      _startController();
+
+      var outletLocationMock = {
+        id: 1,
+        name: 'Outlet Location Test'
+      };
+
+      eventMock.outletLocationId = 1;
+
+      spyOn(OutletLocationService, 'findById').and.callFake(function () {
+        
+        return outletLocationMock;
+      });      
+
+      EventCtrl.instance.event = eventMock;
+      EventCtrl.instance.cardItemList = CardItemListCtrl();
+      EventCtrl = EventCtrl();
+          
+      $rootScope.$digest();
+
+      expect(OutletLocationService.findById).toHaveBeenCalledWith(eventMock.outletLocationId);
+      expect(EventCtrl.outletLocations.length).toBe(1);
+      expect(EventCtrl.outletLocations[0].name).toEqual(outletLocationMock.name);
+    });
+
+    it("Should remove the outletLocationId from the event", function(done) {
+
+      _mockEvent();
+      _startCardItemListController();
+      _startController();
+
+      var outletLocationMock = {
+        id: 1,
+        name: 'Outlet Location Test'
+      };
+
+      eventMock.outletLocationId = 1;
+
+      spyOn(OutletLocationService, 'findById').and.callFake(function () {
+        
+        return outletLocationMock;
+      });      
+
+      server.respondWith('PUT', '/api/events/' + eventMock.id, [200, {"Content-Type": "application/json"}, JSON.stringify(eventMock)]);
+
+      EventCtrl.instance.event = eventMock;
+      EventCtrl.instance.cardItemList = CardItemListCtrl();
+      EventCtrl = EventCtrl();
+          
+      $rootScope.$digest();
+
+      spyOn(EventCtrl, 'buildOutletLocation').and.callThrough();
+      spyOn(EventCtrl, 'updateEvent').and.callThrough();
+
+      EventCtrl.removeOutletLocation();
+
+      $rootScope.$digest();
+
+      setTimeout(function () {
+
+        server.respond();
+        $rootScope.$digest();
+
+        setTimeout(function () {
+
+          $rootScope.$digest();
+          
+          expect(EventCtrl.updateEvent).toHaveBeenCalled();
+          expect(EventCtrl.buildOutletLocation).toHaveBeenCalled();
+          expect(EventCtrl.event.outletLocationId).toBe(null);
+          expect(EventCtrl.outletLocations.length).toBe(0);
+
+          done();
+        });
+      });
+    });
+
+    it("Should add the outletLocationId to an event", function(done) {
+
+      _mockEvent();
+      _startCardItemListController();
+      _startController();
+
+      var outletLocationMock = {
+        id: 3,
+        name: 'Outlet Location Test'
+      };
+
+      spyOn(OutletLocationService, 'findById').and.callFake(function () {
+        
+        return outletLocationMock;
+      });
+
+      spyOn(contextual, 'showDrawer').and.returnValue($q.resolve(outletLocationMock));
+
+      server.respondWith('PUT', '/api/events/' + eventMock.id, [200, {"Content-Type": "application/json"}, JSON.stringify(eventMock)]);
+
+      EventCtrl.instance.event = eventMock;
+      EventCtrl.instance.cardItemList = CardItemListCtrl();
+      EventCtrl = EventCtrl();
+          
+      $rootScope.$digest();
+
+      spyOn(EventCtrl, 'buildOutletLocation').and.callThrough();
+      spyOn(EventCtrl, 'updateEvent').and.callThrough();
+
+      EventCtrl.onAddOutletLocation();
+
+      $rootScope.$digest();
+
+      setTimeout(function () {
+
+        server.respond();
+        $rootScope.$digest();
+
+        setTimeout(function () {
+
+          $rootScope.$digest();
+          
+          expect(EventCtrl.updateEvent).toHaveBeenCalled();
+          expect(EventCtrl.buildOutletLocation).toHaveBeenCalled();
+          expect(EventCtrl.event.outletLocationId).toBe(outletLocationMock.id);
+          expect(EventCtrl.outletLocations.length).toBe(1);
+          expect(EventCtrl.outletLocations[0].name).toEqual(outletLocationMock.name);
+
+          done();
+        });
+      });
+    });
+
+    it("Shouldn't call the event update when select the same outletLocation", function(done) {
+
+      _mockEvent();
+      _startCardItemListController();
+      _startController();
+
+      var outletLocationMock = {
+        id: 3,
+        name: 'Outlet Location Test'
+      };
+
+      eventMock.outletLocationId = outletLocationMock.id;
+
+      spyOn(OutletLocationService, 'findById').and.callFake(function () {
+        
+        return outletLocationMock;
+      });
+
+      spyOn(contextual, 'showDrawer').and.returnValue($q.resolve(outletLocationMock));
+
+      EventCtrl.instance.event = eventMock;
+      EventCtrl.instance.cardItemList = CardItemListCtrl();
+      EventCtrl = EventCtrl();
+          
+      $rootScope.$digest();
+
+      spyOn(EventCtrl, 'buildOutletLocation').and.callThrough();
+      spyOn(EventCtrl, 'updateEvent').and.callThrough();
+
+      EventCtrl.onAddOutletLocation();
+
+      $rootScope.$digest();
+
+      setTimeout(function () {
+
+        $rootScope.$digest();
+        
+        expect(EventCtrl.updateEvent).not.toHaveBeenCalled();
+        expect(EventCtrl.buildOutletLocation).not.toHaveBeenCalled();
+        expect(EventCtrl.event.outletLocationId).toBe(outletLocationMock.id);
+        expect(EventCtrl.outletLocations.length).toBe(1);
+        expect(EventCtrl.outletLocations[0].name).toEqual(outletLocationMock.name);
+
+        done();
       });
     });
 

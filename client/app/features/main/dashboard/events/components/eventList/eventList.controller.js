@@ -19,6 +19,7 @@ export default class eventListController {
       venueId: this.VenueService.currentVenue.id,
       visible: 1,
       $images: [],
+      schedules: [],
       $selected: true,
     });
 

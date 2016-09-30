@@ -106,12 +106,38 @@ export default class eventController {
     $event.stopPropagation();
   } 
 
+  onAddOutletLocation () {
+
+    this.contextual.showDrawer('eventOutletLocations')
+      .then((outletLocation) => {
+
+        if (this.event.outletLocationId !== outletLocation.id) {
+          this.event.outletLocationId = outletLocation.id;
+          this.updateEvent()
+            .then(this.buildOutletLocation.bind(this));
+        }        
+        console.log('outletLocation selected', outletLocation);
+      }, () => {
+
+        console.log('outletLocation cancelled');
+      });
+  }
+
+  removeOutletLocation () {
+
+    this.event.outletLocationId = null;
+    this.updateEvent()
+      .then(this.buildOutletLocation.bind(this));
+  }  
+
   onDelete(){
 
     this.DialogService.delete(this.LabelService.TITLE_DELETE_EVENT, this.LabelService.CONTENT_DELETE_EVENT)
       .then(()=>{
           this.Spinner.show("event-delete");
-          return this.event.remove();
+
+          this.event.visible = 0;
+          return this.event.update();
       })
       .then(()=>{
           this.cardItemList.onItemDeleted(this.event);
@@ -128,7 +154,16 @@ export default class eventController {
       });
   }  
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, EventService, gettextCatalog) {
+  buildOutletLocation() {
+
+    if (this.event && this.event.outletLocationId) {
+      this.outletLocations = [this.OutletLocationService.findById(this.event.outletLocationId)];
+    } else {
+      this.outletLocations = [];
+    }
+  }  
+
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, EventService, gettextCatalog, OutletLocationService) {
   	"ngInject";
 
     this.$q = $q;
@@ -141,12 +176,25 @@ export default class eventController {
     this.LabelService = LabelService;
   	this.ErrorService = ErrorService;
     this.EventService = EventService;
-  	this.gettextCatalog = gettextCatalog;
+    this.gettextCatalog = gettextCatalog;
+  	this.OutletLocationService = OutletLocationService;
 
   	this.type = 'event';
+
+    this.buildOutletLocation();
 
     if (this.event && !this.event.id) {
       this.contextual.showMenu(this.type, this.event, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
     } 
+
+    // this.event.schedules = [{
+    //   id: 1,
+    // },{
+    //   id: 2,
+    // },{
+    //   id: 3,
+    // },{
+    //   id: 4,
+    // }]
   }
 }

@@ -80,6 +80,11 @@ export default class OutletLocationService {
     Preoday.OutletLocation.resetOutlets();
   }
 
+  findById (id) {
+
+    return Preoday.OutletLocation.getOutletLocationById(id);
+  }
+
   constructor($q, $rootScope, $stateParams, VenueService) {
     "ngInject";
     this.$stateParams = $stateParams;

@@ -1,12 +1,15 @@
 $heightMenuItemCard:48px;
 
 .event-schedule-list {
+	transition: all 1s ease;
+	overflow: hidden;
+
 	.sv-placeholder {
 		min-height: $heightMenuItemCard !important;
 		margin: 0px;
 	}		
 
-	.schedule {
+	.event-schedule {
 		margin: 8px;
 	}
 
