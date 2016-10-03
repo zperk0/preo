@@ -1,27 +1,27 @@
 <div class="event-schedule-form">
   <md-input-container class="md-block md-input-container-with-no-float md-input-container-frequency" md-no-float>
     <span class="input-label" translate>Frequency:</span>
-    <md-select ng-model="eventScheduleFormCtrl.schedule.frequency">
-      <md-option ng-value="state.abbrev">
-        Test
+    <md-select ng-model="eventScheduleFormCtrl.schedule.freq">
+      <md-option ng-value="schedule.value" ng-repeat="schedule in eventScheduleFormCtrl.schedules">
+        {{ schedule.title }}
       </md-option>
     </md-select>
   </md-input-container>  
 
   <div class="md-block">
-    <mdp-time-picker mdp-auto-switch="true" mdp-placeholder="{{ 'Start time' | translate }}" ng-model="eventScheduleFormCtrl.schedule.time"></mdp-time-picker>
+    <mdp-time-picker mdp-auto-switch="true" mdp-placeholder="{{ 'Start time' | translate }}" ng-model="eventScheduleFormCtrl.schedule.$startDate"></mdp-time-picker>
   </div>  
-  <div class="md-block">
-    <md-datepicker class="schedule-datepicker" ng-model="eventScheduleFormCtrl.schedule.date" md-placeholder="{{ 'Date' }}" auto-open-calendar></md-datepicker>
+  <div class="md-block" ng-if="eventScheduleFormCtrl.isOnceFrequency()">
+    <md-datepicker class="schedule-datepicker" ng-model="eventScheduleFormCtrl.schedule.$startDate" md-placeholder="{{ 'Date' }}" auto-open-calendar></md-datepicker>
   </div>
-  <div class="md-block md-block-datepicker-multiple">
-    <md-datepicker class="schedule-datepicker" ng-model="eventScheduleFormCtrl.schedule.date" md-placeholder="{{ 'Start date' }}" auto-open-calendar></md-datepicker>
-    <md-datepicker class="schedule-datepicker" ng-model="eventScheduleFormCtrl.schedule.date" md-placeholder="{{ 'End date' }}" auto-open-calendar></md-datepicker>
+  <div class="md-block md-block-datepicker-multiple" ng-if="!eventScheduleFormCtrl.isOnceFrequency()">
+    <md-datepicker class="schedule-datepicker" ng-model="eventScheduleFormCtrl.schedule.$startDate" md-placeholder="{{ 'Start date' }}" auto-open-calendar></md-datepicker>
+    <md-datepicker class="schedule-datepicker" ng-model="eventScheduleFormCtrl.schedule.$endDate" md-placeholder="{{ 'End date' }}" auto-open-calendar></md-datepicker>
   </div>
 
 
   <div class="collection-slots-select-content" ng-if="eventScheduleFormCtrl.contextualMenuCtrl.isShowing('event') || eventScheduleFormCtrl.contextualMenuCtrl.isShowing('eventSchedule')">
     <label class="label-title" translate>Choose collection slots:</label>
-    <collection-slots-select></collection-slots-select>
+    <collection-slots-select ng-model="eventScheduleFormCtrl.schedule"></collection-slots-select>
   </div>
 </div>

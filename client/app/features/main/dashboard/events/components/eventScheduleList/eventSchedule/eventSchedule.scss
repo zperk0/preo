@@ -20,6 +20,16 @@ $heightMenuItemCard:48px;
 
       .card-title-text{
         font-size:13px;
+        align-items: stretch;
+      }
+
+      .schedule-name {
+        flex: 3 0 0;
+      }
+
+      .schedule-time {
+        flex: 1 0 0;
+        text-align: right;
       }
     }
 

@@ -87,7 +87,26 @@ export default class eventScheduleController {
       })
   }  
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, gettextCatalog) {
+  getScheduleTitle () {
+
+    switch (this.schedule.freq) {
+      case this.EventScheduleFrequency.ONCE:
+        return moment(this.schedule.startDate).format('DD/MM/YYYY');
+
+      default:
+        return [
+            moment(this.schedule.startDate).format('DD/MM/YYYY'), 
+            moment(this.schedule.endDate).format('DD/MM/YYYY')
+        ].join(' - ');
+    }
+  }
+
+  getScheduleTime () {
+
+    return moment(this.schedule.startDate).format('hh:mm');
+  }
+
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, gettextCatalog, EventScheduleFrequency) {
   	"ngInject";
 
     this.$q = $q;
@@ -98,7 +117,8 @@ export default class eventScheduleController {
   	this.contextual = contextual;
   	this.DialogService = DialogService;
   	this.LabelService = LabelService;
-  	this.gettextCatalog = gettextCatalog;
+    this.gettextCatalog = gettextCatalog;
+  	this.EventScheduleFrequency = EventScheduleFrequency;
 
   	this.type = 'eventSchedule';
 

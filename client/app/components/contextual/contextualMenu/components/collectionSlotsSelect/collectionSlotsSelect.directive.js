@@ -4,7 +4,7 @@ export default function collectionSlotsSelect(){
   return {
     restrict: 'E',
     scope: {
-      ngModel: '='
+      schedule: '=ngModel'
     },
     template: require("./collectionSlotsSelect.tpl.html"),
     replace: true,
