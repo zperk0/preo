@@ -85,6 +85,13 @@ export default class OutletLocationService {
     return Preoday.OutletLocation.getOutletLocationById(id);
   }
 
+  hasOutletLocations () {
+
+    return this.data.rootGroup 
+          && this.data.rootGroup.outletLocations
+          && this.data.rootGroup.outletLocations.length > 0;
+  }
+
   constructor($q, $rootScope, $stateParams, VenueService) {
     "ngInject";
     this.$stateParams = $stateParams;

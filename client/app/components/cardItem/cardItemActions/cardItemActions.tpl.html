@@ -33,6 +33,12 @@
           {{'Delete' | translate}}
         </md-tooltip>
       </md-button>
+      <md-button ng-if="cardItem.showCardActions && vm.onAddLocation" class="md-icon-button" ng-click="vm.onAddLocation({$event:$event})">
+        <icon>add_location</icon>
+        <md-tooltip md-direction="bottom">
+          {{ vm.addLocationMessage }}
+        </md-tooltip>
+      </md-button>
        <md-button ng-if="cardItem.showCardActions && vm.onEdit" class="md-icon-button" ng-click="vm.onEdit({$event:$event})">
         <icon>edit</icon>
         <md-tooltip md-direction="bottom">

@@ -76,6 +76,8 @@ export default class eventScheduleController {
       this.schedule.update()
         .then((_schedule)=>{
           this.Snack.show(this.gettextCatalog.getString('Schedule updated'));
+
+          this.cardItemList.buildScheduleTimestamp(this.schedule);
           resolve(_schedule);
       },()=>{
         reject();

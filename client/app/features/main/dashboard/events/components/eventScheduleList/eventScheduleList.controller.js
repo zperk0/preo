@@ -36,6 +36,8 @@ export default class eventScheduleListController {
     this.EventScheduleService.save(newData)
         .then((schedule)=>{
 
+        this.buildScheduleTimestamp(schedule);
+
         deferred.resolve(schedule);
       }, (err) => {
         
@@ -57,6 +59,12 @@ export default class eventScheduleListController {
     this.el[0].style.maxHeight = maxHeight + (50 + 8 + 32) + "px";
   }  
 
+  buildScheduleTimestamp(schedule) {
+
+    schedule.$startTimestamp = moment(schedule.startDate).valueOf();
+    schedule.$endTimestamp = moment(schedule.endDate).valueOf();    
+  }
+
   /* @ngInject */
   constructor($scope, $timeout, $q, Spinner, Snack, gettextCatalog, EventScheduleFrequency, EventScheduleService) {
     "ngInject";
@@ -71,7 +79,11 @@ export default class eventScheduleListController {
 
     this.event.$expanding = false;
 
-    this.schedules.forEach((i)=>i.$show = false)
+    this.schedules.forEach((schedule)=> {
+
+      schedule.$show = false; 
+      this.buildScheduleTimestamp(schedule);
+    });
 
     //watch for animation only if we're in a section
     if (this.event && this.event.id){

@@ -28,8 +28,8 @@
     <card-item-actions is-visible="eventCtrl.event.visible"
                        on-delete="eventCtrl.onDelete()"
                        on-edit="eventCtrl.onEdit($event)"
-                       on-add="eventCtrl.onAddOutletLocation($event)"
-                       add-message="'Select an outlet location'"
+                       on-add-location="eventCtrl.onAddOutletLocation($event)"
+                       add-location-message="eventCtrl.getAddOutletLocationMessage()"
                         ></card-item-actions>
   </card-item>
 </div>

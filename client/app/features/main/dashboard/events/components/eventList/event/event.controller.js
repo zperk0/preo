@@ -108,6 +108,10 @@ export default class eventController {
 
   onAddOutletLocation () {
 
+    if (!this.OutletLocationService.hasOutletLocations()) {
+      return;
+    }
+
     this.contextual.showDrawer('eventOutletLocations')
       .then((outletLocation) => {
 
@@ -162,6 +166,15 @@ export default class eventController {
       this.outletLocations = [];
     }
   }  
+
+  getAddOutletLocationMessage () {
+
+    if (this.OutletLocationService.hasOutletLocations()) {
+      return this.gettextCatalog.getString('Set outlet configuration');
+    }
+
+    return this.gettextCatalog.getString("You don't have outlet locations yet");
+  }
 
   constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, EventService, gettextCatalog, OutletLocationService) {
   	"ngInject";
