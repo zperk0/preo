@@ -42,6 +42,8 @@ export default class eventScheduleController {
         this.eventScheduleListCtrl.createSchedule(this.schedule)
           .then((_schedule)=>{
 
+            _schedule.$show = true;
+
             this.schedule.$deleted = false;
             this.schedule.$selected = false;
             
@@ -152,7 +154,7 @@ export default class eventScheduleController {
   	this.type = 'eventSchedule';
 
     if (this.schedule && !this.schedule.id) {
-        this.contextual.showMenu(this.type, this.schedule, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+      this.contextual.showMenu(this.type, this.schedule, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
     }    
   }
 }

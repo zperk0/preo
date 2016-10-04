@@ -3,7 +3,7 @@ export default class eventScheduleListController {
     return "eventScheduleListController"
   }
 
-  showCreateSchedule(){
+  showCreateSchedule() {
 
     let isCreating = this.schedules.filter(function (item) {
 
@@ -17,26 +17,48 @@ export default class eventScheduleListController {
 
     let schedule = new Preoday.EventSchedule({
       eventId: this.event.id,
+      freq: this.EventScheduleFrequency.ONCE,
+      pickupSlots: [],
+
       $selected: true,
+      $show: true
     });
 
     this.schedules.push(schedule);
   }  
+
+  createSchedule (newData) {
+
+    let deferred = this.$q.defer();
+
+    // newData.position = 0;
+
+    this.EventScheduleService.save(newData)
+        .then((schedule)=>{
+
+        deferred.resolve(schedule);
+      }, (err) => {
+        
+        deferred.reject(err);
+      });
+
+    return deferred.promise;    
+  }    
 
   recalculateHeight() {
 
     this.event.$expanding = true;
     let maxHeight = 0;
     this.schedules.forEach((i)=>{
-     maxHeight += 50 + 16;
-    })
+      maxHeight += 50 + 16;
+    });
 
     // (button + height + margin-top + margin-bottom)
     this.el[0].style.maxHeight = maxHeight + (50 + 8 + 32) + "px";
   }  
 
   /* @ngInject */
-  constructor($scope, $timeout, $q, Spinner, Snack, gettextCatalog) {
+  constructor($scope, $timeout, $q, Spinner, Snack, gettextCatalog, EventScheduleFrequency, EventScheduleService) {
     "ngInject";
 
     this.Spinner = Spinner;
@@ -44,6 +66,8 @@ export default class eventScheduleListController {
     this.$q = $q;
     this.$timeout = $timeout;
     this.gettextCatalog = gettextCatalog;
+    this.EventScheduleFrequency = EventScheduleFrequency;
+    this.EventScheduleService = EventScheduleService;
 
     this.event.$expanding = false;
 
