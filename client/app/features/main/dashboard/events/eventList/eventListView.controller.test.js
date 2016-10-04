@@ -89,7 +89,7 @@ describe('EventList View Controller', function () {
         name: 'test'
       }];
 
-      server.respondWith('GET', '/api/venues/' + currentVenue.id + '/events?expand=schedules', [200, {"Content-Type": "application/json"}, JSON.stringify(events)]);
+      server.respondWith('GET', '/api/venues/' + currentVenue.id + '/events?expand=schedules%2Cslots', [200, {"Content-Type": "application/json"}, JSON.stringify(events)]);
       server.respondWith('GET', '/api/venues/' + currentVenue.id + '/outletlocations?outlets=false', [200, {"Content-Type": "application/json"}, JSON.stringify(outletLocations)]);
 
       _startController();

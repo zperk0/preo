@@ -96,9 +96,24 @@ export default class eventScheduleController {
     
     this.DialogService.delete(this.LabelService.TITLE_DELETE_SCHEDULE, this.LabelService.CONTENT_DELETE_SCHEDULE)
       .then(()=>{
-        this.contextual.hide();
-        this.eventScheduleListCtrl.deleteSchedule(this.schedule);
+          this.Spinner.show("event-schedule-delete");
+
+          this.schedule.visible = 0;
+          return this.schedule.update();
       })
+      .then(()=>{
+          this.cardItemList.onItemDeleted(this.schedule);
+          if (this.onItemDeleted){
+            this.onItemDeleted({item:this.schedule});
+          }
+          this.Snack.show('Schedule deleted');
+          this.Spinner.hide("event-schedule-delete");
+      })
+      .catch((err)=>{
+        this.Spinner.hide("event-schedule-delete")
+        
+        this.Snack.showError('Schedule not deleted');
+      });      
   }  
 
   getScheduleTitle () {

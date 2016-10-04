@@ -6,9 +6,9 @@ import './eventSchedule.scss';
 import controller from './eventSchedule.controller';
 import directive from './eventSchedule.directive';
 
+import eventScheduleList from '../';
 
-
-export default angular.module("eventSchedule" , [])
+export default angular.module("eventSchedule" , [eventScheduleList])
 
 
   .controller(controller.UID, controller)
