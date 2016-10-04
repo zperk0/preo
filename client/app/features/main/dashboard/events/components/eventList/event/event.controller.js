@@ -185,16 +185,6 @@ export default class eventController {
 
     if (this.event && !this.event.id) {
       this.contextual.showMenu(this.type, this.event, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
-    } 
-
-    // this.event.schedules = [{
-    //   id: 1,
-    // },{
-    //   id: 2,
-    // },{
-    //   id: 3,
-    // },{
-    //   id: 4,
-    // }]
+    }
   }
 }

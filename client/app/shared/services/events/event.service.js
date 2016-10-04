@@ -16,7 +16,7 @@ export default class EventService {
     this.p = this.$q((resolve, reject)=>{
 
       Preoday.Event.getAll(venueId, {
-        expand: 'schedules'
+        expand: 'schedules,slots'
       }).then((events)=> {
 
         this.data.events = events;

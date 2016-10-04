@@ -19,9 +19,23 @@ export default class eventScheduleController {
     }    
   }
 
+  formatDate (date) {
+
+    var date = moment(date.getTime());
+
+    return date.format('YYYY-MM-DDThh:mm:00.000');
+  }
+
+  buildEntityToSchedule (entity) {
+
+    this.schedule = entity;
+    this.schedule.startDate = this.formatDate(entity.$startDate);
+    this.schedule.endDate = this.formatDate(entity.$endDate);
+  }
+
   contextualMenuSuccess(entity){
-    if (this.schedule && entity && entity.name){
-      this.schedule = entity;
+    if (this.schedule && entity) {
+      this.buildEntityToSchedule(entity);
 
       if (!this.schedule.id){
         this.Spinner.show("event-schedule-create");
@@ -63,7 +77,7 @@ export default class eventScheduleController {
           resolve(_schedule);
       },()=>{
         reject();
-        this.Snack.showError(this.gettextCatalog.getString('Error saving schedule'));
+        this.Snack.showError(this.gettextCatalog.getString('Error updating schedule'));
       }).then(()=>{
         this.Spinner.hide("event-schedule-update");
       })

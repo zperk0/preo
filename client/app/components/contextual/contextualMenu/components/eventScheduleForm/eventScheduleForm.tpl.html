@@ -9,7 +9,7 @@
   </md-input-container>  
 
   <div class="md-block">
-    <mdp-time-picker mdp-auto-switch="true" mdp-placeholder="{{ 'Start time' | translate }}" ng-model="eventScheduleFormCtrl.schedule.$startDate"></mdp-time-picker>
+    <mdp-time-picker mdp-auto-switch="true" mdp-placeholder="{{ 'Start time' | translate }}" ng-model="eventScheduleFormCtrl.schedule.$startDate" mdp-format="LT"></mdp-time-picker>
   </div>  
   <div class="md-block" ng-if="eventScheduleFormCtrl.isOnceFrequency()">
     <md-datepicker class="schedule-datepicker" ng-model="eventScheduleFormCtrl.schedule.$startDate" md-placeholder="{{ 'Date' }}" auto-open-calendar></md-datepicker>
