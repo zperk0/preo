@@ -104,26 +104,27 @@ export default class collectionSlotsItemController {
     this.DialogService.delete(this.LabelService.TITLE_DELETE_COLLECTION_SLOT, this.LabelService.CONTENT_DELETE_COLLECTION_SLOT)
       .then(()=>{
           this.Spinner.show("collection-slot-delete");
-          return this.collectionSlot.remove();
-      })
-      .then(()=>{
-        console.log('resr he');
-          this.cardItemList.onItemDeleted(this.collectionSlot);
-          if (this.onItemDeleted){
-            this.onItemDeleted({item:this.collectionSlot});
-          }
-          this.Snack.show('Collection Slot deleted');
-          this.Spinner.hide("collection-slot-delete");
-      })
-      .catch((err)=>{
-        console.log('error on delete,', err);
-        this.Spinner.hide("collection-slot-delete")
-        
-        if (err && err instanceof Object && err.message && err.message.indexOf('schedule') !== -1) {
-          this.showCannotDeleteSlotDialog();
-        } else {
-          this.Snack.showError('Collection slot not deleted');
-        }
+
+          let promise = this.collectionSlot.remove();
+          promise.then(()=>{
+            console.log('resr he');
+              this.cardItemList.onItemDeleted(this.collectionSlot);
+              if (this.onItemDeleted){
+                this.onItemDeleted({item: this.collectionSlot});
+              }
+              this.Snack.show('Collection Slot deleted');
+              this.Spinner.hide("collection-slot-delete");
+          })
+          .catch((err)=>{
+            console.log('error on delete,', err);
+            this.Spinner.hide("collection-slot-delete")
+            
+            if (err && err instanceof Object && err.message && err.message.indexOf('schedule') !== -1) {
+              this.showCannotDeleteSlotDialog();
+            } else {
+              this.Snack.showError('Collection slot not deleted');
+            }
+          });          
       });
   }  
 

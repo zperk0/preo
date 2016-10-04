@@ -98,25 +98,27 @@ export default class menuCardItemController {
     this.DialogService.delete(this.LabelService.TITLE_DELETE_MENU, this.LabelService.CONTENT_DELETE_MENU)
       .then(()=>{
           this.Spinner.show("menu-delete");
-          return this.menu.delete();
-      })
-      .then(()=>{
-          this.cardItemList.onItemDeleted(this.menu);
-          if (this.onItemDeleted){
-            this.onItemDeleted({item:this.menu});
-          }
-          this.Snack.show('Menu deleted');
-          this.Spinner.hide("menu-delete");
-      })
-      .catch((err)=>{
-        this.Spinner.hide("menu-delete")
-        
-        if (err && err instanceof Object && err.message.indexOf('outlet') !== -1) {
-          this.Snack.showError('An outlet is using this menu. You need remove it before');
-        } else {
-          this.Snack.showError('Menu not deleted');
-        }        
-      })
+
+          let promise = this.menu.delete();
+
+          promise.then(()=>{
+              this.cardItemList.onItemDeleted(this.menu);
+              if (this.onItemDeleted){
+                this.onItemDeleted({item:this.menu});
+              }
+              this.Snack.show('Menu deleted');
+              this.Spinner.hide("menu-delete");
+          })
+          .catch((err)=>{
+            this.Spinner.hide("menu-delete")
+            
+            if (err && err instanceof Object && err.message.indexOf('outlet') !== -1) {
+              this.Snack.showError('An outlet is using this menu. You need remove it before');
+            } else {
+              this.Snack.showError('Menu not deleted');
+            }        
+          });
+      });
       $event.stopPropagation();
   }
 

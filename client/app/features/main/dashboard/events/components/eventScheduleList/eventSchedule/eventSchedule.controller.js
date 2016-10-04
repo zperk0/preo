@@ -101,21 +101,23 @@ export default class eventScheduleController {
           this.Spinner.show("event-schedule-delete");
 
           this.schedule.visible = 0;
-          return this.schedule.update();
-      })
-      .then(()=>{
-          this.cardItemList.onItemDeleted(this.schedule);
-          if (this.onItemDeleted){
-            this.onItemDeleted({item:this.schedule});
-          }
-          this.Snack.show('Schedule deleted');
-          this.Spinner.hide("event-schedule-delete");
-      })
-      .catch((err)=>{
-        this.Spinner.hide("event-schedule-delete")
-        
-        this.Snack.showError('Schedule not deleted');
-      });      
+
+          let promise = this.schedule.update();
+          promise.then(()=>{
+              this.cardItemList.onItemDeleted(this.schedule);
+              if (this.onItemDeleted){
+                this.onItemDeleted({item:this.schedule});
+              }
+              this.Snack.show('Schedule deleted');
+              this.Spinner.hide("event-schedule-delete");
+          })
+          .catch((err)=>{
+            console.log('catch here', err);
+            this.Spinner.hide("event-schedule-delete")
+            
+            this.Snack.showError('Schedule not deleted');
+          });            
+      });    
   }  
 
   getScheduleTitle () {

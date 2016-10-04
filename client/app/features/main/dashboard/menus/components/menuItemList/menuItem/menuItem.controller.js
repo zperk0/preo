@@ -196,26 +196,30 @@ export default class menuItemController {
     this.DialogService.delete(this.LabelService.TITLE_DELETE_ITEM, msg)
       .then(()=>{
           this.Spinner.show("item-delete");
+
+          let promise = null;
+
           if (this.sectionId){
-            return this.ItemService.removeFromSection(this.item.item, this.sectionId)
+            promise = this.ItemService.removeFromSection(this.item.item, this.sectionId)
           }
           else {
-            return this.ItemService.deleteItem(this.item.item)
+            promise = this.ItemService.deleteItem(this.item.item)
           }
-      })
-      .then(()=>{
-          this.cardItemList.onItemDeleted(this.item.item);
-          if (this.onItemDeleted){
-            this.onItemDeleted({item:this.item.item});
-          }
-          this.Snack.show('Item deleted');
-          this.Spinner.hide("item-delete");
-      })
-      .catch((err)=>{
-        console.log("Failed deleting item", err)
-        this.Spinner.hide("item-delete")
-        this.Snack.showError('Item not deleted');
-      })
+
+          promise.then(()=>{
+              this.cardItemList.onItemDeleted(this.item.item);
+              if (this.onItemDeleted){
+                this.onItemDeleted({item:this.item.item});
+              }
+              this.Snack.show('Item deleted');
+              this.Spinner.hide("item-delete");
+          })
+          .catch((err)=>{
+            console.log("Failed deleting item", err)
+            this.Spinner.hide("item-delete")
+            this.Snack.showError('Item not deleted');
+          })          
+      });
   }
 
   //check if we have multiple occurrences before updating but only if we're in a section
