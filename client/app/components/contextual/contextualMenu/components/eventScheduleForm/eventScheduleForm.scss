@@ -75,6 +75,12 @@ $inputColor: #9E9E9E;
   	}
   }
 
+  .datepicker-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    width: 162px;
+  }
+
   .md-input-container-frequency {
   	margin-bottom: 0px;
   }
@@ -84,6 +90,13 @@ $inputColor: #9E9E9E;
       &:first-child {
         margin-right: 24px;
       }
+    }
+  }
+
+  .md-block-timepicker {
+    div[ng-messages] {
+      margin-top: -16px;
+      margin-bottom: 16px;
     }
   }
 }

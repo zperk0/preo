@@ -77,14 +77,14 @@ export default class eventScheduleController {
         .then((_schedule)=>{
           this.Snack.show(this.gettextCatalog.getString('Schedule updated'));
 
-          this.cardItemList.buildScheduleTimestamp(this.schedule);
+          this.eventScheduleListCtrl.buildScheduleTimestamp(this.schedule);
           resolve(_schedule);
-      },()=>{
-        reject();
-        this.Snack.showError(this.gettextCatalog.getString('Error updating schedule'));
-      }).then(()=>{
-        this.Spinner.hide("event-schedule-update");
-      })
+        },()=>{
+          reject();
+          this.Snack.showError(this.gettextCatalog.getString('Error updating schedule'));
+        }).then(()=>{
+          this.Spinner.hide("event-schedule-update");
+        })
     });
   }
 

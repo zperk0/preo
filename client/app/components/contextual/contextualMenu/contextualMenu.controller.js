@@ -11,6 +11,7 @@ export default class contextualMenuController {
 
   doSubmit(){
     if (this.contextualForm.$valid){
+      console.log('resolving this', this.entity);
       this.contextualMenu.resolve(this.entity);
     }
   }

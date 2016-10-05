@@ -16,8 +16,8 @@ export default class eventScheduleFormController {
 
     this.EventScheduleFrequency = EventScheduleFrequency;
 
-    this.schedule.$startDate = moment(this.schedule.startDate).toDate();
-    this.schedule.$endDate = moment(this.schedule.endDate).toDate();
+    this.schedule.$startDate = this.schedule.startDate ? moment(this.schedule.startDate).toDate() : new Date();
+    this.schedule.$endDate = this.schedule.endDate ? moment(this.schedule.endDate).toDate() : new Date();
 
     this.schedules = [{
     	value: EventScheduleFrequency.ONCE,
