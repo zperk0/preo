@@ -20,6 +20,8 @@
     <item-chips ng-if="eventCtrl.event.outletLocationId && eventCtrl.outletLocations.length" items="eventCtrl.outletLocations" on-remove="eventCtrl.removeOutletLocation(item)"></item-chips>
 
     <event-schedule-list
+          has-new="true"
+          sv-disabled="true"
           schedules="eventCtrl.event.schedules"
           event="eventCtrl.event"
         >

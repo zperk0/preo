@@ -1,11 +1,12 @@
 <div class="event-schedule-list">
   <div class='sv-root-holder'
       sv-root="eventSchedule"
+      sv-disabled="eventScheduleListCtrl.svDisabled"
       sv-on-sort="eventScheduleListCtrl.onScheduleMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
 
     <card-item-list
         collection="eventScheduleListCtrl.schedules"
-        has-new="true"
+        has-new="eventScheduleListCtrl.hasNew"
         tooltip="{{ 'Add new schedule' | translate }}"
         on-click-new="eventScheduleListCtrl.showCreateSchedule()"
         >
