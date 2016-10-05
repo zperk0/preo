@@ -90,7 +90,6 @@ export default class eventScheduleListController {
       // 
 
       $scope.$watch('eventScheduleListCtrl.event.$expanded',(newVal, oldVal)=>{
-
         if(newVal){ // if expanded = true;
           this.schedules.forEach((i)=>i.$show = true)
           if (this.schedules.length === 0){

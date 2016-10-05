@@ -6,6 +6,8 @@ export default class eventScheduleController {
   restoreOriginalValues(){
     if (this.originalSchedule){
       angular.extend(this.schedule, this.originalSchedule)
+      this.schedule.$startDate = null;
+      this.schedule.$endDate = null;
       this.originalSchedule = false;
     }
   }  
@@ -31,6 +33,10 @@ export default class eventScheduleController {
     this.schedule = entity;
     this.schedule.startDate = this.formatDate(entity.$startDate);
     this.schedule.endDate = this.formatDate(entity.$endDate);
+
+    if (this.schedule.freq === this.EventScheduleFrequency.ONCE) {
+      this.schedule.endDate = this.schedule.startDate;
+    }
   }
 
   contextualMenuSuccess(entity){
@@ -126,19 +132,19 @@ export default class eventScheduleController {
 
     switch (this.schedule.freq) {
       case this.EventScheduleFrequency.ONCE:
-        return moment(this.schedule.startDate).format('DD/MM/YYYY');
+        return moment(this.schedule.$startDate || this.schedule.startDate).format('DD/MM/YYYY');
 
       default:
         return [
-            moment(this.schedule.startDate).format('DD/MM/YYYY'), 
-            moment(this.schedule.endDate).format('DD/MM/YYYY')
+            moment(this.schedule.$startDate || this.schedule.startDate).format('DD/MM/YYYY'), 
+            moment(this.schedule.$endDate || this.schedule.endDate).format('DD/MM/YYYY')
         ].join(' - ');
     }
   }
 
   getScheduleTime () {
 
-    return moment(this.schedule.startDate).format('hh:mm');
+    return moment(this.schedule.$startDate || this.schedule.startDate).format('hh:mm');
   }
 
   constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, gettextCatalog, EventScheduleFrequency) {

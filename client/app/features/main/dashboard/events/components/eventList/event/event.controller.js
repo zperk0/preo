@@ -6,7 +6,8 @@ export default class eventController {
   restoreOriginalValues() {
 
     if (this.originalEvent){
-      angular.extend(this.event, this.originalEvent)
+      delete this.originalEvent.schedules;
+      angular.extend(this.event, this.originalEvent);
       this.originalEvent = false;
     }
   }  
@@ -100,6 +101,7 @@ export default class eventController {
       });
     }
 
+    this.event.$expanded = false;
     this.originalEvent  = angular.copy(this.event);
     this.cardItemList.selectItem(this.event);
     this.contextual.showMenu(this.type, this.event, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
@@ -141,20 +143,22 @@ export default class eventController {
           this.Spinner.show("event-delete");
 
           this.event.visible = 0;
-          return this.event.update();
-      })
-      .then(()=>{
-          this.cardItemList.onItemDeleted(this.event);
-          if (this.onItemDeleted){
-            this.onItemDeleted({item:this.event});
-          }
-          this.Snack.show('Event deleted');
-          this.Spinner.hide("event-delete");
-      })
-      .catch((err)=>{
-        this.Spinner.hide("event-delete")
-        
-        this.Snack.showError('Event not deleted');
+          
+          let promise = this.event.update();
+
+          promise.then(()=>{
+              this.cardItemList.onItemDeleted(this.event);
+              if (this.onItemDeleted){
+                this.onItemDeleted({item:this.event});
+              }
+              this.Snack.show('Event deleted');
+              this.Spinner.hide("event-delete");
+          })
+          .catch((err)=>{
+            this.Spinner.hide("event-delete")
+            
+            this.Snack.showError('Event not deleted');
+          });          
       });
   }  
 
