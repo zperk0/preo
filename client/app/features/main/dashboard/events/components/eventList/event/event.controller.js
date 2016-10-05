@@ -104,7 +104,7 @@ export default class eventController {
     this.event.$expanded = false;
     this.originalEvent  = angular.copy(this.event);
     this.cardItemList.selectItem(this.event);
-    this.contextual.showMenu(this.type, this.event, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+    this.showContextual();
     $event.stopPropagation();
   } 
 
@@ -180,6 +180,13 @@ export default class eventController {
     return this.gettextCatalog.getString("You don't have outlet locations yet");
   }
 
+  showContextual () {
+
+    this.contextual.showMenu(this.type, this.event, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
+        doneButtonText: this.event.schedules.length < 1 ? this.gettextCatalog.getString('Add schedule') : null
+      });
+  }
+
   constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, EventService, gettextCatalog, OutletLocationService) {
   	"ngInject";
 
@@ -201,7 +208,7 @@ export default class eventController {
     this.buildOutletLocation();
 
     if (this.event && !this.event.id) {
-      this.contextual.showMenu(this.type, this.event, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+      this.showContextual();
     }
   }
 }

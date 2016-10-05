@@ -5,8 +5,8 @@
         <md-button class='md-primary'  ng-click="contextualMenuCtrl.onCancel()" translate>
           Cancel
       </md-button>
-      <md-button type="submit" class='md-raised' translate>
-          Done
+      <md-button type="submit" class='md-raised'>
+         {{ contextualMenuCtrl.params.doneButtonText || ('Done' | translate) }}
       </md-button>
     </md-card-actions>
   </form>

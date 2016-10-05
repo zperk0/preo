@@ -7,7 +7,8 @@ export default function contextualMenu($compile, $timeout, $animate){
     template: require("./contextualMenu.tpl.html"),
     scope:{
       entity:"=",
-      template:"="
+      template:"=",
+      params: '='
     },
     controller: controller.UID,
     controllerAs: "contextualMenuCtrl",
