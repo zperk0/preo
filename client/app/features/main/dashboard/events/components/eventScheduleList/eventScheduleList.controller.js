@@ -38,6 +38,11 @@ export default class eventScheduleListController {
     return deferred.promise;    
   }    
 
+  getSchedulesCount () {
+
+    return this.schedules.length;
+  }
+
   recalculateHeight() {
 
     this.event.$expanding = true;
@@ -47,7 +52,12 @@ export default class eventScheduleListController {
     });
 
     // (button + height + margin-top + margin-bottom)
-    this.el[0].style.maxHeight = maxHeight + (50 + 8 + 32) + "px";
+    maxHeight = maxHeight + (50 + 8 + 32) + "px";
+    if (this.el[0].style.maxHeight !== maxHeight) {
+      this.el[0].style.maxHeight = maxHeight;
+    } else {
+      this.event.$expanding = false;
+    }
   }  
 
   buildScheduleTimestamp(schedule) {
@@ -76,7 +86,10 @@ export default class eventScheduleListController {
     });
 
     //watch for animation only if we're in a section
-    $scope.$watch('eventScheduleListCtrl.event.$expanded',(newVal, oldVal)=>{
+    $scope.$watch(() => {
+
+      return this.event.$expanded;
+    },(newVal, oldVal)=>{
 
       if(newVal){ // if expanded = true;
         this.schedules.forEach((i)=>i.$show = true)
@@ -92,6 +105,6 @@ export default class eventScheduleListController {
         }, 1000)
 
       }
-    }); 
+    }, true); 
   }
 }

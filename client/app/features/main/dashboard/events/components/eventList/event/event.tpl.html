@@ -17,7 +17,11 @@
                     </card-item-title>
 
 
-    <item-chips ng-if="eventCtrl.event.outletLocationId && eventCtrl.outletLocations.length" items="eventCtrl.outletLocations" on-remove="eventCtrl.removeOutletLocation(item)"></item-chips>
+    <item-chips 
+          ng-if="eventCtrl.event.outletLocationId && eventCtrl.outletLocations.length" 
+          items="eventCtrl.outletLocations" 
+          on-remove="eventCtrl.removeOutletLocation(item)"
+          class="outlet-locations-chips"></item-chips>
 
     <event-schedule-list
           has-new="true"

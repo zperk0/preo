@@ -62,7 +62,7 @@ export default class EventService {
 
           data.image = imagePath;
 
-          Preoday.Event.create(data)
+          Preoday.Event.create(this.VenueService.currentVenue.id, data)
             .then(deferred.resolve, deferred.reject);
         }, deferred.reject);
     } else {

@@ -85,7 +85,7 @@ export default class eventScheduleController {
 
           this.eventScheduleListCtrl.buildScheduleTimestamp(this.schedule);
           resolve(_schedule);
-        },()=>{
+        },(err) => {
           reject();
           this.Snack.showError(this.gettextCatalog.getString('Error updating schedule'));
         }).then(()=>{
@@ -103,30 +103,46 @@ export default class eventScheduleController {
   }    
 
   onDelete(){
+
+    if (this.eventScheduleListCtrl.getSchedulesCount() === 1) {
+      return this.showCannotDeleteScheduleDialog();
+    }
     
     this.DialogService.delete(this.LabelService.TITLE_DELETE_SCHEDULE, this.LabelService.CONTENT_DELETE_SCHEDULE)
       .then(()=>{
-          this.Spinner.show("event-schedule-delete");
 
-          this.schedule.visible = 0;
+        this.Spinner.show("event-schedule-delete");
 
-          let promise = this.schedule.update();
-          promise.then(()=>{
-              this.cardItemList.onItemDeleted(this.schedule);
-              if (this.onItemDeleted){
-                this.onItemDeleted({item:this.schedule});
-              }
-              this.Snack.show('Schedule deleted');
-              this.Spinner.hide("event-schedule-delete");
-          })
-          .catch((err)=>{
-            console.log('catch here', err);
-            this.Spinner.hide("event-schedule-delete")
-            
-            this.Snack.showError('Schedule not deleted');
-          });            
+        this.schedule.visible = 0;
+
+        let promise = this.schedule.update();
+        promise.then(()=>{
+            this.cardItemList.onItemDeleted(this.schedule);
+            if (this.onItemDeleted){
+              this.onItemDeleted({item:this.schedule});
+            }
+            this.Snack.show('Schedule deleted');
+            this.Spinner.hide("event-schedule-delete");
+        })
+        .catch((err)=>{
+          console.log('catch here', err);
+          this.Spinner.hide("event-schedule-delete")            
+
+          if (err && err instanceof Object && err.message && err.message.indexOf('event') !== -1) {
+            this.showCannotDeleteScheduleDialog(err);
+          } else {
+            this.Snack.showError(this.gettextCatalog.getString('Schedule not deleted'));
+          }            
+        });            
       });    
   }  
+
+  showCannotDeleteScheduleDialog () {
+
+    this.DialogService.show(this.ErrorService.SCHEDULE_EVENT.title, this.ErrorService.SCHEDULE_EVENT.message, [{
+        name: this.gettextCatalog.getString('OK')
+      }]);       
+  }
 
   getScheduleTitle () {
 
@@ -147,7 +163,7 @@ export default class eventScheduleController {
     return moment(this.schedule.$startDate || this.schedule.startDate).format('hh:mm');
   }
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, gettextCatalog, EventScheduleFrequency) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, gettextCatalog, EventScheduleFrequency, ErrorService) {
   	"ngInject";
 
     this.$q = $q;
@@ -159,7 +175,8 @@ export default class eventScheduleController {
   	this.DialogService = DialogService;
   	this.LabelService = LabelService;
     this.gettextCatalog = gettextCatalog;
-  	this.EventScheduleFrequency = EventScheduleFrequency;
+    this.EventScheduleFrequency = EventScheduleFrequency;
+  	this.ErrorService = ErrorService;
 
   	this.type = 'eventSchedule';
 

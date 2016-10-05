@@ -87,7 +87,7 @@ export default class eventController {
         .then((_event)=>{
           this.Snack.show(this.gettextCatalog.getString('Event updated'));
           resolve(_event);
-      },()=>{
+      },(err) => {
         reject();
         this.Snack.showError(this.gettextCatalog.getString('Error updating event'));
       }).then(()=>{
@@ -98,9 +98,12 @@ export default class eventController {
 
   checkEventSchedules () {
 
-    if (!this.event.schedules.length) {      
+    if (!this.event.schedules.length) {
+      if (!this.event.$expanded) {
+        this.event.$expanded = true;
+      }
+
       this.event.schedules.push(this.EventScheduleService.getNewScheduleModel(this.event.id));
-      this.event.$expanded = true;
     }
   }
 

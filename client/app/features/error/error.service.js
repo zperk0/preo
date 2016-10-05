@@ -35,5 +35,8 @@ export default class ErrorService {
     // COLLECTION SLOT
     this.COLLECTION_SLOT_SCHEDULE = {code:'COLLECTION_SLOT_SCHEDULE', message:gettextCatalog.getString("This slot is still assigned to some schedules. You must remove all instances before deleting."), title: gettextCatalog.getString('Cannot delete slot')};
 
+    // SCHEDULE
+    this.SCHEDULE_EVENT = {code:'SCHEDULE_EVENT', message:gettextCatalog.getString("An event need to have at least 1 schedule."), title: gettextCatalog.getString('Cannot delete schedule')};
+
   }
 }
