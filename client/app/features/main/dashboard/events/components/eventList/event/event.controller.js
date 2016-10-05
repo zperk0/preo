@@ -180,10 +180,15 @@ export default class eventController {
 
   buildOutletLocation() {
 
+    this.outletLocations = [];
+
     if (this.event && this.event.outletLocationId) {
-      this.outletLocations = [this.OutletLocationService.findById(this.event.outletLocationId)];
-    } else {
-      this.outletLocations = [];
+
+      let outletLocation = this.OutletLocationService.findById(this.event.outletLocationId);
+
+      if (outletLocation) {
+        this.outletLocations.push(outletLocation);
+      }
     }
   }  
 
