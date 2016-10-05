@@ -10,10 +10,26 @@ export default class EventScheduleService {
     return Preoday.EventSchedule.create(data);
   }
 
-  constructor($q) {
+  getNewScheduleModel(eventId) {
+
+    let schedule = new Preoday.EventSchedule({
+      eventId: eventId,
+      freq: this.EventScheduleFrequency.ONCE,
+      pickupSlots: [],
+
+      $selected: true,
+      $show: true
+    });  
+    
+    return schedule;  
+  }
+
+  constructor($q, EventScheduleFrequency) {
     "ngInject";
 
     this.$q = $q;
+    this.EventScheduleFrequency = EventScheduleFrequency;
+
     this.data = {};
   }
 }

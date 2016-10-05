@@ -54,8 +54,11 @@ export default class eventController {
             
             this.$timeout(() => {
 
-              this.cardItemList.onItemCreated(_event);
+              angular.extend(this.event, _event);
+
+              // this.cardItemList.onItemCreated(_event);
               this.contextualMenu.hide();
+              this.checkEventSchedules();
               this.Spinner.hide("event-create");
               this.Snack.show(this.gettextCatalog.getString('Event created'));              
             });
@@ -69,6 +72,8 @@ export default class eventController {
         this.updateEvent().then(()=>{
           this.contextualMenu.hide();
           this.event.$selected = false;
+
+          this.checkEventSchedules();
         })
       }
     }
@@ -89,6 +94,14 @@ export default class eventController {
         this.Spinner.hide("event-update");
       })
     });
+  }
+
+  checkEventSchedules () {
+
+    if (!this.event.schedules.length) {      
+      this.event.schedules.push(this.EventScheduleService.getNewScheduleModel(this.event.id));
+      this.event.$expanded = true;
+    }
   }
 
   onEdit ($event) {
@@ -187,7 +200,7 @@ export default class eventController {
       });
   }
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, EventService, gettextCatalog, OutletLocationService) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, EventService, EventScheduleService, gettextCatalog, OutletLocationService) {
   	"ngInject";
 
     this.$q = $q;
@@ -200,6 +213,7 @@ export default class eventController {
     this.LabelService = LabelService;
   	this.ErrorService = ErrorService;
     this.EventService = EventService;
+    this.EventScheduleService = EventScheduleService;
     this.gettextCatalog = gettextCatalog;
   	this.OutletLocationService = OutletLocationService;
 

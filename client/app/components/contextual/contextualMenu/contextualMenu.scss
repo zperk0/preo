@@ -10,6 +10,11 @@
   .form-content{
     max-height: calc(100vh - 64px - 50px - 90px - 30px ); //100% - toolbar - optional dashboard toolbar - bottom buttons - extra spacing for bottom padding
     overflow-y:auto;
+    display: none;
+
+    &.rendered {
+      display: block;
+    }
 
   }
 
@@ -299,7 +304,14 @@
       color: rgb(221,44,0);
     }
   }
+  
+  .content-spinner {
+    text-align: center;
 
+    spinner {
+      display: inline-block;
+    }
+  }
 }
 
 .md-datepicker-calendar-pane {
