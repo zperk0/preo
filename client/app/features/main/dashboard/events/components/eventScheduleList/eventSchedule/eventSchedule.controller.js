@@ -6,6 +6,8 @@ export default class eventScheduleController {
   restoreOriginalValues(){
     if (this.originalSchedule){
       angular.extend(this.schedule, this.originalSchedule)
+      this.schedule.$startDate = null;
+      this.schedule.$endDate = null;
       this.originalSchedule = false;
     }
   }  
@@ -19,14 +21,34 @@ export default class eventScheduleController {
     }    
   }
 
+  formatDate (date) {
+
+    var date = moment(date.getTime());
+
+    return date.format('YYYY-MM-DDThh:mm:00.000');
+  }
+
+  buildEntityToSchedule (entity) {
+
+    this.schedule = entity;
+    this.schedule.startDate = this.formatDate(entity.$startDate);
+    this.schedule.endDate = this.formatDate(entity.$endDate);
+
+    if (this.schedule.freq === this.EventScheduleFrequency.ONCE) {
+      this.schedule.endDate = this.schedule.startDate;
+    }
+  }
+
   contextualMenuSuccess(entity){
-    if (this.schedule && entity && entity.name){
-      this.schedule = entity;
+    if (this.schedule && entity) {
+      this.buildEntityToSchedule(entity);
 
       if (!this.schedule.id){
         this.Spinner.show("event-schedule-create");
         this.eventScheduleListCtrl.createSchedule(this.schedule)
           .then((_schedule)=>{
+
+            _schedule.$show = true;
 
             this.schedule.$deleted = false;
             this.schedule.$selected = false;
@@ -60,13 +82,15 @@ export default class eventScheduleController {
       this.schedule.update()
         .then((_schedule)=>{
           this.Snack.show(this.gettextCatalog.getString('Schedule updated'));
+
+          this.eventScheduleListCtrl.buildScheduleTimestamp(this.schedule);
           resolve(_schedule);
-      },()=>{
-        reject();
-        this.Snack.showError(this.gettextCatalog.getString('Error saving schedule'));
-      }).then(()=>{
-        this.Spinner.hide("event-schedule-update");
-      })
+        },(err) => {
+          reject();
+          this.Snack.showError(this.gettextCatalog.getString('Error updating schedule'));
+        }).then(()=>{
+          this.Spinner.hide("event-schedule-update");
+        })
     });
   }
 
@@ -79,15 +103,67 @@ export default class eventScheduleController {
   }    
 
   onDelete(){
+
+    if (this.eventScheduleListCtrl.getSchedulesCount() === 1) {
+      return this.showCannotDeleteScheduleDialog();
+    }
     
     this.DialogService.delete(this.LabelService.TITLE_DELETE_SCHEDULE, this.LabelService.CONTENT_DELETE_SCHEDULE)
       .then(()=>{
-        this.contextual.hide();
-        this.eventScheduleListCtrl.deleteSchedule(this.schedule);
-      })
+
+        this.Spinner.show("event-schedule-delete");
+
+        this.schedule.visible = 0;
+
+        let promise = this.schedule.update();
+        promise.then(()=>{
+            this.cardItemList.onItemDeleted(this.schedule);
+            if (this.onItemDeleted){
+              this.onItemDeleted({item:this.schedule});
+            }
+            this.Snack.show('Schedule deleted');
+            this.Spinner.hide("event-schedule-delete");
+        })
+        .catch((err)=>{
+          console.log('catch here', err);
+          this.Spinner.hide("event-schedule-delete")            
+
+          if (err && err instanceof Object && err.message && err.message.indexOf('event') !== -1) {
+            this.showCannotDeleteScheduleDialog(err);
+          } else {
+            this.Snack.showError(this.gettextCatalog.getString('Schedule not deleted'));
+          }            
+        });            
+      });    
   }  
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, gettextCatalog) {
+  showCannotDeleteScheduleDialog () {
+
+    this.DialogService.show(this.ErrorService.SCHEDULE_EVENT.title, this.ErrorService.SCHEDULE_EVENT.message, [{
+        name: this.gettextCatalog.getString('OK')
+      }]);       
+  }
+
+  getScheduleTitle () {
+
+    switch (this.schedule.freq) {
+      case this.EventScheduleFrequency.ONCE:
+        return moment(this.schedule.$startDate || this.schedule.startDate).format('DD/MM/YYYY');
+
+      default:
+        return [
+            moment(this.schedule.$startDate || this.schedule.startDate).format('DD/MM/YYYY'), 
+            moment(this.schedule.$endDate || this.schedule.endDate).format('DD/MM/YYYY')
+        ].join(' - ');
+    }
+  }
+
+  getScheduleTime () {
+
+    return moment(this.schedule.$startDate || this.schedule.startDate).format('hh:mm');
+  }
+
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, gettextCatalog, EventScheduleFrequency, ErrorService) {
   	"ngInject";
 
     this.$q = $q;
@@ -98,12 +174,14 @@ export default class eventScheduleController {
   	this.contextual = contextual;
   	this.DialogService = DialogService;
   	this.LabelService = LabelService;
-  	this.gettextCatalog = gettextCatalog;
+    this.gettextCatalog = gettextCatalog;
+    this.EventScheduleFrequency = EventScheduleFrequency;
+  	this.ErrorService = ErrorService;
 
   	this.type = 'eventSchedule';
 
     if (this.schedule && !this.schedule.id) {
-        this.contextual.showMenu(this.type, this.schedule, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+      this.contextual.showMenu(this.type, this.schedule, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
     }    
   }
 }

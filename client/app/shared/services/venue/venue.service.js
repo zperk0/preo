@@ -82,6 +82,8 @@ export default class VenueService {
     this.currentVenue = venue;
     venue.setAsCurrent();
 
+    this.setVenueLocale(venue);
+
     this.checkFeatures(venue)
       .then(() => {
 
@@ -94,6 +96,25 @@ export default class VenueService {
       });
 
     return deferred.promise;
+  }
+
+  setVenueLocale (venue) {
+
+    if(venue.locale) {
+      let venueLocale = venue.locale,
+          language = venueLocale.substr(0, venueLocale.indexOf('-')).toLowerCase(),
+          country = venueLocale.substr(venueLocale.indexOf('-')+1,venueLocale.length-1).toLowerCase();
+      switch(language) {
+        case 'no':
+          language = 'nb';
+          break;
+      }
+      this.gettextCatalog.setCurrentLanguage(language);
+      console.log("set moment locale", language+"-"+country);
+      moment.locale(language+"-"+country);
+    } else {
+      moment.locale('en-gb'); //en-GB as default - if we don't do this it'll set en-US
+    }    
   }
 
   checkFeatures () {

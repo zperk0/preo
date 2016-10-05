@@ -6,7 +6,8 @@ export default class eventController {
   restoreOriginalValues() {
 
     if (this.originalEvent){
-      angular.extend(this.event, this.originalEvent)
+      delete this.originalEvent.schedules;
+      angular.extend(this.event, this.originalEvent);
       this.originalEvent = false;
     }
   }  
@@ -53,8 +54,11 @@ export default class eventController {
             
             this.$timeout(() => {
 
-              this.cardItemList.onItemCreated(_event);
+              angular.extend(this.event, _event);
+
+              // this.cardItemList.onItemCreated(_event);
               this.contextualMenu.hide();
+              this.checkEventSchedules();
               this.Spinner.hide("event-create");
               this.Snack.show(this.gettextCatalog.getString('Event created'));              
             });
@@ -68,6 +72,8 @@ export default class eventController {
         this.updateEvent().then(()=>{
           this.contextualMenu.hide();
           this.event.$selected = false;
+
+          this.checkEventSchedules();
         })
       }
     }
@@ -81,13 +87,24 @@ export default class eventController {
         .then((_event)=>{
           this.Snack.show(this.gettextCatalog.getString('Event updated'));
           resolve(_event);
-      },()=>{
+      },(err) => {
         reject();
         this.Snack.showError(this.gettextCatalog.getString('Error updating event'));
       }).then(()=>{
         this.Spinner.hide("event-update");
       })
     });
+  }
+
+  checkEventSchedules () {
+
+    if (!this.event.schedules.length) {
+      if (!this.event.$expanded) {
+        this.event.$expanded = true;
+      }
+
+      this.event.schedules.push(this.EventScheduleService.getNewScheduleModel(this.event.id));
+    }
   }
 
   onEdit ($event) {
@@ -100,13 +117,18 @@ export default class eventController {
       });
     }
 
+    this.event.$expanded = false;
     this.originalEvent  = angular.copy(this.event);
     this.cardItemList.selectItem(this.event);
-    this.contextual.showMenu(this.type, this.event, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+    this.showContextual();
     $event.stopPropagation();
   } 
 
   onAddOutletLocation () {
+
+    if (!this.OutletLocationService.hasOutletLocations()) {
+      return;
+    }
 
     this.contextual.showDrawer('eventOutletLocations')
       .then((outletLocation) => {
@@ -137,20 +159,22 @@ export default class eventController {
           this.Spinner.show("event-delete");
 
           this.event.visible = 0;
-          return this.event.update();
-      })
-      .then(()=>{
-          this.cardItemList.onItemDeleted(this.event);
-          if (this.onItemDeleted){
-            this.onItemDeleted({item:this.event});
-          }
-          this.Snack.show('Event deleted');
-          this.Spinner.hide("event-delete");
-      })
-      .catch((err)=>{
-        this.Spinner.hide("event-delete")
-        
-        this.Snack.showError('Event not deleted');
+          
+          let promise = this.event.update();
+
+          promise.then(()=>{
+              this.cardItemList.onItemDeleted(this.event);
+              if (this.onItemDeleted){
+                this.onItemDeleted({item:this.event});
+              }
+              this.Snack.show('Event deleted');
+              this.Spinner.hide("event-delete");
+          })
+          .catch((err)=>{
+            this.Spinner.hide("event-delete")
+            
+            this.Snack.showError('Event not deleted');
+          });          
       });
   }  
 
@@ -163,7 +187,23 @@ export default class eventController {
     }
   }  
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, EventService, gettextCatalog, OutletLocationService) {
+  getAddOutletLocationMessage () {
+
+    if (this.OutletLocationService.hasOutletLocations()) {
+      return this.gettextCatalog.getString('Set outlet configuration');
+    }
+
+    return this.gettextCatalog.getString("You don't have outlet locations yet");
+  }
+
+  showContextual () {
+
+    this.contextual.showMenu(this.type, this.event, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
+        doneButtonText: this.event.schedules.length < 1 ? this.gettextCatalog.getString('Add schedule') : null
+      });
+  }
+
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, EventService, EventScheduleService, gettextCatalog, OutletLocationService) {
   	"ngInject";
 
     this.$q = $q;
@@ -176,6 +216,7 @@ export default class eventController {
     this.LabelService = LabelService;
   	this.ErrorService = ErrorService;
     this.EventService = EventService;
+    this.EventScheduleService = EventScheduleService;
     this.gettextCatalog = gettextCatalog;
   	this.OutletLocationService = OutletLocationService;
 
@@ -184,17 +225,7 @@ export default class eventController {
     this.buildOutletLocation();
 
     if (this.event && !this.event.id) {
-      this.contextual.showMenu(this.type, this.event, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
-    } 
-
-    // this.event.schedules = [{
-    //   id: 1,
-    // },{
-    //   id: 2,
-    // },{
-    //   id: 3,
-    // },{
-    //   id: 4,
-    // }]
+      this.showContextual();
+    }
   }
 }

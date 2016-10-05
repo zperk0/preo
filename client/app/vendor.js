@@ -15,6 +15,16 @@ import angularMaterial from 'angular-material';
 window.moment = require('moment/moment.js');
 
 
+require('moment/locale/en-gb.js');
+require('moment/locale/nb.js');
+require('moment/locale/nl.js');
+require('moment/locale/fi.js');
+require('moment/locale/da.js');
+require('moment/locale/sv.js');
+require('moment/locale/fr.js');
+require('moment/locale/de.js');
+require('moment/locale/es.js');
+
 export default angular.module('webapp.vendors', [
     'ui.router',
     'ngAnimate',
@@ -22,5 +32,5 @@ export default angular.module('webapp.vendors', [
     'ngMessages',
     'ngMaterial',
     'angular-sortable-view',
-    'mdPickers',
+    'mdPickers'
   ]);

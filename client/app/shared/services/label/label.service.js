@@ -46,5 +46,8 @@ export default class LabelService {
     this.TITLE_DELETE_EVENT = gettextCatalog.getString("Delete event?");
     this.CONTENT_DELETE_EVENT = gettextCatalog.getString("Are you sure you want to delete this event?");    
 
+    this.TITLE_DELETE_SCHEDULE = gettextCatalog.getString("Delete schedule?");
+    this.CONTENT_DELETE_SCHEDULE = gettextCatalog.getString("Are you sure you want to delete this schedule?");    
+
   }
 }

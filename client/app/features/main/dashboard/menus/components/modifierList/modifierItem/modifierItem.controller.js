@@ -62,18 +62,19 @@ export default class modifierItemController {
       this.DialogService.delete(this.LabelService.TITLE_DELETE_MODIFIER, this.LabelService.CONTENT_DELETE_MODIFIER)
         .then(()=>{
             this.Spinner.show("modifier-delete");
-            return this.ModifierService.deleteModifier(this.modifier)
-        })
-        .then(()=>{
-            this.cardItemList.onItemDeleted(this.modifier);
-            this.Snack.show('Item deleted');
-            this.Spinner.hide("modifier-delete");
-        })
-        .catch((err)=>{
-          console.log("Failed deleting Modifier", err)
-          this.Spinner.hide("modifier-delete")
-          this.Snack.showError('Modifier not deleted');
-        })
+
+            let promise = this.ModifierService.deleteModifier(this.modifier)
+            promise.then(()=>{
+                this.cardItemList.onItemDeleted(this.modifier);
+                this.Snack.show('Item deleted');
+                this.Spinner.hide("modifier-delete");
+            })
+            .catch((err)=>{
+              console.log("Failed deleting Modifier", err)
+              this.Spinner.hide("modifier-delete")
+              this.Snack.showError('Modifier not deleted');
+            });
+        });
     }
 
     createModifier(){

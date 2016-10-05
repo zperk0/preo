@@ -44,6 +44,11 @@ export default class OutletService {
     return item && item.length ? item[0] : null;
   }
 
+  hasOutlets () {
+
+    return this.data.outlets && this.data.outlets.length > 0;
+  }
+
   constructor($q, $rootScope, $stateParams) {
     "ngInject";
     this.$stateParams = $stateParams;

@@ -17,9 +17,15 @@
                     </card-item-title>
 
 
-    <item-chips ng-if="eventCtrl.event.outletLocationId && eventCtrl.outletLocations.length" items="eventCtrl.outletLocations" on-remove="eventCtrl.removeOutletLocation(item)"></item-chips>
+    <item-chips 
+          ng-if="eventCtrl.event.outletLocationId && eventCtrl.outletLocations.length" 
+          items="eventCtrl.outletLocations" 
+          on-remove="eventCtrl.removeOutletLocation(item)"
+          class="outlet-locations-chips"></item-chips>
 
     <event-schedule-list
+          has-new="true"
+          sv-disabled="true"
           schedules="eventCtrl.event.schedules"
           event="eventCtrl.event"
         >
@@ -28,8 +34,8 @@
     <card-item-actions is-visible="eventCtrl.event.visible"
                        on-delete="eventCtrl.onDelete()"
                        on-edit="eventCtrl.onEdit($event)"
-                       on-add="eventCtrl.onAddOutletLocation($event)"
-                       add-message="'Select an outlet location'"
+                       on-add-location="eventCtrl.onAddOutletLocation($event)"
+                       add-location-message="eventCtrl.getAddOutletLocationMessage()"
                         ></card-item-actions>
   </card-item>
 </div>

@@ -1,18 +1,19 @@
 <div class="event-schedule-list">
   <div class='sv-root-holder'
       sv-root="eventSchedule"
+      sv-disabled="eventScheduleListCtrl.svDisabled"
       sv-on-sort="eventScheduleListCtrl.onScheduleMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
 
     <card-item-list
         collection="eventScheduleListCtrl.schedules"
-        has-new="true"
+        has-new="eventScheduleListCtrl.hasNew"
         tooltip="{{ 'Add new schedule' | translate }}"
         on-click-new="eventScheduleListCtrl.showCreateSchedule()"
         >
     <div class='sort-holder' sv-part="eventScheduleListCtrl.schedules">
       <event-schedule
         sv-element="schedule"
-        ng-repeat="schedule in eventScheduleListCtrl.schedules"
+        ng-repeat="schedule in eventScheduleListCtrl.schedules | orderBy: ['$startTimestamp', '$endTimestamp']"
         schedule="schedule"
         ng-if="schedule.$show"
         ng-init="$last && eventScheduleListCtrl.recalculateHeight()"

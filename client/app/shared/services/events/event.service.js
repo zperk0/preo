@@ -16,7 +16,7 @@ export default class EventService {
     this.p = this.$q((resolve, reject)=>{
 
       Preoday.Event.getAll(venueId, {
-        expand: 'schedules'
+        expand: 'schedules,slots'
       }).then((events)=> {
 
         this.data.events = events;
@@ -62,7 +62,7 @@ export default class EventService {
 
           data.image = imagePath;
 
-          Preoday.Event.create(data)
+          Preoday.Event.create(this.VenueService.currentVenue.id, data)
             .then(deferred.resolve, deferred.reject);
         }, deferred.reject);
     } else {
