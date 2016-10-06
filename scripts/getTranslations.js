@@ -7,6 +7,8 @@ var request = require('request');
 var urlToFile = '';
 var fileToCreate = '';
 
+var authToken = fs.readFileSync('./scripts/lingohubToken', 'utf8');
+
 var sendRequest = function(method, url, data, result){
 	var options = {
 	  method: method,
@@ -63,7 +65,7 @@ var createLanguageFiles = function(){
 	var resources = require('../locale/resources.json');
 
 	for (var i in resources.members) {
-		urlToFile = resources.members[i].links[0].href + '?auth_token=c9d4101fe920a7cf9a4fc53f9ba95d6ce555f72d4551f6754523b533890e96d5';
+		urlToFile = resources.members[i].links[0].href + '?auth_token=' + authToken;
 		fileToCreate = resources.members[i].project_locale + '.po';
 		//console.log(resources.members[i].project_locale);
 		sendRequestCreateFile(urlToFile, fileToCreate);
@@ -71,4 +73,4 @@ var createLanguageFiles = function(){
 
 }
 
-sendRequestCreateFile('https://api.lingohub.com/v1/preoday/projects/webapp-v2/resources.json?auth_token=c9d4101fe920a7cf9a4fc53f9ba95d6ce555f72d4551f6754523b533890e96d5', 'resources.json', createLanguageFiles);
+sendRequestCreateFile('https://api.lingohub.com/v1/preoday/projects/webapp-v2/resources.json?auth_token=' + authToken, 'resources.json', createLanguageFiles);
