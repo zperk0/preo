@@ -133,6 +133,10 @@ export default class eventController {
     this.contextual.showDrawer('eventOutletLocations')
       .then((outletLocation) => {
 
+        if (outletLocation.outletId) {
+          return this.Snack.showError(this.gettextCatalog.getString('You cannot select an outlet location with an outlet.'));
+        }
+
         if (this.event.outletLocationId !== outletLocation.id) {
           this.event.outletLocationId = outletLocation.id;
           this.updateEvent()
