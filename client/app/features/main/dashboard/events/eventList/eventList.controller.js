@@ -18,8 +18,14 @@ export default class eventListViewController {
 
     this.Spinner.show('events');
 
+    let oneDay = 24 * 60 * 60 * 1000,
+        date = new Date(),
+        interval = 7,
+        firstDate = new Date(date.getTime() - (oneDay * interval)),
+        filter = {'after' : firstDate.getFullYear() + '/' + (firstDate.getMonth() + 1) + '/' + firstDate.getDate() };
+
     $q.all([
-        EventService.getEvents(VenueService.currentVenue.id),
+        EventService.getEvents(VenueService.currentVenue.id, filter),
         OutletLocationService.getOutletLocations()
       ]).then((results) => {
 
