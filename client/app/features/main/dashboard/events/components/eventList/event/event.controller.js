@@ -130,8 +130,12 @@ export default class eventController {
       return;
     }
 
+    this.cardItemList.selectItem(this.event);
+
     this.contextual.showDrawer('eventOutletLocations')
       .then((outletLocation) => {
+
+        this.event.$selected = false;
 
         if (outletLocation.outletId) {
           return this.Snack.showError(this.gettextCatalog.getString('You cannot select an outlet location with an outlet.'));
@@ -145,6 +149,7 @@ export default class eventController {
         console.log('outletLocation selected', outletLocation);
       }, () => {
 
+        this.event.$selected = false;
         console.log('outletLocation cancelled');
       });
   }
