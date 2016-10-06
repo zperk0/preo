@@ -5,7 +5,7 @@ export default class EventService {
     return "EventService";
   }
 
-  getEvents(venueId) {
+  getEvents(venueId, params) {
 
     if (this.data.events){
       return this.$q.resolve(this.data);
@@ -13,11 +13,13 @@ export default class EventService {
       return this.p;
     }
 
+    params = params || {};
+
     this.p = this.$q((resolve, reject)=>{
 
-      Preoday.Event.getAll(venueId, {
+      Preoday.Event.getAll(venueId, angular.extend(params, {
         expand: 'schedules,slots'
-      }).then((events)=> {
+      })).then((events)=> {
 
         this.data.events = events;
         resolve(this.data);
