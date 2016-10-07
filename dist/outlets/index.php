@@ -193,5 +193,5 @@ echo $overrides;
   }
 </style>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
-<script type="text/javascript" src="/angular.bundle.84cd58e757d811f247bf.js"></script><script type="text/javascript" src="/outlets.bundle.57f7c0f51e231b76fd27.js"></script><script type="text/javascript" src="/vendor.bundle.af954b19a6e000d61a95.js"></script><script type="text/javascript" src="/app.bundle.522b8e342be1c2899dbf.js"></script></body>
+<script type="text/javascript" src="/angular.bundle.84cd58e757d811f247bf.js"></script><script type="text/javascript" src="/outlets.bundle.57f7c0f51e231b76fd27.js"></script><script type="text/javascript" src="/vendor.bundle.af954b19a6e000d61a95.js"></script><script type="text/javascript" src="/app.bundle.6a9bfca037722263339f.js"></script></body>
 </html>
