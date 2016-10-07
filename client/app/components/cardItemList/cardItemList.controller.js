@@ -78,13 +78,15 @@ export default class cardItemListController {
   }
 
   selectItem(item){
-    this.collection.forEach((i)=>{
-      if (item && i.id===item.id){
-        i.$selected = true;
-      } else {
-        i.$selected = false
-      }
-    })
+    if (this.collection) {
+      this.collection.forEach((i)=>{
+        if (item && i.id===item.id){
+          i.$selected = true;
+        } else {
+          i.$selected = false
+        }
+      });
+    }
   }
 
   clickNew(){

@@ -2,6 +2,8 @@
 
 require('jscore/preoday/preoday.min.js');
 require('mdPickers/dist/mdPickers.js');
+require('angular-sanitize/angular-sanitize.js');
+require('angular-material-calendar/dist/angular-material-calendar.js');
 
 import uirouter from 'angular-ui-router';
 import angularAnimate from 'angular-animate';
@@ -32,5 +34,6 @@ export default angular.module('webapp.vendors', [
     'ngMessages',
     'ngMaterial',
     'angular-sortable-view',
-    'mdPickers'
+    'mdPickers',
+    'materialCalendar',
   ]);
