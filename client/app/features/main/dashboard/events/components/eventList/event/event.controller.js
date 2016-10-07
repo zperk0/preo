@@ -124,6 +124,13 @@ export default class eventController {
     $event.stopPropagation();
   } 
 
+  showOutletLocationWithOutletMessage() {
+
+    this.DialogService.show(this.ErrorService.EVENT_OUTLET_LOCATION.title, this.ErrorService.EVENT_OUTLET_LOCATION.message, [{
+        name: this.gettextCatalog.getString('Got it')
+      }]);   
+  }
+
   onAddOutletLocation () {
 
     if (!this.OutletLocationService.hasOutletLocations()) {
@@ -138,7 +145,7 @@ export default class eventController {
         this.event.$selected = false;
 
         if (outletLocation.outletId) {
-          return this.Snack.showError(this.gettextCatalog.getString('You cannot select an outlet location with an outlet.'));
+          return this.showOutletLocationWithOutletMessage();
         }
 
         if (this.event.outletLocationId !== outletLocation.id) {
