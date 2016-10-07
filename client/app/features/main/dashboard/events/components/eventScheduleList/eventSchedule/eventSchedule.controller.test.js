@@ -22,6 +22,7 @@ describe('EventSchedule Controller', function () {
       $q,
       server,
       currentVenue,
+      eventMock,
       scheduleMock;
 
     beforeEach(angular.mock.module('webapp'));
@@ -56,6 +57,7 @@ describe('EventSchedule Controller', function () {
     afterEach(function() {
 
       server.restore();
+      eventMock = null;
       scheduleMock = null;
       CardItemListCtrl = null;
       EventScheduleCtrl = null;
@@ -76,6 +78,19 @@ describe('EventSchedule Controller', function () {
       }, data));
     }
 
+    function _mockEvent (data) {
+
+      if (!data) {
+        data = {};
+      }
+
+      eventMock = new Preoday.Event(angular.extend({
+        id: 1,
+        name: "Test",
+        schedules: []
+      }, data));
+    }
+
     function _startController() {
 
       EventScheduleCtrl = $controller('eventScheduleController', {
@@ -93,7 +108,7 @@ describe('EventSchedule Controller', function () {
     function _startEventScheduleListController() {
 
       EventScheduleListCtrl = $controller('eventScheduleListController', {
-        
+        '$scope': $scope,
       }, true);
     }
 
@@ -134,12 +149,21 @@ describe('EventSchedule Controller', function () {
 
     it("Should delete a schedule", function(done) {
 
+      _mockEvent();
       _mockSchedule();
       _startCardItemListController();
+      _startEventScheduleListController();
       _startController();
+
+      let schedule2 = angular.copy(scheduleMock);
+      schedule2.id = 2;
+
+      EventScheduleListCtrl.instance.event = eventMock;
+      EventScheduleListCtrl.instance.schedules = [scheduleMock, schedule2];
 
       EventScheduleCtrl.instance.schedule = scheduleMock;
       EventScheduleCtrl.instance.cardItemList = CardItemListCtrl();
+      EventScheduleCtrl.instance.eventScheduleListCtrl = EventScheduleListCtrl();
       EventScheduleCtrl = EventScheduleCtrl();
 
       spyOn(EventScheduleCtrl.Spinner, 'show').and.callThrough();
@@ -176,15 +200,76 @@ describe('EventSchedule Controller', function () {
       });
     });
 
-    it("Should show default error message on delete schedule", function(done) {
+    it("Shouldn't delete a schedule because is the last", function(done) {
 
+      _mockEvent();
       _mockSchedule();
       _startCardItemListController();
       _startEventScheduleListController();
       _startController();
 
+      EventScheduleListCtrl.instance.event = eventMock;
+      EventScheduleListCtrl.instance.schedules = [scheduleMock];
+
       EventScheduleCtrl.instance.schedule = scheduleMock;
       EventScheduleCtrl.instance.cardItemList = CardItemListCtrl();
+      EventScheduleCtrl.instance.eventScheduleListCtrl = EventScheduleListCtrl();
+      EventScheduleCtrl = EventScheduleCtrl();
+
+      spyOn(EventScheduleCtrl, 'showCannotDeleteScheduleDialog').and.callThrough();
+      spyOn(EventScheduleCtrl.Spinner, 'show').and.callThrough();
+      spyOn(EventScheduleCtrl.Spinner, 'hide').and.callThrough();
+      spyOn(EventScheduleCtrl.Snack, 'show').and.callThrough();
+      spyOn(EventScheduleCtrl.Snack, 'showError').and.callThrough();
+      spyOn(EventScheduleCtrl.cardItemList, 'onItemDeleted').and.callThrough();
+      spyOn(EventScheduleCtrl.DialogService, 'delete').and.callFake(function () {
+        
+        return $q.resolve();
+      });
+
+      server.respondWith('PUT', '/api/schedules/' + scheduleMock.id, [200, {"Content-Type": "application/json"}, JSON.stringify({})]);
+
+      EventScheduleCtrl.onDelete();
+      $rootScope.$digest();
+
+      setTimeout(function () {
+
+        server.respond();
+
+        setTimeout(function () {
+          
+          $rootScope.$digest();
+
+          expect(EventScheduleCtrl.showCannotDeleteScheduleDialog).toHaveBeenCalled();
+          expect(EventScheduleCtrl.Spinner.show).not.toHaveBeenCalled();
+          expect(EventScheduleCtrl.Spinner.show).not.toHaveBeenCalled();
+          expect(EventScheduleCtrl.Snack.show).not.toHaveBeenCalled();
+          expect(EventScheduleCtrl.Snack.showError).not.toHaveBeenCalled();
+          expect(EventScheduleCtrl.DialogService.delete).not.toHaveBeenCalled();
+          expect(EventScheduleCtrl.cardItemList.onItemDeleted).not.toHaveBeenCalledWith(EventScheduleCtrl.schedule);
+
+          done();          
+        });
+      });
+    });
+
+    it("Should show default error message on delete schedule", function(done) {
+
+      _mockEvent();
+      _mockSchedule();
+      _startCardItemListController();
+      _startEventScheduleListController();
+      _startController();
+
+      let schedule2 = angular.copy(scheduleMock);
+      schedule2.id = 2;
+
+      EventScheduleListCtrl.instance.event = eventMock;
+      EventScheduleListCtrl.instance.schedules = [scheduleMock, schedule2];
+
+      EventScheduleCtrl.instance.schedule = scheduleMock;
+      EventScheduleCtrl.instance.cardItemList = CardItemListCtrl();
+      EventScheduleCtrl.instance.eventScheduleListCtrl = EventScheduleListCtrl();
       EventScheduleCtrl = EventScheduleCtrl();
 
       spyOn(EventScheduleCtrl.Spinner, 'show').and.callThrough();
@@ -225,12 +310,21 @@ describe('EventSchedule Controller', function () {
 
     it("Should update a schedule", function(done) {
 
+      _mockEvent();
       _mockSchedule();
+      _startEventScheduleListController();
       _startCardItemListController();
       _startController();
 
+      let schedule2 = angular.copy(scheduleMock);
+      schedule2.id = 2;
+
+      EventScheduleListCtrl.instance.event = eventMock;
+      EventScheduleListCtrl.instance.schedules = [scheduleMock, schedule2];
+
       EventScheduleCtrl.instance.schedule = scheduleMock;
       EventScheduleCtrl.instance.cardItemList = CardItemListCtrl();
+      EventScheduleCtrl.instance.eventScheduleListCtrl = EventScheduleListCtrl();
       EventScheduleCtrl = EventScheduleCtrl();
 
       spyOn(EventScheduleCtrl.schedule, 'update').and.callThrough();

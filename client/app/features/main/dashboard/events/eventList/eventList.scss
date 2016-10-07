@@ -1,4 +1,7 @@
+@import "../../../../../shared/styles/variables";
+
 .events-view {
+    height: 100%;
 
   .main-content-right {
     margin-top: 24px;
@@ -22,5 +25,59 @@
     		margin-right: 8px;
     	}
     }
-  }	  
+  }	 
+
+  .edit-mode-button {
+    md-icon {
+        margin-top: -4px;
+    }
+  }
+
+  .content-calendar {
+    padding: 74px 24px 24px 24px;
+    height: 100%;
+
+    .md-toolbar-tools {
+        background-color: $blueDefault;
+        color: #fff;
+
+        h2 {
+            background: none;
+            overflow: visible;
+            font-size: 17px;
+        }
+
+        button {
+            span {
+                display: none;
+            }
+
+            &:after {
+                content: "";
+                display: inline-block;
+                border-right: 2.5px solid #fff; 
+                border-bottom: 2.5px solid #fff;
+                width: 7.5px; height: 7.5px;
+                transform: rotate(-45deg);
+            }
+
+            &:first-child {
+                &:after {
+                    border-right: 0px;
+                    border-left: 2.5px solid #fff; 
+                    transform: rotate(45deg);
+                }
+            }
+        }
+    }
+
+    md-content {
+        & > div {
+            & > div {
+                color: $colorLight;
+                font-size: 14px;
+            }
+        }
+    }
+  } 
 }
