@@ -38,7 +38,11 @@ export default class LabelService {
     this.CONTENT_DELETE_OUTLET_LOCATION_GROUP = gettextCatalog.getString("This will delete the configuration of all sub-groups. Are you sure?");
 
     this.TITLE_DELETE_OUTLET = gettextCatalog.getString("Delete outlet?");
-    this.CONTENT_DELETE_OUTLET = gettextCatalog.getString("Are you sure you want to delete this outlet?");    
+    this.CONTENT_DELETE_OUTLET = gettextCatalog.getString("Are you sure you want to delete this outlet?");
+
+    //TAXES
+    this.SNACK_SELLER_SUCCESS = gettextCatalog.getString("Seller details saved");
+    this.SNACK_SELLER_ERROR = gettextCatalog.getString("Seller details not saved");
 
   }
 }
