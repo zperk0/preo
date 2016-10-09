@@ -1,0 +1,61 @@
+<div class='seller-details'>
+  <div class='error' ng-if="sellerDetailsCtrl.isError">
+      {{sellerDetailsCtrl.ErrorService.TAXES_ERROR.message}}
+  </div>
+  <md-card flex="55" ng-if="!sellerDetailsCtrl.isError">
+    <md-card-title>
+      <md-card-title-text>
+        <h2 class="md-title" translate> Seller Details </h2>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <form name="sellerDetailsCtrl.sellerForm" ng-submit="sellerDetailsCtrl.submit()" novalidate>
+          <div class='form-content'>
+               <md-input-container class="md-block no-spacer">
+                  <label translate>Tax ID</label>
+                  <input type="text" name="taxId" ng-model="sellerDetailsCtrl.taxSettings.taxId" ng-disabled="!sellerDetailsCtrl.isEdit" ng-maxlength="100">
+                  <div ng-messages="sellerDetailsCtrl.sellerForm.taxId.$error">
+                    <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.taxId.$error.maxlength}">Max length is 100.</div>
+                  </div>
+              </md-input-container>
+                <md-input-container class="md-block no-spacer">
+                  <label translate>Seller Name</label>
+                  <input type="text" name="sellerName" ng-model="sellerDetailsCtrl.taxSettings.sellerName" ng-disabled="!sellerDetailsCtrl.isEdit"  ng-maxlength="100">
+                  <div ng-messages="sellerDetailsCtrl.sellerForm.sellerName.$error">
+                    <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.sellerName.$error.maxlength}">Max length is 100.</div>
+                  </div>
+              </md-input-container>
+              <md-input-container class="md-block no-spacer">
+                  <label translate>Street name & number</label>
+                  <input type="text" name="sellerAddress1" ng-model="sellerDetailsCtrl.taxSettings.sellerAddress1" ng-disabled="!sellerDetailsCtrl.isEdit"  ng-maxlength="256">
+                  <div ng-messages="sellerDetailsCtrl.sellerForm.sellerAddress1.$error">
+                    <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.sellerAddress1.$error.maxlength}">Max length is 256.</div>
+                  </div>
+              </md-input-container>
+              <md-input-container class="md-block no-spacer">
+                  <label translate>Town / City</label>
+                  <input type="text" name="city" ng-model="sellerDetailsCtrl.taxSettings.city" ng-disabled="!sellerDetailsCtrl.isEdit"  ng-maxlength="100">
+                  <div ng-messages="sellerDetailsCtrl.sellerForm.city.$error">
+                    <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.city.$error.maxlength}">Max length is 100.</div>
+                  </div>
+              </md-input-container>
+              <md-input-container class="md-block no-spacer">
+                  <label translate>Postcode/ZIP</label>
+                  <input type="text" name="postcode" ng-model="sellerDetailsCtrl.taxSettings.postcode" ng-disabled="!sellerDetailsCtrl.isEdit"  ng-maxlength="100">
+                  <div ng-messages="sellerDetailsCtrl.sellerForm.postcode.$error">
+                    <div ng-message="maxlength" translate ng-class="{'activated': sellerDetailsCtrl.sellerForm.postcode.$error.maxlength}">Max length is 100.</div>
+                  </div>
+              </md-input-container>
+          </div>
+          <md-card-actions layout="row" layout-align="end center">
+          <md-button type="button" ng-click="sellerDetailsCtrl.toggleEdit()" ng-if="!sellerDetailsCtrl.isEdit" class="md-primary" translate>
+              Edit
+          </md-button>
+          <md-button type="submit" ng-if="sellerDetailsCtrl.isEdit" class="md-primary" translate>
+              Save
+          </md-button>
+        </md-card-actions>
+      </form>
+    </md-card-content>
+  </md-card>
+</div>

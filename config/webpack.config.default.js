@@ -38,6 +38,7 @@ module.exports = function(ENV, options) {
       styling: './client/app/features/main/dashboard/styling/index.js',
       venueSettings: './client/app/features/main/dashboard/venueSettings/index.js',
       vouchers: './client/app/features/main/dashboard/vouchers/index.js',
+      taxes: './client/app/features/main/dashboard/taxes/index.js',
       vendor: './client/app/vendor.js'
     },
     /**
@@ -199,7 +200,7 @@ module.exports = function(ENV, options) {
           }
 
         },
-        chunks:['bookings', 'events', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','app','vendor', 'angular'],
+        chunks:['bookings', 'events', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes','app','vendor', 'angular'],
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
       }),
