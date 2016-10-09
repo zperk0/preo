@@ -54,10 +54,8 @@ export default class navbarController {
         {name: gettextCatalog.getString("My Outlets"), id:"outletList"},
         {name: gettextCatalog.getString("Outlet Locations"), id:"location"},
       ], shouldShow: function () {
-        
         return FeatureService.hasOutletFeature();
       }},
-
       {name: gettextCatalog.getString("Promotions"), icon:"star", id:"promotions"},
       {name: gettextCatalog.getString("Notifications"), icon:"chat", id:"notifications"},
       {name: gettextCatalog.getString("Payments"), icon:"credit_card", id:"payments", children:[
@@ -67,7 +65,10 @@ export default class navbarController {
       {name: gettextCatalog.getString("Group Bookings"), icon:"people", id:"bookings", children:[
         {name: gettextCatalog.getString("Settings"), id:"bookingSettings"},
         {name: gettextCatalog.getString("Menus"), id:"bookingMenus"},
-        {name: gettextCatalog.getString("Bookings"), id:"bookingList"}
+      ]},
+      {name: gettextCatalog.getString("Tax Settings"), icon:"attach_money", id:"taxes", children:[
+        {name: gettextCatalog.getString("Seller Details"), id:"sellerDetails"},
+        {name: gettextCatalog.getString("Tax Groups"), id:"taxGroups"}
       ]},
       {name: gettextCatalog.getString("Gift vouchers"), icon:"label", id:"vouchers"}
     ];
