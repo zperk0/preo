@@ -1,0 +1,35 @@
+md-dialog {
+	&.mdp-timepicker  {
+		width: auto !important;
+
+		md-dialog-content {
+			padding: 0px;
+
+			md-toolbar {
+				background-color: rgba(66,66,66, 0.9) !important;
+			}
+		}
+
+		.mdp-clock-container {
+			button {
+				background-color: transparent !important;
+				color: #000 !important;				
+
+				&.md-primary {
+					background-color: rgba(66,66,66, 0.9) !important;
+					color: #fff !important;
+				}
+
+				&:hover {
+					&:not(.md-primary) {
+						background-color: #fff !important;
+					}
+				}
+			}
+		}
+
+		.mdp-timepicker-selected-time, .mdp-timepicker-selected-ampm {
+			color: #fff;
+		}
+	}
+}

@@ -37,6 +37,15 @@ describe('Feature Service', function () {
       });
     }
 
+    function _mockCurrentVenueWithOutletFeature() {
+
+      _mockCurrentVenue();
+
+      VenueService.currentVenue.features = [{
+        id: Preoday.constants.Feature.OUTLET
+      }];
+    }
+
     it("Shouldn't have the Outlet feature", function() {
 
       spyOn(FeatureService, 'getLocalFeature').and.callThrough();
@@ -59,13 +68,13 @@ describe('Feature Service', function () {
       let hasOutletFeature = FeatureService.hasOutletFeature();
 
       expect(hasOutletFeature).toBe(true);
-      expect(FeatureService.getLocalFeature).toHaveBeenCalled();
+      expect(FeatureService.getLocalFeature).not.toHaveBeenCalled();
       expect(UserService.isAdmin).toHaveBeenCalled();
     });
 
     it("Should have the Outlet feature and resolve the promise", function(done) {
 
-      _mockCurrentVenue();
+      _mockCurrentVenueWithOutletFeature();
 
       spyOn(FeatureService, 'getLocalFeature').and.callThrough();
       spyOn(UserService, 'isAdmin').and.callThrough();
@@ -74,35 +83,31 @@ describe('Feature Service', function () {
       let resolve = jasmine.createSpy('resolve');
       let reject = jasmine.createSpy('reject');
 
-      let url = '/api/accounts/' + VenueService.currentVenue.accountId + '/features/' + Preoday.constants.Feature.OUTLET;
-      let outletFeature = new Preoday.AccountFeature({
-        featureId: Preoday.constants.Feature.OUTLET,
-        status: Preoday.constants.FeatureStatus.INSTALLED
-      });;
-
-      server.respondWith('GET', url, [200, {"Content-Type": "application/json"}, JSON.stringify(outletFeature)]);
-
       FeatureService.hasFeature(Preoday.constants.Feature.OUTLET)
         .then(resolve, reject);
 
-      server.respond();
       $rootScope.$digest();
 
       setTimeout(() => {
 
         $rootScope.$digest();
-        
-        let hasOutletFeature = FeatureService.hasOutletFeature();
 
-        expect(hasOutletFeature).not.toBe(false);
-        expect(hasOutletFeature.featureId).toBe(Preoday.constants.Feature.OUTLET);
-        expect(FeatureService.getLocalFeature).toHaveBeenCalled();
-        expect(UserService.isAdmin).toHaveBeenCalled();
-        expect(VenueService.currentVenue.hasFeature).toHaveBeenCalled();
-        expect(resolve).toHaveBeenCalled();
-        expect(reject).not.toHaveBeenCalled();
+        setTimeout(() => {
 
-        done();
+          $rootScope.$digest();
+
+          let hasOutletFeature = FeatureService.hasOutletFeature();
+
+          expect(hasOutletFeature).not.toBe(false);
+          expect(hasOutletFeature.id).toBe(Preoday.constants.Feature.OUTLET);
+          expect(FeatureService.getLocalFeature).toHaveBeenCalled();
+          expect(UserService.isAdmin).toHaveBeenCalled();
+          expect(VenueService.currentVenue.hasFeature).toHaveBeenCalled();
+          expect(resolve).toHaveBeenCalled();
+          expect(reject).not.toHaveBeenCalled();
+
+          done();
+        });
       });
     });
 
@@ -118,33 +123,31 @@ describe('Feature Service', function () {
       let reject = jasmine.createSpy('reject');
 
       let url = '/api/accounts/' + VenueService.currentVenue.accountId + '/features/' + Preoday.constants.Feature.OUTLET;
-      let outletFeature = new Preoday.AccountFeature({
-        featureId: Preoday.constants.Feature.OUTLET,
-        status: Preoday.constants.FeatureStatus.INSTALLED
-      });;
-
-      server.respondWith('GET', url, [400, {"Content-Type": "application/json"}, JSON.stringify(outletFeature)]);
 
       FeatureService.hasFeature(Preoday.constants.Feature.OUTLET)
         .then(resolve, reject);
 
-      server.respond();
       $rootScope.$digest();
 
       setTimeout(() => {
 
         $rootScope.$digest();
-        
-        let hasOutletFeature = FeatureService.hasOutletFeature();
 
-        expect(hasOutletFeature).toBe(false);
-        expect(FeatureService.getLocalFeature).toHaveBeenCalled();
-        expect(UserService.isAdmin).toHaveBeenCalled();
-        expect(VenueService.currentVenue.hasFeature).toHaveBeenCalled();
-        expect(resolve).not.toHaveBeenCalled();
-        expect(reject).toHaveBeenCalled();
+        setTimeout(() => {
 
-        done();
+          $rootScope.$digest();
+          
+          let hasOutletFeature = FeatureService.hasOutletFeature();
+
+          expect(hasOutletFeature).toBe(false);
+          expect(FeatureService.getLocalFeature).toHaveBeenCalled();
+          expect(UserService.isAdmin).toHaveBeenCalled();
+          expect(VenueService.currentVenue.hasFeature).toHaveBeenCalled();
+          expect(resolve).not.toHaveBeenCalled();
+          expect(reject).toHaveBeenCalled();
+
+          done();
+        });
       });
     });
 
@@ -177,22 +180,27 @@ describe('Feature Service', function () {
 
         $rootScope.$digest();
 
-        let hasOutletFeature = FeatureService.hasOutletFeature();
+        setTimeout(() => {
 
-        expect(hasOutletFeature).toBe(false);
-        expect(FeatureService.getLocalFeature).toHaveBeenCalled();
-        expect(UserService.isAdmin).toHaveBeenCalled();
-        expect(VenueService.currentVenue.hasFeature).toHaveBeenCalled();
-        expect(resolve).toHaveBeenCalled();
-        expect(reject).not.toHaveBeenCalled();
+          $rootScope.$digest();
 
-        done();
+          let hasOutletFeature = FeatureService.hasOutletFeature();
+
+          expect(hasOutletFeature).toBe(false);
+          expect(FeatureService.getLocalFeature).toHaveBeenCalled();
+          expect(UserService.isAdmin).toHaveBeenCalled();
+          expect(VenueService.currentVenue.hasFeature).toHaveBeenCalled();
+          expect(resolve).toHaveBeenCalled();
+          expect(reject).not.toHaveBeenCalled();
+
+          done();          
+        });
       });
     });
 
     it("Should clear the features", function(done) {
 
-      _mockCurrentVenue();
+      _mockCurrentVenueWithOutletFeature();
 
       spyOn(FeatureService, 'getLocalFeature').and.callThrough();
       spyOn(UserService, 'isAdmin').and.callThrough();
@@ -202,32 +210,30 @@ describe('Feature Service', function () {
       let reject = jasmine.createSpy('reject');
 
       let url = '/api/accounts/' + VenueService.currentVenue.accountId + '/features/' + Preoday.constants.Feature.OUTLET;
-      let outletFeature = new Preoday.AccountFeature({
-        featureId: Preoday.constants.Feature.OUTLET,
-        status: Preoday.constants.FeatureStatus.INSTALLED
-      });;
-
-      server.respondWith('GET', url, [200, {"Content-Type": "application/json"}, JSON.stringify(outletFeature)]);
 
       FeatureService.hasFeature(Preoday.constants.Feature.OUTLET)
         .then(resolve, reject);
 
-      server.respond();
       $rootScope.$digest();
 
       setTimeout(() => {
 
         $rootScope.$digest();
 
-        let hasOutletFeature = FeatureService.hasOutletFeature();
+        setTimeout(() => {
 
-        expect(hasOutletFeature).not.toBe(false);
-        
-        FeatureService.clearLocalFeatures();
+          $rootScope.$digest();
 
-        expect(FeatureService.hasOutletFeature()).toBe(false);
+          let hasOutletFeature = FeatureService.hasOutletFeature();
 
-        done();
+          expect(hasOutletFeature).not.toBe(false);
+          
+          FeatureService.clearLocalFeatures();
+
+          expect(FeatureService.hasOutletFeature()).toBe(false);
+
+          done();          
+        });
       });
     });
 });

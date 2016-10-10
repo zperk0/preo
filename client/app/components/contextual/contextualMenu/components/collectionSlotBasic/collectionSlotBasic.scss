@@ -1,0 +1,19 @@
+.collection-slot-basic {
+  .md-input-container-slot {
+    margin-top: 5px;
+    margin-bottom: 10px !important;
+
+    span, input {
+      float: none;
+      display: inline-block;
+    }
+
+    .input-label {
+      width: auto;
+    }
+
+    .slot-end-label {
+      margin-right: 10px;
+    }
+  }	
+}

@@ -1,0 +1,28 @@
+$heightMenuItemCard:48px;
+
+.event-schedule-list {
+	transition: all 1s ease;
+	overflow: hidden;
+
+	.sv-placeholder {
+		min-height: $heightMenuItemCard !important;
+		margin: 0px;
+	}		
+
+	.event-schedule {
+		margin: 8px;
+	}
+
+  .card-item {
+    &:not(.card-item-new) {
+    	margin:0;
+    }
+
+    &.card-item-new{
+			margin-left: 0px;
+			margin-right: 0px;		    	
+      max-height: 48px;
+      min-height:$heightMenuItemCard;
+    }    
+  }	
+}

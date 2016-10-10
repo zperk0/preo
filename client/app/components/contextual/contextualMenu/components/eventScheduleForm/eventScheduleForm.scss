@@ -1,0 +1,136 @@
+$inputColor: #9E9E9E;
+
+.event-schedule-form {
+  .input-label {
+    color:rgba(0,0,0,0.50);
+    font-size:16px;
+    width: auto !important;
+    margin-right: 12px;
+  }	
+
+  span, input, select {
+    float: none;
+    display: inline-block;
+  }
+
+
+  md-select, md-select-value {
+  	color: $inputColor !important;
+  }
+
+  md-datepicker {
+  	.md-datepicker-button {
+  		margin-right: 4px;
+  		margin-left: -7px;
+  	}
+
+  	.md-datepicker-input-container {
+  		margin-left: 0px;
+  	}
+
+    .md-datepicker-input {
+      color: $inputColor !important;
+    }
+  }
+
+  .collection-slots-select-content {
+    margin-top: 24px;
+
+    .label-title {
+      color: #424242;
+      font-size: 16px;
+    }
+
+    .collection-slots-select {
+      margin-top: 12px;
+    }
+  }
+
+  mdp-time-picker {
+  	.md-button {
+  		&.md-icon-button {
+  			margin-top: 16px;
+  			margin-left: -7px;
+  		}
+  	}
+
+  	input {
+  		color: $inputColor !important;
+  		width: 83px;
+
+      &::-webkit-input-placeholder {
+        color: transparent !important;
+      }
+
+      &:-moz-placeholder {
+        color: transparent !important;
+      }
+
+      &::-moz-placeholder {
+        color: transparent !important;
+      }
+
+      &::-ms-input-placeholder {
+        color: transparent !important;
+      }
+
+      color: transparent;
+  	}
+  }
+
+  .schedule-datepicker {
+  	.md-datepicker-input-container {
+  		width: 83px;
+
+	  	.md-datepicker-input {
+	  		min-width: 83px;
+	  		font-size: 15px;
+
+  			&::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+					color: rgba(0,0,0,0.26);
+  			}	
+	  	}  		
+  	}
+  }
+
+  .datepicker-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    width: 162px;
+  }
+
+  .md-input-container-frequency {
+  	margin-bottom: 0px;
+  }
+
+  .md-block-datepicker-multiple {
+    md-datepicker {
+      &:first-child {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  .md-block-timepicker {
+    div[ng-messages] {
+      margin-top: -16px;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.md-datepicker-calendar-pane {
+  md-calendar {
+  	table {
+  		tr {
+  			th {
+  				vertical-align: middle;
+  			}
+  		}
+  	}
+  }
+
+  .md-datepicker-input-mask {
+  	width: 308px;
+  }
+}

@@ -1,0 +1,16 @@
+<div class='collection-slots-view' layout='column'>
+  <div flex class="layout-left-right">
+    <div class='main-content-left'>
+      <collection-slots-list has-search="true"
+         sv-multi-select="false"
+         sv-keep-in-list="false"
+         sv-is-dropzone="true"
+         sv-disabled="true"
+         has-new="true"
+         has-actions="true"
+         ng-if="collectionSlotsViewCtrl.data.collectionSlots && collectionSlotsViewCtrl.data.collectionSlots.length"
+         collection-slots="collectionSlotsViewCtrl.data.collectionSlots"></collection-slots-list>
+     </div>
+  	<div class='main-content-right' sticky offset="88" contextual-menu-holder></div>
+  </div>
+</div>

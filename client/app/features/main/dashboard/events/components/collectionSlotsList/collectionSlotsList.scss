@@ -1,0 +1,13 @@
+.collection-slots-list {
+	.sv-placeholder {
+		min-height: 46px !important;
+		// margin: 0px;
+	}			
+
+	.card-item {
+		&.card-item-new {
+	    max-height: 48px;
+	    min-height: 48px;			
+		}
+	}
+}

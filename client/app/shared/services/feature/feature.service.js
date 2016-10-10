@@ -13,6 +13,11 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.OUTLET);
   }
 
+  hasCustomPickupSlotsFeature () {
+
+    return this.getLocalFeature(Preoday.constants.Feature.CUSTOM_PICKUP_SLOTS);
+  }
+
   hasNestedModifierFeature () {
 
     return this.getLocalFeature(Preoday.constants.Feature.NESTED_MODIFIER);
@@ -21,7 +26,7 @@ export default class FeatureService {
   getLocalFeature (featureId) {
 
     let index = this.localFeatures.map(function(item){
-        return +item.featureId;
+        return +item.id;
     }).indexOf(+featureId);
 
     return index === -1 ? false : this.localFeatures[index];

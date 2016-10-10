@@ -118,7 +118,7 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
       }
     }
 
-    &.md-raised{
+    &.md-raised {
        background-color:$colorPrimary;
        color:white;
        &:not([disabled]):hover, &:not(.disabled):hover{

@@ -1,0 +1,14 @@
+<div class="collection-slots-select">
+	<div class="content-slots" ng-if="!collectionSlotsSelectCtrl.loading">
+  	<md-checkbox  ng-repeat="collectionSlot in collectionSlotsSelectCtrl.getCollectionSlots()" 
+  								ng-click="collectionSlotsSelectCtrl.toggleCheckbox(collectionSlot)"
+  								ng-checked="collectionSlotsSelectCtrl.isSelected(collectionSlot)"
+  								name="collectionSlots[]"
+  								class="md-primary">
+  								{{ collectionSlot.slotName }}
+  						</md-checkbox>
+  </div>
+  <div class="content-spinner" ng-if="collectionSlotsSelectCtrl.loading">
+ 		<spinner></spinner>
+ 	</div>
+</div>
