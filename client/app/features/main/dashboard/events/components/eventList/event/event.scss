@@ -1,0 +1,42 @@
+.event {
+  position: relative;
+  margin:8px;
+  transition: box-shadow 0.3s linear;
+
+  &>md-card{
+    margin:0;
+
+    &>.card-title{
+      min-height: 58px;
+      height: 58px;
+
+      .card-title-text{
+        line-height: 60px;
+      }
+
+      .visibility{
+        top: -2px;
+        position: relative;
+      }
+
+    }
+  }
+
+  .sv-placeholder{
+    margin: 8px 22px;
+  }	
+
+  .event-schedule-list {
+    margin: 0 22px;
+
+    .event-schedule {
+      margin-left: 0px;
+      margin-right: 0px;  
+    }
+  }
+
+  .outlet-locations-chips {
+    margin-top: -12px;
+    padding-bottom: 14px;
+  }
+}

@@ -1,0 +1,41 @@
+<div class='events-view' layout='column'>
+  <div class="events-toolbar" layout="row" layout-align="start center">
+    <md-button class='md-primary' ng-if="!eventListViewCtrl.isCalendarMode()" ng-click="eventListViewCtrl.toggleMode()">
+      <icon class="material-icons">insert_invitation</icon>{{ 'View Calendar' | translate }}
+    </md-button>
+		<md-button class='md-primary edit-mode-button' ng-if="eventListViewCtrl.isCalendarMode()" ng-click="eventListViewCtrl.toggleMode()">
+      <icon class="material-icons">edit</icon>{{ 'Edit Mode' | translate }}
+    </md-button>
+  </div>
+  <div flex class="layout-left-right" ng-if="eventListViewCtrl.loaded && !eventListViewCtrl.isCalendarMode()">
+    <div class='main-content-left'>
+      <event-list has-search="true"
+         sv-multi-select="false"
+         sv-keep-in-list="false"
+         sv-is-dropzone="true"
+         sv-disabled="true"
+         has-new="true"
+         has-actions="true"
+         ng-if="eventListViewCtrl.data.events && eventListViewCtrl.data.events.length"
+         events="eventListViewCtrl.data.events"></event-list>      
+     </div>
+  	<div class='main-content-right' sticky offset="134" contextual-menu-holder></div>
+  </div>
+  
+  <div class="content-calendar" ng-if="eventListViewCtrl.loaded && eventListViewCtrl.isCalendarMode()">
+    <calendar-md flex layout layout-fill
+      calendar-direction="eventListViewCtrl.calendar.direction"
+      title-format="'MMMM y'"
+      ng-model='eventListViewCtrl.calendar.selectedDate'
+      week-starts-on="eventListViewCtrl.calendar.firstDayOfWeek"
+      
+      tooltips="eventListViewCtrl.calendar.tooltips"
+      day-format="eventListViewCtrl.calendar.dayFormat"
+      day-label-format="'EEE'"
+      day-label-tooltip-format="'EEEE'"
+      day-tooltip-format="'fullDate'"
+      disable-future-selection="false"
+      ></calendar-md>  
+  </div>
+  <contextual-drawer-event-outlet-locations></contextual-drawer-event-outlet-locations>
+</div>

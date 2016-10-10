@@ -7,7 +7,8 @@ export default function contextualMenu($compile, $timeout, $animate){
     template: require("./contextualMenu.tpl.html"),
     scope:{
       entity:"=",
-      template:"="
+      template:"=",
+      params: '='
     },
     controller: controller.UID,
     controllerAs: "contextualMenuCtrl",
@@ -16,15 +17,15 @@ export default function contextualMenu($compile, $timeout, $animate){
     link: (scope, el, attr, ctrl) => {
 
       let wrapper = angular.element(el[0].querySelector(".form-content"));
+      $animate.addClass(el, 'rendered');
+
       wrapper.prepend(ctrl.template);
 
-      $compile(wrapper.contents())(scope)
+      $compile(wrapper.contents())(scope);
 
-      $timeout(()=>{
-        $animate.addClass(el, 'rendered');
-
+      $timeout(() => {
         scope.rendered = true;
-      })
+      });
     }
   }
 }

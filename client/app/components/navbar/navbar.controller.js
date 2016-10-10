@@ -26,7 +26,7 @@ export default class navbarController {
   }
 
 
-  constructor($state, gettextCatalog, FeatureService) {
+  constructor($state, gettextCatalog, FeatureService, VenueService) {
     "ngInject";
     this.DESTINATION_PREFIX = "main.dashboard.";
     this.$state = $state;
@@ -48,7 +48,14 @@ export default class navbarController {
         {name: gettextCatalog.getString("Web Orders"), id:"weborders"},
         {name: gettextCatalog.getString("Emails"), id:"emails"}
       ]},
-      {name: gettextCatalog.getString("Events"), icon:"event", id:"events"},
+
+      {name: gettextCatalog.getString("Events"), icon:"event", id:"events", children: [
+        {name: gettextCatalog.getString("My Events"), id:"eventList"},
+        {name: gettextCatalog.getString("Collection Slots"), id:"collectionSlots"},
+      ], shouldShow: function () {
+        
+        return VenueService.hasVenueSet() && VenueService.currentVenue.isEvent();
+      }},      
 
       {name: gettextCatalog.getString("Outlets"), icon:"pin_drop", id:"outlets", children: [
         {name: gettextCatalog.getString("My Outlets"), id:"outletList"},

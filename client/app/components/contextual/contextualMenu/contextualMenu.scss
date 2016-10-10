@@ -10,6 +10,11 @@
   .form-content{
     max-height: calc(100vh - 64px - 50px - 90px - 30px ); //100% - toolbar - optional dashboard toolbar - bottom buttons - extra spacing for bottom padding
     overflow-y:auto;
+    display: none;
+
+    &.rendered {
+      display: block;
+    }
 
   }
 
@@ -18,6 +23,12 @@
     background:#F5F5F5;
     margin: 0;
     padding: 16px;
+
+    .md-button {
+      min-width: 40px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
   }
 
   md-tabs-wrapper{
@@ -66,6 +77,83 @@
     }
   }
 
+  .contextual-menu-event, .contextual-menu-collection-slot, .contextual-menu-event-schedule {
+    .md-errors-spacer {
+      display: none;
+    }    
+
+    md-card-content {
+      padding: 25px;
+    }    
+  }
+
+  .contextual-menu-collection-slot {
+    .md-block-lead-time {
+      input {
+        width: 100px;
+        margin-right: 12px;
+      }
+    }
+
+    .lead-time-label {
+      margin-top: 9px;
+      display: inline-block;
+    }
+
+    .content-slot-end-radio {
+      padding-left: 42px;
+
+      md-radio-group {
+        margin-top: 18px;  
+
+        md-radio-button {
+          margin-bottom: 18px;
+
+          &:last-child {
+            margin-bottom: 0px;
+          }            
+        }
+      }
+    }
+
+    .content-input-slot-end {
+      display: inline-block;
+      vertical-align: top;  
+      width: 50px;
+      margin-right: 10px;
+
+      input {
+        width: 100%;
+      }    
+
+      .md-input-messages-animation {
+        position: absolute;
+      }
+
+      &.has-error {
+        margin-bottom: 10px;
+      }
+    }  
+      
+    .md-input-container-slot {
+      margin-top: 5px;
+      margin-bottom: 10px !important;
+
+      span, input {
+        float: none;
+        display: inline-block;
+      }
+
+      .input-label {
+        width: auto;
+      }
+
+      .slot-end-label {
+        margin-right: 10px;
+      }
+    }       
+  }
+
   .md-input-container-seat-number {
     .input-label {
       width: 120px;
@@ -76,14 +164,14 @@
     }
   }
 
-  .contextual-menu-outlet-location {
+  .contextual-menu-outlet-location, .contextual-menu-collection-slot {
     .input-label {
       color:rgba(0,0,0,0.50);
       font-size:16px;
     }
   }
 
-  .contextual-menu-outlet {
+  .contextual-menu-outlet, .contextual-menu-collection-slot {
     md-input-container {
       // height: 35px;
       margin-bottom: 16px;
@@ -137,4 +225,97 @@
     }
   }
 
+  .md-tabs-with-errors {
+    &.has-error {
+      md-ink-bar {
+        color: $redDefault;
+        background-color: $redDefault;
+      }
+    }
+
+    md-tab-item {
+      padding: 0px;
+
+      .md-tab-label {
+        padding: 12px 24px;
+        position: relative;
+
+        &.has-error {
+          span {
+            color: $redDefault;
+          }
+
+          &+.md-ripple-container {
+            &[style] {
+              background-color: rgba(221,44,0, 0.0980392) !important;
+            }    
+                      
+            .md-ripple-placed {
+              background: $redDefault !important;
+              border-color: $redDefault !important;
+            }
+          }          
+        }     
+
+        &+.md-ripple-container {
+          &[style] {
+            background-color: rgba(2,136,209, 0.0980392) !important;
+          }
+
+          .md-ripple-placed {
+            background: #0288D1 !important;
+            border-color: #0288D1 !important;
+          }
+        }        
+      }
+
+      &.md-active {
+        .md-tab-label {
+          &.has-error {
+            &:after {
+              border-color: $redDefault;
+            }
+          }
+
+          &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            border-bottom: 2px solid #0288D1;
+            z-index: 1;
+          }             
+        }        
+      }
+    }
+  }
+
+  div[ng-message] {
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    transition: all .3s cubic-bezier(.55,0,.55,.2);
+    opacity: 1;
+    margin-top: 0;
+    padding-top: 5px;
+        
+    span {
+      color: rgb(221,44,0);
+    }
+  }
+  
+  .content-spinner {
+    text-align: center;
+
+    spinner {
+      display: inline-block;
+    }
+  }
+}
+
+.md-datepicker-calendar-pane {
+  .md-datepicker-input-mask-opaque {
+    left: 120px !important;
+  }
 }

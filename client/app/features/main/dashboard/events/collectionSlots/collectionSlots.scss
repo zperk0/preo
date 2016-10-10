@@ -1,0 +1,10 @@
+.collection-slots-view {
+	.layout-left-right {
+		padding-top: 0;
+	}
+
+  .main-content-right {
+    margin-top: 24px;
+    width: calc(50% - 24px);
+  }
+}

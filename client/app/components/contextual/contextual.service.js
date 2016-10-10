@@ -4,9 +4,9 @@ export default class contextualService {
   }
 
 
-  showMenu(template, entity, onSuccess, onError){
+  showMenu(template, entity, onSuccess, onError, params){
     this.contextualDrawer.close();
-    this.contextualMenu.show(template, entity, onSuccess, onError);
+    this.contextualMenu.show(template, entity, onSuccess, onError, params);
   }
 
   showDrawer(id){

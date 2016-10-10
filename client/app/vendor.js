@@ -1,6 +1,10 @@
 // Import Style
 
 require('jscore/preoday/preoday.min.js');
+require('mdPickers/dist/mdPickers.js');
+require('angular-sanitize/angular-sanitize.js');
+require('angular-material-calendar/dist/angular-material-calendar.js');
+
 import uirouter from 'angular-ui-router';
 import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';
@@ -13,6 +17,16 @@ import angularMaterial from 'angular-material';
 window.moment = require('moment/moment.js');
 
 
+require('moment/locale/en-gb.js');
+require('moment/locale/nb.js');
+require('moment/locale/nl.js');
+require('moment/locale/fi.js');
+require('moment/locale/da.js');
+require('moment/locale/sv.js');
+require('moment/locale/fr.js');
+require('moment/locale/de.js');
+require('moment/locale/es.js');
+
 export default angular.module('webapp.vendors', [
     'ui.router',
     'ngAnimate',
@@ -20,4 +34,6 @@ export default angular.module('webapp.vendors', [
     'ngMessages',
     'ngMaterial',
     'angular-sortable-view',
+    'mdPickers',
+    'materialCalendar',
   ]);

@@ -17,6 +17,9 @@ import outletsDirective from './outlets/contextualDrawer.outlets.directive';
 import outletLocationsController from './outletLocations/contextualDrawer.outletLocations.controller';
 import outletLocationsDirective from './outletLocations/contextualDrawer.outletLocations.directive';
 
+import eventOutletLocationsController from './eventOutletLocations/contextualDrawer.eventOutletLocations.controller';
+import eventOutletLocationsDirective from './eventOutletLocations/contextualDrawer.eventOutletLocations.directive';
+
 import styleController from './style/contextualDrawer.style.controller';
 import styleDirective from './style/contextualDrawer.style.directive';
 import styleRowDirective from './style/row/contextualDrawer.style-row.directive';
@@ -38,6 +41,9 @@ export default angular.module("contextualDrawer" , [cardItemList])
 
   .controller(outletLocationsController.UID, outletLocationsController)
   .directive("contextualDrawerOutletLocations", outletLocationsDirective)
+
+  .controller(eventOutletLocationsController.UID, eventOutletLocationsController)
+  .directive("contextualDrawerEventOutletLocations", eventOutletLocationsDirective)
 
   .controller(styleController.UID, styleController)
   .directive("contextualDrawerStyle", styleDirective)

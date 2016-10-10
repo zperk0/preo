@@ -34,8 +34,11 @@ export default class VenueService {
         resolve(data);        
       }
 
-      Preoday.Venue.fetch({adminId:user.id,roles:"admin,owner"})
-      .then((venues)=>{
+      Preoday.Venue.fetch({
+        adminId: user.id,
+        roles: "admin,owner",
+        expand: 'features'
+      }).then((venues)=>{
 
         if (venues && venues.length){
           this.venues = venues;
@@ -79,6 +82,8 @@ export default class VenueService {
     this.currentVenue = venue;
     venue.setAsCurrent();
 
+    this.setVenueLocale(venue);
+
     this.checkFeatures(venue)
       .then(() => {
 
@@ -93,6 +98,25 @@ export default class VenueService {
     return deferred.promise;
   }
 
+  setVenueLocale (venue) {
+
+    if(venue.locale) {
+      let venueLocale = venue.locale,
+          language = venueLocale.substr(0, venueLocale.indexOf('-')).toLowerCase(),
+          country = venueLocale.substr(venueLocale.indexOf('-')+1,venueLocale.length-1).toLowerCase();
+      switch(language) {
+        case 'no':
+          language = 'nb';
+          break;
+      }
+      this.gettextCatalog.setCurrentLanguage(language);
+      console.log("set moment locale", language+"-"+country);
+      moment.locale(language+"-"+country);
+    } else {
+      moment.locale('en-gb'); //en-GB as default - if we don't do this it'll set en-US
+    }    
+  }
+
   checkFeatures () {
 
     let FeatureService = this.$injector.get('FeatureService');
@@ -102,6 +126,7 @@ export default class VenueService {
     return this.$q.all([
         FeatureService.hasFeatureForInit(Preoday.constants.Feature.OUTLET),
         FeatureService.hasFeatureForInit(Preoday.constants.Feature.NESTED_MODIFIER),
+        FeatureService.hasFeatureForInit(Preoday.constants.Feature.CUSTOM_PICKUP_SLOTS),
       ]);
   }
 

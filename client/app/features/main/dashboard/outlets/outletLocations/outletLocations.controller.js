@@ -15,6 +15,11 @@ export default class outletLocationsController {
     this.Spinner.hide("outletLocations");
   }
 
+  hasOutlets () {
+
+    return this.OutletService.hasOutlets();
+  }
+
   fetchOutlets() {
 
 

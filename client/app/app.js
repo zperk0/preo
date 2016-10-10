@@ -18,6 +18,7 @@ import dialog from './components/dialog';
 import icon from './components/icon';
 import snack from './components/snack';
 import spinner from './components/spinner';
+import fullSpinner from './components/fullSpinner';
 import tagList from './components/tagList';
 import itemChips from './components/itemChips';
 import breadcrumb from './components/breadcrumb';
@@ -52,6 +53,7 @@ require('./components/sticky/sticky.directive.js');
   contextual,
   snack,
   spinner,
+  fullSpinner,
   breadcrumb,
   // /* internal */
   constants,

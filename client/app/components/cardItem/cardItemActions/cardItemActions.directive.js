@@ -14,8 +14,10 @@ export default function cardItemActions(){
       onVisibility:'&?',
       onMove:'&?',
       onAdd:'&?',
+      onAddLocation:'&?',
       disableAdd:'=?',
-      addMessage: '=?'
+      addMessage: '=?',
+      addLocationMessage: '=?'
     },
     template: require("./cardItemActions.tpl.html"),
     replace:true,
