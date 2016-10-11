@@ -17,14 +17,20 @@ export default class itemListController {
     this.contextual.showDrawer(id);
   }
 
-  setItems(venueId){
+  setItems(venueId) {
+
     this.ItemService.getItems(venueId)
       .then(this.handleFinishLoading.bind(this), this.handleError.bind(this,"FAILED_LOADING_MENU_ITEMS"))
-      .catch((err)=>console.log("err",err));
+      .catch((err)=> {
+
+        this.handleError();
+        console.log("err",err)
+      });
 
   }
 
-  handleFinishLoading(data){
+  handleFinishLoading(data) {
+
     this.$timeout(()=>{
       console.log('data here----', data);
       // {items:data.items.map((i, index)=>({id:i.id, item:i}))}
@@ -34,12 +40,14 @@ export default class itemListController {
     })
 
   }
+
   handleError(menu){
     
     this.hideSpinner();
   }
 
   constructor($stateParams, $timeout, ItemService, contextual, FeatureService, Spinner) {
+
     "ngInject";
 
     this.data = {items:[]}
