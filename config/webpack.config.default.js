@@ -214,6 +214,18 @@ module.exports = function(ENV, options) {
         chunks:['styling','app','vendor', 'angular'],
         inject:true,
         filename:'styling/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['menus','app','vendor', 'angular'],
+        inject:true,
+        filename:'menus/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['events','app','vendor', 'angular'],
+        inject:true,
+        filename:'events/index.php'
       })
     ]
   }
