@@ -23,15 +23,16 @@ export default class sellerDetailsController {
           this.Spinner.hide("seller-details-save");
           this.Snack.show(this.LabelService.SNACK_SELLER_SUCCESS)
         }, (err)=>{
-          console.log("rejected" ,err);
+          console.log("seller-details" ,err);
           this.Spinner.hide("seller-details-save");
           this.Snack.showError(this.LabelService.SNACK_SELLER_ERROR)
         }).catch((err)=>{
-          console.log("err",err)
+          console.log("seller-details",err)
           this.Spinner.hide("seller-details-save");
           this.Snack.showError(this.LabelService.SNACK_SELLER_ERROR)
         })
     }
+    return saveOrUpdate;
   }
 
   toggleEdit(){
@@ -48,7 +49,6 @@ export default class sellerDetailsController {
         if (err && err.status && err.status == 404){
           this.taxSettings = new Preoday.VenueTaxSettings();
         } else {
-          console.log("showing error");
           this.showError();
         }
         this.Spinner.hide("seller-details");

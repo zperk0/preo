@@ -1,8 +1,11 @@
 'use strict';
 
+import sellerDetails from './';
+
 describe('SellerDetails Controller', function () {
 
     let
+      $rootScope,
       SellerDetailsCtrl,
       Spinner,
       $stateParams,
@@ -20,6 +23,7 @@ describe('SellerDetails Controller', function () {
     }
 
     beforeEach(angular.mock.module('webapp'));
+    beforeEach(angular.mock.module(sellerDetails));
 
     beforeEach(angular.mock.inject(function ($injector) {
       $rootScope = $injector.get('$rootScope');
@@ -39,57 +43,53 @@ describe('SellerDetails Controller', function () {
 
     function _startController(ngModel = []) {
 
-      SellerDetailsCtrl = $controller('sellerDetailsCtrl', {
+      SellerDetailsCtrl = $controller('sellerDetailsController', {
         '$scope': $scope
-      }, true);
+      });
     }
 
-    it("Should initialize seller details control", function() {
+
+    it("Init should set taxSettings on init success", function() {
+      spyOn(Preoday.VenueTaxSettings, 'get').and.callFake(function(){return $q.resolve(settingsMock)});
       _startController();
-      expect(SellerDetailsCtrl.init).toHaveBeenCalled();
+      $rootScope.$digest();
+      expect(Preoday.VenueTaxSettings.get).toHaveBeenCalledWith($stateParams.venueId);
+      expect(SellerDetailsCtrl.taxSettings).toEqual(settingsMock);
     });
 
-    it("Init should set taxSettings on success", function(done) {
-      spyOn(Preoday.VenueTaxSettings, 'get').and.return($q.resolve(settingsMock));
-      spyOn(SellerDetailsCtrl, 'init').and.return(true);
+    it("Init should set empty taxSettings on 404 error", function() {
+      spyOn(Preoday.VenueTaxSettings, 'get').and.callFake(function(){return $q.reject({status:404, message:"Not found"})});
+
       _startController();
-      SellerDetailsCtrl.init()
-        .then(function(){
-          expect(Preoday.VenueTaxSettings.get).toHaveBeenCalledWith($stateParams.venueId);
-          expect(SellerDetailsCtrl.taxSettings).toEqual(settingsMock);
-          done();
-      })
+      $rootScope.$digest();
+      expect(Preoday.VenueTaxSettings.get).toHaveBeenCalledWith($stateParams.venueId);
+      expect(SellerDetailsCtrl.taxSettings).toEqual(jasmine.any(Preoday.VenueTaxSettings));
     });
 
-    it("Init should set empty taxSettings on 404 error", function(done) {
-      spyOn(Preoday.VenueTaxSettings, 'get').and.return($q.reject({status:404, message:"Not found"}));
-      spyOn(SellerDetailsCtrl, 'init').and.return(true);
+    it("Init should error on any error that's not 404", function() {
+      spyOn(Preoday.VenueTaxSettings, 'get').and.callFake(function(){return $q.reject({status:400, message:"Not found"})});
       _startController();
-      SellerDetailsCtrl.init()
-        .then(function(){
-          expect(Preoday.VenueTaxSettings.get).toHaveBeenCalledWith($stateParams.venueId);
-          expect(SellerDetailsCtrl.taxSettings).toEqual(jasmine.any(Preoday.VenueTaxSettings));
-          done();
-      })
-    });
 
-    it("Init should error on any error that's not 404", function(done) {
-      spyOn(Preoday.VenueTaxSettings, 'get').and.return($q.reject({status:400, message:"Not found"}));
-      spyOn(SellerDetailsCtrl, 'init').and.return(true);
       spyOn(SellerDetailsCtrl, 'showError').and.callThrough();
+
+      $rootScope.$digest();
+      expect(Preoday.VenueTaxSettings.get).toHaveBeenCalledWith($stateParams.venueId);
+      expect(SellerDetailsCtrl.showError).toHaveBeenCalled();
+    });
+
+    it("When clicking edit should tooggle form editable", function() {
+      spyOn(Preoday.VenueTaxSettings, 'get').and.callFake(function(){return $q.reject({status:400, message:"Not found"})});
       _startController();
-      SellerDetailsCtrl.init()
-        .then(function(){
-          expect(Preoday.VenueTaxSettings.get).toHaveBeenCalledWith($stateParams.venueId);
-          expect(SellerDetailsCtrl.showError).tohaveBeenCalled();
-          done();
-      })
+
+      expect(SellerDetailsCtrl.isEdit).toEqual(false);
+      SellerDetailsCtrl.toggleEdit();
+      expect(SellerDetailsCtrl.isEdit).toEqual(true);
     });
 
 });
 
 
-//tests: when clicking edit should tooggle form editable
-//tests: when submit should chooose update or save accordingly
-//tests: when submit success show snack
-//tests: when submit fails show error snack
+//tests: When submit should chooose update if venueId is set
+//tests: When submit should chooose save if venueId is not set
+//tests: After successful submit tax settings should have a venueId
+//tests: After failed Save tax settings should not have a venueId
