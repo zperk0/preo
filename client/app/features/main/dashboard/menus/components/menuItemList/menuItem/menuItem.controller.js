@@ -121,6 +121,10 @@ export default class menuItemController {
       })
   }
 
+
+  //
+  // @param(skipExtensions) - skip update item relations. Update only item model
+  //
   updateItem(updates, skipExtensions = false){
     return this.checkMultipleOccurrences(updates)
     .then((updateAction)=>{

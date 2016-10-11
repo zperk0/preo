@@ -36,6 +36,7 @@
     }
   }
 
+  // This is called when you moved an item to this section
   onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo, $removeFromOrigin) {
 
      if (this.isItemDuplicated($items)){
