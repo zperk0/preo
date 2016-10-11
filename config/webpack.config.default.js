@@ -164,7 +164,8 @@ module.exports = function(ENV, options) {
       new ExtractTextPlugin('[name].css', {
       }),
       new CopyWebpackPlugin([
-        { from: 'client/assets'}
+        { from: 'client/v1/v1.css', to:'v1.css'},
+        { from: 'client/assets'},
       ]),
       new webpack.ResolverPlugin(
         new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(
@@ -172,7 +173,7 @@ module.exports = function(ENV, options) {
       ),
       new HtmlWebpackPlugin({
         template:'./client/index.html',
-        chunksSortMode: function(ca,cb){
+        chunksSortMode: function(ca,cb){ //order scripts, angular and vendor first, then app last
           if (ca.names[0] == 'angular'){
             return -1
           }
@@ -203,16 +204,28 @@ module.exports = function(ENV, options) {
         filename:'index.html'
       }),
       new HtmlWebpackPlugin({
-        template:'./client/v1/outlets.php',
+        template:'./client/v1/index.php',
         chunks:['outlets','app','vendor', 'angular'],
         inject:true,
         filename:'outlets/index.php'
       }),
       new HtmlWebpackPlugin({
-        template:'./client/v1/styling.php',
+        template:'./client/v1/index.php',
         chunks:['styling','app','vendor', 'angular'],
         inject:true,
         filename:'styling/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['menus','app','vendor', 'angular'],
+        inject:true,
+        filename:'menus/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['events','app','vendor', 'angular'],
+        inject:true,
+        filename:'events/index.php'
       })
     ]
   }

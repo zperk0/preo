@@ -62,8 +62,9 @@ echo $overrides;
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/normalize.css" />
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/css/foundation.css"/>
-<link href="<? echo $_SESSION['path']?>/css/header-footer.css" rel="stylesheet">
-<link href="/code/v2/vendor.css" rel="stylesheet"></head>
+<link href="<? echo $_SESSION['path']?>/css/header-footer.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/v2/v1.css"/>
+</head>
 <body>
   <div id="wrap">
     <div id="webappv2" class='webapp'>
@@ -73,125 +74,6 @@ echo $overrides;
       <spinner></spinner>
     </div>
   </div>
-<script>
-  (function (){
-    angular.module('webapp.bookings',[]);
-    angular.module('webapp.events',[]);
-    angular.module('webapp.venueSettings',[]);
-    angular.module('webapp.vouchers',[]);
-    angular.module('webapp.menus',[]);
-    angular.module('webapp.notifications',[]);
-    angular.module('webapp.payments',[]);
-    angular.module('webapp.promotions',[]);
-    angular.module('webapp.styling',[]);
-    angular.module('webapp.venueSettings',[]);
-    angular.module('webapp.vouchers',[]);
-  })();
-</script>
-<style>
-   html{
-    overflow: hidden;
-    /*height: auto;
-    min-height: 100vh;*/
-  }
-  body{
-    /*max-height: 100vh;*/
-    /*overflow: auto !important;*/
-    overflow: hidden !important;
-  }
-  #wrap{
-    background: transparent url(../img/bg.jpg) repeat!important;
-    height: calc(100vh - 117px);
-    margin: 0 auto;
-    top: 117px;
-    position: relative;
-    overflow: auto;
-    padding: 0;
-    min-height: 0;
-  }
-
-  #webappv2{
-    /*min-height: calc(100vh - 66px);*/
-  }
-  #webappv2 .md-sidenav-left{
-    display: none;
-  }
-
-  #webappv2  md-toolbar{
-    display: none;
-  }
-
-  #webappv2  .main-ui-view {
-    padding: 0 !important;
-    overflow: auto !important;
-  }
-
-  #webappv2 .floating-right-buttons{
-    top:120px;
-  }
-
-  input[type=date]:focus, input[type=datetime-local]:focus, input[type=datetime]:focus, input[type=email]:focus, input[type=month]:focus, input[type=number]:focus, input[type=password]:focus, input[type=search]:focus, input[type=tel]:focus, input[type=text]:focus, input[type=time]:focus, input[type=url]:focus, input[type=week]:focus, textarea:focus {
-    background: transparent;
-    box-shadow: none;
-    -webkit-box-shadow:none;
-    -moz-box-shadow:none;
-  }
-  #webappv2 input{
-    outline: none ;
-    box-shadow: none;
-    margin:0;
-  }
-  #webappv2 .md-sidenav-right{
-    top:0;
-  }
-  #webappv2 .layout-left-right{
-    padding-top:0;
-  }
-  #webappv2 .outlet-location-view .outlet-location-toolbar{
-    top:67px;
-    /*position: relative;*/
-  }
-  #webappv2 form{
-    margin-bottom: 0;
-  }
-
-  #webappv2 .main-content-right{
-    position: fixed !important;
-    top:120px !important;
-    left: auto !important;
-    right:16px;
-  }
-
-    #webappv2 md-input-container label{
-    font-weight: normal;
-    font-size: 16px;
-  }
-    #webappv2 .md-sidenav-right.contextual-drawer{
-    z-index:124;
-  }
-  #webappv2 md-backdrop{
-    height: 979px;
-    top: 0;
-    position: fixed ! important;
-    z-index: 125 !important;
-  }
-
-  #webappv2 .md-dialog-container{
-    top: -50px !important;
-    z-index: 126 !important;
-  }
-  .contain-to-grid{
-    position: fixed;
-    z-index: 123;
-  }
-
-  body md-tooltip {
-    z-index:200;
-  }
-  footer{
-    display: none;
-  }
-</style>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
-<script type="text/javascript" src="/angular.bundle.84cd58e757d811f247bf.js"></script><script type="text/javascript" src="/outlets.bundle.57f7c0f51e231b76fd27.js"></script><script type="text/javascript" src="/vendor.bundle.af954b19a6e000d61a95.js"></script><script type="text/javascript" src="/app.bundle.6a9bfca037722263339f.js"></script></body>
+<script type="text/javascript" src="/v2/angular.bundle.e7294ce8a9d3df96c1f8.js"></script><script type="text/javascript" src="/v2/outlets.bundle.ece67b96fc5c240447da.js"></script><script type="text/javascript" src="/v2/vendor.bundle.29bc4ee93c20ba3a6e42.js"></script><script type="text/javascript" src="/v2/app.bundle.2b98f5bf0d58cb14c055.js"></script></body>
 </html>
