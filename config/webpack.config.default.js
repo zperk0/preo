@@ -223,7 +223,7 @@ module.exports = function(ENV, options) {
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/index.php',
-        chunks:['events','app','vendor', 'angular'],
+        chunks:['outlets','events','app','vendor', 'angular'],
         inject:true,
         filename:'events/index.php'
       })
