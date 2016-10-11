@@ -102,7 +102,7 @@ export default class menuItemListController {
   }
 
   getPosition(item){
-    return this.items.filter((i)=>i.item.id===item.id)[0].position;
+    return this.items.filter((i)=>i.id===item.id)[0].position;
   }
 
   showCreateItem($event, isImport){

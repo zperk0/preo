@@ -4,10 +4,10 @@
   </div>
   <div flex class="menu-content">
     <div class='main-content-left'>
-        <menu-item-list has-search="true" order-by="'id'"  sv-disabled="true" has-new="true" items="vm.data.items"></menu-item-list>
+        <menu-item-list has-search="true" order-by="'id'"  sv-disabled="true" has-new="true" items="itemListCtrl.data.items"></menu-item-list>
       </div>
       <div class='floating-right-buttons'>
-      <md-button ng-click="vm.toggleDrawer('modifiers')" class="md-primary md-hue-2" translate>Show modifiers</md-button>
+      <md-button ng-click="itemListCtrl.toggleDrawer('modifiers')" class="md-primary md-hue-2" translate>Show modifiers</md-button>
     </div>
     <div class='main-content-right' sticky offset="134" contextual-menu-holder></div>
   </div>

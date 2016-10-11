@@ -5,18 +5,18 @@
     <card-item-title
                     sv-root="modifier"
                     has-visible="true"
-                    show-visible="!vm.item.item.visible"
-                    ng-attr-data-id="{{vm.item.item.id}}">
-                    <span class='name' flex>{{vm.item.item.id + "--" + vm.item.position + "--" | debug}} {{vm.item.item.name}} </span> <span class='price'> {{vm.item.item.price | currency:"£"}}</span>
+                    show-visible="!vm.item.visible"
+                    ng-attr-data-id="{{vm.item.id}}">
+                    <span class='name' flex>{{vm.item.id + "--" + vm.item.position + "--" | debug}} {{vm.item.name}} </span> <span class='price'> {{vm.item.price | currency:"£"}}</span>
                     <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                       <div sv-placeholder></div>
                     </div>
                     </card-item-title>
-    <modifier-chips ng-if="vm.item.item.modifiers.length" modifiers="vm.item.item.modifiers" item="vm.item.item"></modifier-chips>
-    <div class='size-wrapper' ng-if="!(vm.item.item.$size.$isMultiple === false) && vm.item.item.$size.items.length">
-      <card-item-child ng-repeat="size in vm.item.item.$size.items" modifier="vm.item.item.$size" option="size"></card-item-child>
+    <modifier-chips ng-if="vm.item.modifiers.length" modifiers="vm.item.modifiers" item="vm.item"></modifier-chips>
+    <div class='size-wrapper' ng-if="!(vm.item.$size.$isMultiple === false) && vm.item.$size.items.length">
+      <card-item-child ng-repeat="size in vm.item.$size.items" modifier="vm.item.$size" option="size"></card-item-child>
     </div>
-    <card-item-actions is-visible="vm.item.item.visible"
+    <card-item-actions is-visible="vm.item.visible"
                        on-clone="vm.onClone()"
                        on-delete="vm.onDelete()"
                        on-edit="vm.onEdit()"

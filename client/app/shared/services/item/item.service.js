@@ -156,7 +156,7 @@ export default class ItemService {
   updateItem(item, skipExtensions = false){
     this.DEBUG && console.log("updating item", item, skipExtensions);
 
-    return (skipExtensions ? $q.when() : this._saveItemImages(item))
+    return (skipExtensions ? this.$q.when() : this._saveItemImages(item))
       .then(item.update.bind(item))
       .then((updatedItem)=>{
         this.DEBUG && console.log("updated item", updatedItem);

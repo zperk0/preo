@@ -1,7 +1,16 @@
 
 export default class itemListController {
+
   static get UID(){
     return "itemListController"
+  }
+
+  showSpinner(){
+    this.Spinner.show("item-list");
+  }
+
+  hideSpinner(){
+    this.Spinner.hide("item-list");
   }
 
   toggleDrawer(id){
@@ -17,22 +26,30 @@ export default class itemListController {
 
   handleFinishLoading(data){
     this.$timeout(()=>{
-      this.data = {items:data.items.map((i, index)=>({id:i.id, item:i}))}
+      console.log('data here----', data);
+      // {items:data.items.map((i, index)=>({id:i.id, item:i}))}
+      this.data = data;
+
+      this.hideSpinner();
     })
 
   }
   handleError(menu){
-    //TODO handle error
+    
+    this.hideSpinner();
   }
 
-  constructor($stateParams,$timeout, ItemService, contextual, FeatureService) {
+  constructor($stateParams, $timeout, ItemService, contextual, FeatureService, Spinner) {
     "ngInject";
 
     this.data = {items:[]}
-    this.$timeout= $timeout;
-    this.ItemService =ItemService;
+    this.$timeout = $timeout;
+    this.ItemService = ItemService;
+    this.contextual = contextual;
+    this.Spinner = Spinner;
+
+    this.showSpinner();
     this.setItems($stateParams.venueId);
-    this.contextual =contextual;
 
     FeatureService.hasFeature(Preoday.constants.Feature.NESTED_MODIFIER);    
   }
