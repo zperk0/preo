@@ -180,7 +180,8 @@ export default class ItemService {
       });
   }
 
-  createItem(item, sectionId){
+  createItem(item, sectionId) {
+    
     this.DEBUG && console.log("creating item", item, sectionId);
     return Preoday.Item.save(item, sectionId)
       .then((newItem)=>{
@@ -190,14 +191,15 @@ export default class ItemService {
       .then(this._saveItemImages.bind(this))
       .then(this._saveItemSize.bind(this))
       .then((newItem)=>{
-        let positionedItem =  {item:newItem, id:newItem.id};
-        //if this item was created in the menu section editor the list is not going to be refreshed automagically
-        if (sectionId){
-          positionedItem.position = newItem.position;
+        // let positionedItem =  {item:newItem, id:newItem.id};
 
-          this.data.items.push(newItem);
-        }
-        return positionedItem;
+        //if this item was created in the menu section editor the list is not going to be refreshed automagically
+        // if (sectionId){
+        //   positionedItem.position = newItem.position;
+
+        //   this.data.items.push(newItem);
+        // }
+        return newItem;
       })
   }
 
@@ -248,7 +250,24 @@ export default class ItemService {
     })
   }
 
+  getNewItemBase (venueId) {
 
+    let newItem = {
+        $id: -1,
+        $show: true,
+        $selected: true,
+
+        quantity: 1,
+        $size: 0,
+        visible: 1,
+        tags: [],
+        images: [],
+        position: 0,
+        venueId: venueId
+    };   
+    
+    return newItem; 
+  }
 
   constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService, gettextCatalog, ModifierService) {
     "ngInject";

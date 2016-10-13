@@ -15,7 +15,7 @@ export default function cardItemList(){
     },
     template: require("./cardItemList.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "cardItemListCtrl",
     bindToController: true,
     transclude:true,
     require:['cardItemList', '?^^menuItemList', '?^^menuSectionList', '?^^modifierList', '?^^outletLocationList', '?^^outletList'],

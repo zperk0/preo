@@ -105,10 +105,11 @@ export default class menuItemController {
     this.ItemService.createItem(this.item, this.sectionId)
       .then((createdItem)=>{
         createdItem.$show = true;  //need show for animation
+        createdItem.$selected = false;  //need show for animation
 
-        this.menuItemListCtrl.deleteItem(this.item);
+        this.cardItemList.onUpdateItem(this.item, createdItem);
+
         this.contextualMenu.hide();
-        this.cardItemList.onItemCreated(createdItem);
         if (this.onItemCreated){
           this.onItemCreated({item:createdItem});
         }
@@ -251,14 +252,17 @@ export default class menuItemController {
     this.ItemService = ItemService;
     this.newModifiers = [];
 
+    console.log('constructor here');
+
     let inParam = false;
     if (this.item && this.item.id === Number($stateParams.itemId)){
       inParam = true;
       this.item.$selected = true;
     }
     //if it's a new item we toggle the context menu to edit this
-    if (this.item && !this.item.id || inParam) {
+    if (this.item && (!this.item.id || inParam) && this.hasActions) {
       $timeout(()=>{
+        // console.log('sending this item', this.item, inParam, this.hasActions);
         this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
       })
     }

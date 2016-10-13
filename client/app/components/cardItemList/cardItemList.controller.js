@@ -28,6 +28,11 @@ export default class cardItemListController {
     this.collection.splice(indexBefore+1, 0, item);
   }
 
+  onUpdateItem(oldItem, newItem) {
+
+    this.collection.splice(this.collection.indexOf(oldItem), 1, newItem);
+  }
+
   onItemDeleted(item){
     this.deleteItem(item)
   }

@@ -8,34 +8,22 @@ export default function menuItemList($animate, $timeout){
     scope: {
       items:"=",
       hasNew:"=",
-      animate:"=?",
-      section:"=?",
       hasSearch:"=?",
+      hasActions:"@?",
       searchText:"=?",
       svDisabled:"=",
       svMultiSelect:"=?",
       svKeepInList:"=?",
       svIsDropzone:"=?",
-      svIsDropzoneDisabled:"=?",
-      orderBy: '=?',
-      orderByReverse: '=?',
     },
     template: require("./menuItemList.tpl.html"),
     controller: controller.UID,
     controllerAs: "menuItemListCtrl",
     bindToController: true,
     replace:true,
-    link: (scope, el, attr, ctrl) => {
-      ctrl.el = el;
-      el[0].style.maxHeight = 0;
-      console.log("el", ctrl.el);
-      el.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
-        if (e.propertyName === 'max-height'){
-          $timeout(()=>{
-            ctrl.section.$expanding = false;
-          })
-        }
-      })
+    link: (scope, el, attrs, ctrl) => {
+
+      scope.hasActions = attrs.hasActions !== 'false'
     }
   }
 }
