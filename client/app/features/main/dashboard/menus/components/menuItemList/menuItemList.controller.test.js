@@ -10,6 +10,8 @@ describe('itemList Controller', function () {
       $scope,
       $stateParams,
       ItemService,
+      Snack,
+      server,
       $controller;
 
     beforeEach(angular.mock.module('webapp'));
@@ -21,12 +23,14 @@ describe('itemList Controller', function () {
       $controller = $injector.get('$controller');
       $stateParams = $injector.get('$stateParams');
       ItemService = $injector.get('ItemService');
+      Snack = $injector.get('Snack');
 
       $scope = $rootScope.$new();
     }));
 
     afterEach(function() {
 
+      server.restore();
     });
 
     function _startController() {
@@ -34,6 +38,8 @@ describe('itemList Controller', function () {
       MenuItemListCtrl = $controller('menuItemListController', {
         '$scope': $scope
       }, true);
+
+      server = sinon.fakeServer.create();
     }
 
     it("Should initialize the controller", function() {
@@ -48,6 +54,7 @@ describe('itemList Controller', function () {
 
       expect(MenuItemListCtrl.deleteItem).toEqual(jasmine.any(Function));
       expect(MenuItemListCtrl.showCreateItem).toEqual(jasmine.any(Function));      
+      expect(MenuItemListCtrl.onClone).toEqual(jasmine.any(Function));      
       expect(MenuItemListCtrl.items.length).toBe(0);
     });
 
@@ -80,5 +87,108 @@ describe('itemList Controller', function () {
       MenuItemListCtrl.showCreateItem();
 
       expect(MenuItemListCtrl.items.length).toBe(1);
+    });
+
+    it("Should clone an item", function(done) {
+
+      spyOn(ItemService, 'cloneItem').and.callThrough();
+      spyOn(ItemService, 'createItem').and.callThrough();
+
+      let venueId = 5;
+
+      let modifier = new Preoday.Modifier({
+        id: 1,
+        name: 'Modifier test',
+        variant: 0,
+        items: []
+      });
+
+      let mockItem = new Preoday.Item({
+        id: 1,
+        name: 'Test',
+        venueId: venueId,
+        modifiers: [modifier]
+      });
+
+      $stateParams.venueId = venueId;
+
+      _startController();
+
+      MenuItemListCtrl.instance.items = [mockItem];
+      MenuItemListCtrl = MenuItemListCtrl();
+
+      expect(MenuItemListCtrl.items.length).toBe(1);
+
+      server.respondWith('POST', '/api/items', [200, {"Content-Type": "application/json"}, JSON.stringify(mockItem)]);
+
+      MenuItemListCtrl.onClone(MenuItemListCtrl.items[0]);
+
+      server.respond();
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+
+        setTimeout( () => {
+
+          $rootScope.$digest();
+
+          expect(ItemService.cloneItem).toHaveBeenCalledWith(mockItem, null, null);
+          expect(ItemService.createItem).toHaveBeenCalled();
+          expect(MenuItemListCtrl.items.length).toBe(2);
+          expect(MenuItemListCtrl.items[1].name).toBe(MenuItemListCtrl.items[0].name);
+          expect(MenuItemListCtrl.items[1].modifiers.length).toBe(MenuItemListCtrl.items[0].modifiers.length);
+
+          done();
+        });
+      });
+    });
+
+    it("Shouldn't clone an item", function(done) {
+
+      spyOn(ItemService, 'cloneItem').and.callThrough();
+      spyOn(ItemService, 'createItem').and.callThrough();
+      spyOn(Snack, 'showError').and.callThrough();
+
+      let venueId = 5;
+
+      let mockItem = new Preoday.Item({
+        id: 1,
+        name: 'Test',
+        venueId: venueId,
+        modifiers: []
+      });
+
+      $stateParams.venueId = venueId;
+
+      _startController();
+
+      MenuItemListCtrl.instance.items = [mockItem];
+      MenuItemListCtrl = MenuItemListCtrl();
+
+      expect(MenuItemListCtrl.items.length).toBe(1);
+
+      server.respondWith('POST', '/api/items', [400, {"Content-Type": "application/json"}, JSON.stringify(mockItem)]);
+
+      MenuItemListCtrl.onClone(MenuItemListCtrl.items[0]);
+
+      server.respond();
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+
+        setTimeout( () => {
+
+          $rootScope.$digest();
+
+          expect(ItemService.cloneItem).toHaveBeenCalledWith(mockItem, null, null);
+          expect(ItemService.createItem).toHaveBeenCalled();
+          expect(Snack.showError).toHaveBeenCalled();
+          expect(MenuItemListCtrl.items.length).toBe(1);
+
+          done();
+        });
+      });
     });
 });

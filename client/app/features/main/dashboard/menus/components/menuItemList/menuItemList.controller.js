@@ -17,7 +17,7 @@ export default class menuItemListController {
 
       return !s.id;
     }).length > 0;
-    
+
     if (isCreating){
       return;
     }
@@ -25,13 +25,35 @@ export default class menuItemListController {
     this.items.push(newItem);
   }
 
-  constructor($scope, $stateParams, ItemService) {
+  onClone (item, sectionId) {
+
+    this.Spinner.show("item-clone")
+
+    this.ItemService.cloneItem(item, null, null)
+      .then((createdItem)=>{
+        createdItem.$show = true; //need show for animation
+        this.Spinner.hide("item-clone")
+        this.Snack.show('Item duplicated');
+        console.log("cloned", createdItem, this.item);
+        
+        this.items.push(createdItem);
+      }, (err)=>{
+        console.log("failed creating item", err)
+        this.Spinner.hide("item-clone")
+        this.Snack.showError('Failed duplicating item');
+      });
+  }
+
+  constructor($scope, $stateParams, Spinner, Snack, ItemService) {
     "ngInject";
 
     $scope.results = this.items;
 
     this.$scope = $scope;
     this.$stateParams = $stateParams;
+    this.Spinner = Spinner;
+    this.Snack = Snack;
+
     this.items = this.items === undefined ? [] : this.items;
     this.ItemService = ItemService;
   }

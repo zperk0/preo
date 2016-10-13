@@ -143,14 +143,7 @@ export default class ItemService {
       }
     }
     // Cloning an image is more complicated, we need to get the base64 from the current image and repost it
-    return this.getItemImage(newItemData)
-      .then((images)=>{
-        newItemData.images = images;
-        return newItemData
-      })
-      .then((newItem)=>{
-        return this.createItem(newItem, sectionId)
-      });
+    return this.createItem(newItemData, sectionId)
   }
 
   updateItem(item, skipExtensions = false){
@@ -181,6 +174,10 @@ export default class ItemService {
   }
 
   createItem(item, sectionId) {
+
+    if (item.$size) {
+      item.modifiers = [item.$size];
+    }
     
     this.DEBUG && console.log("creating item", item, sectionId);
     return Preoday.Item.save(item, sectionId)
@@ -189,7 +186,7 @@ export default class ItemService {
         return newItem;
       })
       .then(this._saveItemImages.bind(this))
-      .then(this._saveItemSize.bind(this))
+      // .then(this._saveItemSize.bind(this))
       .then((newItem)=>{
         // let positionedItem =  {item:newItem, id:newItem.id};
 
@@ -199,6 +196,8 @@ export default class ItemService {
 
         //   this.data.items.push(newItem);
         // }
+
+        console.log('new item here', newItem);
         return newItem;
       })
   }

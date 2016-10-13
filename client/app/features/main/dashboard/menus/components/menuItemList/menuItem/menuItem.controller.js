@@ -80,23 +80,31 @@ export default class menuItemController {
   }
 
   cloneItem(){
-    this.Spinner.show("item-clone")
-    let clonePosition = this.menuItemListCtrl.getPosition(this.item);
-    this.ItemService.cloneItem(this.item, this.sectionId, clonePosition)
-      .then((createdItem)=>{
-        createdItem.$show = true; //need show for animation
-        this.Spinner.hide("item-clone")
-        this.Snack.show('Item duplicated');
-        console.log("cloned", createdItem, this.item);
-        this.cardItemList.onItemCreated(createdItem);
-        if (this.onItemCreated){
-          this.onItemCreated({item:createdItem});
-        }
-      }, (err)=>{
-        console.log("failed creating item", err)
-        this.Spinner.hide("item-clone")
-        this.Snack.showError('Failed duplicating item');
-    })
+
+    this.onClone && this.onClone({
+      item: this.item,
+      sectionId: this.sectionId
+    });
+
+    return;
+
+    // this.Spinner.show("item-clone")
+    // let clonePosition = this.menuItemListCtrl.getPosition(this.item);
+    // this.ItemService.cloneItem(this.item, this.sectionId, clonePosition)
+    //   .then((createdItem)=>{
+    //     createdItem.$show = true; //need show for animation
+    //     this.Spinner.hide("item-clone")
+    //     this.Snack.show('Item duplicated');
+    //     console.log("cloned", createdItem, this.item);
+    //     this.cardItemList.onItemCreated(createdItem);
+    //     if (this.onItemCreated){
+    //       this.onItemCreated({item:createdItem});
+    //     }
+    //   }, (err)=>{
+    //     console.log("failed creating item", err)
+    //     this.Spinner.hide("item-clone")
+    //     this.Snack.showError('Failed duplicating item');
+    // })
   }
 
 

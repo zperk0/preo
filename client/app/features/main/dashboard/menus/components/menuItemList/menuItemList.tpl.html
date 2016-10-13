@@ -25,7 +25,8 @@
                  item="item"
                  has-actions="hasActions"
                  ng-attr-data-id="{{item.id}}"
-                 sv-element="item">
+                 sv-element="item"
+                 on-clone="menuItemListCtrl.onClone(item, sectionId)">
                </menu-item>
                <div sv-placeholder></div>
            </div>
