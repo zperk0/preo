@@ -130,7 +130,7 @@ export default class menuItemController {
     return this.checkMultipleOccurrences(updates)
     .then((updateAction)=>{
       this.Spinner.show("item-updated")
-      if (updateAction === 'all'){
+      if (updateAction === 'all') {
         return this.ItemService.updateItem(updates, skipExtensions)
           .then((updatedItem)=>{
             this.restoreValues(updatedItem);
@@ -173,6 +173,7 @@ export default class menuItemController {
     }
   }
 
+  // This method is to set the updatedItem properties, without replace item relations. Eg: tags, modifiers..
   restoreValues(newValues = false){
     if(newValues){
       this.originalItem = newValues;

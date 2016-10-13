@@ -11,29 +11,13 @@ export default class menuItemListController {
 
   showCreateItem() {
 
-    let newItem =  this.ItemService.getNewItemBase(this.$stateParams.venueId);
-    // let newItem = new Preoday.Item({
-    //     $id: -1,
-    //     $show: true,
-    //     $selected: true,
+    let newItem =  this.ItemService.getNewItemBase(this.$stateParams.venueId); 
 
-    //     quantity: 1,
-    //     $size: 0,
-    //     visible: 1,
-    //     tags: [],
-    //     images: [],
-    //     modifiers: [],
-    //     position: 0,
-    //     venueId: this.$stateParams.venueId
-    // });       
+    let isCreating = this.items.filter((s, index) => {
 
-    let isCreating = false;
-
-    this.items.forEach((s, index)=>{
-      if (!s.id){
-        isCreating = true;
-      }
-    });
+      return !s.id;
+    }).length > 0;
+    
     if (isCreating){
       return;
     }
@@ -41,22 +25,14 @@ export default class menuItemListController {
     this.items.push(newItem);
   }
 
-  constructor($scope, $q, Snack, Spinner, $stateParams, UtilsService, contextual, DialogService, LabelService, ItemService, $timeout) {
+  constructor($scope, $stateParams, ItemService) {
     "ngInject";
 
     $scope.results = this.items;
 
     this.$scope = $scope;
-    this.Snack = Snack;
     this.$stateParams = $stateParams;
-    this.Spinner = Spinner;
-    this.UtilsService = UtilsService;
-    this.$q = $q;
     this.items = this.items === undefined ? [] : this.items;
-    this.contextual = contextual;
-    this.LabelService = LabelService;
-    this.DialogService = DialogService;
     this.ItemService = ItemService;
-    this.$timeout = $timeout;
   }
 }
