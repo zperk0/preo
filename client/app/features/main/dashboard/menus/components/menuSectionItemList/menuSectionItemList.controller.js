@@ -4,6 +4,51 @@ export default class menuSectionItemListController {
     return "menuSectionItemListController"
   }
 
+  onItemCreated(newItem) {
+
+    this.recalculateHeight();
+
+    this.ItemService.addItem(newItem);
+
+    // add the item in the list
+  }
+
+  onItemUpdated() {
+
+    this.recalculateHeight();
+  }
+
+  onItemDeleted(item) {
+
+    this.cardItemList.deleteItem(item);
+  }
+
+  showCreateItem($event, isImport){
+
+    let newItem = this.ItemService.getNewItemBase(this.$stateParams.venueId);
+
+    if(!isImport){
+      let isCreating = this.items.filter((s, index) => {
+
+        return !s.id;
+      }).length > 0;
+
+      if (isCreating){
+        return;
+      }
+
+      if (this.items && this.items.length && this.section.id){
+        newItem.sectionId = this.section.id;
+        newItem.position = Math.max.apply(Math,this.items.map(function(o){return o.position;})) + 1000;
+      }
+      this.items.push(newItem);
+    } else {
+      this.contextual.showDrawer('items');
+    }
+
+    $event.stopPropagation();
+  }
+
   onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
        //must check because library appends the item in the array before calling callback
       if (this.cardItemList.isItemDuplicated($items, 0)){
@@ -57,9 +102,11 @@ export default class menuSectionItemListController {
   }
 
   onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
+
     if ($partFrom == $partTo){
       this.Spinner.show("item-move");
-      this.doSimpleSort($partTo).then(()=>{
+      this.doSimpleSort($partTo).then(() => {
+        
         this.Snack.show('Item moved');
       }, ()=>{
         this.Snack.showError('Error moving item');

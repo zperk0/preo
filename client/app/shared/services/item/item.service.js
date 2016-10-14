@@ -305,6 +305,11 @@ export default class ItemService {
     return newItem; 
   }
 
+  addItem (item) {
+
+    this.data.items && this.data.items.push(item);
+  }
+
   constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService, gettextCatalog, ModifierService) {
     "ngInject";
     this.data = {};

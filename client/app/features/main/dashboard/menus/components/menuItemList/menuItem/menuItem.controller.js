@@ -147,7 +147,7 @@ export default class menuItemController {
 
         this.contextualMenu.hide();
         if (this.onItemCreated){
-          this.onItemCreated({item:createdItem});
+          this.onItemCreated({item: createdItem});
         }
         this.Spinner.hide("item-create")
         this.Snack.show('Item created');
@@ -293,13 +293,16 @@ export default class menuItemController {
     this.ItemService = ItemService;
     this.newModifiers = [];
 
-    console.log('constructor here');
-
     let inParam = false;
     if (this.item && this.item.id === Number($stateParams.itemId)){
       inParam = true;
       this.item.$selected = true;
     }
+
+    if (!this.hasActions && this.hasActions !== false) {
+      this.hasActions = true;
+    }
+
     //if it's a new item we toggle the context menu to edit this
     if (this.item && (!this.item.id || inParam) && this.hasActions) {
       $timeout(()=>{
