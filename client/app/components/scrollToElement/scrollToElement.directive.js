@@ -3,7 +3,7 @@ export default function scrollToElement($timeout){
   return {
     restrict: 'A',
     link: (scope, element, attr) => {
-console.log(element);
+
     	scope.$on('$scrollMainToBottom', () => {
 
     		$timeout(() => {

@@ -26,6 +26,8 @@ describe('itemList Controller', function () {
       Snack = $injector.get('Snack');
 
       $scope = $rootScope.$new();
+
+      $scope.scrollToBottom = () => {};
     }));
 
     afterEach(function() {
@@ -93,6 +95,7 @@ describe('itemList Controller', function () {
 
       spyOn(ItemService, 'cloneItem').and.callThrough();
       spyOn(ItemService, 'createItem').and.callThrough();
+      spyOn($scope, 'scrollToBottom').and.callThrough();
 
       let venueId = 5;
 
@@ -134,6 +137,7 @@ describe('itemList Controller', function () {
 
           expect(ItemService.cloneItem).toHaveBeenCalledWith(mockItem, null, null);
           expect(ItemService.createItem).toHaveBeenCalled();
+          expect($scope.scrollToBottom).toHaveBeenCalled();
           expect(MenuItemListCtrl.items.length).toBe(2);
           expect(MenuItemListCtrl.items[1].name).toEqual(MenuItemListCtrl.items[0].name);
           expect(MenuItemListCtrl.items[1].modifiers.length).toBe(MenuItemListCtrl.items[0].modifiers.length);

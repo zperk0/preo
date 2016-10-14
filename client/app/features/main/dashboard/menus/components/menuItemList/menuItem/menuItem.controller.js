@@ -57,6 +57,7 @@ export default class menuItemController {
   }
 
   onEdit ($event){
+    
     this.originalItem  = angular.copy(this.item);
     this.cardItemList.selectItem(this.item);
     this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
@@ -72,7 +73,9 @@ export default class menuItemController {
         this.Spinner.show("item-image-delete");
 
         image.delete().then(()=>{
-          this.item.images.splice(this.item.images.indexOf(image), 1);
+          let imageIndex = this.item.images.indexOf(image);
+          this.item.images.splice(imageIndex, 1);
+          this.originalItem.images.splice(imageIndex, 1);
           this.Snack.show('Image deleted');
           this.Spinner.hide("item-image-delete");
         })
