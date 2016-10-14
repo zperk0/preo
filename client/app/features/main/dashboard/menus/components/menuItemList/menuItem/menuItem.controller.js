@@ -55,14 +55,39 @@ export default class menuItemController {
   onClone ($event){
       this.cloneItem();
   }
+
   onEdit ($event){
     this.originalItem  = angular.copy(this.item);
     this.cardItemList.selectItem(this.item);
-    this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+    this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
+      onDeleteImage: this.onDeleteImage.bind(this)
+    });
   }
+
+  onDeleteImage (image) {
+
+    console.log('on delete image here', image);
+    this.DialogService.delete(this.LabelService.TITLE_DELETE_ITEM_IMAGE, this.LabelService.CONTENT_DELETE_ITEM_IMAGE)
+      .then(()=> {
+        this.Spinner.show("item-image-delete");
+
+        image.delete().then(()=>{
+          this.item.images.splice(this.item.images.indexOf(image), 1);
+          this.Snack.show('Image deleted');
+          this.Spinner.hide("item-image-delete");
+        })
+        .catch((err)=>{
+          console.log("Failed deleting item image", err)
+          this.Spinner.hide("item-image-delete")
+          this.Snack.showError('Image not deleted');
+        })          
+      });    
+  }
+
   onDelete ($event){
     this.deleteItem();
   }
+
   onVisibility (newStatus){
     this.toggleVisibility(newStatus)
   }
@@ -276,7 +301,9 @@ export default class menuItemController {
     if (this.item && (!this.item.id || inParam) && this.hasActions) {
       $timeout(()=>{
         // console.log('sending this item', this.item, inParam, this.hasActions);
-        this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+        this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
+          onDeleteImage: this.onDeleteImage.bind(this)
+        });
       })
     }
   }

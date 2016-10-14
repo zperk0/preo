@@ -11,11 +11,12 @@ export default function imageUploader(){
       output:'=?',
       viewport:'=?',
       dimensions:"@",
-      onChange:"&?"
+      onChange: "&?",
+      onDelete: "&?",
     },
     template: require("./imageUploader.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "imageUploaderCtrl",
     bindToController: true,
     link: (scope, el, attr, ctrl) => {
       ctrl.el = el;
