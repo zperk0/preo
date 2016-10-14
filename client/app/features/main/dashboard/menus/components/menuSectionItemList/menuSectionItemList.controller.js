@@ -8,6 +8,11 @@ export default class menuSectionItemListController {
 
     this.recalculateHeight();
 
+    this.addToOriginalList(newItem);
+  }
+
+  addToOriginalList (newItem) {
+
     this.ItemService.addItem(newItem);
   }
 
@@ -137,7 +142,8 @@ export default class menuSectionItemListController {
 
   getPosition(item) {
 
-    return this.items.filter((i)=>i.id===item.id)[0].position;
+    // return this.items.filter((i)=>i.id===item.id)[0].position;
+    return item.position
   }
 
   recalculateHeight() {
@@ -149,6 +155,29 @@ export default class menuSectionItemListController {
     })
     this.el[0].style.maxHeight = maxHeight + (80 + 35*5) + "px";
   }    
+
+  onClone (item, sectionId) {
+
+    this.Spinner.show("item-clone");
+
+    let clonePosition = this.getPosition(item);
+
+    this.ItemService.cloneItem(item, this.section.id, clonePosition)
+      .then((createdItem)=>{
+        createdItem.$show = true; //need show for animation
+        this.Spinner.hide("item-clone")
+        this.Snack.show('Item duplicated');
+        console.log("cloned", createdItem, this.item);
+        
+        this.items.push(createdItem);
+        this.addToOriginalList(createdItem);
+
+      }, (err)=>{
+        console.log("failed creating item", err)
+        this.Spinner.hide("item-clone")
+        this.Snack.showError('Failed duplicating item');
+      });
+  }  
 
   constructor($scope, $q, Snack, Spinner, $stateParams, ItemService, $timeout) {
     "ngInject";

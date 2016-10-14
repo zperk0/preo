@@ -27,7 +27,8 @@
                  section-id="menuSectionItemListCtrl.section && menuSectionItemListCtrl.section.id"
                  on-item-created="menuSectionItemListCtrl.onItemCreated(item)"
                  on-item-updated="menuSectionItemListCtrl.onItemUpdated(item)"
-                 on-item-deleted="menuSectionItemListCtrl.onItemDeleted(item)">
+                 on-item-deleted="menuSectionItemListCtrl.onItemDeleted(item)"
+                 on-clone="menuSectionItemListCtrl.onClone(item, sectionId)">
                </menu-item>
                <div sv-placeholder></div>
            </div>
