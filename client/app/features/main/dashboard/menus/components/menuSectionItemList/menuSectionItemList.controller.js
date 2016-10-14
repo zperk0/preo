@@ -9,8 +9,6 @@ export default class menuSectionItemListController {
     this.recalculateHeight();
 
     this.ItemService.addItem(newItem);
-
-    // add the item in the list
   }
 
   onItemUpdated() {
@@ -106,36 +104,44 @@ export default class menuSectionItemListController {
     if ($partFrom == $partTo){
       this.Spinner.show("item-move");
       this.doSimpleSort($partTo).then(() => {
-        
+
         this.Snack.show('Item moved');
-      }, ()=>{
+      }, () => {
+
         this.Snack.showError('Error moving item');
-      }).then(()=>{
+      }).then(() => {
+
         this.Spinner.hide("item-move");
         this.recalculateHeight();
       })
     }
   }
 
-  doSimpleSort($items){
-   let promises = [];
-    $items.forEach(($item, index)=>{
-      let copy = angular.copy($item.item);
+  doSimpleSort($items) {
+
+    let promises = [];
+
+    $items.forEach(($item, index) => {
+
+      let copy = angular.copy($item);
       copy.sectionId = this.section.id;
-      copy.position=index*1000;
+      copy.position = index * 1000;
       copy.menuId = this.section.menuId;
       $item.position = copy.position;
 
       promises.push(copy.update());
     });
-    return this.$q.all(promises)
+
+    return this.$q.all(promises);
   }
 
-  getPosition(item){
+  getPosition(item) {
+
     return this.items.filter((i)=>i.id===item.id)[0].position;
   }
 
-  recalculateHeight(){
+  recalculateHeight() {
+
     this.section.$expanding = true;
     let maxHeight = 0;
     this.items.forEach((i)=>{
@@ -161,19 +167,19 @@ export default class menuSectionItemListController {
     this.section.$expanding = false;
 
     $scope.$watch('menuSectionItemListCtrl.section.$expanded',(newVal, oldVal)=>{
-      if(newVal){ // if expanded = true;
+
+      if(newVal) { // if expanded = true;
         this.items.forEach((i)=>i.$show = true)
         if (this.items.length === 0){
           this.recalculateHeight();
         }
-      } else if (oldVal){ //if expanded = false and it was true
+      } else if (oldVal) { //if expanded = false and it was true
         this.el[0].style.maxHeight = 0;
         this.section.$expanding = true;
         $timeout(()=>{
           this.items.forEach((i)=>i.$show = false)
           this.section.$expanding = false;
         }, 1000);
-
       }
     })
   }
