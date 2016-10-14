@@ -22,12 +22,12 @@
                       </div>
                     </card-item-title>
     <modifier-chips ng-if="menuSectionCtrl.section.modifiers.length" modifiers="menuSectionCtrl.section.modifiers" section="menuSectionCtrl.section"></modifier-chips>
-        <menu-item-list
+        <menu-section-item-list
               sv-is-dropzone-disabled="!!!menuSectionCtrl.section.$expanded"
               has-new="menuSectionCtrl.section.$expanded"
-              items="menuSectionCtrl.section.$positionedItems"
+              items="menuSectionCtrl.items"
               section="menuSectionCtrl.section">
-         </menu-item-list>
+         </menu-section-item-list>
     <card-item-actions is-visible="menuSectionCtrl.section.visible"
                        on-delete="menuSectionCtrl.onDelete()"
                        on-edit="menuSectionCtrl.onEdit()"

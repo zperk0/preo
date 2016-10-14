@@ -113,7 +113,7 @@ export default class menuSectionItemListController {
 
     this.section.$expanding = false;
 
-    $scope.$watch('menuItemListCtrl.section.$expanded',(newVal, oldVal)=>{
+    $scope.$watch('menuSectionItemListCtrl.section.$expanded',(newVal, oldVal)=>{
       if(newVal){ // if expanded = true;
         this.items.forEach((i)=>i.$show = true)
         if (this.items.length === 0){

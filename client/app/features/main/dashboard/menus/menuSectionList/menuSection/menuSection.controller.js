@@ -108,6 +108,7 @@
 
 
   toggleExpanded($event){
+    // console.log('toggle expanded', this.section);
     if (this.section.$expanding){
       return;
     }
@@ -190,7 +191,13 @@
 
   buildItems () {
 
-    // s.$positionedItems = s.items.map((i)=>({id:i.id,sectionId:s.id, position:i.position, item:this.ItemService.getById(i.id)}));
+    this.items = this.section.items.map((i) => {
+
+      let item = angular.copy(this.ItemService.getById(i.id));
+      item.position = i.position;
+
+      return item;
+    });
   }
 
   constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ItemService, ModifierService) {

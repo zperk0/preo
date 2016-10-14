@@ -28,7 +28,7 @@ export default function menuSectionItemList($animate, $timeout){
     link: (scope, el, attr, ctrl) => {
       ctrl.el = el;
       el[0].style.maxHeight = 0;
-      console.log("el", ctrl.el);
+      // console.log("el", ctrl.el);
       el.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
         if (e.propertyName === 'max-height'){
           $timeout(()=>{

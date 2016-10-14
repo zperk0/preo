@@ -18,7 +18,7 @@
             sv-is-dropzone='menuSectionItemListCtrl.svIsDropzone'
             sv-is-dropzone-disabled='menuSectionItemListCtrl.svIsDropzoneDisabled'>
              <menu-item
-                 ng-repeat="item in menuSectionItemListCtrl.items | orderBy: 'id' | filter:{'name':menuSectionItemListCtrl.searchText.name} as results"
+                 ng-repeat="item in menuSectionItemListCtrl.items | orderBy: ['position', 'id'] | filter: {'name':menuSectionItemListCtrl.searchText.name} as results"
                  ng-if="!menuSectionItemListCtrl.section.id || item.$show"
                  ng-init="$last && menuSectionItemListCtrl.recalculateHeight()"
                  item="item"

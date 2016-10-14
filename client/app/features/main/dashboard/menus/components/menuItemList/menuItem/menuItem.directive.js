@@ -18,11 +18,9 @@ export default function menuItem($timeout){
     controllerAs: "menuItemCtrl",
     bindToController: true,
     replace:true,
-    require:["^cardItemList", "^menuItemList", "menuItem"],
+    require:["^cardItemList", "menuItem"],
     link: (scope, el, attr, ctrls) => {
-      ctrls[2].menuItemListCtrl = ctrls[1]
-      ctrls[2].cardItemList = ctrls[0]
-
+      ctrls[1].cardItemList = ctrls[0];
     }
   };
 }

@@ -233,7 +233,7 @@ export default class menuItemController {
     this.item.$selected = false;
     if (this.item && !this.item.id) {
       this.item.$deleted = true;
-      this.menuItemListCtrl.deleteItem(this.item);
+      this.cardItemList.deleteItem(this.item);
     }
   }
 
