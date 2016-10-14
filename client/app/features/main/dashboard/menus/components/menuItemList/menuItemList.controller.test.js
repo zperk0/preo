@@ -123,11 +123,10 @@ describe('itemList Controller', function () {
 
       MenuItemListCtrl.onClone(MenuItemListCtrl.items[0]);
 
-      server.respond();
-
       setTimeout(() => {
 
         $rootScope.$digest();
+        server.respond();
 
         setTimeout( () => {
 
@@ -136,7 +135,7 @@ describe('itemList Controller', function () {
           expect(ItemService.cloneItem).toHaveBeenCalledWith(mockItem, null, null);
           expect(ItemService.createItem).toHaveBeenCalled();
           expect(MenuItemListCtrl.items.length).toBe(2);
-          expect(MenuItemListCtrl.items[1].name).toBe(MenuItemListCtrl.items[0].name);
+          expect(MenuItemListCtrl.items[1].name).toEqual(MenuItemListCtrl.items[0].name);
           expect(MenuItemListCtrl.items[1].modifiers.length).toBe(MenuItemListCtrl.items[0].modifiers.length);
 
           done();
@@ -172,11 +171,10 @@ describe('itemList Controller', function () {
 
       MenuItemListCtrl.onClone(MenuItemListCtrl.items[0]);
 
-      server.respond();
-
       setTimeout(() => {
 
         $rootScope.$digest();
+        server.respond();
 
         setTimeout( () => {
 

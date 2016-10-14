@@ -128,6 +128,10 @@ export default class menuItemController {
         this.Spinner.hide("item-create")
         this.Snack.showError('Failed creating item');
       })
+      .catch((err) => {
+
+        console.log('catch here', err);
+      });
   }
 
 
