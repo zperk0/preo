@@ -38,35 +38,66 @@ export default class ItemService {
       })
   }
 
-  _saveItemImages(item){
-    if (item.images && item.images.length){
-      let img = item.images[0];
-      if (img.$save){
-        this.DEBUG && console.log("Saving Item images", item.images)
-        return Preoday.ItemImage.saveToCdn(img.$image, item.id, item.venueId)
-        .then((itemImage)=>{
-            if (img.id){ //item  already had image, so don't create new, just update existing
-                img.image = itemImage.image;
-                return img.update()
-              } else {
-                return Preoday.ItemImage.save(itemImage);
-              }
-          })
-        .then((newImage)=>{
-          item.images[0] = newImage;
-          return item
-        })
+  _parseImages(item){
+
+    if (item.images && item.images.length) {
+      let promises = [];
+
+      for (var i = item.images.length - 1; i >= 0; i--) {
+        let image = item.images[i];
+        let deferred = this.$q.defer();
+
+        promises.push(deferred.promise);
+
+        ((image, deferred) => {
+
+          if (!image.$save) {
+            return deferred.resolve();
+          }
+
+          Preoday.ItemImage.saveToCdn(image.$image, item.id, item.venueId)
+          .then((itemImage)=>{
+
+            angular.extend(image, itemImage);
+            deferred.resolve();
+          }, deferred.reject);
+        })(image, deferred);
       }
-      else if (img.$delete && img.delete){
-        // if we have a $image and it's a real image in the list delete it
-        return img.delete().then(()=>{
-          item.images = [];
-          return item;
-        })
-      }
+
+      return this.$q.all(promises);
     }
-    this.DEBUG && console.log("Item does not have images")
+
     return this.$q.resolve(item);
+
+
+    // if (item.images && item.images.length){
+    //   let img = item.images[0];
+    //   if (img.$save){
+    //     this.DEBUG && console.log("Saving Item images", item.images)
+    //     return Preoday.ItemImage.saveToCdn(img.$image, item.id, item.venueId)
+    //     .then((itemImage)=>{
+    //         if (img.id){ //item  already had image, so don't create new, just update existing
+    //             img.image = itemImage.image;
+    //             return img.update()
+    //           } else {
+    //             return Preoday.ItemImage.save(itemImage);
+    //           }
+    //       })
+    //     .then((newImage)=>{
+    //       item.images[0] = newImage;
+    //       return item
+    //     })
+    //   }
+    //   else if (img.$delete && img.delete){
+    //     // if we have a $image and it's a real image in the list delete it
+    //     return img.delete().then(()=>{
+    //       item.images = [];
+    //       return item;
+    //     })
+    //   }
+    // }
+    // this.DEBUG && console.log("Item does not have images")
+    // return this.$q.resolve(item);
   }
 
   _saveItemSize(item){
@@ -149,7 +180,7 @@ export default class ItemService {
   updateItem(item, skipExtensions = false){
     this.DEBUG && console.log("updating item", item, skipExtensions);
 
-    return (skipExtensions ? this.$q.when() : this._saveItemImages(item))
+    return (skipExtensions ? this.$q.when() : this._parseImages(item))
       .then(item.update.bind(item))
       .then((updatedItem)=>{
         this.DEBUG && console.log("updated item", updatedItem);
@@ -175,17 +206,21 @@ export default class ItemService {
 
   createItem(item, sectionId) {
 
-    if (item.$size) {
+    if (item.$size && item.$size.items.length) {
       item.modifiers = [item.$size];
     }
     
     this.DEBUG && console.log("creating item", item, sectionId);
-    return Preoday.Item.save(item, sectionId)
+    return this._parseImages(item)
+      .then(() => {
+
+        return Preoday.Item.save(item, sectionId);
+      })
       .then((newItem)=>{
         this.DEBUG && console.log("created item", newItem);
         return newItem;
       })
-      .then(this._saveItemImages.bind(this))
+      // .then(this._saveItemImages.bind(this))
       // .then(this._saveItemSize.bind(this))
       .then((newItem)=>{
         // let positionedItem =  {item:newItem, id:newItem.id};
