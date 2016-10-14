@@ -111,11 +111,12 @@ export default class ItemService {
           return item;
         })
       }
+      
       //if we actually have a size, update or save
-      if(item.$size.items.length){
+      if(item.$size.$isMultiple && item.$size.items.length) {
         this.DEBUG && console.log("Saving item $size", item.$size)
         //if its new, we save.
-        if (!item.$size.id){
+        if (!item.$size.id) {
           item.$size.itemId=item.id;
           return item.saveModifier(item.$size).then((mod)=>{
             item.$size = mod;

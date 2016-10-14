@@ -96,7 +96,7 @@ describe('itemList Controller', function () {
       
     });
 
-    it("Shouldn't fetch the items", function() {
+    it("Should show an error when fail on fetch items", function() {
 
       spyOn(FeatureService, 'hasFeature');
       spyOn(ItemService, 'getItems').and.returnValue($q.reject({}));

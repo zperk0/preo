@@ -188,6 +188,11 @@
     }
   }
 
+  buildItems () {
+
+    // s.$positionedItems = s.items.map((i)=>({id:i.id,sectionId:s.id, position:i.position, item:this.ItemService.getById(i.id)}));
+  }
+
   constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ItemService, ModifierService) {
     "ngInject";
     this.$q =$q;
@@ -204,6 +209,7 @@
     this.type = 'menuSection'; //type for contextual menu
     this.menuItemType = 'menuItem';
     this.allowedDropTypes = [this.menuItemType];
+    this.items = [];
     this.newItems = [];
     this.newModifiers = [];
     if (this.section && $stateParams.sectionId && this.section.id === Number($stateParams.sectionId)){
@@ -212,9 +218,11 @@
       })
     }
     //if it's a new section we toggle the context menu to edit this
-    if (this.section && !this.section.id) {
-        console.log("here ho");
-        this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+    if (!this.section.id) {
+      console.log("here ho");
+      this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+    } else {
+      this.buildItems();
     }
   }
 }
