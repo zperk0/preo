@@ -1,7 +1,7 @@
 import controller from './menuItemList.controller'
 
 //refactor to not need section
-export default function menuItemList($animate, $timeout){
+export default function menuItemList($animate, $timeout, $document, $rootScope){
   "ngInject";
   return {
     restrict: 'E',
@@ -21,9 +21,14 @@ export default function menuItemList($animate, $timeout){
     controllerAs: "menuItemListCtrl",
     bindToController: true,
     replace:true,
-    link: (scope, el, attrs, ctrl) => {
+    link: (scope, element, attrs, ctrl) => {
 
-      scope.hasActions = attrs.hasActions !== 'false'
+      scope.hasActions = attrs.hasActions !== 'false';
+
+      scope.scrollToBottom = () => {
+
+        $rootScope.$broadcast('$scrollMainToBottom');
+      };
     }
   }
 }

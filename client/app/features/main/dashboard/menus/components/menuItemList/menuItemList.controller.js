@@ -37,6 +37,8 @@ export default class menuItemListController {
         console.log("cloned", createdItem, this.item);
         
         this.items.push(createdItem);
+
+        this.$scope.scrollToBottom();
       }, (err)=>{
         console.log("failed creating item", err)
         this.Spinner.hide("item-clone")
