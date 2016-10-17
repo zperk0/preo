@@ -5,14 +5,13 @@
 
     <card-item-list
           collection="menuItemListCtrl.items"
-          collection-results="results"
           search-filter="menuItemListCtrl.searchText"
           has-new="menuItemListCtrl.hasNew"
           tooltip="{{ 'Add item' | translate }}"
           on-click-new="menuItemListCtrl.showCreateItem()"        
           search-label="{{menuItemListCtrl.hasSearch ? 'items' : ''}}">
           <div class='sort-holder'
-            sv-part="results"
+            sv-part="menuItemListCtrl.items"
             sv-part-origin="menuItemListCtrl.items"
             sv-multi-select='menuItemListCtrl.svMultiSelect'
             sv-keep-in-list='menuItemListCtrl.svKeepInList'
@@ -21,7 +20,8 @@
             sv-is-dropzone-disabled='menuItemListCtrl.svIsDropzoneDisabled'>
 
              <menu-item
-                 ng-repeat="item in menuItemListCtrl.items | orderBy: 'id' | filter:{'name': menuItemListCtrl.searchText.name} as results track by item.id"
+                 ng-repeat="item in menuItemListCtrl.items | orderBy: 'id' track by item.id"
+                 ng-show="menuItemListCtrl.isInFilter(item, menuItemListCtrl.searchText.name)"
                  item="item"
                  has-actions="hasActions"
                  ng-attr-data-id="{{item.id}}"

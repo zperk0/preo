@@ -28,7 +28,7 @@ export default class menuItemController {
       if (updateAction === 'all'){
         return _doAddModifier.call(this);
       } else {
-        let clonePosition = this.menuItemListCtrl.getPosition(this.item);
+        let clonePosition = this.menuSectionItemList.getPosition(this.item);
         return this.ItemService.doSingleEdit(this.item, this.sectionId, clonePosition)
           .then(_doAddModifier.bind(this))
           .then((newItem)=>{
@@ -140,9 +140,6 @@ export default class menuItemController {
     this.Spinner.show("item-create")
     this.ItemService.createItem(this.item, this.sectionId)
       .then((createdItem)=>{
-        createdItem.$show = true;  //need show for animation
-        createdItem.$selected = false;  //need show for animation
-
         this.cardItemList.onUpdateItem(this.item, createdItem);
 
         this.contextualMenu.hide();
@@ -176,14 +173,10 @@ export default class menuItemController {
             this.restoreValues(updatedItem);
           })
       }
-      let clonePosition = this.menuItemListCtrl.getPosition(this.item);
+      let clonePosition = this.menuSectionItemList.getPosition(this.item);
       return this.ItemService.doSingleEdit(updates, this.sectionId, clonePosition)
-        .then((newItem)=>{
-          this.cardItemList.onItemDeleted(this.item)
-          if (this.onItemDeleted){
-            this.onItemDeleted(this.item);
-          }
-          this.cardItemList.onItemCreated(newItem);
+        .then((newItem)=> {
+          this.cardItemList.onUpdateItem(this.item, newItem);
           if (this.onItemCreated){
             this.onItemCreated({item:newItem});
           }

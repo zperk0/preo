@@ -199,7 +199,7 @@ module.exports = function(ENV, options) {
           }
 
         },
-        chunks:['bookings', 'events', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','app','vendor', 'angular'],
+        chunks:['bookings', 'events', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','app','vendor'],
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
       }),

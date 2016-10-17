@@ -30,6 +30,9 @@ export default class cardItemListController {
 
   onUpdateItem(oldItem, newItem) {
 
+    newItem.$show = true;  //need show for animation
+    newItem.$selected = false;  //need show for animation
+
     this.collection.splice(this.collection.indexOf(oldItem), 1, newItem);
   }
 

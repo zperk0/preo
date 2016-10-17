@@ -1,5 +1,7 @@
 // Import Style
 
+import angular from 'angular';
+
 require('jscore/preoday/preoday.min.js');
 require('mdPickers/dist/mdPickers.js');
 require('angular-sanitize/angular-sanitize.js');

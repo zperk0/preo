@@ -60,9 +60,6 @@ export default class menuSectionItemListController {
         return;
       }
 
-
-      console.log('on external item moved here', $items, $partFrom, $partTo, $indexFrom, $indexTo);
-
       let promises = [];
       this.Spinner.show("item-move");
       let position = 0;
@@ -77,7 +74,7 @@ export default class menuSectionItemListController {
 
       $items.forEach(($item)=>{
         $item.position = position;
-        let $i = angular.copy($item.item);
+        let $i = angular.copy($item);
         //only idd items that are not in the list yet
         $i.position = position;
         $i.sectionId = this.section.id;
@@ -88,10 +85,11 @@ export default class menuSectionItemListController {
         // this is needed because of $scope.results array on search. drag an drop list must use results so end array is not updated
         // this.items.splice($indexTo,0,...items);
         items.forEach((newItem)=>{
-          // this.items.push({item:newItem, id:newItem.id, position:newItem.position})
-          this.onItemCreated(newItem, true);
-          this.cardItemList.onItemCreated({item:this.ItemService.getById(newItem.id), $show:true, id:newItem.id, position:newItem.position});
-        })
+          // this.items.push({item:newItem, id:newItem.id, position:newItem.position})          
+          newItem.$show = true;
+          this.cardItemList.onItemCreated(newItem);
+          this.recalculateHeight();
+        });
         return this.doSimpleSort($partTo);
       }).then(()=>{
         this.Snack.show('Items added');
@@ -179,7 +177,7 @@ export default class menuSectionItemListController {
       });
   }  
 
-  constructor($scope, $q, Snack, Spinner, $stateParams, ItemService, $timeout) {
+  constructor($scope, $q, Snack, Spinner, $stateParams, ItemService, $timeout, contextual) {
     "ngInject";
 
     this.$scope = $scope;
@@ -190,6 +188,7 @@ export default class menuSectionItemListController {
     this.items = this.items === undefined ? [] : this.items;
     this.ItemService = ItemService;
     this.$timeout = $timeout;
+    this.contextual = contextual;
 
     this.items.forEach((i)=>i.$show = false);
 
