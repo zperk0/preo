@@ -56,20 +56,19 @@ export default class menuSectionItemListController {
        //must check because library appends the item in the array before calling callback
       if (this.cardItemList.isItemDuplicated($items, 0)){
         this.Snack.showError('One or more items are already in section');
-        $partTo.splice($indexTo,$items.length);
+        // $partTo.splice($indexTo,$items.length);
         return;
       }
+
+      // console.log('partTo ----> ', $partTo, $indexTo, $items)
 
       let promises = [];
       this.Spinner.show("item-move");
       let position = 0;
-      if ($indexTo > 0){
+      if ($indexTo > 0) {
         position = $partTo[$indexTo-1].position;
-        if ($partTo.length > $indexTo + $items.length){
-          position+= ($partTo[$indexTo+$items.length].position - position)/2;
-        } else {
-          position+=1000;
-        }
+      } else {
+        $partTo[0].position += 1;
       }
 
       $items.forEach(($item)=>{
@@ -167,7 +166,7 @@ export default class menuSectionItemListController {
         this.Snack.show('Item duplicated');
         console.log("cloned", createdItem, this.item);
         
-        this.items.push(createdItem);
+        this.cardItemList.insert(item, createdItem);
         this.addToOriginalList(createdItem);
 
       }, (err)=>{

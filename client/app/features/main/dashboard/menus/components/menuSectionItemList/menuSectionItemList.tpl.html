@@ -6,11 +6,10 @@
 
     <card-item-list
           collection="menuSectionItemListCtrl.items"
-          collection-results="results"
           search-filter="menuSectionItemListCtrl.searchText"
           search-label="{{menuSectionItemListCtrl.hasSearch ? 'items' : ''}}">
           <div class='sort-holder'
-            sv-part="results"
+            sv-part="menuSectionItemListCtrl.items"
             sv-part-origin="menuSectionItemListCtrl.items"
             sv-multi-select='menuSectionItemListCtrl.svMultiSelect'
             sv-keep-in-list='menuSectionItemListCtrl.svKeepInList'
@@ -18,7 +17,7 @@
             sv-is-dropzone='menuSectionItemListCtrl.svIsDropzone'
             sv-is-dropzone-disabled='menuSectionItemListCtrl.svIsDropzoneDisabled'>
              <menu-item
-                 ng-repeat="item in menuSectionItemListCtrl.items | orderBy: ['position', 'id'] | filter: {'name':menuSectionItemListCtrl.searchText.name} as results"
+                 ng-repeat="item in menuSectionItemListCtrl.items | orderBy: ['position', 'id'] track by item.id"
                  ng-if="!menuSectionItemListCtrl.section.id || item.$show"
                  ng-init="$last && menuSectionItemListCtrl.recalculateHeight()"
                  item="item"
