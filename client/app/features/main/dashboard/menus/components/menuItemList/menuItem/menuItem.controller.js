@@ -136,7 +136,8 @@ export default class menuItemController {
   }
 
 
-  createItem(){
+  createItem() {
+    
     this.Spinner.show("item-create")
     this.ItemService.createItem(this.item, this.sectionId)
       .then((createdItem)=>{
@@ -280,7 +281,7 @@ export default class menuItemController {
     this.DialogService = DialogService;
     this.ModifierService = ModifierService;
     this.LabelService = LabelService;
-    this.type="menuItem";
+    this.type = "menuItem";
     this.$stateParams=$stateParams;
     this.contextual = contextual;
     this.ItemService = ItemService;

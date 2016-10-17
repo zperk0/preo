@@ -41,7 +41,7 @@
 
      if (this.isItemDuplicated($items)){
         this.Snack.showError('One or more items already in section');
-        $partTo.splice($indexTo,$items.length);
+        // $partTo.splice($indexTo,$items.length);
         return;
       }
 
@@ -63,13 +63,17 @@
 
           let p = this.section.moveItem(copy).then((newItem)=>{
 
-            let cachedItem = this.ItemService.getById(newItem.id);
+            // let cachedItem = this.ItemService.getById(newItem.id);
 
             // console.log('after item moved', newItem, cachedItem);
 
-            this.items.push(newItem);
+            newItem.position = 0;
+            if (this.items.length) {
+              this.items[0].position += 1;
+            }
+            this.items.unshift(newItem);
           }).catch((err)=>{
-            $partFrom.splice($indexFrom,0,$item);
+            // $partFrom.splice($indexFrom,0,$item);
             this.Snack.showError("Error moving items to section")
             console.log("Error moving items to section", err);
           })
@@ -82,8 +86,17 @@
     this.$q.all(promises).then(()=>{
       $removeFromOrigin && $removeFromOrigin();
 
-      this.Snack.show("Items moved to section")
-      this.Spinner.hide("moving-section-item");
+
+      this.updateItemsPosition()
+        .then(() => {
+
+          this.Snack.show("Items moved to section")
+          this.Spinner.hide("moving-section-item");          
+        }, () => {
+
+          this.Snack.show("Items moved to section")
+          this.Spinner.hide("moving-section-item");          
+        });
     })
 
   }
@@ -104,6 +117,17 @@
 
       console.log("resolved");
     });
+  }
+
+  updateItemsPosition() {
+
+    const promises = [];
+    this.items.forEach((item, index)=>{
+      let clone = angular.copy(item);
+      clone.position=index*1000;
+      promises.push(clone.update());
+    });
+    return this.$q.all(promises);
   }
 
 
@@ -195,6 +219,8 @@
 
       let item = angular.copy(this.ItemService.getById(i.id));
       item.position = i.position;
+      item.sectionId = this.section.id;
+      item.menuId = this.section.menuId;
 
       return item;
     });

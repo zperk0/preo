@@ -31,7 +31,7 @@ export default class cardItemListController {
   // add a cloned item in the correct position after the original item
   insert (currentItem, newItem) {
 
-    this.collection.splice(this.collection.indexOf(currentItem), 0, newItem);
+    this.collection.splice(this.collection.indexOf(currentItem) + 1, 0, newItem);
   }
 
   onUpdateItem(oldItem, newItem) {

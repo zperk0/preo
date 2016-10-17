@@ -6,6 +6,9 @@ export default class menuSectionItemListController {
 
   onItemCreated(newItem) {
 
+    newItem.sectionId = this.section.id;
+    newItem.menuId = this.section.menuId;
+
     this.recalculateHeight();
 
     this.addToOriginalList(newItem);
@@ -42,6 +45,7 @@ export default class menuSectionItemListController {
 
       if (this.items && this.items.length && this.section.id){
         newItem.sectionId = this.section.id;
+        newItem.menuId = this.section.menuId;
         newItem.position = Math.max.apply(Math,this.items.map(function(o){return o.position;})) + 1000;
       }
       this.items.push(newItem);
@@ -52,7 +56,7 @@ export default class menuSectionItemListController {
     $event.stopPropagation();
   }
 
-  onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
+  onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo) {
        //must check because library appends the item in the array before calling callback
       if (this.cardItemList.isItemDuplicated($items, 0)){
         this.Snack.showError('One or more items are already in section');
