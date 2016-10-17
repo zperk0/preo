@@ -24,8 +24,8 @@
   isItemDuplicated(items){
    for (let j=0;j<items.length;j++){
      let found = 0;
-      for (let i=0;i<this.section.$positionedItems.length;i++){
-        if (this.section.$positionedItems[i].id === items[j].id){
+      for (let i=0;i<this.items.length;i++){
+        if (this.items[i].id === items[j].id){
           found++;
           // sort list adds the item in the new list, if we find it we must remove it
           if (found){
@@ -53,7 +53,7 @@
 
     $items.forEach(($item)=>{
         // move new item always to the beggining of new section
-        var copy = angular.copy($item.item)
+        var copy = angular.copy($item)
         copy.position = 0;
         if ($item && $item.sectionId != this.section.id){
           copy.menuId = this.section.menuId;
@@ -67,7 +67,7 @@
 
             // console.log('after item moved', newItem, cachedItem);
 
-            this.section.$positionedItems.splice(0,0, {id:cachedItem.id, sectionId: newItem.sectionId, position:newItem.position, item:cachedItem})
+            this.items.push(newItem);
           }).catch((err)=>{
             $partFrom.splice($indexFrom,0,$item);
             this.Snack.showError("Error moving items to section")
