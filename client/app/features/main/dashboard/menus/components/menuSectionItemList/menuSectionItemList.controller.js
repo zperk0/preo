@@ -71,7 +71,7 @@ export default class menuSectionItemListController {
       let position = 0;
       if ($indexTo > 0) {
         position = $partTo[$indexTo-1].position;
-      } else {
+      } else if ($partTo && $partTo.length) {
         $partTo[0].position += 1;
       }
 

@@ -175,7 +175,10 @@ export default class ModifierService {
     return modifier.delete()
       .then(()=>{
         if (this.data.modifiers){
-          this.data.modifiers = this.data.modifiers.filter((m)=>m.id!==modifier.id)
+
+          this.data.modifiers.splice(this.data.modifiers.indexOf(modifier), 1);
+
+          // this.data.modifiers = this.data.modifiers.filter((m)=>m.id!==modifier.id)
         }
       })
   }

@@ -32,11 +32,7 @@ export default class menuItemController {
         return this.ItemService.doSingleEdit(this.item, this.sectionId, clonePosition)
           .then(_doAddModifier.bind(this))
           .then((newItem)=>{
-            this.cardItemList.onItemDeleted(this.item)
-            if (this.onItemDeleted){
-              this.onItemDeleted({item:this.item});
-            }
-            this.cardItemList.onItemCreated(newItem);
+            this.cardItemList.onUpdateItem(this.item, newItem);
             if (this.onItemCreated){
               this.onItemCreated({item:newItem});
             }
@@ -137,7 +133,7 @@ export default class menuItemController {
 
 
   createItem() {
-    
+
     this.Spinner.show("item-create")
     this.ItemService.createItem(this.item, this.sectionId)
       .then((createdItem)=>{

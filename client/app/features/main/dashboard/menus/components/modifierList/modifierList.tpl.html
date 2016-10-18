@@ -12,12 +12,13 @@
         search-label="{{modifierListCtrl.hasSearch ? 'modifiers' : ''}}">
         <div class='sort-holder'
           sv-part="modifierListCtrl.modifiers"
+          sv-part-origin="modifierListCtrl.modifiers"
           sv-multi-select='modifierListCtrl.svMultiSelect'
           sv-keep-in-list='modifierListCtrl.svKeepInList'
           sv-on-external-sort="modifierListCtrl.onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
           sv-is-dropzone='false'>
            <modifier-item
-               ng-repeat="modifier in modifierListCtrl.modifiers | orderBy:'id' track by modifier.id"
+               ng-repeat="modifier in modifierListCtrl.modifiers | orderBy:'id' track by $index"
                ng-show="modifierListCtrl.isInFilter(modifier, modifierListCtrl.searchText.name)"
                modifier="modifier"
                ng-attr-data-id="{{ modifier.id }}"
