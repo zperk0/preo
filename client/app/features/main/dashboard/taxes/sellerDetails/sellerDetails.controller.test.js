@@ -17,10 +17,10 @@ describe('SellerDetails Controller', function () {
       $q,
       Snack;
 
-    var settingsMock = {
+    var settingsMock = new Preoday.VenueTaxSettings({
       venueId:1,
       taxId:"123456"
-    }
+    });
 
     beforeEach(angular.mock.module('webapp'));
     beforeEach(angular.mock.module(sellerDetails));
@@ -84,12 +84,36 @@ describe('SellerDetails Controller', function () {
       expect(SellerDetailsCtrl.isEdit).toEqual(false);
       SellerDetailsCtrl.toggleEdit();
       expect(SellerDetailsCtrl.isEdit).toEqual(true);
+      SellerDetailsCtrl.toggleEdit();
+      expect(SellerDetailsCtrl.isEdit).toEqual(false);
     });
 
+    it("Should select between save or update if venueId is or isn't set", function() {
+      spyOn(Preoday.VenueTaxSettings, 'get').and.callFake(function(){return $q.resolve(settingsMock)});
+      _startController();
+
+      $rootScope.$digest();
+      expect(SellerDetailsCtrl.taxSettings).toEqual(settingsMock);
+      var saveOrUpdate = SellerDetailsCtrl.saveOrUpdate();
+      expect(saveOrUpdate.name).toEqual(SellerDetailsCtrl.updateSettings.name)
+      delete SellerDetailsCtrl.taxSettings.venueId;
+      saveOrUpdate = SellerDetailsCtrl.saveOrUpdate();
+      expect(saveOrUpdate.name).toEqual(SellerDetailsCtrl.saveNewSettings.name)
+    });
+
+    it("Should extend when trying to save to prevent triggering an update when it actually shoud be a save", function() {
+      spyOn(Preoday.VenueTaxSettings, 'get').and.callFake(function(){return $q.resolve(settingsMock)});
+      spyOn(Preoday.VenueTaxSettings, 'save').and.callFake(function(){return $q.resolve(settingsMock)});
+      spyOn(angular,'extend').and.callThrough();
+      _startController();
+
+      $rootScope.$digest();
+      expect(SellerDetailsCtrl.taxSettings).toEqual(settingsMock);
+      delete SellerDetailsCtrl.taxSettings.venueId;
+      SellerDetailsCtrl.saveNewSettings();
+      expect(angular.extend).toHaveBeenCalled();
+
+    });
+
+
 });
-
-
-//tests: When submit should chooose update if venueId is set
-//tests: When submit should chooose save if venueId is not set
-//tests: After successful submit tax settings should have a venueId
-//tests: After failed Save tax settings should not have a venueId

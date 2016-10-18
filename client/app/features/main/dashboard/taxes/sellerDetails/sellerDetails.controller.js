@@ -12,9 +12,13 @@ export default class sellerDetailsController {
     return this.taxSettings.update();
   }
 
+  saveOrUpdate(){
+    return this.taxSettings.venueId ? this.updateSettings.bind(this) : this.saveNewSettings.bind(this);
+  }
+
   submit(){
     this.Spinner.show("seller-details-save");
-    var saveOrUpdate = this.taxSettings.venueId ? this.updateSettings.bind(this) : this.saveNewSettings.bind(this);
+    var saveOrUpdate = this.saveOrUpdate();
     if (this.sellerForm.$valid){
       saveOrUpdate()
         .then((taxSettings)=>{
