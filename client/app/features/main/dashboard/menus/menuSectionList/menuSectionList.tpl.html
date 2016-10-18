@@ -1,18 +1,18 @@
 <div class="menu-section-list">
   <div class='sv-root-holder'
       sv-root
-      sv-on-sort="vm.onSectionMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+      sv-on-sort="menuSectionListCtrl.onSectionMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
 
     <card-item-list
-        collection="vm.sections"
+        collection="menuSectionListCtrl.sections"
         has-new="true"
         tooltip="{{'Add section' | translate}}"
-        on-click-new="vm.showCreateSection($event)">
-    <div class='sort-holder' sv-part="vm.sections">
+        on-click-new="menuSectionListCtrl.showCreateSection($event)">
+    <div class='sort-holder' sv-part="menuSectionListCtrl.sections">
       <menu-section
         sv-element="section"
-        ng-repeat="section in vm.sections"
-        ng-init="$last && vm.repeatDone()"
+        ng-repeat="section in menuSectionListCtrl.sections"
+        ng-init="$last && menuSectionListCtrl.repeatDone()"
         section="section">
       </menu-section>
       <div sv-placeholder></div>

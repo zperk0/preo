@@ -1,15 +1,15 @@
 <div class='card-item-list'>
-  {{vm.collection.length | debug}}
-  <md-input-container class='search search-item' ng-if="vm.searchLabel">
+  {{cardItemListCtrl.collection.length | debug}}
+  <md-input-container class='search search-item' ng-if="cardItemListCtrl.searchLabel">
     <icon>search</icon>
-    <label translate>Search {{vm.searchLabel}}</label>
-    <input flex name="search" ng-model="vm.searchFilter.name">
+    <label translate>Search {{cardItemListCtrl.searchLabel}}</label>
+    <input flex name="search" ng-model="cardItemListCtrl.searchFilter.name">
   </md-input-container>
   <!-- <div sv-placeholder></div> -->
   <div class='repeat-holder' ng-transclude>
   </div>
-  <card-item-new tooltip="{{vm.tooltip}}" ng-if="vm.hasNew" on-click="vm.clickNew()"></card-item-new>
-  <div class='no-results' ng-if="vm.collection.length > 0 && results.length===0" translate>No results...</div>
+  <card-item-new tooltip="{{cardItemListCtrl.tooltip}}" ng-if="cardItemListCtrl.hasNew" on-click="cardItemListCtrl.clickNew()"></card-item-new>
+  <div class='no-results' ng-if="cardItemListCtrl.collection.length > 0 && results.length===0" translate>No results...</div>
 </div>
 
 

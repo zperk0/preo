@@ -200,7 +200,7 @@ module.exports = function(ENV, options) {
           }
 
         },
-        chunks:['bookings', 'events', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes','app','vendor', 'angular'],
+        chunks:['bookings', 'events', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'app','vendor'],
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
       }),

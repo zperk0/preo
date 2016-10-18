@@ -10,7 +10,7 @@ export default function menuSectionList(){
     },
     template: require("./menuSectionList.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "menuSectionListCtrl",
     bindToController: true,
     replace:true,
     link: (scope, el, attr, ctrls) => {

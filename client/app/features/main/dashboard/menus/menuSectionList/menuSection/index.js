@@ -8,6 +8,7 @@ import directive from './menuSection.directive';
 
 import cardItem from '../../../../../../components/cardItem';
 import itemList from '../../components/menuItemList';
+import sectionItemList from '../../components/menuSectionItemList';
 
 import services from '../../../../../../shared';
 import dialog from '../../../../../../components/dialog';
@@ -15,9 +16,14 @@ import dialog from '../../../../../../components/dialog';
 import modifierChips from '../../components/modifierChips';
 
 
-export default angular.module("menuSection" , [cardItem, itemList, services, dialog, modifierChips])
-
-
+export default angular.module("menuSection" , [
+	cardItem, 
+	itemList, 
+	sectionItemList, 
+	services, 
+	dialog, 
+	modifierChips
+])
   .controller(controller.UID, controller)
   .directive("menuSection", directive)
   .name;

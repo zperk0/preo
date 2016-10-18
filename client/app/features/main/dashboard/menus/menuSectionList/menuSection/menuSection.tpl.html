@@ -1,37 +1,46 @@
 <div class='menu-section'
-      ng-class="{expanded:vm.section.$expanded}"
+      ng-class="{expanded: menuSectionCtrl.section.$expanded}"
       ng-cloak
-      ng-attr-data-id="{{vm.section.id}}">
+      ng-attr-data-id="{{menuSectionCtrl.section.id}}">
   <card-item  has-actions="true"
-              deleted="vm.section.$deleted"
-              selected="vm.section.$selected"
-              expanded="vm.section.$expanded"
+              deleted="menuSectionCtrl.section.$deleted"
+              selected="menuSectionCtrl.section.$selected"
+              expanded="menuSectionCtrl.section.$expanded"
               >
-    <card-item-title ng-click="vm.toggleExpanded($event)"
+    <card-item-title ng-click="menuSectionCtrl.toggleExpanded($event)"
                     has-visible="true"
                     sv-root="item"
-                    show-visible="!vm.section.visible">
-                      <div ng-if="!vm.section.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="vm.newItems" sv-on-external-sort="vm.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo, $removeFromOrigin)">
+                    show-visible="!menuSectionCtrl.section.visible">
+                      <div ng-if="!menuSectionCtrl.section.$expanded" 
+                          class='sv-dropzone sv-dropzone-item' 
+                          sv-part="menuSectionCtrl.newItems" 
+                          sv-on-external-sort="menuSectionCtrl.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo, $removeFromOrigin)">
                         <div sv-placeholder></div>
                       </div>
-                      <span>{{vm.section.id + "--" | debug}}{{vm.section.name}}</span><icon class='arrow-icon' flex>{{vm.section.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
+                      <span>{{menuSectionCtrl.section.id + "--" | debug}}{{menuSectionCtrl.section.name}}</span><icon class='arrow-icon' flex>{{menuSectionCtrl.section.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
                       <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
-                        <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+                        <div class='sv-dropzone sv-dropzone-modifier' 
+                            sv-part="menuSectionCtrl.newModifiers" 
+                            sv-on-external-sort="menuSectionCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                           <div sv-placeholder></div>
                         </div>
                       </div>
                     </card-item-title>
-    <modifier-chips ng-if="vm.section.modifiers.length" modifiers="vm.section.modifiers" section="vm.section"></modifier-chips>
-        <menu-item-list
-              sv-is-dropzone-disabled="!!!vm.section.$expanded"
-              has-new="vm.section.$expanded"
-              items="vm.section.$positionedItems"
-              section="vm.section">
-         </menu-item-list>
-    <card-item-actions is-visible="vm.section.visible"
-                       on-delete="vm.onDelete()"
-                       on-edit="vm.onEdit()"
-                       on-visibility="vm.onVisibility(newStatus)"
+    <modifier-chips ng-if="menuSectionCtrl.section.modifiers.length" 
+            modifiers="menuSectionCtrl.section.modifiers" 
+            section="menuSectionCtrl.section"></modifier-chips>
+
+        <menu-section-item-list
+              sv-is-dropzone-disabled="!!!menuSectionCtrl.section.$expanded"
+              has-new="menuSectionCtrl.section.$expanded"
+              items="menuSectionCtrl.items"
+              section="menuSectionCtrl.section">
+         </menu-section-item-list>
+         
+    <card-item-actions is-visible="menuSectionCtrl.section.visible"
+                       on-delete="menuSectionCtrl.onDelete()"
+                       on-edit="menuSectionCtrl.onEdit()"
+                       on-visibility="menuSectionCtrl.onVisibility(newStatus)"
                         ></card-item-actions>
   </card-item>
 </div>

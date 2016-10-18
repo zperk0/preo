@@ -1,41 +1,34 @@
 import controller from './menuItemList.controller'
 
 //refactor to not need section
-export default function menuItemList($animate, $timeout){
+export default function menuItemList($animate, $timeout, $document, $rootScope){
   "ngInject";
   return {
     restrict: 'E',
     scope: {
       items:"=",
       hasNew:"=",
-      animate:"=?",
-      section:"=?",
       hasSearch:"=?",
+      hasActions:"@?",
       searchText:"=?",
       svDisabled:"=",
       svMultiSelect:"=?",
       svKeepInList:"=?",
       svIsDropzone:"=?",
-      svIsDropzoneDisabled:"=?",
-      orderBy: '=?',
-      orderByReverse: '=?',
     },
     template: require("./menuItemList.tpl.html"),
     controller: controller.UID,
     controllerAs: "menuItemListCtrl",
     bindToController: true,
     replace:true,
-    link: (scope, el, attr, ctrl) => {
-      ctrl.el = el;
-      el[0].style.maxHeight = 0;
-      console.log("el", ctrl.el);
-      el.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
-        if (e.propertyName === 'max-height'){
-          $timeout(()=>{
-            ctrl.section.$expanding = false;
-          })
-        }
-      })
+    link: (scope, element, attrs, ctrl) => {
+
+      scope.hasActions = attrs.hasActions !== 'false';
+
+      scope.scrollToBottom = () => {
+
+        $rootScope.$broadcast('$scrollMainToBottom');
+      };
     }
   }
 }

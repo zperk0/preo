@@ -14,14 +14,19 @@ export default class contextualDrawerItemController {
     this.$scope = $scope;
     this.cancelledItems = [];
 
-    $scope.$watch(()=>{
-      return ItemService.data;
-    },(newVal,oldVal)=>{
-      if (newVal && newVal.items && newVal.items.length){
-        this.data = {items:newVal.items.map((i, index)=>({id:i.id, item:i}))};
-      }
-    }, true)
+    // $scope.$watch(()=>{
+    //   return ItemService.data;
+    // },(newVal,oldVal)=>{
+    //   if (newVal && newVal.items && newVal.items.length){
+    //     this.data = newVal;
+    //     // {items:newVal.items.map((i, index)=>({id:i.id, item:i}))};
+    //   }
+    // }, true)
 
-    ItemService.getItems($stateParams.venueId);
+    ItemService.getItems($stateParams.venueId)
+      .then(() => {
+        
+        this.data = ItemService.data;
+      });
   }
 }
