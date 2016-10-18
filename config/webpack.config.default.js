@@ -206,15 +206,27 @@ module.exports = function(ENV, options) {
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/index.php',
-        chunks:['outlets','app','vendor', 'angular'],
+        chunks:['outlets','app','vendor'],
         inject:true,
         filename:'outlets/index.php'
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/index.php',
-        chunks:['styling','app','vendor', 'angular'],
+        chunks:['styling','app','vendor'],
         inject:true,
         filename:'styling/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['taxes','app','vendor'],
+        inject:true,
+        filename:'taxes/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['events','outlets','app','vendor'],
+        inject:true,
+        filename:'events/index.php'
       })
     ]
   }
