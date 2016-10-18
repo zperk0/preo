@@ -60,11 +60,8 @@ export default class menuSectionItemListController {
        //must check because library appends the item in the array before calling callback
       if (this.cardItemList.isItemDuplicated($items, 0)){
         this.Snack.showError('One or more items are already in section');
-        // $partTo.splice($indexTo,$items.length);
         return;
       }
-
-      // console.log('partTo ----> ', $partTo, $indexTo, $items)
 
       let promises = [];
       this.Spinner.show("item-move");
@@ -85,10 +82,8 @@ export default class menuSectionItemListController {
         promises.push(this.section.moveItem($i));
       })
       this.$q.all(promises).then((items)=>{
-        // this is needed because of $scope.results array on search. drag an drop list must use results so end array is not updated
-        // this.items.splice($indexTo,0,...items);
         items.forEach((newItem)=>{
-          // this.items.push({item:newItem, id:newItem.id, position:newItem.position})          
+
           newItem.$show = true;
           this.cardItemList.onItemCreated(newItem);
           this.recalculateHeight();
@@ -143,8 +138,7 @@ export default class menuSectionItemListController {
 
   getPosition(item) {
 
-    // return this.items.filter((i)=>i.id===item.id)[0].position;
-    return item.position
+    return item.position;
   }
 
   recalculateHeight() {
