@@ -16,29 +16,18 @@ export default class menuSectionListController {
     })
   }
 
+  showCreateSection() {
 
-  addSectionInPosition(section){
-    let indexBefore = -1;
-    this.sections.forEach((s, index)=>{
-      if (s.position <= section.position){
-        indexBefore = index;
-      }
-    })
-    this.sections.splice(indexBefore+1, 0, section);
-  }
+    let isCreating = this.sections.filter((s, index) => {
 
+      return s.id === undefined;
+    }).length > 0;
 
-  showCreateSection(){
-    let isCreating = false;
-    this.sections.forEach((s, index)=>{
-      if (s.id === undefined){
-        isCreating = true;
-      }
-    });
-    if (isCreating){
+    if (isCreating) {
       console.log("Not showing section new, already showing")
       return;
     }
+
     let section = {
       menuId:this.menu.id,
       $selected:true,
