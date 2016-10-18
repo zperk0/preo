@@ -2,34 +2,50 @@ export default class taxGroupController {
   static get UID(){
     return "taxGroupController"
   }
+
+  saveOrUpdate(){
+    if (this.taxGroup.id){
+      return this.taxGroup.update();
+    }
+    else {
+     return Preoday.Tax.create(this.taxGroup);
+    }
+  }
+
   contextualMenuSuccess(entity){
     this.Spinner.hide("tax-group-create");
     if (this.taxGroup && entity && entity.name){
       this.taxGroup = entity;
-      if (!this.taxGroup.id){
-        Preoday.Tax.create(this.taxGroup)
-          .then((newTaxGroup)=>{
+      this.saveOrUpdate().then((newTaxGroup)=>{
 
-            this.taxGroup.$deleted = false;
-            this.taxGroup.$selected = false;
+        this.taxGroup.$deleted = false;
+        this.taxGroup.$selected = false;
 
-            this.$timeout(() => {
-              angular.extend(this.taxGroup, newTaxGroup);
-              this.contextualMenu.hide();
-              this.Spinner.hide("tax-group-create");
-              this.Snack.show(this.gettextCatalog.getString('Tax Group created'));
-            });
-          }, (err)=>{
-            console.log('error on save tax-group', err);
-            this.Spinner.hide("tax-group-create");
-            this.Snack.showError(this.gettextCatalog.getString('Error saving tax Group'));
-          }). catch((err)=>{
-            console.log('error on save tax-group', err);
-            this.Spinner.hide("tax-group-create");
-            this.Snack.showError(this.gettextCatalog.getString('Error saving tax Group'));
-          })
-      }
+        this.$timeout(() => {
+          angular.extend(this.taxGroup, newTaxGroup);
+          this.contextualMenu.hide();
+          this.Spinner.hide("tax-group-create");
+          this.Snack.show(this.gettextCatalog.getString('Tax Group saved'));
+        });
+      }, (err)=>{
+        console.log('error on save tax-group', err);
+        this.Spinner.hide("tax-group-create");
+        this.Snack.showError(this.gettextCatalog.getString('Error saving tax Group'));
+      }). catch((err)=>{
+        console.log('error on save tax-group', err);
+        this.Spinner.hide("tax-group-create");
+        this.Snack.showError(this.gettextCatalog.getString('Error saving tax Group'));
+      })
     }
+  }
+
+
+  onEdit ($event) {
+
+    this.originalTaxGroup  = angular.copy(this.taxGroup);
+    this.cardItemList.selectItem(this.taxGroup);
+    this.showContextual();
+    $event.stopPropagation();
   }
 
   onDelete(){
