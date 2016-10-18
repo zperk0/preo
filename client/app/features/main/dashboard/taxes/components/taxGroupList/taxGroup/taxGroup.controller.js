@@ -32,6 +32,38 @@ export default class taxGroupController {
     }
   }
 
+  onDelete(){
+
+    this.DialogService.delete(this.LabelService.TITLE_DELETE_TAX_GROUP, this.LabelService.CONTENT_DELETE_TAX_GROUP)
+      .then(()=>{
+          this.Spinner.show("tax-group-delete");
+
+          this.taxGroup.remove().
+            then(()=>{
+              this.cardItemList.onItemDeleted(this.taxGroup);
+              if (this.onItemDeleted){
+                this.onItemDeleted({item:this.taxGroup});
+              }
+              this.Snack.show('Tax group deleted');
+              this.Spinner.hide("tax-group-delete");
+          }, (error)=>{
+            console.log("error");
+            this.Spinner.hide("tax-group-delete")
+            this.Snack.showError('Tax Group not deleted');
+            if (error.status && error.status == 409){
+              this.DialogService.show(this.ErrorService.TAX_GROUP_ASSIGNED_TO_ITEM.title, this.ErrorService.TAX_GROUP_ASSIGNED_TO_ITEM.message, [{
+                name: this.gettextCatalog.getString('Got it')
+              }]);
+            }
+          })
+          .catch((err)=>{
+            this.Spinner.hide("tax-group-delete")
+            this.Snack.showError('Tax Group not deleted');
+          });
+      });
+  }
+
+
   restoreOriginalValues() {
     if (this.originalTaxGroup){
       angular.extend(this.taxGroup, this.originalTaxGroup);
