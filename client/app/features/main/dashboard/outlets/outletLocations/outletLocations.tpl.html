@@ -3,12 +3,12 @@
     <breadcrumb ng-if="outletLocationsCtrl.breadcumbs.length > 1" ng-repeat="breadcumb in outletLocationsCtrl.breadcumbs">
       <a ui-sref="main.dashboard.outlets.location({outletLocation: breadcumb.stateParams})" translate>{{ outletLocationsCtrl.getBreadcumbTitle(breadcumb) }}</a>
     </breadcrumb>
-    
+
     <breadcrumb>
       <span>{{ outletLocationsCtrl.breadcumbs[outletLocationsCtrl.breadcumbs.length - 1].group.label || 'Location label' | translate }}</span>
     </breadcrumb>
   </div>
-  <div flex class="layout-left-right">
+  <div flex class="layout-left-right with-toolbar">
     <div class='main-content-left'>
       <outlet-location-group-list ng-if="outletLocationsCtrl.loaded"
           outlet-location-group="outletLocationsCtrl.outletGroup"
