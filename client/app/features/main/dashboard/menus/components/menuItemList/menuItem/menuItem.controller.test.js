@@ -2,7 +2,7 @@
 
 import menuItem from './';
 
-describe('itemList Controller', function () {
+describe('menuItem Controller', function () {
 
     let
       MenuItemCtrl,
@@ -171,7 +171,7 @@ describe('itemList Controller', function () {
           expect(Snack.show).toHaveBeenCalled();
           expect(CardItemListCtrl.collection.length).toBe(1);
 
-          done();                
+          done();
         });
       });
     });
@@ -232,7 +232,7 @@ describe('itemList Controller', function () {
           expect(Snack.show).toHaveBeenCalled();
           expect(CardItemListCtrl.collection.length).toBe(1);
 
-          done();                
+          done();
         });
       });
     });
@@ -312,7 +312,7 @@ describe('itemList Controller', function () {
           expect(Preoday.Section.removeItems).toHaveBeenCalled();
           expect(CardItemListCtrl.collection.length).toBe(1);
 
-          done();      
+          done();
         });
       });
     });

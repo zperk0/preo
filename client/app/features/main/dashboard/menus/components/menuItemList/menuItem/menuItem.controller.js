@@ -53,7 +53,7 @@ export default class menuItemController {
   }
 
   onEdit ($event){
-    
+
     this.originalItem  = angular.copy(this.item);
     this.cardItemList.selectItem(this.item);
     this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
@@ -79,8 +79,8 @@ export default class menuItemController {
           console.log("Failed deleting item image", err)
           this.Spinner.hide("item-image-delete")
           this.Snack.showError('Image not deleted');
-        })          
-      });    
+        })
+      });
   }
 
   onDelete ($event){
@@ -234,7 +234,7 @@ export default class menuItemController {
             console.log("Failed deleting item", err)
             this.Spinner.hide("item-delete")
             this.Snack.showError('Item not deleted');
-          })          
+          })
       });
   }
 

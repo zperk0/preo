@@ -111,12 +111,12 @@ export default class menuCardItemController {
           })
           .catch((err)=>{
             this.Spinner.hide("menu-delete")
-            
+
             if (err && err instanceof Object && err.message.indexOf('outlet') !== -1) {
               this.Snack.showError('An outlet is using this menu. You need remove it before');
             } else {
               this.Snack.showError('Menu not deleted');
-            }        
+            }
           });
       });
       $event.stopPropagation();

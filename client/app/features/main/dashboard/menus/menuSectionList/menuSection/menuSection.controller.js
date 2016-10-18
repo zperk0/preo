@@ -81,11 +81,11 @@
         .then(() => {
 
           this.Snack.show("Items moved to section")
-          this.Spinner.hide("moving-section-item");          
+          this.Spinner.hide("moving-section-item");
         }, () => {
 
           this.Snack.show("Items moved to section")
-          this.Spinner.hide("moving-section-item");          
+          this.Spinner.hide("moving-section-item");
         });
     })
 
@@ -183,7 +183,7 @@
         this.Spinner.show("section-create");
         Preoday.Section.save(this.section)
         .then((section) => {
-          
+
             this.cardItemList.onUpdateItem(this.section, section);
             this.contextualMenu.hide();
             this.Spinner.hide("section-create");
