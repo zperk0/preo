@@ -20,30 +20,34 @@
   </md-input-container>
    <md-input-container class="md-block no-spacer inline-percent">
     <label translate>Takeaway rate</label>
-    <input type="number" name="takeAway" ng-model="contextualMenuCtrl.entity.pickup"> <span class='percent'>%</span>
+    <input type="number" min=0 max=100 name="takeAway" ng-model="contextualMenuCtrl.entity.pickup" valid-number max-integer-value="100" compare-number="0" allow-equals> <span class='percent'>%</span>
     <div ng-messages="contextualMenuCtrl.contextualForm.takeAway.$error">
-      <!-- //TODO  add validation min/max -->
+       <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.takeAway.$error.maxIntegerValue}">Maximum value is 99%</div>
+      <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.takeAway.$error.compareNumber}">Minimum value is 0%</div>
     </div>
   </md-input-container>
    <md-input-container class="md-block no-spacer inline-percent">
     <label translate>Delivery rate</label>
-    <input type="number" name="delivery" ng-model="contextualMenuCtrl.entity.delivery"> <span class='percent'>%</span>
+    <input type="number" name="delivery" ng-model="contextualMenuCtrl.entity.delivery" valid-number max-integer-value="100" compare-number="0" allow-equals> <span class='percent'>%</span>
     <div ng-messages="contextualMenuCtrl.contextualForm.delivery.$error">
-    <!-- //TODO  add validation min/max -->
+       <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.delivery.$error.maxIntegerValue}">Maximum value is 99%</div>
+      <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.delivery.$error.compareNumber}">Minimum value is 0%</div>
     </div>
   </md-input-container>
   <md-input-container class="md-block no-spacer inline-percent">
     <label translate>To seat rate</label>
-    <input type="number" name="seat" ng-model="contextualMenuCtrl.entity.seat"> <span class='percent'>%</span>
+    <input type="number" name="seat" ng-model="contextualMenuCtrl.entity.seat" valid-number max-integer-value="100" compare-number="0" allow-equals> <span class='percent'>%</span>
     <div ng-messages="contextualMenuCtrl.contextualForm.seat.$error">
-    <!-- //TODO  add validation min/max -->
+       <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seat.$error.maxIntegerValue}">Maximum value is 99%</div>
+      <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seat.$error.compareNumber}">Minimum value is 0%</div>
     </div>
   </md-input-container>
   <md-input-container class="md-block no-spacer inline-percent">
     <label translate>Voucher rate</label>
-    <input type="number" name="voucher" ng-model="contextualMenuCtrl.entity.voucher"> <span class='percent'>%</span>
+    <input type="number" name="voucher" ng-model="contextualMenuCtrl.entity.voucher" valid-number max-integer-value="100" compare-number="0" allow-equals> <span class='percent'>%</span>
     <div ng-messages="contextualMenuCtrl.contextualForm.voucher.$error">
-    <!-- //TODO  add validation min/max -->
+       <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.voucher.$error.maxIntegerValue}">Maximum value is 99%</div>
+      <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.voucher.$error.compareNumber}">Minimum value is 0%</div>
     </div>
   </md-input-container>
 </md-card-content>
