@@ -18,7 +18,7 @@ export default function cardItemList(){
     controllerAs: "cardItemListCtrl",
     bindToController: true,
     transclude:true,
-    require:['cardItemList', '?^^menuSectionItemList', '?^^menuItemList', '?^^menuSectionList', '?^^modifierList', '?^^outletLocationList', '?^^outletList'],
+    require:['cardItemList', '?^^menuSectionItemList', '?^^menuItemList', '?^^menuSectionList', '?^^modifierList', '?^^outletLocationList', '?^^outletList', '?^^taxGroupList'],
     link: (scope, el, attr, ctrls) => {
 
       if (ctrls.length > 1) {

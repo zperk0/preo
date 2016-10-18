@@ -1,0 +1,16 @@
+<div class="tax-group-list">
+    <div>
+    {{}}
+    <card-item-list
+        has-new="true"
+        tooltip="{{ 'Add new tax group' | translate }}"
+        on-click-new="taxGroupListCtrl.showCreate()"
+        collection="taxGroupListCtrl.taxGroups">
+        <tax-group
+          has-actions="true"
+          ng-repeat="taxGroup in taxGroupListCtrl.taxGroups | orderBy: id"
+          tax-group="taxGroup">
+        </tax-group>
+    </card-item-list>
+  </div>
+</div>
