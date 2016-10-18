@@ -6,7 +6,7 @@ export default class menuSectionListController {
   onSectionMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
     //update all sections
     this.Spinner.show("section-move");
-    console.log("on section moved, updating");
+    console.log("on section moved, updating", this.cardItemList);
     this.cardItemList.onSimpleSort().then(()=>{
       this.Snack.show('Section moved');
     }, ()=>{
@@ -62,11 +62,11 @@ export default class menuSectionListController {
         this.Spinner.hide("section-delete");
       })
   }
-  repeatDone(){
+  repeatDone() {
+
     this.$timeout(()=>{
       this.Spinner.hide("section-loading");
-    },1000)
-
+    })
   }
 
   /* @ngInject */

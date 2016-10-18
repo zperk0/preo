@@ -175,7 +175,10 @@ export default class ModifierService {
     return modifier.delete()
       .then(()=>{
         if (this.data.modifiers){
-          this.data.modifiers = this.data.modifiers.filter((m)=>m.id!==modifier.id)
+
+          this.data.modifiers.splice(this.data.modifiers.indexOf(modifier), 1);
+
+          // this.data.modifiers = this.data.modifiers.filter((m)=>m.id!==modifier.id)
         }
       })
   }
@@ -235,7 +238,10 @@ export default class ModifierService {
       Preoday.Modifier.getAll({venueId:venueId, expand:expand})
         .then((modifiers)=>{
           console.log("got modifiers", modifiers)
-          this.data.modifiers = modifiers.filter((m)=>m.variant===0) || [];
+          this.data.modifiers = (modifiers.filter((m)=>m.variant===0) || []).sort((a, b) => {
+
+            return a.id - b.id;
+          });
           console.log("this data", this.data.modifiers);
           if (modifiers.length){
             this.populateModifiers(0);

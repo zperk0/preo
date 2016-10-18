@@ -6,6 +6,12 @@ export default class modifierListController {
     this.ModifierService.showCreateModifier();
   }
 
+  isInFilter (modifier, filterName) {
+
+    // return true;
+    return !filterName || modifier.name.toLowerCase().indexOf(filterName.toLowerCase()) !== -1;
+  }  
+
   /* @ngInject */
   constructor(ModifierService) {
     'ngInject';

@@ -38,35 +38,66 @@ export default class ItemService {
       })
   }
 
-  _saveItemImages(item){
-    if (item.images && item.images.length){
-      let img = item.images[0];
-      if (img.$save){
-        this.DEBUG && console.log("Saving Item images", item.images)
-        return Preoday.ItemImage.saveToCdn(img.$image, item.id, item.venueId)
-        .then((itemImage)=>{
-            if (img.id){ //item  already had image, so don't create new, just update existing
-                img.image = itemImage.image;
-                return img.update()
-              } else {
-                return Preoday.ItemImage.save(itemImage);
-              }
-          })
-        .then((newImage)=>{
-          item.images[0] = newImage;
-          return item
-        })
+  _parseImages(item){
+
+    if (item.images && item.images.length) {
+      let promises = [];
+
+      for (var i = item.images.length - 1; i >= 0; i--) {
+        let image = item.images[i];
+        let deferred = this.$q.defer();
+
+        promises.push(deferred.promise);
+
+        ((image, deferred) => {
+
+          if (!image.$save) {
+            return deferred.resolve();
+          }
+
+          Preoday.ItemImage.saveToCdn(image.$image, item.id, item.venueId)
+          .then((itemImage)=>{
+
+            angular.extend(image, itemImage);
+            deferred.resolve();
+          }, deferred.reject);
+        })(image, deferred);
       }
-      else if (img.$delete && img.delete){
-        // if we have a $image and it's a real image in the list delete it
-        return img.delete().then(()=>{
-          item.images = [];
-          return item;
-        })
-      }
+
+      return this.$q.all(promises);
     }
-    this.DEBUG && console.log("Item does not have images")
-    return this.$q.resolve(item);
+
+    return this.$q.when(item);
+
+
+    // if (item.images && item.images.length){
+    //   let img = item.images[0];
+    //   if (img.$save){
+    //     this.DEBUG && console.log("Saving Item images", item.images)
+    //     return Preoday.ItemImage.saveToCdn(img.$image, item.id, item.venueId)
+    //     .then((itemImage)=>{
+    //         if (img.id){ //item  already had image, so don't create new, just update existing
+    //             img.image = itemImage.image;
+    //             return img.update()
+    //           } else {
+    //             return Preoday.ItemImage.save(itemImage);
+    //           }
+    //       })
+    //     .then((newImage)=>{
+    //       item.images[0] = newImage;
+    //       return item
+    //     })
+    //   }
+    //   else if (img.$delete && img.delete){
+    //     // if we have a $image and it's a real image in the list delete it
+    //     return img.delete().then(()=>{
+    //       item.images = [];
+    //       return item;
+    //     })
+    //   }
+    // }
+    // this.DEBUG && console.log("Item does not have images")
+    // return this.$q.resolve(item);
   }
 
   _saveItemSize(item){
@@ -80,11 +111,12 @@ export default class ItemService {
           return item;
         })
       }
+      
       //if we actually have a size, update or save
-      if(item.$size.items.length){
+      if(item.$size.$isMultiple && item.$size.items.length) {
         this.DEBUG && console.log("Saving item $size", item.$size)
         //if its new, we save.
-        if (!item.$size.id){
+        if (!item.$size.id) {
           item.$size.itemId=item.id;
           return item.saveModifier(item.$size).then((mod)=>{
             item.$size = mod;
@@ -143,20 +175,13 @@ export default class ItemService {
       }
     }
     // Cloning an image is more complicated, we need to get the base64 from the current image and repost it
-    return this.getItemImage(newItemData)
-      .then((images)=>{
-        newItemData.images = images;
-        return newItemData
-      })
-      .then((newItem)=>{
-        return this.createItem(newItem, sectionId)
-      });
+    return this.createItem(newItemData, sectionId)
   }
 
   updateItem(item, skipExtensions = false){
     this.DEBUG && console.log("updating item", item, skipExtensions);
 
-    return (skipExtensions ? $q.when() : this._saveItemImages(item))
+    return (skipExtensions ? this.$q.when() : this._parseImages(item))
       .then(item.update.bind(item))
       .then((updatedItem)=>{
         this.DEBUG && console.log("updated item", updatedItem);
@@ -180,25 +205,38 @@ export default class ItemService {
       });
   }
 
-  createItem(item, sectionId){
-    this.DEBUG && console.log("creating item", item, sectionId);
-    return Preoday.Item.save(item, sectionId)
-      .then((newItem)=>{
-        this.DEBUG && console.log("created item", newItem);
-        return newItem;
-      })
-      .then(this._saveItemImages.bind(this))
-      .then(this._saveItemSize.bind(this))
-      .then((newItem)=>{
-        let positionedItem =  {item:newItem, id:newItem.id};
-        //if this item was created in the menu section editor the list is not going to be refreshed automagically
-        if (sectionId){
-          positionedItem.position = newItem.position;
+  createItem(item, sectionId) {
 
-          this.data.items.push(newItem);
-        }
-        return positionedItem;
+    if (item.$size && item.$size.items.length) {
+      item.modifiers = [item.$size];
+    }
+    
+    this.DEBUG && console.log("creating item", item, sectionId);
+    return this._parseImages(item)
+      .then(() => {
+
+        return Preoday.Item.save(item, sectionId);
       })
+      // .then((newItem)=>{
+      //   console.log('created', newItem);
+      //   this.DEBUG && console.log("created item", newItem);
+      //   return newItem;
+      // })
+      // .then(this._saveItemImages.bind(this))
+      // .then(this._saveItemSize.bind(this))
+      // .then((newItem)=>{
+        // let positionedItem =  {item:newItem, id:newItem.id};
+
+        //if this item was created in the menu section editor the list is not going to be refreshed automagically
+        // if (sectionId){
+        //   positionedItem.position = newItem.position;
+
+        //   this.data.items.push(newItem);
+        // }
+
+      //   console.log('new item here', newItem);
+      //   return newItem;
+      // })
   }
 
   removeFromSection(item, sectionId){
@@ -248,7 +286,29 @@ export default class ItemService {
     })
   }
 
+  getNewItemBase (venueId) {
 
+    let newItem = {
+        $id: -1,
+        $show: true,
+        $selected: true,
+
+        quantity: 1,
+        $size: 0,
+        visible: 1,
+        tags: [],
+        images: [],
+        position: 0,
+        venueId: venueId
+    };   
+    
+    return newItem; 
+  }
+
+  addItem (item) {
+
+    this.data.items && this.data.items.push(item);
+  }
 
   constructor($q, $rootScope, $location, DialogService, LabelService, UtilsService, gettextCatalog, ModifierService) {
     "ngInject";
