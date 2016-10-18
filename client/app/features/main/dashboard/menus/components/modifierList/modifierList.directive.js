@@ -14,7 +14,7 @@ export default function modifierList(){
     },
     template: require("./modifierList.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "modifierListCtrl",
     bindToController: true,
     link: (scope, el, attr, ctrl) => {
 

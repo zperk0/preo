@@ -235,7 +235,10 @@ export default class ModifierService {
       Preoday.Modifier.getAll({venueId:venueId, expand:expand})
         .then((modifiers)=>{
           console.log("got modifiers", modifiers)
-          this.data.modifiers = modifiers.filter((m)=>m.variant===0) || [];
+          this.data.modifiers = (modifiers.filter((m)=>m.variant===0) || []).sort((a, b) => {
+
+            return a.id - b.id;
+          });
           console.log("this data", this.data.modifiers);
           if (modifiers.length){
             this.populateModifiers(0);

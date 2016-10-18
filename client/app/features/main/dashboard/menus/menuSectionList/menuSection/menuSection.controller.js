@@ -192,17 +192,16 @@
       if (!this.section.id){
         this.Spinner.show("section-create");
         Preoday.Section.save(this.section)
-        .then((section)=>{
-            this.section.$deleted = true;
-            this.$timeout(()=>{
-              this.cardItemList.onItemCreated(section);
-              this.contextualMenu.hide();
-              this.Spinner.hide("section-create");
-              this.Snack.show('Section created');
-            })
-          }, ()=>{
+        .then((section) => {
+          
+            this.cardItemList.onUpdateItem(this.section, section);
+            this.contextualMenu.hide();
+            this.Spinner.hide("section-create");
+            this.Snack.show('Section created');
+          }, () => {
+
             this.Snack.showError('Error saving section');
-          })
+          });
 
       } else {
         this.saveSection().then(()=>{
@@ -252,7 +251,6 @@
     }
     //if it's a new section we toggle the context menu to edit this
     if (!this.section.id) {
-      console.log("here ho");
       this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
     } else {
       this.buildItems();
