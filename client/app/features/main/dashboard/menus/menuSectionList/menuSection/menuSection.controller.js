@@ -48,9 +48,6 @@
     this.Spinner.show("moving-section-item");
     let promises = [];
 
-
-    // console.log('on new item moved', $items, $partFrom);
-
     $items.forEach(($item)=>{
         // move new item always to the beggining of new section
         var copy = angular.copy($item)
@@ -59,13 +56,7 @@
           copy.menuId = this.section.menuId;
           copy.sectionId = $item.sectionId;
 
-          // console.log('sending this item to move', copy);
-
           let p = this.section.moveItem(copy).then((newItem)=>{
-
-            // let cachedItem = this.ItemService.getById(newItem.id);
-
-            // console.log('after item moved', newItem, cachedItem);
 
             newItem.position = 0;
             if (this.items.length) {
@@ -73,7 +64,7 @@
             }
             this.items.unshift(newItem);
           }).catch((err)=>{
-            // $partFrom.splice($indexFrom,0,$item);
+
             this.Snack.showError("Error moving items to section")
             console.log("Error moving items to section", err);
           })
@@ -85,7 +76,6 @@
     })
     this.$q.all(promises).then(()=>{
       $removeFromOrigin && $removeFromOrigin();
-
 
       this.updateItemsPosition()
         .then(() => {
@@ -132,7 +122,7 @@
 
 
   toggleExpanded($event){
-    // console.log('toggle expanded', this.section);
+
     if (this.section.$expanding){
       return;
     }

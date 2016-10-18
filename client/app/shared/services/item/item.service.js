@@ -68,36 +68,6 @@ export default class ItemService {
     }
 
     return this.$q.when(item);
-
-
-    // if (item.images && item.images.length){
-    //   let img = item.images[0];
-    //   if (img.$save){
-    //     this.DEBUG && console.log("Saving Item images", item.images)
-    //     return Preoday.ItemImage.saveToCdn(img.$image, item.id, item.venueId)
-    //     .then((itemImage)=>{
-    //         if (img.id){ //item  already had image, so don't create new, just update existing
-    //             img.image = itemImage.image;
-    //             return img.update()
-    //           } else {
-    //             return Preoday.ItemImage.save(itemImage);
-    //           }
-    //       })
-    //     .then((newImage)=>{
-    //       item.images[0] = newImage;
-    //       return item
-    //     })
-    //   }
-    //   else if (img.$delete && img.delete){
-    //     // if we have a $image and it's a real image in the list delete it
-    //     return img.delete().then(()=>{
-    //       item.images = [];
-    //       return item;
-    //     })
-    //   }
-    // }
-    // this.DEBUG && console.log("Item does not have images")
-    // return this.$q.resolve(item);
   }
 
   _saveItemSize(item){
@@ -216,27 +186,7 @@ export default class ItemService {
       .then(() => {
 
         return Preoday.Item.save(item, sectionId);
-      })
-      // .then((newItem)=>{
-      //   console.log('created', newItem);
-      //   this.DEBUG && console.log("created item", newItem);
-      //   return newItem;
-      // })
-      // .then(this._saveItemImages.bind(this))
-      // .then(this._saveItemSize.bind(this))
-      // .then((newItem)=>{
-        // let positionedItem =  {item:newItem, id:newItem.id};
-
-        //if this item was created in the menu section editor the list is not going to be refreshed automagically
-        // if (sectionId){
-        //   positionedItem.position = newItem.position;
-
-        //   this.data.items.push(newItem);
-        // }
-
-      //   console.log('new item here', newItem);
-      //   return newItem;
-      // })
+      });
   }
 
   removeFromSection(item, sectionId){

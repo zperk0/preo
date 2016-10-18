@@ -177,8 +177,6 @@ export default class ModifierService {
         if (this.data.modifiers){
 
           this.data.modifiers.splice(this.data.modifiers.indexOf(modifier), 1);
-
-          // this.data.modifiers = this.data.modifiers.filter((m)=>m.id!==modifier.id)
         }
       })
   }

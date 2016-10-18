@@ -109,26 +109,6 @@ export default class menuItemController {
       item: this.item,
       sectionId: this.sectionId
     });
-
-    return;
-
-    // this.Spinner.show("item-clone")
-    // let clonePosition = this.menuItemListCtrl.getPosition(this.item);
-    // this.ItemService.cloneItem(this.item, this.sectionId, clonePosition)
-    //   .then((createdItem)=>{
-    //     createdItem.$show = true; //need show for animation
-    //     this.Spinner.hide("item-clone")
-    //     this.Snack.show('Item duplicated');
-    //     console.log("cloned", createdItem, this.item);
-    //     this.cardItemList.onItemCreated(createdItem);
-    //     if (this.onItemCreated){
-    //       this.onItemCreated({item:createdItem});
-    //     }
-    //   }, (err)=>{
-    //     console.log("failed creating item", err)
-    //     this.Spinner.hide("item-clone")
-    //     this.Snack.showError('Failed duplicating item');
-    // })
   }
 
 
@@ -296,7 +276,7 @@ export default class menuItemController {
     //if it's a new item we toggle the context menu to edit this
     if (this.item && (!this.item.id || inParam) && this.hasActions) {
       $timeout(()=>{
-        // console.log('sending this item', this.item, inParam, this.hasActions);
+
         this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
           onDeleteImage: this.onDeleteImage.bind(this)
         });
