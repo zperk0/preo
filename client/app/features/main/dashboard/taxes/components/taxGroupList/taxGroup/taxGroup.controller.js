@@ -3,9 +3,32 @@ export default class taxGroupController {
     return "taxGroupController"
   }
   contextualMenuSuccess(entity){
-    console.log("Success saving taxGroup", entity);
+    this.Spinner.hide("tax-group-create");
     if (this.taxGroup && entity && entity.name){
+      this.taxGroup = entity;
+      if (!this.taxGroup.id){
+        Preoday.Tax.create(this.taxGroup)
+          .then((newTaxGroup)=>{
 
+            this.taxGroup.$deleted = false;
+            this.taxGroup.$selected = false;
+
+            this.$timeout(() => {
+              angular.extend(this.taxGroup, newTaxGroup);
+              this.contextualMenu.hide();
+              this.Spinner.hide("tax-group-create");
+              this.Snack.show(this.gettextCatalog.getString('Tax Group created'));
+            });
+          }, (err)=>{
+            console.log('error on save tax-group', err);
+            this.Spinner.hide("tax-group-create");
+            this.Snack.showError(this.gettextCatalog.getString('Error saving tax Group'));
+          }). catch((err)=>{
+            console.log('error on save tax-group', err);
+            this.Spinner.hide("tax-group-create");
+            this.Snack.showError(this.gettextCatalog.getString('Error saving tax Group'));
+          })
+      }
     }
   }
 

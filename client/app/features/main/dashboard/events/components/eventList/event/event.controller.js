@@ -10,7 +10,7 @@ export default class eventController {
       angular.extend(this.event, this.originalEvent);
       this.originalEvent = false;
     }
-  }  
+  }
 
   toggleExpanded($event){
     if (this.event.$expanding){
@@ -28,7 +28,7 @@ export default class eventController {
     }
     this.cardItemList.expandItem(this.event);
     this.contextualMenu.close();
-  }  
+  }
 
   contextualMenuCancel() {
 
@@ -37,7 +37,7 @@ export default class eventController {
 
     if (this.event && !this.event.id) {
       this.cardItemList.deleteItem(this.event);
-    }    
+    }
   }
 
   contextualMenuSuccess(entity){
@@ -51,7 +51,7 @@ export default class eventController {
 
             this.event.$deleted = false;
             this.event.$selected = false;
-            
+
             this.$timeout(() => {
 
               angular.extend(this.event, _event);
@@ -60,7 +60,7 @@ export default class eventController {
               this.contextualMenu.hide();
               this.checkEventSchedules();
               this.Spinner.hide("event-create");
-              this.Snack.show(this.gettextCatalog.getString('Event created'));              
+              this.Snack.show(this.gettextCatalog.getString('Event created'));
             });
           }, (err)=>{
             console.log('error on save event', err);
@@ -77,7 +77,7 @@ export default class eventController {
         })
       }
     }
-  }  
+  }
 
   updateEvent(){
 
@@ -122,13 +122,13 @@ export default class eventController {
     this.cardItemList.selectItem(this.event);
     this.showContextual();
     $event.stopPropagation();
-  } 
+  }
 
   showOutletLocationWithOutletMessage() {
 
     this.DialogService.show(this.ErrorService.EVENT_OUTLET_LOCATION.title, this.ErrorService.EVENT_OUTLET_LOCATION.message, [{
         name: this.gettextCatalog.getString('Got it')
-      }]);   
+      }]);
   }
 
   onAddOutletLocation () {
@@ -152,7 +152,7 @@ export default class eventController {
           this.event.outletLocationId = outletLocation.id;
           this.updateEvent()
             .then(this.buildOutletLocation.bind(this));
-        }        
+        }
         console.log('outletLocation selected', outletLocation);
       }, () => {
 
@@ -166,7 +166,7 @@ export default class eventController {
     this.event.outletLocationId = null;
     this.updateEvent()
       .then(this.buildOutletLocation.bind(this));
-  }  
+  }
 
   onDelete(){
 
@@ -175,7 +175,7 @@ export default class eventController {
           this.Spinner.show("event-delete");
 
           this.event.visible = 0;
-          
+
           let promise = this.event.update();
 
           promise.then(()=>{
@@ -188,11 +188,11 @@ export default class eventController {
           })
           .catch((err)=>{
             this.Spinner.hide("event-delete")
-            
+
             this.Snack.showError('Event not deleted');
-          });          
+          });
       });
-  }  
+  }
 
   buildOutletLocation() {
 
@@ -206,7 +206,7 @@ export default class eventController {
         this.outletLocations.push(outletLocation);
       }
     }
-  }  
+  }
 
   getAddOutletLocationMessage () {
 

@@ -10,8 +10,11 @@ export default function taxGroup(){
     controller: controller.UID,
     controllerAs: "taxGroupCtrl",
     bindToController: true,
-    link: (scope, el, attr, ctrl) => {
+    require:["^cardItemList", "^taxGroupList", "taxGroup"],
+    link: (scope, el, attr, ctrls) => {
 
+        ctrls[2].cardItemList = ctrls[0];
+        ctrls[2].taxGroupListCtrl = ctrls[1];
     }
   }
 }
