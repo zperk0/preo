@@ -1,5 +1,5 @@
 
-export default function config($mdThemingProvider, $locationProvider, $mdDateLocaleProvider){
+export default function config($mdThemingProvider, $locationProvider, $mdDateLocaleProvider, $compileProvider) {
   "ngInject";
 
   if (!window._PREO_DATA){
@@ -18,4 +18,6 @@ export default function config($mdThemingProvider, $locationProvider, $mdDateLoc
   $mdDateLocaleProvider.formatDate = function(date) {
      return moment(date).format('DD/MM/YYYY');
   };
+
+  $compileProvider.debugInfoEnabled(true);
 }
