@@ -6,7 +6,7 @@ export default class menuSectionListController {
   onSectionMoved($items, $partFrom, $partTo, $indexFrom, $indexTo){
     //update all sections
     this.Spinner.show("section-move");
-    console.log("on section moved, updating");
+    console.log("on section moved, updating", this.cardItemList);
     this.cardItemList.onSimpleSort().then(()=>{
       this.Snack.show('Section moved');
     }, ()=>{
@@ -16,29 +16,18 @@ export default class menuSectionListController {
     })
   }
 
+  showCreateSection() {
 
-  addSectionInPosition(section){
-    let indexBefore = -1;
-    this.sections.forEach((s, index)=>{
-      if (s.position <= section.position){
-        indexBefore = index;
-      }
-    })
-    this.sections.splice(indexBefore+1, 0, section);
-  }
+    let isCreating = this.sections.filter((s, index) => {
 
+      return s.id === undefined;
+    }).length > 0;
 
-  showCreateSection(){
-    let isCreating = false;
-    this.sections.forEach((s, index)=>{
-      if (s.id === undefined){
-        isCreating = true;
-      }
-    });
-    if (isCreating){
+    if (isCreating) {
       console.log("Not showing section new, already showing")
       return;
     }
+
     let section = {
       menuId:this.menu.id,
       $selected:true,
@@ -62,11 +51,11 @@ export default class menuSectionListController {
         this.Spinner.hide("section-delete");
       })
   }
-  repeatDone(){
+  repeatDone() {
+
     this.$timeout(()=>{
       this.Spinner.hide("section-loading");
-    },1000)
-
+    })
   }
 
   /* @ngInject */

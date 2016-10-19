@@ -9,7 +9,7 @@ export default function validPrice($timeout){
       var MAX_DIGITS = 11;
 
       attrs.$set('ngTrim', "false");
-      
+
       var formatter = function(str, isNum) {
           str = String( Number(str || 0) / (isNum?1:100) );
           str = (str=='0'?'0.0':str).split('.');
@@ -47,7 +47,7 @@ export default function validPrice($timeout){
           }
           return parseNumber(val);
       }
-      
+
       ngModel.$parsers.push(parseNumber);
       ngModel.$formatters.push(formatNumber);
 

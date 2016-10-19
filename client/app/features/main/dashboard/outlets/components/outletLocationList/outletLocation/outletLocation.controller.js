@@ -40,7 +40,7 @@ export default class outletLocationController {
       angular.extend(this.outletLocation, this.originalOutletLocation)
       this.originalOutletLocation = false;
     }
-  }  
+  }
 
   contextualMenuCancel(){
     this.restoreOriginalValues();
@@ -48,7 +48,7 @@ export default class outletLocationController {
 
     if (this.outletLocation && !this.outletLocation.id) {
       this.cardItemList.deleteItem(this.outletLocation);
-    }    
+    }
   }
 
   contextualMenuSuccess(entity){
@@ -74,7 +74,7 @@ export default class outletLocationController {
         })
       }
     }
-  }  
+  }
 
   updateOutletLocation(){
     this.Spinner.show("outlet-location-update");
@@ -112,7 +112,7 @@ export default class outletLocationController {
 
     this.outletLocationGroupCtrl.changeGroup(this.outletLocation.createGroup());
 
-    $event.stopPropagation(); 
+    $event.stopPropagation();
   }
 
   onClone($event){
@@ -134,10 +134,10 @@ export default class outletLocationController {
     });
 
     $event.stopPropagation();
-  }  
+  }
 
   onDelete(){
-    
+
     this.DialogService.delete(this.LabelService.TITLE_DELETE_OUTLET_LOCATION, this.LabelService.CONTENT_DELETE_OUTLET_LOCATION)
       .then(()=>{
         this.contextual.hide();
@@ -146,7 +146,7 @@ export default class outletLocationController {
   }
 
   showSubGroup () {
-    
+
     this.outletLocationGroupCtrl.changeGroup(this.outletLocation.createGroup());
   }
 
@@ -163,7 +163,7 @@ export default class outletLocationController {
         this.Spinner.hide("outlet-location-remove-outlet")
         this.Snack.showError(this.gettextCatalog.getString('Failed to remove outlet'));
         console.log(err);
-    });    
+    });
   }
 
   onMove () {
@@ -180,7 +180,7 @@ export default class outletLocationController {
           this.Spinner.hide("outlet-location-move");
           return;
         }
-        
+
         this.outletLocation.move(groupToMove)
           .then(() => {
 
@@ -193,9 +193,9 @@ export default class outletLocationController {
           }).catch((err)=>{
             console.log(err);
           });
-        
+
       }, (err) => {
-        
+
         console.log('err to move', err);
       });
   }
@@ -231,7 +231,7 @@ export default class outletLocationController {
 
     if (this.outletLocation.outletId) {
       return this.ErrorService.OUTLET_LOCATION_SUB_GROUP_OUTLET.message;
-    }    
+    }
 
     return this.gettextCatalog.getString('Add sub group');
   }

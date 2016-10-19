@@ -6,10 +6,10 @@
 
   .delete-icon{
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 1px;
+    right: 1px;
     color: rgb(110,110,110);
-    background: white;
+    background: rgba(255,255,255, 0.8);
 
     &:hover{
       cursor: pointer;

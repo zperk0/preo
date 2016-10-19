@@ -122,7 +122,7 @@ describe('OutletLocation item Controller', function () {
 
       _mockOutletLocation();
       _startController();
-      
+
       spyOn(contextual, 'showMenu').and.callThrough();
       spyOn(OutletLocationCtrl.instance, 'buildOutlet').and.callThrough();
 
@@ -174,7 +174,7 @@ describe('OutletLocation item Controller', function () {
       spyOn(Spinner, 'hide').and.callThrough();
 
       OutletLocationCtrl.instance.outletLocation = outletLocationMock;
-      
+
       OutletLocationCtrl = OutletLocationCtrl();
 
       var outletCreated = angular.copy(outletLocationMock);
@@ -226,7 +226,7 @@ describe('OutletLocation item Controller', function () {
       spyOn(Spinner, 'hide').and.callThrough();
 
       OutletLocationCtrl.instance.outletLocation = outletLocations[0];
-      
+
       OutletLocationCtrl = OutletLocationCtrl();
 
       OutletLocationCtrl.outletLocation.name = 'Outlet location test';
@@ -280,7 +280,7 @@ describe('OutletLocation item Controller', function () {
       spyOn(OutletLocationCtrl.instance.outletLocationListCtrl, 'createOutletLocation').and.callThrough();
       spyOn(Spinner, 'show').and.callThrough();
       spyOn(Spinner, 'hide').and.callThrough();
-      
+
       OutletLocationCtrl = OutletLocationCtrl();
 
       var outletCloned = angular.copy(OutletLocationCtrl.outletLocation);
