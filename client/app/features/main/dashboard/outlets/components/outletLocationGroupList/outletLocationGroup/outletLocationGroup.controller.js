@@ -8,13 +8,13 @@ export default class outletLocationGroupController {
       angular.extend(this.outletLocationGroup, this.originalOutletGroupLocation)
       this.originalOutletGroupLocation = false;
     }
-  }  
+  }
 
   contextualMenuCancel(){
     this.restoreOriginalValues();
     this.outletLocationGroup.$selected = false;
 
-    if (!this.outletLocationGroup.label 
+    if (!this.outletLocationGroup.label
         && !this.outletLocationGroup.$fromList
         && (!this.outletLocationGroup.outletLocations || !this.outletLocationGroup.outletLocations.length)) {
       this.onDeletedCallback && this.onDeletedCallback();
@@ -41,14 +41,14 @@ export default class outletLocationGroupController {
           this.Snack.showError(this.gettextCatalog.getString('Failed to update the group'));
         });
     }
-  }  
+  }
 
   onEdit ($event) {
 
     this.originalOutletGroupLocation  = angular.copy(this.outletLocationGroup);
     this.contextual.showMenu(this.type, this.outletLocationGroup, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
     $event.stopPropagation();
-  }  
+  }
 
   onDelete ($event) {
 
@@ -64,13 +64,17 @@ export default class outletLocationGroupController {
               this.Spinner.hide("outlet-location-group-delete");
               this.onDeletedCallback && this.onDeletedCallback();
             });
-// console.log('success on delete', this.onDeletedCallback);
           }, (err) => {
 
             this.$timeout(() => {
-// console.log('error on delete', err);
               this.Spinner.hide("outlet-location-group-delete");
-              this.Snack.showError(this.gettextCatalog.getString('Failed to delete the group'));            
+
+              if (err && err instanceof Object && err.status === 422) {
+                this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this group, please contact the support team'));
+              } else {
+                this.Snack.showError(this.gettextCatalog.getString('Failed to delete the group'));
+              }
+
             });
           });
       });
@@ -104,7 +108,7 @@ console.log('checking expanded', this.outletLocationGroup);
   	if (!this.outletLocationGroup.$expanded && !this.outletLocationGroup.$fromList) {
 	    this.originalOutletGroupLocation  = angular.copy(this.outletLocationGroup);
 	    this.contextual.showMenu(this.type, this.outletLocationGroup, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
-  	}    
+  	}
   }
 
   constructor($scope, $state, $stateParams, $timeout, Snack, Spinner, DialogService, LabelService, contextual, contextualMenu, gettextCatalog) {
