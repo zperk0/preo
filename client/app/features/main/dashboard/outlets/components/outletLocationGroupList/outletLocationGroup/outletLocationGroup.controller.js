@@ -70,7 +70,6 @@ export default class outletLocationGroupController {
               this.Spinner.hide("outlet-location-group-delete");
 
               this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this group, please contact the support team'));
-
             });
           });
       });
@@ -86,7 +85,12 @@ console.log('new group here', newGroup);
   redirectToGroup () {
 
   	var urlToRedirect = this.outletLocationGroup.path.substring(1);
-  	urlToRedirect = urlToRedirect.substring(0, urlToRedirect.length - 1);
+
+    var lastChar = urlToRedirect.substr(urlToRedirect.length - 1);
+    if (lastChar == '/') {
+      urlToRedirect = urlToRedirect.substring(0, urlToRedirect.length - 1);
+    }
+
 console.log('going to', urlToRedirect);
   	this.$state.go('main.dashboard.outlets.location', {
   		outletLocation: urlToRedirect
