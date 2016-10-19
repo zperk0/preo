@@ -69,11 +69,7 @@ export default class outletLocationGroupController {
             this.$timeout(() => {
               this.Spinner.hide("outlet-location-group-delete");
 
-              if (err && err instanceof Object && err.status === 422) {
-                this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this group, please contact the support team'));
-              } else {
-                this.Snack.showError(this.gettextCatalog.getString('Failed to delete the group'));
-              }
+              this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this group, please contact the support team'));
 
             });
           });
