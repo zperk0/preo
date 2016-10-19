@@ -77,11 +77,7 @@ export default class outletLocationListController {
         this.Spinner.hide("outlet-location-delete");
       }).catch((err) => {
 
-        if (err && err instanceof Object && err.status === 422) {
-          this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this outlet, please contact the support team'));
-        } else {
-          this.Snack.showError(this.gettextCatalog.getString('Error deleting outlet location'));
-        }
+        this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this outlet, please contact the support team'));
 
         this.Spinner.hide("outlet-location-delete");
       })
