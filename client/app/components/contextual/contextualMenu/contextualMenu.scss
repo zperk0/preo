@@ -1,6 +1,13 @@
 @import '../../../shared/styles/variables';
 @import './contextualMenu.animations.scss';
 
+.contextual-menu-wrapper{
+ .content-spinner{
+    md-progress-circular{
+      margin: 0 auto;
+    }
+  }
+}
 .contextual-menu {
   max-height: calc(100vh - 64px - 50px - 5vh); //100% - toolbar - optional dashboard toolbar - extra spacing for bottom padding
   margin:0;
@@ -10,12 +17,11 @@
   .form-content{
     max-height: calc(100vh - 64px - 50px - 90px - 30px ); //100% - toolbar - optional dashboard toolbar - bottom buttons - extra spacing for bottom padding
     overflow-y:auto;
-    display: none;
 
-    &.rendered {
-      display: block;
-    }
+  }
 
+  md-card-content{
+    padding:24px;
   }
 
   md-card-actions{
@@ -80,10 +86,6 @@
   .contextual-menu-event, .contextual-menu-outlet, .contextual-menu-collection-slot, .contextual-menu-event-schedule {
     .md-errors-spacer {
       display: none;
-    }
-
-    md-card-content {
-      padding: 25px;
     }
   }
 
