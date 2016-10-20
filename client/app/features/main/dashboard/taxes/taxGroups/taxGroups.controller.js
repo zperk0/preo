@@ -7,7 +7,7 @@ export default class taxGroupsController {
 
   init(){
     this.Spinner.show("fetch-tax");
-    Preoday.Tax.getByVenueId(this.$stateParams.venueId)
+    this.TaxesService.getTaxGroups()
       .then((taxGroups)=>{
         this.taxGroups = taxGroups;
         this.Spinner.hide("fetch-tax");
@@ -23,13 +23,13 @@ export default class taxGroupsController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, $stateParams, ErrorService, LabelService, $timeout) {
+  constructor(Spinner, Snack,ErrorService, LabelService, TaxesService,  $timeout) {
     "ngInject";
     this.Spinner = Spinner;
     this.Snack = Snack;
-    this.$stateParams = $stateParams;
     this.ErrorService = ErrorService;
     this.LabelService = LabelService;
+    this.TaxesService = TaxesService;
     this.isError = false;
     this.$timeout = $timeout;
     this.init();
