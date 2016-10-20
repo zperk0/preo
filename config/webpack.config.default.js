@@ -38,6 +38,7 @@ module.exports = function(ENV, options) {
       styling: './client/app/features/main/dashboard/styling/index.js',
       venueSettings: './client/app/features/main/dashboard/venueSettings/index.js',
       vouchers: './client/app/features/main/dashboard/vouchers/index.js',
+      taxes: './client/app/features/main/dashboard/taxes/index.js',
       vendor: './client/app/vendor.js'
     },
     /**
@@ -199,33 +200,39 @@ module.exports = function(ENV, options) {
           }
 
         },
-        chunks:['bookings', 'events', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','app','vendor', 'angular'],
+        chunks:['bookings', 'events', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'app','vendor'],
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/index.php',
-        chunks:['outlets','app','vendor', 'angular'],
+        chunks:['outlets','app','vendor'],
         inject:true,
         filename:'outlets/index.php'
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/index.php',
-        chunks:['styling','app','vendor', 'angular'],
+        chunks:['styling','app','vendor'],
         inject:true,
         filename:'styling/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['taxes','app','vendor'],
+        inject:true,
+        filename:'taxes/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['events','outlets','app','vendor'],
+        inject:true,
+        filename:'events/index.php'
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/index.php',
         chunks:['menus','app','vendor', 'angular'],
         inject:true,
         filename:'menus/index.php'
-      }),
-      new HtmlWebpackPlugin({
-        template:'./client/v1/index.php',
-        chunks:['outlets','events','app','vendor', 'angular'],
-        inject:true,
-        filename:'events/index.php'
       })
     ]
   }

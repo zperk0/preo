@@ -24,8 +24,8 @@
   isItemDuplicated(items){
    for (let j=0;j<items.length;j++){
      let found = 0;
-      for (let i=0;i<this.section.$positionedItems.length;i++){
-        if (this.section.$positionedItems[i].id === items[j].id){
+      for (let i=0;i<this.items.length;i++){
+        if (this.items[i].id === items[j].id){
           found++;
           // sort list adds the item in the new list, if we find it we must remove it
           if (found){
@@ -36,39 +36,35 @@
     }
   }
 
+  // This is called when you moved an item to this section
   onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo, $removeFromOrigin) {
 
      if (this.isItemDuplicated($items)){
         this.Snack.showError('One or more items already in section');
-        $partTo.splice($indexTo,$items.length);
+        // $partTo.splice($indexTo,$items.length);
         return;
       }
 
     this.Spinner.show("moving-section-item");
     let promises = [];
 
-
-    // console.log('on new item moved', $items, $partFrom);
-
     $items.forEach(($item)=>{
         // move new item always to the beggining of new section
-        var copy = angular.copy($item.item)
+        var copy = angular.copy($item)
         copy.position = 0;
         if ($item && $item.sectionId != this.section.id){
           copy.menuId = this.section.menuId;
           copy.sectionId = $item.sectionId;
 
-          // console.log('sending this item to move', copy);
-
           let p = this.section.moveItem(copy).then((newItem)=>{
 
-            let cachedItem = this.ItemService.getById(newItem.id);
-
-            // console.log('after item moved', newItem, cachedItem);
-
-            this.section.$positionedItems.splice(0,0, {id:cachedItem.id, sectionId: newItem.sectionId, position:newItem.position, item:cachedItem})
+            newItem.position = 0;
+            if (this.items.length) {
+              this.items[0].position += 1;
+            }
+            this.items.unshift(newItem);
           }).catch((err)=>{
-            $partFrom.splice($indexFrom,0,$item);
+
             this.Snack.showError("Error moving items to section")
             console.log("Error moving items to section", err);
           })
@@ -81,8 +77,16 @@
     this.$q.all(promises).then(()=>{
       $removeFromOrigin && $removeFromOrigin();
 
-      this.Snack.show("Items moved to section")
-      this.Spinner.hide("moving-section-item");
+      this.updateItemsPosition()
+        .then(() => {
+
+          this.Snack.show("Items moved to section")
+          this.Spinner.hide("moving-section-item");          
+        }, () => {
+
+          this.Snack.show("Items moved to section")
+          this.Spinner.hide("moving-section-item");          
+        });
     })
 
   }
@@ -105,8 +109,20 @@
     });
   }
 
+  updateItemsPosition() {
+
+    const promises = [];
+    this.items.forEach((item, index)=>{
+      let clone = angular.copy(item);
+      clone.position=index*1000;
+      promises.push(clone.update());
+    });
+    return this.$q.all(promises);
+  }
+
 
   toggleExpanded($event){
+
     if (this.section.$expanding){
       return;
     }
@@ -166,17 +182,16 @@
       if (!this.section.id){
         this.Spinner.show("section-create");
         Preoday.Section.save(this.section)
-        .then((section)=>{
-            this.section.$deleted = true;
-            this.$timeout(()=>{
-              this.cardItemList.onItemCreated(section);
-              this.contextualMenu.hide();
-              this.Spinner.hide("section-create");
-              this.Snack.show('Section created');
-            })
-          }, ()=>{
+        .then((section) => {
+          
+            this.cardItemList.onUpdateItem(this.section, section);
+            this.contextualMenu.hide();
+            this.Spinner.hide("section-create");
+            this.Snack.show('Section created');
+          }, () => {
+
             this.Snack.showError('Error saving section');
-          })
+          });
 
       } else {
         this.saveSection().then(()=>{
@@ -185,6 +200,19 @@
         })
       }
     }
+  }
+
+  buildItems () {
+
+    this.items = this.section.items.map((i) => {
+
+      let item = angular.copy(this.ItemService.getById(i.id));
+      item.position = i.position;
+      item.sectionId = this.section.id;
+      item.menuId = this.section.menuId;
+
+      return item;
+    });
   }
 
   constructor($rootScope, $q, BroadcastEvents, DialogService, Snack, $stateParams, LabelService, Spinner, $timeout, contextualMenu, contextual, ItemService, ModifierService) {
@@ -203,6 +231,7 @@
     this.type = 'menuSection'; //type for contextual menu
     this.menuItemType = 'menuItem';
     this.allowedDropTypes = [this.menuItemType];
+    this.items = [];
     this.newItems = [];
     this.newModifiers = [];
     if (this.section && $stateParams.sectionId && this.section.id === Number($stateParams.sectionId)){
@@ -211,9 +240,10 @@
       })
     }
     //if it's a new section we toggle the context menu to edit this
-    if (this.section && !this.section.id) {
-        console.log("here ho");
-        this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+    if (!this.section.id) {
+      this.contextual.showMenu(this.type,this.section, this.handleSuccess.bind(this), this.handleCancel.bind(this));
+    } else {
+      this.buildItems();
     }
   }
 }

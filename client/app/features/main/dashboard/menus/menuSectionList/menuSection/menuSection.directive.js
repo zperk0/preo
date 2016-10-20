@@ -10,7 +10,7 @@ export default function menuSection(){
     },
     template: require("./menuSection.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "menuSectionCtrl",
     bindToController: true,
     replace:true,
     require:["^cardItemList", "^menuSectionList", "menuSection"],

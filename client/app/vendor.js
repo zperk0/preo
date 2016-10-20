@@ -1,5 +1,7 @@
 // Import Style
 
+import angular from 'angular';
+
 require('jscore/preoday/preoday.min.js');
 require('mdPickers/dist/mdPickers.js');
 require('angular-sanitize/angular-sanitize.js');
@@ -12,6 +14,7 @@ import angularMessages from 'angular-messages';
 import angularSortableView from 'angular-sortable-view';
 import croppie from 'croppie';
 import angularMaterial from 'angular-material';
+import angularScroll from 'angular-scroll';
 
 //Issue with ES6 Import, change this when it's fixed https://github.com/moment/moment/issues/2608
 window.moment = require('moment/moment.js');
@@ -36,4 +39,5 @@ export default angular.module('webapp.vendors', [
     'angular-sortable-view',
     'mdPickers',
     'materialCalendar',
+    'duScroll',
   ]);

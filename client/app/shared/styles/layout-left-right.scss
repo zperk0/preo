@@ -3,7 +3,11 @@
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;
-  padding-top:45px;
+
+
+  &.with-toolbar{
+    padding-top:45px;
+  }
 }
 
 .floating-right-buttons{

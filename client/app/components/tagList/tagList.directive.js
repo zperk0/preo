@@ -9,7 +9,7 @@ export default function tagList($timeout){
     },
     template: require("./tagList.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "tagListCtrl",
     bindToController: true,
     require:['ngModel','tagList'],
     replace:true,

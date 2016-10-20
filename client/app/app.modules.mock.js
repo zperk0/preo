@@ -9,11 +9,12 @@
   'webapp.payments',
   'webapp.promotions',
   'webapp.styling',
+  'webapp.taxes',
 ].forEach(function (item) {
-  
+
   try {
     angular.module(item);
   } catch(err) {
     angular.module(item,[]);
-  }  
+  }
 });
