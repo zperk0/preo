@@ -3,7 +3,7 @@ export default class eventListViewController {
   static get UID(){
     return "eventListViewController"
   }
-  
+
   hideSpinner() {
 
     this.Spinner.hide('events');
@@ -37,9 +37,9 @@ export default class eventListViewController {
 
         return '<span>' + event.name + '</span><br />';
       }).join('');
-    }  
-    
-    return eventsName;  
+    }
+
+    return eventsName;
   }
 
   setDayContent (date) {
@@ -52,7 +52,7 @@ export default class eventListViewController {
   toggleMode () {
 
     this.Spinner.show('events');
-    
+
     this.$timeout(() => {
 
       this.calendarMode = !this.calendarMode;
@@ -82,7 +82,7 @@ export default class eventListViewController {
       selectedDate: null,
       firstDayOfWeek: 0,
       dayFormat: 'd',
-      tooltips: true
+      tooltips: false
     };
 
     MaterialCalendarData.setDayContent = this.setDayContent.bind(this);
