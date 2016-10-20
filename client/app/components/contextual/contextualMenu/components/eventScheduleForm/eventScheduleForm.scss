@@ -1,3 +1,5 @@
+@import '../../../../../shared/styles/variables';
+
 $inputColor: #9E9E9E;
 
 .event-schedule-form {
@@ -6,7 +8,7 @@ $inputColor: #9E9E9E;
     font-size:16px;
     width: auto !important;
     margin-right: 12px;
-  }	
+  }
 
   span, input, select {
     float: none;
@@ -88,8 +90,14 @@ $inputColor: #9E9E9E;
 
   			&::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
 					color: rgba(0,0,0,0.26);
-  			}	
-	  	}  		
+  			}
+
+        &:focus {
+          &::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+            color: transparent !important;
+          }
+        }
+	  	}
   	}
   }
 
@@ -115,6 +123,23 @@ $inputColor: #9E9E9E;
     div[ng-messages] {
       margin-top: -16px;
       margin-bottom: 16px;
+    }
+  }
+
+  .date-picker-block {
+    position: relative;
+
+    .md-caption {
+      color: $colorLight;
+      padding-left: 38px;
+      position: absolute;
+      top: -3px;
+    }
+
+    .md-datepicker-open {
+      &+.md-caption {
+        display: none;
+      }
     }
   }
 }
