@@ -25,7 +25,7 @@
     		margin-right: 8px;
     	}
     }
-  }	 
+  }
 
   .edit-mode-button {
     md-icon {
@@ -55,7 +55,7 @@
             &:after {
                 content: "";
                 display: inline-block;
-                border-right: 2.5px solid #fff; 
+                border-right: 2.5px solid #fff;
                 border-bottom: 2.5px solid #fff;
                 width: 7.5px; height: 7.5px;
                 transform: rotate(-45deg);
@@ -64,7 +64,7 @@
             &:first-child {
                 &:after {
                     border-right: 0px;
-                    border-left: 2.5px solid #fff; 
+                    border-left: 2.5px solid #fff;
                     transform: rotate(45deg);
                 }
             }
@@ -78,6 +78,11 @@
                 font-size: 14px;
             }
         }
+
+        .md-whiteframe-12dp {
+            box-shadow: none;
+            background: none !important;
+        }
     }
-  } 
+  }
 }
