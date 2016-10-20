@@ -17,9 +17,9 @@ export default class sellerDetailsController {
   }
 
   submit(){
-    this.Spinner.show("seller-details-save");
     var saveOrUpdate = this.saveOrUpdate();
     if (this.sellerForm.$valid){
+      this.Spinner.show("seller-details-save");
       saveOrUpdate()
         .then((taxSettings)=>{
           this.taxSettings = taxSettings
