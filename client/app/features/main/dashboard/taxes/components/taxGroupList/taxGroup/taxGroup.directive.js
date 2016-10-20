@@ -1,6 +1,7 @@
 import controller from './taxGroup.controller'
 
 export default function taxGroup(){
+    "ngInject";
   return {
     restrict: 'E',
     scope: {
