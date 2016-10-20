@@ -13,7 +13,7 @@ export default class taxGroupController {
   }
 
   contextualMenuSuccess(entity){
-    this.Spinner.hide("tax-group-create");
+    this.Spinner.show("tax-group-create");
     if (this.taxGroup && entity && entity.name){
       this.taxGroup = entity;
       this.saveOrUpdate().then((newTaxGroup)=>{
