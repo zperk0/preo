@@ -8,6 +8,7 @@ describe('itemList Controller', function () {
       MenuItemCtrl,
       CardItemListCtrl,
       MenuSectionItemListCtrl,
+      VenueService,
       $rootScope,
       $scope,
       $stateParams,
@@ -31,6 +32,7 @@ describe('itemList Controller', function () {
       $controller = $injector.get('$controller');
       $stateParams = $injector.get('$stateParams');
       ItemService = $injector.get('ItemService');
+      VenueService = $injector.get('VenueService');
       Snack = $injector.get('Snack');
       Spinner = $injector.get('Spinner');
       $timeout = $injector.get('$timeout');
@@ -39,8 +41,8 @@ describe('itemList Controller', function () {
       contextualMenu = $injector.get('contextualMenu');
 
       $scope = $rootScope.$new();
-
       $scope.scrollToBottom = () => {};
+      VenueService.currentVenue = {id:5};
     }));
 
     afterEach(function() {
@@ -171,7 +173,7 @@ describe('itemList Controller', function () {
           expect(Snack.show).toHaveBeenCalled();
           expect(CardItemListCtrl.collection.length).toBe(1);
 
-          done();                
+          done();
         });
       });
     });
@@ -232,7 +234,7 @@ describe('itemList Controller', function () {
           expect(Snack.show).toHaveBeenCalled();
           expect(CardItemListCtrl.collection.length).toBe(1);
 
-          done();                
+          done();
         });
       });
     });
@@ -312,7 +314,7 @@ describe('itemList Controller', function () {
           expect(Preoday.Section.removeItems).toHaveBeenCalled();
           expect(CardItemListCtrl.collection.length).toBe(1);
 
-          done();      
+          done();
         });
       });
     });
