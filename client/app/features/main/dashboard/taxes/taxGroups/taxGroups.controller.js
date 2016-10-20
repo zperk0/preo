@@ -7,7 +7,7 @@ export default class taxGroupsController {
 
   init(){
     this.Spinner.show("fetch-tax");
-    this.TaxesService.getTaxGroups()
+    this.TaxesService.getTaxGroups(true)
       .then((taxGroups)=>{
         this.taxGroups = taxGroups;
         this.Spinner.hide("fetch-tax");

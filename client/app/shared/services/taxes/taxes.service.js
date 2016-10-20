@@ -6,11 +6,11 @@ export default class TaxesService {
     return "TaxesService";
   }
 
-  getTaxGroups(){
+  getTaxGroups(forceRefresh = false){
     var venueId = this.VenueService.currentVenue.id;
     console.log("TaxesService - Fetching taxes")
     return this.$q((resolve,reject)=>{
-      if (this.taxGroups){
+      if (!forceRefresh && this.taxGroups){
         console.log("TaxesService - Skip fetching taxes")
         return resolve(this.taxGroups);
       }
