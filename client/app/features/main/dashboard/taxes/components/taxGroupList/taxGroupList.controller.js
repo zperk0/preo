@@ -23,6 +23,7 @@ export default class taxGroupListController {
 
   /* @ngInject */
   constructor($stateParams) {
+    "ngInject";
     this.$stateParams = $stateParams;
     this.title = "I am a taxGroupList component"
   }

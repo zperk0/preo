@@ -53,9 +53,9 @@ export default class navbarController {
         {name: gettextCatalog.getString("My Events"), id:"eventList"},
         {name: gettextCatalog.getString("Collection Slots"), id:"collectionSlots"},
       ], shouldShow: function () {
-        
+
         return VenueService.hasVenueSet() && VenueService.currentVenue.isEvent();
-      }},      
+      }},
 
       {name: gettextCatalog.getString("Outlets"), icon:"pin_drop", id:"outlets", children: [
         {name: gettextCatalog.getString("My Outlets"), id:"outletList"},
@@ -73,7 +73,7 @@ export default class navbarController {
         {name: gettextCatalog.getString("Settings"), id:"bookingSettings"},
         {name: gettextCatalog.getString("Menus"), id:"bookingMenus"},
       ]},
-      {name: gettextCatalog.getString("Tax Settings"), icon:"attach_money", id:"taxes", children:[
+      {name: gettextCatalog.getString("Tax Settings"), icon:"account_balance", id:"taxes", children:[
         {name: gettextCatalog.getString("Seller Details"), id:"sellerDetails"},
         {name: gettextCatalog.getString("Tax Groups"), id:"taxGroups"}
       ]},

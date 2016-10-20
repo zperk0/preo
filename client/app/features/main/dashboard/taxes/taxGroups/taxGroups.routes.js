@@ -7,6 +7,7 @@ import controller from './taxGroups.controller'
  */
 /* @ngInject */
 export default function routes($stateProvider) {
+  "ngInject";
   $stateProvider.state("main.dashboard.taxes.taxGroups", {
     url: "/taxGroups",
      views:{
