@@ -28,23 +28,33 @@ export default class eventListViewController {
 
     let events = this.getEventByDate(date);
 
-    let eventsName = null;
+    let eventsName = events.map((event) => {
+
+      return '<span>' + event.name + '</span><br />';
+    }).join('');
+
+    let html = eventsName;
 
     if (events.length > 1) {
-      eventsName = events.length + ' ' + this.gettextCatalog.getString('events');
-    } else {
-      eventsName = events.map((event) => {
-
-        return '<span>' + event.name + '</span><br />';
-      }).join('');
+      html = [ '<div>',
+                events.length + ' ' + this.gettextCatalog.getString('events'),
+                '<md-tooltip>' + eventsName + '</md-tooltip>',
+                '</div>'].join('');
     }
 
-    return eventsName;
+    return html;
   }
 
   setDayContent (date) {
 
     let eventsName = this.getDayEventsName(date);
+
+    if (eventsName) {
+      eventsName = this.$compile(eventsName)(this.$scope);
+      console.log(eventsName[0].innerHTML);
+      eventsName = this.$sce.trustAsHtml(eventsName[0].innerHTML);
+      console.log(eventsName);
+    }
 
     this.MaterialCalendarData.data[this.MaterialCalendarData.getDayKey(date)] = eventsName || this.MaterialCalendarData.data[this.MaterialCalendarData.getDayKey(date)] || "";
   }
@@ -66,10 +76,13 @@ export default class eventListViewController {
   }
 
   /* @ngInject */
-  constructor($q, $timeout, Spinner, EventService, VenueService, OutletLocationService, gettextCatalog, MaterialCalendarData) {
+  constructor($scope, $q, $sce, $timeout, $compile, Spinner, EventService, VenueService, OutletLocationService, gettextCatalog, MaterialCalendarData) {
   	'ngInject';
 
+    this.$scope = $scope;
+    this.$sce = $sce;
     this.$timeout = $timeout;
+    this.$compile = $compile;
     this.Spinner = Spinner;
     this.gettextCatalog = gettextCatalog;
     this.MaterialCalendarData = MaterialCalendarData;

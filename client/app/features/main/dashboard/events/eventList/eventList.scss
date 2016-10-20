@@ -76,12 +76,28 @@
             & > div {
                 color: $colorLight;
                 font-size: 14px;
+
+                button, span {
+                    color: $colorLight;
+                    font-size: 12px;
+                    margin: 0px;
+                    width: 100%;
+                    text-align: left;
+                    text-transform: none;
+                }
             }
         }
 
-        .md-whiteframe-12dp {
-            box-shadow: none;
+        .md-whiteframe-12dp, .active {
+            box-shadow: none !important;
             background: none !important;
+        }
+
+        md-button {
+
+            md-tooltip {
+
+            }
         }
     }
   }
