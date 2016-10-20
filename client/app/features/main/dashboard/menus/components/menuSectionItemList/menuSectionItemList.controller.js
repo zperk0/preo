@@ -149,7 +149,7 @@ export default class menuSectionItemListController {
      maxHeight += 48 + 42 + 16 + (i.$size && i.$size.items ? i.$size.items.length * 35 : 0)
     })
     this.el[0].style.maxHeight = maxHeight + (80 + 35*5) + "px";
-  }    
+  }
 
   onClone (item, sectionId) {
 
@@ -163,7 +163,7 @@ export default class menuSectionItemListController {
         this.Spinner.hide("item-clone")
         this.Snack.show('Item duplicated');
         console.log("cloned", createdItem, this.item);
-        
+
         this.cardItemList.insert(item, createdItem);
         this.addToOriginalList(createdItem);
 
@@ -172,7 +172,7 @@ export default class menuSectionItemListController {
         this.Spinner.hide("item-clone")
         this.Snack.showError('Failed duplicating item');
       });
-  }  
+  }
 
   constructor($scope, $q, Snack, Spinner, $stateParams, ItemService, $timeout, contextual) {
     "ngInject";

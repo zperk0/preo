@@ -11,7 +11,7 @@ export default class menuItemListController {
 
   showCreateItem() {
 
-    let newItem =  this.ItemService.getNewItemBase(this.$stateParams.venueId); 
+    let newItem =  this.ItemService.getNewItemBase(this.$stateParams.venueId);
 
     let isCreating = this.items.filter((s, index) => {
 
@@ -35,7 +35,7 @@ export default class menuItemListController {
         this.Spinner.hide("item-clone")
         this.Snack.show('Item duplicated');
         console.log("cloned", createdItem, this.item);
-        
+
         this.items.push(createdItem);
 
         this.$scope.scrollToBottom();

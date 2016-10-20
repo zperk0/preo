@@ -36,7 +36,7 @@ export default class outletLocationListController {
         .then((outletLocation)=>{
 
           this.Spinner.hide("outlet-location-create");
-          
+
           deferred.resolve(outletLocation);
       }, (err) => {
         console.log('fail outlet location saved', err);
@@ -45,7 +45,7 @@ export default class outletLocationListController {
       });
 
     return deferred.promise;
-  } 
+  }
 
   showCreateOutletLocation(){
 
@@ -53,12 +53,12 @@ export default class outletLocationListController {
 
       return item.id === undefined;
     }).length;
-    
+
     if (isCreating){
       console.log("Not showing outlet location new, already showing")
       return;
     }
-    
+
     let outletLocation = new Preoday.OutletLocation({
       venueId: this.venueId,
       parent: this.outletLocationGroup.id,
@@ -66,7 +66,7 @@ export default class outletLocationListController {
       path: this.outletLocationGroup.path,
       $selected:true,
     });
-  }  
+  }
 
   deleteOutletLocation(outletLocation){
 
@@ -74,22 +74,23 @@ export default class outletLocationListController {
     outletLocation.delete()
       .then(()=>{
         this.Snack.show(this.gettextCatalog.getString('Outlet location deleted'));
-      }).then(()=>{
         this.Spinner.hide("outlet-location-delete");
-      }).catch(()=>{
-        this.Snack.showError(this.gettextCatalog.getString('Error deleting outlet location'));
+      }).catch((err) => {
+
+        this.Snack.showError(this.gettextCatalog.getString('You do not have permission to delete this outlet, please contact the support team'));
+
         this.Spinner.hide("outlet-location-delete");
       })
   }
 
   getPosition(outletLocation){
     return outletLocation.position || this.outletLocations ? this.outletLocations.filter((i)=>outletLocation.id===i.id)[0].position : 0;
-  } 
+  }
 
   getNewOutletLocationPosition () {
 
     return Math.max.apply(Math, this.outletLocations.map(function(o){return o.position || 0;})) + 1000;
-  } 
+  }
 
   /* @ngInject */
   constructor($timeout, $stateParams, $q, Spinner, Snack, OutletLocationService, gettextCatalog) {
