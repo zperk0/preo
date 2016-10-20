@@ -15,39 +15,35 @@
 
       <div ng-messages="contextualMenuCtrl.contextualForm.displayName.$error">
         <div ng-message="required" translate>This field is required.</div>
-        <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.displayName.$error.maxlength}">Max length is 100.</div>
+        <div ng-message="maxlength" translate ng-class= "{'activated': contextualMenuCtrl.contextualForm.displayName.$error.maxlength}">Max length is 100.</div>
       </div>
   </md-input-container>
    <md-input-container class="md-block no-spacer inline-percent">
     <label translate>Takeaway rate</label>
-    <input type="number" min=0 max=100 name="takeAway" ng-model="contextualMenuCtrl.entity.pickup" valid-number max-integer-value="100" compare-number="0" allow-equals> <span class='percent'>%</span>
+    <input type="text" min=0 max=100 name="takeAway" ng-model="contextualMenuCtrl.entity.pickup" valid-percentage  allow-equals> <span class='percent'>%</span>
     <div ng-messages="contextualMenuCtrl.contextualForm.takeAway.$error">
-       <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.takeAway.$error.maxIntegerValue}">Maximum value is 99%</div>
-      <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.takeAway.$error.compareNumber}">Minimum value is 0%</div>
+       <div ng-message="maxDecimalValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.takeAway.$error.maxDecimalValue}">Maximum value is 100%</div>
     </div>
   </md-input-container>
    <md-input-container class="md-block no-spacer inline-percent">
     <label translate>Delivery rate</label>
-    <input type="number" name="delivery" ng-model="contextualMenuCtrl.entity.delivery" valid-number max-integer-value="100" compare-number="0" allow-equals> <span class='percent'>%</span>
+    <input type="text" name="delivery" ng-model="contextualMenuCtrl.entity.delivery" valid-percentage  allow-equals> <span class='percent'>%</span>
     <div ng-messages="contextualMenuCtrl.contextualForm.delivery.$error">
-       <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.delivery.$error.maxIntegerValue}">Maximum value is 99%</div>
-      <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.delivery.$error.compareNumber}">Minimum value is 0%</div>
+       <div ng-message="maxDecimalValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.delivery.$error.maxDecimalValue}">Maximum value is 100%</div>
     </div>
   </md-input-container>
   <md-input-container class="md-block no-spacer inline-percent">
     <label translate>To seat rate</label>
-    <input type="number" name="seat" ng-model="contextualMenuCtrl.entity.seat" valid-number max-integer-value="100" compare-number="0" allow-equals> <span class='percent'>%</span>
+    <input type="text" name="seat" ng-model="contextualMenuCtrl.entity.seat" valid-percentage  allow-equals> <span class='percent'>%</span>
     <div ng-messages="contextualMenuCtrl.contextualForm.seat.$error">
-       <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seat.$error.maxIntegerValue}">Maximum value is 99%</div>
-      <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seat.$error.compareNumber}">Minimum value is 0%</div>
+       <div ng-message="maxDecimalValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.seat.$error.maxDecimalValue}">Maximum value is 100%</div>
     </div>
   </md-input-container>
   <md-input-container class="md-block no-spacer inline-percent">
     <label translate>Voucher rate</label>
-    <input type="number" name="voucher" ng-model="contextualMenuCtrl.entity.voucher" valid-number max-integer-value="100" compare-number="0" allow-equals> <span class='percent'>%</span>
+    <input type="text" name="voucher" ng-model="contextualMenuCtrl.entity.voucher" valid-percentage  allow-equals> <span class='percent'>%</span>
     <div ng-messages="contextualMenuCtrl.contextualForm.voucher.$error">
-       <div ng-message="maxIntegerValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.voucher.$error.maxIntegerValue}">Maximum value is 99%</div>
-      <div ng-message="compareNumber" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.voucher.$error.compareNumber}">Minimum value is 0%</div>
+       <div ng-message="maxDecimalValue" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.voucher.$error.maxDecimalValue}">Maximum value is 100%</div>
     </div>
   </md-input-container>
 </md-card-content>

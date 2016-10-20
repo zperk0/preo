@@ -21,24 +21,26 @@ import eventScheduleForm from './components/eventScheduleForm';
 import services from '../../../shared';
 import validNumber from '../../../components/validNumber';
 import validPrice from '../../../components/validPrice';
+import validPercentage from '../../../components/validPercentage';
 import maxIntegerValue from '../../../components/maxIntegerValue';
 import compareNumber from '../../../components/compareNumber';
 
 
 export default angular.module("contextualMenu" , [
-	menuItemSize, 
-	menusSelect, 
-	modifierItems, 
-	modifierSelection, 
-	collectionSlotBasic, 
-	collectionSlotAdvanced, 
-	collectionSlotsSelect, 
-	eventBasic, 
-	eventScheduleForm, 
-	services, 
-	validNumber, 
-	validPrice, 
-	maxIntegerValue, 
+	menuItemSize,
+	menusSelect,
+	modifierItems,
+	modifierSelection,
+	collectionSlotBasic,
+	collectionSlotAdvanced,
+	collectionSlotsSelect,
+	eventBasic,
+	eventScheduleForm,
+	services,
+	validNumber,
+  validPrice,
+	validPercentage,
+	maxIntegerValue,
 	compareNumber
 ])
 
