@@ -8,7 +8,6 @@ export default function eventScheduleList($timeout){
       schedules: "=",
       event: '=',
       hasNew:"=",
-      svDisabled:"="
     },
     template: require("./eventScheduleList.tpl.html"),
     controller: controller.UID,
@@ -25,7 +24,7 @@ export default function eventScheduleList($timeout){
             ctrl.event.$expanding = false;
           })
         }
-      })      
+      })
     }
   }
 }

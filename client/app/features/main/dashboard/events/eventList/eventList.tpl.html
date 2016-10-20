@@ -16,26 +16,25 @@
          sv-disabled="true"
          has-new="true"
          has-actions="true"
-         ng-if="eventListViewCtrl.data.events && eventListViewCtrl.data.events.length"
-         events="eventListViewCtrl.data.events"></event-list>      
+         events="eventListViewCtrl.data.events"></event-list>
      </div>
   	<div class='main-content-right' sticky offset="134" contextual-menu-holder></div>
   </div>
-  
+
   <div class="content-calendar" ng-if="eventListViewCtrl.loaded && eventListViewCtrl.isCalendarMode()">
     <calendar-md flex layout layout-fill
       calendar-direction="eventListViewCtrl.calendar.direction"
       title-format="'MMMM y'"
       ng-model='eventListViewCtrl.calendar.selectedDate'
       week-starts-on="eventListViewCtrl.calendar.firstDayOfWeek"
-      
+
       tooltips="eventListViewCtrl.calendar.tooltips"
       day-format="eventListViewCtrl.calendar.dayFormat"
       day-label-format="'EEE'"
       day-label-tooltip-format="'EEEE'"
       day-tooltip-format="'fullDate'"
       disable-future-selection="false"
-      ></calendar-md>  
+      ></calendar-md>
   </div>
   <contextual-drawer-event-outlet-locations></contextual-drawer-event-outlet-locations>
 </div>

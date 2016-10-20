@@ -9,14 +9,14 @@ export default class eventScheduleListController {
 
       return item.id === undefined;
     }).length;
-    
+
     if (isCreating){
       console.log("Not showing schedule new, already showing")
       return;
     }
 
     this.schedules.push(this.EventScheduleService.getNewScheduleModel(this.event.id));
-  }  
+  }
 
   createSchedule (newData) {
 
@@ -31,12 +31,12 @@ export default class eventScheduleListController {
 
         deferred.resolve(schedule);
       }, (err) => {
-        
+
         deferred.reject(err);
       });
 
-    return deferred.promise;    
-  }    
+    return deferred.promise;
+  }
 
   getSchedulesCount () {
 
@@ -58,12 +58,12 @@ export default class eventScheduleListController {
     } else {
       this.event.$expanding = false;
     }
-  }  
+  }
 
   buildScheduleTimestamp(schedule) {
 
     schedule.$startTimestamp = moment(schedule.startDate).valueOf();
-    schedule.$endTimestamp = moment(schedule.endDate).valueOf();    
+    schedule.$endTimestamp = moment(schedule.endDate).valueOf();
   }
 
   /* @ngInject */
@@ -81,7 +81,7 @@ export default class eventScheduleListController {
 
     this.schedules.forEach((schedule)=> {
 
-      schedule.$show = false; 
+      schedule.$show = false;
       this.buildScheduleTimestamp(schedule);
     });
 
@@ -105,6 +105,6 @@ export default class eventScheduleListController {
         }, 1000)
 
       }
-    }, true); 
+    }, true);
   }
 }
