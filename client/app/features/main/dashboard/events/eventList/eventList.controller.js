@@ -56,7 +56,7 @@ export default class eventListViewController {
       console.log(eventsName);
     }
 
-    this.MaterialCalendarData.data[this.MaterialCalendarData.getDayKey(date)] = eventsName || this.MaterialCalendarData.data[this.MaterialCalendarData.getDayKey(date)] || "";
+    this.MaterialCalendarData.data[this.MaterialCalendarData.getDayKey(date)] = eventsName || "";
   }
 
   toggleMode () {
