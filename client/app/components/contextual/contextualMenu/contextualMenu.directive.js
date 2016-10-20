@@ -24,7 +24,9 @@ export default function contextualMenu($compile, $timeout, $animate){
       $compile(wrapper.contents())(scope);
 
       $timeout(() => {
-        scope.rendered = true;
+        $timeout(()=>{
+          scope.rendered = true;
+        },500)
       });
     }
   }
