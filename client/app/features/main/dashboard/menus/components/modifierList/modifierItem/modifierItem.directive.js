@@ -8,7 +8,7 @@ export default function modifierItem(){
     },
     template: require("./modifierItem.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "modifierItemCtrl",
     bindToController: true,
     require:['^?cardItemList','modifierItem'],
     link: (scope, el, attr, ctrl) => {

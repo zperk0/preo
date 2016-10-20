@@ -4,22 +4,38 @@ export default class modifiersController {
     return "modifiersController"
   }
 
+  showSpinner(){
+    this.Spinner.show("modifiers-list");
+  }
+
+  hideSpinner(){
+    this.Spinner.hide("modifiers-list");
+  }
+
   hasNestedModifierFeature () {
 
     return this.FeatureService.hasNestedModifierFeature();
   }
 
-  constructor(ModifierService, FeatureService, $stateParams) {
+  constructor(ModifierService, FeatureService, Spinner, $stateParams) {
     "ngInject";
 
     this.FeatureService = FeatureService;
+    this.Spinner = Spinner;
+
+    this.showSpinner();
 
     FeatureService.hasFeature(Preoday.constants.Feature.NESTED_MODIFIER);
 
     ModifierService.getModifiers($stateParams.venueId).then((data)=>{
       console.log("got data", data)
       this.data = data;
-    })
+
+      this.hideSpinner();
+    }, () => {
+
+      this.hideSpinner();
+    });
 
   }
 }

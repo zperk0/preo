@@ -13,7 +13,7 @@ export default function routes($stateProvider) {
       menuContent:{
         template: require("./modifiers.tpl.html"),
         controller: controller.UID,
-        controllerAs: "vm"
+        controllerAs: "modifiersViewCtrl"
       }
     }
   });

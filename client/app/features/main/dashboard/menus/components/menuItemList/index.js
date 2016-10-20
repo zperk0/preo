@@ -15,5 +15,5 @@ export default angular.module("menuItemList" , [cardItemList, menuItem])
 
   .controller(controller.UID, controller)
   .directive("menuItemList", directive)
-  .filter("itemOrderList", filter)
+  // .filter("itemOrderList", filter)
   .name;
