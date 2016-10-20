@@ -6,6 +6,32 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 
+function chunkSort(ca,cb){ //order scripts, angular and vendor first, then app last
+    if (ca.names[0] == 'angular'){
+      return -1
+    }
+    if (cb.names[0] == 'angular'){
+      return 1
+    }
+    if (ca.names[0] == 'vendor'){
+      return -1
+    }
+    if (cb.names[0] == 'vendor'){
+      return 1
+    }
+     if (ca.names[0] == 'app'){
+      return 1
+    }
+    if (cb.names[0] == 'app'){
+      return -1
+    }
+    if ( ca.names[0] < cb.names[0]){
+      return -1
+    } else {
+      return 1;
+    }
+
+  }
 
 module.exports = function(ENV, options) {
   return {
@@ -174,32 +200,7 @@ module.exports = function(ENV, options) {
       ),
       new HtmlWebpackPlugin({
         template:'./client/index.html',
-        chunksSortMode: function(ca,cb){ //order scripts, angular and vendor first, then app last
-          if (ca.names[0] == 'angular'){
-            return -1
-          }
-          if (cb.names[0] == 'angular'){
-            return 1
-          }
-          if (ca.names[0] == 'vendor'){
-            return -1
-          }
-          if (cb.names[0] == 'vendor'){
-            return 1
-          }
-           if (ca.names[0] == 'app'){
-            return 1
-          }
-          if (cb.names[0] == 'app'){
-            return -1
-          }
-          if ( ca.names[0] < cb.names[0]){
-            return -1
-          } else {
-            return 1;
-          }
-
-        },
+        chunksSortMode: chunkSort,
         chunks:['bookings', 'events', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'app','vendor'],
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
@@ -208,30 +209,35 @@ module.exports = function(ENV, options) {
         template:'./client/v1/index.php',
         chunks:['outlets','app','vendor'],
         inject:true,
+        chunksSortMode: chunkSort,
         filename:'outlets/index.php'
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/index.php',
         chunks:['styling','app','vendor'],
         inject:true,
+        chunksSortMode: chunkSort,
         filename:'styling/index.php'
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/index.php',
         chunks:['taxes','app','vendor'],
         inject:true,
+        chunksSortMode: chunkSort,
         filename:'taxes/index.php'
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/index.php',
         chunks:['events','outlets','app','vendor'],
         inject:true,
+        chunksSortMode: chunkSort,
         filename:'events/index.php'
       }),
       new HtmlWebpackPlugin({
         template:'./client/v1/index.php',
         chunks:['menus','app','vendor', 'angular'],
         inject:true,
+        chunksSortMode: chunkSort,
         filename:'menus/index.php'
       })
     ]
