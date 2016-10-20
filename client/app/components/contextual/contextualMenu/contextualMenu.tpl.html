@@ -1,16 +1,18 @@
-<md-card class='contextual-menu'>
-  <form name="contextualMenuCtrl.contextualForm" ng-submit="contextualMenuCtrl.doSubmit()" novalidate>
-      <div class="content-spinner" ng-if="!rendered">
-        <spinner></spinner>
-      </div>
-      <div class='form-content' ng-class="{'rendered' : rendered}"></div>
-      <md-card-actions layout="row" layout-align="end center">
-        <md-button class='md-primary'  ng-click="contextualMenuCtrl.onCancel()" translate>
-          Cancel
-      </md-button>
-      <md-button type="submit" class='md-raised'>
-         {{ contextualMenuCtrl.params.doneButtonText || ('Done' | translate) }}
-      </md-button>
-    </md-card-actions>
-  </form>
-</md-card>
+<div class='contextual-menu-wrapper'>
+  <div class="content-spinner" ng-if="!rendered">
+    <spinner></spinner>
+  </div>
+  <md-card class='contextual-menu' ng-class="{'rendered' : rendered}">
+    <form name="contextualMenuCtrl.contextualForm" ng-submit="contextualMenuCtrl.doSubmit()" novalidate>
+        <div class='form-content'></div>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class='md-primary'  ng-click="contextualMenuCtrl.onCancel()" translate>
+            Cancel
+        </md-button>
+        <md-button type="submit" class='md-raised'>
+           {{ contextualMenuCtrl.params.doneButtonText || ('Done' | translate) }}
+        </md-button>
+      </md-card-actions>
+    </form>
+  </md-card>
+</div>
