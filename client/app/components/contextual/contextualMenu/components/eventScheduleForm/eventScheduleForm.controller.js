@@ -18,6 +18,7 @@ export default class eventScheduleFormController {
 
     this.schedule.$startDate = this.schedule.startDate ? moment(this.schedule.startDate).toDate() : null;
     this.schedule.$endDate = this.schedule.endDate ? moment(this.schedule.endDate).toDate() : null;
+    $scope.$broadcast('md-calendar-change', this.schedule.$startDate);
 
     this.schedules = [{
     	value: EventScheduleFrequency.ONCE,

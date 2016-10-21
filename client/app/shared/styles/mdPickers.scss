@@ -1,5 +1,5 @@
 md-dialog {
-	&.mdp-timepicker  {
+	&.mdp-timepicker, &.mdp-datepicker  {
 		width: auto !important;
 
 		md-dialog-content {
@@ -10,16 +10,26 @@ md-dialog {
 			}
 		}
 
-		.mdp-clock-container {
+		.mdp-clock-container, .mdp-calendar {
 			button {
 				background-color: transparent !important;
-				color: #000 !important;				
+				color: #000 !important;
 
-				&.md-primary {
+				&.md-primary, &.md-accent {
 					background-color: rgba(66,66,66, 0.9) !important;
 					color: #fff !important;
 				}
+			}
+		}
 
+		.mdp-timepicker-selected-time, .mdp-timepicker-selected-ampm {
+			color: #fff;
+		}
+	}
+
+	&.mdp-timepicker {
+		.mdp-clock-container {
+			button {
 				&:hover {
 					&:not(.md-primary) {
 						background-color: #fff !important;
@@ -27,9 +37,23 @@ md-dialog {
 				}
 			}
 		}
+	}
 
-		.mdp-timepicker-selected-time, .mdp-timepicker-selected-ampm {
-			color: #fff;
+	&.mdp-datepicker {
+		md-toolbar {
+			span {
+				color: #fff;
+			}
+		}
+
+		.mdp-calendar {
+			button {
+				&:hover {
+					&:not(.md-accent) {
+						background-color: rgb(224,224,224) !important;
+					}
+				}
+			}
 		}
 	}
 }
