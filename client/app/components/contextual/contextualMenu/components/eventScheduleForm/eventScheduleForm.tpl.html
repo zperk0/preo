@@ -14,9 +14,10 @@
 
   <div class="md-block md-block-timepicker">
     <mdp-time-picker mdp-auto-switch="true"
+          mdp-open-on-click
           name="timeFormat"
           mdp-placeholder="{{ 'Start time' | translate }}"
-          ng-model="eventScheduleFormCtrl.schedule.$startDate"
+          ng-model="eventScheduleFormCtrl.schedule.$startTime"
           mdp-format="LT"
           required></mdp-time-picker>
 
