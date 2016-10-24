@@ -48,7 +48,7 @@ $inputColor: #9E9E9E;
     }
   }
 
-  mdp-time-picker {
+  mdp-time-picker, mdp-date-picker {
   	.md-button {
   		&.md-icon-button {
   			margin-top: 16px;
@@ -78,6 +78,22 @@ $inputColor: #9E9E9E;
 
       color: transparent;
   	}
+  }
+
+  mdp-date-picker {
+    .md-button {
+      &.md-icon-button {
+        margin-top: 0px;
+      }
+    }
+
+    md-input-container {
+      margin: 0px;
+    }
+
+    input {
+      width: 100px;
+    }
   }
 
   .schedule-datepicker {
