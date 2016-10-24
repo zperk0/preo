@@ -36,7 +36,7 @@ export default class ErrorService {
     this.COLLECTION_SLOT_SCHEDULE = {code:'COLLECTION_SLOT_SCHEDULE', message:gettextCatalog.getString("This slot is still assigned to some schedules. You must remove all instances before deleting."), title: gettextCatalog.getString('Cannot delete slot')};
 
     // SCHEDULE
-    this.SCHEDULE_EVENT = {code:'SCHEDULE_EVENT', message:gettextCatalog.getString("An event need to have at least 1 schedule."), title: gettextCatalog.getString('Cannot delete schedule')};
+    this.SCHEDULE_EVENT = {code:'SCHEDULE_EVENT', message:gettextCatalog.getString("An event must have at least one schedule."), title: gettextCatalog.getString('Cannot delete schedule')};
 
     // EVENT OUTLET LOCATION
     this.EVENT_OUTLET_LOCATION = {code:'EVENT_OUTLET_LOCATION', message:gettextCatalog.getString("It is not possible to select a single location as your outlet configuration."), title: ''};

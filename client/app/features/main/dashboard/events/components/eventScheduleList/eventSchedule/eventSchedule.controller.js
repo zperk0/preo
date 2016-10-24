@@ -155,7 +155,7 @@ export default class eventScheduleController {
   showCannotDeleteScheduleDialog () {
 
     this.DialogService.show(this.ErrorService.SCHEDULE_EVENT.title, this.ErrorService.SCHEDULE_EVENT.message, [{
-        name: this.gettextCatalog.getString('OK')
+        name: this.gettextCatalog.getString('GOT IT')
       }]);
   }
 
