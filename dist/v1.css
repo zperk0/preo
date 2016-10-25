@@ -49,6 +49,14 @@
     outline: none ;
     box-shadow: none;
     margin:0;
+    outline: none;
+    box-shadow: none;
+    display: block;
+    background: 0 0;
+    padding: 2px 2px 1px;
+    border-width: 0 0 1px;
+    border-radius: 0;
+    border-style: solid;
   }
   #webappv2 .md-sidenav-right{
     top:0;

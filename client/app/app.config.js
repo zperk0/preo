@@ -1,5 +1,5 @@
 
-export default function config($mdThemingProvider, $locationProvider, $mdDateLocaleProvider, $compileProvider){
+export default function config($mdThemingProvider, $locationProvider, $mdDateLocaleProvider, $compileProvider) {
   "ngInject";
 
   if (!window._PREO_DATA){
