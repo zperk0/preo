@@ -9,7 +9,7 @@ export default class collectionSlotsItemController {
       angular.extend(this.collectionSlot, this.originalCollectionSlot)
       this.originalCollectionSlot = false;
     }
-  }  
+  }
 
   contextualMenuCancel() {
 
@@ -18,7 +18,7 @@ export default class collectionSlotsItemController {
 
     if (this.collectionSlot && !this.collectionSlot.id) {
       this.cardItemList.deleteItem(this.collectionSlot);
-    }    
+    }
   }
 
   isValidEntity (entity) {
@@ -31,6 +31,10 @@ export default class collectionSlotsItemController {
     this.collectionSlot = entity;
     this.collectionSlot.start = entity.$start * entity.$startFactor;
     this.collectionSlot.end = entity.$end * entity.$endFactor;
+
+    if (!this.collectionSlot.$hasSteps) {
+      this.collectionSlot.step = null;
+    }
   }
 
   contextualMenuSuccess(entity){
@@ -44,13 +48,13 @@ export default class collectionSlotsItemController {
 
             this.collectionSlot.$deleted = false;
             this.collectionSlot.$selected = false;
-            
+
             this.$timeout(() => {
 
               this.cardItemList.onItemCreated(_collectionSlot);
               this.contextualMenu.hide();
               this.Spinner.hide("collection-slot-create");
-              this.Snack.show(this.gettextCatalog.getString('Collection Slot created'));              
+              this.Snack.show(this.gettextCatalog.getString('Collection Slot created'));
             });
           }, (err)=>{
             console.log('error on save collection slot', err);
@@ -65,7 +69,7 @@ export default class collectionSlotsItemController {
         })
       }
     }
-  }  
+  }
 
   updateCollectionSlot(){
 
@@ -90,13 +94,13 @@ export default class collectionSlotsItemController {
     this.cardItemList.selectItem(this.collectionSlot);
     this.contextual.showMenu(this.type, this.collectionSlot, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
     $event.stopPropagation();
-  }    
+  }
 
   showCannotDeleteSlotDialog () {
 
     this.DialogService.show(this.ErrorService.COLLECTION_SLOT_SCHEDULE.title, this.ErrorService.COLLECTION_SLOT_SCHEDULE.message, [{
         name: this.gettextCatalog.getString('OK')
-      }]);    
+      }]);
   }
 
   onDelete(){
@@ -118,15 +122,15 @@ export default class collectionSlotsItemController {
           .catch((err)=>{
             console.log('error on delete,', err);
             this.Spinner.hide("collection-slot-delete")
-            
+
             if (err && err instanceof Object && err.message && err.message.indexOf('schedule') !== -1) {
               this.showCannotDeleteSlotDialog();
             } else {
               this.Snack.showError('Collection slot not deleted');
             }
-          });          
+          });
       });
-  }  
+  }
 
   constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, gettextCatalog) {
   	"ngInject";
@@ -146,6 +150,6 @@ export default class collectionSlotsItemController {
 
     if (this.collectionSlot && !this.collectionSlot.id) {
         this.contextual.showMenu(this.type, this.collectionSlot, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
-    }    
+    }
   }
 }

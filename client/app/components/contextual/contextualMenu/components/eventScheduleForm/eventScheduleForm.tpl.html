@@ -9,71 +9,76 @@
 
     <div ng-messages="eventScheduleFormCtrl.contextualForm.frequency.$error" ng-show="eventScheduleFormCtrl.contextualForm.frequency.$dirty">
       <div ng-message="required" translate ng-class="{'activated': eventBasicCtrl.contextualForm.frequency.$error.required}">This field is required.</div>
-    </div>      
-  </md-input-container>  
+    </div>
+  </md-input-container>
 
   <div class="md-block md-block-timepicker">
-    <mdp-time-picker mdp-auto-switch="true" 
+    <mdp-time-picker mdp-auto-switch="true"
+          mdp-open-on-click
           name="timeFormat"
-          mdp-placeholder="{{ 'Start time' | translate }}" 
-          ng-model="eventScheduleFormCtrl.schedule.$startDate" 
+          mdp-placeholder="{{ 'Start time' | translate }}"
+          ng-model="eventScheduleFormCtrl.schedule.$startTime"
           mdp-format="LT"
           required></mdp-time-picker>
 
     <div ng-messages="eventScheduleFormCtrl.contextualForm.timeFormat.$error" ng-show="eventScheduleFormCtrl.contextualForm.timeFormat.$dirty || eventScheduleFormCtrl.contextualForm.$submitted">
       <div ng-message="required" translate ng-class="{'activated': eventBasicCtrl.contextualForm.timeFormat.$error.required}">This field is required.</div>
       <div ng-message="format" translate ng-class="{'activated': eventBasicCtrl.contextualForm.timeFormat.$error.format}">Invalid format.</div>
-    </div>            
-  </div>  
+    </div>
+  </div>
   <div class="md-block" ng-if="eventScheduleFormCtrl.isOnceFrequency()">
-    <md-datepicker class="schedule-datepicker" 
-        name="startDate"
-        ng-model="eventScheduleFormCtrl.schedule.$startDate" 
-        md-placeholder="{{ 'Date' }}" 
-        auto-open-calendar
-        required></md-datepicker>
+
+    <mdp-date-picker mdp-placeholder="{{ 'Date' | translate }}"
+          ng-model="eventScheduleFormCtrl.schedule.$startDate"
+          mdp-open-on-click
+          name="startDate"
+          required
+          mdp-format="DD/MM/YYYY"></mdp-date-picker>
 
     <div ng-messages="eventScheduleFormCtrl.contextualForm.startDate.$error" ng-show="eventScheduleFormCtrl.contextualForm.startDate.$dirty || eventScheduleFormCtrl.contextualForm.$submitted">
       <div ng-message="required" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.required}">This field is required.</div>
-      <div ng-message="valid" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.valid}">Invalid date.</div>
-    </div>        
-  </div>
-  <div class="md-block md-block-datepicker-multiple" ng-if="!eventScheduleFormCtrl.isOnceFrequency()">
-    <div class="datepicker-wrapper">
-      <md-datepicker class="schedule-datepicker" 
-          name="startDate"
-          ng-model="eventScheduleFormCtrl.schedule.$startDate" 
-          md-placeholder="{{ 'Start date' }}" 
-          md-max-date="eventScheduleFormCtrl.schedule.$endDate"
-          auto-open-calendar
-          required></md-datepicker>
-
-      <div ng-messages="eventScheduleFormCtrl.contextualForm.startDate.$error" ng-show="eventScheduleFormCtrl.contextualForm.startDate.$dirty || eventScheduleFormCtrl.contextualForm.$submitted">
-        <div ng-message="required" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.required}">This field is required.</div>
-        <div ng-message="maxdate" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.maxdate}">Start date need to be smaller than end date.</div>
-        <div ng-message="valid" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.valid}">Invalid date.</div>
-      </div>           
-    </div>          
-    
-    <div class="datepicker-wrapper">
-      <md-datepicker class="schedule-datepicker" 
-          name="endDate"
-          ng-model="eventScheduleFormCtrl.schedule.$endDate" 
-          md-placeholder="{{ 'End date' }}" 
-          md-min-date="eventScheduleFormCtrl.schedule.$startDate"
-          auto-open-calendar
-          required></md-datepicker>
-
-      <div ng-messages="eventScheduleFormCtrl.contextualForm.endDate.$error" ng-show="eventScheduleFormCtrl.contextualForm.endDate.$dirty || eventScheduleFormCtrl.contextualForm.$submitted">
-        <div ng-message="required" translate ng-class="{'activated': eventBasicCtrl.contextualForm.endDate.$error.required}">This field is required.</div>
-        <div ng-message="mindate" translate ng-class="{'activated': eventBasicCtrl.contextualForm.endDate.$error.mindate}">End date need to be higher than start date.</div>
-        <div ng-message="valid" translate ng-class="{'activated': eventBasicCtrl.contextualForm.endDate.$error.valid}">Invalid date.</div>
-      </div>        
+      <div ng-message="format" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.valid}">Invalid date.</div>
     </div>
   </div>
 
+  <div class="md-block md-block-datepicker-multiple" ng-if="!eventScheduleFormCtrl.isOnceFrequency()">
+    <div class="datepicker-wrapper date-picker-block">
+
+      <mdp-date-picker mdp-placeholder="{{ 'Start date' | translate }}"
+            ng-model="eventScheduleFormCtrl.schedule.$startDate"
+            mdp-open-on-click
+            name="startDate"
+            mdp-max-date="eventScheduleFormCtrl.schedule.$endDate"
+            required
+            mdp-format="DD/MM/YYYY"></mdp-date-picker>
+
+      <div ng-messages="eventScheduleFormCtrl.contextualForm.startDate.$error" ng-show="eventScheduleFormCtrl.contextualForm.startDate.$dirty || eventScheduleFormCtrl.contextualForm.$submitted">
+        <div ng-message="required" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.required}">This field is required.</div>
+        <div ng-message="maxDate" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.maxdate}">Start date need to be smaller than end date.</div>
+        <div ng-message="format" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.valid}">Invalid date.</div>
+      </div>
+    </div>
+
+    <div class="datepicker-wrapper date-picker-block">
+      <mdp-date-picker mdp-placeholder="{{ 'End date' | translate }}"
+            ng-model="eventScheduleFormCtrl.schedule.$endDate"
+            mdp-open-on-click
+            name="endDate"
+            mdp-min-date="eventScheduleFormCtrl.schedule.$startDate"
+            required
+            mdp-format="DD/MM/YYYY"></mdp-date-picker>
+
+      <div ng-messages="eventScheduleFormCtrl.contextualForm.endDate.$error" ng-show="eventScheduleFormCtrl.contextualForm.endDate.$dirty || eventScheduleFormCtrl.contextualForm.$submitted">
+        <div ng-message="required" translate ng-class="{'activated': eventBasicCtrl.contextualForm.endDate.$error.required}">This field is required.</div>
+        <div ng-message="minDate" translate ng-class="{'activated': eventBasicCtrl.contextualForm.endDate.$error.mindate}">End date need to be higher than start date.</div>
+        <div ng-message="format" translate ng-class="{'activated': eventBasicCtrl.contextualForm.endDate.$error.valid}">Invalid date.</div>
+      </div>
+    </div>
+  </div>
 
   <div class="collection-slots-select-content" ng-if="eventScheduleFormCtrl.contextualMenuCtrl.isShowing('event') || eventScheduleFormCtrl.contextualMenuCtrl.isShowing('eventSchedule')">
+    <div class="error error-required-pickup-slot" ng-if="eventScheduleFormCtrl.contextualForm.$submitted && !eventScheduleFormCtrl.schedule.pickupSlots.length" translate>You must to select at least one collection slot.</div>
+
     <label class="label-title" translate>Choose collection slots:</label>
     <collection-slots-select ng-model="eventScheduleFormCtrl.schedule"></collection-slots-select>
   </div>

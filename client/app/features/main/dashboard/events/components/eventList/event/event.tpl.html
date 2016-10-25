@@ -8,24 +8,19 @@
               expanded="eventCtrl.event.$expanded"
               >
     <card-item-title ng-click="eventCtrl.toggleExpanded($event)"
-                    has-visible="true"
-                    sv-root="event">
-                      <div ng-if="!eventCtrl.event.$expanded" class='sv-dropzone sv-dropzone-item' sv-part="eventCtrl.newItems" sv-on-external-sort="eventCtrl.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
-                        <div sv-placeholder></div>
-                      </div>
-                      <span>{{eventCtrl.event.name}} </span>
+                    has-visible="true">
+                      <span>{{eventCtrl.event.name}} </span><icon class='arrow-icon' flex>{{eventCtrl.event.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
                     </card-item-title>
 
 
-    <item-chips 
-          ng-if="eventCtrl.event.outletLocationId && eventCtrl.outletLocations.length" 
-          items="eventCtrl.outletLocations" 
+    <item-chips
+          ng-if="eventCtrl.event.outletLocationId && eventCtrl.outletLocations.length"
+          items="eventCtrl.outletLocations"
           on-remove="eventCtrl.removeOutletLocation(item)"
           class="outlet-locations-chips"></item-chips>
 
     <event-schedule-list
           has-new="true"
-          sv-disabled="true"
           schedules="eventCtrl.event.schedules"
           event="eventCtrl.event"
         >

@@ -29,7 +29,7 @@ export default class EventService {
         reject(err);
       })
       .catch((err)=>{
-        
+
         console.log("Error fetching events", err);
         reject(err);
       });

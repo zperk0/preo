@@ -5,19 +5,37 @@ export default class eventScheduleFormController {
 
   isOnceFrequency () {
 
-  	return this.schedule.freq === this.EventScheduleFrequency.ONCE;
+  	return this.schedule.isOnceFrequency();
+  }
+
+  resetDateTime (date) {
+
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
   }
 
   /* @ngInject */
   constructor($scope, EventScheduleFrequency, gettextCatalog) {
     'ngInject';
 
-    console.log('schedule here', this.schedule);
-
     this.EventScheduleFrequency = EventScheduleFrequency;
 
-    this.schedule.$startDate = this.schedule.startDate ? moment(this.schedule.startDate).toDate() : new Date();
-    this.schedule.$endDate = this.schedule.endDate ? moment(this.schedule.endDate).toDate() : new Date();
+    this.schedule.$startDate = this.schedule.startDate ? moment(this.schedule.startDate).toDate() : null;
+    this.schedule.$endDate = this.schedule.endDate ? moment(this.schedule.endDate).toDate() : null;
+
+    if (this.schedule.isOnceFrequency()) {
+      this.schedule.$endDate = null;
+    }
+
+    if (this.schedule.$startDate) {
+      this.schedule.$startTime = moment(this.schedule.$startDate);
+      this.resetDateTime(this.schedule.$startDate);
+    }
+
+    if (this.schedule.$endDate) {
+      this.resetDateTime(this.schedule.$endDate);
+    }
 
     this.schedules = [{
     	value: EventScheduleFrequency.ONCE,

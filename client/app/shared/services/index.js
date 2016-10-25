@@ -12,6 +12,7 @@ import CollectionSlot from './events/collectionSlot.service';
 import Event from './events/event.service';
 import EventSchedule from './events/eventSchedule.service';
 import Taxes from './taxes/taxes.service';
+import DateUtils from './dateUtils/dateUtils.service';
 
 export default angular.module("Services" , ['ui.router'])
   .service(User.UID, User)
@@ -28,4 +29,5 @@ export default angular.module("Services" , ['ui.router'])
   .service(Event.UID, Event)
   .service(Taxes.UID, Taxes)
   .service(EventSchedule.UID, EventSchedule)
+  .service(DateUtils.UID, DateUtils)
   .name;
