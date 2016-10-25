@@ -311,10 +311,10 @@ describe('Event item Controller', function () {
       _startCardItemListController();
       _startController();
 
-      var outletLocationMock = {
+      var outletLocationMock = new Preoday.OutletLocation({
         id: 1,
         name: 'Outlet Location Test'
-      };
+      });
 
       eventMock.outletLocationId = 1;
 
@@ -363,10 +363,12 @@ describe('Event item Controller', function () {
       _startCardItemListController();
       _startController();
 
-      var outletLocationMock = {
+      var outletLocationMock = new Preoday.OutletLocation({
         id: 3,
         name: 'Outlet Location Test'
-      };
+      });
+
+      spyOn(outletLocationMock, 'hasChildren').and.returnValue(true);
 
       spyOn(OutletLocationService, 'findById').and.callFake(function () {
 
@@ -626,6 +628,8 @@ describe('Event item Controller', function () {
 
       eventMock.id = null;
       eventMock.name = 'Tester';
+
+      CardItemListCtrl.instance.collection = [eventMock];
 
       EventCtrl.instance.event = eventMock;
       EventCtrl.instance.cardItemList = CardItemListCtrl();

@@ -56,7 +56,7 @@ export default class eventScheduleController {
   }
 
   contextualMenuSuccess(entity){
-    if (this.schedule && entity) {
+    if (this.schedule && entity && entity.pickupSlots && entity.pickupSlots.length) {
       this.buildEntityToSchedule(entity);
 
       if (!this.schedule.id) {
