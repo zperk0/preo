@@ -71,7 +71,7 @@ echo $overrides;
       <toolbar></toolbar>
       <navbar></navbar>
       <div class='main-ui-view' ui-view></div>
-      <spinner></spinner>
+      <full-spinner></full-spinner>
     </div>
   </div>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>

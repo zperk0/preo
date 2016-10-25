@@ -8,6 +8,7 @@ describe('menuItem Controller', function () {
       MenuItemCtrl,
       CardItemListCtrl,
       MenuSectionItemListCtrl,
+      VenueService,
       $rootScope,
       $scope,
       $stateParams,
@@ -31,6 +32,7 @@ describe('menuItem Controller', function () {
       $controller = $injector.get('$controller');
       $stateParams = $injector.get('$stateParams');
       ItemService = $injector.get('ItemService');
+      VenueService = $injector.get('VenueService');
       Snack = $injector.get('Snack');
       Spinner = $injector.get('Spinner');
       $timeout = $injector.get('$timeout');
@@ -39,8 +41,8 @@ describe('menuItem Controller', function () {
       contextualMenu = $injector.get('contextualMenu');
 
       $scope = $rootScope.$new();
-
       $scope.scrollToBottom = () => {};
+      VenueService.currentVenue = {id:5};
     }));
 
     afterEach(function() {

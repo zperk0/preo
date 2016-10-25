@@ -21,7 +21,7 @@ export default function compareNumber(){
           if (value == scope.compareValue) {
             valid = true;
           }
-        } 
+        }
 
         if (!valid) {
           if (isBigger) {
@@ -31,13 +31,13 @@ export default function compareNumber(){
           }
         }
 
-        ngModelCtrl.$setValidity('compareNumber', valid);        
+        ngModelCtrl.$setValidity('compareNumber', valid);
 
         return valid;
       }
 
       //For DOM -> model validation
-      ngModelCtrl.$parsers.unshift(function(value) {        
+      ngModelCtrl.$parsers.unshift(function(value) {
 
         var valid = validate(value);
 
@@ -54,10 +54,10 @@ export default function compareNumber(){
 
 
       var unRegisterWatch = scope.$watch(function () {
-        
+
         return scope.compareValue;
       }, function () {
-        
+
         var valid = validate(ngModelCtrl.$viewValue);
 
         // if (ngModelCtrl.$viewValue) {
@@ -65,11 +65,11 @@ export default function compareNumber(){
         //   ngModelCtrl.$viewValue = ngModelCtrl.$viewValue.toString();
         //   ngModelCtrl.$validate();
         //   ngModelCtrl.$render();
-        // }        
+        // }
       });
 
       scope.$on('$destroy', function () {
-        
+
         unRegisterWatch && unRegisterWatch();
       });
     }

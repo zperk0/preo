@@ -41,16 +41,23 @@ export default class LabelService {
     this.CONTENT_DELETE_OUTLET_LOCATION_GROUP = gettextCatalog.getString("This will delete the configuration of all sub-groups. Are you sure?");
 
     this.TITLE_DELETE_OUTLET = gettextCatalog.getString("Delete outlet?");
-    this.CONTENT_DELETE_OUTLET = gettextCatalog.getString("Are you sure you want to delete this outlet?");    
+    this.CONTENT_DELETE_OUTLET = gettextCatalog.getString("Are you sure you want to delete this outlet?");
+
+    //TAXES
+    this.SNACK_SELLER_SUCCESS = gettextCatalog.getString("Seller details saved");
+    this.SNACK_SELLER_ERROR = gettextCatalog.getString("Seller details not saved");
 
     this.TITLE_DELETE_COLLECTION_SLOT = gettextCatalog.getString("Delete collection slot?");
-    this.CONTENT_DELETE_COLLECTION_SLOT = gettextCatalog.getString("Are you sure you want to delete this collection slot?");    
+    this.CONTENT_DELETE_COLLECTION_SLOT = gettextCatalog.getString("Are you sure you want to delete this collection slot?");
 
     this.TITLE_DELETE_EVENT = gettextCatalog.getString("Delete event?");
-    this.CONTENT_DELETE_EVENT = gettextCatalog.getString("Are you sure you want to delete this event?");    
+    this.CONTENT_DELETE_EVENT = gettextCatalog.getString("Are you sure you want to delete this event?");
 
     this.TITLE_DELETE_SCHEDULE = gettextCatalog.getString("Delete schedule?");
-    this.CONTENT_DELETE_SCHEDULE = gettextCatalog.getString("Are you sure you want to delete this schedule?");    
+    this.CONTENT_DELETE_SCHEDULE = gettextCatalog.getString("Are you sure you want to delete this schedule?");
+
+    this.TITLE_DELETE_TAX_GROUP = gettextCatalog.getString("Delete tax group?");
+    this.CONTENT_DELETE_TAX_GROUP = gettextCatalog.getString("Are you sure you want to delete this tax group?");
 
   }
 }
