@@ -13,6 +13,7 @@ describe('EventSchedule Controller', function () {
       $controller,
       contextual,
       EventService,
+      EventScheduleService,
       VenueService,
       EventScheduleFrequency,
       contextualMenu,
@@ -34,6 +35,7 @@ describe('EventSchedule Controller', function () {
       $rootScope = $injector.get('$rootScope');
       contextual = $injector.get('contextual');
       EventService = $injector.get('EventService');
+      EventScheduleService = $injector.get('EventScheduleService');
       VenueService = $injector.get('VenueService');
       EventScheduleFrequency = $injector.get('EventScheduleFrequency');
       contextualMenu = $injector.get('contextualMenu');
@@ -70,10 +72,13 @@ describe('EventSchedule Controller', function () {
         data = {};
       }
 
+      let startDate = moment().subtract(2, 'day').format('YYYY-MM-DDThh:mm:ss.000');
+      let endDate = moment().add(2, 'day').format('YYYY-MM-DDThh:mm:ss.000');
+
       scheduleMock = new Preoday.EventSchedule(angular.extend({
         id: 1,
-        startDate: moment().subtract(2, 'day').format('YYYY-MM-DDThh:mm:ss.000'),
-        endDate: moment().add(2, 'day').format('YYYY-MM-DDThh:mm:ss.000'),
+        startDate: startDate,
+        endDate: endDate,
         eventId: 1
       }, data));
     }
@@ -117,7 +122,7 @@ describe('EventSchedule Controller', function () {
       spyOn(contextual, 'showMenu').and.callThrough();
 
       _mockSchedule();
-      _startController();      
+      _startController();
 
       EventScheduleCtrl.instance.schedule = scheduleMock;
       EventScheduleCtrl = EventScheduleCtrl();
@@ -172,7 +177,7 @@ describe('EventSchedule Controller', function () {
       spyOn(EventScheduleCtrl.Snack, 'showError').and.callThrough();
       spyOn(EventScheduleCtrl.cardItemList, 'onItemDeleted').and.callThrough();
       spyOn(EventScheduleCtrl.DialogService, 'delete').and.callFake(function () {
-        
+
         return $q.resolve();
       });
 
@@ -186,7 +191,7 @@ describe('EventSchedule Controller', function () {
         server.respond();
 
         setTimeout(function () {
-          
+
           $rootScope.$digest();
 
           expect(EventScheduleCtrl.Spinner.show).toHaveBeenCalled();
@@ -195,7 +200,7 @@ describe('EventSchedule Controller', function () {
           expect(EventScheduleCtrl.Snack.showError).not.toHaveBeenCalled();
           expect(EventScheduleCtrl.cardItemList.onItemDeleted).toHaveBeenCalledWith(EventScheduleCtrl.schedule);
 
-          done();          
+          done();
         });
       });
     });
@@ -223,7 +228,7 @@ describe('EventSchedule Controller', function () {
       spyOn(EventScheduleCtrl.Snack, 'showError').and.callThrough();
       spyOn(EventScheduleCtrl.cardItemList, 'onItemDeleted').and.callThrough();
       spyOn(EventScheduleCtrl.DialogService, 'delete').and.callFake(function () {
-        
+
         return $q.resolve();
       });
 
@@ -237,7 +242,7 @@ describe('EventSchedule Controller', function () {
         server.respond();
 
         setTimeout(function () {
-          
+
           $rootScope.$digest();
 
           expect(EventScheduleCtrl.showCannotDeleteScheduleDialog).toHaveBeenCalled();
@@ -248,7 +253,7 @@ describe('EventSchedule Controller', function () {
           expect(EventScheduleCtrl.DialogService.delete).not.toHaveBeenCalled();
           expect(EventScheduleCtrl.cardItemList.onItemDeleted).not.toHaveBeenCalledWith(EventScheduleCtrl.schedule);
 
-          done();          
+          done();
         });
       });
     });
@@ -278,7 +283,7 @@ describe('EventSchedule Controller', function () {
       spyOn(EventScheduleCtrl.Snack, 'showError').and.callThrough();
       spyOn(EventScheduleCtrl.cardItemList, 'onItemDeleted').and.callThrough();
       spyOn(EventScheduleCtrl.DialogService, 'delete').and.callFake(function () {
-        
+
         return $q.resolve();
       });
 
@@ -294,7 +299,7 @@ describe('EventSchedule Controller', function () {
         server.respond();
 
         setTimeout(function () {
-          
+
           $rootScope.$digest();
 
           expect(EventScheduleCtrl.Spinner.show).toHaveBeenCalled();
@@ -303,7 +308,7 @@ describe('EventSchedule Controller', function () {
           expect(EventScheduleCtrl.Snack.showError).toHaveBeenCalled();
           expect(EventScheduleCtrl.cardItemList.onItemDeleted).not.toHaveBeenCalled();
 
-          done();          
+          done();
         });
       });
     });
@@ -343,7 +348,7 @@ describe('EventSchedule Controller', function () {
         server.respond();
 
         setTimeout(function () {
-          
+
           $rootScope.$digest();
 
           expect(EventScheduleCtrl.schedule.update).toHaveBeenCalled();
@@ -352,7 +357,7 @@ describe('EventSchedule Controller', function () {
           expect(EventScheduleCtrl.Snack.show).toHaveBeenCalled();
           expect(EventScheduleCtrl.Snack.showError).not.toHaveBeenCalled();
 
-          done();          
+          done();
         });
       });
     });
@@ -405,4 +410,79 @@ describe('EventSchedule Controller', function () {
       expect(EventScheduleCtrl.getScheduleTitle()).toEqual('02/10/2016 - 05/10/2017');
     });
 
+    it("Should create a schedule", function(done) {
+
+      _mockEvent();
+      _mockSchedule();
+      _startEventScheduleListController();
+      _startCardItemListController();
+      _startController();
+
+      scheduleMock.id = null;
+
+      scheduleMock.$startDate = moment(scheduleMock.startDate).toDate();
+      scheduleMock.$startTime = moment(scheduleMock.startDate).toDate();
+      scheduleMock.$endDate = moment(scheduleMock.endDate).toDate();
+
+      spyOn(contextual, 'showMenu').and.returnValue($q.when());
+
+      EventScheduleListCtrl.instance.event = eventMock;
+      EventScheduleListCtrl.instance.schedules = [scheduleMock];
+      CardItemListCtrl.instance.collection = [scheduleMock];
+
+      EventScheduleCtrl.instance.schedule = scheduleMock;
+      EventScheduleCtrl.instance.cardItemList = CardItemListCtrl();
+      EventScheduleCtrl.instance.eventScheduleListCtrl = EventScheduleListCtrl();
+      EventScheduleCtrl = EventScheduleCtrl();
+
+      spyOn(EventScheduleService, 'save').and.callThrough();
+      spyOn(EventScheduleCtrl, 'buildEntityToSchedule').and.callThrough();
+      spyOn(EventScheduleCtrl.Spinner, 'show').and.callThrough();
+      spyOn(EventScheduleCtrl.Spinner, 'hide').and.callThrough();
+      spyOn(EventScheduleCtrl.Snack, 'show').and.callThrough();
+      spyOn(EventScheduleCtrl.Snack, 'showError').and.callThrough();
+      spyOn(EventScheduleCtrl.cardItemList, 'onUpdateItem').and.callThrough();
+      spyOn(EventScheduleCtrl.eventScheduleListCtrl, 'createSchedule').and.callThrough();
+      spyOn(contextualMenu, 'hide').and.callThrough();
+
+      let createdSchedule = {
+        id: 7
+      };
+
+      server.respondWith('POST', '/api/schedules', [200, {"Content-Type": "application/json"}, JSON.stringify(createdSchedule)]);
+
+      expect(EventScheduleCtrl.cardItemList.collection[0].id).toBe(null);
+
+      EventScheduleCtrl.contextualMenuSuccess(EventScheduleCtrl.schedule);
+      server.respond();
+
+      setTimeout(function () {
+
+        $rootScope.$digest();
+
+        setTimeout(function () {
+
+          $rootScope.$digest();
+
+          setTimeout(() => {
+
+            $rootScope.$digest();
+            $timeout.flush();
+            $rootScope.$digest();
+console.log(EventScheduleCtrl.eventScheduleListCtrl.schedules[0]);
+            expect(EventScheduleService.save).toHaveBeenCalledWith(EventScheduleCtrl.schedule);
+            expect(EventScheduleCtrl.eventScheduleListCtrl.createSchedule).toHaveBeenCalledWith(EventScheduleCtrl.schedule);
+            expect(EventScheduleCtrl.Spinner.show).toHaveBeenCalled();
+            expect(EventScheduleCtrl.Spinner.hide).toHaveBeenCalled();
+            expect(EventScheduleCtrl.Snack.show).toHaveBeenCalled();
+            expect(contextualMenu.hide).toHaveBeenCalled();
+            expect(EventScheduleCtrl.cardItemList.onUpdateItem).toHaveBeenCalledWith(scheduleMock, jasmine.any(Preoday.EventSchedule));
+            expect(EventScheduleCtrl.Snack.showError).not.toHaveBeenCalled();
+            expect(EventScheduleCtrl.cardItemList.collection[0].id).toBe(createdSchedule.id);
+
+            done();
+          });
+        });
+      });
+    });
 });

@@ -18,6 +18,7 @@ export default class eventScheduleController {
 
     if (this.schedule && !this.schedule.id) {
       this.cardItemList.deleteItem(this.schedule);
+      this.eventScheduleListCtrl.cancelSchedule();
     }
   }
 
@@ -58,23 +59,13 @@ export default class eventScheduleController {
     if (this.schedule && entity) {
       this.buildEntityToSchedule(entity);
 
-      if (!this.schedule.id){
-        this.Spinner.show("event-schedule-create");
+      if (!this.schedule.id) {
         this.eventScheduleListCtrl.createSchedule(this.schedule)
           .then((_schedule)=>{
 
-            _schedule.$show = true;
-
-            this.schedule.$deleted = false;
-            this.schedule.$selected = false;
-
-            this.$timeout(() => {
-
-              this.cardItemList.onItemCreated(_schedule);
-              this.contextualMenu.hide();
-              this.Spinner.hide("event-schedule-create");
-              this.Snack.show(this.gettextCatalog.getString('Schedule created'));
-            });
+            this.cardItemList.onUpdateItem(this.schedule, _schedule);
+            this.contextualMenu.hide();
+            this.Spinner.hide("event-schedule-create");
           }, (err)=>{
             console.log('error on save schedule', err);
             this.Spinner.hide("event-schedule-create");

@@ -24,18 +24,37 @@ export default class eventScheduleListController {
 
     // newData.position = 0;
 
-    this.EventScheduleService.save(newData)
-        .then((schedule)=>{
+    if (!this.event.id) {
+      this.eventCtrl.createEvent()
+        .then((event) => {
 
-        this.buildScheduleTimestamp(schedule);
+          this.buildSchedules(true);
+          deferred.resolve(event.schedules[0]);
+        }, deferred.reject);
+    } else {
+      this.Spinner.show("event-schedule-create");
+      this.EventScheduleService.save(newData)
+          .then((schedule)=>{
 
-        deferred.resolve(schedule);
-      }, (err) => {
+          this.buildScheduleTimestamp(schedule);
 
-        deferred.reject(err);
-      });
+          this.Snack.show(this.gettextCatalog.getString('Schedule created'));
+
+          deferred.resolve(schedule);
+        }, (err) => {
+
+          deferred.reject(err);
+        });
+    }
 
     return deferred.promise;
+  }
+
+  cancelSchedule () {
+
+    if (!this.event.id) {
+      this.eventCtrl.removeEventItem();
+    }
   }
 
   getSchedulesCount () {
@@ -66,6 +85,15 @@ export default class eventScheduleListController {
     schedule.$endTimestamp = moment(schedule.endDate).valueOf();
   }
 
+  buildSchedules (shouldShow) {
+
+    this.schedules.forEach((schedule)=> {
+
+      schedule.$show = !!shouldShow;
+      this.buildScheduleTimestamp(schedule);
+    });
+  }
+
   /* @ngInject */
   constructor($scope, $timeout, $q, Spinner, Snack, gettextCatalog, EventScheduleService) {
     "ngInject";
@@ -79,11 +107,7 @@ export default class eventScheduleListController {
 
     this.event.$expanding = false;
 
-    this.schedules.forEach((schedule)=> {
-
-      schedule.$show = false;
-      this.buildScheduleTimestamp(schedule);
-    });
+    this.buildSchedules();
 
     //watch for animation only if we're in a section
     $scope.$watch(() => {

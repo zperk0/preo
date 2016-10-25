@@ -14,14 +14,20 @@ export default function eventScheduleList($timeout){
     controllerAs: "eventScheduleListCtrl",
     bindToController: true,
     replace: true,
-    link: (scope, el, attr, ctrl) => {
+    require: ['^event', '^eventScheduleList'],
+    link: (scope, el, attr, ctrls) => {
 
-      ctrl.el = el;
+      let eventCtrl = ctrls[0];
+      let eventScheduleListCtrl = ctrls[1];
+
+      eventScheduleListCtrl.eventCtrl = eventCtrl;
+
+      eventScheduleListCtrl.el = el;
       el[0].style.maxHeight = 0;
       el.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
         if (e.propertyName === 'max-height'){
           $timeout(()=>{
-            ctrl.event.$expanding = false;
+            eventScheduleListCtrl.event.$expanding = false;
           })
         }
       })

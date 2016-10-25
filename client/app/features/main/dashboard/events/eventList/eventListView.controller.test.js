@@ -109,9 +109,9 @@ describe('EventList View Controller', function () {
       spyOn($scope.eventListViewCtrl, 'hideSpinner').and.callThrough();
 
       setTimeout(function () {
-        
+
         server.respond();
-        
+
         $rootScope.$digest();
 
         setTimeout(function() {
@@ -130,7 +130,7 @@ describe('EventList View Controller', function () {
           expect($scope.eventListViewCtrl.data.events.length).toBe(events.length);
           expect($scope.eventListViewCtrl.getDayEventsName(moment())).toMatch(events[0].name);
 
-          done();          
+          done();
         });
       });
     });
@@ -149,7 +149,7 @@ describe('EventList View Controller', function () {
       var outletLocations = [{
         id: 1,
         name: 'test'
-      }];      
+      }];
 
       var pastDate = moment().subtract(7, 'days').format('YYYY/M/D');
 
@@ -161,7 +161,7 @@ describe('EventList View Controller', function () {
       spyOn($scope.eventListViewCtrl, 'hideSpinner').and.callThrough();
 
       setTimeout(function () {
-        
+
         server.respond();
         $rootScope.$digest();
 
@@ -179,12 +179,12 @@ describe('EventList View Controller', function () {
           expect($scope.eventListViewCtrl.hideSpinner).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.data.events.length).toBe(0);
 
-          done();          
+          done();
         });
       });
     });
 
-    it("Should set the calendar mode", function() {   
+    it("Should set the calendar mode", function() {
 
       _startController();
 
@@ -213,7 +213,7 @@ describe('EventList View Controller', function () {
         startDate: moment(),
         schedules: [{
           startDate: moment()
-        }]        
+        }]
       }];
 
       var outletLocations = [{
@@ -231,9 +231,9 @@ describe('EventList View Controller', function () {
       spyOn($scope.eventListViewCtrl, 'hideSpinner').and.callThrough();
 
       setTimeout(function () {
-        
+
         server.respond();
-        
+
         $rootScope.$digest();
 
         setTimeout(function() {
@@ -251,8 +251,8 @@ describe('EventList View Controller', function () {
           expect($scope.eventListViewCtrl.data.events.length).toBe(events.length);
           expect($scope.eventListViewCtrl.getDayEventsName(moment())).toEqual(events.length + ' events');
 
-          done();          
+          done();
         });
       });
-    });    
+    });
 });

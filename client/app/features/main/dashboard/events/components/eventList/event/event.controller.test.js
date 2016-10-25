@@ -100,7 +100,7 @@ describe('Event item Controller', function () {
     function _startEventListController() {
 
       EventListCtrl = $controller('eventListController', {
-        
+
       }, true);
     }
 
@@ -111,7 +111,7 @@ describe('Event item Controller', function () {
 
       _mockEvent();
       _startController();
-      
+
 
       EventCtrl.instance.event = eventMock;
       EventCtrl = EventCtrl();
@@ -126,7 +126,7 @@ describe('Event item Controller', function () {
       expect(EventCtrl.restoreOriginalValues).toEqual(jasmine.any(Function));
       expect(contextual.showMenu).not.toHaveBeenCalled();
       expect(OutletLocationService.findById).not.toHaveBeenCalled();
-      expect(EventCtrl.outletLocations.length).toBe(0);      
+      expect(EventCtrl.outletLocations.length).toBe(0);
     });
 
     it("Should open drawer because doenst have an id", function() {
@@ -160,7 +160,7 @@ describe('Event item Controller', function () {
       spyOn(EventCtrl.Snack, 'showError').and.callThrough();
       spyOn(EventCtrl.cardItemList, 'onItemDeleted').and.callThrough();
       spyOn(EventCtrl.DialogService, 'delete').and.callFake(function () {
-        
+
         return $q.resolve();
       });
 
@@ -174,7 +174,7 @@ describe('Event item Controller', function () {
         server.respond();
 
         setTimeout(function () {
-          
+
           $rootScope.$digest();
 
           expect(EventCtrl.Spinner.show).toHaveBeenCalled();
@@ -183,7 +183,7 @@ describe('Event item Controller', function () {
           expect(EventCtrl.Snack.showError).not.toHaveBeenCalled();
           expect(EventCtrl.cardItemList.onItemDeleted).toHaveBeenCalledWith(EventCtrl.event);
 
-          done();          
+          done();
         });
       });
     });
@@ -205,7 +205,7 @@ describe('Event item Controller', function () {
       spyOn(EventCtrl.Snack, 'showError').and.callThrough();
       spyOn(EventCtrl.cardItemList, 'onItemDeleted').and.callThrough();
       spyOn(EventCtrl.DialogService, 'delete').and.callFake(function () {
-        
+
         return $q.resolve();
       });
 
@@ -221,7 +221,7 @@ describe('Event item Controller', function () {
         server.respond();
 
         setTimeout(function () {
-          
+
           $rootScope.$digest();
 
           expect(EventCtrl.Spinner.show).toHaveBeenCalled();
@@ -230,7 +230,7 @@ describe('Event item Controller', function () {
           expect(EventCtrl.Snack.showError).toHaveBeenCalled();
           expect(EventCtrl.cardItemList.onItemDeleted).not.toHaveBeenCalled();
 
-          done();          
+          done();
         });
       });
     });
@@ -262,7 +262,7 @@ describe('Event item Controller', function () {
         server.respond();
 
         setTimeout(function () {
-          
+
           $rootScope.$digest();
 
           expect(EventService.update).toHaveBeenCalledWith(EventCtrl.event);
@@ -271,7 +271,7 @@ describe('Event item Controller', function () {
           expect(EventCtrl.Snack.show).toHaveBeenCalled();
           expect(EventCtrl.Snack.showError).not.toHaveBeenCalled();
 
-          done();          
+          done();
         });
       });
     });
@@ -290,14 +290,14 @@ describe('Event item Controller', function () {
       eventMock.outletLocationId = 1;
 
       spyOn(OutletLocationService, 'findById').and.callFake(function () {
-        
+
         return outletLocationMock;
-      });      
+      });
 
       EventCtrl.instance.event = eventMock;
       EventCtrl.instance.cardItemList = CardItemListCtrl();
       EventCtrl = EventCtrl();
-          
+
       $rootScope.$digest();
 
       expect(OutletLocationService.findById).toHaveBeenCalledWith(eventMock.outletLocationId);
@@ -319,16 +319,16 @@ describe('Event item Controller', function () {
       eventMock.outletLocationId = 1;
 
       spyOn(OutletLocationService, 'findById').and.callFake(function () {
-        
+
         return outletLocationMock;
-      });      
+      });
 
       server.respondWith('PUT', '/api/events/' + eventMock.id, [200, {"Content-Type": "application/json"}, JSON.stringify(eventMock)]);
 
       EventCtrl.instance.event = eventMock;
       EventCtrl.instance.cardItemList = CardItemListCtrl();
       EventCtrl = EventCtrl();
-          
+
       $rootScope.$digest();
 
       spyOn(EventCtrl, 'buildOutletLocation').and.callThrough();
@@ -346,7 +346,7 @@ describe('Event item Controller', function () {
         setTimeout(function () {
 
           $rootScope.$digest();
-          
+
           expect(EventCtrl.updateEvent).toHaveBeenCalled();
           expect(EventCtrl.buildOutletLocation).toHaveBeenCalled();
           expect(EventCtrl.event.outletLocationId).toBe(null);
@@ -369,7 +369,7 @@ describe('Event item Controller', function () {
       };
 
       spyOn(OutletLocationService, 'findById').and.callFake(function () {
-        
+
         return outletLocationMock;
       });
 
@@ -382,7 +382,7 @@ describe('Event item Controller', function () {
       EventCtrl.instance.event = eventMock;
       EventCtrl.instance.cardItemList = CardItemListCtrl();
       EventCtrl = EventCtrl();
-          
+
       $rootScope.$digest();
 
       spyOn(EventCtrl, 'buildOutletLocation').and.callThrough();
@@ -401,7 +401,7 @@ describe('Event item Controller', function () {
         setTimeout(function () {
 
           $rootScope.$digest();
-          
+
           expect(OutletLocationService.hasOutletLocations).toHaveBeenCalled();
           expect(EventCtrl.updateEvent).toHaveBeenCalled();
           expect(EventCtrl.buildOutletLocation).toHaveBeenCalled();
@@ -429,7 +429,7 @@ describe('Event item Controller', function () {
       eventMock.outletLocationId = outletLocationMock.id;
 
       spyOn(OutletLocationService, 'findById').and.callFake(function () {
-        
+
         return outletLocationMock;
       });
 
@@ -438,7 +438,7 @@ describe('Event item Controller', function () {
       EventCtrl.instance.event = eventMock;
       EventCtrl.instance.cardItemList = CardItemListCtrl();
       EventCtrl = EventCtrl();
-          
+
       $rootScope.$digest();
 
       spyOn(EventCtrl, 'buildOutletLocation').and.callThrough();
@@ -451,7 +451,7 @@ describe('Event item Controller', function () {
       setTimeout(function () {
 
         $rootScope.$digest();
-        
+
         expect(EventCtrl.updateEvent).not.toHaveBeenCalled();
         expect(EventCtrl.buildOutletLocation).not.toHaveBeenCalled();
         expect(EventCtrl.event.outletLocationId).toBe(outletLocationMock.id);
@@ -476,7 +476,7 @@ describe('Event item Controller', function () {
       EventCtrl.instance.event = eventMock;
       EventCtrl.instance.cardItemList = CardItemListCtrl();
       EventCtrl = EventCtrl();
-          
+
       $rootScope.$digest();
 
       spyOn(EventCtrl, 'buildOutletLocation').and.callThrough();
@@ -486,7 +486,7 @@ describe('Event item Controller', function () {
       EventCtrl.onAddOutletLocation();
 
       $rootScope.$digest();
-      
+
       expect(contextual.showDrawer).not.toHaveBeenCalled();
       expect(OutletLocationService.hasOutletLocations).toHaveBeenCalled();
       expect(EventCtrl.updateEvent).not.toHaveBeenCalled();
@@ -494,7 +494,7 @@ describe('Event item Controller', function () {
       expect(EventCtrl.cardItemList.selectItem).not.toHaveBeenCalledWith(EventCtrl.event);
       expect(EventCtrl.event.outletLocationId).toBeUndefined();
       expect(EventCtrl.outletLocations.length).toBe(0);
-    });    
+    });
 
     it("Shouldn't add the outletLocationId to an event because has an outletId", function(done) {
 
@@ -509,7 +509,7 @@ describe('Event item Controller', function () {
       };
 
       spyOn(OutletLocationService, 'findById').and.callFake(function () {
-        
+
         return outletLocationMock;
       });
 
@@ -520,7 +520,7 @@ describe('Event item Controller', function () {
       EventCtrl.instance.event = eventMock;
       EventCtrl.instance.cardItemList = CardItemListCtrl();
       EventCtrl = EventCtrl();
-          
+
       $rootScope.$digest();
 
       spyOn(EventCtrl, 'buildOutletLocation').and.callThrough();
@@ -534,7 +534,7 @@ describe('Event item Controller', function () {
       setTimeout(function () {
 
         $rootScope.$digest();
-        
+
         expect(OutletLocationService.hasOutletLocations).toHaveBeenCalled();
         expect(EventCtrl.updateEvent).not.toHaveBeenCalled();
         expect(EventCtrl.buildOutletLocation).not.toHaveBeenCalled();
@@ -544,75 +544,118 @@ describe('Event item Controller', function () {
 
         done();
       });
-    });    
+    });
 
-    // it("Should create an event", function(done) {
+    it("Should create an event", function(done) {
 
-    //   _mockEvent();
-    //   _startCardItemListController();
-    //   _startController();
+      _mockEvent();
+      _startCardItemListController();
+      _startEventListController();
+      _startController();
 
-    //   spyOn(EventService, 'save').and.callThrough();
+      spyOn(EventService, 'save').and.callThrough();
 
-    //   eventMock.id = null;
-    //   eventMock.name = 'Tester';
+      eventMock.id = null;
+      eventMock.name = 'Tester';
+      eventMock.schedules = [{}];
 
-    //   EventCtrl.instance.event = eventMock;
-    //   EventCtrl.instance.cardItemList = CardItemListCtrl();
-    //   EventCtrl.instance.eventListCtrl = EventListCtrl();
-    //   EventCtrl = EventCtrl();
+      EventCtrl.instance.event = eventMock;
+      EventCtrl.instance.cardItemList = CardItemListCtrl();
+      EventCtrl.instance.eventListCtrl = EventListCtrl();
+      EventCtrl = EventCtrl();
 
-    //   spyOn(EventCtrl.Spinner, 'show').and.callThrough();
-    //   spyOn(EventCtrl.Spinner, 'hide').and.callThrough();
-    //   spyOn(EventCtrl.Snack, 'show').and.callThrough();
-    //   spyOn(EventCtrl.Snack, 'showError').and.callThrough();
-    //   spyOn(EventCtrl.eventListCtrl, 'createEvent').and.callThrough();
-    //   spyOn(EventCtrl.cardItemList, 'onItemCreated').and.callThrough();
-    //   spyOn(contextualMenu, 'hide').and.callThrough();
-    //   spyOn(Preoday.Event, 'create').and.callFake(function () {
-        
-    //     return {
-    //       then: function (callbackSuccess) {
-            
-    //         callbackSuccess();
-    //       }
-    //     }
-    //   });
+      spyOn(EventCtrl, 'addEventSchedule').and.callThrough();
 
-    //   // server.respondWith('POST', '/api/venues/' + currentVenue.id + '/events', [200, {"Content-Type": "application/json"}, JSON.stringify({})]);
+      spyOn(EventCtrl.Spinner, 'show').and.callThrough();
+      spyOn(EventCtrl.Spinner, 'hide').and.callThrough();
+      spyOn(EventCtrl.Snack, 'show').and.callThrough();
+      spyOn(EventCtrl.Snack, 'showError').and.callThrough();
+      spyOn(EventCtrl.eventListCtrl, 'createEvent').and.callThrough();
+      spyOn(contextualMenu, 'hide').and.callThrough();
 
-    //   EventCtrl.contextualMenuSuccess(EventCtrl.event);
-    //   // server.respond();
+      let createdEvent = {
+        id: 7
+      };
 
-    //   setTimeout(function () {
+      server.respondWith('POST', '/api/venues/' + currentVenue.id + '/events', [200, {"Content-Type": "application/json"}, JSON.stringify(createdEvent)]);
 
-        
-    //     $rootScope.$digest();
+      expect(eventMock.id).toBe(null);
 
-    //     setTimeout(function () {
-          
-    //       $rootScope.$digest();
-    //       $timeout.flush();
+      EventCtrl.contextualMenuSuccess(EventCtrl.event);
+      server.respond();
 
-    //       setTimeout(() => {
+      setTimeout(function () {
 
-    //         $rootScope.$digest();
-    //         $timeout.flush();
-    //         $rootScope.$digest();
+        $rootScope.$digest();
 
-    //         expect(EventService.save).toHaveBeenCalledWith(EventCtrl.event);
-    //         expect(EventCtrl.eventListCtrl.createEvent).toHaveBeenCalledWith(EventCtrl.event);
-    //         expect(EventCtrl.cardItemList.onItemCreated).toHaveBeenCalledWith(jasmine.any(Preoday.Event));
-    //         expect(EventCtrl.Spinner.show).toHaveBeenCalled();
-    //         expect(EventCtrl.Spinner.hide).toHaveBeenCalled();
-    //         expect(EventCtrl.Snack.show).toHaveBeenCalled();
-    //         expect(contextualMenu.hide).toHaveBeenCalled();
-    //         expect(EventCtrl.Snack.showError).not.toHaveBeenCalled();
+        setTimeout(function () {
 
-    //         done(); 
-    //       });         
-    //     });
-    //   });
-    // });
+          $rootScope.$digest();
+          $timeout.flush();
+
+          setTimeout(() => {
+
+            $rootScope.$digest();
+            $timeout.flush();
+            $rootScope.$digest();
+
+            expect(EventService.save).toHaveBeenCalledWith(EventCtrl.event);
+            expect(EventCtrl.eventListCtrl.createEvent).toHaveBeenCalledWith(EventCtrl.event);
+            expect(EventCtrl.Spinner.show).toHaveBeenCalled();
+            expect(EventCtrl.Spinner.hide).toHaveBeenCalled();
+            expect(EventCtrl.Snack.show).toHaveBeenCalled();
+            expect(contextualMenu.hide).toHaveBeenCalled();
+            expect(EventCtrl.Snack.showError).not.toHaveBeenCalled();
+            expect(EventCtrl.addEventSchedule).not.toHaveBeenCalled();
+            expect(eventMock.id).toBe(createdEvent.id);
+
+            done();
+          });
+        });
+      });
+    });
+
+    it("Shouldn't create an event and should force to create a schedule before", function(done) {
+
+      _mockEvent();
+      _startCardItemListController();
+      _startEventListController();
+      _startController();
+
+      spyOn(EventService, 'save').and.callThrough();
+
+      eventMock.id = null;
+      eventMock.name = 'Tester';
+
+      EventCtrl.instance.event = eventMock;
+      EventCtrl.instance.cardItemList = CardItemListCtrl();
+      EventCtrl.instance.eventListCtrl = EventListCtrl();
+      EventCtrl = EventCtrl();
+
+      spyOn(EventCtrl, 'addEventSchedule').and.callThrough();
+
+      spyOn(EventCtrl.eventListCtrl, 'createEvent').and.callThrough();
+      spyOn(contextualMenu, 'hide').and.callThrough();
+
+      expect(eventMock.id).toBe(null);
+      expect(eventMock.schedules.length).toBe(0);
+
+      EventCtrl.contextualMenuSuccess(EventCtrl.event);
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+
+        expect(EventService.save).not.toHaveBeenCalled();
+        expect(EventCtrl.eventListCtrl.createEvent).not.toHaveBeenCalled();
+        expect(contextualMenu.hide).toHaveBeenCalled();
+        expect(EventCtrl.addEventSchedule).toHaveBeenCalled();
+        expect(eventMock.id).toBe(null);
+        expect(eventMock.schedules.length).toBe(1);
+        expect(eventMock.schedules[0].id).toBe(undefined);
+
+        done();
+      });
+    });
 
 });

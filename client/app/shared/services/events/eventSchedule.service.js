@@ -19,9 +19,9 @@ export default class EventScheduleService {
 
       $selected: true,
       $show: true
-    });  
-    
-    return schedule;  
+    });
+
+    return schedule;
   }
 
   constructor($q, EventScheduleFrequency) {

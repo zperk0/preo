@@ -44,39 +44,54 @@ export default class eventController {
     if (this.event && entity && entity.name){
       this.event = entity;
 
+      if (!this.event.schedules.length) {
+        this.event.$selected = false;
+        this.contextualMenu.hide();
+        return this.addEventSchedule();
+      }
+
       if (!this.event.id){
-        this.Spinner.show("event-create");
-        this.eventListCtrl.createEvent(this.event)
-          .then((_event)=>{
-
-            this.event.$deleted = false;
-            this.event.$selected = false;
-
-            this.$timeout(() => {
-
-              angular.extend(this.event, _event);
-
-              // this.cardItemList.onItemCreated(_event);
-              this.contextualMenu.hide();
-              this.checkEventSchedules();
-              this.Spinner.hide("event-create");
-              this.Snack.show(this.gettextCatalog.getString('Event created'));
-            });
-          }, (err)=>{
-            console.log('error on save event', err);
-            this.Spinner.hide("event-create");
-            this.Snack.showError(this.gettextCatalog.getString('Error saving event'));
-          })
+        this.createEvent();
 
       } else {
         this.updateEvent().then(()=>{
           this.contextualMenu.hide();
           this.event.$selected = false;
-
-          this.checkEventSchedules();
-        })
+        });
       }
     }
+  }
+
+  createEvent () {
+
+    let deferred = this.$q.defer();
+
+    this.Spinner.show("event-create");
+    this.eventListCtrl.createEvent(this.event)
+      .then((_event)=>{
+
+        this.event.$deleted = false;
+        this.event.$selected = false;
+
+        this.$timeout(() => {
+
+          angular.extend(this.event, _event);
+
+          this.contextualMenu.hide();
+          this.Spinner.hide("event-create");
+          this.Snack.show(this.gettextCatalog.getString('Event created'));
+
+          deferred.resolve(this.event);
+        });
+      }, (err)=>{
+        console.log('error on save event', err);
+        this.Spinner.hide("event-create");
+        this.Snack.showError(this.gettextCatalog.getString('Error saving event'));
+
+        deferred.reject(err);
+      });
+
+    return deferred.promise;
   }
 
   updateEvent(){
@@ -96,7 +111,7 @@ export default class eventController {
     });
   }
 
-  checkEventSchedules () {
+  addEventSchedule () {
 
     if (!this.event.schedules.length) {
       if (!this.event.$expanded) {
@@ -179,10 +194,8 @@ export default class eventController {
           let promise = this.event.update();
 
           promise.then(()=>{
-              this.cardItemList.onItemDeleted(this.event);
-              if (this.onItemDeleted){
-                this.onItemDeleted({item:this.event});
-              }
+
+              this.removeEventItem();
               this.Snack.show('Event deleted');
               this.Spinner.hide("event-delete");
           })
@@ -192,6 +205,14 @@ export default class eventController {
             this.Snack.showError('Event not deleted');
           });
       });
+  }
+
+  removeEventItem () {
+
+    this.cardItemList.onItemDeleted(this.event);
+    if (this.onItemDeleted){
+      this.onItemDeleted({item:this.event});
+    }
   }
 
   buildOutletLocation() {

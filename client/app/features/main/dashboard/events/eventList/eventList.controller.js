@@ -36,10 +36,12 @@ export default class eventListViewController {
     let html = eventsName;
 
     if (events.length > 1) {
-      html = [ '<div>',
+      html = [
+                // '<div>',
                 events.length + ' ' + this.gettextCatalog.getString('events'),
-                '<md-tooltip>' + eventsName + '</md-tooltip>',
-                '</div>'].join('');
+                // '<md-tooltip>' + eventsName + '</md-tooltip>',
+                // '</div>'
+              ].join('');
     }
 
     return html;
