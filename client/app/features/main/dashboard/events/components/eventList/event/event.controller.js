@@ -146,6 +146,13 @@ export default class eventController {
       }]);
   }
 
+  showOutletLocationWithoutChildren() {
+
+    this.DialogService.show(this.ErrorService.EVENT_OUTLET_LOCATION_NO_CHILDREN.title, this.ErrorService.EVENT_OUTLET_LOCATION_NO_CHILDREN.message, [{
+        name: this.gettextCatalog.getString('Got it')
+      }]);
+  }
+
   onAddOutletLocation () {
 
     if (!this.OutletLocationService.hasOutletLocations()) {
@@ -161,6 +168,10 @@ export default class eventController {
 
         if (outletLocation.outletId) {
           return this.showOutletLocationWithOutletMessage();
+        }
+
+        if (!outletLocation.hasChildren()) {
+          return this.showOutletLocationWithoutChildren();
         }
 
         if (this.event.outletLocationId !== outletLocation.id) {

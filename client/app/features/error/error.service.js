@@ -40,6 +40,7 @@ export default class ErrorService {
 
     // EVENT OUTLET LOCATION
     this.EVENT_OUTLET_LOCATION = {code:'EVENT_OUTLET_LOCATION', message:gettextCatalog.getString("It is not possible to select a single location as your outlet configuration."), title: ''};
+    this.EVENT_OUTLET_LOCATION_NO_CHILDREN = {code:'EVENT_OUTLET_LOCATION_NO_CHILDREN', message:gettextCatalog.getString("It is not possible to select a single location as your outlet configuration."), title: ''};
 
   }
 }
