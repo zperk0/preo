@@ -115,7 +115,7 @@ export default class eventController {
 
     if (!this.event.schedules.length) {
       if (!this.event.$expanded) {
-        this.event.$expanded = true;
+        this.cardItemList.expandItem(this.event);
       }
 
       this.event.schedules.push(this.EventScheduleService.getNewScheduleModel(this.event.id));
