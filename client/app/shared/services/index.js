@@ -11,6 +11,7 @@ import Feature from './feature/feature.service';
 import CollectionSlot from './events/collectionSlot.service';
 import Event from './events/event.service';
 import EventSchedule from './events/eventSchedule.service';
+import DateUtils from './dateUtils/dateUtils.service';
 
 export default angular.module("Services" , ['ui.router'])
   .service(User.UID, User)
@@ -26,4 +27,5 @@ export default angular.module("Services" , ['ui.router'])
   .service(CollectionSlot.UID, CollectionSlot)
   .service(Event.UID, Event)
   .service(EventSchedule.UID, EventSchedule)
+  .service(DateUtils.UID, DateUtils)
   .name;
