@@ -8,13 +8,13 @@ export default class outletLocationGroupController {
       angular.extend(this.outletLocationGroup, this.originalOutletGroupLocation)
       this.originalOutletGroupLocation = false;
     }
-  }  
+  }
 
   contextualMenuCancel(){
     this.restoreOriginalValues();
     this.outletLocationGroup.$selected = false;
 
-    if (!this.outletLocationGroup.label 
+    if (!this.outletLocationGroup.label
         && !this.outletLocationGroup.$fromList
         && (!this.outletLocationGroup.outletLocations || !this.outletLocationGroup.outletLocations.length)) {
       this.onDeletedCallback && this.onDeletedCallback();
@@ -41,14 +41,14 @@ export default class outletLocationGroupController {
           this.Snack.showError(this.gettextCatalog.getString('Failed to update the group'));
         });
     }
-  }  
+  }
 
   onEdit ($event) {
 
     this.originalOutletGroupLocation  = angular.copy(this.outletLocationGroup);
     this.contextual.showMenu(this.type, this.outletLocationGroup, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
     $event.stopPropagation();
-  }  
+  }
 
   onDelete ($event) {
 
@@ -70,7 +70,7 @@ export default class outletLocationGroupController {
             this.$timeout(() => {
 // console.log('error on delete', err);
               this.Spinner.hide("outlet-location-group-delete");
-              this.Snack.showError(this.gettextCatalog.getString('Failed to delete the group'));            
+              this.Snack.showError(this.gettextCatalog.getString('Failed to delete the group'));
             });
           });
       });
@@ -86,7 +86,12 @@ console.log('new group here', newGroup);
   redirectToGroup () {
 
   	var urlToRedirect = this.outletLocationGroup.path.substring(1);
-  	urlToRedirect = urlToRedirect.substring(0, urlToRedirect.length - 1);
+
+    var lastChar = urlToRedirect.substr(urlToRedirect.length - 1);
+    if (lastChar == '/') {
+      urlToRedirect = urlToRedirect.substring(0, urlToRedirect.length - 1);
+    }
+
 console.log('going to', urlToRedirect);
   	this.$state.go('main.dashboard.outlets.location', {
   		outletLocation: urlToRedirect
@@ -104,7 +109,7 @@ console.log('checking expanded', this.outletLocationGroup);
   	if (!this.outletLocationGroup.$expanded && !this.outletLocationGroup.$fromList) {
 	    this.originalOutletGroupLocation  = angular.copy(this.outletLocationGroup);
 	    this.contextual.showMenu(this.type, this.outletLocationGroup, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
-  	}    
+  	}
   }
 
   constructor($scope, $state, $stateParams, $timeout, Snack, Spinner, DialogService, LabelService, contextual, contextualMenu, gettextCatalog) {
