@@ -9,7 +9,7 @@
               >
     <card-item-title ng-click="eventCtrl.toggleExpanded($event)"
                     has-visible="true">
-                      <span>{{eventCtrl.event.name}} </span>
+                      <span>{{eventCtrl.event.name}} </span><icon class='arrow-icon' flex>{{eventCtrl.event.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
                     </card-item-title>
 
 
