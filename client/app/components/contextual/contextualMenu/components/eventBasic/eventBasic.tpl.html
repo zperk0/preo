@@ -16,8 +16,9 @@
     </md-input-container>
     <md-input-container class="md-block md-block-duration">
         <label translate>Duration <small>(in minutes)</small></label>
-        <input type="text" autocomplete="off"  name="entityDuration" ng-model="eventBasicCtrl.event.duration" valid-number max-integer-value />
+        <input type="text" autocomplete="off" required name="entityDuration" ng-model="eventBasicCtrl.event.duration" valid-number max-integer-value />
         <div ng-messages="eventBasicCtrl.contextualForm.entityDuration.$error" ng-show="eventBasicCtrl.contextualForm.entityDuration.$dirty">
+          <div ng-message="required" translate  ng-class="{'activated': eventBasicCtrl.contextualForm.entityDuration.$error.required}">This field is required.</div>
           <div ng-message="maxIntegerValue" translate ng-class="{'activated': eventBasicCtrl.contextualForm.entityDuration.$error.maxIntegerValue}">Max value is 2147483646.</div>
         </div>
     </md-input-container>
