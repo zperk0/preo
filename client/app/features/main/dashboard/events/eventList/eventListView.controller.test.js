@@ -250,6 +250,11 @@ describe('EventList View Controller', function () {
 
           $scope.eventListViewCtrl.expandSchedules();
 
+          let eventsName = events.map((event) => {
+
+            return event.name + '\n';
+          }).join('');
+
           expect($scope.eventListViewCtrl.loaded).toBe(true);
           expect(Spinner.show).toHaveBeenCalledWith('events');
           expect(EventService.getEvents).toHaveBeenCalledWith(currentVenue.id, {
@@ -259,7 +264,7 @@ describe('EventList View Controller', function () {
           expect(OutletLocationService.getOutletLocations).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.hideSpinner).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.data.events.length).toBe(events.length);
-          expect($scope.eventListViewCtrl.getDayEventsName(moment())).toEqual('<div>' + events.length + ' events</div>');
+          expect($scope.eventListViewCtrl.getDayEventsName(moment())).toEqual('<div><a ng-href title="' + eventsName + '">' + events.length + ' events</a></div>');
 
           done();
         });
