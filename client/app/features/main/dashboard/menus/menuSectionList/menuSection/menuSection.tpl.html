@@ -9,25 +9,24 @@
               >
     <card-item-title ng-click="menuSectionCtrl.toggleExpanded($event)"
                     has-visible="true"
-                    sv-root="item"
-                    show-visible="!menuSectionCtrl.section.visible">
-                      <div ng-if="!menuSectionCtrl.section.$expanded" 
-                          class='sv-dropzone sv-dropzone-item' 
-                          sv-part="menuSectionCtrl.newItems" 
+                    sv-root="item">
+                      <div ng-if="!menuSectionCtrl.section.$expanded"
+                          class='sv-dropzone sv-dropzone-item'
+                          sv-part="menuSectionCtrl.newItems"
                           sv-on-external-sort="menuSectionCtrl.onNewItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo, $removeFromOrigin)">
                         <div sv-placeholder></div>
                       </div>
                       <span>{{menuSectionCtrl.section.id + "--" | debug}}{{menuSectionCtrl.section.name}}</span><icon class='arrow-icon' flex>{{menuSectionCtrl.section.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
                       <div class='sv-dropzone sv-dropzone-modifier' sv-root="modifier">
-                        <div class='sv-dropzone sv-dropzone-modifier' 
-                            sv-part="menuSectionCtrl.newModifiers" 
+                        <div class='sv-dropzone sv-dropzone-modifier'
+                            sv-part="menuSectionCtrl.newModifiers"
                             sv-on-external-sort="menuSectionCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                           <div sv-placeholder></div>
                         </div>
                       </div>
                     </card-item-title>
-    <modifier-chips ng-if="menuSectionCtrl.section.modifiers.length" 
-            modifiers="menuSectionCtrl.section.modifiers" 
+    <modifier-chips ng-if="menuSectionCtrl.section.modifiers.length"
+            modifiers="menuSectionCtrl.section.modifiers"
             section="menuSectionCtrl.section"></modifier-chips>
 
         <menu-section-item-list
@@ -36,11 +35,9 @@
               items="menuSectionCtrl.items"
               section="menuSectionCtrl.section">
          </menu-section-item-list>
-         
-    <card-item-actions is-visible="menuSectionCtrl.section.visible"
-                       on-delete="menuSectionCtrl.onDelete()"
+
+    <card-item-actions on-delete="menuSectionCtrl.onDelete()"
                        on-edit="menuSectionCtrl.onEdit()"
-                       on-visibility="menuSectionCtrl.onVisibility(newStatus)"
                         ></card-item-actions>
   </card-item>
 </div>

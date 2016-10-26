@@ -154,12 +154,6 @@
       })
   }
 
-  onVisibility(newStatus){
-    this.section.visible = newStatus ? 1 : 0;
-    this.saveSection();
-  }
-
-
   restoreOriginalValues(){
     if (this.originalSection){
       this.section.name = this.originalSection.name;
