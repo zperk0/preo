@@ -30,9 +30,14 @@ export default class eventListViewController {
     let html = eventsName;
 
     if (events.length > 1) {
+      eventsName = events.map((event) => {
+
+        return event.name + '\n';
+      }).join('');
+
       html = [
                 '<div>',
-                events.length + ' ' + this.gettextCatalog.getString('events'),
+                '<a ng-href title="' + eventsName + '">' + events.length + ' ' + this.gettextCatalog.getString('events') + '</a>',
                 // '<md-tooltip>' + eventsName + '</md-tooltip>',
                 '</div>'
               ].join('');
