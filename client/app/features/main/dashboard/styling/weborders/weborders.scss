@@ -1,11 +1,20 @@
 .styling-weborders{
+  width: 100%;
 
   #web-orders-iframe{
     height: calc(100vh - 110px);
-    margin:24px;
     position: relative;
     top:50px;
     transform-origin: top left;
+  }
+
+  .iframe-content {
+    width: 100%;
+    padding: 24px;
+
+    #web-orders-iframe {
+      width: 100%;
+    }
   }
 
   .zoom-level-100{
@@ -51,7 +60,8 @@
   .iframe-error{
     position: relative;
     top: 75px;
-    left: 20px;
+    left: 0px;
+    padding-left: 20px;
   }
 }
 
