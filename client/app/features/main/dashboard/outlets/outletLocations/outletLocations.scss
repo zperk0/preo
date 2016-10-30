@@ -1,4 +1,6 @@
 .outlet-location-view {
+  height: 100%;
+
   .outlet-location-toolbar{
     background: #EEEEEE;
     border-bottom:1px solid #CCCCCC;
@@ -9,7 +11,7 @@
     z-index:21;
     top:64px;
     padding-left:24px;
-  }	
+  }
 
   .main-content-right {
     margin-top: 24px;
