@@ -1,8 +1,6 @@
 // Import Style
 import './collectionSlots.scss';
 
-
-import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
 // Import internal modules

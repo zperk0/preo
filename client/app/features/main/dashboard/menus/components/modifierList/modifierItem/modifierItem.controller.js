@@ -65,7 +65,7 @@ export default class modifierItemController {
 
             let promise = this.ModifierService.deleteModifier(this.modifier)
             promise.then(()=>{
-                this.cardItemList.onItemDeleted(this.modifier);
+                // this.cardItemList.onItemDeleted(this.modifier);
                 this.Snack.show('Item deleted');
                 this.Spinner.hide("modifier-delete");
             })
@@ -128,7 +128,7 @@ export default class modifierItemController {
       }
       if (this.originalItem){
         for (var property in this.originalItem) {
-        if (this.originalItem.hasOwnProperty(property)) {
+        if (this.originalItem.hasOwnProperty(property) && property !== 'modifiers') {
           this.modifier[property] = this.originalItem[property];
           }
         }
@@ -175,7 +175,6 @@ export default class modifierItemController {
       this.newModifiers = [];
 
       if (this.modifier && !this.modifier.id) {
-        console.log("in constructor calling")
         $timeout(()=>{
           contextual.showMenu(this.type, this.modifier, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
         })

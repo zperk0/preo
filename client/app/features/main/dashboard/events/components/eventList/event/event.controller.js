@@ -52,7 +52,6 @@ export default class eventController {
 
       if (!this.event.id){
         this.createEvent();
-
       } else {
         this.updateEvent().then(()=>{
           this.contextualMenu.hide();

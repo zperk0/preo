@@ -71,9 +71,9 @@ echo $overrides;
       <toolbar></toolbar>
       <navbar></navbar>
       <div class='main-ui-view' ui-view></div>
-      <spinner></spinner>
+      <full-spinner></full-spinner>
     </div>
   </div>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
-<script type="text/javascript" src="/angular.bundle.84cd58e757d811f247bf.js"></script><script type="text/javascript" src="/events.bundle.a2ed6647f79469234515.js"></script><script type="text/javascript" src="/vendor.bundle.d1d9cdb85cf464fdc773.js"></script><script type="text/javascript" src="/app.bundle.d7e4600bc84545bd7c00.js"></script></body>
+<script type="text/javascript" src="/v2/vendor.bundle.7363503d9b60bf60bccf.js"></script><script type="text/javascript" src="/v2/events.bundle.d1ce3dc610af9794e36a.js"></script><script type="text/javascript" src="/v2/outlets.bundle.1fe4a15459ec2f1bd60b.js"></script><script type="text/javascript" src="/v2/app.bundle.22447c666f529abec7a5.js"></script></body>
 </html>

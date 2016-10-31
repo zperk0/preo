@@ -13,11 +13,16 @@
           <label translate>Description</label>
           <textarea type="text" name="entityDescription" ng-maxlength="1000" ng-model="contextualMenuCtrl.entity.description"></textarea>
       </md-input-container>
+      <tax-group-select ng-model="contextualMenuCtrl.entity.taxId"></tax-group-select>
+
     <menu-item-size ng-price-model="contextualMenuCtrl.entity.price" ng-model="contextualMenuCtrl.entity.$size"></menu-item-size>
     </md-card-content>
     </md-tab>
     <md-tab label="Image">
-      <image-uploader dimensions="590 x 333px" ng-model="contextualMenuCtrl.entity.images"></image-uploader>
+      <image-uploader
+        dimensions="590 x 333px"
+        ng-model="contextualMenuCtrl.entity.images"
+        on-delete="contextualMenuCtrl.params.onDeleteImage(image)"></image-uploader>
     </md-tab>
     <md-tab label="Labels">
       <tag-list ng-model="contextualMenuCtrl.entity.tags"></tag-list>

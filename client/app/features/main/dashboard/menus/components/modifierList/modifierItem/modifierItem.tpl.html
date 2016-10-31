@@ -1,25 +1,33 @@
 <div class='modifier-item'>
   <card-item
-        ng-attr-data-id="{{vm.modifier.id}}"
+        ng-attr-data-id="{{modifierItemCtrl.modifier.id}}"
         has-actions="true"
-        item="vm.modifier"
-        selected="vm.modifier.$selected"
-        deleted="vm.modifier.$deleted"
-        sv-element="vm.modifier">
+        item="modifierItemCtrl.modifier"
+        selected="modifierItemCtrl.modifier.$selected"
+        deleted="modifierItemCtrl.modifier.$deleted"
+        sv-element="modifierItemCtrl.modifier">
       <card-item-title>
-        {{vm.modifier.id +" -- " | debug}}{{ vm.modifier.name}}
+        {{modifierItemCtrl.modifier.id +" -- " | debug}}{{ modifierItemCtrl.modifier.name}}
          <div sv-root="modifier" class='modifier-title-dropzone'>
-           <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.newModifiers" sv-on-external-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+           <div class='sv-dropzone sv-dropzone-modifier' 
+                sv-part="modifierItemCtrl.newModifiers" 
+                sv-on-external-sort="modifierItemCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
             <div sv-placeholder></div>
            </div>
          </div>
       </card-item-title>
-      <modifier-chips ng-if="vm.modifier.modifiers.length" modifiers="vm.modifier.modifiers" parent="vm.modifier"></modifier-chips>
-      <div class='size-wrapper' ng-if="vm.modifier.items.length">
-        <card-item-child ng-repeat="option in vm.modifier.items" modifier="vm.modifier" option="option"></card-item-child>
+      <modifier-chips ng-if="modifierItemCtrl.modifier.modifiers.length" 
+                      modifiers="modifierItemCtrl.modifier.modifiers" 
+                      parent="modifierItemCtrl.modifier"></modifier-chips>
+
+      <div class='size-wrapper' ng-if="modifierItemCtrl.modifier.items.length">
+        <card-item-child ng-repeat="option in modifierItemCtrl.modifier.items" 
+                          modifier="modifierItemCtrl.modifier" 
+                          option="option"></card-item-child>
       </div>
-      <card-item-actions on-clone="vm.cloneModifier()"
-                         on-delete="vm.deleteModifier()"
-                         on-edit="vm.onEdit()"></card-item-actions>
+
+      <card-item-actions on-clone="modifierItemCtrl.cloneModifier()"
+                         on-delete="modifierItemCtrl.deleteModifier()"
+                         on-edit="modifierItemCtrl.onEdit()"></card-item-actions>
     </card-item>
 </div>

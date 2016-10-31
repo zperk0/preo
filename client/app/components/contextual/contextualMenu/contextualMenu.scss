@@ -1,6 +1,13 @@
 @import '../../../shared/styles/variables';
 @import './contextualMenu.animations.scss';
 
+.contextual-menu-wrapper{
+ .content-spinner{
+    md-progress-circular{
+      margin: 0 auto;
+    }
+  }
+}
 .contextual-menu {
   max-height: calc(100vh - 64px - 50px - 5vh); //100% - toolbar - optional dashboard toolbar - extra spacing for bottom padding
   margin:0;
@@ -10,12 +17,11 @@
   .form-content{
     max-height: calc(100vh - 64px - 50px - 90px - 30px ); //100% - toolbar - optional dashboard toolbar - bottom buttons - extra spacing for bottom padding
     overflow-y:auto;
-    display: none;
 
-    &.rendered {
-      display: block;
-    }
+  }
 
+  md-card-content{
+    padding:24px;
   }
 
   md-card-actions{
@@ -77,14 +83,10 @@
     }
   }
 
-  .contextual-menu-event, .contextual-menu-collection-slot, .contextual-menu-event-schedule {
+  .contextual-menu-event, .contextual-menu-outlet, .contextual-menu-collection-slot, .contextual-menu-event-schedule {
     .md-errors-spacer {
       display: none;
-    }    
-
-    md-card-content {
-      padding: 25px;
-    }    
+    }
   }
 
   .contextual-menu-collection-slot {
@@ -104,27 +106,27 @@
       padding-left: 42px;
 
       md-radio-group {
-        margin-top: 18px;  
+        margin-top: 18px;
 
         md-radio-button {
           margin-bottom: 18px;
 
           &:last-child {
             margin-bottom: 0px;
-          }            
+          }
         }
       }
     }
 
     .content-input-slot-end {
       display: inline-block;
-      vertical-align: top;  
+      vertical-align: top;
       width: 50px;
       margin-right: 10px;
 
       input {
         width: 100%;
-      }    
+      }
 
       .md-input-messages-animation {
         position: absolute;
@@ -133,8 +135,8 @@
       &.has-error {
         margin-bottom: 10px;
       }
-    }  
-      
+    }
+
     .md-input-container-slot {
       margin-top: 5px;
       margin-bottom: 10px !important;
@@ -151,7 +153,7 @@
       .slot-end-label {
         margin-right: 10px;
       }
-    }       
+    }
   }
 
   .md-input-container-seat-number {
@@ -183,7 +185,7 @@
     }
 
     md-radio-button {
-      color:rgba(0,0,0,0.50);      
+      color:rgba(0,0,0,0.50);
     }
 
     .menus-select-content {
@@ -193,7 +195,7 @@
         color: rgba(0, 0, 0, 0.5);
         font-size: 16px;
       }
-    }    
+    }
   }
 
   .error {
@@ -204,8 +206,8 @@
   .md-input-message-animation {
     &.activated, &.ng-enter-active {
       opacity: 1 !important;
-      margin-top: 0px !important; 
-    }      
+      margin-top: 0px !important;
+    }
 
     // // &.active {
     //   &:not(.ng-animate), &:not(.ng-leave) {
@@ -216,7 +218,7 @@
 
     // &.ng-enter-active, &.ng-enter {
     //     opacity: 1 !important;
-    //     margin-top: 0px !important;      
+    //     margin-top: 0px !important;
     // }
 
     &.active-remove, &.ng-leave-active {
@@ -248,14 +250,14 @@
           &+.md-ripple-container {
             &[style] {
               background-color: rgba(221,44,0, 0.0980392) !important;
-            }    
-                      
+            }
+
             .md-ripple-placed {
               background: $redDefault !important;
               border-color: $redDefault !important;
             }
-          }          
-        }     
+          }
+        }
 
         &+.md-ripple-container {
           &[style] {
@@ -266,7 +268,7 @@
             background: #0288D1 !important;
             border-color: #0288D1 !important;
           }
-        }        
+        }
       }
 
       &.md-active {
@@ -285,8 +287,23 @@
             width: 100%;
             border-bottom: 2px solid #0288D1;
             z-index: 1;
-          }             
-        }        
+          }
+        }
+      }
+    }
+  }
+
+  md-input-container {
+    &.inline-percent{
+      input {
+        width: 50%;
+        margin-right: 16px;
+      }
+      .percent{
+        color:#808080;
+        font-size:16px;
+        position: relative;
+        top: 10px;
       }
     }
   }
@@ -299,12 +316,12 @@
     opacity: 1;
     margin-top: 0;
     padding-top: 5px;
-        
+
     span {
       color: rgb(221,44,0);
     }
   }
-  
+
   .content-spinner {
     text-align: center;
 

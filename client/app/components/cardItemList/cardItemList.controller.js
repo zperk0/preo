@@ -28,6 +28,12 @@ export default class cardItemListController {
     this.collection.splice(indexBefore+1, 0, item);
   }
 
+  // add a cloned item in the correct position after the original item
+  insert (currentItem, newItem) {
+
+    this.collection.splice(this.collection.indexOf(currentItem) + 1, 0, newItem);
+  }
+
   onUpdateItem(oldItem, newItem) {
 
     newItem.$show = true;  //need show for animation

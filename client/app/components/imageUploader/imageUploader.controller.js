@@ -24,8 +24,15 @@ export default class imageUploaderController {
         this.ngModel[0].$save = false;
         this.ngModel[0].$delete = false;
       } else {
-        this.ngModel[0].$delete = true;
-        delete this.ngModel[0].$image;
+
+        if (this.onDelete && this.ngModel[0].id) {
+          this.onDelete({
+            image: this.ngModel[0]
+          });
+        } else {
+          this.ngModel[0].$delete = true;
+          delete this.ngModel[0].$image;
+        }
       }
     this.callOnChange();
     angular.element(this.el[0].querySelector(".image-wrapper.not-found")).removeClass("not-found");

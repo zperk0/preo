@@ -7,7 +7,7 @@
       <icon class="material-icons">edit</icon>{{ 'Edit Mode' | translate }}
     </md-button>
   </div>
-  <div flex class="layout-left-right" ng-if="eventListViewCtrl.loaded && !eventListViewCtrl.isCalendarMode()">
+  <div flex class="layout-left-right with-toolbar" ng-if="eventListViewCtrl.loaded && !eventListViewCtrl.isCalendarMode()">
     <div class='main-content-left'>
       <event-list has-search="true"
          sv-multi-select="false"

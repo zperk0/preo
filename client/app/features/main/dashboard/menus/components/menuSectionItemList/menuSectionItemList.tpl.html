@@ -1,0 +1,38 @@
+<div class='menu-section-item-list'>
+  <div class='sv-root-holder'
+    sv-root='item'
+    sv-disabled="menuSectionItemListCtrl.svDisabled"
+    sv-on-sort="menuSectionItemListCtrl.onItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+
+    <card-item-list
+          collection="menuSectionItemListCtrl.items"
+          search-filter="menuSectionItemListCtrl.searchText"
+          search-label="{{menuSectionItemListCtrl.hasSearch ? 'items' : ''}}">
+          <div class='sort-holder'
+            sv-part="menuSectionItemListCtrl.items"
+            sv-part-origin="menuSectionItemListCtrl.items"
+            sv-multi-select='menuSectionItemListCtrl.svMultiSelect'
+            sv-keep-in-list='menuSectionItemListCtrl.svKeepInList'
+            sv-on-external-sort="menuSectionItemListCtrl.onExternalItemMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)"
+            sv-is-dropzone='menuSectionItemListCtrl.svIsDropzone'
+            sv-is-dropzone-disabled='menuSectionItemListCtrl.svIsDropzoneDisabled'>
+             <menu-item
+                 ng-repeat="item in menuSectionItemListCtrl.items | orderBy: ['position', 'id'] track by item.id"
+                 ng-if="!menuSectionItemListCtrl.section.id || item.$show"
+                 ng-init="$last && menuSectionItemListCtrl.recalculateHeight()"
+                 item="item"
+                 ng-attr-data-id="{{item.id}}"
+                 sv-element="item"
+                 section-id="menuSectionItemListCtrl.section && menuSectionItemListCtrl.section.id"
+                 on-item-created="menuSectionItemListCtrl.onItemCreated(item)"
+                 on-item-updated="menuSectionItemListCtrl.onItemUpdated(item)"
+                 on-item-deleted="menuSectionItemListCtrl.onItemDeleted(item)"
+                 on-clone="menuSectionItemListCtrl.onClone(item, sectionId)">
+               </menu-item>
+               <div sv-placeholder></div>
+           </div>
+    </card-item-list>
+    
+  </div>
+  <menu-item-new ng-if="menuSectionItemListCtrl.hasNew" section="menuSectionItemListCtrl.section" on-click="menuSectionItemListCtrl.showCreateItem($event,isImport)"></menu-item-new>
+</div>

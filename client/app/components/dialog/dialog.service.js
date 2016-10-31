@@ -27,6 +27,26 @@ export default class DialogService {
     });
   }
 
+   retry(title, content) {
+
+    function RetryController($scope, $mdDialog) {
+      "ngInject";
+      $scope.confirm = function() {
+        $mdDialog.hide(true);
+      };
+    }
+    const newScope = this.$rootScope.$new();
+    newScope.title=title;
+    newScope.content = content;
+    newScope.hasCancel = false;
+    return this.$mdDialog.show({
+      template:require('./dialog.retry.tpl.html'),
+      scope:newScope,
+      focusOnOpen:false,
+      controller: RetryController
+    });
+  }
+
   //tittle, content and array of buttons with {text:'confirm', id:1}. id will be returned on promise success
   show (title, content, buttons) {
 

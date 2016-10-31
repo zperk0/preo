@@ -58,7 +58,9 @@
 
   .icon-clear{
     position: relative;
-    top: -5px;
+    top: auto;
+    bottom: -5px;
+    
     &:hover{
       cursor: pointer;
     }
