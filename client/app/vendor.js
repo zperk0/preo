@@ -2,6 +2,8 @@
 
 import angular from 'angular';
 
+import "babel-polyfill";
+
 require('jscore/preoday/preoday.min.js');
 require('mdPickers/dist/mdPickers.js');
 require('angular-sanitize/angular-sanitize.js');
@@ -18,11 +20,6 @@ import angularScroll from 'angular-scroll';
 
 //Issue with ES6 Import, change this when it's fixed https://github.com/moment/moment/issues/2608
 window.moment = require('moment/moment.js');
-
-if (!window.Promise) {
-    window.Promise = require('promise-polyfill');
-}
-
 
 require('moment/locale/en-gb.js');
 require('moment/locale/nb.js');
