@@ -9,7 +9,7 @@ export default class collectionSlotsListController {
 
       return item.id === undefined;
     }).length;
-    
+
     if (isCreating){
       console.log("Not showing collection slot new, already showing")
       return;
@@ -21,7 +21,7 @@ export default class collectionSlotsListController {
     });
 
     this.collectionSlots.push(slot);
-  }    
+  }
 
   createCollectionSlot (newData) {
 
@@ -31,14 +31,14 @@ export default class collectionSlotsListController {
 
     this.CollectionSlotsService.save(newData)
         .then((slot)=>{
-          
+
         deferred.resolve(slot);
       }, (err) => {
         console.log('fail collection slot saved', err);
         deferred.reject(err);
       });
 
-    return deferred.promise;  	
+    return deferred.promise;
   }
 
   /* @ngInject */

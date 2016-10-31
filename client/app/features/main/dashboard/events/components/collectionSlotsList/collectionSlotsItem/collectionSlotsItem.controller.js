@@ -46,16 +46,10 @@ export default class collectionSlotsItemController {
         this.collectionSlotsListCtrl.createCollectionSlot(this.collectionSlot)
           .then((_collectionSlot)=>{
 
-            this.collectionSlot.$deleted = false;
-            this.collectionSlot.$selected = false;
-
-            this.$timeout(() => {
-
-              this.cardItemList.onItemCreated(_collectionSlot);
-              this.contextualMenu.hide();
-              this.Spinner.hide("collection-slot-create");
-              this.Snack.show(this.gettextCatalog.getString('Collection Slot created'));
-            });
+            this.cardItemList.onUpdateItem(this.collectionSlot, _collectionSlot);
+            this.contextualMenu.hide();
+            this.Spinner.hide("collection-slot-create");
+            this.Snack.show(this.gettextCatalog.getString('Collection Slot created'));
           }, (err)=>{
             console.log('error on save collection slot', err);
             this.Spinner.hide("collection-slot-create");

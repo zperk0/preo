@@ -9,10 +9,6 @@ export default function collectionSlotsList(){
         hasActions: '=?',
         hasNew:"=",
         hasSearch:"=?",
-        svDisabled:"=",
-        svMultiSelect:"=?",
-        svKeepInList:"=?",
-        svIsDropzone:"=?"          
     },
     template: require("./collectionSlotsList.tpl.html"),
     controller: controller.UID,
