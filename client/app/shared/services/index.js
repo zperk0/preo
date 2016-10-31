@@ -11,8 +11,8 @@ import Feature from './feature/feature.service';
 import CollectionSlot from './events/collectionSlot.service';
 import Event from './events/event.service';
 import EventSchedule from './events/eventSchedule.service';
-import Taxes from './taxes/taxes.service';
 import DateUtils from './dateUtils/dateUtils.service';
+import Taxes from './taxes/taxes.service';
 
 export default angular.module("Services" , ['ui.router'])
   .service(User.UID, User)

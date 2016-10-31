@@ -1,7 +1,7 @@
 .collection-slot-item {
   position: relative;
   margin:8px;
-  transition: box-shadow 0.3s linear;
+  // transition: box-shadow 0.3s linear;
 
   &>md-card{
     margin:0;
@@ -25,11 +25,11 @@
 
   .sv-placeholder{
     margin:8px 22px;
-  }	
+  }
 
   .card-item-actions {
     md-card-actions {
       padding-top: 5px;
     }
-  }  
+  }
 }
