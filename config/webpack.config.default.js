@@ -115,7 +115,7 @@ module.exports = function(ENV, options) {
         modules: false,
         cached: false,
         colors: true,
-        chunk: true,
+        chunk: false,
         inline: true,
         progres: true,
         hot: true
