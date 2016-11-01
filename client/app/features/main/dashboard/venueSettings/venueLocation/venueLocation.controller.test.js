@@ -13,6 +13,7 @@ describe('venueLocation Controller', function () {
       $timeout,
       ErrorService,
       VenueService,
+      DialogService,
       $controller,
       LabelService,
       server,
@@ -24,6 +25,7 @@ describe('venueLocation Controller', function () {
       name:"test venue",
       latitude:111,
       longitude:112,
+      address1:"street 123",
       settings:{
         venueId:1
       }
@@ -51,6 +53,7 @@ describe('venueLocation Controller', function () {
       LabelService = $injector.get('LabelService');
       ErrorService = $injector.get('ErrorService');
       VenueService = $injector.get('VenueService');
+      DialogService = $injector.get('DialogService');
       Spinner = $injector.get('Spinner');
       $q = $injector.get('$q');
       $scope = $rootScope.$new();
@@ -62,14 +65,15 @@ describe('venueLocation Controller', function () {
     });
 
     function _startController(ngModel = []) {
-      VenueService.currentVenue = venue;
+
       venueLocationCtrl = $controller('venueLocationController', {
         '$scope': $scope
       });
     }
 
 
-    it("Init should set venue and show map", function() {
+    it("Init should set venue and show map if venue has address", function() {
+      VenueService.currentVenue = venue;
       _startController();
       $rootScope.$digest();
       expect(venueLocationCtrl.venue).toEqual(venue);
@@ -77,7 +81,21 @@ describe('venueLocation Controller', function () {
       expect(venueLocationCtrl.showMap).toEqual(true);
     });
 
+
+    it("Init should show error dialog if venue doesn't have address", function() {
+      VenueService.currentVenue = venueResponse;
+      spyOn(DialogService,'show').and.callThrough();
+      _startController();
+      $rootScope.$digest();
+      expect(venueLocationCtrl.venue).toEqual(venueResponse);
+      $timeout.flush();
+      expect(venueLocationCtrl.showMap).toEqual(false);
+      expect(DialogService.show).toHaveBeenCalled();
+
+    });
+
     it("Drop should set lat lng and submit venue", function() {
+      VenueService.currentVenue = venue;
       _startController();
       server.respondWith('PUT', '/venues/' + venue.id, [200, {"Content-Type": "application/json"}, JSON.stringify(venueResponse)]);
       spyOn(angular,'extend').and.callThrough();

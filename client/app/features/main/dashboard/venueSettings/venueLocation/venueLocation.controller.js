@@ -40,31 +40,46 @@ export default class venueLocationController {
   }
 
   mapLoaded(){
-    console.log("map is loaded");
+    this.$timeout(()=>{
+      this.isMapLoaded = true;
+    });
   }
 
   init(){
     this.Spinner.show("venue-location");
     this.venue = this.VenueService.currentVenue ;
-    this.$timeout(()=>{
+    if (this.venue.address1){
       this.showMap = true;
+    } else {
+      this.DialogService.show(this.ErrorService.VENUE_WITHOUT_ADDRESS.title, this.ErrorService.VENUE_WITHOUT_ADDRESS.message, [{
+        name: this.gettextCatalog.getString('Got it')
+      }])
+        .then(()=>{
+          this.$state.go('main.dashboard.venueSettings.venueDetails');
+        });
+    }
+    this.$timeout(()=>{
       this.Spinner.hide("venue-location");
     })
   }
 
 
   /* @ngInject */
-  constructor(Spinner, Snack, ErrorService, LabelService, $timeout, VenueService) {
+  constructor(Spinner, Snack, ErrorService, LabelService, $timeout, VenueService, DialogService, gettextCatalog, $state) {
     "ngInject";
     this.isEdit = false;
     this.Spinner = Spinner;
     this.Snack = Snack;
+    this.$state = $state;
+    this.gettextCatalog = gettextCatalog;
     this.ErrorService = ErrorService;
     this.VenueService = VenueService;
+    this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.isError = false;
     this.$timeout = $timeout;
     this.showMap = false;
+    this.isMapLoaded = false;
     this.init();
   }
 }
