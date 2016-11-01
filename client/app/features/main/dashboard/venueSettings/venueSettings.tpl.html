@@ -1,5 +1,3 @@
-<div>
-  <image-uploader ng-model="vm.image"></image-uploader>
-  <button ng-click="vm.saveImage()" translate>save</button>
-  <img ng-src={{vm.image}}>
+<div class='venue-settings' flex layout='row' layout-align="stretch stretch">
+  <ui-view name="venueSettingsContent" flex layout='row' layout-align="stretch stretch"></ui-view>
 </div>

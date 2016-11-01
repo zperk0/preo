@@ -15,7 +15,7 @@ export default function routes($stateProvider) {
     controllerAs: "eventsViewCtrl",
     resolve: {
 
-    	// authenticated -> this is from main.routes.js
+    	// authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
     	isEvent: function ($q, $state, $stateParams, $timeout, authenticated, VenueService) {
 
     		if (VenueService.hasVenueSet() && VenueService.currentVenue.isEvent()) {
@@ -31,6 +31,6 @@ export default function routes($stateProvider) {
     			return $q.reject();
     		}
     	}
-    }    
+    }
   });
 }

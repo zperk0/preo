@@ -31,7 +31,7 @@ export default class VenueService {
       function _resolvePromise(data) {
 
         this.$rootScope.$broadcast(this.BroadcastEvents._ON_FETCH_VENUES, data);
-        resolve(data);        
+        resolve(data);
       }
 
       Preoday.Venue.fetch({
@@ -114,7 +114,7 @@ export default class VenueService {
       moment.locale(language+"-"+country);
     } else {
       moment.locale('en-gb'); //en-GB as default - if we don't do this it'll set en-US
-    }    
+    }
   }
 
   checkFeatures () {
@@ -194,12 +194,12 @@ export default class VenueService {
 
         this.goToVenue();
       }, (err)=>{
-        
+
         this.ErrorService.showError('FAILED_LOADING_VENUES');
 
         this.venuesDeferred.reject();
         this.unsetVenuesDeferred();
-      });    
+      });
 
       return this.venuesDeferred.promise;
   }
@@ -218,7 +218,18 @@ export default class VenueService {
 
     this.venuesDeferred = null;
     this.venues = null;
-    this.hasSelectedVenues = false;    
+    this.hasSelectedVenues = false;
+  }
+
+  load(){
+    if (currentVenue && currentVenue.id>0){
+      return this.$q.resolve(currentVenue);
+    }
+    return $q((resolve,reject)=>{
+      this.selectVenue()
+        .then(resolve,reject)
+    })
+
   }
 
   constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, gettextCatalog, UserService, ErrorService) {
