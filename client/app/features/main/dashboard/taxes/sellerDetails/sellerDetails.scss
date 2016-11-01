@@ -6,8 +6,16 @@
     padding-right:24px;
   }
 
+  md-card-content {
+  	padding-bottom: 0px;
+  }
+
+  md-card-actions {
+  	margin: 8px 0px;
+  }
+
   .md-primary{
     position: relative;
-    right: -20px;
+    right: -16px;
   }
 }
