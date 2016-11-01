@@ -39,6 +39,7 @@ export default class navbarController {
     this.menu=[
       {name: gettextCatalog.getString("Venue Settings"), icon:"store", id:"venueSettings", children:[
         {name: gettextCatalog.getString("Venue Details"), id:"venueDetails"},
+        {name: gettextCatalog.getString("Venue Location"), id:"venueLocation"},
       ]},
       {name: gettextCatalog.getString("Menus"), icon:"list", id:"menus", children:[
         {name: gettextCatalog.getString("My menus"), id:"menus", destination:"list", exclusions:["itemList","modifiers"]},

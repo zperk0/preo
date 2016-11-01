@@ -7,6 +7,7 @@ import controller from './venueDetails.controller'
  */
 /* @ngInject */
 export default function routes($stateProvider) {
+  "ngInject;"
   $stateProvider.state("main.dashboard.venueSettings.venueDetails", {
     url: "/venueDetails",
      views:{
