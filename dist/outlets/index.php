@@ -75,5 +75,5 @@ echo $overrides;
     </div>
   </div>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
-<script type="text/javascript" src="/v2/vendor.bundle.2af0273a5000970d0457.js"></script><script type="text/javascript" src="/v2/outlets.bundle.5ed1eaaafa559fef18ed.js"></script><script type="text/javascript" src="/v2/app.bundle.29ef360aee0d2ae4e375.js"></script></body>
+<script type="text/javascript" src="/v2/vendor.bundle.86e0aead0367fbc1c154.js"></script><script type="text/javascript" src="/v2/outlets.bundle.f39f3f95dada1fbb0bb1.js"></script><script type="text/javascript" src="/v2/app.bundle.2b6ee1963c350716481a.js"></script></body>
 </html>
