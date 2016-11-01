@@ -58,6 +58,11 @@
     border-radius: 0;
     border-style: solid;
   }
+
+  #webappv2 .image-uploader label input {
+    display: none;
+  }
+
   #webappv2 .md-sidenav-right{
     top:0;
   }
