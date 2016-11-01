@@ -37,7 +37,9 @@ export default class navbarController {
     //is also used for path-select to decide if .selected should be added or not to that particular item for dynamic class
     //destination: if given, will be used as a destination instead of the id, useful when parent is abstract, with a default view (like menus and menus.list)
     this.menu=[
-      {name: gettextCatalog.getString("Venue Settings"), icon:"store", id:"venueSettings"},
+      {name: gettextCatalog.getString("Venue Settings"), icon:"store", id:"venueSettings", children:[
+        {name: gettextCatalog.getString("Venue Details"), id:"venueDetails"},
+      ]},
       {name: gettextCatalog.getString("Menus"), icon:"list", id:"menus", children:[
         {name: gettextCatalog.getString("My menus"), id:"menus", destination:"list", exclusions:["itemList","modifiers"]},
         {name: gettextCatalog.getString("Items"), id:"itemList"},
