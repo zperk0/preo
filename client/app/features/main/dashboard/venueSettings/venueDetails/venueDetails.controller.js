@@ -17,7 +17,7 @@ export default class venueDetailsController {
           return this.venue.settings.update()
         })
         .then((settings)=>{
-          this.venue.settings = settings;
+          angular.extend(this.venue.settings,settings);
             this.toggleEdit();
             this.Spinner.hide("venue-details-save");
             this.Snack.show(this.LabelService.SNACK_VENUE_DETAILS_SUCCESS)

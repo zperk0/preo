@@ -1,82 +1,75 @@
+'use strict';
 
-export default class venueDetailsController {
-  static get UID(){
-    return "venueDetailsController"
-  }
+import venueDetails from './';
 
-    saveNewSettings(){
-      return Preoday.VenueTaxSettings.save(angular.extend({},this.taxSettings, {venueId:this.$stateParams.venueId})); //extend so if this fails for any reason it still triggers a save instead of update
-    }
+describe('venueDetails Controller', function () {
 
-    updateSettings(){
-      return this.taxSettings.update();
-    }
+    let
+      $rootScope,
+      VenueDetailsCtrl,
+      Spinner,
+      $stateParams,
+      $scope,
+      $timeout,
+      ErrorService,
+      VenueService,
+      $controller,
+      LabelService,
+      $q,
+      Snack;
 
-    saveOrUpdate(){
-      return this.taxSettings.venueId ? this.updateSettings.bind(this) : this.saveNewSettings.bind(this);
-    }
-
-    submit(){
-      var saveOrUpdate = this.saveOrUpdate();
-      if (this.sellerForm.$valid){
-        this.Spinner.show("seller-details-save");
-        saveOrUpdate()
-          .then((taxSettings)=>{
-            this.taxSettings = taxSettings
-            this.toggleEdit();
-            this.Spinner.hide("seller-details-save");
-            this.Snack.show(this.LabelService.SNACK_SELLER_SUCCESS)
-          }, (err)=>{
-            console.log("seller-details" ,err);
-            this.Spinner.hide("seller-details-save");
-            this.Snack.showError(this.LabelService.SNACK_SELLER_ERROR)
-          }).catch((err)=>{
-            console.log("seller-details",err)
-            this.Spinner.hide("seller-details-save");
-            this.Snack.showError(this.LabelService.SNACK_SELLER_ERROR)
-          })
+    var venue = new Preoday.Venue.constructor({
+      id:1,
+      name:"test venue",
+      settings:{
+        venueId:1
       }
-      return saveOrUpdate;
+    });
+
+    beforeEach(angular.mock.module('webapp'));
+    beforeEach(angular.mock.module(venueDetails));
+
+    beforeEach(angular.mock.inject(function ($injector) {
+      $rootScope = $injector.get('$rootScope');
+      $controller = $injector.get('$controller');
+      $timeout = $injector.get('$timeout');
+      $stateParams = $injector.get('$stateParams');
+      LabelService = $injector.get('LabelService');
+      ErrorService = $injector.get('ErrorService');
+      VenueService = $injector.get('VenueService');
+      Spinner = $injector.get('Spinner');
+      $q = $injector.get('$q');
+      $scope = $rootScope.$new();
+    }));
+
+    beforeEach(function(){
+      $stateParams.venueId=9;
+    });
+
+    function _startController(ngModel = []) {
+      VenueService.currentVenue = venue;
+      VenueDetailsCtrl = $controller('venueDetailsController', {
+        '$scope': $scope
+      });
     }
 
-    toggleEdit(){
-      this.isEdit = !this.isEdit;
-    }
 
-    init(){
-      this.Spinner.show("seller-details");
-      return Preoday.VenueTaxSettings.get(this.$stateParams.venueId)
-        .then((taxSettings)=>{
-          this.taxSettings = taxSettings;
-          this.Spinner.hide("seller-details");
-        }, (err)=>{
-          if (err && err.status && err.status == 404){
-            this.taxSettings = new Preoday.VenueTaxSettings();
-          } else {
-            this.showError();
-          }
-          this.Spinner.hide("seller-details");
-        })
-    }
+    it("Init should set venue", function() {
+      _startController();
+      $rootScope.$digest();
+      expect(VenueDetailsCtrl.venue).toEqual(venue);
+    });
 
-    showError(){
-      this.$timeout(()=>{
-        this.isError = true;
-        this.Spinner.hide("seller-details");
-      })
-    }
 
-  /* @ngInject */
-  constructor(Spinner, Snack, $stateParams, ErrorService, LabelService, $timeout) {
-    "ngInject";
-    this.isEdit = false;
-    this.Spinner = Spinner;
-    this.Snack = Snack;
-    this.$stateParams = $stateParams;
-    this.ErrorService = ErrorService;
-    this.LabelService = LabelService;
-    this.isError = false;
-    this.$timeout = $timeout;
-    this.init();
-  }
-}
+    it("When clicking edit should tooggle form editable", function() {
+      spyOn(Preoday.VenueTaxSettings, 'get').and.callFake(function(){return $q.reject({status:400, message:"Not found"})});
+      _startController();
+
+      expect(VenueDetailsCtrl.isEdit).toEqual(false);
+      VenueDetailsCtrl.toggleEdit();
+      expect(VenueDetailsCtrl.isEdit).toEqual(true);
+      VenueDetailsCtrl.toggleEdit();
+      expect(VenueDetailsCtrl.isEdit).toEqual(false);
+    });
+
+});
