@@ -20,12 +20,12 @@ export default function eventScheduleList($timeout){
       ctrl.el = el;
       el[0].style.maxHeight = 0;
       el.on('webkitTransitionEnd transitionend oTransitionEnd webkitTransitionEnd',(e)=>{
-        if (e.propertyName === 'max-height'){
+        if (e.propertyName === 'max-height' || (e.originalEvent && e.originalEvent.propertyName === 'max-height')) {
           $timeout(()=>{
             ctrl.event.$expanding = false;
           })
         }
-      })      
+      })
     }
   }
 }
