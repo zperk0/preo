@@ -65,6 +65,8 @@ export default class ErrorService {
 
     // EVENT OUTLET LOCATION
     this.TAX_GROUP_ASSIGNED_TO_ITEM = {code:'TAX_GROUP_ASSIGNED_TO_ITEM', message:gettextCatalog.getString("Can’t delete this tax code while there are menu items using it."), title: 'Sorry'};
+    // EVENT OUTLET LOCATION
+    this.VENUE_WITHOUT_ADDRESS = {code:'VENUE_WITHOUT_ADDRESS', message:gettextCatalog.getString("You need to set up your address before selecting your location.  You'll be redirected to your Details page to configure your address."), title: 'Address not found'};
 
   }
 }

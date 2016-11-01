@@ -59,10 +59,11 @@ export default class LabelService {
     this.TITLE_DELETE_TAX_GROUP = gettextCatalog.getString("Delete tax group?");
     this.CONTENT_DELETE_TAX_GROUP = gettextCatalog.getString("Are you sure you want to delete this tax group?");
 
-
-    //TAXES
     this.SNACK_VENUE_DETAILS_SUCCESS = gettextCatalog.getString("Venue details saved");
     this.SNACK_VENUE_DETAILS_ERROR = gettextCatalog.getString("Venue details not saved");
+
+    this.SNACK_VENUE_LOCATION_SUCCESS = gettextCatalog.getString("Venue location saved");
+    this.SNACK_VENUE_LOCATION_ERROR = gettextCatalog.getString("Venue location not saved");
 
   }
 }

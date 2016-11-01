@@ -7,10 +7,15 @@ import controller from './venueLocation.controller'
  */
 /* @ngInject */
 export default function routes($stateProvider) {
-  $stateProvider.state("venueLocation", {
+  "ngInject";
+  $stateProvider.state("main.dashboard.venueSettings.venueLocation", {
     url: "/venueLocation",
-    template: require("./venueLocation.tpl.html"),
-    controller: controller.UID,
-    controllerAs: "venueLocation"
+     views:{
+      venueSettingsContent:{
+        template: require("./venueLocation.tpl.html"),
+        controller: controller.UID,
+        controllerAs: "venueLocationCtrl"
+      }
+    }
   });
 }
