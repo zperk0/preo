@@ -34,7 +34,7 @@
     "croppie": "^2.2.0",
     "jscore": "git+ssh://git@bitbucket.org/preoday/javascript-core.git",
     "md-color-picker": "^0.2.6",
-    "mdPickers": "git+ssh://git@bitbucket.org/ronaldozanoni/mdpickers.git",
+    "mdPickers": "git+ssh://git@bitbucket.org/preoday/mdpickers.git",
     "moment": "^2.12.0",
     "ng-annotate-webpack-plugin": "^0.1.3",
     "scriptjs": "^2.5.8",
