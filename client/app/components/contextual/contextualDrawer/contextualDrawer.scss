@@ -18,7 +18,7 @@
 
   &.contextual-drawer-outlets {
     .repeat-holder{
-      .sort-holder{    
+      .sort-holder{
         padding-top: 22px;
       }
     }
@@ -80,8 +80,10 @@
   .no-results{
     padding: 16px;
   }
-  .item-actions{
-    display: none;
+  &:not(.contextual-drawer-delivery-zones){
+    .item-actions{
+      display: none;
+    }
   }
   .card-item{
     .sv-dropzone{
