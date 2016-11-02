@@ -26,7 +26,7 @@
     display: none;
   }
 
-  #webappv2  md-toolbar{
+  #webappv2  .preo-toolbar {
     display: none;
   }
 
@@ -58,6 +58,11 @@
     border-radius: 0;
     border-style: solid;
   }
+
+  #webappv2 .image-uploader label input {
+    display: none;
+  }
+
   #webappv2 .md-sidenav-right{
     top:0;
   }
@@ -97,6 +102,17 @@
     top: -50px !important;
     z-index: 126 !important;
   }
+
+  #webappv2 .md-datepicker-input {
+    border-bottom: 0px;
+  }
+
+  #webappv2 .md-datepicker-focused {
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(224,224,224);
+  }
+
+
   .contain-to-grid{
     position: fixed;
     z-index: 123;
