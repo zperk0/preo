@@ -31,6 +31,7 @@
                     <input type="text" required name="venueAddress1" ng-model="venueDetailsCtrl.venue.address1" ng-disabled="!venueDetailsCtrl.isEdit"  ng-maxlength="256">
                     <div ng-messages="venueDetailsCtrl.venueDetailsForm.venueAddress1.$error">
                       <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueAddress1.$error.maxlength}">Max length is 256.</div>
+                      <div ng-message="required" translate>This is required.</div>
                     </div>
                 </md-input-container>
                   <md-input-container class="md-block no-spacer">
@@ -52,6 +53,7 @@
                     <input type="text" required name="city" ng-model="venueDetailsCtrl.venue.city" ng-disabled="!venueDetailsCtrl.isEdit"  ng-maxlength="100">
                     <div ng-messages="venueDetailsCtrl.venueDetailsForm.city.$error">
                       <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.city.$error.maxlength}">Max length is 100.</div>
+                      <div ng-message="required" translate>This is required.</div>
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block no-spacer">
@@ -59,6 +61,8 @@
                     <input type="text" required name="postcode" ng-model="venueDetailsCtrl.venue.postcode" ng-disabled="!venueDetailsCtrl.isEdit"  ng-maxlength="100">
                     <div ng-messages="venueDetailsCtrl.venueDetailsForm.postcode.$error">
                       <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.postcode.$error.maxlength}">Max length is 100.</div>
+                      <div ng-message="required" translate>This is required.</div>
+
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block no-spacer">
@@ -66,6 +70,8 @@
                     <input type="text" required name="phone" ng-model="venueDetailsCtrl.venue.settings.deliveryPhone" ng-disabled="!venueDetailsCtrl.isEdit"  ng-maxlength="100">
                     <div ng-messages="venueDetailsCtrl.venueDetailsForm.phone.$error">
                       <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.phone.$error.maxlength}">Max length is 100.</div>
+                      <div ng-message="required" translate>This is required.</div>
+
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block no-spacer">
@@ -74,6 +80,7 @@
                     <div ng-messages="venueDetailsCtrl.venueDetailsForm.venueEmail.$error">
                       <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueEmail.$error.maxlength}">Max length is 100.</div>
                       <div ng-message="email" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueEmail.$error.email}">Invalid email</div>
+                      <div ng-message="required" translate>This is required.</div>
                     </div>
                 </md-input-container>
             </div>

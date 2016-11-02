@@ -65,5 +65,8 @@ export default class LabelService {
     this.SNACK_VENUE_LOCATION_SUCCESS = gettextCatalog.getString("Venue location saved");
     this.SNACK_VENUE_LOCATION_ERROR = gettextCatalog.getString("Venue location not saved");
 
+    this.SNACK_VENUE_SERVICES_SUCCESS = gettextCatalog.getString("Services saved");
+    this.SNACK_VENUE_SERVICES_ERROR = gettextCatalog.getString("Services not saved");
+
   }
 }

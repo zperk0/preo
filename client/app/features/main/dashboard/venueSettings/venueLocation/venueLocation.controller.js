@@ -15,10 +15,8 @@ export default class venueLocationController {
 
   submit(){
       this.Spinner.show("venue-LOCATION-save");
-      var venueCopy = angular.copy(this.venue);
-      delete venueCopy.ccySymbol;
       try {
-        venueCopy.update()
+        this.VenueService.updateVenue()
         .then((venue)=>{
           angular.extend(this.venue,venue);
             this.Spinner.hide("venue-LOCATION-save");
@@ -47,7 +45,7 @@ export default class venueLocationController {
 
   init(){
     this.Spinner.show("venue-location");
-    this.venue = this.VenueService.currentVenue ;
+    this.venue = this.VenueService.currentVenue;
     if (this.venue.address1){
       this.showMap = true;
     } else {

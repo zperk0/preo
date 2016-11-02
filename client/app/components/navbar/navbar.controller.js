@@ -38,8 +38,10 @@ export default class navbarController {
     //destination: if given, will be used as a destination instead of the id, useful when parent is abstract, with a default view (like menus and menus.list)
     this.menu=[
       {name: gettextCatalog.getString("Venue Settings"), icon:"store", id:"venueSettings", children:[
-        {name: gettextCatalog.getString("Venue Details"), id:"venueDetails"},
-        {name: gettextCatalog.getString("Venue Location"), id:"venueLocation"},
+        {name: gettextCatalog.getString("Details"), id:"venueDetails"},
+        {name: gettextCatalog.getString("Location"), id:"venueLocation"},
+        {name: gettextCatalog.getString("Services"), id:"venueServices"},
+        {name: gettextCatalog.getString("Delivery Zones"), id:"venueDeliveryZones"},
       ]},
       {name: gettextCatalog.getString("Menus"), icon:"list", id:"menus", children:[
         {name: gettextCatalog.getString("My menus"), id:"menus", destination:"list", exclusions:["itemList","modifiers"]},
