@@ -1,0 +1,17 @@
+<div class='delivery-zone ng-enter'>
+    <card-item has-actions="deliveryZoneCtrl.hasActions"
+              selected="deliveryZoneCtrl.deliveryZone.$selected"
+              deleted="deliveryZoneCtrl.deliveryZone.$deleted">
+     <card-item-title
+        has-visible="true"
+        show-visible="!deliveryZoneCtrl.deliveryZone.visible"
+        ng-attr-data-id="{{deliveryZoneCtrl.deliveryZone.id}}">
+        <span class='name' flex>{{deliveryZoneCtrl.deliveryZone.name}}</span>
+        </card-item-title>
+
+    <card-item-actions is-visible="deliveryZoneCtrl.deliveryZone.visible"
+                       on-delete="deliveryZoneCtrl.onDelete()"
+                       on-edit="deliveryZoneCtrl.onEdit()"
+                       on-visibility="deliveryZoneCtrl.onVisibility(newStatus)"></card-item-actions>
+  </card-item>
+</div>

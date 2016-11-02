@@ -1,4 +1,4 @@
-export default function mdMap(UtilsService, $timeout, $q){
+export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastEvents){
   'ngInject';
   return {
     restrict: 'E',
@@ -40,11 +40,20 @@ export default function mdMap(UtilsService, $timeout, $q){
          var marker = new google.maps.Marker({
               position: myLatlng,
               map: scope.map,
-              draggable:true,
+              draggable:!!(scope.onMarkerDrop),
               icon: '/images/map-pin.png'
           });
          marker.addListener('dragend', handleDrop);
       } //end addMarker
+
+      function handleResize(){
+        $timeout(function(){
+          var center = scope.map.getCenter();
+          google.maps.event.trigger(scope.map, "resize");
+          scope.map.setCenter(center);
+        })
+
+      }
 
       function initMap(){
         const myOptions = {
@@ -53,9 +62,15 @@ export default function mdMap(UtilsService, $timeout, $q){
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         scope.map = new google.maps.Map(document.getElementById(attr.id), myOptions);
+
+        google.maps.event.addDomListener(window, "resize", handleResize);
+        console.log("set on")
+        $rootScope.$on(BroadcastEvents._ON_NAVBAR_TOGGLE,handleResize);
+
         if (scope.markerPos){
           addMarker(scope.markerPos)
         }
+
         google.maps.event.addListenerOnce(scope.map, 'idle', function(){
           $timeout(function () {
             scope.onLoad && scope.onLoad();

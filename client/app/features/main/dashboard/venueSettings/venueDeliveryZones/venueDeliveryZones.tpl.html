@@ -1,3 +1,7 @@
-<div>
-  venueDeliveryZones
+<div flex layout="column" class='venue-delivery-zones layout-left-right'>
+    <md-map ng-if="venueDeliveryZonesCtrl.showMap" on-load="venueDeliveryZonesCtrl.mapLoaded()" id="venue-map" venue="venueDeliveryZonesCtrl.venue"></md-map>
+    <div class="content-spinner" ng-if="!venueDeliveryZonesCtrl.isMapLoaded">
+      <spinner></spinner>
+    </div>
+      <contextual-drawer-delivery-zones></contextual-drawer-delivery-zones>
 </div>

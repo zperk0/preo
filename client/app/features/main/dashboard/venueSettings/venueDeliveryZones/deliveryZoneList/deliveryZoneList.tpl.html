@@ -1,0 +1,13 @@
+<div class='delivery-zone-list'>
+  <card-item-list
+        collection="deliveryZoneListCtrl.deliveryZones"
+        has-new="true"
+        tooltip="{{ 'Add delivery zone' | translate }}"
+        on-click-new="deliveryZoneListCtrl.showCreateItem()">
+           <delivery-zone
+               ng-repeat="deliveryZone in deliveryZoneListCtrl.deliveryZones | orderBy: 'id'"
+               delivery-zone="deliveryZone"
+               ng-attr-data-id="{{deliveryZones.id}}">
+             </delivery-zone>
+  </card-item-list>
+</div>
