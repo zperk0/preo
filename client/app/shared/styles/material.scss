@@ -46,9 +46,6 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
   }
 
   md-checkbox{
-    .md-ink-ripple{
-      color:$colorPrimary;
-    }
     .md-icon{
 
       &:after{
@@ -195,12 +192,15 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
     }
   }
 }
-md-switch{
+md-switch, md-checkbox{
   &.md-checked {
     .md-ink-ripple {
       color: rgba(2,136,209,0.26);
     }
   }
+}
+md-checkbox.md-checked.md-focused{
+background-color:rgba(2,136,209,0.26);
 }
 
 md-switch.md-default-theme.md-checked .md-bar, md-switch.md-checked .md-bar{
@@ -211,7 +211,7 @@ md-switch.md-default-theme.md-checked .md-thumb, md-switch.md-checked .md-thumb{
   background-color:#0288D1;
 
 }
-md-switch.md-default-theme.md-checked.md-focused .md-thumb:before, md-switch.md-checked.md-focused .md-thumb:before{
+md-switch.md-default-theme.md-checked.md-focused .md-thumb:before, md-switch.md-checked.md-focused .md-thumb:before, md-checkbox.md-default-theme.md-checked.md-focused .md-container:before, md-checkbox.md-checked.md-focused .md-container:before{
   background-color:rgba(2,136,209,0.26);
 }
 

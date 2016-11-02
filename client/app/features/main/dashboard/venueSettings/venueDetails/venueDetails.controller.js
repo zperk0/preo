@@ -7,11 +7,8 @@ export default class venueDetailsController {
   submit(){
     if (this.venueDetailsForm.$valid){
       this.Spinner.show("venue-details-save");
-      var venueCopy = angular.copy(this.venue);
-      // delete venueCopy.settings;
-      delete venueCopy.ccySymbol;
       try {
-        venueCopy.update()
+        this.VenueService.updateVenue()
         .then((venue)=>{
           angular.extend(this.venue,venue);
           return this.venue.settings.update()

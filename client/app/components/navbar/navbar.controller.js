@@ -41,6 +41,7 @@ export default class navbarController {
         {name: gettextCatalog.getString("Details"), id:"venueDetails"},
         {name: gettextCatalog.getString("Location"), id:"venueLocation"},
         {name: gettextCatalog.getString("Services"), id:"venueServices"},
+        {name: gettextCatalog.getString("Delivery Zones"), id:"venueDeliveryZones"},
       ]},
       {name: gettextCatalog.getString("Menus"), icon:"list", id:"menus", children:[
         {name: gettextCatalog.getString("My menus"), id:"menus", destination:"list", exclusions:["itemList","modifiers"]},

@@ -232,6 +232,12 @@ export default class VenueService {
 
   }
 
+  updateVenue(){
+    var venueCopy = angular.copy(this.currentVenue);
+    delete venueCopy.ccySymbol;
+    return venueCopy.update()
+  }
+
   constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, gettextCatalog, UserService, ErrorService) {
     "ngInject";
     this.$q = $q;
