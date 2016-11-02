@@ -131,6 +131,12 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
 
   md-input-container {
 
+    .input-with-label{
+      .input-wrapper{
+        margin-right:16px;
+      }
+    }
+
     &.no-spacer{
       .md-errors-spacer{
         display: none;
@@ -160,4 +166,55 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
       }
     }
   }
+
+  md-select {
+    .md-select-icon {
+      color: rgba(0,0,0,0.38);
+      font-size: 13px;
+    }
+  }
+}
+
+.md-select-menu-container {
+  md-select-menu {
+    md-option {
+      &:not([disabled]) {
+        &:hover {
+          background-color: rgb(238,238,238);
+        }
+      }
+
+      &[selected] {
+        color: rgba(0,0,0,0.87);
+        background-color: rgb(238,238,238);
+      }
+
+      em {
+        padding-right: 10px;
+      }
+    }
+  }
+}
+md-switch{
+  &.md-checked {
+    .md-ink-ripple {
+      color: rgba(2,136,209,0.26);
+    }
+  }
+}
+
+md-switch.md-default-theme.md-checked .md-bar, md-switch.md-checked .md-bar{
+  background-color:#7ABDE2;
+}
+
+md-switch.md-default-theme.md-checked .md-thumb, md-switch.md-checked .md-thumb{
+  background-color:#0288D1;
+
+}
+md-switch.md-default-theme.md-checked.md-focused .md-thumb:before, md-switch.md-checked.md-focused .md-thumb:before{
+  background-color:rgba(2,136,209,0.26);
+}
+
+i, em {
+  font-style: italic !important;
 }
