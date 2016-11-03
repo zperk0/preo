@@ -66,7 +66,7 @@ echo $overrides;
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/v2/v1.css"/>
 </head>
 <body>
-  <div id="wrap">
+  <div id="wrap" class="<?echo $_GET['class']?>">
     <div id="webappv2" class='webapp'>
       <toolbar></toolbar>
       <navbar></navbar>
@@ -75,5 +75,5 @@ echo $overrides;
     </div>
   </div>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
-<script type="text/javascript" src="/v2/vendor.bundle.e68f140d23554144d378.js"></script><script type="text/javascript" src="/v2/events.bundle.794b011694b588941d1d.js"></script><script type="text/javascript" src="/v2/outlets.bundle.35a3afaa8bb17e8c12dd.js"></script><script type="text/javascript" src="/v2/app.bundle.88d17d07fda45d023acc.js"></script></body>
+<script type="text/javascript" src="/v2/vendor.bundle.8fbf5e7311b02f41bd5f.js"></script><script type="text/javascript" src="/v2/events.bundle.167f03104708c8090163.js"></script><script type="text/javascript" src="/v2/outlets.bundle.32ed55c7ee74c6885703.js"></script><script type="text/javascript" src="/v2/app.bundle.4325966451f510beca34.js"></script></body>
 </html>
