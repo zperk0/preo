@@ -21,6 +21,10 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
               scope.venue.latitude = location.lat();
               scope.venue.longitude = location.lng();
               placeCenterAndPin();
+            },()=>{
+              placeCenterAndPin();
+            }).catch(()=>{
+              placeCenterAndPin();
             })
         } else {
           placeCenterAndPin();
@@ -109,10 +113,16 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
           if (results && results instanceof Object && results.length) {
             deferred.resolve(results['0'].geometry.location);
           } else {
-            deferred.reject();
-          }
-        });
-
+              geocoderRequest.address = venue.city + ", "  + venue.country;
+              geocoder.geocode(geocoderRequest, (results, status)=>{
+                if (results && results instanceof Object && results.length) {
+                  deferred.resolve(results['0'].geometry.location);
+                } else{
+                  deferred.reject();
+                }
+              });
+            }
+          });
         return deferred.promise;
       };
 
