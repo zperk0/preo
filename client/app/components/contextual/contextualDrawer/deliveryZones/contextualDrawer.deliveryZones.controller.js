@@ -11,10 +11,12 @@ export default class contextualDrawerOutletsController {
 
   }
 
-  constructor($scope, $stateParams, $mdSidenav) {
+  constructor($scope, $stateParams, $mdSidenav, DeliveryZoneService) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
     this.cancelledOutlets = [];
-    this.data = [{name:'dz1'}, {name:'dz2'}];
+    DeliveryZoneService.getDeliveryZones().then(()=>{
+      this.data = DeliveryZoneService.data
+    })
   }
 }

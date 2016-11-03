@@ -1,3 +1,78 @@
- <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-delivery-zones md-whiteframe-4dp" md-component-id="deliveryZonesEdit">
-   Delivery zone Edit form!
+ <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-delivery-zones-edit md-whiteframe-4dp" md-component-id="deliveryZonesEdit">
+
+    <form name="drawerDeliveryZonesEditCtrl.deliveryZoneForm" ng-submit="drawerDeliveryZonesEditCtrl.submit()" novalidate>
+        <div class='contextual-list'>
+        <md-tabs md-dynamic-height md-stretch-tabs="always">
+          <md-tab label="{{'Basics' | translate}}">
+                 <md-input-container class="md-block no-spacer">
+                    <label translate>Zone name</label>
+                    <input type="text" required name="zoneName" ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.name" ng-maxlength="100">
+                    <div ng-messages="drawerDeliveryZonesEditCtrl.sellerForm.zoneName.$error">
+                      <div ng-message="maxlength" translate ng-class="{'activated': drawerDeliveryZonesEditCtrl.sellerForm.zoneName.$error.maxlength}">Max length is 100.</div>
+                      <div ng-message="required" translate>This is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block no-spacer">
+                    <label translate>Delivery Fee</label>
+                    <input type="text"  required required name="zoneFee" valid-price ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.fee.amount" >
+                    <div ng-messages="drawerDeliveryZonesEditCtrl.sellerForm.zoneFee.$error">
+                      <div ng-message="required" translate>This is required.</div>
+                      <div ng-message="maxDecimalValue" translate>Max value is 99999999.99.</div>
+                  </div>
+                </md-input-container>
+                <md-input-container class="md-block no-spacer inline-mins">
+                    <label translate>Delivery Time</label>
+                    <div class='input-with-label' flex layout="row" layout-align="space-between start">
+                      <div class='input-wrapper' flex="grow">
+                        <input type="text" name="zoneLeadTime" valid-number max-integer-value ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.leadTime">
+                      </div>
+                      <div class='mins' flex="nogrow" translate>Mins</div>
+                    </div>
+                    <div ng-messages="drawerDeliveryZonesEditCtrl.sellerForm.zoneLeadTime.$error">
+                    <div ng-message="required" translate>This is required.</div>
+                  </div>
+                </md-input-container>
+                <md-input-container class="md-block no-spacer">
+                  <div class='checkbox-label' translate>Set area by:</div>
+                  <md-radio-group class='type' ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.type">
+                    <md-radio-button value="DISTANCE" class="md-primary">{{'Distance' | translate}}</md-radio-button>
+                    <md-radio-button value="CUSTOM" class="md-primary"> {{'Custom' | translate}} </md-radio-button>
+                  </md-radio-group>
+                </md-input-container>
+                <md-input-container ng-if="drawerDeliveryZonesEditCtrl.editableDeliveryZone.type === 'DISTANCE'" class="md-block no-spacer">
+                 <md-slider ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.distance" md-discrete min="1" step="0.5" max="10"></md-slider>
+                </md-input-container>
+                <div class='custom-text' ng-if="drawerDeliveryZonesEditCtrl.editableDeliveryZone.type === 'CUSTOM'">
+                  <span class='text-info' ng-if="!drawerDeliveryZonesEditCtrl.isEditing" ng-click="drawerDeliveryZonesEditCtrl.setEditing(true)">
+                    <icon>info</icon> {{'Click on the map to begin drawing your custom area. Connect the first and last points to finish.' | translate}}
+                  </span>
+                  <span class='text-link' ng-click="drawerDeliveryZonesEditCtrl.setEditing(false)" translate ng-if="drawerDeliveryZonesEditCtrl.isEditing">
+                    Clear
+                  </span>
+                </div>
+            </md-tab>
+            <md-tab label="{{'Advanced' | translate}}">
+                <md-input-container class="md-block no-spacer">
+                    <label translate>Minimum order value</label>
+                    <input type="text" name="minOrder" valid-price ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.minOrder" >
+                    <div ng-messages="drawerDeliveryZonesEditCtrl.sellerForm.minOrder.$error">
+                      <div ng-message="maxDecimalValue" translate>Max value is 99999999.99.</div>
+                  </div>
+                </md-input-container>
+                <md-input-container class="md-block no-spacer">
+                    <label translate>Free delivery order value</label>
+                    <input type="text" name="maxBasket" valid-price ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.fee.maxBasket" >
+                    <div ng-messages="drawerDeliveryZonesEditCtrl.sellerForm.maxBasket.$error">
+                      <div ng-message="maxDecimalValue" translate>Max value is 99999999.99.</div>
+                  </div>
+                </md-input-container>
+            </md-tab>
+        </md-tabs>
+         </div>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button type="submit" class='md-raised' translate>
+              Done
+          </md-button>
+        </md-card-actions>
+    </form>
 </md-sidenav>

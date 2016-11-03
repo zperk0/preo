@@ -3,6 +3,6 @@
     <div class="content-spinner" ng-if="!venueDeliveryZonesCtrl.isMapLoaded">
       <spinner></spinner>
     </div>
-      <contextual-drawer-delivery-zones></contextual-drawer-delivery-zones>
+      <contextual-drawer-delivery-zones ng-if="venueDeliveryZonesCtrl.showDeliveryZonesDrawer"></contextual-drawer-delivery-zones>
       <contextual-drawer-delivery-zones-edit></contextual-drawer-delivery-zones-edit>
 </div>

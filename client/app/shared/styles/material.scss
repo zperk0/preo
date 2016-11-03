@@ -36,6 +36,82 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
 
 #webappv2{
 
+  md-slider {
+
+    .md-track {
+      background-color: #c8c8c8;
+      &.md-track-fill{
+        background-color: $colorPrimary;
+      }
+    }
+    .md-track-ticks {
+      display: none;
+    }
+     &.md-min {
+      .md-thumb:after {
+        background-color: $colorPrimary;
+        border-color: $colorPrimary;
+      }
+
+      .md-focus-ring {
+        background-color: $colorPrimary;
+      }
+
+      &[md-discrete] {
+        .md-thumb {
+          &:after {
+            background-color: $colorPrimary;
+            border-color: transparent;
+          }
+        }
+
+        .md-sign {
+          background-color: $colorPrimary;
+          &:after {
+            border-top-color: $colorPrimary;
+          }
+        }
+    }
+    }
+    .md-thumb:after {
+      border-color: $colorPrimary;
+      background-color: $colorPrimary;
+    }
+    .md-sign {
+      background-color: $colorPrimary;
+      &:after {
+        border-top-color: $colorPrimary;
+      }
+    }
+  }
+
+  md-radio-button.md-default-theme .md-off, md-radio-button .md-off {
+    border-color: #757575;
+  }
+  md-radio-group.md-default-theme:not([disabled]) .md-primary .md-on, md-radio-group:not([disabled]) .md-primary .md-on, md-radio-group.md-default-theme:not([disabled]).md-primary .md-on, md-radio-group:not([disabled]).md-primary .md-on, md-radio-button.md-default-theme:not([disabled]) .md-primary .md-on, md-radio-button:not([disabled]) .md-primary .md-on, md-radio-button.md-default-theme:not([disabled]).md-primary .md-on, md-radio-button:not([disabled]).md-primary .md-on{
+    background-color: #757575;
+  }
+
+  md-tabs-wrapper{
+    background:#F5F5F5;
+
+    md-tab-item{
+      span{
+        color: #424242;
+      }
+
+      &.md-active{
+        span{
+          color:$colorPrimary;
+        }
+      }
+    }
+    md-ink-bar{
+      color:$colorPrimary;
+      background-color:$colorPrimary;;
+    }
+  }
+
   //sidenav right should not show backdrop, property disable backdrop isnt working there
   .md-sidenav-backdrop{
     display: none;
@@ -128,6 +204,18 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
 
   md-input-container {
 
+    &.inline-mins{
+      input {
+        margin-right: 16px;
+      }
+      .mins{
+        color:#808080;
+        font-size:16px;
+        position: relative;
+        top: 10px;
+      }
+    }
+
     .input-with-label{
       .input-wrapper{
         margin-right:16px;
@@ -199,8 +287,9 @@ md-switch, md-checkbox{
     }
   }
 }
+
 md-checkbox.md-checked.md-focused{
-background-color:rgba(2,136,209,0.26);
+  background-color:rgba(2,136,209,0.26);
 }
 
 md-switch.md-default-theme.md-checked .md-bar, md-switch.md-checked .md-bar{

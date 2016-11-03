@@ -3,3 +3,43 @@
       width: calc(100% - 657px);
     }
 }
+
+.contextual-drawer-delivery-zones{
+  height: 100%;
+
+}
+ .contextual-drawer-delivery-zones-edit {
+  .contextual-list{
+    height: calc(100% - 64px - 49px)
+  }
+  form{
+    height: 100%;
+  }
+
+  md-radio-button{
+    display: inline-block;
+    margin-right: 24px;
+    .md-label span{
+      color:#757575;
+    }
+  }
+
+  .checkbox-label{
+    font-size: 16px;
+    color: #424242;
+    line-height: 16px;
+    margin-bottom: 8px;
+  }
+  .text-info {
+    font-size: 14px;
+    color: #333333;
+    line-height: 20px;
+    md-icon{
+      display: block;
+      float: left;
+      margin-right: 12px;
+      position: relative;
+      top: -4px;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 <div class='menu-item-size'>
   <md-radio-group class='size' ng-if="menuItemSizeCtrl.hasNestedModifierFeature()" ng-change="menuItemSizeCtrl.onSizeSelect()" ng-model="menuItemSizeCtrl.ngModel.$isMultiple">
-      <md-radio-button ng-value="false" class="md-primary md-hue-2">{{'Single Size' | translate}}</md-radio-button>
-      <md-radio-button ng-value="true" class="md-primary md-hue-2"> {{'Multiple Sizes' | translate}} </md-radio-button>
+      <md-radio-button ng-value="false" class="md-primary ">{{'Single Size' | translate}}</md-radio-button>
+      <md-radio-button ng-value="true" class="md-primary "> {{'Multiple Sizes' | translate}} </md-radio-button>
   </md-radio-group>
   <div ng-if="!menuItemSizeCtrl.ngModel.$isMultiple" class='price' layout="row" layout-align="start center">
     <md-input-container flex>

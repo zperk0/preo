@@ -5,14 +5,18 @@ export default class deliveryZoneListController {
   }
 
 
-  constructor($scope, $stateParams, Spinner, Snack, ItemService) {
+  showCreateItem(){
+    this.DeliveryZoneService.showCreateDeliveryZone();
+  }
+
+  constructor($scope, $stateParams, Spinner, Snack, DeliveryZoneService) {
     "ngInject";
 
-    $scope.results = this.items;
 
     this.$scope = $scope;
     this.$stateParams = $stateParams;
     this.Spinner = Spinner;
+    this.DeliveryZoneService = DeliveryZoneService;
     this.Snack = Snack;
 
   }

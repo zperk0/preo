@@ -12,13 +12,13 @@
       <md-button ng-if="cardItem.showCardActions && vm.onVisibility" ng-show="vm.isVisible" class="md-icon-button" ng-click="vm.onVisibility({newStatus:false})">
         <icon>visibility_off</icon> <!-- visibility_off -->
         <md-tooltip md-direction="bottom">
-          {{ 'Hide from menu' | translate }}
+          {{vm.visibleMessage}}
         </md-tooltip>
       </md-button>
       <md-button ng-if="cardItem.showCardActions && vm.onVisibility" ng-show="!vm.isVisible" class="md-icon-button" ng-click="vm.onVisibility({newStatus:true})">
         <icon>visibility</icon> <!-- visibility_off -->
         <md-tooltip md-direction="bottom">
-          {{'Show on menu' | translate}}
+          {{vm.invisibleMessage}}
         </md-tooltip>
       </md-button>
       <md-button ng-if="cardItem.showCardActions && vm.onClone" class="md-icon-button" ng-click="vm.onClone({$event:$event})">

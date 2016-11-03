@@ -1,7 +1,7 @@
 <div class='delivery-zone-list'>
   <card-item-list
         collection="deliveryZoneListCtrl.deliveryZones"
-        has-new="true"
+        has-new="deliveryZoneListCtrl.deliveryZones.length <= 4"
         tooltip="{{ 'Add delivery zone' | translate }}"
         on-click-new="deliveryZoneListCtrl.showCreateItem()">
            <delivery-zone

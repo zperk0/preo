@@ -31,7 +31,7 @@ export default class venueDeliveryZonesController {
 
    }
    this.$timeout(()=>{
-      this.contextual.showDrawer("deliveryZones");
+      this.showDeliveryZonesDrawer=true;
       this.Spinner.hide("venue-delivery-zones");
     })
   }
@@ -60,6 +60,7 @@ export default class venueDeliveryZonesController {
     this.showMap = false
     this.isMapLoaded=false;
     this.contextual = contextual;
+    this.showDeliveryZonesDrawer=false;
     this.init();
   }
 }

@@ -11,18 +11,19 @@
         <md-card-content ng-class="{active:venueServicesCtrl.venue.pickupFlag}">
           <form name="venueServicesCtrl.collectionForm" ng-submit="venueServicesCtrl.submit()" novalidate>
               <div class='form-content'>
-                   <md-input-container class="md-block no-spacer">
+                   <md-input-container class="md-block no-spacer inline-mins">
                       <label translate>Lead Time</label>
-                      <input ng-blur="venueServicesCtrl.updateVenueSettings()" type="text" valid-number name="leadTime" ng-model="venueServicesCtrl.venue.settings.leadTime" >
-                  </md-input-container>
-                  <md-input-container class="md-block no-spacer inline-mins">
-                      <label translate>Minimum order value</label>
                       <div class='input-with-label' flex layout="row" layout-align="space-between start">
                         <div class='input-wrapper' flex="grow">
-                          <input ng-blur="venueServicesCtrl.updateVenueSettings()" type="text" valid-price required name="leadTime" ng-model="venueServicesCtrl.venue.settings.orderMin">
+                          <input ng-blur="venueServicesCtrl.updateVenueSettings()" type="text" valid-number name="leadTime" ng-model="venueServicesCtrl.venue.settings.leadTime" >
                         </div>
                         <div class='mins' flex="nogrow" translate>Mins</div>
                       </div>
+                  </md-input-container>
+                  <md-input-container class="md-block no-spacer">
+                      <label translate>Minimum order value</label>
+
+                      <input ng-blur="venueServicesCtrl.updateVenueSettings()" type="text" valid-price required name="leadTime" ng-model="venueServicesCtrl.venue.settings.orderMin">
                       <div ng-messages="venueServicesCtrl.collectionForm.leadTime.$error">
                         <div ng-message="required" translate>This is required.</div>
                       </div>
