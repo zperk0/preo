@@ -66,7 +66,7 @@ echo $overrides;
 <link type="text/css" rel="stylesheet" href="<? echo $_SESSION['path']?>/v2/v1.css"/>
 </head>
 <body>
-  <div id="wrap">
+  <div id="wrap" class="<?echo $_GET['class']?>">
     <div id="webappv2" class='webapp'>
       <toolbar></toolbar>
       <navbar></navbar>
