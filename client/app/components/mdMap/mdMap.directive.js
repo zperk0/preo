@@ -1,4 +1,4 @@
-export default function mdMap(UtilsService, $timeout, $q){
+export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastEvents){
   'ngInject';
   return {
     restrict: 'E',
@@ -21,6 +21,10 @@ export default function mdMap(UtilsService, $timeout, $q){
               scope.venue.latitude = location.lat();
               scope.venue.longitude = location.lng();
               placeCenterAndPin();
+            },()=>{
+              placeCenterAndPin();
+            }).catch(()=>{
+              placeCenterAndPin();
             })
         } else {
           placeCenterAndPin();
@@ -40,11 +44,20 @@ export default function mdMap(UtilsService, $timeout, $q){
          var marker = new google.maps.Marker({
               position: myLatlng,
               map: scope.map,
-              draggable:true,
+              draggable:!!(scope.onMarkerDrop),
               icon: '/images/map-pin.png'
           });
          marker.addListener('dragend', handleDrop);
       } //end addMarker
+
+      function handleResize(){
+        $timeout(function(){
+          var center = scope.map.getCenter();
+          google.maps.event.trigger(scope.map, "resize");
+          scope.map.setCenter(center);
+        })
+
+      }
 
       function initMap(){
         const myOptions = {
@@ -53,9 +66,15 @@ export default function mdMap(UtilsService, $timeout, $q){
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         scope.map = new google.maps.Map(document.getElementById(attr.id), myOptions);
+
+        google.maps.event.addDomListener(window, "resize", handleResize);
+        console.log("set on")
+        $rootScope.$on(BroadcastEvents._ON_NAVBAR_TOGGLE,handleResize);
+
         if (scope.markerPos){
           addMarker(scope.markerPos)
         }
+
         google.maps.event.addListenerOnce(scope.map, 'idle', function(){
           $timeout(function () {
             scope.onLoad && scope.onLoad();
@@ -94,10 +113,16 @@ export default function mdMap(UtilsService, $timeout, $q){
           if (results && results instanceof Object && results.length) {
             deferred.resolve(results['0'].geometry.location);
           } else {
-            deferred.reject();
-          }
-        });
-
+              geocoderRequest.address = venue.city + ", "  + venue.country;
+              geocoder.geocode(geocoderRequest, (results, status)=>{
+                if (results && results instanceof Object && results.length) {
+                  deferred.resolve(results['0'].geometry.location);
+                } else{
+                  deferred.reject();
+                }
+              });
+            }
+          });
         return deferred.promise;
       };
 

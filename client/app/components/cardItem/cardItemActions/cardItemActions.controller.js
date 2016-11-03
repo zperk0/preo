@@ -3,7 +3,9 @@ export default class cardItemActionsController {
     return "cardItemActionsController";
   }
 
-  constructor() {
+  constructor($scope, gettextCatalog) {
     'ngInject';
+    this.visibleMessage =  this.visibleMessage || gettextCatalog.getString('Hide from menu');
+    this.invisibleMessage = this.invisibleMessage || gettextCatalog.getString('Show on menu');
   }
 }

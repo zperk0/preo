@@ -16,6 +16,8 @@ export default function cardItemActions(){
       onAdd:'&?',
       onAddLocation:'&?',
       disableAdd:'=?',
+      visibleMessage:'@',
+      invisibleMessage:'@',
       addMessage: '=?',
       addLocationMessage: '=?'
     },

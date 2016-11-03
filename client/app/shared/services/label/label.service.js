@@ -68,5 +68,10 @@ export default class LabelService {
     this.SNACK_VENUE_SERVICES_SUCCESS = gettextCatalog.getString("Services saved");
     this.SNACK_VENUE_SERVICES_ERROR = gettextCatalog.getString("Services not saved");
 
+    this.SNACK_DELIVERY_ZONES_SUCCESS = gettextCatalog.getString("Delivery zone saved");
+    this.SNACK_DELIVERY_ZONES_ERROR = gettextCatalog.getString("Delivery zone not saved");
+    this.TITLE_DELETE_DELIVERY_ZONE = gettextCatalog.getString("Delete delivery zone?");
+    this.CONTENT_DELETE_DELIVERY_ZONE= gettextCatalog.getString("Are you sure you want to permanently delete this delivery zone?");
+
   }
 }

@@ -31,6 +31,11 @@ html{
   .contextual-drawer {
     max-width: 334px;
   }
+  .venue-delivery-zones{
+    #venue-map{
+      width: calc(100% - 334px);
+    }
+  }
 
   .style-row {
     .form-style{

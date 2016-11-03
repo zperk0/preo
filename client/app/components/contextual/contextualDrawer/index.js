@@ -20,6 +20,12 @@ import outletLocationsDirective from './outletLocations/contextualDrawer.outletL
 import eventOutletLocationsController from './eventOutletLocations/contextualDrawer.eventOutletLocations.controller';
 import eventOutletLocationsDirective from './eventOutletLocations/contextualDrawer.eventOutletLocations.directive';
 
+import deliveryZonesController from './deliveryZones/contextualDrawer.deliveryZones.controller';
+import deliveryZonesDirective from './deliveryZones/contextualDrawer.deliveryZones.directive';
+
+import deliveryZonesEditController from './deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.controller';
+import deliveryZonesEditDirective from './deliveryZonesEdit/contextualDrawer.deliveryZonesEdit.directive';
+
 import styleController from './style/contextualDrawer.style.controller';
 import styleDirective from './style/contextualDrawer.style.directive';
 import styleRowDirective from './style/row/contextualDrawer.style-row.directive';
@@ -44,6 +50,12 @@ export default angular.module("contextualDrawer" , [cardItemList])
 
   .controller(eventOutletLocationsController.UID, eventOutletLocationsController)
   .directive("contextualDrawerEventOutletLocations", eventOutletLocationsDirective)
+
+  .controller(deliveryZonesController.UID, deliveryZonesController)
+  .directive("contextualDrawerDeliveryZones", deliveryZonesDirective)
+
+  .controller(deliveryZonesEditController.UID, deliveryZonesEditController)
+  .directive("contextualDrawerDeliveryZonesEdit", deliveryZonesEditDirective)
 
   .controller(styleController.UID, styleController)
   .directive("contextualDrawerStyle", styleDirective)

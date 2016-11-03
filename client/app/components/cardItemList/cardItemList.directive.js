@@ -18,9 +18,8 @@ export default function cardItemList(){
     controllerAs: "cardItemListCtrl",
     bindToController: true,
     transclude:true,
-    require:['cardItemList', '?^^menuSectionItemList', '?^^menuItemList', '?^^menuSectionList', '?^^modifierList', '?^^outletLocationList', '?^^outletList', '?^^taxGroupList'],
+    require:['cardItemList', '?^^menuSectionItemList', '?^^menuItemList', '?^^menuSectionList', '?^^modifierList', '?^^outletLocationList', '?^^outletList', '?^^taxGroupList', '?^^deliveryZoneList'],
     link: (scope, el, attr, ctrls) => {
-
       if (ctrls.length > 1) {
         for (let i = 1, len = ctrls.length; i < len; i++) {
           if (ctrls[i]) {

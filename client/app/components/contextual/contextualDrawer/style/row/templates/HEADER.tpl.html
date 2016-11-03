@@ -1,7 +1,7 @@
 
 <md-radio-group ng-init="radioChoice='color'" class='size' ng-model="radioChoice">
-  <md-radio-button value="color" class="md-primary md-hue-2">{{'Colour' | translate}}</md-radio-button>
-  <md-radio-button value="image" class="md-primary md-hue-2"> {{'Image' | translate}} </md-radio-button>
+  <md-radio-button value="color" class="md-primary ">{{'Colour' | translate}}</md-radio-button>
+  <md-radio-button value="image" class="md-primary "> {{'Image' | translate}} </md-radio-button>
 </md-radio-group>
 <div ng-show="radioChoice==='color'" md-color-picker
      label="{{'Choose a colour' | translate}}"
