@@ -216,6 +216,21 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
       }
     }
 
+    &.inline-price{
+      .input-wrapper {
+        padding-right: 16px;
+      }
+
+      venue-currency{
+        color: #808080;
+        position: relative;
+        top: 11px;
+        flex: 0 1 5%;
+        align-self: flex-start;
+        margin-top: 0px;
+      }
+    }
+
     .input-with-label{
       .input-wrapper{
         margin-right:16px;

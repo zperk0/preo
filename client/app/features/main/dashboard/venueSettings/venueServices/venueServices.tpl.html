@@ -20,13 +20,19 @@
                         <div class='mins' flex="nogrow" translate>Mins</div>
                       </div>
                   </md-input-container>
-                  <md-input-container class="md-block no-spacer">
-                      <label translate>Minimum order value</label>
+                  <md-input-container class="md-block no-spacer inline-price">
+                    <div flex layout="row" layout-align="space-between start">
+                      <div class='input-wrapper' flex="grow">
+                        <label translate>Minimum order value</label>
 
-                      <input ng-blur="venueServicesCtrl.updateVenueSettings()" type="text" valid-price required name="leadTime" ng-model="venueServicesCtrl.venue.settings.orderMin">
-                      <div ng-messages="venueServicesCtrl.collectionForm.leadTime.$error">
-                        <div ng-message="required" translate>This is required.</div>
+                        <input ng-blur="venueServicesCtrl.updateVenueSettings()" type="text" valid-price required name="leadTime" ng-model="venueServicesCtrl.venue.settings.orderMin">
                       </div>
+                    </div>
+                    <div ng-messages="venueServicesCtrl.collectionForm.leadTime.$error">
+                      <div ng-message="required" translate>This is required.</div>
+                      <div ng-message="invalidPrice" translate>Invalid price.</div>
+                      <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>div>
+                    </div>
                   </md-input-container>
                     <md-checkbox  ng-change="venueServicesCtrl.updateVenue()" ng-true-value="1" ng-false-value="0" aria-label="Auto accept collection orders" ng-model="venueServicesCtrl.venue.autoAcceptCollection">
                       {{'Auto accept' | translate}} <span><icon>info</icon> <md-tooltip>{{'When selected, all collection orders will be accepted automatically, without the need for you to first approve them manually' | translate}}</md-tooltip></span>
