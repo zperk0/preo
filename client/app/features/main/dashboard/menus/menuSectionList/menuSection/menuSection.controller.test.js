@@ -104,7 +104,6 @@ describe('menuSection Controller', function () {
       expect(MenuSectionCtrl.handleSuccess).toEqual(jasmine.any(Function));
       expect(MenuSectionCtrl.handleCancel).toEqual(jasmine.any(Function));
       expect(MenuSectionCtrl.restoreOriginalValues).toEqual(jasmine.any(Function));
-      expect(MenuSectionCtrl.onVisibility).toEqual(jasmine.any(Function));
       expect(MenuSectionCtrl.onDelete).toEqual(jasmine.any(Function));
       expect(MenuSectionCtrl.onEdit).toEqual(jasmine.any(Function));
       expect(MenuSectionCtrl.toggleExpanded).toEqual(jasmine.any(Function));
