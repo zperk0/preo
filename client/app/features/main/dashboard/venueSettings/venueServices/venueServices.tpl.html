@@ -31,7 +31,7 @@
                     <div ng-messages="venueServicesCtrl.collectionForm.leadTime.$error">
                       <div ng-message="required" translate>This is required.</div>
                       <div ng-message="invalidPrice" translate>Invalid price.</div>
-                      <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>div>
+                      <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
                     </div>
                   </md-input-container>
                     <md-checkbox  ng-change="venueServicesCtrl.updateVenue()" ng-true-value="1" ng-false-value="0" aria-label="Auto accept collection orders" ng-model="venueServicesCtrl.venue.autoAcceptCollection">
