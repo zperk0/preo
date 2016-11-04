@@ -1,6 +1,10 @@
 <div class="contextual-menu-collection-slot">
-  <md-tabs md-dynamic-height md-stretch-tabs="always" ng-if="contextualMenuCtrl.FeatureService.hasCustomPickupSlotsFeature()" class="md-tabs-with-errors"
-  ng-class="{'has-error': contextualMenuCtrl.contextualForm.$submitted && contextualMenuCtrl.contextualForm.$invalid}">
+  <md-tabs md-dynamic-height
+          md-stretch-tabs="always"
+          ng-if="contextualMenuCtrl.FeatureService.hasCustomPickupSlotsFeature()"
+          class="md-tabs-with-errors"
+          ng-class="{'has-error': contextualMenuCtrl.contextualForm.$submitted && contextualMenuCtrl.contextualForm.$invalid}"
+          md-selected="contextualMenuCtrl.contextualForm.selectedTabIndex">
     <md-tab>
       <md-tab-label>
         <div ng-class="{'has-error': contextualMenuCtrl.CollectionSlotsService.hasBasicTabErrors(contextualMenuCtrl.contextualForm, contextualMenuCtrl.entity)}" class="md-tab-label">
@@ -23,10 +27,10 @@
       <md-card-content>
         <collection-slot-advanced ng-model="contextualMenuCtrl.entity"></collection-slot-advanced>
       </md-card-content>
-      </md-tab-body>      
+      </md-tab-body>
     </md-tab>
   </md-tabs>
-  
+
   <md-card-content ng-if="!contextualMenuCtrl.FeatureService.hasCustomPickupSlotsFeature()">
     <collection-slot-basic ng-model="contextualMenuCtrl.entity" ></collection-slot-basic>
   </md-card-content>
