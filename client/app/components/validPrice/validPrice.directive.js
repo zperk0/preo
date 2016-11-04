@@ -49,6 +49,20 @@ export default function validPrice($timeout, $filter, $compile, VenueService){
 
       element.parent().parent().append($compile('<venue-currency class="currency"></venue-currency>')(scope));
 
+      element.on('focus', () => {
+
+        if (!ngModel.$modelValue) {
+          updateView('');
+        }
+      });
+
+      element.on('blur', () => {
+
+        if (!ngModel.$modelValue) {
+          updateView($filter('currency')(0, true));
+        }
+      });
+
       $timeout(() => {
 
         if (ngModel.$viewValue) {
