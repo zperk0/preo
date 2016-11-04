@@ -10,6 +10,7 @@ export default function currency(VenueService){
 
     if (withoutSymbol) {
       config.symbol = '';
+      config.format = config.format.replace(' ', '');
     }
 
     return accounting.formatMoney(number, config.symbol, 2, config.thousand, config.decimal, config.format);
