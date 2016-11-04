@@ -25,6 +25,7 @@ import validPrice from '../../../components/validPrice';
 import validPercentage from '../../../components/validPercentage';
 import maxIntegerValue from '../../../components/maxIntegerValue';
 import compareNumber from '../../../components/compareNumber';
+import venueCurrency from '../../../components/venueCurrency';
 
 
 export default angular.module("contextualMenu" , [
@@ -43,7 +44,8 @@ export default angular.module("contextualMenu" , [
   validPrice,
 	validPercentage,
 	maxIntegerValue,
-	compareNumber
+	compareNumber,
+	venueCurrency
 ])
 
   .controller(controller.UID, controller)
