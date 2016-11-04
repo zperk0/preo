@@ -4,15 +4,15 @@
   </div>
   <div flex class="menu-content">
     <div class='main-content-left'>
-        <menu-item-list 
-            has-search="true" 
-            sv-disabled="true" 
-            has-new="true" 
+        <menu-item-list
+            has-search="true"
+            sv-disabled="true"
+            has-new="true"
             items="itemListCtrl.data.items"></menu-item-list>
       </div>
       <div class='floating-right-buttons'>
       <md-button ng-click="itemListCtrl.toggleDrawer('modifiers')" class="md-primary md-hue-2" translate>Show modifiers</md-button>
     </div>
-    <div class='main-content-right' sticky offset="134" contextual-menu-holder></div>
+    <div class='main-content-right' media-query="min-width: 1024px" sticky offset="134" contextual-menu-holder></div>
   </div>
 </div>
