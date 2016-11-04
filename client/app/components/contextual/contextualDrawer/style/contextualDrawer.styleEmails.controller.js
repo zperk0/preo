@@ -75,6 +75,7 @@ export default class contextualDrawerStyleController {
     return this.$q((resolve, reject)=>{
       var promises = [];
       angular.forEach(this.model.templates,(t)=>{
+        t.content = this.$sanitize(t.content);
         if (t.id){
           promises.push(t.update());
         } else{
@@ -169,13 +170,15 @@ export default class contextualDrawerStyleController {
   }
 
 
-  constructor($q, $scope, $mdSidenav, Spinner, Snack, $stateParams, contextualDrawer, $location, $timeout, gettextCatalog, $rootScope, LabelService, UtilsService, DialogService, StyleService) {
+  constructor($q, $scope, $mdSidenav, Spinner, Snack, $stateParams, contextualDrawer, $location, $timeout, $sanitize,
+    gettextCatalog, $rootScope, LabelService, UtilsService, DialogService, StyleService) {
     "ngInject";
     this.$q = $q;
     this.StyleService = StyleService;
     this.LabelService = LabelService;
     this.UtilsService = UtilsService;
     this.DialogService = DialogService;
+    this.$sanitize = $sanitize;
     this.contextualDrawer = contextualDrawer;
     this.gettextCatalog = gettextCatalog;
 
