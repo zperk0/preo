@@ -9,10 +9,10 @@
         <input flex type="text" required name="entityPrice" ng-model="menuItemSizeCtrl.ngPriceModel" valid-price />
         <div ng-messages="menuItemSizeCtrl.contextualMenuCtrl.contextualForm.entityPrice.$error">
           <div ng-message="required" translate>This is required.</div>
-          <div ng-message="maxDecimalValue" translate>Max value is 99999999.99.</div>
+          <div ng-message="invalidPrice" translate>Invalid price.</div>
+          <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
         </div>
     </md-input-container>
-    <venue-currency class='currency'>GBP</venue-currency>
   </div>
   <div class='multi-size' ng-if="menuItemSizeCtrl.ngModel.$isMultiple" layout="column">
 
@@ -36,16 +36,20 @@
               <div ng-message="required" translate>This is required.</div>
             </div>
         </md-input-container>
-        <md-input-container flex="35">
-            <label translate>Price</label>
-            <input flex type="text" required name="sizePrice" ng-model="size.price" valid-price max-integer-value />
+        <md-input-container flex>
+            <div flex layout="row" layout-align="space-between start">
+              <div class='input-wrapper' flex="grow">
+                <label translate>Price</label>
+                <input flex type="text" required name="sizePrice" ng-model="size.price" valid-price max-integer-value />
+              </div>
+            </div>
             <div ng-messages="sizeForm.sizePrice.$error">
               <div ng-message="required" translate>This is required.</div>
-              <div ng-message="maxDecimalValue" translate>Max value is 99999999.99.</div>
+              <div ng-message="invalidPrice" translate>Invalid price.</div>
+              <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
             </div>
         </md-input-container>
-        <venue-currency flex="10" class='currency'> GBP </venue-currency>
-        <icon class='icon-clear' ng-if="menuItemSizeCtrl.ngModel.items.length>2" ng-click="menuItemSizeCtrl.deleteSize(size)" flex="5">clear</icon>
+        <icon class='icon-clear' ng-if="menuItemSizeCtrl.ngModel.items.length>2" ng-click="menuItemSizeCtrl.deleteSize(size)">clear</icon>
       </ng-form>
       <div sv-placeholder></div>
       <div class='button-position'>

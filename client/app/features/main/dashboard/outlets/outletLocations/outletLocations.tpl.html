@@ -17,7 +17,7 @@
     <div class='floating-right-buttons'>
     	<md-button ng-click="outletLocationsCtrl.toggleDrawer('outlets')" class="md-primary md-hue-2" ng-if="outletLocationsCtrl.hasOutlets()" translate>Add outlets</md-button>
   	</div>
-  	<div class='main-content-right' sticky offset="134" contextual-menu-holder></div>
+  	<div class='main-content-right' media-query="min-width: 1024px" sticky offset="134" contextual-menu-holder></div>
   </div>
   <contextual-drawer-outlets></contextual-drawer-outlets>
 	<contextual-drawer-outlet-locations></contextual-drawer-outlet-locations>

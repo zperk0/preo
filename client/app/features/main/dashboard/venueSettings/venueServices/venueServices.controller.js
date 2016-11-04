@@ -33,6 +33,12 @@ export default class venueServicesController {
   }
 
    updateVenueSettings(){
+
+      if (!this.collectionForm.$valid) {
+        return;
+      }
+
+
       this.Spinner.show("venue-services-save");
       try {
         this.venue.settings.update()

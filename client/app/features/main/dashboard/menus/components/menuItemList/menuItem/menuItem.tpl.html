@@ -7,23 +7,23 @@
                     has-visible="true"
                     show-visible="!menuItemCtrl.item.visible"
                     ng-attr-data-id="{{menuItemCtrl.item.id}}">
-                    <span class='name' flex>{{menuItemCtrl.item.id + "--" + menuItemCtrl.item.position + "--" | debug}} {{menuItemCtrl.item.name}} </span> 
-                    <span class='price'> {{menuItemCtrl.item.price | currency:"£"}}</span>
+                    <span class='name' flex>{{menuItemCtrl.item.id + "--" + menuItemCtrl.item.position + "--" | debug}} {{menuItemCtrl.item.name}} </span>
+                    <span class='price'> {{menuItemCtrl.item.price | currency}}</span>
                     <div class='sv-dropzone sv-dropzone-modifier' sv-part="menuItemCtrl.newModifiers" sv-on-external-sort="menuItemCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
                       <div sv-placeholder></div>
                     </div>
                     </card-item-title>
 
-    <modifier-chips 
-        ng-if="menuItemCtrl.item.modifiers.length" 
-        modifiers="menuItemCtrl.item.modifiers" 
+    <modifier-chips
+        ng-if="menuItemCtrl.item.modifiers.length"
+        modifiers="menuItemCtrl.item.modifiers"
         item="menuItemCtrl.item"></modifier-chips>
 
-    <div class='size-wrapper' 
+    <div class='size-wrapper'
           ng-if="!(menuItemCtrl.item.$size.$isMultiple === false) && menuItemCtrl.item.$size.items.length">
-      <card-item-child 
-          ng-repeat="size in menuItemCtrl.item.$size.items" 
-          modifier="menuItemCtrl.item.$size" 
+      <card-item-child
+          ng-repeat="size in menuItemCtrl.item.$size.items"
+          modifier="menuItemCtrl.item.$size"
           option="size"></card-item-child>
     </div>
 

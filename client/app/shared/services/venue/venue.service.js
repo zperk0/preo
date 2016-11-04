@@ -238,6 +238,35 @@ export default class VenueService {
     return venueCopy.update()
   }
 
+  getVenuePriceConfig () {
+
+    var config = {
+      thousand: ',',
+      decimal: '.',
+      format: '%s%v',
+      symbol: ''
+    };
+
+    if (this.hasVenueSet()) {
+
+      var countryCode = this.currentVenue.country || 'GB';
+      config.symbol = this.currentVenue.ccySymbol || this.currentVenue.ccy || '';
+
+      if (["FR", "DE", "NO", "SE"].indexOf(countryCode) >= 0) {
+          config.thousand = " ";
+          config.decimal = ",";
+          config.format = "%v%s";
+          if(countryCode == 'NO') {
+            config.format = "%s %v";
+          } else if(countryCode == 'SE') {
+            config.format = "%v %s";
+          }
+      }
+    }
+
+    return config;
+  }
+
   constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, gettextCatalog, UserService, ErrorService) {
     "ngInject";
     this.$q = $q;
