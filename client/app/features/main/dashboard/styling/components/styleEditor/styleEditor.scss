@@ -1,0 +1,88 @@
+.style-editor-editing-HEADER{
+  .style-editor-enabled-HEADER{
+    position: relative;
+    &:after{
+      display: block;
+    }
+  }
+}
+
+.style-editor-editing-LOGO{
+  .style-editor-enabled-LOGO{
+    position: relative;
+    &:after{
+      display: block;
+    }
+  }
+}
+
+.style-editor-editing-PRIMARY{
+  .style-editor-enabled-PRIMARY{
+    position: relative;
+    &:after{
+      display: block;
+    }
+  }
+}
+
+.style-editor-editing-SECTIONS{
+  .style-editor-enabled-SECTIONS{
+    position: relative;
+    &:after{
+      display: block;
+    }
+  }
+}
+
+.style-editor-editing-BACKGROUND{
+.style-editor-enabled-BACKGROUND{
+  position: relative;
+    &:after{
+      display: block;
+    }
+  }
+}
+
+.style-editor-editing-BANNER{
+.style-editor-enabled-BANNER{
+  position: relative;
+    &:after{
+      display: block;
+    }
+  }
+}
+
+.style-editor-editing-FOOTER{
+.style-editor-enabled-FOOTER{
+  position: relative;
+    &:after{
+      display: block;
+    }
+  }
+}
+
+.style-editor-editing-NAVBAR{
+  .style-editor-enabled-NAVBAR{
+    position: relative;
+    &:after{
+      display: block;
+    }
+  }
+}
+
+.style-editor-enabled{
+    &:after{
+      cursor: pointer;
+      display: none;
+      content:'';
+      position: absolute;
+      top:0;
+      left:0;
+      bottom:0;
+      right:0;
+      background-color: rgba(225, 245, 254, 0.60);
+    }
+}
+.editor-wrapper{
+  position:absolute; top:0;left:0;bottom:0;right:0;
+}

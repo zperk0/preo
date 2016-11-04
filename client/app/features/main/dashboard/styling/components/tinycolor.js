@@ -1182,13 +1182,11 @@ function validateWCAG2Parms(parms) {
 
 // Node: Export function
 if (typeof module !== "undefined" && module.exports) {
-    console.log('asd', tinycolor);
     window.tinycolor = tinycolor;
     module.exports = tinycolor;
 }
 // AMD/requirejs: Define the module
 else if (typeof define === 'function' && define.amd) {
-    console.log("in ho amd");
     define(function () {return tinycolor;});
 }
 // Browser: Expose to window

@@ -28,6 +28,8 @@ import deliveryZonesEditDirective from './deliveryZonesEdit/contextualDrawer.del
 
 import styleController from './style/contextualDrawer.style.controller';
 import styleDirective from './style/contextualDrawer.style.directive';
+import styleEmailsController from './style/contextualDrawer.styleEmails.controller';
+import styleEmailsDirective from './style/contextualDrawer.styleEmails.directive';
 import styleRowDirective from './style/row/contextualDrawer.style-row.directive';
 
 import cardItemList from '../../cardItemList';
@@ -59,5 +61,9 @@ export default angular.module("contextualDrawer" , [cardItemList])
 
   .controller(styleController.UID, styleController)
   .directive("contextualDrawerStyle", styleDirective)
+
+  .controller(styleEmailsController.UID, styleEmailsController)
+  .directive("contextualDrawerStyleEmails", styleEmailsDirective)
+
   .directive("drawerStyleRow", styleRowDirective)
   .name;
