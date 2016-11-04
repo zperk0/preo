@@ -1,0 +1,18 @@
+.styling-emails{
+  b{
+    font-weight: bold;
+  }
+  .email-content{
+    transform-origin: top left;
+  }
+  .email-header{
+    width:478px;
+    margin:100px auto 0;
+    min-height: 100px;
+    img{
+      width:478px;
+      height:100px;
+    }
+
+  }
+}
