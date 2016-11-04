@@ -46,7 +46,7 @@
             <div ng-messages="sizeForm.sizePrice.$error">
               <div ng-message="required" translate>This is required.</div>
               <div ng-message="invalidPrice" translate>Invalid price.</div>
-              <div ng-message="maxDecimalValue" translate>Max value is 99999999.99.</div>
+              <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
             </div>
         </md-input-container>
         <icon class='icon-clear' ng-if="menuItemSizeCtrl.ngModel.items.length>2" ng-click="menuItemSizeCtrl.deleteSize(size)">clear</icon>
