@@ -9,7 +9,9 @@
   }
 
   .prices {
-
+    .input-wrapper {
+      padding-right: 4px;
+    }
   }
 
 }
@@ -48,7 +50,7 @@
       position: absolute;
       top: -8px;
     }
-  }  
+  }
 
   venue-currency{
     align-self: flex-start !important;
@@ -58,15 +60,17 @@
 
   .icon-clear{
     position: relative;
-    top: auto;
-    bottom: -5px;
-    
+    top: 11px;
+    flex: 0 1 5%;
+    align-self: flex-start;
+    margin-top: 0px;
+
     &:hover{
       cursor: pointer;
     }
-  } 
+  }
 
   .md-errors-spacer {
     display: none;
-  } 
+  }
 }

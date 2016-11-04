@@ -1,5 +1,5 @@
 
-export default function validPrice($timeout, $filter, VenueService){
+export default function validPrice($timeout, $filter, $compile, VenueService){
   "ngInject";
 
   var accounting = require("accounting");
@@ -46,6 +46,8 @@ export default function validPrice($timeout, $filter, VenueService){
 
       ngModel.$parsers.push(parseNumber);
       ngModel.$formatters.push(formatNumber);
+
+      element.parent().parent().append($compile('<venue-currency class="currency"></venue-currency>')(scope));
 
       $timeout(() => {
 
