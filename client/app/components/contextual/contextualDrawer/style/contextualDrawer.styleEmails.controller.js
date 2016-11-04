@@ -16,20 +16,17 @@ export default class contextualDrawerStyleController {
 
 
 
-  _saveImages(imgs) {
+  _saveImagesToCdn() {
     var promises = []
-    angular.forEach(imgs,(imageObject, key)=>{
+    angular.forEach(this.StyleService.imagesModel.$images,(imageObject, key)=>{
       let img = imageObject[0];
       if (img){
         if (img.$save) {
           let p = Preoday.VenueImage.saveToCdn(img.$image, this.$stateParams.venueId)
             .then((itemImage) => {
-              this.model[key] = itemImage.image;
+              angular.extend(this.StyleService.imagesModel[img.type], {src:itemImage.image});
           })
           promises.push(p);
-        }
-        else if (img.$delete) {
-          this.model[key] = null;
         }
       }
     })
@@ -41,11 +38,7 @@ export default class contextualDrawerStyleController {
 
   onImageUpload(key, image){
     if (key && image){
-      if (image.$delete || !image.$image){
-        this.model[key] = '';
-      } else if (image.$image){
-        this.model[key] = image.$image;
-      }
+      image.type = "EMAIL_BANNER";
     }
   }
 
@@ -56,8 +49,10 @@ export default class contextualDrawerStyleController {
         this.Spinner.show("venue-image-delete");
         let img = this.StyleService.imagesModel[image.type];
         img.delete().then(()=>{
-          this.StyleService.imagesModel[image.type] = {};
+          this.StyleService.imagesModel[image.type] = new Preoday.VenueImage({type:image.type});
           this.StyleService.imagesModel.$images[key]= [];
+          this.originalModel.images[image.type] = new Preoday.VenueImage({type:image.type});
+          this.originalModel.images.$images[key]= [];
           this.Snack.show('Image deleted');
           this.Spinner.hide("venue-image-delete");
         })
@@ -79,7 +74,6 @@ export default class contextualDrawerStyleController {
   saveTemplates(){
     return this.$q((resolve, reject)=>{
       var promises = [];
-      debugger;
       angular.forEach(this.model.templates,(t)=>{
         if (t.id){
           promises.push(t.update());
@@ -101,7 +95,29 @@ export default class contextualDrawerStyleController {
   }
 
   saveVenueImages(){
-    return this._saveImages()
+    return this.$q((resolve,reject)=>{
+      this._saveImagesToCdn()
+      .then(()=>{
+        var promises = [];
+        angular.forEach(this.StyleService.imagesModel,(img,key)=>{
+          if(key != "$images" && img.src && img.type){
+            if(img.id){
+              promises.push(img.update());
+            } else {
+              img.venueId=this.$stateParams.venueId;
+              promises.push(Preoday.VenueImage.create(img).then((newImg)=>{
+                angular.extend(this.StyleService.imagesModel[img.type], newImg);
+              }))
+            }
+          }
+        });
+
+        this.$q.all(promises).then(resolve,reject);
+      }).catch((err)=>{
+        console.error(err);
+        reject(err);
+      })
+    });
   }
 
 
@@ -109,15 +125,15 @@ export default class contextualDrawerStyleController {
     this.Spinner.show('style-saving');
     return this.saveEmails().then(()=>{
       this.Spinner.hide('style-saving');
-      this.Snack.show(this.LabelService.SNACK_WEBSETTINGS_SUCCESS)
+      this.Snack.show(this.LabelService.SNACK_EMAILS_SUCCESS)
       this.originalModel = angular.copy(this.model);
       return this.close();
     }, ()=>{
       this.Spinner.hide('style-saving');
-      this.Snack.showError(this.LabelService.SNACK_WEBSETTINGS_ERROR)
+      this.Snack.showError(this.LabelService.SNACK_EMAILS_ERROR)
     }).catch(()=> {
       this.Spinner.hide('style-saving');
-      this.Snack.showError(this.LabelService.SNACK_WEBSETTINGS_ERROR)
+      this.Snack.showError(this.LabelService.SNACK_EMAILS_ERROR)
     });
   }
 
@@ -215,3 +231,6 @@ export default class contextualDrawerStyleController {
 
   }
 }
+
+
+//remove deleted image from original object

@@ -66,12 +66,12 @@ export default class StyleService {
     if (contact){
       msg = this.gettextCatalog.getString("If there are any problems, please contact {{venue}} on {{contact}}",{venue:venue, contact:contact})
     }
-    this.templatesModel = {
+    this.templatesModel = new Preoday.TemplateFragment({
       ORDER_PLACED_EMAIL_FOOTER:{
         content: msg,
         type:'ORDER_PLACED_EMAIL_FOOTER'
       }
-    }
+    });
   }
 
   constructor($q, VenueService, Spinner, Snack, LabelService, gettextCatalog) {
@@ -83,9 +83,9 @@ export default class StyleService {
 
     this.initTemplates();
     this.imagesModel = {
-      EMAIL_BANNER:{
+      EMAIL_BANNER: new Preoday.VenueImage({
         type:"EMAIL_BANNER"
-      }
+      })
     }
 
   }
