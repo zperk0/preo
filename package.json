@@ -30,6 +30,7 @@
     "angular-scroll": "^1.0.0",
     "angular-sortable-view": "git+ssh://bitbucket.org/preoday/angular-sortable.git",
     "angular-ui-router": "^0.2.15",
+    "babel-polyfill": "^6.16.0",
     "croppie": "^2.2.0",
     "jscore": "git+ssh://git@bitbucket.org/preoday/javascript-core.git",
     "md-color-picker": "^0.2.6",
