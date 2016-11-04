@@ -1,60 +1,57 @@
 
-export default function validPrice($timeout){
+export default function validPrice($timeout, $filter, $compile, VenueService){
   "ngInject";
+
+  var accounting = require("accounting");
+  var MAX_DIGITS = 11;
+
   return {
     restrict: 'A',
     require: '?ngModel',
     link: (scope, element, attrs, ngModel) => {
 
-      var MAX_DIGITS = 11;
-
       attrs.$set('ngTrim', "false");
 
-      var formatter = function(str, isNum) {
-          str = String( Number(str || 0) / (isNum?1:100) );
-          str = (str=='0'?'0.0':str).split('.');
-          str[1] = str[1] || '0';
-          return str[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,') + '.' + (str[1].length==1?str[1]+'0':str[1]);
-      }
       var updateView = function(val) {
           scope.$applyAsync(function () {
-            val = val.replace(/[+]/g, '');
-            val = val.replace(/[-]/g, '');
+
             ngModel.$setViewValue(val || '');
             ngModel.$render();
           });
-      }
+      };
+
       var parseNumber = function(val) {
-        var modelString = formatter(ngModel.$modelValue, true);
+
+        var el = element[0];
+
+        var config = VenueService.getVenuePriceConfig();
+        var numberVal = accounting.unformat(val, config.decimal);
+
         var valString = String(val || '');
-        var newVal = valString.replace(/[^0-9]/g,'');
-        var viewVal = formatter(angular.copy(newVal));
+        var expression = '[^0-9' + config.thousand + config.decimal + ']';
 
-        if (modelString !== valString)
-            updateView(viewVal);
+        var newVal = valString.replace(new RegExp(expression), '');
+        updateView(newVal);
 
-        newVal = (Number(newVal) / 100) || 0;
+        ngModel.$setValidity('invalidPrice', newVal.split(config.decimal).length <= 2);
+        ngModel.$setValidity('maxDecimalValue', (numberVal || 0).toString().length <= MAX_DIGITS);
 
-        ngModel.$setValidity('maxDecimalValue', newVal.toString().length <= MAX_DIGITS);
+        return numberVal;
+      };
 
-        return newVal;
-      }
       var formatNumber = function(val) {
-          if (val) {
-              var str = String(val).split('.');
-              str[1] = str[1] || '0';
-              val = str[0] + '.' + (str[1].length==1?str[1]+'0':str[1]);
-          }
-          return parseNumber(val);
+
+        return $filter('currency')(val, true);
       }
 
       ngModel.$parsers.push(parseNumber);
       ngModel.$formatters.push(formatNumber);
 
+      element.parent().parent().append($compile('<venue-currency class="currency"></venue-currency>')(scope));
+
       $timeout(() => {
 
         if (ngModel.$viewValue) {
-          ngModel.$setViewValue(Number(ngModel.$viewValue.replace(/,/g, '')).toFixed(2));
           ngModel.$render();
         }
       })

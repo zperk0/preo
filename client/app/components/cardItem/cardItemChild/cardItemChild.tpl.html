@@ -5,6 +5,6 @@
     </div>
   </div>
   <span class='name-wrapper' layout="row" flex><span class='name' layout="column" layout-align="center start">{{vm.option.name}} </span> <modifier-chips flex ng-if="vm.option.modifiers.length" modifiers="vm.option.modifiers" modifier-item="vm.option"></modifier-chips></span>
-  <span class='price'> {{vm.option.price | currency:"£"}}</span>
+  <span class='price'> {{vm.option.price | currency}}</span>
 
 </div>

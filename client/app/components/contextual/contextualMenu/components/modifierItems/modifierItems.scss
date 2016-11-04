@@ -3,6 +3,10 @@
   ng-form {
     &.price {
       padding-bottom: 15px;
+
+      .input-wrapper {
+        padding-right: 10px;
+      }
     }
   }
 
