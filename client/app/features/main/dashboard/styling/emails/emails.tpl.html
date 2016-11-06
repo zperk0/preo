@@ -1,4 +1,4 @@
-<div class='styling-emails' layout="column">
+<div class='styling-emails' flex="grow" layout="column">
   <div class="sub-toolbar" layout="row" layout-align="start center">
     <span translate>View:</span> <md-button class='md-icon-button' ng-click="emailsCtrl.increaseZoom()"><icon>add_circle</icon></md-button> <span class='zoom-level'>{{emailsCtrl.zoomLevel | percent:0}}</span> <md-button  class='md-icon-button' ng-click="emailsCtrl.decreaseZoom()"><icon >remove_circle</icon></md-button>
   </div>
@@ -8,7 +8,8 @@
         <tr>
           <td style="border:0;padding:0"><tr>
 
-            <div class="email-header" style-editor="BANNER"><img class="header-image" alt=""
+            <div class="email-header" style-editor="BANNER" ng-class="{placeholder:!emailsCtrl.StyleService.imagesModel.$images.emailBanner || !emailsCtrl.StyleService.imagesModel.$images.emailBanner.length || !emailsCtrl.StyleService.imagesModel.$images.emailBanner[0].$image}">
+              <img class="header-image" alt=""
               ng-if="emailsCtrl.StyleService.imagesModel.$images.emailBanner && emailsCtrl.StyleService.imagesModel.$images.emailBanner.length && emailsCtrl.StyleService.imagesModel.$images.emailBanner[0].$image"
               ng-src="{{emailsCtrl.StyleService.imagesModel.$images.emailBanner[0].$image}}">
               <md-tooltip > {{'Edit header' | translate}} </md-tooltip>

@@ -1,16 +1,30 @@
 .styling-emails{
+  background-color: #ececec;
   b{
     font-weight: bold;
   }
   .email-content{
     transform-origin: top left;
+    width: 50%;
+    min-width: 600px;
   }
   .email-header{
-    width:478px;
+    width:482px;
     margin:100px auto 0;
     min-height: 100px;
+
+    margin-bottom: -1px; /* put this above email content 1px to hide border top*/
+    z-index: 1;
+    position: relative;
+
+    &.placeholder{
+      background: #F5F5F5;
+      border: 1px dashed #E0E0E0;
+      border-radius: 2px;
+    }
+
     img{
-      width:478px;
+      width:482px;
       height:100px;
     }
 
