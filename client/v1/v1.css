@@ -10,13 +10,17 @@
   }
   #wrap{
     background: transparent url(../img/bg.jpg) repeat!important;
-    height: calc(100vh - 117px);
+    height: calc(100vh - 67px);
     margin: 0 auto;
-    top: 117px;
+    top: 67px;
     position: relative;
     overflow: auto;
     padding: 0;
     min-height: 0;
+  }
+   #wrap.with-toolbar{
+    height: calc(100vh - 117px);
+    top: 117px;
   }
 
   #webappv2{

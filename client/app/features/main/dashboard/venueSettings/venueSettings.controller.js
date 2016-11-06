@@ -4,18 +4,7 @@ export default class venueSettingsController {
     return "venueSettingsController";
   }
 
-  saveImage(){
-    Preoday.ItemImage.saveToCdn(this.image, this.$stateParams.venueId)
-    .then((res)=>{
-      console.log("saved", res)
-    }, ()=>{
-      console.log("failed")
-    })
-  }
-
-  constructor($stateParams) {
+  constructor() {
     "ngInject";
-    this.$stateParams = $stateParams;
-
   }
 }

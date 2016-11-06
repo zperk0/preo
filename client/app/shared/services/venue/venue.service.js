@@ -221,6 +221,23 @@ export default class VenueService {
     this.hasSelectedVenues = false;
   }
 
+  load(){
+    if (currentVenue && currentVenue.id>0){
+      return this.$q.resolve(currentVenue);
+    }
+    return $q((resolve,reject)=>{
+      this.selectVenue()
+        .then(resolve,reject)
+    })
+
+  }
+
+  updateVenue(){
+    var venueCopy = angular.copy(this.currentVenue);
+    delete venueCopy.ccySymbol;
+    return venueCopy.update()
+  }
+
   getVenuePriceConfig () {
 
     var config = {

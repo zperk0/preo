@@ -23,13 +23,18 @@ export default class navbarController {
   toggleMenu() {
     this.toggleExpanded();
     this.$expanded = !this.$expanded;
+    console.log("broadcasting");
+    this.$rootScope.$broadcast(this.BroadcastEvents._ON_NAVBAR_TOGGLE,this.expanded);
   }
 
 
-  constructor($state, gettextCatalog, FeatureService, VenueService) {
+  constructor($state, gettextCatalog, FeatureService, VenueService, $rootScope, $timeout, BroadcastEvents) {
     "ngInject";
     this.DESTINATION_PREFIX = "main.dashboard.";
     this.$state = $state;
+    this.$timeout = $timeout;
+    this.$rootScope = $rootScope;
+    this.BroadcastEvents = BroadcastEvents;
     this.$expanded = true;
     //name: label to be displayed in navbar
     //icon: icon to be displayed before label
@@ -37,7 +42,12 @@ export default class navbarController {
     //is also used for path-select to decide if .selected should be added or not to that particular item for dynamic class
     //destination: if given, will be used as a destination instead of the id, useful when parent is abstract, with a default view (like menus and menus.list)
     this.menu=[
-      {name: gettextCatalog.getString("Venue Settings"), icon:"store", id:"venueSettings"},
+      {name: gettextCatalog.getString("Venue Settings"), icon:"store", id:"venueSettings", children:[
+        {name: gettextCatalog.getString("Details"), id:"venueDetails"},
+        {name: gettextCatalog.getString("Location"), id:"venueLocation"},
+        {name: gettextCatalog.getString("Services"), id:"venueServices"},
+        {name: gettextCatalog.getString("Delivery Zones"), id:"venueDeliveryZones"},
+      ]},
       {name: gettextCatalog.getString("Menus"), icon:"list", id:"menus", children:[
         {name: gettextCatalog.getString("My menus"), id:"menus", destination:"list", exclusions:["itemList","modifiers"]},
         {name: gettextCatalog.getString("Items"), id:"itemList"},

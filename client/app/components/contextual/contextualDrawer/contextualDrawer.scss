@@ -4,6 +4,10 @@
   width:657px;
   max-width: 657px;
 
+  md-tab-content > div{
+    padding: 24px;
+  }
+
   &.contextual-drawer-outlet-locations {
     .contextual-list {
       padding-top: 11px;
@@ -18,7 +22,7 @@
 
   &.contextual-drawer-outlets {
     .repeat-holder{
-      .sort-holder{    
+      .sort-holder{
         padding-top: 22px;
       }
     }
@@ -37,7 +41,6 @@
   }
 
   md-card-actions{
-    border-top:1px solid #E0E0E0;
     background:#F5F5F5;
     margin: 0;
     padding: 0px;
@@ -80,8 +83,10 @@
   .no-results{
     padding: 16px;
   }
-  .item-actions{
-    display: none;
+  &:not(.contextual-drawer-delivery-zones){
+    .item-actions{
+      display: none;
+    }
   }
   .card-item{
     .sv-dropzone{

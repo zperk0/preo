@@ -37,25 +37,6 @@
     }
   }
 
-  md-tabs-wrapper{
-    background:#F5F5F5;
-
-    md-tab-item{
-      span{
-        color: #424242;
-      }
-
-      &.md-active{
-        span{
-          color:$colorPrimary;
-        }
-      }
-    }
-    md-ink-bar{
-      color:$colorPrimary;
-      background-color:$colorPrimary;;
-    }
-  }
 
   .price {
     md-input-container{
