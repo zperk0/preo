@@ -75,9 +75,5 @@ echo $overrides;
     </div>
   </div>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
-<<<<<<< HEAD
-<script type="text/javascript" src="/v2/vendor.bundle.9edd19b26576e3820174.js"></script><script type="text/javascript" src="/v2/events.bundle.f241177dcc8ca3d13504.js"></script><script type="text/javascript" src="/v2/outlets.bundle.17e754d6f50919f22664.js"></script><script type="text/javascript" src="/v2/app.bundle.ea501458b18e5984911a.js"></script></body>
-=======
-<script type="text/javascript" src="/v2/vendor.bundle.c2035de6da4d57fae9e6.js"></script><script type="text/javascript" src="/v2/events.bundle.b46fd422d85c32ab8d6e.js"></script><script type="text/javascript" src="/v2/outlets.bundle.e9358ed3c7684392565c.js"></script><script type="text/javascript" src="/v2/app.bundle.b8273cf06e4d0542aea3.js"></script></body>
->>>>>>> PWA-803-email-style-editor
+<script type="text/javascript" src="/v2/vendor.bundle.9edd19b26576e3820174.js"></script><script type="text/javascript" src="/v2/events.bundle.f241177dcc8ca3d13504.js"></script><script type="text/javascript" src="/v2/outlets.bundle.17e754d6f50919f22664.js"></script><script type="text/javascript" src="/v2/app.bundle.4984d40c738651f3163a.js"></script></body>
 </html>
