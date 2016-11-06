@@ -49,6 +49,7 @@ export default class contextualDrawerStyleController {
         this.Spinner.show("venue-image-delete");
         let img = this.StyleService.imagesModel[image.type];
         img.delete().then(()=>{
+          debugger;
           this.StyleService.imagesModel[image.type] = new Preoday.VenueImage({type:image.type});
           this.StyleService.imagesModel.$images[key]= [];
           this.originalModel.images[image.type] = new Preoday.VenueImage({type:image.type});
@@ -211,8 +212,8 @@ export default class contextualDrawerStyleController {
       $scope.$watch('drawerStyleEmailsCtrl.StyleService.templatesModel',(nv)=>{
         this.model.templates = nv;
       })
-      this.originalModel  = angular.copy(this.model);
       this._restoreImages();
+      this.originalModel  = angular.copy(this.model);
       Spinner.hide('style-drawer-emails');
     }, ()=>{
       this._restoreImages()
