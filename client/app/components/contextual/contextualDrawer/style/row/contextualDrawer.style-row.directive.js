@@ -11,8 +11,9 @@ export default function contextualMenu($compile){
     },
     replace:true,
     transclude:true,
-    require:'^contextualDrawerStyle',
-    link: (scope, el, attr, ctrl) => {
+    require:['?^contextualDrawerStyle', '?^contextualDrawerStyleEmails'],
+    link: (scope, el, attr, ctrls) => {
+      var ctrl = ctrls[0] || ctrls[1];
       scope.toggleAccordion = ctrl.toggleExpanded.bind(ctrl);
       let $template = require("./templates/"+scope.entity.id+".tpl.html");
       let $templateEl = $compile($template)(scope);
@@ -45,6 +46,12 @@ export default function contextualMenu($compile){
 
       scope.onChange = (key, imageModel)=>{
         ctrl.onImageUpload(key, imageModel)
+      }
+
+      scope.onDelete = (key, imageModel)=>{
+        if (ctrl.onImageDelete){
+          ctrl.onImageDelete(key, imageModel)
+        }
       }
     }
   }

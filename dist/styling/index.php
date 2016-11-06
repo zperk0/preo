@@ -75,5 +75,9 @@ echo $overrides;
     </div>
   </div>
 <? require($_SERVER['DOCUMENT_ROOT'].$_SESSION['path'].'/inc/shared/f.php'); ?>
+<<<<<<< HEAD
 <script type="text/javascript" src="/v2/vendor.bundle.d6d6473c4d38074cf7c6.js"></script><script type="text/javascript" src="/v2/styling.bundle.f4f3f93b4cbcc75e41fe.js"></script><script type="text/javascript" src="/v2/app.bundle.f0945632cc08b1bb3a33.js"></script></body>
+=======
+<script type="text/javascript" src="/v2/vendor.bundle.c2035de6da4d57fae9e6.js"></script><script type="text/javascript" src="/v2/styling.bundle.029b7485bfa360f1aca1.js"></script><script type="text/javascript" src="/v2/app.bundle.b8273cf06e4d0542aea3.js"></script></body>
+>>>>>>> origin/PWA-803-email-style-editor
 </html>

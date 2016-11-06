@@ -24,7 +24,7 @@ export default class imageUploaderController {
         this.ngModel[0].$save = false;
         this.ngModel[0].$delete = false;
       } else {
-
+        console.log("before on delete", this.onDelete, this.ngModel)
         if (this.onDelete && this.ngModel[0].id) {
           this.onDelete({
             image: this.ngModel[0]
@@ -48,7 +48,7 @@ export default class imageUploaderController {
       if (evt.target.result){
         var p = this.CroppieService.show(evt.target.result,this.boundry, this.viewport, this.output)
           .then((img)=>{
-            console.log("uploading img dialog");
+            console.log("uploading img dialog", this.ngModel);
             if (this.ngModel.length){
               this.ngModel[0].$image = img;
             } else {

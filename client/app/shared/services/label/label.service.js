@@ -12,6 +12,10 @@ export default class LabelService {
     this.SNACK_WEBSETTINGS_ERROR = gettextCatalog.getString("Could not save weborders style");
     this.SNACK_WEBSETTINGS_SUCCESS = gettextCatalog.getString("Saved weborders style");
 
+
+    this.SNACK_EMAILS_ERROR = gettextCatalog.getString("Could not save emails style");
+    this.SNACK_EMAILS_SUCCESS = gettextCatalog.getString("Saved emails style");
+
     this.TITLE_DELETE_SECTION = gettextCatalog.getString("Delete section?");
     this.CONTENT_DELETE_SECTION = gettextCatalog.getString("Are you sure you want to delete this section?");
 

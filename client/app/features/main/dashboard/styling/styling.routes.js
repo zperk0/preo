@@ -12,6 +12,11 @@ export default function routes($stateProvider) {
     url: "/styling",
     template: require("./styling.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm"
+    controllerAs: "vm",
+    resolve :{
+      auth:(authenticated)=>{
+        return authenticated
+      }
+    }
   });
 }
