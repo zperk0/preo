@@ -80,6 +80,10 @@ $inputColor: #9E9E9E;
         color: transparent !important;
       }
 
+      &:-ms-input-placeholder {
+        color: transparent !important;
+      }
+
       color: transparent;
   	}
   }
@@ -143,6 +147,14 @@ $inputColor: #9E9E9E;
     div[ng-messages] {
       margin-top: -16px;
       margin-bottom: 16px;
+    }
+
+    input::-ms-input-placeholder {
+      color: transparent !important;
+    }
+
+    input:-ms-input-placeholder {
+      color: transparent !important;
     }
   }
 

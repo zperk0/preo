@@ -29,7 +29,7 @@ export default class eventScheduleFormController {
     }
 
     if (this.schedule.$startDate) {
-      this.schedule.$startTime = moment(this.schedule.$startDate);
+      this.schedule.$startTime = moment(this.schedule.$startDate).toDate();
       this.resetDateTime(this.schedule.$startDate);
     }
 
