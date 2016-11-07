@@ -11,7 +11,7 @@ export default function outletLocationTreeItem(){
     replace:true,
     // require:["^outletLocationGroup", 'outletLocationList'],
     link: (scope, el, attr, ctrls) => {
-      
+
       scope.toggleExpand = _toggleExpand;
       scope.selectItem = _selectItem;
       scope.isSelected = _isSelected;
@@ -24,10 +24,12 @@ export default function outletLocationTreeItem(){
 
       function _selectItem($event) {
 
-        if ($event.srcElement.parentElement.className.indexOf('material-icons') !== -1) {
+        let target = $event.target || $event.srcElement;
+
+        if (target.parentElement.className.indexOf('material-icons') !== -1) {
           return false;
         }
-        
+
         scope.onSelect && scope.onSelect({
           outletLocation: scope.outletLocation
         });
@@ -50,7 +52,7 @@ export default function outletLocationTreeItem(){
         }
 
         return fullName.join('');
-      }      
+      }
     }
   }
 }
