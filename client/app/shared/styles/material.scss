@@ -36,6 +36,82 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
 
 #webappv2{
 
+  md-slider {
+
+    .md-track {
+      background-color: #c8c8c8;
+      &.md-track-fill{
+        background-color: $colorPrimary;
+      }
+    }
+    .md-track-ticks {
+      display: none;
+    }
+     &.md-min {
+      .md-thumb:after {
+        background-color: $colorPrimary;
+        border-color: $colorPrimary;
+      }
+
+      .md-focus-ring {
+        background-color: $colorPrimary;
+      }
+
+      &[md-discrete] {
+        .md-thumb {
+          &:after {
+            background-color: $colorPrimary;
+            border-color: transparent;
+          }
+        }
+
+        .md-sign {
+          background-color: $colorPrimary;
+          &:after {
+            border-top-color: $colorPrimary;
+          }
+        }
+    }
+    }
+    .md-thumb:after {
+      border-color: $colorPrimary;
+      background-color: $colorPrimary;
+    }
+    .md-sign {
+      background-color: $colorPrimary;
+      &:after {
+        border-top-color: $colorPrimary;
+      }
+    }
+  }
+
+  md-radio-button.md-default-theme .md-off, md-radio-button .md-off {
+    border-color: #757575;
+  }
+  md-radio-group.md-default-theme:not([disabled]) .md-primary .md-on, md-radio-group:not([disabled]) .md-primary .md-on, md-radio-group.md-default-theme:not([disabled]).md-primary .md-on, md-radio-group:not([disabled]).md-primary .md-on, md-radio-button.md-default-theme:not([disabled]) .md-primary .md-on, md-radio-button:not([disabled]) .md-primary .md-on, md-radio-button.md-default-theme:not([disabled]).md-primary .md-on, md-radio-button:not([disabled]).md-primary .md-on{
+    background-color: #757575;
+  }
+
+  md-tabs-wrapper{
+    background:#F5F5F5;
+
+    md-tab-item{
+      span{
+        color: #424242;
+      }
+
+      &.md-active{
+        span{
+          color:$colorPrimary;
+        }
+      }
+    }
+    md-ink-bar{
+      color:$colorPrimary;
+      background-color:$colorPrimary;;
+    }
+  }
+
   //sidenav right should not show backdrop, property disable backdrop isnt working there
   .md-sidenav-backdrop{
     display: none;
@@ -46,9 +122,6 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
   }
 
   md-checkbox{
-    .md-ink-ripple{
-      color:$colorPrimary;
-    }
     .md-icon{
 
       &:after{
@@ -131,6 +204,39 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
 
   md-input-container {
 
+    &.inline-mins{
+      input {
+        margin-right: 16px;
+      }
+      .mins{
+        color:#808080;
+        font-size:16px;
+        position: relative;
+        top: 10px;
+      }
+    }
+
+    &.inline-price{
+      .input-wrapper {
+        padding-right: 16px;
+      }
+
+      venue-currency{
+        color: #808080;
+        position: relative;
+        top: 11px;
+        flex: 0 1 5%;
+        align-self: flex-start;
+        margin-top: 0px;
+      }
+    }
+
+    .input-with-label{
+      .input-wrapper{
+        margin-right:16px;
+      }
+    }
+
     &.no-spacer{
       .md-errors-spacer{
         display: none;
@@ -160,4 +266,59 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
       }
     }
   }
+
+  md-select {
+    .md-select-icon {
+      color: rgba(0,0,0,0.38);
+      font-size: 13px;
+    }
+  }
+}
+
+.md-select-menu-container {
+  md-select-menu {
+    md-option {
+      &:not([disabled]) {
+        &:hover {
+          background-color: rgb(238,238,238);
+        }
+      }
+
+      &[selected] {
+        color: rgba(0,0,0,0.87);
+        background-color: rgb(238,238,238);
+      }
+
+      em {
+        padding-right: 10px;
+      }
+    }
+  }
+}
+md-switch, md-checkbox{
+  &.md-checked {
+    .md-ink-ripple {
+      color: rgba(2,136,209,0.26);
+    }
+  }
+}
+
+md-checkbox.md-checked.md-focused{
+  background-color:rgba(2,136,209,0.26);
+}
+
+md-switch.md-default-theme.md-checked .md-bar, md-switch.md-checked .md-bar{
+  background-color:#7ABDE2;
+}
+
+md-switch.md-default-theme.md-checked .md-thumb, md-switch.md-checked .md-thumb{
+  background-color:#0288D1;
+
+}
+md-switch.md-default-theme.md-checked.md-focused .md-thumb:before, md-switch.md-checked.md-focused .md-thumb:before, md-checkbox.md-default-theme.md-checked.md-focused .md-container:before, md-checkbox.md-checked.md-focused .md-container:before{
+  background-color:rgba(2,136,209,0.26);
+}
+
+i, em {
+  font-style: italic !important;
 }

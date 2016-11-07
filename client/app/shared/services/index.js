@@ -13,6 +13,10 @@ import Event from './events/event.service';
 import EventSchedule from './events/eventSchedule.service';
 import DateUtils from './dateUtils/dateUtils.service';
 import Taxes from './taxes/taxes.service';
+import StyleService from './style/style.service';
+import deliveryZones from './deliveryZones/deliveryZones.service';
+import Maps from './maps/maps.service';
+
 
 export default angular.module("Services" , ['ui.router'])
   .service(User.UID, User)
@@ -27,6 +31,9 @@ export default angular.module("Services" , ['ui.router'])
   .service(Feature.UID, Feature)
   .service(CollectionSlot.UID, CollectionSlot)
   .service(Event.UID, Event)
+  .service(StyleService.UID, StyleService)
+  .service(Maps.UID, Maps)
+  .service(deliveryZones.UID, deliveryZones)
   .service(Taxes.UID, Taxes)
   .service(EventSchedule.UID, EventSchedule)
   .service(DateUtils.UID, DateUtils)

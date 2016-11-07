@@ -1,3 +1,137 @@
-<div>
-  emails
+<div class='styling-emails' flex="grow" layout="column">
+  <div class="sub-toolbar" layout="row" layout-align="start center">
+    <span translate>View:</span> <md-button class='md-icon-button' ng-click="emailsCtrl.increaseZoom()"><icon>add_circle</icon></md-button> <span class='zoom-level'>{{emailsCtrl.zoomLevel | percent:0}}</span> <md-button  class='md-icon-button' ng-click="emailsCtrl.decreaseZoom()"><icon >remove_circle</icon></md-button>
+  </div>
+  <div class="email-content zoom-level-{{(emailsCtrl.zoomLevel*100).toFixed()}}">
+    <table class="table-body" style="border-collapse:collapse;color:#4C4C4C;font-family:Helvetica;font-size:12px;line-height:12px;Margin:0;width:800px">
+      <tbody>
+        <tr>
+          <td style="border:0;padding:0"><tr>
+
+            <div class="email-header" style-editor="BANNER" ng-class="{placeholder:!emailsCtrl.StyleService.imagesModel.$images.emailBanner || !emailsCtrl.StyleService.imagesModel.$images.emailBanner.length || !emailsCtrl.StyleService.imagesModel.$images.emailBanner[0].$image}">
+              <img class="header-image" alt=""
+              ng-if="emailsCtrl.StyleService.imagesModel.$images.emailBanner && emailsCtrl.StyleService.imagesModel.$images.emailBanner.length && emailsCtrl.StyleService.imagesModel.$images.emailBanner[0].$image"
+              ng-src="{{emailsCtrl.StyleService.imagesModel.$images.emailBanner[0].$image}}">
+              <md-tooltip > {{'Edit header' | translate}} </md-tooltip>
+            </div>
+            <table class="table-receipt" style="background:#fff;border:1px solid #e0e0e0;border-collapse:collapse;margin:0 auto 0 auto;width:478px">
+              <tbody>
+                <tr>
+                  <td class="cell-table-receipt" style="border:0;padding:0 24px">
+                    <table class="table-order-header" style="border-collapse:collapse;Margin:0;width:432px">
+                      <tbody>
+                        <tr>
+                          <td class="cell-order-number" style="border:0;border-bottom:1px dashed #4C4C4C;font-size:12px;line-height:12px;padding:0;padding-bottom:12px;padding-top:20px;vertical-align:top"><b translate>Order #123456</b></td>
+                          <td class="cell-order-date" style="border:0;border-bottom:1px dashed #4C4C4C;font-size:13px;line-height:12px;padding:0;padding-bottom:12px;padding-top:20px;text-align:right;vertical-align:top"><b translate>Date</b></td>
+                        </tr>
+                        <tr>
+                          <td class="cell-customer-name" colspan="2" style="border:0;border-bottom:1px dashed #4C4C4C;color:#4c4c4c;font-size:20px;line-height:20px;padding:0;padding-bottom:28px;padding-top:28px;text-align:center" translate>Thanks for your order</td>
+                        </tr>
+                        <tr>
+                          <td class="cell-confirmation-code" rowspan="2" style="border:0;border-bottom:1px dashed #4C4C4C;height:78px;padding:0;padding-bottom:36px;padding-top:36px;text-align:center;vertical-align:top;width:173px">
+                            <p class="label-confirmation-code" style="background:#f5f5f5;font-size:13px;Margin:0;Margin-bottom:0;Margin-top:0;padding-top:16px;vertical-align:top"><b translate>Confirmation code:</b></p>
+                            <p class="confirmation-code" style="background:#f5f5f5;font-size:36px;line-height:34px;Margin:0;Margin-bottom:0;Margin-top:0;padding-bottom:8px;padding-top:8px;vertical-align:top"><b>XXXX</b></p>
+                          </td>
+                          <td class="cell-address" style="border:0;padding:0;padding-left:16px;padding-top:36px;vertical-align:top">
+                              <p class="label-address" style="font-size:12px;line-height:12px;Margin:0;Margin-bottom:0;Margin-top:0"><b translate>Please collect from: </b></p>
+                              <p class="address" style="font-size:13px;line-height:16px;Margin:0;Margin-bottom:0;Margin-top:0;padding-top:3px" translate>
+                                Location name
+                              </p>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="cell-time" style="border:0;border-bottom:1px dashed #4C4C4C;padding:0;padding-bottom:36px;padding-left:16px">
+                              <p class="label-time" style="font-size:12px;line-height:12px;Margin:0;Margin-bottom:0;Margin-top:0;padding-top:6px"><b translate>Collection time: </b></p>
+                              <p class="time" style="font-size:13px;line-height:16px;Margin:0;Margin-bottom:0;Margin-top:0;padding-top:3px" translate>
+                              Collection time
+                              </p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cell-table-receipt" style="border:0;padding:0 24px">
+                    <table class="table-order-items" style="border-collapse:collapse;Margin:0;width:432px">
+                      <tbody>
+                        <tr>
+                          <th align="left" class="header-items-name" style="border-bottom:1px dashed #4C4C4C;font-size:12px;line-height:12px;padding-bottom:12px;padding-left:8px;padding-top:12px;text-align:left;width:251px"><b translate>Item</b></th>
+                          <th align="left" class="header-items-qty" style="border-bottom:1px dashed #4C4C4C;font-size:12px;line-height:12px;padding-bottom:12px;padding-left:36px;padding-right:36px;padding-top:12px;text-align:left;width:30px"><b translate>Qty</b></th>
+                          <th align="right" class="header-items-total" style="border-bottom:1px dashed #4C4C4C;font-size:12px;line-height:12px;padding-bottom:12px;padding-right:8px;padding-top:12px;text-align:right;width:64px"><b translate>Total</b></th>
+                        </tr>
+                        <tr>
+                          <td class="cell-items-spacing" style="border:0;font-size:13px;Margin-bottom:0;Margin-top:0;padding:0;padding-bottom:24px;vertical-align:top"></td>
+                          <td class="cell-items-spacing" style="border:0;font-size:13px;Margin-bottom:0;Margin-top:0;padding:0;padding-bottom:24px;vertical-align:top"></td>
+                          <td class="cell-items-spacing" style="border:0;font-size:13px;Margin-bottom:0;Margin-top:0;padding:0;padding-bottom:24px;vertical-align:top"></td>
+                        </tr>
+                          <tr>
+                            <td class="items-name" style="border:0;font-size:13px;Margin-bottom:0;Margin-top:0;padding:0;padding-bottom:24px;padding-left:8px;text-align:left;vertical-align:top;width:251px">
+                                <p style="font-size:13px;Margin:0;Margin-bottom:0;Margin-top:0;vertical-align:top"> Item Name </p>
+                            </td>
+                            <td class="items-qty" style="border:0;font-size:13px;Margin-bottom:0;Margin-top:0;padding:0;padding-bottom:24px;padding-left:36px;padding-right:36px;text-align:left;vertical-align:top;width:30px">
+                              1
+                            </td>
+                            <td class="items-total" style="border:0;font-size:13px;Margin-bottom:0;Margin-top:0;padding:0;padding-bottom:24px;padding-right:8px;text-align:right;vertical-align:top;width:64px">
+                              {{'9.99' | currency}}
+                            </td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cell-table-receipt" style="border:0;padding:0 24px">
+                    <table class="table-subtotal" style="border-collapse:collapse;Margin:0;width:432px">
+                      <tbody>
+                        <tr>
+                          <td class="label-subtotal" style="border:0;border-bottom:1px dashed #4C4C4C;border-top:1px dashed #4C4C4C;font-size:13px;line-height:16px;Margin-bottom:0;Margin-top:0;padding:0;padding-bottom:8px;padding-left:8px;padding-top:8px;width:356px">
+                            SUBTOTAL                          </td>
+                          <td class="subtotal" style="border:0;border-bottom:1px dashed #4C4C4C;border-top:1px dashed #4C4C4C;font-size:13px;line-height:16px;Margin-bottom:0;Margin-top:0;padding:0;padding-bottom:8px;padding-left:0;padding-right:8px;padding-top:8px;text-align:right">
+                            {{'9.99' | currency}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cell-spacing-total" style="border:0;height:24px;padding:0"></td>
+                </tr>
+                <tr>
+                  <td class="cell-table-receipt" style="border:0;padding:0 24px">
+                    <table class="table-order-total" style="border-collapse:collapse;Margin:0;width:432px">
+                      <tbody>
+                        <tr>
+                          <td class="label-total" style="background:#f5f5f5;border:0;font-size:18px;line-height:20px;padding:0;padding-bottom:6px;padding-left:8px;padding-right:0;padding-top:8px;width:328px">
+                            <b translate>TOTAL</b>
+                          </td>
+                          <td class="total" style="background:#f5f5f5;border:0;font-size:18px;line-height:20px;padding:0;padding-bottom:6px;padding-left:0;padding-right:8px;padding-top:8px;text-align:right">
+                            {{'9.99' | currency}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cell-spacing-total" style="border:0;height:24px;padding:0"></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+            <table class="table-order-footer" style="background:0 0;border-collapse:collapse;Margin:0 auto 0 auto;width:480px">
+              <tbody>
+                <tr>
+                  <td  class="label-contact" style="border:0;font-size:14px;line-height:21px;padding:0;padding-top:24px;padding-bottom:100px;text-align:center;vertical-align:center" style-editor="FOOTER">
+                   {{emailsCtrl.StyleService.templatesModel['ORDER_PLACED_EMAIL_FOOTER'].content}} <md-tooltip> {{'Edit footer' | translate}} </md-tooltip>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      </tbody>
+    </table>
+  </div>
 </div>
+

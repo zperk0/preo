@@ -115,7 +115,7 @@ module.exports = function(ENV, options) {
         modules: false,
         cached: false,
         colors: true,
-        chunk: true,
+        chunk: false,
         inline: true,
         progres: true,
         hot: true
@@ -239,6 +239,13 @@ module.exports = function(ENV, options) {
         chunksSortMode: chunkSort,
         inject:true,
         filename:'menus/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['venueSettings','app','vendor'],
+        chunksSortMode: chunkSort,
+        inject:true,
+        filename:'venueSettings/index.php'
       })
     ]
   }

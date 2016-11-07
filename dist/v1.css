@@ -10,13 +10,17 @@
   }
   #wrap{
     background: transparent url(../img/bg.jpg) repeat!important;
-    height: calc(100vh - 117px);
+    height: calc(100vh - 67px);
     margin: 0 auto;
-    top: 117px;
+    top: 67px;
     position: relative;
     overflow: auto;
     padding: 0;
     min-height: 0;
+  }
+   #wrap.with-toolbar{
+    height: calc(100vh - 117px);
+    top: 117px;
   }
 
   #webappv2{
@@ -26,7 +30,7 @@
     display: none;
   }
 
-  #webappv2  md-toolbar{
+  #webappv2  .preo-toolbar {
     display: none;
   }
 
@@ -58,6 +62,11 @@
     border-radius: 0;
     border-style: solid;
   }
+
+  #webappv2 .image-uploader label input {
+    display: none;
+  }
+
   #webappv2 .md-sidenav-right{
     top:0;
   }
@@ -97,6 +106,17 @@
     top: -50px !important;
     z-index: 126 !important;
   }
+
+  #webappv2 .md-datepicker-input {
+    border-bottom: 0px;
+  }
+
+  #webappv2 .md-datepicker-focused {
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(224,224,224);
+  }
+
+
   .contain-to-grid{
     position: fixed;
     z-index: 123;
@@ -107,4 +127,14 @@
   }
   footer{
     display: none;
+  }
+
+  #webappv2 table tr.even, #webappv2  table tr.alt, #webappv2 table tr:nth-of-type(even) {
+    background-color: transparent;
+  }
+  #webappv2 table{
+    border:none;
+  }
+  #webappv2 textarea{
+    box-shadow:none;
   }

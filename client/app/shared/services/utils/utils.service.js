@@ -38,6 +38,8 @@ export default class UtilsService {
 
 
   getImagePath (imgUrl) {
+    if(!imgUrl)
+      return;
     var outputUrl = window._PREO_DATA._CDNROOT;
 
     if (/^https?:\/\//.test(imgUrl)){
