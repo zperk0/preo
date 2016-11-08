@@ -74,6 +74,7 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
 
       function updateShape(deliveryZone, shape){
         if(deliveryZone.type === 'DISTANCE'){
+          console.log("updating shape", deliveryZone, shape);
           var radius =  deliveryZone.distance * 1000;
           shape.setRadius(radius)
         } else if (deliveryZone.type === 'CUSTOM') {
@@ -211,7 +212,6 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
 
         google.maps.event.addDomListener(window, "resize", handleResize);
         google.maps.event.addListener(scope.drawingManager, 'polygoncomplete', handlePolygonComplete);
-        console.log("set on")
         $rootScope.$on(BroadcastEvents._ON_NAVBAR_TOGGLE,handleResize);
 
         if (scope.markerPos){
@@ -233,11 +233,12 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
                 for (let i=0;i<oldDeliveryZones.length;i++){
                   let oldDeliveryZone = oldDeliveryZones[i];
                   if (!newDeliveryZones.filter((dz)=>dz.id===oldDeliveryZone.id).length){
-                    console.log("removing from map", newDeliveryZone, oldDeliveryZone)
                     removeFromMap(oldDeliveryZone)
                   }
                   else { //do a diff and only draw changes
+                    console.log("in else")
                     for (let j=0;j<newDeliveryZones.length;j++){ // find matches in old/new delivery zones
+                      console.log("searching for matches")
                       let newDeliveryZone = newDeliveryZones[j];
                       if (newDeliveryZone.id === oldDeliveryZone.id){   //if we find a match
                         console.log("found a match", newDeliveryZone, oldDeliveryZone)
@@ -265,7 +266,10 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
                     }
                   }
                 }
+              } else {
+                firstLoad= false;
               }
+
               console.log("drawing", scope, scope.drawingManager)
               drawDeliveryZones(deliveryZonesToSkip);
             }, true);
