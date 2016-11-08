@@ -193,9 +193,6 @@ md-dialog {
   }
 
   &.mdp-timepicker {
-    min-width: 470px;
-    max-height: 85%;
-
     .mdp-timepicker-selected-ampm {
       span {
         display: inline-block;
@@ -203,3 +200,20 @@ md-dialog {
     }
   }
 }
+
+
+// HACK CSS IE 10 AND IE11
+@media all and (-ms-high-contrast:none)
+ {
+  md-dialog { // ie10
+    &.mdp-timepicker {
+      min-width: 470px;
+      max-height: 85%;
+    }
+  }
+
+  *::-ms-backdrop, md-dialog.mdp-timepicker {
+    min-width: 470px;
+    max-height: 85%;
+  } /* IE11 */
+ }
