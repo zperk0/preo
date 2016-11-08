@@ -17,15 +17,22 @@ export default class DeliveryZoneService {
       //TODO save delivery zone
       console.log("saving", this.editableDeliveryZone);
       // setTimeout(()=>{
-        var dz  = this.editableDeliveryZone;
+        var dz  = angular.copy(this.editableDeliveryZone);
+        if (dz.polygon){
+          dz.polygon = dz.polygon.toString();
+        }
         var saveOrUpdate = dz.id && dz.id !== -1 ? dz.update.bind(dz) : Preoday.DeliveryZone.create;
 
         // if (!dz.id){
         //   dz.id = this.data.deliveryZones.length;
         // }
+        debugger;
         saveOrUpdate(dz).then((newDz)=>{
           this.data.deliveryZones.forEach((dz,i)=>{
             if (dz.id === newDz.id || dz.id === -1){
+              if (newDz.polygon && newDz.polygon.length){
+                newDz.polygon = newDz.polygon.split(",");
+              }
               angular.extend(this.data.deliveryZones[i], newDz);
             }
           })
@@ -48,6 +55,9 @@ export default class DeliveryZoneService {
 
   prepareZones(){
     this.data.deliveryZones.forEach((dz,i)=>{
+      if (dz.polygon && dz.polygon instanceof String){
+        dz.polygon = dz.polygon && dz.polygon.length ? dz.polygon.split(",") : dz.polygon;
+      }
       dz.$color = this.colors[i];
     })
   }
@@ -91,7 +101,7 @@ export default class DeliveryZoneService {
       })
       this.originalModel = false;
     } else {
-      this.data.deliveryZones = this.data.deliveryZones.filter((dz,i)=>dz.id)
+      this.data.deliveryZones = this.data.deliveryZones.filter((dz,i)=>dz.id!==-1)
       this.originalModel = false;
     }
     this.editableDeliveryZone=false;
@@ -99,7 +109,7 @@ export default class DeliveryZoneService {
 
   showCreateDeliveryZone(){
     var index = this.data.deliveryZones.length
-    this.editableDeliveryZone= {
+    this.editableDeliveryZone= new Preoday.DeliveryZone({
       name:this.gettextCatalog.getString("Delivery Zone ") + (index+1),
       id:-1,
       distance:2,
@@ -114,7 +124,7 @@ export default class DeliveryZoneService {
         amount:0
       },
       $color:this.colors[index]
-    }
+    })
     this.contextual.showDrawer('deliveryZonesEdit');
     this.data.deliveryZones.push(this.editableDeliveryZone);
   }
