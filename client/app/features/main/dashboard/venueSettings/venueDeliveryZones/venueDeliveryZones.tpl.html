@@ -1,5 +1,14 @@
 <div flex layout="column" class='venue-delivery-zones layout-left-right'>
-    <md-map ng-if="venueDeliveryZonesCtrl.showMap" on-load="venueDeliveryZonesCtrl.mapLoaded()" id="venue-map" venue="venueDeliveryZonesCtrl.venue"></md-map>
+<div style='position:absolute;'>
+  {{venueDeliveryZonesCtrl.DeliveryZoneService.data.deliveryZones}}
+</div>
+    <md-map ng-if="venueDeliveryZonesCtrl.showMap"
+            on-load="venueDeliveryZonesCtrl.mapLoaded()"
+            id="venue-map"
+            delivery-zones="venueDeliveryZonesCtrl.DeliveryZoneService.data.deliveryZones"
+            editable-delivery-zone="venueDeliveryZonesCtrl.DeliveryZoneService.editableDeliveryZone"
+            venue="venueDeliveryZonesCtrl.venue">
+    </md-map>
     <div class="content-spinner" ng-if="!venueDeliveryZonesCtrl.isMapLoaded">
       <spinner></spinner>
     </div>
