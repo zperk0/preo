@@ -8,6 +8,64 @@ export default class venueServicesController {
      this.$state.go("main.dashboard.venueSettings.venueDeliveryZones");
   }
 
+  doUpdate(){
+    console.log("doing update", this.venue, this.updates);
+    let promises = []
+    if (this.updates['venue']){
+      promises.push(this.VenueService.updateVenue())
+    }
+    if (this.updates['settings']){
+      promises.push(this.venue.settings.update())
+    }
+    if (!promises.length){
+      promises.push(this.$q.resolve())
+    }
+    this.$q.all(promises).then((results)=>{
+      this.updates['venue'] = false;
+      this.updates['settings'] = false;
+      angular.extend(this.venue,results[0]);
+      angular.extend(this.venue.settings,results[1]);
+      this.isSaving = false;
+      console.log("saved all promises");
+    },()=>{
+      this.isSaving = false;
+      this.isError = true;
+      console.log("error saving all promises");
+    }).catch((err)=>{
+      console.error(err);
+      console.log("exception saving all promises");
+      this.isSaving = false;
+      this.isError = true;
+    })
+  }
+
+  debounceUpdate(which){
+    console.log("debouncing update", which);
+    if (which){
+      this.updates[which] = true;
+    }
+    this.isSaving = true;
+    this.debounce(this.doUpdate.bind(this), 1000)()
+  }
+
+  debounce(func, wait, immediate) {
+    console.log("debouncing");
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        console.log("in later", immediate)
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      console.log("if call now", callNow);
+      if (callNow) func.apply(context, args);
+    };
+  };
+
   updateVenue(){
       this.Spinner.show("venue-services-save");
       try {
@@ -71,11 +129,19 @@ export default class venueServicesController {
     })
   }
 
+
+
   /* @ngInject */
-  constructor(Spinner, $state, Snack, ErrorService, LabelService, $timeout, VenueService) {
+  constructor($q, Spinner, $state, Snack, ErrorService, LabelService, $timeout, VenueService) {
     "ngInject";
-    this.isEdit = false;
+    this.updates = {
+      venue:false,
+      settings:false
+    };
+    this.isSaving = false;
+    this.isError = false;
     this.Spinner = Spinner;
+    this.$q = $q;
     this.Snack = Snack;
     this.$state = $state;
     this.ErrorService = ErrorService;
