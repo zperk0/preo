@@ -225,7 +225,7 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
             var firstLoad = true;
              scope.$watch("deliveryZones", function (newDeliveryZones, oldDeliveryZones) {
               var deliveryZonesToSkip = [];
-              var propsToCompare = ['polygon', 'distance', 'color'];
+              var propsToCompare = ['polygon', 'distance', '$color'];
 
               console.log("comparing", newDeliveryZones, oldDeliveryZones)
               //Diff delivery zones, remove the shapes that are not in new array
