@@ -26,7 +26,6 @@ export default class DeliveryZoneService {
         // if (!dz.id){
         //   dz.id = this.data.deliveryZones.length;
         // }
-        debugger;
         saveOrUpdate(dz).then((newDz)=>{
           this.data.deliveryZones.forEach((dz,i)=>{
             if (dz.id === newDz.id || dz.id === -1){
@@ -36,13 +35,13 @@ export default class DeliveryZoneService {
               angular.extend(this.data.deliveryZones[i], newDz);
             }
           })
+          this.Spinner.hide("delivery-zones-save");
+          this.Snack.show(this.LabelService.SNACK_DELIVERY_ZONES_SUCCESS)
+          resolve(dz);
+          this.editableDeliveryZone = false;
           // }
         })
         // this.data.deliveryZones.push(dz);
-        this.Spinner.hide("delivery-zones-save");
-        this.Snack.show(this.LabelService.SNACK_DELIVERY_ZONES_SUCCESS)
-        resolve(dz);
-        this.editableDeliveryZone = false;
       // },500)
     })
   }

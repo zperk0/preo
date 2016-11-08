@@ -5,7 +5,7 @@
         tooltip="{{ 'Add delivery zone' | translate }}"
         on-click-new="deliveryZoneListCtrl.showCreateItem()">
            <delivery-zone
-               ng-repeat="deliveryZone in deliveryZoneListCtrl.deliveryZones | orderBy: 'id'"
+               ng-repeat="deliveryZone in deliveryZoneListCtrl.deliveryZones"
                delivery-zone="deliveryZone"
                ng-attr-data-id="{{deliveryZones.id}}">
              </delivery-zone>
