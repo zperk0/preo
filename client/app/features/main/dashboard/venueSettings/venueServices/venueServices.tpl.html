@@ -15,10 +15,14 @@
                       <label translate>Lead Time</label>
                       <div class='input-with-label' flex layout="row" layout-align="space-between start">
                         <div class='input-wrapper' flex="grow">
-                          <input ng-blur="venueServicesCtrl.debounceUpdate('settings')" type="text" valid-number name="leadTime" ng-model="venueServicesCtrl.venue.settings.leadTime" >
+                          <input ng-blur="venueServicesCtrl.debounceUpdate('settings')" type="text" valid-number max-integer-value name="leadTime" ng-model="venueServicesCtrl.venue.settings.leadTime" >
                         </div>
                         <div class='mins' flex="nogrow" translate>Mins</div>
                       </div>
+                      <div ng-messages="venueServicesCtrl.collectionForm.leadTime.$error">
+                          <div ng-message="maxIntegerValue" translate ng-class="{'activated': venueServicesCtrl.collectionForm.leadTime.$error.maxIntegerValue}">Max value is 2147483646.</div>
+
+                    </div>
                   </md-input-container>
                   <md-input-container class="md-block no-spacer inline-price">
                     <div flex layout="row" layout-align="space-between start">
