@@ -24,12 +24,11 @@ $heightMenuItemCard:48px;
       }
 
       .schedule-name {
-        flex: 3 0;
-        display: flex;
+        flex: 1;
+        display: inline-block;
       }
 
       .schedule-time {
-        flex: 1 0;
         text-align: right;
       }
     }
