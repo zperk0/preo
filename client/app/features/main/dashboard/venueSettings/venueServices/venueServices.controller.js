@@ -9,23 +9,14 @@ export default class venueServicesController {
   }
 
   doUpdate(){
-    console.log("doing update", this.venue, this.updates);
-    let promises = []
-    if (this.updates['venue']){
-      promises.push(this.VenueService.updateVenue())
-    }
-    if (this.updates['settings']){
-      promises.push(this.venue.settings.update())
-    }
-    if (!promises.length){
-      promises.push(this.$q.resolve())
-    }
+    var promises = [];
+    promises.push(this.VenueService.updateVenue())
+    promises.push(this.venue.settings.update())
     this.$q.all(promises).then((results)=>{
-      this.updates['venue'] = false;
-      this.updates['settings'] = false;
       angular.extend(this.venue,results[0]);
       angular.extend(this.venue.settings,results[1]);
       this.isSaving = false;
+      this.isError = false;
       console.log("saved all promises");
     },()=>{
       this.isSaving = false;
@@ -40,12 +31,11 @@ export default class venueServicesController {
   }
 
   debounceUpdate(which){
-    console.log("debouncing update", which);
-    if (which){
-      this.updates[which] = true;
+    if (this.collectionForm.$valid){
+      console.log("debouncing update", which);
+      this.isSaving = true;
+      this.debounce(this.doUpdate.bind(this), 1000)()
     }
-    this.isSaving = true;
-    this.debounce(this.doUpdate.bind(this), 1000)()
   }
 
   debounce(func, wait, immediate) {
@@ -134,10 +124,6 @@ export default class venueServicesController {
   /* @ngInject */
   constructor($q, Spinner, $state, Snack, ErrorService, LabelService, $timeout, VenueService) {
     "ngInject";
-    this.updates = {
-      venue:false,
-      settings:false
-    };
     this.isSaving = false;
     this.isError = false;
     this.Spinner = Spinner;
