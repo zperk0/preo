@@ -37,9 +37,9 @@ export default class deliveryZoneController {
     var oldStatus = this.deliveryZone.visible;
     this.deliveryZone.visible =  newStatus ? 1 : 0;
     this.Spinner.show("dz-update");
-    this.DeliveryZoneService.updateDeliveryZone(this.deliveryZone)
+    this.deliveryZone.update()
       .then((dz)=>{
-        this.deliveryZone = dz;
+        angular.extend(this.deliveryZone,dz);
         this.Spinner.hide("dz-update");
         this.Snack.show('Delivery zone visibility updated');
     }).catch(()=>{
