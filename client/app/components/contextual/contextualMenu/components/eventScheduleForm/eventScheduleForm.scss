@@ -183,3 +183,12 @@ $inputColor: #9E9E9E;
   	width: 308px;
   }
 }
+
+md-dialog {
+  &.mdp-datepicker {
+    .mdp-datepicker-date {
+      display: block;
+      width: 100%;
+    }
+  }
+}
