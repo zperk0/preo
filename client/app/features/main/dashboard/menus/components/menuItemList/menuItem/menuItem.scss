@@ -18,6 +18,10 @@ $heightMenuItemCard:48px;
       min-height: auto;
       padding:10px 14px;
 
+      .name {
+        display: inline-block;
+      }
+
       .price {
         padding-top:2px;
         float: right;
