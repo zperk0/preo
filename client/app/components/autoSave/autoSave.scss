@@ -1,0 +1,29 @@
+.auto-save{
+  margin-top:24px;
+
+  md-icon{
+    margin-left: -4px;
+    margin-right: 4px;
+    span{
+      color:#D1D1D1;
+    }
+  }
+
+  span{
+    color:#8C8C8C;
+
+    &.error{
+        span{
+          color:#D2232A;
+        }
+        color:#D2232A;
+
+        .fake-link{
+          span{
+            color:#D2232A;
+          }
+          color:#D2232A;
+      }
+    }
+  }
+}

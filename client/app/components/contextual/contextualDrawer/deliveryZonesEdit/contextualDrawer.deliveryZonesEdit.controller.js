@@ -3,6 +3,11 @@ export default class ContextualDrawerDeliveryZonesEditController {
     return "ContextualDrawerDeliveryZonesEdit";
   }
 
+  onCancel(){
+    this.DeliveryZoneService.cancelEditing()
+    this.$mdSidenav('deliveryZonesEdit').close()
+  }
+
   submit(){
     if (this.deliveryZoneForm.$valid){
       this.DeliveryZoneService.saveEditableDeliveryZone()
@@ -14,12 +19,8 @@ export default class ContextualDrawerDeliveryZonesEditController {
       }
   }
 
-  setEditing(newVal){
-    if (newVal !== undefined){
-      this.isEditing = newVal
-    } else {
-      newVal = !newVal;
-    }
+  clearPolygon(){
+    this.editableDeliveryZone.polygon = [];
   }
 
   constructor($scope, $stateParams, $mdSidenav, DeliveryZoneService) {

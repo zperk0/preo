@@ -44,13 +44,15 @@ export default class venueDeliveryZonesController {
   }
 
   /* @ngInject */
-  constructor(Spinner, $state, Snack, ErrorService, LabelService, $timeout, VenueService, contextual, DialogService, gettextCatalog) {
+  constructor($scope, Spinner, $state, Snack, ErrorService, DeliveryZoneService, LabelService, $timeout, VenueService, contextual, DialogService, gettextCatalog) {
     "ngInject";
+    this.$scope = $scope;
     this.isEdit = false;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$state = $state;
     this.ErrorService = ErrorService;
+    this.DeliveryZoneService = DeliveryZoneService;
     this.gettextCatalog = gettextCatalog;
     this.DialogService = DialogService;
     this.VenueService = VenueService;

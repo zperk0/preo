@@ -10,7 +10,7 @@ export default class MapsService {
       return this.$q.resolve();
     }
     var deferred = this.$q.defer();
-    $script("https://maps.googleapis.com/maps/api/js", ()=>{
+    $script("https://maps.googleapis.com/maps/api/js?libraries=drawing", ()=>{
       deferred.resolve();
     });
     return deferred.promise;
