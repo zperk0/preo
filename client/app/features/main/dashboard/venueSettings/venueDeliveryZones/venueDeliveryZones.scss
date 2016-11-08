@@ -1,11 +1,12 @@
 .venue-delivery-zones{
     #venue-map{
       width: calc(100% - 657px);
+      height: calc(100vh - 64px); /* this is for safari, 100% height or flexbox don't work here i have no idea why*/
     }
 }
 
 .contextual-drawer-delivery-zones{
-  height: 100%;
+  height: calc(100vh - 64px);
 
 }
  .contextual-drawer-delivery-zones-edit {
