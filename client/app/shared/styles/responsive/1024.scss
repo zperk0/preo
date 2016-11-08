@@ -25,7 +25,6 @@ html {
       }
   }
 
-
   // events schedule form
   .event-schedule-form {
     .datepicker-wrapper {
@@ -33,4 +32,11 @@ html {
     }
   }
 
+  .venue-services{
+    form  {
+      venue-currency {
+        flex: 0 1 15% !important;
+      }
+    }
+  }
 }
