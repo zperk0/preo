@@ -34,6 +34,11 @@ export default function navbarItem($mdMenu, gettextCatalog){
           $mdOpenMenu($event);
         };
 
+        if (item.external){
+          navbarCtrl.openExternal(item.external);
+          return
+        }
+
         if (item.children){
           return navbarCtrl.$expanded ? _handleChildrenExpanded() : _handleChildrenCollapsed();
         }

@@ -20,6 +20,10 @@ export default class navbarController {
         });
   }
 
+  openExternal(external){
+    return window.open(external);
+  }
+
   toggleMenu() {
     this.toggleExpanded();
     this.$expanded = !this.$expanded;
@@ -49,17 +53,25 @@ export default class navbarController {
         {name: gettextCatalog.getString("Services"), id:"venueServices"},
         {name: gettextCatalog.getString("Delivery Zones"), id:"venueDeliveryZones"},
       ]},
+      {name: gettextCatalog.getString("Tax"), icon:"account_balance", id:"taxes", children:[
+        {name: gettextCatalog.getString("Seller Details"), id:"sellerDetails"},
+        {name: gettextCatalog.getString("Tax Groups"), id:"taxGroups"}
+      ]},
+       {name: gettextCatalog.getString("Payments"), icon:"credit_card", id:"payments", children:[
+        {name: gettextCatalog.getString("Payment Methods"), id:"paymentMethods"},
+        {name: gettextCatalog.getString("App mode"), id:"appMode"}
+      ]},
+      {name: gettextCatalog.getString("Outlets"), icon:"pin_drop", id:"outlets", children: [
+        {name: gettextCatalog.getString("My Outlets"), id:"outletList"},
+        {name: gettextCatalog.getString("Outlet Locations"), id:"location"},
+      ], shouldShow: function () {
+        return FeatureService.hasOutletFeature();
+      }},
       {name: gettextCatalog.getString("Menus"), icon:"list", id:"menus", children:[
         {name: gettextCatalog.getString("My menus"), id:"menus", destination:"list", exclusions:["itemList","modifiers"]},
         {name: gettextCatalog.getString("Items"), id:"itemList"},
         {name: gettextCatalog.getString("Modifiers"), id:"modifiers"},
       ]},
-      {name: gettextCatalog.getString("Styling"), id:"styling", icon:"color_lens", children:[
-        {name: gettextCatalog.getString("Styling"), id:"mobile"},
-        {name: gettextCatalog.getString("Web Orders"), id:"weborders"},
-        {name: gettextCatalog.getString("Emails"), id:"emails"}
-      ]},
-
       {name: gettextCatalog.getString("Events"), icon:"event", id:"events", children: [
         {name: gettextCatalog.getString("My Events"), id:"eventList"},
         {name: gettextCatalog.getString("Collection Slots"), id:"collectionSlots"},
@@ -67,28 +79,20 @@ export default class navbarController {
 
         return VenueService.hasVenueSet() && VenueService.currentVenue.isEvent();
       }},
-
-      {name: gettextCatalog.getString("Outlets"), icon:"pin_drop", id:"outlets", children: [
-        {name: gettextCatalog.getString("My Outlets"), id:"outletList"},
-        {name: gettextCatalog.getString("Outlet Locations"), id:"location"},
-      ], shouldShow: function () {
-        return FeatureService.hasOutletFeature();
-      }},
       {name: gettextCatalog.getString("Promotions"), icon:"star", id:"promotions"},
-      {name: gettextCatalog.getString("Notifications"), icon:"chat", id:"notifications"},
-      {name: gettextCatalog.getString("Payments"), icon:"credit_card", id:"payments", children:[
-        {name: gettextCatalog.getString("Payment Methods"), id:"paymentMethods"},
-        {name: gettextCatalog.getString("App mode"), id:"appMode"}
+      {name: gettextCatalog.getString("Mange Users"), icon:"account_box", id:"manageUsers"},
+
+      {name: gettextCatalog.getString("Styling"), id:"styling", icon:"color_lens", children:[
+        {name: gettextCatalog.getString("Styling"), id:"mobile"},
+        {name: gettextCatalog.getString("Web Orders"), id:"weborders"},
+        {name: gettextCatalog.getString("Emails"), id:"emails"}
       ]},
       {name: gettextCatalog.getString("Group Bookings"), icon:"people", id:"bookings", children:[
         {name: gettextCatalog.getString("Settings"), id:"bookingSettings"},
         {name: gettextCatalog.getString("Menus"), id:"bookingMenus"},
       ]},
-      {name: gettextCatalog.getString("Tax Settings"), icon:"account_balance", id:"taxes", children:[
-        {name: gettextCatalog.getString("Seller Details"), id:"sellerDetails"},
-        {name: gettextCatalog.getString("Tax Groups"), id:"taxGroups"}
-      ]},
-      {name: gettextCatalog.getString("Gift vouchers"), icon:"label", id:"vouchers"}
+      {name: gettextCatalog.getString("Gift vouchers"), icon:"label", id:"vouchers"},
+      {name: gettextCatalog.getString("Orders"), icon:"receipt", id:"orders", external:window._PREO_DATA._ORDERSAPP}
     ];
   }
 }
