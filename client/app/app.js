@@ -22,6 +22,8 @@ import fullSpinner from './components/fullSpinner';
 import tagList from './components/tagList';
 import itemChips from './components/itemChips';
 import breadcrumb from './components/breadcrumb';
+import autoSave from './components/autoSave';
+import validHtml from './components/validHtml';
 
 import mocks from './app.modules.mock';
 
@@ -55,6 +57,8 @@ require('./components/sticky/sticky.directive.js');
   spinner,
   fullSpinner,
   breadcrumb,
+  autoSave,
+  validHtml,
   // /* internal */
   constants,
   config,
