@@ -26,6 +26,8 @@ $backgroundButtonActive:rgba(0,0,0,0.26);
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
+  font-feature-settings: 'liga';
+  font-smoothing: antialiased;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
   @include noselect;
