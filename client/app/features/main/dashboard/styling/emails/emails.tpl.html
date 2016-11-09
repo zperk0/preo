@@ -125,7 +125,7 @@
               <tbody>
                 <tr>
                   <td  class="label-contact" style="border:0;font-size:14px;line-height:21px;padding:0;padding-top:24px;padding-bottom:100px;text-align:center;vertical-align:center" style-editor="FOOTER">
-                   {{emailsCtrl.StyleService.templatesModel['ORDER_PLACED_EMAIL_FOOTER'].content}} <md-tooltip> {{'Edit footer' | translate}} </md-tooltip>
+                   <span ng-bind-html="emailsCtrl.StyleService.templatesModel['ORDER_PLACED_EMAIL_FOOTER'].content"></span><md-tooltip> {{'Edit footer' | translate}} </md-tooltip>
                   </td>
                 </tr>
               </tbody>
