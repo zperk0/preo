@@ -18,6 +18,7 @@ angular.module("dashboard" , ['ui.router',
     // 'webapp.vouchers',
     'webapp.menus',
     'webapp.taxes',
+    'webapp.analytics',
     'webapp.outlets'
     ])
     .config(routes)
