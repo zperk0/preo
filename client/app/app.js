@@ -23,6 +23,7 @@ import tagList from './components/tagList';
 import itemChips from './components/itemChips';
 import breadcrumb from './components/breadcrumb';
 import validHtml from './components/validHtml';
+import autoSave from './components/autoSave';
 
 import mocks from './app.modules.mock';
 
