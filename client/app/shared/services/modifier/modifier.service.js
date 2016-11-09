@@ -18,6 +18,45 @@ export default class ModifierService {
     return promises;
   }
 
+  // takes a list of modifiers and a jscore modifier parent object with a saveModifier method
+  addCustomModifierToParent($modifiersToAdd, parent, currentModifiers) {
+
+    let deferred = this.$q.defer();
+    let promises  = [];
+
+    $modifiersToAdd.forEach((modifier)=>{
+      let modClone = angular.copy(modifier);
+
+      if (currentModifiers && currentModifiers.length) {
+        modClone.position = Math.max.apply(Math, currentModifiers.map(function(o){return o.position;})) + 1000;
+      }
+      promises.push(parent.saveModifier(modClone));
+
+      // .then((mod)=>{
+      //   mod.modifiers = modClone.modifiers;
+      //   parent.modifiers.push(mod);
+      // }))
+    });
+
+    this.$q.all(promises)
+      .then((modifiers) => {
+
+        if (modifiers && modifiers.length) {
+          modifiers.forEach((mod, index) => {
+
+            mod.modifiers = $modifiersToAdd[index].modifiers;
+          });
+        }
+
+        deferred.resolve(modifiers);
+      }, (err) => {
+
+        deferred.reject(err);
+      });
+
+    return deferred.promise;
+  }
+
   isModifiersDuplicated($modifiers, parent){
     let $modIds = $modifiers.map((m)=>m.id);
     let $parentModIds = parent.modifiers.map((m)=>m.id);
@@ -145,7 +184,7 @@ export default class ModifierService {
   removeFromItem(modifier, item){
     return modifier.delete({itemId:item.id})
       .then(()=>{
-        item.modifiers = item.modifiers.filter((m)=>modifier.id !== m.id);
+        // item.modifiers = item.modifiers.filter((m)=>modifier.id !== m.id);
       })
   }
 

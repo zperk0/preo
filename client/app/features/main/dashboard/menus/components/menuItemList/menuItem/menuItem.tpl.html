@@ -15,8 +15,9 @@
                     </card-item-title>
 
     <modifier-chips
-        ng-if="menuItemCtrl.item.modifiers.length"
-        modifiers="menuItemCtrl.item.modifiers"
+        ng-if="menuItemCtrl.modifiers.length"
+        modifiers="menuItemCtrl.modifiers"
+        on-modifier-removed="menuItemCtrl.onModifierRemoved(modifier)"
         item="menuItemCtrl.item"></modifier-chips>
 
     <div class='size-wrapper'
