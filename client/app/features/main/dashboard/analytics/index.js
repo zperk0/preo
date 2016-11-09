@@ -7,7 +7,7 @@ import controller from './analytics.controller';
 import routes from './analytics.routes';
 
 
-export default angular.module("analytics" , ['ui.router'])
+export default angular.module("webapp.analytics" , ['ui.router'])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
