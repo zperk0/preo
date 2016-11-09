@@ -289,6 +289,7 @@ export default class menuItemController {
     this.contextual = contextual;
     this.ItemService = ItemService;
     this.newModifiers = [];
+    this.modifiers = [];
 
     let inParam = false;
     if (this.item && this.item.id === Number($stateParams.itemId)){

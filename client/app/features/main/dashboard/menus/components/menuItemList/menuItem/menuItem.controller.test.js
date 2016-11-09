@@ -13,6 +13,7 @@ describe('menuItem Controller', function () {
       $scope,
       $stateParams,
       ItemService,
+      ModifierService,
       Snack,
       Spinner,
       server,
@@ -32,6 +33,7 @@ describe('menuItem Controller', function () {
       $controller = $injector.get('$controller');
       $stateParams = $injector.get('$stateParams');
       ItemService = $injector.get('ItemService');
+      ModifierService = $injector.get('ModifierService');
       VenueService = $injector.get('VenueService');
       Snack = $injector.get('Snack');
       Spinner = $injector.get('Spinner');
@@ -116,12 +118,14 @@ describe('menuItem Controller', function () {
       expect(MenuItemCtrl.onEdit).toEqual(jasmine.any(Function));
       expect(MenuItemCtrl.onClone).toEqual(jasmine.any(Function));
       expect(MenuItemCtrl.onNewModifierMoved).toEqual(jasmine.any(Function));
+      expect(MenuItemCtrl.onModifierRemoved).toEqual(jasmine.any(Function));
       expect(MenuItemCtrl.type).toEqual('menuItem');
 
       expect(contextual.showMenu).toHaveBeenCalledWith(MenuItemCtrl.type, mockItem, jasmine.any(Function), jasmine.any(Function), {
         onDeleteImage: jasmine.any(Function)
       });
       expect(MenuItemCtrl.sectionId).toBeUndefined();
+      expect(MenuItemCtrl.modifiers.length).toBe(0);
     });
 
     it("Should create an item", function(done) {
@@ -313,6 +317,155 @@ describe('menuItem Controller', function () {
           expect(Snack.show).toHaveBeenCalled();
           expect(Preoday.Section.removeItems).toHaveBeenCalled();
           expect(CardItemListCtrl.collection.length).toBe(1);
+
+          done();
+        });
+      });
+    });
+
+    it("Should add a modifier to an item", function(done) {
+
+      spyOn(ItemService, 'checkMultipleOccurrences').and.returnValue($q.resolve('single'));
+      spyOn(ModifierService, 'addCustomModifierToParent').and.callThrough();
+      spyOn(ModifierService, 'isModifiersDuplicated').and.callThrough();
+      spyOn(contextualMenu, 'hide').and.callThrough();
+      spyOn(Spinner, 'show').and.callThrough();
+      spyOn(Spinner, 'hide').and.callThrough();
+      spyOn(Snack, 'show').and.callThrough();
+
+      let venueId = 5;
+
+      $stateParams.venueId = venueId;
+
+      _mockItem();
+      _startCardItemListController();
+      _startMenuSectionItemListController();
+      _startController();
+
+      mockItem.venueId = venueId;
+      mockItem.images = [];
+      mockItem.position = 0;
+
+      let $modifiers = [new Preoday.Modifier({
+        id: 1,
+        name: 'test',
+        venueId: venueId,
+        items: []
+      })];
+      let mockSection = new Preoday.Section();
+
+      ItemService.data.items = [mockItem];
+
+      CardItemListCtrl.instance.collection = [mockItem];
+      MenuSectionItemListCtrl.instance.items = [mockItem];
+      MenuSectionItemListCtrl.instance.section = [mockSection];
+
+      CardItemListCtrl = CardItemListCtrl();
+      MenuSectionItemListCtrl = MenuSectionItemListCtrl();
+
+      MenuItemCtrl.instance.item = mockItem;
+      MenuItemCtrl.instance.cardItemList = CardItemListCtrl;
+      MenuItemCtrl.instance.menuSectionItemList = MenuSectionItemListCtrl;
+      MenuItemCtrl = MenuItemCtrl();
+
+      expect(CardItemListCtrl.collection.length).toBe(1);
+
+      server.respondWith('POST', '/api/modifiers', [200, {"Content-Type": "application/json"}, JSON.stringify($modifiers[0])]);
+
+      expect(MenuItemCtrl.modifiers.length).toBe(0);
+      expect(MenuItemCtrl.item.modifiers.length).toBe(0);
+
+      MenuItemCtrl.onNewModifierMoved($modifiers);
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+
+        expect(Spinner.show).toHaveBeenCalled();
+
+        server.respond();
+
+        setTimeout(() => {
+
+          $rootScope.$digest();
+
+          expect(MenuItemCtrl.modifiers.length).toBe(1);
+          expect(MenuItemCtrl.item.modifiers.length).toBe(1);
+
+          expect(MenuItemCtrl.modifiers[0].id).toBe($modifiers[0].id);
+          expect(MenuItemCtrl.item.modifiers[0].id).toBe($modifiers[0].id);
+
+          expect(Spinner.hide).toHaveBeenCalled();
+          expect(Snack.show).toHaveBeenCalled();
+          expect(ModifierService.isModifiersDuplicated).toHaveBeenCalled();
+          expect(ModifierService.addCustomModifierToParent).toHaveBeenCalled();
+
+          done();
+        });
+      });
+    });
+
+    it("Should remove a modifier from an item", function(done) {
+
+      let venueId = 5;
+
+      $stateParams.venueId = venueId;
+
+      _mockItem();
+      _startCardItemListController();
+      _startMenuSectionItemListController();
+      _startController();
+
+      let modifier = new Preoday.Modifier({
+        id: 1,
+        name: 'test',
+        venueId: venueId,
+        items: []
+      });
+
+      mockItem.venueId = venueId;
+      mockItem.images = [];
+      mockItem.position = 0;
+      mockItem.modifiers = [modifier];
+
+      let mockSection = new Preoday.Section();
+
+      ItemService.data.items = [mockItem];
+      ModifierService.data.modifiers = [modifier];
+
+      CardItemListCtrl.instance.collection = [mockItem];
+      MenuSectionItemListCtrl.instance.items = [mockItem];
+      MenuSectionItemListCtrl.instance.section = [mockSection];
+
+      CardItemListCtrl = CardItemListCtrl();
+      MenuSectionItemListCtrl = MenuSectionItemListCtrl();
+
+      MenuItemCtrl.instance.item = mockItem;
+      MenuItemCtrl.instance.cardItemList = CardItemListCtrl;
+      MenuItemCtrl.instance.menuSectionItemList = MenuSectionItemListCtrl;
+      MenuItemCtrl = MenuItemCtrl();
+
+      expect(CardItemListCtrl.collection.length).toBe(1);
+
+      server.respondWith('DELETE', '/api/modifiers/' + mockItem.modifiers[0].id, [200, {"Content-Type": "application/json"}, JSON.stringify({})]);
+
+      expect(MenuItemCtrl.modifiers.length).toBe(1);
+      expect(MenuItemCtrl.item.modifiers.length).toBe(1);
+
+      MenuItemCtrl.onModifierRemoved(mockItem.modifiers[0]);
+
+      setTimeout(() => {
+
+        $rootScope.$digest();
+
+        server.respond();
+
+        setTimeout(() => {
+
+          $rootScope.$digest();
+
+          expect(MenuItemCtrl.modifiers.length).toBe(0);
+          expect(MenuItemCtrl.item.modifiers.length).toBe(0);
 
           done();
         });
