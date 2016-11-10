@@ -120,6 +120,7 @@ export default class ModifierService {
         maxChoices:1,
         description:"",
         name:"",
+        modifiers: [],
         items:[
         {
           visible:1,
