@@ -1,4 +1,4 @@
-export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastEvents){
+export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScope, BroadcastEvents){
   'ngInject';
   return {
     restrict: 'E',
@@ -20,7 +20,7 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
       function init(){
         if(scope.venue){
           if (!scope.venue.latitude && !scope.venue.longitude){
-            getGeoLocationByAddress(scope.venue)
+            MapsService.getGeoLocationByAddress(scope.venue)
               .then((location)=>{
                 scope.venue.latitude = location.lat();
                 scope.venue.longitude = location.lng();
@@ -270,7 +270,6 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
                 firstLoad= false;
               }
 
-              console.log("drawing", scope, scope.drawingManager)
               drawDeliveryZones(deliveryZonesToSkip);
             }, true);
           });
@@ -279,32 +278,7 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
 
       }
 
-      function getGeoLocationByAddress(venue){
-        let address = [venue.address1];
-        if (venue.address2) {
-            address.push(venue.address2);
-        }
-        address.push(venue.postcode);
-        address.push(venue.city);
-        let deferred = $q.defer();
-        let geocoder = new google.maps.Geocoder();
-        let geocoderRequest = { address: address.join(', ') };
-        geocoder.geocode(geocoderRequest, (results, status)=>{
-          if (results && results instanceof Object && results.length) {
-            deferred.resolve(results['0'].geometry.location);
-          } else {
-              geocoderRequest.address = venue.city + ", "  + venue.country;
-              geocoder.geocode(geocoderRequest, (results, status)=>{
-                if (results && results instanceof Object && results.length) {
-                  deferred.resolve(results['0'].geometry.location);
-                } else{
-                  deferred.reject();
-                }
-              });
-            }
-          });
-        return deferred.promise;
-      };
+
       init();
     }
   }
