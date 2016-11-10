@@ -9,6 +9,7 @@ import run from './main.run';
 
 import v2Dashboard from './dashboard';
 import v2Account from './account';
+import v2Billing from './billing';
 
 import navbar from '../../components/navbar';
 import toolbar from '../../components/toolbar';
@@ -18,6 +19,7 @@ export default angular.module("main" , [
 	'ui.router',
 	'dashboard',
 	v2Account,
+	v2Billing,
 	navbar,
 	toolbar,
 	scrollToElement

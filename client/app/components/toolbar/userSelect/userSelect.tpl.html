@@ -5,9 +5,14 @@
       <icon>arrow_drop_down</icon>
     </md-button>
     <md-menu-content width="4">
-    <md-menu-item>
-        <md-button ng-click="vm.navigateToMyAccount()" translate>
+      <md-menu-item>
+        <md-button ng-click="vm.navigateTo('main.account')" translate>
           My account
+        </md-button>
+      </md-menu-item>
+      <md-menu-item>
+        <md-button ng-click="vm.navigateTo('main.billing')" translate>
+          Billing
         </md-button>
       </md-menu-item>
       <md-menu-item>

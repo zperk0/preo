@@ -1,4 +1,4 @@
-export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastEvents){
+export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScope, BroadcastEvents){
   'ngInject';
   return {
     restrict: 'E',
@@ -20,7 +20,7 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
       function init(){
         if(scope.venue){
           if (!scope.venue.latitude && !scope.venue.longitude){
-            getGeoLocationByAddress(scope.venue)
+            MapsService.getGeoLocationByAddress(scope.venue)
               .then((location)=>{
                 scope.venue.latitude = location.lat();
                 scope.venue.longitude = location.lng();
@@ -37,6 +37,7 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
       }
 
       function drawDeliveryZones(deliveryZonesToSkip){
+        console.log("drawing deliveryZones", deliveryZonesToSkip, scope.deliveryZones)
         scope.drawingManager.setDrawingMode(null)
         if (scope.deliveryZones){
           for (let i=0;i<scope.deliveryZones.length;i++){
@@ -62,13 +63,19 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
           });
         }
         else if(deliveryZone.type === 'CUSTOM'){
-          return new google.maps.Polygon({
+          var polygonShape =  new google.maps.Polygon({
             strokeOpacity: 1,
             strokeWeight: 3,
             clickable: false,
             editable: false,
             fillOpacity: 1
           });
+
+          // google.maps.event.addListener(polygonShape, 'dragend', function(){
+          //   handlePolygonComplete(polygonShape);
+          // });
+            return polygonShape;
+
         }
       }
 
@@ -78,11 +85,12 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
           var radius =  deliveryZone.distance * 1000;
           shape.setRadius(radius)
         } else if (deliveryZone.type === 'CUSTOM') {
-
+          shape.setOptions({editable:deliveryZone.editable});
+          deliveryZoneDrawingPolygon = deliveryZone;
           if (!deliveryZone.polygon || !deliveryZone.polygon.length){
             shape.setMap(null);
-            scope.drawingManager.setOptions({polygonOptions:{fillColor:deliveryZone.$color.center, fillOpacity:1, strokeColor:deliveryZone.$color.border,zIndex:deliveryZone.id}});
-            deliveryZoneDrawingPolygon = deliveryZone;
+            scope.drawingManager.setOptions({polygonOptions:{fillColor:deliveryZone.$color.center, editable:true, fillOpacity:1, strokeColor:deliveryZone.$color.border,zIndex:deliveryZone.id}});
+            angular.element(document.body).addClass("map-drawing-polygon")
             return scope.drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON)
           }
           var coords = [];
@@ -94,7 +102,25 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
               lng:lng
             })
           }
+          console.log("coords", coords);
           shape.setPaths(coords);
+           if (deliveryZone.editable){
+            // debugger;
+              google.maps.event.addListener(shape.getPath(), 'insert_at', function(){
+                console.log("on insert, ", shape.getPath())
+                handlePolygonComplete(shape);
+              });
+
+              google.maps.event.addListener(shape.getPath(), 'remove_at', function(){
+                console.log("on remove, ",shape.getPath())
+                handlePolygonComplete(shape);
+              });
+
+              google.maps.event.addListener(shape.getPath(), 'set_at', function(){
+                console.log("on set, ", shape.getPath())
+                handlePolygonComplete(shape);
+              });
+          }
         }
         shape.setOptions({fillColor:deliveryZone.$color.center, strokeColor:deliveryZone.$color.border,zIndex:deliveryZone.id});
 
@@ -137,6 +163,8 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
           $timeout(()=>{
             shapes[deliveryZoneDrawingPolygon.id] = polygon;
             deliveryZoneDrawingPolygon.polygon = preparePolygonArray(polygon);
+            polygon.setOptions({editable:false});
+            scope.drawingManager.setOptions({polygonOptions:{editable:false}});
             scope.drawingManager.setDrawingMode(null)
             deliveryZoneDrawingPolygon = false;
           })
@@ -211,7 +239,10 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
 
 
         google.maps.event.addDomListener(window, "resize", handleResize);
-        google.maps.event.addListener(scope.drawingManager, 'polygoncomplete', handlePolygonComplete);
+        google.maps.event.addListener(scope.drawingManager, 'polygoncomplete', (polygon)=>{
+          angular.element(document.body).removeClass("map-drawing-polygon")
+          handlePolygonComplete(polygon)
+        });
         $rootScope.$on(BroadcastEvents._ON_NAVBAR_TOGGLE,handleResize);
 
         if (scope.markerPos){
@@ -225,7 +256,7 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
             var firstLoad = true;
              scope.$watch("deliveryZones", function (newDeliveryZones, oldDeliveryZones) {
               var deliveryZonesToSkip = [];
-              var propsToCompare = ['polygon', 'distance', '$color'];
+              var propsToCompare = ['polygon', 'distance', '$color', 'editable'];
 
               console.log("comparing", newDeliveryZones, oldDeliveryZones)
               //Diff delivery zones, remove the shapes that are not in new array
@@ -270,7 +301,6 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
                 firstLoad= false;
               }
 
-              console.log("drawing", scope, scope.drawingManager)
               drawDeliveryZones(deliveryZonesToSkip);
             }, true);
           });
@@ -279,32 +309,7 @@ export default function mdMap(UtilsService, $timeout, $q, $rootScope, BroadcastE
 
       }
 
-      function getGeoLocationByAddress(venue){
-        let address = [venue.address1];
-        if (venue.address2) {
-            address.push(venue.address2);
-        }
-        address.push(venue.postcode);
-        address.push(venue.city);
-        let deferred = $q.defer();
-        let geocoder = new google.maps.Geocoder();
-        let geocoderRequest = { address: address.join(', ') };
-        geocoder.geocode(geocoderRequest, (results, status)=>{
-          if (results && results instanceof Object && results.length) {
-            deferred.resolve(results['0'].geometry.location);
-          } else {
-              geocoderRequest.address = venue.city + ", "  + venue.country;
-              geocoder.geocode(geocoderRequest, (results, status)=>{
-                if (results && results instanceof Object && results.length) {
-                  deferred.resolve(results['0'].geometry.location);
-                } else{
-                  deferred.reject();
-                }
-              });
-            }
-          });
-        return deferred.promise;
-      };
+
       init();
     }
   }

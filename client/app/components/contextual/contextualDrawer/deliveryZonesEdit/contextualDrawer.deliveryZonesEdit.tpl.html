@@ -1,5 +1,4 @@
  <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-delivery-zones-edit md-whiteframe-4dp" md-component-id="deliveryZonesEdit">
-
     <form name="drawerDeliveryZonesEditCtrl.deliveryZoneForm" ng-submit="drawerDeliveryZonesEditCtrl.submit()" novalidate>
         <div class='contextual-list'>
         <md-tabs md-dynamic-height md-stretch-tabs="always">
@@ -16,7 +15,7 @@
                     <div flex layout="row" layout-align="space-between start">
                       <div class='input-wrapper' flex="grow">
                         <label translate>Delivery Fee</label>
-                        <input type="text"  required required name="zoneFee" valid-price ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.fee.amount" >
+                        <input type="text"  required name="zoneFee" valid-price ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.fee.amount" >
                       </div>
                     </div>
                     <div ng-messages="drawerDeliveryZonesEditCtrl.deliveryZoneForm.zoneFee.$error">
@@ -29,7 +28,7 @@
                     <label translate>Delivery Time</label>
                     <div class='input-with-label' flex layout="row" layout-align="space-between start">
                       <div class='input-wrapper' flex="grow">
-                        <input type="text" name="zoneLeadTime" valid-number max-integer-value ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.leadTime">
+                        <input type="text" required name="zoneLeadTime" valid-number max-integer-value ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.leadTime">
                       </div>
                       <div class='mins' flex="nogrow" translate>Mins</div>
                     </div>
@@ -93,4 +92,5 @@
           </md-button>
         </md-card-actions>
     </form>
+    <div class='map-overlay-drawing'></div>
 </md-sidenav>

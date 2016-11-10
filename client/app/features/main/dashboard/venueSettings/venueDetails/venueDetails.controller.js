@@ -8,7 +8,18 @@ export default class venueDetailsController {
     if (this.venueDetailsForm.$valid){
       this.Spinner.show("venue-details-save");
       try {
-        this.VenueService.updateVenue()
+        console.log("getting location");
+        this.MapsService.getGeoLocationByAddress(this.venue)
+        .then((location)=>{
+          this.venue.latitude = location.lat();
+          this.venue.longitude = location.lng();
+          console.log("got location");
+        },()=>{
+          console.log("error getting location");
+          //if the user put a crazy address that google can't find, just leave it blank and it'll be handled in the location page afterwards
+        }).then(()=>{
+          return this.VenueService.updateVenue();
+        })
         .then((venue)=>{
           angular.extend(this.venue,venue);
           return this.venue.settings.update()
@@ -49,12 +60,13 @@ export default class venueDetailsController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, ErrorService, LabelService, $timeout, VenueService) {
+  constructor(Spinner, Snack, MapsService, ErrorService, LabelService, $timeout, VenueService) {
     "ngInject";
     this.isEdit = false;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.ErrorService = ErrorService;
+    this.MapsService = MapsService;
     this.VenueService = VenueService;
     this.LabelService = LabelService;
     this.isError = false;

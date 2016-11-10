@@ -9,6 +9,7 @@ export default class ContextualDrawerDeliveryZonesEditController {
   }
 
   submit(){
+    console.log("this delivery zone form ", this.deliveryZoneForm);
     if (this.deliveryZoneForm.$valid){
       this.DeliveryZoneService.saveEditableDeliveryZone()
         .then(()=>{

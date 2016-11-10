@@ -13,11 +13,18 @@ export default class DeliveryZoneService {
       this.Snack.showError(this.LabelService.SNACK_DELIVERY_ZONES_ERROR)
     }
     return this.$q((resolve, reject)=>{
+
+      if (this.editableDeliveryZone.type === 'CUSTOM' && !this.editableDeliveryZone.polygon || this.editableDeliveryZone.polygon.length ===0){
+        this.Snack.showError(this.LabelService.SNACK_DELIVERY_ZONES_SHAPE_ERROR)
+        return;
+      }
+
        this.Spinner.show("delivery-zones-save");
       //TODO save delivery zone
       console.log("saving", this.editableDeliveryZone);
       // setTimeout(()=>{
         var dz  = angular.copy(this.editableDeliveryZone);
+        delete dz.editable;
         if (dz.polygon){
           dz.polygon = dz.polygon.toString();
         }
@@ -38,8 +45,15 @@ export default class DeliveryZoneService {
           this.Spinner.hide("delivery-zones-save");
           this.Snack.show(this.LabelService.SNACK_DELIVERY_ZONES_SUCCESS)
           resolve(dz);
+          delete this.editableDeliveryZone.editable;
           this.editableDeliveryZone = false;
           // }
+        }, ()=>{
+          this.Spinner.hide("delivery-zones-save");
+          this.Snack.showError(this.LabelService.SNACK_DELIVERY_ZONES_ERROR)
+        }).catch(()=>{
+          this.Spinner.hide("delivery-zones-save");
+          this.Snack.showError(this.LabelService.SNACK_DELIVERY_ZONES_ERROR)
         })
         // this.data.deliveryZones.push(dz);
       // },500)
@@ -47,14 +61,22 @@ export default class DeliveryZoneService {
   }
 
   setEditableDeliveryZone(dz){
-    console.log("set editable",dz);
+
     this.editableDeliveryZone=dz;
+    this.data.deliveryZones.forEach((dzz,i)=>{
+        if (dzz.id === dz.id){
+          dzz.editable = true;
+        }
+    })
+    console.log("set editable",dz.editable);
     this.originalModel = angular.copy(dz);
+    dz.editable=true;
+
   }
 
   prepareZones(){
     this.data.deliveryZones.forEach((dz,i)=>{
-      if (dz.polygon && dz.polygon instanceof String){
+      if (dz.polygon && typeof dz.polygon === "string"){
         dz.polygon = dz.polygon && dz.polygon.length ? dz.polygon.split(",") : dz.polygon;
       }
       dz.$color = this.colors[i];
@@ -93,6 +115,7 @@ export default class DeliveryZoneService {
 
   cancelEditing(){
     if (this.originalModel){
+      this.originalModel.editable = false; //trigger watch
       this.data.deliveryZones.forEach((dz,i)=>{
         if (dz.id === this.originalModel.id){
           this.data.deliveryZones[i]= this.originalModel;
@@ -102,6 +125,10 @@ export default class DeliveryZoneService {
     } else {
       this.data.deliveryZones = this.data.deliveryZones.filter((dz,i)=>dz.id!==-1)
       this.originalModel = false;
+    }
+    if (this.editableDeliveryZone && this.editableDeliveryZone.editable) {
+      this.editableDeliveryZone.editable = false; //trigger watch
+      delete this.editableDeliveryZone.editable; //remove for saving
     }
     this.editableDeliveryZone=false;
   }
@@ -113,14 +140,15 @@ export default class DeliveryZoneService {
       id:-1,
       distance:2,
       visible:1,
+      editable:true,
       venueId:this.VenueService.currentVenue.id,
       type:'DISTANCE',
-      leadTime:0,
+
       fee:{
         name:this.gettextCatalog.getString("Delivery fee"),
         type:'FIXED',
         orderType:'DELIVERY',
-        amount:0
+        description:'',
       },
       $color:this.colors[index]
     })

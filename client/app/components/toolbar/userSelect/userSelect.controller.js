@@ -7,8 +7,8 @@ export default class userSelectController {
     this.UserService.signout();
   }
 
-  navigateToMyAccount(){
-    this.$state.go("main.account")
+  navigateTo(route){
+    this.$state.go(route)
   }
 
   openMenu ($mdOpenMenu, ev) {
