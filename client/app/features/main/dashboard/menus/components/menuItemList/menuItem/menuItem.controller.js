@@ -11,7 +11,6 @@ export default class menuItemController {
 
       return promise.then((modifiers)=>{
 
-
         this.item.modifiers = this.item.modifiers.concat(modifiers);
         this.modifiers = this.modifiers.concat(modifiers);
         this.Snack.show("Added modifiers to item");

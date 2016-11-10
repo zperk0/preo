@@ -1,6 +1,6 @@
 <div class='modifier-chips'>
   <modifier-chip modifier="modifier"
-					ng-repeat="modifier in modifierChipsCtrl.getModifiers() | orderBy: 'position' | filter:{ variant:0 }"
+					ng-repeat="modifier in modifierChipsCtrl.getModifiers() | orderBy: ['!!position', 'position'] | filter:{ variant:0 }"
 					parent="modifierChipsCtrl.parent"
 					modifier-item="modifierChipsCtrl.modifierItem"
 					item="modifierChipsCtrl.item"
