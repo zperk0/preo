@@ -9,7 +9,7 @@ export default function cardItemChild(){
     },
     template: require("./cardItemChild.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "cardItemChildCtrl",
     bindToController: true,
     replace:true,
     link: (scope, el, attr, ctrl) => {

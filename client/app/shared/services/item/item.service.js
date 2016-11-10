@@ -81,7 +81,7 @@ export default class ItemService {
           return item;
         })
       }
-      
+
       //if we actually have a size, update or save
       if(item.$size.$isMultiple && item.$size.items.length) {
         this.DEBUG && console.log("Saving item $size", item.$size)
@@ -180,7 +180,7 @@ export default class ItemService {
     if (item.$size && item.$size.items.length) {
       item.modifiers = [item.$size];
     }
-    
+
     this.DEBUG && console.log("creating item", item, sectionId);
     return this._parseImages(item)
       .then(() => {
@@ -225,7 +225,7 @@ export default class ItemService {
           return this.ModifierService.getModifiers(venueId)
         })
         .then((modifiers)=>{
-          this.populateModifiers(modifiers);
+          // this.populateModifiers(modifiers);
           resolve(this.data)
         })
         .catch((err)=>{
@@ -250,9 +250,9 @@ export default class ItemService {
         images: [],
         position: 0,
         venueId: venueId
-    };   
-    
-    return newItem; 
+    };
+
+    return newItem;
   }
 
   addItem (item) {
