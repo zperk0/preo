@@ -15,7 +15,7 @@
                       <label translate>Lead Time</label>
                       <div class='input-with-label' flex layout="row" layout-align="space-between start">
                         <div class='input-wrapper' flex="grow">
-                          <input ng-blur="venueServicesCtrl.debounceUpdate('settings')" type="text" valid-number max-integer-value name="leadTime" ng-model="venueServicesCtrl.venue.settings.leadTime" >
+                          <input ng-model-options="{updateOn: 'blur'}" ng-change="venueServicesCtrl.debounceUpdate('settings')" type="text" valid-number max-integer-value name="leadTime" ng-model="venueServicesCtrl.venue.settings.leadTime" >
                         </div>
                         <div class='mins' flex="nogrow" translate>Mins</div>
                       </div>
@@ -29,7 +29,7 @@
                       <div class='input-wrapper' flex="grow">
                         <label translate>Minimum order value</label>
 
-                        <input ng-blur="venueServicesCtrl.debounceUpdate('settings')" type="text" valid-price required name="orderMin" ng-model="venueServicesCtrl.venue.settings.orderMin">
+                        <input ng-model-options="{updateOn: 'blur'}" ng-change="venueServicesCtrl.debounceUpdate('settings')" type="text" valid-price required name="orderMin" ng-model="venueServicesCtrl.venue.settings.orderMin">
                       </div>
                     </div>
                     <div ng-messages="venueServicesCtrl.collectionForm.orderMin.$error">
