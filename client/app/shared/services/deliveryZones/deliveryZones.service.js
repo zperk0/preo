@@ -6,6 +6,7 @@ export default class DeliveryZoneService {
     return "DeliveryZoneService";
   }
 
+
   saveEditableDeliveryZone(){
     function _handleError(){
       console.log("delivery-zones",err)
@@ -17,13 +18,13 @@ export default class DeliveryZoneService {
       if (this.editableDeliveryZone.type === 'CUSTOM'){
         if (!this.editableDeliveryZone.polygon || (this.editableDeliveryZone.polygon && this.editableDeliveryZone.polygon.length ===0)){
           this.Snack.showError(this.LabelService.SNACK_DELIVERY_ZONES_SHAPE_ERROR)
+          reject();
           return;
         }
       }
 
        this.Spinner.show("delivery-zones-save");
       //TODO save delivery zone
-      console.log("saving", this.editableDeliveryZone);
       // setTimeout(()=>{
         var dz  = angular.copy(this.editableDeliveryZone);
         delete dz.editable;
@@ -106,15 +107,6 @@ export default class DeliveryZoneService {
       // }
     })
   }
-
-  updateDeliveryZone(dz){
-    return this.$q((resolve,reject)=>{
-      setTimeout(()=>{
-        resolve(dz);
-      },500)
-    });
-  }
-
   cancelEditing(){
     if (this.originalModel){
       this.originalModel.editable = false; //trigger watch
