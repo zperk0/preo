@@ -21,7 +21,7 @@
           mdp-format="LT"
           required></mdp-time-picker>
 
-    <div ng-messages="eventScheduleFormCtrl.contextualForm.timeFormat.$error" ng-show="eventScheduleFormCtrl.contextualForm.timeFormat.$dirty && eventScheduleFormCtrl.contextualForm.$submitted">
+    <div ng-messages="eventScheduleFormCtrl.contextualForm.timeFormat.$error" ng-show="eventScheduleFormCtrl.contextualForm.$submitted">
       <div ng-message="required" translate ng-class="{'activated': eventBasicCtrl.contextualForm.timeFormat.$error.required}">This field is required.</div>
       <div ng-message="format" translate ng-class="{'activated': eventBasicCtrl.contextualForm.timeFormat.$error.format}">Invalid format.</div>
     </div>
@@ -35,7 +35,7 @@
           required
           mdp-format="DD/MM/YYYY"></mdp-date-picker>
 
-    <div ng-messages="eventScheduleFormCtrl.contextualForm.startDate.$error" ng-show="eventScheduleFormCtrl.contextualForm.startDate.$dirty && eventScheduleFormCtrl.contextualForm.$submitted">
+    <div ng-messages="eventScheduleFormCtrl.contextualForm.startDate.$error" ng-show="eventScheduleFormCtrl.contextualForm.$submitted">
       <div ng-message="required" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.required}">This field is required.</div>
       <div ng-message="format" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.valid}">Invalid date.</div>
     </div>
@@ -52,7 +52,7 @@
             required
             mdp-format="DD/MM/YYYY"></mdp-date-picker>
 
-      <div ng-messages="eventScheduleFormCtrl.contextualForm.startDate.$error" ng-show="eventScheduleFormCtrl.contextualForm.startDate.$dirty && eventScheduleFormCtrl.contextualForm.$submitted">
+      <div ng-messages="eventScheduleFormCtrl.contextualForm.startDate.$error" ng-show="eventScheduleFormCtrl.contextualForm.$submitted">
         <div ng-message="required" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.required}">This field is required.</div>
         <div ng-message="maxDate" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.maxdate}">Start date need to be smaller than end date.</div>
         <div ng-message="format" translate ng-class="{'activated': eventBasicCtrl.contextualForm.startDate.$error.valid}">Invalid date.</div>
@@ -68,7 +68,7 @@
             required
             mdp-format="DD/MM/YYYY"></mdp-date-picker>
 
-      <div ng-messages="eventScheduleFormCtrl.contextualForm.endDate.$error" ng-show="eventScheduleFormCtrl.contextualForm.endDate.$dirty && eventScheduleFormCtrl.contextualForm.$submitted">
+      <div ng-messages="eventScheduleFormCtrl.contextualForm.endDate.$error" ng-show="eventScheduleFormCtrl.contextualForm.$submitted">
         <div ng-message="required" translate ng-class="{'activated': eventBasicCtrl.contextualForm.endDate.$error.required}">This field is required.</div>
         <div ng-message="minDate" translate ng-class="{'activated': eventBasicCtrl.contextualForm.endDate.$error.mindate}">End date need to be higher than start date.</div>
         <div ng-message="format" translate ng-class="{'activated': eventBasicCtrl.contextualForm.endDate.$error.valid}">Invalid date.</div>
