@@ -14,9 +14,11 @@ export default class DeliveryZoneService {
     }
     return this.$q((resolve, reject)=>{
 
-      if (this.editableDeliveryZone.type === 'CUSTOM' && !this.editableDeliveryZone.polygon || this.editableDeliveryZone.polygon.length ===0){
-        this.Snack.showError(this.LabelService.SNACK_DELIVERY_ZONES_SHAPE_ERROR)
-        return;
+      if (this.editableDeliveryZone.type === 'CUSTOM'){
+        if (!this.editableDeliveryZone.polygon || (this.editableDeliveryZone.polygon && this.editableDeliveryZone.polygon.length ===0)){
+          this.Snack.showError(this.LabelService.SNACK_DELIVERY_ZONES_SHAPE_ERROR)
+          return;
+        }
       }
 
        this.Spinner.show("delivery-zones-save");
