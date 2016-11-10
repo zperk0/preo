@@ -77,7 +77,7 @@
   </div>
 
   <div class="collection-slots-select-content" ng-if="eventScheduleFormCtrl.contextualMenuCtrl.isShowing('event') || eventScheduleFormCtrl.contextualMenuCtrl.isShowing('eventSchedule')">
-    <div class="error error-required-pickup-slot" ng-if="eventScheduleFormCtrl.contextualForm.$submitted && !eventScheduleFormCtrl.schedule.pickupSlots.length" translate>You must to select at least one collection slot.</div>
+    <div class="error error-required-pickup-slot" ng-if="eventScheduleFormCtrl.contextualForm.$submitted && !eventScheduleFormCtrl.schedule.pickupSlots.length" translate>You must select at least one collection slot.</div>
 
     <label class="label-title" translate>Choose collection slots:</label>
     <collection-slots-select ng-model="eventScheduleFormCtrl.schedule"></collection-slots-select>
