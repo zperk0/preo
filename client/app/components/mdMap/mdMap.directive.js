@@ -90,6 +90,7 @@ export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScop
           if (!deliveryZone.polygon || !deliveryZone.polygon.length){
             shape.setMap(null);
             scope.drawingManager.setOptions({polygonOptions:{fillColor:deliveryZone.$color.center, editable:true, fillOpacity:1, strokeColor:deliveryZone.$color.border,zIndex:deliveryZone.id}});
+            angular.element(document.body).addClass("map-drawing-polygon")
             return scope.drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON)
           }
           var coords = [];
@@ -238,7 +239,10 @@ export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScop
 
 
         google.maps.event.addDomListener(window, "resize", handleResize);
-        google.maps.event.addListener(scope.drawingManager, 'polygoncomplete', handlePolygonComplete);
+        google.maps.event.addListener(scope.drawingManager, 'polygoncomplete', (polygon)=>{
+          angular.element(document.body).removeClass("map-drawing-polygon")
+          handlePolygonComplete(polygon)
+        });
         $rootScope.$on(BroadcastEvents._ON_NAVBAR_TOGGLE,handleResize);
 
         if (scope.markerPos){
