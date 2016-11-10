@@ -46,6 +46,7 @@ export default class venueDeliveryZonesController {
   /* @ngInject */
   constructor($scope, Spinner, $state, Snack, ErrorService, DeliveryZoneService, LabelService, $timeout, VenueService, contextual, DialogService, gettextCatalog) {
     "ngInject";
+    this.abc123 = 'abc,123';
     this.$scope = $scope;
     this.isEdit = false;
     this.Spinner = Spinner;

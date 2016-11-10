@@ -37,6 +37,7 @@ export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScop
       }
 
       function drawDeliveryZones(deliveryZonesToSkip){
+        console.log("drawing deliveryZones", deliveryZonesToSkip, scope.deliveryZones)
         scope.drawingManager.setDrawingMode(null)
         if (scope.deliveryZones){
           for (let i=0;i<scope.deliveryZones.length;i++){
@@ -62,13 +63,19 @@ export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScop
           });
         }
         else if(deliveryZone.type === 'CUSTOM'){
-          return new google.maps.Polygon({
+          var polygonShape =  new google.maps.Polygon({
             strokeOpacity: 1,
             strokeWeight: 3,
             clickable: false,
             editable: false,
             fillOpacity: 1
           });
+
+          // google.maps.event.addListener(polygonShape, 'dragend', function(){
+          //   handlePolygonComplete(polygonShape);
+          // });
+            return polygonShape;
+
         }
       }
 
@@ -78,11 +85,11 @@ export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScop
           var radius =  deliveryZone.distance * 1000;
           shape.setRadius(radius)
         } else if (deliveryZone.type === 'CUSTOM') {
-
+          shape.setOptions({editable:deliveryZone.editable});
+          deliveryZoneDrawingPolygon = deliveryZone;
           if (!deliveryZone.polygon || !deliveryZone.polygon.length){
             shape.setMap(null);
-            scope.drawingManager.setOptions({polygonOptions:{fillColor:deliveryZone.$color.center, fillOpacity:1, strokeColor:deliveryZone.$color.border,zIndex:deliveryZone.id}});
-            deliveryZoneDrawingPolygon = deliveryZone;
+            scope.drawingManager.setOptions({polygonOptions:{fillColor:deliveryZone.$color.center, editable:true, fillOpacity:1, strokeColor:deliveryZone.$color.border,zIndex:deliveryZone.id}});
             return scope.drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON)
           }
           var coords = [];
@@ -94,7 +101,25 @@ export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScop
               lng:lng
             })
           }
+          console.log("coords", coords);
           shape.setPaths(coords);
+           if (deliveryZone.editable){
+            // debugger;
+              google.maps.event.addListener(shape.getPath(), 'insert_at', function(){
+                console.log("on insert, ", shape.getPath())
+                handlePolygonComplete(shape);
+              });
+
+              google.maps.event.addListener(shape.getPath(), 'remove_at', function(){
+                console.log("on remove, ",shape.getPath())
+                handlePolygonComplete(shape);
+              });
+
+              google.maps.event.addListener(shape.getPath(), 'set_at', function(){
+                console.log("on set, ", shape.getPath())
+                handlePolygonComplete(shape);
+              });
+          }
         }
         shape.setOptions({fillColor:deliveryZone.$color.center, strokeColor:deliveryZone.$color.border,zIndex:deliveryZone.id});
 
@@ -137,6 +162,8 @@ export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScop
           $timeout(()=>{
             shapes[deliveryZoneDrawingPolygon.id] = polygon;
             deliveryZoneDrawingPolygon.polygon = preparePolygonArray(polygon);
+            polygon.setOptions({editable:false});
+            scope.drawingManager.setOptions({polygonOptions:{editable:false}});
             scope.drawingManager.setDrawingMode(null)
             deliveryZoneDrawingPolygon = false;
           })
@@ -225,7 +252,7 @@ export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScop
             var firstLoad = true;
              scope.$watch("deliveryZones", function (newDeliveryZones, oldDeliveryZones) {
               var deliveryZonesToSkip = [];
-              var propsToCompare = ['polygon', 'distance', '$color'];
+              var propsToCompare = ['polygon', 'distance', '$color', 'editable'];
 
               console.log("comparing", newDeliveryZones, oldDeliveryZones)
               //Diff delivery zones, remove the shapes that are not in new array
