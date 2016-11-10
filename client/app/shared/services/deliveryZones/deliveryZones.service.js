@@ -13,6 +13,12 @@ export default class DeliveryZoneService {
       this.Snack.showError(this.LabelService.SNACK_DELIVERY_ZONES_ERROR)
     }
     return this.$q((resolve, reject)=>{
+
+      if (this.editableDeliveryZone.type === 'CUSTOM' && !this.editableDeliveryZone.polygon || this.editableDeliveryZone.polygon.length ===0){
+        this.Snack.showError(this.LabelService.SNACK_DELIVERY_ZONES_SHAPE_ERROR)
+        return;
+      }
+
        this.Spinner.show("delivery-zones-save");
       //TODO save delivery zone
       console.log("saving", this.editableDeliveryZone);
