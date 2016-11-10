@@ -1,5 +1,5 @@
  <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer contextual-drawer-delivery-zones-edit md-whiteframe-4dp" md-component-id="deliveryZonesEdit">
-    <form name="drawerDeliveryZonesEditCtrl.deliveryZoneForm" ng-submit="drawerDeliveryZonesEditCtrl.submit()" novalidate>
+    <form ng-if="drawerDeliveryZonesEditCtrl.editableDeliveryZone" name="drawerDeliveryZonesEditCtrl.deliveryZoneForm" ng-submit="drawerDeliveryZonesEditCtrl.submit()" novalidate>
         <div class='contextual-list'>
         <md-tabs md-dynamic-height md-stretch-tabs="always">
           <md-tab label="{{'Basics' | translate}}">

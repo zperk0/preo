@@ -6,6 +6,7 @@ export default class ContextualDrawerDeliveryZonesEditController {
   onCancel(){
     this.DeliveryZoneService.cancelEditing()
     this.$mdSidenav('deliveryZonesEdit').close()
+    console.log("close deliveryZonesEdit is done", this.deliveryZoneForm);
   }
 
   submit(){
@@ -14,8 +15,8 @@ export default class ContextualDrawerDeliveryZonesEditController {
       this.DeliveryZoneService.saveEditableDeliveryZone()
         .then(()=>{
           return this.$mdSidenav('deliveryZonesEdit').close()
-        }).then(function () {
-          console.log("close deliveryZonesEdit is done");
+        }).then(()=>{
+          console.log("close deliveryZonesEdit is done", this.deliveryZoneForm);
         });
       }
   }
