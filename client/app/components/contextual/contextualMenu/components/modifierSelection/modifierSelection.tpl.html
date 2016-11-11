@@ -8,7 +8,7 @@
       <span class="input-label" for="minChoices" translate>Minimum Selection</span>
       <input type="text" id="minChoices" name="minChoices" ng-model="modifierSelectionCtrl.modifier.minChoices" valid-number max-integer-value="modifierSelectionCtrl.maxIntegerValue" compare-number="modifierSelectionCtrl.modifier.maxChoices" allow-equals />
 
-      <div ng-messages="modifierSelectionCtrl.contextualForm.minChoices.$error" ng-show="modifierSelectionCtrl.contextualForm.minChoices.$dirty">
+      <div ng-messages="modifierSelectionCtrl.contextualForm.minChoices.$error" ng-show="modifierSelectionCtrl.contextualForm.minChoices.$dirty" ng-if="!modifierSelectionCtrl.isSaving()">
         <div ng-message="maxIntegerValue" translate ng-class="{'activated': modifierSelectionCtrl.contextualForm.minChoices.$error.maxIntegerValue}">Max value is {{ modifierSelectionCtrl.maxIntegerValue }}.</div>
         <div ng-message="compareNumber" translate ng-class="{'activated': modifierSelectionCtrl.contextualForm.minChoices.$error.compareNumber}">Minimum selection needs to be equal or smaller than maximum selection</div>
       </div>
@@ -18,7 +18,7 @@
       <span class="input-label" for="maxChoices" translate>Maximum Selection</span>
       <input type="text" id="maxChoices" name="maxChoices" ng-model="modifierSelectionCtrl.modifier.maxChoices" valid-number max-integer-value="modifierSelectionCtrl.maxIntegerValue" compare-number="modifierSelectionCtrl.modifier.minChoices" bigger allow-equals />
 
-      <div ng-messages="modifierSelectionCtrl.contextualForm.maxChoices.$error" ng-show="modifierSelectionCtrl.contextualForm.maxChoices.$dirty">
+      <div ng-messages="modifierSelectionCtrl.contextualForm.maxChoices.$error" ng-show="modifierSelectionCtrl.contextualForm.maxChoices.$dirty" ng-if="!modifierSelectionCtrl.isSaving()">
         <div ng-message="maxIntegerValue" translate ng-class="{'activated': modifierSelectionCtrl.contextualForm.maxChoices.$error.maxIntegerValue}">Max value is {{ modifierSelectionCtrl.maxIntegerValue }}.</div>
         <div ng-message="compareNumber" translate ng-class="{'activated': modifierSelectionCtrl.contextualForm.maxChoices.$error.compareNumber}">Maximum selection needs to be equal or bigger than minimum selection</div>
       </div>
