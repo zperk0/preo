@@ -3,7 +3,7 @@ export default function validPrice($timeout, $filter, $compile, VenueService){
   "ngInject";
 
   var accounting = require("accounting");
-  var MAX_DIGITS = 11;
+  var MAX_DECIMAL_VALUE = 99999999.99;
 
   return {
     restrict: 'A',
@@ -34,7 +34,7 @@ export default function validPrice($timeout, $filter, $compile, VenueService){
         updateView(newVal);
 
         ngModel.$setValidity('invalidPrice', newVal.split(config.decimal).length <= 2);
-        ngModel.$setValidity('maxDecimalValue', (numberVal || 0).toString().length <= MAX_DIGITS);
+        ngModel.$setValidity('maxDecimalValue', numberVal <= MAX_DECIMAL_VALUE);
 
         return numberVal;
       };
