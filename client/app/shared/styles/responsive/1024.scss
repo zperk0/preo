@@ -6,8 +6,17 @@ html {
 
  }
 
- .menus .floating-right-buttons{
-  position: absolute;
+ .layout-left-right {
+  .floating-right-buttons {
+    position: absolute;
+    top: 16px;
+  }
+
+  &.with-toolbar{
+    .floating-right-buttons {
+      top: 63px;
+    }
+  }
  }
 
   .menu {
