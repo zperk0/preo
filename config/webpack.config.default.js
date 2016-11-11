@@ -193,6 +193,7 @@ module.exports = function(ENV, options) {
       }),
       new CopyWebpackPlugin([
         { from: 'client/v1/v1.css', to:'v1.css'},
+        { from: 'client/stripe-success.php', to:'stripe-success.php'},
         { from: 'client/assets'},
       ]),
       new webpack.ResolverPlugin(

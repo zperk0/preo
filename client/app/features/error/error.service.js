@@ -69,5 +69,7 @@ export default class ErrorService {
     this.VENUE_WITHOUT_ADDRESS = {code:'VENUE_WITHOUT_ADDRESS', message:gettextCatalog.getString("You need to set up your address before selecting your location.  You'll be redirected to your Details page to configure your address."), title: 'Address not found'};
     this.VENUE_WITHOUT_LOCATION = {code:'VENUE_WITHOUT_LOCATION', message:gettextCatalog.getString("You need to set up your location before creating delivery zones.  You'll be redirected to your Location page to configure your location."), title: 'Location not found'};
 
+    this.STRIPE_ERROR = {code:'STRIPE_ERROR', message:gettextCatalog.getString("We could not connect to your Stripe account. Please try again."), title: 'Connection failed'};
+
   }
 }

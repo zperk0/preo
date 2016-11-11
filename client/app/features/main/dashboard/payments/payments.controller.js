@@ -4,8 +4,60 @@ export default class paymentsController {
     return "paymentsController";
   }
 
+  showStripeSuccess(){
+      this.DialogService.show(this.LabelService.TITLE_STRIPE_CONNECTED, this.LabelService.CONTENT_STRIPE_CONNECTED, [{
+        name: this.LabelService.CONFIRMATION
+      }]).then(()=>{
+        window.location.reload();
+      })
+  }
+
+  showStripeError(){
+      this.DialogService.show(this.ErrorService.STRIPE_ERROR.title, this.ErrorService.STRIPE_ERROR.message, [{
+        name: this.LabelService.CONFIRMATION
+      }]);
+  }
+  confirmStripe(url){
+    if (url.indexOf("code") !== -1 && url.indexOf("state") !== -1){
+      var spl = url.split("?")[1].split("&");
+      var state = '';
+      var code = '';
+      spl.forEach((ea)=>{
+         if (ea.indexOf("state") === 0){
+          state = ea.split("=")[1]
+         }
+         if (ea.indexOf("code") === 0){
+          code = ea.split("=")[1]
+         }
+      })
+      Preoday.PaymentProvider.auth(code, state)
+        .then((response)=>{
+          console.log('response', response);
+          this.showStripeSuccess();
+        }, (err)=>{
+          this.showStripeError();
+      });
+    } else {
+      this.showStripeError();
+    }
+  }
+
   connectToStripe(){
-    window.open(this.stripeLink);
+    console.log("opening", this.stripeLink);
+    var myWindow = window.open(this.stripeLink);
+    var url = '';
+    //Check if user close tab before Authorize or Cancel payment
+     var timer = setInterval(() =>{
+        if (myWindow.closed) {
+            clearInterval(timer);
+            this.confirmStripe(url);
+        } else {
+          console.log("got url", myWindow.location.href )
+          if (myWindow.location.href.indexOf("stripe-success") != -1){
+             url = myWindow.location.href;
+           }
+        }
+     }, 199);
   }
 
   updateStripe(){
@@ -56,6 +108,8 @@ export default class paymentsController {
       }
   }
 
+
+
   init(){
     this.Spinner.show("venue-details");
     this.venue = this.VenueService.currentVenue ;
@@ -75,7 +129,7 @@ export default class paymentsController {
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, MapsService, ErrorService, LabelService, $timeout, VenueService) {
+  constructor(Spinner, Snack, MapsService, ErrorService, LabelService, DialogService, $timeout, VenueService) {
     "ngInject";
     this.isEdit = false;
     this.Spinner = Spinner;
@@ -83,14 +137,15 @@ export default class paymentsController {
     this.ErrorService = ErrorService;
     this.MapsService = MapsService;
     this.VenueService = VenueService;
+    this.DialogService = DialogService;
     this.LabelService = LabelService;
     this.isError = false;
     this.$timeout = $timeout;
     this.stripeLink = '';
-    // this.stripeRedirectUri = window.location.origin + '/#/stripeSuccess';
-    this.stripeRedirectUri = "http://local.app-v2.preoday.com/stripe-success.php";
+    this.stripeRedirectUri = window.location.origin + window.location.pathname + "/stripe-success.php";
     this.paymentProviders = []
     this.stripe = {visible:false};
     this.init();
+    this.showStripeError();
   }
 }
