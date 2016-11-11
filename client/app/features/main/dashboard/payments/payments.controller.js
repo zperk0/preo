@@ -147,6 +147,7 @@ export default class paymentsController {
       this.stripeRedirectUri += "/"
     }
     this.stripeRedirectUri +="stripe-success.php";
+    console.log(this.stripeRedirectUri)
     this.paymentProviders = []
     this.stripe = {visible:false};
     this.init();
