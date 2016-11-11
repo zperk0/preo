@@ -8,8 +8,8 @@
               >
     <card-item-title ng-click="scheduleCtrl.toggleExpanded($event)"
                     has-visible="true">
-                      <span class="schedule-name" flex>{{ scheduleCtrl.getScheduleTitle() }}</span>
-                      <span class="schedule-time">{{ scheduleCtrl.getScheduleTime() }}</span>
+                      <span class="schedule-name" flex ng-bind-html="scheduleCtrl.getScheduleTitle()"></span>
+                      <span class="schedule-time" ng-bind-html="scheduleCtrl.getScheduleTime()"></span>
                     </card-item-title>
 
     <card-item-actions is-visible="scheduleCtrl.schedule.visible"

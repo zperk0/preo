@@ -152,6 +152,10 @@ export default class eventScheduleController {
 
   getScheduleTitle () {
 
+    if (!this.schedule.$startDate && !this.schedule.startDate) {
+      return '&nbsp;';
+    }
+
     switch (this.schedule.freq) {
       case this.EventScheduleFrequency.ONCE:
         return moment(this.schedule.$startDate || this.schedule.startDate).format('DD/MM/YYYY');
@@ -165,6 +169,10 @@ export default class eventScheduleController {
   }
 
   getScheduleTime () {
+
+    if (!this.schedule.$startTime && !this.schedule.startDate) {
+      return '&nbsp;';
+    }
 
     return moment(this.schedule.$startTime || this.schedule.startDate).format('HH:mm');
   }
