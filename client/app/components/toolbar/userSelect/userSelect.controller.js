@@ -16,9 +16,10 @@ export default class userSelectController {
   };
 
 
-  constructor(UserService, $state, $rootScope, BroadcastEvents) {
+  constructor(UserService, $state, $rootScope, BroadcastEvents, VenueService) {
     "ngInject";
     this.UserService =UserService;
+    this.VenueService =VenueService;
     this.$state =$state;
     this.user = UserService.user;
 
