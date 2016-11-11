@@ -83,7 +83,6 @@ export default class navbarController {
       {name: gettextCatalog.getString("Mange Users"), icon:"account_box", id:"manageUsers"},
 
       {name: gettextCatalog.getString("Styling"), id:"styling", icon:"color_lens", children:[
-        {name: gettextCatalog.getString("Styling"), id:"mobile"},
         {name: gettextCatalog.getString("Web Orders"), id:"weborders"},
         {name: gettextCatalog.getString("Emails"), id:"emails"}
       ]},
