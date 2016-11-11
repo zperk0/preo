@@ -12,6 +12,22 @@ export default function routes($stateProvider) {
     url: "/billing",
     template: require("./billing.tpl.html"),
     controller: controller.UID,
-    controllerAs: "billing"
+    controllerAs: "billingCtrl",
+     resolve:{
+      // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
+      maps:function(authenticated, $q){
+        "ngInject";
+        if (window.Stripe){
+          return $q.resolve();
+        }
+        var deferred = $q.defer();
+        $script('https://js.stripe.com/v2/', ()=>{
+          console.log("loaded stripe, reoslving");
+          deferred.resolve();
+        });
+        return deferred.promise;
+        // return authenticated;
+      }
+    }
   });
 }

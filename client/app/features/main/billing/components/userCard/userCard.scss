@@ -1,0 +1,41 @@
+.user-card{
+
+  .add-card{
+    margin-top: -20px;
+    top: 12px;
+    margin-bottom: 12px;
+  }
+  .card-number-input{
+    margin-right: 24px;
+  }
+  md-card-actions{
+    margin:0;
+    button{
+      top:8px;
+      right: -16px;
+    }
+    button:last-child{
+      right: -8px;
+    }
+  }
+  md-input-container{
+    margin-bottom: 0;
+  }
+  .expiry-row{
+    md-input-container{
+      margin-right:12px;
+      & + md-input-container{
+        margin-right:8px;
+        margin-top:8px;
+      }
+    }
+    header{
+      font-size: 16px;
+      color: #424242;
+      line-height: 16px;
+    }
+    input{
+      width: 48px;
+    }
+  }
+}

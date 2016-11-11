@@ -1,0 +1,10 @@
+<div class="email-success-view">
+	<div class="content">
+	  <div class="image" ng-style="{'backgroundImage': 'url(' + emailSuccessCtrl.getEmailIcon() + ')'}">
+
+	  </div>
+	  <div class="title-message" translate>Your stripe account has been connected!</div>
+	  <div class="message">{{'You will shortly be redirected back to your dasbhoard.
+	  	  	  	If you are not redirected automatically please' | translate}} <a ng-href="{{ emailSuccessCtrl.getStateToRedirect() }}" ng-click="emailSuccessCtrl.resendEmail()" translate>click here</a></div>
+	</div>
+</div>

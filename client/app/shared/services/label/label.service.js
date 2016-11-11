@@ -72,6 +72,9 @@ export default class LabelService {
     this.SNACK_VENUE_SERVICES_SUCCESS = gettextCatalog.getString("Services saved");
     this.SNACK_VENUE_SERVICES_ERROR = gettextCatalog.getString("Services not saved");
 
+    this.SNACK_VENUE_PAYMENTS_SUCCESS = gettextCatalog.getString("Payments saved");
+    this.SNACK_VENUE_PAYMENTS_ERROR = gettextCatalog.getString("Payments not saved");
+
     this.SNACK_DELIVERY_ZONES_SUCCESS = gettextCatalog.getString("Delivery zone saved");
     this.SNACK_DELIVERY_ZONES_ERROR = gettextCatalog.getString("Delivery zone not saved");
     this.SNACK_DELIVERY_ZONES_SHAPE_ERROR = gettextCatalog.getString("Please select a circle or draw a delivery area");
