@@ -7,6 +7,8 @@ export default class LabelService {
   constructor(gettextCatalog) {
     "ngInject";
 
+    this.CONFIRMATION = gettextCatalog.getString("Got it");
+
     this.SNACK_WRONG_CREDENTIALS = gettextCatalog.getString("Invalid username and/or password");
 
     this.SNACK_WEBSETTINGS_ERROR = gettextCatalog.getString("Could not save weborders style");
@@ -80,6 +82,9 @@ export default class LabelService {
     this.SNACK_DELIVERY_ZONES_SHAPE_ERROR = gettextCatalog.getString("Please select a circle or draw a delivery area");
     this.TITLE_DELETE_DELIVERY_ZONE = gettextCatalog.getString("Delete delivery zone?");
     this.CONTENT_DELETE_DELIVERY_ZONE= gettextCatalog.getString("Are you sure you want to permanently delete this delivery zone?");
+
+    this.TITLE_STRIPE_CONNECTED = gettextCatalog.getString("Connection confirmed");
+    this.CONTENT_STRIPE_CONNECTED= gettextCatalog.getString("Your venue was successfully connected to your Stripe account");
 
   }
 }

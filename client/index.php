@@ -5,6 +5,7 @@ $cdnRoot = "https://cdn-demo.preoday.com/";
 $ordersapp = "https://orders-demo.preoday.com/";
 $weborders = "https://menus-v2-demo.preoday.com/";
 $analytics = '';
+$sessionId = session_id();
 
 if(isset($_SERVER["PREO_CDN"]))
 {
@@ -42,6 +43,7 @@ $overrides .= "window._PREO_DATA={};";
 $overrides .= "window._PREO_DATA._CDNROOT='$cdnRoot';";
 $overrides .= "window._PREO_DATA._ORDERSAPP='$ordersapp';";
 $overrides .= "window._PREO_DATA._WEBORDERS='$weborders';";
+$overrides .= "window._PREO_DATA._SESSION='$sessionId';";
 $overrides .= "</script>";
 
 $contentsIndexHTML = str_replace("<!-- @@OVERRIDES -->",$overrides,$contentsIndexHTML);
