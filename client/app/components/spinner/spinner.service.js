@@ -11,6 +11,12 @@ export default class SpinnerService {
   }
 
 
+  isCodeVisible(code){
+
+    return this.visibleCodes.indexOf(code) !== -1;
+  }
+
+
   show(code){
     this.DEBUG && console.log("SPINNER - showing spinner", code)
     this.visibleCodes.push(code);

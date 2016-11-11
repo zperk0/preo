@@ -113,6 +113,11 @@ export default class modifierItemController {
     }
 
     contextualMenuSuccess(updates){
+
+      if (!this.modifier.maxChoices) {
+        this.modifier.maxChoices = -1;
+      }
+
       if (!this.modifier.id){
         this.createModifier();
       }
