@@ -26,12 +26,18 @@
         <md-card-content ng-class="{active:paymentsCtrl.stripe.visible}" flex layout="column" layout-align="center stretch" ng-if="!paymentsCtrl.stripe.id">
           <div class='image-container'>
             <img src='/images/stripe.png'>
+            <md-tooltip>
+                {{'Not connected' | translate}}
+            </md-tooltip>
           </div>
           <md-button class='md-raised' ng-click="paymentsCtrl.connectToStripe()" translate> Connect to stripe</md-button>
         </md-card-content>
         <md-card-content ng-class="{active:paymentsCtrl.stripe.visible}" flex layout="column" layout-align="center stretch" ng-if="paymentsCtrl.stripe.id">
           <div class='image-container'>
             <img src='/images/stripe-connected.png'>
+            <md-tooltip>
+                {{'Connected' | translate}}
+            </md-tooltip>
           </div>
           <md-button class='md-raised' ng-click="paymentsCtrl.connectToStripe()" translate> Go to stripe </md-button>
         </md-card-content>

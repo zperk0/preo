@@ -1,4 +1,4 @@
-export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScope, BroadcastEvents){
+export default function mdMap(MapsService, UtilsService, VenueService, $timeout, $q, $rootScope, BroadcastEvents){
   'ngInject';
   return {
     restrict: 'E',
@@ -13,6 +13,8 @@ export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScop
     template: require("./mdMap.tpl.html"),
     replace:true,
     link: (scope, el, attr) => {
+
+      var distanceMultiplier = VenueService.getKmOrMiles() === "kms" ? 1 :1.6;
 
       var deliveryZoneDrawingPolygon = false;
       var shapes = {};
@@ -82,7 +84,7 @@ export default function mdMap(MapsService, UtilsService, $timeout, $q, $rootScop
       function updateShape(deliveryZone, shape){
         if(deliveryZone.type === 'DISTANCE'){
           console.log("updating shape", deliveryZone, shape);
-          var radius =  deliveryZone.distance * 1000;
+          var radius =  deliveryZone.distance * distanceMultiplier * 1000;
           shape.setRadius(radius)
         } else if (deliveryZone.type === 'CUSTOM') {
           shape.setOptions({editable:deliveryZone.editable});
