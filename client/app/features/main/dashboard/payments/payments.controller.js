@@ -142,10 +142,14 @@ export default class paymentsController {
     this.isError = false;
     this.$timeout = $timeout;
     this.stripeLink = '';
-    this.stripeRedirectUri = window.location.origin + window.location.pathname + "/stripe-success.php";
+    this.stripeRedirectUri = window.location.origin + window.location.pathname;
+    if (this.stripeRedirectUri[this.stripeRedirectUri.length-1] !== '/'){
+      this.stripeRedirectUri += "/"
+    }
+    this.stripeRedirectUri +="stripe-success.php";
+    console.log(this.stripeRedirectUri)
     this.paymentProviders = []
     this.stripe = {visible:false};
     this.init();
-    this.showStripeError();
   }
 }
