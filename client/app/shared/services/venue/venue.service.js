@@ -84,7 +84,7 @@ export default class VenueService {
 
     this.setVenueLocale(venue);
 
-    Preoday.Account.get(venue.id)
+    Preoday.Account.get(venue.accountId)
     .then((account)=>{
       console.log("loaded account", account);
       this.account = account;
