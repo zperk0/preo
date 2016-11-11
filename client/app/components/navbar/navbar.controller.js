@@ -57,10 +57,7 @@ export default class navbarController {
         {name: gettextCatalog.getString("Seller Details"), id:"sellerDetails"},
         {name: gettextCatalog.getString("Tax Groups"), id:"taxGroups"}
       ]},
-       {name: gettextCatalog.getString("Payments"), icon:"credit_card", id:"payments", children:[
-        {name: gettextCatalog.getString("Payment Methods"), id:"paymentMethods"},
-        {name: gettextCatalog.getString("App mode"), id:"appMode"}
-      ]},
+       {name: gettextCatalog.getString("Payments"), icon:"credit_card", id:"payments"},
       {name: gettextCatalog.getString("Outlets"), icon:"pin_drop", id:"outlets", children: [
         {name: gettextCatalog.getString("My Outlets"), id:"outletList"},
         {name: gettextCatalog.getString("Outlet Locations"), id:"location"},

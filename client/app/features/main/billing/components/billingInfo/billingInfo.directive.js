@@ -15,7 +15,7 @@ export default function billingInfo(gettextCatalog){
         if (scope.account.billingDate){
           return moment(scope.account.billingDate).format("Do MMMM YYYY");
         }
-        return gettextCatalog.gesString("Billing date not set")
+        return gettextCatalog.getString("Billing date not set")
       }
       scope.getTotal = function (){
         if (scope.packages && scope.packages.length){
