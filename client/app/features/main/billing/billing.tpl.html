@@ -1,3 +1,6 @@
-<div>
-  billing
+<div class="my-billing-view">
+  <div class="main-content-left">
+    <billing-info ng-if="billingCtrl.account && billingCtrl.packages" account="billingCtrl.account" packages="billingCtrl.packages"></billing-info>
+    <user-card ng-if="billingCtrl.card" card="billingCtrl.card"></user-card>
+  </div>
 </div>

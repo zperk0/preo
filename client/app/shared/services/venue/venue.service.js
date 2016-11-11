@@ -84,8 +84,15 @@ export default class VenueService {
 
     this.setVenueLocale(venue);
 
-    this.checkFeatures(venue)
-      .then(() => {
+    Preoday.Account.get(venue.id)
+    .then((account)=>{
+      console.log("loaded account", account);
+      this.account = account;
+    }, ()=>{
+      this.account = {};
+    })
+    .then(this.checkFeatures.bind(this,venue))
+    .then(() => {
 
         this.$rootScope.$broadcast(this.BroadcastEvents.ON_CURRENT_VENUE, venue);
         deferred.resolve();
