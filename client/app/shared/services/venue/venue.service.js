@@ -274,6 +274,13 @@ export default class VenueService {
     return config;
   }
 
+  getKmOrMiles(){
+    var milesLocale =['en-US', 'en-GB']
+    if (milesLocale.indexOf(this.currentVenue.locale) !== -1)
+      return "miles"
+    return "kms"
+  }
+
   constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, gettextCatalog, UserService, ErrorService) {
     "ngInject";
     this.$q = $q;
