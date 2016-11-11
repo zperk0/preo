@@ -152,9 +152,12 @@ export default class eventScheduleController {
 
   getScheduleTitle () {
 
-    if (!this.schedule.$startDate && !this.schedule.startDate) {
+    if (!this.schedule.$startDate && !this.schedule.startDate && !this.schedule.$endDate && !this.schedule.endDate) {
       return '&nbsp;';
     }
+
+    let hasStartDate = this.schedule.$startDate || this.schedule.startDate;
+    let hasEndDate = this.schedule.$endDate || this.schedule.endDate;
 
     switch (this.schedule.freq) {
       case this.EventScheduleFrequency.ONCE:
@@ -162,8 +165,8 @@ export default class eventScheduleController {
 
       default:
         return [
-            moment(this.schedule.$startDate || this.schedule.startDate).format('DD/MM/YYYY'),
-            moment(this.schedule.$endDate || this.schedule.endDate).format('DD/MM/YYYY')
+            hasStartDate ? moment(this.schedule.$startDate || this.schedule.startDate).format('DD/MM/YYYY') : '',
+            hasEndDate ? moment(this.schedule.$endDate || this.schedule.endDate).format('DD/MM/YYYY') : ''
         ].join(' - ');
     }
   }
