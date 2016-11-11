@@ -4,6 +4,30 @@ export default class paymentsController {
     return "paymentsController";
   }
 
+  canTurnOffMethod(){
+    var requiredCount = 1;
+    var onCount = 0;
+    if (this.venue.cashFlag){
+      onCount++;
+    }
+
+    if (this.stripe && this.stripe.id && this.stripe.visible){
+      onCount++;
+    }
+
+    if (onCount >= requiredCount){
+      return true;
+    }
+
+    this.$timeout(()=>{
+      this.DialogService.show(this.ErrorService.ONE_PAYMENT_METHOD.title, this.ErrorService.ONE_PAYMENT_METHOD.message, [{
+        name: this.LabelService.CONFIRMATION
+      }])
+    });
+
+    return false;
+  }
+
   showStripeSuccess(){
       this.DialogService.show(this.LabelService.TITLE_STRIPE_CONNECTED, this.LabelService.CONTENT_STRIPE_CONNECTED, [{
         name: this.LabelService.CONFIRMATION
@@ -62,6 +86,10 @@ export default class paymentsController {
 
   updateStripe(){
     if (this.stripe && this.stripe.id){
+      if (this.stripe.visible === 0 && !this.canTurnOffMethod()){
+        this.stripe.visible =1;
+        return;
+      }
       this.Spinner.show("venue-payments-save");
         this.stripe.update()
           .then(()=>{
@@ -85,6 +113,10 @@ export default class paymentsController {
   }
 
   updateVenue(){
+      if (this.venue.cashFlag === 0 && !this.canTurnOffMethod()){
+        this.venue.cashFlag = 1;
+        return;
+      }
       this.Spinner.show("venue-payments-save");
       try {
         this.VenueService.updateVenue()
