@@ -9,20 +9,21 @@
       <card-item-title>
         {{modifierItemCtrl.modifier.id +" -- " | debug}}{{ modifierItemCtrl.modifier.name}}
          <div sv-root="modifier" class='modifier-title-dropzone'>
-           <div class='sv-dropzone sv-dropzone-modifier' 
-                sv-part="modifierItemCtrl.newModifiers" 
+           <div class='sv-dropzone sv-dropzone-modifier'
+                sv-part="modifierItemCtrl.newModifiers"
                 sv-on-external-sort="modifierItemCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
             <div sv-placeholder></div>
            </div>
          </div>
       </card-item-title>
-      <modifier-chips ng-if="modifierItemCtrl.modifier.modifiers.length" 
-                      modifiers="modifierItemCtrl.modifier.modifiers" 
+      <modifier-chips ng-if="modifierItemCtrl.modifiers.length"
+                      modifiers="modifierItemCtrl.modifiers"
+                      on-modifier-removed="modifierItemCtrl.onModifierRemoved(modifier)"
                       parent="modifierItemCtrl.modifier"></modifier-chips>
 
       <div class='size-wrapper' ng-if="modifierItemCtrl.modifier.items.length">
-        <card-item-child ng-repeat="option in modifierItemCtrl.modifier.items" 
-                          modifier="modifierItemCtrl.modifier" 
+        <card-item-child ng-repeat="option in modifierItemCtrl.modifier.items"
+                          modifier="modifierItemCtrl.modifier"
                           option="option"></card-item-child>
       </div>
 

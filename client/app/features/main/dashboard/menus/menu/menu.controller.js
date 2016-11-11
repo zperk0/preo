@@ -31,10 +31,6 @@ export default class menuController {
 
   handleFinishLoading(dataMenu){
 
-    dataMenu.sections.forEach((s)=>{
-      // s.$positionedItems = s.items.map((i)=>({id:i.id,sectionId:s.id, position:i.position, item:this.ItemService.getById(i.id)}));
-      // let items = this.ItemService.getByIds(s.items.map((i)=>i.id));
-    })
     this.menu = dataMenu;
     this.hideSpinner();
   }

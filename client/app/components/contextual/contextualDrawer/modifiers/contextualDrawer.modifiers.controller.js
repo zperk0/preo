@@ -8,16 +8,15 @@ export default class contextualDrawerItemController {
   }
 
   close(){
-    this.$mdSidenav('modifiers').close()
-      .then(function () {
-        console.log("close Modifiers is done");
-      });
 
+    this.contextualDrawer.close();
   }
 
-  constructor($scope, ModifierService, $stateParams,$mdSidenav) {
+  constructor($scope, ModifierService, $stateParams,$mdSidenav, contextualDrawer) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
+    this.contextualDrawer = contextualDrawer;
+
     this.cancelledModifiers = [];
     ModifierService.getModifiers($stateParams.venueId).then((data)=>{
       this.data = data;

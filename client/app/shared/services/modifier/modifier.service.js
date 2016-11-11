@@ -18,6 +18,43 @@ export default class ModifierService {
     return promises;
   }
 
+  // takes a list of modifiers and a jscore modifier parent object with a saveModifier method
+  addCustomModifierToParent($modifiersToAdd, parent, currentModifiers) {
+
+    let deferred = this.$q.defer();
+    let promises  = [];
+
+    $modifiersToAdd.forEach((modifier)=>{
+      let modClone = angular.copy(modifier);
+
+      if (!currentModifiers) {
+        currentModifiers = parent.modifiers;
+      }
+
+      modClone.position = Math.max.apply(Math, currentModifiers.map(function(o){return o.position;})) + 1000;
+
+      promises.push(parent.saveModifier(modClone));
+    });
+
+    this.$q.all(promises)
+      .then((modifiers) => {
+
+        if (modifiers && modifiers.length) {
+          modifiers.forEach((mod, index) => {
+
+            mod.modifiers = $modifiersToAdd[index].modifiers;
+          });
+        }
+
+        deferred.resolve(modifiers);
+      }, (err) => {
+
+        deferred.reject(err);
+      });
+
+    return deferred.promise;
+  }
+
   isModifiersDuplicated($modifiers, parent){
     let $modIds = $modifiers.map((m)=>m.id);
     let $parentModIds = parent.modifiers.map((m)=>m.id);
@@ -83,6 +120,7 @@ export default class ModifierService {
         maxChoices:1,
         description:"",
         name:"",
+        modifiers: [],
         items:[
         {
           visible:1,
@@ -143,24 +181,15 @@ export default class ModifierService {
 
 
   removeFromItem(modifier, item){
-    return modifier.delete({itemId:item.id})
-      .then(()=>{
-        item.modifiers = item.modifiers.filter((m)=>modifier.id !== m.id);
-      })
+    return modifier.delete({itemId:item.id});
   }
 
   removeFromModifierItem(modifier, modifierItem){
-    return modifier.delete({modifierItemId:modifierItem.id})
-      .then(()=>{
-        modifierItem.modifiers = modifierItem.modifiers.filter((m)=>modifier.id !== m.id);
-      })
+    return modifier.delete({modifierItemId:modifierItem.id});
   }
 
   removeFromParent(modifier, parent){
-    return modifier.delete({parentId:parent.id})
-      .then(()=>{
-        parent.modifiers = parent.modifiers.filter((m)=>modifier.id !== m.id);
-      })
+    return modifier.delete({parentId:parent.id});
   }
 
   removeFromSection(modifier, section){
@@ -176,45 +205,10 @@ export default class ModifierService {
       .then(()=>{
         if (this.data.modifiers){
 
+          this.$rootScope.$broadcast(this.BroadcastEvents.ON_DELETE_MODIFIER, modifier);
           this.data.modifiers.splice(this.data.modifiers.indexOf(modifier), 1);
         }
       })
-  }
-
-  //this method will replace  the retrieved modifier with a reference of the parent modifier in the list
-  //we do this for two reasons, eventually we'll replace the child list with ids only so we don't have to return everything
-  //also it'll force an update by reference if we change any of the values
-  populateModifiers(index, m = false, arr = []){
-    let mod;
-    if (m === false){
-      mod = this.data.modifiers[index];
-    } else{
-      mod = arr[m];
-    }
-
-    if (mod.modifiers && mod.modifiers.length){
-      for (let i=0;i<mod.modifiers.length;i++){
-        this.populateModifiers(false, i, mod.modifiers)
-      }
-    }
-    if (mod.items && mod.items.length){
-      for (let i=0;i<mod.items.length;i++){
-        for (let j=0;j<mod.items[i].modifiers.length;j++){
-          this.populateModifiers(false, j, mod.items[i].modifiers)
-        }
-      }
-    }
-    // little clue as to why assigning to mod doesn't work when it's an array
-    if (m === false){
-      mod = this.data.modifiers.filter((m)=>mod.id===m.id)[0];
-    } else {
-      arr[m] = this.data.modifiers.filter((m)=>mod.id===m.id)[0];
-    }
-    if(index !== false && index <this.data.modifiers.length-1){
-      index++;
-      this.populateModifiers(index)
-    }
-
   }
 
   getById(id){
@@ -241,9 +235,6 @@ export default class ModifierService {
             return a.id - b.id;
           });
           console.log("this data", this.data.modifiers);
-          if (modifiers.length){
-            this.populateModifiers(0);
-          }
           resolve(this.data);
         },(err)=>{
           console.log("Error fetching modifiers", err);
@@ -259,9 +250,11 @@ export default class ModifierService {
 
 
 
-  constructor($q, $rootScope, $stateParams) {
+  constructor($q, $rootScope, $stateParams, BroadcastEvents) {
     "ngInject";
+    this.$rootScope = $rootScope;
     this.$stateParams = $stateParams;
+    this.BroadcastEvents = BroadcastEvents;
     this.$q =$q;
     this.data={};
 
