@@ -7,11 +7,6 @@ export default class modifierSelectionController {
     this.modifier.minChoices = this.modifier.$isOptional ? 0 : 1;
   }
 
-  isSaving () {
-
-    return this.Spinner.isCodeVisible('modifier-create') || this.Spinner.isCodeVisible('modifier-update');
-  }
-
   constructor(Spinner) {
     "ngInject";
 
