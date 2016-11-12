@@ -39,15 +39,20 @@
                 <md-input-container class="md-block no-spacer">
                   <div class='checkbox-label' translate>Set area by:</div>
                   <md-radio-group class='type' ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.type">
-                    <md-radio-button value="DISTANCE" class="md-primary">{{'Distance' | translate}} ({{drawerDeliveryZonesEditCtrl.distanceUnit}})</md-radio-button>
+                    <md-radio-button value="DISTANCE" class="md-primary">{{'Distance' | translate}} ({{drawerDeliveryZonesEditCtrl.translatedDistanceUnit}})</md-radio-button>
                     <md-radio-button value="CUSTOM" class="md-primary"> {{'Custom' | translate}} </md-radio-button>
                   </md-radio-group>
                 </md-input-container>
                 <md-input-container ng-if="drawerDeliveryZonesEditCtrl.editableDeliveryZone.type === 'DISTANCE'" class="md-block no-spacer">
-                 <md-slider ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.distance" md-discrete min="1" step="0.5" max="10"></md-slider>
+                 <md-slider ng-model="drawerDeliveryZonesEditCtrl.editableDeliveryZone.distance"
+                            miles-or-kms="{{drawerDeliveryZonesEditCtrl.distanceUnit}}"
+                            md-discrete
+                            min="1"
+                            step="0.5"
+                            max="10"></md-slider>
                 </md-input-container>
                 <div class='custom-text' ng-if="drawerDeliveryZonesEditCtrl.editableDeliveryZone.type === 'CUSTOM'">
-                  <span class='text-info' ng-if="!drawerDeliveryZonesEditCtrl.editableDeliveryZone.polygon || !drawerDeliveryZonesEditCtrl.editableDeliveryZone. polygon.length">
+                  <span class='text-info' ng-if="!drawerDeliveryZonesEditCtrl.editableDeliveryZone.polygon || !drawerDeliveryZonesEditCtrl.editableDeliveryZone.polygon.length">
                     <icon>info</icon> {{'Click on the map to begin drawing your custom area. Connect the first and last points to finish.' | translate}}
                   </span>
                   <md-button class='md-primary clear-button' ng-click="drawerDeliveryZonesEditCtrl.clearPolygon()" translate ng-if="drawerDeliveryZonesEditCtrl.editableDeliveryZone.polygon && drawerDeliveryZonesEditCtrl.editableDeliveryZone.polygon.length">

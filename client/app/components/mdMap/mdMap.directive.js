@@ -14,7 +14,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
     replace:true,
     link: (scope, el, attr) => {
 
-      var distanceMultiplier = VenueService.getKmOrMiles() === "kms" ? 1 :1.6;
+
 
       var deliveryZoneDrawingPolygon = false;
       var shapes = {};
@@ -84,7 +84,7 @@ export default function mdMap(MapsService, UtilsService, VenueService, $timeout,
       function updateShape(deliveryZone, shape){
         if(deliveryZone.type === 'DISTANCE'){
           console.log("updating shape", deliveryZone, shape);
-          var radius =  deliveryZone.distance * distanceMultiplier * 1000;
+          var radius =  deliveryZone.distance * 1000;
           shape.setRadius(radius)
         } else if (deliveryZone.type === 'CUSTOM') {
           shape.setOptions({editable:deliveryZone.editable});

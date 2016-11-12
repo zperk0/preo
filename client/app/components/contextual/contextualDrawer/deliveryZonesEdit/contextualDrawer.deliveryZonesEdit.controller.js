@@ -31,8 +31,9 @@ export default class ContextualDrawerDeliveryZonesEditController {
     this.DeliveryZoneService=DeliveryZoneService;
     this.editableData = DeliveryZoneService.editableData;
     this.distanceUnit = VenueService.getKmOrMiles();
-    if (this.distanceUnit === "kms") this.distanceUnit = gettextCatalog.getString("kms")
-    else if (this.distanceUnit === "miles") this.distanceUnit = gettextCatalog.getString("miles");
+    this.translatedDistanceUnit = "kms";
+    if (this.distanceUnit === "kms") this.translatedDistanceUnit = gettextCatalog.getString("kms")
+    else if (this.distanceUnit === "miles") this.translatedDistanceUnit = gettextCatalog.getString("miles");
 
     this.isEditing = false;
     $scope.$watch('drawerDeliveryZonesEditCtrl.DeliveryZoneService.editableDeliveryZone',(newValue,oldValue)=>{
