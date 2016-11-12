@@ -17,6 +17,7 @@ export default class contextualDrawerOutletsController {
     this.cancelledOutlets = [];
     DeliveryZoneService.getDeliveryZones().then(()=>{
       this.data = DeliveryZoneService.data
+      console.log("got deliveryzones", this.data);
     })
   }
 }

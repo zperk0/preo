@@ -39,6 +39,11 @@ html{
 
   .style-row {
     .form-style{
+
+       &.BANNER .image-uploader{
+        width: 283px;
+        height: 59px;
+      }
       &.HEADER{
         .image-uploader{
           width: 283px;

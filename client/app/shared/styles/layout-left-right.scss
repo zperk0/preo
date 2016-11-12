@@ -1,9 +1,6 @@
 .layout-left-right{
   position: relative;
   display: flex;
-  flex-wrap: wrap;
-  align-content: space-around;
-
 
   &.with-toolbar{
     padding-top:45px;

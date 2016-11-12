@@ -1,0 +1,57 @@
+<div class="user-card">
+		<md-card >
+        <md-card-title>
+          <md-card-title-text flex layout="row" layout-align="center start">
+            <h2 class="md-title" flex="grow"  translate> Payment Card </h2>
+            <md-button class="md-primary add-card" ng-if="!userCardCtrl.card.token && !userCardCtrl.showForm" flex="10" layout-align="center end" ng-click="userCardCtrl.addCard(false)">
+            	Add Card
+            </md-button>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content ng-if="userCardCtrl.showForm  || userCardCtrl.card.number">
+        	<form name="userCardCtrl.userCardForm" ng-submit="userCardCtrl.submit()" novalidate>
+	        	<div class='display-number' ng-if="!userCardCtrl.showForm && userCardCtrl.card.number">
+	        		**** **** **** {{userCardCtrl.card.number}}
+	      		</div>
+	  				  <div class='form-content' ng-if="userCardCtrl.showForm" layout-align="start stretch" layout="column">
+	  				  	<div layout="row">
+			            <md-input-container class="md-block no-spacer card-number-input" flex=80>
+			                <label translate>Card number</label>
+			                <input type="text" required name="card" ng-model="userCardCtrl.card.number" ng-maxlength="24">
+			            </md-input-container>
+			            <md-input-container class="md-block no-spacer" flex=20>
+			                <label translate>CVC</label>
+			                <input type="text" valid-number required name="cvc" ng-model="userCardCtrl.card.ccv" ng-maxlength="4">
+			            </md-input-container>
+		            </div>
+		            <div layout="row" class='expiry-row'>
+		            	<md-input-container class="md-block no-spacer header">
+	            			<div translate> Expiry: </div>
+	            		</md-input-container>
+			            <md-input-container class="md-block no-spacer">
+			                <label translate>MM</label>
+			                <input type="text" valid-number max-integer-value="12" required name="month" ng-model="userCardCtrl.card.expmonth" >
+			            </md-input-container>
+			            <md-input-container class="md-block no-spacer">
+			                <label translate>YY</label>
+			                <input type="text" valid-number max-integer-value="99" required name="year" ng-model="userCardCtrl.card.expyear" >
+			            </md-input-container>
+		            </div>
+			            <md-card-actions layout="row" layout-align="end center">
+			            <md-button type="button" ng-click="userCardCtrl.cancel()" ng-if="userCardCtrl.card.token" class="md-primary" translate>
+			                Cancel
+			            </md-button>
+			            <md-button type="submit" class="md-primary" translate>
+			                Save
+			            </md-button>
+			          </md-card-actions>
+	            </div>
+      		</form>
+      		<md-card-actions layout="row" layout-align="end center" ng-if="userCardCtrl.card.token && !userCardCtrl.showForm">
+	      		<md-button class="md-primary"  layout-align="center end" ng-click="userCardCtrl.addCard(true)">
+	      	  	Change card
+	          </md-button>
+          </md-card-actions>
+        </md-card-content>
+    </md-card>
+</div>

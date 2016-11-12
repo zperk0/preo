@@ -6,10 +6,8 @@ import './payments.scss';
 import controller from './payments.controller';
 import routes from './payments.routes';
 
-import v2AppMode from './appMode';
-import v2PaymentMethods from './paymentMethods';
 
-angular.module("payments" , ['ui.router', v2AppMode, v2PaymentMethods])
+angular.module("webapp.payments" , ['ui.router'])
   .config(routes)
   .controller(controller.UID, controller)
   .name;
