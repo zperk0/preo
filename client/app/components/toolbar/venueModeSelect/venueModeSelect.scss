@@ -24,3 +24,21 @@
     }
   }
 }
+
+.venue-mode-select-button{ /* Doing all this because of firefox, for some reason flexbox did'nt work there*/
+  padding-left:44px;
+  padding-right:30px;
+  .status-circle{
+    position: absolute;
+    top:50%;
+    margin-top:-10px;
+    left:12px;
+  }
+
+  md-icon{
+    position: absolute;
+    top:50%;
+    margin-top:-12px;
+    right:6px
+  }
+}

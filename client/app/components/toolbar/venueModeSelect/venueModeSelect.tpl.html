@@ -1,6 +1,6 @@
 <div class='venue-mode-select' layout="row" layout-align="start center">
   <md-menu ng-if="venueModeSelectCtrl.venue">
-    <md-button layout="row" aria-label="{{'Open phone interactions menu' | translate}}" ng-click="venueModeSelectCtrl.openMenu($mdOpenMenu, $event)" >
+    <md-button class='venue-mode-select-button' layout="row"  layout-align="space-between stretch" ng-click="venueModeSelectCtrl.openMenu($mdOpenMenu, $event)" >
       <div class='status-circle' ng-class="{live:venueModeSelectCtrl.venue.liveFlag, demo:venueModeSelectCtrl.venue.demoFlag}">
         <md-tooltip>{{venueModeSelectCtrl.translatedVenueModeTooltip}}</md-tooltip>
       </div>
