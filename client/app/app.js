@@ -23,7 +23,7 @@ import tagList from './components/tagList';
 import itemChips from './components/itemChips';
 import breadcrumb from './components/breadcrumb';
 import autoSave from './components/autoSave';
-
+import milesOrKms from './components/milesOrKms';
 import mocks from './app.modules.mock';
 
 // Import internal modules
@@ -58,6 +58,7 @@ require('./components/sticky/sticky.directive.js');
   fullSpinner,
   breadcrumb,
   autoSave,
+  milesOrKms,
   // /* internal */
   constants,
   config,
