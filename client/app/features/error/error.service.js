@@ -71,5 +71,8 @@ export default class ErrorService {
     this.STRIPE_ERROR = {code:'STRIPE_ERROR', message:gettextCatalog.getString("We could not connect to your Stripe account. Please try again."), title: gettextCatalog.getString('Connection failed')};
     this.ONE_PAYMENT_METHOD = {code:'ONE_PAYMENT_METHOD', message:gettextCatalog.getString("You must have at least one active payment method."), title: gettextCatalog.getString('Invalid configuration')};
 
+    this.VENUE_MODE_PAYMENT = {code:'VENUE_MODE_PAYMENT', message:gettextCatalog.getString("You must accept at least one payment method before going live."), title: gettextCatalog.getString('Sorry')};
+    this.VENUE_MODE_FAILED = {code:'VENUE_MODE_FAILED', message:gettextCatalog.getString("Venue mode not changed")};
+
   }
 }

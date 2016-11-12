@@ -1,11 +1,47 @@
 .venue-payments{
   md-card{
     min-width: 227px;
-    padding-bottom:24px;
+
     // width:30%;
     &.stripe{
       button{
-       margin: 12px 0 0 0 ;
+       margin-top: 12px;
+       margin-left:0;
+       margin-right:0;
+      }
+    }
+    md-card-content{
+      max-height: 0px;
+      overflow: hidden;
+      padding-bottom:0;
+      padding-left: 24px;
+      padding-right: 24px;
+      transition:max-height 0.5s ease-in-out;
+
+      &>*:last-child{
+        margin-bottom: 24px;
+      }
+
+      form{
+        button{
+          margin:0;
+        }
+        padding-bottom: 24px;
+        md-checkbox{
+          margin-top:6px;
+          margin-bottom: 0;
+          .md-label{
+            span{
+              position: relative;
+              top: 1px;
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+
+      &.active{
+        max-height: 300px;
       }
     }
   }
@@ -17,36 +53,7 @@
       line-height: 60px;
     }
   }
-  md-card-content{
-    max-height: 0px;
-    overflow: hidden;
-    padding-bottom:0;
-    padding-left: 24px;
-    padding-right: 24px;
-    transition:max-height 0.5s ease-in-out;
 
-    form{
-      button{
-        margin:0;
-      }
-      padding-bottom: 24px;
-      md-checkbox{
-        margin-top:6px;
-        margin-bottom: 0;
-        .md-label{
-          span{
-            position: relative;
-            top: 1px;
-            margin-right: 10px;
-          }
-        }
-      }
-    }
-
-    &.active{
-      max-height: 300px;
-    }
-  }
 
   .minimum-order-value  {
     .input-wrapper {

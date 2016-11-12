@@ -156,6 +156,7 @@ export default class paymentsController {
     },()=>{
       this.Spinner.hide("venue-details");
     }).catch((error)=>{
+      this.Spinner.hide("venue-details");
       console.error('error', error)
     })
   }

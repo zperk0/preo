@@ -1,0 +1,26 @@
+.status-circle{
+  width: 20px;
+  height: 20px;
+  background: #D2232A;
+  border: 1px solid #FFFFFF;
+  border-radius: 50%;
+  margin-right: 12px;
+  display: inline-block;
+
+  &.live{
+      background: #417505;
+
+      &.demo{
+        background: #FFAB00;
+      }
+  }
+
+  &+.after-circle-span {
+    position: relative;
+    top: -2px;
+    span{
+      position: relative;
+      top:-2px;
+    }
+  }
+}
