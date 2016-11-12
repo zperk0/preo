@@ -21,6 +21,13 @@ $spanColor: #FAFAFA;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.1);
 
+  md-icon{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    margin-top: -12px;
+  }
+
   &>div {
     @include venueSelectContainer();
     span{
