@@ -1,10 +1,10 @@
  <md-sidenav md-disable-backdrop class="md-sidenav-right contextual-drawer md-whiteframe-4dp" md-component-id="modifiers">
-       <div sv-root="modifier" sv-part="vm.cancelledModifiers">
-        <div class='sv-dropzone sv-dropzone-modifier' sv-part="vm.cancelledModifiers" sv-on-sort="vm.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
+       <div sv-root="modifier" sv-part="drawerModifiersCtrl.cancelledModifiers">
+        <div class='sv-dropzone sv-dropzone-modifier' sv-part="drawerModifiersCtrl.cancelledModifiers" sv-on-sort="drawerModifiersCtrl.onNewModifierMoved($items, $partFrom, $partTo, $indexFrom, $indexTo)">
         <div sv-placeholder></div>
       </div>
      </div>
-    <div class='contextual-list'>
+    <div class='contextual-list' ng-class="{empty:!drawerModifiersCtrl.data.modifiers || !drawerModifiersCtrl.data.modifiers.length}">
       <modifier-list has-search="true"
          sv-multi-select="true"
          sv-keep-in-list="true"
@@ -12,6 +12,11 @@
          has-new="false"
          ng-if="drawerModifiersCtrl.data.modifiers && drawerModifiersCtrl.data.modifiers.length"
          modifiers="drawerModifiersCtrl.data.modifiers"></modifier-list>
+        <div class='contextual-empty'>
+          <img src='/images/emptydrawer.png'>
+          <div class='header' translate> This drawer is empty </div>
+          <div class='content'> <span class='fake-link' ng-click="drawerModifiersCtrl.navigateToPage()">Click here</span> to create some modifiers first </div>
+        </div>
     </div>
     <md-card-actions layout="row" layout-align="end center">
       <md-button ng-click="drawerModifiersCtrl.close()" class='md-raised' translate>

@@ -31,6 +31,40 @@
   .contextual-list{
     overflow-y: auto;
     height: calc(100% - 49px); // 100% - footer cards
+    position: relative;
+
+
+    .contextual-empty{
+      display: none;
+      position: absolute;
+      top: 98px;
+      width: 100%;
+      text-align: center;
+      img{
+        width: 35%;
+      }
+      .header{
+        margin-top:24px;
+        font-size: 16px;
+        color: #424242;
+        line-height: 16px;
+      }
+      .content{
+        margin-top:16px;
+        font-size: 13px;
+        color: #757575;
+        line-height: 13px;
+        .fake-link{
+          color: #757575;
+        }
+      }
+    }
+
+    &.empty {
+      .contextual-empty{
+        display: block;
+      }
+    }
   }
 
   .repeat-holder{

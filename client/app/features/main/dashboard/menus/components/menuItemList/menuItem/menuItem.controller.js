@@ -263,14 +263,15 @@ export default class menuItemController {
   }
 
   buildModifiers () {
+    if (this.item && this.item.modifiers){
+      this.modifiers = this.item.modifiers.map((_modifier) => {
 
-    this.modifiers = this.item.modifiers.map((_modifier) => {
+        let modifier = angular.copy(this.ModifierService.getById(_modifier.id));
+        modifier.position = _modifier.position;
 
-      let modifier = angular.copy(this.ModifierService.getById(_modifier.id));
-      modifier.position = _modifier.position;
-
-      return modifier;
-    });
+        return modifier;
+      });
+    }
   }
 
   constructor($scope, $q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService, ModifierService) {
