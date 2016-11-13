@@ -10,7 +10,9 @@ export default class venueSelectController {
   switchVenue (venue) {
     let venueId = venue.id;
     this.$state.go("main.dashboard",{venueId});
-    window.location.reload();
+    this.$timeout(()=>{
+      window.location.reload();
+    })
   }
 
   setVenue(){
