@@ -51,7 +51,9 @@ export default class navbarController {
         {name: gettextCatalog.getString("Details"), id:"venueDetails"},
         {name: gettextCatalog.getString("Location"), id:"venueLocation"},
         {name: gettextCatalog.getString("Services"), id:"venueServices"},
-        {name: gettextCatalog.getString("Delivery Zones"), id:"venueDeliveryZones"},
+        {name: gettextCatalog.getString("Delivery Zones"), id:"venueDeliveryZones", shouldShow:function(){
+          return FeatureService.hasDeliveryZoneFeature();
+        }},
       ]},
       {name: gettextCatalog.getString("Tax"), icon:"account_balance", id:"taxes", children:[
         {name: gettextCatalog.getString("Seller Details"), id:"sellerDetails"},

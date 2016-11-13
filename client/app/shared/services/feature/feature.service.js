@@ -8,7 +8,7 @@ export default class FeatureService {
 
     if (this.UserService.isAdmin()) {
       return true;
-    }    
+    }
 
     return this.getLocalFeature(Preoday.constants.Feature.OUTLET);
   }
@@ -23,8 +23,13 @@ export default class FeatureService {
     return this.getLocalFeature(Preoday.constants.Feature.NESTED_MODIFIER);
   }
 
-  getLocalFeature (featureId) {
+  hasDeliveryZoneFeature () {
 
+    return this.getLocalFeature(Preoday.constants.Feature.DELIVERY_ZONES);
+  }
+
+
+  getLocalFeature (featureId) {
     let index = this.localFeatures.map(function(item){
         return +item.id;
     }).indexOf(+featureId);
@@ -32,22 +37,11 @@ export default class FeatureService {
     return index === -1 ? false : this.localFeatures[index];
   }
 
-  hasFeatureForInit (featureId) {
-
-    return this.$q((resolve,reject)=> {
-
-        return this.hasFeature(featureId)
-            .then(resolve, resolve);
-    });
-  }
-
   hasFeature (featureId) {
 
-    let VenueService = this.$injector.get('VenueService');
-
     return this.$q((resolve,reject)=> {
 
-        if (!VenueService.hasVenueSet()) {
+        if (!this.VenueService.hasVenueSet()) {
             console.log('venue not set');
             return reject();
         }
@@ -58,29 +52,24 @@ export default class FeatureService {
             return resolve(localFeature);
         }
 
-        VenueService
+        this.VenueService
             .currentVenue
             .hasFeature(featureId)
             .then((feature) => {
-                
+
                 this.localFeatures.push(feature);
                 resolve(feature);
             }, reject);
     });
   }
 
-  clearLocalFeatures () {
-
-    this.localFeatures = [];
-  }
-
-  constructor($q, $injector, UserService) {
+  constructor($q, $injector, UserService, VenueService) {
     "ngInject";
 
     this.$q = $q;
     this.$injector = $injector;
     this.UserService = UserService;
-
-    this.localFeatures = [];
-  }  
+    this.VenueService = VenueService;
+    this.localFeatures = VenueService.currentVenue.features;
+  }
 }
