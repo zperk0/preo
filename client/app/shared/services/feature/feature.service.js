@@ -70,6 +70,6 @@ export default class FeatureService {
     this.$injector = $injector;
     this.UserService = UserService;
     this.VenueService = VenueService;
-    this.localFeatures = VenueService.currentVenue.features;
+    this.localFeatures = VenueService.currentVenue && VenueService.currentVenue.features || [];
   }
 }
