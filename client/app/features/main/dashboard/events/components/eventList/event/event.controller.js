@@ -255,6 +255,13 @@ export default class eventController {
       });
   }
 
+  hasAnyScheduleWithoutSlots () {
+
+    return this.event.schedules.filter((schedule) => {
+      return schedule.id && !schedule.hasSlots();
+    }).length > 0;
+  }
+
   constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, EventService, EventScheduleService, gettextCatalog, OutletLocationService) {
   	"ngInject";
 

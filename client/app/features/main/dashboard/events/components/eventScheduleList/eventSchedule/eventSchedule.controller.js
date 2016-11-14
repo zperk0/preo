@@ -180,6 +180,11 @@ export default class eventScheduleController {
     return moment(this.schedule.$startTime || this.schedule.startDate).format('HH:mm');
   }
 
+  shouldShowWarningSlots () {
+
+    return this.schedule.id && !this.schedule.hasSlots();
+  }
+
   constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, MenuService, DialogService, LabelService, gettextCatalog, EventScheduleFrequency, ErrorService) {
   	"ngInject";
 

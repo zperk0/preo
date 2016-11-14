@@ -20,7 +20,7 @@ $heightMenuItemCard:48px;
 
       .card-title-text{
         font-size:13px;
-        align-items: stretch;
+        align-items: center;
       }
 
       .schedule-name {
@@ -31,6 +31,18 @@ $heightMenuItemCard:48px;
       .schedule-time {
         text-align: right;
         float: right;
+      }
+
+      .warning-button {
+        margin-right: 12px;
+        margin-left: 0px;
+        padding: 0px;
+        width: 24px;
+        height: 24px;
+
+        .warning-icon {
+          color: #d0021b;
+        }
       }
     }
 
