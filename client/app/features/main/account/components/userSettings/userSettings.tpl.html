@@ -1,0 +1,22 @@
+<div class="user-settings">
+  <md-card md-theme="default">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Settings</span>
+      </md-card-title-text>
+    </md-card-title>
+    <form name="userSettingsCtrl.userSettingsForm" ng-submit="userSettingsCtrl.submit()" novalidate>
+	    <md-card-content layout="row" layout-align="space-between">
+			   <md-input-container class="md-block">
+			      <label translate>Language</label>
+					  <md-select ng-model="userSettingsCtrl.language">
+					    <md-option value=""><em>None</em></md-option>
+					    <md-option ng-repeat="language in userSettingsCtrl.languages" ng-value="language.id" >
+					      {{language.name}}
+					    </md-option>
+					  </md-select>
+			  </md-input-container>
+	    </md-card-content>
+    </form>
+  </md-card>
+</div>
