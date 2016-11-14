@@ -12,14 +12,13 @@ export default function milesOrKms(){
       }
 
       var distanceMultiplier = attrs.milesOrKms && attrs.milesOrKms=="miles"?  1.6 : 1;
-      console.log("got multiplier", distanceMultiplier, attrs);
 
-      ngModelCtrl.$parsers.unshift(function(val) {
-        return val * distanceMultiplier;
+      ngModelCtrl.$formatter.unshift(function(val) {
+        return Number(val) / distanceMultiplier;
       });
 
-      ngModelCtrl.$formatters.unshift(function(val) {
-        return Math.round(val / distanceMultiplier);
+      ngModelCtrl.$parsers.unshift(function(val) {
+        return Number(val) * distanceMultiplier;
       });
 
     }

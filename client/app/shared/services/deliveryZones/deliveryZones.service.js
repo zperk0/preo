@@ -31,6 +31,9 @@ export default class DeliveryZoneService {
         if (dz.polygon){
           dz.polygon = dz.polygon.toString();
         }
+        if (dz.distance){
+          dz.distance *= this.distanceMultiplier
+        }
         var saveOrUpdate = dz.id && dz.id !== -1 ? dz.update.bind(dz) : Preoday.DeliveryZone.create;
 
         // if (!dz.id){
@@ -41,6 +44,9 @@ export default class DeliveryZoneService {
             if (dz.id === newDz.id || dz.id === -1){
               if (newDz.polygon && newDz.polygon.length){
                 newDz.polygon = newDz.polygon.split(",");
+              }
+             if (newDz.distance){
+                newDz.distance /= this.distanceMultiplier
               }
               angular.extend(this.data.deliveryZones[i], newDz);
             }
@@ -81,6 +87,9 @@ export default class DeliveryZoneService {
     this.data.deliveryZones.forEach((dz,i)=>{
       if (dz.polygon && typeof dz.polygon === "string"){
         dz.polygon = dz.polygon && dz.polygon.length ? dz.polygon.split(",") : dz.polygon;
+      }
+      if (dz.distance){
+        dz.distance /= this.distanceMultiplier
       }
       dz.$color = this.colors[i];
     })
@@ -169,6 +178,8 @@ export default class DeliveryZoneService {
     "ngInject";
     this.$q = $q;
     this.VenueService = VenueService;
+    var milesOrKms = this.VenueService.getKmOrMiles();
+    this.distanceMultiplier =  milesOrKms && milesOrKms=="miles"?  1.6 : 1;
     this.LabelService = LabelService;
     this.contextual = contextual;
     this.gettextCatalog = gettextCatalog;
