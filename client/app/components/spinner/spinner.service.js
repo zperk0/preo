@@ -10,6 +10,10 @@ export default class SpinnerService {
     })
   }
 
+  isCodeVisible(code){
+
+    return this.visibleCodes.indexOf(code) !== -1;
+  }
 
   isCodeVisible(code){
 

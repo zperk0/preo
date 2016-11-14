@@ -54,7 +54,7 @@ export default class ErrorService {
     this.UNEXPECTED_ERROR = {code:'UNEXPECTED_ERROR', message:gettextCatalog.getString("An unexpected error occurred loading this page, please try again")};
 
     // COLLECTION SLOT
-    this.COLLECTION_SLOT_SCHEDULE = {code:'COLLECTION_SLOT_SCHEDULE', message:gettextCatalog.getString("This slot is still assigned to some schedules. You must remove all instances before deleting."), title: gettextCatalog.getString('Cannot delete slot')};
+    this.COLLECTION_SLOT_SCHEDULE = {code:'COLLECTION_SLOT_SCHEDULE', message:gettextCatalog.getString("If you delete this slot, it will be removed from all your events. <br /> Are you sure?"), title: gettextCatalog.getString('This slot is being used')};
 
     // SCHEDULE
     this.SCHEDULE_EVENT = {code:'SCHEDULE_EVENT', message:gettextCatalog.getString("An event must have at least one schedule."), title: gettextCatalog.getString('Cannot delete schedule')};

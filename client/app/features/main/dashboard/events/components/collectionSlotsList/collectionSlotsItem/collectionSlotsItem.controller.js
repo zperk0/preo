@@ -90,11 +90,39 @@ export default class collectionSlotsItemController {
     $event.stopPropagation();
   }
 
-  showCannotDeleteSlotDialog () {
+  showSlotUsedDialog () {
 
-    this.DialogService.show(this.ErrorService.COLLECTION_SLOT_SCHEDULE.title, this.ErrorService.COLLECTION_SLOT_SCHEDULE.message, [{
-        name: this.gettextCatalog.getString('OK')
-      }]);
+    this.DialogService.delete(this.ErrorService.COLLECTION_SLOT_SCHEDULE.title, this.ErrorService.COLLECTION_SLOT_SCHEDULE.message)
+      .then(() => {
+
+        this.delete();
+      });
+  }
+
+  delete () {
+
+    if (!this.Spinner.isCodeVisible('collection-slot-delete')) {
+      this.Spinner.show("collection-slot-delete");
+    }
+
+    let promise = this.collectionSlot.remove();
+    promise.then(()=> {
+
+      this.EventService.removeCollectionSlotFromSchedules(this.collectionSlot.id);
+
+      this.cardItemList.onItemDeleted(this.collectionSlot);
+      if (this.onItemDeleted){
+        this.onItemDeleted({item: this.collectionSlot});
+      }
+      this.Snack.show('Collection Slot deleted');
+      this.Spinner.hide("collection-slot-delete");
+    })
+    .catch((err)=>{
+      console.log('error on delete,', err);
+      this.Spinner.hide("collection-slot-delete")
+
+      this.Snack.showError('Collection slot not deleted');
+    });
   }
 
   onDelete(){
@@ -103,30 +131,25 @@ export default class collectionSlotsItemController {
       .then(()=>{
           this.Spinner.show("collection-slot-delete");
 
-          let promise = this.collectionSlot.remove();
-          promise.then(()=>{
-            console.log('resr he');
-              this.cardItemList.onItemDeleted(this.collectionSlot);
-              if (this.onItemDeleted){
-                this.onItemDeleted({item: this.collectionSlot});
-              }
-              this.Snack.show('Collection Slot deleted');
-              this.Spinner.hide("collection-slot-delete");
-          })
-          .catch((err)=>{
-            console.log('error on delete,', err);
-            this.Spinner.hide("collection-slot-delete")
+          this.collectionSlot.getSchedules()
+            .then((schedules) => {
 
-            if (err && err instanceof Object && err.message && err.message.indexOf('schedule') !== -1) {
-              this.showCannotDeleteSlotDialog();
-            } else {
+              if (schedules.length > 0) {
+                this.Spinner.hide("collection-slot-delete")
+                this.showSlotUsedDialog();
+              } else {
+                this.delete();
+              }
+            }, () => {
+
+              this.Spinner.hide("collection-slot-delete")
               this.Snack.showError('Collection slot not deleted');
-            }
-          });
+            });
+
       });
   }
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, gettextCatalog) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, gettextCatalog, EventService) {
   	"ngInject";
 
     this.$q = $q;
@@ -138,7 +161,8 @@ export default class collectionSlotsItemController {
   	this.DialogService = DialogService;
     this.LabelService = LabelService;
   	this.ErrorService = ErrorService;
-  	this.gettextCatalog = gettextCatalog;
+    this.gettextCatalog = gettextCatalog;
+  	this.EventService = EventService;
 
   	this.type = 'collectionSlot';
 
