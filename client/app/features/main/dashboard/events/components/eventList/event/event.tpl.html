@@ -9,7 +9,12 @@
               >
     <card-item-title ng-click="eventCtrl.toggleExpanded($event)"
                     has-visible="true">
-                      <span>{{eventCtrl.event.name}} </span><icon class='arrow-icon' flex>{{eventCtrl.event.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
+                      <md-button class="md-icon-button warning-button" ng-if="eventCtrl.hasAnyScheduleWithoutSlots()">
+                        <icon class="warning-icon">report_problem</icon>
+                        <md-tooltip>{{ 'There are schedules in this event without a collection slot' }}</md-tooltip>
+                      </md-button>
+                      <span>{{eventCtrl.event.name}} </span>
+                      <icon class='arrow-icon' flex>{{eventCtrl.event.$expanded ? 'arrow_drop_up' : 'arrow_drop_down'}}</icon>
                     </card-item-title>
 
 
