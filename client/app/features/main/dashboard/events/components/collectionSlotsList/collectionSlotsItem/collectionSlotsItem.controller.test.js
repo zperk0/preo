@@ -104,14 +104,14 @@ describe('CollectionSlots item Controller', function () {
 
       _mockCollectionSlot();
       _startController();
-      
+
 
       CollectionSlotsItemCtrl.instance.collectionSlot = collectionSlotMock;
       CollectionSlotsItemCtrl = CollectionSlotsItemCtrl();
 
       expect(CollectionSlotsItemCtrl.type).toBe('collectionSlot');
       expect(CollectionSlotsItemCtrl.onDelete).toEqual(jasmine.any(Function));
-      expect(CollectionSlotsItemCtrl.showCannotDeleteSlotDialog).toEqual(jasmine.any(Function));
+      expect(CollectionSlotsItemCtrl.showSlotUsedDialog).toEqual(jasmine.any(Function));
       expect(CollectionSlotsItemCtrl.onEdit).toEqual(jasmine.any(Function));
       expect(CollectionSlotsItemCtrl.updateCollectionSlot).toEqual(jasmine.any(Function));
       expect(CollectionSlotsItemCtrl.contextualMenuSuccess).toEqual(jasmine.any(Function));
@@ -137,7 +137,7 @@ describe('CollectionSlots item Controller', function () {
       expect(contextual.showMenu).toHaveBeenCalledWith(CollectionSlotsItemCtrl.type, CollectionSlotsItemCtrl.collectionSlot, jasmine.any(Function), jasmine.any(Function));
     });
 
-    it("Should delete a collection slot", function(done) {
+    it("Should delete a collection slot without show schedule dialog", function(done) {
 
       _mockCollectionSlot();
       _startCardItemListController();
@@ -152,13 +152,16 @@ describe('CollectionSlots item Controller', function () {
       spyOn(CollectionSlotsItemCtrl.Snack, 'show').and.callThrough();
       spyOn(CollectionSlotsItemCtrl.Snack, 'showError').and.callThrough();
       spyOn(CollectionSlotsItemCtrl.cardItemList, 'onItemDeleted').and.callThrough();
-      spyOn(CollectionSlotsItemCtrl, 'showCannotDeleteSlotDialog').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl, 'showSlotUsedDialog').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl, 'delete').and.callThrough();
       spyOn(CollectionSlotsItemCtrl.DialogService, 'delete').and.callFake(function () {
-        
+
         return $q.resolve();
       });
 
-      server.respondWith('DELETE', '/api/slots/' + collectionSlotMock.id, [200, {"Content-Type": "application/json"}, JSON.stringify({})]);
+      let schedules = [];
+
+      server.respondWith('GET', '/api/slots/' + collectionSlotMock.id + '/schedules', [200, {"Content-Type": "application/json"}, JSON.stringify(schedules)]);
 
       CollectionSlotsItemCtrl.onDelete();
       $rootScope.$digest();
@@ -166,24 +169,31 @@ describe('CollectionSlots item Controller', function () {
       setTimeout(function () {
 
         server.respond();
+        server.respondWith('DELETE', '/api/slots/' + collectionSlotMock.id, [200, {"Content-Type": "application/json"}, JSON.stringify({})]);
 
         setTimeout(function () {
-          
+
+          server.respond();
           $rootScope.$digest();
 
-          expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
-          expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
-          expect(CollectionSlotsItemCtrl.Snack.show).toHaveBeenCalled();
-          expect(CollectionSlotsItemCtrl.showCannotDeleteSlotDialog).not.toHaveBeenCalled();
-          expect(CollectionSlotsItemCtrl.Snack.showError).not.toHaveBeenCalled();
-          expect(CollectionSlotsItemCtrl.cardItemList.onItemDeleted).toHaveBeenCalledWith(CollectionSlotsItemCtrl.collectionSlot);
+          setTimeout(() => {
+            $rootScope.$digest();
 
-          done();          
+            expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
+            expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
+            expect(CollectionSlotsItemCtrl.Snack.show).toHaveBeenCalled();
+            expect(CollectionSlotsItemCtrl.showSlotUsedDialog).not.toHaveBeenCalled();
+            expect(CollectionSlotsItemCtrl.delete).toHaveBeenCalled();
+            expect(CollectionSlotsItemCtrl.Snack.showError).not.toHaveBeenCalled();
+            expect(CollectionSlotsItemCtrl.cardItemList.onItemDeleted).toHaveBeenCalledWith(CollectionSlotsItemCtrl.collectionSlot);
+
+            done();
+          });
         });
       });
     });
 
-    it("Should show conflict error on delete collection slot", function(done) {
+    it("Should delete a collection slot showing schedule dialog", function(done) {
 
       _mockCollectionSlot();
       _startCardItemListController();
@@ -198,15 +208,18 @@ describe('CollectionSlots item Controller', function () {
       spyOn(CollectionSlotsItemCtrl.Snack, 'show').and.callThrough();
       spyOn(CollectionSlotsItemCtrl.Snack, 'showError').and.callThrough();
       spyOn(CollectionSlotsItemCtrl.cardItemList, 'onItemDeleted').and.callThrough();
-      spyOn(CollectionSlotsItemCtrl, 'showCannotDeleteSlotDialog').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl, 'showSlotUsedDialog').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl, 'delete').and.callThrough();
       spyOn(CollectionSlotsItemCtrl.DialogService, 'delete').and.callFake(function () {
-        
+
         return $q.resolve();
       });
 
-      server.respondWith('DELETE', '/api/slots/' + collectionSlotMock.id, [400, {"Content-Type": "application/json"}, JSON.stringify({
-        message: 'This pickup slot is used for a schedule'
-      })]);
+      let schedules = [new Preoday.EventSchedule({
+        id: 1
+      })];
+
+      server.respondWith('GET', '/api/slots/' + collectionSlotMock.id + '/schedules', [200, {"Content-Type": "application/json"}, JSON.stringify(schedules)]);
 
       CollectionSlotsItemCtrl.onDelete();
       $rootScope.$digest();
@@ -214,19 +227,27 @@ describe('CollectionSlots item Controller', function () {
       setTimeout(function () {
 
         server.respond();
+        server.respondWith('DELETE', '/api/slots/' + collectionSlotMock.id, [200, {"Content-Type": "application/json"}, JSON.stringify({})]);
 
         setTimeout(function () {
-          
+
+          server.respond();
           $rootScope.$digest();
 
-          expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
-          expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
-          expect(CollectionSlotsItemCtrl.Snack.show).not.toHaveBeenCalled();
-          expect(CollectionSlotsItemCtrl.showCannotDeleteSlotDialog).toHaveBeenCalled();
-          expect(CollectionSlotsItemCtrl.Snack.showError).not.toHaveBeenCalled();
-          expect(CollectionSlotsItemCtrl.cardItemList.onItemDeleted).not.toHaveBeenCalled();
+          setTimeout(() => {
 
-          done();          
+            $rootScope.$digest();
+
+            expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
+            expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
+            expect(CollectionSlotsItemCtrl.Snack.show).not.toHaveBeenCalled();
+            expect(CollectionSlotsItemCtrl.showSlotUsedDialog).toHaveBeenCalled();
+            expect(CollectionSlotsItemCtrl.delete).toHaveBeenCalled();
+            expect(CollectionSlotsItemCtrl.Snack.showError).not.toHaveBeenCalled();
+            expect(CollectionSlotsItemCtrl.cardItemList.onItemDeleted).not.toHaveBeenCalled();
+
+            done();
+          });
         });
       });
     });
@@ -246,9 +267,9 @@ describe('CollectionSlots item Controller', function () {
       spyOn(CollectionSlotsItemCtrl.Snack, 'show').and.callThrough();
       spyOn(CollectionSlotsItemCtrl.Snack, 'showError').and.callThrough();
       spyOn(CollectionSlotsItemCtrl.cardItemList, 'onItemDeleted').and.callThrough();
-      spyOn(CollectionSlotsItemCtrl, 'showCannotDeleteSlotDialog').and.callThrough();
+      spyOn(CollectionSlotsItemCtrl, 'showSlotUsedDialog').and.callThrough();
       spyOn(CollectionSlotsItemCtrl.DialogService, 'delete').and.callFake(function () {
-        
+
         return $q.resolve();
       });
 
@@ -264,17 +285,17 @@ describe('CollectionSlots item Controller', function () {
         server.respond();
 
         setTimeout(function () {
-          
+
           $rootScope.$digest();
 
           expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
           expect(CollectionSlotsItemCtrl.Spinner.show).toHaveBeenCalled();
           expect(CollectionSlotsItemCtrl.Snack.show).not.toHaveBeenCalled();
-          expect(CollectionSlotsItemCtrl.showCannotDeleteSlotDialog).not.toHaveBeenCalled();
+          expect(CollectionSlotsItemCtrl.showSlotUsedDialog).not.toHaveBeenCalled();
           expect(CollectionSlotsItemCtrl.Snack.showError).toHaveBeenCalled();
           expect(CollectionSlotsItemCtrl.cardItemList.onItemDeleted).not.toHaveBeenCalled();
 
-          done();          
+          done();
         });
       });
     });
