@@ -2,36 +2,6 @@ $userEmailPadding: 24px;
 
 .user-email {
 
-	md-card {
-		box-shadow:0px 0px 2px 0px rgba(0,0,0,0.12), 0px 2px 2px 0px rgba(0,0,0,0.24);		
-	}
-
-	md-card-content {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   padding-left: $userEmailPadding;
-   padding-right: $userEmailPadding;
-   padding-top: 0px;
-	}
-
-	md-card-title {
-		padding: $userEmailPadding $userEmailPadding 16px $userEmailPadding;
-
-		.md-headline {
-			font-family:"Roboto-Medium";
-			font-size:20px;
-			color:rgba(0,0,0,0.87);
-			letter-spacing:0px;
-			line-height:20px;					
-		}
-	}
-
-	md-card-actions {
-		margin-right: 16px;
-		margin-left: 16px;
-	}
-
 	md-input-container {
 		margin-top: 0px;
 
@@ -42,7 +12,7 @@ $userEmailPadding: 24px;
 
 	.email-address,
 	.pending-confirmation-message,
-	md-input-container {		
+	md-input-container {
 		flex: 0 0 100%;
 		max-width: 100%;
 	}
@@ -50,7 +20,7 @@ $userEmailPadding: 24px;
 	.email-address {
 		font-size: 16px;
 		color:#424242;
-		line-height:16px;		
+		line-height:16px;
 	}
 
 	.pending-confirmation-message {
@@ -67,7 +37,7 @@ $userEmailPadding: 24px;
 	.md-input-message-animation {
 		&:not(.ng-leave), &:not(.ng-animate) {
 	    opacity: 1 !important;
-	    margin-top: 0px !important;		
+	    margin-top: 0px !important;
 		}
 	}
 }

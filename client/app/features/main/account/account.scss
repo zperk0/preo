@@ -1,5 +1,39 @@
+$userBlockPadding: 24px;
+
 .my-account-view {
 	.user-email, .user-password {
 		margin-bottom: 12px;
+	}
+
+	.user-email, .user-password, .user-settings {
+		md-card {
+			box-shadow:0px 0px 2px 0px rgba(0,0,0,0.12), 0px 2px 2px 0px rgba(0,0,0,0.24);
+		}
+
+		md-card-content {
+	   display: flex;
+	   flex-direction: row;
+	   flex-wrap: wrap;
+	   padding-left: $userBlockPadding;
+	   padding-right: $userBlockPadding;
+	   padding-top: 0px;
+		}
+
+		md-card-title  {
+			padding: $userBlockPadding $userBlockPadding $userBlockPadding $userBlockPadding;
+
+			.md-headline {
+				font-family:"Roboto-Medium";
+				font-size:20px;
+				color:rgba(0,0,0,0.87);
+				letter-spacing:0px;
+				line-height:20px;
+			}
+		}
+
+		md-card-actions {
+			margin-right: 16px;
+			margin-left: 16px;
+		}
 	}
 }

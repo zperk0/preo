@@ -2,39 +2,11 @@ $userSetttingsPadding: 24px;
 
 .user-settings {
 
-	md-card {
-		box-shadow:0px 0px 2px 0px rgba(0,0,0,0.12), 0px 2px 2px 0px rgba(0,0,0,0.24);
-	}
-
-	md-card-content {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   padding-left: $userSetttingsPadding;
-   padding-right: $userSetttingsPadding;
-   padding-top: 0px;
-	}
-
 	md-card-title {
-		padding: $userSetttingsPadding $userSetttingsPadding 16px $userSetttingsPadding;
 
 		md-card-title-text {
 			flex-direction: row;
 		}
-
-		.md-headline {
-			font-family:"Roboto-Medium";
-			font-size:20px;
-			color:rgba(0,0,0,0.87);
-			letter-spacing:0px;
-			line-height:20px;
-			margin-right: auto;
-		}
-	}
-
-	md-card-actions {
-		margin-right: 16px;
-		margin-left: 16px;
 	}
 
 	md-input-container {
