@@ -91,7 +91,6 @@ export default class VenueService {
     }, ()=>{
       this.account = {};
     })
-    .then(this.checkFeatures.bind(this,venue))
     .then(() => {
 
         this.$rootScope.$broadcast(this.BroadcastEvents.ON_CURRENT_VENUE, venue);
@@ -122,19 +121,6 @@ export default class VenueService {
     } else {
       moment.locale('en-gb'); //en-GB as default - if we don't do this it'll set en-US
     }
-  }
-
-  checkFeatures () {
-
-    let FeatureService = this.$injector.get('FeatureService');
-
-    FeatureService.clearLocalFeatures();
-
-    return this.$q.all([
-        FeatureService.hasFeatureForInit(Preoday.constants.Feature.OUTLET),
-        FeatureService.hasFeatureForInit(Preoday.constants.Feature.NESTED_MODIFIER),
-        FeatureService.hasFeatureForInit(Preoday.constants.Feature.CUSTOM_PICKUP_SLOTS),
-      ]);
   }
 
   hasVenueSet () {

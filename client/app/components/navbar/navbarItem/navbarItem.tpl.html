@@ -9,7 +9,7 @@
       </md-button>
       <!-- Children -->
       <div layout="column" layout-align="start stretch" class='children' ng-if="item.children.length">
-          <md-button flex-offset="35"  ng-repeat="child in item.children" layout="row" layout-align="start center" ng-click="handleClick(child, item)" title="{{child.name}}" aria-label="{{child.name}}"  path-selected="child">
+          <md-button flex-offset="35"  ng-repeat="child in item.children"  ng-if="!child.hasOwnProperty('shouldShow') || child.shouldShow()" layout="row" layout-align="start center" ng-click="handleClick(child, item)" title="{{child.name}}" aria-label="{{child.name}}"  path-selected="child">
             <span flex>{{child.name}}</span>
         </md-button>
       </div>
