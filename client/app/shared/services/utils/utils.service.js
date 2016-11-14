@@ -72,9 +72,43 @@ export default class UtilsService {
     return y;
   }
 
-  constructor($q) {
+  getLanguages () {
+
+    return [{
+      name: this.gettextCatalog.getString('Dannish'),
+      value: 'da_DA'
+    },{
+      name: this.gettextCatalog.getString('Dutch'),
+      value: 'nl_NL'
+    },{
+      name: this.gettextCatalog.getString('English'),
+      value: 'en_US'
+    },{
+      name: this.gettextCatalog.getString('French'),
+      value: 'fr_FR'
+    },{
+      name: this.gettextCatalog.getString('Finnish'),
+      value: 'fi_FI'
+    },{
+      name: this.gettextCatalog.getString('German'),
+      value: 'de_DE'
+    },{
+      name: this.gettextCatalog.getString('Norwegian'),
+      value: 'nb_NO'
+    },{
+      name: this.gettextCatalog.getString('Spanish'),
+      value: 'es_ES'
+    },{
+      name: this.gettextCatalog.getString('Swedish'),
+      value: 'sv_SE'
+    }];
+  }
+
+  constructor($q, gettextCatalog) {
     "ngInject";
+
     this.$q = $q;
+    this.gettextCatalog = gettextCatalog;
 
   }
 }

@@ -9,10 +9,10 @@
 	    <md-card-content layout="row" layout-align="space-between">
 			   <md-input-container class="md-block">
 			      <label translate>Language</label>
-					  <md-select ng-model="userSettingsCtrl.language">
+					  <md-select ng-model="userSettingsCtrl.selectedLanguage">
 					    <md-option value=""><em>None</em></md-option>
-					    <md-option ng-repeat="language in userSettingsCtrl.languages" ng-value="language.id" >
-					      {{language.name}}
+					    <md-option ng-repeat="language in userSettingsCtrl.languages" ng-value="language.value" >
+					      {{ language.name }}
 					    </md-option>
 					  </md-select>
 			  </md-input-container>

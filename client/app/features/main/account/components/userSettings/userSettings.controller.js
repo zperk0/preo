@@ -5,17 +5,23 @@ export default class userSettingsController {
 
   updateUserLanguage () {
 
+    if (this.user.language != this.selectedLanguage) {
+      console.log('update user language here');
+    }
   }
 
   /* @ngInject */
-  constructor($scope, UserService) {
+  constructor($scope, UserService, UtilsService) {
   	'ngInject';
 
-    this.language = UserService.getCurrent().language;
+    this.user = UserService.getCurrent();
+    this.languages = UtilsService.getLanguages();
+
+    this.selectedLanguage = this.user.language;
 
     $scope.$watch(() => {
 
-      return this.language;
+      return this.selectedLanguage;
     }, () => {
 
       this.updateUserLanguage();
