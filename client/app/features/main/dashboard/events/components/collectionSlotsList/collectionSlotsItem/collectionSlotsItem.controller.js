@@ -106,7 +106,10 @@ export default class collectionSlotsItemController {
     }
 
     let promise = this.collectionSlot.remove();
-    promise.then(()=>{
+    promise.then(()=> {
+
+      this.EventService.removeCollectionSlotFromSchedules(this.collectionSlot.id);
+
       this.cardItemList.onItemDeleted(this.collectionSlot);
       if (this.onItemDeleted){
         this.onItemDeleted({item: this.collectionSlot});
@@ -146,7 +149,7 @@ export default class collectionSlotsItemController {
       });
   }
 
-  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, gettextCatalog) {
+  constructor($q, $timeout, Spinner, Snack, contextualMenu, contextual, DialogService, LabelService, ErrorService, gettextCatalog, EventService) {
   	"ngInject";
 
     this.$q = $q;
@@ -158,7 +161,8 @@ export default class collectionSlotsItemController {
   	this.DialogService = DialogService;
     this.LabelService = LabelService;
   	this.ErrorService = ErrorService;
-  	this.gettextCatalog = gettextCatalog;
+    this.gettextCatalog = gettextCatalog;
+  	this.EventService = EventService;
 
   	this.type = 'collectionSlot';
 
