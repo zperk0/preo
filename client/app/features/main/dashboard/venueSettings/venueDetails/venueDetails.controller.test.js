@@ -12,6 +12,7 @@ describe('venueDetails Controller', function () {
       $scope,
       $timeout,
       ErrorService,
+      MapsService,
       VenueService,
       $controller,
       LabelService,
@@ -36,6 +37,7 @@ describe('venueDetails Controller', function () {
       $stateParams = $injector.get('$stateParams');
       LabelService = $injector.get('LabelService');
       ErrorService = $injector.get('ErrorService');
+      MapsService = $injector.get('MapsService');
       VenueService = $injector.get('VenueService');
       Spinner = $injector.get('Spinner');
       $q = $injector.get('$q');
@@ -70,6 +72,23 @@ describe('venueDetails Controller', function () {
       expect(VenueDetailsCtrl.isEdit).toEqual(true);
       VenueDetailsCtrl.toggleEdit();
       expect(VenueDetailsCtrl.isEdit).toEqual(false);
+    });
+
+
+    it("When saving the form should search for location's address in google", function() {
+      spyOn(Preoday.VenueTaxSettings, 'get').and.callFake(function(){return $q.reject({status:400, message:"Not found"})});
+      spyOn(MapsService, 'getGeoLocationByAddress').and.callFake(function(){return $q.resolve({lat:function(){return '123.123'}, lng:function(){return '456'}})});
+      _startController();
+
+      VenueDetailsCtrl.venueDetailsForm = {
+        $valid:true
+      }
+
+      VenueDetailsCtrl.submit();
+      expect(MapsService.getGeoLocationByAddress).toHaveBeenCalled();
+      $rootScope.$digest();
+      expect(VenueDetailsCtrl.venue.latitude).toBe("123.123")
+      expect(VenueDetailsCtrl.venue.longitude).toBe("456")
     });
 
 });

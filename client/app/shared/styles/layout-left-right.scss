@@ -1,21 +1,21 @@
 .layout-left-right{
   position: relative;
   display: flex;
-  flex-wrap: wrap;
-  align-content: space-around;
-
 
   &.with-toolbar{
     padding-top:45px;
+
+    .floating-right-buttons {
+      top: 127px;
+    }
   }
 }
 
-.floating-right-buttons{
+.floating-right-buttons {
   position: fixed;
-  margin-top:16px;
+  top: 80px;
   right: 16px;
   text-align: right;
-
 }
 
 .main-content-right{

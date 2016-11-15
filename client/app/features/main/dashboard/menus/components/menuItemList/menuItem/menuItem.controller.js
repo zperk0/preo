@@ -7,9 +7,12 @@ export default class menuItemController {
 
     function _doAddModifier(newItem = this.item){
       this.Spinner.show("moving-item-modifiers");
-      let promises = this.ModifierService.addModifiersToParent($modifiers, newItem);
+      let promise = this.ModifierService.addCustomModifierToParent($modifiers, newItem, this.modifiers);
 
-      return this.$q.all(promises).then(()=>{
+      return promise.then((modifiers)=>{
+
+        this.item.modifiers = this.item.modifiers.concat(modifiers);
+        this.modifiers = this.modifiers.concat(modifiers);
         this.Snack.show("Added modifiers to item");
       })
       .then(()=>{
@@ -246,6 +249,30 @@ export default class menuItemController {
     return this.$q.resolve('all');
   }
 
+  onModifierRemoved (modifier) {
+
+    let index = this.item.modifiers.map((mod) => {
+
+      return mod.id;
+    }).indexOf(modifier.id);
+
+    if (index !== -1) {
+      this.modifiers.splice(index, 1);
+      this.item.modifiers.splice(index, 1);
+    }
+  }
+
+  buildModifiers () {
+    if (this.item && this.item.modifiers){
+      this.modifiers = this.item.modifiers.map((_modifier) => {
+
+        let modifier = angular.copy(this.ModifierService.getById(_modifier.id));
+        modifier.position = _modifier.position;
+
+        return modifier;
+      });
+    }
+  }
 
   constructor($scope, $q, Snack, DialogService, $stateParams, BroadcastEvents, $rootScope, LabelService, Spinner, $timeout, contextual, contextualMenu, ItemService, ModifierService) {
     "ngInject";
@@ -262,6 +289,7 @@ export default class menuItemController {
     this.contextual = contextual;
     this.ItemService = ItemService;
     this.newModifiers = [];
+    this.modifiers = [];
 
     let inParam = false;
     if (this.item && this.item.id === Number($stateParams.itemId)){
@@ -275,12 +303,18 @@ export default class menuItemController {
 
     //if it's a new item we toggle the context menu to edit this
     if (this.item && (!this.item.id || inParam) && this.hasActions) {
-      $timeout(()=>{
+      $timeout(()=> {
+
+        if (this.item.id) {
+          this.buildModifiers();
+        }
 
         this.contextual.showMenu(this.type, this.item, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
           onDeleteImage: this.onDeleteImage.bind(this)
         });
       })
+    } else {
+      this.buildModifiers();
     }
   }
 }

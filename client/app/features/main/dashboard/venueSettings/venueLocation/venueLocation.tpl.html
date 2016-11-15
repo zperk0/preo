@@ -2,7 +2,7 @@
   <div class="sub-toolbar menu-toolbar" layout="row" layout-align="start center">
     <span translate> <icon>info</icon> Drag and drop the pin to set the exact location of your venue</span>
   </div>
-  <md-map ng-if="venueLocationCtrl.showMap" on-marker-drop="venueLocationCtrl.onMarkerDrop(lat,lng)" on-load="venueLocationCtrl.mapLoaded()" id="venue-map" venue="venueLocationCtrl.venue"></md-map>
+  <md-map ng-if="venueLocationCtrl.showMap" flex on-marker-drop="venueLocationCtrl.onMarkerDrop(lat,lng)" on-load="venueLocationCtrl.mapLoaded()" id="venue-map" venue="venueLocationCtrl.venue"></md-map>
   <div class="content-spinner" ng-if="!venueLocationCtrl.isMapLoaded">
     <spinner></spinner>
   </div>

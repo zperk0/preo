@@ -28,6 +28,13 @@ html{
 
   .style-row {
     .form-style{
+
+
+      &.BANNER .image-uploader{
+        width: 402px;
+        height: 83px;
+      }
+
       &.HEADER{
         .image-uploader{
           width: 402px;

@@ -1,25 +1,49 @@
 @import '../../../shared/styles/variables';
 
+$spanColor: #FAFAFA;
+@mixin venueSelectSpan() {
+     text-transform: none;
+      font-size:15px;
+      font-weight: 500;
+      color: $spanColor;
+}
+
+@mixin venueSelectContainer(){
+    margin: 0;
+    padding: 0 14px;
+    width: 100%;
+    text-align: left;
+}
+
+
 .venue-select{
   width:$widthVenueSelect;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.1);
 
+  md-icon{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    margin-top: -12px;
+  }
+
+  &>div {
+    @include venueSelectContainer();
+    span{
+      @include venueSelectSpan();
+    }
+  }
 
   &>md-menu {
     width: 100%;
       span{
-        color: #FAFAFA;
+        color:$spanColor;
       }
       &>button{
-        margin: 0;
-        padding: 0 14px;
-        width: 100%;
-        text-align: left;
+        @include venueSelectContainer();
         &>span{
-            text-transform: none;
-            font-size:15px;
-            font-weight: 500;
+            @include venueSelectSpan();
           }
       }
   }

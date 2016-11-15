@@ -7,11 +7,16 @@ export default class contextualDrawerItemController {
     return this.$mdSidenav('items').close()
   }
 
-  constructor($scope, ItemService, $stateParams,$mdSidenav) {
+  navigateToPage(){
+      this.$state.go("main.dashboard.menus.itemList")
+  }
+
+  constructor($scope, ItemService, $stateParams,$mdSidenav, $state) {
     "ngInject";
     this.data = {items:[]};
     this.$mdSidenav = $mdSidenav;
     this.$scope = $scope;
+    this.$state = $state;
     this.cancelledItems = [];
 
     // $scope.$watch(()=>{
@@ -25,7 +30,7 @@ export default class contextualDrawerItemController {
 
     ItemService.getItems($stateParams.venueId)
       .then(() => {
-        
+
         this.data = ItemService.data;
       });
   }

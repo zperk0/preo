@@ -8,6 +8,7 @@
   'webapp.notifications',
   'webapp.payments',
   'webapp.promotions',
+  'webapp.analytics',
   'webapp.styling',
   'webapp.taxes',
 ].forEach(function (item) {

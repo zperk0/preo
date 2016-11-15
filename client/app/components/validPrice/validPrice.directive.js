@@ -41,7 +41,9 @@ export default function validPrice($timeout, $filter, $compile, VenueService){
 
       var formatNumber = function(val) {
 
-        return $filter('currency')(val, true);
+        if (!isNaN(parseFloat(val))) {
+          return $filter('currency')(val, true);
+        }
       }
 
       ngModel.$parsers.push(parseNumber);

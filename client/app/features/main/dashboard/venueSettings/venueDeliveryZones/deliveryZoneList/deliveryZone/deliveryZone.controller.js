@@ -34,15 +34,19 @@ export default class deliveryZoneController {
   }
 
   onVisibility(newStatus){
-    let updates = angular.copy(this.deliveryZone);
-    updates.visible = newStatus ? 1 : 0;
+    var dz  = angular.copy(this.deliveryZone);
+    if (dz.polygon){
+      dz.polygon = dz.polygon.toString();
+    }
+    dz.visible =  newStatus ? 1 : 0;
     this.Spinner.show("dz-update");
-    this.DeliveryZoneService.updateDeliveryZone(updates)
-      .then((dz)=>{
-        this.deliveryZone = dz;
+    dz.update()
+      .then((newDz)=>{
+        angular.extend(this.deliveryZone,newDz);
         this.Spinner.hide("dz-update");
         this.Snack.show('Delivery zone visibility updated');
     }).catch(()=>{
+        // this.deliveryZone = angular.copy(this.dz)
         this.Spinner.hide("dz-update");
         this.Snack.showError('Delivery zone visibility not changed');
     })

@@ -4,7 +4,8 @@ export default class modifierChipsController {
   }
 
   getModifiers(){
-    return this.ModifierService.getByIds(this.modifiers.map((m)=>m.id));
+    // return this.ModifierService.getByIds(this.modifiers.map((m)=>m.id));
+    return this.modifiers;
   }
 
   constructor(ModifierService) {

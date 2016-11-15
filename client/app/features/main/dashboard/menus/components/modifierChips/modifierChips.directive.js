@@ -10,10 +10,11 @@ export default function modifierChips(){
       parent:'=?',
       modifierItem:'=?',
       section:'=?',
+      onModifierRemoved: '&?'
     },
     template: require("./modifierChips.tpl.html"),
     controller: controller.UID,
-    controllerAs: "vm",
+    controllerAs: "modifierChipsCtrl",
     bindToController: true,
     replace:true,
     link: (scope, el, attr, ctrl) => {

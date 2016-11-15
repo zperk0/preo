@@ -7,17 +7,21 @@ export default class contextualDrawerItemController {
     console.log("on cancel move"); //dont need to do anything here, just want to cancel the move
   }
 
-  close(){
-    this.$mdSidenav('modifiers').close()
-      .then(function () {
-        console.log("close Modifiers is done");
-      });
-
+  navigateToPage(){
+      this.$state.go("main.dashboard.menus.modifiers")
   }
 
-  constructor($scope, ModifierService, $stateParams,$mdSidenav) {
+  close(){
+
+    this.contextualDrawer.close();
+  }
+
+  constructor($scope, ModifierService, $stateParams,$mdSidenav, $state, contextualDrawer) {
     "ngInject";
     this.$mdSidenav = $mdSidenav;
+    this.$state = $state;
+    this.contextualDrawer = contextualDrawer;
+
     this.cancelledModifiers = [];
     ModifierService.getModifiers($stateParams.venueId).then((data)=>{
       this.data = data;
