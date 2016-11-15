@@ -81,13 +81,6 @@
     margin-bottom: 0;
   }
 
-  #webappv2 .main-content-right{
-    position: fixed !important;
-    top:120px !important;
-    left: auto !important;
-    right:16px;
-  }
-
    #webappv2 md-input-container label{
     font-weight: normal;
     font-size: 16px;
@@ -137,4 +130,13 @@
   }
   #webappv2 textarea{
     box-shadow:none;
+  }
+
+  @media (min-width: 1024px) {
+    #webappv2 .main-content-right{
+      position: fixed !important;
+      top:120px !important;
+      left: auto !important;
+      right:16px;
+    }
   }
