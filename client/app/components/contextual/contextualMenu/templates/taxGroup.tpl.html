@@ -5,7 +5,7 @@
       <input type="text" required name="entityName" ng-model="contextualMenuCtrl.entity.name" ng-maxlength="100">
 
       <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
-        <div ng-message="required" translate>This field is required.</div>
+        <div ng-message="required" translate>This is required.</div>
         <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
       </div>
   </md-input-container>
@@ -14,7 +14,7 @@
       <input type="text" required name="displayName" ng-model="contextualMenuCtrl.entity.displayName" ng-maxlength="100">
 
       <div ng-messages="contextualMenuCtrl.contextualForm.displayName.$error">
-        <div ng-message="required" translate>This field is required.</div>
+        <div ng-message="required" translate>This is required.</div>
         <div ng-message="maxlength" translate ng-class= "{'activated': contextualMenuCtrl.contextualForm.displayName.$error.maxlength}">Max length is 100.</div>
       </div>
   </md-input-container>
