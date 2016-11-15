@@ -3,7 +3,7 @@
         <label translate>Slot name</label>
         <input type="text" autocomplete="off"  required name="entityName" ng-model="collectionSlotBasicCtrl.collectionSlot.slotName" ng-maxlength="256" />
         <div ng-messages="collectionSlotBasicCtrl.contextualForm.entityName.$error" ng-show="collectionSlotBasicCtrl.contextualForm.entityName.$dirty">
-          <div ng-message="required" translate  ng-class="{'activated': collectionSlotBasicCtrl.contextualForm.entityName.$error.required}">This field is required.</div>
+          <div ng-message="required" translate  ng-class="{'activated': collectionSlotBasicCtrl.contextualForm.entityName.$error.required}">This is required.</div>
           <div ng-message="maxlength" translate ng-class="{'activated': collectionSlotBasicCtrl.contextualForm.entityName.$error.maxlength}">Max length is 256.</div>
         </div>
     </md-input-container>
@@ -12,9 +12,9 @@
         <input type="text" autocomplete="off" name="entityDisplayName" ng-model="collectionSlotBasicCtrl.collectionSlot.name" ng-maxlength="256" required />
 
         <div ng-messages="collectionSlotBasicCtrl.contextualForm.entityDisplayName.$error" ng-show="collectionSlotBasicCtrl.contextualForm.entityDisplayName.$dirty">
-          <div ng-message="required" translate  ng-class="{'activated': collectionSlotBasicCtrl.contextualForm.entityDisplayName.$error.required}">This field is required.</div>
+          <div ng-message="required" translate  ng-class="{'activated': collectionSlotBasicCtrl.contextualForm.entityDisplayName.$error.required}">This is required.</div>
           <div ng-message="maxlength" translate ng-class="{'activated': collectionSlotBasicCtrl.contextualForm.entityDisplayName.$error.maxlength}">Max length is 256.</div>
-        </div>        
+        </div>
     </md-input-container>
     <md-input-container class="md-input-container-with-no-float md-input-container-slot">
         <span class="input-label slot-end-label">{{ 'Slot ends' | translate }}</span>
@@ -24,15 +24,15 @@
           <div ng-messages="collectionSlotBasicCtrl.contextualForm.entityEnd.$error" ng-show="collectionSlotBasicCtrl.contextualForm.entityEnd.$dirty">
             <div ng-message="required" translate ng-class="{'activated': collectionSlotBasicCtrl.contextualForm.entityEnd.$error.required}">This is required.</div>
             <div ng-message="maxIntegerValue" translate ng-class="{'activated': collectionSlotBasicCtrl.contextualForm.entityEnd.$error.maxIntegerValue}">Max value is 2147483646.</div>
-          </div>               
+          </div>
         </div>
-        <span class="input-label lead-time-label">{{ 'mins' | translate }}</span>    
+        <span class="input-label lead-time-label">{{ 'mins' | translate }}</span>
         <div class="content-slot-end-radio">
           <md-radio-group ng-model="collectionSlotBasicCtrl.collectionSlot.$endFactor">
             <md-radio-button ng-value="-1" class="md-primary">{{'Before event start time' | translate}}</md-radio-button>
             <md-radio-button ng-value="1" class="md-primary">{{'After event start time' | translate}}</md-radio-button>
           </md-radio-group>
-        </div> 
+        </div>
     </md-input-container>
     <md-input-container class="md-block md-block-lead-time">
         <label translate>Lead time</label>
@@ -41,6 +41,6 @@
         <div ng-messages="collectionSlotBasicCtrl.contextualForm.entityLeadTime.$error" ng-show="collectionSlotBasicCtrl.contextualForm.entityLeadTime.$dirty">
           <div ng-message="required" translate ng-class="{'activated': collectionSlotBasicCtrl.contextualForm.entityLeadTime.$error.required}">This is required.</div>
           <div ng-message="maxIntegerValue" translate ng-class="{'activated': collectionSlotBasicCtrl.contextualForm.entityLeadTime.$error.maxIntegerValue}">Max value is 2147483646.</div>
-        </div>              
-    </md-input-container>	
+        </div>
+    </md-input-container>
 </div>
