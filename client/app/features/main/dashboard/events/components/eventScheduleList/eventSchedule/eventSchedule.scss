@@ -16,25 +16,38 @@ $heightMenuItemCard:48px;
     .card-title{
       max-height: $heightMenuItemCard;
       min-height: auto;
-      padding:10px 14px;
+      padding: 0 14px;
 
       .card-title-text{
         font-size:13px;
-        align-items: stretch;
+        align-items: center;
       }
 
       .schedule-name {
-        flex: 3 0 0;
+        flex: 1;
+        display: inline-block;
       }
 
       .schedule-time {
-        flex: 1 0 0;
         text-align: right;
+        float: right;
+      }
+
+      .warning-button {
+        margin-right: 12px;
+        margin-left: 0px;
+        padding: 0px;
+        width: 24px;
+        height: 24px;
+
+        .warning-icon {
+          color: #d0021b;
+        }
       }
     }
 
     .size-wrapper{
       padding-bottom: 5px;
     }
-  }			
+  }
 }

@@ -29,7 +29,7 @@ export default class EventService {
         reject(err);
       })
       .catch((err)=>{
-        
+
         console.log("Error fetching events", err);
         reject(err);
       });
@@ -100,6 +100,27 @@ export default class EventService {
     }
 
     return deferred.promise;
+  }
+
+  removeCollectionSlotFromSchedules (collectionSlotId) {
+
+    let events = this.data.events;
+
+    if (events) {
+      events.forEach((event) => {
+
+        event.schedules.forEach((schedule) => {
+
+          let index = schedule.pickupSlots.map((slot) => {
+            return +slot.id;
+          }).indexOf(+collectionSlotId);
+
+          if (index !== -1) {
+            schedule.pickupSlots.splice(index, 1);
+          }
+        });
+      });
+    }
   }
 
   constructor($q, $rootScope, $stateParams, VenueService) {

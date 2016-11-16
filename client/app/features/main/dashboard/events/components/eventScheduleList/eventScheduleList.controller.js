@@ -9,14 +9,14 @@ export default class eventScheduleListController {
 
       return item.id === undefined;
     }).length;
-    
+
     if (isCreating){
       console.log("Not showing schedule new, already showing")
       return;
     }
 
     this.schedules.push(this.EventScheduleService.getNewScheduleModel(this.event.id));
-  }  
+  }
 
   createSchedule (newData) {
 
@@ -24,19 +24,38 @@ export default class eventScheduleListController {
 
     // newData.position = 0;
 
-    this.EventScheduleService.save(newData)
-        .then((schedule)=>{
+    if (!this.event.id) {
+      this.eventCtrl.createEvent()
+        .then((event) => {
 
-        this.buildScheduleTimestamp(schedule);
+          this.buildSchedules(true);
+          deferred.resolve(event.schedules[0]);
+        }, deferred.reject);
+    } else {
+      this.Spinner.show("event-schedule-create");
+      this.EventScheduleService.save(newData)
+          .then((schedule)=>{
 
-        deferred.resolve(schedule);
-      }, (err) => {
-        
-        deferred.reject(err);
-      });
+          this.buildScheduleTimestamp(schedule);
 
-    return deferred.promise;    
-  }    
+          this.Snack.show(this.gettextCatalog.getString('Schedule created'));
+
+          deferred.resolve(schedule);
+        }, (err) => {
+
+          deferred.reject(err);
+        });
+    }
+
+    return deferred.promise;
+  }
+
+  cancelSchedule () {
+
+    if (!this.event.id) {
+      this.eventCtrl.removeEventItem();
+    }
+  }
 
   getSchedulesCount () {
 
@@ -58,12 +77,21 @@ export default class eventScheduleListController {
     } else {
       this.event.$expanding = false;
     }
-  }  
+  }
 
   buildScheduleTimestamp(schedule) {
 
     schedule.$startTimestamp = moment(schedule.startDate).valueOf();
-    schedule.$endTimestamp = moment(schedule.endDate).valueOf();    
+    schedule.$endTimestamp = moment(schedule.endDate).valueOf();
+  }
+
+  buildSchedules (shouldShow) {
+
+    this.schedules.forEach((schedule)=> {
+
+      schedule.$show = !!shouldShow;
+      this.buildScheduleTimestamp(schedule);
+    });
   }
 
   /* @ngInject */
@@ -79,11 +107,7 @@ export default class eventScheduleListController {
 
     this.event.$expanding = false;
 
-    this.schedules.forEach((schedule)=> {
-
-      schedule.$show = false; 
-      this.buildScheduleTimestamp(schedule);
-    });
+    this.buildSchedules();
 
     //watch for animation only if we're in a section
     $scope.$watch(() => {
@@ -105,6 +129,6 @@ export default class eventScheduleListController {
         }, 1000)
 
       }
-    }, true); 
+    }, true);
   }
 }

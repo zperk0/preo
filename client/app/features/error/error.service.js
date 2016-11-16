@@ -54,13 +54,14 @@ export default class ErrorService {
     this.UNEXPECTED_ERROR = {code:'UNEXPECTED_ERROR', message:gettextCatalog.getString("An unexpected error occurred loading this page, please try again")};
 
     // COLLECTION SLOT
-    this.COLLECTION_SLOT_SCHEDULE = {code:'COLLECTION_SLOT_SCHEDULE', message:gettextCatalog.getString("This slot is still assigned to some schedules. You must remove all instances before deleting."), title: gettextCatalog.getString('Cannot delete slot')};
+    this.COLLECTION_SLOT_SCHEDULE = {code:'COLLECTION_SLOT_SCHEDULE', message:gettextCatalog.getString("If you delete this slot, it will be removed from all your events. <br /> Are you sure?"), title: gettextCatalog.getString('This slot is being used')};
 
     // SCHEDULE
-    this.SCHEDULE_EVENT = {code:'SCHEDULE_EVENT', message:gettextCatalog.getString("An event need to have at least 1 schedule."), title: gettextCatalog.getString('Cannot delete schedule')};
+    this.SCHEDULE_EVENT = {code:'SCHEDULE_EVENT', message:gettextCatalog.getString("An event must have at least one schedule."), title: gettextCatalog.getString('Cannot delete schedule')};
 
     // EVENT OUTLET LOCATION
     this.EVENT_OUTLET_LOCATION = {code:'EVENT_OUTLET_LOCATION', message:gettextCatalog.getString("It is not possible to select a single location as your outlet configuration."), title: ''};
+    this.EVENT_OUTLET_LOCATION_NO_CHILDREN = {code:'EVENT_OUTLET_LOCATION_NO_CHILDREN', message:gettextCatalog.getString("It is not possible to select a single location as your outlet configuration."), title: ''};
 
     // EVENT OUTLET LOCATION
     this.TAX_GROUP_ASSIGNED_TO_ITEM = {code:'TAX_GROUP_ASSIGNED_TO_ITEM', message:gettextCatalog.getString("Can’t delete this tax code while there are menu items using it."), title: gettextCatalog.getString('Sorry')};

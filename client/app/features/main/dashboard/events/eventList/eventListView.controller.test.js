@@ -13,6 +13,7 @@ describe('EventList View Controller', function () {
       EventService,
       OutletLocationService,
       VenueService,
+      EventScheduleFrequency,
       Spinner,
       Snack,
       $timeout,
@@ -31,6 +32,7 @@ describe('EventList View Controller', function () {
       EventService = $injector.get('EventService');
       OutletLocationService = $injector.get('OutletLocationService');
       VenueService = $injector.get('VenueService');
+      EventScheduleFrequency = $injector.get('EventScheduleFrequency');
       Spinner = $injector.get('Spinner');
       Snack = $injector.get('Snack');
       $timeout = $injector.get('$timeout');
@@ -90,7 +92,8 @@ describe('EventList View Controller', function () {
         id: 1,
         name: 'test',
         schedules: [{
-          startDate: moment()
+          startDate: moment(),
+          freq: EventScheduleFrequency.ONCE
         }]
       }];
 
@@ -109,14 +112,15 @@ describe('EventList View Controller', function () {
       spyOn($scope.eventListViewCtrl, 'hideSpinner').and.callThrough();
 
       setTimeout(function () {
-        
+
         server.respond();
-        
+
         $rootScope.$digest();
 
         setTimeout(function() {
 
           $rootScope.$digest();
+          $scope.eventListViewCtrl.expandSchedules();
 
           expect($scope.eventListViewCtrl.loaded).toBe(true);
           expect(Spinner.show).toHaveBeenCalledWith('events');
@@ -130,7 +134,7 @@ describe('EventList View Controller', function () {
           expect($scope.eventListViewCtrl.data.events.length).toBe(events.length);
           expect($scope.eventListViewCtrl.getDayEventsName(moment())).toMatch(events[0].name);
 
-          done();          
+          done();
         });
       });
     });
@@ -149,7 +153,7 @@ describe('EventList View Controller', function () {
       var outletLocations = [{
         id: 1,
         name: 'test'
-      }];      
+      }];
 
       var pastDate = moment().subtract(7, 'days').format('YYYY/M/D');
 
@@ -161,7 +165,7 @@ describe('EventList View Controller', function () {
       spyOn($scope.eventListViewCtrl, 'hideSpinner').and.callThrough();
 
       setTimeout(function () {
-        
+
         server.respond();
         $rootScope.$digest();
 
@@ -179,19 +183,22 @@ describe('EventList View Controller', function () {
           expect($scope.eventListViewCtrl.hideSpinner).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.data.events.length).toBe(0);
 
-          done();          
+          done();
         });
       });
     });
 
-    it("Should set the calendar mode", function() {   
+    it("Should set the calendar mode", function() {
 
       _startController();
+
+      spyOn($scope.eventListViewCtrl, 'expandSchedules');
 
       $scope.eventListViewCtrl.toggleMode();
       $timeout.flush();
 
       expect($scope.eventListViewCtrl.isCalendarMode()).toBe(true);
+      expect($scope.eventListViewCtrl.expandSchedules).toHaveBeenCalled();
 
     });
 
@@ -205,15 +212,16 @@ describe('EventList View Controller', function () {
         id: 1,
         name: 'test',
         schedules: [{
-          startDate: moment()
+          startDate: moment(),
+          freq: EventScheduleFrequency.ONCE
         }]
       }, {
         id: 2,
         name: 'test 2',
-        startDate: moment(),
         schedules: [{
-          startDate: moment()
-        }]        
+          startDate: moment(),
+          freq: EventScheduleFrequency.ONCE
+        }]
       }];
 
       var outletLocations = [{
@@ -231,14 +239,21 @@ describe('EventList View Controller', function () {
       spyOn($scope.eventListViewCtrl, 'hideSpinner').and.callThrough();
 
       setTimeout(function () {
-        
+
         server.respond();
-        
+
         $rootScope.$digest();
 
         setTimeout(function() {
 
           $rootScope.$digest();
+
+          $scope.eventListViewCtrl.expandSchedules();
+
+          let eventsName = events.map((event) => {
+
+            return event.name + '\n';
+          }).join('');
 
           expect($scope.eventListViewCtrl.loaded).toBe(true);
           expect(Spinner.show).toHaveBeenCalledWith('events');
@@ -249,10 +264,10 @@ describe('EventList View Controller', function () {
           expect(OutletLocationService.getOutletLocations).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.hideSpinner).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.data.events.length).toBe(events.length);
-          expect($scope.eventListViewCtrl.getDayEventsName(moment())).toEqual(events.length + ' events');
+          expect($scope.eventListViewCtrl.getDayEventsName(moment())).toEqual('<div><a ng-href title="' + eventsName + '">' + events.length + ' events</a></div>');
 
-          done();          
+          done();
         });
       });
-    });    
+    });
 });
