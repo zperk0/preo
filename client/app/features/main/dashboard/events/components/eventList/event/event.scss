@@ -19,19 +19,31 @@
         position: relative;
       }
 
+      .warning-button {
+        margin-right: 12px;
+        margin-left: 0px;
+        padding: 0px;
+        width: 24px;
+        height: 24px;
+
+        .warning-icon {
+          color: #d0021b;
+        }
+      }
+
     }
   }
 
   .sv-placeholder{
     margin: 8px 22px;
-  }	
+  }
 
   .event-schedule-list {
     margin: 0 22px;
 
     .event-schedule {
       margin-left: 0px;
-      margin-right: 0px;  
+      margin-right: 0px;
     }
   }
 

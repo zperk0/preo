@@ -65,8 +65,7 @@ describe('Toolbar Directive', function () {
       var nativeElement = element[0];
       var elemData = _getElementData(nativeElement);
 
-      expect(elemData.buttons.length).toBe(3);
-      expect(elemData.email).toBeDefined();
+      expect(elemData.buttons.length).toBe(0); //we dont have buttons there anymore
     });
 
     it("Should get venues", function() {

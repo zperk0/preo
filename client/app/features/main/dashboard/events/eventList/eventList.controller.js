@@ -3,7 +3,7 @@ export default class eventListViewController {
   static get UID(){
     return "eventListViewController"
   }
-  
+
   hideSpinner() {
 
     this.Spinner.hide('events');
@@ -13,13 +13,7 @@ export default class eventListViewController {
 
     let dateFormat = moment(date).format('DD/MM/YYYY');
 
-    let events = this.data.events.filter((event) => {
-
-      return event.schedules.filter((schedule) => {
-
-        return moment(schedule.startDate).format('DD/MM/YYYY') === dateFormat;
-      }).length > 0;
-    });
+    let events = this.expandedSchedules[dateFormat] || [];
 
     return events;
   }
@@ -28,34 +22,59 @@ export default class eventListViewController {
 
     let events = this.getEventByDate(date);
 
-    let eventsName = null;
+    let eventsName = events.map((event) => {
+
+      return '<span>' + event.name + '</span><br />';
+    }).join('');
+
+    let html = eventsName;
 
     if (events.length > 1) {
-      eventsName = events.length + ' ' + this.gettextCatalog.getString('events');
-    } else {
       eventsName = events.map((event) => {
 
-        return '<span>' + event.name + '</span><br />';
+        return event.name + '\n';
       }).join('');
-    }  
-    
-    return eventsName;  
+
+      html = [
+                '<div>',
+                '<a ng-href title="' + eventsName + '">' + events.length + ' ' + this.gettextCatalog.getString('events') + '</a>',
+                // '<md-tooltip>' + eventsName + '</md-tooltip>',
+                '</div>'
+              ].join('');
+    }
+
+    return html;
   }
 
   setDayContent (date) {
 
     let eventsName = this.getDayEventsName(date);
 
-    this.MaterialCalendarData.data[this.MaterialCalendarData.getDayKey(date)] = eventsName || this.MaterialCalendarData.data[this.MaterialCalendarData.getDayKey(date)] || "";
+    if (eventsName) {
+      eventsName = this.$compile(eventsName)(this.$scope);
+      // console.log(eventsName[0].innerHTML);
+      eventsName = this.$sce.trustAsHtml(eventsName[0].innerHTML);
+      // console.log(eventsName);
+    }
+
+    this.MaterialCalendarData.data[this.MaterialCalendarData.getDayKey(date)] = eventsName || "";
   }
 
   toggleMode () {
 
     this.Spinner.show('events');
-    
+
+    if (!this.isCalendarMode()) {
+      this.expandSchedules();
+    } else {
+      this.expandedSchedules = {};
+    }
+
+
     this.$timeout(() => {
 
       this.calendarMode = !this.calendarMode;
+
       this.Spinner.hide('events');
     }, 500);
   }
@@ -65,16 +84,52 @@ export default class eventListViewController {
     return this.calendarMode;
   }
 
+  addExpandedScheduleItem(dates, event) {
+
+    for (var i = dates.length - 1; i >= 0; i--) {
+      let date = dates[i];
+
+      let dateFormat = moment(date).format('DD/MM/YYYY');
+      if (!this.expandedSchedules[dateFormat]) {
+        this.expandedSchedules[dateFormat] = [];
+      }
+
+      if (this.expandedSchedules[dateFormat].indexOf(event) === -1) {
+        this.expandedSchedules[dateFormat].push(event);
+      }
+    }
+  }
+
+  expandSchedules () {
+
+    for (var i = 0, len = this.data.events.length; i < len; i++) {
+      let event =  this.data.events[i];
+
+      for (var k = 0, kLen = event.schedules.length; k < kLen; k++) {
+        let schedule = event.schedules[k];
+
+        let dates = this.EventScheduleService.expandSchedule(schedule);
+        this.addExpandedScheduleItem(dates, event);
+      }
+    }
+  }
+
   /* @ngInject */
-  constructor($q, $timeout, Spinner, EventService, VenueService, OutletLocationService, gettextCatalog, MaterialCalendarData) {
+  constructor($scope, $q, $sce, $timeout, $compile, Spinner, EventService, VenueService, OutletLocationService, gettextCatalog, MaterialCalendarData, EventScheduleService) {
   	'ngInject';
 
+    this.$scope = $scope;
+    this.$sce = $sce;
     this.$timeout = $timeout;
+    this.$compile = $compile;
     this.Spinner = Spinner;
     this.gettextCatalog = gettextCatalog;
     this.MaterialCalendarData = MaterialCalendarData;
+    this.EventScheduleService = EventScheduleService;
+
   	this.loaded = false;
     this.calendarMode = false;
+    this.expandedSchedules = {};
 
     this.Spinner.show('events');
 
@@ -82,7 +137,7 @@ export default class eventListViewController {
       selectedDate: null,
       firstDayOfWeek: 0,
       dayFormat: 'd',
-      tooltips: true
+      tooltips: false
     };
 
     MaterialCalendarData.setDayContent = this.setDayContent.bind(this);
@@ -105,7 +160,7 @@ export default class eventListViewController {
         this.data = {
           events: []
         };
-        console.log('error events service');
+        console.log('error events service', err);
         this.loaded = true;
 
         this.hideSpinner();

@@ -84,8 +84,14 @@ export default class VenueService {
 
     this.UtilsService.updateLocale();
 
-    this.checkFeatures(venue)
-      .then(() => {
+    Preoday.Account.get(venue.accountId)
+    .then((account)=>{
+      console.log("loaded account", account);
+      this.account = account;
+    }, ()=>{
+      this.account = {};
+    })
+    .then(() => {
 
         this.$rootScope.$broadcast(this.BroadcastEvents.ON_CURRENT_VENUE, venue);
         deferred.resolve();
@@ -96,19 +102,6 @@ export default class VenueService {
       });
 
     return deferred.promise;
-  }
-
-  checkFeatures () {
-
-    let FeatureService = this.$injector.get('FeatureService');
-
-    FeatureService.clearLocalFeatures();
-
-    return this.$q.all([
-        FeatureService.hasFeatureForInit(Preoday.constants.Feature.OUTLET),
-        FeatureService.hasFeatureForInit(Preoday.constants.Feature.NESTED_MODIFIER),
-        FeatureService.hasFeatureForInit(Preoday.constants.Feature.CUSTOM_PICKUP_SLOTS),
-      ]);
   }
 
   hasVenueSet () {
@@ -246,6 +239,13 @@ export default class VenueService {
     }
 
     return config;
+  }
+
+  getKmOrMiles(){
+    var milesLocale =['en-US', 'en-GB']
+    if (milesLocale.indexOf(this.currentVenue.locale) !== -1)
+      return "miles"
+    return "kms"
   }
 
   constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, gettextCatalog, UserService, ErrorService, UtilsService) {

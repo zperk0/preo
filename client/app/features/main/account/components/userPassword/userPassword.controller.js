@@ -18,7 +18,7 @@ export default class userPasswordController {
   	this._showForm = false;
 
     this.userPasswordForm.$setPristine(true);
-    this.userPasswordForm.$setUntouched(true);    
+    this.userPasswordForm.$setUntouched(true);
   }
 
   checkNewPassword () {
@@ -27,14 +27,14 @@ export default class userPasswordController {
       return;
     }
 
-    if (this.data.confirmNewPassword 
+    if (this.data.confirmNewPassword
         && this.data.newPassword
         && this.data.confirmNewPassword != this.data.newPassword) {
 
       this.userPasswordForm.confirmNewPassword.$error.doesntMatch = true;
     } else {
       delete this.userPasswordForm.confirmNewPassword.$error.doesntMatch;
-    }    
+    }
 
     this.userPasswordForm.confirmNewPassword.$setValidity();
   }
@@ -62,18 +62,18 @@ export default class userPasswordController {
     this.Spinner.show('user-password');
 
     this.$timeout(() => {
-      
-      this.Spinner.hide('user-password');     
-      this.cancel(); 
+
+      this.Spinner.hide('user-password');
+      this.cancel();
 
       this.Snack.show(this.gettextCatalog.getString('Your password has been changed'));
     }, 1500);
-  }  
+  }
 
   /* @ngInject */
   constructor(Spinner, Snack, $timeout, gettextCatalog) {
   	'ngInject';
-    
+
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$timeout = $timeout;

@@ -8,10 +8,12 @@ import controller from './toolbar.controller';
 import directive from './toolbar.directive';
 import userSelect from './userSelect';
 import venueSelect from './venueSelect';
+import venueModeSelect from './venueModeSelect';
 import pathSelected from '../pathSelected';
 
 export default angular.module("toolbar" , [
   userSelect,
+  venueModeSelect,
   venueSelect,
   pathSelected,
   services

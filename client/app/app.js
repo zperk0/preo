@@ -22,7 +22,8 @@ import fullSpinner from './components/fullSpinner';
 import tagList from './components/tagList';
 import itemChips from './components/itemChips';
 import breadcrumb from './components/breadcrumb';
-
+import autoSave from './components/autoSave';
+import milesOrKms from './components/milesOrKms';
 import mocks from './app.modules.mock';
 
 // Import internal modules
@@ -31,6 +32,7 @@ import v2Error from './features/error';
 import v2Auth from './features/auth';
 import v2NotFound from './features/notFound';
 import v2EmailSuccess from './features/emailSuccess';
+import v2StripeSuccess from './features/stripeSuccess';
 
 // Import global components
 import imageUploader from './components/imageUploader';
@@ -55,6 +57,8 @@ require('./components/sticky/sticky.directive.js');
   spinner,
   fullSpinner,
   breadcrumb,
+  autoSave,
+  milesOrKms,
   // /* internal */
   constants,
   config,
@@ -66,7 +70,8 @@ require('./components/sticky/sticky.directive.js');
   v2Error,
   v2Auth,
   v2NotFound,
-  v2EmailSuccess
+  v2EmailSuccess,
+  v2StripeSuccess
   ])
   .config(config)
   .run(run)

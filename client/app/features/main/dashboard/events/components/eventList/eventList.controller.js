@@ -9,7 +9,7 @@ export default class eventListController {
 
       return item.id === undefined;
     }).length;
-    
+
     if (isCreating){
       console.log("Not showing event new, already showing")
       return;
@@ -24,7 +24,7 @@ export default class eventListController {
     });
 
     this.events.push(event);
-  }  
+  }
 
   createEvent (newData) {
 
@@ -37,17 +37,17 @@ export default class eventListController {
 
         deferred.resolve(event);
       }, (err) => {
-        
+
         deferred.reject(err);
       });
 
-    return deferred.promise;  	
-  }  
+    return deferred.promise;
+  }
 
   /* @ngInject */
   constructor(VenueService, EventService, $q) {
   	'ngInject';
-    
+
     this.VenueService = VenueService;
     this.EventService = EventService;
     this.$q = $q;

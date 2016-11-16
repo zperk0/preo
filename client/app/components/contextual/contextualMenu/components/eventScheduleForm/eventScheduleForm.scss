@@ -1,3 +1,5 @@
+@import '../../../../../shared/styles/variables';
+
 $inputColor: #9E9E9E;
 
 .event-schedule-form {
@@ -6,7 +8,7 @@ $inputColor: #9E9E9E;
     font-size:16px;
     width: auto !important;
     margin-right: 12px;
-  }	
+  }
 
   span, input, select {
     float: none;
@@ -36,6 +38,10 @@ $inputColor: #9E9E9E;
   .collection-slots-select-content {
     margin-top: 24px;
 
+    .error-required-pickup-slot {
+      margin-bottom: 10px;
+    }
+
     .label-title {
       color: #424242;
       font-size: 16px;
@@ -46,7 +52,7 @@ $inputColor: #9E9E9E;
     }
   }
 
-  mdp-time-picker {
+  mdp-time-picker, mdp-date-picker {
   	.md-button {
   		&.md-icon-button {
   			margin-top: 16px;
@@ -70,12 +76,28 @@ $inputColor: #9E9E9E;
         color: transparent !important;
       }
 
-      &::-ms-input-placeholder {
+      &:-ms-input-placeholder {
         color: transparent !important;
       }
 
       color: transparent;
   	}
+  }
+
+  mdp-date-picker {
+    .md-button {
+      &.md-icon-button {
+        margin-top: 0px;
+      }
+    }
+
+    md-input-container {
+      margin: 0px;
+    }
+
+    input {
+      width: 100px;
+    }
   }
 
   .schedule-datepicker {
@@ -88,8 +110,14 @@ $inputColor: #9E9E9E;
 
   			&::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
 					color: rgba(0,0,0,0.26);
-  			}	
-	  	}  		
+  			}
+
+        &:focus {
+          &::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+            color: transparent !important;
+          }
+        }
+	  	}
   	}
   }
 
@@ -116,6 +144,27 @@ $inputColor: #9E9E9E;
       margin-top: -16px;
       margin-bottom: 16px;
     }
+
+    input:-ms-input-placeholder {
+      color: transparent !important;
+    }
+  }
+
+  .date-picker-block {
+    position: relative;
+
+    .md-caption {
+      color: $colorLight;
+      padding-left: 38px;
+      position: absolute;
+      top: -3px;
+    }
+
+    .md-datepicker-open {
+      &+.md-caption {
+        display: none;
+      }
+    }
   }
 }
 
@@ -134,3 +183,37 @@ $inputColor: #9E9E9E;
   	width: 308px;
   }
 }
+
+md-dialog {
+  &.mdp-datepicker {
+    .mdp-datepicker-date {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &.mdp-timepicker {
+    .mdp-timepicker-selected-ampm {
+      span {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+
+// HACK CSS IE 10 AND IE11
+@media all and (-ms-high-contrast:none)
+ {
+  md-dialog { // ie10
+    &.mdp-timepicker {
+      min-width: 470px;
+      max-height: 85%;
+    }
+  }
+
+  *::-ms-backdrop, md-dialog.mdp-timepicker {
+    min-width: 470px;
+    max-height: 85%;
+  } /* IE11 */
+ }

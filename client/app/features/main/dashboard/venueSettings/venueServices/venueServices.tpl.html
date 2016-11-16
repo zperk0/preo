@@ -1,10 +1,10 @@
-<div flex  class='venue-services layout-left-right'>
+<div flex  class='venue-services layout-left-right' layout-align="stretch stretch" >
   <div class='main-content-full' flex layout="row" layout-align="start start">
       <md-card  flex="30" >
         <md-card-title>
           <md-card-title-text flex layout="row" layout-align="center start">
             <h2 class="md-title" flex="90"  translate> Collection </h2>
-            <md-switch  ng-change="venueServicesCtrl.updateVenue()" flex="10" layout-align="center end" ng-true-value="1" ng-false-value="0" ng-model="venueServicesCtrl.venue.pickupFlag">
+            <md-switch  ng-change="venueServicesCtrl.updateVenue(venue)" flex="10" layout-align="center end" ng-true-value="1" ng-false-value="0" ng-model="venueServicesCtrl.venue.pickupFlag">
             </md-switch>
           </md-card-title-text>
         </md-card-title>
@@ -15,29 +15,34 @@
                       <label translate>Lead Time</label>
                       <div class='input-with-label' flex layout="row" layout-align="space-between start">
                         <div class='input-wrapper' flex="grow">
-                          <input ng-blur="venueServicesCtrl.updateVenueSettings()" type="text" valid-number name="leadTime" ng-model="venueServicesCtrl.venue.settings.leadTime" >
+                          <input ng-model-options="{updateOn: 'blur'}" ng-change="venueServicesCtrl.debounceUpdate('settings')" type="text" valid-number max-integer-value name="leadTime" ng-model="venueServicesCtrl.venue.settings.leadTime" >
                         </div>
                         <div class='mins' flex="nogrow" translate>Mins</div>
                       </div>
+                      <div ng-messages="venueServicesCtrl.collectionForm.leadTime.$error">
+                          <div ng-message="maxIntegerValue" translate ng-class="{'activated': venueServicesCtrl.collectionForm.leadTime.$error.maxIntegerValue}">Max value is 2147483646.</div>
+
+                    </div>
                   </md-input-container>
                   <md-input-container class="md-block no-spacer inline-price">
                     <div flex layout="row" layout-align="space-between start">
                       <div class='input-wrapper' flex="grow">
                         <label translate>Minimum order value</label>
 
-                        <input ng-blur="venueServicesCtrl.updateVenueSettings()" type="text" valid-price required name="leadTime" ng-model="venueServicesCtrl.venue.settings.orderMin">
+                        <input ng-model-options="{updateOn: 'blur'}" ng-change="venueServicesCtrl.debounceUpdate('settings')" type="text" valid-price required name="orderMin" ng-model="venueServicesCtrl.venue.settings.orderMin">
                       </div>
                     </div>
-                    <div ng-messages="venueServicesCtrl.collectionForm.leadTime.$error">
+                    <div ng-messages="venueServicesCtrl.collectionForm.orderMin.$error">
                       <div ng-message="required" translate>This is required.</div>
                       <div ng-message="invalidPrice" translate>Invalid price.</div>
                       <div ng-message="maxDecimalValue" translate>Max value is {{ '99999999.99' | currency:true }}.</div>
                     </div>
                   </md-input-container>
-                    <md-checkbox  ng-change="venueServicesCtrl.updateVenue()" ng-true-value="1" ng-false-value="0" aria-label="Auto accept collection orders" ng-model="venueServicesCtrl.venue.autoAcceptCollection">
+                    <md-checkbox  ng-change="venueServicesCtrl.debounceUpdate('venue')" ng-true-value="1" ng-false-value="0" aria-label="Auto accept collection orders" ng-model="venueServicesCtrl.venue.autoAcceptCollection">
                       {{'Auto accept' | translate}} <span><icon>info</icon> <md-tooltip>{{'When selected, all collection orders will be accepted automatically, without the need for you to first approve them manually' | translate}}</md-tooltip></span>
                     </md-checkbox>
               </div>
+              <auto-save is-saving="venueServicesCtrl.isSaving" is-error="venueServicesCtrl.isError" retry="venueServicesCtrl.debounceUpdate()"></auto-save>
           </form>
         </md-card-content>
       </md-card>

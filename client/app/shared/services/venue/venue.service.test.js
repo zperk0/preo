@@ -38,8 +38,8 @@ describe('Venue Service', function () {
       let reject = jasmine.createSpy('reject');
 
       let venues = [
-        new Preoday.Venue.constructor({id: 1,}),
-        new Preoday.Venue.constructor({id: 2,}),
+        new Preoday.Venue.constructor({id: 1, accountId: 1}),
+        new Preoday.Venue.constructor({id: 2, accountId: 1}),
       ];
 
       spyOn(FeatureService, 'hasFeature').and.callFake(function () {
@@ -56,6 +56,10 @@ describe('Venue Service', function () {
         id: 1
       };
 
+      let account = new Preoday.Account({
+        id: 1
+      });
+
       server.respondWith('GET', '/api/venues?expand=settings,hours,features&adminId=1&roles=admin%2Cowner', [200, {"Content-Type": "application/json"}, JSON.stringify(venues)]);
 
       VenueService.fetchUserVenues(user)
@@ -64,21 +68,28 @@ describe('Venue Service', function () {
       server.respond();
       $rootScope.$digest();
 
+      server.respondWith('GET', '/api/accounts/' + venues[0].accountId, [200, {"Content-Type": "application/json"}, JSON.stringify(account)]);
+
       setTimeout(function () {
 
+        server.respond();
         $rootScope.$digest();
 
-        expect(Preoday.Venue.fetch).toHaveBeenCalledWith(jasmine.objectContaining({
-          adminId: 1
-        }));
-        expect(resolve).toHaveBeenCalled();
-        expect(reject).not.toHaveBeenCalled();
-        expect(VenueService.setCurrentVenue).toHaveBeenCalledWith(jasmine.objectContaining({
-          id: venues[0].id
-        }));
-        expect($rootScope.$broadcast).toHaveBeenCalledWith(BroadcastEvents._ON_FETCH_VENUES, venues);
+        setTimeout(() => {
 
-        done();
+          $rootScope.$digest();
+          expect(Preoday.Venue.fetch).toHaveBeenCalledWith(jasmine.objectContaining({
+            adminId: 1
+          }));
+          expect(resolve).toHaveBeenCalled();
+          expect(reject).not.toHaveBeenCalled();
+          expect(VenueService.setCurrentVenue).toHaveBeenCalledWith(jasmine.objectContaining({
+            id: venues[0].id
+          }));
+          expect($rootScope.$broadcast).toHaveBeenCalledWith(BroadcastEvents._ON_FETCH_VENUES, venues);
+
+          done();
+        })
       });
     });
 
@@ -136,10 +147,6 @@ describe('Venue Service', function () {
 
     it("Should set the current venue", function(done) {
 
-      spyOn(FeatureService, 'clearLocalFeatures').and.callThrough();
-      spyOn(FeatureService, 'hasFeatureForInit').and.callThrough();
-      spyOn(VenueService, 'checkFeatures').and.callThrough();
-
       let resolve = jasmine.createSpy('resolve');
       let reject = jasmine.createSpy('reject');
 
@@ -151,10 +158,6 @@ describe('Venue Service', function () {
       setTimeout(function () {
 
         expect(currentVenue.id).toBe(VenueService.currentVenue.id);
-        expect(VenueService.checkFeatures).toHaveBeenCalled();
-        expect(FeatureService.clearLocalFeatures).toHaveBeenCalled();
-        expect(FeatureService.hasFeatureForInit).toHaveBeenCalledWith(Preoday.constants.Feature.OUTLET);
-        expect(FeatureService.hasFeatureForInit).toHaveBeenCalledWith(Preoday.constants.Feature.NESTED_MODIFIER);
 
         done();
       });

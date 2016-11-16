@@ -21,8 +21,13 @@ export default class modifierItemController {
     }
 
     this.Spinner.show("moving-modifier-modifiers");
-    let promises = this.ModifierService.addModifiersToParent($modifiers, this.modifier);
-    this.$q.all(promises).then(()=>{
+    let promise = this.ModifierService.addCustomModifierToParent($modifiers, this.modifier);
+
+    promise.then((modifiers)=>{
+
+      Array.prototype.push.apply(this.modifier.modifiers, modifiers);
+      Array.prototype.push.apply(this.modifiers, modifiers);
+
       this.Snack.show("Added modifiers to modifier");
     },()=>{
       this.Snack.showError("Error adding modifiers to modifier");
@@ -58,24 +63,24 @@ export default class modifierItemController {
     this.contextual.showMenu(this.type, this.modifier, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
   }
 
-    deleteModifier(){
-      this.DialogService.delete(this.LabelService.TITLE_DELETE_MODIFIER, this.LabelService.CONTENT_DELETE_MODIFIER)
-        .then(()=>{
-            this.Spinner.show("modifier-delete");
+  deleteModifier(){
+    this.DialogService.delete(this.LabelService.TITLE_DELETE_MODIFIER, this.LabelService.CONTENT_DELETE_MODIFIER)
+      .then(()=>{
+          this.Spinner.show("modifier-delete");
 
-            let promise = this.ModifierService.deleteModifier(this.modifier)
-            promise.then(()=>{
-                // this.cardItemList.onItemDeleted(this.modifier);
-                this.Snack.show('Item deleted');
-                this.Spinner.hide("modifier-delete");
-            })
-            .catch((err)=>{
-              console.log("Failed deleting Modifier", err)
-              this.Spinner.hide("modifier-delete")
-              this.Snack.showError('Modifier not deleted');
-            });
-        });
-    }
+          let promise = this.ModifierService.deleteModifier(this.modifier)
+          promise.then(()=>{
+              // this.cardItemList.onItemDeleted(this.modifier);
+              this.Snack.show('Item deleted');
+              this.Spinner.hide("modifier-delete");
+          })
+          .catch((err)=>{
+            console.log("Failed deleting Modifier", err)
+            this.Spinner.hide("modifier-delete")
+            this.Snack.showError('Modifier not deleted');
+          });
+      });
+  }
 
     createModifier(){
       this.Spinner.show("modifier-create")
@@ -160,24 +165,64 @@ export default class modifierItemController {
     }
   }
 
-    constructor($q, $timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService) {
-      'ngInject';
-      this.Spinner = Spinner;
-      this.$q = $q;
-      this.Snack = Snack;
-      this.contextualMenu = contextualMenu;
-      this.contextual = contextual;
-      this.LabelService = LabelService
-      this.DialogService = DialogService
-      this.ModifierService = ModifierService;
-      this.showCardActions = false;
-      this.type="modifier";
-      this.newModifiers = [];
+  onModifierRemoved (modifier) {
 
-      if (this.modifier && !this.modifier.id) {
-        $timeout(()=>{
-          contextual.showMenu(this.type, this.modifier, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
-        })
-      }
+    let index = this.modifier.modifiers.map((mod) => {
+
+      return mod.id;
+    }).indexOf(modifier.id);
+
+    if (index !== -1) {
+      this.modifiers.splice(index, 1);
+      this.modifier.modifiers.splice(index, 1);
     }
+  }
+
+  buildModifiers () {
+
+    this.modifiers = this.modifier.modifiers.map((_modifier, index) => {
+
+      return this.ModifierService.getById(_modifier.id);
+    });
+  }
+
+  constructor($scope, $q, $timeout, contextual, DialogService, contextualMenu, LabelService, Spinner, Snack, ModifierService, BroadcastEvents) {
+    'ngInject';
+
+    this.Spinner = Spinner;
+    this.$q = $q;
+    this.Snack = Snack;
+    this.contextualMenu = contextualMenu;
+    this.contextual = contextual;
+    this.LabelService = LabelService
+    this.DialogService = DialogService
+    this.ModifierService = ModifierService;
+    this.BroadcastEvents = BroadcastEvents;
+
+    this.showCardActions = false;
+    this.type = "modifier";
+    this.newModifiers = [];
+    this.modifiers = [];
+
+    if (this.modifier && !this.modifier.id) {
+      $timeout(()=>{
+        contextual.showMenu(this.type, this.modifier, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this));
+      })
+    } else {
+      this.buildModifiers();
+    }
+
+    $scope.$watch(() => {
+
+      return this.modifier.modifiers;
+    }, () => {
+
+      this.buildModifiers();
+    }, true);
+
+    $scope.$on(BroadcastEvents.ON_DELETE_MODIFIER, (event, modifier) => {
+
+      this.onModifierRemoved(modifier);
+    });
+  }
 }

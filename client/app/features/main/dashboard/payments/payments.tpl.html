@@ -1,3 +1,46 @@
-<div>
-  payments
+<div flex  class='venue-payments layout-left-right' layout-align="stretch stretch" >
+  <div class='main-content-full' flex layout="row" layout-align="start start">
+      <md-card  flex="30" >
+        <md-card-title>
+          <md-card-title-text flex layout="row" layout-align="center start">
+            <h2 class="md-title" flex="90"  translate> Cash </h2>
+            <md-switch  ng-change="paymentsCtrl.updateVenue(venue)" flex="10" layout-align="center end" ng-true-value="1" ng-false-value="0" ng-model="paymentsCtrl.venue.cashFlag">
+            </md-switch>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content ng-class="{active:paymentsCtrl.venue.cashFlag}" layout="column" layout-align="center stretch">
+        <div class='image-container'>
+            <img src='/images/wallet.png'>
+          </div>
+          <div translate class='description'>Customers can choose to pay <br/> cash on receipt of their order</div>
+        </md-card-content>
+      </md-card>
+       <md-card flex="30" class='stripe'>
+        <md-card-title>
+          <md-card-title-text flex layout="row" layout-align="center start">
+            <h2 class="md-title" flex="90" translate> Stripe </h2>
+            <md-switch  ng-change="paymentsCtrl.updateStripe()" flex="10" layout-align="center end"  ng-true-value="1" ng-false-value="0" ng-model="paymentsCtrl.stripe.visible">
+            </md-switch>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content ng-class="{active:paymentsCtrl.stripe.visible}" flex layout="column" layout-align="center stretch" ng-if="!paymentsCtrl.stripe.id">
+          <div class='image-container'>
+            <img src='/images/stripe.png'>
+            <md-tooltip>
+                {{'Not connected' | translate}}
+            </md-tooltip>
+          </div>
+          <md-button class='md-raised' ng-click="paymentsCtrl.connectToStripe()" translate> Connect to stripe</md-button>
+        </md-card-content>
+        <md-card-content ng-class="{active:paymentsCtrl.stripe.visible}" flex layout="column" layout-align="center stretch" ng-if="paymentsCtrl.stripe.id">
+          <div class='image-container'>
+            <img src='/images/stripe-connected.png'>
+            <md-tooltip>
+                {{'Connected' | translate}}
+            </md-tooltip>
+          </div>
+          <md-button class='md-raised' ng-click="paymentsCtrl.connectToStripe()" translate> Go to stripe </md-button>
+        </md-card-content>
+      </md-card>
+  </div>
 </div>

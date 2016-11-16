@@ -18,7 +18,12 @@ export default class modifierChipController {
   removeFromParent(){
     this.Spinner.show("removing-modifier-chip");
     this.doRemove()
-      .then(()=>{
+      .then(()=> {
+
+        this.onModifierRemoved && this.onModifierRemoved({
+          modifier: this.modifier
+        });
+
         this.Snack.show("Modifier removed");
         this.Spinner.hide("removing-modifier-chip");
       },()=>{

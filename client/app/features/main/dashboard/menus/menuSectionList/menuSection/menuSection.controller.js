@@ -197,7 +197,7 @@
   }
 
   buildItems () {
-
+    console.log("this sec item", this.section.items)
     this.items = this.section.items.map((i) => {
 
       let item = angular.copy(this.ItemService.getById(i.id));

@@ -8,11 +8,7 @@ export default function eventList(){
         events: '=',
         hasActions: '=?',
         hasNew:"=",
-        hasSearch:"=?",
-        svDisabled:"=",
-        svMultiSelect:"=?",
-        svKeepInList:"=?",
-        svIsDropzone:"=?"  
+        hasSearch:"=?"
     },
     template: require("./eventList.tpl.html"),
     controller: controller.UID,

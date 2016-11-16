@@ -1,0 +1,31 @@
+<div class='venue-mode-select' layout="row" layout-align="start center">
+  <md-menu ng-if="venueModeSelectCtrl.venue">
+    <md-button class='venue-mode-select-button' layout="row"  layout-align="space-between stretch" ng-click="venueModeSelectCtrl.openMenu($mdOpenMenu, $event)" >
+      <div class='status-circle' ng-class="{live:venueModeSelectCtrl.venue.liveFlag, demo:venueModeSelectCtrl.venue.demoFlag}">
+        <md-tooltip>{{venueModeSelectCtrl.translatedVenueModeTooltip}}</md-tooltip>
+      </div>
+      <span> {{'Venue is' | translate}} {{venueModeSelectCtrl.translatedVenueMode}}</span>
+      <icon>arrow_drop_down</icon>
+    </md-button>
+    <md-menu-content width="4">
+      <md-menu-item>
+        <md-button ng-click="venueModeSelectCtrl.setVenueMode('live')">
+          <div class='status-circle live'></div>
+          <span translate class='after-circle-span'> Live </span>
+        </md-button>
+      </md-menu-item>
+      <md-menu-item>
+        <md-button ng-click="venueModeSelectCtrl.setVenueMode('demo')" layout='colum'>
+          <div class='status-circle live demo'></div>
+          <span translate class='after-circle-span'> Demo mode </span>
+        </md-button>
+      </md-menu-item>
+      <md-menu-item>
+        <md-button ng-click="venueModeSelectCtrl.setVenueMode('offline')">
+          <div class='status-circle' ></div>
+          <span translate class='after-circle-span'> Offline </span>
+        </md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+</div>

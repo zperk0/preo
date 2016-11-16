@@ -54,19 +54,26 @@ export default class ErrorService {
     this.UNEXPECTED_ERROR = {code:'UNEXPECTED_ERROR', message:gettextCatalog.getString("An unexpected error occurred loading this page, please try again")};
 
     // COLLECTION SLOT
-    this.COLLECTION_SLOT_SCHEDULE = {code:'COLLECTION_SLOT_SCHEDULE', message:gettextCatalog.getString("This slot is still assigned to some schedules. You must remove all instances before deleting."), title: gettextCatalog.getString('Cannot delete slot')};
+    this.COLLECTION_SLOT_SCHEDULE = {code:'COLLECTION_SLOT_SCHEDULE', message:gettextCatalog.getString("If you delete this slot, it will be removed from all your events. <br /> Are you sure?"), title: gettextCatalog.getString('This slot is being used')};
 
     // SCHEDULE
-    this.SCHEDULE_EVENT = {code:'SCHEDULE_EVENT', message:gettextCatalog.getString("An event need to have at least 1 schedule."), title: gettextCatalog.getString('Cannot delete schedule')};
+    this.SCHEDULE_EVENT = {code:'SCHEDULE_EVENT', message:gettextCatalog.getString("An event must have at least one schedule."), title: gettextCatalog.getString('Cannot delete schedule')};
 
     // EVENT OUTLET LOCATION
     this.EVENT_OUTLET_LOCATION = {code:'EVENT_OUTLET_LOCATION', message:gettextCatalog.getString("It is not possible to select a single location as your outlet configuration."), title: ''};
+    this.EVENT_OUTLET_LOCATION_NO_CHILDREN = {code:'EVENT_OUTLET_LOCATION_NO_CHILDREN', message:gettextCatalog.getString("It is not possible to select a single location as your outlet configuration."), title: ''};
 
     // EVENT OUTLET LOCATION
-    this.TAX_GROUP_ASSIGNED_TO_ITEM = {code:'TAX_GROUP_ASSIGNED_TO_ITEM', message:gettextCatalog.getString("Can’t delete this tax code while there are menu items using it."), title: 'Sorry'};
+    this.TAX_GROUP_ASSIGNED_TO_ITEM = {code:'TAX_GROUP_ASSIGNED_TO_ITEM', message:gettextCatalog.getString("Can’t delete this tax code while there are menu items using it."), title: gettextCatalog.getString('Sorry')};
     // EVENT OUTLET LOCATION
-    this.VENUE_WITHOUT_ADDRESS = {code:'VENUE_WITHOUT_ADDRESS', message:gettextCatalog.getString("You need to set up your address before selecting your location.  You'll be redirected to your Details page to configure your address."), title: 'Address not found'};
-    this.VENUE_WITHOUT_LOCATION = {code:'VENUE_WITHOUT_LOCATION', message:gettextCatalog.getString("You need to set up your location before creating delivery zones.  You'll be redirected to your Location page to configure your location."), title: 'Location not found'};
+    this.VENUE_WITHOUT_ADDRESS = {code:'VENUE_WITHOUT_ADDRESS', message:gettextCatalog.getString("You need to set up your address before selecting your location.  You'll be redirected to your Details page to configure your address."), title: gettextCatalog.getString('Address not found')};
+    this.VENUE_WITHOUT_LOCATION = {code:'VENUE_WITHOUT_LOCATION', message:gettextCatalog.getString("You need to set up your location before creating delivery zones.  You'll be redirected to your Location page to configure your location."), title: gettextCatalog.getString('Location not found')};
+
+    this.STRIPE_ERROR = {code:'STRIPE_ERROR', message:gettextCatalog.getString("We could not connect to your Stripe account. Please try again."), title: gettextCatalog.getString('Connection failed')};
+    this.ONE_PAYMENT_METHOD = {code:'ONE_PAYMENT_METHOD', message:gettextCatalog.getString("You must have at least one active payment method."), title: gettextCatalog.getString('Invalid configuration')};
+
+    this.VENUE_MODE_PAYMENT = {code:'VENUE_MODE_PAYMENT', message:gettextCatalog.getString("You must accept at least one payment method before going live."), title: gettextCatalog.getString('Sorry')};
+    this.VENUE_MODE_FAILED = {code:'VENUE_MODE_FAILED', message:gettextCatalog.getString("Venue mode not changed")};
 
   }
 }
