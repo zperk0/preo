@@ -89,7 +89,7 @@ describe('Venue Service', function () {
           expect($rootScope.$broadcast).toHaveBeenCalledWith(BroadcastEvents._ON_FETCH_VENUES, venues);
 
           done();
-        })
+        });
       });
     });
 
