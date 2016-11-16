@@ -4,8 +4,10 @@
         <md-card-title>
           <md-card-title-text flex layout="row" layout-align="center start">
             <h2 class="md-title" flex="90"  translate> Collection </h2>
-            <md-switch  ng-change="venueServicesCtrl.updateVenue(venue)" flex="10" layout-align="center end" ng-true-value="1" ng-false-value="0" ng-model="venueServicesCtrl.venue.pickupFlag">
-            </md-switch>
+            <div flex="10" layout-align="center end">
+              <md-switch ng-show="!venueServicesCtrl.venue.eventFlag" ng-change="venueServicesCtrl.updateVenue(venue)" ng-true-value="1" ng-false-value="0" ng-model="venueServicesCtrl.venue.pickupFlag">
+              </md-switch>
+            </div>
           </md-card-title-text>
         </md-card-title>
         <md-card-content ng-class="{active:venueServicesCtrl.venue.pickupFlag}">
@@ -46,7 +48,7 @@
           </form>
         </md-card-content>
       </md-card>
-       <md-card flex="30" class='delivery'>
+       <md-card flex="30" class='delivery' ng-if="!venueServicesCtrl.venue.eventFlag">
         <md-card-title>
           <md-card-title-text flex layout="row" layout-align="center start">
             <h2 class="md-title" flex="90" translate> Delivery </h2>
