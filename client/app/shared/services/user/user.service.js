@@ -78,6 +78,8 @@ export default class UserService {
 
   restore () {
 
+    Preoday.User.setUser(null);
+    this.user = null;
     this.authDeferred = null;
     this.isUserAdmin = false;
   }
