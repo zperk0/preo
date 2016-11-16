@@ -43,7 +43,7 @@ describe('Venue Service', function () {
       ];
 
       spyOn(FeatureService, 'hasFeature').and.callFake(function () {
-        
+
         return {
           then: function (callbackSuccess, callbackError) {
 
@@ -78,7 +78,7 @@ describe('Venue Service', function () {
         }));
         expect($rootScope.$broadcast).toHaveBeenCalledWith(BroadcastEvents._ON_FETCH_VENUES, venues);
 
-        done();               
+        done();
       });
     });
 
@@ -97,7 +97,7 @@ describe('Venue Service', function () {
       ];
 
       spyOn(FeatureService, 'hasFeature').and.callFake(function () {
-        
+
         return {
           then: function (callbackSuccess, callbackError) {
 
