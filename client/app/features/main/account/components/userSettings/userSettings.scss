@@ -1,0 +1,33 @@
+$userSetttingsPadding: 24px;
+
+.user-settings {
+
+	md-card-title {
+
+		md-card-title-text {
+			flex-direction: row;
+		}
+	}
+
+	md-input-container {
+		margin-top: 0px;
+
+		.md-errors-spacer {
+			display: none;
+		}
+
+    .input-label {
+    	left: 0;
+    	padding-left: 2px !important;
+    }
+	}
+
+	md-input-container {
+		flex: 0 0 100%;
+		max-width: 100%;
+
+		&.with-icon {
+			padding-left: 0px;
+		}
+	}
+}

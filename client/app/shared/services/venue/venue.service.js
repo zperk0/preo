@@ -82,7 +82,7 @@ export default class VenueService {
     this.currentVenue = venue;
     venue.setAsCurrent();
 
-    this.setVenueLocale(venue);
+    this.UtilsService.updateLocale();
 
     Preoday.Account.get(venue.accountId)
     .then((account)=>{
@@ -102,25 +102,6 @@ export default class VenueService {
       });
 
     return deferred.promise;
-  }
-
-  setVenueLocale (venue) {
-
-    if(venue.locale) {
-      let venueLocale = venue.locale,
-          language = venueLocale.substr(0, venueLocale.indexOf('-')).toLowerCase(),
-          country = venueLocale.substr(venueLocale.indexOf('-')+1,venueLocale.length-1).toLowerCase();
-      switch(language) {
-        case 'no':
-          language = 'nb';
-          break;
-      }
-      this.gettextCatalog.setCurrentLanguage(language);
-      console.log("set moment locale", language+"-"+country);
-      moment.locale(language+"-"+country);
-    } else {
-      moment.locale('en-gb'); //en-GB as default - if we don't do this it'll set en-US
-    }
   }
 
   hasVenueSet () {
@@ -267,7 +248,7 @@ export default class VenueService {
     return "kms"
   }
 
-  constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, gettextCatalog, UserService, ErrorService) {
+  constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, gettextCatalog, UserService, ErrorService, UtilsService) {
     "ngInject";
     this.$q = $q;
     this.$state = $state;
@@ -280,6 +261,7 @@ export default class VenueService {
     this.gettextCatalog = gettextCatalog;
     this.UserService = UserService;
     this.ErrorService = ErrorService;
+    this.UtilsService = UtilsService;
 
     this.venuesDeferred = null;
     this.venues = null;
