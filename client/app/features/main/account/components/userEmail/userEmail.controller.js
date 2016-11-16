@@ -29,12 +29,19 @@ export default class userEmailController {
 
     this.Spinner.show('user-email');
 
-    this.UserService.getCurrent().changeEmail({
+    let user = this.UserService.getCurrent();
+
+    user.changeEmail({
       email: this.data.email,
       password: this.data.password
     }).then(() => {
 
-      this.Snack.show(this.gettextCatalog.getString('Your email has been changed'));
+      if (user.username === user.email) {
+        this.Snack.show(this.gettextCatalog.getString('Your new username is ') + this.data.email);
+      } else {
+        this.Snack.show(this.gettextCatalog.getString('Your email has been changed'));
+      }
+
       // this.Snack.show(this.gettextCatalog.getString('An activation link has been sent to {{email}}', {
       //   email: this.data.email
       // }));
@@ -44,11 +51,15 @@ export default class userEmailController {
 
       this.Spinner.hide('user-email');
 
-      if (error && error instanceof Object && error.status === 401) {
-        this.Snack.showError(this.gettextCatalog.getString('Sorry, the password you entered was incorrect. Please try again!'));
-      } else {
-        this.Snack.showError(this.gettextCatalog.getString('An error ocurred to change your email, try again later'));
+      if (error && error instanceof Object) {
+        if (error.status === 401) {
+          return this.Snack.showError(this.gettextCatalog.getString('Sorry, the password you entered was incorrect. Please try again!'));
+        } else if (error.status === 409) {
+          return this.Snack.showError(this.gettextCatalog.getString('This email is already in use, please use another'));
+        }
       }
+
+      this.Snack.showError(this.gettextCatalog.getString('An error ocurred to change your email, try again later'));
     });
   }
 
