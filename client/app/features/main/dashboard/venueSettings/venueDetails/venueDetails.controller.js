@@ -105,7 +105,6 @@ export default class venueDetailsController {
   /* @ngInject */
   constructor(Spinner, Snack, MapsService, ErrorService, LabelService, $timeout, VenueService) {
     "ngInject";
-    this.isEdit = false;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.ErrorService = ErrorService;
