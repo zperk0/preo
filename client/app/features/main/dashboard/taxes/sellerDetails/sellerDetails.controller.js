@@ -16,31 +16,68 @@ export default class sellerDetailsController {
     return this.taxSettings.venueId ? this.updateSettings.bind(this) : this.saveNewSettings.bind(this);
   }
 
-  submit(){
-    var saveOrUpdate = this.saveOrUpdate();
-    if (this.sellerForm.$valid){
-      this.Spinner.show("seller-details-save");
-      saveOrUpdate()
-        .then((taxSettings)=>{
-          this.taxSettings = taxSettings
-          this.toggleEdit();
-          this.Spinner.hide("seller-details-save");
-          this.Snack.show(this.LabelService.SNACK_SELLER_SUCCESS)
-        }, (err)=>{
-          console.log("seller-details" ,err);
-          this.Spinner.hide("seller-details-save");
-          this.Snack.showError(this.LabelService.SNACK_SELLER_ERROR)
-        }).catch((err)=>{
-          console.log("seller-details",err)
-          this.Spinner.hide("seller-details-save");
-          this.Snack.showError(this.LabelService.SNACK_SELLER_ERROR)
-        })
-    }
-    return saveOrUpdate;
-  }
+   debounce(func, wait, immediate) {
+      console.log("debouncing");
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        var later = function() {
+          timeout = null;
+          console.log("in later", immediate)
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        console.log("if call now", callNow);
+        if (callNow) func.apply(context, args);
+      };
+    };
 
-  toggleEdit(){
-    this.isEdit = !this.isEdit;
+    debounceUpdate(){
+      this.sellerForm.$setSubmitted();
+      this.isSaving = true;
+      if (this.sellerForm.$valid){
+        this.debounce(this.doUpdate.bind(this), 1000)()
+      } else {
+        this.$timeout(()=>{ //in a timeout to prevent super fast results
+          this.isSaving = false;
+          this.isError = true;
+        }, 500)
+      }
+    }
+
+  doUpdate(){
+    var saveOrUpdate = this.saveOrUpdate();
+    try {
+        saveOrUpdate()
+        .then((taxSettings)=>{
+          angular.extend(this.taxSettings,taxSettings);
+          this.$timeout(()=>{
+              this.isSaving = false;
+              this.isError = false;
+            })
+          }, (err)=>{
+            console.error(err)
+            this.$timeout(()=>{
+              this.isSaving = false;
+              this.isError = true;
+            })
+          }).catch((err)=>{
+            console.error(err)
+            this.$timeout(()=>{
+              this.isSaving = false;
+              this.isError = true;
+            })
+          })
+      } catch(e){
+        console.error(e)
+        this.$timeout(()=>{
+          this.isSaving = false;
+          this.isError = true;
+        })
+      }
+    return saveOrUpdate;
   }
 
   init(){
@@ -61,7 +98,7 @@ export default class sellerDetailsController {
 
   showError(){
     this.$timeout(()=>{
-      this.isError = true;
+      this.showError = true;
       this.Spinner.hide("seller-details");
     })
   }
@@ -69,13 +106,14 @@ export default class sellerDetailsController {
   /* @ngInject */
   constructor(Spinner, Snack, $stateParams, ErrorService, LabelService, $timeout) {
     "ngInject";
-    this.isEdit = false;
+    this.showError = false;
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$stateParams = $stateParams;
     this.ErrorService = ErrorService;
     this.LabelService = LabelService;
     this.isError = false;
+    this.isSaving = false;
     this.$timeout = $timeout;
     this.init();
   }
