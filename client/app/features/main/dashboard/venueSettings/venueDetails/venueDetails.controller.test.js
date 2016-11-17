@@ -22,9 +22,9 @@ describe('venueDetails Controller', function () {
     var venue = new Preoday.Venue.constructor({
       id:1,
       name:"test venue",
-      settings:{
+      settings:new Preoday.VenueSettings({
         venueId:1
-      }
+      })
     });
 
     beforeEach(angular.mock.module('webapp'));
@@ -56,24 +56,34 @@ describe('venueDetails Controller', function () {
     }
 
 
-    it("Init should set venue", function() {
+    it("Init should set  a copy of venue", function() {
+      spyOn(angular, 'copy').and.callThrough();
       _startController();
       $rootScope.$digest();
-      expect(VenueDetailsCtrl.venue).toEqual(venue);
+      expect(angular.copy).toHaveBeenCalledWith(VenueDetailsCtrl.venue);
+      expect(VenueDetailsCtrl.venue.id).toEqual(venue.id);
     });
 
 
-    it("When clicking edit should tooggle form editable", function() {
-      spyOn(Preoday.VenueTaxSettings, 'get').and.callFake(function(){return $q.reject({status:400, message:"Not found"})});
+    it("When save success, should update service's venue", function() {
+      spyOn(venue,'update').and.callFake(function(){return $q.resolve(venue)})
       _startController();
-
-      expect(VenueDetailsCtrl.isEdit).toEqual(false);
-      VenueDetailsCtrl.toggleEdit();
-      expect(VenueDetailsCtrl.isEdit).toEqual(true);
-      VenueDetailsCtrl.toggleEdit();
-      expect(VenueDetailsCtrl.isEdit).toEqual(false);
+      spyOn(angular, 'extend').and.callThrough();
+      VenueDetailsCtrl.doUpdate();
+      $rootScope.$digest();
+      expect(angular.extend).toHaveBeenCalledWith(VenueDetailsCtrl.venue, venue);
+      expect(angular.extend).toHaveBeenCalledWith(venue, venue);
+      expect(angular.extend.calls.count()).toBe(2);
     });
 
+    it("When save errors, should not update service's venue", function() {
+      spyOn(venue,'update').and.callFake(function(){return $q.reject(venue)})
+      _startController();
+      spyOn(angular, 'extend').and.callThrough();
+      VenueDetailsCtrl.doUpdate();
+      $rootScope.$digest();
+      expect(angular.extend).not.toHaveBeenCalled();
+    });
 
     it("When saving the form should search for location's address in google", function() {
       spyOn(Preoday.VenueTaxSettings, 'get').and.callFake(function(){return $q.reject({status:400, message:"Not found"})});
@@ -81,10 +91,12 @@ describe('venueDetails Controller', function () {
       _startController();
 
       VenueDetailsCtrl.venueDetailsForm = {
-        $valid:true
+        $valid:true,
+        $setSubmitted:function(){}
       }
 
-      VenueDetailsCtrl.submit();
+      VenueDetailsCtrl.debounceUpdate(true);
+      $rootScope.$digest();
       expect(MapsService.getGeoLocationByAddress).toHaveBeenCalled();
       $rootScope.$digest();
       expect(VenueDetailsCtrl.venue.latitude).toBe("123.123")

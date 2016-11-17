@@ -4,55 +4,98 @@ export default class venueDetailsController {
     return "venueDetailsController"
   }
 
-  submit(){
+
+  debounce(func, wait, immediate) {
+    console.log("debouncing");
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        console.log("in later", immediate)
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      console.log("if call now", callNow);
+      if (callNow) func.apply(context, args);
+    };
+  };
+
+  debounceUpdate(isAddress){
+    this.venueDetailsForm.$setSubmitted();
+    this.isSaving = true;
     if (this.venueDetailsForm.$valid){
-      this.Spinner.show("venue-details-save");
-      try {
-        console.log("getting location");
-        this.MapsService.getGeoLocationByAddress(this.venue)
-        .then((location)=>{
-          this.venue.latitude = location.lat();
-          this.venue.longitude = location.lng();
-          console.log("got location");
-        },()=>{
-          console.log("error getting location");
-          //if the user put a crazy address that google can't find, just leave it blank and it'll be handled in the location page afterwards
-        }).then(()=>{
-          return this.VenueService.updateVenue();
+      if (isAddress){
+        this.updateAddress().then(()=>{
+          this.debounce(this.doUpdate.bind(this), 1000)()
         })
-        .then((venue)=>{
-          angular.extend(this.venue,venue);
-          return this.venue.settings.update()
-        })
-        .then((settings)=>{
-          angular.extend(this.venue.settings,settings);
-            this.toggleEdit();
-            this.Spinner.hide("venue-details-save");
-            this.Snack.show(this.LabelService.SNACK_VENUE_DETAILS_SUCCESS)
-          }, (err)=>{
-            console.error("venue-details" ,err);
-            this.Spinner.hide("venue-details-save");
-            this.Snack.showError(this.LabelService.SNACK_VENUE_DETAILS_ERROR)
-          }).catch((err)=>{
-            console.error("venue-details err",err)
-            this.Spinner.hide("venue-details-save");
-            this.Snack.showError(this.LabelService.SNACK_VENUE_DETAILS_ERROR)
-            })
-      } catch(e){
-        console.error(e)
-        this.Spinner.hide("venue-details-save");
-        this.Snack.showError(this.LabelService.SNACK_VENUE_DETAILS_ERROR)
+      } else{
+        this.debounce(this.doUpdate.bind(this), 1000)()
       }
+    } else {
+      this.$timeout(()=>{ //in a timeout to prevent super fast results
+        this.isSaving = false;
+        this.isError = true;
+      }, 500)
     }
   }
 
-  toggleEdit(){
-    this.isEdit = !this.isEdit;
+  updateAddress(){
+     return this.MapsService.getGeoLocationByAddress(this.venue)
+      .then((location)=>{
+        this.venue.latitude = location.lat();
+        this.venue.longitude = location.lng();
+        console.log("got location");
+      },()=>{
+        console.log("error getting location");
+        //if the user put a crazy address that google can't find, just leave it blank and it'll be handled in the location page afterwards
+      })
+  }
+
+  doUpdate(){
+
+      try {
+        delete this.venue.ccySymbol;
+        this.venue.update()
+        .then((venue)=>{
+          angular.extend(this.venue,venue);
+          angular.extend(this.VenueService.currentVenue, venue)
+          return this.venue.settings.update()
+        })
+        .then((settings)=>{
+            angular.extend(this.venue.settings,settings);
+            angular.extend(this.VenueService.currentVenue.settings, settings)
+            this.$timeout(()=>{
+              this.isSaving = false;
+              this.isError = false;
+            })
+          }, (err)=>{
+            console.error(err)
+            this.$timeout(()=>{
+              this.isSaving = false;
+              this.isError = true;
+            })
+          }).catch((err)=>{
+            console.error(err)
+            this.$timeout(()=>{
+              this.isSaving = false;
+              this.isError = true;
+            })
+          })
+      } catch(e){
+        console.error(e)
+        this.$timeout(()=>{
+          this.isSaving = false;
+          this.isError = true;
+        })
+      }
   }
 
   init(){
     this.Spinner.show("venue-details");
-    this.venue = this.VenueService.currentVenue ;
+    this.venue = angular.copy(this.VenueService.currentVenue);
     this.$timeout(()=>{
       console.log(this.venue);
       this.Spinner.hide("venue-details");
@@ -70,6 +113,7 @@ export default class venueDetailsController {
     this.VenueService = VenueService;
     this.LabelService = LabelService;
     this.isError = false;
+    this.isSaving = false;
     this.$timeout = $timeout;
     this.init();
   }
