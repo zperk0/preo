@@ -4,10 +4,10 @@
       <label translate>Modifier name</label>
       <input type="text" required name="entityName" ng-model="contextualMenuCtrl.entity.name" ng-maxlength="100">
 
-      <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error" ng-show="contextualMenuCtrl.contextualForm.entityName.$dirty">        
-        <div ng-message="required" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.required}">This field is required.</div>
+      <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error" ng-show="contextualMenuCtrl.contextualForm.entityName.$dirty">
+        <div ng-message="required" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.required}">This is required.</div>
         <div ng-message="maxlength" translate ng-class="{'activated': contextualMenuCtrl.contextualForm.entityName.$error.maxlength}">Max length is 100.</div>
-      </div>          
+      </div>
   </md-input-container>
   <modifier-selection modifier="contextualMenuCtrl.entity"></modifier-selection>
   <modifier-items modifier="contextualMenuCtrl.entity"></modifier-items>
