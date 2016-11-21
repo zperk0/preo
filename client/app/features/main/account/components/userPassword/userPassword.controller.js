@@ -61,23 +61,36 @@ export default class userPasswordController {
 
     this.Spinner.show('user-password');
 
-    this.$timeout(() => {
-
-      this.Spinner.hide('user-password');
-      this.cancel();
+    this.UserService.getCurrent().changePassword({
+      oldPassword: this.data.oldPassword,
+      password: this.data.newPassword
+    }).then(() => {
 
       this.Snack.show(this.gettextCatalog.getString('Your password has been changed'));
-    }, 1500);
+
+      this.UserService.signout();
+      this.cancel();
+    }, (error) => {
+
+      this.Spinner.hide('user-password');
+
+      if (error && error instanceof Object && error.status === 401) {
+        this.Snack.showError(this.gettextCatalog.getString('Sorry, the old password you entered was incorrect. Please try again!'));
+      } else {
+        this.Snack.showError(this.gettextCatalog.getString('An error ocurred to change your password, try again later'));
+      }
+    });
   }
 
   /* @ngInject */
-  constructor(Spinner, Snack, $timeout, gettextCatalog) {
+  constructor(Spinner, Snack, $timeout, gettextCatalog, UserService) {
   	'ngInject';
 
     this.Spinner = Spinner;
     this.Snack = Snack;
     this.$timeout = $timeout;
     this.gettextCatalog = gettextCatalog;
+    this.UserService = UserService;
 
     this._showForm = false;
   }
