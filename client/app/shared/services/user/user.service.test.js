@@ -28,7 +28,7 @@ describe('User Service', function () {
 
       expect(UserService.isAdmin()).toBe(false);
       expect(UserService.isAuth()).toBe(false);
-      expect(UserService.getCurrent()).toBeUndefined();
+      expect(UserService.getCurrent()).toBe(null);
     });
 
     it("Should auth the user and shouldn't be an admin", function(done) {
@@ -87,7 +87,7 @@ describe('User Service', function () {
       };
 
       let urlAuth = '/api/users/auth';
-      let urlAdmin = '/api/users/auth/roles/admin';      
+      let urlAdmin = '/api/users/auth/roles/admin';
 
       server.respondWith('POST', urlAuth, [200, {"Content-Type": "application/json"}, JSON.stringify(userLogged)]);
       server.respondWith('GET', urlAdmin, [200, {"Content-Type": "application/json"}, '']);

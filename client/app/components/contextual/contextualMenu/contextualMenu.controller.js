@@ -12,6 +12,9 @@ export default class contextualMenuController {
   doSubmit(){
     if (this.contextualForm.$valid){
       this.contextualMenu.resolve(this.entity);
+    } else {
+      // this is to the child directive redirect to error tab for example.
+      this.$scope.$broadcast(this.BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED);
     }
   }
 
@@ -28,9 +31,10 @@ export default class contextualMenuController {
     return this.contextualMenu.type === type;
   }
 
-  constructor($scope, $stateParams, UtilsService, contextualMenu, MenuService, FeatureService, CollectionSlotsService, $timeout) {
+  constructor($scope, $stateParams, UtilsService, contextualMenu, MenuService, FeatureService, CollectionSlotsService, $timeout, BroadcastEvents) {
     "ngInject";
     console.log("Showing conextual menu ", this.entity, this.type);
+    this.$scope = $scope;
     this.$timeout = $timeout;
     this.$stateParams = $stateParams;
     this.UtilsService = UtilsService;
@@ -39,5 +43,6 @@ export default class contextualMenuController {
     this.MenuService = MenuService;
     this.FeatureService = FeatureService;
     this.CollectionSlotsService = CollectionSlotsService;
+    this.BroadcastEvents = BroadcastEvents;
   }
 }

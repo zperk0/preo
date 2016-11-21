@@ -29,21 +29,21 @@ export default class collectionSlotsSelectController {
     this.data = data;
 
     var ids = this.schedule.pickupSlots.map(function (item) {
-      
+
       return item.id;
     });
 
     this.schedule.pickupSlots = this.data.collectionSlots.filter(function (item) {
-      
+
       return ids.indexOf(item.id) !== -1;
     });
 
-    this.loading = false;    
+    this.loading = false;
   }
 
   constructor(CollectionSlotsService, VenueService) {
     "ngInject";
-    
+
     this.loading = true;
     this.data = {};
 

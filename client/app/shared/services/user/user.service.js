@@ -9,7 +9,7 @@ export default class UserService {
   }
 
   auth (data) {
-    
+
     if (this.authDeferred) {
       return this.authDeferred.promise;
     }
@@ -42,11 +42,13 @@ export default class UserService {
   setCurrentUser (user) {
 
     this.user = user;
+    this.UtilsService.updateLocale();
+
     this.$rootScope.$broadcast(this.BroadcastEvents._ON_USER_AUTH,user);
-    
+
     this.authDeferred.resolve(user);
 
-    this.unsetAuthDeferred();    
+    this.unsetAuthDeferred();
   }
 
   signout() {
@@ -56,7 +58,7 @@ export default class UserService {
 
   getCurrent () {
 
-    return this.user;
+    return this.user || Preoday.User.getCurrent();
   }
 
   isLogged () {
@@ -77,14 +79,15 @@ export default class UserService {
   restore () {
 
     this.authDeferred = null;
-    this.isUserAdmin = false;    
+    this.isUserAdmin = false;
   }
 
-  constructor($q, $rootScope, BroadcastEvents) {
+  constructor($q, $rootScope, BroadcastEvents, UtilsService) {
     "ngInject";
     this.$q = $q;
     this.$rootScope = $rootScope;
     this.BroadcastEvents = BroadcastEvents;
+    this.UtilsService = UtilsService;
 
     this.authDeferred = null;
 

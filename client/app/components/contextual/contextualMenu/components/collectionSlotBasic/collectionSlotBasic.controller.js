@@ -6,7 +6,7 @@ export default class collectionSlotBasicController {
   hasObjectError (item) {
 
     return item && Object.keys(item).length > 0;
-  }  
+  }
 
   getEndFactor () {
 
@@ -14,11 +14,18 @@ export default class collectionSlotBasicController {
   }
 
   /* @ngInject */
-  constructor($scope) {
+  constructor($scope, BroadcastEvents, CollectionSlotsService) {
     'ngInject';
 
     this.collectionSlot.$endFactor = this.getEndFactor();
-
     this.collectionSlot.$end = this.collectionSlot.end != null ? Math.abs(this.collectionSlot.end) : '';
+
+    // this is from contextualMenuController, when the form is submitted and is invalid.
+    $scope.$on(BroadcastEvents.ON_CONTEXTUAL_FORM_SUBMITTED, () => {
+
+      if (this.contextualForm.selectedTabIndex === 1 && CollectionSlotsService.hasBasicTabErrors(this.contextualForm, this.collectionSlot)) {
+        this.contextualForm.selectedTabIndex = 0;
+      }
+    });
   }
 }

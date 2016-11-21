@@ -7,10 +7,13 @@
               selected="scheduleCtrl.schedule.$selected"
               >
     <card-item-title ng-click="scheduleCtrl.toggleExpanded($event)"
-                    has-visible="true"
-                    sv-root="item">
-                      <span class="schedule-name">{{ scheduleCtrl.getScheduleTitle() }}</span>
-                      <span class="schedule-time">{{ scheduleCtrl.getScheduleTime() }}</span>
+                    has-visible="true">
+                      <md-button class="md-icon-button warning-button" ng-if="scheduleCtrl.shouldShowWarningSlots()">
+                        <icon class="warning-icon">report_problem</icon>
+                        <md-tooltip>{{ 'There are no collection slots assigned to this schedule' }}</md-tooltip>
+                      </md-button>
+                      <span class="schedule-name" flex ng-bind-html="scheduleCtrl.getScheduleTitle()"></span>
+                      <span class="schedule-time" ng-bind-html="scheduleCtrl.getScheduleTime()"></span>
                     </card-item-title>
 
     <card-item-actions is-visible="scheduleCtrl.schedule.visible"

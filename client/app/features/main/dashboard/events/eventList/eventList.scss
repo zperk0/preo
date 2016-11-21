@@ -77,7 +77,25 @@
             & > div {
                 color: $colorLight;
                 font-size: 14px;
+
+                a {
+                    color: $colorLight;
+                }
+
+                button, span {
+                    color: $colorLight;
+                    font-size: 12px;
+                    margin: 0px;
+                    width: 100%;
+                    text-align: left;
+                    text-transform: none;
+                }
             }
+        }
+
+        .md-whiteframe-12dp, .active {
+            box-shadow: none !important;
+            background: none !important;
         }
     }
   }

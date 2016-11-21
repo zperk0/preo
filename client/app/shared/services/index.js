@@ -11,6 +11,7 @@ import Feature from './feature/feature.service';
 import CollectionSlot from './events/collectionSlot.service';
 import Event from './events/event.service';
 import EventSchedule from './events/eventSchedule.service';
+import DateUtils from './dateUtils/dateUtils.service';
 import Taxes from './taxes/taxes.service';
 import StyleService from './style/style.service';
 import deliveryZones from './deliveryZones/deliveryZones.service';
@@ -35,4 +36,5 @@ export default angular.module("Services" , ['ui.router'])
   .service(deliveryZones.UID, deliveryZones)
   .service(Taxes.UID, Taxes)
   .service(EventSchedule.UID, EventSchedule)
+  .service(DateUtils.UID, DateUtils)
   .name;
