@@ -60,12 +60,12 @@ export default class venueDetailsController {
         delete this.venue.ccySymbol;
         this.venue.update()
         .then((venue)=>{
-          angular.extend(this.venue,venue);
+          // angular.extend(this.venue,venue);
           angular.extend(this.VenueService.currentVenue, venue)
           return this.venue.settings.update()
         })
         .then((settings)=>{
-            angular.extend(this.venue.settings,settings);
+            // angular.extend(this.venue.settings,settings);
             angular.extend(this.VenueService.currentVenue.settings, settings)
             this.$timeout(()=>{
               this.isSaving = false;
