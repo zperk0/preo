@@ -82,9 +82,9 @@ export default class modifierItemController {
       });
   }
 
-    createModifier(){
+    createModifier(modifier){
       this.Spinner.show("modifier-create")
-      this.ModifierService.createModifier(this.modifier)
+      this.ModifierService.createModifier(modifier)
         .then((createdModifier)=>{
           this.cardItemList.deleteItem(this.modifier);
           this.modifier = createdModifier;
@@ -99,9 +99,9 @@ export default class modifierItemController {
         })
     }
 
-    updateModifier(updates){
+    updateModifier(modifier){
       this.Spinner.show("modifier-update")
-      return this.ModifierService.updateModifier(updates)
+      return this.ModifierService.updateModifier(modifier)
         .then((updatedModifier)=>{
           this.restoreValues(updatedModifier);
         })
@@ -117,12 +117,19 @@ export default class modifierItemController {
       })
     }
 
-    contextualMenuSuccess(updates){
-      if (!this.modifier.id){
-        this.createModifier();
+    contextualMenuSuccess(){
+
+      let modifier = angular.copy(this.modifier);
+
+      if (!+modifier.maxChoices) {
+        modifier.maxChoices = -1;
+      }
+
+      if (!modifier.id){
+        this.createModifier(modifier);
       }
       else {
-        this.updateModifier(updates);
+        this.updateModifier(modifier);
       }
     }
 

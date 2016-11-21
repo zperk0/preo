@@ -5,16 +5,18 @@ export default class modifierSelectionController {
 
   onSelectionSelect(){
     this.modifier.minChoices = this.modifier.$isOptional ? 0 : 1;
-
-    if (!this.modifier.maxChoices) {
-      this.modifier.maxChoices = 1;
-    }
   }
 
-  constructor() {
+  constructor(Spinner) {
     "ngInject";
-    console.log(this.modifier.minChoices,"min choices")
+
+    this.Spinner = Spinner;
+
     this.modifier.$isOptional = this.modifier.minChoices === 0 ;
+
+    if (this.modifier.maxChoices === -1) {
+      this.modifier.maxChoices = '';
+    }
 
     this.maxIntegerValue = 32766;
   }
