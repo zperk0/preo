@@ -1,0 +1,10 @@
+<md-card-content>
+  <md-input-container class="md-block no-spacer">
+    {{contextualMenuCtrl.entity.firstName}} {{contextualMenuCtrl.entity.lastName}}
+  </md-input-container>
+  <md-input-container class="md-block no-spacer">
+    {{contextualMenuCtrl.entity.email}}
+  </md-input-container>
+  <user-role-select ng-model="contextualMenuCtrl.entity.role"></user-role-select>
+</md-card-content>
+

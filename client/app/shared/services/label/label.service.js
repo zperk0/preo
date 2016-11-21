@@ -86,5 +86,14 @@ export default class LabelService {
     this.TITLE_STRIPE_CONNECTED = gettextCatalog.getString("Connection confirmed");
     this.CONTENT_STRIPE_CONNECTED= gettextCatalog.getString("Your venue was successfully connected to your Stripe account");
 
+    this.TITLE_DELETE_USER = gettextCatalog.getString("Delete user?");
+    this.CONTENT_DELETE_USER= gettextCatalog.getString("This user will no longer be able to access the dashboard. Are you sure?");
+
+    this.SNACK_USER_DELETED= gettextCatalog.getString("User access removed");
+    this.SNACK_USER_DELETED_ERROR= gettextCatalog.getString("User access not removed");
+    this.SNACK_USER_ROLE_UPDATE= gettextCatalog.getString("User access updated");
+    this.SNACK_USER_ROLE_UPDATE_ERROR= gettextCatalog.getString("User access not updated");
+    this.UPDATE_ROLE_BUTTON= gettextCatalog.getString("Update role");
+
   }
 }

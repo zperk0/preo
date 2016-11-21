@@ -1,0 +1,13 @@
+<div class="users-list">
+    <div>
+    <card-item-list
+        has-new="false"
+        collection="usersListCtrl.users">
+        <user
+          has-actions="true"
+          ng-repeat="user in usersListCtrl.users | orderBy: id"
+          user="user">
+        </user>
+    </card-item-list>
+  </div>
+</div>

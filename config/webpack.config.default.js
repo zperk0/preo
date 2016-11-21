@@ -66,6 +66,7 @@ module.exports = function(ENV, options) {
       vouchers: './client/app/features/main/dashboard/vouchers/index.js',
       taxes: './client/app/features/main/dashboard/taxes/index.js',
       analytics: './client/app/features/main/dashboard/analytics/index.js',
+      manageUsers: './client/app/features/main/dashboard/manageUsers/index.js',
       vendor: './client/app/vendor.js'
     },
     /**
@@ -203,7 +204,7 @@ module.exports = function(ENV, options) {
       new HtmlWebpackPlugin({
         template:'./client/index.html',
         chunksSortMode: chunkSort,
-        chunks:['bookings', 'events', 'analytics', 'notifications', 'payments', 'promotions', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'app','vendor'],
+        chunks:['bookings', 'events', 'analytics', 'notifications', 'payments', 'promotions', 'manageUsers', 'styling', 'venueSettings', 'vouchers', 'menus','outlets','taxes', 'app','vendor'],
         // chunks:['outlets','app','vendor'],
         filename:'index.html'
       }),
