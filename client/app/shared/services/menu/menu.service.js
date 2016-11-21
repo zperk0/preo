@@ -20,7 +20,7 @@ export default class MenuService {
 
     this.p = this.$q((resolve, reject)=>{
 
-	    Preoday.Menu.get(data)
+	    Preoday.Menu.getMenusEditor(data)
 	    .then((menus) => {
 
 	    	this.data.menus = menus;
