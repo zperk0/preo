@@ -73,7 +73,7 @@ describe('venueDetails Controller', function () {
       $rootScope.$digest();
       expect(angular.extend).toHaveBeenCalledWith(VenueDetailsCtrl.venue, venue);
       expect(angular.extend).toHaveBeenCalledWith(venue, venue);
-      expect(angular.extend.calls.count()).toBe(2);
+      expect(angular.extend.calls.count()).toBe(1);
     });
 
     it("When save errors, should not update service's venue", function() {
