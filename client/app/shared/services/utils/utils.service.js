@@ -72,9 +72,77 @@ export default class UtilsService {
     return y;
   }
 
-  constructor($q) {
-    "ngInject";
-    this.$q = $q;
+  getLanguages () {
 
+    return [{
+      name: this.gettextCatalog.getString('Dannish'),
+      value: 'da-DA'
+    },{
+      name: this.gettextCatalog.getString('Dutch'),
+      value: 'nl-NL'
+    },{
+      name: this.gettextCatalog.getString('English'),
+      value: 'en-GB'
+    },{
+      name: this.gettextCatalog.getString('French'),
+      value: 'fr-FR'
+    },{
+      name: this.gettextCatalog.getString('Finnish'),
+      value: 'fi-FI'
+    },{
+      name: this.gettextCatalog.getString('German'),
+      value: 'de-DE'
+    },{
+      name: this.gettextCatalog.getString('Norwegian'),
+      value: 'nb-NO'
+    },{
+      name: this.gettextCatalog.getString('Spanish'),
+      value: 'es-ES'
+    },{
+      name: this.gettextCatalog.getString('Swedish'),
+      value: 'sv-SE'
+    }];
+  }
+
+  setLocale (locale) {
+
+    if(locale) {
+      let language = locale.substr(0, locale.indexOf('-')).toLowerCase(),
+          country = locale.substr(locale.indexOf('-')+1,locale.length-1).toLowerCase();
+      switch(language) {
+        case 'no':
+          language = 'nb';
+          break;
+      }
+      this.gettextCatalog.setCurrentLanguage(language);
+      console.log("set moment locale", language+"-"+country);
+      moment.locale(language+"-"+country);
+    } else {
+      moment.locale('en-gb');
+    }
+  }
+
+  updateLocale () {
+
+    let UserService = this.$injector.get('UserService');
+    let VenueService = this.$injector.get('VenueService');
+
+    if (UserService.isLogged() && UserService.getCurrent().locale) {
+      return this.setLocale(UserService.getCurrent().locale);
+    }
+
+    if (VenueService.hasVenueSet()) {
+      return this.setLocale(VenueService.currentVenue.locale);
+    }
+
+    return this.setLocale();
+  }
+
+  constructor($q, gettextCatalog, $injector) {
+    "ngInject";
+
+    this.$q = $q;
+    this.gettextCatalog = gettextCatalog;
+    this.$injector = $injector;
   }
 }

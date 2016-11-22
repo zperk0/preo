@@ -77,16 +77,6 @@ describe('SellerDetails Controller', function () {
       expect(SellerDetailsCtrl.showError).toHaveBeenCalled();
     });
 
-    it("When clicking edit should tooggle form editable", function() {
-      spyOn(Preoday.VenueTaxSettings, 'get').and.callFake(function(){return $q.reject({status:400, message:"Not found"})});
-      _startController();
-
-      expect(SellerDetailsCtrl.isEdit).toEqual(false);
-      SellerDetailsCtrl.toggleEdit();
-      expect(SellerDetailsCtrl.isEdit).toEqual(true);
-      SellerDetailsCtrl.toggleEdit();
-      expect(SellerDetailsCtrl.isEdit).toEqual(false);
-    });
 
     // it("Should select between save or update if venueId is or isn't set", function() {
     //   spyOn(Preoday.VenueTaxSettings, 'get').and.callFake(function(){return $q.resolve(settingsMock)});
