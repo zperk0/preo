@@ -3,29 +3,39 @@ export default class userInviteController {
     return "userInviteController"
   }
 
+  sendOrResend(){
+    return this.user.id ? this.user.resend.bind(this.user) : Preoday.Invite.create;
+  }
+
   contextualMenuSuccess(entity){
     this.Spinner.show("user-role-update");
     if (this.user && entity && entity.name){
+
       this.user = entity;
-      this.account.updateUserRole(this.user).then((newUser)=>{
+
+      this.sendOrResend()(this.user).then((newInvite)=>{
 
         this.user.$deleted = false;
         this.user.$selected = false;
 
         this.$timeout(() => {
-          angular.extend(this.user, newUser);
+          angular.extend(this.user, newInvite);
           this.contextualMenu.hide();
           this.Spinner.hide("user-role-update");
-          this.Snack.show(this.LabelService.SNACK_USER_ROLE_UPDATE);
+          this.Snack.show(this.LabelService.SNACK_USER_INVITE_SUCCESS);
         });
       }, (err)=>{
-        console.log('error on save tax-group', err);
+        console.log('error on save user-role', err);
         this.Spinner.hide("user-role-update");
-        this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
+        if (err && err.status === 409){
+          this.Snack.showError(this.LabelService.SNACK_USER_INVITE_CONFLICT);
+        } else {
+          this.Snack.showError(this.LabelService.SNACK_USER_INVITE_ERROR);
+        }
       }). catch((err)=>{
-        console.log('error on save tax-group', err);
+        console.error('error on save user-role', err);
         this.Spinner.hide("user-role-update");
-        this.Snack.showError(this.LabelService.SNACK_USER_ROLE_UPDATE_ERROR);
+        this.Snack.showError(this.LabelService.SNACK_USER_INVITE_ERROR);
       })
     }
   }
@@ -43,7 +53,7 @@ export default class userInviteController {
     this.DialogService.delete(this.LabelService.TITLE_DELETE_USER, this.LabelService.CONTENT_DELETE_USER)
       .then(()=>{
           this.Spinner.show("user-role-delete");
-          this.account.removeUser(this.user)
+          this.user.remove()
             .then(()=>{
               this.cardItemList.onItemDeleted(this.user);
               if (this.onItemDeleted){
@@ -81,7 +91,7 @@ export default class userInviteController {
 
   showContextual () {
     this.contextual.showMenu(this.type, this.user, this.contextualMenuSuccess.bind(this), this.contextualMenuCancel.bind(this), {
-        doneButtonText: this.LabelService.UPDATE_ROLE_BUTTON
+        doneButtonText: this.user.id ? this.LabelService.RESEND_INVITE_BUTTON : this.LabelService.SEND_INVITE_BUTTON
     });
   }
 

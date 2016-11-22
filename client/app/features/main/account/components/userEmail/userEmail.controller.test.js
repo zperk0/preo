@@ -58,7 +58,7 @@ describe('UserEmail Controller', function () {
         data = {};
       }
 
-      userMock = new Preoday.User.constructor({
+      userMock = new Preoday.User({
         id: 1
       });
 

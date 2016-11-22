@@ -1,11 +1,11 @@
-<div class='user'
+<div class='user-invite'
       ng-attr-data-id="{{userInviteCtrl.user.id}}">
   <card-item  has-actions="true"
               deleted="userInviteCtrl.user.$deleted"
               selected="userInviteCtrl.user.$selected"
               class='small'>
     <card-item-title has-visible="false">
-        <span>{{userInviteCtrl.user.name}} </span> &nbsp; <span class='invite-status' ng-if="userInviteCtrl.user.id" translate> (pending)</span>
+        <span>{{userInviteCtrl.user.name}} </span><span class='invite-status' ng-if="userInviteCtrl.user.id" translate> (pending)</span>
     </card-item-title>
 
     <card-item-actions on-delete="userInviteCtrl.onDelete()"

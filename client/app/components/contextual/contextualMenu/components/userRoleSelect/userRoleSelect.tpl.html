@@ -7,7 +7,7 @@
   </md-select>
   <div class='permissions' ng-if="userRoleSelectCtrl.ngModel && userRoleSelectCtrl.roles[userRoleSelectCtrl.ngModel]">
     <div class='permissions-label' translate>User permissions:</div>
-    <div class='permission' ng-repeat='permission in userRoleSelectCtrl.roles[userRoleSelectCtrl.ngModel].permissions'>
+    <div class='permission' ng-repeat='permission in userRoleSelectCtrl.roles[userRoleSelectCtrl.ngModel].permissions track by $index' ng-if="permission">
         <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs></defs>
             <g id="Menu" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

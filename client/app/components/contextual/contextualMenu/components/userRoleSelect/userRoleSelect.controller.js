@@ -4,8 +4,9 @@ export default class userRoleSelectController {
   }
 
 
- constructor(gettextCatalog) {
+ constructor(gettextCatalog, VenueService, FeatureService) {
     "ngInject";
+    let venue = VenueService.currentVenue;
     this.roles={
       ADMIN:{
         id:'ADMIN',
@@ -13,10 +14,10 @@ export default class userRoleSelectController {
         permissions:[
           gettextCatalog.getString("Order screen"),
           gettextCatalog.getString("Menus"),
-          gettextCatalog.getString("Events"),
+          venue.isEvent() ? gettextCatalog.getString("Events") : '',
           gettextCatalog.getString("Promotions"),
-          gettextCatalog.getString("Group Bookings"),
-          gettextCatalog.getString("Gift Vouchers"),
+          FeatureService.hasBookingFeature() ? gettextCatalog.getString("Group Bookings") : '',
+          FeatureService.hasVoucherFeature() ? gettextCatalog.getString("Gift Vouchers") : '',
           gettextCatalog.getString("Venue Settings"),
           gettextCatalog.getString("Analytics"),
           gettextCatalog.getString("Manage Users")
@@ -28,10 +29,10 @@ export default class userRoleSelectController {
         permissions:[
           gettextCatalog.getString("Order screen"),
           gettextCatalog.getString("Menus"),
-          gettextCatalog.getString("Events"),
+          venue.isEvent() ? gettextCatalog.getString("Events") : '',
           gettextCatalog.getString("Promotions"),
-          gettextCatalog.getString("Group Bookings"),
-          gettextCatalog.getString("Gift Vouchers"),
+          FeatureService.hasBookingFeature() ? gettextCatalog.getString("Group Bookings") : '',
+          FeatureService.hasVoucherFeature() ? gettextCatalog.getString("Gift Vouchers") : '',
         ]
       },
       STAFF:{

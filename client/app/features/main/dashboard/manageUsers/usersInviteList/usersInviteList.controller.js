@@ -15,6 +15,8 @@ export default class usersInviteListController {
 
     let invite = new Preoday.Invite({
       accountId: this.account.id,
+      role:'ADMIN',
+      createdBy:this.user.id,
       $selected: true,
     });
 
@@ -22,8 +24,10 @@ export default class usersInviteListController {
   }
 
   /* @ngInject */
-  constructor(VenueService) {
+  constructor(VenueService, UserService) {
+    "ngInject"
     this.title = "I am a usersList component"
     this.account = VenueService.account;
+    this.user = UserService.user;
   }
 }

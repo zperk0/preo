@@ -94,6 +94,11 @@ export default class LabelService {
     this.SNACK_USER_ROLE_UPDATE= gettextCatalog.getString("User access updated");
     this.SNACK_USER_ROLE_UPDATE_ERROR= gettextCatalog.getString("User access not updated");
     this.UPDATE_ROLE_BUTTON= gettextCatalog.getString("Update role");
+    this.SEND_INVITE_BUTTON= gettextCatalog.getString("Send invite");
+    this.RESEND_INVITE_BUTTON= gettextCatalog.getString("Resend invite");
+    this.SNACK_USER_INVITE_ERROR= gettextCatalog.getString("Invitation not sent");
+    this.SNACK_USER_INVITE_CONFLICT= gettextCatalog.getString("This user already has an account");
+    this.SNACK_USER_INVITE_SUCCESS= gettextCatalog.getString("Invitation sent");
 
   }
 }
