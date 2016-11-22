@@ -1,3 +1,37 @@
-<div class="opening-hour">
+<div class="opening-hour" >
+	<form name="openingHourCtrl.openingHourForm" novalidate>
+		<div class="days-content">
+      <div class="day" ng-repeat="day in openingHourCtrl.days">{{ day.name }}</div>
+    </div>
+    <div class="content-opening-time">
+		  <div class="md-block md-block-timepicker">
+		    <mdp-time-picker mdp-auto-switch="true"
+		          mdp-open-on-click
+		          name="openingHourOpen"
+		          mdp-placeholder="{{ 'Open' | translate }}"
+		          ng-model="openingHourCtrl.hourTime.start"
+		          mdp-format="LT"
+		          required></mdp-time-picker>
 
+		    <div ng-messages="openingHourCtrl.openingHourForm.openingHourOpen.$error" ng-show="openingHourCtrl.openingHourForm.openingHourOpen.$dirty" class="preo-ng-messages">
+		      <div ng-message="required" translate ng-class="{'activated': openingHourCtrl.openingHourForm.openingHourOpen.$error.required}">This is required.</div>
+		      <div ng-message="format" translate ng-class="{'activated': openingHourCtrl.openingHourForm.openingHourOpen.$error.format}">Invalid format.</div>
+		    </div>
+		  </div>
+		  <div class="md-block md-block-timepicker">
+		    <mdp-time-picker mdp-auto-switch="true"
+		          mdp-open-on-click
+		          name="openingHourClosed"
+		          mdp-placeholder="{{ 'Closed' | translate }}"
+		          ng-model="openingHourCtrl.hourTime.closed"
+		          mdp-format="LT"
+		          required></mdp-time-picker>
+
+		    <div ng-messages="openingHourCtrl.openingHourForm.openingHourClosed.$error" ng-show="openingHourCtrl.openingHourForm.openingHourClosed.$dirty" class="preo-ng-messages">
+		      <div ng-message="required" translate ng-class="{'activated': openingHourCtrl.openingHourForm.openingHourClosed.$error.required}">This is required.</div>
+		      <div ng-message="format" translate ng-class="{'activated': openingHourCtrl.openingHourForm.openingHourClosed.$error.format}">Invalid format.</div>
+		    </div>
+		  </div>
+	  </div>
+  </form>
 </div>

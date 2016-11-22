@@ -1,3 +1,9 @@
 .opening-hours-list {
+	.opening-hour {
+		margin-bottom: 15px;
 
+		&:last-child {
+			margin-bottom: 0px;
+		}
+	}
 }

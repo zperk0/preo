@@ -10,5 +10,15 @@ export default class openingHourController {
 
     this.$scope = $scope;
 
+    this.days = [];
+
+    let startOfWeek = moment().startOf('isoweek').subtract(1, 'days');
+
+    for (var i = 0, len = 7; i < len; i++) {
+
+    	this.days.push({
+    		name: startOfWeek.add(1, 'days').format('ddd')
+    	})
+    }
   }
 }

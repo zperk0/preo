@@ -1,3 +1,13 @@
 <div class='opening-hours-list'>
+	<opening-hour></opening-hour>
+	<opening-hour></opening-hour>
 
+  <md-card-actions>
+    <md-button class="md-fab md-mini md-primary" aria-label="{{ 'Add new opening hour' | translate }}" ng-click="openingHoursListCtrl.clickNew()">
+      <icon>add</icon>
+      <md-tooltip md-direction="top">
+        {{ 'Add new opening hour' | translate }}
+      </md-tooltip>
+    </md-button>
+  </md-card-actions>
 </div>
