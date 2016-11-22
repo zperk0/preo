@@ -31,7 +31,8 @@ function fixFile(filename){
 
 function fixFiles(){
 
-  var filesToFix=['./dist/styling/index.php', './dist/outlets/index.php', './dist/events/index.php', './dist/taxes/index.php', './dist/menus/index.php', './dist/venueSettings/index.php']
+  var filesToFix=['./dist/styling/index.php', './dist/outlets/index.php', './dist/events/index.php', './dist/payments/index.php',
+  './dist/taxes/index.php', './dist/menus/index.php', './dist/venueSettings/index.php']
   filesToFix.forEach(function(f){
     fixFile(f);
   })
