@@ -12,6 +12,13 @@ export default function routes($stateProvider) {
     url: "/notifications",
     template: require("./notifications.tpl.html"),
     controller: controller.UID,
-    controllerAs: "notifications"
+    controllerAs: "notificationsCtrl",
+    resolve:{
+      // authenticated -> this is from main.routes.js and makes sure there is an USER and a VENUE set in userService and venueService
+      maps:function(authenticated){
+        "ngInject";
+        return authenticated;
+      }
+    }
   });
 }

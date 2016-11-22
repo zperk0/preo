@@ -10,7 +10,7 @@ import routes from './dashboard.routes';
 angular.module("dashboard" , ['ui.router',
     // 'webapp.bookings',
     'webapp.events',
-    // 'webapp.notifications',
+    'webapp.notifications',
     'webapp.payments',
     // 'webapp.promotions',
     'webapp.styling',

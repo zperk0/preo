@@ -1,5 +1,12 @@
 .auto-save{
   margin-top:24px;
+  transition: all linear 0.5s;
+  max-height: 80px;
+  opacity: 1;
+  &.ng-hide {
+    max-height: 0;
+    opacity: 0;
+  }
 
   md-icon{
     margin-left: -4px;

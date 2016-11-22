@@ -79,6 +79,7 @@ export default class navbarController {
         return VenueService.hasVenueSet() && VenueService.currentVenue.isEvent();
       }},
       {name: gettextCatalog.getString("Promotions"), icon:"star", id:"promotions"},
+      {name: gettextCatalog.getString("Notifications"), icon:"chat", id:"notifications"},
       {name: gettextCatalog.getString("Manage Users"), icon:"account_box", id:"manageUsers"},
 
       {name: gettextCatalog.getString("Styling"), id:"styling", icon:"color_lens", children:[
