@@ -132,6 +132,13 @@
     box-shadow:none;
   }
 
+  #webappv2 .auto-save span.error, #webappv2 .auto-save span.error .fake-link, #webappv2 .auto-save span.error .fake-link span, #webappv2 .auto-save span.error span{
+    color: #d2232a;
+    background: transparent;
+    display: inline-block;
+    font-weight: normal;
+  }
+
   @media (min-width: 1024px) {
     #webappv2 .main-content-right{
       position: fixed !important;
