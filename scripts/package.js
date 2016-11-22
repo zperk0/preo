@@ -4,7 +4,7 @@ var archiver = require('archiver');
 var archive = archiver('zip');
 var output = '.zip';
 
-var fileName =   '../build/'+pjson.name+"."+pjson.version+output;
+var fileName =   './build/'+pjson.name+"."+pjson.version+output;
 
 var fileOutput = fs.createWriteStream(fileName);
 
@@ -15,8 +15,8 @@ fileOutput.on('close', function () {
 });
 
 archive.pipe(fileOutput);
-archive.glob("../dist/**/*");
-archive.glob("../dist/.htaccess");
+archive.glob("./dist/**/*");
+archive.glob("./dist/.htaccess");
 archive.on('error', function(err){
     throw err;
 });
