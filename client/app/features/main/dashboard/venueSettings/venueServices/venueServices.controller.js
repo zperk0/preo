@@ -122,7 +122,7 @@ export default class venueServicesController {
 
 
   /* @ngInject */
-  constructor($q, Spinner, $state, Snack, ErrorService, LabelService, $timeout, VenueService) {
+  constructor($q, Spinner, $state, Snack, ErrorService, FeatureService, LabelService, $timeout, VenueService) {
     "ngInject";
     this.isSaving = false;
     this.isError = false;
@@ -135,6 +135,7 @@ export default class venueServicesController {
     this.LabelService = LabelService;
     this.isError = false;
     this.$timeout = $timeout;
+    this.hasDeliveryZoneFeature = FeatureService.hasDeliveryZoneFeature()
     this.init();
   }
 }
