@@ -19,6 +19,11 @@ export default class manageUsersController {
     })
     .then(this.account.getInvites.bind(this.account))
     .then((invites)=>{
+      invites.forEach((u)=>{
+        if (u.role === 'OWNER'){
+          u.role = "ADMIN";
+        }
+      })
       this.invites = invites;
       console.log("got invites", invites);
       this.Spinner.hide("fetch-users");
