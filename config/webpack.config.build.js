@@ -29,7 +29,7 @@ module.exports = function(ENV) {
      * Devtool settings
      * Reference: http://webpack.github.io/docs/configuration.html#devtool
      */
-    devtool: 'source-map',
+    devtool: 'hidden-source-map',
     /**
      * Plugins
      * Reference: http://webpack.github.io/docs/configuration.html#plugins
