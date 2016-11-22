@@ -15,7 +15,7 @@ fileOutput.on('close', function () {
 });
 
 archive.pipe(fileOutput);
-archive.glob("./dist/**/*");
+archive.glob("./dist/**/!(*.js.map)");
 archive.glob("./dist/.htaccess");
 archive.on('error', function(err){
     throw err;
