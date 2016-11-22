@@ -1,6 +1,26 @@
 $dayBorderRadius: 2px;
 
 .opening-hour {
+	&.with-icon {
+		.clear-icon {
+			margin-right: 1px;
+		}
+
+		.days-content {
+			margin-right: 0px;
+		}
+
+		.md-block-timepicker {
+			mdp-time-picker {
+				.md-button {
+					&.md-icon-button {
+						margin-left: -4px;
+					}
+				}
+			}
+		}
+	}
+
 	.days-content {
 		display: inline-flex;
 		flex: 0 0 auto;

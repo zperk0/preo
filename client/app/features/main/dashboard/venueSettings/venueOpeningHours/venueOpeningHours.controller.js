@@ -4,7 +4,13 @@ export default class venueOpeningHoursController {
     return "venueOpeningHoursController";
   }
 
-  constructor() {
+  constructor(VenueService) {
     "ngInject";
+
+    this.openingHours = [{
+    	venueId: VenueService.currentVenue.id,
+    	open: null,
+    	close: null
+    }];
   }
 }

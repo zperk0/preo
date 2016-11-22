@@ -1,9 +1,8 @@
 <div class='opening-hours-list'>
-	<opening-hour></opening-hour>
-	<opening-hour></opening-hour>
+	<opening-hour opening-hour="hour" show-remove="openingHoursListCtrl.openingHours.length > 1" ng-repeat="hour in openingHoursListCtrl.openingHours"></opening-hour>
 
   <md-card-actions>
-    <md-button class="md-fab md-mini md-primary" aria-label="{{ 'Add new opening hour' | translate }}" ng-click="openingHoursListCtrl.clickNew()">
+    <md-button class="md-fab md-mini md-primary" aria-label="{{ 'Add new opening hour' | translate }}" ng-click="openingHoursListCtrl.addNew()">
       <icon>add</icon>
       <md-tooltip md-direction="top">
         {{ 'Add new opening hour' | translate }}

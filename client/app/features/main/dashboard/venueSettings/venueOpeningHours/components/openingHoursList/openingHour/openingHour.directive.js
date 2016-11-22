@@ -7,6 +7,7 @@ export default function openingHour() {
     restrict: 'E',
     scope: {
       openingHour: "=",
+      showRemove: '='
     },
     template: require("./openingHour.tpl.html"),
     controller: controller.UID,

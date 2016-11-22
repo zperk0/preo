@@ -4,11 +4,21 @@ export default class openingHoursListController {
     return "openingHoursListController"
   }
 
+  addNew () {
 
-  constructor($scope) {
+  	this.openingHours.push({
+  		venueId: this.VenueService.currentVenue.id,
+  		open: null,
+  		close: null,
+  	});
+  }
+
+
+  constructor($scope, VenueService) {
     "ngInject";
 
     this.$scope = $scope;
+    this.VenueService = VenueService;
 
   }
 }
