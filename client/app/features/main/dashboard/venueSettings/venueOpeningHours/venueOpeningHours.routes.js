@@ -16,6 +16,21 @@ export default function routes($stateProvider) {
         controller: controller.UID,
         controllerAs: "venueOpeningHoursCtrl"
       }
+    },
+    isTakeAway: function ($q, $state, $stateParams, $timeout, authenticated, VenueService) {
+
+      if (VenueService.hasVenueSet() && !VenueService.currentVenue.isEvent()) {
+
+        return $q.when();
+      } else {
+
+        $timeout(() => {
+
+          $state.go('main.dashboard');
+        });
+
+        return $q.reject();
+      }
     }
   });
 }
