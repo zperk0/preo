@@ -7,14 +7,18 @@ export default function openingHour() {
     restrict: 'E',
     scope: {
       openingHour: "=",
-      showRemove: '='
+      showRemove: '=',
+      index: '='
     },
     template: require("./openingHour.tpl.html"),
     controller: controller.UID,
     controllerAs: "openingHourCtrl",
     bindToController: true,
     replace:true,
-    link: (scope, element, attrs, ctrl) => {
+    require: ['^form', 'openingHour'],
+    link: (scope, element, attrs, ctrls) => {
+
+      ctrls[1].openingHoursForm = ctrls[0];
     }
   }
 }

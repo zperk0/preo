@@ -4,6 +4,7 @@ $dayBorderRadius: 2px;
 	&.with-icon {
 		.clear-icon {
 			margin-right: 1px;
+			cursor: pointer;
 		}
 
 		.days-content {
@@ -73,7 +74,7 @@ $dayBorderRadius: 2px;
 		}
 
 		.preo-ng-messages {
-			margin-top: -16px;
+			margin-top: -10px;
 			margin-left: 11px;
 		}
 
