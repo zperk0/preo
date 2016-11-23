@@ -17,8 +17,9 @@ export default class openingHourController {
     for (var i = 0, len = 7; i < len; i++) {
 
     	this.days.push({
-    		name: startOfWeek.add(1, 'days').format('ddd')
-    	})
+    		name: startOfWeek.add(1, 'days').format('ddd'),
+    		value: ( i === 6 ? 1 : i + 2 )
+    	});
     }
   }
 }

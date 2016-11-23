@@ -4,6 +4,47 @@
 	}
 
 	md-card-content {
-		padding: 0px 24px 24px 24px;
+		padding: 0px 24px 66px 24px;
+	}
+
+	.main-content-full {
+		flex-flow: row wrap;
+
+		md-card {
+			&.full-card {
+				flex: 1 100%;
+			}
+		}
+	}
+
+	.service-type {
+		padding-bottom: 24px;
+
+		&:last-child {
+			padding-bottom: 0px;
+
+			.opening-hours-list {
+				margin-bottom: 0px;
+			}
+		}
+
+		p {
+			font-size: 16px;
+			color: #424242;
+			margin-bottom: 8px;
+		}
+
+		.service-type-toogle {
+			font-size: 16px;
+			color: rgba(0, 0, 0, 0.5);
+
+			.md-label {
+				margin-top: 2px;
+			}
+		}
+
+		.opening-hours-list {
+			margin-bottom: 12px;
+		}
 	}
 }
