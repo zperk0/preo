@@ -4,6 +4,22 @@ export default class venueOpeningHoursController {
     return "venueOpeningHoursController";
   }
 
+  hasOpeningHours () {
+  	return true;
+  }
+
+  hasServiceMethods () {
+  	return true;
+  }
+
+  hasCollectionService () {
+  	return true;
+  }
+
+  hasDeliveryService () {
+  	return true;
+  }
+
   constructor(VenueService) {
     "ngInject";
 

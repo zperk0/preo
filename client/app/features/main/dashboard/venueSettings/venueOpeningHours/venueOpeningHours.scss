@@ -17,6 +17,20 @@
 		}
 	}
 
+	.service-message {
+		font-size: 14px;
+		color: #333333;
+
+		&>span {
+			vertical-align: text-top;
+		}
+
+		a {
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
+
 	.service-type {
 		padding-bottom: 24px;
 

@@ -18,19 +18,24 @@
 	      </md-card-title-text>
 	    </md-card-title>
 	    <md-card-content>
-	    	<div class="service-type">
-		    	<p>Collection service:</p>
-	        <md-checkbox class="service-type-toogle" ng-change="venueOpeningHoursCtrl.debounceUpdate('venue')" ng-true-value="1" ng-false-value="0" aria-label="Same as opening hours" ng-model="venueOpeningHoursCtrl.shouldShowCollectionService">
-	          {{'Same as opening hours' | translate}}
-	        </md-checkbox>
-		    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.openingHours" ng-if="venueOpeningHoursCtrl.shouldShowCollectionService"></opening-hours-list>
-	    	</div>
-	    	<div class="service-type">
-		    	<p>Delivery service:</p>
-	        <md-checkbox class="service-type-toogle" ng-change="venueOpeningHoursCtrl.debounceUpdate('venue')" ng-true-value="1" ng-false-value="0" aria-label="Same as opening hours" ng-model="venueOpeningHoursCtrl.shouldShowDeliveryService">
-	          {{'Same as opening hours' | translate}}
-	        </md-checkbox>
-		    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.openingHours" ng-if="venueOpeningHoursCtrl.shouldShowDeliveryService"></opening-hours-list>
+				<p class="service-message" ng-if="!venueOpeningHoursCtrl.hasOpeningHours()"><span><icon>info</icon></span> {{ 'You must add opening hours before specifying your service hours.' | translate }}</p>
+				<p class="service-message" ng-if="!venueOpeningHoursCtrl.hasServiceMethods()"><span><icon>info</icon></span> {{ 'All your service methods are currently disabled.' | translate }} <a ng-href>{{ 'Click here' | translate }}</a> {{'to activate them' | translate}}.</p>
+
+				<div ng-if="venueOpeningHoursCtrl.hasOpeningHours() && venueOpeningHoursCtrl.hasServiceMethods()">
+		    	<div class="service-type" ng-if="venueOpeningHoursCtrl.hasCollectionService()">
+			    	<p>Collection service:</p>
+		        <md-checkbox class="service-type-toogle" ng-change="venueOpeningHoursCtrl.debounceUpdate('venue')" ng-true-value="1" ng-false-value="0" aria-label="Same as opening hours" ng-model="venueOpeningHoursCtrl.shouldShowCollectionService">
+		          {{'Same as opening hours' | translate}}
+		        </md-checkbox>
+			    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.openingHours" ng-if="venueOpeningHoursCtrl.shouldShowCollectionService"></opening-hours-list>
+		    	</div>
+		    	<div class="service-type" ng-if="venueOpeningHoursCtrl.hasDeliveryService()">
+			    	<p>Delivery service:</p>
+		        <md-checkbox class="service-type-toogle" ng-change="venueOpeningHoursCtrl.debounceUpdate('venue')" ng-true-value="1" ng-false-value="0" aria-label="Same as opening hours" ng-model="venueOpeningHoursCtrl.shouldShowDeliveryService">
+		          {{'Same as opening hours' | translate}}
+		        </md-checkbox>
+			    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.openingHours" ng-if="venueOpeningHoursCtrl.shouldShowDeliveryService"></opening-hours-list>
+		    	</div>
 	    	</div>
 	    </md-card-content>
 	  </md-card>
