@@ -10,6 +10,8 @@ export default class openingHoursListController {
   		venueId: this.VenueService.currentVenue.id,
   		open: null,
   		close: null,
+      opening: 1,
+      days: []
   	});
   }
 
@@ -19,6 +21,10 @@ export default class openingHoursListController {
 
     this.$scope = $scope;
     this.VenueService = VenueService;
+
+    if (!this.openingHours.length) {
+      this.addNew();
+    }
 
   }
 }

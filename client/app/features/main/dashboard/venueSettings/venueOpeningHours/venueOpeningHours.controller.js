@@ -6,7 +6,7 @@ export default class venueOpeningHoursController {
 
   hasOpeningHours () {
 
-    return this.openingHours && Object.keys(this.openingHours).length > 0;
+    return this.openingHours && this.openingHours.length > 0;
   }
 
   hasServiceMethods () {
@@ -64,7 +64,14 @@ export default class venueOpeningHoursController {
       groupedHours[key].days.push(hour.day);
     }
 
-    return groupedHours;
+    let hoursResult = [];
+
+    angular.forEach(groupedHours, (value) => {
+
+      hoursResult.push(value);
+    });
+
+    return hoursResult;
   }
 
   constructor(Spinner, VenueService) {
@@ -75,7 +82,7 @@ export default class venueOpeningHoursController {
 
     Spinner.show('venue-opening-hours');
 
-    this.loading = true;
+    this.loaded = false;
 
     this.openingHours = {};
     this.allHours = [];
@@ -88,15 +95,15 @@ export default class venueOpeningHoursController {
         this.deliveryHours = this.groupHoursByTime(this.filterDeliveryHours(hours));
         this.collectionHours = this.groupHoursByTime(this.filterCollectionHours(hours));
 
-        this.collectionSameAsOpening = Object.keys(this.collectionHours).length === 0;
-        this.deliverySameAsOpening = Object.keys(this.deliveryHours).length === 0;
+        this.collectionSameAsOpening = this.collectionHours.length === 0;
+        this.deliverySameAsOpening = this.deliveryHours.length === 0;
 
         Spinner.hide('venue-opening-hours');
-        this.loading = false;
+        this.loaded = true;
       }, () => {
 
         Spinner.hide('venue-opening-hours');
-        this.loading = false;
+        this.loaded = true;
       });
 
     this.collectionSameAsOpening = true;

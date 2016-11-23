@@ -12,6 +12,17 @@ export default class openingHourController {
     }).length > 0;
   }
 
+  toggleDay (day) {
+
+    let index = this.openingHour.days.indexOf(day.value);
+
+    if (index !== -1) {
+      this.openingHour.days.splice(index, 1);
+    } else {
+      this.openingHour.days.push(day.value);
+    }
+  }
+
 
   constructor($scope) {
     "ngInject";

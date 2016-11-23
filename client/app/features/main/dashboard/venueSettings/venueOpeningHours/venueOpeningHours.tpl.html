@@ -7,7 +7,7 @@
 	      </md-card-title-text>
 	    </md-card-title>
 	    <md-card-content ng-class="{'is-saving': venueOpeningHoursCtrl.isSavingOpeningHours}">
-	    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.openingHours"></opening-hours-list>
+	    	<opening-hours-list ng-if="venueOpeningHoursCtrl.loaded" opening-hours="venueOpeningHoursCtrl.openingHours"></opening-hours-list>
 
         <auto-save is-saving="venueOpeningHoursCtrl.isSavingOpeningHours" is-error="venueOpeningHoursCtrl.isErrorOpeningHours" retry="venueOpeningHoursCtrl.debounceUpdate()"></auto-save>
 	    </md-card-content>
@@ -29,14 +29,14 @@
 		        <md-checkbox class="service-type-toogle" ng-change="venueOpeningHoursCtrl.debounceUpdate('venue')" aria-label="Same as opening hours" ng-model="venueOpeningHoursCtrl.collectionSameAsOpening">
 		          {{'Same as opening hours' | translate}}
 		        </md-checkbox>
-			    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.collectionHours" ng-if="venueOpeningHoursCtrl.shouldShowCollectionService"></opening-hours-list>
+			    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.collectionHours" ng-if="!venueOpeningHoursCtrl.collectionSameAsOpening"></opening-hours-list>
 		    	</div>
 		    	<div class="service-type" ng-if="venueOpeningHoursCtrl.hasDeliveryService()">
 			    	<p>Delivery service:</p>
 		        <md-checkbox class="service-type-toogle" ng-change="venueOpeningHoursCtrl.debounceUpdate('venue')" aria-label="Same as opening hours" ng-model="venueOpeningHoursCtrl.deliverySameAsOpening">
 		          {{'Same as opening hours' | translate}}
 		        </md-checkbox>
-			    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.deliveryHours" ng-if="venueOpeningHoursCtrl.shouldShowDeliveryService"></opening-hours-list>
+			    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.deliveryHours" ng-if="!venueOpeningHoursCtrl.deliverySameAsOpening"></opening-hours-list>
 		    	</div>
 	    	</div>
 
