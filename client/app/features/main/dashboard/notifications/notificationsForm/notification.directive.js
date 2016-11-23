@@ -10,11 +10,13 @@ export default function notification(){
 		require: '^notificationsForm',
 		link: (scope, el, attr, form) => {
 			console.log("got scope", scope);
-			scope.formName = 'notification-form-'+scope.index;
+			scope.formName = 'notificationForm'+scope.index;
 
 
 			scope.debounceUpdate = function(){
-				form.saveMessage(scope.notification)
+				if (scope[scope.formName].$valid){
+					form.saveMessage(scope.notification)
+				}
 			}
 		}
   }
