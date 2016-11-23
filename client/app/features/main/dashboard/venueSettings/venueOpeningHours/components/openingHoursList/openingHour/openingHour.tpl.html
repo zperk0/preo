@@ -2,7 +2,7 @@
 	<form name="openingHourCtrl.openingHourForm" novalidate>
 		<icon class='clear-icon' ng-if="openingHourCtrl.showRemove"  ng-click="vm.deleteItem(item)">clear</icon>
 		<div class="days-content">
-      <div class="day selected" ng-repeat="day in openingHourCtrl.days">{{ day.name }}</div>
+      <div class="day" ng-class="{'selected': openingHourCtrl.isDaySelected(day)}" ng-repeat="day in openingHourCtrl.days">{{ day.name }}</div>
     </div>
     <div class="content-opening-time">
 		  <div class="md-block md-block-timepicker">
@@ -10,7 +10,7 @@
 		          mdp-open-on-click
 		          name="openingHourOpen"
 		          mdp-placeholder="{{ 'Open' | translate }}"
-		          ng-model="openingHourCtrl.hourTime.start"
+		          ng-model="openingHourCtrl.openingHour.$open"
 		          mdp-format="LT"
 		          required></mdp-time-picker>
 
@@ -24,7 +24,7 @@
 		          mdp-open-on-click
 		          name="openingHourClosed"
 		          mdp-placeholder="{{ 'Closed' | translate }}"
-		          ng-model="openingHourCtrl.hourTime.closed"
+		          ng-model="openingHourCtrl.openingHour.$close"
 		          mdp-format="LT"
 		          required></mdp-time-picker>
 

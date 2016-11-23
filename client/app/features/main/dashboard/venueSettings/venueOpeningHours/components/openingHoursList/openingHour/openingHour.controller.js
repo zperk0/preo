@@ -4,6 +4,14 @@ export default class openingHourController {
     return "openingHourController"
   }
 
+  isDaySelected (day) {
+
+    return this.openingHour.days.filter((hoursDay) => {
+
+      return hoursDay === day.value;
+    }).length > 0;
+  }
+
 
   constructor($scope) {
     "ngInject";
@@ -20,6 +28,14 @@ export default class openingHourController {
     		name: startOfWeek.add(1, 'days').format('ddd'),
     		value: ( i === 6 ? 1 : i + 2 )
     	});
+    }
+
+
+    if (this.openingHour.open) {
+      let openTime = this.openingHour.open.slice(0,5).split(':');
+      let closeTime = this.openingHour.close.slice(0,5).split(':');
+      this.openingHour.$open = moment().hours(openTime[0]).minutes(openTime[1]);
+      this.openingHour.$close = moment().hours(closeTime[0]).minutes(closeTime[1]);
     }
   }
 }

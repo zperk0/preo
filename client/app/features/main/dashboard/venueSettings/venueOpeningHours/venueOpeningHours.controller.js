@@ -15,11 +15,13 @@ export default class venueOpeningHoursController {
   }
 
   hasCollectionService () {
-  	return true;
+
+    return this.VenueService.currentVenue.isPickup();
   }
 
   hasDeliveryService () {
-  	return true;
+
+    return this.VenueService.currentVenue.isDelivery();
   }
 
   filterOpeningHours (hours) {
@@ -55,14 +57,11 @@ export default class venueOpeningHoursController {
       let key = [hour.open, hour.close].join('-');
 
       if (!groupedHours[key]) {
-        groupedHours[key] = {
-          open: hour.open,
-          close: hour.close,
-          hours: []
-        };
+        groupedHours[key] = angular.copy(hour);
+        groupedHours[key].days = [];
       }
 
-      groupedHours[key].hours.push(hour);
+      groupedHours[key].days.push(hour.day);
     }
 
     return groupedHours;
@@ -79,13 +78,18 @@ export default class venueOpeningHoursController {
     this.loading = true;
 
     this.openingHours = {};
+    this.allHours = [];
 
     VenueService.currentVenue.getHours()
       .then((hours) => {
 
+        this.allHours = hours;
         this.openingHours = this.groupHoursByTime(this.filterOpeningHours(hours));
         this.deliveryHours = this.groupHoursByTime(this.filterDeliveryHours(hours));
         this.collectionHours = this.groupHoursByTime(this.filterCollectionHours(hours));
+
+        this.collectionSameAsOpening = Object.keys(this.collectionHours).length === 0;
+        this.deliverySameAsOpening = Object.keys(this.deliveryHours).length === 0;
 
         Spinner.hide('venue-opening-hours');
         this.loading = false;
@@ -95,7 +99,7 @@ export default class venueOpeningHoursController {
         this.loading = false;
       });
 
-    this.isSavingOpeningHours = true;
-    this.isSavingServiceHours = true;
+    this.collectionSameAsOpening = true;
+    this.deliverySameAsOpening = true;
   }
 }
