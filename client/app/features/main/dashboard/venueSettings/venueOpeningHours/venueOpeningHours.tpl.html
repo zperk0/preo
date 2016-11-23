@@ -6,18 +6,20 @@
 	        <h2 class="md-title" translate> Opening hours </h2>
 	      </md-card-title-text>
 	    </md-card-title>
-	    <md-card-content>
+	    <md-card-content ng-class="{'is-saving': venueOpeningHoursCtrl.isSavingOpeningHours}">
 	    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.openingHours"></opening-hours-list>
+
+        <auto-save is-saving="venueOpeningHoursCtrl.isSavingOpeningHours" is-error="venueOpeningHoursCtrl.isErrorOpeningHours" retry="venueOpeningHoursCtrl.debounceUpdate()"></auto-save>
 	    </md-card-content>
 	  </md-card>
 
-	  <md-card class="full-card">
+	  <md-card class="full-card service-hours">
 	    <md-card-title>
 	      <md-card-title-text>
 	        <h2 class="md-title" translate> Service hours </h2>
 	      </md-card-title-text>
 	    </md-card-title>
-	    <md-card-content>
+	    <md-card-content ng-class="{'is-saving': venueOpeningHoursCtrl.isSavingServiceHours}">
 				<p class="service-message" ng-if="!venueOpeningHoursCtrl.hasOpeningHours()"><span><icon>info</icon></span> {{ 'You must add opening hours before specifying your service hours.' | translate }}</p>
 				<p class="service-message" ng-if="!venueOpeningHoursCtrl.hasServiceMethods()"><span><icon>info</icon></span> {{ 'All your service methods are currently disabled.' | translate }} <a ng-href>{{ 'Click here' | translate }}</a> {{'to activate them' | translate}}.</p>
 
@@ -37,6 +39,8 @@
 			    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.openingHours" ng-if="venueOpeningHoursCtrl.shouldShowDeliveryService"></opening-hours-list>
 		    	</div>
 	    	</div>
+
+				<auto-save is-saving="venueOpeningHoursCtrl.isSavingServiceHours" is-error="venueOpeningHoursCtrl.isErrorServiceHours" retry="venueOpeningHoursCtrl.debounceUpdate()"></auto-save>
 	    </md-card-content>
 	  </md-card>
   </div>

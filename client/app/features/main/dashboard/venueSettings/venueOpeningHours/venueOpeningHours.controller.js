@@ -28,5 +28,8 @@ export default class venueOpeningHoursController {
     	open: null,
     	close: null
     }];
+
+    this.isSavingOpeningHours = true;
+    this.isSavingServiceHours = true;
   }
 }
