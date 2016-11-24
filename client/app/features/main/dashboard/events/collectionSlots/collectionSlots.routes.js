@@ -6,9 +6,10 @@ import controller from './collectionSlots.controller'
  * @param  $stateProvider
  */
 /* @ngInject */
-export default function routes($stateProvider) {
+export default function routes($stateProvider, Permissions) {
   $stateProvider.state("main.dashboard.events.collectionSlots", {
     url: "/collectionSlots",
+    requiresPermission:Permissions.EVENTS,
     views: {
     	eventContent: {
 		    template: require("./collectionSlots.tpl.html"),

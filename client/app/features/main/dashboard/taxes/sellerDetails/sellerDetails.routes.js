@@ -6,10 +6,11 @@ import controller from './sellerDetails.controller'
  * @param  $stateProvider
  */
 /* @ngInject */
-export default function routes($stateProvider) {
+export default function routes($stateProvider, Permissions) {
   "ngInject";
   $stateProvider.state("main.dashboard.taxes.sellerDetails", {
     url: "/sellerDetails",
+    requiresPermission:Permissions.TAXES,
      views:{
       taxesContent:{
         template: require("./sellerDetails.tpl.html"),
