@@ -6,6 +6,7 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
 
   function setupChangeEvent(){
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
+      console.log("state change started", event, toState, toParams, fromState, fromParams);
       contextualDrawer.close();
       contextualMenu.close();
       if (notRequiresUser.indexOf(toState.name) === -1 && !UserService.user){
@@ -28,7 +29,7 @@ export default function run(UserService, $rootScope, BroadcastEvents, VenueServi
     }
 
     setupChangeEvent();
-    Spinner.empty();    
+    Spinner.empty();
   }
 
   $rootScope.$on(BroadcastEvents._ON_USER_AUTH,(event,user)=>{

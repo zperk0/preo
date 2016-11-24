@@ -16,6 +16,8 @@ import Taxes from './taxes/taxes.service';
 import StyleService from './style/style.service';
 import deliveryZones from './deliveryZones/deliveryZones.service';
 import Maps from './maps/maps.service';
+import PermissionService from './permission/permission.service';
+import Permissions from './permission/permission.constants';
 
 
 export default angular.module("Services" , ['ui.router'])
@@ -36,5 +38,7 @@ export default angular.module("Services" , ['ui.router'])
   .service(deliveryZones.UID, deliveryZones)
   .service(Taxes.UID, Taxes)
   .service(EventSchedule.UID, EventSchedule)
+  .service(PermissionService.UID, PermissionService)
   .service(DateUtils.UID, DateUtils)
+  .constant('Permissions', Permissions)
   .name;

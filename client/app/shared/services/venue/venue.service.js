@@ -243,7 +243,11 @@ export default class VenueService {
     return "kms"
   }
 
-  constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, gettextCatalog, UserService, ErrorService, UtilsService) {
+  getPermissions(){
+    return this.PermissionService.loadPermissions(this.currentVenue);
+  }
+
+  constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, PermissionService, gettextCatalog, UserService, ErrorService, UtilsService) {
     "ngInject";
     this.$q = $q;
     this.$state = $state;
@@ -253,6 +257,7 @@ export default class VenueService {
     this.$timeout = $timeout;
     this.$injector = $injector;
     this.BroadcastEvents = BroadcastEvents;
+    this.PermissionService = PermissionService;
     this.gettextCatalog = gettextCatalog;
     this.UserService = UserService;
     this.ErrorService = ErrorService;
