@@ -32,7 +32,7 @@ export default class promotionController {
   }
 
   isPaused(){
-    return !this.promotion.active;
+    return !this.promotion.active || (this.promotion.startDate && this.promotion.endDate && !this.promotion.today);
   }
 
   updatePromotion(){

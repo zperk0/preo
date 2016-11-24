@@ -29,13 +29,16 @@ export default class promotionsListController {
       "apply": "ALWAYS",
       "firstOrder": 0,
       "visible": 1,
-      "active": 1
+      "active": 1,
+      $selected:true
     });
 
     this.promotions.push(promotion);
   }
 
   /* @ngInject */
-  constructor() {
+  constructor(VenueService) {
+    "ngInject";
+    this.VenueService = VenueService
   }
 }
