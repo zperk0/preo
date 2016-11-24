@@ -90,6 +90,9 @@ export default class navbarController {
       {name: gettextCatalog.getString("Promotions"), icon:"star", id:"promotions",shouldShow:function(){
         return PermissionService.hasPermission(Permissions.OFFERS)
       }},
+      {name: gettextCatalog.getString("Notifications"), icon:"chat", id:"notifications",shouldShow:function(){
+        return PermissionService.hasPermission(Permissions.VENUE_CREATE)
+      }},
       {name: gettextCatalog.getString("Manage Users"), icon:"account_box", id:"manageUsers",shouldShow:function(){
         return PermissionService.hasPermission(Permissions.ACCOUNT)
       }},
