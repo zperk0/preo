@@ -57,7 +57,7 @@ export default class navbarController {
           return FeatureService.hasDeliveryZoneFeature();
         }},
       ],shouldShow:function(){
-        return PermissionService.hasPermission(Permissions.VENUE)
+        return PermissionService.hasPermission(Permissions.VENUE_CREATE)
       }},
       {name: gettextCatalog.getString("Tax"), icon:"account_balance", id:"taxes", children:[
         {name: gettextCatalog.getString("Seller Details"), id:"sellerDetails"},
@@ -97,7 +97,7 @@ export default class navbarController {
         {name: gettextCatalog.getString("Web Orders"), id:"weborders"},
         {name: gettextCatalog.getString("Emails"), id:"emails"}
       ],shouldShow:function(){
-        return PermissionService.hasPermission(Permissions.VENUE)
+        return PermissionService.hasPermission(Permissions.VENUE_CREATE)
       }},
       {name: gettextCatalog.getString("Group Bookings"), icon:"people", id:"bookings", children:[
         {name: gettextCatalog.getString("Settings"), id:"bookingSettings"},

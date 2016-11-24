@@ -1,7 +1,7 @@
 <md-toolbar class="md-hue-2 preo-toolbar" layout="row" layout-align="center stretch">
     <venue-select></venue-select>
       <section flex layout="row" layout-align="start center" class="toolbar-nav">
-        <div flex layout="row" layout-align="start center" class="message">
+        <div flex layout="row" layout-align="start center" class="message" ng-if="toolbarCtrl.hasVenuePermission()">
           <venue-mode-select></venue-mode-select>
         </div>
       </section>

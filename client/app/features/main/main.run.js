@@ -1,18 +1,27 @@
 
-export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, ErrorService, UtilsService, $stateParams, Spinner, contextualMenu, contextualDrawer, gettextCatalog){
+export default function run(UserService, $rootScope, BroadcastEvents, VenueService, $state, Spinner, contextualMenu, contextualDrawer, PermissionService){
   "ngInject";
 
   const notRequiresUser= ['auth.signin','error', 'emailSuccess'];
 
   function setupChangeEvent(){
     $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
-      console.log("state change started", event, toState, toParams, fromState, fromParams);
+
+
       contextualDrawer.close();
       contextualMenu.close();
       if (notRequiresUser.indexOf(toState.name) === -1 && !UserService.user){
         $state.go("auth.signin");
         event.preventDefault();
         return false;
+      }
+
+      if (toState.requiresPermission){
+        if (!PermissionService.hasPermission(toState.requiresPermission)){
+          $state.go("main.dashboard");
+          event.preventDefault();
+          return false;
+        }
       }
       return true;
     });

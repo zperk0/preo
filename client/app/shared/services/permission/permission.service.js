@@ -9,19 +9,11 @@ export default class PermissionService {
   }
 
   loadPermissions(venue){
-     let permissions = [
-      this.Permissions.EVENTS,
-      this.Permissions.DASHBOARD,
-      this.Permissions.MENUS,
-      this.Permissions.OFFERS,
-      this.Permissions.BOOKINGS,
-      this.Permissions.VOUCHERS,
-      this.Permissions.ORDERS,
-      this.Permissions.ACCOUNT,
-      this.Permissions.ANALYTICS,
-      this.Permissions.TAXES,
-      this.Permissions.VENUE
-    ];
+    let permissions = []
+    angular.forEach(this.Permissions,function(p, key){
+      permissions.push(p)
+    });
+
     return this.$q((resolve, reject)=>{
       venue.getPermissions(permissions.join(","))
       .then((userPermissions)=>{

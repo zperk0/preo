@@ -9,6 +9,7 @@ export default class VenueService {
   fetchById(venueId){
     return this.$q((resolve,reject)=>{
       //If i have a list, try to find it in the cached list
+      console.log("loading", this.venues, venueId)
       if (this.venues){
         let filtered = this.venues.filter((v)=>{
           return v.id===Number(venueId);

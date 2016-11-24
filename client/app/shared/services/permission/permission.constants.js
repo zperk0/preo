@@ -9,5 +9,6 @@ export default {
   ACCOUNT:'account_update', //payments
   ANALYTICS:'analytics_read',
   TAXES:'tax_create',
-  VENUE:'venue_update' //venue settings & styling
+  VENUE_CREATE:'venue_create',
+  VENUE:'venue_update' //venue settings & switch venue mode
 };
