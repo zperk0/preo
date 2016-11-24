@@ -73,11 +73,10 @@
                 </md-input-container>
                 <md-input-container class="md-block no-spacer">
                     <label translate>Email Address</label>
-                    <input ng-model-options="{updateOn: 'blur'}" ng-change="venueDetailsCtrl.debounceUpdate()"  type="email" required name="venueEmail" ng-model="venueDetailsCtrl.venue.notificationEmailAddress"  ng-maxlength="100">
+                    <input ng-model-options="{updateOn: 'blur'}" ng-change="venueDetailsCtrl.debounceUpdate()"  type="email" name="venueEmail" ng-model="venueDetailsCtrl.venue.notificationEmailAddress"  ng-maxlength="100">
                     <div ng-messages="venueDetailsCtrl.venueDetailsForm.venueEmail.$error">
                       <div ng-message="maxlength" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueEmail.$error.maxlength}">Max length is 100.</div>
                       <div ng-message="email" translate ng-class="{'activated': venueDetailsCtrl.venueDetailsForm.venueEmail.$error.email}">Invalid email</div>
-                      <div ng-message="required" translate>This is required.</div>
                     </div>
                 </md-input-container>
             </div>
