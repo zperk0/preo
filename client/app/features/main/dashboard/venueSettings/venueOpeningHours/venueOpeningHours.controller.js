@@ -74,11 +74,114 @@ export default class venueOpeningHoursController {
     return hoursResult;
   }
 
-  constructor(Spinner, VenueService) {
+  debounce(func, wait, immediate) {
+    console.log("debouncing");
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        console.log("in later", immediate)
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      console.log("if call now", callNow);
+      if (callNow) func.apply(context, args);
+    };
+  }
+
+  updateHours () {
+
+    console.log('update openingHours here');
+
+    this.openingHoursForm.$setSubmitted();
+    this.serviceHoursForm.$setSubmitted();
+
+    if (this.openingHoursForm.$invalid || this.serviceHoursForm.$invalid) {
+      this.isFormError = true;
+      this.isError = false;
+      this.isSaving = false;
+      return;
+    }
+
+    this.buildHoursFormat();
+
+    this.openingHoursForm.$setPristine();
+    this.openingHoursForm.$setUntouched();
+
+    this.isSaving = true;
+    this.isFormError = false;
+    this.isError = false;
+    this.debounce(this.doUpdate.bind(this), 1000)()
+  }
+
+  doUpdate () {
+
+    this.$timeout(()=>{
+      this.isSaving = false;
+      this.isError = false;
+      this.isFormError = false;
+    })
+  }
+
+  toggleServiceHours () {
+
+    if (!this.collectionSameAsOpening || !this.deliverySameAsOpening) {
+      if (this.openingHours.length === 1 && this.openingHoursForm.$invalid) {
+        return this.showInvalidConfigurationDialog();
+      }
+    }
+
+    this.updateHours();
+  }
+
+  showInvalidConfigurationDialog () {
+
+    this.DialogService.show(this.ErrorService.INVALID_OPENING_HOURS_CONFIGURATION.title, this.ErrorService.INVALID_OPENING_HOURS_CONFIGURATION.message, [{
+        name: this.gettextCatalog.getString('Got it')
+      }]);
+  }
+
+  buildHoursFormat () {
+
+    let hours = [];
+console.log('opening hoursss ===', this.openingHours);
+    this.openingHours.forEach((currentHour) => {
+
+      let hour = {
+        open: currentHour.open,
+        close: currentHour.close,
+        // pickup: currentHour.pickup,
+        // delivery: currentHour.delivery,
+        // opening: currentHour.opening,
+      };
+
+      if (currentHour.$open) {
+        hour.open = moment(currentHour.$open).format("HH:mm:00.000");
+        hour.close = moment(currentHour.$close).format("HH:mm:00.000");
+      }
+
+      currentHour.days.forEach((day) => {
+
+        hours.push(angular.extend(angular.copy(hour), {
+          day: day
+        }));
+      });
+    });
+
+    console.log('hours to send to api = == = ', hours);
+  }
+
+  constructor($timeout, Spinner, VenueService, DialogService, ErrorService) {
     "ngInject";
 
-    this.VenueService = VenueService;
+    this.$timeout = $timeout;
     this.Spinner = Spinner;
+    this.VenueService = VenueService;
+    this.DialogService = DialogService;
+    this.ErrorService = ErrorService;
 
     Spinner.show('venue-opening-hours');
 

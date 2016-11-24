@@ -1,5 +1,5 @@
 <div class="opening-hour" ng-class="{'with-icon': openingHourCtrl.showRemove}">
-	<icon class='clear-icon' ng-if="openingHourCtrl.showRemove"  ng-click="vm.deleteItem(item)">clear</icon>
+	<icon class='clear-icon' ng-if="openingHourCtrl.showRemove"  ng-click="openingHourCtrl.delete(item)">clear</icon>
 	<div class="days-content">
     <div class="day" ng-class="{'selected': openingHourCtrl.isDaySelected(day)}" ng-click="openingHourCtrl.toggleDay(day)" ng-repeat="day in openingHourCtrl.days">{{ day.name }}</div>
   </div>
@@ -13,7 +13,7 @@
 	          mdp-format="LT"
 	          required></mdp-time-picker>
 
-	    <div ng-messages="openingHourCtrl.openingHoursForm['openingHourOpen_' + openingHourCtrl.index].$error" ng-show="openingHourCtrl.openingHoursForm['openingHourOpen_' + {{ openingHourCtrl.index }}].$dirty" class="preo-ng-messages">
+	    <div ng-messages="openingHourCtrl.openingHoursForm['openingHourOpen_' + openingHourCtrl.index].$error" ng-show="openingHourCtrl.openingHoursForm['openingHourOpen_' + {{ openingHourCtrl.index }}].$dirty || openingHourCtrl.openingHoursForm.$submitted" class="preo-ng-messages">
 	      <div ng-message="required" translate ng-class="{'activated': openingHourCtrl.openingHoursForm['openingHourOpen_' +  {{ openingHourCtrl.index }}].$error.required}">This is required.</div>
 	      <div ng-message="format" translate ng-class="{'activated': openingHourCtrl.openingHoursForm['openingHourOpen_' +  {{ openingHourCtrl.index }}].$error.format}">Invalid format.</div>
 	    </div>
@@ -27,7 +27,7 @@
 	          mdp-format="LT"
 	          required></mdp-time-picker>
 
-	    <div ng-messages="openingHourCtrl.openingHoursForm['openingHourClosed_' + openingHourCtrl.index].$error" ng-show="openingHourCtrl.openingHoursForm['openingHourClosed_' + openingHourCtrl.index].$dirty" class="preo-ng-messages">
+	    <div ng-messages="openingHourCtrl.openingHoursForm['openingHourClosed_' + openingHourCtrl.index].$error" ng-show="openingHourCtrl.openingHoursForm['openingHourClosed_' + openingHourCtrl.index].$dirty || openingHourCtrl.openingHoursForm.$submitted" class="preo-ng-messages">
 	      <div ng-message="required" translate ng-class="{'activated': openingHourCtrl.openingHoursForm['openingHourClosed_' +  openingHourCtrl.index].$error.required}">This is required.</div>
 	      <div ng-message="format" translate ng-class="{'activated': openingHourCtrl.openingHoursForm['openingHourClosed_' +  openingHourCtrl.index].$error.format}">Invalid format.</div>
 	    </div>

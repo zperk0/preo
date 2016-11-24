@@ -7,9 +7,11 @@ import routes from './venueOpeningHours.routes';
 
 import openingHoursList from './components/openingHoursList';
 
+// import services from '../../../../../shared/services';
+
 export default angular.module("venueOpeningHours" , [
 	'ui.router',
-	openingHoursList
+	openingHoursList,
 ])
   .config(routes)
   .controller(controller.UID, controller)

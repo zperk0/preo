@@ -6,10 +6,18 @@
 	        <h2 class="md-title" translate> Opening hours </h2>
 	      </md-card-title-text>
 	    </md-card-title>
-	    <md-card-content ng-class="{'is-saving': venueOpeningHoursCtrl.isSavingOpeningHours}">
-	    	<opening-hours-list ng-if="venueOpeningHoursCtrl.loaded" opening-hours="venueOpeningHoursCtrl.openingHours"></opening-hours-list>
+	    <md-card-content>
+	    	<form name="venueOpeningHoursCtrl.openingHoursForm" novalidate>
 
-        <auto-save is-saving="venueOpeningHoursCtrl.isSavingOpeningHours" is-error="venueOpeningHoursCtrl.isErrorOpeningHours" retry="venueOpeningHoursCtrl.debounceUpdate()"></auto-save>
+		    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.openingHours"
+		    											ng-if="venueOpeningHoursCtrl.loaded"
+		    											on-update="venueOpeningHoursCtrl.updateHours()"></opening-hours-list>
+
+	        <auto-save is-saving="venueOpeningHoursCtrl.isSaving"
+	        					 is-error="venueOpeningHoursCtrl.isError"
+	        					 is-form-error="venueOpeningHoursCtrl.isFormError"
+	        					 retry="venueOpeningHoursCtrl.updateHours()"></auto-save>
+        </form>
 	    </md-card-content>
 	  </md-card>
 
@@ -19,28 +27,56 @@
 	        <h2 class="md-title" translate> Service hours </h2>
 	      </md-card-title-text>
 	    </md-card-title>
-	    <md-card-content ng-class="{'is-saving': venueOpeningHoursCtrl.isSavingServiceHours}">
-				<p class="service-message" ng-if="venueOpeningHoursCtrl.loaded && venueOpeningHoursCtrl.hasServiceMethods() && !venueOpeningHoursCtrl.hasOpeningHours()"><span><icon>info</icon></span> {{ 'You must add opening hours before specifying your service hours.' | translate }}</p>
-				<p class="service-message" ng-if="venueOpeningHoursCtrl.loaded && !venueOpeningHoursCtrl.hasServiceMethods()"><span><icon>info</icon></span> {{ 'All your service methods are currently disabled.' | translate }} <a ng-href>{{ 'Click here' | translate }}</a> {{'to activate them' | translate}}.</p>
+	    <md-card-content>
+	    	<form name="venueOpeningHoursCtrl.serviceHoursForm" novalidate>
+					<p class="service-message"
+							ng-if="venueOpeningHoursCtrl.loaded && venueOpeningHoursCtrl.hasServiceMethods() && !venueOpeningHoursCtrl.hasOpeningHours()">
+							<span><icon>info</icon></span>
+							{{ 'You must add opening hours before specifying your service hours.' | translate }}
+					</p>
+					<p class="service-message"
+						 ng-if="venueOpeningHoursCtrl.loaded && !venueOpeningHoursCtrl.hasServiceMethods()">
+						 <span><icon>info</icon></span>
+						 {{ 'All your service methods are currently disabled.' | translate }}
+						 <a ng-href>{{ 'Click here' | translate }}</a> {{'to activate them' | translate}}.
+					</p>
 
-				<div ng-if="venueOpeningHoursCtrl.hasOpeningHours() && venueOpeningHoursCtrl.hasServiceMethods()">
-		    	<div class="service-type" ng-if="venueOpeningHoursCtrl.hasCollectionService()">
-			    	<p>Collection service:</p>
-		        <md-checkbox class="service-type-toogle" ng-change="venueOpeningHoursCtrl.debounceUpdate('venue')" aria-label="Same as opening hours" ng-model="venueOpeningHoursCtrl.collectionSameAsOpening">
-		          {{'Same as opening hours' | translate}}
-		        </md-checkbox>
-			    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.collectionHours" ng-if="!venueOpeningHoursCtrl.collectionSameAsOpening"></opening-hours-list>
-		    	</div>
-		    	<div class="service-type" ng-if="venueOpeningHoursCtrl.hasDeliveryService()">
-			    	<p>Delivery service:</p>
-		        <md-checkbox class="service-type-toogle" ng-change="venueOpeningHoursCtrl.debounceUpdate('venue')" aria-label="Same as opening hours" ng-model="venueOpeningHoursCtrl.deliverySameAsOpening">
-		          {{'Same as opening hours' | translate}}
-		        </md-checkbox>
-			    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.deliveryHours" ng-if="!venueOpeningHoursCtrl.deliverySameAsOpening"></opening-hours-list>
-		    	</div>
-	    	</div>
+					<div ng-if="venueOpeningHoursCtrl.hasOpeningHours() && venueOpeningHoursCtrl.hasServiceMethods()">
+			    	<div class="service-type" ng-if="venueOpeningHoursCtrl.hasCollectionService()">
+				    	<p>Collection service:</p>
 
-				<auto-save is-saving="venueOpeningHoursCtrl.isSavingServiceHours" is-error="venueOpeningHoursCtrl.isErrorServiceHours" retry="venueOpeningHoursCtrl.debounceUpdate()"></auto-save>
+			        <md-checkbox class="service-type-toogle"
+			        						ng-change="venueOpeningHoursCtrl.toggleServiceHours()"
+			        						aria-label="Same as opening hours"
+			        						ng-model="venueOpeningHoursCtrl.collectionSameAsOpening">
+			          {{'Same as opening hours' | translate}}
+			        </md-checkbox>
+
+				    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.collectionHours"
+				    											ng-if="!venueOpeningHoursCtrl.collectionSameAsOpening"
+				    											on-update="venueOpeningHoursCtrl.updateHours()"></opening-hours-list>
+			    	</div>
+			    	<div class="service-type" ng-if="venueOpeningHoursCtrl.hasDeliveryService()">
+				    	<p>Delivery service:</p>
+
+			        <md-checkbox class="service-type-toogle"
+			        						ng-change="venueOpeningHoursCtrl.toggleServiceHours()"
+			        						aria-label="Same as opening hours"
+			        						ng-model="venueOpeningHoursCtrl.deliverySameAsOpening">
+			          {{'Same as opening hours' | translate}}
+			        </md-checkbox>
+
+				    	<opening-hours-list opening-hours="venueOpeningHoursCtrl.deliveryHours"
+				    											ng-if="!venueOpeningHoursCtrl.deliverySameAsOpening"
+				    											on-update="venueOpeningHoursCtrl.updateHours()"></opening-hours-list>
+			    	</div>
+		    	</div>
+
+					<auto-save is-saving="venueOpeningHoursCtrl.isSaving"
+										 is-error="venueOpeningHoursCtrl.isError"
+										 is-form-error="venueOpeningHoursCtrl.isFormError"
+										 retry="venueOpeningHoursCtrl.updateHours()"></auto-save>
+				</form>
 	    </md-card-content>
 	  </md-card>
   </div>

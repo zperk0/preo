@@ -1,6 +1,7 @@
 <div class='auto-save' ng-show="!pristine">
   <icon>save</icon>
   <span translate ng-if="isSaving">Saving...</span>
-  <span translate ng-if="!isSaving && !isError">Changes saved</span>
-  <span class='error' ng-if="!isSaving && isError"> {{'Autosave error.' | translate}} <span ng-click="doRetry()" class='fake-link' translate>Click here</span> {{'to try again.' | translate}}</span>
+  <span translate ng-if="!isSaving && !isError && !isFormError">Changes saved</span>
+  <span class='error' ng-if="!isSaving && !isError && isFormError">{{ 'Autosave error. Invalid fields' | translate }}</span>
+  <span class='error' ng-if="!isSaving && isError && !isFormError"> {{'Autosave error.' | translate}} <span ng-click="doRetry()" class='fake-link' translate>Click here</span> {{'to try again.' | translate}}</span>
 </div>

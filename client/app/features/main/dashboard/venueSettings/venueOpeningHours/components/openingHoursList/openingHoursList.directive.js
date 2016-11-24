@@ -7,13 +7,17 @@ export default function openingHoursList() {
     restrict: 'E',
     scope: {
       openingHours: "=",
+      onUpdate: '&'
     },
     template: require("./openingHoursList.tpl.html"),
     controller: controller.UID,
     controllerAs: "openingHoursListCtrl",
     bindToController: true,
     replace:true,
-    link: (scope, element, attrs, ctrl) => {
+    require: ['^form', 'openingHoursList'],
+    link: (scope, element, attrs, ctrls) => {
+
+      ctrls[1].openingHoursForm = ctrls[0];
     }
   }
 }

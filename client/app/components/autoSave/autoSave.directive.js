@@ -5,6 +5,7 @@ export default function autoSave(){
     scope: {
       isSaving:"=",
       isError:"=",
+      isFormError:"=",
       retry:"&"
     },
     replace:true,
@@ -16,7 +17,13 @@ export default function autoSave(){
           if (newVal){
             scope.pristine = false;
           }
-        })
+        });
+
+        scope.$watch('isFormError',function(newVal){
+          if (newVal){
+            scope.pristine = false;
+          }
+        });
         scope.doRetry = function(){
           if (scope.retry){
             scope.retry();

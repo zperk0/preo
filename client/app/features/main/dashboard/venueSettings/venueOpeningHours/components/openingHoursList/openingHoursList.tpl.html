@@ -1,7 +1,11 @@
 <div class='opening-hours-list'>
-	<form name="openingHoursListCtrl.openingHoursForm" novalidate>
-		<opening-hour opening-hour="hour" show-remove="openingHoursListCtrl.openingHours.length > 1" index="$index" ng-repeat="hour in openingHoursListCtrl.openingHours"></opening-hour>
-	</form>
+
+	<opening-hour opening-hour="hour"
+								show-remove="openingHoursListCtrl.openingHours.length > 1"
+								index="$index"
+								ng-repeat="hour in openingHoursListCtrl.openingHours"
+								on-update="openingHoursListCtrl.onUpdateHour()"
+								on-delete="openingHoursListCtrl.onDelete(openingHour)"></opening-hour>
 
   <md-card-actions>
     <md-button class="md-fab md-mini md-primary" aria-label="{{ 'Add new opening hour' | translate }}" ng-click="openingHoursListCtrl.addNew()">

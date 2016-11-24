@@ -8,7 +8,9 @@ export default function openingHour() {
     scope: {
       openingHour: "=",
       showRemove: '=',
-      index: '='
+      index: '=',
+      onUpdate: '&',
+      onDelete: '&',
     },
     template: require("./openingHour.tpl.html"),
     controller: controller.UID,
