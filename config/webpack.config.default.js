@@ -249,6 +249,13 @@ module.exports = function(ENV, options) {
         chunksSortMode: chunkSort,
         inject:true,
         filename:'venueSettings/index.php'
+      }),
+      new HtmlWebpackPlugin({
+        template:'./client/v1/index.php',
+        chunks:['payments','app','vendor'],
+        chunksSortMode: chunkSort,
+        inject:true,
+        filename:'payments/index.php'
       })
     ]
   }

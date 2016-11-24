@@ -48,7 +48,7 @@ export default class venueModeSelectController {
     this.$timeout(()=>{
       this.venues = this.VenueService.venues;
       this.venue = this.VenueService.currentVenue;
-      this.setTranslations(this.venue.liveFlag ? (this.venue.demoFlag ? 'demo' : 'live') : 'offline')
+      this.setTranslations(this.venue && this.venue.liveFlag ? (this.venue.demoFlag ? 'demo' : 'live') : 'offline')
     });
   }
 

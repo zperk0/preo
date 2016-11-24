@@ -73,13 +73,24 @@ export default class FeatureService {
     });
   }
 
-  constructor($q, $injector, UserService, VenueService) {
+  setLocalFeatures () {
+
+    this.localFeatures = this.VenueService.hasVenueSet() && this.VenueService.currentVenue.features || [];
+  }
+
+  constructor($q, $injector, $rootScope, UserService, VenueService, BroadcastEvents) {
     "ngInject";
 
     this.$q = $q;
     this.$injector = $injector;
     this.UserService = UserService;
     this.VenueService = VenueService;
-    this.localFeatures = VenueService.currentVenue && VenueService.currentVenue.features || [];
+
+    this.setLocalFeatures();
+
+    $rootScope.$on(BroadcastEvents._ON_FETCH_VENUES,(event,venues)=>{
+
+      this.setLocalFeatures();
+    });
   }
 }

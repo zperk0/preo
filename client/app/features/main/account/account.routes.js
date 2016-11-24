@@ -12,6 +12,7 @@ export default function routes($stateProvider) {
     url: "/account",
     template: require("./account.tpl.html"),
     controller: controller.UID,
+    test:'testparam',
     controllerAs: "vm"
   });
 }

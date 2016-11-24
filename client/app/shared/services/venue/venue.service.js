@@ -9,6 +9,7 @@ export default class VenueService {
   fetchById(venueId){
     return this.$q((resolve,reject)=>{
       //If i have a list, try to find it in the cached list
+      console.log("loading", this.venues, venueId)
       if (this.venues){
         let filtered = this.venues.filter((v)=>{
           return v.id===Number(venueId);
@@ -36,7 +37,6 @@ export default class VenueService {
 
       Preoday.Venue.fetch({
         adminId: user.id,
-        roles: "admin,owner",
         expand: 'features'
       }).then((venues)=>{
 
@@ -117,13 +117,9 @@ export default class VenueService {
   goToVenue () {
 
     if (this.venues.length === 0 ){
-      //TODO GET VENUES THAT I'M STAFF, if there's at least one show staff errro
-      // if (venuesStaff.length){
-        //ErrorService.showError("STAFF");
-      // }
       this.venuesDeferred.resolve();
       this.unsetVenuesDeferred();
-      return this.$state.go("notFound");
+      return;
     }
 
     let venueId = this.getVenueIdParameter();
@@ -135,7 +131,7 @@ export default class VenueService {
       this.$state.go("main.dashboard", {venueId});
     }
 
-    this.venuesDeferred.resolve();
+    this.venuesDeferred.resolve(this.venues);
     this.unsetVenuesDeferred();
   }
 
@@ -248,7 +244,11 @@ export default class VenueService {
     return "kms"
   }
 
-  constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, gettextCatalog, UserService, ErrorService, UtilsService) {
+  getPermissions(){
+    return this.PermissionService.loadPermissions(this.currentVenue);
+  }
+
+  constructor($q, $state, $stateParams, $rootScope, $timeout, $injector, BroadcastEvents, PermissionService, gettextCatalog, UserService, ErrorService, UtilsService) {
     "ngInject";
     this.$q = $q;
     this.$state = $state;
@@ -258,6 +258,7 @@ export default class VenueService {
     this.$timeout = $timeout;
     this.$injector = $injector;
     this.BroadcastEvents = BroadcastEvents;
+    this.PermissionService = PermissionService;
     this.gettextCatalog = gettextCatalog;
     this.UserService = UserService;
     this.ErrorService = ErrorService;

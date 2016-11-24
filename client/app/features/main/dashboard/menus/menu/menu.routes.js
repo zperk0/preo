@@ -6,10 +6,11 @@ import controller from './menu.controller';
  * @param  $stateProvider
  */
 
-export default function routes($stateProvider) {
+export default function routes($stateProvider, Permissions) {
   "ngInject";
   $stateProvider.state("main.dashboard.menus.menu", {
     url: "/{menuId:[0-9]*}/:sectionId?/:itemId?/",
+    requiresPermission:Permissions.MENUS,
     views:{
       menuContent:{
         template: require("./menu.tpl.html"),
