@@ -36,7 +36,6 @@ export default class VenueService {
 
       Preoday.Venue.fetch({
         adminId: user.id,
-        roles: "admin,owner",
         expand: 'features'
       }).then((venues)=>{
 
@@ -117,13 +116,9 @@ export default class VenueService {
   goToVenue () {
 
     if (this.venues.length === 0 ){
-      //TODO GET VENUES THAT I'M STAFF, if there's at least one show staff errro
-      // if (venuesStaff.length){
-        //ErrorService.showError("STAFF");
-      // }
       this.venuesDeferred.resolve();
       this.unsetVenuesDeferred();
-      return this.$state.go("notFound");
+      return;
     }
 
     let venueId = this.getVenueIdParameter();
@@ -135,7 +130,7 @@ export default class VenueService {
       this.$state.go("main.dashboard", {venueId});
     }
 
-    this.venuesDeferred.resolve();
+    this.venuesDeferred.resolve(this.venues);
     this.unsetVenuesDeferred();
   }
 
