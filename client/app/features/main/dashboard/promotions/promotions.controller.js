@@ -44,7 +44,7 @@ export default class promotionsController {
       "apply": "ALWAYS",
       "firstOrder": 0,
       "visible": 1,
-      "active": 1,
+      "active": 0,
       "created": null,
       "updated": null
       }

@@ -8,10 +8,12 @@ export default function cardItemActions(){
     restrict: 'E',
     scope: {
       isVisible:"=",
+      isPaused:"=?",
       onClone:'&?',
       onDelete:'&?',
       onEdit:'&?',
       onVisibility:'&?',
+      onPause:'&?',
       onMove:'&?',
       onAdd:'&?',
       onAddLocation:'&?',

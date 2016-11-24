@@ -4,13 +4,14 @@
               deleted="promotionCtrl.promotion.$deleted"
               selected="promotionCtrl.promotion.$selected"
               class='small'>
-    <card-item-title has-visible="false">
+    <card-item-title has-pause="true" has-visible="false" show-paused="promotionCtrl.isPaused()">
         <span>{{promotionCtrl.promotion.name}} </span>
     </card-item-title>
 
     <card-item-actions on-delete="promotionCtrl.onDelete()"
                        on-edit="promotionCtrl.onEdit($event)"
-                       on-pause="promotionCtrl.pause($event)"
+                       on-pause="promotionCtrl.onPause(newStatus)"
+                       is-paused="!promotionCtrl.promotion.active"
                         ></card-item-actions>
   </card-item>
 </div>
