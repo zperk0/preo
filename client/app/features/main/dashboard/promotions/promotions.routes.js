@@ -13,6 +13,6 @@ export default function routes($stateProvider, Permissions) {
     template: require("./promotions.tpl.html"),
     controller: controller.UID,
     requiresPermission:Permissions.OFFERS,
-    controllerAs: "promotions"
+    controllerAs: "promotionsCtrl"
   });
 }

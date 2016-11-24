@@ -1,0 +1,16 @@
+<div class='promotion'
+      ng-attr-data-id="{{promotionCtrl.promotion.id}}">
+  <card-item  has-actions="true"
+              deleted="promotionCtrl.promotion.$deleted"
+              selected="promotionCtrl.promotion.$selected"
+              class='small'>
+    <card-item-title has-visible="false">
+        <span>{{promotionCtrl.promotion.name}} </span>
+    </card-item-title>
+
+    <card-item-actions on-delete="promotionCtrl.onDelete()"
+                       on-edit="promotionCtrl.onEdit($event)"
+                       on-pause="promotionCtrl.pause($event)"
+                        ></card-item-actions>
+  </card-item>
+</div>
