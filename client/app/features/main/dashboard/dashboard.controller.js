@@ -5,7 +5,11 @@ export default class dashboardController {
   }
 
 
-  constructor() {
+  constructor(VenueService, $state) {
     "ngInject";
+    if (!VenueService.currentVenue){
+      console.log("User has no venue - redirecting to signin")
+      $state.go("auth.signin");
+    }
   }
 }
