@@ -9,12 +9,8 @@ export default function notification(){
 		replace:true,
 		require: '^notificationsForm',
 		link: (scope, el, attr, form) => {
-			console.log("got scope", scope);
-			scope.formName = 'notificationForm'+scope.index;
-
-
 			scope.debounceUpdate = function(){
-				if (scope[scope.formName].$valid){
+				if (scope.notifyForm.$valid){
 					form.saveMessage(scope.notification)
 				}
 			}
