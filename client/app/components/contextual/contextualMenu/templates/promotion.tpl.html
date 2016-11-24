@@ -1,0 +1,27 @@
+<div>
+  <md-tabs md-dynamic-height md-stretch-tabs="always">
+    <md-tab label="{{'Basics' | translate}}">
+    <md-card-content>
+       <md-input-container class="md-block">
+          <label translate>Promotion name</label>
+          <input type="text" autocomplete="off"  required name="entityName" ng-model="contextualMenuCtrl.entity.name" ng-maxlength="100">
+          <div ng-messages="contextualMenuCtrl.contextualForm.entityName.$error">
+            <div ng-message="required" translate>This is required.</div>
+          </div>
+      </md-input-container>
+    </md-card-content>
+    </md-tab>
+    <md-tab label="{{'Advanced' | translate}}">
+      <md-card-content>
+       <md-input-container class="md-block">
+          <label translate>Display text</label>
+          <input type="text" autocomplete="off"  required name="displayName" ng-model="contextualMenuCtrl.entity.displayName" ng-maxlength="100">
+          <div ng-messages="contextualMenuCtrl.contextualForm.displayName.$error">
+            <div ng-message="required" translate>This is required.</div>
+          </div>
+      </md-input-container>
+    </md-card-content>
+    </md-tab>
+    </md-tab>
+  </md-tabs>
+</div>

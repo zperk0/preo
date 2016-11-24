@@ -100,5 +100,14 @@ export default class LabelService {
     this.SNACK_USER_INVITE_CONFLICT= gettextCatalog.getString("This user already has an account");
     this.SNACK_USER_INVITE_SUCCESS= gettextCatalog.getString("Invitation sent");
 
+
+
+    this.TITLE_DELETE_PROMOTION = gettextCatalog.getString("Delete promotion?");
+    this.CONTENT_DELETE_PROMOTION = gettextCatalog.getString("Are you sure you want to permanently delete this promotion?");
+    this.SNACK_PROMOTION_DELETED = gettextCatalog.getString("Promotion deleted");
+    this.SNACK_PROMOTION_DELETED_ERROR = gettextCatalog.getString("Promotion not deleted");
+    this.SNACK_PROMOTION_SAVED = gettextCatalog.getString("Promotion saved");
+    this.SNACK_PROMOTION_SAVED_ERROR = gettextCatalog.getString("Promotion not saved");
+
   }
 }
