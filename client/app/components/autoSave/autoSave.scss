@@ -1,28 +1,34 @@
 .auto-save{
   margin-top:24px;
+  font-size: 13px;
 
   md-icon{
     margin-left: -4px;
     margin-right: 4px;
     span{
       color:#D1D1D1;
+      vertical-align: top;
     }
   }
 
   span{
     color:#8C8C8C;
+    vertical-align: middle;
 
     &.error{
+      vertical-align: middle;
+
+      span{
+        color:#D2232A;
+        vertical-align: baseline;
+      }
+      color:#D2232A;
+
+      .fake-link{
         span{
           color:#D2232A;
         }
         color:#D2232A;
-
-        .fake-link{
-          span{
-            color:#D2232A;
-          }
-          color:#D2232A;
       }
     }
   }

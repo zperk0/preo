@@ -7,17 +7,16 @@ export default class venueDetailsController {
 
   debounce(func, wait, immediate) {
     console.log("debouncing");
-    var timeout;
-    return function() {
+    return () => {
       var context = this, args = arguments;
       var later = function() {
-        timeout = null;
+        context.debounceTimeout = null;
         console.log("in later", immediate)
         if (!immediate) func.apply(context, args);
       };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
+      var callNow = immediate && !context.debounceTimeout;
+      clearTimeout(context.debounceTimeout);
+      context.debounceTimeout = setTimeout(later, wait);
       console.log("if call now", callNow);
       if (callNow) func.apply(context, args);
     };
@@ -114,6 +113,7 @@ export default class venueDetailsController {
     this.isError = false;
     this.isSaving = false;
     this.$timeout = $timeout;
+    this.debounceTimeout = null;
     this.init();
   }
 }
