@@ -33,7 +33,7 @@ export default class eventListViewController {
       html = [
                 '<div>',
                   '<div class="event-calendar-item">',
-                    '<a ng-href title="' + eventsName + '">' + events.length + ' ' + this.gettextCatalog.getString('events') + '</a>',
+                    '<a ng-href>' + events.length + ' ' + this.gettextCatalog.getString('events') + '</a>',
                     '<div class="event-tooltip">' + eventsName + '</div>',
                   '</div>',
                 '</div>'

@@ -106,6 +106,7 @@ describe('EventList View Controller', function () {
 
       server.respondWith('GET', '/api/venues/' + currentVenue.id + '/events?after=' + pastDate.replace(/\//g, '%2F') + '&expand=schedules%2Cslots', [200, {"Content-Type": "application/json"}, JSON.stringify(events)]);
       server.respondWith('GET', '/api/venues/' + currentVenue.id + '/outletlocations?outlets=false', [200, {"Content-Type": "application/json"}, JSON.stringify(outletLocations)]);
+      server.respondWith('GET', '/api/slots/slotConfig?venueId=' + currentVenue.id, [200, {"Content-Type": "application/json"}, JSON.stringify([])]);
 
       _startController();
 
@@ -159,6 +160,7 @@ describe('EventList View Controller', function () {
 
       server.respondWith('GET', '/api/venues/' + currentVenue.id + '/events?after=' + pastDate.replace(/\//g, '%2F') + '&expand=schedules%2Cslots', [400, {"Content-Type": "application/json"}, JSON.stringify(events)]);
       server.respondWith('GET', '/api/venues/' + currentVenue.id + '/outletlocations?outlets=false', [200, {"Content-Type": "application/json"}, JSON.stringify(outletLocations)]);
+      server.respondWith('GET', '/api/slots/slotConfig?venueId=' + currentVenue.id, [200, {"Content-Type": "application/json"}, JSON.stringify([])]);
 
       _startController();
 
@@ -233,6 +235,7 @@ describe('EventList View Controller', function () {
 
       server.respondWith('GET', '/api/venues/' + currentVenue.id + '/events?after=' + pastDate.replace(/\//g, '%2F') + '&expand=schedules%2Cslots', [200, {"Content-Type": "application/json"}, JSON.stringify(events)]);
       server.respondWith('GET', '/api/venues/' + currentVenue.id + '/outletlocations?outlets=false', [200, {"Content-Type": "application/json"}, JSON.stringify(outletLocations)]);
+      server.respondWith('GET', '/api/slots/slotConfig?venueId=' + currentVenue.id, [200, {"Content-Type": "application/json"}, JSON.stringify([])]);
 
       _startController();
 
@@ -252,8 +255,19 @@ describe('EventList View Controller', function () {
 
           let eventsName = events.map((event) => {
 
-            return event.name + '\n';
+            return '<span>' + event.name + '</span>';
           }).join('');
+
+
+          let htmlResult = [
+                '<div>',
+                  '<div class="event-calendar-item">',
+                    '<a ng-href>' + events.length + ' ' + 'events' + '</a>',
+                    '<div class="event-tooltip">' + eventsName + '</div>',
+                  '</div>',
+                '</div>'
+              ].join('');
+
 
           expect($scope.eventListViewCtrl.loaded).toBe(true);
           expect(Spinner.show).toHaveBeenCalledWith('events');
@@ -264,8 +278,7 @@ describe('EventList View Controller', function () {
           expect(OutletLocationService.getOutletLocations).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.hideSpinner).toHaveBeenCalled();
           expect($scope.eventListViewCtrl.data.events.length).toBe(events.length);
-          expect($scope.eventListViewCtrl.getDayEventsName(moment())).toEqual('<div><a ng-href title="' + eventsName + '">' + events.length + ' events</a></div>');
-
+          expect($scope.eventListViewCtrl.getDayEventsName(moment()).trim()).toEqual(htmlResult.trim());
           done();
         });
       });
